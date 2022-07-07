@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69BB8C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 10:09:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B77E3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 10:10:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U5N9NRe+aarCaMPvgWomO4spTpGm8g7FmpQ6Wwxj0Ec=; b=xoT9Mx1gVJVrgygbVCgBqCJx/c
-	oD/YE9iAVgmRwbnq993EeKhyv9p+D2dw9nnXUkbMJwbPpCe7h7V8XD2Aeg1TbwsANsRZ6VyGOkGMS
-	RCvYXqjiTAVyliLXOQaCZjxh+okLfg9F0yu2Lw6xKH9EpVoWajKhxBmW7yDxH/xXOOzlYTjSag8AE
-	pwRAz6TIBGfd4rJyH6SSOFLEn1E2V0byjFG/z5aOlC2ycCNNYijIaorw7t0KFEpUSLdoQrOMwM5HQ
-	yyRxMaHFQxpO91wWm6kK3vdAT8jvDeqkjNBJoPs20ca3Gp9jb9bo2WWkj0TosBN+FQ7DlYGVFl+Vg
-	M3UJqrQg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eZ+bPiROGTE8sHDprL7+lIw6Ab8tvR3a5jFg3qvX6mQ=; b=PyT3a6FtfQnmuyJPlCI7KEXz/R
+	kjWvhEmAynkP6sO60qNw9oKTJ02ufhd2LwB5WSzif5NCS3jFTThaVqgEWks2Dh83j2v31r5l58YBM
+	HVcwrUsDMOWt82pZE3t/Xs0kayo3gs6WUKv3tcaabcXj92woZpY7LqMo6N9aKE1651JMsycU4v4jG
+	KHDjtVvhGDGE2TqVcYoQMTqcCvVoo9GdXmheMpo7xQ7fvqWM0DVO+ndVDo6j9L2fBA9+owpQeZVGj
+	eieroF1jPIVTT/5qwB/62SxpUcAoMC8tc1toXO9YYoOjNB67hxBpjjS0SDwjY2DgaLKksCo/sZ4xr
+	Jkoknjcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9ORn-00FWGB-VF; Thu, 07 Jul 2022 10:09:23 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1o9OSk-00FWWo-T4; Thu, 07 Jul 2022 10:10:22 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9ORc-00FWCs-VT; Thu, 07 Jul 2022 10:09:14 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id h14-20020a1ccc0e000000b0039eff745c53so10404781wmb.5;
-        Thu, 07 Jul 2022 03:09:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language
-         :from:to:cc:references:in-reply-to:content-transfer-encoding;
-        bh=U5N9NRe+aarCaMPvgWomO4spTpGm8g7FmpQ6Wwxj0Ec=;
-        b=A4uxkAtMfuXZg8gnB/LkNTJPBjzYjXrBAu1Q9OmTfLske6rnBlRW99zlg+T3wf9Njb
-         wmyupiAck9Arjv7wjo08zJIwD28JQ1A1zJKEZqDG032fPLLAYwOWHcSlkMz62KOt5zyB
-         aklySu8q9v4uYNLygt0tZq2fUd9kC7nR3NRpzdwsgoEBcMcey1Jm7HnTt/jZRvUJGU4g
-         crxxxa5/BfuIBuEuhuZat1pQEV7yml4TiLL0Pwuf8eL3Cga/Q516cFt3vZRtlPn4uxgL
-         RYbA307x6uxTbMDXR7lXrAUWZNqf13aY8T6izpLPoETZ8qiwasptSIc8J5cdnXbAZQy9
-         EEMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:from:to:cc:references:in-reply-to
-         :content-transfer-encoding;
-        bh=U5N9NRe+aarCaMPvgWomO4spTpGm8g7FmpQ6Wwxj0Ec=;
-        b=g4IIlauUpf0Y7oDd+ydFJT0w5YJ9E/jEfwL/VRYELT/V8ParICX6pVkBpDDyzFkArI
-         vY1/IpRK6+DVWUR86ehDlUexO0jyIoUutqw2RSt3C0hXxzCqPNcs1D8Znnh8ssCrA8If
-         dI5l6hpzGRNx9A84AvkR8u0t4fiAB20rZ4/FsWAKVTTF0O/Hk7Px890GjrxDu11me1nY
-         KBGVrOv9u10axFuAprQkcnajsU4N/yeqUBqA7VjebTDJXa1rfZgC4t09gBfUyunEpxyv
-         KxO9Qhlk4QmcigFhG5aKiPZXuFIk6XjpOefAQsBViPahM+9eAyCyUZLZ8mXaTMUO3zIM
-         kgCg==
-X-Gm-Message-State: AJIora+iPfQonDbVLzFh+Z9G1UIc/pduGHqH8LJRnlDnJIimrfbtSAa4
-	hvIC7E/wKKTAFO+j24EU2xg=
-X-Google-Smtp-Source: AGRyM1uOUlKx7fBRdBFHJa8xYeDNvkh9UirCJO4JvVwjt0+70qyCMuYlvn/y0H472lwD8+AcArb4Ug==
-X-Received: by 2002:a05:600c:2049:b0:3a0:536b:c01b with SMTP id p9-20020a05600c204900b003a0536bc01bmr3589496wmg.151.1657188539215;
-        Thu, 07 Jul 2022 03:08:59 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id v7-20020adfa1c7000000b0021d6924b777sm11754085wrv.115.2022.07.07.03.08.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 07 Jul 2022 03:08:58 -0700 (PDT)
-Message-ID: <a0b81490-619b-6e80-472d-8e83ee4a1b86@gmail.com>
-Date: Thu, 7 Jul 2022 12:08:57 +0200
+	id 1o9OSZ-00FWSQ-T3; Thu, 07 Jul 2022 10:10:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=eZ+bPiROGTE8sHDprL7+lIw6Ab8tvR3a5jFg3qvX6mQ=; b=02iAzfeQ/yZqUO0/u3P+egYNDe
+	R+W1qsGOemDKoKnkb7E4WifOYghSXtaClenT7GWjMlP7OtSEBBJaNg0wcyLjePxJNO3PrbRwJydju
+	PsboGgnKZ4qlS1yma9Xj1QuVjV66NVGqucHHeiqWVc87F0ZzfiMXHjsDNrtoB2lZelCjtAdqctguB
+	DsXgfJ2cnxDmM/nnwP/zeQJHk4WV/fB5zmk+IvBdCunKzUefYJ2ncNQywrX4Ta0cjuiZKrFW3X5VD
+	B7PRWCqS76RsGTC5HiXAnJF2M6mCFZThbKtLWbvVHpNe2rAb2MoeNuytPAVMU1UgKyeqr+Qwp0cIX
+	0zzlLeGQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33216)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1o9OSH-0003k1-4N; Thu, 07 Jul 2022 11:09:53 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1o9OS7-0005CP-R5; Thu, 07 Jul 2022 11:09:43 +0100
+Date: Thu, 7 Jul 2022 11:09:43 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Hauke Mehrtens <hauke@hauke-m.de>, Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
+	UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
+Subject: Re: [PATCH RFC net-next 5/5] net: dsa: always use phylink for CPU
+ and DSA ports
+Message-ID: <Ysaw56lKTtKMh84b@shell.armlinux.org.uk>
+References: <YsQIjC7UpcGWJovx@shell.armlinux.org.uk>
+ <E1o8fA7-0059aO-K8@rmk-PC.armlinux.org.uk>
+ <20220706102621.hfubvn3wa6wlw735@skbuf>
+ <YsW3KSeeQBiWQOz/@shell.armlinux.org.uk>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 0/2] Add mt8186 mutex support for mdp3
-Content-Language: en-US
-From: Matthias Brugger <matthias.bgg@gmail.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20220705122627.2273-1-allen-kh.cheng@mediatek.com>
- <8b70f376-5f83-a713-c5de-ed5bba68c937@gmail.com>
-In-Reply-To: <8b70f376-5f83-a713-c5de-ed5bba68c937@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YsW3KSeeQBiWQOz/@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_030913_053971_BC2C6E7A 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20220707_031011_989446_1F1C2222 
+X-CRM114-Status: GOOD (  19.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,35 +96,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 06/07/2022 16:17, Matthias Brugger wrote:
+On Wed, Jul 06, 2022 at 05:24:09PM +0100, Russell King (Oracle) wrote:
+> On Wed, Jul 06, 2022 at 01:26:21PM +0300, Vladimir Oltean wrote:
+> > Can we please limit phylink_set_max_link_speed() to just the CPU ports
+> > where a fixed-link property is also missing, not just a phy-handle?
+> > Although to be entirely correct, we can also have MLO_AN_INBAND, which
+> > wouldn't be covered by these 2 checks and would still represent a valid
+> > DT binding.
 > 
+> phylink_set_max_fixed_link() already excludes itself:
 > 
-> On 05/07/2022 14:26, Allen-KH Cheng wrote:
->> This series are based on matthias.bgg/linux.git, for-next and provide
->> mt8186 mutex support for Media Data Path 3 (MDP3).
->>
->> Allen-KH Cheng (2):
->>    dt-bindings: soc: mediatek: add mdp3 mutex support for mt8186
->>    soc: mediatek: mutex: add mt8186 mutex mod settings for mdp3
+>         if (pl->cfg_link_an_mode != MLO_AN_PHY || pl->phydev || pl->sfp_bus)
+>                 return -EBUSY;
 > 
-> Whole series applied to v5.19-next/soc
+> intentionally so that if there is anything specified for the port, be
+> that a fixed link or in-band, then phylink_set_max_fixed_link() errors
+> out with -EBUSY.
 > 
+> The only case that it can't detect is if there is a PHY that may be
+> added to phylink at a later time, and that is what the check above
+> is for.
 
-We would need clarification if the HW block for MDP3 mutex is different from the 
-one used for the disp mutex. It does not seem so. In this case we can just add a 
-node on the corresponding address in the DTS.
+I've updated the function description to mention this detail:
 
-Regards,
-Matthias
++/**
++ * phylink_set_max_fixed_link() - set a fixed link configuration for phylink
++ * @pl: a pointer to a &struct phylink returned from phylink_create()
++ *
++ * Set a maximum speed fixed-link configuration for the chosen interface mode
++ * and MAC capabilities for the phylink instance if the instance has not
++ * already been configured with a SFP, fixed link, or in-band AN mode. If the
++ * interface mode is PHY_INTERFACE_MODE_NA, then search the supported
++ * interfaces bitmap for the first interface that gives the fastest supported
++ * speed.
 
-> Thanks
-> 
->>
->>   .../bindings/soc/mediatek/mediatek,mutex.yaml |  1 +
->>   drivers/soc/mediatek/mtk-mutex.c              | 23 +++++++++++++++++++
->>   include/linux/soc/mediatek/mtk-mutex.h        |  2 ++
->>   3 files changed, 26 insertions(+)
->>
+Does this address your concern?
+
+Thanks.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
