@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5C75C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 02:42:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 770B6C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Jul 2022 03:16:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oTmly0iq4gWVKNyq1f4PzdM+X5mgDITfkn4jPhKy0j0=; b=1jBtwYzmDmxttHB83DfoU1QMML
-	UXAv5EQFYVrcmfdXzs5a55bC2M15U5M9lYkg+cSTcifAac2nSoNsPrpbkMniFADhWkdHgY18rasdd
-	7MCXAT8G1RiQYMK8U0sEvSExAL691846R0gELEtaMdmkr5KLu4UI5MGBYO1EICvAnRtN2UuePEMlT
-	4aeHR8jljk5IMqk7YpGn8I3MRwU1S99bY3P380+IQhcubJjcMC9QSEpI9EEigL6VtPM3XW5DP7n2w
-	nXH6B7oj2T5347qruO89L8TIDIZViD2a/K3ozz9RtzHCOIt9YsrA1aapeAasPooiWdiGKC7HDbuyW
-	SKw6Rigg==;
+	bh=BZBJhhTOCCvcB/etzfMQU3D6qIMnde9xuHh00h0nIFY=; b=Qx4eXi4z1IRuP016LpogqkJGm0
+	Cp3rRRpxZ+4cXIcTCazJVYT8E+hrOu5Mx2u/gAqIMjxhv5b0DXb3bnQUCDu/d3zA7wJzI1rcx7XgN
+	sNSF2Rahx+iOzsrLY6VhyMcQPo5rCZ3bXkoVid8tdQ0EgCCD6jF2fxsPKRqILuRn1slp2Ia+svnmT
+	Uw7GvB56s0nOlkGw5iJuSkGgnlLVB6g0z6cAyXZD7vH2D1BBvkvUqfRE9bq4Fg+a3kZ+he+O8h1Eu
+	T2+SOfDsKrMvMQzt8l2ulWhVw9ohQh1h6d0EcSO1mb4G+qHtqm6koJwHBgvilOB/wmGGsL+7hG6vD
+	i5ktUvqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9HSr-00D9RU-IF; Thu, 07 Jul 2022 02:42:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1o9Hzm-00DFUa-7B; Thu, 07 Jul 2022 03:16:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9HSm-00D9PP-UG; Thu, 07 Jul 2022 02:41:59 +0000
-X-UUID: 808beb577e034af09c4720e5c5192cef-20220706
+	id 1o9Hzh-00DFTx-4q; Thu, 07 Jul 2022 03:15:59 +0000
+X-UUID: 36eb5bb6260742b593573ac923323828-20220706
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:ceb9ab24-9d34-4b9a-a480-82f3fce65e3f,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:0d181e1e-0a24-4f7f-a113-502cb625da5e,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:beeed1d6-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-META: VersionHash:0f94e32,CLOUDID:bbb4a063-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 808beb577e034af09c4720e5c5192cef-20220706
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 36eb5bb6260742b593573ac923323828-20220706
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1798653222; Wed, 06 Jul 2022 19:41:54 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 7 Jul 2022 10:21:16 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 7 Jul 2022 10:21:16 +0800
-Message-ID: <fde545ed10e3baa1a375eead29dd2d12d95b7cb2.camel@mediatek.com>
+	with ESMTP id 1958248266; Wed, 06 Jul 2022 20:15:49 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 7 Jul 2022 10:35:13 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Thu, 7 Jul 2022 10:35:13 +0800
+Message-ID: <ee075f26d133342e0ef386d4afc6173e420e30c5.camel@mediatek.com>
 Subject: Re: [PATCH v13 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
  driver
 From: CK Hu <ck.hu@mediatek.com>
@@ -60,7 +60,7 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-fbdev@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 7 Jul 2022 10:21:16 +0800
+Date: Thu, 7 Jul 2022 10:35:13 +0800
 In-Reply-To: <20220701062808.18596-6-rex-bc.chen@mediatek.com>
 References: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
 	 <20220701062808.18596-6-rex-bc.chen@mediatek.com>
@@ -70,8 +70,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_194157_010793_16AF8083 
-X-CRM114-Status: GOOD (  19.77  )
+X-CRM114-CacheID: sfid-20220706_201557_219609_5E35FC2D 
+X-CRM114-Status: GOOD (  20.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,37 +115,29 @@ On Fri, 2022-07-01 at 14:28 +0800, Bo-Chen Chen wrote:
 > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 > ---
 > +
-> +static void mtk_dp_power_disable(struct mtk_dp *mtk_dp)
+> +static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
 > +{
-> +	mtk_dp_write(mtk_dp, MTK_DP_TOP_PWR_STATE, 0);
+> +	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_RESET_AND_PROBE,
+> +			   0, SW_RST_B_PHYD);
 > +
-> +	mtk_dp_write(mtk_dp, MTK_DP_0034,
-> +		     DA_CKM_CKTX0_EN_FORCE_EN |
-> +		     DA_CKM_BIAS_LPF_EN_FORCE_VAL |
-> +		     DA_CKM_BIAS_EN_FORCE_VAL |
-> +		     DA_XTP_GLB_LDO_EN_FORCE_VAL |
-> +		     DA_XTP_GLB_AVD10_ON_FORCE_VAL);
-
-clk-mt8195-vdo0 driver [1] is part of mtk-mmsys driver [2] and it is
-still separated out to ccf driver. In addition, you does not manage the
-parent clock. If the parent clock is not enable, these leaf clock would
-not work.
-
-[1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/clk/mediatek/clk-mt8195-vdo0.c?h=v5.19-rc5#n138
-
-[2] 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/soc/mediatek/mtk-mmsys.c?h=v5.19-rc5#n140
-
-Regards,
-CK
-
+> +	/* Wait for power enable */
+> +	usleep_range(10, 200);
 > +
-> +	/* Disable RX */
-> +	mtk_dp_write(mtk_dp, MTK_DP_1040, 0);
-> +	mtk_dp_write(mtk_dp, MTK_DP_TOP_MEM_PD,
-> +		     0x550 | BIT(FUSE_SEL_SHIFT) |
-> BIT(MEM_ISO_EN_SHIFT));
+> +	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_RESET_AND_PROBE,
+> +			   SW_RST_B_PHYD, SW_RST_B_PHYD);
+> +	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+> +			   DP_PWR_STATE_BANDGAP_TPLL,
+> DP_PWR_STATE_MASK);
+> +	mtk_dp_write(mtk_dp, MTK_DP_1040, 0x7);
+
+You have define the bit definition. Use the bit definition instead of a
+magic number.
+
++#define MTK_DP_1040			0x1040
++#define RG_DPAUX_RX_VALID_DEGLITCH_EN	BIT(2)
++#define RG_XTP_GLB_CKDET_EN		BIT(1)
++#define RG_DPAUX_RX_EN			BIT(0)
+
 > +}
 > +
 
