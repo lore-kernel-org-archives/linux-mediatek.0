@@ -4,64 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA33AC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 22:10:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0E1BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 22:57:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oN8Bupin0hE35LPgYOevBJqhqJt/5KoteoM0acQHYOI=; b=TuWkqozDGSiE+QBNHsrHjjZ6EV
-	yOdW6/85ICk62Cx9j2ERBox1rq980ZaXFuyRIMOr7/9vHsJWeDFXuh3RH9XPcbzbc988HwPIRS3VQ
-	sL6tMEqnx+ngBLKfX79tL+TffxafLcp8/UNZyGuU/m5STNulzNpWV6GwA4aGxNn6oYAYrj2IVDMpO
-	i4XPjkcDww5hy/C5Qw2ksx4hS6lfz8ieSZLXotVCgNXPq/EEr/i9NV9Eqf2rxCKSyFdWGLE8p2Igb
-	YPvCHT2fRBKtZOjZubxCtsUkxiGCv03XzTDQRE0j8F3wqmXAfV/jqlJxYavQxXaUnK9a0OGWfyCtM
-	MK1Wwd/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GZ/bSPtWPT/jRdQGcM3Fm9HY6nl2a0EEdcV6tHl8HuM=; b=Q9nGmM5zUfM8CI9k+7EeNYf4/f
+	EMD628lFnaI9DG1HgJ329WMrDqsol8YolMJk6DKKyIFd0n7h/+g+V1k1qghmIH1n69RF0KgmQt52Y
+	4bX/xmIeJT9I+/nsbuG2Xc6bXSwIrQogsHco+SDyzwrn24xMQiIcniUET01PKu4nXW4n7sXgHTIX6
+	s65d7nqcR0netNFNzk3uFiUgTfgVz3c2E3gQQTSxyM0xySXgzPTF50FIxHCkh/p86S94oLEK8Bzbw
+	kIFEOJ/vxW8lEUjseHr1c9gidT16xsxSiPJImlcg/tBFtRZiLjeoBJj8Xnj9MV/tFRu7P+zwGMhyG
+	sBrGEHpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9wBQ-0069hU-Bc; Fri, 08 Jul 2022 22:10:44 +0000
-Received: from mail-io1-f49.google.com ([209.85.166.49])
+	id 1o9wub-006Ere-0t; Fri, 08 Jul 2022 22:57:25 +0000
+Received: from mga01.intel.com ([192.55.52.88])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9wBF-0069ee-KD; Fri, 08 Jul 2022 22:10:34 +0000
-Received: by mail-io1-f49.google.com with SMTP id r76so214408iod.10;
-        Fri, 08 Jul 2022 15:10:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=oN8Bupin0hE35LPgYOevBJqhqJt/5KoteoM0acQHYOI=;
-        b=tKusEO5Z20nEaAARFYBsH1ff1nV7IwHNHvZbpyssfBBlGEFkygzG5oECn5F+CoWLwp
-         +VXpZTDNum0UvhoH2HzOhPxrTtyXm93oefCG+59SF1M9HsKHupa9opVz4L0Cabphg5C8
-         89CAiVeASMU7WxXG3QY9RJI4Q0uPuACRlY93RTPq03049cvVpgucHDYtR6Yx87Bmm7A4
-         WyA2Ijc3ofxxqlhl2pMZNSHb1/CLADIXHQwXh9QdIBNc3xzyLVxilDGGW2IAJ3lZMErU
-         PMTNACo06KiJRZK9FSQIkiBMQx/m9EkjM1uoIZ/a6znFb4j3MINRbOnyYVEYvclbKLQ+
-         xdfA==
-X-Gm-Message-State: AJIora8B0Fl6Chzhli0CX01Zr7bOtJyQuQltpIdN2hIsloWhacaD16kz
-	YlSxyIXqBdagzAdxQlLMRw==
-X-Google-Smtp-Source: AGRyM1vgvzoqD/VrjwnV1hgMdhHsLV/WW3CpbxY6wr8BZDe4k4zakYv2tFXWrRfkjJtuZF95e+K6UA==
-X-Received: by 2002:a05:6638:3d83:b0:33c:805a:77eb with SMTP id ci3-20020a0566383d8300b0033c805a77ebmr3525050jab.237.1657318231891;
-        Fri, 08 Jul 2022 15:10:31 -0700 (PDT)
-Received: from robh.at.kernel.org ([98.38.210.73])
-        by smtp.gmail.com with ESMTPSA id n28-20020a056602341c00b0067b7841c09asm14656ioz.15.2022.07.08.15.10.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Jul 2022 15:10:31 -0700 (PDT)
-Received: (nullmailer pid 1567732 invoked by uid 1000);
-	Fri, 08 Jul 2022 22:10:30 -0000
-Date: Fri, 8 Jul 2022 16:10:30 -0600
-From: Rob Herring <robh@kernel.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Subject: Re: [PATCH] dt-bindings: usb: mtk-xhci: add compatible for mt8188
-Message-ID: <20220708221030.GA1567681-robh@kernel.org>
-References: <20220707015041.12264-1-chunfeng.yun@mediatek.com>
+	id 1o9wuW-006EqH-Lc; Fri, 08 Jul 2022 22:57:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1657321040; x=1688857040;
+  h=date:from:to:cc:subject:message-id:mime-version:
+   content-transfer-encoding;
+  bh=zSJQnM+e4IqkMLxyF5Ke5VcTppb2jbkVgp/XWot8kvg=;
+  b=bix72+3e01aI0cX1BtGHWl2Md+gkDFz3TeFAIq3Uyx/rx2P88rXahbJE
+   EiJLvWDY4Hzwr2iaVU3Qh7QXkIMQs1psCgvnMrEiFPmbz3Mq23+2zm6L0
+   3GPye3GJBoXBKJe/m+MBuqPjxxfCBGyClHlOo953NP+laurGQOB7xj6R9
+   srS4fI9sS0UASwE1wVlHg2YJm3mKZSPtlba1ll1xGYghWwqQBZdVgpcAr
+   qKG16DdxCQFy7pUeUR1eK5zT+vZluHNfbWgfKqrh2uT0ETuPjoIVf+pSn
+   RT1sjhf45pNIYe3FSBGG2co/CcnqsZz307ClqMqsSPxcX9xiEl0EtPQkk
+   g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10402"; a="309968622"
+X-IronPort-AV: E=Sophos;i="5.92,256,1650956400"; 
+   d="scan'208";a="309968622"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Jul 2022 15:57:14 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,256,1650956400"; 
+   d="scan'208";a="569108012"
+Received: from lkp-server01.sh.intel.com (HELO 68b931ab7ac1) ([10.239.97.150])
+  by orsmga006.jf.intel.com with ESMTP; 08 Jul 2022 15:57:11 -0700
+Received: from kbuild by 68b931ab7ac1 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1o9wuN-000O1l-AH;
+	Fri, 08 Jul 2022 22:57:11 +0000
+Date: Sat, 09 Jul 2022 06:56:53 +0800
+From: kernel test robot <lkp@intel.com>
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-perf-users@vger.kernel.org, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-fsdevel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Linux Memory Management List <linux-mm@kvack.org>
+Subject: [linux-next:master] BUILD REGRESSION
+ f2528c29385819a84480cacef4886b049761e2c5
+Message-ID: <62c8b635.u4zeP15EM8cJP9/D%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220707015041.12264-1-chunfeng.yun@mediatek.com>
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_151033_677946_4FABA93B 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20220708_155720_775455_4996F086 
+X-CRM114-Status: UNSURE (   7.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,14 +83,229 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 07 Jul 2022 09:50:41 +0800, Chunfeng Yun wrote:
-> Add compatible for mt8188
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+branch HEAD: f2528c29385819a84480cacef4886b049761e2c5  Add linux-next specific files for 20220708
 
-Acked-by: Rob Herring <robh@kernel.org>
+Error/Warning reports:
+
+https://lore.kernel.org/llvm/202207082240.wYnREIVo-lkp@intel.com
+https://lore.kernel.org/llvm/202207090100.acXdJ79H-lkp@intel.com
+
+Error/Warning: (recently discovered and may have been fixed)
+
+drivers/base/power/domain.c:3068:17: error: no member named 'runtime_error' in 'struct dev_pm_info'
+drivers/base/power/domain.c:3070:22: error: no member named 'disable_depth' in 'struct dev_pm_info'
+drivers/base/power/domain.c:3072:22: error: no member named 'runtime_status' in 'struct dev_pm_info'
+drivers/base/power/domain.c:603:13: error: use of undeclared identifier 'pm_wq'
+drivers/base/power/domain.c:802:26: error: no member named 'ignore_children' in 'struct dev_pm_info'
+drivers/base/power/domain_governor.c:85:18: error: no member named 'ignore_children' in 'struct dev_pm_info'
+drivers/gpu/drm/amd/amdgpu/../display/dc/core/dc.c:2720:6: warning: no previous prototype for function 'dc_reset_state' [-Wmissing-prototypes]
+drivers/pci/endpoint/functions/pci-epf-vntb.c:975:5: warning: no previous prototype for 'pci_read' [-Wmissing-prototypes]
+drivers/pci/endpoint/functions/pci-epf-vntb.c:984:5: warning: no previous prototype for 'pci_write' [-Wmissing-prototypes]
+drivers/vfio/vfio_iommu_type1.c:2141:35: warning: cast to smaller integer type 'enum iommu_cap' from 'void *' [-Wvoid-pointer-to-enum-cast]
+
+Unverified Error/Warning (likely false positive, please contact us if interested):
+
+arch/x86/events/core.c:2114 init_hw_perf_events() warn: missing error code 'err'
+arch/x86/kernel/cpu/rdrand.c:36 x86_init_rdrand() error: uninitialized symbol 'prev'.
+drivers/firmware/arm_scmi/clock.c:394:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/firmware/arm_scmi/powercap.c:376:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/gpu/drm/amd/amdgpu/../pm/powerplay/hwmgr/vega10_powertune.c:1214:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/gpu/drm/bridge/ite-it66121.c:1398:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/infiniband/hw/irdma/hw.c:1484:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/md/dm-mpath.c:1681:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/media/dvb-frontends/mxl692.c:49:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/media/i2c/ov5647.c:636:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/media/i2c/st-mipid02.c:271:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/media/platform/qcom/venus/vdec.c:1505:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/media/platform/st/sti/delta/delta-v4l2.c:719:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/media/tuners/msi001.c:81:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/mfd/sec-core.c:429:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/mmc/host/sh_mmcif.c:1318:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/bonding/bond_main.c:4647:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/ethernet/chelsio/cxgb3/cxgb3_main.c:1388:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/ethernet/faraday/ftgmac100.c:854:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/ethernet/hisilicon/hns/hnae.c:436:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/ethernet/intel/i40e/i40e_main.c:9347:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/ethernet/intel/ice/ice_base.c:1003:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/ethernet/intel/ice/ice_dcb_lib.c:520:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/ethernet/intel/ice/ice_vlan_mode.c:379:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/ethernet/intel/igb/e1000_phy.c:1185:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/ethernet/microchip/encx24j600.c:827:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/ethernet/microchip/lan743x_main.c:1238:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/ethernet/smsc/smsc9420.c:451:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/ethernet/vertexcom/mse102x.c:422:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/phy/dp83640.c:890:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/usb/cdc_ncm.c:195:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/net/usb/rtl8150.c:176:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/parport/ieee1284_ops.c:615:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/phy/mediatek/phy-mtk-dp.c:192:24: sparse: sparse: symbol 'mtk_dp_phy_driver' was not declared. Should it be static?
+drivers/scsi/elx/efct/efct_unsol.c:297:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/scsi/elx/libefc/efc_domain.c:692:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/scsi/megaraid/megaraid_sas_fp.c:297:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/soc/mediatek/mtk-mutex.c:799:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/staging/media/zoran/zr36016.c:430:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/staging/media/zoran/zr36050.c:829:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/staging/media/zoran/zr36060.c:869:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/target/iscsi/iscsi_target.c:2348:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/target/target_core_device.c:1013:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/thunderbolt/tmu.c:758:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/thunderbolt/tunnel.c:1264:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/tty/serial/atmel_serial.c:1442:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/usb/host/uhci-q.c:1367:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/usb/serial/digi_acceleport.c:1167:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+drivers/video/backlight/qcom-wled.c:871:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+fs/ext4/mballoc.c:3612:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+fs/kernel_read_file.c:61 kernel_read_file() warn: impossible condition '(i_size > (((~0) >> 1))) => (s64min-s64max > s64max)'
+fs/ubifs/recovery.c:1062:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+kernel/sched/core.c:2076:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+mm/filemap.c:1354:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+mm/page_alloc.c:1185:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+mm/page_alloc.c:7748:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+mm/slub.c:5434:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+net/bluetooth/hci_event.c:5926:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+net/qrtr/mhi.c:102:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+net/wireless/reg.c:205:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+sound/pci/lola/lola.c:178:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+sound/pci/pcxhr/pcxhr_core.c:134:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+sound/pci/rme9652/hdsp.c:666:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+sound/soc/fsl/fsl_spdif.c:1508:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+sound/soc/sh/rcar/core.c:1602:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+sound/soc/sof/intel/mtl.c:547:1: internal compiler error: in arc_ifcvt, at config/arc/arc.c:9637
+{standard input}:2311: Error: expecting )
+
+Error/Warning ids grouped by kconfigs:
+
+gcc_recent_errors
+|-- alpha-allyesconfig
+|   |-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_read
+|   `-- drivers-pci-endpoint-functions-pci-epf-vntb.c:warning:no-previous-prototype-for-pci_write
+|-- arc-allyesconfig
+|   |-- block-partitions-efi.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- block-sed-opal.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- crypto-asymmetric_keys-pkcs7_verify.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-ata-libata-core.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-ata-libata-eh.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-ata-sata_dwc_460ex.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-base-power-runtime.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-block-rbd.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-bluetooth-hci_ll.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-bluetooth-hci_qca.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-cdrom-cdrom.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-char-ipmi-ipmi_ssif.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-char-pcmcia-cm4000_cs.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-char-random.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-char-tpm-tpm_tis_core.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-clk-bcm-clk-iproc-armpll.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-clk-clk-bd718x7.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-clk-clk-lochnagar.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-crypto-ccree-cc_request_mgr.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-crypto-qce-sha.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-crypto-qce-skcipher.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-cxl-core-hdm.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-cxl-core-pci.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-dma-buf-dma-buf.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-firmware-arm_scmi-bus.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-firmware-arm_scmi-clock.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-firmware-arm_scmi-powercap.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-firmware-arm_scmi-sensors.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-firmware-arm_scmi-voltage.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-fpga-dfl-fme-mgr.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gnss-usb.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_debug.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc_link_dp.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-dce110-dce110_resource.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-dce112-dce112_resource.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-amd-amdgpu-..-pm-powerplay-hwmgr-smu7_hwmgr.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-amd-amdgpu-..-pm-powerplay-hwmgr-smu8_hwmgr.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-amd-amdgpu-..-pm-powerplay-hwmgr-vega10_powertune.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-amd-amdgpu-..-pm-powerplay-smumgr-smu7_smumgr.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-amd-amdgpu-..-pm-swsmu-smu13-smu_v13_0.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-amd-amdgpu-amdgpu_ttm.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-bridge-cadence-cdns-mhdp8546-hdcp.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-bridge-ite-it66121.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-bridge-lontium-lt9211.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-bridge-sii902x.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+|   |-- drivers-gpu-drm-mcde-mcde_dsi.c:internal-compiler-error:in-arc_ifcvt-at-config-arc-arc.c
+clang_recent_errors
+|-- riscv-randconfig-c006-20220707
+|   |-- drivers-base-power-domain.c:error:no-member-named-disable_depth-in-struct-dev_pm_info
+|   |-- drivers-base-power-domain.c:error:no-member-named-ignore_children-in-struct-dev_pm_info
+|   |-- drivers-base-power-domain.c:error:no-member-named-runtime_error-in-struct-dev_pm_info
+|   |-- drivers-base-power-domain.c:error:no-member-named-runtime_status-in-struct-dev_pm_info
+|   |-- drivers-base-power-domain.c:error:use-of-undeclared-identifier-pm_wq
+|   `-- drivers-base-power-domain_governor.c:error:no-member-named-ignore_children-in-struct-dev_pm_info
+|-- riscv-randconfig-r006-20220707
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-core-dc.c:warning:no-previous-prototype-for-function-dc_reset_state
+|-- x86_64-randconfig-a001
+|   `-- drivers-vfio-vfio_iommu_type1.c:warning:cast-to-smaller-integer-type-enum-iommu_cap-from-void
+|-- x86_64-randconfig-a005
+|   `-- drivers-vfio-vfio_iommu_type1.c:warning:cast-to-smaller-integer-type-enum-iommu_cap-from-void
+`-- x86_64-randconfig-a012
+    `-- drivers-vfio-vfio_iommu_type1.c:warning:cast-to-smaller-integer-type-enum-iommu_cap-from-void
+
+elapsed time: 725m
+
+configs tested: 52
+configs skipped: 2
+
+gcc tested configs:
+arm                                 defconfig
+arm                              allyesconfig
+arm64                            allyesconfig
+ia64                             allmodconfig
+alpha                            allyesconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+arc                              allyesconfig
+mips                             allyesconfig
+powerpc                          allmodconfig
+sh                               allmodconfig
+powerpc                           allnoconfig
+i386                                defconfig
+i386                             allyesconfig
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+x86_64                        randconfig-a006
+i386                          randconfig-a001
+i386                          randconfig-a003
+i386                          randconfig-a005
+x86_64                        randconfig-a015
+x86_64                        randconfig-a013
+x86_64                        randconfig-a011
+i386                          randconfig-a014
+i386                          randconfig-a012
+i386                          randconfig-a016
+arc                  randconfig-r043-20220707
+riscv                randconfig-r042-20220707
+s390                 randconfig-r044-20220707
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                           allyesconfig
+x86_64                          rhel-8.3-func
+x86_64                         rhel-8.3-kunit
+x86_64                    rhel-8.3-kselftests
+x86_64                           rhel-8.3-syz
+
+clang tested configs:
+x86_64                        randconfig-a005
+x86_64                        randconfig-a001
+x86_64                        randconfig-a003
+i386                          randconfig-a002
+i386                          randconfig-a006
+i386                          randconfig-a004
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+x86_64                        randconfig-a012
+i386                          randconfig-a013
+i386                          randconfig-a011
+i386                          randconfig-a015
+hexagon              randconfig-r041-20220707
+hexagon              randconfig-r045-20220707
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
