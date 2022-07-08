@@ -4,75 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68C58C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 08:32:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 523DDC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 08:33:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q/YRZUiRRlbJLWENM+NSQQmzcXtRicUPgH83NuxZ3Fw=; b=DQUK7UndDnCfBR+r43hFGKo4gl
-	lis+Jhutthjx6oraN2ZFPzacPxtQCEYIZgUIxQnFRDsaHUF0HzaeiiOTNYW13LPYwK4nXNIFXQEl9
-	0pOy6mAH3Yr5eIyVPBisRVO5GLJ01gIJuWvABBsZtrHBWnS2s41Qb1Hy57Nqk5ZEHmKL0n+dRa8Oh
-	PWHt/mBwmdkWokjrMlUU4Ab8PjOoXat63c+NZu8THZgH3bH720+BVRhvxWlSCugDPnh3Iue8S0eNK
-	P/05bktamQMOF662xiVERFq2A4AMRTbHmtb+Euu6fA3dupodbesVK7RpP19YppiwFjaeLyqFDUytg
-	4CZNEX8A==;
+	bh=Voj254B0p3wkYRVS8bJszZbCEXbEP6UJbrfd6/44x4s=; b=OF0z0nlbjT1pm5x7q+zdb357lX
+	HH+133Q0LYzqaNvxh6Fu0BFh/oq/T664S9ekLbZ+ZEPVtKFE6O97sJWaA7uEpoAQMwtRKRM+3DRtS
+	w75VIrwtgztz2RQL+uNlDjQZBHwf3TzKxavGqcZfQj5iSQXCpiZw/8p1j4TKeAIj7hfkqFYpSwIRj
+	8QoQo4v5YwXMPbF2TKXiQ2LggGPCjvdoqEhFBqbeC8NokJyezT5a4zZIN1WdNrIEkLT7GIj1xH7J7
+	fATVH51aFH9ET+mYZM7fLj+XYzDDTbSvSZaUV46vpT6Atkt3Era1xTrg5nCrsrHgfnftNltDPAk07
+	vrh9jGiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jPU-002ZCD-Cz; Fri, 08 Jul 2022 08:32:24 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o9jQI-002ZYd-IM; Fri, 08 Jul 2022 08:33:14 +0000
+Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jLi-002XZ2-Oa; Fri, 08 Jul 2022 08:28:32 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6D2A366016BD;
-	Fri,  8 Jul 2022 09:28:28 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657268909;
-	bh=eiEwqY/zQ39+iog6TzycknMj2PVHRqGNoVvlat2MSJo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gcPcj3NtQ1QbAMFAEbJKKq7fKiSLQ6b+L9tPXomFZ6tbfvr+KpllZx25q0ZOnlJnu
-	 YM4a6zLE5VH5OzqmVzyhqkdIWV9YTBdCNUCUr8RWS8/LQyyuzMxvtHrDL325JgXDoc
-	 cF9BXXtQLGEMCPxW5G+l9Gtk0mNSrn6K0A+jDwoFc3Dpo0lVPgHoyt4f52oxmCJlrd
-	 h5S3tZutHTqiv/yCfaIUD6RpKCVpM+o0jLWZv4ZqJZ1DgD+XnWI3fyu/Wc+yoLKMr7
-	 erdBtphYHQx5xzbf7mespvAg+B1zkk0k97gWdLfQ4WjDMQ1ey5EUONUCGuNfbDiP2d
-	 RXJOEgd1c9AvQ==
-Message-ID: <2b25912b-85d7-8804-b973-6239545d19ff@collabora.com>
-Date: Fri, 8 Jul 2022 10:28:26 +0200
+	id 1o9jMi-002Y0d-Up; Fri, 08 Jul 2022 08:29:34 +0000
+Received: by mail-il1-x135.google.com with SMTP id v2so3431119ilo.7;
+        Fri, 08 Jul 2022 01:29:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=Voj254B0p3wkYRVS8bJszZbCEXbEP6UJbrfd6/44x4s=;
+        b=NOoI0w9SPNgApsuy7D0rRt//K01GWYCh2YVqOTCqwwVhAsF0MkiJHZOx/w8Kz/UkGu
+         U9iFfyc813badJjJwM/J+ab0brj853pwzahsuyw5AGS6vC2HI32dZHU567dRWSIANPf9
+         f1IKCGaEMwy/XzQMj9lFhIneZ1+F666VhWCXm2K0OwPN6Vgl+ED1h+SIjHkncMeAqyy0
+         ss5xU7ZwXafKpFOQkKB/g/HoG/rl+UMnAc1aeCsx2R7DnnjCRDF7cN/NAzuRztg7ngS1
+         1aTmSMXn+Vmn59wggVifPMudq3P8oh5wog3n4yNsY3JxUXqkPFDZQSyGSnDVkr00vdIQ
+         DL4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=Voj254B0p3wkYRVS8bJszZbCEXbEP6UJbrfd6/44x4s=;
+        b=P2uY5gn9E8bKCQW8RCQxmN8flnS2hx3gYfP1mbsqt13xqDO8ISRDes/GlRMGJp1k5Z
+         75fg8SCUhtNfh4+oXaGf6RTPNK5ET2oLQiDOitlf6uf10xKEe0RrRqnUHI6ikQwSTATO
+         bKFKuuftjIZknd0V9Xa2POrL+3pTP9EzJz76SQOIDUnaU+57LIQRu6zJuu7+QSXkCHnS
+         CSb4fgywo2DoO1Wa7eczI2fSPgXa/Yu/esKKuXt6PQiQuGMd3s1SHp3+eJxwNd+tjMld
+         ivCchVc6QUBX6Q7UBJqTMbiNJ3ZJFFaJPjS8IF2iL2dCEN9NpckRGYCQewEZSXloH1mq
+         FwCQ==
+X-Gm-Message-State: AJIora/QU2XtfzwLbwZJ03EAPYjJVJ1NLVwJlQil9aZWTZP8xToI+/7Z
+	jgr4kzEij3nGX2Q9ixYZrpA=
+X-Google-Smtp-Source: AGRyM1szrpKQ04HJXTHsJ0vRoWy6DvJYkFZppXH8z8QoaTM7mI1fD693J9v50GHzhx539e5duO2YmA==
+X-Received: by 2002:a05:6e02:152c:b0:2db:34fc:a61f with SMTP id i12-20020a056e02152c00b002db34fca61fmr1395111ilu.139.1657268972071;
+        Fri, 08 Jul 2022 01:29:32 -0700 (PDT)
+Received: from [192.168.1.145] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id k9-20020a6b3c09000000b00669a3f60e99sm18753936iob.31.2022.07.08.01.29.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 08 Jul 2022 01:29:30 -0700 (PDT)
+Message-ID: <0c01efca-d350-a922-2beb-453b24e9af48@gmail.com>
+Date: Fri, 8 Jul 2022 10:29:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH 1/2] dt-bindings: soc: mediatek: add mdp3 mutex support
- for mt8186
+ Thunderbird/91.11.0
+Subject: Re: [PATCH] soc: mediatek: mutex: Simplify with
+ devm_platform_get_and_ioremap_resource()
 Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- "allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Xiandong Wang <xiandong.wang@mediatek.com>
-References: <20220705122627.2273-1-allen-kh.cheng@mediatek.com>
- <20220705122627.2273-2-allen-kh.cheng@mediatek.com>
- <5916c91b-41a1-c97a-84b4-7d48739a0639@collabora.com>
- <640c1a9b-f8b5-aa89-19af-7d6f5c55eb12@gmail.com>
- <243b30ca-a552-3cb7-8a4e-6e54a56ff60a@collabora.com>
- <55fafa62684e077f75c3b8b192a59df62ad01692.camel@mediatek.com>
- <2f2f8bfe-4c7f-d81c-30bf-bcd60b42e245@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <2f2f8bfe-4c7f-d81c-30bf-bcd60b42e245@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220623121701.107512-1-angelogioacchino.delregno@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220623121701.107512-1-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_012831_301260_8CDD5CBC 
-X-CRM114-Status: GOOD (  21.07  )
+X-CRM114-CacheID: sfid-20220708_012933_060810_C46B2F04 
+X-CRM114-Status: GOOD (  19.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,139 +91,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/07/22 10:19, Matthias Brugger ha scritto:
+
+
+On 23/06/2022 14:17, AngeloGioacchino Del Regno wrote:
+> Convert platform_get_resource(), devm_ioremap_resource() to a single
+> call to devm_platform_get_and_ioremap_resource(), as this is exactly
+> what this function does.
 > 
+> While at it, also remove a redundant call to of_address_to_resource(),
+> as this was getting the address of the same resource index 0: we can
+> as well get the iostart from the 'regs' pointer.
 > 
-> On 08/07/2022 10:14, allen-kh.cheng wrote:
->> Hi Angelo,
->>
->> On Thu, 2022-07-07 at 12:59 +0200, AngeloGioacchino Del Regno wrote:
->>> Il 07/07/22 12:41, Matthias Brugger ha scritto:
->>>>
->>>>
->>>> On 07/07/2022 10:52, AngeloGioacchino Del Regno wrote:
->>>>> Il 05/07/22 14:26, Allen-KH Cheng ha scritto:
->>>>>> Add mdp3 mutex compatible for mt8186 SoC.
->>>>>>
->>>>>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
->>>>>> Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
->>>>>
->>>>>
->>>>> Please drop this commit. Adding a mdp3-mutex compatible is not
->>>>> needed here.
->>>>>
->>>>
->>>> Thanks for checking. We probably would need a fallback compatible.
->>>> We can only know
->>>> from the HW engineers that can confirm if the IP block is the same
->>>> as the disp
->>>> mutex or a different one.
->>>>
->>>> I'll drop both patches for now until things got clear.
->>>>
->>>
->>> They're located in a different iospace from each other, but either
->>> the platform
->>> data needs to *not be* joined together, or if they're together, I
->>> would not like
->>> having two different compatible strings for essentially the same
->>> thing.
->>>
->>> I would at this point prefer dropping '-disp' from 'mediatek,mt8186-
->>> disp-mutex'
->>> so that we would be able to declare two 'mediatek,mt8186-mutex' in
->>> devicetree...
->>> ...or simply have two mediatek,mt8186-disp-mutex (although logically
->>> incorrect?).
->>>
->>> Cheers,
->>> Angelo
->>>
->>
->> Thanks for your opinion.
->>
->> They are two different hardwares for different address spaces.
->>
->> I think we drop '-disp' from 'mediatek,mt8186-disp-mutex' will be
->> excessive because we also need to modify mutex node in all exited dts
->> files.
->>
->> I prefer havingg two mediatek,mt8186-disp-mutex.
->>
->> ex:
->> mutex: mutex@14001000 {
->>     compatible = "mediatek,mt8186-disp-mutex";
->>     ..
->> }
->>
->> mdp3_mutex0: mutex@1b001000 {
->>     compatible = "mediatek,mt8186-disp-mutex";
->>     ...
->> }
->>
->> What do you think?
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Applied, thanks!
+
+> ---
+>   drivers/soc/mediatek/mtk-mutex.c | 18 ++++++------------
+>   1 file changed, 6 insertions(+), 12 deletions(-)
 > 
-> I think that's an acceptable solution.
-> 
-
-I'm a bit undecided instead, now... because from what I understand now,
-the platform data fields
-
-	.mutex_mod  and  .mutex_sof
-
-are *not valid* for mutex at 0x1b001000 but only for the instance at 0x14001000.
-
-If we go this way, at this point, we would be free (and allowed by the driver)
-to try to set these for 0x1b001000, and to try to set MDP3 table paths on
-0x14001000, which is something that shouldn't be logically allowed, as the
-hardware does *not* support that.
-
-Unless I got that wrong, and these fields for MUTEX_MOD_DISP_xxxx do exist in
-the mutex instance at 0xb001000, in which case, I fully agree with Matthias.
-
-But otherwise, I have my doubts.
-
-Cheers,
-Angelo
-
-> Regards,
-> Matthias
-> 
->>
->> Best regards,
->> Allen
->>
->>>> Regards,
->>>> Matthias
->>>>
->>>>>> ---
->>>>>> .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
->>>>>>    | 1 +
->>>>>>    1 file changed, 1 insertion(+)
->>>>>>
->>>>>> diff --git
->>>>>> a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex
->>>>>> .yaml
->>>>>> b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex
->>>>>> .yaml
->>>>>> index 627dcc3e8b32..234fa5dc07c2 100644
->>>>>> ---
->>>>>> a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex
->>>>>> .yaml
->>>>>> +++
->>>>>> b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex
->>>>>> .yaml
->>>>>> @@ -30,6 +30,7 @@ properties:
->>>>>>          - mediatek,mt8173-disp-mutex
->>>>>>          - mediatek,mt8183-disp-mutex
->>>>>>          - mediatek,mt8186-disp-mutex
->>>>>> +      - mediatek,mt8186-mdp3-mutex
->>>>>>          - mediatek,mt8192-disp-mutex
->>>>>>          - mediatek,mt8195-disp-mutex
->>>>>
->>>>>
->>>>>
->>>
->>>
->>
+> diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+> index 60cbafea577e..ca8440fb48cd 100644
+> --- a/drivers/soc/mediatek/mtk-mutex.c
+> +++ b/drivers/soc/mediatek/mtk-mutex.c
+> @@ -787,7 +787,7 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+>   {
+>   	struct device *dev = &pdev->dev;
+>   	struct mtk_mutex_ctx *mtx;
+> -	struct resource *regs, addr;
+> +	struct resource *regs;
+>   	int i;
+>   #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+>   	int ret;
+> @@ -811,11 +811,12 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+>   		}
+>   	}
+>   
+> -	if (of_address_to_resource(dev->of_node, 0, &addr) < 0) {
+> -		dev_err(dev, "Failed to get addr\n");
+> -		return -EINVAL;
+> +	mtx->regs = devm_platform_get_and_ioremap_resource(pdev, 0, &regs);
+> +	if (IS_ERR(mtx->regs)) {
+> +		dev_err(dev, "Failed to map mutex registers\n");
+> +		return PTR_ERR(mtx->regs);
+>   	}
+> -	mtx->addr = addr.start;
+> +	mtx->addr = regs->start;
+>   
+>   #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+>   	ret = cmdq_dev_get_client_reg(dev, &mtx->cmdq_reg, 0);
+> @@ -823,13 +824,6 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+>   		dev_dbg(dev, "No mediatek,gce-client-reg!\n");
+>   #endif
+>   
+> -	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	mtx->regs = devm_ioremap_resource(dev, regs);
+> -	if (IS_ERR(mtx->regs)) {
+> -		dev_err(dev, "Failed to map mutex registers\n");
+> -		return PTR_ERR(mtx->regs);
+> -	}
+> -
+>   	platform_set_drvdata(pdev, mtx);
+>   
+>   	return 0;
 
