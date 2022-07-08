@@ -4,65 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 402F2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 15:44:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BBCDC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 17:36:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aZt29QmhSEBBSLzqWM2ZNob+xLXxbXJrZ+TvEAjAZpY=; b=V57V5lyY17/LV75muspYLF1Aw0
-	Yw0S+D3e/PYEE+HakK89Mhj3SYmUjfuafQWnVQBhptySMXI2DIfrgTrnyT0sHl/laU8CMhy3mQQSh
-	FT0AsjPQrv8Oy1RSEAmFIS+o6E9L6OGy1mGwzs857fzxJdRysTgpLFnJbn7hEzP4E+gQ1ARVdM787
-	RiHMj23wyNRM7WbCY+XeUdymuIRcXJ3DdqaN1vZbxeo57NSe4Q+LcFOE+MQ9x0p4ouapok011Mp/b
-	khtVeCAHF2h591SdLBfkXiFsKYJ/WD2W80JP8a+0qITqg39azOPNvAxzW6iSi+/E//ny68Iou+rNG
-	AuidrxCg==;
+	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GuHO2sMYvOP0wHr0TcjQCOSbiWz+0AP0K6+73tZUu9o=; b=ZDEdl0UJhPu9JVeYaq1wybkTZA
+	nPCvqbOhKdEppqkN+oi2xoWwjqGqs82Ep1Zu5+BaObYXQ+6mOWJIfR93Rv24xsr1ZA8kkAp5mlofA
+	hk3zoev+NZGODSPpfRfI2FWuW6M+Q93encxJd6JKMmH6+w23dxcbuNBkNKi5RdSsjCH8wZkrA3WJ8
+	DhGgTjnuWffj6HQ6zLJGYsDsEETWC01k1Lu0abtruNYG0wcSg4sf+JinjFQCesTzxPJXrU1BNUiTS
+	J94EdZrQuYoLyZqR7ISELNtllg7zLydmTzFEuFdELr/a631rJmUCMxLf6aNBmIPDVJ7ch6aSEBlHS
+	fDMf/mrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9q9c-004R9n-CE; Fri, 08 Jul 2022 15:44:28 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o9rtu-0053TP-UD; Fri, 08 Jul 2022 17:36:22 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9q9Q-004R5o-9f; Fri, 08 Jul 2022 15:44:17 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B8C85660191B;
-	Fri,  8 Jul 2022 16:44:13 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657295054;
-	bh=C9e8etBg/94GadxYv8MdzYOOgITsxTDLOb+J9ydTXUI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bogbx1s19Ny4+aonY/okvHFLJtBHdmRxtkEfd1xOkVJPG/pCRbiXuDyiQZt+3sEpv
-	 0MP0rJ7WxFIvF6O0LTlWTmpnVQtAcA0pQYxjzyquj3HcBm9CmVi+wOarpRO4oZ1zhv
-	 h3OnP1zB6fnKVqj2lDInyqfDRRKtqTdG75rQ33ZuAO7DjhxtkX71Zke4XqBfXPf6pk
-	 /xZK7Y8sm+CRVgvv0ozMkwpUa2cLD/HfuG/HhYHT2TmnB1U2RSxr3qYxkBOzVdT0z1
-	 /Y6udKRV95q1mMx15ceWrXvR/rsAYvS5abCrFCsGK4WiI/pYTMAZ0K4w8fT0Y/DBhR
-	 vpasooaBoS8VA==
-Message-ID: <ac4179e3-decf-f620-c5c8-5f8ec28fc69f@collabora.com>
-Date: Fri, 8 Jul 2022 17:44:11 +0200
+	id 1o9rtj-0053Hl-LY; Fri, 08 Jul 2022 17:36:13 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id v10-20020a05600c15ca00b003a2db8aa2c4so1130510wmf.2;
+        Fri, 08 Jul 2022 10:36:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:content-language:to:cc:from
+         :subject:content-transfer-encoding;
+        bh=GuHO2sMYvOP0wHr0TcjQCOSbiWz+0AP0K6+73tZUu9o=;
+        b=m3a1b+NuehTX+Z76ztZUtVpWt8UMrzyXCf96ws7E8as9/l7TEPIagj2kLNneGRtM0a
+         3sxi04UOkvdBopygxEXkB+YR5/IaLbF2WsDjaq3BEL+YyiXkU9BGo8IMEOWogAaUPdP5
+         HwmyJAYCE9nSq0nbYHActQ2BgD9QPdQNiF8KD1LGQewXFtrRgfk8TxOdXR3z8frT0QzT
+         U8RDcM0qO349vKKmfVq25MNGEnA46CBMLJw2+SQsZmIoP9DUq7InEbIfWYapmMSLLKiq
+         G1/yAIeWaKombYijNWJWScGvWz8RtTU+jW360zkWSi9KADbpK7HAV6PyBfo/KikPifnj
+         lG5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent
+         :content-language:to:cc:from:subject:content-transfer-encoding;
+        bh=GuHO2sMYvOP0wHr0TcjQCOSbiWz+0AP0K6+73tZUu9o=;
+        b=LIh+x7vVCGXZmDGX2iqIZiA9aFirxOpL04oBQB1CUlLQsqVvk0C9MoDWb71zeUHRxZ
+         X0pqJJPoEpfMX+EJ3MZzjKFQrZfJLeg5VGLlVO79MKqGpB7zf8pquFDetACaXFyhscYz
+         CiRI7daHowurxPTaRSTpr7SkmfQ3ZnpY2gCihJln2iTCWZpyM0kaSnrlLLKw4VCSx5gy
+         PmVI8234OOVl9BIRvbaALUgBE88uHAs/rgNgg0Vwl9Tup7ZtWtycjxcsR7dUpHWCS9Jq
+         8ihbfC2MM7M1p71ufBCf9uHsLg06KtNJbTFzVqRhJrAmMVLQPGzpKmtX0fyukP+IMGXc
+         Fdhw==
+X-Gm-Message-State: AJIora+DEqtbUHY8MzZvZ5/Byxvoma1Z4ISYX9kne6FVP9dfS44B1oUY
+	MAp8MJd8QOGX4axsxrEhHjfRemiyqdy35g==
+X-Google-Smtp-Source: AGRyM1sI5jEtED3H+P34gJ/5UIh/Ok06sT/0L7MEYiZKnQ5VGOQCeD519tPxR9WhClaaRQWjpjXjAw==
+X-Received: by 2002:a05:600c:27cd:b0:3a1:8b8c:b156 with SMTP id l13-20020a05600c27cd00b003a18b8cb156mr976232wmb.156.1657301767900;
+        Fri, 08 Jul 2022 10:36:07 -0700 (PDT)
+Received: from [192.168.1.145] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id o11-20020a5d684b000000b0021badf3cb26sm6831148wrw.63.2022.07.08.10.36.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 08 Jul 2022 10:36:06 -0700 (PDT)
+Message-ID: <63536da6-fbe4-2d96-ab91-ae756cd580c4@gmail.com>
+Date: Fri, 8 Jul 2022 19:36:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH] ASoC: mediatek: mt8186: Remove condition with no effect
+ Thunderbird/91.11.0
 Content-Language: en-US
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>, Zhongjun Tan <hbut_tan@163.com>,
- lgirdwood@gmail.com, broonie@kernel.org, perex@perex.c, tiwai@suse.com,
- matthias.bgg@gmail.com, tanzhongjun@coolpad.com, colin.king@intel.com
-Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220708024651.42999-1-hbut_tan@163.com>
- <ee0d9788-b742-21bb-9cc5-7b729897408b@collabora.com>
- <503a71aa95b8e4b75eb7e9e5de03a013f5155036.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <503a71aa95b8e4b75eb7e9e5de03a013f5155036.camel@mediatek.com>
+To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, Felix Fietkau <nbd@nbd.name>,
+ Krzysztof Kozlowski <krzk@kernel.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [GIT PULL] ARM: dts: MediaTek DT changes for v5.20
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_084416_496115_46356AA4 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20220708_103611_752917_DF81F3E7 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,62 +90,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/07/22 12:19, Jiaxin Yu ha scritto:
-> On Fri, 2022-07-08 at 10:01 +0200, AngeloGioacchino Del Regno wrote:
->> Il 08/07/22 04:46, Zhongjun Tan ha scritto:
->>> From: Zhongjun Tan <tanzhongjun@coolpad.com>
->>>
->>> Remove condition with no effect
->>>
->>> Signed-off-by: Zhongjun Tan <tanzhongjun@coolpad.com>
->>> ---
->>>    sound/soc/mediatek/mt8186/mt8186-dai-adda.c | 2 --
->>>    1 file changed, 2 deletions(-)
->>>
->>> diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
->>> b/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
->>> index db71b032770d..6be6d4f3b585 100644
->>> --- a/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
->>> +++ b/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
->>> @@ -295,8 +295,6 @@ static int mtk_adda_pad_top_event(struct
->>> snd_soc_dapm_widget *w,
->>>    	case SND_SOC_DAPM_PRE_PMU:
->>>    		if (afe_priv->mtkaif_protocol ==
->>> MTKAIF_PROTOCOL_2_CLK_P2)
->>>    			regmap_write(afe->regmap, AFE_AUD_PAD_TOP,
->>> 0x39);
->>> -		else if (afe_priv->mtkaif_protocol ==
->>> MTKAIF_PROTOCOL_2)
->>> -			regmap_write(afe->regmap, AFE_AUD_PAD_TOP,
->>> 0x31);
->>
->> I think that this needs some clarification from MediaTek: was 0x31 a
->> typo here?
->>
->> Regards,
->> Angelo
->>
-> Hi Angelo,
-> 
-> This patch can be accepted. The 0x31 is not typo, the logic of this
-> code is not concise enough.
-> 
-> Thanks,
-> Jiaxin.Yu
+Hi Olof and Arnd,
 
-Thank you for the clarification. In this case:
+Please have a look at the following changes to MediaTek based HW in the 32-bit 
+Arm space. The most notable change is that we now have support for clock and 
+PCIe on the Airoha EN7523, which were the last two bits that were missing.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Regards,
+Matthias
 
-Cheers!
+---
+The following changes since commit f2906aa863381afb0015a9eb7fefad885d4e5a56:
 
-> 
->>>    		else
->>>    			regmap_write(afe->regmap, AFE_AUD_PAD_TOP,
->>> 0x31);
->>>    		break;
->>
->>
-> 
+   Linux 5.19-rc1 (2022-06-05 17:18:54 -0700)
 
+are available in the Git repository at:
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/ 
+tags/v5.19-next-dts32
+
+for you to fetch changes up to 4da8b5e9f24a8036660f7a09553c0ddc5db4839a:
+
+   ARM: dts: mediatek: align gpio-key node names with dtschema (2022-06-17 
+12:44:05 +0200)
+
+----------------------------------------------------------------
+Airoha EN7523:
+- Add clock and PCIe support
+
+Several style fixes to comply with DT spec.
+
+----------------------------------------------------------------
+Felix Fietkau (2):
+       ARM: dts: add clock support for Airoha EN7523
+       ARM: dts: Add PCIe support for Airoha EN7523
+
+Krzysztof Kozlowski (2):
+       ARM: dts: mediatek: adjust whitespace around '='
+       ARM: dts: mediatek: align gpio-key node names with dtschema
+
+  arch/arm/boot/dts/en7523-evb.dts              |  8 ++++
+  arch/arm/boot/dts/en7523.dtsi                 | 66 +++++++++++++++++++++++++++
+  arch/arm/boot/dts/mt2701.dtsi                 |  8 ++--
+  arch/arm/boot/dts/mt7623.dtsi                 |  6 +--
+  arch/arm/boot/dts/mt7623a-rfb-emmc.dts        |  4 +-
+  arch/arm/boot/dts/mt7623a-rfb-nand.dts        |  4 +-
+  arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |  4 +-
+  arch/arm/boot/dts/mt7623n-rfb-emmc.dts        |  4 +-
+  arch/arm/boot/dts/mt7629-rfb.dts              |  4 +-
+  9 files changed, 91 insertions(+), 17 deletions(-)
 
