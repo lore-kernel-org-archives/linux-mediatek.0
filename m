@@ -4,86 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6908C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 08:19:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C709C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 08:20:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P6Gd+dIUTT3KkGrv9ENkxJer9nCvFgdfmHoOd7OvfxA=; b=VyqnMOy/OFeoQ5H4t3Rni5+2Lo
-	BpA4mEspMMQ69XZQ6YiAKjzSfiLg4yyC9TfrUHGpE/6ADNZuIYWzV2Z3ENxaIVeccmleoXn++Pg3F
-	6S2r9QEjxw5ioZTBu+QmaCEhzwzIfhhzP07dKU9nUL1YIZJxKDAVXgDTpqtFBfpKl1PdVmqnoizxj
-	sq1+Kv+BmgWvjwWkxn+2XBSt73JeSFeJien+3GIWo+gc+rqvgQEo14Mw7D9GtX6aBYv564Kt24mwU
-	9yLPefCYJp2HercZVe5o9wNFbFTkOxh3D2MSleMoUpgpOnC0kpLRrtBEXQp6Qfm3iCZAU/NhxmAJN
-	Ja2qR+Sw==;
+	bh=vqCjltQk8I2tU7mx1MrFC3tkT7yAdLDtPhqi15VnAKc=; b=W2Moj1Sm6aYPSM4y35+Znw91Ye
+	J2iPepHTxu6+VsGS/w9q40Q3UEvZFqZGGr+SHaB1UbgMR4ZFtuJLfTCrRkGe6kY6T3iTVXv9Yb7UR
+	auM5tDUI9flkk9h9KO6OJYf0M6vIe6QLnWDfvQ0UebNi12rk+35CAVGtV0QjOIvgPxeqIQpb9rHow
+	nU9UJ7rrgJ2RvcBSrWGvRY4hW35UYB0Bbv32u/JRxM1PsGFEeQS96NW6Uri0aoSz29MFBF8R0vRaC
+	zOl9n2pbTmSbaXpJi1jc1EusoSy5hIHg8EIBOdQp4DDGFqEleW/F6rd9eTHnNxZYoqVcMoDSFFNA9
+	AboAptFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jCi-002TPp-Th; Fri, 08 Jul 2022 08:19:12 +0000
-Received: from mail-il1-x129.google.com ([2607:f8b0:4864:20::129])
+	id 1o9jDw-002U0g-Tj; Fri, 08 Jul 2022 08:20:28 +0000
+Received: from mail-io1-xd2d.google.com ([2607:f8b0:4864:20::d2d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jBd-002Sr4-FO; Fri, 08 Jul 2022 08:18:06 +0000
-Received: by mail-il1-x129.google.com with SMTP id n9so8301793ilq.12;
-        Fri, 08 Jul 2022 01:18:04 -0700 (PDT)
+	id 1o9jD2-002TZu-Dr; Fri, 08 Jul 2022 08:19:33 +0000
+Received: by mail-io1-xd2d.google.com with SMTP id e5so3321510iof.2;
+        Fri, 08 Jul 2022 01:19:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=P6Gd+dIUTT3KkGrv9ENkxJer9nCvFgdfmHoOd7OvfxA=;
-        b=MXWXmsdiLUQnCnslmIwo2CH3pAvsVQmDpyWIyYp9f7wga1G+VyuLRAz/FltCJ0DMon
-         qlSREkRY0G2UDgvQV1IwPGaoISST0gSuQeBY1XKGFgQvEqllJbydZSWKtUURftpz5Hpe
-         XfeNCZpdv6p7oe/Yzhqb8WqZcTs8SmmIYIG+je+fKAwtkecCAzBbiWVMoIz7jAcMAzI2
-         Uze4Yo3RQ7KwKqDvf+Uvsdp7aANozHX4n0LESp/DxleVp2ocNDmEeOirGG5BQU4Fw5V2
-         Dques4ELlQEy+G+X5jOJEmyaldF5VIGSUmFxL6jOzUC0sIO25BQkgaferMTWPufdyidJ
-         aTGg==
+        bh=vqCjltQk8I2tU7mx1MrFC3tkT7yAdLDtPhqi15VnAKc=;
+        b=keaZZ/15eYgScyXtLOqU1DW2ZKvwxgb58uT0uXkDm5jIXJQnw1n/0S89fkCI+p3V/G
+         I0sIrQwXTSg4BniBjndlPmc9l5Lhw7sANIlipdqKv7HYzSD2cpBFxRkcXx6vIOs5xoBl
+         GIiJk2KgFd86WsthsePRNLyg5OHAhT/TzdE0wLCMuUySTnNnlT3VRaWKzTgW6xyMoX2B
+         lQ9TzDzRRDRuGjC3xhlBxSWMWDgXxNrrvt+6zaCYZAnsnhemVOV2H+YFrK4AtQ+ukhBd
+         1/rveWjCrOy+DwbxfcYhGiaugLfvMxRSIyifH0dX9QbrBHsCGnbfqhFhrWzUCzq+GLBw
+         6OGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=P6Gd+dIUTT3KkGrv9ENkxJer9nCvFgdfmHoOd7OvfxA=;
-        b=oMRaA798eElqalXeDC4EMXRpjhP2dgbd8w779jtwopBK97OY+SKCwFDrZb3RBA1ood
-         lRee10G9US7sCN1zi1x51478ebzBY00E+qK/Nn/woDYcGySfr+Fr+K2rXCcJ5/DLRHtf
-         Fy3aZuhAnIUm7Jt1hyB50jREiRp5p01sLwUoIni+VCn+iveXct4kFyfCr9RWSXidSJuT
-         706rTK1wQ1ehAmC5wim/oUMIFYo5tS+rZHUel/oQekR2gLF57IXfEjGZv0DNAEMh9eUq
-         AlUnADlv4YW4vhYBdHXToM4KOXNh7fwCNeSPT+xr/OY2mfXG1K0i9I7GAQMnKlZ6P9Tj
-         47Cg==
-X-Gm-Message-State: AJIora8SnyIFtI6FwHoWJguvZk1zxw3vTM6yGXI1TnlMyApPzTMg78D7
-	0fjESp9uqUL9n38AtXPZr4I=
-X-Google-Smtp-Source: AGRyM1sMYLA3oN2FhV8iRlBxBKPC6Ma2VfIhQd5iP198thNMgX+FuuPQHfTYCjFgSpS9UIvXNT8yBA==
-X-Received: by 2002:a05:6e02:1549:b0:2dc:616a:1dd4 with SMTP id j9-20020a056e02154900b002dc616a1dd4mr47747ilu.131.1657268283864;
-        Fri, 08 Jul 2022 01:18:03 -0700 (PDT)
+        bh=vqCjltQk8I2tU7mx1MrFC3tkT7yAdLDtPhqi15VnAKc=;
+        b=jr4AckEF6FQW3Mklt/lbzM+imENl1ch+NVgSIZeUuBJGDKbmXtMQBp5ggemYQR0KbE
+         TnM+BW3oR1/AWy3eqNofZ00LMMvehcX/Wf+tn7me3hCS1vmUnwCnsq4NxcqC1QGpOTfS
+         kO5UszCwkygjp9VZNnjoHWbXbvmWHmYW3aJ5UtJunxCfvVXnfT7zcwYa1dMozzzmhImm
+         TDyQxwB4cWRwhTfQlwUJK1BOwGtlrU6UPtTHgvkxuDfbhfwfr40rS5kyzqIl48XVtwIn
+         ol8w21+eucwIad+o/XkbtKgD7btxCvQzSxr7te08sr4GtAzqtJrwF39VaVdkbit4gYiF
+         3Biw==
+X-Gm-Message-State: AJIora9s/1eT0qCPwJQ1lRkFcD8+3MLFVfXwyLoDGx6Aiyq6aGFXIgVV
+	HMVKc8QHcENciVs90KM972g=
+X-Google-Smtp-Source: AGRyM1vCl6u+NPkYq/MEqdBUcy3Zpq5zMWpGOh9L9fZ0JMLVZDj8LJqlJjfHREvLIxclxjKUpRXPog==
+X-Received: by 2002:a6b:710f:0:b0:675:20a7:84e6 with SMTP id q15-20020a6b710f000000b0067520a784e6mr1276054iog.42.1657268370450;
+        Fri, 08 Jul 2022 01:19:30 -0700 (PDT)
 Received: from [192.168.1.145] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id g18-20020a05663810f200b0033cbfb5202esm2928253jae.11.2022.07.08.01.18.00
+        by smtp.gmail.com with ESMTPSA id r20-20020a5d9b94000000b0066952cfe3e2sm18991505iom.39.2022.07.08.01.19.27
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 08 Jul 2022 01:18:02 -0700 (PDT)
-Message-ID: <c088f936-00a1-4a7b-c995-dd49b011494f@gmail.com>
-Date: Fri, 8 Jul 2022 10:17:59 +0200
+        Fri, 08 Jul 2022 01:19:29 -0700 (PDT)
+Message-ID: <2f2f8bfe-4c7f-d81c-30bf-bcd60b42e245@gmail.com>
+Date: Fri, 8 Jul 2022 10:19:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH net v2] stmmac: dwmac-mediatek: fix clock issue
+Subject: Re: [PATCH 1/2] dt-bindings: soc: mediatek: add mdp3 mutex support
+ for mt8186
 Content-Language: en-US
-To: Biao Huang <biao.huang@mediatek.com>, David Miller <davem@davemloft.net>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, macpaul.lin@mediatek.com
-References: <20220708075622.26342-1-biao.huang@mediatek.com>
- <20220708075622.26342-2-biao.huang@mediatek.com>
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Xiandong Wang <xiandong.wang@mediatek.com>
+References: <20220705122627.2273-1-allen-kh.cheng@mediatek.com>
+ <20220705122627.2273-2-allen-kh.cheng@mediatek.com>
+ <5916c91b-41a1-c97a-84b4-7d48739a0639@collabora.com>
+ <640c1a9b-f8b5-aa89-19af-7d6f5c55eb12@gmail.com>
+ <243b30ca-a552-3cb7-8a4e-6e54a56ff60a@collabora.com>
+ <55fafa62684e077f75c3b8b192a59df62ad01692.camel@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220708075622.26342-2-biao.huang@mediatek.com>
+In-Reply-To: <55fafa62684e077f75c3b8b192a59df62ad01692.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_011805_593247_6380CE17 
-X-CRM114-Status: GOOD (  20.39  )
+X-CRM114-CacheID: sfid-20220708_011932_525171_F2B8518E 
+X-CRM114-Status: GOOD (  21.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,85 +105,116 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 08/07/2022 09:56, Biao Huang wrote:
-> Since clocks are handled in mediatek_dwmac_clks_config(),
-> remove the clocks configuration in init()/exit(), and
-> invoke mediatek_dwmac_clks_config instead.
+On 08/07/2022 10:14, allen-kh.cheng wrote:
+> Hi Angelo,
 > 
-> This issue is found in suspend/resume test.
+> On Thu, 2022-07-07 at 12:59 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 07/07/22 12:41, Matthias Brugger ha scritto:
+>>>
+>>>
+>>> On 07/07/2022 10:52, AngeloGioacchino Del Regno wrote:
+>>>> Il 05/07/22 14:26, Allen-KH Cheng ha scritto:
+>>>>> Add mdp3 mutex compatible for mt8186 SoC.
+>>>>>
+>>>>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+>>>>> Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
+>>>>
+>>>>
+>>>> Please drop this commit. Adding a mdp3-mutex compatible is not
+>>>> needed here.
+>>>>
+>>>
+>>> Thanks for checking. We probably would need a fallback compatible.
+>>> We can only know
+>>> from the HW engineers that can confirm if the IP block is the same
+>>> as the disp
+>>> mutex or a different one.
+>>>
+>>> I'll drop both patches for now until things got clear.
+>>>
+>>
+>> They're located in a different iospace from each other, but either
+>> the platform
+>> data needs to *not be* joined together, or if they're together, I
+>> would not like
+>> having two different compatible strings for essentially the same
+>> thing.
+>>
+>> I would at this point prefer dropping '-disp' from 'mediatek,mt8186-
+>> disp-mutex'
+>> so that we would be able to declare two 'mediatek,mt8186-mutex' in
+>> devicetree...
+>> ...or simply have two mediatek,mt8186-disp-mutex (although logically
+>> incorrect?).
+>>
+>> Cheers,
+>> Angelo
+>>
 > 
-> Fixes: 3186bdad97d5 ("stmmac: dwmac-mediatek: add platform level clocks management")
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->   .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 32 ++++++-------------
->   1 file changed, 10 insertions(+), 22 deletions(-)
+> Thanks for your opinion.
 > 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> index 6ff88df58767..6d82cf2658e0 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> @@ -576,32 +576,12 @@ static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
->   		}
->   	}
->   
-> -	ret = clk_bulk_prepare_enable(variant->num_clks, plat->clks);
-> -	if (ret) {
-> -		dev_err(plat->dev, "failed to enable clks, err = %d\n", ret);
-> -		return ret;
-> -	}
-> -
-> -	ret = clk_prepare_enable(plat->rmii_internal_clk);
-> -	if (ret) {
-> -		dev_err(plat->dev, "failed to enable rmii internal clk, err = %d\n", ret);
-> -		goto err_clk;
-> -	}
-> -
->   	return 0;
-> -
-> -err_clk:
-> -	clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
-> -	return ret;
->   }
->   
->   static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
->   {
-> -	struct mediatek_dwmac_plat_data *plat = priv;
-> -	const struct mediatek_dwmac_variant *variant = plat->variant;
-> -
-> -	clk_disable_unprepare(plat->rmii_internal_clk);
-> -	clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
-> +	/* nothing to do now */
+> They are two different hardwares for different address spaces.
+> 
+> I think we drop '-disp' from 'mediatek,mt8186-disp-mutex' will be
+> excessive because we also need to modify mutex node in all exited dts
+> files.
+> 
+> I prefer havingg two mediatek,mt8186-disp-mutex.
+> 
+> ex:
+> mutex: mutex@14001000 {
+> 	compatible = "mediatek,mt8186-disp-mutex";
+> 	..
+> }
+> 
+> mdp3_mutex0: mutex@1b001000 {
+> 	compatible = "mediatek,mt8186-disp-mutex";
+> 	...
+> }
+> 
+> What do you think?
 
-We can just leave the function pointer point to NULL, that get checked before 
-calling exit.
+I think that's an acceptable solution.
 
 Regards,
 Matthias
 
->   }
->   
->   static int mediatek_dwmac_clks_config(void *priv, bool enabled)
-> @@ -712,13 +692,21 @@ static int mediatek_dwmac_probe(struct platform_device *pdev)
->   	mediatek_dwmac_common_data(pdev, plat_dat, priv_plat);
->   	mediatek_dwmac_init(pdev, priv_plat);
->   
-> +	ret = mediatek_dwmac_clks_config(priv_plat, true);
-> +	if (ret)
-> +		return ret;
-> +
->   	ret = stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
->   	if (ret) {
->   		stmmac_remove_config_dt(pdev, plat_dat);
-> -		return ret;
-> +		goto err_drv_probe;
->   	}
->   
->   	return 0;
-> +
-> +err_drv_probe:
-> +	mediatek_dwmac_clks_config(priv_plat, false);
-> +	return ret;
->   }
->   
->   static const struct of_device_id mediatek_dwmac_match[] = {
+> 
+> Best regards,
+> Allen
+> 
+>>> Regards,
+>>> Matthias
+>>>
+>>>>> ---
+>>>>>   
+>>>>> .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+>>>>>    | 1 +
+>>>>>    1 file changed, 1 insertion(+)
+>>>>>
+>>>>> diff --git
+>>>>> a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex
+>>>>> .yaml
+>>>>> b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex
+>>>>> .yaml
+>>>>> index 627dcc3e8b32..234fa5dc07c2 100644
+>>>>> ---
+>>>>> a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex
+>>>>> .yaml
+>>>>> +++
+>>>>> b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex
+>>>>> .yaml
+>>>>> @@ -30,6 +30,7 @@ properties:
+>>>>>          - mediatek,mt8173-disp-mutex
+>>>>>          - mediatek,mt8183-disp-mutex
+>>>>>          - mediatek,mt8186-disp-mutex
+>>>>> +      - mediatek,mt8186-mdp3-mutex
+>>>>>          - mediatek,mt8192-disp-mutex
+>>>>>          - mediatek,mt8195-disp-mutex
+>>>>
+>>>>
+>>>>
+>>
+>>
+> 
 
