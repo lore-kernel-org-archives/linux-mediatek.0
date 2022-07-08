@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41928C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 02:36:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5AEBC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 02:48:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rGnTDyLqcRlRRAHUyi/0cvcM36jbffpxahjDD6PTpbM=; b=nszBpooCHXjxREjWGFSo70Vw+D
-	YVpNIeESwgjUWX1uTFGUId6bmlDcVZ2n2hmt/hS6tZg1v+TnHgTx/UhTST8vFbSEesrBuA1q8i0nl
-	TbkVnsh2extqpzVfKniuAaFG7VlzEOdNiSFhAYG9Giy638P1/a4Zy+jtCHIgDAMC7Rv5qHzR9SKaD
-	Jy41WPGsSC6n8pOR6Ga5Oe2eZxyh2E0kyi8GaJBXxAq7+8OPzBxogbfGW4TnwQKgqLhPrM03MUwOq
-	zVrUrWzjP6LwH/I5FSg0MZMKHeT/QEYWFIM0w3Kff9V3C7/p5t5hobcmTx/uGrbVj6obeq+eNwo+N
-	dlQBOr0Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1nzotkOABl7OCJlNnnM2mS9ytvB/1yubrP9ZFwrsivc=; b=5E2O/AchlUlCzlUZunHj5qHR3x
+	bMlAssJAVqLyw9iTJt0AffwNwRVY4W++FiFH/ZNqTFkmTm+UHTu7wRsadldTuAhJk/PmTSVW95V/Q
+	14CGzf1NFPkoTQYGe0pS9gZV8miFSoNhOHgWiDYtyq8IEoB7k4qJz/Rt/dN2JWfMlj26HQX1uq6GJ
+	cdS83HyuKr+nuoaxEun2IlSimpffjDoip2BFe7oOC64ZJp+Cu/RTQ0v5XHbsAVP6+hnxDko+8Ow13
+	/SEUYMCwVrti3XuKjx92ZMmR3CxIic3ceqIAL3qv+CYfnV3iHrR6T/G3iy/7Wee7oZDn5vZg08nf/
+	n/DM3tGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9drL-001N6b-8f; Fri, 08 Jul 2022 02:36:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9drI-001N5q-Lu; Fri, 08 Jul 2022 02:36:45 +0000
-X-UUID: 247f20e550b94c2f91f3a939f6d56b6e-20220707
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:3053433e-6a3b-4d4f-8315-7ac127a220cf,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:0f94e32,CLOUDID:3211ba63-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 247f20e550b94c2f91f3a939f6d56b6e-20220707
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <xiangsheng.hou@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 264574561; Thu, 07 Jul 2022 19:36:40 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Fri, 8 Jul 2022 10:16:04 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 8 Jul 2022 10:16:03 +0800
-From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<matthias.bgg@gmail.com>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <bin.zhang@mediatek.com>,
-	<benliang.zhao@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-Subject: [PATCH V3 1/2] arm64: dts: mt8173: Fix nor_flash node
-Date: Fri, 8 Jul 2022 10:15:47 +0800
-Message-ID: <20220708021548.21453-2-xiangsheng.hou@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220708021548.21453-1-xiangsheng.hou@mediatek.com>
-References: <20220708021548.21453-1-xiangsheng.hou@mediatek.com>
+	id 1o9e22-001PYZ-F8; Fri, 08 Jul 2022 02:47:50 +0000
+Received: from m12-13.163.com ([220.181.12.13])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o9e1r-001PTi-6y; Fri, 08 Jul 2022 02:47:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=1nzot
+	kOABl7OCJlNnnM2mS9ytvB/1yubrP9ZFwrsivc=; b=Z6IgAEVGPLj7J97ZlgIO9
+	O/S8/ta7p1gaNebKIYKo8zdYOsuVrxf/kyVLHnNIUN/3zcols739BRu7cUWBnnN3
+	MiRKs3wrv7JN6ufqfzEGKZHASbWudTS+F6HLrEmqf06HlPQkPemIvJHlSahWc/5q
+	qWBbowSiBEOsrcRm1+/1po=
+Received: from bf-rmsz-11.ccdomain.com (unknown [218.17.89.92])
+	by smtp9 (Coremail) with SMTP id DcCowAAHCKihmsdiYmyhNw--.45193S2;
+	Fri, 08 Jul 2022 10:46:58 +0800 (CST)
+From: Zhongjun Tan <hbut_tan@163.com>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	perex@perex.c,
+	tiwai@suse.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	jiaxin.yu@mediatek.com,
+	tanzhongjun@coolpad.com,
+	colin.king@intel.com
+Cc: alsa-devel@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] ASoC: mediatek: mt8186: Remove condition with no effect
+Date: Fri,  8 Jul 2022 10:46:51 +0800
+Message-Id: <20220708024651.42999-1-hbut_tan@163.com>
+X-Mailer: git-send-email 2.29.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-CM-TRANSID: DcCowAAHCKihmsdiYmyhNw--.45193S2
+X-Coremail-Antispam: 1Uf129KBjvdXoWruFWxur4xXr1kGrW3Xr15XFb_yoWfKFc_G3
+	s7Gw17ua45GFW8C39rtr4kCr1DXFWrCa4v9F13twnIq34DWF4ru3sIv3s7ur4DZw4kZayf
+	Jw1Svr1fXrWqvjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUnqjg3UUUUU==
+X-Originating-IP: [218.17.89.92]
+X-CM-SenderInfo: xkex3sxwdqqiywtou0bp/xtbBXgM4xlaD+mHdqgAAsa
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_193644_792763_CE2B9849 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20220707_194739_671695_4228B875 
+X-CRM114-Status: UNSURE (   6.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,34 +78,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add axi clock since the driver change to DMA mode which need
-to enable axi clock. And change spi clock to 26MHz as default.
+From: Zhongjun Tan <tanzhongjun@coolpad.com>
 
-Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+Remove condition with no effect
+
+Signed-off-by: Zhongjun Tan <tanzhongjun@coolpad.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ sound/soc/mediatek/mt8186/mt8186-dai-adda.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 40d7b47fc52e..e603170100af 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -790,9 +790,12 @@ thermal: thermal@1100b000 {
- 		nor_flash: spi@1100d000 {
- 			compatible = "mediatek,mt8173-nor";
- 			reg = <0 0x1100d000 0 0xe0>;
-+			assigned-clocks = <&topckgen CLK_TOP_SPI_SEL>;
-+			assigned-clock-parents = <&clk26m>;
- 			clocks = <&pericfg CLK_PERI_SPI>,
--				 <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
--			clock-names = "spi", "sf";
-+				 <&topckgen CLK_TOP_SPINFI_IFR_SEL>,
-+				 <&pericfg CLK_PERI_NFI>;
-+			clock-names = "spi", "sf", "axi";
- 			#address-cells = <1>;
- 			#size-cells = <0>;
- 			status = "disabled";
+diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-adda.c b/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
+index db71b032770d..6be6d4f3b585 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
++++ b/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
+@@ -295,8 +295,6 @@ static int mtk_adda_pad_top_event(struct snd_soc_dapm_widget *w,
+ 	case SND_SOC_DAPM_PRE_PMU:
+ 		if (afe_priv->mtkaif_protocol == MTKAIF_PROTOCOL_2_CLK_P2)
+ 			regmap_write(afe->regmap, AFE_AUD_PAD_TOP, 0x39);
+-		else if (afe_priv->mtkaif_protocol == MTKAIF_PROTOCOL_2)
+-			regmap_write(afe->regmap, AFE_AUD_PAD_TOP, 0x31);
+ 		else
+ 			regmap_write(afe->regmap, AFE_AUD_PAD_TOP, 0x31);
+ 		break;
 -- 
-2.25.1
+2.29.0
 
 
