@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00D0FC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 05:56:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7025C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 06:18:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ppHySCe2sLg9rKFk8bAZJe4j5Z4WWp/w+FfVREegsO0=; b=iIQ3/x2qkDVs8F0poeTpg5wSCD
-	/Bdb7U1D680zPeekGUpIvXhmJpd3fd3sQCqClVUmVOdxzuwaHBEViHVjuR4YTzJHNP6ZzfY4mqKwK
-	8BDJq5MrkHaPjOmrEOI4yVmL+zBmL8QfIzrktfhqXDlrE0XefYQHt7k5y3+mFpufyuAYsHd80kpiY
-	hCq4UZpTditdP5mErmEii9wtrm1MPr2PlXmYhpKyu/DC2dHloNPhcPr4vOQfYu+DDFoN5njGCsswQ
-	RRsXw+bsdYZulztyzHMnC9wFF8KaUGWEXNX+HQ0+Aa3NkAA7/QPufhxTr2IbcAFAcMncIM2R3FfKm
-	SbofUsQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=F9ys7RoPaorJy0zjwVlpB/NyIhvXF1Hmg2njqp6EsEw=; b=gGV9Ooch5FrO/xV6LxLYVteJss
+	BNIcCtRRSpBJEmREny4NDpgljcwn9SLVAXGWXpV8K4zoLzTzhTrgiWHxuGxaQvlbZWjMCds+8sKrE
+	qwLKNyD4DZgJfodeU//7p/g08TODa1EPkTFnbouHCxI9KVq+6KcB96RAyQ1uJQRh0CCjzs6HDNBvE
+	HWXnS1eyGIShgP1s3t8dtPvsextvufXfY8L3qol3lYMUkoKTyl9FRjKlH0PsNF7G4aNuPZ9bnstp5
+	zEwxhKX/d0Yc5puWMg2dqpPQFB7UgqaJ1OIS7c5WrJOLiz3fvDImKpRCHIkXAkJU+q16VBexMrN4L
+	H3712Qaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9gye-001tE6-MF; Fri, 08 Jul 2022 05:56:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o9hJt-001y9T-9U; Fri, 08 Jul 2022 06:18:29 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9gyb-001tB6-EX
-	for linux-mediatek@lists.infradead.org; Fri, 08 Jul 2022 05:56:31 +0000
-X-UUID: 4b4b790ec2cb4f3790bfb1fed31a4796-20220707
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=ppHySCe2sLg9rKFk8bAZJe4j5Z4WWp/w+FfVREegsO0=;
-	b=jIL7L5TH7/ciotCHozIuiY2uUTCw62c8yRRKqzmFg44GrNN1iKVgmeQoQPRPHVu/xIYKeyoLO9/e1l2/LyVm9v0fOPsxanL7MkULnh+wXPQoJ/epAGziCtmTlwX79h6pFegrrPG+c84LT9rc+THAajC+SokzJwsZ41Fbij6EZiI=;
+	id 1o9hJq-001y7D-0t; Fri, 08 Jul 2022 06:18:27 +0000
+X-UUID: 8c66836f620543f7ad3721b6d135515a-20220707
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:130f2d45-d5bf-4b2d-948b-51908aeabed4,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:875ff1d6-5d6d-4eaf-a635-828a3ee48b7c,C
+X-CID-O-INFO: VERSION:1.1.8,REQID:9ac75f2d-2b89-41bc-a7f3-b077ffb087e7,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:0f94e32,CLOUDID:b2fcf1d6-5d6d-4eaf-a635-828a3ee48b7c,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 4b4b790ec2cb4f3790bfb1fed31a4796-20220707
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
+X-UUID: 8c66836f620543f7ad3721b6d135515a-20220707
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <biao.huang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1305879079; Thu, 07 Jul 2022 22:56:19 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 8 Jul 2022 13:35:43 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+	with ESMTP id 868963187; Thu, 07 Jul 2022 23:18:14 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Fri, 8 Jul 2022 14:17:39 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 8 Jul 2022 13:35:42 +0800
-Message-ID: <42c0fd8acfb5a99fd33cb5245a54ed9037124f4f.camel@mediatek.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: Initialize decoder parameters
- for each instance
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Chen-Yu Tsai <wenst@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-Date: Fri, 8 Jul 2022 13:35:42 +0800
-In-Reply-To: <20220704084930.1625768-1-wenst@chromium.org>
-References: <20220704084930.1625768-1-wenst@chromium.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Fri, 8 Jul 2022 14:17:38 +0800
+From: Biao Huang <biao.huang@mediatek.com>
+To: David Miller <davem@davemloft.net>
+CC: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue
+	<alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Biao Huang
+	<biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <macpaul.lin@mediatek.com>
+Subject: [PATCH net] stmmac: dwmac-mediatek: fix clock issue
+Date: Fri, 8 Jul 2022 14:17:33 +0800
+Message-ID: <20220708061733.24916-1-biao.huang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-MTK: N
-Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_225629_539330_EE9607C0 
-X-CRM114-Status: GOOD (  21.60  )
+X-CRM114-CacheID: sfid-20220707_231826_125707_3D0B496A 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,46 +81,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2hlbi1ZdSwNCg0KVGhhbmtzIGZvciB5b3VyIHBhdGNoLg0KDQpSZXZpZXdlZC1ieTogWXVu
-ZmVpIERvbmcgPHl1bmZlaS5kb25nQG1lZGlhdGVrLmNvbT4NCg0KQmVzdCBSZWdhcmRzLA0KWXVu
-ZmVpIERvbmcNCg0KT24gTW9uLCAyMDIyLTA3LTA0IGF0IDE2OjQ5ICswODAwLCBDaGVuLVl1IFRz
-YWkgd3JvdGU6DQo+IFRoZSBkZWNvZGVyIHBhcmFtZXRlcnMgYXJlIHN0b3JlZCBpbiBlYWNoIGlu
-c3RhbmNlJ3MgY29udGV4dCBkYXRhLg0KPiBUaGlzDQo+IG5lZWRzIHRvIGJlIGluaXRpYWxpemVk
-IHBlci1pbnN0YW5jZSwgYnV0IGEgcHJldmlvdXMgZml4IGluY29ycmVjdGx5DQo+IGNoYW5nZWQg
-aXQgdG8gb25seSBiZSBpbml0aWFsaXplZCBmb3IgdGhlIGZpcnN0IG9wZW5lZCBpbnN0YW5jZS4g
-VGhpcw0KPiByZXN1bHRlZCBpbiBzdWJzZXF1ZW50IGluc3RhbmNlcyBub3QgY29ycmVjdGx5IHNp
-Z25hbGluZyB0aGUNCj4gcmVxdWlyZW1lbnQNCj4gZm9yIHRoZSBSZXF1ZXN0cyBBUEkuDQo+IA0K
-PiBGaXggdGhpcyBieSBjYWxsaW5nIHRoZSBpbml0aWFsaXppbmcgZnVuY3Rpb24gb3V0c2lkZSBv
-ZiB0aGUNCj4gdjRsMl9maF9pc19zaW5ndWxhcigpIGNvbmRpdGlvbmFsIGJsb2NrLg0KPiANCj4g
-Rml4ZXM6IGZhZGRhYTczNWMyMCAoIm1lZGlhOiBtZWRpYXRlazogdmNvZGVjOiBJbml0aWFsaXpl
-IGRlY29kZXINCj4gcGFyYW1ldGVycyBhZnRlciBnZXR0aW5nIGRlY19jYXBhYmlsaXR5IikNCj4g
-U2lnbmVkLW9mZi1ieTogQ2hlbi1ZdSBUc2FpIDx3ZW5zdEBjaHJvbWl1bS5vcmc+DQo+IC0tLQ0K
-PiBUaGlzIHdhcyBmb3VuZCBkdXJpbmcgYmFja3BvcnQgb2YgbXRrLXZjb2RlYyBwYXRjaGVzIG9u
-dG8gdGhlDQo+IENocm9tZU9TDQo+IHY1LjEwIGtlcm5lbCwgd2hpY2ggY2F1c2VkIG9uZSBvZiBv
-dXIgdGVzdHMgdGhhdCBkb2VzIG11bHRpcGxlDQo+IGNvbmN1cnJlbnQNCj4gZGVjb2RlcyB0byBm
-YWlsLCBhcyBzb21lIGRlY29kZXIgaW5zdGFuY2VzIGRpZG4ndCBoYXZlIHRoZWlyDQo+IHJlcXVp
-cmVzX3JlcXVlc3RzIGFuZCBzdXBwb3J0c19yZXF1ZXN0cyBmbGFncyBtYXJrZWQgY29ycmVjdGx5
-Lg0KPiBFdmlkZW50bHkgbXkgcHJldmlvdXMgdGVzdGluZyBvZiBjdWxwcml0IHBhdGNoIHdhcyBu
-b3QgdGhvcm91Z2gNCj4gZW5vdWdoLg0KPiANCj4gVGhpcyBmaXhlcyBjb21taXQgZmFkZGFhNzM1
-YzIwICgibWVkaWE6IG1lZGlhdGVrOiB2Y29kZWM6IEluaXRpYWxpemUNCj4gZGVjb2Rlcg0KPiBw
-YXJhbWV0ZXJzIGFmdGVyIGdldHRpbmcgZGVjX2NhcGFiaWxpdHkiKSBpbiB0aGUgbWVkaWEgc3Rh
-Z2UgcmVwby4NCj4gVGhpcw0KPiBjb3VsZCBlaXRoZXIgYmUgcXVldWVkIHVwIGFmdGVyIGl0LCBv
-ciBzcXVhc2hlZCBpbnRvIGl0Lg0KPiANCj4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVkaWF0
-ZWsvdmNvZGVjL210a192Y29kZWNfZGVjX2Rydi5jIHwgMyArKy0NCj4gIDEgZmlsZSBjaGFuZ2Vk
-LCAyIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkNCj4gDQo+IGRpZmYgLS1naXQNCj4gYS9k
-cml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9tdGtfdmNvZGVjX2RlY19kcnYu
-Yw0KPiBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVkaWF0ZWsvdmNvZGVjL210a192Y29kZWNf
-ZGVjX2Rydi5jDQo+IGluZGV4IDU1ZGZmYjYxZTU4Yy4uZTBiNmFlOWQ2Y2FhIDEwMDY0NA0KPiAt
-LS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9tdGtfdmNvZGVjX2Rl
-Y19kcnYuYw0KPiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9t
-dGtfdmNvZGVjX2RlY19kcnYuYw0KPiBAQCAtMjA4LDExICsyMDgsMTIgQEAgc3RhdGljIGludCBm
-b3BzX3Zjb2RlY19vcGVuKHN0cnVjdCBmaWxlICpmaWxlKQ0KPiAgDQo+ICAJCWRldi0+ZGVjX2Nh
-cGFiaWxpdHkgPQ0KPiAgCQkJbXRrX3Zjb2RlY19md19nZXRfdmRlY19jYXBhKGRldi0+ZndfaGFu
-ZGxlcik7DQo+IC0JCWN0eC0+ZGV2LT52ZGVjX3BkYXRhLT5pbml0X3ZkZWNfcGFyYW1zKGN0eCk7
-DQo+ICANCj4gIAkJbXRrX3Y0bDJfZGVidWcoMCwgImRlY29kZXIgY2FwYWJpbGl0eSAleCIsIGRl
-di0NCj4gPmRlY19jYXBhYmlsaXR5KTsNCj4gIAl9DQo+ICANCj4gKwljdHgtPmRldi0+dmRlY19w
-ZGF0YS0+aW5pdF92ZGVjX3BhcmFtcyhjdHgpOw0KPiArDQo+ICAJbGlzdF9hZGQoJmN0eC0+bGlz
-dCwgJmRldi0+Y3R4X2xpc3QpOw0KPiAgDQo+ICAJbXV0ZXhfdW5sb2NrKCZkZXYtPmRldl9tdXRl
-eCk7DQo=
+Since clocks are handled in mediatek_dwmac_clks_config(),
+remove the duplicated clocks configuration in init()/exit().
+
+This issue is found in suspend/resume test.
+
+Fixes: 3186bdad97d5 ("stmmac: dwmac-mediatek: add platform level clocks management")
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+---
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 22 +------------------
+ 1 file changed, 1 insertion(+), 21 deletions(-)
+
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+index 6ff88df58767..8eaaf14047b4 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+@@ -576,32 +576,12 @@ static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
+ 		}
+ 	}
+ 
+-	ret = clk_bulk_prepare_enable(variant->num_clks, plat->clks);
+-	if (ret) {
+-		dev_err(plat->dev, "failed to enable clks, err = %d\n", ret);
+-		return ret;
+-	}
+-
+-	ret = clk_prepare_enable(plat->rmii_internal_clk);
+-	if (ret) {
+-		dev_err(plat->dev, "failed to enable rmii internal clk, err = %d\n", ret);
+-		goto err_clk;
+-	}
+-
+ 	return 0;
+-
+-err_clk:
+-	clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
+-	return ret;
+ }
+ 
+ static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
+ {
+-	struct mediatek_dwmac_plat_data *plat = priv;
+-	const struct mediatek_dwmac_variant *variant = plat->variant;
+-
+-	clk_disable_unprepare(plat->rmii_internal_clk);
+-	clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
++	/* nothing to do now */
+ }
+ 
+ static int mediatek_dwmac_clks_config(void *priv, bool enabled)
+-- 
+2.25.1
 
 
