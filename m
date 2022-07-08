@@ -4,73 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7185C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 08:45:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71425C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 08:45:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Osjtr54B0fBZJDE1gYrQVbIL+6w7oIsRytAofQ8Z3+Y=; b=1rjkC8UmU4ziYrQV68c7TC+bWV
-	ucWr4uwpeIVqKktK2pRxFmuj96WMthqwS93ozLuqsNrgJIzeIRCQYe34+OZKGBKWOc2zNRoCWs4pl
-	LV1Ult9nFCHtFpVqGIAm27YpoHlB7ZEZq5rfGI+lMwkd8PwZ5VXfnWtfL6cjwpXJM4bxRJVJTvuLj
-	sMX7E50L54mppRbJuDwCAZsOd/DWsA7w7epgbem3ti9Wv3oEC69o/vy5GzrgEZ15fgunk1yCFOnV7
-	ny2ey9oHMrBvoW6a4ciAd83VfJFcwpJmDgZ6Cv6M4m4ui8AnZ5cIFm/fQdqBJcD16Z1MzZxYS0HCc
-	qWMaQMyA==;
+	bh=xm6NlF3I7IBcYIFROmAEnnlr6XMx9qR//dGw47Crdcc=; b=RsAGyIgV1/Hr6SltbxyVSNPouy
+	sDk4FrUIq1HWtS/P0LZR4OAaAL7aYXf6QQNhmlqeCim6SV7kgftn1w+UVU5KVNx403EROLghdBytu
+	5QciLLLuCIryABIlctpp67oX2383q8JYsFhE1xTsQMUaQzHFzUkT9jKJNm22pSR8lxCTk1HqGmGSr
+	JbyxbbxA17DCgK5G1lLCfF2JFfCStkfcm++ZVCA6DC8PKs1erYKY2Tf1HQp7CYNvRnpCAOB6aDEZN
+	9NMqPvkDBfiFgyrqp8BNkwezDShwt7qhBKMMFmsL1lMHd164nX260OkThDzNBRWIw014A++b3rufo
+	G5c/WPWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jc9-002e1f-GS; Fri, 08 Jul 2022 08:45:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1o9jcX-002eAT-3L; Fri, 08 Jul 2022 08:45:53 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jc6-002e0R-Ha; Fri, 08 Jul 2022 08:45:28 +0000
-X-UUID: adc3a6992d974e30941e427fd66cf6a2-20220708
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:7fbdc6ea-b622-40c1-8102-099c4478f7fe,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:f47ce686-57f0-47ca-ba27-fe8c57fbf305,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: adc3a6992d974e30941e427fd66cf6a2-20220708
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 138458894; Fri, 08 Jul 2022 01:45:21 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 8 Jul 2022 16:14:44 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Fri, 8 Jul 2022 16:14:44 +0800
-Message-ID: <55fafa62684e077f75c3b8b192a59df62ad01692.camel@mediatek.com>
-Subject: Re: [PATCH 1/2] dt-bindings: soc: mediatek: add mdp3 mutex support
- for mt8186
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Xiandong Wang <xiandong.wang@mediatek.com>
-Date: Fri, 8 Jul 2022 16:14:44 +0800
-In-Reply-To: <243b30ca-a552-3cb7-8a4e-6e54a56ff60a@collabora.com>
-References: <20220705122627.2273-1-allen-kh.cheng@mediatek.com>
-	 <20220705122627.2273-2-allen-kh.cheng@mediatek.com>
-	 <5916c91b-41a1-c97a-84b4-7d48739a0639@collabora.com>
-	 <640c1a9b-f8b5-aa89-19af-7d6f5c55eb12@gmail.com>
-	 <243b30ca-a552-3cb7-8a4e-6e54a56ff60a@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1o9jcG-002e1c-7x; Fri, 08 Jul 2022 08:45:37 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CE32366015BA;
+	Fri,  8 Jul 2022 09:45:27 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657269928;
+	bh=nL4EphTxTGIn93JKt1KWZWPGficfXAV2gqP5apqt848=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=S/tslfd35NfROb1/gP9GcNLN4NQ/6dH9fx0Uy3IpVBAO3wpMiTDiLLgKG2TTw5UFO
+	 tVTnvB9Zg9WxJ3bhEcmLy4JNQI5Kct3gTnDyDoXo3SD7DNrrOBDHwj9j2KEf9Wp9Ow
+	 2URxBRLhdef2HoME8wIOdN9rlYFL3cdrq2QQ92yo9HPjitetMu1kz2G7hXlTh/ejP2
+	 J/nFmlvS6y4OMBHnHDdXLA1xU1TE2tmfAMO4iNtjimWyZJ0ZWlmTSIzUocq6+q20ZM
+	 ox8KOEf38ZCMM0r7xGUrckoJ7x1SjEMeNqCf2WFQcP/ui5uUc0KR3iDsVhORuYnJ9k
+	 1WnwqbQzoeBLA==
+Message-ID: <217695f5-55d3-e347-ea04-d30aaee6e712@collabora.com>
+Date: Fri, 8 Jul 2022 10:45:25 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH v4 0/2] MediaTek SoC ARM/ARM64 System Timer
+Content-Language: en-US
+To: daniel.lezcano@linaro.org
+Cc: tglx@linutronix.de, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
+ martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
+ phone-devel@vger.kernel.org, paul.bouchara@somainline.org
+References: <20220613133819.35318-1-angelogioacchino.delregno@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220613133819.35318-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_014526_660616_D22DD730 
-X-CRM114-Status: GOOD (  26.17  )
+X-CRM114-CacheID: sfid-20220708_014536_489156_B9807EDD 
+X-CRM114-Status: GOOD (  18.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,109 +78,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
-
-On Thu, 2022-07-07 at 12:59 +0200, AngeloGioacchino Del Regno wrote:
-> Il 07/07/22 12:41, Matthias Brugger ha scritto:
-> > 
-> > 
-> > On 07/07/2022 10:52, AngeloGioacchino Del Regno wrote:
-> > > Il 05/07/22 14:26, Allen-KH Cheng ha scritto:
-> > > > Add mdp3 mutex compatible for mt8186 SoC.
-> > > > 
-> > > > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> > > > Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
-> > > 
-> > > 
-> > > Please drop this commit. Adding a mdp3-mutex compatible is not
-> > > needed here.
-> > > 
-> > 
-> > Thanks for checking. We probably would need a fallback compatible.
-> > We can only know 
-> > from the HW engineers that can confirm if the IP block is the same
-> > as the disp 
-> > mutex or a different one.
-> > 
-> > I'll drop both patches for now until things got clear.
-> > 
+Il 13/06/22 15:38, AngeloGioacchino Del Regno ha scritto:
+> In an effort to give some love to the apparently forgotten MT6795 SoC,
+> I am upstreaming more components that are necessary to support platforms
+> powered by this one apart from a simple boot to serial console.
 > 
-> They're located in a different iospace from each other, but either
-> the platform
-> data needs to *not be* joined together, or if they're together, I
-> would not like
-> having two different compatible strings for essentially the same
-> thing.
+> This series introduces support to start the System Timer for the CPU
+> cores found in various MediaTek SoCs including, but not limited to the
+> MT6795 Helio X10 - and will most probably unblock many developers for
+> the upstreaming of various platforms.
 > 
-> I would at this point prefer dropping '-disp' from 'mediatek,mt8186-
-> disp-mutex'
-> so that we would be able to declare two 'mediatek,mt8186-mutex' in
-> devicetree...
-> ...or simply have two mediatek,mt8186-disp-mutex (although logically
-> incorrect?).
+> For a broad overview of why/what/when, please look at the description
+> of patch [2/2] in this series.
 > 
-> Cheers,
-> Angelo
+> Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
+> 
+> Changes in v4:
+>   - Changed statement in documentation, now saying:
+>     "MediaTek SoCs have different timers on different platforms"
+> 
+> Changes in v3:
+>   - Merged mtk_cpux_{enable,disable}_irq() as one mtk_cpux_set_irq() function
+>     as suggested by Matthias
+> 
+> Changes in v2:
+>   - Added back a lost line in commit 2/2 (sorry, commit didn't get amended...!)
+>   - Tested again for safety
+> 
+> AngeloGioacchino Del Regno (2):
+>    dt-bindings: timer: mediatek: Add CPUX System Timer and MT6795
+>      compatible
+>    clocksource/drivers/timer-mediatek: Implement CPUXGPT timers
+> 
+>   .../bindings/timer/mediatek,mtk-timer.txt     |   6 +-
+>   drivers/clocksource/timer-mediatek.c          | 114 ++++++++++++++++++
+>   2 files changed, 119 insertions(+), 1 deletion(-)
 > 
 
-Thanks for your opinion.
 
-They are two different hardwares for different address spaces. 
+Gentle ping for this one - I need it to start upstreaming devicetrees for
+that MT6795 Xperia M5 smartphone, or it won't be able to boot.
 
-I think we drop '-disp' from 'mediatek,mt8186-disp-mutex' will be
-excessive because we also need to modify mutex node in all exited dts
-files.
-
-I prefer havingg two mediatek,mt8186-disp-mutex. 
-
-ex:
-mutex: mutex@14001000 {
-	compatible = "mediatek,mt8186-disp-mutex";
-	..
-}
-
-mdp3_mutex0: mutex@1b001000 {
-	compatible = "mediatek,mt8186-disp-mutex";
-	...
-}
-
-What do you think?
-
-Best regards,
-Allen
-
-> > Regards,
-> > Matthias
-> > 
-> > > > ---
-> > > >  
-> > > > .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml       
-> > > >   | 1 +
-> > > >   1 file changed, 1 insertion(+)
-> > > > 
-> > > > diff --git
-> > > > a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex
-> > > > .yaml 
-> > > > b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex
-> > > > .yaml
-> > > > index 627dcc3e8b32..234fa5dc07c2 100644
-> > > > ---
-> > > > a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex
-> > > > .yaml
-> > > > +++
-> > > > b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex
-> > > > .yaml
-> > > > @@ -30,6 +30,7 @@ properties:
-> > > >         - mediatek,mt8173-disp-mutex
-> > > >         - mediatek,mt8183-disp-mutex
-> > > >         - mediatek,mt8186-disp-mutex
-> > > > +      - mediatek,mt8186-mdp3-mutex
-> > > >         - mediatek,mt8192-disp-mutex
-> > > >         - mediatek,mt8195-disp-mutex
-> > > 
-> > > 
-> > > 
-> 
-> 
-
+Thanks,
+Angelo
 
