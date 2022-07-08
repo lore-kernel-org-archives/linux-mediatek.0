@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71425C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 08:45:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F16F8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 08:47:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xm6NlF3I7IBcYIFROmAEnnlr6XMx9qR//dGw47Crdcc=; b=RsAGyIgV1/Hr6SltbxyVSNPouy
-	sDk4FrUIq1HWtS/P0LZR4OAaAL7aYXf6QQNhmlqeCim6SV7kgftn1w+UVU5KVNx403EROLghdBytu
-	5QciLLLuCIryABIlctpp67oX2383q8JYsFhE1xTsQMUaQzHFzUkT9jKJNm22pSR8lxCTk1HqGmGSr
-	JbyxbbxA17DCgK5G1lLCfF2JFfCStkfcm++ZVCA6DC8PKs1erYKY2Tf1HQp7CYNvRnpCAOB6aDEZN
-	9NMqPvkDBfiFgyrqp8BNkwezDShwt7qhBKMMFmsL1lMHd164nX260OkThDzNBRWIw014A++b3rufo
-	G5c/WPWQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cJqbOhiNG6F+obBUdU4BPxNvggrV2ikHtVykzyt9ACk=; b=FHdjhiAobkBqOk8G+nE4fU3z/A
+	G7KN7Iv/KlyvH7jol0tUnDUhdiVpmBV5SVQLvsvmpPFh8rCztN6cCIxy9L43Wd1wPCZYXdBY2v+eg
+	j4bkr2Z3S9sl7Guv65JJ1WelC6a+SjPrT/McKjZ43q4LsUAHQwvAVQ5t5yUyTVY7Q7pIX7aZHuwoN
+	GjSDMZ2DOr+tSblhKt0bn1iLl7tUMggGa/SMa4Gj3Y5Gn895VUDWHOy52PrVwM1e2N03bllr0Qvi0
+	drQehL93iuvrKaoWtWP2xO58xyV5v4wkGSa83CCKdrtESEFSC6+o58SMeN8amzozyMhQcNaWPMVEy
+	g6sB3SHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jcX-002eAT-3L; Fri, 08 Jul 2022 08:45:53 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o9jdv-002ekq-U8; Fri, 08 Jul 2022 08:47:19 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jcG-002e1c-7x; Fri, 08 Jul 2022 08:45:37 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CE32366015BA;
-	Fri,  8 Jul 2022 09:45:27 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657269928;
-	bh=nL4EphTxTGIn93JKt1KWZWPGficfXAV2gqP5apqt848=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=S/tslfd35NfROb1/gP9GcNLN4NQ/6dH9fx0Uy3IpVBAO3wpMiTDiLLgKG2TTw5UFO
-	 tVTnvB9Zg9WxJ3bhEcmLy4JNQI5Kct3gTnDyDoXo3SD7DNrrOBDHwj9j2KEf9Wp9Ow
-	 2URxBRLhdef2HoME8wIOdN9rlYFL3cdrq2QQ92yo9HPjitetMu1kz2G7hXlTh/ejP2
-	 J/nFmlvS6y4OMBHnHDdXLA1xU1TE2tmfAMO4iNtjimWyZJ0ZWlmTSIzUocq6+q20ZM
-	 ox8KOEf38ZCMM0r7xGUrckoJ7x1SjEMeNqCf2WFQcP/ui5uUc0KR3iDsVhORuYnJ9k
-	 1WnwqbQzoeBLA==
-Message-ID: <217695f5-55d3-e347-ea04-d30aaee6e712@collabora.com>
-Date: Fri, 8 Jul 2022 10:45:25 +0200
+	id 1o9jds-002eiu-Hn; Fri, 08 Jul 2022 08:47:17 +0000
+X-UUID: 9cb3485f52e14f4d9b4b82fd5df3688c-20220708
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:8cde9fe3-05e3-4bc8-8512-bfd2c7666e53,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:3d42f6d6-5d6d-4eaf-a635-828a3ee48b7c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 9cb3485f52e14f4d9b4b82fd5df3688c-20220708
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <biao.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 699340520; Fri, 08 Jul 2022 01:47:10 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Fri, 8 Jul 2022 15:56:35 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 8 Jul 2022 15:56:24 +0800
+From: Biao Huang <biao.huang@mediatek.com>
+To: David Miller <davem@davemloft.net>
+CC: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue
+	<alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Biao Huang
+	<biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <macpaul.lin@mediatek.com>
+Subject: [PATCH net v2 0/1] stmmac: dwmac-mediatek: fix clock issue
+Date: Fri, 8 Jul 2022 15:56:21 +0800
+Message-ID: <20220708075622.26342-1-biao.huang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v4 0/2] MediaTek SoC ARM/ARM64 System Timer
-Content-Language: en-US
-To: daniel.lezcano@linaro.org
-Cc: tglx@linutronix.de, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
- martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
- phone-devel@vger.kernel.org, paul.bouchara@somainline.org
-References: <20220613133819.35318-1-angelogioacchino.delregno@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220613133819.35318-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_014536_489156_B9807EDD 
-X-CRM114-Status: GOOD (  18.74  )
+X-CRM114-CacheID: sfid-20220708_014716_852317_A5729AF8 
+X-CRM114-Status: UNSURE (   6.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,47 +82,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/06/22 15:38, AngeloGioacchino Del Regno ha scritto:
-> In an effort to give some love to the apparently forgotten MT6795 SoC,
-> I am upstreaming more components that are necessary to support platforms
-> powered by this one apart from a simple boot to serial console.
-> 
-> This series introduces support to start the System Timer for the CPU
-> cores found in various MediaTek SoCs including, but not limited to the
-> MT6795 Helio X10 - and will most probably unblock many developers for
-> the upstreaming of various platforms.
-> 
-> For a broad overview of why/what/when, please look at the description
-> of patch [2/2] in this series.
-> 
-> Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
-> 
-> Changes in v4:
->   - Changed statement in documentation, now saying:
->     "MediaTek SoCs have different timers on different platforms"
-> 
-> Changes in v3:
->   - Merged mtk_cpux_{enable,disable}_irq() as one mtk_cpux_set_irq() function
->     as suggested by Matthias
-> 
-> Changes in v2:
->   - Added back a lost line in commit 2/2 (sorry, commit didn't get amended...!)
->   - Tested again for safety
-> 
-> AngeloGioacchino Del Regno (2):
->    dt-bindings: timer: mediatek: Add CPUX System Timer and MT6795
->      compatible
->    clocksource/drivers/timer-mediatek: Implement CPUXGPT timers
-> 
->   .../bindings/timer/mediatek,mtk-timer.txt     |   6 +-
->   drivers/clocksource/timer-mediatek.c          | 114 ++++++++++++++++++
->   2 files changed, 119 insertions(+), 1 deletion(-)
-> 
+changes in v2:
+1. clock configuration is still needed in probe,
+and invoke mediatek_dwmac_clks_config() instead.
+2. update commit message.
+
+v1:
+remove duplicated clock configuration in init/exit.
+
+Biao Huang (1):
+  stmmac: dwmac-mediatek: fix clock issue
+
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 32 ++++++-------------
+ 1 file changed, 10 insertions(+), 22 deletions(-)
+
+-- 
+2.25.1
 
 
-Gentle ping for this one - I need it to start upstreaming devicetrees for
-that MT6795 Xperia M5 smartphone, or it won't be able to boot.
 
-Thanks,
-Angelo
 
