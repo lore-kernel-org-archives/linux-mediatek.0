@@ -4,83 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 509FCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 15:41:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0612EC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 15:42:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pwAMcwn2Isg9nprnVGjfIxmqURSxb3XCRKyIggaxxl8=; b=20VUPhm1SN2So2z6d35k1CZSu3
-	wain6YYzHS8K7O5VByioX8HtdFsL+Zfwv6kYAK3y42qxpCwl1vBkmNlY3wHBTm7Rp1MnQzKBB3tUT
-	41Gqp0SFr9V78TVxc92VZqbQ2eZjtrSaTXQvK62cF2+79Jr5SRms+QlWxRBpOvAOaRUkuX9RgXdyJ
-	h+ZB0l0I+ARXV3THO4U5zkItVlxBgcjxvkIzvM9P5aogz4OyIDrc91CA+t9xniZVYa4XXcgg7kCRA
-	fSKJ1/O+ALWvzzG6SRIAFjFg4vDu8rEdNZlKbjb9Yz6qDDHfdPSQMM+uVAg18hMVMXmWygT/xCVap
-	wHOVCWJQ==;
+	bh=1qbexzS6sol5qJ39FyR4R0bbeTrcJijBH7KTqUd0Ou8=; b=0jWGI57wSbP2rx0+k1YqBkyJgo
+	ZZZcITRrRvSb6tsNMAam9+dCUsOHOsU5mDAIlPjF1PAudrE45dplupbHt+vGhDDSskIZlEcFMh24T
+	J/3okpzzOlZOEdLr34ozxHDIE+FpKRDnmC8VEpTOrN8JFot0Z3IN8n9+ejDZYzm3aHBItEgQAzBDf
+	y0MU73Wpvb5G+FP46VArwe825D6Rhuz1slCAJg2clbh0bBd52AgabUyBlHMR3pdM1xV5mWGt3VK6U
+	9TUyVIDjKbOVL+kwZw+L0hQqkUocLWb47oDo4jkfAbGirN4cWnc59sPW3aLjlB+EAtNZVkSXFYDN8
+	FOIRUbQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9q69-004QAy-Vv; Fri, 08 Jul 2022 15:40:53 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1o9q82-004QaC-0b; Fri, 08 Jul 2022 15:42:50 +0000
+Received: from mail-il1-x133.google.com ([2607:f8b0:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9q5z-004Q97-JX; Fri, 08 Jul 2022 15:40:44 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6BB9460AD8;
-	Fri,  8 Jul 2022 15:40:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77086C341C0;
-	Fri,  8 Jul 2022 15:40:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1657294839;
-	bh=6kpdMMwsJsfME+iMyXa81KBrC41VyaHvmfjcm14ZZjY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=ParmWcwfwfpAs6ehbNmmTmtsnAcqSud+P9ebceiWVf+pEuVJC/dba1ApRob5njLrb
-	 KrE/hbRRZ+w1o12IVB2gVKqCth1mmOXXiL4obCpzpwFTYsCHZyN9VeFeFCU4jMV32Y
-	 ujP4jKIWeD3qbEGYakpjHDiP/tpec7XrSdRZNvIxuPeAOMFfy7fAWKuG/tvwOu39jI
-	 9vOohCwGFopKjpIYrYmaNouS+9v7kN0B6i8+BSVenNQ3sbxwqd9HjG2V7MVSSkTZ8t
-	 W2yHTIHxhW+XJn/GVN/OKBNIt3vI7pZ5eNgvHzRsb4GAAtb8jk5AVVhsjfFFuH5Bfn
-	 ON0CPSF/K/bWQ==
-Date: Fri, 8 Jul 2022 17:40:30 +0200
-From: Marek =?UTF-8?B?QmVow7pu?= <kabel@kernel.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Heiner Kallweit <hkallweit1@gmail.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Alvin __ipraga <alsi@bang-olufsen.dk>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, "David S. Miller"
- <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>, Eric Dumazet
- <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>, George
- McCollister <george.mccollister@gmail.com>, Hauke Mehrtens
- <hauke@hauke-m.de>, Jakub Kicinski <kuba@kernel.org>, Kurt Kanzenbach
- <kurt@linutronix.de>, Landen Chao <Landen.Chao@mediatek.com>, Linus Walleij
- <linus.walleij@linaro.org>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Matthias Brugger
- <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Paolo Abeni
- <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
- UNGLinuxDriver@microchip.com, Vivien Didelot <vivien.didelot@gmail.com>,
- Woojung Huh <woojung.huh@microchip.com>
-Subject: Re: [PATCH RFC net-next 5/5] net: dsa: always use phylink for CPU
- and DSA ports
-Message-ID: <20220708174030.700a87f5@thinkpad>
-In-Reply-To: <YshMT3KP/B6BiEIg@shell.armlinux.org.uk>
-References: <YsQIjC7UpcGWJovx@shell.armlinux.org.uk>
-	<E1o8fA7-0059aO-K8@rmk-PC.armlinux.org.uk>
-	<20220706102621.hfubvn3wa6wlw735@skbuf>
-	<YsW3KSeeQBiWQOz/@shell.armlinux.org.uk>
-	<Ysaw56lKTtKMh84b@shell.armlinux.org.uk>
-	<20220707152727.foxrd4gvqg3zb6il@skbuf>
-	<YscAPP7mF3KEE1/p@shell.armlinux.org.uk>
-	<20220707163831.cjj54a6ys5bceb22@skbuf>
-	<YscUwrPnBZ3dzpQ/@shell.armlinux.org.uk>
-	<20220707193753.2j67ni3or3bfkt6k@skbuf>
-	<YshMT3KP/B6BiEIg@shell.armlinux.org.uk>
-X-Mailer: Claws Mail 3.19.0 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	id 1o9q7p-004QW0-HH; Fri, 08 Jul 2022 15:42:39 +0000
+Received: by mail-il1-x133.google.com with SMTP id a12so7941582ilp.13;
+        Fri, 08 Jul 2022 08:42:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=1qbexzS6sol5qJ39FyR4R0bbeTrcJijBH7KTqUd0Ou8=;
+        b=SwjJ9VYJLFyQCQJDmktrB+p9IemrszRWS/6xHtGftz6bTaFQ60Ai5c/vhHvJ/HoYpj
+         x3DMyzXOy9AC+leTEXpHVf/JhsvZXoT0LCbRNrd7Unk/gWj/gNmcCQoqZHGasCcEN8SH
+         Bn7psIeduhzabFb9TecVtcYFsBKumv3iG00LabLyDU1dmJWUXDU3xkF7ChFDMuyHTSip
+         hrkRrBmh2iqJDFN7RIEQqEPY9ZJIhE2qKqWrJaTjIQX9JLTTq2iW6gRKgmD6pC9V4yif
+         02nApBb+hbZLzP+h2lomwhGm9NWEki3RDudjL8QcW1RysgIlKk0mL1TT2IgnNpXChR+D
+         dgRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=1qbexzS6sol5qJ39FyR4R0bbeTrcJijBH7KTqUd0Ou8=;
+        b=SObm8TtRc0e/DkF6lMyNDr/WsnBNfNvFtbLlw8X6gxlUdkGfyhpUUr+OHnjiysLupb
+         aJ6ik+9nG8/OgcVIWb6rwYQ5VnHY9uegxPCNGFrMie0lEY5tTPQAnJ09LeAiNwa/E+ip
+         FGU9KQn+SMjExIlZZpZIcvUjDfypHUecgP4a6WnE3He2M02EofKS2nEzPgYuenRJ0nOB
+         xrfSajzNk9A0rrHuv3xWx37Lpg9eplazH6cp/lJ9E13HcZ/JaXgmpWSuYQEbUgfQ1JVT
+         ZuxExxHpEQxmrHLTEq1yk8qbaG5Re/2VORgLnJ5Ka2FRUlXLj+xqMs2enqq7/S9Fg8pz
+         O12g==
+X-Gm-Message-State: AJIora87kO+DqAhKoteShGb54m2ZZyEINIdjlDoscs5MhhNGygKZkHHO
+	WkZIOssbhGgU7g7WxMMFknI=
+X-Google-Smtp-Source: AGRyM1vz8B/CoTAGqci2yIFVCBapyRIex1680cllaQQhyX5o64k7/OZUGHA80vWS9TD2sV6E27bDfA==
+X-Received: by 2002:a05:6e02:174a:b0:2da:c72f:e3a6 with SMTP id y10-20020a056e02174a00b002dac72fe3a6mr2446019ill.309.1657294954008;
+        Fri, 08 Jul 2022 08:42:34 -0700 (PDT)
+Received: from [192.168.1.145] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id a9-20020a92c709000000b002dc133c9468sm5698548ilp.6.2022.07.08.08.42.29
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 08 Jul 2022 08:42:32 -0700 (PDT)
+Message-ID: <5841cdea-2587-5bd8-3e6c-19e49121677a@gmail.com>
+Date: Fri, 8 Jul 2022 17:42:28 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v24 07/10] soc: mediatek: mmsys: add mmsys for support 64
+ reset bits
+Content-Language: en-US
+To: "Nancy.Lin" <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, wim@linux-watchdog.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux@roeck-us.net
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <ndesaulniers@google.com>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ llvm@lists.linux.dev, singo.chang@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220622130824.29143-1-nancy.lin@mediatek.com>
+ <20220622130824.29143-8-nancy.lin@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220622130824.29143-8-nancy.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_084043_764717_B66EEB32 
-X-CRM114-Status: GOOD (  30.53  )
+X-CRM114-CacheID: sfid-20220708_084237_612189_609EC3F9 
+X-CRM114-Status: GOOD (  22.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,70 +103,138 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 8 Jul 2022 16:25:03 +0100
-"Russell King (Oracle)" <linux@armlinux.org.uk> wrote:
 
-> Hi,
-> 
-> On Thu, Jul 07, 2022 at 10:37:53PM +0300, Vladimir Oltean wrote:
-> > +static int dsa_port_fixup_broken_dt(struct dsa_port *dp)  
-> 
-> As I mentioned, I doubt that Andrew considers this "broken DT" as he's
-> been promoting this as a standard DSA feature.
-> 
-> > +{
-> > +	struct property_entry fixed_link_props[] = {
-> > +		PROPERTY_ENTRY_BOOL("full-duplex"),
-> > +		PROPERTY_ENTRY_U32("speed", 1000), /* TODO determine actual speed */
-> > +		{},
-> > +	};
-> > +	struct property_entry port_props[3] = {};
-> > +	struct fwnode_handle *fixed_link_fwnode;
-> > +	struct fwnode_handle *new_port_fwnode;
-> > +	struct device_node *dn = dp->dn;
-> > +	phy_interface_t mode;
-> > +	int err;
-> > +
-> > +	if (of_parse_phandle(dn, "phy-handle", 0) ||
-> > +	    of_phy_is_fixed_link(dn))
-> > +		/* Nothing broken, nothing to fix.
-> > +		 * TODO: As discussed with Russell, maybe phylink could provide
-> > +		 * a more comprehensive helper to determine what constitutes a
-> > +		 * valid fwnode binding than this guerilla kludge.
-> > +		 */
-> > +		return 0;  
-> 
-> I think this is sufficient. Yes, phylink accepts "phy" and "phy-device"
-> because it has to for compatibility with other drivers, but the binding
-> document for DSA quite clearly states that "phy-handle" is what DSA
-> accepts, so DT in the kernel will be validated against the yaml file
-> and enforce correctness here.
-> 
-> We do need to check for "sfp" being present as well.
-> 
-> > +
-> > +	err = of_get_phy_mode(dn, &mode);
-> > +	if (err)
-> > +		/* TODO this may be missing too, ask the driver for the
-> > +		 * max-speed interface mode for this port
-> > +		 */
-> > +		mode = PHY_INTERFACE_MODE_NA;  
-> 
-> I think it would be easier to omit the phy-mode property in the swnode
-> if it isn't present in DT, because then we can handle that in
-> dsa_port_phylink_create() as I've done in my patch series via the
-> ds->ops->phylink_get_caps() method.
-> 
-> > +
-> > +	port_props[0] = PROPERTY_ENTRY_U32("reg", dp->index);  
-> 
-> You said in one of your other replies that this node we're constructing
-> is only for phylink, do we need the "reg" property? phylink doesn't care
-> about it.
 
-We don't. Vladimir wrote: "We don't even need the "reg" u32 property, I
-just added that for no reason (I wasn't completely sure what the API
-offers, then I didn't remove it)."
+On 22/06/2022 15:08, Nancy.Lin wrote:
+> Add mmsys for support 64 reset bits. It is a preparation for MT8195
+> vdosys1 HW reset. MT8195 vdosys1 has more than 32 reset bits.
+> 
+> 1. Add the number of reset bits in mmsys private data
+> 2. move the whole "reset register code section" behind the
+> "get mmsys->data" code section for getting the num_resets in mmsys->data.
+> 
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
+>   drivers/soc/mediatek/mtk-mmsys.c | 35 ++++++++++++++++++++------------
+>   drivers/soc/mediatek/mtk-mmsys.h |  1 +
+>   2 files changed, 23 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index 16be77d5acac..47b72ae72cc2 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -20,6 +20,8 @@
+>   #include "mt8195-mmsys.h"
+>   #include "mt8365-mmsys.h"
+>   
+> +#define MMSYS_SW_RESET_PER_REG 32
+> +
+>   static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+>   	.clk_driver = "clk-mt2701-mm",
+>   	.routes = mmsys_default_routing_table,
+> @@ -86,6 +88,7 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+>   	.routes = mmsys_default_routing_table,
+>   	.num_routes = ARRAY_SIZE(mmsys_default_routing_table),
+>   	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
+> +	.num_resets = 32,
+>   };
+>   
+>   static const struct mtk_mmsys_match_data mt8173_mmsys_match_data = {
+> @@ -100,6 +103,7 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+>   	.routes = mmsys_mt8183_routing_table,
+>   	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
+>   	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
+> +	.num_resets = 32,
+>   };
+>   
+>   static const struct mtk_mmsys_match_data mt8183_mmsys_match_data = {
+> @@ -114,6 +118,7 @@ static const struct mtk_mmsys_driver_data mt8186_mmsys_driver_data = {
+>   	.routes = mmsys_mt8186_routing_table,
+>   	.num_routes = ARRAY_SIZE(mmsys_mt8186_routing_table),
+>   	.sw0_rst_offset = MT8186_MMSYS_SW0_RST_B,
+> +	.num_resets = 32,
+>   };
+>   
+>   static const struct mtk_mmsys_match_data mt8186_mmsys_match_data = {
+> @@ -288,10 +293,14 @@ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned l
+>   {
+>   	struct mtk_mmsys *mmsys = container_of(rcdev, struct mtk_mmsys, rcdev);
+>   	unsigned long flags;
+> +	u32 offset;
+> +
+> +	offset = (id / MMSYS_SW_RESET_PER_REG) * sizeof(u32);
+> +	id = id % MMSYS_SW_RESET_PER_REG;
+>   
+>   	spin_lock_irqsave(&mmsys->lock, flags);
+>   
+> -	mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset, BIT(id),
+> +	mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset + offset, BIT(id),
+>   			      assert ? 0 : BIT(id), NULL);
 
-Marek
+reg = mmsys->data->sw0_rst_offset + offset;
+mtk_mmsys_update_bits(mmsys, reg, BIT(id),
+                       assert ? 0 : BIT(id), NULL);
+
+Other then that, patch looks good.
+By the way setting val depending on assert in the function call gets (for me) 
+hard to read, as I said earlier.
+
+Regards,
+Matthias
+
+>   
+>   	spin_unlock_irqrestore(&mmsys->lock, flags);
+> @@ -349,18 +358,6 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+>   		return ret;
+>   	}
+>   
+> -	spin_lock_init(&mmsys->lock);
+> -
+> -	mmsys->rcdev.owner = THIS_MODULE;
+> -	mmsys->rcdev.nr_resets = 32;
+> -	mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
+> -	mmsys->rcdev.of_node = pdev->dev.of_node;
+> -	ret = devm_reset_controller_register(&pdev->dev, &mmsys->rcdev);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "Couldn't register mmsys reset controller: %d\n", ret);
+> -		return ret;
+> -	}
+> -
+>   	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>   	if (!res) {
+>   		dev_err(dev, "Couldn't get mmsys resource\n");
+> @@ -382,6 +379,18 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+>   		mmsys->data = match_data->drv_data[0];
+>   	}
+>   
+> +	spin_lock_init(&mmsys->lock);
+> +
+> +	mmsys->rcdev.owner = THIS_MODULE;
+> +	mmsys->rcdev.nr_resets = mmsys->data->num_resets;
+> +	mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
+> +	mmsys->rcdev.of_node = pdev->dev.of_node;
+> +	ret = devm_reset_controller_register(&pdev->dev, &mmsys->rcdev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Couldn't register mmsys reset controller: %d\n", ret);
+> +		return ret;
+> +	}
+> +
+>   #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+>   	ret = cmdq_dev_get_client_reg(dev, &mmsys->cmdq_base, 0);
+>   	if (ret)
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+> index f01ba206481d..20a271b80b3b 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.h
+> +++ b/drivers/soc/mediatek/mtk-mmsys.h
+> @@ -92,6 +92,7 @@ struct mtk_mmsys_driver_data {
+>   	const struct mtk_mmsys_routes *routes;
+>   	const unsigned int num_routes;
+>   	const u16 sw0_rst_offset;
+> +	const u32 num_resets;
+>   };
+>   
+>   struct mtk_mmsys_match_data {
 
