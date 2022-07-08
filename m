@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67B18C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 08:49:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01C94C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 08:52:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GdKsdwx5dlaNOMWWnp8ifHnV6NBfhIOSWBArdwvovU8=; b=k/Hn088/7sEHKjyZXnXVMyBN0d
-	f9Q+eUPFrZcOB/Mc/AqYOiF9aBcLpHJsKE92zBq+ZZruaUzWppt5BhTu8jbngcrOYmomrU7mfRwQH
-	DeYYqUWyG/nsy5Hg+QU3BTOroYKyQkYyn0ODSxtPWKYX1g7aBwJ+RtVNso5tRQjH4UMdKMECIXtkH
-	5AhwVUtwqh0Yhw7en7aEYsffFBPAaV6C9oMUQybgTSOU4rH+zqUsUq2RP8P8yeSRbM7GWfBifugbX
-	dyZSqmrru98MQcUJAIAbfA2/swOX4CggaCqGF4VAGD2X+igzOE1VpwDaxi6I4orSsw+ZvUK8FaGnI
-	IF4+/+0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=532/itSKRll+K3GYE1PjRP2NifzDm/we24T6bcVksY0=; b=ePHjliSXs++9QnuTwSawOhAYTZ
+	dmviIVPTi+8Ra7yCRzGtLjbqhjTFQjgid+yGs9zD2jTH9gtN7P8nHUDsmTx5tMRZdMG3PyKA5LYkE
+	TTdSfEWNoIoBgEmRqH4ghRboOMk3ze4Nn/VXyevssP3eWlStdEo7+O603NaaNkn2csueB2Deah3cE
+	kLxKHuJ8MvRuIC9FGuC6i5oUxY0FfUGR0SmZ0SCWsrPuY7gzfvyEGfk7m8gjA6BfdZjjHOJC2zu6X
+	Z+mUVWNGrTsZT8fI75gB/SbVcicqawpimxod6Y0SHD4WLg4qTuEdWWRo7M5BbkHXpIbiadGNJ0ntk
+	ebu/CCqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jgL-002fh1-CS; Fri, 08 Jul 2022 08:49:49 +0000
+	id 1o9jio-002gSU-E2; Fri, 08 Jul 2022 08:52:22 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jgJ-002ffv-BI; Fri, 08 Jul 2022 08:49:48 +0000
-X-UUID: dd2eaa2952a54f2cb3b088c425954fa6-20220708
+	id 1o9jil-002gRW-MZ; Fri, 08 Jul 2022 08:52:20 +0000
+X-UUID: 4794c1ec4d334dc880fbdebb9b54504e-20220708
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=532/itSKRll+K3GYE1PjRP2NifzDm/we24T6bcVksY0=;
+	b=eR+lyfTP/cfJhyezhu1VOY+dTk9gvDdwD9HSNYhmNIJmllBO4bfW16DP/CS228i6Ogw7FoZ/coUIiW9Ng7HboO44LXiLOxLSSHj/JMuKgtQNf5v4YH9StIevEYgTEcKMWlSXFRmE4Voao9FItXJi3Q9I4VIEzUgYv0jaOE0MIoc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:a5a3ec2a-01ad-4c97-b139-8c59776b2248,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:0f94e32,CLOUDID:d852f6d6-5d6d-4eaf-a635-828a3ee48b7c,C
+X-CID-O-INFO: VERSION:1.1.8,REQID:5924ac41-eb58-48d1-a410-c231f14be18a,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:c021c463-0b3f-4b2c-b3a6-ed5c044366a0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: dd2eaa2952a54f2cb3b088c425954fa6-20220708
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <biao.huang@mediatek.com>)
+X-UUID: 4794c1ec4d334dc880fbdebb9b54504e-20220708
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <xiangsheng.hou@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2084829366; Fri, 08 Jul 2022 01:49:44 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+	with ESMTP id 555779159; Fri, 08 Jul 2022 01:52:13 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Fri, 8 Jul 2022 16:39:40 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 8 Jul 2022 16:39:39 +0800
-From: Biao Huang <biao.huang@mediatek.com>
-To: David Miller <davem@davemloft.net>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue
-	<alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
-	<pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Biao
- Huang <biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <macpaul.lin@mediatek.com>
-Subject: [PATCH net v3] stmmac: dwmac-mediatek: fix clock issue
-Date: Fri, 8 Jul 2022 16:39:37 +0800
-Message-ID: <20220708083937.27334-2-biao.huang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220708083937.27334-1-biao.huang@mediatek.com>
-References: <20220708083937.27334-1-biao.huang@mediatek.com>
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 8 Jul 2022 16:52:11 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Fri, 8 Jul 2022 16:52:10 +0800
+Message-ID: <81889c7ba5ce34bb767eaeb98528e11c8ff42388.camel@mediatek.com>
+Subject: Re: [PATCH v2 1/2] arm64: dts: mt8173: Fix nor_flash node
+From: xiangsheng.hou <xiangsheng.hou@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <bin.zhang@mediatek.com>,
+	<benliang.zhao@mediatek.com>, <linux-mediatek@lists.infradead.org>
+Date: Fri, 8 Jul 2022 16:52:10 +0800
+In-Reply-To: <184ce9e3-6031-98ab-cae6-a4aa2015b5c4@gmail.com>
+References: <20220630090157.29486-1-xiangsheng.hou@mediatek.com>
+	 <20220630090157.29486-2-xiangsheng.hou@mediatek.com>
+	 <24bf3c0f-7070-0bcd-2fae-9fe086d146b2@gmail.com>
+	 <e4a50d4e165887ac4741c0b8d68470dc2f060655.camel@mediatek.com>
+	 <184ce9e3-6031-98ab-cae6-a4aa2015b5c4@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-MTK: N
+Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_014947_430456_E81FFFE2 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20220708_015219_781742_2565919C 
+X-CRM114-Status: GOOD (  18.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,87 +84,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since clocks are handled in mediatek_dwmac_clks_config(),
-remove the clocks configuration in init()/exit(), and
-invoke mediatek_dwmac_clks_config instead.
-
-This issue is found in suspend/resume test.
-
-Fixes: 3186bdad97d5 ("stmmac: dwmac-mediatek: add platform level clocks management")
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
----
- .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 36 +++++--------------
- 1 file changed, 9 insertions(+), 27 deletions(-)
-
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-index 6ff88df58767..e86f3e125cb4 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-@@ -576,32 +576,7 @@ static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
- 		}
- 	}
- 
--	ret = clk_bulk_prepare_enable(variant->num_clks, plat->clks);
--	if (ret) {
--		dev_err(plat->dev, "failed to enable clks, err = %d\n", ret);
--		return ret;
--	}
--
--	ret = clk_prepare_enable(plat->rmii_internal_clk);
--	if (ret) {
--		dev_err(plat->dev, "failed to enable rmii internal clk, err = %d\n", ret);
--		goto err_clk;
--	}
--
- 	return 0;
--
--err_clk:
--	clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
--	return ret;
--}
--
--static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
--{
--	struct mediatek_dwmac_plat_data *plat = priv;
--	const struct mediatek_dwmac_variant *variant = plat->variant;
--
--	clk_disable_unprepare(plat->rmii_internal_clk);
--	clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
- }
- 
- static int mediatek_dwmac_clks_config(void *priv, bool enabled)
-@@ -643,7 +618,6 @@ static int mediatek_dwmac_common_data(struct platform_device *pdev,
- 	plat->addr64 = priv_plat->variant->dma_bit_mask;
- 	plat->bsp_priv = priv_plat;
- 	plat->init = mediatek_dwmac_init;
--	plat->exit = mediatek_dwmac_exit;
- 	plat->clks_config = mediatek_dwmac_clks_config;
- 	if (priv_plat->variant->dwmac_fix_mac_speed)
- 		plat->fix_mac_speed = priv_plat->variant->dwmac_fix_mac_speed;
-@@ -712,13 +686,21 @@ static int mediatek_dwmac_probe(struct platform_device *pdev)
- 	mediatek_dwmac_common_data(pdev, plat_dat, priv_plat);
- 	mediatek_dwmac_init(pdev, priv_plat);
- 
-+	ret = mediatek_dwmac_clks_config(priv_plat, true);
-+	if (ret)
-+		return ret;
-+
- 	ret = stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
- 	if (ret) {
- 		stmmac_remove_config_dt(pdev, plat_dat);
--		return ret;
-+		goto err_drv_probe;
- 	}
- 
- 	return 0;
-+
-+err_drv_probe:
-+	mediatek_dwmac_clks_config(priv_plat, false);
-+	return ret;
- }
- 
- static const struct of_device_id mediatek_dwmac_match[] = {
--- 
-2.25.1
+SGkgTWF0dGhpYXMsDQoNCk9uIEZyaSwgMjAyMi0wNy0wOCBhdCAxMDoyMiArMDIwMCwgTWF0dGhp
+YXMgQnJ1Z2dlciB3cm90ZToNCj4gDQo+IE9uIDA4LzA3LzIwMjIgMDM6NDAsIHhpYW5nc2hlbmcu
+aG91IHdyb3RlOg0KPiA+IEhpIE1hdHRoaWFzLA0KPiA+IA0KPiA+IE9uIFRodSwgMjAyMi0wNy0w
+NyBhdCAxNjo0MyArMDIwMCwgTWF0dGhpYXMgQnJ1Z2dlciB3cm90ZToNCj4gPiA+IA0KPiA+ID4g
+T24gMzAvMDYvMjAyMiAxMTowMSwgWGlhbmdzaGVuZyBIb3Ugd3JvdGU6DQo+ID4gPiA+IEFkZCBh
+eGkgY2xvY2sgc2luY2UgdGhlIGRyaXZlciBjaGFuZ2UgdG8gRE1BIG1vZGUgd2hpY2ggbmVlZA0K
+PiA+ID4gPiB0byBlbmFibGUgYXhpIGNsb2NrLiBBbmQgY2hhbmdlIHNwaSBjbG9jayB0byAyNk1I
+eiBhcyBkZWZhdWx0Lg0KPiA+ID4gPiANCj4gPiA+ID4gU2lnbmVkLW9mZi1ieTogWGlhbmdzaGVu
+ZyBIb3UgPHhpYW5nc2hlbmcuaG91QG1lZGlhdGVrLmNvbT4NCj4gPiA+IA0KPiA+ID4gQXBwbGll
+ZCwgdGhhbmtzIQ0KPiA+ID4gDQo+ID4gDQo+ID4gSSB3aWxsIHNlbmQgYSBuZXcgcGF0Y2ggdjMg
+c2luY2UgdGhlcmUgbmVlZCBhIGNoYW5nZSBpbiBbUEFUQ0ggdjINCj4gPiAyLzJdDQo+ID4gYnkg
+cmV2aWV3Lg0KPiA+IA0KPiANCj4gVGhhbmtzIGZyb20gbGV0dGluZyBtZSBrbm93LiBGcm9tIHdo
+YXQgSSBjYW4gc2VlLCAxLzIgaW4gdjMgZGlkIG5vdA0KPiBjaGFuZ2UsIHNvIA0KPiBhcyBJIGFs
+cmVhZHkgYXBwbGllZCBpdCwgeW91IGNvdWxkIGhhdmUgZHJvcHBlZCBpdCBmcm9tIHRoZSBzZXJp
+ZXMuDQo+IA0KPiBQbGVhc2UgY29ycmVjdCBtZSBpZiBJJ20gd3JvbmcuDQo+IA0KWWVzLCB5b3Ug
+YXJlIHJpZ2h0IGFuZCBJIHdpbGwgZHJvcCBpdCBpZiB0aGVyZSB3aWxsIGhhdmUgbmV4dCBzZXJp
+ZXMuDQoNClRoYW5rcw0KWGlhbmdzaGVuZyBIb3UNCg==
 
 
