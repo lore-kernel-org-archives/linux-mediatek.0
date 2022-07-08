@@ -4,82 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B909C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 08:14:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1371C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 08:15:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D0Qf6XYpQVz6j4kI9S9/dfIfwmKCeXho7yxm3tWLHDw=; b=ATHJBxNNC2/ismM/17dsN8DbMM
-	eM+0z4Oqg6xU/0gwwNDEhOVmYY/cSzvmImZSTarAJgkcTI2pnkyPwtq361JiqzrND2ZmkiNsQk1tE
-	Z/47uek5rETYR/h7eIvPkxs5RCynjd6sNql7PLuxXAd/KCGyhSiAJ9Pv9MbR+NOeEBOX0dOANbvfm
-	yV+e6rrybR5IpHEJGjZD/WLTupxkREro20qDKjYTIsha8DlF5WaigpmkBF81baHDQBLvhSB3rUvI3
-	+NTfBFNHIctt+Bx/vCYED+P17NjRNQ4qJMCSEgwDJ7BwPGDJSKqH+dPj6YmDGcMQSxTXwYM7CvNGC
-	GE6OvclQ==;
+	bh=zqaTc4cHkMh4zBwGHpJlxaEPi3zLPbL0WjYdh5YW8b0=; b=s9XX0V2giQInr6pYsLu06odCIT
+	+H1K1VwCg6oH9fnu8gxRp8d+0/IE8eA5VQRAiVJxcIn4oKIU9X5agggREDQGMfHZY4mNzN5zFwDF1
+	BAEaNP/g6WyuiqZUdrZUg6+cujGNRmG+UoU26fq/zVZd12mJUKTkJ1eXVQIZB5TIPzQnIOdj+Wdoh
+	VRqRrqOcYtjM7lSTYsoK5ON4pzeF7zmeB+epX5mrURkuV2Fa8OWO32ZQZ7VY8sjMa2/+sAj77U0cD
+	O5ifsYk97kdh0HRtqDMDKVjmWh+wsF9gnolJ71UzF4HVQJE3FRA6AS1mnGXaE/+yFKXzYzxDtN6f9
+	zd8G2ZzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9j7u-002R0w-Ka; Fri, 08 Jul 2022 08:14:14 +0000
-Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135])
+	id 1o9j8r-002RUl-Pa; Fri, 08 Jul 2022 08:15:13 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9j5V-002PqA-DS; Fri, 08 Jul 2022 08:11:46 +0000
-Received: by mail-il1-x135.google.com with SMTP id p13so12476687ilq.0;
-        Fri, 08 Jul 2022 01:11:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=D0Qf6XYpQVz6j4kI9S9/dfIfwmKCeXho7yxm3tWLHDw=;
-        b=a8PcvC8T4pJniQ7yqIayMgWH+3gEkHFNYRNhxRMkOr+jhG/UVyB81CyvGH1U4WYubR
-         kpQ6Xx8kAmsRhSqkwvV2Wmt1lbaLqIT2v8NsFZiAJfZYikttPD39vSH//rSSnRJNKWvP
-         Fd4GpgmjsxOTqwJVm5oWb5g1hbTgrTWJmgv1ydYr/5ZIGUfX/Ra4U9VsVHtVb3hTNdC0
-         Ba3uPYLrjTDGkbr9WrQnt3A/kHsQWVzo7qPGW7Xl3yeTNshhdwpBPg/bkWBk8iaMDxys
-         n64woJm5X85Tw/NZHT+GJG3SJJ0xSGbjYzuTIWnKfkKwxKgVg1VaWrTs9U4crZuba7d/
-         LIWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=D0Qf6XYpQVz6j4kI9S9/dfIfwmKCeXho7yxm3tWLHDw=;
-        b=UUsjuP0obCJxJaq0tfOyu+rOjnXAUjeXdik+vyzxQQ5IRhuMaxD572ygYsXYVEVvtm
-         UYAWsfE0kPewoCcItQYA/QxPTXDIAohvUPOjAolIffVbAerNzdj90PlMOR6Neuet40zb
-         iNdsQw/WvNGjgGspHjLwY4j9igmZxzCJFSiM4SZ95Fmx8q5YGARFbpg0d7wCYrIpMEP5
-         s3PBhMBM/UsLeaDNMHO3wMtfUcUqo3iuQiX1BJu0tP5mkwlizGNzdBA6NOwcpQ3Swx3n
-         /6559LNQ7VDiITfLPhEEw8B2AYRKChIKqaGCHLbjrvsYqZ0i2qlo78HXDRvQNCDRXEXF
-         5LBA==
-X-Gm-Message-State: AJIora/Cai15P7GJNOCb66Gd/JVYzK8zrXpqyhOHzBSIL/ZyUUJ8l7v8
-	W7zZ8B+G0dfA1BxoS+hpcXo=
-X-Google-Smtp-Source: AGRyM1v57jK2+8qNDptU7lzeTTrC2OcvyKTWnuxBMkLgal9tNGKAfuHo96gs8C1loeyjFe61SHiZww==
-X-Received: by 2002:a05:6e02:1848:b0:2da:af35:e7c3 with SMTP id b8-20020a056e02184800b002daaf35e7c3mr1352620ilv.265.1657267904342;
-        Fri, 08 Jul 2022 01:11:44 -0700 (PDT)
-Received: from [192.168.1.145] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id z62-20020a0293c4000000b0033f258426c0sm960209jah.108.2022.07.08.01.11.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 08 Jul 2022 01:11:43 -0700 (PDT)
-Message-ID: <624e365e-0f00-9640-74a7-c16e7c7d3469@gmail.com>
-Date: Fri, 8 Jul 2022 10:11:39 +0200
+	id 1o9j7F-002QhW-Un; Fri, 08 Jul 2022 08:13:35 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9740266019D1;
+	Fri,  8 Jul 2022 09:13:31 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657268012;
+	bh=HhAChS+K51bNxk2DP8DUaQ+Ar93nqS3yFt69vVEpOAs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=gddanjJlgH7sblqg1l5mhtUMLcnLujTx9cXAHJQt/10tGHweIpsrFhN6Ejrlh/hG9
+	 qtDuSgSt3Phf/lLKcMlXPPQJt58QfRq4y82tAgGWwDEF8KxT4fooZ4OkmZcE+jvKsn
+	 /Awe+K6tRYxnKH09anJIqduc0qmX/r3ykRHfIXWk/5JBZFyoFdSRO5UCr4z0dRkSC/
+	 J4tVZuS6m0FY7ILMjHZqvqA1XBFOd/MqGag1zyTGT1zg1SH0In1A9wZXhdT9G0WihD
+	 ATyL7xODW1vGgZastds30am/aqvaUKXmndDvNNAfgbsBvUpYwdNs+vu8ZcQDfGwL52
+	 J5mMHHw2WiKqg==
+Message-ID: <4ee027c3-fbfb-52dd-fa38-74dcff526bf5@collabora.com>
+Date: Fri, 8 Jul 2022 10:13:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] ASoC: mediatek: mt8186: Remove condition with no effect
+ Thunderbird/91.10.0
+Subject: Re: [RESEND v4 2/2] i2c: mediatek: Add i2c compatible for Mediatek
+ MT8188
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Zhongjun Tan <hbut_tan@163.com>, lgirdwood@gmail.com, broonie@kernel.org,
- perex@perex.c, tiwai@suse.com, jiaxin.yu@mediatek.com,
- tanzhongjun@coolpad.com, colin.king@intel.com
-Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220708024651.42999-1-hbut_tan@163.com>
- <ee0d9788-b742-21bb-9cc5-7b729897408b@collabora.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <ee0d9788-b742-21bb-9cc5-7b729897408b@collabora.com>
+To: kewei.xu@mediatek.com, wsa@the-dreams.de
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, linux-i2c@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ leilk.liu@mediatek.com, qii.wang@mediatek.com, liguo.zhang@mediatek.com,
+ caiyu.chen@mediatek.com, housong.zhang@mediatek.com, yuhan.wei@mediatek.com,
+ david-yh.chiu@mediatek.com, liju-clr.chen@mediatek.com
+References: <20220708034758.22747-1-kewei.xu@mediatek.com>
+ <20220708034758.22747-2-kewei.xu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220708034758.22747-2-kewei.xu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_011145_495231_1A05AFFA 
-X-CRM114-Status: GOOD (  13.99  )
+X-CRM114-CacheID: sfid-20220708_011334_235125_6710B0A3 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,47 +79,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 08/07/2022 10:01, AngeloGioacchino Del Regno wrote:
-> Il 08/07/22 04:46, Zhongjun Tan ha scritto:
->> From: Zhongjun Tan <tanzhongjun@coolpad.com>
->>
->> Remove condition with no effect
->>
->> Signed-off-by: Zhongjun Tan <tanzhongjun@coolpad.com>
->> ---
->>   sound/soc/mediatek/mt8186/mt8186-dai-adda.c | 2 --
->>   1 file changed, 2 deletions(-)
->>
->> diff --git a/sound/soc/mediatek/mt8186/mt8186-dai-adda.c 
->> b/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
->> index db71b032770d..6be6d4f3b585 100644
->> --- a/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
->> +++ b/sound/soc/mediatek/mt8186/mt8186-dai-adda.c
->> @@ -295,8 +295,6 @@ static int mtk_adda_pad_top_event(struct 
->> snd_soc_dapm_widget *w,
->>       case SND_SOC_DAPM_PRE_PMU:
->>           if (afe_priv->mtkaif_protocol == MTKAIF_PROTOCOL_2_CLK_P2)
->>               regmap_write(afe->regmap, AFE_AUD_PAD_TOP, 0x39);
->> -        else if (afe_priv->mtkaif_protocol == MTKAIF_PROTOCOL_2)
->> -            regmap_write(afe->regmap, AFE_AUD_PAD_TOP, 0x31);
+Il 08/07/22 05:47, kewei.xu@mediatek.com ha scritto:
+> From: Kewei Xu <kewei.xu@mediatek.com>
 > 
-> I think that this needs some clarification from MediaTek: was 0x31 a typo here?
+> Add i2c compatible for MT8188. Compare to MT8192 i2c controller,
+> The MT8188 i2c OFFSET_SLAVE_ADDR register changed from 0x04 to 0x94.
 > 
+> Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
+> ---
+> v4: no changes
+> V3: no changes
+> V2: added mt_i2c_regs_v3[] to replace slave_addr_version.
+> ---
+>   drivers/i2c/busses/i2c-mt65xx.c | 43 +++++++++++++++++++++++++++++++++
+>   1 file changed, 43 insertions(+)
+> 
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index 8e6985354fd5..70aff42adf5d 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -229,6 +229,35 @@ static const u16 mt_i2c_regs_v2[] = {
+>   	[OFFSET_DCM_EN] = 0xf88,
+>   };
+>   
+> +static const u16 mt_i2c_regs_v3[] = {
+> +	[OFFSET_DATA_PORT] = 0x0,
 
-Looks like the write is covered by the else case already, so we don't need the 
-else if here. In any case commit message could be improved.
+> +	[OFFSET_SLAVE_ADDR] = 0x94,
 
-Regards,
-Matthias
+Please keep this list ordered by register offset.
 
-> Regards,
-> Angelo
-> 
->>           else
->>               regmap_write(afe->regmap, AFE_AUD_PAD_TOP, 0x31);
->>           break;
-> 
-> 
+> +	[OFFSET_INTR_MASK] = 0x8,
+> +	[OFFSET_INTR_STAT] = 0xc,
+> +	[OFFSET_CONTROL] = 0x10,
+> +	[OFFSET_TRANSFER_LEN] = 0x14,
+> +	[OFFSET_TRANSAC_LEN] = 0x18,
+> +	[OFFSET_DELAY_LEN] = 0x1c,
+> +	[OFFSET_TIMING] = 0x20,
+> +	[OFFSET_START] = 0x24,
+> +	[OFFSET_EXT_CONF] = 0x28,
+> +	[OFFSET_LTIMING] = 0x2c,
+> +	[OFFSET_HS] = 0x30,
+> +	[OFFSET_IO_CONFIG] = 0x34,
+> +	[OFFSET_FIFO_ADDR_CLR] = 0x38,
+> +	[OFFSET_SDA_TIMING] = 0x3c,
+> +	[OFFSET_TRANSFER_LEN_AUX] = 0x44,
+> +	[OFFSET_CLOCK_DIV] = 0x48,
+> +	[OFFSET_SOFTRESET] = 0x50,
+> +	[OFFSET_MULTI_DMA] = 0x8c,
+> +	[OFFSET_SCL_MIS_COMP_POINT] = 0x90,
+
+[OFFSET_SLAVE_ADDR] = 0x94   goes here,
+
+after which:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
