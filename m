@@ -4,82 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A1A0CCA481
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 10:45:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDBB3C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 11:00:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9YKU34GLEp41EDZn2kjkgQMLGLaO6pSs5EyA1lQO2E4=; b=mtyBr4ZkqolG1ToqAbSK1dotkN
-	aZmqZRIbRNGjA4rta0k2GlxNXIamUabOlLNo8E/UJYSHvoN/IzCd2ZzdDw0YTShILLXWQ7ykBIUeT
-	fyjaPTJcZxObqtCceca9Nf6opZAUmdRqRMH84ELkw4Uy2PjclAS4wpltjuIFYQb+yk99sgxUtvINM
-	xP4HPPJxhWX4qheFqBM4OSWXq0ZyjIxyLC2q6ExjizV8SciEAJywUxXWET7fEUmXuHBZBizeH4vbI
-	5VeYFy//9dgqiU283As/fdgi1yOYtn2Drxtm4ySf0xfFjCCRmQYyym78ZMWDiayPgEsEiE3aYMX/W
-	WDVDUTWw==;
+	bh=VjmdkJt0XBwFjxApvFIOatFCLhZ6yOKc/HqJ/ZTnn6M=; b=KspcTZyd+LKWiWPkYUZm6eN2f1
+	i0VUwAn1zkazZqYfP5lQojqvkqSCEx63H71zTQ3LWzobk7Ex/ZuwDU2E12r9WIfEtVCte1Cax4Xdq
+	5pU5XzC4pDif9zW2LU9Oz8vBXNFtobK3NyjG82DEwOZZryoH4YmqFwZCpMv5rcsOXlkSAbIk3Rd8R
+	TWG8bIvJmh8Zf4OXygUJTz04RR/Jcc1TWMIZi1Ysb5zJH5X7ET3Q195W1F9gmOx9uZm0oJXvANo82
+	2rCSlDXs4MAO+ikjFNFpDLwQbCPC7xHxQ/NvLLEpqAzl4QqpupU+cZi+19yMc3AcNaZTNQ09OoFe1
+	1H1tbTUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9lUH-003FDy-3a; Fri, 08 Jul 2022 10:45:29 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1o9lib-003K53-Jl; Fri, 08 Jul 2022 11:00:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9lUE-003FAa-6j
-	for linux-mediatek@lists.infradead.org; Fri, 08 Jul 2022 10:45:27 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id j3so10571745pfb.6
-        for <linux-mediatek@lists.infradead.org>; Fri, 08 Jul 2022 03:45:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=9YKU34GLEp41EDZn2kjkgQMLGLaO6pSs5EyA1lQO2E4=;
-        b=dqbnkEH5EoOPhrneF2bHotmJP/mn9F2++Fxt5LVJ29z+GMbvQWK6ebrdQzuHNmsHeV
-         WIPR5StC33VoXXUqOaOlaeK0FtPaepWuD+0e9218tCVd8psm4CdKuUr5r1EyXwDPoc36
-         m/XQg/0u3rcnxz1cTpUmqXV7llOPiA8ZGDIrY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=9YKU34GLEp41EDZn2kjkgQMLGLaO6pSs5EyA1lQO2E4=;
-        b=bvy0YgdbXSS3gIMZc0yrpufHN47uD7C+u32yfA1bXwrkQwOYlO9OZxi/6HE2qOSrhq
-         kS/Ykjf7nTQmu0QRa0g73hrw15YjyVzOFgtDf39NYTWd/M6wYIgeSQJgydnJgGMyRm2b
-         cOuwByiIcZ7maot02tJaJ+jiuiPQ9GvQDSDLC0Y+5Ei9bRQ6Nbi9cBwhhjX/ir5trSIb
-         68Ff0yNDudllKMJytEwr6We3Vr7DSAC1KyYNVCceUQTp3OjNiifiH1IwDHU5LybFob5d
-         P33jcZE4B7eIFPqrtBE9cgbbvawG1nVkvm8xto0X3aLODzHJgi7GNdU9p7vhW98YF86m
-         4QGg==
-X-Gm-Message-State: AJIora96YzRyYLzYJ6W6yOQN2EtzHzA0ArXTPJLxarRJKAtHWW/dazEL
-	woWU6MmGVyJ3Lv26KUb5YkSafg==
-X-Google-Smtp-Source: AGRyM1v8Rsv6CDJhU/YyBCRySDcL9J8Fzw2nEIwQ5hE7WoNGbc8NMz0qBZ8qGhCMS99QTJ74qVZnAA==
-X-Received: by 2002:a65:6048:0:b0:412:73c7:cca9 with SMTP id a8-20020a656048000000b0041273c7cca9mr2837658pgp.257.1657277123264;
-        Fri, 08 Jul 2022 03:45:23 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:db98:ad5d:ca9:da58])
-        by smtp.gmail.com with ESMTPSA id m6-20020a635806000000b0040c9213a414sm27216187pgb.46.2022.07.08.03.45.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Jul 2022 03:45:23 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	linux-media@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Nicolas Dufresne <nicolas@ndufresne.ca>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Subject: [PATCH v2 2/2] media: mediatek: vcodec: Make encoder capability fields fit requirements
-Date: Fri,  8 Jul 2022 18:44:51 +0800
-Message-Id: <20220708104451.3901064-3-wenst@chromium.org>
-X-Mailer: git-send-email 2.37.0.rc0.161.g10f37bed90-goog
-In-Reply-To: <20220708104451.3901064-1-wenst@chromium.org>
-References: <20220708104451.3901064-1-wenst@chromium.org>
+	id 1o9liY-003K2c-OP; Fri, 08 Jul 2022 11:00:16 +0000
+X-UUID: 64e3f0c76ae14878b6106cc681132254-20220708
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=VjmdkJt0XBwFjxApvFIOatFCLhZ6yOKc/HqJ/ZTnn6M=;
+	b=uDHYEFAlXF5fSVtpPRtaXw8EyK5WYGx97cvGZxnqejBtY12BwFngU5ea+zD5ml+YNTlug/H22YQN6gjgNp5fhx4YteHXs5pNiWDUjobT51zeMXTfEX+2XkfbqMoEnGM0d5JONGhlF9Dx/ujq1CRINEkFarpRsl+z/mzNZxD0/9w=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:5eb31563-b9ac-4a9b-a613-85b1f13a4911,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:cb29c763-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 64e3f0c76ae14878b6106cc681132254-20220708
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jiaxin.yu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1305093034; Fri, 08 Jul 2022 04:00:07 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 8 Jul 2022 18:19:30 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Fri, 8 Jul 2022 18:19:29 +0800
+Message-ID: <503a71aa95b8e4b75eb7e9e5de03a013f5155036.camel@mediatek.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8186: Remove condition with no effect
+From: Jiaxin Yu <jiaxin.yu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Zhongjun Tan <hbut_tan@163.com>, <lgirdwood@gmail.com>, <broonie@kernel.org>,
+	<perex@perex.c>, <tiwai@suse.com>, <matthias.bgg@gmail.com>,
+	<tanzhongjun@coolpad.com>, <colin.king@intel.com>
+CC: <alsa-devel@alsa-project.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Date: Fri, 8 Jul 2022 18:19:29 +0800
+In-Reply-To: <ee0d9788-b742-21bb-9cc5-7b729897408b@collabora.com>
+References: <20220708024651.42999-1-hbut_tan@163.com>
+	 <ee0d9788-b742-21bb-9cc5-7b729897408b@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MTK: N
+Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_034526_250978_897D61CE 
-X-CRM114-Status: GOOD (  17.79  )
+X-CRM114-CacheID: sfid-20220708_040014_835263_94A0FCE3 
+X-CRM114-Status: GOOD (  17.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,77 +82,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This partially reverts commit fd9f8050e355d7fd1e126cd207b06c96cde7f783,
-and changes things so that the capability string fields of the encoder
-conform to their requirements.
-
-The driver name field should contain the actual driver name, not some
-otherwise unused string macro from the driver. To make this clear,
-copy the name from the driver's name field.
-
-The card name for the video encoder previously held a static platform
-name that was fixed to match MT8173. This obviously doesn't make sense
-for newer chips. Since commit fd9f8050e355 ("media: mediatek: vcodec:
-Change encoder v4l2 capability value"), this field was changed to hold
-the driver's name, or "mtk-vcodec-dec". This doesn't make much sense
-either, since this still doesn't reflect what chip this is.
-
-Instead, fill in the card name with "MTxxxx video encoder" with the
-proper chip number.
-
-Since commit f2d8b6917f3b ("media: v4l: ioctl: Set bus_info in
-v4l_querycap()"), the V4L2 core provides a default value for the
-bus_info field for platform and PCI devices. This value will match
-the default value for media devices added by commit cef699749f37
-("media: mc: Set bus_info in media_device_init()"). These defaults
-are stable and device-specific.
-
-Drop the custom capability bus_info from the mtk-vcodec encoder
-driver, and use the defaults.
-
-As this patch removes the last usage of MTK_VCODEC_DRV_NAME, remove
-the macro as well.
-
-Fixes: fd9f8050e355 ("media: mediatek: vcodec: Change encoder v4l2 capability value")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h | 1 -
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 7 ++++---
- 2 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-index 4140b4dd85bf..a8570a654561 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-@@ -19,7 +19,6 @@
- #include "mtk_vcodec_util.h"
- #include "vdec_msg_queue.h"
- 
--#define MTK_VCODEC_DRV_NAME	"mtk_vcodec_drv"
- #define MTK_VCODEC_DEC_NAME	"mtk-vcodec-dec"
- #define MTK_VCODEC_ENC_NAME	"mtk-vcodec-enc"
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-index ccc753074816..25e816863597 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-@@ -232,11 +232,12 @@ static int mtk_vcodec_enc_get_chip_name(void *priv)
- static int vidioc_venc_querycap(struct file *file, void *priv,
- 				struct v4l2_capability *cap)
- {
-+	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-+	struct device *dev = &ctx->dev->plat_dev->dev;
- 	int platform_name = mtk_vcodec_enc_get_chip_name(priv);
- 
--	strscpy(cap->driver, MTK_VCODEC_DRV_NAME, sizeof(cap->driver));
--	strscpy(cap->card, MTK_VCODEC_ENC_NAME, sizeof(cap->card));
--	snprintf(cap->bus_info, sizeof(cap->bus_info), "platform:mt%d-enc", platform_name);
-+	strscpy(cap->driver, dev->driver->name, sizeof(cap->driver));
-+	snprintf(cap->card, sizeof(cap->card), "MT%d video encoder", platform_name);
- 
- 	return 0;
- }
--- 
-2.37.0.rc0.161.g10f37bed90-goog
+T24gRnJpLCAyMDIyLTA3LTA4IGF0IDEwOjAxICswMjAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
+ZWdubyB3cm90ZToNCj4gSWwgMDgvMDcvMjIgMDQ6NDYsIFpob25nanVuIFRhbiBoYSBzY3JpdHRv
+Og0KPiA+IEZyb206IFpob25nanVuIFRhbiA8dGFuemhvbmdqdW5AY29vbHBhZC5jb20+DQo+ID4g
+DQo+ID4gUmVtb3ZlIGNvbmRpdGlvbiB3aXRoIG5vIGVmZmVjdA0KPiA+IA0KPiA+IFNpZ25lZC1v
+ZmYtYnk6IFpob25nanVuIFRhbiA8dGFuemhvbmdqdW5AY29vbHBhZC5jb20+DQo+ID4gLS0tDQo+
+ID4gICBzb3VuZC9zb2MvbWVkaWF0ZWsvbXQ4MTg2L210ODE4Ni1kYWktYWRkYS5jIHwgMiAtLQ0K
+PiA+ICAgMSBmaWxlIGNoYW5nZWQsIDIgZGVsZXRpb25zKC0pDQo+ID4gDQo+ID4gZGlmZiAtLWdp
+dCBhL3NvdW5kL3NvYy9tZWRpYXRlay9tdDgxODYvbXQ4MTg2LWRhaS1hZGRhLmMNCj4gPiBiL3Nv
+dW5kL3NvYy9tZWRpYXRlay9tdDgxODYvbXQ4MTg2LWRhaS1hZGRhLmMNCj4gPiBpbmRleCBkYjcx
+YjAzMjc3MGQuLjZiZTZkNGYzYjU4NSAxMDA2NDQNCj4gPiAtLS0gYS9zb3VuZC9zb2MvbWVkaWF0
+ZWsvbXQ4MTg2L210ODE4Ni1kYWktYWRkYS5jDQo+ID4gKysrIGIvc291bmQvc29jL21lZGlhdGVr
+L210ODE4Ni9tdDgxODYtZGFpLWFkZGEuYw0KPiA+IEBAIC0yOTUsOCArMjk1LDYgQEAgc3RhdGlj
+IGludCBtdGtfYWRkYV9wYWRfdG9wX2V2ZW50KHN0cnVjdA0KPiA+IHNuZF9zb2NfZGFwbV93aWRn
+ZXQgKncsDQo+ID4gICAJY2FzZSBTTkRfU09DX0RBUE1fUFJFX1BNVToNCj4gPiAgIAkJaWYgKGFm
+ZV9wcml2LT5tdGthaWZfcHJvdG9jb2wgPT0NCj4gPiBNVEtBSUZfUFJPVE9DT0xfMl9DTEtfUDIp
+DQo+ID4gICAJCQlyZWdtYXBfd3JpdGUoYWZlLT5yZWdtYXAsIEFGRV9BVURfUEFEX1RPUCwNCj4g
+PiAweDM5KTsNCj4gPiAtCQllbHNlIGlmIChhZmVfcHJpdi0+bXRrYWlmX3Byb3RvY29sID09DQo+
+ID4gTVRLQUlGX1BST1RPQ09MXzIpDQo+ID4gLQkJCXJlZ21hcF93cml0ZShhZmUtPnJlZ21hcCwg
+QUZFX0FVRF9QQURfVE9QLA0KPiA+IDB4MzEpOw0KPiANCj4gSSB0aGluayB0aGF0IHRoaXMgbmVl
+ZHMgc29tZSBjbGFyaWZpY2F0aW9uIGZyb20gTWVkaWFUZWs6IHdhcyAweDMxIGENCj4gdHlwbyBo
+ZXJlPw0KPiANCj4gUmVnYXJkcywNCj4gQW5nZWxvDQo+IA0KSGkgQW5nZWxvLA0KDQpUaGlzIHBh
+dGNoIGNhbiBiZSBhY2NlcHRlZC4gVGhlIDB4MzEgaXMgbm90IHR5cG8sIHRoZSBsb2dpYyBvZiB0
+aGlzDQpjb2RlIGlzIG5vdCBjb25jaXNlIGVub3VnaC4NCg0KVGhhbmtzLA0KSmlheGluLll1DQoN
+Cj4gPiAgIAkJZWxzZQ0KPiA+ICAgCQkJcmVnbWFwX3dyaXRlKGFmZS0+cmVnbWFwLCBBRkVfQVVE
+X1BBRF9UT1AsDQo+ID4gMHgzMSk7DQo+ID4gICAJCWJyZWFrOw0KPiANCj4gDQo=
 
 
