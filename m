@@ -4,64 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E517C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 19:43:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8609EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 21:52:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MQ8k25fXL0YSe9/5rgOVowp+ThadmiNAGjz9NrrnrdI=; b=1/IJbsPcnxPz8f9lmgFfnVeBkn
-	Aebmb8QyhxSMFdj6DETrdGeppcbQjpDwUsfugh6qKsC3+9/7tv3NUldHoNXJblDXveczwhbnMURPq
-	rLZ9cM/qYhw/K4i4siPqnQR8Hvz0MoHEADK4gLqpzXqqwoNwmXGtT1IBPwlZpGHqFZlsYPY6LKioA
-	DUoO46IaLAiNUxZefRaM5tzC0Do5VIIcE+JqQwCqnlGgGkz8fQEFIYFUaNUJSi4G7EYjKHAJbTpRi
-	PvIvHhea1h/a6DrL4YWZsrzD6e0UpDLBF+0t/sS53mmRr1d+MG4lsF5lZ7XxWfwoOCU6vcl9RWpKN
-	tH1T2HOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fiNv0Alai9EH7dZDCi1PyHKKwG3IbGXbZWz3fQBsea8=; b=uaYbA++rHESbpqi8xLP1cHVew9
+	/vkw+5Lc/pG9jICtvsurLMRYGDLG/bnY1H5NBMDoATgDOglwUntCYDBKAnY9GQ1sIL3LRaFnvzgYn
+	npYZaagwimX49CUqBebczcAP901ZpEu4UynD41UxAyoHNfT2OiH7CoxjNST76UV3rZH3Y9IE6IKXl
+	CMFl8lRQhGM7TTOfki3g+mKIoNgioju9AMvlJNYA6xj9ckWFtrwv9qXb43HEml8CukV5H9KA/n8XE
+	FmO9gS6VDi/hkj+w5uy/Rq3iHBtf3MuQNz/xsG2T7TCphyLhTbRNPPEuqxlC5q936vW3Tp81rBMbE
+	oprHVVmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9tt0-005ed3-P9; Fri, 08 Jul 2022 19:43:34 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o9vtH-0066e0-2e; Fri, 08 Jul 2022 21:51:59 +0000
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9tsm-005eZu-W1; Fri, 08 Jul 2022 19:43:22 +0000
-Received: from notapiano.myfiosgateway.com (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D32E566019F4;
-	Fri,  8 Jul 2022 20:43:17 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657309399;
-	bh=HsUUHgmSxVGoE99t9D33ofg+0MT1fLdgE9yRIXfbc5k=;
-	h=From:To:Cc:Subject:Date:From;
-	b=NFlrFAEcQLDYh2KzyNiBIAanYfG78/212pnVJp/Ef9PyFL98XpD1yTDF3og3uAbrk
-	 EK6tDvCNILxi2YjDcfGAbaK0fZLkjNNCAf7d0988Ad3c9W+FsFHULfFHrDz+IpvGCA
-	 oW4cfvzaJwE7TixCDvINh/sW/E9hhV1HhCqALfU/Gh83Gl6PE2DChRkJy9188zWfGh
-	 EvlF6ZqzEBXFBUkaWpKfkFLmQSTgTGP04x5xwNGQj+SjacFzoRTpDwEyHGDYacmLG1
-	 viBzuZNL395uGOq30CNCOkJ9qT9hkC+nNcYyt9fVqr/mDQpRWV0jIcLr8tDyEQRZuB
-	 j8b0Xz41iaDdg==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] arm64: dts: mediatek: Add missing xHCI clocks for mt8192 and mt8195
-Date: Fri,  8 Jul 2022 15:43:14 -0400
-Message-Id: <20220708194314.56922-1-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.37.0
+	id 1o9vt6-0066cd-8B; Fri, 08 Jul 2022 21:51:49 +0000
+Received: by mail-pg1-x535.google.com with SMTP id bh13so66356pgb.4;
+        Fri, 08 Jul 2022 14:51:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=fiNv0Alai9EH7dZDCi1PyHKKwG3IbGXbZWz3fQBsea8=;
+        b=MSz4Sm3eITqXDffTpexNgFQFo7gFIvmPs3JBn/F3fpFocDwbkg+WMkcfNId1grcwDG
+         XkQTIF4u6HzejKTwBGiZMndZt7BKxB3EvqqHTtc1tZtuD7nQpqHfz5LvG9h0wbKJXqtJ
+         IyeMFo7h29QSXPSQbs2AwS0Ca//VgT7ATmPQx4ibHMKh+I5pGCd8NU9kWuV/qZzmQeHA
+         U8EptU0ZICnSwyv4n5DwO1iBLnAUjJw8vANMr5ESSPQhXu2W/uNvRYfU6SeiDJNhTW8W
+         ABUVnBrvOVMmDE7vDUXktoKQ9tYBy2Q9LwuXdVd6aCsMsL+bkeMeABQvqDElBTiN82RV
+         JcBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=fiNv0Alai9EH7dZDCi1PyHKKwG3IbGXbZWz3fQBsea8=;
+        b=8PDrYkIBHWpqZqoijz8mJj28jwTkwQgD7dknmaNLU5CjNdHLdNlkAV8EwtsUhy9bce
+         cYXudG0cK9VoaRWC41P6gHNCJq99saQpNTzxrk3q2uXzax0up07l1nTcU/VURePqzTGc
+         7MRxSmyyQ2p21prjTeLBnWlxEeL07YCxchKSi9+aZimZi2IGwvJlsoISHcuWBXaWtstL
+         9wQTGBzpftWq5NtnZ4Jx8oYzc5XL6mt2lOPSP93k+wMc1ZJkoljtUZYjj65YEb5MYjx2
+         CGLqloZpZkHgPQSfkcRYcI4zkjV2paoZEa5UhbuiBjUy3uLaaAHJ6yuFnVtxW+61hUGx
+         CFkg==
+X-Gm-Message-State: AJIora+FS6PZHBWi8dkx8BG7eSgROXjSwGwqg4B+wQJe1gOa8jpxkmWI
+	uIqO6ZiRWrfghfATE1sGQVol7unc+ok=
+X-Google-Smtp-Source: AGRyM1uYhqCsDi8OmJDblGFpyMNCU0JzLEh/Ftbo6SVxxodcocclwAq3ghkXUpOOn8qg0rjTEYq0qg==
+X-Received: by 2002:a63:87c8:0:b0:415:b0c1:56f5 with SMTP id i191-20020a6387c8000000b00415b0c156f5mr5165733pge.352.1657317105874;
+        Fri, 08 Jul 2022 14:51:45 -0700 (PDT)
+Received: from google.com ([2620:15c:202:201:9707:b37:49b0:77c2])
+        by smtp.gmail.com with ESMTPSA id lk5-20020a17090b33c500b001ef92e0e7c1sm2137246pjb.10.2022.07.08.14.51.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 08 Jul 2022 14:51:44 -0700 (PDT)
+Date: Fri, 8 Jul 2022 14:51:41 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel test robot <lkp@intel.com>, kbuild-all@lists.01.org,
+	matthias.bgg@gmail.com, mkorpershoek@baylibre.com,
+	linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 RESEND] Input: mtk-pmic-keys - Add support for MT6331
+ PMIC keys
+Message-ID: <Ysim7S2xjkbCFDJ1@google.com>
+References: <20220706101122.201007-1-angelogioacchino.delregno@collabora.com>
+ <202207061915.tYTQKEhu-lkp@intel.com>
+ <4e55465d-ccf1-56b0-dfa4-84832edfa937@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4e55465d-ccf1-56b0-dfa4-84832edfa937@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_124321_301675_7043433E 
-X-CRM114-Status: GOOD (  12.99  )
+X-CRM114-CacheID: sfid-20220708_145148_327727_C9FCB4FA 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,106 +91,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek xHCI dt-binding expects a specific order for the clocks,
-but the mt8192 and mt8195 devicetrees were skipping some of the middle
-clocks. These clocks are wired to the controller hardware but aren't
-controllable.
+On Wed, Jul 06, 2022 at 02:13:45PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 06/07/22 13:44, kernel test robot ha scritto:
+> > Hi AngeloGioacchino,
+> > 
+> > Thank you for the patch! Yet something to improve:
+> > 
+> > [auto build test ERROR on dtor-input/next]
+> > [also build test ERROR on linus/master v5.19-rc5 next-20220705]
+> 
+> 
+> This patch compiles fine on next-20220706.
 
-Add the missing clocks as handles to fixed clocks, so that the clock
-order is respected and the dtbs_check warnings are gone.
+Unfortunately linux/mfd/mt6331/registers.h is still not in mainline. We
+either need to wait when it gets there or ask Lee for an immutable
+branch that would contain shared definitions that I cam pull from.
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Thanks.
 
----
-A previous attempt to solve this also made all clocks required and
-updated all MediaTek DTs using the xhci binding [1].
-
-To avoid the DT change noise, the binding change is now being reverted
-[2] and only mt8192 and mt8195 DTs are updated in this commit to get rid
-of the warnings.
-
-[1] https://lore.kernel.org/all/20220623193702.817996-4-nfraprado@collabora.com/
-[2] https://lore.kernel.org/all/20220708192605.43351-1-nfraprado@collabora.com
-
- arch/arm64/boot/dts/mediatek/mt8192.dtsi |  9 ++++++---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 18 ++++++++++++++----
- 2 files changed, 20 insertions(+), 7 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index cbae5a5ee4a0..869958fd420c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -724,9 +724,12 @@ xhci: usb@11200000 {
- 			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5_D4>,
- 						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
- 			clocks = <&infracfg CLK_INFRA_SSUSB>,
--				 <&infracfg CLK_INFRA_SSUSB_XHCI>,
--				 <&apmixedsys CLK_APMIXED_USBPLL>;
--			clock-names = "sys_ck", "xhci_ck", "ref_ck";
-+				 <&apmixedsys CLK_APMIXED_USBPLL>,
-+				 <&clk26m>,
-+				 <&clk26m>,
-+				 <&infracfg CLK_INFRA_SSUSB_XHCI>;
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
- 			wakeup-source;
- 			mediatek,syscon-wakeup = <&pericfg 0x420 102>;
- 			status = "disabled";
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 066c14989708..725985e599be 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -560,8 +560,10 @@ xhci0: usb@11200000 {
- 			clocks = <&infracfg_ao CLK_INFRA_AO_SSUSB>,
- 				 <&topckgen CLK_TOP_SSUSB_REF>,
- 				 <&apmixedsys CLK_APMIXED_USB1PLL>,
-+				 <&clk26m>,
- 				 <&infracfg_ao CLK_INFRA_AO_SSUSB_XHCI>;
--			clock-names = "sys_ck", "ref_ck", "mcu_ck", "xhci_ck";
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
- 			mediatek,syscon-wakeup = <&pericfg 0x400 103>;
- 			wakeup-source;
- 			status = "disabled";
-@@ -625,8 +627,10 @@ xhci1: usb@11290000 {
- 			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_1P_BUS>,
- 				 <&topckgen CLK_TOP_SSUSB_P1_REF>,
- 				 <&apmixedsys CLK_APMIXED_USB1PLL>,
-+				 <&clk26m>,
- 				 <&pericfg_ao CLK_PERI_AO_SSUSB_1P_XHCI>;
--			clock-names = "sys_ck", "ref_ck", "mcu_ck","xhci_ck";
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
- 			mediatek,syscon-wakeup = <&pericfg 0x400 104>;
- 			wakeup-source;
- 			status = "disabled";
-@@ -646,8 +650,11 @@ xhci2: usb@112a0000 {
- 						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
- 			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_2P_BUS>,
- 				 <&topckgen CLK_TOP_SSUSB_P2_REF>,
-+				 <&clk26m>,
-+				 <&clk26m>,
- 				 <&pericfg_ao CLK_PERI_AO_SSUSB_2P_XHCI>;
--			clock-names = "sys_ck", "ref_ck", "xhci_ck";
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
- 			mediatek,syscon-wakeup = <&pericfg 0x400 105>;
- 			wakeup-source;
- 			status = "disabled";
-@@ -667,8 +674,11 @@ xhci3: usb@112b0000 {
- 						 <&topckgen CLK_TOP_UNIVPLL_D5_D4>;
- 			clocks = <&pericfg_ao CLK_PERI_AO_SSUSB_3P_BUS>,
- 				 <&topckgen CLK_TOP_SSUSB_P3_REF>,
-+				 <&clk26m>,
-+				 <&clk26m>,
- 				 <&pericfg_ao CLK_PERI_AO_SSUSB_3P_XHCI>;
--			clock-names = "sys_ck", "ref_ck", "xhci_ck";
-+			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck",
-+				      "xhci_ck";
- 			mediatek,syscon-wakeup = <&pericfg 0x400 106>;
- 			wakeup-source;
- 			status = "disabled";
 -- 
-2.37.0
-
+Dmitry
 
