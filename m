@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7705C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 15:25:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C241C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Jul 2022 15:34:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wq0NAkd8wYLgPrcVZQ4B+mA85a1Aciftk8zEWMpxvIE=; b=EWIK7aRw4kOTZS+NiDwZf0TPqx
-	Q3G3KXRRjNs2jmsCEPTRc4IRQRLk/Dg0z7LqjFEyd/nqXPRD0HIaQQEXenxrPXCQSSHRZtASACBvN
-	QDJtrgMKJcnnsWw6UAebx+vZ0GcvvSQQKt+vkrJzXTvAJ6eC1KhApmQne/uNDaHJ9xjYKDxV1SlGq
-	VNSHZBIzC4sZGlz+NIOyB+B/frNmdYkTs5Dc4FmU5yetbi4PZhhS24K6djXLjomjppi8UkvYwssfW
-	isEZ7asaiiheqKbzAsCV8y1iglxkqxVhjobvJzGqjdx4CqpTHNr3oUxIKOOnB7oqHiigrXS6RL+6I
-	fWawwRZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MAqLoi+55aml5N6fFSPK1rUqMXnOHduR/XoxC2k56IQ=; b=NwOwm/GIHGhp7z+4k4Lzo6bYvc
+	HjpZP0dN0YZGAJD8va+Nc0WLDJ2Ash+lRaeKNmsbqv+jOifyWLOKKH9na7PZml2Dm4gw8lfmfyobC
+	0zIY5QnjETzDiMgrRXnZsVjBhAaBv6LkMrOmJ1GxBYa/GAVzw/lUIUwNKsr1NUy/okmh6TU3uKbq0
+	tJPcs1tWOPz4g0V3puWbzVJm7NPsMArwQ+wUL8cFZEWBSarj+T4wwnMO+KjRvx9KHBPKj3wd+iW/v
+	iXySdacziLmIMilHs2VjNL4cbYzqwnd/jxcK9KM8YQJAWcqDKLFnDoI+Y3wLLKNZVnavh1wqUWN3B
+	xUXBnP6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9prS-004M6K-Gk; Fri, 08 Jul 2022 15:25:42 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1o9pzv-004Nqz-Ju; Fri, 08 Jul 2022 15:34:27 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9prD-004Lvb-Dj; Fri, 08 Jul 2022 15:25:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Wq0NAkd8wYLgPrcVZQ4B+mA85a1Aciftk8zEWMpxvIE=; b=vYp6Wr/FBQNvkWpnTWSQrm0eHm
-	sh4C9d29OdqU9b2cirBGMMLlGotcNgn8Y1uuNmgXu8UnQmyQmuZUfHd0NtnTbXDuASj/gm8V7O8QJ
-	ONtUz0DdApvahtQsDg5XcIJYpxTNN/wopAJ7FI/Nwn0KAig+R6WrNRQ3+ddh43sGlL70U/sVT//fA
-	RfB9vmvnh+kPRHMLMolb79ANjUKaASuIGM2qBGBChbx4fK+ZOWBXIMz20KE5zSU1X2zs0Jbn2g2Xb
-	XbZEjB+sZMBzh2cJcrd7ckXQYc29HnxXdhFqVk6mTOThqvbuBbdtltmVg3blxFKvUCgHlMaF+lAZC
-	kHiLBy1Q==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33254)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1o9pqu-0005D7-O1; Fri, 08 Jul 2022 16:25:08 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1o9pqp-0006JM-29; Fri, 08 Jul 2022 16:25:03 +0100
-Date: Fri, 8 Jul 2022 16:25:03 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alvin __ipraga <alsi@bang-olufsen.dk>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	George McCollister <george.mccollister@gmail.com>,
-	Hauke Mehrtens <hauke@hauke-m.de>, Jakub Kicinski <kuba@kernel.org>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
-	UNGLinuxDriver@microchip.com,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
-Subject: Re: [PATCH RFC net-next 5/5] net: dsa: always use phylink for CPU
- and DSA ports
-Message-ID: <YshMT3KP/B6BiEIg@shell.armlinux.org.uk>
-References: <YsQIjC7UpcGWJovx@shell.armlinux.org.uk>
- <E1o8fA7-0059aO-K8@rmk-PC.armlinux.org.uk>
- <20220706102621.hfubvn3wa6wlw735@skbuf>
- <YsW3KSeeQBiWQOz/@shell.armlinux.org.uk>
- <Ysaw56lKTtKMh84b@shell.armlinux.org.uk>
- <20220707152727.foxrd4gvqg3zb6il@skbuf>
- <YscAPP7mF3KEE1/p@shell.armlinux.org.uk>
- <20220707163831.cjj54a6ys5bceb22@skbuf>
- <YscUwrPnBZ3dzpQ/@shell.armlinux.org.uk>
- <20220707193753.2j67ni3or3bfkt6k@skbuf>
+	id 1o9pzk-004Nmj-C3; Fri, 08 Jul 2022 15:34:17 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id o19-20020a05600c511300b003a2de48b4bbso13365wms.5;
+        Fri, 08 Jul 2022 08:34:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=MAqLoi+55aml5N6fFSPK1rUqMXnOHduR/XoxC2k56IQ=;
+        b=aBInTkdfKEbuCecWBfZTYBsX4pUvITVCPZg6LYSP+R7TTijdbEIlhjuLniqz7iqDLT
+         N9lputlg96scgD8vmFch3VKZPdBFs/4Rtus1IKiZdq3vIYYqOuH+FgGK9SGDdxSHfaMx
+         tVd+lRAUvCiR9C356gGavD38VLJr+ahNtI8b4EjlHmpeL4swe+YMSW03QZzPf/6kiNCz
+         Z76F1yjmN02kgpKeQiRhk6CBIIldbqJJRfvkzyrmsamXW4Qdc2KyCsov3mK3lpg8pQ8G
+         zN8jifKQG265+LEqfqGKruL1+PJ5STxAxnRHHeQ+PLfPJqFxaZHc+Wr5fQKPnID194vE
+         +wUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=MAqLoi+55aml5N6fFSPK1rUqMXnOHduR/XoxC2k56IQ=;
+        b=U6xvZAfzOAM+hogKFQFSC3pIXINg6ncJ7p4zVJl+lUOfn/BHVdIPlZlsYK8Pv64yP+
+         eV2LzyJic22cYvV6GkGvsPbZ8UP72Xfdd4owVPuOoUsseboAGJ9kb2ddVh9RBbpgwPIH
+         KxxHUq3Vg4zwCBIgwkKo5eouPtkpUoCBIx61Q4aUd9ABWn4J2Qy4D5DmTTAmG5qT9HrO
+         sa3MYHUmGBHZKoi2QCu9125kFQ8eC2q6uDck5dXfR7DELN4LLiIAc241eD+Mg1+Y5njh
+         lnYM4xathxhR2p0HOJrcr3K47JhJSGvtbEXOlX9bnoEry4iMihbn8m+5FpIAH83iHC9K
+         O61w==
+X-Gm-Message-State: AJIora+VE3jNARzwBVt92i1kUtRXMrzsxfxtNskfPBCdbDhJEGNkqbGe
+	8rFTama8oxnBplwZh1fP+kU=
+X-Google-Smtp-Source: AGRyM1vJh5BBswMOyUfeUEhKlXJeDvX61sP0BSyfepc6oJN5VGNdZqaoBvRL8zEWyyEan5Yznxgl1A==
+X-Received: by 2002:a7b:cd94:0:b0:3a1:7c5c:b11d with SMTP id y20-20020a7bcd94000000b003a17c5cb11dmr393698wmj.87.1657294453162;
+        Fri, 08 Jul 2022 08:34:13 -0700 (PDT)
+Received: from [192.168.1.145] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id c3-20020adfef43000000b0021bab0ba755sm42956689wrp.106.2022.07.08.08.34.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 08 Jul 2022 08:34:11 -0700 (PDT)
+Message-ID: <d1a93418-587b-a03d-ed9b-01646345deeb@gmail.com>
+Date: Fri, 8 Jul 2022 17:34:10 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220707193753.2j67ni3or3bfkt6k@skbuf>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v24 04/10] soc: mediatek: add mtk_mmsys_update_bits API
+Content-Language: en-US
+To: "Nancy.Lin" <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, wim@linux-watchdog.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux@roeck-us.net
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <ndesaulniers@google.com>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ llvm@lists.linux.dev, singo.chang@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220622130824.29143-1-nancy.lin@mediatek.com>
+ <20220622130824.29143-5-nancy.lin@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220622130824.29143-5-nancy.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_082527_493304_9632C704 
-X-CRM114-Status: GOOD (  20.18  )
+X-CRM114-CacheID: sfid-20220708_083416_454200_B7214F5A 
+X-CRM114-Status: GOOD (  19.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,65 +102,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On Thu, Jul 07, 2022 at 10:37:53PM +0300, Vladimir Oltean wrote:
-> +static int dsa_port_fixup_broken_dt(struct dsa_port *dp)
 
-As I mentioned, I doubt that Andrew considers this "broken DT" as he's
-been promoting this as a standard DSA feature.
-
+On 22/06/2022 15:08, Nancy.Lin wrote:
+> Add mtk_mmsys_update_bits API. Simplify code for update  mmsys reg.
+> It is a preparation for adding support for mmsys config API.
+> 
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
+>   drivers/soc/mediatek/mtk-mmsys.c | 37 +++++++++++++-------------------
+>   1 file changed, 15 insertions(+), 22 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index a74c86197d6a..ca5bf07114fa 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -192,22 +192,27 @@ static int mtk_mmsys_find_match_drvdata(struct mtk_mmsys *mmsys,
+>   	return -EINVAL;
+>   }
+>   
+> +static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask, u32 val)
 > +{
-> +	struct property_entry fixed_link_props[] = {
-> +		PROPERTY_ENTRY_BOOL("full-duplex"),
-> +		PROPERTY_ENTRY_U32("speed", 1000), /* TODO determine actual speed */
-> +		{},
-> +	};
-> +	struct property_entry port_props[3] = {};
-> +	struct fwnode_handle *fixed_link_fwnode;
-> +	struct fwnode_handle *new_port_fwnode;
-> +	struct device_node *dn = dp->dn;
-> +	phy_interface_t mode;
-> +	int err;
+> +	u32 tmp;
 > +
-> +	if (of_parse_phandle(dn, "phy-handle", 0) ||
-> +	    of_phy_is_fixed_link(dn))
-> +		/* Nothing broken, nothing to fix.
-> +		 * TODO: As discussed with Russell, maybe phylink could provide
-> +		 * a more comprehensive helper to determine what constitutes a
-> +		 * valid fwnode binding than this guerilla kludge.
-> +		 */
-> +		return 0;
-
-I think this is sufficient. Yes, phylink accepts "phy" and "phy-device"
-because it has to for compatibility with other drivers, but the binding
-document for DSA quite clearly states that "phy-handle" is what DSA
-accepts, so DT in the kernel will be validated against the yaml file
-and enforce correctness here.
-
-We do need to check for "sfp" being present as well.
-
+> +	tmp = readl_relaxed(mmsys->regs + offset);
+> +	tmp = (tmp & ~mask) | val;
+> +	writel_relaxed(tmp, mmsys->regs + offset);
+> +}
 > +
-> +	err = of_get_phy_mode(dn, &mode);
-> +	if (err)
-> +		/* TODO this may be missing too, ask the driver for the
-> +		 * max-speed interface mode for this port
-> +		 */
-> +		mode = PHY_INTERFACE_MODE_NA;
+>   void mtk_mmsys_ddp_connect(struct device *dev,
+>   			   enum mtk_ddp_comp_id cur,
+>   			   enum mtk_ddp_comp_id next)
+>   {
+>   	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+>   	const struct mtk_mmsys_routes *routes = mmsys->data->routes;
+> -	u32 reg;
+>   	int i;
+>   
+>   	for (i = 0; i < mmsys->data->num_routes; i++)
+> -		if (cur == routes[i].from_comp && next == routes[i].to_comp) {
+> -			reg = readl_relaxed(mmsys->regs + routes[i].addr);
+> -			reg &= ~routes[i].mask;
+> -			reg |= routes[i].val;
+> -			writel_relaxed(reg, mmsys->regs + routes[i].addr);
+> -		}
+> +		if (cur == routes[i].from_comp && next == routes[i].to_comp)
+> +			mtk_mmsys_update_bits(mmsys, routes[i].addr, routes[i].mask,
+> +					      routes[i].val);
+>   }
+>   EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_connect);
+>   
+> @@ -217,15 +222,11 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
+>   {
+>   	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+>   	const struct mtk_mmsys_routes *routes = mmsys->data->routes;
+> -	u32 reg;
+>   	int i;
+>   
+>   	for (i = 0; i < mmsys->data->num_routes; i++)
+> -		if (cur == routes[i].from_comp && next == routes[i].to_comp) {
+> -			reg = readl_relaxed(mmsys->regs + routes[i].addr);
+> -			reg &= ~routes[i].mask;
+> -			writel_relaxed(reg, mmsys->regs + routes[i].addr);
+> -		}
+> +		if (cur == routes[i].from_comp && next == routes[i].to_comp)
+> +			mtk_mmsys_update_bits(mmsys, routes[i].addr, routes[i].mask, 0);
+>   }
+>   EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
+>   
+> @@ -234,18 +235,10 @@ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned l
+>   {
+>   	struct mtk_mmsys *mmsys = container_of(rcdev, struct mtk_mmsys, rcdev);
+>   	unsigned long flags;
+> -	u32 reg;
+>   
+>   	spin_lock_irqsave(&mmsys->lock, flags);
+>   
+> -	reg = readl_relaxed(mmsys->regs + mmsys->data->sw0_rst_offset);
+> -
+> -	if (assert)
+> -		reg &= ~BIT(id);
+> -	else
+> -		reg |= BIT(id);
+> -
+> -	writel_relaxed(reg, mmsys->regs + mmsys->data->sw0_rst_offset);
+> +	mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset, BIT(id), assert ? 0 : BIT(id));
 
-I think it would be easier to omit the phy-mode property in the swnode
-if it isn't present in DT, because then we can handle that in
-dsa_port_phylink_create() as I've done in my patch series via the
-ds->ops->phylink_get_caps() method.
+Let's be this a normal if (assert) else but calling mtk_mmsys_update_bits().
 
-> +
-> +	port_props[0] = PROPERTY_ENTRY_U32("reg", dp->index);
+Other then that patch looks good.
 
-You said in one of your other replies that this node we're constructing
-is only for phylink, do we need the "reg" property? phylink doesn't care
-about it.
+Matthias
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+>   
+>   	spin_unlock_irqrestore(&mmsys->lock, flags);
+>   
 
