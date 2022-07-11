@@ -4,168 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D7DDC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 13:37:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 683E3C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 13:42:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tDK5UzieMdObw9Gp4J8NagMKGkNbKAupqd5Mm97ddY8=; b=kb3ownrnBMmRvZSUfD2s2O8fMW
-	VVoL2wcgG1xI33QMuCQ5ph6E9T4bX9+MyeGSq2VbQhHcKFzPjH9Ka5P62igtwWBNk+QFlimuea3dM
-	FL0V1PeElI82tcMov8tKVVSEbUNyXstYbLjIcJWRFJdrLD7oVsQMWCeXk7GyLvU6cT7DaCL0pt+VQ
-	uYIoxg1cJN8Xo67+oCwIhUTosTvWy/CbDq9+qESeell43L6Cg5ag42i+UvPNOjAQuGZSdruU731KC
-	yJbKDJ0u6rMewh/L6OBpd+IisMMQnIZksEG8mNn0Oh/q9xbQHW9VZeKG2VlFIDfimq6BJUTADyXOO
-	jZH/UoPQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BF7n1w93MbhMcWyG25iULsxXiasL+1X4h9CVOl0KEx8=; b=eYqb7G55oddU5D44TRlzu1Nm64
+	fs1gQfK+l6B4ccS5aA5E24Gfltdvsh3HZX+ea7g9W7falpDXaKGVp46Wsw3CKoYXE69uBfq0MAGAZ
+	A1gnCW94My7Th3pvE+TaPL47R9Tux9zA3GlahyXgWxpae3wtD5EqZvQR0TQcqSsr7zUPkicOihPPU
+	KHJP6g76xJKZa0Ivh+zabaFMQW2Z9D+JenPWIb3Mq54nI0gXuLA1MQprAdQSfoqh30AQVOT1Qvysg
+	oWWZTnVP0rSzmtN6LUo6du4idHqU5C3fByA2eeDIFbbIgfRPHQyF4sgWX91u7CeiFMQGIIO4NI6qK
+	28RhpiTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAtbH-001xvQ-EC; Mon, 11 Jul 2022 13:37:23 +0000
-Received: from mail-os0jpn01on2091.outbound.protection.outlook.com ([40.107.113.91] helo=JPN01-OS0-obe.outbound.protection.outlook.com)
+	id 1oAtgF-0020C0-1n; Mon, 11 Jul 2022 13:42:31 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAtbE-001xrV-Mi; Mon, 11 Jul 2022 13:37:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IhYgiju+B7bBQs/1UOpTMFzD35yrQFE/8UqTbXcT8Vomcq7VgecjctsGJgMEKe1bcbnBhm1cnt+LsbqMZ/cxv95b8S9XoD0ZWdndRB8LKkrNJxELKU6xs7tAIWw8D5TbvC6+NttCPrKf21zAvTx2qwQSIFwxVA3R2xTXX83CnmCIuVBWp3uN4cdfzIfixCIkWZzYEviIYYoI1mZc3cvPUrdwFB7BsWWjNxSEeckPV7EntOfUW0wq1S44MtXaxbSD4B8C/Y+VHnJouNcB1RhPbUl0jH4Fcc86Rjq7VQRYpMqtwZj6/oATqjU23Ce37dY+6RjfMRSPfPXaPLy32T27Vw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tDK5UzieMdObw9Gp4J8NagMKGkNbKAupqd5Mm97ddY8=;
- b=CawfYV3S/SLHd9FSJJuGQRd+GR+k4EKfFX3c3hnT1GHk3yZQPZYT8zBVD5jjI52g9W7nhx16OBFlYO76P83LJ9Mhs553ygm3vTJQ1f/a8OE2ZreUs1mb9Uvr4dNentBjVzzqNh8nx3tJkBxwS33KmFA6Lgd+kWYbCOkn0g4EuOn0BWc0jJnEi8p77+56az1Bub19u6agQAluPNpNEI8kW5owZMnSo+WAQmpuOtldVvypE9i3/n6WUIKBwTm5uZocRK7/It3kYt7bEDgRVNZwvdfywPCKXeITfLr6HjPM9FkdnzBmNQCGMxvYgIDnNDQyaM6mJ0mDHDU4num5f6gPZA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=bp.renesas.com; dmarc=pass action=none
- header.from=bp.renesas.com; dkim=pass header.d=bp.renesas.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bp.renesas.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tDK5UzieMdObw9Gp4J8NagMKGkNbKAupqd5Mm97ddY8=;
- b=ER85121dryParzsqU69r6t1Q3wZD1SJKTn22PHFG9MZB/piFjZ1A4zHtPNGlLiUDyYlqD3arbfLWnvNZJIpbQ7ob5BkDc+Pv2sA5uXHOJitLFmq/Lyp0E7Fb5rSUvckoU22S5NL55TtS1qo+4wCbUaXOG3l6K59CUTKLD7zhAH4=
-Received: from OS0PR01MB5922.jpnprd01.prod.outlook.com (2603:1096:604:bb::5)
- by TYCPR01MB6913.jpnprd01.prod.outlook.com (2603:1096:400:b8::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.16; Mon, 11 Jul
- 2022 13:37:15 +0000
-Received: from OS0PR01MB5922.jpnprd01.prod.outlook.com
- ([fe80::dc06:eb07:874:ecce]) by OS0PR01MB5922.jpnprd01.prod.outlook.com
- ([fe80::dc06:eb07:874:ecce%8]) with mapi id 15.20.5417.026; Mon, 11 Jul 2022
- 13:37:15 +0000
-From: Biju Das <biju.das.jz@bp.renesas.com>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-CC: =?utf-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, linux-arm-msm
-	<linux-arm-msm@vger.kernel.org>, OpenBMC Maillist <openbmc@lists.ozlabs.org>,
-	Linux-Renesas <linux-renesas-soc@vger.kernel.org>, "moderated
- list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	dl-linux-imx <linux-imx@nxp.com>, "open list:BROADCOM NVRAM DRIVER"
-	<linux-mips@vger.kernel.org>, Prabhakar Mahadev Lad
-	<prabhakar.mahadev-lad.rj@bp.renesas.com>, linux-iio
-	<linux-iio@vger.kernel.org>, "chrome-platform@lists.linux.dev"
-	<chrome-platform@lists.linux.dev>, linux-arm Mailing List
-	<linux-arm-kernel@lists.infradead.org>,
-	"linux-stm32@st-md-mailman.stormreply.com"
-	<linux-stm32@st-md-mailman.stormreply.com>, Andy Gross <agross@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>, Benson Leung
-	<bleung@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Tomer
- Maimon <tmaimon77@gmail.com>, Zhang Rui <rui.zhang@intel.com>, "Rafael J.
- Wysocki" <rafael@kernel.org>, Eugen Hristev <eugen.hristev@microchip.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>, Alexandre Belloni
-	<alexandre.belloni@bootlin.com>, Benjamin Fair <benjaminfair@google.com>,
-	Nancy Yuen <yuenn@google.com>, Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-	Jishnu Prakash <quic_jprakash@quicinc.com>, Christophe Branchereau
-	<cbranchereau@gmail.com>, Avi Fishman <avifishman70@gmail.com>, Tali Perry
-	<tali.perry1@gmail.com>, Michael Hennerich <Michael.Hennerich@analog.com>,
-	Miquel Raynal <miquel.raynal@bootlin.com>, Claudiu Beznea
-	<claudiu.beznea@microchip.com>, Lars-Peter Clausen <lars@metafoo.de>, Thara
- Gopinath <thara.gopinath@linaro.org>, Cai Huoqing <cai.huoqing@linux.dev>,
-	Fabio Estevam <festevam@gmail.com>, Olivier Moysan
-	<olivier.moysan@foss.st.com>, Shawn Guo <shawnguo@kernel.org>, Haibo Chen
-	<haibo.chen@nxp.com>, Arnd Bergmann <arnd@arndb.de>, Daniel Lezcano
-	<daniel.lezcano@linaro.org>, Patrick Venture <venture@google.com>, Amit
- Kucheria <amitk@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Paul Cercueil <paul@crapouillou.net>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Gwendal Grignou
-	<gwendal@chromium.org>, Bjorn Andersson <bjorn.andersson@linaro.org>,
-	Saravanan Sekar <sravanhome@gmail.com>, Guenter Roeck <groeck@chromium.org>,
-	Jonathan Cameron <jic23@kernel.org>, Pengutronix Kernel Team
-	<kernel@pengutronix.de>, Linus Walleij <linus.walleij@linaro.org>
-Subject: RE: [PATCH v2 15/15] iio: inkern: fix coding style warnings
-Thread-Topic: [PATCH v2 15/15] iio: inkern: fix coding style warnings
-Thread-Index: AQHYlSh1MmB5hz2fuEC85zhThtwVIa15KP5AgAACIoCAAADZYA==
-Date: Mon, 11 Jul 2022 13:37:15 +0000
-Message-ID:  <OS0PR01MB59227884F494F5C9DCF936E886879@OS0PR01MB5922.jpnprd01.prod.outlook.com>
-References: <20220711123835.811358-1-nuno.sa@analog.com>
- <20220711123835.811358-16-nuno.sa@analog.com>
- <CAHp75VcnuAtc+n+nhQ16yP9S-veX2c6ruquSewtPJdcqQwpyAQ@mail.gmail.com>
- <OS0PR01MB592214D4F12E0636DB7B98CD86879@OS0PR01MB5922.jpnprd01.prod.outlook.com>
- <CAHp75Ve1mAj9u3rVU7qseZ-MYw_PDjAAFA+69XeRv_pvEW-ZrQ@mail.gmail.com>
-In-Reply-To:  <CAHp75Ve1mAj9u3rVU7qseZ-MYw_PDjAAFA+69XeRv_pvEW-ZrQ@mail.gmail.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=bp.renesas.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 4300455f-5410-4271-23cf-08da634277b4
-x-ms-traffictypediagnostic: TYCPR01MB6913:EE_
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info:  AEDuIHto4xjVZ+QsjqPgOdUwEexhEBLITJq14iWcDQkgpgnK/D5FXzsTe0R9F6u9cAzxVH+c8aCX+TwA4doJ5svsbtjlAdcjO6QU/fHYk6RU5tQC11KK/y34+8DYY1XorUf7Vse0QwOqbXYygIY2gcxi2XY+Vlm2Z7dkX08/vTS9rjq2IT0h+7FjDhS3dq8p0OsogJ9OzJRr6e1ZYU4bfEbc3a29piduCmJih4HiB+ZreEQleBS5L/i1hWdwydkzegwRI3Z8CMZZm0ds8jwY4Nf9/rd3bZGJr8jO5/dIxt/1THwe+Pbv8mTErBXwIZg9AtWcKJnFXsA+wcqLATWn6pI/FLcaWVMbdZ/4Xc1FPILKK23QBNBx8R/8lmYXGP25/SJMgMTmVHscWk+NJacAF90f68jkMtHanjrXCRMQ1XyvFIEnXRqpi1xx/ezs2hohHtjK4VOMlGOpt9w/ZTBR7wmcGAnBciRu7iY1najGhpBLK6KbqRFdFfaWi4LnQkzLQ9YjR0mEKShcilZmbIkFFIq1KLxIfTZ89t9Lzx24G7QaY++B3u5+VIFxbI7dAwwP9oX2d5Wyr+w5o0INls0XTJKA7HQVGrjRZQHJVd2wSDaDtfxqKY8z6VjKmfL7f3tOoJPH2zKByVEUmsLAowNEdediUimcV9VIueAyj1y46jY7J9onPYpqeym6pLIUh+mLU65vCfhYy4/0Mz7fmld1Hg6oHwkUcSJgF6djlzwQrLaBefpl98XWuugvaqm+y5rmy+pA92ZqG1iZ1IRbe49s8ZNNptG5kGkkD5Xzv5nfr+ALmjpqy8Lx3Nh0f9427kLg
-x-forefront-antispam-report:  CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:OS0PR01MB5922.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(4636009)(376002)(396003)(346002)(366004)(39860400002)(136003)(86362001)(6506007)(5660300002)(52536014)(4326008)(66556008)(66476007)(41300700001)(478600001)(7696005)(7366002)(4744005)(8936002)(53546011)(7416002)(38070700005)(9686003)(33656002)(7406005)(2906002)(26005)(38100700002)(122000001)(55016003)(71200400001)(83380400001)(76116006)(54906003)(186003)(66946007)(316002)(6916009)(64756008)(8676002)(66446008);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0:  =?utf-8?B?czVUd2RhM2NPdElzMWJMbzhYQUdjOWZud0Y5NW94UVA3SFpiZWlFUVB5THlm?=
- =?utf-8?B?MFNseFRhb2NVVXg1WjZqb3NyZDZxWnZTbG9LSlpJcDdnSXhYYllsUHJEdXhH?=
- =?utf-8?B?M25sVjBsdThDY3FWYVVPd1VpTm0vWVYzWkN1T3NMcFJtM2twNm42ZTNneVZ6?=
- =?utf-8?B?SU5VeXRlb1hnM2trelhZcHZCUldXc25jRVo4UzI4aVYxaWx3U3MrS0RXdVR5?=
- =?utf-8?B?SXJ1SE8vTWNHalZxY2FNMi9vdFFPNWlUbjAvaEhHQ2RpT2NYdTgvOTBVUkVn?=
- =?utf-8?B?dSs2WDdDVXl0Zm95MmFUbkJqT2lOdU9TRzgwVm9ocndQYTcyWHYrNnltbFpC?=
- =?utf-8?B?dW5WNUhhT0NEc1N0Vld1aEEzSktOSjhMSm8zRi9JRUp0OU9IcDFUQ3VUa0sy?=
- =?utf-8?B?NG5wcDN2Y0lKL3A4Y3VZR3dyRi9zYmFGSHh3UWhQRWZZQ3N0RXhVQ1Iya0U2?=
- =?utf-8?B?bThML2hqQlF6T0RlK3hVSEdSN2Rxc0JpcEhQMjlhcHlGb3o0NHA5K3dHTElQ?=
- =?utf-8?B?c2d3MmI4N2ZTRjM3OWFWSjZ1U3FMMU1CeFkzZnR6YU5YSitPR0J4UVpNVjMx?=
- =?utf-8?B?OWozaG82VjYxT3k0Y01WK0VsRzBBUVNYcmRORGVoSEdmY29hVXk1SmdlSFRq?=
- =?utf-8?B?QjFNQm5VU1RFc0txZHNSVEFqR3JTM1R6d244cE1EcEkrOUhNYnh2djJJbUZx?=
- =?utf-8?B?aUdUdXlleWdxK0xGaTJUUWNZdVlPcm1tQmhyVzdRdlV4b2FFN0lKMWVMNXNo?=
- =?utf-8?B?cFEzYTNvaGJZUWk0ZTVQSW1WWEJncEhGWkpJT0tZVUVQRDhFSzhyRGpUOG9s?=
- =?utf-8?B?TElTYU03T1ZPSFFaajRQN1o4eU1FZE4yZmJ2WkE5QVpwZ2FpR2kwaSt0WTBS?=
- =?utf-8?B?UkdLTWVBd3lvMDcySE1VSk52b0V2ZHY0K1ZCU1kzd3I2a2FScWtERk9qZlhQ?=
- =?utf-8?B?eEk2dUdsd2tFdWtvNmdnNUN4akk1R0RYQUJJUmUrSjJkdjU5SE1LbGlnWHV0?=
- =?utf-8?B?T3lRYlhidnd2TW5mdHhsNlBuczdTUk1aTUFsYTZxUTBNajRQaS9KbWpSTDNx?=
- =?utf-8?B?YTYyYzYxVExrMHNHSFRGMStwRlYrK3BpR1hFb0FhUTR3RDl0S3ZsMTdBNFQx?=
- =?utf-8?B?NmpkMWpEcGU4Z2VpK2d0cTFhWkU2bHdSRXFvOUtJazRCb0l2dU1YcXIzZlJX?=
- =?utf-8?B?RU10MEtQUlFhcjRVekVMc1JUdWZvc29ucWNOcXBCbUxPUG9QbFJGaWxxc2gv?=
- =?utf-8?B?RVU3UXpXNitMdmN1OE0wd2xBNnFIVW5NZ2tDdzBDR2IvRUVRYTdlWDZ6ZnVu?=
- =?utf-8?B?ZUdybDFMWmtaY1c0T1l1Vko1N1ErVXUrQlNzV0Z1cnNrNmRmMm1admt3Vldx?=
- =?utf-8?B?bDc3WmhENEd6dkdrZFM0YTI4a3FUZitKMUkvWFFmN1hjTW5uZE04TWlqQWpw?=
- =?utf-8?B?VlJDV1cySCtCakxnR2lLczliS2o4Q3kxbFI4T3k2ZEsyZTBoUytRMHAwcmdl?=
- =?utf-8?B?U0RxYWZpWCtZN3phUFFndm56QnlSWDlTaHJFRlphZWJWQ2xzQnhGK2FVUjk0?=
- =?utf-8?B?Nkh1L2dnc1YzV2RyTDhwdGRYdHh6SkwrY3NWdWdqL0c4Y25kMHFmYjBPdnds?=
- =?utf-8?B?a0NOTGgvTVczalZOcWYwTXZZckJIQWo0cC9PazhyTlYralVsZUZnUnVic0lO?=
- =?utf-8?B?TWJXK21uSTlJd281UGdmdDVjSS9jNU8rdUZyVzNLYTd1RUV1bXowdUxZUStJ?=
- =?utf-8?B?OGVrYzRmczRYSHZuUGlBSXNCM2lhZythOU83c1k3Y1N3bmJwZml1TE9OYXE0?=
- =?utf-8?B?Zm8rbGc5RTlPTWV3SzhNZzc4VjYwNVROMkZRRTc5YnFXZTNWWnJkSFRwdkRD?=
- =?utf-8?B?cDJXWTJ6ZGdmUmtyNkx2WWttS1l2RS9nWXFqMW5Wa2FEN3lXMStnM2hFNHJN?=
- =?utf-8?B?UGoraUdwaHYwRFhPdlliWU5ZaEFNODlHaW51dWVBV0k1cEc4ZmFiY1Rna0FN?=
- =?utf-8?B?bGlheXZsZXd6TlAwK083TkxyeHd0M0hLeXdpeStOVisvVys5bGZQUlpWL2Y5?=
- =?utf-8?B?bWpMNGdlSTZnaTlGdjhmYjd6WnRxaE9IalRabG1xakJsbEZjdjdwRDhveVhs?=
- =?utf-8?B?Uytmd1ZIeDQ3UVpFUUM5ZGdiY3JaTnpKYnM5Rkg3SDZOSXFWSlIwLzgvUFV0?=
- =?utf-8?B?OUE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	id 1oAtg2-002077-QF; Mon, 11 Jul 2022 13:42:20 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 7125EB80EFE;
+	Mon, 11 Jul 2022 13:42:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F271C34115;
+	Mon, 11 Jul 2022 13:42:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1657546936;
+	bh=p8ORd2QPR8RvrqSvkiemyZJhadncjyk4UWpXgXg70WY=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=ldoLgmodCYQDgStD4Vaqe5rs2omN2SKIuO4JfFJXoFYyKPfbijaa1TCZ5mKesN9Al
+	 qzO9CVdPg/qbr/arCiVJHeULdG+8FeaDVxn00mjkQSbgXqfjO4CEZWbxk+mEdvRc8U
+	 jza7EZVVyL9wW5r22EXOOmRVtVWW7TrzV+BXLTw6X8QZ4Ryw8+ASimKL68GgZ+mU+H
+	 eD4Ih7SSiyEqdtAaPYsU8vHqY2kWRpZwXBfc/M9TXFjDbVfla/fHz0cS1JoDfARR/o
+	 N+f/JFBNdC8bKodbgVpoW0gX829ViloCIzQ7D5ykdz+xIEh7f+nsg1RyqAcdWAZEtN
+	 QN+zNgD9+TjYw==
+From: Mark Brown <broonie@kernel.org>
+To: jiaxin.yu@mediatek.com, lgirdwood@gmail.com, angelogioacchino.delregno@collabora.com, tiwai@suse.com, hbut_tan@163.com, perex@perex.c, tanzhongjun@coolpad.com, matthias.bgg@gmail.com, colin.king@intel.com
+Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20220708024651.42999-1-hbut_tan@163.com>
+References: <20220708024651.42999-1-hbut_tan@163.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8186: Remove condition with no effect
+Message-Id: <165754693321.334539.8263656402397393470.b4-ty@kernel.org>
+Date: Mon, 11 Jul 2022 14:42:13 +0100
 MIME-Version: 1.0
-X-OriginatorOrg: bp.renesas.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: OS0PR01MB5922.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4300455f-5410-4271-23cf-08da634277b4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Jul 2022 13:37:15.3006
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 53d82571-da19-47e4-9cb4-625a166a4a2a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 538ML/L2QC4FWfCam53etBivki7rqseDB51hOagVDTVN34ZMl5KklBWYiHphBDV/IgUwCsa2wlOHeRo/8PG0++cpooCw57+PT3mhbndUmAQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYCPR01MB6913
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_063721_107241_C9E057D1 
-X-CRM114-Status: GOOD (  17.08  )
+X-CRM114-CacheID: sfid-20220711_064219_033872_3CA1D1C7 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -180,21 +69,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQW5keSwNCg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHYyIDE1LzE1XSBpaW86IGlua2Vybjog
-Zml4IGNvZGluZyBzdHlsZSB3YXJuaW5ncw0KPiANCj4gT24gTW9uLCBKdWwgMTEsIDIwMjIgYXQg
-MzoyOCBQTSBCaWp1IERhcyA8YmlqdS5kYXMuanpAYnAucmVuZXNhcy5jb20+DQo+IHdyb3RlOg0K
-PiA+ID4gU3ViamVjdDogUmU6IFtQQVRDSCB2MiAxNS8xNV0gaWlvOiBpbmtlcm46IGZpeCBjb2Rp
-bmcgc3R5bGUgd2FybmluZ3MNCj4gPiA+IE9uIE1vbiwgSnVsIDExLCAyMDIyIGF0IDI6NDAgUE0g
-TnVubyBTw6EgPG51bm8uc2FAYW5hbG9nLmNvbT4gd3JvdGU6DQo+IA0KPiAuLi4NCj4gDQo+ID4g
-PiA+IC0gICAgICAgaWYgKG5hbWUgPT0gTlVMTCAmJiBjaGFubmVsX25hbWUgPT0gTlVMTCkNCj4g
-PiA+ID4gKyAgICAgICBpZiAoIW5hbWUgJiYgIWNoYW5uZWxfbmFtZSkNCj4gPiA+ID4gICAgICAg
-ICAgICAgICAgIHJldHVybiBFUlJfUFRSKC1FTk9ERVYpOw0KPiA+ID4NCj4gPiA+IEFmdGVyIHRo
-aXMgY2hhbmdlIGluIHBsYWNlLCBJIHRoaW5rIGl0J3MgYmV0dGVyIHRvIGNvbnZlcnQgaXQgdG8N
-Cj4gPiA+DQo+ID4gPiAgIGlmICghKG5hbWUgfHwgY2hhbm5lbF9uYW1lKSkNCj4gPg0KPiA+IEl0
-IHNob3VsZCBiZSBuYW1lICYmIGNoYW5uZWxfbmFtZQ0KPiA+DQo+ID4gU2VlIGJlbG93Lg0KPiA+
-ICAoISAoIDEgfHwgMCktPiAgKCEgKDEgJiYgMSkNCj4gDQo+IEkgZGlkbid0IGdldCB3aGF0IHlv
-dSBhcmUgaW1wbHlpbmcgaGVyZS4gUGxlYXNlLCBjaGVjayBhZ2FpbiB3aGF0J3MgaW4NCj4gdGhl
-IG9yaWdpbmFsIGNvZGUgYW5kIHdoYXQncyBiZWluZyBzdWdnZXN0ZWQuDQoNCk9rLCB5b3UgYXJl
-IHJpZ2h0LiBJIHdhcyBsb29raW5nIGF0IHRoZSBtb2RpZmllZCBjb2RlLg0KDQpDaGVlcnMsDQpC
-aWp1DQo=
+On Fri, 8 Jul 2022 10:46:51 +0800, Zhongjun Tan wrote:
+> From: Zhongjun Tan <tanzhongjun@coolpad.com>
+> 
+> Remove condition with no effect
+> 
+> 
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: mediatek: mt8186: Remove condition with no effect
+      commit: 19bb587f3ffcb9c166bac2debdc3b08fb362c0b7
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
