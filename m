@@ -4,83 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AD28C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 09:16:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02663C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 09:34:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DtAo+U7m+G4TxFmfuNOKuh/E/yfOj1NwGaNUQh56JkU=; b=C9aqWcC6Bi8+by2S7cx/hOhFrP
-	eW1n/v8+ueCsiVSFPKaAugcQ5j45l5L9oSQlbSpqsGOQ47wAp0U6IGld4eBvl8fJwXigMLrWxUmjv
-	iv9x453ihcUUi2tMb+POEB/lOvLRKknQ8mn899OVaXcVIucPPpu7zSnD03/M3sP2EPEfMl5M8AlKh
-	nirwdCO1yiJBByuLIbVGYfFMW20AG9J9O21uX/Rrm3CvnGXNTD8zIoXU7z+inrekZqQ1zIsZUPcoq
-	4A3p82l7LPiIOSMOsLDf5yu57s4GXfx0pkSh8MJF+5P6FJGe420TNLhQWQXNpKSvCOv7fDk5GK3Rc
-	nb6Ed3Ng==;
+	bh=zMYITQPLKDqV+G0I6L3lc0dSsfmLpOaJEJXMME+zBaw=; b=kyYXaQ/9f+qy6PynCx6hf1WFhs
+	t7876w6vdAc7otVVGRKV4vz0jz9xkTn1hJBycGAxkY0SBsAkK7EJdNoEawuImXS760+SwcB4byZxm
+	jU1s/7RRkqYhwejToH/mQA2LJGqbt+2/ZmnVmijdBuE4ULVCXKu2zo183M8ytMpM/Tle148csok6K
+	JjbjyNO+tB/r+Xo3KvgMfSFSDH/p+MEhqBvxYEybgzFI2CfgHYN7QM5we22/2UY++F/TFyWm1T7DG
+	Xpq/Ick9PYPgiCAnYJ3ZXmR76BaHRq2e1/NxbIAZm4qC3GpLSdKm2mHRl5h6gGAucnR7ZEzSvof5P
+	N3cYAlNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oApX9-00HZbS-RS; Mon, 11 Jul 2022 09:16:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oApoM-0008oW-CN; Mon, 11 Jul 2022 09:34:38 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oApWx-00HZRN-Bg; Mon, 11 Jul 2022 09:16:40 +0000
-X-UUID: f9cf435bf9a84af59e9d7e40552a51d6-20220711
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:c32a766d-4854-40ef-bba7-deb8e09b22fa,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:00d7f463-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: f9cf435bf9a84af59e9d7e40552a51d6-20220711
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 13941162; Mon, 11 Jul 2022 02:16:36 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 11 Jul 2022 16:25:58 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Mon, 11 Jul 2022 16:25:58 +0800
-Message-ID: <5e3aa17cad22fc8f321fbcc3159ac510f34dc3ea.camel@mediatek.com>
-Subject: Re: [DKIM] [PATCH v21 4/4] media: platform: mtk-mdp3: add Mediatek
- MDP3 driver
-From: moudy.ho <moudy.ho@mediatek.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>
-CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
-	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, daoyuan huang
-	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
-	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
-	<randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
-	<roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>
-Date: Mon, 11 Jul 2022 16:25:58 +0800
-In-Reply-To: <Ysfo1h75vAIUjcmB@pendragon.ideasonboard.com>
-References: <20220706075454.15569-1-moudy.ho@mediatek.com>
-	 <20220706075454.15569-5-moudy.ho@mediatek.com>
-	 <d93b51b3-9c94-4842-891c-cd3547ae8712@xs4all.nl>
-	 <Ysfo1h75vAIUjcmB@pendragon.ideasonboard.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oApoA-0008co-Vw; Mon, 11 Jul 2022 09:34:28 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2123466017A6;
+	Mon, 11 Jul 2022 10:34:21 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657532061;
+	bh=Q8aXS7UAPdgDFOD5KMy8Y+lPX5el8z3AKk3/QrPYySU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=AtWudmr9LZIkFa+8leH6uC+sN6AJCdvs4MfWhRxTqrlvkN3Mb4bldFyF6Qjg38G+Z
+	 o8nmVmTlnQuEOehEi4YiB/5ysQvxGoDkZLKs+3l8k7WpM4qks1F8T1EikTiRkFE792
+	 Y+AfNo0YyPSqHlGjfxd5CSBstPbJTEJTD99EDL9ZW2lKs/ik+L9JAL0BnIZp9mNLR8
+	 SxmQgsOZPKw7Pio+BNIqEkxngpq6ayihUpW0ZuxBo0fQ+0kXb2Mh0VNJkiauwlegHZ
+	 YVVoQ/dWpTSrqL75a6Zy3F9nseIjfaZzBpnb44O+c7Hx2hI10z89jM8YZDDd5WHL9x
+	 m+7x/+70DCqVA==
+Message-ID: <5a4e0bfe-e332-42af-5888-b59b3afff24d@collabora.com>
+Date: Mon, 11 Jul 2022 11:34:18 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH] arm64: dts: mediatek: Add missing xHCI clocks for mt8192
+ and mt8195
+Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernel@collabora.com,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20220708194314.56922-1-nfraprado@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220708194314.56922-1-nfraprado@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_021639_409298_E28EF5A5 
-X-CRM114-Status: GOOD (  28.72  )
+X-CRM114-CacheID: sfid-20220711_023427_256987_EB0A5266 
+X-CRM114-Status: GOOD (  15.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,105 +78,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-07-08 at 11:20 +0300, Laurent Pinchart wrote:
-> On Fri, Jul 08, 2022 at 10:08:44AM +0200, Hans Verkuil wrote:
-> > Hi Moudy,
-> > 
-> > Some comments below:
+Il 08/07/22 21:43, Nícolas F. R. A. Prado ha scritto:
+> The MediaTek xHCI dt-binding expects a specific order for the clocks,
+> but the mt8192 and mt8195 devicetrees were skipping some of the middle
+> clocks. These clocks are wired to the controller hardware but aren't
+> controllable.
 > 
-> And one more
+> Add the missing clocks as handles to fixed clocks, so that the clock
+> order is respected and the dtbs_check warnings are gone.
 > 
-> > On 7/6/22 09:54, Moudy Ho wrote:
-> > > This patch adds driver for Mediatek's Media Data Path ver.3
-> > > (MDP3).
-> > > It provides the following functions:
-> > >   color transform, format conversion, resize, crop, rotate, flip
-> > >   and additional image quality enhancement.
-> > > 
-> > > The MDP3 driver is mainly used for Google Chromebook products to
-> > > import the new architecture to set the HW settings as shown
-> > > below:
-> > >   User -> V4L2 framework
-> > >     -> MDP3 driver -> SCP (setting calculations)
-> > >       -> MDP3 driver -> CMDQ (GCE driver) -> HW
-> > > 
-> > > Each modules' related operation control is sited in mtk-mdp3-
-> > > comp.c
-> > > Each modules' register table is defined in file with "mdp_reg_"
-> > > prefix
-> > > GCE related API, operation control  sited in mtk-mdp3-cmdq.c
-> > > V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
-> > > Probe, power, suspend/resume, system level functions are defined
-> > > in
-> > > mtk-mdp3-core.c
-> > > 
-> > > v4l2-compliance 1.22.1, 32 bits, 32-bit time_t
-> > > 
-> > > Compliance test for mtk-mdp3 device /dev/video2:
-> > > 
-> > > Driver Info:
-> > > 	Driver name      : mtk-mdp3
-> > > 	Card type        : 14001000.mdp3-rdma0
-> > 
-> > Card type is expected to be a human readable name, and that's not
-> > the case
-> > here.
-> > 
-> > > 	Bus info         : platform:mtk-mdp3
-> > 
-> > <snip>
-> > 
-> > > diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-> > > b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-> > > new file mode 100644
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-[snip]
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> > > +static const struct vb2_ops mdp_m2m_qops = {
-> > > +	.queue_setup	= mdp_m2m_queue_setup,
-> > > +	.wait_prepare	= vb2_ops_wait_prepare,
-> > > +	.wait_finish	= vb2_ops_wait_finish,
-> > > +	.buf_prepare	= mdp_m2m_buf_prepare,
-> > > +	.start_streaming = mdp_m2m_start_streaming,
-> > > +	.stop_streaming	= mdp_m2m_stop_streaming,
-> > > +	.buf_queue	= mdp_m2m_buf_queue,
-> > > +	.buf_out_validate = mdp_m2m_buf_out_validate,
-> > > +};
-> > > +
-> > > +static int mdp_m2m_querycap(struct file *file, void *fh,
-> > > +			    struct v4l2_capability *cap)
-> > > +{
-> > > +	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
-> > > +
-> > > +	strscpy(cap->driver, MDP_MODULE_NAME, sizeof(cap->driver));
-> > > +	strscpy(cap->card, ctx->mdp_dev->pdev->name, sizeof(cap-
-> > > >card));
-> > 
-> > As mentioned at the top, this is not a suitable name for cap->card.
-> > 
-> > > +	strscpy(cap->bus_info, "platform:mtk-mdp3", sizeof(cap-
-> > > >bus_info));
+> ---
+> A previous attempt to solve this also made all clocks required and
+> updated all MediaTek DTs using the xhci binding [1].
 > 
-> And don't override bus_info, the value isn't right. The V4L2 core
-> should
-> do the right thing for platform devices now.
+> To avoid the DT change noise, the binding change is now being reverted
+> [2] and only mt8192 and mt8195 DTs are updated in this commit to get rid
+> of the warnings.
 > 
-
-Hi Laurent,
-
-Thanks for the reminder, I'll fix it in the next version along with
-what Hans mentioned earlier.
-
-Regards,
-Moudy
-
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static int mdp_m2m_enum_fmt_mplane(struct file *file, void *fh,
-> > > +				   struct v4l2_fmtdesc *f)
-> > > +{
-> > > +	return mdp_enum_fmt_mplane(f);
-> > > +}
-
+> [1] https://lore.kernel.org/all/20220623193702.817996-4-nfraprado@collabora.com/
+> [2] https://lore.kernel.org/all/20220708192605.43351-1-nfraprado@collabora.com
+> 
+>   arch/arm64/boot/dts/mediatek/mt8192.dtsi |  9 ++++++---
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 18 ++++++++++++++----
+>   2 files changed, 20 insertions(+), 7 deletions(-)
 
