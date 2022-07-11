@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81266C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 12:26:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D02C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 12:34:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3Hor7nIS2SSQmr5WE3WDGTUnccWJ1F9dvI8aeZqW5v4=; b=l0xXCRm4fBxV1+JwCTvtprkMkb
-	5pqlx4uf6pffOyTjMSi9jorg7DmTE+uOzBt81vdYUOFIOlsszVnaUUIY56iI4BR8dz7eFBD6/o4Cz
-	/G0/TCNJZqFxYy5ffb6oX44mE3Uc+LO1fcmdSjB9biejyyMizj2js3PZ6UPz6mUI1e3nXjPu9aJRz
-	/REcfq3hFzqXQ1nkMFJ0xth55gLhTyboMWCKGP45npEYQ3N5Pw8SBf8heYhNMKIf306O52VvKpJiX
-	qce+Q+xmsuo4BrBiYM1+ueRDDMU6Y7KDSGQUJPOAeETFgrNgr68824OfGLFbcNv8GBWzpx67Ho0AE
-	BW9GPZ7Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=P++osqhbBQHR7j/sZ3O5kc+BITk7rYHaUU5JlxqsweA=; b=sxpSskFIYxO8a6dGk4rRfqAWhN
+	Kjo83k7GnOnmAE2hfQyEo0kc14+xtYMa6HA/YZOxYrawrAs+SidI/fMVfyGoH0kyxU55yCe6J34ZM
+	1f1CaOD3FxMMX0UXb9D3Pzgx5RtVRDSEPK+Kjk1g65PQsd6B3Z4GNNt/7VcLlEW521qOL9r8EJ1pv
+	chY1MBozY4k3SNfFpOKa3Sfe2SgvWpLwDrP7QbxRokWTbwnEqDQcZlMByZlo/eVG+KqBFArRr2CQF
+	XekiQMESb66i9zQIZunR10bHiay3v4BHC0cPYHOprdOtbnvcL8fhJwfblxYg0fVDGSAJPmTvNBMmk
+	Y9iIIObA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAsU6-001OPY-Gv; Mon, 11 Jul 2022 12:25:54 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oAsbo-001T9k-Mk; Mon, 11 Jul 2022 12:33:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAsTQ-001O3C-H0; Mon, 11 Jul 2022 12:25:16 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7589D6601A00;
-	Mon, 11 Jul 2022 13:25:09 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657542310;
-	bh=exs3pbqQsoOqcfyKmAZDPS7dHDfSgn805ug/IQkbTTw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=J7Blw7mb+6iWeJXSpyTg5gsPCpZ/oX4nhA4AdPgZAyw+awSwz0ET4Ll4cPtJZpDIo
-	 Lv7oKYFzUH9IE4ju3x8FOMqVXoObiVHatljFjJZSRxl0NZjq7iQ1kU/TIyUXL90cNG
-	 HbzlewoWSCRBGTtqLlCAs+ysD0f8333Le6a97nMuvgIAaCL2zIW47oy9pqY+qH5e4L
-	 G8gg4OhCdmOvX1pcHsNcio6NEAvfX825BxFN2oGVuPnpJfcpzvbPUVU0NlzrE2UQtE
-	 Hk5elY06tC9y5w1tHfhrmLTcgojqTvqjre6uMuKKkmFPNgmrV+O06LApMeR+48V9nT
-	 50JUVuRTaPIIw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chun-jie.chen@mediatek.com,
-	weiyi.lu@mediatek.com,
-	mbrugger@suse.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com,
-	nfraprado@collabora.com
-Subject: [PATCH 3/3] soc: mediatek: pm-domains: Grab SCPSYS registers from phandle to syscon
-Date: Mon, 11 Jul 2022 14:25:03 +0200
-Message-Id: <20220711122503.286743-4-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220711122503.286743-1-angelogioacchino.delregno@collabora.com>
-References: <20220711122503.286743-1-angelogioacchino.delregno@collabora.com>
+	id 1oAsbV-001SyW-WD; Mon, 11 Jul 2022 12:33:35 +0000
+X-UUID: 02d0a47b6d5a4d618593f877d5068fe9-20220711
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:ebea1d4f-c76c-4b83-a6a7-c388d199b1d4,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:0f94e32,CLOUDID:23cd2ad7-5d6d-4eaf-a635-828a3ee48b7c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 02d0a47b6d5a4d618593f877d5068fe9-20220711
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 801083250; Mon, 11 Jul 2022 05:33:26 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 11 Jul 2022 20:32:50 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Mon, 11 Jul 2022 20:32:50 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski@canonical.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>, Xiandong Wang
+	<xiandong.wang@mediatek.com>
+Subject: [PATCH v2 1/2] dt-bindings: soc: mediatek: add mdp3 mutex support for mt8186
+Date: Mon, 11 Jul 2022 20:32:46 +0800
+Message-ID: <20220711123247.15807-2-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220711123247.15807-1-allen-kh.cheng@mediatek.com>
+References: <20220711123247.15807-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_052512_727595_255C79B9 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20220711_053334_091897_E8D8F815 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,55 +81,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Instead of requiring nesting of the power-controller inside of a
-"syscon", "simple-mfd" node, look for a phandle to SCPSYS in the
-"syscon" property of the power controller node.
+Add mdp3 mutex compatible for mt8186 SoC.
 
-Compatibility with older devicetrees is retained by falling back
-to looking for a parent node if no syscon phandle is found.
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-pm-domains.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+ .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml         | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-index a3dae391a38a..c5a1c766cd50 100644
---- a/drivers/soc/mediatek/mtk-pm-domains.c
-+++ b/drivers/soc/mediatek/mtk-pm-domains.c
-@@ -590,8 +590,7 @@ static int scpsys_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct device_node *np = dev->of_node;
- 	const struct scpsys_soc_data *soc;
--	struct device_node *node;
--	struct device *parent;
-+	struct device_node *node, *syscon;
- 	struct scpsys *scpsys;
- 	int ret;
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+index 627dcc3e8b32..234fa5dc07c2 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+@@ -30,6 +30,7 @@ properties:
+       - mediatek,mt8173-disp-mutex
+       - mediatek,mt8183-disp-mutex
+       - mediatek,mt8186-disp-mutex
++      - mediatek,mt8186-mdp3-mutex
+       - mediatek,mt8192-disp-mutex
+       - mediatek,mt8195-disp-mutex
  
-@@ -611,13 +610,16 @@ static int scpsys_probe(struct platform_device *pdev)
- 	scpsys->pd_data.domains = scpsys->domains;
- 	scpsys->pd_data.num_domains = soc->num_domains;
- 
--	parent = dev->parent;
--	if (!parent) {
--		dev_err(dev, "no parent for syscon devices\n");
--		return -ENODEV;
-+	syscon = of_parse_phandle(dev->of_node, "syscon", 0);
-+	if (!syscon) {
-+		if (!dev->parent)
-+			return -ENODEV;
-+		scpsys->base = syscon_node_to_regmap(dev->parent->of_node);
-+	} else {
-+		scpsys->base = syscon_node_to_regmap(syscon);
-+		of_node_put(syscon);
- 	}
- 
--	scpsys->base = syscon_node_to_regmap(parent->of_node);
- 	if (IS_ERR(scpsys->base)) {
- 		dev_err(dev, "no regmap available\n");
- 		return PTR_ERR(scpsys->base);
 -- 
-2.35.1
+2.18.0
 
 
