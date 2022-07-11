@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E588AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 13:10:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB4D9C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 13:16:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0ZOXSRSmgwM/8CfCPUrZ7l+OIh1asVluDdyFXnWqD8E=; b=PmGeB47Q23nXXuLGNG0D/Cq7+9
-	qERVUfoZRmIasaxgauXl3+aVUHITKP+hpuzoVCmbUGIkL3AEqxmtEd97kri1bLHb28w02S3SDKBzr
-	vo/vN6PRtxGOiFC4Fh3/a69Dsamawm6eavfL3Ob5K5w9b4am8bgsUFNUpDwhN0YVf4Vw63cr4IEQk
-	IbyFZ8kuzccsq/rMZnkjuZDav2+Y5OfLmF/X53k6uGn41nklDjndMi/H0BIzjulUY3wwRgxMP3Wc7
-	KP1/sQmZRgsi+mGC3lqbLFZ9YwFErbdXPWXrOSPdEu0chsVKl0MhGpKo4XkIFhOgbkp7DNC0tcl7x
-	3UdQRVqg==;
+	bh=ECHKwgZspv8UJP39cVbtbsQnGobQ6/Wz0Usn92hQ97A=; b=BAIvSPVby2P5okrCma0Bw3dhqp
+	dIsEGkkfiYOY2+ezFJwIU0th9pi+8/+YpFsFKpt0LiGadkA7DIKhhtmOipH6oRagRweIci4RrWQRN
+	xHnJxlt+xtCOboquldUqJODhzjW072EhoCqAvz04ZsRENJrIZDu4joB9PSXdYArRBEiy86GlKsSbK
+	D74LTseHzx7kZF9HW/TZoePnVxCpdFfidIBsNhSmMp1YwUlhGY0VlbELkpCLGCDdNoQv/MwMTTauz
+	Bflo3XMMVzeZIXNt8Xx2D/SrU0/dEj7r3/clJjkjZo9MBNQG5/ynwaSngfBknuQp6AsbVUFknL7d9
+	BTMqeWVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAtBE-001oCG-Nn; Mon, 11 Jul 2022 13:10:28 +0000
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+	id 1oAtHC-001qP5-Iv; Mon, 11 Jul 2022 13:16:38 +0000
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAtB4-001o76-9W; Mon, 11 Jul 2022 13:10:26 +0000
-Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-31cf1adbf92so48269047b3.4;
-        Mon, 11 Jul 2022 06:10:17 -0700 (PDT)
+	id 1oAtH7-001qLS-BP; Mon, 11 Jul 2022 13:16:36 +0000
+Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-31cac89d8d6so48531917b3.2;
+        Mon, 11 Jul 2022 06:16:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=0ZOXSRSmgwM/8CfCPUrZ7l+OIh1asVluDdyFXnWqD8E=;
-        b=dJra3IJxOrzyO+7mkYfwJM+xkVjzbjwnshtKynJEY1d9HigyxWdhK/P3oXcEKtAwf2
-         n0DGV/ppHdqO8+FJPsHVKM2viLcDrzrD/8N47vVpcxI8crZMoTcyG7GabZh66TgDQt5K
-         vR/OejvhThCm/ej8J+wkLbdDy4W/ha21NgDgri/u9j0L83H7+q9NKgUOANZtb3iQeb5m
-         p5azi6yuxgVK5tVtUrkEqXMghbb7Ofd2Wahz6HtCDfF99Vp1EADGzIX2hVaA1X+UFnUO
-         Wv0TU96HYsKm2m1KnTL59Uo73M2HzpiYTf5Uqn3AdcZn42/FTSzvlq1rPQklocqPCM7c
-         omEA==
+        bh=ECHKwgZspv8UJP39cVbtbsQnGobQ6/Wz0Usn92hQ97A=;
+        b=ZCLmgeg2tag0WI6PMv2dX5P6iXXKcdTl5Rjn3td1aaWFfg1rfbsiHVRsa4MA7RVDPi
+         yZda18xMSj7gVReNgpkVS3IYfW2y4Yq9wBa4dHtxiS4ukAsi/+lbDWOqaRNhryL27qRN
+         M8fdWOoG7e31my6wi3XYydpQ2QFFja+qmUq57YGYfq84IG56VWa8Y58yfZEvxGNmkdeS
+         ROcmY65fp6mPo55MlG8kVk6cUjR/y+GmDOpFEWJ/AXDhnsAinq1CBLWopeF8ovwQO9wL
+         pbNewu1TdO3bS8ZUkDr6fOjwRalFcjVymsMPQXeHZi+UiTUoMir4hJJt3YfEmkDseAno
+         V+dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=0ZOXSRSmgwM/8CfCPUrZ7l+OIh1asVluDdyFXnWqD8E=;
-        b=H0/gKXneHvTegFVgVM1Ohool+Xzab8KsGkXML/KCEYdYER+6rvXT0+pJ1G/nHebQAj
-         wKo1UbFBc9uUfrsrmFAk902UqtMp1x8F+rmHDzZjFisADp2Qj2Zs4dgUH5AS8Onmt2BD
-         2nQI35t5gJ4YcbxsYpAxkKZ+jDKWM9ATmZ/+3tbJ21VIb+qPPFAmErWbRcxGsRU2xu5I
-         a8hxHc+sbJ1hdnUgvr3tfbLGOGmIioocTSbYXClnyIkbHSZDRy/BYX9lIFH7GX7u92fD
-         XnYv5kOH4oh+z+qDjjSygYD5E3NF7k8TZq82SOch6C75x1xY8T06juC7zzPvM5nHry4C
-         z3xw==
-X-Gm-Message-State: AJIora+2yRQaOUsFBO3LX1mz8X3Cuy+EAxbLoGu8Obb40tCNz6d1tfM/
-	hqaOtP04RooVMdQxQ9THcZ3da6R+jlld7KazlGM=
-X-Google-Smtp-Source: AGRyM1u1pNjRlMbjWdZEYceQFq+a842D/zBdsYQozhXo4zH7jPGpQ6tqGeQop8qO1ntORr3Ei1MkK2BI3EBjQhr2i6c=
-X-Received: by 2002:a81:4bd7:0:b0:31c:91da:5a20 with SMTP id
- y206-20020a814bd7000000b0031c91da5a20mr20757632ywa.131.1657545016097; Mon, 11
- Jul 2022 06:10:16 -0700 (PDT)
+        bh=ECHKwgZspv8UJP39cVbtbsQnGobQ6/Wz0Usn92hQ97A=;
+        b=0f2aNw2g9Uf5gyoLSnzQsNENgTcdnkOAZ//kRGk6+toJROpAjHRugfP8xZvY23yOr1
+         V7/NtWCfhhKEVQwVilIwdakCO9KQLNbu/0vjT7kp4oBaCdfvvQJGzPlwLSZrijwghhLX
+         13hsbDkRYJHZJPeanwlk8vOelJy1p4sC021pCwzXVolFHNUgmBU7Ek6LwxQPSfM2Hm42
+         UWGG7v+CVpHuEeKmgTBYQDc+4dfofAJ3mWyiYYFY89rmObV1FiaqX7THpPwN8FaaWDRi
+         pglNP2kdo0nLqVh49ni7r1WoSBLVtnui5KUcMOo5j1JtAsMps9/gXbS/2agVeNQ7RTTI
+         RzCA==
+X-Gm-Message-State: AJIora/KJlJth5T4xu6N8G7Ht6oPDo7f9DZSWEnMdOp302AjIzo2tr6E
+	CI7jXvMLWsoGeVDjOu/OC08Y/hKyK06LG8e+M7s=
+X-Google-Smtp-Source: AGRyM1s4R+hHsfAdGALiyefnWI51ka7x2bN1wgGP0eXwiLSnuO4ulGqtLU/InSVBkkY/IMtwOpEFg5YKLeC9E1Jy29w=
+X-Received: by 2002:a81:108f:0:b0:31c:d7ae:9ff1 with SMTP id
+ 137-20020a81108f000000b0031cd7ae9ff1mr18792069ywq.18.1657545391770; Mon, 11
+ Jul 2022 06:16:31 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220711123835.811358-1-nuno.sa@analog.com> <20220711123835.811358-2-nuno.sa@analog.com>
-In-Reply-To: <20220711123835.811358-2-nuno.sa@analog.com>
+References: <20220711123835.811358-1-nuno.sa@analog.com> <20220711123835.811358-16-nuno.sa@analog.com>
+In-Reply-To: <20220711123835.811358-16-nuno.sa@analog.com>
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 11 Jul 2022 15:09:39 +0200
-Message-ID: <CAHp75VfUNNAEDuxMfYeg=ZkD-nrUcnc13g+zGBLufayavm-QUw@mail.gmail.com>
-Subject: Re: [PATCH v2 01/15] iio: inkern: only release the device node when
- done with it
+Date: Mon, 11 Jul 2022 15:15:55 +0200
+Message-ID: <CAHp75VcnuAtc+n+nhQ16yP9S-veX2c6ruquSewtPJdcqQwpyAQ@mail.gmail.com>
+Subject: Re: [PATCH v2 15/15] iio: inkern: fix coding style warnings
 To: =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>
 Cc: linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
 	OpenBMC Maillist <openbmc@lists.ozlabs.org>, 
@@ -95,8 +94,9 @@ Cc: linux-arm-msm <linux-arm-msm@vger.kernel.org>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_061018_375939_935434D5 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20220711_061633_415319_9A0C7395 
+X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,25 +111,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 11, 2022 at 2:38 PM Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
+On Mon, Jul 11, 2022 at 2:40 PM Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
 >
-> 'of_node_put()' can potentially release the memory pointed to by
-> 'iiospec.np' which would leave us with an invalid pointer (and we would
-> still pass it in 'of_xlate()'). Note that it is not guaranteed for the
-> of_node lifespan to be attached to the device (to which is attached)
-> lifespan so that there is (even though very unlikely) the possibility
-> for the node to freed while the device is still around. Thus, as there
+> Just cosmetics. No functional change intended...
 
-be freed
+...
 
-> are indeed some of_xlate users which do access the node, a possible race
-> is indeed possible.
+> -       if (name =3D=3D NULL && channel_name =3D=3D NULL)
+> +       if (!name && !channel_name)
+>                 return ERR_PTR(-ENODEV);
 
-possible ... possible.
+After this change in place, I think it's better to convert it to
 
-(I would drop the first one)
+  if (!(name || channel_name))
 
-> As such, we can only release the node after we are done with it.
+which shows intentions clearer.
 
 --=20
 With Best Regards,
