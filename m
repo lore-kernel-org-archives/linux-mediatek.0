@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB4D9C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 13:16:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B67FCCA47B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 13:23:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ECHKwgZspv8UJP39cVbtbsQnGobQ6/Wz0Usn92hQ97A=; b=BAIvSPVby2P5okrCma0Bw3dhqp
-	dIsEGkkfiYOY2+ezFJwIU0th9pi+8/+YpFsFKpt0LiGadkA7DIKhhtmOipH6oRagRweIci4RrWQRN
-	xHnJxlt+xtCOboquldUqJODhzjW072EhoCqAvz04ZsRENJrIZDu4joB9PSXdYArRBEiy86GlKsSbK
-	D74LTseHzx7kZF9HW/TZoePnVxCpdFfidIBsNhSmMp1YwUlhGY0VlbELkpCLGCDdNoQv/MwMTTauz
-	Bflo3XMMVzeZIXNt8Xx2D/SrU0/dEj7r3/clJjkjZo9MBNQG5/ynwaSngfBknuQp6AsbVUFknL7d9
-	BTMqeWVQ==;
+	bh=axlXcCK4wzxh1OC0E6EXS/IHkDmYX0iUqKB8KvL3LFw=; b=1q/Rp46YEL8rJsYkI5jYrTahmS
+	Xuz7qHo5PVg/ZOjWfYBgEO7LDbtaHcrUEOD2OSJyGatmPsOu/+5Ft2IQYz/AIkkbnLeG0hzxr2D//
+	PxfndxVYQSxqblJonyxW2dqG23bFQLTEfxByucgUiF8slOlr/nP6qkGW6giFx3Pe3YjIrMnCgNHQh
+	nGC38KMggRF/M9/KkjFWHrnTOO8OB4/W9aixOaWOl4yhU1fqqRxezCMTqC8j+KSNYdLU8MydeVk28
+	v2c/Lvhw7+98mL4a2jD3Nqdqh4nTz/y63iT+VmJBzhWCWfyWM8sET46Zg6CplpvoWZ36yfxRNWwhX
+	PQENlBOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAtHC-001qP5-Iv; Mon, 11 Jul 2022 13:16:38 +0000
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+	id 1oAtNg-001sfn-3w; Mon, 11 Jul 2022 13:23:20 +0000
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAtH7-001qLS-BP; Mon, 11 Jul 2022 13:16:36 +0000
-Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-31cac89d8d6so48531917b3.2;
-        Mon, 11 Jul 2022 06:16:32 -0700 (PDT)
+	id 1oAtNe-001seF-3M; Mon, 11 Jul 2022 13:23:19 +0000
+Received: by mail-yw1-x112e.google.com with SMTP id 00721157ae682-3137316bb69so48411067b3.10;
+        Mon, 11 Jul 2022 06:23:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=ECHKwgZspv8UJP39cVbtbsQnGobQ6/Wz0Usn92hQ97A=;
-        b=ZCLmgeg2tag0WI6PMv2dX5P6iXXKcdTl5Rjn3td1aaWFfg1rfbsiHVRsa4MA7RVDPi
-         yZda18xMSj7gVReNgpkVS3IYfW2y4Yq9wBa4dHtxiS4ukAsi/+lbDWOqaRNhryL27qRN
-         M8fdWOoG7e31my6wi3XYydpQ2QFFja+qmUq57YGYfq84IG56VWa8Y58yfZEvxGNmkdeS
-         ROcmY65fp6mPo55MlG8kVk6cUjR/y+GmDOpFEWJ/AXDhnsAinq1CBLWopeF8ovwQO9wL
-         pbNewu1TdO3bS8ZUkDr6fOjwRalFcjVymsMPQXeHZi+UiTUoMir4hJJt3YfEmkDseAno
-         V+dg==
+        bh=axlXcCK4wzxh1OC0E6EXS/IHkDmYX0iUqKB8KvL3LFw=;
+        b=azAe6ar9N7tB2G+wHrOJqidSXtmkRQD0XszfgYTB2+nUuftFTGrYAwFKLK6B3VSvxS
+         LYH1Ch1YfniUWTW3CljT9wnoyta+kScApyRgNBBwtUCi/8SuQpTd15On5hM+RMT/pKOw
+         PMR9DZHIJNVz/bOy9TkXGjKfVd1yG6ELLdYt5M1YzJQnXHR03UvBzEXEZrZakP3yZjhg
+         msD6j0yevsiH5FrMqegzrvcVo0vnL0k2Re8yem12ugUbCbH9UeagckJsjPGufgCutt6V
+         CGQsws9fhqWC8Mn/goNdZTafu0+ayr/f54YG0TitzQOIrIasgcA2HjL7yimlYdQsrgHv
+         atcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=ECHKwgZspv8UJP39cVbtbsQnGobQ6/Wz0Usn92hQ97A=;
-        b=0f2aNw2g9Uf5gyoLSnzQsNENgTcdnkOAZ//kRGk6+toJROpAjHRugfP8xZvY23yOr1
-         V7/NtWCfhhKEVQwVilIwdakCO9KQLNbu/0vjT7kp4oBaCdfvvQJGzPlwLSZrijwghhLX
-         13hsbDkRYJHZJPeanwlk8vOelJy1p4sC021pCwzXVolFHNUgmBU7Ek6LwxQPSfM2Hm42
-         UWGG7v+CVpHuEeKmgTBYQDc+4dfofAJ3mWyiYYFY89rmObV1FiaqX7THpPwN8FaaWDRi
-         pglNP2kdo0nLqVh49ni7r1WoSBLVtnui5KUcMOo5j1JtAsMps9/gXbS/2agVeNQ7RTTI
-         RzCA==
-X-Gm-Message-State: AJIora/KJlJth5T4xu6N8G7Ht6oPDo7f9DZSWEnMdOp302AjIzo2tr6E
-	CI7jXvMLWsoGeVDjOu/OC08Y/hKyK06LG8e+M7s=
-X-Google-Smtp-Source: AGRyM1s4R+hHsfAdGALiyefnWI51ka7x2bN1wgGP0eXwiLSnuO4ulGqtLU/InSVBkkY/IMtwOpEFg5YKLeC9E1Jy29w=
-X-Received: by 2002:a81:108f:0:b0:31c:d7ae:9ff1 with SMTP id
- 137-20020a81108f000000b0031cd7ae9ff1mr18792069ywq.18.1657545391770; Mon, 11
- Jul 2022 06:16:31 -0700 (PDT)
+        bh=axlXcCK4wzxh1OC0E6EXS/IHkDmYX0iUqKB8KvL3LFw=;
+        b=XnA46EQJS6Eb9j1YwIOUK3X6eTlBB8iMkIM6dtphf+j/HjLW2Ucc9NnxWdZZWQobFl
+         4K4sJsKZ5b7Y7OFLOof9zZ037pAN4y5lJM6bRpWyXg46inhK/Rt2wAxmEPyMFfyE3ljx
+         j2ifIxxG1K7T4p9Ckjpc2NMi5KINOtGnntNYWQScYUqcMStBLoj+6gvJvNe9mOHZw541
+         JxrMvttveJRy6C5JHTtBs4A8Pfca6JKWllJJ1/2kRwu/7S9rc+Rvnq2/QTjMRIexiXnX
+         7MEQuFelPcDjWf9jSCCL1uTiejtUk42w2butEqsOxhb9su9jxlrvuRmTKqBGyglTD9Pa
+         CLWA==
+X-Gm-Message-State: AJIora/TkltVNU2r1/xKLlZ/zoscjQFPOg0/yPKhBhHS9tXxd4XQ3yIM
+	xY78E32SlGHbxcACkTrGEXy7QSzQ9pPUE1TzbqU=
+X-Google-Smtp-Source: AGRyM1uI6d1T0dRGT/n+l18kDyDiKT6LcPWA/8qru61SWwefVBnYcSZqQGKMaS94keyx+UdRlU9g/tUjYLQBPiPZtwE=
+X-Received: by 2002:a81:4bd7:0:b0:31c:91da:5a20 with SMTP id
+ y206-20020a814bd7000000b0031c91da5a20mr20827843ywa.131.1657545796406; Mon, 11
+ Jul 2022 06:23:16 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220711123835.811358-1-nuno.sa@analog.com> <20220711123835.811358-16-nuno.sa@analog.com>
-In-Reply-To: <20220711123835.811358-16-nuno.sa@analog.com>
+References: <20220711123835.811358-1-nuno.sa@analog.com>
+In-Reply-To: <20220711123835.811358-1-nuno.sa@analog.com>
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 11 Jul 2022 15:15:55 +0200
-Message-ID: <CAHp75VcnuAtc+n+nhQ16yP9S-veX2c6ruquSewtPJdcqQwpyAQ@mail.gmail.com>
-Subject: Re: [PATCH v2 15/15] iio: inkern: fix coding style warnings
+Date: Mon, 11 Jul 2022 15:22:39 +0200
+Message-ID: <CAHp75VeMXP1WyQcFQU_RW-a_CSGVMF_NsgHtLEbL8hi-n8gSVw@mail.gmail.com>
+Subject: Re: [PATCH v2 00/15] make iio inkern interface firmware agnostic
 To: =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>
 Cc: linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
 	OpenBMC Maillist <openbmc@lists.ozlabs.org>, 
@@ -94,9 +94,8 @@ Cc: linux-arm-msm <linux-arm-msm@vger.kernel.org>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_061633_415319_9A0C7395 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220711_062318_178962_34C65DFD 
+X-CRM114-Status: GOOD (  28.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,21 +110,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 11, 2022 at 2:40 PM Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
+On Mon, Jul 11, 2022 at 2:38 PM Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
 >
-> Just cosmetics. No functional change intended...
+> First version of the series can be found here:
+>
+> https://lore.kernel.org/linux-iio/20220610084545.547700-1-nuno.sa@analog.=
+com/
 
-...
+I'm under the impression that I gave tags for some of these patches
+when they were the part of the bigger series. Am I wrong?
+In any case for patch 6-14,
+Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 
-> -       if (name =3D=3D NULL && channel_name =3D=3D NULL)
-> +       if (!name && !channel_name)
->                 return ERR_PTR(-ENODEV);
+> v2 changes:
+>
+> [1/15]
+>   * Fix typo and added more description in the commit message.
+>
+> [3/15]
+>   * Remove superfluous code;
+>   * Commit message spell fixes and added more details;
+>   * Improved error handling (this is the most significant change in this
+> version. More details on the commit message).
+>
+> [4/15]
+>   * Drop the 'ugly' parent_lookup flag. With the new error handling,
+>     we can use -ENODEV to infer if we should proceed or not with the
+>     lookup.
+>
+> [5/15]:
+>   * Moved some local declarations up so long lines first;
+>   * Use 'bus_find_device_by_fwnode()';
+>   * Proper ordering in includes.
+>   * Adapted error handling in '__fwnode_iio_channel_get_by_name()' taking
+> ACPI into account and when 'name' is given but index < 0. It seems that
+> ACPI code can actually return -ENOENT with index < 0 for which case we
+> should continue the search. Not sure if a check  in ACPI ('if (index < 0)
+> return -EINVAL;) like is done in OF would make sense...
+>
+> [12/15]:
+>   * Use 'device_property_count_u64()' to get the number of diff channels.
+> So no need for 'magic' divisions by 2 (no idea why I haven't done like
+> this in the first place).
+>
+> [15/15]
+>   * Fix wrong conversion of 'if (ptr !=3D NULL)' to 'if (!ptr)'.
+>
+> Special note for patch 3/15 where -ENODEV is still used despite some talk=
+s
+> about using -ENOENT and hence, be more in line with firmware code. The
+> reason I kept it was to be consistent with the rest of the file. I'd say
+> that if we want to move to -ENOENT we should do it in a separate patch
+> and for the complete file.
+>
+> Nuno S=C3=A1 (15):
+>   iio: inkern: only release the device node when done with it
+>   iio: inkern: fix return value in devm_of_iio_channel_get_by_name()
+>   iio: inkern: only return error codes in iio_channel_get_*() APIs
+>   iio: inkern: split of_iio_channel_get_by_name()
+>   iio: inkern: move to fwnode properties
+>   thermal: qcom: qcom-spmi-adc-tm5: convert to IIO fwnode API
+>   iio: adc: ingenic-adc: convert to IIO fwnode interface
+>   iio: adc: ab8500-gpadc: convert to device properties
+>   iio: adc: at91-sama5d2_adc: convert to device properties
+>   iio: adc: qcom-pm8xxx-xoadc: convert to device properties
+>   iio: adc: qcom-spmi-vadc: convert to device properties
+>   iio: adc: qcom-spmi-adc5: convert to device properties
+>   iio: adc: stm32-adc: convert to device properties
+>   iio: inkern: remove OF dependencies
+>   iio: inkern: fix coding style warnings
+>
+>  drivers/iio/adc/ab8500-gpadc.c           |  27 +--
+>  drivers/iio/adc/at91-sama5d2_adc.c       |  30 +--
+>  drivers/iio/adc/ingenic-adc.c            |   8 +-
+>  drivers/iio/adc/qcom-pm8xxx-xoadc.c      |  58 +++--
+>  drivers/iio/adc/qcom-spmi-adc5.c         |  63 +++---
+>  drivers/iio/adc/qcom-spmi-vadc.c         |  44 ++--
+>  drivers/iio/adc/stm32-adc.c              | 121 +++++-----
+>  drivers/iio/inkern.c                     | 271 +++++++++++++----------
+>  drivers/thermal/qcom/qcom-spmi-adc-tm5.c |   3 +-
+>  include/linux/iio/consumer.h             |  28 +--
+>  include/linux/iio/iio.h                  |   8 +-
+>  11 files changed, 347 insertions(+), 314 deletions(-)
+>
+> --
+> 2.37.0
+>
 
-After this change in place, I think it's better to convert it to
-
-  if (!(name || channel_name))
-
-which shows intentions clearer.
 
 --=20
 With Best Regards,
