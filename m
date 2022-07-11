@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95D9AC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 12:52:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B8B4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 12:52:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5U5zvrEdMuZH3z7+C8oNPUZzfcH7yQnssZ95KBMdorA=; b=DHa3qxDsCvD2bTd+gb+I5vAC1D
-	10BaGkCoqRRLCJx3QuXi1Y/8gsv9NQgPp2rBe91phUjDz3LGTn6OLfzFqdXD0nobSitT6AsG1KkrZ
-	N61NT1L3n3LQQkhXOF62PVE8IPLq4VrcB9ZwneDD4KsMWrHAmhoxjgSQijzGepMz4twgjZVbLAv7D
-	t3KKW2iE4eY2p3gklYr1Q5haHIave/Vn9SBMSfHFim9a/XL3+lcj6m/3sT7F5fdx33yCO0Q+EyusV
-	G5HjyoEtvFwezkrkzX/3ckj9CrmzuxH2w9NDdj8UoOOtNUjBiKI6AD50YHGZ9GabKSfAoRPnur0aU
-	L+zFmlKA==;
+	bh=BYoov/s791AmS03LcGxCk9O/RuBhZ+5J2Crr4q9RkgI=; b=h/nRIlt6TAVxh+/0z25PtppX/x
+	9VD8UvG4ehQiY/mxo3uVTLPkrnmRV6rvmjqqVFWAElIeAyA33m8bOg9Jcp6IOmO7WOeY6D2IpD+Gh
+	a/jBGO+WIwJrv3DoN9ecQBh42ntgjJevTSnLIY/NlbuyUOZIEWzn3ucptYZY6MBP47JWMmUN9HQ9N
+	7wHWw/elnhz8edXyQRfslHhGDzve3z4Q19CYVddn3QZZHprluneLApTQ6txj5FOcqRx1CoMNvDHKn
+	t/Hjb5LftAdefElgPKHlyTsJfSugUNNX8Ilxcx0zXYlntlXxEpyfXUX1Ur+9Ty7Q4aUIWPTUdwhSJ
+	X/LxJkpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAstX-001cQo-BM; Mon, 11 Jul 2022 12:52:11 +0000
+	id 1oAstm-001cXP-TC; Mon, 11 Jul 2022 12:52:27 +0000
 Received: from mx0a-00128a01.pphosted.com ([148.163.135.77])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAsgk-001Vk7-GR; Mon, 11 Jul 2022 12:39:00 +0000
+	id 1oAsgm-001Vlk-Lo; Mon, 11 Jul 2022 12:39:02 +0000
 Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
-	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26BAvb78026643;
-	Mon, 11 Jul 2022 08:38:29 -0400
+	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26BBML0L026620;
+	Mon, 11 Jul 2022 08:38:38 -0400
 Received: from nwd2mta3.analog.com ([137.71.173.56])
-	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3h76k6bhvx-1
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3h76k6bhwh-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Jul 2022 08:38:29 -0400
+	Mon, 11 Jul 2022 08:38:38 -0400
 Received: from ASHBMBX8.ad.analog.com (ASHBMBX8.ad.analog.com [10.64.17.5])
-	by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 26BCcSmK045671
+	by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 26BCca9G045681
 	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Mon, 11 Jul 2022 08:38:28 -0400
+	Mon, 11 Jul 2022 08:38:36 -0400
 Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by ASHBMBX8.ad.analog.com
  (10.64.17.5) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.14; Mon, 11 Jul
- 2022 08:38:27 -0400
+ 2022 08:38:35 -0400
 Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx9.ad.analog.com
  (10.64.17.10) with Microsoft SMTP Server id 15.2.986.14 via Frontend
- Transport; Mon, 11 Jul 2022 08:38:27 -0400
+ Transport; Mon, 11 Jul 2022 08:38:35 -0400
 Received: from nsa.ad.analog.com ([10.44.3.53])
-	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 26BCbVE7011687;
-	Mon, 11 Jul 2022 08:38:17 -0400
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 26BCbVE8011687;
+	Mon, 11 Jul 2022 08:38:23 -0400
 From: =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>
 To: <linux-arm-msm@vger.kernel.org>, <openbmc@lists.ozlabs.org>,
         <linux-renesas-soc@vger.kernel.org>,
@@ -114,9 +114,9 @@ CC: Andy Gross <agross@kernel.org>,
         Pengutronix
  Kernel Team <kernel@pengutronix.de>,
         Linus Walleij <linus.walleij@linaro.org>
-Subject: [PATCH v2 02/15] iio: inkern: fix return value in devm_of_iio_channel_get_by_name()
-Date: Mon, 11 Jul 2022 14:38:22 +0200
-Message-ID: <20220711123835.811358-3-nuno.sa@analog.com>
+Subject: [PATCH v2 03/15] iio: inkern: only return error codes in iio_channel_get_*() APIs
+Date: Mon, 11 Jul 2022 14:38:23 +0200
+Message-ID: <20220711123835.811358-4-nuno.sa@analog.com>
 X-Mailer: git-send-email 2.37.0
 In-Reply-To: <20220711123835.811358-1-nuno.sa@analog.com>
 References: <20220711123835.811358-1-nuno.sa@analog.com>
@@ -124,8 +124,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-ADIRuleOP-NewSCL: Rule Triggered
-X-Proofpoint-ORIG-GUID: qaJDU5Vqcjzj3zGc9hDASQNFfFavcTPg
-X-Proofpoint-GUID: qaJDU5Vqcjzj3zGc9hDASQNFfFavcTPg
+X-Proofpoint-ORIG-GUID: lMSM5yW6V5YOr2mBf9R33X6XMBFmDH8p
+X-Proofpoint-GUID: lMSM5yW6V5YOr2mBf9R33X6XMBFmDH8p
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
  definitions=2022-07-11_18,2022-07-08_01,2022-06-22_01
@@ -135,8 +135,8 @@ X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscor
  bulkscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2206140000 definitions=main-2207110054
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_053858_606265_E861AF98 
-X-CRM114-Status: GOOD (  14.18  )
+X-CRM114-CacheID: sfid-20220711_053900_756525_24FC7F18 
+X-CRM114-Status: GOOD (  31.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,34 +151,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-of_iio_channel_get_by_name() can either return NULL or an error pointer
-so that only doing IS_ERR() is not enough. Fix it by checking the NULL
-pointer case and return -ENODEV in that case. Note this is done like this
-so that users of the function (which only check for error pointers) do
-not need to be changed. This is not ideal since we are losing error codes
-and as such, in a follow up change, things will be unified so that
-of_iio_channel_get_by_name() only returns error codes.
+APIs like of_iio_channel_get_by_name() and of_iio_channel_get_all() were
+returning a mix of NULL and pointers with NULL being the way to
+"notify" that we should do a "system" lookup for channels. This make
+it very confusing and prone to errors as commit 9f63cc0921ec
+("iio: inkern: fix return value in devm_of_iio_channel_get_by_name()")
+proves. On top of this, patterns like 'if (channel != NULL) return
+channel' were being used where channel could actually be an error code
+which makes the code hard to read.
 
-Fixes: 6e39b145cef7 ("iio: provide of_iio_channel_get_by_name() and devm_ version it")
+This change also makes some functional changes on how errors were being
+handled. In the original behavior, even if we get an error like '-ENOMEM',
+we still continue with the search. We should only continue to lookup for
+the channel when it makes sense to do so. Hence, the main error handling
+in 'of_iio_channel_get_by_name()' is changed to the following logic:
+
+ * If a channel 'name' is provided and we do find it via
+'io-channel-names', we should be able to get it. If we get any error,
+we should not proceed with the lookup. Moreover, we should return an error
+so that callers won't proceed with a system lookup.
+ * If a channel 'name' is provided and we cannot find it ('index < 0'),
+'of_parse_phandle_with_args()' is expected to fail with '-EINVAL'. Hence,
+we should only continue if we get that error.
+ * If a channel 'name' is not provided we should only carry on with the
+search if 'of_parse_phandle_with_args()' returns '-ENOENT'.
+
+Also note that a system channel lookup is only done if the returned
+error code (from 'of_iio_channel_get_by_name()' or
+'of_iio_channel_get_all()' is -ENODEV.
+
 Signed-off-by: Nuno Sá <nuno.sa@analog.com>
-Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 ---
- drivers/iio/inkern.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/iio/inkern.c | 54 +++++++++++++++++++++++++++++++-------------
+ 1 file changed, 38 insertions(+), 16 deletions(-)
 
 diff --git a/drivers/iio/inkern.c b/drivers/iio/inkern.c
-index 9d87057794fc..87fd2a0d44f2 100644
+index 87fd2a0d44f2..c6f1cfe09bd3 100644
 --- a/drivers/iio/inkern.c
 +++ b/drivers/iio/inkern.c
-@@ -412,6 +412,8 @@ struct iio_channel *devm_of_iio_channel_get_by_name(struct device *dev,
+@@ -214,7 +214,7 @@ static struct iio_channel *of_iio_channel_get(struct device_node *np, int index)
+ struct iio_channel *of_iio_channel_get_by_name(struct device_node *np,
+ 					       const char *name)
+ {
+-	struct iio_channel *chan = NULL;
++	struct iio_channel *chan;
+ 
+ 	/* Walk up the tree of devices looking for a matching iio channel */
+ 	while (np) {
+@@ -231,13 +231,33 @@ struct iio_channel *of_iio_channel_get_by_name(struct device_node *np,
+ 							 name);
+ 		chan = of_iio_channel_get(np, index);
+ 		if (!IS_ERR(chan) || PTR_ERR(chan) == -EPROBE_DEFER)
+-			break;
+-		else if (name && index >= 0) {
+-			pr_err("ERROR: could not get IIO channel %pOF:%s(%i)\n",
+-				np, name ? name : "", index);
+-			return NULL;
++			return chan;
++		if (name) {
++			if (index >= 0) {
++				pr_err("ERROR: could not get IIO channel %pOF:%s(%i)\n",
++				       np, name, index);
++				/*
++				 * In this case, we found 'name' in 'io-channel-names'
++				 * but somehow we still fail so that we should not proceed
++				 * with any other lookup. Hence, explicitly return -EINVAL
++				 * (maybe not the better error code) so that the caller
++				 * won't do a system lookup.
++				 */
++				return ERR_PTR(-EINVAL);
++			}
++			/* If index < 0, then of_parse_phandle_with_args() fails
++			 * with -EINVAL which is expected. We should not proceed
++			 * if we get any other error.
++			 */
++			if (PTR_ERR(chan) != -EINVAL)
++				return chan;
++		} else if (PTR_ERR(chan) != -ENOENT) {
++			/*
++			 * if !name, then we should only proceed the lookup if
++			 * of_parse_phandle_with_args() returns -ENOENT.
++			 */
++			return chan;
+ 		}
+-
+ 		/*
+ 		 * No matching IIO channel found on this node.
+ 		 * If the parent node has a "io-channel-ranges" property,
+@@ -245,10 +265,10 @@ struct iio_channel *of_iio_channel_get_by_name(struct device_node *np,
+ 		 */
+ 		np = np->parent;
+ 		if (np && !of_get_property(np, "io-channel-ranges", NULL))
+-			return NULL;
++			return ERR_PTR(-ENODEV);
+ 	}
+ 
+-	return chan;
++	return ERR_PTR(-ENODEV);
+ }
+ EXPORT_SYMBOL_GPL(of_iio_channel_get_by_name);
+ 
+@@ -267,8 +287,8 @@ static struct iio_channel *of_iio_channel_get_all(struct device *dev)
+ 			break;
+ 	} while (++nummaps);
+ 
+-	if (nummaps == 0)	/* no error, return NULL to search map table */
+-		return NULL;
++	if (nummaps == 0)
++		return ERR_PTR(-ENODEV);
+ 
+ 	/* NULL terminated array to save passing size */
+ 	chans = kcalloc(nummaps + 1, sizeof(*chans), GFP_KERNEL);
+@@ -295,7 +315,7 @@ static struct iio_channel *of_iio_channel_get_all(struct device *dev)
+ 
+ static inline struct iio_channel *of_iio_channel_get_all(struct device *dev)
+ {
+-	return NULL;
++	return ERR_PTR(-ENODEV);
+ }
+ 
+ #endif /* CONFIG_OF */
+@@ -362,7 +382,7 @@ struct iio_channel *iio_channel_get(struct device *dev,
+ 	if (dev) {
+ 		channel = of_iio_channel_get_by_name(dev->of_node,
+ 						     channel_name);
+-		if (channel != NULL)
++		if (!IS_ERR(channel) || PTR_ERR(channel) != -ENODEV)
+ 			return channel;
+ 	}
+ 
+@@ -412,8 +432,6 @@ struct iio_channel *devm_of_iio_channel_get_by_name(struct device *dev,
  	channel = of_iio_channel_get_by_name(np, channel_name);
  	if (IS_ERR(channel))
  		return channel;
-+	if (!channel)
-+		return ERR_PTR(-ENODEV);
+-	if (!channel)
+-		return ERR_PTR(-ENODEV);
  
  	ret = devm_add_action_or_reset(dev, devm_iio_channel_free, channel);
  	if (ret)
+@@ -436,7 +454,11 @@ struct iio_channel *iio_channel_get_all(struct device *dev)
+ 		return ERR_PTR(-EINVAL);
+ 
+ 	chans = of_iio_channel_get_all(dev);
+-	if (chans)
++	/*
++	 * We only want to carry on if the error is -ENODEV.  Anything else
++	 * should be reported up the stack.
++	 */
++	if (!IS_ERR(chans) || PTR_ERR(chans) != -ENODEV)
+ 		return chans;
+ 
+ 	name = dev_name(dev);
 -- 
 2.37.0
 
