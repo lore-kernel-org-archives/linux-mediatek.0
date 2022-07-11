@@ -4,87 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD0B0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 13:30:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9022EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 13:33:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0sVZ6FpyWjxLC64wH2E5WS0xJ0aGx348bLslF3+uvpU=; b=f3pEJGdmhMSuIGB/7F3Y+WlCz2
-	nbJ5SgXlzVcQ1D3zTGsvnLiWJWUPJEorWn8dWrBxtHTxA26nf7OhEOOHAYaDW1w6RBOdvqApC3m+L
-	mk1q9abGJbRLNDT1zEtUX1vy53O+KLHMO9ZBF3Xs7tYjiG25t310HdZqsKtU23KnDAqtVEur7o9wW
-	9Zu8nWJJ9/wKWZoy8eIzyPWUkpHBX4S3zRYWM49yPS9/VcW4IHL8kYQ+rvn1TXaqiK9UoXBfQrkVq
-	i6uXEWikAdPmVpTIjjFWSFOLf2roiwAWrjcxY+xTbGZ1Sjr9t0GoMMeE+JQ/Po+DwuaXddCIosVXF
-	iUR0W6lA==;
+	bh=RQwilQfI/adDo9s97R0fAFu247sWntEmkcOlLUrzmwo=; b=VhuHoVCh9/t+0sVPgY7PszSFPi
+	UZV8Gc3AW+7Ou9kTWdK4VRVGlctHA7caskUJ9QRu8NIVIGiE0ZdlAZYEzbRYDgsVvL3yS1gitj8JC
+	MQUZZrEJ61Hjz62dGs1l9ftSpKzT3349QKdpB2jqmoMb2mlkbnhdrsJKlo9gBqe/fFfsiNjm0PH5m
+	LMqXMvrpLdUipv6uH3hT8hUGYbSZ/ObsoPLtPN7XbxGRImO4kImg32kczkQIVBtYFYjPvblAuEiPg
+	BfY2KNFxQmGyYd0b7ivhLIBCsUCD7U/yvr3/DDv6NM3n7n7N9cMl3EjRSGLIMLzdiJzLRBeliCSgh
+	vHGSVivA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAtUo-001vWo-HM; Mon, 11 Jul 2022 13:30:42 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1oAtXZ-001wTC-TR; Mon, 11 Jul 2022 13:33:33 +0000
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAtUm-001vVk-J9; Mon, 11 Jul 2022 13:30:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=0sVZ6FpyWjxLC64wH2E5WS0xJ0aGx348bLslF3+uvpU=; b=H38zgvllza3mKW0fWJocLPjOTZ
-	7Y2/kBnganvxOJmZyVEAM3gvuIYTtamB6OSCbcMAdodPwfpAUpGeOeMXGv4Fi9SbddOV81ZDmex+e
-	f9mXdR4/3KPlJOzchUPtgBRQKChfVm25J9g2DHiLO/MNVF/vjJHz43OByRLw/ov+wtnfCtOTunEZg
-	xDLDSGErBbclp7Z1N4F+bdEVKRpWX0JiFRVeKBkz7G3oiM3WJFjWUS73wR24+e1FEi2f4UBIFVMRw
-	2OTxZbYk1F+Q6+nDtMvhbqdgj5IEXDVe8QxTeJN18j0XuwejIaUumhVM8tZ+3gkDLGJQIWfi9BjeP
-	k65dftTw==;
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAtUi-0030ZN-BQ; Mon, 11 Jul 2022 13:30:38 +0000
-Received: by mail-yb1-xb2d.google.com with SMTP id 64so8676032ybt.12;
-        Mon, 11 Jul 2022 06:30:31 -0700 (PDT)
+	id 1oAtXX-001wS2-06; Mon, 11 Jul 2022 13:33:32 +0000
+Received: by mail-yw1-x1135.google.com with SMTP id 00721157ae682-31cf1adbf92so49004297b3.4;
+        Mon, 11 Jul 2022 06:33:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=0sVZ6FpyWjxLC64wH2E5WS0xJ0aGx348bLslF3+uvpU=;
-        b=lyIFG7SAYwoAADAKuKgohJz2I6b0mA/frIp+sDDz6ivWrNAYvb+FUa5ZRI1zjeYKdo
-         xy3rV9d5WpB5os2h20t/w4PiaiJB95rDV2q6GNE5ndNmC7NGq9vAumN8bXjhDBFcSSzX
-         sZB1kDCxrlAEwXEcMs7MR3J6GLYQA5QTkFZ/b04mwTcgONL/Dd4hy/fPzM9xRG6Jikia
-         5sQjI/xkT9zU0V+UIcNlq6AhmWSphzScqk1q63hIQVO49NH3X6p8Xc9mP/S7m8zePPg4
-         XMkRwn/613GZNIAEVumtkkIcnWaDXJ3j8FWhGek/KP1aHtJx9is8FKamNPiKaTHJbgs3
-         x6dQ==
+        bh=RQwilQfI/adDo9s97R0fAFu247sWntEmkcOlLUrzmwo=;
+        b=e25Ptdx+BdRNZeRkxgFp/iHvgBc6IBcweUa8B2jlTvKLiVqyJQJfMGti/8p+8qB5HQ
+         yPoI+6CajM35ns+P98l88f/GR+baEOdC1/8HJLLNDKp93L/MA/2iuLd7Yuwc5ut6YjEv
+         JSlVxwxCvNlJCYEVCEE7VspV5kOhs7lhJmVEP0XTIzKiP6p4zljgpeNZld8mjAO17C03
+         EJOoClA0+qbZPUmXPrh7GdpLSKi28HSj5rSFJ+Se4yeT/998AA0g1y7YeibrBcqb2Dkd
+         FcexyLq+JlU/3YdreGmIDl9+qQr97oEzJ2pTVBs9yN4TeGJ2pvJIXMbVmgiAYE1E43XS
+         1XGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=0sVZ6FpyWjxLC64wH2E5WS0xJ0aGx348bLslF3+uvpU=;
-        b=GNuEoNA8kx8mcvWJ8KCukLqfQYYPPN0mfZJGBHOTs/8DAnxqdDB8co3EHtRRWH1lPy
-         bwAKYDCk8u5nxnIorjp7VLacO9BOiDREemX9XUTRaObCC+D8TLIcl8kl9qEsmcE8L7YK
-         J0AseC+MQItk8hHkvbKX9KA42p2T+BrIObPfQmB8ObpcqKs3cLB3aBC4AkFs8JaefqQV
-         fAcj+7DElQfPpQAH2M8QsbjHnXSmMX31pbfR0kk8LkQ5P/PnuPoIKqhHz9kOovFgzRtW
-         u13GlRXdPDX3HU4E/Aov233mEVzuHSnUcZDZzsjxU7N30jDGZwDfyTyF4CGXmiIkp1rt
-         y7vQ==
-X-Gm-Message-State: AJIora+eiIkOUP163ubhmg5pcAwMIGIJ2sol4N3oD63FzXfWwrLkTEdU
-	P4qg7q2oRNqqkPO+CgLmlmGWBIgoSdH1aLwGKIE=
-X-Google-Smtp-Source: AGRyM1tHqLoiz6O/1yVxliXt/Bd51WV6GRUI+Zf2RQmo5ceKZWPxF/RnaqR/V3ox2fqxK2HQ01cV3LlGJ3vA4QUno88=
-X-Received: by 2002:a25:dd83:0:b0:66c:8d8d:4f5f with SMTP id
- u125-20020a25dd83000000b0066c8d8d4f5fmr17587268ybg.79.1657546229291; Mon, 11
- Jul 2022 06:30:29 -0700 (PDT)
+        bh=RQwilQfI/adDo9s97R0fAFu247sWntEmkcOlLUrzmwo=;
+        b=jUJrh9avd0z6CO7QVJhKIWq81xp1lDn0E+rLmy75u6f6xCY3lPjOyeP9JUsD3sUxcU
+         xQDQ5hTAJ3mktAVEusxeJeMuOij0obPCxpmOxDyoj1rI9QK5k3mTRb909rOjyd8W8yUz
+         4gKJsbNxM+jQn+JDeDp/q/RZSZeI/mIBP3eMqrTx/mIYqZwBGBWd1ed+G1qA8ReQhfvN
+         iATaYajbB+vsEXvnYAfEbfQNy3HVSsgYoYqBDPeuYKwy7y7oTvdAs8nCcTbuX6SiqDH4
+         FUnZxjdpaqATs3V6uza1/UYaLEtZnc6Cwe2v+X6wo5wuPUHvIoPuk5rV9mmWWXyW9n8U
+         ipjg==
+X-Gm-Message-State: AJIora+G377VUIFO3vUGWBqvmFOl1AMxWx7X9CzHfxQPJO65eN6Apmz/
+	MYfZjMdb6MyxCtvYJYelz6QbjwcovV2LdQHQpO4=
+X-Google-Smtp-Source: AGRyM1vwFLTnD43GPFTgMLTlXqUGdlI71lJPoTCRuiV/S15q+5KKdFYTwkQcKTfOBN8LuvnS9zGKXXrKLTRdthklF8Q=
+X-Received: by 2002:a81:8397:0:b0:31c:8a02:3f6d with SMTP id
+ t145-20020a818397000000b0031c8a023f6dmr19617833ywf.486.1657546409819; Mon, 11
+ Jul 2022 06:33:29 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220711123835.811358-1-nuno.sa@analog.com> <20220711123835.811358-4-nuno.sa@analog.com>
-In-Reply-To: <20220711123835.811358-4-nuno.sa@analog.com>
+References: <20220711123835.811358-1-nuno.sa@analog.com> <20220711123835.811358-16-nuno.sa@analog.com>
+ <CAHp75VcnuAtc+n+nhQ16yP9S-veX2c6ruquSewtPJdcqQwpyAQ@mail.gmail.com> <OS0PR01MB592214D4F12E0636DB7B98CD86879@OS0PR01MB5922.jpnprd01.prod.outlook.com>
+In-Reply-To: <OS0PR01MB592214D4F12E0636DB7B98CD86879@OS0PR01MB5922.jpnprd01.prod.outlook.com>
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 11 Jul 2022 15:29:53 +0200
-Message-ID: <CAHp75VcxcmH5QoheyERAXrUeqMtJidKLBYH1T6dr6vb7yGKqWg@mail.gmail.com>
-Subject: Re: [PATCH v2 03/15] iio: inkern: only return error codes in
- iio_channel_get_*() APIs
-To: =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>
-Cc: linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
-	OpenBMC Maillist <openbmc@lists.ozlabs.org>, 
+Date: Mon, 11 Jul 2022 15:32:53 +0200
+Message-ID: <CAHp75Ve1mAj9u3rVU7qseZ-MYw_PDjAAFA+69XeRv_pvEW-ZrQ@mail.gmail.com>
+Subject: Re: [PATCH v2 15/15] iio: inkern: fix coding style warnings
+To: Biju Das <biju.das.jz@bp.renesas.com>
+Cc: =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, 
+	linux-arm-msm <linux-arm-msm@vger.kernel.org>, OpenBMC Maillist <openbmc@lists.ozlabs.org>, 
 	Linux-Renesas <linux-renesas-soc@vger.kernel.org>, 
 	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, dl-linux-imx <linux-imx@nxp.com>, 
 	"open list:BROADCOM NVRAM DRIVER" <linux-mips@vger.kernel.org>, 
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
-	linux-iio <linux-iio@vger.kernel.org>, chrome-platform@lists.linux.dev, 
+	Prabhakar Mahadev Lad <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
+	linux-iio <linux-iio@vger.kernel.org>, 
+	"chrome-platform@lists.linux.dev" <chrome-platform@lists.linux.dev>, 
 	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	linux-stm32@st-md-mailman.stormreply.com, Andy Gross <agross@kernel.org>, 
+	"linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>, Andy Gross <agross@kernel.org>, 
 	Nicolas Ferre <nicolas.ferre@microchip.com>, Benson Leung <bleung@chromium.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
 	Zhang Rui <rui.zhang@intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
@@ -108,8 +96,8 @@ Cc: linux-arm-msm <linux-arm-msm@vger.kernel.org>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_143036_660851_C032CE41 
-X-CRM114-Status: GOOD (  43.01  )
+X-CRM114-CacheID: sfid-20220711_063331_066934_53B23B4A 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,191 +112,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 11, 2022 at 2:38 PM Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
->
-> APIs like of_iio_channel_get_by_name() and of_iio_channel_get_all() were
-> returning a mix of NULL and pointers with NULL being the way to
-> "notify" that we should do a "system" lookup for channels. This make
-> it very confusing and prone to errors as commit 9f63cc0921ec
-> ("iio: inkern: fix return value in devm_of_iio_channel_get_by_name()")
-> proves. On top of this, patterns like 'if (channel !=3D NULL) return
-> channel' were being used where channel could actually be an error code
-> which makes the code hard to read.
->
-> This change also makes some functional changes on how errors were being
-> handled. In the original behavior, even if we get an error like '-ENOMEM'=
-,
-> we still continue with the search. We should only continue to lookup for
-> the channel when it makes sense to do so. Hence, the main error handling
-> in 'of_iio_channel_get_by_name()' is changed to the following logic:
->
->  * If a channel 'name' is provided and we do find it via
-> 'io-channel-names', we should be able to get it. If we get any error,
-> we should not proceed with the lookup. Moreover, we should return an erro=
-r
-> so that callers won't proceed with a system lookup.
->  * If a channel 'name' is provided and we cannot find it ('index < 0'),
-> 'of_parse_phandle_with_args()' is expected to fail with '-EINVAL'. Hence,
-> we should only continue if we get that error.
->  * If a channel 'name' is not provided we should only carry on with the
-> search if 'of_parse_phandle_with_args()' returns '-ENOENT'.
->
-> Also note that a system channel lookup is only done if the returned
-> error code (from 'of_iio_channel_get_by_name()' or
-> 'of_iio_channel_get_all()' is -ENODEV.
+On Mon, Jul 11, 2022 at 3:28 PM Biju Das <biju.das.jz@bp.renesas.com> wrote=
+:
+> > Subject: Re: [PATCH v2 15/15] iio: inkern: fix coding style warnings
+> > On Mon, Jul 11, 2022 at 2:40 PM Nuno S=C3=A1 <nuno.sa@analog.com> wrote=
+:
 
-LGTM (but I might miss something, it's a bit too many conditionals),
-Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+...
 
-> Signed-off-by: Nuno S=C3=A1 <nuno.sa@analog.com>
-> ---
->  drivers/iio/inkern.c | 54 +++++++++++++++++++++++++++++++-------------
->  1 file changed, 38 insertions(+), 16 deletions(-)
+> > > -       if (name =3D=3D NULL && channel_name =3D=3D NULL)
+> > > +       if (!name && !channel_name)
+> > >                 return ERR_PTR(-ENODEV);
+> >
+> > After this change in place, I think it's better to convert it to
+> >
+> >   if (!(name || channel_name))
 >
-> diff --git a/drivers/iio/inkern.c b/drivers/iio/inkern.c
-> index 87fd2a0d44f2..c6f1cfe09bd3 100644
-> --- a/drivers/iio/inkern.c
-> +++ b/drivers/iio/inkern.c
-> @@ -214,7 +214,7 @@ static struct iio_channel *of_iio_channel_get(struct =
-device_node *np, int index)
->  struct iio_channel *of_iio_channel_get_by_name(struct device_node *np,
->                                                const char *name)
->  {
-> -       struct iio_channel *chan =3D NULL;
-> +       struct iio_channel *chan;
+> It should be name && channel_name
 >
->         /* Walk up the tree of devices looking for a matching iio channel=
- */
->         while (np) {
-> @@ -231,13 +231,33 @@ struct iio_channel *of_iio_channel_get_by_name(stru=
-ct device_node *np,
->                                                          name);
->                 chan =3D of_iio_channel_get(np, index);
->                 if (!IS_ERR(chan) || PTR_ERR(chan) =3D=3D -EPROBE_DEFER)
-> -                       break;
-> -               else if (name && index >=3D 0) {
-> -                       pr_err("ERROR: could not get IIO channel %pOF:%s(=
-%i)\n",
-> -                               np, name ? name : "", index);
-> -                       return NULL;
-> +                       return chan;
-> +               if (name) {
-> +                       if (index >=3D 0) {
-> +                               pr_err("ERROR: could not get IIO channel =
-%pOF:%s(%i)\n",
-> +                                      np, name, index);
-> +                               /*
-> +                                * In this case, we found 'name' in 'io-c=
-hannel-names'
-> +                                * but somehow we still fail so that we s=
-hould not proceed
-> +                                * with any other lookup. Hence, explicit=
-ly return -EINVAL
-> +                                * (maybe not the better error code) so t=
-hat the caller
-> +                                * won't do a system lookup.
-> +                                */
-> +                               return ERR_PTR(-EINVAL);
-> +                       }
-> +                       /* If index < 0, then of_parse_phandle_with_args(=
-) fails
-> +                        * with -EINVAL which is expected. We should not =
-proceed
-> +                        * if we get any other error.
-> +                        */
-> +                       if (PTR_ERR(chan) !=3D -EINVAL)
-> +                               return chan;
-> +               } else if (PTR_ERR(chan) !=3D -ENOENT) {
-> +                       /*
-> +                        * if !name, then we should only proceed the look=
-up if
-> +                        * of_parse_phandle_with_args() returns -ENOENT.
-> +                        */
-> +                       return chan;
->                 }
-> -
->                 /*
->                  * No matching IIO channel found on this node.
->                  * If the parent node has a "io-channel-ranges" property,
-> @@ -245,10 +265,10 @@ struct iio_channel *of_iio_channel_get_by_name(stru=
-ct device_node *np,
->                  */
->                 np =3D np->parent;
->                 if (np && !of_get_property(np, "io-channel-ranges", NULL)=
-)
-> -                       return NULL;
-> +                       return ERR_PTR(-ENODEV);
->         }
->
-> -       return chan;
-> +       return ERR_PTR(-ENODEV);
->  }
->  EXPORT_SYMBOL_GPL(of_iio_channel_get_by_name);
->
-> @@ -267,8 +287,8 @@ static struct iio_channel *of_iio_channel_get_all(str=
-uct device *dev)
->                         break;
->         } while (++nummaps);
->
-> -       if (nummaps =3D=3D 0)       /* no error, return NULL to search ma=
-p table */
-> -               return NULL;
-> +       if (nummaps =3D=3D 0)
-> +               return ERR_PTR(-ENODEV);
->
->         /* NULL terminated array to save passing size */
->         chans =3D kcalloc(nummaps + 1, sizeof(*chans), GFP_KERNEL);
-> @@ -295,7 +315,7 @@ static struct iio_channel *of_iio_channel_get_all(str=
-uct device *dev)
->
->  static inline struct iio_channel *of_iio_channel_get_all(struct device *=
-dev)
->  {
-> -       return NULL;
-> +       return ERR_PTR(-ENODEV);
->  }
->
->  #endif /* CONFIG_OF */
-> @@ -362,7 +382,7 @@ struct iio_channel *iio_channel_get(struct device *de=
-v,
->         if (dev) {
->                 channel =3D of_iio_channel_get_by_name(dev->of_node,
->                                                      channel_name);
-> -               if (channel !=3D NULL)
-> +               if (!IS_ERR(channel) || PTR_ERR(channel) !=3D -ENODEV)
->                         return channel;
->         }
->
-> @@ -412,8 +432,6 @@ struct iio_channel *devm_of_iio_channel_get_by_name(s=
-truct device *dev,
->         channel =3D of_iio_channel_get_by_name(np, channel_name);
->         if (IS_ERR(channel))
->                 return channel;
-> -       if (!channel)
-> -               return ERR_PTR(-ENODEV);
->
->         ret =3D devm_add_action_or_reset(dev, devm_iio_channel_free, chan=
-nel);
->         if (ret)
-> @@ -436,7 +454,11 @@ struct iio_channel *iio_channel_get_all(struct devic=
-e *dev)
->                 return ERR_PTR(-EINVAL);
->
->         chans =3D of_iio_channel_get_all(dev);
-> -       if (chans)
-> +       /*
-> +        * We only want to carry on if the error is -ENODEV.  Anything el=
-se
-> +        * should be reported up the stack.
-> +        */
-> +       if (!IS_ERR(chans) || PTR_ERR(chans) !=3D -ENODEV)
->                 return chans;
->
->         name =3D dev_name(dev);
-> --
-> 2.37.0
->
+> See below.
+>  (! ( 1 || 0)->  (! (1 && 1)
 
+I didn't get what you are implying here. Please, check again what's in
+the original code and what's being suggested.
+
+> > which shows intentions clearer.
 
 --=20
 With Best Regards,
