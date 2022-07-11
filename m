@@ -4,70 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CB18C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 12:59:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E588AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 13:10:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dqkpAYT3rAkqVZNUIxuxHBDiL+Ms4/o5+/lpxMDxUGQ=; b=fLEyKhXTGkFlT78d2O17bfSk4z
-	+HRonq+r8684nk1YKnhiZBQpGO5fAMYOzkUpFMHbMF9EpCCE1VsdQMzMh7s2PWWtcqXybtxRRgkD0
-	5PlCi4R8p2EVxGW9XWwIqLHrBzutnKgugtnRQvsPx1UWVt9Se0V5d1i31cMiMY/8FDt5jlSd6t8Gx
-	TuWDkCc/pGE4Zumo+RXVAt3U251Pp+1PBNijrDy6KwIMJk8o0Rnyb+45aLZ9O1fx39F/WHI4h88H4
-	bzyi9RcLwG5tDxZhCdH2l8+LZ3rcC6dDRmnuIrD6yYYQj6d2H4tBDPfkjgr5zbyok/VOgpEpy8WGC
-	TT+iMOSA==;
+	bh=0ZOXSRSmgwM/8CfCPUrZ7l+OIh1asVluDdyFXnWqD8E=; b=PmGeB47Q23nXXuLGNG0D/Cq7+9
+	qERVUfoZRmIasaxgauXl3+aVUHITKP+hpuzoVCmbUGIkL3AEqxmtEd97kri1bLHb28w02S3SDKBzr
+	vo/vN6PRtxGOiFC4Fh3/a69Dsamawm6eavfL3Ob5K5w9b4am8bgsUFNUpDwhN0YVf4Vw63cr4IEQk
+	IbyFZ8kuzccsq/rMZnkjuZDav2+Y5OfLmF/X53k6uGn41nklDjndMi/H0BIzjulUY3wwRgxMP3Wc7
+	KP1/sQmZRgsi+mGC3lqbLFZ9YwFErbdXPWXrOSPdEu0chsVKl0MhGpKo4XkIFhOgbkp7DNC0tcl7x
+	3UdQRVqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAt0j-001hzl-11; Mon, 11 Jul 2022 12:59:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oAtBE-001oCG-Nn; Mon, 11 Jul 2022 13:10:28 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAsmA-001Yke-52; Mon, 11 Jul 2022 12:44:36 +0000
-X-UUID: 8ca3c1e531ba458cbbb95dce144756de-20220711
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:8a006f84-ef71-4a10-89b4-6ae8091a94f7,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:942d1b87-57f0-47ca-ba27-fe8c57fbf305,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 8ca3c1e531ba458cbbb95dce144756de-20220711
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <johnson.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 998245186; Mon, 11 Jul 2022 05:44:22 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 11 Jul 2022 20:03:46 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Mon, 11 Jul 2022 20:03:46 +0800
-Message-ID: <459bb032c68be7c5be682d90462becfbb17ccda8.camel@mediatek.com>
-Subject: Re: [PATCH] dt-bindings: mmc: Add compatible for MediaTek MT8188
-From: Johnson Wang <johnson.wang@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	<ulf.hansson@linaro.org>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>
-CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 11 Jul 2022 20:03:46 +0800
-In-Reply-To: <c8f8f5f4-173e-797d-e060-e5eaac7ca822@linaro.org>
-References: <20220707054710.1396-1-johnson.wang@mediatek.com>
-	 <41e17a56-5cb0-8e90-c7ae-a7a56de986d0@linaro.org>
-	 <3216ec92952c7d722feaeb76986e0a6a54340646.camel@mediatek.com>
-	 <c8f8f5f4-173e-797d-e060-e5eaac7ca822@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oAtB4-001o76-9W; Mon, 11 Jul 2022 13:10:26 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-31cf1adbf92so48269047b3.4;
+        Mon, 11 Jul 2022 06:10:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=0ZOXSRSmgwM/8CfCPUrZ7l+OIh1asVluDdyFXnWqD8E=;
+        b=dJra3IJxOrzyO+7mkYfwJM+xkVjzbjwnshtKynJEY1d9HigyxWdhK/P3oXcEKtAwf2
+         n0DGV/ppHdqO8+FJPsHVKM2viLcDrzrD/8N47vVpcxI8crZMoTcyG7GabZh66TgDQt5K
+         vR/OejvhThCm/ej8J+wkLbdDy4W/ha21NgDgri/u9j0L83H7+q9NKgUOANZtb3iQeb5m
+         p5azi6yuxgVK5tVtUrkEqXMghbb7Ofd2Wahz6HtCDfF99Vp1EADGzIX2hVaA1X+UFnUO
+         Wv0TU96HYsKm2m1KnTL59Uo73M2HzpiYTf5Uqn3AdcZn42/FTSzvlq1rPQklocqPCM7c
+         omEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=0ZOXSRSmgwM/8CfCPUrZ7l+OIh1asVluDdyFXnWqD8E=;
+        b=H0/gKXneHvTegFVgVM1Ohool+Xzab8KsGkXML/KCEYdYER+6rvXT0+pJ1G/nHebQAj
+         wKo1UbFBc9uUfrsrmFAk902UqtMp1x8F+rmHDzZjFisADp2Qj2Zs4dgUH5AS8Onmt2BD
+         2nQI35t5gJ4YcbxsYpAxkKZ+jDKWM9ATmZ/+3tbJ21VIb+qPPFAmErWbRcxGsRU2xu5I
+         a8hxHc+sbJ1hdnUgvr3tfbLGOGmIioocTSbYXClnyIkbHSZDRy/BYX9lIFH7GX7u92fD
+         XnYv5kOH4oh+z+qDjjSygYD5E3NF7k8TZq82SOch6C75x1xY8T06juC7zzPvM5nHry4C
+         z3xw==
+X-Gm-Message-State: AJIora+2yRQaOUsFBO3LX1mz8X3Cuy+EAxbLoGu8Obb40tCNz6d1tfM/
+	hqaOtP04RooVMdQxQ9THcZ3da6R+jlld7KazlGM=
+X-Google-Smtp-Source: AGRyM1u1pNjRlMbjWdZEYceQFq+a842D/zBdsYQozhXo4zH7jPGpQ6tqGeQop8qO1ntORr3Ei1MkK2BI3EBjQhr2i6c=
+X-Received: by 2002:a81:4bd7:0:b0:31c:91da:5a20 with SMTP id
+ y206-20020a814bd7000000b0031c91da5a20mr20757632ywa.131.1657545016097; Mon, 11
+ Jul 2022 06:10:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+References: <20220711123835.811358-1-nuno.sa@analog.com> <20220711123835.811358-2-nuno.sa@analog.com>
+In-Reply-To: <20220711123835.811358-2-nuno.sa@analog.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Mon, 11 Jul 2022 15:09:39 +0200
+Message-ID: <CAHp75VfUNNAEDuxMfYeg=ZkD-nrUcnc13g+zGBLufayavm-QUw@mail.gmail.com>
+Subject: Re: [PATCH v2 01/15] iio: inkern: only release the device node when
+ done with it
+To: =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>
+Cc: linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
+	OpenBMC Maillist <openbmc@lists.ozlabs.org>, 
+	Linux-Renesas <linux-renesas-soc@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, dl-linux-imx <linux-imx@nxp.com>, 
+	"open list:BROADCOM NVRAM DRIVER" <linux-mips@vger.kernel.org>, 
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
+	linux-iio <linux-iio@vger.kernel.org>, chrome-platform@lists.linux.dev, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	linux-stm32@st-md-mailman.stormreply.com, Andy Gross <agross@kernel.org>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, Benson Leung <bleung@chromium.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
+	Zhang Rui <rui.zhang@intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Eugen Hristev <eugen.hristev@microchip.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Benjamin Fair <benjaminfair@google.com>, 
+	Nancy Yuen <yuenn@google.com>, Fabrice Gasnier <fabrice.gasnier@foss.st.com>, 
+	Jishnu Prakash <quic_jprakash@quicinc.com>, Christophe Branchereau <cbranchereau@gmail.com>, 
+	Avi Fishman <avifishman70@gmail.com>, Tali Perry <tali.perry1@gmail.com>, 
+	Michael Hennerich <Michael.Hennerich@analog.com>, Miquel Raynal <miquel.raynal@bootlin.com>, 
+	Claudiu Beznea <claudiu.beznea@microchip.com>, Lars-Peter Clausen <lars@metafoo.de>, 
+	Thara Gopinath <thara.gopinath@linaro.org>, Cai Huoqing <cai.huoqing@linux.dev>, 
+	Fabio Estevam <festevam@gmail.com>, Olivier Moysan <olivier.moysan@foss.st.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Haibo Chen <haibo.chen@nxp.com>, Arnd Bergmann <arnd@arndb.de>, 
+	Daniel Lezcano <daniel.lezcano@linaro.org>, Patrick Venture <venture@google.com>, 
+	Amit Kucheria <amitk@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Paul Cercueil <paul@crapouillou.net>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Gwendal Grignou <gwendal@chromium.org>, 
+	Bjorn Andersson <bjorn.andersson@linaro.org>, Saravanan Sekar <sravanhome@gmail.com>, 
+	Guenter Roeck <groeck@chromium.org>, Jonathan Cameron <jic23@kernel.org>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Linus Walleij <linus.walleij@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_054434_245505_E97E99C2 
-X-CRM114-Status: GOOD (  24.83  )
+X-CRM114-CacheID: sfid-20220711_061018_375939_935434D5 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,69 +111,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-07-11 at 13:02 +0200, Krzysztof Kozlowski wrote:
-> On 07/07/2022 09:30, Johnson Wang wrote:
-> > On Thu, 2022-07-07 at 08:46 +0200, Krzysztof Kozlowski wrote:
-> > > On 07/07/2022 07:47, Johnson Wang wrote:
-> > > > This commit adds dt-binding documentation of mmc for MediaTek
-> > > > MT8188 SoC
-> > > > platform.
-> > > > 
-> > > > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
-> > > > ---
-> > > >  Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 3 +++
-> > > >  1 file changed, 3 insertions(+)
-> > > > 
-> > > > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > > > b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > > > index 2a2e9fa8c188..3fbf33ad4f7c 100644
-> > > > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > > > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > > > @@ -32,6 +32,9 @@ properties:
-> > > >        - items:
-> > > >            - const: mediatek,mt8186-mmc
-> > > >            - const: mediatek,mt8183-mmc
-> > > > +      - items:
-> > > > +          - const: mediatek,mt8188-mmc
-> > > 
-> > > You duplicate quite a lot. Use enum.
-> > > 
-> > > Best regards,
-> > > Krzysztof
-> > 
-> > Hi Krzysztof,
-> > 
-> > Thanks for you suggestion.
-> > 
-> > I will use 'enum' to place this compatible strings.
-> > 
-> > Just like this:
-> > - items:
-> >     - enum:
-> >         - mediatek,mt8186-mmc
-> >         - mediatek,mt8188-mmc
-> >         - mediatek,mt8192-mmc
-> >         - mediatek,mt8195-mmc
-> >     - const: mediatek,mt8183-mmc
-> > 
-> > Moreover, it seems that missing an "items:" between oneOf and enum
-> > in
-> > the compatible property.
-> > Is my understanding wrong?
-> 
-> I did not propose to remove items, so where are they missing? Not
-> sure
-> what you are asking about...
-> 
-> Best regards,
-> Krzysztof
+On Mon, Jul 11, 2022 at 2:38 PM Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
+>
+> 'of_node_put()' can potentially release the memory pointed to by
+> 'iiospec.np' which would leave us with an invalid pointer (and we would
+> still pass it in 'of_xlate()'). Note that it is not guaranteed for the
+> of_node lifespan to be attached to the device (to which is attached)
+> lifespan so that there is (even though very unlikely) the possibility
+> for the node to freed while the device is still around. Thus, as there
 
-Hi Krzysztof,
+be freed
 
-Sorry for the confusion.
-That was my misunderstanding. Please ignore it...
+> are indeed some of_xlate users which do access the node, a possible race
+> is indeed possible.
 
-BRs,
-Johnson Wang
+possible ... possible.
 
+(I would drop the first one)
+
+> As such, we can only release the node after we are done with it.
+
+--=20
+With Best Regards,
+Andy Shevchenko
 
