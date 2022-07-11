@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33328C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 14:04:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D65DCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 14:04:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/s/OGdlF8gDduadx4LnZlsIPtzs9KiJR7EJ+peqCSpc=; b=NS0LrHRiSndnMc2vANOPthrBFf
-	60eTMDjJ+ohk+k7gGTCRLBYpRSG7zq9jhpRovl1DPi2XTJdVDEGQDnokzOI7x0n3PdJ2pP8pIf9ov
-	w6+MlCbSdvjcLJ1Q40OjfZJOwQcB6bDoWveYuVUrsHQuiYzV+Fuuh6JNTxTv+f2uTp/ppRy/vSFAE
-	4UykaUb4PB3+Q84PBVSqBUOSJphGIKN/jAhOu6iuNXwUk4Dmel7bQfu3D+Ksltn99AoRb6w3BgPDm
-	110TIaZhb0p9dXUReAh8PFVy6qx3VzEyCKjDdUbPtLxzJxlqPFtdV0z3aQHBd+ZhQ4CvcynNdeps9
-	tBYyyJ2Q==;
+	bh=DIAFLfCCstVMeweX2Ab1siE9p1+/OUf9lkXY0wvZIus=; b=2Hh586vIdECVG9fZ+2zxoEj970
+	0CcHJYYsawGuKn2YaHNU21atSs3AyJ2TU1ebgIpj8UIPqNESDNC2Dp+uSbPphdMIRv7DP5ELwmI4O
+	cc4SePVMDbsvJQuY0+Da1+jaVOU1G2L7HYXljBs+t8oOkDHuLd8I5rVkxBEvGXzCAqmRfJI7pj9KB
+	qiNV5ejbkPdj4fQngw30jV0NVbP7/pXkwU37JKrO1LZx8Cn5HdtEstC4J4WDKO2R4NiECL/J+tBFI
+	r6URmB1oQSHvxLfkLZmbMtmdYwc12bAuUVgUJU1oJbixZUkmmA6t5A1du9mlWikLZQN9PIOqoVyuw
+	KQp+2mjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAu0m-0028ae-Pd; Mon, 11 Jul 2022 14:03:44 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1oAu1a-0028tU-IH; Mon, 11 Jul 2022 14:04:34 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAu0j-0028YK-CB; Mon, 11 Jul 2022 14:03:42 +0000
-Received: by mail-wr1-x435.google.com with SMTP id b26so7162006wrc.2;
-        Mon, 11 Jul 2022 07:03:35 -0700 (PDT)
+	id 1oAu1X-0028sN-Fw; Mon, 11 Jul 2022 14:04:32 +0000
+Received: by mail-wr1-x436.google.com with SMTP id f2so7154208wrr.6;
+        Mon, 11 Jul 2022 07:04:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=message-id:subject:from:to:cc:date:in-reply-to:references
          :content-transfer-encoding:user-agent:mime-version;
-        bh=/s/OGdlF8gDduadx4LnZlsIPtzs9KiJR7EJ+peqCSpc=;
-        b=f7S5z3cJiEVRqzrgIcyYJ0WR48nsA/Ndj1Rkr2kt+NBRFf5eg2uWQrd/MXBzfhne0y
-         iwh/biJoo/tUnIBZ59D1UJ2MZhAd0MJTzEororHJvT2kKF7rr+wcIRgEfNSE1+2a6p7G
-         OTHEuRl5gLgHP31ivAK1JB/JwBHsZMpAlTnI0rp0AP169bYRyzn0Sbgo3owVHS/vUchj
-         bn51mIT64xCPri2REasD0Ixtyf721cJrRYoZotxL7o5vXaQqOL0QF2Kg8IOgZvG+YLsK
-         jE3UtLdrl5C2cRH0WAbkqmpFI93w/iA4Kl4QpyYBkAtSdwo2/ZUzjWYGfJgdmdkKZaYX
-         wW6Q==
+        bh=DIAFLfCCstVMeweX2Ab1siE9p1+/OUf9lkXY0wvZIus=;
+        b=doyN/EGzYQwmb31Qvui4RHoImYKN2mpxrS770rB7oqfTCwtKecAYk7XK5nHAyciB9j
+         nA1APLtNitFKoReEa8OSAA36uhyQeBRn5HCTYGjxKPKrruw1/RVlPVlVw2Rtyl8Tdr+h
+         cQ/iXqqjSrnqPkrGbEyq3ZoVd8/03nR/nA1cD5qcH6XmGBErXPoWjWp43sDJpzR39FEp
+         W0mUeX/ZlJd79U4JcII4j+dn4hWjMQHfmlsXLW5buyknCb71XUrhQGs078ea/zqNArwN
+         ThisRukKDtbypj9of180SnLkYj6JucCgS0In0PztOFDgkKr/2YAXJEs11HdAV+LN89U2
+         Q8lA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
          :references:content-transfer-encoding:user-agent:mime-version;
-        bh=/s/OGdlF8gDduadx4LnZlsIPtzs9KiJR7EJ+peqCSpc=;
-        b=sj3PfE5Tg6yX6J0bnbLUXtLZxBC0Y4FJ7su6HgrFZm/r4Sl7PEEnSO36nipAIcLXDV
-         BSOh1rO4iCtln7s75un+BKC3ZitA/9hjOlIcIYdD6dwX9A7ZL0VliO2wMn2NFo35IjCh
-         IHzkEinw5rQBayHWNvdjFAe+6R7gXhsKVTXStR5zfISM1SjrsNUcJea1huEtFgeLZokF
-         F3qUv+0v8owX6MWFtOSaZ2SuvqQisqhALEb7PGR5Y5FkoZN68U/xnuoDuyUi/0xf+HVX
-         GIFmnjiKgl5V9yWYoO6I8i5VxMHdldEW6qt9CiAg90gDKNZEGBAnYmMzt9jizHEEveND
-         p96g==
-X-Gm-Message-State: AJIora9RiozE0E/MGUwlllrH83L9z7/D5U0ALsoZlBU24jFxuTsLUQB+
-	aGceDgkz2XW+7QrHApuB4X2cU/+qt4tLKNMu
-X-Google-Smtp-Source: AGRyM1uVKiSNZ63xvM1SkZGg8MDD3NqDak8QVg5CmjgLLJR/63rBoop6xkxZjGyO50qafCZExu5qgw==
-X-Received: by 2002:a05:6000:a0c:b0:21d:a699:d54e with SMTP id co12-20020a0560000a0c00b0021da699d54emr5172920wrb.605.1657548214450;
-        Mon, 11 Jul 2022 07:03:34 -0700 (PDT)
+        bh=DIAFLfCCstVMeweX2Ab1siE9p1+/OUf9lkXY0wvZIus=;
+        b=rm8RwuaIhyBP1ieSeylrB5pReKjnbvrawWe5KUVwu/ObdYfcD2KqvoGdNkgB8GAtWG
+         nZ8ipFrYowdZEAr2Z+sds1N6WqmjVMxnXNjGZPjBIhCmkdBykYwf6XvbfCvE0+qxB5dQ
+         wBEK7rUwHNlJkWBv1J9HIVFMvZUa7WuM5EIiL5ff4hTs/Eg+425gyCLusNb0vh0bco4J
+         uX5knnqzHB+/okns9xrccA/DEWN5e60byEyIR23wpLq0Ul6z/FQGGZUTJLQPv3vQosN1
+         qfy0rbiXSe6vRLy5JlVndG8eMFwKBrzpNAGJpz6N53a1IYXFm1B11AQ9q7DmQc6jl1i9
+         Obhw==
+X-Gm-Message-State: AJIora8JOIdLHGU2zzvSEvlxe0dNOh9O9o6KjhF3kNJfJyF3/b5Oyjdt
+	5uxKnDjRJjwzw0zO9hTE7gCkXXvXwLOY1oF/
+X-Google-Smtp-Source: AGRyM1sfP4B2ggRzwlFtNzE5njlcJb0xyrOh+fqSIvv7emKj99E0h8HP5nFdmlvCbmam0md1QXj4iw==
+X-Received: by 2002:adf:fa04:0:b0:21d:1864:3172 with SMTP id m4-20020adffa04000000b0021d18643172mr18334198wrr.292.1657548270179;
+        Mon, 11 Jul 2022 07:04:30 -0700 (PDT)
 Received: from p200300f6ef036f005de6a4d0d791ed01.dip0.t-ipconnect.de (p200300f6ef036f005de6a4d0d791ed01.dip0.t-ipconnect.de. [2003:f6:ef03:6f00:5de6:a4d0:d791:ed01])
-        by smtp.gmail.com with ESMTPSA id a13-20020a5d4d4d000000b0021b91d1ddbfsm5816067wru.21.2022.07.11.07.03.31
+        by smtp.gmail.com with ESMTPSA id c15-20020a5d4f0f000000b0021d8faf57d5sm5849112wru.74.2022.07.11.07.04.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 11 Jul 2022 07:03:34 -0700 (PDT)
-Message-ID: <8417d206124ba823a907bd27f4f6ce53a9080249.camel@gmail.com>
-Subject: Re: [PATCH v2 00/15] make iio inkern interface firmware agnostic
+        Mon, 11 Jul 2022 07:04:29 -0700 (PDT)
+Message-ID: <d060ab80fcf8ede50466069c9021eda97e239fb6.camel@gmail.com>
+Subject: Re: [PATCH v2 15/15] iio: inkern: fix coding style warnings
 From: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
 To: Andy Shevchenko <andy.shevchenko@gmail.com>, Nuno =?ISO-8859-1?Q?S=E1?=
 	 <nuno.sa@analog.com>
@@ -98,17 +98,18 @@ Cc: linux-arm-msm <linux-arm-msm@vger.kernel.org>, OpenBMC Maillist
  Guenter Roeck <groeck@chromium.org>, Jonathan Cameron <jic23@kernel.org>, 
  Pengutronix Kernel Team <kernel@pengutronix.de>, Linus Walleij
  <linus.walleij@linaro.org>
-Date: Mon, 11 Jul 2022 16:04:35 +0200
-In-Reply-To: <CAHp75VeMXP1WyQcFQU_RW-a_CSGVMF_NsgHtLEbL8hi-n8gSVw@mail.gmail.com>
+Date: Mon, 11 Jul 2022 16:05:31 +0200
+In-Reply-To: <CAHp75VcnuAtc+n+nhQ16yP9S-veX2c6ruquSewtPJdcqQwpyAQ@mail.gmail.com>
 References: <20220711123835.811358-1-nuno.sa@analog.com>
-	 <CAHp75VeMXP1WyQcFQU_RW-a_CSGVMF_NsgHtLEbL8hi-n8gSVw@mail.gmail.com>
+	 <20220711123835.811358-16-nuno.sa@analog.com>
+	 <CAHp75VcnuAtc+n+nhQ16yP9S-veX2c6ruquSewtPJdcqQwpyAQ@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.44.3 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_070341_432724_392045F9 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20220711_070431_550335_DAF1A584 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,20 +124,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-07-11 at 15:22 +0200, Andy Shevchenko wrote:
-> On Mon, Jul 11, 2022 at 2:38 PM Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
+On Mon, 2022-07-11 at 15:15 +0200, Andy Shevchenko wrote:
+> On Mon, Jul 11, 2022 at 2:40 PM Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
 > >=20
-> > First version of the series can be found here:
-> >=20
-> > https://lore.kernel.org/linux-iio/20220610084545.547700-1-nuno.sa@analo=
-g.com/
+> > Just cosmetics. No functional change intended...
 >=20
-> I'm under the impression that I gave tags for some of these patches
-> when they were the part of the bigger series. Am I wrong?
-> In any case for patch 6-14,
-> Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+> ...
+>=20
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (name =3D=3D NULL && channel_n=
+ame =3D=3D NULL)
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!name && !channel_name)
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 return ERR_PTR(-ENODEV);
+>=20
+> After this change in place, I think it's better to convert it to
+>=20
+> =C2=A0 if (!(name || channel_name))
+>=20
+> which shows intentions clearer.
+>=20
 
-Yes, you're right. Should I have dropped them?
+No strong feelings from my side so I can do that if a v3 is needed
+(which, most likely, will be needed).
 
 - Nuno S=C3=A1
 
