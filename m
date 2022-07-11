@@ -4,59 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1B7FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 01:24:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ED4EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 03:10:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BySaaP6Eu24aVQhRuc4NGb0jRPdhccSdjtObvAC3w6s=; b=sLoqczOA1wdBUFt8mmNDfgrcR4
-	MQ4hzIsqOmQqQN/4FFF6RTiddlDb0AjeJd6mjUTL8BG5D+wfao6I4J2V60zTEYu/PZdFX05QzEE6s
-	jjAzT7qhA5PQsEXjXRKiZxxstXG0J7EyKdwsmaMuISN1pOpO8VYeG6bdKkckBd5wJTbl0c+OBIS2l
-	cnoL2iAmXw+ciB+bkTBs6Ey9TpqnZr/m0cZva+l95Qw5q5jDsOIe71dtE7tADuhF4hwPxM/w7K/M/
-	TOUJkkQjMglY/E+KgDd2I3kOitt03G6tcOSvQi9ieF6nM67Z/HS2+CGtk6l1QhPcnCTDpT+xKo9Os
-	38B07GmQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oFEMZxCK/djolvQUSJ9ZgoX+sTLVZ0cVLpJ/rtD11j8=; b=2Va5ATTr7SifFaonMp5JbmOxNR
+	e0ubfBxUU10g9dGZXEOvlo0XljnAfiOBmsO5yi1SaxLQ8bMwNStwAZ7IGG8DtIwSzQ7auD6bJYIB/
+	J9GivfCniTeD1OD6g7hHSduKY8Xj6/8r2t7XSI8gpPbVPezpETPN8J6F/yQXtyNJth4rtu/KreO8F
+	EvWihXASoGgI7Tudz1v8y7MkiAlUNFFjpsc+mjkl6LlKvtrAoz7X+G7LG2HOCILle7sTogi9tB7iC
+	mHf1pMySgMU21wDFoI5axQwERqRIPTHYoMXh1JaEaYEf/TBiYp+dBZdocG4gj+alhdf0u1R/UehRX
+	MIGJfJMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAi9d-00Eyda-Uf; Mon, 11 Jul 2022 01:24:05 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1oAjoO-00FV0b-VE; Mon, 11 Jul 2022 03:10:16 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAi9S-00EyYp-PE; Mon, 11 Jul 2022 01:23:57 +0000
-Received: from dggpeml500025.china.huawei.com (unknown [172.30.72.56])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4Lh5gT6Jy9z1L8vj;
-	Mon, 11 Jul 2022 09:21:09 +0800 (CST)
-Received: from dggpeml500008.china.huawei.com (7.185.36.147) by
- dggpeml500025.china.huawei.com (7.185.36.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Mon, 11 Jul 2022 09:23:41 +0800
-Received: from [127.0.0.1] (10.67.111.83) by dggpeml500008.china.huawei.com
- (7.185.36.147) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Mon, 11 Jul
- 2022 09:23:41 +0800
-Message-ID: <d1474fc0-3eba-f1c3-6e63-0db8ce4ab07f@huawei.com>
-Date: Mon, 11 Jul 2022 09:23:40 +0800
+	id 1oAjoD-00FUv1-A3
+	for linux-mediatek@lists.infradead.org; Mon, 11 Jul 2022 03:10:06 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id z23-20020a7bc7d7000000b003a2e00222acso1224506wmk.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 10 Jul 2022 20:10:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=oFEMZxCK/djolvQUSJ9ZgoX+sTLVZ0cVLpJ/rtD11j8=;
+        b=Eq6JEWFVZdbf2pHCpJ1ou4cgn1NeNrhvTPJ0Fg+W3dP9EAAXrEZguNEEEiprKM0km9
+         ah3kPdL4JKEevIv9eeNPm0vVO9ZYW6r0VDm1C5xLvcNhUD53qZHPPq+acillaN+K14xC
+         EEMjs4IpDIKobVLM4isnWpFIlSDNwECPe2kZA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=oFEMZxCK/djolvQUSJ9ZgoX+sTLVZ0cVLpJ/rtD11j8=;
+        b=zwyfpBA8MJs4/QBoA82LxL4xJy2gCDKyNS1b6/tMufzVnCoZ6fwsmXFOPRAVSM0gjk
+         reov2hxGRkNGHfP0PZ7elfG8Q+385FdcUd7bpEaTGq2NNzV7Yf1UQ7LXNC7wk/URRBZy
+         TcqQ4yO6fla4qtp5Jofx9bRQEN2rkB31T1VH1rNPHHbwLuUzb27p2+GGgVu6FNkgzL96
+         bf8cxxbFF4ZifF529LI4UBkzEFyxnxC0mPirruyJ28ux2ool8OKxZeeRSOuqunFFwnH/
+         duo27g1wqYy81ckgldJ51J1BwDkXpTr4/nVUh5S08tePuqZ9WpjXSmAgnT5C053uHRJH
+         YAfQ==
+X-Gm-Message-State: AJIora9ou/6UCqW7K6wnPsUczD8rPsfoy5Gqw8fShWrjDqgnxvhdcrWN
+	o6QXRmmL/CL/jzwqAnllWbiR/l6ziTWNv8O0aLP7gw==
+X-Google-Smtp-Source: AGRyM1sBjrTuZpzK4XuwdVW/i96VfIBsSENgJ1XKIaFYOjZSkgDs8pG/TSMT1eQCfInpje1o8o9KcnScfs/lAo9nh1c=
+X-Received: by 2002:a05:600c:2e53:b0:3a2:e51c:a6a with SMTP id
+ q19-20020a05600c2e5300b003a2e51c0a6amr6258057wmf.168.1657509001388; Sun, 10
+ Jul 2022 20:10:01 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH -next] scsi: ufs: ufs-mediatek: Fix build error
-To: <stanley.chu@mediatek.com>, <jejb@linux.ibm.com>,
-	<martin.petersen@oracle.com>, <matthias.bgg@gmail.com>, <bvanassche@acm.org>
-CC: <linux-scsi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
-References: <20220704025632.235968-1-renzhijie2@huawei.com>
-From: Ren Zhijie <renzhijie2@huawei.com>
-In-Reply-To: <20220704025632.235968-1-renzhijie2@huawei.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.111.83]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpeml500008.china.huawei.com (7.185.36.147)
-X-CFilter-Loop: Reflected
+References: <20220621091854.1904372-1-treapking@chromium.org> <de6412d4-732c-79cf-ac00-e0fccee44270@gmail.com>
+In-Reply-To: <de6412d4-732c-79cf-ac00-e0fccee44270@gmail.com>
+From: Pin-yen Lin <treapking@chromium.org>
+Date: Mon, 11 Jul 2022 11:09:50 +0800
+Message-ID: <CAEXTbpf=w6qB1X3dYSR=kdJgqNAFW-pRYuiOGuv9WWEtuY47Cw@mail.gmail.com>
+Subject: Re: [PATCH v3] arm64: dts: mt8173: Fix elm panel DT node
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, Eizan Miyamoto <eizan@chromium.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220710_182355_172482_EA7CB256 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20220710_201005_397173_7864E256 
+X-CRM114-Status: GOOD (  25.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,60 +82,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+All we know is that the functions mentioned in the commit message were
+working in 4.19 kernel, but not in the latest kernel tree.
 
-Just friendly ping...
+Unfortunately, we don't know which patch breaks the driver.
 
-在 2022/7/4 10:56, Ren Zhijie 写道:
-> If CONFIG_PM is not set,
-> make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-, will be failed, like this:
-> drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_runtime_suspend’:
-> drivers/ufs/host/ufs-mediatek.c:1435:8: error: implicit declaration of function ‘ufshcd_runtime_suspend’; did you mean ‘ufs_mtk_runtime_suspend’? [-Werror=implicit-function-declaration]
->    ret = ufshcd_runtime_suspend(dev);
->          ^~~~~~~~~~~~~~~~~~~~~~
->          ufs_mtk_runtime_suspend
-> drivers/ufs/host/ufs-mediatek.c: In function ‘ufs_mtk_runtime_resume’:
-> drivers/ufs/host/ufs-mediatek.c:1450:9: error: implicit declaration of function ‘ufshcd_runtime_resume’; did you mean ‘ufs_mtk_runtime_resume’? [-Werror=implicit-function-declaration]
->    return ufshcd_runtime_resume(dev);
->           ^~~~~~~~~~~~~~~~~~~~~
->           ufs_mtk_runtime_resume
-> At top level:
-> drivers/ufs/host/ufs-mediatek.c:1444:12: error: ‘ufs_mtk_runtime_resume’ defined but not used [-Werror=unused-function]
->   static int ufs_mtk_runtime_resume(struct device *dev)
->              ^~~~~~~~~~~~~~~~~~~~~~
-> drivers/ufs/host/ufs-mediatek.c:1430:12: error: ‘ufs_mtk_runtime_suspend’ defined but not used [-Werror=unused-function]
->   static int ufs_mtk_runtime_suspend(struct device *dev)
->              ^~~~~~~~~~~~~~~~~~~~~~~
-> cc1: all warnings being treated as errors
->
-> The declarations of func "ufshcd_runtime_suspend()" and "ufshcd_runtime_resume()" depended on CONFIG_PM, so the function wrappers "ufs_mtk_runtime_suspend()" and "ufs_mtk_runtime_resume()"  both should warpped by CONFIG_PM too.
->
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Fixes: e7bf1d50063c ("scsi: ufs: ufs-mediatek: Fix build warnings")
-> Signed-off-by: Ren Zhijie <renzhijie2@huawei.com>
-> ---
->   drivers/ufs/host/ufs-mediatek.c | 2 ++
->   1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-> index c958279bdd8f..e006c2528a3a 100644
-> --- a/drivers/ufs/host/ufs-mediatek.c
-> +++ b/drivers/ufs/host/ufs-mediatek.c
-> @@ -1427,6 +1427,7 @@ static int ufs_mtk_system_resume(struct device *dev)
->   }
->   #endif
->   
-> +#ifdef CONFIG_PM
->   static int ufs_mtk_runtime_suspend(struct device *dev)
->   {
->   	struct ufs_hba *hba = dev_get_drvdata(dev);
-> @@ -1449,6 +1450,7 @@ static int ufs_mtk_runtime_resume(struct device *dev)
->   
->   	return ufshcd_runtime_resume(dev);
->   }
-> +#endif
->   
->   static const struct dev_pm_ops ufs_mtk_pm_ops = {
->   	SET_SYSTEM_SLEEP_PM_OPS(ufs_mtk_system_suspend,
+Best regards,
+Pin-yen
 
+On Thu, Jul 7, 2022 at 10:50 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+>
+>
+>
+> On 21/06/2022 11:18, Pin-Yen Lin wrote:
+> > Move the panel DT node under `aux-bus` node, so it won't use the buggy
+> > `ps8640_bridge_get_edid` to get the display modes. Also, change the
+> > compatible string from "lg,lp120up1" to "edp-panel", so the panel-edp
+> > driver gets the displays modes from the EDID instead of using the
+> > predefined display mode (`lg_lp129qe_mode`) in the driver, which is
+> > actually not working.
+> >
+>
+> Do we need a fixes tag here? I'm not quite sure if we fix an upstream bug here,
+> to be honest.
+>
+> Regards,
+> Matthias
+>
+> > Signed-off-by: Pin-Yen Lin <treapking@chromium.org>
+> > ---
+> >
+> > Changes in v3:
+> > - Include more details in the commit message.
+> >
+> > Changes in v2:
+> > - Remove the Fixes tag because this change is not compatible with the
+> >    old kernel versions.
+> >
+> >   arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 26 +++++++++++---------
+> >   1 file changed, 14 insertions(+), 12 deletions(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> > index 9c75fbb31f98..1e0802a6f6d2 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> > @@ -90,18 +90,6 @@ volume_up {
+> >               };
+> >       };
+> >
+> > -     panel: panel {
+> > -             compatible = "lg,lp120up1";
+> > -             power-supply = <&panel_fixed_3v3>;
+> > -             backlight = <&backlight>;
+> > -
+> > -             port {
+> > -                     panel_in: endpoint {
+> > -                             remote-endpoint = <&ps8640_out>;
+> > -                     };
+> > -             };
+> > -     };
+> > -
+> >       panel_fixed_3v3: regulator1 {
+> >               compatible = "regulator-fixed";
+> >               regulator-name = "PANEL_3V3";
+> > @@ -282,6 +270,20 @@ ps8640_out: endpoint {
+> >                               };
+> >                       };
+> >               };
+> > +
+> > +             aux-bus {
+> > +                     panel {
+> > +                             compatible = "edp-panel";
+> > +                             power-supply = <&panel_fixed_3v3>;
+> > +                             backlight = <&backlight>;
+> > +
+> > +                             port {
+> > +                                     panel_in: endpoint {
+> > +                                             remote-endpoint = <&ps8640_out>;
+> > +                                     };
+> > +                             };
+> > +                     };
+> > +             };
+> >       };
+> >   };
+> >
 
