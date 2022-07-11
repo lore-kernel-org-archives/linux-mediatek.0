@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAE92C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 12:52:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61D80C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 12:52:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UF9/2X8M+cmb0ieZsgNIRSSuWjSwoywPflti8zbfIJU=; b=oXX28xlT7kYTAGpNJ9FAmpxYgq
-	Ti7t6ZALwA3vfDxgFJC05aIo1hwlsKaOIO9zHL+Kzb44AMLvma5b1m6ErK6NnIcpd4wSj+qtPBgPt
-	xaFbvrANA0Tu5BXEOF1tYlCnPlYUOwFYUZ0fyCP4o++wcntN8fPc/2/B9ZTmRYA2R8bLiWk6krpjQ
-	l2J2mNOk4rw43htEicRL4L6W31CLD8qaCeDSibS2YbK6Cw27OH7Aw2aVcQCYHYqqTxCySL1EUbOe0
-	iZ7knFCN78G+NJiGEbKc7g39USbEQCaB6IJY9umhGy91PNIYMfBx2wvpUgEsL/YYYofSjX+XBTVqD
-	yhUbc6Hw==;
+	bh=MJ/WtJZvUYnkBntJ86gK6vK0869jsZErwRGjZQHF8pM=; b=UOxYXbeRiPROKhCJ5yofoBkTII
+	BM5FphpMo94ZckHvfzlEzxppksJCmdquMyTd09mFLLVG5Cd1NhCzbIOgB6WaQnWICt7aZFyuaIXsB
+	n5+C8n3SxR1krUkAmKhwKXo/C16MxSXXUse2L9J5ZMA2/rEGYBbZsV5enQrNYnEGE5uBKT7aHFYu0
+	FJKZa6f8GCAj1uiwI+Yvh2D/p9waKFDKcmXWZQyrMD3HwT/5+u8WpXQbkfcEeVgeqh7O0GeEGmcKm
+	lVa1kDlKCuV22Ee21ByiBTs09Pz9K8LR9t8Xh6hEN3by5dpYsvb8uJOlhj/HhQHarh63QrlZI/V20
+	Czr+WhUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAstt-001cc5-Ed; Mon, 11 Jul 2022 12:52:33 +0000
+	id 1oAstx-001cfP-Hz; Mon, 11 Jul 2022 12:52:37 +0000
 Received: from mx0a-00128a01.pphosted.com ([148.163.135.77])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAsgr-001Vpp-Nx; Mon, 11 Jul 2022 12:39:07 +0000
+	id 1oAsh2-001VuX-Jg; Mon, 11 Jul 2022 12:39:17 +0000
 Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
-	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26BBf38P026647;
-	Mon, 11 Jul 2022 08:38:43 -0400
+	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26BCAAMN026688;
+	Mon, 11 Jul 2022 08:38:57 -0400
 Received: from nwd2mta3.analog.com ([137.71.173.56])
-	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3h76k6bhwu-1
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3h76k6bhxs-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 11 Jul 2022 08:38:43 -0400
+	Mon, 11 Jul 2022 08:38:56 -0400
 Received: from ASHBMBX8.ad.analog.com (ASHBMBX8.ad.analog.com [10.64.17.5])
-	by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 26BCcg2u045688
+	by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 26BCctQt045705
 	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Mon, 11 Jul 2022 08:38:42 -0400
-Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by ASHBMBX8.ad.analog.com
+	Mon, 11 Jul 2022 08:38:55 -0400
+Received: from ASHBMBX8.ad.analog.com (10.64.17.5) by ASHBMBX8.ad.analog.com
  (10.64.17.5) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.14; Mon, 11 Jul
- 2022 08:38:41 -0400
-Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx9.ad.analog.com
- (10.64.17.10) with Microsoft SMTP Server id 15.2.986.14 via Frontend
- Transport; Mon, 11 Jul 2022 08:38:41 -0400
+ 2022 08:38:54 -0400
+Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx8.ad.analog.com
+ (10.64.17.5) with Microsoft SMTP Server id 15.2.986.14 via Frontend
+ Transport; Mon, 11 Jul 2022 08:38:54 -0400
 Received: from nsa.ad.analog.com ([10.44.3.53])
-	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 26BCbVE9011687;
-	Mon, 11 Jul 2022 08:38:30 -0400
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 26BCbVEB011687;
+	Mon, 11 Jul 2022 08:38:45 -0400
 From: =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>
 To: <linux-arm-msm@vger.kernel.org>, <openbmc@lists.ozlabs.org>,
         <linux-renesas-soc@vger.kernel.org>,
@@ -114,9 +114,9 @@ CC: Andy Gross <agross@kernel.org>,
         Pengutronix
  Kernel Team <kernel@pengutronix.de>,
         Linus Walleij <linus.walleij@linaro.org>
-Subject: [PATCH v2 04/15] iio: inkern: split of_iio_channel_get_by_name()
-Date: Mon, 11 Jul 2022 14:38:24 +0200
-Message-ID: <20220711123835.811358-5-nuno.sa@analog.com>
+Subject: [PATCH v2 06/15] thermal: qcom: qcom-spmi-adc-tm5: convert to IIO fwnode API
+Date: Mon, 11 Jul 2022 14:38:26 +0200
+Message-ID: <20220711123835.811358-7-nuno.sa@analog.com>
 X-Mailer: git-send-email 2.37.0
 In-Reply-To: <20220711123835.811358-1-nuno.sa@analog.com>
 References: <20220711123835.811358-1-nuno.sa@analog.com>
@@ -124,19 +124,19 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-ADIRuleOP-NewSCL: Rule Triggered
-X-Proofpoint-ORIG-GUID: WkIKZQXaKH-kBzq2txCSpF9DF1YtAK57
-X-Proofpoint-GUID: WkIKZQXaKH-kBzq2txCSpF9DF1YtAK57
+X-Proofpoint-ORIG-GUID: FFRWcRmTcMI7ad7VGDZdc4Mxr_C8uF4I
+X-Proofpoint-GUID: FFRWcRmTcMI7ad7VGDZdc4Mxr_C8uF4I
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
  definitions=2022-07-11_18,2022-07-08_01,2022-06-22_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015 adultscore=0
- mlxlogscore=999 malwarescore=0 spamscore=0 impostorscore=0
+ mlxlogscore=918 malwarescore=0 spamscore=0 impostorscore=0
  priorityscore=1501 suspectscore=0 mlxscore=0 lowpriorityscore=0
  bulkscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2206140000 definitions=main-2207110054
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_053905_857213_25CFB0F6 
-X-CRM114-Status: GOOD (  23.50  )
+X-CRM114-CacheID: sfid-20220711_053916_689171_F4629CD9 
+X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,150 +151,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This change splits of_iio_channel_get_by_name() so that it decouples
-looking for channels in the current node from looking in it's parents
-nodes. This will be helpful when moving to fwnode properties where we
-need to release the handles when looking for channels in parent's nodes.
-
-No functional change intended...
+Make usage of the new firmware agnostic API
+'devm_of_iio_channel_get_by_name()' to get the IIO channel.
 
 Signed-off-by: Nuno Sá <nuno.sa@analog.com>
-Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 ---
- drivers/iio/inkern.c | 109 ++++++++++++++++++++++++++-----------------
- 1 file changed, 65 insertions(+), 44 deletions(-)
+ drivers/thermal/qcom/qcom-spmi-adc-tm5.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/iio/inkern.c b/drivers/iio/inkern.c
-index c6f1cfe09bd3..f97b7967d3d9 100644
---- a/drivers/iio/inkern.c
-+++ b/drivers/iio/inkern.c
-@@ -211,61 +211,82 @@ static struct iio_channel *of_iio_channel_get(struct device_node *np, int index)
- 	return ERR_PTR(err);
- }
- 
-+struct iio_channel *__of_iio_channel_get_by_name(struct device_node *np,
-+						 const char *name)
-+{
-+	struct iio_channel *chan;
-+	int index = 0;
-+
-+	/*
-+	 * For named iio channels, first look up the name in the
-+	 * "io-channel-names" property.  If it cannot be found, the
-+	 * index will be an error code, and of_iio_channel_get()
-+	 * will fail.
-+	 */
-+	if (name)
-+		index = of_property_match_string(np, "io-channel-names", name);
-+
-+	chan = of_iio_channel_get(np, index);
-+	if (!IS_ERR(chan) || PTR_ERR(chan) == -EPROBE_DEFER)
-+		return chan;
-+	if (name) {
-+		if (index >= 0) {
-+			pr_err("ERROR: could not get IIO channel %pOF:%s(%i)\n",
-+			       np, name, index);
-+			/*
-+			 * In this case, we found 'name' in 'io-channel-names'
-+			 * but somehow we still fail so that we should not proceed
-+			 * with any other lookup. Hence, explicitly return -EINVAL
-+			 * (maybe not the better error code) so that the caller
-+			 * won't do a system lookup.
-+			 */
-+			return ERR_PTR(-EINVAL);
-+		}
-+		/* If index < 0, then of_parse_phandle_with_args() fails
-+		 * with -EINVAL which is expected. We should not proceed
-+		 * if we get any other error.
-+		 */
-+		if (PTR_ERR(chan) != -EINVAL)
-+			return chan;
-+	} else if (PTR_ERR(chan) != -ENOENT) {
-+		/*
-+		 * if !name, then we should only proceed the lookup if
-+		 * of_parse_phandle_with_args() returns -ENOENT.
-+		 */
-+		return chan;
-+	}
-+
-+	/* so we continue the lookup */
-+	return ERR_PTR(-ENODEV);
-+}
-+
- struct iio_channel *of_iio_channel_get_by_name(struct device_node *np,
- 					       const char *name)
- {
- 	struct iio_channel *chan;
- 
- 	/* Walk up the tree of devices looking for a matching iio channel */
-+	chan = __of_iio_channel_get_by_name(np, name);
-+	if (!IS_ERR(chan) || PTR_ERR(chan) != -ENODEV)
-+		return chan;
-+
-+	/*
-+	 * No matching IIO channel found on this node.
-+	 * If the parent node has a "io-channel-ranges" property,
-+	 * then we can try one of its channels.
-+	 */
-+	np = np->parent;
- 	while (np) {
- 		int index = 0;
- 
--		/*
--		 * For named iio channels, first look up the name in the
--		 * "io-channel-names" property.  If it cannot be found, the
--		 * index will be an error code, and of_iio_channel_get()
--		 * will fail.
--		 */
--		if (name)
--			index = of_property_match_string(np, "io-channel-names",
--							 name);
--		chan = of_iio_channel_get(np, index);
--		if (!IS_ERR(chan) || PTR_ERR(chan) == -EPROBE_DEFER)
--			return chan;
--		if (name) {
--			if (index >= 0) {
--				pr_err("ERROR: could not get IIO channel %pOF:%s(%i)\n",
--				       np, name, index);
--				/*
--				 * In this case, we found 'name' in 'io-channel-names'
--				 * but somehow we still fail so that we should not proceed
--				 * with any other lookup. Hence, explicitly return -EINVAL
--				 * (maybe not the better error code) so that the caller
--				 * won't do a system lookup.
--				 */
--				return ERR_PTR(-EINVAL);
--			}
--			/* If index < 0, then of_parse_phandle_with_args() fails
--			 * with -EINVAL which is expected. We should not proceed
--			 * if we get any other error.
--			 */
--			if (PTR_ERR(chan) != -EINVAL)
--				return chan;
--		} else if (PTR_ERR(chan) != -ENOENT) {
--			/*
--			 * if !name, then we should only proceed the lookup if
--			 * of_parse_phandle_with_args() returns -ENOENT.
--			 */
-+		if (!of_get_property(np, "io-channel-ranges", NULL))
-+			return ERR_PTR(-ENODEV);
-+
-+		chan = __of_iio_channel_get_by_name(np, name);
-+		if (!IS_ERR(chan) || PTR_ERR(chan) != -ENODEV)
- 			return chan;
--		}
--		/*
--		 * No matching IIO channel found on this node.
--		 * If the parent node has a "io-channel-ranges" property,
--		 * then we can try one of its channels.
--		 */
-+
- 		np = np->parent;
--		if (np && !of_get_property(np, "io-channel-ranges", NULL))
--			return ERR_PTR(-ENODEV);
+diff --git a/drivers/thermal/qcom/qcom-spmi-adc-tm5.c b/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
+index d9c9c975f931..0b8543c627f0 100644
+--- a/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
++++ b/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
+@@ -825,7 +825,8 @@ static int adc_tm5_get_dt_channel_data(struct adc_tm5_chip *adc_tm,
  	}
+ 	channel->adc_channel = args.args[0];
  
- 	return ERR_PTR(-ENODEV);
+-	channel->iio = devm_of_iio_channel_get_by_name(adc_tm->dev, node, NULL);
++	channel->iio = devm_fwnode_iio_channel_get_by_name(adc_tm->dev,
++							   of_fwnode_handle(node), NULL);
+ 	if (IS_ERR(channel->iio)) {
+ 		ret = PTR_ERR(channel->iio);
+ 		if (ret != -EPROBE_DEFER)
 -- 
 2.37.0
 
