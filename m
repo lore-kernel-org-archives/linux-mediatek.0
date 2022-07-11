@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72ED9C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 11:58:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36F35CCA47B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Jul 2022 11:59:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kb9KHIuo4IosRBw4fXiFNpYBgAtjRiuQdEYMHy61dYk=; b=aXSieVnqN/++AgqcoO4EkN6Pwi
-	LQvOncBwwNDUd24VSBdRUUCYTVe/MdJzQ8HQFgfK9trOT73Gs+6fwRyoUMhluD/q7dmjDKgXqdtgh
-	Bo9WqCpwYV5TgF9WgdzDu+rFkixXrzAkCzlpx5HfD8McrjQMZmD85krm289VNTtlYfts00vN4hN8C
-	c/9x+TwGP1ykxL7HYUaUR4Ohi1f6EsUOyASWECER7c/38fCtWtY9FsO7CBCobSbCYFDPHwVGcrK6U
-	avNRtGz4cRGngIo0N3CROZhbW6Iu1thbB3ETkbuYbKl340UpoeqK0fg2vekrKC0wW1yJi8haFMraQ
-	x/5R7pvw==;
+	bh=soHIZFMckyBtmeqmtltoqEHcx5pmrVpeNEKpf5M8ebI=; b=H0ICeRUwF9TtQhB0fzB/yz73a/
+	PouW9vwUtlmuy+ELTBxAGmcwRZ/c9kvu1qPjLMAnKQoKbia2C/rZQ9e4t/hkhziVYil+qvIgnExWa
+	NHSUNyaGt5ZKWS+fwbqCYiIWsN+uq0siMWwJ1snqIfGjOoPErChT2QURxSUJznZoB2ZPaOSksEahb
+	JiFbgrKrW3OiBoekQ8URF3fQpe3yUrhPQF3B4K0Y5Q5kUbvvqeOJ5s1b9/qelcZX+B4Sll5b1TX8d
+	3WNE25biIvlBikPcnfZzYsuZ9UjUal1B2VrEwIszWjyDiHGGiiOYzBOVJAwitSOqP5citPjk91Gil
+	zypsEsbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAs3d-001E8p-1u; Mon, 11 Jul 2022 11:58:33 +0000
+	id 1oAs4H-001ESA-9n; Mon, 11 Jul 2022 11:59:13 +0000
 Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAs3S-001E4n-SI
-	for linux-mediatek@lists.infradead.org; Mon, 11 Jul 2022 11:58:24 +0000
-Received: by mail-yw1-x112b.google.com with SMTP id 00721157ae682-2ef5380669cso46013437b3.9
-        for <linux-mediatek@lists.infradead.org>; Mon, 11 Jul 2022 04:58:21 -0700 (PDT)
+	id 1oAs4E-001EQM-MT
+	for linux-mediatek@lists.infradead.org; Mon, 11 Jul 2022 11:59:11 +0000
+Received: by mail-yw1-x112b.google.com with SMTP id 00721157ae682-31bf3656517so45924587b3.12
+        for <linux-mediatek@lists.infradead.org>; Mon, 11 Jul 2022 04:59:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=Kb9KHIuo4IosRBw4fXiFNpYBgAtjRiuQdEYMHy61dYk=;
-        b=uuzucqYoJK9QyuGI60SrzoVpti+2eBlJqaCC6sB9ZZJd08dlBVmeCukV4HfC6zZVhe
-         1/X/qe6RzkOA/Q+PuOEA0auY09gTuarB3qd9dqHvZTDV3zFz2f++mKS7gh0uMHZz/QaB
-         rrdn12qHtkuMmBtsPJc3r1Ohad2owVw1j4OQI2HRw1CbbNkim870g3cUO6VQ9Lvgm8Zp
-         QTDX/2jmvmoB/kKzXTbrY19GS92XKmd/rAkm/4WYpC3ZXPJ+fS5EnaXEMj1SdT6sBWP8
-         9j3WF8jB6rdPDEHdldwClYu2VKbdZQ6i0P2XBLQgjXq3lg+CzUXaBSMaFuhDmOqlGYB1
-         yZPQ==
+        bh=soHIZFMckyBtmeqmtltoqEHcx5pmrVpeNEKpf5M8ebI=;
+        b=uQTeni90X9vSpuUi2Z5c/mfpYL3euVwMP2PmnjiBH6KAfstQwsqmxqcY0z5Na11zO6
+         xLim4X4YwdEHf52ak2pdFpL3D2b7tcJnB1RoIIeLPAUZOVLJ7q7Gy18TaQd10UPQ7uV0
+         HmJMpvZf2ALgg68hxnRjm7Ktsx3emiUGiVJ/Hnahm1GIX3+zoTGQGtYUv2LxaBxjUyUL
+         IKjs+6l3UkJrDeJizscE50gnTomp7DvCRkaNCEQyIUedn7LPwNP1kHkAgG/LpsFMuMtt
+         ZUzYaUxED4sie+luA6WRGHxIX2eAFyPsgQvRvbNTEI89yQyLe0qox+qn6yaCZjYUT4QW
+         Zgig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=Kb9KHIuo4IosRBw4fXiFNpYBgAtjRiuQdEYMHy61dYk=;
-        b=PraMk3ouMZ/Foh6qUS6iRzXP54iMyFadKm+cfkre1w8hEG6EaJhWt2Wtouw8a/44Ve
-         PAADei9dUmzbciUhIWgzrTeDEnnu1k4umsHogQ3/PMf3/IF1AmWygPacKygsuyDqjitS
-         uEmb5e6+BewVtvJs56ACwx6JOGmdD1XYpPLMY5a/e1gDerbyp/wNPz8LCDupVi/lM56N
-         ZTAgmhA8Ev9IEQxqT38cuBVvWi9Oot7F54nZxaXABMoaHP17ZDkE2owo9yVLdyW8XpPz
-         rNnMCya+UaaU/EASJloPE3fMGK1McluPeELieSTVuQOynfYrTADSt+XjZafF03l0/IaO
-         1kXw==
-X-Gm-Message-State: AJIora8XN+vKAxTy9APHrD5KKv9rb2cLLBhg3bbcpQCM0/6vUThZdM3a
-	/3sqQKn2iw5tkiHXFAbwb/OPkaPuzn2WuwRWgJSX6g==
-X-Google-Smtp-Source: AGRyM1s/a3hRCOR5r59cRwkAhmMUw0kBr01CcqkFmETfUZZ7ZH7MngwVHzji1O6LK5sxiEbLLw+AGGSOXnjRa4RncAA=
-X-Received: by 2002:a81:34c:0:b0:31c:8b37:6595 with SMTP id
- 73-20020a81034c000000b0031c8b376595mr19493629ywd.126.1657540701119; Mon, 11
- Jul 2022 04:58:21 -0700 (PDT)
+        bh=soHIZFMckyBtmeqmtltoqEHcx5pmrVpeNEKpf5M8ebI=;
+        b=FLdKQVEwlmFNOo4bBit5vzlb/eH5JVsk56fOH+m+tF1S0s7xJey7Kon1KJHzx1DPsC
+         Nzx+4Ss5WQSb0Q9jZC0Tt7LJNmHONipDP1xBOWYPZ0G4JBoainCquc4/XGO43x3qwK0N
+         7i+cUCSPCHW2TPHhKcWfzIaX1Q2OUpJC8vUSjP0PNl8SJbBdmMHFxXoWPdkoWLsfr3fM
+         G2zlECyJD2rW5VCt1oe3fZvNUp6InRcu7edbDerI24OdjjhZCRMO7z/CRGHdA5oq2s7E
+         4FdoY/7m6YnOu6rSwrprXfh2sKi72qmiMHghp+Vt9QT60hxsxD2YbvGknUX0RfHPyXjm
+         ZWAw==
+X-Gm-Message-State: AJIora+FyJQuw6uxSiJqlDorBM/7mKFeLNSvd1b4cfc4U2gBw2viXRu+
+	dQ3AfAVO8t9BxdHDt4I/PWhmCQGfkrgHV5u23H3oZQ==
+X-Google-Smtp-Source: AGRyM1svUfrrpP72tLMZRihy/YrAMA4c44RQU5VYo6DXQhuXv26T2sFNwN3mldeaRom3j44YCBmi2myhto8H8sEtHns=
+X-Received: by 2002:a81:cc4:0:b0:31c:839c:7e27 with SMTP id
+ 187-20020a810cc4000000b0031c839c7e27mr19354375ywm.151.1657540750016; Mon, 11
+ Jul 2022 04:59:10 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220630122334.216903-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220630122334.216903-1-angelogioacchino.delregno@collabora.com>
+References: <20220630131543.225554-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220630131543.225554-1-angelogioacchino.delregno@collabora.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 11 Jul 2022 13:58:10 +0200
-Message-ID: <CACRpkdbkpBwABmj31yY0GN++gvbaaox6=i7GkrRYu6ESROZzGg@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: pinctrl: mt8195: Fix name for mediatek,rsel-resistance-in-si-unit
+Date: Mon, 11 Jul 2022 13:58:59 +0200
+Message-ID: <CACRpkdYk5_C-cUdCgz8EPS=b4=_svA+YQFGNpXeSNboW=CUDPA@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: mt8195: Add and use drive-strength-microamp
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
 	matthias.bgg@gmail.com, sean.wang@mediatek.com, linux-gpio@vger.kernel.org, 
@@ -70,8 +70,8 @@ Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
 	nfraprado@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_045822_931739_01BC8FCC 
-X-CRM114-Status: UNSURE (   8.62  )
+X-CRM114-CacheID: sfid-20220711_045910_752404_3069A97E 
+X-CRM114-Status: UNSURE (   8.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,19 +87,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 30, 2022 at 2:23 PM AngeloGioacchino Del Regno
+On Thu, Jun 30, 2022 at 3:15 PM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 
-> When this property was introduced, it contained underscores, but
-> the actual code wants dashes.
+> As was already done for MT8192 in commit b52e695324bb ("dt-bindings:
+> pinctrl: mt8192: Add drive-strength-microamp"), replace the custom
+> mediatek,drive-strength-adv property with the standardized pinconf
+> 'drive-strength-microamp' one.
 >
-> Change it from mediatek,rsel_resistance_in_si_unit to
-> mediatek,rsel-resistance-in-si-unit.
+> Similarly to the mt8192 counterpart, there's no user of property
+> 'mediatek,drive-strength-adv', hence removing it is safe.
 >
-> Fixes: 91e7edceda96 ("dt-bindings: pinctrl: mt8195: change pull up/down description")
+> Fixes: 69c3d58dc187 ("dt-bindings: pinctrl: mt8195: Add mediatek,drive-strength-adv property")
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Patch applied!
+Patch applied.
+
 Yours,
 Linus Walleij
 
