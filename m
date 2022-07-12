@@ -4,51 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CD53C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 13:04:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 243A3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 13:31:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N/YltBqXoVPnGdMCB9tUXoxkoM7oSfXPl1w1hEMAdQA=; b=0LQqxYYUmED6Iw4xdOYkxPvesA
-	1ywunSPnHFOf3rknIW3QXoVEIS93sIXq3qBwTzz5eUn0E3ZmAFroWMLLOWSgK34SV0zePJ8Duw6S5
-	k8zA6FUgkQXerWFHvAISUgCcc6G8MhKkgmZN9uNLN0C73L3eGEKUDySYpuTN0lRFQHL/7i4TKIkAZ
-	LM46oZlGqcUawp4WXL+mGfBV0G3lpS9L4i/jrPHJmJB/f8xwOmpM+BrmTHn+kPe2gsl+sYk2DsE8G
-	5OmM7sIZHI1It1gEJfnKXFs8DO1SnQvWgnnSrbpVx191GkxG5MJdjMgSvNVNwbjSmodChe2NnYUSg
-	R+97ck9Q==;
+	bh=IXccb145xbl9bZhb8fRE6pZvNgKdIysmieigHeIfmZo=; b=cmwonwevfufYcmGWrH6HhJ8WW+
+	E4k70I/8+zwBSdhWM2mavDGdDlX8ytpPXF4xhewK2HQfWUXd8QfeLV1rdO1xxeuxZLrrk+aufPiHM
+	FNAznVi2al5GDIsQGSzOU15geaSYngqUA5tZNj4FyU5XOmHjOPf7AQpLw3lp/y6INdVRmANZMj74O
+	AmafdDA7gvW+pwJ4jTqRoQIyIyZjHUuj7NER7Otk5ip23xdCSwsu4VTEFM9MmRPrnlCU4aK0EAg+s
+	YRBXKdt+0jHEtlW6vAUQdr2O3x/jtjNN8cFn+/W5NDaD7lMYwKn4ujt3mvUx892glnf9LVmJa0WBA
+	9D+7hJpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBFYV-00BDWP-9J; Tue, 12 Jul 2022 13:03:59 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oBFyh-00BMG8-Dz; Tue, 12 Jul 2022 13:31:03 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBFYH-00BDTW-VE; Tue, 12 Jul 2022 13:03:48 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 72D2B6601A29;
-	Tue, 12 Jul 2022 14:03:41 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657631022;
-	bh=20UbfKFHC3D5LNEyiWhOq6QqlIwwqVOjcyZexQGQYkE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Yt+eaHJ8kQuk9aboZ2C3XI/KEJGrqdCdtV3/RcMkQfnl0qZF9B5p5dakn5yErSzqT
-	 1i9LBRgqzIEiVGe7hsWxA/7FLfSA65bWbEkn1CDrSoHMLMNrmexg9sf2GbEbd+E8/G
-	 +1+1Wmu1Q13acnTLvrWmMD5jRfF9gXPx1CISTOMgk3GPwtKzaLzuFTROlFfqmlWG+t
-	 2sWcV7OOPLpXg8UI8gaAhtUnIng1DWq0OIjNql1pnECcwuP7B+BLWWgn2UhbdmvLhx
-	 mCUx24uH5eItf6kaMGmCj9soIDTdK8NisJOB/6CheOjbz548DyxtAAZu0BlDsnMSHp
-	 64u+S6kIChemQ==
-Message-ID: <4810356c-29bb-7732-c180-943c5a41b49a@collabora.com>
-Date: Tue, 12 Jul 2022 15:03:39 +0200
+	id 1oBFyf-00BMFH-AP
+	for linux-mediatek@lists.infradead.org; Tue, 12 Jul 2022 13:31:02 +0000
+Received: by mail-lf1-x129.google.com with SMTP id t1so10416519lft.8
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Jul 2022 06:31:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=IXccb145xbl9bZhb8fRE6pZvNgKdIysmieigHeIfmZo=;
+        b=K+cxKClQT+nal2Ss/wSUwNnUruBN00qnV6lGjcHmhKsfL4g1trgVLYIAwWkJpMJ/jb
+         I9RHCUfxN8RN+wqPu13MlDp9p7p5OiQEUDOMS17jHgLTjcPzOsAdINmszGICLTYx8AAs
+         9e0onp1pHq69byA37r+scqmt8RukZqPUKFKZnWnxJQzum0Od/eSryRJJXsCxQgHVqaw+
+         93IzQQENvGMVzpffb3bJvK5bMi376UDDnc9zd9cwUl/TZKfQtBLpuElEoqjhtY0TMw4y
+         riWZusM8mkxeEwWhdZU9qVrfTF3tDXJO80PH5xBUvDe2cz2EKARRLCeNre0yFkZBvPHZ
+         MlEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=IXccb145xbl9bZhb8fRE6pZvNgKdIysmieigHeIfmZo=;
+        b=YnxTTU+g41ZQ7m225cAKAuHbwXs4yI+w4OUbNFoJvEg64qF6WF42MvJuBODGUXzShT
+         bWEyWrhMykrEFSdHWl6Hdjk9j2sMeOoxUbAT2dAVVv9cyBjQCvPNTRVcmSBc8HlI/l34
+         S7+vJMoixVSDavqyr9kFVPPCLvDWZLpxpMZdy5kJusCgefECuruMojgGVWv4aYSFRzk3
+         2icl3ATjZ+NQ9p/gh07YJ55Siu/HuKnjbISr2Fz56WpljjeUerUQsSyCZtdn7PbOhHdt
+         2zasJ7/RM0kEuEFZjYlZtqZWZ1nQZM1xJ02gXIajltDZVvHtPtvVInjKKjGmZ13YCCeU
+         rb4A==
+X-Gm-Message-State: AJIora984DoqMrH5gUw9xTDOMJND29erRE+TkT7C8I8rhOrMN1WNo1Ga
+	Bo8RfivGfiI1Ku+jI4N2cbNZUg==
+X-Google-Smtp-Source: AGRyM1vMk2is/L2k4CTCicsaSu7ob3Bblj9cJOjz7rVfS0kLH+Eqq7Q53d+A5Jqs36ZWxIETg1pngQ==
+X-Received: by 2002:a05:6512:1381:b0:489:cd0b:3a03 with SMTP id p1-20020a056512138100b00489cd0b3a03mr10959222lfa.583.1657632659774;
+        Tue, 12 Jul 2022 06:30:59 -0700 (PDT)
+Received: from [10.0.0.8] (fwa5da9-171.bb.online.no. [88.93.169.171])
+        by smtp.gmail.com with ESMTPSA id f19-20020ac25333000000b00478fe690207sm2180771lfh.286.2022.07.12.06.30.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 12 Jul 2022 06:30:59 -0700 (PDT)
+Message-ID: <f7eee4e8-05fa-4c83-9168-64e5ea4c510f@linaro.org>
+Date: Tue, 12 Jul 2022 15:30:50 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
 Subject: Re: [PATCH v1 08/16] arm64: dts: mt8195: Add power domains controller
 Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
  Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Rob Herring <robh+dt@kernel.org>,
@@ -72,13 +90,15 @@ References: <20220704100028.19932-1-tinghan.shen@mediatek.com>
  <410cf9aa-471b-644c-9540-9bc0b89b8fd9@linaro.org>
  <0ca0e46d-0685-8228-4d26-c6cf20d7a9fc@collabora.com>
  <4795d9a8-3a57-ffe5-c0e5-9877860f5107@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <4795d9a8-3a57-ffe5-c0e5-9877860f5107@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <4810356c-29bb-7732-c180-943c5a41b49a@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <4810356c-29bb-7732-c180-943c5a41b49a@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_060346_306618_3C7392F8 
-X-CRM114-Status: GOOD (  41.51  )
+X-CRM114-CacheID: sfid-20220712_063101_429766_27155F34 
+X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,203 +113,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/07/22 14:58, Krzysztof Kozlowski ha scritto:
-> On 12/07/2022 14:54, AngeloGioacchino Del Regno wrote:
->> Il 12/07/22 14:47, Krzysztof Kozlowski ha scritto:
->>> On 12/07/2022 12:33, AngeloGioacchino Del Regno wrote:
->>>> Il 12/07/22 11:03, Krzysztof Kozlowski ha scritto:
->>>>> On 12/07/2022 10:53, AngeloGioacchino Del Regno wrote:
->>>>>> Il 12/07/22 10:37, Krzysztof Kozlowski ha scritto:
->>>>>>> On 12/07/2022 10:17, AngeloGioacchino Del Regno wrote:
->>>>>>>> Il 06/07/22 17:18, Krzysztof Kozlowski ha scritto:
->>>>>>>>> On 06/07/2022 14:00, Tinghan Shen wrote:
->>>>>>>>>> Hi Krzysztof,
->>>>>>>>>>
->>>>>>>>>> After discussing your message with our power team,
->>>>>>>>>> we realized that we need your help to ensure we fully understand you.
->>>>>>>>>>
->>>>>>>>>> On Mon, 2022-07-04 at 14:38 +0200, Krzysztof Kozlowski wrote:
->>>>>>>>>>> On 04/07/2022 12:00, Tinghan Shen wrote:
->>>>>>>>>>>> Add power domains controller node for mt8195.
->>>>>>>>>>>>
->>>>>>>>>>>> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
->>>>>>>>>>>> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
->>>>>>>>>>>> ---
->>>>>>>>>>>>       arch/arm64/boot/dts/mediatek/mt8195.dtsi | 327 +++++++++++++++++++++++
->>>>>>>>>>>>       1 file changed, 327 insertions(+)
->>>>>>>>>>>>
->>>>>>>>>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
->>>>>>>>>>>> index 8d59a7da3271..d52e140d9271 100644
->>>>>>>>>>>> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
->>>>>>>>>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
->>>>>>>>>>>> @@ -10,6 +10,7 @@
->>>>>>>>>>>>       #include <dt-bindings/interrupt-controller/irq.h>
->>>>>>>>>>>>       #include <dt-bindings/phy/phy.h>
->>>>>>>>>>>>       #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
->>>>>>>>>>>> +#include <dt-bindings/power/mt8195-power.h>
->>>>>>>>>>>>       
->>>>>>>>>>>>       / {
->>>>>>>>>>>>       	compatible = "mediatek,mt8195";
->>>>>>>>>>>> @@ -338,6 +339,332 @@
->>>>>>>>>>>>       			#interrupt-cells = <2>;
->>>>>>>>>>>>       		};
->>>>>>>>>>>>       
->>>>>>>>>>>> +		scpsys: syscon@10006000 {
->>>>>>>>>>>> +			compatible = "syscon", "simple-mfd";
->>>>>>>>>>>
->>>>>>>>>>> These compatibles cannot be alone.
->>>>>>>>>>
->>>>>>>>>> the scpsys sub node has the compatible of the power domain driver.
->>>>>>>>>> do you suggest that the compatible in the sub node should move to here?
->>>>>>>>>
->>>>>>>>> Not necessarily, depends. You have here device node representing system
->>>>>>>>> registers. They need they own compatibles, just like everywhere in the
->>>>>>>>> kernel (except the broken cases...).
->>>>>>>>>
->>>>>>>>> Whether this should be compatible of power-domain driver, it depends
->>>>>>>>> what this device node is. I don't know, I don't have your datasheets or
->>>>>>>>> your architecture diagrams...
->>>>>>>>>
->>>>>>>>>>
->>>>>>>>>>>> +			reg = <0 0x10006000 0 0x1000>;
->>>>>>>>>>>> +			#power-domain-cells = <1>;
->>>>>>>>>>>
->>>>>>>>>>> If it is simple MFD, then probably it is not a power domain provider.
->>>>>>>>>>> Decide.
->>>>>>>>>>
->>>>>>>>>> this MFD device is the power controller on mt8195.
->>>>>>>>>
->>>>>>>>> Then it is not a simple MFD but a power controller. Do not use
->>>>>>>>> "simple-mfd" compatible.
->>>>>>>>>
->>>>>>>>>> Some features need
->>>>>>>>>> to do some operations on registers in this node. We think that implement
->>>>>>>>>> the operation of these registers as the MFD device can provide flexibility
->>>>>>>>>> for future use. We want to clarify if you're saying that an MFD device
->>>>>>>>>> cannot be a power domain provider.
->>>>>>>>>
->>>>>>>>> MFD device is Linuxism, so it has nothing to do here. I am talking only
->>>>>>>>> about simple-mfd. simple-mfd is a simple device only instantiating
->>>>>>>>> children and not providing anything to anyone. Neither to children. This
->>>>>>>>>       the most important part. The children do not depend on anything from
->>>>>>>>> simple-mfd device. For example simple-mfd device can be shut down
->>>>>>>>> (gated) and children should still operate. Being a power domain
->>>>>>>>> controller, contradicts this usually.
->>>>>>>>>
->>>>>>>>
->>>>>>>> If my interpretation of this issue is right, I have pushed a solution for it.
->>>>>>>> Krzysztof, Matthias, can you please check [1] and give feedback, so that
->>>>>>>> Tinghan can rewrite this commit ASAP?
->>>>>>>>
->>>>>>>> Reason is - I need the MT8195 devicetree to be complete to push the remaining
->>>>>>>> pieces for Tomato Chromebooks, of course.
->>>>>>>>
->>>>>>>> [1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=658527
->>>>>>>
->>>>>>> I have two or three similar discussions, so maybe I lost the context,
->>>>>>> but I don't understand how your fix is matching real hardware.
->>>>>>>
->>>>>>> In the patchset here, Tinghan claimed that power domain controller is a
->>>>>>> child of 10006000. 10006000 is also a power domain controller. This was
->>>>>>> explicitly described by the DTS code.
->>>>>>>
->>>>>>> Now you abandon this hierarchy in favor of syscon. If the hierarchy was
->>>>>>> correct, your patchset does not match the hardware, so it's a no-go.
->>>>>>> Describe the hardware.
->>>>>>>
->>>>>>> However maybe this patch did not make any sense and there is no
->>>>>>> relationship parent-child... so what do you guys send here? Bunch of
->>>>>>> hacks and work-arounds?
->>>>>>>
->>>>>>
->>>>>> For how I get it, hardware side, the SPM (System Power Manager) resides inside
->>>>>> of the SCPSYS block (consequently, in that iospace).
->>>>>>
->>>>>> As Matthias pointed out earlier, SCPSYS provides more functionality, but the
->>>>>> only one that's currently implemented upstream is the System Power Manager,
->>>>>> responsible for managing the MTCMOS (power domains).
->>>>>>
->>>>>> In any case, now I'm a little confused on how to proceed, can you please give
->>>>>> some suggestion?
->>>>>
->>>>> You should make SCPSYS (0x10006000, AFAIU) a proper driver with its own
->>>>> compatible (followed by syscon if needed), even if now it is almost
->>>>> empty stub. The driver should populate OF children and then you can
->>>>> embed SPM inside and reference to parent's regmap. No need for
->>>>> simple-mfd. Later the SCPSYS can grow, if you ever need it.
->>>>>
->>>>>
->>>>
->>>> I see an issue with such approach: the SCPSYS doesn't have a mailbox, doesn't
->>>> need power management from the Linux side, doesn't have any register to check
->>>> HW revision, it's always online (hence it doesn't need Linux to boot it), it
->>>> doesn't need any root clock, nor regulator, nor mmu context, and there's no
->>>> retrievable "boot log" of any sort.
->>>
->>> No problems, there are other drivers who do not need any resources,
->>> except address space.
->>>
->>>>
->>>> Hence, a driver with its own compatible would be an empty stub forever: it's
->>>> not going to get any "scpsys root handling" at all, because there's none to do.
->>>
->>> But it is a power domain provider, so you need to embed it in some
->>> dirver, don't you?
->>>
->>>
->>>> Digging through some downstream kernels, the only other functionality that I
->>>> can find in the SCPSYS is a MODULE_RESET (which is used to reset the SCP System)
->>>> and a INFRA_IRQ_SET, used to set "wake locks" on the AP and CONNSYS (modem).
->>>
->>> So why was power domain provider added to SCPSYS? Guys, I don't know
->>> your architecture, so I deduct it based on pieces of DTS code I see.
->>>
->>>>
->>>> Both of these may only be used in the SCP mailbox driver (which is *not* SCPSYS)
->>>> to perform an ipi_send operation (but currently we simply en/disable the clock
->>>> and that's enough), or to perform a reset and firmware reload of the SCP (but
->>>> currently we're simply powering off and back on: this may change in the future).
->>>>
->>>> So, at the end of the day, we would end up having a copy of simple-pm-bus and
->>>> nothing else, which doesn't look like being optimal at all.
->>>
->>> No, because you need that power domain driver, don't you? If you don't
->>> need power domain provider/driver, why the heck this is there:
->>>
->>> +		scpsys: syscon@10006000 {
->>> +			compatible = "syscon", "simple-mfd";
->>> +			reg = <0 0x10006000 0 0x1000>;
->>> +			#power-domain-cells = <1>;
->>>                           ^^^^^^^^^^^^^^^^^
->>> Entire discussion started from this.
->>>
+On 12/07/2022 15:03, AngeloGioacchino Del Regno wrote:
+>> and you keep telling me that it is a power domain provider and MFD and
+>> something more.
 >>
->> Is this all a huge misunderstanding? It probably is, at least partially.
+>> Anyway neither syscon nor simple-mfd can be without specific compatible.
 >>
->> That node shouldn't have any #power-domain-cells, the only PD is the SPM node
->> (mediatek,mt8195-power-controller), not the scpsys parent! Ugh...
 > 
-> My comment was quite clear I think:
-> 
->    > +			#power-domain-cells = <1>;
->    If it is simple MFD, then probably it is not a power domain provider.
->    Decide.
+> I believe, at this point, that adding a compatible like "mediatek,scpsys" in
+> mfd/syscon.yaml should do?
 
-Yes it was quite clear. It's entirely my fault for misreading that part and
-I'm truly sorry for that.
-
-> 
-> and you keep telling me that it is a power domain provider and MFD and
-> something more.
-> 
-> Anyway neither syscon nor simple-mfd can be without specific compatible.
-> 
-
-I believe, at this point, that adding a compatible like "mediatek,scpsys" in
-mfd/syscon.yaml should do?
+Yes. Or dedicated file, like other mediatek syscons.
 
 
-> Best regards,
-> Krzysztof
-
+Best regards,
+Krzysztof
 
