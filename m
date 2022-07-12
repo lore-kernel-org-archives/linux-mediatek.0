@@ -4,92 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 488E7CCA480
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 10:12:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5A4FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 10:21:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9GzcFi+vPIgQomELE8X8bD71ocK65f+Pq/zDznCpD/A=; b=U8nBdgXvqy1jW89/dtThqMQgTk
-	EvXWIR2BjUz0D2nHe7obyc4qo9qqkPAf44LdIKSsoDrnrjtbO08XYxYx15PY1X8SXJow+DuvZWrRB
-	H2YBz1E0erY/Zp+bDZyXWEaO1gGhcxv2JjPOtqcaOyhVg2Jtv+YtMkwZsGJ+cP5hNs20mfKaROVtP
-	PtoeWQe9SpSC69QJxQmUFCLat94/H3TgGvnzUhfcsHCC+E9xO4gvojCQe4lQB1J7ojiTKpzzo1x5r
-	achTw5WKBB/rZQ1ai1uAod/pVciJuAdVFJI2148r2x7J6L/qkKYgc4wwOyztRrda+GN2sPbV038ZY
-	ld0vL5Aw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VPgp6fm6j0CAsKXk7ysI7IhzdRCmgGccQ1q7bwN7wVw=; b=lEKhRBRAqvjVFEEnViRSPmvtR1
+	23Ffph0W16n8I9N9WRJVDR8kUturXj4tu4k/9W4XGsCoXkrPlsNd7tNSOcgthLuSCwTZAjA+aN2hx
+	2o1GtZOGiXDX6SAzftNdNNqfz0IuED6Upj7+mG3jyTvIaatFqEJ0hncuwVi2fFUUaT4aJIT45WHf3
+	lU25b75fWUYgYhcOQoX8NLBdBVKO/8mWQPjbCTYbjL99sJHegRWACKkWHh3RzbLkfKiLGwudYpbd0
+	08UexH+bvX573fHiyqHzrtZDzoTY5YMm9tkDX88pXBfeVn05wuAtRleCUhLt97PTGl7T+jt2HmC2d
+	Au8IJ+rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBCsg-009eQ4-6w; Tue, 12 Jul 2022 10:12:38 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1oBD1O-009m04-0e; Tue, 12 Jul 2022 10:21:38 +0000
+Received: from 60-251-196-230.hinet-ip.hinet.net ([60.251.196.230] helo=ironport.ite.com.tw)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBCsd-009eMm-4i
-	for linux-mediatek@lists.infradead.org; Tue, 12 Jul 2022 10:12:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1657620753;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9GzcFi+vPIgQomELE8X8bD71ocK65f+Pq/zDznCpD/A=;
-	b=T4JRpY7LR0E+L3L61MHjvF3wktLF7yS9Nvqw2NSc7oVnDQ0kLfivGCxpgld9SN6OfuGoc9
-	2aPLcAIrAur4hOEeqcVBIPqpO82QzDocHN55zGzaDlXKJKqsUSI6zHdCFSIsO/ie3e+SF9
-	9kRbz/yOlOcfFPGBTnNW5+6eJ8MylaA=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-206-bAGNprEEMG2ftdxr7x_5Wg-1; Tue, 12 Jul 2022 06:12:33 -0400
-X-MC-Unique: bAGNprEEMG2ftdxr7x_5Wg-1
-Received: by mail-wr1-f72.google.com with SMTP id l11-20020adfbd8b000000b0021d754b84c5so1274326wrh.17
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Jul 2022 03:12:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=9GzcFi+vPIgQomELE8X8bD71ocK65f+Pq/zDznCpD/A=;
-        b=5+WqI14g984b/GrY3JIRCgztZDPz5ucX1mhAoFoJXL2fMzEOp4n5Ow6DMejsCxFecX
-         ucwNMnG0oUy8sf69kitwMzIGUwnPWslAOHod8vZLn57+qg0ksUt8Z1snlnMM+PTOvC/f
-         3Fitz+vbIxTz7oX6PkupISG9+MLbuXMGpsJeb75vkLh20n8aoWB0qjbtnrlS6Vz0TzYO
-         Kmqk65q4PLk0IG+ZtBwsWylZ7lt4jNTthljliL7zfurM8cZQmZ6S0PwuMJZ5Rftk1f+Z
-         SnsRP3foM7hsP/fIJsiqePwQySE1B7X1dtpr2l6pAYhLNE3j2BYN0GOZDiqgTowP4P5u
-         kpJQ==
-X-Gm-Message-State: AJIora9aoeF8xKWnkMysid3Fd4itc477zDgDi5e/Eka3CfIDeEtIFC2e
-	9vMMOhg0YCaXAZ71qfCkr8xPquK+Z/NVmjXLjqeUeX0bkpNrOZMS8AshQUL7/r2BYDv9AjkfIyK
-	1QNgvbOegy131IhDH33rITD5SR2xbOTsu
-X-Received: by 2002:adf:f14d:0:b0:21d:ad67:c2e0 with SMTP id y13-20020adff14d000000b0021dad67c2e0mr4957633wro.247.1657620751058;
-        Tue, 12 Jul 2022 03:12:31 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1usRquEy8dwdRl0HJMJ8j+JYqzqJnTapkyaV2RE+c1r9tWr5ZRFbOxvkYpWLP2w1063WeSpwA==
-X-Received: by 2002:adf:f14d:0:b0:21d:ad67:c2e0 with SMTP id y13-20020adff14d000000b0021dad67c2e0mr4957606wro.247.1657620750800;
-        Tue, 12 Jul 2022 03:12:30 -0700 (PDT)
-Received: from gerbillo.redhat.com (146-241-97-238.dyn.eolo.it. [146.241.97.238])
-        by smtp.gmail.com with ESMTPSA id v5-20020a7bcb45000000b0039c811077d3sm8848135wmj.22.2022.07.12.03.12.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Jul 2022 03:12:30 -0700 (PDT)
-Message-ID: <9c0b3cef3029ea71f7802eab6214062aad48d509.camel@redhat.com>
-Subject: Re: [PATCH net-next 2/4] net: ethernet: mtk_eth_soc: add basic XDP
- support
-From: Paolo Abeni <pabeni@redhat.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org
-Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com, 
- Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com, 
- kuba@kernel.org, matthias.bgg@gmail.com,
- linux-mediatek@lists.infradead.org,  ilias.apalodimas@linaro.org,
- lorenzo.bianconi@redhat.com, jbrouer@redhat.com
-Date: Tue, 12 Jul 2022 12:12:28 +0200
-In-Reply-To: <dc3235fd20b74f78f4f42550ca7513063269a752.1657381057.git.lorenzo@kernel.org>
-References: <cover.1657381056.git.lorenzo@kernel.org>
-	 <dc3235fd20b74f78f4f42550ca7513063269a752.1657381057.git.lorenzo@kernel.org>
-User-Agent: Evolution 3.42.4 (3.42.4-2.fc35)
+	id 1oBD1K-009lt9-S3; Tue, 12 Jul 2022 10:21:37 +0000
+Received: from unknown (HELO mse.ite.com.tw) ([192.168.35.30])
+  by ironport.ite.com.tw with ESMTP; 12 Jul 2022 18:21:28 +0800
+Received: from CSBMAIL1.internal.ite.com.tw (CSBMAIL1.internal.ite.com.tw [192.168.65.58])
+	by mse.ite.com.tw with ESMTP id 26CALNsx077982;
+	Tue, 12 Jul 2022 18:21:23 +0800 (GMT-8)
+	(envelope-from allen.chen@ite.com.tw)
+Received: from CSBMAIL1.internal.ite.com.tw (192.168.65.58) by
+ CSBMAIL1.internal.ite.com.tw (192.168.65.58) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2176.14; Tue, 12 Jul 2022 18:21:24 +0800
+Received: from CSBMAIL1.internal.ite.com.tw ([fe80::dd22:b444:859b:61c7]) by
+ CSBMAIL1.internal.ite.com.tw ([fe80::dd22:b444:859b:61c7%18]) with mapi id
+ 15.01.2176.014; Tue, 12 Jul 2022 18:21:24 +0800
+From: <allen.chen@ite.com.tw>
+To: <angelogioacchino.delregno@collabora.com>
+CC: <treapking@google.com>, <Jau-Chih.Tseng@ite.com.tw>,
+        <Hermes.Wu@ite.com.tw>, <Kenneth.Hung@ite.com.tw>,
+        <allen-kh.cheng@mediatek.corp-partner.google.com>,
+        <treapking@chromium.org>, <andrzej.hajda@intel.com>,
+        <narmstrong@baylibre.com>, <robert.foss@linaro.org>,
+        <Laurent.pinchart@ideasonboard.com>, <jonas@kwiboo.se>,
+        <jernej.skrabec@gmail.com>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+        <matthias.bgg@gmail.com>, <dri-devel@lists.freedesktop.org>,
+        <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>
+Subject: RE: [PATCH] drm/bridge: add it6505 driver read config from dt
+ property
+Thread-Topic: [PATCH] drm/bridge: add it6505 driver read config from dt
+ property
+Thread-Index: AQHYiiU2sEhaoVt2QkuGqiQ1tO5jFa16nKiw
+Date: Tue, 12 Jul 2022 10:21:24 +0000
+Message-ID: <3adce6f63a41434ea0b127bb9e793446@ite.com.tw>
+References: <20220623093154.52701-1-allen.chen@ite.com.tw>
+ <7f565036-df78-a4e7-db5e-259115daaf79@collabora.com>
+In-Reply-To: <7f565036-df78-a4e7-db5e-259115daaf79@collabora.com>
+Accept-Language: en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [192.168.70.46]
+x-tm-snts-smtp: 267CFC6B8D3D45475EDCB01AC192F3F5A0981F48C11BA41AE24501DA5024DE4C2002:8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pabeni@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+X-MAIL: mse.ite.com.tw 26CALNsx077982
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_031235_295509_1BECBA2D 
-X-CRM114-Status: GOOD (  23.96  )
+X-CRM114-CacheID: sfid-20220712_032135_205540_4B982CC4 
+X-CRM114-Status: GOOD (  23.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,271 +86,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2022-07-09 at 17:48 +0200, Lorenzo Bianconi wrote:
-> Introduce basic XDP support to mtk_eth_soc driver.
-> Supported XDP verdicts:
-> - XDP_PASS
-> - XDP_DROP
-> - XDP_REDIRECT
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 146 +++++++++++++++++---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.h |   2 +
->  2 files changed, 130 insertions(+), 18 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 9a92d602ebd5..3b583abb599d 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -1494,22 +1494,55 @@ static void mtk_rx_put_buff(struct mtk_rx_ring *ring, void *data, bool napi)
->  		skb_free_frag(data);
->  }
->  
-> +static u32 mtk_xdp_run(struct mtk_rx_ring *ring, struct bpf_prog *prog,
-> +		       struct xdp_buff *xdp, struct net_device *dev)
-> +{
-> +	u32 act = XDP_PASS;
-> +
-> +	if (!prog)
-> +		return XDP_PASS;
-> +
-> +	act = bpf_prog_run_xdp(prog, xdp);
-> +	switch (act) {
-> +	case XDP_PASS:
-> +		return XDP_PASS;
-> +	case XDP_REDIRECT:
-> +		if (unlikely(xdp_do_redirect(dev, xdp, prog)))
-> +			break;
-> +		return XDP_REDIRECT;
-> +	default:
-> +		bpf_warn_invalid_xdp_action(dev, prog, act);
-> +		fallthrough;
-> +	case XDP_ABORTED:
-> +		trace_xdp_exception(dev, prog, act);
-> +		fallthrough;
-> +	case XDP_DROP:
-> +		break;
-> +	}
-> +
-> +	page_pool_put_full_page(ring->page_pool,
-> +				virt_to_head_page(xdp->data), true);
-> +	return XDP_DROP;
-> +}
-> +
->  static int mtk_poll_rx(struct napi_struct *napi, int budget,
->  		       struct mtk_eth *eth)
->  {
-> +	struct bpf_prog *prog = READ_ONCE(eth->prog);
->  	struct dim_sample dim_sample = {};
->  	struct mtk_rx_ring *ring;
->  	int idx;
->  	struct sk_buff *skb;
->  	u8 *data, *new_data;
->  	struct mtk_rx_dma_v2 *rxd, trxd;
-> +	bool xdp_do_redirect = false;
->  	int done = 0, bytes = 0;
->  
->  	while (done < budget) {
->  		unsigned int pktlen, *rxdcsum;
-> -		u32 hash, reason, reserve_len;
->  		struct net_device *netdev;
->  		dma_addr_t dma_addr;
-> +		u32 hash, reason;
->  		int mac = 0;
->  
->  		ring = mtk_get_rx_ring(eth);
-> @@ -1539,8 +1572,14 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
->  		if (unlikely(test_bit(MTK_RESETTING, &eth->state)))
->  			goto release_desc;
->  
-> +		pktlen = RX_DMA_GET_PLEN0(trxd.rxd2);
-> +
->  		/* alloc new buffer */
->  		if (ring->page_pool) {
-> +			struct page *page = virt_to_head_page(data);
-> +			struct xdp_buff xdp;
-> +			u32 ret;
-> +
->  			new_data = mtk_page_pool_get_buff(ring->page_pool,
->  							  &dma_addr,
->  							  GFP_ATOMIC);
-> @@ -1548,6 +1587,34 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
->  				netdev->stats.rx_dropped++;
->  				goto release_desc;
->  			}
-> +
-> +			dma_sync_single_for_cpu(eth->dma_dev,
-> +				page_pool_get_dma_addr(page) + MTK_PP_HEADROOM,
-> +				pktlen, page_pool_get_dma_dir(ring->page_pool));
-> +
-> +			xdp_init_buff(&xdp, PAGE_SIZE, &ring->xdp_q);
-> +			xdp_prepare_buff(&xdp, data, MTK_PP_HEADROOM, pktlen,
-> +					 false);
-> +			xdp_buff_clear_frags_flag(&xdp);
-> +
-> +			ret = mtk_xdp_run(ring, prog, &xdp, netdev);
-> +			if (ret != XDP_PASS) {
-> +				if (ret == XDP_REDIRECT)
-> +					xdp_do_redirect = true;
-> +				goto skip_rx;
-> +			}
-> +
-> +			skb = build_skb(data, PAGE_SIZE);
-> +			if (unlikely(!skb)) {
-> +				page_pool_put_full_page(ring->page_pool,
-> +							page, true);
-> +				netdev->stats.rx_dropped++;
-> +				goto skip_rx;
-> +			}
-> +
-> +			skb_reserve(skb, xdp.data - xdp.data_hard_start);
-> +			skb_put(skb, xdp.data_end - xdp.data);
-> +			skb_mark_for_recycle(skb);
->  		} else {
->  			if (ring->frag_size <= PAGE_SIZE)
->  				new_data = napi_alloc_frag(ring->frag_size);
-> @@ -1571,27 +1638,20 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
->  
->  			dma_unmap_single(eth->dma_dev, trxd.rxd1,
->  					 ring->buf_size, DMA_FROM_DEVICE);
-> -		}
->  
-> -		/* receive data */
-> -		skb = build_skb(data, ring->frag_size);
-> -		if (unlikely(!skb)) {
-> -			mtk_rx_put_buff(ring, data, true);
-> -			netdev->stats.rx_dropped++;
-> -			goto skip_rx;
-> -		}
-> +			skb = build_skb(data, ring->frag_size);
-> +			if (unlikely(!skb)) {
-> +				netdev->stats.rx_dropped++;
-> +				skb_free_frag(data);
-> +				goto skip_rx;
-> +			}
->  
-> -		if (ring->page_pool) {
-> -			reserve_len = MTK_PP_HEADROOM;
-> -			skb_mark_for_recycle(skb);
-> -		} else {
-> -			reserve_len = NET_SKB_PAD + NET_IP_ALIGN;
-> +			skb_reserve(skb, NET_SKB_PAD + NET_IP_ALIGN);
-> +			skb_put(skb, pktlen);
->  		}
-> -		skb_reserve(skb, reserve_len);
->  
-> -		pktlen = RX_DMA_GET_PLEN0(trxd.rxd2);
->  		skb->dev = netdev;
-> -		skb_put(skb, pktlen);
-> +		bytes += skb->len;
->  
->  		if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
->  			rxdcsum = &trxd.rxd3;
-> @@ -1603,7 +1663,6 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
->  		else
->  			skb_checksum_none_assert(skb);
->  		skb->protocol = eth_type_trans(skb, netdev);
-> -		bytes += pktlen;
->  
->  		hash = trxd.rxd4 & MTK_RXD4_FOE_ENTRY;
->  		if (hash != MTK_RXD4_FOE_ENTRY) {
-> @@ -1666,6 +1725,9 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
->  			  &dim_sample);
->  	net_dim(&eth->rx_dim, dim_sample);
->  
-> +	if (prog && xdp_do_redirect)
-> +		xdp_do_flush_map();
-> +
->  	return done;
->  }
->  
-> @@ -2750,6 +2812,48 @@ static int mtk_stop(struct net_device *dev)
->  	return 0;
->  }
->  
-> +static int mtk_xdp_setup(struct net_device *dev, struct bpf_prog *prog,
-> +			 struct netlink_ext_ack *extack)
-> +{
-> +	struct mtk_mac *mac = netdev_priv(dev);
-> +	struct mtk_eth *eth = mac->hw;
-> +	struct bpf_prog *old_prog;
-> +	bool need_update;
-> +
-> +	if (eth->hwlro) {
-> +		NL_SET_ERR_MSG_MOD(extack, "XDP not supported with HWLRO");
-> +		return -EOPNOTSUPP;
-> +	}
-> +
-> +	if (dev->mtu > MTK_PP_MAX_BUF_SIZE) {
-> +		NL_SET_ERR_MSG_MOD(extack, "MTU too large for XDP");
-> +		return -EOPNOTSUPP;
-> +	}
-> +
-> +	need_update = !!eth->prog != !!prog;
-> +	if (netif_running(dev) && need_update)
-> +		mtk_stop(dev);
-> +
-> +	old_prog = xchg(&eth->prog, prog);
-> +	if (old_prog)
-> +		bpf_prog_put(old_prog);
-> +
-> +	if (netif_running(dev) && need_update)
-> +		return mtk_open(dev);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_xdp(struct net_device *dev, struct netdev_bpf *xdp)
-> +{
-> +	switch (xdp->command) {
-> +	case XDP_SETUP_PROG:
-> +		return mtk_xdp_setup(dev, xdp->prog, xdp->extack);
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +}
-> +
->  static void ethsys_reset(struct mtk_eth *eth, u32 reset_bits)
->  {
->  	regmap_update_bits(eth->ethsys, ETHSYS_RSTCTRL,
-> @@ -3045,6 +3149,11 @@ static int mtk_change_mtu(struct net_device *dev, int new_mtu)
->  	struct mtk_eth *eth = mac->hw;
->  	u32 mcr_cur, mcr_new;
->  
-> +	if (eth->prog && length > MTK_PP_MAX_BUF_SIZE) {
-> +		netdev_err(dev, "Invalid MTU for XDP mode\n");
-> +		return -EINVAL;
-> +	}
-> +
->  	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628)) {
->  		mcr_cur = mtk_r32(mac->hw, MTK_MAC_MCR(mac->id));
->  		mcr_new = mcr_cur & ~MAC_MCR_MAX_RX_MASK;
-> @@ -3372,6 +3481,7 @@ static const struct net_device_ops mtk_netdev_ops = {
->  	.ndo_poll_controller	= mtk_poll_controller,
->  #endif
->  	.ndo_setup_tc		= mtk_eth_setup_tc,
-> +	.ndo_bpf		= mtk_xdp,
->  };
->  
->  static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> index 26c019319055..a1cea93300c1 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> @@ -1088,6 +1088,8 @@ struct mtk_eth {
->  
->  	struct mtk_ppe			*ppe;
->  	struct rhashtable		flow_table;
-> +
-> +	struct bpf_prog			*prog;
-
-The XDP program is apparently under an RCU protection schema (otherwise
-you will get UaF when replacing it). Why don't you have explicit RCU
-annotations? (here, and where the 'prog' field is touched).
-
-Thanks!
-
-Paolo
-
+SGkgQW5nZWxvR2lvYWNjaGlubw0KDQpBY2NvcmRpbmcgdG8gdmlkZW8taW50ZXJmYWNlcy55YW1s
+LCBwcm9wZXJ0eSBkYXRhLWxhbmVzIHNob3VsZCBpbiB0aGUgZW5kcG9pbnQuIEl0NjUwNSBoYXMg
+ZHBpIGlucHV0IGFuZCBubyBkYXRhLWxhbmVzIHBhcmFtZXRlcnMuIEl0NjUwNSBoYXMgZHAgb3V0
+cHV0IGFuZCBoYXMgZGF0YS1sYW5lcyBwYXJhbWV0ZXJzLiBXZSB3YW50IHRvIHVzZSBkYXRhLWxh
+bmVzIGluIHRoZSBvdXRwdXQsIGJ1dCBvdXRwdXQgcG9pbnQgdXNlIGV4dGNvbiBpbnN0ZWFkIG9m
+IGVuZHBvaW50LiBEbyBub3QgaGF2ZSBvdXRwdXQgZW5kcG9pbnQuDQpXaGljaCBsaW5lIGluIGR0
+cyBzaG91bGQgZGF0YS1sYW5lcyBiZSBpbj8NCkJlbG93IGlzIGl0NjUwNSBkdHMgDQoNClRoYW5r
+cyBmb3IgeW91ciBzdWdnZXN0aW9uIQ0KDQpkcC1icmlkZ2VANWMgew0KICAgICAgICAgICAgY29t
+cGF0aWJsZSA9ICJpdGUsaXQ2NTA1IjsNCiAgICAgICAgICAgIGludGVycnVwdHMgPSA8MTUyIElS
+UV9UWVBFX0VER0VfRkFMTElORyAxNTIgMD47DQogICAgICAgICAgICByZWcgPSA8MHg1Yz47DQog
+ICAgICAgICAgICBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOw0KICAgICAgICAgICAgcGluY3Ry
+bC0wID0gPCZpdDY1MDVfcGlucz47DQogICAgICAgICAgICBvdmRkLXN1cHBseSA9IDwmbXQ2MzU4
+X3ZzaW0xX3JlZz47DQogICAgICAgICAgICBwd3IxOC1zdXBwbHkgPSA8Jml0NjUwNV9wcDE4X3Jl
+Zz47DQogICAgICAgICAgICByZXNldC1ncGlvcyA9IDwmcGlvIDE3OSAxPjsNCiAgICAgICAgICAg
+IGV4dGNvbiA9IDwmdXNiY19leHRjb24+Ow0KDQogICAgICAgICAgICBwb3J0IHsNCiAgICAgICAg
+ICAgICAgICBpdDY1MDVfaW46IGVuZHBvaW50IHsNCiAgICAgICAgICAgICAgICAgICAgcmVtb3Rl
+LWVuZHBvaW50ID0gPCZkcGlfb3V0PjsNCiAgICAgICAgICAgICAgICB9Ow0KICAgICAgICAgICAg
+fTsNCiAgICAgICAgfTsNCg0KDQotLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KRnJvbTogQW5n
+ZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFi
+b3JhLmNvbT4gDQpTZW50OiBNb25kYXksIEp1bmUgMjcsIDIwMjIgODo1NSBQTQ0KVG86IEFsbGVu
+IENoZW4gKOmZs+afj+WuhykgPGFsbGVuLmNoZW5AaXRlLmNvbS50dz4NCkNjOiBQaW4teWVuIExp
+biA8dHJlYXBraW5nQGdvb2dsZS5jb20+OyBKYXUtQ2hpaCBUc2VuZyAo5pu+5pit5pm6KSA8SmF1
+LUNoaWguVHNlbmdAaXRlLmNvbS50dz47IEhlcm1lcyBXdSAo5ZCz5L2z5a6PKSA8SGVybWVzLld1
+QGl0ZS5jb20udHc+OyBLZW5uZXRoIEh1bmcgKOa0quWutuWAqykgPEtlbm5ldGguSHVuZ0BpdGUu
+Y29tLnR3PjsgQWxsZW4ta2ggQ2hlbmcgPGFsbGVuLWtoLmNoZW5nQG1lZGlhdGVrLmNvcnAtcGFy
+dG5lci5nb29nbGUuY29tPjsgUGluLXllbiBMaW4gPHRyZWFwa2luZ0BjaHJvbWl1bS5vcmc+OyBB
+bmRyemVqIEhhamRhIDxhbmRyemVqLmhhamRhQGludGVsLmNvbT47IE5laWwgQXJtc3Ryb25nIDxu
+YXJtc3Ryb25nQGJheWxpYnJlLmNvbT47IFJvYmVydCBGb3NzIDxyb2JlcnQuZm9zc0BsaW5hcm8u
+b3JnPjsgTGF1cmVudCBQaW5jaGFydCA8TGF1cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQuY29t
+PjsgSm9uYXMgS2FybG1hbiA8am9uYXNAa3dpYm9vLnNlPjsgSmVybmVqIFNrcmFiZWMgPGplcm5l
+ai5za3JhYmVjQGdtYWlsLmNvbT47IERhdmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT47IERh
+bmllbCBWZXR0ZXIgPGRhbmllbEBmZndsbC5jaD47IE1hdHRoaWFzIEJydWdnZXIgPG1hdHRoaWFz
+LmJnZ0BnbWFpbC5jb20+OyBvcGVuIGxpc3Q6RFJNIERSSVZFUlMgPGRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmc+OyBvcGVuIGxpc3QgPGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmc+
+OyBtb2RlcmF0ZWQgbGlzdDpBUk0vTWVkaWF0ZWsgU29DIHN1cHBvcnQgPGxpbnV4LWFybS1rZXJu
+ZWxAbGlzdHMuaW5mcmFkZWFkLm9yZz47IG1vZGVyYXRlZCBsaXN0OkFSTS9NZWRpYXRlayBTb0Mg
+c3VwcG9ydCA8bGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZz4NClN1YmplY3Q6IFJl
+OiBbUEFUQ0hdIGRybS9icmlkZ2U6IGFkZCBpdDY1MDUgZHJpdmVyIHJlYWQgY29uZmlnIGZyb20g
+ZHQgcHJvcGVydHkNCg0KSWwgMjMvMDYvMjIgMTE6MzEsIGFsbGVuIGhhIHNjcml0dG86DQo+IEZy
+b206IGFsbGVuIGNoZW4gPGFsbGVuLmNoZW5AaXRlLmNvbS50dz4NCj4gDQo+IGFkZCByZWFkIG1h
+eC1sYW5lIGFuZCBtYXgtcGl4ZWwtY2xvY2sgZnJvbSBkdCBwcm9wZXJ0eQ0KPiANCj4gU2lnbmVk
+LW9mZi1ieTogQWxsZW4ta2ggQ2hlbmcgDQo+IDxhbGxlbi1raC5jaGVuZ0BtZWRpYXRlay5jb3Jw
+LXBhcnRuZXIuZ29vZ2xlLmNvbT4NCj4gU2lnbmVkLW9mZi1ieTogUGluLXllbiBMaW4gPHRyZWFw
+a2luZ0BjaHJvbWl1bS5vcmc+DQoNCkhlbGxvIEFsbGVuLA0KDQphcyBTYW0gYWxzbyBwb2ludGVk
+IG91dCwgcGxlYXNlIGZpeCB5b3VyIFMtby1iIGVtYWlsOiBpdCBoYXMgdG8gbWF0Y2ggd2l0aCB0
+aGUgYXV0aG9yIG9uZS4NCg0KQW55d2F5LCB5b3UncmUgYWRkaW5nIGRldmljZXRyZWUgcHJvcGVy
+dGllcywgc28gdGhpcyBpbXBsaWVzIHRoYXQgeW91IHNob3VsZCBhbHNvIGNoYW5nZSB0aGUgZHQt
+YmluZGluZ3MgZG9jdW1lbnRhdGlvbiBmb3IgdGhpcyBkcml2ZXIuLi4gYW5kIGFsc28sIEkgaGF2
+ZSBzb21lIG1vcmUgY29tbWVudHMsIGNoZWNrIGJlbG93Og0KDQo+IC0tLQ0KPiAgIGRyaXZlcnMv
+Z3B1L2RybS9icmlkZ2UvaXRlLWl0NjUwNS5jIHwgMzUgKysrKysrKysrKysrKysrKysrKysrKysr
+KystLS0NCj4gICAxIGZpbGUgY2hhbmdlZCwgMzIgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMo
+LSkNCj4gDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2l0ZS1pdDY1MDUu
+YyANCj4gYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2l0ZS1pdDY1MDUuYw0KPiBpbmRleCA0YjY3
+M2M0NzkyZDc3Li5jOTEyMWQ0NjM1YTUyIDEwMDY0NA0KPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2l0ZS1pdDY1MDUuYw0KPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2l0ZS1p
+dDY1MDUuYw0KPiBAQCAtNDM2LDYgKzQzNiw4IEBAIHN0cnVjdCBpdDY1MDUgew0KPiAgIAlib29s
+IHBvd2VyZWQ7DQo+ICAgCWJvb2wgaHBkX3N0YXRlOw0KPiAgIAl1MzIgYWZlX3NldHRpbmc7DQo+
+ICsJdTMyIG1heF9kcGlfcGl4ZWxfY2xvY2s7DQo+ICsJdTMyIG1heF9sYW5lX2NvdW50Ow0KPiAg
+IAllbnVtIGhkY3Bfc3RhdGUgaGRjcF9zdGF0dXM7DQo+ICAgCXN0cnVjdCBkZWxheWVkX3dvcmsg
+aGRjcF93b3JrOw0KPiAgIAlzdHJ1Y3Qgd29ya19zdHJ1Y3QgaGRjcF93YWl0X2tzdl9saXN0OyBA
+QCAtMTQ2Niw3ICsxNDY4LDggQEAgc3RhdGljIA0KPiB2b2lkIGl0NjUwNV9wYXJzZV9saW5rX2Nh
+cGFiaWxpdGllcyhzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUpDQo+ICAgCWl0NjUwNS0+bGFuZV9jb3Vu
+dCA9IGxpbmstPm51bV9sYW5lczsNCj4gICAJRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAiU2lu
+ayBzdXBwb3J0ICVkIGxhbmVzIHRyYWluaW5nIiwNCj4gICAJCQkgICAgIGl0NjUwNS0+bGFuZV9j
+b3VudCk7DQo+IC0JaXQ2NTA1LT5sYW5lX2NvdW50ID0gbWluX3QoaW50LCBpdDY1MDUtPmxhbmVf
+Y291bnQsIE1BWF9MQU5FX0NPVU5UKTsNCj4gKwlpdDY1MDUtPmxhbmVfY291bnQgPSBtaW5fdChp
+bnQsIGl0NjUwNS0+bGFuZV9jb3VudCwNCj4gKwkJCQkgICBpdDY1MDUtPm1heF9sYW5lX2NvdW50
+KTsNCj4gICANCj4gICAJaXQ2NTA1LT5icmFuY2hfZGV2aWNlID0gZHJtX2RwX2lzX2JyYW5jaChp
+dDY1MDUtPmRwY2QpOw0KPiAgIAlEUk1fREVWX0RFQlVHX0RSSVZFUihkZXYsICJTaW5rICVzYnJh
+bmNoIGRldmljZSIsIEBAIC0yODk1LDcgDQo+ICsyODk4LDcgQEAgaXQ2NTA1X2JyaWRnZV9tb2Rl
+X3ZhbGlkKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsDQo+ICAgCWlmIChtb2RlLT5mbGFncyAm
+IERSTV9NT0RFX0ZMQUdfSU5URVJMQUNFKQ0KPiAgIAkJcmV0dXJuIE1PREVfTk9fSU5URVJMQUNF
+Ow0KPiAgIA0KPiAtCWlmIChtb2RlLT5jbG9jayA+IERQSV9QSVhFTF9DTEtfTUFYKQ0KPiArCWlm
+IChtb2RlLT5jbG9jayA+IGl0NjUwNS0+bWF4X2RwaV9waXhlbF9jbG9jaykNCj4gICAJCXJldHVy
+biBNT0RFX0NMT0NLX0hJR0g7DQo+ICAgDQo+ICAgCWl0NjUwNS0+dmlkZW9faW5mby5jbG9jayA9
+IG1vZGUtPmNsb2NrOyBAQCAtMzA1Nyw2ICszMDYwLDggQEAgDQo+IHN0YXRpYyB2b2lkIGl0NjUw
+NV9wYXJzZV9kdChzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUpDQo+ICAgew0KPiAgIAlzdHJ1Y3QgZGV2
+aWNlICpkZXYgPSAmaXQ2NTA1LT5jbGllbnQtPmRldjsNCj4gICAJdTMyICphZmVfc2V0dGluZyA9
+ICZpdDY1MDUtPmFmZV9zZXR0aW5nOw0KPiArCXUzMiAqbWF4X2xhbmVfY291bnQgPSAmaXQ2NTA1
+LT5tYXhfbGFuZV9jb3VudDsNCj4gKwl1MzIgKm1heF9kcGlfcGl4ZWxfY2xvY2sgPSAmaXQ2NTA1
+LT5tYXhfZHBpX3BpeGVsX2Nsb2NrOw0KPiAgIA0KPiAgIAlpdDY1MDUtPmxhbmVfc3dhcF9kaXNh
+YmxlZCA9DQo+ICAgCQlkZXZpY2VfcHJvcGVydHlfcmVhZF9ib29sKGRldiwgIm5vLWxhbmVzd2Fw
+Iik7IEBAIC0zMDcyLDcgKzMwNzcsMzEgDQo+IEBAIHN0YXRpYyB2b2lkIGl0NjUwNV9wYXJzZV9k
+dChzdHJ1Y3QgaXQ2NTA1ICppdDY1MDUpDQo+ICAgCX0gZWxzZSB7DQo+ICAgCQkqYWZlX3NldHRp
+bmcgPSAwOw0KPiAgIAl9DQo+IC0JRFJNX0RFVl9ERUJVR19EUklWRVIoZGV2LCAidXNpbmcgYWZl
+X3NldHRpbmc6ICVkIiwgKmFmZV9zZXR0aW5nKTsNCj4gKw0KPiArCWlmIChkZXZpY2VfcHJvcGVy
+dHlfcmVhZF91MzIoZGV2LCAibWF4LWxhbmUtY291bnQiLA0KDQpQbGVhc2UgdXNlIHRoZSBzdGFu
+ZGFyZCBwcm9wZXJ0eSAiZGF0YS1sYW5lcyIgZnJvbSB2aWRlby1pbnRlcmZhY2VzLnlhbWwuDQoN
+Cj4gKwkJCQkgICAgIG1heF9sYW5lX2NvdW50KSA9PSAwKSB7DQo+ICsJCWlmICgqbWF4X2xhbmVf
+Y291bnQgPiA0IHx8ICptYXhfbGFuZV9jb3VudCA9PSAzKSB7DQo+ICsJCQlkZXZfZXJyKGRldiwg
+Im1heCBsYW5lIGNvdW50IGVycm9yLCB1c2UgZGVmYXVsdCIpOw0KPiArCQkJKm1heF9sYW5lX2Nv
+dW50ID0gTUFYX0xBTkVfQ09VTlQ7DQo+ICsJCX0NCj4gKwl9IGVsc2Ugew0KPiArCQkqbWF4X2xh
+bmVfY291bnQgPSBNQVhfTEFORV9DT1VOVDsNCj4gKwl9DQo+ICsNCj4gKwlpZiAoZGV2aWNlX3By
+b3BlcnR5X3JlYWRfdTMyKGRldiwgIm1heC1kcGktcGl4ZWwtY2xvY2siLA0KPiArCQkJCSAgICAg
+bWF4X2RwaV9waXhlbF9jbG9jaykgPT0gMCkgew0KDQpXaGF0IGFib3V0ICJtYXgtcGl4ZWwtY2xv
+Y2sta2h6IiBvciAibWF4LXBpeGVsLWNsb2NrLWh6Ij8NCg0KDQpSZWdhcmRzLA0KQW5nZWxvDQo=
 
