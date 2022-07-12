@@ -4,68 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F8CDC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 19:21:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0C3CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 20:37:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t0aNyxP21GZCBEkZVZT8NoRqTZzqSF9erFDxLkI8OCE=; b=3Bo+K37ag0VEV7ZPQHE2wK6OtB
-	ZAqLoOQ019fjpxUgraLQn1fOrOPUDhVggxwX5myBbYf2GCJHFtZycCSf42zcJqkDGWUSPxrTXFbbi
-	l1QcsvYP6Wm6Wm83TDRb5ZabXluRwFDibiQukPOWhfCKfogHl8dDcmxsWqmwYVCGhw3i4uY3CTiMO
-	GpMVN4vClq99V/c2BMoKqeiBrz0jo4wcERcxGcQFpIIpmsbeG137CciSjWw9nrZSRwSxxLnFLsdun
-	+Q2oNbTaBPGc+SuPz5q3c05x5MXF0LlPSK6mlZ0m1OOjf/KfbdNE1CZFLwECjZd6wgcVkT10f/Fts
-	vbZhpRcA==;
+	bh=Y/kf7WpiJhpV7S8Lv6B6nSloUE3ZIK760tIURsCB2pw=; b=WrrjL3hlMHZGHQAAWFOV4aeXtZ
+	k/9IPk2afrbGQcoYIPXh7bGIuvXnmjyALZb4xFa8MDl2T6TPCrCPJpl44q3yHJiYOeYL95AKVK/C2
+	BYqilJEJBhaJs4Iu9+2Bj4lWVLDVmd/OWg8Z8ua4xtplH7Kh4pn2EJHevtMt1q4UDJR1b7DtBWKBy
+	Yl/MLtYa02veZVLw0CWYzdBI3bTcupoh7F139lkbIlsOBg9xymnZ8AcQz5f4hPJ2kt945HgZNBjit
+	6/DLPE/bb06ipEQIih5XtuHDdqLchJklLXA7Ws/9A6tzPcVPR/G7gLbLLSx/jeGUU4avPfa4ixpru
+	t+dS5NoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBLRm-00E8ZD-8A; Tue, 12 Jul 2022 19:21:26 +0000
-Received: from mail-il1-f175.google.com ([209.85.166.175])
+	id 1oBMcy-00EcKm-Nb; Tue, 12 Jul 2022 20:37:04 +0000
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBLRj-00E8Xx-3U; Tue, 12 Jul 2022 19:21:25 +0000
-Received: by mail-il1-f175.google.com with SMTP id u13so5438383iln.6;
-        Tue, 12 Jul 2022 12:21:22 -0700 (PDT)
+	id 1oBMcn-00EcFh-PB; Tue, 12 Jul 2022 20:36:55 +0000
+Received: by mail-io1-xd36.google.com with SMTP id l24so9021009ion.13;
+        Tue, 12 Jul 2022 13:36:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=Y/kf7WpiJhpV7S8Lv6B6nSloUE3ZIK760tIURsCB2pw=;
+        b=HK+0DWTz7CWIFl+SYCiY0c1eT23V1rfCJ2QRHvfA8bSUNlP5B7cbxj+fSAo0QWdQZF
+         L4916vyqIJ6hBECNHpwM9VpomRkI9oU7ux781zK8Ag6wUNbvi0zH1theP+ClUZe+WfHY
+         bB29E+meNCNUo/BX9CrmNicvZbvo7Dsb1noCwXeeg8uBLkIOTzOd2JFGDmLPi5Fxrwdh
+         pVPnnhlFhQXWdSntoI9CvaNMVywddCOqtSosLlEXuaU9ngzuYPqFAR4H3H3Z9UHakffi
+         K5w8ACxyuEOxAhWUkNEfCxymzEHp020sUAC2tCxdWfJj6r37lwRMsOlfEC07Le2qsU6U
+         hBRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=t0aNyxP21GZCBEkZVZT8NoRqTZzqSF9erFDxLkI8OCE=;
-        b=jqZiLi9HX86PGiAWPD+cOCFdF7V+NMg0bogVkw0hcShYsF3S/9TuZViN6ZL4NoeS7Z
-         7pOv1P8x9fz7FKROw3iT7/oSWgz6T4xpsn+0eUMJFO3urGfDKE0LNimekHPGk/0tQU+l
-         001ozMb+dezelfht0sWHTVva6QvyTy++KqXwqCQ+eA6ecksp/YpAuefVTaXZXHfH6fRn
-         HnZO43MNjjS3rwKuiOfPWUuxmSlgTRqYMx0W8yj7WQMQ+iFbSrITovFczAC+P+6AlGDx
-         CrjUK/lcjMH0z4qmuwiowiswIveLlZPBNfty6aXXGLUrIURdpVu758B3OmFMwYMvli4C
-         PN0w==
-X-Gm-Message-State: AJIora+aH2PmZjgoJFAPydDjAtTW2cA/wNnX2SozvINnZkMHr/qgb/SA
-	7876p+pVHALGCuox8HotCw==
-X-Google-Smtp-Source: AGRyM1s5cpn8A2ors+BY93VkqJFWZPkOCrE2BaSZNJ/3lIe92TyVMWqAp3du+VuHapI0beHPSumJuQ==
-X-Received: by 2002:a05:6e02:1c42:b0:2dc:11b4:4fca with SMTP id d2-20020a056e021c4200b002dc11b44fcamr13712769ilg.307.1657653681737;
-        Tue, 12 Jul 2022 12:21:21 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id f24-20020a056638113800b0033f3ab94271sm4421144jar.139.2022.07.12.12.21.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Jul 2022 12:21:21 -0700 (PDT)
-Received: (nullmailer pid 2216514 invoked by uid 1000);
-	Tue, 12 Jul 2022 19:21:19 -0000
-Date: Tue, 12 Jul 2022 13:21:19 -0600
-From: Rob Herring <robh@kernel.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Weiyi Lu <weiyi.lu@mediatek.com>, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v1 03/16] dt-bindings: power: mediatek: Refine multiple
- level power domain nodes
-Message-ID: <20220712192119.GK1823936-robh@kernel.org>
-References: <20220704100028.19932-1-tinghan.shen@mediatek.com>
- <20220704100028.19932-4-tinghan.shen@mediatek.com>
- <20220705205739.GA2599256-robh@kernel.org>
- <b5667c052447d1b3c3498131af98d80a07ed4767.camel@mediatek.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=Y/kf7WpiJhpV7S8Lv6B6nSloUE3ZIK760tIURsCB2pw=;
+        b=Y3e0H5QBpEwEbQvE2c6lqfZgdwm/hQh2lTbbCHPWt2JTZerBNZL42Zntx8SVUXE48M
+         U8NuF4L01RLhjdpvJhzqOkGqgI2Dz93LZey29UG/mIEELZULAuOk5L0mMWiRZuwTouOS
+         OM2PyU5NsFCd5UFsb/iAE8W6OvJ0NbdULiDxTqGbiU57l6oH2HY7aA9JZswXEbKV5bAv
+         X1e+191uB0/+HbQyE3XV7KUujn9QUfwuqwdPbAurLCc3MR29gt3Brs7h4Y6App9p5TnS
+         tlLvASH4woVznn5VvOcWr8YNmVzG5wGhmzEIAslXuF1cI3lWcMks3iZYSts29uEhaFHu
+         K8JA==
+X-Gm-Message-State: AJIora9FEgfBCQjG3VH3x3iDIrvLSp32wPgf32SYInQn0ZQ5XRGqlZB/
+	HL/iYEnvaTekpsQeKehZCDy2nZRM/3od3dR9Ijo=
+X-Google-Smtp-Source: AGRyM1vcVt7E6J7CXFHWcDWieOMzcW12/B3aaLXom2LHjUZJ7rjCMBYmaxd73fcDTKZ0bf0NWkgwf+myIsxTC/h2scA=
+X-Received: by 2002:a05:6638:3812:b0:33f:4a06:ad48 with SMTP id
+ i18-20020a056638381200b0033f4a06ad48mr9488946jav.71.1657658210925; Tue, 12
+ Jul 2022 13:36:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <b5667c052447d1b3c3498131af98d80a07ed4767.camel@mediatek.com>
+References: <20220615062219.22618-1-Kuan-Ying.Lee@mediatek.com>
+In-Reply-To: <20220615062219.22618-1-Kuan-Ying.Lee@mediatek.com>
+From: Andrey Konovalov <andreyknvl@gmail.com>
+Date: Tue, 12 Jul 2022 22:36:40 +0200
+Message-ID: <CA+fCnZc_sqfp4NOZPMWig9t01-yz2HOswoesTVfzGubrvqECDw@mail.gmail.com>
+Subject: Re: [PATCH] kasan: separate double free case from invalid free
+To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>, 
+	Dmitry Vyukov <dvyukov@google.com>, Vincenzo Frascino <vincenzo.frascino@arm.com>, 
+	Andrew Morton <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Chinwen Chang <chinwen.chang@mediatek.com>, =?UTF-8?B?WWVlIExlZSAo5p2O5bu66Kq8KQ==?= <yee.lee@mediatek.com>, 
+	casper.li@mediatek.com, Andrew Yang <andrew.yang@mediatek.com>, 
+	kasan-dev <kasan-dev@googlegroups.com>, 
+	Linux Memory Management List <linux-mm@kvack.org>, LKML <linux-kernel@vger.kernel.org>, 
+	Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_122123_171629_C6D7AA18 
-X-CRM114-Status: GOOD (  31.30  )
+X-CRM114-CacheID: sfid-20220712_133653_892047_59FEAF90 
+X-CRM114-Status: GOOD (  21.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,251 +89,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 06, 2022 at 02:19:08PM +0800, Tinghan Shen wrote:
-> On Tue, 2022-07-05 at 14:57 -0600, Rob Herring wrote:
-> > On Mon, Jul 04, 2022 at 06:00:15PM +0800, Tinghan Shen wrote:
-> > > Extract duplicated properties and support more levels of power
-> > > domain nodes.
-> > > 
-> > > This change fix following error when do dtbs_check,
-> > >     arch/arm64/boot/dts/mediatek/mt8195-evb.dtb: power-controller: power-domain@15:
-> > > power-domain@16:power-domain@18: 'power-domain@19', 'power-domain@20', 'power-domain@21' do not
-> > > match any of the regexes: 'pinctrl-[0-9]+'
-> > > 	 From schema: Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> > > 
-> > > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > > ---
-> > >  .../power/mediatek,power-controller.yaml      | 132 ++----------------
-> > >  1 file changed, 12 insertions(+), 120 deletions(-)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> > > b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> > > index 135c6f722091..09a537a802b8 100644
-> > > --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> > > +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> > > @@ -39,8 +39,17 @@ properties:
-> > >    '#size-cells':
-> > >      const: 0
-> > >  
-> > > +required:
-> > > +  - compatible
-> > > +
-> > > +additionalProperties: false
-> > > +
-> > >  patternProperties:
-> > >    "^power-domain@[0-9a-f]+$":
-> > > +    $ref: "#/$defs/power-domain-node"
-> > > +
-> > > +$defs:
-> > > +  power-domain-node:
-> > >      type: object
-> > >      description: |
-> > >        Represents the power domains within the power controller node as documented
-> > > @@ -98,127 +107,10 @@ patternProperties:
-> > >          $ref: /schemas/types.yaml#/definitions/phandle
-> > >          description: phandle to the device containing the SMI register range.
-> > >  
-> > > -    patternProperties:
-> > > -      "^power-domain@[0-9a-f]+$":
-> > > -        type: object
-> > > -        description: |
-> > > -          Represents a power domain child within a power domain parent node.
-> > > -
-> > > -        properties:
-> > > -
-> > > -          '#power-domain-cells':
-> > > -            description:
-> > > -              Must be 0 for nodes representing a single PM domain and 1 for nodes
-> > > -              providing multiple PM domains.
-> > > -
-> > > -          '#address-cells':
-> > > -            const: 1
-> > > -
-> > > -          '#size-cells':
-> > > -            const: 0
-> > > -
-> > > -          reg:
-> > > -            maxItems: 1
-> > > -
-> > > -          clocks:
-> > > -            description: |
-> > > -              A number of phandles to clocks that need to be enabled during domain
-> > > -              power-up sequencing.
-> > > -
-> > > -          clock-names:
-> > > -            description: |
-> > > -              List of names of clocks, in order to match the power-up sequencing
-> > > -              for each power domain we need to group the clocks by name. BASIC
-> > > -              clocks need to be enabled before enabling the corresponding power
-> > > -              domain, and should not have a '-' in their name (i.e mm, mfg, venc).
-> > > -              SUSBYS clocks need to be enabled before releasing the bus protection,
-> > > -              and should contain a '-' in their name (i.e mm-0, isp-0, cam-0).
-> > > -
-> > > -              In order to follow properly the power-up sequencing, the clocks must
-> > > -              be specified by order, adding first the BASIC clocks followed by the
-> > > -              SUSBSYS clocks.
-> > > -
-> > > -          domain-supply:
-> > > -            description: domain regulator supply.
-> > > -
-> > > -          mediatek,infracfg:
-> > > -            $ref: /schemas/types.yaml#/definitions/phandle
-> > > -            description: phandle to the device containing the INFRACFG register range.
-> > > -
-> > > -          mediatek,smi:
-> > > -            $ref: /schemas/types.yaml#/definitions/phandle
-> > > -            description: phandle to the device containing the SMI register range.
-> > > -
-> > > -        patternProperties:
-> > > -          "^power-domain@[0-9a-f]+$":
-> > > -            type: object
-> > > -            description: |
-> > > -              Represents a power domain child within a power domain parent node.
-> > > -
-> > > -            properties:
-> > > +      required:
-> > > +        - reg
-> > >  
-> > > -              '#power-domain-cells':
-> > > -                description:
-> > > -                  Must be 0 for nodes representing a single PM domain and 1 for nodes
-> > > -                  providing multiple PM domains.
-> > > -
-> > > -              '#address-cells':
-> > > -                const: 1
-> > > -
-> > > -              '#size-cells':
-> > > -                const: 0
-> > > -
-> > > -              reg:
-> > > -                maxItems: 1
-> > > -
-> > > -              clocks:
-> > > -                description: |
-> > > -                  A number of phandles to clocks that need to be enabled during domain
-> > > -                  power-up sequencing.
-> > > -
-> > > -              clock-names:
-> > > -                description: |
-> > > -                  List of names of clocks, in order to match the power-up sequencing
-> > > -                  for each power domain we need to group the clocks by name. BASIC
-> > > -                  clocks need to be enabled before enabling the corresponding power
-> > > -                  domain, and should not have a '-' in their name (i.e mm, mfg, venc).
-> > > -                  SUSBYS clocks need to be enabled before releasing the bus protection,
-> > > -                  and should contain a '-' in their name (i.e mm-0, isp-0, cam-0).
-> > > -
-> > > -                  In order to follow properly the power-up sequencing, the clocks must
-> > > -                  be specified by order, adding first the BASIC clocks followed by the
-> > > -                  SUSBSYS clocks.
-> > > -
-> > > -              domain-supply:
-> > > -                description: domain regulator supply.
-> > > -
-> > > -              mediatek,infracfg:
-> > > -                $ref: /schemas/types.yaml#/definitions/phandle
-> > > -                description: phandle to the device containing the INFRACFG register range.
-> > > -
-> > > -              mediatek,smi:
-> > > -                $ref: /schemas/types.yaml#/definitions/phandle
-> > > -                description: phandle to the device containing the SMI register range.
-> > > -
-> > > -            required:
-> > > -              - reg
-> > > -
-> > > -            additionalProperties: false
-> > > -
-> > > -        required:
-> > > -          - reg
-> > > -
-> > > -        additionalProperties: false
-> > > -
-> > > -    required:
-> > > -      - reg
-> > > -
-> > > -    additionalProperties: false
-> > > -
-> > > -required:
-> > > -  - compatible
-> > > -
-> > > -additionalProperties: false
-> > > +      additionalProperties: false
-> > You now aren't checking more than 1 level because you have defined 
-> > 'additionalProperties' to be a DT property. Check the indentation.
-> > 
-> > You need this in $defs/power-domain-node to recurse:
-> > 
-> >     additionalProperties:
-> >       $ref: #/$defs/power-domain-node
-> Hi Rob,
-> 
-> I get the following error after adding the 'additionalProperties' to $defs/power-domain-node.
-> The same error occurs when I run dt_binding_check on power/renesas,sysc-rmobile.yaml, which has the
-> similar property.
-> 
-> $ make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/power/mediatek,power-
-> controller.yaml O=out
-> make[1]: Entering directory '/test/upstream-cros/src/third_party/kernel/v5.10/out'
->   LINT    Documentation/devicetree/bindings
->   CHKDT   Documentation/devicetree/bindings/processed-schema.json
->   SCHEMA  Documentation/devicetree/bindings/processed-schema.json
-> /test/upstream-
-> cros/src/third_party/kernel/v5.10/Documentation/devicetree/bindings/iio/temperature/adi,ltc2983.yaml
-> : ignoring, error in schema: patternProperties: ^thermistor@: properties: adi,excitation-current-
-> nanoamp
-> /test/upstream-
-> cros/src/third_party/kernel/v5.10/Documentation/devicetree/bindings/display/tegra/nvidia,tegra124-
-> sor.yaml: ignoring, error in schema: allOf: 1: if: not: properties
-> /test/upstream-
-> cros/src/third_party/kernel/v5.10/Documentation/devicetree/bindings/mfd/mps,mp2629.yaml: ignoring,
-> error parsing file
->   DTEX    Documentation/devicetree/bindings/power/mediatek,power-controller.example.dts
->   DTC     Documentation/devicetree/bindings/power/mediatek,power-controller.example.dtb
->   CHECK   Documentation/devicetree/bindings/power/mediatek,power-controller.example.dtb
-> Traceback (most recent call last):
->   File "/test/.venv/py3.9/bin/dt-validate", line 173, in <module>
->     testtree = dtschema.load(filename, line_number=args.line_number)
->   File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 913, in load
->     return [ dtschema.dtb.fdt_unflatten(f.read()) ]
->   File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/dtb.py", line 463, in fdt_unflatten
->     p = dtschema.get_prop_types()
->   File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 892, in get_prop_types
->     props = dtschema.extract_types(schema_cache)
->   File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 883, in extract_types
->     _extract_subschema_types(props, sch, sch)
->   File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 874, in
-> _extract_subschema_types
-> 
-> [...snip...]
-> 
->   File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 803, in
-> _extract_prop_type
->     _extract_prop_type(props, schema, propname, subschema)
->   File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 794, in
-> _extract_prop_type
->     _extract_subschema_types(props, schema, subschema)
->   File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 874, in
-> _extract_subschema_types
->     _extract_prop_type(props, schema, p, v)
->   File "/test/.venv/py3.9/lib/python3.9/site-packages/dtschema/lib.py", line 790, in
-> _extract_prop_type
->     if not isinstance(subschema, dict):
-> RecursionError: maximum recursion depth exceeded while calling a Python object
-> make[1]: Leaving directory '/test/upstream-cros/src/third_party/kernel/v5.10/out'
+On Wed, Jun 15, 2022 at 8:22 AM 'Kuan-Ying Lee' via kasan-dev
+<kasan-dev@googlegroups.com> wrote:
+>
+> Currently, KASAN describes all invalid-free/double-free bugs as
+> "double-free or invalid-free". This is ambiguous.
+>
+> KASAN should report "double-free" when a double-free is a more
+> likely cause (the address points to the start of an object) and
+> report "invalid-free" otherwise [1].
+>
+> [1] https://bugzilla.kernel.org/show_bug.cgi?id=212193
+>
+> Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+> ---
+>  mm/kasan/common.c |  8 ++++----
+>  mm/kasan/kasan.h  |  3 ++-
+>  mm/kasan/report.c | 12 ++++++++----
+>  3 files changed, 14 insertions(+), 9 deletions(-)
+>
+> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+> index c40c0e7b3b5f..707c3a527fcb 100644
+> --- a/mm/kasan/common.c
+> +++ b/mm/kasan/common.c
+> @@ -343,7 +343,7 @@ static inline bool ____kasan_slab_free(struct kmem_cache *cache, void *object,
+>
+>         if (unlikely(nearest_obj(cache, virt_to_slab(object), object) !=
+>             object)) {
+> -               kasan_report_invalid_free(tagged_object, ip);
+> +               kasan_report_invalid_free(tagged_object, ip, KASAN_REPORT_INVALID_FREE);
+>                 return true;
+>         }
+>
+> @@ -352,7 +352,7 @@ static inline bool ____kasan_slab_free(struct kmem_cache *cache, void *object,
+>                 return false;
+>
+>         if (!kasan_byte_accessible(tagged_object)) {
+> -               kasan_report_invalid_free(tagged_object, ip);
+> +               kasan_report_invalid_free(tagged_object, ip, KASAN_REPORT_DOUBLE_FREE);
+>                 return true;
+>         }
+>
+> @@ -377,12 +377,12 @@ bool __kasan_slab_free(struct kmem_cache *cache, void *object,
+>  static inline bool ____kasan_kfree_large(void *ptr, unsigned long ip)
+>  {
+>         if (ptr != page_address(virt_to_head_page(ptr))) {
+> -               kasan_report_invalid_free(ptr, ip);
+> +               kasan_report_invalid_free(ptr, ip, KASAN_REPORT_INVALID_FREE);
+>                 return true;
+>         }
+>
+>         if (!kasan_byte_accessible(ptr)) {
+> -               kasan_report_invalid_free(ptr, ip);
+> +               kasan_report_invalid_free(ptr, ip, KASAN_REPORT_DOUBLE_FREE);
+>                 return true;
+>         }
+>
+> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> index 610d60d6e5b8..01c03e45acd4 100644
+> --- a/mm/kasan/kasan.h
+> +++ b/mm/kasan/kasan.h
+> @@ -125,6 +125,7 @@ static inline bool kasan_sync_fault_possible(void)
+>  enum kasan_report_type {
+>         KASAN_REPORT_ACCESS,
+>         KASAN_REPORT_INVALID_FREE,
+> +       KASAN_REPORT_DOUBLE_FREE,
+>  };
+>
+>  struct kasan_report_info {
+> @@ -277,7 +278,7 @@ static inline void kasan_print_address_stack_frame(const void *addr) { }
+>
+>  bool kasan_report(unsigned long addr, size_t size,
+>                 bool is_write, unsigned long ip);
+> -void kasan_report_invalid_free(void *object, unsigned long ip);
+> +void kasan_report_invalid_free(void *object, unsigned long ip, enum kasan_report_type type);
+>
+>  struct page *kasan_addr_to_page(const void *addr);
+>  struct slab *kasan_addr_to_slab(const void *addr);
+> diff --git a/mm/kasan/report.c b/mm/kasan/report.c
+> index b341a191651d..fe3f606b3a98 100644
+> --- a/mm/kasan/report.c
+> +++ b/mm/kasan/report.c
+> @@ -176,8 +176,12 @@ static void end_report(unsigned long *flags, void *addr)
+>  static void print_error_description(struct kasan_report_info *info)
+>  {
+>         if (info->type == KASAN_REPORT_INVALID_FREE) {
+> -               pr_err("BUG: KASAN: double-free or invalid-free in %pS\n",
+> -                      (void *)info->ip);
+> +               pr_err("BUG: KASAN: invalid-free in %pS\n", (void *)info->ip);
+> +               return;
+> +       }
+> +
+> +       if (info->type == KASAN_REPORT_DOUBLE_FREE) {
+> +               pr_err("BUG: KASAN: double-free in %pS\n", (void *)info->ip);
+>                 return;
+>         }
+>
+> @@ -433,7 +437,7 @@ static void print_report(struct kasan_report_info *info)
+>         }
+>  }
+>
+> -void kasan_report_invalid_free(void *ptr, unsigned long ip)
+> +void kasan_report_invalid_free(void *ptr, unsigned long ip, enum kasan_report_type type)
+>  {
+>         unsigned long flags;
+>         struct kasan_report_info info;
+> @@ -448,7 +452,7 @@ void kasan_report_invalid_free(void *ptr, unsigned long ip)
+>
+>         start_report(&flags, true);
+>
+> -       info.type = KASAN_REPORT_INVALID_FREE;
+> +       info.type = type;
+>         info.access_addr = ptr;
+>         info.first_bad_addr = kasan_reset_tag(ptr);
+>         info.access_size = 0;
+> --
+> 2.18.0
 
-Okay, I think you need something more like this that doesn't recurse 
-infinitely:
+Reviewed-by: Andrey Konovalov <andreyknvl@gmail.com>
 
-patternProperties:
-  "^power-domain@[0-9a-f]+$":
-    $ref: #/$defs/power-domain-node
-
-    unevaluatedProperties:
-      $ref: #/$defs/power-domain-node
-
-If you need a 3rd level of nodes:
-      unevaluatedProperties:
-        $ref: #/$defs/power-domain-node
-
-
-Rob
+Thanks for the patch!
 
