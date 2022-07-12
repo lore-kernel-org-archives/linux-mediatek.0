@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF4BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 10:58:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B7DAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 11:10:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M7wOKduX9nDMQ9c9MP2jVhZeZha7VgiaQzYwbPBnssM=; b=MzJLmL5ruTyB0UpyIsjzTwIu0A
-	ehia+zVjEufOFO3U6bKBfKuyxuZEtSOkdbYljLVBE+C8pBykRBSNB82aPiqWYE75akUoyPj/gQ+Oc
-	2itRu3qC7iKl8G11WQAFhl6CiE9oac3YVDeN9+qWprwZ/qUap4N0WhQtiVLhYB2Kwk9qOka4jMkUy
-	6AevwzLki8M2MDKltZFWFBUWFP4P8g+6744Yrg+3/C2GZqQctp9aKJAWw+tjTr7QfEg86PupjYYo+
-	AuocB4+pr/RA7OHAyDydXt8NRt9GgVYe7P36ERO1behpXhaOiGKzmqBmoknQWEriz3Mh20sUqfAWU
-	jfryqwOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SIxn205KIvmS9VSb5lDf2UBPI0iYaOAaJ1A1MJqqVxk=; b=JDzfereNlbXMvCVo4E2oSEpfHG
+	G7NlRRh154CAq16kDdXzCcVBsTqCosjaQFRPYSP9YPDj9av5qqLsbOe/7MlpEX0fUIsLyDMmV9YRO
+	SIGRqTnyprMOEbtWI7vuqfPwtx9uYskgXlNAA6f/ZuIydIrIZDsDFZObohvoA8iZkrMk+MKzfaeFt
+	gfPqdVMFRsTK1ugm7IYVnVYIHDJbMhhMKFs26iIbdg4w2+hOIZjEBJlmWQpAuPBpLeFie5ezq+3Tn
+	a7Mw86735l5q+msLvFYHazd8XJsWzrYldIGNLcr2OH2rdfCJJvNCmbLtfy0cNM5QN5EXEgYZ+m35o
+	ySFRndxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBDak-00AADF-Sx; Tue, 12 Jul 2022 10:58:10 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oBDmd-00AI0p-6b; Tue, 12 Jul 2022 11:10:27 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBDaS-00A9jh-6G; Tue, 12 Jul 2022 10:57:54 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3006466018EA;
-	Tue, 12 Jul 2022 11:57:50 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657623470;
-	bh=zNavgn7eqp0AZ8YWzxsjeIyE+kpCiuIr7vB2/QMskHA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NoVfHOzb7wbgqSNF8TfU3MKhpSjp7SYxbjN5LvVc7V6o94SAgp8XgNDf5rH3bALLn
-	 cWmVCsK3A8WlH4wjg4TXj9TYwMy++nBR91YevrkvdOocLO4uw53p5hspkCZzD53U7+
-	 0ICR8b08Y/dDHDT+2sUQh6Lo9hJ35XaOgz+ozcixv/VPPEnVqYCyINTDgIM1pKGtqf
-	 xV6BAcQN3KJYNOWNd7ZBguGDL+48p/mN0CQ5Bwj1Sy1rPkPB+wbNju4PFzDYPdfQT8
-	 6d13aJ9MebqiRUNwt2NBYSLjcHjFQDuOiDG8GkFoK3F/rFf3kMSYdYiZ8EFEAuLcYI
-	 T1YXJb117NF0A==
-Message-ID: <9102680e-2c4c-6c62-0255-5f3f669dd16c@collabora.com>
-Date: Tue, 12 Jul 2022 12:57:47 +0200
+	id 1oBDmV-00AHvY-Pe
+	for linux-mediatek@lists.infradead.org; Tue, 12 Jul 2022 11:10:21 +0000
+Received: by mail-lf1-x130.google.com with SMTP id t25so13351017lfg.7
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Jul 2022 04:10:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=SIxn205KIvmS9VSb5lDf2UBPI0iYaOAaJ1A1MJqqVxk=;
+        b=FNUE2acQhszuFh5gwSVw+Rwn9vCbiz5eeW9tj0ulcEp5CB+CXfZNt8End8wSLExYwg
+         4MO0Xl4cRWRKs5XBHGbmhjPB/i1vtyPNV90bz1iw4x++t5iu24KV5R6FJi7W09ebLp9x
+         S7wFe2tgt8oEN1HIukddBfHCiZO3jZmcu5z3d3BrD2zxyY2u0qHd++sqPDQ+kzN2tovj
+         3q8HBg3/FmHKaEXwYT4Dfqb+TnqK4st+QY5oGz7HEfCyVhDwcVT+XW8TO0xoa0lPVoEs
+         iojT44I21fzo9Uf3MJBs0yP9F1SVii8xWazC9xjcbn2X5a0LWztVRBgtuz01spJQs9uV
+         WKQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=SIxn205KIvmS9VSb5lDf2UBPI0iYaOAaJ1A1MJqqVxk=;
+        b=ni3KLklSQlqaOYB/shlHEkz1J+Gm3gXhMg+iEiBzHvw+LrdCrRUHwzWgPha9ierzFS
+         b4MCb0tksmI1JPaZ72D+xtUvLBb+m6B+P8bB5wtR71Dbo0Yn2uVa534+XaAC35KgM76Q
+         We2Xi75ywrL4o6JwCpuv1JgMysw0QwHKPviplCODonmvtUXB9hpfwLllqU5nDwgdDP3f
+         JqfQ8M9Oqtu2iGiY5yKVJJsaxUkyBafM176la2/rgkuPKgr7O9RWPqDUWmNjcgdqanzq
+         xMoLYrzEvLiE9roE/fmkR6tqj94b/gGQh11CT94MGy9TA9Rnc556ghZYfNCNrev/SwSI
+         qs/A==
+X-Gm-Message-State: AJIora/zLMQiRLWO2kOjBriFWgsramLzEGbKwyMaLZIYpThyIIA6Bxqp
+	lgxd1nNtqf8+sZCbH842sy6apSMGVfxn8cq0nnMLXg==
+X-Google-Smtp-Source: AGRyM1tW9I2SNwUkOEFsvNntEhlOoXvMH17jCpZPzFWoPNjDoKFFg72huJu8nMkwl68VqtR7rGwljMo7GbdaofhPCqM=
+X-Received: by 2002:a05:6512:3d03:b0:47f:7023:2c57 with SMTP id
+ d3-20020a0565123d0300b0047f70232c57mr14045143lfv.254.1657624215580; Tue, 12
+ Jul 2022 04:10:15 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] clk: mediatek: Don't check HW status for mt8192/5's
- imp_iic_wrap clocks
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Stephen Boyd <sboyd@kernel.org>, kernel@collabora.com,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Turquette <mturquette@baylibre.com>,
- Miles Chen <miles.chen@mediatek.com>, Ran Jianping
- <ran.jianping@zte.com.cn>, Weiyi Lu <weiyi.lu@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20220711205733.203963-1-nfraprado@collabora.com>
- <CAGXv+5Enkz20o8BLXmnCUBmB930sH+20U=XvTWA82neaiqqc2A@mail.gmail.com>
- <473aa749-fcfe-bd38-0d83-95375aeef8a3@collabora.com>
- <CAGXv+5E+HVi2kxkRrwhWhq2XgbmfCxj+ZywPT4orBXTxtJ7X1Q@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5E+HVi2kxkRrwhWhq2XgbmfCxj+ZywPT4orBXTxtJ7X1Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20220708114747.13878-1-johnson.wang@mediatek.com>
+In-Reply-To: <20220708114747.13878-1-johnson.wang@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 12 Jul 2022 13:09:39 +0200
+Message-ID: <CAPDyKFqcP69cBEKDx1Uu0BKGOA6s1U+Suiz1KXDXtwn8Qj8kBA@mail.gmail.com>
+Subject: Re: [PATCH v2] dt-bindings: mmc: Add compatible for MediaTek MT8188
+To: Johnson Wang <johnson.wang@mediatek.com>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
+	linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_035752_542607_CB8400CE 
-X-CRM114-Status: GOOD (  23.33  )
+X-CRM114-CacheID: sfid-20220712_041019_865281_6F8A3B68 
+X-CRM114-Status: GOOD (  13.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,151 +86,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/07/22 12:56, Chen-Yu Tsai ha scritto:
-> On Tue, Jul 12, 2022 at 6:55 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 12/07/22 12:44, Chen-Yu Tsai ha scritto:
->>> Hi,
->>>
->>> On Tue, Jul 12, 2022 at 4:57 AM Nícolas F. R. A. Prado
->>> <nfraprado@collabora.com> wrote:
->>>>
->>>> The imp_iic_wrap clocks on mt8192/mt8195 require that the i2c_sel parent
->>>> clock be enabled before their hardware status can be checked. Since this
->>>> wasn't taken into account, reading from the clk_summary debugfs file
->>>> would cause the system to completely freeze.
->>>>
->>>> Assuming that this clock is managed only by the kernel, and not by any
->>>> firmware, simply drop the is_enabled() optional callback and instead
->>>> rely on the enable count for the imp_iic_wrap clocks.
->>>
->>> That's the wrong way to go about it.
->>>
->>> The I2C clocks already have the CLK_OPS_PARENT_ENABLE flag set. So the
->>> issue is that somewhere in the clk core, a piece of code is not honoring
->>> that flag.
->>>
->>> And it seems that's in more than one place.
->>>
->>
->> Uhm, you're right. I gave my Tested-by, but not a Reviewed-by because I
->> wasn't really convinced about this solution being the best.
->>
->> Now that I think of it, the solution may be as simple as:
->>
->> clk.c
->>
->> static bool clk_core_is_enabled(struct clk_core *core)
->> {
->>          bool ret = false;
->>
->>          /*
->>           * If this clock needs parent enabled, but its parent is
->>           * off, we directly return false for two reasons:
->>           * 1. This clock being enabled would be impossible
->>           * 2. The platform may crash for unclocked access while
->>           *    reading the status of this clock (where a .is_enabled
->>           *    callback is provided).
->>           */
->>          if (core->flags & CLK_OPS_PARENT_ENABLE &&
->>              !clk_core_is_enabled(core->parent))
->>                  return false;
->>
->>          ... etc etc etc ...
->> }
->>
->> Nícolas, did you try this approach?
-> 
-> I have a patch ready, but I got distracted by other stuff today.
-> 
+On Fri, 8 Jul 2022 at 13:47, Johnson Wang <johnson.wang@mediatek.com> wrote:
+>
+> This commit adds dt-binding documentation of mmc for MediaTek MT8188 SoC
+> platform.
+>
+> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
 
-Let's just wait for your patch then, seems like being the most sensible option.
+Applied for next, thanks!
 
-Cheers!
-
-> ChenYu
-> 
->>> Regards
->>> ChenYu
->>>
->>>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->>>>
->>>> ---
->>>>
->>>>    drivers/clk/mediatek/clk-gate.c                | 6 ++++++
->>>>    drivers/clk/mediatek/clk-gate.h                | 1 +
->>>>    drivers/clk/mediatek/clk-mt8192-imp_iic_wrap.c | 2 +-
->>>>    drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c | 2 +-
->>>>    4 files changed, 9 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
->>>> index 421806236228..8e7c719a69b3 100644
->>>> --- a/drivers/clk/mediatek/clk-gate.c
->>>> +++ b/drivers/clk/mediatek/clk-gate.c
->>>> @@ -124,6 +124,12 @@ static void mtk_cg_disable_inv_no_setclr(struct clk_hw *hw)
->>>>           mtk_cg_clr_bit_no_setclr(hw);
->>>>    }
->>>>
->>>> +const struct clk_ops mtk_clk_gate_ops_setclr_counted = {
->>>> +       .enable         = mtk_cg_enable,
->>>> +       .disable        = mtk_cg_disable,
->>>> +};
->>>> +EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_setclr_counted);
->>>> +
->>>>    const struct clk_ops mtk_clk_gate_ops_setclr = {
->>>>           .is_enabled     = mtk_cg_bit_is_cleared,
->>>>           .enable         = mtk_cg_enable,
->>>> diff --git a/drivers/clk/mediatek/clk-gate.h b/drivers/clk/mediatek/clk-gate.h
->>>> index d9897ef53528..b5502b2911f5 100644
->>>> --- a/drivers/clk/mediatek/clk-gate.h
->>>> +++ b/drivers/clk/mediatek/clk-gate.h
->>>> @@ -19,6 +19,7 @@ extern const struct clk_ops mtk_clk_gate_ops_setclr;
->>>>    extern const struct clk_ops mtk_clk_gate_ops_setclr_inv;
->>>>    extern const struct clk_ops mtk_clk_gate_ops_no_setclr;
->>>>    extern const struct clk_ops mtk_clk_gate_ops_no_setclr_inv;
->>>> +extern const struct clk_ops mtk_clk_gate_ops_setclr_counted;
->>>>
->>>>    struct mtk_gate_regs {
->>>>           u32 sta_ofs;
->>>> diff --git a/drivers/clk/mediatek/clk-mt8192-imp_iic_wrap.c b/drivers/clk/mediatek/clk-mt8192-imp_iic_wrap.c
->>>> index 700356ac6a58..900ee601169c 100644
->>>> --- a/drivers/clk/mediatek/clk-mt8192-imp_iic_wrap.c
->>>> +++ b/drivers/clk/mediatek/clk-mt8192-imp_iic_wrap.c
->>>> @@ -20,7 +20,7 @@ static const struct mtk_gate_regs imp_iic_wrap_cg_regs = {
->>>>
->>>>    #define GATE_IMP_IIC_WRAP(_id, _name, _parent, _shift)                 \
->>>>           GATE_MTK_FLAGS(_id, _name, _parent, &imp_iic_wrap_cg_regs, _shift,      \
->>>> -               &mtk_clk_gate_ops_setclr, CLK_OPS_PARENT_ENABLE)
->>>> +               &mtk_clk_gate_ops_setclr_counted, CLK_OPS_PARENT_ENABLE)
->>>>
->>>>    static const struct mtk_gate imp_iic_wrap_c_clks[] = {
->>>>           GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_C_I2C10, "imp_iic_wrap_c_i2c10", "infra_i2c0", 0),
->>>> diff --git a/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c b/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
->>>> index fbc809d05072..e50a77b844f4 100644
->>>> --- a/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
->>>> +++ b/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
->>>> @@ -18,7 +18,7 @@ static const struct mtk_gate_regs imp_iic_wrap_cg_regs = {
->>>>
->>>>    #define GATE_IMP_IIC_WRAP(_id, _name, _parent, _shift)                         \
->>>>           GATE_MTK_FLAGS(_id, _name, _parent, &imp_iic_wrap_cg_regs, _shift,      \
->>>> -               &mtk_clk_gate_ops_setclr, CLK_OPS_PARENT_ENABLE)
->>>> +               &mtk_clk_gate_ops_setclr_counted, CLK_OPS_PARENT_ENABLE)
->>>>
->>>>    static const struct mtk_gate imp_iic_wrap_s_clks[] = {
->>>>           GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_S_I2C5, "imp_iic_wrap_s_i2c5", "top_i2c", 0),
->>>> --
->>>> 2.37.0
->>>>
->>
->>
+Kind regards
+Uffe
 
 
--- 
-AngeloGioacchino Del Regno
-Software Engineer
-
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales, no. 5513718
+> ---
+>  Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 12 +++++-------
+>  1 file changed, 5 insertions(+), 7 deletions(-)
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> index 2a2e9fa8c188..be366cefffc2 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> @@ -30,13 +30,11 @@ properties:
+>            - const: mediatek,mt7623-mmc
+>            - const: mediatek,mt2701-mmc
+>        - items:
+> -          - const: mediatek,mt8186-mmc
+> -          - const: mediatek,mt8183-mmc
+> -      - items:
+> -          - const: mediatek,mt8192-mmc
+> -          - const: mediatek,mt8183-mmc
+> -      - items:
+> -          - const: mediatek,mt8195-mmc
+> +          - enum:
+> +              - mediatek,mt8186-mmc
+> +              - mediatek,mt8188-mmc
+> +              - mediatek,mt8192-mmc
+> +              - mediatek,mt8195-mmc
+>            - const: mediatek,mt8183-mmc
+>
+>    reg:
+> --
+> 2.18.0
+>
 
