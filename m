@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CC51C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 15:16:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FB99C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 15:25:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=//jCOQXuRYKUiP0dGMdP6JtP3Utjr+YZ602Y0f38QsE=; b=yoqrhWyWeKVxlDmwRALldcawNa
-	yMd2DOPGrG3M5Gf4xYxRWnBdh4x4RxdEWHtHA0DRK6T753r6JBcUBIctU3E7KG4xoSm97DEximHXH
-	GZIufPatUMdpNAcqCrXRQDEnXMVOy/Yx4soOgNJa/Sn7qYAqNOiODtFb+N5jW0CPF4vNGaiVHzh/c
-	OrOGOTMAywZi4ACIvPR/L1425PTTknneNNZqW9XZSQQvGN9M9wQ0P/jcUgadNDxEuirooX9Baew/y
-	TiFhqvGEt84qaJquSWGNZn+CcRK1k18EH0pVbyKptYISGq4n71q0pipDPpPVapq1HbxBcrBZXcFqm
-	iYXqK1Aw==;
+	bh=Or33gP6ccBO0EGJ9bzQE/DLGVhc1W2Ro5x7wJS7uj88=; b=t4n1wUWfKDdUO8ZonhIC7XPXCK
+	YaZPN+/Q7faspxr5Dh/irOtDXO0UH/11JJPhmeOa6f75mFeTAbK7Fv82nYSZ8HUi5UPywbJURWM5U
+	a1DnIqvpYUOQEBq/X1xTrMK6VSTvL4G9bg6yVX37U7AuTSMOdgS2cwN3XDaqEnOcOBiiu6C1vuIvX
+	r/ERXBHBTj6uFk22JR0X7pXIBg7ns9c6ySHke5+PHYFhIzHF3nDYWbVEBNY2uHgRR5K+/QvaSQ+lb
+	tHEGlpbQm22p6cVdxfQI10yERfhwQEEm+iAo6+793zXjIqPKmK/N5XESEmmux+pI0vXbeMUKlKnPC
+	zblMkYZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBHcL-00C27f-FN; Tue, 12 Jul 2022 15:16:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oBHlX-00C6Pq-0x; Tue, 12 Jul 2022 15:25:35 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBHcI-00C26P-E1; Tue, 12 Jul 2022 15:16:04 +0000
-X-UUID: 9bd7a3a94a194c23af089ad04ebfadcd-20220712
+	id 1oBHlU-00C6OX-LJ; Tue, 12 Jul 2022 15:25:34 +0000
+X-UUID: a6b42d98bbbb4c379495ae48b2c35b3a-20220712
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:1a085fb7-e427-4665-9b1b-f72efbae80da,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:311bc410-a484-4123-a2c5-5fd8f7ba94a4,OB:0,LO
 	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
 	ION:release,TS:25
-X-CID-META: VersionHash:0f94e32,CLOUDID:aa4149d7-5d6d-4eaf-a635-828a3ee48b7c,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:f1f6c632-b9e4-42b8-b28a-6364427c76bb,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 9bd7a3a94a194c23af089ad04ebfadcd-20220712
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: a6b42d98bbbb4c379495ae48b2c35b3a-20220712
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <jiaxin.yu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2014693156; Tue, 12 Jul 2022 08:15:55 -0700
+	with ESMTP id 959550865; Tue, 12 Jul 2022 08:25:29 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 12 Jul 2022 23:04:50 +0800
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Tue, 12 Jul 2022 23:04:51 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 12 Jul 2022 23:04:49 +0800
+ Transport; Tue, 12 Jul 2022 23:04:50 +0800
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: <broonie@kernel.org>, <robh+dt@kernel.org>,
 	<angelogioacchino.delregno@collabora.com>
@@ -53,9 +53,9 @@ CC: <aaronyu@google.com>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
 	<jiaxin.yu@mediatek.com>, Rob Herring <robh@kernel.org>
-Subject: [PATCH v9 6/8] dt-bindings: mediatek: mt8186: add mt8186-mt6366-da7219-max98357 document
-Date: Tue, 12 Jul 2022 23:04:40 +0800
-Message-ID: <20220712150442.32504-7-jiaxin.yu@mediatek.com>
+Subject: [PATCH v9 8/8] dt-bindings: mediatek: mt8186: add mt8186-mt6366-rt1019-rt5682s document
+Date: Tue, 12 Jul 2022 23:04:42 +0800
+Message-ID: <20220712150442.32504-9-jiaxin.yu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220712150442.32504-1-jiaxin.yu@mediatek.com>
 References: <20220712150442.32504-1-jiaxin.yu@mediatek.com>
@@ -64,8 +64,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_081602_502209_E16ECF4F 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20220712_082532_713301_421E4A1F 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,28 +80,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add document for mt8186 board with mt6366, da7219 and max98357.
+Add document for mt8186 board with mt6366, rt1019 and rt5682s.
 
 Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
 Acked-by: Rob Herring <robh@kernel.org>
 ---
- .../sound/mt8186-mt6366-da7219-max98357.yaml  | 75 +++++++++++++++++++
+ .../sound/mt8186-mt6366-rt1019-rt5682s.yaml   | 75 +++++++++++++++++++
  1 file changed, 75 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml b/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
+diff --git a/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml b/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
 new file mode 100644
-index 000000000000..513cd28b2027
+index 000000000000..059a7629b2d3
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
++++ b/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
 @@ -0,0 +1,75 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/sound/mt8186-mt6366-da7219-max98357.yaml#
++$id: http://devicetree.org/schemas/sound/mt8186-mt6366-rt1019-rt5682s.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: Mediatek MT8186 with MT6366, DA7219 and MAX98357 ASoC sound card driver
++title: Mediatek MT8186 with MT6366, RT1019 and RT5682S ASoC sound card driver
 +
 +maintainers:
 +  - Jiaxin Yu <jiaxin.yu@mediatek.com>
@@ -112,7 +112,7 @@ index 000000000000..513cd28b2027
 +properties:
 +  compatible:
 +    enum:
-+      - mediatek,mt8186-mt6366-da7219-max98357-sound
++      - mediatek,mt8186-mt6366-rt1019-rt5682s-sound
 +
 +  mediatek,platform:
 +    $ref: "/schemas/types.yaml#/definitions/phandle"
@@ -152,7 +152,7 @@ index 000000000000..513cd28b2027
 +  - |
 +
 +    sound: mt8186-sound {
-+        compatible = "mediatek,mt8186-mt6366-da7219-max98357-sound";
++        compatible = "mediatek,mt8186-mt6366-rt1019-rt5682s-sound";
 +        mediatek,platform = <&afe>;
 +        pinctrl-names = "aud_clk_mosi_off",
 +                        "aud_clk_mosi_on";
@@ -160,12 +160,12 @@ index 000000000000..513cd28b2027
 +        pinctrl-1 = <&aud_clk_mosi_on>;
 +
 +        headset-codec {
-+            sound-dai = <&da7219>;
++            sound-dai = <&rt5682s>;
 +        };
 +
 +        playback-codecs {
-+            sound-dai = <&anx_bridge_dp>,
-+                        <&max98357a>;
++             sound-dai = <&it6505dptx>,
++                         <&rt1019p>;
 +        };
 +    };
 +
