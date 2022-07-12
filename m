@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC6F7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 07:30:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B27C2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 07:48:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FAlV9XD2Zjr58QRYoyejD4dW/OTRqViFspjEhF3s/uU=; b=Npoq5MxYpotiG0XYz8AIqvWLrX
-	3XXe0Ey2pUbkt5PLAzHdWfSP96lo0yXKbfzYuqkUToCsIJmC88JH+32vpktllv+rcjErFWCd8Ig2G
-	AS3cJLxZ9E2NkrqoSdZyeuXhndABnPnBe+tH3gi9i9R88504xqw/1m0opQ+q8VTfkPavnLTNj/BUX
-	j/3gKgAShkdjGpWD1bL38RV9uIruzjA8oZZauweyLcojBOrIn6raPIWLI1QUhsjQEemgEGtyFPz93
-	1U1F6BferDoy6WL0qy03aSmL8EAWDJlaWqhcIZfAOH+9NTv2Ugg2XD8pi/1jtQmu0l76DR5yLTwHE
-	+SOS8H+Q==;
+	bh=ncaZnky78cmZe7m0OP/8XfsKFNTYh50JVkdvV/jx0a8=; b=N4As/JUoLvUpYShb4508sw92fN
+	1Jq4sR+m8shGSBlDcpQ3t26JpSm/Zl0DPyv1Y6im0CjVY7E7ghRYCda64mfdObnBMRYtt6tePzGAx
+	LSLcPAc2i2qJi5uUAEE0haj+anqsjgUspYG/7hn682tVn4ezT484Ulj/lOk/azvB1/JU2xomI600R
+	W1f0glVFtwPS0/Kg/Zz+7IPCnfyrg7pjUPr1RgXrZdK+ItdPKbDeeUp0034BR3z5L4W5+mpxh91Bw
+	/5xA09JMXmZNrizmzBFtunyCIDi2dIx1/iGVWnP473Yg2xb7mdEJMYbUfhfr6aavf+goJm3Mt1fe4
+	ho1ZR7Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBALk-008LHj-Q8; Tue, 12 Jul 2022 07:30:28 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oBAcg-008SGr-8K; Tue, 12 Jul 2022 07:47:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBALg-008LEe-Vx; Tue, 12 Jul 2022 07:30:27 +0000
-X-UUID: b5d43c12f0484983a21d26dab41b5e5c-20220712
+	id 1oBAcd-008SDI-86; Tue, 12 Jul 2022 07:47:56 +0000
+X-UUID: f90c53022e92475589ee46ea3ad7140b-20220712
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:ee48cd13-d554-4430-bec6-a7c57a37c926,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:94d44b18-4fe1-489c-ad79-6f13c76d8ee7,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:90f3bc32-b9e4-42b8-b28a-6364427c76bb,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:70ab0d64-0b3f-4b2c-b3a6-ed5c044366a0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: b5d43c12f0484983a21d26dab41b5e5c-20220712
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: f90c53022e92475589ee46ea3ad7140b-20220712
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 683022188; Tue, 12 Jul 2022 00:30:12 -0700
+	with ESMTP id 1817708840; Tue, 12 Jul 2022 00:47:50 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Tue, 12 Jul 2022 14:49:36 +0800
+ Tue, 12 Jul 2022 14:57:15 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 12 Jul 2022 14:49:35 +0800
-Message-ID: <e8c2a181926fcbd72ac7b625e2289d91132c37be.camel@mediatek.com>
+ Transport; Tue, 12 Jul 2022 14:57:15 +0800
+Message-ID: <b30154d38b4c0216ddb6c587c1120846e2209335.camel@mediatek.com>
 Subject: Re: [PATCH v13 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
  driver
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
@@ -57,12 +57,12 @@ To: CK Hu <ck.hu@mediatek.com>, "chunkuang.hu@kernel.org"
 	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "deller@gmx.de"
 	<deller@gmx.de>, "airlied@linux.ie" <airlied@linux.ie>
 CC: "msp@baylibre.com" <msp@baylibre.com>, "granquet@baylibre.com"
-	<granquet@baylibre.com>, Jitao Shi
- =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?= <jitao.shi@mediatek.com>,
+	<granquet@baylibre.com>, "Jitao Shi
+ =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?=" <jitao.shi@mediatek.com>,
 	"wenst@chromium.org" <wenst@chromium.org>,
 	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, LiangXu Xu
- =?UTF-8?Q?=28=E5=BE=90=E4=BA=AE=29?= <LiangXu.Xu@mediatek.com>,
+	<angelogioacchino.delregno@collabora.com>, "LiangXu Xu
+ =?UTF-8?Q?=28=E5=BE=90=E4=BA=AE=29?=" <LiangXu.Xu@mediatek.com>,
 	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
 	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
 	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
@@ -71,19 +71,19 @@ CC: "msp@baylibre.com" <msp@baylibre.com>, "granquet@baylibre.com"
 	<linux-arm-kernel@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
 	<linux-fbdev@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 12 Jul 2022 14:49:35 +0800
-In-Reply-To: <7af5710c5a9c0c30e38ca81a72fe30c1c7749bbb.camel@mediatek.com>
+Date: Tue, 12 Jul 2022 14:57:15 +0800
+In-Reply-To: <6b4a4be9b5c93b1931cdbd5b009eac3bfa9badbe.camel@mediatek.com>
 References: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
 	 <20220701062808.18596-6-rex-bc.chen@mediatek.com>
-	 <7af5710c5a9c0c30e38ca81a72fe30c1c7749bbb.camel@mediatek.com>
+	 <6b4a4be9b5c93b1931cdbd5b009eac3bfa9badbe.camel@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_003025_040612_ABC11799 
-X-CRM114-Status: GOOD (  25.51  )
+X-CRM114-CacheID: sfid-20220712_004755_326344_54EC3728 
+X-CRM114-Status: GOOD (  29.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,7 +98,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-07-07 at 16:00 +0800, CK Hu wrote:
+On Thu, 2022-07-07 at 13:14 +0800, CK Hu wrote:
 > Hi, Bo-Chen:
 > 
 > On Fri, 2022-07-01 at 14:28 +0800, Bo-Chen Chen wrote:
@@ -133,54 +133,69 @@ On Thu, 2022-07-07 at 16:00 +0800, CK Hu wrote:
 > [snip]
 > 
 > > +
-> > +static int mtk_dp_set_color_format(struct mtk_dp *mtk_dp,
-> > +				   enum dp_pixelformat color_format)
+> > +static ssize_t mtk_dp_hpd_sink_event(struct mtk_dp *mtk_dp)
+> 
+> The caller never use the return value, so let this function to void.
+> 
 > > +{
-> > +	u32 val;
+> > +	ssize_t ret;
+> > +	u8 sink_count;
+> > +	u8 link_status[DP_LINK_STATUS_SIZE] = {};
+> > +	u32 sink_count_reg = DP_SINK_COUNT_ESI;
+> > +	u32 link_status_reg = DP_LANE0_1_STATUS;
 > > +
-> > +	/* update MISC0 */
-> > +	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3034,
-> > +			   color_format << DP_TEST_COLOR_FORMAT_SHIFT,
-> > +			   DP_TEST_COLOR_FORMAT_MASK);
-> > +
-> > +	switch (color_format) {
-> > +	case DP_PIXELFORMAT_YUV422:
-> > +		val = PIXEL_ENCODE_FORMAT_DP_ENC0_P0_YCBCR422;
-> > +		break;
-> > +	case DP_PIXELFORMAT_RGB:
-> > +		val = PIXEL_ENCODE_FORMAT_DP_ENC0_P0_RGB;
-> > +		break;
-> > +	default:
+> > +	ret = drm_dp_dpcd_readb(&mtk_dp->aux, sink_count_reg,
+> > &sink_count);
 > 
-> The default case would never happen, remove it.
-> 
-> Regards,
-> CK
+> You read sink_count but never use it, so this read is redundant.
+> Remove
+> it.
 > 
 
 Hello CK,
 
-after removing default, it will build error because we do not handle
-other 5 enum in enum dp_pixelformat.
+this is a pre-request for the following codes, so I think we need to
+keep this.
 
-"error: 5 enumeration values not handled in switch"
+If we failed to read sink_count, we don't need to do the driver under
+this.
 
-Therefore, I will keep this.
+> > +	if (ret < 1) {
+> > +		drm_err(mtk_dp->drm_dev, "Read sink count failed\n");
+> > +		return ret == 0 ? -EIO : ret;
+> > +	}
+> > +
+> > +	ret = drm_dp_dpcd_read(&mtk_dp->aux, link_status_reg,
+> > link_status,
+> > +			       sizeof(link_status));
+> > +	if (!ret) {
+> > +		drm_err(mtk_dp->drm_dev, "Read link status failed\n");
+> > +		return ret;
+> > +	}
+> > +
+> > +	drm_dp_channel_eq_ok(link_status, mtk_dp-
+> > > train_info.lane_count);
+> 
+> This function just return true or false, and you does not process the
+> return value, so this is redundant. Remove it.
+> 
+
+I will handle this in next version.
 
 BRs,
 Bo-Chen
 
-> > +		drm_warn(mtk_dp->drm_dev, "Unsupported color format:
-> > %d\n",
-> > +			 color_format);
-> > +		return -EINVAL;
-> > +	}
+> Regard,
+> CK
+> 
 > > +
-> > +	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_303C,
-> > +			   val, PIXEL_ENCODE_FORMAT_DP_ENC0_P0_MASK);
+> > +	if (link_status[1] & DP_REMOTE_CONTROL_COMMAND_PENDING)
+> > +		drm_dp_dpcd_writeb(&mtk_dp->aux,
+> > DP_DEVICE_SERVICE_IRQ_VECTOR,
+> > +				   DP_REMOTE_CONTROL_COMMAND_PENDING);
+> > +
 > > +	return 0;
 > > +}
-> > +
 > 
 > 
 
