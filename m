@@ -4,86 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0348C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 08:51:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6769C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 08:54:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w8dBp5IkZBtCwAuvDQ/uk5OujzdKUzu0kM3xTx3mv6k=; b=12oxS4z6faM9y2q52auoTEKGOo
-	pwgI88X01Bb5yoxJMA1guyl+tCuzFBxESAo74fGusfz3G0GyS/l5hS7XU2mi0HyGb43ahKxX/ZFiS
-	+D7ev7XDRdWKqEHyJVHZtY+leZRCB29AgZYi04GDKpyi/Ee0TXgdJW1wmhGiAnbUAjypwmMlBDSoe
-	NRH45stY5xweTBffKYjLvVLaeN5AUCm7kvQxrzn7Le0wODzIdC4JPRyuXFDwZMzyHwU0fi581GHm2
-	ZJdsrJpx82EHKyNLGFqWbWcD/9V9dKoUb/sJjY/nyvHkf6gIibegMXZiaUzGUQIJ1G2AiM7hG90CS
-	QkDj3OgA==;
+	bh=dHm3CLSMe/rD9gi1JggGfphlpgH7WfWY3F8llVKBy0o=; b=B5z+UBV2cXdXMmxtswotkQQx9c
+	2LWjAfjGLiFCbbb1nrfDxu3iiblKDQQCsQVO+YFcNxnLOhr7MIamNDmbzxFy9kMKWwBV0HJJn9tfm
+	fdWcwy/B7Ke+Ji2gUY8SJFmlbrgg1X7VhNPOSEDBNtmr7s+6yDGAgVXYMuKbKRQVF/qIXMZ51dSOC
+	zLDIUnDV+0NPSYLJug7twdtCfuWNoeTwzabjK9u9ZpM53vHeNlRd+PrePri+JlkCQ0QtvgvUy5EKc
+	LNn2V0uHAc6C7an9yhm4DvD6Aby/0OxygW1/Nz5kL4sRReMky89yvN/R+rTYvqj7Z0G0CvUZ8JfY3
+	E/1KREXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBBbb-008vhu-AR; Tue, 12 Jul 2022 08:50:55 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oBBeY-008xfA-GT; Tue, 12 Jul 2022 08:53:58 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBBbY-008vek-F3; Tue, 12 Jul 2022 08:50:53 +0000
-X-UUID: ead7fb42837443dca5321ec5bb49a3ff-20220712
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:347d61d0-c58e-4c36-93b1-069626073592,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:6be841d7-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: ead7fb42837443dca5321ec5bb49a3ff-20220712
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1260756297; Tue, 12 Jul 2022 01:50:44 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Tue, 12 Jul 2022 16:10:07 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 12 Jul 2022 16:10:07 +0800
-Message-ID: <aa0b332468145634d6a9ef538da5c3eb26033de3.camel@mediatek.com>
-Subject: Re: [PATCH v13 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "robh+dt@kernel.org"
-	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>, "mripard@kernel.org"
-	<mripard@kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "deller@gmx.de"
-	<deller@gmx.de>, "airlied@linux.ie" <airlied@linux.ie>
-CC: "msp@baylibre.com" <msp@baylibre.com>, "granquet@baylibre.com"
-	<granquet@baylibre.com>, "Jitao Shi
- =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?=" <jitao.shi@mediatek.com>,
-	"wenst@chromium.org" <wenst@chromium.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "LiangXu Xu
- =?UTF-8?Q?=28=E5=BE=90=E4=BA=AE=29?=" <LiangXu.Xu@mediatek.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
-	<linux-fbdev@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 12 Jul 2022 16:10:07 +0800
-In-Reply-To: <fde545ed10e3baa1a375eead29dd2d12d95b7cb2.camel@mediatek.com>
-References: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
-	 <20220701062808.18596-6-rex-bc.chen@mediatek.com>
-	 <fde545ed10e3baa1a375eead29dd2d12d95b7cb2.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oBBeE-008xPW-UT; Tue, 12 Jul 2022 08:53:41 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 00E4D6601795;
+	Tue, 12 Jul 2022 09:53:35 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657616017;
+	bh=NgZakB7kND01kxSiME/1yDeBgv1tECpM/++JNRjAb6Y=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cNsIc+/VJ1E7BC3G/pg8eF+77QxoJ4gfw8Zh/EuSfmQj9zDzy9BQJKEcChM+6Em1R
+	 RnBqH0V6JDS4lDD2qHgr7/O3wwMjUtUiWTjTnmNcGNQN8bRCJYPQcKHCfqEn5l4zA7
+	 /PQMA+nh4Ey3bTzgcVUtSI7HteoqjwUXJsh/S+K3GQxQxT09KjgzSgCU5Z4EEsilQK
+	 JhcC8T0VQ6KTIuEbBCq9fAiFp28IYyh63dyDXTvKrkU36lIQZ40oUN1cc/r1Y+j59h
+	 BGl4v1FEcCDvvI2fB4WhQhZkEBApo7JvR4o3xlgR6JxJh9puBftDg3FlOT9xJ342Xi
+	 nmukDrHnh2ong==
+Message-ID: <c243bc9c-0862-450d-6bff-00ec5591e791@collabora.com>
+Date: Tue, 12 Jul 2022 10:53:33 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v1 08/16] arm64: dts: mt8195: Add power domains controller
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
+Cc: iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220704100028.19932-1-tinghan.shen@mediatek.com>
+ <20220704100028.19932-9-tinghan.shen@mediatek.com>
+ <3b65405d-167f-a0c7-d15e-5da6f08d99b3@linaro.org>
+ <eec6aee5cd023fff6d986882db0330e1ab85a59d.camel@mediatek.com>
+ <0301ebc6-1222-e813-f237-f14ad8444940@linaro.org>
+ <b6523c64-dfe2-13b0-db60-fb4f53ed1e31@collabora.com>
+ <1eb212ea-c5a9-b06f-606f-1271ac52adf9@linaro.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <1eb212ea-c5a9-b06f-606f-1271ac52adf9@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_015052_521328_F30F6061 
-X-CRM114-Status: GOOD (  26.26  )
+X-CRM114-CacheID: sfid-20220712_015339_327985_62844F81 
+X-CRM114-Status: GOOD (  32.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,89 +87,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-07-07 at 10:21 +0800, CK Hu wrote:
-> Hi, Bo-Chen:
+Il 12/07/22 10:37, Krzysztof Kozlowski ha scritto:
+> On 12/07/2022 10:17, AngeloGioacchino Del Regno wrote:
+>> Il 06/07/22 17:18, Krzysztof Kozlowski ha scritto:
+>>> On 06/07/2022 14:00, Tinghan Shen wrote:
+>>>> Hi Krzysztof,
+>>>>
+>>>> After discussing your message with our power team,
+>>>> we realized that we need your help to ensure we fully understand you.
+>>>>
+>>>> On Mon, 2022-07-04 at 14:38 +0200, Krzysztof Kozlowski wrote:
+>>>>> On 04/07/2022 12:00, Tinghan Shen wrote:
+>>>>>> Add power domains controller node for mt8195.
+>>>>>>
+>>>>>> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+>>>>>> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+>>>>>> ---
+>>>>>>    arch/arm64/boot/dts/mediatek/mt8195.dtsi | 327 +++++++++++++++++++++++
+>>>>>>    1 file changed, 327 insertions(+)
+>>>>>>
+>>>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>>>>> index 8d59a7da3271..d52e140d9271 100644
+>>>>>> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>>>>> @@ -10,6 +10,7 @@
+>>>>>>    #include <dt-bindings/interrupt-controller/irq.h>
+>>>>>>    #include <dt-bindings/phy/phy.h>
+>>>>>>    #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+>>>>>> +#include <dt-bindings/power/mt8195-power.h>
+>>>>>>    
+>>>>>>    / {
+>>>>>>    	compatible = "mediatek,mt8195";
+>>>>>> @@ -338,6 +339,332 @@
+>>>>>>    			#interrupt-cells = <2>;
+>>>>>>    		};
+>>>>>>    
+>>>>>> +		scpsys: syscon@10006000 {
+>>>>>> +			compatible = "syscon", "simple-mfd";
+>>>>>
+>>>>> These compatibles cannot be alone.
+>>>>
+>>>> the scpsys sub node has the compatible of the power domain driver.
+>>>> do you suggest that the compatible in the sub node should move to here?
+>>>
+>>> Not necessarily, depends. You have here device node representing system
+>>> registers. They need they own compatibles, just like everywhere in the
+>>> kernel (except the broken cases...).
+>>>
+>>> Whether this should be compatible of power-domain driver, it depends
+>>> what this device node is. I don't know, I don't have your datasheets or
+>>> your architecture diagrams...
+>>>
+>>>>
+>>>>>> +			reg = <0 0x10006000 0 0x1000>;
+>>>>>> +			#power-domain-cells = <1>;
+>>>>>
+>>>>> If it is simple MFD, then probably it is not a power domain provider.
+>>>>> Decide.
+>>>>
+>>>> this MFD device is the power controller on mt8195.
+>>>
+>>> Then it is not a simple MFD but a power controller. Do not use
+>>> "simple-mfd" compatible.
+>>>
+>>>> Some features need
+>>>> to do some operations on registers in this node. We think that implement
+>>>> the operation of these registers as the MFD device can provide flexibility
+>>>> for future use. We want to clarify if you're saying that an MFD device
+>>>> cannot be a power domain provider.
+>>>
+>>> MFD device is Linuxism, so it has nothing to do here. I am talking only
+>>> about simple-mfd. simple-mfd is a simple device only instantiating
+>>> children and not providing anything to anyone. Neither to children. This
+>>>    the most important part. The children do not depend on anything from
+>>> simple-mfd device. For example simple-mfd device can be shut down
+>>> (gated) and children should still operate. Being a power domain
+>>> controller, contradicts this usually.
+>>>
+>>
+>> If my interpretation of this issue is right, I have pushed a solution for it.
+>> Krzysztof, Matthias, can you please check [1] and give feedback, so that
+>> Tinghan can rewrite this commit ASAP?
+>>
+>> Reason is - I need the MT8195 devicetree to be complete to push the remaining
+>> pieces for Tomato Chromebooks, of course.
+>>
+>> [1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=658527
 > 
-> On Fri, 2022-07-01 at 14:28 +0800, Bo-Chen Chen wrote:
-> > From: Markus Schneider-Pargmann <msp@baylibre.com>
-> > 
-> > This patch adds a embedded displayport driver for the MediaTek
-> > mt8195
-> > SoC.
-> > 
-> > It supports the MT8195, the embedded DisplayPort units. It offers
-> > DisplayPort 1.4 with up to 4 lanes.
-> > 
-> > The driver creates a child device for the phy. The child device
-> > will
-> > never exist without the parent being active. As they are sharing a
-> > register range, the parent passes a regmap pointer to the child so
-> > that
-> > both can work with the same register range. The phy driver sets
-> > device
-> > data that is read by the parent to get the phy device that can be
-> > used
-> > to control the phy properties.
-> > 
-> > This driver is based on an initial version by
-> > Jitao shi <jitao.shi@mediatek.com>
-> > 
-> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > ---
-> > +
-> > +static void mtk_dp_power_disable(struct mtk_dp *mtk_dp)
-> > +{
-> > +	mtk_dp_write(mtk_dp, MTK_DP_TOP_PWR_STATE, 0);
-> > +
-> > +	mtk_dp_write(mtk_dp, MTK_DP_0034,
-> > +		     DA_CKM_CKTX0_EN_FORCE_EN |
-> > +		     DA_CKM_BIAS_LPF_EN_FORCE_VAL |
-> > +		     DA_CKM_BIAS_EN_FORCE_VAL |
-> > +		     DA_XTP_GLB_LDO_EN_FORCE_VAL |
-> > +		     DA_XTP_GLB_AVD10_ON_FORCE_VAL);
+> I have two or three similar discussions, so maybe I lost the context,
+> but I don't understand how your fix is matching real hardware.
 > 
-> clk-mt8195-vdo0 driver [1] is part of mtk-mmsys driver [2] and it is
-> still separated out to ccf driver. In addition, you does not manage
-> the
-> parent clock. If the parent clock is not enable, these leaf clock
-> would
-> not work.
+> In the patchset here, Tinghan claimed that power domain controller is a
+> child of 10006000. 10006000 is also a power domain controller. This was
+> explicitly described by the DTS code.
 > 
-> [1] 
+> Now you abandon this hierarchy in favor of syscon. If the hierarchy was
+> correct, your patchset does not match the hardware, so it's a no-go.
+> Describe the hardware.
 > 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/clk/mediatek/clk-mt8195-vdo0.c?h=v5.19-rc5#n138
-> 
-> [2] 
-> 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/soc/mediatek/mtk-mmsys.c?h=v5.19-rc5#n140
-> 
-> Regards,
-> CK
+> However maybe this patch did not make any sense and there is no
+> relationship parent-child... so what do you guys send here? Bunch of
+> hacks and work-arounds?
 > 
 
-Hello CK,
+For how I get it, hardware side, the SPM (System Power Manager) resides inside
+of the SCPSYS block (consequently, in that iospace).
 
-MTK_DP_0034 is just a enable control for dp hardware, so I think we
-don't need to move it to ccf driver. it's not related to ccf.
+As Matthias pointed out earlier, SCPSYS provides more functionality, but the
+only one that's currently implemented upstream is the System Power Manager,
+responsible for managing the MTCMOS (power domains).
 
-After checking with Jitao, we only need to update
-DA_CKM_CKTX0_EN_FORCE_E. I will set this bit as 1 in
-mtk_dp_power_disable and 0 in mtk_dp_power_enable
+In any case, now I'm a little confused on how to proceed, can you please give
+some suggestion?
 
-BRs,
-Bo-Chen
+Thanks,
+Angelo
 
-> > +
-> > +	/* Disable RX */
-> > +	mtk_dp_write(mtk_dp, MTK_DP_1040, 0);
-> > +	mtk_dp_write(mtk_dp, MTK_DP_TOP_MEM_PD,
-> > +		     0x550 | BIT(FUSE_SEL_SHIFT) |
-> > BIT(MEM_ISO_EN_SHIFT));
-> > +}
-> > +
+> Your DTS should reflect the hardware, not some hacks.
 > 
-> 
-
+> Best regards,
+> Krzysztof
 
