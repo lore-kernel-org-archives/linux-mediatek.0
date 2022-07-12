@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44BF6C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 16:18:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8295EC43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 18:06:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xBwqaDs6pZX+P/g3fb3lvEs+zsy5eCCrYGNAURbV+B0=; b=dKwmCJaBYJ0Vue5Yp+5qTK6JNw
-	lCd/s+cyK6rMrNeWcDQsPSIoTuxfOa5TEGbEUIbHzm2oRGdp25T7hTyhhPdojWLXODh6ER6CU/Wsw
-	/6iQpk6bhO7BMZMa78wVK4eKc3S1w6j1ecNEORR18NVhNEM9b8r/rDSaAGyTjLixVsWudizc1V6Sc
-	fNCIXwfU7lK+Ab9lkwzn8a6n7he1h5S/YpRsBJsDDN/AebV1AbNoHiHdNCzm8sBjAWYshJqp2+neH
-	wEGgiJiVutLUsrsk26lr+8zGYufKNboirvZo7ghZ6a3VM27IsUnoSTq9bBxyRNw4XwoLpxVt3Sxtw
-	B77N8s3w==;
+	bh=YtzP7I40RQyEUjKbXHB73J4wJHJ46s1Pzo+UKJfysDc=; b=Sxvwe/QXg34bYVfkiZ2dM49KQ3
+	/4kLrY9EgCYFIOuVE/8EMEmNPI/kxOJ1PoyWBia7FO80cEreI73qt6RzIDuCESRtnzw6LA6Km6Q2D
+	5Upcuurz5zvsdcE5QWWuAPTojcPbQkAWETDPT+h3u/cZxjKyZkCIfaR5YK6O40YmHukgA5cjySlCL
+	hNI2/RET6iTZib/JnPRFLXCgJS3V9YjiX+oaV0CYUEpUHKT8vQx53nMIIe4eqKMVY4KmjXuXcRh5+
+	nHHQyuroo/c2BsSAMeRampkWJH32M57OnFkN669A1qglqNW1oCyj6/cUmfga5+OeN/3zmsKsrAjQZ
+	gC0yjang==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBIaP-00CfCC-Ij; Tue, 12 Jul 2022 16:18:09 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oBKHP-00Db0N-Mv; Tue, 12 Jul 2022 18:06:39 +0000
+Received: from mail-il1-f176.google.com ([209.85.166.176])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBIZe-00CeYZ-Hd
-	for linux-mediatek@lists.infradead.org; Tue, 12 Jul 2022 16:17:26 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id DB275617F7;
-	Tue, 12 Jul 2022 16:17:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE9EDC3411C;
-	Tue, 12 Jul 2022 16:17:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1657642641;
-	bh=oqq/WdmBuEl1Rl5+R67LlYTwmvLQF2s3XfxauN4nrEg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lwn2ERXUVRN4Q5jp43UlZbbjS87iSNU7WuMREr/vsCC768pnkTs1d8ZoXhGArd7z3
-	 Rc+e8ks7WpaMLmhp+vecb0z5LkbS9Q3YAj26EDf/yNM8TWVASIn4q4tkx6GB1E1+bx
-	 +MGU4DyYvVNpTxLsGo48QVExjAXBjRpHKSe12+jA0sje89BmxciP3yDSLz1hJVPEyH
-	 mu8/AOF32snEDr9WvD2m+vEh3iuXPSzSeMrzBRRz5zUX/oxr5PZ/jKrNlsibCpyYyT
-	 Oe35P9XvMvrv9gYFh3FGizTwAV/yoamXaNJgKlB/j+8Sq/W7830x9EUKHtfJClatjv
-	 7JiEOwHMAT5oQ==
-Date: Tue, 12 Jul 2022 18:17:17 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Paolo Abeni <pabeni@redhat.com>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
-	ilias.apalodimas@linaro.org, lorenzo.bianconi@redhat.com,
-	jbrouer@redhat.com
-Subject: Re: [PATCH net-next 3/4] net: ethernet: mtk_eth_soc: introduce xdp
- ethtool counters
-Message-ID: <Ys2ejYSuUN8QnlIr@lore-desk>
-References: <cover.1657381056.git.lorenzo@kernel.org>
- <6a522ca5588fde75f42d4d812e8990eca6d8952d.1657381057.git.lorenzo@kernel.org>
- <2112728b3e53609c46d6403bffd563d62846a1d6.camel@redhat.com>
+	id 1oBKHN-00DazQ-04; Tue, 12 Jul 2022 18:06:38 +0000
+Received: by mail-il1-f176.google.com with SMTP id p13so5351997ilq.0;
+        Tue, 12 Jul 2022 11:06:36 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=YtzP7I40RQyEUjKbXHB73J4wJHJ46s1Pzo+UKJfysDc=;
+        b=qrPQiVC+CnSRdGrZFCAaOyHgeOPwrqwFVfNRQtqMAI5+yTptz2Rt+v4aTuQCPjJUvp
+         D4eOwsbikPD/e6nM8wY7sTtfwlMjeJgP5hzz00IITmNDzDlqweNEodg62lpVDxS65weo
+         xECd3vNxWVu1IgQ1fym0EWFu/BY9rVlxbQnYS+fDsYJrKPUz3nwPlhSKuayP7o29bvf7
+         clWkxdfy5e28i2Cof0EbMDnwHLDkoHDZsabfaoRQmdTo9Iv1nPFA25JwJXHzWwFXQXAn
+         REym8TaUjju7Z8WJiWOhUHze2H6A8rItm6OpQ9lnlBkOUgF9y2OItaintHg8kOZ85ltF
+         wzaA==
+X-Gm-Message-State: AJIora87HoXJ+G0qVMp96cx08nH+wbW/9LpNfyFHJBgljIX8Wj4rQVYb
+	iPYrf5rjUGY66z9Q6LD7dA==
+X-Google-Smtp-Source: AGRyM1uQj9XqR1H/j1xEWpea/Q+tQa2PKHOSbgCLwSEg/z123utZodWxiVGVv4vw8BKVxtlj/J0DYg==
+X-Received: by 2002:a05:6e02:154d:b0:2dc:6324:e1be with SMTP id j13-20020a056e02154d00b002dc6324e1bemr11287953ilu.47.1657649195773;
+        Tue, 12 Jul 2022 11:06:35 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id cq7-20020a056638478700b0033f21999e6csm4389983jab.90.2022.07.12.11.06.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 12 Jul 2022 11:06:35 -0700 (PDT)
+Received: (nullmailer pid 2112717 invoked by uid 1000);
+	Tue, 12 Jul 2022 18:06:32 -0000
+Date: Tue, 12 Jul 2022 12:06:32 -0600
+From: Rob Herring <robh@kernel.org>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, daniel@ffwll.ch, krzysztof.kozlowski+dt@linaro.org, mripard@kernel.org, tzimmermann@suse.de, matthias.bgg@gmail.com, deller@gmx.de, airlied@linux.ie, msp@baylibre.com, granquet@baylibre.com, jitao.shi@mediatek.com, wenst@chromium.org, angelogioacchino.delregno@collabora.com, ck.hu@mediatek.com, liangxu.xu@mediatek.com, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v13 01/10] dt-bindings: mediatek,dp: Add Display Port
+ binding
+Message-ID: <20220712180632.GH1823936-robh@kernel.org>
+References: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
+ <20220701062808.18596-2-rex-bc.chen@mediatek.com>
+ <20220701202914.GA1457156-robh@kernel.org>
+ <d8b6f7d9b79608c9a533042f714869219ad067be.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="NNuiGEB2UBQpZqTi"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <2112728b3e53609c46d6403bffd563d62846a1d6.camel@redhat.com>
+In-Reply-To: <d8b6f7d9b79608c9a533042f714869219ad067be.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_091722_714241_51EE063B 
-X-CRM114-Status: GOOD (  19.16  )
+X-CRM114-CacheID: sfid-20220712_110637_053838_EAC8C663 
+X-CRM114-Status: GOOD (  21.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,112 +80,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jul 05, 2022 at 05:40:27PM +0800, Rex-BC Chen wrote:
+> On Fri, 2022-07-01 at 14:29 -0600, Rob Herring wrote:
+> > On Fri, Jul 01, 2022 at 02:27:59PM +0800, Bo-Chen Chen wrote:
+> > > From: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > 
+> > > This controller is present on several mediatek hardware. Currently
+> > > mt8195 and mt8395 have this controller without a functional
+> > > difference,
+> > > so only one compatible field is added.
+> > > 
+> > > The controller can have two forms, as a normal display port and as
+> > > an
+> > > embedded display port.
+> > 
+> > I'm sure you answered this before, but I'll keep asking until the 
+> > information is contained within this patch. Otherwise, I won't
+> > remember. 
+> > Is there a h/w difference in the 2 blocks? Different registers? Why 
+> > can't you just look at what the output is connected to?
+> > 
+> 
+> Hello Rob,
+> 
+> Thanks for your review.
+> Yes, it's two different hw for edp and dp and they have different
+> registers base address.
 
---NNuiGEB2UBQpZqTi
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Multiple instances *always* have different base addresses. That's not a 
+difference.
 
-[...]
->=20
-> This is allocating on the stack and clearing a relatively large struct
-> for every poll() call, which is not good.
->=20
-> Why can't you touch directly the eth->mac[i]->hw_stats.xdp_stats
-> counters where needed?
+I probably asked before on what the difference is between edp and dp 
+variants if anything? If the blocks have some difference then, different 
+compatibles makes sense. But you need to explain the difference or I'll 
+just be asking again...
 
-I am currently relying on xdp_stats to flush xdp maps but I can rework a bit
-the code to remove this dependency. I will fix it in v2.
-
-Regards,
-Lorenzo
-
->=20
-> >  	struct bpf_prog *prog =3D READ_ONCE(eth->prog);
-> >  	struct dim_sample dim_sample =3D {};
-> >  	struct mtk_rx_ring *ring;
-> > @@ -1535,7 +1574,6 @@ static int mtk_poll_rx(struct napi_struct *napi, =
-int budget,
-> >  	struct sk_buff *skb;
-> >  	u8 *data, *new_data;
-> >  	struct mtk_rx_dma_v2 *rxd, trxd;
-> > -	bool xdp_do_redirect =3D false;
-> >  	int done =3D 0, bytes =3D 0;
-> > =20
-> >  	while (done < budget) {
-> > @@ -1597,12 +1635,10 @@ static int mtk_poll_rx(struct napi_struct *napi=
-, int budget,
-> >  					 false);
-> >  			xdp_buff_clear_frags_flag(&xdp);
-> > =20
-> > -			ret =3D mtk_xdp_run(ring, prog, &xdp, netdev);
-> > -			if (ret !=3D XDP_PASS) {
-> > -				if (ret =3D=3D XDP_REDIRECT)
-> > -					xdp_do_redirect =3D true;
-> > +			ret =3D mtk_xdp_run(ring, prog, &xdp, netdev,
-> > +					  &xdp_stats[mac]);
-> > +			if (ret !=3D XDP_PASS)
-> >  				goto skip_rx;
-> > -			}
-> > =20
-> >  			skb =3D build_skb(data, PAGE_SIZE);
-> >  			if (unlikely(!skb)) {
-> > @@ -1725,8 +1761,8 @@ static int mtk_poll_rx(struct napi_struct *napi, =
-int budget,
-> >  			  &dim_sample);
-> >  	net_dim(&eth->rx_dim, dim_sample);
-> > =20
-> > -	if (prog && xdp_do_redirect)
-> > -		xdp_do_flush_map();
-> > +	if (prog)
-> > +		mtk_xdp_rx_complete(eth, xdp_stats);
-> > =20
-> >  	return done;
-> >  }
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/=
-ethernet/mediatek/mtk_eth_soc.h
-> > index a1cea93300c1..629cdcdd632a 100644
-> > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> > @@ -570,6 +570,16 @@ struct mtk_tx_dma_v2 {
-> >  struct mtk_eth;
-> >  struct mtk_mac;
-> > =20
-> > +struct mtk_xdp_stats {
-> > +	u64 rx_xdp_redirect;
-> > +	u64 rx_xdp_pass;
-> > +	u64 rx_xdp_drop;
-> > +	u64 rx_xdp_tx;
-> > +	u64 rx_xdp_tx_errors;
-> > +	u64 tx_xdp_xmit;
-> > +	u64 tx_xdp_xmit_errors;
-> > +};
-> > +
-> >  /* struct mtk_hw_stats - the structure that holds the traffic statisti=
-cs.
-> >   * @stats_lock:		make sure that stats operations are atomic
-> >   * @reg_offset:		the status register offset of the SoC
-> > @@ -593,6 +603,8 @@ struct mtk_hw_stats {
-> >  	u64 rx_checksum_errors;
-> >  	u64 rx_flow_control_packets;
-> > =20
-> > +	struct mtk_xdp_stats	xdp_stats;
-> > +
-> >  	spinlock_t		stats_lock;
-> >  	u32			reg_offset;
-> >  	struct u64_stats_sync	syncp;
->=20
-
---NNuiGEB2UBQpZqTi
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYs2ejQAKCRA6cBh0uS2t
-rIgOAQC4eKeI0u9OQ2vP84ZFVJUmW7jV3TQejAH09noU7AqoCAEA+LHScNs9kETW
-IO0i1hThcoTVO8QwJKIlFzOESHKkQgU=
-=ENEd
------END PGP SIGNATURE-----
-
---NNuiGEB2UBQpZqTi--
+Rob
 
