@@ -4,86 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B27C2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 07:48:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C843C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 08:17:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ncaZnky78cmZe7m0OP/8XfsKFNTYh50JVkdvV/jx0a8=; b=N4As/JUoLvUpYShb4508sw92fN
-	1Jq4sR+m8shGSBlDcpQ3t26JpSm/Zl0DPyv1Y6im0CjVY7E7ghRYCda64mfdObnBMRYtt6tePzGAx
-	LSLcPAc2i2qJi5uUAEE0haj+anqsjgUspYG/7hn682tVn4ezT484Ulj/lOk/azvB1/JU2xomI600R
-	W1f0glVFtwPS0/Kg/Zz+7IPCnfyrg7pjUPr1RgXrZdK+ItdPKbDeeUp0034BR3z5L4W5+mpxh91Bw
-	/5xA09JMXmZNrizmzBFtunyCIDi2dIx1/iGVWnP473Yg2xb7mdEJMYbUfhfr6aavf+goJm3Mt1fe4
-	ho1ZR7Og==;
+	bh=GLQ+q/t9r7zFfqT96/08hqro8GIK9zX6oxTSiglozmg=; b=vU43iVRjpDV/Ip10J3cJXBZ6MO
+	FkyHW8aYaiTExWkG41vVt++5KxjVWDJs295IiB/kinJF9UTsmLv+Ls9jCURxCGj+UaqfIkZuJ7JT+
+	/ydRHhBySS95BBFLxcJhHo8iJxSC7bFpfVXuZFwMerW56noLOIjGMiiTHXjw7cgxla5bgxVPiVPmo
+	TDVT8ly75A76aIv9yi6JOufh6FrO3sSC49P+uFjOv+f9kRlf/HqG8TyLplSHWv/w1Pyy9JdrqGzFQ
+	5+0m33k0TllhFABIKWPdp9jLxk9QwWuGBWJZrcUBRnzVWaM60G3RrbhNZzeheisX3UH4LuEto7IWS
+	RxcewCrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBAcg-008SGr-8K; Tue, 12 Jul 2022 07:47:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oBB5A-008d01-TT; Tue, 12 Jul 2022 08:17:24 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBAcd-008SDI-86; Tue, 12 Jul 2022 07:47:56 +0000
-X-UUID: f90c53022e92475589ee46ea3ad7140b-20220712
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:94d44b18-4fe1-489c-ad79-6f13c76d8ee7,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:70ab0d64-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: f90c53022e92475589ee46ea3ad7140b-20220712
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1817708840; Tue, 12 Jul 2022 00:47:50 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Tue, 12 Jul 2022 14:57:15 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 12 Jul 2022 14:57:15 +0800
-Message-ID: <b30154d38b4c0216ddb6c587c1120846e2209335.camel@mediatek.com>
-Subject: Re: [PATCH v13 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "robh+dt@kernel.org"
-	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>, "mripard@kernel.org"
-	<mripard@kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "deller@gmx.de"
-	<deller@gmx.de>, "airlied@linux.ie" <airlied@linux.ie>
-CC: "msp@baylibre.com" <msp@baylibre.com>, "granquet@baylibre.com"
-	<granquet@baylibre.com>, "Jitao Shi
- =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?=" <jitao.shi@mediatek.com>,
-	"wenst@chromium.org" <wenst@chromium.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "LiangXu Xu
- =?UTF-8?Q?=28=E5=BE=90=E4=BA=AE=29?=" <LiangXu.Xu@mediatek.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
-	<linux-fbdev@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 12 Jul 2022 14:57:15 +0800
-In-Reply-To: <6b4a4be9b5c93b1931cdbd5b009eac3bfa9badbe.camel@mediatek.com>
-References: <20220701062808.18596-1-rex-bc.chen@mediatek.com>
-	 <20220701062808.18596-6-rex-bc.chen@mediatek.com>
-	 <6b4a4be9b5c93b1931cdbd5b009eac3bfa9badbe.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oBB4x-008ctH-2U; Tue, 12 Jul 2022 08:17:13 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 25AE06601A1F;
+	Tue, 12 Jul 2022 09:17:06 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657613826;
+	bh=d3b+CsWkPsYr8qKMtwTzmv9uLDZ9cL0m9n4E0ufVExw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=fz2EGkZ9bpmliBI/TP4TTip8xfXgxpG5FeE08vweder9fo1LWxz2ddfc7e8VoKWmz
+	 RQ4kSUcxxDI4oLUsXevLx+JYL7tdGNnWWR8aOJZHGNFm8GPmllL4539yYFiO8VL7Ol
+	 TZhBRKH2wBKPHk/2rWYn749U0n8p/kPgtM66BigWXIEUUL2hLBlRrSH1M9akZJ+6Bu
+	 1bq30IcUqKIB4VM3tLxfZIuqNomlRc/xnIX9w4GNa2xq1b/l7URBuZDPTVGwKwT2Tx
+	 x0MgBVzjfZqQUbSs5Fgcj9lMT60Sbhv9q5RrALe1VsWrY/9yMWj+MFvp6DoyenH8jC
+	 KSyRblMEgs7GA==
+Message-ID: <b6523c64-dfe2-13b0-db60-fb4f53ed1e31@collabora.com>
+Date: Tue, 12 Jul 2022 10:17:03 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v1 08/16] arm64: dts: mt8195: Add power domains controller
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
+Cc: iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220704100028.19932-1-tinghan.shen@mediatek.com>
+ <20220704100028.19932-9-tinghan.shen@mediatek.com>
+ <3b65405d-167f-a0c7-d15e-5da6f08d99b3@linaro.org>
+ <eec6aee5cd023fff6d986882db0330e1ab85a59d.camel@mediatek.com>
+ <0301ebc6-1222-e813-f237-f14ad8444940@linaro.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <0301ebc6-1222-e813-f237-f14ad8444940@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_004755_326344_54EC3728 
-X-CRM114-Status: GOOD (  29.03  )
+X-CRM114-CacheID: sfid-20220712_011711_511986_A9D552F9 
+X-CRM114-Status: GOOD (  27.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,105 +85,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-07-07 at 13:14 +0800, CK Hu wrote:
-> Hi, Bo-Chen:
+Il 06/07/22 17:18, Krzysztof Kozlowski ha scritto:
+> On 06/07/2022 14:00, Tinghan Shen wrote:
+>> Hi Krzysztof,
+>>
+>> After discussing your message with our power team,
+>> we realized that we need your help to ensure we fully understand you.
+>>
+>> On Mon, 2022-07-04 at 14:38 +0200, Krzysztof Kozlowski wrote:
+>>> On 04/07/2022 12:00, Tinghan Shen wrote:
+>>>> Add power domains controller node for mt8195.
+>>>>
+>>>> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+>>>> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+>>>> ---
+>>>>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 327 +++++++++++++++++++++++
+>>>>   1 file changed, 327 insertions(+)
+>>>>
+>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>>> index 8d59a7da3271..d52e140d9271 100644
+>>>> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>>>> @@ -10,6 +10,7 @@
+>>>>   #include <dt-bindings/interrupt-controller/irq.h>
+>>>>   #include <dt-bindings/phy/phy.h>
+>>>>   #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+>>>> +#include <dt-bindings/power/mt8195-power.h>
+>>>>   
+>>>>   / {
+>>>>   	compatible = "mediatek,mt8195";
+>>>> @@ -338,6 +339,332 @@
+>>>>   			#interrupt-cells = <2>;
+>>>>   		};
+>>>>   
+>>>> +		scpsys: syscon@10006000 {
+>>>> +			compatible = "syscon", "simple-mfd";
+>>>
+>>> These compatibles cannot be alone.
+>>
+>> the scpsys sub node has the compatible of the power domain driver.
+>> do you suggest that the compatible in the sub node should move to here?
 > 
-> On Fri, 2022-07-01 at 14:28 +0800, Bo-Chen Chen wrote:
-> > From: Markus Schneider-Pargmann <msp@baylibre.com>
-> > 
-> > This patch adds a embedded displayport driver for the MediaTek
-> > mt8195
-> > SoC.
-> > 
-> > It supports the MT8195, the embedded DisplayPort units. It offers
-> > DisplayPort 1.4 with up to 4 lanes.
-> > 
-> > The driver creates a child device for the phy. The child device
-> > will
-> > never exist without the parent being active. As they are sharing a
-> > register range, the parent passes a regmap pointer to the child so
-> > that
-> > both can work with the same register range. The phy driver sets
-> > device
-> > data that is read by the parent to get the phy device that can be
-> > used
-> > to control the phy properties.
-> > 
-> > This driver is based on an initial version by
-> > Jitao shi <jitao.shi@mediatek.com>
-> > 
-> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > ---
+> Not necessarily, depends. You have here device node representing system
+> registers. They need they own compatibles, just like everywhere in the
+> kernel (except the broken cases...).
 > 
-> [snip]
+> Whether this should be compatible of power-domain driver, it depends
+> what this device node is. I don't know, I don't have your datasheets or
+> your architecture diagrams...
 > 
-> > +
-> > +static ssize_t mtk_dp_hpd_sink_event(struct mtk_dp *mtk_dp)
+>>
+>>>> +			reg = <0 0x10006000 0 0x1000>;
+>>>> +			#power-domain-cells = <1>;
+>>>
+>>> If it is simple MFD, then probably it is not a power domain provider.
+>>> Decide.
+>>
+>> this MFD device is the power controller on mt8195.
 > 
-> The caller never use the return value, so let this function to void.
+> Then it is not a simple MFD but a power controller. Do not use
+> "simple-mfd" compatible.
 > 
-> > +{
-> > +	ssize_t ret;
-> > +	u8 sink_count;
-> > +	u8 link_status[DP_LINK_STATUS_SIZE] = {};
-> > +	u32 sink_count_reg = DP_SINK_COUNT_ESI;
-> > +	u32 link_status_reg = DP_LANE0_1_STATUS;
-> > +
-> > +	ret = drm_dp_dpcd_readb(&mtk_dp->aux, sink_count_reg,
-> > &sink_count);
+>> Some features need
+>> to do some operations on registers in this node. We think that implement
+>> the operation of these registers as the MFD device can provide flexibility
+>> for future use. We want to clarify if you're saying that an MFD device
+>> cannot be a power domain provider.
 > 
-> You read sink_count but never use it, so this read is redundant.
-> Remove
-> it.
-> 
-
-Hello CK,
-
-this is a pre-request for the following codes, so I think we need to
-keep this.
-
-If we failed to read sink_count, we don't need to do the driver under
-this.
-
-> > +	if (ret < 1) {
-> > +		drm_err(mtk_dp->drm_dev, "Read sink count failed\n");
-> > +		return ret == 0 ? -EIO : ret;
-> > +	}
-> > +
-> > +	ret = drm_dp_dpcd_read(&mtk_dp->aux, link_status_reg,
-> > link_status,
-> > +			       sizeof(link_status));
-> > +	if (!ret) {
-> > +		drm_err(mtk_dp->drm_dev, "Read link status failed\n");
-> > +		return ret;
-> > +	}
-> > +
-> > +	drm_dp_channel_eq_ok(link_status, mtk_dp-
-> > > train_info.lane_count);
-> 
-> This function just return true or false, and you does not process the
-> return value, so this is redundant. Remove it.
+> MFD device is Linuxism, so it has nothing to do here. I am talking only
+> about simple-mfd. simple-mfd is a simple device only instantiating
+> children and not providing anything to anyone. Neither to children. This
+>   the most important part. The children do not depend on anything from
+> simple-mfd device. For example simple-mfd device can be shut down
+> (gated) and children should still operate. Being a power domain
+> controller, contradicts this usually.
 > 
 
-I will handle this in next version.
+If my interpretation of this issue is right, I have pushed a solution for it.
+Krzysztof, Matthias, can you please check [1] and give feedback, so that
+Tinghan can rewrite this commit ASAP?
 
-BRs,
-Bo-Chen
+Reason is - I need the MT8195 devicetree to be complete to push the remaining
+pieces for Tomato Chromebooks, of course.
 
-> Regard,
-> CK
-> 
-> > +
-> > +	if (link_status[1] & DP_REMOTE_CONTROL_COMMAND_PENDING)
-> > +		drm_dp_dpcd_writeb(&mtk_dp->aux,
-> > DP_DEVICE_SERVICE_IRQ_VECTOR,
-> > +				   DP_REMOTE_CONTROL_COMMAND_PENDING);
-> > +
-> > +	return 0;
-> > +}
-> 
-> 
+[1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=658527
 
+Thanks a lot,
+Angelo
 
