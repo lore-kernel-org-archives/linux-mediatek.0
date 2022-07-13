@@ -4,71 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EED6C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 11:29:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F6FDC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 12:08:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dLhmRGG7pKtIbJvbwu5fLW84b4+i9pqy01AQ0MnKaQk=; b=tV1ZeiX1ZrBOwYyrHl/1DMN7Ov
-	afaAuf13436y9EfbsWosWWzypi3Tit1II4rLwbTE522didXy4D6dZFPalDA0RfUsDWOVIMJuvVXSV
-	WUGdgZTOORz0atkLmnwSn8EtKxd0orkTWuS1bqW7qKtWBaxlENG7ezpnx34G6rqMS5ijeqRi8jqW3
-	nuytHCrUsDvLrwGwYe2Xn/z6QEmhm6ktnjWE2H+QvQuYFRzqMmB7SWAyh/Zen54S4zQTSobcqPPYy
-	c9+ogApuhc+6dK+hnBiM6j8NC2Tjf9nYzUTRuILXJUqphgUF9NskCxajpMEmFKHQtqwNFXPRtfFBo
-	c0QdD1BA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=H60c6BQz+0PUGxMp0vbXoiihGTO7ZBPYPm+08N4mLfI=; b=312bci5ljUc9zq5wNmO7dhaW4I
+	ZyXWUl+PSLZQ5I6xALIizvyxsKEX8WyTvgiWYMKZBER2N67sdeK1LWN/khTVHodNnWIKtR0FQ9nm9
+	Dc4FAmvR+D2Pbj/fc+g+hTZPCB1OX5qXVeWw91fT56Qhk/AwU5XLbHR6P9+S4XLkKisGixC1BVKXo
+	BASElBBKRCO1Tk2TrRtK3NDiV3gGJvxJUQYiuILntj5pzNDO+eTUSt6lBPUEQ/h1xkpvcHgG9yK7+
+	5aO6a8Bx+MR5vvvLT5CsiA6qA8IvD7gz1u9LtBZXDzuNcGKzqVdhG2Z6Q2KhU70Rv5KR2q5u4HMkS
+	PFUxI/RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBaYs-0038yS-3S; Wed, 13 Jul 2022 11:29:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oBbA2-003O5v-R5; Wed, 13 Jul 2022 12:08:10 +0000
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBaYA-0038ZJ-7V; Wed, 13 Jul 2022 11:29:04 +0000
-X-UUID: e3ab70eda3de4887ad48855c6fac36e3-20220713
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:473de1e0-2c88-418a-992a-e6d3eaed35ab,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:7c153064-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: e3ab70eda3de4887ad48855c6fac36e3-20220713
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <lecopzer.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 541919826; Wed, 13 Jul 2022 04:28:52 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 13 Jul 2022 18:38:14 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 13 Jul 2022 18:38:14 +0800
-From: Lecopzer Chen <lecopzer.chen@mediatek.com>
-To: <lecopzer.chen@mediatek.com>
-CC: <acme@kernel.org>, <akpm@linux-foundation.org>,
-	<alexander.shishkin@linux.intel.com>, <catalin.marinas@arm.com>,
-	<davem@davemloft.net>, <jolsa@redhat.com>, <jthierry@redhat.com>,
-	<keescook@chromium.org>, <kernelfans@gmail.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-perf-users@vger.kernel.org>,
-	<mark.rutland@arm.com>, <masahiroy@kernel.org>, <matthias.bgg@gmail.com>,
-	<maz@kernel.org>, <mcgrof@kernel.org>, <mingo@redhat.com>,
-	<namhyung@kernel.org>, <nixiaoming@huawei.com>, <peterz@infradead.org>,
-	<pmladek@suse.com>, <sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>,
-	<wangqing@vivo.com>, <will@kernel.org>, <yj.chiang@mediatek.com>
-Subject: RE: [PATCH v6 0/6] Support hld delayed init based on Pseudo-NMI for arm64
-Date: Wed, 13 Jul 2022 18:38:14 +0800
-Message-ID: <20220713103814.16826-1-lecopzer.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220617040740.25631-1-lecopzer.chen@mediatek.com>
-References: <20220617040740.25631-1-lecopzer.chen@mediatek.com>
+	id 1oBb9n-003O0r-4l; Wed, 13 Jul 2022 12:08:00 +0000
+Received: by mail-yb1-xb2a.google.com with SMTP id 6so18899226ybc.8;
+        Wed, 13 Jul 2022 05:07:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=H60c6BQz+0PUGxMp0vbXoiihGTO7ZBPYPm+08N4mLfI=;
+        b=cFwaO0bDU4Rlt7N9UDqzRHYc/L/LXwPsecY5KlQfSKmfeHbUGfJju92GNvM+QXRy/A
+         MfFCd9EiEFbUqGG0Dk3UDyeTjK2mKB+J26YUCLsjwjV1AqSW8ALXoZ+QUWDjp8FbHEeY
+         dwnLTjlohJXN4MlqdlflbgJKO0LHlSOv3alwCbci2ARAUzjG69r4BZ9OGDCDuqQtQA7F
+         3fzpmlRGWBNYqAxA0gsKxiBlo4ApaOY7UboYG9JKS2cowDCyOJujzJrS984DN9KyXzOA
+         PlokWUEqgVaq6a1qwFa+85+pBBg3DMQ+qHXOl22B3dO6jAPN+bwQ7BsHm3cmgJ/HPnXL
+         vfmQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=H60c6BQz+0PUGxMp0vbXoiihGTO7ZBPYPm+08N4mLfI=;
+        b=IblpUAEL77p1veftdjVryX6fsEkRnyYMBgl+Nnim/hBZCDYh5qG2UYIhZxJQFpRa0Q
+         Q2a+Ixvv1Jyn6fRNdOSif8wGMkS98cc69DxzxmCED382QphLzM5MIvEHNAz+CZMxZcmc
+         SBwca3vmcT/PrEm+pgnKmTjl5LAi21Rrmoq9mxVd73uhizRYlFYbzPE4E0N1Yf75lLyB
+         0gMDzcjTOSjlhZ7EJ2OJothiBn7fUp3b2hy4HjTzBUw6lwl/+bvmroFa6m6NIbiyVrs9
+         WoLyXocLNE2QcyxPggIFyt5XajFOBfd8Mc4VzT+jY0pJRGr9cHPAwS9AuMMrniX7vKkh
+         Iycw==
+X-Gm-Message-State: AJIora/0OPGBfBGFUKNizpZu7pfanuo2r/eY8HNqVauyTyJhbzYDKt2+
+	6g4WCgVLgBmgv33s8Mb3qDaSkTFnvgNZhKzyzYs=
+X-Google-Smtp-Source: AGRyM1sbQCBjmYhKYL+xb2AwlOmpuB0R1EP+WnPrRn0L3M4TSuIwm0awKcRUCK7kwFw6PIL77qpLuzj23J+O5rqZCJA=
+X-Received: by 2002:a25:858e:0:b0:66e:4898:63e2 with SMTP id
+ x14-20020a25858e000000b0066e489863e2mr3559399ybk.296.1657714072552; Wed, 13
+ Jul 2022 05:07:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20220704053901.728-1-peterwu.pub@gmail.com> <20220704053901.728-14-peterwu.pub@gmail.com>
+ <CAHp75VdwEc9AW1w8ejsxkw+sBTF1dumd99QyzTY9BZaXiViRWQ@mail.gmail.com> <CABtFH5K-2+2hbpvpq2nPE5AsznkQxZF2r3MVC64Q39DJhVuUtA@mail.gmail.com>
+In-Reply-To: <CABtFH5K-2+2hbpvpq2nPE5AsznkQxZF2r3MVC64Q39DJhVuUtA@mail.gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Wed, 13 Jul 2022 14:07:15 +0200
+Message-ID: <CAHp75VevDwdAKLYEWJgnMDvzuPuFibLuVqH-GKazEOT76wM6_A@mail.gmail.com>
+Subject: Re: [PATCH v4 13/13] video: backlight: mt6370: Add Mediatek MT6370 support
+To: ChiaEn Wu <peterwu.pub@gmail.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
+	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
+	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_042902_303833_ECD45AA4 
-X-CRM114-Status: GOOD (  24.13  )
+X-CRM114-CacheID: sfid-20220713_050755_222490_5294AFA9 
+X-CRM114-Status: GOOD (  13.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,57 +98,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Will, Mark
- 
-Sorry for another ping,
-but would you please help review this or comment about it?
+On Wed, Jul 13, 2022 at 12:53 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+> Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B47=E6=
+=9C=885=E6=97=A5 =E9=80=B1=E4=BA=8C =E6=B8=85=E6=99=A85:14=E5=AF=AB=E9=81=
+=93=EF=BC=9A
+> > On Mon, Jul 4, 2022 at 7:43 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
 
+Please, remove unneeded context when replying!
 
-Thanks a lot.
+...
 
- 
-> Hi Will, Mark
->
-> Could you help review arm parts of this patchset, please?
-> 
-> For the question mention in both [1] and [2],
-> 
-> > I'd still like Mark's Ack on this, as the approach you have taken doesn't
-> > really sit with what he was suggesting.
+> > > +               brightness_val[0] =3D (brightness - 1) & MT6370_BL_DI=
+M2_MASK;
+> > > +               brightness_val[1] =3D (brightness - 1)
+> > > +                                   >> fls(MT6370_BL_DIM2_MASK);
 > >
-> > I also don't understand how all the CPUs get initialised with your patch,
-> > since the PMU driver will be initialised after SMP is up and running.
-> 
-> The hardlock detector utilizes the softlockup_start_all() to start all
-> the cpu on watchdog_allowed_mask, which will do watchdog_nmi_enable()
-> that registers perf event on each CPUs.
-> Thus we simply need to retry lockup_detector_init() in a single cpu which
-> will reconfig and call to softlockup_start_all().
-> 
-> Also, the CONFIG_HARDLOCKUP_DETECTOR_PERF selects SOFTLOCKUP_DETECTOR,
-> IMO, this shows that hardlockup detector supports from softlockup.
-> 
-> 
-> > We should know whether pNMIs are possible once we've completed
-> > setup_arch() (and possibly init_IRQ()), long before SMP, so so I reckon
-> > we should have all the information available once we get to
-> > lockup_detector_init(), even if that requires some preparatory rework.
-> 
-> Hardlockup depends on PMU driver , I think the only way is moving
-> pmu driver at setup_arch() or any point which is earlier than
-> lockup_detector_init(), and I guess we have to reorganize the architecture
-> of arm PMU.
-> 
-> The retry function should benifit all the arch/ not only for arm64.
-> Any arch who needs to probe its pmu as module can use this without providing
-> a chance to mess up the setup order. 
-> 
-> 
-> Please let me know if you have any concern about this, thank you
-> 
-> 
-> [1] https://lore.kernel.org/all/CAFA6WYPPgUvHCpN5=EpJ2Us5h5uVWCbBA59C-YwYQX2ovyVeEw@mail.gmail.com/
-> [2] https://lore.kernel.org/linux-arm-kernel/20210419170331.GB31045@willie-the-truck/
-> 
-> 
+> > Bad indentation. One line?
+>
+> Well... if indent to one line, it will be over 80 characters(or called co=
+lumns?)
+> From my understanding, it is not allowed, right??
+
+It's allowed to some extent.Use your common sense.
+Here it's obviously broken indentation.
+
+...
+
+> > > +               prop_val =3D (ilog2(roundup_pow_of_two(prop_val)) + 1=
+) >> 1;
+> >
+> > Isn't something closer to get_order() or fls()?
+>
+> I will revise it to "(get_order(prop_va * PAGE_SIZE) + 1) / 2" and
+> this change is meet your expectations??
+
+Nope. Try again. What about fls()?
+
+...
+
+> > > +       props->max_brightness =3D min_t(u32, brightness,
+> > > +                                     MT6370_BL_MAX_BRIGHTNESS);
+> >
+> > One line?
+>
+>  Ditto, it will be over 80 characters...
+
+As per above.
+
+--=20
+With Best Regards,
+Andy Shevchenko
 
