@@ -4,78 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C0F1C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 11:25:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EED6C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 11:29:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mBv65ePymP8BrvBqJEccHdic2EPa2EXBPtUssXzhwOg=; b=lazXeBM/K1DK6e5sm1bpmE4EL+
-	34/zxOzOym7LICr8JJ0PqBQr1RwtCN18RzyGNqAR8tWZk1YA8E9IqbmmlFlSp/6c8tWkqLFGAQb2N
-	ebDI3FjwuF8Q3fh/Id2li8t/NAOhJ5MQ/TtfBKl7vfFFoJFuvvWgQgDQtFwvuqDZ+Y57Rj6nrUtI2
-	YJjh+9NJPeQ1fG/aNJqKctp7X10pKwBlRPactZ4IX3/MKMJ/BxCsLdlRAyZFrfdPWe00JSboRczJG
-	LrddUX3AkJWT+Jdc+buJ02d4sqDWxeFbxZj57+yLwcV9jBMfMmgIq7Zv64gQnFe1AWsRb0Wri48Dz
-	SnTny1SA==;
+	bh=dLhmRGG7pKtIbJvbwu5fLW84b4+i9pqy01AQ0MnKaQk=; b=tV1ZeiX1ZrBOwYyrHl/1DMN7Ov
+	afaAuf13436y9EfbsWosWWzypi3Tit1II4rLwbTE522didXy4D6dZFPalDA0RfUsDWOVIMJuvVXSV
+	WUGdgZTOORz0atkLmnwSn8EtKxd0orkTWuS1bqW7qKtWBaxlENG7ezpnx34G6rqMS5ijeqRi8jqW3
+	nuytHCrUsDvLrwGwYe2Xn/z6QEmhm6ktnjWE2H+QvQuYFRzqMmB7SWAyh/Zen54S4zQTSobcqPPYy
+	c9+ogApuhc+6dK+hnBiM6j8NC2Tjf9nYzUTRuILXJUqphgUF9NskCxajpMEmFKHQtqwNFXPRtfFBo
+	c0QdD1BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBaUE-003698-LX; Wed, 13 Jul 2022 11:24:58 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1oBaYs-0038yS-3S; Wed, 13 Jul 2022 11:29:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBaT8-0035V4-En
-	for linux-mediatek@lists.infradead.org; Wed, 13 Jul 2022 11:23:53 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id z12-20020a17090a7b8c00b001ef84000b8bso3141102pjc.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Jul 2022 04:23:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=mBv65ePymP8BrvBqJEccHdic2EPa2EXBPtUssXzhwOg=;
-        b=WJAHzNZPHYaBkOnHpUQsHsNvlMG0D7+q0blC0hb3ey7VLNCE6BhnhWgLR5TKOl4CVy
-         KlBzLf6ICrSJyRZiQ3Jfb13yrTfH4mY8+LQhzMKRdp9948RtdB8bjg0dYdKTNlridZpL
-         x1XKBhSYeYAFLvts3J4JXpPcQeGtNvuJu3ZocsMTzZklY/vRr6OEBwF0luD3QTpjxDI1
-         0gd2HF+OXqxmKU0e5YvHukDOUKKZl1Dslaut8KNfBnWoyLRGEtci8Oe6f7nMFXSL+xhH
-         Gx78N5kAO/ESczBNpyuKdpcUP2QQ+fCpS/ntuX+IWdzTHPCFi1FJlBufX8AEVTn4LR5L
-         gqqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=mBv65ePymP8BrvBqJEccHdic2EPa2EXBPtUssXzhwOg=;
-        b=qSXUvPAeOpoQmF3qXKYm8AXgc2psU4Wr9NGReS15wSDKCUPQRLESpHcUheZYj2ya94
-         mb6fI65I2YT8bKzErDjWgtlGamvI8M71A677rAOQ+2vGm9UBrgyVVtM91bc3mkpApx+I
-         lW37OCph/geLC6+HdxWznt0vd2XhrDrFF8mqXrW2IAMi1r8e5eI0yc3dGpEIQELsnE+e
-         7MYthS4dC9xBomMrLyw7sPpMPDNLfrnJGcqVurmJxhNaHKXQfY0VVJamAXIrOMXskxxC
-         SPlxNKouPtuMsT/3aEncC99t3cFCdrSWg654A9dKiVRQwFNgCngJYCiSayuGvRiPRM9I
-         k0VQ==
-X-Gm-Message-State: AJIora8jmfQUI1zEqiexCyOhfItQEhLLmco1VQpNfRI2DVAhbCRWIo+E
-	SMeeSdoZkoVVLUGFJhPg5/UJFQ==
-X-Google-Smtp-Source: AGRyM1vma2fRTzKqlFqr8JzUoIhx2aJdRjOGe9vLEj93pDZb3OCTdhl1QJ6TIZS+hluNNhT9C8eGSA==
-X-Received: by 2002:a17:90b:4a08:b0:1ef:f36b:18e1 with SMTP id kk8-20020a17090b4a0800b001eff36b18e1mr9731642pjb.246.1657711426680;
-        Wed, 13 Jul 2022 04:23:46 -0700 (PDT)
-Received: from localhost ([122.171.18.80])
-        by smtp.gmail.com with ESMTPSA id 200-20020a6219d1000000b00528d7d27211sm8754024pfz.178.2022.07.13.04.23.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Jul 2022 04:23:46 -0700 (PDT)
-Date: Wed, 13 Jul 2022 16:53:44 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: rafael@kernel.org, lgirdwood@gmail.com, broonie@kernel.org,
-	matthias.bgg@gmail.com, rex-bc.chen@mediatek.com,
-	jia-wei.chang@mediatek.com, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] cpufreq: mediatek: Handle sram regulator probe deferral
-Message-ID: <20220713112344.ye4xgjlqbhyvb46h@vireshk-i7>
-References: <20220713111536.115097-1-angelogioacchino.delregno@collabora.com>
+	id 1oBaYA-0038ZJ-7V; Wed, 13 Jul 2022 11:29:04 +0000
+X-UUID: e3ab70eda3de4887ad48855c6fac36e3-20220713
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:473de1e0-2c88-418a-992a-e6d3eaed35ab,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:7c153064-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: e3ab70eda3de4887ad48855c6fac36e3-20220713
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <lecopzer.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 541919826; Wed, 13 Jul 2022 04:28:52 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 13 Jul 2022 18:38:14 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 13 Jul 2022 18:38:14 +0800
+From: Lecopzer Chen <lecopzer.chen@mediatek.com>
+To: <lecopzer.chen@mediatek.com>
+CC: <acme@kernel.org>, <akpm@linux-foundation.org>,
+	<alexander.shishkin@linux.intel.com>, <catalin.marinas@arm.com>,
+	<davem@davemloft.net>, <jolsa@redhat.com>, <jthierry@redhat.com>,
+	<keescook@chromium.org>, <kernelfans@gmail.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-perf-users@vger.kernel.org>,
+	<mark.rutland@arm.com>, <masahiroy@kernel.org>, <matthias.bgg@gmail.com>,
+	<maz@kernel.org>, <mcgrof@kernel.org>, <mingo@redhat.com>,
+	<namhyung@kernel.org>, <nixiaoming@huawei.com>, <peterz@infradead.org>,
+	<pmladek@suse.com>, <sparclinux@vger.kernel.org>, <sumit.garg@linaro.org>,
+	<wangqing@vivo.com>, <will@kernel.org>, <yj.chiang@mediatek.com>
+Subject: RE: [PATCH v6 0/6] Support hld delayed init based on Pseudo-NMI for arm64
+Date: Wed, 13 Jul 2022 18:38:14 +0800
+Message-ID: <20220713103814.16826-1-lecopzer.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220617040740.25631-1-lecopzer.chen@mediatek.com>
+References: <20220617040740.25631-1-lecopzer.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220713111536.115097-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_042350_554446_193E1AC3 
-X-CRM114-Status: GOOD (  17.24  )
+X-CRM114-CacheID: sfid-20220713_042902_303833_ECD45AA4 
+X-CRM114-Status: GOOD (  24.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,41 +83,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13-07-22, 13:15, AngeloGioacchino Del Regno wrote:
-> If the regulator_get_optional() call for the SRAM regulator returns
-> a probe deferral, we must bail out and retry probing later: failing
-> to do this will produce unstabilities on platforms requiring the
-> handling for this regulator.
-> 
-> Fixes: ffa7bdf7f344 ("cpufreq: mediatek: Make sram regulator optional")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/cpufreq/mediatek-cpufreq.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index 3a2be4552020..7f2680bc9a0f 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -439,9 +439,13 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->  
->  	/* Both presence and absence of sram regulator are valid cases. */
->  	info->sram_reg = regulator_get_optional(cpu_dev, "sram");
-> -	if (IS_ERR(info->sram_reg))
-> +	if (IS_ERR(info->sram_reg)) {
-> +		ret = PTR_ERR(info->sram_reg);
-> +		if (ret == -EPROBE_DEFER)
-> +			goto out_free_resources;
-> +
->  		info->sram_reg = NULL;
-> -	else {
-> +	} else {
->  		ret = regulator_enable(info->sram_reg);
->  		if (ret) {
->  			dev_warn(cpu_dev, "cpu%d: failed to enable vsram\n", cpu);
+Hi Will, Mark
+ 
+Sorry for another ping,
+but would you please help review this or comment about it?
 
-Applied. Thanks.
 
--- 
-viresh
+Thanks a lot.
+
+ 
+> Hi Will, Mark
+>
+> Could you help review arm parts of this patchset, please?
+> 
+> For the question mention in both [1] and [2],
+> 
+> > I'd still like Mark's Ack on this, as the approach you have taken doesn't
+> > really sit with what he was suggesting.
+> >
+> > I also don't understand how all the CPUs get initialised with your patch,
+> > since the PMU driver will be initialised after SMP is up and running.
+> 
+> The hardlock detector utilizes the softlockup_start_all() to start all
+> the cpu on watchdog_allowed_mask, which will do watchdog_nmi_enable()
+> that registers perf event on each CPUs.
+> Thus we simply need to retry lockup_detector_init() in a single cpu which
+> will reconfig and call to softlockup_start_all().
+> 
+> Also, the CONFIG_HARDLOCKUP_DETECTOR_PERF selects SOFTLOCKUP_DETECTOR,
+> IMO, this shows that hardlockup detector supports from softlockup.
+> 
+> 
+> > We should know whether pNMIs are possible once we've completed
+> > setup_arch() (and possibly init_IRQ()), long before SMP, so so I reckon
+> > we should have all the information available once we get to
+> > lockup_detector_init(), even if that requires some preparatory rework.
+> 
+> Hardlockup depends on PMU driver , I think the only way is moving
+> pmu driver at setup_arch() or any point which is earlier than
+> lockup_detector_init(), and I guess we have to reorganize the architecture
+> of arm PMU.
+> 
+> The retry function should benifit all the arch/ not only for arm64.
+> Any arch who needs to probe its pmu as module can use this without providing
+> a chance to mess up the setup order. 
+> 
+> 
+> Please let me know if you have any concern about this, thank you
+> 
+> 
+> [1] https://lore.kernel.org/all/CAFA6WYPPgUvHCpN5=EpJ2Us5h5uVWCbBA59C-YwYQX2ovyVeEw@mail.gmail.com/
+> [2] https://lore.kernel.org/linux-arm-kernel/20210419170331.GB31045@willie-the-truck/
+> 
+> 
 
