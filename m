@@ -4,145 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E145C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 15:49:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E728EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 15:56:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VQK3Do5F41kTcO36apEUbg6NJlKtW9bkdWCXeFd1mPw=; b=azW1+i5G7J8uUNbVnFKm6HEek/
-	AKV0gqRsfsRTE6yc6qMMCqtc3WXSx+YijKqwQ2aej2hb3YfMJyADs2ZdjIInql++Af7J0mh49p/lc
-	MeJDyUtIHn2XlNGZMr/eAzBQEdgf1spuQqxBaTeIIqXdJF4nfIUSr8tL/H+GcHY5jB3axvL5DLMhM
-	b1UerdghzzgKU8+v/MXJeaitCvzxA0zRuNamMonxgpF0qpKvY4CJyYm2fScmLxpdoB/0dFhi8Enhn
-	LQ7a5rcEAAW4sEl2t8AUyGGQ+WAVXiHJZBtt6JDp04jngDUuHyU6SDyAlyIsCbXFtLna+YEGZ3DEV
-	oYJyrAGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jKAUXPLBrNevdC9OiqEXv5Wg4h8+PAmTG/9uIdwRKNA=; b=xnQ8j9vQPid6HXxIkaWo+B3F27
+	MWae7z2OHC8z8BDCrwyLrgBjNTIomtfxQ0DakMdgpCBh2crcu1PeqMPXSyRyJPIAgPjRnsjYWoyPa
+	Fv5FkBMutQnRtkUBnEKWixsFvMfKcIgMVlziGnBu9LT24KALPb/NFio8ywj3Q541fxcZZ5beb7zKM
+	jZgFkPaFQemLZ+jTXH2l3RbXPvHjGK0TiysqFC5LQwna9B5C+AARquoDKZFyAICqamhekCzBrbj7X
+	zEvtug12InGrBUy1o6PMHK5yFf2SfL2RlmCG2tvzsjzbCTPgpcRzD1iDHUNZAbFmivdwD3wu3L1mV
+	FiNFG6wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBebp-005GTw-Ac; Wed, 13 Jul 2022 15:49:05 +0000
-Received: from mx07-00178001.pphosted.com ([185.132.182.106])
+	id 1oBej0-005Lk7-D0; Wed, 13 Jul 2022 15:56:30 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBebl-005GME-3Q; Wed, 13 Jul 2022 15:49:04 +0000
-Received: from pps.filterd (m0288072.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26DAo2Em027405;
-	Wed, 13 Jul 2022 17:48:24 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=selector1;
- bh=VQK3Do5F41kTcO36apEUbg6NJlKtW9bkdWCXeFd1mPw=;
- b=gSwcIftV5l0ZU0osvvzsSYL535JFhr0MRoD4haaRA/pMVLQ3Qri9T9DwCR2WlWeeKKYQ
- zvl6qU7jhajAMdeznUNIOil8YevYQqAXUoER3TE/2WQuonhxSj1NDRNwlq2aHCTWTeD2
- kQUAkAWy1XBjyP72hjZbUfH/IX7BNswOqBXkIVYD+3Qic2mP+eX9uuN2FS+DmzirGEZc
- CyF/5coXJyRMjKAKc9ditRpR5wgEK8sgXckzsqE2LCNur7xoJqAFmR4Y40Ax2NU2vweq
- 3q1M25abd4HauSIn6GZvdwLySVQm2jcZpaEr1yVbx5CrKxgL5t3O72aW8Avtt0jrimLd zA== 
-Received: from beta.dmz-eu.st.com (beta.dmz-eu.st.com [164.129.1.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 3h93cwjj1q-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 13 Jul 2022 17:48:24 +0200
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-eu.st.com (STMicroelectronics) with ESMTP id E468710002A;
-	Wed, 13 Jul 2022 17:48:17 +0200 (CEST)
-Received: from Webmail-eu.st.com (shfdag1node2.st.com [10.75.129.70])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id CB25A22788E;
-	Wed, 13 Jul 2022 17:48:17 +0200 (CEST)
-Received: from [10.48.1.102] (10.75.127.50) by SHFDAG1NODE2.st.com
- (10.75.129.70) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.2308.20; Wed, 13 Jul
- 2022 17:48:11 +0200
-Message-ID: <c4385216-1d9e-34b3-58ea-edf8d9ed4cd8@foss.st.com>
-Date: Wed, 13 Jul 2022 17:48:10 +0200
+	id 1oBeio-005Ld9-Hr; Wed, 13 Jul 2022 15:56:20 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id v4-20020a17090abb8400b001ef966652a3so4335507pjr.4;
+        Wed, 13 Jul 2022 08:56:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=jKAUXPLBrNevdC9OiqEXv5Wg4h8+PAmTG/9uIdwRKNA=;
+        b=aBupZpHtg8XwLvVKFAXLuBmAAWVRVghrIn9ZNgreYANgaU0v/qCvdDEIc9xI6H79sA
+         NZ9TpP6vHRQfG0DdPuQH99iG2Or/tN6/USEXUEs94hwwJ9T1Ot0kdHuLklolhFTu1Vu9
+         cKQ6OXNFiSNTWdoo8iVDnSAn3mrj0hegvaqHgYgwIMTY9yydRqsECiJY8UoWpnWVLHDN
+         FcDZGik/5xc59Zm0aKoHj/wl6bramtnIqRkQpLRP/6gZglOCfL9cKd2/o7COVFIMV6Dd
+         Uj8Nj+baniaDNUtmjMqcutA/zmMl6wqmPchds9edCbIIq6IseZdbXIU74IjSddrpobOK
+         BVYA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to;
+        bh=jKAUXPLBrNevdC9OiqEXv5Wg4h8+PAmTG/9uIdwRKNA=;
+        b=VfO7oj7BbwXpCYNH3QC6tFYMrGAJKge3vAkulsmttI4BdnuMpVPrShgi/4zN1ePGeO
+         Xoa9zP8miokkQsDY8Gb2nEgv5cy8XHwvGBUu8iA81ggRI9LjOCUG1muPQoIYR+YhWor+
+         kVWZxOo9mLweRMv3lvdgqWQt6YP/qm2/E9kJV1BnZe5hZ5ouE20/dTc9zbKC94buV/EO
+         k9HKOmmtArTnK4np7+wYME4aiznQjrdIZBr/ffQSpQDGnpWLZ2+3JpZuLDNj6lRaMbwx
+         yQr1PY6UzyknEXMRPNSKiTJjf6SUZTWxLa5Sqmr4DOdpb05ny52iio/eX/kH3fU3xufz
+         ztSA==
+X-Gm-Message-State: AJIora8mdlpC8zLxXWu/gUhr/Mn4i8PxcDiuGd5MUSkGkXG9aV4JfO/N
+	VSddluoBmT1nxL06E5L5nTs=
+X-Google-Smtp-Source: AGRyM1uztx7H1jzf5s+TTvAW1XBZNKgEQoYqHpqn6WNTf/pSYOGA8xIgngVh0T1SEhc5aR5zpYFJEA==
+X-Received: by 2002:a17:902:7106:b0:16c:6c95:6153 with SMTP id a6-20020a170902710600b0016c6c956153mr3706590pll.166.1657727776276;
+        Wed, 13 Jul 2022 08:56:16 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id x10-20020a170902a38a00b001678ce9080dsm8962079pla.258.2022.07.13.08.56.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 13 Jul 2022 08:56:14 -0700 (PDT)
+Date: Wed, 13 Jul 2022 08:56:13 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Xin Ji <xji@analogixsemi.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, bliang@analogixsemi.com,
+	qwen@analogixsemi.com, jli@analogixsemi.com,
+	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v16 1/3] usb: typec: tcpci: move tcpci.h to
+ include/linux/usb/
+Message-ID: <20220713155613.GA2194204@roeck-us.net>
+References: <20220712090534.2783494-1-xji@analogixsemi.com>
+ <0bd85140-f006-8b29-0a43-500733f1654c@roeck-us.net>
+ <Ys16lEvhVSSSRMP7@kroah.com>
+ <20220713062845.GB2788915@anxtwsw-Precision-3640-Tower>
+ <Ys5oBTeIcLjf7gnX@kroah.com>
+ <20220713064818.GA2789090@anxtwsw-Precision-3640-Tower>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v2 13/15] iio: adc: stm32-adc: convert to device
- properties
-Content-Language: en-US
-To: =?UTF-8?Q?Nuno_S=c3=a1?= <noname.nuno@gmail.com>,
-        =?UTF-8?Q?Nuno_S=c3=a1?=
-	<nuno.sa@analog.com>,
-        <linux-arm-msm@vger.kernel.org>, <openbmc@lists.ozlabs.org>,
-        <linux-renesas-soc@vger.kernel.org>,
-        <linux-mediatek@lists.infradead.org>, <linux-imx@nxp.com>,
-        <linux-mips@vger.kernel.org>,
-        Lad Prabhakar
-	<prabhakar.mahadev-lad.rj@bp.renesas.com>,
-        <linux-iio@vger.kernel.org>, <chrome-platform@lists.linux.dev>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>
-CC: Andy Gross <agross@kernel.org>,
-        Nicolas Ferre
-	<nicolas.ferre@microchip.com>,
-        Benson Leung <bleung@chromium.org>,
-        Matthias
- Brugger <matthias.bgg@gmail.com>,
-        Tomer Maimon <tmaimon77@gmail.com>, Zhang
- Rui <rui.zhang@intel.com>,
-        "Rafael J. Wysocki" <rafael@kernel.org>,
-        Eugen
- Hristev <eugen.hristev@microchip.com>,
-        Sascha Hauer <s.hauer@pengutronix.de>,
-        Alexandre Belloni <alexandre.belloni@bootlin.com>,
-        Benjamin Fair
-	<benjaminfair@google.com>,
-        Nancy Yuen <yuenn@google.com>,
-        Jishnu Prakash
-	<quic_jprakash@quicinc.com>,
-        Christophe Branchereau <cbranchereau@gmail.com>,
-        Avi Fishman <avifishman70@gmail.com>,
-        Tali Perry <tali.perry1@gmail.com>,
-        Michael Hennerich <Michael.Hennerich@analog.com>,
-        Miquel Raynal
-	<miquel.raynal@bootlin.com>,
-        Claudiu Beznea <claudiu.beznea@microchip.com>,
-        Lars-Peter Clausen <lars@metafoo.de>,
-        Thara Gopinath
-	<thara.gopinath@linaro.org>,
-        Cai Huoqing <cai.huoqing@linux.dev>,
-        Fabio
- Estevam <festevam@gmail.com>,
-        Olivier Moysan <olivier.moysan@foss.st.com>,
-        Shawn Guo <shawnguo@kernel.org>, Haibo Chen <haibo.chen@nxp.com>,
-        Arnd
- Bergmann <arnd@arndb.de>,
-        Daniel Lezcano <daniel.lezcano@linaro.org>,
-        Patrick
- Venture <venture@google.com>,
-        Amit Kucheria <amitk@kernel.org>,
-        Maxime
- Coquelin <mcoquelin.stm32@gmail.com>,
-        Lorenzo Bianconi <lorenzo@kernel.org>,
-        Paul Cercueil <paul@crapouillou.net>,
-        Andy Shevchenko
-	<andy.shevchenko@gmail.com>,
-        Alexandre Torgue <alexandre.torgue@foss.st.com>,
-        Gwendal Grignou <gwendal@chromium.org>,
-        Bjorn Andersson
-	<bjorn.andersson@linaro.org>,
-        Saravanan Sekar <sravanhome@gmail.com>,
-        Guenter
- Roeck <groeck@chromium.org>,
-        Jonathan Cameron <jic23@kernel.org>,
-        Pengutronix
- Kernel Team <kernel@pengutronix.de>,
-        Linus Walleij <linus.walleij@linaro.org>
-References: <20220711123835.811358-1-nuno.sa@analog.com>
- <20220711123835.811358-14-nuno.sa@analog.com>
- <f0f150cf-586f-9f13-81b0-cb95bd0d8f23@foss.st.com>
- <ca7dc3801e29ddaa59f868c20d491d15541522d8.camel@gmail.com>
-From: Fabrice Gasnier <fabrice.gasnier@foss.st.com>
-In-Reply-To: <ca7dc3801e29ddaa59f868c20d491d15541522d8.camel@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.75.127.50]
-X-ClientProxiedBy: SFHDAG2NODE3.st.com (10.75.127.6) To SHFDAG1NODE2.st.com
- (10.75.129.70)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-07-13_05,2022-07-13_03,2022-06-22_01
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220713064818.GA2789090@anxtwsw-Precision-3640-Tower>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_084901_808419_261335FD 
-X-CRM114-Status: GOOD (  31.54  )
+X-CRM114-CacheID: sfid-20220713_085618_672106_B1E16C36 
+X-CRM114-Status: GOOD (  26.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,370 +97,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/12/22 12:33, Nuno Sá wrote:
-> Hi Fabrice,
-> 
-> Nice that someone in ST is looking at this one :)
+On Wed, Jul 13, 2022 at 02:48:18PM +0800, Xin Ji wrote:
+> On Wed, Jul 13, 2022 at 08:36:53AM +0200, Greg Kroah-Hartman wrote:
+> > On Wed, Jul 13, 2022 at 02:28:45PM +0800, Xin Ji wrote:
+> > > On Tue, Jul 12, 2022 at 03:43:48PM +0200, Greg Kroah-Hartman wrote:
+> > > > On Tue, Jul 12, 2022 at 06:31:22AM -0700, Guenter Roeck wrote:
+> > > > > On 7/12/22 02:05, Xin Ji wrote:
+> > > > > > USB PD controllers which consisting of a microcontroller (acting as the TCPM)
+> > > > > > and a port controller (TCPC) - may require that the driver for the PD
+> > > > > > controller accesses directly also the on-chip port controller in some cases.
+> > > > > > 
+> > > > > > Move tcpci.h to include/linux/usb/ is convenience access TCPC registers.
+> > > > > > 
+> > > > > > Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+> > > > > > Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+> > > > > > Signed-off-by: Xin Ji <xji@analogixsemi.com>
+> > > > > > 
+> > > > > > ---
+> > > > > > V9 -> V10: Rebase on the latest code
+> > > > > > V8 -> V9 : Add more commit message
+> > > > > > V7 -> V8 : Fix Guanter's comment, remove unnecessary explain
+> > > > > 
+> > > > > We are now at v16. The change log has not been updated since v10,
+> > > > > making it all but worthless.
+> > > > 
+> > > > It's also already in my tree for a while, so I have no idea what this is
+> > > > being generated against :(
+> > > Hi all, I'm little confused, do I need update change log from v11 to
+> > > v16? There is no changes since v10.
+> > 
+> > I'm confused, why are you sending a patch over that is already in my
+> > tree and in linux-next?  You got an email saying it was merged, see
+> > commit 7963d4d71011 ("usb: typec: tcpci: move tcpci.h to
+> > include/linux/usb/").
+> > 
+> > thanks,
+> > 
+> > greg k-h
+> Hi greg k-h, sorry for that, this serial has 3 patches, so I just think
+> need update all 3 patches in each upstream.
 
-Hi Nuno,
+If you resend patches as part of a series, please explain in the change
+log that this patch was unchanged.
 
-Thank you for taking care of converting all these drivers to device
-properties, including this one :-).
-
-> 
-> On Mon, 2022-07-11 at 16:04 +0200, Fabrice Gasnier wrote:
->> On 7/11/22 14:38, Nuno Sá wrote:
->>> Make the conversion to firmware agnostic device properties. As part
->>> of
->>> the conversion the IIO inkern interface 'of_xlate()' is also
->>> converted to
->>> 'fwnode_xlate()'. The goal is to completely drop 'of_xlate' and
->>> hence OF
->>> dependencies from IIO.
->>>
->>> Signed-off-by: Nuno Sá <nuno.sa@analog.com>
->>> ---
->>>  drivers/iio/adc/stm32-adc.c | 121 ++++++++++++++++++++------------
->>> ----
->>>  1 file changed, 67 insertions(+), 54 deletions(-)
->>>
->>> diff --git a/drivers/iio/adc/stm32-adc.c b/drivers/iio/adc/stm32-
->>> adc.c
->>> index 3985fe972892..e55859113df8 100644
->>> --- a/drivers/iio/adc/stm32-adc.c
->>> +++ b/drivers/iio/adc/stm32-adc.c
->>> @@ -21,11 +21,11 @@
->>>  #include <linux/io.h>
->>>  #include <linux/iopoll.h>
->>>  #include <linux/module.h>
->>> +#include <linux/mod_devicetable.h>
->>>  #include <linux/nvmem-consumer.h>
->>>  #include <linux/platform_device.h>
->>>  #include <linux/pm_runtime.h>
->>> -#include <linux/of.h>
->>> -#include <linux/of_device.h>
->>> +#include <linux/property.h>
->>>  
->>>  #include "stm32-adc-core.h"
->>>  
->>> @@ -1530,8 +1530,8 @@ static int stm32_adc_update_scan_mode(struct
->>> iio_dev *indio_dev,
->>>         return ret;
->>>  }
->>>  
->>> -static int stm32_adc_of_xlate(struct iio_dev *indio_dev,
->>> -                             const struct of_phandle_args
->>> *iiospec)
->>> +static int stm32_adc_fwnode_xlate(struct iio_dev *indio_dev,
->>> +                                 const struct
->>> fwnode_reference_args *iiospec)
->>>  {
->>>         int i;
->>>  
->>> @@ -1585,7 +1585,7 @@ static const struct iio_info
->>> stm32_adc_iio_info = {
->>>         .hwfifo_set_watermark = stm32_adc_set_watermark,
->>>         .update_scan_mode = stm32_adc_update_scan_mode,
->>>         .debugfs_reg_access = stm32_adc_debugfs_reg_access,
->>> -       .of_xlate = stm32_adc_of_xlate,
->>> +       .fwnode_xlate = stm32_adc_fwnode_xlate,
->>>  };
->>>  
->>>  static unsigned int stm32_adc_dma_residue(struct stm32_adc *adc)
->>> @@ -1782,14 +1782,14 @@ static const struct iio_chan_spec_ext_info
->>> stm32_adc_ext_info[] = {
->>>         {},
->>>  };
->>>  
->>> -static int stm32_adc_of_get_resolution(struct iio_dev *indio_dev)
->>> +static int stm32_adc_fw_get_resolution(struct iio_dev *indio_dev)
->>>  {
->>> -       struct device_node *node = indio_dev->dev.of_node;
->>> +       struct device *dev = &indio_dev->dev;
->>>         struct stm32_adc *adc = iio_priv(indio_dev);
->>>         unsigned int i;
->>>         u32 res;
->>>  
->>> -       if (of_property_read_u32(node, "assigned-resolution-bits",
->>> &res))
->>> +       if (device_property_read_u32(dev, "assigned-resolution-
->>> bits", &res))
->>>                 res = adc->cfg->adc_info->resolutions[0];
->>>  
->>>         for (i = 0; i < adc->cfg->adc_info->num_res; i++)
->>> @@ -1873,11 +1873,11 @@ static void stm32_adc_chan_init_one(struct
->>> iio_dev *indio_dev,
->>>  
->>>  static int stm32_adc_get_legacy_chan_count(struct iio_dev
->>> *indio_dev, struct stm32_adc *adc)
->>>  {
->>> -       struct device_node *node = indio_dev->dev.of_node;
->>> +       struct device *dev = &indio_dev->dev;
->>>         const struct stm32_adc_info *adc_info = adc->cfg->adc_info;
->>>         int num_channels = 0, ret;
->>>  
->>> -       ret = of_property_count_u32_elems(node, "st,adc-channels");
->>> +       ret = device_property_count_u32(dev, "st,adc-channels");
->>>         if (ret > adc_info->max_channels) {
->>>                 dev_err(&indio_dev->dev, "Bad st,adc-channels?\n");
->>>                 return -EINVAL;
->>> @@ -1885,8 +1885,8 @@ static int
->>> stm32_adc_get_legacy_chan_count(struct iio_dev *indio_dev, struct
->>> stm
->>>                 num_channels += ret;
->>>         }
->>>  
->>> -       ret = of_property_count_elems_of_size(node, "st,adc-diff-
->>> channels",
->>> -                                             sizeof(struct
->>> stm32_adc_diff_channel));
->>> +       /* each st,adc-diff-channels is a group of 2 u32 */
->>> +       ret = device_property_count_u64(dev, "st,adc-diff-
->>> channels");
-> 
-> Are you fine with this change (still does not have any reference to the
-> target struct but the comment might be helpful and there's no magic 2)?
-
-
-Since you added that comment, this sounds better. IMHO, This still looks
-a bit weird. I'd feel more comfortable by using u32 API for a
-'uint32-matrix' as defined in dt-bindings.
-Strictly speaking, something like
-sizeof(struct stm32_adc_diff_channel) / sizeof(u32) could be used, along
-with this comment and device_property_count_u32() to make it clear ?
-
-Maybe Jonathan has an opinion, as he first raised a comment here ?
-
-> 
->>>         if (ret > adc_info->max_channels) {
->>>                 dev_err(&indio_dev->dev, "Bad st,adc-diff-
->>> channels?\n");
->>>                 return -EINVAL;
->>> @@ -1896,7 +1896,7 @@ static int
->>> stm32_adc_get_legacy_chan_count(struct iio_dev *indio_dev, struct
->>> stm
->>>         }
->>>  
->>>         /* Optional sample time is provided either for each, or all
->>> channels */
->>> -       ret = of_property_count_u32_elems(node, "st,min-sample-
->>> time-nsecs");
->>> +       ret = device_property_count_u32(dev, "st,min-sample-time-
->>> nsecs");
->>>         if (ret > 1 && ret != num_channels) {
->>>                 dev_err(&indio_dev->dev, "Invalid st,min-sample-
->>> time-nsecs\n");
->>>                 return -EINVAL;
->>> @@ -1907,21 +1907,20 @@ static int
->>> stm32_adc_get_legacy_chan_count(struct iio_dev *indio_dev, struct
->>> stm
->>>  
->>>  static int stm32_adc_legacy_chan_init(struct iio_dev *indio_dev,
->>>                                       struct stm32_adc *adc,
->>> -                                     struct iio_chan_spec
->>> *channels)
->>> +                                     struct iio_chan_spec
->>> *channels,
->>> +                                     int nchans)
->>>  {
->>> -       struct device_node *node = indio_dev->dev.of_node;
->>>         const struct stm32_adc_info *adc_info = adc->cfg->adc_info;
->>>         struct stm32_adc_diff_channel diff[STM32_ADC_CH_MAX];
->>> +       struct device *dev = &indio_dev->dev;
->>>         u32 num_diff = adc->num_diff;
->>>         int size = num_diff * sizeof(*diff) / sizeof(u32);
->>> -       int scan_index = 0, val, ret, i;
->>> -       struct property *prop;
->>> -       const __be32 *cur;
->>> -       u32 smp = 0;
->>> +       int scan_index = 0, ret, i;
->>> +       u32 smp = 0, nsmps, smps[STM32_ADC_CH_MAX],
->>> chans[STM32_ADC_CH_MAX];
->>>  
->>>         if (num_diff) {
->>> -               ret = of_property_read_u32_array(node, "st,adc-
->>> diff-channels",
->>> -                                                (u32 *)diff,
->>> size);
->>> +               ret = device_property_read_u32_array(dev, "st,adc-
->>> diff-channels",
->>> +                                                    (u32 *)diff,
->>> size);
->>>                 if (ret) {
->>>                         dev_err(&indio_dev->dev, "Failed to get
->>> diff channels %d\n", ret);
->>>                         return ret;
->>> @@ -1942,32 +1941,51 @@ static int
->>> stm32_adc_legacy_chan_init(struct iio_dev *indio_dev,
->>>                 }
->>>         }
->>>  
->>> -       of_property_for_each_u32(node, "st,adc-channels", prop,
->>> cur, val) {
->>> -               if (val >= adc_info->max_channels) {
->>> -                       dev_err(&indio_dev->dev, "Invalid channel
->>> %d\n", val);
->>> +       ret = device_property_read_u32_array(dev, "st,adc-
->>> channels", chans,
->>> +                                            nchans);
->>> +       if (ret)
->>> +               return ret;
->>> +
->>> +       for (i = 0; i < nchans; i++) {
->>
->> Hi Nuno,
->>
->> There's an endless loop issue here due to the two for loops are using
->> the same index 'i'. (Please look at my earlier comments in v1)
->>
-> 
-> Ouch... 
-> 
-> Regarding your v1 comments (that for some reason I missed), I do not
-> think there's any helper like "of_property_for_each_u32()". For now we
-> have to live with this...
-
-Indeed, still need to fix this for loop.
-
-> 
->> for (i = 0; i < nchans; i++) {
->>         ...
->>         // Here i gets cleared, num_diff may vary (example with 0
->> here)
->>         for (i = 0; i < num_diff; i++) {
->>                 ...
->>         }
->>
->>         stm32_adc_chan_init_one(.. &channels[scan_index]..
->> scan_index..)
->>
->>         scan_index++; // Still, scan index gets incremented
->> indefinitly
->> }
->>
->> There's an out of boudary situation with scan_index above, wich ends-
->> up
->> in crashing in stm32_adc_chan_init_one().
->>
->>> +               if (chans[i] >= adc_info->max_channels) {
->>> +                       dev_err(&indio_dev->dev, "Invalid channel
->>> %d\n",
->>> +                               chans[i]);
->>>                         return -EINVAL;
->>>                 }
->>>  
->>>                 /* Channel can't be configured both as single-ended
->>> & diff */
->>>                 for (i = 0; i < num_diff; i++) {
->>> -                       if (val == diff[i].vinp) {
->>> -                               dev_err(&indio_dev->dev, "channel
->>> %d misconfigured\n",  val);
->>> +                       if (chans[i] == diff[i].vinp) {
->>> +                               dev_err(&indio_dev->dev, "channel
->>> %d misconfigured\n",  chans[i]);
->>>                                 return -EINVAL;
->>>                         }
->>>                 }
->>> -               stm32_adc_chan_init_one(indio_dev,
->>> &channels[scan_index], val,
->>> -                                       0, scan_index, false);
->>> +               stm32_adc_chan_init_one(indio_dev,
->>> &channels[scan_index],
->>> +                                       chans[i], 0, scan_index,
->>> false);
->>>                 scan_index++;
->>>         }
->>>  
->>> +       nsmps = device_property_count_u32(dev, "st,min-sample-time-
->>> nsecs");
->>> +       if (nsmps) {
->>> +               if (nsmps >= nchans)
->>
->> nit: if (nsmps > nchans)
->>
->>> +                       nsmps = nchans;
->>> +
->>
->> There's a bit of redundancy in checking nsmps,
->> "st,min-sample-time-nsecs" is already sanitized in
->> stm32_adc_get_legacy_chan_count():
->>
->> /* Optional sample time is provided either for each, or all channels
->> */
->> ret = device_property_count_u32(dev, "st,min-sample-time-nsecs");
->> if (ret > 1 && ret != num_channels) {
->>         dev_err(...
->>
->> So just sharing my thoughts here:
->> - Maybe this could be dropped ?
->>   (Thinking loudly) The earliest this gets sanitized, the less un-
->> needed
->> initialisations happen before failing?
->> - Or the earlier check could be moved here ?
->>
->> I've no strong opinion.
->>
-> 
-> Ahh, didn't noticed the first call to 'device_property_count_u32(dev,
-> "st,min-sample-time-nsecs")'. So I do agree with you that we should
-> bail as soon as possible but I'm also not a big fan of calling
-> device_property_count_u32() for the same purpose. So I would suggest:
-> 
-> 1) Your option 2.
-> 2) Option 1 but we would store 'nsmps' in the first call (making it a
-> member of struct stm32_adc) and then use it here accordingly.
-> 
-> Thought?
-
-I'd prefer Your option 2) to follow the logic of the current code (e.g.
-get count then init chans). It has the advantage to tackle errors as
-soon as possible, and store 'nsmps' at once, when sanitized. Its avoids
-redundancy here, only cost is an extra variable indeed.
-
-Best Regards,
-Fabrice
-
-> 
->> Best Regards,
->> Fabrice
->>
->>> +               ret = device_property_read_u32_array(dev, "st,min-
->>> sample-time-nsecs",
->>> +                                                    smps, nsmps);
->>> +               if (ret)
->>> +                       return ret;
->>> +       }
->>> +
->>>         for (i = 0; i < scan_index; i++) {
->>>                 /*
->>> -                * Using of_property_read_u32_index(), smp value
->>> will only be
->>> -                * modified if valid u32 value can be decoded. This
->>> allows to
->>> -                * get either no value, 1 shared value for all
->>> indexes, or one
->>> -                * value per channel.
->>> +                * This check is used with the above logic so that
->>> smp value
->>> +                * will only be modified if valid u32 value can be
->>> decoded. This
->>> +                * allows to get either no value, 1 shared value
->>> for all indexes,
->>> +                * or one value per channel. The point is to have
->>> the same
->>> +                * behavior as 'of_property_read_u32_index()'.
->>>                  */
->>> -               of_property_read_u32_index(node, "st,min-sample-
->>> time-nsecs", i, &smp);
->>> +               if (i < nsmps)
->>> +                       smp = smps[i];
->>>  
-> 
-> Regarding your comment on v1, I would prefer to keep this as-is. I
-> think it's enough together with the comment. Can change it though if
-> you fell too strong about it :)
-> 
-> Thanks!
-> - Nuno Sá
-> 
+Guenter
 
