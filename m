@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38FA4C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Jul 2022 21:45:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13F8EC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 01:44:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SANjvPOceveX3/yf3V5lkdt6+QFJpAS540mS+2vMRPM=; b=COdN1XJg6VmajnDyO44lxnNI5I
-	KZ5wvN4Ct2pF0D55rGF9/jTBxKRkKAq7jPHZX9HygBWXY2ESOYXxTWX35ecI8ZWWlvBrjIqGwk7/2
-	mwDZhLUgsFMHxddvz8REUqdXwa3KZWor+Kg+cHAO01pq7Vii9S3hvqiw/PJkEcxL1uqwLvkUFsEZt
-	7DQLiaRPD9HT+MPSYnkbHoiPu1lK/8BpxcQQ14RRc62L2xMMsJZb0+ElVH7LIZg1OTUOWe0alD5A4
-	e3bHka3zOEitgxYFp466PgMf9dR+YR7wh79AbBUAgHmD7xgRw0KUpOAyCGhC2BodztsA+xjosSgAx
-	fyZqVMIg==;
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1ToYIKzK/0XFTjMzqpW8L8dXEwc4yK3h/C+m7UDdixo=; b=a5LMqMRhSiPlR2UTSr9Up0R0Ty
+	GSo7hgZFdrffwII2FJaGFQLs7ttd35xBFEq1uMmtuFaeNOb06rgtQ0SyuxelBTXCQFc8akafwOiz0
+	rFQJj1KuE81+O1pF8kWk/l5jpawnQDPHTj1UDFIIsJMWcxtdLZdQScGeCKNlaBWo2BnJB8UPx/Fbl
+	pt9Z40xLHNQGJsJpvdXSt5nv1FC56M8B03HE6hjXywtgjk6/qEPl7AHsn99KUUefMT+ViWcB3idg2
+	SBgBuaFmVMaL0/800GL1Sfjb2uJeKj5Zl2fVpkLZQDkRjloiGxqQf1Sj63tMfCcialw2V94W0qCYf
+	0Ln5sUog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBNgZ-00F3ly-Kn; Tue, 12 Jul 2022 21:44:51 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oBRQe-00GTJa-FG; Wed, 13 Jul 2022 01:44:40 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBNgN-00F3ba-H4; Tue, 12 Jul 2022 21:44:40 +0000
-Received: from notapiano.myfiosgateway.com (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4408766015C4;
-	Tue, 12 Jul 2022 22:44:31 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657662272;
-	bh=Wik+BSgjTEwACqP1//DVq69wKrPz3LMLTI3NbGLzuqg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=P4uqCVhD4Vkk33HXVq83SlYRoshdXd6+uKuOAFEKfb7tbcruikwjgLShkeTD1BHUo
-	 Ul1nYF4ubAs7IM5CytrNG6f8GXLnMog8lbzqE5m9xiqRbGJhGsSDxBb/R3ut+U/+9J
-	 dyMsm6+hfZu/2jL0cAD7aYYnDReYBUDN9yjyQzTQOtbS9wCU9o9xYRqz5Nkzwg5if+
-	 wJpUjZM2k9ZC7FauIFOBhR9Q2wExNfmoE5lnp3pGoi5M6vsP4tMhG2eMiIBQwxAZ3T
-	 8vzWbtglFMdvrKEX3rzzTGpTaJQdN4p6GmB/odr9vPuxu8NtNtKji/PDeZsg9D/K4P
-	 6Ms0SZ7wCAF/Q==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: Joerg Roedel <joro@8bytes.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Will Deacon <will@kernel.org>,
-	Yong Wu <yong.wu@mediatek.com>,
-	iommu@lists.linux-foundation.org,
-	iommu@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] iommu/mediatek: Log with dev_err_probe when failing to parse dts
-Date: Tue, 12 Jul 2022 17:44:27 -0400
-Message-Id: <20220712214427.544860-1-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.37.0
+	id 1oBRQR-00GT3c-Kw; Wed, 13 Jul 2022 01:44:29 +0000
+Received: from dggpeml500020.china.huawei.com (unknown [172.30.72.57])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4LjL0s3cYyzVfc3;
+	Wed, 13 Jul 2022 09:40:29 +0800 (CST)
+Received: from dggpeml500008.china.huawei.com (7.185.36.147) by
+ dggpeml500020.china.huawei.com (7.185.36.88) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.24; Wed, 13 Jul 2022 09:44:11 +0800
+Received: from [127.0.0.1] (10.67.111.83) by dggpeml500008.china.huawei.com
+ (7.185.36.147) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Wed, 13 Jul
+ 2022 09:44:10 +0800
+Message-ID: <df9909dc-3303-808e-575a-47190f636279@huawei.com>
+Date: Wed, 13 Jul 2022 09:44:10 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH -next] scsi: ufs: ufs-mediatek: Fix build error
+To: Arnd Bergmann <arnd@arndb.de>
+CC: <stanley.chu@mediatek.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Bart Van Assche <bvanassche@acm.org>, linux-scsi
+	<linux-scsi@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..."
+	<linux-mediatek@lists.infradead.org>, Linux Kernel Mailing List
+	<linux-kernel@vger.kernel.org>, Linux ARM
+	<linux-arm-kernel@lists.infradead.org>
+References: <20220704025632.235968-1-renzhijie2@huawei.com>
+ <CAK8P3a07jGCuAVQAZgpENRP_xFLiogU9W1Uze+n21h7TdOZhog@mail.gmail.com>
+From: Ren Zhijie <renzhijie2@huawei.com>
+In-Reply-To: <CAK8P3a07jGCuAVQAZgpENRP_xFLiogU9W1Uze+n21h7TdOZhog@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.67.111.83]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ dggpeml500008.china.huawei.com (7.185.36.147)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_144439_720288_DB885497 
-X-CRM114-Status: GOOD (  12.94  )
+X-CRM114-CacheID: sfid-20220712_184427_902649_E8F977D1 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,33 +77,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_iommu_mm_dts_parse() can fail with EPROBE_DEFER if not all larbs
-have probed yet, so use dev_err_probe() to avoid logging as an error in
-that case. Also drop the return value from the message since it's
-already printed by dev_err_probe(), and add the missing newline at the
-end.
+在 2022/7/12 16:27, Arnd Bergmann 写道:
+> On Mon, Jul 4, 2022 at 4:56 AM Ren Zhijie <renzhijie2@huawei.com> wrote:
+>> diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+>> index c958279bdd8f..e006c2528a3a 100644
+>> --- a/drivers/ufs/host/ufs-mediatek.c
+>> +++ b/drivers/ufs/host/ufs-mediatek.c
+>> @@ -1427,6 +1427,7 @@ static int ufs_mtk_system_resume(struct device *dev)
+>>   }
+>>   #endif
+>>
+>> +#ifdef CONFIG_PM
+>>   static int ufs_mtk_runtime_suspend(struct device *dev)
+>>   {
+>>          struct ufs_hba *hba = dev_get_drvdata(dev);
+>> @@ -1449,6 +1450,7 @@ static int ufs_mtk_runtime_resume(struct device *dev)
+>>
+>>          return ufshcd_runtime_resume(dev);
+>>   }
+>> +#endif
+>>
+>>   static const struct dev_pm_ops ufs_mtk_pm_ops = {
+>>          SET_SYSTEM_SLEEP_PM_OPS(ufs_mtk_system_suspend,
+> This change works, but it's not great. It's better to change the
+> SET_SYSTEM_SLEEP_PM_OPS() to the new SYSTEM_SLEEP_PM_OPS()
+> that works without the #ifdef.
+>
+>           Arnd
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Hi Arnd,
 
----
+Thanks for your suggestion.
 
- drivers/iommu/mtk_iommu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+How does it to fix the implicit-function-declaration error?
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index b2ae84046249..3d23409bf108 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -1214,7 +1214,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_MM)) {
- 		ret = mtk_iommu_mm_dts_parse(dev, &match, data);
- 		if (ret) {
--			dev_err(dev, "mm dts parse fail(%d).", ret);
-+			dev_err_probe(dev, ret, "mm dts parse fail\n");
- 			goto out_runtime_disable;
- 		}
- 	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA)) {
--- 
-2.37.0
+Thanks,
+
+Ren Zhijie
+
+> .
 
 
