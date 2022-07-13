@@ -4,57 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA140C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 06:29:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64AA6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 06:38:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vz0fkrCfiB8iIRmM+g3c5RgdfbYzayPfNfoh04vycd8=; b=zJKa5j/VqkyLMKZcLbdm59hPp7
-	dSQuSek1eJFD5bYtkpfmfKwfdHng03WKWGLz8SqwY4bbXGvHRi9AaNGN3KhcGFZsd0rlAqW7/ppfg
-	JZ53borS+5WcGl62wjRnSlWFZGs5UK3v812KZOC7JA9luFHpj4ZMuRc7VEMvwEa6/m8gUxETdL329
-	qfFmvBTj+GKU/p4E+NET5Dz8Mp28ZQ46zJm4qs14a/B8jv9snM11EG+IG1gsG6FA9dWfb2sFv9jcN
-	gD+IIuAzh7DfFYM4+akcYxe5DREpeQlzwYgLx1Y57IY3QHJjhem6wYkPITQnHUj11C2n3zZeysNUb
-	5gQ///jg==;
+	bh=gfy8X4P200io8YEKqQ/oduzvRrx/BXZ1vuGoO9ifQXI=; b=DADCaG83n3xlvf3G9GDS3QDOM3
+	Jk+z/dqCXSaaXc96wTF6zqdwNgD7da15xq1Em41mPY5Xrox8GViqhG8cGUV018mlpj6p0the2jIw8
+	HWMHJMnGwPYzVu9+7U+JxqOuyrrHMBqBk9bjEGe5Q1lPtIpTTSawQA2TkwhM7zu2iwHgEkixXSaYq
+	ZppRY9sR2CHJbLZxoTsCcoyj8PsP8weUrblINC0STCJR8SZMpaRVYnORvX/C5QidG1yFxE5XDkSiG
+	Q0i2McoxjK1ImDYccfHTa9eWDVhbjwHAY8rtO8WEOLG5dgoHi1hvQ6e99r8QIxUDBpTzArAaOgTsv
+	P++DYi7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBVrs-000XIx-CY; Wed, 13 Jul 2022 06:29:04 +0000
-Received: from mail-co1nam11on2094.outbound.protection.outlook.com ([40.107.220.94] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1oBW0m-000aux-Iv; Wed, 13 Jul 2022 06:38:16 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBVrp-000XGU-OT; Wed, 13 Jul 2022 06:29:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Yikpp47xDBHjq3KcvGKLGLgds64PWJhcAukaiyDkIpLkM8DIfxM9vhCVj+l01okwtZdCsCTmosVxU7gMNsTHtDJrjmFGI8O07LIr3Fmg7zkGpbYmEsYiqG6Dg11zOwVKpfhkdGtdIsQ6v7y/5xI+MCIHFCMkgojXMKdw6s+SqoslL/3uve60UHiRlrcgsvAGTWoSXQgdbKRD7D7PmriZKF4uR10ie3xybAKVUE60vdomQQ/GKpXy/O2H8qiQv4JNSM16nxyod0vEW3aC7RD6VmNaLN1/k567zPJbRh7HK5Nkpue5GEnn+HpVfvkXRhLVaZX5eyBwa1QQKgQ3Xo0ETg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Vz0fkrCfiB8iIRmM+g3c5RgdfbYzayPfNfoh04vycd8=;
- b=IuZp8DjC2AfrZS84Tgx/EgZIdGcV2wCZrOrIQXMjG/5PGegtGhbrh2Zi6j1ql7RXAu1tZiF5DJ1REDVnuzCBWVMZg2D25WcPxXOJzs7ipRmMGvoMST9mrDOFdkcxTbOCBB+255wdkPzD1QHxCBMuhPDwbFH0WGS24Y4S0leQ5+AnbT7jZhbppFzutYNbTuKfj9z8xjekyhS5G3emWeY6a1uFvLb8nQGSE1deI7LIcWvW+TyTk9jzZGMzvN5S0gkencqSwSXyyoCqwKx3hmoPwGyU9Hu5jwSdEO141ePqBi2/hsbnbdjFeug7u69YqrZT9avLj/dkoGZ6thGwi+Se+w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Vz0fkrCfiB8iIRmM+g3c5RgdfbYzayPfNfoh04vycd8=;
- b=Ee8EVGCEqKAbM3dHUzhwB/eYP1Vsh1Q8fBxOtr6sHkq2ukhMW0QNJqnGqgDx2Kyh/bnWAmm1mTQHs7E8WFkZc8JF7QlK7APw48qV4wn2GqBmlUo2cb3f/yN7zmoZ+cpHt73eQY91x8uw5PxAJG7F6JlQlNksAmEsxwBtMemKWpk=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=analogixsemi.com;
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
- by DM6PR04MB5993.namprd04.prod.outlook.com (2603:10b6:5:126::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.25; Wed, 13 Jul
- 2022 06:28:50 +0000
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::f02d:f2e:cba9:223b]) by BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::f02d:f2e:cba9:223b%5]) with mapi id 15.20.5417.026; Wed, 13 Jul 2022
- 06:28:49 +0000
-Date: Wed, 13 Jul 2022 14:28:45 +0800
-From: Xin Ji <xji@analogixsemi.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Guenter Roeck <linux@roeck-us.net>
-Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	id 1oBVza-000a8w-K5; Wed, 13 Jul 2022 06:37:04 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 1A11CB81D15;
+	Wed, 13 Jul 2022 06:36:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F180BC34114;
+	Wed, 13 Jul 2022 06:36:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1657694216;
+	bh=CMSUMXXc0AsUsrZXjzn8tfNp/uCoq+3nHhn43pNXTGg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LTbE6ou8P+9zj6YYBv9iwaxMHtMGeVaBVrSHr9RQ8rZntNrZuVrw5hA8hT/p6wa7i
+	 H9ENdl+UOuWkotdda8l1x5N29KuAYVw1hkd5Nax5wbE2unYPcMhfSUowiJTRtp5YWI
+	 GhSEIuMjc3vJJSvXN4qyof96Fd+PxZjUYWt3Do/o=
+Date: Wed, 13 Jul 2022 08:36:53 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Xin Ji <xji@analogixsemi.com>
+Cc: Guenter Roeck <linux@roeck-us.net>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>, bliang@analogixsemi.com,
 	qwen@analogixsemi.com, jli@analogixsemi.com,
 	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
@@ -62,67 +50,18 @@ Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
 	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH v16 1/3] usb: typec: tcpci: move tcpci.h to
  include/linux/usb/
-Message-ID: <20220713062845.GB2788915@anxtwsw-Precision-3640-Tower>
+Message-ID: <Ys5oBTeIcLjf7gnX@kroah.com>
 References: <20220712090534.2783494-1-xji@analogixsemi.com>
  <0bd85140-f006-8b29-0a43-500733f1654c@roeck-us.net>
  <Ys16lEvhVSSSRMP7@kroah.com>
+ <20220713062845.GB2788915@anxtwsw-Precision-3640-Tower>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Ys16lEvhVSSSRMP7@kroah.com>
-X-ClientProxiedBy: TYCPR01CA0180.jpnprd01.prod.outlook.com
- (2603:1096:400:2b2::20) To BY5PR04MB6739.namprd04.prod.outlook.com
- (2603:10b6:a03:229::8)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: f97e98d6-d41a-4f92-fc7c-08da6498f27e
-X-MS-TrafficTypeDiagnostic: DM6PR04MB5993:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	uYTBF0AUKHAJjZ37mNEbQ9dir0KmCHczzuZFkrB2Et32Gj7WMHr7kfY4GOpAq3BmSldHy/5G+mB8M2aCzi0eXvhj4x8T5Zc1eppu/Iet3ckd17zEymeyQ7xaCLSQcq5MLW1ci0iktcdbjh5VRNUTljfTzuIG8hxL2f3ZWzQBHrJcXNtpzQxAR/r2QnieMURbc7+s2YztQMzlWzWwMQh10rwMXPIt9QpWmxkGzSfmsB7qHyNqZoZ64Y8bIZTc2fk3WihxtZXbEKMQd9eG3bPOhSGY0mX1mxOLNtlUYarGlJILrmJWCHf+yGuvMA4irogTm75geCMj07SuxzKG4Ki780rQv27cD28Hyr+v2kqWJ0RXZOYVvNEnJB+xp1K2t1jgCJnNxxC31sN8EW1/C0raD2NCkL+gh5qf0XCHQbtECjnVZr5/bqpDxq0VN7leHIqiTDOR9z6iDbzCdbxd9bfq9Vu6YIv8vbpWgbb8kRfWMAJzcsISBjITQKU4I/tbK8kOnuVEo9+wDzms0YbmEvDH+qKlACA5UQXl7/iWsZDuJEP/kape3VXqB7me5nOakRco4MALhEb3iAiDjWyD7zY/gShjg/qNabFusQ823Me7EeGtghUztQHC8pubR2T5PV/7jSIKvpJ1ofhw6bqa3r+aataMxz8ww+3IIUJbKtSlVJMSp3UPM4amnXWLoKhbpCbIWlvx4N/IhiBwqAh+6IdpSBhD0uQQpNq/Ic4D8QSQrSfo5ihgAXek02swifDLPXwRtYQkzERixq46l8AQviZpGmn7wZq27BdfHFFMgT5izf8ES2PPaTDQUdHUfU5KOVaq
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BY5PR04MB6739.namprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(7916004)(366004)(136003)(39850400004)(396003)(346002)(376002)(6666004)(8936002)(186003)(83380400001)(38350700002)(33716001)(1076003)(38100700002)(8676002)(66476007)(110136005)(6486002)(2906002)(4326008)(54906003)(33656002)(66946007)(66556008)(316002)(52116002)(5660300002)(53546011)(55236004)(9686003)(26005)(6512007)(478600001)(86362001)(6506007)(41300700001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?SQkaPdtIi6R27Z/s6qUUzZtIEJI2TQs3o5MBTNR3fhMfeX43HMfudmWsdcSq?=
- =?us-ascii?Q?I/VTdU/NTmZPv3C758n4L9pDIW4gJxqWLGlHmJvW+3LmCYIU48COE9i7u+/n?=
- =?us-ascii?Q?8M0wFQW18xUPHqg9dLwr7PFUD/SQMpE8t8c35Z6wsahcgWGrAuK7XZSM8XPw?=
- =?us-ascii?Q?x0I0cM9sT0a2hdEbrTLf93PG/iDC/BtOPnGpziHvVxY5VDpSiCW59nWvPtgG?=
- =?us-ascii?Q?mqIoGigL7K2SV39OpcrM1B0vWoEX4bFSRJGBmwhTg9B/1hFxeqCbVc4Cn1m3?=
- =?us-ascii?Q?hsaHcMB/MYSLdnmQXnckbRTK6mUfBA0M0fBiFDHVe3G7QUTXv88sv0+ugmPX?=
- =?us-ascii?Q?/W4M7u4U+lR+4UnkXxDVElgTkm1RbdUATdY/N48HCSx0EcUWvh9XL/+EZleP?=
- =?us-ascii?Q?wpRjsMDapPJsd8bY/iPQFZzfSZZHpICjcdpvkUakPb41mNPpAScZEdDpg7rB?=
- =?us-ascii?Q?PChw3iy/DyMobz9DRE4kGmd0sHjs82Bp0g0ZcpLNTyLl2dkjsOmt8Zh0TUlX?=
- =?us-ascii?Q?0UnbismVgcHN6Jxi4cOgfhxJ1wVdn8wI+W52+/Wb37Dwf+hTRuhwcYEFEcZi?=
- =?us-ascii?Q?vNsvhplihDCoc1ISTnTbiEj+mZb61EJ0E9YkRmakOpxIeQw1xewwGp/LJI/U?=
- =?us-ascii?Q?LeCit+MSbW85gb6OZgRgmDEm65js6wb6wSJAji3dqZxCfCzccKM+ASV6Shdn?=
- =?us-ascii?Q?SX3gpXFUIra5FHArSjrOfPyJW7+1sAfb2qDFdAlk8kD2fjdzCUBEoExjsGiV?=
- =?us-ascii?Q?oV8J+m/94fVHFgH1lJMZqw5JPaPaolqaJR/0a+mmtk6IBYfpjGu5Y3DRQcb9?=
- =?us-ascii?Q?9ZiJiMuEoKg0Xg49Axuuaf2jYOzdfUH3LrlVkm9Ap6D/az6kTkoh6xRD8oX5?=
- =?us-ascii?Q?9Xd8qQviYiraS4rSfG4xPldzMgju/fhqe5HzjRsQlbU59v6lRDtEok//ObV4?=
- =?us-ascii?Q?fhsg/DzOTj6UhqRtnaFe074rF4ldvyofXsqr7btHQK9WpR7FtKy9Qz/hhX/Q?=
- =?us-ascii?Q?4yA3S5c+9oQhE6IVxBLEPbetEi5w9VWpIcqNk3QbIKVkcwgQJlxFruaFNsAg?=
- =?us-ascii?Q?RDzciTjYVxpv95bs/nfiw19XMY0EAgjfj2T3yXRlwuMwMpyXa1StKVM2A1KL?=
- =?us-ascii?Q?ULmrovvRfgV8TJYTXHytToY/xlEchZVMumVzuGuBbowrZa/yEUTJZVqx8HcI?=
- =?us-ascii?Q?HUcezDopz1fKOdiylQ3chbkIaFaZSI2VFJU090xNXu7KOXZ9ZYGrnMJwJv76?=
- =?us-ascii?Q?iDHU7ecKYfqzxgIcvCO8ISmKcYV7o3bYgGkhYTw1korp69NVS50xmwNarSwW?=
- =?us-ascii?Q?lfr3g7qo0OczjGZ0LFjPyYITgOgDW1Xf1LXroPrsmOVBOzJb+jAOwji6XCo5?=
- =?us-ascii?Q?M8warD4ZdyM59LJAfMhNFo9B2N/UCmEaXR+wsPBemn8WigJoSz5wjck+UwbN?=
- =?us-ascii?Q?YHNevtgIYhqwjP9oMKqVJhnCVudqd2GukjHlEVV5QBtLsHdnAx646h8LYyDU?=
- =?us-ascii?Q?5aqM60iMt+24LkmJ4A0Av1NrsZ4WynHdKkSPut4nzece202jHKHXQst7y+YV?=
- =?us-ascii?Q?Dh0i5C6akbdLP5It/rUqVlfTmEonxoH0tGO5GvjM?=
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f97e98d6-d41a-4f92-fc7c-08da6498f27e
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jul 2022 06:28:49.5217
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: EKhIJ6vecNhUKOys+qw77nLLWU31FylGZ7DqUIjeG7nEFUaWn55XTfe6So5YseDi1IMzv7dM1NFAihhYCiAxOA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB5993
+In-Reply-To: <20220713062845.GB2788915@anxtwsw-Precision-3640-Tower>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_232901_821942_9288CF7B 
-X-CRM114-Status: GOOD (  17.64  )
+X-CRM114-CacheID: sfid-20220712_233702_835850_0B2588A8 
+X-CRM114-Status: GOOD (  23.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,31 +76,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 12, 2022 at 03:43:48PM +0200, Greg Kroah-Hartman wrote:
-> On Tue, Jul 12, 2022 at 06:31:22AM -0700, Guenter Roeck wrote:
-> > On 7/12/22 02:05, Xin Ji wrote:
-> > > USB PD controllers which consisting of a microcontroller (acting as the TCPM)
-> > > and a port controller (TCPC) - may require that the driver for the PD
-> > > controller accesses directly also the on-chip port controller in some cases.
+On Wed, Jul 13, 2022 at 02:28:45PM +0800, Xin Ji wrote:
+> On Tue, Jul 12, 2022 at 03:43:48PM +0200, Greg Kroah-Hartman wrote:
+> > On Tue, Jul 12, 2022 at 06:31:22AM -0700, Guenter Roeck wrote:
+> > > On 7/12/22 02:05, Xin Ji wrote:
+> > > > USB PD controllers which consisting of a microcontroller (acting as the TCPM)
+> > > > and a port controller (TCPC) - may require that the driver for the PD
+> > > > controller accesses directly also the on-chip port controller in some cases.
+> > > > 
+> > > > Move tcpci.h to include/linux/usb/ is convenience access TCPC registers.
+> > > > 
+> > > > Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+> > > > Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+> > > > Signed-off-by: Xin Ji <xji@analogixsemi.com>
+> > > > 
+> > > > ---
+> > > > V9 -> V10: Rebase on the latest code
+> > > > V8 -> V9 : Add more commit message
+> > > > V7 -> V8 : Fix Guanter's comment, remove unnecessary explain
 > > > 
-> > > Move tcpci.h to include/linux/usb/ is convenience access TCPC registers.
-> > > 
-> > > Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-> > > Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-> > > Signed-off-by: Xin Ji <xji@analogixsemi.com>
-> > > 
-> > > ---
-> > > V9 -> V10: Rebase on the latest code
-> > > V8 -> V9 : Add more commit message
-> > > V7 -> V8 : Fix Guanter's comment, remove unnecessary explain
+> > > We are now at v16. The change log has not been updated since v10,
+> > > making it all but worthless.
 > > 
-> > We are now at v16. The change log has not been updated since v10,
-> > making it all but worthless.
-> 
-> It's also already in my tree for a while, so I have no idea what this is
-> being generated against :(
-Hi all, I'm little confused, do I need update change log from v11 to
-v16? There is no changes since v10.
-Thanks,
-Xin
+> > It's also already in my tree for a while, so I have no idea what this is
+> > being generated against :(
+> Hi all, I'm little confused, do I need update change log from v11 to
+> v16? There is no changes since v10.
+
+I'm confused, why are you sending a patch over that is already in my
+tree and in linux-next?  You got an email saying it was merged, see
+commit 7963d4d71011 ("usb: typec: tcpci: move tcpci.h to
+include/linux/usb/").
+
+thanks,
+
+greg k-h
 
