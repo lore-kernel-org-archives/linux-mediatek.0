@@ -4,108 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A6B5C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 13:07:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7226DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 14:08:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZDp5NtLIxNT/y/y4TV28JKQZE5KPsmeDwau7U2nvfbI=; b=T8Q37yKN4xoU2PlVJUtv1j9kGa
-	B0JZg+kPV7DlQe5gQQIIW41nf9+EcCaVCtbzLQuSDpeA9Sct0Ej73zQ1X0xhA+swjvgCnuVUJPAvV
-	LlO7WnjBUfZ+MY4NZuHpHAw9mtUZ9mp/Kmsl12gw0ZImqm1AqYkGuussaPrTxJOpKi0I5fB2ufc72
-	PVQpmKUcIqLnVX6Z0GayeqQiWMGdQV8l4RRTYV7SIGqVwYPjkylYaF+OJa8YCMWRcJ80hpj1ryIRM
-	7KZideN4nqSoyQtCHGPfW8U42sL9KO1HilEEeBjLWPmpfExQjq8OBojOI3rXjRMO76SpH1zv0JwKG
-	/u/R7WCQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gA3XVimnX7f3s6KgiLlFK+Po6cdJBSVv58Yny5mkLeQ=; b=RU9u4dDZ9UxjrVyDjrs+1VLsTS
+	45Tba9xAgoNRHnliseZmGxkiLSR6GmGFXT/p9ZznCZM/IW6HIwdnFcR4GEdSmWmrE88t43bwj6ckR
+	LzzZuICTdrIq4VeqUp43UqTVAyDeP+gW7aZ3e2cHGSeHrv28h2p5kdL5zTEBC+49NKyqqf6izqu88
+	FMgnzwW8Pln58ixoNElHnA/rbPa80IkgsRWcRmpRYTcPoycJqxkcaya6z0pIAJA3AvAtThalsir2K
+	dfM0VAliVBIoMaV9Pf9+5tigNZ32bmb0WSpZZymCxBwP0J1w6MNoVmhzcUdMwDX/SjCh0mqET4DIj
+	1bKh0f4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBc5j-003nAX-6N; Wed, 13 Jul 2022 13:07:47 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1oBd1v-004Ezm-PQ; Wed, 13 Jul 2022 14:07:55 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBc5d-003n6L-MH
-	for linux-mediatek@lists.infradead.org; Wed, 13 Jul 2022 13:07:45 +0000
-Received: by mail-wr1-x433.google.com with SMTP id d16so15408958wrv.10
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Jul 2022 06:07:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to;
-        bh=ZDp5NtLIxNT/y/y4TV28JKQZE5KPsmeDwau7U2nvfbI=;
-        b=ykcE/L76OyKjfmB6gW/9PEIXPb7KX9wbY5QZt6rzoJ7cx+NshQnf3zYFk9CJJmZ/WM
-         Yjn5tpbDrFkjNkWS+WFrkqjSfGYuauzrhkLnPgPWJ+ijDPIFajS1TTDtmC2uQEI2eXJq
-         v/PjSpgG/525Lm1jJ94ez4EFFEytapEdMWKLq79xQRBWSawK2YgrGJjhf+6mviSVU3q3
-         kOx9C54FFQzStrBSdTBuFlQdgkenCIZH2XWgb8DLkaqKQZ3XbPUtvaJN7A3d1aNdPv+L
-         MOY47XiJ+MoxEz7XvBmRhEiBH0MhBUFHBMZQFzRyd4+1IQ/e0LRFMgzPqoPQQ++2EeCE
-         bFRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=ZDp5NtLIxNT/y/y4TV28JKQZE5KPsmeDwau7U2nvfbI=;
-        b=kcxjcr4Rik/3SOUnZ0OKocTRmEoH5x5n5CDPYY3EwYH94Kp0m9MnT4aX1Fk2kk/li7
-         3JgpeTe2+GIKz061ReBy7c7PB6cXKEKF7k8b2829WfpUJVTsDyMgxAbcAdWOv1rqAfN0
-         GzVf+3QbK8OgFZGoYaVoFFsNu/G/rlAPhETPQpr+A9Rz2SgM1yTfTQUR9oyktmy1fFHL
-         TbroU7FJVTM09Dh0cWc8Qd0soLCFh/cwMZsswd83gQcu3PHeqAOmk5yZl1BFzqGUFpFl
-         ZHUscYVNgLFWa6fjKXASxRLaEB/1M0PIRy8QLnVKvhC4CR7hpkjvFVAdFcdTeCH2W7h7
-         R7fA==
-X-Gm-Message-State: AJIora/d0Z6quK2btiC5mqsr1IDlGinEJSw04xxJ1Uthsu1hCwAJDYsz
-	vmXJhNP4FPyGCju75Zmqf3a1iQ==
-X-Google-Smtp-Source: AGRyM1v3Wejcmcef1+JLx2OGnt8FIDdBIQxbNYoMtF21Qn+Urzq7T2tg4YCX+P2hq8vPNX2sKjEQ7Q==
-X-Received: by 2002:a5d:5747:0:b0:21d:65e9:be07 with SMTP id q7-20020a5d5747000000b0021d65e9be07mr3162978wrw.215.1657717658781;
-        Wed, 13 Jul 2022 06:07:38 -0700 (PDT)
-Received: from google.com (cpc155339-bagu17-2-0-cust87.1-3.cable.virginm.net. [86.27.177.88])
-        by smtp.gmail.com with ESMTPSA id l29-20020a05600c1d1d00b0039749b01ea7sm2628398wms.32.2022.07.13.06.07.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Jul 2022 06:07:38 -0700 (PDT)
-Date: Wed, 13 Jul 2022 14:07:35 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>,
-	Daniel Thompson <daniel.thompson@linaro.org>,
-	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sebastian Reichel <sre@kernel.org>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	id 1oBd1h-004Ejb-J7; Wed, 13 Jul 2022 14:07:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=gA3XVimnX7f3s6KgiLlFK+Po6cdJBSVv58Yny5mkLeQ=; b=DeAZz/u08LyY66av49LSBj404F
+	Z1pv+JxyNxpbyQNSBtLumt6bq99DUgUOvJELIyRwoLQEXcthrEo0yZ9nVAAtX1tKSgxuH2dMmB+jA
+	RU4NQAi+mSAy8faMSx/seFqS6ytNIgYr2tQx/OJxiMNdEA0fckOScgYQZCR7QV5N+Ql4iLxVW7u5t
+	YVEhA4gpDss/Fp1O9Yy6+X/53bDV+oM4Zinq344vPFpPcwUDc86YHQnhaNBfwgjreihJ0oQO8qC3V
+	BEx2OXyizzoqih3kUFui4oDFzaID0qEjlas5NmT78Mb2+auyWkNQYZzUSmWHX1O4ueEJ9TKBzA6LP
+	YXum0aZw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33316)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1oBd0u-0004Zy-Vu; Wed, 13 Jul 2022 15:06:53 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1oBd0p-0005gm-9r; Wed, 13 Jul 2022 15:06:47 +0100
+Date: Wed, 13 Jul 2022 15:06:47 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>,
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>,
-	Helge Deller <deller@gmx.de>, ChiaEn Wu <chiaen_wu@richtek.com>,
-	Alice Chen <alice_chen@richtek.com>,
-	cy_huang <cy_huang@richtek.com>,
-	dri-devel <dri-devel@lists.freedesktop.org>,
-	Linux LED Subsystem <linux-leds@vger.kernel.org>,
-	devicetree <devicetree@vger.kernel.org>,
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	Linux PM <linux-pm@vger.kernel.org>,
-	USB <linux-usb@vger.kernel.org>,
-	linux-iio <linux-iio@vger.kernel.org>,
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>,
-	szuni chen <szunichen@gmail.com>
-Subject: Re: [PATCH v4 13/13] video: backlight: mt6370: Add Mediatek MT6370
- support
-Message-ID: <Ys7Dl1oApfww27MJ@google.com>
-References: <20220704053901.728-1-peterwu.pub@gmail.com>
- <20220704053901.728-14-peterwu.pub@gmail.com>
- <CAHp75VdwEc9AW1w8ejsxkw+sBTF1dumd99QyzTY9BZaXiViRWQ@mail.gmail.com>
- <CABtFH5K-2+2hbpvpq2nPE5AsznkQxZF2r3MVC64Q39DJhVuUtA@mail.gmail.com>
- <CAHp75VevDwdAKLYEWJgnMDvzuPuFibLuVqH-GKazEOT76wM6_A@mail.gmail.com>
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Marek =?us-ascii?B?PT9pc28tODg1OS0xP1E/QmVoPUZBbj89?= <kabel@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>
+Subject: [PATCH RFC v2 0/6] net: dsa: always use phylink
+Message-ID: <Ys7RdzGgHbYiPyB1@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAHp75VevDwdAKLYEWJgnMDvzuPuFibLuVqH-GKazEOT76wM6_A@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_060741_750075_E0A808CD 
-X-CRM114-Status: GOOD (  13.75  )
+X-CRM114-CacheID: sfid-20220713_070741_944225_F40E2529 
+X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,33 +98,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 13 Jul 2022, Andy Shevchenko wrote:
+Hi,
 
-> On Wed, Jul 13, 2022 at 12:53 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> > Andy Shevchenko <andy.shevchenko@gmail.com> 於 2022年7月5日 週二 清晨5:14寫道：
-> > > On Mon, Jul 4, 2022 at 7:43 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> 
-> Please, remove unneeded context when replying!
-> 
-> ...
-> 
-> > > > +               brightness_val[0] = (brightness - 1) & MT6370_BL_DIM2_MASK;
-> > > > +               brightness_val[1] = (brightness - 1)
-> > > > +                                   >> fls(MT6370_BL_DIM2_MASK);
-> > >
-> > > Bad indentation. One line?
-> >
-> > Well... if indent to one line, it will be over 80 characters(or called columns?)
-> > From my understanding, it is not allowed, right??
-> 
-> It's allowed to some extent.Use your common sense.
-> Here it's obviously broken indentation.
+This is a re-hash of the previous RFC series, this time using the
+suggestion from Vladimir to create a swnode based fixed-link
+specifier.
 
-Refrain from going crazy though - hard limit is 100 chars.
+Most of the changes are to DSA and phylink code from the previous
+series. I've tested on my Clearfog (which has just one Marvell DSA
+switch) and it works there - also tested without the fixed-link
+specified in DT.
+
+ drivers/base/swnode.c                  |  14 ++-
+ drivers/net/dsa/b53/b53_common.c       |   3 +-
+ drivers/net/dsa/bcm_sf2.c              |   3 +-
+ drivers/net/dsa/hirschmann/hellcreek.c |   3 +-
+ drivers/net/dsa/lantiq_gswip.c         |   6 +-
+ drivers/net/dsa/microchip/ksz_common.c |   3 +-
+ drivers/net/dsa/mt7530.c               |   3 +-
+ drivers/net/dsa/mv88e6xxx/chip.c       | 134 ++++++++++++-------------
+ drivers/net/dsa/mv88e6xxx/chip.h       |   6 +-
+ drivers/net/dsa/mv88e6xxx/port.c       |  32 ------
+ drivers/net/dsa/mv88e6xxx/port.h       |   5 -
+ drivers/net/dsa/ocelot/felix.c         |   3 +-
+ drivers/net/dsa/qca/ar9331.c           |   3 +-
+ drivers/net/dsa/qca8k.c                |   3 +-
+ drivers/net/dsa/realtek/rtl8365mb.c    |   3 +-
+ drivers/net/dsa/sja1105/sja1105_main.c |   3 +-
+ drivers/net/dsa/xrs700x/xrs700x.c      |   3 +-
+ drivers/net/phy/phylink.c              |  30 ++++--
+ include/linux/phylink.h                |   1 +
+ include/linux/property.h               |   4 +
+ include/net/dsa.h                      |   3 +-
+ net/dsa/port.c                         | 175 +++++++++++++++++++++++++++++----
+ 22 files changed, 290 insertions(+), 153 deletions(-)
 
 -- 
-Lee Jones [李琼斯]
-Principal Technical Lead - Developer Services
-Linaro.org │ Open source software for Arm SoCs
-Follow Linaro: Facebook | Twitter | Blog
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
