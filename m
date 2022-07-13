@@ -4,86 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F6FDC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 12:08:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D6DBC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 12:12:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H60c6BQz+0PUGxMp0vbXoiihGTO7ZBPYPm+08N4mLfI=; b=312bci5ljUc9zq5wNmO7dhaW4I
-	ZyXWUl+PSLZQ5I6xALIizvyxsKEX8WyTvgiWYMKZBER2N67sdeK1LWN/khTVHodNnWIKtR0FQ9nm9
-	Dc4FAmvR+D2Pbj/fc+g+hTZPCB1OX5qXVeWw91fT56Qhk/AwU5XLbHR6P9+S4XLkKisGixC1BVKXo
-	BASElBBKRCO1Tk2TrRtK3NDiV3gGJvxJUQYiuILntj5pzNDO+eTUSt6lBPUEQ/h1xkpvcHgG9yK7+
-	5aO6a8Bx+MR5vvvLT5CsiA6qA8IvD7gz1u9LtBZXDzuNcGKzqVdhG2Z6Q2KhU70Rv5KR2q5u4HMkS
-	PFUxI/RA==;
+	bh=mQ/hcGr/I/V5gOxH9+3HtKc0WRnaD95esCjmTcO4bQ0=; b=JCU18FAxg7nu6l9lhEkoaxv0KV
+	7+pJRiSCfziGr7147+/+E4Ipg2S/AANDSzYan+tGksSc95qYTfDk8xnde8WWKZu//8mWiYrIIM51m
+	qbkjVv64/ka7SeD/iDN4hvw9PRH46nD/TrfeRsD/G8mhVzkvNg7bCOYRK4Cy4ZeCl5YV8b8PLNDsP
+	dcBwhOxrrlFP8DNUNogMmado52wu8tbwA2eZaffSMVKRQXGSG06OIk1JSVDwuGhSgKdKXrtJR4MwV
+	zjNMPfrlXcpMriDOyrlm+Mtk41BOn3IVD4sQGYJYaj665RsJwRNfne2kk1ilqjw2/zV768qO/3fpG
+	xf276T4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBbA2-003O5v-R5; Wed, 13 Jul 2022 12:08:10 +0000
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
+	id 1oBbDl-003PED-03; Wed, 13 Jul 2022 12:12:01 +0000
+Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBb9n-003O0r-4l; Wed, 13 Jul 2022 12:08:00 +0000
-Received: by mail-yb1-xb2a.google.com with SMTP id 6so18899226ybc.8;
-        Wed, 13 Jul 2022 05:07:53 -0700 (PDT)
+	id 1oBbDZ-003PA8-9U; Wed, 13 Jul 2022 12:11:50 +0000
+Received: by mail-qt1-x830.google.com with SMTP id r2so11669884qta.0;
+        Wed, 13 Jul 2022 05:11:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=H60c6BQz+0PUGxMp0vbXoiihGTO7ZBPYPm+08N4mLfI=;
-        b=cFwaO0bDU4Rlt7N9UDqzRHYc/L/LXwPsecY5KlQfSKmfeHbUGfJju92GNvM+QXRy/A
-         MfFCd9EiEFbUqGG0Dk3UDyeTjK2mKB+J26YUCLsjwjV1AqSW8ALXoZ+QUWDjp8FbHEeY
-         dwnLTjlohJXN4MlqdlflbgJKO0LHlSOv3alwCbci2ARAUzjG69r4BZ9OGDCDuqQtQA7F
-         3fzpmlRGWBNYqAxA0gsKxiBlo4ApaOY7UboYG9JKS2cowDCyOJujzJrS984DN9KyXzOA
-         PlokWUEqgVaq6a1qwFa+85+pBBg3DMQ+qHXOl22B3dO6jAPN+bwQ7BsHm3cmgJ/HPnXL
-         vfmQ==
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=mQ/hcGr/I/V5gOxH9+3HtKc0WRnaD95esCjmTcO4bQ0=;
+        b=FojwuT6sStHpE+uVYaLsaIIQad4I8HewXV7sDZTXbpuvLEXufIWG1ufnuRB4cMYyrz
+         kPOha1HctNi444O/CECbg2EoAhrjZmGgxNVFHD7lVLdK/PjolGofJE+qgGrOlW1woIlQ
+         JYGpYoVSxSjDrFE5ImvMQW+sEj+hNdRAYU6+/EU7ibVtPwJOake8jcjZ5xTfPSsdChIZ
+         rfKZQzXtJzQlYU821MXv/QWkkZhUhL5xT/bTMvVhfQeeO9MCgoXK8WnblnnfdxOagYex
+         G8U5s7/vMXpdFqGlPBx6CZMa0+adjTZHfVn/kHN+8qI4SM8geqkQmo8uZnFT0urSGFo/
+         XVMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=H60c6BQz+0PUGxMp0vbXoiihGTO7ZBPYPm+08N4mLfI=;
-        b=IblpUAEL77p1veftdjVryX6fsEkRnyYMBgl+Nnim/hBZCDYh5qG2UYIhZxJQFpRa0Q
-         Q2a+Ixvv1Jyn6fRNdOSif8wGMkS98cc69DxzxmCED382QphLzM5MIvEHNAz+CZMxZcmc
-         SBwca3vmcT/PrEm+pgnKmTjl5LAi21Rrmoq9mxVd73uhizRYlFYbzPE4E0N1Yf75lLyB
-         0gMDzcjTOSjlhZ7EJ2OJothiBn7fUp3b2hy4HjTzBUw6lwl/+bvmroFa6m6NIbiyVrs9
-         WoLyXocLNE2QcyxPggIFyt5XajFOBfd8Mc4VzT+jY0pJRGr9cHPAwS9AuMMrniX7vKkh
-         Iycw==
-X-Gm-Message-State: AJIora/0OPGBfBGFUKNizpZu7pfanuo2r/eY8HNqVauyTyJhbzYDKt2+
-	6g4WCgVLgBmgv33s8Mb3qDaSkTFnvgNZhKzyzYs=
-X-Google-Smtp-Source: AGRyM1sbQCBjmYhKYL+xb2AwlOmpuB0R1EP+WnPrRn0L3M4TSuIwm0awKcRUCK7kwFw6PIL77qpLuzj23J+O5rqZCJA=
-X-Received: by 2002:a25:858e:0:b0:66e:4898:63e2 with SMTP id
- x14-20020a25858e000000b0066e489863e2mr3559399ybk.296.1657714072552; Wed, 13
- Jul 2022 05:07:52 -0700 (PDT)
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=mQ/hcGr/I/V5gOxH9+3HtKc0WRnaD95esCjmTcO4bQ0=;
+        b=pBPDEaVygpsQhpkEgE04UOCF0fSSCbCt/extCkKsV0Qz0kdsYIatA/t5OBrpTDLcM4
+         bdWD9jeawxY8mZ4fF9DVwZYkhpQdkLcMOmiCNErHfr6wr0UERjlGsyNwwaUfSEE/vBqD
+         t+SDXwi1qq8YM5vpY/OIS8DtevwOauceyjESpvun+nvCZ+roX6KbxtmlAc7UenIwwkWy
+         PCFfVH4Ww+cBrQUzufH8C4jQI/8Zh6793eOtajhtLPyLebIhq5Jo+TD80oc6IDaeqOTU
+         p5N6TQ14Yo9oe2ZozRkoiAcMoQsDBtCjIG705GDneB0cN1tZ9zBDc+228Zotyz9XWx6q
+         53IA==
+X-Gm-Message-State: AJIora+fvrukOSiMhtprVTqMdAgV2+MnD+iCShCdHFqHgR0Z6cLsiOHz
+	zUyKBuBpyp9oNgWbK/bfk9I=
+X-Google-Smtp-Source: AGRyM1tQvQdoyjFYZfS1liJSgb+wrsI4bYFX7V+tmV4z8j3UvfsmISCnmKU2aLt9KbpEZgAIYIuBuQ==
+X-Received: by 2002:ac8:5cd3:0:b0:316:f772:f0b8 with SMTP id s19-20020ac85cd3000000b00316f772f0b8mr2587700qta.162.1657714305566;
+        Wed, 13 Jul 2022 05:11:45 -0700 (PDT)
+Received: from [192.168.43.228] ([193.86.92.180])
+        by smtp.gmail.com with ESMTPSA id h13-20020a05620a400d00b006b5bbd8cb92sm630846qko.55.2022.07.13.05.11.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 13 Jul 2022 05:11:44 -0700 (PDT)
+Message-ID: <c8fdfa7b-f4eb-8308-4064-b868ce945e3a@gmail.com>
+Date: Wed, 13 Jul 2022 14:11:39 +0200
 MIME-Version: 1.0
-References: <20220704053901.728-1-peterwu.pub@gmail.com> <20220704053901.728-14-peterwu.pub@gmail.com>
- <CAHp75VdwEc9AW1w8ejsxkw+sBTF1dumd99QyzTY9BZaXiViRWQ@mail.gmail.com> <CABtFH5K-2+2hbpvpq2nPE5AsznkQxZF2r3MVC64Q39DJhVuUtA@mail.gmail.com>
-In-Reply-To: <CABtFH5K-2+2hbpvpq2nPE5AsznkQxZF2r3MVC64Q39DJhVuUtA@mail.gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Wed, 13 Jul 2022 14:07:15 +0200
-Message-ID: <CAHp75VevDwdAKLYEWJgnMDvzuPuFibLuVqH-GKazEOT76wM6_A@mail.gmail.com>
-Subject: Re: [PATCH v4 13/13] video: backlight: mt6370: Add Mediatek MT6370 support
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
-	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH net v4 1/3] stmmac: dwmac-mediatek: fix clock issue
+Content-Language: en-US
+To: Biao Huang <biao.huang@mediatek.com>, David Miller <davem@davemloft.net>
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, macpaul.lin@mediatek.com,
+ Jisheng Zhang <jszhang@kernel.org>,
+ Mohammad Athari Bin Ismail <mohammad.athari.ismail@intel.com>
+References: <20220713101002.10970-1-biao.huang@mediatek.com>
+ <20220713101002.10970-2-biao.huang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220713101002.10970-2-biao.huang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_050755_222490_5294AFA9 
-X-CRM114-Status: GOOD (  13.99  )
+X-CRM114-CacheID: sfid-20220713_051149_380934_7B46DD76 
+X-CRM114-Status: GOOD (  24.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,54 +100,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 13, 2022 at 12:53 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B47=E6=
-=9C=885=E6=97=A5 =E9=80=B1=E4=BA=8C =E6=B8=85=E6=99=A85:14=E5=AF=AB=E9=81=
-=93=EF=BC=9A
-> > On Mon, Jul 4, 2022 at 7:43 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
 
-Please, remove unneeded context when replying!
 
-...
+On 13/07/2022 12:10, Biao Huang wrote:
+> The pm_runtime takes care of the clock handling in current
+> stmmac drivers, and dwmac-mediatek implement the
+> mediatek_dwmac_clks_config() as the callback for pm_runtime.
+> 
+> Then, stripping duplicated clocks handling in old init()/exit()
+> to fix clock issue in suspend/resume test.
+> 
+> As to clocks in probe/remove, vendor need symmetric handling to
+> ensure clocks balance.
+> 
+> Test pass, including suspend/resume and ko insertion/remove.
+> 
+> Fixes: 3186bdad97d5 ("stmmac: dwmac-mediatek: add platform level clocks management")
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> ---
+>   .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 49 ++++++++-----------
+>   1 file changed, 21 insertions(+), 28 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> index 6ff88df58767..ca8ab290013c 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> @@ -576,32 +576,7 @@ static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
+>   		}
+>   	}
+>   
+> -	ret = clk_bulk_prepare_enable(variant->num_clks, plat->clks);
+> -	if (ret) {
+> -		dev_err(plat->dev, "failed to enable clks, err = %d\n", ret);
+> -		return ret;
+> -	}
+> -
+> -	ret = clk_prepare_enable(plat->rmii_internal_clk);
+> -	if (ret) {
+> -		dev_err(plat->dev, "failed to enable rmii internal clk, err = %d\n", ret);
+> -		goto err_clk;
+> -	}
+> -
+>   	return 0;
+> -
+> -err_clk:
+> -	clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
+> -	return ret;
+> -}
+> -
+> -static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
+> -{
+> -	struct mediatek_dwmac_plat_data *plat = priv;
+> -	const struct mediatek_dwmac_variant *variant = plat->variant;
+> -
+> -	clk_disable_unprepare(plat->rmii_internal_clk);
+> -	clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
+>   }
+>   
+>   static int mediatek_dwmac_clks_config(void *priv, bool enabled)
+> @@ -643,7 +618,6 @@ static int mediatek_dwmac_common_data(struct platform_device *pdev,
+>   	plat->addr64 = priv_plat->variant->dma_bit_mask;
+>   	plat->bsp_priv = priv_plat;
+>   	plat->init = mediatek_dwmac_init;
+> -	plat->exit = mediatek_dwmac_exit;
+>   	plat->clks_config = mediatek_dwmac_clks_config;
+>   	if (priv_plat->variant->dwmac_fix_mac_speed)
+>   		plat->fix_mac_speed = priv_plat->variant->dwmac_fix_mac_speed;
+> @@ -712,13 +686,32 @@ static int mediatek_dwmac_probe(struct platform_device *pdev)
+>   	mediatek_dwmac_common_data(pdev, plat_dat, priv_plat);
+>   	mediatek_dwmac_init(pdev, priv_plat);
+>   
+> +	ret = mediatek_dwmac_clks_config(priv_plat, true);
+> +	if (ret)
+> +		return ret;
+> +
+>   	ret = stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
+>   	if (ret) {
+>   		stmmac_remove_config_dt(pdev, plat_dat);
+> -		return ret;
+> +		goto err_drv_probe;
+>   	}
+>   
+>   	return 0;
+> +
+> +err_drv_probe:
+> +	mediatek_dwmac_clks_config(priv_plat, false);
+> +	return ret;
+> +}
+> +
+> +static int mediatek_dwmac_remove(struct platform_device *pdev)
+> +{
+> +	struct mediatek_dwmac_plat_data *priv_plat = get_stmmac_bsp_priv(&pdev->dev);
+> +	int ret;
+> +
+> +	ret = stmmac_pltfr_remove(pdev);
+> +	mediatek_dwmac_clks_config(priv_plat, false);
+> +
 
-> > > +               brightness_val[0] =3D (brightness - 1) & MT6370_BL_DI=
-M2_MASK;
-> > > +               brightness_val[1] =3D (brightness - 1)
-> > > +                                   >> fls(MT6370_BL_DIM2_MASK);
-> >
-> > Bad indentation. One line?
->
-> Well... if indent to one line, it will be over 80 characters(or called co=
-lumns?)
-> From my understanding, it is not allowed, right??
+We enalbe the clocks after calling stmmac_probe_config_dt(), so we should 
+disable them before calling stmmac_pltfr_remove(), correct?
 
-It's allowed to some extent.Use your common sense.
-Here it's obviously broken indentation.
+Other then that:
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-...
-
-> > > +               prop_val =3D (ilog2(roundup_pow_of_two(prop_val)) + 1=
-) >> 1;
-> >
-> > Isn't something closer to get_order() or fls()?
->
-> I will revise it to "(get_order(prop_va * PAGE_SIZE) + 1) / 2" and
-> this change is meet your expectations??
-
-Nope. Try again. What about fls()?
-
-...
-
-> > > +       props->max_brightness =3D min_t(u32, brightness,
-> > > +                                     MT6370_BL_MAX_BRIGHTNESS);
-> >
-> > One line?
->
->  Ditto, it will be over 80 characters...
-
-As per above.
-
---=20
-With Best Regards,
-Andy Shevchenko
+> +	return ret;
+>   }
+>   
+>   static const struct of_device_id mediatek_dwmac_match[] = {
+> @@ -733,7 +726,7 @@ MODULE_DEVICE_TABLE(of, mediatek_dwmac_match);
+>   
+>   static struct platform_driver mediatek_dwmac_driver = {
+>   	.probe  = mediatek_dwmac_probe,
+> -	.remove = stmmac_pltfr_remove,
+> +	.remove = mediatek_dwmac_remove,
+>   	.driver = {
+>   		.name           = "dwmac-mediatek",
+>   		.pm		= &stmmac_pltfr_pm_ops,
 
