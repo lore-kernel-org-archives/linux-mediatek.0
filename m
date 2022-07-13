@@ -4,86 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0C68C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 10:54:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B20FDC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 11:18:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DtbNdnUc44YIlF6TRQBufQhc3QEyoL5MrmX0wLT8k54=; b=Ot2IbxZRO+N91YOOw0p+/QAgGe
-	wBqxFTTDgG45itk/H1WIRwFXCR0vrWF3dS6Uf3kSx27qf66vbgqeVBjby+wCGVQPQXleyRigmrr3A
-	iqLdezdVW1+BLyz9NchGIWtNlK6ssc39Ni18H/VOZJ3z7io2O3cqAQSWRG+ADpnrfFq6RwCfG5wlv
-	1ujYlX3FX7kdyqmR58GwP7AA8zw9OFqqdDmiJWL/ew5RA1G0yY7ED9v+F536CviajdrCM+Ph4mLSg
-	5nZ6JmhdjI6is1WX9fABGDS4QRiqw/lBXsC/0Gd0Rqmdw6YsX0i7qR9NYyFIPsR1ebL8mwW2o01E0
-	WSNtHJPg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4mGpmY4MkkVjHm+bWt3gaXUm0x8BB83BcoKT8UY9fBM=; b=V+kL0R2AsOm+kOedkQrpDisCMw
+	jwrLUcJ3ABlepJJQfK6F1woQnun/iqCtsiVWjV+ciW39Mzg2QPUiTjKVfR70C/sL59Y2p6LaXu5HY
+	n/GPBOE7C398ttCuB1/6/4839+D3wW+lBAD36jdsFeprhKiR25ZjFKeLWNKlKaj9q0v0GOi3MqG/e
+	IPUwLnqqsx7L21dxQnmrLCpy6nP//7/KohNGyLLIaZrL9m4Dz20+VJVPMhvDMFUQo6Lf7h86Qc1h2
+	gDX9M2Dcm8u3Ea/+mWeTkihwKNQ4hTOzsMSKvJAnb/jJahxaNOaaMkJnkU7L9ojc/gZpwFb/EyazT
+	HsYTR/Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBa09-002pl8-6U; Wed, 13 Jul 2022 10:53:53 +0000
-Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
+	id 1oBaNj-00328F-Sn; Wed, 13 Jul 2022 11:18:15 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBZzw-002pc4-EM; Wed, 13 Jul 2022 10:53:41 +0000
-Received: by mail-qt1-x830.google.com with SMTP id h22so1154458qta.3;
-        Wed, 13 Jul 2022 03:53:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=DtbNdnUc44YIlF6TRQBufQhc3QEyoL5MrmX0wLT8k54=;
-        b=Gyo9ib/QcIdb16MTJkh9cbA18WvicHplsE0W3sU861LHrnSg07BYqH7gJMgBhngnKz
-         HcevAv8xN2yoj76j2VtRiK2gtKJVtYu4yl5/zly8b+NniYgUqKX802rsbScX12+DWFC4
-         f0KpI6KMxAijdVif10K4Yr7TL49g59ksBWPF+FSCOp555hmLxPKqliprXs0MwfV8RcVf
-         ETobhf/JgYbtx1rqJ3zRweW6zFE9EFO0mg+t95Av28GUjrByGd6Dv732KM7J1jq47j2b
-         8+Q496cjjPl2IE4bcmCDO+D9bk6yPPzE9JlJzEBLhQ3fyJGOnWiUMtJcmMXwpI3pw5T7
-         noUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=DtbNdnUc44YIlF6TRQBufQhc3QEyoL5MrmX0wLT8k54=;
-        b=yJM5Vy2EpoU7ehbEo9yfSFXCuf/fr+Hotqdva3jOhpyk7PWQOokt/5hFewMbSyO9R0
-         eGfX2hjHn2GVaBPluy/jUm9UuD9u2W0z3M0vM7oBchoFrPhdMeIREGY9hL1ccb6VFEAT
-         kAWjY18NljQTCzstBURdYSJeB8OQuRmjTe+sqUWkEb9aSKzHb0TvV0RnntYm5p7Ldyfa
-         n0aycVJI2VDSeEMWda0bXS0guzhvZyUYe4jO7hRBfmWrhx/hjkJ75P9nnruuiV3RX2kH
-         veYx7JnYL6GJf2on0Rti5TefNd1X27kF7nZDrvlOjRxp62OgGaAlMsno+/p4Z0D9+aVD
-         scuQ==
-X-Gm-Message-State: AJIora+wHrtsTfR0nevwChH5HJIPcrjr1wIe+s3SdvpIIBfL6s5uHGJU
-	O0EnfpHfejIPrHnyc1qhUNoXo/KFINJnpOznvPk=
-X-Google-Smtp-Source: AGRyM1tW+7suTTjQXEmy3r5fN1iawLpKRhb3LKUTHZNBYRUSHZBiLtacjGwqLvPQVKDWfDQQGVrgegFbKhRRnQe+Kts=
-X-Received: by 2002:a05:622a:1755:b0:31e:cbdf:2e32 with SMTP id
- l21-20020a05622a175500b0031ecbdf2e32mr1387023qtk.548.1657709618139; Wed, 13
- Jul 2022 03:53:38 -0700 (PDT)
+	id 1oBaL2-0030KZ-MK; Wed, 13 Jul 2022 11:15:30 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DDE1D66019C5;
+	Wed, 13 Jul 2022 12:15:16 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657710917;
+	bh=B3pFqcpJL4uwSDHR2Pb8ZpJXQWecgKAmffWdGwqPWmw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=i+41z0e13diW6eFHtsCimC6PSbECS2XIIbU2wvuzy/1wbayHdEOfKVgNWd2oNg0qj
+	 qv2v4xUtxiienjybifjfLlGfLhdWHJOrvSk8vgNeMUiQhbEBWxpyCXxu3H5KtSha9T
+	 fPZp4YHYxxME11uwfIcrzdYRPmoutuQ/wZk3lhmUOynLZyQMhxMVJiJa2srXcbD0Jv
+	 LglwMPdn195bx+c3Mzae9vS7RsNSrddsBlQJXJs+F+yATDaQFpkFB9Av393nSQ89GS
+	 eTQMZvUZGbyN/zqFHhxoTca0FDqgBesefKUifU3hKJtAvU+gAbLchho3UAcqA64S/N
+	 z+DU3NNXVLobA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: myungjoo.ham@samsung.com
+Cc: kyungmin.park@samsung.com,
+	cw00.choi@samsung.com,
+	matthias.bgg@gmail.com,
+	lgirdwood@gmail.com,
+	broonie@kernel.org,
+	jia-wei.chang@mediatek.com,
+	johnson.wang@mediatek.com,
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] PM / devfreq: mtk-cci: Handle sram regulator probe deferral
+Date: Wed, 13 Jul 2022 13:15:11 +0200
+Message-Id: <20220713111511.115007-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-References: <20220704053901.728-1-peterwu.pub@gmail.com> <20220704053901.728-14-peterwu.pub@gmail.com>
- <CAHp75VdwEc9AW1w8ejsxkw+sBTF1dumd99QyzTY9BZaXiViRWQ@mail.gmail.com>
-In-Reply-To: <CAHp75VdwEc9AW1w8ejsxkw+sBTF1dumd99QyzTY9BZaXiViRWQ@mail.gmail.com>
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-Date: Wed, 13 Jul 2022 18:53:26 +0800
-Message-ID: <CABtFH5K-2+2hbpvpq2nPE5AsznkQxZF2r3MVC64Q39DJhVuUtA@mail.gmail.com>
-Subject: Re: [PATCH v4 13/13] video: backlight: mt6370: Add Mediatek MT6370 support
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
-	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_035340_504899_F568775E 
-X-CRM114-Status: GOOD (  25.74  )
+X-CRM114-CacheID: sfid-20220713_041529_003657_86436F5D 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,151 +78,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
-Thanks for your reply! I have some questions want to ask you below.
+If the regulator_get_optional()	call for the SRAM regulator returns
+a probe deferral, we must bail out and retry probing later: failing
+to do this will	produce	unstabilities on platforms requiring the
+handling for this regulator.
 
-Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B47=E6=9C=
-=885=E6=97=A5 =E9=80=B1=E4=BA=8C =E6=B8=85=E6=99=A85:14=E5=AF=AB=E9=81=93=
-=EF=BC=9A
->
-> On Mon, Jul 4, 2022 at 7:43 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> >
-> > From: ChiaEn Wu <chiaen_wu@richtek.com>
-> >
-> > Add Mediatek MT6370 Backlight support.
->
-> ...
->
-> > +         This driver can also be built as a module. If so the module
->
-> If so,
->
-> > +         will be called "mt6370-backlight.ko".
->
-> No ".ko" part.
->
-> ...
->
-> > +#include <linux/gpio/driver.h>
->
-> Can you elaborate on this?
->
-> > +#include <linux/kernel.h>
-> > +#include <linux/log2.h>
-> > +#include <linux/minmax.h>
-> > +#include <linux/module.h>
->
-> > +#include <linux/of.h>
->
-> Can you elaborate on this?
->
-> > +#include <linux/platform_device.h>
-> > +#include <linux/regmap.h>
->
-> Missed mod_devicetable.h.
->
-> ...
->
-> > +               brightness_val[0] =3D (brightness - 1) & MT6370_BL_DIM2=
-_MASK;
-> > +               brightness_val[1] =3D (brightness - 1)
-> > +                                   >> fls(MT6370_BL_DIM2_MASK);
->
-> Bad indentation. One line?
+Fixes: b615b00c42da ("PM / devfreq: mediatek: Introduce MediaTek CCI devfreq driver")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/devfreq/mtk-cci-devfreq.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-Well... if indent to one line, it will be over 80 characters(or called colu=
-mns?)
-From my understanding, it is not allowed, right??
+diff --git a/drivers/devfreq/mtk-cci-devfreq.c b/drivers/devfreq/mtk-cci-devfreq.c
+index 71abb3fbd042..e5458ada5197 100644
+--- a/drivers/devfreq/mtk-cci-devfreq.c
++++ b/drivers/devfreq/mtk-cci-devfreq.c
+@@ -291,9 +291,13 @@ static int mtk_ccifreq_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	drv->sram_reg = devm_regulator_get_optional(dev, "sram");
+-	if (IS_ERR(drv->sram_reg))
++	if (IS_ERR(drv->sram_reg)) {
++		ret = PTR_ERR(drv->sram_reg);
++		if (ret == -EPROBE_DEFER)
++			goto out_free_resources;
++
+ 		drv->sram_reg = NULL;
+-	else {
++	} else {
+ 		ret = regulator_enable(drv->sram_reg);
+ 		if (ret) {
+ 			dev_err(dev, "failed to enable sram regulator\n");
+-- 
+2.35.1
 
->
-> ...
->
-> > +       if (priv->enable_gpio)
->
-> Dup check.
->
-> > +               gpiod_set_value(priv->enable_gpio, brightness ? 1 : 0);
->
-> ...
->
-> > +       brightness =3D brightness_val[1] << fls(MT6370_BL_DIM2_MASK);
-> > +       brightness +=3D (brightness_val[0] & MT6370_BL_DIM2_MASK);
->
-> Too many parentheses.
->
-> ...
->
-> > +               /*
-> > +                * prop_val =3D  1      -->  1 steps --> 0x00
-> > +                * prop_val =3D  2 ~  4 -->  4 steps --> 0x01
-> > +                * prop_val =3D  5 ~ 16 --> 16 steps --> 0x10
-> > +                * prop_val =3D 17 ~ 64 --> 64 steps --> 0x11
-> > +                */
-> > +               prop_val =3D (ilog2(roundup_pow_of_two(prop_val)) + 1) =
->> 1;
->
-> Isn't something closer to get_order() or fls()?
-
-I will revise it to "(get_order(prop_va * PAGE_SIZE) + 1) / 2" and
-this change is meet your expectations??
-
->
-> ...
->
-> > +       props->max_brightness =3D min_t(u32, brightness,
-> > +                                     MT6370_BL_MAX_BRIGHTNESS);
->
-> One line?
-
- Ditto, it will be over 80 characters...
-
->
-> ...
->
-> > +       val =3D 0;
->
-> Do you need this here?
->
-> > +       prop_val =3D 0;
->
-> Useless.
->
-> > +       ret =3D device_property_read_u8(dev, "mediatek,bled-channel-use=
-",
-> > +                                     &prop_val);
-> > +       if (ret) {
-> > +               dev_err(dev, "mediatek,bled-channel-use DT property mis=
-sing\n");
-> > +               return ret;
-> > +       }
-> > +
-> > +       if (!prop_val || prop_val > MT6370_BL_MAX_CH) {
-> > +               dev_err(dev,
-> > +                       "No channel specified or over than upper bound =
-(%d)\n",
-> > +                       prop_val);
-> > +               return -EINVAL;
-> > +       }
->
-> ...
->
-> > +static int mt6370_bl_probe(struct platform_device *pdev)
-> > +{
-> > +       struct mt6370_priv *priv;
-> > +       struct backlight_properties props =3D {
-> > +               .type =3D BACKLIGHT_RAW,
-> > +               .scale =3D BACKLIGHT_SCALE_LINEAR,
-> > +       };
-> > +       int ret;
->
->   struct device *dev =3D &pdev->dev;
->
-> will save you a few LoCs.
->
-> --
-> With Best Regards,
-> Andy Shevchenko
-
-Best regards,
-ChiaEn Wu
 
