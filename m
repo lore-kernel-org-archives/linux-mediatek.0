@@ -4,70 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97211C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 20:50:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10D87C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 22:05:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZJrfYHYJOMP34dg1nE/qlVp4YYkhc3t1cHGmUC0OQgk=; b=CJl/cBOvBM/0qiwoh2eB8hJJ+a
-	bYoEqRv8VKv2D3GzR7rZ6/ptXue7mkEsW7Br0AJnWM2+UW7AmJwhLJouGlkBe6xj3LyY/kPQN10ay
-	ghvNOyJJ4IeBBPbVpq0rRd1IRGQzIMeI5W9XQvVzYzIh7mKW0kiAUOPNjpRwW+T05y5hPZwioHKwi
-	jCT6S6xCAekXNTJ0ld640Rwvy2XiSwJVlO75pXES2ITdK5h5uTSa9O0qzm3/j8OWAIHTxAc6oN5ui
-	8ziH+kb0gLv1gt886j9sST3tRFJ1ASCMbbqXoougR+WkRhFXO0uvcV2YKkaXRzP3RlbKpd3aZ0j15
-	dcMM7WaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uOBKq9yzkPX8ihcF5QdXtzsKbLEa/eP+OCHtDKfv5N0=; b=mjhUQpGjG4xp2R5GHcgV9pHlZO
+	PUGXfZBX2cz76+El0pX51u3jj/MVWl3vhh949salV9p86tCeVEGpMuWnvLv4EgZM2qG06BlDOD3YU
+	s1smz+Z633hwFY55aCiT/6wXGd7GOBQBBCi8KdZBuxXnTFUgNKP9TD5YgO+JQgEvsAeWpioEKO8Lg
+	c25kZH/mqfqDlbspnvUTdRqlI3D16XZRRBSDhHcDDM7L0VJyKpkjZvrb5WgPUwHLFoV5nIhclWOTh
+	6RJSHBdKRavJ4KZSodvCUXnbTVfVvNSrX/gz73ZLLt1PyHwu1gHgVU1a2vlaop4pQTb2EkCKrO7Ij
+	SnYaubJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBjJi-007oto-PI; Wed, 13 Jul 2022 20:50:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oBkUI-008PUM-3j; Wed, 13 Jul 2022 22:05:42 +0000
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBjJd-007onU-4N
-	for linux-mediatek@lists.infradead.org; Wed, 13 Jul 2022 20:50:41 +0000
-X-UUID: 6d8c946007494a458d57bafc012604a3-20220713
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:cb0514c7-5567-4f0d-b91e-561fc355431a,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:4b5ee732-b9e4-42b8-b28a-6364427c76bb,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 6d8c946007494a458d57bafc012604a3-20220713
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 393678440; Wed, 13 Jul 2022 13:50:25 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 14 Jul 2022 04:00:22 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 14 Jul 2022 04:00:21 +0800
-From: <sean.wang@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
-	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
-	<robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
-	<posh.sun@mediatek.com>, <ted.huang@mediatek.com>,
-	<Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
-	<steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
-	<abhishekpandit@google.com>, <michaelfsun@google.com>, <mcchou@chromium.org>,
-	<shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Jing
- Cai" <jing.cai@mediatek.com>
-Subject: [PATCH v2] Bluetooth: btusb: mediatek: fix shutdown failure during runtime suspend
-Date: Thu, 14 Jul 2022 04:00:20 +0800
-Message-ID: <3f1ee6737f092ae6312a7ae6079d341b81c791a5.1657670957.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+	id 1oBkU4-008POU-CV; Wed, 13 Jul 2022 22:05:29 +0000
+Received: by mail-pg1-x534.google.com with SMTP id q82so11656169pgq.6;
+        Wed, 13 Jul 2022 15:05:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=uOBKq9yzkPX8ihcF5QdXtzsKbLEa/eP+OCHtDKfv5N0=;
+        b=hk176+zLssVNRft8dirHFUQSzDMI0whOu6+6yXw9L8L7d0wLw7U16maq1hJRXPZTq/
+         Gz/tk/9k5ncT0FkQbbwWFHn+Pbt8O7O5TawARP5Ey5PdgOfYEEgoTvfNvjwaKlC2Fp+u
+         /yc6TfI2wpFGrTa7ELUtOTilQC8x/WO/N5T2D8R57dpFGws1xuiH5hYBGa0wwi3eo4hN
+         f5S77L0OFyouEIHVUdo1qtgyMETHSDVdDO9i7srid340U9uCEKObdUPpsjKnJGrtF46J
+         gnb7/zaBOGh40U273oDZM0oA/ohc98tEWGZ+o/mSmHyWI2/5r6+mUVZip7FZc9yew0w6
+         weVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=uOBKq9yzkPX8ihcF5QdXtzsKbLEa/eP+OCHtDKfv5N0=;
+        b=FO/wJwVU1QxppT3V5wF0tGmeashySEexwXDY+h+qebHtZ0pcCzKxd0rS+AYRBzRIOP
+         ShAxdlI4RKP4ADXryqCSed8ayeJuOPz02sRZrfSKwhzapcR6aAPmzmem8Kgqm+61gVPt
+         q/ukfL6bwPVCa6fO3FMbGWdKfqbsaGNDH1Yl/ZESfD2fsBZFU6cGOFsFuMUtkShmRkY2
+         eGEg36ZkhxsDsE35UdL3UywUJHx5QFlw+ygUtTweSU5EWS6Y3JrjmHUuD+nJ+sZjVT+S
+         aYuP/6zoNH79i8bB7+k9+Hu2X2oRvWtYJE9xlX72Cdjncjo57X/+51DfkNua9DLBXTJy
+         +Jwg==
+X-Gm-Message-State: AJIora9Synz/WxpLk5q9/du67ojzD/Z8JJ46/xUUrSnQAYjtLknAjZgf
+	Tp4Y1t/LwLHTQF7ody/mbHo=
+X-Google-Smtp-Source: AGRyM1uFY5sq0uRq7vOEVCZc6Mt9dWUHaZVFaEt9VTaYlh+WdsLMFRrjoUXRSVp/xtwuLE8Bc1hpsw==
+X-Received: by 2002:a65:4501:0:b0:3fc:4895:283b with SMTP id n1-20020a654501000000b003fc4895283bmr4726104pgq.231.1657749927276;
+        Wed, 13 Jul 2022 15:05:27 -0700 (PDT)
+Received: from [10.67.48.245] ([192.19.223.252])
+        by smtp.googlemail.com with ESMTPSA id x7-20020a634847000000b0040c97f0057dsm7946127pgk.17.2022.07.13.15.05.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 13 Jul 2022 15:05:26 -0700 (PDT)
+Message-ID: <fb4f4444-20c2-0e35-bb83-79a419ec87a7@gmail.com>
+Date: Wed, 13 Jul 2022 15:05:23 -0700
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH] arm64: Kconfig.platforms: Re-organized Broadcom menu
+Content-Language: en-US
+To: Geert Uytterhoeven <geert@linux-m68k.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Florian Fainelli <f.fainelli@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, SoC Team <soc@kernel.org>,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ william.zhang@broadcom.com, anand.gore@broadcom.com,
+ Olof Johansson <olof@lixom.net>, Catalin Marinas <catalin.marinas@arm.com>,
+ Will Deacon <will@kernel.org>, open list <linux-kernel@vger.kernel.org>,
+ Shawn Guo <shawnguo@kernel.org>, Li Yang <leoyang.li@nxp.com>,
+ Wei Xu <xuwei5@hisilicon.com>, Andrew Lunn <andrew@lunn.ch>,
+ Gregory Clement <gregory.clement@bootlin.com>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
+ Matthias Brugger <mbrugger@suse.com>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ "moderated list:ARM/SAMSUNG EXYNOS ARM ARCHITECTURES"
+ <linux-samsung-soc@vger.kernel.org>, Dinh Nguyen <dinguyen@kernel.org>
+References: <20220712164235.40293-1-f.fainelli@gmail.com>
+ <CAK8P3a2QrYbWOqV+CG-W0ZkzW6ORgw8R6Dv-L3o2ZAtJs-B3Kw@mail.gmail.com>
+ <0131e1d6-09c0-31a4-5b9d-0e2fc49d61ac@linaro.org>
+ <CAMuHMdWDDY_72y3WYt401hG122xg1s7_VRCG9Vyhhkzco-nBYw@mail.gmail.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <CAMuHMdWDDY_72y3WYt401hG122xg1s7_VRCG9Vyhhkzco-nBYw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_135037_196178_6FB125F8 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20220713_150528_475060_D0A68022 
+X-CRM114-Status: GOOD (  23.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,57 +108,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On 7/13/22 02:17, Geert Uytterhoeven wrote:
+> Hi Krzysztof,
+> 
+> On Wed, Jul 13, 2022 at 10:40 AM Krzysztof Kozlowski
+> <krzysztof.kozlowski@linaro.org> wrote:
+>> On 13/07/2022 10:25, Arnd Bergmann wrote:
+>>> On Tue, Jul 12, 2022 at 6:42 PM Florian Fainelli <f.fainelli@gmail.com> wrote:
+>>>> There are now multiple Broadcom SoCs supported so group them under their
+>>>> own menu such that the selection is visually more appealing and we can
+>>>> easily add new platforms there in the future. This allows us to move
+>>>> ARCH_BRCMSTB back to its siblings.
+>>>>
+>>>> No functional changes introduced.
+>>>>
+>>>> Signed-off-by: Florian Fainelli <f.fainelli@gmail.com>
+>>>> ---
+>>>>
+>>>> Note this is based on "arm64: bcmbca: add arch bcmbca machine entry"
+>>>
+>>> Hi Florian,
+>>>
+>>> So far, we have tried to keep the Kconfig.platforms file rather coarse-grained,
+>>> mainly limiting it to company names and high-level families, but avoiding
+>>> sub-menus or adding too many sub-families.
+>>>
+>>> If we add per-vendor submenus, we should probably first decide how we
+>>> want to structure this across vendors. I've added maintainers and lists to
+>>> Cc for a couple of the ones that are in a similar situation.
+>>>
+>>> I can see a couple of ways we can do this:
+>>>
+>>> a) keep the list of platforms as short as possible, combining related
+>>>    SoC families from a single vendor wherever possible, but no sub-menus
+>>>    (same as today)
+>>>
+>>> b) Always use sub-menus when there is more than one family, but
+>>>     keep relatively coarse platform selection.
+>>>
+>>> c) Use sub-menus and also move to a more fine-grained SoC
+>>>      selection, similar to what we have on 32-bit arm.
+>>>
+>>> I would not really want to go to c), but a) and b) both make sense to
+>>> me as long as do it consistently across all platforms.
+>>>
+>>> Any other ideas or opinions?
+>>
+>> Whatever we decide here, the SoC can override in drivers/soc, just like
+>> Renesas did. I think Renesas chose option c), but made it in
+>> drivers/soc. I would vote to have consistent policy, so if arch/arm64 is
+>> a) or b), sub-archs should not redefine it in drivers/soc.
+> 
+> We did so because of the "only a single symbol in
+> arch/arm64/Kconfig.platforms"-policy.
 
-Fix the WMT command timed out during Bluetooth was being shutdown while USB
-was in runtime suspend state.
+I was not aware of that rule.
 
-Fixes: a1c49c434e15 ("Bluetooth: btusb: Add protocol support for MediaTek MT7668U USB devices")
-Co-developed-by: Jing Cai <jing.cai@mediatek.com>
-Signed-off-by: Jing Cai <jing.cai@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/bluetooth/btusb.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+It is a bit of a mixed situation with Broadcom SoCs but in essence, each 
+Kconfig entry denotes a deeply different SoC architecture at the memory 
+subsystem, bus, security or product space that you might not want to 
+enable in your kernel. There is definitively sharing of drivers between 
+all of the platforms and a lot of cross pollination too but usually 
+these are deeply different that different kernel images do make sense.
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index fb1a67189412..b1161853c6ab 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -2795,10 +2795,15 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 
- static int btusb_mtk_shutdown(struct hci_dev *hdev)
- {
-+	struct btusb_data *data = hci_get_drvdata(hdev);
- 	struct btmtk_hci_wmt_params wmt_params;
- 	u8 param = 0;
- 	int err;
- 
-+	err = usb_autopm_get_interface(data->intf);
-+	if (err < 0)
-+		return err;
-+
- 	/* Disable the device */
- 	wmt_params.op = BTMTK_WMT_FUNC_CTRL;
- 	wmt_params.flag = 0;
-@@ -2807,12 +2812,12 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev)
- 	wmt_params.status = NULL;
- 
- 	err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
--	if (err < 0) {
-+	if (err < 0)
- 		bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
--		return err;
--	}
- 
--	return 0;
-+	usb_autopm_put_interface(data->intf);
-+
-+	return err;
- }
- 
- static void btusb_mtk_cmd_timeout(struct hci_dev *hdev)
+The itch that I wanted to calm was that ARCH_BRCMSTB was after the other 
+Broadcom platforms separated by ARCH_BERLIN. if you prefer a pair of 
+KConfig comments to delineate them and flatten the platform selection, 
+that works for me, too.
 -- 
-2.25.1
-
+Florian
 
