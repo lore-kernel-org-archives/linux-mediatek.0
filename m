@@ -4,94 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E7B4C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 08:40:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33CF6C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 08:48:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rFBl54go6bbp895f6CpJo/cJgp+SQIq2apGuPfKEw8I=; b=j+WU+Sas2KG9Uj6knvwK1T8rWy
-	jH7PjtnhjzF6V1eyAXEsFnU8dVVFmqujOLMyIMnZiF9dxJc29dHey9TlhRied4r+UP+XGKw3PhouS
-	H0X+TyPIgxteAviWn6QN/1oBzUOq4/jEqw9Zg0Wb59rdvhMH+2HjYBG00lH865ZoosJqLrdfY8RHs
-	+c9Cuz/TiPU4vyE9WMNfAnkEQJ0GfGWllRdYXcRhUWlatlGFovyg8Oj7RwUhN5DlDW8exD31X5IJS
-	lolvkFKibzxotBapmK32f/R+D4KQKEUVuaNU5BmSKbn/s44UNY2wB0GeD9mJfOts0U2/meaHkUfbU
-	63ZDuXww==;
+	bh=xbmNvf19WbcReh+hF6yQ1DiTHAr+2w9+FoIsXBkf8eo=; b=dUCbpewbh/1f7lV+xdKu5uB3ue
+	yEFkINyjAsUmfDVAkp8uV00eZAntgHSfsZRo1S8xU20ZF7SJ11MU3FXhdTEdNgDDG3Xs/pe72z6bV
+	+KLkZLPJ8KR9ipg8NMu/9vXJVz+xUH6/V7it3xKvrjCIWWF2uA0lk3tit+4fVbVy1xQMVZ7qMDbl5
+	Yfsv6fnnJu2K1btki9AsDAZ8gusfPzOjZuZ0FZXvHdEpUk1SZ2qeg70mau46TtRvBHTQinQqP+GMh
+	fEmd4C4Eo5MixK+jVieeFyuTdg6n77IEfq3DYyjdNxzXZIuYQ5DJHursqdiKzfWu7KjL6hU9itvzD
+	XHPTKdrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBXuz-001iR8-7M; Wed, 13 Jul 2022 08:40:25 +0000
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
+	id 1oBY2f-001mtQ-EJ; Wed, 13 Jul 2022 08:48:21 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBXuo-001iMS-BO
-	for linux-mediatek@lists.infradead.org; Wed, 13 Jul 2022 08:40:15 +0000
-Received: by mail-lj1-x230.google.com with SMTP id w2so12683594ljj.7
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Jul 2022 01:40:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=rFBl54go6bbp895f6CpJo/cJgp+SQIq2apGuPfKEw8I=;
-        b=HJy70qwl9lN8HnV2r/htxl8ByNBeHMo2DaIIq8mk7an1rDp/Hy4hkXfktfvmdxUaxv
-         3A8sUvjtVkw53mw340DrAJeHLmOzxTyLbalQEkV/XibwwFuwinmbY8O4rPtYpX5yrLiy
-         JCufh3uEsQSrI+YvGbyX9Y+722Yi/OGL4EsdeTD0EdSrLJ29gdu6g6g4kPCs/WNN/s56
-         Ok1r003S2vR+FcsNad/mJW0vO/uHVdrcEbuS7mChc7ssvfhznEANrqB0zDNs+h4LpO7Z
-         +re5NfTf0wvT6R8Qp16Ggu7kuyCNhK8MTP9WtoFIw6A9JRGk4YAt/6tiRiaJDLitsXUv
-         FA8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=rFBl54go6bbp895f6CpJo/cJgp+SQIq2apGuPfKEw8I=;
-        b=uDR9Y/ktkb/dqq1LY+qeEzNS0HyGJ8hpj1qPAEBoIFQhmt7GWD9dwgzqG4HcEVUett
-         GuGfNuETT+GPtKOfnzioBB59W1bsDHuF36AjyijuVwzUjIPLqjTl+qSuFxaYpRgFu8zF
-         dhgA+5TxEF2Dcl7xRc5WsznU7N42Vc6xedL9km5LyaZM84cUhK3FKXHPI478xuPQebAP
-         +rQlR8skYCoRXztbP+OF9RF1KYshnhnNyYe72xKbagP2E4kG+tUFRfkKrKlWzrkXQWPS
-         ryiWjt2Y7sRYwIpLU8gAV9XY6jo4X0kfxfOQkxQt++seIgVrNcMSGW0Xk+QvHo9L+k3M
-         19FA==
-X-Gm-Message-State: AJIora8bbjx/DibFubQNkDN3I/yCVb4EinKZnt3oy0HIucbgmPu1XWi+
-	Y4KfVujDvImbThVYLdQGrq72Dw==
-X-Google-Smtp-Source: AGRyM1vqC3mk/Y63Y88qA3IPGzsb8ZUXDS2zCGPmro0xfJGvd0YSbgfDR3MJrICvvK8L1MwmkoFzRw==
-X-Received: by 2002:a05:651c:1038:b0:25d:53cb:ba22 with SMTP id w24-20020a05651c103800b0025d53cbba22mr1104823ljm.407.1657701609473;
-        Wed, 13 Jul 2022 01:40:09 -0700 (PDT)
-Received: from [10.0.0.8] (fwa5da9-171.bb.online.no. [88.93.169.171])
-        by smtp.gmail.com with ESMTPSA id 11-20020a05651c128b00b0025d6ecbc897sm1720865ljc.46.2022.07.13.01.40.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 13 Jul 2022 01:40:08 -0700 (PDT)
-Message-ID: <0131e1d6-09c0-31a4-5b9d-0e2fc49d61ac@linaro.org>
-Date: Wed, 13 Jul 2022 10:40:05 +0200
+	id 1oBY2P-001mg0-BT; Wed, 13 Jul 2022 08:48:07 +0000
+X-UUID: b441d1e21d534ca8b1dee330ddfb27a9-20220713
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:c2c95dc8-7297-43c5-9e96-ede12a6a5da8,OB:0,LO
+	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:25
+X-CID-META: VersionHash:0f94e32,CLOUDID:4e9a2b64-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: b441d1e21d534ca8b1dee330ddfb27a9-20220713
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 474722535; Wed, 13 Jul 2022 01:46:53 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 13 Jul 2022 15:56:16 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Wed, 13 Jul 2022 15:56:16 +0800
+Message-ID: <0e1d4cef6b7e72813300eb9be5650066166ac763.camel@mediatek.com>
+Subject: Re: [PATCH v14 01/10] dt-bindings: mediatek,dp: Add Display Port
+ binding
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 13 Jul 2022 15:56:16 +0800
+In-Reply-To: <20220712111223.13080-2-rex-bc.chen@mediatek.com>
+References: <20220712111223.13080-1-rex-bc.chen@mediatek.com>
+	 <20220712111223.13080-2-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] arm64: Kconfig.platforms: Re-organized Broadcom menu
-Content-Language: en-US
-To: Arnd Bergmann <arnd@arndb.de>, Florian Fainelli <f.fainelli@gmail.com>
-Cc: Linux ARM <linux-arm-kernel@lists.infradead.org>,
- SoC Team <soc@kernel.org>,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
- william.zhang@broadcom.com, anand.gore@broadcom.com,
- Olof Johansson <olof@lixom.net>, Catalin Marinas <catalin.marinas@arm.com>,
- Will Deacon <will@kernel.org>, open list <linux-kernel@vger.kernel.org>,
- Shawn Guo <shawnguo@kernel.org>, Li Yang <leoyang.li@nxp.com>,
- Wei Xu <xuwei5@hisilicon.com>, Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
- Matthias Brugger <mbrugger@suse.com>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- "moderated list:ARM/SAMSUNG EXYNOS ARM ARCHITECTURES"
- <linux-samsung-soc@vger.kernel.org>, Dinh Nguyen <dinguyen@kernel.org>
-References: <20220712164235.40293-1-f.fainelli@gmail.com>
- <CAK8P3a2QrYbWOqV+CG-W0ZkzW6ORgw8R6Dv-L3o2ZAtJs-B3Kw@mail.gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <CAK8P3a2QrYbWOqV+CG-W0ZkzW6ORgw8R6Dv-L3o2ZAtJs-B3Kw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_014014_431209_082EBF21 
-X-CRM114-Status: GOOD (  24.68  )
+X-CRM114-CacheID: sfid-20220713_014805_410252_E1A7A25A 
+X-CRM114-Status: GOOD (  23.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,64 +86,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/07/2022 10:25, Arnd Bergmann wrote:
-> On Tue, Jul 12, 2022 at 6:42 PM Florian Fainelli <f.fainelli@gmail.com> wrote:
->>
->> There are now multiple Broadcom SoCs supported so group them under their
->> own menu such that the selection is visually more appealing and we can
->> easily add new platforms there in the future. This allows us to move
->> ARCH_BRCMSTB back to its siblings.
->>
->> No functional changes introduced.
->>
->> Signed-off-by: Florian Fainelli <f.fainelli@gmail.com>
->> ---
->>
->> Note this is based on "arm64: bcmbca: add arch bcmbca machine entry"
-> 
-> Hi Florian,
-> 
-> So far, we have tried to keep the Kconfig.platforms file rather coarse-grained,
-> mainly limiting it to company names and high-level families, but avoiding
-> sub-menus or adding too many sub-families.
-> 
-> If we add per-vendor submenus, we should probably first decide how we
-> want to structure this across vendors. I've added maintainers and lists to
-> Cc for a couple of the ones that are in a similar situation.
-> 
-> I can see a couple of ways we can do this:
-> 
-> a) keep the list of platforms as short as possible, combining related
->   SoC families from a single vendor wherever possible, but no sub-menus
->   (same as today)
-> 
-> b) Always use sub-menus when there is more than one family, but
->    keep relatively coarse platform selection.
-> 
-> c) Use sub-menus and also move to a more fine-grained SoC
->     selection, similar to what we have on 32-bit arm.
-> 
-> I would not really want to go to c), but a) and b) both make sense to
-> me as long as do it consistently across all platforms.
-> 
-> Any other ideas or opinions?
+Hi, Bo-Chen:
 
-Whatever we decide here, the SoC can override in drivers/soc, just like
-Renesas did. I think Renesas chose option c), but made it in
-drivers/soc. I would vote to have consistent policy, so if arch/arm64 is
-a) or b), sub-archs should not redefine it in drivers/soc.
+On Tue, 2022-07-12 at 19:12 +0800, Bo-Chen Chen wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> This controller is present on several mediatek hardware. Currently
+> mt8195 and mt8395 have this controller without a functional
+> difference,
+> so only one compatible field is added.
+> 
+> The controller can have two forms, as a normal display port and as an
+> embedded display port.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
+>  .../display/mediatek/mediatek,dp.yaml         | 115
+> ++++++++++++++++++
+>  1 file changed, 115 insertions(+)
+>  create mode 100644
+> Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+> 
+> diff --git
+> a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+> new file mode 100644
+> index 000000000000..e2d6cb314297
+> --- /dev/null
+> +++
+> b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+> @@ -0,0 +1,115 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: 
+> http://devicetree.org/schemas/display/mediatek/mediatek,dp.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Display Port Controller
+> +
+> +maintainers:
+> +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> +  - Jitao shi <jitao.shi@mediatek.com>
+> +
+> +description: |
+> +  Device tree bindings for the MediaTek display port TX (DP) and
+> +  embedded display port TX (eDP) controller present on some MediaTek
+> SoCs.
+> +  MediaTek DP and eDP are different hardwares and they have
+> different
+> +  base address for registers, so we need two different compatibles
+> to
+> +  separate them.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt8195-dp-tx
+> +      - mediatek,mt8195-edp-tx
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  nvmem-cells:
+> +    maxItems: 1
+> +    description: efuse data for display port calibration
+> +
+> +  nvmem-cell-names:
+> +    const: dp_calibration_data
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: Input endpoint of the controller, usually
+> dp_intf
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/$defs/port-base
+> +        unevaluatedProperties: false
+> +        description: Output endpoint of the controller
+> +        properties:
+> +          endpoint:
+> +            $ref: /schemas/media/video-interfaces.yaml#
+> +            unevaluatedProperties: false
+> +            properties:
+> +              data-lanes:
+> +                description: |
+> +                  number of lanes supported by the hardware.
+> +                  The possible values:
+> +                  0       - For 1 lane enabled in IP.
+> +                  0 1     - For 2 lanes enabled in IP.
+> +                  0 1 2 3 - For 4 lanes enabled in IP.
+> +                minItems: 1
+> +                maxItems: 4
+> +            required:
+> +              - data-lanes
+> +
+> +    required:
+> +      - port@0
+> +      - port@1
+> +
+> +  max-linkrate-mhz:
+> +    enum: [ 1620, 2700, 5400, 8100 ]
+> +    description: maximum link rate supported by the hardware.
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - ports
+> +  - max-linkrate-mhz
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/power/mt8195-power.h>
+> +    dp_tx@1c600000 {
+> +        compatible = "mediatek,mt8195-dp-tx";
+> +        reg = <0x1c600000 0x8000>;
+> +        power-domains = <&spm MT8195_POWER_DOMAIN_DP_TX>;
+> +        interrupts = <GIC_SPI 458 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        max-linkrate-mhz = <8100>;
 
-Or we could choose d)
-d) keep arch/arm64 list of platforms as short as possible, but sub-archs
-can do whatever they like on drivers/soc.
+Why dp-tx has no clock property? I think this device should work with a
+clock.
 
-Personally, I find fine-grained SoC selection a bit ridiculous
-optimization, like compiling kernel, Glibc and userspace with -O3,
--funroll-loops and many other flags. One gets smaller size but looses
-multi-platform and ability to test one kernel on different boards.
-Therefore I would vote for b) with disallowing drivers/soc defining more
-ARCH_ and more SOC_.
+Regards,
+CK
 
-Best regards,
-Krzysztof
+> +
+> +        ports {
+> +            #address-cells = <1>;
+> +            #size-cells = <0>;
+> +
+> +            port@0 {
+> +                reg = <0>;
+> +                dptx_in: endpoint {
+> +                    remote-endpoint = <&dp_intf0_out>;
+> +                };
+> +            };
+> +            port@1 {
+> +                reg = <1>;
+> +                dptx_out: endpoint {
+> +                    data-lanes = <0 1 2 3>;
+> +                };
+> +            };
+> +        };
+> +    };
+
 
