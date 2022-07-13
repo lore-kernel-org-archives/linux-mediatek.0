@@ -4,80 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BD7CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 09:17:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 909E1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 09:19:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zby97TNc1ghpjXRqZzrsX3Uiwj/4uwx2MsSKfbl6g7E=; b=V+b12glohgEjYvKKfewotGK/xT
-	xLxHlhLjp5sTeQwlzoDIO658gGmx9EwZAOSAo7PYqkzOvSfV5e3y0v2E3frzhxrcJFCnk32Z6YLA7
-	PRCGnxHRGhwGdl1xpaqmcduc16rG2vgAbFHTSuYtvZz8WZyKnRSEPXTEFrjd6x5m3kq65eAJI9n5M
-	ctXHcaMb44LDUHca4rrULv4eWZBghrOh6V4l8LysCCFd9rpI7rpz6J26VbAoftk7w4U1QMB7dFWlB
-	ksbW9zUC7QpSx17zH4n5b3t2oydptAaXlT5Lzreldduz7fL6qTLeKAl4achD7OAlhgNawmL+BEcbW
-	Zj3Vyjiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SWR3tZe0C67D+zcquJ8ALP8jzeLD9Ls5OE6aG9itU9w=; b=ALZpwbrPsqFFU9vZ8njF8SqFKC
+	2LSzj0G9RimgxVY7M95eFiYCUkhgDZjOHPcpl8k5eSUX4G1YGGEKVbdJ4daxlnyh3o//trjg8ioGj
+	C6IKLZzgYearivZieve29oy/z4PE/6+ZWtMUj6lh89WYQhwPfR5VOMIgeQ+FzvX+mn8PTKCaX1rAQ
+	dv0T0wV8KUSYXv4Tuk4hi0BGujbyZpILznYqBGYIc3w6cK4DCdLDH3S6Em0bZHq34tvBOJ9rh9CpA
+	vZM2V4fT7bK9UdoAlAmZ7k38VMJkVywlo3qPgbmIAjA8qQe4AT1T1S7fcqBw0DalDUmuXBmE2lm06
+	pirISpYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBYUu-002CIH-Ee; Wed, 13 Jul 2022 09:17:32 +0000
-Received: from mail-qk1-f171.google.com ([209.85.222.171])
+	id 1oBYWW-002D1v-G7; Wed, 13 Jul 2022 09:19:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBYUi-002CCw-2P; Wed, 13 Jul 2022 09:17:21 +0000
-Received: by mail-qk1-f171.google.com with SMTP id z11so6710301qkz.13;
-        Wed, 13 Jul 2022 02:17:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=Zby97TNc1ghpjXRqZzrsX3Uiwj/4uwx2MsSKfbl6g7E=;
-        b=D0nufrcaISfXqNzEkvtweuv1UNRJz5HOxLDktplnsEqgQD1od2S2fVdu3/6RJmGoiv
-         E0M/XtmS37np9v/fyCRFDK6SVprwdDKld4drr6sXEqMh3CEIIU6fDosNyXWWT/uRElQN
-         4NEO6SAd+fNmzSK9eYMZS5NKGReEmNDb9IV00WLSOa6klyhm68uxmBVgLyQTL/yghxVY
-         x4+JMyMZlwjfTW4o7SYl/YkPcJd+xonchScPZHJ7KfLs6PMBMv9+BsXJcES/1JL8YhLp
-         +Gx+bmiYDe6JkajudIlXSAy3Iwq2h75xSgjUXC7CnatQpeDLUVTUlc2BHLMkR8Ity3+Q
-         G6Pg==
-X-Gm-Message-State: AJIora/atNOTDnsNlIiWs+PXO8P/V3o9bl6hImyMFiUfrnCndZm/4DHT
-	UPhtu4NfcepDVJIAzM+k9wXcBLX0oy2wBA==
-X-Google-Smtp-Source: AGRyM1uk/3npCT3ZaSSvQxCFKyt0D6iOD6ykLGdEKr1iTbVpNPA9Vl3Cv7K8tH8mtJVjWXkwOKweng==
-X-Received: by 2002:a05:620a:28c9:b0:6b5:76b4:e74a with SMTP id l9-20020a05620a28c900b006b576b4e74amr1631700qkp.98.1657703837109;
-        Wed, 13 Jul 2022 02:17:17 -0700 (PDT)
-Received: from mail-yb1-f172.google.com (mail-yb1-f172.google.com. [209.85.219.172])
-        by smtp.gmail.com with ESMTPSA id w4-20020a05620a424400b006aedb35d8a1sm11853540qko.74.2022.07.13.02.17.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 13 Jul 2022 02:17:16 -0700 (PDT)
-Received: by mail-yb1-f172.google.com with SMTP id 6so18263913ybc.8;
-        Wed, 13 Jul 2022 02:17:15 -0700 (PDT)
-X-Received: by 2002:a25:bc8e:0:b0:66e:fe43:645c with SMTP id
- e14-20020a25bc8e000000b0066efe43645cmr2777562ybk.202.1657703835228; Wed, 13
- Jul 2022 02:17:15 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220712164235.40293-1-f.fainelli@gmail.com> <CAK8P3a2QrYbWOqV+CG-W0ZkzW6ORgw8R6Dv-L3o2ZAtJs-B3Kw@mail.gmail.com>
- <0131e1d6-09c0-31a4-5b9d-0e2fc49d61ac@linaro.org>
-In-Reply-To: <0131e1d6-09c0-31a4-5b9d-0e2fc49d61ac@linaro.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 13 Jul 2022 11:17:03 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdWDDY_72y3WYt401hG122xg1s7_VRCG9Vyhhkzco-nBYw@mail.gmail.com>
-Message-ID: <CAMuHMdWDDY_72y3WYt401hG122xg1s7_VRCG9Vyhhkzco-nBYw@mail.gmail.com>
-Subject: Re: [PATCH] arm64: Kconfig.platforms: Re-organized Broadcom menu
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Florian Fainelli <f.fainelli@gmail.com>, 
-	Linux ARM <linux-arm-kernel@lists.infradead.org>, SoC Team <soc@kernel.org>, 
-	bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, william.zhang@broadcom.com, 
-	anand.gore@broadcom.com, Olof Johansson <olof@lixom.net>, 
-	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
-	open list <linux-kernel@vger.kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
-	Li Yang <leoyang.li@nxp.com>, Wei Xu <xuwei5@hisilicon.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	"moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
-	Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>, Matthias Brugger <mbrugger@suse.com>, 
-	linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, 
-	"moderated list:ARM/SAMSUNG EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, Dinh Nguyen <dinguyen@kernel.org>
+	id 1oBYWT-002Cy4-Nh; Wed, 13 Jul 2022 09:19:11 +0000
+X-UUID: c527f8b13e9847609ae920f5db0651d9-20220713
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:898b5398-64d1-4b4e-837c-823cd649fe97,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:40812c64-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: c527f8b13e9847609ae920f5db0651d9-20220713
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 44089968; Wed, 13 Jul 2022 02:13:10 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Wed, 13 Jul 2022 17:12:36 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 13 Jul 2022 17:12:35 +0800
+Message-ID: <f22517dc676358e055eeb5192930b8a5f0d821a5.camel@mediatek.com>
+Subject: Re: [PATCH v14 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
+ driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 13 Jul 2022 17:12:35 +0800
+In-Reply-To: <20220712111223.13080-6-rex-bc.chen@mediatek.com>
+References: <20220712111223.13080-1-rex-bc.chen@mediatek.com>
+	 <20220712111223.13080-6-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_021720_135229_4F391286 
-X-CRM114-Status: GOOD (  40.93  )
+X-CRM114-CacheID: sfid-20220713_021909_778399_1E966BBD 
+X-CRM114-Status: GOOD (  18.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,87 +86,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+Hi, Bo-Chen:
 
-On Wed, Jul 13, 2022 at 10:40 AM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
-> On 13/07/2022 10:25, Arnd Bergmann wrote:
-> > On Tue, Jul 12, 2022 at 6:42 PM Florian Fainelli <f.fainelli@gmail.com> wrote:
-> >> There are now multiple Broadcom SoCs supported so group them under their
-> >> own menu such that the selection is visually more appealing and we can
-> >> easily add new platforms there in the future. This allows us to move
-> >> ARCH_BRCMSTB back to its siblings.
-> >>
-> >> No functional changes introduced.
-> >>
-> >> Signed-off-by: Florian Fainelli <f.fainelli@gmail.com>
-> >> ---
-> >>
-> >> Note this is based on "arm64: bcmbca: add arch bcmbca machine entry"
-> >
-> > Hi Florian,
-> >
-> > So far, we have tried to keep the Kconfig.platforms file rather coarse-grained,
-> > mainly limiting it to company names and high-level families, but avoiding
-> > sub-menus or adding too many sub-families.
-> >
-> > If we add per-vendor submenus, we should probably first decide how we
-> > want to structure this across vendors. I've added maintainers and lists to
-> > Cc for a couple of the ones that are in a similar situation.
-> >
-> > I can see a couple of ways we can do this:
-> >
-> > a) keep the list of platforms as short as possible, combining related
-> >   SoC families from a single vendor wherever possible, but no sub-menus
-> >   (same as today)
-> >
-> > b) Always use sub-menus when there is more than one family, but
-> >    keep relatively coarse platform selection.
-> >
-> > c) Use sub-menus and also move to a more fine-grained SoC
-> >     selection, similar to what we have on 32-bit arm.
-> >
-> > I would not really want to go to c), but a) and b) both make sense to
-> > me as long as do it consistently across all platforms.
-> >
-> > Any other ideas or opinions?
->
-> Whatever we decide here, the SoC can override in drivers/soc, just like
-> Renesas did. I think Renesas chose option c), but made it in
-> drivers/soc. I would vote to have consistent policy, so if arch/arm64 is
-> a) or b), sub-archs should not redefine it in drivers/soc.
+On Tue, 2022-07-12 at 19:12 +0800, Bo-Chen Chen wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> This patch adds a embedded displayport driver for the MediaTek mt8195
+> SoC.
+> 
+> It supports the MT8195, the embedded DisplayPort units. It offers
+> DisplayPort 1.4 with up to 4 lanes.
+> 
+> The driver creates a child device for the phy. The child device will
+> never exist without the parent being active. As they are sharing a
+> register range, the parent passes a regmap pointer to the child so
+> that
+> both can work with the same register range. The phy driver sets
+> device
+> data that is read by the parent to get the phy device that can be
+> used
+> to control the phy properties.
+> 
+> This driver is based on an initial version by
+> Jitao shi <jitao.shi@mediatek.com>
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
 
-We did so because of the "only a single symbol in
-arch/arm64/Kconfig.platforms"-policy.
+[snip]
 
-> Or we could choose d)
-> d) keep arch/arm64 list of platforms as short as possible, but sub-archs
-> can do whatever they like on drivers/soc.
->
-> Personally, I find fine-grained SoC selection a bit ridiculous
-> optimization, like compiling kernel, Glibc and userspace with -O3,
-> -funroll-loops and many other flags. One gets smaller size but looses
-> multi-platform and ability to test one kernel on different boards.
-> Therefore I would vote for b) with disallowing drivers/soc defining more
-> ARCH_ and more SOC_.
+> +
+> +static void mtk_dp_msa_bypass_enable(struct mtk_dp *mtk_dp, bool
+> enable)
+> +{
+> +	u32 mask = BIT(HTOTAL_SEL_DP_ENC0_P0_SHIFT) |
+> +		   BIT(VTOTAL_SEL_DP_ENC0_P0_SHIFT) |
+> +		   BIT(HSTART_SEL_DP_ENC0_P0_SHIFT) |
+> +		   BIT(VSTART_SEL_DP_ENC0_P0_SHIFT) |
+> +		   BIT(HWIDTH_SEL_DP_ENC0_P0_SHIFT) |
+> +		   BIT(VHEIGHT_SEL_DP_ENC0_P0_SHIFT) |
+> +		   BIT(HSP_SEL_DP_ENC0_P0_SHIFT) |
+> +		   BIT(HSW_SEL_DP_ENC0_P0_SHIFT) |
+> +		   BIT(VSP_SEL_DP_ENC0_P0_SHIFT) |
+> +		   BIT(VSW_SEL_DP_ENC0_P0_SHIFT);
 
-No one prevents you from selecting multiple SoCs, they are not
-mutually-exclusive...
+I would like define a symbol like this
 
-With arm64 (or risc-v ;-) instead of arm32 being used for all new
-SoCs,  I expect the real small ones (with a few MiB of embedded
-SRAM) to enter the arm64 realm soon.  No point in including e.g. all
-pinctrl drivers from the vendor if you have barely enough RAM to run
-Linux and your app...
+#define HTOTAL_SEL_DP_ENC0_P0 BIT(0)
+#define VTOTAL_SEL_DP_ENC0_P0 BIT(1)
+#define HSTART_SEL_DP_ENC0_P0 BIT(2)
 
-Gr{oetje,eeting}s,
+Regards,
+CK
 
-                        Geert
+> +	u32 val = enable ? 0 : mask;
+> +
+> +	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3030, val, mask);
+> +}
+> +
 
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
 
