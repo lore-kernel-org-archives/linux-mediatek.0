@@ -4,81 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF349C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 08:26:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75533C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 08:30:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n0XJaE3hqBa0kCvw/MH6zVKOCsSN4KmP1tRfklWEdNs=; b=sOHglZabCkuHBqso/qAkHws/Ym
-	WmINbGiIQbYbnTG3vhKm0Gft/pRUYHr1ycGcSq3R1WilgPFsdZ2nZ5VPmPf1ZBcZWQ6bfA3LNPhyj
-	t6CSBLYfvE/gx8eZ5XcWwRAD/BPwe2Pu0Q9kHcVev1Xq5+mXu+zAAjktb165UU0D3RafyfTgOZuL7
-	fH+puIkpTlO5/mGv+VIxNtqSNY0wnCIx72lCRFrHOnY/jez1ZRI7mqtIyw1Oo9BOxdsO8y70fPRFw
-	4eEGr6prkA/CjxGTUW9CXZFePUJoHVeCZKnHKwJC+6qMyVjIUwlr9mh7bCTAg/jKaYy/8mWDcV0wp
-	J9mB24BA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4ENq1t2rGCFk6eKFf06UMtvF8cLBN0hiXb1q2BE5Gss=; b=PiGMFv+pdkFdPugiLZOgi5cYOW
+	fGVMWN531xrBrigPdlU3bqtwU4KzymcIkBYAtDLhqzCQsB0XLRfWkVubjx784mvsYLi3u2CMObkRR
+	c41m5Fyoth95Phj6FKqvsoy8h19t44YZEfUinDxHctZ9ZoZGTUWafj64L3RWVefcTlxfolYVxvBK1
+	gmFO9SsmPxZ5NT03ZFbsITWeomn9CxtCxc8ajAuCp6jH7wmNCMwRTFh4BqfCUJvvAYNsBUc3bZ0SR
+	7Bvdp2PsPh0YSV0m1qTkuiCv6aHKdL53OfDNDloIkWuqjFTsE+3zxCEZPquS9X5czjE/LxrXK5WVT
+	IHq6yvUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBXhF-001dYX-2g; Wed, 13 Jul 2022 08:26:13 +0000
-Received: from mout.kundenserver.de ([212.227.126.130])
+	id 1oBXlc-001fNr-PT; Wed, 13 Jul 2022 08:30:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBXhA-001dTj-Kv; Wed, 13 Jul 2022 08:26:10 +0000
-Received: from mail-yb1-f176.google.com ([209.85.219.176]) by
- mrelayeu.kundenserver.de (mreue010 [213.165.67.97]) with ESMTPSA (Nemesis) id
- 1M4K6z-1oBofy39rV-000Hqg; Wed, 13 Jul 2022 10:26:03 +0200
-Received: by mail-yb1-f176.google.com with SMTP id h62so15457762ybb.11;
-        Wed, 13 Jul 2022 01:26:03 -0700 (PDT)
-X-Gm-Message-State: AJIora/9tVciiPnuuxmzGCnOQz0ReeSSOVCFT+NsNRtaG5Nrbin7+65J
-	SgrQwd2BAkhRPmZeebXJuCZLKi+LvmWLkP0klzY=
-X-Google-Smtp-Source: AGRyM1s5ctXDWESPghTwunvKDjAPfvsYu2kacgrA/MPXviowltYXdPpskedj7zs4LJm1sUX08EXGIUpvgkI0AhSfMmA=
-X-Received: by 2002:a5b:b47:0:b0:66e:3617:d262 with SMTP id
- b7-20020a5b0b47000000b0066e3617d262mr2405858ybr.106.1657700762384; Wed, 13
- Jul 2022 01:26:02 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220712164235.40293-1-f.fainelli@gmail.com>
-In-Reply-To: <20220712164235.40293-1-f.fainelli@gmail.com>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Wed, 13 Jul 2022 10:25:45 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a2QrYbWOqV+CG-W0ZkzW6ORgw8R6Dv-L3o2ZAtJs-B3Kw@mail.gmail.com>
-Message-ID: <CAK8P3a2QrYbWOqV+CG-W0ZkzW6ORgw8R6Dv-L3o2ZAtJs-B3Kw@mail.gmail.com>
-Subject: Re: [PATCH] arm64: Kconfig.platforms: Re-organized Broadcom menu
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: Linux ARM <linux-arm-kernel@lists.infradead.org>, SoC Team <soc@kernel.org>, 
-	bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, william.zhang@broadcom.com, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, anand.gore@broadcom.com, 
-	Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>, 
-	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
-	open list <linux-kernel@vger.kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
-	Li Yang <leoyang.li@nxp.com>, Wei Xu <xuwei5@hisilicon.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	"moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
-	Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>, Matthias Brugger <mbrugger@suse.com>, 
-	linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, 
-	"moderated list:ARM/SAMSUNG EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, Dinh Nguyen <dinguyen@kernel.org>
+	id 1oBXla-001fM3-F6; Wed, 13 Jul 2022 08:30:43 +0000
+X-UUID: 0eb9ed6d11d24a889aebb777c80205a0-20220713
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:8ff07376-9f1f-4fec-9aad-aeb1c6e69d44,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:5fe2da32-b9e4-42b8-b28a-6364427c76bb,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 0eb9ed6d11d24a889aebb777c80205a0-20220713
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1106737539; Wed, 13 Jul 2022 01:30:38 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 13 Jul 2022 16:30:03 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Wed, 13 Jul 2022 16:30:03 +0800
+Message-ID: <386e09152ee920f89597ac1065f94fc8c804634f.camel@mediatek.com>
+Subject: Re: [PATCH v14 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
+ driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 13 Jul 2022 16:30:02 +0800
+In-Reply-To: <20220712111223.13080-6-rex-bc.chen@mediatek.com>
+References: <20220712111223.13080-1-rex-bc.chen@mediatek.com>
+	 <20220712111223.13080-6-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
-X-Provags-ID: V03:K1:rNDY+L3mNU4oJVt0rspegD82Vs97fFVR8nIQbir43sG3mD5ClWw
- WrZaogYiYBosYwTNU6Pt01Rt/WGVio++RcNIvZkZk/lZzVbhW1VgIcIy6pWqbuPHPjYg/Hd
- 3YUYktbHDNV+NU9IrZNsDNBcb1RHZSQ6+HosI5jZ6EqeOgjG6h680SI8g/T3+Ry8w7Spxr2
- k5vFSBLiQ3bpIGJeu5cNw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:h9PXQuNHk/w=:KjxqWXqPm0bRnFczDwuJLW
- m2TZHnk8vUyt+Uw5iRJ5nrs9+Zm/ljlWdms6JXKfPYL5xxG+f8vZoolHggIcyQK98f0cz24r/
- aYpFR1AkhmNXymj2joI8oEKVNLGZztdqb/dmcs/ba+XD3Y1EtMx9Z4WC3OF8+Ns+kisZ8LXS/
- sqZfcSxpbSNn/GYGO3n92FFCF5oXrj75VfbCr2Ndiuk0A4Wy0j01l/aJCE6Y/bYSdadoBL+nj
- 1zFvp8mF0bq20hfclqjfiZLFO9+PL7SyDZ3wNjKUAWJi1jUEo1FjH4MIb+YlGpEpP/uu/MFlb
- xu+Ysb5a6sp8aPbuDv9pbzDuT2GT/mjH4XmdCX2S7qj/SYKCzTtBOYBq486PLaNyrlsqKGky8
- FwZYuLJ7Q+umM8nXvIV1dpl/sJfX7Pn4Rmyo4xf1+XM7JhCyZyWTK4YKnoEsrk/Upp16Xh0Qz
- mpzNQ2hUCtbSWGHTezRd/U7gzxW2K9FsUKiIxsubicjxQ19jF8DRHvPy879Qtf2ZMTuZ531ey
- Igya9mGf4HtNprc+GBy1YnD+YWxeHuZHbEjkXjNq6X4wj9ePs7sStBXGJ9tMEoCm/6skjxX0v
- /q/P4OYqMniNSfM14DsVk7l/GLEsYIdKc9+zB1zoWCIpYNkTVZc7m70PvccSoz6XrFenFS3TB
- 9szCvG6PKZxjUNTketwODUdSTblL4vEfdCUD/vgRprL2g2SOPn0M7sV9l6bVVBAhIn6XO3N1t
- EnCCdT/aPh+UJ5w0Qqu54QdenYlrPYBPHeN1z1A7n7vsX/i1f+hJWL99ZGZDT23PPJA5m1u7I
- tvI35MAdk5P31wbB5k/Ieauz6gHP7l6iLX2dX01hRq1woG6OBmFi+BI05gYM/Ary3A2adf2tO
- Ma4HMZvzzFsHs4TSO/dg==
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_012609_225384_A6373777 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20220713_013042_526003_BAFE4CD9 
+X-CRM114-Status: GOOD (  20.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,46 +86,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 12, 2022 at 6:42 PM Florian Fainelli <f.fainelli@gmail.com> wrote:
->
-> There are now multiple Broadcom SoCs supported so group them under their
-> own menu such that the selection is visually more appealing and we can
-> easily add new platforms there in the future. This allows us to move
-> ARCH_BRCMSTB back to its siblings.
->
-> No functional changes introduced.
->
-> Signed-off-by: Florian Fainelli <f.fainelli@gmail.com>
+Hi, Bo-Chen:
+
+On Tue, 2022-07-12 at 19:12 +0800, Bo-Chen Chen wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> This patch adds a embedded displayport driver for the MediaTek mt8195
+> SoC.
+> 
+> It supports the MT8195, the embedded DisplayPort units. It offers
+> DisplayPort 1.4 with up to 4 lanes.
+> 
+> The driver creates a child device for the phy. The child device will
+> never exist without the parent being active. As they are sharing a
+> register range, the parent passes a regmap pointer to the child so
+> that
+> both can work with the same register range. The phy driver sets
+> device
+> data that is read by the parent to get the phy device that can be
+> used
+> to control the phy properties.
+> 
+> This driver is based on an initial version by
+> Jitao shi <jitao.shi@mediatek.com>
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 > ---
->
-> Note this is based on "arm64: bcmbca: add arch bcmbca machine entry"
 
-Hi Florian,
+[snip]
 
-So far, we have tried to keep the Kconfig.platforms file rather coarse-grained,
-mainly limiting it to company names and high-level families, but avoiding
-sub-menus or adding too many sub-families.
+> +
+> +static int mtk_dp_set_color_depth(struct mtk_dp *mtk_dp)
+> +{
+> +	/* Only support 8 bits currently */
+> +	mtk_dp->info.depth = DP_MSA_MISC_8_BPC;
 
-If we add per-vendor submenus, we should probably first decide how we
-want to structure this across vendors. I've added maintainers and lists to
-Cc for a couple of the ones that are in a similar situation.
+Only support DP_MSA_MISC_8_BPC, so it's not necessary use a variable to
+store this information. Drop depth.
 
-I can see a couple of ways we can do this:
+Regards,
+CK
 
-a) keep the list of platforms as short as possible, combining related
-  SoC families from a single vendor wherever possible, but no sub-menus
-  (same as today)
+> +
+> +	/* Update MISC0 */
+> +	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3034,
+> +			   DP_MSA_MISC_8_BPC, DP_TEST_BIT_DEPTH_MASK);
+> +
+> +	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_303C,
+> +			   VIDEO_COLOR_DEPTH_DP_ENC0_P0_8BIT,
+> +			   VIDEO_COLOR_DEPTH_DP_ENC0_P0_MASK);
+> +	return 0;
+> +}
+> +
 
-b) Always use sub-menus when there is more than one family, but
-   keep relatively coarse platform selection.
-
-c) Use sub-menus and also move to a more fine-grained SoC
-    selection, similar to what we have on 32-bit arm.
-
-I would not really want to go to c), but a) and b) both make sense to
-me as long as do it consistently across all platforms.
-
-Any other ideas or opinions?
-
-        Arnd
 
