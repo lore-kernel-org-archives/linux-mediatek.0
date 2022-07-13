@@ -4,85 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E728EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 15:56:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97211C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 20:50:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jKAUXPLBrNevdC9OiqEXv5Wg4h8+PAmTG/9uIdwRKNA=; b=xnQ8j9vQPid6HXxIkaWo+B3F27
-	MWae7z2OHC8z8BDCrwyLrgBjNTIomtfxQ0DakMdgpCBh2crcu1PeqMPXSyRyJPIAgPjRnsjYWoyPa
-	Fv5FkBMutQnRtkUBnEKWixsFvMfKcIgMVlziGnBu9LT24KALPb/NFio8ywj3Q541fxcZZ5beb7zKM
-	jZgFkPaFQemLZ+jTXH2l3RbXPvHjGK0TiysqFC5LQwna9B5C+AARquoDKZFyAICqamhekCzBrbj7X
-	zEvtug12InGrBUy1o6PMHK5yFf2SfL2RlmCG2tvzsjzbCTPgpcRzD1iDHUNZAbFmivdwD3wu3L1mV
-	FiNFG6wA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZJrfYHYJOMP34dg1nE/qlVp4YYkhc3t1cHGmUC0OQgk=; b=CJl/cBOvBM/0qiwoh2eB8hJJ+a
+	bYoEqRv8VKv2D3GzR7rZ6/ptXue7mkEsW7Br0AJnWM2+UW7AmJwhLJouGlkBe6xj3LyY/kPQN10ay
+	ghvNOyJJ4IeBBPbVpq0rRd1IRGQzIMeI5W9XQvVzYzIh7mKW0kiAUOPNjpRwW+T05y5hPZwioHKwi
+	jCT6S6xCAekXNTJ0ld640Rwvy2XiSwJVlO75pXES2ITdK5h5uTSa9O0qzm3/j8OWAIHTxAc6oN5ui
+	8ziH+kb0gLv1gt886j9sST3tRFJ1ASCMbbqXoougR+WkRhFXO0uvcV2YKkaXRzP3RlbKpd3aZ0j15
+	dcMM7WaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBej0-005Lk7-D0; Wed, 13 Jul 2022 15:56:30 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1oBjJi-007oto-PI; Wed, 13 Jul 2022 20:50:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBeio-005Ld9-Hr; Wed, 13 Jul 2022 15:56:20 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id v4-20020a17090abb8400b001ef966652a3so4335507pjr.4;
-        Wed, 13 Jul 2022 08:56:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=jKAUXPLBrNevdC9OiqEXv5Wg4h8+PAmTG/9uIdwRKNA=;
-        b=aBupZpHtg8XwLvVKFAXLuBmAAWVRVghrIn9ZNgreYANgaU0v/qCvdDEIc9xI6H79sA
-         NZ9TpP6vHRQfG0DdPuQH99iG2Or/tN6/USEXUEs94hwwJ9T1Ot0kdHuLklolhFTu1Vu9
-         cKQ6OXNFiSNTWdoo8iVDnSAn3mrj0hegvaqHgYgwIMTY9yydRqsECiJY8UoWpnWVLHDN
-         FcDZGik/5xc59Zm0aKoHj/wl6bramtnIqRkQpLRP/6gZglOCfL9cKd2/o7COVFIMV6Dd
-         Uj8Nj+baniaDNUtmjMqcutA/zmMl6wqmPchds9edCbIIq6IseZdbXIU74IjSddrpobOK
-         BVYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition:in-reply-to;
-        bh=jKAUXPLBrNevdC9OiqEXv5Wg4h8+PAmTG/9uIdwRKNA=;
-        b=VfO7oj7BbwXpCYNH3QC6tFYMrGAJKge3vAkulsmttI4BdnuMpVPrShgi/4zN1ePGeO
-         Xoa9zP8miokkQsDY8Gb2nEgv5cy8XHwvGBUu8iA81ggRI9LjOCUG1muPQoIYR+YhWor+
-         kVWZxOo9mLweRMv3lvdgqWQt6YP/qm2/E9kJV1BnZe5hZ5ouE20/dTc9zbKC94buV/EO
-         k9HKOmmtArTnK4np7+wYME4aiznQjrdIZBr/ffQSpQDGnpWLZ2+3JpZuLDNj6lRaMbwx
-         yQr1PY6UzyknEXMRPNSKiTJjf6SUZTWxLa5Sqmr4DOdpb05ny52iio/eX/kH3fU3xufz
-         ztSA==
-X-Gm-Message-State: AJIora8mdlpC8zLxXWu/gUhr/Mn4i8PxcDiuGd5MUSkGkXG9aV4JfO/N
-	VSddluoBmT1nxL06E5L5nTs=
-X-Google-Smtp-Source: AGRyM1uztx7H1jzf5s+TTvAW1XBZNKgEQoYqHpqn6WNTf/pSYOGA8xIgngVh0T1SEhc5aR5zpYFJEA==
-X-Received: by 2002:a17:902:7106:b0:16c:6c95:6153 with SMTP id a6-20020a170902710600b0016c6c956153mr3706590pll.166.1657727776276;
-        Wed, 13 Jul 2022 08:56:16 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id x10-20020a170902a38a00b001678ce9080dsm8962079pla.258.2022.07.13.08.56.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Jul 2022 08:56:14 -0700 (PDT)
-Date: Wed, 13 Jul 2022 08:56:13 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Xin Ji <xji@analogixsemi.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, bliang@analogixsemi.com,
-	qwen@analogixsemi.com, jli@analogixsemi.com,
-	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v16 1/3] usb: typec: tcpci: move tcpci.h to
- include/linux/usb/
-Message-ID: <20220713155613.GA2194204@roeck-us.net>
-References: <20220712090534.2783494-1-xji@analogixsemi.com>
- <0bd85140-f006-8b29-0a43-500733f1654c@roeck-us.net>
- <Ys16lEvhVSSSRMP7@kroah.com>
- <20220713062845.GB2788915@anxtwsw-Precision-3640-Tower>
- <Ys5oBTeIcLjf7gnX@kroah.com>
- <20220713064818.GA2789090@anxtwsw-Precision-3640-Tower>
+	id 1oBjJd-007onU-4N
+	for linux-mediatek@lists.infradead.org; Wed, 13 Jul 2022 20:50:41 +0000
+X-UUID: 6d8c946007494a458d57bafc012604a3-20220713
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:cb0514c7-5567-4f0d-b91e-561fc355431a,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:0f94e32,CLOUDID:4b5ee732-b9e4-42b8-b28a-6364427c76bb,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 6d8c946007494a458d57bafc012604a3-20220713
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 393678440; Wed, 13 Jul 2022 13:50:25 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 14 Jul 2022 04:00:22 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 14 Jul 2022 04:00:21 +0800
+From: <sean.wang@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+	<posh.sun@mediatek.com>, <ted.huang@mediatek.com>,
+	<Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+	<steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+	<abhishekpandit@google.com>, <michaelfsun@google.com>, <mcchou@chromium.org>,
+	<shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Jing
+ Cai" <jing.cai@mediatek.com>
+Subject: [PATCH v2] Bluetooth: btusb: mediatek: fix shutdown failure during runtime suspend
+Date: Thu, 14 Jul 2022 04:00:20 +0800
+Message-ID: <3f1ee6737f092ae6312a7ae6079d341b81c791a5.1657670957.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220713064818.GA2789090@anxtwsw-Precision-3640-Tower>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_085618_672106_B1E16C36 
-X-CRM114-Status: GOOD (  26.64  )
+X-CRM114-CacheID: sfid-20220713_135037_196178_6FB125F8 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,48 +82,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 13, 2022 at 02:48:18PM +0800, Xin Ji wrote:
-> On Wed, Jul 13, 2022 at 08:36:53AM +0200, Greg Kroah-Hartman wrote:
-> > On Wed, Jul 13, 2022 at 02:28:45PM +0800, Xin Ji wrote:
-> > > On Tue, Jul 12, 2022 at 03:43:48PM +0200, Greg Kroah-Hartman wrote:
-> > > > On Tue, Jul 12, 2022 at 06:31:22AM -0700, Guenter Roeck wrote:
-> > > > > On 7/12/22 02:05, Xin Ji wrote:
-> > > > > > USB PD controllers which consisting of a microcontroller (acting as the TCPM)
-> > > > > > and a port controller (TCPC) - may require that the driver for the PD
-> > > > > > controller accesses directly also the on-chip port controller in some cases.
-> > > > > > 
-> > > > > > Move tcpci.h to include/linux/usb/ is convenience access TCPC registers.
-> > > > > > 
-> > > > > > Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-> > > > > > Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-> > > > > > Signed-off-by: Xin Ji <xji@analogixsemi.com>
-> > > > > > 
-> > > > > > ---
-> > > > > > V9 -> V10: Rebase on the latest code
-> > > > > > V8 -> V9 : Add more commit message
-> > > > > > V7 -> V8 : Fix Guanter's comment, remove unnecessary explain
-> > > > > 
-> > > > > We are now at v16. The change log has not been updated since v10,
-> > > > > making it all but worthless.
-> > > > 
-> > > > It's also already in my tree for a while, so I have no idea what this is
-> > > > being generated against :(
-> > > Hi all, I'm little confused, do I need update change log from v11 to
-> > > v16? There is no changes since v10.
-> > 
-> > I'm confused, why are you sending a patch over that is already in my
-> > tree and in linux-next?  You got an email saying it was merged, see
-> > commit 7963d4d71011 ("usb: typec: tcpci: move tcpci.h to
-> > include/linux/usb/").
-> > 
-> > thanks,
-> > 
-> > greg k-h
-> Hi greg k-h, sorry for that, this serial has 3 patches, so I just think
-> need update all 3 patches in each upstream.
+From: Sean Wang <sean.wang@mediatek.com>
 
-If you resend patches as part of a series, please explain in the change
-log that this patch was unchanged.
+Fix the WMT command timed out during Bluetooth was being shutdown while USB
+was in runtime suspend state.
 
-Guenter
+Fixes: a1c49c434e15 ("Bluetooth: btusb: Add protocol support for MediaTek MT7668U USB devices")
+Co-developed-by: Jing Cai <jing.cai@mediatek.com>
+Signed-off-by: Jing Cai <jing.cai@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index fb1a67189412..b1161853c6ab 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2795,10 +2795,15 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+ 
+ static int btusb_mtk_shutdown(struct hci_dev *hdev)
+ {
++	struct btusb_data *data = hci_get_drvdata(hdev);
+ 	struct btmtk_hci_wmt_params wmt_params;
+ 	u8 param = 0;
+ 	int err;
+ 
++	err = usb_autopm_get_interface(data->intf);
++	if (err < 0)
++		return err;
++
+ 	/* Disable the device */
+ 	wmt_params.op = BTMTK_WMT_FUNC_CTRL;
+ 	wmt_params.flag = 0;
+@@ -2807,12 +2812,12 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev)
+ 	wmt_params.status = NULL;
+ 
+ 	err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
+-	if (err < 0) {
++	if (err < 0)
+ 		bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
+-		return err;
+-	}
+ 
+-	return 0;
++	usb_autopm_put_interface(data->intf);
++
++	return err;
+ }
+ 
+ static void btusb_mtk_cmd_timeout(struct hci_dev *hdev)
+-- 
+2.25.1
+
 
