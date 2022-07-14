@@ -4,56 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6990CCA47B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 16:43:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3AECC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 22:41:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=ASTY3uZ2rAntim7e3/GOxAAg9H0P80DOxyWPmqZhmoA=; b=CL+f0peFBq4ZEk
-	OVKCxCsnXQh/pAetTopH+XDDROc1GBKLVKZyAThvxFfpNGjqNRePELRnTUS+2YHfej5sdQpuicI+2
-	qA0jRQMniQlxcONvB8ZUDkZZgznM0ZZlw+oa/DZ5m6yWClj51Msqj2oVuE1uwOfXaSX6OHqN/BUEH
-	wHBPqsSGGXt6h9WQAlSOFiuBtSjmN2G/vyitAnZ9dtnOziMvooEVQHatK9g04GIxVDQb49gRok/nV
-	x8AGh69/fFi/NaMfjf1KN8YiiMM88irfsx/zG4TpwL6QtnZO5LDX2SihUU/qevM9TiCgYH4X5P5Ax
-	FCFa6/+gbmeXiTZj4HGA==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BNjZtc8/3IeEwFLg6mnYfUpo3VwKg8V0+rWoJwzaUjU=; b=Zi/eCxjqOyCltwOs8b6k12AHwV
+	lUd5O3RpW+1ZOx9ESBdlohJNNB8MZFn7T7YRqYFGxXH7EycFNZxRAM5M9VIXdyTFLGSjmParu+UiB
+	GP+vwIOZriDp0svg8Yy+GzgE0YTv7vbrE5y9F52Fo1Fq5pvCnAobivVdkh5vDcKYOfdwC30aVd7ZZ
+	3DFwfy7bSz6FQtXEwaptVvFLGMCD6FLpgiegsVl56Js6NlU7qDRnlZYeGy05O1ZgVIYXsz4A82bw2
+	ciMa9Wvtyv4ZhiAm/JJY3f+LOWtWRB52k2cjZt+0H9LjsJ5C5LNK5aTOoPAQdwV6ZAXVDCkjIrlE/
+	nhh5pRDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oC1wF-00GNLn-Qf; Thu, 14 Jul 2022 16:43:43 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oC7W9-00267U-Oh; Thu, 14 Jul 2022 22:41:09 +0000
+Received: from mga17.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oC1w4-00GNCr-6z; Thu, 14 Jul 2022 16:43:33 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A4D906207B;
-	Thu, 14 Jul 2022 16:43:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BFA9C341D5;
-	Thu, 14 Jul 2022 16:43:31 +0000 (UTC)
-Received: from rostedt by gandalf.local.home with local (Exim 4.95)
-	(envelope-from <rostedt@goodmis.org>)
-	id 1oC1w2-004lRz-Fm;
-	Thu, 14 Jul 2022 12:43:30 -0400
-Message-ID: <20220714164330.311734558@goodmis.org>
-User-Agent: quilt/0.66
-Date: Thu, 14 Jul 2022 12:43:09 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: linux-kernel@vger.kernel.org
-Cc: Ingo Molnar <mingo@kernel.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [for-next][PATCH 13/23] USB: mtu3: tracing: Use the new __vstring() helper
-References: <20220714164256.403842845@goodmis.org>
+	id 1oC7Vw-0025tn-FU; Thu, 14 Jul 2022 22:40:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1657838456; x=1689374456;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Jp0uvkMpsUVFDNDNVRFxzBaquhMpCq7aL2kVSbO/unQ=;
+  b=S0O3bcidBVqbZHLTVLXtVFV42eu1PTruuXMM3CV/faOMmUMPjRNa4t6z
+   yNgCs/G9bl+nLSl75vYpuJt689Mon69kYWU8VLUF/Bdl4nfG8FyNwPm7z
+   lrrTVLwtFQOwQEhlsjofRQj9RshidJpySWu/I31ugOBOc5spvzJ8pIvEX
+   nQJCBag+TM9DDxr0LIlJMMLewhLhGCMuWdcE/3pOmcp9xgOn2CY3CtaUk
+   X9VkGw7un+JchHwsPjcAVKUqcg+FBTAWsSY7YYouTMKGVxauXA0gugTvD
+   pEdIdOhe6kOx7gswWsrIVC1zCX/9VI2jF02AVN7VOPwAA98snRxi8vhrb
+   w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10408"; a="266057345"
+X-IronPort-AV: E=Sophos;i="5.92,272,1650956400"; 
+   d="scan'208";a="266057345"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2022 15:40:53 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,272,1650956400"; 
+   d="scan'208";a="596254886"
+Received: from lkp-server01.sh.intel.com (HELO fd2c14d642b4) ([10.239.97.150])
+  by orsmga002.jf.intel.com with ESMTP; 14 Jul 2022 15:40:48 -0700
+Received: from kbuild by fd2c14d642b4 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1oC7Vn-0001EP-A0;
+	Thu, 14 Jul 2022 22:40:47 +0000
+Date: Fri, 15 Jul 2022 06:40:45 +0800
+From: kernel test robot <lkp@intel.com>
+To: Biao Huang <biao.huang@mediatek.com>,
+	David Miller <davem@davemloft.net>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org, netdev@vger.kernel.org,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Jose Abreu <joabreu@synopsys.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Biao Huang <biao.huang@mediatek.com>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, macpaul.lin@mediatek.com,
+	Jisheng Zhang <jszhang@kernel.org>,
+	Mohammad Athari Bin Ismail <mohammad.athari.ismail@intel.com>
+Subject: Re: [PATCH net v4 3/3] net: stmmac: fix unbalanced ptp clock issue
+ in suspend/resume flow
+Message-ID: <202207150612.B3phHNEY-lkp@intel.com>
+References: <20220713101002.10970-4-biao.huang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220713101002.10970-4-biao.huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220714_094332_314012_473C2CA9 
-X-CRM114-Status: GOOD (  14.00  )
+X-CRM114-CacheID: sfid-20220714_154056_556328_B8123B6C 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,45 +95,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Steven Rostedt (Google)" <rostedt@goodmis.org>
+Hi Biao,
 
-Instead of open coding a __dynamic_array() with a fixed length (which
-defeats the purpose of the dynamic array in the first place). Use the new
-__vstring() helper that will use a va_list and only write enough of the
-string into the ring buffer that is needed.
+Thank you for the patch! Perhaps something to improve:
 
-Link: https://lkml.kernel.org/r/20220705224750.354926535@goodmis.org
+[auto build test WARNING on net/master]
 
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Ingo Molnar <mingo@kernel.org>
-Cc: Andrew Morton <akpm@linux-foundation.org>
-Cc: linux-usb@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Steven Rostedt (Google) <rostedt@goodmis.org>
----
- drivers/usb/mtu3/mtu3_trace.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+url:    https://github.com/intel-lab-lkp/linux/commits/Biao-Huang/stmmac-dwmac-mediatek-fix-clock-issue/20220713-181044
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/davem/net.git 22b9c41a3fb8ef4624bcda312665937d2ba98aa7
+config: x86_64-randconfig-a016 (https://download.01.org/0day-ci/archive/20220715/202207150612.B3phHNEY-lkp@intel.com/config)
+compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project 5e61b9c556267086ef9b743a0b57df302eef831b)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/f145c999bcff52c22cc849bf17f2b30c5e991c0a
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Biao-Huang/stmmac-dwmac-mediatek-fix-clock-issue/20220713-181044
+        git checkout f145c999bcff52c22cc849bf17f2b30c5e991c0a
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=x86_64 SHELL=/bin/bash drivers/net/ethernet/stmicro/stmmac/
 
-diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
-index 1b897636daf2..ef3c17e2f8a6 100644
---- a/drivers/usb/mtu3/mtu3_trace.h
-+++ b/drivers/usb/mtu3/mtu3_trace.h
-@@ -25,11 +25,11 @@ TRACE_EVENT(mtu3_log,
- 	TP_ARGS(dev, vaf),
- 	TP_STRUCT__entry(
- 		__string(name, dev_name(dev))
--		__dynamic_array(char, msg, MTU3_MSG_MAX)
-+		__vstring(msg, vaf->fmt, vaf->va)
- 	),
- 	TP_fast_assign(
- 		__assign_str(name, dev_name(dev));
--		vsnprintf(__get_str(msg), MTU3_MSG_MAX, vaf->fmt, *vaf->va);
-+		__assign_vstr(msg, vaf->fmt, vaf->va);
- 	),
- 	TP_printk("%s: %s", __get_str(name), __get_str(msg))
- );
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/net/ethernet/stmicro/stmmac/stmmac_main.c:837:6: warning: unused variable 'ret' [-Wunused-variable]
+           int ret;
+               ^
+   1 warning generated.
+
+
+vim +/ret +837 drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+
+891434b18ec0a2 Rayagond Kokatanur 2013-03-26  820  
+a6da2bbb0005e6 Holger Assmann     2021-11-21  821  /**
+a6da2bbb0005e6 Holger Assmann     2021-11-21  822   * stmmac_init_tstamp_counter - init hardware timestamping counter
+a6da2bbb0005e6 Holger Assmann     2021-11-21  823   * @priv: driver private structure
+a6da2bbb0005e6 Holger Assmann     2021-11-21  824   * @systime_flags: timestamping flags
+a6da2bbb0005e6 Holger Assmann     2021-11-21  825   * Description:
+a6da2bbb0005e6 Holger Assmann     2021-11-21  826   * Initialize hardware counter for packet timestamping.
+a6da2bbb0005e6 Holger Assmann     2021-11-21  827   * This is valid as long as the interface is open and not suspended.
+a6da2bbb0005e6 Holger Assmann     2021-11-21  828   * Will be rerun after resuming from suspend, case in which the timestamping
+a6da2bbb0005e6 Holger Assmann     2021-11-21  829   * flags updated by stmmac_hwtstamp_set() also need to be restored.
+a6da2bbb0005e6 Holger Assmann     2021-11-21  830   */
+a6da2bbb0005e6 Holger Assmann     2021-11-21  831  int stmmac_init_tstamp_counter(struct stmmac_priv *priv, u32 systime_flags)
+a6da2bbb0005e6 Holger Assmann     2021-11-21  832  {
+a6da2bbb0005e6 Holger Assmann     2021-11-21  833  	bool xmac = priv->plat->has_gmac4 || priv->plat->has_xgmac;
+a6da2bbb0005e6 Holger Assmann     2021-11-21  834  	struct timespec64 now;
+a6da2bbb0005e6 Holger Assmann     2021-11-21  835  	u32 sec_inc = 0;
+a6da2bbb0005e6 Holger Assmann     2021-11-21  836  	u64 temp = 0;
+a6da2bbb0005e6 Holger Assmann     2021-11-21 @837  	int ret;
+a6da2bbb0005e6 Holger Assmann     2021-11-21  838  
+a6da2bbb0005e6 Holger Assmann     2021-11-21  839  	if (!(priv->dma_cap.time_stamp || priv->dma_cap.atime_stamp))
+a6da2bbb0005e6 Holger Assmann     2021-11-21  840  		return -EOPNOTSUPP;
+a6da2bbb0005e6 Holger Assmann     2021-11-21  841  
+a6da2bbb0005e6 Holger Assmann     2021-11-21  842  	stmmac_config_hw_tstamping(priv, priv->ptpaddr, systime_flags);
+a6da2bbb0005e6 Holger Assmann     2021-11-21  843  	priv->systime_flags = systime_flags;
+a6da2bbb0005e6 Holger Assmann     2021-11-21  844  
+a6da2bbb0005e6 Holger Assmann     2021-11-21  845  	/* program Sub Second Increment reg */
+a6da2bbb0005e6 Holger Assmann     2021-11-21  846  	stmmac_config_sub_second_increment(priv, priv->ptpaddr,
+a6da2bbb0005e6 Holger Assmann     2021-11-21  847  					   priv->plat->clk_ptp_rate,
+a6da2bbb0005e6 Holger Assmann     2021-11-21  848  					   xmac, &sec_inc);
+a6da2bbb0005e6 Holger Assmann     2021-11-21  849  	temp = div_u64(1000000000ULL, sec_inc);
+a6da2bbb0005e6 Holger Assmann     2021-11-21  850  
+a6da2bbb0005e6 Holger Assmann     2021-11-21  851  	/* Store sub second increment for later use */
+a6da2bbb0005e6 Holger Assmann     2021-11-21  852  	priv->sub_second_inc = sec_inc;
+a6da2bbb0005e6 Holger Assmann     2021-11-21  853  
+a6da2bbb0005e6 Holger Assmann     2021-11-21  854  	/* calculate default added value:
+a6da2bbb0005e6 Holger Assmann     2021-11-21  855  	 * formula is :
+a6da2bbb0005e6 Holger Assmann     2021-11-21  856  	 * addend = (2^32)/freq_div_ratio;
+a6da2bbb0005e6 Holger Assmann     2021-11-21  857  	 * where, freq_div_ratio = 1e9ns/sec_inc
+a6da2bbb0005e6 Holger Assmann     2021-11-21  858  	 */
+a6da2bbb0005e6 Holger Assmann     2021-11-21  859  	temp = (u64)(temp << 32);
+a6da2bbb0005e6 Holger Assmann     2021-11-21  860  	priv->default_addend = div_u64(temp, priv->plat->clk_ptp_rate);
+a6da2bbb0005e6 Holger Assmann     2021-11-21  861  	stmmac_config_addend(priv, priv->ptpaddr, priv->default_addend);
+a6da2bbb0005e6 Holger Assmann     2021-11-21  862  
+a6da2bbb0005e6 Holger Assmann     2021-11-21  863  	/* initialize system time */
+a6da2bbb0005e6 Holger Assmann     2021-11-21  864  	ktime_get_real_ts64(&now);
+a6da2bbb0005e6 Holger Assmann     2021-11-21  865  
+a6da2bbb0005e6 Holger Assmann     2021-11-21  866  	/* lower 32 bits of tv_sec are safe until y2106 */
+a6da2bbb0005e6 Holger Assmann     2021-11-21  867  	stmmac_init_systime(priv, priv->ptpaddr, (u32)now.tv_sec, now.tv_nsec);
+a6da2bbb0005e6 Holger Assmann     2021-11-21  868  
+a6da2bbb0005e6 Holger Assmann     2021-11-21  869  	return 0;
+a6da2bbb0005e6 Holger Assmann     2021-11-21  870  }
+a6da2bbb0005e6 Holger Assmann     2021-11-21  871  EXPORT_SYMBOL_GPL(stmmac_init_tstamp_counter);
+a6da2bbb0005e6 Holger Assmann     2021-11-21  872  
+
 -- 
-2.35.1
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
