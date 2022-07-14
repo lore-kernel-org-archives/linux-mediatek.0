@@ -4,73 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72570CCA47B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 06:01:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAA26C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 06:08:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vmyDDNYGXr4q5bmU5q+v8Pe1hNOlDn68pcdVfqc582k=; b=cPMjpgcYhTuHao6EElYFYm9yDq
-	r+K4DEGiT2qG1hGPUDlNs6x5oAaY21mZhu1hs49QFE6qpDVTf8AMQbiArjNUTN/ZhEs2W8GjxXrKG
-	Q4GZ4FQ+QD3uRMkxq39unISNeB49wU15iHcAsZHFXu9hObBrfb6NiL19uVc3o2xQqoNiUH741cHtb
-	Ux9QwE3eC797TrR8fM0LUFzQiLbttkzl0lNEGAEk9jt9zipG3G4nzdS5L9oA6YtFj1CyimCYu/pE6
-	ahDuhgc9iubFd+5FZcs4iz4T3nLOSPd8HmYlxoQH0L3nifLk7wc2yuyAoMTwH5Y2cLwX16ifAiFz7
-	3Zz1PTtA==;
+	bh=8i4x/mwUJ8ykmZTRvUljBkWg1Nr9eu0kchcsmorp4cE=; b=Uu6L+mx3evI4FXf8SZlOY5CSSW
+	bP6dlzH7gfN5J1EOkiQIDswIzjONwY3h7ZZTAZcjGeYe3Mwros0x0NZ9fpK7IL32r6uaS8c01rWzM
+	s6tmkDve3+YzJOyJ8DbXcgR0QNzLc4bWLuldMdsn1XY37v/tmrjJftZ5RAMffajlUzs+oEUyYNTHa
+	xXEphFQs/hoY8/WoZXoq75NEjBqQaCaUXQ4zCbTeEQEFf/poOjOv9lw4WorIcFhtYcqTqBXEKJYL+
+	NXHk61lXjH92wxaZUFbQ7OafugrT2pHwJ3GYgTKc9Xd9FYioJfZzW7FVAzHiOPd37PaaSSGkl3KBO
+	F9Ra037w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBruo-00BG5v-Lz; Thu, 14 Jul 2022 06:01:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oBs1S-00BJ2f-Dv; Thu, 14 Jul 2022 06:08:26 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBruG-00BFuX-N4; Thu, 14 Jul 2022 06:01:02 +0000
-X-UUID: ea23fdca19514c7094e68ea4156fff94-20220713
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:0141d993-8891-4817-a84f-a8ce195100f9,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:11e375d7-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: ea23fdca19514c7094e68ea4156fff94-20220713
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <biao.huang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2135666181; Wed, 13 Jul 2022 23:00:56 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 14 Jul 2022 14:00:19 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 14 Jul 2022 14:00:18 +0800
-From: Biao Huang <biao.huang@mediatek.com>
-To: David Miller <davem@davemloft.net>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue
-	<alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
-	<pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Biao
- Huang <biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <macpaul.lin@mediatek.com>, Jisheng
- Zhang <jszhang@kernel.org>, Mohammad Athari Bin Ismail
-	<mohammad.athari.ismail@intel.com>
-Subject: [PATCH net v5 2/3] net: stmmac: fix pm runtime issue in stmmac_dvr_remove()
-Date: Thu, 14 Jul 2022 14:00:13 +0800
-Message-ID: <20220714060014.18958-3-biao.huang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220714060014.18958-1-biao.huang@mediatek.com>
-References: <20220714060014.18958-1-biao.huang@mediatek.com>
+	id 1oBs1P-00BJ0T-38
+	for linux-mediatek@lists.infradead.org; Thu, 14 Jul 2022 06:08:24 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4E3E261377;
+	Thu, 14 Jul 2022 06:08:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D443C34114;
+	Thu, 14 Jul 2022 06:08:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1657778901;
+	bh=jTQ/LyaYu+ARB0uVYgcaJmX7KusOZC2F4u5PaYlebJw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rF00CT6C+ERTa7bYl82AbZdlhHqLE6sMYd8MieOzHoOXNJzT5mXgGkUjMtjBQcF2S
+	 xNFIZREC4AUxzFrVeDnuTjOdAahqS0ug2nvYmhIHyUOnjboMFff+Go0v8svr/JlcLZ
+	 NSj5BMG8gp6vfZmsWzY4qGCUBnhnNfTXdpOSpZSA=
+Date: Thu, 14 Jul 2022 08:08:18 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: sean.wang@kernel.org
+Cc: stable@vger.kernel.org, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH 5.15 1/5] Revert "mt76: mt7921: Fix the error handling
+ path of mt7921_pci_probe()"
+Message-ID: <Ys+y0vP9PKc+skNE@kroah.com>
+References: <4bdcd29552ba78c87d8799181b9acddec465ad3c.1657764335.git.sean.wang@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4bdcd29552ba78c87d8799181b9acddec465ad3c.1657764335.git.sean.wang@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_230100_772262_DCE9CA00 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20220713_230823_213232_BE5E596B 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,52 +70,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If netif is running when stmmac_dvr_remove is invoked,
-the unregister_netdev will call ndo_stop(stmmac_release) and
-vlan_kill_rx_filter(stmmac_vlan_rx_kill_vid).
+On Wed, Jul 13, 2022 at 07:07:37PM -0700, sean.wang@kernel.org wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> This reverts commit 663457f421d41e9d2fcb1e84baf43d1433f80c08.
 
-Currently, stmmac_dvr_remove() will disable pm runtime before
-unregister_netdev. When stmmac_vlan_rx_kill_vid is invoked,
-pm_runtime_resume_and_get in it returns EACCESS error number,
-and reports:
+What is the commit id of this in Linus's tree?
 
-	dwmac-mediatek 11021000.ethernet eth0: stmmac_dvr_remove: removing driver
-	dwmac-mediatek 11021000.ethernet eth0: FPE workqueue stop
-	dwmac-mediatek 11021000.ethernet eth0: failed to kill vid 0081/0
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+> There was mistaken in
+> 649178c0493e ("mt76: mt7921e: fix possible probe failure after reboot")
+> that caused WiFi reset cannot work well as the reported issue
+> "PROBLEM: [Stable v5.15.42+] [mt7921] Wake after suspend locks up system
+> when mt7921-driver is used on a Lenovo ThinkPad E15 G3"
+> in http://lists.infradead.org/pipermail/linux-mediatek/2022-June/042668.html
+> So we need to revert the patch first. Will be applied again later.
 
-Move the pm_runtime_disable to the end of stmmac_dvr_remove
-to fix this issue.
+We need all of this context in the changelog text.
 
-Fixes: 6449520391dfc ("net: stmmac: properly handle with runtime pm in stmmac_dvr_remove()")
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
----
- drivers/net/ethernet/stmicro/stmmac/stmmac_main.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+Please fix up and resend.
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-index d1a7cf4567bc..197fac587ad5 100644
---- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
-@@ -7213,8 +7213,6 @@ int stmmac_dvr_remove(struct device *dev)
- 	netdev_info(priv->dev, "%s: removing driver", __func__);
- 
- 	pm_runtime_get_sync(dev);
--	pm_runtime_disable(dev);
--	pm_runtime_put_noidle(dev);
- 
- 	stmmac_stop_all_dma(priv);
- 	stmmac_mac_set(priv, priv->ioaddr, false);
-@@ -7241,6 +7239,9 @@ int stmmac_dvr_remove(struct device *dev)
- 	mutex_destroy(&priv->lock);
- 	bitmap_free(priv->af_xdp_zc_qps);
- 
-+	pm_runtime_disable(dev);
-+	pm_runtime_put_noidle(dev);
-+
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(stmmac_dvr_remove);
--- 
-2.25.1
+thanks,
 
+greg k-h
 
