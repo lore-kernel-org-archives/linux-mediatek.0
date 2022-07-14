@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DBD8C433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE949C43334
 	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 09:22:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,35 +12,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OS/9CEIBJUwJHHxBEoAlkpNDdUCpOri/wCL2oaO78vc=; b=yjb2SzATR6mEstCTy6k/SIHYEg
-	Vpl+MKenZfLEUXPWR3QmTTNRwzFuQeygNmj2uzbsarlwIbBeAfh1cRUxNqVLspv5wQvzWBkFxEmxq
-	Tv/tzseif/Rq2a4pq8xfsHLAJggRv/YKKJD/nicKwS/9P7S/7e/hDy3MbsEppqBjYhEzw1e1LMVE4
-	KtH1OMpoV4jNnFFo46BLibGtagRLEp13USP7pGdM1Gdq1rRYA7RXgKWX7iOxqXuolyrx9jv7uT4h7
-	HCliLV7jqmL+Fa80ejUybxaKbAEb8NuoWaVRyb3RxfY2FzR70AjGrBr8shwsc+Bf7TRI5hms2lko1
-	/Ww3/o8Q==;
+	bh=x6By08t7O5iJF/MpH/vqzz3KKuy1RRKqChBM7YZpjpM=; b=0rOeDiSFsfCp6zx4+pDlLnSnWc
+	s82Tau1duyycSFYcQs4VC2PTOm+/YHHKzAButTBfY/nd/rzvkL6bD8VjjdMv5YPqDvUNZ1vTpvar7
+	gPb2LAjswFVWUnvvu+uI7M0T0kImzr8mAY2TUdC4YKHKIIz+vbDP/EtTD6Mpt4P/SvFZpbobNWYyH
+	vG2XvHUNnHc1Yb2zxjJNZicikRTWPxlzY1tkxj4MKzHHqxol1ZxqXJ7IbWfSSC7L8Yqyve8T1zYs7
+	Tn0+DIG6gNzPKMu6eVASA5XXKdWFoIDyncwtne0hSoy1mz95wL0qVmBeYcwh4BibI+P1DmfEiJuAW
+	5dHY0o8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBv3W-00CmZz-4h; Thu, 14 Jul 2022 09:22:46 +0000
+	id 1oBv3W-00CmaW-So; Thu, 14 Jul 2022 09:22:46 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBv35-00CmFs-Fq; Thu, 14 Jul 2022 09:22:21 +0000
-X-UUID: 8037955e29d14b85b92d4ccb6b9f2629-20220714
+	id 1oBv35-00CmGF-QD; Thu, 14 Jul 2022 09:22:21 +0000
+X-UUID: cc809e3c54064d11a0c050e7f53143ed-20220714
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:eb58d96b-65ba-4ca8-a964-e630e1b26512,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:429ef831-2d6c-440c-a5ee-cb8aae1448a7,OB:0,LO
 	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
 	ION:release,TS:25
-X-CID-META: VersionHash:0f94e32,CLOUDID:c8407cd7-5d6d-4eaf-a635-828a3ee48b7c,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:79004a64-0b3f-4b2c-b3a6-ed5c044366a0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 8037955e29d14b85b92d4ccb6b9f2629-20220714
+X-UUID: cc809e3c54064d11a0c050e7f53143ed-20220714
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 623376029; Thu, 14 Jul 2022 02:22:05 -0700
+	with ESMTP id 956460116; Thu, 14 Jul 2022 02:22:06 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 14 Jul 2022 17:21:54 +0800
+ 15.2.792.15; Thu, 14 Jul 2022 17:21:55 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
  Transport; Thu, 14 Jul 2022 17:21:54 +0800
@@ -65,9 +65,9 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
 	<river.cheng@mediatek.com>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<cellopoint.kai@gmail.com>
-Subject: [PATCH v22 1/4] dt-binding: mediatek: add bindings for MediaTek MDP3 components
-Date: Thu, 14 Jul 2022 17:21:50 +0800
-Message-ID: <20220714092153.16686-2-moudy.ho@mediatek.com>
+Subject: [PATCH v22 2/4] dt-binding: mediatek: add bindings for MediaTek CCORR and WDMA
+Date: Thu, 14 Jul 2022 17:21:51 +0800
+Message-ID: <20220714092153.16686-3-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220714092153.16686-1-moudy.ho@mediatek.com>
 References: <20220714092153.16686-1-moudy.ho@mediatek.com>
@@ -75,8 +75,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220714_022219_553401_71C22B48 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20220714_022219_881903_A650F409 
+X-CRM114-Status: GOOD (  15.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,149 +91,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds DT binding documents for Media Data Path 3 (MDP3)
-a unit in multimedia system combined with several components and
-used for scaling and color format convert.
+This patch adds DT binding documentation for MediaTek's CCORR and
+WDMA components.
+These components exist in both MediaTek's Media Data Path 3(MDP3) and DRM,
+and the bindings are placed under the folder "./soc/mediatek" to prevent
+duplicate builds.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 Reviewed-by: Rob Herring <robh@kernel.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../bindings/media/mediatek,mdp3-rdma.yaml    | 95 +++++++++++++++++++
- .../bindings/media/mediatek,mdp3-rsz.yaml     | 77 +++++++++++++++
- .../bindings/media/mediatek,mdp3-wrot.yaml    | 80 ++++++++++++++++
- 3 files changed, 252 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+ .../bindings/soc/mediatek/mediatek,ccorr.yaml | 68 ++++++++++++++++
+ .../bindings/soc/mediatek/mediatek,wdma.yaml  | 81 +++++++++++++++++++
+ 2 files changed, 149 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
 new file mode 100644
-index 000000000000..6bbc4dde0393
+index 000000000000..8677a3f58487
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-@@ -0,0 +1,95 @@
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+@@ -0,0 +1,68 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml#
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,ccorr.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: Mediatek Read Direct Memory Access
++title: Mediatek color correction
 +
 +maintainers:
 +  - Matthias Brugger <matthias.bgg@gmail.com>
 +  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
 +
 +description: |
-+  Mediatek Read Direct Memory Access(RDMA) component used to do read DMA.
-+  It contains one line buffer to store the sufficient pixel data, and
-+  must be siblings to the central MMSYS_CONFIG node.
-+  For a description of the MMSYS_CONFIG binding, see
-+  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-+  for details.
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: mediatek,mt8183-mdp3-rdma
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: '/schemas/types.yaml#/definitions/phandle-array'
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    description: The register of client driver can be configured by gce with
-+      4 arguments defined in this property. Each GCE subsys id is mapping to
-+      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
-+
-+  mediatek,gce-events:
-+    description:
-+      The event id which is mapping to the specific hardware event signal
-+      to gce. The event id is defined in the gce header
-+      include/dt-bindings/gce/<chip>-gce.h of each chips.
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: RDMA clock
-+      - description: RSZ clock
-+
-+  iommus:
-+    maxItems: 1
-+
-+  mboxes:
-+    items:
-+      - description: used for 1st data pipe from RDMA
-+      - description: used for 2nd data pipe from RDMA
-+
-+required:
-+  - compatible
-+  - reg
-+  - mediatek,gce-client-reg
-+  - mediatek,gce-events
-+  - power-domains
-+  - clocks
-+  - iommus
-+  - mboxes
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    #include <dt-bindings/gce/mt8183-gce.h>
-+    #include <dt-bindings/power/mt8183-power.h>
-+    #include <dt-bindings/memory/mt8183-larb-port.h>
-+
-+    mdp3_rdma0: mdp3-rdma0@14001000 {
-+      compatible = "mediatek,mt8183-mdp3-rdma";
-+      reg = <0x14001000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
-+      mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
-+                            <CMDQ_EVENT_MDP_RDMA0_EOF>;
-+      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+      clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-+               <&mmsys CLK_MM_MDP_RSZ1>;
-+      iommus = <&iommu>;
-+      mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST>,
-+               <&gce 21 CMDQ_THR_PRIO_LOWEST>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-new file mode 100644
-index 000000000000..b136b3845036
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-@@ -0,0 +1,77 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-rsz.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Resizer
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to do frame resizing.
++  Mediatek color correction with 3X3 matrix.
 +
 +properties:
 +  compatible:
 +    items:
 +      - enum:
-+          - mediatek,mt8183-mdp3-rsz
++          - mediatek,mt8183-mdp3-ccorr
 +
 +  reg:
 +    maxItems: 1
@@ -274,49 +173,41 @@ index 000000000000..b136b3845036
 +    #include <dt-bindings/clock/mt8183-clk.h>
 +    #include <dt-bindings/gce/mt8183-gce.h>
 +
-+    mdp3_rsz0: mdp3-rsz0@14003000 {
-+      compatible = "mediatek,mt8183-mdp3-rsz";
-+      reg = <0x14003000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
-+      mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ0_SOF>,
-+                            <CMDQ_EVENT_MDP_RSZ0_EOF>;
-+      clocks = <&mmsys CLK_MM_MDP_RSZ0>;
++    mdp3_ccorr: mdp3-ccorr@1401c000 {
++      compatible = "mediatek,mt8183-mdp3-ccorr";
++      reg = <0x1401c000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
++      mediatek,gce-events = <CMDQ_EVENT_MDP_CCORR_SOF>,
++                            <CMDQ_EVENT_MDP_CCORR_EOF>;
++      clocks = <&mmsys CLK_MM_MDP_CCORR>;
 +    };
-+
-+    mdp3_rsz1: mdp3-rsz1@14004000 {
-+      compatible = "mediatek,mt8183-mdp3-rsz";
-+      reg = <0x14004000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
-+      mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ1_SOF>,
-+                            <CMDQ_EVENT_MDP_RSZ1_EOF>;
-+      clocks = <&mmsys CLK_MM_MDP_RSZ1>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
 new file mode 100644
-index 000000000000..0069b350ee64
+index 000000000000..7b01724f21c3
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-@@ -0,0 +1,80 @@
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
+@@ -0,0 +1,81 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-wrot.yaml#
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,wdma.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: Mediatek Write DMA with Rotation
++title: Mediatek Write Direct Memory Access
 +
 +maintainers:
 +  - Matthias Brugger <matthias.bgg@gmail.com>
 +  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
 +
 +description: |
-+  One of Media Data Path 3 (MDP3) components used to write DMA with frame rotation.
++  Mediatek Write Direct Memory Access(WDMA) component used to write
++  the data into DMA.
 +
 +properties:
 +  compatible:
 +    items:
 +      - enum:
-+          - mediatek,mt8183-mdp3-wrot
++          - mediatek,mt8183-mdp3-wdma
 +
 +  reg:
 +    maxItems: 1
@@ -367,14 +258,14 @@ index 000000000000..0069b350ee64
 +    #include <dt-bindings/power/mt8183-power.h>
 +    #include <dt-bindings/memory/mt8183-larb-port.h>
 +
-+    mdp3_wrot0: mdp3-wrot0@14005000 {
-+      compatible = "mediatek,mt8183-mdp3-wrot";
-+      reg = <0x14005000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
-+      mediatek,gce-events = <CMDQ_EVENT_MDP_WROT0_SOF>,
-+                            <CMDQ_EVENT_MDP_WROT0_EOF>;
++    mdp3_wdma: mdp3-wdma@14006000 {
++      compatible = "mediatek,mt8183-mdp3-wdma";
++      reg = <0x14006000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
++      mediatek,gce-events = <CMDQ_EVENT_MDP_WDMA0_SOF>,
++                            <CMDQ_EVENT_MDP_WDMA0_EOF>;
 +      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+      clocks = <&mmsys CLK_MM_MDP_WROT0>;
++      clocks = <&mmsys CLK_MM_MDP_WDMA0>;
 +      iommus = <&iommu>;
 +    };
 -- 
