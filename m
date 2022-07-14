@@ -4,71 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07530C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 14:53:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 319BFC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 15:45:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fhZPYWENQcc8Mxb6WOwNWGraFlghwHpwwtLiP/F4IJ4=; b=Q23hIc6P9QLWsgv5xtEF48pVGm
-	6/JGFD0DowdjYFtTbzRQ5Ap7c5NE1Y6VyJQW1WzpAmBZzQoyLw4t20oRb951Rh7y1nOzp3OwLmfLQ
-	YVbMwxnsaZ+n+jzdYmOE9UsE9LBogcDKmc1j7ww74ujE98fk0lYVNJuzYpSkHcMZ4g1BJx6loQyj2
-	FBwiK4N3eHnfibCS0ycvq2F80mB6DPlOGNOIK5COYAHsI1W/bl2iSgUxzM/A+K2rtGNSmQCfFvU55
-	+nVB0cpSJunnP3GiiYpw1LH6qJkY5138GqoDfVaY8x4paev9tnhqQEkzLiA1ESl36qRu9RrK/f3I5
-	uoqNBLjQ==;
+	bh=TbkN+Hdvhi6Kmret/r3qCsqgayE09nkDMn2hAXN/rmw=; b=U2XCJCR5I/bKMB+/8t+AqbsY2l
+	8BUyw8ZtP53wNNKK2E2pm7hFttFd9+EZc/OXyXfEgRA/KF9eFsjyqNpsnRxzISYLP+03O7a9lD3eK
+	3yCnDR//r5jA4b73/H979lV+BXC4q5XbxWJkjQy+J3fPlnwuzyKoksaBTOQ37Ql5nC8ZYCDUn+n5D
+	L+Mmb6eL60KiaemSnfmfLQaVv/qm5JObQ1DUbmDmLGA9JXkMlblRWYocV1E0Z7bG2JPOApE7qUqWk
+	SiGHXgVa1eZIQ+oUv8dDKVo3INnB2W9NwuTxqxYMPEGHZQVV2Kf1y2/7hU+4F3mmRDmiXsJRA3lYa
+	JMvyJ8LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oC0Dl-00FNvQ-Vf; Thu, 14 Jul 2022 14:53:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oC11G-00Frr8-SC; Thu, 14 Jul 2022 15:44:50 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oC0Dh-00FNqV-7Y; Thu, 14 Jul 2022 14:53:40 +0000
-X-UUID: 736a9c08bb6249fcb031640c913d7691-20220714
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=fhZPYWENQcc8Mxb6WOwNWGraFlghwHpwwtLiP/F4IJ4=;
-	b=PIqqjuFgAnPdZEiWvbJ6DBEjtG9cDLVUQmvCLErZ6sWX9P6N8I3ax5tU5WTTiSkIdsajMZqUCq/4x7bfAOwzPXgQuI87y1pLhPhq0HgZDi6/MjvjjXscHU087QLev/Tlv2k+RBMVXOUBVPlnpZNx4z4uA6Nt9V6Y1FtoKIayxME=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:6b82517e-a17e-4298-abbd-72805a6c204f,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:fd7c81d7-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 736a9c08bb6249fcb031640c913d7691-20220714
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <kewei.xu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1867698422; Thu, 14 Jul 2022 07:53:30 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 14 Jul 2022 21:52:53 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 14 Jul 2022 21:52:52 +0800
-Message-ID: <4ae9195bd52191ffb816c86cf18a38daf7c66f43.camel@mediatek.com>
-Subject: Re: [PATCH 1/1] dt-bindings: uart: update bindings for MT8188 SoC
-From: Kewei Xu <kewei.xu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<gregkh@linuxfoundation.org>, <robh+dt@kernel.org>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<srv_heupstream@mediatek.com>, <leilk.liu@mediatek.com>,
-	<qii.wang@mediatek.com>, <liguo.zhang@mediatek.com>,
-	<caiyu.chen@mediatek.com>, <david-yh.chiu@mediatek.com>
-Date: Thu, 14 Jul 2022 21:52:52 +0800
-In-Reply-To: <468507bc-e10d-0d7c-aa77-bab4769efbcf@collabora.com>
-References: <20220714104149.23343-1-kewei.xu@mediatek.com>
-	 <468507bc-e10d-0d7c-aa77-bab4769efbcf@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oC0tK-00FmP2-9q; Thu, 14 Jul 2022 15:36:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6C70261F42;
+	Thu, 14 Jul 2022 15:36:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CAC1C34114;
+	Thu, 14 Jul 2022 15:36:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1657812996;
+	bh=S7Jli/0UK5A2I2p584ejk2DES5r7heDw/0CBHXfrl+k=;
+	h=From:List-Id:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=DdK2vqf1TObNCH3C7RKPrF9hKYqVm3SneBLvYWIr9cR6Rl5baakjnzKjAKCRMRRLw
+	 JXrB7F34lmzZQezh2ULIM/71g9cE2GsCTmB/sgQ8weJWNwkoM4VS4VMCYKCheVofWE
+	 0uXZxHaNJLFL959PudOhr2rj051hVSVF118M1DT+aADCzt5jt2IUO2+fSFpEf0P6qb
+	 ejcWuEVUsFIL1tHG6AQk8866bQWtVUAD/YMQ+1/+SOQ9rkW46xtBV6D08WmEZVOIY6
+	 YloOrAWulolgM2MCYsfFn+cspXkhl8ZVOoQPHLV3dc9u1IdRulo98wWdnD3rwBR8m+
+	 xZkKA/Y4eHOcA==
+From: Arnd Bergmann <arnd@kernel.org>
+To: SoC Team <soc@kernel.org>,
+	arm-soc <arm@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	Rex-BC Chen <rex-bc.chen@mediatek.com>,
+	Xiangsheng Hou <xiangsheng.hou@mediatek.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Nick Hainke <vincent@systemli.org>,
+	Moudy Ho <moudy.ho@mediatek.com>,
+	Roger Lu <roger.lu@mediatek.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	"allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [GIT PULL] arm64: dts: MediaTek updates for v5.20
+Date: Thu, 14 Jul 2022 17:36:13 +0200
+Message-Id: <165781284952.3193627.17270894211710599808.b4-ty@arndb.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <b0d5b584-2693-73b3-79f6-3e2292f006ea@gmail.com>
+References: <b0d5b584-2693-73b3-79f6-3e2292f006ea@gmail.com>
 MIME-Version: 1.0
-X-MTK: N
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220714_075337_299153_4C2ED9AD 
-X-CRM114-Status: GOOD (  15.27  )
+X-CRM114-CacheID: sfid-20220714_083638_417843_7D50DEF8 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,35 +86,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIyLTA3LTE0IGF0IDE0OjMwICswMjAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
-ZWdubyB3cm90ZToNCj4gSWwgMTQvMDcvMjIgMTI6NDEsIGtld2VpLnh1QG1lZGlhdGVrLmNvbSBo
-YSBzY3JpdHRvOg0KPiA+IEZyb206IEtld2VpIFh1IDxrZXdlaS54dUBtZWRpYXRlay5jb20+DQo+
-ID4gDQo+ID4gQWRkIGEgRFQgYmluZGluZyBkb2N1bWVudGF0aW9uIGZvciB0aGUgTVQ4MTg4IHNv
-Yy4NCj4gPiANCj4gPiBTaWduZWQtb2ZmLWJ5OiBLZXdlaSBYdSA8a2V3ZWkueHVAbWVkaWF0ZWsu
-Y29tPg0KPiANCj4gVGhpcyBmaWxlIGRvZXNuJ3QgZXZlbiBleGlzdCBhbnltb3JlLiBJJ3ZlIGNv
-bnZlcnRlZCBpdCB0byBqc29uLQ0KPiBzY2hlbWEsIGNoZWNrDQo+IG91dCBjb21taXQgMjJiMTBi
-MzNiOWM2ZTc2YmMwOGY2NGU1Mjg2MmU2OGM0ZGM3NjA1Mg0KPiANCj4gUmVnYXJkcywNCj4gQW5n
-ZWxvDQoNClRoYW5rIHlvdSBmb3IgeW91ciByZXBseSwgSSdsbCBjb25maXJtIHRoZSBicmFuY2gg
-dmVyc2lvbiBhbmQgcmUtcHVzaA0KdGhlIHBhdGNoIGJhc2VkIG9uIHRoZSBsYXRlc3QgY29kZWJh
-c2UuDQoNClJlZ2FyZHMsDQpLZXdlaQ0KPiA+IC0tLQ0KPiA+ICAgRG9jdW1lbnRhdGlvbi9kZXZp
-Y2V0cmVlL2JpbmRpbmdzL3NlcmlhbC9tdGstdWFydC50eHQgfCAxICsNCj4gPiAgIDEgZmlsZSBj
-aGFuZ2VkLCAxIGluc2VydGlvbigrKQ0KPiA+IA0KPiA+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0
-aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc2VyaWFsL210ay11YXJ0LnR4dA0KPiA+IGIvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3NlcmlhbC9tdGstdWFydC50eHQNCj4gPiBpbmRl
-eCAxMTNiNWQ2YTIyNDUuLmU1MDk0ZTFkYjdiNCAxMDA2NDQNCj4gPiAtLS0gYS9Eb2N1bWVudGF0
-aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc2VyaWFsL210ay11YXJ0LnR4dA0KPiA+ICsrKyBiL0Rv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zZXJpYWwvbXRrLXVhcnQudHh0DQo+ID4g
-QEAgLTIxLDYgKzIxLDcgQEAgUmVxdWlyZWQgcHJvcGVydGllczoNCj4gPiAgICAgKiAibWVkaWF0
-ZWssbXQ4MTczLXVhcnQiIGZvciBNVDgxNzMgY29tcGF0aWJsZSBVQVJUUw0KPiA+ICAgICAqICJt
-ZWRpYXRlayxtdDgxODMtdWFydCIsICJtZWRpYXRlayxtdDY1NzctdWFydCIgZm9yIE1UODE4Mw0K
-PiA+IGNvbXBhdGlibGUgVUFSVFMNCj4gPiAgICAgKiAibWVkaWF0ZWssbXQ4MTg2LXVhcnQiLCAi
-bWVkaWF0ZWssbXQ2NTc3LXVhcnQiIGZvciBNVDgxODMNCj4gPiBjb21wYXRpYmxlIFVBUlRTDQo+
-ID4gKyAgKiAibWVkaWF0ZWssbXQ4MTg4LXVhcnQiLCAibWVkaWF0ZWssbXQ2NTc3LXVhcnQiIGZv
-ciBNVDgxODgNCj4gPiBjb21wYXRpYmxlIFVBUlRTDQo+ID4gICAgICogIm1lZGlhdGVrLG10ODE5
-Mi11YXJ0IiwgIm1lZGlhdGVrLG10NjU3Ny11YXJ0IiBmb3IgTVQ4MTkyDQo+ID4gY29tcGF0aWJs
-ZSBVQVJUUw0KPiA+ICAgICAqICJtZWRpYXRlayxtdDgxOTUtdWFydCIsICJtZWRpYXRlayxtdDY1
-NzctdWFydCIgZm9yIE1UODE5NQ0KPiA+IGNvbXBhdGlibGUgVUFSVFMNCj4gPiAgICAgKiAibWVk
-aWF0ZWssbXQ4NTE2LXVhcnQiIGZvciBNVDg1MTYgY29tcGF0aWJsZSBVQVJUUw0KPiA+IA0KPiAN
-Cj4gDQo=
+From: Arnd Bergmann <arnd@arndb.de>
 
+On Fri, 8 Jul 2022 19:44:15 +0200, Matthias Brugger wrote:
+> Please have a look on the updates for 64 bit MediaTek boards.
+> 
+> We have some good news here. We have gained support for Acer Chromebook 514
+> (MT8192) and Acer Chromebook Spin 513 (MT8195). Support is not complete, but
+> things progress. Apart from that there is still updates to the MT8183 based
+> boards and a few for MT8173.
+> 
+> Another highlight is Angelos great work on the older MT6795, which got a few new
+> nodes in this release. I want to mention that there are many more drivers in the
+> pipeline, which I hope will get part of v5.21.
+> 
+> [...]
+
+Merged into arm/dt, thanks!
+
+merge commit: 5a75c2951af71cf04eff2fcce8bfe7684a5ba293
+
+       Arnd
 
