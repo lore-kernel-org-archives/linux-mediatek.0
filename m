@@ -4,96 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10D87C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Jul 2022 22:05:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 070CBC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 02:08:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uOBKq9yzkPX8ihcF5QdXtzsKbLEa/eP+OCHtDKfv5N0=; b=mjhUQpGjG4xp2R5GHcgV9pHlZO
-	PUGXfZBX2cz76+El0pX51u3jj/MVWl3vhh949salV9p86tCeVEGpMuWnvLv4EgZM2qG06BlDOD3YU
-	s1smz+Z633hwFY55aCiT/6wXGd7GOBQBBCi8KdZBuxXnTFUgNKP9TD5YgO+JQgEvsAeWpioEKO8Lg
-	c25kZH/mqfqDlbspnvUTdRqlI3D16XZRRBSDhHcDDM7L0VJyKpkjZvrb5WgPUwHLFoV5nIhclWOTh
-	6RJSHBdKRavJ4KZSodvCUXnbTVfVvNSrX/gz73ZLLt1PyHwu1gHgVU1a2vlaop4pQTb2EkCKrO7Ij
-	SnYaubJA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vtnkEvi5Udxd5BmGMWeYsoH6oqCqsLmq/xNGp+XW7xg=; b=y4u28CmZuthJ89VBu4ti65c+LZ
+	o4NJSQYI7i0mNIk1C8TLdEtdPMLzNg9wfvtMNV4gZ73aYRmLklbOvbsxSdKKr2otNY0L1iFv56dWV
+	b6LQz9XMZnAf6SOmTSX2CCl/NlwyvAGG/r+0FkhmzHIXqOIpdh6X3g7opkmxtrLsz05EP2ec4v6Ak
+	ozxM1TNhXttFWAF+8jLzWM5G4a90mLyk/YXo/G0+OoCHpZziIiYL7GIsAZWgi0M60+oDEPae35EYy
+	4jZOTlBYVbiWpGktvcktKypYz7dbxWImlVF9blrQ4ddFWvcssogWw2eIW8Z1N5W9KUFaO1vwDfxk4
+	8AgO6llA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBkUI-008PUM-3j; Wed, 13 Jul 2022 22:05:42 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1oBoGp-009wh6-E2; Thu, 14 Jul 2022 02:08:03 +0000
+Received: from mail-qv1-f46.google.com ([209.85.219.46])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBkU4-008POU-CV; Wed, 13 Jul 2022 22:05:29 +0000
-Received: by mail-pg1-x534.google.com with SMTP id q82so11656169pgq.6;
-        Wed, 13 Jul 2022 15:05:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=uOBKq9yzkPX8ihcF5QdXtzsKbLEa/eP+OCHtDKfv5N0=;
-        b=hk176+zLssVNRft8dirHFUQSzDMI0whOu6+6yXw9L8L7d0wLw7U16maq1hJRXPZTq/
-         Gz/tk/9k5ncT0FkQbbwWFHn+Pbt8O7O5TawARP5Ey5PdgOfYEEgoTvfNvjwaKlC2Fp+u
-         /yc6TfI2wpFGrTa7ELUtOTilQC8x/WO/N5T2D8R57dpFGws1xuiH5hYBGa0wwi3eo4hN
-         f5S77L0OFyouEIHVUdo1qtgyMETHSDVdDO9i7srid340U9uCEKObdUPpsjKnJGrtF46J
-         gnb7/zaBOGh40U273oDZM0oA/ohc98tEWGZ+o/mSmHyWI2/5r6+mUVZip7FZc9yew0w6
-         weVQ==
+	id 1oBoGj-009waG-K4
+	for linux-mediatek@lists.infradead.org; Thu, 14 Jul 2022 02:08:01 +0000
+Received: by mail-qv1-f46.google.com with SMTP id l15so472953qvo.11
+        for <linux-mediatek@lists.infradead.org>; Wed, 13 Jul 2022 19:07:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=uOBKq9yzkPX8ihcF5QdXtzsKbLEa/eP+OCHtDKfv5N0=;
-        b=FO/wJwVU1QxppT3V5wF0tGmeashySEexwXDY+h+qebHtZ0pcCzKxd0rS+AYRBzRIOP
-         ShAxdlI4RKP4ADXryqCSed8ayeJuOPz02sRZrfSKwhzapcR6aAPmzmem8Kgqm+61gVPt
-         q/ukfL6bwPVCa6fO3FMbGWdKfqbsaGNDH1Yl/ZESfD2fsBZFU6cGOFsFuMUtkShmRkY2
-         eGEg36ZkhxsDsE35UdL3UywUJHx5QFlw+ygUtTweSU5EWS6Y3JrjmHUuD+nJ+sZjVT+S
-         aYuP/6zoNH79i8bB7+k9+Hu2X2oRvWtYJE9xlX72Cdjncjo57X/+51DfkNua9DLBXTJy
-         +Jwg==
-X-Gm-Message-State: AJIora9Synz/WxpLk5q9/du67ojzD/Z8JJ46/xUUrSnQAYjtLknAjZgf
-	Tp4Y1t/LwLHTQF7ody/mbHo=
-X-Google-Smtp-Source: AGRyM1uFY5sq0uRq7vOEVCZc6Mt9dWUHaZVFaEt9VTaYlh+WdsLMFRrjoUXRSVp/xtwuLE8Bc1hpsw==
-X-Received: by 2002:a65:4501:0:b0:3fc:4895:283b with SMTP id n1-20020a654501000000b003fc4895283bmr4726104pgq.231.1657749927276;
-        Wed, 13 Jul 2022 15:05:27 -0700 (PDT)
-Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.googlemail.com with ESMTPSA id x7-20020a634847000000b0040c97f0057dsm7946127pgk.17.2022.07.13.15.05.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 13 Jul 2022 15:05:26 -0700 (PDT)
-Message-ID: <fb4f4444-20c2-0e35-bb83-79a419ec87a7@gmail.com>
-Date: Wed, 13 Jul 2022 15:05:23 -0700
+        bh=vtnkEvi5Udxd5BmGMWeYsoH6oqCqsLmq/xNGp+XW7xg=;
+        b=gh8G9cCjiCTOeBozU3VXkqYs0VYyS8Hn63BiIWAFQGpg0Yhuq3/UOmGzaRpa2gMRat
+         woitL2fazmaQnxXBoot7Z5lmoooreSKje56knLTVSivLbo1AjgJSPg4LK6sDE7Lw3FAc
+         IDHw3MUR1IWBURLkRhR2jkJDZFDos7E7hCImA6LaYqPROfd9CWNAwLI/9TT/BAKYO1gM
+         sxRLOHjH+ZUC//y27s8ossXzUCz0Q67MVl0HFBQLSa+oXTWzG0z5ak/EV6I0veA9umHj
+         5YF7kr7tmsQVYPnZTq18stYR8n6Jn0dKXhDawwqoDzpcLsqBzChBwGoqvA/CfZnGQvLm
+         5jgQ==
+X-Gm-Message-State: AJIora8p2ooCR3nKWwJIi28JwhYJnRUhYCinQ+asFV8XH8Uxc1ou6vzL
+	cp9aKutKKfrcSwp0mDcpsdE=
+X-Google-Smtp-Source: AGRyM1tCazHNvur5rHh8ujYARoZtxQC1HQ4MWJOSrle2hF2BraRfHeh6Yd3JzCfe0D37UB4VWVL8JA==
+X-Received: by 2002:a05:6214:3002:b0:470:7273:bee5 with SMTP id ke2-20020a056214300200b004707273bee5mr5619185qvb.98.1657764465461;
+        Wed, 13 Jul 2022 19:07:45 -0700 (PDT)
+Received: from localhost.localdomain (107-199-63-251.lightspeed.sntcca.sbcglobal.net. [107.199.63.251])
+        by smtp.gmail.com with ESMTPSA id d22-20020a05620a159600b006b5517da3casm308537qkk.22.2022.07.13.19.07.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 13 Jul 2022 19:07:44 -0700 (PDT)
+From: sean.wang@kernel.org
+To: stable@vger.kernel.org
+Cc: linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH 5.15 1/5] Revert "mt76: mt7921: Fix the error handling path of mt7921_pci_probe()"
+Date: Wed, 13 Jul 2022 19:07:37 -0700
+Message-Id: <4bdcd29552ba78c87d8799181b9acddec465ad3c.1657764335.git.sean.wang@kernel.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] arm64: Kconfig.platforms: Re-organized Broadcom menu
-Content-Language: en-US
-To: Geert Uytterhoeven <geert@linux-m68k.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Florian Fainelli <f.fainelli@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, SoC Team <soc@kernel.org>,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
- william.zhang@broadcom.com, anand.gore@broadcom.com,
- Olof Johansson <olof@lixom.net>, Catalin Marinas <catalin.marinas@arm.com>,
- Will Deacon <will@kernel.org>, open list <linux-kernel@vger.kernel.org>,
- Shawn Guo <shawnguo@kernel.org>, Li Yang <leoyang.li@nxp.com>,
- Wei Xu <xuwei5@hisilicon.com>, Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
- Matthias Brugger <mbrugger@suse.com>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- "moderated list:ARM/SAMSUNG EXYNOS ARM ARCHITECTURES"
- <linux-samsung-soc@vger.kernel.org>, Dinh Nguyen <dinguyen@kernel.org>
-References: <20220712164235.40293-1-f.fainelli@gmail.com>
- <CAK8P3a2QrYbWOqV+CG-W0ZkzW6ORgw8R6Dv-L3o2ZAtJs-B3Kw@mail.gmail.com>
- <0131e1d6-09c0-31a4-5b9d-0e2fc49d61ac@linaro.org>
- <CAMuHMdWDDY_72y3WYt401hG122xg1s7_VRCG9Vyhhkzco-nBYw@mail.gmail.com>
-From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <CAMuHMdWDDY_72y3WYt401hG122xg1s7_VRCG9Vyhhkzco-nBYw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_150528_475060_D0A68022 
-X-CRM114-Status: GOOD (  23.04  )
+X-CRM114-CacheID: sfid-20220713_190757_681310_C210C985 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,73 +76,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/13/22 02:17, Geert Uytterhoeven wrote:
-> Hi Krzysztof,
-> 
-> On Wed, Jul 13, 2022 at 10:40 AM Krzysztof Kozlowski
-> <krzysztof.kozlowski@linaro.org> wrote:
->> On 13/07/2022 10:25, Arnd Bergmann wrote:
->>> On Tue, Jul 12, 2022 at 6:42 PM Florian Fainelli <f.fainelli@gmail.com> wrote:
->>>> There are now multiple Broadcom SoCs supported so group them under their
->>>> own menu such that the selection is visually more appealing and we can
->>>> easily add new platforms there in the future. This allows us to move
->>>> ARCH_BRCMSTB back to its siblings.
->>>>
->>>> No functional changes introduced.
->>>>
->>>> Signed-off-by: Florian Fainelli <f.fainelli@gmail.com>
->>>> ---
->>>>
->>>> Note this is based on "arm64: bcmbca: add arch bcmbca machine entry"
->>>
->>> Hi Florian,
->>>
->>> So far, we have tried to keep the Kconfig.platforms file rather coarse-grained,
->>> mainly limiting it to company names and high-level families, but avoiding
->>> sub-menus or adding too many sub-families.
->>>
->>> If we add per-vendor submenus, we should probably first decide how we
->>> want to structure this across vendors. I've added maintainers and lists to
->>> Cc for a couple of the ones that are in a similar situation.
->>>
->>> I can see a couple of ways we can do this:
->>>
->>> a) keep the list of platforms as short as possible, combining related
->>>    SoC families from a single vendor wherever possible, but no sub-menus
->>>    (same as today)
->>>
->>> b) Always use sub-menus when there is more than one family, but
->>>     keep relatively coarse platform selection.
->>>
->>> c) Use sub-menus and also move to a more fine-grained SoC
->>>      selection, similar to what we have on 32-bit arm.
->>>
->>> I would not really want to go to c), but a) and b) both make sense to
->>> me as long as do it consistently across all platforms.
->>>
->>> Any other ideas or opinions?
->>
->> Whatever we decide here, the SoC can override in drivers/soc, just like
->> Renesas did. I think Renesas chose option c), but made it in
->> drivers/soc. I would vote to have consistent policy, so if arch/arm64 is
->> a) or b), sub-archs should not redefine it in drivers/soc.
-> 
-> We did so because of the "only a single symbol in
-> arch/arm64/Kconfig.platforms"-policy.
+From: Sean Wang <sean.wang@mediatek.com>
 
-I was not aware of that rule.
+This reverts commit 663457f421d41e9d2fcb1e84baf43d1433f80c08.
 
-It is a bit of a mixed situation with Broadcom SoCs but in essence, each 
-Kconfig entry denotes a deeply different SoC architecture at the memory 
-subsystem, bus, security or product space that you might not want to 
-enable in your kernel. There is definitively sharing of drivers between 
-all of the platforms and a lot of cross pollination too but usually 
-these are deeply different that different kernel images do make sense.
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+There was mistaken in
+649178c0493e ("mt76: mt7921e: fix possible probe failure after reboot")
+that caused WiFi reset cannot work well as the reported issue
+"PROBLEM: [Stable v5.15.42+] [mt7921] Wake after suspend locks up system
+when mt7921-driver is used on a Lenovo ThinkPad E15 G3"
+in http://lists.infradead.org/pipermail/linux-mediatek/2022-June/042668.html
+So we need to revert the patch first. Will be applied again later.
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-The itch that I wanted to calm was that ARCH_BRCMSTB was after the other 
-Broadcom platforms separated by ARCH_BERLIN. if you prefer a pair of 
-KConfig comments to delineate them and flatten the platform selection, 
-that works for me, too.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 3d35838ef306..7d9b23a00238 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -254,10 +254,8 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 	dev->bus_ops = dev->mt76.bus;
+ 	bus_ops = devm_kmemdup(dev->mt76.dev, dev->bus_ops, sizeof(*bus_ops),
+ 			       GFP_KERNEL);
+-	if (!bus_ops) {
+-		ret = -ENOMEM;
+-		goto err_free_dev;
+-	}
++	if (!bus_ops)
++		return -ENOMEM;
+ 
+ 	bus_ops->rr = mt7921_rr;
+ 	bus_ops->wr = mt7921_wr;
+@@ -266,7 +264,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 
+ 	ret = __mt7921_mcu_drv_pmctrl(dev);
+ 	if (ret)
+-		goto err_free_dev;
++		return ret;
+ 
+ 	mdev->rev = (mt7921_l1_rr(dev, MT_HW_CHIPID) << 16) |
+ 		    (mt7921_l1_rr(dev, MT_HW_REV) & 0xff);
 -- 
-Florian
+2.25.1
+
 
