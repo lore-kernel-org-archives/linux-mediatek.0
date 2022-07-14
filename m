@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79217C43334
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88CE0CCA47B
 	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 12:29:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,38 +12,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R1a1WTF9lFOuBi/ARTSRUbC944i94Jg8YRQT2o63lso=; b=FVmbvA6L01jWPQxJlkT5NEhn49
-	9K+btI+qso5WBne0D0bxbwtGVTmydqagjDXCdkPX36yfB6nL0/I81h6xGVFNJTTZ8dqfBde+B9JKb
-	0Umo1MtAeSvgWyqmFHEWkiDaJwTm38NYzHLyOZD/OVC1W5dsBXDKXJaII8ZyzQw1wfwm5p3+tdEWn
-	pEoO0e9dLP//5s+Gdru9p823yWleo2rrwELbXA50llN87qvbzegu8ru+HiyK4fj4RVwOiTGrsNFkO
-	6aW8Zb+CHaDB+M29IXU/EPISc7i9iKyO2L/2PwrQCtAOI8x7PZKPTzQUaEge+iqY8tM0839amhqTV
-	3vpdGYAg==;
+	bh=SIjPHd4tGrVOBXiNmKUiKQOBTSahExHHStf/ns27Fw4=; b=wvjI5d15q1NF87tPE+EtOvuq+M
+	vuFdJ12nTBfclmuzQUNnLnwdITfEYQgwlH4NQrOmSxaRUFSlT/Hh7NGPSyaKJYZ5km6VlP0P7GOrq
+	vAf3CHiur6YmSwwk9XXZqs3np5OeGZJ7rEyphB63vYRUudwv8FuelLF5uidMMrBhQTrQTpDbXkh/P
+	kbUGIAjx588GF2r/vuuSveoSZLjKdZ0wrKDQ+l9ic6G2r7lka15SbXTq1HRO792wKh9lJncsrUKAk
+	Q3U4/8JNt8zhjoOgHl2SoQFqV17FCBJtaQSDN0oCBU9VQTnfkrIXzPUctg/8oGarTSR2ArttA7rRy
+	iL381qkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBxxt-00EBVo-Ou; Thu, 14 Jul 2022 12:29:09 +0000
+	id 1oBxxu-00EBW5-Cc; Thu, 14 Jul 2022 12:29:10 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBxxd-00EBGc-7s; Thu, 14 Jul 2022 12:28:54 +0000
-X-UUID: 87d2d7e4ce7042858a88862e33ed7a79-20220714
+	id 1oBxxd-00EBHO-KV; Thu, 14 Jul 2022 12:28:54 +0000
+X-UUID: e602e2f430d74a4ab876a0f50c48a4e4-20220714
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:8ba1af14-b753-447b-bcd8-3e643b018613,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:637b632f-2430-41e8-b8ca-6961219f6181,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:235d4d64-0b3f-4b2c-b3a6-ed5c044366a0,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:5f5d4d64-0b3f-4b2c-b3a6-ed5c044366a0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 87d2d7e4ce7042858a88862e33ed7a79-20220714
+X-UUID: e602e2f430d74a4ab876a0f50c48a4e4-20220714
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1755997560; Thu, 14 Jul 2022 05:28:42 -0700
+	with ESMTP id 815110213; Thu, 14 Jul 2022 05:28:44 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 14 Jul 2022 20:28:39 +0800
+ Thu, 14 Jul 2022 20:28:41 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 14 Jul 2022 20:28:39 +0800
+ 15.2.792.3 via Frontend Transport; Thu, 14 Jul 2022 20:28:41 +0800
 From: Tinghan Shen <tinghan.shen@mediatek.com>
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will
  Deacon <will@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
@@ -55,10 +55,11 @@ To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will
 CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2 04/19] dt-bindings: power: mediatek: Update example in dt-bindings
-Date: Thu, 14 Jul 2022 20:28:22 +0800
-Message-ID: <20220714122837.20094-5-tinghan.shen@mediatek.com>
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Trevor Wu
+	<trevor.wu@mediatek.com>
+Subject: [PATCH v2 16/19] arm64: dts: mt8195: Specify audio reset controller
+Date: Thu, 14 Jul 2022 20:28:34 +0800
+Message-ID: <20220714122837.20094-17-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220714122837.20094-1-tinghan.shen@mediatek.com>
 References: <20220714122837.20094-1-tinghan.shen@mediatek.com>
@@ -66,8 +67,9 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220714_052853_303850_1CD1C7CF 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20220714_052853_710469_80FBA56E 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,27 +84,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update the scpsys node compatible string to align with the
-scpsys node bindings.
+From: Trevor Wu <trevor.wu@mediatek.com>
 
+Specify audio reset controller for audio hardware resetting.
+
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/power/mediatek,power-controller.yaml    | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-index b448101fac43..be81cd97afa4 100644
---- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-+++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-@@ -232,7 +232,7 @@ examples:
-         #size-cells = <2>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 9cb68417c550..2997927b95fe 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -680,6 +680,7 @@
+ 				     "mediatek,mt6589-wdt";
+ 			mediatek,disable-extrst;
+ 			reg = <0 0x10007000 0 0x100>;
++			#reset-cells = <1>;
+ 		};
  
-         scpsys: syscon@10006000 {
--            compatible = "syscon", "simple-mfd";
-+            compatible = "mediatek,scpsys", "syscon", "simple-mfd";
-             reg = <0 0x10006000 0 0x1000>;
- 
-             spm: power-controller {
+ 		apmixedsys: syscon@1000c000 {
+@@ -782,6 +783,8 @@
+ 			mediatek,topckgen = <&topckgen>;
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_AUDIO>;
+ 			interrupts = <GIC_SPI 822 IRQ_TYPE_LEVEL_HIGH 0>;
++			resets = <&watchdog 14>;
++			reset-names = "audiosys";
+ 			clocks = <&clk26m>,
+ 				<&apmixedsys CLK_APMIXED_APLL1>,
+ 				<&apmixedsys CLK_APMIXED_APLL2>,
 -- 
 2.18.0
 
