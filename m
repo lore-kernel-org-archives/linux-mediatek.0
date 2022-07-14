@@ -4,63 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87BAFC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 12:38:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D8B3C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 12:41:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/9+Ie+sOdHcgr0chJ5gnnpnyxb7W1Wg0VwLqU9aI85E=; b=Vhz+JVeJ4253Nv7vGTTbOS8Wf3
-	H+icnOKx2WK7669wpXDHKtJDj/AzSyHpyhImpylEuIgJV0r3/c5RyxD8am4dEP7LpbbDGK0S5RW9B
-	oTpRWIfVdxNnUARU9ZkKsHHYPJxPuwgpS1fjvu1416im8vyZ9ian9mYYsmrcOpsUzlDAJmo8Y82mb
-	IKQY2RYuxLXO1LJHWRqC9tNHNmsFrXDXV2iVWDHWDNvWxp1Sj5hFDnzGouvJ6MjoZcYHK2n9N8KAr
-	JFjcJUxJwPmupvUa1qgNxVyc9g23aVgUZai+RNEzj0Nl6XCaUjxv21eC1aocjJRbkpV8WnnA/yiRo
-	OiFClG/A==;
+	bh=iq7COZlSAPgKjkDSiQlDtcBGuSVlZJVrYNakobMazno=; b=Zw2LJzsvHjKnQpV/5uU/JUOurH
+	BsHzpCAvsfvP4bL8cPyjLmLu4OvQEQQuKfL2HjZ1UyeYjfoI/cd7HvvyrNQ0lQCXPdWELYoZh7+D6
+	sAhgjgzE7hCZhz0BKbSFjsjHLRLHfYCv4hvIytNu/MDMHQxTq3FsWV1Em9dW8IFYK9mPScgN18tL0
+	Uq2XzFQo5WUULQlVpAHSLqVtf+p7DH2d4ROLJPqVLxxTGXOMgRtrC7DEch2RBAntOTHtl/Wzu728m
+	eo3NsQBykpMk2k7UuSNEZpq7hH8fseHYDDi/L40kgNfDtCYz22SD6ILuxMDqlP6b2/EiGjuM0cZnZ
+	DOZdxMSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBy6u-00EHSv-1S; Thu, 14 Jul 2022 12:38:28 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oBy9k-00EJOp-8U; Thu, 14 Jul 2022 12:41:24 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBxyr-00EC6v-2R; Thu, 14 Jul 2022 12:30:10 +0000
+	id 1oBy4K-00EFbE-Fg; Thu, 14 Jul 2022 12:35:52 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C1EB96601A3D;
-	Thu, 14 Jul 2022 13:30:04 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9685E6601A3B;
+	Thu, 14 Jul 2022 13:35:43 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657801805;
-	bh=JVzIn5i13DB3/LDAuFTquEfvgf4d0MOmVf70FJzjMJc=;
+	s=mail; t=1657802144;
+	bh=3tgtT8VanBEk9yfmpT18dxURM1+JmT9sPRThb3SqdXU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OoAviENdLmUSvVXKjtV8pZcO9HKH6GmHsSHPis+lTpAkyhs422g+PIZEeVDWzySig
-	 ueTEMOkXaenWoQSWRpkl7mU9zOOn7NaXh7bnnBtSyHL58YaJhaYzYbjDicIfWIRdcA
-	 y95lrdbjBDfOx7y/r1rlAGzfzR1AhdMcsOZ4VLVYYPqh6OZfI7707HzBfj0Rs/WxId
-	 NunmwCi+DVC6y+3MZCDj/+m3LphY6H/GlG01fnw/WzUCKYvU2BnJXZ7jCD9FzZuYiD
-	 P2bpxjTDLHSUyMh+PgEFbtxK5ChjnPv5sWMc1RjBhiOy+BbVeq4NiBV+6TjQVcPzSm
-	 2uxIivKlaPlQA==
-Message-ID: <468507bc-e10d-0d7c-aa77-bab4769efbcf@collabora.com>
-Date: Thu, 14 Jul 2022 14:30:01 +0200
+	b=Vf5U0hWiMxt5Q3ex4YjkiE6+PBMaxDbDk39QDy2/0vcfRL4GItQlRJvDmnmy4C2/9
+	 vgG7C0audHui/O0rF1kvHAMQKhq8/yZ7U6qo2aXejNLx+W4sNYlDY8uMl8xkB0jPzB
+	 hL94+CfuXQQqqxQJGwkf0kyE297wqAyxao8kKEU5mO9JkYSBTH/Khppt/NV2DybmIz
+	 hraUdGHLyueOoNEKQc6d5IsrZK4ywKSNN5vdVYAJn2Cf6A6zZvKu7PbbX1py7lTSRC
+	 +FFx+ga5ctvdrPkJotwo8tFGmEBnCh/voC2uDA2C0pzZVt0BReL2jy1d0zX0uta4SM
+	 4P+S9kvN9uAQg==
+Message-ID: <eefcb818-484b-9964-4a64-dbfb98edd446@collabora.com>
+Date: Thu, 14 Jul 2022 14:35:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH 1/1] dt-bindings: uart: update bindings for MT8188 SoC
+Subject: Re: [PATCH v2 15/19] arm64: dts: mt8195: Add adsp node and adsp
+ mailbox nodes
 Content-Language: en-US
-To: kewei.xu@mediatek.com, gregkh@linuxfoundation.org, robh+dt@kernel.org
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, leilk.liu@mediatek.com, qii.wang@mediatek.com,
- liguo.zhang@mediatek.com, caiyu.chen@mediatek.com, david-yh.chiu@mediatek.com
-References: <20220714104149.23343-1-kewei.xu@mediatek.com>
+To: Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ MandyJH Liu <mandyjh.liu@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
+Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ YC Hung <yc.hung@mediatek.corp-partner.google.com>,
+ Allen-KH Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>
+References: <20220714122837.20094-1-tinghan.shen@mediatek.com>
+ <20220714122837.20094-16-tinghan.shen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220714104149.23343-1-kewei.xu@mediatek.com>
+In-Reply-To: <20220714122837.20094-16-tinghan.shen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220714_053009_383074_6F18F720 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20220714_053548_701576_DA79ECB4 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,35 +85,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/07/22 12:41, kewei.xu@mediatek.com ha scritto:
-> From: Kewei Xu <kewei.xu@mediatek.com>
+Il 14/07/22 14:28, Tinghan Shen ha scritto:
+> From: YC Hung <yc.hung@mediatek.corp-partner.google.com>
 > 
-> Add a DT binding documentation for the MT8188 soc.
+> Add adsp node and adsp mailbox nodes for mt8195.
 > 
-> Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
-
-This file doesn't even exist anymore. I've converted it to json-schema, check
-out commit 22b10b33b9c6e76bc08f64e52862e68c4dc76052
-
-Regards,
-Angelo
-
+> Signed-off-by: YC Hung <yc.hung@mediatek.corp-partner.google.com>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 > ---
->   Documentation/devicetree/bindings/serial/mtk-uart.txt | 1 +
->   1 file changed, 1 insertion(+)
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 37 ++++++++++++++++++++++++
+>   1 file changed, 37 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-> index 113b5d6a2245..e5094e1db7b4 100644
-> --- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
-> +++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-> @@ -21,6 +21,7 @@ Required properties:
->     * "mediatek,mt8173-uart" for MT8173 compatible UARTS
->     * "mediatek,mt8183-uart", "mediatek,mt6577-uart" for MT8183 compatible UARTS
->     * "mediatek,mt8186-uart", "mediatek,mt6577-uart" for MT8183 compatible UARTS
-> +  * "mediatek,mt8188-uart", "mediatek,mt6577-uart" for MT8188 compatible UARTS
->     * "mediatek,mt8192-uart", "mediatek,mt6577-uart" for MT8192 compatible UARTS
->     * "mediatek,mt8195-uart", "mediatek,mt6577-uart" for MT8195 compatible UARTS
->     * "mediatek,mt8516-uart" for MT8516 compatible UARTS
-> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 818f7dea27c6..9cb68417c550 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -739,6 +739,43 @@
+>   			#clock-cells = <1>;
+>   		};
+>   
+> +		adsp: adsp@10803000 {
+
+adsp: dsp@10803000
+
+(without the 'a', just dsp@....)
+
+After which:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
