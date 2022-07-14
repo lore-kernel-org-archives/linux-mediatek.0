@@ -4,66 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41DEAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 02:08:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F0D1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 02:09:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yKQOqqlJNfeCaJ9Hs/j5IA6/rG7GnZqdrH3Xn9x3R+Q=; b=n758rF7kQTkzjBoBG0og/u5mFF
-	ZQ0mRjHcGiPozz6+JLDZ/E1pBIfMQ8oN4jHLLtEXytDOpacoKhJKNbBHIGaEYX1o86+prfJjWo2Eo
-	PsBDr3myUICcWyVJRJaKEnT3mPIblie8jo92CBeZ+Ayt7aDa4/fYup+O/Np0s/xWDC1Bwgg7r5DdY
-	CrzVvPx0LVD3UCLoOxCg7xw7ZXFlmRQRFJcsVaYd3shgypd6TgKsvC+PDYSYsBhi190KUJpY3W3tn
-	58F/hYaQ8s+lds/CUmAZiCD3hz4M3G7qoMZXsqna1y31eHki8r7b4bJtZJLfLTFRhUEAG92SjtMNL
-	TeTqE8kQ==;
+	bh=kd7LOSUHnty+mmCrCGbAAkLajMy4XSaOVbTJyHtoA8k=; b=sDqBvep4bVdKMK2JqxdtvtN1DZ
+	sybHLeY2qTEplEkV45QB9D3PZJImx/CzbDcK1x0bSvopYcS2DOyMDpACfg0H87isDEhfTlblAoZpP
+	PSEO8HGKqULrv2fIyPo1SWUI2SR+7db8zrSUFGZ5jYKinRCoYTZrpo0P+dS+97aNXm3N8Z6bXO5N+
+	6TWUgPIZoc9yd3rjJ7y6SLgUybkX3llT6yGJmv6a7RjmO1NKMmezZoIlOZAfUmNj6LWNW0cCio/Qm
+	zPvX07RkV5wArPxy7ciBMqgizuIO03Jjc4U5+Kgjv4KYgUrO21+b6ihyDEGdmL9tUuTKdS8yhVqsb
+	EILuHWpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBoGz-009wmT-Ex; Thu, 14 Jul 2022 02:08:13 +0000
-Received: from mail-qv1-f42.google.com ([209.85.219.42])
+	id 1oBoI1-009xIu-Th; Thu, 14 Jul 2022 02:09:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBoGt-009wab-14
-	for linux-mediatek@lists.infradead.org; Thu, 14 Jul 2022 02:08:10 +0000
-Received: by mail-qv1-f42.google.com with SMTP id nd6so490484qvb.6
-        for <linux-mediatek@lists.infradead.org>; Wed, 13 Jul 2022 19:07:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=yKQOqqlJNfeCaJ9Hs/j5IA6/rG7GnZqdrH3Xn9x3R+Q=;
-        b=hDucH+YeVJEEcl2lbwnKHlhYGqEBJMl4wB286gXi+JVNtTLIn/KLjD2JAPTP/SZFgf
-         iM+kHh3BEgUCsto7uW1WIFZwiPSIXsqqfijpxKDLKeuAFX3KcyeQKbz/52vbUwJ5z3gt
-         SWC3+1HusRV1MTdNNiP0PP+oCueksw2prI/WagnJYquiTjAuovvFWa4qWiBg8eOHCZrQ
-         44Jn2pFXkeXCBaNJMX46jeVFQwg3fwAE4TiymmExCVPKkDYeAldZELEXCpBSmZTnMltr
-         6NDZiYzA8a/T9qi+QHolyrbCD5OztdsYeeWsEugTieLCfpQfV126e1a0wVCUHfVqLbrj
-         gJ8Q==
-X-Gm-Message-State: AJIora+eNs4LLELkYo0n5kPpCFh0uRWbf096YwAGRhJMrQYrs7AoQ0i7
-	leX/jAYbCno49jQvo6iN/L9m/VL0O/Y=
-X-Google-Smtp-Source: AGRyM1tOf5BoqpzsOuQPToNFjFOFve6hCal45ddmmACQj+Psd7J8XD1a9iofWPs4kPIMGPD6mMF9sQ==
-X-Received: by 2002:a05:6214:f22:b0:472:f00d:7e14 with SMTP id iw2-20020a0562140f2200b00472f00d7e14mr5741610qvb.20.1657764467124;
-        Wed, 13 Jul 2022 19:07:47 -0700 (PDT)
-Received: from localhost.localdomain (107-199-63-251.lightspeed.sntcca.sbcglobal.net. [107.199.63.251])
-        by smtp.gmail.com with ESMTPSA id d22-20020a05620a159600b006b5517da3casm308537qkk.22.2022.07.13.19.07.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Jul 2022 19:07:46 -0700 (PDT)
-From: sean.wang@kernel.org
-To: stable@vger.kernel.org
-Cc: linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 5.15 2/5] Revert "mt76: mt7921e: fix possible probe failure after reboot"
-Date: Wed, 13 Jul 2022 19:07:38 -0700
-Message-Id: <c297b97b4af66777202652b29183397e671bc15d.1657764335.git.sean.wang@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <4bdcd29552ba78c87d8799181b9acddec465ad3c.1657764335.git.sean.wang@kernel.org>
-References: <4bdcd29552ba78c87d8799181b9acddec465ad3c.1657764335.git.sean.wang@kernel.org>
+	id 1oBoHp-009xCv-OZ; Thu, 14 Jul 2022 02:09:07 +0000
+X-UUID: 9b24f08ede6743d195b8411ac175fb5f-20220713
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=kd7LOSUHnty+mmCrCGbAAkLajMy4XSaOVbTJyHtoA8k=;
+	b=VzSCAQfqbhu4qJGFYIwltSSeUfp74ZycMuXbJumlbxU3BcP51Bc6RLdeU+NhzsSw46HA/a6KRAbHRzisXZ3x1CpeDpm2fpkJ1u4AsmolN1RkAfr8pI9zPjZ2TM1PezJ/OhyztNCDflrtaG6GcEed5LEchl+TIicqwpLLAw/nJgU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:7867f10f-5b0d-4e90-8ad4-062eca6952d2,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:7cd5ec32-b9e4-42b8-b28a-6364427c76bb,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 9b24f08ede6743d195b8411ac175fb5f-20220713
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <biao.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 710886523; Wed, 13 Jul 2022 19:08:59 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Thu, 14 Jul 2022 09:18:55 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 14 Jul 2022 09:18:54 +0800
+Message-ID: <1d30edbe1761bea511f6619d934e550e05ac4f7a.camel@mediatek.com>
+Subject: Re: [PATCH net v4 1/3] stmmac: dwmac-mediatek: fix clock issue
+From: Biao Huang <biao.huang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, David Miller
+	<davem@davemloft.net>
+CC: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue
+	<alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, "Eric
+ Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, "Paolo
+ Abeni" <pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<netdev@vger.kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <macpaul.lin@mediatek.com>, Jisheng
+ Zhang <jszhang@kernel.org>, Mohammad Athari Bin Ismail
+	<mohammad.athari.ismail@intel.com>
+Date: Thu, 14 Jul 2022 09:18:54 +0800
+In-Reply-To: <c8fdfa7b-f4eb-8308-4064-b868ce945e3a@gmail.com>
+References: <20220713101002.10970-1-biao.huang@mediatek.com>
+	 <20220713101002.10970-2-biao.huang@mediatek.com>
+	 <c8fdfa7b-f4eb-8308-4064-b868ce945e3a@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MTK: N
+Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_190807_153980_13921914 
-X-CRM114-Status: GOOD (  20.16  )
+X-CRM114-CacheID: sfid-20220713_190905_830428_CD6F0AEC 
+X-CRM114-Status: GOOD (  26.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,354 +89,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
-
-This reverts commit 649178c0493e4080b2b226b0ef9fa2d834b1b412.
-
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
-There was mistake in
-649178c0493e ("mt76: mt7921e: fix possible probe failure after reboot")
-that caused WiFi reset cannot work well as the reported issue
-"PROBLEM: [Stable v5.15.42+] [mt7921] Wake after suspend locks up system
-when mt7921-driver is used on a Lenovo ThinkPad E15 G3"
-in http://lists.infradead.org/pipermail/linux-mediatek/2022-June/042668.html
-So, we need to revert, fix and land it again on the stable tree from upstream.
----
- .../net/wireless/mediatek/mt76/mt7921/dma.c   | 115 +++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  20 +--
- .../net/wireless/mediatek/mt76/mt7921/pci.c   | 121 ------------------
- 3 files changed, 125 insertions(+), 131 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-index 93d0cc1827d2..7d7d43a5422f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-@@ -118,6 +118,109 @@ static void mt7921_dma_prefetch(struct mt7921_dev *dev)
- 	mt76_wr(dev, MT_WFDMA0_TX_RING17_EXT_CTRL, PREFETCH(0x380, 0x4));
- }
- 
-+static u32 __mt7921_reg_addr(struct mt7921_dev *dev, u32 addr)
-+{
-+	static const struct {
-+		u32 phys;
-+		u32 mapped;
-+		u32 size;
-+	} fixed_map[] = {
-+		{ 0x00400000, 0x80000, 0x10000}, /* WF_MCU_SYSRAM */
-+		{ 0x00410000, 0x90000, 0x10000}, /* WF_MCU_SYSRAM (configure register) */
-+		{ 0x40000000, 0x70000, 0x10000}, /* WF_UMAC_SYSRAM */
-+		{ 0x54000000, 0x02000, 0x1000 }, /* WFDMA PCIE0 MCU DMA0 */
-+		{ 0x55000000, 0x03000, 0x1000 }, /* WFDMA PCIE0 MCU DMA1 */
-+		{ 0x58000000, 0x06000, 0x1000 }, /* WFDMA PCIE1 MCU DMA0 (MEM_DMA) */
-+		{ 0x59000000, 0x07000, 0x1000 }, /* WFDMA PCIE1 MCU DMA1 */
-+		{ 0x7c000000, 0xf0000, 0x10000 }, /* CONN_INFRA */
-+		{ 0x7c020000, 0xd0000, 0x10000 }, /* CONN_INFRA, WFDMA */
-+		{ 0x7c060000, 0xe0000, 0x10000}, /* CONN_INFRA, conn_host_csr_top */
-+		{ 0x80020000, 0xb0000, 0x10000 }, /* WF_TOP_MISC_OFF */
-+		{ 0x81020000, 0xc0000, 0x10000 }, /* WF_TOP_MISC_ON */
-+		{ 0x820c0000, 0x08000, 0x4000 }, /* WF_UMAC_TOP (PLE) */
-+		{ 0x820c8000, 0x0c000, 0x2000 }, /* WF_UMAC_TOP (PSE) */
-+		{ 0x820cc000, 0x0e000, 0x2000 }, /* WF_UMAC_TOP (PP) */
-+		{ 0x820ce000, 0x21c00, 0x0200 }, /* WF_LMAC_TOP (WF_SEC) */
-+		{ 0x820cf000, 0x22000, 0x1000 }, /* WF_LMAC_TOP (WF_PF) */
-+		{ 0x820d0000, 0x30000, 0x10000 }, /* WF_LMAC_TOP (WF_WTBLON) */
-+		{ 0x820e0000, 0x20000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_CFG) */
-+		{ 0x820e1000, 0x20400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_TRB) */
-+		{ 0x820e2000, 0x20800, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
-+		{ 0x820e3000, 0x20c00, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
-+		{ 0x820e4000, 0x21000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
-+		{ 0x820e5000, 0x21400, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
-+		{ 0x820e7000, 0x21e00, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
-+		{ 0x820e9000, 0x23400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_WTBLOFF) */
-+		{ 0x820ea000, 0x24000, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_ETBF) */
-+		{ 0x820eb000, 0x24200, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
-+		{ 0x820ec000, 0x24600, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_INT) */
-+		{ 0x820ed000, 0x24800, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
-+		{ 0x820f0000, 0xa0000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_CFG) */
-+		{ 0x820f1000, 0xa0600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_TRB) */
-+		{ 0x820f2000, 0xa0800, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_AGG) */
-+		{ 0x820f3000, 0xa0c00, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_ARB) */
-+		{ 0x820f4000, 0xa1000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_TMAC) */
-+		{ 0x820f5000, 0xa1400, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_RMAC) */
-+		{ 0x820f7000, 0xa1e00, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_DMA) */
-+		{ 0x820f9000, 0xa3400, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_WTBLOFF) */
-+		{ 0x820fa000, 0xa4000, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_ETBF) */
-+		{ 0x820fb000, 0xa4200, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_LPON) */
-+		{ 0x820fc000, 0xa4600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_INT) */
-+		{ 0x820fd000, 0xa4800, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_MIB) */
-+	};
-+	int i;
-+
-+	if (addr < 0x100000)
-+		return addr;
-+
-+	for (i = 0; i < ARRAY_SIZE(fixed_map); i++) {
-+		u32 ofs;
-+
-+		if (addr < fixed_map[i].phys)
-+			continue;
-+
-+		ofs = addr - fixed_map[i].phys;
-+		if (ofs > fixed_map[i].size)
-+			continue;
-+
-+		return fixed_map[i].mapped + ofs;
-+	}
-+
-+	if ((addr >= 0x18000000 && addr < 0x18c00000) ||
-+	    (addr >= 0x70000000 && addr < 0x78000000) ||
-+	    (addr >= 0x7c000000 && addr < 0x7c400000))
-+		return mt7921_reg_map_l1(dev, addr);
-+
-+	dev_err(dev->mt76.dev, "Access currently unsupported address %08x\n",
-+		addr);
-+
-+	return 0;
-+}
-+
-+static u32 mt7921_rr(struct mt76_dev *mdev, u32 offset)
-+{
-+	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-+	u32 addr = __mt7921_reg_addr(dev, offset);
-+
-+	return dev->bus_ops->rr(mdev, addr);
-+}
-+
-+static void mt7921_wr(struct mt76_dev *mdev, u32 offset, u32 val)
-+{
-+	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-+	u32 addr = __mt7921_reg_addr(dev, offset);
-+
-+	dev->bus_ops->wr(mdev, addr, val);
-+}
-+
-+static u32 mt7921_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
-+{
-+	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-+	u32 addr = __mt7921_reg_addr(dev, offset);
-+
-+	return dev->bus_ops->rmw(mdev, addr, mask, val);
-+}
-+
- static int mt7921_dma_disable(struct mt7921_dev *dev, bool force)
- {
- 	if (force) {
-@@ -277,8 +380,20 @@ int mt7921_wpdma_reinit_cond(struct mt7921_dev *dev)
- 
- int mt7921_dma_init(struct mt7921_dev *dev)
- {
-+	struct mt76_bus_ops *bus_ops;
- 	int ret;
- 
-+	dev->bus_ops = dev->mt76.bus;
-+	bus_ops = devm_kmemdup(dev->mt76.dev, dev->bus_ops, sizeof(*bus_ops),
-+			       GFP_KERNEL);
-+	if (!bus_ops)
-+		return -ENOMEM;
-+
-+	bus_ops->rr = mt7921_rr;
-+	bus_ops->wr = mt7921_wr;
-+	bus_ops->rmw = mt7921_rmw;
-+	dev->mt76.bus = bus_ops;
-+
- 	mt76_dma_attach(&dev->mt76);
- 
- 	ret = mt7921_dma_disable(dev, true);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index dabc0de2ec65..391bbb114750 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -1308,6 +1308,8 @@ int mt7921_mcu_sta_update(struct mt7921_dev *dev, struct ieee80211_sta *sta,
- 
- int __mt7921_mcu_drv_pmctrl(struct mt7921_dev *dev)
- {
-+	struct mt76_phy *mphy = &dev->mt76.phy;
-+	struct mt76_connac_pm *pm = &dev->pm;
- 	int i, err = 0;
- 
- 	for (i = 0; i < MT7921_DRV_OWN_RETRY_COUNT; i++) {
-@@ -1320,8 +1322,16 @@ int __mt7921_mcu_drv_pmctrl(struct mt7921_dev *dev)
- 	if (i == MT7921_DRV_OWN_RETRY_COUNT) {
- 		dev_err(dev->mt76.dev, "driver own failed\n");
- 		err = -EIO;
-+		goto out;
- 	}
- 
-+	mt7921_wpdma_reinit_cond(dev);
-+	clear_bit(MT76_STATE_PM, &mphy->state);
-+
-+	pm->stats.last_wake_event = jiffies;
-+	pm->stats.doze_time += pm->stats.last_wake_event -
-+			       pm->stats.last_doze_event;
-+out:
- 	return err;
- }
- 
-@@ -1337,16 +1347,6 @@ int mt7921_mcu_drv_pmctrl(struct mt7921_dev *dev)
- 		goto out;
- 
- 	err = __mt7921_mcu_drv_pmctrl(dev);
--        if (err < 0)
--            goto out;
--
--	mt7921_wpdma_reinit_cond(dev);
--	clear_bit(MT76_STATE_PM, &mphy->state);
--
--	pm->stats.last_wake_event = jiffies;
--	pm->stats.doze_time += pm->stats.last_wake_event -
--			       pm->stats.last_doze_event;
--
- out:
- 	mutex_unlock(&pm->mutex);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 7d9b23a00238..c3905bcab360 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -88,110 +88,6 @@ static void mt7921_irq_tasklet(unsigned long data)
- 		napi_schedule(&dev->mt76.napi[MT_RXQ_MAIN]);
- }
- 
--static u32 __mt7921_reg_addr(struct mt7921_dev *dev, u32 addr)
--{
--	static const struct {
--		u32 phys;
--		u32 mapped;
--		u32 size;
--	} fixed_map[] = {
--		{ 0x00400000, 0x80000, 0x10000}, /* WF_MCU_SYSRAM */
--		{ 0x00410000, 0x90000, 0x10000}, /* WF_MCU_SYSRAM (configure register) */
--		{ 0x40000000, 0x70000, 0x10000}, /* WF_UMAC_SYSRAM */
--		{ 0x54000000, 0x02000, 0x1000 }, /* WFDMA PCIE0 MCU DMA0 */
--		{ 0x55000000, 0x03000, 0x1000 }, /* WFDMA PCIE0 MCU DMA1 */
--		{ 0x58000000, 0x06000, 0x1000 }, /* WFDMA PCIE1 MCU DMA0 (MEM_DMA) */
--		{ 0x59000000, 0x07000, 0x1000 }, /* WFDMA PCIE1 MCU DMA1 */
--		{ 0x7c000000, 0xf0000, 0x10000 }, /* CONN_INFRA */
--		{ 0x7c020000, 0xd0000, 0x10000 }, /* CONN_INFRA, WFDMA */
--		{ 0x7c060000, 0xe0000, 0x10000}, /* CONN_INFRA, conn_host_csr_top */
--		{ 0x80020000, 0xb0000, 0x10000 }, /* WF_TOP_MISC_OFF */
--		{ 0x81020000, 0xc0000, 0x10000 }, /* WF_TOP_MISC_ON */
--		{ 0x820c0000, 0x08000, 0x4000 }, /* WF_UMAC_TOP (PLE) */
--		{ 0x820c8000, 0x0c000, 0x2000 }, /* WF_UMAC_TOP (PSE) */
--		{ 0x820cc000, 0x0e000, 0x2000 }, /* WF_UMAC_TOP (PP) */
--		{ 0x820ce000, 0x21c00, 0x0200 }, /* WF_LMAC_TOP (WF_SEC) */
--		{ 0x820cf000, 0x22000, 0x1000 }, /* WF_LMAC_TOP (WF_PF) */
--		{ 0x820d0000, 0x30000, 0x10000 }, /* WF_LMAC_TOP (WF_WTBLON) */
--		{ 0x820e0000, 0x20000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_CFG) */
--		{ 0x820e1000, 0x20400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_TRB) */
--		{ 0x820e2000, 0x20800, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
--		{ 0x820e3000, 0x20c00, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
--		{ 0x820e4000, 0x21000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
--		{ 0x820e5000, 0x21400, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
--		{ 0x820e7000, 0x21e00, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
--		{ 0x820e9000, 0x23400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_WTBLOFF) */
--		{ 0x820ea000, 0x24000, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_ETBF) */
--		{ 0x820eb000, 0x24200, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
--		{ 0x820ec000, 0x24600, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_INT) */
--		{ 0x820ed000, 0x24800, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
--		{ 0x820f0000, 0xa0000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_CFG) */
--		{ 0x820f1000, 0xa0600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_TRB) */
--		{ 0x820f2000, 0xa0800, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_AGG) */
--		{ 0x820f3000, 0xa0c00, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_ARB) */
--		{ 0x820f4000, 0xa1000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_TMAC) */
--		{ 0x820f5000, 0xa1400, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_RMAC) */
--		{ 0x820f7000, 0xa1e00, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_DMA) */
--		{ 0x820f9000, 0xa3400, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_WTBLOFF) */
--		{ 0x820fa000, 0xa4000, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_ETBF) */
--		{ 0x820fb000, 0xa4200, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_LPON) */
--		{ 0x820fc000, 0xa4600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_INT) */
--		{ 0x820fd000, 0xa4800, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_MIB) */
--	};
--	int i;
--
--	if (addr < 0x100000)
--		return addr;
--
--	for (i = 0; i < ARRAY_SIZE(fixed_map); i++) {
--		u32 ofs;
--
--		if (addr < fixed_map[i].phys)
--			continue;
--
--		ofs = addr - fixed_map[i].phys;
--		if (ofs > fixed_map[i].size)
--			continue;
--
--		return fixed_map[i].mapped + ofs;
--	}
--
--	if ((addr >= 0x18000000 && addr < 0x18c00000) ||
--	    (addr >= 0x70000000 && addr < 0x78000000) ||
--	    (addr >= 0x7c000000 && addr < 0x7c400000))
--		return mt7921_reg_map_l1(dev, addr);
--
--	dev_err(dev->mt76.dev, "Access currently unsupported address %08x\n",
--		addr);
--
--	return 0;
--}
--
--static u32 mt7921_rr(struct mt76_dev *mdev, u32 offset)
--{
--	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
--	u32 addr = __mt7921_reg_addr(dev, offset);
--
--	return dev->bus_ops->rr(mdev, addr);
--}
--
--static void mt7921_wr(struct mt76_dev *mdev, u32 offset, u32 val)
--{
--	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
--	u32 addr = __mt7921_reg_addr(dev, offset);
--
--	dev->bus_ops->wr(mdev, addr, val);
--}
--
--static u32 mt7921_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
--{
--	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
--	u32 addr = __mt7921_reg_addr(dev, offset);
--
--	return dev->bus_ops->rmw(mdev, addr, mask, val);
--}
--
--
- static int mt7921_pci_probe(struct pci_dev *pdev,
- 			    const struct pci_device_id *id)
- {
-@@ -214,7 +110,6 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 		.sta_remove = mt7921_mac_sta_remove,
- 		.update_survey = mt7921_update_channel,
- 	};
--	struct mt76_bus_ops *bus_ops;
- 	struct mt7921_dev *dev;
- 	struct mt76_dev *mdev;
- 	int ret;
-@@ -250,22 +145,6 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 
- 	mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
- 	tasklet_init(&dev->irq_tasklet, mt7921_irq_tasklet, (unsigned long)dev);
--
--	dev->bus_ops = dev->mt76.bus;
--	bus_ops = devm_kmemdup(dev->mt76.dev, dev->bus_ops, sizeof(*bus_ops),
--			       GFP_KERNEL);
--	if (!bus_ops)
--		return -ENOMEM;
--
--	bus_ops->rr = mt7921_rr;
--	bus_ops->wr = mt7921_wr;
--	bus_ops->rmw = mt7921_rmw;
--	dev->mt76.bus = bus_ops;
--
--	ret = __mt7921_mcu_drv_pmctrl(dev);
--	if (ret)
--		return ret;
--
- 	mdev->rev = (mt7921_l1_rr(dev, MT_HW_CHIPID) << 16) |
- 		    (mt7921_l1_rr(dev, MT_HW_REV) & 0xff);
- 	dev_err(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
--- 
-2.25.1
+RGVhciBNYXR0aGlhcywNCglUaGFua3MgZm9yIHlvdXIgY29tbWVudHN+DQoNCk9uIFdlZCwgMjAy
+Mi0wNy0xMyBhdCAxNDoxMSArMDIwMCwgTWF0dGhpYXMgQnJ1Z2dlciB3cm90ZToNCj4gDQo+IE9u
+IDEzLzA3LzIwMjIgMTI6MTAsIEJpYW8gSHVhbmcgd3JvdGU6DQo+ID4gVGhlIHBtX3J1bnRpbWUg
+dGFrZXMgY2FyZSBvZiB0aGUgY2xvY2sgaGFuZGxpbmcgaW4gY3VycmVudA0KPiA+IHN0bW1hYyBk
+cml2ZXJzLCBhbmQgZHdtYWMtbWVkaWF0ZWsgaW1wbGVtZW50IHRoZQ0KPiA+IG1lZGlhdGVrX2R3
+bWFjX2Nsa3NfY29uZmlnKCkgYXMgdGhlIGNhbGxiYWNrIGZvciBwbV9ydW50aW1lLg0KPiA+IA0K
+PiA+IFRoZW4sIHN0cmlwcGluZyBkdXBsaWNhdGVkIGNsb2NrcyBoYW5kbGluZyBpbiBvbGQgaW5p
+dCgpL2V4aXQoKQ0KPiA+IHRvIGZpeCBjbG9jayBpc3N1ZSBpbiBzdXNwZW5kL3Jlc3VtZSB0ZXN0
+Lg0KPiA+IA0KPiA+IEFzIHRvIGNsb2NrcyBpbiBwcm9iZS9yZW1vdmUsIHZlbmRvciBuZWVkIHN5
+bW1ldHJpYyBoYW5kbGluZyB0bw0KPiA+IGVuc3VyZSBjbG9ja3MgYmFsYW5jZS4NCj4gPiANCj4g
+PiBUZXN0IHBhc3MsIGluY2x1ZGluZyBzdXNwZW5kL3Jlc3VtZSBhbmQga28gaW5zZXJ0aW9uL3Jl
+bW92ZS4NCj4gPiANCj4gPiBGaXhlczogMzE4NmJkYWQ5N2Q1ICgic3RtbWFjOiBkd21hYy1tZWRp
+YXRlazogYWRkIHBsYXRmb3JtIGxldmVsDQo+ID4gY2xvY2tzIG1hbmFnZW1lbnQiKQ0KPiA+IFNp
+Z25lZC1vZmYtYnk6IEJpYW8gSHVhbmcgPGJpYW8uaHVhbmdAbWVkaWF0ZWsuY29tPg0KPiA+IC0t
+LQ0KPiA+ICAgLi4uL2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL2R3bWFjLW1lZGlhdGVrLmMgIHwg
+NDkgKysrKysrKystLS0tDQo+ID4gLS0tLS0tLQ0KPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDIxIGlu
+c2VydGlvbnMoKyksIDI4IGRlbGV0aW9ucygtKQ0KPiA+IA0KPiA+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1tZWRpYXRlay5jDQo+ID4gYi9k
+cml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1tZWRpYXRlay5jDQo+ID4g
+aW5kZXggNmZmODhkZjU4NzY3Li5jYThhYjI5MDAxM2MgMTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVy
+cy9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvZHdtYWMtbWVkaWF0ZWsuYw0KPiA+ICsrKyBi
+L2RyaXZlcnMvbmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL2R3bWFjLW1lZGlhdGVrLmMNCj4g
+PiBAQCAtNTc2LDMyICs1NzYsNyBAQCBzdGF0aWMgaW50IG1lZGlhdGVrX2R3bWFjX2luaXQoc3Ry
+dWN0DQo+ID4gcGxhdGZvcm1fZGV2aWNlICpwZGV2LCB2b2lkICpwcml2KQ0KPiA+ICAgCQl9DQo+
+ID4gICAJfQ0KPiA+ICAgDQo+ID4gLQlyZXQgPSBjbGtfYnVsa19wcmVwYXJlX2VuYWJsZSh2YXJp
+YW50LT5udW1fY2xrcywgcGxhdC0+Y2xrcyk7DQo+ID4gLQlpZiAocmV0KSB7DQo+ID4gLQkJZGV2
+X2VycihwbGF0LT5kZXYsICJmYWlsZWQgdG8gZW5hYmxlIGNsa3MsIGVyciA9ICVkXG4iLA0KPiA+
+IHJldCk7DQo+ID4gLQkJcmV0dXJuIHJldDsNCj4gPiAtCX0NCj4gPiAtDQo+ID4gLQlyZXQgPSBj
+bGtfcHJlcGFyZV9lbmFibGUocGxhdC0+cm1paV9pbnRlcm5hbF9jbGspOw0KPiA+IC0JaWYgKHJl
+dCkgew0KPiA+IC0JCWRldl9lcnIocGxhdC0+ZGV2LCAiZmFpbGVkIHRvIGVuYWJsZSBybWlpIGlu
+dGVybmFsIGNsaywNCj4gPiBlcnIgPSAlZFxuIiwgcmV0KTsNCj4gPiAtCQlnb3RvIGVycl9jbGs7
+DQo+ID4gLQl9DQo+ID4gLQ0KPiA+ICAgCXJldHVybiAwOw0KPiA+IC0NCj4gPiAtZXJyX2NsazoN
+Cj4gPiAtCWNsa19idWxrX2Rpc2FibGVfdW5wcmVwYXJlKHZhcmlhbnQtPm51bV9jbGtzLCBwbGF0
+LT5jbGtzKTsNCj4gPiAtCXJldHVybiByZXQ7DQo+ID4gLX0NCj4gPiAtDQo+ID4gLXN0YXRpYyB2
+b2lkIG1lZGlhdGVrX2R3bWFjX2V4aXQoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwgdm9p
+ZA0KPiA+ICpwcml2KQ0KPiA+IC17DQo+ID4gLQlzdHJ1Y3QgbWVkaWF0ZWtfZHdtYWNfcGxhdF9k
+YXRhICpwbGF0ID0gcHJpdjsNCj4gPiAtCWNvbnN0IHN0cnVjdCBtZWRpYXRla19kd21hY192YXJp
+YW50ICp2YXJpYW50ID0gcGxhdC0+dmFyaWFudDsNCj4gPiAtDQo+ID4gLQljbGtfZGlzYWJsZV91
+bnByZXBhcmUocGxhdC0+cm1paV9pbnRlcm5hbF9jbGspOw0KPiA+IC0JY2xrX2J1bGtfZGlzYWJs
+ZV91bnByZXBhcmUodmFyaWFudC0+bnVtX2Nsa3MsIHBsYXQtPmNsa3MpOw0KPiA+ICAgfQ0KPiA+
+ICAgDQo+ID4gICBzdGF0aWMgaW50IG1lZGlhdGVrX2R3bWFjX2Nsa3NfY29uZmlnKHZvaWQgKnBy
+aXYsIGJvb2wgZW5hYmxlZCkNCj4gPiBAQCAtNjQzLDcgKzYxOCw2IEBAIHN0YXRpYyBpbnQgbWVk
+aWF0ZWtfZHdtYWNfY29tbW9uX2RhdGEoc3RydWN0DQo+ID4gcGxhdGZvcm1fZGV2aWNlICpwZGV2
+LA0KPiA+ICAgCXBsYXQtPmFkZHI2NCA9IHByaXZfcGxhdC0+dmFyaWFudC0+ZG1hX2JpdF9tYXNr
+Ow0KPiA+ICAgCXBsYXQtPmJzcF9wcml2ID0gcHJpdl9wbGF0Ow0KPiA+ICAgCXBsYXQtPmluaXQg
+PSBtZWRpYXRla19kd21hY19pbml0Ow0KPiA+IC0JcGxhdC0+ZXhpdCA9IG1lZGlhdGVrX2R3bWFj
+X2V4aXQ7DQo+ID4gICAJcGxhdC0+Y2xrc19jb25maWcgPSBtZWRpYXRla19kd21hY19jbGtzX2Nv
+bmZpZzsNCj4gPiAgIAlpZiAocHJpdl9wbGF0LT52YXJpYW50LT5kd21hY19maXhfbWFjX3NwZWVk
+KQ0KPiA+ICAgCQlwbGF0LT5maXhfbWFjX3NwZWVkID0gcHJpdl9wbGF0LT52YXJpYW50LQ0KPiA+
+ID5kd21hY19maXhfbWFjX3NwZWVkOw0KPiA+IEBAIC03MTIsMTMgKzY4NiwzMiBAQCBzdGF0aWMg
+aW50IG1lZGlhdGVrX2R3bWFjX3Byb2JlKHN0cnVjdA0KPiA+IHBsYXRmb3JtX2RldmljZSAqcGRl
+dikNCj4gPiAgIAltZWRpYXRla19kd21hY19jb21tb25fZGF0YShwZGV2LCBwbGF0X2RhdCwgcHJp
+dl9wbGF0KTsNCj4gPiAgIAltZWRpYXRla19kd21hY19pbml0KHBkZXYsIHByaXZfcGxhdCk7DQo+
+ID4gICANCj4gPiArCXJldCA9IG1lZGlhdGVrX2R3bWFjX2Nsa3NfY29uZmlnKHByaXZfcGxhdCwg
+dHJ1ZSk7DQo+ID4gKwlpZiAocmV0KQ0KPiA+ICsJCXJldHVybiByZXQ7DQo+ID4gKw0KPiA+ICAg
+CXJldCA9IHN0bW1hY19kdnJfcHJvYmUoJnBkZXYtPmRldiwgcGxhdF9kYXQsICZzdG1tYWNfcmVz
+KTsNCj4gPiAgIAlpZiAocmV0KSB7DQo+ID4gICAJCXN0bW1hY19yZW1vdmVfY29uZmlnX2R0KHBk
+ZXYsIHBsYXRfZGF0KTsNCj4gPiAtCQlyZXR1cm4gcmV0Ow0KPiA+ICsJCWdvdG8gZXJyX2Rydl9w
+cm9iZTsNCj4gPiAgIAl9DQo+ID4gICANCj4gPiAgIAlyZXR1cm4gMDsNCj4gPiArDQo+ID4gK2Vy
+cl9kcnZfcHJvYmU6DQo+ID4gKwltZWRpYXRla19kd21hY19jbGtzX2NvbmZpZyhwcml2X3BsYXQs
+IGZhbHNlKTsNCj4gPiArCXJldHVybiByZXQ7DQo+ID4gK30NCj4gPiArDQo+ID4gK3N0YXRpYyBp
+bnQgbWVkaWF0ZWtfZHdtYWNfcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpDQo+
+ID4gK3sNCj4gPiArCXN0cnVjdCBtZWRpYXRla19kd21hY19wbGF0X2RhdGEgKnByaXZfcGxhdCA9
+DQo+ID4gZ2V0X3N0bW1hY19ic3BfcHJpdigmcGRldi0+ZGV2KTsNCj4gPiArCWludCByZXQ7DQo+
+ID4gKw0KPiA+ICsJcmV0ID0gc3RtbWFjX3BsdGZyX3JlbW92ZShwZGV2KTsNCj4gPiArCW1lZGlh
+dGVrX2R3bWFjX2Nsa3NfY29uZmlnKHByaXZfcGxhdCwgZmFsc2UpOw0KPiA+ICsNCj4gDQo+IFdl
+IGVuYWxiZSB0aGUgY2xvY2tzIGFmdGVyIGNhbGxpbmcgc3RtbWFjX3Byb2JlX2NvbmZpZ19kdCgp
+LCBzbyB3ZQ0KPiBzaG91bGQgDQo+IGRpc2FibGUgdGhlbSBiZWZvcmUgY2FsbGluZyBzdG1tYWNf
+cGx0ZnJfcmVtb3ZlKCksIGNvcnJlY3Q/DQo+IA0KPiBPdGhlciB0aGVuIHRoYXQ6DQo+IFJldmll
+d2VkLWJ5OiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPg0KDQpUbyBl
+bnN1cmUgdGhlIGh3IGNvbmZpZ3VyYXRpb24gaW4gc3RtbWFjX3BsdGZyX3JlbW92ZSBiZWhhdmlv
+cg0Kbm9ybWFsbHksIHdlIHNob3VsZCBkaXNhYmxlIGNsb2NrcyBhZnRlciBzdG1tYWNfcGx0ZnJf
+cmVtb3ZlLg0KDQpBbmQgdGhlcmUgaXMgbm8gb3JkZXIgcmVxdWlyZW1lbnQgYmV0d2VlbiBjbG9j
+a3MgY29uZmlndXJlZCBieSANCnN0bW1hY19wcm9iZV9jb25maWdfZHQvc3RtbWFjX3JlbW92ZV9j
+b25maWdfZHQgYW5kIGNsb2Nrcw0KY29uZmlndXJlZCBieSBtZWRpYXRla19kd21hY19jbGtzX2Nv
+bmZpZywgc28gaXQncyBzYWZlIGZvcg0KY3VycmVudCBzbmlwcGV0Lg0KDQpCZXN0IFJlZ2FyZHMh
+DQpCaWFvDQoNCj4gDQo+ID4gKwlyZXR1cm4gcmV0Ow0KPiA+ICAgfQ0KPiA+ICAgDQo+ID4gICBz
+dGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBtZWRpYXRla19kd21hY19tYXRjaFtdID0g
+ew0KPiA+IEBAIC03MzMsNyArNzI2LDcgQEAgTU9EVUxFX0RFVklDRV9UQUJMRShvZiwgbWVkaWF0
+ZWtfZHdtYWNfbWF0Y2gpOw0KPiA+ICAgDQo+ID4gICBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2Ry
+aXZlciBtZWRpYXRla19kd21hY19kcml2ZXIgPSB7DQo+ID4gICAJLnByb2JlICA9IG1lZGlhdGVr
+X2R3bWFjX3Byb2JlLA0KPiA+IC0JLnJlbW92ZSA9IHN0bW1hY19wbHRmcl9yZW1vdmUsDQo+ID4g
+KwkucmVtb3ZlID0gbWVkaWF0ZWtfZHdtYWNfcmVtb3ZlLA0KPiA+ICAgCS5kcml2ZXIgPSB7DQo+
+ID4gICAJCS5uYW1lICAgICAgICAgICA9ICJkd21hYy1tZWRpYXRlayIsDQo+ID4gICAJCS5wbQkJ
+PSAmc3RtbWFjX3BsdGZyX3BtX29wcywNCg==
 
 
