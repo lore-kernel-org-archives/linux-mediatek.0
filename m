@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26152C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 12:33:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8EDEC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 12:33:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4tkqEoD0NOijCuPJ5GN09P7/h0V11u/hCJfOB+r24Uk=; b=JdqVmBTOhEkVVmqaS3XRRhf6LV
-	/Kpjd3WtBsq8R67+FiFCBlaBGhasIREcqAXtgBFQwst0a/EFExJSJFZlwoNtjwjKK1emAlL+XPqMN
-	CdaTSKJR6yIA049H/vMqyb0+/liug4sgdS/sZGU5zB0NQDCks4KSGxYnu8VbWxygl4xfmROiQp9RN
-	unlv6WoH8wFqFIrFYKvFIzm7VIodDK8hCIpRWiXBSJCJnf/EXIjCc0C2RHqYwmc+qmJ7c1ODxh/2e
-	C1Om2HEntRKoJccs/+Rcr/Ihdu7W5usnc/no6tjIak6Grtnxrvo6CzkPSJeyp337mheaq4pxNGO5f
-	ddnu+Cwg==;
+	bh=ojNJUzwU4Dy/BAoq9zhKOxsUfuuexM4vWfUwDY51uD4=; b=vFsk6ywsyWACk0p9JSeYRSdTCK
+	6XkF71UsjybYGbmhufyLnAXBS73tc0lJ78vDyk4VxFOTdhhkdsGCxz00JHGkxvPgHaEuDEOYXToef
+	C7tqLDlPRqSDxHsm2kMJfcEV+xeCH66sn8JlpfhRMVRSkCH3taOKEQusxHB85upTc1BhT22kRYc26
+	iUoiWJ6e/RfkoZY0bb6Go6pg3qyvlaTmgMBKr2S9/b2EaBcsLzaartSa0bvnrMPUrOOOteuXfp7uJ
+	C2PDf3pv2g6sQMgmgTZ4oZ+96xXNuK8Zz9axhZ3//Nk8UA3xQw7CSyZuws9bdyN3hHRhrKqiT5lSH
+	Varna1JA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBy1a-00EDrB-Fo; Thu, 14 Jul 2022 12:32:58 +0000
+	id 1oBy1d-00EDsi-1S; Thu, 14 Jul 2022 12:33:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBxy4-00EBXc-Qn; Thu, 14 Jul 2022 12:29:22 +0000
-X-UUID: f508048afb234e1daf20cfe8bfd04404-20220714
+	id 1oBxy4-00EBYF-H5; Thu, 14 Jul 2022 12:29:22 +0000
+X-UUID: 9f1cde5d8770474980770f8598f6a0f2-20220714
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:a06a408a-f4cf-47f2-8f72-909fcb73bb9d,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:48f3bc0d-27c3-4e6b-a15d-049d2a9cefe2,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:ab3bfd32-b9e4-42b8-b28a-6364427c76bb,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:6ba57fd7-5d6d-4eaf-a635-828a3ee48b7c,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: f508048afb234e1daf20cfe8bfd04404-20220714
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 9f1cde5d8770474980770f8598f6a0f2-20220714
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 938718860; Thu, 14 Jul 2022 05:29:16 -0700
+	with ESMTP id 2094320906; Thu, 14 Jul 2022 05:29:16 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 14 Jul 2022 20:28:41 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 14 Jul 2022 20:28:41 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.792.3 via Frontend Transport; Thu, 14 Jul 2022 20:28:41 +0800
@@ -56,12 +56,10 @@ To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
 CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, YC Hung
-	<yc.hung@mediatek.corp-partner.google.com>, Allen-KH Cheng
-	<allen-kh.cheng@mediatek.corp-partner.google.com>
-Subject: [PATCH v2 15/19] arm64: dts: mt8195: Add adsp node and adsp mailbox nodes
-Date: Thu, 14 Jul 2022 20:28:33 +0800
-Message-ID: <20220714122837.20094-16-tinghan.shen@mediatek.com>
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v2 13/19] arm64: dts: mt8195: Add scp node
+Date: Thu, 14 Jul 2022 20:28:31 +0800
+Message-ID: <20220714122837.20094-14-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220714122837.20094-1-tinghan.shen@mediatek.com>
 References: <20220714122837.20094-1-tinghan.shen@mediatek.com>
@@ -69,8 +67,9 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220714_052920_915371_F2026AB5 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20220714_052920_611528_1FE40F7D 
+X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,65 +84,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: YC Hung <yc.hung@mediatek.corp-partner.google.com>
+Add scp node for mt8195.
 
-Add adsp node and adsp mailbox nodes for mt8195.
-
-Signed-off-by: YC Hung <yc.hung@mediatek.corp-partner.google.com>
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>
 Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 37 ++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 818f7dea27c6..9cb68417c550 100644
+index 0e23cdf82685..e5e7421dd5c5 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -739,6 +739,43 @@
- 			#clock-cells = <1>;
+@@ -712,6 +712,16 @@
+ 			assigned-clock-parents = <&topckgen CLK_TOP_ULPOSC1_D10>;
  		};
  
-+		adsp: adsp@10803000 {
-+			compatible = "mediatek,mt8195-dsp";
-+			reg = <0 0x10803000 0 0x1000>,
-+			      <0 0x10840000 0 0x40000>;
-+			reg-names = "cfg", "sram";
-+			clocks = <&topckgen CLK_TOP_ADSP>,
-+				 <&clk26m>,
-+				 <&topckgen CLK_TOP_AUDIO_LOCAL_BUS>,
-+				 <&topckgen CLK_TOP_MAINPLL_D7_D2>,
-+				 <&scp_adsp CLK_SCP_ADSP_AUDIODSP>,
-+				 <&topckgen CLK_TOP_AUDIO_H>;
-+			clock-names = "adsp_sel",
-+				 "clk26m_ck",
-+				 "audio_local_bus",
-+				 "mainpll_d7_d2",
-+				 "scp_adsp_audiodsp",
-+				 "audio_h";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_ADSP>;
-+			mbox-names = "rx", "tx";
-+			mboxes = <&adsp_mailbox0>, <&adsp_mailbox1>;
++		scp: scp@10500000 {
++			compatible = "mediatek,mt8195-scp";
++			reg = <0 0x10500000 0 0x100000>,
++			      <0 0x10720000 0 0xe0000>,
++			      <0 0x10700000 0 0x8000>;
++			reg-names = "sram", "cfg", "l1tcm";
++			interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>;
 +			status = "disabled";
 +		};
 +
-+		adsp_mailbox0: mailbox@10816000 {
-+			compatible = "mediatek,mt8195-adsp-mbox";
-+			#mbox-cells = <0>;
-+			reg = <0 0x10816000 0 0x1000>;
-+			interrupts = <GIC_SPI 702 IRQ_TYPE_LEVEL_HIGH 0>;
-+		};
-+
-+		adsp_mailbox1: mailbox@10817000 {
-+			compatible = "mediatek,mt8195-adsp-mbox";
-+			#mbox-cells = <0>;
-+			reg = <0 0x10817000 0 0x1000>;
-+			interrupts = <GIC_SPI 703 IRQ_TYPE_LEVEL_HIGH 0>;
-+		};
-+
- 		afe: mt8195-afe-pcm@10890000 {
- 			compatible = "mediatek,mt8195-audio";
- 			reg = <0 0x10890000 0 0x10000>;
+ 		scp_adsp: clock-controller@10720000 {
+ 			compatible = "mediatek,mt8195-scp_adsp";
+ 			reg = <0 0x10720000 0 0x1000>;
 -- 
 2.18.0
 
