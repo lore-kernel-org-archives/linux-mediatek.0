@@ -4,70 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A017FC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 13:20:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC819C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 13:22:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qIcc85tpUMa7UsUB6SEIBg1w7JFjJ1DW6nf77vb5Baw=; b=ikxjND9BmDQH85mrJHVS6f18eh
-	/F8A1uu17czu4jUNQG78BXtFOzGD0SS0Y5TyJ0D7Haw3sRfGoEmPJg6WMV7CJj06JWIxki1xUOUB2
-	Lg7I7XcyuFl7O9vhFJqqI0frZnHJ3GLK80sT9xLbrwCw9+4ooQMKZM5vuvbR1Ts+U7JHaTD2wpIwj
-	sxSIdro6crOBPW2XGgwc30+eGR48yO0iwL8t7hO/FaFxMGY56fdysaPFqZnCFkgU6h1eataMbfqID
-	8mHsMpao3u5Ry/bnB7Kt5ZwMGZdNkfK/EPfLDHFA0Sm59tXtVAcvthZcFvL4vA4rojsqYf0VMoQww
-	MHTPR0Mw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=k9UgPR+9Ts8m1Lq/VKaffXRuOwQgDVn1dN58Fi2EW1A=; b=pkhmp2LLHKgiuKReE7s4bfBuux
+	JpjXlNWH+JCjWN5JzSXIi4a0w5abGjA7ulY/uf8FvqnF6Ih3/73u7s/Hl4ldhHUwlEmEOMk8R4Ssw
+	10vuia5d3era59vS6ucRyZ5ZYas3FsSV4qJlv7rP7r7AC4v98RxH+7OHUN18IjKIygxaNFyLC0R+S
+	yEJ2lo3sg8AKoQlOw1aTFOJpakWwBx+GveR6mTbgNUOQ/RCFGzGjgiHsF2P4fIylOJIow9j2PKbOV
+	GvdrstgrRyefRZ9y5/FhwmhB29SAPOrpw2qfL70VXjJ1zgT7IL8yGFrBHrounO2K9NcXRa6qkOwKR
+	FVi/GjnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBylP-00Eerm-Aa; Thu, 14 Jul 2022 13:20:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oByns-00EgG0-3A; Thu, 14 Jul 2022 13:22:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oByl0-00Eecz-0N; Thu, 14 Jul 2022 13:19:55 +0000
-X-UUID: defa733824bd4db18ab059f761192df2-20220714
+	id 1oBynh-00EgCC-B4; Thu, 14 Jul 2022 13:22:42 +0000
+X-UUID: 96369261ce79428dae2c26dfcdbfe35d-20220714
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:5b362850-44c2-4459-ac8e-584e148a7c92,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:2b79240b-244b-427e-8110-a844ff734f6a,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:c7114e64-0b3f-4b2c-b3a6-ed5c044366a0,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:c51b4e64-0b3f-4b2c-b3a6-ed5c044366a0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: defa733824bd4db18ab059f761192df2-20220714
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 96369261ce79428dae2c26dfcdbfe35d-20220714
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1750134111; Thu, 14 Jul 2022 06:19:48 -0700
+	with ESMTP id 85000535; Thu, 14 Jul 2022 06:22:35 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 14 Jul 2022 20:28:40 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 14 Jul 2022 20:28:40 +0800
+ Thu, 14 Jul 2022 20:22:30 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Thu, 14 Jul 2022 20:22:30 +0800
+Message-ID: <e7d28a927044e47ad8018c71d511754dda9ae7d7.camel@mediatek.com>
+Subject: Re: [PATCH v1 03/16] dt-bindings: power: mediatek: Refine multiple
+ level power domain nodes
 From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will
- Deacon <will@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Lee Jones
-	<lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Tinghan
- Shen <tinghan.shen@mediatek.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, MandyJH
- Liu <mandyjh.liu@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
-CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
+To: Rob Herring <robh@kernel.org>
+CC: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
+ Deacon" <will@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Enric
+ Balletbo i Serra" <enric.balletbo@collabora.com>, Weiyi Lu
+	<weiyi.lu@mediatek.com>, <iommu@lists.linux-foundation.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2 06/19] arm64: dts: mediatek: Update mt81xx scpsys node to align with dt-bindings
-Date: Thu, 14 Jul 2022 20:28:24 +0800
-Message-ID: <20220714122837.20094-7-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220714122837.20094-1-tinghan.shen@mediatek.com>
-References: <20220714122837.20094-1-tinghan.shen@mediatek.com>
+Date: Thu, 14 Jul 2022 20:22:30 +0800
+In-Reply-To: <20220712192119.GK1823936-robh@kernel.org>
+References: <20220704100028.19932-1-tinghan.shen@mediatek.com>
+	 <20220704100028.19932-4-tinghan.shen@mediatek.com>
+	 <20220705205739.GA2599256-robh@kernel.org>
+	 <b5667c052447d1b3c3498131af98d80a07ed4767.camel@mediatek.com>
+	 <20220712192119.GK1823936-robh@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220714_061954_094865_6BCBA4D0 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20220714_062241_409860_50CFD375 
+X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,78 +89,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update scpsys nodes using simple-mfd in mt81xx SoC devicetree
-to align with the bindings.
+Hi Rob,
+> 
+> Okay, I think you need something more like this that doesn't recurse 
+> infinitely:
+> 
+> patternProperties:
+>   "^power-domain@[0-9a-f]+$":
+>     $ref: #/$defs/power-domain-node
+> 
+>     unevaluatedProperties:
+>       $ref: #/$defs/power-domain-node
+> 
+> If you need a 3rd level of nodes:
+>       unevaluatedProperties:
+>         $ref: #/$defs/power-domain-node
+> 
+> 
+> Rob
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8167.dtsi | 3 +--
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 3 +--
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 3 +--
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 3 +--
- 4 files changed, 4 insertions(+), 8 deletions(-)
+After some test, your 1st suggestion works.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8167.dtsi b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-index 54655f2feb04..b3debea0edf8 100644
---- a/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-@@ -36,9 +36,8 @@
- 		};
- 
- 		scpsys: syscon@10006000 {
--			compatible = "syscon", "simple-mfd";
-+			compatible = "mediatek,scpsys", "syscon", "simple-mfd";
- 			reg = <0 0x10006000 0 0x1000>;
--			#power-domain-cells = <1>;
- 
- 			spm: power-controller {
- 				compatible = "mediatek,mt8167-power-controller";
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 6d9513c1f5bf..8f536f1344ec 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -444,9 +444,8 @@
- 		};
- 
- 		scpsys: syscon@10006000 {
--			compatible = "syscon", "simple-mfd";
-+			compatible = "mediatek,scpsys", "syscon", "simple-mfd";
- 			reg = <0 0x10006000 0 0x1000>;
--			#power-domain-cells = <1>;
- 
- 			/* System Power Manager */
- 			spm: power-controller {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 9d32871973a2..699bf445cc2e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -761,9 +761,8 @@
- 		};
- 
- 		scpsys: syscon@10006000 {
--			compatible = "syscon", "simple-mfd";
-+			compatible = "mediatek,scpsys", "syscon", "simple-mfd";
- 			reg = <0 0x10006000 0 0x1000>;
--			#power-domain-cells = <1>;
- 
- 			/* System Power Manager */
- 			spm: power-controller {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index cbae5a5ee4a0..f5f944cc623c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -306,9 +306,8 @@
- 		};
- 
- 		scpsys: syscon@10006000 {
--			compatible = "syscon", "simple-mfd";
-+			compatible = "mediatek,scpsys", "syscon", "simple-mfd";
- 			reg = <0 0x10006000 0 0x1000>;
--			#power-domain-cells = <1>;
- 
- 			/* System Power Manager */
- 			spm: power-controller {
--- 
-2.18.0
+The infinite error is introduced from my changes and affect the result of power/renesas,sysc-
+rmobile.yaml. The 'additionalProperties' being defined as a DT property is the root of this error.
+After fix the indentation, the error is gone.
+
+I'll update the yaml as your 1st suggestion in next version.
+
+Thanks,
+TingHan
+
+
 
 
