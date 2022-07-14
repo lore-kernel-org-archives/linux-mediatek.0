@@ -4,72 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05740C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 15:48:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6990CCA47B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 16:43:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hWRpfSh7Y6/HjI/txFzpfXD06V97Su2IJPC3QF0OR/Y=; b=YgO2HnswykUdMJYhZKUPoh+WXh
-	A5FZ8apcW4iLp+iv5IoddT2j8iCHKo5sqw3lGOA/JK3dXn/M/5gb3rV+HzGblO6WLLpopJTcbiCyk
-	JG2JQVo5Aa7z8mvoOUwG9CcqbjjC/JCINUxXUoZ7LV95VhDMPkKbNcmtXR+WxLB4CwfLouE21iFXw
-	7/uqv3Wur71EsVyPrhZxe+W3yKVztMk6fbAhoJALs77xfTJxlSyjm6ewQce0YeevUt4KLrRN+qgIG
-	4N7KLPgfL/uskm/HqhcKNJTU6+9aMJAQ6Ia+ZBHG9hIFybG4EelK1rpHCYlQIo03AQZQZairzuKaD
-	DzW5AZHw==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	List-Owner; bh=ASTY3uZ2rAntim7e3/GOxAAg9H0P80DOxyWPmqZhmoA=; b=CL+f0peFBq4ZEk
+	OVKCxCsnXQh/pAetTopH+XDDROc1GBKLVKZyAThvxFfpNGjqNRePELRnTUS+2YHfej5sdQpuicI+2
+	qA0jRQMniQlxcONvB8ZUDkZZgznM0ZZlw+oa/DZ5m6yWClj51Msqj2oVuE1uwOfXaSX6OHqN/BUEH
+	wHBPqsSGGXt6h9WQAlSOFiuBtSjmN2G/vyitAnZ9dtnOziMvooEVQHatK9g04GIxVDQb49gRok/nV
+	x8AGh69/fFi/NaMfjf1KN8YiiMM88irfsx/zG4TpwL6QtnZO5LDX2SihUU/qevM9TiCgYH4X5P5Ax
+	FCFa6/+gbmeXiTZj4HGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oC14q-00Ftow-3u; Thu, 14 Jul 2022 15:48:32 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oC1wF-00GNLn-Qf; Thu, 14 Jul 2022 16:43:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oC0ur-00FnOR-G2; Thu, 14 Jul 2022 15:38:14 +0000
+	id 1oC1w4-00GNCr-6z; Thu, 14 Jul 2022 16:43:33 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 123ECB82158;
-	Thu, 14 Jul 2022 15:38:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A57CBC385A2;
-	Thu, 14 Jul 2022 15:38:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1657813089;
-	bh=U9G5H+F5ke4Ig1zhCGdP+JXYur2miSUshKx7+9DJkZk=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=ntY6kk5rfRV/jplMtoO0VwrEPFtoYYymHPd19E+KscZ4zy+/+P+t9mZYZEf9XC2DC
-	 bhYylukM6lpZwkEwUgC9UdUJliEBYkJQ4g/4soxJmsjapha3zIDibt9L/oBuv0g68M
-	 redoVX+gBo2DDaV2XvKK4Kt7sGYWdxiWFm8Nn2U4xiJXLXat/FfzWN0WagJcrKbJM6
-	 P0AEstXeJfYTDI7D0UfxoP7Jps1ciz97fusNVpTfCRRU5ExLryBTL4cTyuyWhEqcto
-	 u9wprbirqr0GcN/ny3jsWZc5g6opGKzmcaxd+QywRP7Z4Wc7QLPkM7tsN2DrLSKQHk
-	 +xo8rO5Ua7BDw==
-Received: by mail-vk1-f181.google.com with SMTP id c185so964940vkh.12;
-        Thu, 14 Jul 2022 08:38:09 -0700 (PDT)
-X-Gm-Message-State: AJIora8CPFueTKFJXKxILPV/v33CKwU6NQnxZc5dQxO3KWgHi6e+kOUk
-	P/uAXkQDG/jFCIHjVvlkCKbrdz4JRZDYtss11w==
-X-Google-Smtp-Source: AGRyM1ueakcaqefdrg7VLkKXk8mWYborOH3gMs/rbv3OLb8P/RdVgXMatAj03gLpnDmmrBTDHwqD6nygYxHFXTW2Wnk=
-X-Received: by 2002:a1f:2049:0:b0:374:866b:6dd8 with SMTP id
- g70-20020a1f2049000000b00374866b6dd8mr3907873vkg.15.1657813088619; Thu, 14
- Jul 2022 08:38:08 -0700 (PDT)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A4D906207B;
+	Thu, 14 Jul 2022 16:43:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BFA9C341D5;
+	Thu, 14 Jul 2022 16:43:31 +0000 (UTC)
+Received: from rostedt by gandalf.local.home with local (Exim 4.95)
+	(envelope-from <rostedt@goodmis.org>)
+	id 1oC1w2-004lRz-Fm;
+	Thu, 14 Jul 2022 12:43:30 -0400
+Message-ID: <20220714164330.311734558@goodmis.org>
+User-Agent: quilt/0.66
+Date: Thu, 14 Jul 2022 12:43:09 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: linux-kernel@vger.kernel.org
+Cc: Ingo Molnar <mingo@kernel.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [for-next][PATCH 13/23] USB: mtu3: tracing: Use the new __vstring() helper
+References: <20220714164256.403842845@goodmis.org>
 MIME-Version: 1.0
-References: <20220630131543.225554-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220630131543.225554-1-angelogioacchino.delregno@collabora.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Thu, 14 Jul 2022 09:37:57 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqLY7eSLKhRrL7hx9jFxTm-s=MmdXOVVJv3667fSoeSvSQ@mail.gmail.com>
-Message-ID: <CAL_JsqLY7eSLKhRrL7hx9jFxTm-s=MmdXOVVJv3667fSoeSvSQ@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: pinctrl: mt8195: Add and use drive-strength-microamp
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, 
-	"open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220714_083813_727886_95DC6111 
-X-CRM114-Status: GOOD (  14.82  )
+X-CRM114-CacheID: sfid-20220714_094332_314012_473C2CA9 
+X-CRM114-Status: GOOD (  14.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,27 +68,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 30, 2022 at 7:15 AM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> As was already done for MT8192 in commit b52e695324bb ("dt-bindings:
-> pinctrl: mt8192: Add drive-strength-microamp"), replace the custom
-> mediatek,drive-strength-adv property with the standardized pinconf
-> 'drive-strength-microamp' one.
->
-> Similarly to the mt8192 counterpart, there's no user of property
-> 'mediatek,drive-strength-adv', hence removing it is safe.
->
-> Fixes: 69c3d58dc187 ("dt-bindings: pinctrl: mt8195: Add mediatek,drive-strength-adv property")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../bindings/pinctrl/pinctrl-mt8195.yaml      | 27 ++-----------------
->  1 file changed, 2 insertions(+), 25 deletions(-)
+From: "Steven Rostedt (Google)" <rostedt@goodmis.org>
 
-Now failing in linux-next. Looks like the example needs updating:
+Instead of open coding a __dynamic_array() with a fixed length (which
+defeats the purpose of the dynamic array in the first place). Use the new
+__vstring() helper that will use a va_list and only write enough of the
+string into the ring buffer that is needed.
 
-Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.example.dtb:
-pinctrl@10005000: i2c0-pins:pins: 'mediatek,drive-strength-adv' does
-not match any of the regexes: 'pinctrl-[0-9]+'
- From schema: /builds/robherring/linux-dt/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
+Link: https://lkml.kernel.org/r/20220705224750.354926535@goodmis.org
+
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Ingo Molnar <mingo@kernel.org>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-usb@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Steven Rostedt (Google) <rostedt@goodmis.org>
+---
+ drivers/usb/mtu3/mtu3_trace.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+index 1b897636daf2..ef3c17e2f8a6 100644
+--- a/drivers/usb/mtu3/mtu3_trace.h
++++ b/drivers/usb/mtu3/mtu3_trace.h
+@@ -25,11 +25,11 @@ TRACE_EVENT(mtu3_log,
+ 	TP_ARGS(dev, vaf),
+ 	TP_STRUCT__entry(
+ 		__string(name, dev_name(dev))
+-		__dynamic_array(char, msg, MTU3_MSG_MAX)
++		__vstring(msg, vaf->fmt, vaf->va)
+ 	),
+ 	TP_fast_assign(
+ 		__assign_str(name, dev_name(dev));
+-		vsnprintf(__get_str(msg), MTU3_MSG_MAX, vaf->fmt, *vaf->va);
++		__assign_vstr(msg, vaf->fmt, vaf->va);
+ 	),
+ 	TP_printk("%s: %s", __get_str(name), __get_str(msg))
+ );
+-- 
+2.35.1
 
