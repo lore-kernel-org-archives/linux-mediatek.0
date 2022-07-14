@@ -4,86 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C27BDC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 09:58:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7908BC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 10:12:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r9k323bHnB8UnY03UwbKAWXPRAc7vFB/iJroFHsobp4=; b=2hVqDp66CgH6kJK/rdkEBmxLIM
-	f5Yn4jGeE4vNRKhZyEoj+xZU0ZZUvroFdLLMRK/bC9lm11OvfM4YOKJAfwr7Sx5BVliPAT4fNRblg
-	eqOOTPFNcmLYEGuSnJOTNwOeDBP+tB6oyuqbwaNaUNnGjbxag/yhOOMrT2iVWaP4NoPDP9/nAnlZa
-	P+G1lxJrLnPtXsgpvF0tRhoqHqW6G0tI3hqTeXjl5rbcQJPkNV6ppqGgf6hACPsilJtKLivZbTVEr
-	/WTubhS9RwWrx1IdcAa4/oz9s2QiRzYAKb2JyjIZROwaF3fuRPaa6QWS6JGRYvNSEPwmB2KKJ0eqz
-	MhF9VZWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2wIZwpPwo15m4X4Yl1snRV5bJMzeODynWFSJqs1Hpqw=; b=A8J9tn6dT7siuSUQPugMu/tFgR
+	JwzK8Lb1LnpVz1Pc7hFmdAh2Ue3iaecDWRG4n4yEZkgC6FOQ1XSD+S6OHoUhtywu8iRs4kNkBkiTo
+	+DO0Gnvc6ECUqRuo3CoYY8/YVWetwEUTLxpzQ5kG3izT2cIXj4JdMQ1ch3Hjlu8ZxJnGH9rF+vzIR
+	fmb+qgYZNAveLMZW1nMc+0lzVhDWcFFBoWiAwRel5lp3lDkXNkx8tgdV0Z75/btZSR47O5uImIG9K
+	D1TkFInajZhwKSd6ausKGFQyJdycV7mTqJbH1JZFeNfnLYfTon/RiTAIT6rzrXUU2K+2/QJWf401b
+	p1SEOjOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBvbl-00D7NC-4P; Thu, 14 Jul 2022 09:58:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oBvpx-00DEij-6n; Thu, 14 Jul 2022 10:12:49 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBvbX-00D7B7-EQ; Thu, 14 Jul 2022 09:57:56 +0000
-X-UUID: af2923d171a247d1b61a6f0ee9ccfaf9-20220714
+	id 1oBvpl-00DEbO-3c; Thu, 14 Jul 2022 10:12:38 +0000
+X-UUID: 7f956639618c40638cd82762bed297a3-20220714
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:25eae4bb-706b-4ab0-8cb2-339890e75d20,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:3c37ddae-7994-4498-affe-51f69358cd88,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:60a2fa32-b9e4-42b8-b28a-6364427c76bb,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:2a6c7dd7-5d6d-4eaf-a635-828a3ee48b7c,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: af2923d171a247d1b61a6f0ee9ccfaf9-20220714
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
+X-UUID: 7f956639618c40638cd82762bed297a3-20220714
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1271351349; Thu, 14 Jul 2022 02:57:47 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+	with ESMTP id 1706148661; Thu, 14 Jul 2022 03:12:32 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 14 Jul 2022 16:57:11 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ Thu, 14 Jul 2022 17:21:55 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 14 Jul 2022 16:57:11 +0800
-Message-ID: <9d1e5b01aa23ddf592fe6a7f9ffa8abc01842b3f.camel@mediatek.com>
-Subject: Re: [PATCH v14 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "robh+dt@kernel.org"
-	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>, "mripard@kernel.org"
-	<mripard@kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "deller@gmx.de"
-	<deller@gmx.de>, "airlied@linux.ie" <airlied@linux.ie>
-CC: "msp@baylibre.com" <msp@baylibre.com>, "granquet@baylibre.com"
-	<granquet@baylibre.com>, "Jitao Shi
- =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?=" <jitao.shi@mediatek.com>,
-	"wenst@chromium.org" <wenst@chromium.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "LiangXu Xu
- =?UTF-8?Q?=28=E5=BE=90=E4=BA=AE=29?=" <LiangXu.Xu@mediatek.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
-	<linux-fbdev@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 14 Jul 2022 16:57:11 +0800
-In-Reply-To: <039bc647aaf4f0b744e40164ff6eae2032345c1a.camel@mediatek.com>
-References: <20220712111223.13080-1-rex-bc.chen@mediatek.com>
-	 <20220712111223.13080-6-rex-bc.chen@mediatek.com>
-	 <039bc647aaf4f0b744e40164ff6eae2032345c1a.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Thu, 14 Jul 2022 17:21:55 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
+	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, daoyuan huang
+	<daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+	<allen-kh.cheng@mediatek.com>, <xiandong.wang@mediatek.com>,
+	<randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
+	<jason-jh.lin@mediatek.com>, <roy-cw.yeh@mediatek.com>,
+	<river.cheng@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<cellopoint.kai@gmail.com>
+Subject: [PATCH v22 3/4] arm64: dts: mt8183: add Mediatek MDP3 nodes
+Date: Thu, 14 Jul 2022 17:21:52 +0800
+Message-ID: <20220714092153.16686-4-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220714092153.16686-1-moudy.ho@mediatek.com>
+References: <20220714092153.16686-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220714_025755_548157_5A33D3B9 
-X-CRM114-Status: GOOD (  22.45  )
+X-CRM114-CacheID: sfid-20220714_031237_178284_30A88D86 
+X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,65 +92,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-07-13 at 17:33 +0800, CK Hu wrote:
-> Hi, Bo-Chen:
-> 
-> On Tue, 2022-07-12 at 19:12 +0800, Bo-Chen Chen wrote:
-> > From: Markus Schneider-Pargmann <msp@baylibre.com>
-> > 
-> > This patch adds a embedded displayport driver for the MediaTek
-> > mt8195
-> > SoC.
-> > 
-> > It supports the MT8195, the embedded DisplayPort units. It offers
-> > DisplayPort 1.4 with up to 4 lanes.
-> > 
-> > The driver creates a child device for the phy. The child device
-> > will
-> > never exist without the parent being active. As they are sharing a
-> > register range, the parent passes a regmap pointer to the child so
-> > that
-> > both can work with the same register range. The phy driver sets
-> > device
-> > data that is read by the parent to get the phy device that can be
-> > used
-> > to control the phy properties.
-> > 
-> > This driver is based on an initial version by
-> > Jitao shi <jitao.shi@mediatek.com>
-> > 
-> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > ---
-> 
-> [snip]
-> 
-> > +
-> > +static void mtk_dp_aux_fill_write_fifo(struct mtk_dp *mtk_dp, u8
-> > *buf,
-> > +				       size_t length)
-> > +{
-> > +	mtk_dp_bulk_16bit_write(mtk_dp, MTK_DP_AUX_P0_3708, buf,
-> > length);
-> 
-> mtk_dp_aux_fill_write_fifo() directly call mtk_dp_bulk_16bit_write(),
-> so I think we could just keep one of them and drop another one.
-> 
+Add device nodes for Media Data Path 3 (MDP3) modules.
 
-Hello CK,
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 63 ++++++++++++++++++++++++
+ 1 file changed, 63 insertions(+)
 
-mtk_dp_bulk_16bit_write() will also be used in following patches.
-I want to keep the driver like this.
-
-BRs,
-Bo-Chen
-> Regards,
-> CK
-> 
-> > +}
-> > +
-> 
-> 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 01e650251928..0776fc8290ce 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1389,6 +1389,60 @@
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
+ 		};
+ 
++		mdp3-rdma0@14001000 {
++			compatible = "mediatek,mt8183-mdp3-rdma";
++			reg = <0 0x14001000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
++					      <CMDQ_EVENT_MDP_RDMA0_EOF>;
++			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++			clocks = <&mmsys CLK_MM_MDP_RDMA0>,
++				 <&mmsys CLK_MM_MDP_RSZ1>;
++			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
++			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
++				 <&gce 21 CMDQ_THR_PRIO_LOWEST 0>;
++		};
++
++		mdp3-rsz0@14003000 {
++			compatible = "mediatek,mt8183-mdp3-rsz";
++			reg = <0 0x14003000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ0_SOF>,
++					      <CMDQ_EVENT_MDP_RSZ0_EOF>;
++			clocks = <&mmsys CLK_MM_MDP_RSZ0>;
++		};
++
++		mdp3-rsz1@14004000 {
++			compatible = "mediatek,mt8183-mdp3-rsz";
++			reg = <0 0x14004000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ1_SOF>,
++					      <CMDQ_EVENT_MDP_RSZ1_EOF>;
++			clocks = <&mmsys CLK_MM_MDP_RSZ1>;
++		};
++
++		mdp3-wrot0@14005000 {
++			compatible = "mediatek,mt8183-mdp3-wrot";
++			reg = <0 0x14005000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_MDP_WROT0_SOF>,
++					      <CMDQ_EVENT_MDP_WROT0_EOF>;
++			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++			clocks = <&mmsys CLK_MM_MDP_WROT0>;
++			iommus = <&iommu M4U_PORT_MDP_WROT0>;
++		};
++
++		mdp3-wdma@14006000 {
++			compatible = "mediatek,mt8183-mdp3-wdma";
++			reg = <0 0x14006000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_MDP_WDMA0_SOF>,
++					      <CMDQ_EVENT_MDP_WDMA0_EOF>;
++			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++			clocks = <&mmsys CLK_MM_MDP_WDMA0>;
++			iommus = <&iommu M4U_PORT_MDP_WDMA0>;
++		};
++
+ 		ovl0: ovl@14008000 {
+ 			compatible = "mediatek,mt8183-disp-ovl";
+ 			reg = <0 0x14008000 0 0x1000>;
+@@ -1531,6 +1585,15 @@
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+ 		};
+ 
++		mdp3-ccorr@1401c000 {
++			compatible = "mediatek,mt8183-mdp3-ccorr";
++			reg = <0 0x1401c000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_MDP_CCORR_SOF>,
++					      <CMDQ_EVENT_MDP_CCORR_EOF>;
++			clocks = <&mmsys CLK_MM_MDP_CCORR>;
++		};
++
+ 		imgsys: syscon@15020000 {
+ 			compatible = "mediatek,mt8183-imgsys", "syscon";
+ 			reg = <0 0x15020000 0 0x1000>;
+-- 
+2.18.0
 
 
