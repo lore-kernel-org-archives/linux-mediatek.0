@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F7BAC43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 06:21:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B27AEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 07:12:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5hlp1nfag4HoucH57KExaBOwy0rUAjPX1SqvFyZMMTY=; b=IjCWl538mr5Sq6vwuuLLQBY//4
-	6oUGiNu/l28xqJ1oPJVNJEhplyzL6tTZpqhbnLRMq7H6fFO5kniie0l2Dee7fFuDa5ziB3ftbNPfo
-	tAbmukuivDMAXU904WK2uujDKkddcARBzoNncCkmfpHvobwtnANWNT8yVj6qyqdHFJlWEEWgHhu/E
-	7l7/fNvN+pJF+6JQiTZtsDD8Wt8TH/9QrVYruEJbixIYJHXXT1STAy7PyWQkQziQ3IC2NSbb1g835
-	kmw1IgiiGAI1oX6euLv9Z2bgYtiBvYBfduRvoJUkC2xtKzK7zS9nDDtm5erxNeR952aNvKTFK6aHP
-	3Av+AXBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lrKs1v/MEJZGqYXMrAnyLyuU86i4sNOPb2S/CR5r72A=; b=IS9xPq386CHlOaXjHrW10bU8b4
+	wMXDtZ+TmUTIKkB+6x/2qE44whKiEe3cHDhEvaasCE7IyI5anj9sYGIUFcpVF1tKzBQGR7mmOLBpd
+	liWgtEc5c5sEUIXZxR8sPrDKUTAWwunL1xa5YybN9ucm2oNkghl6+XVrW1q7VJPcuiNiyAHzcTWDg
+	9yOKyHXuOYWm/iX1pnfJopbWtU46DiWJjMTTfMFEZA+o2N2dmTUQXDazCpRVNFTE5IUyT7FVS7aEv
+	23EU/t7wKrvky06bIfkcPJgK0pC053llSquL4QbrByTYhfAaYo/PYaz22nftEFThOSI9+Icn8yYf3
+	4fSZFhiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBsDo-00BOPN-Pm; Thu, 14 Jul 2022 06:21:12 +0000
+	id 1oBt1X-00BiFx-UT; Thu, 14 Jul 2022 07:12:35 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBsDc-00BOJM-LH; Thu, 14 Jul 2022 06:21:02 +0000
-X-UUID: 5a028dca3f9b4fbca878a4221f179e05-20220713
+	id 1oBt1U-00BiBM-Qt; Thu, 14 Jul 2022 07:12:34 +0000
+X-UUID: dad995f515b5482aa97177c040a52e49-20220714
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:3bc0f9b9-88d0-45d3-8a8a-0b693b479cba,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:0f94e32,CLOUDID:843f4464-0b3f-4b2c-b3a6-ed5c044366a0,C
+X-CID-O-INFO: VERSION:1.1.8,REQID:173e171f-1e44-4ad8-a82d-685324348ffe,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:2597f532-b9e4-42b8-b28a-6364427c76bb,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 5a028dca3f9b4fbca878a4221f179e05-20220713
+X-UUID: dad995f515b5482aa97177c040a52e49-20220714
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <biao.huang@mediatek.com>)
+	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 249145600; Wed, 13 Jul 2022 23:20:55 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+	with ESMTP id 1315365314; Thu, 14 Jul 2022 00:12:23 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 14 Jul 2022 14:00:18 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 14 Jul 2022 14:00:17 +0800
-From: Biao Huang <biao.huang@mediatek.com>
-To: David Miller <davem@davemloft.net>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue
-	<alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, "Eric
- Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
-	<pabeni@redhat.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Biao
- Huang" <biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <macpaul.lin@mediatek.com>, "Jisheng
- Zhang" <jszhang@kernel.org>, Mohammad Athari Bin Ismail
-	<mohammad.athari.ismail@intel.com>
-Subject: [PATCH net v5 1/3] stmmac: dwmac-mediatek: fix clock issue
-Date: Thu, 14 Jul 2022 14:00:12 +0800
-Message-ID: <20220714060014.18958-2-biao.huang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220714060014.18958-1-biao.huang@mediatek.com>
-References: <20220714060014.18958-1-biao.huang@mediatek.com>
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 14 Jul 2022 14:51:47 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 14 Jul 2022 14:51:47 +0800
+Message-ID: <24726b8a5994961b966cf90b1f56c71a844d274a.camel@mediatek.com>
+Subject: Re: [PATCH v14 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
+ driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 14 Jul 2022 14:51:47 +0800
+In-Reply-To: <20220712111223.13080-6-rex-bc.chen@mediatek.com>
+References: <20220712111223.13080-1-rex-bc.chen@mediatek.com>
+	 <20220712111223.13080-6-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_232100_728613_C19C570E 
-X-CRM114-Status: GOOD (  15.19  )
+X-CRM114-CacheID: sfid-20220714_001232_882305_0442078E 
+X-CRM114-Status: GOOD (  22.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,114 +86,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The pm_runtime takes care of the clock handling in current
-stmmac drivers, and dwmac-mediatek implement the
-mediatek_dwmac_clks_config() as the callback for pm_runtime.
+Hi, Bo-Chen:
 
-Then, stripping duplicated clocks handling in old init()/exit()
-to fix clock issue in suspend/resume test.
+On Tue, 2022-07-12 at 19:12 +0800, Bo-Chen Chen wrote:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> This patch adds a embedded displayport driver for the MediaTek mt8195
+> SoC.
+> 
+> It supports the MT8195, the embedded DisplayPort units. It offers
+> DisplayPort 1.4 with up to 4 lanes.
+> 
+> The driver creates a child device for the phy. The child device will
+> never exist without the parent being active. As they are sharing a
+> register range, the parent passes a regmap pointer to the child so
+> that
+> both can work with the same register range. The phy driver sets
+> device
+> data that is read by the parent to get the phy device that can be
+> used
+> to control the phy properties.
+> 
+> This driver is based on an initial version by
+> Jitao shi <jitao.shi@mediatek.com>
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
 
-As to clocks in probe/remove, vendor need symmetric handling to
-ensure clocks balance.
+[snip]
 
-Test pass, including suspend/resume and ko insertion/remove.
+> +static int mtk_dp_train_tps_2_3(struct mtk_dp *mtk_dp, u8
+> target_linkrate,
+> +				u8 target_lane_count, int
+> *iteration_count,
+> +				u8 *lane_adjust,  int *status_control,
+> +				u8 *prev_lane_adjust)
+> +{
+> +	u8 val;
+> +	u8 link_status[DP_LINK_STATUS_SIZE] = {};
+> +
+> +	if (*status_control == 1) {
+> +		if (mtk_dp->train_info.tps4) {
+> +			mtk_dp_train_set_pattern(mtk_dp, 4);
+> +			val = DP_TRAINING_PATTERN_4;
+> +		} else if (mtk_dp->train_info.tps3) {
+> +			mtk_dp_train_set_pattern(mtk_dp, 3);
+> +			val = DP_LINK_SCRAMBLING_DISABLE |
+> +				DP_TRAINING_PATTERN_3;
+> +		} else {
+> +			mtk_dp_train_set_pattern(mtk_dp, 2);
+> +			val = DP_LINK_SCRAMBLING_DISABLE |
+> +				DP_TRAINING_PATTERN_2;
+> +		}
+> +		drm_dp_dpcd_writeb(&mtk_dp->aux,
+> +				   DP_TRAINING_PATTERN_SET, val);
+> +		drm_dp_dpcd_read(&mtk_dp->aux,
+> +				 DP_ADJUST_REQUEST_LANE0_1,
+> lane_adjust,
+> +				 sizeof(*lane_adjust) * 2);
+> +
+> +		mtk_dp_train_update_swing_pre(mtk_dp,
+> +					      target_lane_count,
+> lane_adjust);
+> +		*status_control = 2;
+> +		(*iteration_count)++;
+> +	}
+> +
+> +	drm_dp_link_train_channel_eq_delay(&mtk_dp->aux, mtk_dp-
+> >rx_cap);
+> +
+> +	drm_dp_dpcd_read_link_status(&mtk_dp->aux, link_status);
+> +
+> +	if (!drm_dp_clock_recovery_ok(link_status, target_lane_count)) 
 
-Fixes: 3186bdad97d5 ("stmmac: dwmac-mediatek: add platform level clocks management")
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 49 ++++++++-----------
- 1 file changed, 21 insertions(+), 28 deletions(-)
+I think this checking is redundant. I think we could just keep
+drm_dp_channel_eq_ok() and drop drm_dp_clock_recovery_ok() here because
+if drm_dp_clock_recovery_ok() fail, it imply that
+drm_dp_channel_eq_ok() would fail. So just check drm_dp_channel_eq_ok()
+is enough.
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-index 6ff88df58767..ca8ab290013c 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-@@ -576,32 +576,7 @@ static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
- 		}
- 	}
- 
--	ret = clk_bulk_prepare_enable(variant->num_clks, plat->clks);
--	if (ret) {
--		dev_err(plat->dev, "failed to enable clks, err = %d\n", ret);
--		return ret;
--	}
--
--	ret = clk_prepare_enable(plat->rmii_internal_clk);
--	if (ret) {
--		dev_err(plat->dev, "failed to enable rmii internal clk, err = %d\n", ret);
--		goto err_clk;
--	}
--
- 	return 0;
--
--err_clk:
--	clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
--	return ret;
--}
--
--static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
--{
--	struct mediatek_dwmac_plat_data *plat = priv;
--	const struct mediatek_dwmac_variant *variant = plat->variant;
--
--	clk_disable_unprepare(plat->rmii_internal_clk);
--	clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
- }
- 
- static int mediatek_dwmac_clks_config(void *priv, bool enabled)
-@@ -643,7 +618,6 @@ static int mediatek_dwmac_common_data(struct platform_device *pdev,
- 	plat->addr64 = priv_plat->variant->dma_bit_mask;
- 	plat->bsp_priv = priv_plat;
- 	plat->init = mediatek_dwmac_init;
--	plat->exit = mediatek_dwmac_exit;
- 	plat->clks_config = mediatek_dwmac_clks_config;
- 	if (priv_plat->variant->dwmac_fix_mac_speed)
- 		plat->fix_mac_speed = priv_plat->variant->dwmac_fix_mac_speed;
-@@ -712,13 +686,32 @@ static int mediatek_dwmac_probe(struct platform_device *pdev)
- 	mediatek_dwmac_common_data(pdev, plat_dat, priv_plat);
- 	mediatek_dwmac_init(pdev, priv_plat);
- 
-+	ret = mediatek_dwmac_clks_config(priv_plat, true);
-+	if (ret)
-+		return ret;
-+
- 	ret = stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
- 	if (ret) {
- 		stmmac_remove_config_dt(pdev, plat_dat);
--		return ret;
-+		goto err_drv_probe;
- 	}
- 
- 	return 0;
-+
-+err_drv_probe:
-+	mediatek_dwmac_clks_config(priv_plat, false);
-+	return ret;
-+}
-+
-+static int mediatek_dwmac_remove(struct platform_device *pdev)
-+{
-+	struct mediatek_dwmac_plat_data *priv_plat = get_stmmac_bsp_priv(&pdev->dev);
-+	int ret;
-+
-+	ret = stmmac_pltfr_remove(pdev);
-+	mediatek_dwmac_clks_config(priv_plat, false);
-+
-+	return ret;
- }
- 
- static const struct of_device_id mediatek_dwmac_match[] = {
-@@ -733,7 +726,7 @@ MODULE_DEVICE_TABLE(of, mediatek_dwmac_match);
- 
- static struct platform_driver mediatek_dwmac_driver = {
- 	.probe  = mediatek_dwmac_probe,
--	.remove = stmmac_pltfr_remove,
-+	.remove = mediatek_dwmac_remove,
- 	.driver = {
- 		.name           = "dwmac-mediatek",
- 		.pm		= &stmmac_pltfr_pm_ops,
--- 
-2.25.1
+Regards,
+CK
+
+> {
+> +		mtk_dp->train_info.cr_done = false;
+> +		mtk_dp->train_info.eq_done = false;
+> +		dev_dbg(mtk_dp->dev, "Link train EQ fail\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (drm_dp_channel_eq_ok(link_status, target_lane_count)) {
+> +		mtk_dp->train_info.eq_done = true;
+> +		dev_dbg(mtk_dp->dev, "Link train EQ pass\n");
+> +		return 0;
+> +	}
+> +
+> +	if (*prev_lane_adjust == link_status[4])
+> +		(*iteration_count)++;
+> +	else
+> +		*prev_lane_adjust = link_status[4];
+> +
+> +	return -EAGAIN;
+> +}
+> +
 
 
