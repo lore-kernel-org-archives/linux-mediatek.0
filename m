@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD0D8C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 11:27:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B71FC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Jul 2022 11:43:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mXPiKCP0Zm7n0SNsVEg+2OxEKGE05qSSy+JXdaCaFic=; b=wEbWJXpbr4UizSl5O6pO5L+wFx
-	m9BbqOj/+UzSSawy/pzu33e4x/a5wc03h++22DHXBnYu0rTHTPLvE7AzUL80dlKHhociAh1Lul3y5
-	eobNmZpSt9cOJQCQ9NIdg8r77kJapmyfxEVlWq8fRyc9+/PzmIu7SQDhjclh2r+RWjKdvBVKx54np
-	4vhBRmGH8hPe+eXJFhjs0Pj6URswVNcwTFvz5r18OupPI2bN04vMO2lvwj3faxPPw7ElELR/urpzQ
-	Q1aW9fQX81/PZ8hlKcl880PsPxsaMq1UNFvU0GFpLMMKhonvoBV8tLgC7VDNKDNqSUJWaEHfzZl6T
-	8oR0mvyg==;
+	bh=4FRrQbjd1yPGl8weYP34GTEZIi47ufSOPwvM8ZkVMgA=; b=WrGLkzVaNU9s5oZ9prbpCtBjzg
+	Dii9ezuPIo2hzg5N8zI45+d1YxW3apcO9oTWlYdETcj3LoTmCXzfDKbEGdknVojHkj05YEjXOfrtu
+	PQtZe/qQj9+xm6/rqjazuyObCzRtQ6RrCB7sKgCdQ4YRGsZPnQ6NTXUjP9Nt+KhZBF/EO+uAMPZeK
+	eHxkzZa8zIQy58bA9roW1e+fPUSJbRxldvd0HEFvJlXwKPnzagGlUv/K16taeK93TOXB9OaRflhRH
+	KkmrxCgY1jhUsvuTe+WAo8AFGKF5RrRUyNSoxyG+yeQvReutJIAKZWy0vX7WQM5QEV02Rhv/Ha2TU
+	ske9xLRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBwzr-00Dk66-A7; Thu, 14 Jul 2022 11:27:07 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oBxFX-00Dsr2-Sa; Thu, 14 Jul 2022 11:43:19 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBwzH-00DjhO-0K; Thu, 14 Jul 2022 11:26:33 +0000
+	id 1oBxFK-00Dsj8-P2; Thu, 14 Jul 2022 11:43:08 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 656336601A3B;
-	Thu, 14 Jul 2022 12:26:24 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9E0796601A3B;
+	Thu, 14 Jul 2022 12:43:03 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657797985;
-	bh=S3uu1fiJqnW9GfhBdNOm5ox+Kfz/PBBejcQCNxtJG7Q=;
+	s=mail; t=1657798984;
+	bh=Jmgt9B9vmIXfJJid7XgjYdDGJLAKYu4OfWn1P8yPhOw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nmnLgvsJ7wUdm7PX1mVlONbq1I4u5c8cliefOUgywi8O7eQNZ9V+UIqkndktdgbcP
-	 I0dEshLOWiiUfvkV/+4U8lS3BJfHmZgWj3KVrMa/ccUIYo9Dnpb4HTLgtic2FTgNh7
-	 g5d+02tP+6EPQhfdPAcWyW0jpcfH2kHqBjomZ+ZuOvzEhVWZ2vJ9XBqB3laT4PSV/x
-	 wE27WhtoF+NNzOHG02pv3MTUxMxOvBeOAV4Al3aYiSSPgVfkd9x19nYDLM9Qlt0zBW
-	 OPk0gbvq517iOXDN2+v2c/sA8s86kGLxsltZPJRKhmMDcmNkBKg0OPz6pPN2wKSIEw
-	 tSgJZPher7yKQ==
-Message-ID: <8bc57373-70e4-8ab6-659f-0917dbf14c38@collabora.com>
-Date: Thu, 14 Jul 2022 13:26:21 +0200
+	b=I1CQX9JcrHhIziX/KiYO9NOOGL291FYxJwbHYiXpoaNjzvl1ZdrDpbLmEFvlzuQ3H
+	 MEzRivcgfXjr/hoKURjQRYeZfURGYj+XIf5d9vBNOX0X7+HoA6ny3pnput1vOafAXl
+	 mCElQXJhyaHq2Ae8y+dx2ZLIDHt0XlZl2HGEDrlISiZIiJJgIESDtGUBZ4rX0WErJ2
+	 Y/qJA3pEKKn4JOmXvubSbOx3QoIIuu5bQR5EOt1uqStlUszcCeU4byTQEzr1M6hGaA
+	 55H5s7UTvKlWH5UhC2xzDPk+0SWasoBJTlWQpbtW/+VfjHsBI+ncvutMUKhfYQ5SGG
+	 PgIsLtQDqItZg==
+Message-ID: <32ae9ba6-55aa-1663-05f6-20a637604f70@collabora.com>
+Date: Thu, 14 Jul 2022 13:43:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH v14 04/10] video/hdmi: Add audio_infoframe packing for DP
+Subject: Re: [PATCH v14 09/10] drm/mediatek: DP audio support for MT8195
 Content-Language: en-US
 To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
  p.zabel@pengutronix.de, daniel@ffwll.ch, robh+dt@kernel.org,
@@ -59,14 +59,14 @@ Cc: msp@baylibre.com, granquet@baylibre.com, jitao.shi@mediatek.com,
  linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20220712111223.13080-1-rex-bc.chen@mediatek.com>
- <20220712111223.13080-5-rex-bc.chen@mediatek.com>
+ <20220712111223.13080-10-rex-bc.chen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220712111223.13080-5-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220712111223.13080-10-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220714_042631_347423_2038300B 
-X-CRM114-Status: GOOD (  30.53  )
+X-CRM114-CacheID: sfid-20220714_044307_124564_F5D2AA80 
+X-CRM114-Status: GOOD (  22.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,210 +82,132 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 12/07/22 13:12, Bo-Chen Chen ha scritto:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> From: Guillaume Ranquet <granquet@baylibre.com>
 > 
-> Similar to HDMI, DP uses audio infoframes as well which are structured
-> very similar to the HDMI ones.
+> This patch adds audio support to the DP driver for MT8195 with up to 8
+> channels.
 > 
-> This patch adds a helper function to pack the HDMI audio infoframe for
-> DP, called hdmi_audio_infoframe_pack_for_dp().
-> hdmi_audio_infoframe_pack_only() is split into two parts. One of them
-> packs the payload only and can be used for HDMI and DP.
-> 
-> Also constify the frame parameter in hdmi_audio_infoframe_check() as
-> it is passed to hdmi_audio_infoframe_check_only() which expects a const.
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
 > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 > ---
->   drivers/video/hdmi.c         | 82 +++++++++++++++++++++++++++---------
->   include/drm/display/drm_dp.h |  2 +
->   include/linux/hdmi.h         |  7 ++-
->   3 files changed, 71 insertions(+), 20 deletions(-)
+>   drivers/gpu/drm/mediatek/mtk_dp.c     | 723 ++++++++++++++++++++++++++
+>   drivers/gpu/drm/mediatek/mtk_dp_reg.h |   2 +
+>   2 files changed, 725 insertions(+)
 > 
-> diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
-> index 947be761dfa4..86805d77cc86 100644
-> --- a/drivers/video/hdmi.c
-> +++ b/drivers/video/hdmi.c
-> @@ -21,6 +21,7 @@
->    * DEALINGS IN THE SOFTWARE.
->    */
->   
-> +#include <drm/display/drm_dp.h>
->   #include <linux/bitops.h>
->   #include <linux/bug.h>
->   #include <linux/errno.h>
-> @@ -381,12 +382,34 @@ static int hdmi_audio_infoframe_check_only(const struct hdmi_audio_infoframe *fr
->    *
->    * Returns 0 on success or a negative error code on failure.
->    */
-> -int hdmi_audio_infoframe_check(struct hdmi_audio_infoframe *frame)
-> +int hdmi_audio_infoframe_check(const struct hdmi_audio_infoframe *frame)
->   {
->   	return hdmi_audio_infoframe_check_only(frame);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+> index 5ab646bd2bc4..fa7bb102a105 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+
+..snip..
+
+> @@ -2082,6 +2693,104 @@ static void mtk_dp_debounce_timer(struct timer_list *t)
+>   	mtk_dp->need_debounce = true;
 >   }
->   EXPORT_SYMBOL(hdmi_audio_infoframe_check);
 >   
-> +static void
-> +hdmi_audio_infoframe_pack_payload(const struct hdmi_audio_infoframe *frame,
-> +				  u8 *buffer)
-> +{
-> +	u8 channels;
-> +
-> +	if (frame->channels >= 2)
-> +		channels = frame->channels - 1;
-> +	else
-> +		channels = 0;
-> +
-> +	buffer[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
-> +	buffer[1] = ((frame->sample_frequency & 0x7) << 2) |
-> +		 (frame->sample_size & 0x3);
-> +	buffer[2] = frame->coding_type_ext & 0x1f;
-> +	buffer[3] = frame->channel_allocation;
-> +	buffer[4] = (frame->level_shift_value & 0xf) << 3;
-> +
-> +	if (frame->downmix_inhibit)
-> +		buffer[4] |= BIT(7);
-> +}
-> +
->   /**
->    * hdmi_audio_infoframe_pack_only() - write HDMI audio infoframe to binary buffer
->    * @frame: HDMI audio infoframe
-> @@ -404,7 +427,6 @@ EXPORT_SYMBOL(hdmi_audio_infoframe_check);
->   ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
->   				       void *buffer, size_t size)
->   {
-> -	unsigned char channels;
->   	u8 *ptr = buffer;
->   	size_t length;
->   	int ret;
-> @@ -420,28 +442,13 @@ ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
->   
->   	memset(buffer, 0, size);
->   
-> -	if (frame->channels >= 2)
-> -		channels = frame->channels - 1;
-> -	else
-> -		channels = 0;
-> -
->   	ptr[0] = frame->type;
->   	ptr[1] = frame->version;
->   	ptr[2] = frame->length;
->   	ptr[3] = 0; /* checksum */
->   
-> -	/* start infoframe payload */
-> -	ptr += HDMI_INFOFRAME_HEADER_SIZE;
-> -
-> -	ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
-> -	ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
-> -		 (frame->sample_size & 0x3);
-> -	ptr[2] = frame->coding_type_ext & 0x1f;
-> -	ptr[3] = frame->channel_allocation;
-> -	ptr[4] = (frame->level_shift_value & 0xf) << 3;
-> -
-> -	if (frame->downmix_inhibit)
-> -		ptr[4] |= BIT(7);
-> +	hdmi_audio_infoframe_pack_payload(frame,
-> +					  ptr + HDMI_INFOFRAME_HEADER_SIZE);
->   
->   	hdmi_infoframe_set_checksum(buffer, length);
->   
-> @@ -479,6 +486,43 @@ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
->   }
->   EXPORT_SYMBOL(hdmi_audio_infoframe_pack);
->   
-> +/**
-> + * hdmi_audio_infoframe_pack_for_dp - Pack a HDMI Audio infoframe for DisplayPort
-> + *
-> + * @frame:      HDMI Audio infoframe
-> + * @sdp:        secondary data packet for display port. This is filled with the
-> + * appropriate: data
-
-"This is filled with the appropriate data"
-
-... well, that's pretty obvious, isn't it?
-You're describing that this function is filling sdp in the description, so you
-can just remove that part.
-
-Also, "Secondary data packet for DisplayPort", please.
-
-
-> + * @dp_version: Display Port version to be encoded in the header
-
-We're not meaning "a display port", but really "DisplayPort": please remove
-the space between "Display" and "Port" :-)
-
-(here and in the description below)
-
-> + *
-> + * Packs a HDMI Audio Infoframe to be sent over Display Port. This function
-> + * fills the secondary data packet to be used for Display Port.
-> + *
-> + * Return: Number of total written bytes or a negative errno on failure.
+> +/*
+> + * HDMI audio codec callbacks
 > + */
-> +ssize_t
-> +hdmi_audio_infoframe_pack_for_dp(const struct hdmi_audio_infoframe *frame,
-> +				 struct dp_sdp *sdp, u8 dp_version)
+> +static int mtk_dp_audio_hw_params(struct device *dev, void *data,
+> +				  struct hdmi_codec_daifmt *daifmt,
+> +				  struct hdmi_codec_params *params)
 > +{
-> +	int ret;
+> +	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
+> +	struct mtk_dp_audio_cfg cfg;
 > +
-> +	ret = hdmi_audio_infoframe_check(frame);
-> +	if (ret)
-> +		return ret;
-> +
-> +	memset(sdp->db, 0, sizeof(sdp->db));
-> +
-> +	/* Secondary-data packet header */
-> +	sdp->sdp_header.HB0 = 0;
-> +	sdp->sdp_header.HB1 = frame->type;
-> +	sdp->sdp_header.HB2 = DP_SDP_AUDIO_INFOFRAME_HB2;
-> +	sdp->sdp_header.HB3 = (dp_version & 0x3f) << 2;
-> +
-> +	hdmi_audio_infoframe_pack_payload(frame, sdp->db);
-> +
-> +	return frame->length + 4;
+> +	if (!mtk_dp->enabled) {
+> +		pr_err("%s, DP is not ready!\n", __func__);
 
-What's this magic number 4 about?
+drm_err() here please.
 
-Please use a definition for that.
-
+> +		return -ENODEV;
+> +	}
+> +
+> +	cfg.channels = params->cea.channels;
+> +	cfg.sample_rate = params->sample_rate;
+> +	cfg.word_length_bits = 24;
+> +
+> +	mtk_dp_audio_setup(mtk_dp, &cfg);
+> +
+> +	return 0;
 > +}
-> +EXPORT_SYMBOL(hdmi_audio_infoframe_pack_for_dp);
 > +
->   /**
->    * hdmi_vendor_infoframe_init() - initialize an HDMI vendor infoframe
->    * @frame: HDMI vendor infoframe
-> diff --git a/include/drm/display/drm_dp.h b/include/drm/display/drm_dp.h
-> index 9e3aff7e68bb..6c0871164771 100644
-> --- a/include/drm/display/drm_dp.h
-> +++ b/include/drm/display/drm_dp.h
-> @@ -1536,6 +1536,8 @@ enum drm_dp_phy {
->   #define DP_SDP_VSC_EXT_CEA		0x21 /* DP 1.4 */
->   /* 0x80+ CEA-861 infoframe types */
->   
-> +#define DP_SDP_AUDIO_INFOFRAME_HB2	0x1b
-> +
->   /**
->    * struct dp_sdp_header - DP secondary data packet header
->    * @HB0: Secondary Data Packet ID
-> diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
-> index c8ec982ff498..2f4dcc8d060e 100644
-> --- a/include/linux/hdmi.h
-> +++ b/include/linux/hdmi.h
-> @@ -336,7 +336,12 @@ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
->   				  void *buffer, size_t size);
->   ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
->   				       void *buffer, size_t size);
-> -int hdmi_audio_infoframe_check(struct hdmi_audio_infoframe *frame);
-> +int hdmi_audio_infoframe_check(const struct hdmi_audio_infoframe *frame);
-> +
-> +struct dp_sdp;
-> +ssize_t
-> +hdmi_audio_infoframe_pack_for_dp(const struct hdmi_audio_infoframe *frame,
-> +				 struct dp_sdp *sdp, u8 dp_version);
->   
->   enum hdmi_3d_structure {
->   	HDMI_3D_STRUCTURE_INVALID = -1,
 
+..snip..
+
+> +
+> +static int mtk_dp_register_audio_driver(struct device *dev)
+> +{
+> +	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
+> +	struct hdmi_codec_pdata codec_data = {
+> +		.ops = &mtk_dp_audio_codec_ops,
+> +		.max_i2s_channels = 8,
+> +		.i2s = 1,
+> +		.data = mtk_dp,
+> +	};
+> +	struct platform_device *pdev;
+> +
+> +	pdev = platform_device_register_data(dev, HDMI_CODEC_DRV_NAME,
+> +					     PLATFORM_DEVID_AUTO, &codec_data,
+> +					     sizeof(codec_data));
+> +	if (IS_ERR(pdev))
+> +		return PTR_ERR(pdev);
+
+You're never unregistering this device, which is unacceptable.
+
+Please add a platform device pointer in struct mtk_dp, so that this function
+becomes, simply:
+
+	mtk_dp->audio_pdev = platform_device_register_data(dev,
+						HDMI_CODEC_DRV_NAME,
+						PLATFORM_DEVID_AUTO, &codec_data,
+						sizeof(codec_data));
+	return PTR_ERR_OR_ZERO(mtk_dp->audio_pdev);
+
+> +
+> +	return 0;
+> +}
+> +
+>   static int mtk_dp_probe(struct platform_device *pdev)
+>   {
+>   	struct mtk_dp *mtk_dp;
+> @@ -2127,8 +2836,21 @@ static int mtk_dp_probe(struct platform_device *pdev)
+>   		return dev_err_probe(dev, -EPROBE_DEFER,
+>   				     "failed to request mediatek dptx irq\n");
+>   
+> +	mutex_init(&mtk_dp->edid_lock);
+> +	mutex_init(&mtk_dp->eld_lock);
+> +	mutex_init(&mtk_dp->update_plugged_status_lock);
+> +
+>   	platform_set_drvdata(pdev, mtk_dp);
+>   
+> +	if (!mtk_dp_is_edp(mtk_dp)) {
+> +		ret = mtk_dp_register_audio_driver(dev);
+> +		if (ret) {
+> +			dev_err(dev, "Failed to register audio driver: %d\n",
+> +				ret);
+> +			return ret;
+> +		}
+> +	}
+> +
+>   	mtk_dp->phy_dev = platform_device_register_data(dev, "mediatek-dp-phy",
+>   							PLATFORM_DEVID_AUTO,
+>   							&mtk_dp->regs,
+> @@ -2174,6 +2896,7 @@ static int mtk_dp_remove(struct platform_device *pdev)
+>   
+>   	platform_device_unregister(mtk_dp->phy_dev);
+
+... and unregister it here:
+
+	if (mtk_dp->audio_pdev)
+		platform_device_unregister(mtk_dp->audio_pdev);
+
+>   	mtk_dp_video_mute(mtk_dp, true);
+> +	mtk_dp_audio_mute(mtk_dp, true);
+>   	del_timer_sync(&mtk_dp->debounce_timer);
+>   
+>   	pm_runtime_disable(&pdev->dev);
+
+Regards,
+Angelo
 
