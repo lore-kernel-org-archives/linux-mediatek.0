@@ -4,96 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 401D0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 16:04:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3EE7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 16:29:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ee0S/L/lAaawjhGQkdBJydNVbnF4FxpHz5nSk4/ecXA=; b=Y6zVeSW+uurG1fM5OD/TO+RAvG
-	bvapdnzE6+oihCu+dYTqQWQldOt2/qvS4usdMSDR/GTxVXKFw6loUPcUf1kP3Uteb2mx5niQ2moYd
-	PMWNDBUe05oF4bzhaNWstWz2CNWG0XPaYlzYg5WMhX8EOQDGSfNzr4DV9CHV18bRdyxdgoM3PIjbm
-	FdNUM8E4fTEnhP1HsgeOB8yLh/fSiC722D/0pT2BQcJ/k9zGTTlgSDzTyUgknDzeelnyXjKPaLL8V
-	Dn6Vg6/9MJAoZGNBqAcsGZVoyZKFmIqnO4+GUuk3kKFtxj5WMmUttsWCuOZwMJAeU8NQqmHLDFmdo
-	mtPGrLKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=g4utnIEpgUH8SrFacOeGCRYGCTX0362lTOZoYsGdnLU=; b=KAX1FL4kG/h+xxCrCWBJlGOaBk
+	TGjiCBv0bw2l0I5oLuJqOSOJHdBMvjHFK+Uvkb3wJSgexQKpuKSjQ/rWRBiJNhbUhXUEcDuILIFa/
+	uYwqdL+VXGqn7spdAKDYHeHeGWncJ8cKIeBwwYyV+WnvrHZBCjouUk10qSBTBxS6yCbg60SZXiJKW
+	gvzUrxT2fllxQ7dZUeI8roLauoEvEwY/bFjm4AWcc0454nuutM6x8X9UlF/jSMp8N/qJ/CjAc0+QE
+	JsrBjCOdSynuLK+BUJPSca5onvgkPGCdPp/Wb/Hf6B8bV3x/aPQRExPzzKZH07ZPyba3PwWe6glOm
+	S6OOW97w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCNnF-008cce-WA; Fri, 15 Jul 2022 16:03:54 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1oCOC6-008nVz-JE; Fri, 15 Jul 2022 16:29:34 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCNlX-008bdO-60; Fri, 15 Jul 2022 16:02:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Ee0S/L/lAaawjhGQkdBJydNVbnF4FxpHz5nSk4/ecXA=; b=sl1F19CLN6rb7NOrnwdMLwMK/g
-	GAngKGXU0eid+AVplNeyYiLz50q6npmcJqExM0vFLK9fXEWfPTNr0RDJptioQ11st5Rv9VUJdbDYI
-	vL3tm9Gy5H2C1gbKLE4qIQ8Xsl5WQ/XjdIn70kORSmS1Bo4zcMYVYqpqCSVPLKYneFGqpbW9ke1u4
-	qhby2li7dYpgXSFiQTZrvIffZtd/cPm0pwxvaAXDfAEnFddcHmUtwn4Y1ALKdvAxZJvyxt0a99X4q
-	v5aDgiICHVjRpQpIZTMKx8eZBj1pEXDG5Muosc3v1Sr8IDlo+vPFEBaeeacnWeWyYArjb7H/hR3Wp
-	19/3RMcA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:46056 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1oCNlK-0007EM-1h; Fri, 15 Jul 2022 17:01:54 +0100
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1oCNlJ-006e45-8V; Fri, 15 Jul 2022 17:01:53 +0100
-In-Reply-To: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
-References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	"Alvin __ipraga" <alsi@bang-olufsen.dk>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Daniel Scally <djrscally@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	George McCollister <george.mccollister@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-acpi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	UNGLinuxDriver@microchip.com,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	 Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
-Subject: [PATCH net-next 6/6] net: dsa: mv88e6xxx: remove handling for DSA and
- CPU ports
+	id 1oCOBs-008nOb-6x
+	for linux-mediatek@lists.infradead.org; Fri, 15 Jul 2022 16:29:21 +0000
+Received: by mail-wr1-x435.google.com with SMTP id r2so6402927wrs.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 15 Jul 2022 09:29:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=g4utnIEpgUH8SrFacOeGCRYGCTX0362lTOZoYsGdnLU=;
+        b=OzC/9QXaaDqxoCP/B7s3PFEoW1r/3BL4QbU0Itu4yM/SSqwTf9zl3vnXpqm6D9/wLg
+         u9IULLjrR/XGDkdPfCpFCJs5/QboFpLuQOffp2IKLY+TcH8l8BzzHthtTM5hML+jlRHO
+         FG6Cxp7CivJKWEJLvCIuG26LkXP6sxJbO1IKctA1ERVcnJsmcMUdeLVDCwMA4onz9+H1
+         1MNjc+56N5uGO0uP7FpLmEqEBd9LvV4yyBSj2q2kCVBKFG5yQDPjhzHOHdM+unWA77AD
+         SzvLrlWu0scXmQGI3iWJ+50TPqZt4sVHUFRyHKBkMNQSgWZ1mUzUSIa7VQPGG7NvSDCO
+         TFOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=g4utnIEpgUH8SrFacOeGCRYGCTX0362lTOZoYsGdnLU=;
+        b=Oxr6bu5SjgF+RhTb23s5d3WB9TukRPpVIFFCJ4x9VeVLLfzuevSr7BQX5KZBoeKP8t
+         W8hdmAK7j7kk7gBfFnWUZ0iI8dIwgiz6QMhX5cFDUmT069iQhEQIIKIIoadOmiC+sog0
+         TmNRO4i4scAAm2y64bY2XQiW3KkFVfwN/jA12yk8StojPHPl6Hfx2eq16VMeyDmfclDm
+         8VsGxnPZP9ot01oNxmpQOC1/Isci10ypzVDXJ+opQr5xuM1tIUSAxzVoLEZMh7YV0nVT
+         vOKjlZkFAPlPzqxp0X8aDqUgY4UeZcCaXOk0hH1uE2lLdiCBauIO2DfVC5e51oAHxZNF
+         RfcA==
+X-Gm-Message-State: AJIora9TqvU+ryEa3gRXcKddOv7vfBkwO5izobmCQ8aPVydAHxoetcvV
+	HUweQkQ8n78SOY11tq5HZIlDtg==
+X-Google-Smtp-Source: AGRyM1tSF48yUDKFkMabG1ZK0Ufn2HDShLc1rfkqldFR9s050thAUB7FUGwV6hpIfcU96gErNHiZ9Q==
+X-Received: by 2002:a05:6000:16cb:b0:21d:7b9e:d0af with SMTP id h11-20020a05600016cb00b0021d7b9ed0afmr13306509wrf.139.1657902556488;
+        Fri, 15 Jul 2022 09:29:16 -0700 (PDT)
+Received: from maple.lan (cpc141216-aztw34-2-0-cust174.18-1.cable.virginm.net. [80.7.220.175])
+        by smtp.gmail.com with ESMTPSA id h7-20020adffd47000000b0021d650e4df4sm4283198wrs.87.2022.07.15.09.29.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Jul 2022 09:29:16 -0700 (PDT)
+Date: Fri, 15 Jul 2022 17:29:13 +0100
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: ChiaEn Wu <peterwu.pub@gmail.com>, lee.jones@linaro.org,
+	jingoohan1@gmail.com, pavel@ucw.cz, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+	sre@kernel.org, chunfeng.yun@mediatek.com,
+	gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de,
+	lgirdwood@gmail.com, broonie@kernel.org, linux@roeck-us.net,
+	heikki.krogerus@linux.intel.com, deller@gmx.de,
+	chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
+	dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
+	linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org,
+	szunichen@gmail.com
+Subject: Re: [PATCH v5 13/13] video: backlight: mt6370: Add MediaTek MT6370
+ support
+Message-ID: <20220715162913.5ewxwhv6jtdgt3c2@maple.lan>
+References: <20220715112607.591-1-peterwu.pub@gmail.com>
+ <20220715112607.591-14-peterwu.pub@gmail.com>
+ <ec3bdfb8-0e42-a772-28b1-165811872afa@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1oCNlJ-006e45-8V@rmk-PC.armlinux.org.uk>
-Date: Fri, 15 Jul 2022 17:01:53 +0100
+In-Reply-To: <ec3bdfb8-0e42-a772-28b1-165811872afa@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_090207_407560_E08D5437 
-X-CRM114-Status: GOOD (  16.86  )
+X-CRM114-CacheID: sfid-20220715_092920_259161_D2A9C6BD 
+X-CRM114-Status: GOOD (  20.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,248 +102,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As we now always use a fixed-link for DSA and CPU ports, we no longer
-need the hack in the Marvell code to make this work. Remove it.
+On Fri, Jul 15, 2022 at 02:38:45PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 15/07/22 13:26, ChiaEn Wu ha scritto:
+> > From: ChiaEn Wu <chiaen_wu@richtek.com>
+> >
+> > MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
+> > with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
+> > driver, display bias voltage supply, one general purpose LDO, and the
+> > USB Type-C & PD controller complies with the latest USB Type-C and PD
+> > standards.
+> >
+> > This adds support for MediaTek MT6370 Backlight driver. It's commonly used
+> > to drive the display WLED. There are 4 channels inside, and each channel
+> > supports up to 30mA of current capability with 2048 current steps in
+> > exponential or linear mapping curves.
+> >
+> > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+>
+> Hello ChiaEn,
+>
+> I propose to move this one to drivers/leds (or drivers/pwm) and, instead of
+> registering a backlight device, register a PWM device.
+>
+> This way you will be able to reuse the generic backlight-pwm driver, as you'd
+> be feeding the PWM device exposed by this driver to the generic one: this will
+> most importantly make it easy to chain it with MTK_DISP_PWM (mtk-pwm-disp)
+> with a devicetree that looks like...
 
-This is especially important with the conversion of DSA drivers to
-phylink_pcs, as the PCS code only gets called if we are using
-phylink for the port.
+Out of interest, does MT6370 have the same structure for backlights as the prior
+systems using mtk-pwm-disp or was mtk-pwm-disp simply a normal(-ish) PWM
+that relied on something on the board for all the constant current
+driver hardware?
 
-Reviewed-by: Marek Behún <kabel@kernel.org>
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/dsa/mv88e6xxx/chip.c | 49 +++-----------------------------
- drivers/net/dsa/mv88e6xxx/chip.h |  3 --
- drivers/net/dsa/mv88e6xxx/port.c | 32 ---------------------
- drivers/net/dsa/mv88e6xxx/port.h |  5 ----
- 4 files changed, 4 insertions(+), 85 deletions(-)
 
-diff --git a/drivers/net/dsa/mv88e6xxx/chip.c b/drivers/net/dsa/mv88e6xxx/chip.c
-index ccb35ea5d7b0..01dff8d46642 100644
---- a/drivers/net/dsa/mv88e6xxx/chip.c
-+++ b/drivers/net/dsa/mv88e6xxx/chip.c
-@@ -3314,9 +3314,8 @@ static int mv88e6xxx_setup_port(struct mv88e6xxx_chip *chip, int port)
- {
- 	struct device_node *phy_handle = NULL;
- 	struct dsa_switch *ds = chip->ds;
--	phy_interface_t mode;
- 	struct dsa_port *dp;
--	int tx_amp, speed;
-+	int tx_amp;
- 	int err;
- 	u16 reg;
- 
-@@ -3325,40 +3324,9 @@ static int mv88e6xxx_setup_port(struct mv88e6xxx_chip *chip, int port)
- 
- 	dp = dsa_to_port(ds, port);
- 
--	/* MAC Forcing register: don't force link, speed, duplex or flow control
--	 * state to any particular values on physical ports, but force the CPU
--	 * port and all DSA ports to their maximum bandwidth and full duplex.
--	 */
--	if (dsa_is_cpu_port(ds, port) || dsa_is_dsa_port(ds, port)) {
--		unsigned long caps = dp->pl_config.mac_capabilities;
--
--		if (chip->info->ops->port_max_speed_mode)
--			mode = chip->info->ops->port_max_speed_mode(port);
--		else
--			mode = PHY_INTERFACE_MODE_NA;
--
--		if (caps & MAC_10000FD)
--			speed = SPEED_10000;
--		else if (caps & MAC_5000FD)
--			speed = SPEED_5000;
--		else if (caps & MAC_2500FD)
--			speed = SPEED_2500;
--		else if (caps & MAC_1000)
--			speed = SPEED_1000;
--		else if (caps & MAC_100)
--			speed = SPEED_100;
--		else
--			speed = SPEED_10;
--
--		err = mv88e6xxx_port_setup_mac(chip, port, LINK_FORCED_UP,
--					       speed, DUPLEX_FULL,
--					       PAUSE_OFF, mode);
--	} else {
--		err = mv88e6xxx_port_setup_mac(chip, port, LINK_UNFORCED,
--					       SPEED_UNFORCED, DUPLEX_UNFORCED,
--					       PAUSE_ON,
--					       PHY_INTERFACE_MODE_NA);
--	}
-+	err = mv88e6xxx_port_setup_mac(chip, port, LINK_UNFORCED,
-+				       SPEED_UNFORCED, DUPLEX_UNFORCED,
-+				       PAUSE_ON, PHY_INTERFACE_MODE_NA);
- 	if (err)
- 		return err;
- 
-@@ -4306,7 +4274,6 @@ static const struct mv88e6xxx_ops mv88e6141_ops = {
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
- 	.port_set_speed_duplex = mv88e6341_port_set_speed_duplex,
--	.port_max_speed_mode = mv88e6341_port_max_speed_mode,
- 	.port_tag_remap = mv88e6095_port_tag_remap,
- 	.port_set_policy = mv88e6352_port_set_policy,
- 	.port_set_frame_mode = mv88e6351_port_set_frame_mode,
-@@ -4699,7 +4666,6 @@ static const struct mv88e6xxx_ops mv88e6190_ops = {
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
- 	.port_set_speed_duplex = mv88e6390_port_set_speed_duplex,
--	.port_max_speed_mode = mv88e6390_port_max_speed_mode,
- 	.port_tag_remap = mv88e6390_port_tag_remap,
- 	.port_set_policy = mv88e6352_port_set_policy,
- 	.port_set_frame_mode = mv88e6351_port_set_frame_mode,
-@@ -4762,7 +4728,6 @@ static const struct mv88e6xxx_ops mv88e6190x_ops = {
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
- 	.port_set_speed_duplex = mv88e6390x_port_set_speed_duplex,
--	.port_max_speed_mode = mv88e6390x_port_max_speed_mode,
- 	.port_tag_remap = mv88e6390_port_tag_remap,
- 	.port_set_policy = mv88e6352_port_set_policy,
- 	.port_set_frame_mode = mv88e6351_port_set_frame_mode,
-@@ -4825,7 +4790,6 @@ static const struct mv88e6xxx_ops mv88e6191_ops = {
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
- 	.port_set_speed_duplex = mv88e6390_port_set_speed_duplex,
--	.port_max_speed_mode = mv88e6390_port_max_speed_mode,
- 	.port_tag_remap = mv88e6390_port_tag_remap,
- 	.port_set_frame_mode = mv88e6351_port_set_frame_mode,
- 	.port_set_ucast_flood = mv88e6352_port_set_ucast_flood,
-@@ -4990,7 +4954,6 @@ static const struct mv88e6xxx_ops mv88e6290_ops = {
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
- 	.port_set_speed_duplex = mv88e6390_port_set_speed_duplex,
--	.port_max_speed_mode = mv88e6390_port_max_speed_mode,
- 	.port_tag_remap = mv88e6390_port_tag_remap,
- 	.port_set_policy = mv88e6352_port_set_policy,
- 	.port_set_frame_mode = mv88e6351_port_set_frame_mode,
-@@ -5141,7 +5104,6 @@ static const struct mv88e6xxx_ops mv88e6341_ops = {
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
- 	.port_set_speed_duplex = mv88e6341_port_set_speed_duplex,
--	.port_max_speed_mode = mv88e6341_port_max_speed_mode,
- 	.port_tag_remap = mv88e6095_port_tag_remap,
- 	.port_set_policy = mv88e6352_port_set_policy,
- 	.port_set_frame_mode = mv88e6351_port_set_frame_mode,
-@@ -5364,7 +5326,6 @@ static const struct mv88e6xxx_ops mv88e6390_ops = {
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
- 	.port_set_speed_duplex = mv88e6390_port_set_speed_duplex,
--	.port_max_speed_mode = mv88e6390_port_max_speed_mode,
- 	.port_tag_remap = mv88e6390_port_tag_remap,
- 	.port_set_policy = mv88e6352_port_set_policy,
- 	.port_set_frame_mode = mv88e6351_port_set_frame_mode,
-@@ -5431,7 +5392,6 @@ static const struct mv88e6xxx_ops mv88e6390x_ops = {
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
- 	.port_set_speed_duplex = mv88e6390x_port_set_speed_duplex,
--	.port_max_speed_mode = mv88e6390x_port_max_speed_mode,
- 	.port_tag_remap = mv88e6390_port_tag_remap,
- 	.port_set_policy = mv88e6352_port_set_policy,
- 	.port_set_frame_mode = mv88e6351_port_set_frame_mode,
-@@ -5497,7 +5457,6 @@ static const struct mv88e6xxx_ops mv88e6393x_ops = {
- 	.port_sync_link = mv88e6xxx_port_sync_link,
- 	.port_set_rgmii_delay = mv88e6390_port_set_rgmii_delay,
- 	.port_set_speed_duplex = mv88e6393x_port_set_speed_duplex,
--	.port_max_speed_mode = mv88e6393x_port_max_speed_mode,
- 	.port_tag_remap = mv88e6390_port_tag_remap,
- 	.port_set_policy = mv88e6393x_port_set_policy,
- 	.port_set_frame_mode = mv88e6351_port_set_frame_mode,
-diff --git a/drivers/net/dsa/mv88e6xxx/chip.h b/drivers/net/dsa/mv88e6xxx/chip.h
-index 4518c17c1b9b..a3b7cfe3eb23 100644
---- a/drivers/net/dsa/mv88e6xxx/chip.h
-+++ b/drivers/net/dsa/mv88e6xxx/chip.h
-@@ -502,9 +502,6 @@ struct mv88e6xxx_ops {
- 	int (*port_set_speed_duplex)(struct mv88e6xxx_chip *chip, int port,
- 				     int speed, int duplex);
- 
--	/* What interface mode should be used for maximum speed? */
--	phy_interface_t (*port_max_speed_mode)(int port);
--
- 	int (*port_tag_remap)(struct mv88e6xxx_chip *chip, int port);
- 
- 	int (*port_set_policy)(struct mv88e6xxx_chip *chip, int port,
-diff --git a/drivers/net/dsa/mv88e6xxx/port.c b/drivers/net/dsa/mv88e6xxx/port.c
-index 90c55f23b7c9..47e21f3c437a 100644
---- a/drivers/net/dsa/mv88e6xxx/port.c
-+++ b/drivers/net/dsa/mv88e6xxx/port.c
-@@ -333,14 +333,6 @@ int mv88e6341_port_set_speed_duplex(struct mv88e6xxx_chip *chip, int port,
- 					       duplex);
- }
- 
--phy_interface_t mv88e6341_port_max_speed_mode(int port)
--{
--	if (port == 5)
--		return PHY_INTERFACE_MODE_2500BASEX;
--
--	return PHY_INTERFACE_MODE_NA;
--}
--
- /* Support 10, 100, 200, 1000 Mbps (e.g. 88E6352 family) */
- int mv88e6352_port_set_speed_duplex(struct mv88e6xxx_chip *chip, int port,
- 				    int speed, int duplex)
-@@ -372,14 +364,6 @@ int mv88e6390_port_set_speed_duplex(struct mv88e6xxx_chip *chip, int port,
- 					       duplex);
- }
- 
--phy_interface_t mv88e6390_port_max_speed_mode(int port)
--{
--	if (port == 9 || port == 10)
--		return PHY_INTERFACE_MODE_2500BASEX;
--
--	return PHY_INTERFACE_MODE_NA;
--}
--
- /* Support 10, 100, 200, 1000, 2500, 10000 Mbps (e.g. 88E6190X) */
- int mv88e6390x_port_set_speed_duplex(struct mv88e6xxx_chip *chip, int port,
- 				     int speed, int duplex)
-@@ -394,14 +378,6 @@ int mv88e6390x_port_set_speed_duplex(struct mv88e6xxx_chip *chip, int port,
- 					       duplex);
- }
- 
--phy_interface_t mv88e6390x_port_max_speed_mode(int port)
--{
--	if (port == 9 || port == 10)
--		return PHY_INTERFACE_MODE_XAUI;
--
--	return PHY_INTERFACE_MODE_NA;
--}
--
- /* Support 10, 100, 200, 1000, 2500, 5000, 10000 Mbps (e.g. 88E6393X)
-  * Function mv88e6xxx_port_set_speed_duplex() can't be used as the register
-  * values for speeds 2500 & 5000 conflict.
-@@ -491,14 +467,6 @@ int mv88e6393x_port_set_speed_duplex(struct mv88e6xxx_chip *chip, int port,
- 	return 0;
- }
- 
--phy_interface_t mv88e6393x_port_max_speed_mode(int port)
--{
--	if (port == 0 || port == 9 || port == 10)
--		return PHY_INTERFACE_MODE_10GBASER;
--
--	return PHY_INTERFACE_MODE_NA;
--}
--
- static int mv88e6xxx_port_set_cmode(struct mv88e6xxx_chip *chip, int port,
- 				    phy_interface_t mode, bool force)
- {
-diff --git a/drivers/net/dsa/mv88e6xxx/port.h b/drivers/net/dsa/mv88e6xxx/port.h
-index cb04243f37c1..2a5741a44e97 100644
---- a/drivers/net/dsa/mv88e6xxx/port.h
-+++ b/drivers/net/dsa/mv88e6xxx/port.h
-@@ -357,11 +357,6 @@ int mv88e6390x_port_set_speed_duplex(struct mv88e6xxx_chip *chip, int port,
- int mv88e6393x_port_set_speed_duplex(struct mv88e6xxx_chip *chip, int port,
- 				     int speed, int duplex);
- 
--phy_interface_t mv88e6341_port_max_speed_mode(int port);
--phy_interface_t mv88e6390_port_max_speed_mode(int port);
--phy_interface_t mv88e6390x_port_max_speed_mode(int port);
--phy_interface_t mv88e6393x_port_max_speed_mode(int port);
--
- int mv88e6xxx_port_set_state(struct mv88e6xxx_chip *chip, int port, u8 state);
- 
- int mv88e6xxx_port_set_vlan_map(struct mv88e6xxx_chip *chip, int port, u16 map);
--- 
-2.30.2
+>
+> 	pwmleds-disp {
+> 		compatible = "pwm-leds";
+>
+> 		disp_led: disp-pwm {
+> 			label = "backlight-pwm";
+> 			pwms = <&pwm0 0 500000>;
+> 			max-brightness = <1024>;
+> 		};
+> 	};
+>
+> 	backlight_lcd0: backlight {
+> 		compatible = "led-backlight";
+> 		leds = <&disp_led>, <&pmic_bl_led>;
+> 		default-brightness-level = <300>;
+> 	};
 
+I think this proposal has to start with the devicetree bindings rather
+than the driver. Instead I think the question is: does this proposal
+result in DT bindings that better describe the underlying hardware?
+
+This device has lots of backlight centric features (OCP, OVP, single
+control with multiple outputs, exponential curves, etc) and its not
+clear where they would fit into the "PWM" bindings.
+
+Come to think of it I'm also a little worried also about the whole linear
+versus exponential curve thing since I thought LED drivers were required
+to use exponential curves.
+
+
+Daniel.
 
