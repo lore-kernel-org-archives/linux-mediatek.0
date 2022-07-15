@@ -4,107 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EA7FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 17:25:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 070D6C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 18:02:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uzkdv8Dc9Ar4VBcn4GaayOprsDjBshT27fyNEPPxRGo=; b=MqDyqfof4ndVhzYoZlvkYyz3GX
-	ETQYzo7TZzoeXAb3sctVU4gtSECplgClWooMsWE8DeYnApw7Ir1E74XnHNtcgXIlou8ksKb9Z564a
-	XTpzyGg8OpN8fjhXs/GFsfDa+21aacqUjWXo+VNhEfiStb7/GiS8wBbIhaQXy5nfL2UmHeQJPb3Yg
-	acc29G0v7SAkw5uJdwzY1JWQRmUIgBVZ3z01Mq28F2K9J8DHRQDOgM7m2e5Vy8H8U6vvryawYMBOT
-	+BlLB1E9HNCO+d3q3KFIjWjkingVK5PPOl1TjCgXAvvwP3TsOh/L4cCopY2x+VK6+MCKECXZsUcWr
-	cvxdCQhg==;
+	bh=Ln7BPJE0aOB9QVI3RiQ8syDmk42+WefRKgCW9gQyrSY=; b=zQz9UKgPqBe7f1sYEn5o3h1FIw
+	Uyh1KYNnCXVW9tGFRfTXRJnPdRRoJOchVBK5QhzsFkNgAQyc5xi+jHIxqHqCXtPYtFHToKf8HssHg
+	pPnn5ePQBAfqmMx/9lwygGpI1jZ97/q3M/H9dj1lJVUgGY74oZOTaLqzPzTQtbwoYrD6TV4XqORmM
+	NhTJf2RWilDRGlXzi53x1L+kyWFV9SavT0D8yJFkq/+h7wblxsiu2efaZjQZIsazFDL2D8gePGzGQ
+	7cVpHGeonguqZUWXeL6LyAhgSs2+y0GviDXkFnzRIiOPsfgDCxOlREcWhlUkN0q0aWbnUgA2Zc1P9
+	NsEk7LLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCP3q-0098pF-FU; Fri, 15 Jul 2022 17:25:06 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1oCPdW-009L2G-NX; Fri, 15 Jul 2022 18:01:58 +0000
+Received: from mga01.intel.com ([192.55.52.88])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCP3a-0098j9-NQ; Fri, 15 Jul 2022 17:24:52 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id g1so7130132edb.12;
-        Fri, 15 Jul 2022 10:24:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to;
-        bh=uzkdv8Dc9Ar4VBcn4GaayOprsDjBshT27fyNEPPxRGo=;
-        b=JUwWMv0ZzCp2g0wjmfhiQKPpxgYLDVk8Bg2DyDo9Nv2vPSfd4QlapKyKP8FZdKkrFc
-         7eERvbWxPsVlaTQHmvMnihm8UJCfDaon/IhDJ8mvs6GITYempO4YeZ1VtXWCAuoagOLv
-         04kwSfFeHfEoT/OCXdSWWkEcjSqjW188bJ9P0NEkeOEl+xrSTHN4CtXpYHNDWUBbLpxO
-         YD8S2ulqe8kgtWrzgGCR/v0e9vq97PtpYq0TKnQmouIaPzHtQqB7Wf4vDH6PqEoZ/T3a
-         OWjGLeSDymCeGZusix2ILZHOmKUODHHj7EEle1ll1IaHPOcgkO2XQwId7AHbJu5Mnq7G
-         CKHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=uzkdv8Dc9Ar4VBcn4GaayOprsDjBshT27fyNEPPxRGo=;
-        b=JjZ/MDW3nk0v9V0rDVhMhhWFh6BgdoQC5GmS6sDn4pN8/Buy5gnQaVWZwXTtAYu1MT
-         XheSf2z9UFpVxqbm4rnKgM2Aec3fJdlq8AsNliC6XSLicfHW/J9m5H0/GzB4SGO2R5tM
-         QD+zUGCmPMtGQFDuYTEqpKk2hde2I0Ik4f1FUq6w0Z1sBuYTIBl8tdz8QvhQPAJ7kL4P
-         s+K1h8jca6xXda7fNmimr8Mogh+xft9PAWesnKZnhJXR2evw3DZax43XzQaNyDVxKUKN
-         K08VXbsIB2J18Pt1L1gAu48uAZW3UBDtYlM0prymKKFuBN7muCMBFYVWXcrDvcRWWiyL
-         YJhw==
-X-Gm-Message-State: AJIora+H4k18+yZRcAvTdzdWEQGlEujh4Jc2zCK3k6dMi+IGMUFvGD/l
-	NPJcqQKMhHx7tz2FDok3Q/I=
-X-Google-Smtp-Source: AGRyM1vuepFFiSFjYf3MRujnZNcXH+xzL522xFIr0DTGyEcuYI+92aAtZbe7Ugkj9wCdR0bqIYTxKw==
-X-Received: by 2002:a05:6402:2802:b0:43a:9098:55a0 with SMTP id h2-20020a056402280200b0043a909855a0mr20176419ede.179.1657905888078;
-        Fri, 15 Jul 2022 10:24:48 -0700 (PDT)
-Received: from skbuf ([188.25.231.115])
-        by smtp.gmail.com with ESMTPSA id fu20-20020a170907b01400b0072af2460cd6sm2228086ejc.30.2022.07.15.10.24.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Jul 2022 10:24:47 -0700 (PDT)
-Date: Fri, 15 Jul 2022 20:24:44 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alvin __ipraga <alsi@bang-olufsen.dk>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Daniel Scally <djrscally@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	George McCollister <george.mccollister@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>
-Subject: Re: [PATCH net-next 3/6] net: dsa: add support for retrieving the
- interface mode
-Message-ID: <20220715172444.yins4kb2b6b35aql@skbuf>
-References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
- <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
- <E1oCNl3-006e3n-PT@rmk-PC.armlinux.org.uk>
- <E1oCNl3-006e3n-PT@rmk-PC.armlinux.org.uk>
+	id 1oCPdL-009Ky2-Rt; Fri, 15 Jul 2022 18:01:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1657908107; x=1689444107;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=jHZoGwfY+YAWaEvmFIs9T/MUj4oMs56kBoAM3CyGWwU=;
+  b=OcLasPyyXK+8bEAYPLnQxFsqtCOAwZA4I3AHKV6qbZuBVPqhPc79H1/c
+   eUhXY4WK5PWWwf4ytWH8j7qUBRcbRW1EHyyOWEPwOMTfvkCGv2Oc9EFua
+   T0ysf6Mc4TuuwzhJAIChqyPV24GNryJGFLpZSfGoW0UuZxSS6MO4Rd9jv
+   MegvQ1zxOLj88OSQqTS7F4qDPHjbu0I9cu75ldZiGWZsWJjdt7P3uEjWg
+   VtdIBsezSaCRvFJMto7v5x9xtJ6te+Ts3VJzM0kLdxcJbn+NHC2B4EkYe
+   /nRDyHuOcu5SUSsl5kO6GzW9IBSNXG9QlqEsRceET7wl9j6upT1/C/Lwj
+   w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10409"; a="311528415"
+X-IronPort-AV: E=Sophos;i="5.92,274,1650956400"; 
+   d="scan'208";a="311528415"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2022 11:01:45 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,274,1650956400"; 
+   d="scan'208";a="773060392"
+Received: from lkp-server02.sh.intel.com (HELO ff137eb26ff1) ([10.239.97.151])
+  by orsmga005.jf.intel.com with ESMTP; 15 Jul 2022 11:01:40 -0700
+Received: from kbuild by ff137eb26ff1 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1oCPdD-0000c9-Gw;
+	Fri, 15 Jul 2022 18:01:39 +0000
+Date: Sat, 16 Jul 2022 02:01:21 +0800
+From: kernel test robot <lkp@intel.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de, daniel@ffwll.ch, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, mripard@kernel.org,
+	tzimmermann@suse.de, matthias.bgg@gmail.com, deller@gmx.de,
+	airlied@linux.ie
+Cc: kbuild-all@lists.01.org, devicetree@vger.kernel.org,
+	linux-fbdev@vger.kernel.org, granquet@baylibre.com,
+	jitao.shi@mediatek.com, liangxu.xu@mediatek.com,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	msp@baylibre.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
+	Bo-Chen Chen <rex-bc.chen@mediatek.com>,
+	linux-mediatek@lists.infradead.org, wenst@chromium.org,
+	linux-arm-kernel@lists.infradead.org,
+	angelogioacchino.delregno@collabora.com
+Subject: Re: [PATCH v14 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
+ driver
+Message-ID: <202207160102.zyueiI7S-lkp@intel.com>
+References: <20220712111223.13080-6-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <E1oCNl3-006e3n-PT@rmk-PC.armlinux.org.uk>
- <E1oCNl3-006e3n-PT@rmk-PC.armlinux.org.uk>
+In-Reply-To: <20220712111223.13080-6-rex-bc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_102450_809934_E7C41F7E 
-X-CRM114-Status: GOOD (  21.22  )
+X-CRM114-CacheID: sfid-20220715_110147_934224_0D34AE05 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,52 +92,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 15, 2022 at 05:01:37PM +0100, Russell King (Oracle) wrote:
-> DSA port bindings allow for an optional phy interface mode. When an
-> interface mode is not specified, DSA uses the NA interface mode type.
-> 
-> However, phylink needs to know the parameters of the link, and this
-> will become especially important when using phylink for ports that
-> are devoid of all properties except the required "reg" property, so
-> that phylink can select the maximum supported link settings. Without
-> knowing the interface mode, phylink can't truely know the maximum
-> link speed.
-> 
-> Update the prototype for the phylink_get_caps method to allow drivers
-> to report this information back to DSA, and update all DSA
-> implementations function declarations to cater for this change. No
-> code is added to the implementations.
-> 
-> Reviewed-by: Marek Behún <kabel@kernel.org>
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> ---
-(...)
-> diff --git a/include/net/dsa.h b/include/net/dsa.h
-> index b902b31bebce..7c6870d2c607 100644
-> --- a/include/net/dsa.h
-> +++ b/include/net/dsa.h
-> @@ -852,7 +852,8 @@ struct dsa_switch_ops {
->  	 * PHYLINK integration
->  	 */
->  	void	(*phylink_get_caps)(struct dsa_switch *ds, int port,
-> -				    struct phylink_config *config);
-> +				    struct phylink_config *config,
-> +				    phy_interface_t *default_interface);
+Hi Bo-Chen,
 
-I would prefer having a dedicated void (*port_max_speed_interface),
-because the post-phylink DSA drivers (which are not few) will generally
-not need to concern themselves with implementing this, and I don't want
-driver writers to think they need to populate every parameter they see
-in phylink_get_caps. So the new function needs to be documented
-appropriately (specify who needs and who does not need to implement it,
-on which ports it will be called, etc).
+Thank you for the patch! Perhaps something to improve:
 
-In addition, if we have a dedicated ds->ops->port_max_speed_interface(),
-we can do a better job of avoiding breakage with this patch set, since
-if DSA cannot find a valid phylink fwnode, AND there is no
-port_max_speed_interface() callback for this driver, DSA can still
-preserve the current logic of not putting the port down, and not
-registering it with phylink. That can be accompanied by a dev_warn() to
-state that the CPU/DSA port isn't registered with phylink, please
-implement port_max_speed_interface() to address that.
+[auto build test WARNING on drm-misc/drm-misc-next]
+[also build test WARNING on drm/drm-next pza/reset/next linus/master v5.19-rc6 next-20220715]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Bo-Chen-Chen/drm-mediatek-Add-MT8195-DisplayPort-driver/20220712-191341
+base:   git://anongit.freedesktop.org/drm/drm-misc drm-misc-next
+config: arm-allyesconfig (https://download.01.org/0day-ci/archive/20220716/202207160102.zyueiI7S-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 12.1.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/a3869f524e16c38015e0f124c6597927fc6d26b0
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Bo-Chen-Chen/drm-mediatek-Add-MT8195-DisplayPort-driver/20220712-191341
+        git checkout a3869f524e16c38015e0f124c6597927fc6d26b0
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/gpu/drm/mediatek/ drivers/pci/controller/dwc/
+
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
+
+All warnings (new ones prefixed by >>):
+
+   drivers/gpu/drm/mediatek/mtk_dp.c: In function 'mtk_dp_train_tps_1':
+>> drivers/gpu/drm/mediatek/mtk_dp.c:1092:12: warning: variable 'val' set but not used [-Wunused-but-set-variable]
+    1092 |         u8 val;
+         |            ^~~
+   drivers/gpu/drm/mediatek/mtk_dp.c: In function 'mtk_dp_bridge_atomic_get_output_bus_fmts':
+   drivers/gpu/drm/mediatek/mtk_dp.c:1865:26: error: 'MEDIA_BUS_FMT_FIXED' undeclared (first use in this function)
+    1865 |         output_fmts[0] = MEDIA_BUS_FMT_FIXED;
+         |                          ^~~~~~~~~~~~~~~~~~~
+   drivers/gpu/drm/mediatek/mtk_dp.c:1865:26: note: each undeclared identifier is reported only once for each function it appears in
+   drivers/gpu/drm/mediatek/mtk_dp.c: At top level:
+   drivers/gpu/drm/mediatek/mtk_dp.c:1870:9: error: 'MEDIA_BUS_FMT_RGB888_1X24' undeclared here (not in a function)
+    1870 |         MEDIA_BUS_FMT_RGB888_1X24,
+         |         ^~~~~~~~~~~~~~~~~~~~~~~~~
+   drivers/gpu/drm/mediatek/mtk_dp.c:1871:9: error: 'MEDIA_BUS_FMT_YUV8_1X24' undeclared here (not in a function)
+    1871 |         MEDIA_BUS_FMT_YUV8_1X24,
+         |         ^~~~~~~~~~~~~~~~~~~~~~~
+   drivers/gpu/drm/mediatek/mtk_dp.c:1872:9: error: 'MEDIA_BUS_FMT_YUYV8_1X16' undeclared here (not in a function)
+    1872 |         MEDIA_BUS_FMT_YUYV8_1X16,
+         |         ^~~~~~~~~~~~~~~~~~~~~~~~
+
+
+vim +/val +1092 drivers/gpu/drm/mediatek/mtk_dp.c
+
+  1087	
+  1088	static int mtk_dp_train_tps_1(struct mtk_dp *mtk_dp, u8 target_lane_count,
+  1089				      int *iteration_count, u8 *lane_adjust,
+  1090				      int *status_control, u8 *prev_lane_adjust)
+  1091	{
+> 1092		u8 val;
+  1093		u8 link_status[DP_LINK_STATUS_SIZE] = {};
+  1094	
+  1095		mtk_dp_training_set_scramble(mtk_dp, false);
+  1096	
+  1097		if (*status_control == 0) {
+  1098			mtk_dp_train_set_pattern(mtk_dp, 1);
+  1099			val = DP_LINK_SCRAMBLING_DISABLE |
+  1100				DP_TRAINING_PATTERN_1;
+  1101			drm_dp_dpcd_writeb(&mtk_dp->aux,
+  1102					   DP_TRAINING_PATTERN_SET,
+  1103					   DP_LINK_SCRAMBLING_DISABLE |
+  1104					   DP_TRAINING_PATTERN_1);
+  1105			drm_dp_dpcd_read(&mtk_dp->aux,
+  1106					 DP_ADJUST_REQUEST_LANE0_1,
+  1107					 lane_adjust,
+  1108					 sizeof(*lane_adjust) * 2);
+  1109	
+  1110			mtk_dp_train_update_swing_pre(mtk_dp,
+  1111						      target_lane_count, lane_adjust);
+  1112			*status_control = 1;
+  1113			(*iteration_count)++;
+  1114		}
+  1115	
+  1116		drm_dp_link_train_clock_recovery_delay(&mtk_dp->aux, mtk_dp->rx_cap);
+  1117		drm_dp_dpcd_read_link_status(&mtk_dp->aux, link_status);
+  1118	
+  1119		if (drm_dp_clock_recovery_ok(link_status,
+  1120					     target_lane_count)) {
+  1121			mtk_dp->train_info.cr_done = true;
+  1122			*iteration_count = 1;
+  1123			dev_dbg(mtk_dp->dev, "Link train CR pass\n");
+  1124			return 0;
+  1125		} else if (*prev_lane_adjust == link_status[4]) {
+  1126			(*iteration_count)++;
+  1127			if (*prev_lane_adjust & DP_ADJUST_VOLTAGE_SWING_LANE0_MASK) {
+  1128				dev_dbg(mtk_dp->dev, "Link train CQ fail\n");
+  1129				return -EINVAL;
+  1130			}
+  1131		} else {
+  1132			*prev_lane_adjust = link_status[4];
+  1133		}
+  1134		return -EAGAIN;
+  1135	}
+  1136	
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
