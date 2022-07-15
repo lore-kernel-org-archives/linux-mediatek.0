@@ -4,51 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CC37CCA47F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 12:30:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E18FC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 12:30:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5ToVJGuYlEuSDAtMcmUoZWdOhyAHh5zjRCHIPBzzoao=; b=dGaJfOrSmTe1C8sk86V6B2QgUz
-	ZzuGN8lQmbrqfsS3or1JM4rGqubWcpEvNRcyCnmTiNPFoDTM78wgoTrnKC6+faqcZA1O0boewNwUU
-	y/uR7CdyqsS62XX/VVA5hwrStjdHSTGPhmvCA15EyYMNuI6a44r9uhJn8FHYzNxnK3yLmaks87yrl
-	xkME1tsRUiO4YsKJThNeKtNwq8XrbFMR+d/N4ASMoxXPBdTDFYCQB4pS1Fq4fRE4acn8Y3+a7sjPU
-	6TE4kJmZuVC31P/hakVLFo33knAxuk5Rw5X7mNnWVgb1mJcdhoEpFVbV04BtO90tolg7ZSyL9DjX6
-	z4mL2Z3w==;
+	bh=ilBGb2o7iREE1B62xei9ikczZMNZtMVHB3FSNLvL7CQ=; b=F5xFT1MOWKxpnSfRSsdk8xMGnJ
+	zm6DnAo78D8gv2HTilbg3kmW+GCRocedp+x2LKI6gtzB4CLi2JTA/BNkiR8jY+qmriOMh20fox2D2
+	Qws1UIiZ8eCo9Fk/3ogfH7ciSOWrjX/SHskIYx5y2F626DInk2mVfUMxqLMccTKEyKFk0jukWJltT
+	Wvu2WQXFxdDHPIye12jM9Nb1huDa0YJ33NTqk5jQ2xEPeTDvjKXXWm9JG4s1GOdcJ5ZQHWW40zexE
+	sNSjk5S3YpcQI9h93hYrxZeTk3qJoTU1M8hJn85PxdfbnSQg+OLj2xDu4ryawJr1c/jhKXvasg0Te
+	Kg77U17g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCKSJ-006vVd-Ho; Fri, 15 Jul 2022 12:30:03 +0000
+	id 1oCKSO-006vdu-UJ; Fri, 15 Jul 2022 12:30:08 +0000
 Received: from mx0a-00128a01.pphosted.com ([148.163.135.77])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCKSF-006vPR-Ay; Fri, 15 Jul 2022 12:30:00 +0000
+	id 1oCKSL-006vWz-Fz; Fri, 15 Jul 2022 12:30:06 +0000
 Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
-	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26FAou0a026913;
-	Fri, 15 Jul 2022 08:29:39 -0400
+	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26FAnJfs026918;
+	Fri, 15 Jul 2022 08:29:45 -0400
 Received: from nwd2mta4.analog.com ([137.71.173.58])
-	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3h9r37te6v-1
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3h9r37te7d-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 15 Jul 2022 08:29:39 -0400
+	Fri, 15 Jul 2022 08:29:45 -0400
 Received: from ASHBMBX8.ad.analog.com (ASHBMBX8.ad.analog.com [10.64.17.5])
-	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 26FCTcgM062175
+	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 26FCTiLB062178
 	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Fri, 15 Jul 2022 08:29:38 -0400
-Received: from ASHBCASHYB5.ad.analog.com (10.64.17.133) by
- ASHBMBX8.ad.analog.com (10.64.17.5) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.14; Fri, 15 Jul 2022 08:29:37 -0400
-Received: from ASHBMBX8.ad.analog.com (10.64.17.5) by
- ASHBCASHYB5.ad.analog.com (10.64.17.133) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.14; Fri, 15 Jul 2022 08:29:37 -0400
+	Fri, 15 Jul 2022 08:29:44 -0400
+Received: from ASHBMBX8.ad.analog.com (10.64.17.5) by ASHBMBX8.ad.analog.com
+ (10.64.17.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.14; Fri, 15 Jul
+ 2022 08:29:43 -0400
 Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx8.ad.analog.com
  (10.64.17.5) with Microsoft SMTP Server id 15.2.986.14 via Frontend
- Transport; Fri, 15 Jul 2022 08:29:36 -0400
+ Transport; Fri, 15 Jul 2022 08:29:43 -0400
 Received: from nsa.ad.analog.com ([10.44.3.55])
-	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 26FCRxO4001007;
-	Fri, 15 Jul 2022 08:29:23 -0400
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 26FCRxO5001007;
+	Fri, 15 Jul 2022 08:29:32 -0400
 From: =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>
 To: <openbmc@lists.ozlabs.org>, <linux-imx@nxp.com>,
         <linux-stm32@st-md-mailman.stormreply.com>,
@@ -67,34 +63,34 @@ CC: Gwendal Grignou <gwendal@chromium.org>,
         Tomer Maimon
 	<tmaimon77@gmail.com>,
         Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-        "Alexandre Torgue" <alexandre.torgue@foss.st.com>,
-        Lorenzo Bianconi
-	<lorenzo@kernel.org>,
-        Fabio Estevam <festevam@gmail.com>, Shawn Guo
-	<shawnguo@kernel.org>,
-        "Olivier Moysan" <olivier.moysan@foss.st.com>,
-        Tali
- Perry <tali.perry1@gmail.com>,
+        Alexandre
+ Torgue <alexandre.torgue@foss.st.com>,
+        Lorenzo Bianconi <lorenzo@kernel.org>,
+        Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
+        Olivier
+ Moysan <olivier.moysan@foss.st.com>,
+        Tali Perry <tali.perry1@gmail.com>,
         Thara Gopinath <thara.gopinath@linaro.org>,
-        Bjorn Andersson <bjorn.andersson@linaro.org>,
-        Arnd Bergmann <arnd@arndb.de>, Benjamin Fair <benjaminfair@google.com>,
-        Nicolas Ferre
-	<nicolas.ferre@microchip.com>,
+        Bjorn Andersson
+	<bjorn.andersson@linaro.org>,
+        Arnd Bergmann <arnd@arndb.de>,
+        Benjamin Fair
+	<benjaminfair@google.com>,
+        Nicolas Ferre <nicolas.ferre@microchip.com>,
         "Rafael J. Wysocki" <rafael@kernel.org>,
-        Patrick Venture <venture@google.com>,
-        Pengutronix Kernel Team
-	<kernel@pengutronix.de>,
+        Patrick Venture
+	<venture@google.com>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
         Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-        Daniel Lezcano <daniel.lezcano@linaro.org>,
-        Benson Leung
-	<bleung@chromium.org>, Nancy Yuen <yuenn@google.com>,
-        Miquel Raynal
-	<miquel.raynal@bootlin.com>,
-        "Alexandre Belloni"
-	<alexandre.belloni@bootlin.com>,
+        Daniel Lezcano
+	<daniel.lezcano@linaro.org>,
+        Benson Leung <bleung@chromium.org>, Nancy Yuen
+	<yuenn@google.com>,
+        Miquel Raynal <miquel.raynal@bootlin.com>,
+        Alexandre
+ Belloni <alexandre.belloni@bootlin.com>,
         Zhang Rui <rui.zhang@intel.com>,
-        Linus
- Walleij <linus.walleij@linaro.org>,
+        Linus Walleij <linus.walleij@linaro.org>,
         Christophe Branchereau
 	<cbranchereau@gmail.com>,
         Cai Huoqing <cai.huoqing@linux.dev>,
@@ -105,8 +101,8 @@ CC: Gwendal Grignou <gwendal@chromium.org>,
         Sascha Hauer
 	<s.hauer@pengutronix.de>,
         Lars-Peter Clausen <lars@metafoo.de>,
-        "Andy
- Shevchenko" <andy.shevchenko@gmail.com>,
+        Andy
+ Shevchenko <andy.shevchenko@gmail.com>,
         Guenter Roeck <groeck@chromium.org>,
         Paul Cercueil <paul@crapouillou.net>,
         Claudiu Beznea
@@ -114,12 +110,12 @@ CC: Gwendal Grignou <gwendal@chromium.org>,
         Andy Gross <agross@kernel.org>, Amit Kucheria
 	<amitk@kernel.org>,
         Michael Hennerich <Michael.Hennerich@analog.com>,
-        "Haibo
- Chen" <haibo.chen@nxp.com>,
+        Haibo
+ Chen <haibo.chen@nxp.com>,
         Jishnu Prakash <quic_jprakash@quicinc.com>
-Subject: [PATCH v3 08/15] iio: adc: ab8500-gpadc: convert to device properties
-Date: Fri, 15 Jul 2022 14:28:56 +0200
-Message-ID: <20220715122903.332535-9-nuno.sa@analog.com>
+Subject: [PATCH v3 09/15] iio: adc: at91-sama5d2_adc: convert to device properties
+Date: Fri, 15 Jul 2022 14:28:57 +0200
+Message-ID: <20220715122903.332535-10-nuno.sa@analog.com>
 X-Mailer: git-send-email 2.37.1
 In-Reply-To: <20220715122903.332535-1-nuno.sa@analog.com>
 References: <20220715122903.332535-1-nuno.sa@analog.com>
@@ -127,8 +123,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-ADIRuleOP-NewSCL: Rule Triggered
-X-Proofpoint-GUID: 8fwdlyg7qp-onOiQ4O1T3jcYjjFFjUZ0
-X-Proofpoint-ORIG-GUID: 8fwdlyg7qp-onOiQ4O1T3jcYjjFFjUZ0
+X-Proofpoint-GUID: m-bvaCdCSS-sjW63PCKCs13AsQvU8x8_
+X-Proofpoint-ORIG-GUID: m-bvaCdCSS-sjW63PCKCs13AsQvU8x8_
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
  definitions=2022-07-15_04,2022-07-15_01,2022-06-22_01
@@ -138,8 +134,8 @@ X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowprio
  impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2206140000 definitions=main-2207150054
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_052959_404714_9E2C9A92 
-X-CRM114-Status: GOOD (  18.64  )
+X-CRM114-CacheID: sfid-20220715_053005_571959_E12116DB 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,124 +156,106 @@ the conversion the IIO inkern interface 'of_xlate()' is also converted to
 dependencies from IIO.
 
 Signed-off-by: Nuno Sá <nuno.sa@analog.com>
-Acked-by: Linus Walleij <linus.walleij@linaro.org>
 Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 ---
- drivers/iio/adc/ab8500-gpadc.c | 27 ++++++++++++---------------
- 1 file changed, 12 insertions(+), 15 deletions(-)
+ drivers/iio/adc/at91-sama5d2_adc.c | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/iio/adc/ab8500-gpadc.c b/drivers/iio/adc/ab8500-gpadc.c
-index 930ce96e6ff5..4fa2126a354b 100644
---- a/drivers/iio/adc/ab8500-gpadc.c
-+++ b/drivers/iio/adc/ab8500-gpadc.c
-@@ -925,8 +925,8 @@ static int ab8500_gpadc_read_raw(struct iio_dev *indio_dev,
- 	return -EINVAL;
+diff --git a/drivers/iio/adc/at91-sama5d2_adc.c b/drivers/iio/adc/at91-sama5d2_adc.c
+index fe3131c9593c..df716584c117 100644
+--- a/drivers/iio/adc/at91-sama5d2_adc.c
++++ b/drivers/iio/adc/at91-sama5d2_adc.c
+@@ -16,8 +16,9 @@
+ #include <linux/interrupt.h>
+ #include <linux/io.h>
+ #include <linux/module.h>
+-#include <linux/of_device.h>
++#include <linux/mod_devicetable.h>
+ #include <linux/platform_device.h>
++#include <linux/property.h>
+ #include <linux/sched.h>
+ #include <linux/wait.h>
+ #include <linux/iio/iio.h>
+@@ -650,8 +651,8 @@ at91_adc_chan_get(struct iio_dev *indio_dev, int chan)
+ 	return indio_dev->channels + index;
  }
  
--static int ab8500_gpadc_of_xlate(struct iio_dev *indio_dev,
--				 const struct of_phandle_args *iiospec)
-+static int ab8500_gpadc_fwnode_xlate(struct iio_dev *indio_dev,
-+				     const struct fwnode_reference_args *iiospec)
+-static inline int at91_adc_of_xlate(struct iio_dev *indio_dev,
+-				    const struct of_phandle_args *iiospec)
++static inline int at91_adc_fwnode_xlate(struct iio_dev *indio_dev,
++					const struct fwnode_reference_args *iiospec)
  {
- 	int i;
- 
-@@ -938,7 +938,7 @@ static int ab8500_gpadc_of_xlate(struct iio_dev *indio_dev,
+ 	return at91_adc_chan_xlate(indio_dev, iiospec->args[0]);
  }
- 
- static const struct iio_info ab8500_gpadc_info = {
--	.of_xlate = ab8500_gpadc_of_xlate,
-+	.fwnode_xlate = ab8500_gpadc_fwnode_xlate,
- 	.read_raw = ab8500_gpadc_read_raw,
+@@ -1876,7 +1877,7 @@ static const struct iio_info at91_adc_info = {
+ 	.read_raw = &at91_adc_read_raw,
+ 	.write_raw = &at91_adc_write_raw,
+ 	.update_scan_mode = &at91_adc_update_scan_mode,
+-	.of_xlate = &at91_adc_of_xlate,
++	.fwnode_xlate = &at91_adc_fwnode_xlate,
+ 	.hwfifo_set_watermark = &at91_adc_set_watermark,
  };
  
-@@ -968,7 +968,7 @@ static int ab8500_gpadc_runtime_resume(struct device *dev)
- /**
-  * ab8500_gpadc_parse_channel() - process devicetree channel configuration
-  * @dev: pointer to containing device
-- * @np: device tree node for the channel to configure
-+ * @fwnode: fw node for the channel to configure
-  * @ch: channel info to fill in
-  * @iio_chan: IIO channel specification to fill in
-  *
-@@ -976,15 +976,15 @@ static int ab8500_gpadc_runtime_resume(struct device *dev)
-  * and define usage for things like AUX GPADC inputs more precisely.
-  */
- static int ab8500_gpadc_parse_channel(struct device *dev,
--				      struct device_node *np,
-+				      struct fwnode_handle *fwnode,
- 				      struct ab8500_gpadc_chan_info *ch,
- 				      struct iio_chan_spec *iio_chan)
+@@ -1920,6 +1921,7 @@ static int at91_adc_buffer_and_trigger_init(struct device *dev,
+ 
+ static int at91_adc_probe(struct platform_device *pdev)
  {
--	const char *name = np->name;
-+	const char *name = fwnode_get_name(fwnode);
- 	u32 chan;
- 	int ret;
- 
--	ret = of_property_read_u32(np, "reg", &chan);
-+	ret = fwnode_property_read_u32(fwnode, "reg", &chan);
- 	if (ret) {
- 		dev_err(dev, "invalid channel number %s\n", name);
- 		return ret;
-@@ -1021,22 +1021,20 @@ static int ab8500_gpadc_parse_channel(struct device *dev,
- /**
-  * ab8500_gpadc_parse_channels() - Parse the GPADC channels from DT
-  * @gpadc: the GPADC to configure the channels for
-- * @np: device tree node containing the channel configurations
-  * @chans: the IIO channels we parsed
-  * @nchans: the number of IIO channels we parsed
-  */
- static int ab8500_gpadc_parse_channels(struct ab8500_gpadc *gpadc,
--				       struct device_node *np,
- 				       struct iio_chan_spec **chans_parsed,
- 				       unsigned int *nchans_parsed)
- {
--	struct device_node *child;
-+	struct fwnode_handle *child;
- 	struct ab8500_gpadc_chan_info *ch;
- 	struct iio_chan_spec *iio_chans;
- 	unsigned int nchans;
- 	int i;
- 
--	nchans = of_get_available_child_count(np);
-+	nchans = device_get_child_node_count(gpadc->dev);
- 	if (!nchans) {
- 		dev_err(gpadc->dev, "no channel children\n");
- 		return -ENODEV;
-@@ -1054,7 +1052,7 @@ static int ab8500_gpadc_parse_channels(struct ab8500_gpadc *gpadc,
- 		return -ENOMEM;
- 
- 	i = 0;
--	for_each_available_child_of_node(np, child) {
-+	device_for_each_child_node(gpadc->dev, child) {
- 		struct iio_chan_spec *iio_chan;
- 		int ret;
- 
-@@ -1064,7 +1062,7 @@ static int ab8500_gpadc_parse_channels(struct ab8500_gpadc *gpadc,
- 		ret = ab8500_gpadc_parse_channel(gpadc->dev, child, ch,
- 						 iio_chan);
- 		if (ret) {
--			of_node_put(child);
-+			fwnode_handle_put(child);
- 			return ret;
- 		}
- 		i++;
-@@ -1081,7 +1079,6 @@ static int ab8500_gpadc_probe(struct platform_device *pdev)
- 	struct ab8500_gpadc *gpadc;
++	struct device *dev = &pdev->dev;
  	struct iio_dev *indio_dev;
- 	struct device *dev = &pdev->dev;
--	struct device_node *np = pdev->dev.of_node;
- 	struct iio_chan_spec *iio_chans;
- 	unsigned int n_iio_chans;
- 	int ret;
-@@ -1096,7 +1093,7 @@ static int ab8500_gpadc_probe(struct platform_device *pdev)
- 	gpadc->dev = dev;
- 	gpadc->ab8500 = dev_get_drvdata(dev->parent);
+ 	struct at91_adc_state *st;
+ 	struct resource	*res;
+@@ -1933,7 +1935,7 @@ static int at91_adc_probe(struct platform_device *pdev)
+ 	st = iio_priv(indio_dev);
+ 	st->indio_dev = indio_dev;
  
--	ret = ab8500_gpadc_parse_channels(gpadc, np, &iio_chans, &n_iio_chans);
-+	ret = ab8500_gpadc_parse_channels(gpadc, &iio_chans, &n_iio_chans);
- 	if (ret)
+-	st->soc_info.platform = of_device_get_match_data(&pdev->dev);
++	st->soc_info.platform = device_get_match_data(dev);
+ 
+ 	indio_dev->name = dev_name(&pdev->dev);
+ 	indio_dev->modes = INDIO_DIRECT_MODE | INDIO_BUFFER_SOFTWARE;
+@@ -1950,34 +1952,32 @@ static int at91_adc_probe(struct platform_device *pdev)
+ 
+ 	st->oversampling_ratio = AT91_OSR_1SAMPLES;
+ 
+-	ret = of_property_read_u32(pdev->dev.of_node,
+-				   "atmel,min-sample-rate-hz",
+-				   &st->soc_info.min_sample_rate);
++	ret = device_property_read_u32(dev, "atmel,min-sample-rate-hz",
++				       &st->soc_info.min_sample_rate);
+ 	if (ret) {
+ 		dev_err(&pdev->dev,
+ 			"invalid or missing value for atmel,min-sample-rate-hz\n");
  		return ret;
+ 	}
  
+-	ret = of_property_read_u32(pdev->dev.of_node,
+-				   "atmel,max-sample-rate-hz",
+-				   &st->soc_info.max_sample_rate);
++	ret = device_property_read_u32(dev, "atmel,max-sample-rate-hz",
++				       &st->soc_info.max_sample_rate);
+ 	if (ret) {
+ 		dev_err(&pdev->dev,
+ 			"invalid or missing value for atmel,max-sample-rate-hz\n");
+ 		return ret;
+ 	}
+ 
+-	ret = of_property_read_u32(pdev->dev.of_node, "atmel,startup-time-ms",
+-				   &st->soc_info.startup_time);
++	ret = device_property_read_u32(dev, "atmel,startup-time-ms",
++				       &st->soc_info.startup_time);
+ 	if (ret) {
+ 		dev_err(&pdev->dev,
+ 			"invalid or missing value for atmel,startup-time-ms\n");
+ 		return ret;
+ 	}
+ 
+-	ret = of_property_read_u32(pdev->dev.of_node,
+-				   "atmel,trigger-edge-type", &edge_type);
++	ret = device_property_read_u32(dev, "atmel,trigger-edge-type",
++				       &edge_type);
+ 	if (ret) {
+ 		dev_dbg(&pdev->dev,
+ 			"atmel,trigger-edge-type not specified, only software trigger available\n");
 -- 
 2.37.1
 
