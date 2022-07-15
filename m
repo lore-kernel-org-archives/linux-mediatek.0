@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FE47CCA47F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 12:29:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DCC9CCA481
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 12:29:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+/DgCog7hjdH0HCCDHi8EEPWHbYGjKnO9AUfoLPrYYY=; b=iyHJ6T2Yt+Gixux1is3T6wS3kU
-	0ugLeJz/klWV0BRhjAy96rf2FSk58EfcMjJvwATwGFltn1Z00FFAIM1fShNC2z2PyO3x94WUmefKD
-	RgKt8ls6Q9c83LzCw8HgHSv6RDEgbzN75//U4RUBccO6eR0DVZWdT5uj8wfnvlYvTUd80IyVZpF7o
-	dTuD3Y42p/I455KnyN/fCSxRu2Vcjuzboi6RsNwjvz3OcMKqRPCIxjfERAqibbWj0qYRQ51Jk8scw
-	tf1UJMi2wytuRxEfceU9+tyh8p+IeYxByTPs5PrTltWfgN199uBA1+PRt/QiQ8UYFwPJb/kBGhlBw
-	gQ0E/8IQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YHWj0gOeybn1tJg2B5Tq2Tvjoy7DIJgTQ4jjQb4a760=; b=kyP4RzNASXHqLvZaO5O8uq9zoE
+	b/L6H0CIPZyXTJx71s+E5wqSlhRkcmmyDBptm2RhUuN5sSw8G0N/Ep8Fn4KEUdcuxEMtkn0YMb+Sx
+	LtXlaCTVeECI7lc81W0KDmLHgBEu6j0dkpAu8BUUNBzHmPYXBh5RVBWMj2SdKGesNZDoXDPi1TILv
+	ENOZIELlNak6uNp5WGNbDLRYILsoHKibCOSoahsk69VgDyCtWiZsRmbpU7hMpfIhevpygsVufbVWZ
+	qWm47c1nIUHC382FuJNUUNhpvzYmsbKCyH/UWK/MtZcAFUVfjjtWSDda1rjsgefMWgNghgYmnOCos
+	G1KoyPTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCKRg-006uxb-SO; Fri, 15 Jul 2022 12:29:24 +0000
+	id 1oCKRh-006uxx-M9; Fri, 15 Jul 2022 12:29:25 +0000
 Received: from mx0a-00128a01.pphosted.com ([148.163.135.77])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCKRa-006usp-5a; Fri, 15 Jul 2022 12:29:21 +0000
+	id 1oCKRb-006uuL-4E; Fri, 15 Jul 2022 12:29:21 +0000
 Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
-	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26FA9g54026919;
-	Fri, 15 Jul 2022 08:28:46 -0400
+	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 26FA4PiP026958;
+	Fri, 15 Jul 2022 08:28:57 -0400
 Received: from nwd2mta3.analog.com ([137.71.173.56])
-	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3h9r37te2c-1
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3h9r37te3h-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 15 Jul 2022 08:28:45 -0400
+	Fri, 15 Jul 2022 08:28:57 -0400
 Received: from ASHBMBX9.ad.analog.com (ASHBMBX9.ad.analog.com [10.64.17.10])
-	by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 26FCSgmc061285
+	by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 26FCStPK061302
 	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Fri, 15 Jul 2022 08:28:42 -0400
-Received: from ASHBCASHYB4.ad.analog.com (10.64.17.132) by
+	Fri, 15 Jul 2022 08:28:55 -0400
+Received: from ASHBCASHYB5.ad.analog.com (10.64.17.133) by
  ASHBMBX9.ad.analog.com (10.64.17.10) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.14; Fri, 15 Jul 2022 08:28:41 -0400
+ 15.2.986.14; Fri, 15 Jul 2022 08:28:55 -0400
 Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by
- ASHBCASHYB4.ad.analog.com (10.64.17.132) with Microsoft SMTP Server
+ ASHBCASHYB5.ad.analog.com (10.64.17.133) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.14; Fri, 15 Jul 2022 08:28:41 -0400
+ 15.2.986.14; Fri, 15 Jul 2022 08:28:54 -0400
 Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx9.ad.analog.com
  (10.64.17.10) with Microsoft SMTP Server id 15.2.986.14 via Frontend
- Transport; Fri, 15 Jul 2022 08:28:41 -0400
+ Transport; Fri, 15 Jul 2022 08:28:54 -0400
 Received: from nsa.ad.analog.com ([10.44.3.55])
-	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 26FCRxNu001007;
-	Fri, 15 Jul 2022 08:28:01 -0400
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 26FCRxNw001007;
+	Fri, 15 Jul 2022 08:28:44 -0400
 From: =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>
 To: <openbmc@lists.ozlabs.org>, <linux-imx@nxp.com>,
         <linux-stm32@st-md-mailman.stormreply.com>,
@@ -117,27 +117,29 @@ CC: Gwendal Grignou <gwendal@chromium.org>,
         "Haibo
  Chen" <haibo.chen@nxp.com>,
         Jishnu Prakash <quic_jprakash@quicinc.com>
-Subject: [PATCH v3 00/15] make iio inkern interface firmware agnostic
-Date: Fri, 15 Jul 2022 14:28:48 +0200
-Message-ID: <20220715122903.332535-1-nuno.sa@analog.com>
+Subject: [PATCH v3 02/15] iio: inkern: fix return value in devm_of_iio_channel_get_by_name()
+Date: Fri, 15 Jul 2022 14:28:50 +0200
+Message-ID: <20220715122903.332535-3-nuno.sa@analog.com>
 X-Mailer: git-send-email 2.37.1
+In-Reply-To: <20220715122903.332535-1-nuno.sa@analog.com>
+References: <20220715122903.332535-1-nuno.sa@analog.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-ADIRuleOP-NewSCL: Rule Triggered
-X-Proofpoint-GUID: 9pc-gto4TH3tPU-dOW4sBqrmMHKhYXJA
-X-Proofpoint-ORIG-GUID: 9pc-gto4TH3tPU-dOW4sBqrmMHKhYXJA
+X-Proofpoint-GUID: tNpkAPJ_T9XUWjCHsHWKQHQh-gHhk_zp
+X-Proofpoint-ORIG-GUID: tNpkAPJ_T9XUWjCHsHWKQHQh-gHhk_zp
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.883,Hydra:6.0.517,FMLib:17.11.122.1
  definitions=2022-07-15_04,2022-07-15_01,2022-06-22_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
  malwarescore=0 bulkscore=0 clxscore=1015 priorityscore=1501 phishscore=0
- spamscore=0 mlxlogscore=967 mlxscore=0 adultscore=0 suspectscore=0
+ spamscore=0 mlxlogscore=999 mlxscore=0 adultscore=0 suspectscore=0
  impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2206140000 definitions=main-2207150054
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_052918_250318_1F96B231 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20220715_052919_202623_9CD48832 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,65 +154,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-First version of the series can be found here:=0D
-=0D
-https://lore.kernel.org/linux-iio/20220610084545.547700-1-nuno.sa@analog.co=
-m/=0D
-=0D
-Second version:=0D
-=0D
-https://lore.kernel.org/linux-iio/20220711123835.811358-1-nuno.sa@analog.co=
-m/=0D
-=0D
-v3 changes:=0D
-=0D
-[1/15]:=0D
-  * Improved (spell fixes) commit message.=0D
-=0D
-[13/15]:=0D
-  * Get back to u32 API for 'st,adc-diff-channels' but making it more clear=
-=0D
-what's going on;=0D
-  * Fix infinite loop;=0D
-  * Store number of st,min-sample-time-nsecs properties to avoid=0D
-duplication in sanity checks.=0D
-=0D
-[15/15]=0D
-  * Improved 'if' condition for readability.=0D
-=0D
-(hopefulyl did not forgot any tag)=0D
-=0D
-Nuno S=C3=A1 (15):=0D
-  iio: inkern: only release the device node when done with it=0D
-  iio: inkern: fix return value in devm_of_iio_channel_get_by_name()=0D
-  iio: inkern: only return error codes in iio_channel_get_*() APIs=0D
-  iio: inkern: split of_iio_channel_get_by_name()=0D
-  iio: inkern: move to fwnode properties=0D
-  thermal: qcom: qcom-spmi-adc-tm5: convert to IIO fwnode API=0D
-  iio: adc: ingenic-adc: convert to IIO fwnode interface=0D
-  iio: adc: ab8500-gpadc: convert to device properties=0D
-  iio: adc: at91-sama5d2_adc: convert to device properties=0D
-  iio: adc: qcom-pm8xxx-xoadc: convert to device properties=0D
-  iio: adc: qcom-spmi-vadc: convert to device properties=0D
-  iio: adc: qcom-spmi-adc5: convert to device properties=0D
-  iio: adc: stm32-adc: convert to device properties=0D
-  iio: inkern: remove OF dependencies=0D
-  iio: inkern: fix coding style warnings=0D
-=0D
- drivers/iio/adc/ab8500-gpadc.c           |  27 +--=0D
- drivers/iio/adc/at91-sama5d2_adc.c       |  30 +--=0D
- drivers/iio/adc/ingenic-adc.c            |   8 +-=0D
- drivers/iio/adc/qcom-pm8xxx-xoadc.c      |  58 +++--=0D
- drivers/iio/adc/qcom-spmi-adc5.c         |  63 +++---=0D
- drivers/iio/adc/qcom-spmi-vadc.c         |  44 ++--=0D
- drivers/iio/adc/stm32-adc.c              | 125 ++++++-----=0D
- drivers/iio/inkern.c                     | 271 +++++++++++++----------=0D
- drivers/thermal/qcom/qcom-spmi-adc-tm5.c |   3 +-=0D
- include/linux/iio/consumer.h             |  28 +--=0D
- include/linux/iio/iio.h                  |   8 +-=0D
- 11 files changed, 350 insertions(+), 315 deletions(-)=0D
-=0D
--- =0D
-2.37.1=0D
-=0D
+of_iio_channel_get_by_name() can either return NULL or an error pointer
+so that only doing IS_ERR() is not enough. Fix it by checking the NULL
+pointer case and return -ENODEV in that case. Note this is done like this
+so that users of the function (which only check for error pointers) do
+not need to be changed. This is not ideal since we are losing error codes
+and as such, in a follow up change, things will be unified so that
+of_iio_channel_get_by_name() only returns error codes.
+
+Fixes: 6e39b145cef7 ("iio: provide of_iio_channel_get_by_name() and devm_ version it")
+Signed-off-by: Nuno Sá <nuno.sa@analog.com>
+Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+---
+ drivers/iio/inkern.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/iio/inkern.c b/drivers/iio/inkern.c
+index 9d87057794fc..87fd2a0d44f2 100644
+--- a/drivers/iio/inkern.c
++++ b/drivers/iio/inkern.c
+@@ -412,6 +412,8 @@ struct iio_channel *devm_of_iio_channel_get_by_name(struct device *dev,
+ 	channel = of_iio_channel_get_by_name(np, channel_name);
+ 	if (IS_ERR(channel))
+ 		return channel;
++	if (!channel)
++		return ERR_PTR(-ENODEV);
+ 
+ 	ret = devm_add_action_or_reset(dev, devm_iio_channel_free, channel);
+ 	if (ret)
+-- 
+2.37.1
+
 
