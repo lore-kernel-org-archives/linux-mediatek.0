@@ -4,88 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC8AAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 21:00:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50EC1C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 21:24:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FjCH/n3lVoEPHgozxLLQnFJq01zsIEBs6rSRAl4LUfo=; b=igIGcmVd8crSHOATjgJYhFSc/G
-	jzNYMvLDOP+DrxmVqeNdgkSfYbOh1T+4QkfLRzu7IDSpf+wFTEJiSaz14Ya/xY5sOVrLmZJZ0cnVO
-	G6Eo1GTveqrktKvaNoC7UrE68t/umdvOfWJMskWWFfAX6VP7BaTfboUQy22GG/9tfoSnL0qVGlGmG
-	EHoudbtIHUB1LzfgHxPG+jFdPu3c9+6kIwayDa0FPDUJWnyVMzLk8jHtMUaF0DUCwU6m4IJBzwHRV
-	C0i8z5VfdrYbNbHdm+QnXEyWCIarc0IGEVtCnQh65thaM6o++5wZggaZIrx4bTrpmpI//a9AntQVG
-	3dn3gd1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yStnF453+CWIEKN3ZB+E8YDNFufoGX/iH3AgvcxmH4U=; b=wpQVXR8p39jOibwwzBM6aNY0eq
+	ePwwUUZuXaQcAFVdeOkEbScSNxjtjVPx6zrfNO+pbmUyz0LwK6ofFJRPMucgPw/Mq2tTwaYUaYrJG
+	BfzjTd3OJQPJxoQo/9xmKZ0NmRvMSvqz0tCXXLWO1ZdxZ1AnVznBH9lpyve6I2yePQAnb3QSlAmJE
+	HbqgmN6/yZBQAcpSqDoGTcRI4BVux9cP7w1nP2p91bvCKKmsuyRcoPQBr1f3sx/A/MQgUdXCzJPAR
+	yK3M/ZCdcqkk77BxpRxC/vzbu1rPi03AdyH9LmYcGmVluadpZ7Pyd91X7HWBNjiXUzjfyR8c8+cos
+	9snZfhSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCSQ7-00AKE4-Hu; Fri, 15 Jul 2022 21:00:19 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1oCSnd-00AQVg-Ua; Fri, 15 Jul 2022 21:24:37 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCSPx-00AKBF-6n; Fri, 15 Jul 2022 21:00:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=FjCH/n3lVoEPHgozxLLQnFJq01zsIEBs6rSRAl4LUfo=; b=WKKiz+z+1GNbNjlQjPRlLiGJqL
-	FRDF66ZCOy07pHFlDyDftMKkHY1TYvDf2YWOE73hwFjsEQrSXgb1jjocCl6lvN9RG1mVbSnkGcNQv
-	kVZL3n+Yr9XcI4QbsFT8pg6sFegjsaIEV0Ng39sfdacMW4lfkrgJXiBIUFIacBPA3FFDGyz0psHw+
-	QAgsOUeTKG6y+2l7v8TIaAgb918RWnug/5T08to1WUlI656wOtIO7E+mVq2+5IVCDG6nUZLaN0gl4
-	4ny0S9u1tzZ8Tj+2ltJaZFEJpoo9irlaWvETMo74SbVnBVNdMdPzj9ILxNF5wj0NzryMheVImKXjp
-	8PVabpMg==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33364)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1oCSPK-0007WX-2a; Fri, 15 Jul 2022 21:59:30 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1oCSPE-0007rY-3L; Fri, 15 Jul 2022 21:59:24 +0100
-Date: Fri, 15 Jul 2022 21:59:24 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Daniel Scally <djrscally@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	George McCollister <george.mccollister@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Marek =?us-ascii?B?PT9pc28tODg1OS0xP1E/QmVoPUZBbj89?= <kabel@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>
-Subject: Re: [PATCH net-next 0/6] net: dsa: always use phylink
-Message-ID: <YtHVLGR0RQ6dWuBS@shell.armlinux.org.uk>
-References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
- <20220715171719.niqcrklpk4ittfvl@skbuf>
+	id 1oCSnT-00AQTK-8n; Fri, 15 Jul 2022 21:24:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9EAE96174A;
+	Fri, 15 Jul 2022 21:24:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CE25C34115;
+	Fri, 15 Jul 2022 21:24:25 +0000 (UTC)
+Date: Fri, 15 Jul 2022 17:24:23 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: <linux-kernel@vger.kernel.org>, Ingo Molnar <mingo@kernel.org>, Andrew
+ Morton <akpm@linux-foundation.org>, <linux-usb@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>
+Subject: Re: [for-next][PATCH 13/23] USB: mtu3: tracing: Use the new
+ __vstring() helper
+Message-ID: <20220715172423.6b57b9eb@gandalf.local.home>
+In-Reply-To: <962e59c25e981676014157cd111db9e16e237339.camel@mediatek.com>
+References: <20220714164256.403842845@goodmis.org>
+	<20220714164330.311734558@goodmis.org>
+	<962e59c25e981676014157cd111db9e16e237339.camel@mediatek.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220715171719.niqcrklpk4ittfvl@skbuf>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_140009_278567_19D93F02 
-X-CRM114-Status: GOOD (  21.92  )
+X-CRM114-CacheID: sfid-20220715_142427_377242_AEFF80C8 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,46 +67,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 15, 2022 at 08:17:19PM +0300, Vladimir Oltean wrote:
-> Hi Russell,
+On Fri, 15 Jul 2022 18:01:44 +0800
+Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+
+>  irq/254-1120100-137     [000] d..1.   266.629662: mtu3_log:
+> 11201000.usb: ep0_state SETUPr-speed
 > 
-> On Fri, Jul 15, 2022 at 05:00:59PM +0100, Russell King (Oracle) wrote:
-> > Hi,
-> > 
-> > This is a re-hash of the previous RFC series, this time using the
-> > suggestion from Vladimir to create a swnode based fixed-link
-> > specifier.
-> > 
-> > Most of the changes are to DSA and phylink code from the previous
-> > series. I've tested on my Clearfog (which has just one Marvell DSA
-> > switch) and it works there - also tested without the fixed-link
-> > specified in DT.
-> 
-> I had some comments I wanted to leave on the previous RFC patch set
-> (which in turn is essentially identical to this one, hence they still
-> apply), but I held off because I thought you were waiting for some
-> feedback from Andrew. Has something changed?
+> "r-speed" seems the remain of last log;
 
-I've got fed up of waiting for very little feedback on patches I send.
-Jakub was fully prepared to apply my v2 RFC patches after - as he saw
-it - everyone that was likely to respond had responded.
+I found an off-by-one bug in the vstring patch. I'll rebase, test and try
+again.
 
-The only thing that delayed them was your eventual comments about
-re-working how it was being done. Yet again, posting the RFC series
-created very little in the way of feedback. I'm getting to the point
-of thinking its a waste of time posting RFC patches - it's counter
-productive. RFC means "request for comments" but it seems that many
-interpret it as "I can ignore it".
+In the mean time, care to add this on top to make sure it's fixed?
 
-So, I'm saying sod it now. I'm posting patches that I create without
-RFC tags. That means reviewers need to be on the ball if they want to
-comment _before_ they get merged into net-next. Posting RFC is a total
-waste of time, IMHO.
+Thanks!
 
-You've proven it as well with some of your comments on this series,
-which I'll address in a separate reply.
+-- Steve
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+diff --git a/include/linux/trace_events.h b/include/linux/trace_events.h
+index e6f8ba52a958..b18759a673c6 100644
+--- a/include/linux/trace_events.h
++++ b/include/linux/trace_events.h
+@@ -922,16 +922,16 @@ perf_trace_buf_submit(void *raw_data, int size, int rctx, u16 type,
+  * gcc warns that you can not use a va_list in an inlined
+  * function. But lets me make it into a macro :-/
+  */
+-#define __trace_event_vstr_len(fmt, va)		\
+-({						\
+-	va_list __ap;				\
+-	int __ret;				\
+-						\
+-	va_copy(__ap, *(va));			\
+-	__ret = vsnprintf(NULL, 0, fmt, __ap);	\
+-	va_end(__ap);				\
+-						\
+-	min(__ret, TRACE_EVENT_STR_MAX);	\
++#define __trace_event_vstr_len(fmt, va)			\
++({							\
++	va_list __ap;					\
++	int __ret;					\
++							\
++	va_copy(__ap, *(va));				\
++	__ret = vsnprintf(NULL, 0, fmt, __ap) + 1;	\
++	va_end(__ap);					\
++							\
++	min(__ret, TRACE_EVENT_STR_MAX);		\
+ })
+ 
+ #endif /* _LINUX_TRACE_EVENT_H */
 
