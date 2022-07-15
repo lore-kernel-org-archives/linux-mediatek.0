@@ -4,51 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACAA2CCA481
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 16:02:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2850AC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 16:02:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gA3XVimnX7f3s6KgiLlFK+Po6cdJBSVv58Yny5mkLeQ=; b=z0IRbN+hmeLLFy7XgB4NY5Q08U
-	gg28mtck1Yg7MSp1SrtkRSUTGJYQX1XIlMwlalZZO15oTfYkrpdbTRnWnU+JlO5FODKiriBa9wQRq
-	0T/RsKzBnt0JlYQudeUqX8JHoOYBJVy4PlAKwsQ/ijxmOLrOnUtWgZq2TYNbi+k+KfSANrJbZ6nAq
-	8cmfjEAzFduYJ5Ds/8ov2FHqHO2NZzlHQXnaH22TPHhoSQbNh9Oeiq9IndBXgLPc5VEv7lhDKBQ+w
-	62tI8utZWF/jemxFmiUsQLcGmc3l3RwVZiByTexYmsDLHq4pAJZT5+fmrKgPPP5u8+A0+NIDIMsN6
-	mdRx17/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
+	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dVtz2WFyIDMUf28W38+Oat90NEJci3uTaIy/rzVJ8Gg=; b=tVJmynul3G1u/qqied+p1m6qkh
+	MyS/wn4RmnEHvnW30DXzhlULbZaB98RoDiFydFkf+7kkRSWdBe2bDSnddfgAO2ZEXmhCpIgWvDUoy
+	l9XBaydaWQZztvS4fD5Hq9zas8ajJmjhZr/czkGMC1ymdQIxJEIeIiDmKS0vLgUdMGx1SxAdNafKG
+	iJLQs3awcSilvfpblkFfR9B9uqvNJduYLEuE7XSaOOZd/e23N8KMWJEJROQPDpvDLj29YVjhh5yVA
+	n+3xkD6bOgx23/xczQ/84RwM6eduZxsOGRkpucACPtRgNxbgKiD2mpJXfzeE4AQkF1nn8c6MX4W8g
+	mNA2WP1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCNlG-008bXG-Jh; Fri, 15 Jul 2022 16:01:50 +0000
+	id 1oCNlQ-008bac-OK; Fri, 15 Jul 2022 16:02:00 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCNl4-008bU8-RD; Fri, 15 Jul 2022 16:01:40 +0000
+	id 1oCNl8-008bUo-NM; Fri, 15 Jul 2022 16:01:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=gA3XVimnX7f3s6KgiLlFK+Po6cdJBSVv58Yny5mkLeQ=; b=g65/fd96gMfMyEVlEnBM0l5zaS
-	I8j5swFEkAOUfVQgZd+936F4JHD28LjuG+g3eI+6VjNyCUz7vfuRdCQfplCtK34FM+EK8L3UxskA+
-	qHR7vSNgLT/CODJlCB/TcIz0wxA5FOd1jT2FK7+lX8CeQvK1jtAaqAt4jErTzog8BGjmrEcLdnKaV
-	Epbs313LqhkOjOz8PsRNN0ImTpyowJf2L7igwOcBxAhZcjV39uVx1PanTolqfobZ5uyRTFAmn9Zr/
-	aczV3p9qTdb58iQuv1WDVITmuEzrDdqu2fyrPL4GYJ6pNLsBlCIf2WNwa4YEHta3PFoDDOxYFIERQ
-	XlN/Wl4Q==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33358)
+	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=dVtz2WFyIDMUf28W38+Oat90NEJci3uTaIy/rzVJ8Gg=; b=ORpmgDmRKp0ZVMMxf0AwIgU0ke
+	1HW/rY1+lW47v5RaKJwilfdzHqR9O47lvJL2djla3gOJn2giyt0AKcMnS5CYNZ+oMqQOKRAqavn2R
+	kwofOhoeVJlyS+p0T2ePc/SdNQAkdLlSl23tnl5njaaaU/CbZJpKyyr8KYWuLio1/EuS203GKI4mC
+	Z7LhqgSRtslp3mizKHvAfuowgOjTXNlyqZ8mURQJ3uJd1EdGI8kDKhkdqGsXbXaJ+Evn7aBb5HmwL
+	oejki5KRVbREu1H2/UlKH60RzyOhcNHcWffAD+G/1DM3lPg2a7u0wkvzjnKAN2enJAz3LghdvxRPM
+	moLo8y/Q==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:46046 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1oCNkZ-0007C7-It; Fri, 15 Jul 2022 17:01:07 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1oCNkR-0007g6-88; Fri, 15 Jul 2022 17:00:59 +0100
-Date: Fri, 15 Jul 2022 17:00:59 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+	(envelope-from <rmk@armlinux.org.uk>)
+	id 1oCNku-0007CO-5a; Fri, 15 Jul 2022 17:01:28 +0100
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
+	id 1oCNkt-006e3Z-F4; Fri, 15 Jul 2022 17:01:27 +0100
+In-Reply-To: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>
 Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	"Alvin __ipraga" <alsi@bang-olufsen.dk>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Claudiu Manoil <claudiu.manoil@nxp.com>,
 	Daniel Scally <djrscally@gmail.com>,
@@ -64,26 +66,34 @@ Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
 	Kurt Kanzenbach <kurt@linutronix.de>,
 	Landen Chao <Landen.Chao@mediatek.com>,
 	Linus Walleij <linus.walleij@linaro.org>,
-	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-acpi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Marek =?us-ascii?B?PT9pc28tODg1OS0xP1E/QmVoPUZBbj89?= <kabel@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	netdev@vger.kernel.org,
 	Paolo Abeni <pabeni@redhat.com>,
 	"Rafael J. Wysocki" <rafael@kernel.org>,
 	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Sean Wang <sean.wang@mediatek.com>,
+	UNGLinuxDriver@microchip.com,
 	Vivien Didelot <vivien.didelot@gmail.com>,
 	Vladimir Oltean <olteanv@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>
-Subject: [PATCH net-next 0/6] net: dsa: always use phylink
-Message-ID: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+	Woojung Huh <woojung.huh@microchip.com>,
+	 Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
+Subject: [PATCH net-next 1/6] net: phylink: split out and export interface to
+ caps translation
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Message-Id: <E1oCNkt-006e3Z-F4@rmk-PC.armlinux.org.uk>
+Date: Fri, 15 Jul 2022 17:01:27 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_090138_900257_DA1C6391 
-X-CRM114-Status: UNSURE (   9.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220715_090142_797938_18172EC1 
+X-CRM114-Status: GOOD (  13.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,42 +108,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+phylink_get_linkmodes() translates the interface mode into a set of
+speed and duplex capabilities which are masked with the MAC modes to
+then derive the link modes that are available.
 
-This is a re-hash of the previous RFC series, this time using the
-suggestion from Vladimir to create a swnode based fixed-link
-specifier.
+Split out the initial transformation into a new function
+phylink_interface_to_caps(), and export it, which will be useful when
+setting the maximum fixed link speed in DSA code.
 
-Most of the changes are to DSA and phylink code from the previous
-series. I've tested on my Clearfog (which has just one Marvell DSA
-switch) and it works there - also tested without the fixed-link
-specified in DT.
+Reviewed-by: Marek Behún <kabel@kernel.org>
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ drivers/net/phy/phylink.c | 30 ++++++++++++++++++++++--------
+ include/linux/phylink.h   |  1 +
+ 2 files changed, 23 insertions(+), 8 deletions(-)
 
- drivers/base/swnode.c                  |  14 ++-
- drivers/net/dsa/b53/b53_common.c       |   3 +-
- drivers/net/dsa/bcm_sf2.c              |   3 +-
- drivers/net/dsa/hirschmann/hellcreek.c |   3 +-
- drivers/net/dsa/lantiq_gswip.c         |   6 +-
- drivers/net/dsa/microchip/ksz_common.c |   3 +-
- drivers/net/dsa/mt7530.c               |   3 +-
- drivers/net/dsa/mv88e6xxx/chip.c       | 134 ++++++++++++-------------
- drivers/net/dsa/mv88e6xxx/chip.h       |   6 +-
- drivers/net/dsa/mv88e6xxx/port.c       |  32 ------
- drivers/net/dsa/mv88e6xxx/port.h       |   5 -
- drivers/net/dsa/ocelot/felix.c         |   3 +-
- drivers/net/dsa/qca/ar9331.c           |   3 +-
- drivers/net/dsa/qca8k.c                |   3 +-
- drivers/net/dsa/realtek/rtl8365mb.c    |   3 +-
- drivers/net/dsa/sja1105/sja1105_main.c |   3 +-
- drivers/net/dsa/xrs700x/xrs700x.c      |   3 +-
- drivers/net/phy/phylink.c              |  30 ++++--
- include/linux/phylink.h                |   1 +
- include/linux/property.h               |   4 +
- include/net/dsa.h                      |   3 +-
- net/dsa/port.c                         | 175 +++++++++++++++++++++++++++++----
- 22 files changed, 290 insertions(+), 153 deletions(-)
-
+diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+index 9bd69328dc4d..1d4a48d5a5ac 100644
+--- a/drivers/net/phy/phylink.c
++++ b/drivers/net/phy/phylink.c
+@@ -297,17 +297,12 @@ static void phylink_caps_to_linkmodes(unsigned long *linkmodes,
+ }
+ 
+ /**
+- * phylink_get_linkmodes() - get acceptable link modes
+- * @linkmodes: ethtool linkmode mask (must be already initialised)
++ * phylink_interface_to_caps() - translate an interface mode to phylink caps
+  * @interface: phy interface mode defined by &typedef phy_interface_t
+- * @mac_capabilities: bitmask of MAC capabilities
+  *
+- * Set all possible pause, speed and duplex linkmodes in @linkmodes that
+- * are supported by the @interface mode and @mac_capabilities. @linkmodes
+- * must have been initialised previously.
++ * Translate the @interface mode to a phylink MAC capabilities mask.
+  */
+-void phylink_get_linkmodes(unsigned long *linkmodes, phy_interface_t interface,
+-			   unsigned long mac_capabilities)
++unsigned long phylink_interface_to_caps(phy_interface_t interface)
+ {
+ 	unsigned long caps = MAC_SYM_PAUSE | MAC_ASYM_PAUSE;
+ 
+@@ -381,6 +376,25 @@ void phylink_get_linkmodes(unsigned long *linkmodes, phy_interface_t interface,
+ 		break;
+ 	}
+ 
++	return caps;
++}
++EXPORT_SYMBOL_GPL(phylink_interface_to_caps);
++
++/**
++ * phylink_get_linkmodes() - get acceptable link modes
++ * @linkmodes: ethtool linkmode mask (must be already initialised)
++ * @interface: phy interface mode defined by &typedef phy_interface_t
++ * @mac_capabilities: bitmask of MAC capabilities
++ *
++ * Set all possible pause, speed and duplex linkmodes in @linkmodes that
++ * are supported by the @interface mode and @mac_capabilities. @linkmodes
++ * must have been initialised previously.
++ */
++void phylink_get_linkmodes(unsigned long *linkmodes, phy_interface_t interface,
++			   unsigned long mac_capabilities)
++{
++	unsigned long caps = phylink_interface_to_caps(interface);
++
+ 	phylink_caps_to_linkmodes(linkmodes, caps & mac_capabilities);
+ }
+ EXPORT_SYMBOL_GPL(phylink_get_linkmodes);
+diff --git a/include/linux/phylink.h b/include/linux/phylink.h
+index 6d06896fc20d..692be109a9fa 100644
+--- a/include/linux/phylink.h
++++ b/include/linux/phylink.h
+@@ -518,6 +518,7 @@ void pcs_link_up(struct phylink_pcs *pcs, unsigned int mode,
+ 		 phy_interface_t interface, int speed, int duplex);
+ #endif
+ 
++unsigned long phylink_interface_to_caps(phy_interface_t interface);
+ void phylink_get_linkmodes(unsigned long *linkmodes, phy_interface_t interface,
+ 			   unsigned long mac_capabilities);
+ void phylink_generic_validate(struct phylink_config *config,
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+2.30.2
+
 
