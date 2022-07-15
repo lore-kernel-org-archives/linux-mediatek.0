@@ -4,96 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11883C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 14:14:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 509F7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 14:37:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xUs+Fa77krOyO5S4vACFreFi4W0sYUD0E2jG/FaLPJ0=; b=o57DZUJSSCZT/mBfBV9ODfP5se
-	mahyJ5wUZKtzVkz1gXMq3sWarOnVN0GZhH3J6UHHsVLc2g8V/JyEfbGdL1YFEfs59xB3NYkub7rEJ
-	ir4FG35P40KwNHUex/+mW+mWuvyNRd++O3VHfVFeaDJPSMiG2PhB3kxLpPgyeVWV2coq1AqJKJuL0
-	21EaFbBJeqRtfOKbp+7siS7cN1hQidBd7c2b/+u1tS39pF1s7jvf8Pmil9mqg/kYH+YvM3HisVWuJ
-	tFUX1WnJmGSFJpMiEi/jSvVJD5CHEORcVM5Dt14rcWPFuPUMFg7MwAyb11lRuDJd0d/unWoN4zCeA
-	fKHaa73Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XTn5wj8nMwJwbas90BAyA4NNBlY+0jSpOvxI+S9FzCI=; b=ztxfvOUUfKstVG971usDyo5LCV
+	efATw298dcQG6UPYDUTTdrI9LTgQTE9GI0J7IPtXYcJZZl5/OPI5l/mObzArmMHTkUj5Aa12sgIn6
+	jIj2m4I9O23KdlF5ul7D7TyUoMi20j4e/j+1I27m+RV6WRUNGBC0tt7QU04x2t3+DNm90Amu1mpKi
+	0Dw1wV9NaV/J5UlLBzZ1hYDcZiYF0qw4a1lGnEhjqPpVBIiT+ilLVYAR4xqtRmTBThB4mo3w3MZsL
+	mTImCeXZ/TN2L8jFJczAdGYE2Ko7qwBljknw4pMRhnqDIt0ld2BRQFdn+7O+l1cnLZqvIiUa4C/O/
+	ITJkyWMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCM5H-007Z7I-3d; Fri, 15 Jul 2022 14:14:23 +0000
-Received: from out5-smtp.messagingengine.com ([66.111.4.29])
+	id 1oCMR9-007hbY-QG; Fri, 15 Jul 2022 14:36:59 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCM55-007Z0s-Tu; Fri, 15 Jul 2022 14:14:13 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id EA2735C00ED;
-	Fri, 15 Jul 2022 10:14:07 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute4.internal (MEProxy); Fri, 15 Jul 2022 10:14:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=cc
-	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm3; t=1657894447; x=1657980847; bh=xUs+Fa77kr
-	OyO5S4vACFreFi4W0sYUD0E2jG/FaLPJ0=; b=uaewZsONjI/FGiYO1CmrPp94pQ
-	+EbTpYs0zltsiN2zMcbuHKqz+tMuJBG+Sfyoi+Aqaea1aUVFy353BG9zI0sp+lPQ
-	d4ikMUtESrDAACgDP8/Mwa0TB18rkhZyhHvR8tHBlnCeadx80VWnpbJ9ChQY4oZx
-	5IDXfBc9IufgaZsEr80vvyqBgtHfEuRuL87trpnzs/jzyZRdD0gpNll6V2t7XNac
-	0+ybP8HVbyc9Q/xc/9+WymO1XojBSD+/gziOUM/S1Vo3J7bLVaJRD8il3c3BLYPr
-	ui9ozAf8Bg8fSr/ZmSCltcx2Fy5vTF50KUYT/+Np7PzNSO1yxuJlBXKIZQXA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1657894447; x=1657980847; bh=xUs+Fa77krOyO5S4vACFreFi4W0s
-	YUD0E2jG/FaLPJ0=; b=SNTD2mKFMG7hVD/tArK44XjJLKLmu4pB0SPLWpq46sWe
-	xuTJBQp/aMsPpt/b+0ZAQEGh+1j/d+mGrvkNWDtJYlHim4UJSXAHP/wAhtFIfmiX
-	Fu8NoCYXo3mq/eywmwzNuNn44Q8c37zpLSxI7ktB2V0gz4819KN69EwQFuUNNNi+
-	3JDTxUeruv+F9+yU892LZslG2HkThCroJktB5kAmjKGtwq1NJYE9rAG1R9mXucU2
-	DMj/r+Q8p08ZWN/STNeSgyogRekKO1/LKNZQ5A4TbTLzU7arSL7HqXr+L3IMnw10
-	KpEjSsePRapzvA4eHB0QuiyG3tgGCzAsKvN21FH3qg==
-X-ME-Sender: <xms:LnbRYu6JK8A7QOtt4SbNnQ449ycSfQ-JE4mnwika5sFRRGpmZ3ndbA>
-    <xme:LnbRYn6q08OotmzFw85NojQZ2m5YZBrs6LSjBHegrMScM4FptF699GdBiQcCqE4xW
-    R873XoyMPHtng>
-X-ME-Received: <xmr:LnbRYtcj1fNhVrkPq-fKecq3nK8fQ7RAm0DWiSsTMrCjip7kqTqMCjBpLuSmWUljeQSpc3TWJt-OM_17kQJezGwSFcfy-lua>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudekuddgjeeiucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepifhrvghg
-    ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepgeehue
-    ehgfdtledutdelkeefgeejteegieekheefudeiffdvudeffeelvedttddvnecuffhomhgr
-    ihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmh
-    epmhgrihhlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomh
-X-ME-Proxy: <xmx:LnbRYrLYChHAFVJRn5QfggQl0gIp_TOWK68oBJDa1Y4UMJKfYfVELw>
-    <xmx:LnbRYiL0qVztBl62gRF6IhfIHg8tDmlBEc8UPnVlHzdLXyy5CVwEgg>
-    <xmx:LnbRYswa8jHVHu00hk_UZQ7a2SMFNuB-8zFP31uv4XaGkDwV1emNJA>
-    <xmx:L3bRYhUmyk13avp4LuEqBpwv2OrsMg-Hv7rezY9IfN7Ze7iviscOGw>
-Feedback-ID: i787e41f1:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 15 Jul 2022 10:14:05 -0400 (EDT)
-Date: Fri, 15 Jul 2022 16:14:01 +0200
-From: Greg KH <greg@kroah.com>
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
-	Juri Lelli <juri.lelli@redhat.com>,
-	Vincent Guittot <vincent.guittot@linaro.org>,
-	Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>, yj.chiang@mediatek.com,
-	Daniel Bristot de Oliveira <bristot@redhat.com>,
-	stable@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 5.4] sched/rt: Disable RT_RUNTIME_SHARE by default
-Message-ID: <YtF2KVJkAnUlx5li@kroah.com>
-References: <20220714073055.15049-1-mark-pk.tsai@mediatek.com>
+	id 1oCMQy-007hWD-TY; Fri, 15 Jul 2022 14:36:50 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6BFDB61DA7;
+	Fri, 15 Jul 2022 14:36:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3862C34115;
+	Fri, 15 Jul 2022 14:36:46 +0000 (UTC)
+Date: Fri, 15 Jul 2022 10:36:45 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: <linux-kernel@vger.kernel.org>, Ingo Molnar <mingo@kernel.org>, Andrew
+ Morton <akpm@linux-foundation.org>, <linux-usb@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>
+Subject: Re: [for-next][PATCH 13/23] USB: mtu3: tracing: Use the new
+ __vstring() helper
+Message-ID: <20220715103645.484f08e9@gandalf.local.home>
+In-Reply-To: <962e59c25e981676014157cd111db9e16e237339.camel@mediatek.com>
+References: <20220714164256.403842845@goodmis.org>
+	<20220714164330.311734558@goodmis.org>
+	<962e59c25e981676014157cd111db9e16e237339.camel@mediatek.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220714073055.15049-1-mark-pk.tsai@mediatek.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_071412_341078_0AC47EA5 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20220715_073649_019395_4C69B99F 
+X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,35 +68,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 14, 2022 at 03:30:52PM +0800, Mark-PK Tsai wrote:
-> From: Daniel Bristot de Oliveira <bristot@redhat.com>
-> 
-> commit 2586af1ac187f6b3a50930a4e33497074e81762d upstream.
-> 
-> The RT_RUNTIME_SHARE sched feature enables the sharing of rt_runtime
-> between CPUs, allowing a CPU to run a real-time task up to 100% of the
-> time while leaving more space for non-real-time tasks to run on the CPU
-> that lend rt_runtime.
-> 
-> The problem is that a CPU can easily borrow enough rt_runtime to allow
-> a spinning rt-task to run forever, starving per-cpu tasks like kworkers,
-> which are non-real-time by design.
-> 
-> This patch disables RT_RUNTIME_SHARE by default, avoiding this problem.
-> The feature will still be present for users that want to enable it,
-> though.
-> 
-> Signed-off-by: Daniel Bristot de Oliveira <bristot@redhat.com>
-> Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
-> Tested-by: Wei Wang <wvw@google.com>
-> Link: https://lkml.kernel.org/r/b776ab46817e3db5d8ef79175fa0d71073c051c7.1600697903.git.bristot@redhat.com
-> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-> Cc: stable@vger.kernel.org
-> ---
->  kernel/sched/features.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On Fri, 15 Jul 2022 18:01:44 +0800
+Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
 
-Now queued up, thanks.
+> the second and third lines with this patch:
+>  irq/254-1120100-137     [000] d..1.   266.629399: mtu3_log:
+> 11201000.usb: link speed super-speed
+> 
+>  irq/254-1120100-137     [000] d..1.   266.629662: mtu3_log:
+> 11201000.usb: ep0_state SETUPr-speed
+> 
+> "r-speed" seems the remain of last log;
 
-greg k-h
+Thanks for testing! I'll investigate. (Another reason I didn't push to
+linux-next yet).
+
+-- Steve
 
