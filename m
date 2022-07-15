@@ -4,74 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE276C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 10:31:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DAF0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 10:57:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r9zDlgpASyprd9q5gUvfyQ3eOqp+yzQcM8y94seFhZA=; b=OzRkoi5mRx7HDbuhHe3YkXYqxa
-	1MJ+aMiJLs+6qImScp1bULrQibGXLVGiaguzUhq+My9SGk2zyZe1kjjMbU1lU3izT1JiSFtzMZA7B
-	Sz3nEkldzB4oqg54DAacrrBDmPKzsPiCWFpC2FNyzrj0EcQQXoj2RhD1fKSecX8KfzLuQZ6BtZSkR
-	VH0B1fV2/B1lT78tADs4HcK0xcwgreuTgYuKPDHE6KbjU6PDusicWLBVPg3HfPFWSSrRMKRHCHT+4
-	no1kFAV3rDZwYHwQsYoIziHLxzqsuybFF6rcUvDigNTiz/DZTySclQsyfyD6+psS45yPqExAr0ZvE
-	U5Q3NFqw==;
+	bh=YLvHDPdKDF11BCWcQQQQUBxBS1LmtM19ULhdSXZYDuw=; b=2ZBnIlCOe478y/vVbBt1zgY7wG
+	tenIUb2hGuKZpTyLQUVbeduAw0MoY1At2eBxjng6EmrLABJaH7EAD/NMeRaDMBxVgPsjvuxVw/nu/
+	AnyGeZLqbbckByxMSXqtMdzfOSGM9uFNnJemjTC57ZrHK26mXBecWw0kJ9vYivsK3VHs9SE98Y/Mi
+	X2diQScg5PYA1T7QagDeX5bwWFJleh6i7XEAHqu0KK2QkYt+Bs11BwnyQY2va8OTuLFlpibul6cZ4
+	+0Vl1dheyIw+33E+SXctOYB43c5Xp/I1pErjaEQXVr43ovxIOc7cY7ArXEdmH7p+beU9+e3x82qqy
+	IVLEYQ6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCIbI-006MAK-VN; Fri, 15 Jul 2022 10:31:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oCJ0h-006RyT-13; Fri, 15 Jul 2022 10:57:27 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCIbF-006M8E-Kp; Fri, 15 Jul 2022 10:31:11 +0000
-X-UUID: 0bae5fdafc904c50b1e66d94510dcb5f-20220715
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:6dd32aa6-3b8f-4d86-8fc3-77345c28213c,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:c8f26564-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 0bae5fdafc904c50b1e66d94510dcb5f-20220715
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2009468603; Fri, 15 Jul 2022 03:28:17 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 15 Jul 2022 17:37:42 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Fri, 15 Jul 2022 17:37:42 +0800
-Message-ID: <f53b38e9a2cf36aee83aa5877134447e4613a7c2.camel@mediatek.com>
-Subject: Re: [PATCH v14 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
-	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-fbdev@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 15 Jul 2022 17:37:42 +0800
-In-Reply-To: <20220712111223.13080-6-rex-bc.chen@mediatek.com>
-References: <20220712111223.13080-1-rex-bc.chen@mediatek.com>
-	 <20220712111223.13080-6-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oCJ0W-006Rvs-8P; Fri, 15 Jul 2022 10:57:17 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7448B6601A59;
+	Fri, 15 Jul 2022 11:57:13 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657882634;
+	bh=Cm36lUlMtdM68Ok/fjKgE+JF5RB7+n5un2L24yN4VrY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=HkoOcJP8PaQorVWoQjSGsfd338Dn037tTgUCpgPzHMbhICd6o3MvSZsRtuJ/FOMHS
+	 /xf6DFBBKgacdeCFUiLYFi6UkQz3V8NC8ctB0Hp6rK5qd1F8EAKhBDgk8V3gmks0tU
+	 L5O4LLJ2Bl+n/biCY5dioE1/Lz0cumVNfRDw7CDH8anONVq7iiI6IYUL2cA+BHwjik
+	 ZeQKXfoW1Hfoz5J65iU0dhHnHKHVLcoSttnnmTacf0OWso0QoWRMqfFiskfbB6JjFz
+	 DT7GjBc2G8mv9Y2D3LiYaV0A1TG2He4sE3ko7G8Z24P0n9SwXyWh8NK6enMEg//Xxb
+	 g91VYSlxxKafw==
+Message-ID: <2f87c42a-d097-4acd-eed2-dc9f6aa564cc@collabora.com>
+Date: Fri, 15 Jul 2022 12:57:11 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v3 0/2] MediaTek Kompanio 1200 MT8195 - DisplayPort clocks
+ fixes
+Content-Language: en-US
+To: mturquette@baylibre.com
+Cc: sboyd@kernel.org, matthias.bgg@gmail.com, wenst@chromium.org,
+ miles.chen@mediatek.com, chun-jie.chen@mediatek.com,
+ rex-bc.chen@mediatek.com, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220617111248.90505-1-angelogioacchino.delregno@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220617111248.90505-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_033109_732958_FA4C92A8 
-X-CRM114-Status: GOOD (  19.97  )
+X-CRM114-CacheID: sfid-20220715_035716_535752_29A41DAC 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,68 +77,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Bo-Chen:
-
-On Tue, 2022-07-12 at 19:12 +0800, Bo-Chen Chen wrote:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+Il 17/06/22 13:12, AngeloGioacchino Del Regno ha scritto:
+> This series fixes the two DPINTF clocks to propagate rate change
+> requests to their own parent (and also fixes vdo1_dpintf's parent name).
 > 
-> This patch adds a embedded displayport driver for the MediaTek mt8195
-> SoC.
+> This is needed in order to stay clean in the DisplayPort driver and
+> avoid adding (now useless) custom handling of clocks reparenting based
+> on the wanted final clock rate.
 > 
-> It supports the MT8195, the embedded DisplayPort units. It offers
-> DisplayPort 1.4 with up to 4 lanes.
+> Changes in v3:
+>   - Fixed tags ordering.
 > 
-> The driver creates a child device for the phy. The child device will
-> never exist without the parent being active. As they are sharing a
-> register range, the parent passes a regmap pointer to the child so
-> that
-> both can work with the same register range. The phy driver sets
-> device
-> data that is read by the parent to get the phy device that can be
-> used
-> to control the phy properties.
+> AngeloGioacchino Del Regno (2):
+>    clk: mediatek: clk-mt8195-vdo0: Set rate on vdo0_dp_intf0_dp_intf's
+>      parent
+>    clk: mediatek: clk-mt8195-vdo1: Reparent and set rate on vdo1_dpintf's
+>      parent
 > 
-> This driver is based on an initial version by
-> Jitao shi <jitao.shi@mediatek.com>
+>   drivers/clk/mediatek/clk-mt8195-vdo0.c | 7 ++++++-
+>   drivers/clk/mediatek/clk-mt8195-vdo1.c | 6 +++++-
+>   2 files changed, 11 insertions(+), 2 deletions(-)
 > 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
 
-[snip]
+Gentle ping for this patch.
 
-> +
-> +static enum drm_mode_status
-> +mtk_dp_bridge_mode_valid(struct drm_bridge *bridge,
-> +			 const struct drm_display_info *info,
-> +			 const struct drm_display_mode *mode)
-> +{
-> +	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
-> +	u32 rx_linkrate = (u32)mtk_dp->train_info.link_rate * 27000;
-> +	u32 bpp = info->color_formats & DRM_COLOR_FORMAT_YCBCR422 ? 16
-> : 24;
-> +
-> +	if (rx_linkrate * mtk_dp->train_info.lane_count < mode->clock *
-> bpp / 8)
-> +		return MODE_CLOCK_HIGH;
-> +
-> +	if (mode->clock > 600000)
-> +		return MODE_CLOCK_HIGH;
-> +
-> +	if ((mode->clock * 1000) / (mode->htotal * mode->vtotal) >
-> +	    MTK_VDOSYS1_MAX_FRAMERATE)
+Without this one, DisplayPort (both DP and eDP) won't work on MT8195.
 
-Why limit frame rate to 60fps? If the resolution is small enough, why
-not support higher fps?
-
-Regards,
-CK
-
-> +		return MODE_CLOCK_HIGH;
-> +
-> +	return MODE_OK;
-> +}
-> +
-
+Thanks,
+Angelo
 
