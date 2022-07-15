@@ -4,70 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AC73C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 11:02:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25FCCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 11:21:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wLML3yUdu7WMZuVGtHO1Vj277dTcWps565dKcCfaBY8=; b=x+KngTd1bSq5rxttPXxVY6n0xu
-	4ouwtbgmAHbzOh5r6VfIP/uc7BIWbaSzpB7myIk5CooApl23ggyA/owK7XLjeu9ADeWd2joRfB0nC
-	xuYvnluMfc/8nPNgudm8Ys48XctwZytHoAHWOvxBhW9axP8sfsj1gwHJEylNpGoBLuey7WOpf2OiY
-	fZd2lSGFNotcY+NvUh2j/Qu692Ti185qNVrr9QACe+io0E+GclP/GM9cwAczNdxGXUB1mI4QXAGVa
-	FeNJRb7Z6nutMOlE0mlue/F9pTR8/EZ71hEu7iSsLhXgOe0Zi0vFkbR5Vfrx1TGSKSiOOgRFJgJeQ
-	OOgHM5Ww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7aAwPpbyNhMgBtXYplVX7e+e1ZXjzCZEFZQ0/Qp+rZs=; b=uIPlsXqUyhyoyNNTUpr6HA09dP
+	aibNaDJ9DX+yRISrrVyHlz6QvGr9o9jOz1CVdF2AvJRKLzwgmjjKmpThgMgHYHOrLr9T3Wh5DqyQT
+	KyTZEiIOBEbl7rP/xtoNcBRKK468oc1TOHVt0Fsiyq6CZmSsuIfEf0FhxBYn6S5/qPH8yQuB3Bbys
+	2B9Mx6dquCG0dyDdiSHRhFV7HvCQOifYXtp+PaKVJi19jBy5F90bNpfiW0hnC8GUfuq9sYn40TMvG
+	mX4XyHMLo15ikYLrvJDoBMbTlck301iH6Yk5faxWzclDyssus9QkRfMXNw9eTceDXLlhu7BohsBhQ
+	h7KTytjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCJ59-006Tm0-F4; Fri, 15 Jul 2022 11:02:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oCJNx-006Xuf-9S; Fri, 15 Jul 2022 11:21:29 +0000
+Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCJ55-006Tjx-VI; Fri, 15 Jul 2022 11:02:01 +0000
-X-UUID: fae1eebebb2f47d1878afd711cb5ab6f-20220715
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=wLML3yUdu7WMZuVGtHO1Vj277dTcWps565dKcCfaBY8=;
-	b=dHSHpnu3pO/Xu4lolZZYtVbKYFCw1lW8UBKUpeUOcpzcthrf2RIPiPXZ319fJJK47XpLn1OYdu/+340gMRtmOcP6LmkTHjA6aE891spEcPqMJuLu+PfW0ZnQnS9yBWKHmr5TqSQHPsr8hidTi2sjp0Y6R1rib5jFRixig0OQ9+4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:882a39a1-595d-4414-a708-931b854b9ffb,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:d0b86664-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: fae1eebebb2f47d1878afd711cb5ab6f-20220715
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 704011714; Fri, 15 Jul 2022 04:01:49 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 15 Jul 2022 18:01:44 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Fri, 15 Jul 2022 18:01:44 +0800
-Message-ID: <962e59c25e981676014157cd111db9e16e237339.camel@mediatek.com>
-Subject: Re: [for-next][PATCH 13/23] USB: mtu3: tracing: Use the new
- __vstring() helper
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Steven Rostedt <rostedt@goodmis.org>, <linux-kernel@vger.kernel.org>
-CC: Ingo Molnar <mingo@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
-	<linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Greg Kroah-Hartman
-	<gregkh@linuxfoundation.org>
-Date: Fri, 15 Jul 2022 18:01:44 +0800
-In-Reply-To: <20220714164330.311734558@goodmis.org>
-References: <20220714164256.403842845@goodmis.org>
-	 <20220714164330.311734558@goodmis.org>
+	id 1oCJNu-006Xt6-Cq; Fri, 15 Jul 2022 11:21:28 +0000
+Received: by mail-qt1-x834.google.com with SMTP id w29so2774331qtv.9;
+        Fri, 15 Jul 2022 04:21:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :content-transfer-encoding:user-agent:mime-version;
+        bh=7aAwPpbyNhMgBtXYplVX7e+e1ZXjzCZEFZQ0/Qp+rZs=;
+        b=XdinAxILUx5V4/TMUwVnHjrF2YH64IZZFeCyINRd3Uc2T7zK5jdlBkPARxgAUQPknQ
+         jCfx0227x6mZ/nJvyEdEOP0X2HcETQpjzcvpoVctcPe8hpu24084l6+Zfq6C9Yp+Pe19
+         LGKjBB+xZcEbyihQC5Jva22iuE9RvoR1T1A0aT5gZbbl2uX8Yfn+4VkAcRNJ2oRqIyBp
+         hvqhsHzhzq2ZXGWh4u48/NdYzataIRkzPk7S3WkMEcPz42YtmZsCcrQ4fU8zYMkCmEb3
+         CBLLe2wOl7idYi+SWFz4xCdXZ1vxsiFpcZo/yuvmbHWMT7smdxKunQKgJNVUdlfCfqdO
+         L3zw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:content-transfer-encoding:user-agent:mime-version;
+        bh=7aAwPpbyNhMgBtXYplVX7e+e1ZXjzCZEFZQ0/Qp+rZs=;
+        b=zmql3YEAB3WV1KPm85/ca92FN/uR6F154Phtabat8I81YWYX65cZ6GG3bk1eevqOgq
+         NbgeN619zkrDn8dacQtwJXf3v10WJLKvnyhjCeIqQEI2tSQ9Xk5V/ebtnHs39r+Hm4+i
+         S2vo8nzeCcK57CsX+om2Yrz2YY6h7MHyZiAjGQN+7Pa9banAbf4fbG/NUjOQnLoxbbUI
+         kbxijJBXZ4M4JUQYGihfXa4WJJ4/9ulCWF2Z9hkODsitonCn6A3WZMM/Bo7sqg9fuaFK
+         /G0c9ztA1YHULxOYUm8P5C/a1fYceYknOwwGKgE166r+qgY6YzjKE66A4IX38qbiZA3y
+         YDdQ==
+X-Gm-Message-State: AJIora+WpStwnzKx0UKryeqDrQoVxTZINR6yqhkmM36klBitzF0w8eRO
+	PspNtofjj8Z0TBTdeleibz8=
+X-Google-Smtp-Source: AGRyM1uAV6CcmfwBUiFodYja+YAI93swdvRkjmOrj/G87DJHG1tvUago8AS2lP01zuUI+2pKWO0gZQ==
+X-Received: by 2002:a05:622a:20f:b0:31e:de95:3cd3 with SMTP id b15-20020a05622a020f00b0031ede953cd3mr944896qtx.458.1657884082996;
+        Fri, 15 Jul 2022 04:21:22 -0700 (PDT)
+Received: from p200300f6ef036f005de6a4d0d791ed01.dip0.t-ipconnect.de (p200300f6ef036f005de6a4d0d791ed01.dip0.t-ipconnect.de. [2003:f6:ef03:6f00:5de6:a4d0:d791:ed01])
+        by smtp.gmail.com with ESMTPSA id ay7-20020a05620a178700b006b578ff5dfasm3767112qkb.41.2022.07.15.04.21.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Jul 2022 04:21:22 -0700 (PDT)
+Message-ID: <83d816f52b3d4194b51b20f31b875055f63cd718.camel@gmail.com>
+Subject: Re: [PATCH v2 13/15] iio: adc: stm32-adc: convert to device
+ properties
+From: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
+To: Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Nuno
+ =?ISO-8859-1?Q?S=E1?= <nuno.sa@analog.com>, linux-arm-msm@vger.kernel.org,
+ openbmc@lists.ozlabs.org,  linux-renesas-soc@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,  linux-imx@nxp.com,
+ linux-mips@vger.kernel.org, Lad Prabhakar
+ <prabhakar.mahadev-lad.rj@bp.renesas.com>, linux-iio@vger.kernel.org, 
+ chrome-platform@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com
+Cc: Andy Gross <agross@kernel.org>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>,  Benson Leung <bleung@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Tomer Maimon
+ <tmaimon77@gmail.com>, Zhang Rui <rui.zhang@intel.com>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, Eugen Hristev <eugen.hristev@microchip.com>, Sascha
+ Hauer <s.hauer@pengutronix.de>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>,  Benjamin Fair <benjaminfair@google.com>,
+ Nancy Yuen <yuenn@google.com>, Jishnu Prakash <quic_jprakash@quicinc.com>,
+ Christophe Branchereau <cbranchereau@gmail.com>,  Avi Fishman
+ <avifishman70@gmail.com>, Tali Perry <tali.perry1@gmail.com>, Michael
+ Hennerich <Michael.Hennerich@analog.com>, Miquel Raynal
+ <miquel.raynal@bootlin.com>,  Claudiu Beznea
+ <claudiu.beznea@microchip.com>, Lars-Peter Clausen <lars@metafoo.de>, Thara
+ Gopinath <thara.gopinath@linaro.org>, Cai Huoqing <cai.huoqing@linux.dev>,
+ Fabio Estevam <festevam@gmail.com>, Olivier Moysan
+ <olivier.moysan@foss.st.com>, Shawn Guo <shawnguo@kernel.org>, Haibo Chen
+ <haibo.chen@nxp.com>, Arnd Bergmann <arnd@arndb.de>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>, Patrick Venture <venture@google.com>, Amit
+ Kucheria <amitk@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Paul Cercueil
+ <paul@crapouillou.net>, Andy Shevchenko <andy.shevchenko@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Gwendal Grignou
+ <gwendal@chromium.org>,  Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Saravanan Sekar <sravanhome@gmail.com>, Guenter Roeck
+ <groeck@chromium.org>, Jonathan Cameron <jic23@kernel.org>, Pengutronix
+ Kernel Team <kernel@pengutronix.de>, Linus Walleij
+ <linus.walleij@linaro.org>
+Date: Fri, 15 Jul 2022 13:22:18 +0200
+In-Reply-To: <c4385216-1d9e-34b3-58ea-edf8d9ed4cd8@foss.st.com>
+References: <20220711123835.811358-1-nuno.sa@analog.com>
+	 <20220711123835.811358-14-nuno.sa@analog.com>
+	 <f0f150cf-586f-9f13-81b0-cb95bd0d8f23@foss.st.com>
+	 <ca7dc3801e29ddaa59f868c20d491d15541522d8.camel@gmail.com>
+	 <c4385216-1d9e-34b3-58ea-edf8d9ed4cd8@foss.st.com>
 Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.3 
 MIME-Version: 1.0
-X-MTK: N
-Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_040200_037392_E16C5D3B 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20220715_042126_463901_F9BB2014 
+X-CRM114-Status: GOOD (  31.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,60 +124,207 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIyLTA3LTE0IGF0IDEyOjQzIC0wNDAwLCBTdGV2ZW4gUm9zdGVkdCB3cm90ZToN
-Cj4gRnJvbTogIlN0ZXZlbiBSb3N0ZWR0IChHb29nbGUpIiA8cm9zdGVkdEBnb29kbWlzLm9yZz4N
-Cj4gDQo+IEluc3RlYWQgb2Ygb3BlbiBjb2RpbmcgYSBfX2R5bmFtaWNfYXJyYXkoKSB3aXRoIGEg
-Zml4ZWQgbGVuZ3RoICh3aGljaA0KPiBkZWZlYXRzIHRoZSBwdXJwb3NlIG9mIHRoZSBkeW5hbWlj
-IGFycmF5IGluIHRoZSBmaXJzdCBwbGFjZSkuIFVzZSB0aGUNCj4gbmV3DQo+IF9fdnN0cmluZygp
-IGhlbHBlciB0aGF0IHdpbGwgdXNlIGEgdmFfbGlzdCBhbmQgb25seSB3cml0ZSBlbm91Z2ggb2YN
-Cj4gdGhlDQo+IHN0cmluZyBpbnRvIHRoZSByaW5nIGJ1ZmZlciB0aGF0IGlzIG5lZWRlZC4NCj4g
-DQo+IExpbms6IA0KPiBodHRwczovL3VybGRlZmVuc2UuY29tL3YzL19faHR0cHM6Ly9sa21sLmtl
-cm5lbC5vcmcvci8yMDIyMDcwNTIyNDc1MC4zNTQ5MjY1MzVAZ29vZG1pcy5vcmdfXzshIUNUUk5L
-QTl3TWcwQVJidyF3OG54NjZCS0RUdHl1c3A1aTJweXpPR05iLVF5eElBV2pvWndtU1FZMHp6b3Jf
-cnF2QmdVbTVfX3ZLSzk4QXBLY0RpYyQNCj4gIA0KPiANCj4gQ2M6IENodW5mZW5nIFl1biA8Y2h1
-bmZlbmcueXVuQG1lZGlhdGVrLmNvbT4NCj4gQ2M6IEluZ28gTW9sbmFyIDxtaW5nb0BrZXJuZWwu
-b3JnPg0KPiBDYzogQW5kcmV3IE1vcnRvbiA8YWtwbUBsaW51eC1mb3VuZGF0aW9uLm9yZz4NCj4g
-Q2M6IGxpbnV4LXVzYkB2Z2VyLmtlcm5lbC5vcmcNCj4gQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlz
-dHMuaW5mcmFkZWFkLm9yZw0KPiBDYzogbGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9y
-Zw0KPiBBY2tlZC1ieTogR3JlZyBLcm9haC1IYXJ0bWFuIDxncmVna2hAbGludXhmb3VuZGF0aW9u
-Lm9yZz4NCj4gU2lnbmVkLW9mZi1ieTogU3RldmVuIFJvc3RlZHQgKEdvb2dsZSkgPHJvc3RlZHRA
-Z29vZG1pcy5vcmc+DQo+IC0tLQ0KPiAgZHJpdmVycy91c2IvbXR1My9tdHUzX3RyYWNlLmggfCA0
-ICsrLS0NCj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0p
-DQo+IA0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy91c2IvbXR1My9tdHUzX3RyYWNlLmgNCj4gYi9k
-cml2ZXJzL3VzYi9tdHUzL210dTNfdHJhY2UuaA0KPiBpbmRleCAxYjg5NzYzNmRhZjIuLmVmM2Mx
-N2UyZjhhNiAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy91c2IvbXR1My9tdHUzX3RyYWNlLmgNCj4g
-KysrIGIvZHJpdmVycy91c2IvbXR1My9tdHUzX3RyYWNlLmgNCj4gQEAgLTI1LDExICsyNSwxMSBA
-QCBUUkFDRV9FVkVOVChtdHUzX2xvZywNCj4gIAlUUF9BUkdTKGRldiwgdmFmKSwNCj4gIAlUUF9T
-VFJVQ1RfX2VudHJ5KA0KPiAgCQlfX3N0cmluZyhuYW1lLCBkZXZfbmFtZShkZXYpKQ0KPiAtCQlf
-X2R5bmFtaWNfYXJyYXkoY2hhciwgbXNnLCBNVFUzX01TR19NQVgpDQo+ICsJCV9fdnN0cmluZyht
-c2csIHZhZi0+Zm10LCB2YWYtPnZhKQ0KPiAgCSksDQo+ICAJVFBfZmFzdF9hc3NpZ24oDQo+ICAJ
-CV9fYXNzaWduX3N0cihuYW1lLCBkZXZfbmFtZShkZXYpKTsNCj4gLQkJdnNucHJpbnRmKF9fZ2V0
-X3N0cihtc2cpLCBNVFUzX01TR19NQVgsIHZhZi0+Zm10LCAqdmFmLQ0KPiA+dmEpOw0KPiArCQlf
-X2Fzc2lnbl92c3RyKG1zZywgdmFmLT5mbXQsIHZhZi0+dmEpOw0KPiAgCSksDQo+ICAJVFBfcHJp
-bnRrKCIlczogJXMiLCBfX2dldF9zdHIobmFtZSksIF9fZ2V0X3N0cihtc2cpKQ0KPiAgKTsNCg0K
-QWZ0ZXIgYXBwbHkgdGhpcyBwYXRjaCwgZW5jb3VudGVyIGFuIGlzc3VlLCBwbGVhc2UgY2hlY2sg
-aXQNCg0KIGlycS8yNTQtMTEyMDEwMC0xMzcgICAgIFswMDBdIGQuLjEuICAgMjY2LjU0OTQ3Mzog
-bXR1M191Ml9jb21tb25faXNyOg0KKDAwMDAwMDA0KSAgIFJFU0VUDQogaXJxLzI1NC0xMTIwMTAw
-LTEzNyAgICAgWzAwMF0gZC4uMS4gICAyNjYuNjI5Mzk5OiBtdHUzX2xvZzoNCjExMjAxMDAwLnVz
-YjogbGluayBzcGVlZCBzdXBlci1zcGVlZA0KIGlycS8yNTQtMTEyMDEwMC0xMzcgICAgIFswMDBd
-IGQuLjEuICAgMjY2LjYyOTY2MjogbXR1M19sb2c6DQoxMTIwMTAwMC51c2I6IGVwMF9zdGF0ZSBT
-RVRVUHItc3BlZWQNCiBpcnEvMjU0LTExMjAxMDAtMTM3ICAgICBbMDAwXSBkLi4xLiAgIDI2Ni42
-Mjk2Njg6IG10dTNfaGFuZGxlX3NldHVwOg0Kc2V0dXAgLSAwMCAwNSAwMDFjIDAwMDAgMDAwMA0K
-IGlycS8yNTQtMTEyMDEwMC0xMzcgICAgIFswMDBdIGQuLjEuICAgMjY2LjYyOTcyMjogbXR1M19s
-b2c6DQoxMTIwMTAwMC51c2I6IGVwMF9zdGF0ZSBTRVRVUHItc3BlZWQNCg0Kd2l0aG91dCB0aGlz
-IHBhdGNoOg0KIGlycS8yNTQtMTEyMDEwMC0xMzUgICAgIFswMDBdIGQuLjEuICAxNDA3LjQyNTU1
-MDogbXR1M191Ml9jb21tb25faXNyOg0KKDAwMDAwMDA0KSAgIFJFU0VUDQogaXJxLzI1NC0xMTIw
-MTAwLTEzNSAgICAgWzAwMF0gZC4uMS4gIDE0MDcuNDc1Mjk1OiBtdHUzX2xvZzoNCjExMjAxMDAw
-LnVzYjogbGluayBzcGVlZCBzdXBlci1zcGVlZA0KIGlycS8yNTQtMTEyMDEwMC0xMzUgICAgIFsw
-MDBdIGQuLjEuICAxNDA3LjQ3NzQ2OTogbXR1M19sb2c6DQoxMTIwMTAwMC51c2I6IGVwMF9zdGF0
-ZSBTRVRVUA0KIGlycS8yNTQtMTEyMDEwMC0xMzUgICAgIFswMDBdIGQuLjEuICAxNDA3LjQ3NzQ3
-NjogbXR1M19oYW5kbGVfc2V0dXA6DQpzZXR1cCAtIDAwIDA1IDAwMWYgMDAwMCAwMDAwDQogaXJx
-LzI1NC0xMTIwMTAwLTEzNSAgICAgWzAwMF0gZC4uMS4gIDE0MDcuNDc3NTE4OiBtdHUzX2xvZzoN
-CjExMjAxMDAwLnVzYjogZXAwX3N0YXRlIFNFVFVQDQoNCnRoZSBzZWNvbmQgYW5kIHRoaXJkIGxp
-bmVzIHdpdGggdGhpcyBwYXRjaDoNCiBpcnEvMjU0LTExMjAxMDAtMTM3ICAgICBbMDAwXSBkLi4x
-LiAgIDI2Ni42MjkzOTk6IG10dTNfbG9nOg0KMTEyMDEwMDAudXNiOiBsaW5rIHNwZWVkIHN1cGVy
-LXNwZWVkDQoNCiBpcnEvMjU0LTExMjAxMDAtMTM3ICAgICBbMDAwXSBkLi4xLiAgIDI2Ni42Mjk2
-NjI6IG10dTNfbG9nOg0KMTEyMDEwMDAudXNiOiBlcDBfc3RhdGUgU0VUVVByLXNwZWVkDQoNCiJy
-LXNwZWVkIiBzZWVtcyB0aGUgcmVtYWluIG9mIGxhc3QgbG9nOw0KDQoNCg0KDQo=
+On Wed, 2022-07-13 at 17:48 +0200, Fabrice Gasnier wrote:
+> On 7/12/22 12:33, Nuno S=C3=A1 wrote:
+> > Hi Fabrice,
+> >=20
+> > Nice that someone in ST is looking at this one :)
+>=20
+> Hi Nuno,
+>=20
+> Thank you for taking care of converting all these drivers to device
+> properties, including this one :-).
+>=20
+> >=20
+> > On Mon, 2022-07-11 at 16:04 +0200, Fabrice Gasnier wrote:
+> > > On 7/11/22 14:38, Nuno S=C3=A1 wrote:
+> > > > Make the conversion to firmware agnostic device properties. As
+> > > > part
+> > > > of
+> > > > the conversion the IIO inkern interface 'of_xlate()' is also
+> > > > converted to
+> > > > 'fwnode_xlate()'. The goal is to completely drop 'of_xlate' and
+> > > > hence OF
+> > > > dependencies from IIO.
+> > > >=20
+> > > > Signed-off-by: Nuno S=C3=A1 <nuno.sa@analog.com>
+> > > > ---
+> > > > =C2=A0drivers/iio/adc/stm32-adc.c | 121 ++++++++++++++++++++-------=
+-
+> > > > ----
+> > > > ----
+> > > > =C2=A01 file changed, 67 insertions(+), 54 deletions(-)
+> > > >=20
+> > > > diff --git a/drivers/iio/adc/stm32-adc.c
+> > > > b/drivers/iio/adc/stm32-
+> > > > adc.c
+> > > > index 3985fe972892..e55859113df8 100644
+> > > > --- a/drivers/iio/adc/stm32-adc.c
+> > > > +++ b/drivers/iio/adc/stm32-adc.c
+> > > > @@ -21,11 +21,11 @@
+> > > > =C2=A0#include <linux/io.h>
+> > > > =C2=A0#include <linux/iopoll.h>
+> > > > =C2=A0#include <linux/module.h>
+> > > > +#include <linux/mod_devicetable.h>
+> > > > =C2=A0#include <linux/nvmem-consumer.h>
+> > > > =C2=A0#include <linux/platform_device.h>
+> > > > =C2=A0#include <linux/pm_runtime.h>
+> > > > -#include <linux/of.h>
+> > > > -#include <linux/of_device.h>
+> > > > +#include <linux/property.h>
+> > > > =C2=A0
+> > > > =C2=A0#include "stm32-adc-core.h"
+> > > > =C2=A0
+> > > > @@ -1530,8 +1530,8 @@ static int
+> > > > stm32_adc_update_scan_mode(struct
+> > > > iio_dev *indio_dev,
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return ret;
+> > > > =C2=A0}
+> > > > =C2=A0
+> > > > -static int stm32_adc_of_xlate(struct iio_dev *indio_dev,
+> > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 const struct of_phandle_args
+> > > > *iiospec)
+> > > > +static int stm32_adc_fwnode_xlate(struct iio_dev *indio_dev,
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const struct
+> > > > fwnode_reference_args *iiospec)
+> > > > =C2=A0{
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0int i;
+> > > > =C2=A0
+> > > > @@ -1585,7 +1585,7 @@ static const struct iio_info
+> > > > stm32_adc_iio_info =3D {
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.hwfifo_set_waterma=
+rk =3D stm32_adc_set_watermark,
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.update_scan_mode =
+=3D stm32_adc_update_scan_mode,
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.debugfs_reg_access=
+ =3D stm32_adc_debugfs_reg_access,
+> > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.of_xlate =3D stm32_adc_=
+of_xlate,
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0.fwnode_xlate =3D stm32_=
+adc_fwnode_xlate,
+> > > > =C2=A0};
+> > > > =C2=A0
+> > > > =C2=A0static unsigned int stm32_adc_dma_residue(struct stm32_adc
+> > > > *adc)
+> > > > @@ -1782,14 +1782,14 @@ static const struct
+> > > > iio_chan_spec_ext_info
+> > > > stm32_adc_ext_info[] =3D {
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0{},
+> > > > =C2=A0};
+> > > > =C2=A0
+> > > > -static int stm32_adc_of_get_resolution(struct iio_dev
+> > > > *indio_dev)
+> > > > +static int stm32_adc_fw_get_resolution(struct iio_dev
+> > > > *indio_dev)
+> > > > =C2=A0{
+> > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct device_node *node=
+ =3D indio_dev->dev.of_node;
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct device *dev =3D &=
+indio_dev->dev;
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct stm32_adc *a=
+dc =3D iio_priv(indio_dev);
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0unsigned int i;
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0u32 res;
+> > > > =C2=A0
+> > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (of_property_read_u32=
+(node, "assigned-resolution-
+> > > > bits",
+> > > > &res))
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (device_property_read=
+_u32(dev, "assigned-resolution-
+> > > > bits", &res))
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0res =3D adc->cfg->adc_info->resolutions[0];
+> > > > =C2=A0
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0for (i =3D 0; i < a=
+dc->cfg->adc_info->num_res; i++)
+> > > > @@ -1873,11 +1873,11 @@ static void
+> > > > stm32_adc_chan_init_one(struct
+> > > > iio_dev *indio_dev,
+> > > > =C2=A0
+> > > > =C2=A0static int stm32_adc_get_legacy_chan_count(struct iio_dev
+> > > > *indio_dev, struct stm32_adc *adc)
+> > > > =C2=A0{
+> > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct device_node *node=
+ =3D indio_dev->dev.of_node;
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct device *dev =3D &=
+indio_dev->dev;
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0const struct stm32_=
+adc_info *adc_info =3D adc->cfg-
+> > > > >adc_info;
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0int num_channels =
+=3D 0, ret;
+> > > > =C2=A0
+> > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D of_property_coun=
+t_u32_elems(node, "st,adc-
+> > > > channels");
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D device_property_=
+count_u32(dev, "st,adc-
+> > > > channels");
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (ret > adc_info-=
+>max_channels) {
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0dev_err(&indio_dev->dev, "Bad st,adc-
+> > > > channels?\n");
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return -EINVAL;
+> > > > @@ -1885,8 +1885,8 @@ static int
+> > > > stm32_adc_get_legacy_chan_count(struct iio_dev *indio_dev,
+> > > > struct
+> > > > stm
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0num_channels +=3D ret;
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+> > > > =C2=A0
+> > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D of_property_coun=
+t_elems_of_size(node, "st,adc-
+> > > > diff-
+> > > > channels",
+> > > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sizeof(struct
+> > > > stm32_adc_diff_channel));
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0/* each st,adc-diff-chan=
+nels is a group of 2 u32 */
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ret =3D device_property_=
+count_u64(dev, "st,adc-diff-
+> > > > channels");
+> >=20
+> > Are you fine with this change (still does not have any reference to
+> > the
+> > target struct but the comment might be helpful and there's no magic
+> > 2)?
+>=20
+>=20
+> Since you added that comment, this sounds better. IMHO, This still
+> looks
+> a bit weird. I'd feel more comfortable by using u32 API for a
+> 'uint32-matrix' as defined in dt-bindings.
+> Strictly speaking, something like
+> sizeof(struct stm32_adc_diff_channel) / sizeof(u32) could be used,
+> along
+> with this comment and device_property_count_u32() to make it clear ?
+>=20
 
+No strong option so I can do as you prefer:
+
+	ret =3D device_property_count_u32();
+	if (ret /=C2=A0
+(sizeof(struct stm32_adc_diff_channel) / sizeof(u32)) > max_chan) {
+		...
+	}
+	...
+
+Probably it's a good idea to store that sizeof() division in a local
+variable :)
+
+- Nuno S=C3=A1
+
+> > >=20
+>=20
 
