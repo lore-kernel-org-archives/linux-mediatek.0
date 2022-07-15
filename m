@@ -4,87 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EA7FC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 08:31:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82FFBC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 08:34:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BdfeAVJL1SU2mFuVJ1kQVRCy8ah9BFcYe/si9tBZYrM=; b=JYa9TgxA3mBU6LuJ3edAaen1G4
-	ua6uc1nR6bKDwYwEBA/usnf+NOl6lzbrYq+2iZGEV49j+UR4bzJlvwzu8EY7kGLwsda92/HdgGbDB
-	3nZSV7WVosHlJFcfUH1lWERZIFYZx9HUrfeCwBovUjSkQTSx7n9qwMToSueh8GAjrm68EO53KI2cI
-	s5UsIXc6gMHk6DCiXcK0LAlq4mwVmOaSrAVF7tUId6x8hIXZ+JyBwttacTA/RbLzgMpjnzfVQ4YmH
-	mMWQvPb+ciQ3yVO38pLkVAMu+8+qAi+K1dk6NtDt6IzI/dlkCIfvHEQhSuT/xVIVWVKb0QrPTHyFk
-	oecQomIA==;
+	bh=EEnQAhpRm9wgv8Kg1ijs0suj/X9trB5tl4y5yogj8BE=; b=ieCkuGLj+1TfFwYzVf97HVFSKI
+	TkNu2yT+qz4e8d5XWvq2/esggleX9746XFTRiPv5mU5TLsuO75w0wqZ8hRnpaaITeDGB52XMf2LPE
+	EpELpvUiu7KuGtdx04A9JLpCs3CB6cj1qIStIv6ftiCBigFzqhoU9fSkbIFgiDcq+PNrv5sbbPAOd
+	9WUYkxed+G+Z3saVS1KVrf92lKZYKQMWyIltk43hqwlcSEryPAtdKonpLOi9v+xVAnFrC8iuAjaJW
+	yZ1saXd+lu78E7VLsVGuou6Irr8Ppzw45QWkabu+FjSzVa5o8Vo4Ct6+6w3xzVZxggZLQcPdTbZn2
+	NvxE/QFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCGj0-005mfL-SV; Fri, 15 Jul 2022 08:31:02 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1oCGmH-005nln-QP; Fri, 15 Jul 2022 08:34:25 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCGiq-005mbJ-2a
-	for linux-mediatek@lists.infradead.org; Fri, 15 Jul 2022 08:30:53 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id a9so6679937lfk.11
-        for <linux-mediatek@lists.infradead.org>; Fri, 15 Jul 2022 01:30:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=semihalf.com; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=BdfeAVJL1SU2mFuVJ1kQVRCy8ah9BFcYe/si9tBZYrM=;
-        b=GLARdVNDa+EOTo/liODtN4RtO7gdJGoxxMiIojNRienYvOHet52dUwDhdzs3SWPu0v
-         /VICwkJMevBOcqioe1dIWqIyBxnLId0yHoAeku6sUjnf33FNeq5oHvyuf/Q5YjXcKIPu
-         EFmw865o5XztvO0/2QbrIo8oD/KJnxvZJJ66H9QIbT7Nv6DRNqPg8X4CsEO6W4AVjeuW
-         5d/7bhWvniaPPPPyGQJQRcR7Obt/jCiKnnUEHiYC2KPMhSMz9PEDnYQJdE83YKdEh8kD
-         BhFIO/9XQ3cGoHTg91Lw77vF/TcmAbKhLHAm0yECPwdN2rtKMjen3zEog0N2EVCCMshn
-         i4iw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=BdfeAVJL1SU2mFuVJ1kQVRCy8ah9BFcYe/si9tBZYrM=;
-        b=ceSQmG1/skTs3k45MgIOv/SowKosZy8kEr+FnEPA0d0fHGp5E48SXTpYAV00dyu4D2
-         Nc5MFavhubYRviPOaYv/daPwD0RwgNZw/pEbRUsC1EaKfpx7P+TEb1kD6fs0FU7yPn32
-         Y6OhI0pIdUNSUXOJvGsov8ziHVxdsPga7zR+t8BsaPr5L+3f+HFWEezmXZ1OeFGQFISs
-         Ncz6kP8SMSOqJTlWckZcs50d4jBf4soCnlFKkiq8A9eOEVSzhK8owIxAzt5phkKSzQzV
-         pYP0gM8uRnhKnCVDacn6AYOIn7O0QkVuAUUuDS3kJ+IGcM9EJctNjfflNLO0LcoR55HO
-         xDHA==
-X-Gm-Message-State: AJIora88PAHTbnRyFaKWZ6ZWU0Aqm10mRwJUkVvdswjEjs1ZciQLiUJz
-	LW3bk1jNWWGlUbpEYJx9jIayZupF2FxS9Jj6MEh5jw==
-X-Google-Smtp-Source: AGRyM1vmEiGNxsGwfaphjeldpisE1hbkgmPH1zGFyJKH3Y3sHn8434T6rxRbnWsNte9tdSs0qEZP170/McAyw0pTMMo=
-X-Received: by 2002:a05:6512:2315:b0:489:cbc1:886a with SMTP id
- o21-20020a056512231500b00489cbc1886amr6852844lfu.428.1657873847553; Fri, 15
- Jul 2022 01:30:47 -0700 (PDT)
+	id 1oCGm6-005nhG-B7; Fri, 15 Jul 2022 08:34:15 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6D8E96601A3F;
+	Fri, 15 Jul 2022 09:34:11 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657874052;
+	bh=GqdfRsVfLCo2VWTEZGi7k9cm/HFoOJvuQH77gu2Dunk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KDykdN7WZCR7CkUpY6NB2K+XHNXANiCEgbnbDDyNtLQO+Qv9R7uewhqvy+GEBUG+m
+	 zF0dpvL03LKbH0xuWIZTe0YM9siRdZPpvMPwmXml/sWj7pZgzyVIuQ7LMKvzr4B1Gy
+	 +o2wih/tmqc/VMear4eT7zwT5JJsM+/JmLQ9l2wbJ2C6JaK46t85ICGq3y+thP4oij
+	 SdAhjQoblPVlXJr9gi1X5H2A5EVGDu54+XGwNL40UItP0cinnqzLoW3mY2pFCIT2WY
+	 KZ8u9J1TpPTDdnJrIliFzslcKliKjGlIerzie0waovd8PpYSPUVI+jpDOeMjc7lFya
+	 DDOQ6Kybdxq2Q==
+Message-ID: <6d8aeee4-9732-1c62-67e0-6e8f56373aa6@collabora.com>
+Date: Fri, 15 Jul 2022 10:34:09 +0200
 MIME-Version: 1.0
-References: <Ys7RdzGgHbYiPyB1@shell.armlinux.org.uk>
-In-Reply-To: <Ys7RdzGgHbYiPyB1@shell.armlinux.org.uk>
-From: Marcin Wojtas <mw@semihalf.com>
-Date: Fri, 15 Jul 2022 10:30:37 +0200
-Message-ID: <CAPv3WKda3kxNKkd46AbLDTFeQ_V=J8_b1iFZ4oyVFBA9o_fDzQ@mail.gmail.com>
-Subject: Re: [PATCH RFC v2 0/6] net: dsa: always use phylink
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Claudiu Manoil <claudiu.manoil@nxp.com>, 
-	Daniel Scally <djrscally@gmail.com>, "David S. Miller" <davem@davemloft.net>, 
-	DENG Qingfang <dqfext@gmail.com>, Eric Dumazet <edumazet@google.com>, 
-	Florian Fainelli <f.fainelli@gmail.com>, George McCollister <george.mccollister@gmail.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Hauke Mehrtens <hauke@hauke-m.de>, 
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Kurt Kanzenbach <kurt@linutronix.de>, Landen Chao <Landen.Chao@mediatek.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, 
-	ACPI Devel Maling List <linux-acpi@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, =?UTF-8?B?TWFyZWsgQmVow7pu?= <kabel@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev <netdev@vger.kernel.org>, 
-	Paolo Abeni <pabeni@redhat.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, Sean Wang <sean.wang@mediatek.com>, 
-	UNGLinuxDriver@microchip.com, Vivien Didelot <vivien.didelot@gmail.com>, 
-	Vladimir Oltean <olteanv@gmail.com>, Woojung Huh <woojung.huh@microchip.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [RESEND] media: mediatek: vcodec: Add to support VP9 inner racing
+ mode
+Content-Language: en-US
+To: Mingjia Zhang <mingjia.zhang@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>
+Cc: George Sun <george.sun@mediatek.com>,
+ Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220715064938.5812-1-mingjia.zhang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220715064938.5812-1-mingjia.zhang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_013052_123136_1D0618E4 
-X-CRM114-Status: GOOD (  14.15  )
+X-CRM114-CacheID: sfid-20220715_013414_541239_8B656A35 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,61 +92,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Il 15/07/22 08:49, Mingjia Zhang ha scritto:
+> In order to reduce decoder latency, enable VP9 inner racing mode.
+> Send lat trans buffer information to core when trigger lat to work,
+> need not to wait until lat decode done.
+> 
+> Signed-off-by: mingjia zhang <mingjia.zhang@mediatek.com>
+> ---
+> CTS/GTS test pass
 
-=C5=9Br., 13 lip 2022 o 16:16 Russell King (Oracle) <linux@armlinux.org.uk>
-napisa=C5=82(a):
->
-> Hi,
->
-> This is a re-hash of the previous RFC series, this time using the
-> suggestion from Vladimir to create a swnode based fixed-link
-> specifier.
->
-> Most of the changes are to DSA and phylink code from the previous
-> series. I've tested on my Clearfog (which has just one Marvell DSA
-> switch) and it works there - also tested without the fixed-link
-> specified in DT.
->
->  drivers/base/swnode.c                  |  14 ++-
->  drivers/net/dsa/b53/b53_common.c       |   3 +-
->  drivers/net/dsa/bcm_sf2.c              |   3 +-
->  drivers/net/dsa/hirschmann/hellcreek.c |   3 +-
->  drivers/net/dsa/lantiq_gswip.c         |   6 +-
->  drivers/net/dsa/microchip/ksz_common.c |   3 +-
->  drivers/net/dsa/mt7530.c               |   3 +-
->  drivers/net/dsa/mv88e6xxx/chip.c       | 134 ++++++++++++-------------
->  drivers/net/dsa/mv88e6xxx/chip.h       |   6 +-
->  drivers/net/dsa/mv88e6xxx/port.c       |  32 ------
->  drivers/net/dsa/mv88e6xxx/port.h       |   5 -
->  drivers/net/dsa/ocelot/felix.c         |   3 +-
->  drivers/net/dsa/qca/ar9331.c           |   3 +-
->  drivers/net/dsa/qca8k.c                |   3 +-
->  drivers/net/dsa/realtek/rtl8365mb.c    |   3 +-
->  drivers/net/dsa/sja1105/sja1105_main.c |   3 +-
->  drivers/net/dsa/xrs700x/xrs700x.c      |   3 +-
->  drivers/net/phy/phylink.c              |  30 ++++--
->  include/linux/phylink.h                |   1 +
->  include/linux/property.h               |   4 +
->  include/net/dsa.h                      |   3 +-
->  net/dsa/port.c                         | 175 +++++++++++++++++++++++++++=
-++----
->  22 files changed, 290 insertions(+), 153 deletions(-)
->
+CTS/GTS passing is a good indication but, please, test with GStreamer (and
+show the output, as well!).
 
-I tested the patchset on top of net-next/master alone and with my
-fwnode_/ACPI patchset:
-* On EspressoBIN
-* On SolidRun CN913x CEx7 Eval Board
-  - with DT (with and without fixed-link description in CPU port)
-  - with ACPI (with and without fixed-link description in CPU port)
+Thanks,
+Angelo
 
-All works as expected, so:
-Tested-by: Marcin Wojtas <mw@semihalf.com>
-
-FWIW, the patches LGTM:
-Reviewed-by: Marcin Wojtas <mw@semihalf.com>
-
-Best regards,
-Marcin
+> ---
+>   .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 64 ++++++++++++-------
+>   1 file changed, 40 insertions(+), 24 deletions(-)
+> 
 
