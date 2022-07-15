@@ -4,85 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA9BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 18:30:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47E56C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 19:58:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nt4bJMHyhYZZNJmsHG+jvKocDnQ/uRBuL8blfA1ku0E=; b=lu4YsYsjFUPQ/fJ9LxM3mUZeg0
-	xlboT6rQo8jyt9UtKSj79L4Nj2H6NJg04VUC3vXvRkxapxnSw6FueCc7Nr5/SLflRqYHoo+HK9h5C
-	6aZmStk7mh7gu6Yi7Lni0eH5qJ4EcQdbo9F0KeS4+sV5WK//Kg/ed6EYtmsr2XUtkjZwiguOSuX9j
-	e4BehIwSZWuNhkkMElVCmdlPLFG8SMtEe7qymS1kIIwFZ14J0n1xwPDsdSVWpRqwU8sO3hr8CBrM6
-	l4m6+cJJYdqbZnziKoUj3OyNFKLEQeljYT1C/FCO/gNK6zve5rTuxnxF/10K75no9pH1p5Kpvh6VG
-	xYpkW20Q==;
+	bh=SH0q4/0Ph1jsdncDCF+dgAzmQvF24inFnmuraxQrYeI=; b=RoBHTwJez789iyBq7EurlJbBIW
+	pviB5LgBmWn3xWQp7unTQ99KLHFMPdHSMXyxqXRUVrHi/npL5lDgds2kVjXvnZCxcDjetzikMPCqQ
+	1LKG/255TBbEaRfK+WUhRPqrECwPfOqB/djNLD87VjmNpujdTd2bBZ1wMVoDAQ5QNkp5Yy6LEuQ2g
+	VCqz7cVL9yoMrVtURPMwkIUcZIYTM1IsjE6f9Li2vOTb+ml6Ttoq7Sj/auRMDNjLdNaUvYmZQuTW9
+	FoA2FhLoFKZU/lER8MS0vth8IO3XGLK8cu4s6nrFHwfknPY8mgD21R5GiIDSpJ8NdfAW/TslxQU4s
+	4xC7p9PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCQ5B-009SAY-Qd; Fri, 15 Jul 2022 18:30:33 +0000
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+	id 1oCRSL-009zmt-Rr; Fri, 15 Jul 2022 19:58:33 +0000
+Received: from mga01.intel.com ([192.55.52.88])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCQ50-009S7m-Dq; Fri, 15 Jul 2022 18:30:23 +0000
-Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-31bf3656517so54700767b3.12;
-        Fri, 15 Jul 2022 11:30:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=nt4bJMHyhYZZNJmsHG+jvKocDnQ/uRBuL8blfA1ku0E=;
-        b=JugXTEP6dHNPhtEvF7a+5JHtnQB0Wezxj3mXkDrGYozqfRojDQsyF1yaMm4ScB7/Jm
-         WsEkXJ0SEUGVVrZkC8BCoP0SfwdVW7GCvaD3VfdXQIsQWYFdR6LU4jAozR5eLknvx1TA
-         ImyChQqdYXJ0emEU0f1Dn5cGjmGGfK8hvylIv7olh1kv26+7rkg/ROqYp55f4+j0shBF
-         rb8dsgfz2gABDl/R7/RQA/+frn3Nz/VTzWGjxNJ696EP7aWkPhW2AZ98uCXxLlWzju6y
-         gW9J1WwQmK2wGdyYn3ZQfH/AHS1DVivoCmAvm5pg5MqTybZj012lhFCUjYCBV37kdAdW
-         bB7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=nt4bJMHyhYZZNJmsHG+jvKocDnQ/uRBuL8blfA1ku0E=;
-        b=ors9BboGLiJJMbW2KM7tGNCNQedt7LwiJJq30rgrWyALHgz8U4vvCfkDfSmGzW/JyP
-         5jEeF5BI8kCOyIOTXGaAXVP5svGgqaYj9NZG/OXgoRCYJM4Cv7I6p68YvmgxpEBFGcua
-         B8qDmsP9paI5srJcBaWO5zxy43hGB70ijwoGCgNknW808qnXMnm/9X90LeuPVe/VenKj
-         sPjKbr5vgXhrmTlyffjSsTM+GGwHuDVbpKJCMPQx47JzOToaC2+x6EuAMdOrfUbEa820
-         4HBljpa2sn0o+k7GIEy2k6Fi9qqldJboTF7jLk5lZsCsOKSJSHD+gQR+qbRvhN72sYWN
-         AHlw==
-X-Gm-Message-State: AJIora9ROTen5IMNgScsdI47KWEDyFJyPHAteA4H3symOu5RdcsYzve6
-	C34F6Qeu6nxPE+fWheIxma3sbqldWVofh7oRX+w=
-X-Google-Smtp-Source: AGRyM1vzP7L4rkzgqFevRJH1d667ZKPy7GjYyztLTPXytxkGqbpO4dyGE5UlcSEsEn68hi2rmxg67+K7y1Uib8FAXL0=
-X-Received: by 2002:a81:54c1:0:b0:31d:ec18:fd5d with SMTP id
- i184-20020a8154c1000000b0031dec18fd5dmr7586417ywb.277.1657909819017; Fri, 15
- Jul 2022 11:30:19 -0700 (PDT)
+	id 1oCRSA-009zlY-Fv; Fri, 15 Jul 2022 19:58:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1657915102; x=1689451102;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=ehY6mVr5usI1pbUCrRe9NIpChbrEMhuIPu5cO3R+A8k=;
+  b=UZxmR0mS2s957SCuHieYMmuClx50CpEUXO/gWb2LNbzm4KTWjFnhb8fv
+   GuGqdHIcyIvwJzbiwTurjtibYEmh/3ZSyg8F1EFvEqoxBCbY8RG5FVZ+j
+   ArDUADYQ2cnCgtX4HJj5qBC56wLpJIPLSfm4PT7erLjeeGgiTNMExpjr/
+   2x3WmN3e+EnOpsM5QYdtwy7cLP1YnRXLwOUjQ6qeOT/uDayW4ZfLO6bFP
+   Y+lz8X2MxAEyvlZ3teS/I3GKMifn2ZPYZwoFlCvYTncGmPe55Q6S+gxHi
+   68DtsGMkNVJ52Rx1xfY1hix9z6etKc2Rc727UrJQnQDgfqv+uqsfccUmm
+   w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10409"; a="311556296"
+X-IronPort-AV: E=Sophos;i="5.92,274,1650956400"; 
+   d="scan'208";a="311556296"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2022 12:58:07 -0700
+X-IronPort-AV: E=Sophos;i="5.92,274,1650956400"; 
+   d="scan'208";a="842634224"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2022 12:58:00 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1oCRRk-001JE8-0C;
+	Fri, 15 Jul 2022 22:57:56 +0300
+Date: Fri, 15 Jul 2022 22:57:55 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Russell King <rmk+kernel@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
+Subject: Re: [PATCH net-next 2/6] software node: allow named software node to
+ be created
+Message-ID: <YtHGwz4v7VWKhIXG@smile.fi.intel.com>
+References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+ <E1oCNky-006e3g-KA@rmk-PC.armlinux.org.uk>
 MIME-Version: 1.0
-References: <20220715112607.591-1-peterwu.pub@gmail.com> <20220715112607.591-12-peterwu.pub@gmail.com>
-In-Reply-To: <20220715112607.591-12-peterwu.pub@gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Fri, 15 Jul 2022 20:29:42 +0200
-Message-ID: <CAHp75VfyVufzf7CK38BVu_j0B4ax_d1gLAGYDE3H1zaKkuUB=A@mail.gmail.com>
-Subject: Re: [PATCH v5 11/13] leds: mt6370: Add MediaTek MT6370 current sink
- type LED Indicator support
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
-	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <E1oCNky-006e3g-KA@rmk-PC.armlinux.org.uk>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_113022_491369_FB405983 
-X-CRM114-Status: GOOD (  25.19  )
+X-CRM114-CacheID: sfid-20220715_125822_581091_A8592DB7 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,193 +108,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 15, 2022 at 1:29 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
->
-> From: ChiYuan Huang <cy_huang@richtek.com>
->
-> The MediaTek MT6370 is a highly-integrated smart power management IC,
-> which includes a single cell Li-Ion/Li-Polymer switching battery
-> charger, a USB Type-C & Power Delivery (PD) controller, dual
-> Flash LED current sources, a RGB LED driver, a backlight WLED driver,
-> a display bias driver and a general LDO for portable devices.
->
-> In MediaTek MT6370, there are four channel current-sink RGB LEDs that
-> support hardware pattern for constant current, PWM, and breath mode.
-> Isink4 channel can also be used as a CHG_VIN power good indicator.
+On Fri, Jul 15, 2022 at 05:01:32PM +0100, Russell King wrote:
+> From: Vladimir Oltean <vladimir.oltean@nxp.com>
+> 
+> Allow a named software node to be created, which is needed for software
+> nodes for a fixed-link specification for DSA.
 
-...
-
-> +         This driver can also be built as a module. If so the module
-
-so, the
-
-> +         will be called "leds-mt6370.ko".
-
-No ".ko".
-
-Why did you ignore these comments? Please go and fix _everywhere_ in
-your series.
-It's basically the rule of thumb, if the reviewer gives a comment
-against an occurrence of something, go through entire series and check
-if there are other places like commented one and address them all.
-
-...
-
-> + * Author: Alice Chen <alice_chen@richtek.com>
-
-Strange, the commit message doesn't have a corresponding SoB, why?
-
-...
-
-> +#define MT6370_PWM_DUTY                                31
-> +#define MT6372_PMW_DUTY                                255
-
-Looks like these are limits by hardware?
-Check with the datasheet if (BIT(x) - 1) makes more sense here.
-
-...
-
-> +       switch (led_no) {
-> +       case MT6370_LED_ISNK1:
-> +               sel_field = F_LED1_DUTY;
-> +               break;
-> +       case MT6370_LED_ISNK2:
-> +               sel_field = F_LED2_DUTY;
-> +               break;
-> +       case MT6370_LED_ISNK3:
-> +               sel_field = F_LED3_DUTY;
-> +               break;
-> +       default:
-> +               sel_field = F_LED4_DUTY;
-
-Missed break;
-
-> +       }
-
-...
-
-> +       switch (led_no) {
-> +       case MT6370_LED_ISNK1:
-> +               sel_field = F_LED1_FREQ;
-> +               break;
-> +       case MT6370_LED_ISNK2:
-> +               sel_field = F_LED2_FREQ;
-> +               break;
-> +       case MT6370_LED_ISNK3:
-> +               sel_field = F_LED3_FREQ;
-> +               break;
-> +       default:
-> +               sel_field = F_LED4_FREQ;
-
-Ditto.
-
-> +       }
-
-...
-
-> +       switch (led_no) {
-> +       case MT6370_LED_ISNK1:
-> +       case MT6370_LED_ISNK2:
-> +       case MT6370_LED_ISNK3:
-> +               *base = MT6370_REG_RGB1_TR + led_no * 3;
-> +               break;
-> +       default:
-> +               *base = MT6370_REG_RGB_CHRIND_TR;
-
-Ditto.
-It seems you dropped them for all switch-cases. It's not goot, please
-restore them back.
-
-> +       }
-
-...
-
-> +       u8 val[P_MAX_PATTERNS / 2] = {0};
-
-{ } should suffice
-
-
-> +       /*
-> +        * Pattern list
-> +        * tr1: byte 0, b'[7: 4]
-> +        * tr2: byte 0, b'[3: 0]
-> +        * tf1: byte 1, b'[7: 4]
-> +        * tf2: byte 1, b'[3: 0]
-> +        * ton: byte 2, b'[7: 4]
-> +        * toff: byte 2, b'[3: 0]
-> +        */
-> +       for (i = 0; i < P_MAX_PATTERNS; i++) {
-> +               curr = pattern + i;
-> +
-> +               sel_range = i == P_LED_TOFF ? R_LED_TOFF : R_LED_TRFON;
-> +
-> +               linear_range_get_selector_within(priv->ranges + sel_range,
-> +                                                curr->delta_t, &sel);
-> +
-> +               val[i / 2] |= sel << (4 * ((i + 1) % 2));
-> +       }
-> +
-> +       memcpy(pattern_val, val, 3);
-> +       return 0;
-> +}
-
-...
-
-> +out:
-
-out_unlock:
-
-> +       mutex_unlock(&priv->lock);
-> +
-> +       return ret;
-
-...
-
-> +out:
-
-Ditto. And so on.
-
-> +       mutex_unlock(&priv->lock);
-> +
-> +       return ret;
-
-...
-
-> +               sub_led = devm_kzalloc(priv->dev,
-> +                                      sizeof(*sub_led) * MC_CHANNEL_NUM,
-> +                                      GFP_KERNEL);
-
-NIH devm_kcalloc(). Also check if you really need zeroed data.
-
-> +               if (!sub_led)
-> +                       return -ENOMEM;
-
-...
-
-> +                       ret = fwnode_property_read_u32(child, "color", &color);
-> +                       if (ret) {
-> +                               dev_err(priv->dev,
-> +                                       "led %d, no color specified\n",
-> +                                       led->index);
-> +                               return ret;
-
-return dev_err_probe(...) ; ?
-
-Ditto for many places in your entire series.
-
-> +                       }
-
-...
-
-> +       priv = devm_kzalloc(&pdev->dev,
-> +                           struct_size(priv, leds, count), GFP_KERNEL);
-
-At least one parameter can be placed on the previous line.
-
-> +       if (!priv)
-> +               return -ENOMEM;
+In general I have no objection, but what's worrying me is a possibility to
+collide in namespace. With the current code the name is generated based on
+unique IDs, how can we make this one more robust?
 
 -- 
 With Best Regards,
 Andy Shevchenko
+
+
 
