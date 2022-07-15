@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B34B3C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 16:48:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 231FBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 16:52:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UwC5anEg0yjsg9Rw8IcHiu3GinY8BZcocAU9uCH0MCI=; b=yaR5Lt8r/t5ymSsF7AkWqQuMbm
-	/nnMC029qXLRNt/OvbKRL0mJX2jyKaZtvH+shCb82VaRqNTDtqdtCdkoyr385PckGHXxQRMgGJd7a
-	452tIxEzqbfhzYvttM4H1+qgvOCwP7pUW/H3Rejy6yVV/iPapnP5Ndr4DxEWNVU5YaX8fGybpn8lA
-	s8U9iFkEw0j03a9PxDm0C97HQxZVZmW8KTEPtYjjMY2VdCXa6vOTTzgcH17bZuuV12/JJV8kl1Ij+
-	9rc1HIGZxa2GI4vi3xuvUNuTqjo1Lp5Y1S9vrrsQPCaf2/9WXHGpdibno/2NHXa9f/5elhU0Q/3H/
-	IKADb3cQ==;
+	bh=Y3fEn7k6DEbC0BSZl5T1cKqr6t4t3jgvkJEo6o2VWJg=; b=2owVpEaI1fD/dwj6MWR3u0bTLe
+	36KQDzvqedyMhyJhehPj6s5yyu3kyBbg1M3XR4kVQu1QjaUWfCFN6xIwTE/HlIRxNbn1FjRscN8Vh
+	jLFfBlMhWsxhN8VEpJzhsvKCcMwi5sXiVyN2Vk8uAsEg5w0IDV9trx+tw/cULmq5xJqL/yRifNWoE
+	wlMjNi8IypX3B9IEnjHSNqN6M/5nmpGRhkuBz4irw7XpgK9UZPIVXOQMKBe4vfSQeDI75qQJh1Qu6
+	O542V5POGEPUarfJkpIh3S8f9HWRxiNzpeBapjA9IjDavhX/IpPFubP1k3ZtRHgelFYEXW32wWeV7
+	lwrjLCxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCOU9-008vdf-Mm; Fri, 15 Jul 2022 16:48:13 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1oCOY6-008wvB-Ly; Fri, 15 Jul 2022 16:52:18 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCOTz-008vWU-48; Fri, 15 Jul 2022 16:48:04 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id g16-20020a17090a7d1000b001ea9f820449so12032271pjl.5;
-        Fri, 15 Jul 2022 09:48:02 -0700 (PDT)
+	id 1oCOXv-008wtC-Ra; Fri, 15 Jul 2022 16:52:09 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-31cf1adbf92so52659257b3.4;
+        Fri, 15 Jul 2022 09:52:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to;
-        bh=UwC5anEg0yjsg9Rw8IcHiu3GinY8BZcocAU9uCH0MCI=;
-        b=kRPX1ruM5CjMlu1wj9auhM8ser8wATC3gVJCAiI2vCbhcBXZUWMyDTYhDsEN/2ow6z
-         C7+1TvQrQD+ErLtFG/kwIDtsu18cPtzxGuZpGEVGPFYl3nQyigz+bLUFOvO8aqhIeQJW
-         4FSZJpcLxa1UNYvKt0avG7GV9ldTRpmJsArPWoQDpxzmoAeCe0mKq4oRFAnuTUE8JlYj
-         ZBKcF2ZN1n8f1akV2/h1+4YiqKiFPWla4bdyW3gCXvq3GTO0h7JXURDp3MXRfzNjWyoz
-         2UzQFer9HHCToT+r6naorvjdplG/zjIyDzUKHeaM8cEww4he+LQ0Q2IQqBilO84FpZme
-         AYiQ==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=Y3fEn7k6DEbC0BSZl5T1cKqr6t4t3jgvkJEo6o2VWJg=;
+        b=MXGzp2L91pEJL+AcTAycFNXQ1RlDsP6v+gpGIgwODuesPa+p9Vkg4kB7S9nocynJGw
+         Z6eSLqvXs18KQxUaf2JoIzf80wNgEBx5lb8hmQls/pYl5cmqKU6ZV2U293CPRD7pHPxN
+         oVoCyNl0NZggmwruE29B+fIK5bXDrw9tjgIG3C8Nq+6m6OWBSRplWoiH96JI+OT2GKU0
+         e+tCPQwL8IYMCW95SAqKMM4ZmBlz4myO2waTWwKa21CY9s4W7s12O0mKU6NbZpFIBwjv
+         WQndJpk7ul+2kIlNcx4SEPMyoKdY46YyQ2MP3qjPVvRdKZ8R3yH3WQfj2xLINnsHUnDO
+         ZohA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition
-         :content-transfer-encoding:in-reply-to;
-        bh=UwC5anEg0yjsg9Rw8IcHiu3GinY8BZcocAU9uCH0MCI=;
-        b=a1BUliqgwv+F/gNNrPnjgXbPwqOyj8fRDeAkC98LX9hRNAxb/E1FoDu3Xf1NgRb4GU
-         xTOtpv+5GZ6XUXIbrZ+kZGOisbG8qPycyBdK4NxCYXMJwTAE8QT+k4vwct7pB41iEKOQ
-         ux678YXmxK6u7hnC2kfgW19RL/6wIMg9nWyrSOsXg5pKNa5fYLB3m2sDoyHY4hfN81rV
-         hujhQQQ572c4caNAVheM3kDGUKlG7q3oVLH9nZhgDwIf+r+YhlJ50yVgYYm8Q1jhNZyh
-         NOoxmPa2WleRwfzZtdNoCRrGFma1bGQ+Xi7MSC6r66ZoHp20l4BtK6QYu8RUurMGezxg
-         XgSg==
-X-Gm-Message-State: AJIora/s31EACMkYE9tJTtbxChmXVKjCFKm1bd/EqMDAVx46NPVnab8P
-	PWc1v+IQlpqWmk+tbdZchPJhkZS1iV8=
-X-Google-Smtp-Source: AGRyM1vZXzm78rR8Sz4+dl+obcrdf+Xsglp4KJK1yWRu+Aac5B5Bc6klC5UyLMcJy6xRLFKuFTMfdQ==
-X-Received: by 2002:a17:903:3093:b0:16b:deea:4d36 with SMTP id u19-20020a170903309300b0016bdeea4d36mr14423269plc.126.1657903681751;
-        Fri, 15 Jul 2022 09:48:01 -0700 (PDT)
-Received: from localhost (2603-800c-1a02-1bae-a7fa-157f-969a-4cde.res6.spectrum.com. [2603:800c:1a02:1bae:a7fa:157f:969a:4cde])
-        by smtp.gmail.com with ESMTPSA id g14-20020a62520e000000b00528d3d7194dsm4123824pfb.4.2022.07.15.09.48.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Jul 2022 09:48:01 -0700 (PDT)
-Date: Fri, 15 Jul 2022 06:47:59 -1000
-From: Tejun Heo <tj@kernel.org>
-To: Michal =?iso-8859-1?Q?Koutn=FD?= <mkoutny@suse.com>
-Cc: Jing-Ting Wu <jing-ting.wu@mediatek.com>,
-	Johannes Weiner <hannes@cmpxchg.org>,
-	Zefan Li <lizefan.x@bytedance.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, cgroups@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Shakeel Butt <shakeelb@google.com>, wsd_upstream@mediatek.com,
-	lixiong.liu@mediatek.com, wenju.xu@mediatek.com,
-	jonathan.jmchen@mediatek.com
-Subject: Re: [Bug] race condition at rebind_subsystems()
-Message-ID: <YtGaP+e35DZYSQf0@slm.duckdns.org>
-References: <1978e209e71905d89651e61abd07285912d412a1.camel@mediatek.com>
- <20220715115938.GA8646@blackbody.suse.cz>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=Y3fEn7k6DEbC0BSZl5T1cKqr6t4t3jgvkJEo6o2VWJg=;
+        b=okyHFHqcBMnw+IsttZFttM33goR3+NHYU+yjyK62O7BlA1g+vOyuqcao+oIuYWI3dU
+         2sSqpxCn558F45jDkBb0Lzn1Oq0M91vXN7XzEyt+NH7RQUzUsc+x9r2HSDQEHQIflJRp
+         egzww0/KABMqcEqc8u3y/ON3GCrB1G9bIh76GJwgJpr6CBJC30gqxF7i9ZdER9Q0oCIR
+         i1On4V8K2rXjg6bTL/wMM7x7MwKtGygzDGIYqbNTbwRSZNJpa7g50NzXVoLgxWXr3mSv
+         WZVoTzvA1KsSzdnKy6Co1dFI5tvp/DQT7XRGPd22027Q0CzaNc4EP9atukkR5TzaQVIQ
+         l1Jg==
+X-Gm-Message-State: AJIora+PMsV7fB3q5vPgL1IiZStflBMiwDEDdCHlmk4h2g7LtyJ0RxSG
+	z4/XCvXa3r7xTmCC9BRTREi8pS3oH06oiMtov/w=
+X-Google-Smtp-Source: AGRyM1sCY24F2pEPhG1uDrQQmbeNKcxn2P0g2UtmOwj7faRUDuEi5O71VSZCHL0+DLUg4GOwi/Ey7mykcBwsz36AuRU=
+X-Received: by 2002:a81:54c1:0:b0:31d:ec18:fd5d with SMTP id
+ i184-20020a8154c1000000b0031dec18fd5dmr7130568ywb.277.1657903923745; Fri, 15
+ Jul 2022 09:52:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220715115938.GA8646@blackbody.suse.cz>
+References: <20220715112607.591-1-peterwu.pub@gmail.com> <20220715112607.591-11-peterwu.pub@gmail.com>
+In-Reply-To: <20220715112607.591-11-peterwu.pub@gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Fri, 15 Jul 2022 18:51:27 +0200
+Message-ID: <CAHp75Ve_WRAUyy=h9_F-tC1dDkb_=-F1uf7_h7R0p7xZgBAd-w@mail.gmail.com>
+Subject: Re: [PATCH v5 10/13] power: supply: mt6370: Add MediaTek MT6370
+ charger driver
+To: ChiaEn Wu <peterwu.pub@gmail.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
+	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
+	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_094803_186491_D19B5B2E 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20220715_095207_953796_19AEA84B 
+X-CRM114-Status: GOOD (  17.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,27 +97,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-(resending, I messed up the message header, sorry)
+On Fri, Jul 15, 2022 at 1:29 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+>
+> From: ChiaEn Wu <chiaen_wu@richtek.com>
+>
+> MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
+> with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
+> driver, display bias voltage supply, one general purpose LDO, and the
+> USB Type-C & PD controller complies with the latest USB Type-C and PD
+> standards.
+>
+> This adds MediaTek MT6370 Charger driver support. The charger module
+> of MT6370 supports High-Accuracy Voltage/Current Regulation,
+> Average Input Current Regulation, Battery Temperature Sensing,
+> Over-Temperature Protection, DPDM Detection for BC1.2.
 
-Hello,
+...
 
-On Fri, Jul 15, 2022 at 01:59:38PM +0200, Michal Koutný wrote:
-> The css->rstat_css_node should not be modified if there are possible RCU
-> readers elsewhere.
-> One way to fix this would be to insert synchronize_rcu() after
-> list_del_rcu() and before list_add_rcu().
-> (A further alternative (I've heard about) would be to utilize 'nulls'
-> RCU lists [1] to make the move between lists detectable.)
-> 
-> But as I'm looking at it from distance, it may be simpler and sufficient
-> to just take cgroup_rstat_lock around the list migration (the nesting
-> under cgroup_mutex that's held with rebind_subsystems() is fine).
+> +static int mt6370_chg_probe(struct platform_device *pdev)
+> +{
+> +       int ret;
+> +       struct mt6370_priv *priv;
+> +
+> +       priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
+> +       if (!priv)
+> +               return -ENOMEM;
+> +
+> +       priv->dev = &pdev->dev;
+> +
+> +       priv->regmap = dev_get_regmap(pdev->dev.parent, NULL);
+> +       if (!priv->regmap)
+> +               return dev_err_probe(&pdev->dev, -ENODEV,
+> +                                    "Failed to get regmap\n");
+> +
+> +       ret = mt6370_chg_init_rmap_fields(priv);
+> +       if (ret)
+> +               return dev_err_probe(&pdev->dev, ret,
+> +                                    "Failed to init regmap fields\n");
+> +
+> +       platform_set_drvdata(pdev, priv);
+> +
+> +       priv->iio_adcs = devm_iio_channel_get_all(priv->dev);
+> +       if (IS_ERR(priv->iio_adcs))
+> +               return dev_err_probe(&pdev->dev, PTR_ERR(priv->iio_adcs),
+> +                                    "Failed to get iio adc\n");
+> +
+> +       ret = mt6370_chg_init_otg_regulator(priv);
+> +       if (ret)
+> +               return dev_err_probe(&pdev->dev, ret,
+> +                                    "Failed to init otg regulator\n");
+> +
+> +       ret = mt6370_chg_init_psy(priv);
+> +       if (ret)
+> +               return dev_err_probe(&pdev->dev, ret, "Failed to init psy\n");
+> +
+> +       mutex_init(&priv->attach_lock);
+> +       priv->attach = MT6370_ATTACH_STAT_DETACH;
+> +
+> +       priv->wq = create_singlethread_workqueue(dev_name(priv->dev));
+> +       if (IS_ERR(priv->wq))
 
-synchronize_rcu() prolly is the better fit here given how that list_node's
-usage, but yeah, great find.
+> +               return dev_err_probe(priv->dev, PTR_ERR(priv->wq),
+> +                                    "Failed to create workqueue\n");
 
-Thanks.
+You need either wrap mutex to be deallocated by devm or don't use
+dev_err_probe() here.
+
+> +       INIT_WORK(&priv->bc12_work, mt6370_chg_bc12_work_func);
+> +       INIT_DELAYED_WORK(&priv->mivr_dwork, mt6370_chg_mivr_dwork_func);
+> +
+> +       ret = mt6370_chg_init_setting(priv);
+> +       if (ret) {
+> +               dev_err(&pdev->dev, "Failed to init mt6370 charger setting\n");
+> +               goto probe_out;
+> +       }
+> +
+> +       ret = mt6370_chg_init_irq(priv);
+> +       if (ret)
+> +               goto probe_out;
+> +
+> +       mt6370_chg_pwr_rdy_check(priv);
+> +
+> +       return 0;
+> +
+> +probe_out:
+> +       cancel_delayed_work_sync(&priv->mivr_dwork);
+> +       flush_workqueue(priv->wq);
+> +       destroy_workqueue(priv->wq);
+> +       mutex_destroy(&priv->attach_lock);
+> +
+> +       return ret;
+> +}
+> +
+> +static int mt6370_chg_remove(struct platform_device *pdev)
+> +{
+> +       struct mt6370_priv *priv = platform_get_drvdata(pdev);
+> +
+> +       cancel_delayed_work_sync(&priv->mivr_dwork);
+> +       flush_workqueue(priv->wq);
+> +       destroy_workqueue(priv->wq);
+> +       mutex_destroy(&priv->attach_lock);
+> +
+> +       return 0;
+> +}
+
 
 -- 
-tejun
+With Best Regards,
+Andy Shevchenko
 
