@@ -4,115 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85062C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 21:40:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1C18C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 23:12:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J6BSJtpNWZ2Z1cUANVaPa8k/01zDYr+V4xutkYf54NQ=; b=t2GL5ngjBwG+Qp8575KdxDYMSz
-	ulpqkrxLunzGYO0tP/r4qn9l1vtlq4LQ61ieqGDKR4QmrMaDa8WCietkcxqxkgF6OwiFeO8bE0ey5
-	6Nd4+F9J6RfC4VdOJkfEpG06B4Q/B5z7JlBaM17jXkQD/T18/Vjg5rmH+B9tzUWppSVZzOdxfl/x4
-	9D1QpNr4uKzX56JVyWa+GSiSGkuZTWaQf7w6NcohZSD830AMwnhvvV0zPnB5oJtOMv152LVU5gizT
-	AOiXk7IcOA7gVJMj28cyMK0guSzO0HokeDyHaMzCRoFSX2QY9W1umfhxCKSv+1oBObhh9VNQQdopK
-	8hH4FZ9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6kyP63A6YNg0G1IVMJwtPcv4L1839iXCvJyrsCZGqB8=; b=sOqPUeDV7quC3xXetaZ/hIAW7e
+	/i+HZuL/8frAMsVPjRaw2l2AC6ro7GGPuTjuCmTIdFZhahUQAriFL2zjF/n4vW9BDSQk7ybMXsnpO
+	Upt8QyBQPsu5TeGhXLUoSzS9ndeWtOo8woloIwvG+hI230L9eugBguWtvbXD9m3u66tY4pigU3TQX
+	Yvqv1b4m8AWKDDDh5tgdsV57vQufJvh9JM6zS19qsCcxho/ZD1xxhCpJ3XFEdbtrItS39ZSLH3s70
+	gWDSeMrOaT4uvSwbgM9KUE72RjdSiECs3jcsdlONMSOx4jHUz5Y3cKNyWJJVvUbOZMYtmsxLbLRn9
+	m8QPBLpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCT2s-00AUw3-OM; Fri, 15 Jul 2022 21:40:22 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1oCUTc-00B1BU-EU; Fri, 15 Jul 2022 23:12:04 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCT2o-00AUtX-SJ
-	for linux-mediatek@lists.infradead.org; Fri, 15 Jul 2022 21:40:20 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id bk26so8408425wrb.11
-        for <linux-mediatek@lists.infradead.org>; Fri, 15 Jul 2022 14:40:17 -0700 (PDT)
+	id 1oCTj2-00Al31-Pl; Fri, 15 Jul 2022 22:23:58 +0000
+Received: by mail-ed1-x529.google.com with SMTP id v12so7970491edc.10;
+        Fri, 15 Jul 2022 15:23:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=J6BSJtpNWZ2Z1cUANVaPa8k/01zDYr+V4xutkYf54NQ=;
-        b=EiZ/Jmkz5DdkNRwJGtK9gVoZ3BcJ8ejMk3yeeSneUGJiCM2csICY8AdW61vGapRVcY
-         UVEs2lvDUtUmSWhTy5Riy+DiODr1rNBvvUK4wbrRLT25XjOXefr0/051txgAy4PBorpi
-         GKNcSgswr6pLYwYHFSVzvB34JMrg+jT1ikpzno4L0ZOP0gQXJvWnMhCAGwkPbk+zk4T6
-         NHUHFy/WsEuLp1Gd3GTwIoolQEUdfvT1tqqUGbfp80W8fFmVfSTmouc1u2k89r7uyeR9
-         nYK4zK2wqlmEsLRHEwqRtcub6mC9oo2ROYXHqnHla+d+LumXFIkgFPThdJfozfzXSQFb
-         VGhA==
+        d=gmail.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to;
+        bh=6kyP63A6YNg0G1IVMJwtPcv4L1839iXCvJyrsCZGqB8=;
+        b=fdyqHy/3iTbnC1sPrP7Hp8oJ0uMoLS3JbfC1v/oLCabznBIO10vj41lEA2bg5BqpJB
+         cDfboqz03WqiQ0RDQm4kuUmo2Hk7gQAsIokBGDqO4VenXIX2xWIkco0SgjBjWeRTuU8R
+         zPoBQ7HC0OXULPuKDVtIrn0bt79thP9sgXVlW9uJ0G84DztcvFac8fO5YUCmlj5FHjMn
+         /+xuc/ij7LPTHejul9Duu/S+SobN3FbME5wOzmtFUJvY7/+Pu4yns/zccwsST3ncZWOH
+         Sl5SToxw7rvwh7ZzXRjSGM78+aCBXnEljP/tUcYELUJrp/AZzQi97A4CoLzKDls5Sz4J
+         z2Tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=J6BSJtpNWZ2Z1cUANVaPa8k/01zDYr+V4xutkYf54NQ=;
-        b=hsSSpGEf5e3ufo7xEPzwjO/rQkS5oDHoRMutiQBAD+c9+3vHVE6lR6p1gmS6B3DejM
-         Z/b1m+1hAfCvxH33u3ngplmBSh++OeijaufGkXuKw0tgP43PWzGljAnP/b57PqfLMhdk
-         NZqi56QI6tZTSFgiRHDL14F7qjrjlaJlT+m4G8quFojYBEC+UtWebEza/Y8sU8mwbo3p
-         bSTxUiwgUGGZm1NIRKZEbMk/YkKLFzex4Bnu9+iWdazhxqUcmN8cYdojUy8LEGdXF3+z
-         KKw7fDBe4Tlz9Td+YPAbz/tZCy4oQgMJRmAcKLggTLUVpP5kCFLWSZTx+Z5EnFKCkRbn
-         FBZg==
-X-Gm-Message-State: AJIora/SmOAdORzEU3IEE9FxubxEIfhNoOPmQnlTRJe7cQJDMVjYjFi7
-	+FkTSC+BHUR2HaHjFhOhfU95Xw==
-X-Google-Smtp-Source: AGRyM1vl55wMLC6v4FE7361A1EgLL5IjuxGDiU+pOGyn8ZoWrdHGmzM+ZMQkW7lv66vojAGIB7e/MQ==
-X-Received: by 2002:a5d:4e04:0:b0:21d:6ec3:38a2 with SMTP id p4-20020a5d4e04000000b0021d6ec338a2mr14182586wrt.362.1657921215858;
-        Fri, 15 Jul 2022 14:40:15 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:a223:f4b3:40c9:43fa? ([2a05:6e02:1041:c10:a223:f4b3:40c9:43fa])
-        by smtp.googlemail.com with ESMTPSA id j27-20020a05600c1c1b00b0039c4ba160absm17678280wms.2.2022.07.15.14.40.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 15 Jul 2022 14:40:15 -0700 (PDT)
-Message-ID: <563e92de-68aa-7382-2564-c1ccc270c571@linaro.org>
-Date: Fri, 15 Jul 2022 23:40:11 +0200
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to;
+        bh=6kyP63A6YNg0G1IVMJwtPcv4L1839iXCvJyrsCZGqB8=;
+        b=oJBDe1Z9XJ3TLZtnWVP7boW57bep6s164FDUtq2cGqRNKeXGPP8DxHzd1FPZs/XwHL
+         Tc9hbPEVv6pOkNcn1ZgMWj5FxTzgNZZH8vBdz/zMdMGC3KQkpx5LtD/65cNHlK4yeMT0
+         LZq9bpqcxjvgT6frAvpPmrdHqG1ctTwrpehBFabcSy2DXEqBwg+o9cPfRsMF2uRAOfHC
+         CF70Hvrl/udbY2/pL3PtypnsN476UUTRww6z2FYUAG6OIS0P0RGNbsWYPaxobeySvWeS
+         hHeTbKCII++e+aw1/aA1EL1QyWCgvTGCVt0PkGbopmi8ki1S7EBD5Y1aXDWh2WoFAL00
+         psnA==
+X-Gm-Message-State: AJIora92k1LoMQR+7bRS7mt1F4bTwrb6QLyDV3e1D4HqyqoJrN2r4cSm
+	wK77EW9SjrmH7ofPOMjTLlI=
+X-Google-Smtp-Source: AGRyM1vctgq7Q0+/Kox2lii2lZgmCb+tdIsaduZIvgRIz3b7pMtpATOM2+uPxS3vxya4bN/xLE1EPA==
+X-Received: by 2002:a05:6402:d05:b0:435:b2a6:94eb with SMTP id eb5-20020a0564020d0500b00435b2a694ebmr21478601edb.87.1657923832960;
+        Fri, 15 Jul 2022 15:23:52 -0700 (PDT)
+Received: from skbuf ([188.25.231.115])
+        by smtp.gmail.com with ESMTPSA id ek9-20020a056402370900b0042de3d661d2sm3522220edb.1.2022.07.15.15.23.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Jul 2022 15:23:52 -0700 (PDT)
+Date: Sat, 16 Jul 2022 01:23:48 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>
+Subject: Re: [PATCH net-next 3/6] net: dsa: add support for retrieving the
+ interface mode
+Message-ID: <20220715222348.okmeyd55o5u3gkyi@skbuf>
+References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+ <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+ <E1oCNl3-006e3n-PT@rmk-PC.armlinux.org.uk>
+ <E1oCNl3-006e3n-PT@rmk-PC.armlinux.org.uk>
+ <20220715172444.yins4kb2b6b35aql@skbuf>
+ <YtHcpf4otJQS9hTO@shell.armlinux.org.uk>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v3 06/15] thermal: qcom: qcom-spmi-adc-tm5: convert to IIO
- fwnode API
-Content-Language: en-US
-To: =?UTF-8?Q?Nuno_S=c3=a1?= <nuno.sa@analog.com>, openbmc@lists.ozlabs.org,
- linux-imx@nxp.com, linux-stm32@st-md-mailman.stormreply.com,
- linux-iio@vger.kernel.org, linux-mips@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
- chrome-platform@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- linux-arm-msm@vger.kernel.org
-Cc: Gwendal Grignou <gwendal@chromium.org>,
- Jonathan Cameron <jic23@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
- Tomer Maimon <tmaimon77@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Fabio Estevam <festevam@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Olivier Moysan
- <olivier.moysan@foss.st.com>, Tali Perry <tali.perry1@gmail.com>,
- Thara Gopinath <thara.gopinath@linaro.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Arnd Bergmann <arnd@arndb.de>,
- Benjamin Fair <benjaminfair@google.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Patrick Venture
- <venture@google.com>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
- Benson Leung <bleung@chromium.org>, Nancy Yuen <yuenn@google.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Zhang Rui <rui.zhang@intel.com>, Linus Walleij <linus.walleij@linaro.org>,
- Christophe Branchereau <cbranchereau@gmail.com>,
- Cai Huoqing <cai.huoqing@linux.dev>, Avi Fishman <avifishman70@gmail.com>,
- Eugen Hristev <eugen.hristev@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Lars-Peter Clausen <lars@metafoo.de>,
- Andy Shevchenko <andy.shevchenko@gmail.com>,
- Guenter Roeck <groeck@chromium.org>, Paul Cercueil <paul@crapouillou.net>,
- Claudiu Beznea <claudiu.beznea@microchip.com>, Andy Gross
- <agross@kernel.org>, Amit Kucheria <amitk@kernel.org>,
- Michael Hennerich <Michael.Hennerich@analog.com>,
- Haibo Chen <haibo.chen@nxp.com>, Jishnu Prakash <quic_jprakash@quicinc.com>
-References: <20220715122903.332535-1-nuno.sa@analog.com>
- <20220715122903.332535-7-nuno.sa@analog.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20220715122903.332535-7-nuno.sa@analog.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <YtHcpf4otJQS9hTO@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_144018_985225_6908EE36 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20220715_152356_894327_230AF9CA 
+X-CRM114-Status: GOOD (  53.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,39 +120,138 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15/07/2022 14:28, Nuno Sá wrote:
-> Make usage of the new firmware agnostic API
-> 'devm_of_iio_channel_get_by_name()' to get the IIO channel.
+On Fri, Jul 15, 2022 at 10:31:17PM +0100, Russell King (Oracle) wrote:
+> On Fri, Jul 15, 2022 at 08:24:44PM +0300, Vladimir Oltean wrote:
+> > On Fri, Jul 15, 2022 at 05:01:37PM +0100, Russell King (Oracle) wrote:
+> > > DSA port bindings allow for an optional phy interface mode. When an
+> > > interface mode is not specified, DSA uses the NA interface mode type.
+> > > 
+> > > However, phylink needs to know the parameters of the link, and this
+> > > will become especially important when using phylink for ports that
+> > > are devoid of all properties except the required "reg" property, so
+> > > that phylink can select the maximum supported link settings. Without
+> > > knowing the interface mode, phylink can't truely know the maximum
+> > > link speed.
+> > > 
+> > > Update the prototype for the phylink_get_caps method to allow drivers
+> > > to report this information back to DSA, and update all DSA
+> > > implementations function declarations to cater for this change. No
+> > > code is added to the implementations.
+> > > 
+> > > Reviewed-by: Marek Beh�n <kabel@kernel.org>
+> > > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> > > ---
+> > (...)
+> > > diff --git a/include/net/dsa.h b/include/net/dsa.h
+> > > index b902b31bebce..7c6870d2c607 100644
+> > > --- a/include/net/dsa.h
+> > > +++ b/include/net/dsa.h
+> > > @@ -852,7 +852,8 @@ struct dsa_switch_ops {
+> > >  	 * PHYLINK integration
+> > >  	 */
+> > >  	void	(*phylink_get_caps)(struct dsa_switch *ds, int port,
+> > > -				    struct phylink_config *config);
+> > > +				    struct phylink_config *config,
+> > > +				    phy_interface_t *default_interface);
+> > 
+> > I would prefer having a dedicated void (*port_max_speed_interface),
+> > because the post-phylink DSA drivers (which are not few) will generally
+> > not need to concern themselves with implementing this, and I don't want
+> > driver writers to think they need to populate every parameter they see
+> > in phylink_get_caps. So the new function needs to be documented
+> > appropriately (specify who needs and who does not need to implement it,
+> > on which ports it will be called, etc).
+> > 
+> > In addition, if we have a dedicated ds->ops->port_max_speed_interface(),
+> > we can do a better job of avoiding breakage with this patch set, since
+> > if DSA cannot find a valid phylink fwnode, AND there is no
+> > port_max_speed_interface() callback for this driver, DSA can still
+> > preserve the current logic of not putting the port down, and not
+> > registering it with phylink. That can be accompanied by a dev_warn() to
+> > state that the CPU/DSA port isn't registered with phylink, please
+> > implement port_max_speed_interface() to address that.
 > 
-> Signed-off-by: Nuno Sá <nuno.sa@analog.com>
-> Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
-
-Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-
-> ---
->   drivers/thermal/qcom/qcom-spmi-adc-tm5.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+> To continue my previous email...
 > 
-> diff --git a/drivers/thermal/qcom/qcom-spmi-adc-tm5.c b/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
-> index d9c9c975f931..0b8543c627f0 100644
-> --- a/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
-> +++ b/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
-> @@ -825,7 +825,8 @@ static int adc_tm5_get_dt_channel_data(struct adc_tm5_chip *adc_tm,
->   	}
->   	channel->adc_channel = args.args[0];
->   
-> -	channel->iio = devm_of_iio_channel_get_by_name(adc_tm->dev, node, NULL);
-> +	channel->iio = devm_fwnode_iio_channel_get_by_name(adc_tm->dev,
-> +							   of_fwnode_handle(node), NULL);
->   	if (IS_ERR(channel->iio)) {
->   		ret = PTR_ERR(channel->iio);
->   		if (ret != -EPROBE_DEFER)
+> This is a great illustration why posting RFC series is a waste of time.
+> This patch was posted as RFC on:
+> 
+> 24th June
+> 29th June
+> 5th July
+> 13th July
+> 
+> Only when it's been posted today has there been a concern raised about
+> the approach. So, what's the use of asking for comments if comments only
+> come when patches are posted for merging. None what so ever. So, we've
+> lost the last three weeks because I decided to "be kind" and post RFC.
+> Total waste of effort.
 
+Sorry, but I don't exactly have a reason to respond to this series earlier
+than others more directly affected, even less so when it's an RFC.
+My feedback is strictly from the point of view of the "other" drivers
+who don't care about context-specific interpretations of the CPU port
+OF node. For them it doesn't make sense to have "default_interface" an
+argument of phylink_get_caps.
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+Also about the total waste of effort (or at least time), it's not at all
+obvious to me that if I had provided more feedback earlier, this series
+would have been done with even one day earlier, considering you've stated
+at least twice that you're waiting for a reply from Andrew, which didn't come.
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+> 
+> Now, on your point... the series posted on the 24th June was using
+> the mv88e6xxx port_max_speed_interface() but discussion off the mailing
+> list:
+> 
+> 20:19 < rmk> kabel: hmm, is mv88e6393x_port_max_speed_mode() correct?
+> 20:20 < rmk> it seems to be suggesting to use PHY_INTERFACE_MODE_10GBASER for
+>              port 9
+> 09:50 < kabel> rmk: yes, 10gbase-r is correct for 6393x. But we need to add
+>                exception for 6191x, as is done in chip.c function
+>                mv88e6393x_phylink_get_caps()
+> 09:51 < kabel> rmk: on 6191x only port 10 supports >1g speeds
+> 11:51 < rmk> kabel: moving it into the get_caps function makes it easier to set
+>              the default_interfaces for 6193x
+> 14:20 < kabel> rmk: yes, get_caps doing it would be better
+> 
+> The problem is this - we call get_caps(), and we have to read registers
+> to work out what the port supports. If we have a separate callback, then
+> we need to re-read those registers to get the same information to report
+> what the default interface should be.
+> 
+> Since almost all of the Marvell implementations the values for both the
+> list of supported interfaces and the default interface both require
+> reading a register and translating it to a phy_interface_t, and then
+> setting the support mask, it seems logical to combine these two
+> functioalities into one function.
+
+In essence that doesn't mean much; DSA isn't Marvell only, but I'll give
+it to you: if only the Marvell driver (and Broadcom later, I expect) is
+going to add support for the context-specific interpretation of CPU port
+OF nodes, then we may consider tailoring the implementation to their
+hardware register layout details. In any case, my concern can be
+addressed even if you insist on keeping the default interface as an
+argument of phylink_get_caps. There just needs to be a lot more
+documentation explaining who needs to populate that argument and why.
+
+Also, perhaps more importantly, a real effort needs to be put to prevent
+breakage for drivers that work without a phylink instance registered for
+the CPU port, and also don't report the default interface. Practically
+that just means not deleting the current logic, but making it one of 3
+options.
+
+fwnode is valid from phylink's perspective?
+       /                             \
+ yes  /                               \ no
+     /                                 \
+register with phylink         can we determine the link parameters to create
+                                  a fixed-link software node?
+                                       /                \                     \
+                                 yes  /                  \  no                |
+                                     /                    \                   | this is missing
+                                    /                      \                  |
+             create the software node and       don't put the port down,      |
+             register with phylink              don't register with phylink   /
+
 
