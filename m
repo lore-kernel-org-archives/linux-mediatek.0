@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62F05C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 13:11:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A50DEC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 13:19:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+LrkSO95PVy8bw27Iig3QT1GOG3G5eqBwe6wxhmR/uU=; b=eXFJxc8y14pliA+LzINDtWAawp
-	JSVoAkLk7Crz1/UWeNPz2NQb7V5Z4OXhd1rfPy9RRojAfSm+q2jMsuAQxLttPd5W2Y3oe6Vt4+lH9
-	56scqLJeiIs1E35CrIYgf8jPLZ5EjiETV4lzdmqBmqqEAO3BLtwHtzZUP3BGGCnuJLP3ikE6MHPT0
-	yzUuTf+p67pK9F8egIvJLeiARMA8eSAObOg17M9ChOzn+J+edCj2dddzK1gLQN5gum4bX9FhD3Iou
-	huqiKKQnqdSPqzm5MHcyFeMqoMtzjzr6okgzqWfU1xUJVCNhma/iPh0am9PWeCtBdoGiRmERmpzWV
-	IRXP1dIA==;
+	bh=RIDFbj9Nm/Hc84YphLe1TSejCss5csMsL3XGmdeREuc=; b=QSqnfQKJWmQUOAbsXN/Lw8Uli3
+	KzCd5b+5phG/Ep1eksS+rgZkQj7hB6PEqn+2jKRYJItkpPOxamRlrwPqhZUBsMRw0rBOSqZ7bT8Hh
+	Q5gUQAgjy8VNEoEfxxzA/XjdVyOiCeguL7TtTwEqz1BSjP9m0Z4hY/zSbe8fDIuaUZgf8XTD1GuNc
+	i74XULL20gyvxm+GwBvflG8767v70HkbApN9TVvlhgs+D1SSViJ8BX5kkirgC3a6c6Q6z6VcZDZ4W
+	a0rjjEYKLtOibUjp3GmM5b7dBiVqIoPKEodJy57+WrtGPchMznIfXq+1mUdu+wcttBXdJFk+kT0X9
+	V1Duak+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCL6R-007At8-UJ; Fri, 15 Jul 2022 13:11:31 +0000
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+	id 1oCLDn-007Czg-AZ; Fri, 15 Jul 2022 13:19:07 +0000
+Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCL6F-007Aov-S3; Fri, 15 Jul 2022 13:11:21 +0000
-Received: by mail-yw1-x1129.google.com with SMTP id 00721157ae682-31c89653790so46079067b3.13;
-        Fri, 15 Jul 2022 06:11:19 -0700 (PDT)
+	id 1oCLDb-007CxF-ON; Fri, 15 Jul 2022 13:18:57 +0000
+Received: by mail-yb1-xb2e.google.com with SMTP id e69so8413153ybh.2;
+        Fri, 15 Jul 2022 06:18:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=+LrkSO95PVy8bw27Iig3QT1GOG3G5eqBwe6wxhmR/uU=;
-        b=QWPiN1LWPmuijdMKT5AAJLiDd75nqTOhtxH5ERUnVqh8bmSoNBzZIgc24Y12QYZbiK
-         ZZZ1bonJ6bNj4/7dxSkAiOrS74VCGiXGhWZIxtov9goqlOn5pRrD8dZwQ+LVOT0zjsij
-         ZycSe0JZLJo499082g+stfHqVo3HUWmZ9oHqx7dbKQi8DMpwGjlvzsbhEjxZCPUX1VBE
-         Uc1tcbJmyRqjXmP4pv/MISV2Q52lQXTzxZ5gH/ZSlXdpnNalR9OhXt02d2SnPVWsqiq1
-         Uz2U49YRfc8nBIp8fjPbkLZZkI0e8nu+6vgIwXaucQUeg5o34WZ1leokFfUD1AZgptQc
-         30zg==
+        bh=RIDFbj9Nm/Hc84YphLe1TSejCss5csMsL3XGmdeREuc=;
+        b=LjTUeU/VvjExiFE7qVdoTT66INknzaksBvLAL0QX/hhMGm1S/DCmWjGAqEm1RDjTt0
+         nrI4wHZo/WK5aG8U5fIPVbESm+g18hEELTujXpx69+Azj8qnUnYXhFafWvDdYrxJWF8Q
+         n4alCS65LacwduwaUDBvHdbTO5eZ4k4tWaJ199RDLEdi+Nnbu8tJ4UTjcA2YPJBeHBKH
+         hWc3HEBwkV0/ygom4+Ivyr3ViE5siRsP8CdzKAgWRXLBXaArht7DgMtJUJb/WrGYsYt8
+         eWv+sETgNCGjxIJCtjEQJk1vVPGobtuRYELM3bihPsOKaqDcf5qzy1Ry+AVMll6TrQxi
+         eYjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=+LrkSO95PVy8bw27Iig3QT1GOG3G5eqBwe6wxhmR/uU=;
-        b=YhwluobBO9UzJrtN2sbLBLT7EhXoRNbkoRXAGy3drogd2dcK3XgKw0AEoLC1CdQSYP
-         tnekvE28BJnB80paw6cAufAUCX4xvzFZ1PuDRYSDueARSw/+ejgnvOvCpcupRUR8fOOD
-         WA4LGclgXyBShgHt+BGS9gbarv7Vlj6AB8v4NfUvtqz0VadKvh8EPX+SUhAW9XTgXv9K
-         NewVRtBdXqrMURpM9jRQULmLBtYX5fZyP41OsXSECb6MUvpupFOlw7m6GCIYNT+UfuUj
-         Zl7XpqzU83p5V15TqCgy5gEWYA8zBU2kCk9uNOm408+FjQeRM0mbATnkyT92F6dBNX86
-         kZhA==
-X-Gm-Message-State: AJIora9JPurN7hDyaaPQv/qBKmGLgyBIqcuEzx/SGkfqUwtbzEt6npj7
-	ypzJC5Om5PHrMFyPRkT+3QvXRF2rcKVy/klMGmU=
-X-Google-Smtp-Source: AGRyM1vwE3NLxsUuIe5Aj+Ad86KoIRk0zfg8IwPNre3toXOXDCYSWjHhTiLXCjbb3wl3KhuodPQdkjLVkGMg2Yk7hJQ=
-X-Received: by 2002:a81:72c4:0:b0:31c:b309:c4e8 with SMTP id
- n187-20020a8172c4000000b0031cb309c4e8mr15864875ywc.520.1657890678612; Fri, 15
- Jul 2022 06:11:18 -0700 (PDT)
+        bh=RIDFbj9Nm/Hc84YphLe1TSejCss5csMsL3XGmdeREuc=;
+        b=zUBdj2+J8EXNFBWYCzfpCJ/Y5FcTlO8ca3GXKnAIctYCe2ywFqTqO3blp96gdETXQ4
+         d6XgnjbguGWZiX+QK7aYKL5JB7L8TXzAQZ52J7JQJl7g51YpLbFJ1/Ffz+W5H1IkYqfG
+         mXDWVIKvbb2TUk/AWXhDhZmChqcV3vuXrU/cA0qDGGFBszlOu6PJ5xkWTnlTxVeFb0gD
+         fYJZia8ldi5pHRxkiTYwU9m9jTy2l4uuQ886yiP5RQ0ZDEVfaHgdJD9DR5IAiG14MrvO
+         satWM801fFL/y+rV7TG34BnF32DLPurTO5Di1UIYgCJgXqE+bhtOLse0y3qLyLuGa+10
+         uAeA==
+X-Gm-Message-State: AJIora+oTdLAfXIj0RAmZ6OT3DfdW0upOItUWdDsZEoqeONZoLAArSde
+	WA0jmjZoKn38CCLmmf1nbi2muoSxox8VXE3gBd17mNGG8mg=
+X-Google-Smtp-Source: AGRyM1tX0Yj4hhKwKn8Wh56LVxsUs+zEZtzzOqfyiqtoMPojzsjlQH4dKqby9pg3kc6AYzvHnWHIojiIQybijv0fZ+I=
+X-Received: by 2002:a25:cbcf:0:b0:66e:8893:a02c with SMTP id
+ b198-20020a25cbcf000000b0066e8893a02cmr14089485ybg.460.1657891133149; Fri, 15
+ Jul 2022 06:18:53 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220715112607.591-1-peterwu.pub@gmail.com> <20220715112607.591-9-peterwu.pub@gmail.com>
-In-Reply-To: <20220715112607.591-9-peterwu.pub@gmail.com>
+References: <20220715112607.591-1-peterwu.pub@gmail.com> <20220715112607.591-10-peterwu.pub@gmail.com>
+In-Reply-To: <20220715112607.591-10-peterwu.pub@gmail.com>
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Fri, 15 Jul 2022 15:10:42 +0200
-Message-ID: <CAHp75VdCgdTOu-CdNo9XGY+PrhPh93v_CkAHJC6hkArsKeiXbA@mail.gmail.com>
-Subject: Re: [PATCH v5 08/13] usb: typec: tcpci_mt6370: Add MediaTek MT6370
- tcpci driver
+Date: Fri, 15 Jul 2022 15:18:16 +0200
+Message-ID: <CAHp75VfiBcaSbZy67Puwb2pBW2MHN8iQj3upA=h3VkKSFJbs0g@mail.gmail.com>
+Subject: Re: [PATCH v5 09/13] iio: adc: mt6370: Add MediaTek MT6370 support
 To: ChiaEn Wu <peterwu.pub@gmail.com>
 Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
 	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
@@ -81,8 +80,8 @@ Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.or
 	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_061119_930136_5711BA9B 
-X-CRM114-Status: GOOD (  20.09  )
+X-CRM114-CacheID: sfid-20220715_061855_829653_96F97CE2 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,94 +97,70 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On Fri, Jul 15, 2022 at 1:28 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-
-> The MT6370 is a highly-integrated smart power management IC, which
-> includes a single cell Li-Ion/Li-Polymer switching battery charger,
-> a USB Type-C & Power Delivery (PD) controller, dual Flash LED current
-> sources, a RGB LED driver, a backlight WLED driver, a display bias
-> driver and a general LDO for portable devices.
 >
-> This commit add support for the Type-C & Power Delivery controller in
+> From: ChiaEn Wu <chiaen_wu@richtek.com>
+>
+> MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
+> with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
+> driver, display bias voltage supply, one general purpose LDO, and the
+> USB Type-C & PD controller complies with the latest USB Type-C and PD
+> standards.
+>
+> This adds support the MT6370 ADC driver for system monitoring, including
 
-This commit add -> Add
+This adds --> Add a
 
+> charger current, voltage, and temperature.
 
-> MediaTek MT6370 IC.
+...
 
+> +#include <linux/bits.h>
+> +#include <linux/bitfield.h>
+> +#include <linux/iio/iio.h>
+> +#include <linux/kernel.h>
+> +#include <linux/mod_devicetable.h>
+> +#include <linux/module.h>
+> +#include <linux/mutex.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +#include <linux/sysfs.h>
 
-> +static int mt6370_tcpc_probe(struct platform_device *pdev)
+...
+
+> +#define MT6370_AICR_400MA              0x6
+> +#define MT6370_ICHG_500MA              0x4
+> +#define MT6370_ICHG_900MA              0x8
+
+_mA ?
+
+...
+
+> +       ret = regmap_read_poll_timeout(priv->regmap,
+> +                                      MT6370_REG_CHG_ADC, reg_val,
+> +                                      !(reg_val & MT6370_ADC_START_MASK),
+> +                                      ADC_CONV_POLLING_TIME_US,
+> +                                      ADC_CONV_TIME_MS * 1000 * 3);
+
+1000 --> MILLI ?
+
+...
+
+> +static int mt6370_adc_probe(struct platform_device *pdev)
 > +{
-> +       struct mt6370_priv *priv;
-> +       struct device *dev = &pdev->dev;
+
+Given comment in one place in the entire series would be good to use
+in another where appropriate. For example, here it would also be nice
+to have a temporary variable
+
+  struct device *dev = &pdev->dev;
+
+It will shorten some lines.
+
+> +       struct mt6370_adc_data *priv;
+> +       struct iio_dev *indio_dev;
+> +       struct regmap *regmap;
 > +       int ret;
-> +
-> +       priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-> +       if (!priv)
-> +               return -ENOMEM;
-> +
-> +       priv->dev = dev;
-> +       platform_set_drvdata(pdev, priv);
-> +
-> +       priv->tcpci_data.regmap = dev_get_regmap(dev->parent, NULL);
-> +       if (!priv->tcpci_data.regmap)
-> +               return dev_err_probe(dev, -ENODEV, "Failed to init regmap\n");
-> +
-> +       ret = mt6370_check_vendor_info(priv);
-> +       if (ret)
-> +               return ret;
-> +
-> +       priv->irq = platform_get_irq(pdev, 0);
-> +       if (priv->irq < 0)
-> +               return priv->irq;
-> +
-> +       /* Assign TCPCI feature and ops */
-> +       priv->tcpci_data.auto_discharge_disconnect = 1;
-> +       priv->tcpci_data.init = mt6370_tcpc_init;
-> +       priv->tcpci_data.set_vconn = mt6370_tcpc_set_vconn;
-> +
-> +       priv->vbus = devm_regulator_get_optional(dev, "vbus");
-> +       if (!IS_ERR(priv->vbus))
-> +               priv->tcpci_data.set_vbus = mt6370_tcpc_set_vbus;
-> +
-> +       priv->tcpci = tcpci_register_port(dev, &priv->tcpci_data);
-> +       if (IS_ERR(priv->tcpci))
-> +               return dev_err_probe(dev, PTR_ERR(priv->tcpci),
-> +                                    "Failed to register tcpci port\n");
-> +
-> +       ret = devm_request_threaded_irq(dev, priv->irq, NULL,
-> +                                       mt6370_irq_handler, IRQF_ONESHOT,
-> +                                       dev_name(dev), priv);
-> +       if (ret) {
 
-> +               tcpci_unregister_port(priv->tcpci);
-
-This is wrong.
-You mixed devm_ with non-devm. Either drop devm_ *after* the first
-non-devm_ call, or convert everything to be managed.
-
-> +               return dev_err_probe(dev, ret, "Failed to allocate irq\n");
-> +       }
-> +
-> +       device_init_wakeup(dev, true);
-> +       dev_pm_set_wake_irq(dev, priv->irq);
-> +
-> +       return 0;
-> +}
-> +
-> +static int mt6370_tcpc_remove(struct platform_device *pdev)
-> +{
-> +       struct mt6370_priv *priv = platform_get_drvdata(pdev);
-
-> +       disable_irq(priv->irq);
-
-Why?
-An ugly workaround due to ordering issues in ->probe()?
-
-> +       tcpci_unregister_port(priv->tcpci);
-> +       dev_pm_clear_wake_irq(&pdev->dev);
-> +       device_init_wakeup(&pdev->dev, false);
-> +
-> +       return 0;
 > +}
 
 -- 
