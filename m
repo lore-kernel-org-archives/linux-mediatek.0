@@ -4,92 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52099C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 08:15:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6D42C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 08:18:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e+ERE0KIoScFnNn+zM8jJN/meHoLJnU/KJ0nScp1cAM=; b=o53t7VcK6hnx0moMrZgIwUtjWr
-	6xpolHNay5oWDJLqAdoPkpHdPRCF5yca1SWVOFbf7HZaWuH0CxXG0r45vgv82mMd8Vz/2JSxVsbM/
-	M2Hqg+KaPNTnytRJc8RNvfyVzHyZLGcZ/ztwPbZxjMZcpYiRmi3nXjQ35q88NP2Mn188kUiWOiloV
-	7Zm+yS//NYF9inusVlNMu+vydkRu6hb9JgtvpD3C+EUNwFlBZA9hZKQttgnjDjCg66mFvwoZl90Jq
-	ECw0j7HUus64Sl7k9tZx86eUUpsSf5LHzK4KS2VNlrtq8qzd+ZQ/3oQXIdmrW+RJsXyOEGyUBPqyD
-	EaCEYlGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=A8U10zfMg2MHnCiIBNObwk422GWQl02SfoTHfiQ0fc8=; b=knix5y8J1HBX2lycG/7BR7pIlk
+	MVNdUAqYBEGBOM5Ai6B4TSlCPyjcW6INmDfG10mtI2HsGT+luNtBBlS3JE5RzDmYOkls9a8uPYmcx
+	uAQaEoQrdTa4H3pedQh5YTU/1vejFaBWmIVm0Ixp4s+HrNbi847Z5BrUv+nZuHSainR0aeGpiWB77
+	GMgSGlOUGwNbzqI0BM3mgXSQjvnvxP87zzmHIRbfuSjwmMllkR9mSeVT7bYhNwdkMJLodfK6jIp/g
+	HbTL/iiyb9z0W+odE2oHEeJbL1otTrcQTvuPxp0YOSjHtotzhK/8iEfB0cpXeSscJA3XNyNzP8JVP
+	Vdktnh5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCGTl-005YMo-U1; Fri, 15 Jul 2022 08:15:17 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1oCGWZ-005aMD-Ep; Fri, 15 Jul 2022 08:18:11 +0000
+Received: from mail-qv1-f45.google.com ([209.85.219.45])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCGTj-005YKy-6D
-	for linux-mediatek@lists.infradead.org; Fri, 15 Jul 2022 08:15:16 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id w17so4903499ljh.6
-        for <linux-mediatek@lists.infradead.org>; Fri, 15 Jul 2022 01:15:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language
-         :from:to:cc:references:in-reply-to:content-transfer-encoding;
-        bh=e+ERE0KIoScFnNn+zM8jJN/meHoLJnU/KJ0nScp1cAM=;
-        b=ej3ctc4UQJ654wtTtLiTxBvgpCnZNLjLyuOrdNOd4+CszA6zehRmllfuaZyRbmchIW
-         fBkyZGtvSC/ZH5Cqqs/qqQpp5QGpdeDQkpQ3unibnm79+FkU37BUoMSM6Ow9yQOMOSa3
-         xX9sIIHxstIPDfNtEeikuNKW5bG/+RBrTvUU5nCWNiqxnbZQSm8p0/mFvaYqqug9jkMg
-         gVul9xFyT+rmkbxV7/ysJLSv25941FpziMavn0n4MR+pUtrdUHj3UnzY9u+7RshYbrxe
-         9IPYQ3QcGDIcPrhE8EkFnx0ht343qSG0X68toTsNL/ymMAY7OaTaenZ51p7VM0UWbSsw
-         hRPg==
+	id 1oCGWO-005aBb-9F; Fri, 15 Jul 2022 08:18:01 +0000
+Received: by mail-qv1-f45.google.com with SMTP id l11so3204717qvu.13;
+        Fri, 15 Jul 2022 01:17:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:from:to:cc:references:in-reply-to
-         :content-transfer-encoding;
-        bh=e+ERE0KIoScFnNn+zM8jJN/meHoLJnU/KJ0nScp1cAM=;
-        b=FGYQUhzoJp80t6vreyQYwGAYLN4xvt0CF6DHEVDxc2ZC5X/3yl5R/G2NiuCusR+9q6
-         uFk4if7S/pK/ZNoEfwZLWpAMP9BeGoseurTWNeSkqyfwyQdqIRWCAWP3ZI0giNkyhwX3
-         JWy6XSthMYz+sIYF6o5dFV/Vk8ZD8xzIf71eyOU2UnsPu3aRNEaCRcnEObn7ONLD1u2h
-         VesfVhyE5oVn8qXdTfCa8pSFIQsGwca3CD87uyJWg3PiAbpNF/+OsOXroSf4uNzd0qrS
-         p4g6RcrUrCOdacwU2v7+MyIgAIYycWbCoKvIeK4UnpfhJiAGScWOND8YNr6gfHBfoWd3
-         qkFA==
-X-Gm-Message-State: AJIora85X7Qy3l+gyWY+JTFjMd0hp4dO5Z++zQvJt7LHeNjp/48Guk6k
-	y6Cm+UQmVkgdBn0GQAII4EZzTA==
-X-Google-Smtp-Source: AGRyM1sMtUQaH6P6ehwbJuYCX/2dAmVEbQZVwJArYB54qbYI9BEIAead4/d8WxFm00HQoj3oVBoAyQ==
-X-Received: by 2002:a2e:8719:0:b0:25d:7650:6c06 with SMTP id m25-20020a2e8719000000b0025d76506c06mr6336445lji.330.1657872913617;
-        Fri, 15 Jul 2022 01:15:13 -0700 (PDT)
-Received: from [10.0.0.8] (fwa5da9-171.bb.online.no. [88.93.169.171])
-        by smtp.gmail.com with ESMTPSA id p22-20020a2eba16000000b0025d87966100sm632898lja.140.2022.07.15.01.15.11
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=A8U10zfMg2MHnCiIBNObwk422GWQl02SfoTHfiQ0fc8=;
+        b=2NWZNeZXjecMDq40K1hFGqNQ9QkL9xSvyvSygpwGfrdhT8POOxNCuDn6xdQNtaN2c4
+         ng2LYi2uJDpP42Ns83p2Xi3X8Fgcm1zX56bZLKnvziep3nJj3oLtIoLP1ensPgVF04+j
+         +nE5wleIfMo2vOn+957C53Tzp9bh4X7U47muqTeV1xXpCvjbLmw8FQuFhstAfnVWyDAN
+         g+0uxFRoItr2+G4EouX5s1FiYM00ufy9m4ST5hfTu5WlN6QUjWdIyEh66dpx4ZrXp9Rr
+         tU4XFr0yrYs670G3F7AFsHr2wqQpep42ikqb8W3AO29ucIwlUXazXnlLWmCYMYxGvu6Y
+         V11A==
+X-Gm-Message-State: AJIora9Cuhx+8Z3aktR53Wt4fmwRRdgPjUmtQMDNSrel0exoKqx+UIVx
+	UyU8ltP65uMqO7HQ1SVGXpUOKCxVUxFsMA==
+X-Google-Smtp-Source: AGRyM1u2Q+Hh30fBDLHsOsIHoETIyeKCreyNe/xYkwTmmLsaZhPiYJMUKsfxQmjqqxMW3VlDRb0jTg==
+X-Received: by 2002:a05:6214:d0f:b0:472:f446:4322 with SMTP id 15-20020a0562140d0f00b00472f4464322mr11202276qvh.0.1657873077988;
+        Fri, 15 Jul 2022 01:17:57 -0700 (PDT)
+Received: from mail-yw1-f173.google.com (mail-yw1-f173.google.com. [209.85.128.173])
+        by smtp.gmail.com with ESMTPSA id y13-20020a05620a25cd00b006af20edff0csm3383033qko.58.2022.07.15.01.17.56
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 15 Jul 2022 01:15:13 -0700 (PDT)
-Message-ID: <631560b2-58f7-064a-020b-d8029f04e451@linaro.org>
-Date: Fri, 15 Jul 2022 10:15:10 +0200
+        Fri, 15 Jul 2022 01:17:56 -0700 (PDT)
+Received: by mail-yw1-f173.google.com with SMTP id 00721157ae682-31c86fe1dddso40442737b3.1;
+        Fri, 15 Jul 2022 01:17:56 -0700 (PDT)
+X-Received: by 2002:a81:af27:0:b0:31c:833f:eda5 with SMTP id
+ n39-20020a81af27000000b0031c833feda5mr14511861ywh.358.1657873075845; Fri, 15
+ Jul 2022 01:17:55 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v2 05/19] dt-bindings: power: mediatek: Refine multiple
- level power domain nodes
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- MandyJH Liu <mandyjh.liu@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220714122837.20094-1-tinghan.shen@mediatek.com>
- <20220714122837.20094-6-tinghan.shen@mediatek.com>
- <c2e9f890-98c2-8f09-952d-495f2b57a254@linaro.org>
-In-Reply-To: <c2e9f890-98c2-8f09-952d-495f2b57a254@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20220628113714.7792-1-yee.lee@mediatek.com> <20220628113714.7792-2-yee.lee@mediatek.com>
+In-Reply-To: <20220628113714.7792-2-yee.lee@mediatek.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Fri, 15 Jul 2022 10:17:43 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdX=MTsmo5ZVa8ya3xmr4Mx7f0PB3gvFF42pdaTYB6-u5A@mail.gmail.com>
+Message-ID: <CAMuHMdX=MTsmo5ZVa8ya3xmr4Mx7f0PB3gvFF42pdaTYB6-u5A@mail.gmail.com>
+Subject: Re: [PATCH v2 1/1] mm: kfence: apply kmemleak_ignore_phys on early
+ allocated pool
+To: yee.lee@mediatek.com
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, 
+	Alexander Potapenko <glider@google.com>, Marco Elver <elver@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
+	Andrew Morton <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	"open list:KFENCE" <kasan-dev@googlegroups.com>, 
+	"open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_011515_277271_7F269F3F 
-X-CRM114-Status: UNSURE (   8.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220715_011800_336865_0A9810EC 
+X-CRM114-Status: GOOD (  20.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,20 +86,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15/07/2022 10:07, Krzysztof Kozlowski wrote:
-> On 14/07/2022 14:28, Tinghan Shen wrote:
->> Extract duplicated properties and support more levels of power
->> domain nodes.
+Hi Yee,
 
-Can you guys stop cc-ing all the non-working @mediatek.com emails? Every
-time I got a bunch of bounced:
+On Tue, Jun 28, 2022 at 1:42 PM <yee.lee@mediatek.com> wrote:
+> From: Yee Lee <yee.lee@mediatek.com>
+>
+> This patch solves two issues.
+>
+> (1) The pool allocated by memblock needs to unregister from
+> kmemleak scanning. Apply kmemleak_ignore_phys to replace the
+> original kmemleak_free as its address now is stored in the phys tree.
+>
+> (2) The pool late allocated by page-alloc doesn't need to unregister.
+> Move out the freeing operation from its call path.
+>
+> Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
+> Suggested-by: Marco Elver <elver@google.com>
+> Signed-off-by: Yee Lee <yee.lee@mediatek.com>
 
-550 Relaying mail to weiyi.lu@mediatek.com is not allowed
+Thank you, this fixes the storm of
 
-and other like that.
+    BUG: KFENCE: invalid read in scan_block+0x78/0x130
+    BUG: KFENCE: use-after-free read in scan_block+0x78/0x130
+    BUG: KFENCE: out-of-bounds read in scan_block+0x78/0x130
 
-Really, it's being since some time and it became extra annoying.
+messages I was seeing on arm64.
 
-Best regards,
-Krzysztof
+Tested-by: Geert Uytterhoeven <geert+renesas@glider.be>
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
