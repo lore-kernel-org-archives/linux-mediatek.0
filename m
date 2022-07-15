@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0E95C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 16:02:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CC44C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 16:03:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
 	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jgdDx9LQsyARI/DRrgkq1Gryik1L6rg1Iq2G8EvXqII=; b=fsYm85xfpJS4mgQuU6DW939pSn
-	bjhy4RRmqd5saLBiewoxCbBWhPDAI0f1Y/4/XKZaapWYBnfD7ZA/1sCK7jQ4Z09u7hNpwZb84qDFG
-	f6gi3kJIaxMGYRszWQ9bSZ1YJ6Po/Iy7PQxl+Nn8P+mDBJTVgv9Dwj8I0ODD1wcqv4rlv1X5WRTsc
-	SRNZeAF4YLhX42iLHyeupFx4XZYLfvttUpKmIw0JhRKCnKQGu8wIM1d0w/xLbY5sWno6yi9wSO3Ro
-	lb+M6Rd8Zx/85gJnx1RNpc0aYApZEOgb5ZHeEGC0VvPSwczljVLwsdJA1sYI++P6XEF7aVSjPq4ah
-	BVBmyT1Q==;
+	bh=87oaXdELgJ7WCn+eCWvUqcviggDTNCP3mxTrSmjvxRo=; b=nao0KEYLI68egYCOKj8VMRqyf4
+	fzrYPWqUvXw0ro5QjGjl4+fobhVOtLpdfg2JYSftVkeiPPHpc3dPeZJI0oZE9F2/x67Nsa1X53IV+
+	9UmBYmKkSqQYUwfITK/0kWQedBPGBwoC1kXtoRcVVgovQhLgPMMdkHT+pgie9tJ4CLcMAqVx3znf5
+	AWJ/bTmfZMOqxkPvFGQhjjGoZcVVy6+d1LqHeHgG5YDBJqtA0oj8GIwYuyRf+pt7aOfaNYhX3enAP
+	Bvqs8iLrtiJ4mddO9R/6R1EdrQDgvcNonkPxk6zTkOubFnM6etTOQYINjLiCwXm4WgGzPFPjpBP12
+	xFLg+wrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCNmC-008bxd-35; Fri, 15 Jul 2022 16:02:48 +0000
+	id 1oCNmg-008cHd-Tw; Fri, 15 Jul 2022 16:03:18 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCNlL-008bYm-JP; Fri, 15 Jul 2022 16:01:57 +0000
+	id 1oCNlS-008bao-76; Fri, 15 Jul 2022 16:02:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=jgdDx9LQsyARI/DRrgkq1Gryik1L6rg1Iq2G8EvXqII=; b=chYPJqcQOiyu0zMUNr+98oLToa
-	M36cKhNrkv84F6LJX9VOK4hShxzL2cpeiO6hu9uYH0uzgXiLvDQHgMhWo8LaFkKf7AAELMSHt/Pr4
-	yjzHJh/R41KW8xPIuwre+xOlH5SQuzKPvSdju2TH5zLz0DBUGFIUsc7xXT6YRovY7kvKq86Kq5giz
-	GJZb081aAtfvS25C4AE/nM+pyvRkwKsWhFLNTAuSU+d1ZYK+ghroNBI7W3tciBnU8jP+tKbPVAXQF
-	MzNSjF5YIYGRDNtgsCsR9swsK81m5pok7uWPHKvOjWZL+COLg9Q8mSKnZ53AHXscLZvtUgadfq82s
-	4HcHVfKw==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:46052 helo=rmk-PC.armlinux.org.uk)
+	bh=87oaXdELgJ7WCn+eCWvUqcviggDTNCP3mxTrSmjvxRo=; b=Vld7o3lF8EzFGJUgwqhcdYnml5
+	eJZalvrsHTb8byNYTiNvzwDTS8vZrkaMoIGj/iuIb45CcpFowKB1VUBxDpx55gESiyTFSjHRo+URo
+	tCPmtUIWjaPDZa8SI3UdbY2TnILT2zrIRznaJ9qfhyFrkvozc8npOGky22Q6/EBn+2f6XoIHixw0L
+	eGpbyfWQKw2+dvACZass7UaVpyR8rhrV5FxwBnP0iOryXJ4qoOTYu++dD7skAifhdyKeKHj/HAStj
+	9achYz9MR+rroR2m/0KHFi4jERfBN7JDTGGYglz5FrENkpwmcR/JpD25LlopPn77f8mjwZ0Xh8/rj
+	pZ9q/ShA==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:46054 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <rmk@armlinux.org.uk>)
-	id 1oCNl9-0007DP-MR; Fri, 15 Jul 2022 17:01:43 +0100
+	id 1oCNlE-0007Dx-R9; Fri, 15 Jul 2022 17:01:48 +0100
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1oCNl8-006e3t-Ub; Fri, 15 Jul 2022 17:01:43 +0100
+	id 1oCNlE-006e3z-3T; Fri, 15 Jul 2022 17:01:48 +0100
 In-Reply-To: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
 References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -80,8 +80,8 @@ Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
 	Vladimir Oltean <olteanv@gmail.com>,
 	Woojung Huh <woojung.huh@microchip.com>,
 	 Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
-Subject: [PATCH net-next 4/6] net: dsa: mv88e6xxx: report the default
- interface mode for the port
+Subject: [PATCH net-next 5/6] net: dsa: use swnode fixed-link if using default
+ params
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -89,11 +89,11 @@ MIME-Version: 1.0
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1oCNl8-006e3t-Ub@rmk-PC.armlinux.org.uk>
-Date: Fri, 15 Jul 2022 17:01:42 +0100
+Message-Id: <E1oCNlE-006e3z-3T@rmk-PC.armlinux.org.uk>
+Date: Fri, 15 Jul 2022 17:01:48 +0100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_090155_815453_F20D30C3 
-X-CRM114-Status: GOOD (  19.71  )
+X-CRM114-CacheID: sfid-20220715_090202_445224_2EFAE3EE 
+X-CRM114-Status: GOOD (  18.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,264 +108,204 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Report the maximum speed interface mode for the port, or if we don't
-have that information, the hardware configured interface mode for
-the port.
+Create and use a swnode fixed-link specification for phylink if no
+parameters are given in DT for a fixed-link. This allows phylink to
+be used for "default" cases for DSA and CPU ports. Enable the use
+of phylink in all cases for DSA and CPU ports.
 
-This allows phylink to know which interface mode CPU and DSA ports
-are operating, which will be necessary when we want to select the
-maximum speed for the port (required for such ports without a PHY or
-fixed-link specified in firmware.)
+Co-developed by Vladimir Oltean and myself.
 
+Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 Reviewed-by: Marek Behún <kabel@kernel.org>
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- drivers/net/dsa/mv88e6xxx/chip.c | 82 +++++++++++++++++++++++---------
- drivers/net/dsa/mv88e6xxx/chip.h |  3 +-
- 2 files changed, 61 insertions(+), 24 deletions(-)
+ net/dsa/port.c | 152 ++++++++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 139 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/net/dsa/mv88e6xxx/chip.c b/drivers/net/dsa/mv88e6xxx/chip.c
-index f98be98551ef..ccb35ea5d7b0 100644
---- a/drivers/net/dsa/mv88e6xxx/chip.c
-+++ b/drivers/net/dsa/mv88e6xxx/chip.c
-@@ -578,7 +578,8 @@ static const u8 mv88e6185_phy_interface_modes[] = {
+diff --git a/net/dsa/port.c b/net/dsa/port.c
+index 35b4e1f8dc05..abcf7899abf8 100644
+--- a/net/dsa/port.c
++++ b/net/dsa/port.c
+@@ -1521,10 +1521,131 @@ static const struct phylink_mac_ops dsa_port_phylink_mac_ops = {
+ 	.mac_link_up = dsa_port_phylink_mac_link_up,
  };
  
- static void mv88e6095_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
--				       struct phylink_config *config)
-+				       struct phylink_config *config,
-+				       phy_interface_t *default_interface)
- {
- 	u8 cmode = chip->ports[port].cmode;
- 
-@@ -588,23 +589,29 @@ static void mv88e6095_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
- 		__set_bit(PHY_INTERFACE_MODE_MII, config->supported_interfaces);
- 	} else {
- 		if (cmode < ARRAY_SIZE(mv88e6185_phy_interface_modes) &&
--		    mv88e6185_phy_interface_modes[cmode])
-+		    mv88e6185_phy_interface_modes[cmode]) {
- 			__set_bit(mv88e6185_phy_interface_modes[cmode],
- 				  config->supported_interfaces);
-+			*default_interface =
-+				mv88e6185_phy_interface_modes[cmode];
++static struct {
++	unsigned long mask;
++	int speed;
++	int duplex;
++} phylink_caps_params[] = {
++	{ MAC_400000FD, SPEED_400000, DUPLEX_FULL },
++	{ MAC_200000FD, SPEED_200000, DUPLEX_FULL },
++	{ MAC_100000FD, SPEED_100000, DUPLEX_FULL },
++	{ MAC_56000FD,  SPEED_56000,  DUPLEX_FULL },
++	{ MAC_50000FD,  SPEED_50000,  DUPLEX_FULL },
++	{ MAC_40000FD,  SPEED_40000,  DUPLEX_FULL },
++	{ MAC_25000FD,  SPEED_25000,  DUPLEX_FULL },
++	{ MAC_20000FD,  SPEED_20000,  DUPLEX_FULL },
++	{ MAC_10000FD,  SPEED_10000,  DUPLEX_FULL },
++	{ MAC_5000FD,   SPEED_5000,   DUPLEX_FULL },
++	{ MAC_2500FD,   SPEED_2500,   DUPLEX_FULL },
++	{ MAC_1000FD,   SPEED_1000,   DUPLEX_FULL },
++	{ MAC_100FD,    SPEED_100,    DUPLEX_FULL },
++	{ MAC_10FD,     SPEED_10,     DUPLEX_FULL },
++	{ MAC_1000HD,   SPEED_1000,   DUPLEX_HALF },
++	{ MAC_100HD,    SPEED_100,    DUPLEX_HALF },
++	{ MAC_10HD,     SPEED_10,     DUPLEX_HALF },
++};
++
++static int dsa_port_find_max_speed(unsigned long caps, int *speed, int *duplex)
++{
++	int i;
++
++	*speed = SPEED_UNKNOWN;
++	*duplex = DUPLEX_UNKNOWN;
++
++	for (i = 0; i < ARRAY_SIZE(phylink_caps_params); i++) {
++		if (caps & phylink_caps_params[i].mask) {
++			*speed = phylink_caps_params[i].speed;
++			*duplex = phylink_caps_params[i].duplex;
++			break;
 +		}
- 
- 		config->mac_capabilities |= MAC_1000FD;
- 	}
- }
- 
- static void mv88e6185_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
--				       struct phylink_config *config)
-+				       struct phylink_config *config,
-+				       phy_interface_t *default_interface)
- {
- 	u8 cmode = chip->ports[port].cmode;
- 
- 	if (cmode < ARRAY_SIZE(mv88e6185_phy_interface_modes) &&
--	    mv88e6185_phy_interface_modes[cmode])
-+	    mv88e6185_phy_interface_modes[cmode]) {
- 		__set_bit(mv88e6185_phy_interface_modes[cmode],
- 			  config->supported_interfaces);
-+		*default_interface = mv88e6185_phy_interface_modes[cmode];
 +	}
- 
- 	config->mac_capabilities = MAC_SYM_PAUSE | MAC_10 | MAC_100 |
- 				   MAC_1000FD;
-@@ -616,6 +623,7 @@ static const u8 mv88e6xxx_phy_interface_modes[] = {
- 	[MV88E6XXX_PORT_STS_CMODE_GMII]		= PHY_INTERFACE_MODE_GMII,
- 	[MV88E6XXX_PORT_STS_CMODE_RMII_PHY]	= PHY_INTERFACE_MODE_RMII,
- 	[MV88E6XXX_PORT_STS_CMODE_RMII]		= PHY_INTERFACE_MODE_RMII,
-+	[MV88E6XXX_PORT_STS_CMODE_RGMII]	= PHY_INTERFACE_MODE_RGMII,
- 	[MV88E6XXX_PORT_STS_CMODE_100BASEX]	= PHY_INTERFACE_MODE_100BASEX,
- 	[MV88E6XXX_PORT_STS_CMODE_1000BASEX]	= PHY_INTERFACE_MODE_1000BASEX,
- 	[MV88E6XXX_PORT_STS_CMODE_SGMII]	= PHY_INTERFACE_MODE_SGMII,
-@@ -625,22 +633,32 @@ static const u8 mv88e6xxx_phy_interface_modes[] = {
- 	 */
- };
- 
--static void mv88e6xxx_translate_cmode(u8 cmode, unsigned long *supported)
-+static void mv88e6xxx_translate_cmode(u8 cmode, unsigned long *supported,
-+				      phy_interface_t *default_interface)
- {
++
++	return *speed == SPEED_UNKNOWN ? -EINVAL : 0;
++}
++
++static void dsa_port_find_max_caps(struct dsa_port *dp,
++				   phy_interface_t *max_interface,
++				   unsigned long *max_caps)
++{
++	struct phylink_config *config = &dp->pl_config;
 +	phy_interface_t interface;
++	unsigned long caps;
 +
- 	if (cmode < ARRAY_SIZE(mv88e6xxx_phy_interface_modes) &&
--	    mv88e6xxx_phy_interface_modes[cmode])
--		__set_bit(mv88e6xxx_phy_interface_modes[cmode], supported);
--	else if (cmode == MV88E6XXX_PORT_STS_CMODE_RGMII)
--		phy_interface_set_rgmii(supported);
-+	    mv88e6xxx_phy_interface_modes[cmode]) {
-+		interface = mv88e6xxx_phy_interface_modes[cmode];
-+		if (interface == PHY_INTERFACE_MODE_RGMII)
-+			phy_interface_set_rgmii(supported);
-+		else
-+			__set_bit(interface, supported);
-+		if (default_interface)
-+			*default_interface = interface;
++	*max_interface = PHY_INTERFACE_MODE_NA;
++	*max_caps = 0;
++
++	for_each_set_bit(interface, config->supported_interfaces,
++			 PHY_INTERFACE_MODE_MAX) {
++		caps = config->mac_capabilities &
++		       phylink_interface_to_caps(interface);
++		if (caps > *max_caps) {
++			*max_caps = caps;
++			*max_interface = interface;
++		}
 +	}
- }
- 
- static void mv88e6250_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
--				       struct phylink_config *config)
-+				       struct phylink_config *config,
-+				       phy_interface_t *default_interface)
- {
- 	unsigned long *supported = config->supported_interfaces;
- 
- 	/* Translate the default cmode */
--	mv88e6xxx_translate_cmode(chip->ports[port].cmode, supported);
-+	mv88e6xxx_translate_cmode(chip->ports[port].cmode, supported,
-+				  default_interface);
- 
- 	config->mac_capabilities = MAC_SYM_PAUSE | MAC_10 | MAC_100;
- }
-@@ -676,13 +694,15 @@ static int mv88e6352_get_port4_serdes_cmode(struct mv88e6xxx_chip *chip)
- }
- 
- static void mv88e6352_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
--				       struct phylink_config *config)
-+				       struct phylink_config *config,
-+				       phy_interface_t *default_interface)
- {
- 	unsigned long *supported = config->supported_interfaces;
- 	int err, cmode;
- 
- 	/* Translate the default cmode */
--	mv88e6xxx_translate_cmode(chip->ports[port].cmode, supported);
-+	mv88e6xxx_translate_cmode(chip->ports[port].cmode, supported,
-+				  default_interface);
- 
- 	config->mac_capabilities = MAC_SYM_PAUSE | MAC_10 | MAC_100 |
- 				   MAC_1000FD;
-@@ -702,19 +722,21 @@ static void mv88e6352_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
- 			dev_err(chip->dev, "p%d: failed to read serdes cmode\n",
- 				port);
- 		else
--			mv88e6xxx_translate_cmode(cmode, supported);
-+			mv88e6xxx_translate_cmode(cmode, supported, NULL);
- unlock:
- 		mv88e6xxx_reg_unlock(chip);
- 	}
- }
- 
- static void mv88e6341_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
--				       struct phylink_config *config)
-+				       struct phylink_config *config,
-+				       phy_interface_t *default_interface)
- {
- 	unsigned long *supported = config->supported_interfaces;
- 
- 	/* Translate the default cmode */
--	mv88e6xxx_translate_cmode(chip->ports[port].cmode, supported);
-+	mv88e6xxx_translate_cmode(chip->ports[port].cmode, supported,
-+				  default_interface);
- 
- 	/* No ethtool bits for 200Mbps */
- 	config->mac_capabilities = MAC_SYM_PAUSE | MAC_10 | MAC_100 |
-@@ -726,17 +748,21 @@ static void mv88e6341_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
- 		__set_bit(PHY_INTERFACE_MODE_1000BASEX, supported);
- 		__set_bit(PHY_INTERFACE_MODE_2500BASEX, supported);
- 
-+		*default_interface = PHY_INTERFACE_MODE_2500BASEX;
++}
 +
- 		config->mac_capabilities |= MAC_2500FD;
- 	}
- }
- 
- static void mv88e6390_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
--				       struct phylink_config *config)
-+				       struct phylink_config *config,
-+				       phy_interface_t *default_interface)
- {
- 	unsigned long *supported = config->supported_interfaces;
- 
- 	/* Translate the default cmode */
--	mv88e6xxx_translate_cmode(chip->ports[port].cmode, supported);
-+	mv88e6xxx_translate_cmode(chip->ports[port].cmode, supported,
-+				  default_interface);
- 
- 	/* No ethtool bits for 200Mbps */
- 	config->mac_capabilities = MAC_SYM_PAUSE | MAC_10 | MAC_100 |
-@@ -748,16 +774,19 @@ static void mv88e6390_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
- 		__set_bit(PHY_INTERFACE_MODE_1000BASEX, supported);
- 		__set_bit(PHY_INTERFACE_MODE_2500BASEX, supported);
- 
-+		*default_interface = PHY_INTERFACE_MODE_2500BASEX;
++static struct fwnode_handle *dsa_port_get_fwnode(struct dsa_port *dp,
++						 phy_interface_t mode)
++{
++	struct property_entry fixed_link_props[3] = { };
++	struct property_entry port_props[3] = {};
++	struct fwnode_handle *fixed_link_fwnode;
++	struct fwnode_handle *new_port_fwnode;
++	struct device_node *dn = dp->dn;
++	struct device_node *phy_node;
++	int err, speed, duplex;
++	unsigned long caps;
 +
- 		config->mac_capabilities |= MAC_2500FD;
- 	}
- }
- 
- static void mv88e6390x_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
--					struct phylink_config *config)
-+					struct phylink_config *config,
-+					phy_interface_t *default_interface)
- {
- 	unsigned long *supported = config->supported_interfaces;
- 
--	mv88e6390_phylink_get_caps(chip, port, config);
-+	mv88e6390_phylink_get_caps(chip, port, config, default_interface);
- 
- 	/* For the 6x90X, ports 2-7 can be in automedia mode.
- 	 * (Note that 6x90 doesn't support RXAUI nor XAUI).
-@@ -783,18 +812,22 @@ static void mv88e6390x_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
- 		__set_bit(PHY_INTERFACE_MODE_XAUI, supported);
- 		__set_bit(PHY_INTERFACE_MODE_RXAUI, supported);
- 
-+		*default_interface = PHY_INTERFACE_MODE_XAUI;
++	phy_node = of_parse_phandle(dn, "phy-handle", 0);
++	of_node_put(phy_node);
++	if (phy_node || of_phy_is_fixed_link(dn))
++		/* Nothing broken, nothing to fix.
++		 * TODO: As discussed with Russell, maybe phylink could provide
++		 * a more comprehensive helper to determine what constitutes a
++		 * valid fwnode binding than this guerilla kludge.
++		 */
++		return of_fwnode_handle(dn);
 +
- 		config->mac_capabilities |= MAC_10000FD;
- 	}
- }
- 
- static void mv88e6393x_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
--					struct phylink_config *config)
-+					struct phylink_config *config,
-+					phy_interface_t *default_interface)
- {
- 	unsigned long *supported = config->supported_interfaces;
- 	bool is_6191x =
- 		chip->info->prod_num == MV88E6XXX_PORT_SWITCH_ID_PROD_6191X;
- 
--	mv88e6xxx_translate_cmode(chip->ports[port].cmode, supported);
-+	mv88e6xxx_translate_cmode(chip->ports[port].cmode, supported,
-+				  default_interface);
- 
- 	config->mac_capabilities = MAC_SYM_PAUSE | MAC_10 | MAC_100 |
- 				   MAC_1000FD;
-@@ -812,6 +845,8 @@ static void mv88e6393x_phylink_get_caps(struct mv88e6xxx_chip *chip, int port,
- 			/* FIXME: USXGMII is not supported yet */
- 			/* __set_bit(PHY_INTERFACE_MODE_USXGMII, supported); */
- 
-+			*default_interface = PHY_INTERFACE_MODE_10GBASER;
++	if (mode == PHY_INTERFACE_MODE_NA)
++		dsa_port_find_max_caps(dp, &mode, &caps);
++	else
++		caps = dp->pl_config.mac_capabilities &
++		       phylink_interface_to_caps(mode);
 +
- 			config->mac_capabilities |= MAC_2500FD | MAC_5000FD |
- 				MAC_10000FD;
- 		}
-@@ -824,7 +859,8 @@ static void mv88e6xxx_get_caps(struct dsa_switch *ds, int port,
++	err = dsa_port_find_max_speed(caps, &speed, &duplex);
++	if (err)
++		return ERR_PTR(err);
++
++	fixed_link_props[0] = PROPERTY_ENTRY_U32("speed", speed);
++	if (duplex == DUPLEX_FULL)
++		fixed_link_props[1] = PROPERTY_ENTRY_BOOL("full-duplex");
++
++	port_props[0] = PROPERTY_ENTRY_STRING("phy-mode", phy_modes(mode));
++
++	new_port_fwnode = fwnode_create_software_node(port_props, NULL);
++	if (IS_ERR(new_port_fwnode))
++		return new_port_fwnode;
++
++	/* Node needs to be named so that phylink's call to
++	 * fwnode_get_named_child_node() finds it.
++	 */
++	fixed_link_fwnode = fwnode_create_named_software_node(fixed_link_props,
++							      new_port_fwnode,
++							      "fixed-link");
++	if (IS_ERR(fixed_link_fwnode)) {
++		fwnode_remove_software_node(new_port_fwnode);
++		return fixed_link_fwnode;
++	}
++
++	return new_port_fwnode;
++}
++
+ int dsa_port_phylink_create(struct dsa_port *dp)
  {
- 	struct mv88e6xxx_chip *chip = ds->priv;
+ 	struct dsa_switch *ds = dp->ds;
+ 	phy_interface_t mode, def_mode;
++	struct fwnode_handle *fwnode;
+ 	int err;
  
--	chip->info->ops->phylink_get_caps(chip, port, config);
-+	chip->info->ops->phylink_get_caps(chip, port, config,
-+					  default_interface);
+ 	/* Presence of phylink_mac_link_state or phylink_mac_an_restart is
+@@ -1552,8 +1673,19 @@ int dsa_port_phylink_create(struct dsa_port *dp)
+ 			mode = PHY_INTERFACE_MODE_NA;
+ 	}
  
- 	/* Internal ports need GMII for PHYLIB */
- 	if (mv88e6xxx_phy_is_internal(ds, port))
-diff --git a/drivers/net/dsa/mv88e6xxx/chip.h b/drivers/net/dsa/mv88e6xxx/chip.h
-index e693154cf803..4518c17c1b9b 100644
---- a/drivers/net/dsa/mv88e6xxx/chip.h
-+++ b/drivers/net/dsa/mv88e6xxx/chip.h
-@@ -643,7 +643,8 @@ struct mv88e6xxx_ops {
+-	dp->pl = phylink_create(&dp->pl_config, of_fwnode_handle(dp->dn),
+-				mode, &dsa_port_phylink_mac_ops);
++	fwnode = dsa_port_get_fwnode(dp, mode);
++	if (IS_ERR(fwnode)) {
++		dev_err(ds->dev,
++			"Failed to get fwnode for port %d: %pe\n",
++			dp->index, fwnode);
++		return PTR_ERR(fwnode);
++	}
++
++	dp->pl = phylink_create(&dp->pl_config, fwnode, mode,
++				&dsa_port_phylink_mac_ops);
++
++	fwnode_remove_software_node(fwnode);
++
+ 	if (IS_ERR(dp->pl)) {
+ 		pr_err("error creating PHYLINK: %ld\n", PTR_ERR(dp->pl));
+ 		return PTR_ERR(dp->pl);
+@@ -1663,20 +1795,14 @@ static int dsa_port_phylink_register(struct dsa_port *dp)
+ int dsa_port_link_register_of(struct dsa_port *dp)
+ {
+ 	struct dsa_switch *ds = dp->ds;
+-	struct device_node *phy_np;
+ 	int port = dp->index;
  
- 	/* Phylink */
- 	void (*phylink_get_caps)(struct mv88e6xxx_chip *chip, int port,
--				 struct phylink_config *config);
-+				 struct phylink_config *config,
-+				 phy_interface_t *default_interface);
+ 	if (!ds->ops->adjust_link) {
+-		phy_np = of_parse_phandle(dp->dn, "phy-handle", 0);
+-		if (of_phy_is_fixed_link(dp->dn) || phy_np) {
+-			if (ds->ops->phylink_mac_link_down)
+-				ds->ops->phylink_mac_link_down(ds, port,
+-					MLO_AN_FIXED, PHY_INTERFACE_MODE_NA);
+-			of_node_put(phy_np);
+-			return dsa_port_phylink_register(dp);
+-		}
+-		of_node_put(phy_np);
+-		return 0;
++		if (ds->ops->phylink_mac_link_down)
++			ds->ops->phylink_mac_link_down(ds, port, MLO_AN_FIXED,
++						       PHY_INTERFACE_MODE_NA);
++
++		return dsa_port_phylink_register(dp);
+ 	}
  
- 	/* Max Frame Size */
- 	int (*set_max_frame_size)(struct mv88e6xxx_chip *chip, int mtu);
+ 	dev_warn(ds->dev,
 -- 
 2.30.2
 
