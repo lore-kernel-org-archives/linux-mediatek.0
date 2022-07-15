@@ -4,67 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B83C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 19:59:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEBA4C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 20:11:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HL4YqkhHTZulmVGkQ727X6hpWd2MP1vP+U3JHn48XIg=; b=sZffj2WMMpHybiAl6Nr31lBr7D
-	7QF8s3cei2rfwcWFXMMsoMM5dYvN1y4HSuvHN7vEiShFYFDGY8EoBWPQf7h64QOS+J7iniFEB1X2S
-	Ny9PWfrRLquNzmclLa12eAjpyCvH7MIWeMersvWudvv3R1arOUBy/Ey6QGol1SAw1GEtBpR3ALqHM
-	hk9wXwYYXnuvUdV98qltv6v11HwjGTRNQc4fmoxK2pwuZVgwRgnIibEchM9jruXBTpomPwxPnLort
-	YcUWlY4r8EYeVfQ2/BKPHWrsEl0uB5w5lv0EMEQarYa1olZSf9nebhV46yj4PS9Y5gCjO3gqcgaXU
-	VvvuYbJA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Z4sHc/9CthPVPZgqiU1bR5OnkCnYefmvAewwJ+hxxVo=; b=yGFnAFYpJ/65qmMQXpEFMMDmyL
+	GgdfUa2oGlE03ve9wkS3sYskt7JKrpJchZgU/5rvovEaQ7WN+lOr2yLeFje7eVjJ2F5OM79EPXPq8
+	XgM37VH4cfDxM5P9O2nfeqETtAdkytbX+9Y36rgsyAKCFJYuV+NuBJwS8FBMX5SofVtCkMlfPr5/x
+	iFFOv6Apm+KF2Fayq+oGxtPHdP8itYhcsPBZEA1Ja9tvti/Lol106LTOG2gmXiFBaHUoJRqKCO8qA
+	8eVvfYZh0uXKQD+HamxEZiAhImCXT8m3pNBUknVIKz6UDiupmG5O77KGuxlIEkPnUPazreS6vSmxD
+	Lh5GHtfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCRTa-00A01s-Cs; Fri, 15 Jul 2022 19:59:50 +0000
-Received: from mail-pj1-f50.google.com ([209.85.216.50])
+	id 1oCRf2-00A4Pu-Ol; Fri, 15 Jul 2022 20:11:40 +0000
+Received: from mga17.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCRTV-009zxn-6u
-	for linux-mediatek@lists.infradead.org; Fri, 15 Jul 2022 19:59:46 +0000
-Received: by mail-pj1-f50.google.com with SMTP id q5-20020a17090a304500b001efcc885cc4so7097255pjl.4
-        for <linux-mediatek@lists.infradead.org>; Fri, 15 Jul 2022 12:59:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=HL4YqkhHTZulmVGkQ727X6hpWd2MP1vP+U3JHn48XIg=;
-        b=OUNe9lbu8E20TY7A9V+g8/wvILCUoCS5xdeS0c60f+bhDsO7VJz0eRzn/qjy3/bAxI
-         VNclJnTAlqkDHk08PY3y8FuHxzDk0nLvtiX35CRXSa/jykFRVITCv9UtD5o8ba36tP15
-         yV5logNkajYM1WWo64JUCCEcPnPkmUq/7g4NcloTcI2wUnMhKLHXIJgrhPm/jZuVUHDL
-         QBHcJhUAWLCR7ggOJp1vFuSVbb/WsHZZFEbEZa+sinFJL/JrqKRIckedGhvz+Gi9pRUf
-         R3BwlYh+loemKw0+ljV6wFTj460Y/wfEj43Hs7Fzi6s1xGopAm/AELlfMT0DepeSLPIe
-         7yvQ==
-X-Gm-Message-State: AJIora/hImv7M5F3nHfmLv0yQYSNlLYpi8I62Grwxw1AD4dGMRu158LR
-	YL7SM+k45ADNy9jVD8Cvipc=
-X-Google-Smtp-Source: AGRyM1ukmZfUzuo48kaMe5GDLlJagmXC8YovtfPvTQyT4c6UyqIKlUNyVjgw7YKbJ1QDyS4v2d0GSQ==
-X-Received: by 2002:a17:902:d2c8:b0:16c:58d:7278 with SMTP id n8-20020a170902d2c800b0016c058d7278mr15621362plc.45.1657915184160;
-        Fri, 15 Jul 2022 12:59:44 -0700 (PDT)
-Received: from sean-ThinkPad-T450s.lan (c-73-71-21-1.hsd1.ca.comcast.net. [73.71.21.1])
-        by smtp.gmail.com with ESMTPSA id y1-20020a62ce01000000b00528bc6d8939sm4224629pfg.157.2022.07.15.12.59.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Jul 2022 12:59:43 -0700 (PDT)
-From: sean.wang@kernel.org
-To: stable@vger.kernel.org
-Cc: linux-wireless@vger.kernel.org,
+	id 1oCRes-00A4OZ-C1; Fri, 15 Jul 2022 20:11:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1657915890; x=1689451890;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=FKJ/dIF3JDEjcdCfFHYJXRw3fJQKzGLSXIktrmv9EfU=;
+  b=A9l5ZG6HkNzBX0AhxkYFsEvQyzgCfpu15884ol65Ff+dTI4Pk4AMqa11
+   CxVuhdNMoCcV7DmHU81mde/hrLoXdG7Eow23EnqmvEQOZ5kLUhnaKphQM
+   HMwCx1FKSgyVRtaYXv1pT8eAtbH17jMhFWIxIRSndBMOjktPxkx4k5u7v
+   aB2SwiXr4MprHmSc/6ox5RDNP+n4Q2QrtU9E/USbJLH1f2TfVfccZibVB
+   eWByHHNrORafRmUNnECPDbIvpZTDUc9jCgtnhN+VvS5PovH1Q55L2jeTm
+   pJipBLEkjouYYkyN7CAzrjTanuYEd4D26t6/Opf0TVxbmnvtV09s5uAw7
+   Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10409"; a="266303734"
+X-IronPort-AV: E=Sophos;i="5.92,274,1650956400"; 
+   d="scan'208";a="266303734"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2022 13:11:29 -0700
+X-IronPort-AV: E=Sophos;i="5.92,274,1650956400"; 
+   d="scan'208";a="686087461"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2022 13:11:22 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1oCReg-001JEh-2D;
+	Fri, 15 Jul 2022 23:11:18 +0300
+Date: Fri, 15 Jul 2022 23:11:18 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH v2 5.15 5/5] mt76: mt7921: Fix the error handling path of mt7921_pci_probe()
-Date: Fri, 15 Jul 2022 12:59:26 -0700
-Message-Id: <768b04c445f39ad1fc166b98be8154bd413f978a.1657915079.git.sean.wang@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <27b8ccd411f2c51e2b8193a4eb1fa7e6f416a2f0.1657915079.git.sean.wang@kernel.org>
-References: <27b8ccd411f2c51e2b8193a4eb1fa7e6f416a2f0.1657915079.git.sean.wang@kernel.org>
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
+Subject: Re: [PATCH net-next 5/6] net: dsa: use swnode fixed-link if using
+ default params
+Message-ID: <YtHJ5rfxZ+icXrkC@smile.fi.intel.com>
+References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+ <E1oCNlE-006e3z-3T@rmk-PC.armlinux.org.uk>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <E1oCNlE-006e3z-3T@rmk-PC.armlinux.org.uk>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_125945_310292_7D8A8600 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20220715_131130_478347_9F77C266 
+X-CRM114-Status: GOOD (  23.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,50 +109,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+On Fri, Jul 15, 2022 at 05:01:48PM +0100, Russell King (Oracle) wrote:
+> Create and use a swnode fixed-link specification for phylink if no
+> parameters are given in DT for a fixed-link. This allows phylink to
+> be used for "default" cases for DSA and CPU ports. Enable the use
+> of phylink in all cases for DSA and CPU ports.
 
-commit 4e90db5e21eb3bb272fe47386dc3506755e209e9 upstream.
+> Co-developed by Vladimir Oltean and myself.
 
-In case of error, some resources must be freed, as already done above and
-below the devm_kmemdup() and __mt7921e_mcu_drv_pmctrl() calls added in the
-commit in Fixes:.
+Why not to use
 
-Fixes: 602cc0c9618a ("mt76: mt7921e: fix possible probe failure after reboot")
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
----
-v2: no changed
----
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+  Co-developed-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 815b926e52e9..36e6495ae658 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -254,8 +254,10 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 	dev->bus_ops = dev->mt76.bus;
- 	bus_ops = devm_kmemdup(dev->mt76.dev, dev->bus_ops, sizeof(*bus_ops),
- 			       GFP_KERNEL);
--	if (!bus_ops)
--		return -ENOMEM;
-+	if (!bus_ops) {
-+		ret = -ENOMEM;
-+		goto err_free_dev;
-+	}
- 
- 	bus_ops->rr = mt7921_rr;
- 	bus_ops->wr = mt7921_wr;
-@@ -264,7 +266,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 
- 	ret = __mt7921e_mcu_drv_pmctrl(dev);
- 	if (ret)
--		return ret;
-+		goto err_free_dev;
- 
- 	mdev->rev = (mt7921_l1_rr(dev, MT_HW_CHIPID) << 16) |
- 		    (mt7921_l1_rr(dev, MT_HW_REV) & 0xff);
+?
+
+> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+> Reviewed-by: Marek Behún <kabel@kernel.org>
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+
+...
+
+> +static struct {
+> +	unsigned long mask;
+> +	int speed;
+> +	int duplex;
+> +} phylink_caps_params[] = {
+> +	{ MAC_400000FD, SPEED_400000, DUPLEX_FULL },
+> +	{ MAC_200000FD, SPEED_200000, DUPLEX_FULL },
+> +	{ MAC_100000FD, SPEED_100000, DUPLEX_FULL },
+> +	{ MAC_56000FD,  SPEED_56000,  DUPLEX_FULL },
+> +	{ MAC_50000FD,  SPEED_50000,  DUPLEX_FULL },
+> +	{ MAC_40000FD,  SPEED_40000,  DUPLEX_FULL },
+> +	{ MAC_25000FD,  SPEED_25000,  DUPLEX_FULL },
+> +	{ MAC_20000FD,  SPEED_20000,  DUPLEX_FULL },
+> +	{ MAC_10000FD,  SPEED_10000,  DUPLEX_FULL },
+> +	{ MAC_5000FD,   SPEED_5000,   DUPLEX_FULL },
+> +	{ MAC_2500FD,   SPEED_2500,   DUPLEX_FULL },
+> +	{ MAC_1000FD,   SPEED_1000,   DUPLEX_FULL },
+> +	{ MAC_100FD,    SPEED_100,    DUPLEX_FULL },
+> +	{ MAC_10FD,     SPEED_10,     DUPLEX_FULL },
+> +	{ MAC_1000HD,   SPEED_1000,   DUPLEX_HALF },
+> +	{ MAC_100HD,    SPEED_100,    DUPLEX_HALF },
+> +	{ MAC_10HD,     SPEED_10,     DUPLEX_HALF },
+> +};
+> +
+> +static int dsa_port_find_max_speed(unsigned long caps, int *speed, int *duplex)
+> +{
+> +	int i;
+> +
+> +	*speed = SPEED_UNKNOWN;
+> +	*duplex = DUPLEX_UNKNOWN;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(phylink_caps_params); i++) {
+> +		if (caps & phylink_caps_params[i].mask) {
+> +			*speed = phylink_caps_params[i].speed;
+> +			*duplex = phylink_caps_params[i].duplex;
+
+> +			break;
+
+With the below check it's way too protective programming.
+
+			return 0;
+
+> +		}
+> +	}
+> +
+> +	return *speed == SPEED_UNKNOWN ? -EINVAL : 0;
+
+	return -EINVAL;
+
+> +}
+
+...
+
+> +static struct fwnode_handle *dsa_port_get_fwnode(struct dsa_port *dp,
+> +						 phy_interface_t mode)
+> +{
+
+> +	struct property_entry fixed_link_props[3] = { };
+> +	struct property_entry port_props[3] = {};
+
+A bit of consistency in the assignments?
+
+Also it seems you are using up to 2 for the first one and only 1 in the second
+one. IIUC it requires a terminator entry, so it means 3 and 2. Do we really
+need 3 in the second case?
+
+> +	struct fwnode_handle *fixed_link_fwnode;
+> +	struct fwnode_handle *new_port_fwnode;
+> +	struct device_node *dn = dp->dn;
+> +	struct device_node *phy_node;
+> +	int err, speed, duplex;
+> +	unsigned long caps;
+> +
+> +	phy_node = of_parse_phandle(dn, "phy-handle", 0);
+
+fwnode in the name, why not to use fwnode APIs?
+
+	fwnode_find_reference();
+
+> +	of_node_put(phy_node);
+> +	if (phy_node || of_phy_is_fixed_link(dn))
+> +		/* Nothing broken, nothing to fix.
+> +		 * TODO: As discussed with Russell, maybe phylink could provide
+> +		 * a more comprehensive helper to determine what constitutes a
+> +		 * valid fwnode binding than this guerilla kludge.
+> +		 */
+> +		return of_fwnode_handle(dn);
+> +
+> +	if (mode == PHY_INTERFACE_MODE_NA)
+> +		dsa_port_find_max_caps(dp, &mode, &caps);
+> +	else
+> +		caps = dp->pl_config.mac_capabilities &
+> +		       phylink_interface_to_caps(mode);
+> +
+> +	err = dsa_port_find_max_speed(caps, &speed, &duplex);
+> +	if (err)
+> +		return ERR_PTR(err);
+> +
+> +	fixed_link_props[0] = PROPERTY_ENTRY_U32("speed", speed);
+> +	if (duplex == DUPLEX_FULL)
+> +		fixed_link_props[1] = PROPERTY_ENTRY_BOOL("full-duplex");
+> +
+> +	port_props[0] = PROPERTY_ENTRY_STRING("phy-mode", phy_modes(mode));
+> +
+> +	new_port_fwnode = fwnode_create_software_node(port_props, NULL);
+> +	if (IS_ERR(new_port_fwnode))
+> +		return new_port_fwnode;
+> +
+> +	/* Node needs to be named so that phylink's call to
+> +	 * fwnode_get_named_child_node() finds it.
+> +	 */
+> +	fixed_link_fwnode = fwnode_create_named_software_node(fixed_link_props,
+> +							      new_port_fwnode,
+> +							      "fixed-link");
+> +	if (IS_ERR(fixed_link_fwnode)) {
+> +		fwnode_remove_software_node(new_port_fwnode);
+> +		return fixed_link_fwnode;
+> +	}
+> +
+> +	return new_port_fwnode;
+> +}
+
 -- 
-2.25.1
+With Best Regards,
+Andy Shevchenko
+
 
 
