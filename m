@@ -4,61 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D80AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 13:43:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11883C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 14:14:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:MIME-Version:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=03wcnwqW6SswNVSW3NYFh+nPKkFyDcywCPMc3nrTTzo=; b=D83l41koLqwfMzxnKxeovox7lz
-	5dHP6O3LIEl/NP1AYA4JH9uePYRx37RqMMYusI8L04XLk07t5DjRAx/ZFkl+CircIijgOnlYoawEC
-	QHJH6/a7lfmqtIgzqQSqH2/hKBRWJctLHLYW9cmIcnm4qjNhqt5fzWe8Jybz4cqj2sMlx4PPjGEJz
-	W6tZebxjhXdjIfVer/cxMES59c6JfWAi2Nul6PlmX5IJ53Yt8cfwf6i6HoJr58CYsQ6T7xHGjExVk
-	V8mJxjsU0pvRZgjea+NbhtOvGibJKgp/Y/nmSXQIJ9vJj1eLKenPg3UBexv1ROOo+o5Bu2q6MXeVX
-	6xmmp20Q==;
+	bh=xUs+Fa77krOyO5S4vACFreFi4W0sYUD0E2jG/FaLPJ0=; b=o57DZUJSSCZT/mBfBV9ODfP5se
+	mahyJ5wUZKtzVkz1gXMq3sWarOnVN0GZhH3J6UHHsVLc2g8V/JyEfbGdL1YFEfs59xB3NYkub7rEJ
+	ir4FG35P40KwNHUex/+mW+mWuvyNRd++O3VHfVFeaDJPSMiG2PhB3kxLpPgyeVWV2coq1AqJKJuL0
+	21EaFbBJeqRtfOKbp+7siS7cN1hQidBd7c2b/+u1tS39pF1s7jvf8Pmil9mqg/kYH+YvM3HisVWuJ
+	tFUX1WnJmGSFJpMiEi/jSvVJD5CHEORcVM5Dt14rcWPFuPUMFg7MwAyb11lRuDJd0d/unWoN4zCeA
+	fKHaa73Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCLbH-007Jwb-Od; Fri, 15 Jul 2022 13:43:23 +0000
-Received: from mail-io1-f51.google.com ([209.85.166.51])
+	id 1oCM5H-007Z7I-3d; Fri, 15 Jul 2022 14:14:23 +0000
+Received: from out5-smtp.messagingengine.com ([66.111.4.29])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCLaw-007JeG-QM; Fri, 15 Jul 2022 13:43:04 +0000
-Received: by mail-io1-f51.google.com with SMTP id 125so3882101iou.6;
-        Fri, 15 Jul 2022 06:43:01 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
-         :message-id;
-        bh=03wcnwqW6SswNVSW3NYFh+nPKkFyDcywCPMc3nrTTzo=;
-        b=2Wx4O27vefsHpAYZdFIpXk0cPLRX9wqeOcIM+ZGdTn7DsldluvJroGvjlhySGCTZLX
-         aLo2O2dO9RtAQNtlNB9rNa1izZeZOTdU4vgy1ImGxpptwSKBLj8S1BMPMU9SgScpWMo7
-         iu1xTqzpY3qm+6hP9tQqI6eNJwRpi3xcR5TZCC4whe1bTu8rg3h+QLaS3noaWjKaYJ3O
-         PeG+zUl0qcwAiC5QV3MoFcRRxAHiBNuX5JTw1+h6X8Z+BHTDajwM32sqDpK8V7nLH66q
-         85KTAs+iw8xw2ZGp5xAFFYfroOgkOo2gBGQtwu0S3aYAgMNNdfff3Qg3NhLFZ2T1E31K
-         SjSw==
-X-Gm-Message-State: AJIora9g35AuDYU8QkVw2zPIzGdnNc1Qr1i4xhovrB0Q4mCsVxFwgu0g
-	yqvqfjM3MQwdx1mpCrkOhA==
-X-Google-Smtp-Source: AGRyM1uzHWN8yj4iBWno2bNl4tSBHdD45HjKJL19BAJUQTQyoHWpBthV9k3/tF7H+HVOqQ0U4hzPtA==
-X-Received: by 2002:a02:ac0a:0:b0:33f:713a:9589 with SMTP id a10-20020a02ac0a000000b0033f713a9589mr7633647jao.289.1657892580691;
-        Fri, 15 Jul 2022 06:43:00 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id g7-20020a92dd87000000b002dc789a3dddsm1703976iln.5.2022.07.15.06.42.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Jul 2022 06:43:00 -0700 (PDT)
-Received: (nullmailer pid 520291 invoked by uid 1000);
-	Fri, 15 Jul 2022 13:42:55 -0000
-From: Rob Herring <robh@kernel.org>
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: linux-leds@vger.kernel.org, devicetree@vger.kernel.org, lee.jones@linaro.org, heikki.krogerus@linux.intel.com, broonie@kernel.org, cy_huang@richtek.com, deller@gmx.de, linux@roeck-us.net, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, szunichen@gmail.com, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, daniel.thompson@linaro.org, linux-fbdev@vger.kernel.org, jingoohan1@gmail.com, chunfeng.yun@mediatek.com, lgirdwood@gmail.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, jic23@kernel.org, pavel@ucw.cz, gregkh@linuxfoundation.org, robh+dt@kernel.org, lars@metafoo.de, alice_chen@richtek.com, linux-iio@vger.kernel.org, linux-pm@vger.kernel.org, sre@kernel.org, chiaen_wu@richtek.com, linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org, krzysztof.kozlowski+dt@linaro.org
-In-Reply-To: <20220715112607.591-7-peterwu.pub@gmail.com>
-References: <20220715112607.591-1-peterwu.pub@gmail.com> <20220715112607.591-7-peterwu.pub@gmail.com>
-Subject: Re: [PATCH v5 06/13] dt-bindings: mfd: Add MediaTek MT6370
-Date: Fri, 15 Jul 2022 07:42:55 -0600
-Message-Id: <1657892575.865405.520290.nullmailer@robh.at.kernel.org>
+	id 1oCM55-007Z0s-Tu; Fri, 15 Jul 2022 14:14:13 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id EA2735C00ED;
+	Fri, 15 Jul 2022 10:14:07 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute4.internal (MEProxy); Fri, 15 Jul 2022 10:14:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=cc
+	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to; s=fm3; t=1657894447; x=1657980847; bh=xUs+Fa77kr
+	OyO5S4vACFreFi4W0sYUD0E2jG/FaLPJ0=; b=uaewZsONjI/FGiYO1CmrPp94pQ
+	+EbTpYs0zltsiN2zMcbuHKqz+tMuJBG+Sfyoi+Aqaea1aUVFy353BG9zI0sp+lPQ
+	d4ikMUtESrDAACgDP8/Mwa0TB18rkhZyhHvR8tHBlnCeadx80VWnpbJ9ChQY4oZx
+	5IDXfBc9IufgaZsEr80vvyqBgtHfEuRuL87trpnzs/jzyZRdD0gpNll6V2t7XNac
+	0+ybP8HVbyc9Q/xc/9+WymO1XojBSD+/gziOUM/S1Vo3J7bLVaJRD8il3c3BLYPr
+	ui9ozAf8Bg8fSr/ZmSCltcx2Fy5vTF50KUYT/+Np7PzNSO1yxuJlBXKIZQXA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm3; t=1657894447; x=1657980847; bh=xUs+Fa77krOyO5S4vACFreFi4W0s
+	YUD0E2jG/FaLPJ0=; b=SNTD2mKFMG7hVD/tArK44XjJLKLmu4pB0SPLWpq46sWe
+	xuTJBQp/aMsPpt/b+0ZAQEGh+1j/d+mGrvkNWDtJYlHim4UJSXAHP/wAhtFIfmiX
+	Fu8NoCYXo3mq/eywmwzNuNn44Q8c37zpLSxI7ktB2V0gz4819KN69EwQFuUNNNi+
+	3JDTxUeruv+F9+yU892LZslG2HkThCroJktB5kAmjKGtwq1NJYE9rAG1R9mXucU2
+	DMj/r+Q8p08ZWN/STNeSgyogRekKO1/LKNZQ5A4TbTLzU7arSL7HqXr+L3IMnw10
+	KpEjSsePRapzvA4eHB0QuiyG3tgGCzAsKvN21FH3qg==
+X-ME-Sender: <xms:LnbRYu6JK8A7QOtt4SbNnQ449ycSfQ-JE4mnwika5sFRRGpmZ3ndbA>
+    <xme:LnbRYn6q08OotmzFw85NojQZ2m5YZBrs6LSjBHegrMScM4FptF699GdBiQcCqE4xW
+    R873XoyMPHtng>
+X-ME-Received: <xmr:LnbRYtcj1fNhVrkPq-fKecq3nK8fQ7RAm0DWiSsTMrCjip7kqTqMCjBpLuSmWUljeQSpc3TWJt-OM_17kQJezGwSFcfy-lua>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudekuddgjeeiucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepifhrvghg
+    ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepgeehue
+    ehgfdtledutdelkeefgeejteegieekheefudeiffdvudeffeelvedttddvnecuffhomhgr
+    ihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmh
+    epmhgrihhlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomh
+X-ME-Proxy: <xmx:LnbRYrLYChHAFVJRn5QfggQl0gIp_TOWK68oBJDa1Y4UMJKfYfVELw>
+    <xmx:LnbRYiL0qVztBl62gRF6IhfIHg8tDmlBEc8UPnVlHzdLXyy5CVwEgg>
+    <xmx:LnbRYswa8jHVHu00hk_UZQ7a2SMFNuB-8zFP31uv4XaGkDwV1emNJA>
+    <xmx:L3bRYhUmyk13avp4LuEqBpwv2OrsMg-Hv7rezY9IfN7Ze7iviscOGw>
+Feedback-ID: i787e41f1:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 15 Jul 2022 10:14:05 -0400 (EDT)
+Date: Fri, 15 Jul 2022 16:14:01 +0200
+From: Greg KH <greg@kroah.com>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
+	Juri Lelli <juri.lelli@redhat.com>,
+	Vincent Guittot <vincent.guittot@linaro.org>,
+	Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>, yj.chiang@mediatek.com,
+	Daniel Bristot de Oliveira <bristot@redhat.com>,
+	stable@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 5.4] sched/rt: Disable RT_RUNTIME_SHARE by default
+Message-ID: <YtF2KVJkAnUlx5li@kroah.com>
+References: <20220714073055.15049-1-mark-pk.tsai@mediatek.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220714073055.15049-1-mark-pk.tsai@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_064302_913637_0B3869E4 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20220715_071412_341078_0AC47EA5 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,53 +108,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 15 Jul 2022 19:26:00 +0800, ChiaEn Wu wrote:
-> From: ChiYuan Huang <cy_huang@richtek.com>
+On Thu, Jul 14, 2022 at 03:30:52PM +0800, Mark-PK Tsai wrote:
+> From: Daniel Bristot de Oliveira <bristot@redhat.com>
 > 
-> Add MediaTek MT6370 binding documentation.
+> commit 2586af1ac187f6b3a50930a4e33497074e81762d upstream.
 > 
-> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> The RT_RUNTIME_SHARE sched feature enables the sharing of rt_runtime
+> between CPUs, allowing a CPU to run a real-time task up to 100% of the
+> time while leaving more space for non-real-time tasks to run on the CPU
+> that lend rt_runtime.
+> 
+> The problem is that a CPU can easily borrow enough rt_runtime to allow
+> a spinning rt-task to run forever, starving per-cpu tasks like kworkers,
+> which are non-real-time by design.
+> 
+> This patch disables RT_RUNTIME_SHARE by default, avoiding this problem.
+> The feature will still be present for users that want to enable it,
+> though.
+> 
+> Signed-off-by: Daniel Bristot de Oliveira <bristot@redhat.com>
+> Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+> Tested-by: Wei Wang <wvw@google.com>
+> Link: https://lkml.kernel.org/r/b776ab46817e3db5d8ef79175fa0d71073c051c7.1600697903.git.bristot@redhat.com
+> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> Cc: stable@vger.kernel.org
 > ---
->  .../devicetree/bindings/mfd/mediatek,mt6370.yaml   | 280 +++++++++++++++++++++
->  include/dt-bindings/iio/adc/mediatek,mt6370_adc.h  |  18 ++
->  2 files changed, 298 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
->  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6370_adc.h
-> 
+>  kernel/sched/features.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Now queued up, thanks.
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb: pmic@34: indicator:multi-led@0:led@0: Unevaluated properties are not allowed ('reg' was unexpected)
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb: pmic@34: indicator:multi-led@0:led@1: Unevaluated properties are not allowed ('reg' was unexpected)
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb: pmic@34: indicator:multi-led@0:led@2: Unevaluated properties are not allowed ('reg' was unexpected)
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb: indicator: multi-led@0:led@0: Unevaluated properties are not allowed ('reg' was unexpected)
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb: indicator: multi-led@0:led@1: Unevaluated properties are not allowed ('reg' was unexpected)
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb: indicator: multi-led@0:led@2: Unevaluated properties are not allowed ('reg' was unexpected)
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/patch/
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+greg k-h
 
