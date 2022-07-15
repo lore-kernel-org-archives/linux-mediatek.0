@@ -4,99 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36B91C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 16:58:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C87C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 17:17:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6TdTlfwy3VaOHhzh3w0gNaUggIvchfGZQp8YCLWV7oY=; b=Z3PM0JQzhIQiwRYQa1w/XIdnfF
-	yFEFQ5aNWF4UryKlUs/0EREcZMzoPZPEXbgHmvHWIzvLsG2tTHMpDPJKyKmlbhYMpIaPYkOdeG9BA
-	nuiFwMIJ2w/G7DQ+3V7/vG4nUACyjn/hvrFSA9qRkbNiafi1IozgLet17uy3nrQF5e8VZcTBYgIkk
-	Vlpldb8SxOqx6RpW57CzyGrCbEGyzE2fxH8DuWuOQkti3IUILTuyEh3B2kz6eI39i5rtfOeaUAzyE
-	nt79r5gnBMNsNJFPQ/DCSolRPQ9iQacBjenbkfr725cY9AJ5OvKli6RPRbyGPFzkthzJn7itBw3lv
-	94wlJtrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=s2m65ed+VKU46wmwzODUfX9pQpnIOrJsSOXJsW+RL10=; b=RJHfWxFzdTnQUHJ+69s5UbR2SU
+	vU7kzDl/2oZoYf+rGDv8XtO0OPi6nzzlDza4STsKuI2sxiZgTix3mxEz/F4RY5YBiS6isEYCEijO2
+	Zr++sza/mEw60JqMV0DA8j+PYaiPh4k4+9nOQoxhVhRnN8t0SUyUK1MjmLRhroamUZosuoNttm824
+	bSwMH4a+Fc5HruP/bsk9Nqc83235lD3+GFGFpUDFVnbrhBer1fPoBfypLB1bioteEOrgHd1jkuz8B
+	A7SDDof6wssNHBjxavcGPoUzWGJhw6pvKGn6++CFTG7hDD23aNS7REagxORoeV0grne0f6gKvs8KA
+	2D5g2Phg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCOeO-008zK6-MV; Fri, 15 Jul 2022 16:58:48 +0000
-Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
+	id 1oCOwh-0095k3-Ky; Fri, 15 Jul 2022 17:17:43 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCOeJ-008zGi-5h; Fri, 15 Jul 2022 16:58:47 +0000
-Received: by mail-yb1-xb2b.google.com with SMTP id 64so9358720ybt.12;
-        Fri, 15 Jul 2022 09:58:41 -0700 (PDT)
+	id 1oCOwS-0095ZS-Rj; Fri, 15 Jul 2022 17:17:30 +0000
+Received: by mail-ej1-x630.google.com with SMTP id ss3so10058941ejc.11;
+        Fri, 15 Jul 2022 10:17:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=6TdTlfwy3VaOHhzh3w0gNaUggIvchfGZQp8YCLWV7oY=;
-        b=BeFoKvyI8i2XygR6nvzh7zbxCtLGryeU7dNvVGH7jDZ1PJIBE83e3+PSNvY6ICgEUU
-         q58JAMYx/pm5PMQl4T8enDXIFWvqkymuoPwDcRRpW+OKwyxDlvr3n55AMW3xIbVHVKoC
-         8NanGry13JZTTag8itRIZr767/KfR//ctoGU3qzM7oTXayebuoVcPUn7s3Sp577DPiz6
-         qi48Fa7d6TVSPC8kxFPnxxN8uP5eK/jzPHexK8fxuMloHOSpedJqLcFd2agQd1WYL7Ik
-         DK0FLWqVYDZZb4lwlzcpy9kPNGX7EqvUn99mW8HHZv4YREmATxb/iaO1SXUUPYKdtszu
-         Pghg==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=s2m65ed+VKU46wmwzODUfX9pQpnIOrJsSOXJsW+RL10=;
+        b=l1dAKUUNH4z2PgburywrqoWlN4/1D2KO9fjGmRU/AzfzM+TZ37w05bSUN3k57gPspR
+         O2aQUy0qwEmJiehFBpqQDNf5fDR0RITWMoSNoY9Rzj2uIfqt5243k3bIAYHZ96q/QbT1
+         kOiCN/q/4n8dbGCQQlxXdlj9xfP5ba/CFNr03tTeVLAc4qQibW8EXPe+aAYSJ5ZRR6gC
+         EcfJ9MnQ3Q7y/up8ohgUId6dheBfbvouEyHIhUzvnzK4r76ns5eLlQ1cKC+ujuYDzyLz
+         BfdQKmbRvr1Dt6+s+VAMMdG0uYQc/axGtfxjRoCi/W7qOYhJ2I48PkcgphSnUdNZwwxy
+         skxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=6TdTlfwy3VaOHhzh3w0gNaUggIvchfGZQp8YCLWV7oY=;
-        b=MfVaVqOOQZ8tOExJhvYVYC4rfx7W/EZfTSuTvESha33pHw2Nw7tjfw80X/23sHwcgk
-         +rW9lX4fnx76fu7b82Xm39lLTmVH2gaxhRna6ERNmotsoLnNDS5RPa50yMtzHWp3avYS
-         6WPsmAMHcsfCrXEG3+TfPEYjpCMA+xXtWosQPhPHxN/NZNpdX5p5dys+0kwVP8XG9u1O
-         7Wk1iW73Q1GBszMkaQ/qiyUUyklpZTZpxzf7cmhkLPiYMKMNJAr46wyEWQZUGRMNWsCr
-         yfU/LJNtO1i8zxTwJayRIEeUr9YPwbo9REIkH4XdURBsA491Peo3ek3r/MCeIhwNH3kM
-         1ZMA==
-X-Gm-Message-State: AJIora/ZRJQVpmPmfxhqWld+46LWWjukimZH4q7/bvMLpA4pK/O+8LYs
-	adUp6DF6ukO8c9bZw1us7EQSKQKqtanrYD8e/Ak=
-X-Google-Smtp-Source: AGRyM1vz/6TKfh7SokVQwLtVlkAQ04xf3jyr6vlrHNLFud++94euqeWrbXjYuq+FWKtOVT/MHqSlYgTvyTdVSt/zQ4w=
-X-Received: by 2002:a5b:44d:0:b0:66f:ad5a:9d0b with SMTP id
- s13-20020a5b044d000000b0066fad5a9d0bmr13586144ybp.79.1657904320602; Fri, 15
- Jul 2022 09:58:40 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=s2m65ed+VKU46wmwzODUfX9pQpnIOrJsSOXJsW+RL10=;
+        b=I8y1R4d9WWI9DqCYSgAuNfrJwuTIvwxVWoIj+9gElRXK7stRZEQtBuVlH0oN17h540
+         r8Hr7265yrXXNzrcPWLm5EsZQOVPre8azWSKOqGfBn8c9cjWxLYP9yxHQ4zyv33xsCC0
+         dXmxg4nWj3D1yvW0vXDZgBZ4cZR7HxfjUKAR/DJP49k1qPSpoTlrN51h/wY3Xl8lN0d/
+         pV9A8KSgMvvU5tpjOqCEpuaJ06bBoJytcWQ82Z6coXgFBsrmKnQXu/rc0z94kORNVSlb
+         lv6K047+5h6uz+9NILYaLn8b+zxa/AudkD/YX7qyhmrxpoFf5CHDRnc8Y/KzGYYNq+M9
+         BvIg==
+X-Gm-Message-State: AJIora+wbJvqZhDNPLJphEKsK/Hj9NLkgeSvzMA4rzkSF1vORE2EBMj/
+	3vu+TbAzRLAwqyLmFehtTr4=
+X-Google-Smtp-Source: AGRyM1sAWG7bL6CZyLOwnctXoLSDpqKUPYhVVJyLTDZ+mgM4ARRC7PcjVMARHOHBRrF5407oHABQXg==
+X-Received: by 2002:a17:907:60c7:b0:72e:d01f:b884 with SMTP id hv7-20020a17090760c700b0072ed01fb884mr11047319ejc.550.1657905443553;
+        Fri, 15 Jul 2022 10:17:23 -0700 (PDT)
+Received: from skbuf ([188.25.231.115])
+        by smtp.gmail.com with ESMTPSA id p13-20020a05640210cd00b00435a62d35b5sm3153113edu.45.2022.07.15.10.17.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Jul 2022 10:17:22 -0700 (PDT)
+Date: Fri, 15 Jul 2022 20:17:19 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Marek =?utf-8?B?PT9pc28tODg1OS0xP1E/QmVoPUZBbj89?= <kabel@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>
+Subject: Re: [PATCH net-next 0/6] net: dsa: always use phylink
+Message-ID: <20220715171719.niqcrklpk4ittfvl@skbuf>
+References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
 MIME-Version: 1.0
-References: <20220715122903.332535-1-nuno.sa@analog.com> <20220715122903.332535-16-nuno.sa@analog.com>
-In-Reply-To: <20220715122903.332535-16-nuno.sa@analog.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Fri, 15 Jul 2022 18:58:04 +0200
-Message-ID: <CAHp75Vdxa1MvzQ07abNL1LHB8e88tpBW0qmGx7_gY=CxvVxqkA@mail.gmail.com>
-Subject: Re: [PATCH v3 15/15] iio: inkern: fix coding style warnings
-To: =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>
-Cc: OpenBMC Maillist <openbmc@lists.ozlabs.org>, dl-linux-imx <linux-imx@nxp.com>, 
-	linux-stm32@st-md-mailman.stormreply.com, 
-	linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:BROADCOM NVRAM DRIVER" <linux-mips@vger.kernel.org>, 
-	Linux-Renesas <linux-renesas-soc@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, chrome-platform@lists.linux.dev, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
-	linux-arm-msm <linux-arm-msm@vger.kernel.org>, Gwendal Grignou <gwendal@chromium.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>, 
-	Tomer Maimon <tmaimon77@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Olivier Moysan <olivier.moysan@foss.st.com>, Tali Perry <tali.perry1@gmail.com>, 
-	Thara Gopinath <thara.gopinath@linaro.org>, Bjorn Andersson <bjorn.andersson@linaro.org>, 
-	Arnd Bergmann <arnd@arndb.de>, Benjamin Fair <benjaminfair@google.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Patrick Venture <venture@google.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
-	Benson Leung <bleung@chromium.org>, Nancy Yuen <yuenn@google.com>, 
-	Miquel Raynal <miquel.raynal@bootlin.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Zhang Rui <rui.zhang@intel.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, Christophe Branchereau <cbranchereau@gmail.com>, 
-	Cai Huoqing <cai.huoqing@linux.dev>, Avi Fishman <avifishman70@gmail.com>, 
-	Eugen Hristev <eugen.hristev@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Lars-Peter Clausen <lars@metafoo.de>, 
-	Guenter Roeck <groeck@chromium.org>, Paul Cercueil <paul@crapouillou.net>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Andy Gross <agross@kernel.org>, 
-	Amit Kucheria <amitk@kernel.org>, Michael Hennerich <Michael.Hennerich@analog.com>, 
-	Haibo Chen <haibo.chen@nxp.com>, Jishnu Prakash <quic_jprakash@quicinc.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_095843_267631_71DB7CEC 
-X-CRM114-Status: GOOD (  22.39  )
+X-CRM114-CacheID: sfid-20220715_101728_917292_A97D5F8D 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,318 +112,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 15, 2022 at 2:30 PM Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
->
-> Just cosmetics. No functional change intended...
+Hi Russell,
 
-Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+On Fri, Jul 15, 2022 at 05:00:59PM +0100, Russell King (Oracle) wrote:
+> Hi,
+> 
+> This is a re-hash of the previous RFC series, this time using the
+> suggestion from Vladimir to create a swnode based fixed-link
+> specifier.
+> 
+> Most of the changes are to DSA and phylink code from the previous
+> series. I've tested on my Clearfog (which has just one Marvell DSA
+> switch) and it works there - also tested without the fixed-link
+> specified in DT.
 
-> Signed-off-by: Nuno S=C3=A1 <nuno.sa@analog.com>
-> ---
->  drivers/iio/inkern.c | 64 ++++++++++++++++++++++----------------------
->  1 file changed, 32 insertions(+), 32 deletions(-)
->
-> diff --git a/drivers/iio/inkern.c b/drivers/iio/inkern.c
-> index fab951546086..0c9b1561af31 100644
-> --- a/drivers/iio/inkern.c
-> +++ b/drivers/iio/inkern.c
-> @@ -45,13 +45,13 @@ int iio_map_array_register(struct iio_dev *indio_dev,=
- struct iio_map *maps)
->         int i =3D 0, ret =3D 0;
->         struct iio_map_internal *mapi;
->
-> -       if (maps =3D=3D NULL)
-> +       if (!maps)
->                 return 0;
->
->         mutex_lock(&iio_map_list_lock);
-> -       while (maps[i].consumer_dev_name !=3D NULL) {
-> +       while (maps[i].consumer_dev_name) {
->                 mapi =3D kzalloc(sizeof(*mapi), GFP_KERNEL);
-> -               if (mapi =3D=3D NULL) {
-> +               if (!mapi) {
->                         ret =3D -ENOMEM;
->                         goto error_ret;
->                 }
-> @@ -69,7 +69,6 @@ int iio_map_array_register(struct iio_dev *indio_dev, s=
-truct iio_map *maps)
->  }
->  EXPORT_SYMBOL_GPL(iio_map_array_register);
->
-> -
->  /*
->   * Remove all map entries associated with the given iio device
->   */
-> @@ -157,7 +156,7 @@ static int __fwnode_iio_channel_get(struct iio_channe=
-l *channel,
->                 return err;
->
->         idev =3D bus_find_device_by_fwnode(&iio_bus_type, iiospec.fwnode)=
-;
-> -       if (idev =3D=3D NULL) {
-> +       if (!idev) {
->                 fwnode_handle_put(iiospec.fwnode);
->                 return -EPROBE_DEFER;
->         }
-> @@ -190,7 +189,7 @@ static struct iio_channel *fwnode_iio_channel_get(str=
-uct fwnode_handle *fwnode,
->                 return ERR_PTR(-EINVAL);
->
->         channel =3D kzalloc(sizeof(*channel), GFP_KERNEL);
-> -       if (channel =3D=3D NULL)
-> +       if (!channel)
->                 return ERR_PTR(-ENOMEM);
->
->         err =3D __fwnode_iio_channel_get(channel, fwnode, index);
-> @@ -307,7 +306,7 @@ static struct iio_channel *fwnode_iio_channel_get_all=
-(struct device *dev)
->
->         /* NULL terminated array to save passing size */
->         chans =3D kcalloc(nummaps + 1, sizeof(*chans), GFP_KERNEL);
-> -       if (chans =3D=3D NULL)
-> +       if (!chans)
->                 return ERR_PTR(-ENOMEM);
->
->         /* Search for FW matches */
-> @@ -332,7 +331,7 @@ static struct iio_channel *iio_channel_get_sys(const =
-char *name,
->         struct iio_channel *channel;
->         int err;
->
-> -       if (name =3D=3D NULL && channel_name =3D=3D NULL)
-> +       if (!(name || channel_name))
->                 return ERR_PTR(-ENODEV);
->
->         /* first find matching entry the channel map */
-> @@ -347,11 +346,11 @@ static struct iio_channel *iio_channel_get_sys(cons=
-t char *name,
->                 break;
->         }
->         mutex_unlock(&iio_map_list_lock);
-> -       if (c =3D=3D NULL)
-> +       if (!c)
->                 return ERR_PTR(-ENODEV);
->
->         channel =3D kzalloc(sizeof(*channel), GFP_KERNEL);
-> -       if (channel =3D=3D NULL) {
-> +       if (!channel) {
->                 err =3D -ENOMEM;
->                 goto error_no_mem;
->         }
-> @@ -363,7 +362,7 @@ static struct iio_channel *iio_channel_get_sys(const =
-char *name,
->                         iio_chan_spec_from_name(channel->indio_dev,
->                                                 c->map->adc_channel_label=
-);
->
-> -               if (channel->channel =3D=3D NULL) {
-> +               if (!channel->channel) {
->                         err =3D -EINVAL;
->                         goto error_no_chan;
->                 }
-> @@ -455,7 +454,7 @@ struct iio_channel *iio_channel_get_all(struct device=
- *dev)
->         int mapind =3D 0;
->         int i, ret;
->
-> -       if (dev =3D=3D NULL)
-> +       if (!dev)
->                 return ERR_PTR(-EINVAL);
->
->         chans =3D fwnode_iio_channel_get_all(dev);
-> @@ -483,7 +482,7 @@ struct iio_channel *iio_channel_get_all(struct device=
- *dev)
->
->         /* NULL terminated array to save passing size */
->         chans =3D kcalloc(nummaps + 1, sizeof(*chans), GFP_KERNEL);
-> -       if (chans =3D=3D NULL) {
-> +       if (!chans) {
->                 ret =3D -ENOMEM;
->                 goto error_ret;
->         }
-> @@ -497,7 +496,7 @@ struct iio_channel *iio_channel_get_all(struct device=
- *dev)
->                 chans[mapind].channel =3D
->                         iio_chan_spec_from_name(chans[mapind].indio_dev,
->                                                 c->map->adc_channel_label=
-);
-> -               if (chans[mapind].channel =3D=3D NULL) {
-> +               if (!chans[mapind].channel) {
->                         ret =3D -EINVAL;
->                         goto error_free_chans;
->                 }
-> @@ -559,14 +558,14 @@ struct iio_channel *devm_iio_channel_get_all(struct=
- device *dev)
->  EXPORT_SYMBOL_GPL(devm_iio_channel_get_all);
->
->  static int iio_channel_read(struct iio_channel *chan, int *val, int *val=
-2,
-> -       enum iio_chan_info_enum info)
-> +                           enum iio_chan_info_enum info)
->  {
->         int unused;
->         int vals[INDIO_MAX_RAW_ELEMENTS];
->         int ret;
->         int val_len =3D 2;
->
-> -       if (val2 =3D=3D NULL)
-> +       if (!val2)
->                 val2 =3D &unused;
->
->         if (!iio_channel_has_info(chan->channel, info))
-> @@ -578,9 +577,10 @@ static int iio_channel_read(struct iio_channel *chan=
-, int *val, int *val2,
->                                         vals, &val_len, info);
->                 *val =3D vals[0];
->                 *val2 =3D vals[1];
-> -       } else
-> +       } else {
->                 ret =3D chan->indio_dev->info->read_raw(chan->indio_dev,
->                                         chan->channel, val, val2, info);
-> +       }
->
->         return ret;
->  }
-> @@ -591,7 +591,7 @@ int iio_read_channel_raw(struct iio_channel *chan, in=
-t *val)
->         int ret;
->
->         mutex_lock(&iio_dev_opaque->info_exist_lock);
-> -       if (chan->indio_dev->info =3D=3D NULL) {
-> +       if (!chan->indio_dev->info) {
->                 ret =3D -ENODEV;
->                 goto err_unlock;
->         }
-> @@ -610,7 +610,7 @@ int iio_read_channel_average_raw(struct iio_channel *=
-chan, int *val)
->         int ret;
->
->         mutex_lock(&iio_dev_opaque->info_exist_lock);
-> -       if (chan->indio_dev->info =3D=3D NULL) {
-> +       if (!chan->indio_dev->info) {
->                 ret =3D -ENODEV;
->                 goto err_unlock;
->         }
-> @@ -624,7 +624,8 @@ int iio_read_channel_average_raw(struct iio_channel *=
-chan, int *val)
->  EXPORT_SYMBOL_GPL(iio_read_channel_average_raw);
->
->  static int iio_convert_raw_to_processed_unlocked(struct iio_channel *cha=
-n,
-> -       int raw, int *processed, unsigned int scale)
-> +                                                int raw, int *processed,
-> +                                                unsigned int scale)
->  {
->         int scale_type, scale_val, scale_val2;
->         int offset_type, offset_val, offset_val2;
-> @@ -657,7 +658,7 @@ static int iio_convert_raw_to_processed_unlocked(stru=
-ct iio_channel *chan,
->         }
->
->         scale_type =3D iio_channel_read(chan, &scale_val, &scale_val2,
-> -                                       IIO_CHAN_INFO_SCALE);
-> +                                     IIO_CHAN_INFO_SCALE);
->         if (scale_type < 0) {
->                 /*
->                  * If no channel scaling is available apply consumer scal=
-e to
-> @@ -702,19 +703,19 @@ static int iio_convert_raw_to_processed_unlocked(st=
-ruct iio_channel *chan,
->  }
->
->  int iio_convert_raw_to_processed(struct iio_channel *chan, int raw,
-> -       int *processed, unsigned int scale)
-> +                                int *processed, unsigned int scale)
->  {
->         struct iio_dev_opaque *iio_dev_opaque =3D to_iio_dev_opaque(chan-=
->indio_dev);
->         int ret;
->
->         mutex_lock(&iio_dev_opaque->info_exist_lock);
-> -       if (chan->indio_dev->info =3D=3D NULL) {
-> +       if (!chan->indio_dev->info) {
->                 ret =3D -ENODEV;
->                 goto err_unlock;
->         }
->
->         ret =3D iio_convert_raw_to_processed_unlocked(chan, raw, processe=
-d,
-> -                                                       scale);
-> +                                                   scale);
->  err_unlock:
->         mutex_unlock(&iio_dev_opaque->info_exist_lock);
->
-> @@ -729,7 +730,7 @@ int iio_read_channel_attribute(struct iio_channel *ch=
-an, int *val, int *val2,
->         int ret;
->
->         mutex_lock(&iio_dev_opaque->info_exist_lock);
-> -       if (chan->indio_dev->info =3D=3D NULL) {
-> +       if (!chan->indio_dev->info) {
->                 ret =3D -ENODEV;
->                 goto err_unlock;
->         }
-> @@ -755,7 +756,7 @@ int iio_read_channel_processed_scale(struct iio_chann=
-el *chan, int *val,
->         int ret;
->
->         mutex_lock(&iio_dev_opaque->info_exist_lock);
-> -       if (chan->indio_dev->info =3D=3D NULL) {
-> +       if (!chan->indio_dev->info) {
->                 ret =3D -ENODEV;
->                 goto err_unlock;
->         }
-> @@ -833,7 +834,7 @@ int iio_read_avail_channel_raw(struct iio_channel *ch=
-an,
->         int type;
->
->         ret =3D iio_read_avail_channel_attribute(chan, vals, &type, lengt=
-h,
-> -                                        IIO_CHAN_INFO_RAW);
-> +                                              IIO_CHAN_INFO_RAW);
->
->         if (ret >=3D 0 && type !=3D IIO_VAL_INT)
->                 /* raw values are assumed to be IIO_VAL_INT */
-> @@ -917,7 +918,7 @@ int iio_get_channel_type(struct iio_channel *chan, en=
-um iio_chan_type *type)
->         /* Need to verify underlying driver has not gone away */
->
->         mutex_lock(&iio_dev_opaque->info_exist_lock);
-> -       if (chan->indio_dev->info =3D=3D NULL) {
-> +       if (!chan->indio_dev->info) {
->                 ret =3D -ENODEV;
->                 goto err_unlock;
->         }
-> @@ -944,7 +945,7 @@ int iio_write_channel_attribute(struct iio_channel *c=
-han, int val, int val2,
->         int ret;
->
->         mutex_lock(&iio_dev_opaque->info_exist_lock);
-> -       if (chan->indio_dev->info =3D=3D NULL) {
-> +       if (!chan->indio_dev->info) {
->                 ret =3D -ENODEV;
->                 goto err_unlock;
->         }
-> @@ -978,9 +979,8 @@ unsigned int iio_get_channel_ext_info_count(struct ii=
-o_channel *chan)
->  }
->  EXPORT_SYMBOL_GPL(iio_get_channel_ext_info_count);
->
-> -static const struct iio_chan_spec_ext_info *iio_lookup_ext_info(
-> -                                               const struct iio_channel =
-*chan,
-> -                                               const char *attr)
-> +static const struct iio_chan_spec_ext_info *
-> +iio_lookup_ext_info(const struct iio_channel *chan, const char *attr)
->  {
->         const struct iio_chan_spec_ext_info *ext_info;
->
-> --
-> 2.37.1
->
+I had some comments I wanted to leave on the previous RFC patch set
+(which in turn is essentially identical to this one, hence they still
+apply), but I held off because I thought you were waiting for some
+feedback from Andrew. Has something changed?
 
-
---=20
-With Best Regards,
-Andy Shevchenko
+I'm going to leave my comments anyway now.
 
