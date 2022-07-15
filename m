@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A994AC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 21:32:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2985C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Jul 2022 21:37:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=th86onA+v2g7seSKwNaiqJkIXZJBTye47OvI+lvc2mU=; b=MVcGhxLXut1R/MvXGauoGYiQBy
-	FUibubvVETpczdoft/Jm9aUbeYPHqlZW/XTf+jzX1d3DXooJ5Pv0D+y6+NRMRRoAqsSfIuYyn+RTM
-	sg+tMNCe3ODDn0fwbq47IZYmE9eNddsvNce/f324HoxLeLDJm2+adPxhfFcqnp5uMayZKANbqImfz
-	ronlE9dwwbxY/tsvkEerEgn5SpXeTnFQ5j0IvrMGbXuhN4miQu1vthcRI0TKaYjLR04Sw0wS1FpAZ
-	YEGx8hlszrKIRgzcdHg910FLTT36PMiItjs45sXp/irO0+MsaQkoNbxaT8n3qLNV70Fm37ie3Hhws
-	XK3WgtvQ==;
+	bh=lQRhVAEYMEEm9RW02pF+UuHE6aUESSqzeKHULVuhjPM=; b=b6bROOivsIP+mYxbsVQy7kQW8a
+	xAs6Ql8Qk7LXPK9MhVqXM3nvDAzSQkCnbBtqzjma8L5ITSEnX6fDWtFhDe1OXbExllep0JSE+DYiO
+	yJcfNFkeVmQ7dB3nd417Ppy7MN5/23eW8jc6saSRg5DU/7m6LnEkkmpKjdjdYJOZvgc0sQukinuKB
+	dHnOw0VMCWnC7oIyqcZ/2RYN7FbVSQq98vfqKSBXOk5vWG4cBxNB4XRbEB+ILRsn0P+mEv0CdhlY8
+	L0Tjw5zl/D9SzzXg6KGWpSurrQcFfN8me4VsPYDt4eUOezyXwKeranuUypASLByHMMH23uakdtvs+
+	WapcB1Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCSui-00ASfk-FE; Fri, 15 Jul 2022 21:31:56 +0000
+	id 1oCSze-00AU3q-8a; Fri, 15 Jul 2022 21:37:02 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCSuX-00ASYV-6Q; Fri, 15 Jul 2022 21:31:46 +0000
+	id 1oCSzT-00AU1I-72; Fri, 15 Jul 2022 21:36:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=th86onA+v2g7seSKwNaiqJkIXZJBTye47OvI+lvc2mU=; b=QiuHDj8gvLUaAYVWuCRdkJng82
-	yV5Qfgn1oiUkP0TfG7/m6IvkjBO9bJ1V2d1Sk+eYTM70zVUhXcW6OOY+q0s/yIgryKMV+fcnXKgqS
-	CKbXdXPeKga6zKDiil62Opc+ICod4RBr4hkQXBOWsYgAn0Mp1QiQ/0ikP/2GgdRlWlKMKhwcw3qj9
-	nSflYxlRY9FWgCm4KRM6ytSHb/M1s5zYJrS6bgOvwMz6P3DXe+kPaItHwahbx+895SSG2nlVkAD4h
-	+zE+UrLs1d0PEB0u+U1Z3EwHJnFggwY1XPxjokxdjectbeW63iFWY5h/x9fTUub7NXjE5wZFwwFqg
-	cpSlRdzA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33366)
+	bh=lQRhVAEYMEEm9RW02pF+UuHE6aUESSqzeKHULVuhjPM=; b=BiF8ThJ16Z0gr8pYciLlOa6n9n
+	Kmit6hxcJOIi6f5sxSGgG0UQ+m8wX9OUgCJ7fC++3bQ2O6Hf5fMBi1h1DSSf8NfozaA70f/wk2t3x
+	Et1DrtMooxKlLnyCjIaze5xxuam7hQdA5pPhopyBkMbTT0vE/B1e9K0YwUEG5Z+wm61KCFXxbEc5a
+	2aAg3jW5SSQx4YCHYgTvFp7+fn4pQLulfboT5fLknVA7t4SJJzvzdaqZjhZP0QF7SA2M+yeha9L/v
+	H/qtXedCHs0ldn6jCeMotSe7urRF6zMkjNXzeR/tV+lyKwWfKsVk7rJLoIylCc7nv8ow+s6SHrSBJ
+	qWJVfWzQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33368)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1oCSuB-0007YD-02; Fri, 15 Jul 2022 22:31:23 +0100
+	id 1oCSz9-0007Yu-UV; Fri, 15 Jul 2022 22:36:31 +0100
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1oCSu5-0007sf-S7; Fri, 15 Jul 2022 22:31:17 +0100
-Date: Fri, 15 Jul 2022 22:31:17 +0100
+	id 1oCSz7-0007sn-6W; Fri, 15 Jul 2022 22:36:29 +0100
+Date: Fri, 15 Jul 2022 22:36:29 +0100
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
 	Alexandre Belloni <alexandre.belloni@bootlin.com>,
 	Alvin __ipraga <alsi@bang-olufsen.dk>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Claudiu Manoil <claudiu.manoil@nxp.com>,
 	Daniel Scally <djrscally@gmail.com>,
 	"David S. Miller" <davem@davemloft.net>,
@@ -73,24 +72,23 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
 	Sakari Ailus <sakari.ailus@linux.intel.com>,
 	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
 	Vivien Didelot <vivien.didelot@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
 	Woojung Huh <woojung.huh@microchip.com>,
 	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
-Subject: Re: [PATCH net-next 3/6] net: dsa: add support for retrieving the
- interface mode
-Message-ID: <YtHcpf4otJQS9hTO@shell.armlinux.org.uk>
+Subject: Re: [PATCH net-next 5/6] net: dsa: use swnode fixed-link if using
+ default params
+Message-ID: <YtHd3f22AtrIzZ1K@shell.armlinux.org.uk>
 References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
- <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
- <E1oCNl3-006e3n-PT@rmk-PC.armlinux.org.uk>
- <E1oCNl3-006e3n-PT@rmk-PC.armlinux.org.uk>
- <20220715172444.yins4kb2b6b35aql@skbuf>
+ <E1oCNlE-006e3z-3T@rmk-PC.armlinux.org.uk>
+ <YtHJ5rfxZ+icXrkC@smile.fi.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220715172444.yins4kb2b6b35aql@skbuf>
+In-Reply-To: <YtHJ5rfxZ+icXrkC@smile.fi.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_143145_258808_9E4338F7 
-X-CRM114-Status: GOOD (  38.58  )
+X-CRM114-CacheID: sfid-20220715_143651_275341_EED1AD0B 
+X-CRM114-Status: GOOD (  27.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,97 +103,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 15, 2022 at 08:24:44PM +0300, Vladimir Oltean wrote:
-> On Fri, Jul 15, 2022 at 05:01:37PM +0100, Russell King (Oracle) wrote:
-> > DSA port bindings allow for an optional phy interface mode. When an
-> > interface mode is not specified, DSA uses the NA interface mode type.
-> > 
-> > However, phylink needs to know the parameters of the link, and this
-> > will become especially important when using phylink for ports that
-> > are devoid of all properties except the required "reg" property, so
-> > that phylink can select the maximum supported link settings. Without
-> > knowing the interface mode, phylink can't truely know the maximum
-> > link speed.
-> > 
-> > Update the prototype for the phylink_get_caps method to allow drivers
-> > to report this information back to DSA, and update all DSA
-> > implementations function declarations to cater for this change. No
-> > code is added to the implementations.
-> > 
+On Fri, Jul 15, 2022 at 11:11:18PM +0300, Andy Shevchenko wrote:
+> On Fri, Jul 15, 2022 at 05:01:48PM +0100, Russell King (Oracle) wrote:
+> > Create and use a swnode fixed-link specification for phylink if no
+> > parameters are given in DT for a fixed-link. This allows phylink to
+> > be used for "default" cases for DSA and CPU ports. Enable the use
+> > of phylink in all cases for DSA and CPU ports.
+> 
+> > Co-developed by Vladimir Oltean and myself.
+> 
+> Why not to use
+> 
+>   Co-developed-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+
+Ah, that's an official thing. Thanks.
+
+> > Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 > > Reviewed-by: Marek Behún <kabel@kernel.org>
 > > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> > ---
-> (...)
-> > diff --git a/include/net/dsa.h b/include/net/dsa.h
-> > index b902b31bebce..7c6870d2c607 100644
-> > --- a/include/net/dsa.h
-> > +++ b/include/net/dsa.h
-> > @@ -852,7 +852,8 @@ struct dsa_switch_ops {
-> >  	 * PHYLINK integration
-> >  	 */
-> >  	void	(*phylink_get_caps)(struct dsa_switch *ds, int port,
-> > -				    struct phylink_config *config);
-> > +				    struct phylink_config *config,
-> > +				    phy_interface_t *default_interface);
 > 
-> I would prefer having a dedicated void (*port_max_speed_interface),
-> because the post-phylink DSA drivers (which are not few) will generally
-> not need to concern themselves with implementing this, and I don't want
-> driver writers to think they need to populate every parameter they see
-> in phylink_get_caps. So the new function needs to be documented
-> appropriately (specify who needs and who does not need to implement it,
-> on which ports it will be called, etc).
+> ...
 > 
-> In addition, if we have a dedicated ds->ops->port_max_speed_interface(),
-> we can do a better job of avoiding breakage with this patch set, since
-> if DSA cannot find a valid phylink fwnode, AND there is no
-> port_max_speed_interface() callback for this driver, DSA can still
-> preserve the current logic of not putting the port down, and not
-> registering it with phylink. That can be accompanied by a dev_warn() to
-> state that the CPU/DSA port isn't registered with phylink, please
-> implement port_max_speed_interface() to address that.
+> > +static struct {
+> > +	unsigned long mask;
+> > +	int speed;
+> > +	int duplex;
+> > +} phylink_caps_params[] = {
+> > +	{ MAC_400000FD, SPEED_400000, DUPLEX_FULL },
+> > +	{ MAC_200000FD, SPEED_200000, DUPLEX_FULL },
+> > +	{ MAC_100000FD, SPEED_100000, DUPLEX_FULL },
+> > +	{ MAC_56000FD,  SPEED_56000,  DUPLEX_FULL },
+> > +	{ MAC_50000FD,  SPEED_50000,  DUPLEX_FULL },
+> > +	{ MAC_40000FD,  SPEED_40000,  DUPLEX_FULL },
+> > +	{ MAC_25000FD,  SPEED_25000,  DUPLEX_FULL },
+> > +	{ MAC_20000FD,  SPEED_20000,  DUPLEX_FULL },
+> > +	{ MAC_10000FD,  SPEED_10000,  DUPLEX_FULL },
+> > +	{ MAC_5000FD,   SPEED_5000,   DUPLEX_FULL },
+> > +	{ MAC_2500FD,   SPEED_2500,   DUPLEX_FULL },
+> > +	{ MAC_1000FD,   SPEED_1000,   DUPLEX_FULL },
+> > +	{ MAC_100FD,    SPEED_100,    DUPLEX_FULL },
+> > +	{ MAC_10FD,     SPEED_10,     DUPLEX_FULL },
+> > +	{ MAC_1000HD,   SPEED_1000,   DUPLEX_HALF },
+> > +	{ MAC_100HD,    SPEED_100,    DUPLEX_HALF },
+> > +	{ MAC_10HD,     SPEED_10,     DUPLEX_HALF },
+> > +};
+> > +
+> > +static int dsa_port_find_max_speed(unsigned long caps, int *speed, int *duplex)
+> > +{
+> > +	int i;
+> > +
+> > +	*speed = SPEED_UNKNOWN;
+> > +	*duplex = DUPLEX_UNKNOWN;
+> > +
+> > +	for (i = 0; i < ARRAY_SIZE(phylink_caps_params); i++) {
+> > +		if (caps & phylink_caps_params[i].mask) {
+> > +			*speed = phylink_caps_params[i].speed;
+> > +			*duplex = phylink_caps_params[i].duplex;
+> 
+> > +			break;
+> 
+> With the below check it's way too protective programming.
+> 
+> 			return 0;
+> 
+> > +		}
+> > +	}
+> > +
+> > +	return *speed == SPEED_UNKNOWN ? -EINVAL : 0;
+> 
+> 	return -EINVAL;
 
-To continue my previous email...
+Ok.
 
-This is a great illustration why posting RFC series is a waste of time.
-This patch was posted as RFC on:
+> > +static struct fwnode_handle *dsa_port_get_fwnode(struct dsa_port *dp,
+> > +						 phy_interface_t mode)
+> > +{
+> 
+> > +	struct property_entry fixed_link_props[3] = { };
+> > +	struct property_entry port_props[3] = {};
+> 
+> A bit of consistency in the assignments?
+> 
+> Also it seems you are using up to 2 for the first one and only 1 in the second
+> one. IIUC it requires a terminator entry, so it means 3 and 2. Do we really
+> need 3 in the second case?
 
-24th June
-29th June
-5th July
-13th July
+Probably not - that came from Vladimir's patch, and I removed the "reg"
+property without fixing this up. Thanks for spotting.
 
-Only when it's been posted today has there been a concern raised about
-the approach. So, what's the use of asking for comments if comments only
-come when patches are posted for merging. None what so ever. So, we've
-lost the last three weeks because I decided to "be kind" and post RFC.
-Total waste of effort.
+> > +	struct fwnode_handle *fixed_link_fwnode;
+> > +	struct fwnode_handle *new_port_fwnode;
+> > +	struct device_node *dn = dp->dn;
+> > +	struct device_node *phy_node;
+> > +	int err, speed, duplex;
+> > +	unsigned long caps;
+> > +
+> > +	phy_node = of_parse_phandle(dn, "phy-handle", 0);
+> 
+> fwnode in the name, why not to use fwnode APIs?
+> 
+> 	fwnode_find_reference();
 
-Now, on your point... the series posted on the 24th June was using
-the mv88e6xxx port_max_speed_interface() but discussion off the mailing
-list:
-
-20:19 < rmk> kabel: hmm, is mv88e6393x_port_max_speed_mode() correct?
-20:20 < rmk> it seems to be suggesting to use PHY_INTERFACE_MODE_10GBASER for
-             port 9
-09:50 < kabel> rmk: yes, 10gbase-r is correct for 6393x. But we need to add
-               exception for 6191x, as is done in chip.c function
-               mv88e6393x_phylink_get_caps()
-09:51 < kabel> rmk: on 6191x only port 10 supports >1g speeds
-11:51 < rmk> kabel: moving it into the get_caps function makes it easier to set
-             the default_interfaces for 6193x
-14:20 < kabel> rmk: yes, get_caps doing it would be better
-
-The problem is this - we call get_caps(), and we have to read registers
-to work out what the port supports. If we have a separate callback, then
-we need to re-read those registers to get the same information to report
-what the default interface should be.
-
-Since almost all of the Marvell implementations the values for both the
-list of supported interfaces and the default interface both require
-reading a register and translating it to a phy_interface_t, and then
-setting the support mask, it seems logical to combine these two
-functioalities into one function.
+Marcin has a series converting DSA to use fwnode things - currently DSA
+does not support ACPI, so converting it to fwnode doesn't make that much
+sese until the proper ACPI patches get merged, which have now been
+rebased on this series by Marcin in the expectation that these patches
+would be merged... so I don't want to tred on Marcin's feet on that.
 
 -- 
 RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
