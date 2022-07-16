@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2BF0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jul 2022 09:50:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 389DDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jul 2022 09:59:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eLTKiDuYMLgSlKZQ3syyyqwb6C6FOdSvROzvBYW1ByA=; b=XkVNRqCIz3UcMMef9/R2NqbB1D
-	EhVfd+KDxKikvyoEkh3NwQ21gULhuT6IV0LFyMI8EkHZIno/rLlzWZMlE3Moi/QcevDGsM3fRpm+B
-	CRsHw68O5mxoPhUsHMxJHk5prMwxOgt2Dq4050JfzLMRnjjbS9Fl9VIOTlaB0l3FkGbTldnrUSxjU
-	TBVXMxq5G/NxePq33YDON0TT+4fV8pZLbyADDcuZdgoQepbaLLLBnicgirZVaQxLleaz4eRRjOU+0
-	UQsXhTdm4omIW7qCXa+YbpTdrRSZ6YSxYcS1A8w6C8Ct48N92RMK7oBvkLmANxJPWDZnZDSYA6kgh
-	6niVGgeg==;
+	bh=wGP4odTqFlFOVFeqF3dosLXF6kyG+gX2dZQKVkN/+J0=; b=hdAZXiadpgBU8nToBXQcpI0kre
+	zm1VSAKXxLJzzgABDhcyHV2vgOs3V3Fdv3KI/YqV8gMyycodF0xjKgWI1ZOQD/yJXwFa9MaCH8NWk
+	tBjx3nZkdSdRDA+JwSQ3wW2JDP5/meAr66yn7/W8Ylar4vZDz48fqM+pRhy6/FKo4XWywKTxq+pQJ
+	XoGhBeAoAxOV4t3iolUfww0VGeNJ+V4x2ipdJZlUKss9rM+oKAhS2/NXfj7tAQgvBTrbXbPcbLBsU
+	abK4VAsr+Nny+ctZxIt3Np0q05CLMaQ73LVrKB+PADoY2ElPJpfPg5nwR9Z8+cUtk8do767tw+mgF
+	I9rNbe5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCeQy-00F8tU-GB; Sat, 16 Jul 2022 09:50:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oCea7-00FCfh-BO; Sat, 16 Jul 2022 09:59:27 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCeQu-00F8q0-B4; Sat, 16 Jul 2022 09:49:59 +0000
-X-UUID: 1eea351d56344f76a69a72d0f54d4ea3-20220716
+	id 1oCea5-00FCdX-3T; Sat, 16 Jul 2022 09:59:26 +0000
+X-UUID: d7105e1c5959466f93686356b3984fd0-20220716
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:70fd3716-9814-4a0f-8b03-85819c2b33f7,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:e9782433-b9e4-42b8-b28a-6364427c76bb,C
+X-CID-O-INFO: VERSION:1.1.8,REQID:e54a5fb0-de77-40c1-ba7f-09379b620277,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:0f94e32,CLOUDID:46892433-b9e4-42b8-b28a-6364427c76bb,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 1eea351d56344f76a69a72d0f54d4ea3-20220716
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: d7105e1c5959466f93686356b3984fd0-20220716
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1413264754; Sat, 16 Jul 2022 02:49:49 -0700
+	with ESMTP id 1703586662; Sat, 16 Jul 2022 02:59:19 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sat, 16 Jul 2022 17:38:17 +0800
+ 15.2.792.15; Sat, 16 Jul 2022 17:38:16 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Sat, 16 Jul 2022 17:38:16 +0800
+ Transport; Sat, 16 Jul 2022 17:38:15 +0800
 From: Irui Wang <irui.wang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
@@ -57,9 +57,9 @@ CC: Yong Wu <yong.wu@mediatek.com>, Maoguang Meng
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 5/5] media: mediatek: vcodec: Fix encoder multi-instance deadlock
-Date: Sat, 16 Jul 2022 17:38:08 +0800
-Message-ID: <20220716093808.29894-6-irui.wang@mediatek.com>
+Subject: [PATCH 4/5] media: mediatek: vcodec: Fix bitstream crop information error
+Date: Sat, 16 Jul 2022 17:38:07 +0800
+Message-ID: <20220716093808.29894-5-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220716093808.29894-1-irui.wang@mediatek.com>
 References: <20220716093808.29894-1-irui.wang@mediatek.com>
@@ -68,8 +68,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220716_024956_426739_29EA1243 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20220716_025925_168432_E7B3BB6E 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,74 +84,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The vb2_queue lock can be set by encoder context, the deadlock
-may occur when running multi-instance encoding if use device
-mutex lock.
+Usually, the real bitstream width and height will set to driver
+by vidioc_s_fmt, and vidioc_try_fmt() does align to get the
+buffer width and height, driver calculate the encoded bitstream
+crop information through them. The aligned resolution will be set
+as real resolution now if user didn't set crop info by
+V4L2_SEL_TGT_CROP, and the encoded bitstream may exist green line
+because of crop information error.
 
 Signed-off-by: Irui Wang <irui.wang@mediatek.com>
 ---
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h     | 3 +++
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c     | 6 +++---
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c | 1 +
- 3 files changed, 7 insertions(+), 3 deletions(-)
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-index ab80e1b1979e..25fe539e6db5 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-@@ -324,6 +324,9 @@ struct mtk_vcodec_ctx {
- 	int hw_id;
- 
- 	struct vdec_msg_queue msg_queue;
-+
-+	/*q_mutex: vb2_queue mutex*/
-+	struct mutex q_mutex;
- };
- 
- /*
 diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-index c310bb1dbbcf..63e7fe958406 100644
+index 25e816863597..c310bb1dbbcf 100644
 --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
 +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-@@ -1300,7 +1300,7 @@ void mtk_vcodec_enc_set_default_params(struct mtk_vcodec_ctx *ctx)
- {
- 	struct mtk_q_data *q_data;
+@@ -503,13 +503,13 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
+ 		f->fmt.pix.pixelformat = fmt->fourcc;
+ 	}
  
--	ctx->m2m_ctx->q_lock = &ctx->dev->dev_mutex;
-+	ctx->m2m_ctx->q_lock = &ctx->q_mutex;
- 	ctx->fh.m2m_ctx = ctx->m2m_ctx;
- 	ctx->fh.ctrl_handler = &ctx->ctrl_hdl;
- 	INIT_WORK(&ctx->encode_work, mtk_venc_worker);
-@@ -1435,7 +1435,7 @@ int mtk_vcodec_enc_queue_init(void *priv, struct vb2_queue *src_vq,
- 	src_vq->ops		= &mtk_venc_vb2_ops;
- 	src_vq->mem_ops		= &vb2_dma_contig_memops;
- 	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
--	src_vq->lock		= &ctx->dev->dev_mutex;
-+	src_vq->lock		= &ctx->q_mutex;
- 	src_vq->dev		= &ctx->dev->plat_dev->dev;
+-	ret = vidioc_try_fmt_out(ctx, f, fmt);
++	q_data->visible_width = f->fmt.pix_mp.width;
++	q_data->visible_height = f->fmt.pix_mp.height;
++	q_data->fmt = fmt;
++	ret = vidioc_try_fmt_out(ctx, f, q_data->fmt);
+ 	if (ret)
+ 		return ret;
  
- 	ret = vb2_queue_init(src_vq);
-@@ -1449,7 +1449,7 @@ int mtk_vcodec_enc_queue_init(void *priv, struct vb2_queue *src_vq,
- 	dst_vq->ops		= &mtk_venc_vb2_ops;
- 	dst_vq->mem_ops		= &vb2_dma_contig_memops;
- 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
--	dst_vq->lock		= &ctx->dev->dev_mutex;
-+	dst_vq->lock		= &ctx->q_mutex;
- 	dst_vq->dev		= &ctx->dev->plat_dev->dev;
+-	q_data->fmt = fmt;
+-	q_data->visible_width = f->fmt.pix_mp.width;
+-	q_data->visible_height = f->fmt.pix_mp.height;
+ 	q_data->coded_width = f->fmt.pix_mp.width;
+ 	q_data->coded_height = f->fmt.pix_mp.height;
  
- 	return vb2_queue_init(dst_vq);
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-index 6b0688b4872d..782563e636e4 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-@@ -130,6 +130,7 @@ static int fops_vcodec_open(struct file *file)
- 	INIT_LIST_HEAD(&ctx->list);
- 	ctx->dev = dev;
- 	init_waitqueue_head(&ctx->queue[0]);
-+	mutex_init(&ctx->q_mutex);
- 
- 	ctx->type = MTK_INST_ENCODER;
- 	ret = mtk_vcodec_enc_ctrls_setup(ctx);
 -- 
 2.18.0
 
