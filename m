@@ -4,72 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C70B9C43334
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jul 2022 10:39:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CC8CC43334
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jul 2022 10:57:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tLLnSKYvynksE21/TWnVAH7fOL8zONH5IPdrbMetOJ0=; b=SV9YSZ7cLsoeeMUmfu13pMo120
-	rj2qSu1N5I0Q2Rc+Q9YMoovvOdNxin6fMzt/bTd2QqomQBJ/JFeaOt31OQBmLUOZBzZtLy2XrQzjX
-	DHBqj/3hgBopbQqWTTvaqJB3dYpIks7krvTS+ml6NNADkImrCNgXCbu3X/EmAeNPKvsdMqKyKlfWS
-	oUNvXDEe/pxM/YRkFpnJpGDqefi5qtXqSXiicHBph8uBwi3v2ndkWet2kg0JJATlf6z64GgselFd1
-	9TjL79qWVDcWmXWQULPgvnikQVa43IzQcjn2XY/4ZmOTU7yr+IEWFskgJrsja7MlrsUmtLWwUS3+c
-	Mp2m8y+Q==;
+	bh=Y2w+/D0qVC/MxuYc8kSX8+b66qSmQVaXiMac4uHSn80=; b=LhubDdFNeJVGbzXvqy1V48EHgg
+	RRimooC7G8rVIKYWENY353nqfeOtDR8P54XT5zC+ADDxVvLiIcK6aQawjJXqX7vqC8KqE4YXMYcTr
+	FtHOivq9FNAtfwglmYX4ucUfYQ17a4VpRRFPaWjOLI5DCNIYdyQp4iLOwR72OjMAE/nqUB3Kx5a7p
+	2iYIXaVaG4pjcw7DNulYeXD+68az4zpwbKJc6eZQZ/cnnpzaDJNAXJLIqueQ+0uZFLII398FjNf2z
+	mwbYdADTDjjGLHab1RX/6c3S+QimyN/VcU62kHsYzzA6Z5EOL4aI+tcX2li26XmdOK4x2rz3/3HPS
+	AxCCndrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCfCW-00FQw8-67; Sat, 16 Jul 2022 10:39:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oCfUH-00FYjC-Ot; Sat, 16 Jul 2022 10:57:29 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCfCP-00FQrQ-FN; Sat, 16 Jul 2022 10:39:03 +0000
-X-UUID: 727b7c41c908408c804f94dc6e0b06c9-20220716
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:1773073d-ba59-4e1d-bf30-04f95fd32d85,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:a954a7d7-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 727b7c41c908408c804f94dc6e0b06c9-20220716
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 32697080; Sat, 16 Jul 2022 03:38:50 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Sat, 16 Jul 2022 17:38:12 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Sat, 16 Jul 2022 17:38:11 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
-	<angelogioacchino.delregno@collabora.com>, Tiffany Lin
-	<tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-CC: Yong Wu <yong.wu@mediatek.com>, Maoguang Meng
-	<maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>, Irui Wang <irui.wang@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 1/5] media: mediatek: vcodec: Add encoder driver support for 34-bit iova
-Date: Sat, 16 Jul 2022 17:38:04 +0800
-Message-ID: <20220716093808.29894-2-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220716093808.29894-1-irui.wang@mediatek.com>
-References: <20220716093808.29894-1-irui.wang@mediatek.com>
+	id 1oCfU5-00FYcs-Ds; Sat, 16 Jul 2022 10:57:19 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id fd6so9209104edb.5;
+        Sat, 16 Jul 2022 03:57:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=Y2w+/D0qVC/MxuYc8kSX8+b66qSmQVaXiMac4uHSn80=;
+        b=CYfq/a44gFubyWQKFIXHlM7reCKU/S/gz8mxBEBgeJxbgYLT0jDP07ae47dFNpwTyb
+         cCLvh2L+CbnG3bLUr+cqP2HhTIh/1O7/Tpu6RwFD0FZsfuvBIDYkONQLpT6tf45HExbe
+         nUle/gN8RRGAFT9ulovCzcYnBTLCyoGmkqjiUKhVbiU0wLzBtXFd8Wjb2VS8D8k1GxGL
+         0+T9Sffv0kP9cE3g+4+7VZcyEf5U+n5a4W3hETqNNvjRHx4Xo+Lbn4fxkABb6vQUi6sL
+         SSWUIyaPoK4uGFkc4jB9jYAVT5XMNojlZZD9FfwA/o+YP6tLmRrjAEYDB2oQXr2m2cyR
+         YLEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=Y2w+/D0qVC/MxuYc8kSX8+b66qSmQVaXiMac4uHSn80=;
+        b=04q/4Lxat+c06XYFdFQ7vGGCF21F5b5gxsTr974ruoT7LOk3tKiqaU4+UjAbrwMC+e
+         H1+n4ajujz9udOn5HYWu8SKyclV+AXAj9bQjg7RKdQwUcFREXzTDyZnzI9mlibKkBhTP
+         VYIb2UR3JvTTpg9YOOMDQLoIVWd5K4WPbkx7vlOwXwqVOjkzgtOiAI0LYDNCsuWdMk4A
+         Tl0e7CLHplfTiInD/dUmQGOxZ8zJxsC0C/pKd8fjPu5eCDoM0/ytIo/EsXsyw4cmvl3U
+         bqzfKB3yrZ1A60P153PyWxbX0LsoSGak2uYXZLNMoaph32khBnYRC6He+szdYrXePbn+
+         2/2Q==
+X-Gm-Message-State: AJIora/P1o8vSjeZPppwuhWOOd0Ikjdk1t2vyz68Eu/gT5Dj5oycLGiV
+	uxXNebTlIJD7hTjquTHyagI=
+X-Google-Smtp-Source: AGRyM1tTQPUNZdfW5CjlZaMUuGmjZY0BtVvaB4lz4j+y8Rw9J+waSuNBuaZcCkhDKqXIhjZCyyB9hA==
+X-Received: by 2002:a05:6402:5001:b0:437:8918:8dbe with SMTP id p1-20020a056402500100b0043789188dbemr24547489eda.70.1657969035042;
+        Sat, 16 Jul 2022 03:57:15 -0700 (PDT)
+Received: from skbuf ([188.25.231.115])
+        by smtp.gmail.com with ESMTPSA id e2-20020a50fb82000000b0042bdb6a3602sm4382499edq.69.2022.07.16.03.57.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 16 Jul 2022 03:57:14 -0700 (PDT)
+Date: Sat, 16 Jul 2022 13:57:11 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>
+Subject: Re: [PATCH net-next 3/6] net: dsa: add support for retrieving the
+ interface mode
+Message-ID: <20220716105711.bjsh763smf6bfjy2@skbuf>
+References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+ <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+ <E1oCNl3-006e3n-PT@rmk-PC.armlinux.org.uk>
+ <E1oCNl3-006e3n-PT@rmk-PC.armlinux.org.uk>
+ <20220715172444.yins4kb2b6b35aql@skbuf>
+ <YtHcpf4otJQS9hTO@shell.armlinux.org.uk>
+ <20220715222348.okmeyd55o5u3gkyi@skbuf>
+ <YtHw0O5NB6kGkdwV@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YtHw0O5NB6kGkdwV@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220716_033901_553982_3C8B4BC5 
-X-CRM114-Status: GOOD (  30.10  )
+X-CRM114-CacheID: sfid-20220716_035717_498770_16E867C6 
+X-CRM114-Status: GOOD (  55.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,502 +120,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Encoder driver got iova from IOMMU is 34-bit, for example:
+On Fri, Jul 15, 2022 at 11:57:20PM +0100, Russell King (Oracle) wrote:
+> > > The problem is this - we call get_caps(), and we have to read registers
+> > > to work out what the port supports. If we have a separate callback, then
+> > > we need to re-read those registers to get the same information to report
+> > > what the default interface should be.
+> > > 
+> > > Since almost all of the Marvell implementations the values for both the
+> > > list of supported interfaces and the default interface both require
+> > > reading a register and translating it to a phy_interface_t, and then
+> > > setting the support mask, it seems logical to combine these two
+> > > functioalities into one function.
+> > 
+> > In essence that doesn't mean much; DSA isn't Marvell only, but I'll give
+> > it to you: if only the Marvell driver (and Broadcom later, I expect) is
+> > going to add support for the context-specific interpretation of CPU port
+> > OF nodes, then we may consider tailoring the implementation to their
+> > hardware register layout details. In any case, my concern can be
+> > addressed even if you insist on keeping the default interface as an
+> > argument of phylink_get_caps. There just needs to be a lot more
+> > documentation explaining who needs to populate that argument and why.
+> 
+> I don't get the point you're making here.
 
-Here is the sample code:
-encoder input frame buffer dma address is:
-frm_buf =
-    vb2_dma_contig_plane_dma_addr(&vb2_v4l2_buffer->vb2_buf, 0);
-the value of frm_buf is 0x1_ff30_0000.
+The point I'm making is that I dislike where this is going. The addition
+of "default_interface" to phylink_get_caps is confusing because it lacks
+proper qualifiers.
 
-encoder driver got the frm_buf and send the iova to SCP firmware
-through SCP IPI message, then write to encoder hardware in SCP.
-The iova is stored in IPI message as uint32_t data type, so the
-value will be truncated from *0x1_ff30_0000* to *0xff30_0000*,
-and then *0xff30_0000* will be written to encoder hardware, but
-IOMMU will help to add the high *0x1_* bit back, so IOMMU can
-translate the iova to PA correctly, encoder hardware can access
-the correct memory for encoding.
-Another reason to do this is the encoder hardware can't access
-the 34-bit iova, IOMMU will help to add the remaining high bits
-of iova. But for mt8188, encoder hardware can access 34-bit iova
-directly, and encoder driver need write all 34-bit iova because
-IOMMU can't help driver do this if the hardware support access
-34-bit iova.
-For the reasons above, this patch is added to support transfer
-34-bit iova between kernel and SCP encoder driver. Use uint64_t
-data type to store the iova, for compatibility with old chipsets,
-add some new struct definitions for 34-bit.
+The concrete reasons why it's confusing are:
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
----
- .../platform/mediatek/vcodec/mtk_vcodec_drv.h |   3 +
- .../mediatek/vcodec/venc/venc_h264_if.c       | 200 +++++++++++++++---
- .../platform/mediatek/vcodec/venc_ipi_msg.h   |  24 +++
- .../platform/mediatek/vcodec/venc_vpu_if.c    |  34 ++-
- 4 files changed, 227 insertions(+), 34 deletions(-)
+(a) there is no comment which specifies on which kinds of ports (DSA and CPU)
+    the default_interface will be used. This might result in useless effort
+    from driver authors to report a default_interface for a port where it
+    will never be asked for.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-index ef4584a46417..ab80e1b1979e 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_drv.h
-@@ -401,6 +401,7 @@ struct mtk_vcodec_dec_pdata {
-  * @output_formats: array of supported output formats
-  * @num_output_formats: number of entries in output_formats
-  * @core_id: stand for h264 or vp8 encode index
-+ * @is_34bit: whether the encoder uses 34bit iova
-  */
- struct mtk_vcodec_enc_pdata {
- 	bool uses_ext;
-@@ -411,9 +412,11 @@ struct mtk_vcodec_enc_pdata {
- 	const struct mtk_video_fmt *output_formats;
- 	size_t num_output_formats;
- 	int core_id;
-+	bool is_34bit;
- };
- 
- #define MTK_ENC_CTX_IS_EXT(ctx) ((ctx)->dev->venc_pdata->uses_ext)
-+#define MTK_ENC_IOVA_IS_34BIT(ctx) ((ctx)->dev->venc_pdata->is_34bit)
- 
- /**
-  * struct mtk_vcodec_dev - driver data
-diff --git a/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c b/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c
-index 4d9b8798dffe..3a5af6cca040 100644
---- a/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c
-@@ -127,6 +127,72 @@ struct venc_h264_vsi {
- 	struct venc_h264_vpu_buf work_bufs[VENC_H264_VPU_WORK_BUF_MAX];
- };
- 
-+/**
-+ * struct venc_h264_vpu_config_ext - Structure for h264 encoder configuration
-+ *                                   AP-W/R : AP is writer/reader on this item
-+ *                                   VPU-W/R: VPU is write/reader on this item
-+ * @input_fourcc: input fourcc
-+ * @bitrate: target bitrate (in bps)
-+ * @pic_w: picture width. Picture size is visible stream resolution, in pixels,
-+ *         to be used for display purposes; must be smaller or equal to buffer
-+ *         size.
-+ * @pic_h: picture height
-+ * @buf_w: buffer width. Buffer size is stream resolution in pixels aligned to
-+ *         hardware requirements.
-+ * @buf_h: buffer height
-+ * @gop_size: group of picture size (idr frame)
-+ * @intra_period: intra frame period
-+ * @framerate: frame rate in fps
-+ * @profile: as specified in standard
-+ * @level: as specified in standard
-+ * @wfd: WFD mode 1:on, 0:off
-+ * @max_qp: max quant parameter
-+ * @min_qp: min quant parameter
-+ * @reserved: reserved configs
-+ */
-+struct venc_h264_vpu_config_ext {
-+	u32 input_fourcc;
-+	u32 bitrate;
-+	u32 pic_w;
-+	u32 pic_h;
-+	u32 buf_w;
-+	u32 buf_h;
-+	u32 gop_size;
-+	u32 intra_period;
-+	u32 framerate;
-+	u32 profile;
-+	u32 level;
-+	u32 wfd;
-+	u32 max_qp;
-+	u32 min_qp;
-+	u32 reserved[8];
-+};
-+
-+/**
-+ * struct venc_h264_vpu_buf_34 - Structure for 34 bit buffer information
-+ *                               AP-W/R : AP is writer/reader on this item
-+ *                               VPU-W/R: VPU is write/reader on this item
-+ * @iova: 34 bit IO virtual address
-+ * @vpua: VPU side memory addr which is used by RC_CODE
-+ * @size: buffer size (in bytes)
-+ */
-+struct venc_h264_vpu_buf_34 {
-+	u64 iova;
-+	u32 vpua;
-+	u32 size;
-+};
-+
-+/**
-+ * struct venc_h264_vsi_64 - Structure for VPU driver control and info share
-+ *                           Used for 64 bit iova sharing
-+ * @config: h264 encoder configuration
-+ * @work_bufs: working buffer information in VPU side
-+ */
-+struct venc_h264_vsi_34 {
-+	struct venc_h264_vpu_config_ext config;
-+	struct venc_h264_vpu_buf_34 work_bufs[VENC_H264_VPU_WORK_BUF_MAX];
-+};
-+
- /*
-  * struct venc_h264_inst - h264 encoder AP driver instance
-  * @hw_base: h264 encoder hardware register base
-@@ -140,6 +206,8 @@ struct venc_h264_vsi {
-  * @vpu_inst: VPU instance to exchange information between AP and VPU
-  * @vsi: driver structure allocated by VPU side and shared to AP side for
-  *	 control and info share
-+ * @vsi_64: driver structure allocated by VPU side and shared to AP side for
-+ *	 control and info share, used for 64 bit iova sharing.
-  * @ctx: context for v4l2 layer integration
-  */
- struct venc_h264_inst {
-@@ -152,6 +220,7 @@ struct venc_h264_inst {
- 	unsigned int prepend_hdr;
- 	struct venc_vpu_inst vpu_inst;
- 	struct venc_h264_vsi *vsi;
-+	struct venc_h264_vsi_34 *vsi_34;
- 	struct mtk_vcodec_ctx *ctx;
- };
- 
-@@ -244,14 +313,21 @@ static void h264_enc_free_work_buf(struct venc_h264_inst *inst)
- 	mtk_vcodec_debug_leave(inst);
- }
- 
--static int h264_enc_alloc_work_buf(struct venc_h264_inst *inst)
-+static int h264_enc_alloc_work_buf(struct venc_h264_inst *inst, bool is_34bit)
- {
-+	struct venc_h264_vpu_buf *wb;
-+	struct venc_h264_vpu_buf_34 *wb_34;
- 	int i;
-+	u32 vpua, wb_size;
- 	int ret = 0;
--	struct venc_h264_vpu_buf *wb = inst->vsi->work_bufs;
- 
- 	mtk_vcodec_debug_enter(inst);
- 
-+	if (is_34bit)
-+		wb_34 = inst->vsi_34->work_bufs;
-+	else
-+		wb = inst->vsi->work_bufs;
-+
- 	for (i = 0; i < VENC_H264_VPU_WORK_BUF_MAX; i++) {
- 		/*
- 		 * This 'wb' structure is set by VPU side and shared to AP for
-@@ -269,13 +345,22 @@ static int h264_enc_alloc_work_buf(struct venc_h264_inst *inst)
- 		 * address and do some memcpy access to move to bitstream buffer
- 		 * assigned by v4l2 layer.
- 		 */
--		inst->work_bufs[i].size = wb[i].size;
-+		if (is_34bit) {
-+			inst->work_bufs[i].size = wb_34[i].size;
-+			vpua = wb_34[i].vpua;
-+			wb_size = wb_34[i].size;
-+		} else {
-+			inst->work_bufs[i].size = wb[i].size;
-+			vpua = wb[i].vpua;
-+			wb_size = wb[i].size;
-+		}
-+
- 		if (i == VENC_H264_VPU_WORK_BUF_SKIP_FRAME) {
- 			struct mtk_vcodec_fw *handler;
- 
- 			handler = inst->vpu_inst.ctx->dev->fw_handler;
- 			inst->work_bufs[i].va =
--				mtk_vcodec_fw_map_dm_addr(handler, wb[i].vpua);
-+				mtk_vcodec_fw_map_dm_addr(handler, vpua);
- 			inst->work_bufs[i].dma_addr = 0;
- 		} else {
- 			ret = mtk_vcodec_mem_alloc(inst->ctx,
-@@ -297,12 +382,14 @@ static int h264_enc_alloc_work_buf(struct venc_h264_inst *inst)
- 
- 				handler = inst->vpu_inst.ctx->dev->fw_handler;
- 				tmp_va = mtk_vcodec_fw_map_dm_addr(handler,
--								   wb[i].vpua);
--				memcpy(inst->work_bufs[i].va, tmp_va,
--				       wb[i].size);
-+								   vpua);
-+				memcpy(inst->work_bufs[i].va, tmp_va, wb_size);
- 			}
- 		}
--		wb[i].iova = inst->work_bufs[i].dma_addr;
-+		if (is_34bit)
-+			wb_34[i].iova = inst->work_bufs[i].dma_addr;
-+		else
-+			wb[i].iova = inst->work_bufs[i].dma_addr;
- 
- 		mtk_vcodec_debug(inst,
- 				 "work_buf[%d] va=0x%p iova=%pad size=%zu",
-@@ -342,22 +429,22 @@ static unsigned int h264_enc_wait_venc_done(struct venc_h264_inst *inst)
- 	return irq_status;
- }
- 
--static int h264_frame_type(struct venc_h264_inst *inst)
-+static int h264_frame_type(unsigned int frm_cnt, unsigned int gop_size,
-+			   unsigned int intra_period)
- {
--	if ((inst->vsi->config.gop_size != 0 &&
--	     (inst->frm_cnt % inst->vsi->config.gop_size) == 0) ||
--	    (inst->frm_cnt == 0 && inst->vsi->config.gop_size == 0)) {
-+	if ((gop_size != 0 && (frm_cnt % gop_size) == 0) ||
-+	    (frm_cnt == 0 && gop_size == 0)) {
- 		/* IDR frame */
- 		return VENC_H264_IDR_FRM;
--	} else if ((inst->vsi->config.intra_period != 0 &&
--		    (inst->frm_cnt % inst->vsi->config.intra_period) == 0) ||
--		   (inst->frm_cnt == 0 && inst->vsi->config.intra_period == 0)) {
-+	} else if ((intra_period != 0 && (frm_cnt % intra_period) == 0) ||
-+		   (frm_cnt == 0 && intra_period == 0)) {
- 		/* I frame */
- 		return VENC_H264_I_FRM;
- 	} else {
- 		return VENC_H264_P_FRM;  /* Note: B frames are not supported */
- 	}
- }
-+
- static int h264_encode_sps(struct venc_h264_inst *inst,
- 			   struct mtk_vcodec_mem *bs_buf,
- 			   unsigned int *bs_size)
-@@ -438,18 +525,32 @@ static int h264_encode_frame(struct venc_h264_inst *inst,
- 			     unsigned int *bs_size)
- {
- 	int ret = 0;
-+	unsigned int gop_size;
-+	unsigned int intra_period;
- 	unsigned int irq_status;
- 	struct venc_frame_info frame_info;
-+	struct mtk_vcodec_ctx *ctx = inst->ctx;
- 
- 	mtk_vcodec_debug_enter(inst);
- 	mtk_vcodec_debug(inst, "frm_cnt = %d\n ", inst->frm_cnt);
-+
-+	if (MTK_ENC_IOVA_IS_34BIT(ctx)) {
-+		gop_size = inst->vsi_34->config.gop_size;
-+		intra_period = inst->vsi_34->config.intra_period;
-+	} else {
-+		gop_size = inst->vsi->config.gop_size;
-+		intra_period = inst->vsi->config.intra_period;
-+	}
- 	frame_info.frm_count = inst->frm_cnt;
- 	frame_info.skip_frm_count = inst->skip_frm_cnt;
--	frame_info.frm_type = h264_frame_type(inst);
-+	frame_info.frm_type = h264_frame_type(inst->frm_cnt, gop_size,
-+					      intra_period);
- 	mtk_vcodec_debug(inst, "frm_count = %d,skip_frm_count =%d,frm_type=%d.\n",
- 			 frame_info.frm_count, frame_info.skip_frm_count,
- 			 frame_info.frm_type);
--	ret = vpu_enc_encode(&inst->vpu_inst, H264_BS_MODE_FRAME, frm_buf, bs_buf, &frame_info);
-+
-+	ret = vpu_enc_encode(&inst->vpu_inst, H264_BS_MODE_FRAME,
-+			     frm_buf, bs_buf, &frame_info);
- 	if (ret)
- 		return ret;
- 
-@@ -517,7 +618,10 @@ static int h264_enc_init(struct mtk_vcodec_ctx *ctx)
- 
- 	ret = vpu_enc_init(&inst->vpu_inst);
- 
--	inst->vsi = (struct venc_h264_vsi *)inst->vpu_inst.vsi;
-+	if (MTK_ENC_IOVA_IS_34BIT(ctx))
-+		inst->vsi_34 = (struct venc_h264_vsi_34 *)inst->vpu_inst.vsi;
-+	else
-+		inst->vsi = (struct venc_h264_vsi *)inst->vpu_inst.vsi;
- 
- 	mtk_vcodec_debug_leave(inst);
- 
-@@ -624,31 +728,61 @@ static int h264_enc_encode(void *handle,
- 	return ret;
- }
- 
-+static void h264_enc_set_vsi_configs(struct venc_h264_inst *inst,
-+				     struct venc_enc_param *enc_prm)
-+{
-+	inst->vsi->config.input_fourcc = enc_prm->input_yuv_fmt;
-+	inst->vsi->config.bitrate = enc_prm->bitrate;
-+	inst->vsi->config.pic_w = enc_prm->width;
-+	inst->vsi->config.pic_h = enc_prm->height;
-+	inst->vsi->config.buf_w = enc_prm->buf_width;
-+	inst->vsi->config.buf_h = enc_prm->buf_height;
-+	inst->vsi->config.gop_size = enc_prm->gop_size;
-+	inst->vsi->config.framerate = enc_prm->frm_rate;
-+	inst->vsi->config.intra_period = enc_prm->intra_period;
-+	inst->vsi->config.profile =
-+		h264_get_profile(inst, enc_prm->h264_profile);
-+	inst->vsi->config.level =
-+		h264_get_level(inst, enc_prm->h264_level);
-+	inst->vsi->config.wfd = 0;
-+}
-+
-+static void h264_enc_set_vsi_34_configs(struct venc_h264_inst *inst,
-+					struct venc_enc_param *enc_prm)
-+{
-+	inst->vsi_34->config.input_fourcc = enc_prm->input_yuv_fmt;
-+	inst->vsi_34->config.bitrate = enc_prm->bitrate;
-+	inst->vsi_34->config.pic_w = enc_prm->width;
-+	inst->vsi_34->config.pic_h = enc_prm->height;
-+	inst->vsi_34->config.buf_w = enc_prm->buf_width;
-+	inst->vsi_34->config.buf_h = enc_prm->buf_height;
-+	inst->vsi_34->config.gop_size = enc_prm->gop_size;
-+	inst->vsi_34->config.framerate = enc_prm->frm_rate;
-+	inst->vsi_34->config.intra_period = enc_prm->intra_period;
-+	inst->vsi_34->config.profile =
-+		h264_get_profile(inst, enc_prm->h264_profile);
-+	inst->vsi_34->config.level =
-+		h264_get_level(inst, enc_prm->h264_level);
-+	inst->vsi_34->config.wfd = 0;
-+}
-+
- static int h264_enc_set_param(void *handle,
- 			      enum venc_set_param_type type,
- 			      struct venc_enc_param *enc_prm)
- {
- 	int ret = 0;
- 	struct venc_h264_inst *inst = (struct venc_h264_inst *)handle;
-+	struct mtk_vcodec_ctx *ctx = inst->ctx;
-+	const bool is_34bit = MTK_ENC_IOVA_IS_34BIT(ctx);
- 
- 	mtk_vcodec_debug(inst, "->type=%d", type);
- 
- 	switch (type) {
- 	case VENC_SET_PARAM_ENC:
--		inst->vsi->config.input_fourcc = enc_prm->input_yuv_fmt;
--		inst->vsi->config.bitrate = enc_prm->bitrate;
--		inst->vsi->config.pic_w = enc_prm->width;
--		inst->vsi->config.pic_h = enc_prm->height;
--		inst->vsi->config.buf_w = enc_prm->buf_width;
--		inst->vsi->config.buf_h = enc_prm->buf_height;
--		inst->vsi->config.gop_size = enc_prm->gop_size;
--		inst->vsi->config.framerate = enc_prm->frm_rate;
--		inst->vsi->config.intra_period = enc_prm->intra_period;
--		inst->vsi->config.profile =
--			h264_get_profile(inst, enc_prm->h264_profile);
--		inst->vsi->config.level =
--			h264_get_level(inst, enc_prm->h264_level);
--		inst->vsi->config.wfd = 0;
-+		if (is_34bit)
-+			h264_enc_set_vsi_34_configs(inst, enc_prm);
-+		else
-+			h264_enc_set_vsi_configs(inst, enc_prm);
- 		ret = vpu_enc_set_param(&inst->vpu_inst, type, enc_prm);
- 		if (ret)
- 			break;
-@@ -656,7 +790,7 @@ static int h264_enc_set_param(void *handle,
- 			h264_enc_free_work_buf(inst);
- 			inst->work_buf_allocated = false;
- 		}
--		ret = h264_enc_alloc_work_buf(inst);
-+		ret = h264_enc_alloc_work_buf(inst, is_34bit);
- 		if (ret)
- 			break;
- 		inst->work_buf_allocated = true;
-diff --git a/drivers/media/platform/mediatek/vcodec/venc_ipi_msg.h b/drivers/media/platform/mediatek/vcodec/venc_ipi_msg.h
-index 587a2cf15b76..bb16d96a7f57 100644
---- a/drivers/media/platform/mediatek/vcodec/venc_ipi_msg.h
-+++ b/drivers/media/platform/mediatek/vcodec/venc_ipi_msg.h
-@@ -100,6 +100,30 @@ struct venc_ap_ipi_msg_enc_ext {
- 	uint32_t data[32];
- };
- 
-+/**
-+ * struct venc_ap_ipi_msg_enc_ext_34 - AP to SCP extended enc cmd structure
-+ * @msg_id:		message id (AP_IPIMSG_XXX_ENC_ENCODE)
-+ * @vpu_inst_addr:	VPU encoder instance addr
-+ * @bs_mode:		bitstream mode for h264
-+ * @reserved:		for struct padding
-+ * @input_addr:		input frame buffer 34 bit address
-+ * @bs_addr:		output bitstream buffer 34 bit address
-+ * @bs_size:		bitstream buffer size
-+ * @data_item:		number of items in the data array
-+ * @data:		data array to store the set parameters
-+ */
-+struct venc_ap_ipi_msg_enc_ext_34 {
-+	u32 msg_id;
-+	u32 vpu_inst_addr;
-+	u32 bs_mode;
-+	u32 reserved;
-+	u64 input_addr[3];
-+	u64 bs_addr;
-+	u32 bs_size;
-+	u32 data_item;
-+	u32 data[32];
-+};
-+
- /**
-  * struct venc_ap_ipi_msg_deinit - AP to VPU deinit cmd structure
-  * @msg_id:	message id (AP_IPIMSG_XXX_ENC_DEINIT)
-diff --git a/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c
-index d3570c4c177d..25c1b13559c9 100644
---- a/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/venc_vpu_if.c
-@@ -228,17 +228,28 @@ int vpu_enc_encode(struct venc_vpu_inst *vpu, unsigned int bs_mode,
- 		   struct venc_frame_info *frame_info)
- {
- 	const bool is_ext = MTK_ENC_CTX_IS_EXT(vpu->ctx);
-+	const bool is_34bit = MTK_ENC_IOVA_IS_34BIT(vpu->ctx);
-+
- 	size_t msg_size = is_ext ?
- 		sizeof(struct venc_ap_ipi_msg_enc_ext) :
- 		sizeof(struct venc_ap_ipi_msg_enc);
-+	int status;
- 	struct venc_ap_ipi_msg_enc_ext out;
-+	struct venc_ap_ipi_msg_enc_ext_34 out_34;
- 
- 	mtk_vcodec_debug(vpu, "bs_mode %d ->", bs_mode);
- 
- 	memset(&out, 0, sizeof(out));
-+	memset(&out_34, 0, sizeof(out_34));
-+
- 	out.base.msg_id = AP_IPIMSG_ENC_ENCODE;
- 	out.base.vpu_inst_addr = vpu->inst_addr;
- 	out.base.bs_mode = bs_mode;
-+
-+	out_34.msg_id = AP_IPIMSG_ENC_ENCODE;
-+	out_34.vpu_inst_addr = vpu->inst_addr;
-+	out_34.bs_mode = bs_mode;
-+
- 	if (frm_buf) {
- 		if ((frm_buf->fb_addr[0].dma_addr % 16 == 0) &&
- 		    (frm_buf->fb_addr[1].dma_addr % 16 == 0) &&
-@@ -246,6 +257,10 @@ int vpu_enc_encode(struct venc_vpu_inst *vpu, unsigned int bs_mode,
- 			out.base.input_addr[0] = frm_buf->fb_addr[0].dma_addr;
- 			out.base.input_addr[1] = frm_buf->fb_addr[1].dma_addr;
- 			out.base.input_addr[2] = frm_buf->fb_addr[2].dma_addr;
-+
-+			out_34.input_addr[0] = frm_buf->fb_addr[0].dma_addr;
-+			out_34.input_addr[1] = frm_buf->fb_addr[1].dma_addr;
-+			out_34.input_addr[2] = frm_buf->fb_addr[2].dma_addr;
- 		} else {
- 			mtk_vcodec_err(vpu, "dma_addr not align to 16");
- 			return -EINVAL;
-@@ -254,14 +269,31 @@ int vpu_enc_encode(struct venc_vpu_inst *vpu, unsigned int bs_mode,
- 	if (bs_buf) {
- 		out.base.bs_addr = bs_buf->dma_addr;
- 		out.base.bs_size = bs_buf->size;
-+
-+		out_34.bs_addr = bs_buf->dma_addr;
-+		out_34.bs_size = bs_buf->size;
- 	}
-+
- 	if (is_ext && frame_info) {
- 		out.data_item = 3;
- 		out.data[0] = frame_info->frm_count;
- 		out.data[1] = frame_info->skip_frm_count;
- 		out.data[2] = frame_info->frm_type;
-+
-+		out_34.data_item = 3;
-+		out_34.data[0] = frame_info->frm_count;
-+		out_34.data[1] = frame_info->skip_frm_count;
-+		out_34.data[2] = frame_info->frm_type;
- 	}
--	if (vpu_enc_send_msg(vpu, &out, msg_size)) {
-+
-+	if (is_34bit) {
-+		msg_size = sizeof(struct venc_ap_ipi_msg_enc_ext_34);
-+		status = vpu_enc_send_msg(vpu, &out_34, msg_size);
-+	} else {
-+		status = vpu_enc_send_msg(vpu, &out, msg_size);
-+	}
-+
-+	if (status) {
- 		mtk_vcodec_err(vpu, "AP_IPIMSG_ENC_ENCODE %d fail",
- 			       bs_mode);
- 		return -EINVAL;
--- 
-2.18.0
+(b) there is no comment which specifies that only the drivers which have
+    DT blobs with missing phylink bindings on CPU and DSA ports should
+    fill this out. I wouldn't want to see a new driver use this facility,
+    I just don't see a reason for it. I'd rather see a comment that the
+    recommendation for new drivers is to validate their bindings and not
+    rely on context-specific interpretations of empty DT nodes.
 
+(c) especially with the dsa_port_find_max_caps() heuristic in place, I
+    can't say I'm clear at all on who should populate "default_interface"
+    and who could safely rely on the heuristic if they populate
+    supported_interfaces. It's simply put unclear what is the expectation
+    from driver authors.
+
+For (b) I was thinking that making it a separate function would make it
+clearer that it isn't for everyone. Doing just that wouldn't solve everything,
+so I've also said that adding more documentation to this function
+prototype would go a long way.
+
+Some dsa_switch_ops already have inline comments in include/net/dsa.h,
+see get_tag_protocol, change_tag_protocol, port_change_mtu. Also, there
+is the the "PHY devices and link management" chapter in Documentation/networking/dsa/dsa.rst.
+We have places to document what the DSA framework expects drivers to do.
+I was expecting that wherever default_interface gets reported, we could
+see some answers and explanations to the questions above.
+
+> > Also, perhaps more importantly, a real effort needs to be put to prevent
+> > breakage for drivers that work without a phylink instance registered for
+> > the CPU port, and also don't report the default interface. Practically
+> > that just means not deleting the current logic, but making it one of 3
+> > options.
+> > 
+> > fwnode is valid from phylink's perspective?
+> >        /                             \
+> >  yes  /                               \ no
+> >      /                                 \
+> > register with phylink         can we determine the link parameters to create
+> >                                   a fixed-link software node?
+> >                                        /                \                     \
+> >                                  yes  /                  \  no                |
+> >                                      /                    \                   | this is missing
+> >                                     /                      \                  |
+> >              create the software node and       don't put the port down,      |
+> >              register with phylink              don't register with phylink   /
+> 
+> This is exactly what we have today,
+
+Wait a minute, how come this is exactly what we have "today"?
+
+In tree we have this:
+
+fwnode is valid from phylink's perspective?
+       /                             \
+ yes  /                               \  no
+     /                                 \
+register with phylink                   \
+                             don't put the port down,
+                             don't register with phylink
+
+
+In your patch set we have this:
+
+
+fwnode is valid from phylink's perspective?
+       /                             \
+ yes  /                               \ no
+     /                                 \
+register with phylink         can we determine the link parameters to create
+                                  a fixed-link software node?
+                                       /                \
+                                 yes  /                  \  no
+                                     /                    \
+                                    /                      \
+             create the software node and            fail to create the port
+             register with phylink
+
+> and is exactly what I'm trying to get rid of, so we have _consistency_
+> in the implementation, to prevent fuckups like I've created by
+> converting many DSA drivers to use phylink_pcs. Any DSA driver that
+> used a PCS for the DSA or CPu port and has been converted to
+> phylink_pcs support has been broken in the last few kernel cycles. I'm
+> trying to address that breakage before converting the Marvell DSA
+> driver - which is the driver that highlighted the problem.
+
+You are essentially saying that it's of no use to keep in DSA the
+fallback logic of not registering with phylink, because the phylink_pcs
+conversions have broken the defaulting functionality already in all
+other drivers.
+
+I may have missed something, but this is new information to me.
+Specifically, before you've said that it is *this* patch set which would
+risk introducing breakage (by forcing a link down + a phylink creation).
+https://lore.kernel.org/netdev/YsCqFM8qM1h1MKu%2F@shell.armlinux.org.uk/
+What you're saying now directly contradicts that.
+
+Do you have concrete evidence that there is actually any regression of
+this kind introduced by prior phylink_pcs conversions? Because if there
+is, I retract the proposal to keep the fallback logic.
+
+> We need to move away from the current model in DSA where we only use
+> stuff in random situations.
+> 
+> Well, at this point, I'm just going to give up with this kernel cycle.
+> It seems impossible to get this sorted. It seems impossible to move
+> forward with the conversion of Marvell DSA to phylink_pcs. In fact,
+> I might just give up with the idea of further phylink development
+> because it's just too fucking difficult, and getting feedback is just
+> impossible.
+> 
+> -- 
+> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+> FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
