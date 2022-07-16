@@ -4,75 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D819CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jul 2022 18:43:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29D67C43334
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jul 2022 21:29:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WsEhwdLdNfwHR9LCxaWkzLk9jCaKVkk47P3wBYbLRH0=; b=H4oxaooo9mDwYTGU2zqkmwXbUP
-	PcQ75vV/Mtat7Jz55kj+C5GqxIoDYDN5/r/lMNzu87zdYLw/nYEaZueXiLe7U1pMAh41fvUEuDtzc
-	CQm7Bea9jdH0B58FrSqddPGUOWijE0RUgblX4qLk5cu2FGxhX7vfM+ZZQsI/Gd39D2m3oy9/UL//c
-	+Xwee1+PKcHJzlkMMQmREhGo7oEgDbY5FcjpUymqXJeitRTqDjvIUZ2rgjg1LM9J18i3l4Zqk1TxE
-	aHXVhDaR+oEafTjY5y8ZjOgfKileJBiZxlt2P9T2Sso+pR3g7Nz1C+iLDa5dDMOSn7Dfga54xI1Oq
-	ZQuwLb4Q==;
+	bh=iKYcakxHgF4ZGmOKgugkyiCgJHd0xKgjxghPQSaiVeM=; b=rCWf1COAiyvMV9l/JuSFyxmp78
+	HIXassHhYsWAj4NBosog4oF61fIxbBJp1wXJpqnkNiAX4WfGnnIbqk47XmPTs+hoZtOi1UbM5bhG/
+	M6Oj/uTleM+GjXyqxuoqSj56PX85syEltSOpHEmNHoUP15mskq7mYSLvznI3zjlaE2CM25HIkHdsY
+	0DV6l4ipJn554mjt5MtuUc0oaJpaeUSzJpU1FOubQtS4WVwUl7o+l1bBPo3DCJDR7uLdxKE2yA1qF
+	fd4i3xxECbOCzsn6U7Lap7ab5YuJrnmPCraXamqm5finRum/o3jxUww1eoNDq+S6f2BCvaNJQ1hnz
+	XcRYZn5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCmlI-0003a7-Ap; Sat, 16 Jul 2022 18:43:32 +0000
-Received: from mail-qk1-f181.google.com ([209.85.222.181])
+	id 1oCpLm-000jQK-4z; Sat, 16 Jul 2022 21:29:22 +0000
+Received: from mga05.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCml6-0003Wt-O5; Sat, 16 Jul 2022 18:43:22 +0000
-Received: by mail-qk1-f181.google.com with SMTP id n2so4559864qkk.8;
-        Sat, 16 Jul 2022 11:43:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=WsEhwdLdNfwHR9LCxaWkzLk9jCaKVkk47P3wBYbLRH0=;
-        b=J3YymaQf8A98DwFKMqYswOieUnrcuQLAfu7cHI11PKaBkWXWZnKQCCv1fABwEV8Ows
-         NbC+JakAW9D6svxhctVVAyggzTuj0ZCBcfIn1d/3x/lpNwL8czmAa5efZp+8/SLz8wek
-         PwABSlMTVm6w+TZU1Ak6u6DehNVknbd0YbNdXbXqhSJYnmbZJMJYTZcBuHX4BbPKD9sA
-         iucCV2KQw7JicBWE9yBzP9fvpA2DCVDoD64aEvhX3r8MSiR9Bw/XXUjyUL/6u/VpCgOZ
-         nCE5nlpNzHKG4IW3rXmTWvlQveT3Sl43qtbH0UiDSmOEeRQJz02zZNOZLGWlCpGHTRKY
-         4bTw==
-X-Gm-Message-State: AJIora8Mfer7FOnfFmDbGZTmhoGk+j1js83YG8/l2QOxu7fUhr3+VLWd
-	syzRM4RuUYzjK1EOvdFxwaIPy1qzQmeGMg==
-X-Google-Smtp-Source: AGRyM1ttGL+pFkx155HaEIG6leoMRil9zt2J8vqAhSO3ebkaIPJ4g+OmWj08KO9/GhiacoAyRqbkGg==
-X-Received: by 2002:a05:620a:4050:b0:6b5:d2bf:f570 with SMTP id i16-20020a05620a405000b006b5d2bff570mr4611783qko.421.1657996998485;
-        Sat, 16 Jul 2022 11:43:18 -0700 (PDT)
-Received: from mail-yb1-f175.google.com (mail-yb1-f175.google.com. [209.85.219.175])
-        by smtp.gmail.com with ESMTPSA id dm1-20020a05620a1d4100b006b5c87e9eb1sm6456786qkb.102.2022.07.16.11.43.18
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 16 Jul 2022 11:43:18 -0700 (PDT)
-Received: by mail-yb1-f175.google.com with SMTP id r3so13903294ybr.6;
-        Sat, 16 Jul 2022 11:43:18 -0700 (PDT)
-X-Received: by 2002:a05:6902:1246:b0:66e:ea31:8d05 with SMTP id
- t6-20020a056902124600b0066eea318d05mr20988380ybu.89.1657996997798; Sat, 16
- Jul 2022 11:43:17 -0700 (PDT)
+	id 1oCpLY-000jMF-KA; Sat, 16 Jul 2022 21:29:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1658006948; x=1689542948;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=NgZ4seBUGAZrP1z2/pQzfp6BeM2VbnyWXo2RxyFi9hk=;
+  b=KfW6N3lsH52yERIYnuQziW8gvy/DWbteLDHvwnQSRIzMICgI1oOaaFwR
+   cZP/rkicaDkMlFTSdiUzOvFCbKyeUKGcCMKdg8zQwa38+flH7Zi3c1JYk
+   XQJdIWz48So82pBl3Y1BygLZtHh6A9PXGPTaeorB2MK1aEBqANwhmKQ5i
+   3dzpBN4+9IObcUQ91WfwRV4P8obSmhrorKGG+bXP3mPKiIOqH2S35ERdj
+   fy/YfIYu6El92VS9uGHQEIIGwukmTGVTd+olr6moqANA8gdiESGkFs1/1
+   pdoqet1z/7v0x7WptuPBcHvWWwVfOQ4qUab1WYVhmW3gNV3YdsLB2aY9E
+   Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10410"; a="372319053"
+X-IronPort-AV: E=Sophos;i="5.92,277,1650956400"; 
+   d="scan'208";a="372319053"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jul 2022 14:28:47 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,277,1650956400"; 
+   d="scan'208";a="654782025"
+Received: from lkp-server02.sh.intel.com (HELO ff137eb26ff1) ([10.239.97.151])
+  by fmsmga008.fm.intel.com with ESMTP; 16 Jul 2022 14:28:42 -0700
+Received: from kbuild by ff137eb26ff1 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1oCpL3-0002AS-92;
+	Sat, 16 Jul 2022 21:28:37 +0000
+Date: Sun, 17 Jul 2022 05:27:44 +0800
+From: kernel test robot <lkp@intel.com>
+To: Irui Wang <irui.wang@mediatek.com>, Hans Verkuil <hverkuil@xs4all.nl>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Tzung-Bi Shih <tzungbi@chromium.org>,
+	angelogioacchino.delregno@collabora.com,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Cc: kbuild-all@lists.01.org, linux-media@vger.kernel.org,
+	Yong Wu <yong.wu@mediatek.com>,
+	Maoguang Meng <maoguang.meng@mediatek.com>,
+	Longfei Wang <longfei.wang@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Irui Wang <irui.wang@mediatek.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH 1/5] media: mediatek: vcodec: Add encoder driver support
+ for 34-bit iova
+Message-ID: <202207170508.vBteKVVR-lkp@intel.com>
+References: <20220716093808.29894-2-irui.wang@mediatek.com>
 MIME-Version: 1.0
-References: <20220628113714.7792-1-yee.lee@mediatek.com> <20220628113714.7792-2-yee.lee@mediatek.com>
- <CAMuHMdX=MTsmo5ZVa8ya3xmr4Mx7f0PB3gvFF42pdaTYB6-u5A@mail.gmail.com> <20220715163305.e70c8542d5e7d96c5fd87185@linux-foundation.org>
-In-Reply-To: <20220715163305.e70c8542d5e7d96c5fd87185@linux-foundation.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Sat, 16 Jul 2022 20:43:06 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdWSsibmL=LauLm+OTn0SByLA4tGsbhbMsnvSRdb381RTQ@mail.gmail.com>
-Message-ID: <CAMuHMdWSsibmL=LauLm+OTn0SByLA4tGsbhbMsnvSRdb381RTQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/1] mm: kfence: apply kmemleak_ignore_phys on early
- allocated pool
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: yee.lee@mediatek.com, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, 
-	Alexander Potapenko <glider@google.com>, Marco Elver <elver@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, "open list:KFENCE" <kasan-dev@googlegroups.com>, 
-	"open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220716093808.29894-2-irui.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220716_114320_801975_30CF5444 
-X-CRM114-Status: GOOD (  32.29  )
+X-CRM114-CacheID: sfid-20220716_142908_715310_63A64F88 
+X-CRM114-Status: GOOD (  13.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,68 +95,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew,
+Hi Irui,
 
-On Sat, Jul 16, 2022 at 1:33 AM Andrew Morton <akpm@linux-foundation.org> wrote:
-> On Fri, 15 Jul 2022 10:17:43 +0200 Geert Uytterhoeven <geert@linux-m68k.org> wrote:
-> > On Tue, Jun 28, 2022 at 1:42 PM <yee.lee@mediatek.com> wrote:
-> > > From: Yee Lee <yee.lee@mediatek.com>
-> > >
-> > > This patch solves two issues.
-> > >
-> > > (1) The pool allocated by memblock needs to unregister from
-> > > kmemleak scanning. Apply kmemleak_ignore_phys to replace the
-> > > original kmemleak_free as its address now is stored in the phys tree.
-> > >
-> > > (2) The pool late allocated by page-alloc doesn't need to unregister.
-> > > Move out the freeing operation from its call path.
-> > >
-> > > Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
-> > > Suggested-by: Marco Elver <elver@google.com>
-> > > Signed-off-by: Yee Lee <yee.lee@mediatek.com>
-> >
-> > Thank you, this fixes the storm of
-> >
-> >     BUG: KFENCE: invalid read in scan_block+0x78/0x130
-> >     BUG: KFENCE: use-after-free read in scan_block+0x78/0x130
-> >     BUG: KFENCE: out-of-bounds read in scan_block+0x78/0x130
-> >
-> > messages I was seeing on arm64.
->
-> Thanks, but...
->
-> - It would be great if we could identify a Fixes: for this.
+Thank you for the patch! Perhaps something to improve:
 
-IIRC, I started seeing the issue with "[PATCH v4 3/4] mm:
-kmemleak: add rbtree and store physical address for objects
-allocated with PA" (i.e. commit 0c24e061196c21d5 ("mm: kmemleak:
-add rbtree and store physical address for objects allocated
-with PA")) of series "[PATCH v4 0/4] mm: kmemleak: store objects
-allocated with physical address separately and check when scan"
-(https://lore.kernel.org/all/20220611035551.1823303-1-patrick.wang.shcn@gmail.com),
-in an arm64 config that had enabled kfence.
-So I think this patch is sort of a dependency for that series.
+[auto build test WARNING on media-tree/master]
+[also build test WARNING on robh/for-next linus/master v5.19-rc6 next-20220715]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-I had cherry-picked that series after bisecting a regression to
-commit 23c2d497de21f258 ("mm: kmemleak: take a full lowmem check in
-kmemleak_*_phys()") in v5.18-rc3, and having a look around.
+url:    https://github.com/intel-lab-lkp/linux/commits/Irui-Wang/support-mt8188-h264-encoder/20220716-235804
+base:   git://linuxtv.org/media_tree.git master
+config: powerpc-allmodconfig (https://download.01.org/0day-ci/archive/20220717/202207170508.vBteKVVR-lkp@intel.com/config)
+compiler: powerpc-linux-gcc (GCC) 12.1.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/cfa5713276c701af0193ab5371d6678515cea42f
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Irui-Wang/support-mt8188-h264-encoder/20220716-235804
+        git checkout cfa5713276c701af0193ab5371d6678515cea42f
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=powerpc SHELL=/bin/bash drivers/media/platform/mediatek/vcodec/
 
-> - This patch has been accused of crashing the kernel:
->
->         https://lkml.kernel.org/r/YsFeUHkrFTQ7T51Q@xsang-OptiPlex-9020
->
->   Do we think that report is bogus?
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
 
-I think all of this is highly architecture-specific...
+All warnings (new ones prefixed by >>):
 
-Gr{oetje,eeting}s,
+>> drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c:194: warning: expecting prototype for struct venc_h264_vsi_64. Prototype was for struct venc_h264_vsi_34 instead
 
-                        Geert
 
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+vim +194 drivers/media/platform/mediatek/vcodec/venc/venc_h264_if.c
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+   184	
+   185	/**
+   186	 * struct venc_h264_vsi_64 - Structure for VPU driver control and info share
+   187	 *                           Used for 64 bit iova sharing
+   188	 * @config: h264 encoder configuration
+   189	 * @work_bufs: working buffer information in VPU side
+   190	 */
+   191	struct venc_h264_vsi_34 {
+   192		struct venc_h264_vpu_config_ext config;
+   193		struct venc_h264_vpu_buf_34 work_bufs[VENC_H264_VPU_WORK_BUF_MAX];
+ > 194	};
+   195	
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
