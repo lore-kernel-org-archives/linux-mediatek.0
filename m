@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2564BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jul 2022 08:45:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D842DCCA479
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jul 2022 09:35:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x55DLjg993hRg3xuUCRqRuQMXhgGFAkD8F1E7QkaLrg=; b=308LDxEOZrv7FPT+qIPZUeFgM8
-	BxMggjABb8/wsKT7vkhBnYYffz/Rq9xOT/aZjnLFsoBzwrfI1+DaRnd0cmlVLbKrnTarHWlBvHd7S
-	dNvwEOOCem8xf7OJ+aFgzrHcasiqfhyJru8lcB9+XRJ2URg7ckksBSrPE6uvP6EKs2g00gkG6ZwRA
-	pxmtg7+UfVZ+7k6fOMz8hgipIZDq4gmsw2zMwGdvzziHcBU2LjrtNd5UdEYETkJmkoWURmy781zMT
-	fR//uR1XKhJuC0btWtHF5SrsjSEbicU7ndubL2ETBF6zKiCyA7dz8mpO8I9NsUNCWPuZCqxow/9qM
-	WTXcFBfA==;
+	bh=MqQYu4XzhNqSh95UgRsCXpDcnXHdPHFm5+GaDUDY8IM=; b=cxUuAbeWZER1W0BWa2wLmIFoTn
+	VL/gbVaNXsNgT35l9i5NmhJW/31B+jZ+BX7MyMnxlIw4IwGL8wGGGyO4HaRxRAvGJOtRDr++m+rU1
+	l9z5lFuomO8nU45JMxQ2f0xqEOStDXN1p/g7D4b63W9xhM6AQLnpnTQQwf3d+q/Lp/2yVRBi1G+rC
+	dBLbchRPvZhsFl9IuXlUh13vXl6rE0cEBaknHGZhNC68qu1sGdydkakNHGRWC7WLyd7/WQyCPnwgb
+	38gzfy7w7/GZlZ8Ro/nHpBwau+V7BZ9NvrdiliNQpCy2SVWuzM8/QfbzbzgKDahLDRS4c+RhTTEWu
+	JSnE8VYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCdQ1-00EmHu-T6; Sat, 16 Jul 2022 08:44:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oCeCR-00EzcK-Bm; Sat, 16 Jul 2022 09:34:59 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCdPq-00EmDz-KU; Sat, 16 Jul 2022 08:44:48 +0000
-X-UUID: b032421c75ac4a7291b997486cc9f117-20220716
+	id 1oCeCO-00EzYF-AN; Sat, 16 Jul 2022 09:34:57 +0000
+X-UUID: ee819a98d6254489a1e606bd1a7c4dc4-20220716
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:1bc4d53b-bbe0-4356-893c-47ef8e4e402c,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:1293df5a-3b6b-4600-a265-a5b6e4ad7edf,OB:0,LO
 	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
 	ION:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:17e82333-b9e4-42b8-b28a-6364427c76bb,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:d98c7464-0b3f-4b2c-b3a6-ed5c044366a0,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: b032421c75ac4a7291b997486cc9f117-20220716
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jianjun.wang@mediatek.com>)
+X-UUID: ee819a98d6254489a1e606bd1a7c4dc4-20220716
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1934769707; Sat, 16 Jul 2022 01:44:40 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+	with ESMTP id 2123151456; Sat, 16 Jul 2022 02:34:50 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Sat, 16 Jul 2022 15:44:03 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 16 Jul 2022 15:44:02 +0800
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>, <Rex-BC.Chen@mediatek.com>,
-	<TingHan.Shen@mediatek.com>, <Liju-clr.Chen@mediatek.com>,
-	<Jian.Yang@mediatek.com>
-Subject: [PATCH 1/2] dt-bindings: PCI: mediatek-gen3: Add support for MT8188 and MT8195
-Date: Sat, 16 Jul 2022 15:43:48 +0800
-Message-ID: <20220716074349.28655-2-jianjun.wang@mediatek.com>
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Sat, 16 Jul 2022 17:34:16 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Sat, 16 Jul 2022 17:34:15 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
+	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
+	<wenst@chromium.org>, kyrie wu <kyrie.wu@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>,
+	<srv_heupstream@mediatek.com>, irui wang <irui.wang@mediatek.com>
+Subject: [V5,4/8] media: mtk-jpegdec: add jpegdec timeout func interface
+Date: Sat, 16 Jul 2022 17:34:04 +0800
+Message-ID: <20220716093408.29734-5-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220716074349.28655-1-jianjun.wang@mediatek.com>
-References: <20220716074349.28655-1-jianjun.wang@mediatek.com>
+In-Reply-To: <20220716093408.29734-1-irui.wang@mediatek.com>
+References: <20220716093408.29734-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220716_014446_696618_A11D34BB 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220716_023456_367081_56546F4B 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,33 +83,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8188 and MT8195 are ARM platform SoCs with the same PCIe IP as MT8192.
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+Generalizes jpegdec timeout func interfaces to handle HW timeout.
+
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: irui wang <irui.wang@mediatek.com>
+
 ---
- .../devicetree/bindings/pci/mediatek-pcie-gen3.yaml      | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  2 ++
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 24 +++++++++++++++++++
+ 2 files changed, 26 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-index 0499b94627ae..67d2ba25e336 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-@@ -48,7 +48,14 @@ allOf:
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+index e2e670e58b82..ddfe2b4c48b3 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+@@ -169,6 +169,8 @@ struct mtk_jpegdec_comp_dev {
+ 	struct mtk_jpeg_dev *master_dev;
+ 	struct mtk_jpegdec_clk jdec_clk;
+ 	int jpegdec_irq;
++	struct delayed_work job_timeout_work;
++	struct mtk_jpeg_hw_param hw_param;
+ };
  
- properties:
-   compatible:
--    const: mediatek,mt8192-pcie
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-pcie
-+              - mediatek,mt8195-pcie
-+          - const: mediatek,mt8192-pcie
-+      - items:
-+          - const: mediatek,mt8192-pcie
+ /**
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+index 232e81165dd3..f3e885784afd 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+@@ -440,6 +440,25 @@ void mtk_jpeg_dec_set_config(void __iomem *base,
+ }
+ EXPORT_SYMBOL_GPL(mtk_jpeg_dec_set_config);
  
-   reg:
-     maxItems: 1
++static void mtk_jpegdec_timeout_work(struct work_struct *work)
++{
++	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
++	struct mtk_jpegdec_comp_dev *cjpeg =
++		container_of(work, struct mtk_jpegdec_comp_dev,
++			     job_timeout_work.work);
++	struct vb2_v4l2_buffer *src_buf, *dst_buf;
++
++	src_buf = cjpeg->hw_param.src_buffer;
++	dst_buf = cjpeg->hw_param.dst_buffer;
++	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
++
++	mtk_jpeg_dec_reset(cjpeg->reg_base);
++	clk_disable_unprepare(cjpeg->jdec_clk.clks->clk);
++	pm_runtime_put(cjpeg->dev);
++	v4l2_m2m_buf_done(src_buf, buf_state);
++	v4l2_m2m_buf_done(dst_buf, buf_state);
++}
++
+ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+ {
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+@@ -453,6 +472,8 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+ 	struct mtk_jpegdec_comp_dev *jpeg = priv;
+ 	struct mtk_jpeg_dev *master_jpeg = jpeg->master_dev;
+ 
++	cancel_delayed_work(&jpeg->job_timeout_work);
++
+ 	irq_status = mtk_jpeg_dec_get_int_status(jpeg->reg_base);
+ 	dec_irq_ret = mtk_jpeg_dec_enum_result(irq_status);
+ 	if (dec_irq_ret >= MTK_JPEG_DEC_RESULT_UNDERFLOW)
+@@ -540,6 +561,9 @@ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
+ 			master_dev->dec_hw_dev[i] = NULL;
+ 	}
+ 
++	INIT_DELAYED_WORK(&dev->job_timeout_work,
++			  mtk_jpegdec_timeout_work);
++
+ 	jpegdec_clk = &dev->jdec_clk;
+ 
+ 	jpegdec_clk->clk_num = devm_clk_bulk_get_all(&pdev->dev,
 -- 
 2.18.0
 
