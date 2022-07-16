@@ -4,105 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CA0EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jul 2022 13:14:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D819CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Jul 2022 18:43:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vypCuEq/rCX9HvlkITtGSPUFoDxSLRPZn98T+qV3Xf4=; b=m799K0VVytSU//pFbplFgA+gCk
-	zbj6uWlSNEi1n6omzLftBqqRjgXRNhf1W2CJE7wRVSWyt0ntN+WU9odT+eeBErDme7Qpm5ihuoQHi
-	kMTvuoPx86qnks9ue4jLivem0YfKeR0OpYI9OZ6Vkg3xr5TxUGO6jt15jZ3xxkm+c1rdk1N73xt0a
-	Fpcx2FGTWZweOlffrqQZ/5eJaNSD09Qk0g26/ZkFLvDeFMwQEVRmizzOc1e/0DYQ6gB8F5+PeOJJf
-	hflBfwCPZ1Z6pLk76+w2YRZSGeow6q4blXFC+yBtGkIfXcs3WmkmV4eXX8I++K4fW6Cf0fwDW8tcm
-	UdnaGkcg==;
+	bh=WsEhwdLdNfwHR9LCxaWkzLk9jCaKVkk47P3wBYbLRH0=; b=H4oxaooo9mDwYTGU2zqkmwXbUP
+	PcQ75vV/Mtat7Jz55kj+C5GqxIoDYDN5/r/lMNzu87zdYLw/nYEaZueXiLe7U1pMAh41fvUEuDtzc
+	CQm7Bea9jdH0B58FrSqddPGUOWijE0RUgblX4qLk5cu2FGxhX7vfM+ZZQsI/Gd39D2m3oy9/UL//c
+	+Xwee1+PKcHJzlkMMQmREhGo7oEgDbY5FcjpUymqXJeitRTqDjvIUZ2rgjg1LM9J18i3l4Zqk1TxE
+	aHXVhDaR+oEafTjY5y8ZjOgfKileJBiZxlt2P9T2Sso+pR3g7Nz1C+iLDa5dDMOSn7Dfga54xI1Oq
+	ZQuwLb4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oChcW-00GCb7-Ue; Sat, 16 Jul 2022 13:14:08 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1oCmlI-0003a7-Ap; Sat, 16 Jul 2022 18:43:32 +0000
+Received: from mail-qk1-f181.google.com ([209.85.222.181])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oChcJ-00GCV9-G0; Sat, 16 Jul 2022 13:13:59 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id va17so13454051ejb.0;
-        Sat, 16 Jul 2022 06:13:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=vypCuEq/rCX9HvlkITtGSPUFoDxSLRPZn98T+qV3Xf4=;
-        b=WjA5VfCC/rZXpbOeSX9aHYmBGP49eby3ugoPBRHLpX5UQxvaT/LsKYkLfAIFJtNSGd
-         ca1rd41z4niKpWi5tihqGcMdIdgzf+++E86A0mPqYKnHofAEF+Jbo2LcVRyh5Qq4a7HV
-         +POutI91tGrQq1pj6ZraycCRcfSRfXZ+/h9Dg6SjBqtdgD7/09e3VSyN8KdPzF+gTmFQ
-         mwZ8nFqh2whpQExmhq+sIyGjsw8m/1lz3zX1rH89jSw7++GBy7EZBVdVesFaxfqMwf+f
-         sGWjTuslkljUN/35i8ZAkIOev5RTwINOlmLBOpKCG+YG8AVNRVkl2Hu0jGZmW/EyHMvB
-         fMIQ==
+	id 1oCml6-0003Wt-O5; Sat, 16 Jul 2022 18:43:22 +0000
+Received: by mail-qk1-f181.google.com with SMTP id n2so4559864qkk.8;
+        Sat, 16 Jul 2022 11:43:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=vypCuEq/rCX9HvlkITtGSPUFoDxSLRPZn98T+qV3Xf4=;
-        b=E6/OB+iAHouxnfQMR84ItZXnCyATXEYLgeRiEBFAqzXNEuVYocpgvkKIcXFIngKGNw
-         4lkWV0qJQkykTGsGAakE2u1qf3FzqKdNo5ICs30dCXs6y2HfCzY2lrmENCq8qHOGdOr6
-         MU0jSvxtgH9/lf6pzK+G/NCZliwlqkFqjuj+9639isfB8ccWjKJzVpcprpzu+WU0zwzS
-         m1xElXJX00ysNaXkZ0ApociIIJ359+1Pg/1x8jYYRlNzAVimJyCLIZUl0SCqbDA87FKm
-         Zz9U29vmM5xKzAg2OeqgeRWnOjiAFbAuK7F6fNSPB230lrZ3Ay8WGUvLuEqKUBotJs2G
-         +ihg==
-X-Gm-Message-State: AJIora9qFeYG9pY3DJfXubWqzQfKw7wst/iKpz8STU4WvdPTYeR3Bwwt
-	XDFLEEezGztNP8KpPhJIo98=
-X-Google-Smtp-Source: AGRyM1v6lwArwzwqDjUSKayn7lfOf6YdBDjzkR+KmWYHKQQRa+FZwUV3F3Eo1RWzpX/X4H1xYJfwPg==
-X-Received: by 2002:a17:907:6d01:b0:72f:53f:7a25 with SMTP id sa1-20020a1709076d0100b0072f053f7a25mr6177694ejc.126.1657977229200;
-        Sat, 16 Jul 2022 06:13:49 -0700 (PDT)
-Received: from skbuf ([188.25.231.115])
-        by smtp.gmail.com with ESMTPSA id jl10-20020a17090775ca00b0072ed9efc9dfsm3203279ejc.48.2022.07.16.06.13.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 16 Jul 2022 06:13:48 -0700 (PDT)
-Date: Sat, 16 Jul 2022 16:13:45 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Jakub Kicinski <kuba@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Daniel Scally <djrscally@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	George McCollister <george.mccollister@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>
-Subject: Re: [PATCH net-next 0/6] net: dsa: always use phylink
-Message-ID: <20220716131345.b2jas3rucsifli7g@skbuf>
-References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
- <20220715171719.niqcrklpk4ittfvl@skbuf>
- <YtHVLGR0RQ6dWuBS@shell.armlinux.org.uk>
- <20220715160359.2e9dabfe@kernel.org>
- <20220716111551.64rjruz4q4g5uzee@skbuf>
- <YtKkRLD74tqoeBuR@shell.armlinux.org.uk>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=WsEhwdLdNfwHR9LCxaWkzLk9jCaKVkk47P3wBYbLRH0=;
+        b=J3YymaQf8A98DwFKMqYswOieUnrcuQLAfu7cHI11PKaBkWXWZnKQCCv1fABwEV8Ows
+         NbC+JakAW9D6svxhctVVAyggzTuj0ZCBcfIn1d/3x/lpNwL8czmAa5efZp+8/SLz8wek
+         PwABSlMTVm6w+TZU1Ak6u6DehNVknbd0YbNdXbXqhSJYnmbZJMJYTZcBuHX4BbPKD9sA
+         iucCV2KQw7JicBWE9yBzP9fvpA2DCVDoD64aEvhX3r8MSiR9Bw/XXUjyUL/6u/VpCgOZ
+         nCE5nlpNzHKG4IW3rXmTWvlQveT3Sl43qtbH0UiDSmOEeRQJz02zZNOZLGWlCpGHTRKY
+         4bTw==
+X-Gm-Message-State: AJIora8Mfer7FOnfFmDbGZTmhoGk+j1js83YG8/l2QOxu7fUhr3+VLWd
+	syzRM4RuUYzjK1EOvdFxwaIPy1qzQmeGMg==
+X-Google-Smtp-Source: AGRyM1ttGL+pFkx155HaEIG6leoMRil9zt2J8vqAhSO3ebkaIPJ4g+OmWj08KO9/GhiacoAyRqbkGg==
+X-Received: by 2002:a05:620a:4050:b0:6b5:d2bf:f570 with SMTP id i16-20020a05620a405000b006b5d2bff570mr4611783qko.421.1657996998485;
+        Sat, 16 Jul 2022 11:43:18 -0700 (PDT)
+Received: from mail-yb1-f175.google.com (mail-yb1-f175.google.com. [209.85.219.175])
+        by smtp.gmail.com with ESMTPSA id dm1-20020a05620a1d4100b006b5c87e9eb1sm6456786qkb.102.2022.07.16.11.43.18
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 16 Jul 2022 11:43:18 -0700 (PDT)
+Received: by mail-yb1-f175.google.com with SMTP id r3so13903294ybr.6;
+        Sat, 16 Jul 2022 11:43:18 -0700 (PDT)
+X-Received: by 2002:a05:6902:1246:b0:66e:ea31:8d05 with SMTP id
+ t6-20020a056902124600b0066eea318d05mr20988380ybu.89.1657996997798; Sat, 16
+ Jul 2022 11:43:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <YtKkRLD74tqoeBuR@shell.armlinux.org.uk>
+References: <20220628113714.7792-1-yee.lee@mediatek.com> <20220628113714.7792-2-yee.lee@mediatek.com>
+ <CAMuHMdX=MTsmo5ZVa8ya3xmr4Mx7f0PB3gvFF42pdaTYB6-u5A@mail.gmail.com> <20220715163305.e70c8542d5e7d96c5fd87185@linux-foundation.org>
+In-Reply-To: <20220715163305.e70c8542d5e7d96c5fd87185@linux-foundation.org>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Sat, 16 Jul 2022 20:43:06 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdWSsibmL=LauLm+OTn0SByLA4tGsbhbMsnvSRdb381RTQ@mail.gmail.com>
+Message-ID: <CAMuHMdWSsibmL=LauLm+OTn0SByLA4tGsbhbMsnvSRdb381RTQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/1] mm: kfence: apply kmemleak_ignore_phys on early
+ allocated pool
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: yee.lee@mediatek.com, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, 
+	Alexander Potapenko <glider@google.com>, Marco Elver <elver@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, "open list:KFENCE" <kasan-dev@googlegroups.com>, 
+	"open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220716_061355_559121_17E54EBB 
-X-CRM114-Status: GOOD (  17.94  )
+X-CRM114-CacheID: sfid-20220716_114320_801975_30CF5444 
+X-CRM114-Status: GOOD (  32.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,38 +87,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 16, 2022 at 12:43:00PM +0100, Russell King (Oracle) wrote:
-> In the first RFC series I sent on the 24 June, I explicitly asked the
-> following questions:
-(...)
-> I even stated: "Please look at the patches and make suggestions on how
-> we can proceed to clean up this quirk of DSA." and made no mention of
-> wanting something explicitly from Andrew.
-> 
-> Yet, none of those questions were answered.
-> 
-> So no, Jakub's comments are *not* misdirected at all. Go back and read
-> my June 24th RFC series yourself:
-> 
-> https://lore.kernel.org/all/YrWi5oBFn7vR15BH@shell.armlinux.org.uk/
+Hi Andrew,
 
-I don't believe I need to justify myself any further for why I didn't
-leave a comment on any certain day. I left my comments when I believed
-it was most appropriate for me to intervene (as someone who isn't really
-affected in any way by the changes, except for generally maintaining
-what's in net/dsa/, and wanting to keep a clean framework structure).
-Also, to repeat myself, blaming me for leaving comments, but doing so
-late, is not really fair. I could have not responded at all, and I
-wouldn't be having this unpleasant discussion. It begs the question
-whether you're willing to be held accountable in the same way for the
-dates on which you respond on RFC patches.
+On Sat, Jul 16, 2022 at 1:33 AM Andrew Morton <akpm@linux-foundation.org> wrote:
+> On Fri, 15 Jul 2022 10:17:43 +0200 Geert Uytterhoeven <geert@linux-m68k.org> wrote:
+> > On Tue, Jun 28, 2022 at 1:42 PM <yee.lee@mediatek.com> wrote:
+> > > From: Yee Lee <yee.lee@mediatek.com>
+> > >
+> > > This patch solves two issues.
+> > >
+> > > (1) The pool allocated by memblock needs to unregister from
+> > > kmemleak scanning. Apply kmemleak_ignore_phys to replace the
+> > > original kmemleak_free as its address now is stored in the phys tree.
+> > >
+> > > (2) The pool late allocated by page-alloc doesn't need to unregister.
+> > > Move out the freeing operation from its call path.
+> > >
+> > > Suggested-by: Catalin Marinas <catalin.marinas@arm.com>
+> > > Suggested-by: Marco Elver <elver@google.com>
+> > > Signed-off-by: Yee Lee <yee.lee@mediatek.com>
+> >
+> > Thank you, this fixes the storm of
+> >
+> >     BUG: KFENCE: invalid read in scan_block+0x78/0x130
+> >     BUG: KFENCE: use-after-free read in scan_block+0x78/0x130
+> >     BUG: KFENCE: out-of-bounds read in scan_block+0x78/0x130
+> >
+> > messages I was seeing on arm64.
+>
+> Thanks, but...
+>
+> - It would be great if we could identify a Fixes: for this.
 
-> I've *tried* my best to be kind and collaborative, but I've been
-> ignored. Now I'm hacked off. This could have been avoided by responding
-> to my explicit questions sooner, rather than at the -rc6/-rc7 stage of
-> the show.
+IIRC, I started seeing the issue with "[PATCH v4 3/4] mm:
+kmemleak: add rbtree and store physical address for objects
+allocated with PA" (i.e. commit 0c24e061196c21d5 ("mm: kmemleak:
+add rbtree and store physical address for objects allocated
+with PA")) of series "[PATCH v4 0/4] mm: kmemleak: store objects
+allocated with physical address separately and check when scan"
+(https://lore.kernel.org/all/20220611035551.1823303-1-patrick.wang.shcn@gmail.com),
+in an arm64 config that had enabled kfence.
+So I think this patch is sort of a dependency for that series.
 
-I think you should continue to try your best to be kind and collaborative,
-you weren't provoked or intentionally ignored in any way, and it isn't
-doing these patches any good.
+I had cherry-picked that series after bisecting a regression to
+commit 23c2d497de21f258 ("mm: kmemleak: take a full lowmem check in
+kmemleak_*_phys()") in v5.18-rc3, and having a look around.
+
+> - This patch has been accused of crashing the kernel:
+>
+>         https://lkml.kernel.org/r/YsFeUHkrFTQ7T51Q@xsang-OptiPlex-9020
+>
+>   Do we think that report is bogus?
+
+I think all of this is highly architecture-specific...
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
