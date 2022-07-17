@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEABCC43334
-	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Jul 2022 17:45:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73362C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Jul 2022 17:46:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WpiIdNNw+YlTh9md/y+SUXBy5qWi7g/wD1nN6Hjb1fc=; b=I8Q5G8XtPDv+ujo081iZNBJgdG
-	KqDdT57/Ketp6/SjIpNg62UYshWZYyOD7vt1mGezMCua1n/pNt/Z+Sw5AYOl2zo+uBpVndcpZp4p9
-	wnzTZVyypNphSKZrXDKSbs2x4EuCrFY9TDaIlgFe+u8orde9nb9P9e3NTNdSqG4PFK0XCZUJz7MvK
-	/kHIVqUl+AfZk0rMA0IHR3XWFyAS1IcF0xXv7OJqCl1tbGLnt2nZMu2OsVy7gkUaQ8gKxu1Z615zy
-	S24LaKWAwjndqY2pp5yJNT3HN3DtWwX42K8Aasl3byrIaHLvSv9r4YqnybNYDdJGHF/le11OwHRnQ
-	fbZozhNA==;
+	bh=tUNzKCt4Zms15cwedQlM5lolVcnjoxkbNdM9xZbtnXY=; b=S5GMvE2GJwLaHhShVxxfHEfX8b
+	UuoThFUfFQxhyFWUNm2JSXiTgeyPAckPnwHTUg7O8DM3BVE+uFRYv8H+anfhVVO9mOr1Uf+2J1FOv
+	Ml2yEHdfDgZbHK9F5x+NOosygvrqH9Z0HjaWiVJ5eHCAsVNN3uO/H2JOp4btmt32BLFBnfvY5++uG
+	R/wV4mZQ8Ukmqqhyte8mZP+qVQq6u62bFjYFD94M02yJLy9qW7+UeLnblkdew2MnCyNCXa/Q/QgpJ
+	DeXkhdr9ok4tTuKCmNL1MrGwCP1xdTZTiqYKf4uC2OYhLwPuYx4FLBrS3vUbDbiFWmahAtE5IT25q
+	8VzqmILA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oD8Ks-007sxd-7N; Sun, 17 Jul 2022 17:45:42 +0000
+	id 1oD8L2-007t1p-OP; Sun, 17 Jul 2022 17:45:52 +0000
 Received: from mailrelay4-1.pub.mailoutpod1-cph3.one.com ([46.30.210.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oD8KP-007shM-Qe
-	for linux-mediatek@lists.infradead.org; Sun, 17 Jul 2022 17:45:18 +0000
+	id 1oD8KQ-007sio-E9
+	for linux-mediatek@lists.infradead.org; Sun, 17 Jul 2022 17:45:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=ravnborg.org; s=rsa1;
 	h=content-transfer-encoding:mime-version:references:in-reply-to:message-id:date:
 	 subject:cc:to:from:from;
-	bh=WpiIdNNw+YlTh9md/y+SUXBy5qWi7g/wD1nN6Hjb1fc=;
-	b=SjCvmsX9tnzAHlHfFQXP3UhAFt18chTJzMiyXQ+UoMt0QyZf7K0VE1DoIAW1C/Duvc7sWvoumlhce
-	 j2i3Qd7o6D5Q/dk2n0Dz/XxdCpxxtoz2El2RB0bokmhqvF187EjAXnbBMQBG6w9IX0jZK9Gh0mHPlP
-	 O0i0RQm85ZiWrlMs2z8nNBvZSgg0+z75rj9wSxH+oXW+vbKhmj9a8zSkat0T6aaIpCKl3WecyGewmk
-	 7yXtGASEKJ8AcFEoKUTypPWlfwrrgaensGSjEAxYwuUjB/ukU//Ewhm8b5Uyp/fNO2qchgWHM/W8/l
-	 YxgkfgDlNmsmCAMfpdWqRcKDSxFw/jg==
+	bh=tUNzKCt4Zms15cwedQlM5lolVcnjoxkbNdM9xZbtnXY=;
+	b=HdFn1ETyit4OaCqBQQGlXtNovIrF5rsy8lLAHWcEcybftrSgiT5SCEwEt72LJrOHNE2arLyDhwwam
+	 PR28Mf/SOxeBE/mtbQmHDcINjP8Gb038jncvvFlMp/FwdDn8Vyg/pYBfUBM9651pUIxN3qB0Ijw1fz
+	 LUgVEmwfBhU/sgSVPfRFJmwTnbKEGmOFX7ocgIJGLqNdaUloXEgjWnfaoYCSaoew7QYNfklTOBOm5c
+	 Vw1b5xHu5hmm+1R7u1EZVZGYWd8JXe+FbmhMnUYstOJSSxINZFiBZBjDh+HFuv9+yI6eP2HbA85Ys4
+	 vL6jXWNWdDL8gTcY60TOIXPESd1Z3hw==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
 	d=ravnborg.org; s=ed1;
 	h=content-transfer-encoding:mime-version:references:in-reply-to:message-id:date:
 	 subject:cc:to:from:from;
-	bh=WpiIdNNw+YlTh9md/y+SUXBy5qWi7g/wD1nN6Hjb1fc=;
-	b=ZWBPwkyfGgn0kvJgaogmSdBAPG6nzGfyaPcxggdpAs13BTMtZRIg4j7psRs7rpYPlCJi1YhA99Biz
-	 HN2hVycAA==
-X-HalOne-Cookie: 8bc88d894888cda86d4c72cfc609f8fc5424586e
-X-HalOne-ID: 32858be4-05f8-11ed-823f-d0431ea8bb10
+	bh=tUNzKCt4Zms15cwedQlM5lolVcnjoxkbNdM9xZbtnXY=;
+	b=KEmxVha5B+qyEWKB+Yxxo71t4ryP28oUobas/F9bGwH0PvgiUzrAUENXT4o5Oa9vcpdEQUPfW15dr
+	 H17Zrc5Ag==
+X-HalOne-Cookie: c5eba13afd76c8abb22d288d6bb6ff2fa5436d67
+X-HalOne-ID: 3503b0f2-05f8-11ed-823f-d0431ea8bb10
 Received: from mailproxy1.cst.dirpod4-cph3.one.com (2-105-2-98-cable.dk.customer.tdc.net [2.105.2.98])
 	by mailrelay4.pub.mailoutpod1-cph3.one.com (Halon) with ESMTPSA
-	id 32858be4-05f8-11ed-823f-d0431ea8bb10;
-	Sun, 17 Jul 2022 17:45:08 +0000 (UTC)
+	id 3503b0f2-05f8-11ed-823f-d0431ea8bb10;
+	Sun, 17 Jul 2022 17:45:12 +0000 (UTC)
 From: Sam Ravnborg <sam@ravnborg.org>
 To: dri-devel@lists.freedesktop.org,
 	Andrzej Hajda <andrzej.hajda@intel.com>,
@@ -78,20 +78,18 @@ Cc: Arnd Bergmann <arnd@arndb.de>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
 	Sam Ravnborg <sam@ravnborg.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Andrzej Hajda <a.hajda@samsung.com>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Subject: [PATCH v1 01/12] drm/bridge: ps8640: Use atomic variants of drm_bridge_funcs
-Date: Sun, 17 Jul 2022 19:44:43 +0200
-Message-Id: <20220717174454.46616-2-sam@ravnborg.org>
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Subject: [PATCH v1 04/12] drm/bridge: Drop drm_bridge_chain_mode_fixup
+Date: Sun, 17 Jul 2022 19:44:46 +0200
+Message-Id: <20220717174454.46616-5-sam@ravnborg.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220717174454.46616-1-sam@ravnborg.org>
 References: <20220717174454.46616-1-sam@ravnborg.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220717_104515_603981_DB3AF592 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20220717_104515_617503_17396455 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,94 +104,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The atomic variants of enable/disable in drm_bridge_funcs are the
-preferred operations - introduce these.
-
-The ps8640 driver used the non-atomic variants of the drm_bridge_chain_pre_enable/
-drm_bridge_chain_post_disable - convert these to the atomic variants.
-
-v2:
-  - Init state operations in drm_bridge_funcs (Laurent)
+There are no users left of drm_bridge_chain_mode_fixup() and we
+do not want to have this function available, so drop it.
 
 Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
 Reviewed-by: Maxime Ripard <mripard@kernel.org>
-Cc: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Philip Chen <philipchen@chromium.org>
-Cc: Andrzej Hajda <a.hajda@samsung.com>
-Cc: Neil Armstrong <narmstrong@baylibre.com>
-Cc: Robert Foss <robert.foss@linaro.org>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Cc: Jonas Karlman <jonas@kwiboo.se>
-Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Cc: Maxime Ripard <mripard@kernel.org>
+Cc: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: David Airlie <airlied@linux.ie>
+Cc: Daniel Vetter <daniel@ffwll.ch>
 ---
- drivers/gpu/drm/bridge/parade-ps8640.c | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+ drivers/gpu/drm/drm_bridge.c | 37 ------------------------------------
+ include/drm/drm_bridge.h     |  3 ---
+ 2 files changed, 40 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/parade-ps8640.c b/drivers/gpu/drm/bridge/parade-ps8640.c
-index 31e88cb39f8a..bb8076fb8625 100644
---- a/drivers/gpu/drm/bridge/parade-ps8640.c
-+++ b/drivers/gpu/drm/bridge/parade-ps8640.c
-@@ -15,6 +15,7 @@
+diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+index bb7fc09267af..b6f56d8f3547 100644
+--- a/drivers/gpu/drm/drm_bridge.c
++++ b/drivers/gpu/drm/drm_bridge.c
+@@ -430,43 +430,6 @@ void drm_bridge_detach(struct drm_bridge *bridge)
+  *   needed, in order to gradually transition to the new model.
+  */
  
- #include <drm/display/drm_dp_aux_bus.h>
- #include <drm/display/drm_dp_helper.h>
-+#include <drm/drm_atomic_state_helper.h>
- #include <drm/drm_bridge.h>
- #include <drm/drm_edid.h>
- #include <drm/drm_mipi_dsi.h>
-@@ -409,7 +410,8 @@ static const struct dev_pm_ops ps8640_pm_ops = {
- 				pm_runtime_force_resume)
- };
+-/**
+- * drm_bridge_chain_mode_fixup - fixup proposed mode for all bridges in the
+- *				 encoder chain
+- * @bridge: bridge control structure
+- * @mode: desired mode to be set for the bridge
+- * @adjusted_mode: updated mode that works for this bridge
+- *
+- * Calls &drm_bridge_funcs.mode_fixup for all the bridges in the
+- * encoder chain, starting from the first bridge to the last.
+- *
+- * Note: the bridge passed should be the one closest to the encoder
+- *
+- * RETURNS:
+- * true on success, false on failure
+- */
+-bool drm_bridge_chain_mode_fixup(struct drm_bridge *bridge,
+-				 const struct drm_display_mode *mode,
+-				 struct drm_display_mode *adjusted_mode)
+-{
+-	struct drm_encoder *encoder;
+-
+-	if (!bridge)
+-		return true;
+-
+-	encoder = bridge->encoder;
+-	list_for_each_entry_from(bridge, &encoder->bridge_chain, chain_node) {
+-		if (!bridge->funcs->mode_fixup)
+-			continue;
+-
+-		if (!bridge->funcs->mode_fixup(bridge, mode, adjusted_mode))
+-			return false;
+-	}
+-
+-	return true;
+-}
+-EXPORT_SYMBOL(drm_bridge_chain_mode_fixup);
+-
+ /**
+  * drm_bridge_chain_mode_valid - validate the mode against all bridges in the
+  *				 encoder chain.
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index 1eca9c4c3346..7496f41535b1 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -845,9 +845,6 @@ drm_bridge_chain_get_first_bridge(struct drm_encoder *encoder)
+ #define drm_for_each_bridge_in_chain(encoder, bridge)			\
+ 	list_for_each_entry(bridge, &(encoder)->bridge_chain, chain_node)
  
--static void ps8640_pre_enable(struct drm_bridge *bridge)
-+static void ps8640_atomic_pre_enable(struct drm_bridge *bridge,
-+				     struct drm_bridge_state *old_bridge_state)
- {
- 	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
- 	struct regmap *map = ps_bridge->regmap[PAGE2_TOP_CNTL];
-@@ -443,7 +445,8 @@ static void ps8640_pre_enable(struct drm_bridge *bridge)
- 	ps_bridge->pre_enabled = true;
- }
- 
--static void ps8640_post_disable(struct drm_bridge *bridge)
-+static void ps8640_atomic_post_disable(struct drm_bridge *bridge,
-+				       struct drm_bridge_state *old_bridge_state)
- {
- 	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
- 
-@@ -521,7 +524,7 @@ static struct edid *ps8640_bridge_get_edid(struct drm_bridge *bridge,
- 	 * EDID, for this chip, we need to do a full poweron, otherwise it will
- 	 * fail.
- 	 */
--	drm_bridge_chain_pre_enable(bridge);
-+	drm_atomic_bridge_chain_pre_enable(bridge, connector->state->state);
- 
- 	edid = drm_get_edid(connector,
- 			    ps_bridge->page[PAGE0_DP_CNTL]->adapter);
-@@ -531,7 +534,7 @@ static struct edid *ps8640_bridge_get_edid(struct drm_bridge *bridge,
- 	 * before, return the chip to its original power state.
- 	 */
- 	if (poweroff)
--		drm_bridge_chain_post_disable(bridge);
-+		drm_atomic_bridge_chain_post_disable(bridge, connector->state->state);
- 
- 	return edid;
- }
-@@ -546,8 +549,11 @@ static const struct drm_bridge_funcs ps8640_bridge_funcs = {
- 	.attach = ps8640_bridge_attach,
- 	.detach = ps8640_bridge_detach,
- 	.get_edid = ps8640_bridge_get_edid,
--	.post_disable = ps8640_post_disable,
--	.pre_enable = ps8640_pre_enable,
-+	.atomic_post_disable = ps8640_atomic_post_disable,
-+	.atomic_pre_enable = ps8640_atomic_pre_enable,
-+	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
-+	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-+	.atomic_reset = drm_atomic_helper_bridge_reset,
- };
- 
- static int ps8640_bridge_get_dsi_resources(struct device *dev, struct ps8640 *ps_bridge)
+-bool drm_bridge_chain_mode_fixup(struct drm_bridge *bridge,
+-				 const struct drm_display_mode *mode,
+-				 struct drm_display_mode *adjusted_mode);
+ enum drm_mode_status
+ drm_bridge_chain_mode_valid(struct drm_bridge *bridge,
+ 			    const struct drm_display_info *info,
 -- 
 2.34.1
 
