@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98E39C43334
-	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Jul 2022 17:58:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93198C43334
+	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Jul 2022 17:58:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8xMDkuUfPGn0o735pjsKmzPk0fBw5yBNOtUUSLza8y8=; b=gLlXQlX84PKW0aOSgVDula+yeY
-	2avkbaN1+v4UPL7Xk9BPxjtNq1+eK1KpwOGd5mrH8e0T196r2PaPvZBkNHAH+c+HOs9wgZtMGrbVA
-	ueTbQPiJxXJekdW5GraECVX/kVmVOB7yCmUg0rRVYN32IyiVg3xT7y5Wv+rCUNZg23eZczkvJJsR3
-	o7bPisRagXGE0gVOnoZ8zr3kqZg4T2Z8T5ItK3XoXC6WQpKWK3Nm6dirp3AWxpsXRmmp5RmgmVYgj
-	CbueD4mmySOMLdxeg5e0ZCMNe3XyBiVABbdeDM0Zg1s8SAvkkJ+xUC4i4D95n4cAyppodOSrh0pqj
-	/Emms4xA==;
+	bh=s+/PjTNqyYmpEcNmfZriFAlvBGd84NJkEF+Q3a7qslc=; b=HXvg5fMT35fJUdFODkr9ts1Uu6
+	CdU6SUvp8+/VjfvAN2Iq6GwUO6R+G5A/J8VBKKSrfRxLmiGyDJYzu+tvWXndVw/cDzkOlCszgXaey
+	beZwMQZFWiOPl7E7fpOvUwipn/WHnXiv1aw2s1sA4FZ0v/YeNksvQ2vl3CY6Iikcy39v1XgDh8oW2
+	7W4ABH67edx2g37QB2Q8dqysoegu0N0RD1ZoSA1DkgZRZQmkMUMjBseQgL8+Wy5pPzMKypQrsRVFA
+	u9kNPccmUDl9MI/NwnEh61Vn/1WUvoc0v5RL+IEJOX1ikU26OVvO5eySTQFFTLy+b3FYvQziVsVmW
+	DT61q1Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oD8XP-007xtR-4b; Sun, 17 Jul 2022 17:58:39 +0000
+	id 1oD8XQ-007xu0-Ej; Sun, 17 Jul 2022 17:58:40 +0000
 Received: from mailrelay3-1.pub.mailoutpod1-cph3.one.com ([46.30.210.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oD8X3-007xjk-3q
-	for linux-mediatek@lists.infradead.org; Sun, 17 Jul 2022 17:58:19 +0000
+	id 1oD8X5-007xlI-PW
+	for linux-mediatek@lists.infradead.org; Sun, 17 Jul 2022 17:58:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=ravnborg.org; s=rsa1;
 	h=content-transfer-encoding:mime-version:references:in-reply-to:message-id:date:
 	 subject:cc:to:from:from;
-	bh=8xMDkuUfPGn0o735pjsKmzPk0fBw5yBNOtUUSLza8y8=;
-	b=aoi4B6bMH3Cqlb15Pt+qz0yBgpA74ySyu5WsJzQLwhx5nXceezPGoNu2Dqm1PJmOVmPfMNmxT8+8h
-	 0Z8/JDQXKMg5v/f8+33EPObPtz1JjmoIBjNYH9+G06LdnT2ou2XsjpoEZ4OfqrlHYKAU1oX/v5+Luz
-	 7SzvdZPdevTuMpVnkjvrPHOkAfai+pByhDs9StAky2XNzasryvXV076zl6t+g/jFbpF2S2pwUmZAH3
-	 PkK/hbcyi9sLuRsnXX8sX9tBeK09kP/oW35yL5r/9rOuLbWdtgL8BG03YWgXvHVz/i+PkmDkViwUFv
-	 a+pBpQwd7vsayyeD4gKIwygIJU1cvUQ==
+	bh=s+/PjTNqyYmpEcNmfZriFAlvBGd84NJkEF+Q3a7qslc=;
+	b=qjEDcuaoSr76+r/j9HYYkyumPDe6D9/KE/Wu6qYodgdiQoHstOPt59Q/4j7R9rptgf2r74SVd8p11
+	 qUHuyAqHY6iKgOM/tib3Fs8WulBopsJ+37pFeIsnkxM+oQHiEGhIthL18V87Wo4rOfJ7tNLskhuf4H
+	 2K/Y6hvHRKU+vV3aJWgLgKT1Y7UiTLA36YsyrT0oBTnPCCUP9NQB/ykhfbNgNa/V8ex5FtZmOBeqCw
+	 gRC9MU7knL8BRK23zTv+DAoUlZ3GTTeIjH/BfhRvBrGGn/U5z769omAytqBJFdhMOTeYsBdfa2q7Tq
+	 0RTXJKfYlThtiIWT7zZGUNe99K3Abpg==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
 	d=ravnborg.org; s=ed1;
 	h=content-transfer-encoding:mime-version:references:in-reply-to:message-id:date:
 	 subject:cc:to:from:from;
-	bh=8xMDkuUfPGn0o735pjsKmzPk0fBw5yBNOtUUSLza8y8=;
-	b=wNVu+OQTZtFBwr05sqKFwWIn3xsPomNIVKtIlMY7HEFSLGeaKUoEF2OW6IeHdYoYe+yv3O5YQE2zM
-	 tjk/AzvAA==
-X-HalOne-Cookie: cb254aee6c7ec574bf0b0b704723fae5f8c7f5e7
-X-HalOne-ID: 0789e88e-05fa-11ed-be7f-d0431ea8bb03
+	bh=s+/PjTNqyYmpEcNmfZriFAlvBGd84NJkEF+Q3a7qslc=;
+	b=4b4u/5GgsckUncPGlqb7pCwa1nBsdQZTe9Szqe0r5EA04IjHkagekoZwE+72FLdiZ8g3O/8uEgZ4g
+	 U/PbaNGAQ==
+X-HalOne-Cookie: 829284897e10912949ceddc418dae9e9939d39de
+X-HalOne-ID: 08e0e86d-05fa-11ed-be7f-d0431ea8bb03
 Received: from mailproxy1.cst.dirpod4-cph3.one.com (2-105-2-98-cable.dk.customer.tdc.net [2.105.2.98])
 	by mailrelay3.pub.mailoutpod1-cph3.one.com (Halon) with ESMTPSA
-	id 0789e88e-05fa-11ed-be7f-d0431ea8bb03;
-	Sun, 17 Jul 2022 17:58:15 +0000 (UTC)
+	id 08e0e86d-05fa-11ed-be7f-d0431ea8bb03;
+	Sun, 17 Jul 2022 17:58:17 +0000 (UTC)
 From: Sam Ravnborg <sam@ravnborg.org>
 To: dri-devel@lists.freedesktop.org,
 	Andrzej Hajda <andrzej.hajda@intel.com>,
@@ -79,9 +79,9 @@ Cc: Arnd Bergmann <arnd@arndb.de>,
 	Sam Ravnborg <sam@ravnborg.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Subject: [PATCH v1 09/12] drm/rcar-du: lvds: Use drm_bridge_funcs.atomic_check
-Date: Sun, 17 Jul 2022 19:57:58 +0200
-Message-Id: <20220717175801.78668-2-sam@ravnborg.org>
+Subject: [PATCH v1 10/12] drm/omapdrm: Use drm_bridge_funcs.atomic_check
+Date: Sun, 17 Jul 2022 19:57:59 +0200
+Message-Id: <20220717175801.78668-3-sam@ravnborg.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220717175801.78668-1-sam@ravnborg.org>
 References: <20220717174454.46616-1-sam@ravnborg.org>
@@ -89,8 +89,8 @@ References: <20220717174454.46616-1-sam@ravnborg.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220717_105817_327472_74C9903E 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20220717_105820_026102_E2BE56B3 
+X-CRM114-Status: GOOD (  14.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,55 +107,275 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Replace the deprecated drm_bridge_funcs.mode_fixup() with
 drm_bridge_funcs.atomic_check().
-The driver implements the state operations, so no other changes
-are required for the replacement.
+
+drm_bridge_funcs.atomic_check() requires the atomic state operations,
+update these to the default implementations.
+Likewise update enable/disable to their atomic variants.
+
+With these changes omapdrm now implement the full bridge atomic API.
 
 Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
+Cc: Sam Ravnborg <sam@ravnborg.org>
+Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Cc: Cai Huoqing <cai.huoqing@linux.dev>
+Cc: Arnd Bergmann <arnd@arndb.de>
 Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
-Cc: linux-renesas-soc@vger.kernel.org
 ---
- drivers/gpu/drm/rcar-du/rcar_lvds.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/omapdrm/dss/dpi.c  | 31 ++++++++++++++++++------------
+ drivers/gpu/drm/omapdrm/dss/sdi.c  | 31 ++++++++++++++++++------------
+ drivers/gpu/drm/omapdrm/dss/venc.c | 28 +++++++++++++++++----------
+ 3 files changed, 56 insertions(+), 34 deletions(-)
 
-diff --git a/drivers/gpu/drm/rcar-du/rcar_lvds.c b/drivers/gpu/drm/rcar-du/rcar_lvds.c
-index 830aac0a2cb4..c4adbcede090 100644
---- a/drivers/gpu/drm/rcar-du/rcar_lvds.c
-+++ b/drivers/gpu/drm/rcar-du/rcar_lvds.c
-@@ -554,10 +554,12 @@ static void rcar_lvds_atomic_disable(struct drm_bridge *bridge,
- 	clk_disable_unprepare(lvds->clocks.mod);
+diff --git a/drivers/gpu/drm/omapdrm/dss/dpi.c b/drivers/gpu/drm/omapdrm/dss/dpi.c
+index 030f997eccd0..0a0b49750eca 100644
+--- a/drivers/gpu/drm/omapdrm/dss/dpi.c
++++ b/drivers/gpu/drm/omapdrm/dss/dpi.c
+@@ -21,6 +21,7 @@
+ #include <linux/string.h>
+ #include <linux/sys_soc.h>
+ 
++#include <drm/drm_atomic_state_helper.h>
+ #include <drm/drm_bridge.h>
+ 
+ #include "dss.h"
+@@ -454,21 +455,22 @@ dpi_bridge_mode_valid(struct drm_bridge *bridge,
+ 	return MODE_OK;
  }
  
--static bool rcar_lvds_mode_fixup(struct drm_bridge *bridge,
--				 const struct drm_display_mode *mode,
--				 struct drm_display_mode *adjusted_mode)
-+static int rcar_lvds_atomic_check(struct drm_bridge *bridge,
-+				  struct drm_bridge_state *bridge_state,
-+				  struct drm_crtc_state *crtc_state,
-+				  struct drm_connector_state *conn_state)
+-static bool dpi_bridge_mode_fixup(struct drm_bridge *bridge,
+-				   const struct drm_display_mode *mode,
+-				   struct drm_display_mode *adjusted_mode)
++static int dpi_bridge_atomic_check(struct drm_bridge *bridge,
++				   struct drm_bridge_state *bridge_state,
++				   struct drm_crtc_state *crtc_state,
++				   struct drm_connector_state *conn_state)
  {
-+	struct drm_display_mode *adjusted_mode = &crtc_state->adjusted_mode;
- 	struct rcar_lvds *lvds = bridge_to_rcar_lvds(bridge);
- 	int min_freq;
+ 	struct dpi_data *dpi = drm_bridge_to_dpi(bridge);
+-	unsigned long clock = mode->clock * 1000;
++	unsigned long clock = crtc_state->mode.clock * 1000;
+ 	int ret;
  
-@@ -569,7 +571,7 @@ static bool rcar_lvds_mode_fixup(struct drm_bridge *bridge,
- 	min_freq = lvds->info->quirks & RCAR_LVDS_QUIRK_EXT_PLL ? 5000 : 31000;
- 	adjusted_mode->clock = clamp(adjusted_mode->clock, min_freq, 148500);
+ 	ret = dpi_clock_update(dpi, &clock);
+ 	if (ret < 0)
+-		return false;
++		return ret;
+ 
+-	adjusted_mode->clock = clock / 1000;
++	crtc_state->adjusted_mode.clock = clock / 1000;
  
 -	return true;
 +	return 0;
  }
  
- static int rcar_lvds_attach(struct drm_bridge *bridge,
-@@ -591,7 +593,7 @@ static const struct drm_bridge_funcs rcar_lvds_bridge_ops = {
- 	.atomic_reset = drm_atomic_helper_bridge_reset,
- 	.atomic_enable = rcar_lvds_atomic_enable,
- 	.atomic_disable = rcar_lvds_atomic_disable,
--	.mode_fixup = rcar_lvds_mode_fixup,
-+	.atomic_check = rcar_lvds_atomic_check,
+ static void dpi_bridge_mode_set(struct drm_bridge *bridge,
+@@ -480,7 +482,8 @@ static void dpi_bridge_mode_set(struct drm_bridge *bridge,
+ 	dpi->pixelclock = adjusted_mode->clock * 1000;
+ }
+ 
+-static void dpi_bridge_enable(struct drm_bridge *bridge)
++static void dpi_bridge_atomic_enable(struct drm_bridge *bridge,
++				     struct drm_bridge_state *old_bridge_state)
+ {
+ 	struct dpi_data *dpi = drm_bridge_to_dpi(bridge);
+ 	int r;
+@@ -531,7 +534,8 @@ static void dpi_bridge_enable(struct drm_bridge *bridge)
+ 		regulator_disable(dpi->vdds_dsi_reg);
+ }
+ 
+-static void dpi_bridge_disable(struct drm_bridge *bridge)
++static void dpi_bridge_atomic_disable(struct drm_bridge *bridge,
++				      struct drm_bridge_state *old_bridge_state)
+ {
+ 	struct dpi_data *dpi = drm_bridge_to_dpi(bridge);
+ 
+@@ -552,10 +556,13 @@ static void dpi_bridge_disable(struct drm_bridge *bridge)
+ static const struct drm_bridge_funcs dpi_bridge_funcs = {
+ 	.attach = dpi_bridge_attach,
+ 	.mode_valid = dpi_bridge_mode_valid,
+-	.mode_fixup = dpi_bridge_mode_fixup,
++	.atomic_check = dpi_bridge_atomic_check,
+ 	.mode_set = dpi_bridge_mode_set,
+-	.enable = dpi_bridge_enable,
+-	.disable = dpi_bridge_disable,
++	.atomic_enable = dpi_bridge_atomic_enable,
++	.atomic_disable = dpi_bridge_atomic_disable,
++	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
++	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
++	.atomic_reset = drm_atomic_helper_bridge_reset,
  };
  
- bool rcar_lvds_dual_link(struct drm_bridge *bridge)
+ static void dpi_bridge_init(struct dpi_data *dpi)
+diff --git a/drivers/gpu/drm/omapdrm/dss/sdi.c b/drivers/gpu/drm/omapdrm/dss/sdi.c
+index 91eaae3b9481..73b728722c2f 100644
+--- a/drivers/gpu/drm/omapdrm/dss/sdi.c
++++ b/drivers/gpu/drm/omapdrm/dss/sdi.c
+@@ -15,6 +15,7 @@
+ #include <linux/regulator/consumer.h>
+ #include <linux/string.h>
+ 
++#include <drm/drm_atomic_state_helper.h>
+ #include <drm/drm_bridge.h>
+ 
+ #include "dss.h"
+@@ -159,12 +160,13 @@ sdi_bridge_mode_valid(struct drm_bridge *bridge,
+ 	return MODE_OK;
+ }
+ 
+-static bool sdi_bridge_mode_fixup(struct drm_bridge *bridge,
+-				  const struct drm_display_mode *mode,
+-				  struct drm_display_mode *adjusted_mode)
++static int sdi_bridge_atomic_check(struct drm_bridge *bridge,
++				   struct drm_bridge_state *bridge_state,
++				   struct drm_crtc_state *crtc_state,
++				   struct drm_connector_state *conn_state)
+ {
+ 	struct sdi_device *sdi = drm_bridge_to_sdi(bridge);
+-	unsigned long pixelclock = mode->clock * 1000;
++	unsigned long pixelclock = crtc_state->mode.clock * 1000;
+ 	struct dispc_clock_info dispc_cinfo;
+ 	unsigned long fck;
+ 	unsigned long pck;
+@@ -172,7 +174,7 @@ static bool sdi_bridge_mode_fixup(struct drm_bridge *bridge,
+ 
+ 	ret = sdi_calc_clock_div(sdi, pixelclock, &fck, &dispc_cinfo);
+ 	if (ret < 0)
+-		return false;
++		return ret;
+ 
+ 	pck = fck / dispc_cinfo.lck_div / dispc_cinfo.pck_div;
+ 
+@@ -181,9 +183,9 @@ static bool sdi_bridge_mode_fixup(struct drm_bridge *bridge,
+ 			"pixel clock adjusted from %lu Hz to %lu Hz\n",
+ 			pixelclock, pck);
+ 
+-	adjusted_mode->clock = pck / 1000;
++	crtc_state->adjusted_mode.clock = pck / 1000;
+ 
+-	return true;
++	return 0;
+ }
+ 
+ static void sdi_bridge_mode_set(struct drm_bridge *bridge,
+@@ -195,7 +197,8 @@ static void sdi_bridge_mode_set(struct drm_bridge *bridge,
+ 	sdi->pixelclock = adjusted_mode->clock * 1000;
+ }
+ 
+-static void sdi_bridge_enable(struct drm_bridge *bridge)
++static void sdi_bridge_atomic_enable(struct drm_bridge *bridge,
++				     struct drm_bridge_state *old_bridge_state)
+ {
+ 	struct sdi_device *sdi = drm_bridge_to_sdi(bridge);
+ 	struct dispc_clock_info dispc_cinfo;
+@@ -258,7 +261,8 @@ static void sdi_bridge_enable(struct drm_bridge *bridge)
+ 	regulator_disable(sdi->vdds_sdi_reg);
+ }
+ 
+-static void sdi_bridge_disable(struct drm_bridge *bridge)
++static void sdi_bridge_atomic_disable(struct drm_bridge *bridge,
++				      struct drm_bridge_state *old_bridge_state)
+ {
+ 	struct sdi_device *sdi = drm_bridge_to_sdi(bridge);
+ 
+@@ -274,10 +278,13 @@ static void sdi_bridge_disable(struct drm_bridge *bridge)
+ static const struct drm_bridge_funcs sdi_bridge_funcs = {
+ 	.attach = sdi_bridge_attach,
+ 	.mode_valid = sdi_bridge_mode_valid,
+-	.mode_fixup = sdi_bridge_mode_fixup,
++	.atomic_check = sdi_bridge_atomic_check,
+ 	.mode_set = sdi_bridge_mode_set,
+-	.enable = sdi_bridge_enable,
+-	.disable = sdi_bridge_disable,
++	.atomic_enable = sdi_bridge_atomic_enable,
++	.atomic_disable = sdi_bridge_atomic_disable,
++	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
++	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
++	.atomic_reset = drm_atomic_helper_bridge_reset,
+ };
+ 
+ static void sdi_bridge_init(struct sdi_device *sdi)
+diff --git a/drivers/gpu/drm/omapdrm/dss/venc.c b/drivers/gpu/drm/omapdrm/dss/venc.c
+index 4480b69ab5a7..994e6399d574 100644
+--- a/drivers/gpu/drm/omapdrm/dss/venc.c
++++ b/drivers/gpu/drm/omapdrm/dss/venc.c
+@@ -25,6 +25,7 @@
+ #include <linux/component.h>
+ #include <linux/sys_soc.h>
+ 
++#include <drm/drm_atomic_state_helper.h>
+ #include <drm/drm_bridge.h>
+ 
+ #include "omapdss.h"
+@@ -564,11 +565,13 @@ venc_bridge_mode_valid(struct drm_bridge *bridge,
+ 	}
+ }
+ 
+-static bool venc_bridge_mode_fixup(struct drm_bridge *bridge,
+-				   const struct drm_display_mode *mode,
+-				   struct drm_display_mode *adjusted_mode)
++static int venc_bridge_atomic_check(struct drm_bridge *bridge,
++				    struct drm_bridge_state *bridge_state,
++				    struct drm_crtc_state *crtc_state,
++				    struct drm_connector_state *conn_state)
+ {
+ 	const struct drm_display_mode *venc_mode;
++	struct drm_display_mode *adjusted_mode = &crtc_state->adjusted_mode;
+ 
+ 	switch (venc_get_videomode(adjusted_mode)) {
+ 	case VENC_MODE_PAL:
+@@ -580,14 +583,14 @@ static bool venc_bridge_mode_fixup(struct drm_bridge *bridge,
+ 		break;
+ 
+ 	default:
+-		return false;
++		return -EINVAL;
+ 	}
+ 
+ 	drm_mode_copy(adjusted_mode, venc_mode);
+ 	drm_mode_set_crtcinfo(adjusted_mode, CRTC_INTERLACE_HALVE_V);
+ 	drm_mode_set_name(adjusted_mode);
+ 
+-	return true;
++	return 0;
+ }
+ 
+ static void venc_bridge_mode_set(struct drm_bridge *bridge,
+@@ -613,14 +616,16 @@ static void venc_bridge_mode_set(struct drm_bridge *bridge,
+ 	dispc_set_tv_pclk(venc->dss->dispc, 13500000);
+ }
+ 
+-static void venc_bridge_enable(struct drm_bridge *bridge)
++static void venc_bridge_atomic_enable(struct drm_bridge *bridge,
++				      struct drm_bridge_state *old_bridge_state)
+ {
+ 	struct venc_device *venc = drm_bridge_to_venc(bridge);
+ 
+ 	venc_power_on(venc);
+ }
+ 
+-static void venc_bridge_disable(struct drm_bridge *bridge)
++static void venc_bridge_atomic_disable(struct drm_bridge *bridge,
++				       struct drm_bridge_state *old_bridge_state)
+ {
+ 	struct venc_device *venc = drm_bridge_to_venc(bridge);
+ 
+@@ -654,11 +659,14 @@ static int venc_bridge_get_modes(struct drm_bridge *bridge,
+ static const struct drm_bridge_funcs venc_bridge_funcs = {
+ 	.attach = venc_bridge_attach,
+ 	.mode_valid = venc_bridge_mode_valid,
+-	.mode_fixup = venc_bridge_mode_fixup,
++	.atomic_check = venc_bridge_atomic_check,
+ 	.mode_set = venc_bridge_mode_set,
+-	.enable = venc_bridge_enable,
+-	.disable = venc_bridge_disable,
++	.atomic_enable = venc_bridge_atomic_enable,
++	.atomic_disable = venc_bridge_atomic_disable,
+ 	.get_modes = venc_bridge_get_modes,
++	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
++	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
++	.atomic_reset = drm_atomic_helper_bridge_reset,
+ };
+ 
+ static void venc_bridge_init(struct venc_device *venc)
 -- 
 2.34.1
 
