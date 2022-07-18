@@ -4,84 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47868C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 14:09:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FB5EC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 14:13:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8CqAs9Ua7Pm8Q2XSJh/dswnbeNdXHzd1llWNOHbIuD0=; b=YwLyHZMo+eLyqDBFKEKOz8aq+O
-	BMwTupPKIGA+3fQYcUf7gT6yW5r7zzryAsPNCruSdPu7lAOgQdvNNrXL0nucrOgBiWzX+pQ69UauQ
-	qu/urhW2cH3NVNkyBjUDizbY5pn1wH+o+Yk5ebXhTJYOAsAtmVkjKETRDn+CBcQa+QcgL6mcKU3F6
-	rW239nEcEIVgeg4fYTF2PIUo/m0CG2wYkMUqCBP2kFXyC89o7qb/+Mweh3+P+htxCtW3fNzFrAP/t
-	o5ZDz6XoN5UfCL422Xz+PxHvT1nCXva3XPa0EwwvPrX4fd2iqMIzbFsFo9EGPUclX9W5/NvfdWL6S
-	eLu8QQgw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CjYtWWfAKoGBLkN3ePtgZPz8hbvJlD5dayq7LK+HM8c=; b=1QLvrLsn2M+Vp2JXJylC46piCI
+	xO3f8op4EbdL6mC9rO3cIjhixW99pHuIVgC2X8qhkZ9A0ok6hOXiSW9XnsdvQPi18ONwk0rFhgVDL
+	4juxfZZ4vqIAZCpHcLGlL4t4zadW79Phcmu38Ay/Za0aaXjMTccuV+2c6WL4Ft9ZtxsEP4cjbG261
+	UdjMf+GVjZZjcQ0umi1AucHtk6Xu5sUvoTlP+kCMBaFS9zb71TtmN3YOt37/5ZiogJmrIFuYCXz1v
+	krh6si35EiGrIsNfg44X9SGQQw3BpxKe8ZYmOSO8+QBnIEVn/ziVEEzeiWLQdT+ZxnY3Er58PQeMa
+	5Ik3sR9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDRQb-00EMyK-3D; Mon, 18 Jul 2022 14:08:53 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1oDRUW-00ETsN-Kg; Mon, 18 Jul 2022 14:12:56 +0000
+Received: from mail-io1-f53.google.com ([209.85.166.53])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDRQW-00EMsx-U2
-	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 14:08:50 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id bp17so19540213lfb.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 Jul 2022 07:08:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=8CqAs9Ua7Pm8Q2XSJh/dswnbeNdXHzd1llWNOHbIuD0=;
-        b=AZP+58llLmJC3ISGeRpqLe8S5SU5cyj1U9du0bCtxTz57c1auuFp1bdrqbtDZqmdH+
-         jsoBPRqy9ceu6SiyC5bv8BCTvN4fTtcQb8pUA+539DHYzGFvk2FHHXWj+uTKBRwiUPkX
-         yJd8kYfdlgQPDkA8rODq9IlHRtUkLX8P68eCbpivN4Cm3n+cCeIJfX9WggoGOe22Kyau
-         Crn2aYQ21U+SKMhrcO+5y5LpZNWp+DhgS8aibz/SYGLlQzPHDvDpda+v7VDtly9UEXzO
-         kJ8/IWI2xzQqXN+XzeRacveJoDw6jox0hBhtkS76wku+21Ff2wzlcHu2opjhZXXljR1J
-         SnbA==
+	id 1oDRUT-00ETcc-IJ; Mon, 18 Jul 2022 14:12:55 +0000
+Received: by mail-io1-f53.google.com with SMTP id v185so9310595ioe.11;
+        Mon, 18 Jul 2022 07:12:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=8CqAs9Ua7Pm8Q2XSJh/dswnbeNdXHzd1llWNOHbIuD0=;
-        b=FktoiwpWoLUUxZsjaOpXUSCrGIxho5C4pYVC4+q+7QzU4C9VgbqLW9UO1BlXBlZcNY
-         jVUzAbSIt0N+AnQwEMpeEqj+d6Ffw+d4WE6AcDOouum+sGyIvwRCPbzlYsTNJ+7MVDLS
-         wA++OL+XEOjvoybqc8NI5lX8ug+aRNNWUL9Wfd1qSTI2P20z74abQQvdbo6zdeyT9B+y
-         2hrzQmPd2v/n78Fny/0+ut3uPH83ClIDdhbXxSmd/Im234n80oX3l/BmxVPzZMzvbrQ2
-         ftpHfBLuTNZtAqB5iAxkqFaoXIxsdr1wLmmTQFPdPHqMh5RbcsUj9fHOOpAy1mOC/eTF
-         GR7Q==
-X-Gm-Message-State: AJIora+1rs3VU8JHh1uqbSzSB1GxPY8N4IyUeTwB6jH7Mz0o/QqSw7mP
-	jmmHAFUJPZh25tgdohMxkWNPkQ==
-X-Google-Smtp-Source: AGRyM1tMdIUR9jHUwbcEC9/NAS7p2+/gpqVLsPo9FDRHsddDPnRJMiUKece0HNK6p14XKK1PqS1IrA==
-X-Received: by 2002:a05:6512:1684:b0:47f:5f27:b006 with SMTP id bu4-20020a056512168400b0047f5f27b006mr15108397lfb.225.1658153327547;
-        Mon, 18 Jul 2022 07:08:47 -0700 (PDT)
-Received: from [192.168.115.193] (89-162-31-138.fiber.signal.no. [89.162.31.138])
-        by smtp.gmail.com with ESMTPSA id p26-20020ac246da000000b0048a256f50b3sm2016576lfo.102.2022.07.18.07.08.46
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 18 Jul 2022 07:08:47 -0700 (PDT)
-Message-ID: <67c5ed4a-022a-e2b4-cbbb-ca6818bf4881@linaro.org>
-Date: Mon, 18 Jul 2022 16:08:45 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 2/3] dt-bindings: pinctrl: mt8188: add pinmux definition
-Content-Language: en-US
-To: Hui Liu <hui.liu@mediatek.com>, linus.walleij@linaro.org,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com
-Cc: srv_heupstream@mediatek.com, johnson.wang@mediatek.com,
- zhiyong.tao@mediatek.com, sean.wang@mediatek.com,
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220718113813.23787-1-hui.liu@mediatek.com>
- <20220718113813.23787-3-hui.liu@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220718113813.23787-3-hui.liu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+        h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+         :message-id;
+        bh=CjYtWWfAKoGBLkN3ePtgZPz8hbvJlD5dayq7LK+HM8c=;
+        b=OYcy2GRXoxIHJYSvhfIUSzoSko1vVwQf1x5pR/1Ze82h3HGFIv/hq1mptMjnH2cdB7
+         e64j13GLALj2gmRPheBN6LPxgV49jBTdCsyVFH3+zUKsl2UNR6zXdTpqeyBOocJu+99g
+         H3xXmaafPTRkgTJQiLsYSHw+WUfiqaYGPxgrLhEmFXPMjll7QplvJZDyQLZ2EIf3MAxh
+         Rvazg1uWntSYepmgg+3+ieIsaoL1pQU0jMkCUyswGjtla9RY/STfUnPpeZTFOZaP5xT4
+         BOBtOFuQgtx5FHeBHTqjQarvZZzZ0TcQmMaYvbzmf9F5yd8ivBWmeQ3qSKr2dnWpJi8Z
+         rsFw==
+X-Gm-Message-State: AJIora/Bmt96oSqBEWjoLbLZ5xaCONw106ABYYKYrgoxpG1jWqYUfnB2
+	NO7owKA2LKODrOinjnmVYg==
+X-Google-Smtp-Source: AGRyM1vdc6FYIMZSZdxh3LHKeIA7iTeO8nBZvbxzi60Hlrt2wYs8YOgH55g1NF3Vp4WB4jtfMlecXA==
+X-Received: by 2002:a05:6638:dd1:b0:341:595e:4ef8 with SMTP id m17-20020a0566380dd100b00341595e4ef8mr5884376jaj.26.1658153571163;
+        Mon, 18 Jul 2022 07:12:51 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id x12-20020a92dc4c000000b002dc0d743570sm4864230ilq.43.2022.07.18.07.12.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 Jul 2022 07:12:50 -0700 (PDT)
+Received: (nullmailer pid 2879771 invoked by uid 1000);
+	Mon, 18 Jul 2022 14:12:49 -0000
+From: Rob Herring <robh@kernel.org>
+To: Hui Liu <hui.liu@mediatek.com>
+Cc: zhiyong.tao@mediatek.com, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, robh+dt@kernel.org, linus.walleij@linaro.org, krzysztof.kozlowski+dt@linaro.org, johnson.wang@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, sean.wang@mediatek.com, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org
+In-Reply-To: <20220718113813.23787-2-hui.liu@mediatek.com>
+References: <20220718113813.23787-1-hui.liu@mediatek.com> <20220718113813.23787-2-hui.liu@mediatek.com>
+Subject: Re: [PATCH 1/3] dt-bindings: mediatek: add pinctrl definition for mt8188
+Date: Mon, 18 Jul 2022 08:12:49 -0600
+Message-Id: <1658153569.317351.2879770.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_070849_020158_0EA464DB 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20220718_071253_636444_06A63E29 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,31 +73,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/07/2022 13:38, Hui Liu wrote:
+On Mon, 18 Jul 2022 19:38:11 +0800, Hui Liu wrote:
 > From: "Hui.Liu" <hui.liu@mediatek.com>
 > 
-> This commit adds pinmux definition for mt8188 platform.
+> This commit adds mt8188 compatible node in binding document.
 > 
 > Signed-off-by: Hui.Liu <hui.liu@mediatek.com>
 > ---
->  include/dt-bindings/pinctrl/mt8188-pinfunc.h | 1280 ++++++++++++++++++
->  1 file changed, 1280 insertions(+)
->  create mode 100644 include/dt-bindings/pinctrl/mt8188-pinfunc.h
+>  .../bindings/pinctrl/pinctrl-mt8188.yaml      | 306 ++++++++++++++++++
+>  1 file changed, 306 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8188.yaml
 > 
-> diff --git a/include/dt-bindings/pinctrl/mt8188-pinfunc.h b/include/dt-bindings/pinctrl/mt8188-pinfunc.h
-> new file mode 100644
-> index 000000000000..bb764b67159b
-> --- /dev/null
-> +++ b/include/dt-bindings/pinctrl/mt8188-pinfunc.h
 
-Vendor,name
-mediatek,mt8188-pinfunct.h
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-> @@ -0,0 +1,1280 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
+yamllint warnings/errors:
 
-Dual license.
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/pinctrl/pinctrl-mt8188.example.dts:21:18: fatal error: dt-bindings/pinctrl/mt8188-pinfunc.h: No such file or directory
+   21 |         #include <dt-bindings/pinctrl/mt8188-pinfunc.h>
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [scripts/Makefile.lib:383: Documentation/devicetree/bindings/pinctrl/pinctrl-mt8188.example.dtb] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1404: dt_binding_check] Error 2
 
-Best regards,
-Krzysztof
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
