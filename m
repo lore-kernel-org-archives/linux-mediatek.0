@@ -4,66 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF581C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 21:15:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04978C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 21:32:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=waGojzQJKestAFlcfSdCqvEWi/o6eYFkAoN0J4xqLlM=; b=GCMoELvq1EylfOMhXFngUPSrdb
-	YC95nOSCfhxhOUqufVzEgfJ7sCDUsXk11o/oxPzAfoIx+4hN+PQ0rIYNF3MLY2ICLPfRt3n53nfX+
-	cpRdv4YsBF+khLp49+I6syAknOUOJLuqW/dJGZ8Hbx91J2mO19zsu5exWomHUEHLXprvv6qWONTiM
-	QJfV1AcPCb4reYBUpAfT+J3JxEpGnFpWsAlpM8S82OcxQMIiBn2Ud0imbo5wqR7Xt8z6GjGnvwyy4
-	7N9Zs7SQPuM7wbUdV+tD++GNI+YBGVJORqyUSbk428Y0x7UUTqhLW1p37jkDu2D1K34IjSCqw+p3Q
-	x/+ftyCQ==;
+	bh=z1D6xOAGofCxFBuw2SfOBBlGNnmyLVhTaE4ln6n9nnY=; b=WkaCTxk9sOBTFrTwswMcH+9l2D
+	2tTv1rFKyscy6cmS9BY5DwUhRP/h+aYelnrhVJMcNKKpQ4EnAGhCYynpwQdjfh1+AZcU+cADl4Gu8
+	fJd7Q9D/JvXzTg9H8lkd1Og1BuHeKQPUogGu+Mn0pB6gLfHDIjiII5X5zYEqn9aqRxJKxY9NDu7+H
+	aVCxIESmiUuFTBgk1qka2oa8V8hOyD/Nmkew7i5pkeJ7lcNPoSyuseuAxsYsSko1F7ak+6l0jrjGx
+	/U/HdMojryvryqL2Ob9a+ge6u1m/Wgp+DPRiBePA28waJgzIKsur3emUstXxoatEwIA/DeRJMvIdM
+	aBVgzDGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDY57-001TMZ-OC; Mon, 18 Jul 2022 21:15:09 +0000
-Received: from mail-io1-f42.google.com ([209.85.166.42])
+	id 1oDYM3-001Ykp-Ui; Mon, 18 Jul 2022 21:32:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDY52-001TJL-9V; Mon, 18 Jul 2022 21:15:08 +0000
-Received: by mail-io1-f42.google.com with SMTP id 125so10365819iou.6;
-        Mon, 18 Jul 2022 14:15:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=waGojzQJKestAFlcfSdCqvEWi/o6eYFkAoN0J4xqLlM=;
-        b=fTgjIjuEgTekwHMVMuSBGS6oafKhLCnC9tH3+8j7aO3llzKUFuYyJXdsnVfP2q6f0+
-         lveeP56vsuSCOCQHEd6KImqNrKGV77RcS8GO1ar50lpjOHYAowrHEQwZhbPRIAXSj5o5
-         nmAMifJI5jpzN7JrttZQBIauGtSclP016v6n+q1eohGBXVULuqnfBRBVmtDd8JIuvPOl
-         gwrv3RPgzN6/vq98tbb6aKhzRf2GcxTfQAGsoewr/zivQvrsLFNbXo5V9a3Ntbi/oIxP
-         dWGoNJ+tHIhByVORDF8EX8zR9JGeQ6wc7uHZ5NQqTE5cXXoKUctSvU5xvZfrDYGFILVY
-         EeAA==
-X-Gm-Message-State: AJIora/FljFOf01aUTZFwXYdpczQp3NY2gdD6QJnKyAbmFqSMdtMpD/G
-	U3MCXzH1xOYtXE0EKNCsxw==
-X-Google-Smtp-Source: AGRyM1vzkO++HsbSir7ZbCZNk8RsHLKO5mm6TyRRsK3Bu8hhHALzdY+MkTYM98ZV7iYjLMb5ueJJrQ==
-X-Received: by 2002:a05:6602:131a:b0:67b:dbd5:49dd with SMTP id h26-20020a056602131a00b0067bdbd549ddmr8950312iov.1.1658178902508;
-        Mon, 18 Jul 2022 14:15:02 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id x13-20020a92de0d000000b002dc06989d86sm5196511ilm.52.2022.07.18.14.15.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Jul 2022 14:15:02 -0700 (PDT)
-Received: (nullmailer pid 3569024 invoked by uid 1000);
-	Mon, 18 Jul 2022 21:15:00 -0000
-Date: Mon, 18 Jul 2022 15:15:00 -0600
-From: Rob Herring <robh@kernel.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, MandyJH Liu <mandyjh.liu@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, iommu@lists.linux.dev, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v2 03/19] dt-bindings: power: mediatek: Add bindings for
- MediaTek SCPSYS
-Message-ID: <20220718211500.GA3562861-robh@kernel.org>
-References: <20220714122837.20094-1-tinghan.shen@mediatek.com>
- <20220714122837.20094-4-tinghan.shen@mediatek.com>
+	id 1oDYM1-001YkG-3E
+	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 21:32:38 +0000
+X-UUID: eaf2d9dbbdde4768b17ce195e05f78f9-20220718
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:e1b75934-7008-4f52-bc2a-e8ddd65d3831,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:4f6c4e33-b9e4-42b8-b28a-6364427c76bb,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: eaf2d9dbbdde4768b17ce195e05f78f9-20220718
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1716071624; Mon, 18 Jul 2022 14:32:35 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 19 Jul 2022 04:51:30 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Tue, 19 Jul 2022 04:51:30 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
+	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
+	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
+	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
+	<abhishekpandit@google.com>, <shawnku@google.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 3/4] mt76: mt7921u: fix race issue between reset and suspend/resume
+Date: Tue, 19 Jul 2022 04:51:25 +0800
+Message-ID: <0d63c7d511269fe6f0c7c09fe922417ed594d3b3.1658176701.git.sean.wang@kernel.org>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <a1437e413116364ac9f3b777c7922ca0728ddc0d.1658176701.git.sean.wang@kernel.org>
+References: <a1437e413116364ac9f3b777c7922ca0728ddc0d.1658176701.git.sean.wang@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220714122837.20094-4-tinghan.shen@mediatek.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_141504_349348_0D8FFAEF 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20220718_143237_162528_D8155F12 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,18 +83,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 14, 2022 at 08:28:21PM +0800, Tinghan Shen wrote:
-> The System Control Processor System (SCPSYS) has several power
-> management related tasks in the system. Add the bindings for it.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Please coordinate your work:
+It is unexpected that the reset work is running simultaneously with
+the suspend or resume context and it is possible that reset work is still
+running even after mt7921 is suspended if we don't fix the race issue.
 
-https://lore.kernel.org/linux-arm-kernel/20220718180654.GA3260460-robh@kernel.org/
+Thus, the suspend procedure should be waiting until the reset is completed
+at the beginning and ignore the subsequent the reset requests.
 
-> 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->  .../bindings/mfd/mediatek,scpsys.yaml         | 62 +++++++++++++++++++
->  1 file changed, 62 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+In case there is an error that happens during either suspend or resume
+handler, we will schedule a reset task to recover the error before
+returning the error code to ensure we can immediately fix the error there.
+
+Fixes: df3e4143ba8a ("mt76: mt7921u: add suspend/resume support")
+Co-developed-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7921/usb.c   | 28 ++++++++++++++++---
+ 1 file changed, 24 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+index dd3b8884e162..124d62c0dfa4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+@@ -300,11 +300,15 @@ static void mt7921u_disconnect(struct usb_interface *usb_intf)
+ static int mt7921u_suspend(struct usb_interface *intf, pm_message_t state)
+ {
+ 	struct mt7921_dev *dev = usb_get_intfdata(intf);
++	struct mt76_connac_pm *pm = &dev->pm;
+ 	int err;
+ 
++	pm->suspended = true;
++	cancel_work_sync(&dev->reset_work);
++
+ 	err = mt76_connac_mcu_set_hif_suspend(&dev->mt76, true);
+ 	if (err)
+-		return err;
++		goto failed;
+ 
+ 	mt76u_stop_rx(&dev->mt76);
+ 	mt76u_stop_tx(&dev->mt76);
+@@ -312,11 +316,20 @@ static int mt7921u_suspend(struct usb_interface *intf, pm_message_t state)
+ 	set_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
+ 
+ 	return 0;
++
++failed:
++	pm->suspended = false;
++
++	if (err < 0)
++		mt7921_reset(&dev->mt76);
++
++	return err;
+ }
+ 
+ static int mt7921u_resume(struct usb_interface *intf)
+ {
+ 	struct mt7921_dev *dev = usb_get_intfdata(intf);
++	struct mt76_connac_pm *pm = &dev->pm;
+ 	bool reinit = true;
+ 	int err, i;
+ 
+@@ -338,16 +351,23 @@ static int mt7921u_resume(struct usb_interface *intf)
+ 	if (reinit || mt7921_dma_need_reinit(dev)) {
+ 		err = mt7921u_dma_init(dev, true);
+ 		if (err)
+-			return err;
++			goto failed;
+ 	}
+ 
+ 	clear_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
+ 
+ 	err = mt76u_resume_rx(&dev->mt76);
+ 	if (err < 0)
+-		return err;
++		goto failed;
++
++	err = mt76_connac_mcu_set_hif_suspend(&dev->mt76, false);
++failed:
++	pm->suspended = false;
++
++	if (err < 0)
++		mt7921_reset(&dev->mt76);
+ 
+-	return mt76_connac_mcu_set_hif_suspend(&dev->mt76, false);
++	return err;
+ }
+ #endif /* CONFIG_PM */
+ 
+-- 
+2.25.1
+
 
