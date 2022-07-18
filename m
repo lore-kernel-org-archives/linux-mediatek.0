@@ -4,71 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41AD9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 10:40:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1840C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 11:18:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tz2LJulR7Lgfefh2/o62fCIUXz1pqtbCGOj806UzXTk=; b=DigCcEbkZbCdecJSa88qGQCuQZ
-	N94e4tedDSnaV7d5FRriIpav0AGPfRVRaKWbq7dZdZeM+NM3j9/ew8xwPMD+5FeI25XBjFQXWluvP
-	Z7w6T95d2Jikn6cov1FnzNgeRLwyiFuuG2zhTrmDHb+sgj9/yytItcqzdEMhhwvMC64R4JufGxQFS
-	oi9+JcSAvXO4OebakpGzX68q0wUlXhN59Gkwj0TFNerdg6Av1T86pqfRTfwv/P05WzgVlyzCz0NRG
-	WLwcZs88iM0CseU3twwfQjK3Bz4hwDexJaiSyBHuXmupENnf11J9+kbhl7ZT/ZoNCkos69kiljEcH
-	3Al90sNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wSoYENXBgH2mwK4hdRwcr5ZngBoL0AeSrBZrHAlbPeQ=; b=zBlGMvOST2x0LOWsikmibUuMnU
+	i3+voeZIeqbGY+usVQl/4MsKwxezUSAsNC+1pTdiVOcuBZ8SANHfAdAvRDDVG9jnlLRUBQTkNsXll
+	vM3aKOJKRMqPZNWqNbActnO/naSFGy7oJ/xo9NFUD200QZqFqVJMmY5SbELj92+P9Nm3SyfFANcMh
+	pIWuRS2JnaUPd+P3MgpNzCFuFjnhDT8cGc0y2wOp2XeCnm2hXLoKjAr/8ZLgu4g2inZfHi/qUa3Xk
+	nD2u/4g2Ha40wsxBbiyks2+mLigBEdSEcQ0fn6BjxLMGsBEfj3dwmTEhv6GKS6fiOd9IFofWPAyJO
+	80TPdWKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDOB5-00CWrF-KT; Mon, 18 Jul 2022 10:40:39 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oDOlj-00CkuV-3M; Mon, 18 Jul 2022 11:18:31 +0000
+Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDOAs-00CWjb-1z; Mon, 18 Jul 2022 10:40:27 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 04F2B6601A05;
-	Mon, 18 Jul 2022 11:40:22 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658140824;
-	bh=yNapTY+IvffaTEBI0X0/kdVvwYn1/gbJNowfTGMSXNQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=P3/OcjQmqoB7/8Udziy16ptBdaRSZGwqC1/9u9iV81kc/CEfjdb4P3q37+93nkk40
-	 VAS6HqybxkEA6xt/AXEZqtS/MOKPwr7kXRK90kpfZSkor6QlWyRtbMdFJISFT1b+lR
-	 63JXc8xvhZ1vz/ScnipFicFwgFu6hAnXCXywkhvbwUYPr+FSi67CQc3JYXp5BcpvaY
-	 noH2JcuXi53v2hlmf9vHu7JEU29M6Evphoae9gCc23oKPj1yB362X7ZdprHCzg9/fA
-	 IgN4LxJhRBf8rIzmMcG4u3GffxzfwEgYlKkM0fYoslVFEWx/kKywhUY4Uq9OcWXpSS
-	 Tx8BwA3W+BiKQ==
-Message-ID: <f8618c29-167b-a627-e4b1-d117ec860b7e@collabora.com>
-Date: Mon, 18 Jul 2022 12:40:19 +0200
+	id 1oDOlW-00Ckob-Te; Mon, 18 Jul 2022 11:18:20 +0000
+Received: by mail-qt1-x832.google.com with SMTP id h22so8438332qta.3;
+        Mon, 18 Jul 2022 04:18:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=wSoYENXBgH2mwK4hdRwcr5ZngBoL0AeSrBZrHAlbPeQ=;
+        b=qFnFWPwvGVggO9eAAgTTMi5N3kU74UfugZ/F1ND8Dh1XwEYNQq9hleridz+UuErbjp
+         kKXke5m5utIeYESJxdI+Imw1dN7Ky712JivV5EepwVudgfHjmTqzT/4Csy8a5PRWaYcW
+         WT7WNRwPzbR88elpVuCiYFy314nf03iGRthvnSl47bKymr5iw2ISiSCilphKmc3sjDBm
+         wiODnzpQ5ZhUPmt72MGydEbUEk8Tl3V01TfyuGjdP3zZ6dMAa1QHvvhfxlrb1Fhq/iC3
+         p3s1kljCg7uX6D1BpJ/6XC9U0bCN4LfKIpfi4lFkm26bo4VkK/Gcyeu4o/iFLsYdoMKG
+         BZIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=wSoYENXBgH2mwK4hdRwcr5ZngBoL0AeSrBZrHAlbPeQ=;
+        b=O1VjFTOCTBCibwbFHmBxoioM8zmM13PRwwqLSMkJMv5l9SglgUvJG2fHatFnNfDmjb
+         7hgwlvlBTQEjzKwbrHmlOwVbGCEviaM0NIEgG/qlWV89DooEqLJXTFbJwH9arXQXOKGu
+         erMzDeGThYzC30qr9YU4Bp9fsSf/y7w3eJTgQqcAHhxbFEv0pbT2pnlUULQJzkx9CIaR
+         UYGo/jpTbZxD9KWtPmQwzjDwOC5b/8Z//qyw0mY0J1axLuDphmjSnFj7kgqw+7kipt4G
+         sUVD9xk64TwB7NHXBqshCfDmM7Yi3X/7owbdp2+xhFSC05WpJS0PGuTU6XApTvWPUhAX
+         hftA==
+X-Gm-Message-State: AJIora/ff7xbe7IyBqL6Z0KcWfbC3YLwqOfTwUPtqigB38Ve3J+uxxai
+	PkQ504PQ0tb5ExMx0h1VIsGGqWAd9Oq+fs3mPz8Gq3aZdu4=
+X-Google-Smtp-Source: AGRyM1sDQntCUf7aWlvIzBrAp3ngAMq6sCK0MNxJ0IaoTAwyexPRWMVJcAdASNSTm/k1fe6tXf81WYvadsLxzbGsFLI=
+X-Received: by 2002:ac8:5a8c:0:b0:31d:2826:d14f with SMTP id
+ c12-20020ac85a8c000000b0031d2826d14fmr20168056qtc.198.1658143096830; Mon, 18
+ Jul 2022 04:18:16 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [V11,3/7] mtk-jpegenc: manage jpegenc multi-hardware
-Content-Language: en-US
-To: Irui Wang <irui.wang@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tzung-Bi Shih <tzungbi@chromium.org>, nicolas.dufresne@collabora.com,
- wenst@chromium.org, kyrie wu <kyrie.wu@mediatek.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
- xia.jiang@mediatek.com, maoguang.meng@mediatek.com,
- srv_heupstream@mediatek.com
-References: <20220716093435.29796-1-irui.wang@mediatek.com>
- <20220716093435.29796-4-irui.wang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220716093435.29796-4-irui.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20220715112607.591-1-peterwu.pub@gmail.com> <20220715112607.591-14-peterwu.pub@gmail.com>
+ <ec3bdfb8-0e42-a772-28b1-165811872afa@collabora.com> <20220715162913.5ewxwhv6jtdgt3c2@maple.lan>
+ <ee88aec0-f6f8-c554-6752-447cb0f34e16@collabora.com>
+In-Reply-To: <ee88aec0-f6f8-c554-6752-447cb0f34e16@collabora.com>
+From: ChiaEn Wu <peterwu.pub@gmail.com>
+Date: Mon, 18 Jul 2022 19:17:40 +0800
+Message-ID: <CABtFH5J3tjx6mLfXkx_MySXdYg3qms09gX0wxpuFQxWpz3gowQ@mail.gmail.com>
+Subject: Re: [PATCH v5 13/13] video: backlight: mt6370: Add MediaTek MT6370 support
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Daniel Thompson <daniel.thompson@linaro.org>, Lee Jones <lee.jones@linaro.org>, 
+	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
+	ChiYuan Huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_034026_258594_66F91F82 
-X-CRM114-Status: GOOD (  16.93  )
+X-CRM114-CacheID: sfid-20220718_041818_996376_F4DAF2FA 
+X-CRM114-Status: GOOD (  36.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,93 +98,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/07/22 11:34, Irui Wang ha scritto:
-> From: kyrie wu <kyrie.wu@mediatek.com>
-> 
-> manage each hardware information, including irq/clk/power.
-> the hardware includes HW0 and HW1.
-> 
-> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
-> Signed-off-by: irui wang <irui.wang@mediatek.com>
-> 
-> ---
->   drivers/media/platform/mediatek/jpeg/Makefile |  11 +-
->   .../platform/mediatek/jpeg/mtk_jpeg_core.c    |  94 ++++++----
->   .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  37 ++++
->   .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 163 ++++++++++++++++++
->   4 files changed, 272 insertions(+), 33 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/jpeg/Makefile b/drivers/media/platform/mediatek/jpeg/Makefile
-> index 76c33aad0f3f..69703db4b0a5 100644
-> --- a/drivers/media/platform/mediatek/jpeg/Makefile
-> +++ b/drivers/media/platform/mediatek/jpeg/Makefile
-> @@ -1,6 +1,9 @@
->   # SPDX-License-Identifier: GPL-2.0-only
-> -mtk_jpeg-objs := mtk_jpeg_core.o \
-> +obj-$(CONFIG_VIDEO_MEDIATEK_JPEG) += mtk_jpeg.o \
-> +	mtk-jpeg-enc-hw.o
-> +
-> +mtk_jpeg-y := mtk_jpeg_core.o \
->   		 mtk_jpeg_dec_hw.o \
-> -		 mtk_jpeg_dec_parse.o \
-> -		 mtk_jpeg_enc_hw.o
-> -obj-$(CONFIG_VIDEO_MEDIATEK_JPEG) += mtk_jpeg.o
-> +		 mtk_jpeg_dec_parse.o
-> +
-> +mtk-jpeg-enc-hw-y := mtk_jpeg_enc_hw.o
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> index 724fb7aeb0ee..3286e9606505 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+On Mon, Jul 18, 2022 at 4:27 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
 
-..snip..
+<snip>
 
-> @@ -1497,6 +1516,18 @@ static const struct mtk_jpeg_variant mtk_jpeg_drvdata = {
->   	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
->   };
->   
-> +static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
+> >>
+> >> Hello ChiaEn,
+> >>
+> >> I propose to move this one to drivers/leds (or drivers/pwm) and, instead of
+> >> registering a backlight device, register a PWM device.
+> >>
+> >> This way you will be able to reuse the generic backlight-pwm driver, as you'd
+> >> be feeding the PWM device exposed by this driver to the generic one: this will
+> >> most importantly make it easy to chain it with MTK_DISP_PWM (mtk-pwm-disp)
+> >> with a devicetree that looks like...
+> >
+> > Out of interest, does MT6370 have the same structure for backlights as the prior
+> > systems using mtk-pwm-disp or was mtk-pwm-disp simply a normal(-ish) PWM
+> > that relied on something on the board for all the constant current
+> > driver hardware?
+> >
+> >
+>
+> As per my understanding, mtk-pwm-disp is chained to other multimedia features of
+> the display block of MediaTek SoCs, such as the AAL (adaptive ambient light),
+> CABC (content adaptive backlight control) etc, other than being a normal(ish)
+> PWM... that's the reason of my request.
+>
+> Moreover, in the end, this PMIC's backlight controller is just a "fancy" PWM
+> controller, with OCP/OVP.
+>
+> >>
+> >>      pwmleds-disp {
+> >>              compatible = "pwm-leds";
+> >>
+> >>              disp_led: disp-pwm {
+> >>                      label = "backlight-pwm";
+> >>                      pwms = <&pwm0 0 500000>;
+> >>                      max-brightness = <1024>;
+> >>              };
+> >>      };
+> >>
+> >>      backlight_lcd0: backlight {
+> >>              compatible = "led-backlight";
+> >>              leds = <&disp_led>, <&pmic_bl_led>;
+> >>              default-brightness-level = <300>;
+> >>      };
+> >
+> > I think this proposal has to start with the devicetree bindings rather
+> > than the driver. Instead I think the question is: does this proposal
+> > result in DT bindings that better describe the underlying hardware?
+> >
+>
+>  From how I understand it - yes: we have a fancy PWM (&pwm0) that we use
+> to control display backlight (backlight-pwm)...
+>
+> Obviously, here we're not talking about OLEDs, but LCDs, where the backlight
+> is made of multiple strings of WhiteLED (effectively, a "pwm-leds" controlled
+> "led-backlight").
+>
+> Using PWM will also allow for a little more fine-grained board specific
+> configuration, as I think that this PMIC (and/or variants of it) will be
+> used in completely different form factors: I think that's going to be both
+> smartphones and tablets/laptops... and I want to avoid vendor properties
+> to configure the PWM part in a somehow different way.
+>
+> > This device has lots of backlight centric features (OCP, OVP, single
+> > control with multiple outputs, exponential curves, etc) and its not
+> > clear where they would fit into the "PWM" bindings.
+> >
+>
+> For OCP and OVP, the only bindings that fit would be regulators, but that's
+> not a regulator... and that's about it - I don't really have arguments for
+> that.
+>
+> What I really want to see here is usage of "generic" drivers like led_bl
+> and/or pwm_bl as to get some "standardization" around with all the benefits
+> that this carries.
+>
+> > Come to think of it I'm also a little worried also about the whole linear
+> > versus exponential curve thing since I thought LED drivers were required
+> > to use exponential curves.
+> >
+>
+> That probably depends on how the controller interprets the data, I guess,
+> but I agree with you on this thought.
 
-mt8195_jpegenc_drvdata, or mtk_jpegenc_multicore_drvdata
+Hi Angelo,
 
-(same applies for jpegdec)
+MT6370 is just a SubPMIC, not an SoC, and is applied in cellular
+telephones, tablet PCs, and portable instruments.
+And the PWM mode of the MT6370 backlight driver is optional, and not
+must be enabled.
+From our perspective, this MT6370 backlight driver is not the same as
+mtk-pwm-disp related driver.
+Thanks!
 
-> +	.formats = mtk_jpeg_enc_formats,
-> +	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
-> +	.qops = &mtk_jpeg_enc_qops,
-> +	.m2m_ops = &mtk_jpeg_multicore_enc_m2m_ops,
+>
+> Regards,
+> Angelo
 
-Same comment for jpgenc as well: add support for this device after adding support
-for multicore encoder.
-
-> +	.dev_name = "mtk-jpeg-enc",
-> +	.ioctl_ops = &mtk_jpeg_enc_ioctl_ops,
-> +	.out_q_default_fourcc = V4L2_PIX_FMT_YUYV,
-> +	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
-> +};
-> +
-> +#if defined(CONFIG_OF)
->   static const struct of_device_id mtk_jpeg_match[] = {
->   	{
->   		.compatible = "mediatek,mt8173-jpgdec",
-> @@ -1510,10 +1541,15 @@ static const struct of_device_id mtk_jpeg_match[] = {
->   		.compatible = "mediatek,mtk-jpgenc",
->   		.data = &mtk_jpeg_drvdata,
->   	},
-> +	{
-> +		.compatible = "mediatek,mt8195-jpgenc",
-> +		.data = &mtk8195_jpegenc_drvdata,
-> +	},
->   	{},
->   };
->   
->   MODULE_DEVICE_TABLE(of, mtk_jpeg_match);
-> +#endif
->   
->   static struct platform_driver mtk_jpeg_driver = {
->   	.probe = mtk_jpeg_probe,
-
-
-
-
+-- 
+Best Regards,
+ChiaEn Wu
 
