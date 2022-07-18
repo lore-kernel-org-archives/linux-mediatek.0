@@ -4,62 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F2E3C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 12:54:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2788CC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 13:03:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MIhnKdzHtrqLZxeky/NfG5qAhp3Mp8qhC2CmsBsTw0U=; b=ws5k2BQGJlexQJktmDDPUKs0OA
-	XnFBPAk/honN+1ednZl9793G8UwWBePY0DFWuSKrNiyCb9be6Ff2KbC0Jh8A3kRCntqNmwQ+x4/Z6
-	oMqQizYJHPLdnuAZvnl/0Aoy8pjqQiJsP0i4aCxVNvt9bmeQOtRz3rvrN6FwaYugM6Uiag4tc9cq1
-	rHrqmJbb9bxzmao+L+wEbN4qJFbK00tDBn+zicoeJolMBP+KigE1kEZVvIeUUEuu+1HIJ/jxVofGG
-	qdzEShzQ6C9K+4lEB8otXZ9FETELnb0s84VaplyIdx74+NxTog3oD/JlyixN4OXEXSnoEqsxeXG1I
-	/2uEfO3w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XidPYl11smFttKHJvFnl6SJFpfWwT+eJ4zfOs1kVy/I=; b=IWjTV0VPxnBf8Xqme4QHwU+Dju
+	+1U7uTr6zsfat2/f69eJ5dMXIhmLmkSrgm4ty0tpBUPelPfNwlAkPSDvVDVOQYPcA3EzEXKtR6N4M
+	3DkGb0fJ090FtHQWy/btmh4hLeHQcNCVkhNHOAS4ETkscEEfdJsE/BmfhiE3NxwLgGLMIYANOMYzQ
+	cdOBHsC0aqoHyMTQ8tTcmrRLwyZP3BrG1v1wtcPewRvTC4d724Z7r78JuSqLKkT+O3nYxCIZvCer6
+	EKvXE/AQueKQqA2FqxNxxfq4LPiR1jNOn7KNTFrzxh7amRbeApoR/kGjUc4D+vag7SocmluG8lmgT
+	TJ7/u9jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDQGY-00DU1w-56; Mon, 18 Jul 2022 12:54:26 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oDQP4-00DYR4-Cr; Mon, 18 Jul 2022 13:03:14 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDQGV-00DTyu-UJ; Mon, 18 Jul 2022 12:54:25 +0000
-X-UUID: 249335f9cdc94ddba70b70e976d5f9a5-20220718
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:8e8587cb-a72d-49bd-b531-a0c7c1337b6e,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:b0304933-b9e4-42b8-b28a-6364427c76bb,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 249335f9cdc94ddba70b70e976d5f9a5-20220718
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <mark-pk.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1363947274; Mon, 18 Jul 2022 05:54:16 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 18 Jul 2022 20:03:38 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Mon, 18 Jul 2022 20:03:38 +0800
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: Andrew Morton <akpm@linux-foundation.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <yj.chiang@mediatek.com>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
-	<linux-mm@kvack.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] mm/page_alloc: Correct the wrong cpuset file path in comment
-Date: Mon, 18 Jul 2022 20:03:35 +0800
-Message-ID: <20220718120336.5145-1-mark-pk.tsai@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oDQOs-00DYLA-RT; Mon, 18 Jul 2022 13:03:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=XidPYl11smFttKHJvFnl6SJFpfWwT+eJ4zfOs1kVy/I=; b=HNXSITYgKyS2AT0HBOFQpDpc2y
+	fncTocyT8qTf99rm7secmA39Es5zp5dk5bOtD2FpAt6dSNye2wfD9Sx0wWJf8bmI57UYZwQO8hv2x
+	InGWdUhlemAKoFxnkn8d4NkJZgOVHDDidU3ellLxWz+7X7ZdRrCKU7q18WHWVZdddQwZAN8UZSMAd
+	ZBn7mSR9x+FRwd25C3PktQmfDrBwD5RN7PC8PC10+4z3GEWQr6yi6828qJZFZzE95Zt470WspVC2I
+	wGtkFvCACLc9+zDxJR6eP8w6jOoRyj0mftTr5h20HTjRfl2OYhYAjrQU4qJaCrb+eWK8gSHMPTbFa
+	qnBeHBNw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33408)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1oDQOV-0001bG-Ds; Mon, 18 Jul 2022 14:02:39 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1oDQOP-0001yk-Eq; Mon, 18 Jul 2022 14:02:33 +0100
+Date: Mon, 18 Jul 2022 14:02:33 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Jakub Kicinski <kuba@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>
+Subject: Re: [PATCH net-next 0/6] net: dsa: always use phylink
+Message-ID: <YtVZ6VI1yvbgSYDg@shell.armlinux.org.uk>
+References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+ <20220715171719.niqcrklpk4ittfvl@skbuf>
+ <YtHVLGR0RQ6dWuBS@shell.armlinux.org.uk>
+ <20220715160359.2e9dabfe@kernel.org>
+ <20220716111551.64rjruz4q4g5uzee@skbuf>
+ <YtKkRLD74tqoeBuR@shell.armlinux.org.uk>
+ <20220716131345.b2jas3rucsifli7g@skbuf>
+ <YtUfg+WYIYYi5J+q@shell.armlinux.org.uk>
+ <20220718124512.o3qxiwop7nzfjbfx@skbuf>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220718124512.o3qxiwop7nzfjbfx@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_055423_998114_3FE79A5A 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20220718_060303_061692_18829B4B 
+X-CRM114-Status: GOOD (  54.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,29 +107,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-cpuset.c was moved to kernel/cgroup/ in below commit
-201af4c0fab0 ("cgroup: move cgroup files under kernel/cgroup/")
-Correct the wrong path in comment.
+On Mon, Jul 18, 2022 at 03:45:12PM +0300, Vladimir Oltean wrote:
+> On Mon, Jul 18, 2022 at 09:53:23AM +0100, Russell King (Oracle) wrote:
+> > On Sat, Jul 16, 2022 at 04:13:45PM +0300, Vladimir Oltean wrote:
+> > > On Sat, Jul 16, 2022 at 12:43:00PM +0100, Russell King (Oracle) wrote:
+> > > > In the first RFC series I sent on the 24 June, I explicitly asked the
+> > > > following questions:
+> > > (...)
+> > > > I even stated: "Please look at the patches and make suggestions on how
+> > > > we can proceed to clean up this quirk of DSA." and made no mention of
+> > > > wanting something explicitly from Andrew.
+> > > > 
+> > > > Yet, none of those questions were answered.
+> > > > 
+> > > > So no, Jakub's comments are *not* misdirected at all. Go back and read
+> > > > my June 24th RFC series yourself:
+> > > > 
+> > > > https://lore.kernel.org/all/YrWi5oBFn7vR15BH@shell.armlinux.org.uk/
+> > > 
+> > > I don't believe I need to justify myself any further for why I didn't
+> > > leave a comment on any certain day. I left my comments when I believed
+> > > it was most appropriate for me to intervene (as someone who isn't really
+> > > affected in any way by the changes, except for generally maintaining
+> > > what's in net/dsa/, and wanting to keep a clean framework structure).
+> > > Also, to repeat myself, blaming me for leaving comments, but doing so
+> > > late, is not really fair. I could have not responded at all, and I
+> > > wouldn't be having this unpleasant discussion. It begs the question
+> > > whether you're willing to be held accountable in the same way for the
+> > > dates on which you respond on RFC patches.
+> > > 
+> > > > I've *tried* my best to be kind and collaborative, but I've been
+> > > > ignored. Now I'm hacked off. This could have been avoided by responding
+> > > > to my explicit questions sooner, rather than at the -rc6/-rc7 stage of
+> > > > the show.
+> > > 
+> > > I think you should continue to try your best to be kind and collaborative,
+> > > you weren't provoked or intentionally ignored in any way, and it isn't
+> > > doing these patches any good.
+> > 
+> > And yet again, I don't have answers to many of those questions... which
+> > just shows how broken this process is, and how utterly pointless it is
+> > 0to ask any questions in this area.
+> > 
+> > My conclusion: you don't care one bit to even answer questions until
+> > there's a chance that patches that you disagree with might be merged,
+> > and oh my god, you've got to respond to stop that happening because you
+> > might disagree with something. You can't do the collaborative thing and
+> > respond when someone asks explicit questions about how things should be
+> > done.
+> > 
+> > I'm not going to let this go. I'm really pissed off by this and you
+> > are the focus of my frustration.
+> 
+> The hypothesis that you put forward is that I'm sabotaging you by not
+> responding to RFCs, then leaving comments when you submit the patches
+> proper, just so that they're delayed because I don't agree with them;
+> and that the process is broken because it allows me to do just that and
+> get away with it (for fun, I assume?).
+> 
+> So first off, you sent the first RFC towards 2 people in To:, and 19
+> people in Cc:. I was one of the people in Cc. You didn't ask *me* any
+> explicit question. In fact, when you did, I responded within 5 hours:
+> https://lore.kernel.org/linux-arm-kernel/20220707154303.236xaeape7isracw@skbuf/
+> 
+> Then, why did I not respond earlier to questions I had an opinion on?
 
-Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
----
- mm/page_alloc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+In the second RFC, I stated:
 
-diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index e008a3df0485..58ae1e43adea 100644
---- a/mm/page_alloc.c
-+++ b/mm/page_alloc.c
-@@ -4090,7 +4090,7 @@ get_page_from_freelist(gfp_t gfp_mask, unsigned int order, int alloc_flags,
- retry:
- 	/*
- 	 * Scan zonelist, looking for a zone with enough free.
--	 * See also __cpuset_node_allowed() comment in kernel/cpuset.c.
-+	 * See also __cpuset_node_allowed() comment in kernel/cgroup/cpuset.c.
- 	 */
- 	no_fallback = alloc_flags & ALLOC_NOFRAGMENT;
- 	z = ac->preferred_zoneref;
+"Some of the questions from the original RFC remain though, so I've
+included that text below. I'm guessing as they remain unanswered that
+no one has any opinions on them?"
+
+Clearly, I was soliciting answers from _everyone_ who received this,
+not just the two people in the To: header.
+
+> Based on prior experience, anything I reply to you has a chance of
+> inflaming you for reasons that are outside of my control, and the
+> discussion derails and eventually ends with you saying that I'm being
+> difficult and you're quitting for the day, week, month, kernel release
+> cycle or what not. I'm not saying that's my fault or your fault in
+> general, it's just a statistical observation based on past interactions,
+> and it looks like this one is no different.
+> 
+> With regard to this topic, there was ample opportunity for the patch set
+> to come to a resolve without my intervention, and I decided that the
+> best way to maximize the chances of this discussion not going sideways
+> is to not say anything at all, especially when I don't need to.
+> Gradually, the opportunity for the patch set to resolve itself without
+> my intervention diminished, and I started offering my feedback to the code.
+> 
+> It's perhaps necessary of me to not let this phrase of yours unaddressed,
+> because it is subtly part of your argument that I'm just trying to delay
+> your patches as part of a sabotage plot:
+> 
+> | The only thing that delayed them was your eventual comments about
+> | re-working how it was being done.
+> 
+> Let's not forget that I did *not* request you to rework the implementation
+> to use software nodes. I simply went with the code you originally proposed,
+> explained why it is unnaturally structured in my view, asked you why you
+> did not consider an alternative structure if you're not willing to make
+> phylink absorb the logic, then you said you'd be happy to rework using
+> software nodes.
+> https://lore.kernel.org/netdev/20220707193753.2j67ni3or3bfkt6k@skbuf/
+
+This is _not_ the issue I'm raising. I am complaining about the
+"default_interface" issue that you've only piped up about, despite
+(a) an explicit question having been asked about that approach, (b) it
+appearing in not just one, not two, not three but four RFC series sent,
+and only finally being raised when a non-RFC series was sent.
+
+This whole debarcle could have been avoided with providing feedback at
+an earlier stage, when I explicitly requested it _several_ times.
+
+I will not be doing any further work on this - this can wait a few
+kernel cycles, because quite honestly, I'm not going to try to submit
+this for next cycle.
+
+And I quite expect a repeat of this shit, with me struggling to get
+comments on patches, being mostly ignored and then for comments to come
+at the last minute when there's no reasonable time left in the cycle to
+action them.
+
 -- 
-2.18.0
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
