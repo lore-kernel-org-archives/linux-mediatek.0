@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4E77C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 16:33:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53196C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 16:42:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eCnUTNexCqoutQ5zxwKP9VoyDwmH4qq3hw9yJozRJaA=; b=Q3NKM9oHazooN+7c1ON8SKPy15
-	PX2Ai2eGXShAPidSZhMpf+U1xJW9UiQNFFGh1xLliqcv96dAXUIjzQIEJzNt+LUUKq71EIajKo252
-	XJudluqNckX1+7A0e0oo2qUcwpAmO9oU/xv533ufVqCohsU6qgn8YPMUL8RRcS8T1mC45ROigN00m
-	EyCTMPgRPk6p7coP3uPZoNLYY1SpFcqkxxXxDO1zkvUejmxULT74x0uQgB8Ne6BK9T3zXRaFRLC1O
-	Qmc1wMzGahl3BXkoI4GyWoXelDFB+zjCTckItTyWhnmm348K+GZfEClOV/Y7SlwuzkZlcmqjJtJDc
-	N4Os7IcQ==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5Iz9R6DzkUA0w4tH1Z0u192c+4HZJWWBinJrFQxwU5o=; b=ShkveWPYPJ7cX6dQXa0zV8ry+N
+	UuTjJr4hxdwHuQp5HufBV+arUgom1iuk1aH3t0ydBO9rb7WpQ4guQNtCTp7YC8lDekWG9Pi63tQUJ
+	mzmB2QiiPibx3Anp0dgw7sNHww504/MV3Ngu+UCYuqGnS6MUjGxVHobD4vg/GXUYFi3iKKK62LW+S
+	q8ZOzx8Bmz3RWT1XS7mIpTNB/z7PT/MpbIJWIIsycTf8hwnQ0uwI4Lc6oOyxlg+aueVN40CaKapyA
+	3XKk+VtM0nZPC1rcTolIcDmXN0Ad+lBCbzurekpx+hxS1M9iI0tO/vMgHnD5tnStWL2nKY5IO9gpt
+	O9Dqmzrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDTgu-00GjnM-AT; Mon, 18 Jul 2022 16:33:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oDTp3-00GnTQ-Rq; Mon, 18 Jul 2022 16:42:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDTgr-00Gjkx-AM; Mon, 18 Jul 2022 16:33:50 +0000
-X-UUID: 80d84c4846334a1abba41050b4a8cae3-20220718
+	id 1oDTp0-00GnRn-Km; Mon, 18 Jul 2022 16:42:16 +0000
+X-UUID: 5b14a12e08314d2da342c86011ccdc34-20220718
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:570ddd73-3c61-46c1-955a-74d0f4a18ea3,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:8abd4b33-b9e4-42b8-b28a-6364427c76bb,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.8,REQID:abb7832c-516d-4b3c-ab48-3f5434d8afcc,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:0f94e32,CLOUDID:b15eced7-5d6d-4eaf-a635-828a3ee48b7c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 80d84c4846334a1abba41050b4a8cae3-20220718
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 5b14a12e08314d2da342c86011ccdc34-20220718
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <jiaxin.yu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 23383947; Mon, 18 Jul 2022 09:33:41 -0700
+	with ESMTP id 498057948; Mon, 18 Jul 2022 09:42:10 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 19 Jul 2022 00:22:09 +0800
+ Tue, 19 Jul 2022 00:22:06 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 19 Jul 2022 00:22:08 +0800
+ Transport; Tue, 19 Jul 2022 00:22:05 +0800
 From: Jiaxin Yu <jiaxin.yu@mediatek.com>
 To: <broonie@kernel.org>, <robh+dt@kernel.org>,
 	<angelogioacchino.delregno@collabora.com>
@@ -53,19 +53,17 @@ CC: <aaronyu@google.com>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
 	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
 	<jiaxin.yu@mediatek.com>
-Subject: [PATCH v10 3/8] ASoC: mediatek: mt8186: add mt8186-mt6366 common driver
-Date: Tue, 19 Jul 2022 00:21:59 +0800
-Message-ID: <20220718162204.26238-4-jiaxin.yu@mediatek.com>
+Subject: [PATCH v10 0/8] ASoC: mediatek: Add support for MT8186 SoC
+Date: Tue, 19 Jul 2022 00:21:56 +0800
+Message-ID: <20220718162204.26238-1-jiaxin.yu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220718162204.26238-1-jiaxin.yu@mediatek.com>
-References: <20220718162204.26238-1-jiaxin.yu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_093349_368496_13FDCA5C 
-X-CRM114-Status: GOOD (  15.93  )
+X-CRM114-CacheID: sfid-20220718_094214_698340_08A21612 
+X-CRM114-Status: GOOD (  20.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,115 +78,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8186-mt6366 common driver for mt8186 series machine.
+This series of patches adds support for Mediatek AFE of MT8186 Soc.
+Patches are based on broonie tree "for-next" branch.
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- sound/soc/mediatek/mt8186/Makefile            |  1 +
- .../mediatek/mt8186/mt8186-mt6366-common.c    | 57 +++++++++++++++++++
- .../mediatek/mt8186/mt8186-mt6366-common.h    | 17 ++++++
- 3 files changed, 75 insertions(+)
+Changes since v9:
+  - Drop the definitions that unused in mt8186-afe-common.h.
+  - Use device_get_match_data() instead of of_device_get_match_data().
+
+Changes since v8:
+  - Remove unnecessary comments and blank line.
+  - Use devm_add_action_or_reset to ease error handling when dev probe.
+  - Remove .remove callback in plaform driver.
+
+Changes since v7:
+  - Optimize the code logic, such as the return value and position of a
+    function.
+  - Use devm_pm_runtime_enable() instead of pm_runtime_enable().
+  - Use pm_runtime_resume_and_get() instead of pm_runtime_get_sync().
+
+Changes since v6:
+  - The Makefile and Kconfig updates are moved into the driver patches so that can
+    keep independence of each patch.
+
+Changes since v5:
+  - fix build error about function snd_soc_card_jack_new that modified by:
+    Link: https://lore.kernel.org/r/20220408041114.6024-1-akihiko.odaki@gmail.com
+  - some have been accepted, details are in the link below:
+    Link: https://lore.kernel.org/all/165459931885.399031.2621579592368573898.b4-ty@kernel.org/
+
+Changes since v4:
+  - [v5 07/20]
+    - remove unsusd controls
+  - [v5 09/20]
+    - correct indent error
+  - [v5 10/20]
+  - [v5 13/20]
+  - [v5 14/20]
+    - fix the return value if the value is different from the previous
+      value in mixer controls
+  - [v5 17/20]
+  - [v5 19/20]
+    - correct the compatible name with '_' instead of '-'
+  - [v5 18/20]
+  - [v5 20/20]
+    - correct the yaml after 'pip3 install dtschema --upgrade'
+
+Changes since v3:
+  - [v4 09/18]
+    - remove DEBUG_COEFF debugging code
+  - [v4 10/18]
+    - simplify the logic of the code
+  - [v4 13/18]
+    - split out the MT6366 bits into mt8186-mt6366-commom.c
+    - fix build error of "error: 'struct dev_pm_info' has no member named 'runtime_error'"
+    - fix bug of adda dai driver
+    - add route for pcm interface channel 2.
+  - [v4 15/18]
+  - [v4 17/18]
+    - commonize the configuration of the codec
+    - move MT6366 common bits into mt8186-mt6366-common.c
+
+Changes since v2:
+  - add a new compatible string "mediatek,mt6366-sound"
+  - modify the log level for simplicity
+  - use dev_err_probe(...) instead of dev_err(...) in dev probe()
+  - optimized the logic of some code
+  - use BIT() and GENMASK() macros to descript the registers
+
+  Thanks for AngeloGioacchino's careful reviews.
+
+Changes since v1:
+  [v2 01/17]
+    - add a new ID to the existing mt6358 codec driver
+  [v2 03/17]
+    - modify log level in DAPM events
+    - use standard numeric control with name ending in Switch
+    - return 1 when the value changed in mixer control's .get callback
+  [v2 05/17]
+    - ending in Switch to the standard on/off controls
+    - change to "HW Gain 1 Volume" and "HW Gain 2 Volume"
+  [v2 09/17]
+    - return an error in the default case rather than just picking one of
+      the behaviours when do .set_fmt
+    - use the new defines that are _PROVIDER_MASK, _DAIFMT_CBP_CFP and
+      _DAIFMT_CBC_CFC
+  [v2 10/17]
+  [v2 11/17]
+    - the clock and gpio are aplit out into separate  patches
+
+  The source file's GPL comment use c++ style, and the header fils's GPL
+  comment use c style. We have added "Switch" after the names of all the
+  controls that just are simple on/off.
+
+Jiaxin Yu (8):
+  dt-bindings: mediatek: mt6358: add new compatible for using mt6366
+  ASoC: mediatek: mt8186: add platform driver
+  ASoC: mediatek: mt8186: add mt8186-mt6366 common driver
+  dt-bindings: mediatek: mt8186: add audio afe document
+  ASoC: mediatek: mt8186: add machine driver with mt6366, da7219 and
+    max98357
+  dt-bindings: mediatek: mt8186: add mt8186-mt6366-da7219-max98357
+    document
+  ASoC: mediatek: mt8186: add machine driver with mt6366, rt1019 and
+    rt5682s
+  dt-bindings: mediatek: mt8186: add mt8186-mt6366-rt1019-rt5682s
+    document
+
+ .../devicetree/bindings/sound/mt6358.txt      |    4 +-
+ .../bindings/sound/mt8186-afe-pcm.yaml        |  175 +
+ .../sound/mt8186-mt6366-da7219-max98357.yaml  |   75 +
+ .../sound/mt8186-mt6366-rt1019-rt5682s.yaml   |   75 +
+ sound/soc/mediatek/Kconfig                    |   44 +
+ sound/soc/mediatek/Makefile                   |    1 +
+ sound/soc/mediatek/mt8186/Makefile            |   22 +
+ sound/soc/mediatek/mt8186/mt8186-afe-clk.c    |    3 +-
+ sound/soc/mediatek/mt8186/mt8186-afe-clk.h    |    2 +-
+ sound/soc/mediatek/mt8186/mt8186-afe-common.h |  195 ++
+ .../soc/mediatek/mt8186/mt8186-afe-control.c  |  255 ++
+ sound/soc/mediatek/mt8186/mt8186-afe-pcm.c    | 3000 +++++++++++++++++
+ .../mediatek/mt8186/mt8186-mt6366-common.c    |   57 +
+ .../mediatek/mt8186/mt8186-mt6366-common.h    |   17 +
+ .../mt8186/mt8186-mt6366-da7219-max98357.c    | 1002 ++++++
+ .../mt8186/mt8186-mt6366-rt1019-rt5682s.c     |  978 ++++++
+ 16 files changed, 5902 insertions(+), 3 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
+ create mode 100644 sound/soc/mediatek/mt8186/Makefile
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-control.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
  create mode 100644 sound/soc/mediatek/mt8186/mt8186-mt6366-common.c
  create mode 100644 sound/soc/mediatek/mt8186/mt8186-mt6366-common.h
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
+ create mode 100644 sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
 
-diff --git a/sound/soc/mediatek/mt8186/Makefile b/sound/soc/mediatek/mt8186/Makefile
-index 7626bb3499dd..bdca1a3b3ff0 100644
---- a/sound/soc/mediatek/mt8186/Makefile
-+++ b/sound/soc/mediatek/mt8186/Makefile
-@@ -15,5 +15,6 @@ snd-soc-mt8186-afe-objs := \
- 	mt8186-dai-hostless.o \
- 	mt8186-dai-tdm.o \
- 	mt8186-misc-control.o \
-+	mt8186-mt6366-common.o
- 
- obj-$(CONFIG_SND_SOC_MT8186) += snd-soc-mt8186-afe.o
-diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-common.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-common.c
-new file mode 100644
-index 000000000000..4e66603d4cdb
---- /dev/null
-+++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-common.c
-@@ -0,0 +1,57 @@
-+// SPDX-License-Identifier: GPL-2.0
-+//
-+// mt8186-mt6366-common.c
-+//	--  MT8186 MT6366 ALSA common driver
-+//
-+// Copyright (c) 2022 MediaTek Inc.
-+// Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
-+//
-+#include <sound/soc.h>
-+
-+#include "../../codecs/mt6358.h"
-+#include "../common/mtk-afe-platform-driver.h"
-+#include "mt8186-afe-common.h"
-+#include "mt8186-mt6366-common.h"
-+
-+int mt8186_mt6366_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_component *cmpnt_afe =
-+		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
-+	struct snd_soc_component *cmpnt_codec =
-+		asoc_rtd_to_codec(rtd, 0)->component;
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt_afe);
-+	struct mt8186_afe_private *afe_priv = afe->platform_priv;
-+	struct snd_soc_dapm_context *dapm = &rtd->card->dapm;
-+	int ret;
-+
-+	/* set mtkaif protocol */
-+	mt6358_set_mtkaif_protocol(cmpnt_codec,
-+				   MT6358_MTKAIF_PROTOCOL_1);
-+	afe_priv->mtkaif_protocol = MT6358_MTKAIF_PROTOCOL_1;
-+
-+	ret = snd_soc_dapm_sync(dapm);
-+	if (ret) {
-+		dev_err(rtd->dev, "failed to snd_soc_dapm_sync\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mt8186_mt6366_init);
-+
-+int mt8186_mt6366_card_set_be_link(struct snd_soc_card *card,
-+				   struct snd_soc_dai_link *link,
-+				   struct device_node *node,
-+				   char *link_name)
-+{
-+	int ret;
-+
-+	if (node && strcmp(link->name, link_name) == 0) {
-+		ret = snd_soc_of_get_dai_link_codecs(card->dev, node, link);
-+		if (ret < 0)
-+			return dev_err_probe(card->dev, ret, "get dai link codecs fail\n");
-+	}
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mt8186_mt6366_card_set_be_link);
-diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-common.h b/sound/soc/mediatek/mt8186/mt8186-mt6366-common.h
-new file mode 100644
-index 000000000000..907d8f5e46b1
---- /dev/null
-+++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-common.h
-@@ -0,0 +1,17 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * mt8186-mt6366-common.h
-+ *
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Jiaxin Yu <jiaxin.yu@mediatek.com>
-+ */
-+
-+#ifndef _MT8186_MT6366_COMMON_H_
-+#define _MT8186_MT6366_COMMON_H_
-+
-+int mt8186_mt6366_init(struct snd_soc_pcm_runtime *rtd);
-+int mt8186_mt6366_card_set_be_link(struct snd_soc_card *card,
-+				   struct snd_soc_dai_link *link,
-+				   struct device_node *node,
-+				   char *link_name);
-+#endif
 -- 
 2.18.0
 
