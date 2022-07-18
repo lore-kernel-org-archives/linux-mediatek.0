@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ECD5C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 21:51:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD619C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 22:02:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5RUI1kr6i7/l5i427xx8ow3UcLSaDJj7HzMnvJiGc4k=; b=fYRIP5gPHKXE79kh6owIjytkTt
-	xV9/NmReJkyT1EGUFQ5jtuZp+tEnQV0BkzcTNmdohyrk6Di8CGMDizmT+LRf41CJwIKcXDsVeeWPc
-	+2Jv5+3KENtZLHP/Ev+8CufZB1tACZJ7m2qqMNr2z9N0PxexwU68naE91nwNPAo6dxqYr8wI/sIZC
-	AmDZ3BCx5/spmS88DVMKc/i7NT1rLUUTN7btZmpPE6GbsyuLFRhmi0wmXwBhFU/tIt7iRUnyXfRNc
-	keUw1B4qfvlvuDi6KOcDEfPtuxsA5AVIFUa0A9pIrdkhVnLKHoug2ERc6CBo9jgbk2PhWEIN/fvWT
-	2FG2tj7w==;
+	bh=b4lrAebbrsaV7SbYoAyQdPzI0ZTvSKq+0zcXGzBEpvY=; b=vbLGSxGSwZsCWQiUGO7G6/yEeq
+	MQxSASTfSN2rYmp99sG1XQnighD7AM59MHSuYgR0By6EYRI1+jfwpTdYcxnRZkE2Mg1dDZDI/ymjt
+	LnwFKxe6R8ipLYfe6Al9oIabsabID389QhTISKOG2mOIykQJOsYBdk8ntjgpXqldxbcnrcf1Im4a4
+	AziZXCcJiu8KtAXvSJ7dMfVH/FOdgGw/zEYh5chgVMHFvIajxpQKEMJAgjMGb9f8NaFw1yH8iif/O
+	8r5sieyu+gTtSmUC8cvBwBFukz0m7XsdTDkf2t3bSLXyFYKhGLB0ILo7SXas9rnDEesGBQCsW+0ZW
+	nLoDU7TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDYeV-001j15-DZ; Mon, 18 Jul 2022 21:51:43 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oDYpE-001qsq-Iv; Mon, 18 Jul 2022 22:02:48 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDYeS-001j0a-6p
-	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 21:51:41 +0000
-X-UUID: 979d9f230bd4401290656be8d837712a-20220718
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:f9576d89-2dd6-4afc-8f43-ed92f3d0cd9c,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:d4944e33-b9e4-42b8-b28a-6364427c76bb,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 979d9f230bd4401290656be8d837712a-20220718
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1407019278; Mon, 18 Jul 2022 14:51:35 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 19 Jul 2022 04:51:30 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 19 Jul 2022 04:51:30 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
-	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
-	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
-	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
-	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
-	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
-	<abhishekpandit@google.com>, <shawnku@google.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 4/4] mt76: mt7921u: remove unnecessary MT76_STATE_SUSPEND
-Date: Tue, 19 Jul 2022 04:51:26 +0800
-Message-ID: <2938c18e2a14e26de293adcf68cd851ca0a7474a.1658176701.git.sean.wang@kernel.org>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <a1437e413116364ac9f3b777c7922ca0728ddc0d.1658176701.git.sean.wang@kernel.org>
-References: <a1437e413116364ac9f3b777c7922ca0728ddc0d.1658176701.git.sean.wang@kernel.org>
+	id 1oDYp9-001qrx-N8
+	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 22:02:45 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 1BDFDB817B5;
+	Mon, 18 Jul 2022 22:02:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 409FDC341C0;
+	Mon, 18 Jul 2022 22:02:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1658181760;
+	bh=Nxs+neqrTmVc0kmk3RZapzGrMhYfWi3RPreVSuYvyh0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KWJApb2BkuqV4O09lSd0Q5KqsUCWMt2NmEZXwZkM+4H6pXQfzcEgnlV0Za/Ip9vQZ
+	 l1ri5tpwCPYdsThhGzrdPHugnj6nXqPe+y47+qqxaX3RY82PBR07+D+/7toLddXgvU
+	 EoA/aWF0j8ZV36gdn8hftXMYghnRiXDHqMky6SOG276i+8zM0LxHAl+J5cdX/3OQ96
+	 Tp4MlJqjaIopmIWFPWCH509ObHcf34LkF10kNaekVNH8DaQpdc2ijy91XGsmSCDLEy
+	 twDkwTaF+TbdeXtDyeBcsPMrllFnV/GMyZbXsL+sfvB5PCLxZZGqzw1ceY2HNPfS2b
+	 1AtneqJ3j6CIg==
+Date: Tue, 19 Jul 2022 00:02:37 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: sean.wang@mediatek.com
+Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
+	YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
+	Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com,
+	km.lin@mediatek.com, jenhao.yang@mediatek.com,
+	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
+	ch.yeh@mediatek.com, posh.sun@mediatek.com, ted.huang@mediatek.com,
+	Stella.Chang@mediatek.com, Tom.Chou@mediatek.com,
+	steve.lee@mediatek.com, jsiuda@google.com, frankgor@google.com,
+	kuabhs@google.com, druth@google.com, abhishekpandit@google.com,
+	shawnku@google.com, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/3] mt76: mt7921s: fix the deadlock caused by
+ sdio->stat_work
+Message-ID: <YtXYffraDN7RxoTr@lore-desk>
+References: <aa7d7ed8f3a817525ab8c7b736f1ce52490a835e.1658176763.git.sean.wang@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="/JO1kva0Pj3FmabW"
+Content-Disposition: inline
+In-Reply-To: <aa7d7ed8f3a817525ab8c7b736f1ce52490a835e.1658176763.git.sean.wang@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_145140_271876_0A84483E 
-X-CRM114-Status: UNSURE (   8.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220718_150244_092192_1E92F575 
+X-CRM114-Status: GOOD (  21.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,39 +82,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
 
-remove unnecessary MT76_STATE_SUSPEND manipulation to be consistent
-with the mt7921[e, s] driver.
+--/JO1kva0Pj3FmabW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/usb.c | 4 ----
- 1 file changed, 4 deletions(-)
+> From: Sean Wang <sean.wang@mediatek.com>
+>=20
+> Because wake_work and sdio->stat_work share the same workqueue mt76->wq,
+> if sdio->stat_work cannot acquire the mutex lock such as that was possibly
+> held up by mt7921_mutex_acquire, we should exit immediately and schedule
+> another stat_work to avoid blocking the mt7921_mutex_acquire.
+>=20
+> Also, if mt7921_mutex_acquire was called by sdio->stat_work self, the wake
+> would be blocked by itself, so we have to changing into an unblocking wake
+> (directly wakeup via mt7921_mcu_drv_pmctrl, not via the wake_work) in the
+> context.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-index 124d62c0dfa4..a8ea03d4f990 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-@@ -313,8 +313,6 @@ static int mt7921u_suspend(struct usb_interface *intf, pm_message_t state)
- 	mt76u_stop_rx(&dev->mt76);
- 	mt76u_stop_tx(&dev->mt76);
- 
--	set_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
--
- 	return 0;
- 
- failed:
-@@ -354,8 +352,6 @@ static int mt7921u_resume(struct usb_interface *intf)
- 			goto failed;
- 	}
- 
--	clear_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
--
- 	err = mt76u_resume_rx(&dev->mt76);
- 	if (err < 0)
- 		goto failed;
--- 
-2.25.1
+Hi Sean,
 
+it seems to me we are missing some logic here (e.g cancelling ps_work as we=
+ do
+in mt76_connac_pm_wake()). Is it enough to move mt7921_usb_sdio_tx_status_d=
+ata
+on mac80211 workqueue? Can you see any performance issue? (same for mt7663).
+
+Regards,
+Lorenzo
+
+>=20
+> Fixes: 48fab5bbef40 ("mt76: mt7921: introduce mt7921s support")
+> Co-developed-by: YN Chen <YN.Chen@mediatek.com>
+> Signed-off-by: YN Chen <YN.Chen@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  .../net/wireless/mediatek/mt76/mt7921/mac.c   | 22 +++++++++++++++++--
+>  1 file changed, 20 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/mac.c
+> index 6bd9fc9228a2..75e719175e92 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+> @@ -1080,10 +1080,28 @@ bool mt7921_usb_sdio_tx_status_data(struct mt76_d=
+ev *mdev, u8 *update)
+>  {
+>  	struct mt7921_dev *dev =3D container_of(mdev, struct mt7921_dev, mt76);
+> =20
+> -	mt7921_mutex_acquire(dev);
+> +	if (!mutex_trylock(&mdev->mutex)) {
+> +		/* Because wake_work and stat_work share the same workqueue
+> +		 * mt76->wq, if sdio->stat_work cannot acquire the mutex lock,
+> +		 * we should exit immediately and schedule another stat_work
+> +		 * to avoid blocking the wake_work.
+> +		 */
+> +		struct work_struct *stat_work;
+> +
+> +		stat_work =3D mt76_is_sdio(mdev) ? &mdev->sdio.stat_work :
+> +			    &mdev->usb.stat_work;
+> +		queue_work(dev->mt76.wq, stat_work);
+> +
+> +		goto out;
+> +	}
+> +
+> +	mt7921_mcu_drv_pmctrl(dev);
+>  	mt7921_mac_sta_poll(dev);
+> -	mt7921_mutex_release(dev);
+> +	mt76_connac_power_save_sched(&mdev->phy, &dev->pm);
+> =20
+> +	mutex_unlock(&mdev->mutex);
+> +
+> +out:
+>  	return false;
+>  }
+>  EXPORT_SYMBOL_GPL(mt7921_usb_sdio_tx_status_data);
+> --=20
+> 2.25.1
+>=20
+
+--/JO1kva0Pj3FmabW
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYtXYfQAKCRA6cBh0uS2t
+rG4SAP9aMU+iYWw71kmWoYSQa2FQYwVV8olQtNGNtkAAF7Ln2gEA2o0rIjEagdFd
+3FxnmJXvn6wKSWhsfuHUut72LyinXQM=
+=f6c5
+-----END PGP SIGNATURE-----
+
+--/JO1kva0Pj3FmabW--
 
