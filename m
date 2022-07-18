@@ -4,84 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17764C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 10:28:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 956C2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 10:33:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aGrUsGmEyzfhhFC6yht8UK4tIhUB5L2Yyj7VtUSkBjg=; b=DT9MytYNzOvmWA/pHjShXmDqkz
-	zYM20IFka2jzR+ZctPtWjrnHEYmJDWrDpihb4SGKb0sFyowH+DelbQCoE/EleygzooII9c1qkGaye
-	r75Cn3P/LXDq4a3hpTLWNwc6Fv28yr86r4Ihvmd7Ql93DWCuSD3GGq+rd9XTnD48PkSRLoWjwEPw2
-	mS1cj3qHaMrjufndjYDbHmiwwmpYSG6NFHtLq4c6xVpLmsuBwqAUGHL0nh6BF4gyF+MAtQE8SSJNe
-	CL8B98CqchQAt6rtG6H8wFPmYIyyVsCgYQsX1e5qiZtDr6MzNdZaOSKxW00OnHqNxWKCerfFSmSvw
-	x33TxHMw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eaDo64iHQ94pFRmVzEa17i328qXpG+YzhE4NWVSJEzM=; b=3M0w3MJj13SGR8eckboZgpSRaW
+	ppjUwsEAHFDC2mW3fBEX0QrI73TUpoXbYzHrkWMClxTUJeQG4FbJCqQKPXpkRMvZC8gbOfAva15wl
+	Ruus29lyCcN89FQYHHzq1H2wU/3yn+BZzSAIzEDIJpY7N5l/OK1BP45wjV4Hn4eOjsvlDas/i6ZPs
+	BR2emHq1jcY5N9/6kysHwbK+3RNwqCGB2aBfAkNCxW7g/S3ByOQfl6cgNLV05hsFTpsPUFI/TH5+3
+	CXgeaxe8UihzTCUop6weO9dh7S/s4AXiVYrpctgkxEhb+oaXgumjhVjW2JjvqpFBrEiMca5erMXcm
+	p7sbmJ1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDNyz-00CSEi-JG; Mon, 18 Jul 2022 10:28:09 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1oDO4U-00CU5A-5W; Mon, 18 Jul 2022 10:33:50 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDNym-00CS8D-ER
-	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 10:27:58 +0000
-Received: by mail-ej1-x633.google.com with SMTP id mf4so20373349ejc.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 Jul 2022 03:27:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=raspberrypi.com; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=aGrUsGmEyzfhhFC6yht8UK4tIhUB5L2Yyj7VtUSkBjg=;
-        b=O1fWCAkBCBjaVHiCup0ZmH/N0dZjjnk8aMiNo1KKm0RxB6jzXedELhA6uI/knC6r9L
-         0MKPBFWRTYiA27OzzbGTrKW+tNpF/1xlJz1QmqJyJrDjwKgNxl8GGghjaa/y8/vj8LfV
-         MQhg462eUZuNrg68b5LDq+awrYHNUF70ZvgFSJL23xr+/54PP0W/0CfAKWPm/vBaDm5P
-         N3/+gCpP8BDS4q9hT3D/nnz+aOW20DH+MJ/qUK1BoSPXricdeu0/a8nlDMAw/8t5nHBq
-         b2RuCbmDv19ABez4bnNHBHaPetb4YrpuhtTXsu8pFGwuStJngTetANyB+kLSO+C6FjBa
-         hhkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=aGrUsGmEyzfhhFC6yht8UK4tIhUB5L2Yyj7VtUSkBjg=;
-        b=cKnQBDsUb3Xl3OK652bxXmCrZxYGLX2qfRy986MPWSfMXV7iatpZn00dmtLpTXDfhp
-         EJFvP0EiUcJBhCJWz/Vr9pcxhn09IPSgdXXExsGHjc6nX9f5Ob0nK51Z9FwciW6iapyg
-         SLpQYojkMX2JbGSij/IarnyrGq7XFkvWxsxolsHOZspqxdD1vapSi2ES6I9zpmcuapns
-         LFLch8HbX/iiP8EMu7BxavlDQIieklZGiZKZeMAAZw8GuSnCbsfdD63xIk3pYIdtvY8y
-         ugexHPmpYZSUvIJtf5vcn38As1uF/hAZ3IqogoEFTg9tg1L2sSFdfKFNpVBg0lmwLsiX
-         OLIw==
-X-Gm-Message-State: AJIora/wWv4aGlySSZml9P/+SMdbSADSgYNPR+pTu/GiPsEQSw1fLrRK
-	BIHVZ8HPomkCN/s+Z7nlR9GccJtdZTr76xO0Kp9MBA==
-X-Google-Smtp-Source: AGRyM1u8XN9HbZjR0yF63PO6LoPm+22MOk00Hd+2NOztBbWpmbYZ5KNQImOwAhfM8IGdUgjC9z/6Om+NlLM6ztosZFU=
-X-Received: by 2002:a17:907:96a4:b0:72b:647e:30fd with SMTP id
- hd36-20020a17090796a400b0072b647e30fdmr24418029ejc.723.1658140072536; Mon, 18
- Jul 2022 03:27:52 -0700 (PDT)
+	id 1oDO4I-00CU1R-Dc; Mon, 18 Jul 2022 10:33:40 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A4C4B6601A05;
+	Mon, 18 Jul 2022 11:33:35 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658140416;
+	bh=wFbi6UCGoTtmKBC9q/jLYRHp+xvE/2amm1VXtH0cozI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TbOuiDcvpKCaM6ZnCSsqJ+FLLEBIa0fc6RWySI8akBItP60L8kpUXsmislNoFazob
+	 6EjVk1CKKMsJjbA9O7nxOj3B/R/rh/xDNubTsbctYwbueVVWLhymswKvTez+B/9wQd
+	 HzA17mwLU5u8bTL0wOStfS7miiVjCPWymS1fOldqf+Hk+TxpWLgNw/S9RLalHXbOmj
+	 GxvFwOPKr6x1jzQxJ/dMgKMkkqn2vX09uTGWkndtLzGU1v1CGu1r9G5ZxK7htLAPo6
+	 zTcNQn0zbmzJqK2uN8WP5oRMLf1ZXnaMj/WRfIwXbsdpxtJ415/CeawBRrWdVvgQVd
+	 rzU4CFmOTcDAw==
+Message-ID: <499968a2-fbc6-230d-2ed4-cac2b9a98a17@collabora.com>
+Date: Mon, 18 Jul 2022 12:33:33 +0200
 MIME-Version: 1.0
-References: <20220717174454.46616-1-sam@ravnborg.org> <20220717175801.78668-1-sam@ravnborg.org>
- <20220717175801.78668-5-sam@ravnborg.org>
-In-Reply-To: <20220717175801.78668-5-sam@ravnborg.org>
-From: Dave Stevenson <dave.stevenson@raspberrypi.com>
-Date: Mon, 18 Jul 2022 11:27:37 +0100
-Message-ID: <CAPY8ntB2gXoUbUJhDLWVX3szaEKKKhnOO-qsKRZkMp1jDOt0Qg@mail.gmail.com>
-Subject: Re: [PATCH v1 12/12] drm/todo: Add bridge related todo items
-To: Sam Ravnborg <sam@ravnborg.org>
-Cc: DRI Development <dri-devel@lists.freedesktop.org>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, 
-	Robert Foss <robert.foss@linaro.org>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, David Airlie <airlied@linux.ie>, 
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Guenter Roeck <groeck@chromium.org>, 
-	chrome-platform@lists.linux.dev, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Jitao Shi <jitao.shi@mediatek.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	Arnd Bergmann <arnd@arndb.de>, linux-mediatek@lists.infradead.org, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, 
-	Philip Chen <philipchen@chromium.org>, linux-renesas-soc@vger.kernel.org, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
-	Enric Balletbo i Serra <enric.balletbo@collabora.com>, Cai Huoqing <cai.huoqing@linux.dev>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [V5,5/8] media: mtk-jpegdec: add jpeg decode worker interface
+Content-Language: en-US
+To: Irui Wang <irui.wang@mediatek.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tzung-Bi Shih <tzungbi@chromium.org>, nicolas.dufresne@collabora.com,
+ wenst@chromium.org, kyrie wu <kyrie.wu@mediatek.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
+ xia.jiang@mediatek.com, maoguang.meng@mediatek.com,
+ srv_heupstream@mediatek.com
+References: <20220716093408.29734-1-irui.wang@mediatek.com>
+ <20220716093408.29734-6-irui.wang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220716093408.29734-6-irui.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_032756_492455_3CD99563 
-X-CRM114-Status: GOOD (  18.82  )
+X-CRM114-CacheID: sfid-20220718_033338_752279_0E0A1FFF 
+X-CRM114-Status: GOOD (  25.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,78 +83,240 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sam
-
-On Sun, 17 Jul 2022 at 18:58, Sam Ravnborg <sam@ravnborg.org> wrote:
->
-> Add todo in the hope someone will help updating the bridge drivers.
->
-> v2:
->   - Updated descriptions in todo.rst
->
-> Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
-> Acked-by: Maxime Ripard <mripard@kernel.org>
-> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-> Cc: Maxime Ripard <mripard@kernel.org>
-> Cc: Thomas Zimmermann <tzimmermann@suse.de>
-> Cc: David Airlie <airlied@linux.ie>
-> Cc: Daniel Vetter <daniel@ffwll.ch>
+Il 16/07/22 11:34, Irui Wang ha scritto:
+> From: kyrie wu <kyrie.wu@mediatek.com>
+> 
+> Add jpeg decoding worker to ensure that three HWs
+> run in parallel in MT8195.
+> 
+> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+> Signed-off-by: irui wang <irui.wang@mediatek.com>
+> 
 > ---
->  Documentation/gpu/todo.rst | 20 ++++++++++++++++++++
->  1 file changed, 20 insertions(+)
->
-> diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
-> index 10bfb50908d1..fbcc232e0bc1 100644
-> --- a/Documentation/gpu/todo.rst
-> +++ b/Documentation/gpu/todo.rst
-> @@ -480,6 +480,26 @@ Contact: Thomas Zimmermann <tzimmermann@suse.de>
->
->  Level: Starter
->
-> +Drop use of deprecated operations in bridge drivers
-> +--------------------------------------------------
+>   .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 172 ++++++++++++++++++
+>   .../platform/mediatek/jpeg/mtk_jpeg_core.h    |   6 +
+>   .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  |  39 ++--
+>   3 files changed, 205 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index a9e8be976bb0..65b963ba0d6f 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1100,8 +1100,177 @@ static void mtk_jpeg_multicore_enc_device_run(void *priv)
+>   	queue_work(jpeg->workqueue, &ctx->jpeg_work);
+>   }
+>   
+> +static int mtk_jpegdec_get_hw(struct mtk_jpeg_ctx *ctx)
+> +{
+> +	struct mtk_jpegdec_comp_dev *comp_jpeg;
+> +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> +	unsigned long flags;
+> +	int hw_id = -1;
+> +	int i;
 > +
-> +&struct drm_bridge_funcs contains a number of deprecated operations
-> +which can be replaced by the atomic variants.
+> +	spin_lock_irqsave(&jpeg->hw_lock, flags);
+> +	for (i = 0; i < MTK_JPEGDEC_HW_MAX; i++) {
+> +		comp_jpeg = jpeg->dec_hw_dev[i];
+> +		if (comp_jpeg->hw_state == MTK_JPEG_HW_IDLE) {
+> +			hw_id = i;
+> +			comp_jpeg->hw_state = MTK_JPEG_HW_BUSY;
+> +			break;
+> +		}
+> +	}
+> +	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
 > +
-> +The following is more or less 1:1 replacements with the arguments
-> +and names adjusted:
-> +* pre_enable => atomic_pre_enable
-> +* enable => atomic_enable
-> +* disable => atomic_disable
-> +* post_disable => atomic_post_disable
+> +	return hw_id;
+> +}
 > +
-> +* mode_set is no longer required and the implementation shall be merged
-> +  with atomic_enable.
-
-The dw-mipi-dsi and msm DSI host controller bridge drivers are
-currently relying on mode_set as a convenient hook to power up the DSI
-host prior to pre_enable of the bridge chain. Removing it is therefore
-going to break those.
-
-There is a proposed mechanism to allow for the removal of this hack
-[1], but it's still waiting on R-B tags and/or discussion from bridge
-maintainers (gentle nudge as you are one of those maintainers).
-
-And do you mean merge with atomic_enable, or merge with
-atomic_pre_enable? atomic_pre_enable would be more applicable for
-almost all the bridges I'm aware of as they want to be configured
-before video starts.
-
-Cheers,
-  Dave
-
-[1] https://lists.freedesktop.org/archives/dri-devel/2022-March/345466.html
-
-> +Contact: bridge maintainers, Sam Ravnborg <sam@ravnborg.org>,
-> +         Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> +static int mtk_jpegdec_put_hw(struct mtk_jpeg_dev *jpeg, int hw_id)
+> +{
+> +	unsigned long flags;
 > +
-> +Level: Beginner or intermediate (depending on the driver)
->
->  Core refactorings
->  =================
-> --
-> 2.34.1
->
+> +	spin_lock_irqsave(&jpeg->hw_lock, flags);
+> +	jpeg->dec_hw_dev[hw_id]->hw_state =
+> +		MTK_JPEG_HW_IDLE;
+> +	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_jpegdec_set_hw_param(struct mtk_jpeg_ctx *ctx,
+> +				    int hw_id,
+> +				    struct vb2_v4l2_buffer *src_buf,
+> +				    struct vb2_v4l2_buffer *dst_buf)
+> +{
+> +	struct mtk_jpegdec_comp_dev *jpeg =
+> +		ctx->jpeg->dec_hw_dev[hw_id];
+> +
+> +	jpeg->hw_param.curr_ctx = ctx;
+> +	jpeg->hw_param.src_buffer = src_buf;
+> +	jpeg->hw_param.dst_buffer = dst_buf;
+> +
+> +	return 0;
+> +}
+> +
+> +static void mtk_jpegdec_worker(struct work_struct *work)
+> +{
+> +	struct mtk_jpeg_ctx *ctx = container_of(work, struct mtk_jpeg_ctx,
+> +		jpeg_work);
+> +	struct mtk_jpegdec_comp_dev *comp_jpeg[MTK_JPEGDEC_HW_MAX];
+> +	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
+> +	struct mtk_jpeg_src_buf *jpeg_src_buf, *jpeg_dst_buf;
+> +	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+> +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> +	int ret, i, hw_id = 0;
+> +	struct mtk_jpeg_bs bs;
+> +	struct mtk_jpeg_fb fb;
+> +	unsigned long flags;
+> +
+> +	for (i = 0; i < MTK_JPEGDEC_HW_MAX; i++)
+> +		comp_jpeg[i] = jpeg->dec_hw_dev[i];
+> +
+> +retry_select:
+
+Please ensure that we have a max retries limit to avoid an infinite loop.
+
+> +	hw_id = mtk_jpegdec_get_hw(ctx);
+> +	if (hw_id < 0) {
+> +		ret = wait_event_interruptible_timeout(jpeg->dec_hw_wq,
+> +						       atomic_read(&jpeg->dechw_rdy) > 0,
+> +						       MTK_JPEG_HW_TIMEOUT_MSEC);
+> +		if (ret != 0) {
+> +			dev_err(jpeg->dev, "%s : %d, all HW are busy\n",
+> +				__func__, __LINE__);
+> +			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> +			return;
+> +		}
+> + > +		goto retry_select;
+> +	}
+> +
+> +	atomic_dec(&jpeg->dechw_rdy);
+> +	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> +	if (!src_buf)
+> +		goto getbuf_fail;
+> +
+> +	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> +	if (!dst_buf)
+> +		goto getbuf_fail;
+> +
+> +	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> +	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> +
+> +	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
+> +	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
+> +	jpeg_dst_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
+> +
+> +	if (mtk_jpeg_check_resolution_change(ctx,
+> +					     &jpeg_src_buf->dec_param)) {
+> +		mtk_jpeg_queue_src_chg_event(ctx);
+> +		ctx->state = MTK_JPEG_SOURCE_CHANGE;
+> +		goto dec_end;
+> +	}
+> +
+> +	jpeg_src_buf->curr_ctx = ctx;
+> +	jpeg_src_buf->frame_num = ctx->total_frame_num;
+> +	jpeg_dst_buf->curr_ctx = ctx;
+> +	jpeg_dst_buf->frame_num = ctx->total_frame_num;
+> +	ctx->total_frame_num++;
+> +
+> +	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
+> +	ret = pm_runtime_get_sync(comp_jpeg[hw_id]->dev);
+> +	if (ret < 0) {
+> +		dev_err(jpeg->dev, "%s : %d, pm_runtime_get_sync fail !!!\n",
+> +			__func__, __LINE__);
+> +		goto dec_end;
+> +	}
+> +
+> +	ret = clk_prepare_enable(comp_jpeg[hw_id]->jdec_clk.clks->clk);
+> +	if (ret) {
+> +		dev_err(jpeg->dev, "%s : %d, jpegdec clk_prepare_enable fail\n",
+> +			__func__, __LINE__);
+> +		goto clk_end;
+> +	}
+> +
+> +	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
+> +			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
+> +
+> +	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
+> +	if (mtk_jpeg_set_dec_dst(ctx,
+> +				 &jpeg_src_buf->dec_param,
+> +				 &dst_buf->vb2_buf, &fb)) {
+> +		dev_err(jpeg->dev, "%s : %d, mtk_jpeg_set_dec_dst fail\n",
+> +			__func__, __LINE__);
+> +		goto setdst_end;
+> +	}
+> +
+> +	spin_lock_irqsave(&comp_jpeg[hw_id]->hw_lock, flags);
+> +	mtk_jpeg_dec_reset(comp_jpeg[hw_id]->reg_base);
+> +	mtk_jpeg_dec_set_config(jpeg->reg_base,
+> +				&jpeg_src_buf->dec_param,
+> +				&bs,
+> +				&fb);
+> +	mtk_jpeg_dec_start(comp_jpeg[hw_id]->reg_base);
+> +	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> +	spin_unlock_irqrestore(&comp_jpeg[hw_id]->hw_lock, flags);
+> +
+> +	return;
+> +
+> +setdst_end:
+> +	clk_disable_unprepare(comp_jpeg[hw_id]->jdec_clk.clks->clk);
+> +clk_end:
+> +	pm_runtime_put(comp_jpeg[hw_id]->dev);
+> +dec_end:
+> +	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> +	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> +	v4l2_m2m_buf_done(src_buf, buf_state);
+> +	v4l2_m2m_buf_done(dst_buf, buf_state);
+> +getbuf_fail:
+> +	atomic_inc(&jpeg->dechw_rdy);
+> +	mtk_jpegdec_put_hw(jpeg, hw_id);
+> +	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> +}
+> +
+>   static void mtk_jpeg_multicore_dec_device_run(void *priv)
+>   {
+> +	struct mtk_jpeg_ctx *ctx = priv;
+> +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> +
+> +	queue_work(jpeg->workqueue, &ctx->jpeg_work);
+
+
+In the previous commit, I asked why this function was empty: I see you're
+filling it in right now, so please add the MT8195 compatibles after this
+commit, or later.
+
+>   }
+>   
+>   static void mtk_jpeg_dec_device_run(void *priv)
+> @@ -1377,6 +1546,9 @@ static int mtk_jpeg_open(struct file *file)
+>   	if (jpeg->is_jpgenc_multihw)
+>   		INIT_WORK(&ctx->jpeg_work, mtk_jpegenc_worker);
+>   
+> +	if (jpeg->is_jpgdec_multihw)
+> +		INIT_WORK(&ctx->jpeg_work, mtk_jpegdec_worker);
+> +
+>   	INIT_LIST_HEAD(&ctx->dst_done_queue);
+>   	spin_lock_init(&ctx->done_queue_lock);
+>   	v4l2_fh_init(&ctx->fh, vfd);
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> index ddfe2b4c48b3..ef9a3e1fdf60 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> @@ -171,6 +171,9 @@ struct mtk_jpegdec_comp_dev {
+>   	int jpegdec_irq;
+>   	struct delayed_work job_timeout_work;
+>   	struct mtk_jpeg_hw_param hw_param;
+> +	enum mtk_jpeg_hw_state hw_state;
+> +	//spinlock protecting the hw device resource
+
+C-style comments please.
+
+> +	spinlock_t hw_lock;
+>   };
+>   
+>   /**
+
+Regards,
+Angelo
+
 
