@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BCF5C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 22:08:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B929EC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 22:12:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nlKIAvgvoA3s9BP71Dm56/pB9AFOuS05UqS8MbtXLro=; b=R76LbDlh/+dPn5MfUUsCHbu7wU
-	70V4ahg5NiKNsVILDKoZtkq7+GlqCnFxTOLmu1u6ITJoKMN3jN0DakdWTDPjZuz63GVPs/VaYP28v
-	hIz0h0WbqzW67+6hRPTuDLEXhPCG6bB0zOUopQy0mh8WG/6y7FRvs9evdXHGQR1qE1jIqH3KHEK9S
-	dNJvC9H4BVdWDTTzD8tr8VovfPWQe7fnorbuTGZ9l79vow3L1vPt0BtHhE2okhzk+J4IrL0GRZsEl
-	Me1edHdZvWRcDLipHWl2aD4dowy0zUyM0lxuLhfLw+4Fv3DP73ERfrDmDfdQ16tuNAKWnjZbGZQ3j
-	5ixyPLlA==;
+	bh=I5P2L0WLevPL4mEs+mahKfKvJT3Ds4cVYwiT4kd7ZdY=; b=SvzZIubNC4jKi4UfSuA8mA04J9
+	DX+uGoy8+b3UtbZsQ+aRWhzAKFVja+IUuvAacfR1jEgKU3yjkzMAvTXWt+pXqyEvi8rSnFfCV35mI
+	4ltOv0YUZZ6DOFpyx31IBw7mt3DWo57JnXQzP5b1bBD/L7QOmlHDxw8dAiXqrNWHVAnA2bT4cqOGv
+	tETv24OjSC1dyUJr4zTuV5A79BgKwS9tz+tLHnQAU9rsk/r1vWuniAcJDNn9R1dTvEfEzVy7RCmQm
+	itMTHsmcN6Qjb5xHJwoAJENzOvd0WcX7jCJrB+21U8G/8F+Bb2dczuKP/LdKBf5YdspAY7+jTx2Ud
+	yOKVdsfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDYuO-001uvt-7B; Mon, 18 Jul 2022 22:08:08 +0000
+	id 1oDYyd-001y7L-9c; Mon, 18 Jul 2022 22:12:31 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDYuL-001uox-L0
-	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 22:08:07 +0000
+	id 1oDYyb-001y3k-1v
+	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 22:12:30 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id F205B61525;
-	Mon, 18 Jul 2022 22:08:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6733DC341C0;
-	Mon, 18 Jul 2022 22:08:03 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 8A32C61537;
+	Mon, 18 Jul 2022 22:12:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DFFDC341C0;
+	Mon, 18 Jul 2022 22:12:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658182084;
-	bh=j1NDFj27vPrFOzzjYxK9T5C/OvNtxqUHE+3AMJSwJmA=;
+	s=k20201202; t=1658182347;
+	bh=xuEBZAMFlkeQ8csFA8rfMNdciRkANyRKQIQb5OMD2Y4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XJo9pCeq4dqfMyynm7wy9HBYwj6UsMbQ0pNczuEtkLXCw72Mb6D3K5NjAGezFrY4d
-	 eF5lkuv+fqqWFzrB32Dq9O/JvEGSk5tvZQX37G3l8xNzR5hVRpTFwvIL+WQ5JyrZSh
-	 Dzo0e0TGBvmJm3Umv3yuHNIY1nGz1WXrhS1IdV0/6qzKrtPvHhLsjtKnj77BquQ7NT
-	 CB62T3saXXsxFjHl6w1vuODp3rRPkpESeJEcYMYh+5Sc92w3n9ALVl9w9BHghCtyDz
-	 SXFnjZ2NTG98tvuexq7Mf/4oX/2lR5eY7WBfNsnLth73H+xn0MyCW3BcOG3moYNalB
-	 qxZ86QcymE9Ew==
-Date: Tue, 19 Jul 2022 00:08:00 +0200
+	b=LVE584MiBk4opyD8B3ila+raoI7hvHfL4nItCc4ZqkDGSp/wB+ofxbkwx6j4uptrK
+	 NWSxG9pP6AgDh+8qnkmE13nrQhmcghQeXJeHTQt4tVf5jVVCA9MjL5j/nTKPyjJDLl
+	 1cIr9ajUqKH10K0qVzBReYY2buRJX1/xps3XlD56fcHrdLyOmXhbYvWgOs7iyaGCPO
+	 2kb4Zlel+QzVqFWScH9ikalvbtCdgJJten/SfPKXMz/dt2j0Ur/6HlqzAJ4f4ffrhj
+	 r9KOG3gm3kBRh36I0MQpZZLZPuRRpMRTzTcuVfRozXyedfUaLgApGlZRMjUF2AIlBa
+	 0TtIP/kK+r1qg==
+Date: Tue, 19 Jul 2022 00:12:24 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: sean.wang@mediatek.com
 Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
@@ -56,18 +56,18 @@ Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
 	kuabhs@google.com, druth@google.com, abhishekpandit@google.com,
 	shawnku@google.com, linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/4] mt76: mt7921e: fix race issue between reset and
- suspend/resume
-Message-ID: <YtXZwKyAh/MZ73rf@lore-desk>
+Subject: Re: [PATCH 4/4] mt76: mt7921u: remove unnecessary MT76_STATE_SUSPEND
+Message-ID: <YtXayNzRHEQ2ut2l@lore-desk>
 References: <a1437e413116364ac9f3b777c7922ca0728ddc0d.1658176701.git.sean.wang@kernel.org>
+ <2938c18e2a14e26de293adcf68cd851ca0a7474a.1658176701.git.sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="lMne5WnSCz3v6Rdu"
+	protocol="application/pgp-signature"; boundary="MetnIjz+5ZCpraq0"
 Content-Disposition: inline
-In-Reply-To: <a1437e413116364ac9f3b777c7922ca0728ddc0d.1658176701.git.sean.wang@kernel.org>
+In-Reply-To: <2938c18e2a14e26de293adcf68cd851ca0a7474a.1658176701.git.sean.wang@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_150805_795646_B0AABCF3 
-X-CRM114-Status: GOOD (  23.38  )
+X-CRM114-CacheID: sfid-20220718_151229_159874_1AE915C5 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,128 +83,62 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---lMne5WnSCz3v6Rdu
+--MetnIjz+5ZCpraq0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
 > From: Sean Wang <sean.wang@mediatek.com>
 >=20
-> It is unexpected that the reset work is running simultaneously with
-> the suspend or resume context and it is possible that reset work is still
-> running even after mt7921 is suspended if we don't fix the race issue.
+> remove unnecessary MT76_STATE_SUSPEND manipulation to be consistent
+> with the mt7921[e, s] driver.
+
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+
 >=20
-> Thus, the suspend procedure should be waiting until the reset is completed
-> at the beginning and ignore the subsequent the reset requests.
->=20
-> In case there is an error that happens during either suspend or resume
-> handler, we will schedule a reset task to recover the error before
-> returning the error code to ensure we can immediately fix the error there.
->=20
-> Fixes: 0c1ce9884607 ("mt76: mt7921: add wifi reset support")
-> Co-developed-by: YN Chen <YN.Chen@mediatek.com>
-> Signed-off-by: YN Chen <YN.Chen@mediatek.com>
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
->  drivers/net/wireless/mediatek/mt76/mt7921/mac.c |  5 +++++
->  drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 13 +++++++++----
->  2 files changed, 14 insertions(+), 4 deletions(-)
+>  drivers/net/wireless/mediatek/mt76/mt7921/usb.c | 4 ----
+>  1 file changed, 4 deletions(-)
 >=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7921/mac.c
-> index 47f0aa81ab02..6bd9fc9228a2 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-> @@ -780,6 +780,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
->  void mt7921_reset(struct mt76_dev *mdev)
->  {
->  	struct mt7921_dev *dev =3D container_of(mdev, struct mt7921_dev, mt76);
-> +	struct mt76_connac_pm *pm =3D &dev->pm;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/usb.c
+> index 124d62c0dfa4..a8ea03d4f990 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+> @@ -313,8 +313,6 @@ static int mt7921u_suspend(struct usb_interface *intf=
+, pm_message_t state)
+>  	mt76u_stop_rx(&dev->mt76);
+>  	mt76u_stop_tx(&dev->mt76);
 > =20
->  	if (!dev->hw_init_done)
->  		return;
-> @@ -787,8 +788,12 @@ void mt7921_reset(struct mt76_dev *mdev)
->  	if (dev->hw_full_reset)
->  		return;
-> =20
-> +	if (pm->suspended)
-> +		return;
-> +
->  	queue_work(dev->mt76.wq, &dev->reset_work);
->  }
-> +EXPORT_SYMBOL_GPL(mt7921_reset);
-> =20
->  void mt7921_mac_update_mib_stats(struct mt7921_phy *phy)
->  {
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7921/pci.c
-> index 9d1ba838e54f..07573ea55389 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> @@ -363,6 +363,7 @@ static int mt7921_pci_suspend(struct device *device)
->  	int i, err;
-> =20
->  	pm->suspended =3D true;
-> +	cancel_work_sync(&dev->reset_work);
-
-should we just wait for the reset to complete here instead of cancelling? (=
-e.g. flush_work)
-
-Regards,
-Lorenzo
-
->  	cancel_delayed_work_sync(&pm->ps_work);
->  	cancel_work_sync(&pm->wake_work);
-> =20
-> @@ -424,6 +425,9 @@ static int mt7921_pci_suspend(struct device *device)
->  restore_suspend:
->  	pm->suspended =3D false;
-> =20
-> +	if (err < 0)
-> +		mt7921_reset(&dev->mt76);
-> +
->  	return err;
->  }
-> =20
-> @@ -437,7 +441,7 @@ static int mt7921_pci_resume(struct device *device)
-> =20
->  	err =3D mt7921_mcu_drv_pmctrl(dev);
->  	if (err < 0)
-> -		return err;
-> +		goto failed;
-> =20
->  	mt7921_wpdma_reinit_cond(dev);
-> =20
-> @@ -467,11 +471,12 @@ static int mt7921_pci_resume(struct device *device)
->  		mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
-> =20
->  	err =3D mt76_connac_mcu_set_hif_suspend(mdev, false);
-> -	if (err)
-> -		return err;
+> -	set_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
 > -
-> +failed:
->  	pm->suspended =3D false;
+>  	return 0;
 > =20
-> +	if (err < 0)
-> +		mt7921_reset(&dev->mt76);
-> +
->  	return err;
->  }
+>  failed:
+> @@ -354,8 +352,6 @@ static int mt7921u_resume(struct usb_interface *intf)
+>  			goto failed;
+>  	}
 > =20
+> -	clear_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
+> -
+>  	err =3D mt76u_resume_rx(&dev->mt76);
+>  	if (err < 0)
+>  		goto failed;
 > --=20
 > 2.25.1
 >=20
 
---lMne5WnSCz3v6Rdu
+--MetnIjz+5ZCpraq0
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYtXZwAAKCRA6cBh0uS2t
-rLqHAPwPGKvUYKWttSzuLfEnfn6GsozYfdiIRPC2TeDbzTTBgwD/V8zxuZFzcRfr
-xZII4Sr/it8t0NcuMfuHFpgfwfFqZQY=
-=V8iT
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYtXayAAKCRA6cBh0uS2t
+rBb9AQCLIcE0D+bIK36JveSLI9KH5D89zJ9ktnGQHzlWY7WWvwEAvnNqDBIKVlIU
+NKfbokH7KQK55UAEAMMV0LK7XKddjwQ=
+=X1MV
 -----END PGP SIGNATURE-----
 
---lMne5WnSCz3v6Rdu--
+--MetnIjz+5ZCpraq0--
 
