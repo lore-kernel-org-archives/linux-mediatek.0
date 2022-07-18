@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB996C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 08:27:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B9DFC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 08:30:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zN57xbzm3DAtGLB22fZV8oWsdaytYQ/xDaOBQeXCPn0=; b=vx6Z/BJvsb97rsjNAcykt1RdE+
-	2am+7VY4gY1GwM1xtJOq5eJyMOKsFRw1T9DVMisuJMAOJW9sSJeYBGdn6r8zHnXCLdZMfZ6Pf8cUJ
-	X1jHx2+Cwk10rsm2fMifDsh8TQBGRQx77G7BnnFv1N/anrgMty3+SWzffr6Cwk9FPwjX/XfQ6NymI
-	XKwx1t6Zd3xLToPSYxY2LoT6EEzTj5bG/0iXWG8Iv2hJfhfG9hu4M79apCK8dWc8lsb5lVS2cPfUt
-	0HWFIx8x4EB7SB6UIdBUdUttY4z9E6b0lvOdUPwixGt6a1TldFATvNX8qutbDgcgQUNV1L0wjEmJd
-	KRSgAyoA==;
+	bh=RLxWXdS0HU8CTrBR6k4kkiF+Qb3BiKdueDePYbZKJBQ=; b=K/93AmwH+PBZdvOTKMfDfEg0lN
+	665Y/Xki7iTTD5eNMwFrTaDyTHd02wYKHqaHBEvn5YvnaKRb7iH5QWYtigRYJCOoGWfvr3GO5wDKL
+	cEDSJpVMk2VIIHNVIyvRUM7ijG9SHDtC+G/lmAy0eZqGLgvxzVhAhv44VyBkU19//7ERYl/F4ZBnF
+	8DvZT9bB2rytZ/LeNiQTVNR8MYibYYwEGqrdcEJmh01Q78J/7EnXTfddnzPhy6reLgL1OzS7l4Uwj
+	JYcfZQoLUr5Ra763KBNDlRi+NmdWeQs/fgbhOZ0PA3Ik5XwqUt+LT3Lr34cX2xnxaVa38dUOjYRvZ
+	cnQ4D7IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDM6S-00Bjfk-8D; Mon, 18 Jul 2022 08:27:44 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oDM94-00BkZC-W9; Mon, 18 Jul 2022 08:30:27 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDM6G-00BjaS-Rp; Mon, 18 Jul 2022 08:27:34 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 78F986601A08;
-	Mon, 18 Jul 2022 09:27:27 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658132848;
-	bh=3wSuhWp2P2ZyIQrwtaWVzGC8uMFmX+0xQ1Qp+Gq760s=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MEYN6sSMnl1b1jGZam3vGPUhszK6Kka5I6EgC7NQr3Q36fJmBTBNdXMzktsez5qIj
-	 y+s+XdM0YgKFkp9EXPOn+L1Cz+Oxd1XhKLcE2IBo0ISLE3PVkCNEzlzehYjysaiuWG
-	 Zo51GGkWRKk8PczsWqR8TmMapo+ER+hjgV4sjVLPFHsPVY4Qf/tMhapXsuArRIxERi
-	 5Mf2Iqmq2tvvOG65/uZIKGF7a1cWG0Qn+VqDzTx0mD+1qYHnorumujxfSLaFnON56Z
-	 IAxKex2js5tEg95LQVFjSdehcwbr2FzRLtQrHYbNSh7clnBnGfAggQdU5fxiHr3DM+
-	 lRudS6QdbjYdQ==
-Message-ID: <ee88aec0-f6f8-c554-6752-447cb0f34e16@collabora.com>
-Date: Mon, 18 Jul 2022 10:27:23 +0200
+	id 1oDM92-00BkWT-2N; Mon, 18 Jul 2022 08:30:25 +0000
+X-UUID: 5e2ff694831d4e6684114a05a98e4acd-20220718
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=RLxWXdS0HU8CTrBR6k4kkiF+Qb3BiKdueDePYbZKJBQ=;
+	b=GZ040RYIkwuS9IZ+jL1smnqXcgqV5/qILmfe5NJ2ovFtGYGRuwekwdMALrvTHc8M3oRIsq9XCyPq7cidoLXymHjKGZNReexjjNM7v/P0WhHGCN3BOVfkI1BeIF1Ftcg8W7iHmlZIoMAPOwca6DKFByLvT/3wgvKx1ZocOXPfkNs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:2bdaf0fc-4745-4b59-83f6-869b62a03fc2,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:0f94e32,CLOUDID:abee4333-b9e4-42b8-b28a-6364427c76bb,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 5e2ff694831d4e6684114a05a98e4acd-20220718
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1985991618; Mon, 18 Jul 2022 01:30:15 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 18 Jul 2022 16:29:40 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Mon, 18 Jul 2022 16:29:39 +0800
+Message-ID: <9e50a398b47ec7374aa341a6738478e3313e9ceb.camel@mediatek.com>
+Subject: Re: [V11,1/7] dt-bindings: mediatek: Add mediatek, mt8195-jpgenc
+ compatible
+From: kyrie.wu <kyrie.wu@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Irui Wang <irui.wang@mediatek.com>
+CC: Tomasz Figa <tfiga@chromium.org>, <wenst@chromium.org>,
+	<devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, <linux-mediatek@lists.infradead.org>, Hans
+ Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<maoguang.meng@mediatek.com>, <xia.jiang@mediatek.com>,
+	<srv_heupstream@mediatek.com>, <linux-media@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<nicolas.dufresne@collabora.com>
+Date: Mon, 18 Jul 2022 16:29:39 +0800
+In-Reply-To: <1658108601.900307.1667784.nullmailer@robh.at.kernel.org>
+References: <20220716093435.29796-1-irui.wang@mediatek.com>
+	 <20220716093435.29796-2-irui.wang@mediatek.com>
+	 <1658108601.900307.1667784.nullmailer@robh.at.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v5 13/13] video: backlight: mt6370: Add MediaTek MT6370
- support
-Content-Language: en-US
-To: Daniel Thompson <daniel.thompson@linaro.org>
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>, lee.jones@linaro.org,
- jingoohan1@gmail.com, pavel@ucw.cz, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, sre@kernel.org,
- chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org, jic23@kernel.org,
- lars@metafoo.de, lgirdwood@gmail.com, broonie@kernel.org,
- linux@roeck-us.net, heikki.krogerus@linux.intel.com, deller@gmx.de,
- chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
- dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org, szunichen@gmail.com
-References: <20220715112607.591-1-peterwu.pub@gmail.com>
- <20220715112607.591-14-peterwu.pub@gmail.com>
- <ec3bdfb8-0e42-a772-28b1-165811872afa@collabora.com>
- <20220715162913.5ewxwhv6jtdgt3c2@maple.lan>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220715162913.5ewxwhv6jtdgt3c2@maple.lan>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MTK: N
+Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_012733_196722_A68C3568 
-X-CRM114-Status: GOOD (  26.52  )
+X-CRM114-CacheID: sfid-20220718_013024_151624_6E543408 
+X-CRM114-Status: GOOD (  20.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,105 +90,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/07/22 18:29, Daniel Thompson ha scritto:
-> On Fri, Jul 15, 2022 at 02:38:45PM +0200, AngeloGioacchino Del Regno wrote:
->> Il 15/07/22 13:26, ChiaEn Wu ha scritto:
->>> From: ChiaEn Wu <chiaen_wu@richtek.com>
->>>
->>> MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
->>> with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
->>> driver, display bias voltage supply, one general purpose LDO, and the
->>> USB Type-C & PD controller complies with the latest USB Type-C and PD
->>> standards.
->>>
->>> This adds support for MediaTek MT6370 Backlight driver. It's commonly used
->>> to drive the display WLED. There are 4 channels inside, and each channel
->>> supports up to 30mA of current capability with 2048 current steps in
->>> exponential or linear mapping curves.
->>>
->>> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
->>
->> Hello ChiaEn,
->>
->> I propose to move this one to drivers/leds (or drivers/pwm) and, instead of
->> registering a backlight device, register a PWM device.
->>
->> This way you will be able to reuse the generic backlight-pwm driver, as you'd
->> be feeding the PWM device exposed by this driver to the generic one: this will
->> most importantly make it easy to chain it with MTK_DISP_PWM (mtk-pwm-disp)
->> with a devicetree that looks like...
-> 
-> Out of interest, does MT6370 have the same structure for backlights as the prior
-> systems using mtk-pwm-disp or was mtk-pwm-disp simply a normal(-ish) PWM
-> that relied on something on the board for all the constant current
-> driver hardware?
-> 
-> 
+T24gU3VuLCAyMDIyLTA3LTE3IGF0IDE5OjQzIC0wNjAwLCBSb2IgSGVycmluZyB3cm90ZToNCj4g
+T24gU2F0LCAxNiBKdWwgMjAyMiAxNzozNDoyOSArMDgwMCwgSXJ1aSBXYW5nIHdyb3RlOg0KPiA+
+IEZyb206IGt5cmllIHd1IDxreXJpZS53dUBtZWRpYXRlay5jb20+DQo+ID4gDQo+ID4gQWRkIG1l
+ZGlhdGVrLG10ODE5NS1qcGdlbmMgY29tcGF0aWJsZSB0byBiaW5kaW5nIGRvY3VtZW50Lg0KPiA+
+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IGt5cmllIHd1IDxreXJpZS53dUBtZWRpYXRlay5jb20+DQo+
+ID4gU2lnbmVkLW9mZi1ieTogaXJ1aSB3YW5nIDxpcnVpLndhbmdAbWVkaWF0ZWsuY29tPg0KPiA+
+IA0KPiA+IC0tLQ0KPiA+ICAuLi4vbWVkaWEvbWVkaWF0ZWssbXQ4MTk1LWpwZWdlbmMueWFtbCAg
+ICAgICAgfCAxMzkNCj4gPiArKysrKysrKysrKysrKysrKysNCj4gPiAgMSBmaWxlIGNoYW5nZWQs
+IDEzOSBpbnNlcnRpb25zKCspDQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NA0KPiA+IERvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayxtdDgxOTUtDQo+ID4ganBl
+Z2VuYy55YW1sDQo+ID4gDQo+IA0KPiBNeSBib3QgZm91bmQgZXJyb3JzIHJ1bm5pbmcgJ21ha2Ug
+RFRfQ0hFQ0tFUl9GTEFHUz0tbQ0KPiBkdF9iaW5kaW5nX2NoZWNrJw0KPiBvbiB5b3VyIHBhdGNo
+IChEVF9DSEVDS0VSX0ZMQUdTIGlzIG5ldyBpbiB2NS4xMyk6DQo+IA0KPiB5YW1sbGludCB3YXJu
+aW5ncy9lcnJvcnM6DQo+IC4vRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlh
+L21lZGlhdGVrLG10ODE5NS0NCj4ganBlZ2VuYy55YW1sOjk4OjU6IFt3YXJuaW5nXSB3cm9uZyBp
+bmRlbnRhdGlvbjogZXhwZWN0ZWQgMiBidXQgZm91bmQNCj4gNCAoaW5kZW50YXRpb24pDQo+IC4v
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG10ODE5NS0N
+Cj4ganBlZ2VuYy55YW1sOjEwMjo5OiBbZXJyb3JdIHN5bnRheCBlcnJvcjogZXhwZWN0ZWQgPGJs
+b2NrIGVuZD4sIGJ1dA0KPiBmb3VuZCAnPHNjYWxhcj4nIChzeW50YXgpDQo+IC4vRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG10ODE5NS0NCj4ganBlZ2Vu
+Yy55YW1sOjExMToxNzogW3dhcm5pbmddIHdyb25nIGluZGVudGF0aW9uOiBleHBlY3RlZCAwIGJ1
+dA0KPiBmb3VuZCAxNiAoaW5kZW50YXRpb24pDQo+IA0KPiBkdHNjaGVtYS9kdGMgd2FybmluZ3Mv
+ZXJyb3JzOg0KPiBtYWtlWzFdOiAqKiogRGVsZXRpbmcgZmlsZQ0KPiAnRG9jdW1lbnRhdGlvbi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG10ODE5NS0NCj4ganBlZ2VuYy5leGFt
+cGxlLmR0cycNCj4gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlh
+dGVrLG10ODE5NS0NCj4ganBlZ2VuYy55YW1sOjEwMjo5OiBkaWQgbm90IGZpbmQgZXhwZWN0ZWQg
+a2V5DQo+IG1ha2VbMV06ICoqKiBbRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL01h
+a2VmaWxlOjI2Og0KPiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVk
+aWF0ZWssbXQ4MTk1LQ0KPiBqcGVnZW5jLmV4YW1wbGUuZHRzXSBFcnJvciAxDQo+IG1ha2VbMV06
+ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpvYnMuLi4uDQo+IC4vRG9jdW1lbnRhdGlvbi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG10ODE5NS0NCj4ganBlZ2VuYy55YW1s
+OjEwMjo5OiBkaWQgbm90IGZpbmQgZXhwZWN0ZWQga2V5DQo+IC9idWlsZHMvcm9iaGVycmluZy9s
+aW51eC1kdC0NCj4gcmV2aWV3L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRp
+YS9tZWRpYXRlayxtdDgxOTUtDQo+IGpwZWdlbmMueWFtbDogaWdub3JpbmcsIGVycm9yIHBhcnNp
+bmcgZmlsZQ0KPiBtYWtlOiAqKiogW01ha2VmaWxlOjE0MDQ6IGR0X2JpbmRpbmdfY2hlY2tdIEVy
+cm9yIDINCj4gDQo+IGRvYyByZWZlcmVuY2UgZXJyb3JzIChtYWtlIHJlZmNoZWNrZG9jcyk6DQo+
+IA0KPiBTZWUgaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJzLm9yZy9wYXRjaC8NCj4gDQo+IFRoaXMg
+Y2hlY2sgY2FuIGZhaWwgaWYgdGhlcmUgYXJlIGFueSBkZXBlbmRlbmNpZXMuIFRoZSBiYXNlIGZv
+ciBhDQo+IHBhdGNoDQo+IHNlcmllcyBpcyBnZW5lcmFsbHkgdGhlIG1vc3QgcmVjZW50IHJjMS4N
+Cj4gDQo+IElmIHlvdSBhbHJlYWR5IHJhbiAnbWFrZSBkdF9iaW5kaW5nX2NoZWNrJyBhbmQgZGlk
+bid0IHNlZSB0aGUgYWJvdmUNCj4gZXJyb3IocyksIHRoZW4gbWFrZSBzdXJlICd5YW1sbGludCcg
+aXMgaW5zdGFsbGVkIGFuZCBkdC1zY2hlbWEgaXMgdXANCj4gdG8NCj4gZGF0ZToNCj4gDQo+IHBp
+cDMgaW5zdGFsbCBkdHNjaGVtYSAtLXVwZ3JhZGUNCj4gDQo+IFBsZWFzZSBjaGVjayBhbmQgcmUt
+c3VibWl0Lg0KPiANClRoaXMgaXMgc2FtZSBhcyBqcGVnIGRlY29kaW5nIHBhdGNoZXMsDQpJIHdp
+bGwgc3VibWl0IGEgZml4IG9uZSBpbiB0aGUgbmV4dCB2ZXJzaW9uLg0KVGhhbmsgeW91IQ0K
 
-As per my understanding, mtk-pwm-disp is chained to other multimedia features of
-the display block of MediaTek SoCs, such as the AAL (adaptive ambient light),
-CABC (content adaptive backlight control) etc, other than being a normal(ish)
-PWM... that's the reason of my request.
-
-Moreover, in the end, this PMIC's backlight controller is just a "fancy" PWM
-controller, with OCP/OVP.
-
->>
->> 	pwmleds-disp {
->> 		compatible = "pwm-leds";
->>
->> 		disp_led: disp-pwm {
->> 			label = "backlight-pwm";
->> 			pwms = <&pwm0 0 500000>;
->> 			max-brightness = <1024>;
->> 		};
->> 	};
->>
->> 	backlight_lcd0: backlight {
->> 		compatible = "led-backlight";
->> 		leds = <&disp_led>, <&pmic_bl_led>;
->> 		default-brightness-level = <300>;
->> 	};
-> 
-> I think this proposal has to start with the devicetree bindings rather
-> than the driver. Instead I think the question is: does this proposal
-> result in DT bindings that better describe the underlying hardware?
-> 
-
- From how I understand it - yes: we have a fancy PWM (&pwm0) that we use
-to control display backlight (backlight-pwm)...
-
-Obviously, here we're not talking about OLEDs, but LCDs, where the backlight
-is made of multiple strings of WhiteLED (effectively, a "pwm-leds" controlled
-"led-backlight").
-
-Using PWM will also allow for a little more fine-grained board specific
-configuration, as I think that this PMIC (and/or variants of it) will be
-used in completely different form factors: I think that's going to be both
-smartphones and tablets/laptops... and I want to avoid vendor properties
-to configure the PWM part in a somehow different way.
-
-> This device has lots of backlight centric features (OCP, OVP, single
-> control with multiple outputs, exponential curves, etc) and its not
-> clear where they would fit into the "PWM" bindings.
-> 
-
-For OCP and OVP, the only bindings that fit would be regulators, but that's
-not a regulator... and that's about it - I don't really have arguments for
-that.
-
-What I really want to see here is usage of "generic" drivers like led_bl
-and/or pwm_bl as to get some "standardization" around with all the benefits
-that this carries.
-
-> Come to think of it I'm also a little worried also about the whole linear
-> versus exponential curve thing since I thought LED drivers were required
-> to use exponential curves.
-> 
-
-That probably depends on how the controller interprets the data, I guess,
-but I agree with you on this thought.
-
-Regards,
-Angelo
 
