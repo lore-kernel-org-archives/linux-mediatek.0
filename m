@@ -4,86 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C28DC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 13:54:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 016EBC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 13:57:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6/DcKl1792dtFraiyvZ692Ib84+Yi+4Ulxn0Vh9//vc=; b=0cMSDfeg/a1Ky59rroMLji+gVd
-	SX3TzRlX/MKffhMrm5CgEG/iZ/hHQOPWGSdYj450uv4cCY4U/3+iztMwfQn60qH1xj4VG9gZv1RCl
-	hMkKM0651jMTb9Iu1AaMjEq9Tw66+rSreAHnEQ7JjWbUT1JXEzoHDtx6JN+u8rLXh6IieM7gQOFNS
-	5qOhtsgBZg15HFRL9HG9SHITGN3wltSgAwMrVhKqbhqOu44DFUh/TBMDfd7Y9aLa7fPXJcOv/ypzq
-	19L491o4p9FocpjG1yNLzdv35dONkxb2GPBrvm0hLBjxJ3KdeNoVRzLbIDkqHa7427V1xeiY4xIp+
-	dMvzRApw==;
+	bh=5GaiY4B+fVcmnXKAwsi7m8Aj4lGUBvR7I/9W6/qWXhE=; b=0ZPRFhwv1hkdl4z0HV14DaOySa
+	TzcM4/3A2SI8FZAnRb6/89YA7xs+qNdRs7n88eYH+ax/HFQG8eehWQHvJD2NIYIx/wxByVrPXcEXi
+	hYK1U4qKK0Y4yegFoNeublQL4U9nCiidJeDyE8+/Vm5o5T3yT0lftL9parEU7CCsu9ksdncsxousg
+	HmPEIA8lYTUn1buHG3OPvI4txjVgseOGbnmsweW9AVJw/zkXc0iuIfRJzf5UT8aSAUnHAyAGybjgT
+	CYYG/eA+cRB2jZqv1AJKpbIXoMG3qzhsYD1WYKTX2XSap3IHuyFa2u2EUHU1BoyqKzIY3cETKRfjj
+	6csyxSTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDRC9-00E13Y-Gw; Mon, 18 Jul 2022 13:53:57 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1oDRF4-00E58e-6f; Mon, 18 Jul 2022 13:56:58 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDRBu-00E0Vf-GM
-	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 13:53:43 +0000
-Received: by mail-lf1-x133.google.com with SMTP id u13so19456700lfn.5
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 Jul 2022 06:53:34 -0700 (PDT)
+	id 1oDREc-00E4YP-5A; Mon, 18 Jul 2022 13:56:31 +0000
+Received: by mail-wm1-x330.google.com with SMTP id x23-20020a05600c179700b003a30e3e7989so5205395wmo.0;
+        Mon, 18 Jul 2022 06:56:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=6/DcKl1792dtFraiyvZ692Ib84+Yi+4Ulxn0Vh9//vc=;
-        b=adf7fKMxBuELaUr2WN93cCfzLwvAYLCSxArs7AO+ItT6SAVQJjfqXVZ6xkpW0xpkKo
-         On5VqFStvsWGBQOGKJZQ7dLaBgOWAEZQ1ln9tRYix8ijrghu8R9X0wF26Iemn7lRv1UR
-         JU4jQ6RpcMZ1YJ3iqD98dn0Gj9oL4LkJVchdcAXwLw3UmGrv38tllSQatCxZyLdY/TFG
-         XlzM91z8J7cQNV1JdadJSE/R1I5akBQLQWQVvSCZ1N5YESUD32HcFx4TGEpLgefyGFoP
-         dLOr+pELGuaDGzuiqcBfzujdTZh67+MpQOpx73gRJe4YjU9RNocEz/kTAhi9aEUaDcFw
-         c45g==
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=5GaiY4B+fVcmnXKAwsi7m8Aj4lGUBvR7I/9W6/qWXhE=;
+        b=d6a2HGJ1DOesvRkrVZgSQ6iPEldBTUlBgQ9k3NnGUVcyNgxyKIcTc2kdsPDQKUOOsh
+         4J/nvEVxTTl0E4onnZS0zUwKWxO9pjnNCxaD0wWN9PVUybjFPl6RI42KIuQHh4vfkShP
+         fJQlXkKDNfpR7KD5Tx3SaGwhuYeDulAK9P9Z9Y+u2LOt3QOnTyc5mgmLl+C/m4bqct+H
+         giOxHhFobOt82+YV6AxC1RpEI/zA+Ycz3NIWz/ErQN2V/axhvGGex1JNxkWjgMyy5t2n
+         hhs2muTFQoUTJSosvO9Qpp180LKtT7CoNF5pYFKvDX2EJhZBU36QFMOIJKTt5qcIpZQi
+         /qwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=6/DcKl1792dtFraiyvZ692Ib84+Yi+4Ulxn0Vh9//vc=;
-        b=32a98UYG8CarQLv2TAqlBdH1LSlF0l463FYhhPHnj7V/LeTpLWQ4PfZTh14RVaniAh
-         tI0YXT4TaY9o5jfWqeGh47heKuxEr2KD07wQLvQ3R9iYr5BAVGR1XnHQYk2/pThO4h6Z
-         eIzIBMDpetclWrr2qC2freSmSU/rhts7NDGHAdcgkgJSAHN2xJW6taVGtPnGpI6ETYEx
-         y2Fr1mckuF7rr2CrxPtll2ka5Zeb9ca+UrthV5oTdi97aVtk6Tpo4yKylslrhp6P2O1L
-         mg4U+FYvb5AwJgC+0XdmJx8K3TrW8nNxt3sE82SLLtZLuh/iojSg0PDzmmQ0X8tkekPR
-         ncUQ==
-X-Gm-Message-State: AJIora8TmXFBJheWkgslnctU6B6dXh0BkuMDwahhxlBHsRC9jIAGxNI0
-	i4zhRwnB6V3uQoDybgbM2To/ew==
-X-Google-Smtp-Source: AGRyM1vlH8y6dxxb5A3iLBYGqYkrcDCTAdlap219dHfRtUb7BZ/CdexwgBbf1qAUdAng6pNUPijgsQ==
-X-Received: by 2002:a05:6512:3d28:b0:489:fd63:f9c9 with SMTP id d40-20020a0565123d2800b00489fd63f9c9mr14550160lfv.96.1658152413217;
-        Mon, 18 Jul 2022 06:53:33 -0700 (PDT)
-Received: from [192.168.115.193] (89-162-31-138.fiber.signal.no. [89.162.31.138])
-        by smtp.gmail.com with ESMTPSA id c24-20020ac25f78000000b00477c164293csm2601359lfc.79.2022.07.18.06.53.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 18 Jul 2022 06:53:32 -0700 (PDT)
-Message-ID: <f3082ae0-4d1d-e5a0-909a-5daa798ab7fe@linaro.org>
-Date: Mon, 18 Jul 2022 15:53:31 +0200
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=5GaiY4B+fVcmnXKAwsi7m8Aj4lGUBvR7I/9W6/qWXhE=;
+        b=UYyzb4zb30tW6/yFKxB0wC7dGR1Fougv4FQRfECkJC5+EWmcHazLqV28Ww7rhESv86
+         uoYe7llbxQYfZSBxv+yjespsizBvykyOsGC7yohBoYIC9UKY/NuxQ9NCX+Cuq1+8U+ae
+         ePNX3k8kihCxMpuomFRMFFIkiJk80AxQ6pmZOl1danwd7G/gy446SLEYuIcOzZrmj+hf
+         pEOpZ1YLnaHeQcnmSXXsacN2d96jOJC8HUmnNgQ/unvKyDmvcjxdNL/hNO9C1/ga0uoE
+         RI4uWFEGlHe4hewLCiKZWJLmQdiQS0SK8rAOUT2HzmTAvZDHADiqIIBsDYh45pNews3G
+         x9mQ==
+X-Gm-Message-State: AJIora/qtkzUXGOELvsoAPhWinZSiXNDJtoIWfx6vJL23PUwNVdFt/yk
+	/t8qBR+WvWwLvCt+ERjtk7sSNfTHt4h5wP4j6l4=
+X-Google-Smtp-Source: AGRyM1t+b+B57G30zmJ6SDH+MUo5HsflVXfg85sd+e8uS0SrrTs9lUsnJSmOWUJajxJe7O8JYC1jvg/HjWwDmFR7Nok=
+X-Received: by 2002:a05:600c:19c8:b0:3a1:792e:f913 with SMTP id
+ u8-20020a05600c19c800b003a1792ef913mr32475753wmq.182.1658152587885; Mon, 18
+ Jul 2022 06:56:27 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 1/1] dt-bindings: iio: adc: add compatible for mt8188
-Content-Language: en-US
-To: Hui Liu <hui.liu@mediatek.com>, jic23@kernel.org, lars@metafoo.de,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
-Cc: srv_heupstream@mediatek.com, zhiyong.tao@mediatek.com,
- guodong.liu@mediatek.com, johnson.wang@mediatek.com,
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20220718123930.24373-1-hui.liu@mediatek.com>
- <20220718123930.24373-2-hui.liu@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220718123930.24373-2-hui.liu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20220715112607.591-1-peterwu.pub@gmail.com> <20220715112607.591-9-peterwu.pub@gmail.com>
+ <CAHp75VdCgdTOu-CdNo9XGY+PrhPh93v_CkAHJC6hkArsKeiXbA@mail.gmail.com>
+ <20220718080831.GA31509@cyhuang-hp-elitebook-840-g3.rt> <CAHp75Ve2_UcS9e3pJC2j4FBc21=S8878tQusyxNV1mXtQG423w@mail.gmail.com>
+In-Reply-To: <CAHp75Ve2_UcS9e3pJC2j4FBc21=S8878tQusyxNV1mXtQG423w@mail.gmail.com>
+From: ChiYuan Huang <u0084500@gmail.com>
+Date: Mon, 18 Jul 2022 21:56:15 +0800
+Message-ID: <CADiBU3-DbJpD_pyGaOsh8EF=0NpCWgUP5T=RHgxXzwqZzwCyQA@mail.gmail.com>
+Subject: Re: [PATCH v5 08/13] usb: typec: tcpci_mt6370: Add MediaTek MT6370
+ tcpci driver
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: ChiaEn Wu <peterwu.pub@gmail.com>, Lee Jones <lee.jones@linaro.org>, 
+	Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, 
+	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
+	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_065342_567567_F56DAA8C 
-X-CRM114-Status: UNSURE (   7.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220718_065630_238020_55C63AF5 
+X-CRM114-Status: GOOD (  31.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,15 +101,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/07/2022 14:39, Hui Liu wrote:
-> From: "Hui.Liu" <hui.liu@mediatek.com>
-> 
-> This commit adds MediaTek mt8188 auxadc in dt-binding documentation.
-
-Do not use "This commit/patch".
-https://elixir.bootlin.com/linux/v5.17.1/source/Documentation/process/submitting-patches.rst#L95
-
-
-Best regards,
-Krzysztof
+Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B47=E6=9C=
+=8818=E6=97=A5 =E9=80=B1=E4=B8=80 =E6=99=9A=E4=B8=8A7:39=E5=AF=AB=E9=81=93=
+=EF=BC=9A
+>
+> On Mon, Jul 18, 2022 at 10:08 AM ChiYuan Huang <u0084500@gmail.com> wrote=
+:
+> > On Fri, Jul 15, 2022 at 03:10:42PM +0200, Andy Shevchenko wrote:
+> > > On Fri, Jul 15, 2022 at 1:28 PM ChiaEn Wu <peterwu.pub@gmail.com> wro=
+te:
+>
+> ...
+>
+> > > > This commit add support for the Type-C & Power Delivery controller =
+in
+> > >
+> > > This commit add -> Add
+> > >
+> > Upper case? Or rewrite it as 'This commit is to add .....'?
+>
+> Please, read this documentation [1] for better understanding. It
+> should clarify this and perhaps other possible questions.
+>
+> [1]: https://www.kernel.org/doc/html/latest/process/submitting-patches.ht=
+ml#describe-your-changes
+>
+I'm thinking why to change it from 'add' to "Add'.
+Ah, I misunderstand it.
+> > > > MediaTek MT6370 IC.
+>
+> ...
+>
+> > > > +       ret =3D devm_request_threaded_irq(dev, priv->irq, NULL,
+> > > > +                                       mt6370_irq_handler, IRQF_ON=
+ESHOT,
+> > > > +                                       dev_name(dev), priv);
+> > > > +       if (ret) {
+> > >
+> > > > +               tcpci_unregister_port(priv->tcpci);
+> > >
+> > > This is wrong.
+> > > You mixed devm_ with non-devm. Either drop devm_ *after* the first
+> > > non-devm_ call, or convert everything to be managed.
+> > >
+> > How about to add 'devm_add_action_or_reset' for tcpci_unregister_port?
+> > This will convert all as 'devm_' version.
+>
+> I think it would work, that wrapper was designed to cover cases like this=
+.
+>
+> > > > +               return dev_err_probe(dev, ret, "Failed to allocate =
+irq\n");
+> > > > +       }
+>
+> ...
+>
+> > > > +static int mt6370_tcpc_remove(struct platform_device *pdev)
+> > > > +{
+> > > > +       struct mt6370_priv *priv =3D platform_get_drvdata(pdev);
+> > >
+> > > > +       disable_irq(priv->irq);
+> > >
+> > > Why?
+> > > An ugly workaround due to ordering issues in ->probe()?
+> > >
+> > Yes, due to the ordering in probe.
+> > 'bus remove' will be called before device resource releases.
+> >
+> > Like as you said, another way is to convert all as non-devm
+> > version after 'tcpci_unregister_port'.
+> >
+> > If to keep the original order, 'disable_irq' before
+> > 'tcpci_unregister_port' can make the flow more safe.
+> >
+> > Or you can think one case if irq triggers after
+> > 'tcpci_unregister_port'. Null pointer occurs.
+> >
+> > Anyway, in next revision, I'll convert all to be 'devm_' version.
+> > For this remove callback, only 'dev_pm_clear_wake_irq' and
+> > 'device_init_wakeup' will be kept.
+> >
+> > Is this better?
+>
+> Sounds like a plan!
+>
+Already did. Just to double confirm the changes.
+Thanks. All are clear.
+> > > > +       tcpci_unregister_port(priv->tcpci);
+> > > > +       dev_pm_clear_wake_irq(&pdev->dev);
+> > > > +       device_init_wakeup(&pdev->dev, false);
+> > > > +
+> > > > +       return 0;
+> > > > +}
+>
+> --
+> With Best Regards,
+> Andy Shevchenko
 
