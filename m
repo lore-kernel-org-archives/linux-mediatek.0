@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B929EC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 22:12:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 931D2C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 23:18:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I5P2L0WLevPL4mEs+mahKfKvJT3Ds4cVYwiT4kd7ZdY=; b=SvzZIubNC4jKi4UfSuA8mA04J9
-	DX+uGoy8+b3UtbZsQ+aRWhzAKFVja+IUuvAacfR1jEgKU3yjkzMAvTXWt+pXqyEvi8rSnFfCV35mI
-	4ltOv0YUZZ6DOFpyx31IBw7mt3DWo57JnXQzP5b1bBD/L7QOmlHDxw8dAiXqrNWHVAnA2bT4cqOGv
-	tETv24OjSC1dyUJr4zTuV5A79BgKwS9tz+tLHnQAU9rsk/r1vWuniAcJDNn9R1dTvEfEzVy7RCmQm
-	itMTHsmcN6Qjb5xHJwoAJENzOvd0WcX7jCJrB+21U8G/8F+Bb2dczuKP/LdKBf5YdspAY7+jTx2Ud
-	yOKVdsfA==;
+	bh=ZgBUUPJCJx4db6NcGWZfupQyT6TN11efMqHrwknEu2Y=; b=IAHcg9QEnoVbRN7nJkR28Viy3a
+	iIuU/Jc5SFE67BXJ/ZrgVMRWrcR8Lqo+xpo6fVrNrdqIgrSZ/eIEkWpR+59wjo0M5d84iE28E+WVf
+	XkHXhJOVYgHlOCSv3w+ztNL2GpbnoPSMVWJiJGL7LqGDlLR9GxfPo949o+sX+t9Fe/N+iJBf5PU0P
+	1P+7QWzQxC0atI+/hscVc8MqeTbq5v++b6Fz470Bt4O6bW+vLg5JBA7M0XXKLV0D5fgTPPq8D6f//
+	g/UTBPEJcQdcgj5iv/xY5deoo+6y4DjFUKoslyVL3iIMz0Hx2VLZzR3bkSPBtD10gqZji0ve4SqhK
+	UN3ny9+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDYyd-001y7L-9c; Mon, 18 Jul 2022 22:12:31 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oDa0e-002bSQ-2b; Mon, 18 Jul 2022 23:18:40 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDYyb-001y3k-1v
-	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 22:12:30 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1oDa0Q-002bA6-Rj; Mon, 18 Jul 2022 23:18:28 +0000
+Received: from notapiano (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8A32C61537;
-	Mon, 18 Jul 2022 22:12:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DFFDC341C0;
-	Mon, 18 Jul 2022 22:12:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658182347;
-	bh=xuEBZAMFlkeQ8csFA8rfMNdciRkANyRKQIQb5OMD2Y4=;
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C584C6601A63;
+	Tue, 19 Jul 2022 00:18:23 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658186304;
+	bh=UM4gBJ2BtVtD84duWT1ks5rNF+2B9D8ohiEI/ecjHAE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LVE584MiBk4opyD8B3ila+raoI7hvHfL4nItCc4ZqkDGSp/wB+ofxbkwx6j4uptrK
-	 NWSxG9pP6AgDh+8qnkmE13nrQhmcghQeXJeHTQt4tVf5jVVCA9MjL5j/nTKPyjJDLl
-	 1cIr9ajUqKH10K0qVzBReYY2buRJX1/xps3XlD56fcHrdLyOmXhbYvWgOs7iyaGCPO
-	 2kb4Zlel+QzVqFWScH9ikalvbtCdgJJten/SfPKXMz/dt2j0Ur/6HlqzAJ4f4ffrhj
-	 r9KOG3gm3kBRh36I0MQpZZLZPuRRpMRTzTcuVfRozXyedfUaLgApGlZRMjUF2AIlBa
-	 0TtIP/kK+r1qg==
-Date: Tue, 19 Jul 2022 00:12:24 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: sean.wang@mediatek.com
-Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
-	YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
-	Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com,
-	km.lin@mediatek.com, jenhao.yang@mediatek.com,
-	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
-	ch.yeh@mediatek.com, posh.sun@mediatek.com, ted.huang@mediatek.com,
-	Stella.Chang@mediatek.com, Tom.Chou@mediatek.com,
-	steve.lee@mediatek.com, jsiuda@google.com, frankgor@google.com,
-	kuabhs@google.com, druth@google.com, abhishekpandit@google.com,
-	shawnku@google.com, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 4/4] mt76: mt7921u: remove unnecessary MT76_STATE_SUSPEND
-Message-ID: <YtXayNzRHEQ2ut2l@lore-desk>
-References: <a1437e413116364ac9f3b777c7922ca0728ddc0d.1658176701.git.sean.wang@kernel.org>
- <2938c18e2a14e26de293adcf68cd851ca0a7474a.1658176701.git.sean.wang@kernel.org>
+	b=FyBw7ORsfV6wYz+uF3dMl9dfMnwLCnH4+eMBjvEW1L1CBoE5fShAwFfD/InMUNTfT
+	 YSfkN8EZrUjOvN5xfhvbjXk6fyMwsZUL6BBcekKJkiH+JlgLIv+xCo+GNb06tVHkhY
+	 ootcuQKxB9duhelQ9L2p1THTz2UGG3pTo29/Y+Q0uFzKCqjSUhbIFzOiWcCgx6YtMB
+	 h3r0zkUHU5QsTvJx1j7MAxYrb5HGpxnq3PMYbx4aD6FVl8FhFtngT64jGG9yETf70P
+	 FBxyOwlLKm6mcwdeTZBJK5yFR2OZqY6De96DVly4u52l7wxDr/CiLYgQRotxdxFj5F
+	 P8OOq6tUfBJ1g==
+Date: Mon, 18 Jul 2022 19:18:20 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH v3 3/5] arm64: dts: mediatek: Add mmsys #reset-cells
+ property for mt8192
+Message-ID: <20220718231820.j6dxkd5hmfsi6vrq@notapiano>
+References: <20220712114046.15574-1-allen-kh.cheng@mediatek.com>
+ <20220712114046.15574-4-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="MetnIjz+5ZCpraq0"
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <2938c18e2a14e26de293adcf68cd851ca0a7474a.1658176701.git.sean.wang@kernel.org>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220712114046.15574-4-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_151229_159874_1AE915C5 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20220718_161827_048476_05BA1F8C 
+X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,63 +79,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jul 12, 2022 at 07:40:44PM +0800, Allen-KH Cheng wrote:
+> To support reset of mmsys, we include mt8192-resets.h and add
+> property of #reset-cells in mmsys.
+> 
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 
---MetnIjz+5ZCpraq0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> From: Sean Wang <sean.wang@mediatek.com>
->=20
-> remove unnecessary MT76_STATE_SUSPEND manipulation to be consistent
-> with the mt7921[e, s] driver.
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
->=20
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7921/usb.c | 4 ----
->  1 file changed, 4 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7921/usb.c
-> index 124d62c0dfa4..a8ea03d4f990 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-> @@ -313,8 +313,6 @@ static int mt7921u_suspend(struct usb_interface *intf=
-, pm_message_t state)
->  	mt76u_stop_rx(&dev->mt76);
->  	mt76u_stop_tx(&dev->mt76);
-> =20
-> -	set_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
-> -
->  	return 0;
-> =20
->  failed:
-> @@ -354,8 +352,6 @@ static int mt7921u_resume(struct usb_interface *intf)
->  			goto failed;
->  	}
-> =20
-> -	clear_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
-> -
->  	err =3D mt76u_resume_rx(&dev->mt76);
->  	if (err < 0)
->  		goto failed;
-> --=20
-> 2.25.1
->=20
-
---MetnIjz+5ZCpraq0
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYtXayAAKCRA6cBh0uS2t
-rBb9AQCLIcE0D+bIK36JveSLI9KH5D89zJ9ktnGQHzlWY7WWvwEAvnNqDBIKVlIU
-NKfbokH7KQK55UAEAMMV0LK7XKddjwQ=
-=X1MV
------END PGP SIGNATURE-----
-
---MetnIjz+5ZCpraq0--
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
