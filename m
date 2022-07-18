@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C6E1C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 20:53:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2D3CC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 21:11:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IKyc0EEVpAOHwGQI9XZsb3G7/aMJBcZHBfRBc52XVIo=; b=vodyVxMJ497ZwmnGPCXrUnOIkZ
-	arQ7SKALVhQg1da56jq+6qce+KVnkoMi3iDcMXqNAHD+tRAIwiSavGIPJqXhT8Zu4SywpFgIxk/HK
-	8V+u/SnxBGeOkciqs7hrn4dkt+9D3YAqe4YQlcOQI4Z6dqQimCW8iChLjcfffB2Ib6agkbogZ0zmn
-	ZJugT7G9qfgG8miSUpppsZWW+HHeKpt5hr+bQenrlBKVSitdEAOJ3/tE/7XbcE36X66Sp1d+AgfHl
-	ipYU5Uz6xpqO8cGt0bx4kBloynUETJe6Fjk5r7THSgb5Tck6i1sUiMKG9gGsrnwuzAkZOLrhBFJoP
-	nebxGFZw==;
+	bh=GiRaIL+3Z8EiStHnx/0hNDg0iphjDSLHo0nIP2wct9c=; b=Z9cVc2flCsBs9eao8keAHbtkIr
+	h+/cpLyiBVyfy0xIv+cJ/goBMSk4AJQrQAmultV+S0rVSgKPFgol59yobjL3wRQbR9PbHE8oT+ox5
+	J+xgZSElsIcdXaq07yflLamQll5S2f6g+HDmnQc7RTozsOTgUCNW5spcOGHi3t0eEqAMkQEolqllD
+	7oN6LqLA6wFarHJ8nSoFcoWa8yIfpLiTvstwTTUapwrON1Cs6HqpmwCGgX0AYXC70h4DLkEadaytN
+	drSdMVrnHqU5OFX0s68d15h9N1IeTxA1/jVa7dfka7cHVyUXjxK/AB2iuXocGdSeMXOV1txJHSlrB
+	uDzktavA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDXjp-0018qO-AH; Mon, 18 Jul 2022 20:53:09 +0000
+	id 1oDY1k-001RcW-V7; Mon, 18 Jul 2022 21:11:40 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDXjl-0018RM-J1
-	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 20:53:07 +0000
-X-UUID: a216005d32be4bef8851dd00f3c85c0c-20220718
+	id 1oDY1i-001Rbt-0Z
+	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 21:11:39 +0000
+X-UUID: ec42cf6fb7f84f0fb297121195e5dfb9-20220718
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:66b212c1-76a4-48c7-a2e0-888f379806b8,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:b24e9e64-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.8,REQID:ec347f58-8639-43de-b927-710af6ab143e,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+	TION:release,TS:105
+X-CID-META: VersionHash:0f94e32,CLOUDID:13414e33-b9e4-42b8-b28a-6364427c76bb,C
+	OID:IGNORED,Recheck:0,SF:801,TC:nil,Content:3,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: a216005d32be4bef8851dd00f3c85c0c-20220718
+X-UUID: ec42cf6fb7f84f0fb297121195e5dfb9-20220718
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <sean.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1398668478; Mon, 18 Jul 2022 13:52:55 -0700
+	with ESMTP id 675729045; Mon, 18 Jul 2022 14:11:34 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 19 Jul 2022 04:52:17 +0800
+ Tue, 19 Jul 2022 04:51:30 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 19 Jul 2022 04:52:17 +0800
+ 15.2.792.3 via Frontend Transport; Tue, 19 Jul 2022 04:51:30 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -57,18 +57,18 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
 	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
 	<abhishekpandit@google.com>, <shawnku@google.com>,
 	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 3/3] mt76: mt7663s: fix the deadlock caused by sdio->stat_work
-Date: Tue, 19 Jul 2022 04:52:15 +0800
-Message-ID: <106a510630a27440b49170e9586f9dfbe831848e.1658176763.git.sean.wang@kernel.org>
+Subject: [PATCH 2/4] mt76: mt7921s: fix race issue between reset and suspend/resume
+Date: Tue, 19 Jul 2022 04:51:24 +0800
+Message-ID: <75694a4b71cb9a463472789ba43ffe53169dd831.1658176701.git.sean.wang@kernel.org>
 X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <aa7d7ed8f3a817525ab8c7b736f1ce52490a835e.1658176763.git.sean.wang@kernel.org>
-References: <aa7d7ed8f3a817525ab8c7b736f1ce52490a835e.1658176763.git.sean.wang@kernel.org>
+In-Reply-To: <a1437e413116364ac9f3b777c7922ca0728ddc0d.1658176701.git.sean.wang@kernel.org>
+References: <a1437e413116364ac9f3b777c7922ca0728ddc0d.1658176701.git.sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_135305_654492_39B937D4 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20220718_141138_079894_A81F7AD9 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,60 +85,72 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Because wake_work and sdio->stat_work share the same workqueue mt76->wq,
-if sdio->stat_work cannot acquire the mutex lock such as that was possibly
-held up by mt7615_mutex_acquire, we should exit immediately and schedule
-another stat_work to avoid blocking the mt7615_mutex_acquire.
+It is unexpected that the reset work is running simultaneously with
+the suspend or resume context and it is possible that reset work is still
+running even after mt7921 is suspended if we don't fix the race issue.
 
-Also, if mt7615_mutex_acquire was called by sdio->stat_work self, the wake
-would be blocked by itself, so we have to changing into an unblocking wake
-(directly wakeup via mt7615_mcu_drv_pmctrl, not via the wake_work) in the
-context.
+Thus, the suspend procedure should be waiting until the reset is completed
+at the beginning and ignore the subsequent the reset requests.
 
-Fixes: a66cbdd6573d ("mt76: mt7615: introduce mt7663s support")
+In case there is an error that happens during either suspend or resume
+handler, we will schedule a reset task to recover the error before
+returning the error code to ensure we can immediately fix the error there.
+
+Fixes: ca74b9b907f9 ("mt76: mt7921s: add reset support")
 Co-developed-by: YN Chen <YN.Chen@mediatek.com>
 Signed-off-by: YN Chen <YN.Chen@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt7615/usb_sdio.c  | 23 +++++++++++++++++--
- 1 file changed, 21 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/sdio.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c b/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c
-index 0052d103e276..5991b23e0d13 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c
-@@ -157,10 +157,29 @@ bool mt7663_usb_sdio_tx_status_data(struct mt76_dev *mdev, u8 *update)
- {
- 	struct mt7615_dev *dev = container_of(mdev, struct mt7615_dev, mt76);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+index 487acd6e2be8..d50ef6acb00e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+@@ -206,6 +206,7 @@ static int mt7921s_suspend(struct device *__dev)
+ 	pm->suspended = true;
+ 	set_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
  
--	mt7615_mutex_acquire(dev);
-+	if (!mutex_trylock(&mdev->mutex)) {
-+		/* Because wake_work and stat_work share the same workqueue
-+		 * mt76->wq, if sdio->stat_work cannot acquire the mutex lock,
-+		 * we should exit immediately and schedule another stat_work
-+		 * to avoid blocking the wake_work.
-+		 */
-+		struct work_struct *stat_work;
-+
-+		stat_work = mt76_is_sdio(mdev) ? &mdev->sdio.stat_work :
-+			    &mdev->usb.stat_work;
-+		queue_work(dev->mt76.wq, stat_work);
-+
-+		goto out;
-+	}
-+
-+	mt7615_mcu_set_drv_ctrl(dev);
-+
- 	mt7615_mac_sta_poll(dev);
--	mt7615_mutex_release(dev);
++	cancel_work_sync(&dev->reset_work);
+ 	cancel_delayed_work_sync(&pm->ps_work);
+ 	cancel_work_sync(&pm->wake_work);
  
-+	mt76_connac_power_save_sched(&mdev->phy, &dev->pm);
-+	mutex_unlock(&mdev->mutex);
+@@ -261,6 +262,9 @@ static int mt7921s_suspend(struct device *__dev)
+ 	clear_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
+ 	pm->suspended = false;
+ 
++	if (err < 0)
++		mt7921_reset(&dev->mt76);
 +
-+out:
- 	return false;
+ 	return err;
  }
- EXPORT_SYMBOL_GPL(mt7663_usb_sdio_tx_status_data);
+ 
+@@ -276,7 +280,7 @@ static int mt7921s_resume(struct device *__dev)
+ 
+ 	err = mt7921_mcu_drv_pmctrl(dev);
+ 	if (err < 0)
+-		return err;
++		goto failed;
+ 
+ 	mt76_worker_enable(&mdev->tx_worker);
+ 	mt76_worker_enable(&mdev->sdio.txrx_worker);
+@@ -288,11 +292,12 @@ static int mt7921s_resume(struct device *__dev)
+ 		mt76_connac_mcu_set_deep_sleep(mdev, false);
+ 
+ 	err = mt76_connac_mcu_set_hif_suspend(mdev, false);
+-	if (err)
+-		return err;
+-
++failed:
+ 	pm->suspended = false;
+ 
++	if (err < 0)
++		mt7921_reset(&dev->mt76);
++
+ 	return err;
+ }
+ 
 -- 
 2.25.1
 
