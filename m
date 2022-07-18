@@ -4,76 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD62C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 13:35:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4F78C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 13:44:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VA1ac5uvP0jL3b2/bdbOjZZsTK7eMBU+AUDAOCTSHWg=; b=2eRZHHNmPLYDYZi6EG3ZuRE3Gj
-	5mTt1O0M6RRQQpQuYLKWCcKPBjAKibvHhBfXgU5HNgq3WxH7hhM3k+GOjOTwEGGqdbyV6MpGU/c+S
-	fLmgXRfHkATn08WWHhtnIIBETozAyFltREUa5p33SdO4YRtf3azybDwLAl9X35LXACuPzjxjh7hbE
-	HZXZIvkW2SBDw/Hp8+Y2xfYRxeCKJmRfDwhbqxCTgEWB5ugzWwuLmrZit/I/f31LErDbNQRMIlUOm
-	m2soE1A8vyIOQwxDOn6eMQ+mZZI3qkAguQ0WbIf+Jv3ZSo6OOOq3X7upNRROQnqdN4/61pM0edSW4
-	ZwCm9JAA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CZe9nR22503id7mCWYlLyuxoXbqUPeri6pqKPq2JeZI=; b=1WPhDNySUp6NLXXQGX253grC9L
+	teMv2K7VFutLgIFp4zy1J3NZgD7gsbfF1jX+nBI4IuTAAZ8FftHwxgB0s9qH1VfXTVKfOvWsxXF0O
+	yBPFUhKUaj3c3RQHa+yrFIP/UUJh98B8KOuJZg10lot9Cj+/Y3UjmhhGCqBru6KLTJ7KoaZW/bqzj
+	p3BoDUVOfIgoWh171F1Bkix/Xc9xEekbsDZLL860HdlrHeYqWMqteK3w4FpOOAfyV9bm+36DR5JcX
+	tzW7fQkcAXssp7whmD/j7G5sedENzW/4S/2CDH1F3q0NAuYWUP5Ie9kElzYYaeFXIKsI9YEkHj7Ox
+	wAjq1YjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDQuN-00DnVZ-1m; Mon, 18 Jul 2022 13:35:35 +0000
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+	id 1oDR2W-00DrvU-J1; Mon, 18 Jul 2022 13:44:00 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDQuB-00DnNJ-CS
-	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 13:35:24 +0000
-Received: by mail-yw1-x112f.google.com with SMTP id 00721157ae682-31dfe25bd49so69774727b3.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 Jul 2022 06:35:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=VA1ac5uvP0jL3b2/bdbOjZZsTK7eMBU+AUDAOCTSHWg=;
-        b=GtcPSLBiM6uVu28CNcQ+3gFgolNxS+e7LoXMuTaGY+9J3FqlSMN48zcb+YRmQqN+oN
-         8yg2vjgbFJKXZ6ARwY73Oev38+VSNgvVRd5/hHVF6BBwkx9yT1SeLXKStgbIr3gPN2Xz
-         329Xjx+XXN34JXZ4nUnpv7f81QlqlZ3+duKUtDY5zEeILHRzEah+jGnZ4C/nF1g8KW0X
-         8dfv0KtzwpORo7etwbhg7PIM+SQIJumTQmvhkQlv0bsTmDWWdi+8YsFl4ZSf+S8qqMHZ
-         AdUiiI+ruf9YNMJSHKhu+wtddFY2l4MTFFuhoop5K9MhCNPKbyPmshgN2KioHUdtM7BC
-         rzmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=VA1ac5uvP0jL3b2/bdbOjZZsTK7eMBU+AUDAOCTSHWg=;
-        b=6m3PzFfYnZ0Bjwf6dzTtODtg0b13WfLn0ioBSAQnYO7VR9RzPEy8UEwR+Max7W7uki
-         jW6PCKEjWAw3rrhCK+YS6/b7NN9Xzb0gtqkg2wR5kSIC/pzRjYtyMnjoTCV8MDh5o45f
-         74Is6sA5v9UuSz3KdbdBAVcNt/VT1xbWQqOxwcdtFIZ9ag0A70aHsFZkBrIQcb6V4AJ2
-         E4111OKt1Z7A7b2GGSoeWa8PxwKkF9R3Hpoc/ESzjqy3hDMMUec17LtSLe8OWrO+Jsdj
-         A8hyB/7cLw/BX9RLBeNKXAZNynQ5rs7d+0ULW+UGM+Bd2sbN0J3Xfsyr8h1dV3Z/RBdi
-         XnAg==
-X-Gm-Message-State: AJIora8u+lAUCQKawUYJBl4joz5PTe9z82jv0Ty27J0dCN1J6Gb0FMYs
-	r4nyzgzZiiX0dhO8Tx0ncjQOCZM/lBg7iVfdmJBPDw==
-X-Google-Smtp-Source: AGRyM1sdYeiYVniKDN529cobMS4DD4f3Xk3cadvZzaf7otckgKV39IsVAGQFnrI/rZGNsEA726QcYYC4tiBj2zgCRpQ=
-X-Received: by 2002:a81:548a:0:b0:31c:b7d6:b3ca with SMTP id
- i132-20020a81548a000000b0031cb7d6b3camr30351662ywb.500.1658151320156; Mon, 18
- Jul 2022 06:35:20 -0700 (PDT)
+	id 1oDR2I-00Drm4-Cb; Mon, 18 Jul 2022 13:43:48 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id B11C1B81011;
+	Mon, 18 Jul 2022 13:43:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 678A2C341C0;
+	Mon, 18 Jul 2022 13:43:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1658151823;
+	bh=7tFBGqUCkSt48dOZXzzfz1gzARNR5pWpaicXyiZifAg=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=ZpQlyzBX+qw7XQHIlBSp/jjGa9M1Rd7hoGLTAZAEHVNR6vkW7pre56b/B3TkdfqPG
+	 YFZuBdAZpYt4TJxpaldPAiAy7NbT7zla/5ts/XDnQOhgg4TaDLYe7dHrm5Fm5uX6IE
+	 XKREkjDZdbDHAfuaLGK+x5xAtV9IQ1gETwlZLGcXy0s7aLgPLkJxYxJXWXaD8QqaL6
+	 6oSRXj3cT07k7fWaIbxmSfVeW09vQeANSI8lg8rM6ShSnJXiC7J4ziezzuA4bUgAQi
+	 AJVYjMSGknCWP0qUkTosPTx1oUEBwupxjk5PKPjZWdn1bdMX2J9Y61tZOvMKw0hjoB
+	 oRB29qgPRd2Zg==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, angelogioacchino.delregno@collabora.com, chunxu.li@mediatek.com
+Cc: tzungbi@google.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org, trevor.wu@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20220715085903.7796-1-chunxu.li@mediatek.com>
+References: <20220715085903.7796-1-chunxu.li@mediatek.com>
+Subject: Re: [PATCH v2] ASoC: mediatek: mt8195: extract SOF common code
+Message-Id: <165815182112.53643.17525611218975401104.b4-ty@kernel.org>
+Date: Mon, 18 Jul 2022 14:43:41 +0100
 MIME-Version: 1.0
-References: <20220715103029.204500-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220715103029.204500-1-angelogioacchino.delregno@collabora.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 18 Jul 2022 15:35:07 +0200
-Message-ID: <CACRpkdYagmVAim68q=AOzrQfPw=fk5Q1z+B7X3nRDa-X4XukOw@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: pinctrl: mt8195: Use drive-strength-microamp
- in examples
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	matthias.bgg@gmail.com, sean.wang@mediatek.com, nfraprado@collabora.com, 
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_063523_819734_C01ECF50 
-X-CRM114-Status: UNSURE (   7.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220718_064346_654288_4C42B692 
+X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,17 +69,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 15, 2022 at 12:30 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Fri, 15 Jul 2022 16:59:03 +0800, Chunxu Li wrote:
+> The functions related to SOF can be reused in different machine drivers,
+> such as mt8195 or mt8186, so extract the common code to avoid duplication.
+> 
+> Set mtk_soc_card_data which include machine private data and SOF private
+> data as card drvdata, then the difference between machine private can be
+> ignored such as mt8195_mt6359_priv or mt8186_mt6366_priv, at the same
+> time the SOF related code can be reused in different machine drivers.
+> 
+> [...]
 
-> The property mediatek,drive-strength-adv was deprecated: change the
-> example for i2c0-pins to use drive-strength-microamp.
->
-> Fixes: b6d9af2c6b69 ("dt-bindings: pinctrl: mt8195: Add and use drive-strength-microamp")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Applied to
 
-After finding this in my Inbox, drop my own uglyfix and apply this instead.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Yours,
-Linus Walleij
+Thanks!
+
+[1/1] ASoC: mediatek: mt8195: extract SOF common code
+      commit: 0caf1120c58395108344d5df4e09359b67e95094
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
