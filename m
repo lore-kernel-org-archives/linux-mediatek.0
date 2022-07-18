@@ -4,66 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61591C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 18:44:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EC1CC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 18:54:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xT29dFQG9gO6zUOkC6HwFgLGzT9S34ngMonC+QSf2Mg=; b=gjbBL0ftg6s/lr6Zzi6/Em91XZ
-	SmujjdtEV8JEURI9k4UDzEikUbshCzPVVYwFGKXMXSv6LD5PwK+YzK80LxfD6h88ThdXJLEXOXxXh
-	ODUrDv29mVRsZvGvN+Y6YZ0O1bJBxf93xySIelwR14RyPWTPTC+s0SIb7CN5VzIm+Blw/0noN1m88
-	fEjDaRMavnPxNhxbo7aiHnrKA+e4t/hsM+YB6Wnm7+LxUJcJl8Rnk0/rHCBBxHOrS2ClIWpXo51Ys
-	5lSQyuqON02oB20mbCRgQEgPXhAibJDRuZtUQWg3HZF2XIMPS+b3M0yVQXJxxTd0G0WFQ2/rD/fjA
-	p1kGHP1A==;
+	bh=EkiiRZgFHP2UB6MGX/83EWRtPvrGdrdH54QXgYdCoTw=; b=QnV1SMcB5XwgAm9PdLdHjLEkI3
+	S90PyBujEUwwIM+qWFKsmUnmUHX5NMyK1pyq6KU1w6H7Rc0udgdlX5gEkMPoVtnE/zGs2O0Mm1kev
+	1iJGMmK4mXdbFzMRPwmTpv6OtnpF5JuZjlVbPctURn7c/HB3n8VPmtdFzSB2hS+FjYFX4OQKudbmi
+	FdNEQ8lVBHEh9CXZ9dRpO7KhJ1dTCS6MM4a1rklUQuM/wZ6g7gCbgHbSvElzss5nX2Hs2xEZpB/6G
+	UfB8tGw5Vn/4Iyz/e2MlMH83AXSGib/qe2agN7wrftu75vAR696y6ngMFHDjZYTWV14gyfSQZScnn
+	VuoPa17g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDVj8-0005FV-6j; Mon, 18 Jul 2022 18:44:18 +0000
-Received: from mail-io1-f46.google.com ([209.85.166.46])
+	id 1oDVsZ-0009Om-9k; Mon, 18 Jul 2022 18:54:03 +0000
+Received: from mga17.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDVj5-0005Da-RS; Mon, 18 Jul 2022 18:44:17 +0000
-Received: by mail-io1-f46.google.com with SMTP id n7so10002211ioo.7;
-        Mon, 18 Jul 2022 11:44:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=xT29dFQG9gO6zUOkC6HwFgLGzT9S34ngMonC+QSf2Mg=;
-        b=xigrSO21cfdPniH2r8qEnh2tgAWtOTZzfxBdFe/L4eHf90SxAxWeKUnCVkdcnJbOtS
-         8fS/zuWsDIvsETAFWs4OKQJJkZpMf3mSBM+jkmJSZPjhJT8J0okYmXONLu6XNRe2Sg0P
-         O0mmVww9MSrnunLgRJOQSKaRaQLrTC3dqjIqI4usqz2+ggGZH5gxOB3NzV6nvs2fUAqQ
-         uwNLkCFN033oDq5sywJzSstc6T4eTfGb25Rq8aUWOoIBVJm+2jsAHUa2kgaLF1nR9DYo
-         ouAN3nEXFGtE6rqovxR5YtWViJdPUp9mUlBSlqfRSXQUt8DaqfJ5OvAaTyNku5ooklBu
-         3gog==
-X-Gm-Message-State: AJIora84Yh/kdBAXYJUeD++i5uqGVJhYet9zqbRp1BUtlZqpyOpX0fmt
-	G9sYqPwto72cleGxwb4K2A==
-X-Google-Smtp-Source: AGRyM1s6VYhtM8AfinB2gMgIvElLBBuNUg5GEn+jv3VioD1/E3fdRmV5D0aWKyrIxBqsnn62hvzymw==
-X-Received: by 2002:a05:6638:272c:b0:33f:6fe4:b76f with SMTP id m44-20020a056638272c00b0033f6fe4b76fmr14884160jav.284.1658169853769;
-        Mon, 18 Jul 2022 11:44:13 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id g26-20020a05663810fa00b00339d244c4a6sm5876544jae.23.2022.07.18.11.44.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Jul 2022 11:44:13 -0700 (PDT)
-Received: (nullmailer pid 3326217 invoked by uid 1000);
-	Mon, 18 Jul 2022 18:44:11 -0000
-Date: Mon, 18 Jul 2022 12:44:11 -0600
-From: Rob Herring <robh@kernel.org>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Xiandong Wang <xiandong.wang@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v2 1/2] dt-bindings: soc: mediatek: add mdp3 mutex
- support for mt8186
-Message-ID: <20220718184411.GA3326033-robh@kernel.org>
-References: <20220711123247.15807-1-allen-kh.cheng@mediatek.com>
- <20220711123247.15807-2-allen-kh.cheng@mediatek.com>
+	id 1oDVsO-0009K5-2F; Mon, 18 Jul 2022 18:53:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1658170432; x=1689706432;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=uTLGXZcNL+L1yAPxsxYvJrrXWc9UE0EXaIFLw+I10gc=;
+  b=JWegjbxQoKE3n6yGf8RWnZSgl8NI/nBKknRJEI1fkq2AKR3BV+f3v3C3
+   Q1P0999bEEO8hpnb3ARxCQP9tTg7xIC/feOvcSad1HYA8mzEcwiRHHFD+
+   D7gRMbvW6v6jxbSZTyQr5wP8yscjYFYhYNCZNJT/rPAuDlPTizghg2bYc
+   y2RXSnjlK0IeHgJC9EbC8iQdstBr2YBKBj1V+XCLGph+kGtmfVlRZtJaR
+   B3LkSRHJZCiynfTyGsvgt8ka7g1OUjupTA1YLuoSm7o9s/1Zzys+eyV/S
+   XFop+32VH9Z/FjBU+zJHcBZC8YNkJxHLWejfOiOwuXa3i/p+OS43R0cei
+   A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10412"; a="266701202"
+X-IronPort-AV: E=Sophos;i="5.92,281,1650956400"; 
+   d="scan'208";a="266701202"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2022 11:53:51 -0700
+X-IronPort-AV: E=Sophos;i="5.92,281,1650956400"; 
+   d="scan'208";a="723961155"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2022 11:53:43 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1oDVsB-001OOr-1i;
+	Mon, 18 Jul 2022 21:53:39 +0300
+Date: Mon, 18 Jul 2022 21:53:39 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
+Subject: Re: [PATCH net-next 2/6] software node: allow named software node to
+ be created
+Message-ID: <YtWsM1nr2GZWDiEN@smile.fi.intel.com>
+References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+ <E1oCNky-006e3g-KA@rmk-PC.armlinux.org.uk>
+ <YtHGwz4v7VWKhIXG@smile.fi.intel.com>
+ <20220715201715.foea4rifegmnti46@skbuf>
+ <YtHPJNpcN4vNfgT6@smile.fi.intel.com>
+ <20220715204841.pwhvnue2atrkc2fx@skbuf>
+ <YtVSQI5VHtCOTCHc@smile.fi.intel.com>
+ <YtVfppMtW77ICyC5@shell.armlinux.org.uk>
+ <YtWp3WkpCtfe559l@smile.fi.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220711123247.15807-2-allen-kh.cheng@mediatek.com>
+In-Reply-To: <YtWp3WkpCtfe559l@smile.fi.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_114415_909697_38B4E77B 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20220718_115352_164735_8671229B 
+X-CRM114-Status: GOOD (  37.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,15 +115,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 11 Jul 2022 20:32:46 +0800, Allen-KH Cheng wrote:
-> Add mdp3 mutex compatible for mt8186 SoC.
+On Mon, Jul 18, 2022 at 09:43:42PM +0300, Andy Shevchenko wrote:
+> On Mon, Jul 18, 2022 at 02:27:02PM +0100, Russell King (Oracle) wrote:
+> > On Mon, Jul 18, 2022 at 03:29:52PM +0300, Andy Shevchenko wrote:
+> > > On Fri, Jul 15, 2022 at 11:48:41PM +0300, Vladimir Oltean wrote:
+> > > > So won't kobject_init_and_add() fail on namespace collision? Is it the
+> > > > problem that it's going to fail, or that it's not trivial to statically
+> > > > determine whether it'll fail?
+> > > > 
+> > > > Sorry, but I don't see something actionable about this.
+> > > 
+> > > I'm talking about validation before a runtime. But if you think that is fine,
+> > > let's fail it at runtime, okay, and consume more backtraces in the future.
+> > 
+> > Is there any sane way to do validation of this namespace before
+> > runtime?
 > 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
-> ---
->  .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml         | 1 +
->  1 file changed, 1 insertion(+)
+> For statically compiled, I think we can do it (to some extent).
+> Currently only three drivers, if I'm not mistaken, define software nodes with
+> names. It's easy to check that their node names are unique.
 > 
+> When you allow such an API then we might have tracebacks (from sysfs) bout name
+> collisions. Not that is something new to kernel (we have seen many of a kind),
+> but I prefer, if possible, to validate this before sysfs issues a traceback.
+> 
+> > The problem in this instance is we need a node named "fixed-link" that
+> > is attached to the parent node as that is defined in the binding doc,
+> > and we're creating swnodes to provide software generated nodes for
+> > this binding.
+> 
+> And how you guarantee that it will be only a single one with unique pathname?
+> 
+> For example, you have two DSA cards (or whatever it's called) in the SMP system,
+> it mean that there is non-zero probability of coexisting swnodes for them.
+> 
+> > There could be several such nodes scattered around, but in this
+> > instance they are very short-lived before they are destroyed, they
+> > don't even need to be published to userspace (and its probably a waste
+> > of CPU cycles for them to be published there.)
+> > 
+> > So, for this specific case, is this the best approach, or is there
+> > some better way to achieve what we need here?
+> 
+> Honestly, I don't know.
+> 
+> The "workaround" (but it looks to me rather a hack) is to create unique swnode
+> and make fixed-link as a child of it.
+> 
+> Or entire concept of the root swnodes (when name is provided) should be
+> reconsidered, so somehow we will have a uniqueness so that the entire
+> path(s) behind it will be caller-dependent. But this I also don't like.
+> 
+> Maybe Heikki, Sakari, Rafael can share their thoughts...
+> 
+> Just for my learning, why PHY uses "fixed-link" instead of relying on a
+> (firmware) graph? It might be the actual solution to your problem.
+> 
+> How graphs are used with swnodes, you may look into IPU3 (Intel Camera)
+> glue driver to support devices before MIPI standardisation of the
+> respective properties.
 
-Acked-by: Rob Herring <robh@kernel.org>
+Forgot to say (yes, it maybe obvious) that this API will be exported,
+anyone can use it and trap into the similar issue, because, for example,
+of testing in environment with a single instance of the caller.
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
