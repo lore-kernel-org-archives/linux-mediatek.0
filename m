@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBF63C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 19:24:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36954C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 20:08:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TcMtG5unfs7Ni87bQfLOr8RHQ4bLOchHyMs0+98z1SQ=; b=Kyuggu/bZO7ayvXq+hduhK6z/1
-	LFiivSpquqaeE8Qa/MFJg/KhBqNWI/LXbgKi2Rns0WcVH4poUR0aCIp0WlDPpo3o9THj8C1YIQZqT
-	0CN3dBlWFyl/mVAy39vJypsN4j4fs46NQBJvbbLLra2doztNSD9qV9oDzY3lp38gUtyHxBPP8X9EU
-	VtWg5qZ8R4Pw+iicyLkzDepPyB0lPioHHKxIL0GM9O3ZK57OodzYcOvO6IjPkEDPHB+8Obqj2GLfH
-	xGa7Y2dW6FzG+BTdHGyaaOdhdKoUchKoP2vwFjdQuUP9PxVS6R23EpUcKyhSM1XbcoENZIOcp4nSJ
-	9ZL4Vb/Q==;
+	bh=4OB22T4aJqUbbauHh0mNXYAi22fbT27xs3KHIotHfRs=; b=IE69GN4Q9I5HAPRG0KvdAEFh9e
+	B7qKLiGifbLG2b2lXGCM9VfDmu7YnaVZjYkJ7Jbw4w2c8q2zNw+8Hr5MrB6mPJJot3cIAeH+9AVWr
+	OA9SS68mKctkv1AdMEywEXTRr+LSRYIZK3EbmsQjXgI7XOO+WgYt0I5W11AhFUw++QAoeVq4wT1rX
+	YuveMbG9gDJyLOcCYm3my/vMn/FwQMEtMXMnLxc/Rwh+wATnO9nRHeOo+OM0J9DCqD+yRY5esDqLe
+	XsSxcO0GlOO98GWhTp//LXZQk5es7ct1ClXPL9ck5PF4EBg4pa/GxjgW54O4ypvab1kKKEx03xUYg
+	f7IPnRag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDWM7-000NBU-UR; Mon, 18 Jul 2022 19:24:35 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1oDX24-000exX-F3; Mon, 18 Jul 2022 20:07:56 +0000
+Received: from mga07.intel.com ([134.134.136.100])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDWLw-000N4U-DP; Mon, 18 Jul 2022 19:24:25 +0000
+	id 1oDX1s-000eqt-BD; Mon, 18 Jul 2022 20:07:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1658172264; x=1689708264;
+  t=1658174864; x=1689710864;
   h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=OXqejUTzX+fvce7JjUJhsn70C74RWhXrDYrBi19HgoQ=;
-  b=lzbZL0JHqJcTFrp7tmMNNnEQ64F01ShxbWDdXT7fJdnHCkw0uRPSflk+
-   LFiIjknAOZD1Lf/DZTBA7dLs70Sa7fnQa5tIo+f7jAAGfUqHDZYMOuVac
-   Zep7PcmqToIsFTt1pUxzMQKMFkIt54iWejHK1e5x9ZE9KfXRirs3hau0g
-   q3sER844xR1FYzVsRn7m537ly8Tot5lnSZSYYTtR+J/7lL0TFKzFPQIb+
-   ghGzBcN0eDhoyF3gjud7f7KITmg6vqdgriQ5Ga/hLHDhXD/7WW3U2UjIQ
-   qW4bj+XTnnCOCquEau9dCP29Dm/PWYzsdPWVrUtQlVljlqmVQIqPKbgup
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=6c8zIjxHQ8nkeBT76+tE1tfZwAKSyLtonXBo9InpdJw=;
+  b=Gtjr9ptDQz1LBuG7KhLdrPGyLso6RAvxba/T+YCjUYLBOpGxF5EIr9uh
+   XcjU64VheIioP9wuFw9chqSn7Z6TsMVo7jycvby8SL9gDare1mFccpK+6
+   hmJ4kYzV3tGe+FDlLDsFz40rqbyeTrPpUxWWc9hhuyly2jz6Ez17hTnye
+   LywOGLOubQz2THtpV76buAyp5p2UAD+klHj8mwF0ge3dWzgtzFI2mxNuc
+   nzuiOZGmAaIjAm4Om4hBg9rD5D39TxeZxKTN6ggopWIV1bparXS9KaMUA
+   nvHUk+NbxeQxyxfJs72D6NmVFMSar2Y6zsTLIPOHqtIMJblP+wtEHqXIy
    w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10412"; a="283869691"
-X-IronPort-AV: E=Sophos;i="5.92,281,1650956400"; 
-   d="scan'208";a="283869691"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2022 12:24:22 -0700
-X-IronPort-AV: E=Sophos;i="5.92,281,1650956400"; 
-   d="scan'208";a="624860660"
+X-IronPort-AV: E=McAfee;i="6400,9594,10412"; a="350273575"
+X-IronPort-AV: E=Sophos;i="5.92,282,1650956400"; 
+   d="scan'208";a="350273575"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2022 13:07:42 -0700
+X-IronPort-AV: E=Sophos;i="5.92,282,1650956400"; 
+   d="scan'208";a="547636013"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2022 12:24:14 -0700
+  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Jul 2022 13:07:35 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.96)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1oDWLh-001OQH-3C;
-	Mon, 18 Jul 2022 22:24:09 +0300
-Date: Mon, 18 Jul 2022 22:24:09 +0300
+	id 1oDX1e-001OTQ-1x;
+	Mon, 18 Jul 2022 23:07:30 +0300
+Date: Mon, 18 Jul 2022 23:07:30 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: "Russell King (Oracle)" <linux@armlinux.org.uk>
 Cc: Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
@@ -83,8 +83,9 @@ Cc: Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
 	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
 Subject: Re: [PATCH net-next 2/6] software node: allow named software node to
  be created
-Message-ID: <YtWzWdkFVMg0Hyvf@smile.fi.intel.com>
-References: <E1oCNky-006e3g-KA@rmk-PC.armlinux.org.uk>
+Message-ID: <YtW9goFpOLGvIDog@smile.fi.intel.com>
+References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+ <E1oCNky-006e3g-KA@rmk-PC.armlinux.org.uk>
  <YtHGwz4v7VWKhIXG@smile.fi.intel.com>
  <20220715201715.foea4rifegmnti46@skbuf>
  <YtHPJNpcN4vNfgT6@smile.fi.intel.com>
@@ -92,16 +93,16 @@ References: <E1oCNky-006e3g-KA@rmk-PC.armlinux.org.uk>
  <YtVSQI5VHtCOTCHc@smile.fi.intel.com>
  <YtVfppMtW77ICyC5@shell.armlinux.org.uk>
  <YtWp3WkpCtfe559l@smile.fi.intel.com>
- <YtWsM1nr2GZWDiEN@smile.fi.intel.com>
- <YtWxMrz3LcVQa43I@shell.armlinux.org.uk>
+ <YtWwbMucEyO+W8/Y@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <YtWxMrz3LcVQa43I@shell.armlinux.org.uk>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <YtWwbMucEyO+W8/Y@shell.armlinux.org.uk>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_122424_494676_9E507B35 
-X-CRM114-Status: GOOD (  45.77  )
+X-CRM114-CacheID: sfid-20220718_130744_459867_884775D4 
+X-CRM114-Status: GOOD (  63.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,85 +117,174 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 18, 2022 at 08:14:58PM +0100, Russell King (Oracle) wrote:
-> On Mon, Jul 18, 2022 at 09:53:39PM +0300, Andy Shevchenko wrote:
-> > On Mon, Jul 18, 2022 at 09:43:42PM +0300, Andy Shevchenko wrote:
-> > > On Mon, Jul 18, 2022 at 02:27:02PM +0100, Russell King (Oracle) wrote:
-> > > > On Mon, Jul 18, 2022 at 03:29:52PM +0300, Andy Shevchenko wrote:
-> > > > > On Fri, Jul 15, 2022 at 11:48:41PM +0300, Vladimir Oltean wrote:
-> > > > > > So won't kobject_init_and_add() fail on namespace collision? Is it the
-> > > > > > problem that it's going to fail, or that it's not trivial to statically
-> > > > > > determine whether it'll fail?
-> > > > > > 
-> > > > > > Sorry, but I don't see something actionable about this.
+On Mon, Jul 18, 2022 at 08:11:40PM +0100, Russell King (Oracle) wrote:
+> On Mon, Jul 18, 2022 at 09:43:41PM +0300, Andy Shevchenko wrote:
+> > On Mon, Jul 18, 2022 at 02:27:02PM +0100, Russell King (Oracle) wrote:
+> > > On Mon, Jul 18, 2022 at 03:29:52PM +0300, Andy Shevchenko wrote:
+> > > > On Fri, Jul 15, 2022 at 11:48:41PM +0300, Vladimir Oltean wrote:
+> > > > > So won't kobject_init_and_add() fail on namespace collision? Is it the
+> > > > > problem that it's going to fail, or that it's not trivial to statically
+> > > > > determine whether it'll fail?
 > > > > > 
-> > > > > I'm talking about validation before a runtime. But if you think that is fine,
-> > > > > let's fail it at runtime, okay, and consume more backtraces in the future.
+> > > > > Sorry, but I don't see something actionable about this.
 > > > > 
-> > > > Is there any sane way to do validation of this namespace before
-> > > > runtime?
+> > > > I'm talking about validation before a runtime. But if you think that is fine,
+> > > > let's fail it at runtime, okay, and consume more backtraces in the future.
 > > > 
-> > > For statically compiled, I think we can do it (to some extent).
-> > > Currently only three drivers, if I'm not mistaken, define software nodes with
-> > > names. It's easy to check that their node names are unique.
-> > > 
-> > > When you allow such an API then we might have tracebacks (from sysfs) bout name
-> > > collisions. Not that is something new to kernel (we have seen many of a kind),
-> > > but I prefer, if possible, to validate this before sysfs issues a traceback.
-> > > 
-> > > > The problem in this instance is we need a node named "fixed-link" that
-> > > > is attached to the parent node as that is defined in the binding doc,
-> > > > and we're creating swnodes to provide software generated nodes for
-> > > > this binding.
-> > > 
-> > > And how you guarantee that it will be only a single one with unique pathname?
-> > > 
-> > > For example, you have two DSA cards (or whatever it's called) in the SMP system,
-> > > it mean that there is non-zero probability of coexisting swnodes for them.
-> > > 
-> > > > There could be several such nodes scattered around, but in this
-> > > > instance they are very short-lived before they are destroyed, they
-> > > > don't even need to be published to userspace (and its probably a waste
-> > > > of CPU cycles for them to be published there.)
-> > > > 
-> > > > So, for this specific case, is this the best approach, or is there
-> > > > some better way to achieve what we need here?
-> > > 
-> > > Honestly, I don't know.
-> > > 
-> > > The "workaround" (but it looks to me rather a hack) is to create unique swnode
-> > > and make fixed-link as a child of it.
-> > > 
-> > > Or entire concept of the root swnodes (when name is provided) should be
-> > > reconsidered, so somehow we will have a uniqueness so that the entire
-> > > path(s) behind it will be caller-dependent. But this I also don't like.
-> > > 
-> > > Maybe Heikki, Sakari, Rafael can share their thoughts...
-> > > 
-> > > Just for my learning, why PHY uses "fixed-link" instead of relying on a
-> > > (firmware) graph? It might be the actual solution to your problem.
-> > > 
-> > > How graphs are used with swnodes, you may look into IPU3 (Intel Camera)
-> > > glue driver to support devices before MIPI standardisation of the
-> > > respective properties.
+> > > Is there any sane way to do validation of this namespace before
+> > > runtime?
 > > 
-> > Forgot to say (yes, it maybe obvious) that this API will be exported,
-> > anyone can use it and trap into the similar issue, because, for example,
-> > of testing in environment with a single instance of the caller.
+> > For statically compiled, I think we can do it (to some extent).
+> > Currently only three drivers, if I'm not mistaken, define software nodes with
+> > names. It's easy to check that their node names are unique.
+> > 
+> > When you allow such an API then we might have tracebacks (from sysfs) bout name
+> > collisions. Not that is something new to kernel (we have seen many of a kind),
+> > but I prefer, if possible, to validate this before sysfs issues a traceback.
+> > 
+> > > The problem in this instance is we need a node named "fixed-link" that
+> > > is attached to the parent node as that is defined in the binding doc,
+> > > and we're creating swnodes to provide software generated nodes for
+> > > this binding.
+> > 
+> > And how you guarantee that it will be only a single one with unique pathname?
+> > 
+> > For example, you have two DSA cards (or whatever it's called) in the SMP system,
+> > it mean that there is non-zero probability of coexisting swnodes for them.
 > 
-> I think we're coming to the conclusion that using swnodes is not the
-> correct approach for this problem, correct?
+> Good point - I guess we at least need to attach the swnode parent to the
+> device so its path is unique, because right now that isn't the case. I'm
+> guessing that:
+> 
+>         new_port_fwnode = fwnode_create_software_node(port_props, NULL);
+> 
+> will create something at the root of the swnode tree, and then:
+> 
+>         fixed_link_fwnode = fwnode_create_named_software_node(fixed_link_props,
+>                                                               new_port_fwnode,
+>                                                               "fixed-link");
+> 
+> will create a node with a fixed name. I guess it in part depends what
+> pathname the first node gets (which we don't specify.) I'm not familiar
+> with the swnode code to know what happens with the naming for the first
+> node.
 
-If I understand the possibilities of the usage in _this_ case, then it's
-would be problematic (it does not mean it's incorrect). It might be due to
-swnode design restrictions which shouldn't be made, I dunno. That' why
-it's better to ask the others for their opinions.
+First node's name will be unique which is guaranteed by IDA framework. If we
+have already 2B nodes, then yes, it would be problematic (but 2^31 ought to be
+enough :-).
 
-By design swnode's name makes not much sense, because the payload there
-is a property set, where _name_ is a must.
+> However, it seems sensible to me to attach the first node to the device
+> node, thus giving it a unique fwnode path. Does that solve the problem
+> in swnode land?
 
-Now, telling you this, I'm questioning myself why the heck I added names
-to swnodes in the intel_quark_i2c_gpio driver...
+Yes, but in the driver you will have that as child of the device, analogue in DT
+
+  my_root_node { // equal the level of device node you attach it to
+	  fixed-link {
+	  }
+  }
+
+(Sorry, I don't know the DT syntax by heart, but I hope you got the idea.)
+
+To access it will be something like
+
+  child = fwnode_get_named_child_node(fwnode, "fixed-link");
+
+And reading properties, if needed,
+
+  ret = fnode_property_read_...(child, ...);
+
+
+But this might require to adopt drivers, no? Or I misunderstand the hierarchy.
+
+> > > There could be several such nodes scattered around, but in this
+> > > instance they are very short-lived before they are destroyed, they
+> > > don't even need to be published to userspace (and its probably a waste
+> > > of CPU cycles for them to be published there.)
+> > > 
+> > > So, for this specific case, is this the best approach, or is there
+> > > some better way to achieve what we need here?
+> > 
+> > Honestly, I don't know.
+> > 
+> > The "workaround" (but it looks to me rather a hack) is to create unique swnode
+> > and make fixed-link as a child of it.
+> > 
+> > Or entire concept of the root swnodes (when name is provided) should be
+> > reconsidered, so somehow we will have a uniqueness so that the entire
+> > path(s) behind it will be caller-dependent. But this I also don't like.
+> > 
+> > Maybe Heikki, Sakari, Rafael can share their thoughts...
+> > 
+> > Just for my learning, why PHY uses "fixed-link" instead of relying on a
+> > (firmware) graph? It might be the actual solution to your problem.
+> 
+> That's a question for Andrew, but I've tried to solicit his comments on
+> several occasions concerning this "feature" of DSA but I keep getting
+> no reply. Honestly, I don't know the answer to your question.
+> 
+> The only thing that I know is that Andrew has been promoting this
+> feature where a switch port, whether it be connected to the CPU or
+> to another switch, which doesn't specify any link parameters will
+> automatically use the fastest "phy interface mode" and the fastest
+> link speed that can be supported by the DSA device.
+> 
+> This has caused issues over the last few years which we've bodged
+> around in various ways, and with updates to one of the DSA drivers
+> this bodging is becoming more of a wart that's spreading. So, I'm
+> trying to find a way to solve this.
+> 
+> My initial approach was to avoid fiddling with the firmware tree,
+> but Vladimir proposed this approach as being cleaner - and it means
+> the "bodge" becomes completely localised in the DSA (distributed
+> switch architecture) code rather than being spread into phylink.
+> 
+> I wish we could get rid of this "feature" but since it's been
+> established for many years, and we have at least one known driver
+> that uses it, getting rid of it breaks existing firmware trees.
+> I think we also have one other driver that makes use of it as
+> well, but I can't say for certain (because it's not really possible
+> to discern which drivers use this feature from reading the driver
+> code.) I've tried asking Andrew if he knows and got no response.
+> 
+> So I'm in a complete information vacuum here - all that I know is
+> that trying to convert the mv88e6xxx DSA driver to use phylink_pcs
+> will break it (as reported by Marek Behún), because phylink doesn't
+> get used if firmware is using this "defaulting" feature.
+> 
+> It's part of the DT binding, and remains so today - the properties
+> specifying the "phy-mode", "fixed-link" etc all remain optional.
+
+Okay, grepping the kernel I see this:
+
+	dn = fwnode_get_named_child_node(fwnode, "fixed-link");
+
+This seems the same what you need. I dunno why swnode should be created with
+a name for this?
+
+Eliminating an empty root node sounds plausible effect, but the consequences
+are not 1:1 mapping of swnodes as it's designed for
+
+  firmware device node		+=	unique root swnode
+    property "X"		+=	property "Y"
+    child "A"			+=	child "B"
+
+Resulting firmware node as driver sees it:
+
+	device node
+		property "X"
+		property "Y"
+		child "A"
+		child "B"
+
+That's all said, I guess the way with a two swnodes (hierarhy) is the correct
+one from the beginning.
+
+To the API, now I can tell you how to validate!
+
+Just be sure if there is no name provided, we are just fine. Otherwise
+parent _swnode_ should be non-NULL. In such case parent can be only set
+either dynamically _or_ statically assigned with a name.
 
 -- 
 With Best Regards,
