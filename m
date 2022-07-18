@@ -4,77 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72E92C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 12:35:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F1AAC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 12:45:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8CXD+MKa/THuOcEHTbgRjAT/wlPG/2KQah8tBnn2Eeg=; b=y6af/LtEni12q8BFm9hZnBf791
-	AMbEetiQm+FZohLKsvJBXutH84M4dokLXNfE5Gq+hD8AIHnemaOXMsY/5M4hWgvOuEQh7o3LbKvT2
-	Zvu5TZdDQMQAIe/TaBetEzu450OIwfyS1ljiupFfgvCnngD8e3kWg5gv8J816AiZyWWQlgcyXlPff
-	z8tFEICfBfgCkpGOXB6mrzRMsTr+XFZmdRyywah2N0eVlL+fq9i/dputoMhfWFaEBcCXDGo0rMgUw
-	mRgJrhHPuxwC9rVZ7krTOplPPIBRAjqVa2hswWyaVraIcLJcTTrwE7gyJ6PQasD64UzDOSUVC5lc+
-	hcX26lYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7IFWD9rOa3cFODsg1oktUNlaFZA0e+wgChqqA5r3lCI=; b=Qxaf4kV++3wb9+JeRM03/eg6Ds
+	y8VVWAiZOcmbiIx/VKZw+cxKzXgQkd/u+p+DQ/CMdHJsy/V1tHFtoBcXgNHjKA4+Hf0BoKWZlkvSJ
+	hYcdwFCrJ2dX3Q+OhIOB/0nIbnexVPb8FyTIziBIwvZbfdXxfJnZTPLiKjZXUp9qKCXHy/mkooFx4
+	yiSmjAwGqk4Xfeqqwl1r9V0MWmA2oGeUtdktyjC35ALTz88kuXWviRuMjJ3IZa0ahraJVOqXkbNSM
+	L+nctp2qzne3YyPrw5qVUBAx73QtsuLPZvspXERmc/+qFyhA7kaTbBhCqVDu1ORt/49jERj5AMpuO
+	SlNWk1JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDPxo-00DL4w-T3; Mon, 18 Jul 2022 12:35:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oDQ7x-00DQ0h-OZ; Mon, 18 Jul 2022 12:45:33 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDPxl-00DL2Y-SE; Mon, 18 Jul 2022 12:35:03 +0000
-X-UUID: 19526dafd23f4345b3e237e8432c458c-20220718
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=8CXD+MKa/THuOcEHTbgRjAT/wlPG/2KQah8tBnn2Eeg=;
-	b=iObQvGyzuWjXG4oTXMaopTq8jrAFSk9Wguy1w+w/pRqBnVm3fQRD60mto1hFaHmxTkteeJhwtsCqFqVJB0lwUtp0p5A1ffwqM2bvape/TCij/QKV0AjygxZZmyCiOi/NViS/Ab6diUe0oCJnr8PUiC1zYlvb7OJ9V1GlnzfCmHg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:7d424239-0bfe-498f-a8ed-3a60aa661e3d,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:1d81cbd7-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 19526dafd23f4345b3e237e8432c458c-20220718
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2114334560; Mon, 18 Jul 2022 05:34:54 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 18 Jul 2022 19:34:17 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Mon, 18 Jul 2022 19:34:16 +0800
-Message-ID: <bb7877319b395e764653f14297c130f114799c7e.camel@mediatek.com>
-Subject: Re: [PATCH 3/5] media: mediatek: vcodec: Add mt8188 encoder driver
-From: Irui Wang <irui.wang@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Hans Verkuil" <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin
-	<tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-CC: Yong Wu <yong.wu@mediatek.com>, Maoguang Meng
-	<maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 18 Jul 2022 19:34:16 +0800
-In-Reply-To: <98b0edfa-9669-3adb-894d-5d6fce9e2f8f@collabora.com>
-References: <20220716093808.29894-1-irui.wang@mediatek.com>
-	 <20220716093808.29894-4-irui.wang@mediatek.com>
-	 <98b0edfa-9669-3adb-894d-5d6fce9e2f8f@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oDQ7l-00DPuK-GK; Mon, 18 Jul 2022 12:45:23 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id y8so15103902eda.3;
+        Mon, 18 Jul 2022 05:45:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=7IFWD9rOa3cFODsg1oktUNlaFZA0e+wgChqqA5r3lCI=;
+        b=p99zhkWDhGKA9ODAY4+fX755zVNNl2uBbiyFPYAnIQvQWiJFTqyNGkW3C0DzPEjOb3
+         j+G+6wuy0P+F4C2i4P6hFKSpgmEjYEmSK0IT5RNbEZS8J+fZzMDYiQ9AbtRqLzE/Tq+2
+         skI9/wvTs12rRJBKiDGFglkfWh9WnsRkOyNiZiBRzMKFVXZjkDLaSAbkPPCVzywcKyjE
+         anC5IAiERpDb9JKmR0/5rInOIr99OLVjginZebH1Mhawk5jL2JdGborFpdVP6OeWd4jH
+         IfSAaisx4w6GrAC8rDc4hfUQZ+L9G8s5t6bWa6u8Qxs9I0iFXaHzybaP/hgM+mf7Cqnz
+         EV3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=7IFWD9rOa3cFODsg1oktUNlaFZA0e+wgChqqA5r3lCI=;
+        b=ELBUoPMBtbXFOX41EYjO0LChdoyeh7Jofiu+9o/6bQjmmsAXRaWlmfxucSqUG5tyDL
+         XSywjEEffX2Ur/zASoFDmdxHd1rXlSjPn0UgGh8U/t29WQ7zOELvhj4NyQ0LpvX2JgXD
+         q0VM8keCqYlE/qC4nLMSXdnN7ZIo/fgOmGy2fQ3xdJoqn/TGzkEFg7BsltoNGFL++2K5
+         ermdD8jakv4f1AGZqx87tcQLazZ0itnhwOHxcQPgDfvi4F5l71TTcRS40sS+EKn3gXI3
+         Ob7ZBFSUlMrfmJzq51TrUrScjfo82XySjK9+ti1PqRdivVVjLr3z1yUK93ejneDuNblf
+         /eDA==
+X-Gm-Message-State: AJIora8BltqSMKpxE3jAzuMVRR6AHHkdC6WOzZDNnYs2teSltZuQ4q3c
+	w33oCgltUOWoNFnYUQCmscI=
+X-Google-Smtp-Source: AGRyM1tftSsQe96gfC6pO/qh3Lmxwz+DSL7dJlk0+NqGLz73Ov2REjs7OOwC8Gn51DlQnG3TpSv6kw==
+X-Received: by 2002:a05:6402:4245:b0:43a:961a:583f with SMTP id g5-20020a056402424500b0043a961a583fmr37014957edb.374.1658148316878;
+        Mon, 18 Jul 2022 05:45:16 -0700 (PDT)
+Received: from skbuf ([188.25.231.190])
+        by smtp.gmail.com with ESMTPSA id w5-20020aa7dcc5000000b00438a13508c4sm8553032edu.51.2022.07.18.05.45.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 Jul 2022 05:45:15 -0700 (PDT)
+Date: Mon, 18 Jul 2022 15:45:12 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Jakub Kicinski <kuba@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin =?utf-8?Q?=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>
+Subject: Re: [PATCH net-next 0/6] net: dsa: always use phylink
+Message-ID: <20220718124512.o3qxiwop7nzfjbfx@skbuf>
+References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
+ <20220715171719.niqcrklpk4ittfvl@skbuf>
+ <YtHVLGR0RQ6dWuBS@shell.armlinux.org.uk>
+ <20220715160359.2e9dabfe@kernel.org>
+ <20220716111551.64rjruz4q4g5uzee@skbuf>
+ <YtKkRLD74tqoeBuR@shell.armlinux.org.uk>
+ <20220716131345.b2jas3rucsifli7g@skbuf>
+ <YtUfg+WYIYYi5J+q@shell.armlinux.org.uk>
 MIME-Version: 1.0
-X-MTK: N
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YtUfg+WYIYYi5J+q@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_053501_954708_C7390A9C 
-X-CRM114-Status: GOOD (  19.61  )
+X-CRM114-CacheID: sfid-20220718_054521_569878_18A9AF14 
+X-CRM114-Status: GOOD (  52.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,60 +119,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RGVhciBBbmdlbG8sDQpPbiBNb24sIDIwMjItMDctMTggYXQgMTE6NTMgKzAyMDAsIEFuZ2Vsb0dp
-b2FjY2hpbm8gRGVsIFJlZ25vIHdyb3RlOg0KPiBJbCAxNi8wNy8yMiAxMTozOCwgSXJ1aSBXYW5n
-IGhhIHNjcml0dG86DQo+ID4gQWRkIG10ODE4OCdzIGNvbXBhdGlibGUgIm1lZGlhdGVrLG10ODE4
-OC12Y29kZWMtZW5jIi4NCj4gPiBBZGQgbXQ4MTg4J3MgZGV2aWNlIHByaXZhdGUgZGF0YSAibXQ4
-MTg4X3BkYXRhIi4NCj4gPiBSZW1vdmUgcGxhdGZvcm1fZ2V0X3Jlc291cmNlIEFQSSB0byBnZXQg
-SVJRIHJlc291cmUuDQo+ID4gDQo+ID4gU2lnbmVkLW9mZi1ieTogSXJ1aSBXYW5nIDxpcnVpLndh
-bmdAbWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICAgLi4uL21lZGlhdGVrL3Zjb2RlYy9tdGtf
-dmNvZGVjX2VuY19kcnYuYyAgICAgIHwgMjEgKysrKysrKysrKysrDQo+ID4gLS0tLS0tLQ0KPiA+
-ICAgMSBmaWxlIGNoYW5nZWQsIDEzIGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0pDQo+ID4g
-DQo+ID4gZGlmZiAtLWdpdA0KPiA+IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRlay92
-Y29kZWMvbXRrX3Zjb2RlY19lbmNfZHJ2LmMNCj4gPiBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
-bWVkaWF0ZWsvdmNvZGVjL210a192Y29kZWNfZW5jX2Rydi5jDQo+ID4gaW5kZXggOTVlOGMyOWNj
-YzY1Li42YjA2ODhiNDg3MmQgMTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9y
-bS9tZWRpYXRlay92Y29kZWMvbXRrX3Zjb2RlY19lbmNfZHJ2LmMNCj4gPiArKysgYi9kcml2ZXJz
-L21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL3Zjb2RlYy9tdGtfdmNvZGVjX2VuY19kcnYuYw0KPiA+
-IEBAIC0yMjgsNyArMjI4LDYgQEAgc3RhdGljIGludCBtdGtfdmNvZGVjX3Byb2JlKHN0cnVjdA0K
-PiA+IHBsYXRmb3JtX2RldmljZSAqcGRldikNCj4gPiAgIHsNCj4gPiAgIAlzdHJ1Y3QgbXRrX3Zj
-b2RlY19kZXYgKmRldjsNCj4gPiAgIAlzdHJ1Y3QgdmlkZW9fZGV2aWNlICp2ZmRfZW5jOw0KPiA+
-IC0Jc3RydWN0IHJlc291cmNlICpyZXM7DQo+ID4gICAJcGhhbmRsZSBycHJvY19waGFuZGxlOw0K
-PiA+ICAgCWVudW0gbXRrX3Zjb2RlY19md190eXBlIGZ3X3R5cGU7DQo+ID4gICAJaW50IHJldDsN
-Cj4gPiBAQCAtMjcyLDEzICsyNzEsNiBAQCBzdGF0aWMgaW50IG10a192Y29kZWNfcHJvYmUoc3Ry
-dWN0DQo+ID4gcGxhdGZvcm1fZGV2aWNlICpwZGV2KQ0KPiA+ICAgCQlnb3RvIGVycl9yZXM7DQo+
-ID4gICAJfQ0KPiA+ICAgDQo+ID4gLQlyZXMgPSBwbGF0Zm9ybV9nZXRfcmVzb3VyY2UocGRldiwg
-SU9SRVNPVVJDRV9JUlEsIDApOw0KPiANCj4gVGhpcyBuZWVkcyB0byBiZSBhIHNlcGFyYXRlZCBj
-b21taXQgd2l0aCBhIEZpeGVzIHRhZyENClNlcGFyYXRlIHRvIGFub3RoZXIgcGF0Y2gsIHRoYW5r
-cy4NCj4gDQo+ID4gLQlpZiAocmVzID09IE5VTEwpIHsNCj4gPiAtCQlkZXZfZXJyKCZwZGV2LT5k
-ZXYsICJmYWlsZWQgdG8gZ2V0IGlycSByZXNvdXJjZSIpOw0KPiA+IC0JCXJldCA9IC1FTk9FTlQ7
-DQo+ID4gLQkJZ290byBlcnJfcmVzOw0KPiA+IC0JfQ0KPiA+IC0NCj4gPiAgIAlkZXYtPmVuY19p
-cnEgPSBwbGF0Zm9ybV9nZXRfaXJxKHBkZXYsIDApOw0KPiA+ICAgCWlycV9zZXRfc3RhdHVzX2Zs
-YWdzKGRldi0+ZW5jX2lycSwgSVJRX05PQVVUT0VOKTsNCj4gPiAgIAlyZXQgPSBkZXZtX3JlcXVl
-c3RfaXJxKCZwZGV2LT5kZXYsIGRldi0+ZW5jX2lycSwNCj4gPiBAQCAtNDI4LDYgKzQyMCwxOCBA
-QCBzdGF0aWMgY29uc3Qgc3RydWN0IG10a192Y29kZWNfZW5jX3BkYXRhDQo+ID4gbXQ4MTk1X3Bk
-YXRhID0gew0KPiA+ICAgCS5jb3JlX2lkID0gVkVOQ19TWVMsDQo+ID4gICB9Ow0KPiA+ICAgDQo+
-ID4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX3Zjb2RlY19lbmNfcGRhdGEgbXQ4MTg4X3BkYXRh
-ID0gew0KPiA+ICsJLnVzZXNfZXh0ID0gdHJ1ZSwNCj4gPiArCS5jYXB0dXJlX2Zvcm1hdHMgPSBt
-dGtfdmlkZW9fZm9ybWF0c19jYXB0dXJlX2gyNjQsDQo+ID4gKwkubnVtX2NhcHR1cmVfZm9ybWF0
-cyA9DQo+ID4gQVJSQVlfU0laRShtdGtfdmlkZW9fZm9ybWF0c19jYXB0dXJlX2gyNjQpLA0KPiA+
-ICsJLm91dHB1dF9mb3JtYXRzID0gbXRrX3ZpZGVvX2Zvcm1hdHNfb3V0cHV0LA0KPiA+ICsJLm51
-bV9vdXRwdXRfZm9ybWF0cyA9IEFSUkFZX1NJWkUobXRrX3ZpZGVvX2Zvcm1hdHNfb3V0cHV0KSwN
-Cj4gPiArCS5taW5fYml0cmF0ZSA9IDY0LA0KPiA+ICsJLm1heF9iaXRyYXRlID0gNTAwMDAwMDAs
-DQo+ID4gKwkuY29yZV9pZCA9IFZFTkNfU1lTLA0KPiA+ICsJLmlzXzM0Yml0ID0gdHJ1ZSwNCj4g
-PiArfTsNCj4gPiArDQo+ID4gICBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBtdGtf
-dmNvZGVjX2VuY19tYXRjaFtdID0gew0KPiA+ICAgCXsuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxt
-dDgxNzMtdmNvZGVjLWVuYyIsDQo+ID4gICAJCQkuZGF0YSA9ICZtdDgxNzNfYXZjX3BkYXRhfSwN
-Cj4gPiBAQCAtNDM2LDYgKzQ0MCw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lk
-DQo+ID4gbXRrX3Zjb2RlY19lbmNfbWF0Y2hbXSA9IHsNCj4gPiAgIAl7LmNvbXBhdGlibGUgPSAi
-bWVkaWF0ZWssbXQ4MTgzLXZjb2RlYy1lbmMiLCAuZGF0YSA9DQo+ID4gJm10ODE4M19wZGF0YX0s
-DQo+ID4gICAJey5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE5Mi12Y29kZWMtZW5jIiwgLmRh
-dGEgPQ0KPiA+ICZtdDgxOTJfcGRhdGF9LA0KPiA+ICAgCXsuY29tcGF0aWJsZSA9ICJtZWRpYXRl
-ayxtdDgxOTUtdmNvZGVjLWVuYyIsIC5kYXRhID0NCj4gPiAmbXQ4MTk1X3BkYXRhfSwNCj4gPiAr
-CXsuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxODgtdmNvZGVjLWVuYyIsIC5kYXRhID0NCj4g
-PiAmbXQ4MTg4X3BkYXRhfSwNCj4gDQo+IFBsZWFzZSBrZWVwIHRoaXMgbGlzdCBhbHBoYWJldGlj
-YWxseSBzb3J0ZWQuDQpGaXggaW4gbmV4dCB2ZXJzaW9uLg0KDQpUaGFua3MNCkJlc3QgUmVnYXJk
-cy4NCj4gDQo+ID4gICAJe30sDQo+ID4gICB9Ow0KPiA+ICAgTU9EVUxFX0RFVklDRV9UQUJMRShv
-ZiwgbXRrX3Zjb2RlY19lbmNfbWF0Y2gpOw0KPiANCj4gDQo=
+On Mon, Jul 18, 2022 at 09:53:23AM +0100, Russell King (Oracle) wrote:
+> On Sat, Jul 16, 2022 at 04:13:45PM +0300, Vladimir Oltean wrote:
+> > On Sat, Jul 16, 2022 at 12:43:00PM +0100, Russell King (Oracle) wrote:
+> > > In the first RFC series I sent on the 24 June, I explicitly asked the
+> > > following questions:
+> > (...)
+> > > I even stated: "Please look at the patches and make suggestions on how
+> > > we can proceed to clean up this quirk of DSA." and made no mention of
+> > > wanting something explicitly from Andrew.
+> > > 
+> > > Yet, none of those questions were answered.
+> > > 
+> > > So no, Jakub's comments are *not* misdirected at all. Go back and read
+> > > my June 24th RFC series yourself:
+> > > 
+> > > https://lore.kernel.org/all/YrWi5oBFn7vR15BH@shell.armlinux.org.uk/
+> > 
+> > I don't believe I need to justify myself any further for why I didn't
+> > leave a comment on any certain day. I left my comments when I believed
+> > it was most appropriate for me to intervene (as someone who isn't really
+> > affected in any way by the changes, except for generally maintaining
+> > what's in net/dsa/, and wanting to keep a clean framework structure).
+> > Also, to repeat myself, blaming me for leaving comments, but doing so
+> > late, is not really fair. I could have not responded at all, and I
+> > wouldn't be having this unpleasant discussion. It begs the question
+> > whether you're willing to be held accountable in the same way for the
+> > dates on which you respond on RFC patches.
+> > 
+> > > I've *tried* my best to be kind and collaborative, but I've been
+> > > ignored. Now I'm hacked off. This could have been avoided by responding
+> > > to my explicit questions sooner, rather than at the -rc6/-rc7 stage of
+> > > the show.
+> > 
+> > I think you should continue to try your best to be kind and collaborative,
+> > you weren't provoked or intentionally ignored in any way, and it isn't
+> > doing these patches any good.
+> 
+> And yet again, I don't have answers to many of those questions... which
+> just shows how broken this process is, and how utterly pointless it is
+> 0to ask any questions in this area.
+> 
+> My conclusion: you don't care one bit to even answer questions until
+> there's a chance that patches that you disagree with might be merged,
+> and oh my god, you've got to respond to stop that happening because you
+> might disagree with something. You can't do the collaborative thing and
+> respond when someone asks explicit questions about how things should be
+> done.
+> 
+> I'm not going to let this go. I'm really pissed off by this and you
+> are the focus of my frustration.
 
+The hypothesis that you put forward is that I'm sabotaging you by not
+responding to RFCs, then leaving comments when you submit the patches
+proper, just so that they're delayed because I don't agree with them;
+and that the process is broken because it allows me to do just that and
+get away with it (for fun, I assume?).
+
+So first off, you sent the first RFC towards 2 people in To:, and 19
+people in Cc:. I was one of the people in Cc. You didn't ask *me* any
+explicit question. In fact, when you did, I responded within 5 hours:
+https://lore.kernel.org/linux-arm-kernel/20220707154303.236xaeape7isracw@skbuf/
+
+Then, why did I not respond earlier to questions I had an opinion on?
+
+Based on prior experience, anything I reply to you has a chance of
+inflaming you for reasons that are outside of my control, and the
+discussion derails and eventually ends with you saying that I'm being
+difficult and you're quitting for the day, week, month, kernel release
+cycle or what not. I'm not saying that's my fault or your fault in
+general, it's just a statistical observation based on past interactions,
+and it looks like this one is no different.
+
+With regard to this topic, there was ample opportunity for the patch set
+to come to a resolve without my intervention, and I decided that the
+best way to maximize the chances of this discussion not going sideways
+is to not say anything at all, especially when I don't need to.
+Gradually, the opportunity for the patch set to resolve itself without
+my intervention diminished, and I started offering my feedback to the code.
+
+It's perhaps necessary of me to not let this phrase of yours unaddressed,
+because it is subtly part of your argument that I'm just trying to delay
+your patches as part of a sabotage plot:
+
+| The only thing that delayed them was your eventual comments about
+| re-working how it was being done.
+
+Let's not forget that I did *not* request you to rework the implementation
+to use software nodes. I simply went with the code you originally proposed,
+explained why it is unnaturally structured in my view, asked you why you
+did not consider an alternative structure if you're not willing to make
+phylink absorb the logic, then you said you'd be happy to rework using
+software nodes.
+https://lore.kernel.org/netdev/20220707193753.2j67ni3or3bfkt6k@skbuf/
+
+My feedback was very actionable, I put forward a working prototype for
+using software nodes that did consume time for me to write, I was not
+being handwavy in any way. More importantly, you agreed with it and are
+using it now. And all of that happened during RFC stages. To ignore
+these facts when you state that I respond only to non-RFC patches is a
+lie by omission. I give feedback to code in the order of importance.
+Now was the time to point out that (a) I don't want to add support for
+the defaulting mode on CPU ports for drivers that didn't have it
+previously, and (b) I'd like to keep the current implementation of the
+defaulting feature as "don't register with phylink" as the default, with
+just an opt-in to create the software node. Drivers can opt into that
+behavior as need shows (breakage reports). Again, this is all extremely
+actionable feedback, and rather minor in the grand scheme of things.
+
+
+So I'm sorry, but your frustration expressed towards me for ignoring RFC
+patches *is* misdirected and there's nothing I will consider changing.
+If the discussion derailed now due to me it doesn't mean it wouldn't
+have derailed earlier. There are still many people who could have said
+more things than they did, and yet, I'm not even blaming them for not
+doing that. There is a chapter in a book by Robert Cialdini called
+"Influence: The Psychology of Persuasion" which discusses social proof,
+the mechanism through which people tend to do what others do when
+otherwise unsure. I'm paraphrasing, but there is a paragraph discussing
+what can be done when social proof works against you, for example you're
+being attacked on the street, you ask for help and nobody appears to do
+anything except for passing by. Summarized, you should ask for very
+specific things, point to people, say names, rather than get frustrated
+that the crowd does nothing.
+
+> Well, its now too late to do anything about this. This is going to miss
+> this cycle. It might get in next cycle, and whoopy do, for a kernel
+> that's very likely to be a LTS. Given the lack of testing that sounds
+> like a complete and utter disaster. One that was entirely avoidable had
+> feedback been given EARLIER in this cycle.
+
+If your patch set was a silver bullet to avoid breakage, that would have
+maybe changed things a little, but it isn't. For any driver that might
+boot using a DT blob with the defaulting feature for the CPU port, there
+is a gamble to be taken whether the better thing to do is to unleash phylink
+at it unattended or to let it be. Obviously having a driver maintainer
+assist phylink would be the correct thing, but until the board in question
+reaches a maintainer, chances are it will probably reach a user.
+
+What I'm trying to obtain in terms of changes is that the user can at
+least correlate the breakage he's seeing with a dmesg warning message
+that clearly indicates what phylink or DSA tried to do in lack of clear
+DT description.
 
