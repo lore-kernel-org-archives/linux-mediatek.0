@@ -4,74 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEE0BC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 09:54:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFCE0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 10:22:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/U1T3QL6WSfczgXAeuZeC2uroSxKpDzy0eSpL9j/Y9k=; b=pAvpHZDva7G1704g3Xoozk9UjK
-	f78IOsl/qVEyeroNnSFr3H1NVfropJAs9z0Q6EtiZf8BowAzVcCgqwFO7/QMJ0DOyWrcIbP5KlbAj
-	Fh7CtWZe3rIpJWerZ/dO4wHpHVsWgNshn5J1nCksW3pNj9clxW778l8TQ8aHFKnPuBjU8pfMECYe1
-	IDcUC9PqmDh8OuW3G94scY/vL5SOGbX9n6WFD7mucNKKnYUtBJyCVmoILERxwB0sONxEjP87Ku3ah
-	yvNdWhdedxIJ1InnwINZmiAM/v/2DHrTvZVEpR+lU4JI0efbqsigCUZ0JxDW0CBQ6Te/1ditMdcsk
-	6Eg0XeGw==;
+	bh=/Gq3YuZViH86BucJNwy705K+n0mwhnZXzspvMRqyms8=; b=NiT9WiXNb4Yrx/wQp6AoJVomPI
+	VjpYpDQtYD25nt5YIqHRASftPNEFEKqZh7Y1ujS27zdaMGl5hDamWn/XH8GMbQQf9SpB6rMx9ovCE
+	NOwxZIYTFsy37gSU3J7YvQazlU/xqWY3rTgMR9B9VTduQceRIwiZ6GjQ+i6B6RolFnUs6BtQsd4kx
+	iec84lRBU1Kbes1PZG/UtzESX40tXYlHdtZ5gfIYCrPbR9hGZgHpsKh/caNt2xixrUvWuBDUoz5/T
+	kLIur7nZUvLvthHMZ2o8NhrdUduq4ropqlvXbjXUpv1wQr/NjerWWfdvqngp/XuxctNDqXpT5CSTo
+	3FmmRvUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDNSf-00CHrC-E6; Mon, 18 Jul 2022 09:54:45 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oDNtd-00CQGV-08; Mon, 18 Jul 2022 10:22:37 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDNSQ-00CHjR-Px; Mon, 18 Jul 2022 09:54:32 +0000
+	id 1oDNtP-00CQAL-L3; Mon, 18 Jul 2022 10:22:25 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7151B66019EC;
-	Mon, 18 Jul 2022 10:54:28 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 973C66601A05;
+	Mon, 18 Jul 2022 11:22:20 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658138069;
-	bh=730F5cDo9gbvK3JLLYRq51ZQ/6vn6ZWi3Fd5hPgUBi0=;
+	s=mail; t=1658139741;
+	bh=MBfaA4l7s9JZSP3+F+mJre4x0mO0iWTWc7gCQfQH6R4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XQ38RAsgcAq0F9lmw96rWFo4or6eZKty5Ykii2WvIa+ZyouuO+YEK1Fn5dnQQ2frF
-	 c71p30E7qONWGb1Fc0M8ZI286D/Y1XcD5vz/A3I48KIrVhEmR6uW6+ZxziLRIeBABO
-	 0k+X/9kgDkYTYlnUKtRgZC8LOql6oI0Zwlk/VsnPwL9ommCMKfNB1lzhZCzcjJREIs
-	 TGhidwf9ORPT8M878DWh9W/PIFP3LMQNZiEhUcB+rZEZlTZv4XnQ0Vh7YWJH7UN+4g
-	 JONyjTpOCog22tYNWlxWyIvvAvhEi+zx659mGkLfi8JqbFHR/mgX8AU6estiWoQCX5
-	 ZW5peooyulStw==
-Message-ID: <9075358a-cdba-fc91-1940-d78a9b58bae3@collabora.com>
-Date: Mon, 18 Jul 2022 11:54:25 +0200
+	b=bgKQqeZ3BSO/JrSFq+us7gOSiaS9QQL/nZTgdDc4xU8jGJ0dJmRNikSXK4TmbX+Uz
+	 TnfbQetMKhMfBw1xftjD7PcseM2CVl3zSs4wLmJW62qtZEvQtjckQ6NEZFyad5ch20
+	 /QPjynMzbLT7nIgxIzsSPkJXUL5wr2uxjEu+poJFShYOVXeHKhUyslIBQW1stXP9Vq
+	 SGorPakSM4X2nlNM6/DUUwpm/DaZoWoIxxqUa7ftVkHhhPpsumAfMMaSd9nP3j3vw/
+	 8LJVKVM0VhX12KGP5DLBiBsHPHei28IUtxug2Dawy+KjCpS1Kzy2lBClQdNFR8I/ea
+	 lepl1nve+GCiA==
+Message-ID: <00dc6bff-d87a-0d80-fe20-ae70e5ad0c4f@collabora.com>
+Date: Mon, 18 Jul 2022 12:22:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH 5/5] media: mediatek: vcodec: Fix encoder multi-instance
- deadlock
+Subject: Re: [V5,3/8] media: mtk-jpegdec: manage jpegdec multi-hardware
 Content-Language: en-US
 To: Irui Wang <irui.wang@mediatek.com>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin
- <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Maoguang Meng
- <maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220716093808.29894-1-irui.wang@mediatek.com>
- <20220716093808.29894-6-irui.wang@mediatek.com>
+ Tzung-Bi Shih <tzungbi@chromium.org>, nicolas.dufresne@collabora.com,
+ wenst@chromium.org, kyrie wu <kyrie.wu@mediatek.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
+ xia.jiang@mediatek.com, maoguang.meng@mediatek.com,
+ srv_heupstream@mediatek.com
+References: <20220716093408.29734-1-irui.wang@mediatek.com>
+ <20220716093408.29734-4-irui.wang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220716093808.29894-6-irui.wang@mediatek.com>
+In-Reply-To: <20220716093408.29734-4-irui.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_025430_999790_1D63B46F 
-X-CRM114-Status: UNSURE (   8.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220718_032223_987706_54C5CA3F 
+X-CRM114-Status: GOOD (  22.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,13 +83,162 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/07/22 11:38, Irui Wang ha scritto:
-> The vb2_queue lock can be set by encoder context, the deadlock
-> may occur when running multi-instance encoding if use device
-> mutex lock.
+Il 16/07/22 11:34, Irui Wang ha scritto:
+> From: kyrie wu <kyrie.wu@mediatek.com>
 > 
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> manage each hardware information, including irq/clk/power.
+> the hardware includes HW0/HW1/HW2.
+> 
+> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+> Signed-off-by: irui wang <irui.wang@mediatek.com>
+> 
+> ---
+>   drivers/media/platform/mediatek/jpeg/Makefile |   5 +-
+>   .../platform/mediatek/jpeg/mtk_jpeg_core.c    |  23 +++
+>   .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  37 ++++
+>   .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 172 ++++++++++++++++++
+>   4 files changed, 235 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/jpeg/Makefile b/drivers/media/platform/mediatek/jpeg/Makefile
+> index 69703db4b0a5..26e84852523e 100644
+> --- a/drivers/media/platform/mediatek/jpeg/Makefile
+> +++ b/drivers/media/platform/mediatek/jpeg/Makefile
+> @@ -1,9 +1,10 @@
+>   # SPDX-License-Identifier: GPL-2.0-only
+>   obj-$(CONFIG_VIDEO_MEDIATEK_JPEG) += mtk_jpeg.o \
+> -	mtk-jpeg-enc-hw.o
+> +	mtk-jpeg-enc-hw.o \
+> +	mtk-jpeg-dec-hw.o
+>   
+>   mtk_jpeg-y := mtk_jpeg_core.o \
+> -		 mtk_jpeg_dec_hw.o \
+>   		 mtk_jpeg_dec_parse.o
+>   
+>   mtk-jpeg-enc-hw-y := mtk_jpeg_enc_hw.o
+> +mtk-jpeg-dec-hw-y := mtk_jpeg_dec_hw.o
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 386d48cc4f59..a9e8be976bb0 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1100,6 +1100,10 @@ static void mtk_jpeg_multicore_enc_device_run(void *priv)
+>   	queue_work(jpeg->workqueue, &ctx->jpeg_work);
+>   }
+>   
+> +static void mtk_jpeg_multicore_dec_device_run(void *priv)
+> +{
 
-This needs a Fixes tag.
+.... why is this function empty?!
 
+> +}
+> +
+>   static void mtk_jpeg_dec_device_run(void *priv)
+>   {
+>   	struct mtk_jpeg_ctx *ctx = priv;
+> @@ -1166,6 +1170,10 @@ static const struct v4l2_m2m_ops mtk_jpeg_multicore_enc_m2m_ops = {
+>   	.device_run = mtk_jpeg_multicore_enc_device_run,
+>   };
+>   
+> +static const struct v4l2_m2m_ops mtk_jpeg_multicore_dec_m2m_ops = {
+> +	.device_run = mtk_jpeg_multicore_dec_device_run,
+> +};
+> +
+>   static const struct v4l2_m2m_ops mtk_jpeg_dec_m2m_ops = {
+>   	.device_run = mtk_jpeg_dec_device_run,
+>   	.job_ready  = mtk_jpeg_dec_job_ready,
+> @@ -1680,6 +1688,17 @@ static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
+>   	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
+>   };
+>   
+> +static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
+> +	.formats = mtk_jpeg_dec_formats,
+> +	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
+> +	.qops = &mtk_jpeg_dec_qops,
+> +	.m2m_ops = &mtk_jpeg_multicore_dec_m2m_ops,
+> +	.dev_name = "mtk-jpeg-dec",
+> +	.ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
+> +	.out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
+> +	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
+> +};
+> +
+>   #if defined(CONFIG_OF)
+>   static const struct of_device_id mtk_jpeg_match[] = {
+>   	{
+> @@ -1698,6 +1717,10 @@ static const struct of_device_id mtk_jpeg_match[] = {
+>   		.compatible = "mediatek,mt8195-jpgenc",
+>   		.data = &mtk8195_jpegenc_drvdata,
+>   	},
+> +	{
+> +		.compatible = "mediatek,mt8195-jpgdec",
+> +		.data = &mtk8195_jpegdec_drvdata,
+> +	},
+>   	{},
+>   };
+>   
+
+..snip..
+
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+> index d2f25f43e852..232e81165dd3 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+
+..snip..
+
+> +
+> +static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
+> +{
+> +	struct mtk_jpegdec_clk *jpegdec_clk;
+> +	struct mtk_jpeg_dev *master_dev;
+> +	struct mtk_jpegdec_comp_dev *dev;
+> +	int ret, i;
+> +
+> +	struct device *decs = &pdev->dev;
+> +
+> +	if (!decs->parent)
+> +		return -EPROBE_DEFER;
+> +
+> +	master_dev = dev_get_drvdata(decs->parent);
+> +	if (!master_dev)
+> +		return -EPROBE_DEFER;
+> +
+> +	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
+> +	if (!dev)
+> +		return -ENOMEM;
+> +
+> +	dev->plat_dev = pdev;
+> +	dev->dev = &pdev->dev;
+> +
+> +	if (!master_dev->is_jpgdec_multihw) {
+> +		master_dev->is_jpgdec_multihw = true;
+> +		for (i = 0; i < MTK_JPEGDEC_HW_MAX; i++)
+> +			master_dev->dec_hw_dev[i] = NULL;
+> +	}
+> +
+> +	jpegdec_clk = &dev->jdec_clk;
+> +
+> +	jpegdec_clk->clk_num = devm_clk_bulk_get_all(&pdev->dev,
+> +						     &jpegdec_clk->clks);
+> +	if (jpegdec_clk->clk_num < 0)
+> +		return dev_err_probe(&pdev->dev,
+> +				      jpegdec_clk->clk_num,
+> +				      "Failed to get jpegdec clock count.\n");
+> +
+> +	dev->reg_base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(dev->reg_base))
+> +		return PTR_ERR(dev->reg_base);
+> +
+> +	ret = mtk_jpegdec_hw_init_irq(dev);
+> +	if (ret)
+> +		return dev_err_probe(&pdev->dev,
+> +				     ret,
+> +				     "Failed to register JPEGDEC irq handler.\n");
+
+Fix:
+		return dev_err_probe(&pdev->dev, ret,
+
+				     "Failed to register JPEGDEC irq handler.\n");
+
+
+Regards,
+Angelo
 
