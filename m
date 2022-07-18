@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD619C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 22:02:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BCF5C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 22:08:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b4lrAebbrsaV7SbYoAyQdPzI0ZTvSKq+0zcXGzBEpvY=; b=vbLGSxGSwZsCWQiUGO7G6/yEeq
-	MQxSASTfSN2rYmp99sG1XQnighD7AM59MHSuYgR0By6EYRI1+jfwpTdYcxnRZkE2Mg1dDZDI/ymjt
-	LnwFKxe6R8ipLYfe6Al9oIabsabID389QhTISKOG2mOIykQJOsYBdk8ntjgpXqldxbcnrcf1Im4a4
-	AziZXCcJiu8KtAXvSJ7dMfVH/FOdgGw/zEYh5chgVMHFvIajxpQKEMJAgjMGb9f8NaFw1yH8iif/O
-	8r5sieyu+gTtSmUC8cvBwBFukz0m7XsdTDkf2t3bSLXyFYKhGLB0ILo7SXas9rnDEesGBQCsW+0ZW
-	nLoDU7TQ==;
+	bh=nlKIAvgvoA3s9BP71Dm56/pB9AFOuS05UqS8MbtXLro=; b=R76LbDlh/+dPn5MfUUsCHbu7wU
+	70V4ahg5NiKNsVILDKoZtkq7+GlqCnFxTOLmu1u6ITJoKMN3jN0DakdWTDPjZuz63GVPs/VaYP28v
+	hIz0h0WbqzW67+6hRPTuDLEXhPCG6bB0zOUopQy0mh8WG/6y7FRvs9evdXHGQR1qE1jIqH3KHEK9S
+	dNJvC9H4BVdWDTTzD8tr8VovfPWQe7fnorbuTGZ9l79vow3L1vPt0BtHhE2okhzk+J4IrL0GRZsEl
+	Me1edHdZvWRcDLipHWl2aD4dowy0zUyM0lxuLhfLw+4Fv3DP73ERfrDmDfdQ16tuNAKWnjZbGZQ3j
+	5ixyPLlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDYpE-001qsq-Iv; Mon, 18 Jul 2022 22:02:48 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oDYuO-001uvt-7B; Mon, 18 Jul 2022 22:08:08 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDYp9-001qrx-N8
-	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 22:02:45 +0000
+	id 1oDYuL-001uox-L0
+	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 22:08:07 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 1BDFDB817B5;
-	Mon, 18 Jul 2022 22:02:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 409FDC341C0;
-	Mon, 18 Jul 2022 22:02:40 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id F205B61525;
+	Mon, 18 Jul 2022 22:08:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6733DC341C0;
+	Mon, 18 Jul 2022 22:08:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658181760;
-	bh=Nxs+neqrTmVc0kmk3RZapzGrMhYfWi3RPreVSuYvyh0=;
+	s=k20201202; t=1658182084;
+	bh=j1NDFj27vPrFOzzjYxK9T5C/OvNtxqUHE+3AMJSwJmA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KWJApb2BkuqV4O09lSd0Q5KqsUCWMt2NmEZXwZkM+4H6pXQfzcEgnlV0Za/Ip9vQZ
-	 l1ri5tpwCPYdsThhGzrdPHugnj6nXqPe+y47+qqxaX3RY82PBR07+D+/7toLddXgvU
-	 EoA/aWF0j8ZV36gdn8hftXMYghnRiXDHqMky6SOG276i+8zM0LxHAl+J5cdX/3OQ96
-	 Tp4MlJqjaIopmIWFPWCH509ObHcf34LkF10kNaekVNH8DaQpdc2ijy91XGsmSCDLEy
-	 twDkwTaF+TbdeXtDyeBcsPMrllFnV/GMyZbXsL+sfvB5PCLxZZGqzw1ceY2HNPfS2b
-	 1AtneqJ3j6CIg==
-Date: Tue, 19 Jul 2022 00:02:37 +0200
+	b=XJo9pCeq4dqfMyynm7wy9HBYwj6UsMbQ0pNczuEtkLXCw72Mb6D3K5NjAGezFrY4d
+	 eF5lkuv+fqqWFzrB32Dq9O/JvEGSk5tvZQX37G3l8xNzR5hVRpTFwvIL+WQ5JyrZSh
+	 Dzo0e0TGBvmJm3Umv3yuHNIY1nGz1WXrhS1IdV0/6qzKrtPvHhLsjtKnj77BquQ7NT
+	 CB62T3saXXsxFjHl6w1vuODp3rRPkpESeJEcYMYh+5Sc92w3n9ALVl9w9BHghCtyDz
+	 SXFnjZ2NTG98tvuexq7Mf/4oX/2lR5eY7WBfNsnLth73H+xn0MyCW3BcOG3moYNalB
+	 qxZ86QcymE9Ew==
+Date: Tue, 19 Jul 2022 00:08:00 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: sean.wang@mediatek.com
 Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
@@ -56,18 +56,18 @@ Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
 	kuabhs@google.com, druth@google.com, abhishekpandit@google.com,
 	shawnku@google.com, linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/3] mt76: mt7921s: fix the deadlock caused by
- sdio->stat_work
-Message-ID: <YtXYffraDN7RxoTr@lore-desk>
-References: <aa7d7ed8f3a817525ab8c7b736f1ce52490a835e.1658176763.git.sean.wang@kernel.org>
+Subject: Re: [PATCH 1/4] mt76: mt7921e: fix race issue between reset and
+ suspend/resume
+Message-ID: <YtXZwKyAh/MZ73rf@lore-desk>
+References: <a1437e413116364ac9f3b777c7922ca0728ddc0d.1658176701.git.sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="/JO1kva0Pj3FmabW"
+	protocol="application/pgp-signature"; boundary="lMne5WnSCz3v6Rdu"
 Content-Disposition: inline
-In-Reply-To: <aa7d7ed8f3a817525ab8c7b736f1ce52490a835e.1658176763.git.sean.wang@kernel.org>
+In-Reply-To: <a1437e413116364ac9f3b777c7922ca0728ddc0d.1658176701.git.sean.wang@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_150244_092192_1E92F575 
-X-CRM114-Status: GOOD (  21.86  )
+X-CRM114-CacheID: sfid-20220718_150805_795646_B0AABCF3 
+X-CRM114-Status: GOOD (  23.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,94 +83,128 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---/JO1kva0Pj3FmabW
+--lMne5WnSCz3v6Rdu
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
 > From: Sean Wang <sean.wang@mediatek.com>
 >=20
-> Because wake_work and sdio->stat_work share the same workqueue mt76->wq,
-> if sdio->stat_work cannot acquire the mutex lock such as that was possibly
-> held up by mt7921_mutex_acquire, we should exit immediately and schedule
-> another stat_work to avoid blocking the mt7921_mutex_acquire.
+> It is unexpected that the reset work is running simultaneously with
+> the suspend or resume context and it is possible that reset work is still
+> running even after mt7921 is suspended if we don't fix the race issue.
 >=20
-> Also, if mt7921_mutex_acquire was called by sdio->stat_work self, the wake
-> would be blocked by itself, so we have to changing into an unblocking wake
-> (directly wakeup via mt7921_mcu_drv_pmctrl, not via the wake_work) in the
-> context.
-
-Hi Sean,
-
-it seems to me we are missing some logic here (e.g cancelling ps_work as we=
- do
-in mt76_connac_pm_wake()). Is it enough to move mt7921_usb_sdio_tx_status_d=
-ata
-on mac80211 workqueue? Can you see any performance issue? (same for mt7663).
-
-Regards,
-Lorenzo
-
+> Thus, the suspend procedure should be waiting until the reset is completed
+> at the beginning and ignore the subsequent the reset requests.
 >=20
-> Fixes: 48fab5bbef40 ("mt76: mt7921: introduce mt7921s support")
+> In case there is an error that happens during either suspend or resume
+> handler, we will schedule a reset task to recover the error before
+> returning the error code to ensure we can immediately fix the error there.
+>=20
+> Fixes: 0c1ce9884607 ("mt76: mt7921: add wifi reset support")
 > Co-developed-by: YN Chen <YN.Chen@mediatek.com>
 > Signed-off-by: YN Chen <YN.Chen@mediatek.com>
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
->  .../net/wireless/mediatek/mt76/mt7921/mac.c   | 22 +++++++++++++++++--
->  1 file changed, 20 insertions(+), 2 deletions(-)
+>  drivers/net/wireless/mediatek/mt76/mt7921/mac.c |  5 +++++
+>  drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 13 +++++++++----
+>  2 files changed, 14 insertions(+), 4 deletions(-)
 >=20
 > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/ne=
 t/wireless/mediatek/mt76/mt7921/mac.c
-> index 6bd9fc9228a2..75e719175e92 100644
+> index 47f0aa81ab02..6bd9fc9228a2 100644
 > --- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
 > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-> @@ -1080,10 +1080,28 @@ bool mt7921_usb_sdio_tx_status_data(struct mt76_d=
-ev *mdev, u8 *update)
+> @@ -780,6 +780,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
+>  void mt7921_reset(struct mt76_dev *mdev)
 >  {
 >  	struct mt7921_dev *dev =3D container_of(mdev, struct mt7921_dev, mt76);
+> +	struct mt76_connac_pm *pm =3D &dev->pm;
 > =20
-> -	mt7921_mutex_acquire(dev);
-> +	if (!mutex_trylock(&mdev->mutex)) {
-> +		/* Because wake_work and stat_work share the same workqueue
-> +		 * mt76->wq, if sdio->stat_work cannot acquire the mutex lock,
-> +		 * we should exit immediately and schedule another stat_work
-> +		 * to avoid blocking the wake_work.
-> +		 */
-> +		struct work_struct *stat_work;
-> +
-> +		stat_work =3D mt76_is_sdio(mdev) ? &mdev->sdio.stat_work :
-> +			    &mdev->usb.stat_work;
-> +		queue_work(dev->mt76.wq, stat_work);
-> +
-> +		goto out;
-> +	}
-> +
-> +	mt7921_mcu_drv_pmctrl(dev);
->  	mt7921_mac_sta_poll(dev);
-> -	mt7921_mutex_release(dev);
-> +	mt76_connac_power_save_sched(&mdev->phy, &dev->pm);
+>  	if (!dev->hw_init_done)
+>  		return;
+> @@ -787,8 +788,12 @@ void mt7921_reset(struct mt76_dev *mdev)
+>  	if (dev->hw_full_reset)
+>  		return;
 > =20
-> +	mutex_unlock(&mdev->mutex);
+> +	if (pm->suspended)
+> +		return;
 > +
-> +out:
->  	return false;
+>  	queue_work(dev->mt76.wq, &dev->reset_work);
 >  }
->  EXPORT_SYMBOL_GPL(mt7921_usb_sdio_tx_status_data);
+> +EXPORT_SYMBOL_GPL(mt7921_reset);
+> =20
+>  void mt7921_mac_update_mib_stats(struct mt7921_phy *phy)
+>  {
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/pci.c
+> index 9d1ba838e54f..07573ea55389 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> @@ -363,6 +363,7 @@ static int mt7921_pci_suspend(struct device *device)
+>  	int i, err;
+> =20
+>  	pm->suspended =3D true;
+> +	cancel_work_sync(&dev->reset_work);
+
+should we just wait for the reset to complete here instead of cancelling? (=
+e.g. flush_work)
+
+Regards,
+Lorenzo
+
+>  	cancel_delayed_work_sync(&pm->ps_work);
+>  	cancel_work_sync(&pm->wake_work);
+> =20
+> @@ -424,6 +425,9 @@ static int mt7921_pci_suspend(struct device *device)
+>  restore_suspend:
+>  	pm->suspended =3D false;
+> =20
+> +	if (err < 0)
+> +		mt7921_reset(&dev->mt76);
+> +
+>  	return err;
+>  }
+> =20
+> @@ -437,7 +441,7 @@ static int mt7921_pci_resume(struct device *device)
+> =20
+>  	err =3D mt7921_mcu_drv_pmctrl(dev);
+>  	if (err < 0)
+> -		return err;
+> +		goto failed;
+> =20
+>  	mt7921_wpdma_reinit_cond(dev);
+> =20
+> @@ -467,11 +471,12 @@ static int mt7921_pci_resume(struct device *device)
+>  		mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
+> =20
+>  	err =3D mt76_connac_mcu_set_hif_suspend(mdev, false);
+> -	if (err)
+> -		return err;
+> -
+> +failed:
+>  	pm->suspended =3D false;
+> =20
+> +	if (err < 0)
+> +		mt7921_reset(&dev->mt76);
+> +
+>  	return err;
+>  }
+> =20
 > --=20
 > 2.25.1
 >=20
 
---/JO1kva0Pj3FmabW
+--lMne5WnSCz3v6Rdu
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYtXYfQAKCRA6cBh0uS2t
-rG4SAP9aMU+iYWw71kmWoYSQa2FQYwVV8olQtNGNtkAAF7Ln2gEA2o0rIjEagdFd
-3FxnmJXvn6wKSWhsfuHUut72LyinXQM=
-=f6c5
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYtXZwAAKCRA6cBh0uS2t
+rLqHAPwPGKvUYKWttSzuLfEnfn6GsozYfdiIRPC2TeDbzTTBgwD/V8zxuZFzcRfr
+xZII4Sr/it8t0NcuMfuHFpgfwfFqZQY=
+=V8iT
 -----END PGP SIGNATURE-----
 
---/JO1kva0Pj3FmabW--
+--lMne5WnSCz3v6Rdu--
 
