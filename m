@@ -4,94 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DFB1C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 13:27:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD62C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 13:35:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xnndy+tzJJ9DKS5PKCaEQE+56Udg782oVxUbz2xpr04=; b=PaOSOyeP7McxKt2+O70WX0rVMI
-	LB4HzQyEPw6sZDCOe3rqV5NIfMU4Zq4zy4Ap1vrNFs+gUEgcOrgLZkXGZm9YRAp5+5E7l5xap+X0U
-	4cOQha9PMv//ooisnQyEDdgDs8zeAd1asXdeBXrpSBHmgZ02TUHF9vc6V5KinbanMEkaYkAuDQieB
-	4V7DhnO+X/6Mwul29TuR6tB9CP57t5xrAWd2FeiwZkCdBwn7h4i5fje5M8wf8uWLcj/WyhFZmDrlk
-	9xOjhZ8BMSYgcblWfKB9a45XBRpyrpQWhgZfPU5aOP5lzFlVBjCqCA9UvDlin5QSiuvQPrfvk8PmM
-	9cTEUcRA==;
+	bh=VA1ac5uvP0jL3b2/bdbOjZZsTK7eMBU+AUDAOCTSHWg=; b=2eRZHHNmPLYDYZi6EG3ZuRE3Gj
+	5mTt1O0M6RRQQpQuYLKWCcKPBjAKibvHhBfXgU5HNgq3WxH7hhM3k+GOjOTwEGGqdbyV6MpGU/c+S
+	fLmgXRfHkATn08WWHhtnIIBETozAyFltREUa5p33SdO4YRtf3azybDwLAl9X35LXACuPzjxjh7hbE
+	HZXZIvkW2SBDw/Hp8+Y2xfYRxeCKJmRfDwhbqxCTgEWB5ugzWwuLmrZit/I/f31LErDbNQRMIlUOm
+	m2soE1A8vyIOQwxDOn6eMQ+mZZI3qkAguQ0WbIf+Jv3ZSo6OOOq3X7upNRROQnqdN4/61pM0edSW4
+	ZwCm9JAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDQmq-00Djqh-VV; Mon, 18 Jul 2022 13:27:49 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1oDQuN-00DnVZ-1m; Mon, 18 Jul 2022 13:35:35 +0000
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDQmb-00Djii-8g; Mon, 18 Jul 2022 13:27:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=xnndy+tzJJ9DKS5PKCaEQE+56Udg782oVxUbz2xpr04=; b=jk3zLMKUfv+vWKjX2rijuqfmBh
-	YCfXuxqqdDz3iuvOGXmsr6GMg8lsHX2PPdP915etsIBjWqjQoCTjWUAEWkwgKqJYpDCL3hQnXQ2rd
-	cVroglYBdxInFWLTbiAHhv0RClizxhEhZNSw8TJZFoKDqn1GjCsvc6tJeJ0P5jzExj0K16iFlMBON
-	V2s5ckFa3tuSiqWOtM7FrqRBoQ+Spt782Pk+FlR9q6//kptMkkYc6mhwLnB+X+ohYchMNvsCFUVXd
-	2LUa3dKEb4gXC3BIXfTwLLISi0wsOyXlXTZw+G7+GzCYHfHwo8zUOaxV/Zhm+6dxSecD1qrBeLlCu
-	HserpU4w==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33412)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1oDQm9-0001d9-GH; Mon, 18 Jul 2022 14:27:05 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1oDQm6-0001zu-AM; Mon, 18 Jul 2022 14:27:02 +0100
-Date: Mon, 18 Jul 2022 14:27:02 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alvin __ipraga <alsi@bang-olufsen.dk>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Daniel Scally <djrscally@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	George McCollister <george.mccollister@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
-Subject: Re: [PATCH net-next 2/6] software node: allow named software node to
- be created
-Message-ID: <YtVfppMtW77ICyC5@shell.armlinux.org.uk>
-References: <YtGPO5SkMZfN8b/s@shell.armlinux.org.uk>
- <E1oCNky-006e3g-KA@rmk-PC.armlinux.org.uk>
- <YtHGwz4v7VWKhIXG@smile.fi.intel.com>
- <20220715201715.foea4rifegmnti46@skbuf>
- <YtHPJNpcN4vNfgT6@smile.fi.intel.com>
- <20220715204841.pwhvnue2atrkc2fx@skbuf>
- <YtVSQI5VHtCOTCHc@smile.fi.intel.com>
+	id 1oDQuB-00DnNJ-CS
+	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 13:35:24 +0000
+Received: by mail-yw1-x112f.google.com with SMTP id 00721157ae682-31dfe25bd49so69774727b3.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 Jul 2022 06:35:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=VA1ac5uvP0jL3b2/bdbOjZZsTK7eMBU+AUDAOCTSHWg=;
+        b=GtcPSLBiM6uVu28CNcQ+3gFgolNxS+e7LoXMuTaGY+9J3FqlSMN48zcb+YRmQqN+oN
+         8yg2vjgbFJKXZ6ARwY73Oev38+VSNgvVRd5/hHVF6BBwkx9yT1SeLXKStgbIr3gPN2Xz
+         329Xjx+XXN34JXZ4nUnpv7f81QlqlZ3+duKUtDY5zEeILHRzEah+jGnZ4C/nF1g8KW0X
+         8dfv0KtzwpORo7etwbhg7PIM+SQIJumTQmvhkQlv0bsTmDWWdi+8YsFl4ZSf+S8qqMHZ
+         AdUiiI+ruf9YNMJSHKhu+wtddFY2l4MTFFuhoop5K9MhCNPKbyPmshgN2KioHUdtM7BC
+         rzmg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=VA1ac5uvP0jL3b2/bdbOjZZsTK7eMBU+AUDAOCTSHWg=;
+        b=6m3PzFfYnZ0Bjwf6dzTtODtg0b13WfLn0ioBSAQnYO7VR9RzPEy8UEwR+Max7W7uki
+         jW6PCKEjWAw3rrhCK+YS6/b7NN9Xzb0gtqkg2wR5kSIC/pzRjYtyMnjoTCV8MDh5o45f
+         74Is6sA5v9UuSz3KdbdBAVcNt/VT1xbWQqOxwcdtFIZ9ag0A70aHsFZkBrIQcb6V4AJ2
+         E4111OKt1Z7A7b2GGSoeWa8PxwKkF9R3Hpoc/ESzjqy3hDMMUec17LtSLe8OWrO+Jsdj
+         A8hyB/7cLw/BX9RLBeNKXAZNynQ5rs7d+0ULW+UGM+Bd2sbN0J3Xfsyr8h1dV3Z/RBdi
+         XnAg==
+X-Gm-Message-State: AJIora8u+lAUCQKawUYJBl4joz5PTe9z82jv0Ty27J0dCN1J6Gb0FMYs
+	r4nyzgzZiiX0dhO8Tx0ncjQOCZM/lBg7iVfdmJBPDw==
+X-Google-Smtp-Source: AGRyM1sdYeiYVniKDN529cobMS4DD4f3Xk3cadvZzaf7otckgKV39IsVAGQFnrI/rZGNsEA726QcYYC4tiBj2zgCRpQ=
+X-Received: by 2002:a81:548a:0:b0:31c:b7d6:b3ca with SMTP id
+ i132-20020a81548a000000b0031cb7d6b3camr30351662ywb.500.1658151320156; Mon, 18
+ Jul 2022 06:35:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <YtVSQI5VHtCOTCHc@smile.fi.intel.com>
+References: <20220715103029.204500-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220715103029.204500-1-angelogioacchino.delregno@collabora.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 18 Jul 2022 15:35:07 +0200
+Message-ID: <CACRpkdYagmVAim68q=AOzrQfPw=fk5Q1z+B7X3nRDa-X4XukOw@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: mt8195: Use drive-strength-microamp
+ in examples
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
+	matthias.bgg@gmail.com, sean.wang@mediatek.com, nfraprado@collabora.com, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_062733_343515_DCF28245 
-X-CRM114-Status: GOOD (  16.42  )
+X-CRM114-CacheID: sfid-20220718_063523_819734_C01ECF50 
+X-CRM114-Status: UNSURE (   7.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,36 +88,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 18, 2022 at 03:29:52PM +0300, Andy Shevchenko wrote:
-> On Fri, Jul 15, 2022 at 11:48:41PM +0300, Vladimir Oltean wrote:
-> > So won't kobject_init_and_add() fail on namespace collision? Is it the
-> > problem that it's going to fail, or that it's not trivial to statically
-> > determine whether it'll fail?
-> > 
-> > Sorry, but I don't see something actionable about this.
-> 
-> I'm talking about validation before a runtime. But if you think that is fine,
-> let's fail it at runtime, okay, and consume more backtraces in the future.
+On Fri, Jul 15, 2022 at 12:30 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 
-Is there any sane way to do validation of this namespace before
-runtime?
+> The property mediatek,drive-strength-adv was deprecated: change the
+> example for i2c0-pins to use drive-strength-microamp.
+>
+> Fixes: b6d9af2c6b69 ("dt-bindings: pinctrl: mt8195: Add and use drive-strength-microamp")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-The problem in this instance is we need a node named "fixed-link" that
-is attached to the parent node as that is defined in the binding doc,
-and we're creating swnodes to provide software generated nodes for
-this binding.
+After finding this in my Inbox, drop my own uglyfix and apply this instead.
 
-There could be several such nodes scattered around, but in this
-instance they are very short-lived before they are destroyed, they
-don't even need to be published to userspace (and its probably a waste
-of CPU cycles for them to be published there.)
-
-So, for this specific case, is this the best approach, or is there
-some better way to achieve what we need here?
-
-Thanks.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+Yours,
+Linus Walleij
 
