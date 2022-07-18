@@ -4,68 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54FE0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 17:12:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52B2DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 17:19:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Or33gP6ccBO0EGJ9bzQE/DLGVhc1W2Ro5x7wJS7uj88=; b=Ug4j8U7fIY1HrJNdAkConiF8i4
-	+gnFWck1CMmZe8ej0w553GKthXKPJou/vY3mVaDYGgzVwulEy48wd0A30xWkEOdV2tI3ZF4tVvdTd
-	0l2gAKEfoANqDX1qDyTFdv5HvqZFn+KyBqFsfSPMhwwBIzynpAT/+oEVfrOEunitgTXn1J3WSiQhh
-	PrdOJw9dT376auVvzvnbhy5zQVngFJsEhUHSF+FpSPEo533ok1FqOoEoMXvKWv8YTPi6YZMEIjo7b
-	ByNm9X//HxRFrbvvy1TvjxYNCyU8qE9gT87U1SxRB62eZf47P1VN2Z+Rlp57rWVPBQMwW4hckWt8E
-	uKRD1+9g==;
+	bh=6AlSG11Xz0KEmY1J4qxRxusy/iUb0jY7LfF1OTYlmoE=; b=eqh37VQAT8lhzuavMXcL6wvr8y
+	B02kxjuMZSxHmNhKwkr5oTOmFh2qio7I+Z/immXfWAeMOEw5NCJsAUJ/GkDocXowUXc+2q0t+bp4E
+	dA2RvhL5XWFWlkLsS2Bq4Py6I5Z2TRXdIVjgDUNjG/HbrRSwEsf2ywFeoqm6iLtdlN+BTiBU3NQ2+
+	SZyCUfIW23MBoI4J0MGJSbnNslJE3TgXiTPlZynCPIXR0IJ3+60NrbroKnTazEmsXyEBohOQHK+Bm
+	7Gnn6PgOZU/+G+1xfJxC5NA814CsCdKICmQ59Hn2ddwyO9iRIgb+HSln6oQwhTXpu4/p2rK/QoxRy
+	7Q4kZ1bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDUIE-00H3O1-6Q; Mon, 18 Jul 2022 17:12:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oDUOt-00H6UE-EZ; Mon, 18 Jul 2022 17:19:19 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDUIB-00H3Ma-Lh; Mon, 18 Jul 2022 17:12:25 +0000
-X-UUID: ed5a7f2d4f5f490c92a76bf6a45ef31d-20220718
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:37bb9506-e4b0-44d1-ab75-788a5880de9c,OB:0,LO
-	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:25
-X-CID-META: VersionHash:0f94e32,CLOUDID:355c9c64-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: ed5a7f2d4f5f490c92a76bf6a45ef31d-20220718
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jiaxin.yu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1570478979; Mon, 18 Jul 2022 10:12:18 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 19 Jul 2022 00:22:14 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Tue, 19 Jul 2022 00:22:13 +0800
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: <broonie@kernel.org>, <robh+dt@kernel.org>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <aaronyu@google.com>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
-	<tzungbi@google.com>, <julianbraha@gmail.com>, <alsa-devel@alsa-project.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jiaxin Yu
-	<jiaxin.yu@mediatek.com>, Rob Herring <robh@kernel.org>
-Subject: [PATCH v10 8/8] dt-bindings: mediatek: mt8186: add mt8186-mt6366-rt1019-rt5682s document
-Date: Tue, 19 Jul 2022 00:22:04 +0800
-Message-ID: <20220718162204.26238-9-jiaxin.yu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220718162204.26238-1-jiaxin.yu@mediatek.com>
-References: <20220718162204.26238-1-jiaxin.yu@mediatek.com>
+	id 1oDUOq-00H6Ru-7v
+	for linux-mediatek@lists.infradead.org; Mon, 18 Jul 2022 17:19:17 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id t5-20020a17090a6a0500b001ef965b262eso13275067pjj.5
+        for <linux-mediatek@lists.infradead.org>; Mon, 18 Jul 2022 10:19:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=6AlSG11Xz0KEmY1J4qxRxusy/iUb0jY7LfF1OTYlmoE=;
+        b=vEheWttEDztzn0wX59F2KAGkreCbHs3di+tKqkl4IAPJ8k+nkONjCaOPX0ur9T4LFn
+         HrVp5kPLFewdY8BqiqJF/XavfQqqwVJQWl6AOBEy+YbzNGvJwMKXg6qBhrucJC1j/d2f
+         /eixL9KXtAUfWaEZ6j5QcDUsb1pTei0QpfJACiz2a6oePiDheULjMRKUm+wzPiSz6E4w
+         0ZexggTDJG0McCTRtrAfYvWd0L88p05aYt0yWRNZGz/f1isLq+nSOc9bpNoaOfCzhY7g
+         YNbtNy9apzKYpB55t8+rdEKFWbEX3NqHfi3QUzYz5acc7L66jsN9JI8C3C/T5ZcpnnRY
+         PSMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=6AlSG11Xz0KEmY1J4qxRxusy/iUb0jY7LfF1OTYlmoE=;
+        b=uwh8yLoCaBh6Bs4hGcG3h0cd+ydUE/Seozbf41TpfwIbFCCsgCiMXTwcOxb8ZUs6kT
+         +LQBGgkQ+bJA4Gpiq1fARIo+iCwJmr5m0Q0Sy6o2/jTN8zTeYc3Xb9unOI20fST6on4s
+         5NJsZt61pC8KSEvhYpO35MmhX1ZnKbHxLZ3LjLhbfGkPx4krjQhj/DlGdJmiyiS4/Zxg
+         B1CphYmZELFeUW60S8YP/z5sEbhfpHIV9RKvxsSAOQieYoeYhs77BGQDkJIzg8zVDxXT
+         qMYNp6upOhMSszdWx2tyfLoBx7IPKdCHQgS3mOD8WzW4+CXjxLb7xjI+NlHfXH3Bi5a+
+         qYcA==
+X-Gm-Message-State: AJIora+qZxhTdaFXQdc/Ru3qwfYgxFpuwzwn79TwbuqkVjdhQV0Mtslh
+	yviLHUMukcggW17AL6Kfj9fMNQ==
+X-Google-Smtp-Source: AGRyM1t9xo/AS/NKpz2t46SlZm8sa/vdqDfuyTscDK82ci703AzuOy6ziJl8eg57k0SFP6nQ2Qy72A==
+X-Received: by 2002:a17:90b:3d85:b0:1f0:7355:734 with SMTP id pq5-20020a17090b3d8500b001f073550734mr34853999pjb.24.1658164754519;
+        Mon, 18 Jul 2022 10:19:14 -0700 (PDT)
+Received: from p14s (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
+        by smtp.gmail.com with ESMTPSA id a20-20020aa794b4000000b0052abfc4b4a4sm9830384pfl.12.2022.07.18.10.19.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 Jul 2022 10:19:13 -0700 (PDT)
+Date: Mon, 18 Jul 2022 11:19:11 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: Bjorn Andersson <bjorn.andersson@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v1 0/2] Add support for MT8188 SCP
+Message-ID: <20220718171911.GA3331732@p14s>
+References: <20220715051821.30707-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220715051821.30707-1-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_101223_718788_74170D75 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20220718_101916_330172_F0B1FA93 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,97 +94,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add document for mt8186 board with mt6366, rt1019 and rt5682s.
+On Fri, Jul 15, 2022 at 01:18:19PM +0800, Tinghan Shen wrote:
+> 
+> Tinghan Shen (2):
+>   dt-bindings: remoteproc: mediatek: Add binding for mt8188 scp
+>   remoteproc: Support MT8188 SCP
+> 
+>  .../devicetree/bindings/remoteproc/mtk,scp.yaml     |  2 ++
+>  drivers/remoteproc/mtk_scp.c                        | 13 +++++++++++++
+>  2 files changed, 15 insertions(+)
 
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
----
- .../sound/mt8186-mt6366-rt1019-rt5682s.yaml   | 75 +++++++++++++++++++
- 1 file changed, 75 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
+I have applied this set.
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml b/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
-new file mode 100644
-index 000000000000..059a7629b2d3
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
-@@ -0,0 +1,75 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/sound/mt8186-mt6366-rt1019-rt5682s.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek MT8186 with MT6366, RT1019 and RT5682S ASoC sound card driver
-+
-+maintainers:
-+  - Jiaxin Yu <jiaxin.yu@mediatek.com>
-+
-+description:
-+  This binding describes the MT8186 sound card.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt8186-mt6366-rt1019-rt5682s-sound
-+
-+  mediatek,platform:
-+    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    description: The phandle of MT8186 ASoC platform.
-+
-+  headset-codec:
-+    type: object
-+    additionalProperties: false
-+    properties:
-+      sound-dai:
-+        maxItems: 1
-+    required:
-+      - sound-dai
-+
-+  playback-codecs:
-+    type: object
-+    additionalProperties: false
-+    properties:
-+      sound-dai:
-+        items:
-+          - description: phandle of dp codec
-+          - description: phandle of l channel speaker codec
-+          - description: phandle of r channel speaker codec
-+        minItems: 2
-+    required:
-+      - sound-dai
-+
-+additionalProperties: false
-+
-+required:
-+  - compatible
-+  - mediatek,platform
-+  - headset-codec
-+  - playback-codecs
-+
-+examples:
-+  - |
-+
-+    sound: mt8186-sound {
-+        compatible = "mediatek,mt8186-mt6366-rt1019-rt5682s-sound";
-+        mediatek,platform = <&afe>;
-+        pinctrl-names = "aud_clk_mosi_off",
-+                        "aud_clk_mosi_on";
-+        pinctrl-0 = <&aud_clk_mosi_off>;
-+        pinctrl-1 = <&aud_clk_mosi_on>;
-+
-+        headset-codec {
-+            sound-dai = <&rt5682s>;
-+        };
-+
-+        playback-codecs {
-+             sound-dai = <&it6505dptx>,
-+                         <&rt1019p>;
-+        };
-+    };
-+
-+...
--- 
-2.18.0
+Thanks,
+Mathieu
 
+> 
+> -- 
+> 2.18.0
+> 
 
