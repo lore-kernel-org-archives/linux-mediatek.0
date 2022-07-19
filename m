@@ -4,95 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F122DC43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 13:58:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6C5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 14:00:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zWTPEQzptxXk3lrvWDrClDt6+96mfbGWSUz4hZOfrrY=; b=Xc6bArxAYn/ZzUaRugMFT7bpL3
-	cM7+xU2l/aRe1rGi/wlVpOa5f8+mnpOk5qc58nEw7qlFQohyulAiXFPOZUQax9ow5IhetNmuUfe37
-	9VGzO3DB7gojHx8iMYYhXQRwDeo6e+7uoIBDxeJefeughvwmjVcYpqJu1BhyHAC/Qds7IYMkm4LXP
-	jGkBnEcTaY3uMs6jOJQV4kAw+T3PJ1yR6XOpselOyaTV7iJvbgjah7qKHcyBnAx2z62uui7FXG9vD
-	8DERAoFqUkKygIdtpOSTWpeKgJs7CxBW9QghxPc7HKPr/FWGFeDLjEBr1HVdSb61/qQoZ+WrlmQCC
-	b7x2drUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OD3NNQx/dnqD+0Cs+fXr4LXV6Ye4MYxeJ4nPZD4GszE=; b=b3q4Y8onYO8v8aT66upHkQAup2
+	o4H4QFRdpGqrscGL5dlJl6rsyWKsFpXR2DBLIAP6Qp4c8mg1I/Wq33DCuUd4AoRllE7M37U4bcCYU
+	UnDHbbRBFLDLL6uPlX76lcJXDGkQ9eiSH5C/r5gT42M9CvNBgqsc3NdX+fORlc0DuhyIs0yFih9c3
+	DjlwAb2nSFw1uUI+0u/wTm2Ntjg6tWoiJ+pAKkn419VP6aj/bYG1wn4kt4v/s9/Sf/pQT/5p8aDpL
+	4GPhJTXAVz7u1acjotDEHog4UNp9k6Fi+TpcoxCe6v5+kGrmB8vkVgFcfxcMlszMqHQsBSZKgYdBz
+	U3fhHgIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDnjw-009RGf-Ga; Tue, 19 Jul 2022 13:58:20 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1oDnlk-009SF0-Ah; Tue, 19 Jul 2022 14:00:12 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDnjt-009RD2-73
-	for linux-mediatek@lists.infradead.org; Tue, 19 Jul 2022 13:58:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1658239096;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=zWTPEQzptxXk3lrvWDrClDt6+96mfbGWSUz4hZOfrrY=;
-	b=Y+suca6O4Ub2NUSHOLMaQ6nTHQtSaS9iDOOgyUs7y1X4fOxMdZcR1Vb0IZMrcn9i3rjmR8
-	2hp+h98ln3o3nQPt576H+11BYWjDrMXNCcE6tOEdo55P9vF1xxtfKO82UxyQ09ffBxZxQR
-	IeqO87HwV3796PbQtDmOvBav7tXuYag=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-387-adxlLpyNPN6ABibRgGN_mw-1; Tue, 19 Jul 2022 09:58:15 -0400
-X-MC-Unique: adxlLpyNPN6ABibRgGN_mw-1
-Received: by mail-wr1-f69.google.com with SMTP id m2-20020adfc582000000b0021e28acded7so827354wrg.13
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 Jul 2022 06:58:14 -0700 (PDT)
+	id 1oDnlh-009SAF-V8
+	for linux-mediatek@lists.infradead.org; Tue, 19 Jul 2022 14:00:11 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id b11so27311752eju.10
+        for <linux-mediatek@lists.infradead.org>; Tue, 19 Jul 2022 07:00:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=raspberrypi.com; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=OD3NNQx/dnqD+0Cs+fXr4LXV6Ye4MYxeJ4nPZD4GszE=;
+        b=KRbPahA4lFzwgk1dPu0dYjc5HI3Y+D0dxd62DcPU4ogSQZ64caMPwZVzbpx73J5Kc1
+         eaEMkOYtMeTIYH6d3tYbTI31Zpk6YPeEHme+XqB6TB9vweuaBCzadZE54jjqEcIAS/Jf
+         pzYTNENzXg+3E79ccZwG+0AO9oqg2VDxVgFkHvRNiXy7aIvjIH3seHu/ncpcbTZ7PS82
+         gV4Uc4P8NeQN5INx5ZzZSJl5OpV/PcFLmN2hPWUojY2geEaue3bSrIyK7NibMwK9pdcK
+         O1jLIZnNHFsb8ssyIcISmoy2tFgywNjOo7bd37jOZ8uS76xPibNCxglV/JSG62NQzbUF
+         B9ZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=zWTPEQzptxXk3lrvWDrClDt6+96mfbGWSUz4hZOfrrY=;
-        b=v9F5J+SKB2FKeO31JwczmDvD6tFSpYu5yIBeCrkUe8nvBc+nB+ijFLiwgVASZ0npUD
-         2nJdlcacWpRJW23PHim4SmF0bZaoAvMhYSlJwzw526FsIZTFkTD7RzUYqjWLefmeHjtG
-         uZmGST6r9xtKBnAFZjkbDTwJ90mmis9up5+54CUEqyqWsjj6zWeLVBMSXw+xPEfV3k8U
-         YQLQzOheI+OtIL5ptv/LIRTNtm8TSVPuP6KDicGH9t9h9HUWIamJWhhn+j0nuJvW6GqC
-         L9cij+GzghQqnwZXZ/8TuH6E/CjQZh1k7nBjTz3XJKMaSWeWfyRBfHNUlxu/25PWNivt
-         jRGw==
-X-Gm-Message-State: AJIora9TwLq/zbYYrFP0CG5zIvx7bUeaejGBWJJ48TtswijHzDJ+9fbZ
-	GIXzXm/EvXkUNNYJUgVyVU/+B+seocyAUL5FRj8CI/riXvMerYY3ZQ0zyFSdNd/43k/XkgKlcYE
-	79zkz755L8HAKGDqJTlmB7z66aR8ZrOps
-X-Received: by 2002:adf:f28b:0:b0:21e:3161:7129 with SMTP id k11-20020adff28b000000b0021e31617129mr3195228wro.438.1658239093843;
-        Tue, 19 Jul 2022 06:58:13 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1tt9EGYGYdDvsVKBkypPQ/oLxWulwLmQlcLonoOdkkZWIXnOaJo77fXBw3t9U4bq27bu53V5w==
-X-Received: by 2002:adf:f28b:0:b0:21e:3161:7129 with SMTP id k11-20020adff28b000000b0021e31617129mr3195203wro.438.1658239093547;
-        Tue, 19 Jul 2022 06:58:13 -0700 (PDT)
-Received: from gerbillo.redhat.com (146-241-104-164.dyn.eolo.it. [146.241.104.164])
-        by smtp.gmail.com with ESMTPSA id f7-20020adffcc7000000b0021e463e4017sm148945wrs.55.2022.07.19.06.58.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Jul 2022 06:58:13 -0700 (PDT)
-Message-ID: <d432c897a8eef451bdd65cfdf5b1da0d866a9a5b.camel@redhat.com>
-Subject: Re: [PATCH v3 net-next 5/5] net: ethernet: mtk_eth_soc: add support
- for page_pool_get_stats
-From: Paolo Abeni <pabeni@redhat.com>
-To: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org,
- nbd@nbd.name,  john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com,  davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, matthias.bgg@gmail.com, 
- linux-mediatek@lists.infradead.org, ilias.apalodimas@linaro.org, 
- jbrouer@redhat.com
-Date: Tue, 19 Jul 2022 15:58:11 +0200
-In-Reply-To: <YtaE/KJDNOqkvLml@localhost.localdomain>
-References: <cover.1657956652.git.lorenzo@kernel.org>
-	 <8592ada26b28995d038ef67f15c145b6cebf4165.1657956652.git.lorenzo@kernel.org>
-	 <43ff0071f0ce4b958f27427acebcf2c6ace52ba0.camel@redhat.com>
-	 <YtaE/KJDNOqkvLml@localhost.localdomain>
-User-Agent: Evolution 3.42.4 (3.42.4-2.fc35)
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=OD3NNQx/dnqD+0Cs+fXr4LXV6Ye4MYxeJ4nPZD4GszE=;
+        b=v/jRUhpKKAoRzT5JtOdt8txBH5kMXDBrQAbYqyZJh+O01By/hnY0Ww7aF+uakY73lj
+         Rzep0AUtSKjb+8kmyCvDznnsZrYFcezEzU5e5W10JgieMLOHxKvfi5p0bhNWdrX2H6ma
+         NTCrTAGMgA3CXkAU8lJr8t3+DvlB5HOuoALBD/UCMR+dJwnWPs8Nt4l3lhNNoH0X4cDY
+         n+03dtl1OhsDjx0TemXpjkveoqmS07GvPIsnfUyG7V/F71wcFrQk+JydQk5QLsU6PLHC
+         FnF1Nm20p98DJOxovogpwZynKBvFpAY0Ufp0VhRDFociBtOOIp7zThoKd5EDF4Ozrnf3
+         +oaA==
+X-Gm-Message-State: AJIora/MUDyeMgQuKm8gT5PIqD6RDipmlLIt8DDCT5Jj2C1mWR46ka24
+	9x4+Aq1QeaID0yhvx2g1Ep5sd8cAmGANZa3LVgRzyA==
+X-Google-Smtp-Source: AGRyM1tWkD5ndkU51YMn3Zy/3SBBUnKXW/elXPy0MwiGbgYk7yLn606w46OmkL1nPHs9nxQiSkrrhnOhpxFcOHfz/3U=
+X-Received: by 2002:a17:907:d92:b0:72e:e94d:b675 with SMTP id
+ go18-20020a1709070d9200b0072ee94db675mr21493011ejc.742.1658239204549; Tue, 19
+ Jul 2022 07:00:04 -0700 (PDT)
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pabeni@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+References: <20220717174454.46616-1-sam@ravnborg.org> <20220717174454.46616-6-sam@ravnborg.org>
+In-Reply-To: <20220717174454.46616-6-sam@ravnborg.org>
+From: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Date: Tue, 19 Jul 2022 14:59:48 +0100
+Message-ID: <CAPY8ntAALp=vtofLjKjEjH89k_fGtLWv9b4L=7fmFZr9+Dd6jg@mail.gmail.com>
+Subject: Re: [PATCH v1 05/12] drm/bridge: sii8620: Use drm_bridge_funcs.atomic_check
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: dri-devel@lists.freedesktop.org, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <narmstrong@baylibre.com>, Robert Foss <robert.foss@linaro.org>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, David Airlie <airlied@linux.ie>, 
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Guenter Roeck <groeck@chromium.org>, 
+	chrome-platform@lists.linux.dev, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Jitao Shi <jitao.shi@mediatek.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	Arnd Bergmann <arnd@arndb.de>, linux-mediatek@lists.infradead.org, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, 
+	Philip Chen <philipchen@chromium.org>, linux-renesas-soc@vger.kernel.org, 
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	Enric Balletbo i Serra <enric.balletbo@collabora.com>, Cai Huoqing <cai.huoqing@linux.dev>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220719_065817_359194_8FC09483 
-X-CRM114-Status: GOOD (  28.84  )
+X-CRM114-CacheID: sfid-20220719_070010_009550_BD2CDE0F 
+X-CRM114-Status: GOOD (  17.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,97 +94,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-07-19 at 12:18 +0200, Lorenzo Bianconi wrote:
-> > On Sat, 2022-07-16 at 09:34 +0200, Lorenzo Bianconi wrote:
-> > > Introduce support for the page_pool stats API into mtk_eth_soc
-> > > driver.
-> > > Report page_pool stats through ethtool.
-> > > 
-> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > ---
-> > >  drivers/net/ethernet/mediatek/Kconfig       |  1 +
-> > >  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 40
-> > > +++++++++++++++++++--
-> > >  2 files changed, 38 insertions(+), 3 deletions(-)
-> > > 
-> > > diff --git a/drivers/net/ethernet/mediatek/Kconfig
-> > > b/drivers/net/ethernet/mediatek/Kconfig
-> > > index d2422c7b31b0..97374fb3ee79 100644
-> > > --- a/drivers/net/ethernet/mediatek/Kconfig
-> > > +++ b/drivers/net/ethernet/mediatek/Kconfig
-> > > @@ -18,6 +18,7 @@ config NET_MEDIATEK_SOC
-> > >  	select PHYLINK
-> > >  	select DIMLIB
-> > >  	select PAGE_POOL
-> > > +	select PAGE_POOL_STATS
-> > >  	help
-> > >  	  This driver supports the gigabit ethernet MACs in the
-> > >  	  MediaTek SoC family.
-> > > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > > b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > > index abb8bc281015..eba95a86086d 100644
-> > > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > > @@ -3517,11 +3517,19 @@ static void mtk_get_strings(struct
-> > > net_device *dev, u32 stringset, u8 *data)
-> > >  	int i;
-> > >  
-> > >  	switch (stringset) {
-> > > -	case ETH_SS_STATS:
-> > > +	case ETH_SS_STATS: {
-> > > +		struct mtk_mac *mac = netdev_priv(dev);
-> > > +		struct mtk_eth *eth = mac->hw;
-> > > +
-> > >  		for (i = 0; i < ARRAY_SIZE(mtk_ethtool_stats);
-> > > i++) {
-> > >  			memcpy(data, mtk_ethtool_stats[i].str,
-> > > ETH_GSTRING_LEN);
-> > >  			data += ETH_GSTRING_LEN;
-> > >  		}
-> > > +		if (!eth->hwlro)
-> > 
-> > I see the page_pool is enabled if and only if !hwlro, but I think
-> > it
-> > would be more clear if you explicitly check for page_pool here (and
-> > in
-> > a few other places below), so that if the condition to enable
-> > page_pool
-> > someday will change, this code will still be fine.
-> 
-> Hi Paolo,
-> 
-> page_pool pointer is defined in mtk_rx_ring structure, so
-> theoretically we can have a
-> page_pool defined for queue 0 but not for queues {1, 2, 3}.
+On Sun, 17 Jul 2022 at 18:45, Sam Ravnborg <sam@ravnborg.org> wrote:
+>
+> Replace the deprecated drm_bridge_funcs.mode_fixup() with
+> drm_bridge_funcs.atomic_check().
+>
+> drm_bridge_funcs.atomic_check() requires the atomic state operations,
+> update these to the default implementations.
+>
+> Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
 
-I see. I missed hwlro is a per device setting.
+Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
 
-> "!eth->hwlro" means
-> there is at least one page_pool allocated. Do you prefer to do
-> something like:
-> 
-> bool mtk_is_pp_enabled(struct mtk_eth *eth)
-> {
-
-> 	for (i = 0; i < ARRAY_SIZE(eth->rx_ring); i++) {
-> 		struct mtk_rx_ring *ring = &eth->rx_ring[i];
-> 
-> 		if (ring->page_pool)
-> 			return true;
-> 	}
-> 	return false;
-> }
-
-Even:
-
-bool mtk_is_pp_enabled(struct mtk_eth *eth)
-{
-	return !eth->hwlro;
-}
-
-will suffice to encaspulate the logic behind page pool enabling in a
-single place.
-
-/P
-
+> Cc: Andrzej Hajda <andrzej.hajda@intel.com>
+> Cc: Neil Armstrong <narmstrong@baylibre.com>
+> Cc: Robert Foss <robert.foss@linaro.org>
+> Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+> Cc: Jonas Karlman <jonas@kwiboo.se>
+> Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
+> ---
+>  drivers/gpu/drm/bridge/sil-sii8620.c | 17 +++++++++++------
+>  1 file changed, 11 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/bridge/sil-sii8620.c b/drivers/gpu/drm/bridge/sil-sii8620.c
+> index ab0bce4a988c..b6e5c285c8ea 100644
+> --- a/drivers/gpu/drm/bridge/sil-sii8620.c
+> +++ b/drivers/gpu/drm/bridge/sil-sii8620.c
+> @@ -8,6 +8,7 @@
+>
+>  #include <asm/unaligned.h>
+>
+> +#include <drm/drm_atomic_state_helper.h>
+>  #include <drm/bridge/mhl.h>
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_crtc.h>
+> @@ -2262,26 +2263,30 @@ static enum drm_mode_status sii8620_mode_valid(struct drm_bridge *bridge,
+>         }
+>  }
+>
+> -static bool sii8620_mode_fixup(struct drm_bridge *bridge,
+> -                              const struct drm_display_mode *mode,
+> -                              struct drm_display_mode *adjusted_mode)
+> +static int sii8620_atomic_check(struct drm_bridge *bridge,
+> +                               struct drm_bridge_state *bridge_state,
+> +                               struct drm_crtc_state *crtc_state,
+> +                               struct drm_connector_state *conn_state)
+>  {
+>         struct sii8620 *ctx = bridge_to_sii8620(bridge);
+>
+>         mutex_lock(&ctx->lock);
+>
+> -       ctx->use_packed_pixel = sii8620_is_packing_required(ctx, adjusted_mode);
+> +       ctx->use_packed_pixel = sii8620_is_packing_required(ctx, &crtc_state->adjusted_mode);
+>
+>         mutex_unlock(&ctx->lock);
+>
+> -       return true;
+> +       return 0;
+>  }
+>
+>  static const struct drm_bridge_funcs sii8620_bridge_funcs = {
+>         .attach = sii8620_attach,
+>         .detach = sii8620_detach,
+> -       .mode_fixup = sii8620_mode_fixup,
+> +       .atomic_check = sii8620_atomic_check,
+>         .mode_valid = sii8620_mode_valid,
+> +       .atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
+> +       .atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+> +       .atomic_reset = drm_atomic_helper_bridge_reset,
+>  };
+>
+>  static int sii8620_probe(struct i2c_client *client,
+> --
+> 2.34.1
+>
 
