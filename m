@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C8BAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 02:42:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E401DC43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 03:40:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OGYBSK929lFGPgSatvWWpYL6CKFEfz3xiCeoN+OEzyo=; b=tUSK4DwsJHFnfdW8oIXv6/zXsr
-	02v6s428etnbC9oh46Sdd7nxFSYKg/IfkUwIcaI4z+Ycvx7JYCJso2FqggWhEjuhMSR/4l0SnKlET
-	3Lq4Hqg61VeMFciyp8Y86e4bYcNMYY2RYBSgI5vsqCDc2sG9JY2wOkHTs3uIVO90O+RmtxSybQVMi
-	kchWsRpBjul3MUKuLHpL0VMD2mLQ7/pI6yelhi7GzDqzgBYDXPBQXgmf2fDWCnf7kUwWY/JA+nybl
-	0NmXy2gQGf9SyydEMp2Z6eZMhWfzelvfpVFKUaans1u/TlkD1K3YRW5OQwj2k/GEYXtn6+c0ElT+h
-	REOMhYZw==;
+	bh=IMs+rfl3DIFKjTTYWDnQ5u9VEiQBEbN9UhoF7SmtLZU=; b=kD65d194UnlfjM83eAyuUyzZKI
+	SjHHR6KbzoYok1F9zDPpwC92vqe2NPdnK5RbkwUxM6NYGacDd4OSkngPHB0YO4VI4bUsRnoM1fI+r
+	ghXfQhs9j3fOZqoNKFX9QwfiHi/TvHrDCif06U4j11L9IBG0VOUtM5gmiVeVChRufJO58wwmWeCQF
+	cnbMNr1w5eYmkc38d12JvAyID4k2WkIYqcZYtI0Sw6I5KCytyn8TAV1Pwut5O7y8trxVlbPbDMpbx
+	ElS1qDyU3H6bgx1R/wQ/pe2Er9A3pexmqF2xi3AdtNAecUxF4Rouw+wMvm1waUCM9+GCO/EHfD5sf
+	4XeFAfGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDdBP-0045Aq-St; Tue, 19 Jul 2022 02:41:59 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oDe5z-004ZB2-DR; Tue, 19 Jul 2022 03:40:27 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDdBM-0045AO-Mt; Tue, 19 Jul 2022 02:41:58 +0000
-X-UUID: 39d76c2e8d6343d883ca85cadd44c498-20220718
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:6988f377-b499-4804-a026-c074cf210b68,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:191bd7d7-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 39d76c2e8d6343d883ca85cadd44c498-20220718
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1545940127; Mon, 18 Jul 2022 19:41:50 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Tue, 19 Jul 2022 10:01:15 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 19 Jul 2022 10:01:14 +0800
-Message-ID: <5aaaa8e4186a89c1fb14b3404dd395d4f7b0cb91.camel@mediatek.com>
-Subject: Re: [PATCH v2 1/4] dt-bindings: watchdog: mediatek: Convert binding
- to YAML
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Wim Van Sebroeck
-	<wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	<nfraprado@collabora.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	"Chen-Yu Tsai" <wenst@chromium.org>
-Date: Tue, 19 Jul 2022 10:01:14 +0800
-In-Reply-To: <4fcc64d9-060e-6568-6eb7-d74c520593b0@gmail.com>
-References: <20220714125044.20403-1-allen-kh.cheng@mediatek.com>
-	 <20220714125044.20403-2-allen-kh.cheng@mediatek.com>
-	 <4fcc64d9-060e-6568-6eb7-d74c520593b0@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oDe5o-004Z8s-Hi; Tue, 19 Jul 2022 03:40:17 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D204B614D5;
+	Tue, 19 Jul 2022 03:40:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 3B206C341CF;
+	Tue, 19 Jul 2022 03:40:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1658202014;
+	bh=ikQzpN8MCLg1lqxUB80odOxAzCBnExBDPr8pxjL5ywM=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=QKfb7r7wlMw9lNv81IcoXBmMhd0RxOz/BSm+wXuXUfC23aRJazPvSQniwvEpuvxX/
+	 K/gbRHK77fIquHeAMNIrwhoZfu+vcobvpVoj6fGYMOLTYJ25J/ImosfYgWIU7Eo+6G
+	 8Msbo8urtjmNCfXqItruqcprNzMyBZIe5CKagZL3dNl6IXpre+5eqwesyxgm7IJhed
+	 AZyvtjtQQnFd0zHLiWL7J12QWpigKUxzNwZ01IWccPVF1bws00pS5bRzRz0V/rMRF4
+	 0xBmz1Ff+GFgaDXarHfGGHjFtOOzKM1pDntJdnVTKHNewUItsIivuDVXTbFpB96ooq
+	 MfTTX0LCgjSKQ==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 2156AE451BA;
+	Tue, 19 Jul 2022 03:40:14 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] net: ethernet: mtk_eth_soc: fix off by one check of
+ ARRAY_SIZE
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <165820201413.29134.11488522402561841559.git-patchwork-notify@kernel.org>
+Date: Tue, 19 Jul 2022 03:40:14 +0000
+References: <20220716214654.1540240-1-trix@redhat.com>
+In-Reply-To: <20220716214654.1540240-1-trix@redhat.com>
+To: Tom Rix <trix@redhat.com>
+Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_194156_785552_A18BF2AD 
-X-CRM114-Status: GOOD (  24.74  )
+X-CRM114-CacheID: sfid-20220718_204016_645440_B020BAAE 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,176 +77,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
+Hello:
 
-On Mon, 2022-07-18 at 18:04 +0200, Matthias Brugger wrote:
+This patch was applied to netdev/net.git (master)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Sat, 16 Jul 2022 17:46:54 -0400 you wrote:
+> In mtk_wed_tx_ring_setup(.., int idx, ..), idx is used as an index here
+>   struct mtk_wed_ring *ring = &dev->tx_ring[idx];
 > 
-> On 14/07/2022 14:50, Allen-KH Cheng wrote:
-> > Convert Mediatek watchdog devicetree binding to YAML.
-> > 
+> The bounds of idx are checked here
+>   BUG_ON(idx > ARRAY_SIZE(dev->tx_ring));
 > 
-> You are also fixing the fallback compatible here.
+> If idx is the size of the array, it will pass this check and overflow.
+> So change the check to >= .
 > 
+> [...]
 
-Oh, I will add those into commit message.
+Here is the summary with links:
+  - net: ethernet: mtk_eth_soc: fix off by one check of ARRAY_SIZE
+    https://git.kernel.org/netdev/net/c/3696c952da07
 
-> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> > ---
-> >   .../bindings/watchdog/mediatek,wdt.yaml       | 64
-> > +++++++++++++++++++
-> >   .../devicetree/bindings/watchdog/mtk-wdt.txt  | 42 ------------
-> >   2 files changed, 64 insertions(+), 42 deletions(-)
-> >   create mode 100644
-> > Documentation/devicetree/bindings/watchdog/mediatek,wdt.yaml
-> >   delete mode 100644
-> > Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> > 
-> > diff --git
-> > a/Documentation/devicetree/bindings/watchdog/mediatek,wdt.yaml
-> > b/Documentation/devicetree/bindings/watchdog/mediatek,wdt.yaml
-> > new file mode 100644
-> > index 000000000000..cb90d89b9f5d
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/watchdog/mediatek,wdt.yaml
-> > @@ -0,0 +1,64 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/watchdog/mediatek,wdt.yaml*__;Iw!!CTRNKA9wMg0ARbw!xzpsTCQSKgCvQ7nE87H8t8uuf4nXwQouO370rg8gVf0cGfdoH1ZunLCrJI9ZM1wKzgFH_A$
-> >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!xzpsTCQSKgCvQ7nE87H8t8uuf4nXwQouO370rg8gVf0cGfdoH1ZunLCrJI9ZM1y_onVgvA$
-> >  
-> > +
-> > +title: MediatTek SoCs Watchdog timer
-> > +
-> > +maintainers:
-> > +  - Runyang Chen <runyang.chen@mediatek.com>
-> > +
-> > +allOf:
-> > +  - $ref: "watchdog.yaml#"
-> > +
-> > +properties:
-> > +  compatible:
-> > +    oneOf:
-> > +      - enum:
-> > +          - mediatek,mt2712-wdt
-> > +          - mediatek,mt6589-wdt
-> > +          - mediatek,mt7986-wdt
-> > +          - mediatek,mt8183-wdt
-> > +          - mediatek,mt8186-wdt
-> > +          - mediatek,mt8192-wdt
-> > +          - mediatek,mt8195-wdt
-> > +      - items:
-> > +          - enum:
-> > +              - mediatek,mt2701-wdt
-> 
-> missing mt6582-wdt, mediatek,mt7623-wdt and more.
-> I'd advise split this up in two patches. One fixing the fallback
-> compatible and 
-> the second one converting to yaml (or the other way round). In any
-> case make 
-> sure you have all compatibles in the end.
-> 
-> Regards,
-> Matthias
-> 
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-My carelessness, I ran dtbs_check but didn't see those compatible
-warnings. I will check all compatible again from bindings and split
-differnet PATCHs.
-
-Thanks for the reminder
-
-Best Regards,
-Allen
-
-> > +              - mediatek,mt6797-wdt
-> > +              - mediatek,mt7622-wdt
-> > +              - mediatek,mt8516-wdt
-> > +              - mediatek,mt8173-wdt
-> > +          - const: mediatek,mt6589-wdt
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +
-> > +  '#reset-cells':
-> > +    const: 1
-> > +
-> > +  mediatek,disable-extrst:
-> > +    type: boolean
-> > +    description: disable send output reset signal
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +
-> > +unevaluatedProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +
-> > +    watchdog@10007000 {
-> > +        compatible = "mediatek,mt8186-wdt";
-> > +        reg = <0x10007000 0x100>;
-> > +        mediatek,disable-extrst;
-> > +        #reset-cells = <1>;
-> > +    };
-> > +
-> > +...
-> > diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt 
-> > b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> > deleted file mode 100644
-> > index 762c62e428ef..000000000000
-> > --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> > +++ /dev/null
-> > @@ -1,42 +0,0 @@
-> > -Mediatek SoCs Watchdog timer
-> > -
-> > -The watchdog supports a pre-timeout interrupt that fires timeout-
-> > sec/2
-> > -before the expiry.
-> > -
-> > -Required properties:
-> > -
-> > -- compatible should contain:
-> > -	"mediatek,mt2701-wdt", "mediatek,mt6589-wdt": for MT2701
-> > -	"mediatek,mt2712-wdt": for MT2712
-> > -	"mediatek,mt6582-wdt", "mediatek,mt6589-wdt": for MT6582
-> > -	"mediatek,mt6589-wdt": for MT6589
-> > -	"mediatek,mt6797-wdt", "mediatek,mt6589-wdt": for MT6797
-> > -	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
-> > -	"mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
-> > -	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
-> > -	"mediatek,mt7986-wdt", "mediatek,mt6589-wdt": for MT7986
-> > -	"mediatek,mt8183-wdt": for MT8183
-> > -	"mediatek,mt8186-wdt", "mediatek,mt6589-wdt": for MT8186
-> > -	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
-> > -	"mediatek,mt8192-wdt": for MT8192
-> > -	"mediatek,mt8195-wdt", "mediatek,mt6589-wdt": for MT8195
-> > -
-> > -- reg : Specifies base physical address and size of the registers.
-> > -
-> > -Optional properties:
-> > -- mediatek,disable-extrst: disable send output reset signal
-> > -- interrupts: Watchdog pre-timeout (bark) interrupt.
-> > -- timeout-sec: contains the watchdog timeout in seconds.
-> > -- #reset-cells: Should be 1.
-> > -
-> > -Example:
-> > -
-> > -watchdog: watchdog@10007000 {
-> > -	compatible = "mediatek,mt8183-wdt",
-> > -		     "mediatek,mt6589-wdt";
-> > -	mediatek,disable-extrst;
-> > -	reg = <0 0x10007000 0 0x100>;
-> > -	interrupts = <GIC_SPI 139 IRQ_TYPE_NONE>;
-> > -	timeout-sec = <10>;
-> > -	#reset-cells = <1>;
-> > -};
 
 
