@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC249CCA47F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 12:11:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A926C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 13:22:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B6HnDEYYywUZXn9Y1ExF72Dw+OjIUYTBXlE+mFRixig=; b=ce4YSmhX5kDsZGv49pFCWQEA6B
-	CJ0/aL0hhhG2JxRsf0W1Pqfw92Gr3DhPv669Oz5RhMKwe+FXT05/WBJtK32Okb+yHL1zFZfSJtaNc
-	df00UazKWmg0nUhDAFCeQPkATJkvCNbPGPt6C2IrzhQV7Q3iOWfaOUzy2NxCyOT7H8ERstg8epuHr
-	5B2SKqFf+AFbM2aqncN4xUuKSREEjCLzKEnwSqppAaYQCId4VqmMQt1rnGDa9mskKahDfMwwHnYIV
-	EWOtmEIBq6FORrmni/QbyzNcz6lqqKpEAMBFdUEE2ijlQYg9Uc1eXTxbksyskIkFDAKYJnd7iF6u8
-	/QwGxH+w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XWwHlDfeBsIQWmDnQTsbFMeStkL+HvnCAPkSi5GnpeE=; b=mfalKl81f0M2WvpCsRQO1bAL1o
+	s0U/dfdbdumwQ49WXdOkY3SHQEta4y+jEhtPUR2OeEegAQ6LuNXQ61f33Lb/VH41fkTSbw2/+U2IL
+	q+ra1GpA2AHB7c3yTXa8+hjBd9fXmA70jLr1E4vubL6/WmsJivIT0jp0a0HfHAVdKkK5XIc3g1PJt
+	VErdr1d7qQdKL54OzPUQfvt2TicP+6vis+G6prKsVny3x571I8cr10wPbenqlpFLBm7GyiAIVEDpC
+	DQqA8LhoC+oZtD+0BN3XQxhiLqnVWP3YF3cBsQ8MgmREiCfm22ynZua8tvXGNzIooGdNRz1xEoV42
+	IkWSHOOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDm4i-008ZQo-Pt; Tue, 19 Jul 2022 12:11:40 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oDnBM-0098pS-2j; Tue, 19 Jul 2022 13:22:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDm4N-008ZGu-Pe; Tue, 19 Jul 2022 12:11:21 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 987D3B81B37;
-	Tue, 19 Jul 2022 12:11:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A939DC341C6;
-	Tue, 19 Jul 2022 12:11:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658232676;
-	bh=V2z6pp8MGIZMODkGoJeoLyOFQM76mCY2XwDpKMqsZz4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=nisjwxsRQq4kJLxDHtBhIHYnOnKlDbfhPEcXSuOwWyov46tC5CZuk6WXTK0sWfSco
-	 FaTIGYz5GNDvexZQCarZfVKZJM7AbOiKOZXLxbQoLOgMgApuQhWlKyM5pRk66PiGrj
-	 5u37zsMU/HyAAPJSOKTrpb3BFQVdvk8dRYUnyVWQWaDD0yHQB53P8U4iadVHwjDiiB
-	 k5f6g3QSDw//oLNIwTGQN0PjM22freaaXT8Rl1xojUueQt5UDbYJTAeosRX3L7gMB3
-	 u6yLTk+NsOIodwHH63qw+5T+UShSQTUfPv1jiIMzWYmIr7uGzluWXGAqFg0CG1/OZK
-	 WcCyctOvB/e8w==
-Date: Tue, 19 Jul 2022 13:21:11 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Hui Liu <hui.liu@mediatek.com>, lars@metafoo.de, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- srv_heupstream@mediatek.com, zhiyong.tao@mediatek.com,
- guodong.liu@mediatek.com, johnson.wang@mediatek.com,
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 1/1] dt-bindings: iio: adc: Add compatible for MT8188
-Message-ID: <20220719132111.624af06e@jic23-huawei>
-In-Reply-To: <c764d5c1-2d4d-e829-a728-eed253a66701@collabora.com>
-References: <20220719014657.28714-1-hui.liu@mediatek.com>
-	<20220719014657.28714-2-hui.liu@mediatek.com>
-	<c764d5c1-2d4d-e829-a728-eed253a66701@collabora.com>
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-pc-linux-gnu)
+	id 1oDnBI-0098jk-Jf
+	for linux-mediatek@lists.infradead.org; Tue, 19 Jul 2022 13:22:35 +0000
+X-UUID: 2e1f9cf6b81c4a748d72a81c1f128491-20220719
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:b5a3a9b3-6e6c-4673-9c69-a01beee80b1f,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:0f94e32,CLOUDID:8676b564-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 2e1f9cf6b81c4a748d72a81c1f128491-20220719
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2056249374; Tue, 19 Jul 2022 06:22:22 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 19 Jul 2022 21:02:10 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Tue, 19 Jul 2022 21:02:10 +0800
+From: <peter.wang@mediatek.com>
+To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
+Subject: [PATCH v1] scsi: ufs: correct ufshcd_shutdown flow
+Date: Tue, 19 Jul 2022 21:02:08 +0800
+Message-ID: <20220719130208.29032-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220719_051120_036575_3F319AE1 
-X-CRM114-Status: GOOD (  10.17  )
+X-CRM114-CacheID: sfid-20220719_062232_671974_CB83E83C 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,22 +79,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 19 Jul 2022 11:44:44 +0200
-AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
+From: Peter Wang <peter.wang@mediatek.com>
 
-> Il 19/07/22 03:46, Hui Liu ha scritto:
-> > From: "Hui.Liu" <hui.liu@mediatek.com>
-> > 
-> > Add dt-binding documentation of auxadc for MediaTek MT8188 SoC platform.
-> > 
-> > Signed-off-by: Hui.Liu <hui.liu@mediatek.com>  
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-Applied to the togreg branch of iio.git.
+After ufshcd_wl_shutdown set device poweroff and link off,
+ufshcd_shutdown not turn off regulators/clocks.
+Correct the flow to wait ufshcd_wl_shutdown done and turn off
+regulators/clocks by polling ufs device/link state 500ms.
+Also remove pm_runtime_get_sync because it is unnecessary.
 
-Thanks,
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
-Jonathan
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index c7b337480e3e..1c11af48b584 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -9461,10 +9461,14 @@ EXPORT_SYMBOL(ufshcd_runtime_resume);
+  */
+ int ufshcd_shutdown(struct ufs_hba *hba)
+ {
+-	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba))
+-		goto out;
++	ktime_t timeout = ktime_add_ms(ktime_get(), 500);
+ 
+-	pm_runtime_get_sync(hba->dev);
++	/* Wait ufshcd_wl_shutdown clear ufs state, timeout 500 ms */
++	while (!ufshcd_is_ufs_dev_poweroff(hba) || !ufshcd_is_link_off(hba)) {
++		if (ktime_after(ktime_get(), timeout))
++			goto out;
++		msleep(1);
++	}
+ 
+ 	ufshcd_suspend(hba);
+ out:
+-- 
+2.18.0
 
 
