@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FED7C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 10:21:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C76D4C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 10:31:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bcjtNV9wmZc8THaTXZx2TGH+KDR4cetIcGJyUCqmf7U=; b=qrnQg8A+sWG1nefWf7IFlY8KmP
-	y753NmfhXhHvpxrxyt6rohXbHaaXTSTVQztTQFjhikizcJbQak8G6KwI6VXgPPnQmFaQJWdwLFXVA
-	2F+vAH4zF7AdSzlEq7+D0wOb5TpbZ5MJy4i1dge8+rYM9J3QXq4TB8exzcZk3eGeKBhR6sX8/cjig
-	SXcILD1orAH/Osp82Ta6cRRoZLtBkXQRHg4ss6J1k3PFAgF2Eth9rYJFl1CE3a+Lavr/PwQ0slYFb
-	j7H6yTTpEWBw68Fx152fFdTyfxA30uR0amD5R7KdS1u/p1JW3GHuV5pSIv+utUVgdBp7EjO3H5fMc
-	GKQSRz6Q==;
+	bh=hO2Yeg1EjCoAnHuO2qJc5128tqfv4keTxr6JIGZsXXw=; b=e2+JSXIQNUPebdovEAE/gWi1F4
+	nQe7sBS/2R7eXiYarHsjD3HP0IUkm6+hcb6Tip3pVhDIDDpAaFoYdLZVwFvHTQ+67aHKOqUzBVVIs
+	LfXSVeiNvcas0kQ73ER1LRBnMq4PcNwvdCJgMe8wS1hjiHvIy4T5lSozwK5GSY7xWQGsVVImeYuB1
+	Gdcttj5RVYAS6O1/zLLSSSWSAd+93n5jVxveMhux2KccUXn6SH/E3YRb5d+i7IzuCg4aAndTBa7Pa
+	wn7g6/LePmD+mw2sXvefLQ5snqGdatB24oTkI2Y8CW9+Hc5+8uU/r0GBIqHlKjpSV58xxXb4hi5Ul
+	H7y1C09w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDkLi-007xC0-V6; Tue, 19 Jul 2022 10:21:06 +0000
+	id 1oDkVV-0080sW-U4; Tue, 19 Jul 2022 10:31:13 +0000
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDkLf-007x4o-Fi
-	for linux-mediatek@lists.infradead.org; Tue, 19 Jul 2022 10:21:04 +0000
+	id 1oDkVT-0080rL-Fp
+	for linux-mediatek@lists.infradead.org; Tue, 19 Jul 2022 10:31:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1658226061;
+	s=mimecast20190719; t=1658226670;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=bcjtNV9wmZc8THaTXZx2TGH+KDR4cetIcGJyUCqmf7U=;
-	b=UNa0ICzZu/bvK3k/0VDkkxKy9JxSx/vd2P1TKCilRhFHd+xQHh2Pq97aC+utwbD3W2ALFB
-	JYpbcFgZThwtayq63b0zBjVcM36Ye5ZerIDQS2ez41fyxNbIvGySydom8pfwn1VgpGJL8l
-	zntHNrl2WqkmxsxK71/JMjXmdd0QsQ0=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=hO2Yeg1EjCoAnHuO2qJc5128tqfv4keTxr6JIGZsXXw=;
+	b=BI+qXY5noqQ+s/TY3IZjx8jeiek/uUHYjVmwcUE3TblyJ9QPAJIZYw3HGIiGHSpDbwl/MQ
+	lzBaXTrJOoDFBvM7tpnVkgzCpyNFKqkYk6xOc/Fftquh+Va/C6ELZGrLBXguWAK1gI0OvZ
+	YVh1o5pE3lXNBfdJ4WG4oPCBwBQc/qM=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-668-GlEq19StPBSMk0y3AMr58Q-1; Tue, 19 Jul 2022 06:18:41 -0400
-X-MC-Unique: GlEq19StPBSMk0y3AMr58Q-1
-Received: by mail-wm1-f71.google.com with SMTP id i133-20020a1c3b8b000000b003a2fe4c345cso862948wma.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 Jul 2022 03:18:41 -0700 (PDT)
+ us-mta-456-j-zF06SiOMy_J14XkwBfOw-1; Tue, 19 Jul 2022 06:31:08 -0400
+X-MC-Unique: j-zF06SiOMy_J14XkwBfOw-1
+Received: by mail-wr1-f70.google.com with SMTP id t13-20020adfe10d000000b0021bae3def1eso2426354wrz.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 19 Jul 2022 03:31:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=bcjtNV9wmZc8THaTXZx2TGH+KDR4cetIcGJyUCqmf7U=;
-        b=UrXlvYry5FErxOYPE9nk8L122FumGOKicY4MXnF//J29CkEr8db1JLv3KsTOOIt3Kg
-         KLz8asnwf/XHYTl/83CC3zrYGUG4H+JSR8GWOcGcc/9hnYFk6A0eJO8quoNJ7f8s2FSC
-         9bONzr1IKrxbdzLKiiG7jPkx96wsEaROUeSXKXNBxg9sQ8yOc23a/vfJs96Qtgeo2151
-         j7kTnvHD/VlGP+s4qywfxej/T5S5i3w5bTn70I4O4MrXXdmZNjm0tQapfHuwAzhWcTHO
-         c1Q0S6/bPuX584mdmbpklH0NHU+z6QbEF0eRAoMuWJtVgVTpf+mp0ELtJGLRhnF3VVd1
-         gdXg==
-X-Gm-Message-State: AJIora91ph9bt+cI0t4L5s49cfX73O97w6+P/+TGFMfDFz0+h33xGxSV
-	eyZnG4ZHuVmpCvAUQTQaMzE+2Q9+qomq8ZoiSgaJKhj6/yXblJ0AAelmoTnk8F7Ob9Cp7ArlZOx
-	4ClLq0ttTbUENOVDWYPkh0sP1rkOLtuFR
-X-Received: by 2002:adf:f492:0:b0:21d:89d5:9443 with SMTP id l18-20020adff492000000b0021d89d59443mr25729799wro.201.1658225920319;
-        Tue, 19 Jul 2022 03:18:40 -0700 (PDT)
-X-Google-Smtp-Source: AGRyM1t+M6eTgVqsnCSPqeqomALCw6aMTVg+qP8eQypC4kapQKeN4OsBGXpfQ8ticMzI81qfRUHLsw==
-X-Received: by 2002:adf:f492:0:b0:21d:89d5:9443 with SMTP id l18-20020adff492000000b0021d89d59443mr25729775wro.201.1658225920107;
-        Tue, 19 Jul 2022 03:18:40 -0700 (PDT)
+        bh=hO2Yeg1EjCoAnHuO2qJc5128tqfv4keTxr6JIGZsXXw=;
+        b=fpWVO1x8PUzBhH+8dchz6n0A1AHsTpVFGgSWvZ8maVRP7NHkdwzQ3u4KTLgdTPQqMA
+         z3Z4a/P4HD9uuuwlid/PHJG9M6U6Es9yWuJmgCQw2e6M5M0/duDQATMV9hN3QAcAgqae
+         xqVHwdEU5vlYsU1omdOw9+3FK87SEk57Y5Q/Ig7nBLVUdKidDeWu0g9KXfW1iVg7BmbC
+         LhGoXjple8EwlApfFBUcjgy07YDbtqlntPbp+hI5stJv27qlciXy4eIOl+K5xuV6P/4h
+         QLNQ6BVpRSCXNUiTMuWdL95r66guFbx/WhQNlgjStlyxDl06npBkqEVhRHAz9tIAkHZK
+         E80g==
+X-Gm-Message-State: AJIora+cPQrcKCVTJrC1KXbNjEhRKYkEK1Muyc6imKEgmxO8tJmScPPx
+	QGU2yUoJrUs28nhCX0Oa6e9mkCu1tMLeCam0fJoLQfm5WJb/Z9gDFffszr0ahbhVM+3pTUcc6H/
+	VtU4vssXVwPkSLa458T1iLNg7GOCtpNi9
+X-Received: by 2002:a05:6000:60a:b0:21d:9451:e91 with SMTP id bn10-20020a056000060a00b0021d94510e91mr26875713wrb.73.1658226667770;
+        Tue, 19 Jul 2022 03:31:07 -0700 (PDT)
+X-Google-Smtp-Source: AGRyM1u5W1ZH8zhxxQtjlgAOgTvXC10C+B+JsErYZGSxT0hoMG5tSx5BYrru2+olfB8xvHNGilqN1w==
+X-Received: by 2002:a05:6000:60a:b0:21d:9451:e91 with SMTP id bn10-20020a056000060a00b0021d94510e91mr26875691wrb.73.1658226667533;
+        Tue, 19 Jul 2022 03:31:07 -0700 (PDT)
 Received: from localhost (nat-pool-mxp-t.redhat.com. [149.6.153.186])
-        by smtp.gmail.com with ESMTPSA id e9-20020adfef09000000b0021b89f8662esm12922622wro.13.2022.07.19.03.18.39
+        by smtp.gmail.com with ESMTPSA id i3-20020a05600c14c300b003a32251c3f0sm2103638wmh.33.2022.07.19.03.31.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Jul 2022 03:18:39 -0700 (PDT)
-Date: Tue, 19 Jul 2022 12:18:36 +0200
+        Tue, 19 Jul 2022 03:31:07 -0700 (PDT)
+Date: Tue, 19 Jul 2022 12:31:03 +0200
 From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
 To: Paolo Abeni <pabeni@redhat.com>
 Cc: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org,
@@ -73,20 +73,20 @@ Cc: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org,
 	kuba@kernel.org, matthias.bgg@gmail.com,
 	linux-mediatek@lists.infradead.org, ilias.apalodimas@linaro.org,
 	jbrouer@redhat.com
-Subject: Re: [PATCH v3 net-next 5/5] net: ethernet: mtk_eth_soc: add support
- for page_pool_get_stats
-Message-ID: <YtaE/KJDNOqkvLml@localhost.localdomain>
+Subject: Re: [PATCH v3 net-next 2/5] net: ethernet: mtk_eth_soc: add basic
+ XDP support
+Message-ID: <YtaH523Jz39smaNO@localhost.localdomain>
 References: <cover.1657956652.git.lorenzo@kernel.org>
- <8592ada26b28995d038ef67f15c145b6cebf4165.1657956652.git.lorenzo@kernel.org>
- <43ff0071f0ce4b958f27427acebcf2c6ace52ba0.camel@redhat.com>
+ <b4c7646e70b1b719b8ae87a90bb8e4cf57b1a26d.1657956652.git.lorenzo@kernel.org>
+ <5b6d4061bd12a9079e882742c750962816ee6567.camel@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="8SZvmLJxItoVIA7C"
+	protocol="application/pgp-signature"; boundary="ZUXewXXKXjpZZxkt"
 Content-Disposition: inline
-In-Reply-To: <43ff0071f0ce4b958f27427acebcf2c6ace52ba0.camel@redhat.com>
+In-Reply-To: <5b6d4061bd12a9079e882742c750962816ee6567.camel@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220719_032103_715770_59859BB9 
-X-CRM114-Status: GOOD (  24.92  )
+X-CRM114-CacheID: sfid-20220719_033111_622168_79F3BEB7 
+X-CRM114-Status: GOOD (  17.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,100 +102,62 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---8SZvmLJxItoVIA7C
+--ZUXewXXKXjpZZxkt
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
 > On Sat, 2022-07-16 at 09:34 +0200, Lorenzo Bianconi wrote:
-> > Introduce support for the page_pool stats API into mtk_eth_soc driver.
-> > Report page_pool stats through ethtool.
+> > Introduce basic XDP support to mtk_eth_soc driver.
+> > Supported XDP verdicts:
+> > - XDP_PASS
+> > - XDP_DROP
+> > - XDP_REDIRECT
 > >=20
 > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > > ---
-> >  drivers/net/ethernet/mediatek/Kconfig       |  1 +
-> >  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 40 +++++++++++++++++++--
-> >  2 files changed, 38 insertions(+), 3 deletions(-)
+> >  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 147 +++++++++++++++++---
+> >  drivers/net/ethernet/mediatek/mtk_eth_soc.h |   2 +
+> >  2 files changed, 131 insertions(+), 18 deletions(-)
 > >=20
-> > diff --git a/drivers/net/ethernet/mediatek/Kconfig b/drivers/net/ethern=
-et/mediatek/Kconfig
-> > index d2422c7b31b0..97374fb3ee79 100644
-> > --- a/drivers/net/ethernet/mediatek/Kconfig
-> > +++ b/drivers/net/ethernet/mediatek/Kconfig
-> > @@ -18,6 +18,7 @@ config NET_MEDIATEK_SOC
-> >  	select PHYLINK
-> >  	select DIMLIB
-> >  	select PAGE_POOL
-> > +	select PAGE_POOL_STATS
-> >  	help
-> >  	  This driver supports the gigabit ethernet MACs in the
-> >  	  MediaTek SoC family.
 > > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/=
 ethernet/mediatek/mtk_eth_soc.c
-> > index abb8bc281015..eba95a86086d 100644
+> > index 9a92d602ebd5..bc3a7dcab207 100644
 > > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 > > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> > @@ -3517,11 +3517,19 @@ static void mtk_get_strings(struct net_device *=
-dev, u32 stringset, u8 *data)
-> >  	int i;
+> > @@ -1494,11 +1494,44 @@ static void mtk_rx_put_buff(struct mtk_rx_ring =
+*ring, void *data, bool napi)
+> >  		skb_free_frag(data);
+> >  }
 > > =20
-> >  	switch (stringset) {
-> > -	case ETH_SS_STATS:
-> > +	case ETH_SS_STATS: {
-> > +		struct mtk_mac *mac =3D netdev_priv(dev);
-> > +		struct mtk_eth *eth =3D mac->hw;
-> > +
-> >  		for (i =3D 0; i < ARRAY_SIZE(mtk_ethtool_stats); i++) {
-> >  			memcpy(data, mtk_ethtool_stats[i].str, ETH_GSTRING_LEN);
-> >  			data +=3D ETH_GSTRING_LEN;
-> >  		}
-> > +		if (!eth->hwlro)
+> > +static u32 mtk_xdp_run(struct mtk_eth *eth, struct mtk_rx_ring *ring,
+> > +		       struct xdp_buff *xdp, struct net_device *dev)
+> > +{
+> > +	struct bpf_prog *prog =3D rcu_dereference(eth->prog);
 >=20
-> I see the page_pool is enabled if and only if !hwlro, but I think it
-> would be more clear if you explicitly check for page_pool here (and in
-> a few other places below), so that if the condition to enable page_pool
-> someday will change, this code will still be fine.
+> It looks like here you need to acquire the RCU read lock. lockdep
+> should splat otherwise.
 
-Hi Paolo,
-
-page_pool pointer is defined in mtk_rx_ring structure, so theoretically we =
-can have a
-page_pool defined for queue 0 but not for queues {1, 2, 3}. "!eth->hwlro" m=
-eans
-there is at least one page_pool allocated. Do you prefer to do something li=
-ke:
-
-bool mtk_is_pp_enabled(struct mtk_eth *eth)
-{
-	for (i =3D 0; i < ARRAY_SIZE(eth->rx_ring); i++) {
-		struct mtk_rx_ring *ring =3D &eth->rx_ring[i];
-
-		if (ring->page_pool)
-			return true;
-	}
-	return false;
-}
+ack, I will fix it in the next version.
 
 Regards,
 Lorenzo
 
 >=20
-> Thanks!
->=20
-> Paolo
+> /P
 >=20
 
---8SZvmLJxItoVIA7C
+--ZUXewXXKXjpZZxkt
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYtaE+QAKCRA6cBh0uS2t
-rEC5AQDq6EMtRHb11mzlTo2GCWmwsHt8GBeA4GkaEOItm4V61AD9GDfcR58iPC2G
-KiaDgzLAhaM4cRamwlleYBG9gLFClgk=
-=7eQa
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYtaH5AAKCRA6cBh0uS2t
+rFf+AP46JU45b0ZcVix0m0IoJyrPrwyRX9cf3KPyrpMERkh+cAD/Wvf0maFDO3Ik
+E6XxXoMI1gVlKm5UUawDVfVxPiXrLws=
+=m7o8
 -----END PGP SIGNATURE-----
 
---8SZvmLJxItoVIA7C--
+--ZUXewXXKXjpZZxkt--
 
 
