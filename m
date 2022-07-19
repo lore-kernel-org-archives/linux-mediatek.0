@@ -4,57 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99C64C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 15:25:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69DF7C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 15:27:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dkP0JFe88jY/eLpAiMVd6rSp8BvUGMEXl678bLjYbZA=; b=Xlh6CeiTpmIwHG/ioMPNkHuDWQ
-	j0sFTrLLG2ofosXPttyqYt5j6t+ldkVirfWJ3TMZaFg19spE21HnplxoOZM2NtafkA8N8NVhF3O/U
-	PfrxaXQzCOhN6fCklAyJFfK4RwDoflgWFuDpdCn3XRJlHXuEE5vvr1xE8VgUG7nQsE30YbovYuYJ/
-	rJzzqvuJYfpnDhD4/OnQwBXTTu8nPckWp/oeuMmFZOrg/u1tbMu1dqZhJwf9rHnSP6+YfWUyVUPAq
-	6ubdMRYQfp8jUOwFfnP0ww0xi0GeZP/HDWbhDg1Bw7yDU2683t2MyicSVrBkB/fmHu3c5w9T2iTub
-	zkwjgDWg==;
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=k2WOaSt5rNiqEUmMnRw4bBaUeSfCj6BPdwWhpUGWHNw=; b=M0ie8ImEoQbMtnPnE4C4HrMnnh
+	BVJIw/xrUWRnn5d2WESi4Lx2Hx9dOMHuMXSCihEIY9x7JB5tbkD6Fza17svydmdCUezPEjUIORhCO
+	6del/ew5IDxFoPqGBY+QTswB+Em85RZ3HH+/Z1VHQIInenHY/sqcoEO+tXKAbxcoeAWib2cMcewqt
+	TLTCWg5woxhvplFJks81vPkWn3H4SiTWHlxF9tlmHVSBxtWBeUj2NHjI5j/05jTuzM+lUGnOrcoLK
+	bk0Gss4nuvxIWR42a6s5Ia8y3iDkqekXlE3dBnRfViTuprmFjRcVM9ZWWsVxP0MuxlyHCsIs6R+uc
+	UC+qBjUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDp5x-00A105-NV; Tue, 19 Jul 2022 15:25:09 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oDp8L-00A2pt-QR; Tue, 19 Jul 2022 15:27:37 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDp5i-00A0qH-Ac; Tue, 19 Jul 2022 15:24:56 +0000
+	id 1oDp89-00A2iS-43; Tue, 19 Jul 2022 15:27:26 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id C97FDB81C00;
-	Tue, 19 Jul 2022 15:24:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C198C341C6;
-	Tue, 19 Jul 2022 15:24:49 +0000 (UTC)
-Date: Tue, 19 Jul 2022 11:24:48 -0400
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C70C561946;
+	Tue, 19 Jul 2022 15:27:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13B4AC341C6;
+	Tue, 19 Jul 2022 15:27:20 +0000 (UTC)
+Date: Tue, 19 Jul 2022 11:27:19 -0400
 From: Steven Rostedt <rostedt@goodmis.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: <linux-kernel@vger.kernel.org>, Ingo Molnar <mingo@kernel.org>, "Andrew
- Morton" <akpm@linux-foundation.org>, <linux-usb@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Greg Kroah-Hartman
+To: LKML <linux-kernel@vger.kernel.org>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Ingo Molnar
+ <mingo@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>
-Subject: Re: [for-next][PATCH 13/23] USB: mtu3: tracing: Use the new
- __vstring() helper
-Message-ID: <20220719112448.4e9915e0@gandalf.local.home>
-In-Reply-To: <2893728a294ef13bdeba9e587083b82fb794cc68.camel@mediatek.com>
-References: <20220714164256.403842845@goodmis.org>
-	<20220714164330.311734558@goodmis.org>
-	<1267b234b09280b9b475cfe2bb32580e967e2dac.camel@mediatek.com>
-	<20220715173944.386743d8@gandalf.local.home>
-	<2893728a294ef13bdeba9e587083b82fb794cc68.camel@mediatek.com>
+Subject: [PATCH v2] USB: mtu3: tracing: Use the new __vstring() helper
+Message-ID: <20220719112719.17e796c6@gandalf.local.home>
 X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220719_082454_581456_0629EEA4 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20220719_082725_234459_D5C8DA68 
+X-CRM114-Status: GOOD (  14.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,52 +62,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 19 Jul 2022 13:23:06 +0800
-Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+From: "Steven Rostedt (Google)" <rostedt@goodmis.org>
 
-> > Care to send me a patch, and I'll just include it in my series?  
-> Seems no need add another patch, just modify this patch as below:
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_trace.h
-> b/drivers/usb/mtu3/mtu3_trace.h
-> index a09deae1146f..03d2a9bac27e 100644
-> --- a/drivers/usb/mtu3/mtu3_trace.h
-> +++ b/drivers/usb/mtu3/mtu3_trace.h
-> @@ -18,18 +18,16 @@
-> 
->  #include "mtu3.h"
-> 
-> -#define MTU3_MSG_MAX   256
-> -
->  TRACE_EVENT(mtu3_log,
->         TP_PROTO(struct device *dev, struct va_format *vaf),
->         TP_ARGS(dev, vaf),
->         TP_STRUCT__entry(
->                 __string(name, dev_name(dev))
-> -               __dynamic_array(char, msg, MTU3_MSG_MAX)
-> +               __vstring(msg, vaf->fmt, vaf->va)
->         ),
->         TP_fast_assign(
->                 __assign_str(name, dev_name(dev));
-> -               vsnprintf(__get_str(msg), MTU3_MSG_MAX, vaf->fmt, *vaf-
-> >va);  
-> +               __assign_vstr(msg, vaf->fmt, vaf->va);
->         ),
->         TP_printk("%s: %s", __get_str(name), __get_str(msg))
->  );
-> >   
-> 
-> remove below two lines
-> "
-> -#define MTU3_MSG_MAX   256
-> -
+Instead of open coding a __dynamic_array() with a fixed length (which
+defeats the purpose of the dynamic array in the first place). Use the new
+__vstring() helper that will use a va_list and only write enough of the
+string into the ring buffer that is needed.
 
-Fine.
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Ingo Molnar <mingo@kernel.org>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-usb@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Signed-off-by: Steven Rostedt (Google) <rostedt@goodmis.org>
+---
+Changes since v1: https://lkml.kernel.org/r/20220705224750.354926535@goodmis.org
 
-Even though I already pushed to linux-next, I did something I seldom do. I
-rebased my for-next branch and removed this patch.
+ - Removed MTU3_MSG_MAX define. (Chunfeng Yun)
 
-I'll send a v2.
+ drivers/usb/mtu3/mtu3_trace.h | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
--- Steve
+diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+index 1b897636daf2..a98fa012b729 100644
+--- a/drivers/usb/mtu3/mtu3_trace.h
++++ b/drivers/usb/mtu3/mtu3_trace.h
+@@ -18,18 +18,16 @@
+ 
+ #include "mtu3.h"
+ 
+-#define MTU3_MSG_MAX	256
+-
+ TRACE_EVENT(mtu3_log,
+ 	TP_PROTO(struct device *dev, struct va_format *vaf),
+ 	TP_ARGS(dev, vaf),
+ 	TP_STRUCT__entry(
+ 		__string(name, dev_name(dev))
+-		__dynamic_array(char, msg, MTU3_MSG_MAX)
++		__vstring(msg, vaf->fmt, vaf->va)
+ 	),
+ 	TP_fast_assign(
+ 		__assign_str(name, dev_name(dev));
+-		vsnprintf(__get_str(msg), MTU3_MSG_MAX, vaf->fmt, *vaf->va);
++		__assign_vstr(msg, vaf->fmt, vaf->va);
+ 	),
+ 	TP_printk("%s: %s", __get_str(name), __get_str(msg))
+ );
+-- 
+2.35.1
+
 
