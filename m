@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EFC1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Jul 2022 23:23:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1DEFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 02:35:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tk7AONgbfdDeHTbKVGT4XfJ5oFMO3xWw+bJnRDROhPc=; b=bTdfw+p1pamQe3VbylGIUHvUAo
-	GBHJFzH1ihdfeF43UllJtfaRD40/EjvPH3JnGuBrKL2kYdk7HTDo47ZbWgLfEchycpBeyRtn+FuA1
-	8vYyrvXY4bRzXZNIAm448FcvGBXQWtIqzaqkzQQijvN5CNbG4SzGns/3ZzyUoz1CE6SR2XOu3wdiw
-	oTAFiz0YVWiemTNCTEi5TaZ1Mcg01E3Dawfjh4un28MH8c5OW2RuxxSxMv99DoX7gunFHl8gq4ZCw
-	mQ8DVXGKLNedoEzIMLnOOb9OOTp51N6WBJLhDpybLuvyyn8NvQxnT2gpBfxo+ChKhGXxUm54LtbKt
-	SWhJXdCA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IgaCAIFi73FW1gXjgUqsAXxIB80HkLF7HydLxWy1vAQ=; b=Y7DcsQYOwe/C2nhjn1LZnBFXST
+	XqPokth3v2fKsFRhyJw8V21c6uO9GvFik0lbPhrbHn4KfQ6M8wZDcr/Ffrq+T7IuSTN80njdtUwjg
+	x7fL7T12NYaM3IuFUel9ccvVMCV6/+1ZDSRWspgbqCeW0ptWSsuc1bD3JrEHSuRpMGn3mgaxKW0Rr
+	mEQzSTUBHSjW5+NSQKAq7ZfmH+S7Hqqoq/cbaLPdSEFNlUOSNvHYrokL+9zJU3igQyedPhyfPwvc4
+	8EIRCuvYX1pp/gwPIrRMEaXxZEjSQVn54xNMZ36pgdwHlp18VCDzF8nk5OWMcr32FdJiNRpF+5IXS
+	uoul9ssw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDa5X-002dAI-TE; Mon, 18 Jul 2022 23:23:43 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oDd58-0044VD-5V; Tue, 19 Jul 2022 02:35:30 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDa5N-002d7f-29; Mon, 18 Jul 2022 23:23:34 +0000
-Received: from notapiano (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A1B876601A63;
-	Tue, 19 Jul 2022 00:23:30 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658186611;
-	bh=ueHareq2lBmSzrfXkKzx7fGfwxDmuIWF5D8pgRa5xxU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NWa23fDATco2oFnMi8UA3XKmwA+raBTNgR8E/pk0t5Kc11Pxkz+XUP82VH96guprU
-	 ZMtjFx0xxB5cT5vO6Sfa24m/vIzNO+bmiic6PAv2f5vej4eHRZj1ulkSnTU1F1sCKE
-	 ryBvTsL6E8xqS9TV5FvXZthYWYGAoi5VmrMJ2J0dtiIK9esBvwTecym5oeEnaA09gx
-	 cMwwGck9SeYsN5unYjF7MdycYxME+C7MAVynUo7PtsL7yZUca/Fy47MVyzElvTaZqd
-	 +V2vKsTSuRGIN4TMjeWaNEUzoD9qv2fFCoy/3cqZiM+b0iCPqvEc/Z53yMN/HxEqbY
-	 JfFzt9San8/FQ==
-Date: Mon, 18 Jul 2022 19:23:26 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v3 0/5] Complete driver nodes for MT8192 SoC
-Message-ID: <20220718232326.l7cffiighmcdl3at@notapiano>
-References: <20220712114046.15574-1-allen-kh.cheng@mediatek.com>
+	id 1oDd53-0044Uc-RX; Tue, 19 Jul 2022 02:35:27 +0000
+X-UUID: 111af4d8358e4912964a88a7e450294b-20220718
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:231ecb06-3603-427e-b688-0e53bfee11f8,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:4deed6d7-5d6d-4eaf-a635-828a3ee48b7c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 111af4d8358e4912964a88a7e450294b-20220718
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1070124438; Mon, 18 Jul 2022 19:35:21 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Tue, 19 Jul 2022 10:34:58 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Tue, 19 Jul 2022 10:34:58 +0800
+Message-ID: <21830ca88914215c5e98aba49e2e879dcbfde1ab.camel@mediatek.com>
+Subject: Re: [PATCH] dt-bindings: display: mediatek: dpi: add power-domains
+ property
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob
+ Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, CK Hu
+	<ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <hsinyi@chromium.org>,
+	<fparent@baylibre.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 19 Jul 2022 10:34:56 +0800
+In-Reply-To: <b2439e75-88a3-5f04-5fe6-b53e8d5232a7@collabora.com>
+References: <20220718052217.29729-1-allen-kh.cheng@mediatek.com>
+	 <b2439e75-88a3-5f04-5fe6-b53e8d5232a7@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220712114046.15574-1-allen-kh.cheng@mediatek.com>
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_162333_256143_EB157160 
-X-CRM114-Status: GOOD (  14.15  )
+X-CRM114-CacheID: sfid-20220718_193525_924989_1648A82B 
+X-CRM114-Status: GOOD (  15.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,46 +82,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 12, 2022 at 07:40:41PM +0800, Allen-KH Cheng wrote:
-> This series are based on matthias.bgg/linux.git, for-next.
-> 
-> I remove vcodec lat and core nodes PATCH from series and will comfirm
-> clocks usage then resend PATCH.
-> 
-> Also should reference below PATCH for dsi in chunkuang.hu/linux.git
-> dt-bindings: display: mediatek: dsi: Convert dsi_dtbinding to .yaml
-> 
-> changes since v2:
->  - add mmsys #reset-cells PATCH
->  - add missing fallback compatible
->  - add display aliases
->  - remove vcodec lat and core nodes PATCH
-> 
-> changes since v1:
->  - add Reviewed-by Tag
->  - rename dsi-phy from dsi-dphy
->  - add missing power-domains in disp mutex
->  - Add remove mt8192 display rdma compatible PATCH in series
->  - use "mediatek,mt8183-disp-rdma" as fallback
->  - remove mediatek,larb from rdma node
->  - remove syscon-dsi and add power-domains in dsi
->  - add reset property in dsi and mt8192-resets.h
->  - correct Typo: s/ndoe/node in commit message
-> 
-> Allen-KH Cheng (5):
->   arm64: dts: mt8192: Add pwm node
->   arm64: dts: mt8192: Add mipi_tx node
->   arm64: dts: mediatek: Add mmsys #reset-cells property for mt8192
->   arm64: dts: mt8192: Add display nodes
->   arm64: dts: mt8192: Add dsi node
+Hi Angelo,
 
-For the whole series
+On Mon, 2022-07-18 at 15:59 +0200, AngeloGioacchino Del Regno wrote:
+> Il 18/07/22 07:22, Allen-KH Cheng ha scritto:
+> > DPI is part of the display / multimedia block in MediaTek SoCs
+> > and is managed using power controller in some platforms. We add
+> > the power-domains property to the binding documentation.
+> > 
+> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> 
+> For the contents of this commit:
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> 
+> 
+> ...but I'm not sure whether this one requires a Fixes tag (because,
+> effectively,
+> the DPI hardware *requires* that power domain to get up) - and if it
+> does,
+> which commit to reference: the first commit for this file is a TXT-
+> >schema
+> conversion, but the TXT didn't have power-domains as well.
+> 
+> 
+> 
+> Regards,
+> Angelo
 
-Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+For commit 9273cf7d3 "convert the dpi bindings to yaml"
 
-Tested on mt8192-asurada-spherion. I have a working display with some additional
-nodes on the mt8192-asurada DT.
+We add mt8173-dpi compatible but there is no power-domains property in
+binding doc.
 
-Thanks,
-Nícolas
+Yes, I think it should be added Fixes tag.
+
+Thanks for your suggestion.
+
+
+Best Regards,
+Allen
+
+
 
