@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 118FFC43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 08:27:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECED4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 08:28:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cZS/b7JgstISl4Lnan2RuMaMH2RxvvOA9cuYv6eCdNA=; b=KfgeGjGn7kzhuJMDTceWtE8spA
-	UPr9LXlklABG4hQFPmmszOUby1qgNuWoJ8EB7cf8OGziKB7o93BIHd5VQ9BlB4h8LR0U2mNHBPLch
-	wzNrOWo3U80FDpxxDcPxMEcR4n08vbNPnwQ0RhdYk690zDrovYfQUbPkTuhmVAZqvyWPiTncO/Xfz
-	0+NMk+Ay0x4xKKQimyRHiHfPXygig9TPE4dIFSTjsxTROuASKhF5afy4BJAxOnr1UgvTskLH5gfxI
-	C4NP8RI09QiATt6bcPcDHaNJVw8Y0JlS8Xz3o1wonkh/48NUo7NdDBaXUqE9n4iXmrkVqW6wEK/yV
-	R7NkYMfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AgZiYjz4XRD5be8NCldoRqXapy7cPDo/4kISDm/Nku4=; b=eZEU9zIteW2XaUgDHCiDXzkh1b
+	KVVPgfNuTm5YzmKdK8sO41FGk4zlZ3DG4UWdQBBC54wftUyexcMb4TEQE6QszQm2oI1MK17dYtuzB
+	x9T+wfcTz1Wwrhm35hrUz9u654Qdcoj9SKvcHAJ6qCUH+EHfgW/1w2nhuzwid4TmQIHwoF42AD5JQ
+	ZJ0L/vqtBB7I/KUCYRx9ZQkXmIFL0MDptXUfRhrfUl7fUThTi4WyappleCRosd0Ipnl8l4o4YSDQv
+	lAIw64nirhLEI0x/GRELoauZRETJnmjBmTgX/Aords0t915ls82W6OFWCPvDCjhGhWV24DRfRx9td
+	mhY8TnGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDiZJ-006HnH-Vo; Tue, 19 Jul 2022 08:27:01 +0000
+	id 1oDiaM-006IHG-W5; Tue, 19 Jul 2022 08:28:07 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDiZG-006Hkm-VT; Tue, 19 Jul 2022 08:27:00 +0000
-X-UUID: c585132c1de24fd4911cc740fee82474-20220719
+	id 1oDiaC-006IC7-EX; Tue, 19 Jul 2022 08:27:58 +0000
+X-UUID: 915e14f6851c4473b6f6c38c9bcd9781-20220719
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:3cf47421-1b01-4c77-9a65-bd8041cedbb3,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:d700071b-0def-4253-90b7-16f09a55d5e9,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:7cf6ae64-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-META: VersionHash:0f94e32,CLOUDID:074ce1d7-5d6d-4eaf-a635-828a3ee48b7c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: c585132c1de24fd4911cc740fee82474-20220719
+X-UUID: 915e14f6851c4473b6f6c38c9bcd9781-20220719
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <jia-wei.chang@mediatek.com>)
+	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 396538829; Tue, 19 Jul 2022 01:26:50 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 1645873517; Tue, 19 Jul 2022 01:27:51 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 19 Jul 2022 15:26:10 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 19 Jul 2022 15:26:10 +0800
-From: jia-wei.chang <jia-wei.chang@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Roger Lu
-	<roger.lu@mediatek.com>, Kevin Hilman <khilman@kernel.org>, Jia-Wei Chang
-	<jia-wei.chang@mediatek.com>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [RESEND v4 4/4] soc: mediatek: svs: add support for mt8195
-Date: Tue, 19 Jul 2022 15:25:24 +0800
-Message-ID: <20220719072524.11371-5-jia-wei.chang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220719072524.11371-1-jia-wei.chang@mediatek.com>
-References: <20220719072524.11371-1-jia-wei.chang@mediatek.com>
+ 15.2.792.15; Tue, 19 Jul 2022 16:17:16 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Tue, 19 Jul 2022 16:17:16 +0800
+Message-ID: <c4480c9ea0822ae693ff6a501c073c365e983b83.camel@mediatek.com>
+Subject: Re: [PATCH v2 03/19] dt-bindings: power: mediatek: Add bindings for
+ MediaTek SCPSYS
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Yong Wu
+	<yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon
+	<will@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee.jones@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, MandyJH Liu
+	<mandyjh.liu@mediatek.com>
+CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 19 Jul 2022 16:17:16 +0800
+In-Reply-To: <46df4ad5-5102-b5fe-95b7-5b157fb28f01@linaro.org>
+References: <20220714122837.20094-1-tinghan.shen@mediatek.com>
+	 <20220714122837.20094-4-tinghan.shen@mediatek.com>
+	 <46df4ad5-5102-b5fe-95b7-5b157fb28f01@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220719_012659_044829_BA804F71 
-X-CRM114-Status: GOOD (  17.59  )
+X-CRM114-CacheID: sfid-20220719_012756_507076_A92D7857 
+X-CRM114-Status: GOOD (  27.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,200 +86,118 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+Hi Krzysztof,
 
-To support svs on MT8195, add corresponding bank information, platform
-data, probe and parsing function.
+On Fri, 2022-07-15 at 09:57 +0200, Krzysztof Kozlowski wrote:
+> On 14/07/2022 14:28, Tinghan Shen wrote:
+> > The System Control Processor System (SCPSYS) has several power
+> > management related tasks in the system. Add the bindings for it.
+> > 
+> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> > ---
+> >  .../bindings/mfd/mediatek,scpsys.yaml         | 62 +++++++++++++++++++
+> >  1 file changed, 62 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+> > b/Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+> > new file mode 100644
+> > index 000000000000..a8b9220f2f27
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+> > @@ -0,0 +1,62 @@
+> > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> > +%YAML 1.2
+> > +---
+> > +$id: 
+> > https://urldefense.com/v3/__http://devicetree.org/schemas/mfd/mediatek,scpsys.yaml*__;Iw!!CTRNKA9wMg0ARbw!1TUl-dhD0p8qh3rYVk8RtfoKEP88jg8OADMd19qP6siBCQHhFnHWCgsyUqiETyBzxw8$
+> >  
+> > +$schema: 
+> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!1TUl-dhD0p8qh3rYVk8RtfoKEP88jg8OADMd19qP6siBCQHhFnHWCgsyUqiEJQmakAI$
+> >  
+> > +
+> > +title: MediaTek System Control Processor System
+> > +
+> > +maintainers:
+> > +  - MandyJH Liu <mandyjh.liu@mediatek.com>
+> > +
+> > +description:
+> > +  MediaTek System Control Processor System (SCPSYS) has several
+> > +  power management tasks. The tasks include MTCMOS power
+> > +  domain control, thermal measurement, DVFS, etc.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    items:
+> > +      - const: mediatek,scpsys
+> > +      - const: syscon
+> > +      - const: simple-mfd
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  power-controller:
+> > +    $ref: /schemas/power/mediatek,power-controller.yaml#
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/clock/mt8195-clk.h>
+> > +    #include <dt-bindings/power/mt8195-power.h>
+> > +
+> > +    syscon@10006000 {
+> > +        compatible = "mediatek,scpsys", "syscon", "simple-mfd";
+> 
+> This should be a SoC-specific compatible (and filename).
 
-Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mtk-svs.c | 150 +++++++++++++++++++++++++++++++++
- 1 file changed, 150 insertions(+)
+Ok. I think that you mean "mediatek,mt8195-scpsys".
+I'll update it in next version.
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 03e0a591359c..5ac431a04548 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -1684,6 +1684,89 @@ static int svs_bank_resource_setup(struct svs_platform *svsp)
- 	return 0;
- }
- 
-+static bool svs_mt8195_efuse_parsing(struct svs_platform *svsp)
-+{
-+	struct svs_bank *svsb;
-+	struct nvmem_cell *cell;
-+	u32 idx, i, ft_pgm, vmin, golden_temp;
-+
-+	for (i = 0; i < svsp->efuse_max; i++)
-+		if (svsp->efuse[i])
-+			dev_info(svsp->dev, "M_HW_RES%d: 0x%08x\n",
-+				 i, svsp->efuse[i]);
-+
-+	if (!svsp->efuse[10]) {
-+		dev_notice(svsp->dev, "svs_efuse[10] = 0x0?\n");
-+		return false;
-+	}
-+
-+	/* Svs efuse parsing */
-+	ft_pgm = svsp->efuse[0] & GENMASK(7, 0);
-+	vmin = (svsp->efuse[19] >> 4) & GENMASK(1, 0);
-+
-+	for (idx = 0; idx < svsp->bank_max; idx++) {
-+		svsb = &svsp->banks[idx];
-+
-+		if (vmin == 0x1)
-+			svsb->vmin = 0x1e;
-+
-+		if (ft_pgm == 0)
-+			svsb->volt_flags |= SVSB_INIT01_VOLT_IGNORE;
-+
-+		if (svsb->type == SVSB_LOW) {
-+			svsb->mtdes = svsp->efuse[10] & GENMASK(7, 0);
-+			svsb->bdes = (svsp->efuse[10] >> 16) & GENMASK(7, 0);
-+			svsb->mdes = (svsp->efuse[10] >> 24) & GENMASK(7, 0);
-+			svsb->dcbdet = (svsp->efuse[8]) & GENMASK(7, 0);
-+			svsb->dcmdet = (svsp->efuse[8] >> 8) & GENMASK(7, 0);
-+		} else if (svsb->type == SVSB_HIGH) {
-+			svsb->mtdes = svsp->efuse[9] & GENMASK(7, 0);
-+			svsb->bdes = (svsp->efuse[9] >> 16) & GENMASK(7, 0);
-+			svsb->mdes = (svsp->efuse[9] >> 24) & GENMASK(7, 0);
-+			svsb->dcbdet = (svsp->efuse[8]) & GENMASK(7, 0);
-+			svsb->dcmdet = (svsp->efuse[8] >> 8) & GENMASK(7, 0);
-+		}
-+
-+		svsb->vmax += svsb->dvt_fixed;
-+	}
-+
-+	/* Thermal efuse parsing */
-+	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
-+	if (IS_ERR_OR_NULL(cell)) {
-+		dev_err(svsp->dev, "no \"t-calibration-data\"? %ld\n",
-+			PTR_ERR(cell));
-+		return false;
-+	}
-+
-+	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
-+	if (IS_ERR(svsp->tefuse)) {
-+		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
-+			PTR_ERR(svsp->tefuse));
-+		nvmem_cell_put(cell);
-+		return false;
-+	}
-+
-+	svsp->tefuse_max /= sizeof(u32);
-+	nvmem_cell_put(cell);
-+
-+	for (i = 0; i < svsp->tefuse_max; i++)
-+		if (svsp->tefuse[i] != 0)
-+			break;
-+
-+	if (i == svsp->tefuse_max)
-+		golden_temp = 50; /* All thermal efuse data are 0 */
-+	else
-+		golden_temp = (svsp->tefuse[0] >> 24) & GENMASK(7, 0);
-+
-+	for (idx = 0; idx < svsp->bank_max; idx++) {
-+		svsb = &svsp->banks[idx];
-+		svsb->mts = 500;
-+		svsb->bts = (((500 * golden_temp + 250460) / 1000) - 25) * 4;
-+	}
-+
-+	return true;
-+}
-+
- static bool svs_mt8192_efuse_parsing(struct svs_platform *svsp)
- {
- 	struct svs_bank *svsb;
-@@ -2261,6 +2344,61 @@ static int svs_mt8183_platform_probe(struct svs_platform *svsp)
- 	return 0;
- }
- 
-+static struct svs_bank svs_mt8195_banks[] = {
-+	{
-+		.sw_id			= SVSB_GPU,
-+		.type			= SVSB_LOW,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v3,
-+		.get_volts		= svs_get_bank_volts_v3,
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT,
-+		.mode_support		= SVSB_MODE_INIT02,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 640000000,
-+		.turn_freq_base		= 640000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.vmax			= 0x38,
-+		.vmin			= 0x14,
-+		.age_config		= 0x555555,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x1,
-+		.vco			= 0x18,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0100,
-+		.int_st			= BIT(0),
-+		.ctl0			= 0x00540003,
-+	},
-+	{
-+		.sw_id			= SVSB_GPU,
-+		.type			= SVSB_HIGH,
-+		.set_freq_pct		= svs_set_bank_freq_pct_v3,
-+		.get_volts		= svs_get_bank_volts_v3,
-+		.tzone_name		= "gpu1",
-+		.volt_flags		= SVSB_REMOVE_DVTFIXED_VOLT |
-+					  SVSB_MON_VOLT_IGNORE,
-+		.mode_support		= SVSB_MODE_INIT02 | SVSB_MODE_MON,
-+		.opp_count		= MAX_OPP_ENTRIES,
-+		.freq_base		= 880000000,
-+		.turn_freq_base		= 640000000,
-+		.volt_step		= 6250,
-+		.volt_base		= 400000,
-+		.vmax			= 0x38,
-+		.vmin			= 0x14,
-+		.age_config		= 0x555555,
-+		.dc_config		= 0x1,
-+		.dvt_fixed		= 0x6,
-+		.vco			= 0x18,
-+		.chk_shift		= 0x87,
-+		.core_sel		= 0x0fff0101,
-+		.int_st			= BIT(1),
-+		.ctl0			= 0x00540003,
-+		.tzone_htemp		= 85000,
-+		.tzone_htemp_voffset	= 0,
-+		.tzone_ltemp		= 25000,
-+		.tzone_ltemp_voffset	= 7,
-+	},
-+};
-+
- static struct svs_bank svs_mt8192_banks[] = {
- 	{
- 		.sw_id			= SVSB_GPU,
-@@ -2563,6 +2701,15 @@ static struct svs_bank svs_mt8183_banks[] = {
- 	},
- };
- 
-+static const struct svs_platform_data svs_mt8195_platform_data = {
-+	.name = "mt8195-svs",
-+	.banks = svs_mt8195_banks,
-+	.efuse_parsing = svs_mt8195_efuse_parsing,
-+	.probe = svs_mt8192_platform_probe,
-+	.regs = svs_regs_v2,
-+	.bank_max = ARRAY_SIZE(svs_mt8195_banks),
-+};
-+
- static const struct svs_platform_data svs_mt8192_platform_data = {
- 	.name = "mt8192-svs",
- 	.banks = svs_mt8192_banks,
-@@ -2594,6 +2741,9 @@ static const struct svs_platform_data svs_mt8183_platform_data = {
- 
- static const struct of_device_id svs_of_match[] = {
- 	{
-+		.compatible = "mediatek,mt8195-svs",
-+		.data = &svs_mt8195_platform_data,
-+	}, {
- 		.compatible = "mediatek,mt8192-svs",
- 		.data = &svs_mt8192_platform_data,
- 	}, {
--- 
-2.18.0
+> 
+> > +        reg = <0x10006000 0x100>;
+> > +
+> > +        spm: power-controller {
+> 
+> I think you created before less-portable, quite constrained bindings for
+> power controller. You now require that mt8195-power-controller is always
+> a child of some parent device which will share its regmap/MMIO with it.
+> 
+> And what if in your next block there is no scpsys block and power
+> controller is the scpsys alone? It's not possible with your bindings.
+
+Do you mean a power controller node that looks like this?
+
+scpsys: power-controller@10006000 {
+	compatible = "mediatek,mt6797-scpsys";
+	#power-domain-cells = <1>;
+
+	// ...
+};
+
+> 
+> Wouldn't it be better to assign some address space to the
+> power-controller (now as an offset from scpsys)?
+
+Is this mean adding an offset after the node name?
+
+spm: power-controller@0 {
+                     ^^
+
+> 
+> This is just wondering (Rockchip did the same...) and not a blocker as
+> power-controller bindings are done.
+> 
+> Best regards,
+> Krzysztof
+
+
+Thanks,
+TingHan
+
 
 
