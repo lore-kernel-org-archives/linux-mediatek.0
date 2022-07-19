@@ -4,65 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E401DC43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 03:40:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71C77C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 06:10:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IMs+rfl3DIFKjTTYWDnQ5u9VEiQBEbN9UhoF7SmtLZU=; b=kD65d194UnlfjM83eAyuUyzZKI
-	SjHHR6KbzoYok1F9zDPpwC92vqe2NPdnK5RbkwUxM6NYGacDd4OSkngPHB0YO4VI4bUsRnoM1fI+r
-	ghXfQhs9j3fOZqoNKFX9QwfiHi/TvHrDCif06U4j11L9IBG0VOUtM5gmiVeVChRufJO58wwmWeCQF
-	cnbMNr1w5eYmkc38d12JvAyID4k2WkIYqcZYtI0Sw6I5KCytyn8TAV1Pwut5O7y8trxVlbPbDMpbx
-	ElS1qDyU3H6bgx1R/wQ/pe2Er9A3pexmqF2xi3AdtNAecUxF4Rouw+wMvm1waUCM9+GCO/EHfD5sf
-	4XeFAfGQ==;
+	bh=uScBq4Yl1Ck56/d2fzEHwnBVQDk5UP+kPLu5A0qdGms=; b=5E+NEAuLX+//b/KtnRK3W187lH
+	nV8bI+WryshoXQTHcWfRlMRwFHY4Vo0kecvESZ5gdmyToEG47RkDB7wLsk06l3iFOIsL9YTHT8J1f
+	xgc6FYTMvesbGMoyR/6rjbwJQp7ztx6XftvMUhFQIzvJVK2Mvyop+vjzWtK61GUapohjSvcSG3Iy8
+	/RVtfibjo/YqsiSXn37CYPX9onNE3EUK55C5BG1O0a2ocffX8VtTV+Vqcm1YJjfIn+CeIRQ6EIJEn
+	Xb8oDdVgD5UlhgQidgkrz1ii0hp/onhp5SZ5d7UcmbWrJZS03HYesPx88OWZ8mJvXhr/5S4hl3RSo
+	QG+wDQqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDe5z-004ZB2-DR; Tue, 19 Jul 2022 03:40:27 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oDgQV-005cJb-AW; Tue, 19 Jul 2022 06:09:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDe5o-004Z8s-Hi; Tue, 19 Jul 2022 03:40:17 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D204B614D5;
-	Tue, 19 Jul 2022 03:40:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 3B206C341CF;
-	Tue, 19 Jul 2022 03:40:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658202014;
-	bh=ikQzpN8MCLg1lqxUB80odOxAzCBnExBDPr8pxjL5ywM=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=QKfb7r7wlMw9lNv81IcoXBmMhd0RxOz/BSm+wXuXUfC23aRJazPvSQniwvEpuvxX/
-	 K/gbRHK77fIquHeAMNIrwhoZfu+vcobvpVoj6fGYMOLTYJ25J/ImosfYgWIU7Eo+6G
-	 8Msbo8urtjmNCfXqItruqcprNzMyBZIe5CKagZL3dNl6IXpre+5eqwesyxgm7IJhed
-	 AZyvtjtQQnFd0zHLiWL7J12QWpigKUxzNwZ01IWccPVF1bws00pS5bRzRz0V/rMRF4
-	 0xBmz1Ff+GFgaDXarHfGGHjFtOOzKM1pDntJdnVTKHNewUItsIivuDVXTbFpB96ooq
-	 MfTTX0LCgjSKQ==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 2156AE451BA;
-	Tue, 19 Jul 2022 03:40:14 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1oDgQS-005cIT-GS; Tue, 19 Jul 2022 06:09:45 +0000
+X-UUID: 63f4317cbf1446cd93c71b210d183017-20220718
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=uScBq4Yl1Ck56/d2fzEHwnBVQDk5UP+kPLu5A0qdGms=;
+	b=owcFtSYX8OgUMDkOiQmM2GZGaUF5xJ2ZfyDGH6udYeo2exLU2q+nG0HG88KmB4zC7NNkpq9AauZHDUeY0nV1h3B8HfSOEwYSmG7HC0ivxlgC6wVijuJ3EqanzVG2d+4iDr1lkkEfkv8gPdnWOXrK5fttHTrVWeY8DgqxCKRriZc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:13a07f9e-b6dd-4173-a42d-54e7973818ce,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:0f94e32,CLOUDID:f042aa64-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 63f4317cbf1446cd93c71b210d183017-20220718
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 661819556; Mon, 18 Jul 2022 23:09:33 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 19 Jul 2022 13:18:54 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Tue, 19 Jul 2022 13:18:54 +0800
+Message-ID: <27fb716259fc88cba955691c246a6bdaf31b38d8.camel@mediatek.com>
+Subject: Re: [for-next][PATCH 13/23] USB: mtu3: tracing: Use the new
+ __vstring() helper
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Steven Rostedt <rostedt@goodmis.org>
+CC: <linux-kernel@vger.kernel.org>, Ingo Molnar <mingo@kernel.org>, "Andrew
+ Morton" <akpm@linux-foundation.org>, <linux-usb@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Date: Tue, 19 Jul 2022 13:18:54 +0800
+In-Reply-To: <20220715172423.6b57b9eb@gandalf.local.home>
+References: <20220714164256.403842845@goodmis.org>
+	 <20220714164330.311734558@goodmis.org>
+	 <962e59c25e981676014157cd111db9e16e237339.camel@mediatek.com>
+	 <20220715172423.6b57b9eb@gandalf.local.home>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] net: ethernet: mtk_eth_soc: fix off by one check of
- ARRAY_SIZE
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <165820201413.29134.11488522402561841559.git-patchwork-notify@kernel.org>
-Date: Tue, 19 Jul 2022 03:40:14 +0000
-References: <20220716214654.1540240-1-trix@redhat.com>
-In-Reply-To: <20220716214654.1540240-1-trix@redhat.com>
-To: Tom Rix <trix@redhat.com>
-Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+X-MTK: N
+Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_204016_645440_B020BAAE 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20220718_230944_575275_AFEA674F 
+X-CRM114-Status: GOOD (  15.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,31 +84,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net.git (master)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Sat, 16 Jul 2022 17:46:54 -0400 you wrote:
-> In mtk_wed_tx_ring_setup(.., int idx, ..), idx is used as an index here
->   struct mtk_wed_ring *ring = &dev->tx_ring[idx];
-> 
-> The bounds of idx are checked here
->   BUG_ON(idx > ARRAY_SIZE(dev->tx_ring));
-> 
-> If idx is the size of the array, it will pass this check and overflow.
-> So change the check to >= .
-> 
-> [...]
-
-Here is the summary with links:
-  - net: ethernet: mtk_eth_soc: fix off by one check of ARRAY_SIZE
-    https://git.kernel.org/netdev/net/c/3696c952da07
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+T24gRnJpLCAyMDIyLTA3LTE1IGF0IDE3OjI0IC0wNDAwLCBTdGV2ZW4gUm9zdGVkdCB3cm90ZToN
+Cj4gT24gRnJpLCAxNSBKdWwgMjAyMiAxODowMTo0NCArMDgwMA0KPiBDaHVuZmVuZyBZdW4gPGNo
+dW5mZW5nLnl1bkBtZWRpYXRlay5jb20+IHdyb3RlOg0KPiANCj4gPiAgaXJxLzI1NC0xMTIwMTAw
+LTEzNyAgICAgWzAwMF0gZC4uMS4gICAyNjYuNjI5NjYyOiBtdHUzX2xvZzoNCj4gPiAxMTIwMTAw
+MC51c2I6IGVwMF9zdGF0ZSBTRVRVUHItc3BlZWQNCj4gPiANCj4gPiAici1zcGVlZCIgc2VlbXMg
+dGhlIHJlbWFpbiBvZiBsYXN0IGxvZzsNCj4gDQo+IEkgZm91bmQgYW4gb2ZmLWJ5LW9uZSBidWcg
+aW4gdGhlIHZzdHJpbmcgcGF0Y2guIEknbGwgcmViYXNlLCB0ZXN0IGFuZA0KPiB0cnkNCj4gYWdh
+aW4uDQo+IA0KPiBJbiB0aGUgbWVhbiB0aW1lLCBjYXJlIHRvIGFkZCB0aGlzIG9uIHRvcCB0byBt
+YWtlIHN1cmUgaXQncyBmaXhlZD8NCj4gDQo+IFRoYW5rcyENCj4gDQo+IC0tIFN0ZXZlDQo+IA0K
+PiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9saW51eC90cmFjZV9ldmVudHMuaA0KPiBiL2luY2x1ZGUv
+bGludXgvdHJhY2VfZXZlbnRzLmgNCj4gaW5kZXggZTZmOGJhNTJhOTU4Li5iMTg3NTlhNjczYzYg
+MTAwNjQ0DQo+IC0tLSBhL2luY2x1ZGUvbGludXgvdHJhY2VfZXZlbnRzLmgNCj4gKysrIGIvaW5j
+bHVkZS9saW51eC90cmFjZV9ldmVudHMuaA0KPiBAQCAtOTIyLDE2ICs5MjIsMTYgQEAgcGVyZl90
+cmFjZV9idWZfc3VibWl0KHZvaWQgKnJhd19kYXRhLCBpbnQgc2l6ZSwNCj4gaW50IHJjdHgsIHUx
+NiB0eXBlLA0KPiAgICogZ2NjIHdhcm5zIHRoYXQgeW91IGNhbiBub3QgdXNlIGEgdmFfbGlzdCBp
+biBhbiBpbmxpbmVkDQo+ICAgKiBmdW5jdGlvbi4gQnV0IGxldHMgbWUgbWFrZSBpdCBpbnRvIGEg
+bWFjcm8gOi0vDQo+ICAgKi8NCj4gLSNkZWZpbmUgX190cmFjZV9ldmVudF92c3RyX2xlbihmbXQs
+IHZhKQkJXA0KPiAtKHsJCQkJCQlcDQo+IC0JdmFfbGlzdCBfX2FwOwkJCQlcDQo+IC0JaW50IF9f
+cmV0OwkJCQlcDQo+IC0JCQkJCQlcDQo+IC0JdmFfY29weShfX2FwLCAqKHZhKSk7CQkJXA0KPiAt
+CV9fcmV0ID0gdnNucHJpbnRmKE5VTEwsIDAsIGZtdCwgX19hcCk7CVwNCj4gLQl2YV9lbmQoX19h
+cCk7CQkJCVwNCj4gLQkJCQkJCVwNCj4gLQltaW4oX19yZXQsIFRSQUNFX0VWRU5UX1NUUl9NQVgp
+OwlcDQo+ICsjZGVmaW5lIF9fdHJhY2VfZXZlbnRfdnN0cl9sZW4oZm10LCB2YSkJCQlcDQo+ICso
+ewkJCQkJCQlcDQo+ICsJdmFfbGlzdCBfX2FwOwkJCQkJXA0KPiArCWludCBfX3JldDsJCQkJCVwN
+Cj4gKwkJCQkJCQlcDQo+ICsJdmFfY29weShfX2FwLCAqKHZhKSk7CQkJCVwNCj4gKwlfX3JldCA9
+IHZzbnByaW50ZihOVUxMLCAwLCBmbXQsIF9fYXApICsgMTsJXA0KDQpJdCB3b3JrcyBmaW5lIG5v
+dywgdGhhbmtzIGEgbG90DQoNCj4gKwl2YV9lbmQoX19hcCk7CQkJCQlcDQo+ICsJCQkJCQkJXA0K
+PiArCW1pbihfX3JldCwgVFJBQ0VfRVZFTlRfU1RSX01BWCk7CQlcDQo+ICB9KQ0KPiAgDQo+ICAj
+ZW5kaWYgLyogX0xJTlVYX1RSQUNFX0VWRU5UX0ggKi8NCg==
 
 
