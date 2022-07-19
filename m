@@ -4,87 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84E8AC43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 07:18:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2CC9C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 07:26:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4R1t/oO0VgWK5BsBl4C0HZDzijatZSDCBb5B6me8Rsc=; b=TwQ/xJbg/hl1sJwt3+DdmOX8wg
-	Mx/g0qD6H0GXE/LtbMj+zAiFrjjxaNPM2I1k7mL6d/l9hvb5nQRnm/IlMQXtblpt75q2g4TnKp0IQ
-	TGv8CAE16XT9h3SvQNX4b5HxjaNGga68yyZ8Bd86TAH2GFhUkOqVh7ob6UjaXB4InB2+tBZxuuVmx
-	FVEmcNQl80stVaMqpEvuqqgBJnreQgXZ1b05Aj9Ehi9oHSZ0YfcZayPUUcE50Z48dHGYgLJFGw+a1
-	0LQbtuAfzX4KH/1u8XHkLS4O7gJgPW+8wpV9tz0IJGmxnQDIYyIzj19zxOMHFXquygcYHlVWcFM+g
-	gHHd96SQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xgtwRS8aLB5PMGBeVTg7Bva5S9RzzRPpyzGw4I2mlag=; b=pt0f1m26cvgMUbLQoVRUGjcx00
+	N2zOLrP6Fsmvrz/RtscPcv0q9CrG0BSIa3kuxCZeKiEqGkLpSWzkMtgRMURr8wGpPeqCrqMjwaNh5
+	6qrNSUHXw3auyzhKMFyCkIxkFObk56q0L4CSGaWNBrTWc9VOvFz7rczok9YE+tMulk6HvX+HGdanW
+	PeeDA+q8tjr/3XZMLRdc91OmP11bgrMTh3mjJCOlXMlvbtWS+Huht/F83hdqYPrsnGRCPEY02MJtg
+	oRxguBwjihoFku3zC0IfnS3NolH72WPXnlQJByKaXRyNGWg61KpbmMJPrzJ3kfZRRnFTqEzqoEDRZ
+	a8p8AY4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDhUs-005rjU-40; Tue, 19 Jul 2022 07:18:22 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oDhcU-005uN7-QA; Tue, 19 Jul 2022 07:26:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDhUg-005rfA-91; Tue, 19 Jul 2022 07:18:12 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7D7716166A;
-	Tue, 19 Jul 2022 07:18:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CA5DC341C6;
-	Tue, 19 Jul 2022 07:18:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658215088;
-	bh=Zpo3d0kFt2DSecXAUJMA9148wQ51zt50WI97410OekI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=J+9GJiMRTnsTv2egsEBrsCHjrpOKMoy5LIiO3m3oCv1Pii/hGRb4hONCWnDW8ACDg
-	 BUsoP27RCtfmbYZ3Z/w9XIE+xWECUJ64ragPzWMEpE7Bh/znE4tN16NDnDCClqOyQM
-	 AIkxuy43y8cgFmoX7Vm+S0DhrD2KL4dJKyjB4WaRslSo1LReB7SWLKvbyOyb5v73w2
-	 his4OlfQq5alvg7t5zuVQo1kDTW25e9ISL+j02b18zoaxMTg9vmrOV3dlcZrYC87lk
-	 i2E/2f2uj/LJPR3d1U/5Nn2IetYDH+p/6qgE3PX2zfIwzVljy0QLWvcNZBIdoK8yVc
-	 g4a/rlmai909g==
-Date: Tue, 19 Jul 2022 09:18:00 +0200
-From: Marek =?UTF-8?B?QmVow7pu?= <kabel@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>, Vladimir Oltean
- <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit
- <hkallweit1@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Alvin __ipraga <alsi@bang-olufsen.dk>, Claudiu Manoil
- <claudiu.manoil@nxp.com>, Daniel Scally <djrscally@gmail.com>, "David S.
- Miller" <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>, Eric
- Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>,
- George McCollister <george.mccollister@gmail.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Hauke Mehrtens <hauke@hauke-m.de>, Heikki
- Krogerus <heikki.krogerus@linux.intel.com>, Jakub Kicinski
- <kuba@kernel.org>, Kurt Kanzenbach <kurt@linutronix.de>, Landen Chao
- <Landen.Chao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>,
- linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Matthias Brugger
- <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Paolo Abeni
- <pabeni@redhat.com>, "Rafael J. Wysocki" <rafael@kernel.org>, Sakari Ailus
- <sakari.ailus@linux.intel.com>, Sean Wang <sean.wang@mediatek.com>,
- UNGLinuxDriver@microchip.com, Vivien Didelot <vivien.didelot@gmail.com>,
- Woojung Huh <woojung.huh@microchip.com>
-Subject: Re: [PATCH net-next 2/6] software node: allow named software node
- to be created
-Message-ID: <20220719091800.3116daf1@dellmb>
-In-Reply-To: <YtXHFQqB3M5Picdl@smile.fi.intel.com>
-References: <20220715201715.foea4rifegmnti46@skbuf>
-	<YtHPJNpcN4vNfgT6@smile.fi.intel.com>
-	<20220715204841.pwhvnue2atrkc2fx@skbuf>
-	<YtVSQI5VHtCOTCHc@smile.fi.intel.com>
-	<YtVfppMtW77ICyC5@shell.armlinux.org.uk>
-	<YtWp3WkpCtfe559l@smile.fi.intel.com>
-	<YtWsM1nr2GZWDiEN@smile.fi.intel.com>
-	<YtWxMrz3LcVQa43I@shell.armlinux.org.uk>
-	<YtWzWdkFVMg0Hyvf@smile.fi.intel.com>
-	<20220718223942.245f29b6@thinkpad>
-	<YtXHFQqB3M5Picdl@smile.fi.intel.com>
-X-Mailer: Claws Mail 3.19.0 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	id 1oDhcS-005uKX-HW; Tue, 19 Jul 2022 07:26:13 +0000
+X-UUID: 944eeea746f245a2ae472f57777f3b94-20220719
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:bd0d2cc7-3230-4a1e-8183-4e3145071b1a,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:d3a05c33-b9e4-42b8-b28a-6364427c76bb,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 944eeea746f245a2ae472f57777f3b94-20220719
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jia-wei.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1723355448; Tue, 19 Jul 2022 00:26:02 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Tue, 19 Jul 2022 15:25:48 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.3 via Frontend Transport; Tue, 19 Jul 2022 15:25:48 +0800
+From: jia-wei.chang <jia-wei.chang@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Roger Lu
+	<roger.lu@mediatek.com>, Kevin Hilman <khilman@kernel.org>, Jia-Wei Chang
+	<jia-wei.chang@mediatek.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [RESEND v4 1/4] dt-bindings: soc: mediatek: add mt8186 svs dt-bindings
+Date: Tue, 19 Jul 2022 15:25:21 +0800
+Message-ID: <20220719072524.11371-2-jia-wei.chang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220719072524.11371-1-jia-wei.chang@mediatek.com>
+References: <20220719072524.11371-1-jia-wei.chang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220719_001810_411779_B64C4437 
-X-CRM114-Status: GOOD (  57.83  )
+X-CRM114-CacheID: sfid-20220719_002612_601970_CCB0BEC4 
+X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,166 +81,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 18 Jul 2022 23:48:21 +0300
-Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
+From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 
-> On Mon, Jul 18, 2022 at 10:39:42PM +0200, Marek Beh=C3=BAn wrote:
-> > On Mon, 18 Jul 2022 22:24:09 +0300
-> > Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
-> >  =20
-> > > On Mon, Jul 18, 2022 at 08:14:58PM +0100, Russell King (Oracle) wrote=
-: =20
-> > > > On Mon, Jul 18, 2022 at 09:53:39PM +0300, Andy Shevchenko wrote:   =
-=20
-> > > > > On Mon, Jul 18, 2022 at 09:43:42PM +0300, Andy Shevchenko wrote: =
-  =20
-> > > > > > On Mon, Jul 18, 2022 at 02:27:02PM +0100, Russell King (Oracle)=
- wrote:   =20
-> > > > > > > On Mon, Jul 18, 2022 at 03:29:52PM +0300, Andy Shevchenko wro=
-te:   =20
-> > > > > > > > On Fri, Jul 15, 2022 at 11:48:41PM +0300, Vladimir Oltean w=
-rote:   =20
-> > > > > > > > > So won't kobject_init_and_add() fail on namespace collisi=
-on? Is it the
-> > > > > > > > > problem that it's going to fail, or that it's not trivial=
- to statically
-> > > > > > > > > determine whether it'll fail?
-> > > > > > > > >=20
-> > > > > > > > > Sorry, but I don't see something actionable about this.  =
- =20
-> > > > > > > >=20
-> > > > > > > > I'm talking about validation before a runtime. But if you t=
-hink that is fine,
-> > > > > > > > let's fail it at runtime, okay, and consume more backtraces=
- in the future.   =20
-> > > > > > >=20
-> > > > > > > Is there any sane way to do validation of this namespace befo=
-re
-> > > > > > > runtime?   =20
-> > > > > >=20
-> > > > > > For statically compiled, I think we can do it (to some extent).
-> > > > > > Currently only three drivers, if I'm not mistaken, define softw=
-are nodes with
-> > > > > > names. It's easy to check that their node names are unique.
-> > > > > >=20
-> > > > > > When you allow such an API then we might have tracebacks (from =
-sysfs) bout name
-> > > > > > collisions. Not that is something new to kernel (we have seen m=
-any of a kind),
-> > > > > > but I prefer, if possible, to validate this before sysfs issues=
- a traceback.
-> > > > > >    =20
-> > > > > > > The problem in this instance is we need a node named "fixed-l=
-ink" that
-> > > > > > > is attached to the parent node as that is defined in the bind=
-ing doc,
-> > > > > > > and we're creating swnodes to provide software generated node=
-s for
-> > > > > > > this binding.   =20
-> > > > > >=20
-> > > > > > And how you guarantee that it will be only a single one with un=
-ique pathname?
-> > > > > >=20
-> > > > > > For example, you have two DSA cards (or whatever it's called) i=
-n the SMP system,
-> > > > > > it mean that there is non-zero probability of coexisting swnode=
-s for them.
-> > > > > >    =20
-> > > > > > > There could be several such nodes scattered around, but in th=
-is
-> > > > > > > instance they are very short-lived before they are destroyed,=
- they
-> > > > > > > don't even need to be published to userspace (and its probabl=
-y a waste
-> > > > > > > of CPU cycles for them to be published there.)
-> > > > > > >=20
-> > > > > > > So, for this specific case, is this the best approach, or is =
-there
-> > > > > > > some better way to achieve what we need here?   =20
-> > > > > >=20
-> > > > > > Honestly, I don't know.
-> > > > > >=20
-> > > > > > The "workaround" (but it looks to me rather a hack) is to creat=
-e unique swnode
-> > > > > > and make fixed-link as a child of it.
-> > > > > >=20
-> > > > > > Or entire concept of the root swnodes (when name is provided) s=
-hould be
-> > > > > > reconsidered, so somehow we will have a uniqueness so that the =
-entire
-> > > > > > path(s) behind it will be caller-dependent. But this I also don=
-'t like.
-> > > > > >=20
-> > > > > > Maybe Heikki, Sakari, Rafael can share their thoughts...
-> > > > > >=20
-> > > > > > Just for my learning, why PHY uses "fixed-link" instead of rely=
-ing on a
-> > > > > > (firmware) graph? It might be the actual solution to your probl=
-em.
-> > > > > >=20
-> > > > > > How graphs are used with swnodes, you may look into IPU3 (Intel=
- Camera)
-> > > > > > glue driver to support devices before MIPI standardisation of t=
-he
-> > > > > > respective properties.   =20
-> > > > >=20
-> > > > > Forgot to say (yes, it maybe obvious) that this API will be expor=
-ted,
-> > > > > anyone can use it and trap into the similar issue, because, for e=
-xample,
-> > > > > of testing in environment with a single instance of the caller.  =
- =20
-> > > >=20
-> > > > I think we're coming to the conclusion that using swnodes is not the
-> > > > correct approach for this problem, correct?   =20
-> > >=20
-> > > If I understand the possibilities of the usage in _this_ case, then i=
-t's
-> > > would be problematic (it does not mean it's incorrect). It might be d=
-ue to
-> > > swnode design restrictions which shouldn't be made, I dunno. That' why
-> > > it's better to ask the others for their opinions.
-> > >=20
-> > > By design swnode's name makes not much sense, because the payload the=
-re
-> > > is a property set, where _name_ is a must.
-> > >=20
-> > > Now, telling you this, I'm questioning myself why the heck I added na=
-mes
-> > > to swnodes in the intel_quark_i2c_gpio driver... =20
-> >=20
-> > 1. the way we use this new named swnode (in patch 5/6 of this series) is
-> >    that it gets destroyed immediately after being parsed, so I don't
-> >    think there will be collisions in the namespace for forseeable future
-> >=20
-> >    also, we first create an unnamed swnode for port and only then
-> >    fixed-link swnode as a child.
-> >=20
-> >       new_port_fwnode =3D fwnode_create_software_node(port_props, NULL);
-> >       ...
-> >       fixed_link_fwnode =3D
-> >         fwnode_create_named_software_node(fixed_link_props,
-> >                                           new_port_fwnode, "fixed-link"=
-);
-> >=20
-> >    so there shouldn't be a name collision, since the port node gets a
-> >    unique name, or am I misunderstanding this? =20
->=20
-> This is not problem, but what I was talking about is how to guarantee this
-> hierarchy? See what I answered to RNK.
->=20
-> > 2. even if there was a problem with name collision, I think the place
-> >    that needs to be fixed is swnode system. What use are swnodes if
-> >    they cannot be used like this? =20
->=20
-> Precisely, that's why I don't want to introduce an API that needs to be f=
-ixed.
->=20
+Add mt8186 svs compatible in dt-bindings and add myself as a
+co-maintainer.
 
-Aha, so you want to ensure that root swnodes are created with unique
-name?
+Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Can't we just make it so that named software node must have a parent?
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+index d911fa2d40ef..c86a5430641f 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+@@ -10,6 +10,7 @@ maintainers:
+   - Roger Lu <roger.lu@mediatek.com>
+   - Matthias Brugger <matthias.bgg@gmail.com>
+   - Kevin Hilman <khilman@kernel.org>
++  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
+ 
+ description: |+
+   The SVS engine is a piece of hardware which has several
+@@ -22,6 +23,7 @@ properties:
+   compatible:
+     enum:
+       - mediatek,mt8183-svs
++      - mediatek,mt8186-svs
+       - mediatek,mt8192-svs
+ 
+   reg:
+-- 
+2.18.0
 
-Marek
 
