@@ -4,66 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A926C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 13:22:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5F87C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Jul 2022 13:35:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XWwHlDfeBsIQWmDnQTsbFMeStkL+HvnCAPkSi5GnpeE=; b=mfalKl81f0M2WvpCsRQO1bAL1o
-	s0U/dfdbdumwQ49WXdOkY3SHQEta4y+jEhtPUR2OeEegAQ6LuNXQ61f33Lb/VH41fkTSbw2/+U2IL
-	q+ra1GpA2AHB7c3yTXa8+hjBd9fXmA70jLr1E4vubL6/WmsJivIT0jp0a0HfHAVdKkK5XIc3g1PJt
-	VErdr1d7qQdKL54OzPUQfvt2TicP+6vis+G6prKsVny3x571I8cr10wPbenqlpFLBm7GyiAIVEDpC
-	DQqA8LhoC+oZtD+0BN3XQxhiLqnVWP3YF3cBsQ8MgmREiCfm22ynZua8tvXGNzIooGdNRz1xEoV42
-	IkWSHOOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dQkGZ2bUCaXoPh/D/Jj4IPkCDd93zpdb0jFOJ4x+L1k=; b=30z9x8ODhwyrQLpS85oZNMkIeX
+	ZCAGryvzgoSLfnNLRo3sGXjz7enLmQ/baTXwrkR0qTr9dXALUC72o4V37i0SBMEsKNO1hs5W6DiEd
+	kfeFNWdHz5C+tkhOjsH18z4nmMmNhwngjUxl20qR/N8ifnnyVK0VfqK4Q2/dDrg6k0dPTIEzk2p5C
+	VicFQRduC42rNiwZWB8PeyYky8JnBS3doSJ/U5ZN7KtEymo6YR6HQSt14p7nHF5twLgiQ+I7d9Vp/
+	ZNofBI6zwNo1kvemeqERCC5McnLEf3Dnh84wK3k+lUNKd6TEYpST8qC57IKLSlqaazcOMoGcnd5oh
+	Tzzuieew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDnBM-0098pS-2j; Tue, 19 Jul 2022 13:22:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oDnNt-009Fl7-RK; Tue, 19 Jul 2022 13:35:33 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDnBI-0098jk-Jf
-	for linux-mediatek@lists.infradead.org; Tue, 19 Jul 2022 13:22:35 +0000
-X-UUID: 2e1f9cf6b81c4a748d72a81c1f128491-20220719
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:b5a3a9b3-6e6c-4673-9c69-a01beee80b1f,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:8676b564-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 2e1f9cf6b81c4a748d72a81c1f128491-20220719
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2056249374; Tue, 19 Jul 2022 06:22:22 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 19 Jul 2022 21:02:10 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 19 Jul 2022 21:02:10 +0800
-From: <peter.wang@mediatek.com>
-To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
-	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
-	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
-Subject: [PATCH v1] scsi: ufs: correct ufshcd_shutdown flow
-Date: Tue, 19 Jul 2022 21:02:08 +0800
-Message-ID: <20220719130208.29032-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oDnNg-009FaR-R7; Tue, 19 Jul 2022 13:35:22 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 94DEA347EB;
+	Tue, 19 Jul 2022 13:35:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+	t=1658237713; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dQkGZ2bUCaXoPh/D/Jj4IPkCDd93zpdb0jFOJ4x+L1k=;
+	b=RXpYSGlmRcef3l7YiwRFdAApPwXNCGsn0BDGq8RMYOlXFurF0+ck6ho6rGcVbsWtc/fUP6
+	De4sOP94LDSs7rGW7/DXiKXGZ3iMCVaCS8xrKMTqCvGXTFpvP8npNoI8fDTvetmmD0jubo
+	mc2b6WY+Bg2Qby9yeLCG9cnhEe+PPKo=
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 5975513A72;
+	Tue, 19 Jul 2022 13:35:13 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id I8ALFRGz1mLrXQAAMHmgww
+	(envelope-from <mkoutny@suse.com>); Tue, 19 Jul 2022 13:35:13 +0000
+Date: Tue, 19 Jul 2022 15:35:12 +0200
+From: Michal =?iso-8859-1?Q?Koutn=FD?= <mkoutny@suse.com>
+To: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+Cc: Tejun Heo <tj@kernel.org>, Johannes Weiner <hannes@cmpxchg.org>,
+	Zefan Li <lizefan.x@bytedance.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, cgroups@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Shakeel Butt <shakeelb@google.com>, wsd_upstream@mediatek.com,
+	lixiong.liu@mediatek.com, wenju.xu@mediatek.com,
+	jonathan.jmchen@mediatek.com
+Subject: Re: [Bug] race condition at rebind_subsystems()
+Message-ID: <20220719133512.GD897@blackbody.suse.cz>
+References: <1978e209e71905d89651e61abd07285912d412a1.camel@mediatek.com>
+ <20220715115938.GA8646@blackbody.suse.cz>
+ <YtGaP+e35DZYSQf0@slm.duckdns.org>
+ <d8f0bc5e2fb6ed259f9334c83279b4c011283c41.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <d8f0bc5e2fb6ed259f9334c83279b4c011283c41.camel@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220719_062232_671974_CB83E83C 
-X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-CacheID: sfid-20220719_063521_047326_4194B369 
+X-CRM114-Status: UNSURE (   9.71  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,42 +88,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+On Mon, Jul 18, 2022 at 03:44:21PM +0800, Jing-Ting Wu <jing-ting.wu@mediatek.com> wrote:
+> Accroding your description, is the following patch corrent?
 
-After ufshcd_wl_shutdown set device poweroff and link off,
-ufshcd_shutdown not turn off regulators/clocks.
-Correct the flow to wait ufshcd_wl_shutdown done and turn off
-regulators/clocks by polling ufs device/link state 500ms.
-Also remove pm_runtime_get_sync because it is unnecessary.
+Yes, this is what I meant (i.e. grace period before invalidating the
+removed rstat_css_node).
 
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+> If the patch is correct, we will add this patch to our stability test.
+> And we will continue to observe whether the problem is solved.
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index c7b337480e3e..1c11af48b584 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -9461,10 +9461,14 @@ EXPORT_SYMBOL(ufshcd_runtime_resume);
-  */
- int ufshcd_shutdown(struct ufs_hba *hba)
- {
--	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba))
--		goto out;
-+	ktime_t timeout = ktime_add_ms(ktime_get(), 500);
- 
--	pm_runtime_get_sync(hba->dev);
-+	/* Wait ufshcd_wl_shutdown clear ufs state, timeout 500 ms */
-+	while (!ufshcd_is_ufs_dev_poweroff(hba) || !ufshcd_is_link_off(hba)) {
-+		if (ktime_after(ktime_get(), timeout))
-+			goto out;
-+		msleep(1);
-+	}
- 
- 	ufshcd_suspend(hba);
- out:
--- 
-2.18.0
+It'd be great to have such confirmation.
 
+Thanks,
+Michal
 
