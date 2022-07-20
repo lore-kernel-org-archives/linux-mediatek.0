@@ -4,71 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95406C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 22:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ECB8C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 22:57:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fqnLiDB/JOu7RWLo5u2Mprf/3rd5RBIzN1qHfoyeCO0=; b=r1ciRqLNC084j5njUTD/u3oDZ2
-	MC0tfbtqmMisEEpmymhnSGxE0F+1EDGuX8jj88Sgdj+1w7uX63v3yTDRL1Zntm52tJSABhVJ8UKp0
-	LsIEXW7hdU1e0ITh/jSZavk5jNDJ+NWMEuw+ap4QhwECXxl2+Dg65nHjk4VffcDWi2MvC+TZoiMkZ
-	H//tqnX8Sh/x2qZk+zUXFakmhu4UBSTTfr2Icp30nlF8IXSqqyGTYRdSXTsc/7u+QLhKTBMVDDODh
-	lxjXmWB8k4VEEBlZdyXbibKc8T0HJU67tNsx0EfDPDKQDm1EC2QyasfvEluZkMff+Ho6inSGbMZB0
-	l1chaL5Q==;
+	bh=g4MvgsP4srg9f8E2HWMF3FD8P6Q9jUuZxC4vOXa9tjY=; b=bQ7xNfiaGLcvGJ+6EYVG+qkxKS
+	mFbTbxLXq3FueWetYyA/Zj7E3kqS64QaTPnMFkZQYj0sdbKc3UkLUzbgt488uTVqjSn5b/cFBFymZ
+	n2KlZE4PTll+hkaQd2DSFQkxnrt/aPH73cy6QpRwYgFSTXFuaIwDUDds/KTK5PmqSutuzLj8RSiWt
+	M+fPsbWlngFyeYIjinj6SVv+hsj8VnXClwbcGIvF+XRuOMK1ICQta7elyWLUgq/L+derLSbOAIgeh
+	BuKv4O/Hrimk04czHKznwSJ5yskw7czIqAfTMJW29F0zykkpR2GoBctKhtn8AyCHMKc/tRHgUat0z
+	yYUBnWjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEIYh-00Chfh-JB; Wed, 20 Jul 2022 22:52:47 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oEIcx-00Cly0-DO; Wed, 20 Jul 2022 22:57:11 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEIYe-00ChaO-K2
-	for linux-mediatek@lists.infradead.org; Wed, 20 Jul 2022 22:52:46 +0000
-X-UUID: 7332812c055447d98d56243c94b79535-20220720
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:abc40d46-6d0e-4d0a-90e6-85f691c2bd5a,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:3,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:8
-X-CID-META: VersionHash:0f94e32,CLOUDID:815f8433-b9e4-42b8-b28a-6364427c76bb,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:3,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 7332812c055447d98d56243c94b79535-20220720
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1344772580; Wed, 20 Jul 2022 15:52:40 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 21 Jul 2022 06:32:37 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 21 Jul 2022 06:32:37 +0800
-From: <sean.wang@mediatek.com>
-To: <lorenzo.bianconi@redhat.com>
-CC: <nbd@nbd.name>, <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
-	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
-	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
-	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
-	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
-	<frankgor@google.com>, <jemele@google.com>, <abhishekpandit@google.com>,
-	<shawnku@google.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH 1/3] mt76: mt7921s: fix the deadlock caused by sdio->stat_work
-Date: Thu, 21 Jul 2022 06:32:36 +0800
-Message-ID: <1658356356-29058-1-git-send-email-sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <YtXYffraDN7RxoTr@lore-desk--annotate>
-References: <YtXYffraDN7RxoTr@lore-desk--annotate>
+	id 1oEIcl-00ClXF-Le; Wed, 20 Jul 2022 22:57:01 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id fy29so58183ejc.12;
+        Wed, 20 Jul 2022 15:56:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=g4MvgsP4srg9f8E2HWMF3FD8P6Q9jUuZxC4vOXa9tjY=;
+        b=Ko5J0JM40COndr6nYcLGfiin1SEVsO15qiCVzL5YOseZ6mmoOQSCQi0AYxw9YAnpF8
+         Gr4/1p1cCKG4kt6SJeODxCrHnDo7aecB4EGQaIUxJIYtwdHE1e0kuLwkgs/jQDdvGY6N
+         iKuCHuM8Lv6bGQewHojd1VFz0K3HBU58Zv36dhB994g2LslYiRxfpPfjHfbFU5W+01kM
+         LTKIzfT3yiT96KcFPmp5q6oJu83L30OZ7oMynHD0biZzCXl9O+1NWvz/uBqGU0roPrw/
+         GxtkzBC2TN0MtF9QEbPghAANVW2tgtQ+bAlJlCdBZuwq7Pp4tqtox2H8vWxC4c8WBz22
+         5HYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=g4MvgsP4srg9f8E2HWMF3FD8P6Q9jUuZxC4vOXa9tjY=;
+        b=ksBJ8ihvamBZIoyjn++zzoDeJuKpeLCjEUY1VG1rVm6T8t+SlU322hlxbCvVm7I+lX
+         +2c6suT77lDNtK/Q4w4cEE3NS+B1NIsAuF5f8stEM/zCY/bSSnHsLK0dmWFtWfcYygTh
+         vvfSVBldr5COHb4VJYDkQ5oj0mXls2sFrayyH+7nF1siLD63NordTmROfwAQ9wQXJQL1
+         3Xppw8UBPQD8Iga2AjE+SFKMJjRvZb9gKHaKCufxUNoGK3m+smXD/3ZXAW3houUNd7na
+         w/LBYOUzvyDArrBp+bvrXd61DLRltdh5vYZFWSVs8Qp3eOuoK9hKaqGYyRZupxVw0t/T
+         +JNg==
+X-Gm-Message-State: AJIora8c3qUnJi9bl3ICPp7pC2CHYLISxThpSStKf+KsD3eOcSIvfjdX
+	1ydVScgbjmHKP4+baNB0QWY=
+X-Google-Smtp-Source: AGRyM1sEjwZqpdJnhnIi/sybxziNdCXoqRVcRlhVQNFjiWCgtSwmMYgElHOvt4zxzelhEKIf5A6ggg==
+X-Received: by 2002:a17:907:1b16:b0:72b:8c16:dac0 with SMTP id mp22-20020a1709071b1600b0072b8c16dac0mr36517314ejc.286.1658357816062;
+        Wed, 20 Jul 2022 15:56:56 -0700 (PDT)
+Received: from skbuf ([188.25.231.115])
+        by smtp.gmail.com with ESMTPSA id kw2-20020a170907770200b0072b609d9a36sm161874ejc.16.2022.07.20.15.56.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Jul 2022 15:56:55 -0700 (PDT)
+Date: Thu, 21 Jul 2022 01:56:52 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>
+Subject: Re: [PATCH net-next 2/6] software node: allow named software node to
+ be created
+Message-ID: <20220720225652.4uo6fcdcunenej3j@skbuf>
+References: <20220715201715.foea4rifegmnti46@skbuf>
+ <YtHPJNpcN4vNfgT6@smile.fi.intel.com>
+ <20220715204841.pwhvnue2atrkc2fx@skbuf>
+ <YtVSQI5VHtCOTCHc@smile.fi.intel.com>
+ <YtVfppMtW77ICyC5@shell.armlinux.org.uk>
+ <YtWp3WkpCtfe559l@smile.fi.intel.com>
+ <YtWwbMucEyO+W8/Y@shell.armlinux.org.uk>
+ <YtW9goFpOLGvIDog@smile.fi.intel.com>
+ <YtXE0idsKe6FZ+n4@shell.armlinux.org.uk>
+ <YtZwU9BKAO/WSRmK@paasikivi.fi.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YtZwU9BKAO/WSRmK@paasikivi.fi.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_155244_686275_60A0DC74 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20220720_155659_750470_64427EFD 
+X-CRM114-Status: GOOD (  19.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,78 +123,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+Hi Sakari,
 
->>> From: Sean Wang <sean.wang@mediatek.com>
->>
->> Because wake_work and sdio->stat_work share the same workqueue
->> mt76->wq, if sdio->stat_work cannot acquire the mutex lock such as
->> that was possibly held up by mt7921_mutex_acquire, we should exit
->> immediately and schedule another stat_work to avoid blocking the mt7921_mutex_acquire.
->>
->> Also, if mt7921_mutex_acquire was called by sdio->stat_work self, the
->> wake would be blocked by itself, so we have to changing into an
->> unblocking wake (directly wakeup via mt7921_mcu_drv_pmctrl, not via
->> the wake_work) in the context.
->
->Hi Sean,
->
->it seems to me we are missing some logic here (e.g cancelling ps_work as we do in mt76_connac_pm_wake()). Is it enough to move mt7921_usb_sdio_tx_status_data on mac80211 workqueue? Can you see any performance issue? (same for mt7663).
+On Tue, Jul 19, 2022 at 08:50:27AM +0000, Sakari Ailus wrote:
+> Basically what your patch is doing is adding a helper function that creates
+> an fwnode with a given name. This functionality was there previously through
+> software_node_register_nodes(), with node allocation responsibility residing
+> on the caller. It's used e.g. here:
+> drivers/media/pci/intel/ipu3/cio2-bridge.c .
+> 
+> The larger question is perhaps when can you safely remove software nodes.
+> And which of these two APIs would be preferred. I haven't checked how many
+> users each has. There's no refcounting nor locking for software nodes, so
+> once made visible to the rest of the kernel, they're always expected to be
+> there, unchanged, or at least it needs to be known when they can be removed.
 
-I will try to reuse the mac80211 workqueue for stat_work that can help mt7921_usb_sdio_tx_status_data as is and fix the deadlock. thanks for your suggestion!
+Just for my clarity, are you saying that this printf selftest is
+violating the software nodes' expectation to always be there unchanged
+and never be removed?
 
->
->Regards,
->Lorenzo
->
->>
->> Fixes: 48fab5bbef40 ("mt76: mt7921: introduce mt7921s support")
->> Co-developed-by: YN Chen <YN.Chen@mediatek.com>
->> Signed-off-by: YN Chen <YN.Chen@mediatek.com>
->> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->> ---
->>  .../net/wireless/mediatek/mt76/mt7921/mac.c   | 22 +++++++++++++++++--
->>  1 file changed, 20 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
->> b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
->> index 6bd9fc9228a2..75e719175e92 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
->> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
->> @@ -1080,10 +1080,28 @@ bool mt7921_usb_sdio_tx_status_data(struct
->> mt76_dev *mdev, u8 *update)  {
->>	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev,
->> mt76);
->>
->> -	mt7921_mutex_acquire(dev);
->> +	if (!mutex_trylock(&mdev->mutex)) {
->> +		/* Because wake_work and stat_work share the same workqueue
->> +		 * mt76->wq, if sdio->stat_work cannot acquire the mutex lock,
->> +		 * we should exit immediately and schedule another stat_work
->> +		 * to avoid blocking the wake_work.
->> +		 */
->> +		struct work_struct *stat_work;
->> +
->> +		stat_work = mt76_is_sdio(mdev) ? &mdev->sdio.stat_work :
->> +			    &mdev->usb.stat_work;
->> +		queue_work(dev->mt76.wq, stat_work);
->> +
->> +		goto out;
->> +	}
->> +
->> +	mt7921_mcu_drv_pmctrl(dev);
->>	mt7921_mac_sta_poll(dev);
->> -	mt7921_mutex_release(dev);
->> +	mt76_connac_power_save_sched(&mdev->phy, &dev->pm);
->>
->> +	mutex_unlock(&mdev->mutex);
->> +
->> +out:
->>	return false;
->>  }
->>  EXPORT_SYMBOL_GPL(mt7921_usb_sdio_tx_status_data);
->> --
->> 2.25.1
->>
->
+static void __init fwnode_pointer(void)
+{
+	const struct software_node softnodes[] = {
+		{ .name = "first", },
+		{ .name = "second", .parent = &softnodes[0], },
+		{ .name = "third", .parent = &softnodes[1], },
+		{ NULL /* Guardian */ }
+	};
+	const char * const full_name = "first/second/third";
+	const char * const full_name_second = "first/second";
+	const char * const second_name = "second";
+	const char * const third_name = "third";
+	int rval;
+
+	rval = software_node_register_nodes(softnodes);
+	if (rval) {
+		pr_warn("cannot register softnodes; rval %d\n", rval);
+		return;
+	}
+
+	test(full_name_second, "%pfw", software_node_fwnode(&softnodes[1]));
+	test(full_name, "%pfw", software_node_fwnode(&softnodes[2]));
+	test(full_name, "%pfwf", software_node_fwnode(&softnodes[2]));
+	test(second_name, "%pfwP", software_node_fwnode(&softnodes[1]));
+	test(third_name, "%pfwP", software_node_fwnode(&softnodes[2]));
+
+	software_node_unregister_nodes(softnodes);
+}
+
+The use case in this patch set is essentially equivalent to what printf
+does: exposing the software nodes to the rest of the kernel and to user
+space is probably not necessary, it's just that we need to call a
+function that parses their structure (essentially an equivalent to
+calling "test" above). Could you indicate whether there is a better
+alternative of doing this?
 
