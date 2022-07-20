@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 154EBC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 17:32:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 402BCC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 17:33:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FpdLAALfeFZJFf34lr9EAhmP/cSrmy7SxAXiREu4lCE=; b=GkqCRMoi9vWduQpnSafksGBs3+
-	mWConEBpNt1QvMfR9kCZnP82zCh+dp5/cfWwiLkp8H9qqeI6YLw4wLZzuug9144p9DTo4SUModzo4
-	r6WagI6pC+zf2LXl3Y3/LczuecedVL5NTpdp8ZpptPda5t7SDwfln/8/298p3b9C/5fKpBpC2SMMu
-	RdxhapJ+vqK13t9EbBGCRmsVBZsVTU5bRwgazXorMS3QFhaQDHQPEoU7AHrQy48OfH4+z4Byzs0WQ
-	P5lkLMCWjIbNEJGvnaqJQ7woBDfb2sVr6WMcLkHYv/dydUHucOChSkb+1KK0NjjFay/oDCqd2mWC6
-	IIQDncdg==;
+	bh=GcNBK7YfKlN5L7E979o1SuVA3j9sFZjXk0q59JTAE0Y=; b=X1H1Mo2T+gwxXjX7iTu4bKoxLv
+	IORO+94XElHMGYuYIQLZXvJTkZ52cghEzqhkgAugVRsmnHmsdeqvXS/pVhLRCZ+PcBc8NeUbN6Sm+
+	SwMTLcCDeCOxZPy4SwyjwyAn3/R3Xl44/Mj88i+QJsDk04cZ4B48Ge9nYhRODoynmFXiTqo5jIjk8
+	u/O/cQrPq1vyLY98WuLXn2Zm1DAjtEJEPgmJVfIfA5tUCJ95iySeDptrq03gzFI0Q0QaJ2DkjSWo7
+	Gt4HnwBsKxugHHb2dUlLhk5DK/SMAqpksSFhv8ITBYLFibDXbH97ukAhocl+kCLXwkzb/etz13cuG
+	cK9+pGdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEDYj-008ei6-QC; Wed, 20 Jul 2022 17:32:29 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1oEDZT-008fBz-E2; Wed, 20 Jul 2022 17:33:15 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEDYf-008edY-LQ
-	for linux-mediatek@lists.infradead.org; Wed, 20 Jul 2022 17:32:28 +0000
-Received: by mail-lf1-x132.google.com with SMTP id o7so31428731lfq.9
-        for <linux-mediatek@lists.infradead.org>; Wed, 20 Jul 2022 10:32:25 -0700 (PDT)
+	id 1oEDZA-008ewr-SV
+	for linux-mediatek@lists.infradead.org; Wed, 20 Jul 2022 17:32:58 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id r9so31400197lfp.10
+        for <linux-mediatek@lists.infradead.org>; Wed, 20 Jul 2022 10:32:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=FpdLAALfeFZJFf34lr9EAhmP/cSrmy7SxAXiREu4lCE=;
-        b=e2PwSymV0hA+iIEXs5JnVHMHTYba9XQeH1c2XfY/o0kRymmpd+9BFAruPDv8CzYshH
-         7UNWBFLSTwSwpS7PgmNyLKD7dcV25GMdPqgurrpIqDzTKca1UbsGLc0fX4rKKZVBFR/y
-         tuE4CWS3WSCn8N5efQvbI328K33oijpEPSZLThOZimXoq/kosT5TIMmQpwcvj9Zd1RrD
-         PvqjlNJQwxnzemXPGKP8NdhOCgS3Oyu7a9qARuKOiabCTX0V0lwBJMAnAT5LTbllpfKX
-         t8zNsw2nEL1IgV8iKQxyx31A+hu/coiIuhkosx5vZGkk4e4jyr0Vk0vbcG7gMPruU3FM
-         /XIA==
+        bh=GcNBK7YfKlN5L7E979o1SuVA3j9sFZjXk0q59JTAE0Y=;
+        b=vTNsdywBo8SiezHq39d4MnSeL9RUzWS1d8tMBIYeJe001MMi+Pfnvmut9IFwSAtnN3
+         fGyIN4s7PcC/f8EsnaeMS1xkZaz7UKZrqieviSAqqqh8sb1NOWx6I3+L0Hg7XRlBlVj0
+         1EqUUBDqg1nn1lAH8A5uAqds6Xkz8s5NRfX/MiWSGoIJ46qXJNNoT4J1iD5w43lTie+5
+         Efwe983Fi72oOGbMmZ7cpWuPBDt3gOR1v1OEz5y/0ccoLaKInzUF4DkPbDDP+UpPiSOF
+         MeIEct+0P2goheEhfJJAJaH6CCnH86nKorzu/Phu0LDooAQXOFY3GXM8ZR88ss54PAKP
+         c9lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=FpdLAALfeFZJFf34lr9EAhmP/cSrmy7SxAXiREu4lCE=;
-        b=OnmleRizZeRviH1SMz/2EqTuiTXm7Nf5xdzIMmjnIvz34XgJupr92Jzo2jvw5lMOaX
-         DUx9wFuPvsBOBCRLc8pLCFvr52hQj+mwFkwLOEmBhyM6NC2b8iazwOMLqpNPgCeelkgk
-         Qdxm7xjYGYHv5pXcXve2h1CZPB3da5zZnlaCNonSX1PjjiKsCcb/ZBM5aZPOQF3D25gq
-         kP/YmWl5Y9h+ueM1qnUyyZ4F5rEtLZ02RSW/2gifEV7AcfQ1NSDlbquug9jkOI2Rfy0h
-         dGbD4GwDxQxKRJIoJujz7o4hSOi/j9mgF8cBTjcFEDQ79ogQOOdE44gVLQ6TvXOiBaPT
-         JEzg==
-X-Gm-Message-State: AJIora9/z66R4qgYEYInd0xH9mkRPSvHMCOKjnbUVWsU1od8tbufspXn
-	5vWbH8Qoilx7+woXciYKrXUxQw==
-X-Google-Smtp-Source: AGRyM1sjIgDPvW7XqgXeKtiTiExWUywK1Bz9F9BKOt5z1/TReYjxYJre4a0CVxkypZSJHZbV45ScyQ==
-X-Received: by 2002:a19:700b:0:b0:486:e7ec:67ad with SMTP id h11-20020a19700b000000b00486e7ec67admr19129070lfc.263.1658338344098;
-        Wed, 20 Jul 2022 10:32:24 -0700 (PDT)
+        bh=GcNBK7YfKlN5L7E979o1SuVA3j9sFZjXk0q59JTAE0Y=;
+        b=fFH2VUu2UuPcNA66vAANqYeiEJylWZnE0XGq7zwu7TJ62B6WtymkIjKS2BphddttJf
+         +kLyZr+o2QJSlyQIcHSH9i5ZNf60ueAM1f7TYFDCjWpQKhplzjLaWuce8/Mn8KsedycN
+         iPEcX/9M2t9S1J10RmoIgzC30KR4w6nCjTHf6GiwS8AjHa4JUEeufCHtfjnb76lpR3Qw
+         W9mALsPAd6yPbBDCqyzr+UKXidxrIa9ZWsr0gsvTnDooJvxdHIfCIIfXv6g57ZTq5Uid
+         XyOz6BPjz02TA0S4DDv4UjAKiXEVev/5DvTNaapp4thYGVfR2ojP3eeUeUxfPJvMY/Jq
+         66jw==
+X-Gm-Message-State: AJIora/tkGfoy7l32NZTV6cgeCwS/aoZaPe58jOv3RhKIXDAeJV9YDAg
+	/DEYW7MWHfCZibmL9R36hwvhWg==
+X-Google-Smtp-Source: AGRyM1vjhyD+PuVuOucmn/VLbxuPWiERqLYolpXPQm2ecA3hiaYSGUjH7QjRWdaV7kAA5xwQD+EL7A==
+X-Received: by 2002:a05:6512:1312:b0:47f:7bd3:1427 with SMTP id x18-20020a056512131200b0047f7bd31427mr19135756lfu.128.1658338371434;
+        Wed, 20 Jul 2022 10:32:51 -0700 (PDT)
 Received: from [192.168.115.193] (89-162-31-138.fiber.signal.no. [89.162.31.138])
-        by smtp.gmail.com with ESMTPSA id o13-20020ac25e2d000000b004896ed8dce3sm3917980lfg.2.2022.07.20.10.32.22
+        by smtp.gmail.com with ESMTPSA id b12-20020a056512304c00b0047fac765f39sm3906980lfb.219.2022.07.20.10.32.50
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 20 Jul 2022 10:32:23 -0700 (PDT)
-Message-ID: <4afe8a76-08be-224f-d40f-0b45566a5147@linaro.org>
-Date: Wed, 20 Jul 2022 19:32:22 +0200
+        Wed, 20 Jul 2022 10:32:50 -0700 (PDT)
+Message-ID: <5daec4cf-172b-88cd-fbc5-586dceb93d4e@linaro.org>
+Date: Wed, 20 Jul 2022 19:32:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH v3 03/21] dt-bindings: power: mediatek: Refine multiple
- level power domain nodes
+Subject: Re: [PATCH v3 04/21] dt-bindings: power: mediatek: Support naming
+ power controller node with unit address
 Content-Language: en-US
 To: Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
  Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
@@ -79,14 +79,15 @@ Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20220720123023.13500-1-tinghan.shen@mediatek.com>
- <20220720123023.13500-4-tinghan.shen@mediatek.com>
+ <20220720123023.13500-5-tinghan.shen@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220720123023.13500-4-tinghan.shen@mediatek.com>
+In-Reply-To: <20220720123023.13500-5-tinghan.shen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_103225_746865_8F9A1796 
-X-CRM114-Status: GOOD (  14.18  )
+X-CRM114-CacheID: sfid-20220720_103256_986033_18293E48 
+X-CRM114-Status: UNSURE (   7.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,46 +103,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 20/07/2022 14:30, Tinghan Shen wrote:
-> Extract duplicated properties and support more levels of power
-> domain nodes.
-> 
-> This change fix following error when do dtbs_check,
->     arch/arm64/boot/dts/mediatek/mt8195-evb.dtb: power-controller: power-domain@15:power-domain@16:power-domain@18: 'power-domain@19', 'power-domain@20', 'power-domain@21' do not match any of the regexes: 'pinctrl-[0-9]+'
-> 	 From schema: Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> Support naming power controller node with unit address, also compatible
+> with node names without unit address.
 > 
 > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->  .../power/mediatek,power-controller.yaml      | 131 +++---------------
->  1 file changed, 17 insertions(+), 114 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> index b448101fac43..321802c95308 100644
-> --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> @@ -42,6 +42,23 @@ properties:
->  
->  patternProperties:
->    "^power-domain@[0-9a-f]+$":
-> +    $ref: "#/$defs/power-domain-node"
-> +    patternProperties:
-> +      "^power-domain@[0-9a-f]+$":
-> +        $ref: "#/$defs/power-domain-node"
-> +        patternProperties:
-> +          "^power-domain@[0-9a-f]+$":
-> +            $ref: "#/$defs/power-domain-node"
-> +            patternProperties:
-> +              "^power-domain@[0-9a-f]+$":
-> +                $ref: "#/$defs/power-domain-node"
-> +                unevaluatedProperties: false
-> +            unevaluatedProperties: false
-> +        unevaluatedProperties: false
-> +    unevaluatedProperties: false
-
-I see some beauty in previous endless recurrence, but at least we are
-specific...
 
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 
 Best regards,
