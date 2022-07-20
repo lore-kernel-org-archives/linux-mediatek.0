@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57A3AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 22:36:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 355F6C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 22:36:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UTCQQFncTSWu0wtnehpVKtkKHBtHlrNQS+JaZvoXIU8=; b=UAyukvr/Gjg3DHgTr4D8Px1+fE
-	nk+7TAqe4DyPtqnOSe+2QmiAjz8BmCyeJwlw79TACmxvXJ+CX/BUbYmB0JOPj8ZdDaiL52zzkTfA/
-	FEHYK8Uoox6SfRYLQdYB4Br4H4KUURFTW0qXHiSnNT+mbtFXTBlqTxfGCdaJW59Q9Esh4hQPjUhCn
-	jywWBtRMshWoX0mV93fSIHLzxox6WAnPStLq+Dh3AdauI69z27YpsAeqdisfWfSgTkNIYCTM2UofL
-	KKVJsFV5uoCSsJXFxFr19EQAEhdsmnaIZXxKldUE0zmplo/Ic8db+bGIaqCdOf+mH50TXc1E8oAgb
-	U0td+K3Q==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5cWbfCLir+nWd69+kcxFSIfKlSJmDzAyzHBfaCvYP30=; b=P58Ka05LSoHtDrABES0PHc1EIQ
+	7C+KwERORlJ4+tTjw7nSbBkBjn47OaJt+ezVH4uPMQk2FN+I78U0jvtqs7onc30WoydF2Fqdn6fB7
+	8r33S66EdEH2rLKgfDcNXmvsOuWAvbaiBgIWyMX8rD93qlxlEewZPMzxkHXzqFZ4vxXb66cE93i1/
+	7DL++8vzQ3dehfLYZty42Jv65/U6DlTbiKkOjLseEWkbqGhK2paVdZYhmACh3KKjD2WG6/l0JWxBA
+	urbLDteU3x7I1eNxJOWtH58Gw1TQbM0WltBzkTDmvuPzeb5XUw18wiEyW+ecd3RAG6sbWJUfEQDtU
+	U2HNxt4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEIIP-00CVen-Pp; Wed, 20 Jul 2022 22:35:57 +0000
+	id 1oEIIp-00CW2f-7v; Wed, 20 Jul 2022 22:36:23 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEIIK-00CVZh-QW
-	for linux-mediatek@lists.infradead.org; Wed, 20 Jul 2022 22:35:55 +0000
-X-UUID: 4a29e00e729f4ad99b0fc5bde73a1f4a-20220720
+	id 1oEIIm-00CW1v-Qm
+	for linux-mediatek@lists.infradead.org; Wed, 20 Jul 2022 22:36:22 +0000
+X-UUID: 630dc174e8d7475faf6002cfeea96f17-20220720
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:d09b4c47-5541-456a-92b6-213971209ee4,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:adda1feb-2147-42d5-a945-d448ea9ac793,OB:0,LO
 	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:252f8433-b9e4-42b8-b28a-6364427c76bb,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:f4308433-b9e4-42b8-b28a-6364427c76bb,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 4a29e00e729f4ad99b0fc5bde73a1f4a-20220720
+X-UUID: 630dc174e8d7475faf6002cfeea96f17-20220720
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <sean.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1975836284; Wed, 20 Jul 2022 15:35:44 -0700
+	with ESMTP id 393331902; Wed, 20 Jul 2022 15:36:16 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
  Thu, 21 Jul 2022 06:25:41 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
@@ -57,18 +57,16 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
 	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
 	<abhishekpandit@google.com>, <shawnku@google.com>,
 	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 2/4] mt76: mt7921s: fix race issue between reset and suspend/resume
-Date: Thu, 21 Jul 2022 06:25:38 +0800
-Message-ID: <0a8e8ed3b179da75d4e141e0384992864e36b33a.1658355599.git.sean.wang@kernel.org>
+Subject: [PATCH v2 1/4] mt76: mt7921e: fix race issue between reset and suspend/resume
+Date: Thu, 21 Jul 2022 06:25:37 +0800
+Message-ID: <5f835553ee8b76e4a4ed83f9562eaa0b1a24c1e6.1658355599.git.sean.wang@kernel.org>
 X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <5f835553ee8b76e4a4ed83f9562eaa0b1a24c1e6.1658355599.git.sean.wang@kernel.org>
-References: <5f835553ee8b76e4a4ed83f9562eaa0b1a24c1e6.1658355599.git.sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_153552_883155_1C775E5A 
-X-CRM114-Status: GOOD (  14.70  )
+X-CRM114-CacheID: sfid-20220720_153620_919581_CCE4E290 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,30 +94,56 @@ In case there is an error that happens during either suspend or resume
 handler, we will schedule a reset task to recover the error before
 returning the error code to ensure we can immediately fix the error there.
 
-Fixes: ca74b9b907f9 ("mt76: mt7921s: add reset support")
+Fixes: 0c1ce9884607 ("mt76: mt7921: add wifi reset support")
 Co-developed-by: YN Chen <YN.Chen@mediatek.com>
 Signed-off-by: YN Chen <YN.Chen@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
 v2: use flush_work instead of cancel_work_sync
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/sdio.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c |  5 +++++
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 13 +++++++++----
+ 2 files changed, 14 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-index 487acd6e2be8..2face849fb4f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-@@ -206,6 +206,7 @@ static int mt7921s_suspend(struct device *__dev)
- 	pm->suspended = true;
- 	set_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index 47f0aa81ab02..6bd9fc9228a2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -780,6 +780,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
+ void mt7921_reset(struct mt76_dev *mdev)
+ {
+ 	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
++	struct mt76_connac_pm *pm = &dev->pm;
  
+ 	if (!dev->hw_init_done)
+ 		return;
+@@ -787,8 +788,12 @@ void mt7921_reset(struct mt76_dev *mdev)
+ 	if (dev->hw_full_reset)
+ 		return;
+ 
++	if (pm->suspended)
++		return;
++
+ 	queue_work(dev->mt76.wq, &dev->reset_work);
+ }
++EXPORT_SYMBOL_GPL(mt7921_reset);
+ 
+ void mt7921_mac_update_mib_stats(struct mt7921_phy *phy)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 9d1ba838e54f..a88561a4e903 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -363,6 +363,7 @@ static int mt7921_pci_suspend(struct device *device)
+ 	int i, err;
+ 
+ 	pm->suspended = true;
 +	flush_work(&dev->reset_work);
  	cancel_delayed_work_sync(&pm->ps_work);
  	cancel_work_sync(&pm->wake_work);
  
-@@ -261,6 +262,9 @@ static int mt7921s_suspend(struct device *__dev)
- 	clear_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
+@@ -424,6 +425,9 @@ static int mt7921_pci_suspend(struct device *device)
+ restore_suspend:
  	pm->suspended = false;
  
 +	if (err < 0)
@@ -128,17 +152,17 @@ index 487acd6e2be8..2face849fb4f 100644
  	return err;
  }
  
-@@ -276,7 +280,7 @@ static int mt7921s_resume(struct device *__dev)
+@@ -437,7 +441,7 @@ static int mt7921_pci_resume(struct device *device)
  
  	err = mt7921_mcu_drv_pmctrl(dev);
  	if (err < 0)
 -		return err;
 +		goto failed;
  
- 	mt76_worker_enable(&mdev->tx_worker);
- 	mt76_worker_enable(&mdev->sdio.txrx_worker);
-@@ -288,11 +292,12 @@ static int mt7921s_resume(struct device *__dev)
- 		mt76_connac_mcu_set_deep_sleep(mdev, false);
+ 	mt7921_wpdma_reinit_cond(dev);
+ 
+@@ -467,11 +471,12 @@ static int mt7921_pci_resume(struct device *device)
+ 		mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
  
  	err = mt76_connac_mcu_set_hif_suspend(mdev, false);
 -	if (err)
