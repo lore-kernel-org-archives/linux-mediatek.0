@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EF03C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 21:40:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34438C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 22:25:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uZGVR1LPdhcF7N10kJ7EbkpxNgGbPbWiXCwyialE7gk=; b=hh1eMW2M09UjVIJMAhvmInFvdJ
-	XppQRZWDYlfm9UBDPquJp/IC+fd8D3Y9nPecIwkQezieG3rZYf+kaLcIX+GsMtILDTMhIm2c9XqE6
-	XLsUBlzpmbRx+VW+CNhlkFYpgindW5q8S9YoiY9tFeiI1hQ34+4DEq0W3+UvH3HfgztY0k6G/Cb1G
-	9lMuYRigm7Pp6iqRb2Y+jembDeYcozA6kDQgYp3Jup8AWbJ9nXCcAAvUcp8UTEHpG3ChRHAv50dNF
-	KGHbD1kKP+EgZ9PHl64r3Ny+UGde+6ZiG2glKgmR4Y3KWWQtR+OChb66xaIpaosMBz/SJQq8Of4kw
-	Ph4442cQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Jimy4V1nUGJyZ9u+Dj99DopEP3pRUApHSD/GLN4AMmg=; b=mX7Owo5X7udCjH9XjeFuckzgzz
+	pvh3BymitAdtAPhs+ylqFqKLF7Fa47q+SVYsQbqIm5nIfYLzXQrhCeygDsdlKlCYot6I9ojpDjgS3
+	bTcpCjHKBjlr2EDU7qIsm0oFvbqosLaIQz9wPqA5G9tK54W+ohRpdtgX+V5aVehGqqB39K36GGUAw
+	1aWq2wXktucY8Gl4qc5Myk1J16S69X3wW3z0jg6NpUpSM4jp++FKwWDDmkXEwotv+Zf2B0aCgl7So
+	QQDa6X50aFuhN9BoNv10lWeY9KMvlIw4Lf2larTEaM4qZW64m6kWIfC0YqgPI/to+9GdVRspC5qlr
+	dicd9MMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEHR4-00Bcz5-I9; Wed, 20 Jul 2022 21:40:50 +0000
-Received: from mail-pf1-f177.google.com ([209.85.210.177])
+	id 1oEI7k-00CMdT-SJ; Wed, 20 Jul 2022 22:24:56 +0000
+Received: from mail-io1-f43.google.com ([209.85.166.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEHR1-00BcwJ-AZ
-	for linux-mediatek@lists.infradead.org; Wed, 20 Jul 2022 21:40:48 +0000
-Received: by mail-pf1-f177.google.com with SMTP id 17so7282890pfy.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 20 Jul 2022 14:40:45 -0700 (PDT)
+	id 1oEI7i-00CMXv-DQ; Wed, 20 Jul 2022 22:24:55 +0000
+Received: by mail-io1-f43.google.com with SMTP id n138so22990iod.4;
+        Wed, 20 Jul 2022 15:24:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=uZGVR1LPdhcF7N10kJ7EbkpxNgGbPbWiXCwyialE7gk=;
-        b=UmFf+8+Ln67JoAHlm208D1fhADO3YgwM5g4yumosNdyuHBkzYvP9RwdgeRBmH80WY7
-         JeXAhDudYFlWaYxc6aFjNUsvDG4T5YsUIm2cgh9F4RocIQw56j9jmj6RVqMnfFY44Tpv
-         NVq52nUSOFmH/fMm95UduE33GuZdDuYT1VJ9MqRXqtX3LxYweLlQFD++VgjkTScVrojw
-         jqWsYHymIM4Bn8U5UuN/BbYE3oW1ivU0pMWy/p/MMbaBZP6uLytjlNmTiFe9LiLtCbEm
-         QM/r+tH61oGrf0DtTjcbNxr5CipfJeaywMNi0Fq7aQBX0Yxna5zgpu0UYXvM/fpzHPrm
-         htmQ==
-X-Gm-Message-State: AJIora8StHycv6miiYiuQi47v77P8jUzaPlwtCtm9OF9JvanhU8wFa7q
-	XOTh6APtjJP6ZuvFh2DB0Bk=
-X-Google-Smtp-Source: AGRyM1ttaQnkhF0Py+k74+2GSOUJ0rbxLNRDdmMF3y7oJQp5O5OnSxGDvTosBfjEabno80eSBCxS+w==
-X-Received: by 2002:a63:c006:0:b0:411:c33f:b4bb with SMTP id h6-20020a63c006000000b00411c33fb4bbmr35483801pgg.433.1658353245244;
-        Wed, 20 Jul 2022 14:40:45 -0700 (PDT)
-Received: from ?IPV6:2620:0:1000:2514:3c34:9133:f304:9ee9? ([2620:0:1000:2514:3c34:9133:f304:9ee9])
-        by smtp.gmail.com with ESMTPSA id b4-20020a62cf04000000b0052ab92772a0sm108276pfg.98.2022.07.20.14.40.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 20 Jul 2022 14:40:44 -0700 (PDT)
-Message-ID: <afb8d403-f8f5-5161-4680-ce2c3ae7787d@acm.org>
-Date: Wed, 20 Jul 2022 14:40:42 -0700
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=Jimy4V1nUGJyZ9u+Dj99DopEP3pRUApHSD/GLN4AMmg=;
+        b=xF7DZo3G+yK4V+iyBflREXWxK8YFj8tSb8zzzzn7yL9ymj4YOR4nBzTbxmuWWUtuYD
+         OyXl+mEsIgj/XoJiTn9thc8UVRJsGhjI3C3oRs+13eIWroPOWdv2BcPLcd69hlv5UUpo
+         FrcNbrKFRODms0txCZt1dmGoHdVzIVZbv7KbZlx7KjV9q/Yx8l+0/x3D0FUHqhci3nKw
+         sr9sxkZTTXNEg5BODyPscHzg2+nGnVtfLphZ4xX8iTE10hlbxFdqetdBe+GFYoU0+5oZ
+         ytJxMyjl2mfAPHckCUTV09AoAbSVIlQyOJjboerkPq+YSORY2L0hvgMH2B+T05UEFoUb
+         dHSQ==
+X-Gm-Message-State: AJIora8eTg5nLxqEgoz3G26JKrwSPOgNYe9YIP6VqEvMQp5rdMfFaCR1
+	LbxBSitBV0EnuPsqx5y2VQ==
+X-Google-Smtp-Source: AGRyM1sWYsUEabacHZSH2oMcZFw7tDZ5CPWOw5X+UvmaH7kUKyTq2euwNHlUXCeHEgjsImPt7Rb9JQ==
+X-Received: by 2002:a05:6638:4813:b0:33f:27bf:f6fa with SMTP id cp19-20020a056638481300b0033f27bff6famr20388764jab.42.1658355890085;
+        Wed, 20 Jul 2022 15:24:50 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id f19-20020a056638113300b0033f3ab94271sm37469jar.139.2022.07.20.15.24.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Jul 2022 15:24:49 -0700 (PDT)
+Received: (nullmailer pid 4089645 invoked by uid 1000);
+	Wed, 20 Jul 2022 22:24:48 -0000
+Date: Wed, 20 Jul 2022 16:24:48 -0600
+From: Rob Herring <robh@kernel.org>
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>, Rex-BC.Chen@mediatek.com, TingHan.Shen@mediatek.com, Liju-clr.Chen@mediatek.com, Jian.Yang@mediatek.com
+Subject: Re: [PATCH 2/2] dt-bindings: PCI: mediatek-gen3: Add new clock name
+Message-ID: <20220720222448.GA4083816-robh@kernel.org>
+References: <20220716074349.28655-1-jianjun.wang@mediatek.com>
+ <20220716074349.28655-3-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v1] scsi: ufs: correct ufshcd_shutdown flow
-Content-Language: en-US
-To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com
-References: <20220719130208.29032-1-peter.wang@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20220719130208.29032-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220716074349.28655-3-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_144047_413004_8DFFD199 
-X-CRM114-Status: GOOD (  14.44  )
+X-CRM114-CacheID: sfid-20220720_152454_478313_10B2F09C 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,46 +77,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/19/22 06:02, peter.wang@mediatek.com wrote:
-> From: Peter Wang <peter.wang@mediatek.com>
+On Sat, Jul 16, 2022 at 03:43:49PM +0800, Jianjun Wang wrote:
+> MT8188 and MT8195 use clock "peri_mem" instead of "top_133m", add new
+> clock name "peri_mem" for MT8188 and MT8195.
+
+This should be part of patch 1.
+
+Clock names for IP blocks should be local to the IP block. IOW, named 
+after the input name for the clocks or what their function is if you 
+don't know that. Neither the old names nor the new name seem to follow 
+this. At least make the new name follow that convention.
+
 > 
-> After ufshcd_wl_shutdown set device poweroff and link off,
-> ufshcd_shutdown not turn off regulators/clocks.
-> Correct the flow to wait ufshcd_wl_shutdown done and turn off
-> regulators/clocks by polling ufs device/link state 500ms.
-> Also remove pm_runtime_get_sync because it is unnecessary.
-
-Please explain in the patch description why the pm_runtime_get_sync() 
-call is not necessary.
-
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index c7b337480e3e..1c11af48b584 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -9461,10 +9461,14 @@ EXPORT_SYMBOL(ufshcd_runtime_resume);
->    */
->   int ufshcd_shutdown(struct ufs_hba *hba)
->   {
-> -	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba))
-> -		goto out;
-> +	ktime_t timeout = ktime_add_ms(ktime_get(), 500);
-
-Where does the 500 ms timeout come from?
-
-Additionally, given the large timeout, please use jiffies instead of 
-ktime_get().
-
-> -	pm_runtime_get_sync(hba->dev);
-> +	/* Wait ufshcd_wl_shutdown clear ufs state, timeout 500 ms */
-> +	while (!ufshcd_is_ufs_dev_poweroff(hba) || !ufshcd_is_link_off(hba)) {
-> +		if (ktime_after(ktime_get(), timeout))
-> +			goto out;
-> +		msleep(1);
-> +	}
-
-Please explain why this wait loop has been introduced.
-
-Thanks,
-
-Bart.
+> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> ---
+>  .../bindings/pci/mediatek-pcie-gen3.yaml      | 42 ++++++++++++++-----
+>  1 file changed, 32 insertions(+), 10 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> index 67d2ba25e336..038e25ae0be7 100644
+> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> @@ -43,9 +43,6 @@ description: |+
+>    each set has its own address for MSI message, and supports 32 MSI vectors
+>    to generate interrupt.
+>  
+> -allOf:
+> -  - $ref: /schemas/pci/pci-bus.yaml#
+> -
+>  properties:
+>    compatible:
+>      oneOf:
+> @@ -85,13 +82,7 @@ properties:
+>      maxItems: 6
+>  
+>    clock-names:
+> -    items:
+> -      - const: pl_250m
+> -      - const: tl_26m
+> -      - const: tl_96m
+> -      - const: tl_32k
+> -      - const: peri_26m
+> -      - const: top_133m
+> +    maxItems: 6
+>  
+>    assigned-clocks:
+>      maxItems: 1
+> @@ -133,9 +124,40 @@ required:
+>    - interrupts
+>    - ranges
+>    - clocks
+> +  - clock-names
+>    - '#interrupt-cells'
+>    - interrupt-controller
+>  
+> +allOf:
+> +  - $ref: /schemas/pci/pci-bus.yaml#
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8188-pcie
+> +              - mediatek,mt8195-pcie
+> +    then:
+> +      properties:
+> +        clock-names:
+> +          items:
+> +            - const: pl_250m
+> +            - const: tl_26m
+> +            - const: tl_96m
+> +            - const: tl_32k
+> +            - const: peri_26m
+> +            - const: peri_mem
+> +    else:
+> +      properties:
+> +        clock-names:
+> +          items:
+> +            - const: pl_250m
+> +            - const: tl_26m
+> +            - const: tl_96m
+> +            - const: tl_32k
+> +            - const: peri_26m
+> +            - const: top_133m
+> +
+>  unevaluatedProperties: false
+>  
+>  examples:
+> -- 
+> 2.18.0
+> 
+> 
 
