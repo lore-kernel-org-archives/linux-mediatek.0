@@ -4,66 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1389AC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 07:45:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD52AC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 08:58:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AlniCXIjmJIhQPHhab1IXU3VrLB1Ym4LR4ASTuUus+8=; b=BzYvtr+7B9W4Uaj8/W6V8f59Rz
-	hjnD0CiUl0XGlruefD2W1yJCQii2trEGGefOYz3WioYl89JIkWAqLItQoQg+RIGkcxUniNGkBfD2C
-	Rp7Psr8EfSZPBK/KuXMHKhsjv/3yse5d4agIZXOVH97zRKi5uGGHMzJ53EeYkDXoJ26YvO0J4pMuA
-	IM5iE/Apa1VkSWQ4PdCClwfCkra8Pwu8bLo9um04MKQ5tNXnTfu8N+DHV5U9+xv5CsecBqxXKVVVM
-	I4oNm2f2Zai2FSEhemNlRSnMSP+QdY3gJgYDe4L78Tjg4zRwrIO4ay/zP6Sp3OMnA7j6PX8loT1wp
-	z1nsGJ3g==;
+	bh=1T04NYaFQTZVPNhoUV7BqZsKUu3jubpxQaw60lEUGX4=; b=yYz3ZE8Ne66CytH1hAWXQzuCNG
+	BJQ+moSA5K3ELNWP2t2Ha3FAC7NeL6hjOxQmVLgPh7zgyVJ+cyBD5QCYwZwQ5w1fMOwHgNPVNW4Mn
+	Y/RKJVKycSxiUHATq9eO5vs6/ae21j3Sn1Gu0/e8EulUTqH7UA1xVXavHMy7yVofsXM5kIkkIISG3
+	ChQiyNFmDqCiCP5UsbxOdu9hymdmwe6yOyTLgybXRyo3afHUUfZbI9/XApsU2fYLZFMhOL9c/JjTQ
+	rKMcLHUQCamB2XI4gnsDxfBgNH8JmZvJs5UPSleS6xRq1ZMEOy4+Auv6Y/XJbKA9E/jq+VR2/NZo7
+	MbyxTT8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE4OZ-0028I3-1V; Wed, 20 Jul 2022 07:45:23 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oE5XI-002veb-VM; Wed, 20 Jul 2022 08:58:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE4OX-0028HZ-F8
-	for linux-mediatek@lists.infradead.org; Wed, 20 Jul 2022 07:45:22 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 50BE661958;
-	Wed, 20 Jul 2022 07:45:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07469C3411E;
-	Wed, 20 Jul 2022 07:45:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658303119;
-	bh=AlniCXIjmJIhQPHhab1IXU3VrLB1Ym4LR4ASTuUus+8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=efXR05KbN/agYn9mcVb0qYORBpmoq7uAiYu8AtIgKtXRfa8DdgHN35wZCY6yvudee
-	 0g3JR+XR+mRwE7jW8cHGoVyGsk9JvnYj7tcmlz4CtjuxAjXjlWQgGpQlDI4hg9WMrF
-	 w/2OC8ddKGDYEFtbDmT0KvMjV/esVkhN0+3fT0/I+ws1/g9UlEsUsjRhA51Od7FUWA
-	 s98/bJzfOAElpE1I3jRozuAoM1Sp3oTxdTdPG62uBGfci2mh5NfkUxK12Yfd6Qdxur
-	 +c5fpQnZrhdkiaDBo0WC0K7Yr49VFNFamv8oveH6m1JMD3fo3tzHJxJN2eM1rY154W
-	 1pWhvFLlKBVoA==
-Date: Wed, 20 Jul 2022 09:45:13 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
-	pablo@netfilter.org, matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
-	Ryder.Lee@mediatek.com, Evelyn.Tsai@mediatek.com
-Subject: Re: [PATCH net-next] net: ethernet: mtk-ppe: fix traffic offload
- with bridged wlan
-Message-ID: <YteyiWvRGSRAeAIJ@localhost.localdomain>
-References: <7fa3ce7e77fb579515e0a7c5a7dee60fc5999e2b.1658168627.git.lorenzo@kernel.org>
- <20220719174038.7ee25c6d@kernel.org>
+	id 1oE5XE-002vR0-IT; Wed, 20 Jul 2022 08:58:27 +0000
+X-UUID: c633917ce56b44dfaa0a4b3ac9f5c83a-20220720
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:d57da84a-6730-4d72-9ad6-1823bdd6b295,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:0f94e32,CLOUDID:d581c964-0b3f-4b2c-b3a6-ed5c044366a0,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: c633917ce56b44dfaa0a4b3ac9f5c83a-20220720
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1415372652; Wed, 20 Jul 2022 01:58:13 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 20 Jul 2022 16:57:40 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Wed, 20 Jul 2022 16:57:39 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Alexandre Courbot
+	<acourbot@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, "Andrew-CT
+ Chen" <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>
+CC: Maoguang Meng <maoguang.meng@mediatek.com>, Longfei Wang
+	<longfei.wang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, "Irui
+ Wang" <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v2, 2/6] dt-bindings: media: mediatek: vcodec: Add encoder dt-bindings for mt8188
+Date: Wed, 20 Jul 2022 16:57:27 +0800
+Message-ID: <20220720085731.11011-3-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220720085731.11011-1-irui.wang@mediatek.com>
+References: <20220720085731.11011-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ylvo4zkjxaI9i2J8"
-Content-Disposition: inline
-In-Reply-To: <20220719174038.7ee25c6d@kernel.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_004521_586771_ACDACEA6 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20220720_015824_624737_E16AE612 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,41 +84,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add encoder dt-bindings for mt8188.
 
---ylvo4zkjxaI9i2J8
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+---
+ .../devicetree/bindings/media/mediatek,vcodec-encoder.yaml       | 1 +
+ 1 file changed, 1 insertion(+)
 
-> On Mon, 18 Jul 2022 20:36:39 +0200 Lorenzo Bianconi wrote:
-> > A typical flow offload scenario for OpenWrt users is routed traffic
-> > received by the wan interface that is redirected to a wlan device
-> > belonging to the lan bridge. Current implementation fails to
-> > fill wdma offload info in mtk_flow_get_wdma_info() since odev device is
-> > the local bridge. Fix the issue running dev_fill_forward_path routine in
-> > mtk_flow_get_wdma_info in order to identify the wlan device.
->=20
-> AFAIU this will conflict with 53eb9b04560c ("net: ethernet: mtk_ppe:
-> fix possible NULL pointer dereference in mtk_flow_get_wdma_info")?=20
-> We merge net -> net-next every Thu, please wait for that to happen=20
-> and then repost. Conflicting patches are extra work for Stephen and
-> for me.
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+index d36fcca04cbc..32aee09aea33 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+@@ -20,6 +20,7 @@ properties:
+       - mediatek,mt8173-vcodec-enc-vp8
+       - mediatek,mt8173-vcodec-enc
+       - mediatek,mt8183-vcodec-enc
++      - mediatek,mt8188-vcodec-enc
+       - mediatek,mt8192-vcodec-enc
+       - mediatek,mt8195-vcodec-enc
+ 
+-- 
+2.18.0
 
-ack, right, sorry for that. I will repost after the merge.
-
-Regards,
-Lorenzo
-
---ylvo4zkjxaI9i2J8
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYteyhwAKCRA6cBh0uS2t
-rMqNAP0UkJbZdsHrCjga7YxdeBzjLAcEwucNWMwf3HHYLMOHfAD+LNoP+s9tN16w
-Yb6Bemq7UuLopuVdPx81XvbSFs49Pww=
-=zvZO
------END PGP SIGNATURE-----
-
---ylvo4zkjxaI9i2J8--
 
