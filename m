@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5BB4C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 13:06:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDC93C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 13:10:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=iYqxFGIpBpmuFXNUV8Ku1XKG5HFLIMbNs+Mu2mqFMOo=; b=a8n4IrsNkEYjRPOqRcNQYj7ovi
-	fu0xeGL0kfyS+krDz2p2OvlTr8/WIJToHi2dITjhxhUdBfHvMdGCaLnNbWsHbDj/CXYb7n3KWrr3T
-	/i7lCs8DNSfUmi6SzOQyU0w5mvY6ofxVCPSDq3vJWtmDEKuUTwMhGFQUGytUDinhQqCzrrd0tIrlc
-	Ld5Qgg5ZubGeTRZtspkTsGuBL7uFql0G9c7GDLYRSGBzjegZuD2Q3IJEaWibWFU+v1qxeQmidGHy+
-	+rRyl/XX3P20hH7EjYWzYNFcBAX03otmFYnmRgE90ZX7A9Q9xiE7yPFpuRzck+Gm+XAlGaH/PrC2n
-	0KgrFSSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zYckGC1y39Lw1XTGr9S5HS5fQXNzhK+dPumxGZ9P4Zg=; b=vvmqdL5ak0+mieIrbtRimLDyiY
+	EWLMxRupmBuqDFX2QSOIsfYBNYOc15zkENUEdo9YlaoDhzivKCE3ChAZF/iD6JHmlKKng9WEoE5On
+	Z0YVA13YOs2iwmQykV9l5U2i47UB0uUkTtgNPa0V/XYpUZiIzzhCzO79MgGWrZPXsYBtWXOv3lug3
+	aTNcQfKQGg/8VYCcL55ih5hHzPVNqLi3wMXcXtbIG8PZIdZFKKqgHw95kHWvUhI8jN6X6l91Mlyg2
+	gJEvb9w11nt2YlmNgIdj9vZV16fw00n1DTaGlPBEDdFKPOz8WyVjgOfi+1LxZusgaixykkJzBP9me
+	SIsUe5hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE9Pe-005j4W-3A; Wed, 20 Jul 2022 13:06:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oE9TW-005n1s-TD; Wed, 20 Jul 2022 13:10:50 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE9PX-005izf-V2; Wed, 20 Jul 2022 13:06:48 +0000
-X-UUID: 1773e460425b480a8251ebd648ac9be9-20220720
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:7dcbd4fc-127d-4f72-969d-022d5fb0dc8e,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:f240ce64-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 1773e460425b480a8251ebd648ac9be9-20220720
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1624437477; Wed, 20 Jul 2022 06:06:39 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 20 Jul 2022 21:06:05 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 20 Jul 2022 21:06:05 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@canonical.com>, CK Hu <ck.hu@mediatek.com>, Jitao shi
-	<jitao.shi@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <hsinyi@chromium.org>,
-	<fparent@baylibre.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v2 0/1] dt-bindings: display: mediatek: dpi: add power-domains
-Date: Wed, 20 Jul 2022 21:06:03 +0800
-Message-ID: <20220720130604.14113-1-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oE9TK-005mj4-3j; Wed, 20 Jul 2022 13:10:39 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3CF996601A88;
+	Wed, 20 Jul 2022 14:10:33 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658322633;
+	bh=jeqvqgxO7A/6sT1qqpmHd9fisrNBZJEFg3LINFIwS7Q=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=OilSlXJ8lGmJdbXTdLM/ZW+CXHjEwbXiW84uU0jghgqXV/kadvEKWj58iEza6Izdf
+	 RpU9SJaBmnWeLZONnxIFWfDuDDaPtdgpJRFcm4qM6a9+Ejv9wERp3gXld2lC4qwREX
+	 uqEZwtmz4m1aEgMcnzqbv+L2iObZMPf/+67hv3DyOukeUqtPfPydIbxt01FiteMCEc
+	 nSiexE2qz29S22Z5/i71JezrcAy1JQr4JDqPMuOWMThzp7BAiJxAQONNxksrH1OJeY
+	 1uERup10s+iJLE76Pqm20H1NYYISsrbqmLWk47ZeHfVDgRUuQTPLZaoWktSGet1zqm
+	 fjPFaXiELCmAA==
+Message-ID: <4c75be1e-d1d9-f70f-5d84-3e32c8e757e7@collabora.com>
+Date: Wed, 20 Jul 2022 15:10:30 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v3 1/4] dt-binding: mediatek: watchdog: Fix compatible
+ fallbacks and example
+Content-Language: en-US
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+ <linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ nfraprado@collabora.com
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20220720125015.13797-1-allen-kh.cheng@mediatek.com>
+ <20220720125015.13797-2-allen-kh.cheng@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220720125015.13797-2-allen-kh.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_060644_017809_8AF79000 
-X-CRM114-Status: UNSURE (   7.76  )
+X-CRM114-CacheID: sfid-20220720_061038_322284_98335924 
+X-CRM114-Status: UNSURE (   8.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,19 +81,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Based on tag: next-20220719, linux-next/master
+Il 20/07/22 14:50, Allen-KH Cheng ha scritto:
+> The watchdog timer of mt8186. mt8195 and mt7986 have their DT data.
+> We should not use 'mediatek,mt6589-wdt' as fallback.
+> 
+> For mediatek,wdt example of mt8183, We remove mediatek,mt6589-wdt fallback.
+> 
+> Fixes:a45b408a020b("dt-bindings: watchdog: Add compatible for MediaTek MT8186")
+> Fixes:b326f2c85f3d("dt-bindings: watchdog: Add compatible for Mediatek MT8195")
+> Fixes:41e73feb1024("dt-bindings: watchdog: Add compatible for Mediatek MT7986")
+> Fixes:f43f97a0fc0e("dt-bindings: mediatek: mt8183: Add #reset-cells")
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 
-changes since v1:
- - add a Fixes tag
- - add RoB tag
+Please fix the commit title: dt-binding: => dt-bindings:
 
-Allen-KH Cheng (1):
-  dt-bindings: display: mediatek: dpi: add power-domains property
+After which....
 
- .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml   | 5 +++++
- 1 file changed, 5 insertions(+)
-
--- 
-2.18.0
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
