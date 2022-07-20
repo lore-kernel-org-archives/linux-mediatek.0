@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F116EC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 18:20:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A657FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 18:20:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M1i/0wxRYmvrq6IC7mxhkb2dRV6n4m0qx9SiTZ66LUU=; b=peN0Z6Ay18C2Uz6xfgUtlciYwQ
-	RlZouRhtXrN4uWCD+d8SR09gtGobzbOqE0MCDb/L2PU7Ae7UjBlLKOBdj+GwxcIRePlvgpXLu+hl3
-	u/wITOnt2yAHFGArVA9zH4EoyGyLDguYBkUsynhLSfQ2PMeerL5fhrLBNlEaDB75qoQHAXR+WXKVD
-	sUzeP5jE5BvJGOZdRhjf1gubrAVjO0GEXSxiQIGgumvOze3POTIdypTNsL0MLE1przzQ66wn6OVyH
-	c3Sa/KojvRlgnYPl9f4w+lAYwk5wPHMU6iacRP2/b3ppR4nafWegzO3rPNjvfpga3b5Ju6wbuGw7K
-	NdMmVS+Q==;
+	bh=/6t1tJznirgBuuhOslr+HrbK0FgxfxpNokiZkLl87qc=; b=F+OmYjM+8F1LYErvXY4RnCrexI
+	8GZxSaYKjAMnJFPPGhY9M68F/2X+23UIUshqxiOlFbF4wM45IcLjF3m0FkVxH65fxhFHWnEAaJvya
+	NumKnkRX+g3NOzqe4kRjxHNPsybu1fYdxQjwKX8FS4C5PhJzeoMTLMDNf+Xox3b64ziGI7UPLrQzC
+	gb2o93stynjNBbbM5cuzapHpAWblGrQ+DTbiCsz9OMsy40iQCmFcJn1NwVViFhttB8kRGk5vU82DW
+	iQEC4TqulRsw7VDrq4zRhurL22DUQe9ZNnGzwm1/Me0y9aTYJqcGPGRW53d2+3S8MG46zXhUMo4qN
+	C4RmRDng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEEIo-009AEk-6p; Wed, 20 Jul 2022 18:20:06 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1oEEJM-009AYq-Gp; Wed, 20 Jul 2022 18:20:40 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEEIN-0099zA-2U
+	id 1oEEIP-009A1N-05
 	for linux-mediatek@lists.infradead.org; Wed, 20 Jul 2022 18:19:44 +0000
-Received: by mail-wr1-x436.google.com with SMTP id u5so4237912wrm.4
-        for <linux-mediatek@lists.infradead.org>; Wed, 20 Jul 2022 11:19:38 -0700 (PDT)
+Received: by mail-wm1-x331.google.com with SMTP id ay11-20020a05600c1e0b00b003a3013da120so1874401wmb.5
+        for <linux-mediatek@lists.infradead.org>; Wed, 20 Jul 2022 11:19:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=M1i/0wxRYmvrq6IC7mxhkb2dRV6n4m0qx9SiTZ66LUU=;
-        b=wvCG72+dVbH7vC+FUiUiUlZLxbALX+w2Lr0IOikvpCsLmFn/hOeBIaU1YlrucX7yL0
-         eERwlr2Ukp2ApNoHVB1QEbN8/S97JCgyHnd1G5ui1uHtcXt4utmSF8MqT9F6XOqlkOau
-         BVOSKeeOoac70OVEa5AzbQQTN3HkwsEfSn9yUksbY25M800xZcNukN9m6l5Bgg5t3hKI
-         gA5GkJVNEw6ZgAi8e7HqFyotAqPQ8nqnjukf+O3sZJH9sY/uP2491T06zRvdODu1SYyW
-         BiWDw1S84c++vZO2E/yFCJwhoM5h8V0HJq203Dvbdpvvamr1dtjJGUwDtkjs61gAA9sP
-         17/A==
+        bh=/6t1tJznirgBuuhOslr+HrbK0FgxfxpNokiZkLl87qc=;
+        b=jIbnUzr1HAn9joeLX2mrLV6691ELQKqEy3owuhkejKOCKt1cASKXXjB9wMEUyO/jrT
+         s5tUtyzbn1t8G+kZJlIz/Cm67eUcjlh2SfDztzDnH4anMCmyswzuGwbtcoS4ncqRGF2p
+         VoIe1ei2yB23cyB0YfUNuRmPsckQTAWU3G9X8cE3hJmIKjd1U5KyJWwdCwLwdsqizYma
+         sr3KF6IDMPBE6gDy6iX8BTEcU6tJgdBJ+goHrNSSkiuIsJZ+cC0W7d/DwtWQsu/ud2et
+         wOuoUgoaFTHv+6xS/TSJEfF4GvTFskkxX3jdr+EZ7ilhR0NVjqIRQO7vJ7CvmBaDRXeb
+         RxNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=M1i/0wxRYmvrq6IC7mxhkb2dRV6n4m0qx9SiTZ66LUU=;
-        b=7slwZ19zVr8B/Nv/MT7WgC2GhsuCJwpH4MSdm+pfuaJ0ZKWrt9NvXc0rC/rLv9Dqdv
-         mHug+xJuKPA1HNS0WB/MWR19lx8/WXva3QVYdctrin3ic8KDMyh2sI2a9FB+iiMt0CP8
-         XDiBJ+CLLB+sXIXu/N4WN/FF3Tmp1D+IdIIXN+MQMzgwgftn6bOZDfeiGA0M3SaZ/ShV
-         EGjINs9rq6ARwjnbZ9izIfn+vhLSBqVmjHrRJTctmeSPf5MAV0fLG7KKFmqlQxcbV00v
-         Oy6zYWL97R4PWu7slL6gouWj902lmAVKKNFFolYlVQXd+vY+/xdrVtBN3XXKfudRJNdx
-         hc2w==
-X-Gm-Message-State: AJIora8hs8sr5HZAsUAI9xmp9l8hfpb7izUlYefFHVGycIyFPLTlWkIJ
-	IDMfI0Q+LSK+NC/FoT5Cq8gehwcVog7UqA==
-X-Google-Smtp-Source: AGRyM1tJ4ApcHLOkGHWBDanLWrqSKlCjxj6zPXkPYwhUuUsm0V8vXlTq1CWrLAzMq0bV+3Xvi5jBXw==
-X-Received: by 2002:a05:6000:1545:b0:21d:8f3e:a0bd with SMTP id 5-20020a056000154500b0021d8f3ea0bdmr32428629wry.697.1658341176950;
-        Wed, 20 Jul 2022 11:19:36 -0700 (PDT)
+        bh=/6t1tJznirgBuuhOslr+HrbK0FgxfxpNokiZkLl87qc=;
+        b=G7yuR72RPDtdLauGAFO/SV3nV40SHBv0//WKkt2RefK1FgSBBuYLhAwltdHupiAsCf
+         EZF6PqsZAQ0sU4WyJ1//8s9/EvVka7kxc+DGjgLuk7bBryLEvH+RZjW8AfgSVV1qLmkh
+         W+0WqSx6t47D5oyuTXVucn2VLa319jQd/7uZbQUcbZYs9bwLwWAGUs4cvMAMxS+HSbk5
+         XewA9EZ4fnlPqF4FEqeYpkx2MpAkA5ai2z7rGe73txE8SwqANORcx/EiToRU/TRq45TM
+         V7Fzt3bXUm7PXuK5CB7aW9uLiogl49dOxbdbecfMC/sBayQodzBXkSaRT1y8tR7vGzOj
+         3s7w==
+X-Gm-Message-State: AJIora/XAufDx3LBi1V6I+jUC1C/ACMFTQthiBk2MVDFvdP/gVX4GELY
+	XTNgsJdlvzgpGPMaxV1uuLsQTg==
+X-Google-Smtp-Source: AGRyM1uGKhBM5kBeoQFZ7rJFvEZczSvd1eckDYJ1dkCuDSNjsIsqpCTaawcB/4Ev9F6PK/fbasFdmQ==
+X-Received: by 2002:a05:600c:1d8a:b0:3a3:1104:88ad with SMTP id p10-20020a05600c1d8a00b003a3110488admr4894543wms.179.1658341179153;
+        Wed, 20 Jul 2022 11:19:39 -0700 (PDT)
 Received: from amjad-ThinkPad-T490.home (2a01cb040613180084408ac44a1fa242.ipv6.abo.wanadoo.fr. [2a01:cb04:613:1800:8440:8ac4:4a1f:a242])
-        by smtp.googlemail.com with ESMTPSA id z17-20020a05600c0a1100b003a31d200a7dsm3400093wmp.9.2022.07.20.11.19.35
+        by smtp.googlemail.com with ESMTPSA id z17-20020a05600c0a1100b003a31d200a7dsm3400093wmp.9.2022.07.20.11.19.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 20 Jul 2022 11:19:35 -0700 (PDT)
+        Wed, 20 Jul 2022 11:19:38 -0700 (PDT)
 From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
 To: matthias.bgg@gmail.com
 Cc: rafael@kernel.org,
@@ -72,18 +72,20 @@ Cc: rafael@kernel.org,
 	linux-pm@vger.kernel.org,
 	robh+dt@kernel.org,
 	rui.zhang@intel.com,
-	Amjad Ouled-Ameur <aouledameur@baylibre.com>
-Subject: [PATCH v2 2/4] thermal: mediatek: add support for MT8365 SoC
-Date: Wed, 20 Jul 2022 20:18:52 +0200
-Message-Id: <20220720181854.547881-3-aouledameur@baylibre.com>
+	Amjad Ouled-Ameur <aouledameur@baylibre.com>,
+	default avatarMichael Kao <michael.kao@mediatek.com>,
+	default avatarHsin-Yi Wang <hsinyi@chromium.org>
+Subject: [PATCH v2 4/4] thermal: mediatek: add another get_temp ops for thermal sensors
+Date: Wed, 20 Jul 2022 20:18:54 +0200
+Message-Id: <20220720181854.547881-5-aouledameur@baylibre.com>
 X-Mailer: git-send-email 2.37.1
 In-Reply-To: <20220720181854.547881-1-aouledameur@baylibre.com>
 References: <20220720181854.547881-1-aouledameur@baylibre.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_111939_148535_1BB3835B 
-X-CRM114-Status: GOOD (  14.57  )
+X-CRM114-CacheID: sfid-20220720_111941_062381_AF478C80 
+X-CRM114-Status: GOOD (  20.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,126 +100,182 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
+Provide thermal zone to read thermal sensor in the SoC. We can read all the
+thermal sensors value in the SoC by the node /sys/class/thermal/
 
-MT8365 is similar to the other SoCs supported by the driver. It has only
-one bank and 3 actual sensors that can be multiplexed. There is another
-one sensor that does not have usable data.
+In mtk_thermal_bank_temperature, return -EAGAIN instead of -EACCESS
+on the first read of sensor that often are bogus values.
+This can avoid following warning on boot:
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Reviewed-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+  thermal thermal_zone6: failed to read out thermal zone (-13)
+
+Signed-off-by: default avatarMichael Kao <michael.kao@mediatek.com>
+Signed-off-by: default avatarHsin-Yi Wang <hsinyi@chromium.org>
+Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
 Tested-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
 ---
- drivers/thermal/mtk_thermal.c | 68 +++++++++++++++++++++++++++++++++++
- 1 file changed, 68 insertions(+)
+ drivers/thermal/mtk_thermal.c | 100 ++++++++++++++++++++++++++--------
+ 1 file changed, 76 insertions(+), 24 deletions(-)
 
 diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index ede94eadddda..216eb0d61c5b 100644
+index 1dc276f8c4f1..79b14ce1a08d 100644
 --- a/drivers/thermal/mtk_thermal.c
 +++ b/drivers/thermal/mtk_thermal.c
-@@ -31,6 +31,7 @@
- #define AUXADC_CON2_V		0x010
- #define AUXADC_DATA(channel)	(0x14 + (channel) * 4)
+@@ -259,6 +259,11 @@ enum mtk_thermal_version {
  
-+#define APMIXED_SYS_TS_CON0	0x600
- #define APMIXED_SYS_TS_CON1	0x604
- 
- /* Thermal Controller Registers */
-@@ -245,6 +246,17 @@ enum mtk_thermal_version {
- /* The calibration coefficient of sensor  */
- #define MT8183_CALIBRATION	153
- 
-+/* MT8365 */
-+#define MT8365_TEMP_AUXADC_CHANNEL 11
-+#define MT8365_CALIBRATION 164
-+#define MT8365_NUM_CONTROLLER 1
-+#define MT8365_NUM_BANKS 1
-+#define MT8365_NUM_SENSORS 3
-+#define MT8365_NUM_SENSORS_PER_ZONE 3
-+#define MT8365_TS1 0
-+#define MT8365_TS2 1
-+#define MT8365_TS3 2
-+
  struct mtk_thermal;
  
++struct mtk_thermal_zone {
++	struct mtk_thermal *mt;
++	int id;
++};
++
  struct thermal_bank_cfg {
-@@ -386,6 +398,24 @@ static const int mt7622_mux_values[MT7622_NUM_SENSORS] = { 0, };
- static const int mt7622_vts_index[MT7622_NUM_SENSORS] = { VTS1 };
- static const int mt7622_tc_offset[MT7622_NUM_CONTROLLER] = { 0x0, };
+ 	unsigned int num_sensors;
+ 	const int *sensors;
+@@ -709,6 +714,32 @@ static void mtk_thermal_put_bank(struct mtk_thermal_bank *bank)
+ 		mutex_unlock(&mt->lock);
+ }
  
-+/* MT8365 thermal sensor data */
-+static const int mt8365_bank_data[MT8365_NUM_SENSORS] = {
-+	MT8365_TS1, MT8365_TS2, MT8365_TS3
-+};
++static u32 _get_sensor_temp(struct mtk_thermal *mt, int id)
++{
++	u32 raw;
++	int temp;
 +
-+static const int mt8365_msr[MT8365_NUM_SENSORS_PER_ZONE] = {
-+	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2
-+};
++	const struct mtk_thermal_data *conf = mt->conf;
 +
-+static const int mt8365_adcpnp[MT8365_NUM_SENSORS_PER_ZONE] = {
-+	TEMP_ADCPNP0, TEMP_ADCPNP1, TEMP_ADCPNP2
-+};
++	raw = readl(mt->thermal_base + conf->msr[id]);
 +
-+static const int mt8365_mux_values[MT8365_NUM_SENSORS] = { 0, 1, 2 };
-+static const int mt8365_tc_offset[MT8365_NUM_CONTROLLER] = { 0 };
++	if (mt->conf->version == MTK_THERMAL_V1)
++		temp = raw_to_mcelsius_v1(mt, id, raw);
++	else
++		temp = raw_to_mcelsius_v2(mt, id, raw);
 +
-+static const int mt8365_vts_index[MT8365_NUM_SENSORS] = { VTS1, VTS2, VTS3 };
++	/*
++	 * The first read of a sensor often contains very high bogus
++	 * temperature value. Filter these out so that the system does
++	 * not immediately shut down.
++	 */
 +
- /*
-  * The MT8173 thermal controller has four banks. Each bank can read up to
-  * four temperature sensors simultaneously. The MT8173 has a total of 5
-@@ -460,6 +490,40 @@ static const struct mtk_thermal_data mt2701_thermal_data = {
- 	.version = MTK_THERMAL_V1,
++	if (temp > 200000)
++		return  -EAGAIN;
++	else
++		return	temp;
++}
++
+ /**
+  * mtk_thermal_bank_temperature - get the temperature of a bank
+  * @bank:	The bank
+@@ -721,26 +752,9 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+ 	struct mtk_thermal *mt = bank->mt;
+ 	const struct mtk_thermal_data *conf = mt->conf;
+ 	int i, temp = INT_MIN, max = INT_MIN;
+-	u32 raw;
+ 
+ 	for (i = 0; i < conf->bank_data[bank->id].num_sensors; i++) {
+-		raw = readl(mt->thermal_base + conf->msr[i]);
+-
+-		if (mt->conf->version == MTK_THERMAL_V1) {
+-			temp = raw_to_mcelsius_v1(
+-				mt, conf->bank_data[bank->id].sensors[i], raw);
+-		} else {
+-			temp = raw_to_mcelsius_v2(
+-				mt, conf->bank_data[bank->id].sensors[i], raw);
+-		}
+-
+-		/*
+-		 * The first read of a sensor often contains very high bogus
+-		 * temperature value. Filter these out so that the system does
+-		 * not immediately shut down.
+-		 */
+-		if (temp > 200000)
+-			temp = 0;
++		temp = _get_sensor_temp(mt, i);
+ 
+ 		if (temp > max)
+ 			max = temp;
+@@ -751,7 +765,8 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+ 
+ static int mtk_read_temp(void *data, int *temperature)
+ {
+-	struct mtk_thermal *mt = data;
++	struct mtk_thermal_zone *tz = data;
++	struct mtk_thermal *mt = tz->mt;
+ 	int i;
+ 	int tempmax = INT_MIN;
+ 
+@@ -770,10 +785,28 @@ static int mtk_read_temp(void *data, int *temperature)
+ 	return 0;
+ }
+ 
++static int mtk_read_sensor_temp(void *data, int *temperature)
++{
++	struct mtk_thermal_zone *tz = data;
++	struct mtk_thermal *mt = tz->mt;
++	int id = tz->id - 1;
++
++	if (id < 0)
++		return  -EACCES;
++
++	*temperature = _get_sensor_temp(mt, id);
++
++	return 0;
++}
++
+ static const struct thermal_zone_of_device_ops mtk_thermal_ops = {
+ 	.get_temp = mtk_read_temp,
  };
  
-+/*
-+ * The MT8365 thermal controller has one bank, which can read up to
-+ * four temperature sensors simultaneously. The MT8365 has a total of 3
-+ * temperature sensors.
-+ *
-+ * The thermal core only gets the maximum temperature of this one bank,
-+ * so the bank concept wouldn't be necessary here. However, the SVS (Smart
-+ * Voltage Scaling) unit makes its decisions based on the same bank
-+ * data.
-+ */
-+static const struct mtk_thermal_data mt8365_thermal_data = {
-+	.auxadc_channel = MT8365_TEMP_AUXADC_CHANNEL,
-+	.num_banks = MT8365_NUM_BANKS,
-+	.num_sensors = MT8365_NUM_SENSORS,
-+	.vts_index = mt8365_vts_index,
-+	.cali_val = MT8365_CALIBRATION,
-+	.num_controller = MT8365_NUM_CONTROLLER,
-+	.controller_offset = mt8365_tc_offset,
-+	.need_switch_bank = false,
-+	.bank_data = {
-+		{
-+			.num_sensors = MT8365_NUM_SENSORS,
-+			.sensors = mt8365_bank_data
-+		},
-+	},
-+	.msr = mt8365_msr,
-+	.adcpnp = mt8365_adcpnp,
-+	.sensor_mux_values = mt8365_mux_values,
-+	.version = MTK_THERMAL_V1,
-+	.apmixed_buffer_ctl_reg = APMIXED_SYS_TS_CON0,
-+	.apmixed_buffer_ctl_mask = (u32) ~GENMASK(29, 28),
-+	.apmixed_buffer_ctl_set = 0,
++static const struct thermal_zone_of_device_ops mtk_thermal_sensor_ops = {
++	.get_temp = mtk_read_sensor_temp,
 +};
 +
- /*
-  * The MT2712 thermal controller has one bank, which can read up to
-  * four temperature sensors simultaneously. The MT2712 has a total of 4
-@@ -958,6 +1022,10 @@ static const struct of_device_id mtk_thermal_of_match[] = {
- 	{
- 		.compatible = "mediatek,mt8183-thermal",
- 		.data = (void *)&mt8183_thermal_data,
-+	},
-+	{
-+		.compatible = "mediatek,mt8365-thermal",
-+		.data = (void *)&mt8365_thermal_data,
- 	}, {
- 	},
- };
+ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+ 				  u32 apmixed_phys_base, u32 auxadc_phys_base,
+ 				  int ctrl_id)
+@@ -1072,6 +1105,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 	u64 auxadc_phys_base, apmixed_phys_base;
+ 	struct thermal_zone_device *tzdev;
+ 	void __iomem *apmixed_base, *auxadc_base;
++	struct mtk_thermal_zone *tz;
+ 
+ 	mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
+ 	if (!mt)
+@@ -1161,11 +1195,29 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, mt);
+ 
+-	tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
+-						     &mtk_thermal_ops);
+-	if (IS_ERR(tzdev)) {
+-		ret = PTR_ERR(tzdev);
+-		goto err_disable_clk_peri_therm;
++	for (i = 0; i < mt->conf->num_sensors + 1; i++) {
++		tz = kmalloc(sizeof(*tz), GFP_KERNEL);
++		if (!tz)
++			return -ENOMEM;
++
++		tz->mt = mt;
++		tz->id = i;
++
++		tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, i, tz, (i == 0) ?
++							     &mtk_thermal_ops :
++							     &mtk_thermal_sensor_ops);
++
++		if (IS_ERR(tzdev)) {
++			if (PTR_ERR(tzdev) == -ENODEV) {
++				dev_warn(&pdev->dev,
++					 "sensor %d not registered in thermal zone in dt\n", i);
++				continue;
++			}
++			if (PTR_ERR(tzdev) == -EACCES) {
++				ret = PTR_ERR(tzdev);
++				goto err_disable_clk_peri_therm;
++			}
++		}
+ 	}
+ 
+ 	ret = devm_thermal_add_hwmon_sysfs(tzdev);
 -- 
 2.37.1
 
