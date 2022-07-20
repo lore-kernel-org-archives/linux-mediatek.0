@@ -4,88 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1B56C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 09:49:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE47DC43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 10:29:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c+pvmwXxIE3jKXaJBEBBqNcZCeI+2ftzet1Ejv5LXxE=; b=pqRJRDjRMGfqHOSV44zWjE4GSk
-	4Dd6Su2iBUFKSRcUaF51lRSKEweEYzkRTG58xZQEDbeovCpwAaSJYHXa9DPLp/+jFtSPXQ1eOtn4w
-	CakzkIqv+rYEnQ8r91Nc8b+pIg3SyN8Ys/s5BzR9jLcajBtRxuNSaP/Tv/OD0aSNDZvFWOTYGth49
-	VmsnKIooFZAnzpuTu2mFDoKoeE6fGrn/ClT+lX95tIwOKE2o03WnxYAea2IQofRWXsO8vmdd46T/V
-	N4CdsGNR6DpkMd6ml2mtz9SqoM21gcgOHCzCZvOhb+uDiMvnOPHIGQDh+Na4OxGTYqISKG9GZGhFg
-	7gVZOw3A==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OpBJKF3O04JLZfnW5X/pXsvgTvPKFaAa7PTR+Bw3Ijs=; b=pRePtfue2YkKupWMAHaHxTyoSN
+	Ege6sRgnw+316B61NlLUYEoDnKa1CjzqZXx73HJtZnlM3N0dJUGblpamEUh3nLpy4os8rpa0pjbAp
+	AdOM0EiZp4bxuHDv3u+JiNkYrchthNz32vOer9CNar5dKq6M2NZQLwoBJ6xYs9fH3oOG06T6mxxv2
+	aW2hFpOZ6g2NDg3KkwicoWN+mL2fMcp7X1Pp/xok3VGP6o6H8//Dt5QaLuLDpoYbUvQgjKyAdJJPn
+	Nmbdbf/3oZ9Tw6XKs/q5YgOSMs+vkhecn90dITBNf7XOK/M7Nz8nNQb6kUNyxHRTt8bSnEIcnbzFa
+	Y/mRRztQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE6KD-003WmS-Sn; Wed, 20 Jul 2022 09:49:01 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1oE6wj-00431f-4h; Wed, 20 Jul 2022 10:28:49 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE6K0-003Wfc-OX; Wed, 20 Jul 2022 09:48:50 +0000
-Received: by mail-wr1-x435.google.com with SMTP id a5so25309242wrx.12;
-        Wed, 20 Jul 2022 02:48:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=c+pvmwXxIE3jKXaJBEBBqNcZCeI+2ftzet1Ejv5LXxE=;
-        b=Bl/Uxa8xKm77kppS+zbyPUqMX6ThytrscVsgl1YNbRNeKe8x3wNYy9xN2LJQgC4b+m
-         CVtxDHN3+NlCmmeGfSPK3c/2bgbcIaqjyJ8UOOrc7fgYnHXVJpL9/jlthv7pWdx9kOH1
-         LZ8Ke+TTociEGnkw6Kb2NrqYVzWsyeo9vazoQxsfc7PDfRMUmtJMmZ2JjxhubAt8pfFH
-         oIQiGQ/fJdWsK3BswigHb/+Qw2e86Dg2TDS2EAHuCLGkXQC7NROzCqqyLHBKgPM7Xxl8
-         znyAJjdKjHqrO6ONRWcA3n3b8veOJmnjbOX7I+MBtOPTMpYlt0dx+flde0eKnhS9oZA+
-         5LkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=c+pvmwXxIE3jKXaJBEBBqNcZCeI+2ftzet1Ejv5LXxE=;
-        b=8CYAcvcN3PNVuyZ0dG+430smAaRy5hZkHU6eu6n8MrcXQTZVxdnKKbMmeqtdILKw3H
-         hvhzDwlHvkoNdVU4E67RNtkL6Ha7qe4+xNU45bqhLGXC8gsTmocH+1pIGD70hJptGu8j
-         K9tQewk9C9qK7vcm2PhzZMmv6whQVLL2QN8Q6KQiQGA754yxdkByHxyuDjJLkiHtTwjN
-         bQDlyPnjFad+vXISN1O+t6BMR2EgFYgie7hRJLUY+iUAxrGzxSYiJzQm5lsKe2AAdHaT
-         /VAzB6LQsyTeMKBy1lGSZ1dCyIX/M8swImqTuFgra8JoFxoaXIEjSo4SD4NpVDBVdX2l
-         vhQw==
-X-Gm-Message-State: AJIora9iCnGl9KLt3IC6fKyi0rhpHfoCjWJpZ4nID3F9yQtg+YAx0gmA
-	nYDQQAPaDk2RKqN/qu3cVz55Vdy6bYUBzlMBB8I=
-X-Google-Smtp-Source: AGRyM1s8IpIYDGuU/DLqKsFdsmyV+rKVmTfi/oduAoH5rNHnTn85/TiMyb4eENWpu+Y5Z15JoqFBASYG/TlH/hH8hGo=
-X-Received: by 2002:a05:6000:98b:b0:21d:b70f:2726 with SMTP id
- by11-20020a056000098b00b0021db70f2726mr29986145wrb.237.1658310526656; Wed, 20
- Jul 2022 02:48:46 -0700 (PDT)
+	id 1oE6wU-0042Xg-0E; Wed, 20 Jul 2022 10:28:35 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 66D5E660159F;
+	Wed, 20 Jul 2022 11:28:25 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658312906;
+	bh=7l+2CZgG+sIADvhql1OGVojBV4addG3U3EH5rwCDuag=;
+	h=From:To:Cc:Subject:Date:From;
+	b=evumRvnk7RBzc5HkvS6nWuSxEMS0AqMj8TyvUq71LPCaNmEvwvMG/XkE25SP5NJkE
+	 qfGAI5ZVtWUvHQzZobwuQfPAU2v1wYCJnJcybUTVPdsqi2gBjcSGba8Z6lsLxMc+mV
+	 RmK+yj+yRu4Qd2FRf/O4eDT+MlRTHW+OrXzGIMTH06VgLYy6aIxZI4rLV4Rsb8qRC1
+	 cK2T1PBgI6bZcUBoG9MrYFa0zgsx4pNRYxKXuqF60PbUJ1cOFAv4N73N+f4dyopCwL
+	 2jSy4aiEIb/60Pohd0Au3kHjePd7twmQ+lpVvjqf2YW5Z+LvLklZYLRexa229g7qGC
+	 3G4mNEWl+qIcQ==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: mturquette@baylibre.com
+Cc: sboyd@kernel.org,
+	matthias.bgg@gmail.com,
+	p.zabel@pengutronix.de,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	angelogioacchino.delregno@collabora.com,
+	chun-jie.chen@mediatek.com,
+	wenst@chromium.org,
+	nfraprado@collabora.com,
+	rex-bc.chen@mediatek.com,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH 0/2] MT8195: Add reset for T-PHY (usb/pcie)
+Date: Wed, 20 Jul 2022 12:28:15 +0200
+Message-Id: <20220720102817.237483-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-References: <20220715112607.591-1-peterwu.pub@gmail.com> <20220715112607.591-12-peterwu.pub@gmail.com>
- <CAHp75VfyVufzf7CK38BVu_j0B4ax_d1gLAGYDE3H1zaKkuUB=A@mail.gmail.com> <20220720094510.GA29755@cyhuang-hp-elitebook-840-g3.rt>
-In-Reply-To: <20220720094510.GA29755@cyhuang-hp-elitebook-840-g3.rt>
-From: ChiYuan Huang <u0084500@gmail.com>
-Date: Wed, 20 Jul 2022 17:48:34 +0800
-Message-ID: <CADiBU3_rtVXFX3qdSoc=F-zs9CYiNRmNPOa3RffRJD1Qc5N-bA@mail.gmail.com>
-Subject: Re: [PATCH v5 11/13] leds: mt6370: Add MediaTek MT6370 current sink
- type LED Indicator support
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>, Lee Jones <lee.jones@linaro.org>, 
-	Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, 
-	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_024848_826298_D26AD377 
-X-CRM114-Status: GOOD (  39.07  )
+X-CRM114-CacheID: sfid-20220720_032834_299946_153F11A7 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,214 +82,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ChiYuan Huang <u0084500@gmail.com> =E6=96=BC 2022=E5=B9=B47=E6=9C=8820=E6=
-=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=885:45=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> On Fri, Jul 15, 2022 at 08:29:42PM +0200, Andy Shevchenko wrote:
-> > On Fri, Jul 15, 2022 at 1:29 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote=
-:
-> > >
-> > > From: ChiYuan Huang <cy_huang@richtek.com>
-> > >
-> > > The MediaTek MT6370 is a highly-integrated smart power management IC,
-> > > which includes a single cell Li-Ion/Li-Polymer switching battery
-> > > charger, a USB Type-C & Power Delivery (PD) controller, dual
-> > > Flash LED current sources, a RGB LED driver, a backlight WLED driver,
-> > > a display bias driver and a general LDO for portable devices.
-> > >
-> > > In MediaTek MT6370, there are four channel current-sink RGB LEDs that
-> > > support hardware pattern for constant current, PWM, and breath mode.
-> > > Isink4 channel can also be used as a CHG_VIN power good indicator.
-> >
-> > ...
-> >
-> > > +         This driver can also be built as a module. If so the module
-> >
-> > so, the
-> >
-> > > +         will be called "leds-mt6370.ko".
-> >
-> > No ".ko".
-> >
-> > Why did you ignore these comments? Please go and fix _everywhere_ in
-> > your series.
-> > It's basically the rule of thumb, if the reviewer gives a comment
-> > against an occurrence of something, go through entire series and check
-> > if there are other places like commented one and address them all.
-> >
-> > ...
-> >
-> > > + * Author: Alice Chen <alice_chen@richtek.com>
-> >
-> > Strange, the commit message doesn't have a corresponding SoB, why?
-> >
-> Yes, there're two authors Alice and me.
-> I'll correct it in next.
-> > ...
-> >
-> > > +#define MT6370_PWM_DUTY                                31
-> > > +#define MT6372_PMW_DUTY                                255
-> >
-> > Looks like these are limits by hardware?
-> > Check with the datasheet if (BIT(x) - 1) makes more sense here.
-> >
-> > ...
-> >
-> > > +       switch (led_no) {
-> > > +       case MT6370_LED_ISNK1:
-> > > +               sel_field =3D F_LED1_DUTY;
-> > > +               break;
-> > > +       case MT6370_LED_ISNK2:
-> > > +               sel_field =3D F_LED2_DUTY;
-> > > +               break;
-> > > +       case MT6370_LED_ISNK3:
-> > > +               sel_field =3D F_LED3_DUTY;
-> > > +               break;
-> > > +       default:
-> > > +               sel_field =3D F_LED4_DUTY;
-> >
-> > Missed break;
-> >
-> > > +       }
-> >
-> > ...
-> >
-> > > +       switch (led_no) {
-> > > +       case MT6370_LED_ISNK1:
-> > > +               sel_field =3D F_LED1_FREQ;
-> > > +               break;
-> > > +       case MT6370_LED_ISNK2:
-> > > +               sel_field =3D F_LED2_FREQ;
-> > > +               break;
-> > > +       case MT6370_LED_ISNK3:
-> > > +               sel_field =3D F_LED3_FREQ;
-> > > +               break;
-> > > +       default:
-> > > +               sel_field =3D F_LED4_FREQ;
-> >
-> > Ditto.
-> >
-> > > +       }
-> >
-> > ...
-> >
-> > > +       switch (led_no) {
-> > > +       case MT6370_LED_ISNK1:
-> > > +       case MT6370_LED_ISNK2:
-> > > +       case MT6370_LED_ISNK3:
-> > > +               *base =3D MT6370_REG_RGB1_TR + led_no * 3;
-> > > +               break;
-> > > +       default:
-> > > +               *base =3D MT6370_REG_RGB_CHRIND_TR;
-> >
-> > Ditto.
-> > It seems you dropped them for all switch-cases. It's not goot, please
-> > restore them back.
-> >
-> > > +       }
-> >
-> > ...
-> >
-> > > +       u8 val[P_MAX_PATTERNS / 2] =3D {0};
-> >
-> > { } should suffice
-> >
-> >
-> In the above range selector, we use the 'logic or' to generate the
-typo, it's 'below'.
-> pattern values.
->
-> If to change it from '{0} to '{ }', is it correct?
-> > > +       /*
-> > > +        * Pattern list
-> > > +        * tr1: byte 0, b'[7: 4]
-> > > +        * tr2: byte 0, b'[3: 0]
-> > > +        * tf1: byte 1, b'[7: 4]
-> > > +        * tf2: byte 1, b'[3: 0]
-> > > +        * ton: byte 2, b'[7: 4]
-> > > +        * toff: byte 2, b'[3: 0]
-> > > +        */
-> > > +       for (i =3D 0; i < P_MAX_PATTERNS; i++) {
-> > > +               curr =3D pattern + i;
-> > > +
-> > > +               sel_range =3D i =3D=3D P_LED_TOFF ? R_LED_TOFF : R_LE=
-D_TRFON;
-> > > +
-> > > +               linear_range_get_selector_within(priv->ranges + sel_r=
-ange,
-> > > +                                                curr->delta_t, &sel)=
-;
-> > > +
-> > > +               val[i / 2] |=3D sel << (4 * ((i + 1) % 2));
-> > > +       }
-> > > +
-> > > +       memcpy(pattern_val, val, 3);
-> > > +       return 0;
-> > > +}
-> >
-> > ...
-> >
-> > > +out:
-> >
-> > out_unlock:
-> >
-> > > +       mutex_unlock(&priv->lock);
-> > > +
-> > > +       return ret;
-> >
-> > ...
-> >
-> > > +out:
-> >
-> > Ditto. And so on.
-> >
-> > > +       mutex_unlock(&priv->lock);
-> > > +
-> > > +       return ret;
-> >
-> > ...
-> >
-> > > +               sub_led =3D devm_kzalloc(priv->dev,
-> > > +                                      sizeof(*sub_led) * MC_CHANNEL_=
-NUM,
-> > > +                                      GFP_KERNEL);
-> >
-> > NIH devm_kcalloc(). Also check if you really need zeroed data.
-> >
-> Ok, and after the check, I also need to add one line to set the intensity=
- to 0.
-> > > +               if (!sub_led)
-> > > +                       return -ENOMEM;
-> >
-> > ...
-> >
-> > > +                       ret =3D fwnode_property_read_u32(child, "colo=
-r", &color);
-> > > +                       if (ret) {
-> > > +                               dev_err(priv->dev,
-> > > +                                       "led %d, no color specified\n=
-",
-> > > +                                       led->index);
-> > > +                               return ret;
-> >
-> > return dev_err_probe(...) ; ?
-> >
-> > Ditto for many places in your entire series.
-> >
-> > > +                       }
-> >
-> > ...
-> >
-> > > +       priv =3D devm_kzalloc(&pdev->dev,
-> > > +                           struct_size(priv, leds, count), GFP_KERNE=
-L);
-> >
-> > At least one parameter can be placed on the previous line.
-> >
-> > > +       if (!priv)
-> > > +               return -ENOMEM;
-> >
-> > --
-> > With Best Regards,
-> > Andy Shevchenko
+Add the resets for TPHY Port 1 which, depending on the board layout,
+is used either as USB or PCIe PHY.
+
+This is required on MT8195 Tomato Chromebooks for correct initialization
+of the secondary PCI-Express controller, where we have a MT7621 PCIe
+WiFi chip.
+
+For reference, the PCIe1 controller devicetree node resets will look
+like this:
+
+pcie@112f8000 {
+	... blurb ...
+
+	resets = <&infracfg_ao MT8195_INFRA_RST2_USBSIF_P1_SWRST>,
+		 <&infracfg_ao MT8195_INFRA_RST2_PCIE_P1_SWRST>;
+	reset-names = "phy", "mac";
+
+	... blurb ...
+};
+
+This series depends on an earlier one where I introduce the MAC
+resets for both PCIe (p0, p1) controllers [1]
+
+[1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=654980
+
+AngeloGioacchino Del Regno (2):
+  dt-bindings: reset: mt8195: Add resets for USB/PCIe t-phy port 1
+  clk: mediatek: mt8195: Add reset idx for USB/PCIe T-PHY
+
+ drivers/clk/mediatek/clk-mt8195-infra_ao.c | 1 +
+ include/dt-bindings/reset/mt8195-resets.h  | 1 +
+ 2 files changed, 2 insertions(+)
+
+-- 
+2.35.1
+
 
