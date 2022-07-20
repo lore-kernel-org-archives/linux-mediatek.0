@@ -4,65 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 937CEC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 00:40:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EABD1C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 01:13:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lDVR5F9bcDk6Yt9ph9TEa1siZ6T/G9BdzDrfqK8WYuQ=; b=uhfi9ArJALaRVumvgc2QGGWKis
-	P+1c6N9/bYEqFCInE5SLCXuEC0l0oGcz41ol94uIQi1RnocVLmjJfpwwXY8pm1cbai6ewkQE2UsK3
-	JjefhF8om/VUot294nkyGQMJwB8i0M/0i7laGcyh9Xs2TaJnmarqHveIvXV2n6+RllyVugTkipFze
-	DNAn4v1r09hOosKiuAVeEoiIeYNVGCftyrigCovdAN6jaRyhK5lN6srf5WlHdJ5I+qFBbTAYRePdr
-	t5qDnlv4gVEre6t4azAgIXBDXcbx4xSWFS6piL7e7U4vM8c9JQk/H4LlAHNAI3e8W8uPEMyQzB9R8
-	44Ck3w+A==;
+	bh=rnxJdqPNq4HTZiUMB5l+CkzW9lKRnAgUiR+LMXJo490=; b=CJZyV2gcif4irpaktwxoj04D8T
+	c7Ng1p/nvYMO/sAU56gLqPd3kKAwg3fUmjvBvjiWFigAzJL2Ep/YagAtYY80iPJ+Px6UP9NVkcjqN
+	1SZ0D33Q0Y22FLmZ0qAT1HDpSBaF08OZuaS0/U+0uvfj4928QckqkURrj8ck2ekOULDfOzvW27aXF
+	DzI+MLWx7hxoWv5YL1vJJyvyK1ivQhepWqc1kj3IPLPTNq2cMxsSDIx/q6aNZ01p2ohB91bBzuyJ8
+	AvlCUiewORkJ1E9HRvIR7Y8AT8Vn1W0rG37iVhTLltG9JNE6Q3f+5+E62vtgXTQvfQclV2r8skrko
+	9d1Sfjaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDxlc-00F5NE-5T; Wed, 20 Jul 2022 00:40:44 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oDyGh-00FPLE-5A; Wed, 20 Jul 2022 01:12:51 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDxla-00F5Kz-6T
-	for linux-mediatek@lists.infradead.org; Wed, 20 Jul 2022 00:40:43 +0000
+	id 1oDyGU-00FP8e-3v; Wed, 20 Jul 2022 01:12:40 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 24F25616DB;
-	Wed, 20 Jul 2022 00:40:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A833C341C6;
-	Wed, 20 Jul 2022 00:40:39 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id C7797B81DEA;
+	Wed, 20 Jul 2022 01:12:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74453C385A2;
+	Wed, 20 Jul 2022 01:12:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658277639;
-	bh=xRO8Cerl/DsoZ7VXIDoqk7KPdb3xy0m5ieKJhE+IzbE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=L+AK2xxcxjO/IGBmuodb0J7D+3BB6rkaFmyBySN7f1XaTq3HiVwSmpHfxd2Kds0Fi
-	 F9xzxaF1UGYG6MzR3Jq1x9ObDZgDAT/J8qlRVnTmzf+V4fLf4wqN8quSKijJKZSE4V
-	 uWrK8PYbAB9KCZKnOXscoj9kkaYEXOp91AYfeuhdjM5QjJOZldbA1Mjkwdd7HUXr5t
-	 k/qXH/UQImPMDHNCRE0XyX2Ad07YInhyQDSIbz9yeoeNLKerKCftOLg0IMDhtTlBVA
-	 OTmOhZ123APoI6hJ8jkXXvx5sNKvtW1o1jwcNNADjgXRn8SozHeOnqxnvX9i2P0v6p
-	 YofbBXt7r63kg==
-Date: Tue, 19 Jul 2022 17:40:38 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
- edumazet@google.com, pabeni@redhat.com, pablo@netfilter.org,
- matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
- lorenzo.bianconi@redhat.com, Ryder.Lee@mediatek.com,
- Evelyn.Tsai@mediatek.com
-Subject: Re: [PATCH net-next] net: ethernet: mtk-ppe: fix traffic offload
- with bridged wlan
-Message-ID: <20220719174038.7ee25c6d@kernel.org>
-In-Reply-To: <7fa3ce7e77fb579515e0a7c5a7dee60fc5999e2b.1658168627.git.lorenzo@kernel.org>
-References: <7fa3ce7e77fb579515e0a7c5a7dee60fc5999e2b.1658168627.git.lorenzo@kernel.org>
+	s=k20201202; t=1658279555;
+	bh=EBE5mRVgHUiDZP+rucvxGE4MVVNoWEaOJdWC3cRpNGI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=S7bf2ozjZSjVT/hd6WGGqKbE4lqSLWDet/HW4JSKIkVZC+gUq+Wk3L0Odm18SsdfX
+	 3eDhKCphfD0NsK5KYO9STIOPafBdWHVwfPk+Rg7Jo+D4S+c4EeiUYYjbVH+IvYNq2C
+	 zD6R650NPLtYnpd9NBPg4Swcv8u/p6MJooqx+y1Wcz2lES1idIi9d7r7ZLWGwy8mGJ
+	 EmHAOET4CYH7MTmOa/gkjs1w9bCtBhnYDF3Xzl2MMEHX9F56ChpVlYvfSZJNhl5VrW
+	 /P5eRCRJ/MSgcPntqFCxpORjKQzTG+MhwFdIZvrxeVuG1OIKyk1SHLvXmXQQSwjFid
+	 N19U5CsedMRSQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Johannes Berg <johannes.berg@intel.com>,
+	Sasha Levin <sashal@kernel.org>,
+	johannes@sipsolutions.net,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.18 29/54] wifi: mac80211: check skb_shared in ieee80211_8023_xmit()
+Date: Tue, 19 Jul 2022 21:10:06 -0400
+Message-Id: <20220720011031.1023305-29-sashal@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220720011031.1023305-1-sashal@kernel.org>
+References: <20220720011031.1023305-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+X-stable: review
+X-Patchwork-Hint: Ignore
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220719_174042_325690_0E56AA9B 
-X-CRM114-Status: UNSURE (   9.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220719_181238_489135_9BFF81FD 
+X-CRM114-Status: GOOD (  14.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,17 +84,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 18 Jul 2022 20:36:39 +0200 Lorenzo Bianconi wrote:
-> A typical flow offload scenario for OpenWrt users is routed traffic
-> received by the wan interface that is redirected to a wlan device
-> belonging to the lan bridge. Current implementation fails to
-> fill wdma offload info in mtk_flow_get_wdma_info() since odev device is
-> the local bridge. Fix the issue running dev_fill_forward_path routine in
-> mtk_flow_get_wdma_info in order to identify the wlan device.
+From: Ryder Lee <ryder.lee@mediatek.com>
 
-AFAIU this will conflict with 53eb9b04560c ("net: ethernet: mtk_ppe:
-fix possible NULL pointer dereference in mtk_flow_get_wdma_info")? 
-We merge net -> net-next every Thu, please wait for that to happen 
-and then repost. Conflicting patches are extra work for Stephen and
-for me.
+[ Upstream commit a4926abb787e2ef3ee2997e6ca8844d859478647 ]
+
+Add a missing skb_shared check into 802.3 path to prevent potential
+use-after-free from happening. This also uses skb_share_check()
+instead of open-coding in tx path.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Link: https://lore.kernel.org/r/e7a73aaf7742b17e43421c56625646dfc5c4d2cb.1653571902.git.ryder.lee@mediatek.com
+Signed-off-by: Johannes Berg <johannes.berg@intel.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ net/mac80211/tx.c | 36 +++++++++++++-----------------------
+ 1 file changed, 13 insertions(+), 23 deletions(-)
+
+diff --git a/net/mac80211/tx.c b/net/mac80211/tx.c
+index b6b20f38de0e..5166d8696f7e 100644
+--- a/net/mac80211/tx.c
++++ b/net/mac80211/tx.c
+@@ -2818,19 +2818,10 @@ static struct sk_buff *ieee80211_build_hdr(struct ieee80211_sub_if_data *sdata,
+ 	/*
+ 	 * If the skb is shared we need to obtain our own copy.
+ 	 */
+-	if (skb_shared(skb)) {
+-		struct sk_buff *tmp_skb = skb;
+-
+-		/* can't happen -- skb is a clone if info_id != 0 */
+-		WARN_ON(info_id);
+-
+-		skb = skb_clone(skb, GFP_ATOMIC);
+-		kfree_skb(tmp_skb);
+-
+-		if (!skb) {
+-			ret = -ENOMEM;
+-			goto free;
+-		}
++	skb = skb_share_check(skb, GFP_ATOMIC);
++	if (unlikely(!skb)) {
++		ret = -ENOMEM;
++		goto free;
+ 	}
+ 
+ 	hdr.frame_control = fc;
+@@ -3541,15 +3532,9 @@ static bool ieee80211_xmit_fast(struct ieee80211_sub_if_data *sdata,
+ 
+ 	/* after this point (skb is modified) we cannot return false */
+ 
+-	if (skb_shared(skb)) {
+-		struct sk_buff *tmp_skb = skb;
+-
+-		skb = skb_clone(skb, GFP_ATOMIC);
+-		kfree_skb(tmp_skb);
+-
+-		if (!skb)
+-			return true;
+-	}
++	skb = skb_share_check(skb, GFP_ATOMIC);
++	if (unlikely(!skb))
++		return true;
+ 
+ 	if ((hdr->frame_control & cpu_to_le16(IEEE80211_STYPE_QOS_DATA)) &&
+ 	    ieee80211_amsdu_aggregate(sdata, sta, fast_tx, skb))
+@@ -4439,7 +4424,7 @@ static void ieee80211_8023_xmit(struct ieee80211_sub_if_data *sdata,
+ 				struct net_device *dev, struct sta_info *sta,
+ 				struct ieee80211_key *key, struct sk_buff *skb)
+ {
+-	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
++	struct ieee80211_tx_info *info;
+ 	struct ieee80211_local *local = sdata->local;
+ 	struct tid_ampdu_tx *tid_tx;
+ 	u8 tid;
+@@ -4454,6 +4439,11 @@ static void ieee80211_8023_xmit(struct ieee80211_sub_if_data *sdata,
+ 	    test_bit(SDATA_STATE_OFFCHANNEL, &sdata->state))
+ 		goto out_free;
+ 
++	skb = skb_share_check(skb, GFP_ATOMIC);
++	if (unlikely(!skb))
++		return;
++
++	info = IEEE80211_SKB_CB(skb);
+ 	memset(info, 0, sizeof(*info));
+ 
+ 	ieee80211_aggr_check(sdata, sta, skb);
+-- 
+2.35.1
+
 
