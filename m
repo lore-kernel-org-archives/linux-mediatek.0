@@ -4,89 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4512C43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 17:39:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3CE1C43334
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 18:20:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aeyafCkyinZJZTTcPy1wEfXMzXWZcIm0MV4FRs14iJQ=; b=gK406DHFGCID2K5r6RRtzv+13P
-	rbn19kr6/iFQ21Plt3aaLTOU0a0YmhV6hFS+ybaMekoi9i32E6vT3z2M5hoEMk+pTfVEErJM82i80
-	p1ipjGzHCL0zSLXshjMbzyo6vmvc1GmltKTW0dAgKYS8yAdDNijcwZTchSHHhlIaRA22ALXHpD28X
-	j7Xj3BwX58dgGicKKdLs2V2+f0MOv+dspUMKGsAifgbd8/z3AwiepkkidiYP6UW1/MQR2g9W71N5H
-	rRI99dXeaE5UXNayWP0uWbHY9FjWX9Vk1yL4qQg5Bn74/Hz+k6iJ7fhaLVInTFI4kvf/FrhZet8Bh
-	8gKnyccg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NY9cJreJS+8dTIRGmrgidqYE3b7KxSEOo/TVdrxG4d8=; b=q/tOUHOycAp+j9ldpoNxZiqw8g
+	SPUs3/sOqmbMHBtrSHor74ZnNkhdT2CKgY0kx7SmIO08YnwL3h2s9fAmKeb0cQwmWr8Mb97aWr4cR
+	xVJDFruTr2z1HRpDZihAYX9qGQLAFJcnIdb6+SKATejfJW8tKypIWv7NR8FolFFnvCvAJ8u6qCCVt
+	7Jm8eaUj4kTneoJxwz2kgkrR9Ibq0om7qVGnEzuYOU0chiqS7PjRC1obiK0jHa8UN25Dfsv6co34P
+	MG0fmq8volblozb83LEU7XHUqxRsHsl2QAKSx8q1j1R1vqs0ALIO6m5nbzXMJI0dAv4bLahTUUO4D
+	Ux8o7KBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEDfV-008jzv-Ul; Wed, 20 Jul 2022 17:39:29 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1oEEIa-009A7l-DX; Wed, 20 Jul 2022 18:19:52 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEDfS-008jxe-Qr
-	for linux-mediatek@lists.infradead.org; Wed, 20 Jul 2022 17:39:28 +0000
-Received: by mail-lf1-x132.google.com with SMTP id a9so31440168lfk.11
-        for <linux-mediatek@lists.infradead.org>; Wed, 20 Jul 2022 10:39:26 -0700 (PDT)
+	id 1oEEIL-0099yh-Lh
+	for linux-mediatek@lists.infradead.org; Wed, 20 Jul 2022 18:19:40 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id e15so22041274wro.5
+        for <linux-mediatek@lists.infradead.org>; Wed, 20 Jul 2022 11:19:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=aeyafCkyinZJZTTcPy1wEfXMzXWZcIm0MV4FRs14iJQ=;
-        b=zreXvg79hkBxKuShfS2H1ZVu3CjpX0spc5x+RYWSF3KMxuyjz5fLD7BBgfbuNGIvaN
-         a2Wol5GaBcqFJs24Or/Cx8yVs8kKCzk2Q2Q+Kbw4VACBuD0IgavdZPfksPMWyjvHRkA3
-         Xtom3dAIkGJ5NScEK9Dlt+XbFEMBKHcftw6XKQlhV5SMy5nxSAzs47rcxyG3JKnh9vEl
-         /OKrKhIMKbRVpK72I4APWWgYq4traCLcCWzFv5auA0G14VIFu2oCCHlZ6ikxN3c33nsV
-         XkKmrckQcwEb+7CWFRCHpGWzPJugLd1eKmVhWrUCUnW87mf1rv/60AlQED8RF/yHnS9t
-         ELtw==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=NY9cJreJS+8dTIRGmrgidqYE3b7KxSEOo/TVdrxG4d8=;
+        b=HeBQ+q8vwmoOwDim0LlmLDOVVnf5cKWvW0P3ll0FGcUCRb7AxtuiwiFdCqRdELVcHf
+         u2+sBwsBRkKubwJrcwmj6RLl+gCNPmN5HdZ9nV52WUPxLFrpIGWnmnxhRPMY51CYzK87
+         vDrGNNisSkftJhPZ8zboSC3K9w2zazdIg+620CqaxA8+oTw958VJwH4orw87YYz+QGp9
+         Pw9ruxLn85LfjfXwo8EHVacwXBtDJB5rTE1o0ctARmKCdQidRUYTdgkp1ZMIVRVGhNrf
+         U2ooXPBg1xW/EA56cugFZEEsyQUyZIZg3BAIcgE2z+1QnY9GF48RMDUMX5vPninvfaHO
+         GYpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=aeyafCkyinZJZTTcPy1wEfXMzXWZcIm0MV4FRs14iJQ=;
-        b=6c5LqOzq7gXWRyrzds5L0VIS/AD3/7CXcysWZMbsBAYiGIAjll426CzGrWuElr61o3
-         Ld6D6h4osWLdEYg2K38Q3izMjf5xhqibOd3dt6oHDziDUS/ZIyeHe1vG+zFmtwbQSoml
-         A/uT3Di4aAoSaStp4QCPvoe93PJT0lTacrAf4FscPOn7X6tx1hJo0kMgG54R9VX03U4z
-         R2l2Q2H1UiDD5Su10dqnR6RYNmZD9XiDC0zrmlMNjKledx1WBEkJrUrtqdpgqJiXoDAH
-         nCPhadXqurGDwRZdn3FCMaw9S8EGRnh+ypKKHj8QW/AsgjtQC3qPs68lXXLNeJ74Ste1
-         JlyQ==
-X-Gm-Message-State: AJIora94eQ5wi+XP7UVJXm7pCf13ps9e360GIUezca56VP4YTWsc9yPn
-	M5Cqy5+cj3F1Y87G7SmxQaaqFg==
-X-Google-Smtp-Source: AGRyM1tlok4eLvijqT1LvZXgtABKbS0mRRyNVkb8xzG9GzfNEkfDR+8raI0dXp18XCp0w8HM7jBCAA==
-X-Received: by 2002:a05:6512:410:b0:489:d17a:b2c0 with SMTP id u16-20020a056512041000b00489d17ab2c0mr21052431lfk.493.1658338765232;
-        Wed, 20 Jul 2022 10:39:25 -0700 (PDT)
-Received: from [192.168.115.193] (89-162-31-138.fiber.signal.no. [89.162.31.138])
-        by smtp.gmail.com with ESMTPSA id z13-20020a19504d000000b00489e64dcf75sm3940177lfj.204.2022.07.20.10.39.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 20 Jul 2022 10:39:24 -0700 (PDT)
-Message-ID: <085a003e-576d-b39a-60ce-ca8f53c89d43@linaro.org>
-Date: Wed, 20 Jul 2022 19:39:23 +0200
+        bh=NY9cJreJS+8dTIRGmrgidqYE3b7KxSEOo/TVdrxG4d8=;
+        b=tAqy1alOjW0KHs0ErpWSlfO8qTj8MTE/bCNCltVBbIjE3E0+CR2zz0xerWMM6+UOdB
+         lEwuT2EtnN5awYDGAp2GfoIjY5UVIDxIFe7N0kfdCXlyqf8h8yYOGXFMBsctGyvSKsou
+         weLNmlnSFyHyI7GqkXX1mJKY9Qs29IxMC8DlRV1G0QNhftpYe/f1QL63pgIU1OirICfv
+         zUVWvAKfMQ8aL9vM0A3XnFPfhnUrlhH3l3mc90ogTkvQQipbI+eUNZQzxCAf5FY9RQsd
+         qaXJvxhxHiikaPuYuXF7twCzOafrLZjcprbjdDGooyJKXk12sy1hroETroZ0vXpActQD
+         STrA==
+X-Gm-Message-State: AJIora9z4mEVhS3aHz5UMnd6VisnV4RCuiy1g0uAvJ9V6J2URJmkCl//
+	5/E1v77XDezkEMQXrRCgxXgjtw==
+X-Google-Smtp-Source: AGRyM1uOSnTxFw11JEDWcRNpBDAT1cS/8w7zBzTLAlxFhmOCrLYwrxJYzMip4iynsppCZeNaBxrrjg==
+X-Received: by 2002:a05:6000:156e:b0:21d:c50a:7cdb with SMTP id 14-20020a056000156e00b0021dc50a7cdbmr26493839wrz.16.1658341174422;
+        Wed, 20 Jul 2022 11:19:34 -0700 (PDT)
+Received: from amjad-ThinkPad-T490.home (2a01cb040613180084408ac44a1fa242.ipv6.abo.wanadoo.fr. [2a01:cb04:613:1800:8440:8ac4:4a1f:a242])
+        by smtp.googlemail.com with ESMTPSA id z17-20020a05600c0a1100b003a31d200a7dsm3400093wmp.9.2022.07.20.11.19.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Jul 2022 11:19:33 -0700 (PDT)
+From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+To: matthias.bgg@gmail.com
+Cc: rafael@kernel.org,
+	fparent@baylibre.com,
+	amitk@kernel.org,
+	daniel.lezcano@linaro.org,
+	devicetree@vger.kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-pm@vger.kernel.org,
+	robh+dt@kernel.org,
+	rui.zhang@intel.com,
+	Amjad Ouled-Ameur <aouledameur@baylibre.com>
+Subject: [PATCH v2 0/4] thermal: mediatek: Add support for MT8365 SoC
+Date: Wed, 20 Jul 2022 20:18:50 +0200
+Message-Id: <20220720181854.547881-1-aouledameur@baylibre.com>
+X-Mailer: git-send-email 2.37.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v3 08/21] arm64: dts: mediatek: Update mt81xx scpsys node
- to align with dt-bindings
-Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- MandyJH Liu <mandyjh.liu@mediatek.com>
-Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220720123023.13500-1-tinghan.shen@mediatek.com>
- <20220720123023.13500-9-tinghan.shen@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220720123023.13500-9-tinghan.shen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_103926_939080_9CD88652 
-X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-CacheID: sfid-20220720_111937_926978_E4CE0DEA 
+X-CRM114-Status: UNSURE (   7.22  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,17 +97,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/07/2022 14:30, Tinghan Shen wrote:
-> Update scpsys nodes using simple-mfd in mt81xx SoC devicetree
-> to align with the bindings.
+This patchset adds thermal support for MT8365 SoC which contains three
+thermal sensors.
 
-"Update" is not accurate enough description. The same in commit title.
-It answers "why" you are doing it, but does not answer what exactly you
-are changing here and what is the effect. IOW, you need to explain the
-true logic behind it - 10006000 is not power domain provider etc.
+Note that the V1 [0] was originally introduced by Fabien Parent [1]. He
+requested that I take over this patchset.
 
-> 
+[0]: https://lore.kernel.org/linux-arm-kernel/20220530183833.863040-1-fparent@baylibre.com/
+[1]: Fabien Parent <fparent@baylibre.com>
 
-Best regards,
-Krzysztof
+Amjad Ouled-Ameur (1):
+  thermal: mediatek: add another get_temp ops for thermal sensors
+
+Fabien Parent (2):
+  dt-bindings: thermal: mediatek: add binding documentation for MT8365
+    SoC
+  thermal: mediatek: add support for MT8365 SoC
+
+Markus Schneider-Pargmann (1):
+  thermal: mediatek: control buffer enablement tweaks
+
+ .../bindings/thermal/mediatek-thermal.txt     |   1 +
+ drivers/thermal/mtk_thermal.c                 | 191 +++++++++++++++---
+ 2 files changed, 162 insertions(+), 30 deletions(-)
+
+-- 
+2.37.1
+
 
