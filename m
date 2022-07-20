@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A1DC43334
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 13:01:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5E43C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 13:02:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=11muIcT9jRnWlFqceeNXOphvxdScKwRVOzhkgqU0sRU=; b=dMR4m5GFR9HhyE1P7jTrpL8Y5A
-	1h37Gi/REb18aEdcnyni5qxVIOlCD50QU655ocH72w1dFS3dJtfUWGF+QparnHrRptDABLmlzxFOx
-	OlSdAta5kK5G6kx7NeNJCrmNu5GLK/sr4z5DQMCumu3w6fiG78aaA0SkK0OW3y/FXQWO+AlxROdsk
-	gAav27JkyZ2Ri/dG7x3X2ZmFSHKOFZbICs081X7f6kqCXBsB+FiXCuTlsTfWv88w71BwyJvwWWH+H
-	KaGcxHGEaFQnxDFvZ2ojBE+cO7lUOPgtdGwW0xJE4fHcMKkIEew0A3IIqZdcY8DQDDBdP+mM4SB6Q
-	qXy32bdA==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=loz2sm6WPKBMdanRYaJ9MKGKjstPM895zN6BnajYgjY=; b=CWzlT50ReBOMi1TNxMfrtz5zp0
+	KL3XC1uYujXaVAVZxObNp5i+rfIuswTs3mpkq/ymVDUxVf0oh+E20FIM8SLwfg18TLh56YwRzK4Ls
+	D67cSmqxfS8oO+OzqWSpquIwKvGc6rJO9dLMxrmSIPygaYvGJSSBh+2BWQ6Q0Q2jsUkQcDdMZ5QcV
+	gWVfDO5TJlVY6bWzMeFmI+E4EFPKC9Sd9XW3/KpCKr+imMiV/Dl121XzjCSulcNSN1YxifcF7pLoC
+	VrtUylpO5wOaH92LjxdZXwyRbb6PhSBJBbAOFZqgMWEBCR2jNFpi5GuX54U6rHnFHXGUB2Seerxny
+	tjQ4v3QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE9KX-005fjC-82; Wed, 20 Jul 2022 13:01:33 +0000
+	id 1oE9Kr-005fyO-Cr; Wed, 20 Jul 2022 13:01:53 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE9K6-005fO1-K0; Wed, 20 Jul 2022 13:01:07 +0000
-X-UUID: c781b06acf074bb7aa3417633e32c565-20220720
+	id 1oE9K6-005fOK-K0; Wed, 20 Jul 2022 13:01:08 +0000
+X-UUID: 17f00ca77a344892ad6fcf2c2c1ccc22-20220720
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:4685d0fe-d452-42bb-9a68-826f96162a6f,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:486de009-59b7-4e61-bb81-bad05bc5c3bb,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:8fe97d33-b9e4-42b8-b28a-6364427c76bb,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-META: VersionHash:0f94e32,CLOUDID:e87400d8-5d6d-4eaf-a635-828a3ee48b7c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: c781b06acf074bb7aa3417633e32c565-20220720
+X-UUID: 17f00ca77a344892ad6fcf2c2c1ccc22-20220720
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1743010719; Wed, 20 Jul 2022 06:00:59 -0700
+	with ESMTP id 1699171750; Wed, 20 Jul 2022 06:01:01 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 20 Jul 2022 20:30:24 +0800
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Wed, 20 Jul 2022 20:30:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
  Transport; Wed, 20 Jul 2022 20:30:24 +0800
 From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
- Deacon" <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will
+ Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
 	<robh+dt@kernel.org>, Krzysztof Kozlowski
 	<krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee.jones@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>, Tinghan Shen
@@ -57,19 +57,16 @@ CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3 01/21] dt-bindings: iommu: mediatek: Increase max interrupt number
-Date: Wed, 20 Jul 2022 20:30:03 +0800
-Message-ID: <20220720123023.13500-2-tinghan.shen@mediatek.com>
+Subject: [PATCH v3 00/21] Add driver nodes for MT8195 SoC
+Date: Wed, 20 Jul 2022 20:30:02 +0800
+Message-ID: <20220720123023.13500-1-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220720123023.13500-1-tinghan.shen@mediatek.com>
-References: <20220720123023.13500-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_060106_693374_CC25D3AF 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220720_060106_693327_53174F8C 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,52 +81,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt8195 infra iommu uses 5 interrupts.
+Add driver nodes for MT8195 SoC.
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Patchset 17 "arm64: dts: mt8195: Add adsp node and adsp mailbox" depends on 
+https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/commit/?id=009b21f392759ca7be91bc4be9d9534f6cee2878
 ---
- .../bindings/iommu/mediatek,iommu.yaml         | 18 +++++++++++++++++-
- 1 file changed, 17 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index fee0241b5098..5afe2a004533 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -91,7 +91,8 @@ properties:
-     maxItems: 1
- 
-   interrupts:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 5
- 
-   clocks:
-     items:
-@@ -191,9 +192,24 @@ allOf:
-               const: mediatek,mt8195-iommu-infra
- 
-     then:
-+      properties:
-+        interrupts:
-+          maxItems: 1
-+
-       required:
-         - mediatek,larbs
- 
-+    else:
-+      properties:
-+        interrupts:
-+          description: The IOMMU has 5 banks. Each bank has its own interrupt.
-+          items:
-+            - description: The interrupt for IOMMU bank0
-+            - description: The interrupt for IOMMU bank1
-+            - description: The interrupt for IOMMU bank2
-+            - description: The interrupt for IOMMU bank3
-+            - description: The interrupt for IOMMU bank4
-+
- additionalProperties: false
- 
- examples:
+v2 -> v3:
+  - fix dsp node name
+  - add descriptions for iommu interrupts
+  - limit the levels of power domain nodes
+  - update maintainer list of power controller yaml
+  - support naming power controller node with unit address
+  - add SoC specific compatible string to scpsys yaml
+
+v1 -> v2:
+  - add new dt-bindings: mfd/mediatek,scpsys.yaml
+    - update compatible string for mt81xx scpsys nodes
+  - apply comments for yaml files: iommu, smi-common, and power-controller
+  - apply comments for dts nodes: power domain, vdosys0. 
+  - apply comments for commit message of watchdog, i2c, and smi-common. 
+  - add review-by tags
+
+---
+Jason-JH.Lin (2):
+  arm64: dts: mt8195: Add gce node
+  arm64: dts: mt8195: Add display node for vdosys0
+
+Tinghan Shen (15):
+  dt-bindings: iommu: mediatek: Increase max interrupt number
+  dt-bindings: memory: mediatek: Update condition for mt8195 smi node
+  dt-bindings: power: mediatek: Refine multiple level power domain nodes
+  dt-bindings: power: mediatek: Support naming power controller node
+    with unit address
+  dt-bindings: power: mediatek: Update maintainer list
+  dt-bindings: power: mediatek: Add bindings for MediaTek SCPSYS
+  dt-bindings: power: mediatek: Update example in dt-bindings
+  arm64: dts: mediatek: Update mt81xx scpsys node to align with
+    dt-bindings
+  arm64: dts: mt8195: Disable watchdog external reset signal
+  arm64: dts: mt8195: Add vdosys and vppsys clock nodes
+  arm64: dts: mt8195: Add power domains controller
+  arm64: dts: mt8195: Add spmi node
+  arm64: dts: mt8195: Add scp node
+  arm64: dts: mt8195: Add audio related nodes
+  arm64: dts: mt8195: Add iommu and smi nodes
+
+Trevor Wu (1):
+  arm64: dts: mt8195: Specify audio reset controller
+
+Tzung-Bi Shih (1):
+  arm64: dts: mt8195: Disable I2C0 node
+
+YC Hung (1):
+  arm64: dts: mt8195: Add adsp node and adsp mailbox nodes
+
+YT Lee (1):
+  arm64: dts: mt8195: Add cpufreq node
+
+ .../bindings/iommu/mediatek,iommu.yaml        |   18 +-
+ .../mediatek,smi-common.yaml                  |   11 +-
+ .../bindings/mfd/mediatek,mt8195-scpsys.yaml  |   68 ++
+ .../power/mediatek,power-controller.yaml      |  137 +--
+ arch/arm64/boot/dts/mediatek/mt8167.dtsi      |    3 +-
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi      |    3 +-
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |    3 +-
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi      |    3 +-
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 1056 ++++++++++++++++-
+ 9 files changed, 1174 insertions(+), 128 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+
 -- 
 2.18.0
 
