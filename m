@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5C0EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 12:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46376C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Jul 2022 12:32:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7/lAHRVZPjhUuV5IPFNcjjcVoM24kQDoKCJjw6NUIHU=; b=uocLI8bVu3ATUz+DpjFKtzD7Yk
-	s5piBCo/zqxNdBdbNljcNypxxnXWV9rmRJh/MvuzAfYLDYqYKW4YkONAIL8MFWzOCOpVBWCm1m81D
-	oabSQMiZfXyvXYhcASe1rktzh+PU5gbj1+lsjNPGUStywG/etOuhqZagqGetKHRTKtM3IG7NHax3G
-	gls6mZU05OvID9dJrjB7AD7rYFicfZXqWVd6MnQciu4/SXqWs7H/Q+1OSCllVpJaB/jZ7zCJFUiyY
-	uWmsppWqp5iVT1PILc0wL6ObN5S+5+BLA2r3mu1YPxO/WXFijtgSYCz8PZ6cAso/aOwerbULtCWVF
-	8pwRi7Rw==;
+	bh=lwTYvYSyV6bKQc9muoDJkslc3KxE3095gGjv+46RMgE=; b=M01mrPvvrsl90/MR/6DVDuRN8T
+	3wbSf2iA8tlpv3k9C5yPYY3pcUWIw4qcFThrTMFFjnadDFVYq9rfkjIl9glaqpM6mZNMZsi4p3PDj
+	hBEoKiG0NejQpDB6PG6SJqyHRoyjKAqUx80T1k6f+9CgO+ky8wC9/nGWfqy0pDtUd6IC7bGdZDGsN
+	xuZ4H0pOwJR5HpTL3+/ZQr+O+HvOMR0kx0/jxBIsvulswAblVEfg4wAkip6BccRJB+CGXdVGCMvUw
+	mRUEBFuCLPcP/iJ3NlVqpCqy1TBrMIPYws9i3+FS6CHT4B4M/xOVeV8x+NFatANWyiplDUIduxxiu
+	Lsb0GSiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE8rZ-005Hvz-O7; Wed, 20 Jul 2022 12:31:37 +0000
+	id 1oE8rx-005IH7-Hj; Wed, 20 Jul 2022 12:32:01 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE8r9-005HaP-I3; Wed, 20 Jul 2022 12:31:13 +0000
-X-UUID: 8793622e96e34c199ca41a2a28fc8889-20220720
+	id 1oE8r9-005HZt-Lb; Wed, 20 Jul 2022 12:31:14 +0000
+X-UUID: 586491d207754ca2bc14678467deaa34-20220720
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:0ee4170e-85ff-455e-bd34-381d13495af8,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:6e90cd64-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.8,REQID:f1287aa7-f35d-4909-9b5c-4da481ab9726,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:51,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:51
+X-CID-META: VersionHash:0f94e32,CLOUDID:b7e1ffd7-5d6d-4eaf-a635-828a3ee48b7c,C
+	OID:IGNORED,Recheck:0,SF:801,TC:nil,Content:3,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 8793622e96e34c199ca41a2a28fc8889-20220720
+X-UUID: 586491d207754ca2bc14678467deaa34-20220720
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 59088360; Wed, 20 Jul 2022 05:31:02 -0700
+	with ESMTP id 1257638564; Wed, 20 Jul 2022 05:31:03 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
  Wed, 20 Jul 2022 20:30:25 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 20 Jul 2022 20:30:24 +0800
+ Transport; Wed, 20 Jul 2022 20:30:25 +0800
 From: Tinghan Shen <tinghan.shen@mediatek.com>
 To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
  Deacon" <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
@@ -56,10 +56,11 @@ To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
 CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3 03/21] dt-bindings: power: mediatek: Refine multiple level power domain nodes
-Date: Wed, 20 Jul 2022 20:30:05 +0800
-Message-ID: <20220720123023.13500-4-tinghan.shen@mediatek.com>
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Fengquan Chen
+	<fengquan.chen@mediatek.com>
+Subject: [PATCH v3 09/21] arm64: dts: mt8195: Disable watchdog external reset signal
+Date: Wed, 20 Jul 2022 20:30:11 +0800
+Message-ID: <20220720123023.13500-10-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220720123023.13500-1-tinghan.shen@mediatek.com>
 References: <20220720123023.13500-1-tinghan.shen@mediatek.com>
@@ -67,8 +68,9 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_053111_620317_43C36BD9 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20220720_053111_726107_9FFBDB6C 
+X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,169 +85,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Extract duplicated properties and support more levels of power
-domain nodes.
+Disable the external output reset signal of watchdog reset to avoid losing
+the reset reason stored in the watchdog registers.
 
-This change fix following error when do dtbs_check,
-    arch/arm64/boot/dts/mediatek/mt8195-evb.dtb: power-controller: power-domain@15:power-domain@16:power-domain@18: 'power-domain@19', 'power-domain@20', 'power-domain@21' do not match any of the regexes: 'pinctrl-[0-9]+'
-	 From schema: Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-
+Signed-off-by: Fengquan Chen <fengquan.chen@mediatek.com>
 Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../power/mediatek,power-controller.yaml      | 131 +++---------------
- 1 file changed, 17 insertions(+), 114 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-index b448101fac43..321802c95308 100644
---- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-+++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-@@ -42,6 +42,23 @@ properties:
- 
- patternProperties:
-   "^power-domain@[0-9a-f]+$":
-+    $ref: "#/$defs/power-domain-node"
-+    patternProperties:
-+      "^power-domain@[0-9a-f]+$":
-+        $ref: "#/$defs/power-domain-node"
-+        patternProperties:
-+          "^power-domain@[0-9a-f]+$":
-+            $ref: "#/$defs/power-domain-node"
-+            patternProperties:
-+              "^power-domain@[0-9a-f]+$":
-+                $ref: "#/$defs/power-domain-node"
-+                unevaluatedProperties: false
-+            unevaluatedProperties: false
-+        unevaluatedProperties: false
-+    unevaluatedProperties: false
-+
-+$defs:
-+  power-domain-node:
-     type: object
-     description: |
-       Represents the power domains within the power controller node as documented
-@@ -100,123 +117,9 @@ patternProperties:
-         $ref: /schemas/types.yaml#/definitions/phandle
-         description: phandle to the device containing the SMI register range.
- 
--    patternProperties:
--      "^power-domain@[0-9a-f]+$":
--        type: object
--        description: |
--          Represents a power domain child within a power domain parent node.
--
--        properties:
--
--          '#power-domain-cells':
--            description:
--              Must be 0 for nodes representing a single PM domain and 1 for nodes
--              providing multiple PM domains.
--
--          '#address-cells':
--            const: 1
--
--          '#size-cells':
--            const: 0
--
--          reg:
--            maxItems: 1
--
--          clocks:
--            description: |
--              A number of phandles to clocks that need to be enabled during domain
--              power-up sequencing.
--
--          clock-names:
--            description: |
--              List of names of clocks, in order to match the power-up sequencing
--              for each power domain we need to group the clocks by name. BASIC
--              clocks need to be enabled before enabling the corresponding power
--              domain, and should not have a '-' in their name (i.e mm, mfg, venc).
--              SUSBYS clocks need to be enabled before releasing the bus protection,
--              and should contain a '-' in their name (i.e mm-0, isp-0, cam-0).
--
--              In order to follow properly the power-up sequencing, the clocks must
--              be specified by order, adding first the BASIC clocks followed by the
--              SUSBSYS clocks.
--
--          domain-supply:
--            description: domain regulator supply.
--
--          mediatek,infracfg:
--            $ref: /schemas/types.yaml#/definitions/phandle
--            description: phandle to the device containing the INFRACFG register range.
--
--          mediatek,smi:
--            $ref: /schemas/types.yaml#/definitions/phandle
--            description: phandle to the device containing the SMI register range.
--
--        patternProperties:
--          "^power-domain@[0-9a-f]+$":
--            type: object
--            description: |
--              Represents a power domain child within a power domain parent node.
--
--            properties:
--
--              '#power-domain-cells':
--                description:
--                  Must be 0 for nodes representing a single PM domain and 1 for nodes
--                  providing multiple PM domains.
--
--              '#address-cells':
--                const: 1
--
--              '#size-cells':
--                const: 0
--
--              reg:
--                maxItems: 1
--
--              clocks:
--                description: |
--                  A number of phandles to clocks that need to be enabled during domain
--                  power-up sequencing.
--
--              clock-names:
--                description: |
--                  List of names of clocks, in order to match the power-up sequencing
--                  for each power domain we need to group the clocks by name. BASIC
--                  clocks need to be enabled before enabling the corresponding power
--                  domain, and should not have a '-' in their name (i.e mm, mfg, venc).
--                  SUSBYS clocks need to be enabled before releasing the bus protection,
--                  and should contain a '-' in their name (i.e mm-0, isp-0, cam-0).
--
--                  In order to follow properly the power-up sequencing, the clocks must
--                  be specified by order, adding first the BASIC clocks followed by the
--                  SUSBSYS clocks.
--
--              domain-supply:
--                description: domain regulator supply.
--
--              mediatek,infracfg:
--                $ref: /schemas/types.yaml#/definitions/phandle
--                description: phandle to the device containing the INFRACFG register range.
--
--              mediatek,smi:
--                $ref: /schemas/types.yaml#/definitions/phandle
--                description: phandle to the device containing the SMI register range.
--
--            required:
--              - reg
--
--            additionalProperties: false
--
--        required:
--          - reg
--
--        additionalProperties: false
--
-     required:
-       - reg
- 
--    additionalProperties: false
--
- required:
-   - compatible
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 066c14989708..436687ba826f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -327,6 +327,7 @@
+ 		watchdog: watchdog@10007000 {
+ 			compatible = "mediatek,mt8195-wdt",
+ 				     "mediatek,mt6589-wdt";
++			mediatek,disable-extrst;
+ 			reg = <0 0x10007000 0 0x100>;
+ 		};
  
 -- 
 2.18.0
