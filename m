@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80CC5C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 07:21:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E843C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 07:49:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rNgmD9FJXoTdnxHI+oJkblZHDGNhRdfWFgA4jAefM/0=; b=NXT0XGKDRuGzkHUyd2izi8kbyR
-	6wXclclqA24+VeDhrJWYZQipJaGZrgFPbaku/utUxPYvjSaftvCkNN63ft1OyXzW33DfFOFasVOWd
-	imwFoIpQK2g2LJK7lK2oouOehStXp3uUu5SDgQ7sn9Q+AFc+G5JZQkjw7DBcyWARwJWur0lP421yS
-	FcN8ZO7fJ73PcoH9DHkvMgHhYpK7CsRCTOLfa5zZ3hiGl7D3SQnbvK/ZpqwS1ptDTNGbkDt6Ppskb
-	OxlTGGgdG3VrICyYPsLl2iUW/8nYSFQejm9RTGzb+++BPAeRIaLu8NpWyBXi0SYGARdcHkZROZ6Xt
-	YZQPTtww==;
+	bh=4lrcr2V9SwW0FxC3tsb5mEe2CZFIpwemHRFP+ckNTd8=; b=oKYl6eMTiqJKl6gU+y3UtfBVCc
+	vmBrXe8FV8PMi23bcx4EkaeRXvSVGp65DJ36Dp2ZFXdHDf3jzsJOaoLglWYmMPV+lEBMSlnsicwfj
+	Ul1Zt17n+SlQF4yPHfur6/7WdxEVrrjtcBZPGHi4YjovdB+laaDh6BUxadMnKbkEy71y7HVzZDHOi
+	5ycJiHDcH2rhjmtDzVdImi/2/IDFa5+ZmaxnAISW4LDOCRraI2iixAKMuHmnC8xVoXsSolPo3Ii34
+	L6kYW2JyH/2IRSDwv7FHNiqSQbfYLAFUNbx5eCs6nhSXQQNMaIrf/yUEn+yz6cOzECY5Uj3clTmBV
+	6mTuVDLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEQVG-001iXb-OY; Thu, 21 Jul 2022 07:21:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oEQvo-0025Lr-Si; Thu, 21 Jul 2022 07:49:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEQVD-001iQo-Rz
-	for linux-mediatek@lists.infradead.org; Thu, 21 Jul 2022 07:21:45 +0000
-X-UUID: 2b08f817193c4dd3932761bfae2bed42-20220721
+	id 1oEQvm-0025Kq-1q
+	for linux-mediatek@lists.infradead.org; Thu, 21 Jul 2022 07:49:11 +0000
+X-UUID: 785c9c8ccf6341e3b75854c7722620d4-20220721
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:c9d5079b-117a-42c0-ae3a-3d558ade8958,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:ac7e13d8-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.8,REQID:c391d333-4f94-48c9-8b3c-c9fcddfe2e9a,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
+	TION:release,TS:105
+X-CID-META: VersionHash:0f94e32,CLOUDID:92dd9133-b9e4-42b8-b28a-6364427c76bb,C
+	OID:IGNORED,Recheck:0,SF:801,TC:nil,Content:3,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 2b08f817193c4dd3932761bfae2bed42-20220721
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 785c9c8ccf6341e3b75854c7722620d4-20220721
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 724458014; Thu, 21 Jul 2022 00:21:37 -0700
+	with ESMTP id 1416595990; Thu, 21 Jul 2022 00:49:07 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 21 Jul 2022 14:51:03 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 21 Jul 2022 14:58:35 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 21 Jul 2022 14:51:02 +0800
+ Transport; Thu, 21 Jul 2022 14:58:34 +0800
 From: <peter.wang@mediatek.com>
 To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
 	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
@@ -54,16 +54,16 @@ CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
 	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
 	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
 	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
-Subject: [PATCH v2] scsi: ufs: correct ufshcd_shutdown flow
-Date: Thu, 21 Jul 2022 14:51:01 +0800
-Message-ID: <20220721065101.26789-1-peter.wang@mediatek.com>
+Subject: [PATCH v3] scsi: ufs: correct ufshcd_shutdown flow
+Date: Thu, 21 Jul 2022 14:58:33 +0800
+Message-ID: <20220721065833.26887-1-peter.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220721_002143_928751_01B182B1 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20220721_004910_121616_E936D5BB 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,7 +106,7 @@ Signed-off-by: Peter Wang <peter.wang@mediatek.com>
  1 file changed, 11 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index c7b337480e3e..533563a2a6b7 100644
+index c7b337480e3e..47b639fd28b9 100644
 --- a/drivers/ufs/core/ufshcd.c
 +++ b/drivers/ufs/core/ufshcd.c
 @@ -58,6 +58,9 @@
@@ -114,7 +114,7 @@ index c7b337480e3e..533563a2a6b7 100644
  #define TM_CMD_TIMEOUT	100 /* msecs */
  
 +/* Shutdown wait devcie into power off timeout */
-+#define UFS_SHUTDWON_TIMEOUT	500 /* msecs */
++#define UFS_SHUTDOWN_TIMEOUT	500 /* msecs */
 +
  /* maximum number of retries for a general UIC command  */
  #define UFS_UIC_COMMAND_RETRIES 3
@@ -129,7 +129,7 @@ index c7b337480e3e..533563a2a6b7 100644
  
 -	pm_runtime_get_sync(hba->dev);
 +	/* Wait ufshcd_wl_shutdown clear ufs state */
-+	timeout = jiffies + msecs_to_jiffies(UFS_SHUTDWON_TIMEOUT);
++	timeout = jiffies + msecs_to_jiffies(UFS_SHUTDOWN_TIMEOUT);
 +	while (!ufshcd_is_ufs_dev_poweroff(hba) || !ufshcd_is_link_off(hba)) {
 +		if (time_after(jiffies, timeout))
 +			goto out;
