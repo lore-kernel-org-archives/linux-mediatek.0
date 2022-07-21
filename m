@@ -4,65 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3620C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 17:01:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9CE9CCA485
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 17:22:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Cc:To:From:References:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NbWPuroY0tXk21jYiTLbmLYCbbtNtYshWiWN4vFsmHI=; b=DD+VexXV6kgzO+uH5c+vc1cxqF
-	QC9zeTDCFlfW6LymibtkbwohzDCNmdzvxDsTYHWPksPSM4zR31tcbOb0FflbCtRyHgAjCw7RGWZUx
-	pKLIM6p2tadEotWvQyhgYLxxAK5QW5oqIGfi0ZxjcBhSnWFXeQzqtb5kJxp11s5bI/XlmXTRVnvje
-	Z60AcGQuzcWSgjG6Duga2FGOordioDly1x0OH//IXFKzKmwWgS7WHdos0Iv1oMv6km5TLLia/pDDu
-	eBCtABu4lCJ9mn/ofyv7jwf3QbnTlIpGBW7EgtV1zwrnWEYQylvmzfXSLioM+uQVzi1EZJuVbo1Ym
-	9sP1bVBQ==;
+	bh=mPFPrCmInIZmmb07yLqsw22pteI+dkPczKeZuWxBTzU=; b=2idjxSoGsY7p5uQAPpv1O64P57
+	TYOBfGVPnUsZ3piHI649gneQnNP98n0ShgGWlxnLxM3rCqxGiB8JYl9f1qlMC+BtXozbISBoI2Jzd
+	YIBv5az1DGF0n/8No589GZjbdXizPL9l3ijOQLTlngXdJ29JO1FNG6bqaBf//VIGIHqfdrVFihU8h
+	0C68Dir2cnEcamhV7WVrfzh9nX69o8jVmmu/XR5vw0o7eHac8wZfQVGdZyE2li8m5VrsdTaeTgmr1
+	bQZdcFBbQvKN8mMGydvAd4+xRv+1dgMfEBR21b1DLFAjrxxuCaNYsfM3R6ETYS0SiwT23vvP70szy
+	hj9DRdFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEZXz-00AP1r-5D; Thu, 21 Jul 2022 17:01:11 +0000
-Received: from smtp01.smtpout.orange.fr ([80.12.242.123] helo=smtp.smtpout.orange.fr)
+	id 1oEZsO-00Agc2-HB; Thu, 21 Jul 2022 17:22:16 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEZXv-00AOzv-GH
-	for linux-mediatek@lists.infradead.org; Thu, 21 Jul 2022 17:01:10 +0000
-Received: from [192.168.1.18] ([90.11.190.129])
-	by smtp.orange.fr with ESMTPA
-	id EZXhoxRl0LFqbEZXhozq3f; Thu, 21 Jul 2022 19:01:02 +0200
-X-ME-Helo: [192.168.1.18]
-X-ME-Auth: YWZlNiIxYWMyZDliZWIzOTcwYTEyYzlhMmU3ZiQ1M2U2MzfzZDfyZTMxZTBkMTYyNDBjNDJlZmQ3ZQ==
-X-ME-Date: Thu, 21 Jul 2022 19:01:02 +0200
-X-ME-IP: 90.11.190.129
-Message-ID: <4feebd9e-d1c3-aeea-8294-e7ae182f7918@wanadoo.fr>
-Date: Thu, 21 Jul 2022 19:00:53 +0200
+	id 1oEZs8-00AgPt-PQ; Thu, 21 Jul 2022 17:22:02 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 96C3561F03;
+	Thu, 21 Jul 2022 17:21:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECBDBC341CE;
+	Thu, 21 Jul 2022 17:21:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1658424116;
+	bh=U0B5LjvmQxLng/mwn3ADiMYfRaUDQEHObvhPDEeFM08=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=DhldqkYWs/ADwWTfbvpzDfYyVqvLLv+Q2Ipo+/1dU+k2Zt9tOLQ8Aud5vf4jnKa+f
+	 9Rcv/ZKm8i+SCCHkv16z90qJwlEzffVL2ziPIfsg6IcdtJcyzJuR41vN0yEWC/qKVZ
+	 mr6uqO5pRWjIDmS1FJ/pm5u2zWJ1VlAceCMyIQnExfo+z2I/z49QnefGsmzU5OWDK4
+	 99I0/je8ojwplnjkTi+6R3XuKcEQC4y9xzjSKCLp8HzV6qpCR7fTia3UaHyCJQJ29K
+	 EIMIRgHvRNu5fc5kS7/4wGh9xf1AzfQ7HMl/YTXF+2VGhBgE4/kiSqeZ+n+NQHf6Si
+	 y/JxgStm8X4Sw==
+Date: Thu, 21 Jul 2022 19:21:45 +0200
+From: Marek =?UTF-8?B?QmVow7pu?= <kabel@kernel.org>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>, Andrew Lunn
+ <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Alvin __ipraga <alsi@bang-olufsen.dk>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Claudiu Manoil
+ <claudiu.manoil@nxp.com>, Daniel Scally <djrscally@gmail.com>, "David S.
+ Miller" <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>, Eric
+ Dumazet <edumazet@google.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ George McCollister <george.mccollister@gmail.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Hauke Mehrtens <hauke@hauke-m.de>, Heikki
+ Krogerus <heikki.krogerus@linux.intel.com>, Jakub Kicinski
+ <kuba@kernel.org>, Kurt Kanzenbach <kurt@linutronix.de>, Landen Chao
+ <Landen.Chao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>,
+ linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger
+ <matthias.bgg@gmail.com>, netdev@vger.kernel.org, Paolo Abeni
+ <pabeni@redhat.com>, "Rafael J. Wysocki" <rafael@kernel.org>, Sakari Ailus
+ <sakari.ailus@linux.intel.com>, Sean Wang <sean.wang@mediatek.com>,
+ UNGLinuxDriver@microchip.com, Vivien Didelot <vivien.didelot@gmail.com>,
+ Woojung Huh <woojung.huh@microchip.com>
+Subject: Re: [PATCH net-next 3/6] net: dsa: add support for retrieving the
+ interface mode
+Message-ID: <20220721192145.1f327b2a@dellmb>
+In-Reply-To: <20220721151533.3zomvnfogshk5ze3@skbuf>
+References: <YtHcpf4otJQS9hTO@shell.armlinux.org.uk>
+	<20220715222348.okmeyd55o5u3gkyi@skbuf>
+	<YtHw0O5NB6kGkdwV@shell.armlinux.org.uk>
+	<20220716105711.bjsh763smf6bfjy2@skbuf>
+	<YtKdcxupT+INVAhR@shell.armlinux.org.uk>
+	<20220716123608.chdzbvpinso546oh@skbuf>
+	<YtUec3GTWTC59sky@shell.armlinux.org.uk>
+	<20220720224447.ygoto4av7odsy2tj@skbuf>
+	<20220721134618.axq3hmtckrumpoy6@skbuf>
+	<Ytlol8ApI6O2wy99@shell.armlinux.org.uk>
+	<20220721151533.3zomvnfogshk5ze3@skbuf>
+X-Mailer: Claws Mail 3.19.0 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v5 7/7] clk: mediatek: Add MediaTek Helio X10 MT6795 clock
- drivers
-Content-Language: fr
-References: <20220629110254.184213-1-angelogioacchino.delregno@collabora.com>
- <20220629110254.184213-8-angelogioacchino.delregno@collabora.com>
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: angelogioacchino.delregno@collabora.com
-Cc: bgolaszewski@baylibre.com, chun-jie.chen@mediatek.com,
- ck.hu@mediatek.com, devicetree@vger.kernel.org, fparent@baylibre.com,
- ikjn@chromium.org, jason-jh.lin@mediatek.com, kernel@collabora.com,
- konrad.dybcio@somainline.org, krzysztof.kozlowski+dt@linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- marijn.suijten@somainline.org, martin.botka@somainline.org,
- matthias.bgg@gmail.com, miles.chen@mediatek.com, mturquette@baylibre.com,
- p.zabel@pengutronix.de, paul.bouchara@somainline.org,
- phone-devel@vger.kernel.org, rex-bc.chen@mediatek.com, robh+dt@kernel.org,
- sam.shih@mediatek.com, sboyd@kernel.org, tinghan.shen@mediatek.com,
- weiyi.lu@mediatek.com, wenst@chromium.org, y.oudjana@protonmail.com,
- ~postmarketos/upstreaming@lists.sr.ht
-In-Reply-To: <20220629110254.184213-8-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220721_100107_704629_FB09A3B2 
-X-CRM114-Status: GOOD (  21.47  )
+X-CRM114-CacheID: sfid-20220721_102200_962501_76D760FB 
+X-CRM114-Status: GOOD (  55.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,184 +99,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le 29/06/2022 à 13:02, AngeloGioacchino Del Regno a écrit :
-> Add the clock drivers for the entire clock tree of MediaTek Helio X10
-> MT6795, including system clocks (apmixedsys, infracfg, pericfg, topckgen)
-> and multimedia clocks (mmsys, mfg, vdecsys, vencsys).
+On Thu, 21 Jul 2022 18:15:33 +0300
+Vladimir Oltean <olteanv@gmail.com> wrote:
+
+> On Thu, Jul 21, 2022 at 03:54:15PM +0100, Russell King (Oracle) wrote:
+> > Yes, which is why I said on July 7th:
+> > 
+> > "So I also don't see a problem - sja1105 rejects DTs that fail to
+> > describe a port using at least one of a phy-handle, a fixed-link, or
+> > a managed in-band link, and I don't think it needs to do further
+> > validation, certainly not for the phy describing properties that
+> > the kernel has chosen to deprecate for new implementations."
+> > 
+> > I had assumed you knew of_phy_is_fixed_link() returns true in this
+> > case. Do you now see that sja1105's validation is close enough
+> > (except for the legacy phy phandle properties which we don't care
+> > about),  
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->   drivers/clk/mediatek/Kconfig                 |  37 ++
->   drivers/clk/mediatek/Makefile                |   6 +
->   drivers/clk/mediatek/clk-mt6795-apmixedsys.c | 157 +++++
->   drivers/clk/mediatek/clk-mt6795-infracfg.c   | 148 +++++
->   drivers/clk/mediatek/clk-mt6795-mfg.c        |  50 ++
->   drivers/clk/mediatek/clk-mt6795-mm.c         | 106 ++++
->   drivers/clk/mediatek/clk-mt6795-pericfg.c    | 160 +++++
->   drivers/clk/mediatek/clk-mt6795-topckgen.c   | 610 +++++++++++++++++++
->   drivers/clk/mediatek/clk-mt6795-vdecsys.c    |  55 ++
->   drivers/clk/mediatek/clk-mt6795-vencsys.c    |  50 ++
->   10 files changed, 1379 insertions(+)
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-apmixedsys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-infracfg.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-mfg.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-mm.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-pericfg.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-topckgen.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-vdecsys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-vencsys.c
+> This is why your comment struck me as odd for mentioning managed in-band.
 > 
+> > and thus do we finally have agreement on this point?  
+> 
+> Yes we do.
+> 
+> > > On the other hand I found arm64/boot/dts/marvell/cn9130-crb.dtsi, where
+> > > the switch, a "marvell,mv88e6190"-compatible (can't determine going just
+> > > by that what it actually is) has this:
+> > > 
+> > > 			port@a {
+> > > 				reg = <10>;
+> > > 				label = "cpu";
+> > > 				ethernet = <&cp0_eth0>;
+> > > 			};  
+> > 
+> > Port 10 on 88E6393X supports 10GBASE-R, and maybe one day someone will
+> > get around to implementing USXGMII. This description relies upon this
+> > defaulting behaviour - as Andrew has described, this has been entirely
+> > normal behaviour with mv88e6xxx.
+> >   
+> > > To illustrate how odd the situation is, I am able to follow the phandle
+> > > to the CPU port and find a comment that it's a 88E6393X, and that the
+> > > CPU port uses managed = "in-band-status":
+> > > 
+> > > &cp0_eth0 {
+> > > 	/* This port is connected to 88E6393X switch */
+> > > 	status = "okay";
+> > > 	phy-mode = "10gbase-r";
+> > > 	managed = "in-band-status";
+> > > 	phys = <&cp0_comphy4 0>;
+> > > };  
+> > 
+> > 10GBASE-R has no in-band signalling per-se, so the only effect this has
+> > on the phylink instance on the CPU side is to read the status from the
+> > PCS as it does for any other in-band mode. In the case of 10GBASE-R, the
+> > only retrievable parameter is the link up/down status. This is no
+> > different from a 10GBASE-R based fibre link in that regard.  
+> 
+> Is there any formal definition for what managed = "in-band-status"
+> actually means? Is it context-specific depending on phy-mode?
+> In the case of SGMII, would it also mean that clause 37 exchange would
+> also take place (and its absence would mean it wouldn't), or does it
+> mean just that, that the driver should read the status from the PCS?
+> 
+> > A fixed link on the other hand would not read status from the PCS but
+> > would assume that the link is always up.
+> >   
+> > > Open question: is it sane to even do what we're trying here, to create a
+> > > fixed-link for port@a (which makes the phylink instance use MLO_AN_FIXED)
+> > > when &cp0_eth0 uses MLO_AN_INBAND? My simple mind thinks that if all
+> > > involved drivers were to behave correctly and not have bugs that cancel
+> > > out other bugs, the above device tree shouldn't work. The host port
+> > > would expect a clause 37 base page exchange to take place, the switch
+> > > wouldn't send any in-band information, and the SERDES lane would never
+> > > transition to data mode. To fix the above, we'd really need to chase the
+> > > "ethernet" phandle and attempt to mimic what the DSA master did. This is
+> > > indeed logic that never existed before, and I don't particularly feel
+> > > like adding it. How far do we want to go? It seems like never-ending
+> > > insanity the more I look at it.  
+> > 
+> > 10GBASE-R doesn't support clause 37 AN. 10GBASE-KR does support
+> > inband AN, but it's a different clause and different format.  
+> 
+> I thought it wouldn't, but then I was led to believe, after seeing it
+> here, that just the hardware I'm working with doesn't. How about
+> 2500base-x in Marvell, is there any base page exchange, or is this still
+> only about retrieving link status from the PCS?
 
+Marvell documentation says that 2500base-x does not implement inband
+AN.
 
-[...]
+But when it was first implemented, for some reason it was thought that
+2500base-x is just 1000base-x at 2.5x speed, and 1000base-x does
+support inband AN. Also it worked during tests for both switches and
+SOC NICs, so it was enabled.
 
-> diff --git a/drivers/clk/mediatek/clk-mt6795-apmixedsys.c b/drivers/clk/mediatek/clk-mt6795-apmixedsys.c
-> new file mode 100644
-> index 000000000000..e87db76799af
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt6795-apmixedsys.c
+At the time 2500base-x was not standardized. Now 2500base-x is
+stanradrized, and the standard says that 2500base-x does not support
+clause 37 AN. I guess this is because where it is used, it is intended
+to work with clause 73 AN somehow.
 
-[...]
+And then came 6373X switch, which didn't support clause 37 inband AN in
+2500base-x mode (the AN reigster returned 0xffff or something when
+2500base-x CMODE was set). Maybe 6373X finally supports clause 73 AN
+(I don't know, but I don't think so) and that is the reason they now
+forbid clause 37 AN in HW in 2500base-x.
 
-> +static int clk_mt6795_apmixed_probe(struct platform_device *pdev)
-> +{
-> +	struct clk_hw_onecell_data *clk_data;
-> +	struct device *dev = &pdev->dev;
-> +	struct device_node *node = dev->of_node;
-> +	void __iomem *base;
-> +	struct clk_hw *hw;
-> +	int ret;
-> +
-> +	base = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(base))
-> +		return PTR_ERR(base);
-> +
-> +	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
-> +	if (!clk_data)
-> +		return -ENOMEM;
-> +
-> +	ret = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
-> +	if (ret)
-> +		goto free_clk_data;
-> +
-> +	hw = mtk_clk_register_ref2usb_tx("ref2usb_tx", "clk26m", base + REG_REF2USB);
+But the problem is that by this time there is software out there then
+expects 2500base-x to have clause 37 AN enabled. Indeed a passive SFP
+cable did not work between MOX' SFP port and CN9130-CRB's SFP port
+when used with Peridot (6190), if C37 AN was disabled on 6393x and left
+enabled on Peridot.
 
-This calls kzalloc() and clk_hw_register() but...
+I managed to work out how to enable C37 AN on 6393x:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=163000dbc772c1eae9bdfe7c8fe30155db1efd74
 
-> +	if (IS_ERR(hw)) {
-> +		ret = PTR_ERR(hw);
-> +		dev_err(dev, "Failed to register ref2usb_tx: %d\n", ret);
-> +		goto unregister_plls;
-> +	}
-> +	clk_data->hws[CLK_APMIXED_REF2USB_TX] = hw;
-> +
-> +	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-> +	if (ret) {
-> +		dev_err(dev, "Cannot register clock provider: %d\n", ret);
-> +		goto unregister_ref2usb;
-> +	}
-> +
-> +	/* Setup MD1 to avoid random crashes */
-> +	dev_dbg(dev, "Performing initial setup for MD1\n");
-> +	clk_mt6795_apmixed_setup_md1(base);
-> +
-> +	return 0;
-> +
-> +unregister_ref2usb:
-> +	clk_hw_unregister(clk_data->hws[CLK_APMIXED_REF2USB_TX]);
+So currently we try to enable C37 AN in 2500base-x mode, although
+the standard says that it shouldn't be there, and it shouldn't be there
+presumably because they want it to work with C73 AN.
 
-... only clk_hw_register() is undone here. Should a 
-mtk_clk_unregister_ref2usb_tx() be useful?
+I don't know how to solve this issue. Maybe declare a new PHY interface
+mode constant, 2500base-x-no-c37-an ?
 
-Or is it already handled somewhere else?
+:)
 
-> +unregister_plls:
-> +	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-> +free_clk_data:
-> +	mtk_free_clk_data(clk_data);
-> +	return ret;
-> +}
-> +
-> +static int clk_mt6795_apmixed_remove(struct platform_device *pdev)
-> +{
-> +	struct device_node *node = pdev->dev.of_node;
-> +	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
-> +
-> +	of_clk_del_provider(node);
-> +	clk_hw_unregister(clk_data->hws[CLK_APMIXED_REF2USB_TX]);
-
-Same here.
-
-> +	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-> +	mtk_free_clk_data(clk_data);
-> +
-> +	return 0;
-> +}
-> +
-> +static struct platform_driver clk_mt6795_apmixed_drv = {
-> +	.probe = clk_mt6795_apmixed_probe,
-> +	.remove = clk_mt6795_apmixed_remove,
-> +	.driver = {
-> +		.name = "clk-mt6795-apmixed",
-> +		.of_match_table = of_match_clk_mt6795_apmixed,
-> +	},
-> +};
-> +module_platform_driver(clk_mt6795_apmixed_drv);
-> +
-> +MODULE_DESCRIPTION("MediaTek MT6795 apmixed clocks driver");
-> +MODULE_LICENSE("GPL v2");
-
-[...]
-
-> diff --git a/drivers/clk/mediatek/clk-mt6795-mm.c b/drivers/clk/mediatek/clk-mt6795-mm.c
-> new file mode 100644
-> index 000000000000..27a8859ff5b5
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt6795-mm.c
-
-[...]
-
-> +static int clk_mt6795_mm_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct device_node *node = dev->parent->of_node;
-> +	struct clk_hw_onecell_data *clk_data;
-> +	int ret;
-> +
-> +	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
-> +	if (!clk_data)
-> +		return -ENOMEM;
-> +
-> +	ret = mtk_clk_register_gates(node, mm_gates, ARRAY_SIZE(mm_gates), clk_data);
-> +	if (ret)
-
-Add an error handling path and call mtk_free_clk_data(clk_data); if this 
-fails?
-
-> +		return ret;
-> +
-> +	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-
-Same here, + mtk_clk_unregister_gates()?
-
-> +}
-> +
-> +static struct platform_driver clk_mt6795_mm_drv = {
-> +	.driver = {
-> +		.name = "clk-mt6795-mm",
-> +	},
-> +	.probe = clk_mt6795_mm_probe,
-
-.remove function that mimics the (non existent) error handling path of 
-the probe?
-
-> +};
-> +module_platform_driver(clk_mt6795_mm_drv);
-> +
-> +MODULE_DESCRIPTION("MediaTek MT6795 multimedia clocks driver");
-> +MODULE_LICENSE("GPL v2");
-
-[...]
-
+Marek
 
