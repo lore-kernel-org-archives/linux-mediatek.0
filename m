@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E843C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 07:49:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F90BC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 08:12:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4lrcr2V9SwW0FxC3tsb5mEe2CZFIpwemHRFP+ckNTd8=; b=oKYl6eMTiqJKl6gU+y3UtfBVCc
-	vmBrXe8FV8PMi23bcx4EkaeRXvSVGp65DJ36Dp2ZFXdHDf3jzsJOaoLglWYmMPV+lEBMSlnsicwfj
-	Ul1Zt17n+SlQF4yPHfur6/7WdxEVrrjtcBZPGHi4YjovdB+laaDh6BUxadMnKbkEy71y7HVzZDHOi
-	5ycJiHDcH2rhjmtDzVdImi/2/IDFa5+ZmaxnAISW4LDOCRraI2iixAKMuHmnC8xVoXsSolPo3Ii34
-	L6kYW2JyH/2IRSDwv7FHNiqSQbfYLAFUNbx5eCs6nhSXQQNMaIrf/yUEn+yz6cOzECY5Uj3clTmBV
-	6mTuVDLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QwLZZ0hyDmcD40HAZ5nt7T3vLyG2pn9yEHiT+r4FQ20=; b=ao6dLozNBp0WZfX5m8pU/GcnR1
+	qI6Lwqu4hRoiWWTzEFEkfub3LJD79nVwJ85y0xhL+Iidk6iJW70rhqAsIL1LoWVH1SwlZMvjkKeLv
+	DzemE2ioDXj4z9+9zAxHYEhhChfeChgBUpu/wE9aXw+MQ9WZB30eajHnhvZUM9nMrqKqy+fa8ORHG
+	v5FWwkAPf1kMSsgv+li/A/wcyB8vh1WXXkhfP/giLvjcRzXWkwWzP7SagT+gXAv9Z6YUhmsVbsYz/
+	f7x9FyBucYVTO04LZp0paygdOX6IbcaJRAKmA2lcFdgl0cWXQrfh7MQcCELMRDNEQav+h8sc+f6WF
+	nR/lHGig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEQvo-0025Lr-Si; Thu, 21 Jul 2022 07:49:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oERHm-002JPa-QN; Thu, 21 Jul 2022 08:11:54 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEQvm-0025Kq-1q
-	for linux-mediatek@lists.infradead.org; Thu, 21 Jul 2022 07:49:11 +0000
-X-UUID: 785c9c8ccf6341e3b75854c7722620d4-20220721
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:c391d333-4f94-48c9-8b3c-c9fcddfe2e9a,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,AC
-	TION:release,TS:105
-X-CID-META: VersionHash:0f94e32,CLOUDID:92dd9133-b9e4-42b8-b28a-6364427c76bb,C
-	OID:IGNORED,Recheck:0,SF:801,TC:nil,Content:3,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 785c9c8ccf6341e3b75854c7722620d4-20220721
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1416595990; Thu, 21 Jul 2022 00:49:07 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 21 Jul 2022 14:58:35 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 21 Jul 2022 14:58:34 +0800
-From: <peter.wang@mediatek.com>
-To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
-	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
-	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
-Subject: [PATCH v3] scsi: ufs: correct ufshcd_shutdown flow
-Date: Thu, 21 Jul 2022 14:58:33 +0800
-Message-ID: <20220721065833.26887-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oERHa-002JGC-M4; Thu, 21 Jul 2022 08:11:44 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 06DF566019C1;
+	Thu, 21 Jul 2022 09:11:38 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658391099;
+	bh=SJisIOXjYiUbIUddCNuNcj76WFqgshgEYwzoNjpp4Oc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=erhMGGDJFWDxnTZiWNNBmANaV8+g4O1yT65ICZCm02keCwYCMTNsEPWnQ47JQ+0VO
+	 uI5nVl+kTaYJu6qU34k1Zo7rDvuCh/X4uqmaAdVm0GuLH/cJ9VGtNqsjd2xsoqF7qf
+	 WDVl0lWMlNLHei+CvbnfqMkAM2OWEChDmNv14O7WoBx25aIDOp6CZ9uv5ukbM1tpxC
+	 CbD//WX+kbQBe2dMLVUAoGZbioDAL60QzgY88HXI53ayCZGw0a8KI6Zl4Qk3uZsgV4
+	 buurn/kmQouwX4ZuL2TS+5DmO8PsE1Xg90vp62CMuARp0vp/zJE4GOU9zGqQOxgHcO
+	 6nSmwZpr0jx6w==
+Message-ID: <a143dfcd-7a6a-49ff-6bed-4ffdb0fa1c4a@collabora.com>
+Date: Thu, 21 Jul 2022 10:11:36 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v2 3/4] thermal: mediatek: control buffer enablement
+ tweaks
+Content-Language: en-US
+To: Amjad Ouled-Ameur <aouledameur@baylibre.com>, matthias.bgg@gmail.com
+Cc: rafael@kernel.org, fparent@baylibre.com, amitk@kernel.org,
+ daniel.lezcano@linaro.org, devicetree@vger.kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org, robh+dt@kernel.org, rui.zhang@intel.com,
+ Markus Schneider-Pargmann <msp@baylibre.com>
+References: <20220720181854.547881-1-aouledameur@baylibre.com>
+ <20220720181854.547881-4-aouledameur@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220720181854.547881-4-aouledameur@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220721_004910_121616_E936D5BB 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20220721_011142_886305_4CF0C02D 
+X-CRM114-Status: GOOD (  19.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,67 +79,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+Il 20/07/22 20:18, Amjad Ouled-Ameur ha scritto:
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+> 
+> Add logic in order to be able to turn on the control buffer on MT8365.
+> This change now allows to have control buffer support for MTK_THERMAL_V1,
+> and it allows to define the register offset, and mask used to enable it.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Reviewed-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+> Tested-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+> ---
+>   drivers/thermal/mtk_thermal.c | 23 +++++++++++++++++------
+>   1 file changed, 17 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+> index 216eb0d61c5b..1dc276f8c4f1 100644
+> --- a/drivers/thermal/mtk_thermal.c
+> +++ b/drivers/thermal/mtk_thermal.c
+> @@ -283,6 +283,9 @@ struct mtk_thermal_data {
+>   	bool need_switch_bank;
+>   	struct thermal_bank_cfg bank_data[MAX_NUM_ZONES];
+>   	enum mtk_thermal_version version;
+> +	u32 apmixed_buffer_ctl_reg;
+> +	u32 apmixed_buffer_ctl_mask;
+> +	u32 apmixed_buffer_ctl_set;
+>   };
+>   
+>   struct mtk_thermal {
+> @@ -578,6 +581,9 @@ static const struct mtk_thermal_data mt7622_thermal_data = {
+>   	.adcpnp = mt7622_adcpnp,
+>   	.sensor_mux_values = mt7622_mux_values,
+>   	.version = MTK_THERMAL_V2,
+> +	.apmixed_buffer_ctl_reg = APMIXED_SYS_TS_CON1,
+> +	.apmixed_buffer_ctl_mask = ~0x37,
 
-Both ufshcd_shtdown and ufshcd_wl_shutdown could run concurrently.
-And it have race condition when ufshcd_wl_shutdown on-going and
-clock/power turn off by ufshcd_shutdown.
+This is effectively GENMASK(31, 6) | BIT(3) :-)
 
-The normal case:
-ufshcd_wl_shutdown -> ufshcd_shtdown
-ufshcd_shtdown should turn off clock/power.
+> +	.apmixed_buffer_ctl_set = 0x1,
 
-The abnormal case:
-ufshcd_shtdown -> ufshcd_wl_shutdown
-Wait ufshcd_wl_shutdown set device to power off and turn off clock/power.
-If timeout happen, means device still in active mode, cannot turn off
-clock/power directly. Skip and keep clock/power on in this case.
+...and this is BIT(0)
 
-Also remove pm_runtime_get_sync because shutdown is focus on
-turn off clock/power. We don't need turn on(resume) and turn off.
-The second reason is ufshcd_wl_shutdown call ufshcd_rpm_get_sync
-already, if ufshcd_shtdown wait ufshcd_wl_shutdown finish,
-hba->dev is already resume and no need pm_runtime_get_sync.
+>   }; >
+>   /*
+> @@ -1031,14 +1037,18 @@ static const struct of_device_id mtk_thermal_of_match[] = {
+>   };
+>   MODULE_DEVICE_TABLE(of, mtk_thermal_of_match);
+>   
+> -static void mtk_thermal_turn_on_buffer(void __iomem *apmixed_base)
+> +static void mtk_thermal_turn_on_buffer(struct mtk_thermal *mt,
+> +				       void __iomem *apmixed_base)
+>   {
+>   	int tmp;
 
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+Since you're practically restructuring this function, please fix this wrong
+variable type, as this should be a u32.
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index c7b337480e3e..47b639fd28b9 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -58,6 +58,9 @@
- /* Task management command timeout */
- #define TM_CMD_TIMEOUT	100 /* msecs */
- 
-+/* Shutdown wait devcie into power off timeout */
-+#define UFS_SHUTDOWN_TIMEOUT	500 /* msecs */
-+
- /* maximum number of retries for a general UIC command  */
- #define UFS_UIC_COMMAND_RETRIES 3
- 
-@@ -9461,10 +9464,15 @@ EXPORT_SYMBOL(ufshcd_runtime_resume);
-  */
- int ufshcd_shutdown(struct ufs_hba *hba)
- {
--	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba))
--		goto out;
-+	unsigned long timeout;
- 
--	pm_runtime_get_sync(hba->dev);
-+	/* Wait ufshcd_wl_shutdown clear ufs state */
-+	timeout = jiffies + msecs_to_jiffies(UFS_SHUTDOWN_TIMEOUT);
-+	while (!ufshcd_is_ufs_dev_poweroff(hba) || !ufshcd_is_link_off(hba)) {
-+		if (time_after(jiffies, timeout))
-+			goto out;
-+		msleep(1);
-+	}
- 
- 	ufshcd_suspend(hba);
- out:
--- 
-2.18.0
-
+Regards,
+Angelo
 
