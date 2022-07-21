@@ -4,72 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83FF9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 08:54:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2124EC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 08:56:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RQWcBMYLKA5sScAjvEqKSqdtD13iaTceqwv5MAI0pz4=; b=mHAGkMfE8uLfymLOYtCRZz5hp8
-	ndbeBfrq0MMVnqMRhXpY7LBp3A0aX/MLu4hXkC6GcC4zSM4eq3AQKtyUQ12KTXd/PCxH2RM6jp4OZ
-	MpNsPgcw8msCKt+ciwYsN7AkyB+hrm9l20Rnf6Of6mW8K7GTkpf+NuZFZJA4dVd6XxU5VwuaOoea1
-	FQLOphvMJKitYiRM6HhpKXGVXRpzUy6HCffTLYN9/zj4KQ+UT1WhrDXQw3CcVjGzQEwteqO5A2UEt
-	tFXZmXbzGwDylAvZRNhIYlOACzZCxsID3OPxtVgPKZ5kncVYLjAbaO7lKywQF5iB1EFttwGtQ5jFV
-	NWpt6pww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y52+vmlkRnvgFyCTIdVjgi2XLyCNtChwCyrrSaF4xEs=; b=FTEirOW29N4JX0GL1i638CsEYe
+	8Yi55sjkdV6Zy9bK2H+/lZiKnCThWJ4QuXU1mc5BDNdWQao4d07Rw0rA+su8LHvuj2x+TZfWh7PQJ
+	nOM6828C9LL1UTF3YLJm2kHLMLBr+bXgOY5u1SlGNZ3F/n3gHB1lP0ZwwM5uCCE0WHgaG7iiLKmgD
+	NsqQn2E4Gs96wlOFrlWI+ayldDuC9RoreK9DgKgpGWFeib/qUJq7Pc7CGB2HQPdXBAKR5gYldiTpF
+	k4k9JSaTSmtKYEIp0D+SWqF9i2vlTj1/gKMmZN3kexlW42IEKlO2Wm9yWs9iz4/SKXjriKPkUNajM
+	BzJvk4uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oERwi-002oXI-3A; Thu, 21 Jul 2022 08:54:12 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oERyX-002q7M-VJ; Thu, 21 Jul 2022 08:56:05 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oERwV-002oHO-IC; Thu, 21 Jul 2022 08:54:01 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 53B1D66019C1;
-	Thu, 21 Jul 2022 09:53:56 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658393637;
-	bh=PWaD409ygy+Er3xoqJTY1NemC1LqQPgB8DQibUFvffo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HFOn3jmV7jaLw7oD5M8TZqbVkyn5IY9/ekzUHdGUjK/NHL0uQjPZSsNphdJQoNF7r
-	 KaYZk9/u1Inf/eei+TdvpOSTrp043auyfH1Mz92Z3tjnig+WQbj+BguEmG8NKpBByH
-	 QXf9Jx4YBsQqBLdTKYBevHn0R7FB5FkaS0JWgai+EsUO/RTwYieoqVdeVJID3ehKMq
-	 UIaXr6YLUR7zVEqt/ngzQ2UFcUi81uo6pWD2ggbRKqxjfsUOFW/laJAvAP//4+Cv23
-	 nMYwM7s/NdsuIdKpiDI35PzXW+ymxuN7ejOJ8RPT/P5VjWE/urap5HmsruvVVrXCoY
-	 gKam2qjT/QF6g==
-Message-ID: <45ff2e82-caeb-9575-ce73-1bd43c37c0c5@collabora.com>
-Date: Thu, 21 Jul 2022 10:53:54 +0200
+	id 1oERyK-002pth-Ca
+	for linux-mediatek@lists.infradead.org; Thu, 21 Jul 2022 08:55:55 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id t3so1350626edd.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 21 Jul 2022 01:55:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=y52+vmlkRnvgFyCTIdVjgi2XLyCNtChwCyrrSaF4xEs=;
+        b=JfScOhfOqzqLqsMNguyPz0pmtqPx00EBej7n3tTNiTELdECIuqhQFfdgfxv0NZANL6
+         fJHBfkEJAKFk4rovHbV7mrijRm9H5aWF9cBLWsIHOitso5dVjWiy2XozKo4+hV0MqAmt
+         mNgaTsrlEcSahSI8zRaZEJpDBfjjMGPO7jIgBdUnSZex7WTQlFX9K3n7+zQmNajKEMRu
+         F9FPjIDBrMF3Crz4neWe7RT80XgUh+SRBz5BD23hs5/YjGMXJLiMh7wXt+F0TY4YlsEp
+         V3Yz7uwhK2GsLAG8wMmN0xZf0N11NN/fTBzc64C6eiDBhDhoV6Zqxkt1JYliOh/vlYiV
+         pV2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=y52+vmlkRnvgFyCTIdVjgi2XLyCNtChwCyrrSaF4xEs=;
+        b=jFVw4A0khXC8XHAd7ESPlFqUGNGbmkNPYCmFFYuQjrguzd9cm6PitUlZyZXwLqpRVe
+         vg+D4ujHWADHboFXb8tr+6Fkkw4yIsD4me/gJZrMtNCgyXXZjO0Q3o00uwY1GI6lFTRC
+         smAXpt8VNCLRZqSCmsoDG4TwdIhjSJLMRyhVtVnpnx65d/zbA2lbNvv4QRdFXXnLHLkM
+         zJYzJxmUsTuom98SBmizbHhPRrAZ1DwRtYi8HZ2oHVJLGTVCtv6M6tfccqulxxJdd4QX
+         Kot76nC/R/mPvSRMAPkVVrf/jCSL5wINtKygHTDqHoIjP47rHH0fe4osJPGs3cIvAxDe
+         Nu3g==
+X-Gm-Message-State: AJIora+LLGk3VuOgLh+G6Id4B0fIslzBu49lrjBpDrYELYGaub+HM3Rg
+	V+E06+fzD6+RR4OsboFvpB9bHA==
+X-Google-Smtp-Source: AGRyM1utn9lhUWfU5jFiySqjwbTTFY/S53Ue3qZ3Nt/lL522fet/Tr/Y0KsbrgjwndvTNOGyKyH5BQ==
+X-Received: by 2002:a05:6402:22c9:b0:43b:c529:7ee1 with SMTP id dm9-20020a05640222c900b0043bc5297ee1mr2760657edb.251.1658393748544;
+        Thu, 21 Jul 2022 01:55:48 -0700 (PDT)
+Received: from blmsp ([2001:4090:a243:806e:25e7:daa:8208:ceb])
+        by smtp.gmail.com with ESMTPSA id wj22-20020a170907051600b0072af2460cd6sm611924ejb.30.2022.07.21.01.55.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 Jul 2022 01:55:48 -0700 (PDT)
+Date: Thu, 21 Jul 2022 10:55:47 +0200
+From: Markus Schneider-Pargmann <msp@baylibre.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Fabien Parent <fparent@baylibre.com>,
+	Alexandre Bailon <abailon@baylibre.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 3/4] soc: mediatek: add support of MTK_SCPD_STRICT_BUSP
+ cap
+Message-ID: <20220721085547.unr5cu4kywpugxmx@blmsp>
+References: <20220530204214.913251-1-fparent@baylibre.com>
+ <20220530204214.913251-3-fparent@baylibre.com>
+ <c385ab55-bffc-8185-5d8b-f2fed1dd54a4@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v5 0/7] MediaTek Helio X10 MT6795 - Clock drivers
-Content-Language: en-US
-To: robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- mturquette@baylibre.com, sboyd@kernel.org, p.zabel@pengutronix.de,
- y.oudjana@protonmail.com, jason-jh.lin@mediatek.com, ck.hu@mediatek.com,
- fparent@baylibre.com, rex-bc.chen@mediatek.com, tinghan.shen@mediatek.com,
- chun-jie.chen@mediatek.com, weiyi.lu@mediatek.com, ikjn@chromium.org,
- miles.chen@mediatek.com, sam.shih@mediatek.com, wenst@chromium.org,
- bgolaszewski@baylibre.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
- konrad.dybcio@somainline.org, marijn.suijten@somainline.org,
- martin.botka@somainline.org, ~postmarketos/upstreaming@lists.sr.ht,
- phone-devel@vger.kernel.org, paul.bouchara@somainline.org,
- kernel@collabora.com
-References: <20220629110254.184213-1-angelogioacchino.delregno@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220629110254.184213-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <c385ab55-bffc-8185-5d8b-f2fed1dd54a4@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220721_015359_987941_2E41CA9E 
-X-CRM114-Status: GOOD (  17.29  )
+X-CRM114-CacheID: sfid-20220721_015552_653401_F1E7BFC4 
+X-CRM114-Status: GOOD (  27.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,93 +92,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/06/22 13:02, AngeloGioacchino Del Regno ha scritto:
-> In an effort to give some love to the apparently forgotten MT6795 SoC,
-> I am upstreaming more components that are necessary to support platforms
-> powered by this one apart from a simple boot to serial console.
-> 
-> This (very big) series introduces system clock, multimedia clock drivers
-> (including resets) for this SoC.
-> 
-> Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
-> 
-> This series depends on, and can be merged on top of:
-> [1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=640122
-> [2]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=637849
-> 
+Hi Matthias,
 
-Gentle ping for this series...
-...I've got a lot of commits to send that depend on this one...
+sorry, took a long time to respond.
 
-P.S.: The dependencies in [1] and [2] are already upstream.
-
-Cheers,
-Angelo
-
-
-> Changes in v5:
->   - Renamed clock/reset header filenames to add vendor prefix
->   - Removed quotes for $id, $schema in commit [4/7]
+On Fri, Jun 17, 2022 at 04:20:10PM +0200, Matthias Brugger wrote:
 > 
-> Changes in v4:
->   - Removed unnecessary examples for clock controllers in commit [4/7]
->   - Fixed one instance of 88 columns line wrap in commit [4/7]
 > 
-> Changes in v3:
->   - Fixed typo in commit [4/7]
+> On 30/05/2022 22:42, Fabien Parent wrote:
+> > From: Alexandre Bailon <abailon@baylibre.com>
+> > 
+> > This adds support of MTK_SCPD_STRICT_BUSP cap.
+> > This is required by the mt8365, for the MM power domain.
+> > 
 > 
-> Changes in v2:
->   - Fixed yaml clock bindings as per Rob's review
->   - Added ability to compile all MT6795 clock drivers as modules
->   - Added commits to export some symbols, required to compile as module
-> AngeloGioacchino Del Regno (7):
->    dt-bindings: mediatek: Document MT6795 system controllers bindings
->    dt-bindings: clock: Add MediaTek Helio X10 MT6795 clock bindings
->    dt-bindings: reset: Add bindings for MT6795 Helio X10 reset
->      controllers
->    dt-bindings: clock: mediatek: Add clock driver bindings for MT6795
->    clk: mediatek: clk-apmixed: Remove unneeded __init annotation
->    clk: mediatek: Export required symbols to compile clk drivers as
->      module
->    clk: mediatek: Add MediaTek Helio X10 MT6795 clock drivers
-> 
->   .../arm/mediatek/mediatek,infracfg.yaml       |   2 +
->   .../bindings/arm/mediatek/mediatek,mmsys.yaml |   1 +
->   .../arm/mediatek/mediatek,pericfg.yaml        |   1 +
->   .../bindings/clock/mediatek,apmixedsys.yaml   |   1 +
->   .../bindings/clock/mediatek,mt6795-clock.yaml |  66 ++
->   .../clock/mediatek,mt6795-sys-clock.yaml      |  54 ++
->   .../bindings/clock/mediatek,topckgen.yaml     |   1 +
->   drivers/clk/mediatek/Kconfig                  |  37 ++
->   drivers/clk/mediatek/Makefile                 |   6 +
->   drivers/clk/mediatek/clk-apmixed.c            |   3 +-
->   drivers/clk/mediatek/clk-cpumux.c             |   2 +
->   drivers/clk/mediatek/clk-mt6795-apmixedsys.c  | 157 +++++
->   drivers/clk/mediatek/clk-mt6795-infracfg.c    | 148 +++++
->   drivers/clk/mediatek/clk-mt6795-mfg.c         |  50 ++
->   drivers/clk/mediatek/clk-mt6795-mm.c          | 106 +++
->   drivers/clk/mediatek/clk-mt6795-pericfg.c     | 160 +++++
->   drivers/clk/mediatek/clk-mt6795-topckgen.c    | 610 ++++++++++++++++++
->   drivers/clk/mediatek/clk-mt6795-vdecsys.c     |  55 ++
->   drivers/clk/mediatek/clk-mt6795-vencsys.c     |  50 ++
->   drivers/clk/mediatek/clk-mtk.c                |   2 +
->   drivers/clk/mediatek/reset.c                  |   1 +
->   .../dt-bindings/clock/mediatek,mt6795-clk.h   | 275 ++++++++
->   .../reset/mediatek,mt6795-resets.h            |  50 ++
->   23 files changed, 1837 insertions(+), 1 deletion(-)
->   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
->   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-apmixedsys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-infracfg.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-mfg.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-mm.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-pericfg.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-topckgen.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-vdecsys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-vencsys.c
->   create mode 100644 include/dt-bindings/clock/mediatek,mt6795-clk.h
->   create mode 100644 include/dt-bindings/reset/mediatek,mt6795-resets.h
-> 
+> Please explain better waht this flag is doing.
 
+I will update the commit message as well.
 
+The flag basically tells the code that there is a strict bus protection
+policy in place which means that bus protect release must be before bus
+access. This is not on all platforms the case.
+
+> 
+> > Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> > ---
+> >   drivers/soc/mediatek/mtk-pm-domains.c | 37 ++++++++++++++++++++-------
+> >   drivers/soc/mediatek/mtk-pm-domains.h |  1 +
+> >   2 files changed, 29 insertions(+), 9 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+> > index 90b91b3b19a8..beaa5785fda2 100644
+> > --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> > +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> > @@ -263,17 +263,36 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+> >   	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ISO_BIT);
+> >   	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
+> > -	ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
+> > -	if (ret)
+> > -		goto err_pwr_ack;
+> 
+> I think it would help readability if we would enable the clocks only in the
+> case that MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUSP) is false. Then we would
+> only need to add the same if to the error path of err_disable_subsys_clks,
+> correct?
+
+I already rearranged the code to have a cleaner flow for v2.
+
+Thanks,
+Markus
+
+> 
+> Regards,
+> Matthias
+> 
+> > +	if (MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUSP)) {
+> > +		/*
+> > +		 * In few Mediatek platforms(e.g. MT6779), the bus protect
+> > +		 * policy is stricter, which leads to bus protect release must
+> > +		 * be prior to bus access.
+> > +		 */
+> > +		ret = scpsys_sram_enable(pd);
+> > +		if (ret < 0)
+> > +			goto err_pwr_ack;
+> > -	ret = scpsys_sram_enable(pd);
+> > -	if (ret < 0)
+> > -		goto err_disable_subsys_clks;
+> > +		ret = scpsys_bus_protect_disable(pd);
+> > +		if (ret < 0)
+> > +			goto err_pwr_ack;
+> > -	ret = scpsys_bus_protect_disable(pd);
+> > -	if (ret < 0)
+> > -		goto err_disable_sram;
+> > +		ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
+> > +		if (ret < 0)
+> > +			goto err_pwr_ack;
+> > +	} else {
+> > +		ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
+> > +		if (ret)
+> > +			goto err_pwr_ack;
+> > +
+> > +		ret = scpsys_sram_enable(pd);
+> > +		if (ret < 0)
+> > +			goto err_disable_subsys_clks;
+> > +
+> > +		ret = scpsys_bus_protect_disable(pd);
+> > +		if (ret < 0)
+> > +			goto err_disable_sram;
+> > +	}
+> >   	return 0;
+> > diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
+> > index a3955d960233..5347471bc3c4 100644
+> > --- a/drivers/soc/mediatek/mtk-pm-domains.h
+> > +++ b/drivers/soc/mediatek/mtk-pm-domains.h
+> > @@ -8,6 +8,7 @@
+> >   #define MTK_SCPD_SRAM_ISO		BIT(2)
+> >   #define MTK_SCPD_KEEP_DEFAULT_OFF	BIT(3)
+> >   #define MTK_SCPD_DOMAIN_SUPPLY		BIT(4)
+> > +#define MTK_SCPD_STRICT_BUSP		BIT(5)
+> >   #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
+> >   #define SPM_VDE_PWR_CON			0x0210
+> 
 
