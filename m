@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58287C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 13:52:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D167AC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 13:52:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RAsNPG3P4Z1ShCkgiJDT0ynjjMxGFk5by58DzF3lnkc=; b=Pot+T1emWbN2E/pOvtxOooJtaS
-	PyFMbECiiHr0h2fdX74MQ87KWCtC7/B0cDiqTa9z5KYPzHw4gvKKhFvngbhl6XZlc/nDfOH4b34PC
-	vOhNQIuKVrtznyFpUdjzLeSKaP0hAYGJ6YKeCJmw4D9WXsyByk7qngu3ppGchXtPIaPdDNCVmAaW7
-	+8lVH5ISQ9n3rTf9Y3rXwDnFJBdReHWs6c7ECzai8QjdvF57qGowVhXWYeC6k0TrACN+i37+uWNUB
-	ZSbmsdv6aujAdDC/dRYgFD1VT1HfiiQRoPUvQ43Tfh7jAQrlZqInBDPz02CGuTtY612G6Mg1yETNn
-	adAtS7YA==;
+	bh=B3rrzMFH7/tUDR59ER9pzhIjgnuVdeWlWUoKlSRLdzM=; b=2QC05ivGE190QEbM3E4y3jm59+
+	l9OtRaPb6hooU0KAAPFE/L0nOJozufkfRYCLLBT9D+MHF7Awcri92h1Hgpr+9P2LQMKlQLBdluSI/
+	DKq2jgXTLF9+alWkpTfaghtiYThmae1dV/CXyQGsmPiQ9enCZ6225u0p8vEMWrnXIsBo2MGXgrpMz
+	qO5EMbM2KClBrEquskg+0iwbm2CqVMwjOi3OEu9Yl5+Qh3D/ImI2oBi21SGdP1CG/CTFqkFF7huvA
+	+D7nzjtNmupfN33DtZJ54L7893N5B+JO2sJ74hDFPPh4DjwLbYOzo6DEhDC3+7hw6z8X0a0iv8Sa0
+	SZNprD5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEWbB-007HpM-9w; Thu, 21 Jul 2022 13:52:17 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oEWbE-007Hqb-KE; Thu, 21 Jul 2022 13:52:20 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEWRr-007CPJ-Rl; Thu, 21 Jul 2022 13:42:42 +0000
+	id 1oEWRo-007CKO-Vm; Thu, 21 Jul 2022 13:42:40 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E4CD56601AAF;
-	Thu, 21 Jul 2022 14:42:34 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9B9546601AA9;
+	Thu, 21 Jul 2022 14:42:32 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658410955;
-	bh=dlqdtSuo04KavAzVuh7wvb7toYorthQcXqSIIZVLL6M=;
+	s=mail; t=1658410953;
+	bh=iCe3nCCYP+CXI4lEolJz5G4aPJpz8Pwnh2r8Gx2Y2to=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=g+P9MM+AWoHjLIq62e484C/HRNq88fz3TVaXhZcj0KYZDt9FmuNBEKQZz8g36jNxb
-	 H0UyK+//tRmueKYzwOXvC6o4uDBAMaN5movVlvUxkDUuasdF5HyxWVgOKVhlPLmRGP
-	 2dJZYXAJk5PB7pWVcsRGesavGJ1LAgqcVh5uArn5tyPFZSmrX2lA5P1jnVgSA/5qkO
-	 8Vl03pfv8I49ajVikz7IcIR/8Gt+vAQ6V0Cm9fWjI5sPbGiDGxHzULmYFdY9sERy+t
-	 n2AZP0b+VfaUCZsZDgVC0vGg066qiRPdgLSYKo3k9A02Ej6zG444fnDEphdv6YjaOx
-	 QiOlfAjND6ZoA==
+	b=kvdipG7Z82dZH4MIB+y1Wp2W1XRbve5/yn0e4BdYOopiK6MV0Wji3WZsq2twmuZY9
+	 WXjHIUwsvYqBmS3jMKBsCTMWnL23keX+8/amwEzogQ6nNU7o0GizYXTeuhHqWE0u/j
+	 GOzU2eTWR2asG2urNsY+Gnc8WFjUFg1c5n8dWq2W2C36rw+3fT+1wE10rdRzyhk8uh
+	 PvJNNzivXRqkR4ODTtSQsvv0+eloOJN4rYDNYXxcanm3I6WRtFBNTwNuN/jHJymOPW
+	 3X/UvG2R5CRAUra5+q7g9UbJ26EZr6rnKgfhFXieid2Et3S22Ypu2l8VwaVd1SkxXO
+	 z+g8hdvVcPSWQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -50,17 +50,17 @@ Cc: robh+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 6/8] arm64: dts: mediatek: cherry: Enable DSP, audio codec and sound card
-Date: Thu, 21 Jul 2022 15:42:26 +0200
-Message-Id: <20220721134228.310178-7-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 2/8] arm64: dts: mediatek: cherry: Wire up the ChromeOS EC and GSC
+Date: Thu, 21 Jul 2022 15:42:22 +0200
+Message-Id: <20220721134228.310178-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220721134228.310178-1-angelogioacchino.delregno@collabora.com>
 References: <20220721134228.310178-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220721_064240_261097_19656642 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20220721_064237_245467_129F50B2 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,270 +75,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All machines of the Cherry platform have a working DSP (integrated
-into the MT8195 SoC), and audio support, some with a different audio
-codec: specifically, some using Realtek's RT5682I and some RT5682S.
+Wire up the ChromeOS Embedded Controller on SPI0 and its communication
+channel via SCP RPMSG along with all of the offered functionality,
+including Keyboard, Smart Battery Metrics (SBS), PWM controller, I2C
+tunnel, regulators and Type-C connector management.
 
-Write a configuration for all the audio bits to enable functionality.
+While at it, also add support for the Cr50 Google Security Chip (GSC)
+found on this platform on I2C3 to support TPM and also use it as an
+entropy source for the kernel.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../dts/mediatek/mt8195-cherry-tomato-r1.dts  |  10 ++
- .../dts/mediatek/mt8195-cherry-tomato-r2.dts  |  10 ++
- .../dts/mediatek/mt8195-cherry-tomato-r3.dts  |  10 ++
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 117 ++++++++++++++++++
- 4 files changed, 147 insertions(+)
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 93 +++++++++++++++++++
+ 1 file changed, 93 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-index 3348ba69ff6c..2d5e8f371b6d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-@@ -10,6 +10,16 @@ / {
- 	compatible = "google,tomato-rev1", "google,tomato", "mediatek,mt8195";
- };
- 
-+&audio_codec {
-+	compatible = "realtek,rt5682i";
-+	realtek,btndet-delay = <16>;
-+};
-+
-+&sound {
-+	compatible = "mediatek,mt8195_mt6359_rt1019_rt5682";
-+	model = "mt8195_r1019_5682";
-+};
-+
- &ts_10 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
-index 4669e9d917f8..2586c32ce6e6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
-@@ -10,6 +10,11 @@ / {
- 	compatible = "google,tomato-rev2", "google,tomato", "mediatek,mt8195";
- };
- 
-+&audio_codec {
-+	compatible = "realtek,rt5682i";
-+	realtek,btndet-delay = <16>;
-+};
-+
- &pio_default {
- 	pins-low-power-hdmi-disable {
- 		pinmux = <PINMUX_GPIO31__FUNC_GPIO31>,
-@@ -30,6 +35,11 @@ pins-low-power-pcie0-disable {
- 	};
- };
- 
-+&sound {
-+	compatible = "mediatek,mt8195_mt6359_rt1019_rt5682";
-+	model = "mt8195_r1019_5682";
-+};
-+
- &ts_10 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
-index 5021edd02f7c..f54f9477b99d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
-@@ -11,6 +11,11 @@ / {
- 		     "google,tomato", "mediatek,mt8195";
- };
- 
-+&audio_codec {
-+	compatible = "realtek,rt5682s";
-+	realtek,amic-delay-ms = <250>;
-+};
-+
- &pio_default {
- 	pins-low-power-hdmi-disable {
- 		pinmux = <PINMUX_GPIO31__FUNC_GPIO31>,
-@@ -31,6 +36,11 @@ pins-low-power-pcie0-disable {
- 	};
- };
- 
-+&sound {
-+	compatible = "mediatek,mt8195_mt6359_rt1019_rt5682";
-+	model = "m8195_r1019_5682s";
-+};
-+
- &ts_10 {
- 	status = "okay";
- };
 diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index 58349d4c3c8b..ca9955a97f8f 100644
+index feebbe367e93..87ac2b4f9814 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -25,6 +25,12 @@ chosen {
- 		stdout-path = "serial0:115200n8";
- 	};
- 
-+	dmic_codec: dmic-codec {
-+		compatible = "dmic-codec";
-+		num-channels = <2>;
-+		wakeup-delay-ms = <50>;
-+	};
-+
- 	memory@40000000 {
- 		device_type = "memory";
- 		reg = <0 0x40000000 0 0x80000000>;
-@@ -116,9 +122,49 @@ scp_mem: memory@50000000 {
- 			reg = <0 0x50000000 0 0x2900000>;
- 			no-map;
- 		};
-+
-+		adsp_mem: memory@60000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x60000000 0 0xd80000>;
-+			no-map;
-+		};
-+
-+		afe_mem: memory@60d80000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x60d80000 0 0x100000>;
-+			no-map;
-+		};
-+
-+		adsp_device_mem: memory@60e80000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x60e80000 0 0x280000>;
-+			no-map;
-+		};
-+	};
-+
-+	spk_amplifier: rt1019p {
-+		compatible = "realtek,rt1019p";
-+		label = "rt1019p";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&rt1019p_pins_default>;
-+		sdb-gpios = <&pio 100 GPIO_ACTIVE_HIGH>;
- 	};
- };
- 
-+&adsp {
-+	status = "okay";
-+
-+	memory-region = <&adsp_device_mem>, <&adsp_mem>;
-+};
-+
-+&afe {
-+	status = "okay";
-+
-+	mediatek,etdm-in2-cowork-source = <2>;
-+	mediatek,etdm-out2-cowork-source = <0>;
-+	memory-region = <&afe_mem>;
-+};
-+
- &i2c0 {
- 	status = "okay";
- 
-@@ -152,6 +198,17 @@ &i2c2 {
+@@ -149,6 +149,14 @@ &i2c3 {
  	clock-frequency = <400000>;
  	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c2_pins>;
+ 	pinctrl-0 = <&i2c3_pins>;
 +
-+	audio_codec: codec@1a {
-+		/* Realtek RT5682i or RT5682s, sharing the same configuration */
-+		reg = <0x1a>;
-+		interrupts-extended = <&pio 89 IRQ_TYPE_EDGE_BOTH>;
-+		realtek,jd-src = <1>;
-+
-+		AVDD-supply = <&mt6359_vio18_ldo_reg>;
-+		MICVDD-supply = <&pp3300_z2>;
-+		VBAT-supply = <&pp3300_z5>;
++	cr50@50 {
++		compatible = "google,cr50";
++		reg = <0x50>;
++		interrupts-extended = <&pio 88 IRQ_TYPE_EDGE_FALLING>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&cr50_int>;
 +	};
  };
  
- &i2c3 {
-@@ -256,6 +313,11 @@ &mmc1 {
- 	vqmmc-supply = <&mt_pmic_vmc_ldo_reg>;
- };
- 
-+&mt6359codec {
-+	mediatek,dmic-mode = <1>;  /* one-wire */
-+	mediatek,mic-type-0 = <2>; /* DMIC */
-+};
-+
- /* for CPU-L */
- &mt6359_vcore_buck_reg {
- 	regulator-always-on;
-@@ -463,6 +525,34 @@ &pio {
+ &i2c4 {
+@@ -426,6 +434,21 @@ &pio {
  		"AP_SPI_FLASH_MOSI",
  		"AP_SPI_FLASH_MISO";
  
-+	aud_pins_default: audio-default-pins {
-+		pins-cmd-dat {
-+		    pinmux = <PINMUX_GPIO69__FUNC_AUD_CLK_MOSI>,
-+			     <PINMUX_GPIO70__FUNC_AUD_SYNC_MOSI>,
-+			     <PINMUX_GPIO71__FUNC_AUD_DAT_MOSI0>,
-+			     <PINMUX_GPIO72__FUNC_AUD_DAT_MOSI1>,
-+			     <PINMUX_GPIO73__FUNC_AUD_DAT_MISO0>,
-+			     <PINMUX_GPIO74__FUNC_AUD_DAT_MISO1>,
-+			     <PINMUX_GPIO75__FUNC_AUD_DAT_MISO2>,
-+			     <PINMUX_GPIO0__FUNC_TDMIN_MCK>,
-+			     <PINMUX_GPIO1__FUNC_TDMIN_DI>,
-+			     <PINMUX_GPIO2__FUNC_TDMIN_LRCK>,
-+			     <PINMUX_GPIO3__FUNC_TDMIN_BCK>,
-+			     <PINMUX_GPIO60__FUNC_I2SO2_D0>,
-+			     <PINMUX_GPIO49__FUNC_I2SIN_D0>,
-+			     <PINMUX_GPIO50__FUNC_I2SO1_MCK>,
-+			     <PINMUX_GPIO51__FUNC_I2SO1_BCK>,
-+			     <PINMUX_GPIO52__FUNC_I2SO1_WS>,
-+			     <PINMUX_GPIO53__FUNC_I2SO1_D0>;
-+		};
-+
-+		pins-hp-jack-int-odl {
-+			pinmux = <PINMUX_GPIO89__FUNC_GPIO89>;
++	cr50_int: cr50-irq-default-pins {
++		pins-gsc-ap-int-odl {
++			pinmux = <PINMUX_GPIO88__FUNC_GPIO88>;
 +			input-enable;
++		};
++	};
++
++	cros_ec_int: cros-ec-irq-default-pins {
++		pins-ec-ap-int-odl {
++			pinmux = <PINMUX_GPIO4__FUNC_GPIO4>;
 +			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++			input-enable;
 +		};
 +	};
 +
- 	cr50_int: cr50-irq-default-pins {
- 		pins-gsc-ap-int-odl {
- 			pinmux = <PINMUX_GPIO88__FUNC_GPIO88>;
-@@ -707,6 +797,21 @@ pins-low-power-pupd {
- 		};
- 	};
- 
-+	rt1011_pins_default: rt1011-default-pins {
-+		pins-spk {
-+			pinmux = <PINMUX_GPIO94__FUNC_GPIO94>,
-+				 <PINMUX_GPIO100__FUNC_GPIO100>;
-+			output-high;
-+		};
-+	};
+ 	i2c0_pins: i2c0-default-pins {
+ 		pins-bus {
+ 			pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
+@@ -669,6 +692,11 @@ &scp {
+ 	memory-region = <&scp_mem>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&scp_pins>;
 +
-+	rt1019p_pins_default: rt1019p-default-pins {
-+		pins-amp-sdb {
-+			pinmux = <PINMUX_GPIO100__FUNC_GPIO100>;
-+			output-low;
-+		};
++	cros-ec-rpmsg {
++		compatible = "google,cros-ec-rpmsg";
++		mediatek,rpmsg-name = "cros-ec-rpmsg";
 +	};
-+
- 	scp_pins: scp-default-pins {
- 		pins-vreq {
- 			pinmux = <PINMUX_GPIO76__FUNC_SCP_VREQ_VAO>;
-@@ -779,6 +884,18 @@ cros-ec-rpmsg {
- 	};
  };
  
-+&sound {
-+	status = "okay";
-+
-+	mediatek,adsp = <&adsp>;
-+	mediatek,dai-link =
-+		"DL10_FE", "DPTX_BE", "ETDM1_IN_BE", "ETDM2_IN_BE",
-+		"ETDM1_OUT_BE", "ETDM2_OUT_BE","UL_SRC1_BE",
-+		"AFE_SOF_DL2", "AFE_SOF_DL3", "AFE_SOF_UL4", "AFE_SOF_UL5";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&aud_pins_default>;
-+};
-+
  &spi0 {
- 	status = "okay";
+@@ -677,6 +705,68 @@ &spi0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&spi0_pins>;
+ 	mediatek,pad-select = <0>;
++
++	cros_ec: ec@0 {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		compatible = "google,cros-ec-spi";
++		reg = <0>;
++		interrupts-extended = <&pio 4 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&cros_ec_int>;
++		spi-max-frequency = <3000000>;
++
++		cros_ec_pwm: ec-pwm {
++			compatible = "google,cros-ec-pwm";
++			#pwm-cells = <1>;
++		};
++
++		i2c_tunnel: i2c-tunnel {
++			compatible = "google,cros-ec-i2c-tunnel";
++			google,remote-bus = <0>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
++
++		mt_pmic_vmc_ldo_reg: regulator@0 {
++			compatible = "google,cros-ec-regulator";
++			reg = <0>;
++			regulator-name = "mt_pmic_vmc_ldo";
++			regulator-min-microvolt = <1200000>;
++			regulator-max-microvolt = <3600000>;
++		};
++
++		mt_pmic_vmch_ldo_reg: regulator@1 {
++			compatible = "google,cros-ec-regulator";
++			reg = <1>;
++			regulator-name = "mt_pmic_vmch_ldo";
++			regulator-min-microvolt = <2700000>;
++			regulator-max-microvolt = <3600000>;
++		};
++
++		typec {
++			compatible = "google,cros-ec-typec";
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			usb_c0: connector@0 {
++				compatible = "usb-c-connector";
++				reg = <0>;
++				power-role = "dual";
++				data-role = "host";
++				try-power-role = "source";
++			};
++
++			usb_c1: connector@1 {
++				compatible = "usb-c-connector";
++				reg = <1>;
++				power-role = "dual";
++				data-role = "host";
++				try-power-role = "source";
++			};
++		};
++	};
+ };
  
+ &u3phy0 {
+@@ -728,3 +818,6 @@ &xhci3 {
+ 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+ 	vbus-supply = <&usb_vbus>;
+ };
++
++#include <arm/cros-ec-keyboard.dtsi>
++#include <arm/cros-ec-sbs.dtsi>
 -- 
 2.35.1
 
