@@ -4,91 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5606C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 06:34:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D5FCCA479
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 06:56:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Cnm73MX252Caj40ytmqHkjELENAHvDfcWrwZYR1/NVM=; b=g+e7T0sV3oh6aWi0pM7MbKsPpj
-	6I7fsx70VK2cGAm77oyrEgiSOI5PyDUMaw7ADVala+pLqmAls/04IVHzsbPrv9Qsr30cbN33Sc1tE
-	bZraQOzflJLPl8MXC2SKTh/3kStaHhV5nMXWmqkQDa0gaZLydlHjXx6Q9MxGIyEKtt74r2/uswmEw
-	rP77uq8dpY6zB7epl3ZLvO5tuuTPl6UYJ+qcg6nvVoFGjTI9IQfPWXaXOhtYiU/ilA+qGaI8tsJIe
-	QGIHJBPoNFKyeGlNmp7IoGV/kUQylQ04Ew+cv6rxa+3bDndNPk6kBZmo0fXHWjNNpSNvojn7kRi1J
-	B21kLsRw==;
+	bh=j3nZatUbupfsq0uZH4AbyP7ygI6QhRZi82Eo5sbMDQ0=; b=Vy4QSdmoUeUs/JLQupXTFQtydr
+	GBkSi7dZO//ONX1Wc2ECLwnonwRy3xcuMkGRfLegvULqgS66zBmK6ja9seaSvhETX/Jl5h5zQPTaI
+	5UPEtrM2CpWMy5k/uMlg2zkDkslhCHFpfAXz6pqH177GFo+1q2LY3ar1oaMo/+hfJiOv+VsEAHy9k
+	IsrhZEqkH1LCKDH8g2EC9hbRe/kuHJl79glUoxEPAQuqFP8B4DiVsMQtu/6hHRwpZUttqXTJvWulU
+	/0m5mKZlZ1H6fs6SSdx/PSXdjycgV0qzLB38aUev76E1J8HQhIqEb7/NnghikIYGU0dsq68II8ehM
+	Yn1LGpyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEPlL-0014gw-ML; Thu, 21 Jul 2022 06:34:19 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1oEQ78-001Kwp-KW; Thu, 21 Jul 2022 06:56:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEPlH-0014Yw-7l
-	for linux-mediatek@lists.infradead.org; Thu, 21 Jul 2022 06:34:16 +0000
-Received: by mail-lj1-x232.google.com with SMTP id m9so667026ljp.9
-        for <linux-mediatek@lists.infradead.org>; Wed, 20 Jul 2022 23:34:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=Cnm73MX252Caj40ytmqHkjELENAHvDfcWrwZYR1/NVM=;
-        b=TBOCPKAISq594QJmpljtXK5JvWglm2X0HAFUA+CLSC4fkmSuZGHuCVimq5IRhaiwTx
-         7n4WQRUTkg7StEr07HUdlrnNngap3N9Dpptg779Uy6RPdLngI1bENO1KU+4HhdU6CI4a
-         ZZ5n1Iaqhcb7Iuon41ih6fknwVYDtgjnxQZSdyBehcrzqcAXz+3mNlarYN4687J7AIV7
-         HMVhwuc6sqyLPIbvRY14983JqnZGW6RK5johigv/Za282R0x8PDSZ2KDQ7rzOR8ERgOB
-         WzQTZCGsID/tFmeI8kAwLUJOjqNCw5uRIP+GV8KPUwAChH4hhEmaAlj7NxkxHJ1PSWMk
-         kHAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=Cnm73MX252Caj40ytmqHkjELENAHvDfcWrwZYR1/NVM=;
-        b=1X1m4U7dlZGvg1ktMv9liDd1vBmuApc+iblac6y/4FOSgdYirWiPUDf5HmSSe5rJwW
-         2Gvv94Fr9UU2DOM98xLbns1/d+Ok+x8HwUZifxX1AloobldOCfsGjOYn3e/cEopIYn1h
-         Wo9VZWSLllDRLVDkVXndVF3jmVndhJrIXo2H1kLtVnEOnWlvE9bnytbPMciipg0LCQMM
-         xKqkglxq18v/nuSQzi9PBOm1NxztHcl6K2OeCqkZA5M7jqH+QycXGmhnya9fU+MvcJ8i
-         oORWXuZ+XUUS43lpsPjHwDh9n4hxo4RO6nmg6Zxr9cKOgYem0iB2kr4RWR9NspNperFc
-         2Hew==
-X-Gm-Message-State: AJIora+nFcgC7AuXcvS/6UNbrUi4NFd4rryS50VvhfBT1ZAneRvtSvSa
-	JDh6Mf1iFBEopyyFY0xJp+hLtw==
-X-Google-Smtp-Source: AGRyM1s1d4f5h2aNvGMt18zpn/ZfYfDPXUBZrMkOm4gFgu21R/BTsAfUGEaL5WsUnMIMqTbhpQg8HA==
-X-Received: by 2002:a05:651c:1a1f:b0:25d:4517:faf with SMTP id by31-20020a05651c1a1f00b0025d45170fafmr17849916ljb.415.1658385252232;
-        Wed, 20 Jul 2022 23:34:12 -0700 (PDT)
-Received: from [192.168.115.193] (89-162-31-138.fiber.signal.no. [89.162.31.138])
-        by smtp.gmail.com with ESMTPSA id m16-20020a056512015000b00483e5f0192esm240085lfo.87.2022.07.20.23.34.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 20 Jul 2022 23:34:11 -0700 (PDT)
-Message-ID: <bba2bbbd-834e-d70a-91a4-6f2e989a6647@linaro.org>
-Date: Thu, 21 Jul 2022 08:34:10 +0200
+	id 1oEQ76-001Ko2-Hf; Thu, 21 Jul 2022 06:56:49 +0000
+X-UUID: db0f178ffd0849ecbd6ac0686d0f0ca8-20220720
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:92fd9593-30f6-4618-b661-e37f179ec980,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:6eb412d8-5d6d-4eaf-a635-828a3ee48b7c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: db0f178ffd0849ecbd6ac0686d0f0ca8-20220720
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jing-ting.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2136204008; Wed, 20 Jul 2022 23:56:40 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 21 Jul 2022 14:46:04 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 21 Jul 2022 14:46:03 +0800
+Message-ID: <98d738ec5d7d32441f6e62278fff32201fd948de.camel@mediatek.com>
+Subject: Re: [Bug] race condition at rebind_subsystems()
+From: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+To: Michal =?ISO-8859-1?Q?Koutn=FD?= <mkoutny@suse.com>
+CC: Tejun Heo <tj@kernel.org>, Johannes Weiner <hannes@cmpxchg.org>, "Zefan
+ Li" <lizefan.x@bytedance.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<cgroups@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Shakeel Butt <shakeelb@google.com>, <wsd_upstream@mediatek.com>,
+	<lixiong.liu@mediatek.com>, <wenju.xu@mediatek.com>,
+	<jonathan.jmchen@mediatek.com>
+Date: Thu, 21 Jul 2022 14:46:03 +0800
+In-Reply-To: <20220719133512.GD897@blackbody.suse.cz>
+References: <1978e209e71905d89651e61abd07285912d412a1.camel@mediatek.com>
+	 <20220715115938.GA8646@blackbody.suse.cz>
+	 <YtGaP+e35DZYSQf0@slm.duckdns.org>
+	 <d8f0bc5e2fb6ed259f9334c83279b4c011283c41.camel@mediatek.com>
+	 <20220719133512.GD897@blackbody.suse.cz>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v3 06/21] dt-bindings: power: mediatek: Add bindings for
- MediaTek SCPSYS
-Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- MandyJH Liu <mandyjh.liu@mediatek.com>
-Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220720123023.13500-1-tinghan.shen@mediatek.com>
- <20220720123023.13500-7-tinghan.shen@mediatek.com>
- <57b0cf62-0312-05cf-31ff-d38f83a35578@linaro.org>
- <00bc3a146f39feb1a83213fc8503ad1b52cda9f9.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <00bc3a146f39feb1a83213fc8503ad1b52cda9f9.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_233415_339721_488A4758 
-X-CRM114-Status: GOOD (  19.94  )
+X-CRM114-CacheID: sfid-20220720_235648_604420_46F094AF 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,81 +84,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21/07/2022 05:05, Tinghan Shen wrote:
-> On Wed, 2022-07-20 at 19:35 +0200, Krzysztof Kozlowski wrote:
->> On 20/07/2022 14:30, Tinghan Shen wrote:
->>> The System Control Processor System (SCPSYS) has several power
->>> management related tasks in the system. Add the bindings for it.
->>>
->>> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
->>> ---
->>>  .../bindings/mfd/mediatek,mt8195-scpsys.yaml  | 68 +++++++++++++++++++
->>>  1 file changed, 68 insertions(+)
->>>  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
->>>
->>> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
->>> b/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
->>> new file mode 100644
->>> index 000000000000..4117a6dbc19c
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
->>> @@ -0,0 +1,68 @@
->>> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
->>> +%YAML 1.2
->>> +---
->>> +$id: 
->>> https://urldefense.com/v3/__http://devicetree.org/schemas/mfd/mediatek,mt8195-scpsys.yaml*__;Iw!!CTRNKA9wMg0ARbw!y63E-9qbCW_vyn8RrsCCs7YvZ7NxKqFT7l8C0ZZirEW95Ec0ce3lwegsSq51wrjtz8GjVSpkK-omCBP5CKx1l0WESQ$
->>>  
->>> +$schema: 
->>> https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!y63E-9qbCW_vyn8RrsCCs7YvZ7NxKqFT7l8C0ZZirEW95Ec0ce3lwegsSq51wrjtz8GjVSpkK-omCBP5CKzzr9p82Q$
->>>  
->>> +
->>> +title: MediaTek System Control Processor System
->>> +
->>> +maintainers:
->>> +  - MandyJH Liu <mandyjh.liu@mediatek.com>
->>> +
->>> +description:
->>> +  MediaTek System Control Processor System (SCPSYS) has several
->>> +  power management tasks. The tasks include MTCMOS power
->>> +  domain control, thermal measurement, DVFS, etc.
->>> +
->>> +properties:
->>> +  compatible:
->>> +    items:
->>> +      - enum:
->>> +          - mediatek,mt8167-scpsys
->>> +          - mediatek,mt8173-scpsys
->>> +          - mediatek,mt8183-scpsys
->>> +          - mediatek,mt8192-scpsys
->>> +          - mediatek,mt8195-scpsys
->>> +      - const: syscon
->>> +      - const: simple-mfd
->>> +
->>> +  reg:
->>> +    maxItems: 1
->>> +
->>> +patternProperties:
->>> +  "^power-controller(@[0-9a-f]+)?$":
->>> +    $ref: /schemas/power/mediatek,power-controller.yaml#
->>
->> We talked that unit address might be useful but it was with an
->> assumption that you will actually use it. I think you don't use it, so
->> it is kind of meaningless now... unless you plan to use it?
+On Tue, 2022-07-19 at 15:35 +0200, Michal Koutný wrote:
+> On Mon, Jul 18, 2022 at 03:44:21PM +0800, Jing-Ting Wu <
+> jing-ting.wu@mediatek.com> wrote:
+> > Accroding your description, is the following patch corrent?
 > 
-> I tried to add the offset in the node name, but the binding check reports this message.
->  	
->     power-controller@0: node has a unit name, but no reg or ranges property
+> Yes, this is what I meant (i.e. grace period before invalidating the
+> removed rstat_css_node).
+> 
+> > If the patch is correct, we will add this patch to our stability
+> > test.
+> > And we will continue to observe whether the problem is solved.
+> 
+> It'd be great to have such confirmation.
 
-Why would you add unit address without reg? What point would it solve?
+Thanks for confirm the patch.
+We already add patch to our stability test.
+We will reply mail if we have any update.
 
-> After considering the fact of mt8195 power controller HW resides in scpsys and the current power
-> domain driver doesn't support parsing the register address seperated from scpsys, I decide to
-> keep the power controller node as in v2 to pass the binding check and compatible with driver.
+> 
+> Thanks,
+> Michal
 
-Then adding unit addresses in bindings has no point.
 
 
 Best regards,
-Krzysztof
+Jing-Ting Wu
+
 
