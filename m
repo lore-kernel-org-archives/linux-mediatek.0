@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAD47C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 13:52:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D71FBC43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 13:52:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YSfzyFhOJaB51I13ZSFOUErvPsd/bBN3CihA9wfvigY=; b=dMUstbQKO2MoM5X7yb1aS8FOCW
-	6tmIgFXxTyBznO3GDejlRUxeQvEUauMU+z09ci7mIS4+CEwA+njxK+Y/n8hIS0BTZhEKbdgAQCDyY
-	X/7dF0mdA5f8lCOyUBYp9vNT7fIzK/MwMucL6qjf4jOl5a4JrACy4JNa5H2J1Ap8mq7vgcVS0Y8jg
-	7XB1nXbooj7EF5UVN6o3Efd2rlRZH6vwMpraVQ7Z3hID785gjjTXpCSCKsm8Nzp9ddQgirOBUsxi4
-	X5ee0EeklxC/xRVA7ZL1uuJtSenKCg4l1KjSBjjxO9Q9lQiOgvOztJzaQLI+hRlZhVe/J58ApzOuc
-	DcT9F0rA==;
+	bh=jSdo2kHANOHFjYH72V15LpcXuJ+OLhU2YGt0rmk+gMc=; b=4jjIgw/Qkcgf2IklalfnV2xFW6
+	Wnko9KEBor87/N+LlM+aiugT8xJkiEiLj8NwUX3VyEYhh4/kfEAJALIMDNSi6X6O6PJO4kidPPdZq
+	DgLQgCsyuWVzTizy42y9QSj6YEG++Ah02CLhfOw6r1tij4Q2AU2PASkFFJ7r4HpOs1A+n38fdblFY
+	P9jOUzM1ARbazluFcHPwT9tADxqUlGWH2u8K6WGrUT+f2n1XUWqGx7w7eUdwJnqJE44aw33By+vWo
+	9+T8Xh9cGicRI0O787X89PR9l4nRzt/xirP7761QbW7cm9fq5E0+GFYq3/jcDfkk/Iterl5TaslIW
+	rokrPU6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEWbM-007Huc-IK; Thu, 21 Jul 2022 13:52:28 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oEWbS-007Hzp-Qi; Thu, 21 Jul 2022 13:52:34 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEWRp-007CKZ-11; Thu, 21 Jul 2022 13:42:40 +0000
+	id 1oEWRr-007CPK-Sf; Thu, 21 Jul 2022 13:42:41 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 322456601AAA;
-	Thu, 21 Jul 2022 14:42:33 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5AB8D6601AAE;
+	Thu, 21 Jul 2022 14:42:34 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658410953;
-	bh=JK6KfDUPzV5yJTwbi0+SKom1B+2IFfpMg25WH7f86kE=;
+	s=mail; t=1658410954;
+	bh=akTb+gtu7ReGU7vaNrXZI/GzP5obrfG91xyx1IuWCT0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hfyYxRxrxs7BFToL5NTnw+b49Un2W291Oe7UeRrPflcqwKScbBojvWIe4Mt2lLQuj
-	 Ine9oWvUCakBhWNsWuHjqWlhrt92BFx2iCdF7Csprx0OcOU5VPTfatwFBhD3qqIM2N
-	 sM7FGve2CWkgmHHPBzKJF2LvI8/qSLERByDES0Y8AE5VJphHRNiuvcCAEfeE/WB+HF
-	 PNjy4zRDbP2p4VKDuI0QbcV+GX2v9+4rjvpsaInOFvPXj8yY+3suxuMPDcHVWnb/rr
-	 ml89pDwjmWcobi0pWvksEzRgIaT8gOClBT7LQSpbUnP7PC9AhGEM2xOdgD6w5kEmTL
-	 rJVC07/12jiRQ==
+	b=Y80YZP2S/6CF3IswsEqGwn3wtC0MpOrFK8QfIWWO1/6JCSR7ztz+LzVSO8296vSfB
+	 CMEpRj39aea0i2ZYb+jIIWtBpCspZK9iKSMLwvhI+wf0B8ObD38rRgOX9qLqKOcsbc
+	 MFftWcYIc3t9lgt+B8vrBwWGgkeK9LooeNH/gyKzfawBYazMO5RyhaplrrmRG+1jxy
+	 VYA0acB+ULdpIBfaqTtVRTHY/ogDJMSkyJ/le2fqblWP9ohkLup7ZrnCpF5SStL2yB
+	 ulM49iOcPewfTVMqmYD9CnaqAOU5klDURHZ409dMwBbPFO/09fe76Cf+P0vdlGGSoB
+	 nAnN8oU/PJGkw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -50,17 +50,17 @@ Cc: robh+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 3/8] arm64: dts: mediatek: cherry: Add keyboard mapping for the top row
-Date: Thu, 21 Jul 2022 15:42:23 +0200
-Message-Id: <20220721134228.310178-4-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 5/8] arm64: dts: mediatek: cherry: Enable Elantech eKTH3000 i2c trackpad
+Date: Thu, 21 Jul 2022 15:42:25 +0200
+Message-Id: <20220721134228.310178-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220721134228.310178-1-angelogioacchino.delregno@collabora.com>
 References: <20220721134228.310178-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220721_064237_259543_9E668B07 
-X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-CacheID: sfid-20220721_064240_126277_3B353FC0 
+X-CRM114-Status: UNSURE (   8.70  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,54 +76,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Chromebooks' embedded keyboards differ from standard layouts for the
-top row, as this one doesn't have the standard function keys but
-shortcuts instead: map these keys to achieve the functionality that
-is pictured on the printouts.
+The Cherry platform uses an Elantech touchpad/trackpad: enable
+probing it at address 0x15 on I2C1.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 30 +++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ .../arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index 87ac2b4f9814..2853f7f76c90 100644
+index 8859957c7b27..58349d4c3c8b 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -821,3 +821,33 @@ &xhci3 {
+@@ -134,6 +134,16 @@ &i2c1 {
+ 	i2c-scl-internal-delay-ns = <12500>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c1_pins>;
++
++	trackpad@15 {
++		compatible = "elan,ekth3000";
++		reg = <0x15>;
++		interrupts-extended = <&pio 6 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&trackpad_pins>;
++		vcc-supply = <&pp3300_s3>;
++		wakeup-source;
++	};
+ };
  
- #include <arm/cros-ec-keyboard.dtsi>
- #include <arm/cros-ec-sbs.dtsi>
+ &i2c2 {
+@@ -727,6 +737,14 @@ subpmic_pin_irq: pins-subpmic-int-n {
+ 		};
+ 	};
+ 
++	trackpad_pins: trackpad-default-pins {
++		pins-int-n {
++			pinmux = <PINMUX_GPIO6__FUNC_GPIO6>;
++			input-enable;
++			bias-pull-up;
++		};
++	};
 +
-+&keyboard_controller {
-+	function-row-physmap = <
-+		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
-+		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
-+		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
-+		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
-+		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
-+		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
-+		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
-+		MATRIX_KEY(0x02, 0x09, 0)	/* T8 */
-+		MATRIX_KEY(0x01, 0x09, 0)	/* T9 */
-+		MATRIX_KEY(0x00, 0x04, 0)	/* T10 */
-+	>;
-+
-+	linux,keymap = <
-+		MATRIX_KEY(0x00, 0x02, KEY_BACK)
-+		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
-+		MATRIX_KEY(0x02, 0x02, KEY_ZOOM)
-+		MATRIX_KEY(0x01, 0x02, KEY_SCALE)
-+		MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)
-+		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
-+		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
-+		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
-+		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
-+		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)
-+
-+		CROS_STD_MAIN_KEYMAP
-+	>;
-+};
+ 	touchscreen_pins: touchscreen-default-pins {
+ 		pins-int-n {
+ 			pinmux = <PINMUX_GPIO92__FUNC_GPIO92>;
 -- 
 2.35.1
 
