@@ -4,70 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E392C43334
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 14:57:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 112E4C43334
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 14:58:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aIa4RTsObwuJUbUExxfV8FuxhPw0d/YyOwSqNqVnpas=; b=EZqqub6OmPGfBiVRTnRpqWLxUC
-	vqy/akeeQnNhSnLU09B3eCnr9aClRyXfFuDU3wY8NDbnxKvsyYihahlOkP9I1LZsc/jRdm1mq/7oY
-	WNFwD4lnhNoLNEPAlliXPlKe/1jSunnatzVzcjqu3zXbCEbZwqQHyBoTlqo0N1NhDubHOLW3V5Dw4
-	nNzGGAMzci0TbK0O/afdyJkjuqQZfwpaatZ7GgurxCZInFvUsR/ShJoaU2b1fmJl8w8nnD3Fn9BfR
-	Fbx35InbsdXEwfhu1gyT0LZzjJ2diCeDtJIiY0xUptIySRPlwgtLaSgwhROSLX9B6ky9Mis2fYwv2
-	SIXWqo2A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GJms8OFun/ubSdkBaWHWcb6Ty10VDWQdCs1zZ9jGyhY=; b=gaAy+1KcXSs0yG6P2eWsdj2adA
+	wrNZks0x1afTY5Yz6fBuomGUjnl3ZLZXymFB60mYT5oU9lupHvcLXtyGuaLw2333eBI1VmlwwlQ2v
+	0+O6BR5Sl25DcdaqjRKdi+cAwWw17nvuKNppT+Pm52S8K6CdKF+HdD5p1W/H2/cj9+00GqTAAb5gd
+	ixwYKGlmCGrdDw9mu6ix6jOJcVN+QT87O/tbo+JawPTtoOTYLWl8WCg0Qhvm+EzKdSrrMBk67c7Ns
+	+8JmBDSRHWyjWXDFUdufuTEd5v3nr9UeOV/8YK2/jXj2Dr7HJnNp+VLoA2Dd2ta6hZnSpgmM7oFT7
+	fSzOG9MA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEXbi-008ToU-2M; Thu, 21 Jul 2022 14:56:54 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oEXdY-008WXR-3U; Thu, 21 Jul 2022 14:58:48 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEXa2-008RCg-Vb; Thu, 21 Jul 2022 14:55:12 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C86916601AAA;
-	Thu, 21 Jul 2022 15:55:08 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658415309;
-	bh=EyTW2qzfSr+AZwVRWnf0cfBClBBVk9mIXqcmwKrTY2s=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aSEK3wBJW5ZfYWmPNlbU0sePZNNXqwE5AWAY0mJjsvUxtxBli+P/UKHnuJANoPXq7
-	 i6YchppxsUCeAkZabMD3HcUnpaKhjWb8sHCBVZys24FUwLxG+uctouTt7zv/etPMVS
-	 nolBLYYTQL+7sIBdXza+ndbUjXIo3MfypvJenbXhmDIFaxKNIH+DUA/zTkJ0sU2q+E
-	 gG6FhfvlzqcTG3tjE9UfPG4RjFNhti5Z9yx/7arp0+aq0e2WejNFtNxiMZHhMF6i31
-	 l11Wi9NEOqihzUURMuI23vmri2Ffz90BVG7OgT75M5Hf/vi33Nr+hpCpwVi1lFUhCy
-	 AyJ2RTNWhDHFg==
-Message-ID: <1eed6877-8868-6b29-b7c9-90986d230f36@collabora.com>
-Date: Thu, 21 Jul 2022 16:55:06 +0200
+	id 1oEXc2-008R2l-PI; Thu, 21 Jul 2022 14:57:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=GJms8OFun/ubSdkBaWHWcb6Ty10VDWQdCs1zZ9jGyhY=; b=ParruOU1TaiFmwxpDopn8iE5xb
+	PBBbcYrjpVlwn8/FVBySJV502FPEyp/NYUw9Le2G7RykZqfBiIIkMaWfkFq6SdJZcGkSTZdWNUp7g
+	SO3QpJuLGsK8HgR1NpQdw11aC8U8M3NxghRuKsmxOGrFwUa9+mY9EpYdIHTzk5dXtwA51EJKJSRpD
+	/tAT7222u0J0iuqxN1V56C1GmZrVv+R55s8+dorCMehGUnm3qGB9/EnrWSinar/7FStRgcmo3qH30
+	LfG23A69SH9pO29kFTPie/EX7YCWBGwzMTh1JeY4Wse3ICJkM7kH/OMzNqEj49NbiUCporkPgowCA
+	bF2R2EfA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33480)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1oEXZF-0005Xd-9J; Thu, 21 Jul 2022 15:54:21 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1oEXZ9-0004wJ-7C; Thu, 21 Jul 2022 15:54:15 +0100
+Date: Thu, 21 Jul 2022 15:54:15 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>
+Subject: Re: [PATCH net-next 3/6] net: dsa: add support for retrieving the
+ interface mode
+Message-ID: <Ytlol8ApI6O2wy99@shell.armlinux.org.uk>
+References: <20220715172444.yins4kb2b6b35aql@skbuf>
+ <YtHcpf4otJQS9hTO@shell.armlinux.org.uk>
+ <20220715222348.okmeyd55o5u3gkyi@skbuf>
+ <YtHw0O5NB6kGkdwV@shell.armlinux.org.uk>
+ <20220716105711.bjsh763smf6bfjy2@skbuf>
+ <YtKdcxupT+INVAhR@shell.armlinux.org.uk>
+ <20220716123608.chdzbvpinso546oh@skbuf>
+ <YtUec3GTWTC59sky@shell.armlinux.org.uk>
+ <20220720224447.ygoto4av7odsy2tj@skbuf>
+ <20220721134618.axq3hmtckrumpoy6@skbuf>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v1 4/6] Input: mt6779-keypad - support double keys matrix
-Content-Language: en-US
-To: Mattijs Korpershoek <mkorpershoek@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-input@vger.kernel.org,
- Fabien Parent <parent.f@gmail.com>, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>,
- linux-arm-kernel@lists.infradead.org
-References: <20220720-mt8183-keypad-v1-0-ef9fc29dbff4@baylibre.com>
- <20220720-mt8183-keypad-v1-4-ef9fc29dbff4@baylibre.com>
- <b2676b5c-14b3-2058-9fb8-d6d78cc5d29c@collabora.com>
- <87ilnqh632.fsf@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <87ilnqh632.fsf@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220721134618.axq3hmtckrumpoy6@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220721_075511_345411_E96EAD76 
-X-CRM114-Status: GOOD (  21.95  )
+X-CRM114-CacheID: sfid-20220721_075714_874099_275E07DD 
+X-CRM114-Status: GOOD (  30.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,126 +109,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/07/22 16:51, Mattijs Korpershoek ha scritto:
-> On Thu, Jul 21, 2022 at 10:34, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
+On Thu, Jul 21, 2022 at 04:46:18PM +0300, Vladimir Oltean wrote:
+> On Thu, Jul 21, 2022 at 01:44:47AM +0300, Vladimir Oltean wrote:
+> > I really wish there was a ready-made helper for validating phylink's
+> > OF node; I mentioned this already, it needs to cater for all of
+> > fixed-link/phy-handle/managed/sfp.
 > 
->> Il 20/07/22 16:48, Mattijs Korpershoek ha scritto:
->>> MediaTek keypad has 2 modes of detecting key events:
->>> - single key: each (row, column) can detect one key
->>> - double key: each (row, column) is a group of 2 keys
->>>
->>> Double key support exists to minimize cost, since it reduces the number
->>> of pins required for physical keys.
->>>
->>> Double key is configured by setting BIT(0) of the KP_SEL register.
->>>
->>> Enable double key matrix support based on the mediatek,double-keys
->>> device tree property.
->>>
->>> Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
->>> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
->>>
->>> diff --git a/drivers/input/keyboard/mt6779-keypad.c b/drivers/input/keyboard/mt6779-keypad.c
->>> index bf447bf598fb..9a5dbd415dac 100644
->>> --- a/drivers/input/keyboard/mt6779-keypad.c
->>> +++ b/drivers/input/keyboard/mt6779-keypad.c
->>> @@ -18,6 +18,7 @@
->>>    #define MTK_KPD_DEBOUNCE_MASK	GENMASK(13, 0)
->>>    #define MTK_KPD_DEBOUNCE_MAX_MS	256
->>>    #define MTK_KPD_SEL		0x0020
->>> +#define MTK_KPD_SEL_DOUBLE_KP_MODE	BIT(0)
->>>    #define MTK_KPD_SEL_COL	GENMASK(15, 10)
->>>    #define MTK_KPD_SEL_ROW	GENMASK(9, 4)
->>>    #define MTK_KPD_SEL_COLMASK(c)	GENMASK((c) + 9, 10)
->>> @@ -31,6 +32,7 @@ struct mt6779_keypad {
->>>    	struct clk *clk;
->>>    	u32 n_rows;
->>>    	u32 n_cols;
->>> +	bool double_keys;
->>>    	DECLARE_BITMAP(keymap_state, MTK_KPD_NUM_BITS);
->>>    };
->>>    
->>> @@ -67,8 +69,13 @@ static irqreturn_t mt6779_keypad_irq_handler(int irq, void *dev_id)
->>>    			continue;
->>>    
->>>    		key = bit_nr / 32 * 16 + bit_nr % 32;
->>> -		row = key / 9;
->>> -		col = key % 9;
->>> +		if (keypad->double_keys) {
->>> +			row = key / 13;
->>> +			col = (key % 13) / 2;
->>> +		} else {
->>> +			row = key / 9;
->>> +			col = key % 9;
->>> +		}
->>
->> I don't fully like this if branch permanently evaluating true or false, as no
->> runtime can actually change this result...
->>
->> In practice, it's fine, but I was wondering if anyone would disagree with the
->> following proposal...
->>
->> struct mt6779_keypad {
->> 	.......
->> 	void (*calc_row_col)(unsigned int *row, unsigned int *col);
->> };
->>
->> In mt6779_keypad_irq_handler:
->>
->> 	key = bit_nr / 32 * 16 + bit_nr % 32;
->> 	keypad->calc_row_col(&row, &col);
->>
->> and below...
->>
->>>    
->>>    		scancode = MATRIX_SCAN_CODE(row, col, row_shift);
->>>    		/* 1: not pressed, 0: pressed */
->>> @@ -150,6 +157,8 @@ static int mt6779_keypad_pdrv_probe(struct platform_device *pdev)
->>>    
->>>    	wakeup = device_property_read_bool(&pdev->dev, "wakeup-source");
->>>    
->>> +	keypad->double_keys = device_property_read_bool(&pdev->dev, "mediatek,double-keys");
->>> +
->>>    	dev_dbg(&pdev->dev, "n_row=%d n_col=%d debounce=%d\n",
->>>    		keypad->n_rows, keypad->n_cols, debounce);
->>>    
->>> @@ -166,6 +175,10 @@ static int mt6779_keypad_pdrv_probe(struct platform_device *pdev)
->>>    	regmap_write(keypad->regmap, MTK_KPD_DEBOUNCE,
->>>    		     (debounce * (1 << 5)) & MTK_KPD_DEBOUNCE_MASK);
->>>    
->>> +	if (keypad->double_keys)
->>
->> 		keypad->calc_row_col = mt6779_keypad_calc_row_col_double_kp;
->>
->>> +		regmap_update_bits(keypad->regmap, MTK_KPD_SEL,
->>> +				   MTK_KPD_SEL_DOUBLE_KP_MODE, MTK_KPD_SEL_DOUBLE_KP_MODE);
->>> +
->>
->> 	} else {
->> 		keypad->calc_row_col = mt6779_keypad_calc_row_col_single_kp;
->> 	}
->>
->>>    	regmap_update_bits(keypad->regmap, MTK_KPD_SEL, MTK_KPD_SEL_ROW,
->>>    			   MTK_KPD_SEL_ROWMASK(keypad->n_rows));
->>>    	regmap_update_bits(keypad->regmap, MTK_KPD_SEL, MTK_KPD_SEL_COL,
->>
->> what do you think?
+> While I was going to expand on this point and state that DSA doesn't
+> currently instantiate phylink for this OF node:
 > 
-> Hi Angelo,
+> 			port@9 {
+> 				reg = <0x9>;
+> 				label = "cpu";
+> 				ethernet = <&eth1>;
+> 				phy-mode = "2500base-x";
+> 				managed = "in-band-status";
+> 			};
 > 
-> Thank you for your detailed suggestion. I like it and since I have to
-> resend a v2 anyways, I will consider implementing it.
-> On the other hand, I'm a little reluctant because it means that I'll
-> have to remove Matthias's reviewed-by :(
+> I was proven wrong. Today I learned that of_phy_is_fixed_link() returns
+> true if the "managed" property exists and its value differs from "auto".
+> So in the above case, of_phy_is_fixed_link() returns true, hmmm.
+
+Yes, which is why I said on July 7th:
+
+"So I also don't see a problem - sja1105 rejects DTs that fail to
+describe a port using at least one of a phy-handle, a fixed-link, or
+a managed in-band link, and I don't think it needs to do further
+validation, certainly not for the phy describing properties that
+the kernel has chosen to deprecate for new implementations."
+
+I had assumed you knew of_phy_is_fixed_link() returns true in this
+case. Do you now see that sja1105's validation is close enough
+(except for the legacy phy phandle properties which we don't care
+about), and thus do we finally have agreement on this point?
+
+> On the other hand I found arm64/boot/dts/marvell/cn9130-crb.dtsi, where
+> the switch, a "marvell,mv88e6190"-compatible (can't determine going just
+> by that what it actually is) has this:
 > 
+> 			port@a {
+> 				reg = <10>;
+> 				label = "cpu";
+> 				ethernet = <&cp0_eth0>;
+> 			};
 
-Yes, you will have to. In that case:
+Port 10 on 88E6393X supports 10GBASE-R, and maybe one day someone will
+get around to implementing USXGMII. This description relies upon this
+defaulting behaviour - as Andrew has described, this has been entirely
+normal behaviour with mv88e6xxx.
 
-Matthias, any considerations about this idea? :)))
+> To illustrate how odd the situation is, I am able to follow the phandle
+> to the CPU port and find a comment that it's a 88E6393X, and that the
+> CPU port uses managed = "in-band-status":
+> 
+> &cp0_eth0 {
+> 	/* This port is connected to 88E6393X switch */
+> 	status = "okay";
+> 	phy-mode = "10gbase-r";
+> 	managed = "in-band-status";
+> 	phys = <&cp0_comphy4 0>;
+> };
 
->>
->> Cheers,
->> Angelo
+10GBASE-R has no in-band signalling per-se, so the only effect this has
+on the phylink instance on the CPU side is to read the status from the
+PCS as it does for any other in-band mode. In the case of 10GBASE-R, the
+only retrievable parameter is the link up/down status. This is no
+different from a 10GBASE-R based fibre link in that regard.
 
+A fixed link on the other hand would not read status from the PCS but
+would assume that the link is always up.
 
+> Open question: is it sane to even do what we're trying here, to create a
+> fixed-link for port@a (which makes the phylink instance use MLO_AN_FIXED)
+> when &cp0_eth0 uses MLO_AN_INBAND? My simple mind thinks that if all
+> involved drivers were to behave correctly and not have bugs that cancel
+> out other bugs, the above device tree shouldn't work. The host port
+> would expect a clause 37 base page exchange to take place, the switch
+> wouldn't send any in-band information, and the SERDES lane would never
+> transition to data mode. To fix the above, we'd really need to chase the
+> "ethernet" phandle and attempt to mimic what the DSA master did. This is
+> indeed logic that never existed before, and I don't particularly feel
+> like adding it. How far do we want to go? It seems like never-ending
+> insanity the more I look at it.
+
+10GBASE-R doesn't support clause 37 AN. 10GBASE-KR does support
+inband AN, but it's a different clause and different format.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
