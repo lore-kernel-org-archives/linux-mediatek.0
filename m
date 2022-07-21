@@ -4,74 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1F8AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 09:05:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C52C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 09:07:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fHuJXmTpqhwdibp5b+htSdMsPiihelGEPSrREJlvTKo=; b=JJOF+k5k8RB0vuYoFh6H7mKWNI
-	yvZ2IFSNpEt59E8vbs9/+0c9gWhdIAkNum9omE1hLsai+gVNjUnSzAy42ETGl0iubJsHfVVr0x7IZ
-	Im9tw5g/51WgRT5qCiwYCBFM0XTclVXoSncYIizHMTJMdpdkS5YuweTPWoTvszCJParED6OokW7EG
-	KJHCt3L5U5p6BO6LPmkPYmP+xBcipoQf9FGgROSWSkPurGa3Qxquo040Lfu0VYNQT4BCOPcWecMMK
-	e/Anh6sSKZriRuoP5XxEbzs63h5BVC/Q4VfWuG0hTOgR8oJPBvi8aHw11EPl77jHT0/YfMyNbdz4h
-	6Ik7lgoA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/H+ubGz5dC0Dz+m1egBSS+mn3sw5UpB8w1f81HptlFo=; b=Qb6/aRe7TBH9Phl8W0JHVnV5hS
+	4XSPtvDpHBC7MrLXg9RrwbnYNDfMa8/9Bo5cJFSWHxn0kGpGcXvFN8UhOMwIv/XMExy2w7qoVRbXc
+	r4FsFljjk/gM8tCXEttQ1b5ycRHmnMAJ48rchOUPMV712Y1rF3uVer0ZlQm2OM2cD/Uf0X+FRhG5N
+	VzfY9zSVjaQ7rjsHKfHzxgYH15bHfbVloK26efOSCGhimbaJzXmVHmCH7lTuLgrn6vaBwuWMcNguf
+	Y7fRaYaL+n3CTzcqIMtEsWhj/8OZsiikVFlQsMkPIaFS2+scO2CS1q6MGCG3Mk8YR+/J4G8yTwIYx
+	0iohJu9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oES7K-002y3T-6k; Thu, 21 Jul 2022 09:05:10 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oES96-002zfS-IA; Thu, 21 Jul 2022 09:07:00 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oES74-002xox-Jk; Thu, 21 Jul 2022 09:04:57 +0000
-X-UUID: 34309de67e3a4345939a5a006d37dabe-20220721
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=fHuJXmTpqhwdibp5b+htSdMsPiihelGEPSrREJlvTKo=;
-	b=K5x6aP+H+5usYo8v72Wex2BBvZJ3BATFltpjSvwZAWcmPRhD5kk32B9BriC7GEozqNyb2ku7VG52DKwnc8Dh2ADzLz3Ad9EwuMQ9VbradZ+NUR61y0wbI7AAFJbSx8s4NBdEa6OQ9cSuhSI7RD7f7/2V2miLnnE1o+Rr9obzf0o=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:6c4081ef-d5cc-4227-8623-0ffca96e9fca,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:8b1d17d8-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 34309de67e3a4345939a5a006d37dabe-20220721
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <jianjun.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1850906533; Thu, 21 Jul 2022 02:04:47 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 21 Jul 2022 16:44:09 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 21 Jul 2022 16:44:08 +0800
-Message-ID: <0f02af3abf6895ae89f735d849a1873e61ca502a.camel@mediatek.com>
-Subject: Re: [PATCH 2/2] dt-bindings: PCI: mediatek-gen3: Add new clock name
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Bjorn Helgaas <bhelgaas@google.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, <linux-pci@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, Ryder
- Lee <ryder.lee@mediatek.com>, <Rex-BC.Chen@mediatek.com>,
-	<TingHan.Shen@mediatek.com>, <Liju-clr.Chen@mediatek.com>,
-	<Jian.Yang@mediatek.com>
-Date: Thu, 21 Jul 2022 16:44:08 +0800
-In-Reply-To: <20220720222448.GA4083816-robh@kernel.org>
-References: <20220716074349.28655-1-jianjun.wang@mediatek.com>
-	 <20220716074349.28655-3-jianjun.wang@mediatek.com>
-	 <20220720222448.GA4083816-robh@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oES8t-002zQG-Jp
+	for linux-mediatek@lists.infradead.org; Thu, 21 Jul 2022 09:06:49 +0000
+Received: by mail-wm1-x333.google.com with SMTP id b6so654225wmq.5
+        for <linux-mediatek@lists.infradead.org>; Thu, 21 Jul 2022 02:06:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:in-reply-to:references:date:message-id
+         :mime-version;
+        bh=/H+ubGz5dC0Dz+m1egBSS+mn3sw5UpB8w1f81HptlFo=;
+        b=D0wGWDqCWVf1ogvzp2scTFOcL/n/BMEgsTofv86DsSTkPtAJuQsI83k7g+ea2/xTwQ
+         aI8aQ9xBbDoOqQ5HJIENAZCvvpuIuNc0skABIW5X+dF/ISz+o6oMNsblkkia9J5AZedK
+         i1y3HXa+oWE2R64nyu9rYveTvuz0cb5odonsNSBEx+cwUiSPpkiGVPKv+peVdCd6QB3d
+         OtgnnK4tBoOJsH602xwzjG1GygYAmo2MkVu23eWuqc5iZFp0sPMmFleasSQjSUwtBoAI
+         yE+DInYb6Y7WwG1PbJk9v2V3UK6GMrfcKtTGnRUskE8dqSv80KIp37ZBuWUxeHQGh8H3
+         9VhQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+         :message-id:mime-version;
+        bh=/H+ubGz5dC0Dz+m1egBSS+mn3sw5UpB8w1f81HptlFo=;
+        b=rQD+daTn7ZFwmhiG6BO+0rv1jMUZgj92bNWdulHuUtPE1TfrnuvbjfKTWX1Kv9mvS2
+         RF2zAZJGrc7k30vowfQUDOxvQR943DUA9Gt1ACa5U4G3u5lRTpcr7sg1THD0kwcJ4Tol
+         9ILGC+EV7POxEkYv2whe1Zaq6rPfDlzx5ZddgMgWHaeimqFWuljRdV6gZ0zvVo4iiX/P
+         zzy7Tn+tZotx6+KoaXpWKAXZCvpmOfB+NJaWfO+RS5EuPglb32XwnyjMdvpzKTarhjaI
+         chKYZ8MjjWByaeThYxT8W+RjrQQ1GIwDdZlus/v9VVRBikOlZJNMQmWWq7N/zOPYVadu
+         jyUw==
+X-Gm-Message-State: AJIora/HCFlel52OAOvxKJUE90hfxap6nU32c7xswfYyBsheiigBTagW
+	+XdzjV/ugI6zjg7brxE9oHeRDw==
+X-Google-Smtp-Source: AGRyM1tZz2TDn6be9lWTWQ2CDScl7zAd9M2KfMm9B3ELPlAoh19nphaaWcU/vY70sT+0kbd5D4xRGw==
+X-Received: by 2002:a05:600c:5006:b0:3a3:2dcd:8730 with SMTP id n6-20020a05600c500600b003a32dcd8730mr3710520wmr.99.1658394403779;
+        Thu, 21 Jul 2022 02:06:43 -0700 (PDT)
+Received: from localhost ([82.66.159.240])
+        by smtp.gmail.com with ESMTPSA id q15-20020a5d658f000000b0021e48faed68sm1225231wru.97.2022.07.21.02.06.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 Jul 2022 02:06:43 -0700 (PDT)
+From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Dmitry Torokhov
+ <dmitry.torokhov@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-input@vger.kernel.org, Fabien Parent
+ <parent.f@gmail.com>, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Fabien Parent <fparent@baylibre.com>,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v1 2/6] dt-bindings: mediatek,mt6779-keypad: use
+ unevaluatedProperties
+In-Reply-To: <e1ec8511-d1dd-faa5-031f-50c4e55062cd@linaro.org>
+References: <20220720-mt8183-keypad-v1-0-ef9fc29dbff4@baylibre.com>
+ <20220720-mt8183-keypad-v1-2-ef9fc29dbff4@baylibre.com>
+ <e1ec8511-d1dd-faa5-031f-50c4e55062cd@linaro.org>
+Date: Thu, 21 Jul 2022 11:06:42 +0200
+Message-ID: <874jzaj0m5.fsf@baylibre.com>
 MIME-Version: 1.0
-X-MTK: N
-Content-Transfer-Encoding: base64
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220721_020454_713525_A74F3ADA 
-X-CRM114-Status: GOOD (  21.11  )
+X-CRM114-CacheID: sfid-20220721_020647_730391_16587EA9 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,61 +94,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgUm9iLA0KDQpUaGFua3MgZm9yIHlvdXIgY29tbWVudC4NCg0KT24gV2VkLCAyMDIyLTA3LTIw
-IGF0IDE2OjI0IC0wNjAwLCBSb2IgSGVycmluZyB3cm90ZToNCj4gT24gU2F0LCBKdWwgMTYsIDIw
-MjIgYXQgMDM6NDM6NDlQTSArMDgwMCwgSmlhbmp1biBXYW5nIHdyb3RlOg0KPiA+IE1UODE4OCBh
-bmQgTVQ4MTk1IHVzZSBjbG9jayAicGVyaV9tZW0iIGluc3RlYWQgb2YgInRvcF8xMzNtIiwgYWRk
-DQo+ID4gbmV3DQo+ID4gY2xvY2sgbmFtZSAicGVyaV9tZW0iIGZvciBNVDgxODggYW5kIE1UODE5
-NS4NCj4gDQo+IFRoaXMgc2hvdWxkIGJlIHBhcnQgb2YgcGF0Y2ggMS4NCg0KU3VyZSwgSSdsbCBt
-ZXJnZSB0aGVzZSB0d28gcGF0Y2hlcyBpbnRvIG9uZSBpbiB0aGUgbmV4dCB2ZXJzaW9uLg0KDQo+
-IA0KPiBDbG9jayBuYW1lcyBmb3IgSVAgYmxvY2tzIHNob3VsZCBiZSBsb2NhbCB0byB0aGUgSVAg
-YmxvY2suIElPVywNCj4gbmFtZWQgDQo+IGFmdGVyIHRoZSBpbnB1dCBuYW1lIGZvciB0aGUgY2xv
-Y2tzIG9yIHdoYXQgdGhlaXIgZnVuY3Rpb24gaXMgaWYgeW91IA0KPiBkb24ndCBrbm93IHRoYXQu
-IE5laXRoZXIgdGhlIG9sZCBuYW1lcyBub3IgdGhlIG5ldyBuYW1lIHNlZW0gdG8NCj4gZm9sbG93
-IA0KPiB0aGlzLiBBdCBsZWFzdCBtYWtlIHRoZSBuZXcgbmFtZSBmb2xsb3cgdGhhdCBjb252ZW50
-aW9uLg0KDQpTb3JyeSwgSSdtIG5vdCBzdXJlIGlmIEkgdW5kZXJzdGFuZCBjb3JyZWN0bHksIHdv
-dWxkIHlvdSBtaW5kIHByb3ZpZGluZw0KYW4gZXhhbXBsZSBvZiB0aGlzIGNoYW5nZT8NCg0KVGhh
-bmtzLg0KDQo+IA0KPiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IEppYW5qdW4gV2FuZyA8amlhbmp1
-bi53YW5nQG1lZGlhdGVrLmNvbT4NCj4gPiAtLS0NCj4gPiAgLi4uL2JpbmRpbmdzL3BjaS9tZWRp
-YXRlay1wY2llLWdlbjMueWFtbCAgICAgIHwgNDIgKysrKysrKysrKysrKystDQo+ID4gLS0tLQ0K
-PiA+ICAxIGZpbGUgY2hhbmdlZCwgMzIgaW5zZXJ0aW9ucygrKSwgMTAgZGVsZXRpb25zKC0pDQo+
-ID4gDQo+ID4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9w
-Y2kvbWVkaWF0ZWstcGNpZS0NCj4gPiBnZW4zLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvcGNpL21lZGlhdGVrLXBjaWUtDQo+ID4gZ2VuMy55YW1sDQo+ID4gaW5kZXgg
-NjdkMmJhMjVlMzM2Li4wMzhlMjVhZTBiZTcgMTAwNjQ0DQo+ID4gLS0tIGEvRG9jdW1lbnRhdGlv
-bi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BjaS9tZWRpYXRlay1wY2llLWdlbjMueWFtbA0KPiA+ICsr
-KyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wY2kvbWVkaWF0ZWstcGNpZS1n
-ZW4zLnlhbWwNCj4gPiBAQCAtNDMsOSArNDMsNiBAQCBkZXNjcmlwdGlvbjogfCsNCj4gPiAgICBl
-YWNoIHNldCBoYXMgaXRzIG93biBhZGRyZXNzIGZvciBNU0kgbWVzc2FnZSwgYW5kIHN1cHBvcnRz
-IDMyDQo+ID4gTVNJIHZlY3RvcnMNCj4gPiAgICB0byBnZW5lcmF0ZSBpbnRlcnJ1cHQuDQo+ID4g
-IA0KPiA+IC1hbGxPZjoNCj4gPiAtICAtICRyZWY6IC9zY2hlbWFzL3BjaS9wY2ktYnVzLnlhbWwj
-DQo+ID4gLQ0KPiA+ICBwcm9wZXJ0aWVzOg0KPiA+ICAgIGNvbXBhdGlibGU6DQo+ID4gICAgICBv
-bmVPZjoNCj4gPiBAQCAtODUsMTMgKzgyLDcgQEAgcHJvcGVydGllczoNCj4gPiAgICAgIG1heEl0
-ZW1zOiA2DQo+ID4gIA0KPiA+ICAgIGNsb2NrLW5hbWVzOg0KPiA+IC0gICAgaXRlbXM6DQo+ID4g
-LSAgICAgIC0gY29uc3Q6IHBsXzI1MG0NCj4gPiAtICAgICAgLSBjb25zdDogdGxfMjZtDQo+ID4g
-LSAgICAgIC0gY29uc3Q6IHRsXzk2bQ0KPiA+IC0gICAgICAtIGNvbnN0OiB0bF8zMmsNCj4gPiAt
-ICAgICAgLSBjb25zdDogcGVyaV8yNm0NCj4gPiAtICAgICAgLSBjb25zdDogdG9wXzEzM20NCj4g
-PiArICAgIG1heEl0ZW1zOiA2DQo+ID4gIA0KPiA+ICAgIGFzc2lnbmVkLWNsb2NrczoNCj4gPiAg
-ICAgIG1heEl0ZW1zOiAxDQo+ID4gQEAgLTEzMyw5ICsxMjQsNDAgQEAgcmVxdWlyZWQ6DQo+ID4g
-ICAgLSBpbnRlcnJ1cHRzDQo+ID4gICAgLSByYW5nZXMNCj4gPiAgICAtIGNsb2Nrcw0KPiA+ICsg
-IC0gY2xvY2stbmFtZXMNCj4gPiAgICAtICcjaW50ZXJydXB0LWNlbGxzJw0KPiA+ICAgIC0gaW50
-ZXJydXB0LWNvbnRyb2xsZXINCj4gPiAgDQo+ID4gK2FsbE9mOg0KPiA+ICsgIC0gJHJlZjogL3Nj
-aGVtYXMvcGNpL3BjaS1idXMueWFtbCMNCj4gPiArICAtIGlmOg0KPiA+ICsgICAgICBwcm9wZXJ0
-aWVzOg0KPiA+ICsgICAgICAgIGNvbXBhdGlibGU6DQo+ID4gKyAgICAgICAgICBjb250YWluczoN
-Cj4gPiArICAgICAgICAgICAgZW51bToNCj4gPiArICAgICAgICAgICAgICAtIG1lZGlhdGVrLG10
-ODE4OC1wY2llDQo+ID4gKyAgICAgICAgICAgICAgLSBtZWRpYXRlayxtdDgxOTUtcGNpZQ0KPiA+
-ICsgICAgdGhlbjoNCj4gPiArICAgICAgcHJvcGVydGllczoNCj4gPiArICAgICAgICBjbG9jay1u
-YW1lczoNCj4gPiArICAgICAgICAgIGl0ZW1zOg0KPiA+ICsgICAgICAgICAgICAtIGNvbnN0OiBw
-bF8yNTBtDQo+ID4gKyAgICAgICAgICAgIC0gY29uc3Q6IHRsXzI2bQ0KPiA+ICsgICAgICAgICAg
-ICAtIGNvbnN0OiB0bF85Nm0NCj4gPiArICAgICAgICAgICAgLSBjb25zdDogdGxfMzJrDQo+ID4g
-KyAgICAgICAgICAgIC0gY29uc3Q6IHBlcmlfMjZtDQo+ID4gKyAgICAgICAgICAgIC0gY29uc3Q6
-IHBlcmlfbWVtDQo+ID4gKyAgICBlbHNlOg0KPiA+ICsgICAgICBwcm9wZXJ0aWVzOg0KPiA+ICsg
-ICAgICAgIGNsb2NrLW5hbWVzOg0KPiA+ICsgICAgICAgICAgaXRlbXM6DQo+ID4gKyAgICAgICAg
-ICAgIC0gY29uc3Q6IHBsXzI1MG0NCj4gPiArICAgICAgICAgICAgLSBjb25zdDogdGxfMjZtDQo+
-ID4gKyAgICAgICAgICAgIC0gY29uc3Q6IHRsXzk2bQ0KPiA+ICsgICAgICAgICAgICAtIGNvbnN0
-OiB0bF8zMmsNCj4gPiArICAgICAgICAgICAgLSBjb25zdDogcGVyaV8yNm0NCj4gPiArICAgICAg
-ICAgICAgLSBjb25zdDogdG9wXzEzM20NCj4gPiArDQo+ID4gIHVuZXZhbHVhdGVkUHJvcGVydGll
-czogZmFsc2UNCj4gPiAgDQo+ID4gIGV4YW1wbGVzOg0KPiA+IC0tIA0KPiA+IDIuMTguMA0KPiA+
-IA0KPiA+IA0K
+On Wed, Jul 20, 2022 at 19:14, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> wrote:
 
+> On 20/07/2022 16:48, Mattijs Korpershoek wrote:
+>> writing-bindings.rst states:
+>>> - If schema includes other schema (e.g. /schemas/i2c/i2c-controller.yaml) use
+>>>   "unevaluatedProperties:false". In other cases, usually use
+>>>   "additionalProperties:false".
+>> 
+>> mt6779-keypad includes matrix-keymap.yaml so replace additionalProperties:false
+>> by unevaluatedProperties:false.
+>
+> This is not sufficient explanation. You now allow all properties from
+> matrix-keymap.yaml, which might be desired or might be not (e.g. they
+> are not valid for this device). Please investigate it and mention the
+> outcome.
+
+Hi Krzysztof,
+
+Thank you for your prompt review.
+
+In mt6779_keypad_pdrv_probe(), we call
+* matrix_keypad_parse_properties() which requires keypad,num-rows and keypad,num-cols.
+* matrix_keypad_build_keymap() which uses linux,keymap
+
+Therefore, all properties from matrix-keymap.yaml are
+required by the mt6779-keypad driver.
+
+In v2, I will add the above justification and also add all 3 properties
+in the "required" list.
+
+Initially, I did not do this because from a dts/code perspective it seemed
+interesting to split out SoC specific keyboard node vs board specific key configuration:
+* [PATCH v1 5/6] arm64: dts: mediatek: mt8183: add keyboard node # SoC specific
+* [PATCH v1 6/6] arm64: dts: mediatek: mt8183-pumpkin: add keypad support # board specific
+
+What would be the recommend approach for above?
+I see at least 2:
+* "move the whole keyboard node into the board file (mt8183-pumpkin.dts)" even if it generates
+  duplication between boards using the same SoC.
+* "add a "dummy keymap,row,cols" properties in the soc node which can be overriden in board file.
+  For example, use rows and cols = 0 which would have the driver early exit.
+
+Thanks,
+Mattijs
+
+>
+> Best regards,
+> Krzysztof
 
