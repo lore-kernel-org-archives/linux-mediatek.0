@@ -4,87 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 377CFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 06:26:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5606C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Jul 2022 06:34:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hxC34n2XsJkxK7YGTYWmDr/CzQkTN9u25SwwjIianbQ=; b=v4lkMlKeen3JgYJ1w36m9jiTbV
-	f9iaBMeSlI77vYYuszKtCCBe5amLdMBMTLSWBu231C/3+wXAJizFIaK1L/P3a5MWnnGt+v9m4ZfW6
-	6+EbwP5lay7zoSu5FJz/2OYxGnLYdlfICQjB6H3uIznQ8GAyOebJx/4Az8DsjWuW2Z+hoyqWuU8Hb
-	J/NPuIX6zlb7wYSTMlwBtOWSdRNCOg4C56i3nl+GIxvsfPXqSEJHLLGQa8VaWx0eeULqf7blxGe5v
-	wtV5qdfQjCmYwyclgMynLunsLca2DUEmVDzJ+NqJZC249Z1iNXoTF4tF0aRSpVfTeVuLOn+DlvZD5
-	g/2hnXWA==;
+	bh=Cnm73MX252Caj40ytmqHkjELENAHvDfcWrwZYR1/NVM=; b=g+e7T0sV3oh6aWi0pM7MbKsPpj
+	6I7fsx70VK2cGAm77oyrEgiSOI5PyDUMaw7ADVala+pLqmAls/04IVHzsbPrv9Qsr30cbN33Sc1tE
+	bZraQOzflJLPl8MXC2SKTh/3kStaHhV5nMXWmqkQDa0gaZLydlHjXx6Q9MxGIyEKtt74r2/uswmEw
+	rP77uq8dpY6zB7epl3ZLvO5tuuTPl6UYJ+qcg6nvVoFGjTI9IQfPWXaXOhtYiU/ilA+qGaI8tsJIe
+	QGIHJBPoNFKyeGlNmp7IoGV/kUQylQ04Ew+cv6rxa+3bDndNPk6kBZmo0fXHWjNNpSNvojn7kRi1J
+	B21kLsRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEPdT-000zHS-DW; Thu, 21 Jul 2022 06:26:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oEPlL-0014gw-ML; Thu, 21 Jul 2022 06:34:19 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEPdP-000zEV-Sz; Thu, 21 Jul 2022 06:26:09 +0000
-X-UUID: e20daa21c69b49f5bfaac558f922f7e1-20220720
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:7930b459-b827-481a-8735-06d815348c60,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:7476df64-0b3f-4b2c-b3a6-ed5c044366a0,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: e20daa21c69b49f5bfaac558f922f7e1-20220720
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1339769429; Wed, 20 Jul 2022 23:26:02 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 21 Jul 2022 14:24:58 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 21 Jul 2022 14:24:58 +0800
-Message-ID: <4e543dc3a183af3966aa6f2f28b0afb9d95cbac2.camel@mediatek.com>
-Subject: Re: [PATCH v14 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "robh+dt@kernel.org"
-	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>, "mripard@kernel.org"
-	<mripard@kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "deller@gmx.de"
-	<deller@gmx.de>, "airlied@linux.ie" <airlied@linux.ie>
-CC: "msp@baylibre.com" <msp@baylibre.com>, "granquet@baylibre.com"
-	<granquet@baylibre.com>, "Jitao Shi
- =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?=" <jitao.shi@mediatek.com>,
-	"wenst@chromium.org" <wenst@chromium.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "LiangXu Xu
- =?UTF-8?Q?=28=E5=BE=90=E4=BA=AE=29?=" <LiangXu.Xu@mediatek.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
-	<linux-fbdev@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 21 Jul 2022 14:24:58 +0800
-In-Reply-To: <7b1a555ab62aec8c3f5717b8827c81a2076bf569.camel@mediatek.com>
-References: <20220712111223.13080-1-rex-bc.chen@mediatek.com>
-	 <20220712111223.13080-6-rex-bc.chen@mediatek.com>
-	 <05e7ace27af21d141c1ecd79fb45f6e5e9d32582.camel@mediatek.com>
-	 <7b1a555ab62aec8c3f5717b8827c81a2076bf569.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oEPlH-0014Yw-7l
+	for linux-mediatek@lists.infradead.org; Thu, 21 Jul 2022 06:34:16 +0000
+Received: by mail-lj1-x232.google.com with SMTP id m9so667026ljp.9
+        for <linux-mediatek@lists.infradead.org>; Wed, 20 Jul 2022 23:34:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=Cnm73MX252Caj40ytmqHkjELENAHvDfcWrwZYR1/NVM=;
+        b=TBOCPKAISq594QJmpljtXK5JvWglm2X0HAFUA+CLSC4fkmSuZGHuCVimq5IRhaiwTx
+         7n4WQRUTkg7StEr07HUdlrnNngap3N9Dpptg779Uy6RPdLngI1bENO1KU+4HhdU6CI4a
+         ZZ5n1Iaqhcb7Iuon41ih6fknwVYDtgjnxQZSdyBehcrzqcAXz+3mNlarYN4687J7AIV7
+         HMVhwuc6sqyLPIbvRY14983JqnZGW6RK5johigv/Za282R0x8PDSZ2KDQ7rzOR8ERgOB
+         WzQTZCGsID/tFmeI8kAwLUJOjqNCw5uRIP+GV8KPUwAChH4hhEmaAlj7NxkxHJ1PSWMk
+         kHAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=Cnm73MX252Caj40ytmqHkjELENAHvDfcWrwZYR1/NVM=;
+        b=1X1m4U7dlZGvg1ktMv9liDd1vBmuApc+iblac6y/4FOSgdYirWiPUDf5HmSSe5rJwW
+         2Gvv94Fr9UU2DOM98xLbns1/d+Ok+x8HwUZifxX1AloobldOCfsGjOYn3e/cEopIYn1h
+         Wo9VZWSLllDRLVDkVXndVF3jmVndhJrIXo2H1kLtVnEOnWlvE9bnytbPMciipg0LCQMM
+         xKqkglxq18v/nuSQzi9PBOm1NxztHcl6K2OeCqkZA5M7jqH+QycXGmhnya9fU+MvcJ8i
+         oORWXuZ+XUUS43lpsPjHwDh9n4hxo4RO6nmg6Zxr9cKOgYem0iB2kr4RWR9NspNperFc
+         2Hew==
+X-Gm-Message-State: AJIora+nFcgC7AuXcvS/6UNbrUi4NFd4rryS50VvhfBT1ZAneRvtSvSa
+	JDh6Mf1iFBEopyyFY0xJp+hLtw==
+X-Google-Smtp-Source: AGRyM1s1d4f5h2aNvGMt18zpn/ZfYfDPXUBZrMkOm4gFgu21R/BTsAfUGEaL5WsUnMIMqTbhpQg8HA==
+X-Received: by 2002:a05:651c:1a1f:b0:25d:4517:faf with SMTP id by31-20020a05651c1a1f00b0025d45170fafmr17849916ljb.415.1658385252232;
+        Wed, 20 Jul 2022 23:34:12 -0700 (PDT)
+Received: from [192.168.115.193] (89-162-31-138.fiber.signal.no. [89.162.31.138])
+        by smtp.gmail.com with ESMTPSA id m16-20020a056512015000b00483e5f0192esm240085lfo.87.2022.07.20.23.34.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 20 Jul 2022 23:34:11 -0700 (PDT)
+Message-ID: <bba2bbbd-834e-d70a-91a4-6f2e989a6647@linaro.org>
+Date: Thu, 21 Jul 2022 08:34:10 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v3 06/21] dt-bindings: power: mediatek: Add bindings for
+ MediaTek SCPSYS
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ MandyJH Liu <mandyjh.liu@mediatek.com>
+Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220720123023.13500-1-tinghan.shen@mediatek.com>
+ <20220720123023.13500-7-tinghan.shen@mediatek.com>
+ <57b0cf62-0312-05cf-31ff-d38f83a35578@linaro.org>
+ <00bc3a146f39feb1a83213fc8503ad1b52cda9f9.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <00bc3a146f39feb1a83213fc8503ad1b52cda9f9.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_232607_985831_959EC0D2 
-X-CRM114-Status: GOOD (  33.64  )
+X-CRM114-CacheID: sfid-20220720_233415_339721_488A4758 
+X-CRM114-Status: GOOD (  19.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,124 +103,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Rex:
+On 21/07/2022 05:05, Tinghan Shen wrote:
+> On Wed, 2022-07-20 at 19:35 +0200, Krzysztof Kozlowski wrote:
+>> On 20/07/2022 14:30, Tinghan Shen wrote:
+>>> The System Control Processor System (SCPSYS) has several power
+>>> management related tasks in the system. Add the bindings for it.
+>>>
+>>> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+>>> ---
+>>>  .../bindings/mfd/mediatek,mt8195-scpsys.yaml  | 68 +++++++++++++++++++
+>>>  1 file changed, 68 insertions(+)
+>>>  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+>>> b/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+>>> new file mode 100644
+>>> index 000000000000..4117a6dbc19c
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+>>> @@ -0,0 +1,68 @@
+>>> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: 
+>>> https://urldefense.com/v3/__http://devicetree.org/schemas/mfd/mediatek,mt8195-scpsys.yaml*__;Iw!!CTRNKA9wMg0ARbw!y63E-9qbCW_vyn8RrsCCs7YvZ7NxKqFT7l8C0ZZirEW95Ec0ce3lwegsSq51wrjtz8GjVSpkK-omCBP5CKx1l0WESQ$
+>>>  
+>>> +$schema: 
+>>> https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!y63E-9qbCW_vyn8RrsCCs7YvZ7NxKqFT7l8C0ZZirEW95Ec0ce3lwegsSq51wrjtz8GjVSpkK-omCBP5CKzzr9p82Q$
+>>>  
+>>> +
+>>> +title: MediaTek System Control Processor System
+>>> +
+>>> +maintainers:
+>>> +  - MandyJH Liu <mandyjh.liu@mediatek.com>
+>>> +
+>>> +description:
+>>> +  MediaTek System Control Processor System (SCPSYS) has several
+>>> +  power management tasks. The tasks include MTCMOS power
+>>> +  domain control, thermal measurement, DVFS, etc.
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    items:
+>>> +      - enum:
+>>> +          - mediatek,mt8167-scpsys
+>>> +          - mediatek,mt8173-scpsys
+>>> +          - mediatek,mt8183-scpsys
+>>> +          - mediatek,mt8192-scpsys
+>>> +          - mediatek,mt8195-scpsys
+>>> +      - const: syscon
+>>> +      - const: simple-mfd
+>>> +
+>>> +  reg:
+>>> +    maxItems: 1
+>>> +
+>>> +patternProperties:
+>>> +  "^power-controller(@[0-9a-f]+)?$":
+>>> +    $ref: /schemas/power/mediatek,power-controller.yaml#
+>>
+>> We talked that unit address might be useful but it was with an
+>> assumption that you will actually use it. I think you don't use it, so
+>> it is kind of meaningless now... unless you plan to use it?
+> 
+> I tried to add the offset in the node name, but the binding check reports this message.
+>  	
+>     power-controller@0: node has a unit name, but no reg or ranges property
 
-On Thu, 2022-07-21 at 10:38 +0800, Rex-BC Chen wrote:
-> On Fri, 2022-07-15 at 16:51 +0800, CK Hu wrote:
-> > Hi, Bo-Chen:
-> > 
-> > On Tue, 2022-07-12 at 19:12 +0800, Bo-Chen Chen wrote:
-> > > From: Markus Schneider-Pargmann <msp@baylibre.com>
-> > > 
-> > > This patch adds a embedded displayport driver for the MediaTek
-> > > mt8195
-> > > SoC.
-> > > 
-> > > It supports the MT8195, the embedded DisplayPort units. It offers
-> > > DisplayPort 1.4 with up to 4 lanes.
-> > > 
-> > > The driver creates a child device for the phy. The child device
-> > > will
-> > > never exist without the parent being active. As they are sharing
-> > > a
-> > > register range, the parent passes a regmap pointer to the child
-> > > so
-> > > that
-> > > both can work with the same register range. The phy driver sets
-> > > device
-> > > data that is read by the parent to get the phy device that can be
-> > > used
-> > > to control the phy properties.
-> > > 
-> > > This driver is based on an initial version by
-> > > Jitao shi <jitao.shi@mediatek.com>
-> > > 
-> > > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > > ---
-> > 
-> > [snip]
-> > 
-> > > +static void mtk_dp_hpd_sink_event(struct mtk_dp *mtk_dp)
-> > > +{
-> > > +	ssize_t ret;
-> > > +	u8 sink_count;
-> > > +	u8 link_status[DP_LINK_STATUS_SIZE] = {};
-> > > +	u32 sink_count_reg = DP_SINK_COUNT_ESI;
-> > > +	u32 link_status_reg = DP_LANE0_1_STATUS;
-> > > +
-> > > +	ret = drm_dp_dpcd_readb(&mtk_dp->aux, sink_count_reg,
-> > > &sink_count);
-> > 
-> > According to your last reply, if drm_dp_dpcd_readb() fail, we could
-> > skip below statement. So this just for error checking? If so, the
-> > next
-> > drm_dp_dpcd_read() would also do the error checking, so the
-> > checking
-> > here is redundant.
-> > 
-> > Regards,
-> > CK
-> > 
-> 
-> Hello CK,
-> 
-> sorry, I don't get your point.
-> We use "drm_dp_dpcd_readb(&mtk_dp->aux, sink_count_reg, &sink_count)"
-> to get sink count and use "drm_dp_dpcd_read(&mtk_dp->aux,
-> link_status_reg, link_status, sizeof(link_status));" to get link
-> status.
-> 
-> If we don't get any sink count, we don't need to check the link
-> status.
-> Therefore, we just return if we are failed to get sink count.
+Why would you add unit address without reg? What point would it solve?
 
-I assume that when error happen, both read sink_count and read
-link_status would fail, so you could directly read link_status. Do you
-think that when error happen, only read sink_count would fail and read
-link_status would success? It it is the later case, we should keep the
-checking of sink_count.
+> After considering the fact of mt8195 power controller HW resides in scpsys and the current power
+> domain driver doesn't support parsing the register address seperated from scpsys, I decide to
+> keep the power controller node as in v2 to pass the binding check and compatible with driver.
 
-Regards,
-CK
+Then adding unit addresses in bindings has no point.
 
-> 
-> BRs,
-> Bo-Chen
-> 
-> > > +	if (ret < 1) {
-> > > +		drm_err(mtk_dp->drm_dev, "Read sink count failed\n");
-> > > +		return;
-> > > +	}
-> > > +
-> > > +	drm_dbg(mtk_dp->drm_dev,
-> > > +		"read sink count from dpcd: %d\n", sink_count);
-> > > +
-> > > +	ret = drm_dp_dpcd_read(&mtk_dp->aux, link_status_reg,
-> > > link_status,
-> > > +			       sizeof(link_status));
-> > > +	if (!ret) {
-> > > +		drm_err(mtk_dp->drm_dev, "Read link status failed\n");
-> > > +		return;
-> > > +	}
-> > > +
-> > > +	if (!drm_dp_channel_eq_ok(link_status, mtk_dp-
-> > > > train_info.lane_count)) {
-> > > 
-> > > +		drm_err(mtk_dp->drm_dev, "Channel EQ failed\n");
-> > > +		return;
-> > > +	}
-> > > +
-> > > +	if (link_status[1] & DP_REMOTE_CONTROL_COMMAND_PENDING)
-> > > +		drm_dp_dpcd_writeb(&mtk_dp->aux,
-> > > DP_DEVICE_SERVICE_IRQ_VECTOR,
-> > > +				   DP_REMOTE_CONTROL_COMMAND_PENDING);
-> > > +}
-> > > +
-> > 
-> > 
-> 
-> 
 
+Best regards,
+Krzysztof
 
