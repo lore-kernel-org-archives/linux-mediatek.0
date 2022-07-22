@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2981C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 21:07:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A946CC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 21:13:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pGzStEbIybdtsQTGpWdG5kec8IeEiARYjd83SFehxkU=; b=D/tb/QL4ge8rzbmc6mpuSq1MC8
-	E5JQG/fdRbF/QKOCoYOtH9CtYeQlbohm1W9oEkAYhWtADQ8e1bxV7qtn2nS3VoSvrCWY+Tz7GNTBV
-	D3hBFPr88qP5uXZUdFwG6CLMhEOCGpYnrUdVRZdRheHbEPLThH5rZ7W7azAOog/p/D5eZ8uPygkjJ
-	UXiIrwiWg7BvZhxaafrsn3WLn1GZ34jq9flT1FOwJTw1o66l8WG6KVSgNLr0Z024Jr1SEPUt6mAnz
-	wXmol1+fzxh89gcu9WhKKqBbl8mVeRM5yWwQWV9dKk7E61LEIO43RN/ZMeKKoR3rQcFfDt4g1+IIt
-	VmLCthtw==;
+	bh=c9WsKYP78qtCT0ErIavQs+Q5NIpoTLGobCYxRumep4k=; b=WEl3yXmU4AyIFwgS4X2pzUX6k2
+	VAoOLKrHTu5IR0FCw4uFu384x5oNJIsS0vBf6gTAeY+C09oMcqOygXATH5xxbWeBEnL6JJfdY1lhg
+	eaXOyi1cpBUb0fBOCWzrJOywboOelnSDWo2Y8nJVVUM0Qw2FOfoszpTlyKdMAJK/+PMJ9WRHfPEJc
+	HWxAZPO1WFMI0bAa5aIL7qv6EZ/bSJaouDqjPPhNHwx8hredtpFQUv0+a2E3XKb3mRlevL4UXK3fB
+	7p+PVHBJQhEloNTMYUyCaNbJEYcuuesFWfmU3eVAYZM/xbHO+yj4jqIpX9ROMEaawXVgfjh8INEGl
+	W4KVEwgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEzri-00BMg3-0z; Fri, 22 Jul 2022 21:07:18 +0000
-Received: from mail-pf1-f173.google.com ([209.85.210.173])
+	id 1oEzxE-00BOZO-Rn; Fri, 22 Jul 2022 21:13:00 +0000
+Received: from mail-pg1-f180.google.com ([209.85.215.180])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEzrg-00BMeA-7Q
-	for linux-mediatek@lists.infradead.org; Fri, 22 Jul 2022 21:07:17 +0000
-Received: by mail-pf1-f173.google.com with SMTP id w205so2095759pfc.8
-        for <linux-mediatek@lists.infradead.org>; Fri, 22 Jul 2022 14:07:14 -0700 (PDT)
+	id 1oEzxC-00BOX2-9c
+	for linux-mediatek@lists.infradead.org; Fri, 22 Jul 2022 21:12:59 +0000
+Received: by mail-pg1-f180.google.com with SMTP id 23so5332948pgc.8
+        for <linux-mediatek@lists.infradead.org>; Fri, 22 Jul 2022 14:12:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=pGzStEbIybdtsQTGpWdG5kec8IeEiARYjd83SFehxkU=;
-        b=h6KxPDJIlr/rWXwaGe1lFi3EX3C8jUoAq457RGf4Pwz5VFki+QcI/UmBXMFgt1e6OG
-         4r0ymNhJA0wmbA38vLbnjGenhmb5mEVsXGkfzrw0AQre0i8zr8k6+tlvHUVvW6EZfYmv
-         crmtDa8AlEHTHlTalg6Qj5W0cnnCT1WHlorDCn7Tqh9dzUn2DfuyjyLbz1B9jikWStMi
-         OxRhMw2C6zZbSWSRWJDo5KmFglPS4UCBRxxKLu2b0W4sCMvZzcdUAzl047S+2ff5Pz9T
-         sHhG6yzXhYS+Xb/w+Y2fHr6f4yEplysy3W3E8ltYhx0mCW0J87RD0iBSqu9Md4zoRuJi
-         Gf5g==
-X-Gm-Message-State: AJIora8TpRj0EagSpJjIj2PLdY0WJ7CEkwtNtVv1ILjNumX9rz2kKuuU
-	Jv6Kb/+CZ/d+OfwLwuy9kS8=
-X-Google-Smtp-Source: AGRyM1vfFtBzYbmOPtYh2GvwYvNteJHnXHE3mc7G5rzhXgfxsC//wn68lAVjBvJAB5Du3DryFhDfIQ==
-X-Received: by 2002:a05:6a00:1818:b0:52a:dabd:a232 with SMTP id y24-20020a056a00181800b0052adabda232mr1848030pfa.70.1658524033365;
-        Fri, 22 Jul 2022 14:07:13 -0700 (PDT)
+        bh=c9WsKYP78qtCT0ErIavQs+Q5NIpoTLGobCYxRumep4k=;
+        b=mUoeMQKBXpkRUXQ5osx04ys22Wap0AzA9aDFuOK+xESnUoY+k2HnfGNoQqEy1XVXZ0
+         DId5sb7Js3lps0vO1feaeBnp0X9gnI8fJxM1zXeYAtoruqR5NN28q+cT5wu5mlEpOE5S
+         cerh4QQeYXhgYcP2oi1yqXgoa5MAiW9apq1ocmdvAXRH7fdoaeSG6wfPICvizTgWoyTu
+         YQYR3PrTDVqQE9pfIztge3JzW54RI78ZUbynZJzB4bhN7x09477295BQIX85ES5Sc4js
+         ewhjHV7PvPZEKx6Y03BRT1m1QJTutGM99TU2MOPa+iHDFH87lQQUOTqOx4WKEaioq6Iu
+         4nyA==
+X-Gm-Message-State: AJIora9apKK/QNl77oKa/wt4DsU8EKi3xd8rSZW8uvumGIFgfUpsy7He
+	8SOVGy7tJtnmgSJwOPrThds=
+X-Google-Smtp-Source: AGRyM1skqTQGIq8EhXNOZW/llHdz3ok4Yt+f/wc47H+x9dyaLS8CpI3xeEkInEGO84kmTs6bP/YNog==
+X-Received: by 2002:a05:6a00:1589:b0:52a:eb00:71d8 with SMTP id u9-20020a056a00158900b0052aeb0071d8mr1805063pfk.38.1658524376175;
+        Fri, 22 Jul 2022 14:12:56 -0700 (PDT)
 Received: from ?IPV6:2620:15c:211:201:805b:3c64:6a1f:424c? ([2620:15c:211:201:805b:3c64:6a1f:424c])
-        by smtp.gmail.com with ESMTPSA id n18-20020a170902969200b0016c37fe48casm4136747plp.193.2022.07.22.14.07.11
+        by smtp.gmail.com with ESMTPSA id i9-20020a628709000000b0052aca106b20sm4404311pfe.202.2022.07.22.14.12.54
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 22 Jul 2022 14:07:12 -0700 (PDT)
-Message-ID: <60468f8f-c327-47d7-c6bf-bb73c9c84e9b@acm.org>
-Date: Fri, 22 Jul 2022 14:07:10 -0700
+        Fri, 22 Jul 2022 14:12:55 -0700 (PDT)
+Message-ID: <2f66f4ba-f0d5-6b8a-cc3b-fa896a302d60@acm.org>
+Date: Fri, 22 Jul 2022 14:12:52 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH v1] scsi: ufs: correct ufshcd_shutdown flow
+Subject: Re: [PATCH v3] scsi: ufs: correct ufshcd_shutdown flow
 Content-Language: en-US
-To: Peter Wang <peter.wang@mediatek.com>, stanley.chu@mediatek.com,
+To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
  linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
  alim.akhtar@samsung.com, jejb@linux.ibm.com
 Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
  chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
  chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
  qilin.tan@mediatek.com, lin.gui@mediatek.com
-References: <20220719130208.29032-1-peter.wang@mediatek.com>
- <afb8d403-f8f5-5161-4680-ce2c3ae7787d@acm.org>
- <a71af42f-3b66-c0a1-c79d-a4573d0376fe@mediatek.com>
+References: <20220721065833.26887-1-peter.wang@mediatek.com>
 From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <a71af42f-3b66-c0a1-c79d-a4573d0376fe@mediatek.com>
+In-Reply-To: <20220721065833.26887-1-peter.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220722_140716_287582_69AD566C 
-X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-CacheID: sfid-20220722_141258_363944_24B93334 
+X-CRM114-Status: UNSURE (   7.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,25 +85,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/20/22 21:30, Peter Wang wrote:
-> On 7/21/22 5:40 AM, Bart Van Assche wrote:
->> On 7/19/22 06:02, peter.wang@mediatek.com wrote:
->>> -    pm_runtime_get_sync(hba->dev);
->>> +    /* Wait ufshcd_wl_shutdown clear ufs state, timeout 500 ms */
->>> +    while (!ufshcd_is_ufs_dev_poweroff(hba) || 
->>> !ufshcd_is_link_off(hba)) {
->>> +        if (ktime_after(ktime_get(), timeout))
->>> +            goto out;
->>> +        msleep(1);
->>> +    }
->>
->> Please explain why this wait loop has been introduced.
+On 7/20/22 23:58, peter.wang@mediatek.com wrote:
+> Both ufshcd_shtdown and ufshcd_wl_shutdown could run concurrently.
+> And it have race condition when ufshcd_wl_shutdown on-going and
+> clock/power turn off by ufshcd_shutdown.
 > 
-> Both ufshcd_shutdown and ufshcd_wl_shutdown could run concurrently.
+> The normal case:
+> ufshcd_wl_shutdown -> ufshcd_shtdown
+> ufshcd_shtdown should turn off clock/power.
+> 
+> The abnormal case:
+> ufshcd_shtdown -> ufshcd_wl_shutdown
 
-Are you sure of this? In drivers/base/core.c I see a sequential loop in 
-the device_shutdown() function. So how could two shutdown functions run 
-concurrently?
+How can this happen since device_shutdown() iterates over devices in the 
+opposite order in which these have been created?
 
 Thanks,
 
