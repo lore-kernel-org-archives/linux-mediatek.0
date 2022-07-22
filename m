@@ -4,65 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3150FC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 08:40:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 784ABC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 08:48:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:Date:CC:To:From:Subject:Message-ID:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DPcjI0LIlsaFKiVSnERWISObm446Cib/HLNTXS6Dw6c=; b=y+F01Ig6iJ3F/gJWA3mJKEovb1
-	baifVygJtHg0V+SUtM7MbUsR4RZ9GxHHtPRTNnCdYaHUyWoO/Xd5kpFfyKDOdMHlmGXFOWzC3cWQS
-	XYNwNNFoE5Yx06berb8weq4hesk670hyoRRM8IDRHX60MuDTRFGPw5ITCaaK0BeRq8pFK5mFVTZof
-	yYBb1UWtHq28Mt8Ev/WdsUxY/wFnVFfRLZTdT0xycIbGz6YiO2IDj7qlQbYpQ+L9ks+xyz+9cmcv4
-	XefsNPr5Rh0CQvjpwnaIMJKZTTMGz6/MwH2e+D1l0EytsXogqqBZ4kapRNK0qJzUvpmhOtfvl5H2+
-	krew0MBQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wo9i7ylnonSqRZp3MZDS2L/OMinZvvULEpx0ebaHX7A=; b=Qbu3yxSxj61zL1Om5BsIkK5nPz
+	5MUS83kQqRK3tZUoVXILZEb9yPx2D0Uaqe8zshes/SLakNFUhYsWcNleE7MwiazgeNb3YDZMYuToR
+	gFs/VbV+hdQ75QUdNKKqjStor7L+COMrHnrBrk09iSzOd6K2tjAOHSR2Fl3v7nIa3YVAvvEJVPCWc
+	iLFZ2pb/dwrirzcuv3/0giBXo+qKXr2U4kzt53SWLBM6NCaOVsPVllZO6TCpNq6BUWAB+/9mxRj+b
+	D95TdFe84pH7FzF5ORgT9GBuM/V1rNMze7dN2/Tyo+cF3nBJDEBxOlT4H6hBTp3lBABsaGlDLRIgF
+	g/fyb7Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEoCv-00177K-JO; Fri, 22 Jul 2022 08:40:25 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oEoL5-001BT8-Bh; Fri, 22 Jul 2022 08:48:51 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEoCr-00171Q-6Z
-	for linux-mediatek@lists.infradead.org; Fri, 22 Jul 2022 08:40:23 +0000
-X-UUID: 4ea5e1f2d8cd4dbb94f066fb51440be2-20220722
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:3763ec17-e5bc-40cd-8e64-b3350762e611,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:0f94e32,CLOUDID:7fb98e29-fd69-41f1-91fc-8b8a329d3a88,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 4ea5e1f2d8cd4dbb94f066fb51440be2-20220722
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 764572135; Fri, 22 Jul 2022 01:40:10 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 22 Jul 2022 16:29:34 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Fri, 22 Jul 2022 16:29:34 +0800
-Message-ID: <42437b6fc5dac19bf23f9806dfbe6915e055397b.camel@mediatek.com>
-Subject: pull request: linux-firmware: Update Mediatek MT8183/MT8192/MT8195
- SCP firmware
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: <linux-firmware@kernel.org>
-CC: <linux-mediatek@lists.infradead.org>, <yunfei.dong@mediatek.com>,
-	<shawnku@google.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<Justin.Yeh@mediatek.com>, <Allen-KH.Cheng@mediatek.com>
-Date: Fri, 22 Jul 2022 16:29:34 +0800
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oEoKt-001BM5-DZ; Fri, 22 Jul 2022 08:48:41 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 13E326601AC4;
+	Fri, 22 Jul 2022 09:48:36 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658479717;
+	bh=0QO+6oLgvhK+hhiAPESY7hs5rZmvnaU9UNDpDcWmB1s=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=VcJVsR2n56FCaETa9c2NE7X36+AYL2H2fovnzQGPGGMON79hcJXXACYceS/OPzutI
+	 K9eJNani1frGV5Ky3tR+C7/GQcYj1NMUuvexfIAh8kDrn0l1845a9UoiV0O5A2EVtO
+	 N+wW8t1kcAeF8vAHR9it2tJT4IHEZZedSkY8mx9ulNNFMX/sKrfUVNTBPHzunqAf13
+	 M23bl7YPHHSaDSxtdOLghvFXvu4/nXcZtak6kFZ5+vRiOJyi4mwIGSmHWg6fnrvigp
+	 iFUinhtW8c4vH2xCYvneTYNgBSMr/1ds1PtDgBKbdr3hQrd/Zl4s2HFhbYPFf7EXjQ
+	 yUbQsIto106HQ==
+Message-ID: <3803ba45-c33d-db6c-818d-b37132d4837f@collabora.com>
+Date: Fri, 22 Jul 2022 10:48:34 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v5 7/7] clk: mediatek: Add MediaTek Helio X10 MT6795 clock
+ drivers
+Content-Language: en-US
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: bgolaszewski@baylibre.com, chun-jie.chen@mediatek.com,
+ ck.hu@mediatek.com, devicetree@vger.kernel.org, fparent@baylibre.com,
+ ikjn@chromium.org, jason-jh.lin@mediatek.com, kernel@collabora.com,
+ konrad.dybcio@somainline.org, krzysztof.kozlowski+dt@linaro.org,
+ linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ marijn.suijten@somainline.org, martin.botka@somainline.org,
+ matthias.bgg@gmail.com, miles.chen@mediatek.com, mturquette@baylibre.com,
+ p.zabel@pengutronix.de, paul.bouchara@somainline.org,
+ phone-devel@vger.kernel.org, rex-bc.chen@mediatek.com, robh+dt@kernel.org,
+ sam.shih@mediatek.com, sboyd@kernel.org, tinghan.shen@mediatek.com,
+ weiyi.lu@mediatek.com, wenst@chromium.org, y.oudjana@protonmail.com,
+ ~postmarketos/upstreaming@lists.sr.ht
+References: <20220629110254.184213-1-angelogioacchino.delregno@collabora.com>
+ <20220629110254.184213-8-angelogioacchino.delregno@collabora.com>
+ <4feebd9e-d1c3-aeea-8294-e7ae182f7918@wanadoo.fr>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <4feebd9e-d1c3-aeea-8294-e7ae182f7918@wanadoo.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220722_014021_269038_B84F1333 
-X-CRM114-Status: UNSURE (   6.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220722_014839_751761_FF29DB53 
+X-CRM114-Status: GOOD (  21.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,37 +87,194 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi maintainers,
+Il 21/07/22 19:00, Christophe JAILLET ha scritto:
+> Le 29/06/2022 à 13:02, AngeloGioacchino Del Regno a écrit :
+>> Add the clock drivers for the entire clock tree of MediaTek Helio X10
+>> MT6795, including system clocks (apmixedsys, infracfg, pericfg, topckgen)
+>> and multimedia clocks (mmsys, mfg, vdecsys, vencsys).
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno 
+>> <angelogioacchino.delregno-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+>> Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>> ---
+>>   drivers/clk/mediatek/Kconfig                 |  37 ++
+>>   drivers/clk/mediatek/Makefile                |   6 +
+>>   drivers/clk/mediatek/clk-mt6795-apmixedsys.c | 157 +++++
+>>   drivers/clk/mediatek/clk-mt6795-infracfg.c   | 148 +++++
+>>   drivers/clk/mediatek/clk-mt6795-mfg.c        |  50 ++
+>>   drivers/clk/mediatek/clk-mt6795-mm.c         | 106 ++++
+>>   drivers/clk/mediatek/clk-mt6795-pericfg.c    | 160 +++++
+>>   drivers/clk/mediatek/clk-mt6795-topckgen.c   | 610 +++++++++++++++++++
+>>   drivers/clk/mediatek/clk-mt6795-vdecsys.c    |  55 ++
+>>   drivers/clk/mediatek/clk-mt6795-vencsys.c    |  50 ++
+>>   10 files changed, 1379 insertions(+)
+>>   create mode 100644 drivers/clk/mediatek/clk-mt6795-apmixedsys.c
+>>   create mode 100644 drivers/clk/mediatek/clk-mt6795-infracfg.c
+>>   create mode 100644 drivers/clk/mediatek/clk-mt6795-mfg.c
+>>   create mode 100644 drivers/clk/mediatek/clk-mt6795-mm.c
+>>   create mode 100644 drivers/clk/mediatek/clk-mt6795-pericfg.c
+>>   create mode 100644 drivers/clk/mediatek/clk-mt6795-topckgen.c
+>>   create mode 100644 drivers/clk/mediatek/clk-mt6795-vdecsys.c
+>>   create mode 100644 drivers/clk/mediatek/clk-mt6795-vencsys.c
+>>
+> 
+> 
+> [...]
+> 
+>> diff --git a/drivers/clk/mediatek/clk-mt6795-apmixedsys.c 
+>> b/drivers/clk/mediatek/clk-mt6795-apmixedsys.c
+>> new file mode 100644
+>> index 000000000000..e87db76799af
+>> --- /dev/null
+>> +++ b/drivers/clk/mediatek/clk-mt6795-apmixedsys.c
+> 
+> [...]
+> 
+>> +static int clk_mt6795_apmixed_probe(struct platform_device *pdev)
+>> +{
+>> +    struct clk_hw_onecell_data *clk_data;
+>> +    struct device *dev = &pdev->dev;
+>> +    struct device_node *node = dev->of_node;
+>> +    void __iomem *base;
+>> +    struct clk_hw *hw;
+>> +    int ret;
+>> +
+>> +    base = devm_platform_ioremap_resource(pdev, 0);
+>> +    if (IS_ERR(base))
+>> +        return PTR_ERR(base);
+>> +
+>> +    clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+>> +    if (!clk_data)
+>> +        return -ENOMEM;
+>> +
+>> +    ret = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+>> +    if (ret)
+>> +        goto free_clk_data;
+>> +
+>> +    hw = mtk_clk_register_ref2usb_tx("ref2usb_tx", "clk26m", base + REG_REF2USB);
+> 
+> This calls kzalloc() and clk_hw_register() but...
+> 
+>> +    if (IS_ERR(hw)) {
+>> +        ret = PTR_ERR(hw);
+>> +        dev_err(dev, "Failed to register ref2usb_tx: %d\n", ret);
+>> +        goto unregister_plls;
+>> +    }
+>> +    clk_data->hws[CLK_APMIXED_REF2USB_TX] = hw;
+>> +
+>> +    ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+>> +    if (ret) {
+>> +        dev_err(dev, "Cannot register clock provider: %d\n", ret);
+>> +        goto unregister_ref2usb;
+>> +    }
+>> +
+>> +    /* Setup MD1 to avoid random crashes */
+>> +    dev_dbg(dev, "Performing initial setup for MD1\n");
+>> +    clk_mt6795_apmixed_setup_md1(base);
+>> +
+>> +    return 0;
+>> +
+>> +unregister_ref2usb:
+>> +    clk_hw_unregister(clk_data->hws[CLK_APMIXED_REF2USB_TX]);
+> 
+> ... only clk_hw_register() is undone here. Should a mtk_clk_unregister_ref2usb_tx() 
+> be useful?
+> 
+> Or is it already handled somewhere else?
+> 
+>> +unregister_plls:
+>> +    mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
+>> +free_clk_data:
+>> +    mtk_free_clk_data(clk_data);
+>> +    return ret;
+>> +}
+>> +
+>> +static int clk_mt6795_apmixed_remove(struct platform_device *pdev)
+>> +{
+>> +    struct device_node *node = pdev->dev.of_node;
+>> +    struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
+>> +
+>> +    of_clk_del_provider(node);
+>> +    clk_hw_unregister(clk_data->hws[CLK_APMIXED_REF2USB_TX]);
+> 
+> Same here.
+> 
+>> +    mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
+>> +    mtk_free_clk_data(clk_data);
+>> +
+>> +    return 0;
+>> +}
+>> +
+>> +static struct platform_driver clk_mt6795_apmixed_drv = {
+>> +    .probe = clk_mt6795_apmixed_probe,
+>> +    .remove = clk_mt6795_apmixed_remove,
+>> +    .driver = {
+>> +        .name = "clk-mt6795-apmixed",
+>> +        .of_match_table = of_match_clk_mt6795_apmixed,
+>> +    },
+>> +};
+>> +module_platform_driver(clk_mt6795_apmixed_drv);
+>> +
+>> +MODULE_DESCRIPTION("MediaTek MT6795 apmixed clocks driver");
+>> +MODULE_LICENSE("GPL v2");
+> 
+> [...]
+> 
+>> diff --git a/drivers/clk/mediatek/clk-mt6795-mm.c 
+>> b/drivers/clk/mediatek/clk-mt6795-mm.c
+>> new file mode 100644
+>> index 000000000000..27a8859ff5b5
+>> --- /dev/null
+>> +++ b/drivers/clk/mediatek/clk-mt6795-mm.c
+> 
+> [...]
+> 
+>> +static int clk_mt6795_mm_probe(struct platform_device *pdev)
+>> +{
+>> +    struct device *dev = &pdev->dev;
+>> +    struct device_node *node = dev->parent->of_node;
+>> +    struct clk_hw_onecell_data *clk_data;
+>> +    int ret;
+>> +
+>> +    clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+>> +    if (!clk_data)
+>> +        return -ENOMEM;
+>> +
+>> +    ret = mtk_clk_register_gates(node, mm_gates, ARRAY_SIZE(mm_gates), clk_data);
+>> +    if (ret)
+> 
+> Add an error handling path and call mtk_free_clk_data(clk_data); if this fails?
+> 
+>> +        return ret;
+>> +
+>> +    return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+> 
+> Same here, + mtk_clk_unregister_gates()?
+> 
+>> +}
+>> +
+>> +static struct platform_driver clk_mt6795_mm_drv = {
+>> +    .driver = {
+>> +        .name = "clk-mt6795-mm",
+>> +    },
+>> +    .probe = clk_mt6795_mm_probe,
+> 
+> .remove function that mimics the (non existent) error handling path of the probe?
+> 
+>> +};
+>> +module_platform_driver(clk_mt6795_mm_drv);
+>> +
+>> +MODULE_DESCRIPTION("MediaTek MT6795 multimedia clocks driver");
+>> +MODULE_LICENSE("GPL v2");
+> 
+> [...]
+> 
 
-Update SCP firmware for MediaTek MT8183/MT8192/MT8195.
-Thank you!
+Hello Cristophe,
+thanks for the review!
 
+I agree with all of the above, v6 will contain your proposed fixes.
 
 Regards,
-TingHan
-
----
-
-The following changes since commit 4421586e8e95ce789cb6b3f1af98962bfef74c7b:
-
-  amdgpu: update renoir to release 22.20 (2022-07-19 06:44:08 -0400)
-
-are available in the Git repository at:
-
-  https://github.com/tinghan-shen/linux_fw_scp mtk-scp-20220722
-
-for you to fetch changes up to 56cf6461a82b08facd41154f7c44a19f0a085f66:
-
-  mediatek: Update mt8183/mt8192/mt8195 SCP firmware (2022-07-22 16:16:27 +0800)
-
-----------------------------------------------------------------
-Tinghan Shen (1):
-      mediatek: Update mt8183/mt8192/mt8195 SCP firmware
-
- WHENCE                  |   6 +++---
- mediatek/mt8183/scp.img | Bin 1032064 -> 1030776 bytes
- mediatek/mt8192/scp.img | Bin 327968 -> 328096 bytes
- mediatek/mt8195/scp.img | Bin 429668 -> 429820 bytes
- 4 files changed, 3 insertions(+), 3 deletions(-)
-
+Angelo
 
