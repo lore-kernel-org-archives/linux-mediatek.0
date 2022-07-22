@@ -4,70 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE666C43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 21:33:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44F13C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 21:55:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2DhXSaxLXTfFSs0K/T7YCDSfHTOtm97L7msI4Hq1fc4=; b=t4Xpv5GuNiozOyP2+PEdKWbPdu
-	cFSrjkEEnMvIxf5XOxcudW41al8lHb50wtbNhfzdda1nPTDQekxCP4/ubnoNZCMDGMBae/p47pnhf
-	5rG4X7Yqp10auo2b62TwW2DrQRmoy6gHDsN/pYPt9f09dqG73CwoRvPf8ba1We1u3Et/xBd/pZ5Uf
-	UnbUYBd+M0UIkpPaZ89rlkXNjYfpKCBLd8+894gQBKUthwghDlhT28a2KIX7E/a5sqXZ6yhkmlaIP
-	gE+s0C1Hg5QUz9r6a9qOxtHOJXSEHDEih2BBaOT1t7I4g8nWIMpMA2ak0rR4yQo0oGmuqQjbfjSzB
-	hYC3Esxw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9ul5HRwjM7WDUxRSXRBNR66kxi05F3aeIEeMEbXyF3k=; b=TIUlkvWCw/Jj3pwfH/pAUZve39
+	MblN2Sthp/vTH4iMj/BabhCFCoG6ZJ1ytK1qfaYmbTi4P6la3jkm8knTH6Cr1Ee95YjU4lWUUYG+G
+	zYOAc+EWXWSsielskJFz/CDrR8+aCiySSfMAaMBabHFiEJYBgtrkzRzKhrv1/aqLStuRZhZY0RKFh
+	TbN3IuKuKb+NIy/wW27UZtsMsgbH5SIDYTBHCU1X/mi1k8tHIxr+FT6H0+IFJtUECjGlZ/H3dDtkW
+	CPQ77JkDB6FIlw1raT3cXW/oC7HLNh1Eve+b7emz6/CDVf4ND4geAd+ixj6hio+sa4mKTty0pT2CW
+	OZyoDd6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oF0HO-00BVto-Lr; Fri, 22 Jul 2022 21:33:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oF0bi-00Bhce-Uk; Fri, 22 Jul 2022 21:54:50 +0000
+Received: from vps0.lunn.ch ([185.16.172.187])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oF0HM-00BVrG-Bw
-	for linux-mediatek@lists.infradead.org; Fri, 22 Jul 2022 21:33:49 +0000
-X-UUID: e0c2093372d84bf7aca6586c20a4e55c-20220722
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:b924b80e-7a9b-4281-bf1d-fa27d6b98876,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:dcdc9829-fd69-41f1-91fc-8b8a329d3a88,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: e0c2093372d84bf7aca6586c20a4e55c-20220722
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1878913786; Fri, 22 Jul 2022 14:33:42 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Sat, 23 Jul 2022 04:53:04 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 23 Jul 2022 04:53:04 +0800
-From: <sean.wang@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <luiz.dentz@gmail.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
-	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
-	<robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
-	<posh.sun@mediatek.com>, <ted.huang@mediatek.com>,
-	<Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
-	<steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
-	<abhishekpandit@google.com>, <michaelfsun@google.com>, <mcchou@chromium.org>,
-	<shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Jing
- Cai <jing.cai@mediatek.com>
-Subject: [PATCH v2] Bluetooth: btusb: mediatek: fix WMT command failure during runtime suspend
-Date: Sat, 23 Jul 2022 04:53:02 +0800
-Message-ID: <d78a3734ffb59fcb1d19bacf59d217957d7b4091.1658515026.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+	id 1oF0bD-00BhMi-6p; Fri, 22 Jul 2022 21:54:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=9ul5HRwjM7WDUxRSXRBNR66kxi05F3aeIEeMEbXyF3k=; b=PDN/3e30eHLs8BtaLZ0T8TMOyN
+	N2HcfxKuYaTro4pIBdbot118lnyGcp4WCsIp6ajuJ6Re71SWmWgaYRfmrLC82jB15SXOQTPKLLYNs
+	XsLQ0dEg5gllyf/TMUKfxhTKKM30CKfds4fGXZzIb8Jw2ZlT9Rxg6YRhqh0h3L/HVMKY=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1oF0ai-00BBNY-9v; Fri, 22 Jul 2022 23:53:48 +0200
+Date: Fri, 22 Jul 2022 23:53:48 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Vladimir Oltean <olteanv@gmail.com>,
+	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>
+Subject: Re: [PATCH net-next 3/6] net: dsa: add support for retrieving the
+ interface mode
+Message-ID: <YtscbCH923vA6E2T@lunn.ch>
+References: <20220721182216.z4vdaj4zfb6w3emo@skbuf>
+ <YtnBmFm8Jhokgp7Q@shell.armlinux.org.uk>
+ <20220721213645.57ne2jf7f6try4ec@skbuf>
+ <YtpfmF37FmfY6BV5@shell.armlinux.org.uk>
+ <20220722105238.qhfq5myqa4ixkvy4@skbuf>
+ <YtqNkSDLRDtuooy/@shell.armlinux.org.uk>
+ <20220722124629.7y3p7nt6jmm5hecq@skbuf>
+ <YtqjFKUTsH4CK0L+@shell.armlinux.org.uk>
+ <20220722165600.lldukpdflv7cjp4j@skbuf>
+ <YtsUhdg3a2rT3NJC@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YtsUhdg3a2rT3NJC@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220722_143348_434349_777F557A 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20220722_145419_294891_2F06F9BF 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,63 +101,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+> I still don't understand your point - because you seem to be conflating
+> two different things (at least as I understand it.)
+> 
+> We have this:
+> 
+> 		port@N {
+> 			reg = <N>;
+> 			label = "cpu";
+> 			ethernet = <&ethX>;
+> 		};
+> 
+> This specifies that the port operates at whatever interface mode and
+> settings gives the maximum speed. There is no mention of a "managed"
+> property, and therefore (Andrew, correct me if I'm wrong) in-band
+> negotiation is not expected to be used.
 
-WMT cmd/event doesn't follow up the generic HCI cmd/event handling, it
-needs constantly polling control pipe until the host received the WMT
-event, thus, we should require to specifically acquire PM counter on the
-USB to prevent the interface from entering auto suspended while WMT
-cmd/event in progress.
+I would actually say it is undefined if in-band is expected or
+not. Pretty much everything is undefined, expect 'maximum speed'.
 
-Fixes: a1c49c434e15 ("Bluetooth: btusb: Add protocol support for MediaTek MT7668U USB devices")
-Co-developed-by: Jing Cai <jing.cai@mediatek.com>
-Signed-off-by: Jing Cai <jing.cai@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
-v2:
-1. move usb_autopm_[get, put]_interface to btusb_mtk_hci_wmt_sync whenever
-wmt cmd is invoked.
-2. add the explanation why we needed the specific
-usb_autopm_[get, put]_interface there.
----
- drivers/bluetooth/btusb.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+If you can choose between SGMII and 1000BaseX, GMII or RGMII, it is
+not defined which you should pick. However generally, *MII and a
+SERDES are mutually exclusive in hardware, except for the 6352 which
+have some ports with both. The switches do have strapping pins which
+can configure most ports into specific modes, which is probably want
+most boards do, and the "maximum speed" probably does not in fact
+adjust the port mode unless really required. It does however configure
+the MAC to fixed speed. There is a degree of separation between the
+MAC and the internal PHY/PCS. So the MAC could be fixed, and the PCS
+is probably using its power up defaults which could be to perform
+in-band signalling. And it is very likely the results from that in
+band signalling is ignored by the MAC.
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 480ea891c09a..bdcfc3deea6c 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -2453,15 +2453,29 @@ static int btusb_mtk_hci_wmt_sync(struct hci_dev *hdev,
- 
- 	set_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags);
- 
-+	/* WMT cmd/event doesn't follow up the generic HCI cmd/event handling,
-+	 * it needs constantly polling control pipe until the host received the
-+	 * WMT event, thus, we should require to specifically acquire PM counter
-+	 * on the USB to prevent the interface from entering auto suspended
-+	 * while WMT cmd/event in progress.
-+	 */
-+	err = usb_autopm_get_interface(data->intf);
-+	if (err < 0)
-+		goto err_free_wc;
-+
- 	err = __hci_cmd_send(hdev, 0xfc6f, hlen, wc);
- 
- 	if (err < 0) {
- 		clear_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags);
-+		usb_autopm_put_interface(data->intf);
- 		goto err_free_wc;
- 	}
- 
- 	/* Submit control IN URB on demand to process the WMT event */
- 	err = btusb_mtk_submit_wmt_recv_urb(hdev);
-+
-+	usb_autopm_put_interface(data->intf);
-+
- 	if (err < 0)
- 		goto err_free_wc;
- 
--- 
-2.25.1
+So this is all pretty fragile, but that is the way this has all
+evolved over time for the mv88e6xxx driver. And so far, boards
+continue to work, or at least, we are not going reports they are
+broken. That however does not mean it will not all implode sometime in
+the future, and we probably should be asking new submissions to always
+use a fixed-link and a phy-mode, even if it is not strictly needed.
 
+	Andrew
 
