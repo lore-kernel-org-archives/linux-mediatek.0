@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6917DC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 11:56:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12E3DC43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 12:26:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5wmEZg8e3eCAlKcAUPdfdOasbgULgwSt4SV8j8Mdeec=; b=qVuk5/Pi/8o4bUlx/TueSWrrmf
-	dYXIimdMenZs9z47yYlRmR8Vo7VJ5OL/tAH9whiTNt5w91Sh+Z+tbgaGsbfFJUVVilzfeNDl2idIB
-	/Yi18ou6Fo2oelpBHxRsJ4JB8Sh5c+YM7ysySVEcLpixiOW4YQTXtUT5/xDz/EG0La6gOErPH3KeV
-	HAhv4bAg4rHS+WlUdzl6NSu5hhCHj82YFRODLYTSoVAN2tkCIlG4Kg0W4Jtmmr5NnTLkLBMcqewJr
-	9O5uvbSEWAYdAwYzr9DgmmoMkyeB4Yejcv1rQup9IzB4vYNGw//N4m8KdTMWWrRdevIkpu5cpx/DM
-	a8gT66UQ==;
+	bh=hLPlQqZjJSQKPGHb0YS9zkev/y0pH7c+d/jPKAb2GH0=; b=VRIb0X3IOYy+73Mfpogd1payQJ
+	FXs4BmCTAe25Co9ghdpsVGc+BPN+Hh/R49h2mJvV+aBBpetgIdocXcs507tCBtxb406zlOK6ljPob
+	OlUYcxsiZprqLxbYV6pNFroYBxtAZQ7sOlk9ua6ReQ8/i1YXtSEgPGM+dkpB/KrD5p5jYs6z1uUSs
+	p72v2hQh2r+Mdol5tLnb1UyId+jRvqRSmjdRBhl8qFqLa8xD0IHmjiHYX0XVf+kHaWeaY5sTJbW2X
+	EiQd3Y3V1WxGGabYpww/BgNHuhdFQbcqEWNndkYmxHQux7mtsplDZFpN1HTR2vrXnq0VpytS1NLf3
+	GsKF4Ohw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oErGo-003npd-Hh; Fri, 22 Jul 2022 11:56:38 +0000
+	id 1oErjy-004CfF-D4; Fri, 22 Jul 2022 12:26:46 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oErGb-003nh1-Vz; Fri, 22 Jul 2022 11:56:26 +0000
+	id 1oErjn-004CWs-2k; Fri, 22 Jul 2022 12:26:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Sender:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=5wmEZg8e3eCAlKcAUPdfdOasbgULgwSt4SV8j8Mdeec=; b=Y6OSCZfMTXKaCK5jWlbY6O2CEb
-	xOTsUzvI75mvJ/QdU/+8kimHR9miDBQE+fa9WiU+a0HfkE3UYwaU7tRIJzaZQ4Z2bQfqpIK/CqbhC
-	vXdNPLPrPI+NjDVOPVzjOLAkJDJjjo10l/TmPW9BUXntQYEPIronU/CsK00nqDNz7WMMAhtuMgjxa
-	oQdQSr/+Qb4V7WGpTr56PC0TnzFnQHTaBdrYCnPZdwBf2W5xuPbcRNOQexldgIqTTYPTt1uXLOksM
-	hTxqfAmkn8hYulljFV21TYQoSq9ZptA/JIkPGNoGCj0pvPDSoeecGnx1oBPaoRo6GC9YzkVTtq1I0
-	wX0W4zog==;
+	bh=hLPlQqZjJSQKPGHb0YS9zkev/y0pH7c+d/jPKAb2GH0=; b=aHV48YqFzODg6AW7BnYTXUngA6
+	A4CzQCHZUa7PCBWJAqn9/qZUswCxg2NFTSLVNlXveu4BFhM//PHYgDOTau48FkF94U+UizuPqg+d+
+	ZYpgi8JvJviYRgIi/T91QWcebGk1s+3sUZHl+1fH3pC5sL5tUofEEGoxOv5qWOhFEdYsI6KfXUpx9
+	PLzHbeG7KHDdk4EX8plu4ObvMZN4jCDCGGXIAkbQMi/rHr2Ea61TJ/0Rc/ircWq+4YABQ0TbGWC/y
+	BcBqjncPFpH/1JCu1gJOEPuRRZaPxxyTF6MCtc2OHK6ZkhYLfla21orKl7O/l6K76pUcGCWBQ9/mV
+	6o2RYmXw==;
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oErGX-005qhT-De; Fri, 22 Jul 2022 11:56:23 +0000
+	id 1oErji-005r5N-Te; Fri, 22 Jul 2022 12:26:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=5wmEZg8e3eCAlKcAUPdfdOasbgULgwSt4SV8j8Mdeec=; b=yqkIcaBlLNpNZg1fKq0xUDZaiZ
-	iniVnF2uQqxoURzJGfe+foJIZJA+90DvfpWrORP117AxcQhfYr+R5WIIUB7i+JLt7vQqAALkB4gA/
-	fcumWs66Qis+iOWEuEYNSOwpggdqavJ53C7r8Q5tE4muoGOuZbWFyZZYU1JjfmcF58SVFI4NflHZr
-	IimUKjJKKexGBcP6VG3Hjcw2ux5PbHtOQulZ5UMzGwSpbc6RpRwiRifhg+0WKqLDgHNKVXE+FweeV
-	WQ1CbuHcTVKxDdRyobiRZ4MMKKO8/Zp2/h7g6jnf0TxcXhRkPxlFxL8cbsZoVnpoCZ2fxVx4L++XX
-	hQnqqlEg==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33506)
+	bh=hLPlQqZjJSQKPGHb0YS9zkev/y0pH7c+d/jPKAb2GH0=; b=Eipa470pMb32q7EeATriUghX+/
+	KITuXZ9S4vCLTY46DmqjDyGpM7vOaTX373ELSkiENYVCUbx37ijqPkd2wE1e8eoZ/NXZn+FVtqsz4
+	5A2IXJfCRbSu4HpYZz1TJWAO/I1puYiooK+eEk4qyILtT2gAbRvdqAuK7BuODcMliMa/h6kELMlhy
+	wIVeKCswUAQFHcWin+dBmP6pOsTdfWz2RcKi3eUrlLuied06chsOSAqrvqr18tEZk2V7nQqkCA3Ei
+	o6d+sBhp7fmyprsdGAzuuaiZSBcNf0kpciA3v0JXXoXb2tvk2/APeeqctcks5LlC1MElSVoNmw11j
+	u8LOPsqw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33510)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1oEr5N-0006q5-FF; Fri, 22 Jul 2022 12:44:49 +0100
+	id 1oErYE-0006sX-48; Fri, 22 Jul 2022 13:14:38 +0100
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1oEr4r-0005nM-D3; Fri, 22 Jul 2022 12:44:17 +0100
-Date: Fri, 22 Jul 2022 12:44:17 +0100
+	id 1oErY1-0005of-0U; Fri, 22 Jul 2022 13:14:25 +0100
+Date: Fri, 22 Jul 2022 13:14:24 +0100
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Vladimir Oltean <olteanv@gmail.com>
 Cc: Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
@@ -91,9 +91,8 @@ Cc: Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
 	Woojung Huh <woojung.huh@microchip.com>
 Subject: Re: [PATCH net-next 3/6] net: dsa: add support for retrieving the
  interface mode
-Message-ID: <YtqNkSDLRDtuooy/@shell.armlinux.org.uk>
-References: <20220721134618.axq3hmtckrumpoy6@skbuf>
- <Ytlol8ApI6O2wy99@shell.armlinux.org.uk>
+Message-ID: <YtqUoOiiAez2Kmd5@shell.armlinux.org.uk>
+References: <Ytlol8ApI6O2wy99@shell.armlinux.org.uk>
  <20220721151533.3zomvnfogshk5ze3@skbuf>
  <20220721192145.1f327b2a@dellmb>
  <20220721192145.1f327b2a@dellmb>
@@ -102,13 +101,14 @@ References: <20220721134618.axq3hmtckrumpoy6@skbuf>
  <20220721213645.57ne2jf7f6try4ec@skbuf>
  <YtpfmF37FmfY6BV5@shell.armlinux.org.uk>
  <20220722105238.qhfq5myqa4ixkvy4@skbuf>
+ <YtqNkSDLRDtuooy/@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220722105238.qhfq5myqa4ixkvy4@skbuf>
+In-Reply-To: <YtqNkSDLRDtuooy/@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220722_125621_700532_55588F6E 
-X-CRM114-Status: GOOD (  59.80  )
+X-CRM114-CacheID: sfid-20220722_132631_137525_26D50FD7 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,175 +123,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 22, 2022 at 01:52:38PM +0300, Vladimir Oltean wrote:
-> On Fri, Jul 22, 2022 at 09:28:08AM +0100, Russell King (Oracle) wrote:
-> > On Fri, Jul 22, 2022 at 12:36:45AM +0300, Vladimir Oltean wrote:
-> > > On Thu, Jul 21, 2022 at 10:14:00PM +0100, Russell King (Oracle) wrote:
-> > > > > > So currently we try to enable C37 AN in 2500base-x mode, although
-> > > > > > the standard says that it shouldn't be there, and it shouldn't be there
-> > > > > > presumably because they want it to work with C73 AN.
-> > > > > > 
-> > > > > > I don't know how to solve this issue. Maybe declare a new PHY interface
-> > > > > > mode constant, 2500base-x-no-c37-an ?
-> > > > > 
-> > > > > So this is essentially what I'm asking, and you didn't necessarily fully
-> > > > > answer. I take it that there exist Marvell switches which enable in-band
-> > > > > autoneg for 2500base-x and switches which don't, and managed = "in-band-status"
-> > > > > has nothing to do with that decision. Right?
-> > > > 
-> > > > I think we're getting a little too het up over this.
-> > > 
-> > > No, I think it's relevant to this patch set.
-> > > 
-> > > > We have 1000base-X where, when we're not using in-band-status, we don't
-> > > > use autoneg (some drivers that weren't caught in review annoyingly do
-> > > > still use autoneg, but they shouldn't). We ignore the ethtool autoneg
-> > > > bit.
-> > > > 
-> > > > We also have 1000base-X where we're using in-band-status, and we then
-> > > > respect the ethtool autoneg bit.
-> > > > 
-> > > > So, wouldn't it be logical if 2500base-X were implemented the same way,
-> > > > and on setups where 2500base-X does not support clause 37 AN, we
-> > > > clear the ethtool autoneg bit? If we have 2500base-X being used as the
-> > > > media link, surely this is the right behaviour?
-> > > 
-> > > The ethtool autoneg bit is only relevant when the PCS is the last thing
-> > > before the medium. But if the SERDES protocol connects the MAC to the PHY,
-> > > or the MAC to another MAC (such as the case here, CPU or DSA ports),
-> > > there won't be any ethtool bit to take into consideration, and that's
-> > > where my question is. Is there any expected correlation between enabling
-> > > in-band autoneg and the presence or absence of managed = "in-band-status"?
-> > 
-> > This topic is something I was looking at back in November 2021, trying
-> > to work out what the most sensible way of indicating to a PCS whether
-> > it should enable in-band or not:
-> > 
-> > http://git.armlinux.org.uk/cgit/linux-arm.git/commit/?h=net-queue&id=e4ea7d035e7e04e87dfd86702f59952e0cecc18d
-> > http://git.armlinux.org.uk/cgit/linux-arm.git/commit/?h=net-queue&id=e454bf101fa457dd5c2cea0b1aaab7ba33048089
-> > http://git.armlinux.org.uk/cgit/linux-arm.git/commit/?h=net-queue&id=e2c57490f205ae7c0e11fcf756675937f933be5e
-> > 
-> > The intention there was to move the decision about whether a PCS should
-> > enable autoneg out of the PCS and into phylink, but doing that one comes
-> > immediately on the problem of (e.g.) Marvell NETA/PP2 vs Lynx having
-> > different interpretations for 2500base-X. There are also a number of
-> > drivers that do not follow MLO_AN_INBAND-means-use-inband or not for
-> > things such as SGMII or 1000base-X.
-> > 
-> > This means we have no standard interpretation amongst phylink users
-> > about when in-band signalling should be enabled or disabled, which
-> > means moving that decision into phylink today isn't possible.
-> > 
-> > The only thing we could do is provide the PCS with an additional bit
-> > of information so it can make the decision - something like a boolean
-> > "pcs_connects_to_medium" flag, and keep the decision making in the
-> > PCS-specific code - sadly keeping the variability between different
-> > PCS implementations.
+On Fri, Jul 22, 2022 at 12:44:17PM +0100, Russell King (Oracle) wrote:
+> Given that this managed property was introduced for mvneta, mvneta's
+> implementation of it is the best reference we have to work out what
+> the intentions of it were beyond the commit text.
 > 
-> The way I understand what you're saying is that there is no guarantee
-> that the DSA master and CPU port will agree whether to use in-band
-> autoneg or not here (and implicitly, there is no guarantee that this
-> link will work):
+> With in-band mode enabled, mvneta makes use of a fixed-link PHY, and
+> updates the fixed-link PHY with the status from its GMAC block (which
+> is the combined PCS+MAC).
 > 
-> 	&eth0 {
-> 		phy-mode = "2500base-x";
-> 		managed = "in-band-status";
-> 	};
-> 
-> 	&switch_cpu_port {
-> 		ethernet = <&eth0>;
-> 		phy-mode = "25000base-x";
+> So, when in-band mode is specified, the results from SGMII or 1000base-X
+> negotiation are read from the MAC side of the link, pushed into the
+> fixed-PHY, which then are reflected back into the driver via the usual
+> phylib adjust_link().
 
-I'll assume that 25000 is a typo.
+... and I should have said that this is exactly why in-band mode is
+treated as a fixed-link, even though it's nothing of the sort. It makes
+use of the infrastructure that was present at the time (fixed-phy) to
+implement this feature of reading the link status from the PCS/MAC end
+of the link.
 
-> 		managed = "in-band-status";
-> 	};
-
-Today, there is no guarantee - because it depends on how people have
-chosen to implement 2500base-X, and whether the hardware requires the
-use of in-band AN or prohibits it. This is what happens when stuff
-isn't standardised - one ends up with differing implementations doing
-different things, and this has happened not _only_ at hardware level
-but also software level as well.
-
-You have to also throw into this that various implementations also have
-an "AN bypass" flag, which means if they see what looks like a valid
-SERDES data stream, but do not see the AN data, after a certain timeout
-they allow the link to come up - and again, whether that is enabled or
-not is pot luck today.
-
-> similarly, there is a good chance that the DT description below might
-> result in a functional link:
-> 
-> 	&eth0 {
-> 		phy-mode = "2500base-x";
-> 		managed = "in-band-status";
-> 	};
-> 
-> 	&switch_cpu_port {
-> 		ethernet = <&eth0>;
-> 		phy-mode = "25000base-x";
-> 
-> 		fixed-link {
-> 			speed = <2500>;
-> 			full-duplex;
-> 		};
-> 	};
-> 
-> There is no expectation from either DT description to use in-band
-> autoneg or not.
-> 
-> The fact that of_phy_is_fixed_link() was made by Stas Sergeev to say
-> that a 'managed' link with the value != 'auto' is fixed prompted me to
-> study exactly what those changes were about.
-
-From what I can see, there is no formal definition of "in-band-status"
-beyond what it says on the tin. The description in the DT binding
-specification, which is really where this should be formally documented,
-is totally lacking.
-
->     This patch introduces the new string property 'managed' that allows
->     the user to set the management type explicitly.
->     The supported values are:
->     "auto" - default. Uses either MDIO or nothing, depending on the presence
->     of the fixed-link node
->     "in-band-status" - use in-band status
-
-This, and how this is implemented by mvneta, is the best we have to go
-on for the meaning of this.
-
-> This is why I am asking whether there is any formal definition of what
-> managed = "in-band-status" means. You've said it means about retrieving
-> link status from the PCS. What are you basing upon when you are saying that?
-
-Given that this managed property was introduced for mvneta, mvneta's
-implementation of it is the best reference we have to work out what
-the intentions of it were beyond the commit text.
-
-With in-band mode enabled, mvneta makes use of a fixed-link PHY, and
-updates the fixed-link PHY with the status from its GMAC block (which
-is the combined PCS+MAC).
-
-So, when in-band mode is specified, the results from SGMII or 1000base-X
-negotiation are read from the MAC side of the link, pushed into the
-fixed-PHY, which then are reflected back into the driver via the usual
-phylib adjust_link().
-
-Have a read through mvneta's code at this commit:
-
-git show 2eecb2e04abb62ef8ea7b43e1a46bdb5b99d1bf8:drivers/net/ethernet/marvell/mvneta.c
-
-specifically, mvneta_fixed_link_update() and mvneta_adjust_link().
-Note that when operating in in-band mode, there is actually no need
-for the configuration of MVNETA_GMAC_AUTONEG_CONFIG to be touched
-in any way since the values read from the MVNETA_GMAC_STATUS register
-indicate what parameters the MAC is actually using. (The speed,
-duplex, and pause bits in AUTONEG_CONFIG are ignored anyway if AN
-is enabled.)
-
-I know this is rather wooly, but not everything is defined in black and
-white, and we need to do the best we can with the information that is
-available.
+It may not have been the best design, but it's an evolved design based
+on the code that was available and what people thought at the time (and
+pre-dates my involvement with mvneta in mainline.)
 
 -- 
 RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
