@@ -4,81 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A02DC43334
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 07:57:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B7E7CCA489
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 08:29:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kC6wLXcG5jpDOyAuaOfUjxJXuJa1O1kEkMAIU128Bog=; b=ylGMBiYQ6r+pYKaNAwcHQUnO64
-	db1Qsg8yCSEz6seBJWnyRk7cobn/OboLa+442x3lk5qCx3/NaUCVJE2AVanYGRIzdvIlME2vpEMwB
-	mI5yw706BBH1jTY3kqCJLHH7CLXBZ/mtbaAt/5YgsoQC7n0L6ZTPmCPxinzNDW0voDhEEyzyONuQK
-	QBONVGZAzId3j6q1IxSwQ8GnIgzO5MVelfEleHUbJDojGI6rfspXnvcT9SLAPt06RLInGOVhJNyxx
-	+IyCTTJVN9BIDEhD429S9OncdZTGh6NDalMSMfkB6AbEjnvXj3ab8s2uT+RwdfskJJgnfHgvSj6/e
-	4jn3QNeQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QLrh58h0nH62BcjtmQ41KjLQPmjdtK+wuA23xz7N7Hw=; b=D0458UtWMIAmL4xgQ/9KhZfvOl
+	1HMdv4pPys6pYUCxCA8NLx3Sq836mfNqFxrNGSjzl+A02eTDj6c4G+00wiFk6f/yQti4XW1C4JKf8
+	IDu9qH/gwZxrWabDg9bShRnMhOUBQYFOkFXyegJdNm6oiGErbEUIp1Hh7VZnL0joe0FRBWSv6pmag
+	imLBgf8KS1Ug4q8L+xIZyDq0CZepfUEqjc8sSuIgDhy5H8GBN1rSn29iS9aFtAbq/QSOMg1YF34dj
+	xoCa5MJPEksh0QixjOp1NhcKVl0oj/4VymfbDTN154qx0CAgD9v+JlUUn92/0FbmvvSQMf77BmozV
+	KwDQwr7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEnXE-000nxP-5S; Fri, 22 Jul 2022 07:57:20 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oEo1k-0011Oa-MD; Fri, 22 Jul 2022 08:28:52 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEnWw-000nlu-5c; Fri, 22 Jul 2022 07:57:03 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 649E96601ABF;
-	Fri, 22 Jul 2022 08:56:59 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658476620;
-	bh=2DGolipgyjptolp4am/pfMdXRfTwRTSgmtA0z4LFs74=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TWjJcmibV8VEFEuMdfgD9HUYattJGFNft4NDLBqSyUYkaeici4lRn0ccNAgCz40cq
-	 MQZt7GjX8qA8DUEWCTi8yIOL6u9YbtWgdCcaSo/an71v2OEpY//0cGgG2dgkd76qQ3
-	 u6Zh1RqQxXPI6SdE1agHamet20MjIiy/F03N5QH8AI2jghDmLBv8M1L0nrrSOhXdiP
-	 Ox5FUb8bFRanFQ4UPFYEQuBXsassSLjVfD4yQHp6JbcxfralOfGQ6rxILansDl2xo3
-	 ovUHwyqpHQM7s74K/YR+Pv4fHMzMP3J4DkdJcxoQ/D3LrmxfM+REkM+KqQ8GHaIMRx
-	 OMv/SONENFg+A==
-Message-ID: <addbe80a-8fdd-fe5e-f880-c11dc1833fb6@collabora.com>
-Date: Fri, 22 Jul 2022 09:56:56 +0200
+	id 1oEo1Y-0011J1-Ku; Fri, 22 Jul 2022 08:28:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=QLrh58h0nH62BcjtmQ41KjLQPmjdtK+wuA23xz7N7Hw=; b=wsRSlcIAm96BOcQgLoUB1Rctu2
+	VBvN2i39dm3Ox8/A0Yp5X1vGD91EmGSLTKOHblCmqU5/xDBPgUOTKJM412jiv9Mc3uoiBtx6wIPcF
+	kPsBKQ1a4Yq/tTceiU+BVYHrdteMgM6Gvgul/SdgEXyzR+yxf/pDrhsybKU+9e4Y5RYwjnLhLJFNt
+	VzaMxKujLy+vHa/Q+G97cFtGMYvlR3o+cfVkg9NT7jVzfsl6dzA0/8/nyDGoledVIBOLOzkHuSvay
+	Xb0DtU7O5t5PRtmZswmXYddAOjMvGMPmWanKfzqzlY6HueuQnXOzeEP8ADNh/d5Oc8+3hph6uLDd8
+	dLHKR4aQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33500)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1oEo18-0006dm-6X; Fri, 22 Jul 2022 09:28:14 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1oEo12-0005g7-KG; Fri, 22 Jul 2022 09:28:08 +0100
+Date: Fri, 22 Jul 2022 09:28:08 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>
+Subject: Re: [PATCH net-next 3/6] net: dsa: add support for retrieving the
+ interface mode
+Message-ID: <YtpfmF37FmfY6BV5@shell.armlinux.org.uk>
+References: <YtUec3GTWTC59sky@shell.armlinux.org.uk>
+ <20220720224447.ygoto4av7odsy2tj@skbuf>
+ <20220721134618.axq3hmtckrumpoy6@skbuf>
+ <Ytlol8ApI6O2wy99@shell.armlinux.org.uk>
+ <20220721151533.3zomvnfogshk5ze3@skbuf>
+ <20220721192145.1f327b2a@dellmb>
+ <20220721192145.1f327b2a@dellmb>
+ <20220721182216.z4vdaj4zfb6w3emo@skbuf>
+ <YtnBmFm8Jhokgp7Q@shell.armlinux.org.uk>
+ <20220721213645.57ne2jf7f6try4ec@skbuf>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [RESEND] media: mediatek: vcodec: Add to support VP9 inner racing
- mode
-Content-Language: en-US
-To: "mingjia.zhang@mediatek.com" <mingjia.zhang@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Nicolas Dufresne <nicolas@ndufresne.ca>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: George Sun <george.sun@mediatek.com>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220715064938.5812-1-mingjia.zhang@mediatek.com>
- <6d8aeee4-9732-1c62-67e0-6e8f56373aa6@collabora.com>
- <cf62ea99e74ea729a38fe7f806cbc06a0c549ddc.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <cf62ea99e74ea729a38fe7f806cbc06a0c549ddc.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220721213645.57ne2jf7f6try4ec@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220722_005702_374984_86D33FDB 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20220722_012840_705518_99A95A97 
+X-CRM114-Status: GOOD (  34.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,54 +110,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/07/22 08:43, mingjia.zhang@mediatek.com ha scritto:
-> Hi Angelo,
+On Fri, Jul 22, 2022 at 12:36:45AM +0300, Vladimir Oltean wrote:
+> On Thu, Jul 21, 2022 at 10:14:00PM +0100, Russell King (Oracle) wrote:
+> > > > So currently we try to enable C37 AN in 2500base-x mode, although
+> > > > the standard says that it shouldn't be there, and it shouldn't be there
+> > > > presumably because they want it to work with C73 AN.
+> > > > 
+> > > > I don't know how to solve this issue. Maybe declare a new PHY interface
+> > > > mode constant, 2500base-x-no-c37-an ?
+> > > 
+> > > So this is essentially what I'm asking, and you didn't necessarily fully
+> > > answer. I take it that there exist Marvell switches which enable in-band
+> > > autoneg for 2500base-x and switches which don't, and managed = "in-band-status"
+> > > has nothing to do with that decision. Right?
+> > 
+> > I think we're getting a little too het up over this.
 > 
-> Thanks for your reply and useful comments.
+> No, I think it's relevant to this patch set.
 > 
-> In addition to running cts/gts test, I ran the fluster test with
-> GStreamer locally. The test result is "Ran 240/303 tests successfully"
+> > We have 1000base-X where, when we're not using in-band-status, we don't
+> > use autoneg (some drivers that weren't caught in review annoyingly do
+> > still use autoneg, but they shouldn't). We ignore the ethtool autoneg
+> > bit.
+> > 
+> > We also have 1000base-X where we're using in-band-status, and we then
+> > respect the ethtool autoneg bit.
+> > 
+> > So, wouldn't it be logical if 2500base-X were implemented the same way,
+> > and on setups where 2500base-X does not support clause 37 AN, we
+> > clear the ethtool autoneg bit? If we have 2500base-X being used as the
+> > media link, surely this is the right behaviour?
 > 
-> 
+> The ethtool autoneg bit is only relevant when the PCS is the last thing
+> before the medium. But if the SERDES protocol connects the MAC to the PHY,
+> or the MAC to another MAC (such as the case here, CPU or DSA ports),
+> there won't be any ethtool bit to take into consideration, and that's
+> where my question is. Is there any expected correlation between enabling
+> in-band autoneg and the presence or absence of managed = "in-band-status"?
 
-Just an advice: if you want to speed up the reviews and merging these
-commits, always post the full output of Fluster/GST testing when sending
-them.
+This topic is something I was looking at back in November 2021, trying
+to work out what the most sensible way of indicating to a PCS whether
+it should enable in-band or not:
 
-This will make it easier for the media maintainers to review your code :-)
+http://git.armlinux.org.uk/cgit/linux-arm.git/commit/?h=net-queue&id=e4ea7d035e7e04e87dfd86702f59952e0cecc18d
+http://git.armlinux.org.uk/cgit/linux-arm.git/commit/?h=net-queue&id=e454bf101fa457dd5c2cea0b1aaab7ba33048089
+http://git.armlinux.org.uk/cgit/linux-arm.git/commit/?h=net-queue&id=e2c57490f205ae7c0e11fcf756675937f933be5e
 
-Anyway, thanks for the Fluster testing!
+The intention there was to move the decision about whether a PCS should
+enable autoneg out of the PCS and into phylink, but doing that one comes
+immediately on the problem of (e.g.) Marvell NETA/PP2 vs Lynx having
+different interpretations for 2500base-X. There are also a number of
+drivers that do not follow MLO_AN_INBAND-means-use-inband or not for
+things such as SGMII or 1000base-X.
 
-Cheers,
-Angelo
+This means we have no standard interpretation amongst phylink users
+about when in-band signalling should be enabled or disabled, which
+means moving that decision into phylink today isn't possible.
 
-> Thanks,
-> mingjia
-> 
-> 
-> On Fri, 2022-07-15 at 10:34 +0200, AngeloGioacchino Del Regno wrote:
->> Il 15/07/22 08:49, Mingjia Zhang ha scritto:
->>> In order to reduce decoder latency, enable VP9 inner racing mode.
->>> Send lat trans buffer information to core when trigger lat to work,
->>> need not to wait until lat decode done.
->>>
->>> Signed-off-by: mingjia zhang <mingjia.zhang@mediatek.com>
->>> ---
->>> CTS/GTS test pass
->>
->> CTS/GTS passing is a good indication but, please, test with GStreamer
->> (and
->> show the output, as well!).
->>
->> Thanks,
->> Angelo
->>
->>> ---
->>>    .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 64 ++++++++++++
->>> -------
->>>    1 file changed, 40 insertions(+), 24 deletions(-)
->>>
-> 
+The only thing we could do is provide the PCS with an additional bit
+of information so it can make the decision - something like a boolean
+"pcs_connects_to_medium" flag, and keep the decision making in the
+PCS-specific code - sadly keeping the variability between different
+PCS implementations.
 
-
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
