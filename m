@@ -4,61 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2019FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 07:06:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1289C43334
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 07:06:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Qo5ylaCxuzgKhJn9U7zXuJRczgF1D0UWplgFpZcY8eo=; b=XUdkKvCl5TsdeSlLXABSIVk9ZI
-	IcK0UPPfPvcdRWGQwwQ4uqH8FKhZEQgvk24X24SH35bTvdkVQH0/29L3kPkElk4r/aLTZdcHoK8S3
-	x5efAkIgPGON+B4vJPxGDgaI+XRJkdV3iTY8GzZ422lf2IE4ZjedcqQV3VXlbE++ofQQ5DKBn1EpO
-	2dgu7SLrL/RmPLbLvh/WgdcmfxQpX+R0KYFxkarZmrFYzb8bUrMIQSCp8PdQHXO6p3wChGC4S4E6w
-	2eXYAfAIavSkYWLVWtSVm77hoMMfRHjiN0YpI/GvZKrNpNtoJ6WRryhQBXI46k9jA9Vtu3EOF7BLF
-	ElmCMe7w==;
+	bh=e0t9Q6XpV/VuvaKKU0/0uSeNj/n1C5tIF0M0HahBUJY=; b=i4oYwhywZVsBmS7ggiQKTeKB4p
+	0KF4cXYL0S9OYnJD7MZdR7nL9igNsFudLhLdxN95bzrOpxrR8L+rTpgCZ//gcsh7XCHH0hn6iy9ms
+	L7nI59NZpr/4ovdOem5gH+/Kw+12wrnyBagZVyWbHy4VEI84dYfXpr21zVT0ZYi8N9eUMs9oS5ex+
+	1FQXRep/hLnF5xfQTG6IkohCF6CnkPcQctshNrJ8IEyY1dHjCpL1LVC1amvycw9ZCK4Nn2KLFtCxt
+	yeg9a/DSUy/vJKU87LNTACCzPyc4wjlLCNuG22MuS0AAjb20m0gF4f5MQHnvuD5qQgbESupuxbwV8
+	/uPP3jPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEmjn-000WSw-8s; Fri, 22 Jul 2022 07:06:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oEmk4-000WZx-Kk; Fri, 22 Jul 2022 07:06:32 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEmjl-000WR0-69; Fri, 22 Jul 2022 07:06:14 +0000
-X-UUID: 3bd15ff120cf491fba0d5dfe1410048d-20220722
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:963b8dbb-fee5-43f5-9878-8998fb2f1bfc,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:25cc2dd8-5d6d-4eaf-a635-828a3ee48b7c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 3bd15ff120cf491fba0d5dfe1410048d-20220722
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <kuan-ying.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 486731696; Fri, 22 Jul 2022 00:06:05 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 22 Jul 2022 14:35:31 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 22 Jul 2022 14:35:31 +0800
-From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-CC: <chinwen.chang@mediatek.com>, Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH] scripts: Fix no space expression between sp and offset
-Date: Fri, 22 Jul 2022 14:35:28 +0800
-Message-ID: <20220722063529.7166-1-Kuan-Ying.Lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oEmk2-000WYB-DI
+	for linux-mediatek@lists.infradead.org; Fri, 22 Jul 2022 07:06:31 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 483A4B82746;
+	Fri, 22 Jul 2022 07:06:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81462C341C7;
+	Fri, 22 Jul 2022 07:06:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1658473587;
+	bh=XLTTjhAlQU069Q80S9sF/4wyl2wZ60rupcBZIJL+82o=;
+	h=From:To:Cc:Subject:Date:From;
+	b=eU/3tN8N4knUKcEZutX4jeq20xwrzGo+R5X3//rKt5rou4QiMrn2fOC65HjimauHh
+	 cBve2PEIxTEcZYMDkUza2bSHfkidsGVJmqs0cKXoWnykhTFeZj+IzSsdqCS8JY3JH7
+	 zyMFGVPL/5BeVb9qb56IDMwH2sviq/1Gz+kVKd8vt3sqROWHauwpMX5vpedhDs7PvW
+	 IBMcQoPnU6MKF2Fios4i2ZK1atWIjKLGylkzPoBeuMj2dtySP1Wmp/a/6QFvlnQlPj
+	 xfoT0iHhQ5NKeQJlrGWYxI1nACN+aaeMdDrTGPUziK6ep1749DqjU3z+Ku6djy4lVc
+	 wd0L2uLVNFy0g==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: netdev@vger.kernel.org
+Cc: nbd@nbd.name,
+	john@phrozen.org,
+	sean.wang@mediatek.com,
+	Mark-MC.Lee@mediatek.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	pablo@netfilter.org,
+	matthias.bgg@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	lorenzo.bianconi@redhat.com,
+	Ryder.Lee@mediatek.com,
+	Evelyn.Tsai@mediatek.com,
+	pvalerio@redhat.com
+Subject: [PATCH v2 net-next] net: ethernet: mtk-ppe: fix traffic offload with bridged wlan
+Date: Fri, 22 Jul 2022 09:06:19 +0200
+Message-Id: <c79ed39af42540a6ce2cd145c4ddbcb98491630b.1658473427.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220722_000613_247615_FB56007F 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20220722_000630_638463_D59B3AF3 
+X-CRM114-Status: GOOD (  14.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,48 +82,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When I use older version aarch64 objdump (2.24) to disassemble
-aarch64 vmlinux, I get the result like below.
-There is no space between sp and offset.
+A typical flow offload scenario for OpenWrt users is routed traffic
+received by the wan interface that is redirected to a wlan device
+belonging to the lan bridge. Current implementation fails to
+fill wdma offload info in mtk_flow_get_wdma_info() since odev device is
+the local bridge. Fix the issue running dev_fill_forward_path routine in
+mtk_flow_get_wdma_info in order to identify the wlan device.
 
-ffff800008010000 <dw_apb_ictl_handle_irq>:
-ffff800008010000:       d503233f        hint    #0x19
-ffff800008010004:       a9bc7bfd        stp     x29, x30, [sp,#-64]!
-ffff800008010008:       90011e60        adrp    x0, ffff80000a3dc000 <num_ictlrs>
-ffff80000801000c:       910003fd        mov     x29, sp
-ffff800008010010:       a9025bf5        stp     x21, x22, [sp,#32]
-
-When I use newer version aarch64 objdump (2.35), I get
-the result like below.
-
-ffff800008010000 <dw_apb_ictl_handle_irq>:
-ffff800008010000:       d503233f        paciasp
-ffff800008010004:       a9bc7bfd        stp     x29, x30, [sp, #-64]!
-ffff800008010008:       90011e60        adrp    x0, ffff80000a3dc000 <num_ictlrs>
-ffff80000801000c:       910003fd        mov     x29, sp
-ffff800008010010:       a9025bf5        stp     x21, x22, [sp, #32]
-
-Add no space support of regular expression for old version objdump.
-
-Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Tested-by: Paolo Valerio <pvalerio@redhat.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- scripts/checkstack.pl | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes since v1:
+- rebase on top of net-next master
+---
+ .../net/ethernet/mediatek/mtk_ppe_offload.c   | 30 ++++++++-----------
+ 1 file changed, 13 insertions(+), 17 deletions(-)
 
-diff --git a/scripts/checkstack.pl b/scripts/checkstack.pl
-index d2c38584ece6..e404b6b11295 100755
---- a/scripts/checkstack.pl
-+++ b/scripts/checkstack.pl
-@@ -56,7 +56,7 @@ my (@stack, $re, $dre, $sub, $x, $xs, $funcre, $min_stack);
- 	if ($arch =~ '^(aarch|arm)64$') {
- 		#ffffffc0006325cc:       a9bb7bfd        stp     x29, x30, [sp, #-80]!
- 		#a110:       d11643ff        sub     sp, sp, #0x590
--		$re = qr/^.*stp.*sp, \#-([0-9]{1,8})\]\!/o;
-+		$re = qr/^.*stp.*sp, ?\#-([0-9]{1,8})\]\!/o;
- 		$dre = qr/^.*sub.*sp, sp, #(0x$x{1,8})/o;
- 	} elsif ($arch eq 'arm') {
- 		#c0008ffc:	e24dd064	sub	sp, sp, #100	; 0x64
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+index 5d457bc9acc1..25dc3c3aa31d 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+@@ -88,32 +88,28 @@ mtk_flow_offload_mangle_eth(const struct flow_action_entry *act, void *eth)
+ static int
+ mtk_flow_get_wdma_info(struct net_device *dev, const u8 *addr, struct mtk_wdma_info *info)
+ {
+-	struct net_device_path_ctx ctx = {
+-		.dev = dev,
+-	};
+-	struct net_device_path path = {};
++	struct net_device_path_stack stack;
++	struct net_device_path *path;
++	int err;
+ 
+-	if (!ctx.dev)
++	if (!dev)
+ 		return -ENODEV;
+ 
+-	memcpy(ctx.daddr, addr, sizeof(ctx.daddr));
+-
+ 	if (!IS_ENABLED(CONFIG_NET_MEDIATEK_SOC_WED))
+ 		return -1;
+ 
+-	if (!dev->netdev_ops->ndo_fill_forward_path)
+-		return -1;
+-
+-	if (dev->netdev_ops->ndo_fill_forward_path(&ctx, &path))
+-		return -1;
++	err = dev_fill_forward_path(dev, addr, &stack);
++	if (err)
++		return err;
+ 
+-	if (path.type != DEV_PATH_MTK_WDMA)
++	path = &stack.path[stack.num_paths - 1];
++	if (path->type != DEV_PATH_MTK_WDMA)
+ 		return -1;
+ 
+-	info->wdma_idx = path.mtk_wdma.wdma_idx;
+-	info->queue = path.mtk_wdma.queue;
+-	info->bss = path.mtk_wdma.bss;
+-	info->wcid = path.mtk_wdma.wcid;
++	info->wdma_idx = path->mtk_wdma.wdma_idx;
++	info->queue = path->mtk_wdma.queue;
++	info->bss = path->mtk_wdma.bss;
++	info->wcid = path->mtk_wdma.wcid;
+ 
+ 	return 0;
+ }
 -- 
-2.18.0
+2.36.1
 
 
