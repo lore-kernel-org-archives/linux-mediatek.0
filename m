@@ -4,86 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40154C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 15:10:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03C60C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 16:56:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YVg6xk0ns/bX90Xit3i5w/DtXugnCkyCcpIxJMAM3pA=; b=KB6ZbuqRrqUW+o6i2+/J06Qxvx
-	i7ufb/7bTy9Yc71VI7QsNOwxDR27lgWC8hsml3Rzl4vMV6pJMVEQbGLaBHzPoIUf5KBjxwr+Nk4H8
-	RfkTyCVPU67R7n/vfN3tgpAaw09qoTSe3mcM2s6Oj9/1SogwULRqHiqczNaPS2i4KEZGeJGxQyNrK
-	TdOt5k7Lq/RfcgmkN1Gx9M2SY2SGYo0U9ZTI9V0bSIbbBUUUvQfaR2vuaS7GQZmlW9H8gGTWSDWRi
-	PJuNZsi287y8AWHwDCPotDQFWjsMhH7aKHvMed1Hkp+Ph/xc2gp9ogEK1ukFklbrkVuO7YABfo1CR
-	QkPePxeQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bCCVZJD1F1AcTeIBqyOAocweazZ/RraHo4w2VrYlJ2s=; b=CYUQw9yiRtaIINkonEEL6qdOmm
+	yo6RxE9p0qkIZeXS5YgSwp2BosSEdqyEi1q1GYs5lCi6ARhKbQ2sw0S/kYL2U0fSevZFqTMqhH2XF
+	eItwEjC+AZfKa9ANLG8/nOxhIOoe1Qqp/eALKfyyaDhWRG/f29p/vaUmirJqajBGE1Q/z9+JsPHc5
+	ZYzkfIIljj9Fa9DrOOPgQyu5v7RoIDJYknTzq7jldkHB4DldB4kGg2KaRToUW7Koughk2YZxSqqGn
+	XAkPDioWcSwj5zppaWIqAuS+S1pJvRGbQ6vTSpOb3h8uXRbpwuLjS2VMTIrz3N+DMJYDnqmR7EEGf
+	VyjrRLRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEuIK-0072QM-Cn; Fri, 22 Jul 2022 15:10:24 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1oEvwu-0087zs-Lj; Fri, 22 Jul 2022 16:56:24 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEuI8-0072HE-AN; Fri, 22 Jul 2022 15:10:13 +0000
-Received: by mail-pf1-x433.google.com with SMTP id 70so4718323pfx.1;
-        Fri, 22 Jul 2022 08:10:10 -0700 (PDT)
+	id 1oEvwh-0087mx-Sm; Fri, 22 Jul 2022 16:56:13 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id mf4so9599383ejc.3;
+        Fri, 22 Jul 2022 09:56:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=sender:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=YVg6xk0ns/bX90Xit3i5w/DtXugnCkyCcpIxJMAM3pA=;
-        b=LL5FZE977jrCB5ZAgNVPkQDR4/zpHzx8vl/KlVv89Pe1NocPWaX76UmoR1r5p6Ca6P
-         op3OoDkvbpyqjPWqKa6LPArhGHmdOGKtxpJbobn57bzFg8wmkOKWvPaP8WfO3UAJjsCS
-         1P2L4SlX26Czd/zDZwj81/x3FvJ9fsu3eL0V5pZK3HjIkl6QAEpLht26PZmuWs3BehYL
-         aYQH8vR48dD7Lglb3mPRibz9j1sMU3zzo4NybsTQrlZe1r7Yd3bD5NuGFZzx4y+GrDVP
-         xZe7jhahb4KAHNC/W4pziGwc4ii18RZHNW6la63aRzQLCrE0GZ+GeckuGcSlR+utztZ2
-         4zYw==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=bCCVZJD1F1AcTeIBqyOAocweazZ/RraHo4w2VrYlJ2s=;
+        b=dtdtW3ocw3aNifDm7jMacYS96T4AbvkKZdyzA8ej7BdHFlri/H3W57YOIt7BxouDtS
+         E3o7itaRNG4xlQ6lrO/Sldi8dNJvAsiEx86PLxvIbudKu1UMSeesqTIRxHdNNJqWM/PV
+         lpkRTTogpusRKxPsLX4MNZIsAdieSB/isXfaEzqTQMj/zrr/uSYOnWWOUageEQ4SYiTQ
+         gLWT/TxumD2tXxQYszI9bdljNysRgoe9L2jYWFW2qCnc+tYj38C6iWSZktnJQ2NXew1w
+         q1f7hoHaHe5rMrzNiqLOUntjDuNo4D8JO4ASY3/fCScg2AfbrW519Xsy0e6tcaJxlL6C
+         kqPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
-         :subject:content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=YVg6xk0ns/bX90Xit3i5w/DtXugnCkyCcpIxJMAM3pA=;
-        b=2QXCg6+Q8nVZHFtwPol70zd9eFBx/UAyDmBCns8ydxRwqIySu001gASZq1+1wmy8up
-         2j/Xn6AjKq/w5BBlkuPBgz4JL7dvXwL8XDoZt5+bynCIsUCOQu3uigJgtZmjWVdAMQ9q
-         O+eQtwqyhT1FG3YN6nlm1EfDM3L9IyOaMKOfNH1e+AOYsXVaC9HlSPeBzQYBE5kFZtT5
-         U2/eYx3pQ0snqWkJLliLXlYj2VyKoRe79RMNwqTudsnDHCnFHWgs+Y04SGufGGHq+4ns
-         OaHOB8T2jFA0ynumIE19zjWISrxNFCIlMP9nzGvimKy1wHDEhNc8vPxqbWvkG+5y04Vx
-         8yxw==
-X-Gm-Message-State: AJIora/lq6NtGkQ0p6AQ1kcDFhgXJPWslUuzalUSsk7VTlavOrZd5W1M
-	KavOrndo6MKQajgfHj/JLXg=
-X-Google-Smtp-Source: AGRyM1sXMPWj4vJ6IC9x5Q7CbBRfVblVD/pWaxIOirjZAfLC4CR2biym7nnpldjD3PGRhQgq5y17/A==
-X-Received: by 2002:a05:6a00:815:b0:52b:295a:fad with SMTP id m21-20020a056a00081500b0052b295a0fadmr458346pfk.62.1658502610253;
-        Fri, 22 Jul 2022 08:10:10 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c? ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-        by smtp.gmail.com with ESMTPSA id w184-20020a6230c1000000b0052b84ca900csm4024677pfw.62.2022.07.22.08.10.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 22 Jul 2022 08:10:09 -0700 (PDT)
-Message-ID: <cdc16106-0687-ae2b-0a42-c1f04cc8032a@roeck-us.net>
-Date: Fri, 22 Jul 2022 08:10:07 -0700
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=bCCVZJD1F1AcTeIBqyOAocweazZ/RraHo4w2VrYlJ2s=;
+        b=mtVP0xbunE+LdJTQFpQR0chPl8VteihwkMlz4fKBwmlp0Xazk6aYZ3kG5IS9JoqxRE
+         3w2hWu5ttEfdp+ROMEGETWyvxdWq6UWtwLP0NX2XsE/sQm5AGibc8rtCaqaTZ3Qb4YNs
+         ElxBUsJA0Eud91r7kY1EE4aDcivK9G4oLPAiEkGYUVr1Hy7VGj9XnDaF1S0SEtxaX129
+         +KRiuOIByFHR3m1ksB0jjCkZy+f1KIgHq4E9JJ8tpBCG81gQXjr8H/BvMLCjkFYUp+ik
+         NqK1jq3LuaaZ9w9fDY8EAHMS8wen0lN4jKbBi5PeExFVJHYqFR6uSrGOD2QhUAaTbObF
+         N+Xg==
+X-Gm-Message-State: AJIora8hQ86t4XlrHiGVPGliW7ZDeC4x/CGM/SaleYp/GGa9B953/Bz3
+	yyiEHFYDHh5aHlld3g6QQOk=
+X-Google-Smtp-Source: AGRyM1sPvKcOZuVOmfloFHy+ScQriw4i+pjUdqnCs7a8tdzaxWKRhoP216rxoPLFgsXlsloRh3OTNg==
+X-Received: by 2002:a17:906:7482:b0:722:edf9:e72f with SMTP id e2-20020a170906748200b00722edf9e72fmr639414ejl.92.1658508965120;
+        Fri, 22 Jul 2022 09:56:05 -0700 (PDT)
+Received: from skbuf ([188.25.231.115])
+        by smtp.gmail.com with ESMTPSA id eg47-20020a05640228af00b0043bbcd94ee4sm2822943edb.51.2022.07.22.09.56.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 22 Jul 2022 09:56:03 -0700 (PDT)
+Date: Fri, 22 Jul 2022 19:56:00 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>
+Subject: Re: [PATCH net-next 3/6] net: dsa: add support for retrieving the
+ interface mode
+Message-ID: <20220722165600.lldukpdflv7cjp4j@skbuf>
+References: <20220721192145.1f327b2a@dellmb>
+ <20220721192145.1f327b2a@dellmb>
+ <20220721182216.z4vdaj4zfb6w3emo@skbuf>
+ <YtnBmFm8Jhokgp7Q@shell.armlinux.org.uk>
+ <20220721213645.57ne2jf7f6try4ec@skbuf>
+ <YtpfmF37FmfY6BV5@shell.armlinux.org.uk>
+ <20220722105238.qhfq5myqa4ixkvy4@skbuf>
+ <YtqNkSDLRDtuooy/@shell.armlinux.org.uk>
+ <20220722124629.7y3p7nt6jmm5hecq@skbuf>
+ <YtqjFKUTsH4CK0L+@shell.armlinux.org.uk>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] [3/3] watchdog: mediatek: mt8188: add wdt support
-Content-Language: en-US
-To: Runyang Chen <Runyang.Chen@mediatek.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- nfraprado@collabora.com
-Cc: angelogioacchino.delregno@collabora.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20220722072316.582-1-Runyang.Chen@mediatek.com>
- <20220722072316.582-4-Runyang.Chen@mediatek.com>
-From: Guenter Roeck <linux@roeck-us.net>
-In-Reply-To: <20220722072316.582-4-Runyang.Chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YtqjFKUTsH4CK0L+@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220722_081012_406492_F9190C21 
-X-CRM114-Status: GOOD (  15.27  )
+X-CRM114-CacheID: sfid-20220722_095611_960306_81C4F3A0 
+X-CRM114-Status: GOOD (  50.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,49 +123,161 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/22/22 00:23, Runyang Chen wrote:
-> From: Runyang Chen <runyang.chen@mediatek.com>
+On Fri, Jul 22, 2022 at 02:16:04PM +0100, Russell King (Oracle) wrote:
+> > So mvneta at the stage of the commit you've mentioned calls
+> > mvneta_set_autoneg() with the value of pp->use_inband_status. There is
+> > then the exception to be made for the PCS being what's exposed to the
+> > medium, and in that case, ethtool may also override the pp->use_inband_status
+> > variable (which in turn affects the autoneg).
+> > 
+> > So if we take mvneta at this commit as the reference, what we learn is
+> > that using in-band status essentially depends on using in-band autoneg
+> > in the first place.
+> > 
+> > What is hard for me to comprehend is how we ever came to conclude that
+> > for SERDES protocols where clause 37 is possible (2500base-x should be
+> > part of this group), managed = "in-band-status" does not imply in-band
+> > autoneg, considering the mvneta precedent.
 > 
-> Support MT8188 watchdog device.
+> That is a recent addition, since the argument was made that when using
+> a 1000base-X fibre transceiver, using ethtool to disable autoneg is a
+> reasonable thing to do - and something that was supported with
+> mvneta_ethtool_set_link_ksettings() as it stands at the point in the
+> commit above.
+
+I'm sorry, I don't understand. What is the recent addition, and recent
+relative to what? The 2500base-x link mode? Ok, but this is only
+tangentially related to the point overall, more below.
+
+> > And why would we essentially redefine its meaning by stating that no,
+> > it is only about the status, not about the autoneg, even though the
+> > status comes from the autoneg for these protocols.
 > 
-> Signed-off-by: Runyang Chen <runyang.chen@mediatek.com>
+> I'm not sure I understand what you're getting at there.
 
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+Sorry if I haven't made my point clear.
 
-> ---
->   drivers/watchdog/mtk_wdt.c | 6 ++++++
->   1 file changed, 6 insertions(+)
+My point is that drivers may have more restrictive interpretations of
+managed = "in-band-status", and the current logic of automatically
+create a fixed-link for DSA's CPU ports is going to cause problems when
+matched up with a DSA master that expects in-band autoneg for whatever
+SERDES protocol.
+
+What I'd like to happen as a result is that no DSA driver except Marvell
+opts into this by default, and no driver opts into it without its maintainer
+understanding the implications. Otherwise we're going to normalize the
+expectation that a managed = "in-band-status" DSA master should be able
+to interoperate with a fixed-link CPU port, but during this discussion
+there was no argument being brought that a strict interpretation of
+"in-band-status" as "enable autoneg" is incorrect in any way.
+
+> Going back to the mvneta combined PCS+MAC implementation, we read the
+> link parameters from the PCS when operating in in-band mode and throw
+> them at the fixed PHY so that ethtool works, along with all the usual
+> link up/down state reporting, carrier etc.
 > 
-> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> index f0d4e3cc7459..ce7dc96bfa4b 100644
-> --- a/drivers/watchdog/mtk_wdt.c
-> +++ b/drivers/watchdog/mtk_wdt.c
-> @@ -13,6 +13,7 @@
->   #include <dt-bindings/reset/mt7986-resets.h>
->   #include <dt-bindings/reset/mt8183-resets.h>
->   #include <dt-bindings/reset/mt8186-resets.h>
-> +#include <dt-bindings/reset/mt8188-resets.h>
->   #include <dt-bindings/reset/mt8192-resets.h>
->   #include <dt-bindings/reset/mt8195-resets.h>
->   #include <linux/delay.h>
-> @@ -90,6 +91,10 @@ static const struct mtk_wdt_data mt8186_data = {
->   	.toprgu_sw_rst_num = MT8186_TOPRGU_SW_RST_NUM,
->   };
->   
-> +static const struct mtk_wdt_data mt8188_data = {
-> +	.toprgu_sw_rst_num = MT8188_TOPRGU_SW_RST_NUM,
-> +};
-> +
->   static const struct mtk_wdt_data mt8192_data = {
->   	.toprgu_sw_rst_num = MT8192_TOPRGU_SW_RST_NUM,
->   };
-> @@ -431,6 +436,7 @@ static const struct of_device_id mtk_wdt_dt_ids[] = {
->   	{ .compatible = "mediatek,mt7986-wdt", .data = &mt7986_data },
->   	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
->   	{ .compatible = "mediatek,mt8186-wdt", .data = &mt8186_data },
-> +	{ .compatible = "mediatek,mt8188-wdt", .data = &mt8188_data },
->   	{ .compatible = "mediatek,mt8192-wdt", .data = &mt8192_data },
->   	{ .compatible = "mediatek,mt8195-wdt", .data = &mt8195_data },
->   	{ /* sentinel */ }
+> If autoneg is disabled, then we effectively operate in fixed-link mode
+> (use_inband_status becomes false, and we start forcing the link up/down
+> and also force the speed and duplex parameters by disabling autoneg.)
+> 
+> Note that this version of mvneta does not support 1000base-X mode, only
+> SGMII is actually supported.
+> 
+> There's a few things that are rather confusing in the driver:
+> 
+> MVNETA_GMAC_INBAND_AN_ENABLE - this controls whether in-band negotiation
+> is performed or not.
+> MVNETA_GMAC_AN_SPEED_EN - this controls whether the result of in-band
+> negotiation for speed is used, or the manually programmed speed in this
+> register.
+> MVNETA_GMAC_AN_DUPLEX_EN - same for duplex.
+> MVNETA_GMAC_AN_FLOW_CTRL_EN - same for pause (only symmetric pause is
+> supported)
+> 
+> MVNETA_GMAC2_INBAND_AN_ENABLE - misnamed, it selects whether SGMII (set)
+> or 1000base-X (unset) format for the 16-bit control word is used.
+> 
+> There is another bit in MVNETA_GMAC_CTRL_0 that selects between
+> 1000base-X and SGMII operation mode, and when this bit is set for
+> 1000base-X. This version of the driver doesn't support 1000base-X,
+> so this bit is never set.
 
+Thanks for this explanation, if nothing else, it seems to support the
+way in which I was interpreting managed = "in-band-status" to mean
+"enable in-band autoneg", but to be clear, I wasn't debating something
+about the way in which mvneta was doing things. But rather, I was
+debating why would *other* drivers do things differently such as to come
+to expect that a fixed-link master + an in-band-status CPU port, or the
+other way around, may be compatible with each other.
+
+Anyway, before I comment any further on the other points, I have a board
+using armada-3720-turris-mox.dts on which I wanted to make a test, but I
+don't fully understand the results, could you help me do so?
+
+By default, both the mvneta master and my 6390 top-most switch are
+configured for inband/2500base-x. In essence I'm perfectly fine with
+that. I don't care whether IEEE standardized inband/2500base-x, as long
+as both drivers come to expect to enable or disable inband depending on
+the device tree.
+
+I've dumped the variables from mvneta_pcs_get_state() and it appears
+that the mvneta is reporting AN complete. This would suggest that there
+is indeed in-band autoneg taking place with the 6390 switch.
+
+Then I modified the device tree to disable in-band autoneg (I've checked
+mv88e6390_serdes_pcs_config and it behaves how I'd expect, enabling
+BMCR_ANENABLE strictly according to phylink_autoneg_inband(mode)).
+Essentially what I'm trying is to intentionally break in-band autoneg by
+causing a mismatch, to prove that it is indeed taking place.
+
+The results are interesting: state->an_complete is still reported as 1
+for eth1 (mvneta).
+
+ip link set eth1 up
+[   70.809889] mvneta d0040000.ethernet eth1: configuring for inband/2500base-x link mode
+[   70.818086] mvneta_pcs_get_state: MVNETA_GMAC_AUTONEG_CONFIG 0x9b4c state->an_complete 0 state->speed 2500 state->pause 0x3 state->link 0 state->duplex 1
+[   70.836081] mvneta_pcs_get_state: MVNETA_GMAC_AUTONEG_CONFIG 0x9b4c state->an_complete 0 state->speed 2500 state->pause 0x3 state->link 0 state->duplex 1
+[   70.843748] mv88e6085 d0032004.mdio-mii:10: Link is Down
+[   70.859944] mv88e6085 d0032004.mdio-mii:10: mv88e6390_serdes_pcs_config: port 9 MV88E6390_SGMII_ADVERTISE 0xa0 adv 0x80 changed 1
+[   70.878737] mv88e6085 d0032004.mdio-mii:10: mv88e6390_serdes_pcs_config: port 9 MV88E6390_SGMII_BMCR 0x140 bmcr 0x140 phylink_autoneg_inband(mode) 0
+[   70.898302] mv88e6085 d0032004.mdio-mii:10: Link is Up - 2.5Gbps/Full - flow control off
+[   71.069532] mvneta_pcs_get_state: MVNETA_GMAC_AUTONEG_CONFIG 0x9b4c state->an_complete 1 state->speed 2500 state->pause 0x3 state->link 1 state->duplex 1
+[   71.083376] mvneta d0040000.ethernet eth1: Link is Up - 2.5Gbps/Full - flow control rx/tx
+[   71.091672] IPv6: ADDRCONF(NETDEV_CHANGE): eth1: link becomes ready
+
+Then I studied MVNETA_GMAC_AUTONEG_CONFIG and I noticed that the bit
+you're talking about, MVNETA_GMAC_AN_BYPASS_ENABLE (bit 3) is indeed set
+by default (the driver doesn't set it).
+
+I've intentionally masked it off in mvneta_pcs_config() by setting it in
+the "mask" variable and nowhere else. Now I get:
+
+ip link set eth1 up
+[  434.336679] mvneta d0040000.ethernet eth1: configuring for inband/2500base-x link mode
+[  434.342618] mv88e6085 d0032004.mdio-mii:10: Link is Down
+[  434.350020] mvneta_pcs_get_state: MVNETA_GMAC_AUTONEG_CONFIG 0x9b44 state->an_complete 0 state->speed 2500 state->pause 0x3 state->link 0 state->duplex 1
+[  434.350055] mvneta_pcs_get_state: MVNETA_GMAC_AUTONEG_CONFIG 0x9b44 state->an_complete 0 state->speed 2500 state->pause 0x3 state->link 0 state->duplex 1
+[  434.384794] mv88e6085 d0032004.mdio-mii:10: mv88e6390_serdes_pcs_config: port 9 MV88E6390_SGMII_ADVERTISE 0xa0 adv 0x80 changed 1
+[  434.403808] mv88e6085 d0032004.mdio-mii:10: mv88e6390_serdes_pcs_config: port 9 MV88E6390_SGMII_BMCR 0x140 bmcr 0x140 phylink_autoneg_inband(mode) 0
+[  434.423732] mv88e6085 d0032004.mdio-mii:10: Link is Up - 2.5Gbps/Full - flow control off
+
+so state->an_complete now remains zero, and the link is down on the CPU
+port, and indeed I can no longer ping the board from the outside world.
+
+
+So what this is telling me is that mvneta has some built-in resilience
+to in-band autoneg mismatches, via MVNETA_GMAC_AN_BYPASS_ENABLE. But that
+(a) doesn't make it valid to mix and match a fixed-link with a managed =
+    "in-band-status" mode
+(b) doesn't mean it's unspecified whether managed = "in-band-status"
+    should dictate whether to enable in-band autoneg or not
+(c) doesn't mean that other devices/drivers support "AN bypass" to save
+    the day and make an invalid DT description appear to work just fine
+
+This further supports my idea that we should make a better attempt of
+matching the DSA master's mode with the node we're faking in DSA for
+phylink. For Marvell hardware you or Andrew are surely more knowledgeable
+to be able to say whether that's needed right now or not. But in the
+general case please don't push this to everyone, it just muddies the
+waters.
 
