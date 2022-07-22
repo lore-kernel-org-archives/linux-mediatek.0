@@ -4,74 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6113C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 18:04:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4745DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Jul 2022 18:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0G9IXPR6Tw9u4K90d7Qyi37Gnq89rkjK88M8sdp4wcE=; b=0vIyK+sAcaEKHnE9wAKHdKinAa
-	j2N/junO3UpjHOxgB6i1GD//TXAwTdnardDgsmyIAjOC9UvYG/DKpbLDaH1y7zaxPzRiJCPRsAUwI
-	wmk3CUkCCm9StGHeumLlg6vXNxKGJZ/TIe2lG12+2MpGSXkvxIVfbpXoBAf6WfqcT4FT/L0x8ARbH
-	Y30lYR9kf8gex3vwF3AJoFbRIDECQONawcaUyMEGO6FUTbnpm8RV2G9sLJTtyLNVCSdZ9GT7KLAIH
-	GVUl7wFWYZYdvrGt9xzoYFmsRjPTwLmbG2SMphDMjag//RKvyb/RqEWMj9cnJ5Qe3LhNn0gD7U9g/
-	FKXpeOPw==;
+	bh=TZ89NCSHpZWO6mCiLEkZnsSyxqredp26c+bp6T/IeXs=; b=eKhUtgLCDTo36Rrgii/oW76hdp
+	vnlH/E1D5bjCd3Ewnj5Jv3Edb2eii+Os2OFifhm3yxrSdnOvkDLXWUd4M2MV1y2FZro6yrcXqDH37
+	tIsEaRnP0wjQnlZJuuH0OdIC1+EeSweNjS7dI/CCQxK2pCTexmKaBFxhF/+Vcv7vy7pzfFvzO4faS
+	xAM2H/sutXI3iBoOwtC0YAr3l20wxWvq92ztJxWFa1crfnN6Xv4fXxrQ0Nql4HEIOQxDH/DpSmi6F
+	L+bsvKAFQJ91f09SUlskvGn0a5nlaPC+6qMqKRl5I57jE/vVOop+wlMI9/Dqy3/tAVGFoB+cwfi03
+	MMBxKffg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEx0a-008ig0-3I; Fri, 22 Jul 2022 18:04:16 +0000
-Received: from mail-pj1-f51.google.com ([209.85.216.51])
+	id 1oExFQ-008qgH-9E; Fri, 22 Jul 2022 18:19:36 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEx0Y-008ibe-50
-	for linux-mediatek@lists.infradead.org; Fri, 22 Jul 2022 18:04:15 +0000
-Received: by mail-pj1-f51.google.com with SMTP id b10so5007231pjq.5
-        for <linux-mediatek@lists.infradead.org>; Fri, 22 Jul 2022 11:04:11 -0700 (PDT)
+	id 1oExFM-008qe6-R0
+	for linux-mediatek@lists.infradead.org; Fri, 22 Jul 2022 18:19:34 +0000
+Received: by mail-lj1-x229.google.com with SMTP id u14so6393664lju.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 22 Jul 2022 11:19:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=TZ89NCSHpZWO6mCiLEkZnsSyxqredp26c+bp6T/IeXs=;
+        b=HV2GeR6BqM1M0qBzVbeUKHIw4fCOt3RQzgcGZy1wqC6IiFpuwgMNPkh0g8Y/uMaKAH
+         OPH5AMoUcrCuZ6YLo/Ab1VxkoWQukq698ETcZCSPIdkWcbq7JYIwN09+aApa4lzffA9r
+         Bw0mz0Yow33Ut9oatcpEWxyS+qJOZ72yMzlMiouUcy9oQKS1QsCrYtji9b/rl0THTVQT
+         gbbAeLCjm0RHR6pxJwZ5uSbTWJuCDhIPDo94gY67qTUO6epy3MqdVwzFgzLqGdvyxe1v
+         zHDpKFnIKu4CeGxT84s6GCq3UWLhF70ryWeBAW99BThs4Eg8r1rw/tlGkerAtRCAgo88
+         k0MQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=0G9IXPR6Tw9u4K90d7Qyi37Gnq89rkjK88M8sdp4wcE=;
-        b=OuA70JYG+lp4Rhe4njmgaLR927thedHJEOmlrcR3zGDRbmCppRZ5XWjY5lpKjLOqKu
-         kZujpWrbi89XDp5KeDrmAVmecuOAq5kzVOpdKB81TbM/rzMWvz8PJRXbPPUZEhwMK4iN
-         D6z6fVyGA3IaTfSxBELnjHHTGaHhFK2lIL7ec64RZ7js2vVt1XKNPUtnyPq7xeZYSuwm
-         DXi5Wu9w5LlQyvpYlfp0ByZZUNhvVOhHDWipThzDY2K/USJVq+klKbkAiR69AvKg04DX
-         N6+xiiLudmP7YMRHvzzchQKRqb29iAtzHN+oyyrzr1yYS8zsy6HeE9wnwGAKXZKatI5j
-         Qqog==
-X-Gm-Message-State: AJIora+pQnzIIhXupy7iupSdo9w5gBRNy3o2uGjN0/JRyr74KrFwE73L
-	ATiTz6I6h+cp5dWxOyhuTBQ=
-X-Google-Smtp-Source: AGRyM1tyRlpOkC9LR1tUTjXTsRZQTZG0ZPjBQfuTav4mfXobli6INpnif5GO02jqRhEpYNzQEGR3dQ==
-X-Received: by 2002:a17:90b:4ac1:b0:1ef:c1ba:e73e with SMTP id mh1-20020a17090b4ac100b001efc1bae73emr18674775pjb.47.1658513051184;
-        Fri, 22 Jul 2022 11:04:11 -0700 (PDT)
-Received: from ?IPV6:2620:15c:211:201:9cf6:7e29:d977:6fc7? ([2620:15c:211:201:9cf6:7e29:d977:6fc7])
-        by smtp.gmail.com with ESMTPSA id a142-20020a621a94000000b0052b433aa45asm4247935pfa.159.2022.07.22.11.04.09
+        bh=TZ89NCSHpZWO6mCiLEkZnsSyxqredp26c+bp6T/IeXs=;
+        b=XLUscvGBSf//NDAJkHtdjWg60ZKNY2XipFu0Ied8YSsMBitdWjZftou0vg7Uyd2niQ
+         k8IklF3H/zzVA5UFKhyE/vAXRugBUbquZ7yrnmFb5YAO8sHdvRPs/ikWujB0fPZmPrKR
+         U5iwj2hr2egCL9HmODeegTCZ5ufB2zVgoVzRzoxOmPwWqKdE7AGkr750gtLWcg9ar935
+         CaIMA8Eo9kowBL7n79TfkDcs4AvBKtulgUemMXsexPcHrlqIluqUfjgejpIcUQSNqq0c
+         qhS4v5laJXhnXZdHDRpLhpl/Cd780A1arQX8hSX/KxBdmSp6Xmg1H59ryy5CXXcbG29D
+         g4Xw==
+X-Gm-Message-State: AJIora9Uvfkk+zzwkjcY/KDIXyZOdti201Kavp7Rkc6bobSzttf8DPly
+	v8T7d7ZfHTPYcWqgJKst9A53gw==
+X-Google-Smtp-Source: AGRyM1t9k6EuxFUL5jwICaF3I0/coOUkurh+jWMFDTooiNiiyxUpIROwoEbytIQYZDtIHnlMr6Elbg==
+X-Received: by 2002:a2e:3209:0:b0:25d:644e:b9d4 with SMTP id y9-20020a2e3209000000b0025d644eb9d4mr401270ljy.13.1658513971230;
+        Fri, 22 Jul 2022 11:19:31 -0700 (PDT)
+Received: from [192.168.10.173] (93.81-167-86.customer.lyse.net. [81.167.86.93])
+        by smtp.gmail.com with ESMTPSA id k2-20020a2ea262000000b0025d75995a07sm1259660ljm.24.2022.07.22.11.19.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 22 Jul 2022 11:04:10 -0700 (PDT)
-Message-ID: <54727af0-dc4b-fadb-5193-13ff4ecc48ef@acm.org>
-Date: Fri, 22 Jul 2022 11:04:08 -0700
+        Fri, 22 Jul 2022 11:19:30 -0700 (PDT)
+Message-ID: <53d432e9-6715-05c4-d258-896ec38afa4f@linaro.org>
+Date: Fri, 22 Jul 2022 20:19:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH v1] scsi: ufs: correct ufshcd_shutdown flow
+Subject: Re: [PATCH 1/3] dt-bindings: mediatek: add pinctrl definition for
+ mt8188
 Content-Language: en-US
-To: Peter Wang <peter.wang@mediatek.com>, stanley.chu@mediatek.com,
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com
-References: <20220719130208.29032-1-peter.wang@mediatek.com>
- <afb8d403-f8f5-5161-4680-ce2c3ae7787d@acm.org>
- <a71af42f-3b66-c0a1-c79d-a4573d0376fe@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <a71af42f-3b66-c0a1-c79d-a4573d0376fe@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: "hui.liu" <hui.liu@mediatek.com>, linus.walleij@linaro.org,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com
+Cc: johnson.wang@mediatek.com, zhiyong.tao@mediatek.com,
+ sean.wang@mediatek.com, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220718113813.23787-1-hui.liu@mediatek.com>
+ <20220718113813.23787-2-hui.liu@mediatek.com>
+ <b28dcbe5-d15f-1c4f-9b3d-650d5c39de6b@linaro.org>
+ <08a7209fe198839093b3ef729fc97c1a950e1fbc.camel@mediatek.com>
+ <35639a59-4a3d-5aa7-946c-22fbd2f25e89@linaro.org>
+ <ea7755e599ad8c06bc04b6249c2a6d0ab3b920f3.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <ea7755e599ad8c06bc04b6249c2a6d0ab3b920f3.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220722_110414_219207_E9610BFE 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20220722_111932_926883_7B845794 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,28 +100,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/20/22 21:30, Peter Wang wrote:
-> On 7/21/22 5:40 AM, Bart Van Assche wrote:
->> On 7/19/22 06:02, peter.wang@mediatek.com wrote:
->>> From: Peter Wang <peter.wang@mediatek.com>
->>> Also remove pm_runtime_get_sync because it is unnecessary.
->>
->> Please explain in the patch description why the pm_runtime_get_sync() 
->> call is not necessary.
+On 22/07/2022 03:40, hui.liu wrote:
+> Hi, Krzysztof
 > 
-> Because shutdown is focus on turn off clock/power, we don't need turn 
-> on(resume) and turn off, right?
-Hi Peter,
+> That's the comment about reg and reg-names description:
+>>> +  reg:
+>>> +    description: |
+>>> +      Physical address base for gpio base registers. There are 8
+>>> GPIO
+>>> +      physical address base in mt8188.
+>>
+>> Redundant description, skip it. You should list the instead and
+>> describe
+>> each of it.
+>>
+>>> +    maxItems: 8
+>>> +
+>>> +  reg-names:
+>>> +    description: |
+>>> +      Gpio base register names.
+>>
+>> Redundant description, skip it.
+>>
+>>> +    maxItems: 8
+>>
+>> You need to list the items instead.
+> 
+> I plan to update reg and reg-names as the following:
+>   reg:
+>     description: |
+>       Physical address base for gpio base registers. There are 6
+> different GPIO physical address bases in mt8188.
+>     minItems: 6
+>     maxItems: 6
 
-I think that removing the pm_runtime_get_sync() call is safe because the 
-device driver core already performs a runtime resume before the UFS 
-driver shutdown callback function is called. From drivers/base/core.c:
+You should rather have here items with description:
+items:
+ - description: what is it
+ - description: what is it
+ ....
 
-		/* Don't allow any more runtime suspends */
-		pm_runtime_get_noresume(dev);
-		pm_runtime_barrier(dev);
+> 
+>   reg-names:
+>     items:
+>       - const: iocfg0
+>       - const: iocfg_rm
+>       - const: iocfg_lt
+>       - const: iocfg_lm
+>       - const: iocfg_rt
+>       - const: eint
+> 
+> Is it right?
+> 
+> Thanks.
+> 
 
-Thanks,
 
-Bart.
+Best regards,
+Krzysztof
 
