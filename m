@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62030C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Jul 2022 17:33:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D04FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Jul 2022 17:34:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x/VzrMn8IRoR/XUw2GaIkz6W+3AiZWGAF5ssto6LX8c=; b=lOVS2wZ//yKZQDN0uUj7actOQ3
-	4idy3bCDeJppqklWAHxwZkwDf40ezIgeEdYnZEEHRTwfiCsCc38gjYAHA/hDUUxDWfGXueivpipre
-	3YxbqYPCP89z4Uw5nTzovp0RyA4LKju7A1WeeR34DtFOkqNPpBae4H5jni9/McMuM1SB+kVh7EAXN
-	oCd/GTkgonyQdIZzxelTO0Ru5DJNSOM3XjEWxmtvxC8S73xW9ew6mXMUbqUh2JtGfg5tt4JdDJAql
-	sqdDcF25wzqyfjK6su1ecyszPNXeTheLAjZqkwpCgfw6zy272X1mgBM7nIyDBYoQlQOd3/ElVEiXj
-	YNNskdWg==;
+	bh=gtQ14uIFjSRWKjyHokB//t8/r+71OfqgVuwkNcmPeoA=; b=DBJWOABEzop6pZ26Lp43fiDPN7
+	SGAvUb4I7B25sDhrF88R3wcjRPfbHdDOZOlBqRoDE4bGgRh6e7lhnc9Lt/NmNoL7CjUu0EZSBR1S0
+	fpvDin0So9NtjKwfFjhYZwDZKZ1O2fB2zKRujVvbxumZgumkrjynTotsiNT1ux4s0VwmjbkBuGV4b
+	y7di5QCXjD/a9SocAIWrz8ZqHT2KWhmIsMObtHUEtfGDInuHMIRGiNrhznW6QXqLEJe+Ok/fdcpw8
+	TKNANnjsnn8wY98dOyucJD1KNOW+dHfk8s1yEyhOeNhKchbGXWNDOe3VCoD3f1vkZE5qDmlGdxZqc
+	cIFY2WJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFIzn-0061Mb-Q8; Sat, 23 Jul 2022 17:32:55 +0000
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
+	id 1oFJ11-00622K-NG; Sat, 23 Jul 2022 17:34:11 +0000
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFIzl-0061Ki-3k
-	for linux-mediatek@lists.infradead.org; Sat, 23 Jul 2022 17:32:54 +0000
-Received: by mail-lj1-x230.google.com with SMTP id b34so3500577ljr.7
-        for <linux-mediatek@lists.infradead.org>; Sat, 23 Jul 2022 10:32:52 -0700 (PDT)
+	id 1oFJ0o-0061v8-T6
+	for linux-mediatek@lists.infradead.org; Sat, 23 Jul 2022 17:34:00 +0000
+Received: by mail-lj1-x234.google.com with SMTP id by8so8676662ljb.13
+        for <linux-mediatek@lists.infradead.org>; Sat, 23 Jul 2022 10:33:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=x/VzrMn8IRoR/XUw2GaIkz6W+3AiZWGAF5ssto6LX8c=;
-        b=xgtnl3PPZqZRZyGiYh7t2imdcj4sSnzXczgHwKS8ckUS1IUCukpgRcY9SqKF7LynXi
-         puuEHvJ2iLcVMM47QKj/jsDAlUvu6jFI+0TnPjsxr13Q6f/XacJPb9W9jw9RsO7PT1IH
-         oEC8gCBQI+AWCpm8CB+Td3p7FLy0kE+5DwxmEIGZVPxsJsNXW40wnHfokUctKLrqle1h
-         fpsLl/mpXpS/VeinwjnS3wMeSZQ4AWftDqgw81r7BE8hldMpfN/8KhuO+i2O7ZKQWuQX
-         SDyRRcrlO7/ID4hvNtchMJ9vXSBZP/Bvzfq4blcVqaG3glnoFCcbqosqEirGQmTQJwyB
-         SVgA==
+        bh=gtQ14uIFjSRWKjyHokB//t8/r+71OfqgVuwkNcmPeoA=;
+        b=ESMwFonERbuKy1tCSV1hQL5WH+aJhXNLZRY/Mbbh/cHLp5d87ZI0B/mbISmXRxxSzG
+         NkKTrbmSHJ9XNEirQZA8NAF9oQZd1NKbHheggMUejjbj8x8fFj8bkxp7MyU5dpWKothH
+         4J1NxZnLs+IkrOh2X1cNGvP6na0RnJ30+yLZ0L2RZdjMKn27lz5WocVbcr13nbaUmiEe
+         fA8hI5/9xbAS+ZQcHzH5+Gj6U85RWj9+MHg4MKdIrxsQtNBqXc2IJT4xWrU2JnZdV53Q
+         vK+edK+yMFXVOTLt7J/fO1KfG6vGuRk0GizAGrmzs1YwlxKuUfQHW1TefPBoiv/Qkz9s
+         3suA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=x/VzrMn8IRoR/XUw2GaIkz6W+3AiZWGAF5ssto6LX8c=;
-        b=6Y/5/qc271rS3vOSwjs700jM85SKJEzQPCBnFHzDCd5a4WM9+pl+nwtfunQse5HgwX
-         U290w9IQB3p/nloTA5W7cBh5utFnF8mfVq+4MfcGh6/vp0jHvNkms1D5q6hKFeLf2V6p
-         ZtmcCT+j3tDuR8oPKfUi6nYveBbnpk3z2+vDuPM/eWJbkZV5lojLUrrGL+XWFfQ4jqdq
-         GLIAhEMiqsRfoK9qUmVXYiTUay4aKYuxmvBy7G92RX7Zc0+d7xSmtb46qZSFNo+yo6yo
-         j49c6MD+nM6oytX6Mdj1JnExtzPwVBhe4+4oQa6cBEhh/XEjNElW5BMR9IwdgmCk5C7C
-         hjJQ==
-X-Gm-Message-State: AJIora+0RE+DEDNP565CdW5V1K9i3xi1F2T1sX2WTqy2sxj7R+3SVXbq
-	oNYJL6ANYYsaAOM4iZOIYnNfZg==
-X-Google-Smtp-Source: AGRyM1sEVLBhf0FP/hJuoN3w9Mu0qolkvPJs5Kd7aIL1sOqGbzFi73wXw0ZOQDoqGnNjSehK/o0iPg==
-X-Received: by 2002:a2e:82c6:0:b0:25d:eef5:8096 with SMTP id n6-20020a2e82c6000000b0025deef58096mr1763269ljh.201.1658597571541;
-        Sat, 23 Jul 2022 10:32:51 -0700 (PDT)
+        bh=gtQ14uIFjSRWKjyHokB//t8/r+71OfqgVuwkNcmPeoA=;
+        b=4IqhU0XgR2GdzvEzRe+voLO+AU/QGFplI//DADFl0I9EblTsn/D+vT7xOe1nfZcIfr
+         4vxXB/OCqqgS6Zt8ZDFYtfnyMEO8vL13hWrFjtBXoOMpo0hMM+gztZBzLHG8rB3FXlbi
+         vcY9CmEE2icH2QCSCfpy89KhhTCJG+yPmSQomlVHzsF0mAedN1iVZQVg05iArNebkFtU
+         k0EXT2vb8elx0KrzprHA4BxI0u6de02WGgFpyP+U8C1N6q8yY7wdHfDTqgA+R79ToyXS
+         mltGzP2QcFnG7AuREuO8EV91Nqn63T53qEL5EZnbl3XVX5WWsHp85haYaiMatpPUhUVP
+         Jj4A==
+X-Gm-Message-State: AJIora9dKMN/xv1flXCOKVu8pHNTc0jO+MV5sCMUb1msulmrVnqpE4YQ
+	vcXCraxcKBHVy3xZKE+JwQoeMg==
+X-Google-Smtp-Source: AGRyM1uU1eUauciMSqDhYkv5IwoplxEQwBcf8zmfZUOEgmhwKkBdpalR6T+snsJt3pQyFxc3nxS7QA==
+X-Received: by 2002:a2e:9c86:0:b0:25d:fe25:3490 with SMTP id x6-20020a2e9c86000000b0025dfe253490mr588675lji.463.1658597634910;
+        Sat, 23 Jul 2022 10:33:54 -0700 (PDT)
 Received: from [192.168.10.173] (93.81-167-86.customer.lyse.net. [81.167.86.93])
-        by smtp.gmail.com with ESMTPSA id u11-20020a056512128b00b004875a37b7b7sm1736514lfs.159.2022.07.23.10.32.50
+        by smtp.gmail.com with ESMTPSA id m2-20020a056512358200b00489d1896c06sm1756453lfr.125.2022.07.23.10.33.53
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 23 Jul 2022 10:32:51 -0700 (PDT)
-Message-ID: <875d6856-dea4-e1ff-60b3-706cf00f8bb9@linaro.org>
-Date: Sat, 23 Jul 2022 19:32:49 +0200
+        Sat, 23 Jul 2022 10:33:54 -0700 (PDT)
+Message-ID: <576bcc5b-0587-1059-961c-4e35bbfcf392@linaro.org>
+Date: Sat, 23 Jul 2022 19:33:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
@@ -71,8 +71,7 @@ To: "Chengci.Xu" <chengci.xu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
  Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- srv_heupstream@mediatek.com
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20220723031955.12552-1-chengci.xu@mediatek.com>
  <20220723031955.12552-3-chengci.xu@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
@@ -80,8 +79,9 @@ In-Reply-To: <20220723031955.12552-3-chengci.xu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220723_103253_199351_18ABE15E 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20220723_103358_950845_46E2214A 
+X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,33 +97,15 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 23/07/2022 05:19, Chengci.Xu wrote:
+> For concerns about security, the register to enable/disable IOMMU of
+> SMI LARB should only be configured in secure world. Thus, we add some
+> SMC command for multimedia master to enable/disable MM IOMMU in ATF by
+> setting the register of SMI LARB. This function is prepared for MT8188.
 
-Thank you for your patch. There is something to discuss/improve.
+Could you not Cc non-existing email addresses? It causes annoying
+bounces every time I deal with Mediatek:
 
->  #endif
-> diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-> index 11f7d6b59642..76093b856335 100644
-> --- a/include/soc/mediatek/smi.h
-> +++ b/include/soc/mediatek/smi.h
-> @@ -8,6 +8,15 @@
->  
->  #include <linux/bitops.h>
->  #include <linux/device.h>
-> +#include <linux/arm-smccc.h>
-> +#include <linux/soc/mediatek/mtk_sip_svc.h>
-
-The headers do not look like used here. Include only relevant headers.
-
-> +
-> +/* IOMMU & SMI ATF CMD */
-> +
-> +enum IOMMU_ATF_CMD {
-> +	IOMMU_ATF_CMD_CONFIG_SMI_LARB,		/* For mm master to en/disable iommu */
-> +	IOMMU_ATF_CMD_COUNT,
-> +};
->  
->  #if IS_ENABLED(CONFIG_MTK_SMI)
->  
+ 550 Relaying mail to srv_heupstream@mediatek.com is not allowed
 
 
 Best regards,
