@@ -4,59 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2B3EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Jul 2022 11:08:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CF64C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Jul 2022 17:39:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=If536OaMJIFA2FDUGLO0n+ymPQbvWa1j8+yywMbJu+U=; b=aQ00e50tcwfyjf+3c19fAvRH/P
-	D4D/36yGo1hFe96dQGmG3jscT3UPcEkSwbL9Rexs2MH/wFPiJhPh95u697OH0CYKZc0FzFqUS2Gkq
-	CthXao20Uhc+aLzTof5eyefFDKcggwZePLxj32oG4Tm3o+XV8zo0IVRJgdL59JEQ6dCfA7bLcKbAi
-	WWwVyYx2OYS/LQISwJ1BP9d5WXKioD56HHcXEYnQryRUiMAd/jO2nzkWVO9PiXIOXSJnpOon28/Jz
-	jBfM9QFfgJYIcf1/okYpMIpge/u1aC8ML8rBP7DMCQXOPRNWElRFXDWjSJL3I0vZcmaQs5cdHKqXt
-	pcST+kHA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SmBrzHw52bwH7Xn41Pzy7T17rp33HWokWawPue7k8iA=; b=u01MxJcpqTIKzka9KNiIz4aEDR
+	/a6lyfu+WlHBAgN1H8W1n9BBTQDeUCTi4QiXT2G9Y6xJAmJxd0oc+PgjCDTon7Tk+wVAM1yQemOMk
+	lBQv9+B078IRfp8QcdwTM4J7KxA/Tlb+9tcJH1moSc5RmSplhVclWMwDi7Plodc2pUFfJKqDFg+iH
+	y4aXKEPCqyNvX7k0dLaWMyOdF8JLCMuxeuGm6BBA7l8S/jWvWh/eiMEEriciMte3dZCa/Gf+EPI3C
+	UahjllG1DZxYCTX3e2CD8w8U6rNXWFlpEvcZ4FxMoFa7QjFrdzHwdbccrYRbqFDft7pb1PjYPhytQ
+	CVPjm9JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFZTY-0058eQ-8r; Sun, 24 Jul 2022 11:08:44 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1oFfZq-007vgS-6x; Sun, 24 Jul 2022 17:39:38 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFZTN-0058Yi-Bt; Sun, 24 Jul 2022 11:08:35 +0000
-Received: from dggpeml500026.china.huawei.com (unknown [172.30.72.56])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4LrL0f0tnKzWf6t;
-	Sun, 24 Jul 2022 19:04:34 +0800 (CST)
-Received: from dggpeml500008.china.huawei.com (7.185.36.147) by
- dggpeml500026.china.huawei.com (7.185.36.106) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Sun, 24 Jul 2022 19:08:24 +0800
-Received: from huawei.com (10.67.175.34) by dggpeml500008.china.huawei.com
- (7.185.36.147) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Sun, 24 Jul
- 2022 19:08:24 +0800
-From: Ren Zhijie <renzhijie2@huawei.com>
-To: <lgirdwood@gmail.com>, <broonie@kernel.org>, <perex@perex.cz>,
-	<tiwai@suse.com>, <matthias.bgg@gmail.com>, <trevor.wu@mediatek.com>,
-	<angelogioacchino.delregno@collabora.com>, <tzungbi@kernel.org>,
-	<jiaxin.yu@mediatek.com>, <julianbraha@gmail.com>, <geert+renesas@glider.be>
-CC: <renzhijie2@huawei.com>, <alsa-devel@alsa-project.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH -next] ASoC: mediatek: mt8186: fix Kconfig dependency
-Date: Sun, 24 Jul 2022 19:06:19 +0800
-Message-ID: <20220724110619.212774-1-renzhijie2@huawei.com>
-X-Mailer: git-send-email 2.17.1
+	id 1oFfZd-007vUa-Sw; Sun, 24 Jul 2022 17:39:27 +0000
+Received: by mail-ej1-x630.google.com with SMTP id os14so16711756ejb.4;
+        Sun, 24 Jul 2022 10:39:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to;
+        bh=SmBrzHw52bwH7Xn41Pzy7T17rp33HWokWawPue7k8iA=;
+        b=LNq9KSvvzv7j/HJKV866FauvJfpMaWj4iIoojhYCd7zy8/fAlfdhqDLztzmMAYneot
+         gdKldSWu0TkLVoCamWoFDnwI5Zz5JGTwMXjtTbxFkTdH3+391C4MOS0Ow1atKSS9bPug
+         Zt/3pFwjHtp9P3wj1DhYAsT4uhe3QO+3WU6Rd2w0aLZ+7M/45VZngYlw7Twpws0miflh
+         MDtaKwdHba838HLOL0ByV7Xk9LHJsh6u1VuTV2FSR3ilv1k3tgwBH/Pp4Nsk5lIY9Dlg
+         nmU3Ceyn3ovTxXZENH+htyqqddX1rpxXaKECZo10hcE7UXVxaoHecoQPiW2f2EEFncIB
+         IaVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to;
+        bh=SmBrzHw52bwH7Xn41Pzy7T17rp33HWokWawPue7k8iA=;
+        b=X8I/ey/HB2U6D9QD441tOlmyFwe4evmBkrzB7xS0NtnS594p0t0egkSRhJFkFejLC/
+         Z81eAIlBddjdoD1yAPlW5XXWNNEomclDdQ2rNLL+9mVYoCa3/EpDSg5PekpsNg+iCixP
+         a8UFVIHXTyz4xZIQwBfTZj/xf3vjYkMuEPsDvJaqZsiEZt6B7rqiFCBFCYTiqf/oLGQ4
+         Eu+7S2HHKE4f6W4RNJEo21zBnuGuaH9h6HYNWYtolfbHqySk4BFxvo1AsNaxpivifJjt
+         hBytvdnS2YW/mKi/iJ93Gv+4sJJi7c8RhCMCNKNo4xDNnsBaUKjUQs9wSVZKNLEbleaX
+         xpUg==
+X-Gm-Message-State: AJIora/H/e9HZVxgQrzdrxQENVHBB3aSmC0ZVP+Ce9wOKKQVLAwsA9+1
+	NYLZfDNVx8gFwVu5J53Nw5A=
+X-Google-Smtp-Source: AGRyM1vTTCYwH5W6U6Fg8IDwjOqz8S2dcUwFkhAR9C2Db19F6GyrIoCWMXAbpPi4n1Jq9tEf0F5ulQ==
+X-Received: by 2002:a17:906:7310:b0:72f:cad0:d436 with SMTP id di16-20020a170906731000b0072fcad0d436mr4380014ejc.751.1658684362088;
+        Sun, 24 Jul 2022 10:39:22 -0700 (PDT)
+Received: from skbuf ([188.25.231.115])
+        by smtp.gmail.com with ESMTPSA id g6-20020a17090669c600b0072a815f569bsm4397182ejs.185.2022.07.24.10.39.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 24 Jul 2022 10:39:19 -0700 (PDT)
+Date: Sun, 24 Jul 2022 20:39:16 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>
+Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alvin __ipraga <alsi@bang-olufsen.dk>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	George McCollister <george.mccollister@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Woojung Huh <woojung.huh@microchip.com>
+Subject: Re: [PATCH net-next 3/6] net: dsa: add support for retrieving the
+ interface mode
+Message-ID: <20220724173916.lebsvaqveqwus4xj@skbuf>
+References: <YtpfmF37FmfY6BV5@shell.armlinux.org.uk>
+ <20220722105238.qhfq5myqa4ixkvy4@skbuf>
+ <YtqNkSDLRDtuooy/@shell.armlinux.org.uk>
+ <20220722124629.7y3p7nt6jmm5hecq@skbuf>
+ <YtqjFKUTsH4CK0L+@shell.armlinux.org.uk>
+ <20220722165600.lldukpdflv7cjp4j@skbuf>
+ <YtsUhdg3a2rT3NJC@shell.armlinux.org.uk>
+ <YtsUhdg3a2rT3NJC@shell.armlinux.org.uk>
+ <20220722223932.poxim3sxz62lhcuf@skbuf>
+ <20220723192655.46de7cae@thinkpad>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.67.175.34]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpeml500008.china.huawei.com (7.185.36.147)
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220723192655.46de7cae@thinkpad>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220724_040833_600582_2FB9232F 
-X-CRM114-Status: UNSURE (   7.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220724_103926_018706_5EC4C983 
+X-CRM114-Status: GOOD (  45.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,34 +125,174 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If CONFIG_SND_SOC_MT8186=y and CONFIG_SND_SOC_MT6358 is not set,
-make ARCH=x86_64 CROSS_COMPILE=x86_64-linux-gnu-, will be failed, like this:
+On Sat, Jul 23, 2022 at 07:26:55PM +0200, Marek Behún wrote:
+> Does Lynx PCS support 1000base-x with AN?
 
-sound/soc/mediatek/mt8186/mt8186-mt6366-common.o: In function `mt8186_mt6366_init':
-mt8186-mt6366-common.c:(.text+0x4d): undefined reference to `mt6358_set_mtkaif_protocol'
-make: *** [vmlinux] Error 1
+Yes, that would be the intention.
 
-To fix this build error, add select SND_SOC_MT6358 to config SND_SOC_MT8186 dependency.
+> Because if so, it may be possible to somehow hack working AN for
+> 2500base-x, as I managed it for 88E6393X in the commit I mentioned (by
+> configuring 1000base-x and then hacking the PHY speed to 2.5x).
 
-Fixes: 097e874ad3fc ("ASoC: mediatek: mt8186: add platform driver")
-Signed-off-by: Ren Zhijie <renzhijie2@huawei.com>
----
- sound/soc/mediatek/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+I would need to try and see. For Lynx, to dynamically change from
+1000base-x to 2500base-x essentially means to move the SERDES lane from
+a PLL that can provide the 1.25 GHz required for 1000base-x to a PLL
+that can provide the 3.125 GHz required for 2500base-x. The procedure
+itself doesn't involve resetting the PCS, but to be honest with you,
+I don't know whether the state of the PCS registers is going to be
+preserved across the PLL change. Maybe it isn't, but this is entirely
+masked out by the phylink major reconfig process, I don't know.
 
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 96917743b0db..363fa4d47680 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -157,6 +157,7 @@ config SND_SOC_MT8186
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	depends on COMMON_CLK
- 	select SND_SOC_MEDIATEK
-+	select SND_SOC_MT6358
- 	select MFD_SYSCON if SND_SOC_MT6358
- 	help
- 	  This adds ASoC driver for Mediatek MT8186 boards
--- 
-2.17.1
+The alternative to dynamic reconfiguration is to program some bits that
+instruct the SoC what to do on power-on reset, and these bits include
+the initial SERDES protocols and PLL assignments too. I only tried to
+experiment with in-band autoneg in this mode (with the lane being
+configured for 2.5G out of reset, rather than dynamically switching it
+to 2.5G).
 
+> Anyway, I am now looking at the standards, and it seems that all the X
+> and R have K variant: 1000base-kx, 2500base-kx, 5gbase-kr and
+> 10gbase-kr. These modes have mandatory clause 73 autonegotiation.
+
+The X in BASE-X stands for 8b/10b coding, the R stands for 64b/66b coding.
+Whereas the K stands for bacKplane, i.e. the medium (compare this with
+the T in BASE-T, for twisted pair copper cable). Or with 1000BASE-SX and
+1000BASE-LX, the S stands for Short wavelength laser and the L for Long
+wavelength.
+
+What I'm trying to say, the 'X' in BASE-X doesn't stand for anything
+having to do with fiber, I guess 1000BASE-X is just a generic name for
+the coding scheme (PCS level) rather than something about the medium
+(PMD level). The terminology is pretty much a mess.
+
+> So either we need to add these as different modes of the
+> phy_interface_t type, or we need to differentiate whether clause 37 or
+> clause 73 AN should be used by another property.
+> 
+> But since 1000base-x supports clause 37 and 1000base-kx clause 73, the
+> one property that we have, managed="in-band-status" is not enough, if
+> we keep calling both modes '1000base-x'.
+> 
+> So maybe we really need to add K variants as separate
+> PHY_INTERFACE_MODED_ constants. That way we can keep assuming clause 37
+> for 2500base-x, and try to implement it for as much drivers as
+> possible, by hacking it up...
+
+Well, for good or bad, 10GBase-KR does have its own phy-mode string,
+and Sean Anderson is sending a patch to add 1000base-KX now too.
+https://patchwork.kernel.org/project/netdevbpf/patch/20220719235002.1944800-3-sean.anderson@seco.com/
+(I still don't understand what that has to do with the topic of his
+series, but anyway)
+
+More at the end.
+
+> 
+> And I still don't understand this clause 73 AN at all. For example, if
+> one PHY supports only up to 2.5g speeds, will it complete AN with
+> another PHY that supports up to 10g speeds, if the second PHY will
+> (maybe?) try at higher frequency?
+
+Define what you mean by "one PHY supports only up to 2.5G speeds".
+My copy of IEEE 802.3-2018 doesn't list in Table 73–4—Technology Ability
+Field encoding any signaling mode that is capable of 2.5G, but rather
+1000BASE-KX, 10GBASE-KR, 25GBASE-KR and so on. So you'd have to express
+your question in terms of bits that are actually advertised through the
+Technology Ability field.
+
+Then, clause 73 AN, very much like the clause 28/40 AN of BASE-T (to
+which it is most directly comparable) has a priority resolution function,
+meaning that if 2 link partners advertise support for multiple
+technologies, Table 73–5—Priority Resolution will decide which one of
+the commonly advertised technologies gets used.
+
+Side note: contrast this with flow control, which annoyingly was
+designed by IEEE to not have a priority resolution, in other words you
+don't get a graceful falloff of the resolved pause modes depending on
+what you and the link partner advertised, instead you need to
+preconfigure both ends if you want to achieve a particular result;
+this is IMO as useless as not having AN at all.
+
+There is of course no guarantee that two backplane link partners will
+have any technology ability in common, for example one may advertise
+only 1000Base-KX and the other only 10GBase-KR. In that case, autoneg
+will complete, but the link will simply not come up.
+
+The clause 73 autoneg signaling takes place using a predetermined, low-speed
+encoding. The medium transitions to the highest negotiated technology,
+and performs clause 74 link training on that medium, only after both
+ends agree that clause 73 autoneg has completed. This kind of implies
+that they will agree on the frequency being used for the data traffic.
+
+If you're asking whether 2 backplane devices will advertise 10GBase-KR
+but one of them supports a data rate of only up to 2.5Gbps over that 10G
+link, I think this is vendor-dependent and IEEE doesn't say anything
+about it. For example this is where rate adaptation could come into
+play, either through flow control, or there could be an extension to
+clause 73 similar to what Cisco did with USXGMII, where the lane
+operates at 10GBaud but via symbol replication your data rate can
+actually be only 2.5Gbps. I'm not aware of real life applications of
+rate adaptation over backplane links.
+
+
+I hinted earlier that clause 73 autoneg is most directly comparable to
+BASE-T autoneg (these 2 are even situated at different layers if you
+look at the IEEE OSI stack pictures, compared to where clause 37 AN is).
+The problem is that the Linux kernel support for new physical technologies
+grew organically, and we don't have a structure in place that scales
+naturally to all the places in which these technologies may appear in
+the stack. For example we have the phy-mode, and this represents the
+
+...
+
+/goes searching for the documentation, I don't want to be making this up/
+
+...
+
+  phy-connection-type:
+    description:
+      Specifies interface type between the Ethernet device and a physical
+      layer (PHY) device.
+
+There you go, pretty vague. What's the Ethernet device, and what's the
+PHY device?
+
+For example SGMII connects a MAC to a PHY, but to speak SGMII to reach
+to your PHY, you need another PHY that does the parallel GMII to serial
+translation for you. So to say that the phy-mode is SGMII, you need to
+ignore that the MAC has a PHY too.
+
+10GBase-KR is similar in a way, it can be placed at multiple layers, and
+traditionally, where you put it makes a difference to how we describe it
+in Linux.
+
+Maybe you have a 10GBase-T PHY chip with a backplane host-side PHY, it
+supports clause 73 declaring the 10GBase-KR technology, then it supports
+clause 74 link training, the whole shebang. These things exist. How would
+you describe this? You'd say the phy-mode is "10gbase-kr", according to
+precedent. Would that be the best thing to do, in the spirit of clause 73?
+I don't think it would. Essentially what would need to happen as a
+consequence of this description is that your PCS would essentially
+populate its Technology Ability with a single bit, corresponding to what
+you put in phy-mode, because that's how we shoehorned this. Then we'd
+say what, that managed = "in-band-status" decides whether to bypass
+clause 73 AN or not? I don't think so.
+
+Truth is, a 10G-KR "PCS" (what we mean when we say a PHY integrated into a MAC)
+is much more similar to a dedicated 10G-KR PHY, to the point that it's
+indistinguishable (what Linux thinks of a phy_device is actually 2 PHYs
+back to back, one for the host side and one for the medium side), and it
+*needs* to be treated by Linux in the same way regardless of where it's
+placed. You *need* to be able to control the backplane PCS' advertisement,
+whether to use FEC or not, regardless if it's your medium facing device,
+or an in-between device.
+
+The discussion is much, much bigger than this, but in summary, I think
+it would be quite short-sighted to expand managed = "in-band-status" for
+anything related to clause 73, or for much more than what it means right
+now (the problem is, what _does_ it mean and what _doesn't_ it?).
+
+This, plus I think development needs to be driven by someone with real
+world needs and a sense for what's practical. I am quite well outside of
+the sphere of 10-gig-and-higher networking, I'm just looking from the
+peanut gallery, so that won't be me.
 
