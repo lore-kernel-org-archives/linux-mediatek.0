@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59D27C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 09:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65D24C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 09:55:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2Zxzn2JKNy30IUeeOZfeZy2HKF5tn0G6rsehLMrAPdo=; b=kYq3hiQWOZGt8rSgdg7YnyTI1Z
-	QoOmkvv7zjg+mstD3ZpnUDWWXjdQtGnmca9XHHNF4HZZhFuG7tR6MrraFZ/igXQWZ5ajvWJ1LdM3n
-	S12ZljbK5+hqQgqRF/7deC8xub1D11h/co1UNTEGEzDiopsZkNW/31ZUHfj0Kh5WK21Vm9jrvqTPv
-	lmOWWvSs7ySmfbu5YH6Y5VNtlsWMrUB8dT0jwXWd1WewsJqDrPqim/oPhTt3uotodtJfBU5A/8wrW
-	DUMsVEwtl/3p/lDN2SVhEYGG9kh756mc4q/sTAi1t2S5we0+zxaWNawosFcJPspD7vZP209RRkZVP
-	KYDOBGoA==;
+	bh=KcNSEWkC2ObbCcqGES1sveqUUTgBHw+AvKGapbS2u3c=; b=UMlHMeqZtTvEp9+K2OYiDqfQj5
+	qr9RcXb/YQ6QJfk1DosmcIg61yJh2k7EnAjhFsO+wJZq5d5rDoBT8wK4+x/4WxDZgiuCj1I5mp5kc
+	hJIwwJOxXokg7NHq4OuBQoSVjq/LnWleglAG5SYiq/5XBQVV6O7SPUNTw5G+MeSNVuTlw3mDy1Fbg
+	UOt4Gx/ikvdL9Bw6ssKzAHXoLgNYURtrUlCHobZzwAf0IDa4f8i9eiQCzWZ3iIbO68fXjQ/Je7Jti
+	nq8yMsTAwy+eznkB5fuJPLAOymPC0TWANRk6Do8TNi7VDtpwgOYk43vDZj9bf07UyTcb6UIN4+3N7
+	R/dC3H6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFujE-007mkG-BF; Mon, 25 Jul 2022 09:50:20 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oFuoU-007pCr-Ll; Mon, 25 Jul 2022 09:55:46 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFujB-007mik-Ml
-	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 09:50:19 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1oFuoJ-007p2V-1N; Mon, 25 Jul 2022 09:55:37 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 6EDCCB80DFB;
-	Mon, 25 Jul 2022 09:50:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 10EB5C341C7;
-	Mon, 25 Jul 2022 09:50:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658742614;
-	bh=7KgDUam99vWAh7RjWX40VFff7LVefNo5IqM99eHy+co=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=SfrkY7ptB8ytcxOVKXXq9/r+2u9pjGXlILX3FKmyK7+bhyLkmNE9X2v4PMxJFbCkW
-	 Grh65bC/v3ZYZWn0p/2mZmQvTqcOQhOI4cJXEhIzrLMJ7nS4thfuzpuYJ8+ca/NUqV
-	 LAhhe6OedCZZ0egMkzJKkWvq/KswBg/8yU7vbBJ1Iyp7Pjfrv1LqX62RAj3Z0y/Gnb
-	 3SkJ27+HeGHgAae7WVwP+fw1kqBdokca6qeO29t5hP2Sh+FNOqiO89t/8mKyCoskM7
-	 r5cxsOfC8ugt8cUvXg4bru7khgGoMsI+JntAueaoTpA88h98Hx/ccOhObJvpy52R/C
-	 HFSF+CXftcC5Q==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id E9BFFE450B5;
-	Mon, 25 Jul 2022 09:50:13 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6E66966015E7;
+	Mon, 25 Jul 2022 10:55:30 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658742931;
+	bh=SCxjD0r6W2093T144vIJ+kv/iLm6YRMmyB+sEXDO65I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=INejVMHUlE0QG8D/2t58BRmaCjdB941Hiz5Hhc3wGvXpn+1o78HC/jIWtcDSR79QG
+	 zAskvAjSQ5C1axslCWugrrZHA00PgqU5sVFRNGBL6mSdn44nXZPrn3apprfpViHpFy
+	 Ytml4igRZGTQ/g5T9EzJuIlhYtBzmB7782hi2FU1iTsCFJ9nA3dP/gF9/LmTAuBei9
+	 4VowvFaoJ+thhP2LY21TpCiBGOf36jJ4NFOUmIb6XaMJI5vv/Ly+UnxvjTDP241vyu
+	 scTbBsWjXdWZitUfd4eX8bU+dH3/eN4HQyXLrrg8bypQvvKVn/B2Ov41+7v/R1QtEU
+	 0rmDfo28EG1HA==
+Message-ID: <dccc2863-a9db-d9ea-01e1-a18cf0db1d1e@collabora.com>
+Date: Mon, 25 Jul 2022 11:55:27 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v4 net-next 0/5] mtk_eth_soc: add xdp support
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <165874261395.3948.10032831276100096007.git-patchwork-notify@kernel.org>
-Date: Mon, 25 Jul 2022 09:50:13 +0000
-References: <cover.1658474059.git.lorenzo@kernel.org>
-In-Reply-To: <cover.1658474059.git.lorenzo@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
- ilias.apalodimas@linaro.org, lorenzo.bianconi@redhat.com, jbrouer@redhat.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v2 2/4] soc: mediatek: Add support of WAY_EN operations
+Content-Language: en-US
+To: Markus Schneider-Pargmann <msp@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Weiyi Lu <weiyi.lu@mediatek.com>
+Cc: Fabien Parent <parent.f@gmail.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Alexandre Bailon <abailon@baylibre.com>,
+ Fabien Parent <fparent@baylibre.com>
+References: <20220725081853.1636444-1-msp@baylibre.com>
+ <20220725081853.1636444-3-msp@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220725081853.1636444-3-msp@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_025017_929748_FF39B060 
-X-CRM114-Status: GOOD (  10.82  )
+X-CRM114-CacheID: sfid-20220725_025535_384618_4DAF2BBE 
+X-CRM114-Status: GOOD (  30.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,41 +79,275 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (master)
-by David S. Miller <davem@davemloft.net>:
-
-On Fri, 22 Jul 2022 09:19:35 +0200 you wrote:
-> Introduce XDP support for mtk_eth_soc driver if rx hwlro is not
-> enabled in the chipset (e.g. mt7986).
-> Supported XDP verdicts:
-> - XDP_PASS
-> - XDP_DROP
-> - XDP_REDIRECT
-> - XDP_TX
-> - ndo_xdp_xmit
-> Rely on page_pool allocator for single page buffers in order to keep
-> them dma mapped and add skb recycling support.
+Il 25/07/22 10:18, Markus Schneider-Pargmann ha scritto:
+> From: Alexandre Bailon <abailon@baylibre.com>
 > 
-> [...]
+> This updates the power domain to support WAY_EN operations. These
+> operations enable a path between different units of the chip and are
+> labeled as 'way_en' in the register descriptions.
+> 
+> This operation is required by the mt8365 for the MM power domain.
+> 
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> ---
+> 
+> Notes:
+>      Changes in v2:
+>      - some minor style fixes.
+>      - Renamed 'wayen' to 'way_en' to clarify the meaning
+>      - Updated commit message
+> 
+>   drivers/soc/mediatek/mtk-pm-domains.c | 64 +++++++++++++++++++++------
+>   drivers/soc/mediatek/mtk-pm-domains.h | 28 +++++++-----
+>   2 files changed, 68 insertions(+), 24 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+> index 5ced254b082b..d0eae2227813 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> @@ -44,6 +44,7 @@ struct scpsys_domain {
+>   	struct clk_bulk_data *subsys_clks;
+>   	struct regmap *infracfg;
+>   	struct regmap *smi;
+> +	struct regmap *infracfg_nao;
 
-Here is the summary with links:
-  - [v4,net-next,1/5] net: ethernet: mtk_eth_soc: rely on page_pool for single page buffers
-    https://git.kernel.org/netdev/net-next/c/23233e577ef9
-  - [v4,net-next,2/5] net: ethernet: mtk_eth_soc: add basic XDP support
-    https://git.kernel.org/netdev/net-next/c/7c26c20da5d4
-  - [v4,net-next,3/5] net: ethernet: mtk_eth_soc: introduce xdp ethtool counters
-    https://git.kernel.org/netdev/net-next/c/916a6ee836d6
-  - [v4,net-next,4/5] net: ethernet: mtk_eth_soc: add xmit XDP support
-    https://git.kernel.org/netdev/net-next/c/5886d26fd25b
-  - [v4,net-next,5/5] net: ethernet: mtk_eth_soc: add support for page_pool_get_stats
-    https://git.kernel.org/netdev/net-next/c/84b9cd389036
+What does "nao" mean?
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+Besides, please move that before *infracfg to at least keep the same type members
+alphabetically sorted..
 
+>   	struct regulator *supply;
+>   };
+>   
+> @@ -116,23 +117,38 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
+>   					MTK_POLL_TIMEOUT);
+>   }
+>   
+> -static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, struct regmap *regmap)
+> +static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
+> +				      struct regmap *regmap, struct regmap *infracfg_nao)
+>   {
+>   	int i, ret;
+>   
+>   	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+> -		u32 val, mask = bpd[i].bus_prot_mask;
+> +		u32 mask = bpd[i].bus_prot_mask;
+> +		u32 val = mask, sta_mask = mask;
 
+You have modified the macros to use sta_mask as mask, so, why are you doing
+that distinction in here between the two? You can simply keep assigning
+
+		u32 mask = bpd[1].bus_prot_mask;
+		u32 sta_mask = bpd[1].bus_prot_sta_mask;
+
+> +		struct regmap *ack_regmap = regmap;
+
+Double assignment. You're reassigning this if way_en == true.
+
+>   
+>   		if (!mask)
+>   			break;
+>   
+> +		if (bpd[i].way_en) {
+> +			if (!infracfg_nao)
+> +				return -ENODEV;
+> +
+> +			val = 0;
+> +			sta_mask = bpd[i].bus_prot_sta_mask;
+> +			ack_regmap = infracfg_nao;
+> +		}
+
+		if (bpd[i].way_en) {
+			ack_regmap = regmap_nao;
+			val = 0;
+		} else {
+			ack_regmap = regmap;
+			val = mask;
+		}
+
+> +
+>   		if (bpd[i].bus_prot_reg_update)
+> -			regmap_set_bits(regmap, bpd[i].bus_prot_set, mask);
+> +			regmap_update_bits(regmap, bpd[i].bus_prot_set, mask, val);
+>   		else
+>   			regmap_write(regmap, bpd[i].bus_prot_set, mask);
+>   
+> -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+> -					       val, (val & mask) == mask,
+> +		if (bpd[i].ignore_clr_ack)
+> +			continue;
+
+You're adding that ignore_clr_ack here in the bus prot enablement function
+which wasn't here before... and I didn't check carefully, but I think that
+this is wrong: as the name says, it's to "ignore CLEAR ack", we're not doing
+any clearing here, we're not in bus_protect_disable.
+
+If you're really sure that this is not a mistake, you should guard it for way_en.
+
+> +
+> +		ret = regmap_read_poll_timeout(ack_regmap, bpd[i].bus_prot_sta,
+> +					       val, (val & sta_mask) == sta_mask,
+>   					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+>   		if (ret)
+>   			return ret;
+> @@ -145,34 +161,49 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
+>   {
+>   	int ret;
+>   
+> -	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg, pd->infracfg);
+> +	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg,
+> +					 pd->infracfg, pd->infracfg_nao);
+>   	if (ret)
+>   		return ret;
+>   
+> -	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi);
+> +	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi, NULL);
+>   }
+>   
+> +#define mask_cond(way_en, val, mask) \
+> +	((way_en && ((val & mask) == mask)) || (!way_en && !(val & mask)))
+> +
+>   static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
+> -				       struct regmap *regmap)
+> +				       struct regmap *regmap, struct regmap *infracfg_nao)
+>   {
+>   	int i, ret;
+>   
+>   	for (i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
+> -		u32 val, mask = bpd[i].bus_prot_mask;
+> +		u32 val = 0, mask = bpd[i].bus_prot_mask;
+> +		u32 sta_mask = mask;
+> +		struct regmap *ack_regmap = regmap;
+>   
+>   		if (!mask)
+>   			continue;
+>   
+> +		if (bpd[i].way_en) {
+> +			if (!infracfg_nao)
+> +				return -ENODEV;
+> +
+> +			val = mask;
+> +			sta_mask = bpd[i].bus_prot_sta_mask;
+> +			ack_regmap = infracfg_nao;
+> +		}
+> +
+>   		if (bpd[i].bus_prot_reg_update)
+> -			regmap_clear_bits(regmap, bpd[i].bus_prot_clr, mask);
+> +			regmap_update_bits(regmap, bpd[i].bus_prot_clr, mask, val);
+>   		else
+>   			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
+>   
+>   		if (bpd[i].ignore_clr_ack)
+>   			continue;
+>   
+> -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+> -					       val, !(val & mask),
+> +		ret = regmap_read_poll_timeout(ack_regmap, bpd[i].bus_prot_sta,
+> +					       val, mask_cond(bpd[i].way_en, val, sta_mask),
+
+"I don't know why", my brain still keeps telling me that using different functions
+for the WAY_EN (en/dis) is just better.
+
+This commit seems to be overcomplicating two "easy" en/dis functions.
+
+>   					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+>   		if (ret)
+>   			return ret;
+> @@ -185,11 +216,12 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
+>   {
+>   	int ret;
+>   
+> -	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi);
+> +	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi, NULL);
+>   	if (ret)
+>   		return ret;
+>   
+> -	return _scpsys_bus_protect_disable(pd->data->bp_infracfg, pd->infracfg);
+> +	return _scpsys_bus_protect_disable(pd->data->bp_infracfg,
+> +			pd->infracfg, pd->infracfg_nao);
+>   }
+>   
+>   static int scpsys_regulator_enable(struct regulator *supply)
+> @@ -363,6 +395,10 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+>   			return ERR_CAST(pd->smi);
+>   	}
+>   
+> +	pd->infracfg_nao = syscon_regmap_lookup_by_phandle_optional(node, "mediatek,infracfg_nao");
+> +	if (IS_ERR(pd->infracfg_nao))
+> +		return ERR_CAST(pd->infracfg_nao);
+> +
+
+I think that we should enforce a check here:
+
+pd->infracfg_nao = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg_nao");
+if (IS_ERR(pd->infracfg_nao)) {
+	/* checking if infracfg_nao != NULL at every pwoeron/poweroff is largely
+	 * suboptimal, as if it't present once, it's present always (!)
+	 */
+	if (we have WAY_EN)
+		return ERR_CAST ...
+	pd->infracfg_nao = NULL;
+}
+	
+
+>   	num_clks = of_clk_get_parent_count(node);
+>   	if (num_clks > 0) {
+>   		/* Calculate number of subsys_clks */
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
+> index daa24e890dd4..e788d6bdde9d 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.h
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
+> @@ -39,23 +39,29 @@
+>   
+>   #define SPM_MAX_BUS_PROT_DATA		6
+>   
+> -#define _BUS_PROT(_mask, _set, _clr, _sta, _update, _ignore) {	\
+> -		.bus_prot_mask = (_mask),			\
+> -		.bus_prot_set = _set,				\
+> -		.bus_prot_clr = _clr,				\
+> -		.bus_prot_sta = _sta,				\
+> -		.bus_prot_reg_update = _update,			\
+> -		.ignore_clr_ack = _ignore,			\
+> +#define _BUS_PROT(_mask, _sta_mask, _set, _clr, _sta, _update, _ignore, _way_en) {	\
+> +		.bus_prot_mask = (_mask),				\
+> +		.bus_prot_set = _set,					\
+> +		.bus_prot_clr = _clr,					\
+> +		.bus_prot_sta = _sta,					\
+> +		.bus_prot_sta_mask = _sta_mask,				\
+> +		.bus_prot_reg_update = _update,				\
+> +		.ignore_clr_ack = _ignore,				\
+> +		.way_en = _way_en,					\
+>   	}
+>   
+>   #define BUS_PROT_WR(_mask, _set, _clr, _sta)			\
+> -		_BUS_PROT(_mask, _set, _clr, _sta, false, false)
+> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, false, false)
+>   
+>   #define BUS_PROT_WR_IGN(_mask, _set, _clr, _sta)		\
+> -		_BUS_PROT(_mask, _set, _clr, _sta, false, true)
+> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, true, false)
+>   
+>   #define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)		\
+> -		_BUS_PROT(_mask, _set, _clr, _sta, true, false)
+> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, true, false, false)
+> +
+> +#define BUS_PROT_WAY_EN(_en_mask, _sta_mask, _set, _sta)	\
+> +		_BUS_PROT(_en_mask, _sta_mask, _set, _set, _sta, true, false, \
+> +			  true)
+>   
+>   #define BUS_PROT_UPDATE_TOPAXI(_mask)				\
+>   		BUS_PROT_UPDATE(_mask,				\
+> @@ -68,8 +74,10 @@ struct scpsys_bus_prot_data {
+>   	u32 bus_prot_set;
+>   	u32 bus_prot_clr;
+>   	u32 bus_prot_sta;
+> +	u32 bus_prot_sta_mask;
+>   	bool bus_prot_reg_update;
+>   	bool ignore_clr_ack;
+> +	bool way_en;
+>   };
+>   
+>   /**
 
