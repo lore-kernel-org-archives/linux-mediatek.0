@@ -4,67 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49C7BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 12:04:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5459DC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 12:47:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CrBQOkYQQDlTkky5vXYdLMrxquCCYwzXi6Swst+m1D0=; b=QBMTAG3NJbczIk2JNehhH2J1k9
-	aszSQDhwo4FIRJUecwDmJOvFO5EYyV/ZxSIGU+JQ/rkMVLk7wM06sdPNoIILq7dkIuHsMdN5eF1TH
-	rKsT/7gEiLj6PC9p6OcR7NhNEaPgqf6FpgPe9tOSKERdm43MIvbF5pM1lj8pSJWgEkjR3bNhUm28S
-	HTEsqzjoRoaHR/tnnP0TEoN/b2+f15IzsWAKfhdXctelDbP5pSTcWZQJ3npg2lXpSILmIYNyn+saJ
-	NXOA8qrVKrc2otzCXRyRKcFYhKu5pUv6hOQfz7wjhnJiajxIF2rkD010sVbAPbZ7DsiKVLnGT/Sq1
-	Ef9Wty2w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d7+MTfcD+NFc2y/OEnklb7H3XSxJGRWVeSRrvmC4apM=; b=ww881Hc3S/kXrsWAUysnHEirEF
+	/P2WxXPpned68JoFyCF8GC/u0wXbDsAamrSj1ua8dPrcJU9xmMeDCnYKXTYjn91e/tTW+WyoLaNV9
+	RhWFs21XS7GuRKjQjLC9FY7HAr50nUuAgRZei+9CEMhB5v2eXG4iTYdfaiK12tKH5fxiuTv+J87SR
+	wVffWLOpvTUQGLG8XFKce43lcqrOcuycgK/EywjWo/nwuAXCJuSLUe76RTan0Gtjs1Xq3ZZaSXo8r
+	F0x4ZtjT7+XmRIyGk3IRq8dltPQZ9TmyjTTtJLu4Xtc0PjwXmoObvoseQyA2qcp/6vL6ao+WCl/b7
+	+l9TvnPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFwoo-009EDT-Sb; Mon, 25 Jul 2022 12:04:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oFxU8-009gw8-Qj; Mon, 25 Jul 2022 12:46:56 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFwom-009E9Y-9V; Mon, 25 Jul 2022 12:04:13 +0000
-X-UUID: 44c6d84ee674417b84cb8d0ebee2992d-20220725
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:264b0420-0d95-48e7-9f1a-d15247331ba6,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:0f94e32,CLOUDID:1393e1d3-912a-458b-a623-74f605a77e93,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 44c6d84ee674417b84cb8d0ebee2992d-20220725
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <xiangsheng.hou@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 502759003; Mon, 25 Jul 2022 05:04:02 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 25 Jul 2022 20:03:30 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 25 Jul 2022 20:03:30 +0800
-From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<broonie@kernel.org>
-CC: <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<bin.zhang@mediatek.com>, <benliang.zhao@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Xiangsheng Hou
-	<xiangsheng.hou@mediatek.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>
-Subject: [PATCH V5] dt-bindings: mediatek: Add axi clock in mt8173 dts example
-Date: Mon, 25 Jul 2022 20:02:05 +0800
-Message-ID: <20220725120204.10834-1-xiangsheng.hou@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1oFxTx-009gn8-N8
+	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 12:46:47 +0000
+Received: by mail-ej1-x629.google.com with SMTP id bp15so20361572ejb.6
+        for <linux-mediatek@lists.infradead.org>; Mon, 25 Jul 2022 05:46:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=d7+MTfcD+NFc2y/OEnklb7H3XSxJGRWVeSRrvmC4apM=;
+        b=fEQX5UAxkfq+09coTXrN6rrW74oy24rWf11QXf2XtJpNLY7S8dqceObl3gEhdPrrvS
+         MEdzc0jCz3s/8NdcOP34pFUfYlB+YV8EqpnYwLpwfauXAnlpmuEt+Fsyayt6i2dCLwSv
+         wSq+e61Wk8owPJsRezgnp2Mj1p3r+zG7ZaYcDFYuFjl0LhVPOM/MouK0pyUasJb2M5Ni
+         fSsvqKn47kYlyPOlfymvKRpuPtqmVZX1utFQHQMeWJRTxw5AlQZfPxvsWIxb2CDDY3Oh
+         9c/UowiLKOEYLK8IU7oWM9tR9vynkrDxXEEpONfa34gV3kLDiGQBB7M3BjtJj6Vhy5FF
+         PICg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=d7+MTfcD+NFc2y/OEnklb7H3XSxJGRWVeSRrvmC4apM=;
+        b=WgsMGapyq3xqcsuulv8BmVmWu0LVR/Lb2Gjy8KSVbeRZ67q7O+SIoZm9FaOb37aIck
+         mSEnhGlTny6r0UtP/+vBdLDuFsmRnL7dNVvIoL0DUBzigP8DSnZnGKvOuO9OOR9iUjo/
+         lyxghT5M5mHzIl8OBY3W0wNcrolEqXlAilrEtSvz3le2ERkOM1ynCDa9pHJwKQn4WkFW
+         Kr9vj+YUwokChqhdUei+OZ62vOMBMYlxPXFpHqXemPDk1j1uRRKkpLeyXDYTjT5ACdbu
+         dWV8+EwGD5GGO9jVoqbZJ7DP+K/N/1sNjVWSi28m48La3EnAkh5DUy9TWuW+3rZ3Pmal
+         dKUA==
+X-Gm-Message-State: AJIora+9gyzcjmbyK2Skfqbpw8aTbB+j8Nn0Web7spaAFULjKrLBJ1dW
+	dzyYRQaG5+zR0Gilu8mitlU15cenHLEyye5zf+O5CA==
+X-Google-Smtp-Source: AGRyM1sCu21K/w1G5XojAxSlYHNjLDCufI94j1Lxyx/oXRqmlY5vGOzH/4OVrcFYM3tG0TTlufO236behkk0QeQyTjM=
+X-Received: by 2002:a17:907:a053:b0:72b:3051:b79b with SMTP id
+ gz19-20020a170907a05300b0072b3051b79bmr9552157ejc.690.1658753202304; Mon, 25
+ Jul 2022 05:46:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20220623090445.1401-1-axe.yang@mediatek.com> <20220623090445.1401-4-axe.yang@mediatek.com>
+ <CACRpkdZ5G2fMCqvkXANVEmZjNcF4U4mSDzZk6aXbqFjYVN3hcA@mail.gmail.com> <3747f246650622ef65787159af5271a79401a855.camel@mediatek.com>
+In-Reply-To: <3747f246650622ef65787159af5271a79401a855.camel@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 25 Jul 2022 14:46:30 +0200
+Message-ID: <CACRpkdZP-FBP8hsBfeMn1M8=VR_cYG+j9GQc9VdV-HjkvSo73w@mail.gmail.com>
+Subject: Re: [PATCH v13 3/3] mmc: mediatek: add support for SDIO eint wakup IRQ
+To: Axe Yang <axe.yang@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
+	Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Adrian Hunter <adrian.hunter@intel.com>, 
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala <satyat@google.com>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>, 
+	Eric Biggers <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, 
+	Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>, 
+	Tian Tao <tiantao6@hisilicon.com>, angelogioacchino.delregno@collabora.com, 
+	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	Yong Mao <yong.mao@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_050412_356155_6A380F55 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20220725_054645_764214_119F6D22 
+X-CRM114-Status: GOOD (  20.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,44 +96,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For mt8173, it is needed to add the axi clock for dma mode.
+On Mon, Jul 25, 2022 at 11:13 AM Axe Yang <axe.yang@mediatek.com> wrote:
+> On Fri, 2022-07-22 at 13:21 +0200, Linus Walleij wrote:
+> > On Thu, Jun 23, 2022 at 11:10 AM Axe Yang <axe.yang@mediatek.com>
+> > wrote:
 
-Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring <robh@kernel.org>
- ---
- Changes from v4:
- - none
- 
- Changes from v3:
- - fix number of column characters
+> SDIO DAT1 pin mode is changed to GPIO mode in
+> dev_pm_set_dedicated_wake_irq_reverse():
+>
+> https://elixir.bootlin.com/linux/latest/source/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c#L339
+>
+> dev_pm_set_dedicated_wake_irq_reverse() -> ... ->request_threaded_irq()
+> -> __setup_irq() -> irq_request_resources() ->
+> mtk_eint_irq_request_resources()-> mtk_xt_set_gpio_as_eint()
 
- Changes from v2:
- - remove assigned clocks and parents in dt-binding
+This doesn't seem to have much to do with pin control?
+No pin control functions are called on this execution path,
+no pin control state is changed, right?
 
- Changes from v1:
- - none
----
- .../devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml        | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+If what you mean is that
+it happens to poke into the same hardware registers that is
+mainly a matter of concurrency in the driver, sometimes two
+abstractions happen to have to poke into the same hardware
+registers and then it is up to the driver to maintain state for
+the hardware, this is not a question for the framework.
 
-diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
-index 41e60fe4b09f..d3d7ed4b497b 100644
---- a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
-+++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
-@@ -82,8 +82,9 @@ examples:
-         compatible = "mediatek,mt8173-nor";
-         reg = <0 0x1100d000 0 0xe0>;
-         interrupts = <1>;
--        clocks = <&pericfg CLK_PERI_SPI>, <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
--        clock-names = "spi", "sf";
-+        clocks = <&pericfg CLK_PERI_SPI>, <&topckgen CLK_TOP_SPINFI_IFR_SEL>,
-+                 <&pericfg CLK_PERI_NFI>;
-+        clock-names = "spi", "sf", "axi";
-         #address-cells = <1>;
-         #size-cells = <0>;
- 
--- 
-2.25.1
+How is Mediatek developers thinking about this thing in general?
+You are a few people who developed the driver so certainly
+you must have some design idea to why irq_request_resources()
+poke around in these registers? Does it even perform pin
+control behind the back of the pin control framework?
 
+> To restore SDIO DAT1 pin to uhs mode. I have to call
+> pinctrl_select_state() twice(change pinctrl to another state, then
+> change back to uhs mode). Ulf worried we might be doing something at
+> the mmc driver level, which should really be managed at the pinctrl
+> layer.
+>
+> Do you have any comment or suggestion on this?
+
+The pin control state transitions are really just finite automata.
+
+Your pin control needs to be different when using wakeup from
+when being used for SDIO and this is perfectly fine, it's no
+different from the fact that the regulator and clock might need
+to be in different states, so I don't quite understand the
+question?
+
+Yours,
+Linus Walleij
 
