@@ -4,68 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECE4EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 09:07:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A4AFC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 09:08:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MYK+t8d6WH5uuTgd+g612Qq/d/3ZBJw/mt5J9hb9180=; b=CIWOkxUhWMQKNiYzoaO2ht5ToM
-	TZyrktlzMJgj4wIWOXy2v05vHopiHyfDF1KAnI8+aNhfDh/a0JeZz5ncwTqhzjXOOeivgarnLW/2/
-	RS+x/IsSiPenAGjdqNDAZE9LPqi2zvqI2dD+nqD/Jx3Ki1xGohoKSwgXMtXmlt79Z3gllGxCvGJ7R
-	6KN0SdHb1OK0ON+ZY8lywAva+dinRPVu+bvzrXfhe2MCd24peAmhx5keCYLE+3keGzSome7jKicmp
-	9eXK2QRUeAIDvBm2ytNqdVhAfQEhZZ52pf0od8mlfA4hcHbGRkgPtR/w1VbIP6XVs31vm+USjxXZh
-	8eNiWrhw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SKEZcZKyJPxnUIHg9vM+IkXxZdZ8ejobr3a6ltkwgqg=; b=iI2pByUq/LE5pzqwJQ1pn9VapD
+	dAHPlv7wjm54S1mC1+9f3yuqQK5BnTYRel6W3rzl3W7VSLvVY2JvJZ/tI+WsSgFowYUS6rNB7DlIi
+	8f/7Fs/s7Wb9fWD9VNhyKUE9ErDD2dixA9pKGGryr88BgxDnOQ613e7/mDJ4sedzLAA0aXEV9FW1s
+	RoiCfhnMhSktmsUL53eXFSujFtCbG6LnXjUk9ZHHTFXYAlkKiYMEVn2CPKfEsQnpfJOmP7wavyKUZ
+	r1TwpMUr8BMj167uRM5CJgFWUwMcLwqAaws49T/VeREy32xnZIFn8poG9y1+LLMYVTN+gPoYCeMAG
+	w2uzd7+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFu3y-007KRa-PJ; Mon, 25 Jul 2022 09:07:42 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oFu4r-007L36-Rd; Mon, 25 Jul 2022 09:08:37 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFu3k-007KJt-JL; Mon, 25 Jul 2022 09:07:30 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8899066015E7;
-	Mon, 25 Jul 2022 10:07:26 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658740047;
-	bh=uBO/pkzkv5EBZYyQnsx8/L7C7pGHaycXjjQey8xXLe4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QbtCyY/TkCm/cZ6AZqWzL7/QMYs2ImlWgUzVxfDiic5PcKm8bW9KeO+u+AdbMM+Z5
-	 bI0DjNsw21DmjykhDxvsLDyL1ImWvZ3OX2VSLVeSLlAM5D5uslVqbPAImGNKuZhzMf
-	 KetO4iahmMfcG0fIOg9u+5J0dbyU2UXGs6FSJn54KQ+gqrvaEasYO8sUe9uotVNFkb
-	 G72Aby95gW0LR8kpNE0tlQlRlmQv4Ulnzu48hz39lC8Tct1N1XO7Dk9CLcjrnvtun3
-	 xfll+2wTR+urIfDaTR5MdkiKhFzVMVuK1q5YVk/ROibH5h5QwLFEQ0brJiHvTjaOVQ
-	 CUnU9FPjpDKog==
-Message-ID: <59d9e674-2021-b02e-4ec8-aee8a118a96d@collabora.com>
-Date: Mon, 25 Jul 2022 11:07:23 +0200
+	id 1oFu4W-007KmE-IR; Mon, 25 Jul 2022 09:08:18 +0000
+Received: by mail-ed1-x532.google.com with SMTP id w5so600326edd.13;
+        Mon, 25 Jul 2022 02:08:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=SKEZcZKyJPxnUIHg9vM+IkXxZdZ8ejobr3a6ltkwgqg=;
+        b=SF+aqs+EVnbsbKQkA/8xNH4ehlnunss9fmN5U1pnRWAD2EMIQ+vnoZbzG36K5peZlX
+         CXhER1ViMJa80xFPZtY843nWQs5F1BNT454kUiXwBosjz4IYFjnLaJailn/bPKEmOYYj
+         OQZu//AWglB0ze0HUO1SQYsIXOFhVkCy9Y+HPByleJg8LXsl2myXUq38a43P555UG4Bx
+         W4w40So2uuPYw5I5cWqSTLAX8vR149Ik4ff+qJQus9SdkPcCLkZ3D5xoOpeLQVKUQZ8Y
+         zppNE2E5jRpSRhv5vq/EJEOVqtSyTp9xfxGx+C2GzeLpQ8Hqwv5+/dQLpC89uzdBr14a
+         kbDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=SKEZcZKyJPxnUIHg9vM+IkXxZdZ8ejobr3a6ltkwgqg=;
+        b=mcBBHikX8NgLAkMUz+Sz+7MQj0Aa9Eu53fLsc9lp5IL+vJuEQPLgD2u7UuaH7fZBbs
+         sbLEAC16vVM0aMuT6wl+BYMkoEwipd3CFj3E/NsKNdWnBJMjin1H8hX5gaSTPFlOr6SA
+         MwgG9baAESHazpoQ8fAPYhtoxig2b2omDKj2CZeOJ2NDfLe5lYJ0BH9+yUvgkLdIITRH
+         +eGokBrMp33h05xy1rXOAbRIpCp5k7rm6fWSWpjYP3tcQDWaTaylVzUb5ORCxAmm17ZC
+         wtnniCDgMiIhRnsGynmeDbheGoXZbN3F5jAjyE0yo/58x36mgoeIC/oFWEdqLa0tjtLF
+         AFfA==
+X-Gm-Message-State: AJIora/gc++UcFidEhLNTXTX3UQrNUau8B02EKYnc13wkZTcJkIKhY19
+	1WSo8UQXAQVf46aptKhqAlh4f3jFr4dGdoFy2bw=
+X-Google-Smtp-Source: AGRyM1v5JqoLA7zG3OW50lchaZUo0NzhFJOo3SiC7x0i5Bb09pqP2OvkrfyBcnIJEGb6N4UIi+1F3CYnjToz5WfvfBA=
+X-Received: by 2002:a05:6402:50c9:b0:43c:163a:4d5f with SMTP id
+ h9-20020a05640250c900b0043c163a4d5fmr1821081edb.386.1658740092120; Mon, 25
+ Jul 2022 02:08:12 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v2 3/4] soc: mediatek: add support of MTK_SCPD_STRICT_BUSP
- cap
-Content-Language: en-US
-To: Markus Schneider-Pargmann <msp@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: Fabien Parent <parent.f@gmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Alexandre Bailon <abailon@baylibre.com>,
- Fabien Parent <fparent@baylibre.com>
-References: <20220725081853.1636444-1-msp@baylibre.com>
- <20220725081853.1636444-4-msp@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220725081853.1636444-4-msp@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-14-peterwu.pub@gmail.com>
+In-Reply-To: <20220722102407.2205-14-peterwu.pub@gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Mon, 25 Jul 2022 11:07:35 +0200
+Message-ID: <CAHp75VfxeRR7BzOWwfNSo+x3JZcH37ogR+ZbapTAWrCYkr+FUg@mail.gmail.com>
+Subject: Re: [PATCH v6 13/13] video: backlight: mt6370: Add MediaTek MT6370 support
+To: ChiaEn Wu <peterwu.pub@gmail.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
+	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
+	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_020729_019554_A4754F65 
-X-CRM114-Status: GOOD (  23.56  )
+X-CRM114-CacheID: sfid-20220725_020816_690742_F2A31EA7 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,115 +96,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/07/22 10:18, Markus Schneider-Pargmann ha scritto:
-> From: Alexandre Bailon <abailon@baylibre.com>
-> 
-> This adds support for MTK_SCPD_STRICT_BUSP capability. It is a strict
-> bus protection policy that requires the bus protection to be disabled
-> before accessing the bus.
-> This is required by the mt8365, for the MM power domain.
-> 
-> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> ---
-> 
-> Notes:
->      Changes in v2:
->      - Fixup error handling path.
-> 
->   drivers/soc/mediatek/mtk-pm-domains.c | 29 +++++++++++++++++++++++----
->   drivers/soc/mediatek/mtk-pm-domains.h |  1 +
->   2 files changed, 26 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-> index d0eae2227813..94ca8981f45e 100644
-> --- a/drivers/soc/mediatek/mtk-pm-domains.c
-> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-> @@ -240,6 +240,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->   	struct scpsys *scpsys = pd->scpsys;
->   	bool tmp;
->   	int ret;
-> +	bool strict_busprotect;
->   
->   	ret = scpsys_regulator_enable(pd->supply);
->   	if (ret)
-> @@ -263,9 +264,18 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->   	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ISO_BIT);
->   	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
->   
-> -	ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
-> -	if (ret)
-> -		goto err_pwr_ack;
-> +	/*
-> +	 * In few Mediatek platforms(e.g. MT6779), the bus protect policy is
-> +	 * stricter, which leads to bus protect release must be prior to bus
-> +	 * access.
-> +	 */
-> +	strict_busprotect = MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUSP);
-> +	if (!strict_busprotect) {
+On Fri, Jul 22, 2022 at 12:25 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+>
+> From: ChiaEn Wu <chiaen_wu@richtek.com>
+>
+> MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
+> with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
+> driver, display bias voltage supply, one general purpose LDO, and the
+> USB Type-C & PD controller complies with the latest USB Type-C and PD
+> standards.
+>
+> This adds support for MediaTek MT6370 Backlight driver. It's commonly used
 
-Please directly check for MTK_SCPD_CAPS, you don't really need that bool variable,
-not even for performance... and it fits just fine in one line, even.
+Read Submitting Patches, please!
 
-	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION)) {
+(In this case, find "This patch" in the above mentioned document, read
+and act accordingly)
 
-> +		ret = clk_bulk_prepare_enable(pd->num_subsys_clks,
-> +					      pd->subsys_clks);
-> +		if (ret)
-> +			goto err_pwr_ack;
-> +	}
->   
->   	ret = scpsys_sram_enable(pd);
->   	if (ret < 0)
-> @@ -275,12 +285,23 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
->   	if (ret < 0)
->   		goto err_disable_sram;
->   
-> +	if (strict_busprotect) {
+> to drive the display WLED. There are 4 channels inside, and each channel
+> supports up to 30mA of current capability with 2048 current steps in
+> exponential or linear mapping curves.
 
-	if (MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION)) {
+...
 
-> +		ret = clk_bulk_prepare_enable(pd->num_subsys_clks,
-> +					      pd->subsys_clks);
-> +		if (ret)
-> +			goto err_enable_bus_protect;
-> +	}
-> +
->   	return 0;
->   
-> +err_enable_bus_protect:
+> +               brightness_val[1] = (brightness - 1) >> fls(MT6370_BL_DIM2_MASK);
 
-For human readability purposes (and paranoidly preventing future mistakes), I'd
-add a check for the strict bus protection cap here too.
 
-> +	scpsys_bus_protect_enable(pd);
->   err_disable_sram:
->   	scpsys_sram_disable(pd);
->   err_disable_subsys_clks:
-> -	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-> +	if (!strict_busprotect)
-> +		clk_bulk_disable_unprepare(pd->num_subsys_clks,
-> +					   pd->subsys_clks);
->   err_pwr_ack:
->   	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
->   err_reg:
-> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-> index e788d6bdde9d..a50cfb926d22 100644
-> --- a/drivers/soc/mediatek/mtk-pm-domains.h
-> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
-> @@ -8,6 +8,7 @@
->   #define MTK_SCPD_SRAM_ISO		BIT(2)
->   #define MTK_SCPD_KEEP_DEFAULT_OFF	BIT(3)
->   #define MTK_SCPD_DOMAIN_SUPPLY		BIT(4)
-> +#define MTK_SCPD_STRICT_BUSP		BIT(5)
+(see below)
 
-MTK_SCPD_STRICT_BUS_PROTECTION is a bit more human readable.
+...
 
->   #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
->   
->   #define SPM_VDE_PWR_CON			0x0210
+> +               /*
+> +                * To make MT6372 using 14 bits to control the brightness
+> +                * backward compatible with 11 bits brightness control
+> +                * (like MT6370 and MT6371 do), we left shift the value
+> +                * and pad with 1 to remaining bits. Hence, the MT6372's
 
-Regards,
-Angelo
+to the remaining
+
+> +                * backlight brightness will be almost the same as MT6370's
+> +                * and MT6371's.
+> +                */
+> +               if (priv->vid_type == MT6370_VID_6372) {
+> +                       brightness_val[0] <<= MT6370_BL_DIM2_6372_SHIFT;
+> +                       brightness_val[0] |= MT6370_BL_DUMMY_6372_MASK;
+> +               }
+
+Nice! Why not...
+
+...
+
+> +       gpiod_set_value(priv->enable_gpio, brightness ? 1 : 0);
+
+!!brightness will do as well.
+
+...
+
+> +       brightness = brightness_val[1] << fls(MT6370_BL_DIM2_MASK);
+
+> +               val |= prop_val << (ffs(MT6370_BL_PWM_HYS_SEL_MASK) - 1);
+
+> +               val |= ovp_uV << (ffs(MT6370_BL_OVP_SEL_MASK) - 1);
+
+> +               val |= ocp_uA << (ffs(MT6370_BL_OC_SEL_MASK) - 1);
+
+> +       val = prop_val << (ffs(MT6370_BL_CH_MASK) - 1);
+
+...to use respective _SHIFTs in all these?
+
+...
+
+> +       priv->enable_gpio = devm_gpiod_get_optional(dev, "enable",
+> +                                                   GPIOD_OUT_HIGH);
+> +       if (IS_ERR(priv->enable_gpio))
+> +               dev_err(dev, "Failed to get 'enable' gpio\n");
+
+What does this mean? Shouldn't be
+
+  return dev_err_probe()?
+
+-- 
+With Best Regards,
+Andy Shevchenko
 
