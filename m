@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57851C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 06:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 528AEC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 06:47:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=koE1sOchZGcuAQ6ZIasz8+3z8ouCYYjQCDzwRp9wkxE=; b=WjBwFt2LAxUFNMFg+MHw7tEEbP
-	phG7bn5ixI1J237ycjO817F+XpjQrhBbSKR+AOo33H8kCHgVdJflZKq8YPtXUl2yGk2j326tUg3YW
-	pNyNZaZl5nvnvWsdiKmE196XVmcs0Vy1zoiZUrFEaAedmffG+Iq6XG3qHhVAvCf1OoJYzLPQVaOS0
-	/nng5ewkqd8scB5lVPQy/oNf+FOzsUfUfXaJddF+xXipBjXndfyYVJuJRwNQLaHbEJ/rriLDruQoi
-	+RyvpJp6YmyoM45rhQq55XzNobnFyzTJwT+rK3Zqqau7oz8vKDgs1tN/MjDVIYmDpsTUhXEoGijBB
-	TEyz4zYw==;
+	bh=a+LHD1Eh7R5NFEh/i7at+5wk7Eyhd6qFs5js/UI+dUc=; b=pyA9+/GOFodwlVTIDLvH1W1r4q
+	T1/DWonKvuBfJsg58pmSocX4lrBQbIecmn4kp8gFGpJI04FY32XoyvR4kTJG/kkLRfG4rSD5PcD0s
+	U8XSsBwJ6wDtCD7aupTzbU6L/dClcxemI/ED4AzmkWKtToLrdV81yQoTHpwN595UyObIMeMkofMxK
+	h+oDqJAwuiTJ6IwK6tryJDKwNbSdJ3lacsgDMN7ayDr8QxqHq2kqhd6jq99YJE7tvcPSPqz89Znc3
+	xXcWj7kBzQZZ9g+uKllFBFjqe5Gqe007OLlOh0cUtEKFoLd4eLDeax2hPPRTB20Zp6jj3wkqx/kSG
+	sX+9TgYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFrqA-005eCH-Dz; Mon, 25 Jul 2022 06:45:18 +0000
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+	id 1oFrrs-005fRl-Qd; Mon, 25 Jul 2022 06:47:04 +0000
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFrq8-005e7D-2o
-	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 06:45:17 +0000
-Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-31f1b271dcbso8309967b3.10
-        for <linux-mediatek@lists.infradead.org>; Sun, 24 Jul 2022 23:45:14 -0700 (PDT)
+	id 1oFrrg-005fFX-N9
+	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 06:46:54 +0000
+Received: by mail-yb1-xb2c.google.com with SMTP id 6so18442374ybc.8
+        for <linux-mediatek@lists.infradead.org>; Sun, 24 Jul 2022 23:46:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=koE1sOchZGcuAQ6ZIasz8+3z8ouCYYjQCDzwRp9wkxE=;
-        b=Rcjc8ntxdRRnzxYtaeC8PNuN5mEqizkS+usqu0ltMEG3LntntbO+oSzNniJmafQwEQ
-         kWd8OOtIHmb4VWGTZbhqaaHlPmIQAX9jcNBMHFE8lMInOR9PsqFDldUjdXu3A1P3iDIq
-         2cUPz3TadTV49aFZGesO2kJgSOwPxjfjIh/UQ=
+        bh=a+LHD1Eh7R5NFEh/i7at+5wk7Eyhd6qFs5js/UI+dUc=;
+        b=Ibr9q1wIeBGws91HK3qdE1+wGQ7t0MkwzuOm1Xb3FnQkzuTRYcgaObgz8ynZLO2q52
+         PA+10trsRKvarVn64dlNZzx6SdntY3tG6R7uP/a3yZTiEgS5/BXsZAPxKqmDTwjgXyyv
+         GeBSJ75Ea/cEKXAv60Z9TTrJB0U/3a9uxk09g=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=koE1sOchZGcuAQ6ZIasz8+3z8ouCYYjQCDzwRp9wkxE=;
-        b=EJUVjEGxuV/tKrYApO0apYifleyzgKTTjOkWLTKynIvIUrhz87wFfsNLspAoceuwm9
-         jInMzhoK20XX5TBMgAS0Bkc9cECypM82FSJA38THEJ02nD3zdq7uLKOO2juKSRYp0D7c
-         qU5bLM+FCylzLbNGzecCKj+nq9oJRQmSVtR8BtMjG4lq8aw7HZ1bnqXnSfduSxTSsdtL
-         ibuPtQcuBtT466jcvPx/eDOJPButMxvCHTxu2IFIV259+VoMlm4KSkcQDvU+Y7Ods+RL
-         K0q/pNcTzCqDR7nxMMocitBJYiG8tzAxEWiwZ2B3MMpgxnnMtEK0U4YijlXkfN+y70iY
-         PCog==
-X-Gm-Message-State: AJIora9k29HJTZxriPNHntMVWuydPRPI490xV+CE2n6cpPc0s8+TexXZ
-	89/KLGDQSblrvXZGjRM5WoTCdxDMticuFv0vJ3eolxm/6OoRcg==
-X-Google-Smtp-Source: AGRyM1tWX8v8lA94PgQz8q4L+DWzhvEaTMIwan7i6g4iVoqzmL5YsXQN/5N9OGYvaAFxZcMla6oIVbP/pg4cyghjqs0=
-X-Received: by 2002:a81:610:0:b0:31e:4822:6807 with SMTP id
- 16-20020a810610000000b0031e48226807mr8670649ywg.354.1658731513346; Sun, 24
- Jul 2022 23:45:13 -0700 (PDT)
+        bh=a+LHD1Eh7R5NFEh/i7at+5wk7Eyhd6qFs5js/UI+dUc=;
+        b=ekZIhMdsypOhhHzavP2/SiRtE6AD4WArSJNZL2s4tLrIM9EJw6XALdBpDQuDbncRxw
+         xFIpo6D4yL0sXrRJNKvBRKQccWggm06LkQ8Hy2Dxk8vvJ/trAWq26q3fTL/e2G2JF766
+         HWG/yAa2NhSkTxHZuR8vChyFC1V4BsIIPKar5rhqLiBaI836F85IFA09IUw/8sJ4GZJy
+         hMw8vn27SpZ4AoOQ0kfZCehjHfbAjPKk2z/HAo410gXYlxO4EJpOclQJJwLA31fSg5OR
+         rWSlgnHIUTzZ5yiL+CsLFxqM5W66cSJ6loXmyTigx7YSR0HucLkqC4gKkm9SHCrIV2Og
+         MeHA==
+X-Gm-Message-State: AJIora9STp+5g4j1MCiC8YIAYt+PX4W9DjbD2CQytUC5YzVKtsy1VT4z
+	ik9upNKEO7C8avW4H3OV4SNG6WmOcCXAnO9h3OVcSA==
+X-Google-Smtp-Source: AGRyM1vJ0Mmq3F2lfrUDVjqxtvHQmzaTShK7/xuF4iFq5a9n1GXpZWltqxF+0o4P2HADFPt1FvB99qvJNv/yVZEJkrQ=
+X-Received: by 2002:a25:640c:0:b0:670:91a0:57e3 with SMTP id
+ y12-20020a25640c000000b0067091a057e3mr8294122ybb.204.1658731610056; Sun, 24
+ Jul 2022 23:46:50 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220712114046.15574-1-allen-kh.cheng@mediatek.com>
-In-Reply-To: <20220712114046.15574-1-allen-kh.cheng@mediatek.com>
+References: <20220721172727.14624-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220721172727.14624-1-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 25 Jul 2022 14:45:02 +0800
-Message-ID: <CAGXv+5FmXVYTtOusB8gqh1SprWHuNJYcC5MNEHQUGKQx8yrrLQ@mail.gmail.com>
-Subject: Re: [PATCH v3 0/5] Complete driver nodes for MT8192 SoC
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
+Date: Mon, 25 Jul 2022 14:46:39 +0800
+Message-ID: <CAGXv+5GyOjMxsmP24e-oUMJxhpV_UO_=c6RjCPf60MKn+SNiYA@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: dsi: Add atomic {destroy, duplicate}_state,
+ reset callbacks
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, jitao.shi@mediatek.com, airlied@linux.ie, 
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	rex-bc.chen@mediatek.com, linux-mediatek@lists.infradead.org, 
+	matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, 
+	xinlei.lee@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220724_234516_172483_72511AD0 
-X-CRM114-Status: GOOD (  14.93  )
+X-CRM114-CacheID: sfid-20220724_234652_775999_DFF136EB 
+X-CRM114-Status: UNSURE (   7.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,47 +85,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 12, 2022 at 7:40 PM Allen-KH Cheng
-<allen-kh.cheng@mediatek.com> wrote:
+On Fri, Jul 22, 2022 at 1:27 AM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 >
-> This series are based on matthias.bgg/linux.git, for-next.
+> Add callbacks for atomic_destroy_state, atomic_duplicate_state and
+> atomic_reset to restore functionality of the DSI driver: this solves
+> vblank timeouts when another bridge is present in the chain.
 >
-> I remove vcodec lat and core nodes PATCH from series and will comfirm
-> clocks usage then resend PATCH.
+> Tested bridge chain: DSI <=> ANX7625 => aux-bus panel
 >
-> Also should reference below PATCH for dsi in chunkuang.hu/linux.git
-> dt-bindings: display: mediatek: dsi: Convert dsi_dtbinding to .yaml
->
-> changes since v2:
->  - add mmsys #reset-cells PATCH
->  - add missing fallback compatible
->  - add display aliases
->  - remove vcodec lat and core nodes PATCH
->
-> changes since v1:
->  - add Reviewed-by Tag
->  - rename dsi-phy from dsi-dphy
->  - add missing power-domains in disp mutex
->  - Add remove mt8192 display rdma compatible PATCH in series
->  - use "mediatek,mt8183-disp-rdma" as fallback
->  - remove mediatek,larb from rdma node
->  - remove syscon-dsi and add power-domains in dsi
->  - add reset property in dsi and mt8192-resets.h
->  - correct Typo: s/ndoe/node in commit message
->
-> Allen-KH Cheng (5):
->   arm64: dts: mt8192: Add pwm node
->   arm64: dts: mt8192: Add mipi_tx node
->   arm64: dts: mediatek: Add mmsys #reset-cells property for mt8192
->   arm64: dts: mt8192: Add display nodes
->   arm64: dts: mt8192: Add dsi node
-
-With additional changes to asurada.dtsi I have a working internal display.
-Needs a fix [1] for mtk-drm from Angelo on top of next-20220722.
-
-For the whole series
+> Fixes: 7f6335c6a258 ("drm/mediatek: Modify dsi funcs to atomic operations")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
-[1] https://lore.kernel.org/lkml/20220721172727.14624-1-angelogioacchino.delregno@collabora.com/
+on top of next-20220722 with additional DTSI changes for display related
+device nodes [1] and modification to mt8192-asurada.dtsi to enable internal
+display.
+
+[1] https://lore.kernel.org/linux-mediatek/20220712114046.15574-1-allen-kh.cheng@mediatek.com/
 
