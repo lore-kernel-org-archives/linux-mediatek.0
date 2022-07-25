@@ -4,70 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1249FCCA473
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 08:00:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 463DBC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 08:04:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bRVhVwOCO9NfRWxcyuqIn2JQX4poKFaHCD4cyLoXIt8=; b=grsfvM1VHYW5Ewemz9jDPKjhQk
-	5hcUkdA0lYKP7MCjCsmI5bP0eY8w0DbZN37aN3xnWAtkPYU3kGo50EIVyxB2Cbq5MY2Z4x1/u4RJb
-	WM9e+UapS1pZcxcpYSIW6eGgQVTwNDXtbF+cj20Rq2L+3TAlQ2eoREzvmv97r1OFUu6TrkOxh4iPU
-	RmpG/Z1kzso91aSTO0vqLM3is4Tc45RQPxAUek0Wk80Q3HUJD4HBWdYdOnYOdFysm+n6vgF7MoJM4
-	KqO5080jpuF+HVBdZCyN5AHOsV9M5xkW4mlo9ZkjqkhVASG1uvnPXjdaYGPITo1lmbkE5hQALRlox
-	I5CsaQOQ==;
+	bh=r9oGiDsxiFpBH+3rbxjYFk4fKS6kxjytRyEJ438nM14=; b=ItKBgoy9oDas5bW95TdrHEY8Z+
+	nPfLWZO0msU1E6SRRC3K0Me05axcAaFBiHcozcqFApYagpiFRduFzn/onOwVUbGsRnCP99tknic9c
+	TFn/rXShWjJaMX2oTnOeKPOSO3QvSPf6Tet9csrZLBLHdAt9O5FGaLqqLZaFIuC9hwcamnTrxRE/w
+	VtDC3iLPEvozRW+RaVCvhnxsf3d1bN3m9J0gPGdTL76anS9BLMTCTRKK9v9TSGBh85QLRAhQ6WY4x
+	NyG4gW8P8JNFyNcTecUXH5PTHXAdhnM4ngk8QQTh24LIubRiB39d4f6NZxCjAlNqI8/KAw9mR4lmk
+	twtQpaAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFt0o-006S2q-O7; Mon, 25 Jul 2022 08:00:22 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oFt4y-006Wdk-EQ; Mon, 25 Jul 2022 08:04:40 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFt0k-006Rvj-9W
-	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 08:00:19 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 20A0D6119C;
-	Mon, 25 Jul 2022 08:00:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61A87C341CE;
-	Mon, 25 Jul 2022 08:00:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658736016;
-	bh=M+ANK6zycupl8wyudZ7dhCND90FRLPpFDVsiA2vFXRE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=U8ig1dzKzwvFUDI/byV4CpY6NemiZ0CmdTk88Wo1vhwcqaEOOaA3RJ/WIRijVfJYi
-	 KoME5KcoIBVOOfnPdbf+YrSR8IAcKGhMWmMH+0oX/gF8bq1X++SL6MtKttCLsN2Ed3
-	 Szof9qPy/TdW5j2Y85vC/i83eKAg/OR2U1Lf4EF3L9hmzMQnrLzeW0jntmbVu9yYu4
-	 irkYPaiUkRv1WO3K9qYnCqvM5jsUBIBDhli/bxPd3+MOs0lMbC0c+T/eLhzdl4L2hr
-	 jcCKtQxq4zCz3xIbKnfDXig8wTPOaivmy3Fb1oLkA8lGcfYUxjZHCFyWicxzLlnpCJ
-	 hrS4vjOdxalSw==
-Date: Mon, 25 Jul 2022 10:00:13 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: sean.wang@mediatek.com
-Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
-	YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
-	Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com,
-	km.lin@mediatek.com, jenhao.yang@mediatek.com,
-	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
-	ch.yeh@mediatek.com, posh.sun@mediatek.com, ted.huang@mediatek.com,
-	Stella.Chang@mediatek.com, Tom.Chou@mediatek.com,
-	steve.lee@mediatek.com, jsiuda@google.com, frankgor@google.com,
-	kuabhs@google.com, druth@google.com, abhishekpandit@google.com,
-	shawnku@google.com, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] mt76: mt7921: add mt7921_mutex_acquire at
- mt7921_[start, stop]_ap
-Message-ID: <Yt5NjVwFXt205J5n@lore-desk>
-References: <acb86f6ecd2f446e4102a2ef2e7a9c0003ae8b46.1658641200.git.objelf@gmail.com>
+	id 1oFt4i-006WO3-Fq; Mon, 25 Jul 2022 08:04:28 +0000
+Received: by mail-ej1-x630.google.com with SMTP id bp15so19121510ejb.6;
+        Mon, 25 Jul 2022 01:04:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=r9oGiDsxiFpBH+3rbxjYFk4fKS6kxjytRyEJ438nM14=;
+        b=CJb2GrDqw5wptQkMGvGnlEHmNqNpBTz+oVejWM8vbDuV20ZOTC6BJ/xAOcSduhufTS
+         CtY8s0Ob07oaPbu/f4yqfvkHz/xDY1O6vs2/oftm3gv1Uc+ykJC+fUd1S21cXIv8VjyW
+         kSXeGTgiv3k4SaU7t5pXcn2tjl5/OFjnaZJ8Uu0DxeB/9Oof1BN5BOo2rRbXDmOoY1Oc
+         CAj9lT0OP1cy+XTY99JtA98O+TDOotsScJIH1YM0dQeqD+8VHoEVugkGshM79Qhx2IYY
+         Qmh4+CVjG1cahmKQrRaUHy+VKbjtu21T43SHNPAsr2ti4ofng6x5uib9AjGL5NY7lM5l
+         yEHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=r9oGiDsxiFpBH+3rbxjYFk4fKS6kxjytRyEJ438nM14=;
+        b=SokOilYlgS3RrZi32H3eZUdu+4KjqsSsy1MfZYoepmGOY/WNFhgUersi7bOI0s4IhT
+         d2AAS+o61CCof6jy/hAnrMTu0ANgbYgOpWjMjiY4gO4wCfM9wWHBvc3PbDwY7boO83hN
+         H6hTuttpEt7uAbtDO7HPvPAiC3Hn9hzsMZfPBr3f2mHiszJIP1jr2UAoxILaWm040d/E
+         0ZuGVdpBmjQd7Jk6SHz6+GsTRHiBZ6qdJIHXOQekVuKIQsgW2ilUVj8CIh7Oxr09alSB
+         4OYFxcpDS/awqtGYl0pscQg+CKv5tHnD/06TbAj1SBHn65vonZGf3GZviUXdLRpDM1dl
+         r3GA==
+X-Gm-Message-State: AJIora+9VgigdGsB8PVpzSoR5TnCrOICr3yvwvq5GYgG/rPKyy1AmksQ
+	cbuzUSIjjqd3mH05jNhJxrpRVgQOG5iiHi0/U3Q=
+X-Google-Smtp-Source: AGRyM1slRdGOzS2afMezkzisSa07VKYBk0S3NkjvREARPdSLLPsbko0C4F61HAPbqNjfvUDyrYKyJb1xX+GfnwkFVZU=
+X-Received: by 2002:a17:906:8a4a:b0:72b:5b23:3065 with SMTP id
+ gx10-20020a1709068a4a00b0072b5b233065mr9334315ejc.557.1658736256789; Mon, 25
+ Jul 2022 01:04:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uPKDG0+cIiilZ9Xi"
-Content-Disposition: inline
-In-Reply-To: <acb86f6ecd2f446e4102a2ef2e7a9c0003ae8b46.1658641200.git.objelf@gmail.com>
+References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-9-peterwu.pub@gmail.com>
+In-Reply-To: <20220722102407.2205-9-peterwu.pub@gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Mon, 25 Jul 2022 10:03:40 +0200
+Message-ID: <CAHp75VessBZMBA6wNWhhXhPshDCghgkV8EkEUUqOeLqn-5pmpA@mail.gmail.com>
+Subject: Re: [PATCH v6 08/13] usb: typec: tcpci_mt6370: Add MediaTek MT6370
+ tcpci driver
+To: ChiaEn Wu <peterwu.pub@gmail.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
+	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
+	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_010018_469069_AFFBAB63 
-X-CRM114-Status: GOOD (  18.67  )
+X-CRM114-CacheID: sfid-20220725_010424_541413_891E22FF 
+X-CRM114-Status: GOOD (  14.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,98 +98,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Jul 22, 2022 at 12:25 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+>
+> From: ChiYuan Huang <cy_huang@richtek.com>
+>
+> The MediaTek MT6370 is a highly-integrated smart power management IC,
+> which includes a single cell Li-Ion/Li-Polymer switching battery
+> charger, a USB Type-C & Power Delivery (PD) controller, dual
+> Flash LED current sources, a RGB LED driver, a backlight WLED driver,
+> a display bias driver and a general LDO for portable devices.
+>
+> Add support for the Type-C & Power Delivery controller in
+> MediaTek MT6370 IC.
 
---uPKDG0+cIiilZ9Xi
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+...
 
-> From: Sean Wang <sean.wang@mediatek.com>
->=20
-> Add mt7921_mutex_acquire at mt7921_[start, stop]_ap to fix the race
-> with the context holding dev->muxtex and the driver might access the
-> device in low power state.
->=20
-> Fixes: 9d958b60ebc2 ("mt76: mt7921: fix command timeout in AP stop period=
-")
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  .../net/wireless/mediatek/mt76/mt7921/main.c  | 21 ++++++++++++++-----
->  1 file changed, 16 insertions(+), 5 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/n=
-et/wireless/mediatek/mt76/mt7921/main.c
-> index 1438a9f8d1fd..7a4a3ed1817e 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> @@ -1526,17 +1526,23 @@ mt7921_start_ap(struct ieee80211_hw *hw, struct i=
-eee80211_vif *vif,
->  	struct mt7921_dev *dev =3D mt7921_hw_dev(hw);
->  	int err;
-> =20
-> +	mt7921_mutex_acquire(dev);
-> +
->  	err =3D mt76_connac_mcu_uni_add_bss(phy->mt76, vif, &mvif->sta.wcid,
->  					  true);
->  	if (err)
-> -		return err;
-> +		goto failed;
-> =20
->  	err =3D mt7921_mcu_set_bss_pm(dev, vif, true);
->  	if (err)
-> -		return err;
-> +		goto failed;
-> +
-> +	err =3D mt7921_mcu_sta_update(dev, NULL, vif, true,
-> +				    MT76_STA_INFO_STATE_NONE);
+> +static int mt6370_tcpc_set_vconn(struct tcpci *tcpci, struct tcpci_data *data,
+> +                                bool enable)
+> +{
+> +       return regmap_update_bits(data->regmap, MT6370_REG_SYSCTRL8,
+> +                                 MT6370_AUTOIDLE_MASK,
+> +                                 !enable ? MT6370_AUTOIDLE_MASK : 0);
 
-nit: maybe better "out" instead of "failed"
+Why not positive conditional?
 
-> +failed:
-> +	mt7921_mutex_release(dev);
-> =20
-> -	return mt7921_mcu_sta_update(dev, NULL, vif, true,
-> -				     MT76_STA_INFO_STATE_NONE);
-> +	return err;
->  }
-> =20
->  static void
-> @@ -1548,11 +1554,16 @@ mt7921_stop_ap(struct ieee80211_hw *hw, struct ie=
-ee80211_vif *vif,
->  	struct mt7921_dev *dev =3D mt7921_hw_dev(hw);
->  	int err;
-> =20
-> +	mt7921_mutex_acquire(dev);
-> +
->  	err =3D mt7921_mcu_set_bss_pm(dev, vif, false);
->  	if (err)
-> -		return;
-> +		goto failed;
-> =20
->  	mt76_connac_mcu_uni_add_bss(phy->mt76, vif, &mvif->sta.wcid, false);
-> +
-> +failed:
+  enable ? 0 : mask
 
-same here
+> +}
 
-> +	mt7921_mutex_release(dev);
->  }
-> =20
->  const struct ieee80211_ops mt7921_ops =3D {
-> --=20
-> 2.25.1
->=20
+...
 
---uPKDG0+cIiilZ9Xi
-Content-Type: application/pgp-signature; name="signature.asc"
+> +       ret = devm_add_action_or_reset(dev, mt6370_unregister_tcpci_port,
+> +                                      priv->tcpci);
 
------BEGIN PGP SIGNATURE-----
+I believe nothing bad will happen if you put it on one line.
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYt5NjQAKCRA6cBh0uS2t
-rDdPAQDBI7y1gnpJ3qTOGAeOxSdJsoKxplc8uReMZh8HH/dXvQD/RBclGvQ3mMPW
-AkOpg5aytWACHqSzpNkNGHXiwXL9GQY=
-=fWlh
------END PGP SIGNATURE-----
-
---uPKDG0+cIiilZ9Xi--
+-- 
+With Best Regards,
+Andy Shevchenko
 
