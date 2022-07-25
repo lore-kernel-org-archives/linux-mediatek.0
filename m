@@ -4,71 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF875C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 10:45:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF6FAC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 10:49:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gwOxnEb0mO92BFmbJ6U3v1DHz3VRUJlvrqRqfd6Vlj0=; b=WXZ/YdvouLCAsZisZgd5eDlF02
-	9LBEJazeFgrvUcZErL87SgT0MYVhohm7CbpDbUcAPNa7hTbaFuwO1xYyERujjyYaqgyZwIMjvsbDN
-	M5q85pS9Hh+UthAHIYCC8hy1EtQvV791xXIalA+F3Y/T+9QQSx8550JBObE+er0n8jP1115caPobx
-	xb81viVBriPViiYxD0HzOVFqci332TI9Gek6pVvFolnM5NUl9aJVUA+qV8PIfThIZPGQhsWmxF0VT
-	bDXWu82F9Mxt8KFrXCbndA+DdJrgz/0mDGmspbn74Bdxf1CKTkT4+U+OyyFi5bePKxZiwN4unjROE
-	pehrCJxw==;
+	bh=weB/kL9itYznZph5/C+P/p3acTIFfqNC1DQ+Cr6SfO0=; b=YpFUIX5FTmzH+Gh4Y3l3BVJpYB
+	xup4GLOpuCeAOBSBFwP8Vjj6yO6Dm/00x10pWnnklpjg30CPSZl9RUDsDhUDqcPTKUaOCaQyGLRRp
+	7dXPUaN4N94N25vb1x70r2tPyI/yDLt978eUb0OejOckd1w/IykUzpF0Nl1NcHR3yOBd0d75AdJ/R
+	3qG7mJzki0XQzaic7jDDfpQW6QkoxAq43Yob9wMZyx6OKJtP9stHMUqyvQkQhJHlAHf5+nYZL9zP8
+	ueeR96/v+BdB4NP0N3bF80Q5yW+vmY3y6H1/9bqriN+CISUOeC6emI0M++ay90wdgYUY995PWYPvg
+	JoEzlYAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFvaa-008PgW-FT; Mon, 25 Jul 2022 10:45:28 +0000
+	id 1oFveG-008SOJ-4s; Mon, 25 Jul 2022 10:49:16 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFvaK-008PQ3-Ks
-	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 10:45:14 +0000
+	id 1oFve3-008SEn-3l; Mon, 25 Jul 2022 10:49:05 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 491EF6601AD9;
-	Mon, 25 Jul 2022 11:45:09 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5B61C6601ABA;
+	Mon, 25 Jul 2022 11:49:01 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658745911;
-	bh=8jqDRz7pmMCFgF9l2ImU8VeeQTeNrBDh76+ym1NgW+A=;
+	s=mail; t=1658746141;
+	bh=DuyxjzOXiMO0pzm3yf4UEgvrKD0RvGxzutfiUdtRCc4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LaKHIvkhyLjcACgIe2Q1iGCENgeoUGrDw6wFlzCkYsfFv+tNPmm/hRdyFqfalSWko
-	 h39EGl8V97qYdNIJXfzhl+e20USyc/GK9zR6ofa3MDxfBBSj2+V+VuUkF6ocOdaR6G
-	 M16IdHYSVuWnT2ydUV6J7mZVKxSThvWIdLaa8pTkgumtZyMWrgXGha/EfcQpTjA/Oh
-	 X9a+6IwZfy46ShwOqtVgN2fLTm7Q1/7gT1TlcXNfxSDDubHq+FxmWvbOFm4Qq2CoXj
-	 uhCMPQo/SP3wf06gLpkY6cLH66MbM+OGCA2CSY0DL6b0nkhEbyrzCkBDYaFmxTV/Tq
-	 paCMnsYCKHGdg==
-Message-ID: <42747f5b-cd51-6a42-c793-db5f410b3bcc@collabora.com>
-Date: Mon, 25 Jul 2022 12:45:06 +0200
+	b=RpDre6hv6EIJ3NPL9XFlsUlGuKOgc+syc9BIsSYPbxptPjJcdWxmaYozJQaGJEqCD
+	 5NsDYVIguRL1dSF4YLxfuKukMQQ0k9DJsrSCgBVTsBxmIB0P74btppVDgVyDLxF++c
+	 S3n68UOgDLSkZkHtoTw7/CjR3F4GEhHmgaP07/FB1aVrOvgcIqWydsrgXDssvzoYQx
+	 GcTIK39tHZFh+gDid6oYjooy+boMA8fgqZsIiTILWEG4tbWuzSw7AMx2hUK8BqOeWA
+	 GoMk40oWVtPqgBY/405NfBDUcl3PE46utbWC+YhgACF6pCUyKj1Z9XPUSbeqDqByBL
+	 nhxQpdp3EGMEw==
+Message-ID: <f3027153-860f-7ffc-b4a0-ff2a43100cf4@collabora.com>
+Date: Mon, 25 Jul 2022 12:48:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH 2/2] mt76: mt7921: add mt7921_mutex_acquire at
- mt7921_sta_set_decap_offload
+Subject: Re: [PATCH v2 6/8] arm64: dts: mediatek: cherry: Enable DSP, audio
+ codec and sound card
 Content-Language: en-US
-To: sean.wang@mediatek.com, nbd@nbd.name, lorenzo.bianconi@redhat.com
-Cc: Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
- Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
- jenhao.yang@mediatek.com, robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
- ch.yeh@mediatek.com, posh.sun@mediatek.com, ted.huang@mediatek.com,
- Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, steve.lee@mediatek.com,
- jsiuda@google.com, frankgor@google.com, kuabhs@google.com, druth@google.com,
- abhishekpandit@google.com, shawnku@google.com,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <acb86f6ecd2f446e4102a2ef2e7a9c0003ae8b46.1658641200.git.objelf@gmail.com>
- <02ef9b9464024d2375caf598ae7c6b1e8e8e20de.1658641200.git.objelf@gmail.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <20220721145017.918102-1-angelogioacchino.delregno@collabora.com>
+ <20220721145017.918102-7-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5E+6aCz3dxsfCqZAOkcmqDp0YWngsv-OZ23NDYhuZSfHw@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <02ef9b9464024d2375caf598ae7c6b1e8e8e20de.1658641200.git.objelf@gmail.com>
+In-Reply-To: <CAGXv+5E+6aCz3dxsfCqZAOkcmqDp0YWngsv-OZ23NDYhuZSfHw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_034512_895557_51415D02 
-X-CRM114-Status: UNSURE (   7.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220725_034903_461317_1F79A1D7 
+X-CRM114-Status: GOOD (  23.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,17 +78,310 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/07/22 10:58, sean.wang@mediatek.com ha scritto:
-> From: Sean Wang <sean.wang@mediatek.com>
+Il 25/07/22 12:44, Chen-Yu Tsai ha scritto:
+> On Thu, Jul 21, 2022 at 10:53 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> All machines of the Cherry platform have a working DSP (integrated
+>> into the MT8195 SoC), and audio support, some with a different audio
+>> codec: specifically, some using Realtek's RT5682I and some RT5682S.
+>>
+>> Write a configuration for all the audio bits to enable functionality.
 > 
-> Add mt7921_mutex_acquire at mt7921_[start, stop]_ap to fix the race
-> with the context holding dev->muxtex and the driver might access the
-> device in low power state.
+> I think we're still missing some code for SOF that implements the
+> machine_select() callback, plus the firmware has to be fetched from
+> the ChromeOS rootfs.
 > 
-> Fixes: 24299fc869f7 ("mt76: mt7921: enable rx header traslation offload")
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> It might make sense to have SOF disabled for now. Removing the adsp
+> reference and the overriding dai-link entry from the sound node
+> should do the trick.
+> 
 
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Uhm... I think that we should either have audio, with DSP, or not have it
+at all... the userspace configurations will differ, so we'd end up with
+two different confs of which one will get unused and cluttering the ucm2
+conf git.
 
+At this point, I think that the most sensible option is to either omit
+this commit, or keep audio disabled until the machine_select() callback
+gets in...
+
+> 
+> ChenYu
+> 
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   .../dts/mediatek/mt8195-cherry-tomato-r1.dts  |  10 ++
+>>   .../dts/mediatek/mt8195-cherry-tomato-r2.dts  |  10 ++
+>>   .../dts/mediatek/mt8195-cherry-tomato-r3.dts  |  10 ++
+>>   .../boot/dts/mediatek/mt8195-cherry.dtsi      | 117 ++++++++++++++++++
+>>   4 files changed, 147 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+>> index 3348ba69ff6c..2d5e8f371b6d 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
+>> @@ -10,6 +10,16 @@ / {
+>>          compatible = "google,tomato-rev1", "google,tomato", "mediatek,mt8195";
+>>   };
+>>
+>> +&audio_codec {
+>> +       compatible = "realtek,rt5682i";
+>> +       realtek,btndet-delay = <16>;
+>> +};
+>> +
+>> +&sound {
+>> +       compatible = "mediatek,mt8195_mt6359_rt1019_rt5682";
+>> +       model = "mt8195_r1019_5682";
+>> +};
+>> +
+>>   &ts_10 {
+>>          status = "okay";
+>>   };
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
+>> index 4669e9d917f8..2586c32ce6e6 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
+>> @@ -10,6 +10,11 @@ / {
+>>          compatible = "google,tomato-rev2", "google,tomato", "mediatek,mt8195";
+>>   };
+>>
+>> +&audio_codec {
+>> +       compatible = "realtek,rt5682i";
+>> +       realtek,btndet-delay = <16>;
+>> +};
+>> +
+>>   &pio_default {
+>>          pins-low-power-hdmi-disable {
+>>                  pinmux = <PINMUX_GPIO31__FUNC_GPIO31>,
+>> @@ -30,6 +35,11 @@ pins-low-power-pcie0-disable {
+>>          };
+>>   };
+>>
+>> +&sound {
+>> +       compatible = "mediatek,mt8195_mt6359_rt1019_rt5682";
+>> +       model = "mt8195_r1019_5682";
+>> +};
+>> +
+>>   &ts_10 {
+>>          status = "okay";
+>>   };
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
+>> index 5021edd02f7c..f54f9477b99d 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
+>> @@ -11,6 +11,11 @@ / {
+>>                       "google,tomato", "mediatek,mt8195";
+>>   };
+>>
+>> +&audio_codec {
+>> +       compatible = "realtek,rt5682s";
+>> +       realtek,amic-delay-ms = <250>;
+>> +};
+>> +
+>>   &pio_default {
+>>          pins-low-power-hdmi-disable {
+>>                  pinmux = <PINMUX_GPIO31__FUNC_GPIO31>,
+>> @@ -31,6 +36,11 @@ pins-low-power-pcie0-disable {
+>>          };
+>>   };
+>>
+>> +&sound {
+>> +       compatible = "mediatek,mt8195_mt6359_rt1019_rt5682";
+>> +       model = "m8195_r1019_5682s";
+>> +};
+>> +
+>>   &ts_10 {
+>>          status = "okay";
+>>   };
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>> index 58349d4c3c8b..ca9955a97f8f 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>> @@ -25,6 +25,12 @@ chosen {
+>>                  stdout-path = "serial0:115200n8";
+>>          };
+>>
+>> +       dmic_codec: dmic-codec {
+>> +               compatible = "dmic-codec";
+>> +               num-channels = <2>;
+>> +               wakeup-delay-ms = <50>;
+>> +       };
+>> +
+>>          memory@40000000 {
+>>                  device_type = "memory";
+>>                  reg = <0 0x40000000 0 0x80000000>;
+>> @@ -116,9 +122,49 @@ scp_mem: memory@50000000 {
+>>                          reg = <0 0x50000000 0 0x2900000>;
+>>                          no-map;
+>>                  };
+>> +
+>> +               adsp_mem: memory@60000000 {
+>> +                       compatible = "shared-dma-pool";
+>> +                       reg = <0 0x60000000 0 0xd80000>;
+>> +                       no-map;
+>> +               };
+>> +
+>> +               afe_mem: memory@60d80000 {
+>> +                       compatible = "shared-dma-pool";
+>> +                       reg = <0 0x60d80000 0 0x100000>;
+>> +                       no-map;
+>> +               };
+>> +
+>> +               adsp_device_mem: memory@60e80000 {
+>> +                       compatible = "shared-dma-pool";
+>> +                       reg = <0 0x60e80000 0 0x280000>;
+>> +                       no-map;
+>> +               };
+>> +       };
+>> +
+>> +       spk_amplifier: rt1019p {
+>> +               compatible = "realtek,rt1019p";
+>> +               label = "rt1019p";
+>> +               pinctrl-names = "default";
+>> +               pinctrl-0 = <&rt1019p_pins_default>;
+>> +               sdb-gpios = <&pio 100 GPIO_ACTIVE_HIGH>;
+>>          };
+>>   };
+>>
+>> +&adsp {
+>> +       status = "okay";
+>> +
+>> +       memory-region = <&adsp_device_mem>, <&adsp_mem>;
+>> +};
+>> +
+>> +&afe {
+>> +       status = "okay";
+>> +
+>> +       mediatek,etdm-in2-cowork-source = <2>;
+>> +       mediatek,etdm-out2-cowork-source = <0>;
+>> +       memory-region = <&afe_mem>;
+>> +};
+>> +
+>>   &i2c0 {
+>>          status = "okay";
+>>
+>> @@ -152,6 +198,17 @@ &i2c2 {
+>>          clock-frequency = <400000>;
+>>          pinctrl-names = "default";
+>>          pinctrl-0 = <&i2c2_pins>;
+>> +
+>> +       audio_codec: codec@1a {
+>> +               /* Realtek RT5682i or RT5682s, sharing the same configuration */
+>> +               reg = <0x1a>;
+>> +               interrupts-extended = <&pio 89 IRQ_TYPE_EDGE_BOTH>;
+>> +               realtek,jd-src = <1>;
+>> +
+>> +               AVDD-supply = <&mt6359_vio18_ldo_reg>;
+>> +               MICVDD-supply = <&pp3300_z2>;
+>> +               VBAT-supply = <&pp3300_z5>;
+>> +       };
+>>   };
+>>
+>>   &i2c3 {
+>> @@ -256,6 +313,11 @@ &mmc1 {
+>>          vqmmc-supply = <&mt_pmic_vmc_ldo_reg>;
+>>   };
+>>
+>> +&mt6359codec {
+>> +       mediatek,dmic-mode = <1>;  /* one-wire */
+>> +       mediatek,mic-type-0 = <2>; /* DMIC */
+>> +};
+>> +
+>>   /* for CPU-L */
+>>   &mt6359_vcore_buck_reg {
+>>          regulator-always-on;
+>> @@ -463,6 +525,34 @@ &pio {
+>>                  "AP_SPI_FLASH_MOSI",
+>>                  "AP_SPI_FLASH_MISO";
+>>
+>> +       aud_pins_default: audio-default-pins {
+>> +               pins-cmd-dat {
+>> +                   pinmux = <PINMUX_GPIO69__FUNC_AUD_CLK_MOSI>,
+>> +                            <PINMUX_GPIO70__FUNC_AUD_SYNC_MOSI>,
+>> +                            <PINMUX_GPIO71__FUNC_AUD_DAT_MOSI0>,
+>> +                            <PINMUX_GPIO72__FUNC_AUD_DAT_MOSI1>,
+>> +                            <PINMUX_GPIO73__FUNC_AUD_DAT_MISO0>,
+>> +                            <PINMUX_GPIO74__FUNC_AUD_DAT_MISO1>,
+>> +                            <PINMUX_GPIO75__FUNC_AUD_DAT_MISO2>,
+>> +                            <PINMUX_GPIO0__FUNC_TDMIN_MCK>,
+>> +                            <PINMUX_GPIO1__FUNC_TDMIN_DI>,
+>> +                            <PINMUX_GPIO2__FUNC_TDMIN_LRCK>,
+>> +                            <PINMUX_GPIO3__FUNC_TDMIN_BCK>,
+>> +                            <PINMUX_GPIO60__FUNC_I2SO2_D0>,
+>> +                            <PINMUX_GPIO49__FUNC_I2SIN_D0>,
+>> +                            <PINMUX_GPIO50__FUNC_I2SO1_MCK>,
+>> +                            <PINMUX_GPIO51__FUNC_I2SO1_BCK>,
+>> +                            <PINMUX_GPIO52__FUNC_I2SO1_WS>,
+>> +                            <PINMUX_GPIO53__FUNC_I2SO1_D0>;
+>> +               };
+>> +
+>> +               pins-hp-jack-int-odl {
+>> +                       pinmux = <PINMUX_GPIO89__FUNC_GPIO89>;
+>> +                       input-enable;
+>> +                       bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+>> +               };
+>> +       };
+>> +
+>>          cr50_int: cr50-irq-default-pins {
+>>                  pins-gsc-ap-int-odl {
+>>                          pinmux = <PINMUX_GPIO88__FUNC_GPIO88>;
+>> @@ -707,6 +797,21 @@ pins-low-power-pupd {
+>>                  };
+>>          };
+>>
+>> +       rt1011_pins_default: rt1011-default-pins {
+>> +               pins-spk {
+>> +                       pinmux = <PINMUX_GPIO94__FUNC_GPIO94>,
+>> +                                <PINMUX_GPIO100__FUNC_GPIO100>;
+>> +                       output-high;
+>> +               };
+>> +       };
+>> +
+>> +       rt1019p_pins_default: rt1019p-default-pins {
+>> +               pins-amp-sdb {
+>> +                       pinmux = <PINMUX_GPIO100__FUNC_GPIO100>;
+>> +                       output-low;
+>> +               };
+>> +       };
+>> +
+>>          scp_pins: scp-default-pins {
+>>                  pins-vreq {
+>>                          pinmux = <PINMUX_GPIO76__FUNC_SCP_VREQ_VAO>;
+>> @@ -779,6 +884,18 @@ cros-ec-rpmsg {
+>>          };
+>>   };
+>>
+>> +&sound {
+>> +       status = "okay";
+>> +
+>> +       mediatek,adsp = <&adsp>;
+>> +       mediatek,dai-link =
+>> +               "DL10_FE", "DPTX_BE", "ETDM1_IN_BE", "ETDM2_IN_BE",
+>> +               "ETDM1_OUT_BE", "ETDM2_OUT_BE","UL_SRC1_BE",
+>> +               "AFE_SOF_DL2", "AFE_SOF_DL3", "AFE_SOF_UL4", "AFE_SOF_UL5";
+>> +       pinctrl-names = "default";
+>> +       pinctrl-0 = <&aud_pins_default>;
+>> +};
+>> +
+>>   &spi0 {
+>>          status = "okay";
+>>
+>> --
+>> 2.35.1
+>>
+>>
+>> _______________________________________________
+>> linux-arm-kernel mailing list
+>> linux-arm-kernel@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+
+-- 
+AngeloGioacchino Del Regno
+Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
+Registered in England & Wales, no. 5513718
 
