@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0379CC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 10:19:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66BF9C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 10:20:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4qKGmWMqZhEmESnw4XiD+O0THResKBg5Q3wlwtvAW/k=; b=PE2yLpjWwaaEOmbfz9kAra9pRI
-	DqU9SJ3F9SSK/eb2zO5iEALhp8Bg7y0G+d5vYveA+Fw+hJU7xQoERZKift7/c7a61ZKZqRLFPS7u9
-	pVf4b31QXE525eR8JXIY6YGz8mqWsn0fipc9/U0lNtPgshp/a8YHQ5SoekA9rYJb+WBiiSWdRS2tb
-	LJvPXb3xmV/3aMEWXPIzu/gKa4Lc8wclJoqRCcTYDmUP1l0j0cSeIZ91MtV5fuHGzrnRVTY7nVuc6
-	lnBLkkUPZ3BXvjlumHdmGl8y5uCIV98dNR6MeITI9cep+J8J9pD6MvEF2OZQgjb1cmblGCiYLAbZh
-	SMQnRDAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Nacbt5kce73tZvh5DRrC+UNAIjyuhdIjdedR5/Nhrt4=; b=222k0vHQfydUEbr21bh75Hm+6B
+	P6Q1NqRNzPzGmPFW5R+wN/IJDLsYJoTmZpEI6MyJigcmvjYtizxPgoAo/7k4qLS8V+IOZdwSaIKGK
+	PK8k10QgnA3gbPKRkDvz35K6jJDpVPEj6Y/t1sK+mmFabg++2nAkXAJFset1kmTmPXDfG24IwobsW
+	g9FtGXWVl4ISa09utgl6kDOa3N6bhtpsCui1yPLx4CDZ/lzVNSfonvFxKONrDjUcBH1fcF0zloXrq
+	bStri3VcdsotUT9f0Hkv1V/x7GcuQYBufhc7LrPm9AumPJXx99syGr7VhCdxxmHEjKVHf6qH4MgkC
+	qRS1avyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFvBO-0087K1-UC; Mon, 25 Jul 2022 10:19:26 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1oFvCM-0088GR-9E; Mon, 25 Jul 2022 10:20:26 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFvBL-0087EA-Qd
-	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 10:19:25 +0000
-Received: by mail-wr1-x436.google.com with SMTP id u5so15280330wrm.4
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Jul 2022 03:19:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=4qKGmWMqZhEmESnw4XiD+O0THResKBg5Q3wlwtvAW/k=;
-        b=hv2GEF4dtTTSztB0obRjKRpHxTon1gEYyRohRuamIcDUPyt/tP2SXOQBZFsD7zpGE+
-         bTEK8t5WDE+622xIsSiGf/Fs4gOdTrZhWaglwuctUCChX3HcB07SyaIQwElXb2W6RHRG
-         iGA/Nxx3TL9R4Kd/V57KX6EiRH99aBno+/RAg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=4qKGmWMqZhEmESnw4XiD+O0THResKBg5Q3wlwtvAW/k=;
-        b=PIWaoWulyX9RQVIEustEblqtpeV2WehWtGmOUtIsKhv8qn1KtNHRGNRDVCZ4FERtJb
-         mHL/Y2J5JY3vO5ut+vzMR/lOt4wXGIQEbNiyPGnQyyXbw6dGkdqdAJLTYoC/be1lyl9U
-         eutq5dnNur3CFR4MYCilmQRR9E+brlX/xcicYYFgppsMOjBJWxqxLENf1jgJU7LydQgZ
-         zpe2cecIk5L8sj7rHPoa/WSnWjjsgE8kHCrzk0Ym1BLKeJBWeMtUegW4XWLFQjGhFsiD
-         11OIUpeEhOiDdwEptYN0guHP0ohBim9D6S8Cd/GOC5XDH+hWM9Z+qhkZNR6KYcuKC7SS
-         dmtg==
-X-Gm-Message-State: AJIora+13H+Xr3TeQWmU3M/3upoW5igjlf2CrUIe3gTW4w3IUR2icP2P
-	nxnd8+PL4nwfiQi73H4Pm2yJyUUwepWno8P+UGOeEQ==
-X-Google-Smtp-Source: AGRyM1uN9zadKS6Nx4rG97C6xaz+jKp9LVcuSfRCaJh2ZAajRxqI38cP8WAfn6ByjTht9F2p1SRciCiBlVqAEVGzDmc=
-X-Received: by 2002:a5d:59a9:0:b0:21e:5e6a:6a8e with SMTP id
- p9-20020a5d59a9000000b0021e5e6a6a8emr7812606wrr.190.1658744360514; Mon, 25
- Jul 2022 03:19:20 -0700 (PDT)
+	id 1oFvC4-0087zI-Pm; Mon, 25 Jul 2022 10:20:10 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BB9DB66015E7;
+	Mon, 25 Jul 2022 11:20:06 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658744407;
+	bh=cAxLqY4H5FxXpqjonDX3MiIrSFGAVllU3r3EY4RdIHc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=LyswTyWFMeog5eIoVo61s7iqI7myG0byUWdtnf9a5/ndVluML+PJoo6ZllxGJO3Ei
+	 WHCsOgVrYShU1YnoXiIVSU5tC4dz7ePJprAsafEV4NyEopqzNj9EpEC97KFCCkvKOk
+	 qUtJcsv/dsqKMzFqPCNsuc72jy+y5BYXBJw2IeR+mvTcVHoSDrbOEytrd5uoBqE7fP
+	 gawEDiP5Z+c04R176gYL0rxVpyHqle8nhfv1uT8pr7O58sI5wt6nZT7mkiRDyi4kUl
+	 2Ek66SnCnsfsoo4uPLHxR9UFqflf13TkHmcdvqnnaQ+byiUdaw1XjPKFA/5OxQDffW
+	 aqHBOzi6A7Nfw==
+Message-ID: <781f6d3e-412e-1553-c2c2-23c9a897626b@collabora.com>
+Date: Mon, 25 Jul 2022 12:20:03 +0200
 MIME-Version: 1.0
-References: <20220725082447.2613231-1-treapking@chromium.org> <5856610d-510f-46dc-63b2-79e571956a7c@collabora.com>
-In-Reply-To: <5856610d-510f-46dc-63b2-79e571956a7c@collabora.com>
-From: Pin-yen Lin <treapking@chromium.org>
-Date: Mon, 25 Jul 2022 18:19:09 +0800
-Message-ID: <CAEXTbpeHy6-WjLOyWFkncoHzBPM+6qq4w-kUoZj7=05gf8YBjw@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mt8173-oak: Switch to SMC watchdog
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Hsin-Yi Wang <hsinyi@chromium.org>, Eizan Miyamoto <eizan@chromium.org>, 
-	Evan Benn <evanbenn@chromium.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
-	devicetree@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v2 4/8] arm64: dts: mediatek: cherry: Enable secondary
+ SD/MMC controller
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <20220721145017.918102-1-angelogioacchino.delregno@collabora.com>
+ <20220721145017.918102-5-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5FutJb_MRwSVgjV7tByBvfq3AFsSxs6ETUZaNzrfpywgg@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5FutJb_MRwSVgjV7tByBvfq3AFsSxs6ETUZaNzrfpywgg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_031923_906863_597FF9E1 
-X-CRM114-Status: GOOD (  28.42  )
+X-CRM114-CacheID: sfid-20220725_032009_135849_5286AF86 
+X-CRM114-Status: GOOD (  20.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,72 +78,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 25, 2022 at 4:39 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 25/07/22 10:24, Pin-yen Lin ha scritto:
-> > Switch to SMC watchdog because we need direct control of HW watchdog
-> > registers from kernel. The corresponding firmware was uploaded in
-> > https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405.
-> >
->
-> There's a fundamental issue with this change, I think.
->
-> What happens if we run this devicetree on a device that does *not* have
-> the new(er) firmware?
+Il 25/07/22 10:54, Chen-Yu Tsai ha scritto:
+> On Thu, Jul 21, 2022 at 10:51 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> As of now, all of the boards based on the cherry platform have a
+>> usable secondary SD/MMC controller, usually for SD cards: enable
+>> it to allow both booting from it and generally accessing external
+>> storage.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   .../boot/dts/mediatek/mt8195-cherry.dtsi      | 62 +++++++++++++++++++
+>>   1 file changed, 62 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>> index 2853f7f76c90..8859957c7b27 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>> @@ -17,6 +17,7 @@ aliases {
+>>                  i2c5 = &i2c5;
+>>                  i2c7 = &i2c7;
+>>                  mmc0 = &mmc0;
+>> +               mmc1 = &mmc1;
+>>                  serial0 = &uart0;
+>>          };
+>>
+>> @@ -227,6 +228,24 @@ &mmc0 {
+>>          vqmmc-supply = <&mt6359_vufs_ldo_reg>;
+>>   };
+>>
+>> +&mmc1 {
+>> +       status = "okay";
+>> +
+>> +       bus-width = <4>;
+>> +       cap-sd-highspeed;
+>> +       cd-gpios = <&pio 54 GPIO_ACTIVE_LOW>;
+>> +       max-frequency = <200000000>;
+>> +       no-mmc;
+>> +       no-sdio;
+>> +       pinctrl-names = "default", "state_uhs";
+>> +       pinctrl-0 = <&mmc1_pins_default>;
+>> +       pinctrl-1 = <&mmc1_pins_uhs>;
+>> +       sd-uhs-sdr50;
+>> +       sd-uhs-sdr104;
+>> +       vmmc-supply = <&mt_pmic_vmch_ldo_reg>;
+>> +       vqmmc-supply = <&mt_pmic_vmc_ldo_reg>;
+>> +};
+>> +
+>>   /* for CPU-L */
+>>   &mt6359_vcore_buck_reg {
+>>          regulator-always-on;
+>> @@ -575,6 +594,49 @@ pins-rst {
+>>                  };
+>>          };
+>>
+>> +       mmc1_pins_default: mmc1-default-pins {
+>> +               pins-cmd-dat {
+>> +                       pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
+>> +                                <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
+>> +                                <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
+>> +                                <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
+>> +                                <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
+>> +                       input-enable;
+>> +                       drive-strength = <8>;
+>> +                       bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+>> +               };
+>> +
+>> +               pins-clk {
+>> +                       pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
+>> +                       drive-strength = <8>;
+>> +                       bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
+>> +               };
+>> +
+>> +               pins-insert {
+>> +                       pinmux = <PINMUX_GPIO54__FUNC_GPIO54>;
+>> +                       bias-pull-up;
+>> +               };
+>> +       };
+>> +
+>> +       mmc1_pins_uhs: mmc1-uhs-pins {
+>> +               pins-cmd-dat {
+>> +                       pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
+>> +                                <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
+>> +                                <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
+>> +                                <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
+>> +                                <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
+>> +                       input-enable;
+>> +                       drive-strength = <8>;
+>> +                       bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+>> +               };
+>> +
+>> +               pins-clk {
+>> +                       pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
+>> +                       drive-strength = <8>;
+>> +                       bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
+>> +               };
+> 
+> I wonder if pins-insert should be duplicated here. And there's no
+> difference between the standard and UHS pinconfigs. One would expect
+> higher drive strength on the UHS set, if two sets were required.
+> So maybe we should just have one set, and use that one for both
+> the default and uhs states.
+> 
 
-I haven't tried this patch with an older firmware. I'll manage to
-build one for this.
->
-> The kernel *shall not* get broken when running on devices that are running
-> on older firmware, especially because that's what was initially supported
-> and what is working right now.
+I don't think that it would really make a lot of sense to duplicate the
+insertion pin setup in the UHS-specific pinctrl set...
 
-Actually the current approach does not work *right*. The device boots,
-but the watchdog does not work properly.
+Whenever you remove the uSD card, the controller goes back to default,
+as the first steps in card initialization are always happening at low
+speed and only after that we can switch to UHS speeds... so we do expect
+that the first-ever state is always `default` (by spec!), which means
+that we are also ensuring that the insertion pin setup is always done.
 
-Also, all MT8173 ChromeOS devices have this firmware updated, and we
-don't have other upstream users apart from mt8173-evb. Do we want to
-support the developers that are running upstream linux with their
-MT8173 boards?
+Cheers,
+Angelo
 
->
-> For this reason, I think that we should get some code around that checks
-> if the SMC watchdog is supported and, if not, resort to MMIO wdog.
+> Otherwise,
+> 
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+> 
+>> +       };
+>> +
+>>          nor_pins_default: nor-default-pins {
+>>                  pins-ck-io {
+>>                          pinmux = <PINMUX_GPIO142__FUNC_SPINOR_IO0>,
+>> --
+>> 2.35.1
+>>
+>>
 
-What is the expected way to support this backward compatibility? Do we
-put the old compatible strings ("mediatek,mt8173-wdt" and
-"mediatek,mt6589-wdt") after "arm,smc-wdt" and reject it in the
-drivers if the firmware does not support it?
->
-> Regards,
-> Angelo
->
->
-> > Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> > ---
-> >
-> >   arch/arm64/boot/dts/mediatek/mt8173.dtsi | 6 ++----
-> >   1 file changed, 2 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > index a2aef5aa67c1..2d1c776740a5 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > @@ -528,10 +528,8 @@ power-domain@MT8173_POWER_DOMAIN_MFG {
-> >                       };
-> >               };
-> >
-> > -             watchdog: watchdog@10007000 {
-> > -                     compatible = "mediatek,mt8173-wdt",
-> > -                                  "mediatek,mt6589-wdt";
-> > -                     reg = <0 0x10007000 0 0x100>;
-> > +             watchdog {
-> > +                     compatible = "arm,smc-wdt";
-> >               };
-> >
-> >               timer: timer@10008000 {
-> >
->
->
 
