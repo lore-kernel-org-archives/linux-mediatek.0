@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44CFEC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 22:45:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 298B0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 23:34:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=owwtlW3rOL0CNBfDOH2DnKrzgv4WQIHmvViMboW6yHk=; b=dRNMFYX3Yl2pexzEYaW7lMnXm3
-	p1hAGSMuOKC45UHWe/DHmhgfqSFgYbtxL3Km5j8M9HfKETGLqwAQnGCXDtJ0Z1Hf0MYsIhvi0t5FK
-	R2IKtF7epzQb8u/d+rL+VWYYMPpStOuwyNxsSnIQgb6ge019h7QWjBzQq0VHYSK9ynK1k0vs3Z6I+
-	Bdm36ixCNcj64Kpk7N9TmJjD3Yo6SYYVWFG6/29Tb318Kp1SRa7wqb/nI24tnoMp70FltmXqKiZrC
-	DNwmgw4M8UyMqIwiz7BlwArh9uJbTMirenxIUnk0WM74SzCQ0pQXXQvOf83WpWziMXZidkauQgX6J
-	ApyVauXg==;
+	bh=M5TkeqV3G9zxvCFod0/RzZU83U1D+6jWZKyK1kWRRpo=; b=GeTwKHScY7PEkde3wlR67EUPeg
+	vALvO6tvtjnKt2WHW5OOuoNvbi3+dex/KuO1CCxl/DOEakYQEUQobylT4A8OJmte+2PZnPUAfbKny
+	g40Qsr7qF/tn39uMPY13+H1u7NlUHrPGM4FtL4MEHxYv6YS9DjzqCqJGYsFP03LGqHokBgkU0uvPm
+	57fGCBkwrQWX7zLaJCQArmmcwN6paZv2OMa5oo4mSq6lHGhaIZfPLOf6Yu13vmeRG4bKu4t++Uh+4
+	U+Z8T1BLMrnaFxpmrIckofe+MG3CW9zYiQP9K56e3P4DoAG8dAcK4uohayY5+eCdzNataAWJZav9A
+	x6qd1ucg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG6pR-003RnU-7j; Mon, 25 Jul 2022 22:45:33 +0000
-Received: from mail-oi1-f169.google.com ([209.85.167.169])
+	id 1oG7aE-004Kl9-TM; Mon, 25 Jul 2022 23:33:54 +0000
+Received: from mail-oo1-f48.google.com ([209.85.161.48])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG6pO-003Rl3-88; Mon, 25 Jul 2022 22:45:31 +0000
-Received: by mail-oi1-f169.google.com with SMTP id bb16so15173866oib.11;
-        Mon, 25 Jul 2022 15:45:27 -0700 (PDT)
+	id 1oG7Zu-004KVc-HT; Mon, 25 Jul 2022 23:33:35 +0000
+Received: by mail-oo1-f48.google.com with SMTP id j1-20020a4ab1c1000000b0043576bcb9b1so2440299ooo.10;
+        Mon, 25 Jul 2022 16:33:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=owwtlW3rOL0CNBfDOH2DnKrzgv4WQIHmvViMboW6yHk=;
-        b=AjlH4FdbFm+uJSMYy3myBSLSV7r2j/ZM72fsT7thgE7s4cN7Xs7I95b/iTNkG4c8Nd
-         9xyfWIbqH8n1g6pPBZw0YON8cOBMLA0IUQ+TND3ycSxGti+7gQT6xtMVYJwPfaxZeJoG
-         gGLlMCkLzWYsUfpOchZdwJmpYTG7Ke1STyM1h5NdI01leFYNNjU/28UNlFkMW2aW0w4a
-         2A8nyTutKh6WundEOrHml60wyaQpzr9yBj9Tw1Lg2eQgIEcTk9CaByUPZYV6rHK+i+vu
-         u7ZTDNOLmDrDu2o7d/fL/WZTe4VQyMx1cjrgBlQ4jr/BdfELW4CiTEsI8fe37v9ZRvJw
-         R6SA==
-X-Gm-Message-State: AJIora8UERDSz6lKXlTa19o1XteIxb8FHwcSzHyF168Xdbbv2gJ2cL7K
-	MTyIJNz+lbfXXNISIEbGdQ==
-X-Google-Smtp-Source: AGRyM1svwSsqAhx+tdPya8Gp0eQkBxcOlgC+d6J8MbW4VLKYGHrsTs/zO+0aGudl40kpceveJ48bmw==
-X-Received: by 2002:a05:6808:1514:b0:33a:ab72:ffa7 with SMTP id u20-20020a056808151400b0033aab72ffa7mr10961459oiw.100.1658789125525;
-        Mon, 25 Jul 2022 15:45:25 -0700 (PDT)
+        bh=M5TkeqV3G9zxvCFod0/RzZU83U1D+6jWZKyK1kWRRpo=;
+        b=IeraclqAajZ0qjkNzq6Isoul5fwJzzkSeYvyahGViI1L1UB0/tTBKhfvgVBjYN19Ag
+         o95WnvXNGaCXUVeqLXKkCzwOBezPGXMSuDpjSPQZKqXlmNxIKz8fAvjoXAEmsdEbkeYr
+         JGZvSzXqjnxO0vdK+B1VQhuW2wLlE/dQAlNFeCHSD37mZtXb/oYdDvHfcLeTBiF3p5m/
+         fvCbgAWraXVGqaRwNqVwkKf47wuzgEPWQjT4oTjRjlVNkC50jb1ypDpxK7L137qOMpmN
+         zdXAgBm05KAh3Xr68cz2CR7L+VwEMDoQS6ZG1GY0Alx9Wyn5FfVkOdPvKmyujk+yf/62
+         uwRQ==
+X-Gm-Message-State: AJIora9+T5mygvDjioyQ054f7dLE9R4/DGgumJLbfM/S285yp/umJ5bf
+	kTBJnRFx1t/Q2SDkcoeSFw==
+X-Google-Smtp-Source: AGRyM1t3ptpQtY/C56bEyrQAR2wlVNxqnBKvjmVyYxyOIFNZBDbO8RwPFSdn+bPGwqwRBfxS2l7GGQ==
+X-Received: by 2002:a4a:d621:0:b0:435:d6cc:b2e1 with SMTP id n1-20020a4ad621000000b00435d6ccb2e1mr4989526oon.88.1658792012486;
+        Mon, 25 Jul 2022 16:33:32 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id i6-20020aca2b06000000b0033a11fcb23bsm5317942oik.27.2022.07.25.15.45.22
+        by smtp.gmail.com with ESMTPSA id k23-20020a4ad117000000b004359b581401sm5375799oor.25.2022.07.25.16.33.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Jul 2022 15:45:25 -0700 (PDT)
-Received: (nullmailer pid 2886877 invoked by uid 1000);
-	Mon, 25 Jul 2022 22:45:21 -0000
-Date: Mon, 25 Jul 2022 16:45:21 -0600
+        Mon, 25 Jul 2022 16:33:32 -0700 (PDT)
+Received: (nullmailer pid 2965235 invoked by uid 1000);
+	Mon, 25 Jul 2022 23:33:30 -0000
+Date: Mon, 25 Jul 2022 17:33:30 -0600
 From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: rex-bc.chen@mediatek.com, ikjn@chromium.org, wenst@chromium.org, sboyd@kernel.org, marijn.suijten@somainline.org, linux-kernel@vger.kernel.org, phone-devel@vger.kernel.org, paul.bouchara@somainline.org, p.zabel@pengutronix.de, linux-mediatek@lists.infradead.org, ck.hu@mediatek.com, bgolaszewski@baylibre.com, jason-jh.lin@mediatek.com, mturquette@baylibre.com, matthias.bgg@gmail.com, miles.chen@mediatek.com, konrad.dybcio@somainline.org, krzysztof.kozlowski+dt@linaro.org, tinghan.shen@mediatek.com, ~postmarketos/upstreaming@lists.sr.ht, sam.shih@mediatek.com, linux-clk@vger.kernel.org, y.oudjana@protonmail.com, kernel@collabora.com, robh+dt@kernel.org, fparent@baylibre.com, devicetree@vger.kernel.org, martin.botka@somainline.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v6 4/8] dt-bindings: clock: mediatek: Add clock driver
- bindings for MT6795
-Message-ID: <20220725224521.GA2886831-robh@kernel.org>
-References: <20220722090609.52364-1-angelogioacchino.delregno@collabora.com>
- <20220722090609.52364-5-angelogioacchino.delregno@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com, angelogioacchino.delregno@collabora.com, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: mt8186: Add gpio-line-names
+ property
+Message-ID: <20220725233330.GA2965207-robh@kernel.org>
+References: <20220725110702.11362-1-allen-kh.cheng@mediatek.com>
+ <20220725110702.11362-2-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220722090609.52364-5-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220725110702.11362-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_154530_307248_8E52AC08 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20220725_163334_613251_63031C22 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,18 +78,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 22 Jul 2022 11:06:05 +0200, AngeloGioacchino Del Regno wrote:
-> Add the bindings for the clock drivers of the MediaTek Helio X10
-> MT6795 SoC.
+On Mon, 25 Jul 2022 19:07:01 +0800, Allen-KH Cheng wrote:
+> Add the 'gpio-line-names' property to mt8186-pinctrl, as this will be
+> used in devicetrees to describe pin names.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../bindings/clock/mediatek,mt6795-clock.yaml | 66 +++++++++++++++++++
->  .../clock/mediatek,mt6795-sys-clock.yaml      | 54 +++++++++++++++
->  2 files changed, 120 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
->  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
+>  Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Acked-by: Rob Herring <robh@kernel.org>
 
