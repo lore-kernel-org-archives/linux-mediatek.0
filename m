@@ -4,98 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5960FC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 10:14:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C95C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 10:15:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ya/mloD9INrh1JvY6dnMl/d7HT2EcwvD9REwi50/cyk=; b=nosqAurPNkYMshlYvV2ADMKiEG
-	uO9jjp9wsuJsqghTauGHTS4j1sD7Kv57hxBdfcIkiL06/iAnxJT6ottgdz2paImFp2zdZeOWM7tv3
-	norQDwQGhlkH2kQqrjaJUeKMH/stZ9q8UaBnGIkmlWkye2h2LvFNWzdSCZzX0+2J8P9UQw/Zeq3OM
-	n64PGY9KPSwViT3CnF8AwUkVMKYQ7hCkGG7X2cAHPZ0pvG59JLGeww92kKpve/Qxf/1oSsMv1pqcW
-	ZPMTyh0hdO7lR6urSSEgYp2+1XISO45FCA4mBIHqLA1zQNWD0vFieiNst3v6U9pbjsAMnQzBNHHJH
-	gQp7UtPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=stNX9KF4Msw25o+qtdczigETj3bpvIInYCKAJzx+tiw=; b=EE9DO1LRduCWnsiSNkKaL9l2SS
+	7AtuCAxqSMEElT4WL8tNk055td4zTC9HaI10FHyBAEzrUqaLGhnQcOJPRmBqDE+6rpzXTFXiWY87M
+	gYRaYe3hICFKrxF+mZJ05EXJy3m0lsqgY1xJlG9kZ0NUvtmgODCIejKfwJLYouDIBAq2MzfpJVWtb
+	B5WdqGb3PiIM971ut2Y06HniDkuPpaD47CyYbNjengQNAKbd4+HiHUNNOeAjbomyshtYwv9K9jzHL
+	iZaJphQA5k2ZNVePhfKPa8js6e4ZSaAfT3ntIxAB7Q3ibKqXSYfm6rm7y4WTPgJtUHbl0Z06j3hhy
+	cbpzQEZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFv6S-0082su-4F; Mon, 25 Jul 2022 10:14:20 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1oFv7K-0083eO-Nr; Mon, 25 Jul 2022 10:15:14 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFv60-0080aZ-HQ; Mon, 25 Jul 2022 10:13:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ya/mloD9INrh1JvY6dnMl/d7HT2EcwvD9REwi50/cyk=; b=p0bIhswdVBkBS4mIm0qIFUgnCj
-	7Lon5zfZcgzRUiDxfEY3acPj0/9OwKG5ie7YcAYSbc/RaVmq/Gkn9ZKrmgssU2j8Im9EOKGfeR69Z
-	yzCDg6ODIxjbp4pZ5NKMGyqlm6w2Z+9z9ppZrtINZU3sE5+X8IZFFwJ3puh+INL5BZGLbovyrsfYp
-	qOHrc1EwKk7SZwNkRGsn5F/Njcwsqn8940ipE8nq8K5ttBpY8gxojD3PZHApC0BVHmwPpr5IfDB6m
-	CD88wSJt197e6CjnizglfND0ZGL9hC/UBwOOY/EnygFklwMAoCBjd3kT1w+jXDSXcPjjea6rMoAR/
-	yUddL8vQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:33550)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1oFv3R-0002in-6d; Mon, 25 Jul 2022 11:11:13 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1oFv3L-0000Ao-4m; Mon, 25 Jul 2022 11:11:07 +0100
-Date: Mon, 25 Jul 2022 11:11:07 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alvin __ipraga <alsi@bang-olufsen.dk>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Daniel Scally <djrscally@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	George McCollister <george.mccollister@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Sean Wang <sean.wang@mediatek.com>, UNGLinuxDriver@microchip.com,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Woojung Huh <woojung.huh@microchip.com>
-Subject: Re: [PATCH net-next 3/6] net: dsa: add support for retrieving the
- interface mode
-Message-ID: <Yt5sO0GUM42+yvU3@shell.armlinux.org.uk>
-References: <20220722105238.qhfq5myqa4ixkvy4@skbuf>
- <YtqNkSDLRDtuooy/@shell.armlinux.org.uk>
- <20220722124629.7y3p7nt6jmm5hecq@skbuf>
- <YtqjFKUTsH4CK0L+@shell.armlinux.org.uk>
- <20220722165600.lldukpdflv7cjp4j@skbuf>
- <YtsUhdg3a2rT3NJC@shell.armlinux.org.uk>
- <YtsUhdg3a2rT3NJC@shell.armlinux.org.uk>
- <20220722223932.poxim3sxz62lhcuf@skbuf>
- <YtufRO+oeQgmQi57@shell.armlinux.org.uk>
- <20220723134444.e65w3zq6pg43fcm4@skbuf>
+	id 1oFv6o-0083Cm-KC; Mon, 25 Jul 2022 10:14:44 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4678C6601AA6;
+	Mon, 25 Jul 2022 11:14:38 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658744078;
+	bh=ispzLRdFkJar4wYod3p3CsPB+0/0GWgV2Tse00+QXEo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MAqSTpXS+gS/8vj9J51Ewr9S27lGBUJyKm5kHN90hvBH4+rUnLvNpXBWg8DgzG5nR
+	 cwgKZBp/i+sVjN2qhV+0xE9stOiOrnCgInYn47bhGm5dy5OAEKbhcRvScXYhnQowKq
+	 /5hvPmV4LEe/MwhsK/+iUNU0c+v4ibnSmOrsVY6x4wGm+RnPVxmTdETyzr1SDMvLmA
+	 NgRpwFqPTvOTdGKgBfgP/AqUSR0qqefifuW9bvSD0jCGTZTNQ0w8DfyohIMSlup9mV
+	 uGeTLN5IuOpxxoRq4by88WZIuSDQrlwRrdwY2hxjykDv1QunwTd5RFpQcZQU5Nhuhw
+	 yJqd95Y0tVP6A==
+Message-ID: <8e47ef16-f310-2242-42c6-8081a4a33d8b@collabora.com>
+Date: Mon, 25 Jul 2022 12:14:35 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220723134444.e65w3zq6pg43fcm4@skbuf>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v2 7/8] arm64: dts: mediatek: cherry: Enable keyboard PWM
+ backlight
+Content-Language: en-US
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <20220721145017.918102-1-angelogioacchino.delregno@collabora.com>
+ <20220721145017.918102-8-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5FR-HdPc-_c18Svdx0aviR-+b4ikf6MfbzaLWCcF1catA@mail.gmail.com>
+ <b11386d3-3b28-617e-1dc6-1d862952aff7@collabora.com>
+ <CAGXv+5EGW-4zOWa4bhJz6ODt_P-u4Qepc+YR9=7-Yk+CsJ7K3w@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <CAGXv+5EGW-4zOWa4bhJz6ODt_P-u4Qepc+YR9=7-Yk+CsJ7K3w@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_031352_606398_F3AC399B 
-X-CRM114-Status: GOOD (  27.73  )
+X-CRM114-CacheID: sfid-20220725_031442_934328_49D0BE31 
+X-CRM114-Status: GOOD (  19.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,49 +80,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 23, 2022 at 04:44:44PM +0300, Vladimir Oltean wrote:
-> On Sat, Jul 23, 2022 at 08:12:04AM +0100, Russell King (Oracle) wrote:
-> > > > > Thanks for this explanation, if nothing else, it seems to support the
-> > > > > way in which I was interpreting managed = "in-band-status" to mean
-> > > > > "enable in-band autoneg", but to be clear, I wasn't debating something
-> > > > > about the way in which mvneta was doing things. But rather, I was
-> > > > > debating why would *other* drivers do things differently such as to come
-> > > > > to expect that a fixed-link master + an in-band-status CPU port, or the
-> > > > > other way around, may be compatible with each other.
-> > > > 
-> > > > Please note that phylink makes a DT specification including both a
-> > > > fixed-link descriptor and a managed in-band-status property illegal
-> > > > because these are two different modes of operating the link, and they
-> > > > conflict with each other.
-> > > 
-> > > Ok, thank you for this information which I already knew, what is the context?
-> > 
-> > FFS. You're the one who's writing emails to me that include *both*
-> > "fixed-link" and "in-band-status" together. I'm pointing out that
-> > specifying that in DT for a port together is not permitted.
-> > 
-> > And here I give up reading this email. Sorry, I'm too frustrated
-> > with this nitpicking, and too frustrated with spending hours writing a
-> > reply only to have it torn apart.
+Il 25/07/22 12:06, Chen-Yu Tsai ha scritto:
+> On Mon, Jul 25, 2022 at 6:04 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Il 25/07/22 11:57, Chen-Yu Tsai ha scritto:
+>>> n Thu, Jul 21, 2022 at 10:53 PM AngeloGioacchino Del Regno
+>>> <angelogioacchino.delregno@collabora.com> wrote:
+>>>>
+>>>> Add a pwm-leds node to enable the PWM controlled keyboard backlight.
+>>>>
+>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>> ---
+>>>>    arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 13 +++++++++++++
+>>>>    1 file changed, 13 insertions(+)
+>>>>
+>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>>>> index ca9955a97f8f..9086a440a995 100644
+>>>> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+>>>> @@ -4,6 +4,7 @@
+>>>>     */
+>>>>
+>>>>    #include <dt-bindings/gpio/gpio.h>
+>>>> +#include <dt-bindings/leds/common.h>
+>>>>    #include "mt8195.dtsi"
+>>>>    #include "mt6359.dtsi"
+>>>>
+>>>> @@ -31,6 +32,18 @@ dmic_codec: dmic-codec {
+>>>>                   wakeup-delay-ms = <50>;
+>>>>           };
+>>>>
+>>>> +       led-controller {
+>>>> +               compatible = "pwm-leds";
+>>>> +
+>>>> +               keyboard_backlight: keyboard-backlight {
+>>>> +                       default-state = "off";
+>>>> +                       function = LED_FUNCTION_KBD_BACKLIGHT;
+>>>> +                       label = "cros_ec::kbd_backlight";
+>>>> +                       max-brightness = <1023>;
+>>>> +                       pwms = <&cros_ec_pwm 3>;
+>>>> +               };
+>>>> +       };
+>>>> +
+>>>
+>>> This didn't work for me. However using "google,cros-kbd-led-backlight"
+>>> under the EC did. That might be a better option.
+>>
+>> Strange. But okay if there's a better option I'll check that out for v3.
 > 
-> This is becoming toxic.
+> It might be an EC firmware version issue. My devices are all running
+> test images, and don't automatically update the EC firmware.
+> 
+> For reference, mine is at:
+> 
+> RO:    tomato_v2.0.10686-234e646fd8
+>          tomato_14268.0.0
+> RW:    tomato_v2.0.10686-234e646fd8
+>          tomato_14268.0.0
+> Build:    tomato_v2.0.10686-234e646fd8 tomato_14268.0.0
+>          2021-10-07 09:00:32
+>          @chromeos-ci-legacy-us-central2-d-x32-34-us9d
+> 
 
-It is toxic, because I'm spending longer and longer replying to each of
-your emails, because every time I do, you ask more and more questions
-despite my best effort to provide clear answers. This cycle of forever
-growing emails that take longer and longer to reply to can not continue.
+It's surely about the firmware, because I can confirm that I didn't
+have a working KB kacklight before upgrading... I remember debugging
+that and I couldn't figure out why it wasn't working...
 
-When I spend three hours trying to compose a reply to your email, and
-then get a reply that tears it apart, needing another multi-hour effort
-to reply, it has to stop. Sorry, but it has to.
+After an upgrade, it magically worked, so that's it.
 
-I am not going to spend endless hours composing one reply after another
-on the same topic - I will just stop trying to compose a reply to an
-email if its turning into another multi-hour effort leaving the rest of
-the email unreplied - and in many cases even unread. Sorry, but I don't
-have the patience.
+RO version:    tomato_v2.0.11883-9f0d374060
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+RO cros fwid:  tomato_14454.14.0
+
+RW version:    tomato_v2.0.11893-d27ab0e96d
+
+RW cros fwid:  tomato_14454.23.0
+
+
+
+That's the FW that I have here on my machine... :-)
+
+I'll anyway check out the binding that you suggested, as if that works
+in any condition that's simply better!
+
+
+> ChenYu
+> 
+>> Cheers!
+>> Angelo
+>>
+>>>
+>>> ChenYu
+>>>
+>>>>           memory@40000000 {
+>>>>                   device_type = "memory";
+>>>>                   reg = <0 0x40000000 0 0x80000000>;
+>>>> --
+>>>> 2.35.1
+>>>>
+>>>>
+>>>> _______________________________________________
+>>>> linux-arm-kernel mailing list
+>>>> linux-arm-kernel@lists.infradead.org
+>>>> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+>>
+
+
 
