@@ -4,74 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BC3DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 09:34:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59D27C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 09:50:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PtqXqnfCmYh6de5igEmOv7HRyyN5TzNbpMn+BkSKlVs=; b=WIGhjt5qAt7+8sMvUoO42DwI9B
-	Ti/R4OrfCaR2Nv2WH2A9DAmyaXA+WH+Pyvo+XS7FR0EZp2SUHL6iPy9e6kVr4Wsl5DOLjMcJkFX34
-	mqs1ORYGifXb4bFtSZQGBvGl2yUGb8cEfQkJ+2OQ2ECD2ZzPGVFnJ/sbwxanytFEYCjlb4H5snVhg
-	/rIlfkBW48iSvZDtuUa1JbPIwaIHzPPk8yv67aKEq/xtEPiW79yIMr5oqwG3hebhEl0XgsCmPl3/h
-	v9DaRhgyRjGZ/GrrF3XnrSrGLLay5I5cI/5fjgJO89ocfgo+L0at5VKCDGUSauyp/gIPuelJAqE/S
-	lw5wC0Cg==;
+	bh=2Zxzn2JKNy30IUeeOZfeZy2HKF5tn0G6rsehLMrAPdo=; b=kYq3hiQWOZGt8rSgdg7YnyTI1Z
+	QoOmkvv7zjg+mstD3ZpnUDWWXjdQtGnmca9XHHNF4HZZhFuG7tR6MrraFZ/igXQWZ5ajvWJ1LdM3n
+	S12ZljbK5+hqQgqRF/7deC8xub1D11h/co1UNTEGEzDiopsZkNW/31ZUHfj0Kh5WK21Vm9jrvqTPv
+	lmOWWvSs7ySmfbu5YH6Y5VNtlsWMrUB8dT0jwXWd1WewsJqDrPqim/oPhTt3uotodtJfBU5A/8wrW
+	DUMsVEwtl/3p/lDN2SVhEYGG9kh756mc4q/sTAi1t2S5we0+zxaWNawosFcJPspD7vZP209RRkZVP
+	KYDOBGoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFuTl-007fWz-Sc; Mon, 25 Jul 2022 09:34:21 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oFujE-007mkG-BF; Mon, 25 Jul 2022 09:50:20 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFuTi-007fUm-No; Mon, 25 Jul 2022 09:34:20 +0000
-X-UUID: 1377f1a1c0d545dbb9e1c376ceb1951a-20220725
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:7d21b1a9-997b-48b9-9db7-60a4e4d5ec8a,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:fda66cb3-06d2-48ef-b2dd-540836705165,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 1377f1a1c0d545dbb9e1c376ceb1951a-20220725
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 852454005; Mon, 25 Jul 2022 02:34:10 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 25 Jul 2022 17:23:37 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 25 Jul 2022 17:23:36 +0800
-Message-ID: <6232f0fc15bc1057aab68523e5eb63e10b3a2802.camel@mediatek.com>
-Subject: Re: [PATCH v14 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
-	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-fbdev@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 25 Jul 2022 17:23:36 +0800
-In-Reply-To: <20220712111223.13080-6-rex-bc.chen@mediatek.com>
-References: <20220712111223.13080-1-rex-bc.chen@mediatek.com>
-	 <20220712111223.13080-6-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oFujB-007mik-Ml
+	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 09:50:19 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 6EDCCB80DFB;
+	Mon, 25 Jul 2022 09:50:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 10EB5C341C7;
+	Mon, 25 Jul 2022 09:50:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1658742614;
+	bh=7KgDUam99vWAh7RjWX40VFff7LVefNo5IqM99eHy+co=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=SfrkY7ptB8ytcxOVKXXq9/r+2u9pjGXlILX3FKmyK7+bhyLkmNE9X2v4PMxJFbCkW
+	 Grh65bC/v3ZYZWn0p/2mZmQvTqcOQhOI4cJXEhIzrLMJ7nS4thfuzpuYJ8+ca/NUqV
+	 LAhhe6OedCZZ0egMkzJKkWvq/KswBg/8yU7vbBJ1Iyp7Pjfrv1LqX62RAj3Z0y/Gnb
+	 3SkJ27+HeGHgAae7WVwP+fw1kqBdokca6qeO29t5hP2Sh+FNOqiO89t/8mKyCoskM7
+	 r5cxsOfC8ugt8cUvXg4bru7khgGoMsI+JntAueaoTpA88h98Hx/ccOhObJvpy52R/C
+	 HFSF+CXftcC5Q==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id E9BFFE450B5;
+	Mon, 25 Jul 2022 09:50:13 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v4 net-next 0/5] mtk_eth_soc: add xdp support
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id:  <165874261395.3948.10032831276100096007.git-patchwork-notify@kernel.org>
+Date: Mon, 25 Jul 2022 09:50:13 +0000
+References: <cover.1658474059.git.lorenzo@kernel.org>
+In-Reply-To: <cover.1658474059.git.lorenzo@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
+ sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
+ ilias.apalodimas@linaro.org, lorenzo.bianconi@redhat.com, jbrouer@redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_023418_794690_6F4F2DFB 
-X-CRM114-Status: GOOD (  24.62  )
+X-CRM114-CacheID: sfid-20220725_025017_929748_FF39B060 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,102 +77,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Bo-Chen:
+Hello:
 
-On Tue, 2022-07-12 at 19:12 +0800, Bo-Chen Chen wrote:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+This series was applied to netdev/net-next.git (master)
+by David S. Miller <davem@davemloft.net>:
+
+On Fri, 22 Jul 2022 09:19:35 +0200 you wrote:
+> Introduce XDP support for mtk_eth_soc driver if rx hwlro is not
+> enabled in the chipset (e.g. mt7986).
+> Supported XDP verdicts:
+> - XDP_PASS
+> - XDP_DROP
+> - XDP_REDIRECT
+> - XDP_TX
+> - ndo_xdp_xmit
+> Rely on page_pool allocator for single page buffers in order to keep
+> them dma mapped and add skb recycling support.
 > 
-> This patch adds a embedded displayport driver for the MediaTek mt8195
-> SoC.
-> 
-> It supports the MT8195, the embedded DisplayPort units. It offers
-> DisplayPort 1.4 with up to 4 lanes.
-> 
-> The driver creates a child device for the phy. The child device will
-> never exist without the parent being active. As they are sharing a
-> register range, the parent passes a regmap pointer to the child so
-> that
-> both can work with the same register range. The phy driver sets
-> device
-> data that is read by the parent to get the phy device that can be
-> used
-> to control the phy properties.
-> 
-> This driver is based on an initial version by
-> Jitao shi <jitao.shi@mediatek.com>
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
+> [...]
 
-[snip]
+Here is the summary with links:
+  - [v4,net-next,1/5] net: ethernet: mtk_eth_soc: rely on page_pool for single page buffers
+    https://git.kernel.org/netdev/net-next/c/23233e577ef9
+  - [v4,net-next,2/5] net: ethernet: mtk_eth_soc: add basic XDP support
+    https://git.kernel.org/netdev/net-next/c/7c26c20da5d4
+  - [v4,net-next,3/5] net: ethernet: mtk_eth_soc: introduce xdp ethtool counters
+    https://git.kernel.org/netdev/net-next/c/916a6ee836d6
+  - [v4,net-next,4/5] net: ethernet: mtk_eth_soc: add xmit XDP support
+    https://git.kernel.org/netdev/net-next/c/5886d26fd25b
+  - [v4,net-next,5/5] net: ethernet: mtk_eth_soc: add support for page_pool_get_stats
+    https://git.kernel.org/netdev/net-next/c/84b9cd389036
 
-> +
-> +/*
-> + * We need to handle HPD signal in eDP even though eDP is a always
-> connected
-> + * device. Besides connected status, there is another feature for
-> HPD signal -
-> + * HPD pulse: it presents an IRQ from sink devices to source devices
-> (Refer to
-> + * 5.1.4 of DP1.4 spec).
-> + */
-> +static irqreturn_t mtk_dp_hpd_isr_handler(struct mtk_dp *mtk_dp)
-> +{
-> +	bool hpd_change = false;
-> +	u32 irq_status = mtk_dp_swirq_get_clear(mtk_dp) |
-> +			 mtk_dp_hwirq_get_clear(mtk_dp);
-> +	struct mtk_dp_train_info *train_info = &mtk_dp->train_info;
-> +
-> +	if (!irq_status)
-> +		return IRQ_HANDLED;
-> +
-> +	if (irq_status & MTK_DP_HPD_INTERRUPT)
-> +		train_info->irq_sta.hpd_inerrupt = true;
-> +	if (irq_status & MTK_DP_HPD_CONNECT ||
-> +	    irq_status & MTK_DP_HPD_DISCONNECT)
-> +		hpd_change = true;
-> +
-> +	if (!(hpd_change))
-> +		return IRQ_WAKE_THREAD;
-> +
-> +	if (mtk_dp_plug_state(mtk_dp))
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-mtk_dp_plug_state() is called only here, and prevent function call in
-isr handler, so squash mtk_dp_plug_state() into this function.
-
-> +		train_info->cable_plugged_in = true;
-> +	else
-> +		train_info->cable_plugged_in = false;
-> +
-> +	train_info->cable_state_change = true;
-> +
-> +	return IRQ_WAKE_THREAD;
-> +}
-> +
-> +static irqreturn_t mtk_dp_hpd_event(int hpd, void *dev)
-> +{
-> +	struct mtk_dp *mtk_dp = dev;
-> +	u32 irq_status;
-> +
-> +	irq_status = mtk_dp_read(mtk_dp, MTK_DP_TOP_IRQ_STATUS);
-> +
-> +	if (!irq_status)
-> +		return IRQ_HANDLED;
-> +
-> +	if (irq_status & RGS_IRQ_STATUS_TRANSMITTER)
-> +		return mtk_dp_hpd_isr_handler(mtk_dp);
-
-Prevent function call in isr handler, squash mtk_dp_hpd_isr_handler()
-into this function.
-
-Regards,
-CK
-
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
 
 
