@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 184FBC43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 08:56:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 397AEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 09:07:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3INTKFVzGpgdLiO6cm/tt/F3n1FdE/J8Gtrvuuomg/U=; b=EPlRLLXKORLHgE/4wMDujquFbj
-	YWaDUGjjUuElRtIngR0FM8KL+9k+ngVGb38WlrFdpnlXQwK/31jdK85bFb2C/LSiqIK9OMAet6WGl
-	S2RfIG/dGsot2Ebid/19q055JE92/BxY2qYPC0a/bYj1VhnI+HYJdHDraRnkTlGHQkCBQ008LyT7E
-	TC/oxDyxziM+lHajpCEZHMHZpMoBdqKQvgzf7EvqazjygDhb2JuVxhwIgBOZA/bktCokZQEA6N8BC
-	ehPSO390kkRnKVcvAAznLIbuIXo098tksKW32+RzulLUMO65B5Bigh6BRqUHlIn8LfipvMqvdAE18
-	tqRoBFXw==;
+	bh=IY0j+H2edk5UsmI6A7sNzAv0qZHfigoVGkZeFtNqZD0=; b=dkvMPMOgXv8EgXK0GSSyJanS9d
+	cdIsf92mX1Y0Fa3cmpaD5GoyPVoTyqP7ZrPJerdt2PVRtGodcjzc0s183CwloMHFw37gu2YNzVlwd
+	KGdOLFj2UUexlIaIBEqG9zKX2iEN1gsPIvINE/QJDrw0meG/jqKvkJyqSKKiZxvDiRrQg1+k1LKfD
+	1T+GHOzA1DV5wLz0tHNuJCNtZN4WpZYQqHAxjU87uW+QpkKkeeognMD1Lqe8+nq3BTRt4dgT93ZO0
+	lh6M8vzSYPGUnOMMKOWeD/MSn9l3esxxsmEhEnzb2h9dLW9dyN9N9+yRMZyqkIEEzw7ZO4ddMelEO
+	nGZk07zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFtsf-007DXX-47; Mon, 25 Jul 2022 08:56:01 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1oFu3T-007KAF-6m; Mon, 25 Jul 2022 09:07:11 +0000
+Received: from mail-qt1-x833.google.com ([2607:f8b0:4864:20::833])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFtsI-007D5g-SQ; Mon, 25 Jul 2022 08:55:40 +0000
-Received: by mail-ed1-x529.google.com with SMTP id z22so12992824edd.6;
-        Mon, 25 Jul 2022 01:55:37 -0700 (PDT)
+	id 1oFu3G-007Jyr-QS; Mon, 25 Jul 2022 09:07:00 +0000
+Received: by mail-qt1-x833.google.com with SMTP id u12so7795705qtk.0;
+        Mon, 25 Jul 2022 02:06:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=3INTKFVzGpgdLiO6cm/tt/F3n1FdE/J8Gtrvuuomg/U=;
-        b=KGUkTvmsrFj/i/g2Txcus2neVCIeH7fS7RYDzgarpCQjAlV25rYmvRqFk4rEW2Xu6H
-         dVkCJgHWlrXopXOfsXa7jLI7QUV58LjpMPEGgOlQAaOnihMKMqUORjOGJ0SyGVX6oPmr
-         AMrcGRzTVPctXdbs6Q2EfqiY6PKD5GpzJSWGECpaDGigxvdYX+uHjA92klNsnuWiXkR8
-         KK3MgVH2qSoijeYpB69tibPEs3jLzlYrbqnbLehlkcag6TPz7QYuNOe0ls9ksOj0BiPk
-         SOG0zIupDCmFrghFibZg1nOn4XrHoUYCdTW2Pwb7i2+PJ+hXVio5/EJxBh6mFV3wBtpH
-         A4FQ==
+        bh=IY0j+H2edk5UsmI6A7sNzAv0qZHfigoVGkZeFtNqZD0=;
+        b=OAft5TUYAXK6FHwdudrZ3/ylDTgyd7ApXgH3mCQQrEy/AppLvKLTFrPAuRaeFgFtA7
+         It8xo2DsjfOuep3j9cWzIbiJND3QEGySnwIZHLW7+dtLSlt+35HbGtRezBb37b4ET1YA
+         T08HOavE/cN4KrCVfDqvDb9AfqV938ASpM6+DesVsCpK+wJIO8i1UyBgvsftmWjtDjOG
+         FhD3Z5NBfgipr391g2noPdoBVxJJl+Zl02FqMF/RSg8CvI8FVka2TxagkUfxCYyIA8lN
+         BEkxNh5JboG7/J/TGmZM68ALnFQGOS8vaYU/EgWzrbg9AQ2GE7pMqCpLXdsGFwSSNDLe
+         gkfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=3INTKFVzGpgdLiO6cm/tt/F3n1FdE/J8Gtrvuuomg/U=;
-        b=0oevN1Th3YZFJA13MtGcWfp/XeCR+qzYx0iiG0qRZqFlqJiGu0aKfBxGeALJZZX9mR
-         TFpt9+YqYjMvN/zQw3+5dDoHXpKlqf7y5/d6GxPRXfFRFdwQo9AHWcFNLtgiOWr45SvH
-         d7GhQjb5svgJ5Ryl/KgF7+7pPI+ypLApuuC3CmUX6YqvP1uz0vefnGuGoer9pPaCcTrr
-         rENvIHqS8HSKcU7Q7zVrnGzOO8VWWcDtBkYfho5QjUW55SANl71xYry6qr9l3LaO2WtW
-         d7/kKIts5opzupiTnojU5vLFi7RlRpdNZ1E24OpaWQVk4vlj2umIotfk4fpXuWKm3M10
-         GF1w==
-X-Gm-Message-State: AJIora/m81fb6N32jayhuMR6ZuXhOUKs2aaDl64fOfTlTScAEyqx26cs
-	qbThkpSBqMV9TP9uI55umfLJ0m8dW92sEi4X3Fo=
-X-Google-Smtp-Source: AGRyM1v8y+nmZhsplbXoHzO4Ve+2H3JYkbB6esC4VwvluxmYvgNwKHcXWiOtO8fBnhCqb3I9/pY7SCo8PriYmFxn6lE=
-X-Received: by 2002:a05:6402:34c5:b0:43a:8f90:e643 with SMTP id
- w5-20020a05640234c500b0043a8f90e643mr11947835edc.88.1658739336148; Mon, 25
- Jul 2022 01:55:36 -0700 (PDT)
+        bh=IY0j+H2edk5UsmI6A7sNzAv0qZHfigoVGkZeFtNqZD0=;
+        b=Ub3OT7UU4uG18RACqhEYV9LLc3iLxwFXmXZotZQjuo+1PciGV6LYWe/b/pg2n5k1Ji
+         /5SVZCYawGGpJNQMyQI2carn2tXKhdY5Ai67XJrr4J4ddd5akgc4S+MpXMmu29zGJ7g6
+         nX+I0QBRzkWjDeYJTbJqgibagjJNX6Sbd+U52JhJYcU1jk87vUTm1QLlx5XLJgTa2G7B
+         y+fAH41cFDPAZeaWYZ0autSMR/TBTc9eHTXzMWTStHIwcJy7117pWZB5v9RHnG+Vvhos
+         dqW5yb7t/2lZJS1F+G5yH+6rsEwQAQtnTn8gsqPj/02YsJFZlkH0MMn/AkWSgID0zrla
+         aLFg==
+X-Gm-Message-State: AJIora95IXYX+TALkzr/rGWwyD4HWYGHDH2YkDGpK4PLB0ndOdvrkA+V
+	FtAA9XbaiQAbQJZhjujCg4brHON1JwVXOf6vrSM=
+X-Google-Smtp-Source: AGRyM1tJSXMumghoATC65twYRnzaQxdiBNYaldY1M9f4DosemyPp1f+IvX7cbVFcEYtBJ2DRVha2cAhiDgReWJ+n9ic=
+X-Received: by 2002:ac8:5d49:0:b0:31f:aa:e632 with SMTP id g9-20020ac85d49000000b0031f00aae632mr9318617qtx.427.1658740016501;
+ Mon, 25 Jul 2022 02:06:56 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-13-peterwu.pub@gmail.com>
-In-Reply-To: <20220722102407.2205-13-peterwu.pub@gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 25 Jul 2022 10:55:00 +0200
-Message-ID: <CAHp75VfgiK87VwWu2bTJ_mR0=g0sa0LPJ+H16OGcUdARmzFRSA@mail.gmail.com>
-Subject: Re: [PATCH v6 12/13] leds: flash: mt6370: Add MediaTek MT6370
- flashlight support
-To: ChiaEn Wu <peterwu.pub@gmail.com>
+References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-8-peterwu.pub@gmail.com>
+ <CAHp75VfiKMROzxeEaCH6qCthK9qanJPqbjADLMVH-V0upKf+9Q@mail.gmail.com>
+ <CABtFH5++4N1mECJ0vN-79WsJJWcBTVxLFgvkiouPf1qev7LHHQ@mail.gmail.com> <CAHp75VfKihBLjUFqe_Sj5dqTO7-wjLehAF+9_8-sbUeyJ-ZAmg@mail.gmail.com>
+In-Reply-To: <CAHp75VfKihBLjUFqe_Sj5dqTO7-wjLehAF+9_8-sbUeyJ-ZAmg@mail.gmail.com>
+From: ChiaEn Wu <peterwu.pub@gmail.com>
+Date: Mon, 25 Jul 2022 17:06:20 +0800
+Message-ID: <CABtFH5+LvvcVscRotyRYXhXs1pPkCahbVe0NcSFxC4k_WMMsuQ@mail.gmail.com>
+Subject: Re: [PATCH v6 07/13] mfd: mt6370: Add MediaTek MT6370 support
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
 Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
 	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
@@ -81,8 +81,8 @@ Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.or
 	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_015538_949077_D35311A2 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20220725_020658_899233_E4F40806 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,42 +97,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 22, 2022 at 12:25 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-
-Forgot to add a couple of things...
+On Mon, Jul 25, 2022 at 4:43 PM Andy Shevchenko
+<andy.shevchenko@gmail.com> wrote:
+>
+> ...
+>
+> > > > +#define MT6370_REG_DEV_INFO    0x100
+> > > > +#define MT6370_REG_CHG_IRQ1    0x1C0
+> > > > +#define MT6370_REG_CHG_MASK1   0x1E0
+> > > > +
+> > > > +#define MT6370_VENID_MASK      GENMASK(7, 4)
+> > > > +
+> > > > +#define MT6370_NUM_IRQREGS     16
+> > > > +#define MT6370_USBC_I2CADDR    0x4E
+> > >
+> > > > +#define MT6370_REG_ADDRLEN     2
+> > > > +#define MT6370_REG_MAXADDR     0x1FF
+> > >
+> > > These two more logically to have near to other _REG_* definitions above.
+> >
 
 ...
 
-> +#define MT6370_ITORCH_MIN_UA           25000
-> +#define MT6370_ITORCH_STEP_UA          12500
-> +#define MT6370_ITORCH_MAX_UA           400000
-> +#define MT6370_ITORCH_DOUBLE_MAX_UA    800000
-> +#define MT6370_ISTRB_MIN_UA            50000
-> +#define MT6370_ISTRB_STEP_UA           12500
-> +#define MT6370_ISTRB_MAX_UA            1500000
-> +#define MT6370_ISTRB_DOUBLE_MAX_UA     3000000
+>
+> You lost me. Namespace has a meaning, i.e. grouping items of a kind.
+> In your proposal I don't see that. If REG_MAXADDR and REG_ADDRLEN are
+> _not_ of the _REG_ kind as per above, why do they have this namespace
+> in the first place?
 
-Perhaps _uA would be better and consistent across your series
-regarding current units.
+oh... Sorry, I just got the wrong meaning
+maybe it should be revised like this, right??
+-------------------------------------------------------------------
+#define MT6370_REG_DEV_INFO    0x100
+#define MT6370_REG_CHG_IRQ1    0x1C0
+#define MT6370_REG_CHG_MASK1   0x1E0
+#define MT6370_REG_MAXADDR     0x1FF // Move it to here
 
-...
+#define MT6370_VENID_MASK      GENMASK(7, 4)
 
-> +       /*
-> +        * For the flash to turn on/off, need to wait HW ramping up/down time
+#define MT6370_NUM_IRQREGS     16
+#define MT6370_USBC_I2CADDR    0x4E
 
-we need
+#define MT6370_MAX_ADDRLEN     2    // Rename
+-------------------------------------------------------------------
 
-> +        * 5ms/500us to prevent the unexpected problem.
-> +        */
-> +       if (!prev && curr)
-> +               usleep_range(5000, 6000);
-> +       else if (prev && !curr)
-> +               udelay(500);
-
-This still remains unanswered, why in the first place we allow
-switching, and a busy loop in the other place?
+Thanks!
 
 -- 
-With Best Regards,
-Andy Shevchenko
+Best Regards,
+ChiaEn Wu
 
