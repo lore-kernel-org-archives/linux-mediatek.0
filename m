@@ -4,85 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4CD6C43334
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4DA6CCA473
 	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 08:11:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QXb71uFWhSg39Viv30HgP3y8LahJOu5TtvkjW1YFFmA=; b=q3kJUSrkiqXPa0LPO4v7Z5Y/hj
-	/ST/PhtE9Dhz9CK0CN6WM/KD2f3+18m4xG9mqUq5vAfDulQ1sO+mSL3U/qkawAfGN9uOgG6o5cGEL
-	gaGT03VAPIDN1WQH3xbzD9cxNCiWIOQcqkUMlVXnO95oE0x5mLEkyUp0gG4GJruTTiRZen75UDpYR
-	+iN8LfhkXUPhQ2u+0DVJYoQl0xL+KlzgST7Bf6S7vdnttmNcozRAD7E+1zzSKkUHiNJKyU9NXQt7F
-	4k6+XzjRxmRmN/1E2+GJvOlxHGnHbThj350D9mioRbekflvyctnEPRzrhJ7MIbo0cM4Vs84e5o4Fu
-	vkboyqEA==;
+	bh=sgS7G4WIdtnDmnSkp0zPUYEdHiMILkNEz0hCi5Dlu7Y=; b=Jb1YqIo9SqjxoMXS/y7iob++zl
+	qKudgVCGTYSUEQ+Hr39PfISdx07OWQ5uYwNb8rQD7WPULIp7Lo1aOZiqdMGO+1s58z3dWKSo3feDb
+	/D3kmN+TWw0CToJ8hh1+rLMqPfR0BpCdZRbLxeq67TEGyzoz+izUYot6BUfdSWF8pe2x0LzD9poOJ
+	9HTuJTl+s3RNUbbumxnoJ+4MqGoShcTKwEg+9MnpRoDfVr1R8eszTY9oXtqpTkPyGFh4CsVxhTxwx
+	LeA4JZxhp2idOpQAp0K/pHs3WgVXMjvrcjEZI9kNzOC2iOzKEx4bMsAb34vtdrjKzus2haKHuXBLy
+	r92rTfvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFtBA-006dis-9D; Mon, 25 Jul 2022 08:11:04 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1oFtBB-006dk2-B3; Mon, 25 Jul 2022 08:11:05 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFtAx-006dTI-HB; Mon, 25 Jul 2022 08:10:52 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id os14so19165540ejb.4;
-        Mon, 25 Jul 2022 01:10:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=QXb71uFWhSg39Viv30HgP3y8LahJOu5TtvkjW1YFFmA=;
-        b=gcXWANYd95QqpDZNjT80H5El43Dovr5S0wOb+dj41WF0UAkuUiJDW2NAi4iQ305XFQ
-         lVVKY0C+iGL0p5tVBSniVcX6zLS8O0o42jiM3VHbf3P2PJwPJY9pNrOD5I3tyZyDgnJy
-         d6DIH0u/YAoFuSujbvAgci/gyOOkxjcOa7FgLYcccmWOMRReiJpRQvj8oeNjtzasRz45
-         5wI5mC7zC/KC/unitlCB9w7h7MNbq7bWUvDLO3UqaeZF52Xc40wDLTHrTN6lnrUtKqrq
-         8MOcmmfgBfz1xp4MxADiih/qQe4qXT1ndVyvX9sozOvgmH8wWtATEk7QsOTuHRb8u2m9
-         CtKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=QXb71uFWhSg39Viv30HgP3y8LahJOu5TtvkjW1YFFmA=;
-        b=MvXCiMHZ/CsPstTSmLYnnfpR4al4X+hksf8WFimhOvsNH+2ahDIuHFu2s2KUORS28l
-         yythNj61pYn+5dzKGZQ+h078mfJPiWE5bDm/7AYeTO0IMJjlJsD9v8Wa7j/LeokQ5Xnz
-         aLjdCUfWRLzrJhtVfBI9D0kMAt1JOwGN7ho2K1Rb2Sy4twb7Wv0yWrJ1AXq8mxAEazQn
-         ykwtzPKlY8bRKj/kz03Oc45Y4++sTY4laCW/OtbR/7ypr9WW+AQFvfyvft23DG8xQzOe
-         FJu/EI/kJbLxbqpPzhD5UNBzFrwEZsZA0BuufxYM5+x4V+JCF68MgcLG+vzwG/JPx3sG
-         UdFA==
-X-Gm-Message-State: AJIora8qdK48Bgig2zPpWfTH0rsUbgqFxNg8cy9JB8Tuy/ZYKsnR80Js
-	JSuO4jvJD9GYXp76VLOAP7ARdMnC0jumXqegBCE=
-X-Google-Smtp-Source: AGRyM1vadWdzYb+xBUWIOSQf30AXu6Fkj1TEEjh0wt407LPyY4IeBvhlCzY8/E5xfgCj1T+lP6Op+S0BRvRPn0GRG+I=
-X-Received: by 2002:a17:906:9b09:b0:72b:9612:d373 with SMTP id
- eo9-20020a1709069b0900b0072b9612d373mr8927348ejc.606.1658736649264; Mon, 25
- Jul 2022 01:10:49 -0700 (PDT)
+	id 1oFtB5-006dc2-PT
+	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 08:11:01 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 64C4361191;
+	Mon, 25 Jul 2022 08:10:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42975C341C6;
+	Mon, 25 Jul 2022 08:10:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1658736658;
+	bh=k8xhLHCz3oUMcRpGF3e9jxuqOsueg5bn21ox6JISRtw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ERkoQNPTMPtjz3i79YEcC/+QEV8zRPz+8wYNeH/HzdwVBMtO/zlvbLTm5r7t3f9e6
+	 dAI1eduWKLraH+2FI0+9amVCPTkTD0XWi0pqwgM3YRFhUn/lw8Iw6/T5nMHccj4L46
+	 1LaslxUtAywpmDYW/i9se2SRyJWAARRygJLRFwSMgU3dJXod3qyo7fEUQyc0iOXpZj
+	 0xe9OOJ4EiiaO7IjwykYMxvhajwUbC/aBzxA2YembsyM4sHQy0FbHZdZ6Nss6UjBlx
+	 /n1NNYXde4HvxE2C4qntKNh4OeevB2iaNgRvAmUNjF3CvZQsSdZYEr5ARdU5xBjfSr
+	 yL8UgzakZeyLw==
+Date: Mon, 25 Jul 2022 10:10:55 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: sean.wang@mediatek.com
+Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
+	YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
+	Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com,
+	km.lin@mediatek.com, jenhao.yang@mediatek.com,
+	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
+	ch.yeh@mediatek.com, posh.sun@mediatek.com, ted.huang@mediatek.com,
+	Stella.Chang@mediatek.com, Tom.Chou@mediatek.com,
+	steve.lee@mediatek.com, jsiuda@google.com, frankgor@google.com,
+	kuabhs@google.com, druth@google.com, abhishekpandit@google.com,
+	shawnku@google.com, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/2] mt76: mt7921: add mt7921_mutex_acquire at
+ mt7921_sta_set_decap_offload
+Message-ID: <Yt5QDwm7FNPxj2CM@lore-desk>
+References: <acb86f6ecd2f446e4102a2ef2e7a9c0003ae8b46.1658641200.git.objelf@gmail.com>
+ <02ef9b9464024d2375caf598ae7c6b1e8e8e20de.1658641200.git.objelf@gmail.com>
 MIME-Version: 1.0
-References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-10-peterwu.pub@gmail.com>
-In-Reply-To: <20220722102407.2205-10-peterwu.pub@gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 25 Jul 2022 10:10:12 +0200
-Message-ID: <CAHp75VfRZvYA3HJg=LAxXxu26aLSwRGQaED19Bg2d+dZw3RPfw@mail.gmail.com>
-Subject: Re: [PATCH v6 09/13] iio: adc: mt6370: Add MediaTek MT6370 support
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
-	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="T2kgB8bWfD2P6HT/"
+Content-Disposition: inline
+In-Reply-To: <02ef9b9464024d2375caf598ae7c6b1e8e8e20de.1658641200.git.objelf@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_011051_615480_E79D03DC 
-X-CRM114-Status: GOOD (  15.39  )
+X-CRM114-CacheID: sfid-20220725_011059_924637_2D9CA22E 
+X-CRM114-Status: GOOD (  15.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,58 +83,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 22, 2022 at 12:25 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
->
-> From: ChiaEn Wu <chiaen_wu@richtek.com>
->
-> MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
-> with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
-> driver, display bias voltage supply, one general purpose LDO, and the
-> USB Type-C & PD controller complies with the latest USB Type-C and PD
-> standards.
->
-> Add a support the MT6370 ADC driver for system monitoring, including
 
-support for the
+--T2kgB8bWfD2P6HT/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> charger current, voltage, and temperature.
+> From: Sean Wang <sean.wang@mediatek.com>
+>=20
+> Add mt7921_mutex_acquire at mt7921_[start, stop]_ap to fix the race
+> with the context holding dev->muxtex and the driver might access the
+> device in low power state.
+>=20
+> Fixes: 24299fc869f7 ("mt76: mt7921: enable rx header traslation offload")
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-...
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-> +#define MT6370_AICR_400_mA             0x6
-> +#define MT6370_ICHG_500_mA             0x4
-> +#define MT6370_ICHG_900_mA             0x8
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7921/main.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7921/main.c
+> index 7a4a3ed1817e..0d1b17e439dc 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> @@ -1404,6 +1404,8 @@ static void mt7921_sta_set_decap_offload(struct iee=
+e80211_hw *hw,
+>  	struct mt7921_sta *msta =3D (struct mt7921_sta *)sta->drv_priv;
+>  	struct mt7921_dev *dev =3D mt7921_hw_dev(hw);
+> =20
+> +	mt7921_mutex_acquire(dev);
+> +
+>  	if (enabled)
+>  		set_bit(MT_WCID_FLAG_HDR_TRANS, &msta->wcid.flags);
+>  	else
+> @@ -1411,6 +1413,8 @@ static void mt7921_sta_set_decap_offload(struct iee=
+e80211_hw *hw,
+> =20
+>  	mt76_connac_mcu_sta_update_hdr_trans(&dev->mt76, vif, &msta->wcid,
+>  					     MCU_UNI_CMD(STA_REC_UPDATE));
+> +
+> +	mt7921_mutex_release(dev);
+>  }
+> =20
+>  #if IS_ENABLED(CONFIG_IPV6)
+> --=20
+> 2.25.1
+>=20
 
-^^^^ (Note this and read below)
+--T2kgB8bWfD2P6HT/
+Content-Type: application/pgp-signature; name="signature.asc"
 
-...
+-----BEGIN PGP SIGNATURE-----
 
-> +               reg_val = FIELD_GET(MT6370_AICR_ICHG_MASK, reg_val);
-> +               if (reg_val < MT6370_AICR_400_mA)
-> +                       *val1 = 3350;
-> +               else
-> +                       *val1 = 5000;
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYt5QDgAKCRA6cBh0uS2t
+rKDLAQDJSgEuAPWrrbsgIEDAYgBeimgvB7ya5R5qpINHW7/l4AEA1NTpWRg/Etb2
+WZQokgeN6fjZjd37BcXID/UgyUe3bgs=
+=wWb+
+-----END PGP SIGNATURE-----
 
-Here...
-
-...
-
-> +               if (reg_val < MT6370_ICHG_500_mA)
-> +                       *val1 = 2375;
-> +               else if (reg_val >= MT6370_ICHG_500_mA &&
-> +                        reg_val < MT6370_ICHG_900_mA)
-> +                       *val1 = 2680;
-> +               else
-> +                       *val1 = 5000;
-
-...and especially here it is so counterintuitive to have an if-else
-chain because the values are not ordered by semantic meaning.
-
-What if the new standard/hardware decides to use 0x7 for 100mA (hypothetically)?
-
-So, please use switch cases or other robust methods.
-
--- 
-With Best Regards,
-Andy Shevchenko
+--T2kgB8bWfD2P6HT/--
 
