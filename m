@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31287C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 10:36:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47BEAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 10:42:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jzy+/rqWIUjeQ4VZkRw1iKom7okmH6/KiTaF3FBcIjY=; b=1j25Tgr8MZHvOUO6htc7wMLCcp
-	jlafP+HuRC85QEeBENYJUpe3Nx6yGhTBN01b2dYshTRwDa6EgTw9D/B+3cGoGozgbrajgaQaC7i9D
-	cdDEzuVQd13lh8KC+e7SHw8V+v4007fcP1p3/XFSoJRFNCNV0lcQqfW6D1lFziU1GmczN/JrGXHXA
-	70x09fwox8fW9q1urh3pN5z4RcOOToPlUUFoum81qhz/83cRSCPFc94mug/VuZlQevEtXVLUYQMWD
-	XXvVhtqfOViJhuiF4HEJH5RHjSBI/JlergOpDdlLwRyn8Fd/wpgNXOyntL/GHua81Ka5fdbJKJ9eb
-	zQWhr2Dw==;
+	bh=fllp2T0Fy7FDFsY2BODmviSm5/RppXQueTySbPy9xTM=; b=fCxyfZAPEicjp06ww5HX36Lh9N
+	NPfmlemsDZg4MMtTEgEcrLjcJp9Iv7jY1XRagsoOx4xDxOo3hFJMKClE3jYV2ZMLjsNl3PIYEKBxv
+	g6yllB+ffQeAHarKuQ71FR6GZJRHhNZGVh4ajsJSkvQkRqVro1qEZyDgaDK+yxGwiQtOpzoSATF94
+	d23Zc1k/lsZWJzucbpo8/uQekSFPTJeWHAgxXVQkz7pIGcPkBwrCAhhMvuTFDjf9ge9pKm/QCs6RW
+	YRVZ+SUneoqf3ciMpoqd2VBgr0KPqwGGMLaYrhVzkFJ3aINYs5Sz5mANfRnNII1PYolz9GL1ET4wd
+	hC/2LB0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFvRx-008JWj-Ej; Mon, 25 Jul 2022 10:36:33 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oFvXQ-008NQf-Pq; Mon, 25 Jul 2022 10:42:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFvRQ-008JLM-DW; Mon, 25 Jul 2022 10:36:01 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 817D266015E7;
-	Mon, 25 Jul 2022 11:35:58 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658745359;
-	bh=jEQh6kA6cG5l8Za0dnxbvc3C991fy8Px0Uzw5Xq3bXY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iRyB95T2NEuTF+YHchnVkWaT9MeJrFWEHlwRmXCxBg5+S9wJrJh3SMNo783Om/Xqe
-	 LVWzCV4wsoRfy8I14Es5TDCugvgxzCDsKGU3SBC4vkPU3kdAlRvw7NCiXSOOtG6S9h
-	 iQY3DN8sTKYurDBZm4dU+5BNlE4BrVeN57GJ6bJsB+CVB3aAO6JMWWhovVxR6SJE9+
-	 B1/HL7WcKcDov3k/YeUO+ZdADFx8Fl69dNGc295BHPsRhx0a1NEdiSG+f+5vyv/aHD
-	 6Y2PoP6kxMLtMqls0LmziKVJYxmI8VNX+TflvUipBzGoi7imrdfVKMOskR7cFVKyke
-	 7v9TE6FJrgfdg==
-Message-ID: <6a36c425-ca49-c7ec-69cd-f79dcce5bedc@collabora.com>
-Date: Mon, 25 Jul 2022 12:35:56 +0200
+	id 1oFvXO-008NNt-9x; Mon, 25 Jul 2022 10:42:11 +0000
+X-UUID: 84f20832325c470a8b77e0f1f9bdceda-20220725
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:01deb6af-bd65-4f39-b30f-a7a875763f4e,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:0f94e32,CLOUDID:9b2ae0d3-912a-458b-a623-74f605a77e93,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 84f20832325c470a8b77e0f1f9bdceda-20220725
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 966429852; Mon, 25 Jul 2022 03:42:05 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 25 Jul 2022 17:51:11 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 25 Jul 2022 17:51:11 +0800
+Message-ID: <f0c930400e4a5b3723df2d257cc4bc51ee7a2806.camel@mediatek.com>
+Subject: Re: [PATCH v14 06/10] drm/mediatek: Add MT8195 External DisplayPort
+ support
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Mon, 25 Jul 2022 17:51:11 +0800
+In-Reply-To: <20220712111223.13080-7-rex-bc.chen@mediatek.com>
+References: <20220712111223.13080-1-rex-bc.chen@mediatek.com>
+	 <20220712111223.13080-7-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 1/2] dt-bindings: pinctrl: mt8186: Add gpio-line-names
- property
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>
-References: <20220725100253.10687-1-allen-kh.cheng@mediatek.com>
- <20220725100253.10687-2-allen-kh.cheng@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220725100253.10687-2-allen-kh.cheng@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_033600_615860_3A616939 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20220725_034210_389853_09EF2484 
+X-CRM114-Status: GOOD (  16.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,30 +86,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/07/22 12:02, Allen-KH Cheng ha scritto:
-> Add the 'gpio-line-names' property to mt8186-pinctrl, as this will be
-> used in devicetrees to describe pin names.
+Hi, Bo-Chen:
+
+On Tue, 2022-07-12 at 19:12 +0800, Bo-Chen Chen wrote:
+> From: Guillaume Ranquet <granquet@baylibre.com>
 > 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+> This patch adds External DisplayPort support to the mt8195 eDP
+> driver.
+> 
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 > ---
->   Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
-> index 8a2bb8608291..6784885edc5c 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
-> @@ -28,6 +28,8 @@ properties:
->     gpio-ranges:
->       maxItems: 1
->   
-> +  gpio-line-names: true
+
+[snip]
+
+> @@ -1489,13 +1543,34 @@ static int mtk_dp_init_port(struct mtk_dp
+> *mtk_dp)
+>  static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+>  {
+>  	struct mtk_dp *mtk_dp = dev;
+> +	int event;
 > +
->     reg:
->       description: |
->         Physical address base for gpio base registers. There are 8 different GPIO
+> +	event = mtk_dp_plug_state(mtk_dp) ?
+> +		connector_status_connected :
+> connector_status_disconnected;
+> +
+> +	if (event < 0)
+> +		return IRQ_HANDLED;
+
+event is useless, so drop it.
+
+Regards,
+CK
+
+> +
+> +	dev_dbg(mtk_dp->dev, "drm_helper_hpd_irq_event\n");
+> +	drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
+>  
+>  	if (mtk_dp->train_info.cable_state_change) {
+>  		mtk_dp->train_info.cable_state_change = false;
+>  
+> -		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+> -				   DP_PWR_STATE_BANDGAP_TPLL_LANE,
+> -				   DP_PWR_STATE_MASK);
+> +		if (!mtk_dp->train_info.cable_plugged_in) {
+> +			mtk_dp_video_mute(mtk_dp, true);
+> +
+> +			mtk_dp_initialize_priv_data(mtk_dp);
+> +			mtk_dp_set_idle_pattern(mtk_dp, true);
+> +
+> +			mtk_dp_update_bits(mtk_dp,
+> MTK_DP_TOP_PWR_STATE,
+> +					   DP_PWR_STATE_BANDGAP_TPLL,
+> +					   DP_PWR_STATE_MASK);
+> +		} else {
+> +			mtk_dp_update_bits(mtk_dp,
+> MTK_DP_TOP_PWR_STATE,
+> +					   DP_PWR_STATE_BANDGAP_TPLL_LA
+> NE,
+> +					   DP_PWR_STATE_MASK);
+> +		}
+>  	}
+>  
+>  	if (mtk_dp->train_info.irq_sta.hpd_inerrupt) {
+> @@ -1597,6 +1672,24 @@ static int mtk_dp_dt_parse(struct mtk_dp
+> *mtk_dp,
+>  	return 0;
+>  }
+>  
 
 
