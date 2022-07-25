@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B2B0CCA48A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 22:23:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59E53C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 22:25:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NziihmKhvTDMxLR3TeAOkHUMxBmt4TMUH7DKcZSQRks=; b=OAc5gX2ST+ntCzrEYTGJRgSebw
-	HjsDN5AYDG/o1MDaTQFNfyZPw2oWZ7JrlV3HKABtQsNxOw39xllIHS7q9tkAZUt1LfWfPICboroDC
-	mt2DcnT4+SKYF0kenSjWB+SRNaCqtuDNl/4/LHSwZxxSoeG83zNLQuonDkHD37BF7OV3ummQuZsR3
-	YEoUWdnc0sX8XLijgXEDYS5flpYTPbc0m7uU1qoOCpAM3KZmfRQ8pfNfTYXg/l0LYgoR5csIEa7PX
-	w6uDkpicRl8EGj+uxvRhNBi+r5ys8wAKQ75s05u3Mvg7kgcPrzakTYfTrbbmiMBsv8xhK+kTvnNeu
-	xefXCNqQ==;
+	bh=4lnMpoZb+qHkuYn7ZnPpjURPzGmFuQzUhlPQ6dAnI2E=; b=Hm8aUjP5EjYVTOv5j8u/1sCm72
+	LzT1zZA9qfLQtbfN0cbo6/xNncirgCFtDqNw9Yil7193Jim2OnvoLoiK40ZWjOmZZOxoiQcsZkxyJ
+	eq2U0LhwuVkExrU0IapxqhaKMDu/nwJqjci26hcPitIl+Aeelf1uvvNKgF9n+XjrdLZQkhkoWrSIQ
+	VI5ctRXDJ6tPqEzoMpfnCDhFh5j9sJSEgS/hg6gghTuCwvZwxjB1NF54mn5yF1dlVIo8zy5bzEoxt
+	BROr8S2ckw0cpikVt17bTs6+kMDszc8BCW5xagLwAxr/EkLe3RFTwZ3vAWQnRiKDfY8+2Zw4Hnpwz
+	2Abbv+EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG6TX-0039Oo-Hy; Mon, 25 Jul 2022 22:22:55 +0000
-Received: from mail-oi1-f172.google.com ([209.85.167.172])
+	id 1oG6Vh-003ATY-O4; Mon, 25 Jul 2022 22:25:09 +0000
+Received: from mail-oi1-f176.google.com ([209.85.167.176])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG6TK-0039Hy-M4; Mon, 25 Jul 2022 22:22:43 +0000
-Received: by mail-oi1-f172.google.com with SMTP id bb16so15126534oib.11;
-        Mon, 25 Jul 2022 15:22:41 -0700 (PDT)
+	id 1oG6VT-003AKl-Pk; Mon, 25 Jul 2022 22:24:57 +0000
+Received: by mail-oi1-f176.google.com with SMTP id w188so10964108oiw.8;
+        Mon, 25 Jul 2022 15:24:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=NziihmKhvTDMxLR3TeAOkHUMxBmt4TMUH7DKcZSQRks=;
-        b=j+bB9xk2AappjXSHPV+VltG7SLdZ2RZc4ePRGogMqdQ70+abVdhewlA5xUzbo154YE
-         KTBvJqcbQA8OTtM2RgyIOELaBGAhahaQk3otTpWgqL5hHaKdzGj1M30MniOb3HnfLbaT
-         xzTNYt0EkCYSqZ/4jRXzuorlSs2qhYbLKGZZhm9CiMo940Lpb7XIVQAhYKGCUDCiMSFb
-         3kGKsOW+I2YD7Z471wp/XsWwq34lL93XQPH/wUaf/UlJPQAwZOaTPpW3IvgZ8GHDUZgb
-         QSodNiwcNJ/LLHyl8EL/b5J2uD83Nu/PFK9P/P9flAead5YhM9QsV8iawwHxipvg9W/b
-         BKBQ==
-X-Gm-Message-State: AJIora/YPvmdU0Zr/rw7NjR32N1Mfs7LZ7aIMvQESY2ELCQlK3nEgL6S
-	PsFKbzZovRgaNMZe48Ttvg==
-X-Google-Smtp-Source: AGRyM1sz3dyj2N3SvoH/2VVg7xnC3nkGgiFx3lU6Jf9MNXRwmoKmqVAoAxFgjKg1QYLt513rHFbMlg==
-X-Received: by 2002:aca:3441:0:b0:33a:7941:bb07 with SMTP id b62-20020aca3441000000b0033a7941bb07mr13816883oia.199.1658787760722;
-        Mon, 25 Jul 2022 15:22:40 -0700 (PDT)
+        bh=4lnMpoZb+qHkuYn7ZnPpjURPzGmFuQzUhlPQ6dAnI2E=;
+        b=d1RVXVx5JGs4x9JBi9/VVnAOfKQksMc30noFyaDVDNhzrTPe+wx9UF8H4XhE+7Iqnr
+         +33GGA2yPff6nkfbjf1weDAuXpLjeo1rm2vQ+aZx5voG9BXKVE2KZQXsHVFuGZcH4StZ
+         WcG/bFHCBEgKBmfdUTPoHuAPmzUZx/bmmGW/iR/HMxynB/DWvzHzlL9rBzyPCDhiQzEL
+         Uw2PhQz0JWjUT/tcOUnTePPW23Lb07X+Sk42cbmrp3eTNGyaG0dpdujG46GQ+LScrPQM
+         HlRCm34G8/ZyIiFhSCO8FYUdq7Eeu5Me3qbNptTvV0Rca/t/8aHjmyQ6jEQwXT+OTfMv
+         GwMQ==
+X-Gm-Message-State: AJIora+NoZlN0rzzUZbGTd22IeWGEb8PAH1ZfatjE1w6PDOZxOf8ZU77
+	Wug1SX7mNIsDz2qtYRjDBg==
+X-Google-Smtp-Source: AGRyM1vAofLtAEFQzPOgCv9X/fCj3FwcSwZCkPVppTY/bmRdoY/U3iOTun0xg2e24/o3pIP7hHNcIg==
+X-Received: by 2002:a54:458b:0:b0:33a:74a7:4271 with SMTP id z11-20020a54458b000000b0033a74a74271mr6389250oib.287.1658787893762;
+        Mon, 25 Jul 2022 15:24:53 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id t18-20020a9d7f92000000b00616f2680487sm5475632otp.34.2022.07.25.15.22.38
+        by smtp.gmail.com with ESMTPSA id l6-20020a05687040c600b0010c5005d427sm6639754oal.33.2022.07.25.15.24.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Jul 2022 15:22:40 -0700 (PDT)
-Received: (nullmailer pid 2849371 invoked by uid 1000);
-	Mon, 25 Jul 2022 22:22:37 -0000
-Date: Mon, 25 Jul 2022 16:22:37 -0600
+        Mon, 25 Jul 2022 15:24:53 -0700 (PDT)
+Received: (nullmailer pid 2853362 invoked by uid 1000);
+	Mon, 25 Jul 2022 22:24:51 -0000
+Date: Mon, 25 Jul 2022 16:24:51 -0600
 From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: sboyd@kernel.org, mturquette@baylibre.com, wenst@chromium.org, nfraprado@collabora.com, krzysztof.kozlowski+dt@linaro.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, chun-jie.chen@mediatek.com, robh+dt@kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, rex-bc.chen@mediatek.com, p.zabel@pengutronix.de
-Subject: Re: [PATCH 1/2] dt-bindings: reset: mt8195: Add resets for USB/PCIe
- t-phy port 1
-Message-ID: <20220725222237.GA2849337-robh@kernel.org>
-References: <20220720102817.237483-1-angelogioacchino.delregno@collabora.com>
- <20220720102817.237483-2-angelogioacchino.delregno@collabora.com>
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Lee Jones <lee.jones@linaro.org>, MandyJH Liu <mandyjh.liu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Project_Global_Chrome_Upstream_Group@mediatek.com, linux-mediatek@lists.infradead.org, iommu@lists.linux.dev
+Subject: Re: [PATCH v3 05/21] dt-bindings: power: mediatek: Update maintainer
+ list
+Message-ID: <20220725222451.GA2853305-robh@kernel.org>
+References: <20220720123023.13500-1-tinghan.shen@mediatek.com>
+ <20220720123023.13500-6-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220720102817.237483-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220720123023.13500-6-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_152242_738658_6815D598 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220725_152455_856098_6FFD5E28 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,14 +78,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 20 Jul 2022 12:28:16 +0200, AngeloGioacchino Del Regno wrote:
-> Add the reset index for USBSIF P1 (T-PHY port 1), used as either USB
-> or PCI-Express PHY reset.
+On Wed, 20 Jul 2022 20:30:07 +0800, Tinghan Shen wrote:
+> Update the maintainer list of power controller binding.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 > ---
->  include/dt-bindings/reset/mt8195-resets.h | 1 +
->  1 file changed, 1 insertion(+)
+>  .../devicetree/bindings/power/mediatek,power-controller.yaml    | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 
 Acked-by: Rob Herring <robh@kernel.org>
