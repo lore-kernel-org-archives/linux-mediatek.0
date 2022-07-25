@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C022C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 10:43:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E09E5CCA473
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 10:45:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Mlf9EhHZTQ/FtMgVi3agYyshvZ5HElxir68bzNQOyhI=; b=Km+6tN1XBk5D9xirQ9qe43R3EE
-	/343DeGmBkVl8mt6v2sNojefoGjgSJCb+VzqQ5h2dozSH3BsnNItWHYg1lnXzO7BFHbC4+u0a3PV0
-	v/I/fjxst7GPnyKveU3KpCL/WzZO5PxXJZpdNOiEmNGYgJQgzIvESSQdWoljouYWAGybRu8OpBRl6
-	pvKOHv8SWBvEy9yNYhJ9ovLC2KeGhpb4/vcpztV6qB4USkWe577Sd3eE+lMRHq84qd3H6CwhO9rw5
-	zRHUeqU9PV73HIGwBoQ33sugwxqHcoyFhR9hH4QXiJTdCSTUPe97TeUX5xR22p7TKcbFsquZkgYAC
-	2kGdREQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=F1Wh6MbofPDcjdJvO5IFaKO/tiY/mOSAXYz5Qaq5dP8=; b=wHI0AYjDkQ2mCxfCuo87PNv0Fq
+	0cVRlWAYt+jVtXAuHh19vbOrhL3C2aKUgmwLjXGnmQet8R8zQT0bQ7R6qmPOCFwIYQAqobKO1Fx7D
+	q0VDqoaO0YpIyllAc7br3jn4MiO9227iASm23dJsf9ltpMCR7q1rHMwsliZl8IxCnZMoPL7bt4Iyk
+	ncBK1iezNg2HI2LRD8a3W13Ss3ymWnZBxz65iIofwlyA+s+iT1F2syv1qdjujktRWZeTCaNyP1jnE
+	uMHBOIXBVkHhihJBnDjqEEK1J0oK2y7nZw1HqtMskq6n9ro+nxgEP5kUuC8a3Vtf6sm6Y9vbWHFK8
+	XKnnnYIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFvYz-008OMp-4e; Mon, 25 Jul 2022 10:43:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oFva3-008P8o-L1; Mon, 25 Jul 2022 10:44:55 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFvYw-008OIB-6K; Mon, 25 Jul 2022 10:43:47 +0000
-X-UUID: b5688110e44a41d2b1051334301a92d7-20220725
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:4f097210-4fb1-4819-8aa0-67f98d62ea44,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:0f94e32,CLOUDID:6bbac229-fd69-41f1-91fc-8b8a329d3a88,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: b5688110e44a41d2b1051334301a92d7-20220725
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 775712362; Mon, 25 Jul 2022 03:43:38 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 25 Jul 2022 18:03:02 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 25 Jul 2022 18:03:02 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-CC: <angelogioacchino.delregno@collabora.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	"Chen-Yu Tsai" <wenst@chromium.org>, Allen-KH Cheng
-	<allen-kh.cheng@mediatek.com>
-Subject: [PATCH 0/2] MT8186 pinctrl properties adjustments
-Date: Mon, 25 Jul 2022 18:02:51 +0800
-Message-ID: <20220725100253.10687-1-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oFva1-008P5t-AP
+	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 10:44:54 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9A1886601ABA;
+	Mon, 25 Jul 2022 11:44:50 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658745891;
+	bh=fOWPnsIMKc3cDjDnNmAoOPpcjVUIo0Nn5r1oaX8r5HA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cNv7NE9Nyps8hTGkGbK8I5oDY2lg+ueWA/aVOx2E389XIk6How3h426jqjgpKXIgq
+	 HRbU3sN16lhDvUYfzSeac/ePi5GufH8AC56lkokjUFULVj2SLUq1tLdBDHeAx/m/Yt
+	 W1DlX5xEAmWZF/o6ovXLYFem6vGgSu12luYyWQ/AQSOhRI6jxf7LO3W8qcUWe69JKP
+	 N0dy8/6JZ/MImMAVB3P1lmLCnE6Gv8jKh7eUUR2elZz+oyydWdmRmvw1RVtI89cjwK
+	 P+mjXCZNOulA1ugdq0oI56dHKeCMQNYNX1t4eiRNLk8OHQMRfrj9CdvIlDkFp7Q53r
+	 PNtDwz5QA/r+w==
+Message-ID: <03bf9014-e47f-32fc-4ee1-5fc4a4d381e4@collabora.com>
+Date: Mon, 25 Jul 2022 12:44:48 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 1/2] mt76: mt7921: add mt7921_mutex_acquire at
+ mt7921_[start, stop]_ap
+Content-Language: en-US
+To: sean.wang@mediatek.com, nbd@nbd.name, lorenzo.bianconi@redhat.com
+Cc: Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
+ Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
+ jenhao.yang@mediatek.com, robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
+ ch.yeh@mediatek.com, posh.sun@mediatek.com, ted.huang@mediatek.com,
+ Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, steve.lee@mediatek.com,
+ jsiuda@google.com, frankgor@google.com, kuabhs@google.com, druth@google.com,
+ abhishekpandit@google.com, shawnku@google.com,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <acb86f6ecd2f446e4102a2ef2e7a9c0003ae8b46.1658641200.git.objelf@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <acb86f6ecd2f446e4102a2ef2e7a9c0003ae8b46.1658641200.git.objelf@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_034346_256447_2BDA45FA 
-X-CRM114-Status: UNSURE (   7.12  )
+X-CRM114-CacheID: sfid-20220725_034453_525539_9B5ED858 
+X-CRM114-Status: UNSURE (   8.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,25 +82,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Based on tag: next-20220720, linux-next/master.
+Il 24/07/22 10:58, sean.wang@mediatek.com ha scritto:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> Add mt7921_mutex_acquire at mt7921_[start, stop]_ap to fix the race
+> with the context holding dev->muxtex and the driver might access the
+> device in low power state.
+> 
+> Fixes: 9d958b60ebc2 ("mt76: mt7921: fix command timeout in AP stop period")
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-In commit e5fabbe43f3f ("pinctrl: mediatek: paris: Support generic
-PIN_CONFIG_DRIVE_STRENGTH_UA"), added support for using
-drive-strength-microamp instead of mediatek,drive-strength-adv.
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-We replace the custom mediatek,drive-strength-adv property with
-'drive-strength-microamp' in the mt8186 pinctrl dt-binding which
-have a clearer meaning and is more standardized, also add
-gpio-line-names property used in devicetrees to describe pin names.
-
-Allen-KH Cheng (2):
-  dt-bindings: pinctrl: mt8186: Add gpio-line-names property
-  dt-bindings: pinctrl: mt8186: Add and use drive-strength-microamp
-
- .../bindings/pinctrl/pinctrl-mt8186.yaml      | 31 +++----------------
- 1 file changed, 5 insertions(+), 26 deletions(-)
-
--- 
-2.18.0
-
+(P.S.: I agree with Lorenzo's nits.)
 
