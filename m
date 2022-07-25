@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59E53C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 22:25:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E628EC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 22:28:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4lnMpoZb+qHkuYn7ZnPpjURPzGmFuQzUhlPQ6dAnI2E=; b=Hm8aUjP5EjYVTOv5j8u/1sCm72
-	LzT1zZA9qfLQtbfN0cbo6/xNncirgCFtDqNw9Yil7193Jim2OnvoLoiK40ZWjOmZZOxoiQcsZkxyJ
-	eq2U0LhwuVkExrU0IapxqhaKMDu/nwJqjci26hcPitIl+Aeelf1uvvNKgF9n+XjrdLZQkhkoWrSIQ
-	VI5ctRXDJ6tPqEzoMpfnCDhFh5j9sJSEgS/hg6gghTuCwvZwxjB1NF54mn5yF1dlVIo8zy5bzEoxt
-	BROr8S2ckw0cpikVt17bTs6+kMDszc8BCW5xagLwAxr/EkLe3RFTwZ3vAWQnRiKDfY8+2Zw4Hnpwz
-	2Abbv+EQ==;
+	bh=QsZxY3x/h1CKG5QnfFuRHQidpNEdsOaAbN7HUlphdhs=; b=ACAtOKEU8g+1SyhVk2G+jM9hgg
+	ZKa/sPuK99AsloY6pf6x5P0J5R/BETgI5BDLuEM5d5ej4JKAG67F/q2isxfV8oyOB7F1hVscN0jd2
+	tlCJ4s6V+/IBfbN2UbxmABQ62KQns4j98tqGx5J3fgKgaPFqluBWu9ntGWc2PrNv+ciFIiFsAuCYX
+	wBJMzDncCP9iiBnwWQgD/oM7EO8ITNCXSubji+WKz8v9/89lJAp2s5D+G9IX5GHd4p+b27CiEqUNe
+	dF59fkx32QhhNKqcNg4Z4bqBWNHJCjLBMfZRdStbpIKnMKOD+yBsFhMjHUIHKn+XEGvbuz/W63itG
+	wLkkxblQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG6Vh-003ATY-O4; Mon, 25 Jul 2022 22:25:09 +0000
-Received: from mail-oi1-f176.google.com ([209.85.167.176])
+	id 1oG6YS-003CAU-91; Mon, 25 Jul 2022 22:28:00 +0000
+Received: from mail-oa1-f42.google.com ([209.85.160.42])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG6VT-003AKl-Pk; Mon, 25 Jul 2022 22:24:57 +0000
-Received: by mail-oi1-f176.google.com with SMTP id w188so10964108oiw.8;
-        Mon, 25 Jul 2022 15:24:54 -0700 (PDT)
+	id 1oG6YD-003Byk-P1; Mon, 25 Jul 2022 22:27:46 +0000
+Received: by mail-oa1-f42.google.com with SMTP id 586e51a60fabf-f2a4c51c45so16580914fac.9;
+        Mon, 25 Jul 2022 15:27:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=4lnMpoZb+qHkuYn7ZnPpjURPzGmFuQzUhlPQ6dAnI2E=;
-        b=d1RVXVx5JGs4x9JBi9/VVnAOfKQksMc30noFyaDVDNhzrTPe+wx9UF8H4XhE+7Iqnr
-         +33GGA2yPff6nkfbjf1weDAuXpLjeo1rm2vQ+aZx5voG9BXKVE2KZQXsHVFuGZcH4StZ
-         WcG/bFHCBEgKBmfdUTPoHuAPmzUZx/bmmGW/iR/HMxynB/DWvzHzlL9rBzyPCDhiQzEL
-         Uw2PhQz0JWjUT/tcOUnTePPW23Lb07X+Sk42cbmrp3eTNGyaG0dpdujG46GQ+LScrPQM
-         HlRCm34G8/ZyIiFhSCO8FYUdq7Eeu5Me3qbNptTvV0Rca/t/8aHjmyQ6jEQwXT+OTfMv
-         GwMQ==
-X-Gm-Message-State: AJIora+NoZlN0rzzUZbGTd22IeWGEb8PAH1ZfatjE1w6PDOZxOf8ZU77
-	Wug1SX7mNIsDz2qtYRjDBg==
-X-Google-Smtp-Source: AGRyM1vAofLtAEFQzPOgCv9X/fCj3FwcSwZCkPVppTY/bmRdoY/U3iOTun0xg2e24/o3pIP7hHNcIg==
-X-Received: by 2002:a54:458b:0:b0:33a:74a7:4271 with SMTP id z11-20020a54458b000000b0033a74a74271mr6389250oib.287.1658787893762;
-        Mon, 25 Jul 2022 15:24:53 -0700 (PDT)
+        bh=QsZxY3x/h1CKG5QnfFuRHQidpNEdsOaAbN7HUlphdhs=;
+        b=nHqhBj23+KiKXQNu8mNYoBCt6s3v+/nqYh4DqhUh2gAuBa01birCTLRfcP2QKXmOz/
+         SDktasa6bF8qdsMvNp32rK2xJ++EkDIDBMHz7a1cDc5smFbVPDeqi8QqgKutuhrEpC1R
+         JKOBPH8OOE7wUreoN9X7FqxLKvpOinCN9Bt2xoxNScAEVtWfThHN/nhyvCMEn4Nl0i2X
+         2Q6eEObxLnyeCWeaQsKwZS1UIrscuW0pSaZ2OUULbX51FlJiswbie/1LdU7QEKym7Y3D
+         vKoC9YLx7PedWQGrViUF97+5+uExEn+xokyoqpv1lKj5O1CZWxYslcf/6/1cMfqKEoEw
+         epVg==
+X-Gm-Message-State: AJIora/V/tQ4ntpBdmb1rU82WulIe5P86iAQdmLv+ZVn9KvaEJG2ms5r
+	6uLkoa+mzpjc7bTkDBqAgg==
+X-Google-Smtp-Source: AGRyM1v4h7huPKooJcptUd4mgfbYV6YVP5u+QrfqMD0TJGGQYRQ6gM2Hy7kwEq6HK0U37c9/yjzedw==
+X-Received: by 2002:a05:6870:d79d:b0:10d:ab03:b59 with SMTP id bd29-20020a056870d79d00b0010dab030b59mr6935961oab.39.1658788065042;
+        Mon, 25 Jul 2022 15:27:45 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id l6-20020a05687040c600b0010c5005d427sm6639754oal.33.2022.07.25.15.24.51
+        by smtp.gmail.com with ESMTPSA id p28-20020a056870831c00b0010c727a3c79sm6607396oae.26.2022.07.25.15.27.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Jul 2022 15:24:53 -0700 (PDT)
-Received: (nullmailer pid 2853362 invoked by uid 1000);
-	Mon, 25 Jul 2022 22:24:51 -0000
-Date: Mon, 25 Jul 2022 16:24:51 -0600
+        Mon, 25 Jul 2022 15:27:44 -0700 (PDT)
+Received: (nullmailer pid 2857915 invoked by uid 1000);
+	Mon, 25 Jul 2022 22:27:42 -0000
+Date: Mon, 25 Jul 2022 16:27:42 -0600
 From: Rob Herring <robh@kernel.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Lee Jones <lee.jones@linaro.org>, MandyJH Liu <mandyjh.liu@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Project_Global_Chrome_Upstream_Group@mediatek.com, linux-mediatek@lists.infradead.org, iommu@lists.linux.dev
-Subject: Re: [PATCH v3 05/21] dt-bindings: power: mediatek: Update maintainer
- list
-Message-ID: <20220725222451.GA2853305-robh@kernel.org>
-References: <20220720123023.13500-1-tinghan.shen@mediatek.com>
- <20220720123023.13500-6-tinghan.shen@mediatek.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, angelogioacchino.delregno@collabora.com, Krzysztof Kozlowski <krzk+dt@kernel.org>, nfraprado@collabora.com, Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Guenter Roeck <linux@roeck-us.net>, Wim Van Sebroeck <wim@linux-watchdog.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 1/4] dt-binding: mediatek: watchdog: Fix compatible
+ fallbacks and example
+Message-ID: <20220725222742.GA2857882-robh@kernel.org>
+References: <20220720125015.13797-1-allen-kh.cheng@mediatek.com>
+ <20220720125015.13797-2-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220720123023.13500-6-tinghan.shen@mediatek.com>
+In-Reply-To: <20220720125015.13797-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_152455_856098_6FFD5E28 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20220725_152745_833706_F64F8B59 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,13 +78,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 20 Jul 2022 20:30:07 +0800, Tinghan Shen wrote:
-> Update the maintainer list of power controller binding.
+On Wed, 20 Jul 2022 20:50:12 +0800, Allen-KH Cheng wrote:
+> The watchdog timer of mt8186. mt8195 and mt7986 have their DT data.
+> We should not use 'mediatek,mt6589-wdt' as fallback.
 > 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> For mediatek,wdt example of mt8183, We remove mediatek,mt6589-wdt fallback.
+> 
+> Fixes:a45b408a020b("dt-bindings: watchdog: Add compatible for MediaTek MT8186")
+> Fixes:b326f2c85f3d("dt-bindings: watchdog: Add compatible for Mediatek MT8195")
+> Fixes:41e73feb1024("dt-bindings: watchdog: Add compatible for Mediatek MT7986")
+> Fixes:f43f97a0fc0e("dt-bindings: mediatek: mt8183: Add #reset-cells")
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 > ---
->  .../devicetree/bindings/power/mediatek,power-controller.yaml    | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 9 ++++-----
+>  1 file changed, 4 insertions(+), 5 deletions(-)
 > 
 
 Acked-by: Rob Herring <robh@kernel.org>
