@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65D24C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 09:55:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90A41C43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 09:58:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KcNSEWkC2ObbCcqGES1sveqUUTgBHw+AvKGapbS2u3c=; b=UMlHMeqZtTvEp9+K2OYiDqfQj5
-	qr9RcXb/YQ6QJfk1DosmcIg61yJh2k7EnAjhFsO+wJZq5d5rDoBT8wK4+x/4WxDZgiuCj1I5mp5kc
-	hJIwwJOxXokg7NHq4OuBQoSVjq/LnWleglAG5SYiq/5XBQVV6O7SPUNTw5G+MeSNVuTlw3mDy1Fbg
-	UOt4Gx/ikvdL9Bw6ssKzAHXoLgNYURtrUlCHobZzwAf0IDa4f8i9eiQCzWZ3iIbO68fXjQ/Je7Jti
-	nq8yMsTAwy+eznkB5fuJPLAOymPC0TWANRk6Do8TNi7VDtpwgOYk43vDZj9bf07UyTcb6UIN4+3N7
-	R/dC3H6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VQbkePjTZTGBHhHNdPkVayN1pzQM5oP8jjbvr/Dc6xc=; b=riKcAwjh3xzoaOdPW2ijwvh/AU
+	IHlPJOA5Z8R1MaKJFbpIybW69ydGsVMJchfhg7WdC7U5KipN5q12mbWUNyz7KOCQ0PfQy3ySPVjjL
+	jY5hliNzDwHqITuhEBbULXMTPhaqb8CdRjyQw8ulJrNOWERompVU2jR+7jJ3VYbg6GVFVHgVsKjVS
+	oLSHIkCTcJSbHK5rI+O08sULEDlVPig1hsogfkfz2+BUs9tLY+auEkg7JTGowkxxoNvKY7RDHtbRe
+	HulVZ77+vE25n5Noj48GKetwPROy4WtE9pVoxj7zgCjIi409YyLCxo1sROQ/PHggmhOszz0C+DFa3
+	ItwR+bMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFuoU-007pCr-Ll; Mon, 25 Jul 2022 09:55:46 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oFuqj-007qcc-FW; Mon, 25 Jul 2022 09:58:05 +0000
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFuoJ-007p2V-1N; Mon, 25 Jul 2022 09:55:37 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6E66966015E7;
-	Mon, 25 Jul 2022 10:55:30 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658742931;
-	bh=SCxjD0r6W2093T144vIJ+kv/iLm6YRMmyB+sEXDO65I=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=INejVMHUlE0QG8D/2t58BRmaCjdB941Hiz5Hhc3wGvXpn+1o78HC/jIWtcDSR79QG
-	 zAskvAjSQ5C1axslCWugrrZHA00PgqU5sVFRNGBL6mSdn44nXZPrn3apprfpViHpFy
-	 Ytml4igRZGTQ/g5T9EzJuIlhYtBzmB7782hi2FU1iTsCFJ9nA3dP/gF9/LmTAuBei9
-	 4VowvFaoJ+thhP2LY21TpCiBGOf36jJ4NFOUmIb6XaMJI5vv/Ly+UnxvjTDP241vyu
-	 scTbBsWjXdWZitUfd4eX8bU+dH3/eN4HQyXLrrg8bypQvvKVn/B2Ov41+7v/R1QtEU
-	 0rmDfo28EG1HA==
-Message-ID: <dccc2863-a9db-d9ea-01e1-a18cf0db1d1e@collabora.com>
-Date: Mon, 25 Jul 2022 11:55:27 +0200
+	id 1oFuqf-007qYM-VO
+	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 09:58:03 +0000
+Received: by mail-yb1-xb32.google.com with SMTP id r3so19137149ybr.6
+        for <linux-mediatek@lists.infradead.org>; Mon, 25 Jul 2022 02:57:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=VQbkePjTZTGBHhHNdPkVayN1pzQM5oP8jjbvr/Dc6xc=;
+        b=GKsMNthIl/nHv3s4pIAp4//iOle4vnauGjgQk5AiuZ/cN1ovOSttLGtV2WfD96BLIu
+         U+HSskxdf09TYHGZnrR1NXnuQGq/VTyyawhImCx0qQYbk6hHsbuNOVdnj+c7/xYF4JTv
+         O2/DrdAJDxBRjx11t/OjFDIlclwqmUqt1K6p4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=VQbkePjTZTGBHhHNdPkVayN1pzQM5oP8jjbvr/Dc6xc=;
+        b=qO+tPgJSVNe9qwqwoaouqGGlmYidVFNnJoXo3jrvSCxdfzN7Zf4QzP4oa1He7LLumN
+         ZGg0VfO7QsghyvJ9tOYPRKqgfeshnAErByRDgGkjdbgVJK8BBWCPcRlE3sR5q9Bk1ASm
+         2osCN5HyWMhTxQLBFFZusjpoxXvJQs5TGn8q+c3sPyI0zVews5MFln+AstADyfhIAXRp
+         kuwQmjItzVy7E9jk3vlOwnhru4mmO79q8pFZf2wtQxneWgayYQkM0Gm5EylgmQxjYSxA
+         zpB6VYRHzcQA5feWg/0i+0ISBwd9YNVXFoR7fhIsziVClKtjyejOPdMQ3UEV+LsO7W5x
+         Wdnw==
+X-Gm-Message-State: AJIora9RhE9kHbDD4+4MWcg3WdN/YVL/Fh8OmqJDWomhdHRPZl1eN+y7
+	fOw5gPjmGsIMUikhzozXCKDPOg2FYtewq3l7qokRoA==
+X-Google-Smtp-Source: AGRyM1vpw8Qdjvlaj8NOuT0GEe5Ha3tFWQOx0/4AUrT7WihQIvnc7eW1QgGSAz+MsXJC8OkWSPB0iyyHgW/yyITv/Vc=
+X-Received: by 2002:a25:d852:0:b0:66f:259c:17b6 with SMTP id
+ p79-20020a25d852000000b0066f259c17b6mr9047848ybg.438.1658743078168; Mon, 25
+ Jul 2022 02:57:58 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v2 2/4] soc: mediatek: Add support of WAY_EN operations
-Content-Language: en-US
-To: Markus Schneider-Pargmann <msp@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Weiyi Lu <weiyi.lu@mediatek.com>
-Cc: Fabien Parent <parent.f@gmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Alexandre Bailon <abailon@baylibre.com>,
- Fabien Parent <fparent@baylibre.com>
-References: <20220725081853.1636444-1-msp@baylibre.com>
- <20220725081853.1636444-3-msp@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220725081853.1636444-3-msp@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20220721145017.918102-1-angelogioacchino.delregno@collabora.com> <20220721145017.918102-8-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220721145017.918102-8-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 25 Jul 2022 17:57:47 +0800
+Message-ID: <CAGXv+5FR-HdPc-_c18Svdx0aviR-+b4ikf6MfbzaLWCcF1catA@mail.gmail.com>
+Subject: Re: [PATCH v2 7/8] arm64: dts: mediatek: cherry: Enable keyboard PWM backlight
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_025535_384618_4DAF2BBE 
-X-CRM114-Status: GOOD (  30.52  )
+X-CRM114-CacheID: sfid-20220725_025802_047826_DE4BDAA2 
+X-CRM114-Status: GOOD (  16.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,275 +82,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/07/22 10:18, Markus Schneider-Pargmann ha scritto:
-> From: Alexandre Bailon <abailon@baylibre.com>
-> 
-> This updates the power domain to support WAY_EN operations. These
-> operations enable a path between different units of the chip and are
-> labeled as 'way_en' in the register descriptions.
-> 
-> This operation is required by the mt8365 for the MM power domain.
-> 
-> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+n Thu, Jul 21, 2022 at 10:53 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Add a pwm-leds node to enable the PWM controlled keyboard backlight.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
-> 
-> Notes:
->      Changes in v2:
->      - some minor style fixes.
->      - Renamed 'wayen' to 'way_en' to clarify the meaning
->      - Updated commit message
-> 
->   drivers/soc/mediatek/mtk-pm-domains.c | 64 +++++++++++++++++++++------
->   drivers/soc/mediatek/mtk-pm-domains.h | 28 +++++++-----
->   2 files changed, 68 insertions(+), 24 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-> index 5ced254b082b..d0eae2227813 100644
-> --- a/drivers/soc/mediatek/mtk-pm-domains.c
-> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-> @@ -44,6 +44,7 @@ struct scpsys_domain {
->   	struct clk_bulk_data *subsys_clks;
->   	struct regmap *infracfg;
->   	struct regmap *smi;
-> +	struct regmap *infracfg_nao;
-
-What does "nao" mean?
-
-Besides, please move that before *infracfg to at least keep the same type members
-alphabetically sorted..
-
->   	struct regulator *supply;
->   };
->   
-> @@ -116,23 +117,38 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
->   					MTK_POLL_TIMEOUT);
->   }
->   
-> -static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, struct regmap *regmap)
-> +static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
-> +				      struct regmap *regmap, struct regmap *infracfg_nao)
->   {
->   	int i, ret;
->   
->   	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
-> -		u32 val, mask = bpd[i].bus_prot_mask;
-> +		u32 mask = bpd[i].bus_prot_mask;
-> +		u32 val = mask, sta_mask = mask;
-
-You have modified the macros to use sta_mask as mask, so, why are you doing
-that distinction in here between the two? You can simply keep assigning
-
-		u32 mask = bpd[1].bus_prot_mask;
-		u32 sta_mask = bpd[1].bus_prot_sta_mask;
-
-> +		struct regmap *ack_regmap = regmap;
-
-Double assignment. You're reassigning this if way_en == true.
-
->   
->   		if (!mask)
->   			break;
->   
-> +		if (bpd[i].way_en) {
-> +			if (!infracfg_nao)
-> +				return -ENODEV;
+>  arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> index ca9955a97f8f..9086a440a995 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+> @@ -4,6 +4,7 @@
+>   */
+>
+>  #include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/leds/common.h>
+>  #include "mt8195.dtsi"
+>  #include "mt6359.dtsi"
+>
+> @@ -31,6 +32,18 @@ dmic_codec: dmic-codec {
+>                 wakeup-delay-ms = <50>;
+>         };
+>
+> +       led-controller {
+> +               compatible = "pwm-leds";
 > +
-> +			val = 0;
-> +			sta_mask = bpd[i].bus_prot_sta_mask;
-> +			ack_regmap = infracfg_nao;
-> +		}
-
-		if (bpd[i].way_en) {
-			ack_regmap = regmap_nao;
-			val = 0;
-		} else {
-			ack_regmap = regmap;
-			val = mask;
-		}
-
-> +
->   		if (bpd[i].bus_prot_reg_update)
-> -			regmap_set_bits(regmap, bpd[i].bus_prot_set, mask);
-> +			regmap_update_bits(regmap, bpd[i].bus_prot_set, mask, val);
->   		else
->   			regmap_write(regmap, bpd[i].bus_prot_set, mask);
->   
-> -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
-> -					       val, (val & mask) == mask,
-> +		if (bpd[i].ignore_clr_ack)
-> +			continue;
-
-You're adding that ignore_clr_ack here in the bus prot enablement function
-which wasn't here before... and I didn't check carefully, but I think that
-this is wrong: as the name says, it's to "ignore CLEAR ack", we're not doing
-any clearing here, we're not in bus_protect_disable.
-
-If you're really sure that this is not a mistake, you should guard it for way_en.
-
-> +
-> +		ret = regmap_read_poll_timeout(ack_regmap, bpd[i].bus_prot_sta,
-> +					       val, (val & sta_mask) == sta_mask,
->   					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
->   		if (ret)
->   			return ret;
-> @@ -145,34 +161,49 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
->   {
->   	int ret;
->   
-> -	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg, pd->infracfg);
-> +	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg,
-> +					 pd->infracfg, pd->infracfg_nao);
->   	if (ret)
->   		return ret;
->   
-> -	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi);
-> +	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi, NULL);
->   }
->   
-> +#define mask_cond(way_en, val, mask) \
-> +	((way_en && ((val & mask) == mask)) || (!way_en && !(val & mask)))
-> +
->   static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
-> -				       struct regmap *regmap)
-> +				       struct regmap *regmap, struct regmap *infracfg_nao)
->   {
->   	int i, ret;
->   
->   	for (i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
-> -		u32 val, mask = bpd[i].bus_prot_mask;
-> +		u32 val = 0, mask = bpd[i].bus_prot_mask;
-> +		u32 sta_mask = mask;
-> +		struct regmap *ack_regmap = regmap;
->   
->   		if (!mask)
->   			continue;
->   
-> +		if (bpd[i].way_en) {
-> +			if (!infracfg_nao)
-> +				return -ENODEV;
-> +
-> +			val = mask;
-> +			sta_mask = bpd[i].bus_prot_sta_mask;
-> +			ack_regmap = infracfg_nao;
-> +		}
-> +
->   		if (bpd[i].bus_prot_reg_update)
-> -			regmap_clear_bits(regmap, bpd[i].bus_prot_clr, mask);
-> +			regmap_update_bits(regmap, bpd[i].bus_prot_clr, mask, val);
->   		else
->   			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
->   
->   		if (bpd[i].ignore_clr_ack)
->   			continue;
->   
-> -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
-> -					       val, !(val & mask),
-> +		ret = regmap_read_poll_timeout(ack_regmap, bpd[i].bus_prot_sta,
-> +					       val, mask_cond(bpd[i].way_en, val, sta_mask),
-
-"I don't know why", my brain still keeps telling me that using different functions
-for the WAY_EN (en/dis) is just better.
-
-This commit seems to be overcomplicating two "easy" en/dis functions.
-
->   					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
->   		if (ret)
->   			return ret;
-> @@ -185,11 +216,12 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
->   {
->   	int ret;
->   
-> -	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi);
-> +	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi, NULL);
->   	if (ret)
->   		return ret;
->   
-> -	return _scpsys_bus_protect_disable(pd->data->bp_infracfg, pd->infracfg);
-> +	return _scpsys_bus_protect_disable(pd->data->bp_infracfg,
-> +			pd->infracfg, pd->infracfg_nao);
->   }
->   
->   static int scpsys_regulator_enable(struct regulator *supply)
-> @@ -363,6 +395,10 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
->   			return ERR_CAST(pd->smi);
->   	}
->   
-> +	pd->infracfg_nao = syscon_regmap_lookup_by_phandle_optional(node, "mediatek,infracfg_nao");
-> +	if (IS_ERR(pd->infracfg_nao))
-> +		return ERR_CAST(pd->infracfg_nao);
+> +               keyboard_backlight: keyboard-backlight {
+> +                       default-state = "off";
+> +                       function = LED_FUNCTION_KBD_BACKLIGHT;
+> +                       label = "cros_ec::kbd_backlight";
+> +                       max-brightness = <1023>;
+> +                       pwms = <&cros_ec_pwm 3>;
+> +               };
+> +       };
 > +
 
-I think that we should enforce a check here:
+This didn't work for me. However using "google,cros-kbd-led-backlight"
+under the EC did. That might be a better option.
 
-pd->infracfg_nao = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg_nao");
-if (IS_ERR(pd->infracfg_nao)) {
-	/* checking if infracfg_nao != NULL at every pwoeron/poweroff is largely
-	 * suboptimal, as if it't present once, it's present always (!)
-	 */
-	if (we have WAY_EN)
-		return ERR_CAST ...
-	pd->infracfg_nao = NULL;
-}
-	
+ChenYu
 
->   	num_clks = of_clk_get_parent_count(node);
->   	if (num_clks > 0) {
->   		/* Calculate number of subsys_clks */
-> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-> index daa24e890dd4..e788d6bdde9d 100644
-> --- a/drivers/soc/mediatek/mtk-pm-domains.h
-> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
-> @@ -39,23 +39,29 @@
->   
->   #define SPM_MAX_BUS_PROT_DATA		6
->   
-> -#define _BUS_PROT(_mask, _set, _clr, _sta, _update, _ignore) {	\
-> -		.bus_prot_mask = (_mask),			\
-> -		.bus_prot_set = _set,				\
-> -		.bus_prot_clr = _clr,				\
-> -		.bus_prot_sta = _sta,				\
-> -		.bus_prot_reg_update = _update,			\
-> -		.ignore_clr_ack = _ignore,			\
-> +#define _BUS_PROT(_mask, _sta_mask, _set, _clr, _sta, _update, _ignore, _way_en) {	\
-> +		.bus_prot_mask = (_mask),				\
-> +		.bus_prot_set = _set,					\
-> +		.bus_prot_clr = _clr,					\
-> +		.bus_prot_sta = _sta,					\
-> +		.bus_prot_sta_mask = _sta_mask,				\
-> +		.bus_prot_reg_update = _update,				\
-> +		.ignore_clr_ack = _ignore,				\
-> +		.way_en = _way_en,					\
->   	}
->   
->   #define BUS_PROT_WR(_mask, _set, _clr, _sta)			\
-> -		_BUS_PROT(_mask, _set, _clr, _sta, false, false)
-> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, false, false)
->   
->   #define BUS_PROT_WR_IGN(_mask, _set, _clr, _sta)		\
-> -		_BUS_PROT(_mask, _set, _clr, _sta, false, true)
-> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, true, false)
->   
->   #define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)		\
-> -		_BUS_PROT(_mask, _set, _clr, _sta, true, false)
-> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, true, false, false)
-> +
-> +#define BUS_PROT_WAY_EN(_en_mask, _sta_mask, _set, _sta)	\
-> +		_BUS_PROT(_en_mask, _sta_mask, _set, _set, _sta, true, false, \
-> +			  true)
->   
->   #define BUS_PROT_UPDATE_TOPAXI(_mask)				\
->   		BUS_PROT_UPDATE(_mask,				\
-> @@ -68,8 +74,10 @@ struct scpsys_bus_prot_data {
->   	u32 bus_prot_set;
->   	u32 bus_prot_clr;
->   	u32 bus_prot_sta;
-> +	u32 bus_prot_sta_mask;
->   	bool bus_prot_reg_update;
->   	bool ignore_clr_ack;
-> +	bool way_en;
->   };
->   
->   /**
+>         memory@40000000 {
+>                 device_type = "memory";
+>                 reg = <0 0x40000000 0 0x80000000>;
+> --
+> 2.35.1
+>
+>
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
