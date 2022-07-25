@@ -4,85 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59E26C43334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 08:44:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA24BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 08:48:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gBUjOXPSyxIp/ssA5bMpYCLKWAJ3HGf2reVDfO9yM3o=; b=BpY1psLlW16Fuw9YA5Rn+XPVVw
-	kBLJUtZelp7vJrj5U+I+KNVMfTIp/bSjOR/eMDOJtJFCEtp1oKvNVRm2lU4r8cLQz8kJCc/ttiRiA
-	p3zyaNbfL5gz+jxFzO+UNXjvmqVjSbJ/dHxsz8TuMX30Q/DTGULk8aa7TxzTA2zdbMomWTV6UgmBj
-	V4jSDQ/ArLsVFV4EZEojPhQYnK5bzOfMgUcgYIUyEFC0OVoQXKYVWQgGFGk3jfM5Op3GDSHnzS3eW
-	RqI0F4B5CDvHUYFD8qpc4BoZwXAOgg3GQ6T5epi5czz9ZMTevhzUj9m0D3+bKccgGOxYoFlPdiw+f
-	Z+gZmSKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Cc:To:Subject:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TPQel/35hWIJPM94sA5/FSXttvqtiNGBtFglYvAjWfM=; b=lvpnjC1KuScxopoNX+eH2N0VLW
+	i3QUDJC0RED5/72hX7afBkkB0K6t6sZOkubpi95IoLy+yH3VwGGLJ2zHidEAudFHZpSAXLvP+46qt
+	PViw3HpmYVfL9LMJivOaEqOGda3g8avkegOy0iuM0eIujRJ+YKJAryWKzKm0U5AdqOHAjIr8hNItN
+	a38ROFtZ9RY9JeOPqsh4wTABZniHOWbkbxB6UR2sbZHZd7Wbv/bxPv1Y15ZYtforq85XjP90u6Phn
+	Pv0a6i3M431bXOtzz32pydoMJMQWUwpCT2idWJBpIYgQeWTX0bo3oRZF7CTyR5Qw/q+wz4KUme3Qd
+	T5dxI3ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFth2-0075rR-Dq; Mon, 25 Jul 2022 08:44:00 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1oFtkp-007871-MT; Mon, 25 Jul 2022 08:47:55 +0000
+Received: from aposti.net ([89.234.176.197])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFtgl-0075fz-66; Mon, 25 Jul 2022 08:43:44 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id p5so1979169edi.12;
-        Mon, 25 Jul 2022 01:43:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=gBUjOXPSyxIp/ssA5bMpYCLKWAJ3HGf2reVDfO9yM3o=;
-        b=ZcloaGBXNWKgwFGhN0tBCVgGN7mKJ0l57wi/gxiOCcQ3btK6lq9SuR+ZDWopqPFJwr
-         QtH+fUQor4bu6z6i3Onr2HRzeQyO9JOs9GcWZvML3s9jvPJQnd/sk2l56CU4eOkmNXQj
-         LqLK8afv+vA1SA6f+pxw6kwJwYDOpRk9RKfUzqG3YfKkkTmnHl6JN0Bgs4bLgrYJH4/G
-         DwVst0E8Wq+wDqCv4Rf6WiAWX6k8ZbwXfY2/046oEtgbBla5lc4gNBqV8JGbD5c944lY
-         EL1jChoaIjqEM9Bwbv2uv0Do0n4Vre3jmkyldcj0zTNhXTJcj/3JcVpHUBK+rQNRfl5E
-         JX3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=gBUjOXPSyxIp/ssA5bMpYCLKWAJ3HGf2reVDfO9yM3o=;
-        b=op5a2xecAgqzWZfKb3Gc+m3dmahLvx2tJuuFhNc2GcjEwfheBppJ15WX+2SiSI/93H
-         fBMfpp9Qk84To+yMS8ZUcazsgJQtRKcSpqHIrYzS7hw6u7pjGky0MuzpbNtxkq16oAx6
-         BvW/88VRg09HNKZkFcjtHaEZlHC8YkmtV9RhI/Wd8cz9azbMJAWVujEqWLa0ph8gAv2a
-         UfFtavyd27XjonIrfXn58DSCbaPIgBe9lEPcsPJQPYod9cbo3NSmsJ/ywA9P0oqIANqu
-         +txQj0OKmrdAWNDZOgQ4xubg+iF77d5zrc+elpjwXelNk6C5cfR8YOgOUkjx3NS70PoT
-         HMxQ==
-X-Gm-Message-State: AJIora9HwEdH/K2Z8wcGPv47a/Dl4B+pMdV9+nM+HVdRYSG8C4dNtCGc
-	0pUVaTjuADU3GrA92KAWCz1WQEIH+alLPdXeU1s=
-X-Google-Smtp-Source: AGRyM1soQCq75MmbI4ONQXkzNoXoyDLrEe84HYxRimv6nF0nPZqyoEzx4IbLZDEZCEsYL6EGcqoDhOkMKbKf9dD+JE4=
-X-Received: by 2002:a05:6402:254b:b0:43b:d6c3:dd96 with SMTP id
- l11-20020a056402254b00b0043bd6c3dd96mr11626028edb.406.1658738620885; Mon, 25
- Jul 2022 01:43:40 -0700 (PDT)
+	id 1oFtkd-0077v4-IB; Mon, 25 Jul 2022 08:47:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
+	s=mail; t=1658738851; h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TPQel/35hWIJPM94sA5/FSXttvqtiNGBtFglYvAjWfM=;
+	b=tHujnarTp1a2IeCxqv7V7p0ZYM+XAQkUf6h2bzPhZAXtGabexkpEqtJIk3riIG+KD72GCt
+	rfgngCkeMVeNIGR86FW8u0m95+M2aZUF7ZmSCzmZir9XhlmQkEMozE8c4Y/XCjH3vb4sMf
+	UOQU8nHSOqTI2TQ70ZGL4h88/sbskZg=
+Date: Mon, 25 Jul 2022 09:47:20 +0100
+From: Paul Cercueil <paul@crapouillou.net>
+Subject: Re: [PATCH -next] scsi: ufs: ufs-mediatek: Fix build error
+To: Arnd Bergmann <arnd@arndb.de>, Ren Zhijie <renzhijie2@huawei.com>
+Cc: stanley.chu@mediatek.com, "James E.J. Bottomley" <jejb@linux.ibm.com>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Bart Van Assche <bvanassche@acm.org>, linux-scsi
+	<linux-scsi@vger.kernel.org>, "ARM/Mediatek SoC..."
+	<linux-mediatek@lists.infradead.org>, Linux Kernel Mailing List
+	<linux-kernel@vger.kernel.org>, Linux ARM
+	<linux-arm-kernel@lists.infradead.org>, Jonathan Cameron
+	<Jonathan.Cameron@huawei.com>, "Rafael J. Wysocki"
+	<rafael.j.wysocki@intel.com>
+Message-Id: <W2JKFR.Y0JWFHU8ZIJU3@crapouillou.net>
+In-Reply-To: 	<CAK8P3a0LCaMoWArcQNY5qayUABgRXWEogrtQQ-sbR+zY6n=O4w@mail.gmail.com>
+References: <20220704025632.235968-1-renzhijie2@huawei.com>
+	<CAK8P3a07jGCuAVQAZgpENRP_xFLiogU9W1Uze+n21h7TdOZhog@mail.gmail.com>
+	<df9909dc-3303-808e-575a-47190f636279@huawei.com>
+	<CAK8P3a3SA9zvVu0i1m0kqbemLd4WfTMGfpc8VwhsmJOBgZHvsA@mail.gmail.com>
+	<af043109-c101-a147-707b-82e79469ae73@huawei.com>
+	<CAK8P3a0LCaMoWArcQNY5qayUABgRXWEogrtQQ-sbR+zY6n=O4w@mail.gmail.com>
 MIME-Version: 1.0
-References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-8-peterwu.pub@gmail.com>
- <CAHp75VfiKMROzxeEaCH6qCthK9qanJPqbjADLMVH-V0upKf+9Q@mail.gmail.com> <CABtFH5++4N1mECJ0vN-79WsJJWcBTVxLFgvkiouPf1qev7LHHQ@mail.gmail.com>
-In-Reply-To: <CABtFH5++4N1mECJ0vN-79WsJJWcBTVxLFgvkiouPf1qev7LHHQ@mail.gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 25 Jul 2022 10:43:04 +0200
-Message-ID: <CAHp75VfKihBLjUFqe_Sj5dqTO7-wjLehAF+9_8-sbUeyJ-ZAmg@mail.gmail.com>
-Subject: Re: [PATCH v6 07/13] mfd: mt6370: Add MediaTek MT6370 support
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
-	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_014343_261159_56E5AFD9 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20220725_014743_820281_2E60DEA1 
+X-CRM114-Status: GOOD (  19.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,51 +75,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 25, 2022 at 10:30 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> On Mon, Jul 25, 2022 at 4:00 PM Andy Shevchenko
-> <andy.shevchenko@gmail.com> wrote:
+Hi Arnd,
 
-...
+Le lun., juil. 25 2022 at 08:34:32 +0200, Arnd Bergmann <arnd@arndb.de>=20
+a =C3=A9crit :
+> On Mon, Jul 25, 2022 at 5:38 AM Ren Zhijie <renzhijie2@huawei.com>=20
+> wrote:
+>>  =E5=9C=A8 2022/7/13 16:48, Arnd Bergmann =E5=86=99=E9=81=93:
+>>=20
+>>  I try to use the new marcos SYSTEM_SLEEP_PM_OPS and RUNTIME_PM_OPS=20
+>> to
+>>  replace the old ones, and remove #ifdef around the declarations in=20
+>> the
+>>  header, my local changes attach below.
+>>=20
+>>  But it seems  that doesn't work, which has ld errors:
+>>=20
+>>  aarch64-linux-gnu-ld: Unexpected GOT/PLT entries detected!
+>>  aarch64-linux-gnu-ld: Unexpected run-time procedure linkages=20
+>> detected!
+>>  drivers/ufs/host/ufs-mediatek.o: In function=20
+>> `ufs_mtk_runtime_resume':
+>>  ufs-mediatek.c:(.text+0x1d0c): undefined reference to
+>>  `ufshcd_runtime_resume'
+>>  drivers/ufs/host/ufs-mediatek.o: In function=20
+>> `ufs_mtk_runtime_suspend':
+>>  ufs-mediatek.c:(.text+0x1d64): undefined reference to
+>>  `ufshcd_runtime_suspend'
+>>  Makefile:1255: recipe for target 'vmlinux' failed
+>>  make: *** [vmlinux] Error 1
+>>=20
+>>  (CONFIG_PM and CONFIG_PM_SLEEP are both not set, and
+>>=20
+>=20
+> It appears that there is a mistake in the RUNTIME_PM_OPS()
+> macro definition, can you try this patch on top?
+>=20
+> diff --git a/include/linux/pm.h b/include/linux/pm.h
+> index 871c9c49ec9d..84592229d754 100644
+> --- a/include/linux/pm.h
+> +++ b/include/linux/pm.h
+> @@ -334,9 +334,9 @@ struct dev_pm_ops {
+>         .restore_noirq =3D pm_sleep_ptr(resume_fn),
+>=20
+>  #define RUNTIME_PM_OPS(suspend_fn, resume_fn, idle_fn) \
+> -       .runtime_suspend =3D suspend_fn, \
+> -       .runtime_resume =3D resume_fn, \
+> -       .runtime_idle =3D idle_fn,
+> +       .runtime_suspend =3D pm_ptr(suspend_fn), \
+> +       .runtime_resume =3D pm_ptr(resume_fn), \
+> +       .runtime_idle =3D pm_ptr(idle_fn),
 
-> > > +#define MT6370_REG_DEV_INFO    0x100
-> > > +#define MT6370_REG_CHG_IRQ1    0x1C0
-> > > +#define MT6370_REG_CHG_MASK1   0x1E0
-> > > +
-> > > +#define MT6370_VENID_MASK      GENMASK(7, 4)
-> > > +
-> > > +#define MT6370_NUM_IRQREGS     16
-> > > +#define MT6370_USBC_I2CADDR    0x4E
-> >
-> > > +#define MT6370_REG_ADDRLEN     2
-> > > +#define MT6370_REG_MAXADDR     0x1FF
-> >
-> > These two more logically to have near to other _REG_* definitions above.
->
-> Hi Andy,
-> Thanks for your review.
-> Do you mean that we should move '#define MT6370_USBC_I2CADDR' and
-> '#define MT6370_REG_MAXADDR' after the line '#define
-> MT6370_REG_CHG_MASK1'?
-> -------------------------------------------------------------------
-> #define MT6370_REG_DEV_INFO    0x100
-> #define MT6370_REG_CHG_IRQ1    0x1C0
-> #define MT6370_REG_CHG_MASK1   0x1E0
-> #define MT6370_USBC_I2CADDR    0x4E
-> #define MT6370_REG_MAXADDR     0x1FF
->
-> #define MT6370_VENID_MASK      GENMASK(7, 4)
->
-> #define MT6370_NUM_IRQREGS     16
-> #define MT6370_REG_ADDRLEN     2
-> -------------------------------------------------------------------
-> Like this?
+Not a mistake, the pm_ptr() macros are not needed here, because the=20
+dev_pm_ops pointer must always be wrapped with pm_ptr().
 
-You lost me. Namespace has a meaning, i.e. grouping items of a kind.
-In your proposal I don't see that. If REG_MAXADDR and REG_ADDRLEN are
-_not_ of the _REG_ kind as per above, why do they have this namespace
-in the first place?
+The proper fix is:
 
--- 
-With Best Regards,
-Andy Shevchenko
+-  .pm     =3D &ufs_mtk_pm_ops,
++  .pm     =3D pm_ptr(&ufs_mtk_pm_ops),
+
+Cheers,
+-Paul
+
+>=20
+>  #ifdef CONFIG_PM_SLEEP
+>  #define SET_SYSTEM_SLEEP_PM_OPS(suspend_fn, resume_fn) \
+>=20
+> Commit 1a3c7bb08826 ("PM: core: Add new *_PM_OPS macros, deprecate
+> old ones") introduced all the macros with the intent of using pm_ptr()
+> and pm_sleep_ptr() in them, and I think Paul accidentally forgot to=20
+> add
+> those in this instance.
+>=20
+>        Arnd
+
+
 
