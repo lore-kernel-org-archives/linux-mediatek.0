@@ -4,71 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A82C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 08:55:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 184FBC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 08:56:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=edgunyjtUM379vg3Bw9QbusNXUwODwix7GBUlK2cBH4=; b=Ejhy1JpYxlGf+UJmzcX1Ifevq7
-	N/74zAiJVRKPKZljHBDI0DBanyQtGFxL80zSgW2/EHONmALeNQkynOtAnk3jOqRb4NUH9xVQGec/4
-	5HXVwpB5fxYbiIEGI0Bqep4S8M6Y6p4Zd8XW4TJn4qyazAz8VyKfgLoM/EoEdPpyVhQbjQmPuc0Aq
-	PeX6P7aU8b64raAD4WLKu2BGykCnCt/Ebj7N16yvRyizQSmHGSnhE34UHTb+ol/XELaNEgd0KYH/H
-	UUlTUv0xkKASav/RuGsGqBTkmSmAByDsZXQlgJ1/zxZOLEnybru9qZwfga21Uu/Njf2ssC45tSgH6
-	EXWgrlEg==;
+	bh=3INTKFVzGpgdLiO6cm/tt/F3n1FdE/J8Gtrvuuomg/U=; b=EPlRLLXKORLHgE/4wMDujquFbj
+	YWaDUGjjUuElRtIngR0FM8KL+9k+ngVGb38WlrFdpnlXQwK/31jdK85bFb2C/LSiqIK9OMAet6WGl
+	S2RfIG/dGsot2Ebid/19q055JE92/BxY2qYPC0a/bYj1VhnI+HYJdHDraRnkTlGHQkCBQ008LyT7E
+	TC/oxDyxziM+lHajpCEZHMHZpMoBdqKQvgzf7EvqazjygDhb2JuVxhwIgBOZA/bktCokZQEA6N8BC
+	ehPSO390kkRnKVcvAAznLIbuIXo098tksKW32+RzulLUMO65B5Bigh6BRqUHlIn8LfipvMqvdAE18
+	tqRoBFXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFts4-007Cqj-TP; Mon, 25 Jul 2022 08:55:24 +0000
-Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
+	id 1oFtsf-007DXX-47; Mon, 25 Jul 2022 08:56:01 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFtrk-007CRy-02
-	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 08:55:05 +0000
-Received: by mail-yb1-xb31.google.com with SMTP id 75so18873267ybf.4
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Jul 2022 01:54:53 -0700 (PDT)
+	id 1oFtsI-007D5g-SQ; Mon, 25 Jul 2022 08:55:40 +0000
+Received: by mail-ed1-x529.google.com with SMTP id z22so12992824edd.6;
+        Mon, 25 Jul 2022 01:55:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
+        d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=edgunyjtUM379vg3Bw9QbusNXUwODwix7GBUlK2cBH4=;
-        b=LAb3jJwXo2g1wMoTMaTk8qlGLk+BgqSTGQMYheh5JIlQkSBkMyLupvlRq+isJx3pGe
-         6mK2Z47OXKdGrfS/+rGV0Pfig8Q30++HmZDcoK2OQoQCWqS4MXIvnPVqUXHKvZsb5ngR
-         domi0dPdGdVLhUXtW4uS4OhEJm19M2vQCvhSY=
+        bh=3INTKFVzGpgdLiO6cm/tt/F3n1FdE/J8Gtrvuuomg/U=;
+        b=KGUkTvmsrFj/i/g2Txcus2neVCIeH7fS7RYDzgarpCQjAlV25rYmvRqFk4rEW2Xu6H
+         dVkCJgHWlrXopXOfsXa7jLI7QUV58LjpMPEGgOlQAaOnihMKMqUORjOGJ0SyGVX6oPmr
+         AMrcGRzTVPctXdbs6Q2EfqiY6PKD5GpzJSWGECpaDGigxvdYX+uHjA92klNsnuWiXkR8
+         KK3MgVH2qSoijeYpB69tibPEs3jLzlYrbqnbLehlkcag6TPz7QYuNOe0ls9ksOj0BiPk
+         SOG0zIupDCmFrghFibZg1nOn4XrHoUYCdTW2Pwb7i2+PJ+hXVio5/EJxBh6mFV3wBtpH
+         A4FQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=edgunyjtUM379vg3Bw9QbusNXUwODwix7GBUlK2cBH4=;
-        b=GZ+EmQmr0L4LRWHJAARRDjUbcZ3if48J3/Qla3CMe1m2tsi/OocgWyjRRn12ks4R87
-         EP4gOtCBcB1rjNeYzkrv9GGtN3JS2yzCMXGG+nxtqeS49zSS4hNjVf28cgiD/j39DIeb
-         v8PT1oj/wUM+po+2KU8VfA582wUx4q1CNoPh2f67Kxl8fEvjmfQGxjyW7XCnHLoapgRt
-         FGwIw+celOEyJcIoGW0ycAAsI5i+3c8HymXeR3mHykulKR71UzlzcS8MV4rstH0JkZvG
-         AMUM5VdbfNuysk25ZSxsg213lWN7vHVsZSbukOOqqrV1ZwIcFKeI9Yvw6ChbMivZ/j0N
-         qtFg==
-X-Gm-Message-State: AJIora/+vonbCKcXFixt+GTYl/+OfJytBjcOst/EEnLbKyJ4igFExpb2
-	dHB7ENT7lP84+MXljHs91CbAT+zLn/xiBKb8yqLaFA==
-X-Google-Smtp-Source: AGRyM1s7JTPi63hLlXsZJp0NKHyjAYonLbIzzXNGyMHT8kVwt4FrTCIiemN3v706SuLB6YiD2mVG51cNjmaxho6Bf8A=
-X-Received: by 2002:a25:9f87:0:b0:669:4345:a8c0 with SMTP id
- u7-20020a259f87000000b006694345a8c0mr8500898ybq.472.1658739292656; Mon, 25
- Jul 2022 01:54:52 -0700 (PDT)
+        bh=3INTKFVzGpgdLiO6cm/tt/F3n1FdE/J8Gtrvuuomg/U=;
+        b=0oevN1Th3YZFJA13MtGcWfp/XeCR+qzYx0iiG0qRZqFlqJiGu0aKfBxGeALJZZX9mR
+         TFpt9+YqYjMvN/zQw3+5dDoHXpKlqf7y5/d6GxPRXfFRFdwQo9AHWcFNLtgiOWr45SvH
+         d7GhQjb5svgJ5Ryl/KgF7+7pPI+ypLApuuC3CmUX6YqvP1uz0vefnGuGoer9pPaCcTrr
+         rENvIHqS8HSKcU7Q7zVrnGzOO8VWWcDtBkYfho5QjUW55SANl71xYry6qr9l3LaO2WtW
+         d7/kKIts5opzupiTnojU5vLFi7RlRpdNZ1E24OpaWQVk4vlj2umIotfk4fpXuWKm3M10
+         GF1w==
+X-Gm-Message-State: AJIora/m81fb6N32jayhuMR6ZuXhOUKs2aaDl64fOfTlTScAEyqx26cs
+	qbThkpSBqMV9TP9uI55umfLJ0m8dW92sEi4X3Fo=
+X-Google-Smtp-Source: AGRyM1v8y+nmZhsplbXoHzO4Ve+2H3JYkbB6esC4VwvluxmYvgNwKHcXWiOtO8fBnhCqb3I9/pY7SCo8PriYmFxn6lE=
+X-Received: by 2002:a05:6402:34c5:b0:43a:8f90:e643 with SMTP id
+ w5-20020a05640234c500b0043a8f90e643mr11947835edc.88.1658739336148; Mon, 25
+ Jul 2022 01:55:36 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220721145017.918102-1-angelogioacchino.delregno@collabora.com> <20220721145017.918102-5-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220721145017.918102-5-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 25 Jul 2022 16:54:41 +0800
-Message-ID: <CAGXv+5FutJb_MRwSVgjV7tByBvfq3AFsSxs6ETUZaNzrfpywgg@mail.gmail.com>
-Subject: Re: [PATCH v2 4/8] arm64: dts: mediatek: cherry: Enable secondary
- SD/MMC controller
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org
+References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-13-peterwu.pub@gmail.com>
+In-Reply-To: <20220722102407.2205-13-peterwu.pub@gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Mon, 25 Jul 2022 10:55:00 +0200
+Message-ID: <CAHp75VfgiK87VwWu2bTJ_mR0=g0sa0LPJ+H16OGcUdARmzFRSA@mail.gmail.com>
+Subject: Re: [PATCH v6 12/13] leds: flash: mt6370: Add MediaTek MT6370
+ flashlight support
+To: ChiaEn Wu <peterwu.pub@gmail.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
+	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
+	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_015504_070216_405A9835 
-X-CRM114-Status: GOOD (  17.05  )
+X-CRM114-CacheID: sfid-20220725_015538_949077_D35311A2 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,120 +97,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 21, 2022 at 10:51 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> As of now, all of the boards based on the cherry platform have a
-> usable secondary SD/MMC controller, usually for SD cards: enable
-> it to allow both booting from it and generally accessing external
-> storage.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../boot/dts/mediatek/mt8195-cherry.dtsi      | 62 +++++++++++++++++++
->  1 file changed, 62 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> index 2853f7f76c90..8859957c7b27 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> @@ -17,6 +17,7 @@ aliases {
->                 i2c5 = &i2c5;
->                 i2c7 = &i2c7;
->                 mmc0 = &mmc0;
-> +               mmc1 = &mmc1;
->                 serial0 = &uart0;
->         };
->
-> @@ -227,6 +228,24 @@ &mmc0 {
->         vqmmc-supply = <&mt6359_vufs_ldo_reg>;
->  };
->
-> +&mmc1 {
-> +       status = "okay";
-> +
-> +       bus-width = <4>;
-> +       cap-sd-highspeed;
-> +       cd-gpios = <&pio 54 GPIO_ACTIVE_LOW>;
-> +       max-frequency = <200000000>;
-> +       no-mmc;
-> +       no-sdio;
-> +       pinctrl-names = "default", "state_uhs";
-> +       pinctrl-0 = <&mmc1_pins_default>;
-> +       pinctrl-1 = <&mmc1_pins_uhs>;
-> +       sd-uhs-sdr50;
-> +       sd-uhs-sdr104;
-> +       vmmc-supply = <&mt_pmic_vmch_ldo_reg>;
-> +       vqmmc-supply = <&mt_pmic_vmc_ldo_reg>;
-> +};
-> +
->  /* for CPU-L */
->  &mt6359_vcore_buck_reg {
->         regulator-always-on;
-> @@ -575,6 +594,49 @@ pins-rst {
->                 };
->         };
->
-> +       mmc1_pins_default: mmc1-default-pins {
-> +               pins-cmd-dat {
-> +                       pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
-> +                                <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
-> +                                <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
-> +                                <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
-> +                                <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
-> +                       input-enable;
-> +                       drive-strength = <8>;
-> +                       bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-> +               };
-> +
-> +               pins-clk {
-> +                       pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
-> +                       drive-strength = <8>;
-> +                       bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-> +               };
-> +
-> +               pins-insert {
-> +                       pinmux = <PINMUX_GPIO54__FUNC_GPIO54>;
-> +                       bias-pull-up;
-> +               };
-> +       };
-> +
-> +       mmc1_pins_uhs: mmc1-uhs-pins {
-> +               pins-cmd-dat {
-> +                       pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
-> +                                <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
-> +                                <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
-> +                                <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
-> +                                <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
-> +                       input-enable;
-> +                       drive-strength = <8>;
-> +                       bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-> +               };
-> +
-> +               pins-clk {
-> +                       pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
-> +                       drive-strength = <8>;
-> +                       bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-> +               };
+On Fri, Jul 22, 2022 at 12:25 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
 
-I wonder if pins-insert should be duplicated here. And there's no
-difference between the standard and UHS pinconfigs. One would expect
-higher drive strength on the UHS set, if two sets were required.
-So maybe we should just have one set, and use that one for both
-the default and uhs states.
+Forgot to add a couple of things...
 
-Otherwise,
+...
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+> +#define MT6370_ITORCH_MIN_UA           25000
+> +#define MT6370_ITORCH_STEP_UA          12500
+> +#define MT6370_ITORCH_MAX_UA           400000
+> +#define MT6370_ITORCH_DOUBLE_MAX_UA    800000
+> +#define MT6370_ISTRB_MIN_UA            50000
+> +#define MT6370_ISTRB_STEP_UA           12500
+> +#define MT6370_ISTRB_MAX_UA            1500000
+> +#define MT6370_ISTRB_DOUBLE_MAX_UA     3000000
 
-> +       };
-> +
->         nor_pins_default: nor-default-pins {
->                 pins-ck-io {
->                         pinmux = <PINMUX_GPIO142__FUNC_SPINOR_IO0>,
-> --
-> 2.35.1
->
->
+Perhaps _uA would be better and consistent across your series
+regarding current units.
+
+...
+
+> +       /*
+> +        * For the flash to turn on/off, need to wait HW ramping up/down time
+
+we need
+
+> +        * 5ms/500us to prevent the unexpected problem.
+> +        */
+> +       if (!prev && curr)
+> +               usleep_range(5000, 6000);
+> +       else if (prev && !curr)
+> +               udelay(500);
+
+This still remains unanswered, why in the first place we allow
+switching, and a busy loop in the other place?
+
+-- 
+With Best Regards,
+Andy Shevchenko
 
