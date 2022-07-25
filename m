@@ -4,79 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A1BCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 06:35:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57851C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 06:45:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=278twR7KUzjcaLjmKFGe9mcrlcZDSktMRdHKtUS8Yno=; b=QBRSbHi3La0T70lgU/Ro4D95aA
-	2JJMAZFeg5jaffGs55/sJtu9KJWy7MOnBtLNlwh5wd07q2gV+cUmAnyfIzDRx+Zs6CjMqAJPPfeeG
-	n6y6uGi+PQgtGjB/md+cQ/SiUGyvaHuS8kOEM2/WqOf359OxG4MpQqjaHTg1iW9MFmyMJvJZpopa7
-	mO0rysoGLHez2EHGL23uG0FdIGDH5MxLxt0y8vSK1CNIR/3/gfilFt990Gj0D4y//Oav8UWp1qfi/
-	IDxUBkrmpafWWthROBbTG5OOf30QmujrlLckHnTQ92OGbpikb8wjZeiRHQKGU9NkR2USVRf6ztnb1
-	5c0F9hDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=koE1sOchZGcuAQ6ZIasz8+3z8ouCYYjQCDzwRp9wkxE=; b=WjBwFt2LAxUFNMFg+MHw7tEEbP
+	phG7bn5ixI1J237ycjO817F+XpjQrhBbSKR+AOo33H8kCHgVdJflZKq8YPtXUl2yGk2j326tUg3YW
+	pNyNZaZl5nvnvWsdiKmE196XVmcs0Vy1zoiZUrFEaAedmffG+Iq6XG3qHhVAvCf1OoJYzLPQVaOS0
+	/nng5ewkqd8scB5lVPQy/oNf+FOzsUfUfXaJddF+xXipBjXndfyYVJuJRwNQLaHbEJ/rriLDruQoi
+	+RyvpJp6YmyoM45rhQq55XzNobnFyzTJwT+rK3Zqqau7oz8vKDgs1tN/MjDVIYmDpsTUhXEoGijBB
+	TEyz4zYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFrgM-005XCn-6H; Mon, 25 Jul 2022 06:35:10 +0000
-Received: from mout.kundenserver.de ([217.72.192.75])
+	id 1oFrqA-005eCH-Dz; Mon, 25 Jul 2022 06:45:18 +0000
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFrg9-005X1V-SZ; Mon, 25 Jul 2022 06:34:59 +0000
-Received: from mail-yb1-f171.google.com ([209.85.219.171]) by
- mrelayeu.kundenserver.de (mreue109 [213.165.67.113]) with ESMTPSA (Nemesis)
- id 1MLR5h-1ny3qL1YRv-00ISEy; Mon, 25 Jul 2022 08:34:50 +0200
-Received: by mail-yb1-f171.google.com with SMTP id k85so18384350ybk.7;
-        Sun, 24 Jul 2022 23:34:50 -0700 (PDT)
-X-Gm-Message-State: AJIora/sqrMnrhnYAl/3VxzyNS1rs1lQn70qEQ4FvkYNbNl7Mrh3Yi1z
-	GJ2cX4wcGfm6PFquLKpKBByl4mt1WRhDgw3BBJ8=
-X-Google-Smtp-Source: AGRyM1sGLkw4aJn1HNx3IEfYHktSuUgf/62QRFsCyHiqKFcP2xKhpEE3DffyH3k+rdGJlryPzfWKqPb5CFt6r49usFA=
-X-Received: by 2002:a05:6902:120f:b0:668:2228:9627 with SMTP id
- s15-20020a056902120f00b0066822289627mr8961174ybu.134.1658730889063; Sun, 24
- Jul 2022 23:34:49 -0700 (PDT)
+	id 1oFrq8-005e7D-2o
+	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 06:45:17 +0000
+Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-31f1b271dcbso8309967b3.10
+        for <linux-mediatek@lists.infradead.org>; Sun, 24 Jul 2022 23:45:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=koE1sOchZGcuAQ6ZIasz8+3z8ouCYYjQCDzwRp9wkxE=;
+        b=Rcjc8ntxdRRnzxYtaeC8PNuN5mEqizkS+usqu0ltMEG3LntntbO+oSzNniJmafQwEQ
+         kWd8OOtIHmb4VWGTZbhqaaHlPmIQAX9jcNBMHFE8lMInOR9PsqFDldUjdXu3A1P3iDIq
+         2cUPz3TadTV49aFZGesO2kJgSOwPxjfjIh/UQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=koE1sOchZGcuAQ6ZIasz8+3z8ouCYYjQCDzwRp9wkxE=;
+        b=EJUVjEGxuV/tKrYApO0apYifleyzgKTTjOkWLTKynIvIUrhz87wFfsNLspAoceuwm9
+         jInMzhoK20XX5TBMgAS0Bkc9cECypM82FSJA38THEJ02nD3zdq7uLKOO2juKSRYp0D7c
+         qU5bLM+FCylzLbNGzecCKj+nq9oJRQmSVtR8BtMjG4lq8aw7HZ1bnqXnSfduSxTSsdtL
+         ibuPtQcuBtT466jcvPx/eDOJPButMxvCHTxu2IFIV259+VoMlm4KSkcQDvU+Y7Ods+RL
+         K0q/pNcTzCqDR7nxMMocitBJYiG8tzAxEWiwZ2B3MMpgxnnMtEK0U4YijlXkfN+y70iY
+         PCog==
+X-Gm-Message-State: AJIora9k29HJTZxriPNHntMVWuydPRPI490xV+CE2n6cpPc0s8+TexXZ
+	89/KLGDQSblrvXZGjRM5WoTCdxDMticuFv0vJ3eolxm/6OoRcg==
+X-Google-Smtp-Source: AGRyM1tWX8v8lA94PgQz8q4L+DWzhvEaTMIwan7i6g4iVoqzmL5YsXQN/5N9OGYvaAFxZcMla6oIVbP/pg4cyghjqs0=
+X-Received: by 2002:a81:610:0:b0:31e:4822:6807 with SMTP id
+ 16-20020a810610000000b0031e48226807mr8670649ywg.354.1658731513346; Sun, 24
+ Jul 2022 23:45:13 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220704025632.235968-1-renzhijie2@huawei.com>
- <CAK8P3a07jGCuAVQAZgpENRP_xFLiogU9W1Uze+n21h7TdOZhog@mail.gmail.com>
- <df9909dc-3303-808e-575a-47190f636279@huawei.com> <CAK8P3a3SA9zvVu0i1m0kqbemLd4WfTMGfpc8VwhsmJOBgZHvsA@mail.gmail.com>
- <af043109-c101-a147-707b-82e79469ae73@huawei.com>
-In-Reply-To: <af043109-c101-a147-707b-82e79469ae73@huawei.com>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Mon, 25 Jul 2022 08:34:32 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a0LCaMoWArcQNY5qayUABgRXWEogrtQQ-sbR+zY6n=O4w@mail.gmail.com>
-Message-ID: <CAK8P3a0LCaMoWArcQNY5qayUABgRXWEogrtQQ-sbR+zY6n=O4w@mail.gmail.com>
-Subject: Re: [PATCH -next] scsi: ufs: ufs-mediatek: Fix build error
-To: Ren Zhijie <renzhijie2@huawei.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, stanley.chu@mediatek.com, 
-	"James E.J. Bottomley" <jejb@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Bart Van Assche <bvanassche@acm.org>, 
-	linux-scsi <linux-scsi@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
-	Linux ARM <linux-arm-kernel@lists.infradead.org>, Paul Cercueil <paul@crapouillou.net>, 
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>, 
-	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
+References: <20220712114046.15574-1-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220712114046.15574-1-allen-kh.cheng@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 25 Jul 2022 14:45:02 +0800
+Message-ID: <CAGXv+5FmXVYTtOusB8gqh1SprWHuNJYcC5MNEHQUGKQx8yrrLQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/5] Complete driver nodes for MT8192 SoC
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:WU2Kjp81ihSpbhwIvsRJZ6V/n/Oa8AT8yVnO/PbkSTmWAlyV1P2
- 3n/125iWr2RA0vLKxqIzctBi142uxPdOLBOQbkctRQi1Cd5EFDotJJsSA9mIZxNxOs7GLz0
- sDXPUCMP+1lrhMps+Fs3eNm97Pblf/7uPpiHQH6LKQFnJIWaieg8IECdU8miKodhXmi/k7y
- DMW7/4y3yqpPpsRa6D3OA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:+J/PvW0vngM=:PVJoPYL3wgJ1ltpJNZv20H
- Z+AjKp8E3HgzrJtWyz8AIz3IxPe0NhlJJ7ak0GWyNO5gSYfdkmqpHUVD2WesN5NJTpxMJTBFk
- 39XSX8nornD73zwBeF5oHfs6gixjz7I0LIEeM8xm6+2SEQfJAGyM9QRFx+wFrdBw3c3XWCy0m
- 5TJxqMS0d/DWmwS8aEsBx7bRRe6KgqguPedeh47Zb8YueGad+GBGtCtjfwkLtXVI/JK9qXGU2
- GyeCmZhUVgAu7ynzeDhWy8njIClK8BoBNiyl+0xCLt68i3jFDWvxnO6gLoRqzhEHCz6OOeA7q
- mHtU3tinw1QmULliZT3svVF0j6ZwySEpoVR+h0hg39OZdnZOptwrDWzHy7X4gvCZK2rsP3joX
- X6Y5W6ZF6CrY3MgZ92DX6RNbGfvUEr+59BPUcb1ZGBqo4B6LoLIqcEPVv9AM2dvzk8IPleSNU
- ctHSikATeETAOFDBGusFYsgMdtjw0GtIWMHIUaaVqkAPN7iOF+y0m5eUhjyiuUF7CzJ2fZq0X
- fWxy+mbRP7fi9peSDipZzNZioUrO5XKXU0p66/vLfQlx88MaOMSt3tFgD12+Fk31z/af4FR0O
- vArSX5bjIz35P5Y8Em16/keRZmcKxfBR2Kx8lHJHnAmzl459Hn1J/Ay+bl8Xq1aErL0Q90u8o
- ICoBOPKEFXLWgryE8f8VQrfAu8eCNepYxU2d/fTrabvXsXstPJ+jGr0JGxxrkpj8WpgdYzy6t
- lH074bSWHZrL14ep3GcgyUd1bZvWpfBqMDevxg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220724_233458_241883_E5289901 
-X-CRM114-Status: GOOD (  18.41  )
+X-CRM114-CacheID: sfid-20220724_234516_172483_72511AD0 
+X-CRM114-Status: GOOD (  14.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,54 +83,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 25, 2022 at 5:38 AM Ren Zhijie <renzhijie2@huawei.com> wrote:
-> =E5=9C=A8 2022/7/13 16:48, Arnd Bergmann =E5=86=99=E9=81=93:
+On Tue, Jul 12, 2022 at 7:40 PM Allen-KH Cheng
+<allen-kh.cheng@mediatek.com> wrote:
 >
-> I try to use the new marcos SYSTEM_SLEEP_PM_OPS and RUNTIME_PM_OPS to
-> replace the old ones, and remove #ifdef around the declarations in the
-> header, my local changes attach below.
+> This series are based on matthias.bgg/linux.git, for-next.
 >
-> But it seems  that doesn't work, which has ld errors:
+> I remove vcodec lat and core nodes PATCH from series and will comfirm
+> clocks usage then resend PATCH.
 >
-> aarch64-linux-gnu-ld: Unexpected GOT/PLT entries detected!
-> aarch64-linux-gnu-ld: Unexpected run-time procedure linkages detected!
-> drivers/ufs/host/ufs-mediatek.o: In function `ufs_mtk_runtime_resume':
-> ufs-mediatek.c:(.text+0x1d0c): undefined reference to
-> `ufshcd_runtime_resume'
-> drivers/ufs/host/ufs-mediatek.o: In function `ufs_mtk_runtime_suspend':
-> ufs-mediatek.c:(.text+0x1d64): undefined reference to
-> `ufshcd_runtime_suspend'
-> Makefile:1255: recipe for target 'vmlinux' failed
-> make: *** [vmlinux] Error 1
+> Also should reference below PATCH for dsi in chunkuang.hu/linux.git
+> dt-bindings: display: mediatek: dsi: Convert dsi_dtbinding to .yaml
 >
-> (CONFIG_PM and CONFIG_PM_SLEEP are both not set, and
+> changes since v2:
+>  - add mmsys #reset-cells PATCH
+>  - add missing fallback compatible
+>  - add display aliases
+>  - remove vcodec lat and core nodes PATCH
 >
+> changes since v1:
+>  - add Reviewed-by Tag
+>  - rename dsi-phy from dsi-dphy
+>  - add missing power-domains in disp mutex
+>  - Add remove mt8192 display rdma compatible PATCH in series
+>  - use "mediatek,mt8183-disp-rdma" as fallback
+>  - remove mediatek,larb from rdma node
+>  - remove syscon-dsi and add power-domains in dsi
+>  - add reset property in dsi and mt8192-resets.h
+>  - correct Typo: s/ndoe/node in commit message
+>
+> Allen-KH Cheng (5):
+>   arm64: dts: mt8192: Add pwm node
+>   arm64: dts: mt8192: Add mipi_tx node
+>   arm64: dts: mediatek: Add mmsys #reset-cells property for mt8192
+>   arm64: dts: mt8192: Add display nodes
+>   arm64: dts: mt8192: Add dsi node
 
-It appears that there is a mistake in the RUNTIME_PM_OPS()
-macro definition, can you try this patch on top?
+With additional changes to asurada.dtsi I have a working internal display.
+Needs a fix [1] for mtk-drm from Angelo on top of next-20220722.
 
-diff --git a/include/linux/pm.h b/include/linux/pm.h
-index 871c9c49ec9d..84592229d754 100644
---- a/include/linux/pm.h
-+++ b/include/linux/pm.h
-@@ -334,9 +334,9 @@ struct dev_pm_ops {
-        .restore_noirq =3D pm_sleep_ptr(resume_fn),
+For the whole series
 
- #define RUNTIME_PM_OPS(suspend_fn, resume_fn, idle_fn) \
--       .runtime_suspend =3D suspend_fn, \
--       .runtime_resume =3D resume_fn, \
--       .runtime_idle =3D idle_fn,
-+       .runtime_suspend =3D pm_ptr(suspend_fn), \
-+       .runtime_resume =3D pm_ptr(resume_fn), \
-+       .runtime_idle =3D pm_ptr(idle_fn),
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
- #ifdef CONFIG_PM_SLEEP
- #define SET_SYSTEM_SLEEP_PM_OPS(suspend_fn, resume_fn) \
-
-Commit 1a3c7bb08826 ("PM: core: Add new *_PM_OPS macros, deprecate
-old ones") introduced all the macros with the intent of using pm_ptr()
-and pm_sleep_ptr() in them, and I think Paul accidentally forgot to add
-those in this instance.
-
-       Arnd
+[1] https://lore.kernel.org/lkml/20220721172727.14624-1-angelogioacchino.delregno@collabora.com/
 
