@@ -4,70 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF9BFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 18:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CB6BC43334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Jul 2022 21:28:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DrB3OBw238QfJvsk/V9RCxvF+LWolaFj/h1IiHXV0ZE=; b=HZ5FUlCjNR49dus+/KbLnExs0p
-	9Hj1kDIr7ebVQH/HHNi41rRyxYwhtgrqRxP9aveVwvMrgOqx3Dz4BKvlBTDohW5AO1NJ4RqI54ikq
-	/fK9MveKfZR8B1RypbYY8ZvNVTa2CWXtzzATgE6hV3zXEoOiKN6OEqfkTpB/O9I1ntm/RIQ/P8Iiy
-	UDBTZHwuavNSW3b9g2nY7dbY8W9tE4KYiR6oeYxwBnWj5sqspEBI7mnFil6RRNfA3CO5B8fAjW1aP
-	SLdXAo7q8hdGVU2DPaI1cmQbqucRjTIngKniy3h68n+X2+RRj3HBsBX/fF3Ov1F6QwSwV0bYQvbTq
-	tZ7C+Kzw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Y+4pPbHoJuz+mVWdzAPQM0rRrJIgIdixEMQHV/ZC2Bo=; b=diNk9Bau6QZSFmg9wtxv13wLym
+	GdcGH2Db7OHr/24gXvM9jvqvB1cStikU3N/SI7UvBAsziuS9vHOpEzJRM3tu5O2e8OkaCcyj6abWt
+	CmSURPZ0LkGfYFntbGU+PvvEznjdJUEoIE59bOtTojdrjUuUV+LMUluNieadMF3fdl0tcNvLo8rJT
+	oQ688bt9acyYpZ1pfEDg3SFCLSwCTqIoZHwPZHvRZymrhGrugwkJKlb06RDbUjl4W8NldUTDaCGHY
+	UCfZqKr5co6FxtPwPjVq9q1kU/PWBlCjkLIXNiNVExUGsyv9MNWvu0VVxniL6xILJf76orNYHDYsR
+	/l0kpwRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG2ce-00GRgc-Da; Mon, 25 Jul 2022 18:16:04 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oG5d0-002h2D-Iq; Mon, 25 Jul 2022 21:28:38 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG2cb-00GRf5-9g
-	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 18:16:02 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B7F10B810A2
-	for <linux-mediatek@lists.infradead.org>; Mon, 25 Jul 2022 18:15:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59797C341C6
-	for <linux-mediatek@lists.infradead.org>; Mon, 25 Jul 2022 18:15:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658772958;
-	bh=agwYaHzbPK1VDytUTtodWqQ0MWkJCgfOTTaATnI0EHU=;
-	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
-	b=bKJ/6KXy1/PoqQ34/iVJ2Agab81iYX08r1gfm7lXaTHsXqyHbwX25f39jtNDCpdaZ
-	 oPdj/czBnuL2lzxefs3jS20t5gsMRKmLtM16fSjOEjTeKOiVottfwz0VAJVxiLjPE4
-	 /1Q/IMq0B61pSS5ambMqWgDESDuaOeWkV6Ogr9AXYyZ/StGQAr0AdhRKtdwdGliH0m
-	 ZxmVG9XbteMYgZAPOB4EftFQm69Y1FpAUng2BuT+OY9d4Dl+qihVavu/MdkFtroPQZ
-	 3wqlv38qi6iKASGQnQEGz+RoP1loWmUTQZPBnqvva9Cyt7bDF8rNBMFYHTmewDiHet
-	 w160U7tnThdBA==
-Received: by mail-il1-f180.google.com with SMTP id v2so2733548ilm.4
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Jul 2022 11:15:58 -0700 (PDT)
-X-Gm-Message-State: AJIora8U2S9arXdKrJyH02AzI2HudgHuIhWyPYweKz6zDQGUEktgjszO
-	qtd7g7iLjMO3/PdL+5EyNYZF8fu7SUzG/hjlUpA=
-X-Google-Smtp-Source: AGRyM1utbjTU1C9uhbSuRLSz4HE51dpqipV7dPRpR3rKxUCJvmO4NYWEao1eshc6X5HBgkWJLwRwK539LOnwcgWYbfM=
-X-Received: by 2002:a05:6e02:1aa5:b0:2dc:8302:5dc3 with SMTP id
- l5-20020a056e021aa500b002dc83025dc3mr5005700ilv.243.1658772957560; Mon, 25
- Jul 2022 11:15:57 -0700 (PDT)
+	id 1oG5c8-002fog-P8
+	for linux-mediatek@lists.infradead.org; Mon, 25 Jul 2022 21:27:46 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id z13so17707618wro.13
+        for <linux-mediatek@lists.infradead.org>; Mon, 25 Jul 2022 14:27:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linexp-org.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=Y+4pPbHoJuz+mVWdzAPQM0rRrJIgIdixEMQHV/ZC2Bo=;
+        b=ybgq1bQw5JTchd8a23+QTuXwRK92Wz4uj6aBKpdF2CjDPZvoPh1AhpM07Vfmh4dMc9
+         +tRqx6rBEv16XPq5nh6iX8HC3JyYRshmsE60ihz2r8O+CqI2ol93GArWwQMNrkBH6W+m
+         2ePcLAhTwaIumi7L06v3eb9pOqxjmey+jBW6XddLcAyz3j1KwRL6ZLYq2v8dxPzpTfc7
+         2SrtgSPNtG+T7It9Vdb/E/KOZ8crbZVMl4ov7bkEYTqNmaOC1/8h6KRfIwCF46QQfN6j
+         hVXA8WON6RQn+Mu82nrUm4XVYx6Xkl52eomujzkl6kaagqE8VBZZaKKKuf065ykyWQEB
+         NVyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=Y+4pPbHoJuz+mVWdzAPQM0rRrJIgIdixEMQHV/ZC2Bo=;
+        b=Pe0na/ifbGqjibNtaN8jMbvSM+A8o4s+KOqk5MeVs8cesgIv+32zROD+aGcepqpaHb
+         w2+MMqEwAvbRdZ9Kz0YB8lKp9ps/vptCGwbzV+7/dr0Puq5XObcxspZRwahNJtBaiply
+         0v+FEOWyEisHWHjyIkss9MNnYJUYBZhG6jsia07AfTYa9xC3Q1LL8/Tmymv0fywDVimE
+         3UPE5HMiXn0uRHPI4TWyZz/nqoeN7IH+N0RoBnzkxylxI+Ss2dmUQ3wYiFNS7xoWnUYs
+         +kMagEPnVULTLDaTBd9JbNptbZXjbUQ9DlzqcV6Ihncu5ZaFWfA2i1ZgjBcsbrnhMX9Q
+         16Jg==
+X-Gm-Message-State: AJIora9RUkIJXYiJuvp8cC3mCrUefBsPFoUpw5Re43QlpqhNMtHnqz6X
+	BCXF7aeWP1Pe+vdeSUxT18oXyA==
+X-Google-Smtp-Source: AGRyM1tVVTPgbv6m/PfwEAw+Q3+sp9/OXWPj7BXkkTzeL9SI/ci+YdWF7OjntDndJ+hlHcYZWICbpA==
+X-Received: by 2002:a5d:604a:0:b0:21e:6b84:a4d8 with SMTP id j10-20020a5d604a000000b0021e6b84a4d8mr8479548wrt.187.1658784464351;
+        Mon, 25 Jul 2022 14:27:44 -0700 (PDT)
+Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:1780:8e54:dd38:6668])
+        by smtp.gmail.com with ESMTPSA id r17-20020a5d52d1000000b0021d68a504cbsm12668772wrv.94.2022.07.25.14.27.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Jul 2022 14:27:44 -0700 (PDT)
+From: Daniel Lezcano <daniel.lezcano@linexp.org>
+To: daniel.lezcano@linaro.org,
+	rafael@kernel.org
+Cc: rui.zhang@intel.com,
+	linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	khilman@baylibre.com,
+	abailon@baylibre.com,
+	lukasz.luba@arm.com,
+	broonie@kernel.org,
+	damien.lemoal@opensource.wdc.com,
+	heiko@sntech.de,
+	hayashi.kunihiko@socionext.com,
+	mhiramat@kernel.org,
+	talel@amazon.com,
+	thierry.reding@gmail.com,
+	digetx@gmail.com,
+	jonathanh@nvidia.com,
+	anarsoul@gmail.com,
+	tiny.windzz@gmail.com,
+	baolin.wang7@gmail.com,
+	f.fainelli@gmail.com,
+	bjorn.andersson@linaro.org,
+	mcoquelin.stm32@gmail.com,
+	glaroque@baylibre.com,
+	miquel.raynal@bootlin.com,
+	shawnguo@kernel.org,
+	niklas.soderlund@ragnatech.se,
+	matthias.bgg@gmail.com,
+	j-keerthy@ti.com,
+	Amit Kucheria <amitk@kernel.org>,
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v2 20/32] thermal/drivers/mtk: Switch to new of API
+Date: Mon, 25 Jul 2022 23:26:25 +0200
+Message-Id: <20220725212637.2818207-21-daniel.lezcano@linexp.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220725212637.2818207-1-daniel.lezcano@linexp.org>
+References: <20220725212637.2818207-1-daniel.lezcano@linexp.org>
 MIME-Version: 1.0
-References: <42437b6fc5dac19bf23f9806dfbe6915e055397b.camel@mediatek.com>
-In-Reply-To: <42437b6fc5dac19bf23f9806dfbe6915e055397b.camel@mediatek.com>
-From: Josh Boyer <jwboyer@kernel.org>
-Date: Mon, 25 Jul 2022 14:15:46 -0400
-X-Gmail-Original-Message-ID: <CA+5PVA6uJtrzZZ=k0g6u1ycTm-oXSuuUoddSG8rUebGftnKu5g@mail.gmail.com>
-Message-ID: <CA+5PVA6uJtrzZZ=k0g6u1ycTm-oXSuuUoddSG8rUebGftnKu5g@mail.gmail.com>
-Subject: Re: pull request: linux-firmware: Update Mediatek MT8183/MT8192/MT8195
- SCP firmware
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Linux Firmware <linux-firmware@kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>, Yunfei Dong <yunfei.dong@mediatek.com>, 
-	Shawn Ku <shawnku@google.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	Justin.Yeh@mediatek.com, "allen-kh.cheng" <Allen-KH.Cheng@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_111601_503408_457345E1 
-X-CRM114-Status: GOOD (  16.41  )
+X-CRM114-CacheID: sfid-20220725_142744_835772_8C32CD52 
+X-CRM114-Status: GOOD (  15.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,44 +116,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 22, 2022 at 4:29 AM Tinghan Shen <tinghan.shen@mediatek.com> wrote:
->
-> Hi maintainers,
->
-> Update SCP firmware for MediaTek MT8183/MT8192/MT8195.
-> Thank you!
->
->
-> Regards,
-> TingHan
->
-> ---
->
-> The following changes since commit 4421586e8e95ce789cb6b3f1af98962bfef74c7b:
->
->   amdgpu: update renoir to release 22.20 (2022-07-19 06:44:08 -0400)
->
-> are available in the Git repository at:
->
->   https://github.com/tinghan-shen/linux_fw_scp mtk-scp-20220722
->
-> for you to fetch changes up to 56cf6461a82b08facd41154f7c44a19f0a085f66:
->
->   mediatek: Update mt8183/mt8192/mt8195 SCP firmware (2022-07-22 16:16:27 +0800)
->
-> ----------------------------------------------------------------
-> Tinghan Shen (1):
->       mediatek: Update mt8183/mt8192/mt8195 SCP firmware
+The thermal OF code has a new API allowing to migrate the OF
+initialization to a simpler approach. The ops are no longer device
+tree specific and are the generic ones provided by the core code.
 
-Pulled and pushed out.  Thanks.
+Convert the ops to the thermal_zone_device_ops format and use the new
+API to register the thermal zone with these generic ops.
 
-josh
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linexp.org>
+---
+ drivers/thermal/mtk_thermal.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
->
->  WHENCE                  |   6 +++---
->  mediatek/mt8183/scp.img | Bin 1032064 -> 1030776 bytes
->  mediatek/mt8192/scp.img | Bin 327968 -> 328096 bytes
->  mediatek/mt8195/scp.img | Bin 429668 -> 429820 bytes
->  4 files changed, 3 insertions(+), 3 deletions(-)
->
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index ede94eadddda..8440692e3890 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -679,9 +679,9 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+ 	return max;
+ }
+ 
+-static int mtk_read_temp(void *data, int *temperature)
++static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
+ {
+-	struct mtk_thermal *mt = data;
++	struct mtk_thermal *mt = tz->devdata;
+ 	int i;
+ 	int tempmax = INT_MIN;
+ 
+@@ -700,7 +700,7 @@ static int mtk_read_temp(void *data, int *temperature)
+ 	return 0;
+ }
+ 
+-static const struct thermal_zone_of_device_ops mtk_thermal_ops = {
++static const struct thermal_zone_device_ops mtk_thermal_ops = {
+ 	.get_temp = mtk_read_temp,
+ };
+ 
+@@ -1082,8 +1082,8 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, mt);
+ 
+-	tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
+-						     &mtk_thermal_ops);
++	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
++					      &mtk_thermal_ops);
+ 	if (IS_ERR(tzdev)) {
+ 		ret = PTR_ERR(tzdev);
+ 		goto err_disable_clk_peri_therm;
+-- 
+2.25.1
+
 
