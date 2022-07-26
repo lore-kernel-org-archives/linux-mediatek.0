@@ -4,77 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFEDEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 08:40:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2C54C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 08:55:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6exF3OBLVwbRc0uE+3pWSJbfbRnCNfKNxGahvnq5nL0=; b=kNGv5rbFJemkkSIeabAWEHBEQq
-	Ddoturl9HLHFg0VhI8E3x6tOCLypEkzGHWQYtiq6iOc4YZ0PQprxA1beERd9G4JPx3MFgDVeGbw52
-	0GiPyR35XRfHSaku0r0NECe7UmUUEUyqg5XpwJyB61WGDGeDJWLHnLepKtWJYv5r7N4vkO3+H+GQR
-	oLwD0D/X8/HjcI/ibpsY49NFLfWZzTrjrYularmoinRFS/kG8Igfk8rcbKOdIfdl93uMjZWbbDNAS
-	i6uPu5rlLfnRQeQMj+hXuy4s442I/zUunTjPF3aoY3DQRVZ7MzvNGnfOWnofASMhc0kn2zsd6GX4e
-	pvWhEPzw==;
+	bh=WiL7N1V14P6qUA7EWI8jEtTe1G9qlVnHH5dJdtXng+w=; b=IqSkPjfQMxy/0Du9CtaP3bDEAu
+	ah+jJZ0hNWX0RIfnv4THwi74ekY03r6QP8ULQ7BV6bWzDqk2tc7e91f+hwrWPmjudePUA48P9k2Gw
+	jx9V6I/pR1zSFwMKOjzFRCnRNQ9X7Wf08KNprdr7vLycNRiKoFj5AFBSC7gctgOpctMpgLfXDHKTl
+	oD03lGH1+eLNd6bi2FIeHF34uDFkZHg7uCn1fdmeHfVkLMRC6Rk/XMiT53Cw+xWyi2QF6/G4e0KN/
+	oegXiTTMrx4CxPa5VXMaFVlIGcq1Gq//0TPTAb0+QfdIfjsrWJ6YP3lhlpn5GLdj6F2N7bBraxPDT
+	j0a/ULwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGG7N-00ANnP-EE; Tue, 26 Jul 2022 08:40:41 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oGGL9-00Acm7-3o; Tue, 26 Jul 2022 08:54:55 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGG6e-00AN4U-Eb; Tue, 26 Jul 2022 08:39:57 +0000
+	id 1oGGKx-00AcUL-Eo; Tue, 26 Jul 2022 08:54:44 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6CD1B6601B15;
-	Tue, 26 Jul 2022 09:39:53 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 756A96601B15;
+	Tue, 26 Jul 2022 09:54:41 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658824794;
-	bh=o8COaf1WnhJ6CshvmVXvwffuBdxhwn1zG6mdYwCYbMM=;
+	s=mail; t=1658825681;
+	bh=1iaVgIqkvqng7ciBfQWjGnm3J+Dd5w0l/SpsumKNy98=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KfouyMIC5PPMPw26mf23O0tIb+iVGaFLkR/kg5SB28fo7Osxl7Accy9z/wZHXYQnk
-	 L24vXFgaA/XYKaa3IsxSYyKsnKEgyYL9jTnRyVpsEmVVwA5oULUZF3k2f+dsxmVoow
-	 HBzyIv3HeNEtJUR8UjGTME0UWjueCXvKQ8oroEOvbbfZ0PyoX5gm3+Z5dXo/W6lJKE
-	 jc5QZ5DOiYEpHd8GC9S77tdmqazQZNWTe4B/UmSfHmwBW7UsgodnHlgD7jQaNzvIT+
-	 jQK3EFXz8bj+zPlxYitKVRByCuewBJMP3J8YKoERVUMevT9FBVBhTxotsCXUxbmJ7C
-	 K8812Sfxz5JEg==
-Message-ID: <14ddcdb5-cbfc-1215-ffdd-85df8d9d6acb@collabora.com>
-Date: Tue, 26 Jul 2022 10:39:50 +0200
+	b=DTWln5MH9nDgWRzFzCd03y2BUudE9Ndz+sh35jeUDme8zX5EN3n7w8MfN9OBKmYNh
+	 oO55WutYJaPoDELJyyG7bhpvi5zWJDRv5pinsEpUucvps4qHt5be1SkhhVaOUn1hrr
+	 x2EDbnfBaS3QCLa8BTPvrpGgnlbJMByQyhjqT6v0B5qxiek9AvWRuUUza6DJ9ZCoR7
+	 4UDwdFfY9O4UW2AwPLXuNCHMv4Hibfx2MLVg09Krbiz2wsIrt+P+ktq/48vabBM/Wu
+	 p/GuIT7IuWwVgg2aZl0T5RqghCFgm3xcw5hNwCK2Aj4hKqsel15UD8GhIRkblO5NXs
+	 mSp1A2XYzaZbg==
+Message-ID: <c923758d-b591-26bf-8091-527500ae7a6f@collabora.com>
+Date: Tue, 26 Jul 2022 10:54:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH v14 1/3] dt-bindings: mmc: mtk-sd: extend interrupts and
- pinctrls properties
+Subject: Re: [PATCH 2/3] soc: mediatek: update power domain data of MT7623A
 Content-Language: en-US
-To: Axe Yang <axe.yang@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Chaotian Jing
- <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Adrian Hunter <adrian.hunter@intel.com>
-Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Satya Tangirala <satyat@google.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach
- <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>,
- Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>,
- Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>,
- Tian Tao <tiantao6@hisilicon.com>, linux-mmc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Rob Herring <robh@kernel.org>
-References: <20220726062842.18846-1-axe.yang@mediatek.com>
- <20220726062842.18846-2-axe.yang@mediatek.com>
+To: Chukun Pan <amadeus@jmu.edu.cn>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, Rex-BC Chen <rex-bc.chen@mediatek.com>
+References: <20220726030621.7555-1-amadeus@jmu.edu.cn>
+ <20220726030621.7555-2-amadeus@jmu.edu.cn>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220726062842.18846-2-axe.yang@mediatek.com>
+In-Reply-To: <20220726030621.7555-2-amadeus@jmu.edu.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_013956_715109_5CEA4D1B 
-X-CRM114-Status: UNSURE (   9.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220726_015443_667541_CCC0814B 
+X-CRM114-Status: GOOD (  18.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,17 +76,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/07/22 08:28, Axe Yang ha scritto:
-> Extend interrupts and pinctrls for SDIO wakeup interrupt feature.
-> This feature allow SDIO devices alarm asynchronous interrupt to host
-> even when host stop providing clock to SDIO card. An extra wakeup
-> interrupt and pinctrl states for SDIO DAT1 pin state switching are
-> required in this scenario.
+Il 26/07/22 05:06, Chukun Pan ha scritto:
+> When running OpenWrt on MT7623A, I receive a kernel
+> warning as follows (Device dts using mt7623.dtsi):
 > 
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> mtk-scpsys 10006000.scpsys: Failed to power on domain mfg
+> WARNING: CPU: 0 PID: 1 at drivers/soc/mediatek/mtk-scpsys.c:457 0xc04a4130
+> 
+> When I switch the device dts to using mt7623a.dtsi,
+> the system fails to boot:
+> 
+> rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+> rcu: 0-...0: (0 ticks this GP) idle=146/1/0x40000000 softirq=53/53 fqs=1051
+>   (detected by 1, t=2102 jiffies, g=-1111, q=18)
+> Sending NMI from CPU 1 to CPUs 0:
+> 
+> Solved the problem by duplicating the power domain of
+> the MT7623 (except MFG) to MT7623A, the system works
+> fine without kernel warnings/errors.
+> 
+> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Can anyone from MediaTek check if these power domains do exist on MT7623A?
 
-P.S.: R-b tags go after S-o-b tags!
+Thanks,
+Angelo
+
+> ---
+>   drivers/soc/mediatek/mtk-scpsys.c | 35 +++++++++++++++++++++++++++++++
+>   1 file changed, 35 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> index ca75b14931ec..8b5713db1ca3 100644
+> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> @@ -910,6 +910,41 @@ static const struct scp_domain_data scp_domain_data_mt7623a[] = {
+>   		.clk_id = {CLK_NONE},
+>   		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+>   	},
+> +	[MT7623A_POWER_DOMAIN_VDEC] = {
+> +		.name = "vdec",
+> +		.sta_mask = PWR_STATUS_VDEC,
+> +		.ctl_offs = SPM_VDE_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +		.clk_id = {CLK_MM},
+> +		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+> +	},
+> +	[MT7623A_POWER_DOMAIN_DISP] = {
+> +		.name = "disp",
+> +		.sta_mask = PWR_STATUS_DISP,
+> +		.ctl_offs = SPM_DIS_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.clk_id = {CLK_MM},
+> +		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_MM_M0,
+> +		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+> +	},
+> +	[MT7623A_POWER_DOMAIN_ISP] = {
+> +		.name = "isp",
+> +		.sta_mask = PWR_STATUS_ISP,
+> +		.ctl_offs = SPM_ISP_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.sram_pdn_ack_bits = GENMASK(13, 12),
+> +		.clk_id = {CLK_MM},
+> +		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+> +	},
+> +	[MT7623A_POWER_DOMAIN_BDP] = {
+> +		.name = "bdp",
+> +		.sta_mask = PWR_STATUS_BDP,
+> +		.ctl_offs = SPM_BDP_PWR_CON,
+> +		.sram_pdn_bits = GENMASK(11, 8),
+> +		.clk_id = {CLK_NONE},
+> +		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+> +	},
+>   };
+>   
+>   /*
+
+
 
