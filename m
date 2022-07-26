@@ -4,83 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4588CC43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 00:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12000C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 02:21:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-ID:Content-Type:
-	MIME-Version:References:Message-ID:In-Reply-To:Subject:cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M/WDU4tI4EEY0hnCnjZh/nF+JXQXLA4WTQdigik0Ic4=; b=NoeK6/mf7xywbuU789A/0E2CHF
-	ctfgkEBzw/No3wWt3acgJ4H86JmnqEUSD6a6SZ09Qb29OQ+J8nFsFuKPLIayEENTdyvgVGnERr9M7
-	t4OJ++igCiN9ZSiv+uCtdThv6HasXyA+cUH8gkL1lc72h7RftXukBVuXSGQ+zyU5yPmG4p+JvgERr
-	7tA5KE2uZ1mjX4ZUfK9wTTBMOyncU5edD/kV89M39SPvlMVJ+vr8YQOv2RsqMZzQlDz/bMcYJySYD
-	9gSKcshK6uj+9U1L1yWv56Sll1ow3p8OsB60c1/UQmUO2d3AfgQGDAyCQitSWSDqJsUZxkWuk2qNc
-	2gvbSrBw==;
+	bh=W0xMOzx9xkEwYcg4IC9rpOdFz/8JFTGOz3GpQHY8CyA=; b=gJNLs18q0vmVML9NIVORrvC2BV
+	9g29wnlp/2zmcE6s4JA1bLuCmW177W+nrlD6oxQnjcQt8yeQNWLumN+9o4ox6tNGrlhES/kvoIqLZ
+	zEQ1wROLJyRK5d8CJbuXZiHNM6d73+x82/JZAcNCHOrXjsKWshELOrvPqfmbm3H8lKd2JJU5FHe1Y
+	FsfiJbwv+fmmlAlH5HlDXf64wWt6Mg/7YKTMti0FIYF0zIB2g/wWuLwwXX9ap+eDWKB0J+lZv/BqS
+	AWgLArYlo0T5x/g8x+s31BtPpezQFPdYskxRDAt0t25aU/ohJ+Vy6LvRfCVXOVB7xwbIdjIy67Ey9
+	VUoToscA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG8n8-006Vwi-G8; Tue, 26 Jul 2022 00:51:18 +0000
-Received: from out3-smtp.messagingengine.com ([66.111.4.27])
+	id 1oGABq-006qca-V2; Tue, 26 Jul 2022 02:20:54 +0000
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG8n4-006Vvp-Js
-	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 00:51:16 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailout.nyi.internal (Postfix) with ESMTP id 7AA765C00CE;
-	Mon, 25 Jul 2022 20:51:07 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute5.internal (MEProxy); Mon, 25 Jul 2022 20:51:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-id:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
-	:x-sasl-enc; s=fm3; t=1658796667; x=1658883067; bh=M/WDU4tI4EEY0
-	hnCnjZh/nF+JXQXLA4WTQdigik0Ic4=; b=kz4Nos2R91H+Y/HSHwa3fK0mriSIg
-	yOQSPi66heTQsTc8F/Ssi0nc7cGKYQa1SFewibQM6AcOvbH42XPqDjoruYgJeh8c
-	k+cn7kyQ8bDX5tbnLqcPyMEKISbA3Nis7jN/r2Wo2OnXap+ssqqT53dSOD1xyIlP
-	8Cz5FRgAkY8kPdjB3juC8NlJlSmpRvDUiNzeKcPCxPR6SY26O9VvkaRJUYkMj6LI
-	h9JEYRZPoLMXJqBu1xsqtV7el+vBlsYdu2HcwIYGnsiv9DtPVGxkYWzb9Pcf3DHl
-	nF+LDxqz9zYhEPazTZ6x026Cx18hDUR9/IIueSXkxuuoTXlNkcVHzt79A==
-X-ME-Sender: <xms:ejrfYkHwlcOVbt5uSdqiw54NQiW2e_5L9UhAQyovTmJFf_0Vibm9NQ>
-    <xme:ejrfYtXNkx4ajqIK2qjSC77IHWfjcdIQdLcgbUtLZjG5ljARXV_IMBOoDq-djliBf
-    6o2nBvfP-K6dmR3DPA>
-X-ME-Received: <xmr:ejrfYuJZmD0ZMRjUhhjf5deI7vVORzg4NMUwkedmsqfC9DuSnvf5lxmNTNt9WVQ9WHUBIoGw-JzoEduwE2Lf7LuTVMInebROQwo>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvddtledgfeelucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvfevufgjkfhfgggtsehmtderredttdejnecuhfhrohhmpefhihhnnhcu
-    vfhhrghinhcuoehfthhhrghinheslhhinhhugidqmheikehkrdhorhhgqeenucggtffrrg
-    htthgvrhhnpeelfeeklefggfetkedukeevfffgvdeuheetffekledtfeejteelieejteeh
-    geelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
-    hfthhhrghinheslhhinhhugidqmheikehkrdhorhhg
-X-ME-Proxy: <xmx:ejrfYmG92jeKIuULGIDi9eWnUMdBm76bMgOHtGxThbHLlOXJjzKrUA>
-    <xmx:ejrfYqWM9z3zPiKkLZqIcKJamahnx0t-NLeJWfh_stHyTtlIyIGinQ>
-    <xmx:ejrfYpO8xQkUEoTxJ7UvSDo243o2dfLepHoMdmvQ5UQCjDA4NUCGrw>
-    <xmx:ezrfYnW8zRNLUCZecqZhCoVcgesHz8tNjqbhh8z_5p328QtaVnBOTQ>
-Feedback-ID: i58a146ae:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 25 Jul 2022 20:51:03 -0400 (EDT)
-Date: Tue, 26 Jul 2022 10:50:56 +1000 (AEST)
-From: Finn Thain <fthain@linux-m68k.org>
-To: Bart Van Assche <bvanassche@acm.org>
-cc: peter.wang@mediatek.com, stanley.chu@mediatek.com, 
-    linux-scsi@vger.kernel.org, martin.petersen@oracle.com, 
-    avri.altman@wdc.com, alim.akhtar@samsung.com, jejb@linux.ibm.com, 
-    wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, 
-    chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com, 
-    chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, 
-    powen.kao@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com
-Subject: Re: [PATCH v1] ufs: core: change comment message to popular format
-In-Reply-To: <e962c613-7bdc-99f3-4273-b91beec614ee@acm.org>
-Message-ID: <f396dec0-67c2-30f-5be5-c99ecdb985db@linux-m68k.org>
-References: <20220725131558.13219-1-peter.wang@mediatek.com> <e962c613-7bdc-99f3-4273-b91beec614ee@acm.org>
+	id 1oGABd-006qXt-PJ; Tue, 26 Jul 2022 02:20:43 +0000
+Received: by mail-qk1-x730.google.com with SMTP id f14so10117553qkm.0;
+        Mon, 25 Jul 2022 19:20:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=W0xMOzx9xkEwYcg4IC9rpOdFz/8JFTGOz3GpQHY8CyA=;
+        b=bQNzSCTQTDj5oJAikkEBCR3Q/tLaWKw4sj3Vy9sXwlvn8sYyxYtkIYLMGJHXeTnchw
+         taB+Q9JNgrphDka9FLEaK8Qsw28p9ed1+CizwomW4uNr80I+wP1Lqo9LTTYwNWb3V89V
+         GIklfwwZ1L8oQOXN4gS6QzAtgFIiB62NAp+81WQ1VPf3ZNTslXRqVWiUfEk+RoW/cY8f
+         fDSw5bn9W+8qRxPD/H7Me+Tk8/fC32oiFqKIMjraRmMb5Kapx2uuyolL4AP030DYsD1r
+         9zbtprQkDJeDZWr8JDzg2hRZyzyKu9MOyRP/v2uOlFD2v7biNRKTj8XzA8Co9eYGKCHI
+         FE9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=W0xMOzx9xkEwYcg4IC9rpOdFz/8JFTGOz3GpQHY8CyA=;
+        b=JFvENqFDDBBau8xO+zcS01RnlvzL66JEcTi98MBQNC5h5LVIlxRgkrijfRa15uXtkd
+         HjtxOfMJ/TUCOWfeYNTEtGm4tU89wG5GZPMdt7etECzyRMP4kpqWWmxmQSBmT/D1G5cI
+         i7j/fgymncAoTXKSfKCfHDedJX87jBbQ3DiuubE7nVLTFtBOF1995+PjY8Tk13U6ycGC
+         uIyzA2b8C4ehERwEQjNM2dGRCPxFd8bYXniIvymlzbKnJKnGcGFj0cWrLDEuRTp9Nepz
+         9AeThWrkdjZVY2+EASi1bGcrWyg90ldQxVcQJHbTqCBJWjCIaFWLwkwHcN+d9Ffd52B+
+         Yefw==
+X-Gm-Message-State: AJIora+1WsCQfqx/zeqZ3+PLawYZ2vT+sZv6EcX4Cx4nCpUYlG5wcJdK
+	6dJNMPR6AXQ3PPPxj7tTk/VTmQxMOf1HAlr8wqE=
+X-Google-Smtp-Source: AGRyM1tZpCYcrI4GEenV5sl4ffLbB3S1w73dtE0jE5MocjhBVejW7P4d8PE22YJ6HvnYEZBNm5FpvyKW1Z34FzM/KzI=
+X-Received: by 2002:a37:80c2:0:b0:6b5:e9e4:c4c1 with SMTP id
+ b185-20020a3780c2000000b006b5e9e4c4c1mr11082627qkd.129.1658802038657; Mon, 25
+ Jul 2022 19:20:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/mixed; BOUNDARY="-1463811774-132907978-1658795837=:30080"
-Content-ID: <b9adaa9a-2967-e8ad-e5ea-2b1882b2b18@nippy.intranet>
+References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-14-peterwu.pub@gmail.com>
+ <20220725103128.xtaw2c4y5fobowg7@maple.lan>
+In-Reply-To: <20220725103128.xtaw2c4y5fobowg7@maple.lan>
+From: ChiaEn Wu <peterwu.pub@gmail.com>
+Date: Tue, 26 Jul 2022 10:20:02 +0800
+Message-ID: <CABtFH5LUKTZenTktq3v1JZ9xe-yJFsMvCZuwDhmxdT87k0O-zA@mail.gmail.com>
+Subject: Re: [PATCH v6 13/13] video: backlight: mt6370: Add MediaTek MT6370 support
+To: Daniel Thompson <daniel.thompson@linaro.org>
+Cc: Lee Jones <lee.jones@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, 
+	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	Andy Shevchenko <andy.shevchenko@gmail.com>, ChiaEn Wu <chiaen_wu@richtek.com>, 
+	Alice Chen <alice_chen@richtek.com>, ChiYuan Huang <cy_huang@richtek.com>, 
+	dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_175114_767279_CE0B4B94 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20220725_192041_866777_895D1300 
+X-CRM114-Status: GOOD (  40.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,53 +98,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On Mon, Jul 25, 2022 at 6:31 PM Daniel Thompson
+<daniel.thompson@linaro.org> wrote:
+>
+> On Fri, Jul 22, 2022 at 06:24:07PM +0800, ChiaEn Wu wrote:
+> > diff --git a/drivers/video/backlight/Kconfig b/drivers/video/backlight/Kconfig
+> > index a003e02..846dbe7 100644
+> > --- a/drivers/video/backlight/Kconfig
+> > +++ b/drivers/video/backlight/Kconfig
+> > @@ -268,6 +268,18 @@ config BACKLIGHT_MAX8925
+> >         If you have a LCD backlight connected to the WLED output of MAX8925
+> >         WLED output, say Y here to enable this driver.
+> >
+> > +config BACKLIGHT_MT6370
+> > +     tristate "MediaTek MT6370 Backlight Driver"
+> > +     depends on MFD_MT6370
+> > +     help
+> > +       This enables support for Mediatek MT6370 Backlight driver.
+> > +       It's commonly used to drive the display WLED. There are 4 channels
+> > +       inside, and each channel supports up to 30mA of current capability
+> > +       with 2048 current steps in exponential or linear mapping curves.
+>
+> Does the MT6372 support more steps than this? In other words does it use
+> a fourteen bit scale or does it use an 11-bit scale at a different
+> register location?
 
----1463811774-132907978-1658795837=:30080
-Content-Type: text/plain; CHARSET=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Content-ID: <90cc7f52-fc8e-aee1-574c-ae11d18adb8b@nippy.intranet>
+Hi Daniel,
 
-On Mon, 25 Jul 2022, Bart Van Assche wrote:
+Thanks for your reply.
+Yes, MT6372 can support 16384 steps and uses a 14-bit scale register
+location. But the maximum current of each
+channel of MT6372 is the same as MT6370 and MT6371, both 30mA.
+The main reason why MT6372 is designed this way is that one of the
+customers asked for a more delicate
+adjustment of the backlight brightness. But other customers actually
+do not have such requirements.
+Therefore, we designed it this way for maximum compatibility in software.
 
-> On 7/25/22 06:15, peter.wang@mediatek.com wrote:
-> > From: Peter Wang <peter.wang@mediatek.com>
-> >=20
-> > Some editor cannot display =E2=80=980=E2=80=99 =E2=80=981=E2=80=99 in c=
-orrect format.
-> > Change it to '0' '1' for most editor can display.
->=20
-> As far as I know checkpatch accepts non-ASCII UTF-8 characters. Using=20
-> this encoding is essential to spell non-English names correctly in=20
-> source files.=20
+>
+>
+> > +
+> > +       This driver can also be built as a module. If so, the module
+> > +       will be called "mt6370-backlight".
+> > +
+> > [...]
+> > diff --git a/drivers/video/backlight/mt6370-backlight.c b/drivers/video/backlight/mt6370-backlight.c
+> > new file mode 100644
+> > index 0000000..ba00a8f
+> > --- /dev/null
+> > +++ b/drivers/video/backlight/mt6370-backlight.c
+> > [...]
+> > +static int mt6370_bl_update_status(struct backlight_device *bl_dev)
+> > +{
+> > +     struct mt6370_priv *priv = bl_get_data(bl_dev);
+> > +     int brightness = backlight_get_brightness(bl_dev);
+> > +     unsigned int enable_val;
+> > +     u8 brightness_val[2];
+> > +     int ret;
+> > +
+> > +     if (brightness) {
+> > +             brightness_val[0] = (brightness - 1) & MT6370_BL_DIM2_MASK;
+> > +             brightness_val[1] = (brightness - 1) >> fls(MT6370_BL_DIM2_MASK);
+> > +
+> > +             /*
+> > +              * To make MT6372 using 14 bits to control the brightness
+> > +              * backward compatible with 11 bits brightness control
+> > +              * (like MT6370 and MT6371 do), we left shift the value
+> > +              * and pad with 1 to remaining bits. Hence, the MT6372's
+> > +              * backlight brightness will be almost the same as MT6370's
+> > +              * and MT6371's.
+> > +              */
+> > +             if (priv->vid_type == MT6370_VID_6372) {
+> > +                     brightness_val[0] <<= MT6370_BL_DIM2_6372_SHIFT;
+> > +                     brightness_val[0] |= MT6370_BL_DUMMY_6372_MASK;
+> > +             }
+>
+> This somewhat depends on the answer to the first question above, but
+> what is the point of this shifting? If the range is 14-bit then the
+> driver should set max_brightness to 16384 and present the full range of
+> the MT6372 to the user.
 
-The only foreign language that's relevant in the context of this=20
-particular comment is C. Writing '0' to indicate a char value would be=20
-fine but this is not a char value.
+So should we make all 16384 steps of MT6372 available to users?
+Does that mean the DTS needs to be modified as well?
+Or, for the reasons, I have just explained (just one customer has this
+requirement), then we do not make any changes for compatibility
+reasons?
+Thanks.
 
-Quoted and unquoted zeros are used inconsistently in this comment, though=
-=20
-the patch does not address this unfortunately.
+>
+> Especially when using linear mappings (which are a totally pointless
+> scale to use for a backlight) the extra steps are useful for backlight
+> animation.
+>
+>
+> Daniel.
 
-> I don't think it's feasible nor desirable to eliminate all non-ASCII=20
-> UTF-8 from kernel source code files.
-
-That's neither here nor there -- I don't think it's feasible or desirable=
-=20
-to eliminate all bugs from the kernel source code files. One man's bug is=
-=20
-another man's feature e.g. bloat, choice of programming language,=20
-interpretation of license terms.
-
-> Maybe this means that it's time to switch to another editor?
->=20
-
-It's not hard to find more tooling that is impacted by misplaced unicode.=
-=20
-The security vulnerabilities stemming from the use of Unicode in source=20
-files are telling.
-
-Unicode doesn't help here so it shouldn't have been used here IMO.
----1463811774-132907978-1658795837=:30080--
+-- 
+Best Regards,
+ChiaEn Wu
 
