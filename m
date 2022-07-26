@@ -4,73 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A013FC00140
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 18:34:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7079BC00140
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 20:09:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9iC4DHntD7xvX1eDSC1HBk4kQ5QLIBClygzO/QGwT38=; b=QXXPX31ypnAstmHDvBPMQ1kEx5
-	irHlfmgr7ne8SE+TmINFONbmNTUTipOs7tuBIIrl5uwEZjVeFkkoTpwE9ksL0XuNt2HjfuUypQ1Ar
-	eYDq7GFJ6Sxffb4oyANcBm4YU0q1BgVJr/AG7+nyWOAnVHy3dGCMNcOppcsx4Ch63ouP5DrJyPOQl
-	fN9VTlt1n/4ChDjDbvWsI0uMroKRloNbwj5ZCQR8Nl7CQ2F9LpEwtPqwn8uXJyPdVOZJcJVidGO1E
-	PklGZIV1jg8fMJ9S5wt2o/sCqANYvuczPzzwSlRkLaUpfiftlA6+smXm0akm0y7ed0Z5giCDza+Pb
-	AMiSiHZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nrDG32o/nF0+drBL5HQUQubPYkcsSpm90fWevm2EMus=; b=jF7xJ7ZgnBYkX0vepOvB/7pTcB
+	ahNbb4qqK/+BLwQy2R7/Uen/FTinCb+A/wFA29/L/goVbXKNwQeQff3+RpDe2bdGPprd03CxOqcse
+	wTUNCNhJwXRo4ug0IOAOw+Dqow3PdWwLH4BFL/0LpF8mWk5M5mRtmpldacGgu9p0wT2J89+VcxhU2
+	4/bdLppzWGCsIhpuJyf7GS2LODsx+Wi6isTC3378kiCFdtbhxWsFfHuqa9XGlNE6Il0oFCMo7ifUB
+	HdsXZWWXKYzShqkhcjAYX2f4WaYkDu4AaDX9mAIMgZyfFaxYtxLi57cF/T3He8C1YDZmjmSqoOdl5
+	wokoz4lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGPO9-002A7H-HE; Tue, 26 Jul 2022 18:34:37 +0000
-Received: from mail-pg1-f177.google.com ([209.85.215.177])
+	id 1oGQrx-0032ei-1X; Tue, 26 Jul 2022 20:09:29 +0000
+Received: from mail-il1-f182.google.com ([209.85.166.182])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGPO7-002A3w-BF
-	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 18:34:36 +0000
-Received: by mail-pg1-f177.google.com with SMTP id r186so13873730pgr.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Jul 2022 11:34:32 -0700 (PDT)
+	id 1oGQrb-0032NL-FM; Tue, 26 Jul 2022 20:09:08 +0000
+Received: by mail-il1-f182.google.com with SMTP id i5so7814923ila.6;
+        Tue, 26 Jul 2022 13:09:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=9iC4DHntD7xvX1eDSC1HBk4kQ5QLIBClygzO/QGwT38=;
-        b=Mnb3szsgIDLRj+k5aWvQQLbyWeS/kBVXFRnDbnjDdrE++eHte4ED953/hzuqWRlahN
-         Oq9ZzZCA+aC4+uu8PHM082n7vOzvOtAWz8Hg/iAKoRySwVHVuk23Fah6R/D0Uh/xZML7
-         7w/hjwVuZZ4LVRz3BeAzQodH/6cDJP8WbJ+NGwlXw3aCFDmPWOj/y9CbIcE1mRmtoTFf
-         M7p+YZnqKJ9t05rYNDVt2pQ4A7KEm323EVWH0DdacGCsWwM71RQxH4uYDcRRDiVWWMpQ
-         X0VZvrid8kiULHBbaYyI9lwHc+skYVeuye53DjEXyzLvOowAoGtZLsptLA0LHVKKS6tr
-         4RVg==
-X-Gm-Message-State: AJIora/xgymGCAQGr8pgN8euOu0jveX+svulWYvlBhFetKK29e9ZWlNo
-	eQu7HiK8GvpP0CBENyNqr54=
-X-Google-Smtp-Source: AGRyM1trXbSNGbtwlha5HjgkQeZN1fwHLv0GvtlpTt7idl6MXS34Uje3AbSmSUUjU1P1n8BRbnpuRQ==
-X-Received: by 2002:a63:6116:0:b0:41b:29b2:f6c9 with SMTP id v22-20020a636116000000b0041b29b2f6c9mr4189599pgb.300.1658860472246;
-        Tue, 26 Jul 2022 11:34:32 -0700 (PDT)
-Received: from ?IPV6:2620:0:1000:2514:d651:8cbe:9208:2d2e? ([2620:0:1000:2514:d651:8cbe:9208:2d2e])
-        by smtp.gmail.com with ESMTPSA id f4-20020a170902684400b0016c1cdd2de3sm11812609pln.281.2022.07.26.11.34.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 26 Jul 2022 11:34:31 -0700 (PDT)
-Message-ID: <99a93de2-70ee-da5f-4e94-676c0666acc2@acm.org>
-Date: Tue, 26 Jul 2022 11:34:29 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v4] ufs: core: correct ufshcd_shutdown flow
-Content-Language: en-US
-To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, stable@vger.kernel.org
-References: <20220726113653.25024-1-peter.wang@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20220726113653.25024-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+        h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+         :message-id;
+        bh=nrDG32o/nF0+drBL5HQUQubPYkcsSpm90fWevm2EMus=;
+        b=DRNn/sAAsT+SwffEzC2bNUbPQcIubYEVbLQu8Ur5DqFPwH/uzEZFOK7xH8wrnnrwUP
+         AYB5q2NZ+xdtVw7qBMqbDy0IQUu8m79dIuBw6XvL3YfnA8gg0Vkbxss4GOf5jPIb4+ue
+         mE26FaEEXYfSGPrX8ThrhzZHF4HukD3/g1X+9oBpco/+MEy1Sa9ONeMYT5WXUFNWij44
+         t0sGW8pzgMOKBRhqZb8i6D72/g3sRPlOEn8P98QtnbnkVq/7Ydc5Q+bgkLltOBYOFspt
+         4byKv7QAK0SsqkmrxMrwbUY3BZZpNinpZv+irRfARS2pwi8RbdIWgrbW+QtffSezepk2
+         L01A==
+X-Gm-Message-State: AJIora/zkTLv0oji3lzTaXk7tnNHKY8/6TQAaLrNCpnzUs5+T5WPqobF
+	ChOhs4ZPzFHuRa0dx4BlMA==
+X-Google-Smtp-Source: AGRyM1uhqlxORuUmIgfm9uGaklPD+6R+WsuRI46aW6jH891vImtrJFDsBDRJwFUBPN+Qa2GUfxDIYA==
+X-Received: by 2002:a05:6e02:180d:b0:2dd:6150:58b0 with SMTP id a13-20020a056e02180d00b002dd615058b0mr3659262ilv.265.1658866145360;
+        Tue, 26 Jul 2022 13:09:05 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id k4-20020a0566022d8400b0067be568081fsm7588026iow.43.2022.07.26.13.09.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Jul 2022 13:09:05 -0700 (PDT)
+Received: (nullmailer pid 782233 invoked by uid 1000);
+	Tue, 26 Jul 2022 20:09:02 -0000
+From: Rob Herring <robh@kernel.org>
+To: Balsam CHIHI <bchihi@baylibre.com>
+Cc: rui.zhang@intel.com, rex-bc.chen@mediatek.com, daniel.lezcano@linaro.org, amitk@kernel.org, mka@chromium.org, linux-kernel@vger.kernel.org, abailon@baylibre.com, robh+dt@kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com, linux-pm@vger.kernel.org, rafael@kernel.org, khilman@baylibre.com, fan.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, krzk+dt@kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, louis.yu@mediatek.com, james.lo@mediatek.com
+In-Reply-To: <20220726135506.485108-3-bchihi@baylibre.com>
+References: <20220726135506.485108-1-bchihi@baylibre.com> <20220726135506.485108-3-bchihi@baylibre.com>
+Subject: Re: [PATCH v8 2/6] dt-bindings: thermal: Add binding document for LVTS thermal controllers
+Date: Tue, 26 Jul 2022 14:09:02 -0600
+Message-Id: <1658866142.328871.782232.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_113435_413273_C3E31775 
-X-CRM114-Status: UNSURE (   8.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220726_130907_539010_E2C533D6 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,18 +73,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/26/22 04:36, peter.wang@mediatek.com wrote:
-> In normal case: ufshcd_wl_shutdown -> ufshcd_shtdown
-> ufshcd_shtdown should turn off clock/power after ufshcd_wl_shutdown
-> which set device power off and link off.
+On Tue, 26 Jul 2022 15:55:02 +0200, Balsam CHIHI wrote:
+> This patch adds dt-binding documents for mt8192 and mt8195 thermal controllers.
+> 
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> ---
+>  .../thermal/mediatek,mt8192-lvts.yaml         | 73 ++++++++++++++++++
+>  .../thermal/mediatek,mt8195-lvts.yaml         | 75 +++++++++++++++++++
+>  2 files changed, 148 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,mt8192-lvts.yaml
+>  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,mt8195-lvts.yaml
+> 
 
-The above sentence is confusing: it mentions "normal case" which 
-suggests there is also an abnormal case. Isn't the order in which 
-ufshcd_wl_shutdown() and ufshcd_shutdown() are called always the same?
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Otherwise this patch looks good to me.
+yamllint warnings/errors:
 
-Thanks,
+dtschema/dtc warnings/errors:
+Error: Documentation/devicetree/bindings/thermal/mediatek,mt8195-lvts.example.dts:32.36-37 syntax error
+FATAL ERROR: Unable to parse input tree
+make[1]: *** [scripts/Makefile.lib:383: Documentation/devicetree/bindings/thermal/mediatek,mt8195-lvts.example.dtb] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1404: dt_binding_check] Error 2
 
-Bart.
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
