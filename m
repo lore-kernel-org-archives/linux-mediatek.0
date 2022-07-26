@@ -4,67 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 494C8C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 11:28:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2920C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 11:29:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pbr8E7oXJum+hUKEvJbOgbu9aokihtm3r7xC4blIFwI=; b=p0+2s8lpbD8UvQWYlgtiYJM1yq
-	u+3YzwFgpfxldG4NCUbtPk6o71AqcvUO32pkRy3ZV4gJM9J5zg/974bZ2IEcgK2WhhiRIRN5+HCPH
-	uhsxVzuhps6D+xrEtzZq0GyLvBNtvmi0ugWeG6o94TxRIoYKMDsurbmDKhyIPBTkGel5NoNhIwklq
-	gBEfWojVgtZZv3JIN8emkwOuyVh1H8XUvpZnqcu5gx4x586opTC2ML6g72rrGgL6dZIe2TVNhVmtP
-	trOrV+zQz+HXNkib9XyBG/D3EaNh1T7hWfAETa8Uiwr0lCA63vOWGCPRutvNXYhJyXhqYiTJl2aeT
-	vsQwG80g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XmalPe35Kd6mBY2zrJx1/gBiFU0BeHwwnpYA4t5eT1A=; b=DnHUPYBmftfbh1oanModFbn5Xq
+	9QTGKHn+7dpgQ+2fq/poQNVnV6VczLWiR7RnsxTCh3tAcKNFs2kGlnSiN5B/HOOUGccwFsKhGRAvL
+	ODfRcru6UHp2iiiwJSQuy7Jt/LSCNmQl4aP8rIK0tnRRnw2LMlH/RvY1+69Pcd9jJDmGlZqkwzBrJ
+	+d6smP7P4eJOLwThd90VSA5XyzS2Ohtf9g/xAK2lh6/uoVFC0Brb6/KtnR5GCgjE9i0VY7h2cDQi/
+	mHjgQdmxdaJ79MdViZWgceEpsQhjtqYRR591UeJ+XJh7NeDGDmO1nWTpPDk/A2hMqQsVI2IoBWg9v
+	WwUSURzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGIjV-00Fn7a-11; Tue, 26 Jul 2022 11:28:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oGIku-00Fp1I-0P; Tue, 26 Jul 2022 11:29:40 +0000
+Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGIjS-00Fn5Q-ME
-	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 11:28:11 +0000
-X-UUID: 00c828bdc2be4079b9ea4b4538b974af-20220726
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:d5df8723-182d-4ead-9156-ee0d4ccdd325,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:86638ab3-06d2-48ef-b2dd-540836705165,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 00c828bdc2be4079b9ea4b4538b974af-20220726
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <sen.chu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1920617709; Tue, 26 Jul 2022 04:28:07 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 26 Jul 2022 18:37:32 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 26 Jul 2022 18:37:31 +0800
-From: Sen Chu <sen.chu@mediatek.com>
-To: Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-CC: Hui Liu <hui.liu@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Sen Chu
-	<sen.chu@mediatek.com>
-Subject: [PATCH] dt-bindings: spmi: add compatible for mt8188
-Date: Tue, 26 Jul 2022 18:37:29 +0800
-Message-ID: <20220726103729.24525-1-sen.chu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1oGIkh-00Fodh-ER; Tue, 26 Jul 2022 11:29:28 +0000
+Received: by mail-qk1-x72f.google.com with SMTP id m16so10668942qka.12;
+        Tue, 26 Jul 2022 04:29:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=XmalPe35Kd6mBY2zrJx1/gBiFU0BeHwwnpYA4t5eT1A=;
+        b=A+GVbwXYOQP9Ox0/Kg5yJeoRW3oXpzMBaZl6QHpaFwLO6M1T19td44HKBJCw3Vx3Ve
+         ktmd1UtTbJD+BAaE6zqsTfR3VrFzvGc1ycrJ+1lK2/hvc3kasb+7PiA3SElolBBnXFtK
+         qNU1M+I1TW7DWOgloMTsxyAJYT/wMoGf+hgjJGl9GvTc59XZdmliUpeVii4f7rRJUKci
+         5+dm/XriHCRguOo9xXqJD+t0HnoByVTO++9VWPfq2ouA2m5kGH3x5qWmIItqJ8Gb6hmg
+         QDG8W9CtjH9uOf16p6XpJYeR5nrHxBx+z15ijLhKIUSlUrs9jUJNTlakGqIxckxJcedo
+         9gMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=XmalPe35Kd6mBY2zrJx1/gBiFU0BeHwwnpYA4t5eT1A=;
+        b=FiJBGSUtw4hgutT6YEHBy1vxdZTIfDRfBpPaEl1I754csiZSTlR8tTIZ2VwKuGSVyl
+         pAH9gQQfZWKEbjRCPXwmRR0C9Df9WvrvwfzXvEsvB3wYJkTRjJLOoBqzq4eC9JbSUy+D
+         sobv/0I0PmknH2HyubLfqg29RGrl5AghHcqt6eVQCgIR7p3mlIcDasADv+rrjApmJFQb
+         ipyEHksVA+Cv+++x/JfOdOEsnR7IrXgh6Sm2mcvfnD/gJoNJWW6VfSPoPW6HTuJI2zSz
+         SAvFXcaQgtninGnRBcup+QYBGA48Eo8pg4pNoPqZPIoSOMj2Y0HajLB+gjCHBs5GPo1N
+         YMAg==
+X-Gm-Message-State: AJIora8xjx71tt21nwu236BkOAnrSLQFflyO2gLEXOjO7FBL/+MnLfwE
+	MR6KGrbKYEYiN7ZaDXrxf74878ZvmlRrqCYOqJc=
+X-Google-Smtp-Source: AGRyM1si+IPV1ALNFzlmWfFOBqoGQxrsIfnktGjjWvpLW/pQqJdQWp+MkeEPkSRN7kGJUl8EvpjK1o1GylYFhHZ2kkc=
+X-Received: by 2002:a05:620a:2942:b0:6b5:e33a:1771 with SMTP id
+ n2-20020a05620a294200b006b5e33a1771mr11971449qkp.665.1658834964512; Tue, 26
+ Jul 2022 04:29:24 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-14-peterwu.pub@gmail.com>
+ <20220725103128.xtaw2c4y5fobowg7@maple.lan> <CABtFH5LUKTZenTktq3v1JZ9xe-yJFsMvCZuwDhmxdT87k0O-zA@mail.gmail.com>
+ <20220726093058.2fz2p2vg7xpfsnfe@maple.lan>
+In-Reply-To: <20220726093058.2fz2p2vg7xpfsnfe@maple.lan>
+From: ChiaEn Wu <peterwu.pub@gmail.com>
+Date: Tue, 26 Jul 2022 19:28:48 +0800
+Message-ID: <CABtFH5+in-+=6r3wOvQ8-78DT9CXaMursJukhx+kdwMvvP3djw@mail.gmail.com>
+Subject: Re: [PATCH v6 13/13] video: backlight: mt6370: Add MediaTek MT6370 support
+To: Daniel Thompson <daniel.thompson@linaro.org>
+Cc: Lee Jones <lee.jones@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, 
+	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	Andy Shevchenko <andy.shevchenko@gmail.com>, ChiaEn Wu <chiaen_wu@richtek.com>, 
+	Alice Chen <alice_chen@richtek.com>, ChiYuan Huang <cy_huang@richtek.com>, 
+	dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_042810_749571_9AAE18C5 
-X-CRM114-Status: UNSURE (   7.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220726_042927_532216_88542DF0 
+X-CRM114-Status: GOOD (  49.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,26 +99,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add dt-binding documentation of spmi for Mediatek MT8188 SoC platform.
+On Tue, Jul 26, 2022 at 5:31 PM Daniel Thompson
+<daniel.thompson@linaro.org> wrote:
+...
+> > > Does the MT6372 support more steps than this? In other words does it use
+> > > a fourteen bit scale or does it use an 11-bit scale at a different
+> > > register location?
+> >
+> > Hi Daniel,
+> >
+> > Thanks for your reply.
+> > Yes, MT6372 can support 16384 steps and uses a 14-bit scale register
+> > location. But the maximum current of each
+> > channel of MT6372 is the same as MT6370 and MT6371, both 30mA.
+> > The main reason why MT6372 is designed this way is that one of the
+> > customers asked for a more delicate
+> > adjustment of the backlight brightness. But other customers actually
+> > do not have such requirements.
+> > Therefore, we designed it this way for maximum compatibility in software.
 
-Signed-off-by: Sen Chu <sen.chu@mediatek.com>
----
- Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Sorry for I used of the wrong word, I mean is 'driver', not
+higher-level software
 
-diff --git a/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml b/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
-index 2445c5e0b0ef..05801e0199f9 100644
---- a/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
-+++ b/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
-@@ -20,6 +20,7 @@ properties:
-   compatible:
-     enum:
-       - mediatek,mt6873-spmi
-+      - mediatek,mt8188-spmi
-       - mediatek,mt8195-spmi
- 
-   reg:
+>
+> I don't think that is an acceptable approach for the upstream kernel.
+>
+> To be "compatible" with (broken) software this driver ends up reducing
+> the capability of the upstream kernel to the point it becomes unable to
+> meet requirements for delicate adjustment (requirements that were
+> sufficiently important to change the hardware design so you could meet
+> them).
+
+Originally, we just wanted to use one version of the driver to cover
+all the SubPMIC of the 6370 series(6370~6372).
+And, the users who use this series SubPMIC can directly apply this
+driver to drive the backlight device without knowing the underlying
+hardware.
+To achieve this goal, we have designed it to look like this.
+
+>
+>
+...
+> > > > +
+> > > > +     if (brightness) {
+> > > > +             brightness_val[0] = (brightness - 1) & MT6370_BL_DIM2_MASK;
+> > > > +             brightness_val[1] = (brightness - 1) >> fls(MT6370_BL_DIM2_MASK);
+> > > > +
+> > > > +             /*
+> > > > +              * To make MT6372 using 14 bits to control the brightness
+> > > > +              * backward compatible with 11 bits brightness control
+> > > > +              * (like MT6370 and MT6371 do), we left shift the value
+> > > > +              * and pad with 1 to remaining bits. Hence, the MT6372's
+> > > > +              * backlight brightness will be almost the same as MT6370's
+> > > > +              * and MT6371's.
+> > > > +              */
+> > > > +             if (priv->vid_type == MT6370_VID_6372) {
+> > > > +                     brightness_val[0] <<= MT6370_BL_DIM2_6372_SHIFT;
+> > > > +                     brightness_val[0] |= MT6370_BL_DUMMY_6372_MASK;
+> > > > +             }
+> > >
+> > > This somewhat depends on the answer to the first question above, but
+> > > what is the point of this shifting? If the range is 14-bit then the
+> > > driver should set max_brightness to 16384 and present the full range of
+> > > the MT6372 to the user.
+> >
+> > So should we make all 16384 steps of MT6372 available to users?
+>
+> Yes.
+>
+>
+> > Does that mean the DTS needs to be modified as well?
+>
+> Yes... the property to set initial brightness needs a 14-bit range.
+>
+> It would also be a good idea to discuss with the DT maintainers whether
+> you should introduce a second compatible string (ending 6372) in order
+> to allow the DT validation checks to detect accidental use of MT6372
+> ranges on MT6370 hardware.
+
+hmmm... I have just thought about it,
+maybe I can just modify the maximum value of default-brightness and
+max-brightness in DT to 16384,
+modify the description and add some comments.
+
+And then on the driver side,
+we can use mt6370_check_vendor_info( ) to determine whether it is MT6372.
+If no, then in mt6370_bl_update_status(), first brightness_val / 8 and then set.
+In mt6370_bl_get_brightness(), first brightness_val * 8 and then return;
+
+If I do this change, does this meet your requirements?
+
+>
+>
+> > Or, for the reasons, I have just explained (just one customer has this
+> > requirement), then we do not make any changes for compatibility
+> > reasons?
+>
+> I'd be curious what the compatiblity reasons are. In other words what
+> software breaks?
+
+The reason is as above. We just hope the users who use this series SubPMIC can
+directly apply this driver to drive the backlight device without
+knowing the underlying hardware.
+Not software breaks.
+
+Thanks!
+
+>
+> Normally the userspace backlight code reads the max_brightness property
+> and configures things accordingly (and therefore if you the component
+> that breaks is something like an Android HAL then fix the HAL instead).
+>
+>
+> Daniel.
+
 -- 
-2.25.1
-
+Best Regards,
+ChiaEn Wu
 
