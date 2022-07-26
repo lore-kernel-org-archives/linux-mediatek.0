@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECD79C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 04:04:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3CD3C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 04:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8X0WA+kebRC6mPq3dqdjSQFAk2sYowHyB2qCeMP7O6M=; b=EIjlqXtUvm55urK8Wudg/nPJoL
-	fpYdm+IbZ1GEDW8m+9ovJeo2MAaSlCkUyP6/MORaAdfud/Sk5e56VMD6IE7kcoUMhem150addDVtf
-	jbABWbXq/BMvxPaabIbFlsppQC31LdLfzZvjZVZTlcald6jPo4F9DDJ3eQmgz9TDRApn+gih5Drs4
-	rkYUsbAr/m6Te3tEJEKTRInRN5Fz9eZp9sN3UYadtj3FY+yBMzXjmfIceYUh/gcXGpNT1SvsSIIs1
-	aUGTUbZYbgk/DaWMROr+EpsEaQLNpRo7wN2rt0wCJie9c1g3LJ1+LMMQn+znwPh7VSZdMQ845tEuQ
-	D30XVbiA==;
+	bh=YMwj167Gm1deL3yd7j3ng1swopRvqcIp4vn/wJLrGy4=; b=iCBBRL9/MTBe4X3BQfbJkTC/e0
+	HhHTWP2IxUZuE9GTi0OLlSP94Qe9E1zjfJcZVhayytGP/Sh27wW66goESKSnUmutMuhtjd0vgRE0q
+	mQJR8uwu7d+WrZZ24l+e0cSBTkx2lWQWH4PO3W3KzQvaN5iE1bflMkk3qDPTAHmoAp4N+Aodzte0s
+	WHiGVwMCxMNbn6FVNjVhD+2PTV6xqGmNNQFpQM00pdr9bFma2/8jCtnvofMMWTDUt67SL+ouus86z
+	nMsbWkKJoITlUpneIWtoewN0XJxCX4SL7BmKAaGCOiZOMAc5ywVuzw9nC1B6BRbnIf72QD729ih+s
+	7dk/X7AQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGBoQ-007ITv-SN; Tue, 26 Jul 2022 04:04:50 +0000
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
+	id 1oGBw4-007MsF-NN; Tue, 26 Jul 2022 04:12:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGBo5-007IJ5-1m
-	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 04:04:39 +0000
-Received: by mail-yb1-xb36.google.com with SMTP id c131so23406277ybf.9
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Jul 2022 21:04:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=8X0WA+kebRC6mPq3dqdjSQFAk2sYowHyB2qCeMP7O6M=;
-        b=S9w8M90liuvaIw1ZfTS+HP0fbRUfVP4FKs1zYR2wsbdAc/LIYKZEwDSZRJ3PVd9niI
-         WOdYSAmVJ3kokTsI95tUVlk1qcJzfnOASGSbc3G0Xz+L/nePrU3c9daZKj7ePg8JOmMa
-         mZA376is49CSoCqeSYkJuacoE8AQu6QvZkhB8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=8X0WA+kebRC6mPq3dqdjSQFAk2sYowHyB2qCeMP7O6M=;
-        b=fdV+ISymD+qNUjWZpeg1IQ/gIx6sPqX04HUbR9mzbbA0VCK7PsIVU3beGdWb4az0Lg
-         EXTWIyKuHVFb3DJ4JuDC3vthOttfNTX/lX/o80sH1tmmoN3xA7efLr6fU6oi4kstEJR5
-         +fDnYoUJmClxqhqiJH3DUqU9NeP4wr9V7Ufa5OQghqjgR3jVo+/x4Fc92l6/X+VTK/zZ
-         Ov+DIloWoUL7tk3yIMa3OCYDckc1wdWwClN99+KoKDgb6SYaTc4X7Cj0n3J1mC0/KXvU
-         XtohhTn1J7Hn2AFipvM8EoVqA+llArxPF1oWZRyyeBg1oNDGk5XiH16co1+NX+MU2BUP
-         wpyQ==
-X-Gm-Message-State: AJIora8WQq0y42JDv1JemvSDuyYlLD9OOeXQM4JwBiJv/XE47YSnT9T5
-	p+beTACldF4iV9SJ1/mE3bpE9El/ZrSqTQcPIY8G0Q==
-X-Google-Smtp-Source: AGRyM1uP48hjj3jsBDjgKChjyZ2zuY+tmqTb7maY9L6QDMxw3VUhyT+58wQYtUAL2USTYtbhj0Z0phTWRZL5gh5ClF0=
-X-Received: by 2002:a25:6a43:0:b0:66f:d259:7918 with SMTP id
- f64-20020a256a43000000b0066fd2597918mr12011506ybc.486.1658808267687; Mon, 25
- Jul 2022 21:04:27 -0700 (PDT)
+	id 1oGBw2-007Mr6-2S; Tue, 26 Jul 2022 04:12:43 +0000
+X-UUID: 5c7a63d5429b41aaacdd59420dd381fc-20220725
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:1139e034-227f-4996-b3e4-1fbc5bde6fb3,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:0f94e32,CLOUDID:efc9f0d3-912a-458b-a623-74f605a77e93,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 5c7a63d5429b41aaacdd59420dd381fc-20220725
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 375616898; Mon, 25 Jul 2022 21:12:36 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Tue, 26 Jul 2022 12:01:58 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 26 Jul 2022 12:01:57 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, George Sun
+	<george.sun@mediatek.com>, Xiaoyong Lu <xiaoyong.lu@mediatek.com>, "Hsin-Yi
+ Wang" <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, "Daniel
+ Vetter" <daniel@ffwll.ch>, Irui Wang <irui.wang@mediatek.com>, Steve Cho
+	<stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH 2/4] media: mediatek: vcodec: add decoder compatible to support mt8188
+Date: Tue, 26 Jul 2022 12:01:53 +0800
+Message-ID: <20220726040155.17206-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220726040155.17206-1-yunfei.dong@mediatek.com>
+References: <20220726040155.17206-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-References: <20220721145017.918102-1-angelogioacchino.delregno@collabora.com>
- <20220721145017.918102-5-angelogioacchino.delregno@collabora.com>
- <CAGXv+5FutJb_MRwSVgjV7tByBvfq3AFsSxs6ETUZaNzrfpywgg@mail.gmail.com> <781f6d3e-412e-1553-c2c2-23c9a897626b@collabora.com>
-In-Reply-To: <781f6d3e-412e-1553-c2c2-23c9a897626b@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 26 Jul 2022 12:04:16 +0800
-Message-ID: <CAGXv+5Gdwcj1n0q8e8ReoUOZX18pbtbxV7oof06Q2_nJMNY-cw@mail.gmail.com>
-Subject: Re: [PATCH v2 4/8] arm64: dts: mediatek: cherry: Enable secondary
- SD/MMC controller
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_210429_106723_4B7BC3D0 
-X-CRM114-Status: GOOD (  26.45  )
+X-CRM114-CacheID: sfid-20220725_211242_123889_B39C5EFB 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,145 +87,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 25, 2022 at 6:20 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 25/07/22 10:54, Chen-Yu Tsai ha scritto:
-> > On Thu, Jul 21, 2022 at 10:51 PM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> As of now, all of the boards based on the cherry platform have a
-> >> usable secondary SD/MMC controller, usually for SD cards: enable
-> >> it to allow both booting from it and generally accessing external
-> >> storage.
-> >>
-> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> >> ---
-> >>   .../boot/dts/mediatek/mt8195-cherry.dtsi      | 62 +++++++++++++++++++
-> >>   1 file changed, 62 insertions(+)
-> >>
-> >> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> >> index 2853f7f76c90..8859957c7b27 100644
-> >> --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> >> +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-> >> @@ -17,6 +17,7 @@ aliases {
-> >>                  i2c5 = &i2c5;
-> >>                  i2c7 = &i2c7;
-> >>                  mmc0 = &mmc0;
-> >> +               mmc1 = &mmc1;
-> >>                  serial0 = &uart0;
-> >>          };
-> >>
-> >> @@ -227,6 +228,24 @@ &mmc0 {
-> >>          vqmmc-supply = <&mt6359_vufs_ldo_reg>;
-> >>   };
-> >>
-> >> +&mmc1 {
-> >> +       status = "okay";
-> >> +
-> >> +       bus-width = <4>;
-> >> +       cap-sd-highspeed;
-> >> +       cd-gpios = <&pio 54 GPIO_ACTIVE_LOW>;
-> >> +       max-frequency = <200000000>;
-> >> +       no-mmc;
-> >> +       no-sdio;
-> >> +       pinctrl-names = "default", "state_uhs";
-> >> +       pinctrl-0 = <&mmc1_pins_default>;
-> >> +       pinctrl-1 = <&mmc1_pins_uhs>;
-> >> +       sd-uhs-sdr50;
-> >> +       sd-uhs-sdr104;
-> >> +       vmmc-supply = <&mt_pmic_vmch_ldo_reg>;
-> >> +       vqmmc-supply = <&mt_pmic_vmc_ldo_reg>;
-> >> +};
-> >> +
-> >>   /* for CPU-L */
-> >>   &mt6359_vcore_buck_reg {
-> >>          regulator-always-on;
-> >> @@ -575,6 +594,49 @@ pins-rst {
-> >>                  };
-> >>          };
-> >>
-> >> +       mmc1_pins_default: mmc1-default-pins {
-> >> +               pins-cmd-dat {
-> >> +                       pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
-> >> +                                <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
-> >> +                                <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
-> >> +                                <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
-> >> +                                <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
-> >> +                       input-enable;
-> >> +                       drive-strength = <8>;
-> >> +                       bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-> >> +               };
-> >> +
-> >> +               pins-clk {
-> >> +                       pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
-> >> +                       drive-strength = <8>;
-> >> +                       bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-> >> +               };
-> >> +
-> >> +               pins-insert {
-> >> +                       pinmux = <PINMUX_GPIO54__FUNC_GPIO54>;
-> >> +                       bias-pull-up;
-> >> +               };
-> >> +       };
-> >> +
-> >> +       mmc1_pins_uhs: mmc1-uhs-pins {
-> >> +               pins-cmd-dat {
-> >> +                       pinmux = <PINMUX_GPIO110__FUNC_MSDC1_CMD>,
-> >> +                                <PINMUX_GPIO112__FUNC_MSDC1_DAT0>,
-> >> +                                <PINMUX_GPIO113__FUNC_MSDC1_DAT1>,
-> >> +                                <PINMUX_GPIO114__FUNC_MSDC1_DAT2>,
-> >> +                                <PINMUX_GPIO115__FUNC_MSDC1_DAT3>;
-> >> +                       input-enable;
-> >> +                       drive-strength = <8>;
-> >> +                       bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-> >> +               };
-> >> +
-> >> +               pins-clk {
-> >> +                       pinmux = <PINMUX_GPIO111__FUNC_MSDC1_CLK>;
-> >> +                       drive-strength = <8>;
-> >> +                       bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-> >> +               };
-> >
-> > I wonder if pins-insert should be duplicated here. And there's no
-> > difference between the standard and UHS pinconfigs. One would expect
-> > higher drive strength on the UHS set, if two sets were required.
-> > So maybe we should just have one set, and use that one for both
-> > the default and uhs states.
-> >
->
-> I don't think that it would really make a lot of sense to duplicate the
-> insertion pin setup in the UHS-specific pinctrl set...
->
-> Whenever you remove the uSD card, the controller goes back to default,
-> as the first steps in card initialization are always happening at low
-> speed and only after that we can switch to UHS speeds... so we do expect
-> that the first-ever state is always `default` (by spec!), which means
-> that we are also ensuring that the insertion pin setup is always done.
+1: add mt8188's compatible name: mediatek,mt8188-vcodec-dec.
+2: mt8188 is lat single core architecture, using mtk_lat_sig_core_pdata to
+initialize private data.
 
-Right. What I wanted to say was that, besides the insertion pin, there's
-no difference between the default and uhs states here. So why have two
-copies instead of one that is referenced twice? (the uhs state is required
-by the binding).
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-ChenYu
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+index e0b6ae9d6caa..174a6eec2f54 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_drv.c
+@@ -478,6 +478,10 @@ static const struct of_device_id mtk_vcodec_match[] = {
+ 		.compatible = "mediatek,mt8195-vcodec-dec",
+ 		.data = &mtk_lat_sig_core_pdata,
+ 	},
++	{
++		.compatible = "mediatek,mt8188-vcodec-dec",
++		.data = &mtk_lat_sig_core_pdata,
++	},
+ 	{},
+ };
+ 
+-- 
+2.25.1
 
-> Cheers,
-> Angelo
->
-> > Otherwise,
-> >
-> > Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-> > Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-> >
-> >> +       };
-> >> +
-> >>          nor_pins_default: nor-default-pins {
-> >>                  pins-ck-io {
-> >>                          pinmux = <PINMUX_GPIO142__FUNC_SPINOR_IO0>,
-> >> --
-> >> 2.35.1
-> >>
-> >>
->
 
