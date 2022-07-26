@@ -4,87 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69CE8C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 09:39:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D139BC43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 09:46:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z+SbhXymBRb3rLjnwvz9gWvUiUQtooSSGDI7JiL0R5Y=; b=KRQ3N+5c3M0aTnjDddAqJAhhJh
-	OUIdJQZ26l8XXDHZZNIW9r16aFgO1mS7XJUbeO2PIPKouiqodPrNFtgK1k5L9Sb2s7+HtZvJSgCOi
-	bdjiLqt0ZoX7Z/u+Hsu/z4ek5vut66lGyPGH2k9qU+UlEQmRjvXxkZzhAjvnIAscmUmmXO+531HF2
-	vuofhQdm1rcdxVPRpt1m4pWu/xjTkKeNF4A/FPZ1LEMYEfB5R/tRDmPJ3HN1sAyjqUjB1BigsXUCj
-	L0t3W8I9ArLTF9/AlMzhmDArnigz9isLms61lbJY879M+n0NFToCILhsZCcRMhsLx9431JdqayyXx
-	PfUdI41Q==;
+	bh=8xGuJPx1uoGLuQZAqwN8Nb6aczdriwTde5wtLI3AIWE=; b=Ki4R4tD7jZ/DjNxjT8/D/+AHi4
+	b1jKUMUP7M58ZjLj3Syh4mZZ8YTwdZBNC+R+TXjovpU6z0/GSIpKbAf4s4XWIfE6t2AUs79GSAlEr
+	FP53L8MHwrXynbLIjlPGYCNGHfGsWFBym/iNRGc0Phgprhh5s1Tr603T4ebE1e4DeQr649orP7cIb
+	KDCn9yD+H/RZ2Kk/NU6FRPdrcGp3vlSyb7OrzZrkKui3GWSIyoVSPk+BD3wXnUgexASa8Xtywx3hR
+	Y3XhlQeU8X4ki2gg4uscDmEkyT5dien8LAXhQXwm+EnB91qm4Erb0FhQs542ZgRzbAkVuvLbkSNBW
+	8VGpzqKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGH1h-00BgNB-Vk; Tue, 26 Jul 2022 09:38:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oGH8X-00BomH-7r; Tue, 26 Jul 2022 09:45:57 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGH0t-00BfHu-E6; Tue, 26 Jul 2022 09:38:05 +0000
-X-UUID: 6077ed957f694635afdd1b1b465850af-20220726
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:c3eae1d6-89cd-4ad6-a649-e8cf169fadaf,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:c5f10eee-db04-4499-9fdf-04ef44b9468c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 6077ed957f694635afdd1b1b465850af-20220726
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1470994656; Tue, 26 Jul 2022 02:38:00 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 26 Jul 2022 16:37:22 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 26 Jul 2022 16:37:22 +0800
-Message-ID: <9140e0b37c71bfa8193d2177a1cc044df4761e15.camel@mediatek.com>
-Subject: Re: [PATCH v14 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, "chunkuang.hu@kernel.org"
-	<chunkuang.hu@kernel.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "robh+dt@kernel.org"
-	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>, "mripard@kernel.org"
-	<mripard@kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "deller@gmx.de"
-	<deller@gmx.de>, "airlied@linux.ie" <airlied@linux.ie>
-CC: "msp@baylibre.com" <msp@baylibre.com>, "granquet@baylibre.com"
-	<granquet@baylibre.com>, Jitao Shi
- =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?= <jitao.shi@mediatek.com>,
-	"wenst@chromium.org" <wenst@chromium.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, LiangXu Xu
- =?UTF-8?Q?=28=E5=BE=90=E4=BA=AE=29?= <LiangXu.Xu@mediatek.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
-	<linux-fbdev@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 26 Jul 2022 16:37:21 +0800
-In-Reply-To: <ae6da1f0c9a27f97b4e9dd76071d03f21dcfcd3b.camel@mediatek.com>
-References: <20220712111223.13080-1-rex-bc.chen@mediatek.com>
-	 <20220712111223.13080-6-rex-bc.chen@mediatek.com>
-	 <6232f0fc15bc1057aab68523e5eb63e10b3a2802.camel@mediatek.com>
-	 <ae6da1f0c9a27f97b4e9dd76071d03f21dcfcd3b.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oGH86-00BoO3-3P
+	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 09:45:31 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id bf9so21757068lfb.13
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 Jul 2022 02:45:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=8xGuJPx1uoGLuQZAqwN8Nb6aczdriwTde5wtLI3AIWE=;
+        b=iP1Vns9Rdr71xlSUgaLQB+Wgf9z1k13x+LivKmvxKlNz+ByC5eqZwxFYyan8XhRbcL
+         lCNWrmrCN3/XlHcjE78JOZNLgkoqUmtDtSkNWUdFNX9p8FsWz14radPXjxIgppAuJ1sD
+         iqRUmk2YX64tegZqFHAwUbSnq/RvYltVNFg3IVvUAhV2I1PuFarK8zt18Iwo4ZF2Od0C
+         HvkELwgTEURbNBoAs2cBX9/fc0tFJzY/kVhjpqnhcKHPDi84iagYK/uSO5YXV/jbbYdn
+         1BWK8jtJfxarKnVSJeAVS4ZNGIyKqIGajY9oBogUEXNGpOS7iUb0MHOH9eCmsEijuvog
+         0eSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=8xGuJPx1uoGLuQZAqwN8Nb6aczdriwTde5wtLI3AIWE=;
+        b=Y0H2yQ40GRF8xKQbOEuT2bv0dugA+zCRJgG4n2YP6O+uMkgMYMBJdIaSuTEAOy9Djr
+         DovEnFimSdjJYOxfZQwR+oMMPCXTD7ACFCZsiW81Tbh/XkZADdnmKiQEOZcHNROMWx5b
+         1K/Lc4wCBVUpu64gQi2Wv2KFRSYeEaWeVRrnHuDp/X3H4rBH6CLBSeev2ju/ceTq35pn
+         ogCiGh6HZa2oFhp5/lVSeAPX5Q8yKMmParEMVNVq2O4Y7VU4Hxk0mwcewKAUe5SUQF41
+         t8yW5LFGmYt+nk/LAlECOoboKyl3pASbAQAHW3z/JmsHTzdaXxYvDkOYeLkGNUtJ1Iw3
+         cyNQ==
+X-Gm-Message-State: AJIora/P/rdRNPhvSfydoEhoh4MTbQ0NuPbTq/OJEC9WcDa9g9WvcYQr
+	x3SdMhnPK4Gs+KceJJnaVnJLVw==
+X-Google-Smtp-Source: AGRyM1talH+BemWNWyeJS55FRhEcJ00+9GMnyvbyiYEwIj1ILXShUt2a2mtFcJ3AXT7yWfAz4VP8eg==
+X-Received: by 2002:a05:6512:acd:b0:48a:7c05:71db with SMTP id n13-20020a0565120acd00b0048a7c0571dbmr6482630lfu.433.1658828727805;
+        Tue, 26 Jul 2022 02:45:27 -0700 (PDT)
+Received: from [192.168.3.197] (78-26-46-173.network.trollfjord.no. [78.26.46.173])
+        by smtp.gmail.com with ESMTPSA id y19-20020a05651c107300b0025d72c1f646sm3206657ljm.58.2022.07.26.02.45.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 26 Jul 2022 02:45:27 -0700 (PDT)
+Message-ID: <5cd79059-e858-3c6d-8ef2-6d8b12367830@linaro.org>
+Date: Tue, 26 Jul 2022 11:45:25 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH 1/3] dt-bindings: mediatek: add pinctrl definition for
+ mt8188
+Content-Language: en-US
+To: "hui.liu" <hui.liu@mediatek.com>, linus.walleij@linaro.org,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com
+Cc: johnson.wang@mediatek.com, zhiyong.tao@mediatek.com,
+ sean.wang@mediatek.com, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220718113813.23787-1-hui.liu@mediatek.com>
+ <20220718113813.23787-2-hui.liu@mediatek.com>
+ <b28dcbe5-d15f-1c4f-9b3d-650d5c39de6b@linaro.org>
+ <08a7209fe198839093b3ef729fc97c1a950e1fbc.camel@mediatek.com>
+ <35639a59-4a3d-5aa7-946c-22fbd2f25e89@linaro.org>
+ <ea7755e599ad8c06bc04b6249c2a6d0ab3b920f3.camel@mediatek.com>
+ <53d432e9-6715-05c4-d258-896ec38afa4f@linaro.org>
+ <9dbcee74667cdc77ad80c043bb7725c63ff1cbd2.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <9dbcee74667cdc77ad80c043bb7725c63ff1cbd2.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_023803_516442_5C7502AE 
-X-CRM114-Status: GOOD (  40.80  )
+X-CRM114-CacheID: sfid-20220726_024530_168587_54D47698 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,147 +102,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-07-26 at 11:30 +0800, Rex-BC Chen wrote:
-> On Mon, 2022-07-25 at 17:23 +0800, CK Hu wrote:
-> > Hi, Bo-Chen:
-> > 
-> > On Tue, 2022-07-12 at 19:12 +0800, Bo-Chen Chen wrote:
-> > > From: Markus Schneider-Pargmann <msp@baylibre.com>
-> > > 
-> > > This patch adds a embedded displayport driver for the MediaTek
-> > > mt8195
-> > > SoC.
-> > > 
-> > > It supports the MT8195, the embedded DisplayPort units. It offers
-> > > DisplayPort 1.4 with up to 4 lanes.
-> > > 
-> > > The driver creates a child device for the phy. The child device
-> > > will
-> > > never exist without the parent being active. As they are sharing
-> > > a
-> > > register range, the parent passes a regmap pointer to the child
-> > > so
-> > > that
-> > > both can work with the same register range. The phy driver sets
-> > > device
-> > > data that is read by the parent to get the phy device that can be
-> > > used
-> > > to control the phy properties.
-> > > 
-> > > This driver is based on an initial version by
-> > > Jitao shi <jitao.shi@mediatek.com>
-> > > 
-> > > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > > ---
-> > 
-> > [snip]
-> > 
-> > > +
-> > > +/*
-> > > + * We need to handle HPD signal in eDP even though eDP is a
-> > > always
-> > > connected
-> > > + * device. Besides connected status, there is another feature
-> > > for
-> > > HPD signal -
-> > > + * HPD pulse: it presents an IRQ from sink devices to source
-> > > devices
-> > > (Refer to
-> > > + * 5.1.4 of DP1.4 spec).
-> > > + */
-> > > +static irqreturn_t mtk_dp_hpd_isr_handler(struct mtk_dp *mtk_dp)
-> > > +{
-> > > +	bool hpd_change = false;
-> > > +	u32 irq_status = mtk_dp_swirq_get_clear(mtk_dp) |
-> > > +			 mtk_dp_hwirq_get_clear(mtk_dp);
-> > > +	struct mtk_dp_train_info *train_info = &mtk_dp->train_info;
-> > > +
-> > > +	if (!irq_status)
-> > > +		return IRQ_HANDLED;
-> > > +
-> > > +	if (irq_status & MTK_DP_HPD_INTERRUPT)
-> > > +		train_info->irq_sta.hpd_inerrupt = true;
-> > > +	if (irq_status & MTK_DP_HPD_CONNECT ||
-> > > +	    irq_status & MTK_DP_HPD_DISCONNECT)
-> > > +		hpd_change = true;
-> > > +
-> > > +	if (!(hpd_change))
-> > > +		return IRQ_WAKE_THREAD;
-> > > +
-> > > +	if (mtk_dp_plug_state(mtk_dp))
-> > 
-> > mtk_dp_plug_state() is called only here, and prevent function call
-> > in
-> > isr handler, so squash mtk_dp_plug_state() into this function.
-> > 
+On 25/07/2022 12:10, hui.liu wrote:
+> On Fri, 2022-07-22 at 20:19 +0200, Krzysztof Kozlowski wrote:
+>> On 22/07/2022 03:40, hui.liu wrote:
+>>> Hi, Krzysztof
+>>>
+>>> That's the comment about reg and reg-names description:
+>>>>> +  reg:
+>>>>> +    description: |
+>>>>> +      Physical address base for gpio base registers. There are
+>>>>> 8
+>>>>> GPIO
+>>>>> +      physical address base in mt8188.
+>>>>
+>>>> Redundant description, skip it. You should list the instead and
+>>>> describe
+>>>> each of it.
+>>>>
+>>>>> +    maxItems: 8
+>>>>> +
+>>>>> +  reg-names:
+>>>>> +    description: |
+>>>>> +      Gpio base register names.
+>>>>
+>>>> Redundant description, skip it.
+>>>>
+>>>>> +    maxItems: 8
+>>>>
+>>>> You need to list the items instead.
+>>>
+>>> I plan to update reg and reg-names as the following:
+>>>   reg:
+>>>     description: |
+>>>       Physical address base for gpio base registers. There are 6
+>>> different GPIO physical address bases in mt8188.
+>>>     minItems: 6
+>>>     maxItems: 6
+>>
+>> You should rather have here items with description:
+>> items:
+>>  - description: what is it
+>>  - description: what is it
+>>  ....
+>>
 > 
-> Hello CK,
+> Hi Krzysztof,
 > 
-> Thanks for review.
-> 
-> I would like to keep this because we will use this function for
-> mtk_dp_plug_state_avoid_pulse() in dp patch.
+> I will list each items with description as follows, is it right?
+>   reg:
+>     description: |
+>       Physical address base for pinctrl base registers. There are 6
+> different physical address bases in mt8188.
+>       iocfg0 is gpio base address;
+>       iocfg_rm is io configuration
+> address for rm group;
+>       iocfg_lt is io configuration address for lt group;
+>       iocfg_lm
+> is io configuration address for mm group;
+>       iocfg_rt is io
+> configuration address for rt group;
+>       eint is eint base address.
+>     minItems: 6
+>     maxItems: 6
 
-Use train_info->cable_plugged_in instead of calling mtk_dp_plug_state()
-because I think train_info->cable_plugged_in is synced with
-mtk_dp_plug_state().
+No, because it is not schema and you still keep here min/maxItems which
+are pointless in that case. Just read example-schema.
 
-> 
-> > > +		train_info->cable_plugged_in = true;
-> > > +	else
-> > > +		train_info->cable_plugged_in = false;
-> > > +
-> > > +	train_info->cable_state_change = true;
-> > > +
-> > > +	return IRQ_WAKE_THREAD;
-> > > +}
-> > > +
-> > > +static irqreturn_t mtk_dp_hpd_event(int hpd, void *dev)
-> > > +{
-> > > +	struct mtk_dp *mtk_dp = dev;
-> > > +	u32 irq_status;
-> > > +
-> > > +	irq_status = mtk_dp_read(mtk_dp, MTK_DP_TOP_IRQ_STATUS);
-> > > +
-> > > +	if (!irq_status)
-> > > +		return IRQ_HANDLED;
-> > > +
-> > > +	if (irq_status & RGS_IRQ_STATUS_TRANSMITTER)
-> > > +		return mtk_dp_hpd_isr_handler(mtk_dp);
-> > 
-> > Prevent function call in isr handler, squash
-> > mtk_dp_hpd_isr_handler()
-> > into this function.
-> > 
-> 
-> Is this really necessary? We also modify this function in following
-> patches. I think it's not a good idea to expand this.
+https://elixir.bootlin.com/linux/v5.19-rc8/source/Documentation/devicetree/bindings/example-schema.yaml#L63
 
-mtk_dp_hpd_isr_handler() is only called in this function, is it really
-necessary to separate this to a independent function? The function call
-would increase jump instruction and stack push/pop instruction. I think
-we should not do many things in isr handler. I've reviewed the later
-patch and the later patch should be modified according to this.
 
-Regards,
-CK
-
-> 
-> BRs,
-> Bo-Chen
-> 
-> > Regards,
-> > CK
-> > 
-> > > +
-> > > +	return IRQ_HANDLED;
-> > > +}
-> > > +
-> > 
-> > 
-> 
-> 
-
+Best regards,
+Krzysztof
 
