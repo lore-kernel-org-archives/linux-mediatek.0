@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB0A2C00140
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 14:19:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA5ABC00140
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 14:22:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lj2gsclHVXzIoju/N66F6dbiSCgtHqKVYgbGcqUUaqI=; b=NbJP84PQpA+7+8MVh1S5z5bkrR
-	lvSIISVeYt505fGPsxOPlBMIN67Iq+1motHKCJoIdHM91cFxZZAsXmTNvLycaAqpBfWgXmsJbsNSP
-	cdrjt92CckEhO4AwU5cU+4bZn1CVtiSA+JfXmXDy+JgZNPnehCKieo6K/OqSjVV5kPYfQ3IutRoiX
-	tUmCeJHv+utL/iWj0IheT+tJgnM5xktd0NC8Z9U0vrAMaM5aeKFqe0NMuMiAS2YTyy1RBkFCSn3h7
-	GDUkgqmR8gGhtSGDTJJfEURves3hRPzrp6pyK8Gd1A9ok3azGyTi+LMZuQKURJBt0xbqYdIKaTXG0
-	/MMib1wA==;
+	bh=VEyu2cAsI6Clc3vxXVuPEHOMTtwvEPd4AnIi76vds8o=; b=fbESm9as2NDrqi3tdWtHD/vNSN
+	pCic6BXKNexfWIif4+rDRH4eosnfddpKvgrwMIHKMBvuWrxt2rwpzmBbEfz7vCw0H+YYR48doTai4
+	vx5vHiykEaiAvZNQH4XOdLi75DBhnIMzvI/ocjhYGlofOe+pNcw+hMDYxbAFwBcdxhm/M/hZNko8A
+	zAVZLROpb+Yw+oZ2FM+5gY+7ov8D5HFldEiE//bVMnkpdHaVpQ8ukzws7woRbMXvD53WhDGSGR3wo
+	uwRJiMaTmgwrazQ2YrAeLStAndUkhHbem17QemZdIP9iutDeZFdsVRyrSCLSBz6ZPCbvDsPLmiAVY
+	BIoU1Ghw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGLPV-0008ev-7q; Tue, 26 Jul 2022 14:19:45 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oGLSC-000AOr-AN; Tue, 26 Jul 2022 14:22:32 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGLNT-0007Vp-Qh; Tue, 26 Jul 2022 14:17:42 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1oGLRq-000AEN-1P; Tue, 26 Jul 2022 14:22:11 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 98C926601B22;
-	Tue, 26 Jul 2022 15:17:36 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4D1FA66017E7;
+	Tue, 26 Jul 2022 15:22:08 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658845057;
-	bh=y9CXze4J0CZIFeYvihb3Uv8RB5SpnFtyjk0MFRVdHeg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nMk1L6hmjMj+f7xrTCktLfsr4xmEEpqk9xYo2/uBru9H3JVZoychj3BEBzoJ1r5f8
-	 TNRrvnkg94Wz53rFtl0k0bl2UT2sUO4wq+gjQmJsv6ka3mrIj757zFDaPGFlNaUWI6
-	 HS7KJ/R/ZDoy2EfWt1sLjAX6i1q5FLheb/MzGnzAP4oGkXpK+RbPGNORCc7XxzYnqd
-	 cF6IOKs+ZdKcKB/nBzbJtgCB2t113e6tkH776FvYy3ue8nDwvv1iJ9WCLdEy9yFgbl
-	 S08kTVyMcNHDfxDo1yH453nNNccxHUn2uN7fr0QV2zEdbSZh/gE/mQvYtmMTLoYnL/
-	 E7UttCQRuT4sQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: roger.lu@mediatek.com,
-	khilman@baylibre.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	nfraprado@collabora.com,
-	kernel@collabora.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 6/6] soc: mediatek: mtk-svs: Use bitfield access macros where possible
-Date: Tue, 26 Jul 2022 16:16:53 +0200
-Message-Id: <20220726141653.177948-7-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220726141653.177948-1-angelogioacchino.delregno@collabora.com>
-References: <20220726141653.177948-1-angelogioacchino.delregno@collabora.com>
+	s=mail; t=1658845328;
+	bh=4zmP1FrOBGWRTxzO5xPnrH9vexzpAmeNeZdmwxjZBQY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=I33YrZIMdevJsy17cxsuWq4ptnwFrYml93lqWkg7Uu/N3xR5hbaAEE0xoVtFNUnDg
+	 veh64GYs9lfg6OmryApl6rU7FC45SyB2+yXzrZLWH4/GzFyR0K9lMZH6jGknLuyKxw
+	 ZMj4rriRSc5p4q53137JzbeKZAbB/qFzZv8/WB7TOaaQB71LiFlpj4xh7nX6WG7fVP
+	 K7INGCKoEq0F20PQ2mVP1HEq7Plq+lhSOfHfkF6XcPgTNGE2upHjXrWqzrmPgaHzAW
+	 i3eT5LB4M/BXoQuyZNXodOyFKKs9BIDVQDYqrom0uV0RdOebaXLQqoqJzqcOSRDbkz
+	 MyztuzqZuuyqw==
+Message-ID: <c9441276-34ae-19dc-8a19-5e03dc14628e@collabora.com>
+Date: Tue, 26 Jul 2022 16:22:06 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 0/6] soc: mediatek: Cleanups for MediaTek SVS driver
+Content-Language: en-US
+To: matthias.bgg@gmail.com
+Cc: roger.lu@mediatek.com, khilman@baylibre.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, nfraprado@collabora.com, kernel@collabora.com
+References: <20220726141653.177948-1-angelogioacchino.delregno@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220726141653.177948-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_071740_163545_122A3299 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20220726_072210_260686_8F0183D7 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,344 +74,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to enhance readability and safety during registers setup
-and value retrieval, redefine a few register related macros and
-convert all open-coded instances of bitfield setting/retrieval
-to use the FIELD_PREP() and FIELD_GET() macros.
-While at it, some macros were renamed to further enhance readability.
+Il 26/07/22 16:16, AngeloGioacchino Del Regno ha scritto:
+> This is a cleanup-only series for the mtk-svs driver, enhancing the
+> usage of standard Linux macros for bitfields for better readability
+> and register set/get safety, switches to devm_ functions variants
+> where possible and other general cleanups, getting this driver in a
+> better overall shape.
+> 
 
-This commit brings no functional changes.
+Sorry, I forgot to write in the cover letter that this series depends
+on [1] adding MT8195 and MT8186 support.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mtk-svs.c | 191 ++++++++++++++++++++++-----------
- 1 file changed, 128 insertions(+), 63 deletions(-)
+[1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=660955
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 25b49d8af59a..f5e6627f7a56 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -53,22 +53,79 @@
- #define SVSB_MON_VOLT_IGNORE		BIT(16)
- #define SVSB_REMOVE_DVTFIXED_VOLT	BIT(24)
- 
--/* svs bank register common configuration */
--#define SVSB_DET_MAX			0xffff
-+/* svs bank register fields and common configuration */
-+#define SVSB_PTPCONFIG_DETMAX		GENMASK(15, 0)
-+#define SVSB_DET_MAX			FIELD_PREP(SVSB_PTPCONFIG_DETMAX, 0xffff)
- #define SVSB_DET_WINDOW			0xa28
--#define SVSB_DTHI			0x1
--#define SVSB_DTLO			0xfe
--#define SVSB_EN_INIT01			0x1
--#define SVSB_EN_INIT02			0x5
--#define SVSB_EN_MON			0x2
--#define SVSB_EN_OFF			0x0
--#define SVSB_INTEN_INIT0x		0x00005f01
--#define SVSB_INTEN_MONVOPEN		0x00ff0000
--#define SVSB_INTSTS_CLEAN		0x00ffffff
--#define SVSB_INTSTS_COMPLETE		0x1
--#define SVSB_INTSTS_MONVOP		0x00ff0000
-+
-+/* DESCHAR */
-+#define SVSB_DESCHAR_FLD_MDES		GENMASK(7, 0)
-+#define SVSB_DESCHAR_FLD_BDES		GENMASK(15, 8)
-+
-+/* TEMPCHAR */
-+#define SVSB_TEMPCHAR_FLD_DVT_FIXED	GENMASK(7, 0)
-+#define SVSB_TEMPCHAR_FLD_MTDES		GENMASK(15, 8)
-+#define SVSB_TEMPCHAR_FLD_VCO		GENMASK(23, 16)
-+
-+/* DETCHAR */
-+#define SVSB_DETCHAR_FLD_DCMDET		GENMASK(7, 0)
-+#define SVSB_DETCHAR_FLD_DCBDET		GENMASK(15, 8)
-+
-+/* SVSEN (PTPEN) */
-+#define SVSB_PTPEN_INIT01		BIT(0)
-+#define SVSB_PTPEN_MON			BIT(1)
-+#define SVSB_PTPEN_INIT02		(SVSB_PTPEN_INIT01 | BIT(2))
-+#define SVSB_PTPEN_OFF			0x0
-+
-+/* FREQPCTS */
-+#define SVSB_FREQPCTS_FLD_PCT0_4	GENMASK(7, 0)
-+#define SVSB_FREQPCTS_FLD_PCT1_5	GENMASK(15, 8)
-+#define SVSB_FREQPCTS_FLD_PCT2_6	GENMASK(23, 16)
-+#define SVSB_FREQPCTS_FLD_PCT3_7	GENMASK(31, 24)
-+
-+/* INTSTS */
-+#define SVSB_INTSTS_VAL_CLEAN		0x00ffffff
-+#define SVSB_INTSTS_F0_COMPLETE		BIT(0)
-+#define SVSB_INTSTS_FLD_MONVOP		GENMASK(23, 16)
- #define SVSB_RUNCONFIG_DEFAULT		0x80000000
- 
-+/* LIMITVALS */
-+#define SVSB_LIMITVALS_FLD_DTLO		GENMASK(7, 0)
-+#define SVSB_LIMITVALS_FLD_DTHI		GENMASK(15, 8)
-+#define SVSB_LIMITVALS_FLD_VMIN		GENMASK(23, 16)
-+#define SVSB_LIMITVALS_FLD_VMAX		GENMASK(31, 24)
-+#define SVSB_VAL_DTHI			0x1
-+#define SVSB_VAL_DTLO			0xfe
-+
-+/* INTEN */
-+#define SVSB_INTEN_F0EN			BIT(0)
-+#define SVSB_INTEN_DACK0UPEN		BIT(8)
-+#define SVSB_INTEN_DC0EN		BIT(9)
-+#define SVSB_INTEN_DC1EN		BIT(10)
-+#define SVSB_INTEN_DACK0LOEN		BIT(11)
-+#define SVSB_INTEN_INITPROD_OVF_EN	BIT(12)
-+#define SVSB_INTEN_INITSUM_OVF_EN	BIT(14)
-+#define SVSB_INTEN_MONVOPEN		GENMASK(23, 16)
-+#define SVSB_INTEN_INIT0x		(SVSB_INTEN_F0EN | SVSB_INTEN_DACK0UPEN |	\
-+					 SVSB_INTEN_DC0EN | SVSB_INTEN_DC1EN |		\
-+					 SVSB_INTEN_DACK0LOEN |				\
-+					 SVSB_INTEN_INITPROD_OVF_EN |			\
-+					 SVSB_INTEN_INITSUM_OVF_EN)
-+
-+/* TSCALCS */
-+#define SVSB_TSCALCS_FLD_MTS		GENMASK(11, 0)
-+#define SVSB_TSCALCS_FLD_BTS		GENMASK(23, 12)
-+
-+/* INIT2VALS */
-+#define SVSB_INIT2VALS_FLD_DCVOFFSETIN	GENMASK(15, 0)
-+#define SVSB_INIT2VALS_FLD_AGEVOFFSETIN	GENMASK(31, 16)
-+
-+/* VOPS */
-+#define SVSB_VOPS_FLD_VOP0_4		GENMASK(7, 0)
-+#define SVSB_VOPS_FLD_VOP1_5		GENMASK(15, 8)
-+#define SVSB_VOPS_FLD_VOP2_6		GENMASK(23, 16)
-+#define SVSB_VOPS_FLD_VOP3_7		GENMASK(31, 24)
-+
- /* svs bank related setting */
- #define BITS8				8
- #define MAX_OPP_ENTRIES			16
-@@ -667,8 +724,8 @@ static ssize_t svs_enable_debug_write(struct file *filp,
- 		svsp->pbank = svsb;
- 		svsb->mode_support = SVSB_MODE_ALL_DISABLE;
- 		svs_switch_bank(svsp);
--		svs_writel_relaxed(svsp, SVSB_EN_OFF, SVSEN);
--		svs_writel_relaxed(svsp, SVSB_INTSTS_CLEAN, INTSTS);
-+		svs_writel_relaxed(svsp, SVSB_PTPEN_OFF, SVSEN);
-+		svs_writel_relaxed(svsp, SVSB_INTSTS_VAL_CLEAN, INTSTS);
- 		spin_unlock_irqrestore(&svs_lock, flags);
- 
- 		svsb->phase = SVSB_PHASE_ERROR;
-@@ -830,7 +887,7 @@ static void svs_get_bank_volts_v3(struct svs_platform *svsp)
- 		} else if (svsb->type == SVSB_LOW) {
- 			/* volt[turn_pt] + volt[j] ~ volt[opp_count - 1] */
- 			j = svsb->opp_count - 7;
--			svsb->volt[turn_pt] = vop30 & GENMASK(7, 0);
-+			svsb->volt[turn_pt] = FIELD_GET(SVSB_VOPS_FLD_VOP0_4, vop30);
- 			shift_byte++;
- 			for (i = j; i < svsb->opp_count; i++) {
- 				b_sft = BITS8 * (shift_byte % REG_BYTES);
-@@ -852,7 +909,7 @@ static void svs_get_bank_volts_v3(struct svs_platform *svsp)
- 		if (svsb->type == SVSB_HIGH) {
- 			/* volt[0] + volt[j] ~ volt[turn_pt - 1] */
- 			j = turn_pt - 7;
--			svsb->volt[0] = vop30 & GENMASK(7, 0);
-+			svsb->volt[0] = FIELD_GET(SVSB_VOPS_FLD_VOP0_4, vop30);
- 			shift_byte++;
- 			for (i = j; i < turn_pt; i++) {
- 				b_sft = BITS8 * (shift_byte % REG_BYTES);
-@@ -989,16 +1046,16 @@ static void svs_get_bank_volts_v2(struct svs_platform *svsp)
- 		return;
- 
- 	temp = svs_readl_relaxed(svsp, VOP74);
--	svsb->volt[14] = (temp >> 24) & GENMASK(7, 0);
--	svsb->volt[12] = (temp >> 16) & GENMASK(7, 0);
--	svsb->volt[10] = (temp >> 8)  & GENMASK(7, 0);
--	svsb->volt[8] = (temp & GENMASK(7, 0));
-+	svsb->volt[14] = FIELD_GET(SVSB_VOPS_FLD_VOP3_7, temp);
-+	svsb->volt[12] = FIELD_GET(SVSB_VOPS_FLD_VOP2_6, temp);
-+	svsb->volt[10] = FIELD_GET(SVSB_VOPS_FLD_VOP1_5, temp);
-+	svsb->volt[8] = FIELD_GET(SVSB_VOPS_FLD_VOP0_4, temp);
- 
- 	temp = svs_readl_relaxed(svsp, VOP30);
--	svsb->volt[6] = (temp >> 24) & GENMASK(7, 0);
--	svsb->volt[4] = (temp >> 16) & GENMASK(7, 0);
--	svsb->volt[2] = (temp >> 8)  & GENMASK(7, 0);
--	svsb->volt[0] = (temp & GENMASK(7, 0));
-+	svsb->volt[6] = FIELD_GET(SVSB_VOPS_FLD_VOP3_7, temp);
-+	svsb->volt[4] = FIELD_GET(SVSB_VOPS_FLD_VOP2_6, temp);
-+	svsb->volt[2] = FIELD_GET(SVSB_VOPS_FLD_VOP1_5, temp);
-+	svsb->volt[0] = FIELD_GET(SVSB_VOPS_FLD_VOP0_4, temp);
- 
- 	for (i = 0; i <= 12; i += 2)
- 		svsb->volt[i + 1] = interpolate(svsb->freq_pct[i],
-@@ -1046,20 +1103,20 @@ static void svs_get_bank_volts_v2(struct svs_platform *svsp)
- static void svs_set_bank_freq_pct_v2(struct svs_platform *svsp)
- {
- 	struct svs_bank *svsb = svsp->pbank;
-+	u32 freqpct74_val, freqpct30_val;
-+
-+	freqpct74_val = FIELD_PREP(SVSB_FREQPCTS_FLD_PCT0_4, svsb->freq_pct[8]) |
-+			FIELD_PREP(SVSB_FREQPCTS_FLD_PCT1_5, svsb->freq_pct[10]) |
-+			FIELD_PREP(SVSB_FREQPCTS_FLD_PCT2_6, svsb->freq_pct[12]) |
-+			FIELD_PREP(SVSB_FREQPCTS_FLD_PCT3_7, svsb->freq_pct[14]);
-+
-+	freqpct30_val = FIELD_PREP(SVSB_FREQPCTS_FLD_PCT0_4, svsb->freq_pct[0]) |
-+			FIELD_PREP(SVSB_FREQPCTS_FLD_PCT1_5, svsb->freq_pct[2]) |
-+			FIELD_PREP(SVSB_FREQPCTS_FLD_PCT2_6, svsb->freq_pct[4]) |
-+			FIELD_PREP(SVSB_FREQPCTS_FLD_PCT3_7, svsb->freq_pct[6]);
- 
--	svs_writel_relaxed(svsp,
--			   (svsb->freq_pct[14] << 24) |
--			   (svsb->freq_pct[12] << 16) |
--			   (svsb->freq_pct[10] << 8) |
--			   svsb->freq_pct[8],
--			   FREQPCT74);
--
--	svs_writel_relaxed(svsp,
--			   (svsb->freq_pct[6] << 24) |
--			   (svsb->freq_pct[4] << 16) |
--			   (svsb->freq_pct[2] << 8) |
--			   svsb->freq_pct[0],
--			   FREQPCT30);
-+	svs_writel_relaxed(svsp, freqpct74_val, FREQPCT74);
-+	svs_writel_relaxed(svsp, freqpct30_val, FREQPCT30);
- }
- 
- static void svs_set_bank_phase(struct svs_platform *svsp,
-@@ -1070,13 +1127,17 @@ static void svs_set_bank_phase(struct svs_platform *svsp,
- 
- 	svs_switch_bank(svsp);
- 
--	des_char = (svsb->bdes << 8) | svsb->mdes;
-+	des_char = FIELD_PREP(SVSB_DESCHAR_FLD_BDES, svsb->bdes) |
-+		   FIELD_PREP(SVSB_DESCHAR_FLD_MDES, svsb->mdes);
- 	svs_writel_relaxed(svsp, des_char, DESCHAR);
- 
--	temp_char = (svsb->vco << 16) | (svsb->mtdes << 8) | svsb->dvt_fixed;
-+	temp_char = FIELD_PREP(SVSB_TEMPCHAR_FLD_VCO, svsb->vco) |
-+		    FIELD_PREP(SVSB_TEMPCHAR_FLD_MTDES, svsb->mtdes) |
-+		    FIELD_PREP(SVSB_TEMPCHAR_FLD_DVT_FIXED, svsb->dvt_fixed);
- 	svs_writel_relaxed(svsp, temp_char, TEMPCHAR);
- 
--	det_char = (svsb->dcbdet << 8) | svsb->dcmdet;
-+	det_char = FIELD_PREP(SVSB_DETCHAR_FLD_DCBDET, svsb->dcbdet) |
-+		   FIELD_PREP(SVSB_DETCHAR_FLD_DCMDET, svsb->dcmdet);
- 	svs_writel_relaxed(svsp, det_char, DETCHAR);
- 
- 	svs_writel_relaxed(svsp, svsb->dc_config, DCCONFIG);
-@@ -1085,33 +1146,37 @@ static void svs_set_bank_phase(struct svs_platform *svsp,
- 
- 	svsb->set_freq_pct(svsp);
- 
--	limit_vals = (svsb->vmax << 24) | (svsb->vmin << 16) |
--		     (SVSB_DTHI << 8) | SVSB_DTLO;
-+	limit_vals = FIELD_PREP(SVSB_LIMITVALS_FLD_DTLO, SVSB_VAL_DTLO) |
-+		     FIELD_PREP(SVSB_LIMITVALS_FLD_DTHI, SVSB_VAL_DTHI) |
-+		     FIELD_PREP(SVSB_LIMITVALS_FLD_VMIN, svsb->vmin) |
-+		     FIELD_PREP(SVSB_LIMITVALS_FLD_VMAX, svsb->vmax);
- 	svs_writel_relaxed(svsp, limit_vals, LIMITVALS);
- 
- 	svs_writel_relaxed(svsp, SVSB_DET_WINDOW, DETWINDOW);
- 	svs_writel_relaxed(svsp, SVSB_DET_MAX, CONFIG);
- 	svs_writel_relaxed(svsp, svsb->chk_shift, CHKSHIFT);
- 	svs_writel_relaxed(svsp, svsb->ctl0, CTL0);
--	svs_writel_relaxed(svsp, SVSB_INTSTS_CLEAN, INTSTS);
-+	svs_writel_relaxed(svsp, SVSB_INTSTS_VAL_CLEAN, INTSTS);
- 
- 	switch (target_phase) {
- 	case SVSB_PHASE_INIT01:
- 		svs_writel_relaxed(svsp, svsb->vboot, VBOOT);
- 		svs_writel_relaxed(svsp, SVSB_INTEN_INIT0x, INTEN);
--		svs_writel_relaxed(svsp, SVSB_EN_INIT01, SVSEN);
-+		svs_writel_relaxed(svsp, SVSB_PTPEN_INIT01, SVSEN);
- 		break;
- 	case SVSB_PHASE_INIT02:
-+		init2vals = FIELD_PREP(SVSB_INIT2VALS_FLD_AGEVOFFSETIN, svsb->age_voffset_in) |
-+			    FIELD_PREP(SVSB_INIT2VALS_FLD_DCVOFFSETIN, svsb->dc_voffset_in);
- 		svs_writel_relaxed(svsp, SVSB_INTEN_INIT0x, INTEN);
--		init2vals = (svsb->age_voffset_in << 16) | svsb->dc_voffset_in;
- 		svs_writel_relaxed(svsp, init2vals, INIT2VALS);
--		svs_writel_relaxed(svsp, SVSB_EN_INIT02, SVSEN);
-+		svs_writel_relaxed(svsp, SVSB_PTPEN_INIT02, SVSEN);
- 		break;
- 	case SVSB_PHASE_MON:
--		ts_calcs = (svsb->bts << 12) | svsb->mts;
-+		ts_calcs = FIELD_PREP(SVSB_TSCALCS_FLD_BTS, svsb->bts) |
-+			   FIELD_PREP(SVSB_TSCALCS_FLD_MTS, svsb->mts);
- 		svs_writel_relaxed(svsp, ts_calcs, TSCALCS);
- 		svs_writel_relaxed(svsp, SVSB_INTEN_MONVOPEN, INTEN);
--		svs_writel_relaxed(svsp, SVSB_EN_MON, SVSEN);
-+		svs_writel_relaxed(svsp, SVSB_PTPEN_MON, SVSEN);
- 		break;
- 	default:
- 		dev_err(svsb->dev, "requested unknown target phase: %u\n",
-@@ -1147,8 +1212,8 @@ static inline void svs_error_isr_handler(struct svs_platform *svsp)
- 	svs_save_bank_register_data(svsp, SVSB_PHASE_ERROR);
- 
- 	svsb->phase = SVSB_PHASE_ERROR;
--	svs_writel_relaxed(svsp, SVSB_EN_OFF, SVSEN);
--	svs_writel_relaxed(svsp, SVSB_INTSTS_CLEAN, INTSTS);
-+	svs_writel_relaxed(svsp, SVSB_PTPEN_OFF, SVSEN);
-+	svs_writel_relaxed(svsp, SVSB_INTSTS_VAL_CLEAN, INTSTS);
- }
- 
- static inline void svs_init01_isr_handler(struct svs_platform *svsp)
-@@ -1173,8 +1238,8 @@ static inline void svs_init01_isr_handler(struct svs_platform *svsp)
- 	svsb->age_voffset_in = svs_readl_relaxed(svsp, AGEVALUES) &
- 			       GENMASK(15, 0);
- 
--	svs_writel_relaxed(svsp, SVSB_EN_OFF, SVSEN);
--	svs_writel_relaxed(svsp, SVSB_INTSTS_COMPLETE, INTSTS);
-+	svs_writel_relaxed(svsp, SVSB_PTPEN_OFF, SVSEN);
-+	svs_writel_relaxed(svsp, SVSB_INTSTS_F0_COMPLETE, INTSTS);
- 	svsb->core_sel &= ~SVSB_DET_CLK_EN;
- }
- 
-@@ -1192,8 +1257,8 @@ static inline void svs_init02_isr_handler(struct svs_platform *svsp)
- 	svsb->phase = SVSB_PHASE_INIT02;
- 	svsb->get_volts(svsp);
- 
--	svs_writel_relaxed(svsp, SVSB_EN_OFF, SVSEN);
--	svs_writel_relaxed(svsp, SVSB_INTSTS_COMPLETE, INTSTS);
-+	svs_writel_relaxed(svsp, SVSB_PTPEN_OFF, SVSEN);
-+	svs_writel_relaxed(svsp, SVSB_INTSTS_F0_COMPLETE, INTSTS);
- }
- 
- static inline void svs_mon_mode_isr_handler(struct svs_platform *svsp)
-@@ -1206,7 +1271,7 @@ static inline void svs_mon_mode_isr_handler(struct svs_platform *svsp)
- 	svsb->get_volts(svsp);
- 
- 	svsb->temp = svs_readl_relaxed(svsp, TEMP) & GENMASK(7, 0);
--	svs_writel_relaxed(svsp, SVSB_INTSTS_MONVOP, INTSTS);
-+	svs_writel_relaxed(svsp, SVSB_INTSTS_FLD_MONVOP, INTSTS);
- }
- 
- static irqreturn_t svs_isr(int irq, void *data)
-@@ -1233,13 +1298,13 @@ static irqreturn_t svs_isr(int irq, void *data)
- 		int_sts = svs_readl_relaxed(svsp, INTSTS);
- 		svs_en = svs_readl_relaxed(svsp, SVSEN);
- 
--		if (int_sts == SVSB_INTSTS_COMPLETE &&
--		    svs_en == SVSB_EN_INIT01)
-+		if (int_sts == SVSB_INTSTS_F0_COMPLETE &&
-+		    svs_en == SVSB_PTPEN_INIT01)
- 			svs_init01_isr_handler(svsp);
--		else if (int_sts == SVSB_INTSTS_COMPLETE &&
--			 svs_en == SVSB_EN_INIT02)
-+		else if (int_sts == SVSB_INTSTS_F0_COMPLETE &&
-+			 svs_en == SVSB_PTPEN_INIT02)
- 			svs_init02_isr_handler(svsp);
--		else if (int_sts & SVSB_INTSTS_MONVOP)
-+		else if (int_sts & SVSB_INTSTS_FLD_MONVOP)
- 			svs_mon_mode_isr_handler(svsp);
- 		else
- 			svs_error_isr_handler(svsp);
-@@ -1525,8 +1590,8 @@ static int svs_suspend(struct device *dev)
- 		spin_lock_irqsave(&svs_lock, flags);
- 		svsp->pbank = svsb;
- 		svs_switch_bank(svsp);
--		svs_writel_relaxed(svsp, SVSB_EN_OFF, SVSEN);
--		svs_writel_relaxed(svsp, SVSB_INTSTS_CLEAN, INTSTS);
-+		svs_writel_relaxed(svsp, SVSB_PTPEN_OFF, SVSEN);
-+		svs_writel_relaxed(svsp, SVSB_INTSTS_VAL_CLEAN, INTSTS);
- 		spin_unlock_irqrestore(&svs_lock, flags);
- 
- 		svsb->phase = SVSB_PHASE_ERROR;
--- 
-2.35.1
+Regards,
+Angelo
 
+> AngeloGioacchino Del Regno (6):
+>    soc: mediatek: mtk-svs: Commonize t-calibration-data fuse array read
+>    soc: mediatek: mtk-svs: Switch to platform_get_irq()
+>    soc: mediatek: mtk-svs: Remove hardcoded irqflags
+>    soc: mediatek: mtk-svs: Drop of_match_ptr() for of_match_table
+>    soc: mediatek: mtk-svs: Use devm variant for dev_pm_opp_of_add_table()
+>    soc: mediatek: mtk-svs: Use bitfield access macros where possible
+> 
+>   drivers/soc/mediatek/mtk-svs.c | 325 ++++++++++++++++++---------------
+>   1 file changed, 176 insertions(+), 149 deletions(-)
+> 
 
