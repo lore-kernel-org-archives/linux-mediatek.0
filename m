@@ -4,100 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 440F2C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 09:57:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B97AC43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 10:07:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iUicZLyBaZmjv2lqx7fW4HMBGqk7G7eOOVk/ONJ/4PI=; b=kAOaMEupASWHxsKwuwaljKNTAx
-	RWez+tfEiuZc8ey3/ynThKHyN44PbR1hKPzOAP2GuC/JCs4OcmnnRjbnq2CT3/B+HpDFJTBTJRhAr
-	e/k/dK1CY184v1dx8GIZQzRmjq1T7VVeJRxNDf43xdlnZA2qBhDAs01YLSZhfGgWpo2vnxp8hCybS
-	ndEA35+H/cC8+wpJd5HcAhySRc5Qz7fln1Cs8vI8WXdC1wVTDjyQiPRL+eXSoRwB/+w07Pc0GwBJm
-	yN1hUZcrKYIG3JhlA5xlKVDATVTrV9Mes7K/bNHd6qtp1ix0RuttdCAS6lzQ7diH+3LQN6NPmu3zn
-	NA1QXKPg==;
+	bh=m2Y1o+uYycCqSvA2lA2BYOb2R5VCnaQF0O+nCD4PffM=; b=FxyI22JNvg1DxhMwzD4TDeG4J9
+	Arv2TGmtgB/geRk4DUnbFhnN593qcP+LmUcbARnPYEWhEGo9IHjGn9LfpYbtos+HzDWxd/nialgze
+	rlqHAY4ttnXUgJ7CrAcCb2gUjJdP6i/UQHpUZfFEh2y9gQ2o0zUkQxg+vxjXQasNEQvlIdKTLcdHZ
+	J04WuRy3fbb9K7UQZBCTkazoC0ni4E3GLRmnXniFmxMJwvrkyWGtC4Mrjz2h9L2VAYQkT8BaBV5TV
+	DSt7XTtGsZfooSanggK7FYYWxOeEkXPUqOW2Rf5Y25Xg4rdkpjfE/6ITAYVUrf+A6ayv3yn7nWZbA
+	MfUykb5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGHJa-00C0o4-E3; Tue, 26 Jul 2022 09:57:22 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1oGHTN-00CG9g-Qc; Tue, 26 Jul 2022 10:07:29 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGHJW-00C0gh-54
-	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 09:57:20 +0000
-Received: by mail-wr1-x435.google.com with SMTP id b26so19432368wrc.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Jul 2022 02:57:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=iUicZLyBaZmjv2lqx7fW4HMBGqk7G7eOOVk/ONJ/4PI=;
-        b=a9jshOAIwiw5ztp0+n80iX49X5uP9g1fIPLWAKA0Oebli99rLSK1JSwbKX/TWSIEKD
-         O8RAu6x1EuYGsc6oXUYHrmfMJXvk5iAAbsgDFp3wtW13E5HsTmbU8dXiDaDJtMrBEKfo
-         BtLocFdB4gelyGOYkHzTosErUmhiDP8/zjswgy3RH2fFxA6Xdh3CA/yI5iTiW9jbWJ9K
-         oN+oMjKZdsMTijOKOP2BcUYtUHprOqVqAeK+KFkaDem1o5Ff7dUDZtyl1X5TpjYEAD8P
-         dBkE0hdxwnSaGXsfATXn6MSzu2tBqE1Ie2s0Wxg+NyX5ban32/phra4XzX8bj2k4iDT4
-         H/tA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=iUicZLyBaZmjv2lqx7fW4HMBGqk7G7eOOVk/ONJ/4PI=;
-        b=tiKfbcwZ0e+mZwBbRyqgtolexV3Lc2200/l5aE22biMCKYEIKEeiKwKtqDY2/1Y4LL
-         vVFwVVITu0BI/s3oBHD+MWsWpq3fCu59kvQAwpNb7K1pT8lUaIWFzgvIgdE7XHcn10AX
-         uoyB3ymvc1plcdcX4U13hNP9NKxU06tNa9wG+4pe4eOyEMLqrT2p+xRWM2+LVmIPndON
-         FxL4fOcfYwTiGfvOrX4Lm8+KP0AkvD2nznrJ11v8C3RCErEMcilGe8bu3PRWVnUVFCsb
-         /UF6ZDZMHITf84E/rmGFSGWdbDLLqpFHNM7h9YOCynFxbrkeFXQlZxhuAtB0Huc0kvO+
-         Vyyg==
-X-Gm-Message-State: AJIora9TvDGCa9gGvFkfMtAIjv4ioRDdHlgaPexlpP+5WTATNYKwt9Ex
-	Wgt25t9c9QOjGmaQDxojfdhC5w==
-X-Google-Smtp-Source: AGRyM1vaVzTyQ5b+nn+RlJ42faxYO14TpuNlzllTL+nY6z4bb/G0nOBbFTz5DJTxQxp7SwpuN92A3g==
-X-Received: by 2002:adf:e84b:0:b0:21e:61cd:647e with SMTP id d11-20020adfe84b000000b0021e61cd647emr10370152wrn.715.1658829433726;
-        Tue, 26 Jul 2022 02:57:13 -0700 (PDT)
-Received: from localhost.localdomain (210.145.15.109.rev.sfr.net. [109.15.145.210])
-        by smtp.googlemail.com with ESMTPSA id t3-20020a1c4603000000b003a2d87aea57sm21170873wma.10.2022.07.26.02.57.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Jul 2022 02:57:12 -0700 (PDT)
-From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-To: fparent@baylibre.com
-Cc: broonie@kernel.org,
-	chaotian.jing@mediatek.com,
-	chunfeng.yun@mediatek.com,
-	devicetree@vger.kernel.org,
-	dmaengine@vger.kernel.org,
-	jic23@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-i2c@vger.kernel.org,
-	linux-iio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-mmc@vger.kernel.org,
-	linux-phy@lists.infradead.org,
-	linux-serial@vger.kernel.org,
-	linux-spi@vger.kernel.org,
-	linux-usb@vger.kernel.org,
-	linux-watchdog@vger.kernel.org,
-	linux@roeck-us.net,
-	matthias.bgg@gmail.com,
-	qii.wang@mediatek.com,
-	robh+dt@kernel.org,
-	srinivas.kandagatla@linaro.org,
-	ulf.hansson@linaro.org,
-	vkoul@kernel.org,
-	wim@linux-watchdog.org
-Subject: Re: [PATCH 16/17] arm64: dts: mediatek: add mt8365 device-tree
-Date: Tue, 26 Jul 2022 11:57:11 +0200
-Message-Id: <20220726095711.708310-1-aouledameur@baylibre.com>
-X-Mailer: git-send-email 2.37.1
-In-Reply-To: <20220531135026.238475-17-fparent@baylibre.com>
-References: <20220531135026.238475-17-fparent@baylibre.com>
+	id 1oGHTK-00CG1K-08; Tue, 26 Jul 2022 10:07:27 +0000
+X-UUID: a470264cac874711ae2c3c541a622308-20220726
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:77287625-8b65-449f-9640-58a8693310a2,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:209988b3-06d2-48ef-b2dd-540836705165,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: a470264cac874711ae2c3c541a622308-20220726
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1622118685; Tue, 26 Jul 2022 03:07:19 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 26 Jul 2022 18:06:51 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Tue, 26 Jul 2022 18:06:51 +0800
+Message-ID: <c70db24fb66f844a2b53c229fff6e943e99398db.camel@mediatek.com>
+Subject: Re: [PATCH v14 05/10] drm/mediatek: Add MT8195 Embedded DisplayPort
+ driver
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, "chunkuang.hu@kernel.org"
+	<chunkuang.hu@kernel.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, "robh+dt@kernel.org"
+	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "mripard@kernel.org"
+	<mripard@kernel.org>, "tzimmermann@suse.de" <tzimmermann@suse.de>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "deller@gmx.de"
+	<deller@gmx.de>, "airlied@linux.ie" <airlied@linux.ie>
+CC: "msp@baylibre.com" <msp@baylibre.com>, "granquet@baylibre.com"
+	<granquet@baylibre.com>, "Jitao Shi
+ =?UTF-8?Q?=28=E7=9F=B3=E8=AE=B0=E6=B6=9B=29?=" <jitao.shi@mediatek.com>,
+	"wenst@chromium.org" <wenst@chromium.org>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "LiangXu Xu
+ =?UTF-8?Q?=28=E5=BE=90=E4=BA=AE=29?=" <LiangXu.Xu@mediatek.com>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-fbdev@vger.kernel.org"
+	<linux-fbdev@vger.kernel.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 26 Jul 2022 18:06:50 +0800
+In-Reply-To: <80f223c8ecf262a62feb047d39b9ea2d8655fd14.camel@mediatek.com>
+References: <20220712111223.13080-1-rex-bc.chen@mediatek.com>
+	 <20220712111223.13080-6-rex-bc.chen@mediatek.com>
+	 <378f904a445e90d65048ed07a1a55fd8c633f934.camel@mediatek.com>
+	 <9c5b85034ec77be80d771ce3a17260453f007728.camel@mediatek.com>
+	 <80f223c8ecf262a62feb047d39b9ea2d8655fd14.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_025718_253867_D35DCE51 
-X-CRM114-Status: UNSURE (   9.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220726_030726_098454_1C156504 
+X-CRM114-Status: GOOD (  38.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,84 +100,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Fabien,
+On Tue, 2022-07-26 at 17:34 +0800, CK Hu wrote:
+> On Tue, 2022-07-26 at 14:42 +0800, Rex-BC Chen wrote:
+> > On Mon, 2022-07-25 at 17:16 +0800, CK Hu wrote:
+> > > Hi, Bo-Chen:
+> > > 
+> > > On Tue, 2022-07-12 at 19:12 +0800, Bo-Chen Chen wrote:
+> > > > From: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > > 
+> > > > This patch adds a embedded displayport driver for the MediaTek
+> > > > mt8195
+> > > > SoC.
+> > > > 
+> > > > It supports the MT8195, the embedded DisplayPort units. It
+> > > > offers
+> > > > DisplayPort 1.4 with up to 4 lanes.
+> > > > 
+> > > > The driver creates a child device for the phy. The child device
+> > > > will
+> > > > never exist without the parent being active. As they are
+> > > > sharing
+> > > > a
+> > > > register range, the parent passes a regmap pointer to the child
+> > > > so
+> > > > that
+> > > > both can work with the same register range. The phy driver sets
+> > > > device
+> > > > data that is read by the parent to get the phy device that can
+> > > > be
+> > > > used
+> > > > to control the phy properties.
+> > > > 
+> > > > This driver is based on an initial version by
+> > > > Jitao shi <jitao.shi@mediatek.com>
+> > > > 
+> > > > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> > > > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> > > > ---
+> > > 
+> > > [snip]
+> > > 
+> > > > +
+> > > > +static int mtk_dp_training(struct mtk_dp *mtk_dp)
+> > > > +{
+> > > > +	short max_retry = 50;
+> > > > +	int ret;
+> > > > +
+> > > > +	do {
+> > > > +		ret = mtk_dp_train_start(mtk_dp);
+> > > > +		if (!ret)
+> > > > +			break;
+> > > > +		else if (ret != -EAGAIN)
+> > > > +			return ret;
+> > > > +	} while (--max_retry);
+> > > 
+> > > mtk_dp_train_start() would never return -EAGAIN, so drop this
+> > > while
+> > > loop.
+> > > 
+> > > Regards,
+> > > CK
+> > > 
+> > 
+> > Hello CK,
+> > 
+> > the function will not return -EAGAIN, but we still want to retry 50
+> > times if mtk_dp_train_start() is failed. If we retry 50 times and
+> > it
+> > is
+> > still failed. We can confirm there are some issues for the device.
+> > 
+> > I will remove the else if of -EAGAIN and keep th while loop.
+> 
+> In this version, it never retry. And I believe you've tested this no-
+> retry version. If this no-retry version works fine, why do you insist
+> on retry? If you really need retry, merge this retry into
+> mtk_dp_train_start() because mtk_dp_train_start() have already retry.
+> 
+> Regards,
+> CK
+> 
 
-Could you please add CPUIDLE support:
+Hello Ck,
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index 323c814c10cc..1df4075db58f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -59,6 +59,7 @@ cpu0: cpu@0 {
- 			clocks = <&mcucfg CLK_MCU_BUS_SEL>,
- 				 <&apmixedsys CLK_APMIXED_MAINPLL>;
- 			clock-names = "cpu", "intermediate";
-+			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER &DPIDLE>;
- 			operating-points-v2 = <&cluster0_opp>;
- 			#cooling-cells = <2>;
- 			enable-method = "psci";
-@@ -72,6 +73,7 @@ cpu1: cpu@1 {
- 			clocks = <&mcucfg CLK_MCU_BUS_SEL>,
- 				 <&apmixedsys CLK_APMIXED_MAINPLL>;
- 			clock-names = "cpu", "intermediate", "armpll";
-+			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER &DPIDLE>;
- 			operating-points-v2 = <&cluster0_opp>;
- 			#cooling-cells = <2>;
- 			enable-method = "psci";
-@@ -85,6 +87,7 @@ cpu2: cpu@2 {
- 			clocks = <&mcucfg CLK_MCU_BUS_SEL>,
- 				 <&apmixedsys CLK_APMIXED_MAINPLL>;
- 			clock-names = "cpu", "intermediate", "armpll";
-+			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER &DPIDLE>;
- 			operating-points-v2 = <&cluster0_opp>;
- 			#cooling-cells = <2>;
- 			enable-method = "psci";
-@@ -98,10 +101,42 @@ cpu3: cpu@3 {
- 			clocks = <&mcucfg CLK_MCU_BUS_SEL>,
- 				 <&apmixedsys CLK_APMIXED_MAINPLL>;
- 			clock-names = "cpu", "intermediate", "armpll";
-+			cpu-idle-states = <&MCDI_CPU &MCDI_CLUSTER &DPIDLE>;
- 			operating-points-v2 = <&cluster0_opp>;
- 			#cooling-cells = <2>;
- 			enable-method = "psci";
- 		};
-+
-+		idle-states {
-+			entry-method = "psci";
-+
-+			MCDI_CPU: mcdi-cpu {
-+				compatible = "arm,idle-state";
-+				local-timer-stop;
-+				arm,psci-suspend-param = <0x00010001>;
-+				entry-latency-us = <300>;
-+				exit-latency-us = <200>;
-+				min-residency-us = <1000>;
-+			};
-+
-+			MCDI_CLUSTER: mcdi-cluster {
-+				compatible = "arm,idle-state";
-+				local-timer-stop;
-+				arm,psci-suspend-param = <0x01010001>;
-+				entry-latency-us = <350>;
-+				exit-latency-us = <250>;
-+				min-residency-us = <1200>;
-+			};
-+
-+			DPIDLE: dpidle {
-+				compatible = "arm,idle-state";
-+				local-timer-stop;
-+				arm,psci-suspend-param = <0x01010004>;
-+				entry-latency-us = <300>;
-+				exit-latency-us = <800>;
-+				min-residency-us = <3300>;
-+			};
-+		};
- 	};
- 
- 	cluster0_opp: opp-table-0 {
+There are many different devices we are not testing for DP devices.
+I think we need to keep this.
+This retry is for restart with init state.
 
-I have tested it on i350 evk and each idle state is used properly.
+I think it's better to keep it here and it's more clear.
 
-Regards,
-Amjad
+I will remain the comments above, and I think it's enough.
+
+BRs,
+Bo-Chen
+
+> > 
+> > BRs,
+> > Bo-Chen
+> > > > 
+> > > > +	if (!max_retry)
+> > > > +		return -ETIMEDOUT;
+> > > > +
+> > > > +	ret = mtk_dp_video_config(mtk_dp);
+> > > > +	if (ret)
+> > > > +		return ret;
+> > > > +	mtk_dp_video_enable(mtk_dp, true);
+> > > > +
+> > > > +	return 0;
+> > > > +}
+> > > > +
+> > > 
+> > > 
+> > 
+> > 
+> 
+> 
+
 
