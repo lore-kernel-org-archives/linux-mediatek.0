@@ -4,60 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32A34CCA489
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 13:07:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAA5EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 13:26:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vpH6sKzIKmV9ebjuquoPpJqCUdyomLMUNpKFGyrZVvY=; b=ECd9AZs4+od6FomUxHtmtpET0U
-	qXXvsAqKmojc+I5iNaR2xeB72hd0IRJpcHnXty8tTQcP/NXPoolFtYFMwlzxLM2odlFd1uF1f/fSD
-	9Pv7M7tK9x190xP1WnUJ/pudOes4642MNuU+SNcy/Xg3Q5ZDMY/GkbxOZvj/PlOkqydD+kDqV6FBN
-	lqG43jDEJtwyZ1jpr47d3ODu7kwwPHEuF1XVFf6GC23DUb/xmwLzjPAwvIOeOWnNgslwVnHBP9vhu
-	bSx3CD646UwIJIGfCmhwDWuehIfdjfM8aIB5+A4hXlYbFF9is1EdC8tvPM4S4kGTCOs49/gqAKZds
-	neeDpf/g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9W7JF3IrfXSv6HnR9aCy5G+yL4VgTUQ6ChNgjcsQI/8=; b=Le/EVvAo7NAUP4dZlIELXQ0BK2
+	HGz2Eg8hhfn+o3JCGEeCH5PRllmfBdWl5MWpWYziMU4M4JIusokCBsQJIYkYBUv/XvK398LZ5oyb9
+	Kmp5xZSysPHEiYvirgYEeBOdGCinhfnjdGu/jYifILM+mW6ffBtbDgR+UTXPHoclLuIB1vgL2/cTq
+	764pAJtDc1K4szn5+FprhxlQNzaTVIaekIwC3RNg18+g9T55tMXgcfGkOduSWqUWkvG3agl3K6dt0
+	beovEebofB+fA7oJthhI/9uOQTbUXmYLi/Unp/Sw6pGlh8Nt6a6cpQCz07GFgYHleyBG22H/23vm+
+	Sw5EvagQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGKH9-00HFXi-N4; Tue, 26 Jul 2022 13:07:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oGKZR-00HM1u-Nb; Tue, 26 Jul 2022 13:25:57 +0000
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGKH3-00HFTX-GX
-	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 13:07:01 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 12A8F6156C;
-	Tue, 26 Jul 2022 13:06:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6FC8C341C0;
-	Tue, 26 Jul 2022 13:06:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658840814;
-	bh=Fp0ETMXSf1u3HJPg8GQaoP+P+FapvKLn/mwE+gJI7rs=;
-	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
-	b=YCboPrdPeQPwh2ex7MGeu+llbROZNF9gz6JMv7KfTuPLd1oy8qycF38zn5HFiHaV5
-	 c5Hv8wFscyatMyzj/C4px+BlemLaFSQoMI279jvzONakFAiOlecn1/lgrhNzC7QbyU
-	 b0vIx8nuuI6DVqhDXwoFGitbNDFFX6J2/NBVj1SncSIbauQajrGfU8ynftH+GJpt/O
-	 FfcNZx0L3xUQVcH/MY3Ef9dFW2Sa4dk9+b9/hJ1r3hTMKm+qYg+GUHOVvEAzCpYAVo
-	 3fNiaGD/vrg+GCAhJlh1eWT9xRnIbkNxJxsXNDSNxGmJwmwThJp3CFNq3ExAGvZyhs
-	 TEcI/hFmYwNOg==
-From: Kalle Valo <kvalo@kernel.org>
-To: Lian Chen <lian.chen@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>,  linux-wireless <linux-wireless@vger.kernel.org>,  Bo Jiao <bo.jiao@mediatek.com>,  Sujuan Chen <sujuan.chen@mediatek.com>,  Shayne Chen <shayne.chen@mediatek.com>,  Evelyn Tsai <evelyn.tsai@mediatek.com>,  linux-mediatek <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] mt76: address4 null frame using fixed rate to trigger WDS
-References: <20220706090901.88929-1-lian.chen@mediatek.com>
-Date: Tue, 26 Jul 2022 16:06:50 +0300
-In-Reply-To: <20220706090901.88929-1-lian.chen@mediatek.com> (Lian Chen's
-	message of "Wed, 6 Jul 2022 17:09:01 +0800")
-Message-ID: <87wnc0koph.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	id 1oGKZE-00HLwY-Da; Tue, 26 Jul 2022 13:25:46 +0000
+Received: by mail-oi1-x22f.google.com with SMTP id l188so5394743oia.4;
+        Tue, 26 Jul 2022 06:25:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=sender:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=9W7JF3IrfXSv6HnR9aCy5G+yL4VgTUQ6ChNgjcsQI/8=;
+        b=bZp2M2MhWF4fUgtzDycyJtCGnccS7zhqB/ugkSS8ntWH3CMg9E/LzEu1Jo3kb/MpTZ
+         IgDi2K4VcGD8U/63u5WGcIBBsF3wkEMdw8H8Xc5w+ruI8Ap1Ljm2rorfsO+qlYdu+NFv
+         sE9j1+1PohyJPN69w1+vqO3WsLLg3y6emIxGfwxZ3A5MeaF6bSSY8Z9hx3cAf4HiY2dP
+         UXrcU/gCrrZhfFebtvdSkyROHwkGxKbZmImpBwvFyYmCB+2WtdIrxQSuWT+sEiawQopl
+         zysqx2i6oNELoSZRheokx3eCJdeYAz1M0qouwmbpe+eRtVwu5LkV0Mq5wPW9buXkZG2C
+         THBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+         :subject:content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=9W7JF3IrfXSv6HnR9aCy5G+yL4VgTUQ6ChNgjcsQI/8=;
+        b=OHjsdI1YVFTn+SAufx8QhGJaHFEk7dWFCWr5Khcrjw4VsDPJhyuaRGGWQoFH/wF8w2
+         AGohRFUCaKYsLhKdAli/146whsUbE2epsCzf5spE79kkBuuW3H7eU35JGMwhzoaldjqY
+         nl+igAmeZ6mEy3xOWXaevwaSnWSBbY/jLPGWOuk9B62LEEaCcKxALit/WnnxE+KGaYTI
+         m7oBhJC/wfQGBY1l4pUPnHf7OkqnAffrYYWcBFG1AgX7tC7PrgFoZiqMh6Fh4qC8H8X1
+         IqtVLG00FVL6ggh/omZqW67cc08/z8/YKBZ8wi0BJY239k+cD9gBz0mAn7FcBE3JvJuj
+         mwrQ==
+X-Gm-Message-State: AJIora9Ylrx+j5K4s83vCchwxBzETcgamK9jskGTL8L2Sv6qhmz9EvAD
+	yAQHzDOGKJLOx8+eseH79XU=
+X-Google-Smtp-Source: AGRyM1vue6vjDJ0Mb8htpAGM3ajVE5K9yi5DBca3z27whgvhv09UeHHoAibRm/+ZRNKhMLXD0eo8uQ==
+X-Received: by 2002:a05:6808:124a:b0:32c:45f0:5011 with SMTP id o10-20020a056808124a00b0032c45f05011mr7883176oiv.217.1658841940214;
+        Tue, 26 Jul 2022 06:25:40 -0700 (PDT)
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c? ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id n8-20020a056870240800b0010d7242b623sm7343024oap.21.2022.07.26.06.25.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 26 Jul 2022 06:25:39 -0700 (PDT)
+Message-ID: <fc64285e-30c7-44b1-e264-839944105185@roeck-us.net>
+Date: Tue, 26 Jul 2022 06:25:35 -0700
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH] watchdog: mtk_wdt: Move mt6589-wdt fallback compatible to
+ end of list
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Wim Van Sebroeck
+ <wim@linux-watchdog.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-watchdog@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220726062057.320342-1-wenst@chromium.org>
+ <91613700-3335-7499-1b48-3d88edd9da36@collabora.com>
+From: Guenter Roeck <linux@roeck-us.net>
+In-Reply-To: <91613700-3335-7499-1b48-3d88edd9da36@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_060657_627661_C140F5E3 
-X-CRM114-Status: UNSURE (   7.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220726_062544_483226_80A326E1 
+X-CRM114-Status: GOOD (  30.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,17 +96,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Lian Chen <lian.chen@mediatek.com> writes:
+On 7/26/22 01:37, AngeloGioacchino Del Regno wrote:
+> Il 26/07/22 08:20, Chen-Yu Tsai ha scritto:
+>> The watchdog facility in the MediaTek SoCs are all the same, but the
+>> hardware block also contains a reset controller, which differs in the
+>> number of resets used between different SoCs. This difference is
+>> supported with of_device_get_match_data() supplying the number of reset
+>> lines for the newer compatible strings. The original mt6589-wdt only
+>> covers the watchdog facility.
+>>
+>> of_device_is_compatible(), and by extension of_device_get_match_data(),
+>> works by going through the given list of compatible strings sequentially,
+>> and checks if any of the device node's compatible strings match.
+>>
+>> To avoid early matching on the "mediatek,mt6589-wdt" fallback compatible,
+>> which only provides watchdog functionality and no reset controller, move
+>> the fallback entry to the end of the list, so that other, more specific
+>> compatible strings have a chance at getting matched.
+>>
+>> Fixes: c254e103082b ("watchdog: mtk_wdt: mt8183: Add reset controller")
+>> Fixes: adc318a34066 ("watchdog: mt8192: add wdt support")
+>> Fixes: 8c6b5ea6ac68 ("watchdog: mediatek: mt8195: add wdt support")
+>> Fixes: 4dbabc4d9e8c ("watchdog: mediatek: mt8186: add wdt support")
+>> Fixes: 711a5b25bac9 ("watchdog: mtk_wdt: mt7986: Add toprgu reset controller support")
+>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> 
+> Uhm, I don't think that this is an issue?
+> 
+> Ordering precedence is given to the list that you specify in devicetree, that's why
+> "the second one" is a fallback, meaning: ("impossible" example below)
+> 
+> compatible = "mediatek,mt8195-wdt", "mediatek,mt8183-wdt", "mediatek,mt6589-wdt";
+> 
+> This gets walked as per the order in which you wrote the compatibles, so:
+> * Check match for mt8195-wdt, does not exist?
+>   * Check match for mt8183-wdt, exists!
+>   * Put everything into dev->of_node (having mediatek,mt8183-wdt only!)
+> 
+> __of_device_is_compatible() gets dev->of_node and compares that to all of the
+> possible matches.
+> 
+> struct device_node for this device hence does *not* contain any of the other
+> compatibles that we specified in devicetree, so it does *not* contain any of
+> "mediatek,mt8195-wdt", or "mediatek,mt6589-wdt", because we have previously
+> successfully matches 8183.
+> 
+> I don't think that I've misinterpreted this flow, but if I have, let's pull
+> in devicetree people and check with them?
+> 
 
-> From: "lian.chen" <lian.chen@mediatek.com>
+I don't see the problem either. The fallback needs to be listed last in the
+compatible property. If it isn't, having it last in struct of_device_id
+won't help either.
 
-Please don't use dot in your name and capitalise it as well. So this
-should be:
+> Cheers,
+> Angelo
+> 
+>> ---
+>>
+>> This change complements the removal of the fallback compatible from the
+>> bindings and DTSI files [1].
+>>
 
-From: "Lian Chen" <lian.chen@mediatek.com>
+If the fallback isn't listed in the dtsi files, it won't match at all,
+no matter where it is located in struct of_device_id.
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+Guenter
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+>> [1] https://lore.kernel.org/linux-mediatek/20220721014845.19044-1-allen-kh.cheng@mediatek.com/
+>>
+>>   drivers/watchdog/mtk_wdt.c | 3 ++-
+>>   1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+>> index e97787536792..3d5a239b93ba 100644
+>> --- a/drivers/watchdog/mtk_wdt.c
+>> +++ b/drivers/watchdog/mtk_wdt.c
+>> @@ -425,12 +425,13 @@ static int mtk_wdt_resume(struct device *dev)
+>>   static const struct of_device_id mtk_wdt_dt_ids[] = {
+>>       { .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
+>> -    { .compatible = "mediatek,mt6589-wdt" },
+>>       { .compatible = "mediatek,mt7986-wdt", .data = &mt7986_data },
+>>       { .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
+>>       { .compatible = "mediatek,mt8186-wdt", .data = &mt8186_data },
+>>       { .compatible = "mediatek,mt8192-wdt", .data = &mt8192_data },
+>>       { .compatible = "mediatek,mt8195-wdt", .data = &mt8195_data },
+>> +    /* Fallback compatible string must be last entry */
+>> +    { .compatible = "mediatek,mt6589-wdt" },
+>>       { /* sentinel */ }
+>>   };
+>>   MODULE_DEVICE_TABLE(of, mtk_wdt_dt_ids);
+> 
+> 
+
 
