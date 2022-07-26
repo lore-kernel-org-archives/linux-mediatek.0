@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 124F4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 08:20:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FA45C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 08:25:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KXcoTMl5SFexd+n5AbFvMic2emnnIQ1iyjkX/EHVGrQ=; b=M7CIwwVdhLJy+fthF84V9mkdAA
-	vB3FoLYLVeeYX22QhaXSK+j5SQmhjlHxlFNDmecFShb6f0VPoYCVtYyIYnuzVUez2QykWOmXMp2ZZ
-	aBTSt3u0N9mcXlm22+4kCNUqwt7myA2h6MGf3L7H0uzbd4mg7KBcp/NjQk0AxGt8PrkeHDHGNo7Lj
-	K3tZja8xFOam7O+BllkQVeYIILgkrl6ASznkbzicgnccAVFUSv0BKef127LPARRZKMBaxiA0V2Cov
-	l22nn5qSdyijgPlRcltP8cD8ZBR2rLQ+vhWvem+iU/jAQRCspSLG/awIwm6ln/j19yyaBNAjvv5WH
-	QHOlYMow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2eR2bajGRP/sgNFoTl95SKN8UfWncJyTcpIwCg8mZac=; b=wZn6hJywzL4DZcIwK5IaZ14K7d
+	6LRnLfwa/9q5nj80Qhk8M+o/wfOFLgyu5NpqhE2rC+iUPHNlzjNVisBLkDQS0CBxJT/IM2ztyHkYA
+	9y3fHNYsj377+pPlKS24RNMSaRwt9rkG54N8TG0Wc6dfROaWdii/QGWTxqnqLzlSEwmKPouMCUhPD
+	UtaKM6qYcstQs2ZysUf3gXKz+0veKPczZXNVwy8tt7lhv42vQSVK4pDtUo/9IkiclvC25TZi8+Hyx
+	5cpzBQWL6DxTlX81A3JLsjzGiT/AeI8olQs1pyi6jJDDQZWU2Xa19xZnc+pSmXzsO+0ckNbjNEeyC
+	FPeUJzjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGFnu-00A4Pg-1W; Tue, 26 Jul 2022 08:20:34 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oGFsR-00A8MD-QR; Tue, 26 Jul 2022 08:25:15 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGFmT-00A392-Ox; Tue, 26 Jul 2022 08:19:07 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8C2166601B15;
-	Tue, 26 Jul 2022 09:19:03 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658823544;
-	bh=aosNoAp05Wow4WFoF/6Koz6DzMxzjOUARH/nB0k1LXI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RMqpCPE8IjtDG9Vj7YQZeRKj+3kr+sxVaSubfdf1pQ+ckFAuNb6ofwKR//Tf6jq3K
-	 LOmtluPrmrOGVHX3n5oMzGKXBYVyEC3Yjtgz9ywgBc+Tg0po/gyg4y7sg/ltZjryEh
-	 sgwwbP5y51BjFD6io7mm85WL5ZWeoXQXaegEu9GwLHIpw0cWP6uPDV/uD5keNr/Y7G
-	 wxzK/3Huti6BCJecvROLWKdpWwhHvGp29gp3uoBKpgz49KA9vB5/3342K8oxhLri9t
-	 Xs0Dbc0GbYhbYJNwWYR2YI0SPyKeg2/3DExu0jMoBW83/+2RbI/Q5kk0cGd4UcNjNN
-	 2r+ifHY6m8q7Q==
-Message-ID: <a91e09c8-377f-7143-2c66-11ef09552d8e@collabora.com>
-Date: Tue, 26 Jul 2022 10:19:01 +0200
+	id 1oGFs2-00A82w-CL
+	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 08:24:51 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id z22so16831628edd.6
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 Jul 2022 01:24:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=2eR2bajGRP/sgNFoTl95SKN8UfWncJyTcpIwCg8mZac=;
+        b=oOPs8L9PuW7OKOkDNzZYO1z+kaxW19SG4MupZMavHPwr6wEwC5Pkc+a3zCWnbp37gB
+         Q/XMOdE8bkMm20N5pufa1A7ii53GVMD+uoA6jY0MaPs/Mz3pXGymLuyqhabVcfCBVdNG
+         FZKT+MEl5xFBxseEjwndE1xYUEu+A4yYJMxdrijrGgYMrqOgTib+1V3AwKxFYa0Q1Yv3
+         lsKS/G21RNxtTJ160BPYSlnp7cgPcAMUXrSkZQHkwV5knNUojtbyLS9Lm//Lys8qBwvo
+         MvYj4n8+5MWt1T59klH/XTflGtix7ZAMhi5ycY1UPpY2nrYkEFLEkCvdxZrYePspDuGY
+         4aDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=2eR2bajGRP/sgNFoTl95SKN8UfWncJyTcpIwCg8mZac=;
+        b=roEnNxc8V8OiONYiYJ+ovuPp6qNcIVwi8L1QErLrcwBb1x2HQoaa4uOPVlMbYENv54
+         fUZefjmHBTDT6kuyP2zjebEJQaEOSBGZaz/xW9yg98qvErIHvb8PsVxex+iMDHVi9GEM
+         Y7cjPBQLisJguTiFZ2t2gSksWaIMFeG2qm8yE4IyQPaYsFnv95xQxoyIAhKxIWdSXOC6
+         Y910YrNyPqDy2xCMq96B7LeNDJ0mzRcrYyU5IWY7C7jxDOZ4l++chwkXB9pQOOAhoGr5
+         R9lbojZ4iNVv78ArNFZ2LXz/jPHI3hQnpEua1lYP5JQeZ0y6etPNMqfcVA///AzUViTy
+         LsDA==
+X-Gm-Message-State: AJIora8Hf+1qAnfxZM0X8ogWSv1kfGOv3W7L3cM9E9TmQ10Dj2PeFwNZ
+	4tux2+/5qSx9rEbz8iws276+kHUuG+6WsSLn7+VRGg==
+X-Google-Smtp-Source: AGRyM1tstrOXHY8xgRH3GyE5OsoHHbrAl6kqR23c9IfUWFc8GJUD8u2uEM2ekizLdZ6HC2sstvliH1Jpc4Nk7Ibfn7A=
+X-Received: by 2002:a05:6402:2696:b0:43b:eb8b:d0da with SMTP id
+ w22-20020a056402269600b0043beb8bd0damr10851495edd.158.1658823887600; Tue, 26
+ Jul 2022 01:24:47 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] arm64: dts: mt8173-oak: Switch to SMC watchdog
-Content-Language: en-US
-To: Pin-yen Lin <treapking@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Hsin-Yi Wang <hsinyi@chromium.org>,
- Eizan Miyamoto <eizan@chromium.org>, Evan Benn <evanbenn@chromium.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
-References: <20220725082447.2613231-1-treapking@chromium.org>
- <5856610d-510f-46dc-63b2-79e571956a7c@collabora.com>
- <CAEXTbpeHy6-WjLOyWFkncoHzBPM+6qq4w-kUoZj7=05gf8YBjw@mail.gmail.com>
- <bcb8c2b4-a1ab-8646-9fcb-034a70f5a329@collabora.com>
- <CAEXTbpeEkpgFjQfONM030k8drcfYzOoWnB_FUqFptd-27YRqNg@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAEXTbpeEkpgFjQfONM030k8drcfYzOoWnB_FUqFptd-27YRqNg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20220725110702.11362-1-allen-kh.cheng@mediatek.com> <20220725110702.11362-2-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220725110702.11362-2-allen-kh.cheng@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 26 Jul 2022 10:24:36 +0200
+Message-ID: <CACRpkdbJai1X1iwY+qEGH_NwwsSWk=Ap6goZEat6o4Wb5E_FXw@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: mt8186: Add gpio-line-names property
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	angelogioacchino.delregno@collabora.com, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_011906_126845_78F228ED 
-X-CRM114-Status: GOOD (  37.12  )
+X-CRM114-CacheID: sfid-20220726_012450_459695_600A49BA 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,130 +88,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/07/22 07:55, Pin-yen Lin ha scritto:
-> On Mon, Jul 25, 2022 at 6:31 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 25/07/22 12:19, Pin-yen Lin ha scritto:
->>> On Mon, Jul 25, 2022 at 4:39 PM AngeloGioacchino Del Regno
->>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>
->>>> Il 25/07/22 10:24, Pin-yen Lin ha scritto:
->>>>> Switch to SMC watchdog because we need direct control of HW watchdog
->>>>> registers from kernel. The corresponding firmware was uploaded in
->>>>> https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405.
->>>>>
->>>>
->>>> There's a fundamental issue with this change, I think.
->>>>
->>>> What happens if we run this devicetree on a device that does *not* have
->>>> the new(er) firmware?
->>>
->>> I haven't tried this patch with an older firmware. I'll manage to
->>> build one for this.
->>>>
->>>> The kernel *shall not* get broken when running on devices that are running
->>>> on older firmware, especially because that's what was initially supported
->>>> and what is working right now.
->>>
->>> Actually the current approach does not work *right*. The device boots,
->>> but the watchdog does not work properly.
->>>
->>
->> Is this a Chromebook firmware specific issue?
-> 
-> I'm not sure if this is a Chromebook-specific issue. The internal
-> issue thread only discussed this for the Chromebook firmware.
->>
->>> Also, all MT8173 ChromeOS devices have this firmware updated, and we
->>> don't have other upstream users apart from mt8173-evb. Do we want to
->>> support the developers that are running upstream linux with their
->>> MT8173 boards?
->>>
->>
->> Upstream shall not be just about one machine: if we add support for a SoC there,
->> we shall support the SoC-generic things in the SoC-specific DTSI, and the machine
->> specific things in the machine-specific devicetrees.
->>
->> Chromebooks are not the only machines using the MT8173 SoC (Chuwi, Amazon also do
->> have products using MT8173), so we shall not make the main mt8173.dtsi incompatible
->> with these machines.
-> 
-> I don't see their DTS files uploaded to the upstream kernel. So we
-> still want to support them even if they didn't upstream their changes?
-> 
+On Mon, Jul 25, 2022 at 1:07 PM Allen-KH Cheng
+<allen-kh.cheng@mediatek.com> wrote:
 
-The point is not about having to support them, but about not making things
-harder for them, in case any community person wants to add support for these
-upstream.
+> Add the 'gpio-line-names' property to mt8186-pinctrl, as this will be
+> used in devicetrees to describe pin names.
+>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-By rule, everything SoC-generic goes to soc.dtsi; everything board-specific
-goes to board.dts(i).
+Patch applied.
 
-> Does it make sense if we move the modification to mt8173-elm.dtsi? The
-> device should be running ChromeOS AP firmware if it uses or references
-> mt8173-elm.dtsi. Also, all the MT8173 Chromebooks were shipped with
-> the "new" firmware from the very beginning. We just somehow didn't
-> upstream this around the time.
-
-Moving this to mt8173-elm.dtsi is the only sensible option, as this is something
-that was addressed in Chromebooks' firmwares and it's not a SoC hardware spec.
-
-So yes, please.
-
-The disablement of the MMIO watchdog should also be done in mt8173-elm.dtsi, and
-please please please, make sure to add a comment in the devicetree saying that
-we're disabling that one because the SMC wdog operates on the same MMIO.
-
-Regards,
-Angelo
-
->>
->>>>
->>>> For this reason, I think that we should get some code around that checks
->>>> if the SMC watchdog is supported and, if not, resort to MMIO wdog.
->>>
->>> What is the expected way to support this backward compatibility? Do we
->>> put the old compatible strings ("mediatek,mt8173-wdt" and
->>> "mediatek,mt6589-wdt") after "arm,smc-wdt" and reject it in the
->>> drivers if the firmware does not support it?
->>
->> I don't know what's the best option to support both cases... Perhaps a good one
->> would be to check (in mtk_wdt? or in arm_smc_wdt?) if the arm_smc_wdt is actually
->> supported in firmware, so if the SMC one is registered, we skip the other.
->>
->>>>
->>>> Regards,
->>>> Angelo
->>>>
->>>>
->>>>> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
->>>>> ---
->>>>>
->>>>>     arch/arm64/boot/dts/mediatek/mt8173.dtsi | 6 ++----
->>>>>     1 file changed, 2 insertions(+), 4 deletions(-)
->>>>>
->>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->>>>> index a2aef5aa67c1..2d1c776740a5 100644
->>>>> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->>>>> @@ -528,10 +528,8 @@ power-domain@MT8173_POWER_DOMAIN_MFG {
->>>>>                         };
->>>>>                 };
->>>>>
->>>>> -             watchdog: watchdog@10007000 {
->>>>> -                     compatible = "mediatek,mt8173-wdt",
->>>>> -                                  "mediatek,mt6589-wdt";
->>>>> -                     reg = <0 0x10007000 0 0x100>;
->>>>> +             watchdog {
->>>>> +                     compatible = "arm,smc-wdt";
->>>>>                 };
->>>>>
->>>>>                 timer: timer@10008000 {
->>>>>
->>>>
->>>>
->>
->>
-
+Yours,
+Linus Walleij
 
