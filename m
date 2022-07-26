@@ -4,86 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12000C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 02:21:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8A78C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 03:07:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W0xMOzx9xkEwYcg4IC9rpOdFz/8JFTGOz3GpQHY8CyA=; b=gJNLs18q0vmVML9NIVORrvC2BV
-	9g29wnlp/2zmcE6s4JA1bLuCmW177W+nrlD6oxQnjcQt8yeQNWLumN+9o4ox6tNGrlhES/kvoIqLZ
-	zEQ1wROLJyRK5d8CJbuXZiHNM6d73+x82/JZAcNCHOrXjsKWshELOrvPqfmbm3H8lKd2JJU5FHe1Y
-	FsfiJbwv+fmmlAlH5HlDXf64wWt6Mg/7YKTMti0FIYF0zIB2g/wWuLwwXX9ap+eDWKB0J+lZv/BqS
-	AWgLArYlo0T5x/g8x+s31BtPpezQFPdYskxRDAt0t25aU/ohJ+Vy6LvRfCVXOVB7xwbIdjIy67Ey9
-	VUoToscA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HDSHu4EC3LjeIWDOodb4adR4dTX3VyD/UG4Wb1/8h+8=; b=0ti35Ao+iUZXBn+HtjZwLrhwyS
+	elVoZTQDdcxcNHeLfm0ZJLrXVW378RmpvX/BE6M2NZz5kyBeggOLNjlU1XnbfG2XqA/DlWuFWaMNk
+	obChsX/kFM2zat2zkHf5o3b1GpgCPY3RF8lJ5sn9HfFyO2mKklnhJxmWr5o23xlPLhDav7+0HHUTB
+	Kzfi6tvhg1XM5wV9nb+z+iXYgf8CjpDRDItLbP8r+jpSGWZZyXHIT9Gv99s2pcK5A5EA/STzYpxKD
+	Wa68KMKVil9GPZN4HRxJ3u9W1hxIAUpgFWXe1UeEJJIqLeAtkDtMwAoTydkIfyWITr0mi1qlIH89e
+	9Fz4cJaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGABq-006qca-V2; Tue, 26 Jul 2022 02:20:54 +0000
-Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
+	id 1oGAuf-0071Sn-T2; Tue, 26 Jul 2022 03:07:13 +0000
+Received: from mail-m121145.qiye.163.com ([115.236.121.145])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGABd-006qXt-PJ; Tue, 26 Jul 2022 02:20:43 +0000
-Received: by mail-qk1-x730.google.com with SMTP id f14so10117553qkm.0;
-        Mon, 25 Jul 2022 19:20:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=W0xMOzx9xkEwYcg4IC9rpOdFz/8JFTGOz3GpQHY8CyA=;
-        b=bQNzSCTQTDj5oJAikkEBCR3Q/tLaWKw4sj3Vy9sXwlvn8sYyxYtkIYLMGJHXeTnchw
-         taB+Q9JNgrphDka9FLEaK8Qsw28p9ed1+CizwomW4uNr80I+wP1Lqo9LTTYwNWb3V89V
-         GIklfwwZ1L8oQOXN4gS6QzAtgFIiB62NAp+81WQ1VPf3ZNTslXRqVWiUfEk+RoW/cY8f
-         fDSw5bn9W+8qRxPD/H7Me+Tk8/fC32oiFqKIMjraRmMb5Kapx2uuyolL4AP030DYsD1r
-         9zbtprQkDJeDZWr8JDzg2hRZyzyKu9MOyRP/v2uOlFD2v7biNRKTj8XzA8Co9eYGKCHI
-         FE9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=W0xMOzx9xkEwYcg4IC9rpOdFz/8JFTGOz3GpQHY8CyA=;
-        b=JFvENqFDDBBau8xO+zcS01RnlvzL66JEcTi98MBQNC5h5LVIlxRgkrijfRa15uXtkd
-         HjtxOfMJ/TUCOWfeYNTEtGm4tU89wG5GZPMdt7etECzyRMP4kpqWWmxmQSBmT/D1G5cI
-         i7j/fgymncAoTXKSfKCfHDedJX87jBbQ3DiuubE7nVLTFtBOF1995+PjY8Tk13U6ycGC
-         uIyzA2b8C4ehERwEQjNM2dGRCPxFd8bYXniIvymlzbKnJKnGcGFj0cWrLDEuRTp9Nepz
-         9AeThWrkdjZVY2+EASi1bGcrWyg90ldQxVcQJHbTqCBJWjCIaFWLwkwHcN+d9Ffd52B+
-         Yefw==
-X-Gm-Message-State: AJIora+1WsCQfqx/zeqZ3+PLawYZ2vT+sZv6EcX4Cx4nCpUYlG5wcJdK
-	6dJNMPR6AXQ3PPPxj7tTk/VTmQxMOf1HAlr8wqE=
-X-Google-Smtp-Source: AGRyM1tZpCYcrI4GEenV5sl4ffLbB3S1w73dtE0jE5MocjhBVejW7P4d8PE22YJ6HvnYEZBNm5FpvyKW1Z34FzM/KzI=
-X-Received: by 2002:a37:80c2:0:b0:6b5:e9e4:c4c1 with SMTP id
- b185-20020a3780c2000000b006b5e9e4c4c1mr11082627qkd.129.1658802038657; Mon, 25
- Jul 2022 19:20:38 -0700 (PDT)
+	id 1oGAuL-0071Jo-9P; Tue, 26 Jul 2022 03:06:55 +0000
+Received: from amadeus-VLT-WX0.lan (unknown [113.118.189.34])
+	by mail-m121145.qiye.163.com (Hmail) with ESMTPA id 77CCD80008D;
+	Tue, 26 Jul 2022 11:06:50 +0800 (CST)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: [PATCH 2/3] soc: mediatek: update power domain data of MT7623A
+Date: Tue, 26 Jul 2022 11:06:20 +0800
+Message-Id: <20220726030621.7555-2-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220726030621.7555-1-amadeus@jmu.edu.cn>
+References: <20220726030621.7555-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-14-peterwu.pub@gmail.com>
- <20220725103128.xtaw2c4y5fobowg7@maple.lan>
-In-Reply-To: <20220725103128.xtaw2c4y5fobowg7@maple.lan>
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-Date: Tue, 26 Jul 2022 10:20:02 +0800
-Message-ID: <CABtFH5LUKTZenTktq3v1JZ9xe-yJFsMvCZuwDhmxdT87k0O-zA@mail.gmail.com>
-Subject: Re: [PATCH v6 13/13] video: backlight: mt6370: Add MediaTek MT6370 support
-To: Daniel Thompson <daniel.thompson@linaro.org>
-Cc: Lee Jones <lee.jones@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, 
-	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	Andy Shevchenko <andy.shevchenko@gmail.com>, ChiaEn Wu <chiaen_wu@richtek.com>, 
-	Alice Chen <alice_chen@richtek.com>, ChiYuan Huang <cy_huang@richtek.com>, 
-	dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaGhkZVhpPHxpITh1MHRoZSFUTARMWGhIXJBQOD1
+	lXWRgSC1lBWUpKSFVKSkNVSkNCVUhPWVdZFhoPEhUdFFlBWU9LSFVKSktITUpVS1kG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NAw6MDo5LD06ME4SCU84Ny06
+	KCEKFBxVSlVKTU5DQ0tPQ0pKSkpCVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	SFVKSkNVSkNCVUhPWVdZCAFZQUhOTEg3Bg++
+X-HM-Tid: 0a823878b404b03akuuu77ccd80008d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_192041_866777_895D1300 
-X-CRM114-Status: GOOD (  40.85  )
+X-CRM114-CacheID: sfid-20220725_200653_484893_6A4E3767 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,102 +69,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 25, 2022 at 6:31 PM Daniel Thompson
-<daniel.thompson@linaro.org> wrote:
->
-> On Fri, Jul 22, 2022 at 06:24:07PM +0800, ChiaEn Wu wrote:
-> > diff --git a/drivers/video/backlight/Kconfig b/drivers/video/backlight/Kconfig
-> > index a003e02..846dbe7 100644
-> > --- a/drivers/video/backlight/Kconfig
-> > +++ b/drivers/video/backlight/Kconfig
-> > @@ -268,6 +268,18 @@ config BACKLIGHT_MAX8925
-> >         If you have a LCD backlight connected to the WLED output of MAX8925
-> >         WLED output, say Y here to enable this driver.
-> >
-> > +config BACKLIGHT_MT6370
-> > +     tristate "MediaTek MT6370 Backlight Driver"
-> > +     depends on MFD_MT6370
-> > +     help
-> > +       This enables support for Mediatek MT6370 Backlight driver.
-> > +       It's commonly used to drive the display WLED. There are 4 channels
-> > +       inside, and each channel supports up to 30mA of current capability
-> > +       with 2048 current steps in exponential or linear mapping curves.
->
-> Does the MT6372 support more steps than this? In other words does it use
-> a fourteen bit scale or does it use an 11-bit scale at a different
-> register location?
+When running OpenWrt on MT7623A, I receive a kernel
+warning as follows (Device dts using mt7623.dtsi):
 
-Hi Daniel,
+mtk-scpsys 10006000.scpsys: Failed to power on domain mfg
+WARNING: CPU: 0 PID: 1 at drivers/soc/mediatek/mtk-scpsys.c:457 0xc04a4130
 
-Thanks for your reply.
-Yes, MT6372 can support 16384 steps and uses a 14-bit scale register
-location. But the maximum current of each
-channel of MT6372 is the same as MT6370 and MT6371, both 30mA.
-The main reason why MT6372 is designed this way is that one of the
-customers asked for a more delicate
-adjustment of the backlight brightness. But other customers actually
-do not have such requirements.
-Therefore, we designed it this way for maximum compatibility in software.
+When I switch the device dts to using mt7623a.dtsi,
+the system fails to boot:
 
->
->
-> > +
-> > +       This driver can also be built as a module. If so, the module
-> > +       will be called "mt6370-backlight".
-> > +
-> > [...]
-> > diff --git a/drivers/video/backlight/mt6370-backlight.c b/drivers/video/backlight/mt6370-backlight.c
-> > new file mode 100644
-> > index 0000000..ba00a8f
-> > --- /dev/null
-> > +++ b/drivers/video/backlight/mt6370-backlight.c
-> > [...]
-> > +static int mt6370_bl_update_status(struct backlight_device *bl_dev)
-> > +{
-> > +     struct mt6370_priv *priv = bl_get_data(bl_dev);
-> > +     int brightness = backlight_get_brightness(bl_dev);
-> > +     unsigned int enable_val;
-> > +     u8 brightness_val[2];
-> > +     int ret;
-> > +
-> > +     if (brightness) {
-> > +             brightness_val[0] = (brightness - 1) & MT6370_BL_DIM2_MASK;
-> > +             brightness_val[1] = (brightness - 1) >> fls(MT6370_BL_DIM2_MASK);
-> > +
-> > +             /*
-> > +              * To make MT6372 using 14 bits to control the brightness
-> > +              * backward compatible with 11 bits brightness control
-> > +              * (like MT6370 and MT6371 do), we left shift the value
-> > +              * and pad with 1 to remaining bits. Hence, the MT6372's
-> > +              * backlight brightness will be almost the same as MT6370's
-> > +              * and MT6371's.
-> > +              */
-> > +             if (priv->vid_type == MT6370_VID_6372) {
-> > +                     brightness_val[0] <<= MT6370_BL_DIM2_6372_SHIFT;
-> > +                     brightness_val[0] |= MT6370_BL_DUMMY_6372_MASK;
-> > +             }
->
-> This somewhat depends on the answer to the first question above, but
-> what is the point of this shifting? If the range is 14-bit then the
-> driver should set max_brightness to 16384 and present the full range of
-> the MT6372 to the user.
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 0-...0: (0 ticks this GP) idle=146/1/0x40000000 softirq=53/53 fqs=1051
+ (detected by 1, t=2102 jiffies, g=-1111, q=18)
+Sending NMI from CPU 1 to CPUs 0:
 
-So should we make all 16384 steps of MT6372 available to users?
-Does that mean the DTS needs to be modified as well?
-Or, for the reasons, I have just explained (just one customer has this
-requirement), then we do not make any changes for compatibility
-reasons?
-Thanks.
+Solved the problem by duplicating the power domain of
+the MT7623 (except MFG) to MT7623A, the system works
+fine without kernel warnings/errors.
 
->
-> Especially when using linear mappings (which are a totally pointless
-> scale to use for a backlight) the extra steps are useful for backlight
-> animation.
->
->
-> Daniel.
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+---
+ drivers/soc/mediatek/mtk-scpsys.c | 35 +++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index ca75b14931ec..8b5713db1ca3 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -910,6 +910,41 @@ static const struct scp_domain_data scp_domain_data_mt7623a[] = {
+ 		.clk_id = {CLK_NONE},
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+ 	},
++	[MT7623A_POWER_DOMAIN_VDEC] = {
++		.name = "vdec",
++		.sta_mask = PWR_STATUS_VDEC,
++		.ctl_offs = SPM_VDE_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(12, 12),
++		.clk_id = {CLK_MM},
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
++	},
++	[MT7623A_POWER_DOMAIN_DISP] = {
++		.name = "disp",
++		.sta_mask = PWR_STATUS_DISP,
++		.ctl_offs = SPM_DIS_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.clk_id = {CLK_MM},
++		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_MM_M0,
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
++	},
++	[MT7623A_POWER_DOMAIN_ISP] = {
++		.name = "isp",
++		.sta_mask = PWR_STATUS_ISP,
++		.ctl_offs = SPM_ISP_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(13, 12),
++		.clk_id = {CLK_MM},
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
++	},
++	[MT7623A_POWER_DOMAIN_BDP] = {
++		.name = "bdp",
++		.sta_mask = PWR_STATUS_BDP,
++		.ctl_offs = SPM_BDP_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.clk_id = {CLK_NONE},
++		.caps = MTK_SCPD_ACTIVE_WAKEUP,
++	},
+ };
+ 
+ /*
 -- 
-Best Regards,
-ChiaEn Wu
+2.25.1
+
 
