@@ -4,62 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA5ABC00140
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 14:22:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CE7DC00140
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 15:02:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VEyu2cAsI6Clc3vxXVuPEHOMTtwvEPd4AnIi76vds8o=; b=fbESm9as2NDrqi3tdWtHD/vNSN
-	pCic6BXKNexfWIif4+rDRH4eosnfddpKvgrwMIHKMBvuWrxt2rwpzmBbEfz7vCw0H+YYR48doTai4
-	vx5vHiykEaiAvZNQH4XOdLi75DBhnIMzvI/ocjhYGlofOe+pNcw+hMDYxbAFwBcdxhm/M/hZNko8A
-	zAVZLROpb+Yw+oZ2FM+5gY+7ov8D5HFldEiE//bVMnkpdHaVpQ8ukzws7woRbMXvD53WhDGSGR3wo
-	uwRJiMaTmgwrazQ2YrAeLStAndUkhHbem17QemZdIP9iutDeZFdsVRyrSCLSBz6ZPCbvDsPLmiAVY
-	BIoU1Ghw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=M3eaKEqKki8qki5Qb9UhtHWwntPVhLRvYCUBCxNj9YQ=; b=mdW4d18Utpwegg32SMxDrzm/lV
+	WBv9U6p9vbOF3r7DSg3syUvLW7SiR3gffkp3K4Fr76uSHSXuuTxHmJQZO/nca6+6Gmrce1t/9yPZ5
+	sLrkojuwjCFUWiaKDX93wql9Mhwc+seGepo/xWXICsUdphU/nixHo6yvOc3YwY1uOMlme7joJAe+k
+	OgocvF+PCq+AlZhXDdE/brbam+SVt8LI51sKmXSDE2Yt7swopkzsUMoEeO4XnDvccWZr/y6u+ayXK
+	cNDe4I1VDLOuHIuxnAjEO7FMNLwufs6vYsaBmRdTq7LEo1UscYBobOv/jrAjoia1epvh8DLGB+H1V
+	smHQDOeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGLSC-000AOr-AN; Tue, 26 Jul 2022 14:22:32 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oGM4W-000QCS-Pw; Tue, 26 Jul 2022 15:02:08 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGLRq-000AEN-1P; Tue, 26 Jul 2022 14:22:11 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4D1FA66017E7;
-	Tue, 26 Jul 2022 15:22:08 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658845328;
-	bh=4zmP1FrOBGWRTxzO5xPnrH9vexzpAmeNeZdmwxjZBQY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=I33YrZIMdevJsy17cxsuWq4ptnwFrYml93lqWkg7Uu/N3xR5hbaAEE0xoVtFNUnDg
-	 veh64GYs9lfg6OmryApl6rU7FC45SyB2+yXzrZLWH4/GzFyR0K9lMZH6jGknLuyKxw
-	 ZMj4rriRSc5p4q53137JzbeKZAbB/qFzZv8/WB7TOaaQB71LiFlpj4xh7nX6WG7fVP
-	 K7INGCKoEq0F20PQ2mVP1HEq7Plq+lhSOfHfkF6XcPgTNGE2upHjXrWqzrmPgaHzAW
-	 i3eT5LB4M/BXoQuyZNXodOyFKKs9BIDVQDYqrom0uV0RdOebaXLQqoqJzqcOSRDbkz
-	 MyztuzqZuuyqw==
-Message-ID: <c9441276-34ae-19dc-8a19-5e03dc14628e@collabora.com>
-Date: Tue, 26 Jul 2022 16:22:06 +0200
+	id 1oGM4T-000Q8C-0b
+	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 15:02:06 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id bf9so22966024lfb.13
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 Jul 2022 08:02:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=M3eaKEqKki8qki5Qb9UhtHWwntPVhLRvYCUBCxNj9YQ=;
+        b=AiM8g9yWAbkS9+J/TBFSAt7ymESNu9mLo+7HhBQMUsThEYK5XHpx+Li+LJM3yz1HKc
+         JEWiCI6JYY8P1UzuKwqy6FhoeRBbYMV5IBV57aBJ6s1S/pxW+IuhcnRQ0ewsmwvLmigi
+         wq/HR0UD9L4fZMIIJbl/tKUG91ZvQlJPeawXaeB9D/wTxRFnqBKyZ08jDYofYXTNH9Gr
+         YBtRGSZtHDEDDMO0i9e7w0VmZhW+J1aKcfiPTdnpQ4sjdpfmTVbGdHvRglcLnXGeGQZQ
+         wwacrfyXpYa4iunxNiOx25bH/6uG9psehXkQU9nWZfqQQ0zB3N1fN7XPoeVt+yJw4QO3
+         xepw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=M3eaKEqKki8qki5Qb9UhtHWwntPVhLRvYCUBCxNj9YQ=;
+        b=KT7UN5ok3HQuyKFZI0rB8AcjsghlwyySFDeV0eEcbD+R7j8ZTKVGccB9mqLZtVDvPm
+         4C0TFHh0q/l5y0bLX2VtMzm2jO+UxKoX1cpwvW2ZggICNzrfehPxjx9ByLv4Sohkkrtn
+         X2KJ2piCj99/IijwcfkGM/O1obfRFKQGPX2jC1UaOudh7BZ1oXQEjFKbc1LXQDWVgatq
+         I05NDyEwvRkBvx+Zt8F0ABOxSHbpg4+g5Wz4Uc+tSGw/NNf6oohwpxzpn4mIwwweK5WE
+         N7r1ARzYfhCySZhlzZV1VmKv7ZiIOSNMFdRnZcBokOpQT9dw6oEdzhDNgagT25XexxrK
+         rl9w==
+X-Gm-Message-State: AJIora8tFs7R9feIztkBd6RrI/aPLFG69+EkusHTvc0k5sjSqZqsQH+d
+	y1NYhDKIWp5Qi2BobQvyhuhcRennijj37ShQT/oZig==
+X-Google-Smtp-Source: AGRyM1uvj3g/wzQqWfb045Pdx41ie7mPz5l6Yuz5unfLdcYSECshn91W4YKovkSvKEvnNaqiqHxlbfPutsUrJA3Wc+8=
+X-Received: by 2002:a05:6512:32c5:b0:48a:af79:601e with SMTP id
+ f5-20020a05651232c500b0048aaf79601emr501700lfg.373.1658847721311; Tue, 26 Jul
+ 2022 08:02:01 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 0/6] soc: mediatek: Cleanups for MediaTek SVS driver
-Content-Language: en-US
-To: matthias.bgg@gmail.com
-Cc: roger.lu@mediatek.com, khilman@baylibre.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, nfraprado@collabora.com, kernel@collabora.com
-References: <20220726141653.177948-1-angelogioacchino.delregno@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220726141653.177948-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20220726062842.18846-1-axe.yang@mediatek.com>
+In-Reply-To: <20220726062842.18846-1-axe.yang@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 26 Jul 2022 17:01:25 +0200
+Message-ID: <CAPDyKFpX32bprQMVXo-CYkfB__UL99JVZQ9EKfOWFqA7yh3Mbg@mail.gmail.com>
+Subject: Re: [PATCH v14 0/3] mmc: mediatek: add support for SDIO async IRQ
+To: Axe Yang <axe.yang@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>, 
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala <satyat@google.com>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>, 
+	Eric Biggers <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, 
+	Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>, 
+	Tian Tao <tiantao6@hisilicon.com>, angelogioacchino.delregno@collabora.com, 
+	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_072210_260686_8F0183D7 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20220726_080205_114132_E3CBC53C 
+X-CRM114-Status: GOOD (  20.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,31 +93,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/07/22 16:16, AngeloGioacchino Del Regno ha scritto:
-> This is a cleanup-only series for the mtk-svs driver, enhancing the
-> usage of standard Linux macros for bitfields for better readability
-> and register set/get safety, switches to devm_ functions variants
-> where possible and other general cleanups, getting this driver in a
-> better overall shape.
-> 
+On Tue, 26 Jul 2022 at 08:28, Axe Yang <axe.yang@mediatek.com> wrote:
+>
+> Changes in v14:
+> - add sdio_irq_claimed() judgement condition around msdc irq and pinctrl
+>   control in suspend|resume callback
 
-Sorry, I forgot to write in the cover letter that this series depends
-on [1] adding MT8195 and MT8186 support.
+Version 14, applied for next, thanks!
 
-[1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=660955
+FYI; Since we are relying on an updated behaviour in the
+pm_runtime_force_suspend|resume() helpers, which are queued as a patch
+via Rafael's tree, I am going to withhold my pull-request for a few
+days longer than usual, until Linus has picked up Rafael's
+pull-request, for v5.20-rc1.
 
-Regards,
-Angelo
+Kind regards
+Uffe
 
-> AngeloGioacchino Del Regno (6):
->    soc: mediatek: mtk-svs: Commonize t-calibration-data fuse array read
->    soc: mediatek: mtk-svs: Switch to platform_get_irq()
->    soc: mediatek: mtk-svs: Remove hardcoded irqflags
->    soc: mediatek: mtk-svs: Drop of_match_ptr() for of_match_table
->    soc: mediatek: mtk-svs: Use devm variant for dev_pm_opp_of_add_table()
->    soc: mediatek: mtk-svs: Use bitfield access macros where possible
-> 
->   drivers/soc/mediatek/mtk-svs.c | 325 ++++++++++++++++++---------------
->   1 file changed, 176 insertions(+), 149 deletions(-)
-> 
+
+>
+> Changes in v13:
+> - remove state_dat1 related description in mtk-sd.yaml
+> - move device_init_wakeup() to probe stage
+> - remove redundancy SDC_CFG_SDIOIDE bit control in msdc_runtime_suspend()
+> - replace SDC_CFG_SDIOIDE control with __msdc_enable_sdio_irq() function to
+>   disable sdio irq when sdio_irq_claimed() return true in msdc_runtime_resume()
+> - restore to use pm_runtime_force_resume|suspend(), to avoid go out directly
+>   in force resume, bump up runtime PM usage counter before force suspend.
+>
+> Changes in v12:
+> - assign NULL to pins_eint directly instead of using kfree()
+>
+> Changes in v11:
+> - remove '_irq' suffix in interrupts-names property
+> - fix yaml example build error
+> - refactor msdc_enable_sdio_irq(), free pins_eint if async irq is not supported
+>
+> Changes in v10:
+> - add sample node for SDIO host which support wakeup interrupt in yaml
+> - skip MMC_PM_WAKE_SDIO_IRQ check before enable SDIO async interrupt
+> - add MMC_PM_KEEP_POWER check before SDIO eint pinstate parsing
+> - use dev_pm_set_dedicated_wake_irq_reverse() to correct irq control sequence
+> - set dedicated irq in msdc_enable_sdio_irq() rather than msdc_drv_probe()
+> - remove unnecessary wake irq control, rpm/dpm system shall manage that
+> - move wake irq/msdc irq control back to system suspend phase, use rpm_suspend
+>   and rpm_resume to ensure irq control sequence:
+>      disable msdc irq -> enable wake irq -> disable wake irq -> enable msdc irq
+> - simplify variables, check pins_eint to know whether wakeup settings are managed
+>
+> Changes in v9:
+> - remove pinctrl "state_dat1"
+>
+> Changes in v8:
+> - remove maxItems property under pinctrl-names property
+>
+> Changes in v7:
+> - add device_init_wakeup() to register SDIO host as wakeup source
+>
+> Changes in v6:
+> - abandon cap-sdio-async-irq flag, use wakeup-source flag instead
+> - extend interrupts and pinctrls in mediatek mmc host controller DT documents
+> - add mmc_card_enable_async_irq() to access enable_async_irq flag
+> - simplify wakeup irq implementation with dedicate wake up irq related interface
+>
+> Changes in v5:
+> - resort variables to reversed xmas tree order
+> - restore old copyright year range and add current year back
+>
+> Changes in v4:
+> - add MMC_CAP2_SDIO_ASYNC_IRQ judge before lookup eint pinctrl
+> - replace spin_lock_irqsave() variant with spin_lock() in eint irq handler
+>
+> Changes in v3:
+> - correct abbreviations with capital letters in commit message
+> - replace copyright year with 2022 in mtk-sd.c
+> - remove unnessary pointer casting
+> - adjust variable order to reversed xmas tree
+> - remove a redundant blank line
+> - refine if statement, following standard pattern
+>
+> Changes in v2:
+> - change flag name from 'cap-sdio-async-int' to 'cap-sdio-async-irq'
+> - change corresponding macro names from xxx_INT to xxx_IRQ
+> - resort new member in msdc_host structure
+> - refine function msdc_request_dat1_eint_irq()
+> - rename msdc_{suspend,resume} function names, add suffix '_noirq'
+> - add MMC_CAP2_NO_SDIO judgement before parse eint related pin setting
+>
+> Axe Yang (3):
+>   dt-bindings: mmc: mtk-sd: extend interrupts and pinctrls properties
+>   mmc: core: Add support for SDIO wakeup interrupt
+>   mmc: mediatek: add support for SDIO eint wakup IRQ
+>
+>  .../devicetree/bindings/mmc/mtk-sd.yaml       | 50 ++++++++++-
+>  drivers/mmc/core/sdio.c                       | 14 +++
+>  drivers/mmc/host/mtk-sd.c                     | 86 +++++++++++++++++--
+>  include/linux/mmc/card.h                      |  8 +-
+>  include/linux/mmc/sdio.h                      |  5 ++
+>  5 files changed, 155 insertions(+), 8 deletions(-)
+>
+> --
+> 2.25.1
+>
+>
 
