@@ -4,74 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E917C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 05:55:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83211C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 06:11:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RdhZW5PB4XAlNBVYHS2ulfdZB41DDyfnqe2FGITwOj8=; b=rFKphHXlvbVxnMXXZ++lgVObZz
-	AN7+SKczw24R3s6gYJKPyS/3qWTtVeGdlUD1wWUdP9mGCqJNyKu7V5jdJWsaaEVrs2B+nSgyQoQtp
-	FxJsoDsO/gMSzmqGr6YBZJaQH3wiMKWyJnnAPwiCNUzm+t9woMVcrpjiVZ5zwr95KDYPLZqds35dh
-	2Y57MlF/qp6m5QMTDRz+GqJZu4crtBlG3n5kRZu2+7LZoff46M99lh3D/XX5CawF2DRtuEt+Zcz8o
-	zOHHSM/TOtFOhyeMkOoBzpf+rNQXZAHU7PG7cuJjgXr6vwwVC+ofnQzeJ/RMbWHgz2iHD5YWuPSU6
-	HiB2irgg==;
+	bh=5iTBFaujydfzjNtZ+tuEW42yh94kmq7eTQthHnu+Umc=; b=2MRc3Wv4629HDA9KH2MIqERiHG
+	jEpFkf6RC1b3rRj80JripVoL8qamzcdNj4N42Xm8Ctls2n4EpubNuPuF5p5koUvgUffCaCHelSWgN
+	VfQ17S2bTdk5O9TQyqDExQumJQ/4gLSxp66TSSavK6UsnYDgMWOaVpI02DYrkWooWH9465STqDDSS
+	fEeYEi6dxamnXubXCrxN8Okoo8gY5m+PcyZQJIv57415ttbxn1aJRVG8rOZt3V3aHM7IOgY7EjljK
+	6jg9SWGHxwwbANNyfG6nHHsnIDr7ZTHazAbrWWr3QXsPz2cGAK9DOg3hkcF0vN1l6N9+MV6nDUZgT
+	KmdPVdnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGDXM-008Pl4-DI; Tue, 26 Jul 2022 05:55:20 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1oGDnL-008eyq-GB; Tue, 26 Jul 2022 06:11:51 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGDXJ-008PdD-MY
-	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 05:55:19 +0000
-Received: by mail-wr1-x436.google.com with SMTP id v13so10892187wru.12
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Jul 2022 22:55:15 -0700 (PDT)
+	id 1oGDn4-008eqY-2w; Tue, 26 Jul 2022 06:11:41 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id w5so4071415edd.13;
+        Mon, 25 Jul 2022 23:11:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
+        d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=RdhZW5PB4XAlNBVYHS2ulfdZB41DDyfnqe2FGITwOj8=;
-        b=ebAy1qynsfRjioT0qeT7mC6bR3i+SA8ZxiD7arsJiSf64kyV0AiJRzJM+SqPyLncGn
-         NPAk9ivc3bv46/jkRdbTKMq2el1VK9mCE4uyrIXpZszhlwkHiEP5TUCDVP1qsoRAU/nm
-         E/4sUXYf+ksqGuVcOtrO+HPK/fVHLUDIXRpfc=
+        bh=5iTBFaujydfzjNtZ+tuEW42yh94kmq7eTQthHnu+Umc=;
+        b=DFreK31JfLkd3fAd0uB7CR6gjxpG6yBsGmnlSdQdVK9K9Iop3MmbjSc5l5Mqska/9F
+         6zDsLVWtd4iSJbART2yOrMPnU6eocnuJbVN14OsRvUxL4fHsO7Wrgfc2UhIcTUjufoph
+         2DxioqWBkat/Lt1MPd86qgmI4fJ9X5pOYvgIQ3L8XLGI4V6pl/+7xrFDCD36BkcmbO3v
+         msDZGsDArMOOY56AIoIP2Boyoi0IybH+bd3McBS1U0EmQcx61Apt04nGaujtweQDBRAO
+         5Sbq2NspvHrUHv6ggNUA5i+nF0w1W6dwyWvXZUzuukyS0Uo/f8jv4B+Fz7jfoW/fM0P7
+         F9hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=RdhZW5PB4XAlNBVYHS2ulfdZB41DDyfnqe2FGITwOj8=;
-        b=5EMXLz49rfJlz34vKKte9Ano0RwkLx1J/gVK7ib2LPZf3hZpfFy38F0uXVvJugyL9y
-         weOnulusMx2hBPO2wSjrYPlWfa6vtTo7CKNQh5aDtRTObR0r+qgL+PrA7+pmO3AelOCY
-         BBYnx1Ge10j1qlZjbAbFGxSRiz8Y0gNn+H37Iomgu3iHDk0KBT1wXQ4aHKWqtBUavDyE
-         q6Ida6iQdtQmjZaysJv6d6pL3ip/eR7ePQOlLAZ7LC0s4nMtUeLFBIvDoA7ydZs7s7bc
-         9+KLOzFESipFmvuPbFpsl4yu4N+GwMS235xf3+oBIv9rS5lAqaKhxnNeywOg87mEDmHc
-         0E6Q==
-X-Gm-Message-State: AJIora/smRFCMu8pQoM2UFuJHMxwgG83Bb7ZxEjuvz5G67nONRBBVGob
-	DOOx5J9rkaaLNx9Kq4LbNuIPFwBgZZbeVSUzs9o8Tw==
-X-Google-Smtp-Source: AGRyM1vxlFKy5hdNJRICmWPYVy3Jo/93WVoJ1W16nlnFSlciWrNlvx5ZVMnY9gBPMNhvK74EJDX+bZ4PRo9hQ5Ebylo=
-X-Received: by 2002:a5d:64a4:0:b0:21e:93c4:f8c6 with SMTP id
- m4-20020a5d64a4000000b0021e93c4f8c6mr3270065wrp.246.1658814913845; Mon, 25
- Jul 2022 22:55:13 -0700 (PDT)
+        bh=5iTBFaujydfzjNtZ+tuEW42yh94kmq7eTQthHnu+Umc=;
+        b=F8ywcHrbqU4zP0fZmFgphxStWqrGitaUkGFmP4Ev7ezHUDoP5yd//7KhyY5EoHDJry
+         oaOt8E394d1CuKyXmg4nP8H2Rbu1+knEPgbT1oCjvcUy8vFmqtXNpZPvTKcQrMMim6L2
+         /KoQrW0YhKo7k2Pnn8d0YVU1khNTrAYhQQyaNALI7n1phIO4LJS1R5H27iGkEal4eRpD
+         oedjwehiGfgkfQX9LriWYR3kjAKkyehNoS6qqkh6nfPYpc2aIq9T3Bjt2Y7ILvlsZvmE
+         FI73vBfltl4W+6KYzCwY6KrDaZFzmuc+CZBIP3gfkhzi/buKfmm3wmqigKG2zlonTvUz
+         xMzg==
+X-Gm-Message-State: AJIora+vIwYwntLfFq61hRuCHI939SfIcQ+ku4cEYdK9d0A0H4hz3EYh
+	hU3g4hLlziUXyoL1i3qEJ+xv6rbVeikmCmldz+s=
+X-Google-Smtp-Source: AGRyM1sDJR+2SWBXIadraV+/yk5L7Vs9denzeP6s+Yyxwc5C8W1vNP4hRGI/bOS7pUxW1lVGaWNV5mppOqxOjOJF8tE=
+X-Received: by 2002:a05:6402:d05:b0:435:b2a6:94eb with SMTP id
+ eb5-20020a0564020d0500b00435b2a694ebmr16409469edb.87.1658815891980; Mon, 25
+ Jul 2022 23:11:31 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220725082447.2613231-1-treapking@chromium.org>
- <5856610d-510f-46dc-63b2-79e571956a7c@collabora.com> <CAEXTbpeHy6-WjLOyWFkncoHzBPM+6qq4w-kUoZj7=05gf8YBjw@mail.gmail.com>
- <bcb8c2b4-a1ab-8646-9fcb-034a70f5a329@collabora.com>
-In-Reply-To: <bcb8c2b4-a1ab-8646-9fcb-034a70f5a329@collabora.com>
-From: Pin-yen Lin <treapking@chromium.org>
-Date: Tue, 26 Jul 2022 13:55:02 +0800
-Message-ID: <CAEXTbpeEkpgFjQfONM030k8drcfYzOoWnB_FUqFptd-27YRqNg@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mt8173-oak: Switch to SMC watchdog
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Hsin-Yi Wang <hsinyi@chromium.org>, Eizan Miyamoto <eizan@chromium.org>, 
-	Evan Benn <evanbenn@chromium.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
-	devicetree@vger.kernel.org
+References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-13-peterwu.pub@gmail.com>
+ <CAHp75VfgiK87VwWu2bTJ_mR0=g0sa0LPJ+H16OGcUdARmzFRSA@mail.gmail.com> <CA+hk2fYpDRw+DRRU3m=EDOP6UEQNpJLyNBHe8Zi0qOfUObTb4Q@mail.gmail.com>
+In-Reply-To: <CA+hk2fYpDRw+DRRU3m=EDOP6UEQNpJLyNBHe8Zi0qOfUObTb4Q@mail.gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Tue, 26 Jul 2022 08:10:55 +0200
+Message-ID: <CAHp75VdxWfo0QW=SXc0v+Ue92VO1TbpTqAqHT6mAK=GA606oFg@mail.gmail.com>
+Subject: Re: [PATCH v6 12/13] leds: flash: mt6370: Add MediaTek MT6370
+ flashlight support
+To: szuni chen <szunichen@gmail.com>
+Cc: ChiaEn Wu <peterwu.pub@gmail.com>, Lee Jones <lee.jones@linaro.org>, 
+	Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, 
+	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
+	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_225517_796482_536637AE 
-X-CRM114-Status: GOOD (  44.74  )
+X-CRM114-CacheID: sfid-20220725_231134_174134_4E3CFE88 
+X-CRM114-Status: GOOD (  22.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,107 +99,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 25, 2022 at 6:31 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 25/07/22 12:19, Pin-yen Lin ha scritto:
-> > On Mon, Jul 25, 2022 at 4:39 PM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> Il 25/07/22 10:24, Pin-yen Lin ha scritto:
-> >>> Switch to SMC watchdog because we need direct control of HW watchdog
-> >>> registers from kernel. The corresponding firmware was uploaded in
-> >>> https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405.
-> >>>
-> >>
-> >> There's a fundamental issue with this change, I think.
-> >>
-> >> What happens if we run this devicetree on a device that does *not* have
-> >> the new(er) firmware?
-> >
-> > I haven't tried this patch with an older firmware. I'll manage to
-> > build one for this.
-> >>
-> >> The kernel *shall not* get broken when running on devices that are running
-> >> on older firmware, especially because that's what was initially supported
-> >> and what is working right now.
-> >
-> > Actually the current approach does not work *right*. The device boots,
-> > but the watchdog does not work properly.
-> >
->
-> Is this a Chromebook firmware specific issue?
+On Tue, Jul 26, 2022 at 6:15 AM szuni chen <szunichen@gmail.com> wrote:
 
-I'm not sure if this is a Chromebook-specific issue. The internal
-issue thread only discussed this for the Chromebook firmware.
->
-> > Also, all MT8173 ChromeOS devices have this firmware updated, and we
-> > don't have other upstream users apart from mt8173-evb. Do we want to
-> > support the developers that are running upstream linux with their
-> > MT8173 boards?
-> >
->
-> Upstream shall not be just about one machine: if we add support for a SoC there,
-> we shall support the SoC-generic things in the SoC-specific DTSI, and the machine
-> specific things in the machine-specific devicetrees.
->
-> Chromebooks are not the only machines using the MT8173 SoC (Chuwi, Amazon also do
-> have products using MT8173), so we shall not make the main mt8173.dtsi incompatible
-> with these machines.
+...
 
-I don't see their DTS files uploaded to the upstream kernel. So we
-still want to support them even if they didn't upstream their changes?
-
-Does it make sense if we move the modification to mt8173-elm.dtsi? The
-device should be running ChromeOS AP firmware if it uses or references
-mt8173-elm.dtsi. Also, all the MT8173 Chromebooks were shipped with
-the "new" firmware from the very beginning. We just somehow didn't
-upstream this around the time.
->
-> >>
-> >> For this reason, I think that we should get some code around that checks
-> >> if the SMC watchdog is supported and, if not, resort to MMIO wdog.
+> > > +#define MT6370_ITORCH_MIN_UA           25000
+> > > +#define MT6370_ITORCH_STEP_UA          12500
+> > > +#define MT6370_ITORCH_MAX_UA           400000
+> > > +#define MT6370_ITORCH_DOUBLE_MAX_UA    800000
+> > > +#define MT6370_ISTRB_MIN_UA            50000
+> > > +#define MT6370_ISTRB_STEP_UA           12500
+> > > +#define MT6370_ISTRB_MAX_UA            1500000
+> > > +#define MT6370_ISTRB_DOUBLE_MAX_UA     3000000
 > >
-> > What is the expected way to support this backward compatibility? Do we
-> > put the old compatible strings ("mediatek,mt8173-wdt" and
-> > "mediatek,mt6589-wdt") after "arm,smc-wdt" and reject it in the
-> > drivers if the firmware does not support it?
+> > Perhaps _uA would be better and consistent across your series
+> > regarding current units.
 >
-> I don't know what's the best option to support both cases... Perhaps a good one
-> would be to check (in mtk_wdt? or in arm_smc_wdt?) if the arm_smc_wdt is actually
-> supported in firmware, so if the SMC one is registered, we skip the other.
+> Yes, _uA will be more consistent, but in general, using upper case in
+> the define macro is a convention, doesn't it?
+
+There is general convention, but there are also:
+1) common sense;
+2) usage in practice (e.g. _US, etc for *seconds and _HZ for *frequency).
+
+My common sense tells me that it is convenient to use mA,uA, etc.
+Plus "in practice" it's related to use as in your series and elsewhere.
+
+But of course it's minor to me, decide yourself.
+
+...
+
+> > > +       /*
+> > > +        * For the flash to turn on/off, need to wait for HW ramping up/down time
+> >
+> > we need
+> >
+> > > +        * 5ms/500us to prevent the unexpected problem.
+> > > +        */
+> > > +       if (!prev && curr)
+> > > +               usleep_range(5000, 6000);
+> > > +       else if (prev && !curr)
+> > > +               udelay(500);
+> >
+> > This still remains unanswered, why in the first place we allow
+> > switching, and a busy loop in the other place?
 >
-> >>
-> >> Regards,
-> >> Angelo
-> >>
-> >>
-> >>> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> >>> ---
-> >>>
-> >>>    arch/arm64/boot/dts/mediatek/mt8173.dtsi | 6 ++----
-> >>>    1 file changed, 2 insertions(+), 4 deletions(-)
-> >>>
-> >>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> >>> index a2aef5aa67c1..2d1c776740a5 100644
-> >>> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> >>> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> >>> @@ -528,10 +528,8 @@ power-domain@MT8173_POWER_DOMAIN_MFG {
-> >>>                        };
-> >>>                };
-> >>>
-> >>> -             watchdog: watchdog@10007000 {
-> >>> -                     compatible = "mediatek,mt8173-wdt",
-> >>> -                                  "mediatek,mt6589-wdt";
-> >>> -                     reg = <0 0x10007000 0 0x100>;
-> >>> +             watchdog {
-> >>> +                     compatible = "arm,smc-wdt";
-> >>>                };
-> >>>
-> >>>                timer: timer@10008000 {
-> >>>
-> >>
-> >>
->
->
+> If I refine the description to
+> "For the flash to turn on/off, need to wait for 5ms/500us analog settling time.
+> If any flash led is already used, then the analog is settled done, we
+> don't need to wait again."
+> is it answer the question?
+
+No. I'm talking from the Linux APIs perspective. There is a huge
+difference between those branches. Please, conduct research, read
+documentation to understand what my question is about.
+
+-- 
+With Best Regards,
+Andy Shevchenko
 
