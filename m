@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C296EC00140
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 13:58:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF94FC04A68
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 13:58:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PEiCDnBJfTCfMI+4Z4Tn0LD6y0rCD8YgBNUzFMu5IG0=; b=JIfhsLEirepOtQGZUrCApmRGwj
-	6anlc01EAE4s027wdzwNqRi3KVLRk6jMXNfNTtSMTF+/s6MmkfWAHLT5xz3AaiT6SlfWNG7MwR7Y5
-	A5UbzUez9tXYXd71S06/A+cPj7wgZPmwtGEVBM1CZIf5GCtSILHsc0l3PZkaTMziPQW56OtFaalws
-	aquwXeAruerMOxBh1K7pjabOiaPRoi6P1Rn4NUSYXJUBoOy5DmTnnWvVuTk0aQXe2EhgyFdVZ1w2z
-	JtF1OUkMgfuM35a7SeKuLf8kLqeP8ZMqkVgCtXPHDayD4N/0PKXc949ewtOZYb8/6SRu3rMXfveV5
-	/SJ+JZCA==;
+	bh=N02ENN8wREPX4veIj3cGqV28PXqeQzl2/6jGMwhV5k4=; b=qeRo6NlNJjI2bTY04V09V+GQER
+	bwYRoQOWM0mLo4HU+iuxlu4LU1ajKjeuQrNgHtVTB+vuxIT0UdlX7LC/d5xKEXVoxCTeHjPnhhW7R
+	ngnHE7wH26+ZnZaROgNa1iF0PWnImqoGgVqKhbyTnm7QiooRV55P5ng2cOBVllHjKLDjnZ8y+vZie
+	3N0QA9r6ADgxvVcBpr4GqoIQ6OqjzV9CVL1I4bh2Aww6nJr7UKEhFaqx+F2zwgbLqweNUoMvGj6E9
+	l59+IttIHjRhiwL5rWq+pZXmzxxT0bdZE4q84n2hEsZ26aOCXstQ/lXw5alIlCfMwv1fts0s8qV94
+	rGBzPRag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGL4W-00Ha5c-NM; Tue, 26 Jul 2022 13:58:04 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1oGL51-00HaPK-BS; Tue, 26 Jul 2022 13:58:35 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGL1u-00HYWP-FO
-	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 13:55:30 +0000
-Received: by mail-wm1-x336.google.com with SMTP id b21-20020a05600c4e1500b003a32bc8612fso8213655wmq.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Jul 2022 06:55:22 -0700 (PDT)
+	id 1oGL1x-00HYY3-Pf
+	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 13:55:34 +0000
+Received: by mail-wm1-x335.google.com with SMTP id v5so8801620wmj.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 Jul 2022 06:55:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=PEiCDnBJfTCfMI+4Z4Tn0LD6y0rCD8YgBNUzFMu5IG0=;
-        b=di6BHhJlUr1Fz9NcNrcQdMrllU2Mzy4WJgA/Nx0NTuHq+Tfo8jAYyp5VXc41LogQ4v
-         46kWrppePbk58eHwpVIan6uqw2xPlQaRUcrMsVm60tdj5CzR9t4/+Z838F7X1y4Be/Uy
-         2G+dfXV1GHEU7DZ54gjXMSq6RQQUoIvFB0HBQ0IWvA7lS8yhEkU+FzWfMou29SUB7BXn
-         jnnIzWP95B7dsGddbqtQpB0SGo3EI/qwUnjAl5J275YhlDjEQY3nA1golwg7TfOYm9ea
-         SOaXt4gyzuTtrp54VBKp+QMRRwCNVJ9mGH8VMCCttJDhwjz0K9zO3pwPhehEoyqQCLs1
-         dJYw==
+        bh=N02ENN8wREPX4veIj3cGqV28PXqeQzl2/6jGMwhV5k4=;
+        b=vO9zvYPT5F1jd3WhvAXktLAz6qcb8YZgGeLh1fXmtfpqcsBFp8Js3hB+qnqryJRuBl
+         2tV1KtKbEj+iw2CLAXaujRN8QpTGItj84cZdY3YIt8Wqcxrq1Y9Tqqf0XdvmBml1R99U
+         MVrxwDL2oeW8hl/hZs/K4zffKdBlG573cIGBw0SoXvP78XIxAg7fGITYYjJfOFl7NLZj
+         Sv+SuVeq9vsL5XPjan/wzSLX4NWjqAoRiTF4uXqC1huzb6719k+s+RsdiBN7mKdU0vlk
+         AxQnUwdaAbm/Bi5jSow290CBHv1JEdr0DF4WeHltdnDaKon0HvytQGi+Q3w5aqyJ8ZvY
+         4jCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=PEiCDnBJfTCfMI+4Z4Tn0LD6y0rCD8YgBNUzFMu5IG0=;
-        b=HazLjl/4N3+rbAEmTGkMvrqF5neL/vOJPLPstVPsM75H3B76KmMEBH5eg/uPfGVmUT
-         jtJxCwBaYd7sC6+8Am7lx3jIYrLciY7+DsTL40w3l0y5hRbINqvSVpEhVvf7w3yPA/gC
-         fhe5C4Vol75hqcORpE09gSLKdjB2oMaVS+wJlS2GtCFZLmaEnFL7nx9JKYFRVt8UfvVw
-         VJXQoFjuFXCEav2cEbpiWu5iFbPwdERaZtYrcfXDrmq+OQdOjjW8a4TYHOnJ/NlQd1kG
-         nOQkA6FCySSfKmvs1+secCP5Cqh5bPsPskdmtRXlBF0fuNH1dDSXrwL/d9DxEY59ThK4
-         SVHA==
-X-Gm-Message-State: AJIora8On6NdKpgX6caBrfL3YkHghkKKK7tgkZuuOsGDHuUCdEz2mfA2
-	CZ2mHetnMPQhwklJuAFGbpanHw==
-X-Google-Smtp-Source: AGRyM1utn7izSjqVcFH7meNIqwZCnjvN+6wA5QnozUx5tevBFho8o4sg8GAvG0e0CgbACzK+dIrZdQ==
-X-Received: by 2002:a7b:ce13:0:b0:3a3:102c:23d3 with SMTP id m19-20020a7bce13000000b003a3102c23d3mr12040080wmc.67.1658843720995;
-        Tue, 26 Jul 2022 06:55:20 -0700 (PDT)
+        bh=N02ENN8wREPX4veIj3cGqV28PXqeQzl2/6jGMwhV5k4=;
+        b=En79vy50Zl/2oBQzEAiZCAudCWieCQ4FIauInleNjua57gtt+ofoqeVre5uGtrmH6/
+         Qw6GTgs7hPMtUW2dDiFOV9ZaGHmQ9t0cugw3WFq/Kdz65UBe0AitYXBAtODOo9cXK4TH
+         ngzFF02dt5QT8i4WvFIJUV6b0DsXnSD2nHZqjTGdvm11JXKSzIjkOnKg1bXyakkVnpIl
+         Tm4GUD9wnxuzZYUXVXnaEnr9WmmmBh/uqqUlsOsZC3U97z74Cpfn1PkQmThPZSPCScYg
+         QbNgkO8p4FIi3A6hMWXuUeP6sexX5YCf8FPJeCLQXMaSamfJa/8WCYctGFfLVrdMp01u
+         pHYw==
+X-Gm-Message-State: AJIora8a7KpPie9tns/BW6eLiaaitwwuV/hcEWXDfMLqHWGp7/OVAL8l
+	53kULzA2lEXXznICfKi1W2VD+A==
+X-Google-Smtp-Source: AGRyM1vhX7RgKC8IGy97eICF/591FulDH1b+GwMaL7So30RUVSvED/g4XVgQWTuECYQ6Gn9vbOzMZQ==
+X-Received: by 2002:a1c:2783:0:b0:3a2:fd82:bf46 with SMTP id n125-20020a1c2783000000b003a2fd82bf46mr24814709wmn.29.1658843723039;
+        Tue, 26 Jul 2022 06:55:23 -0700 (PDT)
 Received: from Balsam-ThinkPad-T480.baylibre (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id d13-20020adf9c8d000000b0021e4c3b2967sm15244670wre.65.2022.07.26.06.55.20
+        by smtp.gmail.com with ESMTPSA id d13-20020adf9c8d000000b0021e4c3b2967sm15244670wre.65.2022.07.26.06.55.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Jul 2022 06:55:20 -0700 (PDT)
+        Tue, 26 Jul 2022 06:55:22 -0700 (PDT)
 From: Balsam CHIHI <bchihi@baylibre.com>
 To: rafael@kernel.org,
 	rui.zhang@intel.com,
@@ -79,17 +79,17 @@ Cc: linux-pm@vger.kernel.org,
 	louis.yu@mediatek.com,
 	rex-bc.chen@mediatek.com,
 	abailon@baylibre.com
-Subject: [PATCH v8 4/6] thermal: mediatek: Add thermal zone settings for mt8195
-Date: Tue, 26 Jul 2022 15:55:04 +0200
-Message-Id: <20220726135506.485108-5-bchihi@baylibre.com>
+Subject: [PATCH v8 6/6] arm64: dts: mt8195: Add thermal zone
+Date: Tue, 26 Jul 2022 15:55:06 +0200
+Message-Id: <20220726135506.485108-7-bchihi@baylibre.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220726135506.485108-1-bchihi@baylibre.com>
 References: <20220726135506.485108-1-bchihi@baylibre.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_065522_587076_6168F0B2 
-X-CRM114-Status: GOOD (  18.23  )
+X-CRM114-CacheID: sfid-20220726_065525_887736_8BC0A7C1 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,321 +104,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add thermal zone settings for mt8195
+This adds the thermal zone for the mt8195.
 
-Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
 Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
 Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
 ---
- drivers/thermal/mediatek/Kconfig         |  12 ++
- drivers/thermal/mediatek/Makefile        |   1 +
- drivers/thermal/mediatek/lvts_mt8195.c   | 253 +++++++++++++++++++++++
- drivers/thermal/mediatek/soc_temp_lvts.h |   1 +
- 4 files changed, 267 insertions(+)
- create mode 100644 drivers/thermal/mediatek/lvts_mt8195.c
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 115 ++++++++++++++++++++++-
+ 1 file changed, 114 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/thermal/mediatek/Kconfig b/drivers/thermal/mediatek/Kconfig
-index 7fc04237dd50..df3b4a033fc2 100644
---- a/drivers/thermal/mediatek/Kconfig
-+++ b/drivers/thermal/mediatek/Kconfig
-@@ -47,4 +47,16 @@ config LVTS_MT8192
- 		configures LVTS thermal controllers to collect temperatures
- 		via ASIF.
- 
-+config LVTS_MT8195
-+	tristate "LVTS driver for MediaTek MT8195 SoC"
-+	depends on HAS_IOMEM
-+	depends on NVMEM
-+	depends on RESET_TI_SYSCON
-+	depends on MTK_SOC_THERMAL_LVTS
-+	help
-+		Enable this option if you want to get SoC temperature
-+		information for MT8195. This driver
-+		configures LVTS thermal controllers to collect temperatures
-+		via ASIF.
-+
- endif
-diff --git a/drivers/thermal/mediatek/Makefile b/drivers/thermal/mediatek/Makefile
-index 5ff1197e80ab..dada1bf13110 100644
---- a/drivers/thermal/mediatek/Makefile
-+++ b/drivers/thermal/mediatek/Makefile
-@@ -1,3 +1,4 @@
- obj-$(CONFIG_MTK_SOC_THERMAL)		+= soc_temp.o
- obj-$(CONFIG_MTK_SOC_THERMAL_LVTS)	+= soc_temp_lvts.o
- obj-$(CONFIG_LVTS_MT8192)			+= lvts_mt8192.o
-+obj-$(CONFIG_LVTS_MT8195)			+= lvts_mt8195.o
-diff --git a/drivers/thermal/mediatek/lvts_mt8195.c b/drivers/thermal/mediatek/lvts_mt8195.c
-new file mode 100644
-index 000000000000..df69e2e79115
---- /dev/null
-+++ b/drivers/thermal/mediatek/lvts_mt8195.c
-@@ -0,0 +1,253 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 4fbf24b5d202..78017224930c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: (GPL-2.0 OR MIT)
+ /*
+- * Copyright (c) 2021 MediaTek Inc.
 + * Copyright (c) 2022 MediaTek Inc.
-+ */
+  * Author: Seiya Wang <seiya.wang@mediatek.com>
+  */
+ 
+@@ -11,6 +11,9 @@
+ #include <dt-bindings/memory/mt8195-memory-port.h>
+ #include <dt-bindings/phy/phy.h>
+ #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
++#include <dt-bindings/power/mt8195-power.h>
++#include <dt-bindings/reset/mt8195-resets.h>
++#include <dt-bindings/thermal/thermal.h>
+ 
+ / {
+ 	compatible = "mediatek,mt8195";
+@@ -810,6 +813,28 @@ spi0: spi@1100a000 {
+ 			status = "disabled";
+ 		};
+ 
++		lvtsap: thermal-sensor@1100b000 {
++			compatible = "mediatek,mt8195-lvts-ap";
++			#thermal-sensor-cells = <1>;
++			reg = <0 0x1100b000 0 0x400>;
++			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
++			resets = <&infracfg_ao MT8195_INFRA_RST0_THERM_CTRL_SWRST>;
++			nvmem-cells = <&lvts_efuse_data1 &lvts_efuse_data2>;
++			nvmem-cell-names = "lvts_calib_data1", "lvts_calib_data2";
++		};
 +
-+#include <linux/of_irq.h>
-+#include <linux/platform_device.h>
-+#include "soc_temp_lvts.h"
++		lvtsmcu: thermal-sensor@11278000 {
++			compatible = "mediatek,mt8195-lvts-mcu";
++			#thermal-sensor-cells = <1>;
++			reg = <0 0x11278000 0 0x400>;
++			interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
++			resets = <&infracfg_ao MT8195_INFRA_RST4_THERM_CTRL_MCU_SWRST>;
++			nvmem-cells = <&lvts_efuse_data1 &lvts_efuse_data2>;
++			nvmem-cell-names = "lvts_calib_data1", "lvts_calib_data2";
++		};
 +
-+enum mt8195_lvts_mcu_sensor_enum {
-+	MT8195_TS1_0,		// cpu_big1
-+	MT8195_TS1_1,		// cpu_big2
-+	MT8195_TS2_0,		// cpu_big3
-+	MT8195_TS2_1,		// cpu_big4
-+	MT8195_TS3_0,		// cpu_little1
-+	MT8195_TS3_1,		// cpu_little2
-+	MT8195_TS3_2,		// cpu_little3
-+	MT8195_TS3_3,		// cpu_little4
-+	MT8195_NUM_TS_MCU
-+};
+ 		spi1: spi@11010000 {
+ 			compatible = "mediatek,mt8195-spi",
+ 				     "mediatek,mt6765-spi";
+@@ -1613,4 +1638,92 @@ vencsys_core1: clock-controller@1b000000 {
+ 			#clock-cells = <1>;
+ 		};
+ 	};
 +
-+enum mt8195_lvts_ap_sensor_enum {
-+	MT8195_TS4_0,		// vpu1
-+	MT8195_TS4_1,		// vpu2
-+	MT8195_TS5_0,		// gpu1
-+	MT8195_TS5_1,		// gpu2
-+	MT8195_TS6_0,		// vdec
-+	MT8195_TS6_1,		// img
-+	MT8195_TS6_2,		// infra
-+	MT8195_TS7_0,		// cam1
-+	MT8195_TS7_1,		// cam2
-+	MT8195_NUM_TS_AP
-+};
-+
-+static void mt8195_mcu_efuse_to_cal_data(struct lvts_data *lvts_data)
-+{
-+	struct lvts_sensor_cal_data *cal_data = &lvts_data->cal_data;
-+
-+	cal_data->golden_temp = GET_CAL_DATA_BITMASK(0, lvts_data, 31, 24);
-+
-+	cal_data->count_r[MT8195_TS1_0] = GET_CAL_DATA_BITMASK(1, lvts_data, 23, 0);
-+	cal_data->count_r[MT8195_TS1_1] = (GET_CAL_DATA_BITMASK(2, lvts_data, 15, 0) << 8) +
-+		GET_CAL_DATA_BITMASK(1, lvts_data, 31, 24);
-+	cal_data->count_r[MT8195_TS2_0] = GET_CAL_DATA_BITMASK(3, lvts_data, 31, 8);
-+	cal_data->count_r[MT8195_TS2_1] = GET_CAL_DATA_BITMASK(4, lvts_data, 23, 0);
-+	cal_data->count_r[MT8195_TS3_0] = (GET_CAL_DATA_BITMASK(6, lvts_data, 7, 0) << 16) +
-+		GET_CAL_DATA_BITMASK(5, lvts_data, 31, 16);
-+	cal_data->count_r[MT8195_TS3_1] = GET_CAL_DATA_BITMASK(6, lvts_data, 31, 8);
-+	cal_data->count_r[MT8195_TS3_2] = GET_CAL_DATA_BITMASK(7, lvts_data, 23, 0);
-+	cal_data->count_r[MT8195_TS3_3] = (GET_CAL_DATA_BITMASK(8, lvts_data, 15, 0) << 8) +
-+		GET_CAL_DATA_BITMASK(7, lvts_data, 31, 24);
-+
-+	cal_data->count_rc[MT8195_TS1_0] = (GET_CAL_DATA_BITMASK(3, lvts_data, 7, 0) << 16) +
-+		GET_CAL_DATA_BITMASK(2, lvts_data, 31, 16);
-+	cal_data->count_rc[MT8195_TS2_0] = (GET_CAL_DATA_BITMASK(5, lvts_data, 15, 0) << 8) +
-+		GET_CAL_DATA_BITMASK(4, lvts_data, 31, 24);
-+	cal_data->count_rc[MT8195_TS3_0] = (GET_CAL_DATA_BITMASK(9, lvts_data, 7, 0) << 16) +
-+		GET_CAL_DATA_BITMASK(8, lvts_data, 31, 16);
-+}
-+
-+static void mt8195_ap_efuse_to_cal_data(struct lvts_data *lvts_data)
-+{
-+	struct lvts_sensor_cal_data *cal_data = &lvts_data->cal_data;
-+
-+	cal_data->golden_temp = GET_CAL_DATA_BITMASK(0, lvts_data, 31, 24);
-+
-+	cal_data->count_r[MT8195_TS4_0] = GET_CAL_DATA_BITMASK(9, lvts_data, 31, 8);
-+	cal_data->count_r[MT8195_TS4_1] = GET_CAL_DATA_BITMASK(10, lvts_data, 23, 0);
-+	cal_data->count_r[MT8195_TS5_0] = (GET_CAL_DATA_BITMASK(12, lvts_data, 7, 0) << 16) +
-+		GET_CAL_DATA_BITMASK(11, lvts_data, 31, 16);
-+	cal_data->count_r[MT8195_TS5_1] = GET_CAL_DATA_BITMASK(12, lvts_data, 31, 8);
-+	cal_data->count_r[MT8195_TS6_0] = (GET_CAL_DATA_BITMASK(14, lvts_data, 15, 0) << 8) +
-+		GET_CAL_DATA_BITMASK(13, lvts_data, 31, 24);
-+	cal_data->count_r[MT8195_TS6_1] = (GET_CAL_DATA_BITMASK(15, lvts_data, 7, 0) << 16) +
-+		GET_CAL_DATA_BITMASK(14, lvts_data, 31, 16);
-+	cal_data->count_r[MT8195_TS6_2] = GET_CAL_DATA_BITMASK(15, lvts_data, 31, 8);
-+	cal_data->count_r[MT8195_TS7_0] = (GET_CAL_DATA_BITMASK(17, lvts_data, 15, 0) << 8) +
-+		GET_CAL_DATA_BITMASK(16, lvts_data, 31, 24);
-+	cal_data->count_r[MT8195_TS7_1] = (GET_CAL_DATA_BITMASK(18, lvts_data, 7, 0) << 16) +
-+		GET_CAL_DATA_BITMASK(17, lvts_data, 31, 16);
-+
-+	cal_data->count_rc[MT8195_TS4_0] = (GET_CAL_DATA_BITMASK(11, lvts_data, 15, 0) << 8) +
-+						GET_CAL_DATA_BITMASK(10, lvts_data, 31, 24);
-+	cal_data->count_rc[MT8195_TS5_0] = GET_CAL_DATA_BITMASK(13, lvts_data, 23, 0);
-+	cal_data->count_rc[MT8195_TS6_0] = GET_CAL_DATA_BITMASK(16, lvts_data, 23, 0);
-+	cal_data->count_rc[MT8195_TS7_0] = GET_CAL_DATA_BITMASK(18, lvts_data, 31, 8);
-+}
-+
-+static struct lvts_speed_settings tc_speed_mt8195 = {
-+	.period_unit = PERIOD_UNIT,
-+	.group_interval_delay = GROUP_INTERVAL_DELAY,
-+	.filter_interval_delay = FILTER_INTERVAL_DELAY,
-+	.sensor_interval_delay = SENSOR_INTERVAL_DELAY,
-+};
-+
-+static const struct lvts_tc_settings mt8195_tc_mcu_settings[] = {
-+	[0] = {
-+		.dev_id = 0x81,
-+		.addr_offset = 0x0,
-+		.num_sensor = 2,
-+		.sensor_map = {MT8195_TS1_0, MT8195_TS1_1},
-+		.tc_speed = &tc_speed_mt8195,
-+		.hw_filter = LVTS_FILTER_2_OF_4,
-+		.dominator_sensing_point = SENSING_POINT1,
-+		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-+		.irq_bit = BIT(3),
-+	},
-+	[1] = {
-+		.dev_id = 0x82,
-+		.addr_offset = 0x100,
-+		.num_sensor = 2,
-+		.sensor_map = {MT8195_TS2_0, MT8195_TS2_1},
-+		.tc_speed = &tc_speed_mt8195,
-+		.hw_filter = LVTS_FILTER_2_OF_4,
-+		.dominator_sensing_point = SENSING_POINT0,
-+		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-+		.irq_bit = BIT(4),
-+	},
-+	[2] = {
-+		.dev_id = 0x83,
-+		.addr_offset = 0x200,
-+		.num_sensor = 4,
-+		.sensor_map = {MT8195_TS3_0, MT8195_TS3_1, MT8195_TS3_2, MT8195_TS3_3},
-+		.tc_speed = &tc_speed_mt8195,
-+		.hw_filter = LVTS_FILTER_2_OF_4,
-+		.dominator_sensing_point = SENSING_POINT0,
-+		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-+		.irq_bit = BIT(5),
-+	}
-+};
-+
-+static const struct lvts_tc_settings mt8195_tc_ap_settings[] = {
-+	[0] = {
-+		.dev_id = 0x84,
-+		.addr_offset = 0x0,
-+		.num_sensor = 2,
-+		.sensor_map = {MT8195_TS4_0, MT8195_TS4_1},
-+		.tc_speed = &tc_speed_mt8195,
-+		.hw_filter = LVTS_FILTER_2_OF_4,
-+		.dominator_sensing_point = SENSING_POINT0,
-+		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-+		.irq_bit = BIT(3),
-+	},
-+	[1] = {
-+		.dev_id = 0x85,
-+		.addr_offset = 0x100,
-+		.num_sensor = 2,
-+		.sensor_map = {MT8195_TS5_0, MT8195_TS5_1},
-+		.tc_speed = &tc_speed_mt8195,
-+		.hw_filter = LVTS_FILTER_2_OF_4,
-+		.dominator_sensing_point = SENSING_POINT1,
-+		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-+		.irq_bit = BIT(4),
-+	},
-+	[2] = {
-+		.dev_id = 0x86,
-+		.addr_offset = 0x200,
-+		.num_sensor = 3,
-+		.sensor_map = {MT8195_TS6_0, MT8195_TS6_1, MT8195_TS6_2},
-+		.tc_speed = &tc_speed_mt8195,
-+		.hw_filter = LVTS_FILTER_2_OF_4,
-+		.dominator_sensing_point = SENSING_POINT1,
-+		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-+		.irq_bit = BIT(5),
-+	},
-+	[3] = {
-+		.dev_id = 0x87,
-+		.addr_offset = 0x300,
-+		.num_sensor = 2,
-+		.sensor_map = {MT8195_TS7_0, MT8195_TS7_1},
-+		.tc_speed = &tc_speed_mt8195,
-+		.hw_filter = LVTS_FILTER_2_OF_4,
-+		.dominator_sensing_point = SENSING_POINT0,
-+		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-+		.irq_bit = BIT(6),
-+	}
-+};
-+
-+static const struct lvts_data mt8195_lvts_mcu_data = {
-+	.num_tc = (ARRAY_SIZE(mt8195_tc_mcu_settings)),
-+	.tc = mt8195_tc_mcu_settings,
-+	.num_sensor = MT8195_NUM_TS_MCU,
-+	.ops = {
-+		.efuse_to_cal_data = mt8195_mcu_efuse_to_cal_data,
-+		.device_enable_and_init = lvts_device_enable_and_init_v4,
-+		.device_enable_auto_rck = lvts_device_enable_auto_rck_v4,
-+		.device_read_count_rc_n = lvts_device_read_count_rc_n_v4,
-+		.set_cal_data = lvts_set_calibration_data_v4,
-+		.init_controller = lvts_init_controller_v4,
-+	},
-+	.feature_bitmap = FEATURE_DEVICE_AUTO_RCK,
-+	.num_efuse_addr = NUM_EFUSE_ADDR,
-+	.num_efuse_block = NUM_EFUSE_BLOCK_MT8195,
-+	.cal_data = {
-+		.default_golden_temp = DEFAULT_GOLDEN_TEMP,
-+		.default_count_r = DEFAULT_CUONT_R,
-+		.default_count_rc = DEFAULT_CUONT_RC,
-+	},
-+	.coeff = {
-+		.a = COEFF_A,
-+		.b = COEFF_B,
-+	},
-+};
-+
-+static const struct lvts_data mt8195_lvts_ap_data = {
-+	.num_tc = (ARRAY_SIZE(mt8195_tc_ap_settings)),
-+	.tc = mt8195_tc_ap_settings,
-+	.num_sensor = MT8195_NUM_TS_AP,
-+	.ops = {
-+		.efuse_to_cal_data = mt8195_ap_efuse_to_cal_data,
-+		.device_enable_and_init = lvts_device_enable_and_init_v4,
-+		.device_enable_auto_rck = lvts_device_enable_auto_rck_v4,
-+		.device_read_count_rc_n = lvts_device_read_count_rc_n_v4,
-+		.set_cal_data = lvts_set_calibration_data_v4,
-+		.init_controller = lvts_init_controller_v4,
-+	},
-+	.feature_bitmap = FEATURE_DEVICE_AUTO_RCK,
-+	.num_efuse_addr = NUM_EFUSE_ADDR,
-+	.num_efuse_block = NUM_EFUSE_BLOCK_MT8195,
-+	.cal_data = {
-+		.default_golden_temp = DEFAULT_GOLDEN_TEMP,
-+		.default_count_r = DEFAULT_CUONT_R,
-+		.default_count_rc = DEFAULT_CUONT_RC,
-+	},
-+	.coeff = {
-+		.a = COEFF_A,
-+		.b = COEFF_B,
-+	},
-+};
-+
-+static const struct of_device_id lvts_of_match[] = {
-+	{ .compatible = "mediatek,mt8195-lvts-mcu", .data = &mt8195_lvts_mcu_data, },
-+	{ .compatible = "mediatek,mt8195-lvts-ap", .data = &mt8195_lvts_ap_data, },
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, lvts_of_match);
-+
-+static struct platform_driver soc_temp_lvts = {
-+	.probe = lvts_probe,
-+	.remove = lvts_remove,
-+	.suspend = lvts_suspend,
-+	.resume = lvts_resume,
-+	.driver = {
-+		.name = "mtk-soc-temp-lvts-mt8195",
-+		.of_match_table = lvts_of_match,
-+	},
-+};
-+module_platform_driver(soc_temp_lvts);
-+
-+MODULE_AUTHOR("Yu-Chia Chang <ethan.chang@mediatek.com>");
-+MODULE_AUTHOR("Michael Kao <michael.kao@mediatek.com>");
-+MODULE_DESCRIPTION("MediaTek soc temperature driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/thermal/mediatek/soc_temp_lvts.h b/drivers/thermal/mediatek/soc_temp_lvts.h
-index 6f8b6e3af98c..c4acb7e26e5e 100644
---- a/drivers/thermal/mediatek/soc_temp_lvts.h
-+++ b/drivers/thermal/mediatek/soc_temp_lvts.h
-@@ -16,6 +16,7 @@
- #define FEATURE_DEVICE_AUTO_RCK	BIT(0)
- #define NUM_EFUSE_ADDR			22
- #define NUM_EFUSE_BLOCK_MT8192	1
-+#define NUM_EFUSE_BLOCK_MT8195	2
- #define DEFAULT_GOLDEN_TEMP		50
- #define DEFAULT_CUONT_R			35000
- #define DEFAULT_CUONT_RC		2750
++	thermal_zones: thermal-zones {
++		cpu-big1-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsmcu 0>;
++		};
++		cpu-big2-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsmcu 1>;
++		};
++		cpu-big3-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsmcu 2>;
++		};
++		cpu-big4-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsmcu 3>;
++		};
++		cpu-little1-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsmcu 4>;
++		};
++		cpu-little2-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsmcu 5>;
++		};
++		cpu-little3-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsmcu 6>;
++		};
++		cpu-little4-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsmcu 7>;
++		};
++		vpu1-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsap 0>;
++		};
++		vpu2-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsap 1>;
++		};
++		gpu1-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsap 2>;
++		};
++		gpu2-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsap 3>;
++		};
++		vdec-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsap 4>;
++		};
++		img-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsap 5>;
++		};
++		infra-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsap 6>;
++		};
++		cam1-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsap 7>;
++		};
++		cam2-thermal {
++			polling-delay = <0>; /* milliseconds */
++			polling-delay-passive = <0>; /* milliseconds */
++			thermal-sensors = <&lvtsap 8>;
++		};
++	};
+ };
 -- 
 2.34.1
 
