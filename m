@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 797EFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 05:03:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E917C43334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 05:55:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kaVWXPidtlaHZXKX6T9otPMgBiSJjXpZBrE8kpvQLEQ=; b=i01tjX+9fyYAeNpBFxsTaoxYWj
-	pK9jv9Kk+5vZoWbBRWgjt4MXzZkXCJAp63XAXj7tyE58Hlnl16UL3J6SyjA0YmLO8KSRThu2MWKGS
-	zsRUdT+82aJ0ibyGsvUwvMpy+uVrTSDEQjmiRk6OVmZr+okDv+32aTmhXhyCJZdxH8RG0/rcKn0y+
-	zVUAlbENWuCWa/REmB3A4QB1ye2iz6bqy+X73u+RglGdk7y8KO0gT+dZhSEMMz0RglfHObUy67FuJ
-	cGfTD6u7QFgsKP/zoWXxTqTGd6sO3O2rRgq5vSA0JdJrNdpqjp7YuKmmnrrnbTtQv7P2dX0+ZZkBt
-	1LXCYbfA==;
+	bh=RdhZW5PB4XAlNBVYHS2ulfdZB41DDyfnqe2FGITwOj8=; b=rFKphHXlvbVxnMXXZ++lgVObZz
+	AN7+SKczw24R3s6gYJKPyS/3qWTtVeGdlUD1wWUdP9mGCqJNyKu7V5jdJWsaaEVrs2B+nSgyQoQtp
+	FxJsoDsO/gMSzmqGr6YBZJaQH3wiMKWyJnnAPwiCNUzm+t9woMVcrpjiVZ5zwr95KDYPLZqds35dh
+	2Y57MlF/qp6m5QMTDRz+GqJZu4crtBlG3n5kRZu2+7LZoff46M99lh3D/XX5CawF2DRtuEt+Zcz8o
+	zOHHSM/TOtFOhyeMkOoBzpf+rNQXZAHU7PG7cuJjgXr6vwwVC+ofnQzeJ/RMbWHgz2iHD5YWuPSU6
+	HiB2irgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGCj0-007lCE-F6; Tue, 26 Jul 2022 05:03:18 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oGDXM-008Pl4-DI; Tue, 26 Jul 2022 05:55:20 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGCix-007l9E-VX; Tue, 26 Jul 2022 05:03:17 +0000
-X-UUID: a83b9281c3764c71ae7bc2df9c2d1722-20220725
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:bc47ba2d-f78c-4273-8966-d5ee2a16368d,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:70d706ee-db04-4499-9fdf-04ef44b9468c,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: a83b9281c3764c71ae7bc2df9c2d1722-20220725
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1244810756; Mon, 25 Jul 2022 22:03:10 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Tue, 26 Jul 2022 12:02:01 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 26 Jul 2022 12:02:00 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
-	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, George Sun
-	<george.sun@mediatek.com>, Xiaoyong Lu <xiaoyong.lu@mediatek.com>, "Hsin-Yi
- Wang" <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, "Daniel
- Vetter" <daniel@ffwll.ch>, Irui Wang <irui.wang@mediatek.com>, Steve Cho
-	<stevecho@chromium.org>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 4/4] media: mediatek: vcodec: Add mt8188 encoder's chip name
-Date: Tue, 26 Jul 2022 12:01:55 +0800
-Message-ID: <20220726040155.17206-4-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220726040155.17206-1-yunfei.dong@mediatek.com>
-References: <20220726040155.17206-1-yunfei.dong@mediatek.com>
+	id 1oGDXJ-008PdD-MY
+	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 05:55:19 +0000
+Received: by mail-wr1-x436.google.com with SMTP id v13so10892187wru.12
+        for <linux-mediatek@lists.infradead.org>; Mon, 25 Jul 2022 22:55:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=RdhZW5PB4XAlNBVYHS2ulfdZB41DDyfnqe2FGITwOj8=;
+        b=ebAy1qynsfRjioT0qeT7mC6bR3i+SA8ZxiD7arsJiSf64kyV0AiJRzJM+SqPyLncGn
+         NPAk9ivc3bv46/jkRdbTKMq2el1VK9mCE4uyrIXpZszhlwkHiEP5TUCDVP1qsoRAU/nm
+         E/4sUXYf+ksqGuVcOtrO+HPK/fVHLUDIXRpfc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=RdhZW5PB4XAlNBVYHS2ulfdZB41DDyfnqe2FGITwOj8=;
+        b=5EMXLz49rfJlz34vKKte9Ano0RwkLx1J/gVK7ib2LPZf3hZpfFy38F0uXVvJugyL9y
+         weOnulusMx2hBPO2wSjrYPlWfa6vtTo7CKNQh5aDtRTObR0r+qgL+PrA7+pmO3AelOCY
+         BBYnx1Ge10j1qlZjbAbFGxSRiz8Y0gNn+H37Iomgu3iHDk0KBT1wXQ4aHKWqtBUavDyE
+         q6Ida6iQdtQmjZaysJv6d6pL3ip/eR7ePQOlLAZ7LC0s4nMtUeLFBIvDoA7ydZs7s7bc
+         9+KLOzFESipFmvuPbFpsl4yu4N+GwMS235xf3+oBIv9rS5lAqaKhxnNeywOg87mEDmHc
+         0E6Q==
+X-Gm-Message-State: AJIora/smRFCMu8pQoM2UFuJHMxwgG83Bb7ZxEjuvz5G67nONRBBVGob
+	DOOx5J9rkaaLNx9Kq4LbNuIPFwBgZZbeVSUzs9o8Tw==
+X-Google-Smtp-Source: AGRyM1vxlFKy5hdNJRICmWPYVy3Jo/93WVoJ1W16nlnFSlciWrNlvx5ZVMnY9gBPMNhvK74EJDX+bZ4PRo9hQ5Ebylo=
+X-Received: by 2002:a5d:64a4:0:b0:21e:93c4:f8c6 with SMTP id
+ m4-20020a5d64a4000000b0021e93c4f8c6mr3270065wrp.246.1658814913845; Mon, 25
+ Jul 2022 22:55:13 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20220725082447.2613231-1-treapking@chromium.org>
+ <5856610d-510f-46dc-63b2-79e571956a7c@collabora.com> <CAEXTbpeHy6-WjLOyWFkncoHzBPM+6qq4w-kUoZj7=05gf8YBjw@mail.gmail.com>
+ <bcb8c2b4-a1ab-8646-9fcb-034a70f5a329@collabora.com>
+In-Reply-To: <bcb8c2b4-a1ab-8646-9fcb-034a70f5a329@collabora.com>
+From: Pin-yen Lin <treapking@chromium.org>
+Date: Tue, 26 Jul 2022 13:55:02 +0800
+Message-ID: <CAEXTbpeEkpgFjQfONM030k8drcfYzOoWnB_FUqFptd-27YRqNg@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mt8173-oak: Switch to SMC watchdog
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, Eizan Miyamoto <eizan@chromium.org>, 
+	Evan Benn <evanbenn@chromium.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
+	devicetree@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_220316_023354_0696D0F5 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20220725_225517_796482_536637AE 
+X-CRM114-Status: GOOD (  44.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,27 +86,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Getting mt8188's chip name according to encoder compatible name.
+On Mon, Jul 25, 2022 at 6:31 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 25/07/22 12:19, Pin-yen Lin ha scritto:
+> > On Mon, Jul 25, 2022 at 4:39 PM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> Il 25/07/22 10:24, Pin-yen Lin ha scritto:
+> >>> Switch to SMC watchdog because we need direct control of HW watchdog
+> >>> registers from kernel. The corresponding firmware was uploaded in
+> >>> https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405.
+> >>>
+> >>
+> >> There's a fundamental issue with this change, I think.
+> >>
+> >> What happens if we run this devicetree on a device that does *not* have
+> >> the new(er) firmware?
+> >
+> > I haven't tried this patch with an older firmware. I'll manage to
+> > build one for this.
+> >>
+> >> The kernel *shall not* get broken when running on devices that are running
+> >> on older firmware, especially because that's what was initially supported
+> >> and what is working right now.
+> >
+> > Actually the current approach does not work *right*. The device boots,
+> > but the watchdog does not work properly.
+> >
+>
+> Is this a Chromebook firmware specific issue?
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 2 ++
- 1 file changed, 2 insertions(+)
+I'm not sure if this is a Chromebook-specific issue. The internal
+issue thread only discussed this for the Chromebook firmware.
+>
+> > Also, all MT8173 ChromeOS devices have this firmware updated, and we
+> > don't have other upstream users apart from mt8173-evb. Do we want to
+> > support the developers that are running upstream linux with their
+> > MT8173 boards?
+> >
+>
+> Upstream shall not be just about one machine: if we add support for a SoC there,
+> we shall support the SoC-generic things in the SoC-specific DTSI, and the machine
+> specific things in the machine-specific devicetrees.
+>
+> Chromebooks are not the only machines using the MT8173 SoC (Chuwi, Amazon also do
+> have products using MT8173), so we shall not make the main mt8173.dtsi incompatible
+> with these machines.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-index 25e816863597..75454b955638 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-@@ -225,6 +225,8 @@ static int mtk_vcodec_enc_get_chip_name(void *priv)
- 		return 8192;
- 	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8195-vcodec-enc"))
- 		return 8195;
-+	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8188-vcodec-enc"))
-+		return 8188;
- 	else
- 		return 8173;
- }
--- 
-2.25.1
+I don't see their DTS files uploaded to the upstream kernel. So we
+still want to support them even if they didn't upstream their changes?
 
+Does it make sense if we move the modification to mt8173-elm.dtsi? The
+device should be running ChromeOS AP firmware if it uses or references
+mt8173-elm.dtsi. Also, all the MT8173 Chromebooks were shipped with
+the "new" firmware from the very beginning. We just somehow didn't
+upstream this around the time.
+>
+> >>
+> >> For this reason, I think that we should get some code around that checks
+> >> if the SMC watchdog is supported and, if not, resort to MMIO wdog.
+> >
+> > What is the expected way to support this backward compatibility? Do we
+> > put the old compatible strings ("mediatek,mt8173-wdt" and
+> > "mediatek,mt6589-wdt") after "arm,smc-wdt" and reject it in the
+> > drivers if the firmware does not support it?
+>
+> I don't know what's the best option to support both cases... Perhaps a good one
+> would be to check (in mtk_wdt? or in arm_smc_wdt?) if the arm_smc_wdt is actually
+> supported in firmware, so if the SMC one is registered, we skip the other.
+>
+> >>
+> >> Regards,
+> >> Angelo
+> >>
+> >>
+> >>> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+> >>> ---
+> >>>
+> >>>    arch/arm64/boot/dts/mediatek/mt8173.dtsi | 6 ++----
+> >>>    1 file changed, 2 insertions(+), 4 deletions(-)
+> >>>
+> >>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> >>> index a2aef5aa67c1..2d1c776740a5 100644
+> >>> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> >>> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> >>> @@ -528,10 +528,8 @@ power-domain@MT8173_POWER_DOMAIN_MFG {
+> >>>                        };
+> >>>                };
+> >>>
+> >>> -             watchdog: watchdog@10007000 {
+> >>> -                     compatible = "mediatek,mt8173-wdt",
+> >>> -                                  "mediatek,mt6589-wdt";
+> >>> -                     reg = <0 0x10007000 0 0x100>;
+> >>> +             watchdog {
+> >>> +                     compatible = "arm,smc-wdt";
+> >>>                };
+> >>>
+> >>>                timer: timer@10008000 {
+> >>>
+> >>
+> >>
+>
+>
 
