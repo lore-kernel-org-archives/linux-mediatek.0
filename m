@@ -4,91 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4240C04A68
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 13:57:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E254C25B08
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 13:57:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pv8Wb/XUfgDvlUBb7xZCItYlnc14Qbd8klbk0fBR/cI=; b=hmnuSjTVgIriL6bZyhSUR8dLE5
-	O2reR8hQavuy7ZuSIPWqzdPAwplBWlG2qOUhNuHoLOQoK0PeBjFSrU6jTVXawnVTfG8OTqs4lO/pE
-	kso8HW67h6dNhOeT5LvogqTDih6GfyF9YJijgo/N8GeVWwY0pITG/xFhBPCsbVrC0XCId0NG1vh6z
-	K/bt1ejOivUiaHVE0N/Arx7RM9jZZvYBYxngwgd6MLHHoe+MX3tqNsLwCMYLFrQb7MPF7TbFKHD95
-	wwYSYdFwYY+H4vJnEUHbczR6NCAvVq9H9XQ8E3Fomz3zqeS+4NbEVbT/5/FDhgF8+lj4NNy6tThXo
-	gbY2eB6w==;
+	bh=6CJDRi50hvZoe9bMnaKU/zoPzaOzTerxYahH02ibxAU=; b=qIiC7dPiehWm7MMOyn2rEWycbl
+	jq+EUUUCN9j2eII6JYvEDwaZkH407tFtN+A4jtv4hH3BM0rmf9dcEQVFo14mUxibGO+CamFOEX1Qu
+	7919fr393DFAePu0QqKmvWadaSLfaJvVErD9I3c4rb0o14mvzP0svRH/sTSJEHzjXmAjjBg/F/iAz
+	2eB1Ipzzzag9V5eIaIsitT6EqZcJLqskYqQZohIXJUE8DWjovB0bT+TmYj6QfAu6IchnepljQ8Apz
+	NvSTZqkPf5ycNZuawRK6oyGdwTH8CPwpH/zTQ0V7z8dg/enp9AYT1y6rkyhBv3SmuU1qLr7KXIiQb
+	FZgjzC3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGKqn-00HSwu-WA; Tue, 26 Jul 2022 13:43:54 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1oGKol-00HRqP-UG; Tue, 26 Jul 2022 13:41:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGKqi-00HStN-Sx
-	for linux-mediatek@bombadil.infradead.org; Tue, 26 Jul 2022 13:43:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:In-Reply-To:References:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
-	Reply-To:To:Content-ID:Content-Description;
-	bh=Pv8Wb/XUfgDvlUBb7xZCItYlnc14Qbd8klbk0fBR/cI=; b=X1CawYW0m+KJJ/6/jap8YPDZe+
-	gJS41reTvf8keN5eaRT8xaMyAUbWJhScPPtUlPTl1zOWBk1wZRMg/1/hMTVShiSEpOMH87cFRs09K
-	6URex/njBISAUG0rZ9PaElLXM65qKG6DgsSif1iCYkZOXw+HQ/waa9EK4T9BeVlLzoeLqzbKUZ2FV
-	xSAcqbUGGYKoBQbuCiDNxB8ygUsxWJHdtEP/occWU3iu0KMfUEgVBNbD180hzYk8kHm6cMKL0zdBb
-	rq5rgExW8lQy6FgfCaIxBLfXChPNy1BloG0ijyONhFFjRLgxtGmSeVD03dGrLTyhbdryAmpw5n2AF
-	KfyRflUw==;
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGK76-0002Sa-4w
-	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 12:56:45 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id c22so8682566wmr.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Jul 2022 05:56:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=from:date:subject:mime-version:content-transfer-encoding:message-id
-         :references:in-reply-to:cc;
-        bh=Pv8Wb/XUfgDvlUBb7xZCItYlnc14Qbd8klbk0fBR/cI=;
-        b=JQC0LDeiyCTONLO9wJzCR3DZayr2OeSY97UtihVtK2Bg//mORTzwXNPQ+3bZvguNmQ
-         G8HgNDfEkkPic2mCzlej2yTg5sJBWpWQOKJW4hmFNVLOtUNlTHZLmvnLaYTGO57swON9
-         JnMb07hRleek6DOVe9ppMcxjCwr4KlqQ5aYSfJsjWJ43VFGGsOTp1NkHXUuBaFtIwwkt
-         /bgJS8DYAK1Zn8Fw53JRW+sZoWXXjJs3uWAfYWySQg+Yc5Wpnwa6Ee7Xuue3cpQ89FD+
-         e5reycwqnH7QxWvpijS7glQJuXIBJEVn4DgeAUml+0SWnmHj/ADspwBVxwBwtXp/TTOc
-         0OTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:date:subject:mime-version
-         :content-transfer-encoding:message-id:references:in-reply-to:cc;
-        bh=Pv8Wb/XUfgDvlUBb7xZCItYlnc14Qbd8klbk0fBR/cI=;
-        b=R6sNvFT98A4nmIc9RWw1mz01chxklQE8RWiFWIc7zQhrYq4dK+QfqlCZ/ktrM0LHAR
-         5kMDQ+TXPkST3LTCyNxXMiHddNogFgdpfprSwuDjtXeigAf9OVS3OOdJVG6KkJ05Fk3V
-         dA3vm82hEFH5GIsRZzcIWTAvCx1QWAhhexC/wGpTD4+49S/VJSzmKnNvFUiBYNuu+Wvt
-         NwfkSsZkG6ZgQlaH3+CHDrTPAJ9UPnJ0bmiRQ2DqiTtE13YCpp2Qhzcdke9s+3PDUZ5D
-         laICLav/naSl7U0lUB01HBmLM9FnduLVtFLSRDjD7kpSNLdaF8O43EFqrJ4RRPZ9gkeq
-         j5Xw==
-X-Gm-Message-State: AJIora8Exob5Bct36Pjj08GhzVFKcDZ1OqWD/r6jMMJ2QGY2OrQirpw0
-	tivmAs9zN1cPTgFrtklBrDq98w==
-X-Google-Smtp-Source: AGRyM1vvvRdQPmoQCB+VQgE8Mf8j6lPcMzabj6A5fEyQBKVFOEwxFB9YOwKu5xXK1jyzEiBm23752g==
-X-Received: by 2002:a05:600c:19cc:b0:3a3:3cfe:d548 with SMTP id u12-20020a05600c19cc00b003a33cfed548mr12225185wmq.6.1658840196274;
-        Tue, 26 Jul 2022 05:56:36 -0700 (PDT)
-Received: from [192.168.2.253] ([82.66.159.240])
-        by smtp.gmail.com with ESMTPSA id k1-20020adff5c1000000b0020fff0ea0a3sm14171549wrp.116.2022.07.26.05.56.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Jul 2022 05:56:35 -0700 (PDT)
-From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-Date: Tue, 26 Jul 2022 14:56:12 +0200
-Subject: [PATCH v2 7/7] arm64: dts: mediatek: mt8183-pumpkin: add keypad support
+	id 1oGKoh-00HRkT-R5
+	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 13:41:46 +0000
+X-UUID: 9ef3e578c35f4cfca4f26e5772e6530b-20220726
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=6CJDRi50hvZoe9bMnaKU/zoPzaOzTerxYahH02ibxAU=;
+	b=dl3jd1Y5uKwEnzPZ8ORx6dxCfFMIllCAbYItWHmAmHVCi8UmkhYu/2ICzmg9jttiC6DmzODlQKqh2U03zDnRE97okvuuq4tqTqf8D4HxTO+Jkex/vuRn2oFAAuFYWIZEil0zxDoyKH9IwTL8Dh+eCi6FMeyszkX32yRkpWiUBvc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:ea36af6a-d679-4c3f-9554-955c7337a0b0,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:d6358cb3-06d2-48ef-b2dd-540836705165,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 9ef3e578c35f4cfca4f26e5772e6530b-20220726
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <hui.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1681447777; Tue, 26 Jul 2022 06:41:33 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Tue, 26 Jul 2022 20:41:29 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 26 Jul 2022 20:41:28 +0800
+Message-ID: <7f00e2d4dd036a26482a16779dca5f6605496462.camel@mediatek.com>
+Subject: Re: [PATCH 1/3] dt-bindings: mediatek: add pinctrl definition for
+ mt8188
+From: hui.liu <hui.liu@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	<linus.walleij@linaro.org>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>
+CC: <johnson.wang@mediatek.com>, <zhiyong.tao@mediatek.com>,
+	<sean.wang@mediatek.com>, <linux-gpio@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Date: Tue, 26 Jul 2022 20:41:28 +0800
+In-Reply-To: <5cd79059-e858-3c6d-8ef2-6d8b12367830@linaro.org>
+References: <20220718113813.23787-1-hui.liu@mediatek.com>
+	 <20220718113813.23787-2-hui.liu@mediatek.com>
+	 <b28dcbe5-d15f-1c4f-9b3d-650d5c39de6b@linaro.org>
+	 <08a7209fe198839093b3ef729fc97c1a950e1fbc.camel@mediatek.com>
+	 <35639a59-4a3d-5aa7-946c-22fbd2f25e89@linaro.org>
+	 <ea7755e599ad8c06bc04b6249c2a6d0ab3b920f3.camel@mediatek.com>
+	 <53d432e9-6715-05c4-d258-896ec38afa4f@linaro.org>
+	 <9dbcee74667cdc77ad80c043bb7725c63ff1cbd2.camel@mediatek.com>
+	 <5cd79059-e858-3c6d-8ef2-6d8b12367830@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20220720-mt8183-keypad-v2-7-6d42c357cb76@baylibre.com>
-References: <20220720-mt8183-keypad-v2-0-6d42c357cb76@baylibre.com>
-In-Reply-To: <20220720-mt8183-keypad-v2-0-6d42c357cb76@baylibre.com>
-Cc: linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-input@vger.kernel.org, Fabien Parent <parent.f@gmail.com>
-X-Mailer: b4 0.10.0-dev-78725
+Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_135641_508257_ADD1FC70 
-X-CRM114-Status: UNSURE (   8.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220726_064143_945226_EE632BBC 
+X-CRM114-Status: GOOD (  21.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,64 +91,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
+T24gVHVlLCAyMDIyLTA3LTI2IGF0IDExOjQ1ICswMjAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdy
+b3RlOg0KPiBPbiAyNS8wNy8yMDIyIDEyOjEwLCBodWkubGl1IHdyb3RlOg0KPiA+IE9uIEZyaSwg
+MjAyMi0wNy0yMiBhdCAyMDoxOSArMDIwMCwgS3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToNCj4g
+PiA+IE9uIDIyLzA3LzIwMjIgMDM6NDAsIGh1aS5saXUgd3JvdGU6DQo+ID4gPiA+IEhpLCBLcnp5
+c3p0b2YNCj4gPiA+ID4gDQo+ID4gPiA+IFRoYXQncyB0aGUgY29tbWVudCBhYm91dCByZWcgYW5k
+IHJlZy1uYW1lcyBkZXNjcmlwdGlvbjoNCj4gPiA+ID4gPiA+ICsgIHJlZzoNCj4gPiA+ID4gPiA+
+ICsgICAgZGVzY3JpcHRpb246IHwNCj4gPiA+ID4gPiA+ICsgICAgICBQaHlzaWNhbCBhZGRyZXNz
+IGJhc2UgZm9yIGdwaW8gYmFzZSByZWdpc3RlcnMuIFRoZXJlDQo+ID4gPiA+ID4gPiBhcmUNCj4g
+PiA+ID4gPiA+IDgNCj4gPiA+ID4gPiA+IEdQSU8NCj4gPiA+ID4gPiA+ICsgICAgICBwaHlzaWNh
+bCBhZGRyZXNzIGJhc2UgaW4gbXQ4MTg4Lg0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IFJlZHVuZGFu
+dCBkZXNjcmlwdGlvbiwgc2tpcCBpdC4gWW91IHNob3VsZCBsaXN0IHRoZSBpbnN0ZWFkDQo+ID4g
+PiA+ID4gYW5kDQo+ID4gPiA+ID4gZGVzY3JpYmUNCj4gPiA+ID4gPiBlYWNoIG9mIGl0Lg0KPiA+
+ID4gPiA+IA0KPiA+ID4gPiA+ID4gKyAgICBtYXhJdGVtczogOA0KPiA+ID4gPiA+ID4gKw0KPiA+
+ID4gPiA+ID4gKyAgcmVnLW5hbWVzOg0KPiA+ID4gPiA+ID4gKyAgICBkZXNjcmlwdGlvbjogfA0K
+PiA+ID4gPiA+ID4gKyAgICAgIEdwaW8gYmFzZSByZWdpc3RlciBuYW1lcy4NCj4gPiA+ID4gPiAN
+Cj4gPiA+ID4gPiBSZWR1bmRhbnQgZGVzY3JpcHRpb24sIHNraXAgaXQuDQo+ID4gPiA+ID4gDQo+
+ID4gPiA+ID4gPiArICAgIG1heEl0ZW1zOiA4DQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4gWW91IG5l
+ZWQgdG8gbGlzdCB0aGUgaXRlbXMgaW5zdGVhZC4NCj4gPiA+ID4gDQo+ID4gPiA+IEkgcGxhbiB0
+byB1cGRhdGUgcmVnIGFuZCByZWctbmFtZXMgYXMgdGhlIGZvbGxvd2luZzoNCj4gPiA+ID4gICBy
+ZWc6DQo+ID4gPiA+ICAgICBkZXNjcmlwdGlvbjogfA0KPiA+ID4gPiAgICAgICBQaHlzaWNhbCBh
+ZGRyZXNzIGJhc2UgZm9yIGdwaW8gYmFzZSByZWdpc3RlcnMuIFRoZXJlIGFyZQ0KPiA+ID4gPiA2
+DQo+ID4gPiA+IGRpZmZlcmVudCBHUElPIHBoeXNpY2FsIGFkZHJlc3MgYmFzZXMgaW4gbXQ4MTg4
+Lg0KPiA+ID4gPiAgICAgbWluSXRlbXM6IDYNCj4gPiA+ID4gICAgIG1heEl0ZW1zOiA2DQo+ID4g
+PiANCj4gPiA+IFlvdSBzaG91bGQgcmF0aGVyIGhhdmUgaGVyZSBpdGVtcyB3aXRoIGRlc2NyaXB0
+aW9uOg0KPiA+ID4gaXRlbXM6DQo+ID4gPiAgLSBkZXNjcmlwdGlvbjogd2hhdCBpcyBpdA0KPiA+
+ID4gIC0gZGVzY3JpcHRpb246IHdoYXQgaXMgaXQNCj4gPiA+ICAuLi4uDQo+ID4gPiANCj4gPiAN
+Cj4gPiBIaSBLcnp5c3p0b2YsDQo+ID4gDQo+ID4gSSB3aWxsIGxpc3QgZWFjaCBpdGVtcyB3aXRo
+IGRlc2NyaXB0aW9uIGFzIGZvbGxvd3MsIGlzIGl0IHJpZ2h0Pw0KPiA+ICAgcmVnOg0KPiA+ICAg
+ICBkZXNjcmlwdGlvbjogfA0KPiA+ICAgICAgIFBoeXNpY2FsIGFkZHJlc3MgYmFzZSBmb3IgcGlu
+Y3RybCBiYXNlIHJlZ2lzdGVycy4gVGhlcmUgYXJlIDYNCj4gPiBkaWZmZXJlbnQgcGh5c2ljYWwg
+YWRkcmVzcyBiYXNlcyBpbiBtdDgxODguDQo+ID4gICAgICAgaW9jZmcwIGlzIGdwaW8gYmFzZSBh
+ZGRyZXNzOw0KPiA+ICAgICAgIGlvY2ZnX3JtIGlzIGlvIGNvbmZpZ3VyYXRpb24NCj4gPiBhZGRy
+ZXNzIGZvciBybSBncm91cDsNCj4gPiAgICAgICBpb2NmZ19sdCBpcyBpbyBjb25maWd1cmF0aW9u
+IGFkZHJlc3MgZm9yIGx0IGdyb3VwOw0KPiA+ICAgICAgIGlvY2ZnX2xtDQo+ID4gaXMgaW8gY29u
+ZmlndXJhdGlvbiBhZGRyZXNzIGZvciBtbSBncm91cDsNCj4gPiAgICAgICBpb2NmZ19ydCBpcyBp
+bw0KPiA+IGNvbmZpZ3VyYXRpb24gYWRkcmVzcyBmb3IgcnQgZ3JvdXA7DQo+ID4gICAgICAgZWlu
+dCBpcyBlaW50IGJhc2UgYWRkcmVzcy4NCj4gPiAgICAgbWluSXRlbXM6IDYNCj4gPiAgICAgbWF4
+SXRlbXM6IDYNCj4gDQo+IE5vLCBiZWNhdXNlIGl0IGlzIG5vdCBzY2hlbWEgYW5kIHlvdSBzdGls
+bCBrZWVwIGhlcmUgbWluL21heEl0ZW1zDQo+IHdoaWNoDQo+IGFyZSBwb2ludGxlc3MgaW4gdGhh
+dCBjYXNlLiBKdXN0IHJlYWQgZXhhbXBsZS1zY2hlbWEuDQo+IA0KPiANCmh0dHBzOi8vdXJsZGVm
+ZW5zZS5jb20vdjMvX19odHRwczovL2VsaXhpci5ib290bGluLmNvbS9saW51eC92NS4xOS1yYzgv
+c291cmNlL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9leGFtcGxlLXNjaGVtYS55
+YW1sKkw2M19fO0l3ISFDVFJOS0E5d01nMEFSYnchM1VBTDNCNEpCblJwbkdFSG0zb3VYaWtzOC13
+ZmRuM0h2QWJOVXl0eVRlbkdRaW5BU242blIzNUhjOEFKRVljJA0KPiAgDQo+IA0KSGkgS3J6eXN6
+dG9mLA0KDQpUaGFua3MgZm9yIHlvdSBjb21tZW50LCBJIHdpbGwgcmVmZXJlbmNlIHRoZSBleGFt
+cGxlLXNjaGVtYSBhbmQgdXBkYXRlDQp0aGUgZGVzY3JpcHRpb24gaW4gcGF0Y2ggdjIuDQoNCg0K
 
-Add device-tree bindings for the keypad driver on the MT8183 Pumpkin
-board.
-
-The MT8183 Pumpkin board has 2 buttons connected using: KPROW0,
-KPROW1 and KPCOL0.
-
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-index 530e0c9ce0c9..a1d01639df30 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-@@ -7,6 +7,7 @@
- /dts-v1/;
- 
- #include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/input/input.h>
- #include "mt8183.dtsi"
- #include "mt6358.dtsi"
- 
-@@ -122,6 +123,18 @@ &i2c6 {
- 	clock-frequency = <100000>;
- };
- 
-+&keyboard {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&keyboard_pins>;
-+	status = "okay";
-+	linux,keymap = <MATRIX_KEY(0x00, 0x00, KEY_VOLUMEDOWN)
-+			MATRIX_KEY(0x01, 0x00, KEY_VOLUMEUP)>;
-+	keypad,num-rows = <2>;
-+	keypad,num-columns = <1>;
-+	debounce-delay-ms = <32>;
-+	mediatek,keys-per-group = <2>;
-+};
-+
- &mmc0 {
- 	status = "okay";
- 	pinctrl-names = "default", "state_uhs";
-@@ -226,6 +239,14 @@ pins_cmd_dat {
- 		};
- 	};
- 
-+	keyboard_pins: keyboard {
-+		pins_keyboard {
-+			pinmux = <PINMUX_GPIO91__FUNC_KPROW1>,
-+				 <PINMUX_GPIO92__FUNC_KPROW0>,
-+				 <PINMUX_GPIO93__FUNC_KPCOL0>;
-+		};
-+	};
-+
- 	mmc0_pins_default: mmc0-pins-default {
- 		pins_cmd_dat {
- 			pinmux = <PINMUX_GPIO123__FUNC_MSDC0_DAT0>,
-
--- 
-b4 0.10.0-dev-78725
 
