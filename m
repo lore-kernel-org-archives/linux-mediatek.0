@@ -4,81 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A1B3C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 11:35:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07418C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 11:47:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jNfmXnERXdQ1wg5WOE/s1hkmzCHfSm7u7p1V21HeOK0=; b=HsjPwGibgLZvuY9iJ2NlSvA5xG
-	NQVkWPu65seshTLTlJkIcWqfoDTkRRFPbDEXaiqIVIcg6JmvRBnNCBl/hJD5lTg4KpRT+YfDcyODW
-	kk6rq8pZijmXJRTFZCF2nXCakv4lfzHb7lHsWoZu6u8Jb0Ikq/hhPm7Xz5Lqx+cZiD8p2BHpv2I6P
-	oh6GwhpROqWAgbO+7mR3fprxzf6YKq/TNqEdgicsAiwyagmgcyiGDwHj8UIJ1hzI8+8eitdDY4/+b
-	IzbMEGdtWkMVpd7dB8L6dhlwPfTpvH1Um5Gd9OmoAwJuBOPV1uSSlG0ccb3bQYfZW2+t5x6+W85T3
-	gNIezgUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wL1b72wWwttocLxQ4i2N7IFKv69W21HPhWs4hRLf0o0=; b=FAZtasUCJWcx206qy/fHhi88D2
+	1JRFWHyo+P+VjEjCvpzskYZz0JbjZ8bZSaNKWS+9CNRYC56wG10l15f1e0VNQjC86dVvexPKF6hW3
+	uJBagxsEBJj8ed6v6yhHXdtp7f2fLT68IBvG5oALHew4izJG3pDhtRMHYzSUbe5UXsRNh0O0ZChe6
+	8JZyfEgtH1XYUtPr4NEin0J+6TXiFg+YHhejOJKBQLWSDiPssT44/QXK1OiGAxCS7xahN8QgcDkEz
+	6MczilfnuSx4CMMVc9zm6hwT3pC3dC/Rjzv6fY8GoRICwoy6sTxON1cpxC/BlaHMlPUK3PHtaq+rB
+	lamEDXvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGIpu-00G1PJ-0D; Tue, 26 Jul 2022 11:34:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oGJ1b-00GJfk-Hl; Tue, 26 Jul 2022 11:46:55 +0000
+Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGIpq-00G1A6-Nj; Tue, 26 Jul 2022 11:34:48 +0000
-X-UUID: 302eaa689c2549d2a94461aa181f1957-20220726
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=jNfmXnERXdQ1wg5WOE/s1hkmzCHfSm7u7p1V21HeOK0=;
-	b=KB1nZvj+BU3fJDtBMvDiOeZ5gV1mldr4Bdb0Wx84LPYQAFHjU546C05FxVnA95TeB//7lT4wfwya+rHrPXnFdYkfTlwlXbU7+wcgZhikR025Oz7wkoI3hhYoF4PbDOKpaKGuhQSzUXJuZ+n19mQSq9PRt/gTz5ItqVa5Q4oP30g=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:047cf041-4314-4967-a57f-0d7ff601a0f8,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:0f94e32,CLOUDID:947c8ab3-06d2-48ef-b2dd-540836705165,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 302eaa689c2549d2a94461aa181f1957-20220726
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1722728670; Tue, 26 Jul 2022 04:34:42 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 26 Jul 2022 19:34:38 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 26 Jul 2022 19:34:37 +0800
-Message-ID: <6be179889a53bd7f5c281cb4ab0c4dd2e7306143.camel@mediatek.com>
-Subject: Re: [PATCH 3/4] media: mediatek: vcodec: Add mt8188 decoder's chip
- name
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-CC: Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, George Sun <george.sun@mediatek.com>, Xiaoyong Lu
-	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
- Koenig" <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Irui Wang
-	<irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 26 Jul 2022 19:34:37 +0800
-In-Reply-To: <CAGXv+5FdYKNqG6TQawWpiH29oSAPdZFAy1wHM=qkqDDSbs2CUw@mail.gmail.com>
-References: <20220726040155.17206-1-yunfei.dong@mediatek.com>
-	 <20220726040155.17206-3-yunfei.dong@mediatek.com>
-	 <CAGXv+5FdYKNqG6TQawWpiH29oSAPdZFAy1wHM=qkqDDSbs2CUw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oGJ1K-00GJAH-NU; Tue, 26 Jul 2022 11:46:40 +0000
+Received: by mail-qt1-x835.google.com with SMTP id w29so10190999qtv.9;
+        Tue, 26 Jul 2022 04:46:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=wL1b72wWwttocLxQ4i2N7IFKv69W21HPhWs4hRLf0o0=;
+        b=AZ8qDLn4Znu85xCahXNOnmojv9wcePPk3Lf2KSJODsdYIL/u4rdAI0Lnw8MiXeeTQl
+         0fNcl+cJw4vrGMs/9mjAcX99bHsbOpeBwt1ay2R33YRq1VsVjC++YG2fmlp7hix1YwsO
+         IKZ3zoTB97u6iKZxmk+c33+dSbGXuJXJDQz+RRlu+LRdNCgrsyBWNRh2nYIBbuWUos51
+         BrJUcA7G/8NE1M8r1t7zyLNEvXtcGsNdIwqfkXwOFPRNUwWDTrUivYLlX/lxHIIPKvWG
+         uXmZtHYk57ezocXOjrXXXwhnGpuE94ql5T95iceJZSiu4iSTtJVip83p/q4s/P1JT7m/
+         PgVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=wL1b72wWwttocLxQ4i2N7IFKv69W21HPhWs4hRLf0o0=;
+        b=LKs8ZWT0PN/KLwSsMQboISsr2lOGzdD0rlEQxkjFl5T37OMTzMwrFBqJXwHigM92ws
+         Y+dYnfK8LJ7QvPRzG+DouYWr+82K2I/il7EX+X880rtnabElwM2udgulvLg2Meyb06Jr
+         4Nps9CixtOeMlqLtmfOBPccjN7DU99eMTdQluFlrH5Kg8aXjNzjBIX3VvSRX5jfxzHmh
+         xtBvdbafyfYIp114h8Dp6ACgGilCOJXcSTs03Q0y2SEIm2ih1/57aAn0W5UErRe5RBWu
+         OOoT13khNDnTZ2tULKKt0gxI2m3M5+Fc9aHjiFNptAMANdQI4hqnXgURfsD1PjCX3pwd
+         dL0g==
+X-Gm-Message-State: AJIora+AqUVFLI5kbvz8id1Th0op6Yd2JcePu3BFnLNWY7mIJKp9ul2B
+	yrfdHck7iAJXP2NyPdZk2IzYLFzRaNqkQdNVjkU=
+X-Google-Smtp-Source: AGRyM1sOWaWg8F0hJmRbLUJyv570Fqyt5WL0lP9RdfcVPQQLkd4tLFbTSnSOHuBdwqMxVIGbB1G4Kxurui/itRlhhGY=
+X-Received: by 2002:ac8:5a8b:0:b0:31f:27b8:2260 with SMTP id
+ c11-20020ac85a8b000000b0031f27b82260mr13732022qtc.198.1658835995667; Tue, 26
+ Jul 2022 04:46:35 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
-Content-Transfer-Encoding: base64
+References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-12-peterwu.pub@gmail.com>
+ <CAHp75VewxvEDGoPdRBvLSLQOQ6OZzVft1ce3DkF7MK_O1VXZkQ@mail.gmail.com>
+In-Reply-To: <CAHp75VewxvEDGoPdRBvLSLQOQ6OZzVft1ce3DkF7MK_O1VXZkQ@mail.gmail.com>
+From: ChiaEn Wu <peterwu.pub@gmail.com>
+Date: Tue, 26 Jul 2022 19:45:59 +0800
+Message-ID: <CABtFH5+im7=vyKLUqztYeAX81e7ETFc+9o7y0seg2pxH0PEnUQ@mail.gmail.com>
+Subject: Re: [PATCH v6 11/13] leds: rgb: mt6370: Add MediaTek MT6370 current
+ sink type LED Indicator support
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
+	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
+	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_043446_803006_50E1B053 
-X-CRM114-Status: GOOD (  19.17  )
+X-CRM114-CacheID: sfid-20220726_044638_798558_B09082AE 
+X-CRM114-Status: GOOD (  26.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,30 +98,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2hlbi1ZdSwNCg0KVGhhbmtzIGZvciB5b3VyIHN1Z2dlc3Rpb24uDQoNCkkgd2lsbCBtZXJn
-ZSBwYXRjaCAzIGFuZCAyIGludG8gb25lIHBhdGNoIGluIHYyLg0KDQpCZXN0IFJlZ2FyZHMsDQpZ
-dW5mZWkgRE9uZw0KT24gVHVlLCAyMDIyLTA3LTI2IGF0IDE2OjI4ICswODAwLCBDaGVuLVl1IFRz
-YWkgd3JvdGU6DQo+IE9uIFR1ZSwgSnVsIDI2LCAyMDIyIGF0IDEyOjAyIFBNIFl1bmZlaSBEb25n
-IDwNCj4geXVuZmVpLmRvbmdAbWVkaWF0ZWsuY29tPiB3cm90ZToNCj4gPiANCj4gPiBHZXR0aW5n
-IG10ODE4OCdzIGNoaXAgbmFtZSBhY2NvcmRpbmcgdG8gZGVjb2RlciBjb21wYXRpYmxlIG5hbWUu
-DQo+ID4gDQo+ID4gU2lnbmVkLW9mZi1ieTogWXVuZmVpIERvbmcgPHl1bmZlaS5kb25nQG1lZGlh
-dGVrLmNvbT4NCj4gDQo+IFRoaXMgc2hvdWxkIGJlIHNxdWFzaGVkIHdpdGggdGhlIHByZXZpb3Vz
-IHBhdGNoIGFkZGluZyB0aGUgY29tcGF0aWJsZQ0KPiB0byB0aGUgZHJpdmVyLg0KPiANCj4gPiAt
-LS0NCj4gPiAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRlay92Y29kZWMvbXRrX3Zjb2Rl
-Y19kZWMuYyB8IDIgKysNCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKQ0KPiA+
-IA0KPiA+IGRpZmYgLS1naXQNCj4gPiBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVkaWF0ZWsv
-dmNvZGVjL210a192Y29kZWNfZGVjLmMNCj4gPiBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVk
-aWF0ZWsvdmNvZGVjL210a192Y29kZWNfZGVjLmMNCj4gPiBpbmRleCA3ZDE5NGE0NzY3MTMuLjY0
-MWY1MzNjNDE3ZiAxMDA2NDQNCj4gPiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlh
-dGVrL3Zjb2RlYy9tdGtfdmNvZGVjX2RlYy5jDQo+ID4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0
-Zm9ybS9tZWRpYXRlay92Y29kZWMvbXRrX3Zjb2RlY19kZWMuYw0KPiA+IEBAIC0yMjcsNiArMjI3
-LDggQEAgc3RhdGljIGludCBtdGtfdmNvZGVjX2RlY19nZXRfY2hpcF9uYW1lKHZvaWQNCj4gPiAq
-cHJpdikNCj4gPiAgICAgICAgICAgICAgICAgcmV0dXJuIDgxOTU7DQo+ID4gICAgICAgICBlbHNl
-IGlmIChvZl9kZXZpY2VfaXNfY29tcGF0aWJsZShkZXYtPm9mX25vZGUsDQo+ID4gIm1lZGlhdGVr
-LG10ODE4Ni12Y29kZWMtZGVjIikpDQo+ID4gICAgICAgICAgICAgICAgIHJldHVybiA4MTg2Ow0K
-PiA+ICsgICAgICAgZWxzZSBpZiAob2ZfZGV2aWNlX2lzX2NvbXBhdGlibGUoZGV2LT5vZl9ub2Rl
-LA0KPiA+ICJtZWRpYXRlayxtdDgxODgtdmNvZGVjLWRlYyIpKQ0KPiA+ICsgICAgICAgICAgICAg
-ICByZXR1cm4gODE4ODsNCj4gPiAgICAgICAgIGVsc2UNCj4gPiAgICAgICAgICAgICAgICAgcmV0
-dXJuIDgxNzM7DQo+ID4gIH0NCj4gPiAtLQ0KPiA+IDIuMjUuMQ0KPiA+IA0K
+On Mon, Jul 25, 2022 at 4:41 PM Andy Shevchenko
+<andy.shevchenko@gmail.com> wrote:
+...
+> > From: ChiYuan Huang <cy_huang@richtek.com>
+>
+> ^^^^ (Note this and read below)
 
+...
+
+> In conjunction with above what SoB of Alice means?
+>
+> You really need to take your time and (re-)read
+> https://www.kernel.org/doc/html/latest/process/submitting-patches.html.
+
+Hi Andy,
+
+Thanks for your reply.
+We are very sorry for this mistake. We will revise it in the next patch.
+
+>
+> ...
+>
+> > + * Author: Alice Chen <alice_chen@richtek.com>
+> > + * Author: ChiYuan Huang <cy_huang@richtek.com>
+>
+> Would
+>  * Authors:
+>  *    Name_of_Author 1
+>  *    Name_of_Author 2
+>
+> work for you?
+
+It looks good, thanks! We will apply this in the next patch.
+
+ ...
+
+> > +struct mt6370_led {
+> > +       union {
+> > +               struct led_classdev isink;
+> > +               struct led_classdev_mc mc;
+> > +       };
+>
+> Where is the field that makes union work?
+
+Just for saving memory space.
+Because these led_classdevs do not be used at the same time.
+Or do you think it would be better to rewrite it as follows?
+-------------------------------------------------------------------------------------
+struct mt6370_led {
+       struct led_classdev isink;
+       struct led_classdev_mc mc;
+       struct mt6370_priv *priv;
+       u32 default_state;
+       u32 index;
+};
+-------------------------------------------------------------------------------------
+
+...
+
+> > +static int mt6370_gen_breath_pattern(struct mt6370_priv *priv,
+> > +                                    struct led_pattern *pattern, u32 len,
+> > +                                    u8 *pattern_val, u32 val_len)
+> > +{
+> > +       enum mt6370_led_ranges sel_range;
+> > +       struct led_pattern *curr;
+> > +       unsigned int sel;
+> > +       u8 val[P_MAX_PATTERNS / 2] = {};
+> > +       int i;
+> > +
+> > +       if (len < P_MAX_PATTERNS && val_len < P_MAX_PATTERNS / 2)
+> > +               return -EINVAL;
+> > +
+> > +       /*
+> > +        * Pattern list
+> > +        * tr1: byte 0, b'[7: 4]
+> > +        * tr2: byte 0, b'[3: 0]
+> > +        * tf1: byte 1, b'[7: 4]
+> > +        * tf2: byte 1, b'[3: 0]
+> > +        * ton: byte 2, b'[7: 4]
+> > +        * toff: byte 2, b'[3: 0]
+> > +        */
+> > +       for (i = 0; i < P_MAX_PATTERNS; i++) {
+> > +               curr = pattern + i;
+> > +
+> > +               sel_range = i == P_LED_TOFF ? R_LED_TOFF : R_LED_TRFON;
+> > +
+> > +               linear_range_get_selector_within(priv->ranges + sel_range,
+> > +                                                curr->delta_t, &sel);
+> > +
+> > +               val[i / 2] |= sel << (4 * ((i + 1) % 2));
+> > +       }
+> > +
+> > +       memcpy(pattern_val, val, 3);
+>
+> Isn't it something like put_unaligned_be24()/put_unaligned_le24()?
+
+OK, we will try to apply this method in the next patch.
+Thank you so much for reviewing our patches so many times and
+providing so many great suggestions!
+
+-- 
+Best Regards,
+ChiaEn Wu
 
