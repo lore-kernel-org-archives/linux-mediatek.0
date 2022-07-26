@@ -4,87 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83211C43334
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 06:11:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 735EDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 06:21:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5iTBFaujydfzjNtZ+tuEW42yh94kmq7eTQthHnu+Umc=; b=2MRc3Wv4629HDA9KH2MIqERiHG
-	jEpFkf6RC1b3rRj80JripVoL8qamzcdNj4N42Xm8Ctls2n4EpubNuPuF5p5koUvgUffCaCHelSWgN
-	VfQ17S2bTdk5O9TQyqDExQumJQ/4gLSxp66TSSavK6UsnYDgMWOaVpI02DYrkWooWH9465STqDDSS
-	fEeYEi6dxamnXubXCrxN8Okoo8gY5m+PcyZQJIv57415ttbxn1aJRVG8rOZt3V3aHM7IOgY7EjljK
-	6jg9SWGHxwwbANNyfG6nHHsnIDr7ZTHazAbrWWr3QXsPz2cGAK9DOg3hkcF0vN1l6N9+MV6nDUZgT
-	KmdPVdnQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Hxj6DGJEQ9eVglc2HFvoWbvN2rjJ5YG5R2YUt0W282Y=; b=unt2tjce4LfHlI3HBOOYXyJf8d
+	l0DUCT0wILGdiS71KtQI6fhLRYI0qzX3Nsx4b50YMxOo6S64oIRhlwNP2dNMrVR4ATHmL9G6AgdGe
+	lNLs1x9432LPYzeAhZXAPulBOFDiPPdBejoEEWqegafhgb4pXPPioYPKw/2Egq/Pq6Xsr0Mqe0esQ
+	7Ao/Lao7yv+ycIMjALXVekcI9N5bSALhmW1/2ugUlYOgistHSeXm7V7PHxcPTRAsYxyzPIayNtj5F
+	mCiN3+PJH16EAB7kmNUoGPR2Oo8YH9XgLH1ecIhRw906MyaL685166nPpYIFAbJqPbsWlRHXJBDl/
+	PqhFxc8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGDnL-008eyq-GB; Tue, 26 Jul 2022 06:11:51 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1oGDwp-008mrs-05; Tue, 26 Jul 2022 06:21:39 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGDn4-008eqY-2w; Tue, 26 Jul 2022 06:11:41 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id w5so4071415edd.13;
-        Mon, 25 Jul 2022 23:11:33 -0700 (PDT)
+	id 1oGDwL-008mUJ-6X
+	for linux-mediatek@lists.infradead.org; Tue, 26 Jul 2022 06:21:11 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id jw17so136996pjb.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 25 Jul 2022 23:21:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=5iTBFaujydfzjNtZ+tuEW42yh94kmq7eTQthHnu+Umc=;
-        b=DFreK31JfLkd3fAd0uB7CR6gjxpG6yBsGmnlSdQdVK9K9Iop3MmbjSc5l5Mqska/9F
-         6zDsLVWtd4iSJbART2yOrMPnU6eocnuJbVN14OsRvUxL4fHsO7Wrgfc2UhIcTUjufoph
-         2DxioqWBkat/Lt1MPd86qgmI4fJ9X5pOYvgIQ3L8XLGI4V6pl/+7xrFDCD36BkcmbO3v
-         msDZGsDArMOOY56AIoIP2Boyoi0IybH+bd3McBS1U0EmQcx61Apt04nGaujtweQDBRAO
-         5Sbq2NspvHrUHv6ggNUA5i+nF0w1W6dwyWvXZUzuukyS0Uo/f8jv4B+Fz7jfoW/fM0P7
-         F9hg==
+        d=chromium.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Hxj6DGJEQ9eVglc2HFvoWbvN2rjJ5YG5R2YUt0W282Y=;
+        b=HPHbw9Lrg8q9567laPcDSY/SW4aD237sQpcOnBJSqECQPjBwHhLg6mf0gurPJlVsrB
+         tnq/ObRJb6ohjohjtB7YyzN7Cf20Z/cakGZGcTESH/NXp/ehxuf+7HgD7bXjGSeLEBKA
+         LUqunAZXMfGpiwyV4fLv1ZB9HqOujHcH2jRn4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=5iTBFaujydfzjNtZ+tuEW42yh94kmq7eTQthHnu+Umc=;
-        b=F8ywcHrbqU4zP0fZmFgphxStWqrGitaUkGFmP4Ev7ezHUDoP5yd//7KhyY5EoHDJry
-         oaOt8E394d1CuKyXmg4nP8H2Rbu1+knEPgbT1oCjvcUy8vFmqtXNpZPvTKcQrMMim6L2
-         /KoQrW0YhKo7k2Pnn8d0YVU1khNTrAYhQQyaNALI7n1phIO4LJS1R5H27iGkEal4eRpD
-         oedjwehiGfgkfQX9LriWYR3kjAKkyehNoS6qqkh6nfPYpc2aIq9T3Bjt2Y7ILvlsZvmE
-         FI73vBfltl4W+6KYzCwY6KrDaZFzmuc+CZBIP3gfkhzi/buKfmm3wmqigKG2zlonTvUz
-         xMzg==
-X-Gm-Message-State: AJIora+vIwYwntLfFq61hRuCHI939SfIcQ+ku4cEYdK9d0A0H4hz3EYh
-	hU3g4hLlziUXyoL1i3qEJ+xv6rbVeikmCmldz+s=
-X-Google-Smtp-Source: AGRyM1sDJR+2SWBXIadraV+/yk5L7Vs9denzeP6s+Yyxwc5C8W1vNP4hRGI/bOS7pUxW1lVGaWNV5mppOqxOjOJF8tE=
-X-Received: by 2002:a05:6402:d05:b0:435:b2a6:94eb with SMTP id
- eb5-20020a0564020d0500b00435b2a694ebmr16409469edb.87.1658815891980; Mon, 25
- Jul 2022 23:11:31 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Hxj6DGJEQ9eVglc2HFvoWbvN2rjJ5YG5R2YUt0W282Y=;
+        b=d5YTaMn4BOaOtgKlCN71dzpfILZ6J8T/E+S6D5zr5ivQoMg3EsG7SXaJYzkCh89t68
+         KinVLeggI2foL3gdYfuvtJRMQAxslSwAHhUmj3fDSqBLdwh/KFeKI5/Fa7dS8drTej9U
+         vHtOaotLgHfT3CUTRppX86lwhsH2+7g3BOG29BaRJ6lGOHf4P6Cx+FWZmN1gUfWk6yLJ
+         sMOl31I4KG827UfNGQ0kERtYQiOABXLv14XmUfTh9F2d6/Kv1pWFoFJzYC5if33GNw0t
+         zPP4Nt1gX+cO+tTVhkZZyHSnGubAF0nV0lPDKjlJAxuLc1YjXSTvVWBWHKbZutFFavkv
+         zInQ==
+X-Gm-Message-State: AJIora+XOfIaQAEV7DxZayye8WOcwDr65eK1hJRyC41heInEFpgQ7qgc
+	mGAStXrmAmr1uTEZF2wI3k0xlQ==
+X-Google-Smtp-Source: AGRyM1uE4OVpcWRiVc98XsCir285Y0UIRjf0zgaXuN4UfatJFerdJtqDgZPPv36oHAirLgGuyaN4Ig==
+X-Received: by 2002:a17:903:cd:b0:16d:22c0:2efe with SMTP id x13-20020a17090300cd00b0016d22c02efemr15171222plc.61.1658816466607;
+        Mon, 25 Jul 2022 23:21:06 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:8fa:d08f:848b:ad7d])
+        by smtp.gmail.com with ESMTPSA id d5-20020a170902cec500b0016cbb46806asm2694632plg.278.2022.07.25.23.21.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Jul 2022 23:21:06 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	linux-watchdog@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] watchdog: mtk_wdt: Move mt6589-wdt fallback compatible to end of list
+Date: Tue, 26 Jul 2022 14:20:57 +0800
+Message-Id: <20220726062057.320342-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.37.1.359.gd136c6c3e2-goog
 MIME-Version: 1.0
-References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-13-peterwu.pub@gmail.com>
- <CAHp75VfgiK87VwWu2bTJ_mR0=g0sa0LPJ+H16OGcUdARmzFRSA@mail.gmail.com> <CA+hk2fYpDRw+DRRU3m=EDOP6UEQNpJLyNBHe8Zi0qOfUObTb4Q@mail.gmail.com>
-In-Reply-To: <CA+hk2fYpDRw+DRRU3m=EDOP6UEQNpJLyNBHe8Zi0qOfUObTb4Q@mail.gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Tue, 26 Jul 2022 08:10:55 +0200
-Message-ID: <CAHp75VdxWfo0QW=SXc0v+Ue92VO1TbpTqAqHT6mAK=GA606oFg@mail.gmail.com>
-Subject: Re: [PATCH v6 12/13] leds: flash: mt6370: Add MediaTek MT6370
- flashlight support
-To: szuni chen <szunichen@gmail.com>
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>, Lee Jones <lee.jones@linaro.org>, 
-	Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, 
-	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_231134_174134_4E3CFE88 
-X-CRM114-Status: GOOD (  22.85  )
+X-CRM114-CacheID: sfid-20220725_232109_337304_5323E9CE 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,62 +89,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 26, 2022 at 6:15 AM szuni chen <szunichen@gmail.com> wrote:
+The watchdog facility in the MediaTek SoCs are all the same, but the
+hardware block also contains a reset controller, which differs in the
+number of resets used between different SoCs. This difference is
+supported with of_device_get_match_data() supplying the number of reset
+lines for the newer compatible strings. The original mt6589-wdt only
+covers the watchdog facility.
 
-...
+of_device_is_compatible(), and by extension of_device_get_match_data(),
+works by going through the given list of compatible strings sequentially,
+and checks if any of the device node's compatible strings match.
 
-> > > +#define MT6370_ITORCH_MIN_UA           25000
-> > > +#define MT6370_ITORCH_STEP_UA          12500
-> > > +#define MT6370_ITORCH_MAX_UA           400000
-> > > +#define MT6370_ITORCH_DOUBLE_MAX_UA    800000
-> > > +#define MT6370_ISTRB_MIN_UA            50000
-> > > +#define MT6370_ISTRB_STEP_UA           12500
-> > > +#define MT6370_ISTRB_MAX_UA            1500000
-> > > +#define MT6370_ISTRB_DOUBLE_MAX_UA     3000000
-> >
-> > Perhaps _uA would be better and consistent across your series
-> > regarding current units.
->
-> Yes, _uA will be more consistent, but in general, using upper case in
-> the define macro is a convention, doesn't it?
+To avoid early matching on the "mediatek,mt6589-wdt" fallback compatible,
+which only provides watchdog functionality and no reset controller, move
+the fallback entry to the end of the list, so that other, more specific
+compatible strings have a chance at getting matched.
 
-There is general convention, but there are also:
-1) common sense;
-2) usage in practice (e.g. _US, etc for *seconds and _HZ for *frequency).
+Fixes: c254e103082b ("watchdog: mtk_wdt: mt8183: Add reset controller")
+Fixes: adc318a34066 ("watchdog: mt8192: add wdt support")
+Fixes: 8c6b5ea6ac68 ("watchdog: mediatek: mt8195: add wdt support")
+Fixes: 4dbabc4d9e8c ("watchdog: mediatek: mt8186: add wdt support")
+Fixes: 711a5b25bac9 ("watchdog: mtk_wdt: mt7986: Add toprgu reset controller support")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
 
-My common sense tells me that it is convenient to use mA,uA, etc.
-Plus "in practice" it's related to use as in your series and elsewhere.
+This change complements the removal of the fallback compatible from the
+bindings and DTSI files [1].
 
-But of course it's minor to me, decide yourself.
+[1] https://lore.kernel.org/linux-mediatek/20220721014845.19044-1-allen-kh.cheng@mediatek.com/
 
-...
+ drivers/watchdog/mtk_wdt.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-> > > +       /*
-> > > +        * For the flash to turn on/off, need to wait for HW ramping up/down time
-> >
-> > we need
-> >
-> > > +        * 5ms/500us to prevent the unexpected problem.
-> > > +        */
-> > > +       if (!prev && curr)
-> > > +               usleep_range(5000, 6000);
-> > > +       else if (prev && !curr)
-> > > +               udelay(500);
-> >
-> > This still remains unanswered, why in the first place we allow
-> > switching, and a busy loop in the other place?
->
-> If I refine the description to
-> "For the flash to turn on/off, need to wait for 5ms/500us analog settling time.
-> If any flash led is already used, then the analog is settled done, we
-> don't need to wait again."
-> is it answer the question?
-
-No. I'm talking from the Linux APIs perspective. There is a huge
-difference between those branches. Please, conduct research, read
-documentation to understand what my question is about.
-
+diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+index e97787536792..3d5a239b93ba 100644
+--- a/drivers/watchdog/mtk_wdt.c
++++ b/drivers/watchdog/mtk_wdt.c
+@@ -425,12 +425,13 @@ static int mtk_wdt_resume(struct device *dev)
+ 
+ static const struct of_device_id mtk_wdt_dt_ids[] = {
+ 	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
+-	{ .compatible = "mediatek,mt6589-wdt" },
+ 	{ .compatible = "mediatek,mt7986-wdt", .data = &mt7986_data },
+ 	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
+ 	{ .compatible = "mediatek,mt8186-wdt", .data = &mt8186_data },
+ 	{ .compatible = "mediatek,mt8192-wdt", .data = &mt8192_data },
+ 	{ .compatible = "mediatek,mt8195-wdt", .data = &mt8195_data },
++	/* Fallback compatible string must be last entry */
++	{ .compatible = "mediatek,mt6589-wdt" },
+ 	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(of, mtk_wdt_dt_ids);
 -- 
-With Best Regards,
-Andy Shevchenko
+2.37.1.359.gd136c6c3e2-goog
+
 
