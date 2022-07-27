@@ -4,61 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7079BC00140
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Jul 2022 20:09:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DBF5C00144
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 02:38:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nrDG32o/nF0+drBL5HQUQubPYkcsSpm90fWevm2EMus=; b=jF7xJ7ZgnBYkX0vepOvB/7pTcB
-	ahNbb4qqK/+BLwQy2R7/Uen/FTinCb+A/wFA29/L/goVbXKNwQeQff3+RpDe2bdGPprd03CxOqcse
-	wTUNCNhJwXRo4ug0IOAOw+Dqow3PdWwLH4BFL/0LpF8mWk5M5mRtmpldacGgu9p0wT2J89+VcxhU2
-	4/bdLppzWGCsIhpuJyf7GS2LODsx+Wi6isTC3378kiCFdtbhxWsFfHuqa9XGlNE6Il0oFCMo7ifUB
-	HdsXZWWXKYzShqkhcjAYX2f4WaYkDu4AaDX9mAIMgZyfFaxYtxLi57cF/T3He8C1YDZmjmSqoOdl5
-	wokoz4lA==;
+	bh=9mOHo7buqAK6eSw2B8GVnyUG4cok+nCahoLSIpf8ojM=; b=W4K+5I+J5nVetUXkNoAgZZ/2I0
+	S9G3BQPx8wIVPLwLRecZ6m3geexJ/z8HlEKhKm7EQEApqFCWFyTBlFSZGU8Fn8UJo7THHs9QkBwWW
+	vpN/CWtZQLAZ1cTUXRybyeGYyzlDvMK69kfj9F8jP7skNn1dBYNrPwGcY6RcUfRmhwYVnNJ/ornVN
+	/Yed4lPcjRN6LgHZ3f+tqTdh7+3QIbtSnLA9VXmprRh8QUq4W5R5aoar+sFQjwbiiFcuyALq7KYpa
+	/z05OPDUDwV0KIdFWCjr95D50fvxijPD7jDFPv0zrrqB6VP5jeCsrkcfwwxydFjRFcxosEawlWlrh
+	ndz/T6Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGQrx-0032ei-1X; Tue, 26 Jul 2022 20:09:29 +0000
-Received: from mail-il1-f182.google.com ([209.85.166.182])
+	id 1oGWw8-007tsB-7W; Wed, 27 Jul 2022 02:38:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGQrb-0032NL-FM; Tue, 26 Jul 2022 20:09:08 +0000
-Received: by mail-il1-f182.google.com with SMTP id i5so7814923ila.6;
-        Tue, 26 Jul 2022 13:09:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
-         :message-id;
-        bh=nrDG32o/nF0+drBL5HQUQubPYkcsSpm90fWevm2EMus=;
-        b=DRNn/sAAsT+SwffEzC2bNUbPQcIubYEVbLQu8Ur5DqFPwH/uzEZFOK7xH8wrnnrwUP
-         AYB5q2NZ+xdtVw7qBMqbDy0IQUu8m79dIuBw6XvL3YfnA8gg0Vkbxss4GOf5jPIb4+ue
-         mE26FaEEXYfSGPrX8ThrhzZHF4HukD3/g1X+9oBpco/+MEy1Sa9ONeMYT5WXUFNWij44
-         t0sGW8pzgMOKBRhqZb8i6D72/g3sRPlOEn8P98QtnbnkVq/7Ydc5Q+bgkLltOBYOFspt
-         4byKv7QAK0SsqkmrxMrwbUY3BZZpNinpZv+irRfARS2pwi8RbdIWgrbW+QtffSezepk2
-         L01A==
-X-Gm-Message-State: AJIora/zkTLv0oji3lzTaXk7tnNHKY8/6TQAaLrNCpnzUs5+T5WPqobF
-	ChOhs4ZPzFHuRa0dx4BlMA==
-X-Google-Smtp-Source: AGRyM1uhqlxORuUmIgfm9uGaklPD+6R+WsuRI46aW6jH891vImtrJFDsBDRJwFUBPN+Qa2GUfxDIYA==
-X-Received: by 2002:a05:6e02:180d:b0:2dd:6150:58b0 with SMTP id a13-20020a056e02180d00b002dd615058b0mr3659262ilv.265.1658866145360;
-        Tue, 26 Jul 2022 13:09:05 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id k4-20020a0566022d8400b0067be568081fsm7588026iow.43.2022.07.26.13.09.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Jul 2022 13:09:05 -0700 (PDT)
-Received: (nullmailer pid 782233 invoked by uid 1000);
-	Tue, 26 Jul 2022 20:09:02 -0000
-From: Rob Herring <robh@kernel.org>
-To: Balsam CHIHI <bchihi@baylibre.com>
-Cc: rui.zhang@intel.com, rex-bc.chen@mediatek.com, daniel.lezcano@linaro.org, amitk@kernel.org, mka@chromium.org, linux-kernel@vger.kernel.org, abailon@baylibre.com, robh+dt@kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com, linux-pm@vger.kernel.org, rafael@kernel.org, khilman@baylibre.com, fan.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, krzk+dt@kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, louis.yu@mediatek.com, james.lo@mediatek.com
-In-Reply-To: <20220726135506.485108-3-bchihi@baylibre.com>
-References: <20220726135506.485108-1-bchihi@baylibre.com> <20220726135506.485108-3-bchihi@baylibre.com>
-Subject: Re: [PATCH v8 2/6] dt-bindings: thermal: Add binding document for LVTS thermal controllers
-Date: Tue, 26 Jul 2022 14:09:02 -0600
-Message-Id: <1658866142.328871.782232.nullmailer@robh.at.kernel.org>
+	id 1oGWw5-007tpI-KQ; Wed, 27 Jul 2022 02:38:10 +0000
+X-UUID: b154d91f238d49838a400713c106e536-20220726
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:77d9308f-f520-4913-a3c5-aa4d22d832d7,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:99e697b3-06d2-48ef-b2dd-540836705165,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: b154d91f238d49838a400713c106e536-20220726
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1423304906; Tue, 26 Jul 2022 19:37:59 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 27 Jul 2022 10:37:25 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 27 Jul 2022 10:37:24 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, George Sun
+	<george.sun@mediatek.com>, Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi
+ Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Daniel
+ Vetter <daniel@ffwll.ch>, Irui Wang <irui.wang@mediatek.com>, Steve Cho
+	<stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v2, 3/3] media: mediatek: vcodec: Add mt8188 encoder's chip name
+Date: Wed, 27 Jul 2022 10:37:21 +0800
+Message-ID: <20220727023721.31945-3-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220727023721.31945-1-yunfei.dong@mediatek.com>
+References: <20220727023721.31945-1-yunfei.dong@mediatek.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_130907_539010_E2C533D6 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20220726_193809_682808_20D4B1C0 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,44 +87,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 26 Jul 2022 15:55:02 +0200, Balsam CHIHI wrote:
-> This patch adds dt-binding documents for mt8192 and mt8195 thermal controllers.
-> 
-> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-> ---
->  .../thermal/mediatek,mt8192-lvts.yaml         | 73 ++++++++++++++++++
->  .../thermal/mediatek,mt8195-lvts.yaml         | 75 +++++++++++++++++++
->  2 files changed, 148 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,mt8192-lvts.yaml
->  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,mt8195-lvts.yaml
-> 
+Getting mt8188's chip name according to encoder compatible name.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-Error: Documentation/devicetree/bindings/thermal/mediatek,mt8195-lvts.example.dts:32.36-37 syntax error
-FATAL ERROR: Unable to parse input tree
-make[1]: *** [scripts/Makefile.lib:383: Documentation/devicetree/bindings/thermal/mediatek,mt8195-lvts.example.dtb] Error 1
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:1404: dt_binding_check] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/patch/
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+index 25e816863597..75454b955638 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+@@ -225,6 +225,8 @@ static int mtk_vcodec_enc_get_chip_name(void *priv)
+ 		return 8192;
+ 	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8195-vcodec-enc"))
+ 		return 8195;
++	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8188-vcodec-enc"))
++		return 8188;
+ 	else
+ 		return 8173;
+ }
+-- 
+2.18.0
 
 
