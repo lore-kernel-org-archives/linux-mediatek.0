@@ -4,85 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E2A1C04A68
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 10:30:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E97E3C04A68
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 10:46:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1DXNckt+1wBuVx3LpQLh6jkvD1I6eVSY2ub2nyt5y2s=; b=S61ZBgMqTmRLuI3Q1o1sAUL3/m
-	kHyrA0Ax/ywjsmxXgToiXwDpwUYhwqV44k9hsLUJhznyGr7Og+fXKodmHOjAIyX1K3ic9yMH9pALW
-	TrRDYkbxDgwfb1pDU/uSvhjmnikdje3BKc7DbHw72QW2KW30J1IaZkCph17YTH0mE3MIdkI2RPC8q
-	taDGcd3bl53BoTCL+JCHn+5ClCWwuKpFNvgO5kFL9dA3lmNyAaKvn66H6hLATEont6uiaTrm4iP3T
-	3iZLrdocCzD83thcs3ujJLLCdZhR9sT7YPVGgqzKRO+lMwTZTAngtcRg8CbjQICgPXjAj9aTMf9Vb
-	sRSXxGPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xc0fF3jFtfEvRPabzLH3rAWR9fCwOilEwZjhewI2Nk8=; b=H+c4xD5PiCduhF/6IZ21p7/8j/
+	jbLflblgPtBLjLke2ON7/uNRHxkQAijmN5we6IMhu3L+LpR3shNIfzo1Ma7DccNtOEGbenf3haan+
+	0Had4zF2yUYbdDFYDsdPCcnsfURrM9oVn2SLMT294+Z6RSDxdkPb5eEFPmor6wTSGWv5aDETPDwKi
+	dH/2ZnCfZ5SNZbNDG+cqN4P87sTa/rEszqToFeocqhm4dyiJjpKJ898h76IfeClMXOvKD3FGYMJNq
+	6UaQoUGRAEPTaWM5VPZsj3sz6H6+gmftfU+dmKKilZgOdj2a0Cg5o7gtELBh7P7LmwgoCKG+20Cpp
+	WpWYVMaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGeJR-00COb0-RZ; Wed, 27 Jul 2022 10:30:45 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1oGeYk-00CYjb-It; Wed, 27 Jul 2022 10:46:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGeJ6-00COL5-N0
-	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 10:30:28 +0000
-Received: by mail-lf1-x130.google.com with SMTP id w15so18434271lft.11
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 Jul 2022 03:30:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=1DXNckt+1wBuVx3LpQLh6jkvD1I6eVSY2ub2nyt5y2s=;
-        b=zbeJawWtnr8HlbUf/dQUmJkL9S2pqzQeP+sOExxZ8n6cqrv+fkEdtrGDBkAAjG90+w
-         nBSmqsSUS/y2IWtnQtWIUk820C/xGf01Cbx2aVrG6IU4H0blN/rpR9XMRuDZZhHPGIK7
-         9yNybJP38GPnz64+o9piU7UCcBTlTDVUvtNbI417LYRERbVe4lxHITscp4/+dZl+9FxW
-         teeOnZXe1FIzw/PkjiAVnUIHgynb2Ak0PdUFgEtYTx3KdMjX/mQigdAvcTV4Q4/zuIx3
-         Ay9noR82CBb4748uYreBtl+vY/h7aOYjrUE1hKFIhpWDcUc2Dh1Vneg44SFaK+oYbQ6a
-         /roQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=1DXNckt+1wBuVx3LpQLh6jkvD1I6eVSY2ub2nyt5y2s=;
-        b=QvQuECOiGsmUg2W2gjIvhZ1eOAYV/7Rw/o/v4fUPR5BVmznPLwM+5rrRESoG+XPWu3
-         1KierlP/DwDf0lVZ8C5LAEC+9QZYbm0zGmo+9QkNAXD8A7hnUSnPSJ/4LxnGz3/wOIjY
-         UfVqnYAIL9cBKwDw88PFsHbMIcW5W3XxyqBk+/0U/X4xARzpdmOgKiYteEWCQtF2YkQJ
-         uFfaARRrAwDeVWK1QyemWAZRWZ1lnFwM15sEOA/iSrIlTv9PwrEV3lE4yascLxBGeJ5N
-         HmJkIBgTMtUTrmoGdXJ8nECM21ef2t9AOxTgLDzH8MZ1sKxFJOaakJDKWhCG8klBlmmL
-         6BaA==
-X-Gm-Message-State: AJIora+/E4TKLvF/VzgNXIQ/DmafcpKqOCmG0kebSMiKkYYmCV2HIoED
-	VjoBzBC+V8dKiGhlhk6I+6o7qw==
-X-Google-Smtp-Source: AGRyM1stiNr9XxY7shzNBKP/VCaCIMAwTIP0hycBVdc1xeWChrSE7+wxJE89IzvAPFFn0NgG8+F1ug==
-X-Received: by 2002:a19:6459:0:b0:48a:7139:9ed1 with SMTP id b25-20020a196459000000b0048a71399ed1mr8254096lfj.485.1658917823066;
-        Wed, 27 Jul 2022 03:30:23 -0700 (PDT)
-Received: from [192.168.3.197] (78-26-46-173.network.trollfjord.no. [78.26.46.173])
-        by smtp.gmail.com with ESMTPSA id z20-20020a195e54000000b00489c5e840d4sm3705919lfi.227.2022.07.27.03.30.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 27 Jul 2022 03:30:22 -0700 (PDT)
-Message-ID: <3ebd6dad-038d-eb96-3fed-8735de0cee2e@linaro.org>
-Date: Wed, 27 Jul 2022 12:30:21 +0200
+	id 1oGeYg-00CYdG-W7
+	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 10:46:32 +0000
+X-UUID: 208dbe05ab2a4e98916834a2986f6c93-20220727
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:7b2c2c9d-0673-4090-a524-4203b86b80f3,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:f7ec85c9-5f65-4fda-abe9-f2436fed4c72,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 208dbe05ab2a4e98916834a2986f6c93-20220727
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <chengci.xu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 355877126; Wed, 27 Jul 2022 03:46:22 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 27 Jul 2022 18:45:47 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Wed, 27 Jul 2022 18:45:46 +0800
+From: Chengci.Xu <chengci.xu@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>
+CC: <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chengci.Xu
+	<chengci.xu@mediatek.com>
+Subject: [PATCH v3 0/3] MT8188 SMI SUPPORT
+Date: Wed, 27 Jul 2022 18:45:38 +0800
+Message-ID: <20220727104541.7309-1-chengci.xu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: add support for MediaTek
- mt8188
-Content-Language: en-US
-To: Hui Liu <hui.liu@mediatek.com>, linus.walleij@linaro.org,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- jianguo.zhang@mediatek.com, zhiyong.tao@mediatek.com,
- sean.wang@mediatek.com, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220727102140.6676-1-hui.liu@mediatek.com>
- <20220727102140.6676-2-hui.liu@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220727102140.6676-2-hui.liu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220727_033024_774473_B137D1DF 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20220727_034631_057884_254AEAA8 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,35 +77,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/07/2022 12:21, Hui Liu wrote:
-> From: "Hui.Liu" <hui.liu@mediatek.com>
-> 
-> Add pinctrl function header file and binding document for mt8188.
-> 
-> Signed-off-by: Hui.Liu <hui.liu@mediatek.com>
-> ---
->  .../pinctrl/mediatek,mt8188-pinctrl.yaml      |  238 +++
->  .../pinctrl/mediatek,mt8188-pinfunc.h         | 1280 +++++++++++++++++
->  2 files changed, 1518 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
->  create mode 100644 include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
-> 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
-> new file mode 100644
-> index 000000000000..a9d5e9eec35d
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
-> @@ -0,0 +1,238 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/pinctrl/pinctrl-mt8188.yaml#
+This patchset adds MT8188 SMI support.
 
-Does not look like you tested the bindings. Please run `make
-dt_binding_check` (see
-Documentation/devicetree/bindings/writing-schema.rst for instructions).
+MT8188, similar to mt8195, there are two SMI-common HW, one is for
+VDO(video output), the other is for VPP(video processing pipe). They
+connect with different SMI-larbs, then some setting(bus_sel) is
+different.
 
+The connection between SMI and MM IOMMU could be something like this:
 
-Best regards,
-Krzysztof
+  IOMMU(VDO)           IOMMU(VPP)
+     |                    |
+SMI_COMMON_VDO       SMI_COMMON_VPP
+----------------     ----------------
+  |     |   ...       |     |    ...
+larb0 larb2 ...     larb1 larb3  ...
+
+Another change is that the register about enable/disable iommu is in
+security world. We add some SMC command to set it.
+
+changes since v3:
+  - base on tag: next-20220726.
+  - No code change just remove the change-id in patch [2/3].
+
+changes since v2:
+  - base on tag: next-20220722.
+  - Move some included header to the source file that use them.
+
+changes since v1:
+  - base on tag: next-20220720.
+  - adds MT8188 SMI support.
+
+Chengci.Xu (3):
+  dt-bindings: memory: mediatek: Add mt8188 smi binding
+  memory: mtk-smi: Add enable IOMMU SMC command for MM master
+  memory: mtk-smi: mt8188: Add SMI Support
+
+ .../mediatek,smi-common.yaml                  |  4 +-
+ .../memory-controllers/mediatek,smi-larb.yaml |  3 +
+ drivers/memory/mtk-smi.c                      | 82 +++++++++++++++++++
+ include/linux/soc/mediatek/mtk_sip_svc.h      |  3 +
+ include/soc/mediatek/smi.h                    |  7 ++
+ 5 files changed, 98 insertions(+), 1 deletion(-)
+
+-- 
+2.25.1
+
 
