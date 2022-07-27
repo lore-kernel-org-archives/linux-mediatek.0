@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D923C19F2B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 04:51:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB6D3C19F2B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 04:52:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ew7QCPJvP38D7uwHL5l1FVUxdJjM55VrRIuXF6G097o=; b=zpKOQuIx1DMElyOvmLlHpRzEJq
-	IiJdkqi+BNIF5hsoSjJ3vXD9exDSS1n0ybrPvZsKQ4SEUswRuQYRK39NdykDqFbg/spbCACCJq4xV
-	5joXhhdDJBd6K4bTPoDSHYubdJMK517agsXjXaq8mCo5uE6lZ4T+aVhssiZOxLGW3U8hbe8YOfOEo
-	rs6evEhUK78gjaM2n7LTpkbFwwXICeV3vFGYdlluBqNyvhq34WXToTzT7wXr5sae2w7F3n50nrUxq
-	+EM4VY8CG1shcrd9e7pROMXIshiydPxTB55UGfkIdsa5XyAA4Q/l93kAbzvWOd0EZx+euYheaWlmd
-	QtVg6OkQ==;
+	bh=STmS4I3yXxZlTL2Pw7hcpHYMWgLUm4YxDbU2zpPWJcg=; b=1+WSCXtGTKIfARZR8yWWvOkc6n
+	xMmQqpkBYwNw5u6yTfJLPq5UOHDq5uiV/uMZhV+Kt4FVWeIEtXMXmGd7FfxAzbr2OxQ2Zi2ggTpFL
+	UI9e78Hg3u1gEeW3X2xFKMSK6Dikmp5ikzB1RisjOrT+fgKh+xf0zZ6Q6mQj88tblAVeMyqK1DZHZ
+	OkltCISIQaiWBEoVWVhsxwvAOlYjJAWN0m8hxbNroXAxqGNhnR/MJAiViMHSY7w9kivHPY+sZdhSK
+	obYE9UqpB32jwnr3PTVeA1WQ4Odxy3NUKE9dQpq1mo4Ll+v7ezdOpSO2dC4k+RjkOoWdCQX4EQSQs
+	z1Fua3Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGZ18-0093MC-33; Wed, 27 Jul 2022 04:51:30 +0000
+	id 1oGZ1X-0093ey-Ot; Wed, 27 Jul 2022 04:51:55 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGZ0y-0093Ba-29; Wed, 27 Jul 2022 04:51:23 +0000
-X-UUID: da9b32f18e7142338fb424573707e2fa-20220726
+	id 1oGZ10-0093FB-5K; Wed, 27 Jul 2022 04:51:25 +0000
+X-UUID: 5a7d6697d4b24b918e0996ed2f720fb3-20220726
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:feaaf51e-ede5-4c55-bf75-4e0cff339fcc,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:40,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:40
-X-CID-META: VersionHash:0f94e32,CLOUDID:be11fc15-4d40-4085-b6be-c498a879f53d,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:4,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.8,REQID:e1a00eac-f326-4a64-94b6-2fc4e368603a,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:9ddf7bc9-5f65-4fda-abe9-f2436fed4c72,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: da9b32f18e7142338fb424573707e2fa-20220726
+X-UUID: 5a7d6697d4b24b918e0996ed2f720fb3-20220726
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1282696385; Tue, 26 Jul 2022 21:51:15 -0700
+	with ESMTP id 595953741; Tue, 26 Jul 2022 21:51:18 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 27 Jul 2022 12:50:38 +0800
+ 15.2.792.15; Wed, 27 Jul 2022 12:50:39 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 27 Jul 2022 12:50:38 +0800
+ 15.2.792.15 via Frontend Transport; Wed, 27 Jul 2022 12:50:39 +0800
 From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <daniel@ffwll.ch>,
 	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
@@ -57,9 +57,9 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v15 03/11] drm/edid: Add cea_sad helpers for freq/length
-Date: Wed, 27 Jul 2022 12:50:27 +0800
-Message-ID: <20220727045035.32225-4-rex-bc.chen@mediatek.com>
+Subject: [PATCH v15 08/11] drm/mediatek: add hpd debounce
+Date: Wed, 27 Jul 2022 12:50:32 +0800
+Message-ID: <20220727045035.32225-9-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220727045035.32225-1-rex-bc.chen@mediatek.com>
 References: <20220727045035.32225-1-rex-bc.chen@mediatek.com>
@@ -67,8 +67,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_215120_110990_E0D4C954 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20220726_215122_234310_DDA7922C 
+X-CRM114-Status: GOOD (  17.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,127 +83,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Guillaume Ranquet <granquet@baylibre.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
 
-This patch adds two helper functions that extract the frequency and word
-length from a struct cea_sad.
+From the DP spec 1.4a chapter 3.3, upstream devices should implement
+HPD signal de-bouncing on an external connection.
+A period of 100ms should be used to detect an HPD connect event.
+To cover these cases, HPD de-bounce should be implemented only after
+HPD low has been detected for at least 100ms.
 
-For these helper functions new defines are added that help translate the
-'freq' and 'byte2' fields into real numbers.
+Therefore,
+1. If HPD is low (which means plugging out) for longer than 100ms:
+   we need to do de-bouncing (which means we need to wait for 100ms).
+2. If HPD low is for less than 100ms:
+   we don't need to care about the de-bouncing.
 
-Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+In this patch, we start a 100ms timer and use a need_debounce boolean
+to implement the feature.
+
+Two cases when HPD is high:
+1. If the timer is expired (>100ms):
+   - need_debounce is true.
+   - When HPD high (plugging event comes), need_debounce will be true
+     and then we need to do de-bouncing (wait for 100ms).
+2. If the timer is not expired (<100ms):
+   - need_debounce is false.
+   - When HPD high (plugging event comes), need_debounce will be false
+     and no need to do de-bouncing.
+
+HPD_______             __________________
+          |            |<-  100ms   ->
+          |____________|
+          <-  100ms   ->
+
+Without HPD de-bouncing, USB-C to HDMI Adapaters will not be detected.
+
+The change has been successfully tested with the following devices:
+- Dell Adapter - USB-C to HDMI
+- Acer 1in1 HDMI dongle
+- Ugreen 1in1 HDMI dongle
+- innowatt HDMI + USB3 hub
+- Acer 2in1 HDMI dongle
+- Apple 3in1 HDMI dongle (A2119)
+- J5Create 3in1 HDMI dongle (JAC379)
+
+Tested-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/drm_edid.c | 63 ++++++++++++++++++++++++++++++++++++++
- include/drm/drm_edid.h     | 14 +++++++++
- 2 files changed, 77 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_dp.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-index bc43e1b32092..2a6f92da5ff3 100644
---- a/drivers/gpu/drm/drm_edid.c
-+++ b/drivers/gpu/drm/drm_edid.c
-@@ -4916,6 +4916,69 @@ int drm_edid_to_speaker_allocation(const struct edid *edid, u8 **sadb)
- }
- EXPORT_SYMBOL(drm_edid_to_speaker_allocation);
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index 80d7d6488105..80dd2b999463 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -94,6 +94,8 @@ struct mtk_dp {
+ 	bool enabled;
  
-+/**
-+ * drm_cea_sad_get_sample_rate - Extract the sample rate from cea_sad
-+ * @sad: Pointer to the cea_sad struct
-+ *
-+ * Extracts the cea_sad frequency field and returns the sample rate in Hz.
-+ *
-+ * Return: Sample rate in Hz or a negative errno if parsing failed.
-+ */
-+int drm_cea_sad_get_sample_rate(const struct cea_sad *sad)
-+{
-+	switch (sad->freq) {
-+	case DRM_CEA_SAD_FREQ_32KHZ:
-+		return 32000;
-+	case DRM_CEA_SAD_FREQ_44KHZ:
-+		return 44100;
-+	case DRM_CEA_SAD_FREQ_48KHZ:
-+		return 48000;
-+	case DRM_CEA_SAD_FREQ_88KHZ:
-+		return 88200;
-+	case DRM_CEA_SAD_FREQ_96KHZ:
-+		return 96000;
-+	case DRM_CEA_SAD_FREQ_176KHZ:
-+		return 176400;
-+	case DRM_CEA_SAD_FREQ_192KHZ:
-+		return 192000;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+EXPORT_SYMBOL(drm_cea_sad_get_sample_rate);
-+
-+/**
-+ * drm_cea_sad_get_uncompressed_word_length - Extract word length
-+ * @sad: Pointer to the cea_sad struct
-+ *
-+ * Extracts the cea_sad byte2 field and returns the word length for an
-+ * uncompressed stream.
-+ *
-+ * Note: This function may only be called for uncompressed audio.
-+ *
-+ * Return: Word length in bits or a negative errno if parsing failed.
-+ */
-+int drm_cea_sad_get_uncompressed_word_length(const struct cea_sad *sad)
-+{
-+	if (sad->format != HDMI_AUDIO_CODING_TYPE_PCM) {
-+		DRM_WARN("Unable to get the uncompressed word length for format: %u\n",
-+			 sad->format);
-+		return -EINVAL;
-+	}
-+
-+	switch (sad->byte2) {
-+	case DRM_CEA_SAD_UNCOMPRESSED_WORD_16BIT:
-+		return 16;
-+	case DRM_CEA_SAD_UNCOMPRESSED_WORD_20BIT:
-+		return 20;
-+	case DRM_CEA_SAD_UNCOMPRESSED_WORD_24BIT:
-+		return 24;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+EXPORT_SYMBOL(drm_cea_sad_get_uncompressed_word_length);
-+
- /**
-  * drm_av_sync_delay - compute the HDMI/DP sink audio-video sync delay
-  * @connector: connector associated with the HDMI/DP sink
-diff --git a/include/drm/drm_edid.h b/include/drm/drm_edid.h
-index c2c43a4af681..779b710aed40 100644
---- a/include/drm/drm_edid.h
-+++ b/include/drm/drm_edid.h
-@@ -373,6 +373,18 @@ struct cea_sad {
- 	u8 byte2;
+ 	struct drm_connector *conn;
++	bool need_debounce;
++	struct timer_list debounce_timer;
  };
  
-+#define DRM_CEA_SAD_FREQ_32KHZ  BIT(0)
-+#define DRM_CEA_SAD_FREQ_44KHZ  BIT(1)
-+#define DRM_CEA_SAD_FREQ_48KHZ  BIT(2)
-+#define DRM_CEA_SAD_FREQ_88KHZ  BIT(3)
-+#define DRM_CEA_SAD_FREQ_96KHZ  BIT(4)
-+#define DRM_CEA_SAD_FREQ_176KHZ BIT(5)
-+#define DRM_CEA_SAD_FREQ_192KHZ BIT(6)
-+
-+#define DRM_CEA_SAD_UNCOMPRESSED_WORD_16BIT BIT(0)
-+#define DRM_CEA_SAD_UNCOMPRESSED_WORD_20BIT BIT(1)
-+#define DRM_CEA_SAD_UNCOMPRESSED_WORD_24BIT BIT(2)
-+
- struct drm_encoder;
- struct drm_connector;
- struct drm_connector_state;
-@@ -380,6 +392,8 @@ struct drm_display_mode;
+ static struct regmap_config mtk_dp_regmap_config = {
+@@ -1486,6 +1488,9 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+ {
+ 	struct mtk_dp *mtk_dp = dev;
  
- int drm_edid_to_sad(const struct edid *edid, struct cea_sad **sads);
- int drm_edid_to_speaker_allocation(const struct edid *edid, u8 **sadb);
-+int drm_cea_sad_get_sample_rate(const struct cea_sad *sad);
-+int drm_cea_sad_get_uncompressed_word_length(const struct cea_sad *sad);
- int drm_av_sync_delay(struct drm_connector *connector,
- 		      const struct drm_display_mode *mode);
++	if (mtk_dp->need_debounce && mtk_dp->train_info.cable_plugged_in)
++		msleep(100);
++
+ 	dev_dbg(mtk_dp->dev, "drm_helper_hpd_irq_event\n");
+ 	drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
+ 
+@@ -1538,6 +1543,10 @@ static irqreturn_t mtk_dp_hpd_event(int hpd, void *dev)
+ 			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+ 					   DP_PWR_STATE_BANDGAP_TPLL,
+ 					   DP_PWR_STATE_MASK);
++
++			mod_timer(&mtk_dp->debounce_timer,
++				  jiffies + msecs_to_jiffies(100) - 1);
++			mtk_dp->need_debounce = false;
+ 		} else {
+ 			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+ 					   DP_PWR_STATE_BANDGAP_TPLL_LANE,
+@@ -1962,6 +1971,13 @@ static const struct drm_bridge_funcs mtk_dp_bridge_funcs = {
+ 	.detect = mtk_dp_bdg_detect,
+ };
+ 
++static void mtk_dp_debounce_timer(struct timer_list *t)
++{
++	struct mtk_dp *mtk_dp = from_timer(mtk_dp, t, debounce_timer);
++
++	mtk_dp->need_debounce = true;
++}
++
+ static int mtk_dp_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_dp *mtk_dp;
+@@ -2039,6 +2055,9 @@ static int mtk_dp_probe(struct platform_device *pdev)
+ 
+ 	drm_bridge_add(&mtk_dp->bridge);
+ 
++	mtk_dp->need_debounce = true;
++	timer_setup(&mtk_dp->debounce_timer, mtk_dp_debounce_timer, 0);
++
+ 	pm_runtime_enable(dev);
+ 	pm_runtime_get_sync(dev);
+ 
+@@ -2051,6 +2070,7 @@ static int mtk_dp_remove(struct platform_device *pdev)
+ 
+ 	platform_device_unregister(mtk_dp->phy_dev);
+ 	mtk_dp_video_mute(mtk_dp, true);
++	del_timer_sync(&mtk_dp->debounce_timer);
+ 
+ 	pm_runtime_disable(&pdev->dev);
  
 -- 
 2.18.0
