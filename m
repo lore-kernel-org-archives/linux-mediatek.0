@@ -4,81 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50E3AC04A68
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 21:00:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1286FC04A68
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 21:07:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=npXsY1wOzM+2ZXYU371FlETSFcM+AsawUkMJLZdIO1A=; b=scSOJq4eqPn5ReSwxQjdjn/Fcv
-	1Zo/oRKoZUN/i8E59YSdGuBGKOpoWd2NTzvTs6aV9Tbs+/TTdHYtZpp+6Ic6Mp4RfieJTa3BXDFeO
-	KfVGB1D6gsIg+h+1VM5itiI0zgG0oYc4kDwgY4H3qfKXhZn+qNaIPAkcZtxbbHGkBllssCCMnkC9d
-	scFaSWaAZZBf66CI5dEAlxEOnCRMdGr1xZ5obuk1uNwI+BeEjajh3JdmExSl2sjbkIQqe4L1DkDDF
-	yhKDOkljuhSX94SIEsv0u885EYmeLh+0xu8LOZJfJhbVRpXFObOcQ9iyc3yiwAC610rXOOsYpXAJO
-	fIUd1JWA==;
+	bh=f4QJf8ruUt+YX0IWOG7trN4ZQXuWHdSPHvGfzpjTqBk=; b=tFpIyE5sBP84XeieXfvGZ20qjs
+	GPNPwBukSNs4vGr9r/ylYQHiOP75PX3PMS2OtXJNDR1gjAijSL2sg4JHmE+b7mCNvh1UTBjmuOod0
+	22xQlstoIIbgsnTIXbFf1hKdYMf2ZksFd6S8qyoobFdp/aPl4ReCDpsdTcA9IP4vjdPWnYlp7itU7
+	wCcedONM4pftbUmZni9sbk8JcKOGt1KjZut8+rJEIw/19/3+GiaXp3asVvu/3j06sFnGe4JJ7xSBi
+	6hC72xEu19M3jusOGrPrTzqPK9K8RMIaVYKlutTlR9d/105ecOrjPBAcdmZEbM0w2kaetcyxGPzHm
+	CBuhj23A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGo8c-000F3g-FD; Wed, 27 Jul 2022 21:00:14 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1oGoF8-000JUL-Kg; Wed, 27 Jul 2022 21:06:58 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGo8K-000ErT-TJ; Wed, 27 Jul 2022 20:59:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1658955568; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=cQajrAiz3rDr2BA/813BS4ZEtvJ3H51uYD1ChgH8JgV0Ut70TcWoWXH2VWRdMzBhJGVt/xx2z5n5heN4eptpX61WlCjVlD2YO3VRWGqjA7CB7x4xYNnPT2E8xiSvbo7DU/fT6xmCF/PYADlJ33yVMvRdD34SPl2lWvnIUON6f8w=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1658955568; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=npXsY1wOzM+2ZXYU371FlETSFcM+AsawUkMJLZdIO1A=; 
-	b=RdBLoF26NZX1Vxp01BaQlhtUdKGMXh78OF56opnmTfOa0ijY0pBfiwwR56ZrSGiBcuvpuYFTPPOL4KTo2PFuLcCbZ8VgcNL9Zu+OnfMp+LBAtAgDv5hJ4wn0MXGjl7paNFKHk1hj0vci6X8qiCAiKp6sCZX2jzsLe5PKiZiauDA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1658955568;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=npXsY1wOzM+2ZXYU371FlETSFcM+AsawUkMJLZdIO1A=;
-	b=OkqetZ05VtzEqYvDBoY2o/u5osK1xYce8774XN8MsMqGd4rCYHMFZ1eopk+juhis
-	dfFH5PnU4MNhj+S7Vv5PPKyLhl/A/H5HT8uEj/q5nI6YhXtZ7O/w7gcJgNMgBRdl+dq
-	yJQ+MHMIu2aJC30jamSJPInDUnfih1aKhezUHHaM=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1658955564512750.4742522224943; Wed, 27 Jul 2022 13:59:24 -0700 (PDT)
-Message-ID: <f8ccb632-4bca-486b-a8a4-65b6b90de751@arinc9.com>
-Date: Wed, 27 Jul 2022 23:59:16 +0300
+	id 1oGoCE-000HLS-Os
+	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 21:04:00 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id h8so26064349wrw.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Jul 2022 14:03:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linexp-org.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=f4QJf8ruUt+YX0IWOG7trN4ZQXuWHdSPHvGfzpjTqBk=;
+        b=139xpVPAbf4/6WQEmBothCI7+YWLiMxD7qqrCd14879SEYl9In9xOYAqQy/QRY4JMc
+         A7I6mNxWd/1YV/TMoH6KcBJw0Vpnt1faNDgLl30hkJvKCn/wKeqRly2ZYlxEOSv+e6nA
+         SxTl6jOPVh6gglT2H5OjVlVkvv6Nj63MXLXIogPLt1S+BwZUv+HQMK4/6Vux+8+gPiLU
+         ik+4fis2qt94kCpQbz7nP6W736pm1lopr6/RClgEDQLC4b8owDW11BTXDfBdyCsGKppB
+         f5M/Z/rDCQbVPHYFjn6P9r4Hqftz2pEE9+I7sX0NI8MHZmPnILhFUSPpmDonqh7Z73E7
+         lpPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=f4QJf8ruUt+YX0IWOG7trN4ZQXuWHdSPHvGfzpjTqBk=;
+        b=HW0ReFDcMnKBjXx9jivx6w+tZnnXSIsT6lsMIR9Fh3W9Ej6tDik8+KbzU+oPoDBuhR
+         v9Bu5k1jyZI9z9XZGZC+HJNIuSWS+ouj3Yf6zTonyszZbUmb//VWikRsam5mJW5YepZt
+         J3Eoig/WWgyYzse5wSGQv9c9pzQN2bPfib40x8YNVLkAMiHa/DmEWp8+ZcgZJQz0Qs9R
+         OXfAQbXXUnMrWnhIiNdDZng/+FNZK1xBbnH4qi4lxIgi9vaE66LWwG+4x7Yhq64z+NDi
+         2PvRjAdFlrZwKLelLbTBpoXSY+/xJlMSmd/S/FZF8tBrfguqxPKbGP33hCerkjJWwbFy
+         Lpiw==
+X-Gm-Message-State: AJIora+jUvz81SHt2ILu9y3w5diqsV7wOUsSffX0IlVfAp+EOguIbO4C
+	f/ALFfdanHHsiR6nA8TCQhTAdw==
+X-Google-Smtp-Source: AGRyM1uKDZW3ud2tPr2zObS8Pq1dlFDn2x8npRuWqIBVJ6Ty2tIw4bgvpOrIrm1bV2Lq2c5Wny1rjw==
+X-Received: by 2002:adf:e7c9:0:b0:21d:8716:e08d with SMTP id e9-20020adfe7c9000000b0021d8716e08dmr15451054wrn.328.1658955838331;
+        Wed, 27 Jul 2022 14:03:58 -0700 (PDT)
+Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:65a8:ebd8:4098:d9d0])
+        by smtp.gmail.com with ESMTPSA id h6-20020a05600c350600b003a38606385esm37908wmq.3.2022.07.27.14.03.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 27 Jul 2022 14:03:58 -0700 (PDT)
+From: Daniel Lezcano <daniel.lezcano@linexp.org>
+To: daniel.lezcano@linaro.org,
+	rafael@kernel.org
+Cc: rui.zhang@intel.com,
+	linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	khilman@baylibre.com,
+	abailon@baylibre.com,
+	lukasz.luba@arm.com,
+	broonie@kernel.org,
+	damien.lemoal@opensource.wdc.com,
+	heiko@sntech.de,
+	hayashi.kunihiko@socionext.com,
+	mhiramat@kernel.org,
+	talel@amazon.com,
+	thierry.reding@gmail.com,
+	digetx@gmail.com,
+	jonathanh@nvidia.com,
+	anarsoul@gmail.com,
+	tiny.windzz@gmail.com,
+	baolin.wang7@gmail.com,
+	f.fainelli@gmail.com,
+	bjorn.andersson@linaro.org,
+	mcoquelin.stm32@gmail.com,
+	glaroque@baylibre.com,
+	miquel.raynal@bootlin.com,
+	shawnguo@kernel.org,
+	niklas.soderlund@ragnatech.se,
+	matthias.bgg@gmail.com,
+	j-keerthy@ti.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Amit Kucheria <amitk@kernel.org>,
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v3 20/32] thermal/drivers/mtk: Switch to new of API
+Date: Wed, 27 Jul 2022 23:02:41 +0200
+Message-Id: <20220727210253.3794069-21-daniel.lezcano@linexp.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220727210253.3794069-1-daniel.lezcano@linexp.org>
+References: <20220727210253.3794069-1-daniel.lezcano@linexp.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: Aw: [RFC PATCH net-next] dt-bindings: net: dsa: mediatek,mt7530:
- completely rework binding
-Content-Language: en-US
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>,
- Luiz Angelo Daros de Luca <luizluca@gmail.com>,
- Sander Vanheule <sander@svanheule.net>,
- =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
- Daniel Golle <daniel@makrotopia.org>, erkin.bozoglu@xeront.com,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220726122406.31043-1-arinc.unal@arinc9.com>
- <trinity-96b64414-7b29-4886-b309-48fc9f108959-1658953872981@3c-app-gmx-bs42>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <trinity-96b64414-7b29-4886-b309-48fc9f108959-1658953872981@3c-app-gmx-bs42>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220727_135957_038098_655F9AE1 
-X-CRM114-Status: GOOD (  18.43  )
+X-CRM114-CacheID: sfid-20220727_140358_837935_814B21F8 
+X-CRM114-Status: GOOD (  14.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,43 +117,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27.07.2022 23:31, Frank Wunderlich wrote:
-> 
->> Gesendet: Dienstag, 26. Juli 2022 um 14:24 Uhr
->> Von: "Arınç ÜNAL" <arinc.unal@arinc9.com>
-> 
-> Hi,
-> 
->> To Frank:
->> Let me know if MII bindings for port 5 and 6 on MT7531 are okay.
-> 
-> I ack krzysztof, that the change is really huge and it is hard to understand what exactly is changed and why. So please split. I have converted
-> it to yaml, but not have changed the logic itself. I guess you know the switch better than me.
-> 
->> Does your recent patch for MT7531 make it possible to set any port for CPU,
->> including user ports? For now, I put a rule to restrict CPU ports to 5 and
->> 6, as described on the description of dsa port reg property.
-> 
-> i only know that port 5 and 6 are possible, not about the other ports. Afair there was a check if port 5 or 6 (followed by available modes
-> like rgmii, trgmii or sgmii) and then allow cpu-port-mode else allow only user-port mode. Had not changed this, so currently only these 2
-> ports can be used as CPU.
-> 
->> I suppose your patch does not bring support for using MT7530's port 5 as
->> CPU port. We could try this on a BPI-R2. Device schematics show that
->> MT7530's GMII pins are wired to GMAC1 of MT7623NI to work as RGMII.
-> 
-> my patches (and the version from Vladimir that was merged) only solves the Problem that CPU-Port was fixed to 6 before. I tested Patches on r2
-> (mt7530) and r64 too (mt7531) that they do not break anything. But i have not disabled port 6 (maybe i had to do so for a port5-only mode), only
-> enabled port 5 too and run iperf3 over a vlan-aware bridge between wan-port and port 5.
+The thermal OF code has a new API allowing to migrate the OF
+initialization to a simpler approach. The ops are no longer device
+tree specific and are the generic ones provided by the core code.
 
-I've seen this under mt7530_setup():
-The bit for MHWTRAP_P6_DIS is cleared to enable port 6 with the comment 
-"Enable Port 6 only; P5 as GMAC5 which currently is not supported".
+Convert the ops to the thermal_zone_device_ops format and use the new
+API to register the thermal zone with these generic ops.
 
-https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/tree/drivers/net/dsa/mt7530.c#n2189
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linexp.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/thermal/mtk_thermal.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-I'm slowly learning C programming so I can't currently manage to do 
-something on my own here, just letting you know.
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index ede94eadddda..8440692e3890 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -679,9 +679,9 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+ 	return max;
+ }
+ 
+-static int mtk_read_temp(void *data, int *temperature)
++static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
+ {
+-	struct mtk_thermal *mt = data;
++	struct mtk_thermal *mt = tz->devdata;
+ 	int i;
+ 	int tempmax = INT_MIN;
+ 
+@@ -700,7 +700,7 @@ static int mtk_read_temp(void *data, int *temperature)
+ 	return 0;
+ }
+ 
+-static const struct thermal_zone_of_device_ops mtk_thermal_ops = {
++static const struct thermal_zone_device_ops mtk_thermal_ops = {
+ 	.get_temp = mtk_read_temp,
+ };
+ 
+@@ -1082,8 +1082,8 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, mt);
+ 
+-	tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
+-						     &mtk_thermal_ops);
++	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
++					      &mtk_thermal_ops);
+ 	if (IS_ERR(tzdev)) {
+ 		ret = PTR_ERR(tzdev);
+ 		goto err_disable_clk_peri_therm;
+-- 
+2.25.1
 
-Arınç
 
