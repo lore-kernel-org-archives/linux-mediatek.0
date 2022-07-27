@@ -4,78 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37215C19F29
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 09:41:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91C12C04A68
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 09:41:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=p3g9EzZvah+Gtbwyip2cq8Rx7bbD/kksWxXGuqDH5TY=; b=e+BpyoAY71hlUFYKIxGmYex/8y
-	JYXl+6WYF+fWg2nIwSO2ECv3fTEkmjNQu/pcNh4O3DpGkfPUEvP3bnHyiAxIKifW3p2Z2fN28hmb4
-	c4ae0I4HrfOnKHT3pwBBr0jhJTTsrgdd/QXwaOthDjbQTrY38eQXaaT99ldPAEnZsFnu7lOV2iMcw
-	TQ+hc9c4CBVrNMQswvVq7GK455xAYaB5M6w9GU9Dm0JfS01tjpxXmrNCvRQfUVbfYi23Pbh6ATUBI
-	b0C/9F9HjQ1G7g7F3K0pWy4bElk5i8yOSluRPX0Ksg0ItJY8pYYbhjXLR3Ys2ab2p+Sqo38/x8p9k
-	F1MG4TGw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Qu02L3ngEBnLc9dEXQC/1TM0t4c6SP/t7lXHXTw9NdY=; b=YWxfy9EDkMbraL1gPQ1nV9d4HW
+	Cgez+cL6JKguQff9P+DM8Z9qmxKpBS+I8pOUWzBKo6WpsvpJrkKJMb7cmFGsbLxGt8fCAOM1Pl5P3
+	fuGim30MuA2QGXGZkrFa7qsEumz/qTOOGCpd+xQc0gP3IaWaE7bXoCidxyXa4M5Fvo+XoOLN7rHvB
+	UlbDawTaabOzlmy8pQsprjpvobdnMOXlY8s5Y1rlaxsAylswl3jjUUMU8jIrjJ0XvmT9z62J2KPm3
+	BaWNM7hrwITkB3XzQfqvVzEsDDhIZSPEWhm6KDqs1x/X4VBcpvQVreKkK3P7HcOlrEoAjrTjJ54zv
+	Dp09QAaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGdXQ-00Btxl-0I; Wed, 27 Jul 2022 09:41:08 +0000
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
+	id 1oGdXh-00BuAN-Ox; Wed, 27 Jul 2022 09:41:25 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGdX2-00Btgy-NG
-	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 09:40:46 +0000
-Received: by mail-pg1-x52f.google.com with SMTP id f65so15449513pgc.12
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 Jul 2022 02:40:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=p3g9EzZvah+Gtbwyip2cq8Rx7bbD/kksWxXGuqDH5TY=;
-        b=OLy9K64vZZHKw0I+myiumXXJ327EZ4fO3D1r2oechF169QBzjqFtMoDj48XCEzguWr
-         Jf+Vw4UDazDGZvOY6ulcOQMnzjr3gM7TZ65azJMCxSOLoX0azoax7Mq01l2x97ykNL6a
-         yCfBTrocZQzWSIkV5wODMg/0o8THtuU51HUO4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=p3g9EzZvah+Gtbwyip2cq8Rx7bbD/kksWxXGuqDH5TY=;
-        b=Neath5Znett47yMvgpdNVCzjrCkMpuG28Cy3OhK99kXqBiUDsiJ0bCfZtCvWpcyeL5
-         k9MeOKzJfrluj9FCHTBpdtGKplyQ8d6l7rCVnvAoboZnKiw9V9VFEmFfs+mrKKUuvwgU
-         S7R4xIkp873gq2VLBISx5EYzmbwwUG4erqV2mx11SeYqibnnfNFI9OugI8zWATSELwHl
-         9/LDmOE0dVGGv7zzTtPu+s501+c7O2UNRFEDD13wwVZlqqN/Y4hQR26+hUiqgqPYOLrs
-         DJfZRnAoRfrRvjt+/MeJNOaio16gWvZifPStm1EXWKTnlWQdh4EaJwz6GbuBNQkL4oRV
-         06JQ==
-X-Gm-Message-State: AJIora8lzKwvfYc/iTEuWy5LU94lwyDrL+IMe3raG5MKPck0HZFhoaey
-	mkktGoqPwBRBO6fqztPWWr6sqg==
-X-Google-Smtp-Source: AGRyM1vGMx/eXGTZ84c6OPRVIy6bKdnF7BHfGiWW4X9zD6FGDwvusPvwvbJ1cKMBXJc6IoBM5UTbWw==
-X-Received: by 2002:a63:6b83:0:b0:41a:8419:c20b with SMTP id g125-20020a636b83000000b0041a8419c20bmr17730751pgc.522.1658914841179;
-        Wed, 27 Jul 2022 02:40:41 -0700 (PDT)
-Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:8dc7:aefe:3b5a:da1e])
-        by smtp.gmail.com with ESMTPSA id e9-20020a170902784900b001678dcb4c5asm11775613pln.100.2022.07.27.02.40.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Jul 2022 02:40:40 -0700 (PDT)
-From: Pin-yen Lin <treapking@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Eizan Miyamoto <eizan@chromium.org>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	Evan Benn <evanbenn@chromium.org>,
-	Pin-yen Lin <treapking@chromium.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	devicetree@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: mt8173-oak: Switch to SMC watchdog
-Date: Wed, 27 Jul 2022 17:40:34 +0800
-Message-Id: <20220727094034.1372745-1-treapking@chromium.org>
-X-Mailer: git-send-email 2.37.1.359.gd136c6c3e2-goog
+	id 1oGdX7-00BtmU-Sq; Wed, 27 Jul 2022 09:40:51 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 10CA36601B25;
+	Wed, 27 Jul 2022 10:40:47 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658914848;
+	bh=/tSZBVIuOPVrLZ+Pv9GixCN2b9o+Bbox7JHQmveYKn8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=CnEUNxM6sH6Za9eS1dGCEiIZSFE/trQz92dIdRmswdczzZpDwPMWmdd82JkLXKQg9
+	 d8f1SHZUhha6hjj+c8J9uN97ZVzKs4nxdHNhIfA3m0lDqb1FCpKhADcsO5NK0zWFqE
+	 Ko2FK6RAi31qvCOZ7keaareHRzTGqP/+Pl/Lk6SSvCbeFplKoNWh1D9auuQ0IFBWnw
+	 OldnTeHWmkfh0MEk6WaS3oPRH4rtP8ev+uvGXd/6kBXOgMVku/rSKQVZTW0TGa8hKd
+	 TWI3y1DXPAjxBmzAeVhPfHXyC2Er4retswk8r2bkOWDG9bVQ+i3WSAw42Wk5oFy+Mm
+	 g/BZP4RD41UkA==
+Message-ID: <ce46e9b2-8e34-b6cd-d802-35b3ae66e02d@collabora.com>
+Date: Wed, 27 Jul 2022 11:40:44 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v15 07/11] drm/mediatek: Add retry to prevent misjudgment
+ for sink devices
+Content-Language: en-US
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, daniel@ffwll.ch, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, mripard@kernel.org, tzimmermann@suse.de,
+ matthias.bgg@gmail.com, deller@gmx.de, airlied@linux.ie
+Cc: msp@baylibre.com, granquet@baylibre.com, jitao.shi@mediatek.com,
+ wenst@chromium.org, ck.hu@mediatek.com, liangxu.xu@mediatek.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220727045035.32225-1-rex-bc.chen@mediatek.com>
+ <20220727045035.32225-8-rex-bc.chen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220727045035.32225-8-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220727_024044_803634_4E49B13D 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20220727_024050_146624_116ABCED 
+X-CRM114-Status: GOOD (  22.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +82,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Switch to SMC watchdog because we need direct control of HW watchdog
-registers from kernel. The corresponding firmware was uploaded in
-https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405.
+Il 27/07/22 06:50, Bo-Chen Chen ha scritto:
+> For some DP dungles, we need to train more than onece to confirm that we
+> don't misjudge the status of sink device.
 
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
----
+Please fix the typos in your commit title and description.
+title: misjudgment -> misjudgement
+desc: dungles->dongles; onece->once
 
-Changes in v2:
-- Move the modifications to mt8173-elm.dtsi and add some comments.
+> 
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
+>   drivers/gpu/drm/mediatek/mtk_dp.c | 21 ++++++++++++++++++---
+>   1 file changed, 18 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+> index ce817cb59445..80d7d6488105 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -42,6 +42,7 @@
+>   #define MTK_DP_CHECK_SINK_CAP_TIMEOUT_COUNT 3
+>   #define MTK_DP_TBC_BUF_READ_START_ADDR 0x08
+>   #define MTK_DP_TRAIN_DOWNSCALE_RETRY 8
+> +#define MTK_DP_TRAIN_CLEAR_RETRY 50
+>   
+>   struct mtk_dp_train_info {
+>   	bool tps3;
+> @@ -1431,11 +1432,25 @@ static int mtk_dp_video_config(struct mtk_dp *mtk_dp)
+>   
+>   static int mtk_dp_training(struct mtk_dp *mtk_dp)
+>   {
+> +	short max_retry = MTK_DP_TRAIN_CLEAR_RETRY;
+>   	int ret;
+>   
+> -	ret = mtk_dp_train_start(mtk_dp);
+> -	if (ret)
+> -		return ret;
+> +	/*
+> +	 * We do retry to confirm that we don't misjudge the sink status.
+> +	 * If it is still failed, we can confirm there are some issues for the
+> +	 * sink device.
+> +	 */
+> +	do {
+> +		ret = mtk_dp_train_start(mtk_dp);
+> +		if (!ret)
+> +			break;
+> +	} while (--max_retry);
+> +
+> +	dev_info(mtk_dp->dev, "dp training clear retry times: %d\n",
+> +		 MTK_DP_TRAIN_CLEAR_RETRY - max_retry);
 
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+dev_dbg() here.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index e21feb85d822..b2269770abc3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -161,6 +161,18 @@ hdmi_connector_in: endpoint {
- 			};
- 		};
- 	};
-+
-+	soc {
-+		/*
-+		 * Disable the original MMIO watch dog and switch to the SMC watchdog,
-+		 * which operates on the same MMIO.
-+		 */
-+		/delete-node/ watchdog@10007000;
-+
-+		watchdog {
-+			compatible = "arm,smc-wdt";
-+		};
-+	};
- };
- 
- &mfg_async {
--- 
-2.37.1.359.gd136c6c3e2-goog
+...after which,
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> +
+> +	if (!max_retry)
+> +		return -ETIMEDOUT;
+>   
+>   	ret = mtk_dp_video_config(mtk_dp);
+>   	if (ret)
 
 
