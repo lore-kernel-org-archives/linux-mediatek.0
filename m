@@ -4,80 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F083C04A68
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 08:07:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85245C04A68
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 08:17:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1h7wadZ3scU4JZx6+dUGmb/PlWl77EnYTVDDXnj45dI=; b=IQLYB3EfHpJv0I/jSlVhGQNVhq
-	FS98nSVnE5ZwKESXZSDDWvwN6HXHu8FFjMB0mGspzZ61/bB5GXfy91cXBWpNRC2Vxpftjx6wOoafY
-	DSu6MUsf63b2RWHn6TYPMXKIb0HysrjKl1UjSWJ2gX+f383JdnHQiE+VevpJ4Oxow2fAbiu4GTypt
-	2/ggrYGok78RBl2m/xN7G0b3RJg0p/OlKKjt4E5osfx3zbt2TOWTCKuUdJAAV1o8qskvaWTbsF6SJ
-	Gv/kGZLyQh+qKedAyk0f2jihFrthqzxXzpRdlAljtSRnvKSXcMfSg5grssOxllggPZNv3s+/M+XTA
-	9maccAdA==;
+	bh=kKkWUpBEwMrNrkR4ZBGDUWqD9T8n7YaqKCvSc78P7eM=; b=cgt+VQuNonU3zW1poy32kvl24L
+	P1QoFModp9K39/bjzfBRez1BOqMXB/APlN7G5CqvDBeWPYhAXII7wJVwl6AccoU7wsKdYkKgdZEET
+	mBDJw7Z5J7J39v4dDJzNcQfXpg8kCYhUqSqQIFjDzYY7S4QWeL/OtikZtQDczmn49J93UkMi3FJsM
+	FEaZDQHjzwN7EGoj5m6tP+jXDogWD1e1GbVeCNgWyPMpUYms3wxlalURQyvJun/p4m1hVywGzgB74
+	U+OcrT+z3KDDloQoOF2goY0DJpebc9QTZB63zvB6b3hCZyqSaLDGSgN7OP/477XqjfUFaJ1Mfz9cn
+	uyhfEsdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGc4i-00AvN1-1P; Wed, 27 Jul 2022 08:07:24 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oGcEZ-00B2Cu-Lj; Wed, 27 Jul 2022 08:17:35 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGc4D-00Av2s-LF; Wed, 27 Jul 2022 08:06:55 +0000
+	id 1oGcEL-00B22x-0Q; Wed, 27 Jul 2022 08:17:22 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A8A536601ABE;
-	Wed, 27 Jul 2022 09:06:50 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CC57A6601B12;
+	Wed, 27 Jul 2022 09:17:16 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658909211;
-	bh=RAzqICOW9S1oGl5H8d7L9/J1u1cDZH2ud8LNYQY1T3M=;
+	s=mail; t=1658909837;
+	bh=LZXLih2SwGeiRylAPXX7UXVKbKZwvUB3TU1jCoiphXk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WrVrHpB4r9Rg8ui6n1LNe1Z4aVrjsI8phcDQTTuMVB/RMeashds0PTWh1HiPCQRId
-	 czTMc5B5HATboRK45fyVBpH+eZXbfJDIBJs87/uNXlp8y2C3vDJN5tWycVdOP6Y+pR
-	 NoPv1Wx/t30Q2WFWLW34pqv6Llq2co6UmLfpHaGOtU4nxaYvhB4FoLIGCF1O8v02K0
-	 igcHQEoObnRB5K9M9kKMzUt+bIMrqgRXq8+cg2nj/nGsdnaUovEXBPSwXEhe4pNuLW
-	 gBzpL+/BO1wbcxsSZ4BHaSLl5cgxdS3mGS3LGwpXbaEsq1wa4oqiuOE+K6IebX/NDS
-	 Odhulc7hKDdvQ==
-Message-ID: <826821ae-432b-f4cc-6b38-16be881213e6@collabora.com>
-Date: Wed, 27 Jul 2022 10:06:48 +0200
+	b=nn7xtgzhD40NJk6UblOCXp35/hNMeaNnBVBFJg2X+9Oi/tk+Umdf/cGzINlaXcwv9
+	 pkuCvEGcOO8LvqrZbfWj8aaeaYuEFk0GOW68TFqVs0jro53FoIJbiWPN82pkhK7GN2
+	 PYucvOjkc2J4958CeH1HcyqiWp/DteMeTB8qv992tEJgxHIIT8v95xIaTAe4DEJXHp
+	 H556IfchTmZ2fNhnRRtPgSbmia/JHtHP8dUaM3eBL2jtstgOo2sFnx1Wx3Y2eHvzKU
+	 HhHRBesUXEieQPWl3oTZW1ViwhMNCw0ETuNJWNbjy3ACS6P05P9Wv5mMzYMSNwO3VD
+	 zPY6s6qRDzXtA==
+Message-ID: <35e9db62-4233-1804-0233-f048b149c22c@collabora.com>
+Date: Wed, 27 Jul 2022 10:17:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH, v2] media: mediatek: vcodec: Add to support VP9 inner
- racing mode
+Subject: Re: [PATCH v8 2/6] dt-bindings: thermal: Add binding document for
+ LVTS thermal controllers
 Content-Language: en-US
-To: Mingjia Zhang <mingjia.zhang@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Nicolas Dufresne <nicolas@ndufresne.ca>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: George Sun <george.sun@mediatek.com>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Irui Wang <irui.wang@mediatek.com>, Steve Cho <stevecho@chromium.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220727061310.2307-1-mingjia.zhang@mediatek.com>
+To: Balsam CHIHI <bchihi@baylibre.com>, rafael@kernel.org,
+ rui.zhang@intel.com, daniel.lezcano@linaro.org, amitk@kernel.org
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ khilman@baylibre.com, mka@chromium.org, robh+dt@kernel.org,
+ krzk+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, james.lo@mediatek.com,
+ fan.chen@mediatek.com, louis.yu@mediatek.com, rex-bc.chen@mediatek.com,
+ abailon@baylibre.com
+References: <20220726135506.485108-1-bchihi@baylibre.com>
+ <20220726135506.485108-3-bchihi@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220727061310.2307-1-mingjia.zhang@mediatek.com>
+In-Reply-To: <20220726135506.485108-3-bchihi@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220727_010653_885682_6058E08E 
-X-CRM114-Status: UNSURE (   7.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220727_011721_262263_20E0D266 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,14 +81,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/07/22 08:13, Mingjia Zhang ha scritto:
-> In order to reduce decoder latency, enable VP9 inner racing mode.
-> Send lat trans buffer information to core when trigger lat to work,
-> need not to wait until lat decode done.
+Il 26/07/22 15:55, Balsam CHIHI ha scritto:
+> This patch adds dt-binding documents for mt8192 and mt8195 thermal controllers.
 > 
-> Signed-off-by: mingjia zhang <mingjia.zhang@mediatek.com>
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> ---
+>   .../thermal/mediatek,mt8192-lvts.yaml         | 73 ++++++++++++++++++
+>   .../thermal/mediatek,mt8195-lvts.yaml         | 75 +++++++++++++++++++
+>   2 files changed, 148 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,mt8192-lvts.yaml
+>   create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,mt8195-lvts.yaml
+> 
 
-For MT8195:
+Hello Balsam,
 
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+I don't think that having two separated files is necessary (and I don't know if
+that's correct, even).
+
+You're referring to variants of the same hardware (and using the same driver, but
+that's not really relevant here), so my suggestion here is to have only one YAML,
+named like "mediatek,lvts-thermal.yaml", where we list all of the compatibles for
+both MT8192 and MT8195 (and future SoCs).
+
+Regards,
+Angelo
 
