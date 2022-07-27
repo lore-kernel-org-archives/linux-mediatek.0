@@ -4,77 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E61AEC19F21
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 03:12:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32BC5C19F21
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 03:42:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vjqboMjUafpTNGUy0/O4ZDtfa56hWKNu2C1XCtWQzVA=; b=Awysu8l1dRQ+m0tSelFiaYyEhn
-	5vmHFMC7OE5S8X/Wiui8akGtfh8ttCMb7mHKYd0InmzJUN1WXnJk6p8UQHCa1kB4K3n7+sADwcQ0z
-	yMR+abi9g8feO6aigakTxhUJIsiXyjUPP5mFg6w25im0jqkwp/kJDn7cFCTYEMyicE08xJ8dtrvt3
-	uz7h7Fc1g6f8lUjlHNeMdF41MRIKpw4za0gtJFt4BiS6jvmL4jSQRQ28pbmVcNUOpx7bsGXSZw+Er
-	3pmH7ROJJt72OGhuLi3oOpkTJYPdiIWLwiMYZV6eEonT3c2efEZR6d8ZxK0ZopqvRwLOMVkMcc56B
-	q7x2tDxA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Y1lK6QtOQQOW1k1UTTpwFMHtmajr5gNIa2260+0vnIs=; b=ddHlAsUKZw154iALUqQ9YchZvw
+	+xW5ZlYjlzs1BFHPn6Q39DPdqCILjtiIsklUtDsdTYjo97Ev4DNhXY14TkcEg363zczQiI5AM5BAA
+	sR3WEvyiMZDNlQ9AubcCvVbsj7rHi8l/kKETK+KnVQ9p3i36mB4l/7zC06C9VslXf9Mrkr5+wuPRk
+	xyBLoVBqvwEbcJdkOlFsN85dNtj7cyL+y6csjTD8Q3rBIu7lAWemlLiJDPSqitzcyaAWCgxGHWaMi
+	YaA7AJjTIBkVwwb9NcCYfW6DeSUD61roZeuVNo9gM2v8lFON6hKBO+cIp/TDbb99CUEYAvRXGRlKh
+	rgZwITkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGXT6-008Bud-1Q; Wed, 27 Jul 2022 03:12:16 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1oGXvq-008RIe-Rf; Wed, 27 Jul 2022 03:41:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGXT3-008Bqi-QR
-	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 03:12:15 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id u17so8279050lji.5
-        for <linux-mediatek@lists.infradead.org>; Tue, 26 Jul 2022 20:12:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=vjqboMjUafpTNGUy0/O4ZDtfa56hWKNu2C1XCtWQzVA=;
-        b=Q5Xo+Bg4msAdmVwzpBwCtILRjoM1yJhUc972HzJcEoCaxF/JjzLsi9okJmR2dCNhnm
-         GLf+ZPI3plNCoXTd0rDjKsAy/+/0giq1jUTovcZaTd1Q0f0YgTm1cQt3HeO50O9KQBei
-         6eePw2J4KHWgrOvrek1LtHJUQBaHntpaTF2mNAiid10OowP2K4PE/qM49A/tlQUm89PL
-         29VElTUpRzd2+CwuIdptK9G5Kr+MeiNSqsdAfHYEEYxEBADiNVC8u3x58tA9zml5XRVh
-         MrANXuRRlTbZhlonGdbsWS3O75N/Qv96MXvIYitmfLlpNNME/ty9esOgEokZNkl55fzp
-         cGtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=vjqboMjUafpTNGUy0/O4ZDtfa56hWKNu2C1XCtWQzVA=;
-        b=AyX9J3oiLwt3IsDAHW4HezpBETC0VKNfXE9zdDwFUPdIkv+PoLA/TOfezfvHQNwLCH
-         0Zu18RVwMSq6uYoap5/5rqNdA9Tx62uM4G+1V1DsiyzKi3PZCueu2OwKxHWXVuuWEQcp
-         UjjKa4ypGo/ISRIi7BHpjPJNA6J7dQGsyc0FuqnuyR0UBd65SGsomK+1nWFb74MocsmY
-         DmXNIpzLlEWNhUkJwNwtBuVywmIdUAt7eqneZ2f2hKP08HxAd9sFwZCtDDCc/yAEKVzj
-         j7N1XUfvO0HSN0PPyc1f+O0Ab+nmM0TLxxMN7wPaps5ac393qvXxHiaaCI5qXsvxrDSO
-         izAQ==
-X-Gm-Message-State: AJIora92jQATu+sD/DTtZT5W1gwu+AulZYFoJGLQxIOf5oriuZYi51Ql
-	+LokFbKTYY+qfN+Fz94n2iLwty5Q9h4wDIkr12bePqGYAw==
-X-Google-Smtp-Source: AGRyM1v4Ncd9HBGYmoz4GB4ul2KRx32NDFuoju0Nas2HcyCjW1c4g23bxplhHnlVMchicE6sR/kHzTuS7vhfvbW0uG0=
-X-Received: by 2002:a05:651c:1796:b0:25d:7288:ed0b with SMTP id
- bn22-20020a05651c179600b0025d7288ed0bmr6844732ljb.228.1658891527252; Tue, 26
- Jul 2022 20:12:07 -0700 (PDT)
+	id 1oGXvn-008RGM-Rp
+	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 03:41:57 +0000
+X-UUID: 188e4cd8fe5a4dea92946c5a388dfdcf-20220726
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:d8367e4c-7317-4c15-ba72-9ce435d56bb7,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:7d0c21ee-db04-4499-9fdf-04ef44b9468c,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 188e4cd8fe5a4dea92946c5a388dfdcf-20220726
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 24083109; Tue, 26 Jul 2022 20:41:48 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 27 Jul 2022 11:21:11 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 27 Jul 2022 11:21:11 +0800
+From: <peter.wang@mediatek.com>
+To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<stable@vger.kernel.org>
+Subject: [PATCH v4] ufs: core: fix lockdep warning of clk_scaling_lock
+Date: Wed, 27 Jul 2022 11:21:10 +0800
+Message-ID: <20220727032110.31168-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20220727030526.31022-1-peter.wang@mediatek.com>
-In-Reply-To: <20220727030526.31022-1-peter.wang@mediatek.com>
-From: Stanley Chu <chu.stanley@gmail.com>
-Date: Wed, 27 Jul 2022 11:11:55 +0800
-Message-ID: <CAGaU9a9FG9DxNsPEC=DDE_ZENn9PGoeQy0BG9FG8p-trdmTNmQ@mail.gmail.com>
-Subject: Re: [PATCH v5] ufs: core: correct ufshcd_shutdown flow
-To: peter.wang@mediatek.com
-Cc: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org, 
-	"Martin K . Petersen" <martin.petersen@oracle.com>, Avri Altman <avri.altman@wdc.com>, 
-	alim.akhtar@samsung.com, "James E.J. Bottomley" <jejb@linux.ibm.com>, wsd_upstream@mediatek.com, 
-	linux-mediatek@lists.infradead.org, Chun-Hung Wu <chun-hung.wu@mediatek.com>, 
-	alice.chao@mediatek.com, cc.chou@mediatek.com, chaotian.jing@mediatek.com, 
-	jiajie.hao@mediatek.com, powen.kao@mediatek.com, qilin.tan@mediatek.com, 
-	lin.gui@mediatek.com, stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_201213_881648_ECA5CFB6 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220726_204155_929670_76BF999A 
+X-CRM114-Status: GOOD (  13.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,21 +79,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 27, 2022 at 11:10 AM <peter.wang@mediatek.com> wrote:
->
-> From: Peter Wang <peter.wang@mediatek.com>
->
-> After ufshcd_wl_shutdown set device power off and link off,
-> ufshcd_shutdown could turn off clock/power.
->
-> Also remove pm_runtime_get_sync.
-> The reason why here can remove pm_runtime_get_sync is because,
-> (1) ufshcd_wl_shutdown -> pm_runtime_get_sync, will resume hba->dev too.
-> (2) device resume(turn on clk/power) is not required, even if device is in RPM_SUSPENDED.
->
-> Fixes: b294ff3e3449 ("scsi: ufs: core: Enable power management for wlun")
-> Cc: <stable@vger.kernel.org> # 5.15.x
-> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+From: Peter Wang <peter.wang@mediatek.com>
 
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+There have a lockdep warning like below in current flow, and have deadlock issue.
+kworker/u16:0:  Possible unsafe locking scenario:
+
+kworker/u16:0:        CPU0                    CPU1
+kworker/u16:0:        ----                    ----
+kworker/u16:0:   lock(&hba->clk_scaling_lock);
+kworker/u16:0:                                lock(&hba->dev_cmd.lock);
+kworker/u16:0:                                lock(&hba->clk_scaling_lock);
+kworker/u16:0:   lock(&hba->dev_cmd.lock);
+kworker/u16:0:
+
+Before this patch clk_scaling_lock was held in reader mode during the ufshcd_wb_toggle() call.
+With this patch applied clk_scaling_lock is not held while ufshcd_wb_toggle() is called.
+
+This is safe because ufshcd_wb_toggle will held clk_scaling_lock in reader mode "again" in flow
+ufshcd_wb_toggle -> __ufshcd_wb_toggle -> ufshcd_query_flag_retry -> ufshcd_query_flag ->
+ufshcd_exec_dev_cmd -> down_read(&hba->clk_scaling_lock);
+The protect should enough and make sure clock is not change while send command.
+
+ufshcd_wb_toggle can protected by hba->clk_scaling.is_allowed to make sure
+ufshcd_devfreq_scale function not run concurrently.
+
+Fixes: 0e9d4ca43ba8 ("scsi: ufs: Protect some contexts from unexpected clock scaling")
+Cc: <stable@vger.kernel.org> # 5.15.x
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c | 27 ++++++++++++++++-----------
+ 1 file changed, 16 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index c7b337480e3e..aa57126fdb49 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -272,6 +272,7 @@ static void ufshcd_wb_toggle_flush_during_h8(struct ufs_hba *hba, bool set);
+ static inline void ufshcd_wb_toggle_flush(struct ufs_hba *hba, bool enable);
+ static void ufshcd_hba_vreg_set_lpm(struct ufs_hba *hba);
+ static void ufshcd_hba_vreg_set_hpm(struct ufs_hba *hba);
++static void ufshcd_clk_scaling_allow(struct ufs_hba *hba, bool allow);
+ 
+ static inline void ufshcd_enable_irq(struct ufs_hba *hba)
+ {
+@@ -1249,12 +1250,10 @@ static int ufshcd_clock_scaling_prepare(struct ufs_hba *hba)
+ 	return ret;
+ }
+ 
+-static void ufshcd_clock_scaling_unprepare(struct ufs_hba *hba, bool writelock)
++static void ufshcd_clock_scaling_unprepare(struct ufs_hba *hba)
+ {
+-	if (writelock)
+-		up_write(&hba->clk_scaling_lock);
+-	else
+-		up_read(&hba->clk_scaling_lock);
++	up_write(&hba->clk_scaling_lock);
++
+ 	ufshcd_scsi_unblock_requests(hba);
+ 	ufshcd_release(hba);
+ }
+@@ -1271,7 +1270,7 @@ static void ufshcd_clock_scaling_unprepare(struct ufs_hba *hba, bool writelock)
+ static int ufshcd_devfreq_scale(struct ufs_hba *hba, bool scale_up)
+ {
+ 	int ret = 0;
+-	bool is_writelock = true;
++	bool wb_toggle = false;
+ 
+ 	ret = ufshcd_clock_scaling_prepare(hba);
+ 	if (ret)
+@@ -1300,13 +1299,19 @@ static int ufshcd_devfreq_scale(struct ufs_hba *hba, bool scale_up)
+ 		}
+ 	}
+ 
+-	/* Enable Write Booster if we have scaled up else disable it */
+-	downgrade_write(&hba->clk_scaling_lock);
+-	is_writelock = false;
+-	ufshcd_wb_toggle(hba, scale_up);
++	/* Disable clk_scaling until ufshcd_wb_toggle finish */
++	hba->clk_scaling.is_allowed = false;
++	wb_toggle = true;
+ 
+ out_unprepare:
+-	ufshcd_clock_scaling_unprepare(hba, is_writelock);
++	ufshcd_clock_scaling_unprepare(hba);
++
++	/* Enable Write Booster if we have scaled up else disable it */
++	if (wb_toggle) {
++		ufshcd_wb_toggle(hba, scale_up);
++		ufshcd_clk_scaling_allow(hba, true);
++	}
++
+ 	return ret;
+ }
+ 
+-- 
+2.18.0
+
 
