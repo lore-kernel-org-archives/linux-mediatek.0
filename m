@@ -4,65 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31EF7C19F2B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 16:01:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6F1C04A68
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 18:12:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kUIs7DBnCsR9cP62lpQKrDWjtHiCWXhqawFuOwvIork=; b=2UxcT6fSAPmsfRxHa9Ml+jVf0E
-	1dMV6Jeql4RbKjK7Ld/doLqYJA3YxVjDRIPCitKPR4He4f81tNJoWnqSbMrS4AVGevDK49E2yeJnW
-	6PVDsct6WD0TkZU5pFSW+Vqu+ymTIKzT1ezyhZTbnIU40ZqF2X+Sl4GWKa4Orwkpu9nWd/a6qriQL
-	/NW8uzkwc16gNXj4Tmxl1LjaeM/TRe9rCZQqoFa8l5WHuPnGfISHi5hViR1ShFDg6yZWbUuWqORvc
-	VNwENpjHywAtqtIWcjdEI9q725kz99qUpZ9Vazyxk7CTV8zemauJTEmlcnJYVqxPPJ2Kp/cpPWtyy
-	oQ9wN3zA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RNVMJ4oZ8yHzMS/5F5vQFWD6tQYWHNz7yT3+sY7HxXA=; b=VOcmHYL+L9wtT9KA4YZ9fCkNP+
+	BAsIAFilmx2dbH2R/yaSE6CdbyGvnYZeOL15/JIhidEcapDLvZH763uJUK410t/rY4Vx/OkMktGeP
+	9EHCHmjeunjV5f451QYpn+Z84GnXFE2IHuGa4XHLxKmb38+nSgQZVz+pTgLwnq0NW3IEvIS5MW4hS
+	Cxgwy4CAFWfFlVEZtkhOIaTVwGWtd6f7eC/LsCmYyuXddhHaCHwPrceQaJawyxoT9U+RPzW0AUcQ8
+	1oqYqVp+TN28T7QVHbdiOJ/1Pd3KLSsiXkSjoIu1CJpgOfFLgFr16+ouCPXMzAbFNSKSMN/D9QKTq
+	krdFfqjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGjTI-00FJ3S-PC; Wed, 27 Jul 2022 16:01:16 +0000
-Received: from mail-io1-f43.google.com ([209.85.166.43])
+	id 1oGlWH-00GSpE-1N; Wed, 27 Jul 2022 18:12:29 +0000
+Received: from mail-pf1-f175.google.com ([209.85.210.175])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGjT1-00FIvx-LS; Wed, 27 Jul 2022 16:01:00 +0000
-Received: by mail-io1-f43.google.com with SMTP id 125so13867152iou.6;
-        Wed, 27 Jul 2022 09:00:59 -0700 (PDT)
+	id 1oGlWD-00GSkY-0G
+	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 18:12:27 +0000
+Received: by mail-pf1-f175.google.com with SMTP id b133so16802782pfb.6
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Jul 2022 11:12:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=kUIs7DBnCsR9cP62lpQKrDWjtHiCWXhqawFuOwvIork=;
-        b=2lg52sl6iM++7En0aMYCdjouBhEoDOij6jlbyQO/1+68KZkvmZk6madWq0zgZOPvNI
-         Uj191xWztfeXcpEfHyT4yaV1kD6pFOYkh5OfaVeQzW0An53c8mOl5/kNDmMokWPNWsaa
-         vZH5ztja/mZOkyi9T+IxgIdEXQlFpZumRL1S/W5g1k5D2ommiixhBm4nFGgnMZ/UaYRi
-         Ivhu1UAKBSVtPVVABps2oMqfq0yuQ9Du/9g3yLsT4e3nK6XqZdTBtUTyfgYCc3epHO1Z
-         AK2j6OAsj8FM8JflNMQKlA5kOiHJ73L7myjRYkAy4EgRNYFCfiehXxi/jW9x8g3RyWX7
-         B0Wg==
-X-Gm-Message-State: AJIora+KBqGePZXkyXu4A3GmNzn1j4HqMQzH6cks7DofpgimDnKpvDPa
-	AL2U6MIeoDlhH0ub9fm63Q==
-X-Google-Smtp-Source: AGRyM1sWxuWqBZ+/pnkqKc4dOYIKgmM7u9Z/u1EpfWc5rboGgsQ69l5hTpQ6oZfVbOxSBQsTzRwDwQ==
-X-Received: by 2002:a05:6638:d15:b0:341:610d:5472 with SMTP id q21-20020a0566380d1500b00341610d5472mr9165526jaj.188.1658937658422;
-        Wed, 27 Jul 2022 09:00:58 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id b8-20020a920b08000000b002dc06989d86sm7017921ilf.52.2022.07.27.09.00.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Jul 2022 09:00:58 -0700 (PDT)
-Received: (nullmailer pid 2755041 invoked by uid 1000);
-	Wed, 27 Jul 2022 16:00:55 -0000
-Date: Wed, 27 Jul 2022 10:00:55 -0600
-From: Rob Herring <robh@kernel.org>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.org, George Sun <george.sun@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, linux-kernel@vger.kernel.org, Nicolas Dufresne <nicolas@ndufresne.ca>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Irui Wang <irui.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-media@vger.kernel.org, Chen-Yu Tsai <wenst@chromium.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-mediatek@lists.infradead.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, devicetree@vger.kernel.org, Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH v2, 1/3] dt-bindings: media: mediatek: vcodec: add
- decoder dt-bindings for mt8188
-Message-ID: <20220727160055.GA2755004-robh@kernel.org>
-References: <20220727023721.31945-1-yunfei.dong@mediatek.com>
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=RNVMJ4oZ8yHzMS/5F5vQFWD6tQYWHNz7yT3+sY7HxXA=;
+        b=2FmCRM5LoEnmWQ+DDgprGi5oZFRUtup3XSPZp211EhhOgj4q3iyIQO/mkR73Znvzg9
+         B0q6NzSfr8mrJdr6m6whgEds0I90veUSzwsL14SWBvunOns7bfsftSX9YF5fRXM81z9a
+         PBkrpgEV7ZcSEnNDCDAapVzHdUf7HPD9jPuT3eySIGJ/atD+4FiH5CSEPTqZ7u/swdbQ
+         GAguWy17zAh7+uBIPy9ybEqOaz5hLjgzwTxLPgxcKnG9yXtsMACZRMngs76HijI8zEOD
+         /I7U5ju7H2yrAd3cn6vxcJ/JZy02717IVSHXC9zHWoPuMKMBzwwYyQD35Sb79ahlPRtq
+         3jFQ==
+X-Gm-Message-State: AJIora9JTrZTzeipEwpH3l68IrchTA/OIYCV8xdse2V1/b5P9bSlPty0
+	WeXYobpV/sExUxL1StD/XFM=
+X-Google-Smtp-Source: AGRyM1usI0Gt657atV+HPb4lgLIOIMc5MiSpXSfWbHnB7XKqfY5gstwVxG7jNUFV+C3r+yvf7zuFPQ==
+X-Received: by 2002:a05:6a00:1946:b0:52a:e551:2241 with SMTP id s6-20020a056a00194600b0052ae5512241mr22626795pfk.29.1658945539275;
+        Wed, 27 Jul 2022 11:12:19 -0700 (PDT)
+Received: from ?IPV6:2620:15c:211:201:a84e:2ec1:1b57:b033? ([2620:15c:211:201:a84e:2ec1:1b57:b033])
+        by smtp.gmail.com with ESMTPSA id h13-20020a170902680d00b0016ce31cfea6sm14180388plk.159.2022.07.27.11.12.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 27 Jul 2022 11:12:18 -0700 (PDT)
+Message-ID: <5fab3d4f-914e-63f8-a3e8-7dd92ecdb04a@acm.org>
+Date: Wed, 27 Jul 2022 11:12:15 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220727023721.31945-1-yunfei.dong@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v4] ufs: core: fix lockdep warning of clk_scaling_lock
+Content-Language: en-US
+To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, stable@vger.kernel.org
+References: <20220727032110.31168-1-peter.wang@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20220727032110.31168-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220727_090059_722517_572025C3 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20220727_111225_077944_877FDB51 
+X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,15 +85,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 27 Jul 2022 10:37:19 +0800, Yunfei Dong wrote:
-> Add decoder document in dt-bindings yaml file for mt8188 platform.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../bindings/media/mediatek,vcodec-subdev-decoder.yaml           | 1 +
->  1 file changed, 1 insertion(+)
-> 
+On 7/26/22 20:21, peter.wang@mediatek.com wrote:
+> -	/* Enable Write Booster if we have scaled up else disable it */
+> -	downgrade_write(&hba->clk_scaling_lock);
+> -	is_writelock = false;
+> -	ufshcd_wb_toggle(hba, scale_up);
+> +	/* Disable clk_scaling until ufshcd_wb_toggle finish */
+> +	hba->clk_scaling.is_allowed = false;
+> +	wb_toggle = true;
+>   
+>   out_unprepare:
+> -	ufshcd_clock_scaling_unprepare(hba, is_writelock);
+> +	ufshcd_clock_scaling_unprepare(hba);
+> +
+> +	/* Enable Write Booster if we have scaled up else disable it */
+> +	if (wb_toggle) {
+> +		ufshcd_wb_toggle(hba, scale_up);
+> +		ufshcd_clk_scaling_allow(hba, true);
+> +	}
 
-Acked-by: Rob Herring <robh@kernel.org>
+I'm concerned that briefly disabling clock scaling may cause the clock 
+to remain at a high frequency even if it shouldn't. Has the following 
+approach been considered? Instead of moving the 
+ufshcd_clk_scaling_allow() call, convert dev_cmd.lock into a semaphore, 
+lock it near the start of ufshcd_devfreq_scale() and unlock it near the 
+end of the same function.
+
+Thanks,
+
+Bart.
 
