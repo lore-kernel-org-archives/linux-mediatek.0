@@ -4,67 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B0CC04A68
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 11:16:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BCDAC04A68
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 11:26:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0rhMVF1wLt9+xBoym/qy6Dgu5kHctelsoD3CJERk8NQ=; b=Bdq58QdGAlOM5rV74s2TUPmj6Q
-	Zn+YmVMFY0wt7CnPh2ZupxGS4P8ESQ2MTvnJQAFN+a9nupQUtIIA7MUJA8RtG1aaukem+1zbGyTRN
-	n0Hpi/AHd/o6Brp4pjYvAK9wvS0c6ZsKGQc4OM/UMvU7m4nEaJKTi/n++exG9fGS+153lr4XCGdQF
-	bsXVE81wtIKL+XQ+lszPhBw17uczLo5XbhhxddRFVCwTPuavBfj3HuqQ0nAl2refXClYP0k1xx/4k
-	vRTgi9FzNwGGfWUPoFNZQQu+akVhsXhM2xjHWkqhYOXT34FFBn8NwM7FmW9VJn9vm7S5ndZ7NynHk
-	ktPNd+iw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1fQtbU2xCnCtNAD1uoQcCQ0vKe7X6uYstVN3t9WTs5Q=; b=cGT7492DpKpIH0bJmCce36D7q7
+	jBsFFyY9x5sElrK6n6w8jc1Xnp3A1SCSf9qMJREhP+9oaT+6Uepf/eGSWaNZbIBTYXvahZnUk3Jlg
+	feDmZxLdti599a6vJJsAbyl/g74N+6Qr1SGzVz+lijyIfiVDZfYj9ji4+McwTvmuFWAaCx9jjhh9G
+	xMPJpo03n3PrR/AVKjKlo7ZXoK5h2u1KNsG8C9TeFUUDT+UJOhv1xh8gUPLYcsiPUvy0Bh7YKWdAG
+	DcUw0vk3meHm714yKM6LTcAOKz9KKvZsquBoyiKPMPbkwEhSxvAcmUVkdCwJlzXp5usQbc6xGJwLn
+	MUL8IgTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGf1U-00CqKj-Bm; Wed, 27 Jul 2022 11:16:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oGfBg-00Cw37-0B; Wed, 27 Jul 2022 11:26:48 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGf1R-00CqIB-BN
-	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 11:16:14 +0000
-X-UUID: 12a177ee54a74195a7136282b4f0526e-20220727
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:6f197efe-1db0-40ed-80ea-6a47e6b0e103,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:0f94e32,CLOUDID:13b20616-4d40-4085-b6be-c498a879f53d,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 12a177ee54a74195a7136282b4f0526e-20220727
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chengci.xu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 143384532; Wed, 27 Jul 2022 04:16:08 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 27 Jul 2022 18:46:03 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 27 Jul 2022 18:46:03 +0800
-From: Chengci.Xu <chengci.xu@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>
-CC: <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chengci.Xu
-	<chengci.xu@mediatek.com>
-Subject: [PATCH v3 2/3] memory: mtk-smi: Add enable IOMMU SMC command for MM master
-Date: Wed, 27 Jul 2022 18:45:40 +0800
-Message-ID: <20220727104541.7309-3-chengci.xu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220727104541.7309-1-chengci.xu@mediatek.com>
-References: <20220727104541.7309-1-chengci.xu@mediatek.com>
+	id 1oGfBc-00CvyA-Gj
+	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 11:26:46 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 5454A37643;
+	Wed, 27 Jul 2022 11:26:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1658921199; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=1fQtbU2xCnCtNAD1uoQcCQ0vKe7X6uYstVN3t9WTs5Q=;
+	b=W20gMLv5MgxHnYrjaIk4GhYWWerWWCJzbWlxbauNNrFh9+sinnpCWncbtnCB/UECrYC/FX
+	FM0QMO7UWiGoSfi/Mp7qfqGU0jini/+MYyDpISz+IoG3CnBYzO6newaW9gN2ZadkHB+bi0
+	+L+ReXGXAX9roAWPIvEnstD/qhED1RY=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1658921199;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=1fQtbU2xCnCtNAD1uoQcCQ0vKe7X6uYstVN3t9WTs5Q=;
+	b=laf3znNtppYHOQxA4xWxUVO1BH46vIUnZ9NZdTGuQXQ7+8ubLKrlLcAhF/0m0XVkHGHTCs
+	AxaMvtH82UVWxBDg==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 1106A13A8E;
+	Wed, 27 Jul 2022 11:26:39 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id yIyJAu8g4WLTfwAAMHmgww
+	(envelope-from <jdelvare@suse.de>); Wed, 27 Jul 2022 11:26:39 +0000
+Date: Wed, 27 Jul 2022 13:26:37 +0200
+From: Jean Delvare <jdelvare@suse.de>
+To: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Chenglin Xu
+ <chenglin.xu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH RFC] regulator: mt6380: Fix unused array warning
+Message-ID: <20220727132637.76d6073f@endymion.delvare>
+Organization: SUSE Linux
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220727_041613_414314_F390944E 
-X-CRM114-Status: GOOD (  13.18  )
+X-CRM114-CacheID: sfid-20220727_042644_727729_76DC9033 
+X-CRM114-Status: GOOD (  15.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,99 +87,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For concerns about security, the register to enable/disable IOMMU of
-SMI LARB should only be configured in secure world. Thus, we add some
-SMC command for multimedia master to enable/disable MM IOMMU in ATF by
-setting the register of SMI LARB. This function is prepared for MT8188.
+With the following configuration options:
+CONFIG_OF is not set
+CONFIG_REGULATOR_MT6380=3Dy
+we get the following build warning:
 
-Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
+  CC      drivers/regulator/mt6380-regulator.o
+drivers/regulator/mt6380-regulator.c:322:34: warning: =E2=80=98mt6380_of_ma=
+tch=E2=80=99 defined but not used [-Wunused-const-variable=3D]
+
+Fix this by annotating that array with __maybe_unused, as done in
+various regulator drivers.
+
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+Reported-by: kernel test robot <lkp@intel.com>
+Link: https://lore.kernel.org/all/202207240252.ZY5hSCNB-lkp@intel.com/
+Cc: Liam Girdwood <lgirdwood@gmail.com>
+Cc: Mark Brown <broonie@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chenglin Xu <chenglin.xu@mediatek.com>
 ---
- drivers/memory/mtk-smi.c                 | 11 +++++++++++
- include/linux/soc/mediatek/mtk_sip_svc.h |  3 +++
- include/soc/mediatek/smi.h               |  7 +++++++
- 3 files changed, 21 insertions(+)
+This assumes that the mt6380 driver can be used without OF support.
+However, I can't find any in-tree piece of code instantiating the
+"mt6380-regulator" platform device by name. So unless there's an
+out-of-tree user, a better fix would be to remove mt6380_platform_ids
+and make the driver depend on OF. Chenglin, would that be OK with
+you?
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index d7cb7ead2ac7..41ce66c39123 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -3,6 +3,7 @@
-  * Copyright (c) 2015-2016 MediaTek Inc.
-  * Author: Yong Wu <yong.wu@mediatek.com>
-  */
-+#include <linux/arm-smccc.h>
- #include <linux/clk.h>
- #include <linux/component.h>
- #include <linux/device.h>
-@@ -14,6 +15,7 @@
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-+#include <linux/soc/mediatek/mtk_sip_svc.h>
- #include <soc/mediatek/smi.h>
- #include <dt-bindings/memory/mt2701-larb-port.h>
- #include <dt-bindings/memory/mtk-memory-port.h>
-@@ -89,6 +91,7 @@
- #define MTK_SMI_FLAG_THRT_UPDATE	BIT(0)
- #define MTK_SMI_FLAG_SW_FLAG		BIT(1)
- #define MTK_SMI_FLAG_SLEEP_CTL		BIT(2)
-+#define MTK_SMI_FLAG_SEC_REG		BIT(3)
- #define MTK_SMI_CAPS(flags, _x)		(!!((flags) & (_x)))
- 
- struct mtk_smi_reg_pair {
-@@ -235,6 +238,7 @@ static void mtk_smi_larb_config_port_gen2_general(struct device *dev)
- 	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
- 	u32 reg, flags_general = larb->larb_gen->flags_general;
- 	const u8 *larbostd = larb->larb_gen->ostd ? larb->larb_gen->ostd[larb->larbid] : NULL;
-+	struct arm_smccc_res res;
- 	int i;
- 
- 	if (BIT(larb->larbid) & larb->larb_gen->larb_direct_to_common_mask)
-@@ -259,6 +263,13 @@ static void mtk_smi_larb_config_port_gen2_general(struct device *dev)
- 		reg |= BANK_SEL(larb->bank[i]);
- 		writel(reg, larb->base + SMI_LARB_NONSEC_CON(i));
- 	}
-+
-+	if (MTK_SMI_CAPS(flags_general, MTK_SMI_FLAG_SEC_REG)) {
-+		arm_smccc_smc(MTK_SIP_KERNEL_IOMMU_CONTROL, IOMMU_ATF_CMD_CONFIG_SMI_LARB,
-+			      larb->larbid, (u32)(*larb->mmu), 0, 0, 0, 0, &res);
-+		if (res.a0 != 0)
-+			dev_err(dev, "Enable iommu fail, ret %ld\n", res.a0);
-+	}
- }
- 
- static const u8 mtk_smi_larb_mt8195_ostd[][SMI_LARB_PORT_NR_MAX] = {
-diff --git a/include/linux/soc/mediatek/mtk_sip_svc.h b/include/linux/soc/mediatek/mtk_sip_svc.h
-index 082398e0cfb1..0761128b4354 100644
---- a/include/linux/soc/mediatek/mtk_sip_svc.h
-+++ b/include/linux/soc/mediatek/mtk_sip_svc.h
-@@ -22,4 +22,7 @@
- 	ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, MTK_SIP_SMC_CONVENTION, \
- 			   ARM_SMCCC_OWNER_SIP, fn_id)
- 
-+/* IOMMU related SMC call */
-+#define MTK_SIP_KERNEL_IOMMU_CONTROL	MTK_SIP_SMC_CMD(0x514)
-+
- #endif
-diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
-index 11f7d6b59642..8c781b7bd88d 100644
---- a/include/soc/mediatek/smi.h
-+++ b/include/soc/mediatek/smi.h
-@@ -9,6 +9,13 @@
- #include <linux/bitops.h>
- #include <linux/device.h>
- 
-+/* IOMMU & SMI ATF CMD */
-+
-+enum IOMMU_ATF_CMD {
-+	IOMMU_ATF_CMD_CONFIG_SMI_LARB,		/* For mm master to en/disable iommu */
-+	IOMMU_ATF_CMD_COUNT,
-+};
-+
- #if IS_ENABLED(CONFIG_MTK_SMI)
- 
- #define MTK_SMI_MMU_EN(port)	BIT(port)
--- 
-2.25.1
+ drivers/regulator/mt6380-regulator.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+--- linux-5.18.orig/drivers/regulator/mt6380-regulator.c	2022-07-27 11:55:2=
+1.672421481 +0200
++++ linux-5.18/drivers/regulator/mt6380-regulator.c	2022-07-27 12:01:53.151=
+833378 +0200
+@@ -319,7 +319,7 @@ static const struct platform_device_id m
+ };
+ MODULE_DEVICE_TABLE(platform, mt6380_platform_ids);
+=20
+-static const struct of_device_id mt6380_of_match[] =3D {
++static const struct of_device_id  __maybe_unused mt6380_of_match[] =3D {
+ 	{ .compatible =3D "mediatek,mt6380-regulator", },
+ 	{ /* sentinel */ },
+ };
+
+
+--=20
+Jean Delvare
+SUSE L3 Support
 
