@@ -4,88 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AE77C04A68
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 10:05:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7808AC04A68
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 10:22:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B+itH6nCjnZkG3yJTUkgH3T3RkzlJIEijujwFkNTeHs=; b=sv+knzbGFXBvWePb9gBG9b8kcT
-	qb7VPgmXms7tjOPlKHS2SFlhrow7L2L//VFLo7/JOUSvtZemmMSmVDoFr8XGOijCYGsory+8H3ypG
-	2GbjQbNj9ZnGrfQlwRUxuGSJ4h9hM8pSsLoDZE7IUAUm28CrEDefZDhZdSW7FpHe1xZWqU48OG8go
-	jkkK9EJKsNvKzrPqstjKMMbFrZ6H5AFSfhLDNko7U55TARsTTN7I9jDrvIWcQ1JrJ4OLK+/I2nbtG
-	zFNq5VYHi9Cw/4H+RIMt4VrHKaxTH//JyJmuKyebFBEkmSS/2gVxfHqIsxd7H1KfG+TJnKXY4vYHz
-	II6APzDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xA56TSbZash0MJgrqcSMCfTXB1ek1UsvaM8PqDjWVuM=; b=TM8TmElowTJcWfALVRQYUUbSmC
+	1at+0jZLE5hX/jiRiMHUANnlP/Qy32DUEg1S+w8C71GkurgodMo/nt6JZR7cTLUIRH2Zv7ayk/TIz
+	uKifBnNoR2N4Q1jPcSj+GPutHkeVoPnS/ok4a8vRs4Y6ezWr+VfIEMWQbOW5/Nw9AFsrQReaNbjyn
+	37vTi/x1+vIqKMJ+RWNlsPjZib71pv3N7lbLGXpFcttud5NT/GQuRzAgDtzJzOn5DQiFQE8sqQCYq
+	DVsmQ9Q+eFMGbPIb+XMvuSJ2n8mHvqAG5fDVTMbx+FWB/lz9PiehtKLefoyE4WjXzSeQvlUp2GuY3
+	LwhIlTHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGduS-00C9SH-Vq; Wed, 27 Jul 2022 10:04:56 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1oGeBT-00CJUt-4M; Wed, 27 Jul 2022 10:22:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGduA-00C9FG-RF; Wed, 27 Jul 2022 10:04:40 +0000
-Received: by mail-ed1-x534.google.com with SMTP id w5so8314560edd.13;
-        Wed, 27 Jul 2022 03:04:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=B+itH6nCjnZkG3yJTUkgH3T3RkzlJIEijujwFkNTeHs=;
-        b=cG/IRfZwWO83wiK8SoAZgFegp/oSsSTdk6uMQXsyEzBbyDQ15vq0yzVYGG9pEdfz0Z
-         ZOOouCQXEYxdPO6EleD7jGQocetQsqrcx2C7y57nBleaH3XWNh/p9EZXeeMxomYeea0n
-         ccGpQbPM3KyJhbgX8FqfpXge+UD+lyXVuyBlv7AUvzyTYioFKkLUVdtqpGd8x6O73yOd
-         o3BHcOkkAf6zj76YWhjS7ePObKwBxNP5KslRU9Zg6sRbYapoWTeSb3rLO4m4qR/dd5mY
-         Xo/AD9faus7q33rPJGp/5b3BvXu4+tVOAzawSfBgIW64yo4mi098uiZmqwCRYHPukGG4
-         n1TA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=B+itH6nCjnZkG3yJTUkgH3T3RkzlJIEijujwFkNTeHs=;
-        b=x8lyF4jKAnKIXAX95vx19Ymp274oOEsBZzt8aPG7VzbW1D0mjseA81YVt9v9qkhprm
-         ppiVPzxo4dKajhILrzHGEvy41xy4d2zOZC/00T/zbdFZr7BqciVSXVJ51AYIOI7BOpfA
-         LeqNDpon85qkA/8EM48Z/wrRmQ4JogrcKLedoueyQ5576DVj0HvZcSNb41WA8E9t+2oe
-         pUdQt8X7skBoWRWaIBvdWDiX6A203dPZrLsK9tOktCGsMtmenTJO8L3mFKBPN9RsEZWu
-         sCd7RpUmz7kREmFGrzGq2Ln8yhnhsOwFZi/b0JvFBr65oytQQci1E+fcPKqpD5kT2pdl
-         Ed6w==
-X-Gm-Message-State: AJIora9Lb0UjrDRpupNkfXt0mQJC5ubXRNgWa1dOurEvUYgA4Bppe6KU
-	9yJs47EN60wT6ajenhqBpe1uml8NYqCYR3MHazo=
-X-Google-Smtp-Source: AGRyM1uwEejs5nDWqG+s979XFdwYwQmE2ZsEpW0n4nQQ7TCJsCqlYSNktlo34cJclnigei8K3rZk9qCXUcGHByv5Ilw=
-X-Received: by 2002:a05:6402:501d:b0:437:e000:a898 with SMTP id
- p29-20020a056402501d00b00437e000a898mr22474219eda.265.1658916275876; Wed, 27
- Jul 2022 03:04:35 -0700 (PDT)
+	id 1oGeBQ-00CJSR-OL
+	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 10:22:30 +0000
+X-UUID: 7c9efacadedd4f3692d0838f37434716-20220727
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:2ca0f67b-9ff7-493a-a469-65e39ad01bea,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:d87af3cb-7c9b-4dbc-a9d4-00659d6b7a90,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 7c9efacadedd4f3692d0838f37434716-20220727
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <hui.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1337777605; Wed, 27 Jul 2022 03:22:21 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Wed, 27 Jul 2022 18:21:42 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 27 Jul 2022 18:21:41 +0800
+From: Hui Liu <hui.liu@mediatek.com>
+To: <linus.walleij@linaro.org>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<hui.liu@mediatek.com>, <jianguo.zhang@mediatek.com>,
+	<zhiyong.tao@mediatek.com>, <sean.wang@mediatek.com>,
+	<linux-gpio@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>
+Subject: [PATCH v2 0/2] MediaTek pinctrl patch on mt8188
+Date: Wed, 27 Jul 2022 18:21:38 +0800
+Message-ID: <20220727102140.6676-1-hui.liu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-12-peterwu.pub@gmail.com>
- <CAHp75VewxvEDGoPdRBvLSLQOQ6OZzVft1ce3DkF7MK_O1VXZkQ@mail.gmail.com>
- <CABtFH5+im7=vyKLUqztYeAX81e7ETFc+9o7y0seg2pxH0PEnUQ@mail.gmail.com>
- <CAHp75Vd4ApTju2LCCHQ1skgOjttwWo5b2NF3u+zbGyVnnFKNhA@mail.gmail.com> <CABtFH5+bQx5ym5jOzCPJWbZ23WtGYYwS7cMRt2g3ipEEqTb3JA@mail.gmail.com>
-In-Reply-To: <CABtFH5+bQx5ym5jOzCPJWbZ23WtGYYwS7cMRt2g3ipEEqTb3JA@mail.gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Wed, 27 Jul 2022 12:03:59 +0200
-Message-ID: <CAHp75Vf7jeG_DmD3sZnerFDEVpMxDiL9DkMBddAk-kJH7Hfttg@mail.gmail.com>
-Subject: Re: [PATCH v6 11/13] leds: rgb: mt6370: Add MediaTek MT6370 current
- sink type LED Indicator support
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
-	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220727_030438_912440_DFF3F700 
-X-CRM114-Status: GOOD (  28.02  )
+X-CRM114-CacheID: sfid-20220727_032228_815145_C0DD603F 
+X-CRM114-Status: UNSURE (   8.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,52 +78,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 27, 2022 at 9:37 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> On Tue, Jul 26, 2022 at 8:18 PM Andy Shevchenko
-> <andy.shevchenko@gmail.com> wrote:
->
-> ...
->
-> > > Just for saving memory space.
-> > > Because these led_classdevs do not be used at the same time.
-> > > Or do you think it would be better to rewrite it as follows?
-> > > -------------------------------------------------------------------------------------
-> > > struct mt6370_led {
-> > >        struct led_classdev isink;
-> > >        struct led_classdev_mc mc;
-> > >        struct mt6370_priv *priv;
-> > >        u32 default_state;
-> > >        u32 index;
-> > > };
-> > > -------------------------------------------------------------------------------------
-> >
-> > You obviously didn't get what I'm talking about...
-> > Each union to work properly should have an associated variable that
-> > holds the information of which field of the union is in use. Do you
-> > have such a variable? If not, how does your code know which one to
-> > use? If yes, add a proper comment there.
-> >
->
-> Ummm... from my understanding,
-> if the colors of these four LEDs are set to 'LED_COLOR_ID_RGB' or
-> 'LED_COLOR_ID_MULTI' in DT,
-> their 'led->index' will be set to 'MT6370_VIRTUAL_MULTICOLOR' in
-> 'mt6370_leds_probe()'.
-> If so, these led devices will be set as 'struct led_classdev_mc' and
-> use related ops functions in 'mt6370_init_led_properties()'.
-> Instead, they whose 'led->index' is not 'MT6370_VIRTUAL_MULTICOLOR'
-> will be set as 'struct led_classdev'.
-> So, maybe the member 'index' of the 'struct mt6370_led' is what you
-> describe the information of which field of the union is in use?
+This series include 2 patches:
+1.Add pinmux definition file and pinctrl binding document for mt8188.
+2.Add pinctrl driver for mt8188.
 
-From this description it sounds like it is.
+Changes in patch v2:
+1.Change pinmux definition file name to mediatek,mt8188-pinfunc.h.
+2.Change binding document name to mediatek,mt8188-pinctrl.yaml.
+3.Update yaml description.
 
-> I will add the proper comment here to describe this thing. I'm so
-> sorry for misunderstanding your mean last time.
+Changes in patch v1:
+1.Add mt8188 pinmux definition file.
+2.Add mt8188 binding document.
+3.Add mt8188 pinctrl drivers.
 
-Yes, please add a compressed version of what you said above to the code.
+*** BLURB HERE ***
 
--- 
-With Best Regards,
-Andy Shevchenko
+Hui.Liu (2):
+  dt-bindings: pinctrl: add support for mediatek mt8188
+  pinctrl: mediatek: add mt8188 driver
+
+ .../pinctrl/mediatek,mt8188-pinctrl.yaml      |  238 ++
+ drivers/pinctrl/mediatek/Kconfig              |   12 +
+ drivers/pinctrl/mediatek/Makefile             |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt8188.c     | 1669 ++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h | 2260 +++++++++++++++++
+ .../pinctrl/mediatek,mt8188-pinfunc.h         | 1280 ++++++++++
+ 6 files changed, 5460 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8188.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h
+ create mode 100644 include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
+
+--
+2.18.0
+
+
 
