@@ -4,71 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF33AC19F21
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 05:41:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07F31C19F21
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 06:24:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uUzSDsfDvANs7/QS0dGPJJdXygzuIipD+yld2skl3n0=; b=inZGfLQDyGeXo++WhzJzDpZqZV
-	iAWlq+Hk/T6Zb4FzKXPAydNUmT7p/7KnW7h749XHVhzWO/rAIgiX18hS299yDa05RuQgldZ5oiJDn
-	RYygI5NdKp9d8JXZwguLqfzCcKRYx5QXp+76CWNktv4VZxtfo4uO5DN3hvYPqB3Jq6BuaCg/NANvx
-	ndiHCIez4dTlKPx18TjPUJPVdh0w54nuq53ksVIyWP6ttq9v/e0Li6/JT9zlRdz7iDANqMIMgZmYU
-	EbRJU2Fm+Rb+i/15/q9j+7aUGOlaTg6fe4moG/EsIEp0bIy/CTXweB6BtH+LWhTSNxJdmMNOxHl0u
-	lwi0dnCw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/vfLf24cwT6rBteDaJGXNOv+RbBhl3Hla5wAzuHFaHE=; b=BNbm1hnsfPCeUHbP9MAYCuhBF8
+	jIupCAphQ8d5ifqA7ATZ+3p7mGxRjAhtiIakhwXmLaDgocnJLfYypzM6T4Iyh31ecp48c8k8Itcal
+	Z3N/TUaR9lDMOVkfU+5JVJsau7Xx4SlzSc09GgZA9tlM3UnFp7rZ0nTu+X/VizTasc22wC2tV4Cux
+	zZg0+/SW3OthcLznUfZWOumzc3Gt3zhPcZ5jusSLIRBR5Nmd6t62A0Tqmcazo+5eww0lUyYxtWwj0
+	2GoMSO96uZtbX2UqToeSAcZveUbtYyH+Po4qf8jC+s32a2NILMtJDi235fRAdJhtISJgaumjnHHAc
+	pLmX3pxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGZnq-009YNb-OR; Wed, 27 Jul 2022 05:41:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oGaSc-009vJU-3q; Wed, 27 Jul 2022 06:23:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGZnn-009YLu-VU; Wed, 27 Jul 2022 05:41:49 +0000
-X-UUID: fa0113b7d8354af6a476ed24986fa763-20220726
+	id 1oGaSZ-009vHS-Sv; Wed, 27 Jul 2022 06:23:57 +0000
+X-UUID: dc2694f89d504a85975dd502ec73ff60-20220726
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:1f520cfe-ac9b-4a5f-b3cf-563afb48ea14,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:3f5b6559-93be-4438-8a5c-ffe101fa9b26,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:2826fd15-4d40-4085-b6be-c498a879f53d,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:df71eccb-7c9b-4dbc-a9d4-00659d6b7a90,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: fa0113b7d8354af6a476ed24986fa763-20220726
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
+X-UUID: dc2694f89d504a85975dd502ec73ff60-20220726
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <mingjia.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1671439898; Tue, 26 Jul 2022 22:41:43 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 27 Jul 2022 12:50:38 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Wed, 27 Jul 2022 12:50:38 +0800
-From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <daniel@ffwll.ch>,
-	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<mripard@kernel.org>, <tzimmermann@suse.de>, <matthias.bgg@gmail.com>,
-	<deller@gmx.de>, <airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<ck.hu@mediatek.com>, <liangxu.xu@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	with ESMTP id 1488576829; Tue, 26 Jul 2022 23:23:47 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Wed, 27 Jul 2022 14:13:13 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 27 Jul 2022 14:13:12 +0800
+From: Mingjia Zhang <mingjia.zhang@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+	<acourbot@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, "Hans
+ Verkuil" <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+	<xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+	<frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
+	<dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>, "Steve
+ Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
-	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v15 04/11] video/hdmi: Add audio_infoframe packing for DP
-Date: Wed, 27 Jul 2022 12:50:28 +0800
-Message-ID: <20220727045035.32225-5-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220727045035.32225-1-rex-bc.chen@mediatek.com>
-References: <20220727045035.32225-1-rex-bc.chen@mediatek.com>
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH, v2] media: mediatek: vcodec: Add to support VP9 inner racing mode
+Date: Wed, 27 Jul 2022 14:13:10 +0800
+Message-ID: <20220727061310.2307-1-mingjia.zhang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_224148_026697_15B55B38 
-X-CRM114-Status: GOOD (  20.47  )
+X-CRM114-CacheID: sfid-20220726_232355_951420_08DF07BB 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,191 +86,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Markus Schneider-Pargmann <msp@baylibre.com>
+In order to reduce decoder latency, enable VP9 inner racing mode.
+Send lat trans buffer information to core when trigger lat to work,
+need not to wait until lat decode done.
 
-Similar to HDMI, DP uses audio infoframes as well which are structured
-very similar to the HDMI ones.
-
-This patch adds a helper function to pack the HDMI audio infoframe for
-DP, called hdmi_audio_infoframe_pack_for_dp().
-hdmi_audio_infoframe_pack_only() is split into two parts. One of them
-packs the payload only and can be used for HDMI and DP.
-
-Also constify the frame parameter in hdmi_audio_infoframe_check() as
-it is passed to hdmi_audio_infoframe_check_only() which expects a const.
-
-Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Signed-off-by: mingjia zhang <mingjia.zhang@mediatek.com>
 ---
- drivers/video/hdmi.c         | 82 +++++++++++++++++++++++++++---------
- include/drm/display/drm_dp.h |  2 +
- include/linux/hdmi.h         |  7 ++-
- 3 files changed, 71 insertions(+), 20 deletions(-)
+1. CTS/GTS test pass
+2. Fluster result: Ran 240/303 tests successfully
+---
+ .../vcodec/vdec/vdec_vp9_req_lat_if.c         | 64 ++++++++++++-------
+ 1 file changed, 40 insertions(+), 24 deletions(-)
 
-diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
-index 947be761dfa4..03c7f27dde49 100644
---- a/drivers/video/hdmi.c
-+++ b/drivers/video/hdmi.c
-@@ -21,6 +21,7 @@
-  * DEALINGS IN THE SOFTWARE.
-  */
+diff --git a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+index fb1c36a3592d..92b47f0fdf40 100644
+--- a/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
++++ b/drivers/media/platform/mediatek/vcodec/vdec/vdec_vp9_req_lat_if.c
+@@ -436,6 +436,7 @@ struct vdec_vp9_slice_ref {
+  * @frame_ctx:		4 frame context according to VP9 Spec
+  * @frame_ctx_helper:	4 frame context according to newest kernel spec
+  * @dirty:		state of each frame context
++ * @local_vsi:		local instance vsi information
+  * @init_vsi:		vsi used for initialized VP9 instance
+  * @vsi:		vsi used for decoding/flush ...
+  * @core_vsi:		vsi used for Core stage
+@@ -482,6 +483,8 @@ struct vdec_vp9_slice_instance {
+ 	struct v4l2_vp9_frame_context frame_ctx_helper;
+ 	unsigned char dirty[4];
  
-+#include <drm/display/drm_dp.h>
- #include <linux/bitops.h>
- #include <linux/bug.h>
- #include <linux/errno.h>
-@@ -381,12 +382,34 @@ static int hdmi_audio_infoframe_check_only(const struct hdmi_audio_infoframe *fr
-  *
-  * Returns 0 on success or a negative error code on failure.
-  */
--int hdmi_audio_infoframe_check(struct hdmi_audio_infoframe *frame)
-+int hdmi_audio_infoframe_check(const struct hdmi_audio_infoframe *frame)
- {
- 	return hdmi_audio_infoframe_check_only(frame);
- }
- EXPORT_SYMBOL(hdmi_audio_infoframe_check);
- 
-+static void
-+hdmi_audio_infoframe_pack_payload(const struct hdmi_audio_infoframe *frame,
-+				  u8 *buffer)
-+{
-+	u8 channels;
++	struct vdec_vp9_slice_vsi local_vsi;
 +
-+	if (frame->channels >= 2)
-+		channels = frame->channels - 1;
+ 	/* MicroP vsi */
+ 	union {
+ 		struct vdec_vp9_slice_init_vsi *init_vsi;
+@@ -1616,16 +1619,10 @@ static int vdec_vp9_slice_update_single(struct vdec_vp9_slice_instance *instance
+ }
+ 
+ static int vdec_vp9_slice_update_lat(struct vdec_vp9_slice_instance *instance,
+-				     struct vdec_lat_buf *lat_buf,
+-				     struct vdec_vp9_slice_pfc *pfc)
++				     struct vdec_vp9_slice_vsi *vsi)
+ {
+-	struct vdec_vp9_slice_vsi *vsi;
+-
+-	vsi = &pfc->vsi;
+-	memcpy(&pfc->state[0], &vsi->state, sizeof(vsi->state));
+-
+ 	mtk_vcodec_debug(instance, "Frame %u LAT CRC 0x%08x %lx %lx\n",
+-			 pfc->seq, vsi->state.crc[0],
++			 (instance->seq - 1), vsi->state.crc[0],
+ 			 (unsigned long)vsi->trans.dma_addr,
+ 			 (unsigned long)vsi->trans.dma_addr_end);
+ 
+@@ -2090,6 +2087,13 @@ static int vdec_vp9_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 		return ret;
+ 	}
+ 
++	if (IS_VDEC_INNER_RACING(instance->ctx->dev->dec_capability)) {
++		vdec_vp9_slice_vsi_from_remote(vsi, instance->vsi, 0);
++		memcpy(&instance->local_vsi, vsi, sizeof(*vsi));
++		vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
++		vsi = &instance->local_vsi;
++	}
++
+ 	if (instance->irq) {
+ 		ret = mtk_vcodec_wait_for_done_ctx(ctx,	MTK_INST_IRQ_RECEIVED,
+ 						   WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
+@@ -2102,22 +2106,25 @@ static int vdec_vp9_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 	}
+ 
+ 	vdec_vp9_slice_vsi_from_remote(vsi, instance->vsi, 0);
+-	ret = vdec_vp9_slice_update_lat(instance, lat_buf, pfc);
++	ret = vdec_vp9_slice_update_lat(instance, vsi);
+ 
+-	/* LAT trans full, no more UBE or decode timeout */
+-	if (ret) {
+-		mtk_vcodec_err(instance, "VP9 decode error: %d\n", ret);
+-		return ret;
+-	}
++	if (!IS_VDEC_INNER_RACING(instance->ctx->dev->dec_capability))
++		/* LAT trans full, no more UBE or decode timeout */
++		if (ret) {
++			mtk_vcodec_err(instance, "frame[%d] decode error: %d\n",
++				       ret, (instance->seq - 1));
++			return ret;
++		}
+ 
+-	mtk_vcodec_debug(instance, "lat dma addr: 0x%lx 0x%lx\n",
+-			 (unsigned long)pfc->vsi.trans.dma_addr,
+-			 (unsigned long)pfc->vsi.trans.dma_addr_end);
+ 
+-	vdec_msg_queue_update_ube_wptr(&ctx->msg_queue,
+-				       vsi->trans.dma_addr_end +
+-				       ctx->msg_queue.wdma_addr.dma_addr);
+-	vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
++	vsi->trans.dma_addr_end += ctx->msg_queue.wdma_addr.dma_addr;
++	vdec_msg_queue_update_ube_wptr(&ctx->msg_queue, vsi->trans.dma_addr_end);
++	if (!IS_VDEC_INNER_RACING(instance->ctx->dev->dec_capability))
++		vdec_msg_queue_qbuf(&ctx->dev->msg_queue_core_ctx, lat_buf);
++
++	mtk_vcodec_debug(instance, "lat trans end addr(0x%lx), ube start addr(0x%lx)\n",
++			 (unsigned long)vsi->trans.dma_addr_end,
++			 (unsigned long)ctx->msg_queue.wdma_addr.dma_addr);
+ 
+ 	return 0;
+ }
+@@ -2193,10 +2200,14 @@ static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
+ 		goto err;
+ 	}
+ 
+-	pfc->vsi.trans.dma_addr_end += ctx->msg_queue.wdma_addr.dma_addr;
+ 	mtk_vcodec_debug(instance, "core dma_addr_end 0x%lx\n",
+ 			 (unsigned long)pfc->vsi.trans.dma_addr_end);
+-	vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
++
++	if (IS_VDEC_INNER_RACING(instance->ctx->dev->dec_capability))
++		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr);
 +	else
-+		channels = 0;
++		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
 +
-+	buffer[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
-+	buffer[1] = ((frame->sample_frequency & 0x7) << 2) |
-+		 (frame->sample_size & 0x3);
-+	buffer[2] = frame->coding_type_ext & 0x1f;
-+	buffer[3] = frame->channel_allocation;
-+	buffer[4] = (frame->level_shift_value & 0xf) << 3;
-+
-+	if (frame->downmix_inhibit)
-+		buffer[4] |= BIT(7);
-+}
-+
- /**
-  * hdmi_audio_infoframe_pack_only() - write HDMI audio infoframe to binary buffer
-  * @frame: HDMI audio infoframe
-@@ -404,7 +427,6 @@ EXPORT_SYMBOL(hdmi_audio_infoframe_check);
- ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
- 				       void *buffer, size_t size)
- {
--	unsigned char channels;
- 	u8 *ptr = buffer;
- 	size_t length;
- 	int ret;
-@@ -420,28 +442,13 @@ ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
+ 	ctx->dev->vdec_pdata->cap_to_disp(ctx, 0, lat_buf->src_buf_req);
  
- 	memset(buffer, 0, size);
+ 	return 0;
+@@ -2204,7 +2215,12 @@ static int vdec_vp9_slice_core_decode(struct vdec_lat_buf *lat_buf)
+ err:
+ 	if (ctx && pfc) {
+ 		/* always update read pointer */
+-		vdec_msg_queue_update_ube_rptr(&ctx->msg_queue, pfc->vsi.trans.dma_addr_end);
++		if (IS_VDEC_INNER_RACING(instance->ctx->dev->dec_capability))
++			vdec_msg_queue_update_ube_rptr(&ctx->msg_queue,
++						       pfc->vsi.trans.dma_addr);
++		else
++			vdec_msg_queue_update_ube_rptr(&ctx->msg_queue,
++						       pfc->vsi.trans.dma_addr_end);
  
--	if (frame->channels >= 2)
--		channels = frame->channels - 1;
--	else
--		channels = 0;
--
- 	ptr[0] = frame->type;
- 	ptr[1] = frame->version;
- 	ptr[2] = frame->length;
- 	ptr[3] = 0; /* checksum */
- 
--	/* start infoframe payload */
--	ptr += HDMI_INFOFRAME_HEADER_SIZE;
--
--	ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
--	ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
--		 (frame->sample_size & 0x3);
--	ptr[2] = frame->coding_type_ext & 0x1f;
--	ptr[3] = frame->channel_allocation;
--	ptr[4] = (frame->level_shift_value & 0xf) << 3;
--
--	if (frame->downmix_inhibit)
--		ptr[4] |= BIT(7);
-+	hdmi_audio_infoframe_pack_payload(frame,
-+					  ptr + HDMI_INFOFRAME_HEADER_SIZE);
- 
- 	hdmi_infoframe_set_checksum(buffer, length);
- 
-@@ -479,6 +486,43 @@ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
- }
- EXPORT_SYMBOL(hdmi_audio_infoframe_pack);
- 
-+/**
-+ * hdmi_audio_infoframe_pack_for_dp - Pack a HDMI Audio infoframe for DisplayPort
-+ *
-+ * @frame:      HDMI Audio infoframe
-+ * @sdp:        Secondary data packet for DisplayPort.
-+ * @dp_version: DisplayPort version to be encoded in the header
-+ *
-+ * Packs a HDMI Audio Infoframe to be sent over DisplayPort. This function
-+ * fills the secondary data packet to be used for DisplayPort.
-+ *
-+ * Return: Number of total written bytes or a negative errno on failure.
-+ */
-+ssize_t
-+hdmi_audio_infoframe_pack_for_dp(const struct hdmi_audio_infoframe *frame,
-+				 struct dp_sdp *sdp, u8 dp_version)
-+{
-+	int ret;
-+
-+	ret = hdmi_audio_infoframe_check(frame);
-+	if (ret)
-+		return ret;
-+
-+	memset(sdp->db, 0, sizeof(sdp->db));
-+
-+	/* Secondary-data packet header */
-+	sdp->sdp_header.HB0 = 0;
-+	sdp->sdp_header.HB1 = frame->type;
-+	sdp->sdp_header.HB2 = DP_SDP_AUDIO_INFOFRAME_HB2;
-+	sdp->sdp_header.HB3 = (dp_version & 0x3f) << 2;
-+
-+	hdmi_audio_infoframe_pack_payload(frame, sdp->db);
-+
-+	/* Return size =  frame length + four HB for sdp_header */
-+	return frame->length + 4;
-+}
-+EXPORT_SYMBOL(hdmi_audio_infoframe_pack_for_dp);
-+
- /**
-  * hdmi_vendor_infoframe_init() - initialize an HDMI vendor infoframe
-  * @frame: HDMI vendor infoframe
-diff --git a/include/drm/display/drm_dp.h b/include/drm/display/drm_dp.h
-index 9e3aff7e68bb..6c0871164771 100644
---- a/include/drm/display/drm_dp.h
-+++ b/include/drm/display/drm_dp.h
-@@ -1536,6 +1536,8 @@ enum drm_dp_phy {
- #define DP_SDP_VSC_EXT_CEA		0x21 /* DP 1.4 */
- /* 0x80+ CEA-861 infoframe types */
- 
-+#define DP_SDP_AUDIO_INFOFRAME_HB2	0x1b
-+
- /**
-  * struct dp_sdp_header - DP secondary data packet header
-  * @HB0: Secondary Data Packet ID
-diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
-index c8ec982ff498..2f4dcc8d060e 100644
---- a/include/linux/hdmi.h
-+++ b/include/linux/hdmi.h
-@@ -336,7 +336,12 @@ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
- 				  void *buffer, size_t size);
- ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
- 				       void *buffer, size_t size);
--int hdmi_audio_infoframe_check(struct hdmi_audio_infoframe *frame);
-+int hdmi_audio_infoframe_check(const struct hdmi_audio_infoframe *frame);
-+
-+struct dp_sdp;
-+ssize_t
-+hdmi_audio_infoframe_pack_for_dp(const struct hdmi_audio_infoframe *frame,
-+				 struct dp_sdp *sdp, u8 dp_version);
- 
- enum hdmi_3d_structure {
- 	HDMI_3D_STRUCTURE_INVALID = -1,
+ 		if (fb)
+ 			ctx->dev->vdec_pdata->cap_to_disp(ctx, 1, lat_buf->src_buf_req);
 -- 
-2.18.0
+2.25.1
 
 
