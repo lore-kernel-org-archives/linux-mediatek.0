@@ -4,89 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70019C19F29
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 07:23:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B520C19F21
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 07:34:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ft3XCwNiOjU+32vJUTrHCohDlzXHlrGObjp/2D3lLcw=; b=gprEgih4rKJhx37n3SBDVnz5ew
-	A6b/bVf4cOUwWeNEvp4ivdh/jqhSAKAhcPUtfpR028pkenWE/6eI37kvYVwATngqYm/AkLdy7B1IB
-	Zpn8aLdW9eLKyVLaAEwdxrvvMH/ipBdyk04IadtvSA93g0BlUenpRP5y89KeKR/J+9Sv0qlJxFcww
-	MsseKApM7boJ8sLqA1FyJk8ol/GrB2f4yqak7hVvjkbCzmZhMkx+5eSBMQpZabcx9gHh9yNSNb0tZ
-	yIyzZ0Lg5+gDRLgaBWpcjfPZHONlu+hmBnEu69RKtN8gQNYx6t4X+uPOXVoxLVjn1hduF/k3S3Jhh
-	aX3dWWFg==;
+	bh=yZbawSuRU443TjKi4boL0Vbr518AuKIw3zU52hGnqEY=; b=tJONUunzOPb+QMYo9ujsAwQ7cB
+	8cmTyaFRjG5eILk0vpJ1sFG1PNdZwD78Oub9kAMqshvJ9B05QU85tMWkrQmT52tYd6C29ghpJLIEb
+	oT25TIPQ7sT7MAlYTPAQ0+EQJ0Q+cfAoAcFyN717mzMRUotRPAaX0iuFBabcuSCkMbx/QnPLy6FIg
+	3Pv12AHf6aMqViXFKvS/ktBG7K4hhY7IXLoQM0UBeGM1dv7yYA1jObkCONuYGktzdpJvPaecLLBW6
+	Lq8tDQ8xbtcH75PLk/RfZTe4spJYVVdCNarp/upvNvv3mEFleWhnG3o13sYj+2Xcdr2H+3fBenASE
+	0K9vN6Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGbOS-00ATt8-6Z; Wed, 27 Jul 2022 07:23:44 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1oGbYo-00AaBl-2O; Wed, 27 Jul 2022 07:34:26 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGbOP-00ATmu-SC
-	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 07:23:43 +0000
-Received: by mail-lf1-x136.google.com with SMTP id p11so21035261lfu.5
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 Jul 2022 00:23:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=ft3XCwNiOjU+32vJUTrHCohDlzXHlrGObjp/2D3lLcw=;
-        b=D2vcTf6EHxluMdEITJVhlFAhkbW4JXwi4l16W6a5A5FW0GepRJX9Hz0VOFqH4OJ3wj
-         y0rysj0Ybv4kH6MNX324hPKweTIx+9oV9gisPrVjJ6i35zZ/pRYd1H/dD9gTertXKydw
-         QM98CFre3HZrSY0dBfvD4/4qAo2bD5sBxN3qoysT+IjmD5ers8ddWUnRvHqjNJEVH/v3
-         LNm/UZRG9iGKtJNCYgo7kr+eKfozku480KhGGtqiFFigOrP9OjE/Uos5MkYy/PNpuY55
-         hrPdf6wrmD4tAW6gYoHF0KcPidX//mUg5U5xdPL8ylBCsbjjXSKgHw88aOrMWLuOhZXo
-         fBog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=ft3XCwNiOjU+32vJUTrHCohDlzXHlrGObjp/2D3lLcw=;
-        b=bWNbnzUcilul7QAcmKcNH1aPEtSKS+VFW4TahPc+kjY/izkxug34d7XXxkfHFZ3Zxt
-         snOmpcbNeILk+YktQvHzMLFrZfYo8A20HuHEN/q+QXkio+P5C4HdUk+4GQwwjBenssUk
-         2IK8RZGiWDIKP5ZLEvXL13yzIzAYW6In/CgTQvukQtFrS3YYNM8kBdiX/WEft4NejQvX
-         rDeZ2mmSv/n2pdIVTk1RGnNhVqX1o05QgyE/GpRmWDw+xnPOVdXLPfjvLUgqeIMlH9tg
-         RYJfwrxutu66O6pvZJsDQjLIcEcFbBsz8TT8BBSsTqpNiiy6u10L8rba4kE4kjC+Nx7r
-         4+sw==
-X-Gm-Message-State: AJIora/J2bwogQC3QK/OdEAMF0mImM+zYbxivEMPNCNN1OTsI+JFkW0O
-	noSkW2PuUOWWi5wxjO1oygGt/g==
-X-Google-Smtp-Source: AGRyM1uHJ5ymf8whLvfZFW+rSC4qpuSxZKs4pbYbEi1RVIOv6PYyOgAgAz2r6JpgBX6lGa3re4pjbA==
-X-Received: by 2002:a19:dc4d:0:b0:489:63cb:20c7 with SMTP id f13-20020a19dc4d000000b0048963cb20c7mr7155587lfj.101.1658906616374;
-        Wed, 27 Jul 2022 00:23:36 -0700 (PDT)
-Received: from [192.168.3.197] (78-26-46-173.network.trollfjord.no. [78.26.46.173])
-        by smtp.gmail.com with ESMTPSA id o14-20020ac24e8e000000b0048a8899db0fsm1733291lfr.7.2022.07.27.00.23.34
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 27 Jul 2022 00:23:35 -0700 (PDT)
-Message-ID: <aaa6b5d0-20e8-146f-ba37-8784dbfd6072@linaro.org>
-Date: Wed, 27 Jul 2022 09:23:34 +0200
+	id 1oGbYc-00Aa3V-6m; Wed, 27 Jul 2022 07:34:15 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id F3C026601ABE;
+	Wed, 27 Jul 2022 08:34:08 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658907249;
+	bh=z8qNM7YJGlGgLr5CtAhQT5G31+zHCWFzXU6yj7DoQRw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=obJ1brsK60dsAyiQVGl3tC8c/dqH6jT8h6XczYe+jJWOD5TXjCvZ7k+YZoYPqv2SF
+	 d9SRts3+EZEmgCfZoMBurFII3X8GYQHMwZPbP/oeCKOdiFisG+7JQOSp+/DDjGlSGt
+	 YR73wFCosNkFHu3hVCwzTLyssbl+MGtrAtCqAb2YaJ1vX/zs+INb7IjHiEDgbKRgD9
+	 0NZzqX7wyZmZ6sgi651J0Belo+wY+gZSsf1MK7YHPiY8o13cQ0WKfGp3E+beQqkX4F
+	 umbSmHt00/x5gdhR0yCu4+gyUZ2tw6mrLUEdNUpfqH2r341YbP37ZP0jjzNV0lCX3M
+	 /1hF/5A7b7wAA==
+Message-ID: <62fa552b-6117-3f76-d3a1-e08a33f287d1@collabora.com>
+Date: Wed, 27 Jul 2022 09:34:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH v15 01/11] dt-bindings: mediatek,dp: Add Display Port
- binding
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v2 4/7] Input: mt6779-keypad - prepare double keys support
+ with calc_row_col
 Content-Language: en-US
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, daniel@ffwll.ch, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, mripard@kernel.org, tzimmermann@suse.de,
- matthias.bgg@gmail.com, deller@gmx.de, airlied@linux.ie
-Cc: msp@baylibre.com, granquet@baylibre.com, jitao.shi@mediatek.com,
- wenst@chromium.org, angelogioacchino.delregno@collabora.com,
- ck.hu@mediatek.com, liangxu.xu@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+To: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+Cc: linux-arm-kernel@lists.infradead.org, Fabien Parent
+ <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220727045035.32225-1-rex-bc.chen@mediatek.com>
- <20220727045035.32225-2-rex-bc.chen@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220727045035.32225-2-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+ linux-input@vger.kernel.org, Fabien Parent <parent.f@gmail.com>
+References: <20220720-mt8183-keypad-v2-0-6d42c357cb76@baylibre.com>
+ <20220720-mt8183-keypad-v2-4-6d42c357cb76@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220720-mt8183-keypad-v2-4-6d42c357cb76@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220727_002341_944794_E682F212 
-X-CRM114-Status: GOOD (  23.33  )
+X-CRM114-CacheID: sfid-20220727_003414_486240_6150DE3F 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,129 +78,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/07/2022 06:50, Bo-Chen Chen wrote:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
+Il 26/07/22 14:56, Mattijs Korpershoek ha scritto:
+> The MediaTek keypad can operate in two modes: single key or double key.
+> The driver only supports single key mode. In double key mode, the
+> row/column calculation based on the key is different.
 > 
-> This controller is present on several mediatek hardware. Currently
-> mt8195 and mt8395 have this controller without a functional difference,
-> so only one compatible field is added.
+> Add a calc_row_col function pointer which will be different based on
+> single/double key mode.
 > 
-> The controller can have two forms, as a normal display port and as an
-> embedded display port.
+> No functional change.
 > 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
->  .../display/mediatek/mediatek,dp.yaml         | 117 ++++++++++++++++++
->  1 file changed, 117 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-> new file mode 100644
-> index 000000000000..fd68c6c08df3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-> @@ -0,0 +1,117 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,dp.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Display Port Controller
-> +
-> +maintainers:
-> +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> +  - Jitao shi <jitao.shi@mediatek.com>
-> +
-> +description: |
-> +  Device tree bindings for the MediaTek display port TX (DP) and
-> +  embedded display port TX (eDP) controller present on some MediaTek SoCs.
+> Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 
-Drop entire sentence and just describe the hardware.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> +  We just need to enable the power domain of DP. The clock of DP is
-> +  generated by itself and we are not using other PLL to generate clocks.
-> +  MediaTek DP and eDP are different hardwares and there are some features
-> +  which are not supported for eDP. For example, audio is not supported for
-> +  eDP. Therefore, we need to use two different compatibles to describe them.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8195-dp-tx
-> +      - mediatek,mt8195-edp-tx
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  nvmem-cells:
-> +    maxItems: 1
-> +    description: efuse data for display port calibration
-> +
-> +  nvmem-cell-names:
-> +    const: dp_calibration_data
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  ports:
-> +    $ref: /schemas/graph.yaml#/properties/ports
-> +    properties:
-> +      port@0:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: Input endpoint of the controller, usually dp_intf
-> +
-> +      port@1:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: Output endpoint of the controller
-> +        properties:
-> +          endpoint:
-> +            $ref: /schemas/media/video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +            properties:
-> +              data-lanes:
-> +                description: |
-> +                  number of lanes supported by the hardware.
-> +                  The possible values:
-> +                  0       - For 1 lane enabled in IP.
-> +                  0 1     - For 2 lanes enabled in IP.
-> +                  0 1 2 3 - For 4 lanes enabled in IP.
-> +                minItems: 1
-> +                maxItems: 4
-> +            required:
-> +              - data-lanes
-> +
-> +    required:
-> +      - port@0
-> +      - port@1
-> +
-> +  max-linkrate-mhz:
-> +    enum: [ 1620, 2700, 5400, 8100 ]
-> +    description: maximum link rate supported by the hardware.
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - ports
-> +  - max-linkrate-mhz
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/power/mt8195-power.h>
-> +    dp_tx@1c600000 {
-
-No underscores in node names, so just "dp".
-
-Best regards,
-Krzysztof
 
