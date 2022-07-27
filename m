@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67A1CC19F29
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 21:23:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11709C19F29
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 21:23:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wPWxpbnQAIGCC6qrnmE5Q14i6WsTB2HlgNUBHZ+9RqY=; b=xFdYIun18W3qnmqGjXU7g8codR
-	T/X8n7cGHBcPcqWr5YssRr8QHJblk8A/0AmCzEO0TZUUCq9dsXnuOJL5v/uTUqfvciXbnHQUKBWUk
-	7S4lI2S0mwRj4jIyMMKliAUOi7OmAV9IVN3kUyqetLosmkHoJD9VP622vdY8iFuI0RdZkgnqsOYev
-	QLp332RJAEv7nXjWozNvTs+G/Rg/xHRr+HGGRfDYLsXnoD/uByzVxlok1VjXTJIdr9CJsPLAqVxLc
-	KjF5ltT1Ih2J9t68xIa0ifqjoKDHUpU+J2myR+ma2Do1kIgxX7ebviidGltUfBCSVoOpHQxyy/gtK
-	kJfBdERA==;
+	bh=XaSs8dGxaegjU61rOKXsM9RYxQF8OjNVYPG3+1/JFL0=; b=iwzw6inWeo4nPz04IkyxQg8vp/
+	ZRQ8Uhe/Xfl16wY1O8OL3N0QD4AxgvciS5vtXEFyV/vhAV0FKsAIMRgMp1iHUz2sXGhDjgJe4Stru
+	A2IA2d2ma+TAYpurERuuElPfFJV9sJbDYHPcFtxIVaAGxj++KzFQBoJIcGQHmSouJZP+F8mr+2yJj
+	zFb7q+wAxMcFPFNqMy8sx7XguXrPCPvvwxhe1QrGaP+adeQnmqTMvp32sLzXA2LXgEsmefpjJ3Y+U
+	Z+ZXXD4d8jsxty+S9PdLHIfuVE8KBa7/omoNq/Z+Q9SLrl50siLQjFp/DNsGrgBD/hpwLGX1JVnZP
+	uXpA75/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGoUX-000TwE-Af; Wed, 27 Jul 2022 21:22:53 +0000
+	id 1oGoV1-000UDQ-HC; Wed, 27 Jul 2022 21:23:23 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGoUU-000TuR-Gz
-	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 21:22:52 +0000
+	id 1oGoUy-000UAz-Bn
+	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 21:23:21 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 2938A60A67;
-	Wed, 27 Jul 2022 21:22:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 00C29C433B5;
-	Wed, 27 Jul 2022 21:22:47 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 7B76860A6D;
+	Wed, 27 Jul 2022 21:23:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82A35C433D7;
+	Wed, 27 Jul 2022 21:23:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658956968;
-	bh=bGkV0/NSbHA6qEcuG2LEzyvloU5oiNR/vG45e/SG7tI=;
+	s=k20201202; t=1658956997;
+	bh=52i8qhkewCTocArWVeX2hw4wQ14wMGLcqJ6y1FiFQFE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ieM7guo7cZ8Qtm+MXvAg4bYaoEM3u8o9PvvtIKN3fRxFRx+YL9RTgKqwYtTmNPofH
-	 MRhcV53e2Ep94sh2Mh6G6rHn+hf/5RBenBSLgGzNJ9LaEzkiJCSHfdK4c15yEhbN/U
-	 Rj6MmJC+3v80mUSxsgoEo84Uzu43eKtHz22fuRtvoUH72AUYYrJJLUoX7cG+Ksclv4
-	 ZInt3rEPUZ+gL9G87nn8INc1FCpUdVJP1rA7lG7MB3aOM5UsbmQNAAnNxR6DQ9QkiT
-	 yjNClhsNWtsHBUKQb5s2usXrIxuMB+lRszsSVkCfrKEsgtRbUGgFUzto92J4LIUyCs
-	 o9CFwrPjm/39w==
+	b=SEMKLP4F4KK37Q9el1VFy934H2czJX1MSeUNd+Bm1MCFerO14LECG8eJW25AybOGj
+	 MGqoLkWV2+9qm6dZKbrG0h/mhH4Z/+KRRiaIO7rEGNZfpj/Hu9SY4eK1oLzV0O8DCG
+	 zjpKRJYoChQC9nQpfajj2qvxCz7DXNCWPS7M0VBrY7TAgRXTp3Gyo4noMOVvh7vvNd
+	 2vJGY6p8DpPT7wNvhlz5olgYvPN/81J3FKzX1wuL0HTFc6HlwXBvgeMocqT9V2sus6
+	 5dpjJhyuJFaRBClumFOVB9v0pxyhl7ExdRuHCYasiQZOC8pAwgSU4BFoldIzWX2xVW
+	 iGyhBrhr/5hOw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: nbd@nbd.name,
@@ -57,17 +57,17 @@ Cc: nbd@nbd.name,
 	ilias.apalodimas@linaro.org,
 	lorenzo.bianconi@redhat.com,
 	jbrouer@redhat.com
-Subject: [PATCH net-next 2/3] net: ethernet: mtk_eth_soc: introduce xdp multi-frag support
-Date: Wed, 27 Jul 2022 23:20:51 +0200
-Message-Id: <24704aaeb7f1fc44d6d2cdfa2fb919f625884421.1658955249.git.lorenzo@kernel.org>
+Subject: [PATCH net-next 3/3] net: ethernet: mtk_eth_soc: add xdp tx return bulking support
+Date: Wed, 27 Jul 2022 23:20:52 +0200
+Message-Id: <a5475bba4c5ce73aa9d5fd8b876bb3969b4df718.1658955249.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.37.1
 In-Reply-To: <cover.1658955249.git.lorenzo@kernel.org>
 References: <cover.1658955249.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220727_142250_662389_E414FE08 
-X-CRM114-Status: GOOD (  19.43  )
+X-CRM114-CacheID: sfid-20220727_142320_502806_0D7AFF4B 
+X-CRM114-Status: GOOD (  14.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,220 +82,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the capability to map non-linear xdp frames in XDP_TX and
-ndo_xdp_xmit callback.
+Convert mtk_eth_soc driver to xdp_return_frame_bulk APIs.
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 125 +++++++++++++-------
- 1 file changed, 82 insertions(+), 43 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 8450604d22ff..24235f8f0a8f 100644
+index 24235f8f0a8f..d9426b01f462 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1031,23 +1031,22 @@ static void mtk_tx_unmap(struct mtk_eth *eth, struct mtk_tx_buf *tx_buf,
- 		}
- 	}
+@@ -1001,7 +1001,7 @@ static int txd_to_idx(struct mtk_tx_ring *ring, void *dma, u32 txd_size)
+ }
  
--	if (tx_buf->type == MTK_TYPE_SKB) {
--		if (tx_buf->data &&
--		    tx_buf->data != (void *)MTK_DMA_DUMMY_DESC) {
-+	if (tx_buf->data && tx_buf->data != (void *)MTK_DMA_DUMMY_DESC) {
-+		if (tx_buf->type == MTK_TYPE_SKB) {
- 			struct sk_buff *skb = tx_buf->data;
- 
- 			if (napi)
- 				napi_consume_skb(skb, napi);
- 			else
- 				dev_kfree_skb_any(skb);
--		}
--	} else if (tx_buf->data) {
--		struct xdp_frame *xdpf = tx_buf->data;
-+		} else {
-+			struct xdp_frame *xdpf = tx_buf->data;
- 
--		if (napi && tx_buf->type == MTK_TYPE_XDP_TX)
--			xdp_return_frame_rx_napi(xdpf);
--		else
--			xdp_return_frame(xdpf);
-+			if (napi && tx_buf->type == MTK_TYPE_XDP_TX)
-+				xdp_return_frame_rx_napi(xdpf);
-+			else
-+				xdp_return_frame(xdpf);
-+		}
- 	}
- 	tx_buf->flags = 0;
- 	tx_buf->data = NULL;
-@@ -1550,6 +1549,8 @@ static int mtk_xdp_frame_map(struct mtk_eth *eth, struct net_device *dev,
- 	mtk_tx_set_dma_desc(dev, txd, txd_info);
- 
- 	tx_buf->flags |= !mac->id ? MTK_TX_FLAGS_FPORT0 : MTK_TX_FLAGS_FPORT1;
-+	tx_buf->type = dma_map ? MTK_TYPE_XDP_NDO : MTK_TYPE_XDP_TX;
-+	tx_buf->data = (void *)MTK_DMA_DUMMY_DESC;
- 
- 	txd_pdma = qdma_to_pdma(ring, txd);
- 	setup_tx_buf(eth, tx_buf, txd_pdma, txd_info->addr, txd_info->size,
-@@ -1561,43 +1562,69 @@ static int mtk_xdp_frame_map(struct mtk_eth *eth, struct net_device *dev,
- static int mtk_xdp_submit_frame(struct mtk_eth *eth, struct xdp_frame *xdpf,
- 				struct net_device *dev, bool dma_map)
+ static void mtk_tx_unmap(struct mtk_eth *eth, struct mtk_tx_buf *tx_buf,
+-			 bool napi)
++			 struct xdp_frame_bulk *bq, bool napi)
  {
-+	struct skb_shared_info *sinfo = xdp_get_shared_info_from_frame(xdpf);
- 	const struct mtk_soc_data *soc = eth->soc;
+ 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA)) {
+ 		if (tx_buf->flags & MTK_TX_FLAGS_SINGLE0) {
+@@ -1044,6 +1044,8 @@ static void mtk_tx_unmap(struct mtk_eth *eth, struct mtk_tx_buf *tx_buf,
+ 
+ 			if (napi && tx_buf->type == MTK_TYPE_XDP_TX)
+ 				xdp_return_frame_rx_napi(xdpf);
++			else if (bq)
++				xdp_return_frame_bulk(xdpf, bq);
+ 			else
+ 				xdp_return_frame(xdpf);
+ 		}
+@@ -1296,7 +1298,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 		tx_buf = mtk_desc_to_tx_buf(ring, itxd, soc->txrx.txd_size);
+ 
+ 		/* unmap dma */
+-		mtk_tx_unmap(eth, tx_buf, false);
++		mtk_tx_unmap(eth, tx_buf, NULL, false);
+ 
+ 		itxd->txd3 = TX_DMA_LS0 | TX_DMA_OWNER_CPU;
+ 		if (!MTK_HAS_CAPS(soc->caps, MTK_QDMA))
+@@ -1660,7 +1662,7 @@ static int mtk_xdp_submit_frame(struct mtk_eth *eth, struct xdp_frame *xdpf,
+ 	while (htxd != txd) {
+ 		txd_pdma = qdma_to_pdma(ring, htxd);
+ 		tx_buf = mtk_desc_to_tx_buf(ring, htxd, soc->txrx.txd_size);
+-		mtk_tx_unmap(eth, tx_buf, false);
++		mtk_tx_unmap(eth, tx_buf, NULL, false);
+ 
+ 		htxd->txd3 = TX_DMA_LS0 | TX_DMA_OWNER_CPU;
+ 		if (!MTK_HAS_CAPS(soc->caps, MTK_QDMA))
+@@ -1973,6 +1975,7 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
+ 	const struct mtk_reg_map *reg_map = eth->soc->reg_map;
  	struct mtk_tx_ring *ring = &eth->tx_ring;
- 	struct mtk_tx_dma_desc_info txd_info = {
- 		.size	= xdpf->len,
- 		.first	= true,
--		.last	= true,
-+		.last	= !xdp_frame_has_frags(xdpf),
- 	};
--	int err = 0, index = 0, n_desc = 1;
--	struct mtk_tx_dma *txd, *txd_pdma;
--	struct mtk_tx_buf *tx_buf;
-+	int err, index = 0, n_desc = 1, nr_frags;
-+	struct mtk_tx_dma *htxd, *txd, *txd_pdma;
-+	struct mtk_tx_buf *htx_buf, *tx_buf;
-+	void *data = xdpf->data;
+ 	struct mtk_tx_buf *tx_buf;
++	struct xdp_frame_bulk bq;
+ 	struct mtk_tx_dma *desc;
+ 	u32 cpu, dma;
  
- 	if (unlikely(test_bit(MTK_RESETTING, &eth->state)))
- 		return -EBUSY;
+@@ -1980,6 +1983,7 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
+ 	dma = mtk_r32(eth, reg_map->qdma.drx_ptr);
  
--	if (unlikely(atomic_read(&ring->free_count) <= 1))
-+	nr_frags = unlikely(xdp_frame_has_frags(xdpf)) ? sinfo->nr_frags : 0;
-+	if (unlikely(atomic_read(&ring->free_count) <= 1 + nr_frags))
- 		return -EBUSY;
+ 	desc = mtk_qdma_phys_to_virt(ring, cpu);
++	xdp_frame_bulk_init(&bq);
  
- 	spin_lock(&eth->page_lock);
- 
- 	txd = ring->next_free;
- 	if (txd == ring->last_free) {
--		err = -ENOMEM;
--		goto out;
-+		spin_unlock(&eth->page_lock);
-+		return -ENOMEM;
- 	}
-+	htxd = txd;
- 
- 	tx_buf = mtk_desc_to_tx_buf(ring, txd, soc->txrx.txd_size);
- 	memset(tx_buf, 0, sizeof(*tx_buf));
-+	htx_buf = tx_buf;
- 
--	err = mtk_xdp_frame_map(eth, dev, &txd_info, txd, tx_buf,
--				xdpf->data, xdpf->headroom, index,
--				dma_map);
--	if (err < 0)
--		goto out;
-+	for (;;) {
-+		err = mtk_xdp_frame_map(eth, dev, &txd_info, txd, tx_buf,
-+					data, xdpf->headroom, index, dma_map);
-+		if (err < 0)
-+			goto unmap;
-+
-+		if (txd_info.last)
-+			break;
-+
-+		if (MTK_HAS_CAPS(soc->caps, MTK_QDMA) || (index & 0x1)) {
-+			txd = mtk_qdma_phys_to_virt(ring, txd->txd2);
-+			txd_pdma = qdma_to_pdma(ring, txd);
-+			if (txd == ring->last_free)
-+				goto unmap;
- 
-+			tx_buf = mtk_desc_to_tx_buf(ring, txd,
-+						    soc->txrx.txd_size);
-+			memset(tx_buf, 0, sizeof(*tx_buf));
-+			n_desc++;
-+		}
-+
-+		memset(&txd_info, 0, sizeof(struct mtk_tx_dma_desc_info));
-+		txd_info.size = skb_frag_size(&sinfo->frags[index]);
-+		txd_info.last = index + 1 == nr_frags;
-+		data = skb_frag_address(&sinfo->frags[index]);
-+
-+		index++;
-+	}
- 	/* store xdpf for cleanup */
--	tx_buf->type = dma_map ? MTK_TYPE_XDP_NDO : MTK_TYPE_XDP_TX;
--	tx_buf->data = xdpf;
-+	htx_buf->data = xdpf;
- 
- 	if (!MTK_HAS_CAPS(soc->caps, MTK_QDMA)) {
- 		txd_pdma = qdma_to_pdma(ring, txd);
-@@ -1624,7 +1651,24 @@ static int mtk_xdp_submit_frame(struct mtk_eth *eth, struct xdp_frame *xdpf,
- 		mtk_w32(eth, NEXT_DESP_IDX(idx, ring->dma_size),
- 			MT7628_TX_CTX_IDX0);
- 	}
--out:
-+
-+	spin_unlock(&eth->page_lock);
-+
-+	return 0;
-+
-+unmap:
-+	while (htxd != txd) {
-+		txd_pdma = qdma_to_pdma(ring, htxd);
-+		tx_buf = mtk_desc_to_tx_buf(ring, htxd, soc->txrx.txd_size);
-+		mtk_tx_unmap(eth, tx_buf, false);
-+
-+		htxd->txd3 = TX_DMA_LS0 | TX_DMA_OWNER_CPU;
-+		if (!MTK_HAS_CAPS(soc->caps, MTK_QDMA))
-+			txd_pdma->txd2 = TX_DMA_DESP2_DEF;
-+
-+		htxd = mtk_qdma_phys_to_virt(ring, htxd->txd2);
-+	}
-+
- 	spin_unlock(&eth->page_lock);
- 
- 	return err;
-@@ -1953,18 +1997,15 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
- 		if (!tx_buf->data)
- 			break;
- 
--		if (tx_buf->type == MTK_TYPE_SKB &&
--		    tx_buf->data != (void *)MTK_DMA_DUMMY_DESC) {
--			struct sk_buff *skb = tx_buf->data;
-+		if (tx_buf->data != (void *)MTK_DMA_DUMMY_DESC) {
-+			if (tx_buf->type == MTK_TYPE_SKB) {
-+				struct sk_buff *skb = tx_buf->data;
- 
--			bytes[mac] += skb->len;
--			done[mac]++;
--			budget--;
--		} else if (tx_buf->type == MTK_TYPE_XDP_TX ||
--			   tx_buf->type == MTK_TYPE_XDP_NDO) {
-+				bytes[mac] += skb->len;
-+				done[mac]++;
-+			}
+ 	while ((cpu != dma) && budget) {
+ 		u32 next_cpu = desc->txd2;
+@@ -2006,13 +2010,14 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
+ 			}
  			budget--;
  		}
--
- 		mtk_tx_unmap(eth, tx_buf, true);
+-		mtk_tx_unmap(eth, tx_buf, true);
++		mtk_tx_unmap(eth, tx_buf, &bq, true);
  
  		ring->last_free = desc;
-@@ -1995,17 +2036,15 @@ static int mtk_poll_tx_pdma(struct mtk_eth *eth, int budget,
- 		if (!tx_buf->data)
- 			break;
+ 		atomic_inc(&ring->free_count);
  
--		if (tx_buf->type == MTK_TYPE_SKB &&
--		    tx_buf->data != (void *)MTK_DMA_DUMMY_DESC) {
--			struct sk_buff *skb = tx_buf->data;
--			bytes[0] += skb->len;
--			done[0]++;
--			budget--;
--		} else if (tx_buf->type == MTK_TYPE_XDP_TX ||
--			   tx_buf->type == MTK_TYPE_XDP_NDO) {
-+		if (tx_buf->data != (void *)MTK_DMA_DUMMY_DESC) {
-+			if (tx_buf->type == MTK_TYPE_SKB) {
-+				struct sk_buff *skb = tx_buf->data;
-+
-+				bytes[0] += skb->len;
-+				done[0]++;
-+			}
+ 		cpu = next_cpu;
+ 	}
++	xdp_flush_frame_bulk(&bq);
+ 
+ 	ring->last_free_ptr = cpu;
+ 	mtk_w32(eth, cpu, reg_map->qdma.crx_ptr);
+@@ -2025,11 +2030,13 @@ static int mtk_poll_tx_pdma(struct mtk_eth *eth, int budget,
+ {
+ 	struct mtk_tx_ring *ring = &eth->tx_ring;
+ 	struct mtk_tx_buf *tx_buf;
++	struct xdp_frame_bulk bq;
+ 	struct mtk_tx_dma *desc;
+ 	u32 cpu, dma;
+ 
+ 	cpu = ring->cpu_idx;
+ 	dma = mtk_r32(eth, MT7628_TX_DTX_IDX0);
++	xdp_frame_bulk_init(&bq);
+ 
+ 	while ((cpu != dma) && budget) {
+ 		tx_buf = &ring->buf[cpu];
+@@ -2045,7 +2052,7 @@ static int mtk_poll_tx_pdma(struct mtk_eth *eth, int budget,
+ 			}
  			budget--;
  		}
--
- 		mtk_tx_unmap(eth, tx_buf, true);
+-		mtk_tx_unmap(eth, tx_buf, true);
++		mtk_tx_unmap(eth, tx_buf, &bq, true);
  
  		desc = ring->dma + cpu * eth->soc->txrx.txd_size;
+ 		ring->last_free = desc;
+@@ -2053,6 +2060,7 @@ static int mtk_poll_tx_pdma(struct mtk_eth *eth, int budget,
+ 
+ 		cpu = NEXT_DESP_IDX(cpu, ring->dma_size);
+ 	}
++	xdp_flush_frame_bulk(&bq);
+ 
+ 	ring->cpu_idx = cpu;
+ 
+@@ -2262,7 +2270,7 @@ static void mtk_tx_clean(struct mtk_eth *eth)
+ 
+ 	if (ring->buf) {
+ 		for (i = 0; i < MTK_DMA_SIZE; i++)
+-			mtk_tx_unmap(eth, &ring->buf[i], false);
++			mtk_tx_unmap(eth, &ring->buf[i], NULL, false);
+ 		kfree(ring->buf);
+ 		ring->buf = NULL;
+ 	}
 -- 
 2.37.1
 
