@@ -4,65 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7808AC04A68
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 10:22:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90A5FC04A68
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 10:26:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xA56TSbZash0MJgrqcSMCfTXB1ek1UsvaM8PqDjWVuM=; b=TM8TmElowTJcWfALVRQYUUbSmC
-	1at+0jZLE5hX/jiRiMHUANnlP/Qy32DUEg1S+w8C71GkurgodMo/nt6JZR7cTLUIRH2Zv7ayk/TIz
-	uKifBnNoR2N4Q1jPcSj+GPutHkeVoPnS/ok4a8vRs4Y6ezWr+VfIEMWQbOW5/Nw9AFsrQReaNbjyn
-	37vTi/x1+vIqKMJ+RWNlsPjZib71pv3N7lbLGXpFcttud5NT/GQuRzAgDtzJzOn5DQiFQE8sqQCYq
-	DVsmQ9Q+eFMGbPIb+XMvuSJ2n8mHvqAG5fDVTMbx+FWB/lz9PiehtKLefoyE4WjXzSeQvlUp2GuY3
-	LwhIlTHA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K04i3J9QKasLVBVCxLEb/1ZPje207syI142n4RiLLx4=; b=K3cnR4m2LkKvAfxzoQ7dI3g7Yq
+	TKNsB+JPZ2rOVwOQWjQcmmCM8riOLIZokpAur/HVMvvRaxq8iHmZi1DVBhE0Pllu/Ti3Tbt2A+SM/
+	eU4FjxSvEi/tE/OOuJjisoqdaS+j2JqVMBD8KFY84gqjjNoZy34JbH6Zr8hq0He2ZQrVSlYFs/+RP
+	RlWK1qB559/gWQdZ7f9iGc+7JVPuAVg4MioIO8hCuxAkBdrSAR7viG7Zim82dnanP0xSYB8s0JlWs
+	kAwGSPv9MJftk6GYeIWNCe5wfszCz51Gc2bE9JNVuw31LF7HhSOfd1Prz31J1xJDjQMxNzK3x9XD8
+	Z+RqPlxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGeBT-00CJUt-4M; Wed, 27 Jul 2022 10:22:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oGeFT-00CLf1-Cg; Wed, 27 Jul 2022 10:26:39 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGeBQ-00CJSR-OL
-	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 10:22:30 +0000
-X-UUID: 7c9efacadedd4f3692d0838f37434716-20220727
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:2ca0f67b-9ff7-493a-a469-65e39ad01bea,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:d87af3cb-7c9b-4dbc-a9d4-00659d6b7a90,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 7c9efacadedd4f3692d0838f37434716-20220727
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <hui.liu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1337777605; Wed, 27 Jul 2022 03:22:21 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Wed, 27 Jul 2022 18:21:42 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 27 Jul 2022 18:21:41 +0800
-From: Hui Liu <hui.liu@mediatek.com>
-To: <linus.walleij@linaro.org>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<hui.liu@mediatek.com>, <jianguo.zhang@mediatek.com>,
-	<zhiyong.tao@mediatek.com>, <sean.wang@mediatek.com>,
-	<linux-gpio@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [PATCH v2 0/2] MediaTek pinctrl patch on mt8188
-Date: Wed, 27 Jul 2022 18:21:38 +0800
-Message-ID: <20220727102140.6676-1-hui.liu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oGeFH-00CLWG-IV
+	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 10:26:28 +0000
+Received: by mail-lf1-x132.google.com with SMTP id w15so18420868lft.11
+        for <linux-mediatek@lists.infradead.org>; Wed, 27 Jul 2022 03:26:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=K04i3J9QKasLVBVCxLEb/1ZPje207syI142n4RiLLx4=;
+        b=apyyy1Uz5oB0j3rdRFaB+GtFHqttB0ZsK0QRaYKkflr6f90+2uKYeKbTFH4OX80TyC
+         0wb4sADGXRC/cD6S8FWY3ljlX6OnY0iPxRfVEDoYfqXaMLwNMhS8dFY5yBSIPrKSQIjM
+         2D1Urr/e2D9l7xYBxpLtMzXuoTz7lBBR87/4Mx7skUQtH4zYlbTaUtfM1ZCU+h8gbcGn
+         i9b/LeQ038L/NQGMQl2guVEq24SR+SETm6bqMuM/8sSV/4XKhdNysNHHSOIBQ1bHuFJi
+         Y9qjiKFyj+OT3wRyJ8o8MgEgqWU9V5X9cQUyP12JEFd1q5WbotbJcleh4EFN2Jf4PRZa
+         /3lw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=K04i3J9QKasLVBVCxLEb/1ZPje207syI142n4RiLLx4=;
+        b=7YtmhEUgjg0mYjDNT3ZBwQtJ5OG6x+MiqhH1DJejPM9OBBeV3ykHURHqNA6t1e/wWr
+         0C1UEUcOJ0KAXmcS3Jzle3uMW/KaH7SecuKXbs56kKrOcCD7evfOuChP9ZOXAWIeOCXp
+         UzTuPnw1kdqJts/d9kRa1UyrwBqUMD0HjTyM3BWDrssTUWN0Y7wHMU72PTIwamgiJuXd
+         m7cjSwJuptjTJQi+oZQObeOxVOvyjcsN6N2EWRpV/1TjYUTvQqzjT317puoE29DRMes1
+         J/jU3oLpcFfx8waJc9Oa4f0nLPg0ZFsS0xAcQojcLqCLfqWEN1fyZytlEPE/sTdyz6WR
+         rqIQ==
+X-Gm-Message-State: AJIora8g2DopBGx0fbyq6Jn6tB3ai+S128JXFn5NrNA4YA9HQu4iiznV
+	iwClgoqV/iAVVTem+A3wgkJpJw==
+X-Google-Smtp-Source: AGRyM1ub6aWYl88ATON1HqYQTnyfdKRKpDm+LE6MAHOZrjagndoPzh3zBhysAkmu6+tSJjT33WerxA==
+X-Received: by 2002:a05:6512:34c6:b0:48a:8464:cc53 with SMTP id w6-20020a05651234c600b0048a8464cc53mr6866460lfr.275.1658917580917;
+        Wed, 27 Jul 2022 03:26:20 -0700 (PDT)
+Received: from [192.168.3.197] (78-26-46-173.network.trollfjord.no. [78.26.46.173])
+        by smtp.gmail.com with ESMTPSA id t16-20020a19dc10000000b00478a8b7ab1csm3697977lfg.150.2022.07.27.03.26.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 27 Jul 2022 03:26:20 -0700 (PDT)
+Message-ID: <87b3ccac-ebde-1a7f-d48b-571a6f925ea2@linaro.org>
+Date: Wed, 27 Jul 2022 12:26:18 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH] dt-bindings: soc: mediatek: pwrap: add compatible for
+ mt8188
+Content-Language: en-US
+To: Sen Chu <sen.chu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Hui Liu <hui.liu@mediatek.com>
+References: <20220726104242.24839-1-sen.chu@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220726104242.24839-1-sen.chu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220727_032228_815145_C0DD603F 
-X-CRM114-Status: UNSURE (   8.27  )
+X-CRM114-CacheID: sfid-20220727_032627_668944_ACE73F11 
+X-CRM114-Status: UNSURE (   7.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,40 +97,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series include 2 patches:
-1.Add pinmux definition file and pinctrl binding document for mt8188.
-2.Add pinctrl driver for mt8188.
-
-Changes in patch v2:
-1.Change pinmux definition file name to mediatek,mt8188-pinfunc.h.
-2.Change binding document name to mediatek,mt8188-pinctrl.yaml.
-3.Update yaml description.
-
-Changes in patch v1:
-1.Add mt8188 pinmux definition file.
-2.Add mt8188 binding document.
-3.Add mt8188 pinctrl drivers.
-
-*** BLURB HERE ***
-
-Hui.Liu (2):
-  dt-bindings: pinctrl: add support for mediatek mt8188
-  pinctrl: mediatek: add mt8188 driver
-
- .../pinctrl/mediatek,mt8188-pinctrl.yaml      |  238 ++
- drivers/pinctrl/mediatek/Kconfig              |   12 +
- drivers/pinctrl/mediatek/Makefile             |    1 +
- drivers/pinctrl/mediatek/pinctrl-mt8188.c     | 1669 ++++++++++++
- drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h | 2260 +++++++++++++++++
- .../pinctrl/mediatek,mt8188-pinfunc.h         | 1280 ++++++++++
- 6 files changed, 5460 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
- create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8188.c
- create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h
- create mode 100644 include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
-
---
-2.18.0
+On 26/07/2022 12:42, Sen Chu wrote:
+> Add dt-binding documentation of pwrap for Mediatek MT8188
+> 
+> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
 
 
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+
+Best regards,
+Krzysztof
 
