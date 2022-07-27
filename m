@@ -4,73 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6F1C04A68
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 18:12:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58E5BC04A68
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Jul 2022 18:50:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RNVMJ4oZ8yHzMS/5F5vQFWD6tQYWHNz7yT3+sY7HxXA=; b=VOcmHYL+L9wtT9KA4YZ9fCkNP+
-	BAsIAFilmx2dbH2R/yaSE6CdbyGvnYZeOL15/JIhidEcapDLvZH763uJUK410t/rY4Vx/OkMktGeP
-	9EHCHmjeunjV5f451QYpn+Z84GnXFE2IHuGa4XHLxKmb38+nSgQZVz+pTgLwnq0NW3IEvIS5MW4hS
-	Cxgwy4CAFWfFlVEZtkhOIaTVwGWtd6f7eC/LsCmYyuXddhHaCHwPrceQaJawyxoT9U+RPzW0AUcQ8
-	1oqYqVp+TN28T7QVHbdiOJ/1Pd3KLSsiXkSjoIu1CJpgOfFLgFr16+ouCPXMzAbFNSKSMN/D9QKTq
-	krdFfqjw==;
+	bh=17kigxGvW4oO2tVOPFkWCos9YzmgV9xkKWZ4CGN+uQ8=; b=mBGbFVy5TbLd93FjlwLLJaViB5
+	Wfoqio7oJmaPmsUNKRg3CUsr5yyQMENcHV3KFe2Aq/HsmkQBVXSucoRXNOCh9kU1zcb1CwUQqz0CS
+	qSw8ovT46q18Vaijga5hE6xAa+VQSjtjdOx+FsNXC5dy24UvCUVZ7Jj41aNBm9ZxcfplB6Ybj2NhU
+	8bldlbZW4PKiFbDJhCBsYE6IXw95F77NRIjG6wxGG1jn6ZWNbDL4Iplqb5RqNBgNY+m1lBBPDJWeP
+	yzTOk1Kh4eeRgys+ytqt3THr8XUGTHBfX06pUznBHIyEpLrjW0EDqiSihPmgTkzSzxrNP3pNvep+I
+	NM5EjVEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGlWH-00GSpE-1N; Wed, 27 Jul 2022 18:12:29 +0000
-Received: from mail-pf1-f175.google.com ([209.85.210.175])
+	id 1oGm6p-00GjwL-1r; Wed, 27 Jul 2022 18:50:15 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGlWD-00GSkY-0G
-	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 18:12:27 +0000
-Received: by mail-pf1-f175.google.com with SMTP id b133so16802782pfb.6
-        for <linux-mediatek@lists.infradead.org>; Wed, 27 Jul 2022 11:12:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=RNVMJ4oZ8yHzMS/5F5vQFWD6tQYWHNz7yT3+sY7HxXA=;
-        b=2FmCRM5LoEnmWQ+DDgprGi5oZFRUtup3XSPZp211EhhOgj4q3iyIQO/mkR73Znvzg9
-         B0q6NzSfr8mrJdr6m6whgEds0I90veUSzwsL14SWBvunOns7bfsftSX9YF5fRXM81z9a
-         PBkrpgEV7ZcSEnNDCDAapVzHdUf7HPD9jPuT3eySIGJ/atD+4FiH5CSEPTqZ7u/swdbQ
-         GAguWy17zAh7+uBIPy9ybEqOaz5hLjgzwTxLPgxcKnG9yXtsMACZRMngs76HijI8zEOD
-         /I7U5ju7H2yrAd3cn6vxcJ/JZy02717IVSHXC9zHWoPuMKMBzwwYyQD35Sb79ahlPRtq
-         3jFQ==
-X-Gm-Message-State: AJIora9JTrZTzeipEwpH3l68IrchTA/OIYCV8xdse2V1/b5P9bSlPty0
-	WeXYobpV/sExUxL1StD/XFM=
-X-Google-Smtp-Source: AGRyM1usI0Gt657atV+HPb4lgLIOIMc5MiSpXSfWbHnB7XKqfY5gstwVxG7jNUFV+C3r+yvf7zuFPQ==
-X-Received: by 2002:a05:6a00:1946:b0:52a:e551:2241 with SMTP id s6-20020a056a00194600b0052ae5512241mr22626795pfk.29.1658945539275;
-        Wed, 27 Jul 2022 11:12:19 -0700 (PDT)
-Received: from ?IPV6:2620:15c:211:201:a84e:2ec1:1b57:b033? ([2620:15c:211:201:a84e:2ec1:1b57:b033])
-        by smtp.gmail.com with ESMTPSA id h13-20020a170902680d00b0016ce31cfea6sm14180388plk.159.2022.07.27.11.12.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 27 Jul 2022 11:12:18 -0700 (PDT)
-Message-ID: <5fab3d4f-914e-63f8-a3e8-7dd92ecdb04a@acm.org>
-Date: Wed, 27 Jul 2022 11:12:15 -0700
+	id 1oGm6m-00Gjtd-Pb
+	for linux-mediatek@lists.infradead.org; Wed, 27 Jul 2022 18:50:14 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 413E43371F;
+	Wed, 27 Jul 2022 18:50:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1658947808; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=17kigxGvW4oO2tVOPFkWCos9YzmgV9xkKWZ4CGN+uQ8=;
+	b=SLuQle99oELpYuyDPVS05yBosR0Nna4Bweo+4Gi6Mv/UYoONOi8JumrhPcY3VzENkmxmMq
+	doy/Nrp8jeVoFGb9yZ6VCnlLWx7yjX6OIKQ0bzHbOZNORvfklce/ePSBEtBHQOc+oGpP5W
+	08hD7uffxz4yxpFvuf4Ts8UBtFnzQYM=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1658947808;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=17kigxGvW4oO2tVOPFkWCos9YzmgV9xkKWZ4CGN+uQ8=;
+	b=xORdcup2W6obmsRjxmakMi+W4NXFxHQuW+qMb1tpttieluQXq52lcVKjnwEAAqfw0WlIVi
+	axgLzh3h0+tWF5Aw==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id ED68013ABC;
+	Wed, 27 Jul 2022 18:50:07 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id d8diON+I4WIVPAAAMHmgww
+	(envelope-from <jdelvare@suse.de>); Wed, 27 Jul 2022 18:50:07 +0000
+Date: Wed, 27 Jul 2022 20:50:06 +0200
+From: Jean Delvare <jdelvare@suse.de>
+To: Mark Brown <broonie@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Liam
+ Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chenglin Xu <chenglin.xu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH RFC] regulator: mt6380: Fix unused array warning
+Message-ID: <20220727205006.0ff42274@endymion.delvare>
+In-Reply-To: <YuEug/OV9H0DKnmZ@sirena.org.uk>
+References: <20220727132637.76d6073f@endymion.delvare>
+	<YuEpGTD/DbC1T9Z0@sirena.org.uk>
+	<20220727140809.0951b72d@endymion.delvare>
+	<YuEug/OV9H0DKnmZ@sirena.org.uk>
+Organization: SUSE Linux
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v4] ufs: core: fix lockdep warning of clk_scaling_lock
-Content-Language: en-US
-To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, stable@vger.kernel.org
-References: <20220727032110.31168-1-peter.wang@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20220727032110.31168-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220727_111225_077944_877FDB51 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220727_115013_016262_0C354976 
+X-CRM114-Status: GOOD (  24.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,33 +94,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/26/22 20:21, peter.wang@mediatek.com wrote:
-> -	/* Enable Write Booster if we have scaled up else disable it */
-> -	downgrade_write(&hba->clk_scaling_lock);
-> -	is_writelock = false;
-> -	ufshcd_wb_toggle(hba, scale_up);
-> +	/* Disable clk_scaling until ufshcd_wb_toggle finish */
-> +	hba->clk_scaling.is_allowed = false;
-> +	wb_toggle = true;
->   
->   out_unprepare:
-> -	ufshcd_clock_scaling_unprepare(hba, is_writelock);
-> +	ufshcd_clock_scaling_unprepare(hba);
-> +
-> +	/* Enable Write Booster if we have scaled up else disable it */
-> +	if (wb_toggle) {
-> +		ufshcd_wb_toggle(hba, scale_up);
-> +		ufshcd_clk_scaling_allow(hba, true);
-> +	}
+Hi Mark,
 
-I'm concerned that briefly disabling clock scaling may cause the clock 
-to remain at a high frequency even if it shouldn't. Has the following 
-approach been considered? Instead of moving the 
-ufshcd_clk_scaling_allow() call, convert dev_cmd.lock into a semaphore, 
-lock it near the start of ufshcd_devfreq_scale() and unlock it near the 
-end of the same function.
+On Wed, 27 Jul 2022 13:24:35 +0100, Mark Brown wrote:
+> On Wed, Jul 27, 2022 at 02:08:09PM +0200, Jean Delvare wrote:
+> > On Wed, 27 Jul 2022 13:01:29 +0100, Mark Brown wrote:  
+> 
+> > > It's helpful to keep the build coverage high.  
+> 
+> > OF does not depend on the architecture, anyone can enable it. So I
+> > can't see any problem of coverage with making drivers depend on OF.  
+> 
+> It still reduces a barrier to entry.
+
+Can't see how that would be a goal. By allowing randomconfig to pick
+configuration option combinations which do not make sense, we are not
+increasing coverage. That's quite the opposite. We are limited by the
+overall power of the build farm, so every test build of such a useless
+combination is a waste of resources. We'd rather use that machine time
+to test a configuration option combination which real people would be
+using, as these are the ones we care about.
+
+> It's also that it's easier to just
+> prefer the conditional compilation pattern rather than either check to
+> see which cases is needed or have people copy an example that doesn't
+> use it when they should.
+
+In my experience, there's always a very easy way to silent a warning,
+but in most cases, that easy way is wrong because it hides the warning
+instead of fixing its cause.
+
+Very much to the point, the build farm pointed us to a combination of
+options which triggers warnings which developers had apparently never
+noticed before, which is a hint that maybe this combination is not
+something we should support in the first place. We can of course silent
+all such warnings with __maybe_unused, but that should not be our first
+choice (else we might as well stop building with -Wunused).
+
+Not only that, but in this case it might also be that we have kernel
+code that can be removed because it isn't needed. Not much, but that
+would still be a gain, methinks.
+
+I also don't think that one goal of the kernel code is to be easy to
+copy and paste without understanding what you are doing.
+
+Anyway, this is your subsystem, so the decision is yours. My patch
+removes the warning, if you are happy with it, feel free to apply it.
 
 Thanks,
-
-Bart.
+-- 
+Jean Delvare
+SUSE L3 Support
 
