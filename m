@@ -4,65 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36900C04A68
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 09:10:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F3ABC04A68
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 09:22:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=leRbElxdGs7yKndNzSM1cwIAuQhq6Od/9ZBkjeC99GY=; b=utRyx7Md3Ta2UeDy5drCqCWbO2
-	aKXyTU5uk65y/Y29Qs6h0fQ8DHB6LFUTe/5hjTBiYgTeShubZXxJKQVQk7GXmc6Qq5khHqGU0T6Q4
-	yD8yi98wf7Y7/qJRy5f+pimCkzcffQZO/Q84RO14Z9c7SCDvVvsJWiQdjN9qNd+b0oVDkg1d1U+V2
-	WYe7MnTZHRilGfsUkb9WJCjHjTx2oUFDY0pBhYg9Jo98ptaNHLpljwtMl5b7B/IeOzI18DccnqlTq
-	TDFP2Ue2+B62GjWDQJGwqFVLDWegQPUte4mEHJ2dwwKmw+XL5QXE+Xsxiztsh+OsEtdkNX/qXbyd9
-	L8SjKYkA==;
+	bh=KaNe8gfPDt7QKa5VYJW3wDvL8W+QWbWKq376KcUEzZY=; b=FYjDD3XdnfaY4Zb+ARqoXGH59b
+	uXbKFgSKBmJBw1f3WPodEc//63Xgn2iFds2u2qZT2+Yratl2VWhLJNVQknarUYGK7sIeD4/lVeQ5s
+	7LgVh2BQhAMIq5g2fWjO4uCP/bZ/KNpVVxSW8a02CmDhcsLFDdnzI/Z5kWM3UvrieQLz/szBLtMMt
+	D7zzeBDzWNB16FcZL08K0oZZhRdhbNf3ZX9ZuHv3ZrHU2w2828m9Djexjt2+s3s77HSTpCnKbkq6/
+	Y9nRWJE94ZmCOGCAVCDqyURvGjageoevXlWyUo9B6tkGZ1VzFv8pQ/nbNqs5Kiq6BbKYr3W0KmLc6
+	0V2UKbKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGzXO-006Ce7-W8; Thu, 28 Jul 2022 09:10:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oGziv-006OcB-B4; Thu, 28 Jul 2022 09:22:29 +0000
+Received: from smtp-out2.suse.de ([2001:67c:2178:6::1d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGzXL-006CaV-UY
-	for linux-mediatek@lists.infradead.org; Thu, 28 Jul 2022 09:10:33 +0000
-X-UUID: c1716f4060d54c7bbb7db78ca9ebc526-20220728
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:242808db-42a8-4462-9392-dd85e4637c5d,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:88f5a1cf-a6cf-4fb6-be1b-c60094821ca2,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: c1716f4060d54c7bbb7db78ca9ebc526-20220728
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <hui.liu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 251348815; Thu, 28 Jul 2022 02:10:27 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 28 Jul 2022 16:49:53 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 28 Jul 2022 16:49:53 +0800
-From: Hui Liu <hui.liu@mediatek.com>
-To: <linus.walleij@linaro.org>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<hui.liu@mediatek.com>, <jianguo.zhang@mediatek.com>,
-	<zhiyong.tao@mediatek.com>, <sean.wang@mediatek.com>,
-	<linux-gpio@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [PATCH v3 0/2] MediaTek pinctrl patch on mt8188
-Date: Thu, 28 Jul 2022 16:49:49 +0800
-Message-ID: <20220728084951.22102-1-hui.liu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oGzis-006OOt-C0
+	for linux-mediatek@lists.infradead.org; Thu, 28 Jul 2022 09:22:27 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 373DE20FE4;
+	Thu, 28 Jul 2022 09:22:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1659000140; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=KaNe8gfPDt7QKa5VYJW3wDvL8W+QWbWKq376KcUEzZY=;
+	b=iclC+NarXfrqAALECZsO27bElHgeJdsCms/hrJHvEBkSkmzA/qXQ6v8PuZCunIHXDVPlNc
+	cFqhoLd7krt4NogKAc3DC1OlWGUkpN/Y/NQHWqXAf2AtpNtc8sJg6tSZa9I7jMgLyMjQyF
+	tXel9lVrJAnSRhXjWcpA1xv122NLLKE=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1659000140;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=KaNe8gfPDt7QKa5VYJW3wDvL8W+QWbWKq376KcUEzZY=;
+	b=TBA2lHorOFAxGy+f8DPe3tvJL1GIVeEHMUj+A4a7hinopwHx8pN530VmqjBXuI10NHMQKf
+	9pRc21bXEU05upAg==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 0351513A7E;
+	Thu, 28 Jul 2022 09:22:19 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id M725OktV4mIuSwAAMHmgww
+	(envelope-from <jdelvare@suse.de>); Thu, 28 Jul 2022 09:22:19 +0000
+Date: Thu, 28 Jul 2022 11:22:16 +0200
+From: Jean Delvare <jdelvare@suse.de>
+To: linux-mediatek@lists.infradead.org, Matthias Brugger
+ <matthias.bgg@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, LKML <linux-kernel@vger.kernel.org>,
+ Chenglin Xu <chenglin.xu@mediatek.com>
+Subject: [PATCH] soc: mediatek: Let PMIC Wrapper and SCPSYS depend on OF
+Message-ID: <20220728112216.13b10689@endymion.delvare>
+Organization: SUSE Linux
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_021032_029061_F4A5D682 
-X-CRM114-Status: UNSURE (   7.63  )
+X-CRM114-CacheID: sfid-20220728_022226_584394_D2DDE7B5 
+X-CRM114-Status: UNSURE (   9.96  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,43 +88,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series include 2 patches:
-1.Add pinmux definition file and pinctrl binding document for mt8188.
-2.Add pinctrl driver for mt8188.
+With the following configuration options:
+CONFIG_OF is not set
+CONFIG_MTK_PMIC_WRAP=3Dy
+CONFIG_MTK_SCPSYS=3Dy
+we get the following build warnings:
 
-Changes in patch v3:
-1.Fix binding document dt_binding_check fail issue.
+  CC      drivers/soc/mediatek/mtk-pmic-wrap.o
+drivers/soc/mediatek/mtk-pmic-wrap.c:2138:34: warning: =E2=80=98of_pwrap_ma=
+tch_tbl=E2=80=99 defined but not used [-Wunused-const-variable=3D]
+drivers/soc/mediatek/mtk-pmic-wrap.c:1953:34: warning: =E2=80=98of_slave_ma=
+tch_tbl=E2=80=99 defined but not used [-Wunused-const-variable=3D]
+  CC      drivers/soc/mediatek/mtk-scpsys.o
+drivers/soc/mediatek/mtk-scpsys.c:1084:34: warning: =E2=80=98of_scpsys_matc=
+h_tbl=E2=80=99 defined but not used [-Wunused-const-variable=3D]
 
-Changes in patch v2:
-1.Change pinmux definition file name to mediatek,mt8188-pinfunc.h.
-2.Change binding document name to mediatek,mt8188-pinctrl.yaml.
-3.Update yaml description.
+Looking at the code, both drivers can only bind to OF-defined device
+nodes, so these drivers are useless without OF and should therefore
+depend on it.
 
-Changes in patch v1:
-1.Add pinmux definition file.
-2.Add binding document.
-3.Add mt8188 pinctrl drivers.
+Developers or QA teams who wish to test-build the code can still do
+so by enabling CONFIG_OF, which is available on all architectures and
+has no dependencies.
 
-*** BLURB HERE ***
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+Reported-by: kernel test robot <lkp@intel.com>
+Link: https://lore.kernel.org/all/202207240252.ZY5hSCNB-lkp@intel.com/
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chenglin Xu <chenglin.xu@mediatek.com>
+---
+ drivers/soc/mediatek/Kconfig |    2 ++
+ 1 file changed, 2 insertions(+)
 
-Hui.Liu (2):
-  dt-bindings: pinctrl: add support for mediatek mt8188
-  pinctrl: mediatek: add mt8188 driver
+--- linux-5.18.orig/drivers/soc/mediatek/Kconfig	2022-05-22 21:52:31.000000=
+000 +0200
++++ linux-5.18/drivers/soc/mediatek/Kconfig	2022-07-28 10:59:55.025131145 +=
+0200
+@@ -37,6 +37,7 @@ config MTK_INFRACFG
+ config MTK_PMIC_WRAP
+ 	tristate "MediaTek PMIC Wrapper Support"
+ 	depends on RESET_CONTROLLER
++	depends on OF
+ 	select REGMAP
+ 	help
+ 	  Say yes here to add support for MediaTek PMIC Wrapper found
+@@ -46,6 +47,7 @@ config MTK_PMIC_WRAP
+ config MTK_SCPSYS
+ 	bool "MediaTek SCPSYS Support"
+ 	default ARCH_MEDIATEK
++	depends on OF
+ 	select REGMAP
+ 	select MTK_INFRACFG
+ 	select PM_GENERIC_DOMAINS if PM
 
- .../pinctrl/mediatek,mt8188-pinctrl.yaml      |  238 ++
- drivers/pinctrl/mediatek/Kconfig              |   12 +
- drivers/pinctrl/mediatek/Makefile             |    1 +
- drivers/pinctrl/mediatek/pinctrl-mt8188.c     | 1669 ++++++++++++
- drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h | 2260 +++++++++++++++++
- .../pinctrl/mediatek,mt8188-pinfunc.h         | 1280 ++++++++++
- 6 files changed, 5460 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
- create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8188.c
- create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h
- create mode 100644 include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
 
---
-2.18.0
-
-
+--=20
+Jean Delvare
+SUSE L3 Support
 
