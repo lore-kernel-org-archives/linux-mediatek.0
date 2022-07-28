@@ -4,109 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91923C19F21
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 11:31:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2DFAC19F21
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 11:38:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SMC59iUGEUeIWikaYVLjy2odSUsf6J1BxrN5JwfwEpY=; b=A3QSAbeD/ZZBGk8e0pdpkZ55Ac
-	1UB5U/stCPz3QzI9F9li10YyJCZy4aBWbINxyO99s09HxVwuShg3sn36Djqgc4lU3YZB/QOtreC9F
-	r0+eq+6ciEbna8Lj0UoT39bKKaeQgJPFl3ooN9/iPe+8+iNkmZgcewSiJQYpWYjjkmVReq0vWvPkI
-	O733XeFEKguTxYpioCjYN4H9kQNQ6bxK1sbnZO9e4ku+QwZMg4FRTulVlYKnME6LU99zGUwaZXeIO
-	MAZlNTxzgBMkuJkGyifiZ0zmzQPw3vL4Ci/kiKeeUdxwtPNIxIf/XirbHNKJvTWre/mqN7tMZJq5H
-	0XXYnhGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oCTDsjMvQ42bPcKeynsewoMKhH82hXRbjXkjEys14+o=; b=JsZLA/ZacDWf/mDQ+1RVnm9Ubq
+	Z5t6V3UB4AMeSSDEjQhrfYhQ47V1hNUON0WGtOPpiYhjJPaz4OWhsOXAktpyUzv8wMeSaaqwPoLg5
+	lEfDKPJjJW/BCJdyheoWL53Woc9xuP9hDgILeHNB4GNhDIRDzN4+dg87rI9BKKt8Vw5iDij2I2o1Q
+	eE0Ji/hUHtpXAK8IPc205p/znM4Iqj1ioXQbGEl0mSdqx8rXfRKWOokOmRuclLVw4r9DWs7ihREdZ
+	KpCojXUnY5wn9e/BhG6mczHcYugnh7ejasxe086aUtx9+SPkOS5kBDU72500Jf0akhtfn0RuXLTdV
+	5sR3F86w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oH1jb-008jWO-NM; Thu, 28 Jul 2022 11:31:19 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1oH1qh-008oCD-N0; Thu, 28 Jul 2022 11:38:39 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oH1jY-008jTg-OG
-	for linux-mediatek@lists.infradead.org; Thu, 28 Jul 2022 11:31:18 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id n185so796561wmn.4
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Jul 2022 04:31:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc;
-        bh=SMC59iUGEUeIWikaYVLjy2odSUsf6J1BxrN5JwfwEpY=;
-        b=I2LvfwRSLT0FBLkzKL97tXa0j3AxOgqK4JwBDMsSM+Z8HGBr1Hsl+SUU8HPYMLz66e
-         8uwZd7/fPyOTDqCE8CpYD1EB4BMYrqBICeOrQcRtAgtcyK1eE/L39avZt/VLlWPC4Uor
-         LoRGhJiBQNR/hDNsANtNPDEqnDWOhfwEJTmwgA0Cv1jj23KAfdmGOY1sasEYVFjLX/YX
-         ZlPZ2zhQiq7NYJ6LHAqKNcChUNlEupakqOtGb+CZPupdBgaFq1mBMgBamPwT1GZ2CiGh
-         Xxn5YMmbVopGqmz+InpOVGDvq/m/bhIDEUtdkMhmWHk2Kp5mn0bff3ZHplSxHO3nCLJd
-         f6Wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
-        bh=SMC59iUGEUeIWikaYVLjy2odSUsf6J1BxrN5JwfwEpY=;
-        b=mjeI0UL2hIuU4LKa54qP1neIVOQocjOretXtvtOdaoKlehW07+R4CxlTnHBuTvZ4/U
-         gqgHP3Alx9Kz4d2R9qCIbQ+y2xKzUD27SM5Orr5YZxye0Ryb57h1UHC33z+8P5ryBL1e
-         /UwFiBImSp4GV98yxt5NW8UHfU2cnz0gkWXcBEBtpoeoolR5U+kQj6Q880BnPhyWf+Fi
-         57aTpVk6ABIZmAiSPQ3b8cHYQvCrk+yZ+pgtiJKEQ7havZX+y2ZP47dZ3oo06uVhU2N/
-         IPF9eWZsVN/VTaY8f4AK4D53o2IqKpSYqy+hngWh6UYtZhZyE/WJPtksnrO3WjPYDekK
-         gABg==
-X-Gm-Message-State: AJIora+ch2ECm0KCJID1Y0hhGlM6vQSgksoznEhXtzvzn7LyLtNpQ472
-	vw9IZ9FJB1u3Zu0ZRZobMggEKQ==
-X-Google-Smtp-Source: AGRyM1vjIPgxwYbMk8BsnZlSouB9NDyINH+vUJA52rfBsJa1/epNS6uEmdrCNjJkZQ9qNZQU8kklUA==
-X-Received: by 2002:a05:600c:3556:b0:3a3:2a9c:f26 with SMTP id i22-20020a05600c355600b003a32a9c0f26mr6221269wmq.58.1659007873312;
-        Thu, 28 Jul 2022 04:31:13 -0700 (PDT)
-Received: from maple.lan (cpc141216-aztw34-2-0-cust174.18-1.cable.virginm.net. [80.7.220.175])
-        by smtp.gmail.com with ESMTPSA id z22-20020a1cf416000000b003a35516ccc3sm937306wma.26.2022.07.28.04.31.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Jul 2022 04:31:12 -0700 (PDT)
-Date: Thu, 28 Jul 2022 12:31:09 +0100
-From: Daniel Thompson <daniel.thompson@linaro.org>
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Jingoo Han <jingoohan1@gmail.com>,
-	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sebastian Reichel <sre@kernel.org>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>,
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>,
-	Helge Deller <deller@gmx.de>,
-	Andy Shevchenko <andy.shevchenko@gmail.com>,
-	ChiaEn Wu <chiaen_wu@richtek.com>,
-	Alice Chen <alice_chen@richtek.com>,
-	ChiYuan Huang <cy_huang@richtek.com>,
-	dri-devel <dri-devel@lists.freedesktop.org>,
-	Linux LED Subsystem <linux-leds@vger.kernel.org>,
-	devicetree <devicetree@vger.kernel.org>,
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	Linux PM <linux-pm@vger.kernel.org>,
-	USB <linux-usb@vger.kernel.org>,
-	linux-iio <linux-iio@vger.kernel.org>,
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>,
-	szuni chen <szunichen@gmail.com>
-Subject: Re: [PATCH v6 13/13] video: backlight: mt6370: Add MediaTek MT6370
- support
-Message-ID: <20220728113109.7gf3b36mqjxlhcq3@maple.lan>
-References: <20220722102407.2205-1-peterwu.pub@gmail.com>
- <20220722102407.2205-14-peterwu.pub@gmail.com>
- <20220725103128.xtaw2c4y5fobowg7@maple.lan>
- <CABtFH5LUKTZenTktq3v1JZ9xe-yJFsMvCZuwDhmxdT87k0O-zA@mail.gmail.com>
- <20220726093058.2fz2p2vg7xpfsnfe@maple.lan>
- <CABtFH5+in-+=6r3wOvQ8-78DT9CXaMursJukhx+kdwMvvP3djw@mail.gmail.com>
- <20220726115954.kpkmidrk3zo3dpbq@maple.lan>
- <CABtFH5K3LLw9ZqY0Qrrx_8xs+3ioJpzP0=_HptmoDY6tvu2JVg@mail.gmail.com>
+	id 1oH1qf-008o2U-Pw
+	for linux-mediatek@lists.infradead.org; Thu, 28 Jul 2022 11:38:39 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 15F3D33A33;
+	Thu, 28 Jul 2022 11:38:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1659008309; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=oCTDsjMvQ42bPcKeynsewoMKhH82hXRbjXkjEys14+o=;
+	b=omc4xCiOI34ZURPO6ixkP/uM/28AmQNQ9D/KYHl2zwrMmYPGWdhL2b8tO2Yl/f+MAJXFbl
+	MwUaaiKaY8gIFi8D7dAWO6EZaHq9HDAVr0JYIbspFhGsFqvh8i/R/CRDDBM8AhHvsBGkM3
+	hGTYXqshrC4Rgew4+48qfResC4jdvOE=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1659008309;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=oCTDsjMvQ42bPcKeynsewoMKhH82hXRbjXkjEys14+o=;
+	b=hLYRud54mwo3moDg6l4rB2DIBukOy5LJogc1A5UZIOtVgajMsk99MS0vV03xfWO52gSGjt
+	QgYkrgNGATMdZcAQ==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D20B213A7E;
+	Thu, 28 Jul 2022 11:38:28 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id XbipMTR14mKOEAAAMHmgww
+	(envelope-from <jdelvare@suse.de>); Thu, 28 Jul 2022 11:38:28 +0000
+Date: Thu, 28 Jul 2022 13:38:27 +0200
+From: Jean Delvare <jdelvare@suse.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, Matthias Brugger
+ <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, LKML
+ <linux-kernel@vger.kernel.org>, Chenglin Xu <chenglin.xu@mediatek.com>
+Subject: Re: [PATCH] soc: mediatek: Let PMIC Wrapper and SCPSYS depend on OF
+Message-ID: <20220728133827.5f59e824@endymion.delvare>
+In-Reply-To: <98eccbdd-3446-f44d-9278-79a4a60c1c18@collabora.com>
+References: <20220728112216.13b10689@endymion.delvare>
+	<98eccbdd-3446-f44d-9278-79a4a60c1c18@collabora.com>
+Organization: SUSE Linux
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CABtFH5K3LLw9ZqY0Qrrx_8xs+3ioJpzP0=_HptmoDY6tvu2JVg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_043116_824717_BA7CC0A6 
-X-CRM114-Status: GOOD (  35.23  )
+X-CRM114-CacheID: sfid-20220728_043838_012154_69B5176D 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,71 +92,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 27, 2022 at 02:24:46PM +0800, ChiaEn Wu wrote:
-> On Tue, Jul 26, 2022 at 7:59 PM Daniel Thompson
-> <daniel.thompson@linaro.org> wrote:
-> > > > > So should we make all 16384 steps of MT6372 available to users?
-> > > >
-> > > > Yes.
-> > > >
-> > > >
-> > > > > Does that mean the DTS needs to be modified as well?
-> > > >
-> > > > Yes... the property to set initial brightness needs a 14-bit range.
-> > > >
-> > > > It would also be a good idea to discuss with the DT maintainers whether
-> > > > you should introduce a second compatible string (ending 6372) in order
-> > > > to allow the DT validation checks to detect accidental use of MT6372
-> > > > ranges on MT6370 hardware.
+Hi Angelo,
 
-[snip]
+On Thu, 28 Jul 2022 12:51:44 +0200, AngeloGioacchino Del Regno wrote:
+> Il 28/07/22 11:22, Jean Delvare ha scritto:
+> > With the following configuration options:
+> > CONFIG_OF is not set
+> > CONFIG_MTK_PMIC_WRAP=3Dy
+> > CONFIG_MTK_SCPSYS=3Dy
+> > we get the following build warnings:
+> >=20
+> >    CC      drivers/soc/mediatek/mtk-pmic-wrap.o
+> > drivers/soc/mediatek/mtk-pmic-wrap.c:2138:34: warning: =E2=80=98of_pwra=
+p_match_tbl=E2=80=99 defined but not used [-Wunused-const-variable=3D]
+> > drivers/soc/mediatek/mtk-pmic-wrap.c:1953:34: warning: =E2=80=98of_slav=
+e_match_tbl=E2=80=99 defined but not used [-Wunused-const-variable=3D]
+> >    CC      drivers/soc/mediatek/mtk-scpsys.o
+> > drivers/soc/mediatek/mtk-scpsys.c:1084:34: warning: =E2=80=98of_scpsys_=
+match_tbl=E2=80=99 defined but not used [-Wunused-const-variable=3D]
+> >=20
+> > Looking at the code, both drivers can only bind to OF-defined device
+> > nodes, so these drivers are useless without OF and should therefore
+> > depend on it.
+>=20
+> I would prefer that you solve this warning by removing of_match_ptr() fro=
+m both
+> drivers instead.
 
-> > > > I'd be curious what the compatiblity reasons are. In other words what
-> > > > software breaks?
-> > >
-> > > The reason is as above. We just hope the users who use this series SubPMIC can
-> > > directly apply this driver to drive the backlight device without
-> > > knowing the underlying hardware.
-> > > Not software breaks.
-> >
-> > As above, ignoring the max_brightness property is a bug in the
-> > userspace. I'm still unclear why sending faked ranges to userspace
-> > it a better solution than fixing the userspace.
->
-> Ok, I got it!
-> If I add a second compatible string (like 'mediatek,mt6372-backlight')
-> in the DT section,
-> and append 'if-then-else' to determine the correct maximum value of
-> 'default-brightness' and 'max-brightness',
-> Also, I will append 'bled exponential mode' to make user control using
-> linear or exponential mode.
+Actually we could do both. Once the drivers depend on OF,
+of_match_ptr(_ptr) will always resolve to (_ptr) so we can indeed
+save the preprocessor some work.
 
-I'd be very pleased to see support for exponential mode added: it's a
-much better way to control LEDs and backlights.
-
-
-> These changes I will explain to DT's maintainer again.
-
-Excellent. I know DT maintainers are copied into this thread but they
-will probably not be following this patch's thread so it is better to
-discuss in the mail thread for the DT bindings!
-
-
-> Back to the driver section,
-> do I still need to use the register to confirm again whether this
-> SubPMIC used now is MT6372 and record this information? (using
-> 'mt6370_check_vendor_info()')
-> I am afraid that the user who uses the MT6370 hardware, but the DT
-> compatible string is set to 'mediatek,mt6372-backlight'.
-> This may cause errors when update/get brightness values.
-> So I hope the driver here can check again to make sure the
-> 'default-brightness', 'max-brightness', can be updated/got correctly.
-> I don't know if this will make you feel redundant if I do this??
-
-Yes, it's good idea to check the hardware model during probe. I'd
-suggest just reporting this as an error ("Buggy DT, wrong compatible
-string") rather than trying to re-intepret the parameters.
-
-
-Daniel.
+--=20
+Jean Delvare
+SUSE L3 Support
 
