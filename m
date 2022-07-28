@@ -4,48 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1084CC04A68
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 16:17:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A09ECC04A68
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 17:16:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G8tMSv2rkDYD5DdVC6rtsdDDGUU1tvaLkA//RD8Fdsw=; b=ACD/BvZL1L6DsA3eVF7CZ9bAkE
-	SPKvmaBR2ZO+Vd9FAKpouz5w0arwxact5/pCNMoBm6+6Ngsx9olb3OKEQZKnDP/7baIExWckI0nsO
-	mMfN0c/yNUFpUd+VeRoclv0vvkgjz83QIdqJRdaOnd195w4X3/xh2BSVjwyv1KXyQWvQoJRpzIp5O
-	8zeYDduEiRZR/+sLpebO5LfFnC1upax4g0fNhEDRqVPQ/SDUdwp8meCOqnhcx/n1MseR/IO61/bCe
-	UA98bieYDIVRkiK3zJ6SXOP39uuPa73hbZOMoWAm7jL5gre6L5ULaF9R4S0hCigzQakO1/qAgvb0E
-	ElWupKKw==;
+	bh=kzxkcoZRRL9rOm88Cmu3gObIZ4ByC/bqi9jRPQofGU0=; b=21wQjZhsTS2uGaJIE4Gdr4XFvE
+	t8AlRqRyyujT/dsEudr/f4b/jvnHMXEmi9DKdgMGBJ2MvlSQQZ9oLbxUSRq+c16jGYkmEq2zm/szf
+	G5oi7vej1TEvCGdXxr1QFRVsBGByAWE8bWZcybpu3e/tdz4voWN/dw0AilLsj1ghwQPusBAVwKHiD
+	IjbJ4gZWBG2scMMwaAzkS3EFunM7JrlId5MOxqKziEzExXf234OgMD2d9svwe6f71Gpc/weHEG23w
+	Z6C2HD3kvvgSmy3ogYAfQN1Dkt15FvqxgClNdaMWe4krii7PJ9WjcI3HUR5dNvmjJvm1mRsFlxNQl
+	DRwtwcrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oH6C1-00Ase3-CX; Thu, 28 Jul 2022 16:16:57 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1oH77G-00CWjd-KF; Thu, 28 Jul 2022 17:16:06 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oH6Bh-00AsHA-8J; Thu, 28 Jul 2022 16:16:38 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1oH6Aw-0008D9-2T;
-	Thu, 28 Jul 2022 18:15:51 +0200
-Date: Thu, 28 Jul 2022 18:14:47 +0200
-From: Daniel Golle <daniel@makrotopia.org>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [RFC PATCH net-next] dt-bindings: net: dsa: mediatek,mt7530:
- completely rework binding
-Message-ID: <YuK193gAQ+Rwe26s@makrotopia.org>
-References: <20220726122406.31043-1-arinc.unal@arinc9.com>
+	id 1oH774-00CV6o-W6; Thu, 28 Jul 2022 17:15:56 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id o13so3035473edc.0;
+        Thu, 28 Jul 2022 10:15:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=kzxkcoZRRL9rOm88Cmu3gObIZ4ByC/bqi9jRPQofGU0=;
+        b=mA1g9jERDTuXB6CIUzwheMHBNODiEGENbo+7PFcbstZJMzV1SVB6J7wTVUXl3AWB8j
+         ivmIr18bObn8snEts21XSsJ9/9kR/j5mXowkVHf+dMo9acZzMjym03+syxKTqz/m9Kb6
+         nuLIwdQfnydSj5ucudwy/eJEPu+GcAdOuDLksXUSan3Qav96jOBpMSYMw43A0ImCHRMU
+         3HW2rOt2CTjjJzWItKRjE0soDz1xjLrLhoearwoY6gA9s8yZXS/lbe1uLRnTZGMzmMSA
+         JnV6ANCvFAAAEUxvOKxd5c5x4m8VDwCWLjkCoGElzxv6bqkkxTZkkHcvgaOTNpsmIlJf
+         GRWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=kzxkcoZRRL9rOm88Cmu3gObIZ4ByC/bqi9jRPQofGU0=;
+        b=vcssXLQ/8W0QMaI389bjHLouPRibWYaocDp/V0g4rpgynlmO+e7BgXcOeBjptuUzP9
+         3If/EEXmzh99yQyHlduzEGh2XsiUE6lcadM/crcdC2vp6OxT7jiASZkPuY9DRqn85rFs
+         f0+gsX902qDBHb2mvIHWXRe5uyy6t7iMVtkcm8imtgXKYhgM8puGizy5BElJ68X8pdYs
+         Hw5J3aeyIpipl/ZyZbaT3zEX23YkOpuvd2mE+VK44DHMkdpFYx17Br3WTDCLvquclb0R
+         XNsu5O6FsVTqOlqMnfJkxp/448fM5GL0IP3UHkUoNXXUuVeBZkn+3So+8i9HEc42WT0m
+         0LUA==
+X-Gm-Message-State: AJIora8bVumUb9bhMA6yFmQIccl5NWQlInvM9MSoU9Q4J+ULopCmJL3p
+	NPMW/pmF7T+3yy3szxjC7ek=
+X-Google-Smtp-Source: AGRyM1sDiTz75TlHkXcEShLFlmR6ExyZ/xiXbbavvqsS7gF2u/acs7y8LRP86s4jS3LpUpQ3R7qwlw==
+X-Received: by 2002:a05:6402:1859:b0:43c:b0db:3f9a with SMTP id v25-20020a056402185900b0043cb0db3f9amr9142788edy.120.1659028552917;
+        Thu, 28 Jul 2022 10:15:52 -0700 (PDT)
+Received: from orome (p200300e41f12c800f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f12:c800:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id o5-20020a056402038500b0043cfb6af49asm924040edv.16.2022.07.28.10.15.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 28 Jul 2022 10:15:51 -0700 (PDT)
+Date: Thu, 28 Jul 2022 19:15:50 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Fabien Parent <fparent@baylibre.com>
+Cc: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: pwm: mediatek: add pwm binding for
+ MT8195
+Message-ID: <YuLERvcbXvsMDf2u@orome>
+References: <20220531114544.144785-1-fparent@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="syglkuQTbgvVyS97"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220726122406.31043-1-arinc.unal@arinc9.com>
+In-Reply-To: <20220531114544.144785-1-fparent@baylibre.com>
+User-Agent: Mutt/2.2.6 (2022-06-05)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_091637_314454_24BB263E 
-X-CRM114-Status: UNSURE (   8.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220728_101555_095125_85063FA0 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,30 +91,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Sander Vanheule <sander@svanheule.net>, =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>, Eric Dumazet <edumazet@google.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, erkin.bozoglu@xeront.com, Florian Fainelli <f.fainelli@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Vivien Didelot <vivien.didelot@gmail.com>, devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Luiz Angelo Daros de Luca <luizluca@gmail.com>, DENG Qingfang <dqfext@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Vladimir Oltean <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-please see a minor comment inline below:
+--syglkuQTbgvVyS97
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Tue, Jul 26, 2022 at 03:24:06PM +0300, Arınç ÜNAL wrote:
-> [...]
-> -  CPU-Ports need a phy-mode property:
-> -    Allowed values on mt7530 and mt7621:
-> -      - "rgmii"
-> -      - "trgmii"
-> -    On mt7531:
-> -      - "1000base-x"
-> -      - "2500base-x"
-> -      - "rgmii"
-> -      - "sgmii"
-> +  There are two versions of MT7530. MT7621AT, MT7621DAT, MT7621ST and MT7623AI
+On Tue, May 31, 2022 at 01:45:43PM +0200, Fabien Parent wrote:
+> MT8195's PWM IP is compatible with the MT8183 PWM IP.
+>=20
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> ---
+>  Documentation/devicetree/bindings/pwm/pwm-mediatek.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
-There are two version of MT7530 **supported by this driver**.....
-(MT7620 also contains MT7530, switch registers are directly mapped into
-SoC's memory map rather than using MDIO like on MT7621 and standalone
-variants, and it got FastEthernet PHYs for Port 0-4)
+Applied, thanks.
 
+Thierry
+
+--syglkuQTbgvVyS97
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmLixEUACgkQ3SOs138+
+s6Gkrw//QwT81sw2csc+jMi4Ltarg0gFGzww9HzroGs9JY38usGngwiffJ2quEQ3
+A58xi/nlafncbOJr8tOxv6xJ+QOWo8GBrysXJ3bPczuSf5wMddhYVJo0DLldtNlH
+rT3YUELO6B8EhEqJY3alkr6fybxYVefwHn5oXmtK3O37MnD9Yh+WiSGFfGAMTdpo
+W17Ue84+WQYk/pVR7NIN/CsevP/PejYeJAooA1+VxtLRAIeP/pHPe4AsDRb0Uuri
+A8pPKmxBk+pcnhsISZDHTwS9BzpYCqcroy9qm4dQPHkycol7fMu4yZWfsKdPNEod
+SvMORne+ZQnM9HeKOeA+7n9V/8HxQ4u54L6/c72+Zk7O6afWMBxhw6qNQWDibsFZ
+Q/h0zSZDpSbr1fZ9zr/fjyGNu7NFZj9+1RgZGRZdyBHVs3KZMD3ZsTZ0k4gWpjgu
+W/kzbvbMoX3No93uSA0/S1c5fuor2udWQrhu3Fe81KkWEXGJfptCOgR6yrKu7TNl
+M2hWpcr7/78ayDMxBOkzWCxmqKLb4vq/QwJvHoQcSFJPaWq9FYPdrm+8rIe4Ls5e
+ZGZZjQF25lYwRkXk5I/ZjXujAlhCGjN/qP+ifCNiy9ceFyoP9DqG83rSYOy8+eE/
+Jj5DNH72fa/gPBjfFH+2VHoLHPglJffUyj1RvI9IuByhT8jO7zI=
+=Ok+p
+-----END PGP SIGNATURE-----
+
+--syglkuQTbgvVyS97--
 
