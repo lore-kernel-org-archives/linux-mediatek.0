@@ -4,67 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE9E6C04A68
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 11:30:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91923C19F21
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 11:31:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+5vNhxFYzvEzru/LHufNEKerRb/W3PQLtOJFARCDZkE=; b=G/3aJi0/CYrhc4zdG7yPzL1cGa
-	A92idExOIt+IDjg4+5bizHolFc56hfoZJavPaM1D2EIttQoIJXZ+3PG1sBhz+5Aaw7mmLwSGftCLN
-	QyDpTGFFWDcLJ0eqZUs9y50NXqhoFEXnjRjz7JfRiNIIHILPVV2pwadmebKR5/SQTjhwi4z//4DLt
-	8S8qNsT3cONqlSSfSIeirE+ZtwJyMfsnQbspdIXQDsi5+gYXgdMmBlGT9EIZeFuP5/2XGdAKluolh
-	D/zk3eh1qlX8lntfPqTlImGgFuLjrNnOAGpIH6a7ZoVLyL0DLxErbyC49ZDqP0vbLBAP6Yb2YB6pt
-	j6YajNMg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SMC59iUGEUeIWikaYVLjy2odSUsf6J1BxrN5JwfwEpY=; b=A3QSAbeD/ZZBGk8e0pdpkZ55Ac
+	1UB5U/stCPz3QzI9F9li10YyJCZy4aBWbINxyO99s09HxVwuShg3sn36Djqgc4lU3YZB/QOtreC9F
+	r0+eq+6ciEbna8Lj0UoT39bKKaeQgJPFl3ooN9/iPe+8+iNkmZgcewSiJQYpWYjjkmVReq0vWvPkI
+	O733XeFEKguTxYpioCjYN4H9kQNQ6bxK1sbnZO9e4ku+QwZMg4FRTulVlYKnME6LU99zGUwaZXeIO
+	MAZlNTxzgBMkuJkGyifiZ0zmzQPw3vL4Ci/kiKeeUdxwtPNIxIf/XirbHNKJvTWre/mqN7tMZJq5H
+	0XXYnhGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oH1ia-008iul-Km; Thu, 28 Jul 2022 11:30:16 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oH1jb-008jWO-NM; Thu, 28 Jul 2022 11:31:19 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oH1iI-008ikH-Rd; Thu, 28 Jul 2022 11:30:00 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3071E6601B43;
-	Thu, 28 Jul 2022 12:29:57 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1659007797;
-	bh=hhjBVzceIN8XHpmgLlkXWe+ErK5AF7MI/o3gUfkyXSk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZFe6KNsATisv/bK5KgTYcFc8XHCWDf3gOFAy1lgkloYzL90CpT4hm4eIsier+HgeS
-	 49pvozJ2iOsnP8fYEyx0UZ9VeSNTKGpSDbfDlJj7yK6Viu20iMbMQF7lRKG0UoEa26
-	 w4KtWZw7jOjbcQpngyDRfkhPLM8x8pwNdKlAnY50sCYCBMXdsaP9Gc97NRBx5tGTa9
-	 cV2ak2bHQWW+TyhobFM/SmK3FlIOCp1KOpqV0UqGVb9MJcL0H/6DbTUFvzhG2LETim
-	 j2vtysvFcZFfT8UYYis3TrPPo7oIgVQNA9h1F3nPdIJK5h7hMaBQbeCfCbXSwC9gAr
-	 iqYpjkclPJWbQ==
-Message-ID: <27d4a2b2-9c0d-066d-92c5-1b7c760a1e9b@collabora.com>
-Date: Thu, 28 Jul 2022 13:29:55 +0200
+	id 1oH1jY-008jTg-OG
+	for linux-mediatek@lists.infradead.org; Thu, 28 Jul 2022 11:31:18 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id n185so796561wmn.4
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Jul 2022 04:31:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc;
+        bh=SMC59iUGEUeIWikaYVLjy2odSUsf6J1BxrN5JwfwEpY=;
+        b=I2LvfwRSLT0FBLkzKL97tXa0j3AxOgqK4JwBDMsSM+Z8HGBr1Hsl+SUU8HPYMLz66e
+         8uwZd7/fPyOTDqCE8CpYD1EB4BMYrqBICeOrQcRtAgtcyK1eE/L39avZt/VLlWPC4Uor
+         LoRGhJiBQNR/hDNsANtNPDEqnDWOhfwEJTmwgA0Cv1jj23KAfdmGOY1sasEYVFjLX/YX
+         ZlPZ2zhQiq7NYJ6LHAqKNcChUNlEupakqOtGb+CZPupdBgaFq1mBMgBamPwT1GZ2CiGh
+         Xxn5YMmbVopGqmz+InpOVGDvq/m/bhIDEUtdkMhmWHk2Kp5mn0bff3ZHplSxHO3nCLJd
+         f6Wg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
+        bh=SMC59iUGEUeIWikaYVLjy2odSUsf6J1BxrN5JwfwEpY=;
+        b=mjeI0UL2hIuU4LKa54qP1neIVOQocjOretXtvtOdaoKlehW07+R4CxlTnHBuTvZ4/U
+         gqgHP3Alx9Kz4d2R9qCIbQ+y2xKzUD27SM5Orr5YZxye0Ryb57h1UHC33z+8P5ryBL1e
+         /UwFiBImSp4GV98yxt5NW8UHfU2cnz0gkWXcBEBtpoeoolR5U+kQj6Q880BnPhyWf+Fi
+         57aTpVk6ABIZmAiSPQ3b8cHYQvCrk+yZ+pgtiJKEQ7havZX+y2ZP47dZ3oo06uVhU2N/
+         IPF9eWZsVN/VTaY8f4AK4D53o2IqKpSYqy+hngWh6UYtZhZyE/WJPtksnrO3WjPYDekK
+         gABg==
+X-Gm-Message-State: AJIora+ch2ECm0KCJID1Y0hhGlM6vQSgksoznEhXtzvzn7LyLtNpQ472
+	vw9IZ9FJB1u3Zu0ZRZobMggEKQ==
+X-Google-Smtp-Source: AGRyM1vjIPgxwYbMk8BsnZlSouB9NDyINH+vUJA52rfBsJa1/epNS6uEmdrCNjJkZQ9qNZQU8kklUA==
+X-Received: by 2002:a05:600c:3556:b0:3a3:2a9c:f26 with SMTP id i22-20020a05600c355600b003a32a9c0f26mr6221269wmq.58.1659007873312;
+        Thu, 28 Jul 2022 04:31:13 -0700 (PDT)
+Received: from maple.lan (cpc141216-aztw34-2-0-cust174.18-1.cable.virginm.net. [80.7.220.175])
+        by smtp.gmail.com with ESMTPSA id z22-20020a1cf416000000b003a35516ccc3sm937306wma.26.2022.07.28.04.31.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 28 Jul 2022 04:31:12 -0700 (PDT)
+Date: Thu, 28 Jul 2022 12:31:09 +0100
+From: Daniel Thompson <daniel.thompson@linaro.org>
+To: ChiaEn Wu <peterwu.pub@gmail.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Jingoo Han <jingoohan1@gmail.com>,
+	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sebastian Reichel <sre@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>,
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>,
+	Helge Deller <deller@gmx.de>,
+	Andy Shevchenko <andy.shevchenko@gmail.com>,
+	ChiaEn Wu <chiaen_wu@richtek.com>,
+	Alice Chen <alice_chen@richtek.com>,
+	ChiYuan Huang <cy_huang@richtek.com>,
+	dri-devel <dri-devel@lists.freedesktop.org>,
+	Linux LED Subsystem <linux-leds@vger.kernel.org>,
+	devicetree <devicetree@vger.kernel.org>,
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+	Linux PM <linux-pm@vger.kernel.org>,
+	USB <linux-usb@vger.kernel.org>,
+	linux-iio <linux-iio@vger.kernel.org>,
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>,
+	szuni chen <szunichen@gmail.com>
+Subject: Re: [PATCH v6 13/13] video: backlight: mt6370: Add MediaTek MT6370
+ support
+Message-ID: <20220728113109.7gf3b36mqjxlhcq3@maple.lan>
+References: <20220722102407.2205-1-peterwu.pub@gmail.com>
+ <20220722102407.2205-14-peterwu.pub@gmail.com>
+ <20220725103128.xtaw2c4y5fobowg7@maple.lan>
+ <CABtFH5LUKTZenTktq3v1JZ9xe-yJFsMvCZuwDhmxdT87k0O-zA@mail.gmail.com>
+ <20220726093058.2fz2p2vg7xpfsnfe@maple.lan>
+ <CABtFH5+in-+=6r3wOvQ8-78DT9CXaMursJukhx+kdwMvvP3djw@mail.gmail.com>
+ <20220726115954.kpkmidrk3zo3dpbq@maple.lan>
+ <CABtFH5K3LLw9ZqY0Qrrx_8xs+3ioJpzP0=_HptmoDY6tvu2JVg@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] dt-bindings: soc: mediatek: pwrap: add compatible for
- mt8188
-Content-Language: en-US
-To: Sen Chu <sen.chu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Hui Liu <hui.liu@mediatek.com>
-References: <20220726104242.24839-1-sen.chu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220726104242.24839-1-sen.chu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CABtFH5K3LLw9ZqY0Qrrx_8xs+3ioJpzP0=_HptmoDY6tvu2JVg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_042959_065145_F268CE3F 
-X-CRM114-Status: UNSURE (   6.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220728_043116_824717_BA7CC0A6 
+X-CRM114-Status: GOOD (  35.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,11 +121,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/07/22 12:42, Sen Chu ha scritto:
-> Add dt-binding documentation of pwrap for Mediatek MT8188
-> 
-> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+On Wed, Jul 27, 2022 at 02:24:46PM +0800, ChiaEn Wu wrote:
+> On Tue, Jul 26, 2022 at 7:59 PM Daniel Thompson
+> <daniel.thompson@linaro.org> wrote:
+> > > > > So should we make all 16384 steps of MT6372 available to users?
+> > > >
+> > > > Yes.
+> > > >
+> > > >
+> > > > > Does that mean the DTS needs to be modified as well?
+> > > >
+> > > > Yes... the property to set initial brightness needs a 14-bit range.
+> > > >
+> > > > It would also be a good idea to discuss with the DT maintainers whether
+> > > > you should introduce a second compatible string (ending 6372) in order
+> > > > to allow the DT validation checks to detect accidental use of MT6372
+> > > > ranges on MT6370 hardware.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+[snip]
+
+> > > > I'd be curious what the compatiblity reasons are. In other words what
+> > > > software breaks?
+> > >
+> > > The reason is as above. We just hope the users who use this series SubPMIC can
+> > > directly apply this driver to drive the backlight device without
+> > > knowing the underlying hardware.
+> > > Not software breaks.
+> >
+> > As above, ignoring the max_brightness property is a bug in the
+> > userspace. I'm still unclear why sending faked ranges to userspace
+> > it a better solution than fixing the userspace.
+>
+> Ok, I got it!
+> If I add a second compatible string (like 'mediatek,mt6372-backlight')
+> in the DT section,
+> and append 'if-then-else' to determine the correct maximum value of
+> 'default-brightness' and 'max-brightness',
+> Also, I will append 'bled exponential mode' to make user control using
+> linear or exponential mode.
+
+I'd be very pleased to see support for exponential mode added: it's a
+much better way to control LEDs and backlights.
+
+
+> These changes I will explain to DT's maintainer again.
+
+Excellent. I know DT maintainers are copied into this thread but they
+will probably not be following this patch's thread so it is better to
+discuss in the mail thread for the DT bindings!
+
+
+> Back to the driver section,
+> do I still need to use the register to confirm again whether this
+> SubPMIC used now is MT6372 and record this information? (using
+> 'mt6370_check_vendor_info()')
+> I am afraid that the user who uses the MT6370 hardware, but the DT
+> compatible string is set to 'mediatek,mt6372-backlight'.
+> This may cause errors when update/get brightness values.
+> So I hope the driver here can check again to make sure the
+> 'default-brightness', 'max-brightness', can be updated/got correctly.
+> I don't know if this will make you feel redundant if I do this??
+
+Yes, it's good idea to check the hardware model during probe. I'd
+suggest just reporting this as an error ("Buggy DT, wrong compatible
+string") rather than trying to re-intepret the parameters.
+
+
+Daniel.
 
