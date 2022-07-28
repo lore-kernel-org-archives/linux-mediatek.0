@@ -4,84 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD578C04A68
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 05:38:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8348C19F2B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 06:28:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hL4Wc0d+uHvdkChMFVki/sHzDooY8iPC36Iz8rC19HM=; b=W+O+4CAQURMpwg1MdF+Jzg4UZc
-	NSHTZKvRHCOPrn+LZf/oeG3ohQYoey0m8Dd45Go+18zT+tVbr94yb57yYXIB/hPVYE4juTAmMo4G2
-	g2txhPtL5WwAa5Cpa8ArjuEfBslmtlYSe9efUTEHvmZ3z4fkfy0eLQY+FukoOnw4x0rlMp5jyvkj7
-	QjvmjHAtcf5KCL3hHtGtIAeVvJS/MyQM2xNYCznklD8gKk11ggjzYg+4Rk5xQE7TtfUiPECRHPFms
-	WDMR0xuDZ40nubhXbHGvs4lqfLpquK9Wo7TQ416vaywxrsGEvhrCZ0KlTBMr+qTylpUztzmXbMfkt
-	SkLMzPAA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UjPN4iQuxSkLHHQIS6M1G3eCvmTMRRxDqO2Cnif8juw=; b=kq3O9xpM8PDRlEnHZVSloqSIAx
+	iGd9iX/JiN2DMzkeWJqeS4UePtKXwR8A1sKd+eDYGOnLA+7WkFdecW3BegJVSaLf14dvo9uxkbIhU
+	T2+79ghRCvVX8ufKNyAgitpGtZ1UR5d8mK/zBlgPq6okKL59ENHsBBkzBu5QBmTuXjobigX4jD2dS
+	aqf90XE58t4PpT4Og4KCD4VnroihDzPk+EO9VyWFBbdSTle5I2d1Zy1oRoEe1Rcz25a23FxO3SF/g
+	SN4tv/5dVAF37C7NnpKwTgva53Givjdm3AFLsAByf1qDmc+z57qxkMPvQ2kYDig+o4Yn9YJw5XaXK
+	2TwI52Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGwDn-004f6V-Rs; Thu, 28 Jul 2022 05:38:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oGx0a-0052EM-IK; Thu, 28 Jul 2022 06:28:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGwDj-004f2k-IY; Thu, 28 Jul 2022 05:38:07 +0000
-X-UUID: 32aefd30b1b44d189b2f4abfa5fb9134-20220727
+	id 1oGx0X-00529Q-63; Thu, 28 Jul 2022 06:28:31 +0000
+X-UUID: 99c04c1c95464956be78848a151ce92f-20220727
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:d49a49e0-e68e-4074-a855-cf45e8276f2c,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:0ff49424-a982-4824-82d2-9da3b6056c2a,C
+X-CID-O-INFO: VERSION:1.1.8,REQID:a6d42c9a-054b-4f65-a5ee-ffd2e862fce1,OB:0,LO
+	B:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:25
+X-CID-META: VersionHash:0f94e32,CLOUDID:72568dd0-841b-4e95-ad42-8f86e18f54fc,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 32aefd30b1b44d189b2f4abfa5fb9134-20220727
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <edward-jw.yang@mediatek.com>)
+X-UUID: 99c04c1c95464956be78848a151ce92f-20220727
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <zhiyong.tao@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1593252512; Wed, 27 Jul 2022 22:37:49 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 1872828738; Wed, 27 Jul 2022 23:28:17 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 28 Jul 2022 12:37:13 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ Thu, 28 Jul 2022 14:27:54 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 28 Jul 2022 12:37:13 +0800
-Message-ID: <92c4eb2324aabce85b2b2270a9325322aa0fb671.camel@mediatek.com>
-Subject: Re: [RFC PATCH 2/2] clk: mediatek: Add frequency hopping support
-From: Edward-JW Yang <edward-jw.yang@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: Johnson Wang =?UTF-8?Q?=28=E7=8E=8B=E8=81=96=E9=91=AB=29?=
-	<Johnson.Wang@mediatek.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
-	"mturquette@baylibre.com" <mturquette@baylibre.com>, "sboyd@kernel.org"
-	<sboyd@kernel.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-clk@vger.kernel.org"
-	<linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Yu-Chang Wang
- =?UTF-8?Q?=28=E7=8E=8B=E7=85=9C=E6=A8=9F=29?= <Yu-Chang.Wang@mediatek.com>,
-	Kuan-Hsin Lee =?UTF-8?Q?=28=E6=9D=8E=E5=86=A0=E6=96=B0=29?=
-	<Kuan-Hsin.Lee@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 28 Jul 2022 12:37:12 +0800
-In-Reply-To: <c43fb6ff-678c-0e3d-f3e7-e9f5b7bd48d3@collabora.com>
-References: <20220612135414.3003-1-johnson.wang@mediatek.com>
-	 <20220612135414.3003-3-johnson.wang@mediatek.com>
-	 <ca4b9a0e-b1ca-6861-e4c0-30a8c8a5c99c@collabora.com>
-	 <9addc9fb0c949e921f915fcf128783393214bfde.camel@mediatek.com>
-	 <30e07350-ff56-a361-121e-3cb3a27643a1@collabora.com>
-	 <CAGXv+5F3YK51eL60-SD6pfW90xSZYoVvLXvbQ1oq+8zQmfkKwA@mail.gmail.com>
-	 <946e6d8fd14151277f00521e1373057a403021b0.camel@mediatek.com>
-	 <a1d36cba-a58a-326a-70dc-3578f183a249@collabora.com>
-	 <e25b8ea348bf8a5fe0fe8c74cdb94f97725f0282.camel@mediatek.com>
-	 <c43fb6ff-678c-0e3d-f3e7-e9f5b7bd48d3@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Thu, 28 Jul 2022 14:27:53 +0800
+From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+To: <lee.jones@linaro.org>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<lgirdwood@gmail.com>, <broonie@kernel.org>, <eddie.huang@mediatek.com>,
+	<a.zummo@towertech.it>, <alexandre.belloni@bootlin.com>, <fshao@chromium.org>
+CC: <sen.chu@mediatek.com>, <hui.liu@mediatek.com>,
+	<allen-kh.cheng@mediatek.com>, <zhiyong.tao@mediatek.com>,
+	<hsin-hsiung.wang@mediatek.com>, <sean.wang@mediatek.com>,
+	<macpaul.lin@mediatek.com>, <wen.su@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-rtc@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	zhiyong tao <zhiyong.tao@mediatk.com>
+Subject: [PATCH v2] pmic: add mt6366 regulator document
+Date: Thu, 28 Jul 2022 14:27:49 +0800
+Message-ID: <20220728062749.18701-2-zhiyong.tao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220728062749.18701-1-zhiyong.tao@mediatek.com>
+References: <20220728062749.18701-1-zhiyong.tao@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220727_223803_685455_546FCF30 
-X-CRM114-Status: GOOD (  75.70  )
+X-CRM114-CacheID: sfid-20220727_232829_262519_DDC52D63 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,508 +83,398 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+From: zhiyong tao <zhiyong.tao@mediatek.com>
 
-Thanks for the advices.
+Add mt6366 regulator document
 
-On Thu, 2022-07-21 at 17:43 +0800, AngeloGioacchino Del Regno wrote:
-> Il 20/07/22 15:51, Edward-JW Yang ha scritto:
-> > Hi AngeloGioacchino,
-> > 
-> > Thanks for all the advices and examples.
-> > 
-> > On Thu, 2022-07-14 at 19:04 +0800, AngeloGioacchino Del Regno wrote:
-> > > Il 06/07/22 15:07, Edward-JW Yang ha scritto:
-> > > > On Wed, 2022-06-29 at 16:54 +0800, Chen-Yu Tsai wrote:
-> > > > > On Tue, Jun 28, 2022 at 6:09 PM AngeloGioacchino Del Regno
-> > > > > <angelogioacchino.delregno@collabora.com> wrote:
-> > > > > > 
-> > > > > > Il 24/06/22 09:12, Edward-JW Yang ha scritto:
-> > > > > > > Hi AngeloGioacchino,
-> > > > > > > 
-> > > > > > > Thanks for all the advices.
-> > > > > > > 
-> > > > > > > On Mon, 2022-06-13 at 17:43 +0800, AngeloGioacchino Del Regno wrote:
-> > > > > > > > Il 12/06/22 15:54, Johnson Wang ha scritto:
-> > > > > > > > > Add frequency hopping support and spread spectrum clocking
-> > > > > > > > > control for MT8186.
-> > > > > > > > > 
-> > > > > > > > > Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> > > > > > > > > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
-> > > > > > > > 
-> > > > > > > > Before going on with the review, there's one important consideration:
-> > > > > > > > the Frequency Hopping control is related to PLLs only (so, no other clock
-> > > > > > > > types get in the mix).
-> > > > > > > > 
-> > > > > > > > Checking the code, the *main* thing that we do here is initializing the
-> > > > > > > > FHCTL by setting some registers, and we're performing the actual frequency
-> > > > > > > > hopping operation in clk-pll, which is right but, at this point, I think
-> > > > > > > > that the best way to proceed is to add the "FHCTL superpowers" to clk-pll
-> > > > > > > > itself, instead of adding multiple new files and devicetree bindings that
-> > > > > > > > are specific to the FHCTL itself.
-> > > > > > > > 
-> > > > > > > > This would mean that the `fh-id` and `perms` params that you're setting in
-> > > > > > > > the devicetree get transferred to clk-mt8186 (and hardcoded there), as to
-> > > > > > > > extend the PLL declarations to include these two: that will also simplify
-> > > > > > > > the driver so that you won't have to match names here and there.
-> > > > > > > > 
-> > > > > > > > Just an example:
-> > > > > > > > 
-> > > > > > > >        PLL(CLK_APMIXED_CCIPLL, "ccipll", 0x0224, 0x0230, 0,
-> > > > > > > > 
-> > > > > > > >            PLL_AO, 0, 22, 0x0228, 24, 0, 0, 0, 0x0228, 2, FHCTL_PERM_DBG_DUMP),
-> > > > > > > > 
-> > > > > > > > Besides, there are another couple of reasons why you should do that instead,
-> > > > > > > > of which:
-> > > > > > > >      - The devicetree should be "generic enough", we shall not see the direct value
-> > > > > > > >        to write to the registers in there (yet, perms assigns exactly that)
-> > > > > > > >      - These values won't change on a per-device basis, I believe? They're SoC-related,
-> > > > > > > >        not board-related, right?
-> > > > > > > > 
-> > > > > > > > In case they're board related (and/or related to TZ permissions), we can always add
-> > > > > > > > a bool property to the apmixedsys to advertise that board X needs to use an
-> > > > > > > > alternative permission (ex.: `mediatek,secure-fhctl`).
-> > > > > > > 
-> > > > > > > I think we should remain clk-fhctl files because FHCTL is a independent HW and is
-> > > > > > > not a necessary component of clk-pll.
-> > > > > > 
-> > > > > > I know what FHCTL is, but thank you anyway for the explanation, that's appreciated.
-> > > > > > In any case, this not being a *mandatory* component doesn't mean that when it is
-> > > > > > enabled it's not changing the way we manage the PLLs..........
-> > > > > > 
-> > > > > > > Frequency hopping function from FHCTL is not used to replace original flow of
-> > > > > > > set_rate in clk-pll. They are two different ways to change PLL's frequency. The
-> > > > > > 
-> > > > > > I disagree: when we want to use FHCTL, we effectively hand-over PLL control from
-> > > > > > APMIXEDSYS to the Frequency Hopping controller - and we're effectively replacing
-> > > > > > the set_rate() logic of clk-pll.
-> > > > 
-> > > > Do you mean we need to drop the current set_rate() logic (direct register write) and
-> > > > use Frequency Hopping Controller instead?
-> > > > 
-> > > 
-> > > On PLLs that are supported by the Frequency Hopping controller, yes: we should
-> > > simply use a different .set_rate() callback in clk-pll.c, and we should return
-> > > a failure if the FHCTL fails to set the rate - so we should *not* fall back to
-> > > direct register writes, as on some platforms and in some conditions, using
-> > > direct register writes (which means that we skip FHCTL), may lead to unstable
-> > > system.
-> > > 
-> > > This means that we need logic such that, in mtk_clk_register_pll(), we end up
-> > > having something like that:
-> > > 
-> > > if (fhctl_is_enabled(pll))
-> > > 	init.ops = &mtk_pll_fhctl_ops;
-> > > else
-> > > 	init.ops = &mtk_pll_ops;
-> > > 
-> > > > I need to mention that not all PLL support FHCTL, only those PLLs with FHCTL HW can
-> > > > choose to use FHCTL. Take 8186 for example, there are three PLLs don't support FHCTL
-> > > > HW.
-> > > 
-> > > Where we declare the PLLs, for example, in clk-mt8186-apmixedsys.c, we can declare
-> > > that such PLL can be managed by FHCTL, for example:
-> > > 
-> > > 	PLL(CLK_APMIXED_ARMPLL_LL, "armpll_ll", 0x0204, 0x0210, 0,
-> > > 
-> > > 	    PLL_AO, 0, 22, 0x0208, 24, 0, 0, 0, 0x0208),
-> > > 
-> > > becomes
-> > > 
-> > > 	PLL(CLK_APMIXED_ARMPLL_LL, "armpll_ll", 0x0204, 0x0210, 0,
-> > > 
-> > > 	    PLL_AO, 0, 22, 0x0208, 24, 0, 0, 0, 0x0208, true);
-> > > 
-> > > where 'true' means "FHCTL is supported".
-> > 
-> > Does it still have an independent FHCTL driver after modifying to this? From your example,
-> > setup a clk_ops and add FHCTL properities into PLL(), seems FHCTL driver is merged into
-> > clk-pll and become part of clk-pll driver.
-> > 
-> 
-> The direct-MMIO part of FHCTL becomes part of the clk-pll driver, yes - but then
-> I also find it unacceptable to embed the IPI communication inside of there, so we
-> can have an "external" helper for that.
+Signed-off-by: zhiyong tao <zhiyong.tao@mediatk.com>
+---
+ .../regulator/mediatek,mt6366-regulator.yaml  | 375 ++++++++++++++++++
+ 1 file changed, 375 insertions(+)
+ create mode 100755 Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.yaml
 
-I think clk-pll driver should focus on PLL HW itself. Since PLL can work alone without
-FHCTL, adding FHCTL control into clk-pll may be a little strange. For this PLL+FHCTL
-combination, I want to add a new type of clock driver, like clk-pll-fh. It might be a
-easier way to maintain FHCTL HW related changes and won't affect to clk-pll.
-
-> 
-> 
-> > We tend to have an indepentent driver and dts for FHCTL, and mutate only .set_rate()
-> > callback function instead of whole clk_ops. The boot-up sequence is like:
-> > 
-> > 1. clk-pll + clk dts
-> > 	probe  -> clk-pll original flow, nothing to change
-> > 
-> >          /* clk-pll provide multation API for set_rate */
-> > 	/* mutate necessary set_rate() instead of mutating all ops */
-> > 		def register_fhctl_set_rate(pll_name, callback)
-> > 			ops = find_pll_ops_by_name(pll_name)
-> > 			log("change set_rate to fhctl callback for $pll_name")
-> > 			ops->set_rate = callback
-> > 
-> > 2. FHCTL driver + fhctl dts
-> > 	probe
-> > 		options = parsing dts (board specific, hopping disalbe or ssc-rate)
-> > 		init FHCTL HW
-> > 		for PLL in dts
-> > 			if (ssc-rate > 0)
-> > 				enable_ssc(ssc-rate)
-> > 			if (hop-enabled)
-> > 				/* mutate CCF set_rate, FHCTL engaged CCF */
-> > 				register_fhctl_CCF(pll_name, callback)
-> > 
-> 
-> I really don't like having PLL names in devicetree: they're already defined in
-> clock drivers and they will change on a per-SoC basis - and we do have per-SoC
-> drivers...
-> 
-> Whatever goes to devicetree should be something that we need to vary on a
-> per-board/platform(project) basis, so, enablement of FHCTL per-pll (by using
-> handles and numeral bindings as per the example that I previously wrote),
-> enablement of spread spectrum and its rate... and nothing else.
-
-OK, we will remove PLL names in devicetree.
-
-> 
-> > > 
-> > > Then, we register the PLLs with something like:
-> > > 
-> > > mtk_clk_register_plls(node, plls, num_plls, clk_data, fhctl_register_version);
-> > > 
-> > > ...where fhctl_register_version is used to assign the right fhctl register offsets.
-> > > Also, it's not needed to assign all of the register offsets statically, because
-> > > they can be easily calculated based on the number of supported PLLs, since the
-> > > registers are structured like
-> > > 
-> > > [FHCTL GLOBAL REGISTERS] <--- hp_en...slope1
-> > > [FHCTL SSC GLOBAL REGISTERS] <--- DSSC_CFG, DSSC0...x_CON
-> > > 
-> > > [FHCTL PER-PLL REGISTERS] <--- CFG...MON
-> > > ^^^ where this is repeated X times for X PLLs.
-> > > 
-> > > so, keeping the example of MT8186, we can get the per-pll register like:
-> > > 
-> > > #define FHCTL_PLL_OFFSET	0x3c
-> > > #define FHCTL_PLL_LEN		0x14
-> > > 
-> > > #define FHCTLx_CFG(pll_id)	(FHCTL_PLL_OFFSET + (pll_id * FHCTL_PLL_LEN))
-> > > #define FHCTLx_UPDNLMT(pll_id)	(FHCTL_PLL_OFFSET + (pll_id * FHCTL_PLL_LEN) + 0x4)
-> > > #define FHCTLx_DDS(pll_id)	(FHCTL_PLL_OFFSET + (pll_id * FHCTL_PLL_LEN) + 0x8)
-> > > 
-> > > we don't need to put all of them in a structure and for each PLL.
-> > 
-> > We use structure instead of using macros is because the register offset may have
-> > difference between ICs. If we use macro, we need to maintain different versions of macros.
-> > Using structure to store these register offsets is more flexible.
-> > 
-> 
-> I understand. What I don't like about your specific approach is the amount of
-> register offsets that we store in that structure, looks like it's a bit too many.
-> 
-> I've seen that there's a common pattern at least by checking downstream 5.10 and
-> MT8186/95 layouts, so I still think that using these macros will be beneficial.
-> 
-> We can always add parameters to the structure in a later commit: in my opinion,
-> that will help to engineer a better, shorter, cleaner solution for calculating
-> these registers anyway... but I will leave this choice to you, anyway, since you
-> know about way more SoCs than I do.
-
-OK, we will reduce the structure.
-
-> 
-> > > 
-> > > > So, we need both APMIXEDSYS and Frequency Hopping Controller in set_rate() logic to
-> > > > handle this two types of PLL.
-> > > > 
-> > > 
-> > > As already said, we preventively know which PLLs support FHCTL and which does not,
-> > > so we can use a different .set_rate() callback.
-> > 
-> > Ok, we can use a different .set_rate() callback when fhctl driver probing.
-> > 
-> > > 
-> > > > > > 
-> > > > > > > current set_rate method in clk-pll changes PLL register setting directly. Another
-> > > > > > > way uses FHCTL to change PLL rate.
-> > > > > > 
-> > > > > > ...and of course, if we change that, we're effectively mutating the functionality
-> > > > > > of the MediaTek clk-pll driver and please understand that seeing a clear mutation
-> > > > > > in that driver is a bit more human-readable.
-> > > > > > 
-> > > > > > Besides, this makes me think about one question: is there any instance in which,
-> > > > > > when FHCTL rate setting fails, we fall back to direct register writes?
-> > > > > > 
-> > > > > > I don't think that this is feasible because we have a register in FHCTL that
-> > > > > > effectively hands over control to it, so direct register writes should not work
-> > > > > > when the PLL is not under APMIXEDSYS control, but I'm asking just to be extremely
-> > > > > > sure that my understanding is right.
-> > > > 
-> > > > It won't fall back to direct register writes when FHCTL rate setting fails. But, PLL
-> > > > control mode will switch back to APMIXEDSYS after frequency hopping completed.
-> > > > 
-> > > > There are two cases that we need to fall back to direct register writes:
-> > > >     1. PLL support FHCTL but it doesn't want to use FHCTL.
-> > > >     2. PLL doesn't support FHCTL HW.
-> > > > 
-> > > 
-> > > For case N.1, if this is board-specific, we have to resort to devicetree properties
-> > > that will enable/disable FHCTL on specific PLLs.
-> > > 
-> > > mediatek,fhctl-disable = <CLK_APMIXED_MSDCPLL>, <CLK_APMIXED_NNAPLL>;
-> > > 
-> > > mediatek,ssc-enable = <CLK_APMIXED_MFGPLL>, <CLK_APMIXED_TVDPLL>;
-> > > 
-> > > These are just examples - I don't currently know if it's a better idea to have an
-> > > allowlist or a blocklist as devicetree properties, as that depends on the expected
-> > > number of PLLs for which we en/dis fhctl or just ssc (if we generally want fhctl
-> > > enabled on all but one PLLs, we should use fhctl-disable, otherwise, fhctl-enable).
-> > 
-> > We also have a properity "ssc-rate" for setting up the ssc rate in percentage. The "ssc-
-> > rate" properity is under fhctl dts node and can be setup on each fhctl-PLL.
-> > 
-> 
-> Right. For that, we could have a default sensible percentage when SSC is enabled
-> but no rate is set in devicetree, or we can perhaps consider SSC enabled when any
-> meaningful SSC rate is set... For example:
-> 
-> mediatek,ssc-enable = <CLK_APMIXED_MFGPLL>, <CLK_APMIXED_TVDPLL>;
-> mediatek,ssc-percent = <5>, <5>;
-> 
-> ... or something like:
-> 
-> mediatek,ssc = <CLK_APMIXED_MFGPLL 5>, <CLK_APMIXED_TVDPLL 5>;
-> 
-> ...but I'd like to have some feedback on that from somebody else, as I don't know
-> if that would be acceptable in devicetree, or if there's any cleaner, niftier
-> solution.
-
-OK, we will use this:
-
-mediatek,hopping-ssc-percent = <CLK_APMIXED_MFGPLL 5>, <CLK_APMIXED_TVDPLL 5>;
-
-> 
-> > > 
-> > > > > > 
-> > > > > > > We will set some PLL's frequency be controlled
-> > > > > > > by clk-pll and some are controlled by FHCTL.
-> > > > > > 
-> > > > > > Another question: is this also changing on a per-board basis?
-> > > > > > 
-> > > > > > (note: the pll names in the example are random and not specific to anything)
-> > > > > > 
-> > > > > > Example: board A wants FHCTL on MMPLL, TVDPLL, MPLL, but *shall not* hand over
-> > > > > >                     NNAPLL, MFGPLL
-> > > > > >             board B wants FHCTL on NNAPLL, TVDPLL but *shall not* hand over MMPLL
-> > > > > > 
-> > > > > > Granted that the two A, B boards are using the same SoC, can that ever happen?
-> > > > 
-> > > > This could happen if A, B boards have different desense issue.
-> > > > 
-> > > 
-> > > Ok, so it's definitely board specific. Devicetree is the way to go for this.
-> > > 
-> > > > > > 
-> > > > > > > And use `perms` param to decide
-> > > > > > > whether a PLL is using FHCTL to change its frequency.
-> > > > > > 
-> > > > > > The perms param seems to be about:
-> > > > > >     * Enabling debug (but you're not providing any way to actually use debugging
-> > > > > >       features, so what's the point?)
-> > > > 
-> > > > Debugging feature is not used yet, we can removed it.
-> > > > 
-> > > 
-> > > If the debugging features of the FHCTL driver will be like what I can see on
-> > > the downstream MT6893 5.10 kernel, that's not really applicable to upstream.
-> > > 
-> > > In that case, please remove the debug.
-> > 
-> > Ok, we will remove it.
-> > 
-> > > 
-> > > > > >     * Handing over PLL control to FHCTL for hopping (can be as well done with
-> > > > > >       simply using a different .set_rate() callback instead of a flag)
-> > > > 
-> > > > There has some PLL that have FHCTL but don't want to use FHCTL. The flag is used in
-> > > > this case.
-> > > > 
-> > > 
-> > > Use the flag to set the right .set_rate() callback, set at probe time, instead of
-> > > checking that flag at every set_rate() call.
-> > 
-> > We will setup .set_rate() callback when doing fhctl-pll init.
-> > 
-> > > 
-> > > > > >     * Enabling/disabling Spread Spectrum Clocking (and I think that this is a
-> > > > > >       legit use for flags, but if it's just one flag, you can as well use a
-> > > > > >       bool and manage this with a devicetree param like "enable-ssc")
-> > > > > > 
-> > > > > > That said, I think that the current way of enabling the FHCTL is more complicated
-> > > > > > than how it should really be.
-> > > > 
-> > > > Here needs an option to decide whether to enable FHCTL-hopping or FHCTL-ssc since
-> > > > these two are per-board basis.
-> > > > 
-> > > > We cannot force all PLL hand over to FHCTL for hopping casue not all PLLs support
-> > > > FHCTL and not all PLLs have need of using FHCTL-hopping.
-> > > > 
-> > > 
-> > > Board specific -> devicetree
-> > > 
-> > > SoC specific -> hardcode, no devicetree.
-> > > 
-> > > > > > 
-> > > > > > > 
-> > > > > > > FHCTL has another function called SSC(spread spectrum clocking) which is used to
-> > > > > > > solve PLL de-sense problem. De-sense problem is board-related so we introduce a
-> > > > > > > `ssc-rate` param in the devicetree to decide whether SSC is enabled and how many
-> > > > > > > rate should be set. Mixing SSC function into clk-pll may cause clk-pll more
-> > > > > > > complex.
-> > > > > > > 
-> > > > > > 
-> > > > > > Thing is, I don't get why you think that adding SSC to clk-pll would complicate it
-> > > > > > so much... it's really just a few register writes and nothing else, so I really
-> > > > > > don't see where the problem is, here.
-> > > > > > 
-> > > > > > Another issue is that this driver may be largely incomplete, so perhaps I can't
-> > > > > > really see the complications you're talking about? Is this the case?
-> > > > > > 
-> > > > > > Regarding keeping the FHCTL code in separated files, that's fine, but I would still
-> > > > > > integrate it tightly in clk-pll and its registration flow, because - yes, this is
-> > > > > > for sure not mandatory, but the main parameters are constant, they never change for
-> > > > > > a specific PLL, as they're register offsets, bits and masks (which, again, will
-> > > > > > never change as long as we're using the same SoC).
-> > > > 
-> > > > The driver may need to supoport microP by future HW design, standalone file clk-
-> > > > fhctl.c helps to trigger init flow of such as ap-init-flow, microP-init-flow .....,
-> > > > and those different init-flow also need to run some communication API with microP.
-> > > > Those communication APIs are not suitable to merge into clk-pll.
-> > > > 
-> > > 
-> > > Let's use clk-fhctl as an helper then, we can make sure to call the init flow for
-> > > the microP in the SoC-specific clock drivers, I think that's not a problem?
-> > > 
-> > > clk_mtfuturesoc_someip_probe()
-> > > {
-> > > 	.... register clocks ....
-> > > 
-> > > 	freqhopping_microp_init();
-> > > 
-> > > 	return ret;
-> > > }
-> > > 
-> > > If there's hardware out there that supports such feature and a downstream kernel to
-> > > look at, please tell me which one, so that I will be able to check it out and
-> > > perhaps understand how this flow works.
-> > > 
-> > > P.S.: I guess it's not fhctl-sspm?
-> > 
-> > You could find clk-fhctl-mcupm.c and clk-fhctl-gpueb.c on the downstream MT6893 5.10
-> > kernel. Those codes require the PLL hardware specification to determine which PLL
-> > group(eg. PLL TOP group, GPUEB group) runs on which microP and has responsibilty to
-> > communicate with the microP.
-> > 
-> > If we implement these things into clk-pll driver, clk-pll driver not only needs to control
-> > PLL frequency but also needs to deal with microP IPI. It makes clk-pll driver have others
-> > works that is not belong to PLL operation. That's why we tend to have a standalone driver
-> > for FHCTL.
-> > 
-> 
-> Ok having something to analyze made this entire thing a bit more clear in my mind,
-> thanks for the pointers.
-> 
-> Analyzing clk-fhctl-mcupm and clk-fhctl-gpueb makes me see that there's a lot of
-> common code between the two: x_hopping_v1(), x_ssc_enable_v1(), x_ssc_disable_v1()
-> (where x = {gpueb,mcupm}) are really the same functions, duplicated and renamed
-> and nothing else.
-> The only difference is the get_xxxx_ipidev(), which is avoidable by assigning
-> mboxes = <...something...> in devicetree (gpueb mailbox, or mcupm mailbox).
-> 
-> Even the `FH_DEVCTL_CMD_ID` enumeration uses the same values!
-> 
-> To unroll that riddle, I would at that point add a new MediaTek specific clock
-> driver (like clk-pll) and call it `clk-ipi.c`, because that's what it does in
-> the end: whatever we do, goes through a mailbox instead of a direct MMIO write.
-> 
-> That clk-fhctl-ipi would contain a probe function that gets the mailbox handle,
-> then we would add something like `clk_fhctl_set_rate()` function, export it in
-> the `clk-mtk.h` or in a new `clk-fhctl.h` header, then assign the right callback
-> in either the SoC's clock driver (by registering a different clock type, which,
-> in this case, would be clk-fhctl-ipi instead of clk-pll), or in clk-pll itself...
-> 
-> In the end, I'm effectively proposing to:
-> 
-> 1. Merge the direct-MMIO handling of FHCTL in clk-pll;
-> 2. Create a new driver (and clock type, eventually) for the IPI handling of FHCTL.
-
-From your idea, I think we can also create a new clock type for fhctl such as clk-pll-fh 
-and add a new PLL register function for PLL+FHCTL. Then we can change the registery
-interface and won't affect the legacy ICs. Also, if FHCTL has changes, we only need to
-modify clk-pll-fh.
-I think using a new clock type has extendibility for FHCTL changes and also compatiable
-with legacy ICs.
-
-clk-pll.h
-	/* Define FHCTL data structure and contains mtk_pll_data. 
-	 * We can use mtk_pll_data later. */
-	mtk_pll_fh_data {
-		struct mtk_pll_data pll_data;
-		/* fhctl_data */
-		unsigned int fh_id;
-		unsigned int ssc_rate;
-		...
-	}
-
-clk-mt8186-apmixedsys.c
-	func clk_mt8186_apmixed_probe()
-		/* There are two implementations.
-		 * If ICs need FHCTL such as MT8186, use mtk_clk_register_pllfhs()
-		 * For those legacy ICs which don't need FHCTL, still use 
-		 * mtk_clk_register_plls().
-		 */
-		/* 1. Need FHCTL. Use API from clk-pll-fh.c */
-		fhctl_parse_dt()
-		mtk_clk_register_pllfhs(plls data, fh-plls data)
-		
-		/* 2. Legacy ICs. Use API from clk-pll.c */
-		mtk_clk_register_plls()
-
-clk-pll.c
-	/* No functional changes, so legacy ICs won't be affected. 
-	 * Export clk_ops functions to clk-pll-fh.c
-	 */ 
-	func mtk_clk_register_plls()
-		init.ops = &mtk_pll_ops;
-
-clk-pll-fh.c
-	/* A clock type of FHCTL PLL. Used to setup HW data and ops.
-	 * Most of ops functions inherit from clk-pll.c.
-	 * If PLL not support or not enable FHCTL, fallback to use &mtk_pll_ops.
-	 */
-	func mtk_clk_register_pllfhs(plls data, fh-plls data)
-		fhctl_match_pll_data()  /* match mtk_pll_data and mtk_pll_fh_data */
-		fhctl_hw_init()
-		if (fhctl_is_supported_and_enabled(pll))
-			init.ops = &mtk_pll_fhctl_ops;
-		else
-			init.ops = &mtk_pll_ops;
-	
-		if (ssc_is_enable(pll))
-			fhctl_ssc_enable(pll)
-
-clk-fhctl.c
-	/* APIs of FHCTL HW operations */
-	func fhctl_hw_init()
-	func fhctl_hopping()
-	func fhctl_ssc_enable()
-
-
-> 
-> Regards,
-> Angelo
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.yaml
+new file mode 100755
+index 000000000000..eb72c64757cf
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.yaml
+@@ -0,0 +1,375 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/regulator/mediatek,mt6366-regulator.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MT6366 Regulator from MediaTek Integrated
++
++maintainers:
++  - Zhiyong Tao <zhiyong.tao@mediatek.com>
++
++description: |
++  List of regulators provided by this controller. It is named
++  according to its regulator type, buck_<name> and ldo_<name>.
++  MT6366 regulators node should be sub node of the MT6397 MFD node.
++
++properties:
++  compatible:
++    const: mediatek,mt6366-regulator
++
++  regulators:
++    type: object
++    description: List of regulators and its properties
++
++    patternProperties:
++      "^buck-v(dram1|core|coresshub|proc11|proc12|gpu|s2|modem|s1)$":
++        type: object
++        $ref: "regulator.yaml#"
++        unevaluatedProperties: false
++
++        properties:
++          regulator-name:
++            pattern: "^v(dram1|core|coresshub|proc11|proc12|gpu|s2|modem|s1)$"
++
++      "^ldo-v(dram2|sim1|ibr|rf12|usb|camio|camd|cn18|fe28)$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^v(dram2|sim1|ibr|rf12|usb|camio|camd|cn18|fe28)$"
++
++      "^ldo-v(xo22|efuse|mch|vcama1|emc|a12|vcama2|mc)$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^v(xo22|efuse|mch|vcama1|emc|a12|vcama2|mc)$"
++
++      "^buck-(vcore)-sshub$":
++        type: object
++        $ref: "regulator.yaml#"
++        unevaluatedProperties: false
++
++        properties:
++          regulator-name:
++            pattern: "^vcore-sshub$"
++
++      "^ldo-vcn(28|33)-bt$":
++        type: object
++        $ref: "regulator.yaml#"
++        unevaluatedProperties: false
++
++        properties:
++          regulator-name:
++            pattern: "^vcn(28|33)-bt$"
++
++      "^ldo-vcn(33)-wifi$":
++        type: object
++        $ref: "regulator.yaml#"
++        unevaluatedProperties: false
++
++        properties:
++          regulator-name:
++            pattern: "^vcn33-wifi$"
++
++      "^ldo-vsram-(others)-sshub$":
++        type: object
++        $ref: "regulator.yaml#"
++        unevaluatedProperties: false
++
++        properties:
++          regulator-name:
++            pattern: "^vsram-others-sshub$"
++
++      "^ldo-vsram-(proc11|others|gpu|proc12)$":
++        type: object
++        $ref: "regulator.yaml#"
++        unevaluatedProperties: false
++
++        properties:
++          regulator-name:
++            pattern: "^vsram-(proc11|others|gpu|proc12)$"
++
++      "^ldo-v(aud|bif|io|ldo)28$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^v(aud|bif|io|ldo)28$"
++
++      "^ldo-v(io|aux|rf)18$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^v(io|aux|rf)18$"
++
++      "^ldo-vsim[2]$":
++        type: object
++        $ref: "regulator.yaml#"
++
++        properties:
++          regulator-name:
++            pattern: "^vsim2$"
++
++        required:
++          - regulator-name
++
++required:
++  - compatible
++  - regulators
++
++additionalProperties: false
++
++examples:
++  - |
++    pmic {
++      compatible = "mediatek,mt6366-regulator";
++
++      regulators {
++        mt6366_vdram1_reg: buck-vdram1 {
++            regulator-name = "vdram1";
++            regulator-ramp-delay = <12500>;
++            regulator-enable-ramp-delay = <0>;
++            regulator-allowed-modes = <0 1>;
++        };
++
++        mt6366_vcore_reg: buck-vcore {
++            regulator-name = "vcore";
++            regulator-ramp-delay = <6250>;
++            regulator-enable-ramp-delay = <200>;
++            regulator-allowed-modes = <0 1>;
++        };
++
++       mt6366_vproc11_reg: buck-vproc11 {
++            regulator-name = "vproc11";
++            regulator-ramp-delay = <6250>;
++            regulator-enable-ramp-delay = <200>;
++            regulator-allowed-modes = <0 1>;
++        };
++
++        mt6366_vproc12_reg: buck-vproc12 {
++            regulator-name = "vproc12";
++            regulator-ramp-delay = <6250>;
++            regulator-enable-ramp-delay = <200>;
++            regulator-allowed-modes = <0 1>;
++        };
++
++        mt6366_vgpu_reg: buck-vgpu {
++            regulator-name = "vgpu";
++            regulator-ramp-delay = <6250>;
++            regulator-enable-ramp-delay = <200>;
++            regulator-allowed-modes = <0 1>;
++        };
++
++        mt6366_vs2_reg: buck-vs2 {
++            regulator-name = "vs2";
++            regulator-ramp-delay = <12500>;
++            regulator-enable-ramp-delay = <0>;
++        };
++
++       mt6366_vmodem_reg: buck-vmodem {
++            regulator-name = "vmodem";
++            regulator-ramp-delay = <6250>;
++            regulator-enable-ramp-delay = <900>;
++            regulator-allowed-modes = <0 1>;
++        };
++
++        mt6366_vs1_reg: buck-vs1 {
++            regulator-name = "vs1";
++            regulator-ramp-delay = <12500>;
++            regulator-enable-ramp-delay = <0>;
++        };
++
++        mt6366_vdram2_reg: ldo-vdram2 {
++            regulator-name = "vdram2";
++            regulator-enable-ramp-delay = <3300>;
++        };
++
++        mt6366_vsim1_reg: ldo-vsim1 {
++            regulator-name = "vsim1";
++            regulator-enable-ramp-delay = <540>;
++        };
++
++        mt6366_vibr_reg: ldo-vibr {
++            regulator-name = "vibr";
++            regulator-enable-ramp-delay = <60>;
++        };
++
++        mt6366_vrf12_reg: ldo-vrf12 {
++            compatible = "regulator-fixed";
++            regulator-name = "vrf12";
++            regulator-enable-ramp-delay = <120>;
++        };
++
++        mt6366_vio18_reg: ldo-vio18 {
++            compatible = "regulator-fixed";
++            regulator-name = "vio18";
++            regulator-enable-ramp-delay = <2700>;
++        };
++
++        mt6366_vusb_reg: ldo-vusb {
++            regulator-name = "vusb";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_vcamio_reg: ldo-vcamio {
++            compatible = "regulator-fixed";
++            regulator-name = "vcamio";
++            regulator-enable-ramp-delay = <325>;
++        };
++
++        mt6366_vcamd_reg: ldo-vcamd {
++            regulator-name = "vcamd";
++            regulator-enable-ramp-delay = <325>;
++        };
++
++        mt6366_vcn18_reg: ldo-vcn18 {
++            compatible = "regulator-fixed";
++            regulator-name = "vcn18";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_vfe28_reg: ldo-vfe28 {
++            compatible = "regulator-fixed";
++            regulator-name = "vfe28";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_vsram_proc11_reg: ldo-vsram-proc11 {
++            regulator-name = "vsram-proc11";
++            regulator-ramp-delay = <6250>;
++            regulator-enable-ramp-delay = <240>;
++        };
++
++        mt6366_vcn28_reg: ldo-vcn28 {
++            compatible = "regulator-fixed";
++            regulator-name = "vcn28";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_vsram_others_reg: ldo-vsram-others {
++            regulator-name = "vsram-others";
++            regulator-ramp-delay = <6250>;
++            regulator-enable-ramp-delay = <240>;
++        };
++
++        mt6366_vsram_gpu_reg: ldo-vsram-gpu {
++            regulator-name = "vsram-gpu";
++            regulator-ramp-delay = <6250>;
++            regulator-enable-ramp-delay = <240>;
++        };
++
++        mt6366_vxo22_reg: ldo-vxo22 {
++            compatible = "regulator-fixed";
++            regulator-name = "vxo22";
++            regulator-enable-ramp-delay = <120>;
++        };
++
++        mt6366_vefuse_reg: ldo-vefuse {
++            regulator-name = "vefuse";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_vaux18_reg: ldo-vaux18 {
++            compatible = "regulator-fixed";
++            regulator-name = "vaux18";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_vmch_reg: ldo-vmch {
++            regulator-name = "vmch";
++            regulator-enable-ramp-delay = <60>;
++        };
++
++        mt6366_vbif28_reg: ldo-vbif28 {
++            compatible = "regulator-fixed";
++            regulator-name = "vbif28";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_vsram_proc12_reg: ldo-vsram-proc12 {
++            regulator-name = "vsram-proc12";
++            regulator-ramp-delay = <6250>;
++            regulator-enable-ramp-delay = <240>;
++        };
++
++        mt6366_vcama1_reg: ldo-vcama1 {
++            regulator-name = "vcama1";
++            regulator-enable-ramp-delay = <325>;
++        };
++
++        mt6366_vemc_reg: ldo-vemc {
++            regulator-name = "vemc";
++            regulator-enable-ramp-delay = <60>;
++        };
++
++        mt6366_vio28_reg: ldo-vio28 {
++            compatible = "regulator-fixed";
++            regulator-name = "vio28";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_va12_reg: ldo-va12 {
++            compatible = "regulator-fixed";
++            regulator-name = "va12";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_vrf18_reg: ldo-vrf18 {
++            compatible = "regulator-fixed";
++            regulator-name = "vrf18";
++            regulator-enable-ramp-delay = <120>;
++        };
++
++        mt6366_vcn33_bt_reg: ldo-vcn33-bt {
++            regulator-name = "vcn33-bt";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_vcn33_wifi_reg: ldo-vcn33-wifi {
++            regulator-name = "vcn33-wifi";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_vcama2_reg: ldo-vcama2 {
++            regulator-name = "vcama2";
++            regulator-enable-ramp-delay = <325>;
++        };
++
++        mt6366_vmc_reg: ldo-vmc {
++            regulator-name = "vmc";
++            regulator-enable-ramp-delay = <60>;
++        };
++
++        mt6366_vldo28_reg: ldo-vldo28 {
++            regulator-name = "vldo28";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_vaud28_reg: ldo-vaud28 {
++            compatible = "regulator-fixed";
++            regulator-name = "vaud28";
++            regulator-enable-ramp-delay = <270>;
++        };
++
++        mt6366_vsim2_reg: ldo-vsim2 {
++            regulator-name = "vsim2";
++            regulator-enable-ramp-delay = <540>;
++        };
++
++        mt6366_vcore_sshub_reg: buck-vcore-sshub {
++            regulator-name = "vcore-sshub";
++        };
++
++        mt6366_vsram_others_sshub_reg: ldo-vsram-others-sshub {
++            regulator-name = "vsram-others-sshub";
++        };
++      };
++    };
++...
+-- 
+2.18.0
 
 
