@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F3ABC04A68
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 09:22:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53E6DC04A68
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 09:41:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KaNe8gfPDt7QKa5VYJW3wDvL8W+QWbWKq376KcUEzZY=; b=FYjDD3XdnfaY4Zb+ARqoXGH59b
-	uXbKFgSKBmJBw1f3WPodEc//63Xgn2iFds2u2qZT2+Yratl2VWhLJNVQknarUYGK7sIeD4/lVeQ5s
-	7LgVh2BQhAMIq5g2fWjO4uCP/bZ/KNpVVxSW8a02CmDhcsLFDdnzI/Z5kWM3UvrieQLz/szBLtMMt
-	D7zzeBDzWNB16FcZL08K0oZZhRdhbNf3ZX9ZuHv3ZrHU2w2828m9Djexjt2+s3s77HSTpCnKbkq6/
-	Y9nRWJE94ZmCOGCAVCDqyURvGjageoevXlWyUo9B6tkGZ1VzFv8pQ/nbNqs5Kiq6BbKYr3W0KmLc6
-	0V2UKbKw==;
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IkOjy15sgtSmuxCEiiuJX1E764Oz375ZE6bY4ACvhhg=; b=J7oUP6XRopKeeh4LmE0YP5c1XT
+	rp/InXDOV819AlewQTZXjAc9xUt+Z4VN8L+kCFGrHRhEIWDe1efFnPnGD+OLKD+SXsEr72zwUW2gp
+	3Ws5k9MGPjC765ftABsnOBtuMBvM4A/UqD0eLyLFFjkYvtYsuomE+tueWEkLwr/1ls11l0z25fPwM
+	XH00pkleVUplsmPU5fIELu8zoIG4VnKudXP7DcuWZRf1eKCB5FgRund8WDjk/W54PxALguSZOVn/J
+	yOcVA5XeeYeRf9ATvgGRyUWtLJueaqD8xIITjquMq00LMONBBUdsCcUnbFoVpCIY9BXoV1QuTyCif
+	0+t2HGEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGziv-006OcB-B4; Thu, 28 Jul 2022 09:22:29 +0000
-Received: from smtp-out2.suse.de ([2001:67c:2178:6::1d])
+	id 1oH01F-0071da-R3; Thu, 28 Jul 2022 09:41:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGzis-006OOt-C0
-	for linux-mediatek@lists.infradead.org; Thu, 28 Jul 2022 09:22:27 +0000
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 373DE20FE4;
-	Thu, 28 Jul 2022 09:22:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1659000140; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=KaNe8gfPDt7QKa5VYJW3wDvL8W+QWbWKq376KcUEzZY=;
-	b=iclC+NarXfrqAALECZsO27bElHgeJdsCms/hrJHvEBkSkmzA/qXQ6v8PuZCunIHXDVPlNc
-	cFqhoLd7krt4NogKAc3DC1OlWGUkpN/Y/NQHWqXAf2AtpNtc8sJg6tSZa9I7jMgLyMjQyF
-	tXel9lVrJAnSRhXjWcpA1xv122NLLKE=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1659000140;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=KaNe8gfPDt7QKa5VYJW3wDvL8W+QWbWKq376KcUEzZY=;
-	b=TBA2lHorOFAxGy+f8DPe3tvJL1GIVeEHMUj+A4a7hinopwHx8pN530VmqjBXuI10NHMQKf
-	9pRc21bXEU05upAg==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 0351513A7E;
-	Thu, 28 Jul 2022 09:22:19 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id M725OktV4mIuSwAAMHmgww
-	(envelope-from <jdelvare@suse.de>); Thu, 28 Jul 2022 09:22:19 +0000
-Date: Thu, 28 Jul 2022 11:22:16 +0200
-From: Jean Delvare <jdelvare@suse.de>
-To: linux-mediatek@lists.infradead.org, Matthias Brugger
- <matthias.bgg@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, LKML <linux-kernel@vger.kernel.org>,
- Chenglin Xu <chenglin.xu@mediatek.com>
-Subject: [PATCH] soc: mediatek: Let PMIC Wrapper and SCPSYS depend on OF
-Message-ID: <20220728112216.13b10689@endymion.delvare>
-Organization: SUSE Linux
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
+	id 1oH01A-00718q-Gr; Thu, 28 Jul 2022 09:41:23 +0000
+X-UUID: 89ec77de48354cb5930d2f840b3debae-20220728
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:9af29fd7-46b4-4248-a77a-5f8147c3b2c0,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:675d93d0-841b-4e95-ad42-8f86e18f54fc,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 89ec77de48354cb5930d2f840b3debae-20220728
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 221657354; Thu, 28 Jul 2022 02:41:12 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 28 Jul 2022 17:40:41 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 28 Jul 2022 17:40:41 +0800
+Message-ID: <22cd8a6807385941c55e75b390d31424936ae8c4.camel@mediatek.com>
+Subject: Re: [PATCH v15 07/11] drm/mediatek: Add retry to prevent
+ misjudgment for sink devices
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <daniel@ffwll.ch>,
+	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<mripard@kernel.org>, <tzimmermann@suse.de>, <matthias.bgg@gmail.com>,
+	<deller@gmx.de>, <airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <ck.hu@mediatek.com>, <liangxu.xu@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 28 Jul 2022 17:40:41 +0800
+In-Reply-To: <ce46e9b2-8e34-b6cd-d802-35b3ae66e02d@collabora.com>
+References: <20220727045035.32225-1-rex-bc.chen@mediatek.com>
+	 <20220727045035.32225-8-rex-bc.chen@mediatek.com>
+	 <ce46e9b2-8e34-b6cd-d802-35b3ae66e02d@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_022226_584394_D2DDE7B5 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220728_024120_575748_30CC9BB4 
+X-CRM114-Status: GOOD (  25.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,61 +86,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With the following configuration options:
-CONFIG_OF is not set
-CONFIG_MTK_PMIC_WRAP=3Dy
-CONFIG_MTK_SCPSYS=3Dy
-we get the following build warnings:
+On Wed, 2022-07-27 at 11:40 +0200, AngeloGioacchino Del Regno wrote:
+> Il 27/07/22 06:50, Bo-Chen Chen ha scritto:
+> > For some DP dungles, we need to train more than onece to confirm
+> > that we
+> > don't misjudge the status of sink device.
+> 
+> Please fix the typos in your commit title and description.
+> title: misjudgment -> misjudgement
+> desc: dungles->dongles; onece->once
+> 
+> > 
+> > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> > ---
+> >   drivers/gpu/drm/mediatek/mtk_dp.c | 21 ++++++++++++++++++---
+> >   1 file changed, 18 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c
+> > b/drivers/gpu/drm/mediatek/mtk_dp.c
+> > index ce817cb59445..80d7d6488105 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> > @@ -42,6 +42,7 @@
+> >   #define MTK_DP_CHECK_SINK_CAP_TIMEOUT_COUNT 3
+> >   #define MTK_DP_TBC_BUF_READ_START_ADDR 0x08
+> >   #define MTK_DP_TRAIN_DOWNSCALE_RETRY 8
+> > +#define MTK_DP_TRAIN_CLEAR_RETRY 50
+> >   
+> >   struct mtk_dp_train_info {
+> >   	bool tps3;
+> > @@ -1431,11 +1432,25 @@ static int mtk_dp_video_config(struct
+> > mtk_dp *mtk_dp)
+> >   
+> >   static int mtk_dp_training(struct mtk_dp *mtk_dp)
+> >   {
+> > +	short max_retry = MTK_DP_TRAIN_CLEAR_RETRY;
+> >   	int ret;
+> >   
+> > -	ret = mtk_dp_train_start(mtk_dp);
+> > -	if (ret)
+> > -		return ret;
+> > +	/*
+> > +	 * We do retry to confirm that we don't misjudge the sink
+> > status.
+> > +	 * If it is still failed, we can confirm there are some issues
+> > for the
+> > +	 * sink device.
+> > +	 */
+> > +	do {
+> > +		ret = mtk_dp_train_start(mtk_dp);
+> > +		if (!ret)
+> > +			break;
+> > +	} while (--max_retry);
+> > +
+> > +	dev_info(mtk_dp->dev, "dp training clear retry times: %d\n",
+> > +		 MTK_DP_TRAIN_CLEAR_RETRY - max_retry);
+> 
+> dev_dbg() here.
+> 
+> ...after which,
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> 
 
-  CC      drivers/soc/mediatek/mtk-pmic-wrap.o
-drivers/soc/mediatek/mtk-pmic-wrap.c:2138:34: warning: =E2=80=98of_pwrap_ma=
-tch_tbl=E2=80=99 defined but not used [-Wunused-const-variable=3D]
-drivers/soc/mediatek/mtk-pmic-wrap.c:1953:34: warning: =E2=80=98of_slave_ma=
-tch_tbl=E2=80=99 defined but not used [-Wunused-const-variable=3D]
-  CC      drivers/soc/mediatek/mtk-scpsys.o
-drivers/soc/mediatek/mtk-scpsys.c:1084:34: warning: =E2=80=98of_scpsys_matc=
-h_tbl=E2=80=99 defined but not used [-Wunused-const-variable=3D]
+Hello Angelo,
 
-Looking at the code, both drivers can only bind to OF-defined device
-nodes, so these drivers are useless without OF and should therefore
-depend on it.
+Thanks for your review.
+I will modify these in next version.
 
-Developers or QA teams who wish to test-build the code can still do
-so by enabling CONFIG_OF, which is available on all architectures and
-has no dependencies.
+BRs,
+Bo-Chen
 
-Signed-off-by: Jean Delvare <jdelvare@suse.de>
-Reported-by: kernel test robot <lkp@intel.com>
-Link: https://lore.kernel.org/all/202207240252.ZY5hSCNB-lkp@intel.com/
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chenglin Xu <chenglin.xu@mediatek.com>
----
- drivers/soc/mediatek/Kconfig |    2 ++
- 1 file changed, 2 insertions(+)
+> > +
+> > +	if (!max_retry)
+> > +		return -ETIMEDOUT;
+> >   
+> >   	ret = mtk_dp_video_config(mtk_dp);
+> >   	if (ret)
+> 
+> 
 
---- linux-5.18.orig/drivers/soc/mediatek/Kconfig	2022-05-22 21:52:31.000000=
-000 +0200
-+++ linux-5.18/drivers/soc/mediatek/Kconfig	2022-07-28 10:59:55.025131145 +=
-0200
-@@ -37,6 +37,7 @@ config MTK_INFRACFG
- config MTK_PMIC_WRAP
- 	tristate "MediaTek PMIC Wrapper Support"
- 	depends on RESET_CONTROLLER
-+	depends on OF
- 	select REGMAP
- 	help
- 	  Say yes here to add support for MediaTek PMIC Wrapper found
-@@ -46,6 +47,7 @@ config MTK_PMIC_WRAP
- config MTK_SCPSYS
- 	bool "MediaTek SCPSYS Support"
- 	default ARCH_MEDIATEK
-+	depends on OF
- 	select REGMAP
- 	select MTK_INFRACFG
- 	select PM_GENERIC_DOMAINS if PM
-
-
---=20
-Jean Delvare
-SUSE L3 Support
 
