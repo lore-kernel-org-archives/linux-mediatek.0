@@ -4,78 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B827C00140
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 03:24:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12C10C00140
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 03:34:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=q1Lq7KUo05n519UFqiy0/X3OfMebl6UDXCVyDW4GsoA=; b=T53izm10p721wpmP7rLnZt5R49
-	plgT0ghmDtNhJ0Imd2MdwZsZHPfJAKMfwGYoaW0L0QOoxyln6BAGDmEunWFDq9osiqR74GoK/ie4L
-	xPk5JEAZ/nwZXkFOP9UN8cMDTafRB2LycpAY+5HiBaHZ50rP+xGLsbR6mSI0l607G3oVv4HLaizOx
-	sSnPoVSyGdTnhJGYT/r9sR/lG4Jl2ClSsYXFiUC88334e9Iro0CZhoM8Oz7DnfFfDOLjhQIwq2+R5
-	Csb1QfbQXkDvpzZx0TT7K33+155MM/51O6QQInWz1HUEMIkpOW/SIpkRU+mJWVEgy76zES/VSlJIc
-	W9wU9fzw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/Rys4bn9JrvSCqC30tTq9R/ewAvYI+6ue76gWrhf+9Q=; b=CXBlJ52d0RrpgpfcbE3vjdw56D
+	S7TZqye2pU8MWoY86KL4smBX2qjcq0CAUGnQHI6kg6X1UQ+0O8mzPGec3JRzLYgZNMzPpUi+NIW9g
+	AzP7hT7MmgL2GvgG+GfiTZdgz12g8ZRN2B16+3Z8fJLm4f8tUXoYx7HS00/tZaze0C5p79j2vFhCl
+	3HA+GR6ck21f49tSY9i7O/+wMl3Zp817p1ZITI8Qe8dpmwB74w6ufTOgS/zgoWrWCtYP2O7TXcrRP
+	nzeQ7Zi6mvRAlBoFQDSu3vqhgqdft7EaJ1TJ0+QyDhmfXD4WZ5ofu6GydBp5CCq1HDj9NSaNmdK9U
+	7S4qTvjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHGcI-000EDc-2O; Fri, 29 Jul 2022 03:24:46 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1oHGlD-000GWK-Ag; Fri, 29 Jul 2022 03:33:59 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHGcE-000EAu-Sb
-	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 03:24:44 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id c19-20020a17090ae11300b001f2f94ed5c6so6250309pjz.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Jul 2022 20:24:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=q1Lq7KUo05n519UFqiy0/X3OfMebl6UDXCVyDW4GsoA=;
-        b=I7P1wkNqAl1wnv0IiLInzobHs+RGv0nqejGxMJdl3aipPlOW4KhvtWpQJOExHASTY8
-         rJhHRHGKFQhjFrrIcBcgPzUkzCvOB5TWFaxBfIDbeN/pKRrQ+SEYinFFOPJsb5SVNqwC
-         wVUf7dCk741hZUB5PYYMw91wQV5YmFqs5BjsM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=q1Lq7KUo05n519UFqiy0/X3OfMebl6UDXCVyDW4GsoA=;
-        b=P89ytQuZ1LGxKHsZVTpRvAFtfuHRr43nog1KTlqQxogLj3uIHlpC2HmQwDf5ccRzUf
-         vFhGLM0HjAKzyIRCW0dHRU5X3tzHiFNTR21nUc+w5y5COeQcftwqOxSdlTZ4MrGlIjR/
-         TbAABs/f8UJQHDigRlnyuVKnbl3EdQJYaVR4A5XpfHSY37S17UzxeTQ++ctYMUqLvR1f
-         JT5QdYxPqSX6RMpRY9hKm+JWaofCUMnWYxRYLRQ8zfVeMPMnyA+OO8f7XT1JZhpvU5ln
-         lzq3gnP+tdBaf8EhXbMDzqUj51OcDn6RQqx3trYGNzxbP3Ojlot5Xh+KcRQAGa4stvju
-         7ljQ==
-X-Gm-Message-State: ACgBeo1QcqrpzuUs8EpRCSARfkGlJYW1k79UhvAumdT/73P/PdkCPQaz
-	NXQs3B+TWyT2gKFX+zv7TchaDxvfC6dX4A==
-X-Google-Smtp-Source: AA6agR6SMdNRzdPmTw+V/2OYfhKP553d0oZivr6hg6YyG766ehaFPezydPvsxQrjkWWpx+F/HasOUw==
-X-Received: by 2002:a17:90b:2686:b0:1f2:503c:2472 with SMTP id pl6-20020a17090b268600b001f2503c2472mr1849462pjb.187.1659065079781;
-        Thu, 28 Jul 2022 20:24:39 -0700 (PDT)
-Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:df93:db78:d658:2b3b])
-        by smtp.gmail.com with ESMTPSA id n5-20020a170902e54500b0016c0593876csm2145129plf.157.2022.07.28.20.24.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Jul 2022 20:24:39 -0700 (PDT)
-From: Pin-yen Lin <treapking@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
-	Evan Benn <evanbenn@chromium.org>,
-	Eizan Miyamoto <eizan@chromium.org>,
-	Pin-yen Lin <treapking@chromium.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	devicetree@vger.kernel.org
-Subject: [PATCH v4] arm64: dts: mt8173-elm: Switch to SMC watchdog
-Date: Fri, 29 Jul 2022 11:24:23 +0800
-Message-Id: <20220729032423.157144-1-treapking@chromium.org>
-X-Mailer: git-send-email 2.37.1.455.g008518b4e5-goog
+	id 1oHGl2-000GSv-Tg; Fri, 29 Jul 2022 03:33:50 +0000
+X-UUID: 07cae482349f4979b07f7ecd775ada67-20220728
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:c734bc34-0674-473a-a397-f8f498e7c2a3,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:3a42ae24-a982-4824-82d2-9da3b6056c2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 07cae482349f4979b07f7ecd775ada67-20220728
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <jianjun.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1196315916; Thu, 28 Jul 2022 20:33:35 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 29 Jul 2022 11:33:33 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 29 Jul 2022 11:33:33 +0800
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>, <Rex-BC.Chen@mediatek.com>,
+	<TingHan.Shen@mediatek.com>, <Liju-clr.Chen@mediatek.com>,
+	<Jian.Yang@mediatek.com>
+Subject: [PATCH v2] dt-bindings: PCI: mediatek-gen3: Add support for MT8188 and MT8195
+Date: Fri, 29 Jul 2022 11:33:31 +0800
+Message-ID: <20220729033331.3075-1-jianjun.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_202442_998446_2453D86F 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20220728_203348_985650_107B084E 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,51 +80,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Switch to SMC watchdog because we need direct control of HW watchdog
-registers from kernel. The corresponding firmware was uploaded in
-https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405.
+MT8188 and MT8195 are ARM platform SoCs with the same PCIe IP as MT8192.
 
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+Also add new clock name "peri_mem" since the MT8188 and MT8195 use clock
+"peri_mem" instead of "top_133m".
+
+Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 ---
-
-Changes in v4:
-- Rename the watchdog node (smc_watchdog -> watchdog)
-- Correct the patch summary (mt8173-oak -> mt8173-elm)
-
-Changes in v3:
-- Remove /delete-node/ and create a new node for SMC watchdog.
-
 Changes in v2:
-- Move the modifications to mt8173-elm.dtsi and add some comments.
+Merge two patches into one.
+---
+ .../bindings/pci/mediatek-pcie-gen3.yaml      | 51 +++++++++++++++----
+ 1 file changed, 40 insertions(+), 11 deletions(-)
 
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index e21feb85d822..421bb2945135 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -161,6 +161,19 @@ hdmi_connector_in: endpoint {
- 			};
- 		};
- 	};
-+
-+
-+	watchdog {
-+		compatible = "arm,smc-wdt";
-+	};
-+};
-+
-+/*
-+ * Disable the original MMIO watch dog and switch to the SMC watchdog, which
-+ * operates on the same MMIO.
-+ */
-+&watchdog {
-+	status = "disabled";
- };
+diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+index 0499b94627ae..038e25ae0be7 100644
+--- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
++++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+@@ -43,12 +43,16 @@ description: |+
+   each set has its own address for MSI message, and supports 32 MSI vectors
+   to generate interrupt.
  
- &mfg_async {
+-allOf:
+-  - $ref: /schemas/pci/pci-bus.yaml#
+-
+ properties:
+   compatible:
+-    const: mediatek,mt8192-pcie
++    oneOf:
++      - items:
++          - enum:
++              - mediatek,mt8188-pcie
++              - mediatek,mt8195-pcie
++          - const: mediatek,mt8192-pcie
++      - items:
++          - const: mediatek,mt8192-pcie
+ 
+   reg:
+     maxItems: 1
+@@ -78,13 +82,7 @@ properties:
+     maxItems: 6
+ 
+   clock-names:
+-    items:
+-      - const: pl_250m
+-      - const: tl_26m
+-      - const: tl_96m
+-      - const: tl_32k
+-      - const: peri_26m
+-      - const: top_133m
++    maxItems: 6
+ 
+   assigned-clocks:
+     maxItems: 1
+@@ -126,9 +124,40 @@ required:
+   - interrupts
+   - ranges
+   - clocks
++  - clock-names
+   - '#interrupt-cells'
+   - interrupt-controller
+ 
++allOf:
++  - $ref: /schemas/pci/pci-bus.yaml#
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8188-pcie
++              - mediatek,mt8195-pcie
++    then:
++      properties:
++        clock-names:
++          items:
++            - const: pl_250m
++            - const: tl_26m
++            - const: tl_96m
++            - const: tl_32k
++            - const: peri_26m
++            - const: peri_mem
++    else:
++      properties:
++        clock-names:
++          items:
++            - const: pl_250m
++            - const: tl_26m
++            - const: tl_96m
++            - const: tl_32k
++            - const: peri_26m
++            - const: top_133m
++
+ unevaluatedProperties: false
+ 
+ examples:
 -- 
-2.37.1.455.g008518b4e5-goog
+2.18.0
 
 
