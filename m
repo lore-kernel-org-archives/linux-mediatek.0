@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2946EC00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 03:53:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA652C00144
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 04:00:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K66Dk6y+FuS/iHLCuwkxgGFXzhq4Mu7KWS4px48Qg9Q=; b=mZRFuCsk0x4dvoahObxBoUYZO8
-	jiWih84ze+OTvkGwg33GhJZqrl1hwyeh8bzL+AAsNIHWKxQlJs1crppkQGNfVczknoq7k5IDpLO3E
-	1eHmZWArMJzdlQ9f7zeX+955thVmN2Ye9ZUTjis8tBvkR2mK8/m2Q+6wB7rFRLQlvpmwoURgOawB5
-	WoP+TS6txbze8S2p4qyYcF3sFRw33nWOD6sJfiwHRKZIamqnUviJANaElAwFXIC5WEtKeE8+mwl7H
-	zhTOB9Ee6HB/a6t65XVuCeryBTGwwKgzeYQz1eGh8WHXtb+DdYQuHH6zTufhFENmwbik40RmHnTLG
-	pP2+zocw==;
+	bh=N+M08tpos8evh2hu91cRjLmMwuJ4cMW1pehmYWY8GhA=; b=oQ4xV/HNwhaJjBdkzN/Z4oprmt
+	oAclHDDWVG2BgqktQmV8cduzXAjs5D9aD/H/df72eiftvjLLzu2ExikiYVaj56czvZ63pQ8QlCvd3
+	qzn4fi5pCz+k95EBfuJ1wOMXobuY0n3ghBqAvMjGIqhkwtjMSKaqsgX+ppZ8fJjVTmxYNeK/6iIUC
+	1P0vNJRfBd7vfOsx0pz7KTb9hI3g7Xft1qc430av/WVN1is6B2XAaUy4PxIDRVl0plWlK6EjBFvWY
+	/vU+XVYEyyOfiU5V4s26++u6DLtNxHH5DcTlZ23X3Pw+xD4hDjflENl/FbJpYKSKHxY6DLNAtVV75
+	atSjYe4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHH44-000K0i-E9; Fri, 29 Jul 2022 03:53:28 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oHHAq-000N8r-Lk; Fri, 29 Jul 2022 04:00:28 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHH3Z-000JlN-St; Fri, 29 Jul 2022 03:53:01 +0000
-X-UUID: 3d9b9cca18b44492bc6238a9c8b2cf77-20220728
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:271803c6-6678-4d70-b672-e47807811913,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:acc7ae24-a982-4824-82d2-9da3b6056c2a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 3d9b9cca18b44492bc6238a9c8b2cf77-20220728
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1335354981; Thu, 28 Jul 2022 20:52:08 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 29 Jul 2022 11:51:37 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 29 Jul 2022 11:51:36 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	<angelogioacchino.delregno@collabora.com>, Rob Herring <robh+dt@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Alexandre Courbot <acourbot@chromium.org>, Tiffany
- Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Tzung-Bi Shih <tzungbi@chromium.org>, Tomasz Figa <tfiga@google.com>,
-	<nicolas.dufresne@collabora.com>
-CC: Maoguang Meng <maoguang.meng@mediatek.com>, Longfei Wang
-	<longfei.wang@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Irui
- Wang <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5, 5/8] media: mediatek: vcodec: Add venc power on/off function
-Date: Fri, 29 Jul 2022 11:51:26 +0800
-Message-ID: <20220729035129.3634-6-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220729035129.3634-1-irui.wang@mediatek.com>
-References: <20220729035129.3634-1-irui.wang@mediatek.com>
+	id 1oHHAn-000N6n-QE
+	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 04:00:27 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id k8so2348068wrd.5
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Jul 2022 21:00:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=N+M08tpos8evh2hu91cRjLmMwuJ4cMW1pehmYWY8GhA=;
+        b=DlRnNYVHf3u5DiGzLfwBE2FvJZHevCE3BjBtqtFkubjnjY9nLKabKPj4chGSNNn3M9
+         ckesrVKRzHqgd0zNFCU3pfN/1vpQXp0ZRVF8ledWD+k1i7p4cUono+MnZB68y7/5jdE7
+         10COQAgbY8OimaBx54LYhTY3oxT/m4O/adaGg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=N+M08tpos8evh2hu91cRjLmMwuJ4cMW1pehmYWY8GhA=;
+        b=VwIWjNvvVtTX+xI9bFtrK/KOGDPaqwqO3+halXkNWVZJk4BuNUnghmdX5OOWdNHFNZ
+         y5ophxmiribbS8J6emd90WxI34m1O7oO9E2gLewW8AH4Yj65pRbYi25xtxfrygCcrLf1
+         M/U4ihXczvvi0mV0cLUI3Cgb31mX/l124Qw8Cn/S+pP6GTEjh+QOVKSPfS9Kw3vItbaD
+         6EL5vM3W4UNtS1a7XtXX/WLEk3IW24Hoy6lQo1wkKuqXJQGhW4oCUpT0lmssc/a8dg69
+         mGg0uUXg96Y8tBJTOECPZ8gVr0EqcTFpzr8ja4HV+YrwmQX1uks/JCmrp9whw/kHZYo0
+         9SQg==
+X-Gm-Message-State: ACgBeo3yi112YU2wT1PHXbPf++VyX14JeGPPq7ZqjdjpgKOjVczYY2kV
+	mK/qcMXXqMUS/HgPvwueOxkciWnowjJkQiHAi0jSpg==
+X-Google-Smtp-Source: AA6agR7/0FtNh7jjz3ZxnoZKxjIxEcKDzaD7rZuUPapJb2MMh3j0nj5Ylz9QQMxX5PTay7wZW4S9C6oKjcQEsjdfF9M=
+X-Received: by 2002:a5d:64cc:0:b0:21d:a4bd:fdbe with SMTP id
+ f12-20020a5d64cc000000b0021da4bdfdbemr1011124wri.580.1659067223723; Thu, 28
+ Jul 2022 21:00:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20220727094034.1372745-1-treapking@chromium.org>
+ <c455adea-2d18-60af-7175-a4e283e3dcb8@collabora.com> <CAEXTbpc7W40-vYcTVTNo7ikQ-n0O246AsbPntNb4q2nBErYVQw@mail.gmail.com>
+ <689b439f-531b-9b3d-2e48-b7b83c50b3dd@collabora.com> <CAEXTbperyGnKZw9y_55yE-T5gzuR8yzpTwfg7dy_bvTUhmrOag@mail.gmail.com>
+In-Reply-To: <CAEXTbperyGnKZw9y_55yE-T5gzuR8yzpTwfg7dy_bvTUhmrOag@mail.gmail.com>
+From: Pin-yen Lin <treapking@chromium.org>
+Date: Fri, 29 Jul 2022 12:00:12 +0800
+Message-ID: <CAEXTbpdc29kKeaU=GO_=6JwXvx=vSpR3wG+VsjYQaT+kAdVuoQ@mail.gmail.com>
+Subject: Re: [PATCH v2] arm64: dts: mt8173-oak: Switch to SMC watchdog
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Eizan Miyamoto <eizan@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+	Evan Benn <evanbenn@chromium.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
+	devicetree@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_205257_958997_B4898D2B 
-X-CRM114-Status: GOOD (  18.72  )
+X-CRM114-CacheID: sfid-20220728_210025_905862_BA760A72 
+X-CRM114-Status: GOOD (  38.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,249 +86,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-when enable multi-core encoding, all available encoder cores' power need
-to be on/off, add new functions for encoder cores' power management.
+On Fri, Jul 29, 2022 at 10:59 AM Pin-yen Lin <treapking@chromium.org> wrote:
+>
+> On Thu, Jul 28, 2022 at 11:51 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+> >
+> > Il 28/07/22 17:39, Pin-yen Lin ha scritto:
+> > > On Thu, Jul 28, 2022 at 7:21 PM AngeloGioacchino Del Regno
+> > > <angelogioacchino.delregno@collabora.com> wrote:
+> > >>
+> > >> Il 27/07/22 11:40, Pin-yen Lin ha scritto:
+> > >>> Switch to SMC watchdog because we need direct control of HW watchdog
+> > >>> registers from kernel. The corresponding firmware was uploaded in
+> > >>> https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405.
+> > >>>
+> > >>> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+> > >>> ---
+> > >>>
+> > >>> Changes in v2:
+> > >>> - Move the modifications to mt8173-elm.dtsi and add some comments.
+> > >>>
+> > >>>    arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 12 ++++++++++++
+> > >>>    1 file changed, 12 insertions(+)
+> > >>>
+> > >>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> > >>> index e21feb85d822..b2269770abc3 100644
+> > >>> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> > >>> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> > >>> @@ -161,6 +161,18 @@ hdmi_connector_in: endpoint {
+> > >>>                        };
+> > >>>                };
+> > >>>        };
+> > >>> +
+> > >>> +     soc {
+> > >>> +             /*
+> > >>> +              * Disable the original MMIO watch dog and switch to the SMC watchdog,
+> > >>> +              * which operates on the same MMIO.
+> > >>> +              */
+> > >>> +             /delete-node/ watchdog@10007000;
+> > >>
+> > >> Unfortunately, we're not quite there yet.
+> > >> The comment is fine, but...
+> > >>
+> > >> There's no need to /delete-node/: you can just do it like
+> > >>
+> > >> /*
+> > >>    * Disable the original MMIO watch dog and switch to the SMC watchdog,
+> > >>    * which operates on the same MMIO.
+> > >>    */
+> > >> &watchdog {
+> > >>          status = "disabled";
+> > >> };
+> > >>
+> > >> and...
+> > >>
+> > >>> +
+> > >>> +             watchdog {
+> > >>
+> > >> This isn't addressable, hence it belongs to the root node, not to soc.
+> > >> If you did that because of naming issues, I would propose to call it
+> > >> smc-watchdog instead of watchdog.
+> > >>
+> > >>
+> > >>> +                     compatible = "arm,smc-wdt";
+> > >>
+> > > Thanks for the suggestion. I'll modify it accordingly in v3.
+> > >
+> > >> P.S.: No timeout-sec?
+> > >
+> > > The example in the binding file has a timeout-sec property, but it is
+> > > not defined in the binding nor used in the driver...
+> > > The driver seems to talk with the firmware to get a timeout value[1]
+> > > instead of reading it from the devicetree.
+> > >
+> >
+> > Oh. I admit I trusted the binding blindly, didn't check the actual driver code.
+> >
+> > On a note, we should check why is that binding partially wrong and eventually
+> > fix it (remove the property), or add the capability to the driver, but feel free
+> > to ignore that for now, as this is not relevant for the context of this specific
+> > change that you're trying to do here.
+>
+> It looks like the timeout-sec property was not defined nor referenced
+> from the very first commit [2][3]. I'll send out another patch to
+> remove it.
+>
+> [2]: dt-bindings:
+> https://lore.kernel.org/all/20200505131242.v6.1.Id96574f1f52479d7a2f3b866b8a0552ab8c03d7f@changeid/
+> [3]: watchdog driver:
+> https://lore.kernel.org/all/20200505131242.v6.2.Ia92bb4d4ce84bcefeba1d00aaa1c1e919b6164ef@changeid/
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
----
- .../platform/mediatek/vcodec/mtk_vcodec_enc.c | 31 +++----
- .../mediatek/vcodec/mtk_vcodec_enc_pm.c       | 83 +++++++++++++++++++
- .../mediatek/vcodec/mtk_vcodec_enc_pm.h       |  2 +
- .../platform/mediatek/vcodec/venc_drv_if.c    |  6 --
- 4 files changed, 97 insertions(+), 25 deletions(-)
+I checked the drivers again, and I realized that the `timeout-sec`
+property overrides the default timeout from the firmware.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-index 25e816863597..ad20f729ef6f 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-@@ -8,10 +8,10 @@
- #include <media/v4l2-event.h>
- #include <media/v4l2-mem2mem.h>
- #include <media/videobuf2-dma-contig.h>
--#include <linux/pm_runtime.h>
- 
- #include "mtk_vcodec_drv.h"
- #include "mtk_vcodec_enc.h"
-+#include "mtk_vcodec_enc_pm.h"
- #include "mtk_vcodec_intr.h"
- #include "mtk_vcodec_util.h"
- #include "venc_drv_if.h"
-@@ -877,8 +877,7 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
- {
- 	struct mtk_vcodec_ctx *ctx = vb2_get_drv_priv(q);
- 	struct venc_enc_param param;
--	int ret, pm_ret;
--	int i;
-+	int ret, i;
- 
- 	/* Once state turn into MTK_STATE_ABORT, we need stop_streaming
- 	  * to clear it
-@@ -897,18 +896,12 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
- 			return 0;
- 	}
- 
--	ret = pm_runtime_resume_and_get(&ctx->dev->plat_dev->dev);
--	if (ret < 0) {
--		mtk_v4l2_err("pm_runtime_resume_and_get fail %d", ret);
--		goto err_start_stream;
--	}
--
- 	mtk_venc_set_param(ctx, &param);
- 	ret = venc_if_set_param(ctx, VENC_SET_PARAM_ENC, &param);
- 	if (ret) {
- 		mtk_v4l2_err("venc_if_set_param failed=%d", ret);
- 		ctx->state = MTK_STATE_ABORT;
--		goto err_set_param;
-+		goto err_start_stream;
- 	}
- 	ctx->param_change = MTK_ENCODE_PARAM_NONE;
- 
-@@ -921,17 +914,19 @@ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
- 		if (ret) {
- 			mtk_v4l2_err("venc_if_set_param failed=%d", ret);
- 			ctx->state = MTK_STATE_ABORT;
--			goto err_set_param;
-+			goto err_start_stream;
- 		}
- 		ctx->state = MTK_STATE_HEADER;
- 	}
- 
--	return 0;
-+	ret = mtk_vcodec_enc_power_on(ctx);
-+	if (ret) {
-+		mtk_v4l2_err("mtk_vcodec_enc_power_on failed=%d", ret);
-+		ctx->state = MTK_STATE_ABORT;
-+		goto err_start_stream;
-+	}
- 
--err_set_param:
--	pm_ret = pm_runtime_put(&ctx->dev->plat_dev->dev);
--	if (pm_ret < 0)
--		mtk_v4l2_err("pm_runtime_put fail %d", pm_ret);
-+	return 0;
- 
- err_start_stream:
- 	for (i = 0; i < q->num_buffers; ++i) {
-@@ -1016,9 +1011,7 @@ static void vb2ops_venc_stop_streaming(struct vb2_queue *q)
- 	if (ret)
- 		mtk_v4l2_err("venc_if_deinit failed=%d", ret);
- 
--	ret = pm_runtime_put(&ctx->dev->plat_dev->dev);
--	if (ret < 0)
--		mtk_v4l2_err("pm_runtime_put fail %d", ret);
-+	mtk_vcodec_enc_power_off(ctx);
- 
- 	ctx->state = MTK_STATE_FREE;
- }
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
-index 75de5031d292..213c3f50e9eb 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
-@@ -9,6 +9,7 @@
- #include <linux/of_platform.h>
- #include <linux/pm_runtime.h>
- 
-+#include "mtk_vcodec_enc_hw.h"
- #include "mtk_vcodec_enc_pm.h"
- #include "mtk_vcodec_util.h"
- 
-@@ -56,6 +57,88 @@ int mtk_vcodec_init_enc_clk(struct platform_device *pdev,
- }
- EXPORT_SYMBOL_GPL(mtk_vcodec_init_enc_clk);
- 
-+static int mtk_enc_core_power_on(struct mtk_vcodec_ctx *ctx)
-+{
-+	struct mtk_venc_hw_dev *sub_core;
-+	int ret, i;
-+
-+	/* multi-core encoding need power on all available cores */
-+	for (i = 0; i < MTK_VENC_HW_MAX; i++) {
-+		sub_core = (struct mtk_venc_hw_dev *)ctx->dev->enc_hw_dev[i];
-+		if (!sub_core)
-+			continue;
-+
-+		ret = pm_runtime_resume_and_get(&sub_core->plat_dev->dev);
-+		if (ret) {
-+			mtk_v4l2_err("power on sub_core[%d] fail %d", i, ret);
-+			goto pm_on_fail;
-+		}
-+	}
-+	return ret;
-+
-+pm_on_fail:
-+	for (i -= 1; i >= 0; i--) {
-+		sub_core = (struct mtk_venc_hw_dev *)ctx->dev->enc_hw_dev[i];
-+		pm_runtime_put_sync(&sub_core->plat_dev->dev);
-+	}
-+	return ret;
-+}
-+
-+int mtk_vcodec_enc_power_on(struct mtk_vcodec_ctx *ctx)
-+{
-+	struct mtk_vcodec_pm *pm = &ctx->dev->pm;
-+	int ret;
-+
-+	ret = pm_runtime_resume_and_get(pm->dev);
-+	if (ret) {
-+		mtk_v4l2_err("pm_runtime_resume_and_get fail %d", ret);
-+		return ret;
-+	}
-+
-+	if (IS_VENC_MULTICORE(ctx->dev->enc_capability)) {
-+		ret = mtk_enc_core_power_on(ctx);
-+		if (ret) {
-+			mtk_v4l2_err("mtk_enc_core_power_on fail %d", ret);
-+			goto core_error;
-+		}
-+	}
-+	return ret;
-+
-+core_error:
-+	pm_runtime_put_sync(pm->dev);
-+	return ret;
-+}
-+
-+static void mtk_enc_core_power_off(struct mtk_vcodec_ctx *ctx)
-+{
-+	struct mtk_venc_hw_dev *sub_core;
-+	int ret, i;
-+
-+	/* multi-core encoding need power off all available cores */
-+	for (i = 0; i < MTK_VENC_HW_MAX; i++) {
-+		sub_core = (struct mtk_venc_hw_dev *)ctx->dev->enc_hw_dev[i];
-+		if (!sub_core)
-+			continue;
-+
-+		ret = pm_runtime_put_sync(&sub_core->plat_dev->dev);
-+		if (ret)
-+			mtk_v4l2_err("power off sub_core[%d] fail %d", i, ret);
-+	}
-+}
-+
-+void mtk_vcodec_enc_power_off(struct mtk_vcodec_ctx *ctx)
-+{
-+	struct mtk_vcodec_pm *pm = &ctx->dev->pm;
-+	int ret;
-+
-+	if (IS_VENC_MULTICORE(ctx->dev->enc_capability))
-+		mtk_enc_core_power_off(ctx);
-+
-+	ret = pm_runtime_put_sync(pm->dev);
-+	if (ret)
-+		mtk_v4l2_err("pm_runtime_put_sync fail %d", ret);
-+}
-+
- void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
- {
- 	struct mtk_vcodec_clk *enc_clk = &pm->venc_clk;
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h
-index 361dec5be47f..9065dec4ed4f 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h
-@@ -12,6 +12,8 @@
- int mtk_vcodec_init_enc_clk(struct platform_device *pdev,
- 			    struct mtk_vcodec_pm *pm);
- 
-+int mtk_vcodec_enc_power_on(struct mtk_vcodec_ctx *ctx);
-+void mtk_vcodec_enc_power_off(struct mtk_vcodec_ctx *ctx);
- void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm);
- void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm);
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/venc_drv_if.c b/drivers/media/platform/mediatek/vcodec/venc_drv_if.c
-index ce0bce811615..65a27e39ef5b 100644
---- a/drivers/media/platform/mediatek/vcodec/venc_drv_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/venc_drv_if.c
-@@ -32,9 +32,7 @@ int venc_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
- 	}
- 
- 	mtk_venc_lock(ctx);
--	mtk_vcodec_enc_clock_on(&ctx->dev->pm);
- 	ret = ctx->enc_if->init(ctx);
--	mtk_vcodec_enc_clock_off(&ctx->dev->pm);
- 	mtk_venc_unlock(ctx);
- 
- 	return ret;
-@@ -46,9 +44,7 @@ int venc_if_set_param(struct mtk_vcodec_ctx *ctx,
- 	int ret = 0;
- 
- 	mtk_venc_lock(ctx);
--	mtk_vcodec_enc_clock_on(&ctx->dev->pm);
- 	ret = ctx->enc_if->set_param(ctx->drv_handle, type, in);
--	mtk_vcodec_enc_clock_off(&ctx->dev->pm);
- 	mtk_venc_unlock(ctx);
- 
- 	return ret;
-@@ -89,9 +85,7 @@ int venc_if_deinit(struct mtk_vcodec_ctx *ctx)
- 		return 0;
- 
- 	mtk_venc_lock(ctx);
--	mtk_vcodec_enc_clock_on(&ctx->dev->pm);
- 	ret = ctx->enc_if->deinit(ctx->drv_handle);
--	mtk_vcodec_enc_clock_off(&ctx->dev->pm);
- 	mtk_venc_unlock(ctx);
- 
- 	ctx->drv_handle = NULL;
--- 
-2.18.0
+But for MT8173 chromebooks, I think we can just leave it blank and use
+the default value.
 
+> >
+> > P.S.: I just noticed that the commit title is also wrong. s/mt8173-oak/mt8173-elm/g
+>
+> I sent out the v3 before I saw this reply.  I'll send out a v4 for
+> this and address Krzysztof's comment as well.
+>
+> >
+> > Waiting for a v3!
+> >
+> >
+> > > [1]: https://elixir.bootlin.com/linux/latest/source/drivers/watchdog/arm_smc_wdt.c#L138
+> > >>
+> > >> Regards,
+> > >> Angelo
+> > >>
+> > >>> +             };
+> > >>> +     };
+> > >>>    };
+> > >>>
+> > >>>    &mfg_async {
+> > >>>
+> > >>
+> >
 
