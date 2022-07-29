@@ -4,67 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA1ADC00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 08:54:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F20BC00144
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 08:55:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1o8VQjlU6SG/f28X6S4JyOUr6qOtW407zPUE0wIpVwg=; b=hrJxBE6P6aj0BTt/4688XHaSkA
-	ViXmDQq3P/m8M1l9+KiJGvDvxYjif4zjCSrYKRMEwlBbjwQTwPgs/egCVnJZSfYfNWIBrAGaRaZYD
-	xkdBPugCpYxNbQNV3A2gZgjYbRfxPeHuBcljT1VZ4tzOq0RtxZfbsycqCUBFdRtxehoQbmql1KA6X
-	YlGvd/2VKNg2HT1vT+9tQUs64nds3PHIV/zSlYwJCGr2T/dTwWlChYKJvENfCZkxrh4sT1Hux2j0k
-	7yAAnEr1xrIhwTJ61HbBQMRgIM5XchCpPA7M5LvO/ZWfizW+aDe5JgqsGTWOFLxKSmQu7sgKElsBi
-	DPYJ7CQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jBtukp+iT13bXS1x4ppbbvLuYQYsK1bKT1T8ZuQYnuU=; b=tnVte2/bGF8d4aEo321g6HOcFL
+	qvgILOn00QVQVivv5NsNS2oZfk0Gj+1vkw7FK51znH3/gzigQRGi2gaMTeO3Icwa00OskDLm3pRi6
+	UtAjxa+Fyad4XsbIqao4O5D1THzTR3VzygwIGnRH2AZWnatZBnBGmhZd0lqUWcVa23mb1FPdmjkn8
+	wgfmV644eyLFsz257vt578NCvj6trip3siz49CfdqTfiJeosiUFugi3hFx4mObAJS4GZtqTsYL//T
+	braHOzSMR6cW8hlPnTkwhcHm8jQ4pGPHGEMVd/GXayW+QsAo5vpS9wRqN5lMOm1vtOCgouWO/sE9Q
+	4pOv5W3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHLlR-003WWf-AU; Fri, 29 Jul 2022 08:54:33 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oHLmD-003X5u-Be; Fri, 29 Jul 2022 08:55:21 +0000
+Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHLUJ-003M1B-Pq; Fri, 29 Jul 2022 08:36:53 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 96A9E6601B3E;
-	Fri, 29 Jul 2022 09:36:49 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1659083810;
-	bh=E+J4ZQLAfZnJ/hOyKXBDqkSw25fcCpHV7oqmKwt4gPw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ViGmF/4qrWVzRtacm9u7huN9NbQz6TuQ1qOqMdgfd54uTJ6s5TonGlb+5/996UBDH
-	 1YUOXbZoQzlNtjyKx1t6ion+/ey67KjxUzRQhpwUk8c/6IivlfzQ11TAl8caBKBfMH
-	 SNrUlM7a4RkQ2KpCpBXZTcL7ijrUR0VFzzJQFs7Zc+gcFcCkr1h0uMnecwG64/jiZU
-	 Yu7MSe7vV6zusJ6G1C5/ysM2VN1gsd1RyUp4vQlJxX5t+82Y4+++sU+DWrP3PP2d34
-	 P++qFaq/S8CXMA3nrKkVo2AywYfCUtuFUdQE94Rc3jH/jvBZY9vd1x8SbFL+3+//ix
-	 tdSnbW9Fn0Tsw==
-Message-ID: <9d1d8831-844f-f30f-6c8a-fac052f8699b@collabora.com>
-Date: Fri, 29 Jul 2022 10:36:46 +0200
+	id 1oHLUi-003MFe-JU
+	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 08:37:19 +0000
+Received: by mail-yb1-xb2e.google.com with SMTP id 141so7064090ybn.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 29 Jul 2022 01:37:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=jBtukp+iT13bXS1x4ppbbvLuYQYsK1bKT1T8ZuQYnuU=;
+        b=i22YIsoLhKb/wfkY6xp7KMmlRGqwFcE/LUkGQHT3XnBPKXflWCLwDnGhe3Y2v4aBGb
+         1bUjxWV41SVHBYhWtYuWL7UwmcyfYGERtfCq+CIffVBUqZMKfwET2uQrvA9ZVJBGytX+
+         j/oDivxugVZ2IhpyVx4ou8gTGgTwu7zrhtVng=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=jBtukp+iT13bXS1x4ppbbvLuYQYsK1bKT1T8ZuQYnuU=;
+        b=VCFpBwrj3ECzsScDy2uzvCVGlhGop9EyA2xVtfhR/dxLWJWWeK4aTZtYxhU2KdWyVd
+         PBmnoBzMfd1P4w8v9K1FN9qNou+FurU22Up92lwI0iQ9rIPlSqDvgi1Ga0Ezie+j/nGD
+         VtyjGHDPKG4RhqkszosBKc1seKEnN41ZKlzKhdbvEIwgBVbQVmzUe/yvqqfvNoQedG1A
+         MHkRFw+D+AqpV2A1O3pOlvozx0aMymKUTj982n2ig65QDeDq49D8UCY66F6KkvwjmDG2
+         0nUGTx8D+u/58Bcl9kxtHdTyhOrJmimyD5KQwEZ3Y5dW8SATlmvF67sHvmI8AURoLgwV
+         ChSg==
+X-Gm-Message-State: ACgBeo0LOk0qTx0FAO2hKPyUWUOlVpZXzZGV8SzzXwpg+uaG2Q2EsXi2
+	SyqRqWHs/5HOWqKVM/qV1hbibifm727CKu9kzXfaSg==
+X-Google-Smtp-Source: AA6agR4Fodc9JOFrHAphSV1LJgvVUjnQBZ8rGzgsx/oQkn3dAk23lZ2WjEVH2IM56ojvT4WwwhovvzIy+j9G9/w1IU0=
+X-Received: by 2002:a25:8888:0:b0:671:787e:8b3c with SMTP id
+ d8-20020a258888000000b00671787e8b3cmr1820668ybl.478.1659083833529; Fri, 29
+ Jul 2022 01:37:13 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v5] arm64: dts: mt8173-elm: Switch to SMC watchdog
-Content-Language: en-US
-To: Pin-yen Lin <treapking@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Cc: Evan Benn <evanbenn@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Eizan Miyamoto <eizan@chromium.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
-References: <20220729053254.220585-1-treapking@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220729053254.220585-1-treapking@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20220729020508.4147751-1-dlunev@chromium.org> <20220729120216.v3.1.I6b7934b96fff0d5ea22531e57c0a11f0ccd1acd8@changeid>
+ <YuOV6l/7KoVO4yZp@kroah.com>
+In-Reply-To: <YuOV6l/7KoVO4yZp@kroah.com>
+From: Daniil Lunev <dlunev@chromium.org>
+Date: Fri, 29 Jul 2022 18:37:02 +1000
+Message-ID: <CAONX=-f=qnUqVCTuotrEp6MCMk_f+wWj4FPY6skXHHWuitqZiQ@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] ufs: add function to check CRYPTO capability
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Adrian Hunter <adrian.hunter@intel.com>, Bart Van Assche <bvanassche@acm.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Andy Gross <agross@kernel.org>, 
+	Avri Altman <avri.altman@wdc.com>, Bean Huo <beanhuo@micron.com>, 
+	Bjorn Andersson <bjorn.andersson@linaro.org>, Daejun Park <daejun7.park@samsung.com>, 
+	Eric Biggers <ebiggers@google.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>, 
+	Konrad Dybcio <konrad.dybcio@somainline.org>, 
+	"Martin K. Petersen" <martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Mike Snitzer <snitzer@redhat.com>, Stanley Chu <stanley.chu@mediatek.com>, 
+	Ulf Hansson <ulf.hansson@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-scsi@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220729_013652_034428_7E1B5421 
-X-CRM114-Status: UNSURE (   7.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220729_013716_737380_93807CC0 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,12 +90,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/07/22 07:32, Pin-yen Lin ha scritto:
-> Switch to SMC watchdog because we need direct control of HW watchdog
-> registers from kernel. The corresponding firmware was uploaded in
-> https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405.
-> 
-> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+> This is not a valid changelog text, sorry.  Please read the
+> documentation for how to write a valid one.
+Sorry for that. Though the latest patchset is v4 and that one
+doesn't contain this patch since Eric Biggers pointed out the
+crypto information can be obtained from device's queue sysfs
+node. But I will try to be better further on.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Something went wrong with your patch, there is no --- line, so git will
+> apply it with the diffstat, right?
+>
+> Did you hand-edit this?
+
+Hm, I don't recall hand editing it, but the possibility of pilot error is
+always there. I am still getting used to the upstream tooling and
+processes. Sorry for the inconvenience, but as I mentioned, this
+patch is dropped in v4 version (and sorry for high traffic of changes
+on this patchset)
+
+Thanks,
+Daniil
 
