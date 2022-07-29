@@ -4,67 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73B27C00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 08:50:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7D00C00144
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 08:53:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oaeaFjgoaRE2VzFI4ZiwkU6Dk4rVaDY0st0w3YEfgmk=; b=pOccsAKR7/IwZi7yW1jMDeSvvJ
-	xJII09K/oSN73Hrq1XwUMe9qFL5HKrO+7EBmkImW/naKj6uyEIon91nDYCxwmmRgF+2XxnZG3tgGJ
-	QfeX/BrJrg+DIBkOXdGgNjcYpjAbdM1IebU18dvVtOsCXVwQ4U7WslnvVpGOKL8UbCpyogiT24Uzo
-	FW9TEnZ6vTM9IhcF3t8ioQ6ZT6PgmMx0SL4mOEJjtU0NsF/OMiq+8a1sd15Nuc0t5dIHgXqqwYzix
-	VJ6md6Te/0NIfeM90eyyWS1lrUf3he6W6mmORbv4aXGBDFBTYN8NxD1X9uVOxfihyKSrZ4R7AL6B4
-	sbmn9nOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KErQvHrdByUXsliOaPcrVIOyEJRwA4FPOdWZJPBAt6g=; b=le250Wlzcd1xlayTLiymGWmCCT
+	PBZK1J294HIqB1pVpirrqJYewfskVio6xJR6XnJhHjAeOf36ZmLZH7eYn1qnlp9NsnIa520oaCJ0B
+	ZvbjhxPD5gCSbzfzWfsFQGnHnc7tk7vPIg27XLiPFLpYe7RZdlyt0zh9wSz5oowFIZBpfWTB7vv7P
+	d8K7IR6JT0xUjH/Z1aV3IrOGBvt2u+3Ah1pqaSXeKHMFzz+y7oUYfgE91kTpGZ4+8fbUGaPYRL6hC
+	O+f+iWUE+bX2TIMsGbwDmishRA1KaudxY+ARaqx5AmBUkQq9rrRkXPy9WFZq5INW88pQtnocq49to
+	bmFLY8Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHLhO-003U0A-Ug; Fri, 29 Jul 2022 08:50:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oHLkV-003Vmy-0z; Fri, 29 Jul 2022 08:53:35 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHLL2-003EQp-NV; Fri, 29 Jul 2022 08:27:22 +0000
-X-UUID: bda8a1eb61b04c85bfcc0e3637c788dd-20220729
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:89087e14-21eb-45cc-bac0-24e40813d02f,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:0f94e32,CLOUDID:cc08b724-a982-4824-82d2-9da3b6056c2a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: bda8a1eb61b04c85bfcc0e3637c788dd-20220729
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <garmin.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 961299501; Fri, 29 Jul 2022 01:27:11 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 29 Jul 2022 16:25:21 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 29 Jul 2022 16:25:21 +0800
-From: Garmin.Chang <Garmin.Chang@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Garmin Chang <garmin.chang@mediatek.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	Garmin.Chang <Garmin.Chang@mediatek.com>
-Subject: [PATCH 13/18] clk: mediatek: Add MT8188 vdosys1 clock support
-Date: Fri, 29 Jul 2022 16:24:52 +0800
-Message-ID: <20220729082457.22253-14-Garmin.Chang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220729082457.22253-1-Garmin.Chang@mediatek.com>
-References: <20220729082457.22253-1-Garmin.Chang@mediatek.com>
+	id 1oHLST-003Kg1-Pf; Fri, 29 Jul 2022 08:34:59 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 63FF36601B38;
+	Fri, 29 Jul 2022 09:34:53 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1659083694;
+	bh=JZHyz/nv/3f5KWb0VPaswGYeWHtAmTjncnJD7Dy6ybw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=F2dfqoJV3UzCqw3OHj+c25OHr/eYsuxNUkpukVM8d6eqScVGjz2mAssU3L3Rc8CGh
+	 j/9l/QPEMNq+Dya4C9Z/xsjj9aEJn/6R2vPrb1QSC3aF0ld+j/ffCHH0lFJH17p8qq
+	 0bRUcggIus0xNMkK3TwqI04/wPlkr2ZWta7h1k5Glk71DOhNdwlXJaN8FuRnVIT+a8
+	 9499D3e2058va4Bg5D+QitWUMwtBUvKcKipFc74Rys9YJodBI48YAx0KF323Sa0gfj
+	 AO/x2Mm8qAKVH5VMsEyK+1+05MZOWcAeQtZ0+XTGtuJ19rCrYgH1chsA5Z9Lm2JKwC
+	 FpT+Da0lFNHGw==
+Message-ID: <44dde534-769c-c456-c869-4e29213b3d56@collabora.com>
+Date: Fri, 29 Jul 2022 10:34:51 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [V12,1/7] dt-bindings: mediatek: Add mediatek, mt8195-jpgenc
+ compatible
+Content-Language: en-US
+To: Irui Wang <irui.wang@mediatek.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tzung-Bi Shih <tzungbi@chromium.org>, nicolas.dufresne@collabora.com,
+ wenst@chromium.org, kyrie wu <kyrie.wu@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
+ xia.jiang@mediatek.com, maoguang.meng@mediatek.com,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+References: <20220729062630.5592-1-irui.wang@mediatek.com>
+ <20220729062630.5592-2-irui.wang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220729062630.5592-2-irui.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220729_012716_868382_5133C119 
-X-CRM114-Status: GOOD (  17.72  )
+X-CRM114-CacheID: sfid-20220729_013458_151789_509D52D8 
+X-CRM114-Status: GOOD (  15.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,215 +85,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8188 vdosys1 clock controller which provides clock gate
-control in video system. This is integrated with mtk-mmsys
-driver which will populate device by platform_device_register_data
-to start vdosys clock driver.
+Il 29/07/22 08:26, Irui Wang ha scritto:
+> From: kyrie wu <kyrie.wu@mediatek.com>
+> 
+> Add mediatek,mt8195-jpgenc compatible to binding document.
+> 
+> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+> Signed-off-by: irui wang <irui.wang@mediatek.com>
+> ---
+>   .../media/mediatek,mt8195-jpegenc.yaml        | 139 ++++++++++++++++++
+>   1 file changed, 139 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+> new file mode 100644
+> index 000000000000..d9133e6a92f8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+> @@ -0,0 +1,139 @@
 
-Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
----
- drivers/clk/mediatek/Makefile          |   2 +-
- drivers/clk/mediatek/clk-mt8188-vdo1.c | 177 +++++++++++++++++++++++++
- 2 files changed, 178 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8188-vdo1.c
+..snip..
 
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 97bfe61cc1f9..d85ae4dd7670 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -80,7 +80,7 @@ obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o
- 				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o \
- 				   clk-mt8188-cam.o clk-mt8188-ccu.o clk-mt8188-img.o \
- 				   clk-mt8188-ipe.o clk-mt8188-mfg.o clk-mt8188-vdec.o \
--				   clk-mt8188-vdo0.o
-+				   clk-mt8188-vdo0.o clk-mt8188-vdo1.o
- obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
- obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
- obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8188-vdo1.c b/drivers/clk/mediatek/clk-mt8188-vdo1.c
-new file mode 100644
-index 000000000000..c9686f0a3b97
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8188-vdo1.c
-@@ -0,0 +1,177 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+//
-+// Copyright (c) 2022 MediaTek Inc.
-+// Author: Garmin Chang <garmin.chang@mediatek.com>
-+
-+#include <linux/clk-provider.h>
-+#include <linux/platform_device.h>
-+#include <dt-bindings/clock/mt8188-clk.h>
-+
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+
-+static const struct mtk_gate_regs vdo1_0_cg_regs = {
-+	.set_ofs = 0x104,
-+	.clr_ofs = 0x108,
-+	.sta_ofs = 0x100,
-+};
-+
-+static const struct mtk_gate_regs vdo1_1_cg_regs = {
-+	.set_ofs = 0x114,
-+	.clr_ofs = 0x118,
-+	.sta_ofs = 0x110,
-+};
-+
-+static const struct mtk_gate_regs vdo1_2_cg_regs = {
-+	.set_ofs = 0x124,
-+	.clr_ofs = 0x128,
-+	.sta_ofs = 0x120,
-+};
-+
-+static const struct mtk_gate_regs vdo1_3_cg_regs = {
-+	.set_ofs = 0x134,
-+	.clr_ofs = 0x138,
-+	.sta_ofs = 0x130,
-+};
-+
-+static const struct mtk_gate_regs vdo1_4_cg_regs = {
-+	.set_ofs = 0x144,
-+	.clr_ofs = 0x148,
-+	.sta_ofs = 0x140,
-+};
-+
-+#define GATE_VDO1_0(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &vdo1_0_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+#define GATE_VDO1_1(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &vdo1_1_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+#define GATE_VDO1_2(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &vdo1_2_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+#define GATE_VDO1_3(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &vdo1_3_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+#define GATE_VDO1_4(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &vdo1_4_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+static const struct mtk_gate vdo1_clks[] = {
-+	/* VDO1_0 */
-+	GATE_VDO1_0(CLK_VDO1_SMI_LARB2, "vdo1_smi_larb2", "top_vpp", 0),
-+	GATE_VDO1_0(CLK_VDO1_SMI_LARB3, "vdo1_smi_larb3", "top_vpp", 1),
-+	GATE_VDO1_0(CLK_VDO1_GALS, "vdo1_gals", "top_vpp", 2),
-+	GATE_VDO1_0(CLK_VDO1_FAKE_ENG0, "vdo1_fake_eng0", "top_vpp", 3),
-+	GATE_VDO1_0(CLK_VDO1_FAKE_ENG1, "vdo1_fake_eng1", "top_vpp", 4),
-+	GATE_VDO1_0(CLK_VDO1_MDP_RDMA0, "vdo1_mdp_rdma0", "top_vpp", 5),
-+	GATE_VDO1_0(CLK_VDO1_MDP_RDMA1, "vdo1_mdp_rdma1", "top_vpp", 6),
-+	GATE_VDO1_0(CLK_VDO1_MDP_RDMA2, "vdo1_mdp_rdma2", "top_vpp", 7),
-+	GATE_VDO1_0(CLK_VDO1_MDP_RDMA3, "vdo1_mdp_rdma3", "top_vpp", 8),
-+	GATE_VDO1_0(CLK_VDO1_VPP_MERGE0, "vdo1_vpp_merge0", "top_vpp", 9),
-+	GATE_VDO1_0(CLK_VDO1_VPP_MERGE1, "vdo1_vpp_merge1", "top_vpp", 10),
-+	GATE_VDO1_0(CLK_VDO1_VPP_MERGE2, "vdo1_vpp_merge2", "top_vpp", 11),
-+	/* VDO1_1 */
-+	GATE_VDO1_1(CLK_VDO1_VPP_MERGE3, "vdo1_vpp_merge3", "top_vpp", 0),
-+	GATE_VDO1_1(CLK_VDO1_VPP_MERGE4, "vdo1_vpp_merge4", "top_vpp", 1),
-+	GATE_VDO1_1(CLK_VDO1_VPP2_TO_VDO1_DL_ASYNC, "vdo1_vpp2_to_vdo1_dl_async", "top_vpp", 2),
-+	GATE_VDO1_1(CLK_VDO1_VPP3_TO_VDO1_DL_ASYNC, "vdo1_vpp3_to_vdo1_dl_async", "top_vpp", 3),
-+	GATE_VDO1_1(CLK_VDO1_DISP_MUTEX, "vdo1_disp_mutex", "top_vpp", 4),
-+	GATE_VDO1_1(CLK_VDO1_MDP_RDMA4, "vdo1_mdp_rdma4", "top_vpp", 5),
-+	GATE_VDO1_1(CLK_VDO1_MDP_RDMA5, "vdo1_mdp_rdma5", "top_vpp", 6),
-+	GATE_VDO1_1(CLK_VDO1_MDP_RDMA6, "vdo1_mdp_rdma6", "top_vpp", 7),
-+	GATE_VDO1_1(CLK_VDO1_MDP_RDMA7, "vdo1_mdp_rdma7", "top_vpp", 8),
-+	GATE_VDO1_1(CLK_VDO1_DP_INTF0_MMCK, "vdo1_dp_intf0_mmck", "top_vpp", 9),
-+	GATE_VDO1_1(CLK_VDO1_DPI0_MM, "vdo1_dpi0_mm_ck", "top_vpp", 10),
-+	GATE_VDO1_1(CLK_VDO1_DPI1_MM, "vdo1_dpi1_mm_ck", "top_vpp", 11),
-+	GATE_VDO1_1(CLK_VDO1_MERGE0_DL_ASYNC, "vdo1_merge0_dl_async", "top_vpp", 13),
-+	GATE_VDO1_1(CLK_VDO1_MERGE1_DL_ASYNC, "vdo1_merge1_dl_async", "top_vpp", 14),
-+	GATE_VDO1_1(CLK_VDO1_MERGE2_DL_ASYNC, "vdo1_merge2_dl_async", "top_vpp", 15),
-+	GATE_VDO1_1(CLK_VDO1_MERGE3_DL_ASYNC, "vdo1_merge3_dl_async", "top_vpp", 16),
-+	GATE_VDO1_1(CLK_VDO1_MERGE4_DL_ASYNC, "vdo1_merge4_dl_async", "top_vpp", 17),
-+	GATE_VDO1_1(CLK_VDO1_DSC_VDO1_DL_ASYNC, "vdo1_dsc_vdo1_dl_async", "top_vpp", 18),
-+	GATE_VDO1_1(CLK_VDO1_MERGE_VDO1_DL_ASYNC, "vdo1_merge_vdo1_dl_async", "top_vpp", 19),
-+	GATE_VDO1_1(CLK_VDO1_PADDING0, "vdo1_padding0", "top_vpp", 20),
-+	GATE_VDO1_1(CLK_VDO1_PADDING1, "vdo1_padding1", "top_vpp", 21),
-+	GATE_VDO1_1(CLK_VDO1_PADDING2, "vdo1_padding2", "top_vpp", 22),
-+	GATE_VDO1_1(CLK_VDO1_PADDING3, "vdo1_padding3", "top_vpp", 23),
-+	GATE_VDO1_1(CLK_VDO1_PADDING4, "vdo1_padding4", "top_vpp", 24),
-+	GATE_VDO1_1(CLK_VDO1_PADDING5, "vdo1_padding5", "top_vpp", 25),
-+	GATE_VDO1_1(CLK_VDO1_PADDING6, "vdo1_padding6", "top_vpp", 26),
-+	GATE_VDO1_1(CLK_VDO1_PADDING7, "vdo1_padding7", "top_vpp", 27),
-+	GATE_VDO1_1(CLK_VDO1_DISP_RSZ0, "vdo1_disp_rsz0", "top_vpp", 28),
-+	GATE_VDO1_1(CLK_VDO1_DISP_RSZ1, "vdo1_disp_rsz1", "top_vpp", 29),
-+	GATE_VDO1_1(CLK_VDO1_DISP_RSZ2, "vdo1_disp_rsz2", "top_vpp", 30),
-+	GATE_VDO1_1(CLK_VDO1_DISP_RSZ3, "vdo1_disp_rsz3", "top_vpp", 31),
-+	/* VDO1_2 */
-+	GATE_VDO1_2(CLK_VDO1_HDR_VDO_FE0, "vdo1_hdr_vdo_fe0", "top_vpp", 0),
-+	GATE_VDO1_2(CLK_VDO1_HDR_GFX_FE0, "vdo1_hdr_gfx_fe0", "top_vpp", 1),
-+	GATE_VDO1_2(CLK_VDO1_HDR_VDO_BE, "vdo1_hdr_vdo_be", "top_vpp", 2),
-+	GATE_VDO1_2(CLK_VDO1_HDR_VDO_FE1, "vdo1_hdr_vdo_fe1", "top_vpp", 16),
-+	GATE_VDO1_2(CLK_VDO1_HDR_GFX_FE1, "vdo1_hdr_gfx_fe1", "top_vpp", 17),
-+	GATE_VDO1_2(CLK_VDO1_DISP_MIXER, "vdo1_disp_mixer", "top_vpp", 18),
-+	GATE_VDO1_2(CLK_VDO1_HDR_VDO_FE0_DL_ASYNC, "vdo1_hdr_vdo_fe0_dl_async", "top_vpp", 19),
-+	GATE_VDO1_2(CLK_VDO1_HDR_VDO_FE1_DL_ASYNC, "vdo1_hdr_vdo_fe1_dl_async", "top_vpp", 20),
-+	GATE_VDO1_2(CLK_VDO1_HDR_GFX_FE0_DL_ASYNC, "vdo1_hdr_gfx_fe0_dl_async", "top_vpp", 21),
-+	GATE_VDO1_2(CLK_VDO1_HDR_GFX_FE1_DL_ASYNC, "vdo1_hdr_gfx_fe1_dl_async", "top_vpp", 22),
-+	GATE_VDO1_2(CLK_VDO1_HDR_VDO_BE_DL_ASYNC, "vdo1_hdr_vdo_be_dl_async", "top_vpp", 23),
-+	/* VDO1_3 */
-+	GATE_VDO1_3(CLK_VDO1_DPI0, "vdo1_dpi0_ck", "top_vpp", 0),
-+	GATE_VDO1_3(CLK_VDO1_DISP_MONITOR_DPI0, "vdo1_disp_monitor_dpi0_ck", "top_vpp", 1),
-+	GATE_VDO1_3(CLK_VDO1_DPI1, "vdo1_dpi1_ck", "top_vpp", 8),
-+	GATE_VDO1_3(CLK_VDO1_DISP_MONITOR_DPI1, "vdo1_disp_monitor_dpi1_ck", "top_vpp", 9),
-+	GATE_VDO1_3(CLK_VDO1_DPINTF, "vdo1_dpintf_ck", "top_vpp", 16),
-+	GATE_VDO1_3(CLK_VDO1_DISP_MONITOR_DPINTF, "vdo1_disp_monitor_dpintf_ck", "top_vpp", 17),
-+	/* VDO1_4 */
-+	GATE_VDO1_4(CLK_VDO1_26M_SLOW, "vdo1_26m_slow_ck", "clk26m", 8),
-+};
-+
-+static int clk_mt8188_vdo1_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device_node *node = dev->parent->of_node;
-+	struct clk_hw_onecell_data *clk_data;
-+	int r;
-+
-+	clk_data = mtk_alloc_clk_data(CLK_VDO1_NR_CLK);
-+	if (!clk_data)
-+		return -ENOMEM;
-+
-+	r = mtk_clk_register_gates(node, vdo1_clks, ARRAY_SIZE(vdo1_clks), clk_data);
-+	if (r)
-+		goto free_vdo1_data;
-+
-+	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
-+	if (r)
-+		goto unregister_gates;
-+
-+	platform_set_drvdata(pdev, clk_data);
-+
-+	return r;
-+
-+unregister_gates:
-+	mtk_clk_unregister_gates(vdo1_clks, ARRAY_SIZE(vdo1_clks), clk_data);
-+free_vdo1_data:
-+	mtk_free_clk_data(clk_data);
-+	return r;
-+}
-+
-+static int clk_mt8188_vdo1_remove(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device_node *node = dev->parent->of_node;
-+	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
-+
-+	of_clk_del_provider(node);
-+	mtk_clk_unregister_gates(vdo1_clks, ARRAY_SIZE(vdo1_clks), clk_data);
-+	mtk_free_clk_data(clk_data);
-+
-+	return 0;
-+}
-+
-+static struct platform_driver clk_mt8188_vdo1_drv = {
-+	.probe = clk_mt8188_vdo1_probe,
-+	.remove = clk_mt8188_vdo1_remove,
-+	.driver = {
-+		.name = "clk-mt8188-vdo1",
-+	},
-+};
-+builtin_platform_driver(clk_mt8188_vdo1_drv);
--- 
-2.18.0
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/memory/mt8195-memory-port.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/clock/mt8195-clk.h>
+> +    #include <dt-bindings/power/mt8195-power.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        jpgenc_master {
+
+What about using ranges here? The binding would look way cleaner, like:
+
+         jpeg-encoder@1a030000 {
+                .... properties ....
+                ranges = <0x30000   0 0x1a030000 0x10000>, /* P.S.: Not tested! */
+                         <0x1030000 0 0x1b030000 0x10000>;
+
+                encoder-core@30000 {
+                         compatible = "mediatek,mt8195-jpgenc-hw";
+                         reg = <0 0x30000 0 0x10000>;
+                         .... properties ....
+                };
+
+                encoder-core@1030000 {
+                         compatible = "mediatek,mt8195-jpgenc-hw";
+                         reg = <0 0x1030000 0 0x10000>;
+                         .... properties ....
+                };
+         };
+
+P.S.: Added Krzysztof to the loop.
+
+Krzysztof, can you please give an opinion on that?
+
+Thanks,
+Angelo
+
+> +                compatible = "mediatek,mt8195-jpgenc";
+> +                power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
+> +                iommus = <&iommu_vpp M4U_PORT_L20_JPGENC_Y_RDMA>,
+> +                <&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
+> +                <&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
+> +                <&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
+> +                #address-cells = <2>;
+> +                #size-cells = <2>;
+> +
+> +                jpgenc@1a030000 {
+> +                        compatible = "mediatek,mt8195-jpgenc-hw";
+> +                        reg = <0 0x1a030000 0 0x10000>;
+> +                        iommus = <&iommu_vdo M4U_PORT_L19_JPGENC_Y_RDMA>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGENC_C_RDMA>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGENC_Q_TABLE>,
+> +                        <&iommu_vdo M4U_PORT_L19_JPGENC_BSDMA>;
+> +                        interrupts = <GIC_SPI 342 IRQ_TYPE_LEVEL_HIGH 0>;
+> +                        clocks = <&vencsys CLK_VENC_JPGENC>;
+> +                        clock-names = "jpgenc";
+> +                        power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
+> +                };
+> +
+> +                jpgenc@1b030000 {
+> +                        compatible = "mediatek,mt8195-jpgenc-hw";
+> +                        reg = <0 0x1b030000 0 0x10000>;
+> +                        iommus = <&iommu_vpp M4U_PORT_L20_JPGENC_Y_RDMA>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
+> +                        <&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
+> +                        interrupts = <GIC_SPI 347 IRQ_TYPE_LEVEL_HIGH 0>;
+> +                        clocks = <&vencsys_core1 CLK_VENC_CORE1_JPGENC>;
+> +                        clock-names = "jpgenc";
+> +                        power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
+> +                };
+> +        };
+> +    };
+
 
 
