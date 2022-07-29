@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CF31C00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 20:14:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A874C00144
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 20:23:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZnOpy59+ajmPcmpoOb8uCDIH85TSXgJy6vgnFBqX7Rc=; b=uBNEY7PntIwpsZaSJSwaeL81vc
-	52JtgSZZd6Lo3/CGTO9w51UHG4X7021eS4kr0mVWOSYHX4YL8eIz9Xfj3ga5PqeHqqI7h+72WXY9l
-	GWkaGV8tO38lfvGpLzEHmm5/QHkNZ1ehQcsM9Fk/wxUnYhKHyN86vVfdD5dx+186yXeU/za7vCT5k
-	FYagERNiYW7Qau/6w6mQ63qO2bW6CZwKhkvlWtEpShSr1s8EVmH/MaIjKkCIz2NIxnte1Y0yYyhfL
-	MnDFc1LISPbfwHpqPiYCI16iRux4ofY+axHhxzuvAH7SoIkQhh8TOj7GtUzJ2NuvI8O7hzyVrgmlc
-	cIV1OosQ==;
+	bh=9kR3y35L2jJpF9DeBUmeO1NaqJqCDRAh/3PI0ms/90U=; b=ZY/2QbCld8yX/JIcPOwzI/YNuX
+	fRqAgmD98dMp0to3geL1parQKuuTBTgF7GcWIoaX5DVKmTyHuJXg3SvFBGJ28tNyLMvYoYUZ28JJi
+	vi9/2xVDh/KFQEK0RMRpAxlhKtvansHQRDQPZ4xPW1PBOLXg695lNP/zAMp98h8X4kIRzYw+Fsuap
+	u7intjSTRiH5/7f9F430E7eKpJEVWGfSmLZfkBUZKNOyal9hW3g4L3JTx+1kcTgbpXVAQ7MZtRKJS
+	0C0wm4Vb1X4i04f+CLZ7Qivwm6zE6460IT3KKFgsoVSAD0168n3MAlvO5wPDsxKPofbLV3//B2q2n
+	9OH1vbbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHWNg-00Bu8U-MX; Fri, 29 Jul 2022 20:14:44 +0000
+	id 1oHWVk-00C0La-Dw; Fri, 29 Jul 2022 20:23:04 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHWNU-00Bttc-T4; Fri, 29 Jul 2022 20:14:34 +0000
+	id 1oHWVW-00C02N-5P; Fri, 29 Jul 2022 20:22:51 +0000
 Received: from notapiano (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 01AE26601B8B;
-	Fri, 29 Jul 2022 21:14:25 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CF8EB6601B8B;
+	Fri, 29 Jul 2022 21:22:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1659125668;
-	bh=G4GT0Els2R2O6vlylb/sPAqakzAO0cQG7B/tH51PEEU=;
+	s=mail; t=1659126168;
+	bh=QadOD+6p23Ma82Rr7I+mSjlDaAdqbTHjSZomPmDSVYs=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jRKbidvNZSHnE0RihwLLsClpimZvmfrieKisTV9H8nPXadNlgHePR5iSRGqrzWmqz
-	 GvKCBSP5Y9j9eQK+RtEAmhLv/YMPgCDicqCvMRHVTOyUBdwxngGfCf4p4lU64aIEB/
-	 AkbgRn6Lfhz8lS4AayccSN1+IR/X2Rvsm7fzTK9+RNB1GOji/h1VZpYC3wT3gKXaJt
-	 krsxsnm00Yq47GNmtoDFQ3xKPkkx/IBbSTklQo6QFFPDViqUVTWjEzF78wkZjTDIfG
-	 R2UBLuZ774WBQedpkWci3XWz4/9wBLjimTpQQZt6lx2MwpTWYI5Y0a3kG79dlDXRar
-	 PGPvmvpDBMKHQ==
-Date: Fri, 29 Jul 2022 16:14:21 -0400
+	b=ogtnbSm7jTLj1fN9ggv0MEJ5USyPoemrelAECoe9MYc1x03aU5XSd0BiO5cAOH2bQ
+	 zklBeRjA8gdtbRw2GilZp7s6102hm7sF1/LiQUEm1fACtF4hhyQdGeThjinZjSCnXi
+	 /OrsfNaxawIpfmaccOS+9Ng6S/hPWdP49nKLHfJimcqflRYE/zy9+6Y7rORnVSaETD
+	 uN2NIiyf49DLivkZWfL3EmApg+6cBqDozgH3cZyaQp1UZ8dbfu9D6C3t6zzWOCaxlI
+	 4qrQV8FIF4ZhbPitDfSHyJ7z1sNfbyVqN7ruSbrMZg8/aQA7Nhn2z4zvG+XV3hh5uX
+	 fM7MCm7KknUhg==
+Date: Fri, 29 Jul 2022 16:22:41 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: Balsam CHIHI <bchihi@baylibre.com>
 Cc: rafael@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org,
@@ -53,18 +53,18 @@ Cc: rafael@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org,
 	linux-mediatek@lists.infradead.org, james.lo@mediatek.com,
 	fan.chen@mediatek.com, louis.yu@mediatek.com,
 	rex-bc.chen@mediatek.com, abailon@baylibre.com
-Subject: Re: [PATCH v8 5/6] arm64: dts: mt8195: Add efuse node to mt8195
-Message-ID: <20220729201421.fxybo57g46ftghgd@notapiano>
+Subject: Re: [PATCH v8 6/6] arm64: dts: mt8195: Add thermal zone
+Message-ID: <20220729202241.isw3hjo3jclzxhbl@notapiano>
 References: <20220726135506.485108-1-bchihi@baylibre.com>
- <20220726135506.485108-6-bchihi@baylibre.com>
+ <20220726135506.485108-7-bchihi@baylibre.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220726135506.485108-6-bchihi@baylibre.com>
+In-Reply-To: <20220726135506.485108-7-bchihi@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220729_131433_177638_E9432532 
-X-CRM114-Status: GOOD (  13.49  )
+X-CRM114-CacheID: sfid-20220729_132250_373261_7F7FBEE9 
+X-CRM114-Status: GOOD (  17.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,43 +79,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 26, 2022 at 03:55:05PM +0200, Balsam CHIHI wrote:
-> This adds the efuse node. This will be required by the thermal driver
-> to get the calibration data.
+On Tue, Jul 26, 2022 at 03:55:06PM +0200, Balsam CHIHI wrote:
+> This adds the thermal zone for the mt8195.
 > 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
 > Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
 > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 115 ++++++++++++++++++++++-
+>  1 file changed, 114 insertions(+), 1 deletion(-)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index 0ff34edcf8c8..4fbf24b5d202 100644
+> index 4fbf24b5d202..78017224930c 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
 > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -1236,6 +1236,22 @@ nor_flash: spi@1132c000 {
+> @@ -1,6 +1,6 @@
+>  // SPDX-License-Identifier: (GPL-2.0 OR MIT)
+>  /*
+> - * Copyright (c) 2021 MediaTek Inc.
+> + * Copyright (c) 2022 MediaTek Inc.
+>   * Author: Seiya Wang <seiya.wang@mediatek.com>
+>   */
+>  
+> @@ -11,6 +11,9 @@
+>  #include <dt-bindings/memory/mt8195-memory-port.h>
+>  #include <dt-bindings/phy/phy.h>
+>  #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+> +#include <dt-bindings/power/mt8195-power.h>
+> +#include <dt-bindings/reset/mt8195-resets.h>
+> +#include <dt-bindings/thermal/thermal.h>
+
+You're not actually using the mt8195-power and thermal includes.
+
+>  
+>  / {
+>  	compatible = "mediatek,mt8195";
+> @@ -810,6 +813,28 @@ spi0: spi@1100a000 {
 >  			status = "disabled";
 >  		};
 >  
-> +		efuse: efuse@11c10000 {
-> +			compatible = "mediatek,efuse";
-> +			reg = <0 0x11c10000 0 0x1000>;
-> +			#address-cells = <1>;
-> +			#size-cells = <1>;
-> +			lvts_efuse_data1: lvts1-calib@1bc {
-> +				reg = <0x1bc 0x14>;
-> +			};
-> +			lvts_efuse_data2: lvts2-calib@1d0 {
-> +				reg = <0x1d0 0x38>;
-> +			};
-> +			svs_calibration: calib@580 {
-> +				reg = <0x580 0x64>;
-> +			};
+> +		lvtsap: thermal-sensor@1100b000 {
+
+Can you name this label lvts_ap, and the one below lvts_mcu, please? Makes it
+much more readable.
+
+> +			compatible = "mediatek,mt8195-lvts-ap";
+> +			#thermal-sensor-cells = <1>;
+> +			reg = <0 0x1100b000 0 0x400>;
+
+Don't you need the reg size to be 0x1000 to be able to access THERMINTST in the
+soc_temp_lvts.c?
+
+> +			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
+> +			resets = <&infracfg_ao MT8195_INFRA_RST0_THERM_CTRL_SWRST>;
+> +			nvmem-cells = <&lvts_efuse_data1 &lvts_efuse_data2>;
+> +			nvmem-cell-names = "lvts_calib_data1", "lvts_calib_data2";
 > +		};
 > +
+> +		lvtsmcu: thermal-sensor@11278000 {
+> +			compatible = "mediatek,mt8195-lvts-mcu";
+> +			#thermal-sensor-cells = <1>;
+> +			reg = <0 0x11278000 0 0x400>;
+> +			interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			clocks = <&infracfg_ao CLK_INFRA_AO_THERM>;
+> +			resets = <&infracfg_ao MT8195_INFRA_RST4_THERM_CTRL_MCU_SWRST>;
+> +			nvmem-cells = <&lvts_efuse_data1 &lvts_efuse_data2>;
+> +			nvmem-cell-names = "lvts_calib_data1", "lvts_calib_data2";
+> +		};
+> +
+>  		spi1: spi@11010000 {
+>  			compatible = "mediatek,mt8195-spi",
+>  				     "mediatek,mt6765-spi";
+> @@ -1613,4 +1638,92 @@ vencsys_core1: clock-controller@1b000000 {
+>  			#clock-cells = <1>;
+>  		};
+>  	};
+> +
+> +	thermal_zones: thermal-zones {
+> +		cpu-big1-thermal {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
 
-This commit doesn't apply, there's already an efuse node on mt8195.dtsi. Please
-rebase.
+Please drop all these '/* milliseconds */' comments. The thermal-zones
+dt-binding already defines both of these properties as being in milliseconds, so
+this is just polluting the DT.
 
 Thanks,
 Nícolas
