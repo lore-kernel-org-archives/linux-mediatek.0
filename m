@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D39CBC00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 10:05:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03354C00144
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 10:25:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4YP4OmnRt/OgZt4bu8ks0gCDNnCy5+19pnrr1hICmVI=; b=tPc8ufv4jb2SLhCV+wAdwTq49v
-	2YMN9iE3y6Xsblhl6xfQzY5lv17Nr7qtQ8ROCIYZu00GpKIImVGHyOf4yFsN65o5J+7XHagZP/8EZ
-	lR9rIevo6OeiMc0+o5Dmd9kBcp6gOwkw6zqVjUvA95mgeJEmbobSxv8TtSUPsA04YU1t0mRyseyYa
-	FaD/QyITHUmNYCQ/PW1C7UR46f5XgREpd0lTPJkVrEMJds92Oj9GLmFuLkcj+8zN39gMgvrpU7H4d
-	AoDJvk2PxaTOyZgpW1Me9EiUNZMK13VdZ7/W/7kFTUxw6UA+PXM6jBIjUX2NFpUxGO49XjlXDqHpy
-	2fnWg7wQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=51z8CRbTIHmAosXZE6mOcgfliomGflvVF5xYRmk7M2M=; b=mup2fXN+UN5wHmUEnnr3Kt1+ph
+	9ZEZS+ELy17u2nmHeVm1M8q1X6KuSAnB/vH5iulgYaR8nsp6pWX52TvC02+Wu/FmkCzoxLDL2UNNE
+	GX+IF0LiGUIxZTNgaEE2/nOOJ/l6opNkyFt3BxGo7Q9vYHUfpNj4OVuCej5KVwR7mJtO1DO8XRzEE
+	C+xEg7a/f7+5anVcUx4tLr5tstiPj0VuGgRx5E5eKjZ3quV2AARCoTgjOkWDCjXHX8GxzbuN/wwsx
+	XWBe5XgnJ7/ZDKXWY+sp5SNu87/KFueN3l+zEngB09BS/FdQjG+EobdtzY/Hch38cqeJ9wdbXNPLQ
+	W3Gzm+Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHMrb-003y80-BE; Fri, 29 Jul 2022 10:04:59 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oHNBf-0044WB-RB; Fri, 29 Jul 2022 10:25:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHMrY-003y6Q-Li; Fri, 29 Jul 2022 10:04:57 +0000
-X-UUID: 98eed14c6c9e41c4a88ae63043f31967-20220729
+	id 1oHNBa-0044TD-RZ; Fri, 29 Jul 2022 10:25:41 +0000
+X-UUID: 9a754fa8f2c8471db6d4b68bcd70deee-20220729
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:f59ebab2-14a7-45aa-a273-00cd548c5aa9,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:fb61c0cf-a6cf-4fb6-be1b-c60094821ca2,C
+X-CID-O-INFO: VERSION:1.1.8,REQID:874120ff-b1e3-453a-b286-628069a0d381,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:0f94e32,CLOUDID:abeec0cf-a6cf-4fb6-be1b-c60094821ca2,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 98eed14c6c9e41c4a88ae63043f31967-20220729
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunxu.li@mediatek.com>)
+X-UUID: 9a754fa8f2c8471db6d4b68bcd70deee-20220729
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <hui.liu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 863872678; Fri, 29 Jul 2022 03:04:49 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 715086010; Fri, 29 Jul 2022 03:25:30 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 29 Jul 2022 17:14:13 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 29 Jul 2022 17:14:11 +0800
-From: Chunxu Li <chunxu.li@mediatek.com>
-To: <lgirdwood@gmail.com>, <broonie@kernel.org>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <matthias.bgg@gmail.com>, <jiaxin.yu@mediatek.com>, <tzungbi@google.com>,
-	<linux-kernel@vger.kernel.org>, <alsa-devel@alsa-project.org>,
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Fri, 29 Jul 2022 18:24:54 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 29 Jul 2022 18:24:53 +0800
+From: Hui Liu <hui.liu@mediatek.com>
+To: <linus.walleij@linaro.org>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<hui.liu@mediatek.com>, <jianguo.zhang@mediatek.com>,
+	<zhiyong.tao@mediatek.com>, <sean.wang@mediatek.com>,
+	<linux-gpio@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<project_global_chrome_upstream_group@mediatek.com>, Chunxu Li
-	<chunxu.li@mediatek.com>
-Subject: [PATCH 0/3] support SOF for mt8186
-Date: Fri, 29 Jul 2022 17:14:01 +0800
-Message-ID: <20220729091404.7799-1-chunxu.li@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	<linux-kernel@vger.kernel.org>
+Subject: [PATCH v3 0/2] MediaTek pinctrl patch on mt8188
+Date: Fri, 29 Jul 2022 18:24:50 +0800
+Message-ID: <20220729102452.9478-1-hui.liu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220729_030456_716164_21FD0796 
-X-CRM114-Status: UNSURE (   6.66  )
+X-CRM114-CacheID: sfid-20220729_032538_959867_7AAAC924 
+X-CRM114-Status: UNSURE (   7.79  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,23 +77,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In these patches, we add SOF support for mt8186 which have HiFi5 DSP
-inside.
+This series include 2 patches:
+1.Add pinmux definition file and pinctrl binding document for mt8188.
+2.Add pinctrl driver for mt8188.
 
-Chunxu Li (3):
-  ASoC: mediatek: mt8186: support DSP downlink
-  ASoC: mediatek: mt8186: add SOF support on
-    mt8186-mt6366-rt1019-rt5682s
-  ASoC: mediatek: mt8186: add SOF support on
-    mt8186-mt6366-da7219-max98357
+Changes in patch v4:
+1.Add gpio-line-names in binding document.
+2.Fix typo in driver files.
 
- sound/soc/mediatek/mt8186/mt8186-afe-pcm.c    |   3 +
- sound/soc/mediatek/mt8186/mt8186-dai-i2s.c    |  12 ++
- .../mt8186/mt8186-mt6366-da7219-max98357.c    | 168 ++++++++++++++++--
- .../mt8186/mt8186-mt6366-rt1019-rt5682s.c     | 168 ++++++++++++++++--
- 4 files changed, 325 insertions(+), 26 deletions(-)
+Changes in patch v3:
+1.Fix binding document dt_binding_check fail issue.
 
--- 
+Changes in patch v2:
+1.Change pinmux definition file name to mediatek,mt8188-pinfunc.h.
+2.Change binding document name to mediatek,mt8188-pinctrl.yaml.
+3.Update yaml description.
+
+Changes in patch v1:
+1.Add pinmux definition file.
+2.Add binding document.
+3.Add mt8188 pinctrl drivers.
+
+*** BLURB HERE ***
+
+Hui.Liu (2):
+  dt-bindings: pinctrl: add support for mediatek mt8188
+  pinctrl: mediatek: add mt8188 driver
+
+ .../pinctrl/mediatek,mt8188-pinctrl.yaml      |  238 ++
+ drivers/pinctrl/mediatek/Kconfig              |   12 +
+ drivers/pinctrl/mediatek/Makefile             |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt8188.c     | 1669 ++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h | 2260 +++++++++++++++++
+ .../pinctrl/mediatek,mt8188-pinfunc.h         | 1280 ++++++++++
+ 6 files changed, 5460 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8188-pinctrl.yaml
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8188.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h
+ create mode 100644 include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
+
+--
 2.18.0
+
 
 
