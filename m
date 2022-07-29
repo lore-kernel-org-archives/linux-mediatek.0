@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BD13C00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 11:30:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAB01C19F2B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 12:00:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mi2hXTbMwIdhZSHb8Gwh+/oSHN9SN2PB/3ESotz13IA=; b=NyqwUNTAMT2JbU5CLq2B63bd1V
-	ZXjG67GWQq0z6j3jgAWWij3G0K1K5AlbAwhzgjskrfKJxhD6hiB6+yuofYW7QWeaYUZuN2W+/UAf6
-	LUwLALvH0ZJIs9E/3NhJhnoRPPSZdTV4XB9E4kU7vCEQS4Ms+TABMrMUEa0sTAMqC3Aqtg0Uq52Rn
-	ooWZCW0llAyUbZLQqs5WQqO+LUkYr1XHqLJ27kp9pZE34Xe2l+YhlxoRvV9C+uFJJNC8BD3PbaQBa
-	uouOn7M6qK7UFDMjQcsBofzS+1c2CKOMVASv7ZIRtvA4lEIPQL8Uu6X8wkEQoJT8KU5+iSydAvhA4
-	gN1uhbCw==;
+	bh=t5JAHu6tvj78G0dPSRGcbr7BiVLL+vYjS5RyLHqkt4M=; b=1Gn0RXuWHeAUejEhFZHXnVQSl3
+	4vrHsr05kyqJdLUiGN5+e5+R8VF9TWeoSLI94afYlpB4NtAzqjICWYHWOyh4o84Of/wYT92whuZq7
+	MhTQNjAm6BqGOD2sZM2vdInHhpLYqlSdu5f5UGzLtOL9QeE4X0apHLLA6TdYcaZCaUIJef0xLHJVl
+	ua6AqPyI/dI572Xblj4501k26Xy/WZtPu8m7p/lCG5KbjQ/U62npUnu0wwEAIlVs1xEBDyGszrRD5
+	Fhvk6ARVrWH0T6fUrSZLkQlclLH+NKBvRFVQ21JtvSFQ9HVzyxMA+mQyCfqaBJYu4UaQBW7zCqsZ5
+	MloWNoRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHOCC-004Qbp-2v; Fri, 29 Jul 2022 11:30:20 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oHOfD-004b7a-V1; Fri, 29 Jul 2022 12:00:19 +0000
+Received: from relay03.th.seeweb.it ([5.144.164.164])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHOCA-004QaS-0E
-	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 11:30:19 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1oHOf9-004b0S-Mq
+	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 12:00:18 +0000
+Received: from [192.168.1.101] (abxi232.neoplus.adsl.tpnet.pl [83.9.2.232])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 64BFDB827AA;
-	Fri, 29 Jul 2022 11:30:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 46459C43141;
-	Fri, 29 Jul 2022 11:30:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1659094214;
-	bh=YTh812N94iTAkMkctWnkTNZH59EScxVdZ0HIYLHdSBA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=NREj1UCkXoRsGKKLkJF1IOboGZf+RN2Vp982hK06KhxgUQaN55wRmZtHXfgMojRad
-	 +MHEZqcCq8dR4tUQQAmvLoDcIDKYuH0AURMzOK7r4ZgZ/wM2pGod44bT+Mnv74IVMJ
-	 DnzeDexcdIxbOnn5mEvmHEE7vcTSrafuFHBmqfgoIJ+y/vpjNGXCV17/+9hxrAoX7x
-	 Hky+psSwPdq7WpGnocKjkR8q5WTRw0xKhyHonPbGAMUeWUvgNZ6GLAve6U34ddGAx5
-	 /tgXcEvtS/ezOfbmJL40gMWB0tWDXU3HHKkGpFKuly1hGuX0aPFh1mA+r1Sjf0oaJa
-	 V9QiKAOu5JhIA==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 311B1C43140;
-	Fri, 29 Jul 2022 11:30:14 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	by m-r1.th.seeweb.it (Postfix) with ESMTPSA id CEE251F9C3;
+	Fri, 29 Jul 2022 14:00:04 +0200 (CEST)
+Message-ID: <a8fa9e22-8c3f-60b2-a0db-01cfd5c37765@somainline.org>
+Date: Fri, 29 Jul 2022 14:00:02 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next 0/3] mtk_eth_soc: introduce xdp multi-frag support
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <165909421419.27900.9288866445051799762.git-patchwork-notify@kernel.org>
-Date: Fri, 29 Jul 2022 11:30:14 +0000
-References: <cover.1658955249.git.lorenzo@kernel.org>
-In-Reply-To: <cover.1658955249.git.lorenzo@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
- ilias.apalodimas@linaro.org, lorenzo.bianconi@redhat.com, jbrouer@redhat.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 7/7] arm64: dts: mediatek: Add support for MT6795 Sony
+ Xperia M5 smartphone
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org, vkoul@kernel.org,
+ chaotian.jing@mediatek.com, ulf.hansson@linaro.org, matthias.bgg@gmail.com,
+ hsinyi@chromium.org, nfraprado@collabora.com, allen-kh.cheng@mediatek.com,
+ fparent@baylibre.com, sam.shih@mediatek.com, sean.wang@mediatek.com,
+ long.cheng@mediatek.com, wenbin.mei@mediatek.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dmaengine@vger.kernel.org, linux-mmc@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ phone-devel@vger.kernel.org, ~postmarketos/upstreaming@lists.sr.ht
+References: <20220729104441.39177-1-angelogioacchino.delregno@collabora.com>
+ <20220729104441.39177-8-angelogioacchino.delregno@collabora.com>
+From: Konrad Dybcio <konrad.dybcio@somainline.org>
+In-Reply-To: <20220729104441.39177-8-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220729_043018_208412_1A01CC63 
-X-CRM114-Status: UNSURE (   8.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220729_050015_959710_52A3341D 
+X-CRM114-Status: GOOD (  17.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,34 +73,145 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
 
-This series was applied to netdev/net-next.git (master)
-by David S. Miller <davem@davemloft.net>:
 
-On Wed, 27 Jul 2022 23:20:49 +0200 you wrote:
-> Convert mtk_eth_soc driver to xdp_return_frame_bulk APIs.
+On 29.07.2022 12:44, AngeloGioacchino Del Regno wrote:
+> Add a basic support for the Sony Xperia M5 (codename "Holly")
+> smartphone, powered by a MediaTek Helio X10 SoC.
 > 
-> Lorenzo Bianconi (3):
->   net: ethernet: mtk_eth_soc: introduce mtk_xdp_frame_map utility
->     routine
->   net: ethernet: mtk_eth_soc: introduce xdp multi-frag support
->   net: ethernet: mtk_eth_soc: add xdp tx return bulking support
+> This achieves a console boot.
 > 
-> [...]
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/Makefile         |  1 +
+>  .../dts/mediatek/mt6795-sony-xperia-m5.dts    | 90 +++++++++++++++++++
+>  2 files changed, 91 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index af362a085a02..72fd683c9264 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -3,6 +3,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6779-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-sony-xperia-m5.dtb
+-holly.dtb?
 
-Here is the summary with links:
-  - [net-next,1/3] net: ethernet: mtk_eth_soc: introduce mtk_xdp_frame_map utility routine
-    https://git.kernel.org/netdev/net-next/c/b16fe6d82b71
-  - [net-next,2/3] net: ethernet: mtk_eth_soc: introduce xdp multi-frag support
-    https://git.kernel.org/netdev/net-next/c/155738a4f319
-  - [net-next,3/3] net: ethernet: mtk_eth_soc: add xdp tx return bulking support
-    https://git.kernel.org/netdev/net-next/c/853246dbf5e8
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+> new file mode 100644
+> index 000000000000..94d011c4126c
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+> @@ -0,0 +1,90 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * Copyright (c) 2022, Collabora Ltd
+> + * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt6795.dtsi"
+> +
+> +#include <dt-bindings/gpio/gpio.h>
+Looks unused.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+> +
+> +/ {
+> +	model = "Sony Xperia M5";
+> +	compatible = "sony,xperia-m5", "mediatek,mt6795";
+sony,holly?
 
+> +	chassis-type = "handset";
+> +
+> +	aliases {
+> +		mmc0 = &mmc0;
+> +		mmc1 = &mmc1;
+> +		serial0 = &uart0;
+> +		serial1 = &uart1;
+> +	};
+> +
+> +	memory@40000000 {
+> +		device_type = "memory";
+> +		reg = <0 0x40000000 0 0x1E800000>;
+Lowercase hex in size. Also, doesn't the bootloader fill it in?
 
+> +	};
+> +
+> +	reserved_memory: reserved-memory {
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +
+> +		/* 128 KiB reserved for ARM Trusted Firmware (BL31) */
+Is that true for all devices with this SoC, or..? If so, it may be worth
+moving this into mt6795.dtsi.
+
+> +		bl31_secmon_reserved: secmon@43000000 {
+memory@, everywhere. Use labels to name the nodes.
+
+> +			no-map;
+reg goes first.
+> +			reg = <0 0x43000000 0 0x30000>;
+> +		};
+> +
+> +		/* preloader and bootloader regions cannot be touched */
+> +		preloader-region@44800000 {
+> +			no-map;
+> +			reg = <0 0x44800000 0 0x100000>;
+> +		};
+> +
+> +		bootloader-region@46000000 {
+> +			no-map;
+> +			reg = <0 0x46000000 0 0x400000>;
+> +		};
+> +	};
+> +};
+> +
+> +&pio {
+> +	uart0_pins: uart0-pins {
+> +		pins-rx {
+> +			pinmux = <PINMUX_GPIO113__FUNC_URXD0>;
+> +			bias-pull-up;
+> +			input-enable;
+> +		};
+> +		pins-tx {
+> +			pinmux = <PINMUX_GPIO114__FUNC_UTXD0>;
+> +			output-high;
+> +		};
+> +	};
+> +
+> +	uart2_pins: uart2-pins {
+> +		pins-rx {
+> +			pinmux = <PINMUX_GPIO31__FUNC_URXD2>;
+> +			bias-pull-up;
+> +			input-enable;
+> +		};
+> +		pins-tx {
+> +			pinmux = <PINMUX_GPIO32__FUNC_UTXD2>;
+> +		};
+> +	};
+> +};
+> +
+> +&uart0 {
+> +	status = "okay";
+Status last here and below, please.
+
+Konrad
+> +
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&uart0_pins>;
+> +};
+> +
+> +&uart2 {
+> +	status = "okay";
+> +
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&uart2_pins>;
+> +};
+> 
 
