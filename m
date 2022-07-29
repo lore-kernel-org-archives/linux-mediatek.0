@@ -4,72 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1288CC00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 08:39:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9670C00144
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 08:40:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2u5OrUHUpOMO5fEyAlLsIDOLs93NcMBXwRg6aSJD9DA=; b=JrTTqc8yntSda2XsituUe9brbY
-	1gE+MFwZQZh1mT5a2idRAWkaBvJHEsRKgSGvRE9uE5uAaqnPWOwROq5Tm11rguei4qDdXRsJF8O78
-	Tyopt7S0TfbETM0ebMuqVtvOLqMGjkqEtIOcccThpC49WIz6NtaV6TrNj32TcWekfj6NvV9MCOHTJ
-	gewUDfZfD8kIaQPzw9U8065Z/tmjWMg+IbTpr+tNWeL9+OIvUGw8USoNUKw+UA5IGSWWuLBqP5PqT
-	UKhi7AHhbUkwF5uf221UQvGinR/rJBV4I/kVCOOj2I4EOcHqLF5mDxxNAvjDYHRRO3348wRemyQ2W
-	QQqK3kZQ==;
+	bh=c7If3YVDnqckWRjRjQ5EpKxMIbNkUPQb+jzxUK5QN78=; b=aKmr1yUgptgxZJmvnbzPnO0f+x
+	34sLLKo5Db6XE6b1FjiOisypNFqOIzGrWHiU00g3H8MEHCLMFoMgmGNiGxnptJuVHGwu/j67cVZ3W
+	/q4jh83zxAUvkws/4aY3H1sStG7kSvdLJ6nN2DCHf/BD9uC4kqCsLjheSraS4SOLhugzaqEsstIfV
+	3uBevSTk54MZhI8TJGJuHVw1aR7mW1W+4zbxSdFjoSCvPdFFMoa+kXMlnpfMvs00xyINZGH/scfW2
+	ypcNNmSC+VTc9spweddFrBs5pfxFQxdMksHiWsvmccVBMtq8z5Dg9WhoOOwbPNpAI6EW0koM68mzh
+	A09R6qNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHLWH-003N9Q-LA; Fri, 29 Jul 2022 08:38:53 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1oHLXl-003Nvs-DJ; Fri, 29 Jul 2022 08:40:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHLKc-003E5k-M8
-	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 08:26:53 +0000
-Received: by mail-wr1-x433.google.com with SMTP id b26so5128540wrc.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 29 Jul 2022 01:26:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=2u5OrUHUpOMO5fEyAlLsIDOLs93NcMBXwRg6aSJD9DA=;
-        b=IRfHBuNRCPf3dfAa/Oe7k94E+8lxZitlK7DOyEhPW7X/zOUQk6SxKaid/iofF3vADw
-         NtfIUq06xahkXxOKmIY2MXoaEeNzbBDh2fZ551x/yKuxVezuHgrj5KEgbXK5aOyzZx5g
-         t48eXZsjmqkNVR8sRdkKD5Yj9Q6KE863bfutg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=2u5OrUHUpOMO5fEyAlLsIDOLs93NcMBXwRg6aSJD9DA=;
-        b=GXwqTGkVL/GBTsbetVwcWZKJRQT9bZCuBshOuTfAVtYXYWj2yIIINvW1vCuiKOaEdk
-         kfGBw0lYysB0bNMjPeCGKU6pccscc5GFeRR4/wL80ME5GbaxtbrD/G+R/Dy0BhPNRRac
-         QdVMF407hrA++TAvlK6XZilu9a9L1OWLuef3eS3hEE0BDjQtAeToAcaPj+iLDF1kRrcO
-         XQThNsLWfEMRG1lHRbmO6H+DrARbL3K39QmeX1j9VRHFt8r3JLh2EWO+b0nyApWabHWt
-         bf8GN9AmUMgTmi70K5t/GHpYf/h08Ig5rkGG2Q8ootnS6h3qmYd4l3HFYXQz42qGVPS8
-         J8Nw==
-X-Gm-Message-State: ACgBeo2dvfMl4bKNoMZ1flxtNK3nawaH3LACvPS9kR1qdNTdFASTA/ve
-	8Aw2x7LGD+fcAZIGbAfuHUC7Y7JGxj8Wi/6k372OvA==
-X-Google-Smtp-Source: AA6agR5FXdxHYMSCOAf3XvPso/HOt+pVRXDTIBRgpFGW9U0fv50u3omwYjhK7izsNPIcvrt0bqrPsE1OPlpLIy8gEnk=
-X-Received: by 2002:a5d:4d0b:0:b0:21e:c456:e565 with SMTP id
- z11-20020a5d4d0b000000b0021ec456e565mr1582022wrt.3.1659083206728; Fri, 29 Jul
- 2022 01:26:46 -0700 (PDT)
+	id 1oHLKu-003EIr-EN; Fri, 29 Jul 2022 08:27:11 +0000
+X-UUID: e0c27ac986314a4090d32361545e3bf3-20220729
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:f967c53d-76cf-4166-bbda-4860440b1d5d,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:0f94e32,CLOUDID:fcebadd0-841b-4e95-ad42-8f86e18f54fc,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: e0c27ac986314a4090d32361545e3bf3-20220729
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <garmin.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1802558319; Fri, 29 Jul 2022 01:26:59 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 29 Jul 2022 16:25:17 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 29 Jul 2022 16:25:17 +0800
+From: Garmin.Chang <Garmin.Chang@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Garmin Chang <garmin.chang@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	Garmin.Chang <Garmin.Chang@mediatek.com>
+Subject: [PATCH 10/18] clk: mediatek: Add MT8188 mfgcfg clock support
+Date: Fri, 29 Jul 2022 16:24:49 +0800
+Message-ID: <20220729082457.22253-11-Garmin.Chang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220729082457.22253-1-Garmin.Chang@mediatek.com>
+References: <20220729082457.22253-1-Garmin.Chang@mediatek.com>
 MIME-Version: 1.0
-References: <20220729032423.157144-1-treapking@chromium.org> <2719519a-4690-4cc8-42c3-f6089d888cce@collabora.com>
-In-Reply-To: <2719519a-4690-4cc8-42c3-f6089d888cce@collabora.com>
-From: Pin-yen Lin <treapking@chromium.org>
-Date: Fri, 29 Jul 2022 16:26:35 +0800
-Message-ID: <CAEXTbpfRWX_RfR6DU31NweLrGTOZTi_hCs-515xaW6x_McnJ5Q@mail.gmail.com>
-Subject: Re: [PATCH v4] arm64: dts: mt8173-elm: Switch to SMC watchdog
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Hsin-Yi Wang <hsinyi@chromium.org>, Evan Benn <evanbenn@chromium.org>, 
-	Eizan Miyamoto <eizan@chromium.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
-	devicetree@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220729_012650_779170_4E460812 
-X-CRM114-Status: GOOD (  20.72  )
+X-CRM114-CacheID: sfid-20220729_012708_527262_9EBEF52F 
+X-CRM114-Status: GOOD (  15.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,64 +79,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 29, 2022 at 4:01 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 29/07/22 05:24, Pin-yen Lin ha scritto:
-> > Switch to SMC watchdog because we need direct control of HW watchdog
-> > registers from kernel. The corresponding firmware was uploaded in
-> > https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405.
-> >
-> > Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> > ---
-> >
-> > Changes in v4:
-> > - Rename the watchdog node (smc_watchdog -> watchdog)
-> > - Correct the patch summary (mt8173-oak -> mt8173-elm)
-> >
-> > Changes in v3:
-> > - Remove /delete-node/ and create a new node for SMC watchdog.
-> >
-> > Changes in v2:
-> > - Move the modifications to mt8173-elm.dtsi and add some comments.
-> >
-> >   arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 13 +++++++++++++
-> >   1 file changed, 13 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> > index e21feb85d822..421bb2945135 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> > @@ -161,6 +161,19 @@ hdmi_connector_in: endpoint {
-> >                       };
-> >               };
-> >       };
-> > +
-> > +
->
-> You don't need two blank lines, just one is enough (please fix).
+Add MT8188 mfg clock controller which provides clock gate
+control for GPU.
 
-This is already addressed in v5. Thanks for the review though.
->
-> After which:
->
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->
-> > +     watchdog {
-> > +             compatible = "arm,smc-wdt";
-> > +     };
-> > +};
-> > +
-> > +/*
-> > + * Disable the original MMIO watch dog and switch to the SMC watchdog, which
-> > + * operates on the same MMIO.
-> > + */
-> > +&watchdog {
-> > +     status = "disabled";
-> >   };
-> >
-> >   &mfg_async {
-> >
->
->
+Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
+---
+ drivers/clk/mediatek/Makefile         |  2 +-
+ drivers/clk/mediatek/clk-mt8188-mfg.c | 50 +++++++++++++++++++++++++++
+ 2 files changed, 51 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8188-mfg.c
+
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index 7e902efda3df..0a72401adc5f 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -79,7 +79,7 @@ obj-$(CONFIG_COMMON_CLK_MT8186) += clk-mt8186-mcu.o clk-mt8186-topckgen.o clk-mt
+ obj-$(CONFIG_COMMON_CLK_MT8188) += clk-mt8188-apmixedsys.o clk-mt8188-topckgen.o \
+ 				   clk-mt8188-peri_ao.o clk-mt8188-infra_ao.o \
+ 				   clk-mt8188-cam.o clk-mt8188-ccu.o clk-mt8188-img.o \
+-				   clk-mt8188-ipe.o
++				   clk-mt8188-ipe.o clk-mt8188-mfg.o
+ obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
+diff --git a/drivers/clk/mediatek/clk-mt8188-mfg.c b/drivers/clk/mediatek/clk-mt8188-mfg.c
+new file mode 100644
+index 000000000000..5dd9c3b0b86d
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8188-mfg.c
+@@ -0,0 +1,50 @@
++// SPDX-License-Identifier: GPL-2.0-only
++//
++// Copyright (c) 2022 MediaTek Inc.
++// Author: Garmin Chang <garmin.chang@mediatek.com>
++
++#include <linux/clk-provider.h>
++#include <linux/platform_device.h>
++#include <dt-bindings/clock/mt8188-clk.h>
++
++#include "clk-gate.h"
++#include "clk-mtk.h"
++
++static const struct mtk_gate_regs mfgcfg_cg_regs = {
++	.set_ofs = 0x4,
++	.clr_ofs = 0x8,
++	.sta_ofs = 0x0,
++};
++
++#define GATE_MFGCFG(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &mfgcfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++
++static const struct mtk_gate mfgcfg_clks[] = {
++	GATE_MFGCFG(CLK_MFGCFG_BG3D, "mfgcfg_bg3d", "top_mfg_core_tmp", 0),
++};
++
++static const struct mtk_clk_desc mfgcfg_desc = {
++	.clks = mfgcfg_clks,
++	.num_clks = ARRAY_SIZE(mfgcfg_clks),
++};
++
++static const struct of_device_id of_match_clk_mt8188_mfgcfg[] = {
++	{
++		.compatible = "mediatek,mt8188-mfgcfg",
++		.data = &mfgcfg_desc,
++	}, {
++		/* sentinel */
++	}
++};
++
++static struct platform_driver clk_mt8188_mfgcfg_drv = {
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
++	.driver = {
++		.name = "clk-mt8188-mfgcfg",
++		.of_match_table = of_match_clk_mt8188_mfgcfg,
++	},
++};
++
++builtin_platform_driver(clk_mt8188_mfgcfg_drv);
++MODULE_LICENSE("GPL");
+-- 
+2.18.0
+
 
