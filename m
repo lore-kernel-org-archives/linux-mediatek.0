@@ -4,78 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C34DC00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 05:33:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1D33C00144
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 06:17:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KElw61eLlKwxj7+Xj4c/fe2WkAnEdD75KF1vS/H3hCw=; b=0dDZWMzoovHn1Dkbz8f/yWqlfX
-	QWw9WGcpV//hybeimR9ByGS0ngky37Ty3YxddAhp1dm9kDyodnveRg2XmEyoWFpguS+x1wSxTWCPy
-	Dr7FeRzGQbRBJPhntLi58Z6VYvVPHPQnbKAcj3xxyimJFp3ESDeQf62m4SjPWAbUU6tER2UCgZHN1
-	BY3F8hgfdU0fZQT9q4d/AYVODTlmODWiOs6i5TSHHlKODzDD/slpxOgvgysiKkBUntctu5ZdL97ma
-	npFIx4y4Z8J94PdLPi5g4ieGUll7fpvrMx+PtD6u6GIgXH/JDHjcYYvvE/q5K7wdaqlx2vtac7BfI
-	qazYrlEg==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EW499GBzYHaTH/WArZ0WtZvIkRlpsncxTw1RlPqz+v8=; b=PymBePKWfGWSRh/J26PE8e7jPE
+	sXEZdQE8wxlpyDS1NTjzUCJ8hY822dfFsQ5m89SYQf/NhDNtMzF21VE/JJgh1LLTKqzKTFy5pTajL
+	ypOVrzi1FTBbn12P/YiQZvpJcGQmA21XvQv3eko1NvFjtC8PDVJLF8GNJ+SKq3SSR0l6X7bFRmBeb
+	R0ZMAnpgVM89VNg7DZ1qI7ktPOHGCaogTzzgi/97QOee0noHcHTpXt3j7HhdgYN3RLLwu9Z6u4N4Y
+	MsJVtGTpip6aqEVkpQ/7tUcbGYAwZslZ67sLix8GzZCqcW/JdkplMWx6RnMSwEFfsMEFjESN/Wiji
+	4c7AK2hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHIcT-001a4G-TA; Fri, 29 Jul 2022 05:33:05 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1oHJJZ-001pcV-Kv; Fri, 29 Jul 2022 06:17:37 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHIcR-001a3E-CF
-	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 05:33:04 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id y141so3721156pfb.7
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Jul 2022 22:33:01 -0700 (PDT)
+	id 1oHJJP-001pQu-7m; Fri, 29 Jul 2022 06:17:28 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id y1so3784248pja.4;
+        Thu, 28 Jul 2022 23:17:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=KElw61eLlKwxj7+Xj4c/fe2WkAnEdD75KF1vS/H3hCw=;
-        b=V+dUhOUkEkwox3z7VTXI8K0jleX0N2fBr7eNQe0krpSetMQsJCmnCW/k5i7xFzo8oS
-         zoRM1HsdBLAarjNWuxbe/Jn+jmiXSJvdA2kAL/dR0E8tcNlhKbNQ/fUe74i0u2KxNE4D
-         WmR8QnCF493w/FK8xBFY2wNtqeN5fl9wB9dxk=
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=EW499GBzYHaTH/WArZ0WtZvIkRlpsncxTw1RlPqz+v8=;
+        b=bBJrwZNNbNwZOSdpiHnZjxTBlhq5e5F5z/aB01/7Rhm7XVlQWB/jv1YB3Yg3stPpPN
+         SmPojYXgxob/8myvBqE/AYKB3hUIDzGgtgzp4td+2Rutu5SZSMSBz+TEPl7HNs7Bb9MW
+         W7TCxTINNO2IXJYHAUFDEo60ceS/hW+jhm95xlptfVEjnS/+i/uxEzpBJqVXlteEWYKP
+         MLSVJZ2NRzFuZR5K2IulKBp8EOOR/C3KOurSc/13nA+jBRKeS6G6Ni3gVaAmjbINYeTP
+         Y/exdADOpBiQOL0wbDkY7ixd3HtrsRWGX3QW7Rcr/xwq05d0Ejbdfk37De6Lis+ytz3+
+         Mzvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=KElw61eLlKwxj7+Xj4c/fe2WkAnEdD75KF1vS/H3hCw=;
-        b=IwSh0nJpaIqQoJa8Gw4fuXM4IX3xqPubigABENt+w1cndht4sRY22S1HXywJwIiEOz
-         wGWaCkN3IQtlXutkDWeW0MDfSj4vXXBfSAOb98vNe9I8t//SMxYGlfG9fbB/XBz7agsI
-         T83q4oyjE34F9TA8JPt70CVmqr0MKRSQrtlVqgfnk06Fp6N02tJ5G4B5c+KEWvsnqzK3
-         71k5YLKaNi7i0YAUg+zlk3fvng5fic+InYcZycgETRZ+3W5E9o0xCwSL/2FoSoW5SMxF
-         MXvPeVfDvks2CKrUrv2psHZbem8LzGrFKC+H/ujChzqP84oGg0sYxj21T5tLW8KeQC3m
-         XMPQ==
-X-Gm-Message-State: AJIora+VvarTF2GweKPEQCeShR0IJGr5CSFK7EBuWcieJuDMCikwxvuB
-	9sJ4c3qbny2tx0t51rXgdRhTxA==
-X-Google-Smtp-Source: AGRyM1thc/3FPJPxHBIe27C3oCbWb/CZ7bNvT/uFSgYftyyhmkTsNKx/WtR4DEu6RRDtx0dKyPB6TQ==
-X-Received: by 2002:a63:2102:0:b0:41a:8139:2cb3 with SMTP id h2-20020a632102000000b0041a81392cb3mr1701228pgh.314.1659072780573;
-        Thu, 28 Jul 2022 22:33:00 -0700 (PDT)
-Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:df93:db78:d658:2b3b])
-        by smtp.gmail.com with ESMTPSA id h27-20020a63211b000000b0040d48cf046csm1820690pgh.55.2022.07.28.22.32.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Jul 2022 22:32:59 -0700 (PDT)
-From: Pin-yen Lin <treapking@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Evan Benn <evanbenn@chromium.org>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	Eizan Miyamoto <eizan@chromium.org>,
-	Pin-yen Lin <treapking@chromium.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	devicetree@vger.kernel.org
-Subject: [PATCH v5] arm64: dts: mt8173-elm: Switch to SMC watchdog
-Date: Fri, 29 Jul 2022 13:32:54 +0800
-Message-Id: <20220729053254.220585-1-treapking@chromium.org>
-X-Mailer: git-send-email 2.37.1.455.g008518b4e5-goog
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=EW499GBzYHaTH/WArZ0WtZvIkRlpsncxTw1RlPqz+v8=;
+        b=yMC7NFRw9dhIJ9SMaamTfokqsWaF6jpUW/Gy00XRUro3fJhtIjZP3+63wi0Cp1+Yd4
+         FWeXKI2KtIrZfEhbZ1LXpspxf5iaeHCP0YMYX4jssLUf/UjpLBSJ4J3BiEiZTTcdbfUE
+         Mj3/Vsb65eBVHSVHNIA6dIfuWdOYEpbX1som9rCIcWQ1NjewKIZ2HL138UUV8C7thepg
+         Ef1lBoq9ioqXQ/RZpRGSzyZBb10nV6k9dcp4d6NiMh+zh5d7pVcjzXAdbPZT3O7PKKN4
+         5H6XBmyb2qV/rO79vGd3VdOxu3EWq6Pwe0QEYtthkv5ifNr+NQVdSu0TRZQJ2b5dHsiW
+         VSnw==
+X-Gm-Message-State: ACgBeo1XAec5ttEg5w+25ItNldX0hfUps+ECNlGZgqnK2Rb741/WRqN+
+	18oRUi7c7VGQpZx64JcddsP4HOdFXnI6N7ArQpA=
+X-Google-Smtp-Source: AA6agR5CfpBYT1/n0Fz3b0mpL30Y1BQpcR5ZJ1q53vOkI+o8r7h1QJKT9bGnP/JXhqgwA8TQcF5sWeEJfeZ5+jaoGc0=
+X-Received: by 2002:a17:902:f646:b0:168:e2da:8931 with SMTP id
+ m6-20020a170902f64600b00168e2da8931mr2450692plg.84.1659075444381; Thu, 28 Jul
+ 2022 23:17:24 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-13-peterwu.pub@gmail.com>
+ <CAHp75Vf85_uzA9fRxTizbPJxODcXFpM4wuU6DxP2j9UA47B_2g@mail.gmail.com>
+In-Reply-To: <CAHp75Vf85_uzA9fRxTizbPJxODcXFpM4wuU6DxP2j9UA47B_2g@mail.gmail.com>
+From: szuni chen <szunichen@gmail.com>
+Date: Fri, 29 Jul 2022 14:17:13 +0800
+Message-ID: <CA+hk2fYcw0szJ7bBvfEjtyUE_Z61_A1vFWmPSdhe-gmd5jbC6g@mail.gmail.com>
+Subject: Re: [PATCH v6 12/13] leds: flash: mt6370: Add MediaTek MT6370
+ flashlight support
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: ChiaEn Wu <peterwu.pub@gmail.com>, Lee Jones <lee.jones@linaro.org>, 
+	Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, 
+	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
+	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_223303_449097_B031A818 
-X-CRM114-Status: GOOD (  10.92  )
+X-CRM114-CacheID: sfid-20220728_231727_296045_D137E0A2 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,53 +100,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Switch to SMC watchdog because we need direct control of HW watchdog
-registers from kernel. The corresponding firmware was uploaded in
-https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405.
+Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B47=E6=9C=
+=8825=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=884:51=E5=AF=AB=E9=81=93=
+=EF=BC=9A
+>
+> On Fri, Jul 22, 2022 at 12:25 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+> >
+> > From: Alice Chen <alice_chen@richtek.com>
+> >
+> > The MediaTek MT6370 is a highly-integrated smart power management IC,
+> > which includes a single cell Li-Ion/Li-Polymer switching battery
+> > charger, a USB Type-C & Power Delivery (PD) controller, dual Flash
+> > LED current sources, a RGB LED driver, a backlight WLED driver,
+> > a display bias driver and a general LDO for portable devices.
+> >
+> > The Flash LED in MT6370 has 2 channels and support torch/strobe mode.
+> > Add the support of MT6370 FLASH LED.
+> >
+> > Signed-off-by: Alice Chen <alice_chen@richtek.com>
+>
+> This SoB chain is wrong. Prioritize and read Submitting Patches!
+>
+Hi Andy,
 
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
----
+After reading the Submitted Patches,
+ChiaEn Wu wasn't involved in the development but he submitted the patch,
+So, ChiaEn Wu <chiaen_wu@richtek.com> should be the last SoB, right?
+I will revise SoB to
 
-Changes in v5:
-- Remove redundant new line.
+Signed-off-by: SzuNi Chen <alice_chen@richtek.com>
+Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
 
-Changes in v4:
-- Rename the watchdog node (smc_watchdog -> watchdog)
-- Correct the patch summary (mt8173-oak -> mt8173-elm)
+If there is anything else I need to fix, please let me know. Thank you.
 
-Changes in v3:
-- Remove /delete-node/ and create a new node for SMC watchdog.
 
-Changes in v2:
-- Move the modifications to mt8173-elm.dtsi and add some comments.
-
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index e21feb85d822..abe3140cfcc6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -161,6 +161,18 @@ hdmi_connector_in: endpoint {
- 			};
- 		};
- 	};
-+
-+	watchdog {
-+		compatible = "arm,smc-wdt";
-+	};
-+};
-+
-+/*
-+ * Disable the original MMIO watch dog and switch to the SMC watchdog, which
-+ * operates on the same MMIO.
-+ */
-+&watchdog {
-+	status = "disabled";
- };
- 
- &mfg_async {
--- 
-2.37.1.455.g008518b4e5-goog
-
+Best Regards,
+Szuni Chen
 
