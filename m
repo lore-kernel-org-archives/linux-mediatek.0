@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C69C6C00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 06:46:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0272BC00144
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 06:50:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6Y3ADu7WfdSV0bWalcZ4PeD0vJ/o78nlaxfgtag1ezA=; b=Bnz/7Izt6KRb1d14RhGzhRdEpE
-	jhR4+2qzeAJ9Y+t9SNxMg8uSQpVGhgDYjZRs9shUDzVDqJBMMWKJTbiQUToogY2CsiMUD3oTVBczF
-	1IwPu9RcbTwCgjo6xUNnfFA/fSbg332k/EfhvMi0gnJA4mq8q21SShkGxP2YXJ/W9tA/qAjUUxxTe
-	1iwXeGojRfsDxzU0ycJQJuN6B/qTZTDyx1jY2cXJN7x+Leb59KKwv1/6S8jmlK8/UWQpTsuVvTBg3
-	Ij04zF1G8zLvbKQGqfUazrfNPhjU+FjuhxV4x2oTIa1aWOB9SNljAMK7bEhCHxzE7Xi16SgJgF6XF
-	9DMS0nQw==;
+	bh=m7dD3bcTU4GVhSr95nKqTVSXQu20Uz9gsxDAR7f8o40=; b=YSY4sh1LQxEWIDWKxAidJEUiau
+	UyNU+9Wb6U1U3/mgjJfxMrNqASzEi8fJN2D68TGPdOQCgJVMO8wvF2OMTbmZ38mwvQgCiAboz68RI
+	kXwBpygkSLbp7qjVWDgm7f4/zUKLJsX6XcJQbUbMCmUnxX+YdhJ57ZYSwO0iy0qxh08eMs7qzDrMP
+	UkSKWBtRgrr8a0/5bRJTTB60ihxdX8HJ0IMvpGBnyWzsRfhqcXXvbXM0yOA9KWQlmWkQjzuF9tMew
+	UW2f6MA4dXpFDJfzFwAIYTwopCBh4+No/jajba6HS4JkhSfrlmrhTRKCy3MJOq/N8ello+H7lm0GC
+	HAWGRUUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHJlY-002B01-Kz; Fri, 29 Jul 2022 06:46:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oHJpI-002BWT-Pc; Fri, 29 Jul 2022 06:50:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHJlV-002AzC-FF; Fri, 29 Jul 2022 06:46:30 +0000
-X-UUID: 9ce12a81ceff4d68b1942ca0e55d1d89-20220728
+	id 1oHJpF-002BVg-TJ; Fri, 29 Jul 2022 06:50:23 +0000
+X-UUID: 2e9ba1326b604f079fdbe30f131f87ba-20220728
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:23368372-2800-410c-b0d9-3e99b9fa7405,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:6e69aad0-841b-4e95-ad42-8f86e18f54fc,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.8,REQID:cc19dde5-2bc3-4e78-972b-6bf22ba458dd,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:bca4aad0-841b-4e95-ad42-8f86e18f54fc,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 9ce12a81ceff4d68b1942ca0e55d1d89-20220728
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
+X-UUID: 2e9ba1326b604f079fdbe30f131f87ba-20220728
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 40952720; Thu, 28 Jul 2022 23:45:17 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+	with ESMTP id 1285959377; Thu, 28 Jul 2022 23:50:16 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 29 Jul 2022 14:32:15 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 29 Jul 2022 14:32:15 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will
- Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Tinghan Shen <tinghan.shen@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, MandyJH
- Liu <mandyjh.liu@mediatek.com>
-CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jason-JH.Lin
-	<jason-jh.lin@mediatek.com>
-Subject: [PATCH v4 20/20] arm64: dts: mt8195: Add display node for vdosys0
-Date: Fri, 29 Jul 2022 14:32:08 +0800
-Message-ID: <20220729063208.16799-21-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220729063208.16799-1-tinghan.shen@mediatek.com>
-References: <20220729063208.16799-1-tinghan.shen@mediatek.com>
+ 15.2.792.15; Fri, 29 Jul 2022 14:26:42 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 29 Jul 2022 14:26:41 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
+	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
+	<wenst@chromium.org>, kyrie wu <kyrie.wu@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
+	<irui.wang@mediatek.com>
+Subject: [V12,7/7] mtk-jpegenc: add stop cmd interface for jpgenc
+Date: Fri, 29 Jul 2022 14:26:30 +0800
+Message-ID: <20220729062630.5592-8-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220729062630.5592-1-irui.wang@mediatek.com>
+References: <20220729062630.5592-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_234629_524580_EA700173 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20220728_235021_957045_822CE611 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,128 +83,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-Add display node for vdosys0 of mt8195.
+Add stop cmd interface for jpgenc to stop stream
 
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: irui wang <irui.wang@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 93 ++++++++++++++++++++++++
- 1 file changed, 93 insertions(+)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 84a93b4a4843d..6b4c88b65b7e3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -1960,6 +1960,7 @@
- 		vdosys0: syscon@1c01a000 {
- 			compatible = "mediatek,mt8195-mmsys", "syscon";
- 			reg = <0 0x1c01a000 0 0x1000>;
-+			mboxes = <&gce0 0 CMDQ_THR_PRIO_4>;
- 			#clock-cells = <1>;
- 		};
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 65beb9ed4884..a26b429b94a6 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -613,6 +613,9 @@ static const struct v4l2_ioctl_ops mtk_jpeg_enc_ioctl_ops = {
+ 	.vidioc_streamoff               = v4l2_m2m_ioctl_streamoff,
  
-@@ -1975,6 +1976,98 @@
- 			power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
- 		};
+ 	.vidioc_unsubscribe_event	= v4l2_event_unsubscribe,
++
++	.vidioc_encoder_cmd		= v4l2_m2m_ioctl_encoder_cmd,
++	.vidioc_try_encoder_cmd		= v4l2_m2m_ioctl_try_encoder_cmd,
+ };
  
-+		ovl0: ovl@1c000000 {
-+			compatible = "mediatek,mt8195-disp-ovl", "mediatek,mt8183-disp-ovl";
-+			reg = <0 0x1c000000 0 0x1000>;
-+			interrupts = <GIC_SPI 636 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_OVL0>;
-+			iommus = <&iommu_vdo M4U_PORT_L0_DISP_OVL0_RDMA0>;
-+			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x0000 0x1000>;
-+		};
+ static const struct v4l2_ioctl_ops mtk_jpeg_dec_ioctl_ops = {
+@@ -1391,6 +1394,7 @@ static int mtk_jpeg_open(struct file *file)
+ 	} else {
+ 		v4l2_ctrl_handler_init(&ctx->ctrl_hdl, 0);
+ 	}
 +
-+		rdma0: rdma@1c002000 {
-+			compatible = "mediatek,mt8195-disp-rdma";
-+			reg = <0 0x1c002000 0 0x1000>;
-+			interrupts = <GIC_SPI 638 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_RDMA0>;
-+			iommus = <&iommu_vdo M4U_PORT_L0_DISP_RDMA0>;
-+			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x2000 0x1000>;
-+		};
-+
-+		color0: color@1c003000 {
-+			compatible = "mediatek,mt8195-disp-color", "mediatek,mt8173-disp-color";
-+			reg = <0 0x1c003000 0 0x1000>;
-+			interrupts = <GIC_SPI 639 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_COLOR0>;
-+			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x3000 0x1000>;
-+		};
-+
-+		ccorr0: ccorr@1c004000 {
-+			compatible = "mediatek,mt8195-disp-ccorr", "mediatek,mt8192-disp-ccorr";
-+			reg = <0 0x1c004000 0 0x1000>;
-+			interrupts = <GIC_SPI 640 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_CCORR0>;
-+			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x4000 0x1000>;
-+		};
-+
-+		aal0: aal@1c005000 {
-+			compatible = "mediatek,mt8195-disp-aal", "mediatek,mt8183-disp-aal";
-+			reg = <0 0x1c005000 0 0x1000>;
-+			interrupts = <GIC_SPI 641 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_AAL0>;
-+			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x5000 0x1000>;
-+		};
-+
-+		gamma0: gamma@1c006000 {
-+			compatible = "mediatek,mt8195-disp-gamma", "mediatek,mt8183-disp-gamma";
-+			reg = <0 0x1c006000 0 0x1000>;
-+			interrupts = <GIC_SPI 642 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_GAMMA0>;
-+			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x6000 0x1000>;
-+		};
-+
-+		dither0: dither@1c007000 {
-+			compatible = "mediatek,mt8195-disp-dither", "mediatek,mt8183-disp-dither";
-+			reg = <0 0x1c007000 0 0x1000>;
-+			interrupts = <GIC_SPI 643 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_DITHER0>;
-+			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x7000 0x1000>;
-+		};
-+
-+		dsc0: dsc@1c009000 {
-+			compatible = "mediatek,mt8195-disp-dsc";
-+			reg = <0 0x1c009000 0 0x1000>;
-+			interrupts = <GIC_SPI 645 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DSC_WRAP0>;
-+			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x9000 0x1000>;
-+		};
-+
-+		merge0: merge@1c014000 {
-+			compatible = "mediatek,mt8195-disp-merge";
-+			reg = <0 0x1c014000 0 0x1000>;
-+			interrupts = <GIC_SPI 656 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_VPP_MERGE0>;
-+			mediatek,gce-client-reg = <&gce0 SUBSYS_1c01XXXX 0x4000 0x1000>;
-+		};
-+
-+		mutex: mutex@1c016000 {
-+			compatible = "mediatek,mt8195-disp-mutex";
-+			reg = <0 0x1c016000 0 0x1000>;
-+			interrupts = <GIC_SPI 658 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_MUTEX0>;
-+			mediatek,gce-events = <CMDQ_EVENT_VDO0_DISP_STREAM_DONE_0>;
-+		};
-+
- 		larb0: larb@1c018000 {
- 			compatible = "mediatek,mt8195-smi-larb";
- 			reg = <0 0x1c018000 0 0x1000>;
+ 	mtk_jpeg_set_default_params(ctx);
+ 	mutex_unlock(&jpeg->lock);
+ 	return 0;
 -- 
 2.18.0
 
