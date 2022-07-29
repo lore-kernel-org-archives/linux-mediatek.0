@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C00DEC19F2B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 08:26:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CF54C19F2B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 08:28:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=APehGwsZ857nIS4y8fzTUxoQJBhup/YUyB8KH4lQEYo=; b=f4KG+R3Ed+zAiXHYTHfHURCEMq
-	H2EWERQVJoRT03NGckDsOXVMJGQYbtgZYvgMGqbNITVE00tFkq1fQMBbxg6g2VOTuKYRtmI7cP59p
-	J3QZshhWk8uXOPLUS8szYdaTxdQry3zR4JDEkI40k/oOmRqdAqcHXozI2VPh4xbTUeDy8R9coBRmZ
-	dmARjyKVXYP3AhdEl8dBLC5xioS/GSAnk2FUn8IZghM3ErPRyhca7PCfMgDCclPdzlnMgNHuE5BpM
-	pWKUgdtbEbEnk8w3UhYbaA/AYMhlm8kcHwAGJl/D6KgpnzfXRM8zwDzAU/rqxC4GrNh9BMLkTuagN
-	gZ5GPSnA==;
+	bh=dQcU9kfr50WWidJ649a1f9GE9HVSf0lR9Ynw8xfAFGI=; b=UIvNCgwA1txVa9JY4eqFRXNo7C
+	EyzGCm0Xh2UnyorH4LCPwcgSZzRyD37DMSgoG1uoRsLcH7KAWPDmxfWT+Ho5letDyZoV1LEV3XUn5
+	/wmv+tSnCs3h1rckz0RM8UmwcbA/SDNhN/zI+ewZTKNopTReTuffWXl4J20o540QvkjJh0ZDpEIaD
+	M+tIuC112C6kTRDAxDpC80jSEYHkoCVDFeXhdcXe5etP8nOQLm11b6hLuQJVQv1t/waJ88pFtjFEp
+	xbmtnkqpnTvQkmLkeaxNodQkFvsv9BGmgiDxaZmG+iVXDuWrN847kqgY7Eqlu/d7ZcBJtag974jw5
+	BpeEAVUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHLKR-003Dz1-C9; Fri, 29 Jul 2022 08:26:39 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oHLLj-003Epk-Cp; Fri, 29 Jul 2022 08:27:59 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHL1F-002wD1-FV; Fri, 29 Jul 2022 08:06:50 +0000
+	id 1oHL1M-002wGd-CP; Fri, 29 Jul 2022 08:06:59 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 183C166015BD;
-	Fri, 29 Jul 2022 09:06:47 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id EC4736601B61;
+	Fri, 29 Jul 2022 09:06:50 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1659082008;
-	bh=30poyXZDYHoOi7yo8Mx/13fpvXrbxzbgyPizx79sv7E=;
+	s=mail; t=1659082011;
+	bh=qBf1nL9/1kNOEGbo8f3vyRCuICpyYcslgWT71nIlvPI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BArT00uCFpADlywHesn6+GFQVFZfyRmo+/xYXjJjqNsp07rspLkFAwQXNxQC39o8Q
-	 m5bDCELgsZrlBQsuXFpovQz4i/YR4jAJX/uj6nmr1ri5/X8GiHQe6Qi9i57v/g7c3F
-	 F1kosTbo5sEzshJe6MeV2wbxA1ez0XNQvHmeDcLcHZZ4r97dRMljMfXGEkBX3nbKVi
-	 RwRfF6N66RCaPqoPb96VNcQ1odqqIyJCk6/KilsgLn9mPX6McAcd2JDUoYUAFQjiOu
-	 j4v3ioD7yvS+YqtZ7a1REy1rQmv9pNmFgPNTZAPXMcQQQUr/tIMpghO2dOUyzDltuL
-	 dBJrRdaPqZTPA==
-Message-ID: <41c74c43-296d-1c27-450d-c108674451b4@collabora.com>
-Date: Fri, 29 Jul 2022 10:06:44 +0200
+	b=ZaV9TLcaaThuuAB0SMNov2JMhl7zyXPc6hrRQ+lofqvf14UZ1CHM2yfpFvyC2gKRU
+	 qTLmpu9dmVLUL46qkclTIDFDPuK0JeqBhy6hspj2liUwRAZeku9K2oIrBRdiI7MuF2
+	 iQwuXVNwydv78Slel53tOVxLfK4XDHJWHUTzevdVrL1auWBMUuCTE6zs03dQiu3mx5
+	 QtLdyjQoeSjw9eK/aaKUwz/h8npU9GuNHhROuJ9HvUhPt7RjTe5Oq3cC5ZTCBuWjI2
+	 nDBGKwGOdBuociNjYRlzxSpuMYIBewlMiy9dGPQQW21NhDVdNW6OeSCAAnlElOby+f
+	 ihoJ8ayGtScSw==
+Message-ID: <d838b1aa-3921-18dd-6522-09fe73179fa6@collabora.com>
+Date: Fri, 29 Jul 2022 10:06:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH v4 04/20] dt-bindings: power: mediatek: Support naming
- power controller node with unit address
+Subject: Re: [PATCH v4 01/20] dt-bindings: iommu: mediatek: Increase max
+ interrupt number
 Content-Language: en-US
 To: Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
  Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
@@ -60,14 +60,14 @@ Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20220729063208.16799-1-tinghan.shen@mediatek.com>
- <20220729063208.16799-5-tinghan.shen@mediatek.com>
+ <20220729063208.16799-2-tinghan.shen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220729063208.16799-5-tinghan.shen@mediatek.com>
+In-Reply-To: <20220729063208.16799-2-tinghan.shen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220729_010649_701153_51E647D8 
-X-CRM114-Status: UNSURE (   7.37  )
+X-CRM114-CacheID: sfid-20220729_010656_654834_F08F819E 
+X-CRM114-Status: UNSURE (   7.38  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,11 +84,10 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 29/07/22 08:31, Tinghan Shen ha scritto:
-> Support naming power controller node with unit address, also compatible
-> with node names without unit address.
+> mt8195 infra iommu uses 5 interrupts.
 > 
 > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
