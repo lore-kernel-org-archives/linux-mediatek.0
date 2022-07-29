@@ -4,92 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C76C7C00140
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 02:05:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47F54C00140
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 02:36:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PQPxhecMMGrqgnvl1RYt1P0R5Uvv2aKASwgCAn7Phe8=; b=ke6DEQyDPSL5euRQkhSTVRuxJC
-	mtZK2EEuO1hZzOdcxHViKhhLn2Ubu5CxH5a8tVztfOZvR0yGu+UvoG+hBmZqQkiyZQQEAWEe0qSkk
-	LddGnqgzRUS+5dDvMF43O8c2JoRpjd166uZPJeEDs7rH9lnWk+dqB9BFBwX9wAVWhEZ3ddAGWPU40
-	YdRT4Tc+POih6woOmTH/MlwbOcXqCfPHyh612eVdvoqxLOpquKVleOjXCDSvuGV2+0OiThRfq9/AH
-	5az+j2vQibMdf3LbNtAr+4L5mTzamBCs3EzJgYqCZc+qhUxDK8i9cSAt+mW/EQppxdaBuCuwPJYjg
-	zMyaoK2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PtXl3bAaLm+hh7qezRfzCzYhn4d1rpZoQYTgFS355TU=; b=DktCT1IRW/mhz+UgWi/w9dN6WB
+	C13X/csKNLTurx+dEAqxfz5c3HUnKPb18GMqwl2zS7G3DpLpeXPfOxxJW40zkIjGtqyCPm1NfdR3a
+	HgUMZZGLo4zF0x4t7BvlDgLV3fH0tMn4sWgvtXj184sQ35ytlYWFVp3KmDKuzNxYgngrOn0MLmJH1
+	hR7Pu+Lbb/u+85/TCUqbFu2u1M6yEUNamdCu/7omyKmqVbKZK3KucSiN5OEcG51WcwtukI7Mhqjs2
+	TYLQfhw+cbGaugj1zs1qF3PVu56e/gSWd9fUxtjtM8au89oMLns5B5i9FSfwkkdczbHDlWRvV2j8S
+	sZaxXLWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHFNo-00H0Kd-PS; Fri, 29 Jul 2022 02:05:44 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1oHFr9-0001Vd-Ja; Fri, 29 Jul 2022 02:36:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHFNb-00H00v-Gf
-	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 02:05:32 +0000
-Received: by mail-pl1-x634.google.com with SMTP id t2so3359076ply.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Jul 2022 19:05:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=PQPxhecMMGrqgnvl1RYt1P0R5Uvv2aKASwgCAn7Phe8=;
-        b=j5nWXS2yN3xRH2vvBgQIilwdiWeecYwiAszsfvGo+ZmflzeozdenVJVOoJC3cMeVft
-         u8Tz3VEhWSLetIg9GQz+LzvknUDQRMDxjFVGfJY/e2dpb2EqATSyuAiRKBaABEYbHjj+
-         6LtNUvOF+Q1uVxleFDiUoCe80JQv6a9RO5U9w=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=PQPxhecMMGrqgnvl1RYt1P0R5Uvv2aKASwgCAn7Phe8=;
-        b=1addt8nzJcTjRL+B08n3zDFONveamnbQeujL7vAP21ZYgz5oPoGvDRCyT5k6ZmxJ1R
-         bvN+S29++s55z9GqTqtH9qzJ8/bJX7lSTy9aPWsaAQfgK3t+eG8n3JYvR5aSWa8dzil0
-         67vckUnztTjmNVuNDBAdUe9EKR0CVTSbCWXb9aQeh7rM56LwgFVODH7jAdu3JjZsTeM+
-         HslJWkOPUW9H9XjaeFRqlhWIgcIxViRzkDGFoRbVWCptAz5EJtIgKcUUMFYvu6KL+3eq
-         R64VVBl4zEBD4isOBlb5IeeI2ltHOyGrcbJaFb4BqPufFo4R27IxnCfdLFHc8wS0MWVv
-         Q+mA==
-X-Gm-Message-State: ACgBeo0XCwTPCN2KImmHcY9wKnmvc+iiOdL2AQ6vur4fGJ0OtubPz4RC
-	v6W0Sj9oYlXRsQTSQ/m3d+fsgA==
-X-Google-Smtp-Source: AA6agR7BCdlcbu27dD6NFwhWH1isDT1btrN6hUxN8jMKdBhGXsxNwG/13hDnNDx3sjS3iFqZ3ECLwA==
-X-Received: by 2002:a17:902:cec1:b0:16d:c4f2:66c5 with SMTP id d1-20020a170902cec100b0016dc4f266c5mr1664693plg.20.1659060329435;
-        Thu, 28 Jul 2022 19:05:29 -0700 (PDT)
-Received: from dlunevwfh.roam.corp.google.com (n122-107-196-14.sbr2.nsw.optusnet.com.au. [122.107.196.14])
-        by smtp.gmail.com with ESMTPSA id y124-20020a62ce82000000b005258df7615bsm1571901pfg.0.2022.07.28.19.05.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Jul 2022 19:05:29 -0700 (PDT)
-From: Daniil Lunev <dlunev@chromium.org>
-To: Adrian Hunter <adrian.hunter@intel.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Daniil Lunev <dlunev@chromium.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Andy Gross <agross@kernel.org>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bean Huo <beanhuo@micron.com>,
-	Bjorn Andersson <bjorn.andersson@linaro.org>,
-	Daejun Park <daejun7.park@samsung.com>,
-	Eric Biggers <ebiggers@google.com>,
-	"James E.J. Bottomley" <jejb@linux.ibm.com>,
-	Konrad Dybcio <konrad.dybcio@somainline.org>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Mike Snitzer <snitzer@redhat.com>,
-	Stanley Chu <stanley.chu@mediatek.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-scsi@vger.kernel.org
-Subject: [PATCH v3 1/2] ufs: add function to check CRYPTO capability
-Date: Fri, 29 Jul 2022 12:05:07 +1000
-Message-Id: <20220729120216.v3.1.I6b7934b96fff0d5ea22531e57c0a11f0ccd1acd8@changeid>
-X-Mailer: git-send-email 2.31.0
-In-Reply-To: <20220729020508.4147751-1-dlunev@chromium.org>
-References: <20220729020508.4147751-1-dlunev@chromium.org>
+	id 1oHFr5-0001UV-Dw
+	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 02:36:02 +0000
+X-UUID: 53190567f0c44f0fb519c14f6c908dbc-20220728
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:42613c26-8eba-44cb-a5d0-13ef94006700,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:2bbeb2cf-a6cf-4fb6-be1b-c60094821ca2,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 53190567f0c44f0fb519c14f6c908dbc-20220728
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 749149204; Thu, 28 Jul 2022 19:35:51 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 29 Jul 2022 10:15:16 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 29 Jul 2022 10:15:16 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Johannes Berg <johannes.berg@intel.com>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] wifi: mac80211: read ethtool's sta_stats from sinfo
+Date: Fri, 29 Jul 2022 10:15:15 +0800
+Message-ID: <ccfce8848c7bf7199ab90ccf3b4b14e1c7633385.1659060644.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_190531_564466_BBBB79F3 
-X-CRM114-Status: GOOD (  16.59  )
+X-CRM114-CacheID: sfid-20220728_193559_493186_BF6E8D3D 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,121 +74,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To align with other capability check functions.
+Driver may update sinfo directly through .sta_statistics, so this
+patch makes sure that ethool gets the correct statistics.
 
-Signed-off-by: Daniil Lunev <dlunev@chromium.org>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ net/mac80211/ethtool.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
- drivers/ufs/core/ufshcd-crypto.c | 8 ++++----
- drivers/ufs/host/ufs-mediatek.c  | 2 +-
- drivers/ufs/host/ufs-qcom-ice.c  | 4 ++--
- drivers/ufs/host/ufshcd-pci.c    | 2 +-
- include/ufs/ufshcd.h             | 5 +++++
- 5 files changed, 13 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/ufs/core/ufshcd-crypto.c b/drivers/ufs/core/ufshcd-crypto.c
-index 198360fe5e8e1..f819488bbde14 100644
---- a/drivers/ufs/core/ufshcd-crypto.c
-+++ b/drivers/ufs/core/ufshcd-crypto.c
-@@ -118,7 +118,7 @@ static int ufshcd_crypto_keyslot_evict(struct blk_crypto_profile *profile,
+diff --git a/net/mac80211/ethtool.c b/net/mac80211/ethtool.c
+index 31cd3c1ac07f..26d7a967f10a 100644
+--- a/net/mac80211/ethtool.c
++++ b/net/mac80211/ethtool.c
+@@ -83,17 +83,17 @@ static void ieee80211_get_stats(struct net_device *dev,
  
- bool ufshcd_crypto_enable(struct ufs_hba *hba)
- {
--	if (!(hba->caps & UFSHCD_CAP_CRYPTO))
-+	if (!ufshcd_is_crypto_supported(hba))
- 		return false;
+ #define ADD_STA_STATS(sta)					\
+ 	do {							\
+-		data[i++] += sta->rx_stats.packets;		\
+-		data[i++] += sta->rx_stats.bytes;		\
++		data[i++] += sinfo.rx_packets;			\
++		data[i++] += sinfo.rx_bytes;			\
+ 		data[i++] += sta->rx_stats.num_duplicates;	\
+ 		data[i++] += sta->rx_stats.fragments;		\
+-		data[i++] += sta->rx_stats.dropped;		\
++		data[i++] += sinfo.rx_dropped_misc;		\
+ 								\
+ 		data[i++] += sinfo.tx_packets;			\
+ 		data[i++] += sinfo.tx_bytes;			\
+ 		data[i++] += sta->status_stats.filtered;	\
+-		data[i++] += sta->status_stats.retry_failed;	\
+-		data[i++] += sta->status_stats.retry_count;	\
++		data[i++] += sinfo.tx_failed;			\
++		data[i++] += sinfo.tx_retries;			\
+ 	} while (0)
  
- 	/* Reset might clear all keys, so reprogram all the keys. */
-@@ -165,7 +165,7 @@ int ufshcd_hba_init_crypto_capabilities(struct ufs_hba *hba)
- 	 * hasn't advertised that crypto is supported.
- 	 */
- 	if (!(hba->capabilities & MASK_CRYPTO_SUPPORT) ||
--	    !(hba->caps & UFSHCD_CAP_CRYPTO))
-+	    !ufshcd_is_crypto_supported(hba))
- 		goto out;
- 
- 	hba->crypto_capabilities.reg_val =
-@@ -225,7 +225,7 @@ void ufshcd_init_crypto(struct ufs_hba *hba)
- {
- 	int slot;
- 
--	if (!(hba->caps & UFSHCD_CAP_CRYPTO))
-+	if (!ufshcd_is_crypto_supported(hba))
- 		return;
- 
- 	/* Clear all keyslots - the number of keyslots is (CFGC + 1) */
-@@ -235,6 +235,6 @@ void ufshcd_init_crypto(struct ufs_hba *hba)
- 
- void ufshcd_crypto_register(struct ufs_hba *hba, struct request_queue *q)
- {
--	if (hba->caps & UFSHCD_CAP_CRYPTO)
-+	if (ufshcd_is_crypto_supported(hba))
- 		blk_crypto_register(&hba->crypto_profile, q);
- }
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index beabc3ccd30b3..4bdf6a709126d 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -182,7 +182,7 @@ static int ufs_mtk_hce_enable_notify(struct ufs_hba *hba,
- 			ufs_mtk_host_reset(hba);
- 		}
- 
--		if (hba->caps & UFSHCD_CAP_CRYPTO)
-+		if (ufshcd_is_crypto_supported(hba))
- 			ufs_mtk_crypto_enable(hba);
- 
- 		if (host->caps & UFS_MTK_CAP_DISABLE_AH8) {
-diff --git a/drivers/ufs/host/ufs-qcom-ice.c b/drivers/ufs/host/ufs-qcom-ice.c
-index 745e48ec598f8..180a015b6973d 100644
---- a/drivers/ufs/host/ufs-qcom-ice.c
-+++ b/drivers/ufs/host/ufs-qcom-ice.c
-@@ -161,7 +161,7 @@ static void qcom_ice_optimization_enable(struct ufs_qcom_host *host)
- 
- int ufs_qcom_ice_enable(struct ufs_qcom_host *host)
- {
--	if (!(host->hba->caps & UFSHCD_CAP_CRYPTO))
-+	if (!ufshcd_is_crypto_supported(host->hba))
- 		return 0;
- 	qcom_ice_low_power_mode_enable(host);
- 	qcom_ice_optimization_enable(host);
-@@ -189,7 +189,7 @@ int ufs_qcom_ice_resume(struct ufs_qcom_host *host)
- {
- 	int err;
- 
--	if (!(host->hba->caps & UFSHCD_CAP_CRYPTO))
-+	if (!ufshcd_is_crypto_supported(host->hba))
- 		return 0;
- 
- 	err = qcom_ice_wait_bist_status(host);
-diff --git a/drivers/ufs/host/ufshcd-pci.c b/drivers/ufs/host/ufshcd-pci.c
-index 04166bda41daa..c06ccef348065 100644
---- a/drivers/ufs/host/ufshcd-pci.c
-+++ b/drivers/ufs/host/ufshcd-pci.c
-@@ -89,7 +89,7 @@ static int ufs_intel_hce_enable_notify(struct ufs_hba *hba,
- 				       enum ufs_notify_change_status status)
- {
- 	/* Cannot enable ICE until after HC enable */
--	if (status == POST_CHANGE && hba->caps & UFSHCD_CAP_CRYPTO) {
-+	if (status == POST_CHANGE && ufshcd_is_crypto_supported(hba)) {
- 		u32 hce = ufshcd_readl(hba, REG_CONTROLLER_ENABLE);
- 
- 		hce |= CRYPTO_GENERAL_ENABLE;
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index a92271421718e..ddbf470f8f455 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -1005,6 +1005,11 @@ static inline bool ufshcd_is_wb_allowed(struct ufs_hba *hba)
- 	return hba->caps & UFSHCD_CAP_WB_EN;
- }
- 
-+static inline bool ufshcd_is_crypto_supported(struct ufs_hba *hba)
-+{
-+	return hba->caps & UFSHCD_CAP_CRYPTO;
-+}
-+
- #define ufshcd_writel(hba, val, reg)	\
- 	writel((val), (hba)->mmio_base + (reg))
- #define ufshcd_readl(hba, reg)	\
+ 	/* For Managed stations, find the single station based on BSSID
 -- 
-2.31.0
+2.36.1
 
 
