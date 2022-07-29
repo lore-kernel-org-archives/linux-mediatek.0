@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C83D2C00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 09:15:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C602BC00144
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 09:15:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HOipk3YA3BYACSPX/yaAm4vGxwgCn9L6DUEl+4PKljw=; b=hLfb3LNE3pKLQlfSaZVMK0wPj+
-	54AxeGcExi69G+/Ys525CR1K/4ftLEaY3NtPTgbREZ+C4hicyK2DbWV13vDZa1YhN84hajiDyxsxK
-	stp1zcMSR3EVla7Yz7uUhkSFAOvQ1xDjyDkamCdU1djKgz7rameKrxSiNwrS54EKyQdhO58j6Nb21
-	SJfDB4vCGZaTu7eoWqmVAjc9ZlMMsRbtHhdBxy5dtq56bX5UZoUUw26kjs3J9KlLO6Ui7yyM2xKpC
-	Y6Ord9G7inbKDNxqak6QaXRiFQQqDofNQ/IdxpYguEpyIVIYZIsySuLSvrI0RZDYJLciinOoOEpyG
-	RdE05DRg==;
+	bh=kgi6rhLkOnzlRiZAvKs67ldCOaqFuwL54tcHIOBbZv8=; b=e0Q94ZLcudPQta2uv4zSmGoIdv
+	6LEaBU/ZvPz+XT6/AuBBIvhfplH0rrnLhxqCViOyLvL0cEMu2HthJz4K3nJQiSylQCsHWmudFf32y
+	w+eJMlVZWrU7k6hNGmwPV6f4UqWylHQxydjo6HJ4sYWjy7FaBBLxCJMyuApOy4NMFEKUOFEznkn96
+	Yg2gsmuJJ58idXJtFu1Gm94/YtcNBJpBDDssDK5uCYi3yqMqlNMVc88eWmXMb/kMxn6zkDh4E1nhN
+	bHfHUL0aOcrIBYk0/OnXtnaHyqy9smja2kNEV3b07gYlnIJsfe2uv29cdvV64l5Ach1OQwWH9KSoQ
+	r/ZYW3mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHM5E-003hqV-DA; Fri, 29 Jul 2022 09:15:00 +0000
+	id 1oHM5I-003hsC-8A; Fri, 29 Jul 2022 09:15:04 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHM59-003hn7-PZ; Fri, 29 Jul 2022 09:14:58 +0000
-X-UUID: 0ef95ca2d09f47a382afea1c801d1e69-20220729
+	id 1oHM5A-003hnN-BJ; Fri, 29 Jul 2022 09:14:58 +0000
+X-UUID: b32936c8719d413c974acf7aa8eb8974-20220729
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:9650caa3-1edd-47a7-987a-d96dd87a07b4,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:fee29ee5-2d55-44b2-9352-e62550c85891,OB:0,LO
 	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
 	ION:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:098fb824-a982-4824-82d2-9da3b6056c2a,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:848fb824-a982-4824-82d2-9da3b6056c2a,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 0ef95ca2d09f47a382afea1c801d1e69-20220729
+X-UUID: b32936c8719d413c974acf7aa8eb8974-20220729
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <chunxu.li@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 716308981; Fri, 29 Jul 2022 02:14:50 -0700
+	with ESMTP id 1973726122; Fri, 29 Jul 2022 02:14:50 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 29 Jul 2022 17:14:15 +0800
+ 15.2.792.15; Fri, 29 Jul 2022 17:14:16 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 29 Jul 2022 17:14:14 +0800
+ Transport; Fri, 29 Jul 2022 17:14:15 +0800
 From: Chunxu Li <chunxu.li@mediatek.com>
 To: <lgirdwood@gmail.com>, <broonie@kernel.org>,
 	<angelogioacchino.delregno@collabora.com>
@@ -52,9 +52,9 @@ CC: <matthias.bgg@gmail.com>, <jiaxin.yu@mediatek.com>, <tzungbi@google.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<project_global_chrome_upstream_group@mediatek.com>, Chunxu Li
 	<chunxu.li@mediatek.com>
-Subject: [PATCH 2/3] ASoC: mediatek: mt8186: add SOF support on mt8186-mt6366-rt1019-rt5682s
-Date: Fri, 29 Jul 2022 17:14:03 +0800
-Message-ID: <20220729091404.7799-3-chunxu.li@mediatek.com>
+Subject: [PATCH 3/3] ASoC: mediatek: mt8186: add SOF support on mt8186-mt6366-da7219-max98357
+Date: Fri, 29 Jul 2022 17:14:04 +0800
+Message-ID: <20220729091404.7799-4-chunxu.li@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220729091404.7799-1-chunxu.li@mediatek.com>
 References: <20220729091404.7799-1-chunxu.li@mediatek.com>
@@ -62,8 +62,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220729_021455_878685_4135DC23 
-X-CRM114-Status: GOOD (  19.74  )
+X-CRM114-CacheID: sfid-20220729_021456_469548_C866C0F9 
+X-CRM114-Status: GOOD (  19.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,58 +89,58 @@ audio FE.
 
 Signed-off-by: Chunxu Li <chunxu.li@mediatek.com>
 ---
- .../mt8186/mt8186-mt6366-rt1019-rt5682s.c     | 168 ++++++++++++++++--
+ .../mt8186/mt8186-mt6366-da7219-max98357.c    | 168 ++++++++++++++++--
  1 file changed, 155 insertions(+), 13 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-index 891146fd6c2b..6c41706a5621 100644
---- a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
-@@ -19,6 +19,8 @@
+diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
+index 387f25cad809..84ee5d95a9f0 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
++++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
+@@ -18,6 +18,8 @@
+ #include "../../codecs/da7219.h"
  #include "../../codecs/mt6358.h"
- #include "../../codecs/rt5682.h"
  #include "../common/mtk-afe-platform-driver.h"
 +#include "../common/mtk-dsp-sof-common.h"
 +#include "../common/mtk-soc-card.h"
  #include "mt8186-afe-common.h"
  #include "mt8186-afe-clk.h"
  #include "mt8186-afe-gpio.h"
-@@ -30,6 +32,11 @@
- #define RT5682S_CODEC_DAI	"rt5682s-aif1"
- #define RT5682S_DEV0_NAME	"rt5682s.5-001a"
+@@ -26,6 +28,11 @@
+ #define DA7219_CODEC_DAI "da7219-hifi"
+ #define DA7219_DEV_NAME "da7219.5-001a"
  
 +#define SOF_DMA_DL1 "SOF_DMA_DL1"
 +#define SOF_DMA_DL2 "SOF_DMA_DL2"
 +#define SOF_DMA_UL1 "SOF_DMA_UL1"
 +#define SOF_DMA_UL2 "SOF_DMA_UL2"
 +
- struct mt8186_mt6366_rt1019_rt5682s_priv {
+ struct mt8186_mt6366_da7219_max98357_priv {
  	struct snd_soc_jack headset_jack, hdmi_jack;
  };
-@@ -51,8 +58,9 @@ static struct snd_soc_codec_conf mt8186_mt6366_rt1019_rt5682s_codec_conf[] = {
+@@ -47,8 +54,9 @@ static struct snd_soc_codec_conf mt8186_mt6366_da7219_max98357_codec_conf[] = {
  
- static int mt8186_rt5682s_init(struct snd_soc_pcm_runtime *rtd)
+ static int mt8186_da7219_init(struct snd_soc_pcm_runtime *rtd)
  {
--	struct mt8186_mt6366_rt1019_rt5682s_priv *priv =
+-	struct mt8186_mt6366_da7219_max98357_priv *priv =
 +	struct mtk_soc_card_data *soc_card_data =
  		snd_soc_card_get_drvdata(rtd->card);
-+	struct mt8186_mt6366_rt1019_rt5682s_priv *priv = soc_card_data->mach_priv;
++	struct mt8186_mt6366_da7219_max98357_priv *priv = soc_card_data->mach_priv;
  	struct snd_soc_jack *jack = &priv->headset_jack;
  	struct snd_soc_component *cmpnt_codec =
  		asoc_rtd_to_codec(rtd, 0)->component;
-@@ -130,8 +138,9 @@ static int mt8186_mt6366_rt1019_rt5682s_hdmi_init(struct snd_soc_pcm_runtime *rt
+@@ -154,8 +162,9 @@ static int mt8186_mt6366_da7219_max98357_hdmi_init(struct snd_soc_pcm_runtime *r
  {
  	struct snd_soc_component *cmpnt_codec =
  		asoc_rtd_to_codec(rtd, 0)->component;
--	struct mt8186_mt6366_rt1019_rt5682s_priv *priv =
+-	struct mt8186_mt6366_da7219_max98357_priv *priv =
 +	struct mtk_soc_card_data *soc_card_data =
  		snd_soc_card_get_drvdata(rtd->card);
-+	struct mt8186_mt6366_rt1019_rt5682s_priv *priv = soc_card_data->mach_priv;
++	struct mt8186_mt6366_da7219_max98357_priv *priv = soc_card_data->mach_priv;
  	int ret;
  
  	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack", SND_JACK_LINEOUT, &priv->hdmi_jack);
-@@ -177,6 +186,24 @@ static int mt8186_it6505_i2s_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
- 	return mt8186_hw_params_fixup(rtd, params, SNDRV_PCM_FORMAT_S32_LE);
+@@ -201,6 +210,24 @@ static int mt8186_anx7625_i2s_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
+ 	return mt8186_hw_params_fixup(rtd, params, SNDRV_PCM_FORMAT_S24_LE);
  }
  
 +/* fixup the BE DAI link to match any values from topology */
@@ -156,15 +156,15 @@ index 891146fd6c2b..6c41706a5621 100644
 +	    !strcmp(rtd->dai_link->name, "I2S2"))
 +		mt8186_i2s_hw_params_fixup(rtd, params);
 +	else if (!strcmp(rtd->dai_link->name, "I2S3"))
-+		mt8186_it6505_i2s_hw_params_fixup(rtd, params);
++		mt8186_anx7625_i2s_hw_params_fixup(rtd, params);
 +
 +	return ret;
 +}
 +
- static int mt8186_mt6366_rt1019_rt5682s_playback_startup(struct snd_pcm_substream *substream)
+ static int mt8186_mt6366_da7219_max98357_playback_startup(struct snd_pcm_substream *substream)
  {
  	static const unsigned int rates[] = {
-@@ -450,6 +477,33 @@ SND_SOC_DAILINK_DEFS(hostless_src_aaudio,
+@@ -474,6 +501,33 @@ SND_SOC_DAILINK_DEFS(hostless_src_aaudio,
  		     DAILINK_COMP_ARRAY(COMP_CPU("Hostless SRC AAudio DAI")),
  		     DAILINK_COMP_ARRAY(COMP_DUMMY()),
  		     DAILINK_COMP_ARRAY(COMP_EMPTY()));
@@ -195,10 +195,10 @@ index 891146fd6c2b..6c41706a5621 100644
 +	{ "I2S0", "AFE_SOF_UL2", SOF_DMA_UL2, SNDRV_PCM_STREAM_CAPTURE},
 +};
 +
- static struct snd_soc_dai_link mt8186_mt6366_rt1019_rt5682s_dai_links[] = {
+ static struct snd_soc_dai_link mt8186_mt6366_da7219_max98357_dai_links[] = {
  	/* Front End DAI links */
  	{
-@@ -824,12 +878,41 @@ static struct snd_soc_dai_link mt8186_mt6366_rt1019_rt5682s_dai_links[] = {
+@@ -848,12 +902,41 @@ static struct snd_soc_dai_link mt8186_mt6366_da7219_max98357_dai_links[] = {
  		.ignore_suspend = 1,
  		SND_SOC_DAILINK_REG(hostless_ul6),
  	},
@@ -230,7 +230,7 @@ index 891146fd6c2b..6c41706a5621 100644
  };
  
  static const struct snd_soc_dapm_widget
- mt8186_mt6366_rt1019_rt5682s_widgets[] = {
+ mt8186_mt6366_da7219_max98357_widgets[] = {
  	SND_SOC_DAPM_SPK("Speakers", NULL),
  	SND_SOC_DAPM_OUTPUT("HDMI1"),
 +	SND_SOC_DAPM_MIXER(SOF_DMA_DL1, SND_SOC_NOPM, 0, 0, NULL, 0),
@@ -240,10 +240,10 @@ index 891146fd6c2b..6c41706a5621 100644
  };
  
  static const struct snd_soc_dapm_route
-@@ -838,6 +921,14 @@ mt8186_mt6366_rt1019_rt5682s_routes[] = {
- 	{ "Speakers", NULL, "Speaker" },
+@@ -862,6 +945,14 @@ mt8186_mt6366_da7219_max98357_routes[] = {
+ 	{ "Speakers", NULL, "Speaker"},
  	/* HDMI */
- 	{ "HDMI1", NULL, "TX" },
+ 	{ "HDMI1", NULL, "TX"},
 +	/* SOF Uplink */
 +	{SOF_DMA_UL1, NULL, "UL1_CH1"},
 +	{SOF_DMA_UL1, NULL, "UL1_CH2"},
@@ -255,20 +255,20 @@ index 891146fd6c2b..6c41706a5621 100644
  };
  
  static const struct snd_kcontrol_new
-@@ -865,8 +956,10 @@ static int mt8186_mt6366_rt1019_rt5682s_dev_probe(struct platform_device *pdev)
+@@ -889,8 +980,10 @@ static int mt8186_mt6366_da7219_max98357_dev_probe(struct platform_device *pdev)
  {
  	struct snd_soc_card *card;
  	struct snd_soc_dai_link *dai_link;
--	struct mt8186_mt6366_rt1019_rt5682s_priv *priv;
+-	struct mt8186_mt6366_da7219_max98357_priv *priv;
 -	struct device_node *platform_node, *headset_codec, *playback_codec;
 +	struct mtk_soc_card_data *soc_card_data;
-+	struct mt8186_mt6366_rt1019_rt5682s_priv *mach_priv;
++	struct mt8186_mt6366_da7219_max98357_priv *mach_priv;
 +	struct device_node *platform_node, *headset_codec, *playback_codec, *adsp_node;
 +	int sof_on = 0;
  	int ret, i;
  
  	card = (struct snd_soc_card *)device_get_match_data(&pdev->dev);
-@@ -874,11 +967,60 @@ static int mt8186_mt6366_rt1019_rt5682s_dev_probe(struct platform_device *pdev)
+@@ -898,11 +991,60 @@ static int mt8186_mt6366_da7219_max98357_dev_probe(struct platform_device *pdev)
  		return -EINVAL;
  	card->dev = &pdev->dev;
  
@@ -309,15 +309,15 @@ index 891146fd6c2b..6c41706a5621 100644
 +	if (of_property_read_bool(pdev->dev.of_node, "mediatek,dai-link")) {
 +		ret = mtk_sof_dailink_parse_of(card, pdev->dev.of_node,
 +					       "mediatek,dai-link",
-+					       mt8186_mt6366_rt1019_rt5682s_dai_links,
-+					       ARRAY_SIZE(mt8186_mt6366_rt1019_rt5682s_dai_links));
++					       mt8186_mt6366_da7219_max98357_dai_links,
++					       ARRAY_SIZE(mt8186_mt6366_da7219_max98357_dai_links));
 +		if (ret) {
 +			dev_dbg(&pdev->dev, "Parse dai-link fail\n");
 +			goto err_adsp_node;
 +		}
 +	} else {
 +		if (!sof_on)
-+			card->num_links = ARRAY_SIZE(mt8186_mt6366_rt1019_rt5682s_dai_links)
++			card->num_links = ARRAY_SIZE(mt8186_mt6366_da7219_max98357_dai_links)
 +					- ARRAY_SIZE(g_sof_conn_streams);
 +	}
 +
@@ -330,7 +330,7 @@ index 891146fd6c2b..6c41706a5621 100644
  	}
  
  	playback_codec = of_get_child_by_name(pdev->dev.of_node, "playback-codecs");
-@@ -917,17 +1059,14 @@ static int mt8186_mt6366_rt1019_rt5682s_dev_probe(struct platform_device *pdev)
+@@ -941,17 +1083,14 @@ static int mt8186_mt6366_da7219_max98357_dev_probe(struct platform_device *pdev)
  			goto err_probe;
  		}
  
@@ -353,7 +353,7 @@ index 891146fd6c2b..6c41706a5621 100644
  
  	ret = mt8186_afe_gpio_init(&pdev->dev);
  	if (ret) {
-@@ -945,6 +1084,9 @@ static int mt8186_mt6366_rt1019_rt5682s_dev_probe(struct platform_device *pdev)
+@@ -969,6 +1108,9 @@ static int mt8186_mt6366_da7219_max98357_dev_probe(struct platform_device *pdev)
  	of_node_put(playback_codec);
  err_playback_codec:
  	of_node_put(platform_node);
