@@ -4,81 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2C8DC00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 13:24:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBC64C00144
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 14:45:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5FMeB7gNzDdPBcB0grv6dwqtsT3RsWnwrpI2BT3+73M=; b=iDSRAz5mqg12VG4HnmSJmSC5Ty
-	u6qMSQcfIqNIxNlK8uNh1uwC7mObC1T79DyJXZgO3u+sQoWcLXoXq7dahcSXgPHL1eWxVE0pOAGil
-	G3jaH7WpLr0ml1MP4GYhkKxOoe6uPpdRxNnXCnwcewo3ErIVVjMhNpAe2vSB94/Vs9sBQYa1nZrZq
-	aUhA7Cz5uSF3dvtjJB/t60HvmGaEXrgxZlYbLgj3Fm2kI/xy1w4hKBUnw9A0WmVyV3vKYkKLfg+d4
-	hbrTYcIQ36f3f7rtyDN/ZIWj34DqZJEplmu8hJdQU3/HcTOP9DdSWBAAWCm1/yRSyAmRvenc5QeEn
-	zKBZDXWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c3H8ysg4K9YB1ed9Z+ydTn6WJKKmU4yqZHuBbB7RFw8=; b=Wr+shs7zaaNY2bBm0BY12UA7c8
+	fgXGP4bRQ9UhnP/H8Zl0HOAoIuvg76BGdjYIypM1D0va3XOuxwpx2TrGpKvvYr8oR/HFL/K+SzpCW
+	rgC0HMj0h+fVL7psB6bzdMuCBfcjqJUyAQKAvki1DjWy2Odq9oXGfhJubfG3FTuYUao8ZHnAl6b0q
+	Cs9eFmpuiKhmRbFQBesXwpgGEGV2wPXFx3yeYVS515w3JgWRrZPE+MSwSQaed9aLaN9F67HLZMP++
+	4v+fwr6WGonMwXIpqxp3esV+Zb2RHOmi29WADdZEmSo5rHRTahKu/0cfM8RkHmDEeReGXNXFgp2tD
+	dZtLYhCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHPyB-00580R-1x; Fri, 29 Jul 2022 13:23:59 +0000
-Received: from smtp-out2.suse.de ([2001:67c:2178:6::1d])
+	id 1oHRF0-005bk8-Hk; Fri, 29 Jul 2022 14:45:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHPy8-0057wv-7Y
-	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 13:23:57 +0000
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id BE9EA1FACC;
-	Fri, 29 Jul 2022 13:23:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1659101030; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5FMeB7gNzDdPBcB0grv6dwqtsT3RsWnwrpI2BT3+73M=;
-	b=OyhcVXwJEDTEnywR51HSrlFRd3VcmWxHiufTNsvD83+QpZ4KJZiDh79T+20FNSZyLp3Rix
-	p3sZ1WJBG6t2S+VMiaQ/WT4rxYb+aZr55x5FqyXm18qX8/5yywgFz+Zp57pZdWCpIYi+I1
-	y0HyvAd553z2CmEWrxGmvLq1TfcUtuY=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1659101030;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5FMeB7gNzDdPBcB0grv6dwqtsT3RsWnwrpI2BT3+73M=;
-	b=os5OdYUSfFMSQBT3slgxbpu2pzJSEDtwvJQygrEH95h25oYKy173Yqp9oc7kNH3TmM54BL
-	de/nFXErN45gjdCg==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 704EF13A8E;
-	Fri, 29 Jul 2022 13:23:50 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id J9C5GWbf42JiSwAAMHmgww
-	(envelope-from <jdelvare@suse.de>); Fri, 29 Jul 2022 13:23:50 +0000
-Date: Fri, 29 Jul 2022 15:23:49 +0200
-From: Jean Delvare <jdelvare@suse.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Mark
- Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Chenglin Xu <chenglin.xu@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH RFC] regulator: mt6380: Fix unused array warning
-Message-ID: <20220729152349.6a4801a5@endymion.delvare>
-In-Reply-To: <decb7338-eeb8-3c0c-88f2-c0b00fb8b0e7@collabora.com>
-References: <20220727132637.76d6073f@endymion.delvare>
-	<decb7338-eeb8-3c0c-88f2-c0b00fb8b0e7@collabora.com>
-Organization: SUSE Linux
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
+	id 1oHREw-005bgO-S9
+	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 14:45:25 +0000
+X-UUID: 130035c535d54c7590919ba055394e19-20220729
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:1cc3d416-32fb-4068-8fb9-1585ddb9a956,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:0f94e32,CLOUDID:8c4abe24-a982-4824-82d2-9da3b6056c2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 130035c535d54c7590919ba055394e19-20220729
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1534693841; Fri, 29 Jul 2022 07:45:11 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 29 Jul 2022 22:45:08 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 29 Jul 2022 22:45:08 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
+	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
+	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
+	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
+	<abhishekpandit@google.com>, <shawnku@google.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH RESEND v2 2/2] mt76: mt7921: add mt7921_mutex_acquire at mt7921_sta_set_decap_offload
+Date: Fri, 29 Jul 2022 22:44:57 +0800
+Message-ID: <aa6418271cc601dd25a165d05cfd7136a1d6930a.1659105379.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <6353fe62ebeb0f78aa34b40e9c1745061b229f6c.1659105379.git.objelf@gmail.com>
+References: <6353fe62ebeb0f78aa34b40e9c1745061b229f6c.1659105379.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220729_062356_457672_CD41CD15 
-X-CRM114-Status: GOOD (  14.72  )
+X-CRM114-CacheID: sfid-20220729_074522_937096_2BC932C1 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,29 +84,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 28 Jul 2022 13:15:14 +0200, AngeloGioacchino Del Regno wrote:
-> Il 27/07/22 13:26, Jean Delvare ha scritto:
-> > With the following configuration options:
-> > CONFIG_OF is not set
-> > CONFIG_REGULATOR_MT6380=3Dy
-> > we get the following build warning:
-> >=20
-> >    CC      drivers/regulator/mt6380-regulator.o
-> > drivers/regulator/mt6380-regulator.c:322:34: warning: =E2=80=98mt6380_o=
-f_match=E2=80=99 defined but not used [-Wunused-const-variable=3D]
-> >=20
-> > Fix this by annotating that array with __maybe_unused, as done in
-> > various regulator drivers. =20
->=20
-> I know I'm late to the party, but I would've preferred to see the
-> of_match_ptr() dropped instead of adding a __maybe_unused.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Doing that for this driver would basically prevent the compiler from
-dropping out the variable in the !CONFIG_OF case. If this is a valid
-case (and I really would like Mediatek people to comment on that) then
-I can't see how that would be an improvement.
+Add mt7921_mutex_acquire at mt7921_[start, stop]_ap to fix the race
+with the context holding dev->muxtex and the driver might access the
+device in low power state.
 
---=20
-Jean Delvare
-SUSE L3 Support
+Fixes: 24299fc869f7 ("mt76: mt7921: enable rx header traslation offload")
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 63fd33dcd3af..7214735011d0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -1404,6 +1404,8 @@ static void mt7921_sta_set_decap_offload(struct ieee80211_hw *hw,
+ 	struct mt7921_sta *msta = (struct mt7921_sta *)sta->drv_priv;
+ 	struct mt7921_dev *dev = mt7921_hw_dev(hw);
+ 
++	mt7921_mutex_acquire(dev);
++
+ 	if (enabled)
+ 		set_bit(MT_WCID_FLAG_HDR_TRANS, &msta->wcid.flags);
+ 	else
+@@ -1411,6 +1413,8 @@ static void mt7921_sta_set_decap_offload(struct ieee80211_hw *hw,
+ 
+ 	mt76_connac_mcu_sta_update_hdr_trans(&dev->mt76, vif, &msta->wcid,
+ 					     MCU_UNI_CMD(STA_REC_UPDATE));
++
++	mt7921_mutex_release(dev);
+ }
+ 
+ #if IS_ENABLED(CONFIG_IPV6)
+-- 
+2.25.1
+
 
