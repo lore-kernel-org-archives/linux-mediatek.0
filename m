@@ -4,66 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D078BC00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 08:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C00DEC19F2B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 08:26:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UsN4Xf9mbAqVsuiE3CKKdReghqUPs6rdpszyd7vJRfk=; b=PYdxAKAL+o9rLk8+Pq3uLIe/R+
-	EVpotxHz2gXin7jvWI6AwtOZbdq+nobeVX0VPBjbOHNmMvEJa30DusRwYuezkP7XZRG9Y4b2BuViI
-	3Fecss+kDIpbvWBIFDfZvViaQ4Y4ahCuzkFSEmZnPHIH+H0DVJe9v4cgCQcb+xONe7hS41rsYipXi
-	aTJyoKBhB3o8u1SIj+DbZjXizVfZo08ZTyn+aIUUxnJR3RxmG5ftfOvi0bGjVYJVsGUMOEyZtq6hz
-	TxT5noarHgPyAQ0Hq66zXD6GIpeYwSB80S7e0yvks6M4YmBB+ixrnZNoOiviBZnpTtEb95L0g9/Dx
-	2XpqlLZw==;
+	bh=APehGwsZ857nIS4y8fzTUxoQJBhup/YUyB8KH4lQEYo=; b=f4KG+R3Ed+zAiXHYTHfHURCEMq
+	H2EWERQVJoRT03NGckDsOXVMJGQYbtgZYvgMGqbNITVE00tFkq1fQMBbxg6g2VOTuKYRtmI7cP59p
+	J3QZshhWk8uXOPLUS8szYdaTxdQry3zR4JDEkI40k/oOmRqdAqcHXozI2VPh4xbTUeDy8R9coBRmZ
+	dmARjyKVXYP3AhdEl8dBLC5xioS/GSAnk2FUn8IZghM3ErPRyhca7PCfMgDCclPdzlnMgNHuE5BpM
+	pWKUgdtbEbEnk8w3UhYbaA/AYMhlm8kcHwAGJl/D6KgpnzfXRM8zwDzAU/rqxC4GrNh9BMLkTuagN
+	gZ5GPSnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHLHf-003BAE-Tp; Fri, 29 Jul 2022 08:23:47 +0000
+	id 1oHLKR-003Dz1-C9; Fri, 29 Jul 2022 08:26:39 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHKwQ-002sV5-B3; Fri, 29 Jul 2022 08:01:54 +0000
+	id 1oHL1F-002wD1-FV; Fri, 29 Jul 2022 08:06:50 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AAE836601B5C;
-	Fri, 29 Jul 2022 09:01:44 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 183C166015BD;
+	Fri, 29 Jul 2022 09:06:47 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1659081705;
-	bh=k4GSR8K8Yxmn5V+GuDbXfyZH3FJzAp24oZRJaG27Pas=;
+	s=mail; t=1659082008;
+	bh=30poyXZDYHoOi7yo8Mx/13fpvXrbxzbgyPizx79sv7E=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Jpb7hop/Zv2vfHqKxVfvgVdmF3Fo55Qi66Jo97McWyRe/G7bE4rSCBkQYmKftX2Bu
-	 1rrMvZQ4csYzwAf+ROaFzAKKy4K+ov4DNB6KYyr9790ZrQumXIcF2V0qwFMBkZcc7n
-	 ESLrFQ2TSG+v+Mgn4VMhTtjCIwmrU7mL8c7pl2z8SpntYqpfEby5tTrFi3vh8VteAi
-	 WLmK0p7YVnrsWA2wE33zfu02Yl5uIAhyCwSYVuyNPntzx/Oi6z4vzuFOzc6c8IqqCi
-	 ZQIb6089hq3ZhmpTbnOlJej9SEyMaegDXDnez3z/+t9lYj87879RubpzHRl1BE4QbW
-	 aTzg7/ynEnzfQ==
-Message-ID: <2719519a-4690-4cc8-42c3-f6089d888cce@collabora.com>
-Date: Fri, 29 Jul 2022 10:01:42 +0200
+	b=BArT00uCFpADlywHesn6+GFQVFZfyRmo+/xYXjJjqNsp07rspLkFAwQXNxQC39o8Q
+	 m5bDCELgsZrlBQsuXFpovQz4i/YR4jAJX/uj6nmr1ri5/X8GiHQe6Qi9i57v/g7c3F
+	 F1kosTbo5sEzshJe6MeV2wbxA1ez0XNQvHmeDcLcHZZ4r97dRMljMfXGEkBX3nbKVi
+	 RwRfF6N66RCaPqoPb96VNcQ1odqqIyJCk6/KilsgLn9mPX6McAcd2JDUoYUAFQjiOu
+	 j4v3ioD7yvS+YqtZ7a1REy1rQmv9pNmFgPNTZAPXMcQQQUr/tIMpghO2dOUyzDltuL
+	 dBJrRdaPqZTPA==
+Message-ID: <41c74c43-296d-1c27-450d-c108674451b4@collabora.com>
+Date: Fri, 29 Jul 2022 10:06:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
-Subject: Re: [PATCH v4] arm64: dts: mt8173-elm: Switch to SMC watchdog
+Subject: Re: [PATCH v4 04/20] dt-bindings: power: mediatek: Support naming
+ power controller node with unit address
 Content-Language: en-US
-To: Pin-yen Lin <treapking@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Evan Benn <evanbenn@chromium.org>,
- Eizan Miyamoto <eizan@chromium.org>,
+To: Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
-References: <20220729032423.157144-1-treapking@chromium.org>
+ Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ MandyJH Liu <mandyjh.liu@mediatek.com>
+Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220729063208.16799-1-tinghan.shen@mediatek.com>
+ <20220729063208.16799-5-tinghan.shen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220729032423.157144-1-treapking@chromium.org>
+In-Reply-To: <20220729063208.16799-5-tinghan.shen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220729_010150_632941_FC242C2F 
-X-CRM114-Status: GOOD (  18.67  )
+X-CRM114-CacheID: sfid-20220729_010649_701153_51E647D8 
+X-CRM114-Status: UNSURE (   7.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,59 +83,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/07/22 05:24, Pin-yen Lin ha scritto:
-> Switch to SMC watchdog because we need direct control of HW watchdog
-> registers from kernel. The corresponding firmware was uploaded in
-> https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405.
+Il 29/07/22 08:31, Tinghan Shen ha scritto:
+> Support naming power controller node with unit address, also compatible
+> with node names without unit address.
 > 
-> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> ---
-> 
-> Changes in v4:
-> - Rename the watchdog node (smc_watchdog -> watchdog)
-> - Correct the patch summary (mt8173-oak -> mt8173-elm)
-> 
-> Changes in v3:
-> - Remove /delete-node/ and create a new node for SMC watchdog.
-> 
-> Changes in v2:
-> - Move the modifications to mt8173-elm.dtsi and add some comments.
-> 
->   arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 13 +++++++++++++
->   1 file changed, 13 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> index e21feb85d822..421bb2945135 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> @@ -161,6 +161,19 @@ hdmi_connector_in: endpoint {
->   			};
->   		};
->   	};
-> +
-> +
-
-You don't need two blank lines, just one is enough (please fix).
-
-After which:
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> +	watchdog {
-> +		compatible = "arm,smc-wdt";
-> +	};
-> +};
-> +
-> +/*
-> + * Disable the original MMIO watch dog and switch to the SMC watchdog, which
-> + * operates on the same MMIO.
-> + */
-> +&watchdog {
-> +	status = "disabled";
->   };
->   
->   &mfg_async {
-> 
-
-
 
