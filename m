@@ -4,81 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84773C04A68
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Jul 2022 21:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0D36C00140
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 02:05:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tBTdEaMEquzGdtE2SVb08phk2G37dgthWhMmnNyIQXQ=; b=dr72YWYtc+VNnSUzGd58nZbzgv
-	FXnkyD4WoEU8a9LAStkFM/eVmqw2ri0IYiAaD+X2SpdUckHn0gALusJKihX7ftecFSLbSygTTkyp4
-	Vtz7BdOw5rvWoxiUGqOwmw2IHOy0y3yDkWCT7npHxAPnSqBZ+/tKKwFxl9YtPneUPlPzF/MDzUp9T
-	3YFcggjIuv6yWHwE512ltDTKPaQV20edjOzh4iQmns/LkRgfxKRp4P6LqzpcZptQz+xpJDsrIxQpG
-	KSU5ByNUZ12u507+SbFKyiJV31BHUafB+GmNcsAGSWbk53dRCSyMmoQbZL6jfkoD3ZS+/NQuV/Evb
-	0+QQQ5QA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VrPTwHjfC5QxsVG3vayD8eV3MqvBjr0U91L8fruvcYg=; b=SSYbCR4knBWdq3gmGL5u/5zCO6
+	YmmK6xm6c8+KPzPdsVEjmqp8jMsvdgE9crbtxd7EL7BB8zV6i0twjFTw+iyytL5grxxVBpEJMf43s
+	4fseor53SFRqT/HtmlCvqBfytFKNKpt3fHdOUEHi2m4rMk83QpyIIuh3l3MgJEVweZPVgnGWlzn2h
+	cJucHRwBdpyzOUlZWyI2ZGWo4uTcwUMVPCQl0V6O78DdFEzfF+f2XQu6HKFJVnGwcDMCvlEIVmz9v
+	MBYJr7/tg3SxgNycNyx7YuP3abjXgoFPQ2HgHj0fFCeE8DewUL3vXG/49zyeQhiMhRFz3LfqpyK8c
+	5k7axdXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHBVm-00Et6d-Vw; Thu, 28 Jul 2022 21:57:42 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1oHFNf-00H02o-6V; Fri, 29 Jul 2022 02:05:35 +0000
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHBVk-00Et5Y-7H
-	for linux-mediatek@lists.infradead.org; Thu, 28 Jul 2022 21:57:41 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id mf4so5379132ejc.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 28 Jul 2022 14:57:39 -0700 (PDT)
+	id 1oHFNT-00GzcJ-Ik
+	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 02:05:24 +0000
+Received: by mail-pj1-x1031.google.com with SMTP id w63-20020a17090a6bc500b001f3160a6011so5120311pjj.5
+        for <linux-mediatek@lists.infradead.org>; Thu, 28 Jul 2022 19:05:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :content-transfer-encoding:user-agent:mime-version;
-        bh=tBTdEaMEquzGdtE2SVb08phk2G37dgthWhMmnNyIQXQ=;
-        b=qik0nU5JmZ2hSKOH6hggscV2BAG/9N43fjICFDnIr6Oh/1KThVNlL8CfCushErjX/d
-         IwWpVHdXnlq//A+OM/PmZ1AuA6B8VEUNNWISmAN9OXwBLbiBWPNTG++yr54nLElqx3SG
-         cg6LPIb7J6kqStPN5zyIcNMEb4G/hfniIqXzOtVyFaVv2gGgshZLIt9EWOPRLDYIBTkQ
-         VCoUDBWQ2YOmtPlc3tBLIKPBINlS4D4JUbh11vm9x/mo+i+rNwj0RBfqBkSTAAyGEn6N
-         so4OQLRl8f+9W6Bn0IsHelSLP6d5vugbxdW3pSru/XvDy9Nwp1bRg0cse35SadiK6mlZ
-         XOMw==
+        d=chromium.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=VrPTwHjfC5QxsVG3vayD8eV3MqvBjr0U91L8fruvcYg=;
+        b=aJhskqxfHu9Y2ZpoWFbtIeFpB4Imk6JZOVzW4D8S2y6DMUoufx0RE3fq/be6nFU2au
+         wb6GvuodPNYVan8O0B3whcvlFn4/n8AhT2jZkHIEoTkVg7fSan0w+KAxcqCGumWgdZKq
+         Y8yHiqpMBrxaF5Xp6vWy4dcZrEmkbsuJo0bbU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:content-transfer-encoding:user-agent:mime-version;
-        bh=tBTdEaMEquzGdtE2SVb08phk2G37dgthWhMmnNyIQXQ=;
-        b=Tp8wCRoEHwPtQSBjwhlMeGBPwlMoXQBcYsYwEPwLPJEHWHd1vWGI4ASvrbrRaKkRKC
-         wbF7mqgsbf+sHCakTZg54tu9WeRWnt0ySOSTYRkTvQClpCUEKvtYHYeNApducD/XGStd
-         3pJpH6ojF6WWNdq1lE7HxPFN1PHTxApQ5op9KjWbpVO11jH4hVwmHEWVOH8TmogA5GWT
-         4b3/c2lznGg7Nrkdq31DFj4HhrgTAcSlYfch9G99sY03armLlGDm4UcWveSPw9IYgL/v
-         jTkdKCFt62XchwHihqrwA8I8NI+PKzR2D+7X1uPSUKDY3I/f1+GEqMTnliItrQukJrxc
-         sxoQ==
-X-Gm-Message-State: AJIora9/jVzTLVwEP1STbzUR3R1m4zlZMOaMQuHBhEonzoKFMtRhNqkG
-	w8K9IvuI3adJqfRuq7IVUGs=
-X-Google-Smtp-Source: AGRyM1vYCId71UEtdFiUSjVInECfR19OlxaAJET7OeqVtqFaeLICO+T9alMwOQ0yumwgipWSgA9SbQ==
-X-Received: by 2002:a17:907:6e13:b0:72b:509e:bd6b with SMTP id sd19-20020a1709076e1300b0072b509ebd6bmr688038ejc.202.1659045458144;
-        Thu, 28 Jul 2022 14:57:38 -0700 (PDT)
-Received: from p200300c5870e1483ac11a16c0f4ae195.dip0.t-ipconnect.de (p200300c5870e1483ac11a16c0f4ae195.dip0.t-ipconnect.de. [2003:c5:870e:1483:ac11:a16c:f4a:e195])
-        by smtp.googlemail.com with ESMTPSA id y6-20020a50eb86000000b0043bd192e826sm1377247edr.17.2022.07.28.14.57.37
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=VrPTwHjfC5QxsVG3vayD8eV3MqvBjr0U91L8fruvcYg=;
+        b=CSrqfWXyvgkMoy5TaA00/2MifMFvdxks1XAhWeDqnPrqk1DvfJiQu8P9331E7ZhAeG
+         XZFEldjMf38KeGguxhiv/SrEbYSHHhSmg+08RCMeGdVGwSh6uHBW4GkAc4y4fBAQxnJQ
+         /qMcrH93NF/D68AA1zLPYjS+iRmfGHtJixfiAaHTGt6pC/GfFoKBs587ABDOLHBkOXMK
+         iESN17504MQ0uAdiPPylIC9Mk4YVCtn7pBOUZWAn0pI830iUGtd6hncecITeDlhnJ2P9
+         fQ7UAtEqTEgi6h8ajFWzcmLh4u2IIYGVUbEppK0DhhBdYwF5h9iJCzNondXgTL+6p/PV
+         3uBA==
+X-Gm-Message-State: ACgBeo2N5RljYxgjt98eXqndPfs621I6ghxD4Mzd56bP0cAA5ou2juh3
+	nAm9Qz9hywSKraoa5mXbpAAlfw==
+X-Google-Smtp-Source: AA6agR4yg+hJT2sTUv6xIxgwqftaALBJ1dWWW39BU5Dsu1TjnAGWtGgfMYa2Uq/BoKZakwmgeNMCPw==
+X-Received: by 2002:a17:90b:3e8a:b0:1f0:4157:daf8 with SMTP id rj10-20020a17090b3e8a00b001f04157daf8mr1583417pjb.222.1659060320809;
+        Thu, 28 Jul 2022 19:05:20 -0700 (PDT)
+Received: from dlunevwfh.roam.corp.google.com (n122-107-196-14.sbr2.nsw.optusnet.com.au. [122.107.196.14])
+        by smtp.gmail.com with ESMTPSA id y124-20020a62ce82000000b005258df7615bsm1571901pfg.0.2022.07.28.19.05.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Jul 2022 14:57:37 -0700 (PDT)
-Message-ID: <ea3b173cb2575dbb81cb416469880c50dd536bd0.camel@gmail.com>
-Subject: Re: [PATCH v1 2/2] ufs: host: support wb toggle with clock scaling
-From: Bean Huo <huobean@gmail.com>
-To: peter.wang@mediatek.com, stanley.chu@mediatek.com, 
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
- avri.altman@wdc.com,  alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, 
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com, 
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
- powen.kao@mediatek.com,  qilin.tan@mediatek.com, lin.gui@mediatek.com
-Date: Thu, 28 Jul 2022 23:57:37 +0200
-In-Reply-To: <20220728071637.22364-3-peter.wang@mediatek.com>
-References: <20220728071637.22364-1-peter.wang@mediatek.com>
-	 <20220728071637.22364-3-peter.wang@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.1-0ubuntu1 
+        Thu, 28 Jul 2022 19:05:20 -0700 (PDT)
+From: Daniil Lunev <dlunev@chromium.org>
+To: Adrian Hunter <adrian.hunter@intel.com>,
+	Bart Van Assche <bvanassche@acm.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Daniil Lunev <dlunev@chromium.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Andy Gross <agross@kernel.org>,
+	Avri Altman <avri.altman@wdc.com>,
+	Bean Huo <beanhuo@micron.com>,
+	Bjorn Andersson <bjorn.andersson@linaro.org>,
+	Can Guo <cang@codeaurora.org>,
+	Daejun Park <daejun7.park@samsung.com>,
+	Eric Biggers <ebiggers@google.com>,
+	"James E.J. Bottomley" <jejb@linux.ibm.com>,
+	Konrad Dybcio <konrad.dybcio@somainline.org>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	Mike Snitzer <snitzer@redhat.com>,
+	Sohaib Mohamed <sohaib.amhmd@gmail.com>,
+	Stanley Chu <stanley.chu@mediatek.com>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-scsi@vger.kernel.org
+Subject: [PATCH v3 0/2] Expose UFSHCD capabilities in sysfs.
+Date: Fri, 29 Jul 2022 12:05:06 +1000
+Message-Id: <20220729020508.4147751-1-dlunev@chromium.org>
+X-Mailer: git-send-email 2.31.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_145740_323255_516B5027 
-X-CRM114-Status: GOOD (  13.83  )
+X-CRM114-CacheID: sfid-20220728_190523_669911_7758F5D1 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,50 +105,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-07-28 at 15:16 +0800, peter.wang@mediatek.com wrote:
-> From: Peter Wang <peter.wang@mediatek.com>
->=20
-> Set UFSHCD_CAP_WB_WITH_CLK_SCALING for qcom to compatible legacy
-> design.
->=20
-> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-> ---
-> =C2=A0drivers/ufs/host/ufs-qcom.c | 2 +-
-> =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-
-> qcom.c
-> index f10d4668814c..f8c9a78e7776 100644
-> --- a/drivers/ufs/host/ufs-qcom.c
-> +++ b/drivers/ufs/host/ufs-qcom.c
-> @@ -869,7 +869,7 @@ static void ufs_qcom_set_caps(struct ufs_hba
-> *hba)
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0struct ufs_qcom_host *hos=
-t =3D ufshcd_get_variant(hba);
-> =C2=A0
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0hba->caps |=3D UFSHCD_CAP=
-_CLK_GATING |
-> UFSHCD_CAP_HIBERN8_WITH_CLK_GATING;
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0hba->caps |=3D UFSHCD_CAP_CLK_=
-SCALING;
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0hba->caps |=3D UFSHCD_CAP_CLK_=
-SCALING |
-> UFSHCD_CAP_WB_WITH_CLK_SCALING;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0hba->caps |=3D UFSHCD_CAP=
-_AUTO_BKOPS_SUSPEND;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0hba->caps |=3D UFSHCD_CAP=
-_WB_EN;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0hba->caps |=3D UFSHCD_CAP=
-_CRYPTO;
+The patchset introduces new sysfs nodes, which userspace can check to
+determine support for certain capabilities. Specifically the patchset
+exposes Clock Scaling, Write Booster, and Inline Crypto Engine
+capabilities.
 
-Hi peter,=20
+Changes in v3:
+* Expose each capability as an individual node
+* Add preleminary CL to align checking for capabilities
+* Modify documentation to represent new scheme
 
-If WB is on/off based on clk scaling up/down is legacy design, maybe
-you have a more advanced design. It is true there is an issue since we
-didn't differentiate the read or write. WB is only for write. How to
-know this time clk scaling is for write from driver level, not possible
-now.
+Changes in v2:
+* Add documentation entry for the new sysfs node.
 
-Kind regards,
-Bean
+Daniil Lunev (2):
+  ufs: add function to check CRYPTO capability
+  ufs: core: print UFSHCD capabilities in controller's sysfs node
+
+ Documentation/ABI/testing/sysfs-driver-ufs | 39 ++++++++++++++++++++
+ drivers/ufs/core/ufs-sysfs.c               | 41 ++++++++++++++++++++++
+ drivers/ufs/core/ufshcd-crypto.c           |  8 ++---
+ drivers/ufs/host/ufs-mediatek.c            |  2 +-
+ drivers/ufs/host/ufs-qcom-ice.c            |  4 +--
+ drivers/ufs/host/ufshcd-pci.c              |  2 +-
+ include/ufs/ufshcd.h                       |  5 +++
+ 7 files changed, 93 insertions(+), 8 deletions(-)
+
+-- 
+2.31.0
+
 
