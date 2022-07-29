@@ -4,88 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1D33C00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 06:17:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F918C19F2B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 06:27:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EW499GBzYHaTH/WArZ0WtZvIkRlpsncxTw1RlPqz+v8=; b=PymBePKWfGWSRh/J26PE8e7jPE
-	sXEZdQE8wxlpyDS1NTjzUCJ8hY822dfFsQ5m89SYQf/NhDNtMzF21VE/JJgh1LLTKqzKTFy5pTajL
-	ypOVrzi1FTBbn12P/YiQZvpJcGQmA21XvQv3eko1NvFjtC8PDVJLF8GNJ+SKq3SSR0l6X7bFRmBeb
-	R0ZMAnpgVM89VNg7DZ1qI7ktPOHGCaogTzzgi/97QOee0noHcHTpXt3j7HhdgYN3RLLwu9Z6u4N4Y
-	MsJVtGTpip6aqEVkpQ/7tUcbGYAwZslZ67sLix8GzZCqcW/JdkplMWx6RnMSwEFfsMEFjESN/Wiji
-	4c7AK2hw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6YTVtolyHcvYwaXZ0RZfcfpwyBoxbbfwK2BBtSIXllY=; b=rcTpZrrW0bOu8bmow0i1sUT6qg
+	CrLWzf01OcQEBqe1ricf20uBOj9HfjweJrrWWuMde6dAuUXSsN9IyeHfmR1uIEtRE+PQCppXAQXVm
+	Fg0A0+ZpY6YyLX5T/dw0unS9y7SaZBPo+FjPU9XwPcXzC8MYd0fPSOzNiqtLUkeOk6epEra1vze1j
+	MUfVxk6W1dvc42EZibiLff7uojs/S6L9+N0PZXJ4RVLrACAuVLj5ChoGBhid0E/Zh7JC4oPQLPUJB
+	s1pEKtPcPKDc0a2sk2oRwsHRRA3p+yZY2ydc11Rz8MssbijeQn6bilCNQI0sBNR0+8axveU3IOZaf
+	XLxrKi0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHJJZ-001pcV-Kv; Fri, 29 Jul 2022 06:17:37 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1oHJSe-001wCn-TP; Fri, 29 Jul 2022 06:27:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHJJP-001pQu-7m; Fri, 29 Jul 2022 06:17:28 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id y1so3784248pja.4;
-        Thu, 28 Jul 2022 23:17:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=EW499GBzYHaTH/WArZ0WtZvIkRlpsncxTw1RlPqz+v8=;
-        b=bBJrwZNNbNwZOSdpiHnZjxTBlhq5e5F5z/aB01/7Rhm7XVlQWB/jv1YB3Yg3stPpPN
-         SmPojYXgxob/8myvBqE/AYKB3hUIDzGgtgzp4td+2Rutu5SZSMSBz+TEPl7HNs7Bb9MW
-         W7TCxTINNO2IXJYHAUFDEo60ceS/hW+jhm95xlptfVEjnS/+i/uxEzpBJqVXlteEWYKP
-         MLSVJZ2NRzFuZR5K2IulKBp8EOOR/C3KOurSc/13nA+jBRKeS6G6Ni3gVaAmjbINYeTP
-         Y/exdADOpBiQOL0wbDkY7ixd3HtrsRWGX3QW7Rcr/xwq05d0Ejbdfk37De6Lis+ytz3+
-         Mzvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=EW499GBzYHaTH/WArZ0WtZvIkRlpsncxTw1RlPqz+v8=;
-        b=yMC7NFRw9dhIJ9SMaamTfokqsWaF6jpUW/Gy00XRUro3fJhtIjZP3+63wi0Cp1+Yd4
-         FWeXKI2KtIrZfEhbZ1LXpspxf5iaeHCP0YMYX4jssLUf/UjpLBSJ4J3BiEiZTTcdbfUE
-         Mj3/Vsb65eBVHSVHNIA6dIfuWdOYEpbX1som9rCIcWQ1NjewKIZ2HL138UUV8C7thepg
-         Ef1lBoq9ioqXQ/RZpRGSzyZBb10nV6k9dcp4d6NiMh+zh5d7pVcjzXAdbPZT3O7PKKN4
-         5H6XBmyb2qV/rO79vGd3VdOxu3EWq6Pwe0QEYtthkv5ifNr+NQVdSu0TRZQJ2b5dHsiW
-         VSnw==
-X-Gm-Message-State: ACgBeo1XAec5ttEg5w+25ItNldX0hfUps+ECNlGZgqnK2Rb741/WRqN+
-	18oRUi7c7VGQpZx64JcddsP4HOdFXnI6N7ArQpA=
-X-Google-Smtp-Source: AA6agR5CfpBYT1/n0Fz3b0mpL30Y1BQpcR5ZJ1q53vOkI+o8r7h1QJKT9bGnP/JXhqgwA8TQcF5sWeEJfeZ5+jaoGc0=
-X-Received: by 2002:a17:902:f646:b0:168:e2da:8931 with SMTP id
- m6-20020a170902f64600b00168e2da8931mr2450692plg.84.1659075444381; Thu, 28 Jul
- 2022 23:17:24 -0700 (PDT)
+	id 1oHJSJ-001vli-9h; Fri, 29 Jul 2022 06:26:40 +0000
+X-UUID: d83923f8d8d84b7a817b20444c59f418-20220728
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:7a6ffd08-756b-47d1-8d40-c7873085ebbc,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:08c8b224-a982-4824-82d2-9da3b6056c2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: d83923f8d8d84b7a817b20444c59f418-20220728
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1363290430; Thu, 28 Jul 2022 23:26:31 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 29 Jul 2022 14:26:13 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 29 Jul 2022 14:26:12 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
+	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
+	<wenst@chromium.org>, kyrie wu <kyrie.wu@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
+	<irui.wang@mediatek.com>
+Subject: [V6,6/8] media: mtk-jpegdec: add output pic reorder interface
+Date: Fri, 29 Jul 2022 14:26:01 +0800
+Message-ID: <20220729062603.5533-7-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220729062603.5533-1-irui.wang@mediatek.com>
+References: <20220729062603.5533-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
-References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-13-peterwu.pub@gmail.com>
- <CAHp75Vf85_uzA9fRxTizbPJxODcXFpM4wuU6DxP2j9UA47B_2g@mail.gmail.com>
-In-Reply-To: <CAHp75Vf85_uzA9fRxTizbPJxODcXFpM4wuU6DxP2j9UA47B_2g@mail.gmail.com>
-From: szuni chen <szunichen@gmail.com>
-Date: Fri, 29 Jul 2022 14:17:13 +0800
-Message-ID: <CA+hk2fYcw0szJ7bBvfEjtyUE_Z61_A1vFWmPSdhe-gmd5jbC6g@mail.gmail.com>
-Subject: Re: [PATCH v6 12/13] leds: flash: mt6370: Add MediaTek MT6370
- flashlight support
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>, Lee Jones <lee.jones@linaro.org>, 
-	Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han <jingoohan1@gmail.com>, 
-	Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_231727_296045_D137E0A2 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20220728_232639_349524_59A9BE25 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,40 +83,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Andy Shevchenko <andy.shevchenko@gmail.com> =E6=96=BC 2022=E5=B9=B47=E6=9C=
-=8825=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=884:51=E5=AF=AB=E9=81=93=
-=EF=BC=9A
->
-> On Fri, Jul 22, 2022 at 12:25 PM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> >
-> > From: Alice Chen <alice_chen@richtek.com>
-> >
-> > The MediaTek MT6370 is a highly-integrated smart power management IC,
-> > which includes a single cell Li-Ion/Li-Polymer switching battery
-> > charger, a USB Type-C & Power Delivery (PD) controller, dual Flash
-> > LED current sources, a RGB LED driver, a backlight WLED driver,
-> > a display bias driver and a general LDO for portable devices.
-> >
-> > The Flash LED in MT6370 has 2 channels and support torch/strobe mode.
-> > Add the support of MT6370 FLASH LED.
-> >
-> > Signed-off-by: Alice Chen <alice_chen@richtek.com>
->
-> This SoB chain is wrong. Prioritize and read Submitting Patches!
->
-Hi Andy,
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-After reading the Submitted Patches,
-ChiaEn Wu wasn't involved in the development but he submitted the patch,
-So, ChiaEn Wu <chiaen_wu@richtek.com> should be the last SoB, right?
-I will revise SoB to
+add output reorder func to reorder the output images
+to ensure the output pic is consistent with the input images.
 
-Signed-off-by: SzuNi Chen <alice_chen@richtek.com>
-Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: irui wang <irui.wang@mediatek.com>
+---
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 47 ++++++++++++++++++-
+ 1 file changed, 45 insertions(+), 2 deletions(-)
 
-If there is anything else I need to fix, please let me know. Thank you.
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+index 6a5806df9917..1ea3ce7049f1 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+@@ -440,6 +440,49 @@ void mtk_jpeg_dec_set_config(void __iomem *base,
+ }
+ EXPORT_SYMBOL_GPL(mtk_jpeg_dec_set_config);
+ 
++static void mtk_jpegdec_put_buf(struct mtk_jpegdec_comp_dev *jpeg)
++{
++	struct mtk_jpeg_src_buf *dst_done_buf, *tmp_dst_done_buf;
++	struct vb2_v4l2_buffer *dst_buffer;
++	struct list_head *temp_entry;
++	struct list_head *pos = NULL;
++	struct mtk_jpeg_ctx *ctx;
++	unsigned long flags;
++
++	ctx = jpeg->hw_param.curr_ctx;
++	if (unlikely(!ctx)) {
++		dev_err(jpeg->dev, "comp_jpeg ctx fail !!!\n");
++		return;
++	}
++
++	dst_buffer = jpeg->hw_param.dst_buffer;
++	if (!dst_buffer) {
++		dev_err(jpeg->dev, "comp_jpeg dst_buffer fail !!!\n");
++		return;
++	}
++
++	dst_done_buf = container_of(dst_buffer, struct mtk_jpeg_src_buf, b);
++
++	spin_lock_irqsave(&ctx->done_queue_lock, flags);
++	list_add_tail(&dst_done_buf->list, &ctx->dst_done_queue);
++	while (!list_empty(&ctx->dst_done_queue) &&
++	       (pos != &ctx->dst_done_queue)) {
++		list_for_each_prev_safe(pos, temp_entry, &ctx->dst_done_queue) {
++			tmp_dst_done_buf = list_entry(pos,
++						      struct mtk_jpeg_src_buf,
++						      list);
++			if (tmp_dst_done_buf->frame_num ==
++				ctx->last_done_frame_num) {
++				list_del(&tmp_dst_done_buf->list);
++				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
++						  VB2_BUF_STATE_DONE);
++				ctx->last_done_frame_num++;
++			}
++		}
++	}
++	spin_unlock_irqrestore(&ctx->done_queue_lock, flags);
++}
++
+ static void mtk_jpegdec_timeout_work(struct work_struct *work)
+ {
+ 	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
+@@ -460,7 +503,7 @@ static void mtk_jpegdec_timeout_work(struct work_struct *work)
+ 	atomic_inc(&master_jpeg->dechw_rdy);
+ 	wake_up(&master_jpeg->dec_hw_wq);
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+-	v4l2_m2m_buf_done(dst_buf, buf_state);
++	mtk_jpegdec_put_buf(cjpeg);
+ }
+ 
+ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+@@ -500,7 +543,7 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+ 
+ 	buf_state = VB2_BUF_STATE_DONE;
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+-	v4l2_m2m_buf_done(dst_buf, buf_state);
++	mtk_jpegdec_put_buf(jpeg);
+ 	pm_runtime_put(ctx->jpeg->dev);
+ 	clk_disable_unprepare(jpeg->jdec_clk.clks->clk);
+ 
+-- 
+2.18.0
 
-
-Best Regards,
-Szuni Chen
 
