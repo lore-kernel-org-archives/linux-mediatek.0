@@ -4,79 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6CE0C00144
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 15:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34343C00144
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Jul 2022 15:20:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JVW1HuRhi3qWhCumOh2BN9qRaoJYOTe2cMXmsKboVPA=; b=4lt22KJ5nQuAXn1kJ/9ojgPXmv
-	QYGQk+woK9fbmc+lay2UT/7jSfeASgfSiJUOtPMxVUJED1d/nNNGd3EgUiZUQIcWN+aCf3ZJbcOZF
-	NQhFxwnL+SJDv7DL/lwZxmzerGARu1klpFlV5G0ClIQqjnAbmmuiXwsZntQEbYsJQUJMG2L8BYQk8
-	jHNNRGkjVOy2YejMvF8HtodGgZeuh+XKC0jDro+mromJ02dyq/1f7MvRnY+1ttxUIey1zcHQeVZ2O
-	WyQgNCQ860oqC9pOM8twj4HVUY8QEi5QMmOybMCz9IzG7uRGw2DhSvlGs9WZf1DafX0RaLxct3icv
-	P2jWPGrQ==;
+	bh=JpxH+0pcpwdGFQIy9DRev+uNqMcyJUe+RuBBYCncU+8=; b=hbfrabJUXeoi+75nsC/czrf1Ra
+	vhGOdbfZYrUX64lpXHFraTL77gDC8+BNBi6Hs2iWdXWe4b0jfms4bKH0VLIAxwfsNZD1FoBNEYD0L
+	pSrqXmuMnjkQd2Ojcaq3C7VuauoS+V8Q1wuGBJ6XeuYCP5T7aJB3skxxryDQ51YDCymirRv8ynSad
+	rdA/W1lWzV/tyYk5Xh7hFdvOTPVbL0u//YKnYoy/pME60cb8mygGpfCnU8PWGdjGP881rpbEsd88U
+	IUql9cOCPoQjZIIklxHGOYPcyr0XlI7F76t1TVS1oZPYCdh+Cic+pX6zTvvskHx7tM/+h14pj8ixG
+	q6w8A+ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHRiS-005nqy-V4; Fri, 29 Jul 2022 15:15:52 +0000
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+	id 1oHRn1-005prx-L4; Fri, 29 Jul 2022 15:20:35 +0000
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHRiG-005nkT-CO
-	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 15:15:42 +0000
-Received: by mail-yb1-xb32.google.com with SMTP id e127so7927725yba.12
-        for <linux-mediatek@lists.infradead.org>; Fri, 29 Jul 2022 08:15:38 -0700 (PDT)
+	id 1oHRmr-005plc-4n
+	for linux-mediatek@lists.infradead.org; Fri, 29 Jul 2022 15:20:26 +0000
+Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-3246910dac3so2507657b3.12
+        for <linux-mediatek@lists.infradead.org>; Fri, 29 Jul 2022 08:20:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=JVW1HuRhi3qWhCumOh2BN9qRaoJYOTe2cMXmsKboVPA=;
-        b=q3+xVd38htCkerZKxQ6R7n4Dj/dhgTXP8cf1zgt0TETxOzRPDIPko+9f0eqCQOzoxF
-         o/Y64pJri8xB0On7D4lX+BJ33/XKXOk/Es62jTldY/l7pg4XOKeesDuPqY9fiz35PN5G
-         7Q2AerqnCZzrSfQgwj6hmLEds9r22fcQSYT/X3u/T4uNZHd1i2qdUo5V0H04IxJc+hdX
-         q+wUd3CTnyTcE9E/+/Qtp8AHG0baKZiTcvw/mh/ongkjwlo96i1Lzlpt50A9cL96srAM
-         YmE9GBS1/BXs2uYAh2q0wlxlqZDTKhh4lnaIsthfcd1q6Lj0fE/O46aD/eehLc9aD+kl
-         L3tA==
+        bh=JpxH+0pcpwdGFQIy9DRev+uNqMcyJUe+RuBBYCncU+8=;
+        b=uaoD4+E11ru9kzNBwgCQg73wXXd8Qu535Vg4usFywm+XxTbn2bQFO0gYrVGIETI09L
+         1Mum+2d/sLV21Vijzmrbj3cHaNttcffFcy9nAvdaTJvNLtd0s0nXHj44Wrm7u+85uV7W
+         svON+Shi7/KnZtWbSC9jkTaLZoqmXf57fYb62YNvFdcmHwtVGMvoFiz+icftdxSUGTVY
+         IoD2YK4GiJMI9Hh9/GR2wDrnRc1RCTLMRNvx3O/BydKEgRdLTdksjyPUwC/YKeuOnt0P
+         zmd1FGJUhOgqBbv2Ujh1SwpPJLhxb1YEYgiLyVuf2J0qeDpX38Tlx+1J9/WRnFqfz6HI
+         tCGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=JVW1HuRhi3qWhCumOh2BN9qRaoJYOTe2cMXmsKboVPA=;
-        b=3qy3BtzPjWDUYvpjRY3xDt3At8PvHz+iPh6sFdWzea9+qUtu7Rz1qLhq0SNwb8WhX+
-         FwQdULXyVTyRQ8HyoPBepq4fI+ObZDBEOf13VYPH+RpyMWUQV5NhDbGU8JYZ5dTLjLwL
-         5+ENIrdAz9YfKTbnqLj05X9WT7FaOZPW9t08heD12+Bt/ZU17qO+AbCIGU4ZEBuoCigx
-         KSFWpx6M7geS3gwmmfdXlwuu0nzGOZCq3jLKwXGpgtnc5IbsKa2zWJhAde/DRFQK//vi
-         ub80LtLQRLHFqgy2oWehNy9bDI6rqBgBmpLYaNj7ZhPayxjcGZQhl0g4Rn7ehA9hkN2n
-         hwwg==
-X-Gm-Message-State: ACgBeo3w3Dns06If+22Yhfml5KfvryhcKtRXtXwTd2jx0bFEGazmfTjz
-	CgzD1crenxLViloooTT8BAVk2SMo/uYFfYJKv1t4QA==
-X-Google-Smtp-Source: AA6agR7MjsWrl5+wY6we1QLY1FGUyJgK/g+rqxviL46ZaTQ/lIO46FFNuI2HHXPoibeBW6Xc014AeHOzzqbfCG2Ff7Y=
-X-Received: by 2002:a25:bb12:0:b0:66f:3c5f:dd9c with SMTP id
- z18-20020a25bb12000000b0066f3c5fdd9cmr2700663ybg.520.1659107737834; Fri, 29
- Jul 2022 08:15:37 -0700 (PDT)
+        bh=JpxH+0pcpwdGFQIy9DRev+uNqMcyJUe+RuBBYCncU+8=;
+        b=fim/mYa/kLq12sm2GSynlI+2v2H5K1e7CM1uJIfKM/D9ZDix3m5QITst2lZerlX7BG
+         SuoLehXfcDRcrk+4Vhmt74MHzXNiH3RE8DYG+xsoxM/udAbuksBwJRUSXmxxzBeGnRXA
+         MsYPruMMnzd7Dmuxcbt0ORnlc6GxD/1JmOtV9vMf7p0zM403bIbaHNjcJ3/tfxTCTNnG
+         c45HGVpZGMIqd1ocudpJ90GEjsGt9qQBHnBkH9hY6r3eYoHmV+6yyjwg4tES/0cNNpnf
+         PcG55HhZsSBHY6piEgz5SOyvdIqH6wRW6gILxA/Fgav9OvdBMY3+57+QflngwXByrLzI
+         yaTQ==
+X-Gm-Message-State: ACgBeo1UkG9lDsygmv1KD6+Bdkk+dLMLEER536R8X8blNtZuy562qgHM
+	2PI6cmqLLJAv0vI+YutLBh83o/nnUeNTWKD3NeCaaA==
+X-Google-Smtp-Source: AA6agR5LgLR6pYTs5w5w5fc+1Z3RdxkEoqGGkvJvcfN8qQUqzHYmYQWuz6pJKO/kmJsT/6k5rd+apjFglbV7OmOEMoc=
+X-Received: by 2002:a81:b046:0:b0:31d:bd47:7fb with SMTP id
+ x6-20020a81b046000000b0031dbd4707fbmr3601026ywk.88.1659108021846; Fri, 29 Jul
+ 2022 08:20:21 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220726135506.485108-1-bchihi@baylibre.com> <20220726135506.485108-3-bchihi@baylibre.com>
- <1658866142.328871.782232.nullmailer@robh.at.kernel.org>
-In-Reply-To: <1658866142.328871.782232.nullmailer@robh.at.kernel.org>
+References: <20220726135506.485108-1-bchihi@baylibre.com> <20220726135506.485108-2-bchihi@baylibre.com>
+ <24250d03-b25f-e521-5abd-f36109885c36@linaro.org>
+In-Reply-To: <24250d03-b25f-e521-5abd-f36109885c36@linaro.org>
 From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Fri, 29 Jul 2022 17:15:01 +0200
-Message-ID: <CAGuA+opZSoWLZ62tZMdA1GoUe7N9K8DV19AUAophCQpr6rNH9Q@mail.gmail.com>
-Subject: Re: [PATCH v8 2/6] dt-bindings: thermal: Add binding document for
- LVTS thermal controllers
-To: Rob Herring <robh@kernel.org>
-Cc: rui.zhang@intel.com, rex-bc.chen@mediatek.com, daniel.lezcano@linaro.org, 
-	amitk@kernel.org, mka@chromium.org, linux-kernel@vger.kernel.org, 
-	abailon@baylibre.com, robh+dt@kernel.org, p.zabel@pengutronix.de, 
-	matthias.bgg@gmail.com, linux-pm@vger.kernel.org, rafael@kernel.org, 
-	khilman@baylibre.com, fan.chen@mediatek.com, 
-	linux-arm-kernel@lists.infradead.org, krzk+dt@kernel.org, 
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	louis.yu@mediatek.com, james.lo@mediatek.com
+Date: Fri, 29 Jul 2022 17:19:45 +0200
+Message-ID: <CAGuA+opxZ7DDrWHcnTRhMcm7YveCAypdy9MDSytt58asgekayw@mail.gmail.com>
+Subject: Re: [PATCH v8 1/6] thermal: mediatek: Relocate driver to mediatek folder
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: rafael@kernel.org, rui.zhang@intel.com, amitk@kernel.org, 
+	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, khilman@baylibre.com, 
+	mka@chromium.org, robh+dt@kernel.org, krzk+dt@kernel.org, 
+	matthias.bgg@gmail.com, p.zabel@pengutronix.de, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	james.lo@mediatek.com, fan.chen@mediatek.com, louis.yu@mediatek.com, 
+	rex-bc.chen@mediatek.com, abailon@baylibre.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220729_081540_426215_1A944AEB 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20220729_082025_194047_F1BEA1F8 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,61 +89,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 26, 2022 at 10:09 PM Rob Herring <robh@kernel.org> wrote:
+On Thu, Jul 28, 2022 at 10:53 AM Daniel Lezcano
+<daniel.lezcano@linaro.org> wrote:
 >
-> On Tue, 26 Jul 2022 15:55:02 +0200, Balsam CHIHI wrote:
-> > This patch adds dt-binding documents for mt8192 and mt8195 thermal controllers.
-> >
-> > Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-> > ---
-> >  .../thermal/mediatek,mt8192-lvts.yaml         | 73 ++++++++++++++++++
-> >  .../thermal/mediatek,mt8195-lvts.yaml         | 75 +++++++++++++++++++
-> >  2 files changed, 148 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,mt8192-lvts.yaml
-> >  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,mt8195-lvts.yaml
-> >
 >
-> My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-> on your patch (DT_CHECKER_FLAGS is new in v5.13):
+> Hi Balsam,
 >
-> yamllint warnings/errors:
+> On 26/07/2022 15:55, Balsam CHIHI wrote:
+> > Add Mediatek proprietary folder to upstream more thermal zone and cooler
+> > drivers. Relocate the original thermal controller driver to it and rename
+> > as soc_temp.c to show its purpose more clearly.
 >
-> dtschema/dtc warnings/errors:
-> Error: Documentation/devicetree/bindings/thermal/mediatek,mt8195-lvts.example.dts:32.36-37 syntax error
-> FATAL ERROR: Unable to parse input tree
-> make[1]: *** [scripts/Makefile.lib:383: Documentation/devicetree/bindings/thermal/mediatek,mt8195-lvts.example.dtb] Error 1
-> make[1]: *** Waiting for unfinished jobs....
-> make: *** [Makefile:1404: dt_binding_check] Error 2
+> I realize the Kconfig, Makefiles format are not consistent across the
+> boards. Before I fix this, you can comply to the format:
 >
-> doc reference errors (make refcheckdocs):
+> drivers/thermal/Kconfig:
 >
-> See https://patchwork.ozlabs.org/patch/
+> menu "Mediatek thermal drivers"
+> depends on ARCH_MEDIATEK || COMPILE_TEST
+> source "drivers/thermal/mediatek/Kconfig"
+> endmenu
 >
-> This check can fail if there are any dependencies. The base for a patch
-> series is generally the most recent rc1.
+> drivers/thermal/Makefile:
 >
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up to
-> date:
+> -obj-$(CONFIG_MTK_THERMAL)      += mtk_thermal.o
+> +obj-y                          += mediatek
 >
-> pip3 install dtschema --upgrade
+> drivers/thermal/mediatek/Kconfig:
 >
-> Please check and re-submit.
+> config MTK_SOC_THERMAL
+>         tristate "Temperature sensor driver for MediaTek SoCs"
+>         depends on HAS_IOMEM
+>         depends on NVMEM
+>         depends on RESET_CONTROLLER
+>         help
+>                 Enable this option if you want to get SoC temperature
+>                 information for MediaTek platforms. This driver
+>                 configures thermal controllers to collect temperature
+>                 via AUXADC interface.
 >
+> drivers/thermal/mediatek/Makefile:
+>
+> obj-$(MTK_SOC_THERMAL)  += soc_temp.o
+>
+> However, rename 'soc_temp' to something more SoC explicit, eg.
+> mtxxx_thermal.c
+>
+> Thanks
+>
+>    -- Daniel
 
-Hello Rob,
+Hello Daniel,
 
-This error only appear when I apply my series directly on top of linux-5.19.rc8.
-But, when I apply the other two series that mine depends on,
-
-https://patchwork.kernel.org/project/linux-pm/cover/20220722200007.1839356-1-daniel.lezcano@linexp.org/
-https://patchwork.kernel.org/project/linux-mediatek/cover/20220523093346.28493-1-rex-bc.chen@mediatek.com/
-
-and run "dt_binding_check" again against my YAML file, it does not
-print the error you found above.
-Would you check it, please?
-Thank you.
+Thank you for the feedback.
+Changes have been made as you suggested.
+Resubmitting seen.
 
 Best regards.
 Balsam.
