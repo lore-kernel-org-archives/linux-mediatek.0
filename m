@@ -4,83 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 704FFC3F6B0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Jul 2022 08:26:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0948EC04A68
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Jul 2022 09:15:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=36su4m2QjNQHBx4LFEg5D6awN/f2ZqxlK1cfInLaW0k=; b=tYWJfwBfISOvpgCbo8dqOMAd9F
-	0u+ia44d2pmkjqJiJBUNv+DyBCaEbmBQIFyxDDbiZVh5qUJEzmUpf8JsQkvPJgmlBHbH6xflNNjZd
-	ls3y+2/oGd+m/QhIQ4hJ/xn8PevK+qeb9KypkNJCzybCVW3zBFBCn79B8N6AQFmQm/kev8PNZqvKC
-	YGEg3xUh5b+PYJcMD49lpmSgnSxoW7RVdCVhtahg0qZE0AFGZD3va8h0sJ3DEwfMU1bJlo31vY9fF
-	pIjSW2pZRwJ2lZ/2DD7Gm8IihOqBWZPHfDzdQQo4GH4+mGq2UOVHpMBzWl/SGMktgHeLtqPcwQSeR
-	u71fegMg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6amBzc2l5Qg9X8wwEWGPGGsS5wwMLagMH0O7eUBGVNw=; b=NWk+QbA2EFLFuZMhijkY03rC/b
+	kcL6lM3nno/MLzkA5RfmqT5mUjtZlmdB3DW8ZTz2g3dpacTmFcYirN4zVFv/9bil0x3cH0L+SRNkM
+	fDp+Xy9EvcBhni0IHQGU/qabCjUxJustCk2+cJdpQmbTaZiVvpK2mLMGosSBqGnubrnvqeDcQkCie
+	UmNGV1orf06WXH1XGyyGDpJPrIzXGWVpOAK2Q/5JreKSSM/ofazaIgmNM2tBaWgpHVrnA7S5Tn4dB
+	4rrJT+SAnNfBRQ5/W1p/TFb90YZMhChYaiGcicPZfs5inOYnUNwQDCGCSUAycefPsdDojf7DyCj+c
+	pRDOkZ8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHhnI-00GeU3-CL; Sat, 30 Jul 2022 08:25:56 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1oHiYp-00GuLc-4M; Sat, 30 Jul 2022 09:15:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHhn7-00GeQ4-2I; Sat, 30 Jul 2022 08:25:46 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1659169507; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ikFsdtZS6QLQV7wSSuu0bVueSxmcxFv4Ze50nTcsSkhess3qh89zI+TmWNjMcLW86AI2LwysHmW7RQq6MJNwpOHiP1ONXDHPzsenibLgQxwwPN673VoyNXPAe6mbpKhIBiDOdyg4sfOj1lqKyfGSerWQtK9vdHGgY1ZqgekU5pQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1659169507; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=36su4m2QjNQHBx4LFEg5D6awN/f2ZqxlK1cfInLaW0k=; 
-	b=LTCvyeBRkbu3CLzAff9ttLUsmCMQsvoDNcufIv9Rtn4To6xBcbPtDszYiF3USHSJ5T8xxiTTHISRXzHqYJT1mnUeIfGvcAET4Q6hRTNE5hShs50DuuNPvqrwqGccxxF6U98o83Wv+RAohOTxETHb8d2h4GNZKVeHSVb8klYXS0k=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1659169507;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=36su4m2QjNQHBx4LFEg5D6awN/f2ZqxlK1cfInLaW0k=;
-	b=Eg/bfs6AKyEGW9uenYU81ZDZ2AxVkJJst7BH4RJuWUWJT6zhKVwpFEIUCqGJjpmn
-	VHX4b9gpExL9P6bajvIuCskR1KkHu1T5GrTc3ECJoNbdTJSg5EKkS4GkabBOWOpEgNF
-	TuYbWsVoKDV84qcNu3xg9e5Fg+P1pIVpGrXjSKIo=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 165916950613718.65544541820657; Sat, 30 Jul 2022 01:25:06 -0700 (PDT)
-Message-ID: <a2dd1ce2-a23e-8894-5ef4-b73ef0dad89d@arinc9.com>
-Date: Sat, 30 Jul 2022 11:24:59 +0300
+	id 1oHiYg-00GuGe-7f; Sat, 30 Jul 2022 09:14:55 +0000
+X-UUID: 3f976ab7fc4344c6aae487b35ac78a99-20220730
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:a309a37b-2335-4a2c-9b33-d12ba36c1865,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:4685cfcf-a6cf-4fb6-be1b-c60094821ca2,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 3f976ab7fc4344c6aae487b35ac78a99-20220730
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yf.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1727922087; Sat, 30 Jul 2022 02:14:47 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Sat, 30 Jul 2022 17:04:10 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Sat, 30 Jul 2022 17:04:10 +0800
+From: <yf.wang@mediatek.com>
+To: Christoph Hellwig <hch@lst.de>, Robin Murphy <robin.murphy@arm.com>,
+	"Marek Szyprowski" <m.szyprowski@samsung.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, "open list:DMA MAPPING HELPERS"
+	<iommu@lists.linux.dev>, open list <linux-kernel@vger.kernel.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support"
+	<linux-mediatek@lists.infradead.org>
+CC: <wsd_upstream@mediatek.com>, Libo Kang <Libo.Kang@mediatek.com>, Ning Li
+	<Ning.Li@mediatek.com>, Yong Wu <Yong.Wu@mediatek.com>, Miles Chen
+	<miles.chen@mediatek.com>, Yunfei Wang <yf.wang@mediatek.com>
+Subject: [PATCH] dma-debug: Remove warning in dma_debug_entry
+Date: Sat, 30 Jul 2022 16:56:55 +0800
+Message-ID: <20220730085657.31977-1-yf.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [RFC PATCH net-next] dt-bindings: net: dsa: mediatek,mt7530:
- completely rework binding
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Frank Wunderlich
- <frank-w@public-files.de>, Luiz Angelo Daros de Luca <luizluca@gmail.com>,
- Sander Vanheule <sander@svanheule.net>,
- =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
- Daniel Golle <daniel@makrotopia.org>, erkin.bozoglu@xeront.com,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220726122406.31043-1-arinc.unal@arinc9.com>
- <a8c778db-f52c-45cb-c671-556b24f3cb46@linaro.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <a8c778db-f52c-45cb-c671-556b24f3cb46@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220730_012545_209893_CFC71800 
-X-CRM114-Status: UNSURE (   9.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220730_021454_294179_9F3B8C32 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,25 +79,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+From: Yunfei Wang <yf.wang@mediatek.com>
 
-On 27.07.2022 13:29, Krzysztof Kozlowski wrote:
-> On 26/07/2022 14:24, Arınç ÜNAL wrote:
->> Completely rework the binding for MediaTek MT7530 and MT7531 switches.
-> 
-> Rules are the same for schema as for driver - one patch, one thing. You
-> mix here trivial style changes (removal of quotes) with functional stuff.
-> 
-> Patch is unreviewable, so it must be split.
+The same physical address can be mapped multiple times, and it is not
+required to have attributes such as DMA_ATTR_SKIP_CPU_SYNC, but
+dma_debug_entry will report an warning if active_cacheline_insert
+returns -EEXIST, which can cause a lot of trouble.
 
-Thank you. I'm going to split it this way:
-- Trivial changes; fix title and property descriptions, remove quotes, 
-add me as maintainer, etc.
-- Update binding description
-- Update json-schema for compatible devices
-- Update examples
+For example, if two dma engine share the same dma-buf, the two dma
+engine drivers will call the DMA API to map their own dma address
+respectively, which is normal follow, but dma_debug_entry will
+report an warning.
 
-Let me know if you have any objections.
+In addition, if active_cacheline_insert returns -EEXIST, the
+active_cacheline_inc_overlap function already has the logic to
+check overlapping mappings counter, if it exceeded
+ACTIVE_CACHELINE_MAX_OVERLAP overlapping mappings, it already
+has a warning.
+And also, if warning as panic is turned on, it will cause KE.
 
-Arınç
+So, dma_debug_entry does not need report warning.
+
+Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+---
+ kernel/dma/debug.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/kernel/dma/debug.c b/kernel/dma/debug.c
+index 2caafd13f8aa..ad731f7858c9 100644
+--- a/kernel/dma/debug.c
++++ b/kernel/dma/debug.c
+@@ -566,9 +566,6 @@ static void add_dma_entry(struct dma_debug_entry *entry, unsigned long attrs)
+ 	if (rc == -ENOMEM) {
+ 		pr_err_once("cacheline tracking ENOMEM, dma-debug disabled\n");
+ 		global_disable = true;
+-	} else if (rc == -EEXIST && !(attrs & DMA_ATTR_SKIP_CPU_SYNC)) {
+-		err_printk(entry->dev, entry,
+-			"cacheline tracking EEXIST, overlapping mappings aren't supported\n");
+ 	}
+ }
+ 
+-- 
+2.18.0
+
 
