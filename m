@@ -4,79 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6930EC00140
-	for <linux-mediatek@archiver.kernel.org>; Sun, 31 Jul 2022 08:54:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB7B0C00140
+	for <linux-mediatek@archiver.kernel.org>; Sun, 31 Jul 2022 19:05:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e44jgZLP1HEmwyKrbQI6PjgpbbGNrnF9zlgtzzmI5E4=; b=WMxVOg4dYuW9lsTvAvzfE3XHrf
-	gCFE6CKCTzR/q0v/rNVFN099iWH5ed7r5BVxNZX3H94A3t9VrC5iS2qvmqNFR21IwYQT6obU8IVMp
-	AIoEuzLEr6EoJTuMyHvaZpEM4aCTvF5qPiOjP3GinEFXUjVnSAQfgKS5U42us3zZyMuDVuI4kXfMa
-	6WiMeh/Tym1dp9qTdnLS+BnZOsRRMgleQEC/UWc6PrVPeoH2P8XO+DDqJQNBq/CnEeia+bK/XMgQ3
-	MkgTDdW5bx2Z/8zG/JB02kFNqrzndDGcqf0H2DodABr3RqS8yPqSaxwqz8aNR0V4U07MrzwSCJ7uu
-	SNgivt4g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	List-Owner; bh=4FhSlQ9FfMpGJ7dO6xOT+Rn97esvk0TEw13bTMkN0mo=; b=WGl3t0VBDt5U99
+	h9YyA08tfdu0bBhCgIZ5RbYnCg7R+O75hWy7wM1EFqqqXm2Y6nRqgj+JDfEve/Ll0Fok0VNcJ4DmJ
+	7gCRDpTaqeZayhvddkc53D533wCbXhdlJE5VcKgI5kXwUdm4NpPwUH66UDdgibSEh9jLYzG3yZu9F
+	rQuTAO7c3EpRtgmFrWJ8nX4kA2Z2DAaQvGpVsKDN3bOIm7NiAjev1zpnIqkBeeTI6ndj/cTy4fAI2
+	NqIX0Q8l5xAEipW9kBRTrXnxAxRtEz7D3Cpek2uE6meb+aoAI1QeDNurkYIWpR1lLLwy5VzFcxo3+
+	TxLLXNRdWlDlEyj6YR0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oI4i1-00A9ee-1K; Sun, 31 Jul 2022 08:54:01 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1oIEFL-00FEXW-AR; Sun, 31 Jul 2022 19:05:03 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oI4hm-00A9V0-2X; Sun, 31 Jul 2022 08:53:47 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1659257594; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=SwhoDV58nqvepP1FZQz3lBk58BugH67wtYS9Q533jp/uMQ95jx/de2mkaj+62SkIkjlgHeIiY+1xXVwbowtxMVQSMGIsLUPYArVtUwdofYo65L5mSbNliRl+N1c6lBRou/bwLNp/Ytm3XGj+hu8CzstSszG6zxYhvc7p9BAplD8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1659257594; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=e44jgZLP1HEmwyKrbQI6PjgpbbGNrnF9zlgtzzmI5E4=; 
-	b=W/wQbvX1Ka30D8KO87ltRJuydbjYfjuTCwKDkTfz61x/+Bl7XNmO5VIe/ZPzFfp7gacNR4CwLADFlnl3G+TWqQ5FTuiI14dUv89nH0lXKqTYtL3wyUjnc0+9O2SPGwJNJAN6BBQr704g0DC0syC8PvXe+4JMLB8qnOgir+yQkEw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1659257594;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=e44jgZLP1HEmwyKrbQI6PjgpbbGNrnF9zlgtzzmI5E4=;
-	b=KjN7uqVX/myj83W3MyCfA25qyyvecseRVcrxkS1mx32RyHFQTbo8l9HQhAQFM/uO
-	Yq5+jpJp0R+wLCCPeQNp9x+6pCVOz3ZvrpT7MH5fY6uz8yWp8S1pk6FQTyM/rF5JUo5
-	IxTGXg/gzfU/JrU7Kwjzt3SF5UuUR/oCROgWLHRU=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1659257591946592.7858418300208; Sun, 31 Jul 2022 01:53:11 -0700 (PDT)
-Message-ID: <6b29e16c-d4b8-93af-ce0f-84d308a88089@arinc9.com>
-Date: Sun, 31 Jul 2022 11:53:05 +0300
+	id 1oIEEw-00FEDi-3V; Sun, 31 Jul 2022 19:04:41 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 4459AB80DC8;
+	Sun, 31 Jul 2022 19:04:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F59BC433D7;
+	Sun, 31 Jul 2022 19:04:33 +0000 (UTC)
+Received: from rostedt by gandalf.local.home with local (Exim 4.96)
+	(envelope-from <rostedt@goodmis.org>)
+	id 1oIEEq-007G2B-0I;
+	Sun, 31 Jul 2022 15:04:32 -0400
+Message-ID: <20220731190431.934571546@goodmis.org>
+User-Agent: quilt/0.66
+Date: Sun, 31 Jul 2022 15:03:30 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: linux-kernel@vger.kernel.org
+Cc: Ingo Molnar <mingo@kernel.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [for-next][PATCH 01/21] USB: mtu3: tracing: Use the new __vstring() helper
+References: <20220731190329.641602282@goodmis.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 0/4] completely rework mediatek,mt7530 binding
-Content-Language: en-US
-To: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Frank Wunderlich
- <frank-w@public-files.de>, Luiz Angelo Daros de Luca <luizluca@gmail.com>,
- Sander Vanheule <sander@svanheule.net>,
- =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
- Daniel Golle <daniel@makrotopia.org>, erkin.bozoglu@xeront.com,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220730142627.29028-1-arinc.unal@arinc9.com>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20220730142627.29028-1-arinc.unal@arinc9.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=UTF-8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220731_015346_232134_216E5897 
-X-CRM114-Status: GOOD (  12.79  )
+X-CRM114-CacheID: sfid-20220731_120438_338028_7194A0B2 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,31 +68,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is for net-next, I forgot to include it in the subject.
+From: "Steven Rostedt (Google)" <rostedt@goodmis.org>
 
-Arınç
+Instead of open coding a __dynamic_array() with a fixed length (which
+defeats the purpose of the dynamic array in the first place). Use the new
+__vstring() helper that will use a va_list and only write enough of the
+string into the ring buffer that is needed.
 
-On 30.07.2022 17:26, Arınç ÜNAL wrote:
-> Hello.
-> 
-> This patch series brings complete rework of the mediatek,mt7530 binding.
-> 
-> The binding is checked with "make dt_binding_check
-> DT_SCHEMA_FILES=mediatek,mt7530.yaml".
-> 
-> If anyone knows the GIC bit for interrupt for multi-chip module MT7530 in
-> MT7623AI SoC, let me know. I'll add it to the examples.
-> 
-> If anyone got a Unielec U7623 or another MT7623AI board, please reach out.
-> 
-> Arınç ÜNAL (4):
->    dt-bindings: net: dsa: mediatek,mt7530: make trivial changes
->    dt-bindings: net: dsa: mediatek,mt7530: update examples
->    dt-bindings: net: dsa: mediatek,mt7530: update binding description
->    dt-bindings: net: dsa: mediatek,mt7530: update json-schema
-> 
->   .../bindings/net/dsa/mediatek,mt7530.yaml       | 1006 +++++++++++++-----
->   1 file changed, 764 insertions(+), 242 deletions(-)
-> 
-> 
+Link: https://lkml.kernel.org/r/20220719112719.17e796c6@gandalf.local.home
+
+Cc: Ingo Molnar <mingo@kernel.org>
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-usb@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Tested-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Signed-off-by: Steven Rostedt (Google) <rostedt@goodmis.org>
+---
+ drivers/usb/mtu3/mtu3_trace.h | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+index 1b897636daf2..a98fa012b729 100644
+--- a/drivers/usb/mtu3/mtu3_trace.h
++++ b/drivers/usb/mtu3/mtu3_trace.h
+@@ -18,18 +18,16 @@
+ 
+ #include "mtu3.h"
+ 
+-#define MTU3_MSG_MAX	256
+-
+ TRACE_EVENT(mtu3_log,
+ 	TP_PROTO(struct device *dev, struct va_format *vaf),
+ 	TP_ARGS(dev, vaf),
+ 	TP_STRUCT__entry(
+ 		__string(name, dev_name(dev))
+-		__dynamic_array(char, msg, MTU3_MSG_MAX)
++		__vstring(msg, vaf->fmt, vaf->va)
+ 	),
+ 	TP_fast_assign(
+ 		__assign_str(name, dev_name(dev));
+-		vsnprintf(__get_str(msg), MTU3_MSG_MAX, vaf->fmt, *vaf->va);
++		__assign_vstr(msg, vaf->fmt, vaf->va);
+ 	),
+ 	TP_printk("%s: %s", __get_str(name), __get_str(msg))
+ );
+-- 
+2.35.1
 
