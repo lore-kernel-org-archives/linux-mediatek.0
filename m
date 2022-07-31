@@ -4,68 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 731AEC19F2A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Jul 2022 21:42:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6930EC00140
+	for <linux-mediatek@archiver.kernel.org>; Sun, 31 Jul 2022 08:54:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EEZJegvkXmNvO4clUx6dPeVmv4JNyxctAwR1j8c43QA=; b=E5ex7LFWqmvG8YxDcVJ066s092
-	kxY2G42ZBDFBzrXniyfO5oizAofo3ldzGiy5UDICozNuesgbwXgSLdld7lxByU45djUSImWV9/5U9
-	NIy0Hgmw4pfqOvXJz32hG2TK0aRTyvvjpZpFOCcd6RtVHiEUp3Lg91NtAEagK4h64VGIl19ssVdd+
-	/HBQ5HIj7cglKzP23cJ5x8tVRgpsMYGs/jHSL7KQlIn13KB0wUdZRw4XGfBzUbZDtRkHpKOHWNalY
-	0h1Jd0gq+jR3ZeBqUYVXptREs5Q4rrBUmjG6gDVXnZQREwx0eGFVyI+OFJsh55YS5Xw4hTaLnMGa7
-	eKqcGvAA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e44jgZLP1HEmwyKrbQI6PjgpbbGNrnF9zlgtzzmI5E4=; b=WMxVOg4dYuW9lsTvAvzfE3XHrf
+	gCFE6CKCTzR/q0v/rNVFN099iWH5ed7r5BVxNZX3H94A3t9VrC5iS2qvmqNFR21IwYQT6obU8IVMp
+	AIoEuzLEr6EoJTuMyHvaZpEM4aCTvF5qPiOjP3GinEFXUjVnSAQfgKS5U42us3zZyMuDVuI4kXfMa
+	6WiMeh/Tym1dp9qTdnLS+BnZOsRRMgleQEC/UWc6PrVPeoH2P8XO+DDqJQNBq/CnEeia+bK/XMgQ3
+	MkgTDdW5bx2Z/8zG/JB02kFNqrzndDGcqf0H2DodABr3RqS8yPqSaxwqz8aNR0V4U07MrzwSCJ7uu
+	SNgivt4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHuE2-004kQ7-7Y; Sat, 30 Jul 2022 21:42:22 +0000
-Received: from jabberwock.ucw.cz ([46.255.230.98])
+	id 1oI4i1-00A9ee-1K; Sun, 31 Jul 2022 08:54:01 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oHuDn-004kG6-IA; Sat, 30 Jul 2022 21:42:09 +0000
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
-	id 166D61C0001; Sat, 30 Jul 2022 23:42:06 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucw.cz; s=gen1;
-	t=1659217326;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=EEZJegvkXmNvO4clUx6dPeVmv4JNyxctAwR1j8c43QA=;
-	b=JhTPNqhtgDpVDKFDtpjcA2Twtqu8DqbYMC54pUN6e1L3IsfbH8feFNeEY97iNaPgKG6DLa
-	vZeaX5O2xZH1+9NqAOsNvVmmP6yoPqh0RU7vxbUzYkWl2IDU28vPW0pLUx15CtXpPSL9jf
-	NXoRhATfSpZHeWB0nmkCup62xs+PetM=
-Date: Sat, 30 Jul 2022 23:42:05 +0200
-From: Pavel Machek <pavel@ucw.cz>
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: lee.jones@linaro.org, daniel.thompson@linaro.org, jingoohan1@gmail.com,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com, sre@kernel.org, chunfeng.yun@mediatek.com,
-	gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de,
-	lgirdwood@gmail.com, broonie@kernel.org, linux@roeck-us.net,
-	heikki.krogerus@linux.intel.com, deller@gmx.de,
-	andy.shevchenko@gmail.com, chiaen_wu@richtek.com,
-	alice_chen@richtek.com, cy_huang@richtek.com,
-	dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
-	linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org,
-	szunichen@gmail.com
-Subject: Re: [PATCH v6 12/13] leds: flash: mt6370: Add MediaTek MT6370
- flashlight support
-Message-ID: <20220730214205.GK23307@duo.ucw.cz>
-References: <20220722102407.2205-1-peterwu.pub@gmail.com>
- <20220722102407.2205-13-peterwu.pub@gmail.com>
+	id 1oI4hm-00A9V0-2X; Sun, 31 Jul 2022 08:53:47 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1659257594; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=SwhoDV58nqvepP1FZQz3lBk58BugH67wtYS9Q533jp/uMQ95jx/de2mkaj+62SkIkjlgHeIiY+1xXVwbowtxMVQSMGIsLUPYArVtUwdofYo65L5mSbNliRl+N1c6lBRou/bwLNp/Ytm3XGj+hu8CzstSszG6zxYhvc7p9BAplD8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1659257594; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=e44jgZLP1HEmwyKrbQI6PjgpbbGNrnF9zlgtzzmI5E4=; 
+	b=W/wQbvX1Ka30D8KO87ltRJuydbjYfjuTCwKDkTfz61x/+Bl7XNmO5VIe/ZPzFfp7gacNR4CwLADFlnl3G+TWqQ5FTuiI14dUv89nH0lXKqTYtL3wyUjnc0+9O2SPGwJNJAN6BBQr704g0DC0syC8PvXe+4JMLB8qnOgir+yQkEw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1659257594;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=e44jgZLP1HEmwyKrbQI6PjgpbbGNrnF9zlgtzzmI5E4=;
+	b=KjN7uqVX/myj83W3MyCfA25qyyvecseRVcrxkS1mx32RyHFQTbo8l9HQhAQFM/uO
+	Yq5+jpJp0R+wLCCPeQNp9x+6pCVOz3ZvrpT7MH5fY6uz8yWp8S1pk6FQTyM/rF5JUo5
+	IxTGXg/gzfU/JrU7Kwjzt3SF5UuUR/oCROgWLHRU=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1659257591946592.7858418300208; Sun, 31 Jul 2022 01:53:11 -0700 (PDT)
+Message-ID: <6b29e16c-d4b8-93af-ce0f-84d308a88089@arinc9.com>
+Date: Sun, 31 Jul 2022 11:53:05 +0300
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="EMQjp+MvU6EBGjHc"
-Content-Disposition: inline
-In-Reply-To: <20220722102407.2205-13-peterwu.pub@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 0/4] completely rework mediatek,mt7530 binding
+Content-Language: en-US
+To: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Frank Wunderlich
+ <frank-w@public-files.de>, Luiz Angelo Daros de Luca <luizluca@gmail.com>,
+ Sander Vanheule <sander@svanheule.net>,
+ =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
+ Daniel Golle <daniel@makrotopia.org>, erkin.bozoglu@xeront.com,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220730142627.29028-1-arinc.unal@arinc9.com>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20220730142627.29028-1-arinc.unal@arinc9.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220730_144207_787651_E6589A67 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20220731_015346_232134_216E5897 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,59 +91,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This is for net-next, I forgot to include it in the subject.
 
---EMQjp+MvU6EBGjHc
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Arınç
 
-Hi!
-
-> From: Alice Chen <alice_chen@richtek.com>
->=20
-> The MediaTek MT6370 is a highly-integrated smart power management IC,
-> which includes a single cell Li-Ion/Li-Polymer switching battery
-> charger, a USB Type-C & Power Delivery (PD) controller, dual Flash
-> LED current sources, a RGB LED driver, a backlight WLED driver,
-> a display bias driver and a general LDO for portable devices.
->=20
-> The Flash LED in MT6370 has 2 channels and support torch/strobe mode.
-> Add the support of MT6370 FLASH LED.
->=20
-> Signed-off-by: Alice Chen <alice_chen@richtek.com>
-
-> +config LEDS_MT6370_FLASHLIGHT
-> +	tristate "Flash LED Support for MediaTek MT6370 PMIC"
-> +	depends on LEDS_CLASS
-
-I'd name it just LEDS_MT6370_FLASH.
-
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (C) 2022 Richtek Technology Corp.
-> + *
-> + * Author: Alice Chen <alice_chen@richtek.com
-
-Add ">" at end of line.
-
-The series is quite big, would it be possible to submit LED changes
-in separate series?
-
-Thanks,
-								Pavel
-
---=20
-People of Russia, stop Putin before his war on Ukraine escalates.
-
---EMQjp+MvU6EBGjHc
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCYuWlrQAKCRAw5/Bqldv6
-8s+wAJ4tcHfH66JAvG66D+7AtIPL7xaD/ACeLylCABT4fJdlPhsq4ijIBLwsq3M=
-=kLCB
------END PGP SIGNATURE-----
-
---EMQjp+MvU6EBGjHc--
+On 30.07.2022 17:26, Arınç ÜNAL wrote:
+> Hello.
+> 
+> This patch series brings complete rework of the mediatek,mt7530 binding.
+> 
+> The binding is checked with "make dt_binding_check
+> DT_SCHEMA_FILES=mediatek,mt7530.yaml".
+> 
+> If anyone knows the GIC bit for interrupt for multi-chip module MT7530 in
+> MT7623AI SoC, let me know. I'll add it to the examples.
+> 
+> If anyone got a Unielec U7623 or another MT7623AI board, please reach out.
+> 
+> Arınç ÜNAL (4):
+>    dt-bindings: net: dsa: mediatek,mt7530: make trivial changes
+>    dt-bindings: net: dsa: mediatek,mt7530: update examples
+>    dt-bindings: net: dsa: mediatek,mt7530: update binding description
+>    dt-bindings: net: dsa: mediatek,mt7530: update json-schema
+> 
+>   .../bindings/net/dsa/mediatek,mt7530.yaml       | 1006 +++++++++++++-----
+>   1 file changed, 764 insertions(+), 242 deletions(-)
+> 
+> 
 
