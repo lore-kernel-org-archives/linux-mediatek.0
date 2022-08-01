@@ -4,59 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 663A3C00144
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 12:18:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2002EC19F2A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 12:44:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=huS3KpipftskmOKG4u217ZV4p5GFWwfnWD211ydmfqE=; b=pP/0d2FuiZCMQ1hG9vaQfcWetS
-	QCgpkQ+15K2URF6XHia4Z3R8lCVgoAFnrXkW+Uy61jhj3nRp2ZzwZQU6QpQsPlSRiJnpEQUkIQmAN
-	U+ME05TW8cOqJb3usdKup5WSOboItfqfw4vuG8yMBJLcefuZ9FzYiiMaH1cnFz2Jo3zhlTonCz+ig
-	mG+gnaToyL/wFDU31PNrGms7po9kP5SfQkD7WyYQY7PPzcqx0SYuVWU1lNC5uz1dlEDPbJrjXHfju
-	jQovLE17DDMFGdAWEiT807LNnKP7XF6oh+RsPdoUsL/MJSrDuU2irjKpmgF3ompfaCEA0lvmtJv//
-	3Esg7R3g==;
+	bh=LcoRKUZxcX+fwnP/w+Ek0L1ccliKcMJGGIMkqg+/gBk=; b=mODuwwb8Q/nW4kbmAHSp0nbK8e
+	5kZKiHAi6O22+j62ovubPGEhwCO7sQBzHAbmssh2wQWyvAsKkeWyBIH/a7ZgP/67hqhSsfZplHp6R
+	WC1ixCWiqgFDy+W9Syv4BupbAPTj1BSxzJH/9H+AHdmTnSSY61M/3Rl9s/0/egdUBu75IkqopTHVZ
+	eHfwFRbXmyEnen8QYwGjKjgbBzWlKOrjxvJm3W6+ZLYNL28GL4MAnfei1U10e+Py+7GO6IqZIWd3z
+	vIjj0OD9oOmC5waIMgLGLS42VOTFt9CpXTnPx0ZRXC1Z5+3xtqUtpfJGcACpPFiQkvd5+WjLLploQ
+	oVUhal3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIUNB-0063pL-9u; Mon, 01 Aug 2022 12:18:13 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIUCe-005tsv-AZ; Mon, 01 Aug 2022 12:07:23 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 326EC139F;
-	Mon,  1 Aug 2022 05:07:18 -0700 (PDT)
-Received: from [10.57.10.23] (unknown [10.57.10.23])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6162E3F73B;
-	Mon,  1 Aug 2022 05:07:15 -0700 (PDT)
-Message-ID: <19a0a508-fb39-8b06-ce0f-ce26767ef57f@arm.com>
-Date: Mon, 1 Aug 2022 13:07:10 +0100
+	id 1oIUmo-006Jzl-62; Mon, 01 Aug 2022 12:44:42 +0000
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oIUcj-006Ddi-A7
+	for linux-mediatek@lists.infradead.org; Mon, 01 Aug 2022 12:34:24 +0000
+Received: by mail-yb1-xb2a.google.com with SMTP id j195so18631113ybj.11
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 Aug 2022 05:34:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=LcoRKUZxcX+fwnP/w+Ek0L1ccliKcMJGGIMkqg+/gBk=;
+        b=8Qq67pSUym7bRxaJ1wXQxajEMJS6HpKos8PyqVw/AIYaTRUkyuiHDv0eycBw7WteMz
+         vA2ffmtRj5NpE9imFKTBnZZHdh7Veak9BjcfMJEO1TvQsTZncZ8wpJSSeWS/Fzl2r4oo
+         crxtVikU87MU4cvow8KAMXuSE8Fw4ECrP5KwDbAKdS8agCFU52209EKhx1fzCsQSWcmG
+         Bf2T4r9FGmsl0SSufopazQYH6qUx7esh3yBY7jYpKJtzHa+9ugcTbzjnNcl7YUrB99/v
+         9oEa7EI5KFpJbbLUS6osrgC2g3+vL4a3PJZdTepn337fCpKGSdA1qUQAomSfAXFQxHJJ
+         e1NA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=LcoRKUZxcX+fwnP/w+Ek0L1ccliKcMJGGIMkqg+/gBk=;
+        b=xJrU6vMiJgHSiAbnOhHeidLuNoHsB56XHhDcjM2jvHJB2EaQakYFvQRt/s4HvfHv3j
+         vbzWANOruNF1MJR16Flq8v/diPZNUZPz9g4VGvoft3ncr/yL8TZCaQzVvulqOnBDdLSU
+         mwek0hPsYu6zBgxkEqQKGLcKOmEeOZC79BWNvnPjpxuuT2SoM07y1DJDc5Z/5y0Vb5s0
+         zYtx/BjOwnDi99HM4xaZlcagrdPtoP+YvrdBGUmKcIurTmtMMdgFdVWlMhjmgiVJDfOD
+         5e0wejvH2zwCWOygvs0vAgOrSUX94tYqv1HIyGs9lfbAdCPKmuH5PRm+8E/1ItgwZUsK
+         T9kg==
+X-Gm-Message-State: ACgBeo3CzL27LuNfaSJYMO9/4zanaOwQ8KxANMRr7wWrfaP4RjTPrTcD
+	6vUnOLqCg2wlu61sL18gg8WQW12LNj0i3gRwOwSczw==
+X-Google-Smtp-Source: AA6agR6gUV377VODoTtcZyENpHL6zTEL/yl0+xktWswsikj2XjC6xG8FsEO1Dd8D5SwcKI+6sZgTq8Xo9pCEdETIOIU=
+X-Received: by 2002:a25:4941:0:b0:670:24c7:dc96 with SMTP id
+ w62-20020a254941000000b0067024c7dc96mr10354775yba.22.1659357247554; Mon, 01
+ Aug 2022 05:34:07 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] dma-debug: Remove warning in dma_debug_entry
-Content-Language: en-GB
-To: yf.wang@mediatek.com, Christoph Hellwig <hch@lst.de>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "open list:DMA MAPPING HELPERS" <iommu@lists.linux.dev>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-Cc: wsd_upstream@mediatek.com, Libo Kang <Libo.Kang@mediatek.com>,
- Ning Li <Ning.Li@mediatek.com>, Yong Wu <Yong.Wu@mediatek.com>,
- Miles Chen <miles.chen@mediatek.com>
-References: <20220730085657.31977-1-yf.wang@mediatek.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20220730085657.31977-1-yf.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20220726135506.485108-1-bchihi@baylibre.com> <20220726135506.485108-6-bchihi@baylibre.com>
+ <20220729201421.fxybo57g46ftghgd@notapiano>
+In-Reply-To: <20220729201421.fxybo57g46ftghgd@notapiano>
+From: Balsam CHIHI <bchihi@baylibre.com>
+Date: Mon, 1 Aug 2022 14:33:31 +0200
+Message-ID: <CAGuA+ooqk-tf5FVfEbA0WdjTOo2fPJi-+AaHDC9jXgw=3vKq0g@mail.gmail.com>
+Subject: Re: [PATCH v8 5/6] arm64: dts: mt8195: Add efuse node to mt8195
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: rafael@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org, 
+	amitk@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	khilman@baylibre.com, mka@chromium.org, robh+dt@kernel.org, 
+	krzk+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, james.lo@mediatek.com, 
+	fan.chen@mediatek.com, louis.yu@mediatek.com, rex-bc.chen@mediatek.com, 
+	abailon@baylibre.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220801_050720_522848_694C858D 
-X-CRM114-Status: GOOD (  22.79  )
+X-CRM114-CacheID: sfid-20220801_053417_641780_8FEFB717 
+X-CRM114-Status: GOOD (  17.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,66 +91,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-07-30 09:56, yf.wang@mediatek.com wrote:
-> From: Yunfei Wang <yf.wang@mediatek.com>
-> 
-> The same physical address can be mapped multiple times, and it is not
-> required to have attributes such as DMA_ATTR_SKIP_CPU_SYNC, but
-> dma_debug_entry will report an warning if active_cacheline_insert
-> returns -EEXIST, which can cause a lot of trouble.
-> 
-> For example, if two dma engine share the same dma-buf, the two dma
-> engine drivers will call the DMA API to map their own dma address
-> respectively, which is normal follow, but dma_debug_entry will
-> report an warning.
-> 
-> In addition, if active_cacheline_insert returns -EEXIST, the
-> active_cacheline_inc_overlap function already has the logic to
-> check overlapping mappings counter, if it exceeded
-> ACTIVE_CACHELINE_MAX_OVERLAP overlapping mappings, it already
-> has a warning.
-> And also, if warning as panic is turned on, it will cause KE.
-> 
-> So, dma_debug_entry does not need report warning.
+On Fri, Jul 29, 2022 at 10:14 PM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
+>
+> On Tue, Jul 26, 2022 at 03:55:05PM +0200, Balsam CHIHI wrote:
+> > This adds the efuse node. This will be required by the thermal driver
+> > to get the calibration data.
+> >
+> > Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 16 ++++++++++++++++
+> >  1 file changed, 16 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot=
+/dts/mediatek/mt8195.dtsi
+> > index 0ff34edcf8c8..4fbf24b5d202 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > @@ -1236,6 +1236,22 @@ nor_flash: spi@1132c000 {
+> >                       status =3D "disabled";
+> >               };
+> >
+> > +             efuse: efuse@11c10000 {
+> > +                     compatible =3D "mediatek,efuse";
+> > +                     reg =3D <0 0x11c10000 0 0x1000>;
+> > +                     #address-cells =3D <1>;
+> > +                     #size-cells =3D <1>;
+> > +                     lvts_efuse_data1: lvts1-calib@1bc {
+> > +                             reg =3D <0x1bc 0x14>;
+> > +                     };
+> > +                     lvts_efuse_data2: lvts2-calib@1d0 {
+> > +                             reg =3D <0x1d0 0x38>;
+> > +                     };
+> > +                     svs_calibration: calib@580 {
+> > +                             reg =3D <0x580 0x64>;
+> > +                     };
+> > +             };
+> > +
+>
+> This commit doesn't apply, there's already an efuse node on mt8195.dtsi. =
+Please
+> rebase.
+>
+> Thanks,
+> N=C3=ADcolas
 
-I'm sure this has come up before, but I can't remember enough of the 
-context to easily search for the previous thread.
+Hello N=C3=ADcolas,
 
-In short, this check is not entirely correct, but removing it isn't 
-right either, since that would be too much of a step backwards in terms 
-of debug coverage IMO. What we need here is to do a bit more work to 
-differentiate between mappings of the exact same buffer, which are 
-allowed, vs. any other kind of partial overlaps which are still illegal 
-and definitely deserve a warning.
+Thank you so much for the review.
+I rebased on top of the latest kernel version "linux-5.19.0" but I
+can't find efuse node on mt8195.dtsi.
+But, this node is indeed present on mt8192.dtsi.
 
-Furthermore, even for the valid dma-buf import case I'm not convinced 
-that the SKIP_CPU_SYNC check can be dropped either. If one device can 
-import a buffer while another device is already accessing it, there are 
-definitely combinations of parameters which could lead to potential data 
-loss (e.g. a non-coherent DMA_TO_DEVICE mapping during a non-coherent 
-DMA_FROM_DEVICE access, a or non-coherent DMA_FROM_DEVICE mapping during 
-a coherent DMA_TO_DEVICE access).
-
-Thanks,
-Robin.
-
-> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
-> ---
->   kernel/dma/debug.c | 3 ---
->   1 file changed, 3 deletions(-)
-> 
-> diff --git a/kernel/dma/debug.c b/kernel/dma/debug.c
-> index 2caafd13f8aa..ad731f7858c9 100644
-> --- a/kernel/dma/debug.c
-> +++ b/kernel/dma/debug.c
-> @@ -566,9 +566,6 @@ static void add_dma_entry(struct dma_debug_entry *entry, unsigned long attrs)
->   	if (rc == -ENOMEM) {
->   		pr_err_once("cacheline tracking ENOMEM, dma-debug disabled\n");
->   		global_disable = true;
-> -	} else if (rc == -EEXIST && !(attrs & DMA_ATTR_SKIP_CPU_SYNC)) {
-> -		err_printk(entry->dev, entry,
-> -			"cacheline tracking EEXIST, overlapping mappings aren't supported\n");
->   	}
->   }
->   
+Best regards,
+Balsam
 
