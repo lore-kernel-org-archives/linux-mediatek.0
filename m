@@ -4,69 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97C65C00144
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 13:57:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E08DC00144
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 14:06:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z8M6fvGhI6BHzmDRGUdOmYxCAMYl+TV28SN8ooXTMG4=; b=XVLjGpVLItVepfcgF78RmdEN7m
-	GxrOI9qi0CVAnWTnh21HMWxmYpooQZzES3v5efE6fouyZ/GWuxw0lZaFiYc1DgRvsR//4XNJRjOn/
-	pGQSf8NGGXWHzwC5pqAo4yLqELmRVs8yy5wcS06EkVHN0b8c6FFE2eb5QIAeWi+Z58/LKOw740Abj
-	TN0tjS1WFo7S4O3hoG31WZLUywGbT4Zv6iZ/zSpwinQWYBE7VJljlAcb8hEeNLWPdOW+72GRpVjbg
-	d9UbNXpW4nDe3UUbuurc5dJ80cQcslsSeX0zdMW9/7CXwvIUyoPfrehjclUgVg9xpYBBaUC3LfqYu
-	Nr7NaULg==;
+	bh=G5UhvGzRrQcBGCWtOdqFEgZwHRGSXUKRpcxRX6CD/7s=; b=vBpVAZ8DPgdTwx4Mev52uirmLG
+	sTV8YESDm0Zks98iR16oDhy/mgsPPp+NfkWq8BEtMX3QcH/LQCc9xEdZkG6uFz+jmN1OYxnh42tbz
+	qc/4Hrm241uVgDrfnTyv6SW4wAQ0YFufzHYgBOodK5VAANlxtyKPO7cboM1qDyrfou8Dwc6zj7jQh
+	BrsxpbqpdH/jLe33oYJXbL5WMgg5VgMvQ015NdXqt2EGBDrv/CixrUTg0KrsnastM+lu7T/fkxheG
+	mpCKWD/aBn6iRtKlEal66p2YUb0G4lVab/LOiYLazrVIIb6KipMulZNuHvrak4t9q0sj/p3FBLTvO
+	fE+KVy8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIVvE-006s0i-L2; Mon, 01 Aug 2022 13:57:28 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oIW41-006vUZ-Pb; Mon, 01 Aug 2022 14:06:33 +0000
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIVv2-006rsF-Hy; Mon, 01 Aug 2022 13:57:18 +0000
-Received: from notapiano (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 08D606601BA6;
-	Mon,  1 Aug 2022 14:57:05 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1659362228;
-	bh=8QNCSs2CJVUaA/nm2AntjPKq5zW1gHSa89sDl9+SitQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=geXyPyLTVTBpug0yIc9edkx0PZ4OLb+YZBimraT31hA+ST855QlVeiwLZDIyUt5kV
-	 XfecpVmwLNZZoWwoVc/Cbm+fBDekWsMlIJcOF8+bwRZemY+T2Sdh87oxNgk04UEDyO
-	 ckmkJeMTI9YH8/eDlXMjj2mbPv+bjId0M/4eLfdcq+pc9UqnJE7mSrmLEGH51LRzjL
-	 z+xhu5eXX5MKprD62KBjuQXBozsosgfFwwRZRYtB0a5FnGB27Zw8B+b0jSd877QHbw
-	 sfVkXvJ49SN8QWrIRDYQpGFLkZHSmOF7VQDfu+myEHeIGhAOFSik8MEC+bPejazeQ9
-	 /++jT5dFmy9tw==
-Date: Mon, 1 Aug 2022 09:57:01 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Balsam CHIHI <bchihi@baylibre.com>
-Cc: rafael@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org,
-	amitk@kernel.org, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, khilman@baylibre.com,
-	mka@chromium.org, robh+dt@kernel.org, krzk+dt@kernel.org,
-	matthias.bgg@gmail.com, p.zabel@pengutronix.de,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, james.lo@mediatek.com,
-	fan.chen@mediatek.com, louis.yu@mediatek.com,
-	rex-bc.chen@mediatek.com, abailon@baylibre.com
-Subject: Re: [PATCH v8 5/6] arm64: dts: mt8195: Add efuse node to mt8195
-Message-ID: <20220801135701.dke4m7yshxucewnb@notapiano>
-References: <20220726135506.485108-1-bchihi@baylibre.com>
- <20220726135506.485108-6-bchihi@baylibre.com>
- <20220729201421.fxybo57g46ftghgd@notapiano>
- <CAGuA+ooqk-tf5FVfEbA0WdjTOo2fPJi-+AaHDC9jXgw=3vKq0g@mail.gmail.com>
+	id 1oIW3y-006vQe-PR
+	for linux-mediatek@lists.infradead.org; Mon, 01 Aug 2022 14:06:32 +0000
+Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-3238de26fb1so91570967b3.8
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 Aug 2022 07:06:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=G5UhvGzRrQcBGCWtOdqFEgZwHRGSXUKRpcxRX6CD/7s=;
+        b=rAPWjvDI2x1MNj7Bu1CCOyfybJSBeCkfp/LO5TNPavNuMm1PCpq9vZac1affXCfVvt
+         HfQUD8IDa7FYkHaDZMmcJgTJksD4uPs0blDFqQ4TqvxFRHM8ukS10lHLa+Zyoq/SswML
+         dFVjUkxMDEro74y/G2bBenIgy9dTvbXgFbkcc5PnIJ+4PHL3ocZEDki/xulKClATsVTa
+         8hSok7ks8K8ULZoPe5omstJhi8J3ZuM96/LSTUO/Sv9qL1U6a5psDTTSJObennoaI22A
+         l4ANlFj4EZS+9RCDlPFPQfV+2r3BvdiPIQi/w8S3AYyLyMpIaQxPp6Uea92VnIcplfZ1
+         WoRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=G5UhvGzRrQcBGCWtOdqFEgZwHRGSXUKRpcxRX6CD/7s=;
+        b=ZBxnjgAyVdvBHpgCVeQ7KUNXZH/W5Ry4K98r9cy6rBR6QpX6ZOXhT1SBDFqkE1Ytd/
+         HL478YMWz+h4kJXVAj9oGLG/y/tcPojV/XSTOy1EwBMMXRKGNCi89QbPQLe0oPgDS8j0
+         jGUc0hoP59kfx18xVQwrpTRAFaNQEyNy4M91TXsByeQ/n/DIz1KjnGpG2Y7GXRbpINMG
+         MFiSKSa0sZmTrRuZPD35W/7FuZzOZqo7bYlFKu/5Yky4oR1Kxztci/vx+Mdt0OQY1iGr
+         0d6OI2mJ6fnhUh5pSqxtcMD5eC7I4WgB4NGC2kSdum3uh45LiBp9tyeJxHhKqchjtBj1
+         Zh3w==
+X-Gm-Message-State: ACgBeo3JwLNZWlyGi4UEC8EL2XQtASijKYA3dqp+u8f87LsYUx1xhYl4
+	pZczTxf330vTmDzadSi6ICK4pW5GdODgFr5MbeWRdg==
+X-Google-Smtp-Source: AA6agR6vW/VAc4Dmh2BSzM1CMV3dpkiThH+Yy3VeiFrVu6/wrlBxfsp4wfADdlQot0YVXYIc8OqwDm89KXSYApQ8LVE=
+X-Received: by 2002:a0d:f045:0:b0:324:55ec:6595 with SMTP id
+ z66-20020a0df045000000b0032455ec6595mr11570098ywe.255.1659362787035; Mon, 01
+ Aug 2022 07:06:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGuA+ooqk-tf5FVfEbA0WdjTOo2fPJi-+AaHDC9jXgw=3vKq0g@mail.gmail.com>
+References: <20220628113714.7792-1-yee.lee@mediatek.com> <20220628113714.7792-2-yee.lee@mediatek.com>
+ <CAMuHMdX=MTsmo5ZVa8ya3xmr4Mx7f0PB3gvFF42pdaTYB6-u5A@mail.gmail.com>
+ <20220715163305.e70c8542d5e7d96c5fd87185@linux-foundation.org>
+ <CAMuHMdWSsibmL=LauLm+OTn0SByLA4tGsbhbMsnvSRdb381RTQ@mail.gmail.com>
+ <CANpmjNPhhPUZFSZaLbwyJfACWMOqFchvm-Sx+iwGSM3sxkky8Q@mail.gmail.com>
+ <20220719161356.df8d7f6fc5414cc9cc7f8302@linux-foundation.org> <dc7800c0-43f3-6453-ef5f-1ceb659062de@intel.com>
+In-Reply-To: <dc7800c0-43f3-6453-ef5f-1ceb659062de@intel.com>
+From: Marco Elver <elver@google.com>
+Date: Mon, 1 Aug 2022 16:05:50 +0200
+Message-ID: <CANpmjNNpvbBR6z0T7m1gCp1XoVOHN7CpHoauMKLvtFd5NYJK2Q@mail.gmail.com>
+Subject: Re: [PATCH v2 1/1] mm: kfence: apply kmemleak_ignore_phys on early
+ allocated pool
+To: Dave Hansen <dave.hansen@intel.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>, Geert Uytterhoeven <geert@linux-m68k.org>, 
+	yee.lee@mediatek.com, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, 
+	Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, "open list:KFENCE" <kasan-dev@googlegroups.com>, 
+	"open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Dave Hansen <dave.hansen@linux.intel.com>, "the arch/x86 maintainers" <x86@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220801_065716_958530_A1729D38 
-X-CRM114-Status: GOOD (  22.29  )
+X-CRM114-CacheID: sfid-20220801_070630_850387_B87C88F7 
+X-CRM114-Status: GOOD (  24.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,67 +96,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 01, 2022 at 02:33:31PM +0200, Balsam CHIHI wrote:
-> On Fri, Jul 29, 2022 at 10:14 PM Nícolas F. R. A. Prado
-> <nfraprado@collabora.com> wrote:
+[+x86 maintainers ...]
+
+On Wed, 20 Jul 2022 at 01:22, Dave Hansen <dave.hansen@intel.com> wrote:
+> On 7/19/22 16:13, Andrew Morton wrote:
+> > On Mon, 18 Jul 2022 16:26:25 +0200 Marco Elver <elver@google.com> wrote:
 > >
-> > On Tue, Jul 26, 2022 at 03:55:05PM +0200, Balsam CHIHI wrote:
-> > > This adds the efuse node. This will be required by the thermal driver
-> > > to get the calibration data.
-> > >
-> > > Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> > > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-> > > ---
-> > >  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 16 ++++++++++++++++
-> > >  1 file changed, 16 insertions(+)
-> > >
-> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > > index 0ff34edcf8c8..4fbf24b5d202 100644
-> > > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> > > @@ -1236,6 +1236,22 @@ nor_flash: spi@1132c000 {
-> > >                       status = "disabled";
-> > >               };
-> > >
-> > > +             efuse: efuse@11c10000 {
-> > > +                     compatible = "mediatek,efuse";
-> > > +                     reg = <0 0x11c10000 0 0x1000>;
-> > > +                     #address-cells = <1>;
-> > > +                     #size-cells = <1>;
-> > > +                     lvts_efuse_data1: lvts1-calib@1bc {
-> > > +                             reg = <0x1bc 0x14>;
-> > > +                     };
-> > > +                     lvts_efuse_data2: lvts2-calib@1d0 {
-> > > +                             reg = <0x1d0 0x38>;
-> > > +                     };
-> > > +                     svs_calibration: calib@580 {
-> > > +                             reg = <0x580 0x64>;
-> > > +                     };
-> > > +             };
-> > > +
+> >> On Sat, 16 Jul 2022 at 20:43, Geert Uytterhoeven <geert@linux-m68k.org> wrote:
+> >> [...]
+> >>>> - This patch has been accused of crashing the kernel:
+> >>>>
+> >>>>         https://lkml.kernel.org/r/YsFeUHkrFTQ7T51Q@xsang-OptiPlex-9020
+> >>>>
+> >>>>   Do we think that report is bogus?
+> >>> I think all of this is highly architecture-specific...
+> >> The report can be reproduced on i386 with CONFIG_X86_PAE=y. But e.g.
+> >> mm/memblock.c:memblock_free() is also guilty of using __pa() on
+> >> previously memblock_alloc()'d addresses. Looking at the phys addr
+> >> before memblock_alloc() does virt_to_phys(), the result of __pa()
+> >> looks correct even on PAE, at least for the purpose of passing it on
+> >> to kmemleak(). So I don't know what that BUG_ON(slow_virt_to_phys() !=
+> >> phys_addr) is supposed to tell us here.
+> >>
+> > It's only been nine years, so I'm sure Dave can remember why he added
+> > it ;)
 > >
-> > This commit doesn't apply, there's already an efuse node on mt8195.dtsi. Please
-> > rebase.
+> >               BUG_ON(slow_virt_to_phys((void *)x) != phys_addr);
 > >
-> > Thanks,
-> > Nícolas
-> 
-> Hello Nícolas,
-> 
-> Thank you so much for the review.
-> I rebased on top of the latest kernel version "linux-5.19.0" but I
-> can't find efuse node on mt8195.dtsi.
-> But, this node is indeed present on mt8192.dtsi.
+> > in arch/x86/mm/physaddr.c:__phys_addr().
+>
+> I think I intended it to double check that the linear map is *actually*
+> a linear map for 'x'.  Sure, we can use the "x - PAGE_OFFSET" shortcut,
+> but did it turn out to be actually accurate for the address it was handed?
+>
+> I'd be curious what the page tables actually say for the address that's
+> causing problems.
 
-Hi Balsam,
+test robot just reminded us again:
+https://lore.kernel.org/all/YufXncrWhJZH0ifB@xsang-OptiPlex-9020/T/#u
 
-no I'm really talking about mt8195. For the dts patches in the series you should
-base on top of Matthias' -next/dts64 branch [1]. And there you can see the efuse
-node on mt8195 [2].
+Few things I noticed:
 
-Thanks,
-Nícolas
+* mm/memblock.c's memblock_free() also uses __pa() to convert back to
+physical address. Presumably that's also wrong. What should be used
+instead?
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/log/?h=v5.19-next/dts64
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.19-next/dts64&id=ab43a84c9863b65dc20373d5aca4e4d012aa852e
+* kmemleak happily converts phys_addr_t to unsigned long everywhere,
+but with i386 PAE, this will narrow a 64-bit address to a 32-bit
+address. Is that correct? Does kmemleak need a "depends on 64BIT ||
+!PHYS_ADDR_T_64BIT"?
 
