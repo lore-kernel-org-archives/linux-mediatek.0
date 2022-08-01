@@ -4,84 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E08DC00144
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 14:06:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D603CC00144
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 14:28:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G5UhvGzRrQcBGCWtOdqFEgZwHRGSXUKRpcxRX6CD/7s=; b=vBpVAZ8DPgdTwx4Mev52uirmLG
-	sTV8YESDm0Zks98iR16oDhy/mgsPPp+NfkWq8BEtMX3QcH/LQCc9xEdZkG6uFz+jmN1OYxnh42tbz
-	qc/4Hrm241uVgDrfnTyv6SW4wAQ0YFufzHYgBOodK5VAANlxtyKPO7cboM1qDyrfou8Dwc6zj7jQh
-	BrsxpbqpdH/jLe33oYJXbL5WMgg5VgMvQ015NdXqt2EGBDrv/CixrUTg0KrsnastM+lu7T/fkxheG
-	mpCKWD/aBn6iRtKlEal66p2YUb0G4lVab/LOiYLazrVIIb6KipMulZNuHvrak4t9q0sj/p3FBLTvO
-	fE+KVy8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
+	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vkjdxiDsb9CXu8/kQ3MrnMhTu62kerp9O9ObOXnLx8A=; b=C5bTWFzYkjwlkfvADQz8mFzv28
+	p+nPcg/AVgJpnpngHJcERn0RhII8TaXeM1clqpoEVzWpm6DvpT2rmSmvOSw0tLacUmdt73CbTLb+A
+	GD3zHEFX6J5VRarW+FfZ+hqq7uOo9xQ9IQJLjW4uI8aj78o40Grj751L0qMMOxtriIR+vyVaQ79Jj
+	1dwkQKupoZtCtig6M3A3G8Ue8vyloZF5DyCEGrsh0O76xH+oiJQGD3mUmQ+3dSGga7oLSu1CWM19m
+	Y/ihReAaj3+lEMlFd+oExcLpP05tKFKWBsSonKhg95OFqWeyCvqOCgt/LhC3Z84J06xKBUlTWYK5m
+	/CSZfvXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIW41-006vUZ-Pb; Mon, 01 Aug 2022 14:06:33 +0000
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+	id 1oIWPG-0073rb-0v; Mon, 01 Aug 2022 14:28:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIW3y-006vQe-PR
-	for linux-mediatek@lists.infradead.org; Mon, 01 Aug 2022 14:06:32 +0000
-Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-3238de26fb1so91570967b3.8
-        for <linux-mediatek@lists.infradead.org>; Mon, 01 Aug 2022 07:06:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=G5UhvGzRrQcBGCWtOdqFEgZwHRGSXUKRpcxRX6CD/7s=;
-        b=rAPWjvDI2x1MNj7Bu1CCOyfybJSBeCkfp/LO5TNPavNuMm1PCpq9vZac1affXCfVvt
-         HfQUD8IDa7FYkHaDZMmcJgTJksD4uPs0blDFqQ4TqvxFRHM8ukS10lHLa+Zyoq/SswML
-         dFVjUkxMDEro74y/G2bBenIgy9dTvbXgFbkcc5PnIJ+4PHL3ocZEDki/xulKClATsVTa
-         8hSok7ks8K8ULZoPe5omstJhi8J3ZuM96/LSTUO/Sv9qL1U6a5psDTTSJObennoaI22A
-         l4ANlFj4EZS+9RCDlPFPQfV+2r3BvdiPIQi/w8S3AYyLyMpIaQxPp6Uea92VnIcplfZ1
-         WoRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=G5UhvGzRrQcBGCWtOdqFEgZwHRGSXUKRpcxRX6CD/7s=;
-        b=ZBxnjgAyVdvBHpgCVeQ7KUNXZH/W5Ry4K98r9cy6rBR6QpX6ZOXhT1SBDFqkE1Ytd/
-         HL478YMWz+h4kJXVAj9oGLG/y/tcPojV/XSTOy1EwBMMXRKGNCi89QbPQLe0oPgDS8j0
-         jGUc0hoP59kfx18xVQwrpTRAFaNQEyNy4M91TXsByeQ/n/DIz1KjnGpG2Y7GXRbpINMG
-         MFiSKSa0sZmTrRuZPD35W/7FuZzOZqo7bYlFKu/5Yky4oR1Kxztci/vx+Mdt0OQY1iGr
-         0d6OI2mJ6fnhUh5pSqxtcMD5eC7I4WgB4NGC2kSdum3uh45LiBp9tyeJxHhKqchjtBj1
-         Zh3w==
-X-Gm-Message-State: ACgBeo3JwLNZWlyGi4UEC8EL2XQtASijKYA3dqp+u8f87LsYUx1xhYl4
-	pZczTxf330vTmDzadSi6ICK4pW5GdODgFr5MbeWRdg==
-X-Google-Smtp-Source: AA6agR6vW/VAc4Dmh2BSzM1CMV3dpkiThH+Yy3VeiFrVu6/wrlBxfsp4wfADdlQot0YVXYIc8OqwDm89KXSYApQ8LVE=
-X-Received: by 2002:a0d:f045:0:b0:324:55ec:6595 with SMTP id
- z66-20020a0df045000000b0032455ec6595mr11570098ywe.255.1659362787035; Mon, 01
- Aug 2022 07:06:27 -0700 (PDT)
+	id 1oIWPC-0073nW-ER
+	for linux-mediatek@lists.infradead.org; Mon, 01 Aug 2022 14:28:28 +0000
+X-UUID: 1a78c7786fe64d03b3cfca8e3f815846-20220801
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:e849a180-10bf-4046-afa9-ec779c926289,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:0f94e32,CLOUDID:315cf324-a982-4824-82d2-9da3b6056c2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 1a78c7786fe64d03b3cfca8e3f815846-20220801
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 468895109; Mon, 01 Aug 2022 07:28:17 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 1 Aug 2022 22:28:15 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 1 Aug 2022 22:28:15 +0800
+Subject: Re: [PATCH v1 0/2] ufs: allow vendor disable wb toggle in clock
+ scaling
+To: Avri Altman <Avri.Altman@wdc.com>, "stanley.chu@mediatek.com"
+	<stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
+	<linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
+	<martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
+	<alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>
+CC: "wsd_upstream@mediatek.com" <wsd_upstream@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+	"alice.chao@mediatek.com" <alice.chao@mediatek.com>, "cc.chou@mediatek.com"
+	<cc.chou@mediatek.com>, "chaotian.jing@mediatek.com"
+	<chaotian.jing@mediatek.com>, "jiajie.hao@mediatek.com"
+	<jiajie.hao@mediatek.com>, "powen.kao@mediatek.com" <powen.kao@mediatek.com>,
+	"qilin.tan@mediatek.com" <qilin.tan@mediatek.com>, "lin.gui@mediatek.com"
+	<lin.gui@mediatek.com>
+References: <20220728071637.22364-1-peter.wang@mediatek.com>
+ <DM6PR04MB65757F6A74AA12BD31BCAD39FC969@DM6PR04MB6575.namprd04.prod.outlook.com>
+From: Peter Wang <peter.wang@mediatek.com>
+Message-ID: <1906f059-92ae-1b0d-8ec1-6b28180670fe@mediatek.com>
+Date: Mon, 1 Aug 2022 22:28:15 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-References: <20220628113714.7792-1-yee.lee@mediatek.com> <20220628113714.7792-2-yee.lee@mediatek.com>
- <CAMuHMdX=MTsmo5ZVa8ya3xmr4Mx7f0PB3gvFF42pdaTYB6-u5A@mail.gmail.com>
- <20220715163305.e70c8542d5e7d96c5fd87185@linux-foundation.org>
- <CAMuHMdWSsibmL=LauLm+OTn0SByLA4tGsbhbMsnvSRdb381RTQ@mail.gmail.com>
- <CANpmjNPhhPUZFSZaLbwyJfACWMOqFchvm-Sx+iwGSM3sxkky8Q@mail.gmail.com>
- <20220719161356.df8d7f6fc5414cc9cc7f8302@linux-foundation.org> <dc7800c0-43f3-6453-ef5f-1ceb659062de@intel.com>
-In-Reply-To: <dc7800c0-43f3-6453-ef5f-1ceb659062de@intel.com>
-From: Marco Elver <elver@google.com>
-Date: Mon, 1 Aug 2022 16:05:50 +0200
-Message-ID: <CANpmjNNpvbBR6z0T7m1gCp1XoVOHN7CpHoauMKLvtFd5NYJK2Q@mail.gmail.com>
-Subject: Re: [PATCH v2 1/1] mm: kfence: apply kmemleak_ignore_phys on early
- allocated pool
-To: Dave Hansen <dave.hansen@intel.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>, Geert Uytterhoeven <geert@linux-m68k.org>, 
-	yee.lee@mediatek.com, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, 
-	Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, "open list:KFENCE" <kasan-dev@googlegroups.com>, 
-	"open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Dave Hansen <dave.hansen@linux.intel.com>, "the arch/x86 maintainers" <x86@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <DM6PR04MB65757F6A74AA12BD31BCAD39FC969@DM6PR04MB6575.namprd04.prod.outlook.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220801_070630_850387_B87C88F7 
-X-CRM114-Status: GOOD (  24.53  )
+X-CRM114-CacheID: sfid-20220801_072826_518845_B32FA5B3 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,53 +90,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[+x86 maintainers ...]
 
-On Wed, 20 Jul 2022 at 01:22, Dave Hansen <dave.hansen@intel.com> wrote:
-> On 7/19/22 16:13, Andrew Morton wrote:
-> > On Mon, 18 Jul 2022 16:26:25 +0200 Marco Elver <elver@google.com> wrote:
-> >
-> >> On Sat, 16 Jul 2022 at 20:43, Geert Uytterhoeven <geert@linux-m68k.org> wrote:
-> >> [...]
-> >>>> - This patch has been accused of crashing the kernel:
-> >>>>
-> >>>>         https://lkml.kernel.org/r/YsFeUHkrFTQ7T51Q@xsang-OptiPlex-9020
-> >>>>
-> >>>>   Do we think that report is bogus?
-> >>> I think all of this is highly architecture-specific...
-> >> The report can be reproduced on i386 with CONFIG_X86_PAE=y. But e.g.
-> >> mm/memblock.c:memblock_free() is also guilty of using __pa() on
-> >> previously memblock_alloc()'d addresses. Looking at the phys addr
-> >> before memblock_alloc() does virt_to_phys(), the result of __pa()
-> >> looks correct even on PAE, at least for the purpose of passing it on
-> >> to kmemleak(). So I don't know what that BUG_ON(slow_virt_to_phys() !=
-> >> phys_addr) is supposed to tell us here.
-> >>
-> > It's only been nine years, so I'm sure Dave can remember why he added
-> > it ;)
-> >
-> >               BUG_ON(slow_virt_to_phys((void *)x) != phys_addr);
-> >
-> > in arch/x86/mm/physaddr.c:__phys_addr().
+On 7/29/22 4:43 AM, Avri Altman wrote:
+>> From: Peter Wang <peter.wang@mediatek.com>
+>>
+>> Mediatek ufs do not want to toggle write booster when clock scaling.
+>> This patch set allow vendor disable wb toggle in clock scaling.
+>>
+>> Peter Wang (2):
+>>    ufs: core: interduce a choice of wb toggle in clock scaling
+>>    ufs: host: support wb toggle with clock scaling
+> It would make more sense to squash both patches and add it as #6 after -
+> " Support clk-scaling to optimize power consumption" in your earlier
+> " Provide features and fixes in MediaTek platforms" series.
 >
-> I think I intended it to double check that the linear map is *actually*
-> a linear map for 'x'.  Sure, we can use the "x - PAGE_OFFSET" shortcut,
-> but did it turn out to be actually accurate for the address it was handed?
+> Either way, Looks good to me.
 >
-> I'd be curious what the page tables actually say for the address that's
-> causing problems.
+> Thanks,
+> Avri
 
-test robot just reminded us again:
-https://lore.kernel.org/all/YufXncrWhJZH0ifB@xsang-OptiPlex-9020/T/#u
 
-Few things I noticed:
+Hi Arvi,
 
-* mm/memblock.c's memblock_free() also uses __pa() to convert back to
-physical address. Presumably that's also wrong. What should be used
-instead?
+Yes, it make more sense to enable clock scaling in mediatek platform first.
+I will wait "Provide features and fixes in MediaTek platforms" patch set 
+accepted than update this patch.
 
-* kmemleak happily converts phys_addr_t to unsigned long everywhere,
-but with i386 PAE, this will narrow a 64-bit address to a 32-bit
-address. Is that correct? Does kmemleak need a "depends on 64BIT ||
-!PHYS_ADDR_T_64BIT"?
+Thanks.
+Peter
+
+
 
