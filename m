@@ -4,44 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E436EC00144
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 17:57:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E257BC00144
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 17:58:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4AGBIvqYGEc7iz46/rHoisPzKl94Z4nXzpK7XzD4ejo=; b=yevcKFVDxRO9Ax2IUh5IYMJzGb
-	Fxh7zgullymylgtmMpOutGwGPR4Dq2Cje6OCew9XTYw+tXkvT44svPKFjA2Yz7KJNQF3m+2//2UN2
-	ojeZXzGMDGRbJ23hbkpzC6hCQLCNKTmn5mYpQnn60RYFbHrh/ZXA3ygwDzsw/aEXRYhejvk/xUs6E
-	ad+BOggNRun/nJay/lmkfwQtm1YHUPkqoe3Nda7DkEBGPLmWO+fx/8neEyuV4y/sJCgYWjzv0IR6x
-	AwRr5xIa2QOj3KJoiQ6BoOYNOiGLq2f35YwvG033IsOQPOkXnqQGQAg16YcUC9q3L99H+GCbFN3h7
-	YkE9vCng==;
+	bh=PyZ4L7I/mIwZxg09Gep2df0x0fY4ondC2tyBAL6Nf3A=; b=hmjIiElGFTaPbw9UkiP4QIM9Rx
+	Uw34XKPf23N7uGqzi42iCsg/0Cy1i5/DnYLE6DDoNBRJPV7CdzWl0VT6oiDhgToTmT63UhwFaQBD7
+	8nSuZMDxCVb2KLCZKFBuvrkUu+fDq4wgEdsAi7hSKmHxBgHkdocZLHNzgY83tg2JXkZtXpGhsY4s7
+	G9awPYEocRR4vmRYctSB8xLT6UwQsdQFKXkeATbChciA2nWy3X3avdK8TupnMKq8qul/gVRkZ5qAy
+	n094fJqE9RkuYY3az7xI5iBF8o0aR3+DwNfOBFqHQgKAvr1m1DPkfBMnqMYblEkYWRjB7Tm2cjDO/
+	9NEBFcRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIZf7-008R0a-5J; Mon, 01 Aug 2022 17:57:05 +0000
-Received: from hch by bombadil.infradead.org with local (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIZf4-008QzX-Us; Mon, 01 Aug 2022 17:57:02 +0000
-Date: Mon, 1 Aug 2022 10:57:02 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: peter.wang@mediatek.com
-Cc: stanley.chu@mediatek.com, linux-scsi@vger.kernel.org,
-	martin.petersen@oracle.com, avri.altman@wdc.com,
-	alim.akhtar@samsung.com, jejb@linux.ibm.com,
-	wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
-	chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
-	cc.chou@mediatek.com, chaotian.jing@mediatek.com,
-	jiajie.hao@mediatek.com, powen.kao@mediatek.com,
-	qilin.tan@mediatek.com, lin.gui@mediatek.com
-Subject: Re: [PATCH v1 0/2] ufs: allow vendor disable wb toggle in clock
- scaling
-Message-ID: <YugT7jfkMGGvH7hO@infradead.org>
-References: <20220728071637.22364-1-peter.wang@mediatek.com>
+	id 1oIZg3-008S4e-5T; Mon, 01 Aug 2022 17:58:03 +0000
+Received: from verein.lst.de ([213.95.11.211])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oIZfq-008Rn9-La; Mon, 01 Aug 2022 17:57:52 +0000
+Received: by verein.lst.de (Postfix, from userid 2407)
+	id 27E2768AA6; Mon,  1 Aug 2022 19:57:45 +0200 (CEST)
+Date: Mon, 1 Aug 2022 19:57:44 +0200
+From: Christoph Hellwig <hch@lst.de>
+To: yf.wang@mediatek.com
+Cc: Christoph Hellwig <hch@lst.de>, Robin Murphy <robin.murphy@arm.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"open list:DMA MAPPING HELPERS" <iommu@lists.linux.dev>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	wsd_upstream@mediatek.com, Libo Kang <Libo.Kang@mediatek.com>,
+	Ning Li <Ning.Li@mediatek.com>, Yong Wu <Yong.Wu@mediatek.com>,
+	Miles Chen <miles.chen@mediatek.com>,
+	jianjiao zeng <jianjiao.zeng@mediatek.com>
+Subject: Re: [PATCH] dma-debug: Fix overflow issue in bucket_find_contain
+Message-ID: <20220801175744.GA17256@lst.de>
+References: <20220730114146.32669-1-yf.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220728071637.22364-1-peter.wang@mediatek.com>
+In-Reply-To: <20220730114146.32669-1-yf.wang@mediatek.com>
+User-Agent: Mutt/1.5.17 (2007-11-01)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20220801_105751_055180_3307A8D3 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -56,6 +66,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Please fix up your wording.  A vendor can't do anything at all in Linux.
-A driver might be able to disable things for a specific device, though.
+> +	unsigned int shift = (1 << HASH_FN_SHIFT);
+
+Please just add a constant for that right nxt to the HASH_FN_SHIFT
+definition.
 
