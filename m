@@ -4,60 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F91EC00144
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 18:48:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73AC4C3F6B0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 21:26:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6NzI/3Svt5nKR9S5JNhOp4JyOfvczYOuXsQ/r5jRRds=; b=2LPxz6SY92NWUgMxHjoDiZZsSL
-	lA0iPODpQHDFRSq6fUEtnfdaxP0efEJbpSayPB7u1D663/9DJQbOUaqnRbSNUjB+R3ASlJUkPBzzC
-	OPj+CTMJPZtx+vP7fkGhMZ42P51b4Pv2lYAeFo260Bf4vMSYyuEpUPIPAO59F/O7Kxk+zfo0k4lqM
-	bBa0Z6sR/RsFm3xPfecIwkUYH/RS6nCsIspRJ2rYhC7d8fH4k+KOJlf9Vo3ncSBglrHtsPMfmK7B4
-	yindu2Bbc08WQBlM+BhkhNV6eJIDuUCHerSsMGqO9elSOsj+fYnhllnbshBoUxOF8iCvS4gpx6/Gm
-	L2yMP36Q==;
+	bh=f4QJf8ruUt+YX0IWOG7trN4ZQXuWHdSPHvGfzpjTqBk=; b=R7StxHsPnXWzytswIBM/PB/dHY
+	8x+WEPl+OyEqZZLAHXZSUUSOPxqz3rnRsFuh85zblWeX7IYfvtZdBao3Vx4G5/aLluaLbbHjdmDcx
+	Hpd2ikPzziKnqUY8zeYN2V7p9Zp+z5ZfolfbtAL2s0IynYS8vOm/binjVWGlwT0qKX4ffLdYAK6jK
+	LezoYyO95tWRgka+OdYelN5E7zL84k8HI7e6QIC49zKKLiMte91pYLJAbRcMXHw7rlekkSJ2/W662
+	T2QfenZWFQwiIDXfArTf3JYqPPSJuSRFdYq8oIJhgevNnbotIi411gc60KL2WxsQiwRW1ghLnQIsL
+	0i3fkdnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIaSg-009M5M-Jg; Mon, 01 Aug 2022 18:48:18 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIaST-009Lfs-Cx; Mon, 01 Aug 2022 18:48:07 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CAE8F139F;
-	Mon,  1 Aug 2022 11:48:01 -0700 (PDT)
-Received: from [10.57.10.23] (unknown [10.57.10.23])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1EFDF3F67D;
-	Mon,  1 Aug 2022 11:47:58 -0700 (PDT)
-Message-ID: <15735fab-e53d-e95d-84f8-ae2e435dbb78@arm.com>
-Date: Mon, 1 Aug 2022 19:47:54 +0100
+	id 1oIcvt-00Aqvx-Fk; Mon, 01 Aug 2022 21:26:37 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oIctF-00AoWT-Dr
+	for linux-mediatek@lists.infradead.org; Mon, 01 Aug 2022 21:23:54 +0000
+Received: by mail-wm1-x329.google.com with SMTP id c187-20020a1c35c4000000b003a30d88fe8eso8021733wma.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 Aug 2022 14:23:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linexp-org.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc;
+        bh=f4QJf8ruUt+YX0IWOG7trN4ZQXuWHdSPHvGfzpjTqBk=;
+        b=7kH/6BqfPqfHpgF8aLj2FxU0sj26orMDLECovpm9Mw+K0JKZnb6mCayg0PRjUmls1A
+         nnGDzn26KAy5XS39Imqv93DqLeI5kNje/Rck1xUra2u0D4f/yw8Ok3afaz+NP5TQ/F79
+         PMH0DU/lImmWY8EeTJvk96OtXqpkbtt5zAxM5EbrK/AahDFO5LQdX1/3BPuQ//rPOPMm
+         awfnWAoP14/MtAED6eZRRiAGZoyLNDSIRdS9Ouw+RCud8mtXS9yPhtPeBp/PdC60zfDc
+         Se6wYL0O9CFkqbjNesFUQevwI3FfNR0wNEllv9MFxxwt4W4lB4MlSnNEXWTWbP9ssamw
+         76hg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
+        bh=f4QJf8ruUt+YX0IWOG7trN4ZQXuWHdSPHvGfzpjTqBk=;
+        b=JxMgP6awsPKcWIUAjBQxJ5WIasWUKEmf0aUZ2b2i2xTfGeb/c1NInAuL3VFHeLoF06
+         +E1eimoR0S1d7UEIcPL8w9MVf8xSTohL6JmJR1b5AcHonWYcVSiV9PPM0JmqHhaknKEX
+         H/dAMWpUhYPItB3IXbSDeYpB/tImMWPx9kX3HhaOBmTnWL8oLgqKrXiH7gq9/IGinMaZ
+         0OfG6NupIlLNZoCiJkDCnCXgjcW1m432SHg2RynbDfeJl5EYnEkcTG7SHlUsXA7QjTRC
+         NzZqUQUfWuDVTczROi514pyg4C3MzfmhYpu3Lv0sHw/gUIJBV0NOgi3FCruIRftZ5534
+         W9ag==
+X-Gm-Message-State: AJIora+64OaBjgcosXxNwBOUNcJEBEz8BduQjnIpVDZrdlWPZwjkgpCN
+	xK5keOt/oiGNdLY4XMJKXwEdbg==
+X-Google-Smtp-Source: AGRyM1uTZwUpQEaYRWrwPXVH9yL3knEa9rHrnPWrav0skfCkU7duYBUYLF6MpM0OYOmhZIIYohUWAg==
+X-Received: by 2002:a05:600c:354e:b0:3a3:2ede:853d with SMTP id i14-20020a05600c354e00b003a32ede853dmr11710444wmq.61.1659389032980;
+        Mon, 01 Aug 2022 14:23:52 -0700 (PDT)
+Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:d00:ceb8:9c09:1302])
+        by smtp.gmail.com with ESMTPSA id c7-20020adffb07000000b0021e501519d3sm12995285wrr.67.2022.08.01.14.23.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 Aug 2022 14:23:52 -0700 (PDT)
+From: Daniel Lezcano <daniel.lezcano@linexp.org>
+To: daniel.lezcano@linaro.org,
+	rafael@kernel.org
+Cc: rui.zhang@intel.com,
+	linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	khilman@baylibre.com,
+	abailon@baylibre.com,
+	lukasz.luba@arm.com,
+	broonie@kernel.org,
+	damien.lemoal@opensource.wdc.com,
+	heiko@sntech.de,
+	hayashi.kunihiko@socionext.com,
+	mhiramat@kernel.org,
+	talel@amazon.com,
+	thierry.reding@gmail.com,
+	digetx@gmail.com,
+	jonathanh@nvidia.com,
+	anarsoul@gmail.com,
+	tiny.windzz@gmail.com,
+	baolin.wang7@gmail.com,
+	f.fainelli@gmail.com,
+	bjorn.andersson@linaro.org,
+	mcoquelin.stm32@gmail.com,
+	glaroque@baylibre.com,
+	miquel.raynal@bootlin.com,
+	shawnguo@kernel.org,
+	niklas.soderlund@ragnatech.se,
+	matthias.bgg@gmail.com,
+	j-keerthy@ti.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Amit Kucheria <amitk@kernel.org>,
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v4 20/32] thermal/drivers/mtk: Switch to new of API
+Date: Mon,  1 Aug 2022 23:22:32 +0200
+Message-Id: <20220801212244.1124867-21-daniel.lezcano@linexp.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220801212244.1124867-1-daniel.lezcano@linexp.org>
+References: <20220801212244.1124867-1-daniel.lezcano@linexp.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] dma-debug: Fix overflow issue in bucket_find_contain
-Content-Language: en-GB
-To: yf.wang@mediatek.com, Christoph Hellwig <hch@lst.de>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "open list:DMA MAPPING HELPERS" <iommu@lists.linux.dev>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-Cc: wsd_upstream@mediatek.com, Libo Kang <Libo.Kang@mediatek.com>,
- Ning Li <Ning.Li@mediatek.com>, Yong Wu <Yong.Wu@mediatek.com>,
- Miles Chen <miles.chen@mediatek.com>,
- jianjiao zeng <jianjiao.zeng@mediatek.com>
-References: <20220730114146.32669-1-yf.wang@mediatek.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20220730114146.32669-1-yf.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220801_114805_609082_46693C51 
-X-CRM114-Status: GOOD (  22.45  )
+X-CRM114-CacheID: sfid-20220801_142353_512754_1427C047 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,74 +117,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-07-30 12:41, yf.wang@mediatek.com wrote:
-> From: Yunfei Wang <yf.wang@mediatek.com>
-> 
-> There are two issue:
-> 1. If max_rang is set to 0xFFFF_FFFF, and __hash_bucket_find always
-> returns NULL, the rang will be accumulated. When rang is accumulated
-> to 0xFFFF_E000, after executing rang += (1 << HASH_FN_SHIFT) again,
-> rang will overflow to 0, making it impossible to exit the while loop.
-> 2. dev_addr reduce maybe overflow.
-> 
-> So, add range and dev_addr check to avoid overflow.
-> 
-> Signed-off-by: jianjiao zeng <jianjiao.zeng@mediatek.com>
-> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
-> ---
->   kernel/dma/debug.c | 8 ++++++--
->   1 file changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/kernel/dma/debug.c b/kernel/dma/debug.c
-> index ad731f7858c9..9d7d54cd4c63 100644
-> --- a/kernel/dma/debug.c
-> +++ b/kernel/dma/debug.c
-> @@ -352,6 +352,7 @@ static struct dma_debug_entry *bucket_find_contain(struct hash_bucket **bucket,
->   
->   	unsigned int max_range = dma_get_max_seg_size(ref->dev);
->   	struct dma_debug_entry *entry, index = *ref;
-> +	unsigned int shift = (1 << HASH_FN_SHIFT);
->   	unsigned int range = 0;
->   
->   	while (range <= max_range) {
-> @@ -360,12 +361,15 @@ static struct dma_debug_entry *bucket_find_contain(struct hash_bucket **bucket,
->   		if (entry)
->   			return entry;
->   
-> +		if (max_range - range < shift || index.dev_addr < shift)
-> +			return NULL;
+The thermal OF code has a new API allowing to migrate the OF
+initialization to a simpler approach. The ops are no longer device
+tree specific and are the generic ones provided by the core code.
 
-This seems a bit clunky since the first condition here effectively makes 
-the loop condition redundant.
+Convert the ops to the thermal_zone_device_ops format and use the new
+API to register the thermal zone with these generic ops.
 
-FWIW I found the whole "range" business here rather hard to make sense 
-of - personally I'd calculate a lower bound for the address then just 
-iterate down to that, but maybe that's just me :/
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linexp.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/thermal/mtk_thermal.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-Otherwise, at the very least we should be capping max_range so that the 
-loop doesn't go beyond HASH_SIZE iterations and pointlessly search the 
-same buckets more than once - it's stupid to even *get* to the point of 
-having to worry about that overflowing. Whether we really care about 
-dev_addr underflow is then another matter.
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index ede94eadddda..8440692e3890 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -679,9 +679,9 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+ 	return max;
+ }
+ 
+-static int mtk_read_temp(void *data, int *temperature)
++static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
+ {
+-	struct mtk_thermal *mt = data;
++	struct mtk_thermal *mt = tz->devdata;
+ 	int i;
+ 	int tempmax = INT_MIN;
+ 
+@@ -700,7 +700,7 @@ static int mtk_read_temp(void *data, int *temperature)
+ 	return 0;
+ }
+ 
+-static const struct thermal_zone_of_device_ops mtk_thermal_ops = {
++static const struct thermal_zone_device_ops mtk_thermal_ops = {
+ 	.get_temp = mtk_read_temp,
+ };
+ 
+@@ -1082,8 +1082,8 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, mt);
+ 
+-	tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
+-						     &mtk_thermal_ops);
++	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
++					      &mtk_thermal_ops);
+ 	if (IS_ERR(tzdev)) {
+ 		ret = PTR_ERR(tzdev);
+ 		goto err_disable_clk_peri_therm;
+-- 
+2.25.1
 
-Really it would seem even more logical to make this a lower-level 
-function that can walk round the dma_entry_hash array directly and not 
-have to monkey about with the fake "index" entry at all, but cleaning up 
-the almost-unnecessary amount of internal abstractions here is maybe 
-more work than it's worth at this point.
-
-Robin.
-
-> +
->   		/*
->   		 * Nothing found, go back a hash bucket
->   		 */
->   		put_hash_bucket(*bucket, *flags);
-> -		range          += (1 << HASH_FN_SHIFT);
-> -		index.dev_addr -= (1 << HASH_FN_SHIFT);
-> +		range          += shift;
-> +		index.dev_addr -= shift;
->   		*bucket = get_hash_bucket(&index, flags);
->   	}
->   
 
