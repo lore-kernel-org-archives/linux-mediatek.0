@@ -4,67 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3356C19F2C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 11:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 663A3C00144
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 12:18:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=X29maISq0mn79/yAHYEY0ok6fkqeb5fK1GQOxFlbUC0=; b=PXBMCtGG53ZgLDv2zsi8Be/9e0
-	p9CxVIXT2A8Jb+ynerBC45AkWklrg6Z9g/jhHhInw47cwpFt1MMEIMBPorR7Jk0dTx0t0fpc35s48
-	sqAAan0Osr0jy8Dnk0W+PoJyAdwdap18RouTPdWDpUj+zqjdajMIvio8EcJf2aMvlkoZAlQ5HMUAK
-	QEA9sK1jHy/Z9ZmEMt5jUx2Q0+20fw3Xd6E/cU6H4X2zirIMluiDY3vfhd5/MVVyY/6h8acJIXwoH
-	OtwZMAvUvElNA6qdb6tuTbuNoiy9Dp17sDte+z01hQRtI9Cf73/Qz9gpL7vfhXTbeTBFtXtuOxuxV
-	ynwx+sZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=huS3KpipftskmOKG4u217ZV4p5GFWwfnWD211ydmfqE=; b=pP/0d2FuiZCMQ1hG9vaQfcWetS
+	QCgpkQ+15K2URF6XHia4Z3R8lCVgoAFnrXkW+Uy61jhj3nRp2ZzwZQU6QpQsPlSRiJnpEQUkIQmAN
+	U+ME05TW8cOqJb3usdKup5WSOboItfqfw4vuG8yMBJLcefuZ9FzYiiMaH1cnFz2Jo3zhlTonCz+ig
+	mG+gnaToyL/wFDU31PNrGms7po9kP5SfQkD7WyYQY7PPzcqx0SYuVWU1lNC5uz1dlEDPbJrjXHfju
+	jQovLE17DDMFGdAWEiT807LNnKP7XF6oh+RsPdoUsL/MJSrDuU2irjKpmgF3ompfaCEA0lvmtJv//
+	3Esg7R3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oITu2-005gjB-1l; Mon, 01 Aug 2022 11:48:06 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oITtn-005gbL-6D; Mon, 01 Aug 2022 11:47:52 +0000
-X-UUID: f8203ad3e16c46919526563baa6db7b6-20220801
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:86617893-a8d8-4a3f-9a72-d1ed7bbd05b0,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:1892f7cf-a6cf-4fb6-be1b-c60094821ca2,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: f8203ad3e16c46919526563baa6db7b6-20220801
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jianjun.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1241323221; Mon, 01 Aug 2022 04:47:47 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 1 Aug 2022 19:37:12 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 1 Aug 2022 19:37:12 +0800
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>, <Rex-BC.Chen@mediatek.com>,
-	<TingHan.Shen@mediatek.com>, <Liju-clr.Chen@mediatek.com>,
-	<Jian.Yang@mediatek.com>
-Subject: [PATCH v3] dt-bindings: PCI: mediatek-gen3: Add support for MT8188 and MT8195
-Date: Mon, 1 Aug 2022 19:37:09 +0800
-Message-ID: <20220801113709.12101-1-jianjun.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1oIUNB-0063pL-9u; Mon, 01 Aug 2022 12:18:13 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oIUCe-005tsv-AZ; Mon, 01 Aug 2022 12:07:23 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 326EC139F;
+	Mon,  1 Aug 2022 05:07:18 -0700 (PDT)
+Received: from [10.57.10.23] (unknown [10.57.10.23])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6162E3F73B;
+	Mon,  1 Aug 2022 05:07:15 -0700 (PDT)
+Message-ID: <19a0a508-fb39-8b06-ce0f-ce26767ef57f@arm.com>
+Date: Mon, 1 Aug 2022 13:07:10 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH] dma-debug: Remove warning in dma_debug_entry
+Content-Language: en-GB
+To: yf.wang@mediatek.com, Christoph Hellwig <hch@lst.de>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "open list:DMA MAPPING HELPERS" <iommu@lists.linux.dev>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+Cc: wsd_upstream@mediatek.com, Libo Kang <Libo.Kang@mediatek.com>,
+ Ning Li <Ning.Li@mediatek.com>, Yong Wu <Yong.Wu@mediatek.com>,
+ Miles Chen <miles.chen@mediatek.com>
+References: <20220730085657.31977-1-yf.wang@mediatek.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20220730085657.31977-1-yf.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220801_044751_380923_5D3AA9EB 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20220801_050720_522848_694C858D 
+X-CRM114-Status: GOOD (  22.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,62 +71,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8188 and MT8195 are ARM platform SoCs with the same PCIe IP as MT8192.
+On 2022-07-30 09:56, yf.wang@mediatek.com wrote:
+> From: Yunfei Wang <yf.wang@mediatek.com>
+> 
+> The same physical address can be mapped multiple times, and it is not
+> required to have attributes such as DMA_ATTR_SKIP_CPU_SYNC, but
+> dma_debug_entry will report an warning if active_cacheline_insert
+> returns -EEXIST, which can cause a lot of trouble.
+> 
+> For example, if two dma engine share the same dma-buf, the two dma
+> engine drivers will call the DMA API to map their own dma address
+> respectively, which is normal follow, but dma_debug_entry will
+> report an warning.
+> 
+> In addition, if active_cacheline_insert returns -EEXIST, the
+> active_cacheline_inc_overlap function already has the logic to
+> check overlapping mappings counter, if it exceeded
+> ACTIVE_CACHELINE_MAX_OVERLAP overlapping mappings, it already
+> has a warning.
+> And also, if warning as panic is turned on, it will cause KE.
+> 
+> So, dma_debug_entry does not need report warning.
 
-Also add new clock name "peri_mem" since the MT8188 and MT8195 use clock
-"peri_mem" instead of "top_133m".
+I'm sure this has come up before, but I can't remember enough of the 
+context to easily search for the previous thread.
 
-Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
----
-Changes in v3:
-Use enum property to add the new clock name.
+In short, this check is not entirely correct, but removing it isn't 
+right either, since that would be too much of a step backwards in terms 
+of debug coverage IMO. What we need here is to do a bit more work to 
+differentiate between mappings of the exact same buffer, which are 
+allowed, vs. any other kind of partial overlaps which are still illegal 
+and definitely deserve a warning.
 
-Changes in v2:
-Merge two patches into one.
----
- .../bindings/pci/mediatek-pcie-gen3.yaml           | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+Furthermore, even for the valid dma-buf import case I'm not convinced 
+that the SKIP_CPU_SYNC check can be dropped either. If one device can 
+import a buffer while another device is already accessing it, there are 
+definitely combinations of parameters which could lead to potential data 
+loss (e.g. a non-coherent DMA_TO_DEVICE mapping during a non-coherent 
+DMA_FROM_DEVICE access, a or non-coherent DMA_FROM_DEVICE mapping during 
+a coherent DMA_TO_DEVICE access).
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-index 0499b94627ae..a0ca9c7f5dfa 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-@@ -48,7 +48,14 @@ allOf:
- 
- properties:
-   compatible:
--    const: mediatek,mt8192-pcie
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-pcie
-+              - mediatek,mt8195-pcie
-+          - const: mediatek,mt8192-pcie
-+      - items:
-+          - const: mediatek,mt8192-pcie
- 
-   reg:
-     maxItems: 1
-@@ -84,7 +91,9 @@ properties:
-       - const: tl_96m
-       - const: tl_32k
-       - const: peri_26m
--      - const: top_133m
-+      - enum:
-+          - top_133m        # for MT8192
-+          - peri_mem        # for MT8188/MT8195
- 
-   assigned-clocks:
-     maxItems: 1
-@@ -126,6 +135,7 @@ required:
-   - interrupts
-   - ranges
-   - clocks
-+  - clock-names
-   - '#interrupt-cells'
-   - interrupt-controller
- 
--- 
-2.18.0
+Thanks,
+Robin.
 
+> Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+> ---
+>   kernel/dma/debug.c | 3 ---
+>   1 file changed, 3 deletions(-)
+> 
+> diff --git a/kernel/dma/debug.c b/kernel/dma/debug.c
+> index 2caafd13f8aa..ad731f7858c9 100644
+> --- a/kernel/dma/debug.c
+> +++ b/kernel/dma/debug.c
+> @@ -566,9 +566,6 @@ static void add_dma_entry(struct dma_debug_entry *entry, unsigned long attrs)
+>   	if (rc == -ENOMEM) {
+>   		pr_err_once("cacheline tracking ENOMEM, dma-debug disabled\n");
+>   		global_disable = true;
+> -	} else if (rc == -EEXIST && !(attrs & DMA_ATTR_SKIP_CPU_SYNC)) {
+> -		err_printk(entry->dev, entry,
+> -			"cacheline tracking EEXIST, overlapping mappings aren't supported\n");
+>   	}
+>   }
+>   
 
