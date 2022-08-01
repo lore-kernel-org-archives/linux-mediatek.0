@@ -4,61 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27FDAC00144
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 11:20:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3356C19F2C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Aug 2022 11:48:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3F/SAeQV+4saHVZgU95KvWZzA55jYwZyWASSvmQebgY=; b=TgtthhTVNJvSU5EKHb3oBKItQg
-	JYsXCXltsjzTXSKizOAqHzM26uZWGOykYtVr9LkFpIQXVvym2gM4yXwIqJTdgJg6iFsgL2kbw+WnT
-	LMlZm/OoDIRCSF3p+uVwgGUuqdPbdvgGRVaYh90RRdA6odKsmecHIB+lYdbWrj/1+Kv7+N8YbyCME
-	xmVA07M8Oczc5qe2y9kl7CEs9L8ubbFWwyF3xiBa6SGlWr6LV9JODQtjrP6Nd4jnaQY+EwPT1aIHo
-	YFKcOA8nJk5o/WefyB699p+aJbKiy437CUs3su4dGWX6ZKf6R/vU7T6oVjJbbHkwF1o9RWRGgt88p
-	LSCRmnLA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=X29maISq0mn79/yAHYEY0ok6fkqeb5fK1GQOxFlbUC0=; b=PXBMCtGG53ZgLDv2zsi8Be/9e0
+	p9CxVIXT2A8Jb+ynerBC45AkWklrg6Z9g/jhHhInw47cwpFt1MMEIMBPorR7Jk0dTx0t0fpc35s48
+	sqAAan0Osr0jy8Dnk0W+PoJyAdwdap18RouTPdWDpUj+zqjdajMIvio8EcJf2aMvlkoZAlQ5HMUAK
+	QEA9sK1jHy/Z9ZmEMt5jUx2Q0+20fw3Xd6E/cU6H4X2zirIMluiDY3vfhd5/MVVyY/6h8acJIXwoH
+	OtwZMAvUvElNA6qdb6tuTbuNoiy9Dp17sDte+z01hQRtI9Cf73/Qz9gpL7vfhXTbeTBFtXtuOxuxV
+	ynwx+sZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oITT9-005SSf-7N; Mon, 01 Aug 2022 11:20:19 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oITu2-005gjB-1l; Mon, 01 Aug 2022 11:48:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oITO1-005Pie-Lr; Mon, 01 Aug 2022 11:15:03 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 4B79CB81025;
-	Mon,  1 Aug 2022 11:14:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7EA93C433C1;
-	Mon,  1 Aug 2022 11:14:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1659352498;
-	bh=KXxJvr1Gh3/rx3eZQfM+nY8zLaeraeH2urw35Feo3aY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kAmIhSAmT/Yj+g0jRrHQ0AYi3z0MwZKJFBZ16W8tayDl0DDBQ4i3Eli2jMg3muJ9W
-	 kOPYyaYnZKUEYmjTwB3da0HIgyPXtmgbguC/A15r2+Vi+Zkl9eIOfnv3C79ilkDUwT
-	 nZsLwr26jELYuJAPogoOykKQ2SHxomoYxc6QoVtKYMkm3y4w/Ls4rd09AHHkDMWIrj
-	 VKa5X7AuTMQBhe2vmhRarM6NOt6iJoYmGu7ZvM17b/EYyfosE4GHKDjvG8ZQAfyWiJ
-	 lrd01BE/IKWN0YmOs3ioUnIYPw5wR6vyINaoU0nyV11Pdouba61ZifETRzEUfRfSiX
-	 hDEtFyqSAMR1w==
-Date: Mon, 1 Aug 2022 12:14:47 +0100
-From: Mark Brown <broonie@kernel.org>
-To: "zhiyong.tao" <zhiyong.tao@mediatek.com>
-Subject: Re: [PATCH v2] pmic: add mt6366 regulator document
-Message-ID: <Yue1pzPM2rSsL+oy@sirena.org.uk>
-References: <20220728062749.18701-1-zhiyong.tao@mediatek.com>
- <20220728062749.18701-2-zhiyong.tao@mediatek.com>
- <YuJt9SF9Y2UsA4Jc@sirena.org.uk>
- <9a99a1e95179f3b55dd1236c41a8cd3d9b2ccf18.camel@mediatek.com>
+	id 1oITtn-005gbL-6D; Mon, 01 Aug 2022 11:47:52 +0000
+X-UUID: f8203ad3e16c46919526563baa6db7b6-20220801
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:86617893-a8d8-4a3f-9a72-d1ed7bbd05b0,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:1892f7cf-a6cf-4fb6-be1b-c60094821ca2,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: f8203ad3e16c46919526563baa6db7b6-20220801
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jianjun.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1241323221; Mon, 01 Aug 2022 04:47:47 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 1 Aug 2022 19:37:12 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 1 Aug 2022 19:37:12 +0800
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>, <Rex-BC.Chen@mediatek.com>,
+	<TingHan.Shen@mediatek.com>, <Liju-clr.Chen@mediatek.com>,
+	<Jian.Yang@mediatek.com>
+Subject: [PATCH v3] dt-bindings: PCI: mediatek-gen3: Add support for MT8188 and MT8195
+Date: Mon, 1 Aug 2022 19:37:09 +0800
+Message-ID: <20220801113709.12101-1-jianjun.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4izAq3eOnqAvkCD4"
-Content-Disposition: inline
-In-Reply-To: <9a99a1e95179f3b55dd1236c41a8cd3d9b2ccf18.camel@mediatek.com>
-X-Cookie: Dieters live life in the fasting lane.
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220801_041501_933197_5C58111A 
-X-CRM114-Status: GOOD (  17.93  )
+X-CRM114-CacheID: sfid-20220801_044751_380923_5D3AA9EB 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,49 +76,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, allen-kh.cheng@mediatek.com, linux-kernel@vger.kernel.org, macpaul.lin@mediatek.com, lee.jones@linaro.org, hsin-hsiung.wang@mediatek.com, linux-rtc@vger.kernel.org, wen.su@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, sean.wang@mediatek.com, zhiyong tao <zhiyong.tao@mediatk.com>, hui.liu@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, a.zummo@towertech.it, sen.chu@mediatek.com, lgirdwood@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+MT8188 and MT8195 are ARM platform SoCs with the same PCIe IP as MT8192.
 
---4izAq3eOnqAvkCD4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Also add new clock name "peri_mem" since the MT8188 and MT8195 use clock
+"peri_mem" instead of "top_133m".
 
-On Mon, Aug 01, 2022 at 11:23:03AM +0800, zhiyong.tao wrote:
-> On Thu, 2022-07-28 at 12:07 +0100, Mark Brown wrote:
-> > On Thu, Jul 28, 2022 at 02:27:49PM +0800, Zhiyong Tao wrote:
+Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+---
+Changes in v3:
+Use enum property to add the new clock name.
 
-> > > +        properties:
-> > > +          regulator-name:
-> > > +            pattern:
-> > > "^v(dram1|core|coresshub|proc11|proc12|gpu|s2|modem|s1)$"
+Changes in v2:
+Merge two patches into one.
+---
+ .../bindings/pci/mediatek-pcie-gen3.yaml           | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
 
-> > regulator-name should be free form text for the system integrator to
-> > describe the use of the supply on their board, no constraints should
-> > be
-> > placed on it by the regulator.
+diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+index 0499b94627ae..a0ca9c7f5dfa 100644
+--- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
++++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+@@ -48,7 +48,14 @@ allOf:
+ 
+ properties:
+   compatible:
+-    const: mediatek,mt8192-pcie
++    oneOf:
++      - items:
++          - enum:
++              - mediatek,mt8188-pcie
++              - mediatek,mt8195-pcie
++          - const: mediatek,mt8192-pcie
++      - items:
++          - const: mediatek,mt8192-pcie
+ 
+   reg:
+     maxItems: 1
+@@ -84,7 +91,9 @@ properties:
+       - const: tl_96m
+       - const: tl_32k
+       - const: peri_26m
+-      - const: top_133m
++      - enum:
++          - top_133m        # for MT8192
++          - peri_mem        # for MT8188/MT8195
+ 
+   assigned-clocks:
+     maxItems: 1
+@@ -126,6 +135,7 @@ required:
+   - interrupts
+   - ranges
+   - clocks
++  - clock-names
+   - '#interrupt-cells'
+   - interrupt-controller
+ 
+-- 
+2.18.0
 
-> we put regulator-name here, we describe it by mt6366 datasheet.
-> we think that it is the common attribute.
-> So we place it here.
-
-No, for the reasons above.
-
---4izAq3eOnqAvkCD4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmLntaYACgkQJNaLcl1U
-h9BMFwf/V6k/8nOfes43hLPGdpN6ZINY6B1Cwbn9fJblGgECALOg9OuoApuLUqQO
-BHsYJ76aJ419c3VAopk2SDcGphOodZ6KwarX5304tqyy1titOAJY/zhWfMHtkz0D
-Gsveg+yW7ju+8uGCC80LNUDvO4eaON599LzQQ4LE0aJe7vgWbCDOh1yyeTuTLeRw
-0xS0R3vft3l6/9z1v3rhGKjZ32Uu2gmMKQW7eZCdanC43xE48pAzUTU4ITt7Tq42
-8Jt9TUj0hc7qGxcCHG20JuJrWzLoBsi6eVzRiuxXAP8gzfmXe5sKT6mwmEBSD2Iv
-uskW1mCgcC49078z385GQX3iXWGiZg==
-=4Xta
------END PGP SIGNATURE-----
-
---4izAq3eOnqAvkCD4--
 
