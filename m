@@ -4,68 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E13BC00140
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Aug 2022 13:36:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB7D6C00140
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Aug 2022 14:05:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/AUg245ffzCm5lgCIgM4ddDNqGTy90nhLk0Leo2Pj3M=; b=WepcrpVyOza/SFVtsybtV3RxCd
-	2lZbZRafQ854WdbK7dKMze7jj6Qdz1uBMoaDxgE07m2Ga7Lot0wCa3pZqDl2xV9U/LPxn3APEV9h2
-	Go/jm4hm4OpoM+hlgJTk1Ox3P58Y9vjIDxAtFam+AVid/dlIc2tThTw57XRxSuBmJVqWhXWdN+Akz
-	v9MExr8hkt9/uP55NduKw0qG+27f/gqOdjdWYlFDHnqQNZRykjBq3Db7aU+D9CM/N97PyXrkVOUqS
-	yPOONgOBvHb5JRTU1FfoquxWSuSvgeqfRIlNG7d3amBvfZ+u9JuLZM/ikp29g48sqqMRqTesq2Tg0
-	h9rJ5+pA==;
+	bh=0UzXuhE6yJcwl87VMTObzQUfGKkJDSW5LnrMp+jbqhs=; b=QPLh3OVc+pdDjXqcJ03mlOI0w3
+	PgI8k1PeO7hI/wP/+tu6T7GRUMIfq22HbRGdvQg2txWKnyETTq1wq2czSf0qQdfwsNX5hwsnAAAd6
+	g+ssWjNlwWdyBsXtkfiAqTe/1qw4qbAs+K7FlhE+i/6jRa+E225/dDszBcApbk7Bb+wrmq/SPUYC5
+	5jaG89RP3mayijzSiGdxYFkXOVAbezcNo7ecVRuz1wJg+71/DZhZsGCMLHcd6x0qeu1yuvxbXPM1Y
+	Mj2cry9OCLzvdW36fH9BS7IasgKAh1z/iNyde7X10B/C5ncMxFbtOAtxAQ1Ppg0Lz7W/KEy9KZdqH
+	COxnve8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIs42-00EVW7-A2; Tue, 02 Aug 2022 13:36:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oIsWW-00Em4V-8p; Tue, 02 Aug 2022 14:05:28 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIs3x-00EVRh-Rx
-	for linux-mediatek@lists.infradead.org; Tue, 02 Aug 2022 13:35:59 +0000
-X-UUID: 02e71839a0ad44faab081dae6a1830b1-20220802
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:2bde04ac-b9bf-4f04-9d26-8246345a5f23,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:2a2606d1-841b-4e95-ad42-8f86e18f54fc,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 02e71839a0ad44faab081dae6a1830b1-20220802
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1816573175; Tue, 02 Aug 2022 06:35:54 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 2 Aug 2022 21:24:17 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 2 Aug 2022 21:24:17 +0800
-From: <peter.wang@mediatek.com>
-To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
-	<martin.petersen@oracle.com>, <avri.altman@wdc.com>,
-	<alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
-Subject: [PATCH v2 2/2] ufs: host: support wb toggle with clock scaling
-Date: Tue, 2 Aug 2022 21:24:14 +0800
-Message-ID: <20220802132414.32607-3-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220802132414.32607-1-peter.wang@mediatek.com>
-References: <20220802132414.32607-1-peter.wang@mediatek.com>
+	id 1oIsTS-00EkN0-BW
+	for linux-mediatek@lists.infradead.org; Tue, 02 Aug 2022 14:02:20 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id t1so22069884lft.8
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Aug 2022 07:02:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=0UzXuhE6yJcwl87VMTObzQUfGKkJDSW5LnrMp+jbqhs=;
+        b=Y4dHHvintKOmRVO2Ms2dA0ZqYrdCW9AvjR0/yNnXIS+sSWBfDv5V3Ck2AUg2AyYLj3
+         g9cxGOatvUFNKf7jOx6wWXNXSnE8EJpvSNPAx5MASiS8qtaEmUbelabEZlfFBUbqH31v
+         /8n1zvu8ORV1ywV9LZ1kwhoW2EK6tEGO9tGYphVeFjbm1p6NUniuOx7WNu43AoxzIyV9
+         MdxYkPnN3VIy6zMv/SgVDeBV84peCOpGRnNu1cRVmup1R+Xz8e7HVL1acOWw4tv0sz4g
+         H+OkMKVNCrwQGWRrEVoTTW0622hNPqTH+rYHTB0gqhuKam4I4M0RM+ncBZUCE+m7wIqB
+         6fAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=0UzXuhE6yJcwl87VMTObzQUfGKkJDSW5LnrMp+jbqhs=;
+        b=X9F1ku6Olv9g6HNWUKdIAQoJ61JAr+8u1Su6vFuEwvk2pUlO1Bdk60fLOWv1ut+Bfy
+         dIaRBikGxCnwHijMAarB+trYyc8GcLpAS2lPUqPP3DxGQyZeh2knuJUA4joJth7gY/kb
+         KVca6uz1oVOi9a5m+AHy1QydQrX8HNzc7qUV6WxubDYL7OweGRUrCuPJ3dPLMT9FmAy6
+         Zyudaqn1kxo0ZCio8CdDFJnw4vxiDKWyUDTFLl+d1hAUO7lGCxYY49cCOwPz0w0MGS5U
+         pPyUoJxsRDFNz3uZQEYV5kKbtFe4+xkdNcmBgiMiQDvMmjWg/cy/+FV2ANJViBr+zevc
+         3LFg==
+X-Gm-Message-State: AJIora9KzZGVABcobvPfphe9ZQFzs+n7Wm5RjNjbTMCuNxpS99+omGNe
+	bFWz0bVeEDaWw6LwxMXjs2i/R10EnnDj3ZDaBMyaGP7wcg==
+X-Google-Smtp-Source: AGRyM1ux1TT8aEvnhCvivua72XsQNagFqcnYuzYOVKOhiawf4AJLoxYkrXXFPqq6a221cDDRGzWuvKcefgs6rPMZbKI=
+X-Received: by 2002:a05:6512:1694:b0:48a:9d45:763f with SMTP id
+ bu20-20020a056512169400b0048a9d45763fmr7213036lfb.662.1659448933851; Tue, 02
+ Aug 2022 07:02:13 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20220802132414.32607-1-peter.wang@mediatek.com>
+In-Reply-To: <20220802132414.32607-1-peter.wang@mediatek.com>
+From: Stanley Chu <chu.stanley@gmail.com>
+Date: Tue, 2 Aug 2022 22:02:02 +0800
+Message-ID: <CAGaU9a96uHTqaG_9n0jUVDuqfyzmD_hQE_h_n4rbUuS_u-6tUg@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] ufs: allow host driver disable wb toggle druing
+ clock scaling
+To: peter.wang@mediatek.com
+Cc: stanley.chu@mediatek.com, linux-scsi@vger.kernel.org, 
+	martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com, 
+	jejb@linux.ibm.com, wsd_upstream@mediatek.com, 
+	linux-mediatek@lists.infradead.org, chun-hung.wu@mediatek.com, 
+	alice.chao@mediatek.com, cc.chou@mediatek.com, chaotian.jing@mediatek.com, 
+	jiajie.hao@mediatek.com, powen.kao@mediatek.com, qilin.tan@mediatek.com, 
+	lin.gui@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220802_063557_926147_A2789845 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20220802_070218_447616_6580F326 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,29 +89,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+Hi Peter,
 
-Set UFSHCD_CAP_WB_WITH_CLK_SCALING for qcom to compatible legacy design.
+On Tue, Aug 2, 2022 at 9:25 PM <peter.wang@mediatek.com> wrote:
+>
+> From: Peter Wang <peter.wang@mediatek.com>
+>
+> Mediatek ufs do not want to toggle write booster during clock scaling.
+> This patch set allow host driver disable wb toggle during clock scaling.
+>
+> Peter Wang (2):
+>   ufs: core: introduce a choice of wb toggle during clock scaling
+>   ufs: host: support wb toggle with clock scaling
+>
+>  drivers/ufs/core/ufs-sysfs.c | 3 ++-
+>  drivers/ufs/core/ufshcd.c    | 8 +++++---
+>  drivers/ufs/host/ufs-qcom.c  | 2 +-
+>  include/ufs/ufshcd.h         | 7 +++++++
+>  4 files changed, 15 insertions(+), 5 deletions(-)
+>
+> --
+> 2.18.0
+>
+Except for some typos in the commit messages, otherwise this series
+looks good to me.
 
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/host/ufs-qcom.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
-index f10d4668814c..f8c9a78e7776 100644
---- a/drivers/ufs/host/ufs-qcom.c
-+++ b/drivers/ufs/host/ufs-qcom.c
-@@ -869,7 +869,7 @@ static void ufs_qcom_set_caps(struct ufs_hba *hba)
- 	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
- 
- 	hba->caps |= UFSHCD_CAP_CLK_GATING | UFSHCD_CAP_HIBERN8_WITH_CLK_GATING;
--	hba->caps |= UFSHCD_CAP_CLK_SCALING;
-+	hba->caps |= UFSHCD_CAP_CLK_SCALING | UFSHCD_CAP_WB_WITH_CLK_SCALING;
- 	hba->caps |= UFSHCD_CAP_AUTO_BKOPS_SUSPEND;
- 	hba->caps |= UFSHCD_CAP_WB_EN;
- 	hba->caps |= UFSHCD_CAP_CRYPTO;
--- 
-2.18.0
-
+Please feel free to add
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 
