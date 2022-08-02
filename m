@@ -4,74 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A51C00140
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Aug 2022 07:58:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67D06C00140
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Aug 2022 08:00:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=soPB5SC7+r34BhZBxSRCUaZSPNGLA5erVa/IUxag4GU=; b=PE7YG3j6Ky6JVtpQVtL4o0Eojc
-	DpFyfV3r0FIto2QxbeD2An/1soRW4V9BZwvMIg3scMIFZJAV7XHHF6LrwJo81cLlsEgPIT6b/YJ77
-	bWFrB+QwQS1oha1c0f7EPJM+PhRTJhMnmVO8mFWB5bZrgHHAQaRkkOZGVGPYnUqpB1pJ5ajX9bFqZ
-	I5/9AklBTYQHa9nRYnFa8CH4u7QNbb/clhfNdC89Cg5es1NUjxb7+87qD0f53/Z+MACCbU+qj6qUC
-	1gsp5gHLtRWEz0I0wVAe8gT+pbCByj1zbQHaF3VDx7KwGO6zrsynffQuKhfGxECZSIM14xgHNehbr
-	sBatvYKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3pv3xqSWYsc3Lq617cGt2GGjV233AllAIBDcnty2hNI=; b=4T6O9pCpOK5nE4OC2iRzKD4PtB
+	6UsKhJRvfdw6hoXGauppxno/JNC8e4ha4m+5Q8zZgKZRZBXgF+T639cLHbiEP6IjfQr1dRusZq3+j
+	o+AhOmsvdI0eqWHz0OAicX6zMcKKqBxNuum3dKiEK+Vp1rGJ+pJQft+n0Sf5NcplIKhL9tLCPArxn
+	opVT63SOmo+l4KTcg+fNKKlHkfSo/LUTCuUBlERV7EiwmLuNfQQ6gUY6mtqvEdqB5BTsjEfih9Ft7
+	dY1btch2mjRAjOCd2yFY0ZJKpaoTIWw+chCebox31dWJ/+s4FVZjzwiqS3ZQeE5oAyLpltYOZRB3p
+	lo53uVsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oImnX-00BaM7-Au; Tue, 02 Aug 2022 07:58:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oImp7-00BbE5-Fq; Tue, 02 Aug 2022 08:00:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oImnT-00BaIQ-I7; Tue, 02 Aug 2022 07:58:38 +0000
-X-UUID: 3af41a0f71744959b92f27543b06801c-20220802
+	id 1oImp4-00Bb80-Il; Tue, 02 Aug 2022 08:00:16 +0000
+X-UUID: 637df076c8ad451fa5de97b4b9e5dbc8-20220802
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:17489c81-9829-4cd3-895f-c6258b43725a,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:181f0ed0-a6cf-4fb6-be1b-c60094821ca2,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.8,REQID:03450294-404f-4da8-b197-560535a96aa6,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:82c50725-a982-4824-82d2-9da3b6056c2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 3af41a0f71744959b92f27543b06801c-20220802
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
+X-UUID: 637df076c8ad451fa5de97b4b9e5dbc8-20220802
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 777448322; Tue, 02 Aug 2022 00:58:26 -0700
+	with ESMTP id 701169151; Tue, 02 Aug 2022 01:00:02 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 2 Aug 2022 15:57:49 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ 15.2.792.15; Tue, 2 Aug 2022 15:59:49 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 2 Aug 2022 15:57:49 +0800
-Message-ID: <e51eb3017495fc77c52e7fde507acd33a2893f6f.camel@mediatek.com>
-Subject: Re: [PATCH v15 05/11] drm/mediatek: Add MT8195 Embedded DisplayPort
- driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
-	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-fbdev@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 2 Aug 2022 15:57:49 +0800
-In-Reply-To: <20220727045035.32225-6-rex-bc.chen@mediatek.com>
-References: <20220727045035.32225-1-rex-bc.chen@mediatek.com>
-	 <20220727045035.32225-6-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Tue, 2 Aug 2022 15:59:48 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman
+	<mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Ikjoon
+ Jang" <ikjn@chromium.org>, <linux-usb@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>
+Subject: [PATCH 1/2] usb: xhci-mtk: relax TT periodic bandwidth allocation
+Date: Tue, 2 Aug 2022 15:59:45 +0800
+Message-ID: <20220802075946.18168-1-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220802_005835_619174_6CF38EDE 
-X-CRM114-Status: GOOD (  23.14  )
+X-CRM114-CacheID: sfid-20220802_010014_694289_A190081F 
+X-CRM114-Status: GOOD (  13.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,106 +76,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Bo-Chen:
+Currently uses the worst case byte budgets on full-speed bus bandwidth,
+for example, for an isochronos IN endpoint with 192 bytes budget, it
+will consume the whole 5 u-frames(188 * 5) while the actual full-speed
+bus budget should be just 192 bytes.
 
-On Wed, 2022-07-27 at 12:50 +0800, Bo-Chen Chen wrote:
-> From: Markus Schneider-Pargmann <msp@baylibre.com>
-> 
-> This patch adds a embedded displayport driver for the MediaTek mt8195
-> SoC.
-> 
-> It supports the MT8195, the embedded DisplayPort units. It offers
-> DisplayPort 1.4 with up to 4 lanes.
-> 
-> The driver creates a child device for the phy. The child device will
-> never exist without the parent being active. As they are sharing a
-> register range, the parent passes a regmap pointer to the child so
-> that
-> both can work with the same register range. The phy driver sets
-> device
-> data that is read by the parent to get the phy device that can be
-> used
-> to control the phy properties.
-> 
-> This driver is based on an initial version by
-> Jitao shi <jitao.shi@mediatek.com>
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
+This patch changes the low/full-speed bandwidth allocation logic to use
+"approximate" best case budget for lower speed bandwidth management.
+For the same endpoint from the above example, the approximate best case
+budget is now reduced to (188 * 2) bytes.
 
-[snip]
+Without this patch, many usb audio headsets with 3 interfaces (audio
+input, audio output, and HID) cannot be configured on xhci-mtk.
 
-> +
-> +static int mtk_dp_train_tps_2_3(struct mtk_dp *mtk_dp, u8
-> target_linkrate,
-> +				u8 target_lane_count, u8 *lane_adjust,
-> +				int *status_control, u8
-> *prev_lane_adjust)
-> +{
-> +	u8 val;
-> +	u8 link_status[DP_LINK_STATUS_SIZE] = {};
-> +
-> +	if (*status_control == 1) {
-> +		if (mtk_dp->train_info.tps4) {
-> +			mtk_dp_train_set_pattern(mtk_dp, 4);
-> +			val = DP_TRAINING_PATTERN_4;
-> +		} else if (mtk_dp->train_info.tps3) {
-> +			mtk_dp_train_set_pattern(mtk_dp, 3);
-> +			val = DP_LINK_SCRAMBLING_DISABLE |
-> +				DP_TRAINING_PATTERN_3;
-> +		} else {
-> +			mtk_dp_train_set_pattern(mtk_dp, 2);
-> +			val = DP_LINK_SCRAMBLING_DISABLE |
-> +				DP_TRAINING_PATTERN_2;
-> +		}
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/usb/host/xhci-mtk-sch.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
-Only one of tps2, tps3, tps4 would be process, and the priority is tps4
-> tps3 > tps2, so I would like use one variable for this.
-
-if support tps4, train_info.tps = 4.
-else if support tps3, train_info.tps = 3.
-else train_info.tps = 2.
-
-And this part would be almost the same as the part in
-mtk_dp_train_tps_1(), so separate this part to a function.
-
-Regards,
-CK
-
-
-> +		drm_dp_dpcd_writeb(&mtk_dp->aux,
-> +				   DP_TRAINING_PATTERN_SET, val);
-> +		drm_dp_dpcd_read(&mtk_dp->aux,
-> +				 DP_ADJUST_REQUEST_LANE0_1,
-> lane_adjust,
-> +				 sizeof(*lane_adjust) * 2);
-> +
-> +		mtk_dp_train_update_swing_pre(mtk_dp,
-> +					      target_lane_count,
-> lane_adjust);
-> +		*status_control = 2;
-> +	}
-> +
-> +	drm_dp_link_train_channel_eq_delay(&mtk_dp->aux, mtk_dp-
-> >rx_cap);
-> +
-> +	drm_dp_dpcd_read_link_status(&mtk_dp->aux, link_status);
-> +
-> +	if (drm_dp_channel_eq_ok(link_status, target_lane_count)) {
-> +		mtk_dp->train_info.eq_done = true;
-> +		dev_dbg(mtk_dp->dev, "Link train EQ pass\n");
-> +		return 0;
-> +	}
-> +
-> +	dev_dbg(mtk_dp->dev, "Link train EQ fail\n");
-> +
-> +	if (*prev_lane_adjust != link_status[4])
-> +		*prev_lane_adjust = link_status[4];
-> +
-> +	return -EAGAIN;
-> +}
-> +
+diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
+index 06a6b19acaae..a17bc584ee99 100644
+--- a/drivers/usb/host/xhci-mtk-sch.c
++++ b/drivers/usb/host/xhci-mtk-sch.c
+@@ -425,7 +425,6 @@ static int check_fs_bus_bw(struct mu3h_sch_ep_info *sch_ep, int offset)
+ 
+ static int check_sch_tt(struct mu3h_sch_ep_info *sch_ep, u32 offset)
+ {
+-	u32 extra_cs_count;
+ 	u32 start_ss, last_ss;
+ 	u32 start_cs, last_cs;
+ 
+@@ -461,18 +460,12 @@ static int check_sch_tt(struct mu3h_sch_ep_info *sch_ep, u32 offset)
+ 		if (last_cs > 7)
+ 			return -ESCH_CS_OVERFLOW;
+ 
+-		if (sch_ep->ep_type == ISOC_IN_EP)
+-			extra_cs_count = (last_cs == 7) ? 1 : 2;
+-		else /*  ep_type : INTR IN / INTR OUT */
+-			extra_cs_count = 1;
+-
+-		cs_count += extra_cs_count;
+ 		if (cs_count > 7)
+ 			cs_count = 7; /* HW limit */
+ 
+ 		sch_ep->cs_count = cs_count;
+-		/* one for ss, the other for idle */
+-		sch_ep->num_budget_microframes = cs_count + 2;
++		/* ss, idle are ignored */
++		sch_ep->num_budget_microframes = cs_count;
+ 
+ 		/*
+ 		 * if interval=1, maxp >752, num_budge_micoframe is larger
+-- 
+2.18.0
 
 
