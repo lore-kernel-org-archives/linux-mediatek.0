@@ -4,66 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85906C00140
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Aug 2022 08:00:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A757BC00140
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Aug 2022 08:07:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xENaEcZHhfRIJruDMcHMvUXXoEXBYRPLrMn662o9aAs=; b=D5TmDkyjfdkA49AF4psJnhrFhV
-	BEq+GhELK36bxWcexh6xNHnxacOfVYK/K68ZY+FlU+3nwe09aQT4M9DcxhUTZMOK+rBZAP24VLup6
-	KL1HrR0gaSO7nKUIOVPILVYC0LgS4Q1xqiIHf/CbnOjuCsVJmVqh/BKb4LByADrDzkKrKfMz8CsiB
-	P3d7oz4IYArcz9iPg/pRXwZZGJSBzZeHSzOSClZuGtBPuhuz7EM0mbRU0EF0IoTEh0Xuj0LMOPzmh
-	gDPcPnx4tOC99PaWJwkUnLWuwmYZVhcgR7cPSlVmAMHCKj2KHwTBu5liSDME/8xRb7SjfoBvIv2Vy
-	dsB8tFRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ziFYm8rk88alkwyI6DGKeiYYXv8dOfZWiNNEBAzbbUs=; b=uDDGIv0l8UvxNSuGp7R0A/pkUK
+	R4QpukMCeQiYaMv1R/+HnkExY+H0N18qIbObv7T3D8sZM0MX0YcM9qGuEjYEW9jqU9Y+v0CULtdHe
+	YidtqkJ5W2a137HQvULXvzMa4LkmUjYIgPAws/PD66DQbXqEO4mNhnoVtgi68AqIlK3MVVIewMjjF
+	ALWoGfWDaK3rYUF7GS8G5fxoMBKi7VcqErysNHt0Q/W2PT2TR3qWSfLWMRk51x6Bt8xr6Td8lEu5E
+	O9qKdD7TYk/ZUsjVtVd47PQYF2cEVZiNieO5EtvesTGU54DVr/B9Ss0Hz0MepBclK8iCq3pNBJiPN
+	trwAKRDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oImpA-00BbGK-0U; Tue, 02 Aug 2022 08:00:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oImvV-00BfHI-Rm; Tue, 02 Aug 2022 08:06:53 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oImp4-00Bb7K-DK; Tue, 02 Aug 2022 08:00:16 +0000
-X-UUID: 3f97f3d491144bfe973ffd8de1df3f4e-20220802
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:7924c479-619a-4de8-a3a1-5a948e47e1b5,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:0fabfed0-841b-4e95-ad42-8f86e18f54fc,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 3f97f3d491144bfe973ffd8de1df3f4e-20220802
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 395884959; Tue, 02 Aug 2022 01:00:03 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 2 Aug 2022 15:59:49 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 2 Aug 2022 15:59:49 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman
-	<mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Ikjoon
- Jang" <ikjn@chromium.org>, <linux-usb@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>
-Subject: [PATCH 2/2] usb: xhci-mtk: fix bandwidth release issue
-Date: Tue, 2 Aug 2022 15:59:46 +0800
-Message-ID: <20220802075946.18168-2-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220802075946.18168-1-chunfeng.yun@mediatek.com>
-References: <20220802075946.18168-1-chunfeng.yun@mediatek.com>
+	id 1oImvI-00Bf79-0W
+	for linux-mediatek@lists.infradead.org; Tue, 02 Aug 2022 08:06:41 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id t1so20822106lft.8
+        for <linux-mediatek@lists.infradead.org>; Tue, 02 Aug 2022 01:06:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=ziFYm8rk88alkwyI6DGKeiYYXv8dOfZWiNNEBAzbbUs=;
+        b=Q8FM7seRKFOLqDs9pbGjh7O9ypmYDNdS02O44fr0uDaD+Ekvix2C28Eu0YTnz4un9E
+         zjZb0kmjzXhhxF2hA2MeGBEhZUMa2/QJ7merfkAYx+/6MBHNZg1vx8bdYF97YjDHoVTq
+         LgeRNFA3ZxvbVMGhNzLcWi3AowWv9gQfOIN9VEPdRqbavEwLcWYz2pkHXeG3wsK20CUp
+         tpChIa1AGzm/UKVSMhOsfVWVx+62gtQHTdGyf6F4anBWut49KD7kwKERKPGjulXz/zwU
+         Zcu1mgRS0QCNWOsHRL3PcYpZM4sPoC0AwrgM3PyBQNCoCpSrp8xPLrt98yJI5L5agObH
+         Tsnw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=ziFYm8rk88alkwyI6DGKeiYYXv8dOfZWiNNEBAzbbUs=;
+        b=34AmbOC7EGoif5qoWyEAJ/kkd93pN/RoS+kg6lnOfJXJhxZHBYm6qg+b0QXHh6jKC4
+         BH/Q0H+AlJppVMwFMOfbJ8NUbPIFBGFt2CeS9Y8Hwl90aYewQ7hkzly6qU+kOnLpjoFy
+         tfMaXFuBFUykf/u8eYi9v/PIFX7jtUQA6xHy8xfFGdxyDknoDT3bbr5syw8SsxY3JaXE
+         Z4BgFRoI6dZCDEhsnDJmDNAtrVgsqcwvysKFmCIW0cSUKeOneaAn2NsU5WWSddGJtbPi
+         3hHNq1R6MKE/ih/S0xb/5ZUNoUMoXC6ux3NnKMf6MuDR0gHXQB3blyCnvl6fi6QoV9bB
+         8j8A==
+X-Gm-Message-State: ACgBeo0WyEn7psootSCD57gwE+bhzoyZTiLF7vSuKB2SuiUMJnX9xyX/
+	n+jYkTVmOGVuInpshNDx3tmouQ==
+X-Google-Smtp-Source: AA6agR6XdqW2PkasC+a1MlQwwoq1vcDKjruY6HOg87UsjC6E5gXtnZmjIUf2X1MMpMjvcyj6YFh0jw==
+X-Received: by 2002:ac2:4e07:0:b0:48a:f6f2:8555 with SMTP id e7-20020ac24e07000000b0048af6f28555mr3101742lfr.200.1659427597773;
+        Tue, 02 Aug 2022 01:06:37 -0700 (PDT)
+Received: from [192.168.1.6] ([213.161.169.44])
+        by smtp.gmail.com with ESMTPSA id o3-20020a2e9b43000000b0025e2cb58c6esm1842316ljj.37.2022.08.02.01.06.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 02 Aug 2022 01:06:37 -0700 (PDT)
+Message-ID: <341b4627-d729-0941-2c35-08c16ac68f3c@linaro.org>
+Date: Tue, 2 Aug 2022 10:06:35 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH 1/2] dt-bindings: mailbox: add definition for mt8188
+Content-Language: en-US
+To: Elvis Wang <Elvis.Wang@mediatek.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220729084319.6880-1-Elvis.Wang@mediatek.com>
+ <20220729084319.6880-2-Elvis.Wang@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220729084319.6880-2-Elvis.Wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220802_010014_693093_E45D97F9 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20220802_010640_257144_087DCFFA 
+X-CRM114-Status: UNSURE (   7.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,47 +97,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This happens when @udev->reset_resume is set to true, when usb resume,
-the flow as below:
-  - hub_resume
-    - usb_disable_interface
-      - usb_disable_endpoint
-        - usb_hcd_disable_endpoint
-          - xhci_endpoint_disable  // it set @ep->hcpriv to NULL
+On 29/07/2022 10:43, Elvis Wang wrote:
+> Add dt-binding header for mt8188.
+> 
 
-Then when reset usb device, it will drop allocated endpoints,
-the flow as below:
-  - usb_reset_and_verify_device
-    - usb_hcd_alloc_bandwidth
-      - xhci_mtk_drop_ep
+Use subject prefix matching the device.
 
-but @ep->hcpriv is already set to NULL, the bandwidth will be not
-released anymore.
 
-Due to the added endponts are stored in hash table, we can drop the check
-of @ep->hcpriv.
-
-Fixes: 4ce186665e7c ("usb: xhci-mtk: Do not use xhci's virt_dev in drop_endpoint")
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/host/xhci-mtk-sch.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index a17bc584ee99..b54626732d18 100644
---- a/drivers/usb/host/xhci-mtk-sch.c
-+++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -764,8 +764,7 @@ int xhci_mtk_drop_ep(struct usb_hcd *hcd, struct usb_device *udev,
- 	if (ret)
- 		return ret;
- 
--	if (ep->hcpriv)
--		drop_ep_quirk(hcd, udev, ep);
-+	drop_ep_quirk(hcd, udev, ep);
- 
- 	return 0;
- }
--- 
-2.18.0
-
+Best regards,
+Krzysztof
 
