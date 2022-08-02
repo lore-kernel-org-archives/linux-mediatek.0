@@ -4,88 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BF99C00140
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Aug 2022 09:05:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F0A0C00140
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Aug 2022 09:32:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U7fi6N3RABOBMWCOgXAfDv4FFDxZNs+uf8Zr2BRDwwM=; b=O1vCDNAvlcj2UwtD4exazFWmJX
-	idvSG539Un92S/1wSYnm7nb8NXVxBd0uyXEAxiMxKxzF6+ssAC6T3AyIBA14KK2qQ93QPGnfdxQJM
-	ylJlNMG5bFvzkgZOxgHm3pyjnz2mqTL6tn98KAQ7JweXz2gq3Zys8h5svSvItRkE3L/xLssApnNS/
-	rHu8EIyPa8jbUvykp6b/xt8Z0zRWA9W5l27niqUGfNGi1hEw4E24Y6DwRnOd8/FQN8HVJ21exUcVX
-	1a6UY2ONuEsiC4GgJjModSdFvgXsCiSUn/zDlWSymmabDjbQVhT202RaZCFT4q5egCOXHcBHVU1OB
-	FRHLb22Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jxEsyFSKIzPTV2NC2SKWoXV9WBqqaCkk0yCnS3OK70g=; b=rGlvFrpA4ZtBOT7oz1UWy9nklW
+	XT6GBpldy7Jr4WyeEBpNbwzmjtL7HSlYifohVjW5jMdV1oGUPXm28nePYqGDBKj08QTLoixPwk3pf
+	t29otip3/8mA829/vaV127Wm02eLQv1c1WWGPTHlqks6PdA1hwXyESxnSeDln4WcxrUm67mX53Dk7
+	JASQPWmN6L6rSD4eiY0UbWutpvcCNM0zKKkyRbvylE41E4of1jXS2U28P/qu+kVTUmVKINddymOBB
+	xg4AE1CRwlUvkYAvvgxbC8/g2KPmgkV0xFrbKhIs6qjUrTpmMjCHQvh3aMrgmbdHatPiJ1QmnVj/u
+	AKspIllw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oInpy-00CAo9-Bg; Tue, 02 Aug 2022 09:05:14 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1oIoG9-00CQOg-7F; Tue, 02 Aug 2022 09:32:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oInpe-00CAXh-Vz
-	for linux-mediatek@lists.infradead.org; Tue, 02 Aug 2022 09:04:57 +0000
-Received: by mail-lf1-x129.google.com with SMTP id x39so11445026lfu.7
-        for <linux-mediatek@lists.infradead.org>; Tue, 02 Aug 2022 02:04:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language
-         :from:to:cc:references:in-reply-to:content-transfer-encoding;
-        bh=U7fi6N3RABOBMWCOgXAfDv4FFDxZNs+uf8Zr2BRDwwM=;
-        b=GSSGq7vw+gfPL5DS1fzXCWGtOOLgZihO8lBtwUiKoowGyKAM+fJ/5z8hP9GXdYUBBw
-         DekZ7LSMCREQRYnRyqfd8/kncQPpsbOGd0S99QkBqAFgISMsGSLRppRLqEzzIncNdnVC
-         p4aYeSUHKy6kbwfAm4oLSAoUf2EImlmLAYT88cE9m7eCzu4CSjoDbIs3JXsY/Y7yel8q
-         GodG5ttDEOkXepK3vEZxpY36LA2ri4We0HNJdmf2ZJUk/VQj7MTD7Xe8VxMfi5YyNGJ0
-         xR2FKmDHxQDcnvZtQXOITQLfR3lElnwVVePA8M4uXbHmZV2luleiZ6K2cguR9XwN9wrd
-         gZaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:from:to:cc:references:in-reply-to
-         :content-transfer-encoding;
-        bh=U7fi6N3RABOBMWCOgXAfDv4FFDxZNs+uf8Zr2BRDwwM=;
-        b=WwjN6Z61NnP/yhu1pb30R2HLoiOfbu0kjoZRXU5j9sxJd6gK29PpZm8gCi8Ym2iznb
-         X7ZzxjlzRlj6nDABpXOvtgIed59Bcd+7UXn9BdviniknQ4QD2PGhS4p69gUjG5FLYiLc
-         NjJqSxQTGBJmTCWjmITk6Wn+MMwiN3EtOysIaGrT3qTK0rXRg/dwWuwAHDkELKuLFBDO
-         MXQYU9Ll/JOrVpYQCzE3gcmnyuJ3IugvdbSEx7l7RNBUY0tKfl1pWicrvTbDQtFLppeC
-         nq2Pd/ieF21bX2GQsIItiQ/Db8Ki9q3QqBB5eLHnNREQEHH0S24TMhQvpYWBDp+t0JGL
-         jNaA==
-X-Gm-Message-State: ACgBeo2PepWHJeLf4EBax+Q1YDceaZp7iaAJwMMmTv6OUA2UK79h9knU
-	ryxkfNBjQHfdTvZuj64QUpxY/g==
-X-Google-Smtp-Source: AA6agR7XJvJo2wL06pAjhFP/KvfRGXfogwSBNC2DgxGwjN/ZOnOsAf3UUYbcZ3s7sM2T4pU/8YK2Aw==
-X-Received: by 2002:a05:6512:2313:b0:48a:e615:289b with SMTP id o19-20020a056512231300b0048ae615289bmr5959623lfu.201.1659431092326;
-        Tue, 02 Aug 2022 02:04:52 -0700 (PDT)
-Received: from [192.168.1.6] ([213.161.169.44])
-        by smtp.gmail.com with ESMTPSA id h14-20020a05651c124e00b0025e6415bb8csm40755ljh.32.2022.08.02.02.04.50
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 02 Aug 2022 02:04:51 -0700 (PDT)
-Message-ID: <3fdbac20-5ccd-7974-300e-2d78d0be048a@linaro.org>
-Date: Tue, 2 Aug 2022 11:04:50 +0200
+	id 1oIoG5-00CQLV-Db; Tue, 02 Aug 2022 09:32:15 +0000
+X-UUID: 5fd64b0ea1ac49b186f3a027d415bf97-20220802
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:a34e17c6-375b-4f10-bf7d-164a2be52cd6,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:0f94e32,CLOUDID:69b50a25-a982-4824-82d2-9da3b6056c2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 5fd64b0ea1ac49b186f3a027d415bf97-20220802
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 328388604; Tue, 02 Aug 2022 02:32:06 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 2 Aug 2022 16:51:54 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 2 Aug 2022 16:51:54 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, <hsinyi@chromium.org>, Allen-kh Cheng
+	<allen-kh.cheng@mediatek.corp-partner.google.com>
+Subject: [PATCH v13 0/1] Add basic node support for MediaTek MT8186 SoC
+Date: Tue, 2 Aug 2022 16:51:51 +0800
+Message-ID: <20220802085152.31284-1-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH v3] dt-bindings: PCI: mediatek-gen3: Add support for
- MT8188 and MT8195
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Jianjun Wang <jianjun.wang@mediatek.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>,
- Rex-BC.Chen@mediatek.com, TingHan.Shen@mediatek.com,
- Liju-clr.Chen@mediatek.com, Jian.Yang@mediatek.com
-References: <20220801113709.12101-1-jianjun.wang@mediatek.com>
- <cd9518e3-9cb4-5165-af03-00e5300ab927@linaro.org>
-In-Reply-To: <cd9518e3-9cb4-5165-af03-00e5300ab927@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220802_020455_659004_1DE0B9BD 
-X-CRM114-Status: UNSURE (   8.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220802_023213_618965_35624ECD 
+X-CRM114-Status: GOOD (  17.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,24 +76,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/08/2022 10:59, Krzysztof Kozlowski wrote:
->>  
->>    reg:
->>      maxItems: 1
->> @@ -84,7 +91,9 @@ properties:
->>        - const: tl_96m
->>        - const: tl_32k
->>        - const: peri_26m
->> -      - const: top_133m
->> +      - enum:
->> +          - top_133m        # for MT8192
->> +          - peri_mem        # for MT8188/MT8195
-> 
-> This requires allOf:if:then restricting it further per variant.
+From: Allen-kh Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>
 
-I see Rob proposed that way, so skip this comment.
+MT8186 is a SoC based on 64bit ARMv8 architecture. It contains 6 CA55
+and 2 CA76 cores. MT8186 share many HW IP with MT65xx series. This
+patchset was tested on MT8186 evaluation board to shell.
 
+This series is based on tag: next-20220728, linux-next/master
+Since we have a another dts series of mt8195 [1] which is waiting for
+review from maintainers. I remove power domains controller node from
+this mt8186 series and will update in another patch.
 
-Best regards,
-Krzysztof
+There are some corrections in mt8186 hardware bindings. We need to
+apply the below patches.
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220725110702.11362-2-allen-kh.cheng@mediatek.com/
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220725110702.11362-3-allen-kh.cheng@mediatek.com/
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220720130604.14113-2-allen-kh.cheng@mediatek.com/
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220721014845.19044-2-allen-kh.cheng@mediatek.com/
+
+[1]
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=663978
+
+changes since v12:
+ - remove drive-strength fom i2c pins
+ - use lowercase hex addresses in pinctrl node
+ - correct clk order in xhci0
+ - add clk26m for dma_ck
+
+changes since v11:
+ - add #cooling-cells in cpu nodes
+ - add pmu nodes for mt8186
+ - change #interrupt-cells from 3 to 4
+ - correct interrupts property in each nodes for 4 interrupt cells
+ - remove power domains controller node
+ - move #address-cells and #size-cells into mt8186.dts
+ - remove unused ahb_cg clock in mmc0
+ - add efuse node
+ - add dsi node and remove dpi node
+ - move i2c status position in mt8186-evb.dts
+ - change i2c child nodee name in pio node to *-pins
+ - change property from mediatek,drive-strength-adv to drive-strength-microamp in i2c child nodes of pio
+ - change drive-strength value from MTK_DRIVE_4mA to 4 in i2c child nodes of pio
+ - change i2c child nodes from pins-sda-sc1 to pins-bus
+ - correct pintctrl clk names
+
+changes since v10:
+ - remove merged PATCHes
+ - add pmu nodes
+ - add #cooling-cells
+ - change #interrupt-cells number from 3 to 4
+ - remove power domains controller node
+ - move #address-cells/#size-cells into mt8186.dts from evb dts for i2c
+ - move status = 'okay' position in i2cx
+ - fix pinctrl patternproperties name in pio
+ - add efuse node
+ - fix dsi node
+ - add #reset-cells in infracfg_ao: syscon
+
+changes since v9:
+ - remove some merged PATCHs from series
+ - reorder nodes in dts (cpu-map)
+ - remove okay status in auxadc
+ - remove unnecessary suffix node name for i2c
+ - add pwm node 
+ - add dsi-phy node 
+ - add dpi node 
+
+changes since v9:
+ - add one space before equal sign of drive-strength-adv
+ - corect compatible name for big cores (ca76)
+ - use upper case of address in pinctrl
+ - add pwrap node
+ - add pwm node
+
+changes since v8:
+ - change name from pins_bus to pins-sda-scl
+ - correct email address
+ - add capacity-dmips-mhz for each CPU
+ - add ppi-partitions in gic node
+ - change name to power-domain
+ - remove status "okay" in scp node
+ - update timer and pericfg compatible in series
+
+changes since v7:
+ - add scp&auxadc node
+
+changes since v6:
+ - remove unnecessary blank line
+
+changes since v5:
+ - replace Mediatek a to MediaTek
+ - use GPL-2.0-only OR BSD-2-Clause
+
+changes since v4:
+ - correct driver clock of mt8186
+ - add power domains controller and clock controllers
+ - add pinctrl, usb host, spi and i2c nodes
+ - add node status in mt8186-evb.dts
+ - correct some dtbs_check warnings
+
+changes since v3:
+ - remove serial, mmc and phy patch from series. (already merged)
+ - remove mcusysoff node
+ - move oscillator nodes at the head of dts
+ - change name from usb-phy to t-phy
+
+changes since v2:
+ - add soc {} in mt8186.dtsi
+
+changes since v1:
+ - add dt-bindings: arm: Add compatible for MediaTek MT8186
+
+Allen-KH Cheng (1):
+  arm64: dts: Add MediaTek MT8186 dts and evaluation board and Makefile
+
+ arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+ arch/arm64/boot/dts/mediatek/mt8186-evb.dts | 228 +++++
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi    | 875 ++++++++++++++++++++
+ 3 files changed, 1104 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
+
+-- 
+2.18.0
+
 
