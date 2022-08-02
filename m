@@ -4,96 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85538C19F29
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Aug 2022 08:46:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 832D6C00140
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Aug 2022 08:47:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K7X8iIHy3LYj/4krwug3nx931AvXti0vH9iBS7pE2K4=; b=QPgbHkzQdL5IkmzyFFTX4SVncY
-	Eg1Qgijt/n7IfNLVqrIsLnCxScl7jclDeH8c26ECpPiY0tq6EDW7dWpsy7X4murBKaXUYjs1EBP/k
-	9t8cZQ/Qzz+iV4Z+t/lLu2jFF67V4rQ04Uj31Sp2SldTsWHe0qLydYQz8mwxY3h1mZyLpVhPpkZeJ
-	hQbvX6i+HLF+nyLpLKlcFhKDIvU1CVwT810vVF5n1NxudmajjR8WIbQQucL102teTGpfh3u0LCVJi
-	hTZ4xKfP906i8TR3n4aJyiOHjpQW9NMGbScs0nB4v9ajd20jyII+36ow5xVHhoH9UF5noRKlw/44M
-	pHQVqJbg==;
+	bh=LOi0e26t1qGVGjFJ101uHk1DcJq5p7uMHf4xmBp8HUg=; b=3xt2S0oPvdBKgbPLxu/XZ01Y4k
+	2GvCUaackTda1xrCLNQjxssoxEFlB+fY2RDHtTMp6BbIJlBQ6B5WvBva5XCNTTp6muRLDb4uKVJS4
+	cL6vxdttOQGP8FRdsCUaunYHscVf2G+aV+ku/fKkjTtimx4l+7c6/zsPQ+U0Aag6AuRhZV8hFUB1y
+	Tv6whU/MkLhwqV97S22W0U1xBeG9JWI0GX7NF6Lvc+dChoI0V6HXrdjffdV+bLS885eNJtL2+B2yF
+	lcgY8AxUk5qaw6TqBw/3HmQUYywJaaH05vpgOxtF5yjYEf657aaag3FQdAcajQ1+05LdpzFq0xRgZ
+	PV2f4dYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oInXm-00BzFs-Jx; Tue, 02 Aug 2022 08:46:26 +0000
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+	id 1oInYc-00Bzo1-Nx; Tue, 02 Aug 2022 08:47:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oInXZ-00Bz76-70
-	for linux-mediatek@lists.infradead.org; Tue, 02 Aug 2022 08:46:14 +0000
-Received: by mail-lj1-x229.google.com with SMTP id s9so8914870ljs.6
-        for <linux-mediatek@lists.infradead.org>; Tue, 02 Aug 2022 01:46:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=K7X8iIHy3LYj/4krwug3nx931AvXti0vH9iBS7pE2K4=;
-        b=gKMlaGsVh25UzUYMjr4Vs6/HiaqzYMDs8EuW9FSc8JTkLiwtIaBKAxFLYvLHzemfv3
-         B/QzgEil+FtNljhSp9oMzcgbbnJn7osjyPu/4UWgeJoh/x6rrUitpXjrSL3ie13n9rGp
-         u+7fk1bI+8s7iyQ7YODEmTTs80gLAw8YYnrhYcfwiYdm2MOb2mlzqfwKKLyYi9uD+tgv
-         CCfK4OvfjAozqBZq82yurA4fnzOTHtXX7JcCrsN9TjKcuNJrZNG8FnWN+6KwWcAyv+Gd
-         Bv5yoNZzwmUMv9/c6GucJm5fWWITzEHEJrTeO5HA2tNWtU/Ms9raJprzMkBypZjxXA1E
-         CmbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=K7X8iIHy3LYj/4krwug3nx931AvXti0vH9iBS7pE2K4=;
-        b=o1Yj4NyTERTbGoCdedWLlEbT7U0EsXmwqFLfTzOD1oqTdBmwa60VPi4Neb3gC/fHFL
-         owg7/jzsqn0kTD8T+dSAjzzLbqLqL3fTFpNFrb4uha1aSROL+1IeGkwdOO5bKW+a7sz0
-         IO8BrKKP8fBtMJP/oP2hhNBeZC62Iv8hrO6WZAtzzE13JYStY9txIolvEBTs7ylgJR+K
-         5i9GDyVUkx2aLZcJoTzgrdEAm4mG9n7egrqdNSpo9E1feT/+oEhCVe+TE1mYTm70hR+J
-         U5UBfx3Xrd+8E/Mx/O1pdq9br115HMg0vrOZuztCFXHEQTwnsSs32yuLoOXLC68yncw5
-         Z3tg==
-X-Gm-Message-State: AJIora+NbJUQ3QZSQTvc9DZRXKzDpG14oAwTHHx+nSHu2zqGhu/qjawZ
-	yylC/UxMAHyCFeLbWdMtoIqy7Q==
-X-Google-Smtp-Source: AGRyM1upmtLknsx94k+qHnKPOHBBNE6qH3/UR5Vxo+HHCzeGIiCrY7Pv1IO/NKUma4lABAzfE7WyEA==
-X-Received: by 2002:a05:651c:1504:b0:25e:2443:9bfd with SMTP id e4-20020a05651c150400b0025e24439bfdmr5832466ljf.104.1659429969357;
-        Tue, 02 Aug 2022 01:46:09 -0700 (PDT)
-Received: from [192.168.1.6] ([213.161.169.44])
-        by smtp.gmail.com with ESMTPSA id r4-20020ac25c04000000b0048a9ec2ce46sm2012205lfp.260.2022.08.02.01.46.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 02 Aug 2022 01:46:08 -0700 (PDT)
-Message-ID: <e5cf8a19-637c-95cf-1527-11980c73f6c0@linaro.org>
-Date: Tue, 2 Aug 2022 10:46:06 +0200
+	id 1oInYW-00BzjM-8y; Tue, 02 Aug 2022 08:47:15 +0000
+X-UUID: d82fe260c7f74161bfe47468b2bac018-20220802
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:4835f9b7-347f-401c-b041-9a0c59093900,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:683c0925-a982-4824-82d2-9da3b6056c2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: d82fe260c7f74161bfe47468b2bac018-20220802
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1939307011; Tue, 02 Aug 2022 01:47:07 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 2 Aug 2022 16:06:32 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Tue, 2 Aug 2022 16:06:31 +0800
+Message-ID: <2e221c97699fa540ac416518d730b13c83e12da8.camel@mediatek.com>
+Subject: Re: [PATCH v12 1/1] arm64: dts: Add MediaTek MT8186 dts and
+ evaluation board and Makefile
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	"Chen-Yu Tsai" <wenst@chromium.org>, <hsinyi@chromium.org>
+Date: Tue, 2 Aug 2022 16:06:31 +0800
+In-Reply-To: <20220801220136.4lll2wifc7muocuc@notapiano>
+References: <20220801123952.18932-1-allen-kh.cheng@mediatek.com>
+	 <20220801123952.18932-2-allen-kh.cheng@mediatek.com>
+	 <20220801220136.4lll2wifc7muocuc@notapiano>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH 4/4] dt-bindings: net: dsa: mediatek,mt7530: update
- json-schema
-Content-Language: en-US
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Frank Wunderlich
- <frank-w@public-files.de>, Luiz Angelo Daros de Luca <luizluca@gmail.com>,
- Sander Vanheule <sander@svanheule.net>,
- =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
- Daniel Golle <daniel@makrotopia.org>, erkin.bozoglu@xeront.com,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220730142627.29028-1-arinc.unal@arinc9.com>
- <20220730142627.29028-5-arinc.unal@arinc9.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220730142627.29028-5-arinc.unal@arinc9.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220802_014613_610608_4893B7CD 
-X-CRM114-Status: GOOD (  16.87  )
+X-CRM114-CacheID: sfid-20220802_014713_792887_705BA104 
+X-CRM114-Status: GOOD (  25.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,48 +82,178 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/07/2022 16:26, Arınç ÜNAL wrote:
-> Update the json-schema for compatible devices.
+HI Nícolas,
+
+Thanks for your reminder.
+
+On Mon, 2022-08-01 at 18:01 -0400, Nícolas F. R. A. Prado wrote:
+> Hi Allen,
 > 
-> - Define acceptable phy-mode values for CPU port of each compatible device.
-> - Remove requiring the "reg" property since the referred dsa-port.yaml
-> already does that.
-> - Require mediatek,mcm for the described MT7621 SoCs as the compatible
-> string is only used for MT7530 which is a part of the multi-chip module.
-
-3 separate patches.
-
+> On Mon, Aug 01, 2022 at 08:39:52PM +0800, Allen-KH Cheng wrote:
+> > Add basic chip support for MediaTek MT8186.
+> > 
+> > Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+> >  arch/arm64/boot/dts/mediatek/mt8186-evb.dts | 238 ++++++
+> >  arch/arm64/boot/dts/mediatek/mt8186.dtsi    | 874
+> > ++++++++++++++++++++
+> >  3 files changed, 1113 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> > 
 > 
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> ---
->  .../bindings/net/dsa/mediatek,mt7530.yaml     | 220 +++++++++++++++---
->  1 file changed, 191 insertions(+), 29 deletions(-)
+> [..]
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+> > b/arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+> > new file mode 100644
+> > index 000000000000..7d4a64ab95e4
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8186-evb.dts
 > 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> index a88e650e910b..a37a14fba9f6 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> @@ -135,35 +135,6 @@ properties:
->        the ethsys.
->      maxItems: 1
->  
-> -patternProperties:
-> -  "^(ethernet-)?ports$":
-> -    type: object
+> [..]
+> > +&pio {
+> > +	i2c0_pins: i2c0-default-pins {
+> > +		pins-bus {
+> > +			pinmux = <PINMUX_GPIO128__FUNC_SDA0>,
+> > +				 <PINMUX_GPIO127__FUNC_SCL0>;
+> > +			bias-disable;
+> > +			drive-strength-microamp = <1000>;
+> > +			drive-strength = <4>;
+> 
+> You can't use both drive-strength-microamp and drive-strength. You
+> only want the
+> microamp one here (and for the others below), since these are i2c
+> pins.
+> 
 
-Actually four patches...
+I will remove drive-strength for i2c pins.
 
-I don't find this change explained in commit msg. What is more, it looks
-incorrect. All properties and patternProperties should be explained in
-top-level part.
+> > +			input-enable;
+> > +		};
+> > +	};
+> 
+> [..]
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> > new file mode 100644
+> > index 000000000000..38f9466eea42
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> > @@ -0,0 +1,874 @@
+> 
+> [..]
+> > +		pio: pinctrl@10005000 {
+> > +			compatible = "mediatek,mt8186-pinctrl";
+> > +			reg = <0 0x10005000 0 0x1000>,
+> > +			      <0 0x10002000 0 0x0200>,
+> > +			      <0 0x10002200 0 0x0200>,
+> > +			      <0 0x10002400 0 0x0200>,
+> > +			      <0 0x10002600 0 0x0200>,
+> > +			      <0 0x10002A00 0 0x0200>,
+> > +			      <0 0x10002C00 0 0x0200>,
+> > +			      <0 0x1000B000 0 0x1000>;
+> 
+> Please use lowercase hex for addresses.
+> 
 
-Defining such properties (with big piece of YAML) in each if:then: is no
-readable.
+ok.
 
-> -
-> -    patternProperties:
+> > +			reg-names = "iocfg0", "iocfg_bm", "iocfg_bl",
+> > "iocfg_br",
+> > +				    "iocfg_lm", "iocfg_rb", "iocfg_tl",
+> > "eint";
+> > +			gpio-controller;
+> > +			#gpio-cells = <2>;
+> > +			gpio-ranges = <&pio 0 0 185>;
+> > +			interrupt-controller;
+> > +			interrupts = <GIC_SPI 186 IRQ_TYPE_LEVEL_HIGH
+> > 0>;
+> > +			#interrupt-cells = <2>;
+> > +		};
+> 
+> [..]
+> > +		xhci0: usb@11200000 {
+> > +			compatible = "mediatek,mt8186-xhci",
+> > +				     "mediatek,mtk-xhci";
+> > +			reg = <0 0x11200000 0 0x1000>,
+> > +			      <0 0x11203e00 0 0x0100>;
+> > +			reg-names = "mac", "ippc";
+> > +			interrupts = <GIC_SPI 294 IRQ_TYPE_LEVEL_HIGH
+> > 0>;
+> > +			phys = <&u2port0 PHY_TYPE_USB2>;
+> > +			clocks = <&topckgen CLK_TOP_USB_TOP>,
+> > +				 <&infracfg_ao
+> > CLK_INFRA_AO_SSUSB_TOP_XHCI>,
+> > +				 <&infracfg_ao
+> > CLK_INFRA_AO_SSUSB_TOP_HCLK>,
+> > +				 <&infracfg_ao CLK_INFRA_AO_ICUSB>,
+> > +				 <&infracfg_ao
+> > CLK_INFRA_AO_SSUSB_TOP_REF>;
+> > +			clock-names = "sys_ck", "ref_ck", "mcu_ck",
+> > "dma_ck", "xhci_ck";
+> 
+> The clocks and clock-names don't match, can you confirm whether
+> they're right?
+> (But keep this clock order, see the comment on xhci1 below)
+> 
+
+The clocks of ref_ck and xhci_ck are not correct. I will update in next
+version.
+
+> > +			mediatek,syscon-wakeup = <&pericfg 0x420 2>;
+> > +			wakeup-source;
+> > +			status = "disabled";
+> > +		};
+> 
+> [..]
+> > +		xhci1: usb@11280000 {
+> > +			compatible = "mediatek,mt8186-xhci",
+> > +				     "mediatek,mtk-xhci";
+> > +			reg = <0 0x11280000 0 0x1000>,
+> > +			      <0 0x11283e00 0 0x0100>;
+> > +			reg-names = "mac", "ippc";
+> > +			interrupts = <GIC_SPI 324 IRQ_TYPE_LEVEL_HIGH
+> > 0>;
+> > +			phys = <&u2port1 PHY_TYPE_USB2>,
+> > +			       <&u3port1 PHY_TYPE_USB3>;
+> > +			clocks = <&infracfg_ao
+> > CLK_INFRA_AO_SSUSB_TOP_P1_SYS>,
+> > +				 <&infracfg_ao
+> > CLK_INFRA_AO_SSUSB_TOP_P1_XHCI>,
+> > +				 <&infracfg_ao
+> > CLK_INFRA_AO_SSUSB_TOP_P1_HCLK>,
+> > +				 <&infracfg_ao
+> > CLK_INFRA_AO_SSUSB_TOP_P1_REF>;
+> > +			clock-names = "sys_ck", "ref_ck", "mcu_ck",
+> > "xhci_ck";
+> 
+> The xhci dt-binding enforces this clock order:
+> 
+> 	sys_ck, ref_ck, mcu_ck, dma_ck, xhci_ck
+> 
+> You can't skip dma_ck, otherwise you'll see a dtbs_check warning. So
+> if this
+> hardware block has a fixed clock connected to the dma_ck slot (ie it
+> isn't
+> controllable), then just add a fixed clock entry for it (eg
+> <&clk26m>).
+> 
+> The clock names also look switched here, please double-check.
+> 
+> Thanks,
+> Nícolas
+> 
+
+The hw does not control this. I will add fixed clock for dma_ck.
+
+Thanks,
+Allen
 
 
-Best regards,
-Krzysztof
+> > +			mediatek,syscon-wakeup = <&pericfg 0x424 2>;
+> > +			wakeup-source;
+> > +			status = "disabled";
+> > +		};
+
 
