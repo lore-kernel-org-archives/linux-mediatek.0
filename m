@@ -4,87 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4D79C00140
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Aug 2022 11:05:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42A50C19F2C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Aug 2022 11:16:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nHi8fLHEx0FAPEMq1lv35iSGwVjA+eu1JTfdJG/1JwA=; b=hWp50ZLWhiRddCgIEnNlGZJkiu
-	qnKN6CFTVS0zo/LndPzwkCKUyiuFvW2yvrln8YoitzcFufHOUSOVVFcIVn1h7wJGkLsaoH3lSngmH
-	QgFDMJnrDSnh0W+UksFbc7GXOqS03yLl3nG3ERafTU0dEg25yGgzETWqQbwvpo7ww9AhYv84dRxIF
-	4q9rSLrYsiiv66lyRd5oq3YNhgzouDltUT9yoUQWz/ArByCVKFNfz1V56X/+51WKIAku0l2EDh+lr
-	A6sLaDazNi2GHZGWUYDgfal1/3b1ZJS1vR7yTIYrOpvpu/glxUrhNm7/dNeWXXL+xqgUOXQhugFUt
-	F7RRf3YA==;
+	bh=A2VfX0ohBEDI9pdacm9qg39DqZbTOcJ97Tvbb0ay7PA=; b=bhs8t6DW+FZcopG6XuEOLFrJSd
+	8RnbJiIQjRugxxIzf+dScpOUAEgLcpzq3uTN28K2pVt0Tkmg6JghjnsY6DgfM1achCiDvKqXvjPjM
+	dFf9FVeKoXQHOqqzNKrJe84a8y97N3IuVZ5D+pHzhhgq+K74NAWnMNxUrGyGiIn3t/sBt6ywRxb7Y
+	J32bYvAyUwGq1BcRJ44IuuBJBzty3tXPHmX8mu3REme10Pa2viCGyHNfeJqOswZSofglU5nDx3TmE
+	gl8PF7SQ6nRmEUMTIwoslvDAYLk2RSlU5As7xz1rD69LbxewMD2WBSIzSKo0RAfcz700eE2sRWuGl
+	tUSGCjzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIpiK-00DFQ3-TP; Tue, 02 Aug 2022 11:05:28 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1oIpsm-00DMDM-6q; Tue, 02 Aug 2022 11:16:16 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIphr-00DF1U-8C; Tue, 02 Aug 2022 11:05:02 +0000
-Received: by mail-wr1-x431.google.com with SMTP id z16so17375390wrh.12;
-        Tue, 02 Aug 2022 04:04:57 -0700 (PDT)
+	id 1oIpsa-00DM5G-6y; Tue, 02 Aug 2022 11:16:06 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id l4so17485643wrm.13;
+        Tue, 02 Aug 2022 04:16:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
          :content-language:user-agent:mime-version:date:message-id:from:to:cc;
-        bh=nHi8fLHEx0FAPEMq1lv35iSGwVjA+eu1JTfdJG/1JwA=;
-        b=Lal3Ie/ci8JOgPvGGtAlBm+U3/MyomhyVeQYF8BxD+cyn/mzYMbb0osW/bFrWGKyoS
-         IPD1iNwxtnxdZ4xzKaV94j4XsnpgI3VK7s+oYr/3frgnNe1u1OplTeJkDHD/gajbkPV6
-         kAA7OjLG0cB2hH6Y7Hy3mUCGwsaURof5IrhcyVDeGMq62nrRl/70ELU0iIr3UnhYd0hs
-         +IfVPDh0HzVUGYx9SVzeeImsTuz8L91WWWPr6QLIBCQd6L84fzWRQk0rfdiBzGdTF6qf
-         NBGPGvIPjrS0exxyTrJ4YdSwOW8IhWrgYE6LBAh+U/ROTt6CuuIeKKOFt91TOUzmKn2h
-         qI1w==
+        bh=A2VfX0ohBEDI9pdacm9qg39DqZbTOcJ97Tvbb0ay7PA=;
+        b=VEUHFtoWx1hsRT9yABC0bQ31nr/6iVyFPY07sKhk+zGOtFoAr032aVFnqJhsw8mIgM
+         wo6+VbjXn94MA/HZ4zfb1Ts7PpY5VPW0MAOAlkpSFfHBWBZhnsrMsxRbQriOkylatqfs
+         Dni8FpGvml5Rd/s0777eugW09N3nOd+IQTNMgFFrOpmR76tqEYoAAM8c1qIdIle0Us8+
+         Zb79FKXDzoY2NE8xLMlrc/veUgICeLtdzZpvKpJuyITsrwj6P2TizZ2tuXuL4IuzGeIB
+         WwIOodMTV6ZWwzzShjrFILwwZIl0zQarB4il5LwD644ZSbszNbpVPRCMuOyFi1dtONtP
+         roqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
          :content-language:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc;
-        bh=nHi8fLHEx0FAPEMq1lv35iSGwVjA+eu1JTfdJG/1JwA=;
-        b=VlLhTxwUFoktamPII20A9icIHvJZHhwTVZNcC7TOJWl0FpEN29tnJ2c1yod3vWJYKs
-         5OpiUdMFA8gw4B5Z09VnZmbKNjQ5Fdgvibt6dCP6MNDbQSwDZb4ba6pQXAiYWqJIxovv
-         eQv0gNpRJwwIZuAw7z5Dno1xfk2Yv6TErMy37xviZppHlBiIdjB3B5W/JYb2l6olZikd
-         txRM0pnTIi5o6onj/xzBitfflfj6OXM6bR1DpyzK7yC7VS46kUVYIuMJw+C2UsisqMHG
-         CV0ncRHhCLGFphNiekf/8cDTrc7bHyyD5wON7FULniW8FGHNfxJULqGacz/ksoYKdrzQ
-         A4/A==
-X-Gm-Message-State: ACgBeo22uz+3apiZTN7oP5sn5k/2MFkDXVz3hee5rfCibhONVr9GaAKu
-	ULuBLRbUVKDmTRvABFCogXg=
-X-Google-Smtp-Source: AA6agR7DlMgWDRSL/ir77djsoo6TQQwGJanGObcqxajeOs3Ab9UqoY9gLUS27WVcA6hneLY29OqAVA==
-X-Received: by 2002:a5d:47a8:0:b0:21d:b690:9273 with SMTP id 8-20020a5d47a8000000b0021db6909273mr11991374wrb.242.1659438296497;
-        Tue, 02 Aug 2022 04:04:56 -0700 (PDT)
+        bh=A2VfX0ohBEDI9pdacm9qg39DqZbTOcJ97Tvbb0ay7PA=;
+        b=Smcmb4lkhxBbMMTHbZDFmNhBnyGAwaBsVUuVD3ZZ7+idGZv9/ggYu3r6sElfPRvRWV
+         7/+yC38DE0XqIfWe8wXH/wiGdOKC9rILIl0GfqPFILaLYw1+U6k2Q+inlmc470vl2PVH
+         OFb9m5njTKItXxRhNR6CBynv/DHPfWsj3MT1jzoq1KuIJN1JOWlBmNww/ak3aL/rH4Ng
+         cXV8J4TJ5ooGBseDvMs+VyjIoRRbNJ6z8Z/VU3XvtW+y9IrHZncZlECq8ZvzGybTIXVk
+         vKSo07VhYbI59s9IqJ/0bfXMdpYbxR2wacrBoAjAyQUApq6uISdA9m/NTjJ73o6wAMKF
+         BngA==
+X-Gm-Message-State: ACgBeo2FS16pNjEu7AAkcPL5zFD323vizs4nRjyUyIZKXhLh4vg8py2c
+	MWNodmJFXlIc4MyhnOWhVcU=
+X-Google-Smtp-Source: AA6agR5UZhUHndApFToNzkGMWRF30QoaS3PKoIYA19437kHEspwNEJV7RjGO47a9PKuVvSVTjJuFCw==
+X-Received: by 2002:a5d:6b09:0:b0:21e:2eb6:2d03 with SMTP id v9-20020a5d6b09000000b0021e2eb62d03mr12526766wrw.684.1659438960337;
+        Tue, 02 Aug 2022 04:16:00 -0700 (PDT)
 Received: from [192.168.1.145] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id o5-20020a05600c510500b003a2d6c623f3sm24236447wms.19.2022.08.02.04.04.54
+        by smtp.gmail.com with ESMTPSA id az13-20020a05600c600d00b003a32490c95dsm23044355wmb.35.2022.08.02.04.15.57
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 02 Aug 2022 04:04:55 -0700 (PDT)
-Message-ID: <5dac39d1-3b42-40e9-5693-0c127e8c689a@gmail.com>
-Date: Tue, 2 Aug 2022 13:04:53 +0200
+        Tue, 02 Aug 2022 04:15:59 -0700 (PDT)
+Message-ID: <3eb66813-14a9-8644-b2dd-588815a06079@gmail.com>
+Date: Tue, 2 Aug 2022 13:15:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
 Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, nfraprado@collabora.com,
- angelogioacchino.delregno@collabora.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20220721014845.19044-1-allen-kh.cheng@mediatek.com>
- <20220721014845.19044-2-allen-kh.cheng@mediatek.com>
- <CAGXv+5HXwVpaJPV-4Z6qw14xZzEkx_E7dVks6-GBa7bQyN8hCg@mail.gmail.com>
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chen-Yu Tsai <wenst@chromium.org>, hsinyi@chromium.org,
+ Allen-kh Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>
+References: <20220802085152.31284-1-allen-kh.cheng@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v4 1/4] dt-bindings: mediatek: watchdog: Fix compatible
- fallbacks and example
-In-Reply-To: <CAGXv+5HXwVpaJPV-4Z6qw14xZzEkx_E7dVks6-GBa7bQyN8hCg@mail.gmail.com>
+Subject: Re: [PATCH v13 0/1] Add basic node support for MediaTek MT8186 SoC
+In-Reply-To: <20220802085152.31284-1-allen-kh.cheng@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220802_040459_387530_632249D1 
-X-CRM114-Status: GOOD (  35.23  )
+X-CRM114-CacheID: sfid-20220802_041604_286296_17ED1ACB 
+X-CRM114-Status: GOOD (  26.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,102 +95,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Allen,
 
+Below some notes for myself.
 
-On 01/08/2022 11:29, Chen-Yu Tsai wrote:
-> On Thu, Jul 21, 2022 at 10:50 AM Allen-KH Cheng
-> <allen-kh.cheng@mediatek.com> wrote:
->>
->> The watchdog timer of mt8186. mt8195 and mt7986 have their DT data.
->> We should not use 'mediatek,mt6589-wdt' as fallback.
->>
->> For mediatek,wdt example of mt8183, We remove mediatek,mt6589-wdt fallback.
+On 02/08/2022 10:51, Allen-KH Cheng wrote:
+> From: Allen-kh Cheng <allen-kh.cheng@mediatek.corp-partner.google.com>
 > 
-> I think this needs some more information.
+> MT8186 is a SoC based on 64bit ARMv8 architecture. It contains 6 CA55
+> and 2 CA76 cores. MT8186 share many HW IP with MT65xx series. This
+> patchset was tested on MT8186 evaluation board to shell.
 > 
-> Right now on the kernel side, mt6589-wdt provides just watchdog support.
-> The SoC-specific compatibles that are touched by this patch provide reset
-> controls in addition to the standard watchdog, which remains the same.
+> This series is based on tag: next-20220728, linux-next/master
+> Since we have a another dts series of mt8195 [1] which is waiting for
+> review from maintainers. I remove power domains controller node from
+> this mt8186 series and will update in another patch.
 > 
-> If that is the case, then the fallback compatibles are correct. A fallback
-> says that the new hardware is compatible with some older hardware, and
-> can be run with the driver supporting that older hardware, likely with
-> reduced functionality.
-> 
+> There are some corrections in mt8186 hardware bindings. We need to
+> apply the below patches.
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20220725110702.11362-2-allen-kh.cheng@mediatek.com/
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20220725110702.11362-3-allen-kh.cheng@mediatek.com/
 
-My understanding is, that we add a fallback because although at the time we 
-entered the compatible, the functionality of the device is the same as the 
-fallback. Nonetheless we add a compatible specific for the device in case in the 
-future we realize that the device has some functionality that is not and can not 
-be covered by the fallback.
+Both are already merged.
 
-This is the case here. Actually adding the fallback in the first place was 
-wrong, because the driver since ever supports the extra function for the device, 
-the reset.
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20220720130604.14113-2-allen-kh.cheng@mediatek.com/
 
-So this is a mere cleanup of the binding to reflect what was always present in 
-the driver.
+Acked but not yet merged.
+
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20220721014845.19044-2-allen-kh.cheng@mediatek.com/
+
+We still have some discussions here.
+
 
 Regards,
 Matthias
 
-> As an example, if mt8195-wdt is backward compatible with mt6589-wdt,
-> then it should run as mt6589-wdt, and would just be missing new
-> functionality, in this case the reset controls.
 > 
-> So either mt6589-wdt also contains a reset control that is not the same
-> as the other newer chips, or has some other functionality that the other
-> chips contain, and justifies the removal of the fallback, or this patch
-> is incorrect. Note that mt2701-wdt and mt762*-wdt are still listed as
-> compatible with mt6589-wdt. So I think a better explanation is required.
+> [1]
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=663978
 > 
+> changes since v12:
+>   - remove drive-strength fom i2c pins
+>   - use lowercase hex addresses in pinctrl node
+>   - correct clk order in xhci0
+>   - add clk26m for dma_ck
 > 
-> Regards
-> ChenYu
+> changes since v11:
+>   - add #cooling-cells in cpu nodes
+>   - add pmu nodes for mt8186
+>   - change #interrupt-cells from 3 to 4
+>   - correct interrupts property in each nodes for 4 interrupt cells
+>   - remove power domains controller node
+>   - move #address-cells and #size-cells into mt8186.dts
+>   - remove unused ahb_cg clock in mmc0
+>   - add efuse node
+>   - add dsi node and remove dpi node
+>   - move i2c status position in mt8186-evb.dts
+>   - change i2c child nodee name in pio node to *-pins
+>   - change property from mediatek,drive-strength-adv to drive-strength-microamp in i2c child nodes of pio
+>   - change drive-strength value from MTK_DRIVE_4mA to 4 in i2c child nodes of pio
+>   - change i2c child nodes from pins-sda-sc1 to pins-bus
+>   - correct pintctrl clk names
 > 
+> changes since v10:
+>   - remove merged PATCHes
+>   - add pmu nodes
+>   - add #cooling-cells
+>   - change #interrupt-cells number from 3 to 4
+>   - remove power domains controller node
+>   - move #address-cells/#size-cells into mt8186.dts from evb dts for i2c
+>   - move status = 'okay' position in i2cx
+>   - fix pinctrl patternproperties name in pio
+>   - add efuse node
+>   - fix dsi node
+>   - add #reset-cells in infracfg_ao: syscon
 > 
->> Fixes:a45b408a020b("dt-bindings: watchdog: Add compatible for MediaTek MT8186")
->> Fixes:b326f2c85f3d("dt-bindings: watchdog: Add compatible for Mediatek MT8195")
->> Fixes:41e73feb1024("dt-bindings: watchdog: Add compatible for Mediatek MT7986")
->> Fixes:f43f97a0fc0e("dt-bindings: mediatek: mt8183: Add #reset-cells")
->> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
->> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 9 ++++-----
->>   1 file changed, 4 insertions(+), 5 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
->> index 762c62e428ef..67ef991ec4cf 100644
->> --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
->> +++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
->> @@ -14,12 +14,12 @@ Required properties:
->>          "mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
->>          "mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
->>          "mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
->> -       "mediatek,mt7986-wdt", "mediatek,mt6589-wdt": for MT7986
->> +       "mediatek,mt7986-wdt": for MT7986
->>          "mediatek,mt8183-wdt": for MT8183
->> -       "mediatek,mt8186-wdt", "mediatek,mt6589-wdt": for MT8186
->> +       "mediatek,mt8186-wdt": for MT8186
->>          "mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
->>          "mediatek,mt8192-wdt": for MT8192
->> -       "mediatek,mt8195-wdt", "mediatek,mt6589-wdt": for MT8195
->> +       "mediatek,mt8195-wdt": for MT8195
->>
->>   - reg : Specifies base physical address and size of the registers.
->>
->> @@ -32,8 +32,7 @@ Optional properties:
->>   Example:
->>
->>   watchdog: watchdog@10007000 {
->> -       compatible = "mediatek,mt8183-wdt",
->> -                    "mediatek,mt6589-wdt";
->> +       compatible = "mediatek,mt8183-wdt";
->>          mediatek,disable-extrst;
->>          reg = <0 0x10007000 0 0x100>;
->>          interrupts = <GIC_SPI 139 IRQ_TYPE_NONE>;
->> --
->> 2.18.0
->>
->>
+> changes since v9:
+>   - remove some merged PATCHs from series
+>   - reorder nodes in dts (cpu-map)
+>   - remove okay status in auxadc
+>   - remove unnecessary suffix node name for i2c
+>   - add pwm node
+>   - add dsi-phy node
+>   - add dpi node
+> 
+> changes since v9:
+>   - add one space before equal sign of drive-strength-adv
+>   - corect compatible name for big cores (ca76)
+>   - use upper case of address in pinctrl
+>   - add pwrap node
+>   - add pwm node
+> 
+> changes since v8:
+>   - change name from pins_bus to pins-sda-scl
+>   - correct email address
+>   - add capacity-dmips-mhz for each CPU
+>   - add ppi-partitions in gic node
+>   - change name to power-domain
+>   - remove status "okay" in scp node
+>   - update timer and pericfg compatible in series
+> 
+> changes since v7:
+>   - add scp&auxadc node
+> 
+> changes since v6:
+>   - remove unnecessary blank line
+> 
+> changes since v5:
+>   - replace Mediatek a to MediaTek
+>   - use GPL-2.0-only OR BSD-2-Clause
+> 
+> changes since v4:
+>   - correct driver clock of mt8186
+>   - add power domains controller and clock controllers
+>   - add pinctrl, usb host, spi and i2c nodes
+>   - add node status in mt8186-evb.dts
+>   - correct some dtbs_check warnings
+> 
+> changes since v3:
+>   - remove serial, mmc and phy patch from series. (already merged)
+>   - remove mcusysoff node
+>   - move oscillator nodes at the head of dts
+>   - change name from usb-phy to t-phy
+> 
+> changes since v2:
+>   - add soc {} in mt8186.dtsi
+> 
+> changes since v1:
+>   - add dt-bindings: arm: Add compatible for MediaTek MT8186
+> 
+> Allen-KH Cheng (1):
+>    arm64: dts: Add MediaTek MT8186 dts and evaluation board and Makefile
+> 
+>   arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+>   arch/arm64/boot/dts/mediatek/mt8186-evb.dts | 228 +++++
+>   arch/arm64/boot/dts/mediatek/mt8186.dtsi    | 875 ++++++++++++++++++++
+>   3 files changed, 1104 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> 
 
