@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD1F7C00140
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Aug 2022 02:41:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80740C00140
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Aug 2022 02:43:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/IpQvWXV43k3jb8kb7K9GI8o3RXdEg7e+Ubw22Ua7QE=; b=GOrKGFypsO78M79IOr0mpFwlhB
-	qwDsedydRMqQGVBXTyw+/XiMAPj0FhUnnx5JEo7fKOabEfdz6TMuA1m62ugOjbGYHwgkQSipXnNAi
-	R7ZYOIU4a88696y2XmTMGVcrUUsmWktWAs2QS6OUagWomHE/TziRj57hwCg64yHbPu9OuYHudp/cX
-	U+uDxAw753FbkJXaAoFTeEPM8R17+ccoaHgaj6p5KohMz8NcJ2hJ6mFIrwB8TBXgnhQlDdBjtW7LX
-	5e1ncYLq2n0Oy/jHp5kzwJSk2jkZCjsTdDaxgzCGZuI/p2sohuQPvtPUd8z7nV5e75xiWKsn1UpAe
-	RMm5EjsA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
+	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bImqjXCRrIZ9uji6OdOn56lxmOaj2dxqie1+K4HSR9c=; b=TM0ecPN1pW0dBjRfaClierFCop
+	T/Od+E1NB2DRooSxOvvinskEfsdZxGOY9Cl4IhDgJvg1yCvulr+S/CoezcOCXf35vF0UmhCJjFcF5
+	cvWYY41/pKi58xgKT/JU90rH5LU2jWp1MWM9UTtkNcBFdqm0kBqTHQtiZ4I56eNOVdckPsWdhF7A1
+	7HiFKWDVjtfX3gjYU3uU50VSKrCz62GMdzOJn/I6COe7Lm61UIZp5W5Zzx+r/WqcXOP6b04TXPSdJ
+	H6g/rn/Q6MSoixf0P+sSJ5di8BvW5jqI29eTolzcjhWsaQTvbkd/ucOzTxQJ3pt/QQ3ZJghVN9Of3
+	8T6gck4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJ4Ji-001iXS-Pp; Wed, 03 Aug 2022 02:41:02 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1oJ4Lh-001jNQ-1z; Wed, 03 Aug 2022 02:43:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJ4JV-001iOg-0d; Wed, 03 Aug 2022 02:40:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1659494448; x=1691030448;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=4+h2x6MTJbiDLT4UD4ZyULbN7mB4aghqMawKynLeEXk=;
-  b=fhffcWT2VlSfsn7mky9SyuR7uixE3wEuQILskhV3GBZeKyJXuvD9whts
-   q2NQOTqm9jS6hoCMvP+nVHoi2aeU7jwCNNGM0ebeGr3Vro1xi4FJ+Uf4D
-   qsxJt0vFqiVdxSSab9bf43X5yc+ZwXIqJd/EXCisMDRY8nJKZ0jo8Lp8U
-   TBHwWu6pG985RoapLBDRdAiXZVVBV2kW6IWupPOaNQOe0b5QbagCclbzt
-   UcUv0DHVDbnycUNMC7ELt1i2pMz2Do8EsGM545PuTP9qzeONxG3aXRZlK
-   QrXUrnoiK9dUHCqn9gaiywQnPo1otKgYTHoWZR01bwAXi5Nwi/tU4/7Ak
-   A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10427"; a="269337236"
-X-IronPort-AV: E=Sophos;i="5.93,212,1654585200"; 
-   d="scan'208";a="269337236"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Aug 2022 19:40:47 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,212,1654585200"; 
-   d="scan'208";a="553153353"
-Received: from lkp-server01.sh.intel.com (HELO e0eace57cfef) ([10.239.97.150])
-  by orsmga003.jf.intel.com with ESMTP; 02 Aug 2022 19:40:44 -0700
-Received: from kbuild by e0eace57cfef with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1oJ4JP-000Gi7-1q;
-	Wed, 03 Aug 2022 02:40:43 +0000
-Date: Wed, 3 Aug 2022 10:40:31 +0800
-From: kernel test robot <lkp@intel.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: kbuild-all@lists.01.org, Sean Wang <sean.wang@mediatek.com>,
-	Pavel Machek <pavel@ucw.cz>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v1 1/1] leds: mt6323: Get rid of custom
- led_init_default_state_get()
-Message-ID: <202208031036.PJtAjxAm-lkp@intel.com>
-References: <20220802212537.7122-1-andriy.shevchenko@linux.intel.com>
+	id 1oJ4Lc-001jKW-Cg
+	for linux-mediatek@lists.infradead.org; Wed, 03 Aug 2022 02:43:03 +0000
+X-UUID: c1357d2be0f84e31a34c52e2e4438bec-20220802
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:75deff44-450a-4c2a-b6bd-af73c554c1fd,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:0f94e32,CLOUDID:b6dd10d1-841b-4e95-ad42-8f86e18f54fc,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: c1357d2be0f84e31a34c52e2e4438bec-20220802
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1000959627; Tue, 02 Aug 2022 19:42:54 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 3 Aug 2022 10:42:36 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Wed, 3 Aug 2022 10:42:36 +0800
+Subject: Re: [PATCH v3 2/2] ufs: host: support wb toggle with clock scaling
+To: Bart Van Assche <bvanassche@acm.org>, <stanley.chu@mediatek.com>,
+	<linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<chun-hung.wu@mediatek.com>, <alice.chao@mediatek.com>,
+	<cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
+	<jiajie.hao@mediatek.com>, <powen.kao@mediatek.com>,
+	<qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
+References: <20220802143223.1276-1-peter.wang@mediatek.com>
+ <20220802143223.1276-3-peter.wang@mediatek.com>
+ <517895b7-95ed-5e83-fb6d-98e155b896d4@acm.org>
+From: Peter Wang <peter.wang@mediatek.com>
+Message-ID: <39d082c1-88fe-3feb-0654-9ea562b542ac@mediatek.com>
+Date: Wed, 3 Aug 2022 10:42:35 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220802212537.7122-1-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <517895b7-95ed-5e83-fb6d-98e155b896d4@acm.org>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220802_194049_095381_741FEA4C 
-X-CRM114-Status: GOOD (  14.32  )
+X-CRM114-CacheID: sfid-20220802_194300_480641_9AF0BDE3 
+X-CRM114-Status: GOOD (  18.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,73 +84,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
 
-I love your patch! Yet something to improve:
+On 8/3/22 2:46 AM, Bart Van Assche wrote:
+> On 8/2/22 07:32, peter.wang@mediatek.com wrote:
+>> From: Peter Wang <peter.wang@mediatek.com>
+>>
+>> Set UFSHCD_CAP_WB_WITH_CLK_SCALING for qcom to compatible legacy design.
+>>
+>> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+>> Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+>> ---
+>>   drivers/ufs/host/ufs-qcom.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
+>> index f10d4668814c..f8c9a78e7776 100644
+>> --- a/drivers/ufs/host/ufs-qcom.c
+>> +++ b/drivers/ufs/host/ufs-qcom.c
+>> @@ -869,7 +869,7 @@ static void ufs_qcom_set_caps(struct ufs_hba *hba)
+>>       struct ufs_qcom_host *host = ufshcd_get_variant(hba);
+>>         hba->caps |= UFSHCD_CAP_CLK_GATING | 
+>> UFSHCD_CAP_HIBERN8_WITH_CLK_GATING;
+>> -    hba->caps |= UFSHCD_CAP_CLK_SCALING;
+>> +    hba->caps |= UFSHCD_CAP_CLK_SCALING | 
+>> UFSHCD_CAP_WB_WITH_CLK_SCALING;
+>>       hba->caps |= UFSHCD_CAP_AUTO_BKOPS_SUSPEND;
+>>       hba->caps |= UFSHCD_CAP_WB_EN;
+>>       hba->caps |= UFSHCD_CAP_CRYPTO;
+>
+> A patch series should be bisectable. Without this patch the previous 
+> patch in this series introduces a regression for Qualcomm controllers. 
+> So I think that the two patches should be combined into a single patch.
+>
+> Thanks,
+>
+> Bart.
 
-[auto build test ERROR on pavel-leds/for-next]
-[also build test ERROR on linus/master v5.19 next-20220728]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Hi Bart,
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Andy-Shevchenko/leds-mt6323-Get-rid-of-custom-led_init_default_state_get/20220803-052811
-base:   git://git.kernel.org/pub/scm/linux/kernel/git/pavel/linux-leds.git for-next
-config: i386-allyesconfig (https://download.01.org/0day-ci/archive/20220803/202208031036.PJtAjxAm-lkp@intel.com/config)
-compiler: gcc-11 (Debian 11.3.0-3) 11.3.0
-reproduce (this is a W=1 build):
-        # https://github.com/intel-lab-lkp/linux/commit/30cc6458329b3d5a593e0d2173dc63d8dc6446f5
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Andy-Shevchenko/leds-mt6323-Get-rid-of-custom-led_init_default_state_get/20220803-052811
-        git checkout 30cc6458329b3d5a593e0d2173dc63d8dc6446f5
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        make W=1 O=build_dir ARCH=i386 SHELL=/bin/bash drivers/
+Will combine into a single patch next version.
 
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
-
-All errors (new ones prefixed by >>):
-
-   drivers/leds/leds-mt6323.c: In function 'mt6323_led_set_dt_default':
->> drivers/leds/leds-mt6323.c:345:17: error: implicit declaration of function 'led_init_default_state_get'; did you mean 'led_get_default_pattern'? [-Werror=implicit-function-declaration]
-     345 |         state = led_init_default_state_get(of_fwnode_handle(np));
-         |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~
-         |                 led_get_default_pattern
-   cc1: some warnings being treated as errors
+Thanks.
+Peter
 
 
-vim +345 drivers/leds/leds-mt6323.c
 
-   337	
-   338	static int mt6323_led_set_dt_default(struct led_classdev *cdev,
-   339					     struct device_node *np)
-   340	{
-   341		struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
-   342		enum led_default_state state;
-   343		int ret = 0;
-   344	
- > 345		state = led_init_default_state_get(of_fwnode_handle(np));
-   346		switch (state) {
-   347		case LEDS_DEFSTATE_ON:
-   348			ret = mt6323_led_set_brightness(cdev, cdev->max_brightness);
-   349			break;
-   350		case LEDS_DEFSTATE_KEEP:
-   351			ret = mt6323_get_led_hw_brightness(cdev);
-   352			if (ret < 0)
-   353				return ret;
-   354			led->current_brightness = ret;
-   355			ret = 0;
-   356			break;
-   357		default:
-   358			ret = mt6323_led_set_brightness(cdev, LED_OFF);
-   359		}
-   360	
-   361		return ret;
-   362	}
-   363	
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
 
