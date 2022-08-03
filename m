@@ -4,66 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 145C1C19F28
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Aug 2022 11:47:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EABC3C19F28
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Aug 2022 19:29:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XP6K9yDj91vAA5Y8S0QrBaUJJz7WoIn8r/d+ALoFhd4=; b=vK27gyUi0kNkskC8Rpwsc1Zlqd
-	npvofitp8S94lswEUvh9g+Yw7aOhNiTJ/2BGiYO9IVobEE/zE73slHvG/lE0WcOHOcvvI3NcmPwKA
-	M0sU+I+0aduVhugNuLDfSmOUK7kZbpeUHB7vzv4IgaNLw+HpSktp3Xh989P+Z5VLuakTUCmkI1Twk
-	mPfR28T9I2GnzLUmAw6TW1+kGFy7LlIqflLiUVAHp2cCCUVolR3H+czadgk0HbjjqG0TBoU9uSzo8
-	7m66WBOOmjOCCjR6H/kmPVouT2CCD5tJsIOEsTEyK+Lmzu+AiQV7kXYMIwAxqo0+TySN/vQmDXPae
-	OULL3bOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RCxZcYJN9rkKZCIis3ewORAEM/I+F6Y2IS/7dkOJB6o=; b=flfRyOmnAJScbYJhZX16RzLRiP
+	EbZ50k/6GP2J7Yy7Uhg0ppjsCFDVhIurw1mQXLnkrEseETuA+UosZ99DObhofkA4gKMIFc6ZdPdH3
+	Z+6B4jq8CrDM3XE+3ybpEcBTm6sck8VHMR/iYvjuj4YG/9Sco9k2msSOKQcN13zM9PpIJdctIE6i0
+	p1gKqdcl+1f+wycaWtUEMnK8ViwkslRtPPAtD0DYPqsrwYHhMi91NjfhbU7Mtlf0cLwLup73D3ATm
+	z8UtOhjWwPB9I9MkKdd1MWk1ozYomqePsc6L/XtenJyuu9duE4ChMAGFCTA3vBDvmVY8inSAv/HfZ
+	mEby+OZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJCqS-005XKm-6N; Wed, 03 Aug 2022 11:47:24 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oJK3A-008sPc-64; Wed, 03 Aug 2022 19:29:00 +0000
+Received: from mail-pj1-f52.google.com ([209.85.216.52])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJCpb-005Wmg-5v; Wed, 03 Aug 2022 11:46:34 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 6865AB8223E;
-	Wed,  3 Aug 2022 11:46:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 985DBC433C1;
-	Wed,  3 Aug 2022 11:46:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1659527188;
-	bh=nZKYmWlSa9XmyEdXHQ+cFtuL6uqFDd9bmmvA2/joacM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lKkKLODzWGt19SS6paH+uYnJ5WxQXsAszaZ7AR1vzbKUKoSB/WM4jsgXsFP2VXGW6
-	 dMVEVVscVmkm3p1CJ+hugPdfDmRK99vq/r1MhATi+uhk5NZr1tS4jMKtaZoWLrMaJT
-	 gjCkX0NNSbX/3uxpqPgxe2Kj6/Jg3lpcnGFEl5uE=
-Date: Wed, 3 Aug 2022 13:46:25 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	Tom Rix <trix@redhat.com>, yj.chiang@mediatek.com,
-	Subbaraman Narayanamurthy <quic_subbaram@quicinc.com>,
-	"Rafael J . Wysocki" <rafael.j.wysocki@intel.com>,
-	stable@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
-Subject: Re: [PATCH 5.4] thermal: Fix NULL pointer dereferences in
- of_thermal_ functions
-Message-ID: <YupgEZ7jrxfpnE9s@kroah.com>
-References: <20220802034238.27127-1-mark-pk.tsai@mediatek.com>
+	id 1oJK37-008sMc-ES
+	for linux-mediatek@lists.infradead.org; Wed, 03 Aug 2022 19:28:58 +0000
+Received: by mail-pj1-f52.google.com with SMTP id pm17so11864584pjb.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 03 Aug 2022 12:28:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=RCxZcYJN9rkKZCIis3ewORAEM/I+F6Y2IS/7dkOJB6o=;
+        b=AY3KHNHzx58KwohAj3umZK00BJsjv+lpLrWqkpu8fWR4lEYShkl1HMVR+Jf7IMrbnv
+         HmN5h2M+RZRTl2OCKhxeZEZ0XzeBtMz5+wFupT58elk0iatVIAIp3Gacti2XBhuT5Oiy
+         PmecHLfD8Gz81MWd8CTcg3rGhbWBzJdfEyorzSchv0IYSfHmyOC6M87SwIQQu0P3CxM5
+         hbX56WdceR3gCleqfV3iO6nxBl7D7tjoOlkAPN0KtkKgWs9nkx6gJL0rgzfZ9U1G2HIv
+         q5tvMLwtGyccmNIJSx/Drt37BOHNNzFxVjHq5ynvqkW3dAo30bdqi2ptpaisV1C/MPnb
+         3MxQ==
+X-Gm-Message-State: ACgBeo3whZFUA9LiNkH8nE5JFGqhsb4xcnygTW/pQhGiSHcXXoq+rlFZ
+	TA5NGH76cySPqJT8Fn7Z+sAbqKKCKf4=
+X-Google-Smtp-Source: AA6agR5JPTv9cCZgg/k8OdPdC5xEIL2jgCN9700hcZo/9c1ZtDwXDp1PvaN7CtUksCOK77lA0OXfhw==
+X-Received: by 2002:a17:902:694c:b0:16d:cc5a:8485 with SMTP id k12-20020a170902694c00b0016dcc5a8485mr27650119plt.90.1659554923341;
+        Wed, 03 Aug 2022 12:28:43 -0700 (PDT)
+Received: from ?IPV6:2620:15c:211:201:db71:edb7:462a:44af? ([2620:15c:211:201:db71:edb7:462a:44af])
+        by smtp.gmail.com with ESMTPSA id v66-20020a626145000000b0052e6854e665sm80107pfb.109.2022.08.03.12.28.40
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 03 Aug 2022 12:28:42 -0700 (PDT)
+Message-ID: <2070dd08-371b-a660-388e-ec2481781db9@acm.org>
+Date: Wed, 3 Aug 2022 12:28:38 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220802034238.27127-1-mark-pk.tsai@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v4] ufs: allow host driver disable wb toggle druing clock
+ scaling
+Content-Language: en-US
+To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com
+References: <20220803030329.5897-1-peter.wang@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20220803030329.5897-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220803_044631_840719_F227D989 
-X-CRM114-Status: GOOD (  16.94  )
+X-CRM114-CacheID: sfid-20220803_122857_519004_E97CDDF8 
+X-CRM114-Status: GOOD (  17.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,52 +85,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 02, 2022 at 11:42:16AM +0800, Mark-PK Tsai wrote:
-> From: Subbaraman Narayanamurthy <quic_subbaram@quicinc.com>
-> 
-> commit 96cfe05051fd8543cdedd6807ec59a0e6c409195 upstream.
-> 
-> of_parse_thermal_zones() parses the thermal-zones node and registers a
-> thermal_zone device for each subnode. However, if a thermal zone is
-> consuming a thermal sensor and that thermal sensor device hasn't probed
-> yet, an attempt to set trip_point_*_temp for that thermal zone device
-> can cause a NULL pointer dereference. Fix it.
-> 
->  console:/sys/class/thermal/thermal_zone87 # echo 120000 > trip_point_0_temp
->  ...
->  Unable to handle kernel NULL pointer dereference at virtual address 0000000000000020
->  ...
->  Call trace:
->   of_thermal_set_trip_temp+0x40/0xc4
->   trip_point_temp_store+0xc0/0x1dc
->   dev_attr_store+0x38/0x88
->   sysfs_kf_write+0x64/0xc0
->   kernfs_fop_write_iter+0x108/0x1d0
->   vfs_write+0x2f4/0x368
->   ksys_write+0x7c/0xec
->   __arm64_sys_write+0x20/0x30
->   el0_svc_common.llvm.7279915941325364641+0xbc/0x1bc
->   do_el0_svc+0x28/0xa0
->   el0_svc+0x14/0x24
->   el0_sync_handler+0x88/0xec
->   el0_sync+0x1c0/0x200
-> 
-> While at it, fix the possible NULL pointer dereference in other
-> functions as well: of_thermal_get_temp(), of_thermal_set_emul_temp(),
-> of_thermal_get_trend().
-> 
-> Suggested-by: David Collins <quic_collinsd@quicinc.com>
-> Signed-off-by: Subbaraman Narayanamurthy <quic_subbaram@quicinc.com>
-> Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-> ---
->  drivers/thermal/of-thermal.c | 9 ++++++---
->  1 file changed, 6 insertions(+), 3 deletions(-)
+On 8/2/22 20:03, peter.wang@mediatek.com wrote:
 > 
 
-Now queued up, thanks.
+disable -> to disable?
 
-greg k-h
+toggle -> toggling?
+
+druing -> during?
+
+> diff --git a/drivers/ufs/core/ufs-sysfs.c b/drivers/ufs/core/ufs-sysfs.c
+> index 0a088b47d557..7f41f2a69b04 100644
+> --- a/drivers/ufs/core/ufs-sysfs.c
+> +++ b/drivers/ufs/core/ufs-sysfs.c
+> @@ -225,7 +225,8 @@ static ssize_t wb_on_store(struct device *dev, struct device_attribute *attr,
+>   	unsigned int wb_enable;
+>   	ssize_t res;
+>   
+> -	if (!ufshcd_is_wb_allowed(hba) || ufshcd_is_clkscaling_supported(hba)) {
+> +	if (!ufshcd_is_wb_allowed(hba) || (ufshcd_is_clkscaling_supported(hba)
+> +		&& ufshcd_enable_wb_if_scaling_up(hba))) {
+
+The "&&" is misplaced - it should occur at the end of the previous line. 
+Isn't this something that checkpatch complains about?
+
+>   	/* Enable Write Booster if we have scaled up else disable it */
+> -	downgrade_write(&hba->clk_scaling_lock);
+> -	is_writelock = false;
+> -	ufshcd_wb_toggle(hba, scale_up);
+> +	if (ufshcd_enable_wb_if_scaling_up(hba)) {
+> +		downgrade_write(&hba->clk_scaling_lock);
+> +		is_writelock = false;
+> +		ufshcd_wb_toggle(hba, scale_up);
+> +	}
+
+Since this code is being modified, please move the "/* Enable" comment 
+to where it should occur (just above the ufshcd_wb_toggle() call).
+
+> @@ -1004,6 +1010,10 @@ static inline bool ufshcd_is_wb_allowed(struct ufs_hba *hba)
+>   {
+>   	return hba->caps & UFSHCD_CAP_WB_EN;
+>   }
+> +static inline bool ufshcd_enable_wb_if_scaling_up(struct ufs_hba *hba)
+> +{
+> +	return hba->caps & UFSHCD_CAP_WB_WITH_CLK_SCALING;
+> +}
+
+It seems like a blank line is missing above the new function definition?
+
+Otherwise this patch looks good to me.
+
+Thanks,
+
+Bart.
 
