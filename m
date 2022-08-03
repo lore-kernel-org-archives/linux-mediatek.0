@@ -4,84 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73345C19F2B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Aug 2022 20:51:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D5CBC19F2B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Aug 2022 22:26:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=RAxlI5Y8Kp9u75e5W9NQ6XnoRU3A8IEOpX4oxatpzqA=; b=S0UKmbGXYfHHqR1sPU07faOZz+
-	MOXpX+EmnfANRobvne8RG8wxealMY4x123OATKIYnRUs+xtgY1MwH0oGCWUGwC9l2KropvzR3lsQJ
-	M0FfG+JpqwsB+2SuZbRelvHX8GHfKXqBamVTYfJqtp8bCkP4kOmqUuJKEDG021/ENrsDx/A1Kev1R
-	dictxfutagWyBstpdLr+ZUTUs3EJgtxHwZChwhp0ezqpk1tpxW71NUw4XZExfDxgB+GRTB6cvQ3H4
-	ezsIhJTBsqic6YY1/94fYIUwN+W6hDLZt+3mAfnl9MJ7zHi/ze0tv/V5EmiCIfrgkzG48F2jcuJyq
-	WGxpQgSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=75J351RhvLWaNaDEuKDQSYMAYS+EvEUS1HxFqA844aM=; b=YhWJYDFpiQ5x7WpyqJ9dLQDRBX
+	WZt+pvzDRRxeMHfSn1cJXITe0p4RKl2opLRZ8f9hEdPzWny4ccXzEGwy5uIQGX0AAj2OMHCMS4DpA
+	u6ieFi/TUOBHWlNvJC66fdJnISq0AzIXbzYzkqK8pkXYNXKE5xVs8A2Obwym/wINrE0VZaDetWlYm
+	XWJGinN5m/oWZXb7uIOYfIjbGfyEFZo17UkCNJbO4XD99H+9y/ZQX8f3Uib9OBVgCfADc2jS4EOp5
+	gID0DchFngFjZ+SD7OxdXGaUR+GwyO6qteLLM5IV/vLxJSkbzKSbWejLHfX4FQEsrS2U60ZEHvnDC
+	8gbLUw2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJLKO-009RLQ-I0; Wed, 03 Aug 2022 20:50:52 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1oJMoc-00AKZz-D2; Wed, 03 Aug 2022 22:26:10 +0000
+Received: from mail-il1-f176.google.com ([209.85.166.176])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJLKL-009RIu-BN
-	for linux-mediatek@lists.infradead.org; Wed, 03 Aug 2022 20:50:51 +0000
-Received: by mail-pf1-x435.google.com with SMTP id u133so10858715pfc.10
-        for <linux-mediatek@lists.infradead.org>; Wed, 03 Aug 2022 13:50:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=RAxlI5Y8Kp9u75e5W9NQ6XnoRU3A8IEOpX4oxatpzqA=;
-        b=ikYycF3lzQ4ZM3NofzkLavn+lwVx1I+jin6Q/ORotMxUrlv3muPm1ZiZBqzGjZPyKO
-         +MbaSRjsY6gF2QWzdx/1ZBXjtWii50U0txwUzb8GMJLRImHNyJF0x4JtftbnvzEpni/m
-         SGS++E4BVVvjTVN+vuCxy1BTqgFedyuhf+sOs=
+	id 1oJMoP-00AKNG-V0; Wed, 03 Aug 2022 22:25:59 +0000
+Received: by mail-il1-f176.google.com with SMTP id g18so9189915ilk.4;
+        Wed, 03 Aug 2022 15:25:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=RAxlI5Y8Kp9u75e5W9NQ6XnoRU3A8IEOpX4oxatpzqA=;
-        b=wy6D/cTrhyu23IKH7p+ZDJ1wBIClqjIv5cy8MwX8NfePFCjeOeC7Ln6+GaLZhw+b7Q
-         QAiYtnE+BMy1IQbEe5ZcF5PwFHVOtmQfkpByNAuGbxuGCmvCTg3+BVZJ8rB4CZnaL1Ms
-         92YdMqmkIYA7aPe2Ru9oL3DrUNGWM7++GqqOe00ox9EALciLmFZiZpJcBBraOWrKAfpe
-         f0zcwg/CcoVPXRJtJrgPNwNKukCw9r+FPExHGMRTmxf0MF6z+5BDKENGEN4JvTTVaKhi
-         uODgme5PhjhywQlF/C9GLo/l7x5CkHmiD82TXnsWVMPVwLEJeInbnjTmrTevBamPSUWz
-         ZXng==
-X-Gm-Message-State: ACgBeo2SVhAUbtzFoXd3ITP6vAGi8OCoMjXfkHhFA7vHEzNmrOsnXZYF
-	j7xTvKGTZ/+17fLME3K3wbcWqQ==
-X-Google-Smtp-Source: AA6agR5FnaAqfJxxr5WaDoXKWStzf88yfvrvtDj1+KqAwQ/8Z+p1TTQR9aY0pAeFTwGKlazKCJ3s5g==
-X-Received: by 2002:a05:6a00:1c49:b0:52e:4e9a:a07a with SMTP id s9-20020a056a001c4900b0052e4e9aa07amr2532846pfw.26.1659559847228;
-        Wed, 03 Aug 2022 13:50:47 -0700 (PDT)
-Received: from dlunevwfh.roam.corp.google.com (n122-107-196-14.sbr2.nsw.optusnet.com.au. [122.107.196.14])
-        by smtp.gmail.com with ESMTPSA id q6-20020a17090a68c600b001f2e20edd14sm1998406pjj.45.2022.08.03.13.50.38
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
+        bh=75J351RhvLWaNaDEuKDQSYMAYS+EvEUS1HxFqA844aM=;
+        b=v6yq2c5pqsRmmncY7gmSYIXsreECVmqJNi6yDDxHaYZzl4gPe2qZfXePStVou9Zsrn
+         uaFen+4m1RvvbXsIPBWOFlk+52T7mNGBtqhQ45bNL7vajfC8LnSNU6plmIzz3EeLydP5
+         ftDY/9DPCavFGU7Hz4j5acLsN5p4qTH3lp6f7YHG/IolCcsVjNJxLeAXX+8ns/t2pC5h
+         ubINdFzxr1YSXRavHp+n67BuRrnynaJxqZhgv3EWj9MJRv2k4mqSS+giBfE68y9I6FLJ
+         rh7lMGmxdzWtAqDJTYvPD7MmIyMU9yMPpdPNHIHMB7MMe+jj6DdQ4XhVmFIjqB53h/D5
+         rtzg==
+X-Gm-Message-State: AJIora+p3UK8QWcfIyn/4xwzu1fPGRpfyiiT9Oz+c3YEAi6/UkCTbLu6
+	FBhUQ1XhsAP5rC8M9YHhzxcQPqV5pg==
+X-Google-Smtp-Source: AGRyM1vFgEiM4mqDqG8n02VeO5CgzGHFBqz8H57zw5X0V7f6EMV3CS5bmW+6+WMG6BHO7ysuxySmDQ==
+X-Received: by 2002:a05:6e02:1a25:b0:2dc:743c:864a with SMTP id g5-20020a056e021a2500b002dc743c864amr11342302ile.248.1659565555800;
+        Wed, 03 Aug 2022 15:25:55 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id bc11-20020a0566383ccb00b00335b403c3b4sm8176076jab.48.2022.08.03.15.25.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Aug 2022 13:50:46 -0700 (PDT)
-From: Daniil Lunev <dlunev@chromium.org>
-To: Adrian Hunter <adrian.hunter@intel.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	Stanley Chu <chu.stanley@gmail.com>
-Cc: Daniil Lunev <dlunev@chromium.org>,
-	Stanley Chu <stanley.chu@mediatek.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Bean Huo <beanhuo@micron.com>,
-	Eric Biggers <ebiggers@google.com>,
-	"James E.J. Bottomley" <jejb@linux.ibm.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	jongmin jeong <jjmin.jeong@samsung.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-scsi@vger.kernel.org
-Subject: [PATCH v5] ufs: core: ufshcd: use local_clock() for debugging timestamps
-Date: Thu,  4 Aug 2022 06:50:34 +1000
-Message-Id: <20220804065019.v5.1.I699244ea7efbd326a34a6dfd9b5a31e78400cf68@changeid>
-X-Mailer: git-send-email 2.31.0
+        Wed, 03 Aug 2022 15:25:55 -0700 (PDT)
+Received: (nullmailer pid 2730520 invoked by uid 1000);
+	Wed, 03 Aug 2022 22:25:53 -0000
+Date: Wed, 3 Aug 2022 16:25:53 -0600
+From: Rob Herring <robh@kernel.org>
+To: Elvis Wang <Elvis.Wang@mediatek.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH 1/2] dt-bindings: mailbox: add definition for mt8188
+Message-ID: <20220803222553.GA2727128-robh@kernel.org>
+References: <20220729084319.6880-1-Elvis.Wang@mediatek.com>
+ <20220729084319.6880-2-Elvis.Wang@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220729084319.6880-2-Elvis.Wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220803_135049_437305_34878298 
-X-CRM114-Status: GOOD (  17.93  )
+X-CRM114-CacheID: sfid-20220803_152558_074171_AFE5257A 
+X-CRM114-Status: GOOD (  15.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,180 +77,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CLOCK_MONOTONIC is not advanced when the system is in suspend. This
-becomes problematic when debugging issues related to suspend-resume:
-the timestamps printed by ufshcd_print_trs can not be correlated with
-dmesg entries, which are timestamped with local_clock().
+On Fri, Jul 29, 2022 at 04:43:18PM +0800, Elvis Wang wrote:
+> Add dt-binding header for mt8188.
+> 
+> Signed-off-by: Elvis Wang <Elvis.Wang@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/mailbox/mtk-gce.txt | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> index c2aeba63bd47..50f97f6feeef 100644
+> --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> @@ -41,9 +41,9 @@ Optional properties for a client mutex node:
+>    defined in 'dt-bindings/gce/<chip>-gce.h'.
+>  
+>  Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h',
+> -'dt-bindings/gce/mt8183-gce.h', 'dt-bindings/gce/mt8186-gce.h'
+> -'dt-bindings/gce/mt8192-gce.h', 'dt-bindings/gce/mt8195-gce.h' or
+> -'dt-bindings/gce/mt6779-gce.h'.
+> +'dt-bindings/gce/mt8183-gce.h', 'dt-bindings/gce/mt8186-gce.h',
+> +'dt-bindings/gce/mt8188-gce.h', 'dt-bindings/gce/mt8192-gce.h',
+> +'dt-bindings/gce/mt8195-gce.h' or 'dt-bindings/gce/mt6779-gce.h'.
+>  Such as sub-system ids, thread priority, event ids.
 
-This CL changes the used clock to local_clock() for the informational
-timestamp variables and adds mirroring *_local_clock instances for
-variables used in subsequent derevations (to not change the semantics of
-those derevations).
+What about a new compatible string?
 
-Signed-off-by: Daniil Lunev <dlunev@chromium.org>
-Acked-by: Stanley Chu <stanley.chu@mediatek.com>
-Acked-by: Avri Altman <avri.altman@wdc.com>
+Really, this needs to be converted to schema...
 
----
-
-Changes in v5:
-- Bring over "acks" from the previous iterations
-
-Changes in v4:
-- Use div_u64 instead of "/"
-
-Changes in v3:
-- Add missing header
-
-Changes in v2:
-- Use local clock to better align with dmesg
-- Correct commit message
-
- drivers/ufs/core/ufshcd.c | 20 ++++++++++++--------
- include/ufs/ufshcd.h      | 14 +++++++++-----
- 2 files changed, 21 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index ce86d1b790c05..3b3c011d81e36 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -21,6 +21,7 @@
- #include <linux/interrupt.h>
- #include <linux/module.h>
- #include <linux/regulator/consumer.h>
-+#include <linux/sched/clock.h>
- #include <scsi/scsi_cmnd.h>
- #include <scsi/scsi_dbg.h>
- #include <scsi/scsi_driver.h>
-@@ -460,7 +461,7 @@ static void ufshcd_print_evt(struct ufs_hba *hba, u32 id,
- 		if (e->tstamp[p] == 0)
- 			continue;
- 		dev_err(hba->dev, "%s[%d] = 0x%x at %lld us\n", err_name, p,
--			e->val[p], ktime_to_us(e->tstamp[p]));
-+			e->val[p], div_u64(e->tstamp[p], 1000));
- 		found = true;
- 	}
- 
-@@ -505,9 +506,9 @@ void ufshcd_print_trs(struct ufs_hba *hba, unsigned long bitmap, bool pr_prdt)
- 		lrbp = &hba->lrb[tag];
- 
- 		dev_err(hba->dev, "UPIU[%d] - issue time %lld us\n",
--				tag, ktime_to_us(lrbp->issue_time_stamp));
-+				tag, div_u64(lrbp->issue_time_stamp_local_clock, 1000));
- 		dev_err(hba->dev, "UPIU[%d] - complete time %lld us\n",
--				tag, ktime_to_us(lrbp->compl_time_stamp));
-+				tag, div_u64(lrbp->compl_time_stamp_local_clock, 1000));
- 		dev_err(hba->dev,
- 			"UPIU[%d] - Transfer Request Descriptor phys@0x%llx\n",
- 			tag, (u64)lrbp->utrd_dma_addr);
-@@ -569,10 +570,10 @@ static void ufshcd_print_host_state(struct ufs_hba *hba)
- 	dev_err(hba->dev, "Clk gate=%d\n", hba->clk_gating.state);
- 	dev_err(hba->dev,
- 		"last_hibern8_exit_tstamp at %lld us, hibern8_exit_cnt=%d\n",
--		ktime_to_us(hba->ufs_stats.last_hibern8_exit_tstamp),
-+		div_u64(hba->ufs_stats.last_hibern8_exit_tstamp, 1000),
- 		hba->ufs_stats.hibern8_exit_cnt);
- 	dev_err(hba->dev, "last intr at %lld us, last intr status=0x%x\n",
--		ktime_to_us(hba->ufs_stats.last_intr_ts),
-+		div_u64(hba->ufs_stats.last_intr_ts, 1000),
- 		hba->ufs_stats.last_intr_status);
- 	dev_err(hba->dev, "error handling flags=0x%x, req. abort count=%d\n",
- 		hba->eh_flags, hba->req_abort_count);
-@@ -2142,7 +2143,9 @@ void ufshcd_send_command(struct ufs_hba *hba, unsigned int task_tag)
- 	unsigned long flags;
- 
- 	lrbp->issue_time_stamp = ktime_get();
-+	lrbp->issue_time_stamp_local_clock = local_clock();
- 	lrbp->compl_time_stamp = ktime_set(0, 0);
-+	lrbp->compl_time_stamp_local_clock = 0;
- 	ufshcd_add_command_trace(hba, task_tag, UFS_CMD_SEND);
- 	ufshcd_clk_scaling_start_busy(hba);
- 	if (unlikely(ufshcd_should_inform_monitor(hba, lrbp)))
-@@ -4199,7 +4202,7 @@ int ufshcd_uic_hibern8_exit(struct ufs_hba *hba)
- 	} else {
- 		ufshcd_vops_hibern8_notify(hba, UIC_CMD_DME_HIBER_EXIT,
- 								POST_CHANGE);
--		hba->ufs_stats.last_hibern8_exit_tstamp = ktime_get();
-+		hba->ufs_stats.last_hibern8_exit_tstamp = local_clock();
- 		hba->ufs_stats.hibern8_exit_cnt++;
- 	}
- 
-@@ -4696,7 +4699,7 @@ void ufshcd_update_evt_hist(struct ufs_hba *hba, u32 id, u32 val)
- 
- 	e = &hba->ufs_stats.event[id];
- 	e->val[e->pos] = val;
--	e->tstamp[e->pos] = ktime_get();
-+	e->tstamp[e->pos] = local_clock();
- 	e->cnt += 1;
- 	e->pos = (e->pos + 1) % UFS_EVENT_HIST_LENGTH;
- 
-@@ -5329,6 +5332,7 @@ static void __ufshcd_transfer_req_compl(struct ufs_hba *hba,
- 	for_each_set_bit(index, &completed_reqs, hba->nutrs) {
- 		lrbp = &hba->lrb[index];
- 		lrbp->compl_time_stamp = ktime_get();
-+		lrbp->compl_time_stamp_local_clock = local_clock();
- 		cmd = lrbp->cmd;
- 		if (cmd) {
- 			if (unlikely(ufshcd_should_inform_monitor(hba, lrbp)))
-@@ -6617,7 +6621,7 @@ static irqreturn_t ufshcd_intr(int irq, void *__hba)
- 
- 	intr_status = ufshcd_readl(hba, REG_INTERRUPT_STATUS);
- 	hba->ufs_stats.last_intr_status = intr_status;
--	hba->ufs_stats.last_intr_ts = ktime_get();
-+	hba->ufs_stats.last_intr_ts = local_clock();
- 
- 	/*
- 	 * There could be max of hba->nutrs reqs in flight and in worst case
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index a92271421718e..2de73196bb779 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -160,8 +160,10 @@ struct ufs_pm_lvl_states {
-  * @task_tag: Task tag of the command
-  * @lun: LUN of the command
-  * @intr_cmd: Interrupt command (doesn't participate in interrupt aggregation)
-- * @issue_time_stamp: time stamp for debug purposes
-- * @compl_time_stamp: time stamp for statistics
-+ * @issue_time_stamp: time stamp for debug purposes (CLOCK_MONOTONIC)
-+ * @issue_time_stamp_local_clock: time stamp for debug purposes (local_clock)
-+ * @compl_time_stamp: time stamp for statistics (CLOCK_MONOTONIC)
-+ * @compl_time_stamp_local_clock: time stamp for debug purposes (local_clock)
-  * @crypto_key_slot: the key slot to use for inline crypto (-1 if none)
-  * @data_unit_num: the data unit number for the first block for inline crypto
-  * @req_abort_skip: skip request abort task flag
-@@ -185,7 +187,9 @@ struct ufshcd_lrb {
- 	u8 lun; /* UPIU LUN id field is only 8-bit wide */
- 	bool intr_cmd;
- 	ktime_t issue_time_stamp;
-+	u64 issue_time_stamp_local_clock;
- 	ktime_t compl_time_stamp;
-+	u64 compl_time_stamp_local_clock;
- #ifdef CONFIG_SCSI_UFS_CRYPTO
- 	int crypto_key_slot;
- 	u64 data_unit_num;
-@@ -430,7 +434,7 @@ struct ufs_clk_scaling {
- struct ufs_event_hist {
- 	int pos;
- 	u32 val[UFS_EVENT_HIST_LENGTH];
--	ktime_t tstamp[UFS_EVENT_HIST_LENGTH];
-+	u64 tstamp[UFS_EVENT_HIST_LENGTH];
- 	unsigned long long cnt;
- };
- 
-@@ -446,10 +450,10 @@ struct ufs_event_hist {
-  */
- struct ufs_stats {
- 	u32 last_intr_status;
--	ktime_t last_intr_ts;
-+	u64 last_intr_ts;
- 
- 	u32 hibern8_exit_cnt;
--	ktime_t last_hibern8_exit_tstamp;
-+	u64 last_hibern8_exit_tstamp;
- 	struct ufs_event_hist event[UFS_EVT_CNT];
- };
- 
--- 
-2.31.0
-
+Rob
 
