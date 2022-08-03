@@ -4,82 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE498C19F28
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Aug 2022 11:44:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 145C1C19F28
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Aug 2022 11:47:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LUgPmzfFrSU+sgyYZ7FLrRfFna9TgeCoupYf3hfmbVM=; b=clFPzQk+pKN0jLpNt4hKDAv9v0
-	/dWD/cuYnonD3e3MICo87o8EpEHEaDd2KA0kfA3IpWgM+VeOQ7NzJNe9YBnQq18WCGc2iuY0jgyX/
-	6mcAmZkcoRRfaDzQ968/eaIgpPR/HyMxKTxMDjLZmnRlB1fNX7n7yaliUv4dLsgZzSSXPNEzm1cvk
-	sgaiKA1VOUjxc/wzmwk/sf26oTYPbhCQYkKJVbixk8CEOCMBGgMY+XGocY0ZUIC0CF2+1vfhbCgsd
-	0aIbgLbZ+WDKAEpKzu9rlYFBYcrlbE4DFKKA+n+tF11uVkw7hZXognJsHXRlvnO4gJrUElP+b2Okg
-	X+4v/+ow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XP6K9yDj91vAA5Y8S0QrBaUJJz7WoIn8r/d+ALoFhd4=; b=vK27gyUi0kNkskC8Rpwsc1Zlqd
+	npvofitp8S94lswEUvh9g+Yw7aOhNiTJ/2BGiYO9IVobEE/zE73slHvG/lE0WcOHOcvvI3NcmPwKA
+	M0sU+I+0aduVhugNuLDfSmOUK7kZbpeUHB7vzv4IgaNLw+HpSktp3Xh989P+Z5VLuakTUCmkI1Twk
+	mPfR28T9I2GnzLUmAw6TW1+kGFy7LlIqflLiUVAHp2cCCUVolR3H+czadgk0HbjjqG0TBoU9uSzo8
+	7m66WBOOmjOCCjR6H/kmPVouT2CCD5tJsIOEsTEyK+Lmzu+AiQV7kXYMIwAxqo0+TySN/vQmDXPae
+	OULL3bOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJCnx-005Vhi-On; Wed, 03 Aug 2022 11:44:49 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1oJCqS-005XKm-6N; Wed, 03 Aug 2022 11:47:24 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJCnN-005VK8-2h; Wed, 03 Aug 2022 11:44:14 +0000
-Received: by mail-wm1-x335.google.com with SMTP id ay36-20020a05600c1e2400b003a4e30d7995so787096wmb.5;
-        Wed, 03 Aug 2022 04:44:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc;
-        bh=LUgPmzfFrSU+sgyYZ7FLrRfFna9TgeCoupYf3hfmbVM=;
-        b=I5iSeXD2E2HuW+RNmn6sqrIRZoU+oUnjHcoBMjjcK4Fg829T1o0xuSuO8J8DhWV7ED
-         vEEgRzHzWk8Hf5b0vVxS0E+I/ioiSjXGxTdpFo84jTNaNHHkTLBbMNXwkUbAFukospM1
-         f2ra3pCkANb2SQe17MGW1JGk3eLcjLZh6ORaMEWvR0Sdv+6uztD+KE6v+j2u34NNWqDk
-         WzmS8bf3SUBYUpN/flrHKDDvUrEuXDKgajCogUm/R+jn6rLi5bYgl6TEVHQmLlEI5Le/
-         Iz0cY1QqZlAcGiCkmE6Da3h8OW+kzCLhXHoQ0vZuCoMp/Xq/ZjO5LGpCcadpFevI8Dej
-         KXTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc;
-        bh=LUgPmzfFrSU+sgyYZ7FLrRfFna9TgeCoupYf3hfmbVM=;
-        b=TqHYW2TZR5GpaLfcQ9Tc63tGQST/aocfn6B73upOF/0trPbO3WCjEvHPbpoOKx8McW
-         ThEtEqkEWlxJo3/75eoUolAM/j/3DSPRdKTqdWvqWdlehTCg6kQLipjPxxfERM5PssoY
-         QBHgZ0lHIy0YdNWJnbZiHb6pPncsIW6RgBYNP8SRXCEYOwRiVVrPQasMBIbm1UqmWkY1
-         2liB9lQTgLAQuDt4JRTU1zYy0Hwd529LKzshpXv5urZAYVemh5rVZOOutHhRUriJ3Hyp
-         KTw7fqwLbeN06dFLcZNg/B8kMKCnQWDDAtzKfD2PJpnbpSX+lbaCuhaLahlRKG+Su5Fh
-         2sPQ==
-X-Gm-Message-State: ACgBeo2vvnIyeINrlKCCIOAu5iWkKDWNVjjKO+AVGjxpFyj8fsoRQOU5
-	x9KiE+kX7G3UFhV3NLz8IqY=
-X-Google-Smtp-Source: AA6agR7Vug208ac1x5wt34gy+nfQqrOWgxntapVKh5V13+9AI/VPo4Tyuie4HoKDtGIXcWNmktMXzw==
-X-Received: by 2002:a05:600c:34c9:b0:3a4:f1d7:edbd with SMTP id d9-20020a05600c34c900b003a4f1d7edbdmr2569978wmq.128.1659527050494;
-        Wed, 03 Aug 2022 04:44:10 -0700 (PDT)
-Received: from [192.168.1.145] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id p36-20020a05600c1da400b003a2eacc8179sm2307934wms.27.2022.08.03.04.44.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 03 Aug 2022 04:44:09 -0700 (PDT)
-Message-ID: <cb74e4d0-8170-0837-fa43-d269a8db4d90@gmail.com>
-Date: Wed, 3 Aug 2022 13:44:08 +0200
+	id 1oJCpb-005Wmg-5v; Wed, 03 Aug 2022 11:46:34 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 6865AB8223E;
+	Wed,  3 Aug 2022 11:46:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 985DBC433C1;
+	Wed,  3 Aug 2022 11:46:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1659527188;
+	bh=nZKYmWlSa9XmyEdXHQ+cFtuL6uqFDd9bmmvA2/joacM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lKkKLODzWGt19SS6paH+uYnJ5WxQXsAszaZ7AR1vzbKUKoSB/WM4jsgXsFP2VXGW6
+	 dMVEVVscVmkm3p1CJ+hugPdfDmRK99vq/r1MhATi+uhk5NZr1tS4jMKtaZoWLrMaJT
+	 gjCkX0NNSbX/3uxpqPgxe2Kj6/Jg3lpcnGFEl5uE=
+Date: Wed, 3 Aug 2022 13:46:25 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Tom Rix <trix@redhat.com>, yj.chiang@mediatek.com,
+	Subbaraman Narayanamurthy <quic_subbaram@quicinc.com>,
+	"Rafael J . Wysocki" <rafael.j.wysocki@intel.com>,
+	stable@vger.kernel.org, linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Subject: Re: [PATCH 5.4] thermal: Fix NULL pointer dereferences in
+ of_thermal_ functions
+Message-ID: <YupgEZ7jrxfpnE9s@kroah.com>
+References: <20220802034238.27127-1-mark-pk.tsai@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v1 1/1] leds: mt6360: Get rid of custom
- led_init_default_state_get()
-Content-Language: en-US
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Gene Chen <gene_chen@richtek.com>, linux-leds@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Cc: Pavel Machek <pavel@ucw.cz>
-References: <20220802212532.7091-1-andriy.shevchenko@linux.intel.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220802212532.7091-1-andriy.shevchenko@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220802034238.27127-1-mark-pk.tsai@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220803_044413_332246_76DACEC8 
-X-CRM114-Status: GOOD (  20.41  )
+X-CRM114-CacheID: sfid-20220803_044631_840719_F227D989 
+X-CRM114-Status: GOOD (  16.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,106 +78,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 02/08/2022 23:25, Andy Shevchenko wrote:
-> LED core provides a helper to parse default state from firmware node.
-> Use it instead of custom implementation.
+On Tue, Aug 02, 2022 at 11:42:16AM +0800, Mark-PK Tsai wrote:
+> From: Subbaraman Narayanamurthy <quic_subbaram@quicinc.com>
 > 
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
+> commit 96cfe05051fd8543cdedd6807ec59a0e6c409195 upstream.
+> 
+> of_parse_thermal_zones() parses the thermal-zones node and registers a
+> thermal_zone device for each subnode. However, if a thermal zone is
+> consuming a thermal sensor and that thermal sensor device hasn't probed
+> yet, an attempt to set trip_point_*_temp for that thermal zone device
+> can cause a NULL pointer dereference. Fix it.
+> 
+>  console:/sys/class/thermal/thermal_zone87 # echo 120000 > trip_point_0_temp
+>  ...
+>  Unable to handle kernel NULL pointer dereference at virtual address 0000000000000020
+>  ...
+>  Call trace:
+>   of_thermal_set_trip_temp+0x40/0xc4
+>   trip_point_temp_store+0xc0/0x1dc
+>   dev_attr_store+0x38/0x88
+>   sysfs_kf_write+0x64/0xc0
+>   kernfs_fop_write_iter+0x108/0x1d0
+>   vfs_write+0x2f4/0x368
+>   ksys_write+0x7c/0xec
+>   __arm64_sys_write+0x20/0x30
+>   el0_svc_common.llvm.7279915941325364641+0xbc/0x1bc
+>   do_el0_svc+0x28/0xa0
+>   el0_svc+0x14/0x24
+>   el0_sync_handler+0x88/0xec
+>   el0_sync+0x1c0/0x200
+> 
+> While at it, fix the possible NULL pointer dereference in other
+> functions as well: of_thermal_get_temp(), of_thermal_set_emul_temp(),
+> of_thermal_get_trend().
+> 
+> Suggested-by: David Collins <quic_collinsd@quicinc.com>
+> Signed-off-by: Subbaraman Narayanamurthy <quic_subbaram@quicinc.com>
+> Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 > ---
->   drivers/leds/flash/leds-mt6360.c | 38 +++++---------------------------
->   1 file changed, 6 insertions(+), 32 deletions(-)
+>  drivers/thermal/of-thermal.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
 > 
-> diff --git a/drivers/leds/flash/leds-mt6360.c b/drivers/leds/flash/leds-mt6360.c
-> index e1066a52d2d2..1af6c5898343 100644
-> --- a/drivers/leds/flash/leds-mt6360.c
-> +++ b/drivers/leds/flash/leds-mt6360.c
-> @@ -71,10 +71,6 @@ enum {
->   #define MT6360_STRBTO_STEPUS		32000
->   #define MT6360_STRBTO_MAXUS		2432000
->   
-> -#define STATE_OFF			0
-> -#define STATE_KEEP			1
-> -#define STATE_ON			2
-> -
->   struct mt6360_led {
->   	union {
->   		struct led_classdev isnk;
-> @@ -84,7 +80,7 @@ struct mt6360_led {
->   	struct v4l2_flash *v4l2_flash;
->   	struct mt6360_priv *priv;
->   	u32 led_no;
-> -	u32 default_state;
-> +	enum led_default_state default_state;
->   };
->   
->   struct mt6360_priv {
-> @@ -405,10 +401,10 @@ static int mt6360_isnk_init_default_state(struct mt6360_led *led)
->   		level = LED_OFF;
->   
->   	switch (led->default_state) {
-> -	case STATE_ON:
-> +	case LEDS_DEFSTATE_ON:
->   		led->isnk.brightness = led->isnk.max_brightness;
->   		break;
-> -	case STATE_KEEP:
-> +	case LEDS_DEFSTATE_KEEP:
->   		led->isnk.brightness = min(level, led->isnk.max_brightness);
->   		break;
->   	default:
-> @@ -443,10 +439,10 @@ static int mt6360_flash_init_default_state(struct mt6360_led *led)
->   		level = LED_OFF;
->   
->   	switch (led->default_state) {
-> -	case STATE_ON:
-> +	case LEDS_DEFSTATE_ON:
->   		flash->led_cdev.brightness = flash->led_cdev.max_brightness;
->   		break;
-> -	case STATE_KEEP:
-> +	case LEDS_DEFSTATE_KEEP:
->   		flash->led_cdev.brightness =
->   			min(level, flash->led_cdev.max_brightness);
->   		break;
-> @@ -760,25 +756,6 @@ static int mt6360_init_flash_properties(struct mt6360_led *led,
->   	return 0;
->   }
->   
-> -static int mt6360_init_common_properties(struct mt6360_led *led,
-> -					 struct led_init_data *init_data)
-> -{
-> -	const char *const states[] = { "off", "keep", "on" };
-> -	const char *str;
-> -	int ret;
-> -
-> -	if (!fwnode_property_read_string(init_data->fwnode,
-> -					 "default-state", &str)) {
-> -		ret = match_string(states, ARRAY_SIZE(states), str);
-> -		if (ret < 0)
-> -			ret = STATE_OFF;
-> -
-> -		led->default_state = ret;
-> -	}
-> -
-> -	return 0;
-> -}
-> -
->   static void mt6360_v4l2_flash_release(struct mt6360_priv *priv)
->   {
->   	int i;
-> @@ -852,10 +829,7 @@ static int mt6360_led_probe(struct platform_device *pdev)
->   
->   		led->led_no = reg;
->   		led->priv = priv;
-> -
-> -		ret = mt6360_init_common_properties(led, &init_data);
-> -		if (ret)
-> -			goto out_flash_release;
-> +		led->default_state = led_init_default_state_get(child);
->   
->   		if (reg == MT6360_VIRTUAL_MULTICOLOR ||
->   		    reg <= MT6360_LED_ISNKML)
+
+Now queued up, thanks.
+
+greg k-h
 
