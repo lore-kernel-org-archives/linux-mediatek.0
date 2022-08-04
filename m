@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6EF8C19F2A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 02:18:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3785AC19F29
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 02:18:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2WoYmQrnfpmb4v8GtuXSjWUgeLGCFHbFVUEQVKxBuBc=; b=TDflzMYF+KQKKfPuN/3DIqZdSC
-	oOpC9jWAzfM/prFoWjknGOmSDg+pIXKfyoYX65X3YA4TKbcYWKVlxiTR5TEROfeuJIeg//ahgZoSj
-	px9b28Ad67/eQBdNXUV1wTZCOZTMJUyUt+c0tD+f1kBE1s3n7yzTw81wevL7vYkumiGfhgEHThpvx
-	eJedIgsEB00E5xifyHY90uPgKxuwgZ9YkTWjH+bdV/ya+UE1G+0OvMp4Pp3kkgdpInQJbwAIg0sfu
-	2DLx+r9OCQ/GZw4ME53ZOMLrxgmAhOvAAbTSfClnc8Fwv07Udbk10KtEg0dH2b2/qms5p/9k80TrX
-	ba7R4Fcw==;
+	bh=zGavVwy7EYlT4pA18t1y7E0shYNsVQvTr6AYao2gGZg=; b=Qzk2y8wmA5BvEzNUM1HDXp6gqZ
+	07CpCIgX5YaZY2IEp3HRswys+S78KfAUmDu+gGb4a1CjzK1d42DtPtmUGVI7PgEmo4CgcNX6IF7GT
+	qQ+PbHRHXQM9Ld0eaaYCTU+b3ChPjrdZgxBkj6Vbn7+NnVUfHOkSn5VsVFmQWOaxpBo5JppMmZDGa
+	n2rEMiXRtWmj5sdQUlJFLv5YhClwoJxssl6iZyw39/fjwdxaS/uM9Cej46mWg4dzhQkibK3HoWHdo
+	gnYpjssnvLttmEiOCjxioH3Uco1HsZYquT2oZ0ZV4+EpKGQa/Ta6YJS4V2t1WXRdGVSPMOsDwlW+G
+	9xFkm0uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJQR3-00Dvcd-TT; Thu, 04 Aug 2022 02:18:05 +0000
+	id 1oJQRB-00DvnM-P8; Thu, 04 Aug 2022 02:18:13 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJQQ5-00DuDY-GW; Thu, 04 Aug 2022 02:17:07 +0000
-X-UUID: 6962940d07874502971bcea785343ba8-20220803
+	id 1oJQQW-00Duj3-Ah; Thu, 04 Aug 2022 02:17:33 +0000
+X-UUID: eb7de000e73f492596bbd274ef7445eb-20220803
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:68a3198e-959b-4bcd-be79-7e3dc936e5ec,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:c26d3525-a982-4824-82d2-9da3b6056c2a,C
+X-CID-O-INFO: VERSION:1.1.8,REQID:5725d02c-5ebe-46f0-b889-4edd1416b05b,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:0f94e32,CLOUDID:e2703525-a982-4824-82d2-9da3b6056c2a,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 6962940d07874502971bcea785343ba8-20220803
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-UUID: eb7de000e73f492596bbd274ef7445eb-20220803
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <tinghan.shen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1159097293; Wed, 03 Aug 2022 19:17:00 -0700
+	with ESMTP id 1221782413; Wed, 03 Aug 2022 19:17:30 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 4 Aug 2022 10:15:56 +0800
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 4 Aug 2022 10:15:57 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 4 Aug 2022 10:15:56 +0800
+ Transport; Thu, 4 Aug 2022 10:15:57 +0800
 From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
- Deacon" <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will
+ Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
 	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Tinghan Shen
 	<tinghan.shen@mediatek.com>, MandyJH Liu <mandyjh.liu@mediatek.com>
 CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, YT Lee
-	<yt.lee@mediatek.corp-partner.google.com>
-Subject: [PATCH v5 10/20] arm64: dts: mt8195: Add cpufreq node
-Date: Thu, 4 Aug 2022 10:15:43 +0800
-Message-ID: <20220804021553.14867-11-tinghan.shen@mediatek.com>
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Trevor Wu
+	<trevor.wu@mediatek.com>
+Subject: [PATCH v5 15/20] arm64: dts: mt8195: Add audio related nodes
+Date: Thu, 4 Aug 2022 10:15:48 +0800
+Message-ID: <20220804021553.14867-16-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220804021553.14867-1-tinghan.shen@mediatek.com>
 References: <20220804021553.14867-1-tinghan.shen@mediatek.com>
@@ -67,8 +67,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220803_191705_612169_4813F252 
-X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-CacheID: sfid-20220803_191732_526677_2B273574 
+X-CRM114-Status: UNSURE (   9.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,98 +84,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: YT Lee <yt.lee@mediatek.corp-partner.google.com>
+Add audio related nodes for mt8195.
 
-Add cpufreq node for mt8195.
-
-Signed-off-by: YT Lee <yt.lee@mediatek.corp-partner.google.com>
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 58 ++++++++++++++++++++++++
+ 1 file changed, 58 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 8032b839dfe8d..900aaa16f862f 100644
+index d10db01a360aa..bbea0acff3d2f 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -26,6 +26,7 @@
- 			compatible = "arm,cortex-a55";
- 			reg = <0x000>;
- 			enable-method = "psci";
-+			performance-domains = <&performance 0>;
- 			clock-frequency = <1701000000>;
- 			capacity-dmips-mhz = <578>;
- 			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
-@@ -38,6 +39,7 @@
- 			compatible = "arm,cortex-a55";
- 			reg = <0x100>;
- 			enable-method = "psci";
-+			performance-domains = <&performance 0>;
- 			clock-frequency = <1701000000>;
- 			capacity-dmips-mhz = <578>;
- 			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
-@@ -50,6 +52,7 @@
- 			compatible = "arm,cortex-a55";
- 			reg = <0x200>;
- 			enable-method = "psci";
-+			performance-domains = <&performance 0>;
- 			clock-frequency = <1701000000>;
- 			capacity-dmips-mhz = <578>;
- 			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
-@@ -62,6 +65,7 @@
- 			compatible = "arm,cortex-a55";
- 			reg = <0x300>;
- 			enable-method = "psci";
-+			performance-domains = <&performance 0>;
- 			clock-frequency = <1701000000>;
- 			capacity-dmips-mhz = <578>;
- 			cpu-idle-states = <&cpu_off_l &cluster_off_l>;
-@@ -74,6 +78,7 @@
- 			compatible = "arm,cortex-a78";
- 			reg = <0x400>;
- 			enable-method = "psci";
-+			performance-domains = <&performance 1>;
- 			clock-frequency = <2171000000>;
- 			capacity-dmips-mhz = <1024>;
- 			cpu-idle-states = <&cpu_off_b &cluster_off_b>;
-@@ -86,6 +91,7 @@
- 			compatible = "arm,cortex-a78";
- 			reg = <0x500>;
- 			enable-method = "psci";
-+			performance-domains = <&performance 1>;
- 			clock-frequency = <2171000000>;
- 			capacity-dmips-mhz = <1024>;
- 			cpu-idle-states = <&cpu_off_b &cluster_off_b>;
-@@ -98,6 +104,7 @@
- 			compatible = "arm,cortex-a78";
- 			reg = <0x600>;
- 			enable-method = "psci";
-+			performance-domains = <&performance 1>;
- 			clock-frequency = <2171000000>;
- 			capacity-dmips-mhz = <1024>;
- 			cpu-idle-states = <&cpu_off_b &cluster_off_b>;
-@@ -110,6 +117,7 @@
- 			compatible = "arm,cortex-a78";
- 			reg = <0x700>;
- 			enable-method = "psci";
-+			performance-domains = <&performance 1>;
- 			clock-frequency = <2171000000>;
- 			capacity-dmips-mhz = <1024>;
- 			cpu-idle-states = <&cpu_off_b &cluster_off_b>;
-@@ -231,6 +239,12 @@
- 		clock-output-names = "clk32k";
+@@ -226,6 +226,17 @@
+ 		       <&cpu4>, <&cpu5>, <&cpu6>, <&cpu7>;
  	};
  
-+	performance: performance-controller@11bc10 {
-+		compatible = "mediatek,cpufreq-hw";
-+		reg = <0 0x0011bc10 0 0x120>, <0 0x0011bd30 0 0x120>;
-+		#performance-domain-cells = <1>;
++	dmic_codec: dmic-codec {
++		compatible = "dmic-codec";
++		num-channels = <2>;
++		wakeup-delay-ms = <50>;
 +	};
 +
- 	pmu-a55 {
- 		compatible = "arm,cortex-a55-pmu";
- 		interrupt-parent = <&gic>;
++	sound: mt8195-sound {
++		mediatek,platform = <&afe>;
++		status = "disabled";
++	};
++
+ 	clk26m: oscillator-26m {
+ 		compatible = "fixed-clock";
+ 		#clock-cells = <0>;
+@@ -728,6 +739,53 @@
+ 			#clock-cells = <1>;
+ 		};
+ 
++		afe: mt8195-afe-pcm@10890000 {
++			compatible = "mediatek,mt8195-audio";
++			reg = <0 0x10890000 0 0x10000>;
++			mediatek,topckgen = <&topckgen>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_AUDIO>;
++			interrupts = <GIC_SPI 822 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&clk26m>,
++				<&apmixedsys CLK_APMIXED_APLL1>,
++				<&apmixedsys CLK_APMIXED_APLL2>,
++				<&topckgen CLK_TOP_APLL12_DIV0>,
++				<&topckgen CLK_TOP_APLL12_DIV1>,
++				<&topckgen CLK_TOP_APLL12_DIV2>,
++				<&topckgen CLK_TOP_APLL12_DIV3>,
++				<&topckgen CLK_TOP_APLL12_DIV9>,
++				<&topckgen CLK_TOP_A1SYS_HP>,
++				<&topckgen CLK_TOP_AUD_INTBUS>,
++				<&topckgen CLK_TOP_AUDIO_H>,
++				<&topckgen CLK_TOP_AUDIO_LOCAL_BUS>,
++				<&topckgen CLK_TOP_DPTX_MCK>,
++				<&topckgen CLK_TOP_I2SO1_MCK>,
++				<&topckgen CLK_TOP_I2SO2_MCK>,
++				<&topckgen CLK_TOP_I2SI1_MCK>,
++				<&topckgen CLK_TOP_I2SI2_MCK>,
++				<&infracfg_ao CLK_INFRA_AO_AUDIO_26M_B>,
++				<&scp_adsp CLK_SCP_ADSP_AUDIODSP>;
++			clock-names = "clk26m",
++				"apll1_ck",
++				"apll2_ck",
++				"apll12_div0",
++				"apll12_div1",
++				"apll12_div2",
++				"apll12_div3",
++				"apll12_div9",
++				"a1sys_hp_sel",
++				"aud_intbus_sel",
++				"audio_h_sel",
++				"audio_local_bus_sel",
++				"dptx_m_sel",
++				"i2so1_m_sel",
++				"i2so2_m_sel",
++				"i2si1_m_sel",
++				"i2si2_m_sel",
++				"infra_ao_audio_26m_b",
++				"scp_adsp_audiodsp";
++			status = "disabled";
++		};
++
+ 		uart0: serial@11001100 {
+ 			compatible = "mediatek,mt8195-uart",
+ 				     "mediatek,mt6577-uart";
 -- 
 2.18.0
 
