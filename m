@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2256C19F21
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 19:43:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2DCFC19F21
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 19:54:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=N1vdbley9Z296Rv5iRkhYKPrVXZbEHfyZweQM+MSnD8=; b=DjGN+xk7q+EgfKgRS9h7+gSEqT
-	ufwW5VIuAe02gdDohTqL0ZBQd2y3q3o07MNijN6F/dsHKN83rqYPCsNIe9Hcl9kYvoOYgBoAOCAle
-	BLc9V2wVHKRmk2e5rgb7BwT1PwNZCTn1iEAebu3zuviz78vdymm1vCwb+jOspsSUc/H+XEoV+QYM5
-	t0yTIRHVe/gtdz5b2JBp1VYcVpTgqK/+XItOHbSxCIsgUTQ66aGgpJpzmw+Gxrd2G/tTzGc7rpPcx
-	1PKt0OxGBtgwXki3kFFxf/6NlIRPfOfCwWNTUInJMIyvXEdOuxuTXnRsb8SGfQZ6nEZKjlNZ+RJHl
-	INigD54A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c+lfeYbmQzrdXFvP7lcfdDn539L06Iv7kKvWbZznc3s=; b=NjYmAiuNAfq7qe+Ie5yLVZLlV7
+	/smiMoAIg1Vx/++0zYDQvkeL2ordqgdbD5NwoSSOofn91aiAFAgYb4OYGwajEVOqH9kwa1orU3MTj
+	YQ+1s7899Kvrq+r705mSilkVgzp+zq2HkFb78yCGxyCWU+IrrJGHG9XhFh2tQ2eUXdpxYIUeT3fq/
+	jP4CQVx7nJ1bQYrhyUTe/sB6AYHgBM/T9DcuQz5PRlj5ZWMUMWHZwrOuz2fEF84XI9Coa4PVBZaMY
+	210QIuohkHamCVoYT0kPEWg8/y1wLaR8WDwqsGEWvV2yHI3zm6TBS2ByHdNjo6mQ3k3FuOk8XI+8n
+	K/jrLCew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJgl1-008fiP-DJ; Thu, 04 Aug 2022 19:43:47 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oJgvI-008k4X-NL; Thu, 04 Aug 2022 19:54:24 +0000
+Received: from mail-il1-f181.google.com ([209.85.166.181])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJgko-008fcL-JG; Thu, 04 Aug 2022 19:43:36 +0000
-Received: from notapiano.myfiosgateway.com (pool-98-113-53-228.nycmny.fios.verizon.net [98.113.53.228])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7F0396601BF8;
-	Thu,  4 Aug 2022 20:43:29 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1659642211;
-	bh=JhqZk6xh4Hi5VnjgPmbWNCLylbZ7vVV8Fj4bhoUCc/c=;
-	h=From:To:Cc:Subject:Date:From;
-	b=gVNpQolsJG7SZu+9kmOgAQd3EexsdCX77uA53ofN7k93qpxPsa17QyQIj0jV5UU11
-	 jLxDoWd4wMH9N93AbkEzMQdDEPG1+awdm4M4OIdNV1al8Z4wpilXm7Gi2KvzrjFEgs
-	 A3Q/OUSRXx7z0BXtCuo6Xs0EZYaWFJGJJdZLi5My32W6mia0C8wY3NECn0ITEYfzKj
-	 Bfrc1G77q0NoVeO/RyI9NfB3TkMqL+/RxNWXwqgkwfSDQ5ABX0TMe5QDF5Ago8ugwG
-	 4v6U9pliyt3qSqAPrdOeLaOF26RGHYMny3hi6gauNwPWW8b+sZg35CSM2AwXErc1VI
-	 CReCIxhk18IbA==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	David Airlie <airlied@linux.ie>,
-	Jitao Shi <jitao.shi@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Rex-BC Chen <rex-bc.chen@mediatek.com>,
-	Xinlei Lee <xinlei.lee@mediatek.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] drm/mediatek: dsi: Move mtk_dsi_stop() call back to mtk_dsi_poweroff()
-Date: Thu,  4 Aug 2022 15:43:25 -0400
-Message-Id: <20220804194325.1596554-1-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.37.1
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+	id 1oJgrj-008iLo-3w; Thu, 04 Aug 2022 19:50:44 +0000
+Received: by mail-il1-f181.google.com with SMTP id z6so422734iln.13;
+        Thu, 04 Aug 2022 12:50:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=message-id:date:subject:references:in-reply-to:cc:to:from
+         :x-gm-message-state:from:to:cc;
+        bh=c+lfeYbmQzrdXFvP7lcfdDn539L06Iv7kKvWbZznc3s=;
+        b=ruhlPPjtVVmuyOPZ2JT0WJq5I7JMQc3NVwv3boV6sQJth+o0OUvOkss3Hs1h9MpWPD
+         G0Kl+/Qb59tjmXVrEiOhJdsYwyE4sRdthxryrtm9GP32c5klF6peJwgX6zcgnK5DpLEO
+         2+6IyAqS/Q/MpdsIqOf38fVcc6HTfGW2B5Ru0HaMOYSnjnBq+wAhPZdsIK8Lj6xUBFas
+         VsuxYaVP+WKC0nXSu7VUjwek56SrVOdS1ycItpz1sinW70IDdzDOMcN1Cy88n6xFFnPC
+         PoErnZuZVWI+EeXy7NSGKxtsQD62QN3dvFhaERCExIwiPsrz+VT70vQgGpGlrPpVCJNh
+         b5nQ==
+X-Gm-Message-State: ACgBeo1f9VRySJOU0qmO7Nf4NjhT0ykHyJm2yJ9+ScGGRfUEKh3LuAQv
+	kDTBpH//fOyaPMbEEV84LA==
+X-Google-Smtp-Source: AA6agR7u0l38e/FffftiZmTXKP1m1dVqkPyS9dEXiBCiG5YDG9cwa+SHcna4Er/WhU6rDTuFL4nhSg==
+X-Received: by 2002:a05:6e02:1c0a:b0:2de:87ff:18f2 with SMTP id l10-20020a056e021c0a00b002de87ff18f2mr1554084ilh.133.1659642641182;
+        Thu, 04 Aug 2022 12:50:41 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id e11-20020a056e020b2b00b002dd0a586cbasm755840ilu.58.2022.08.04.12.50.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 04 Aug 2022 12:50:40 -0700 (PDT)
+Received: (nullmailer pid 259295 invoked by uid 1000);
+	Thu, 04 Aug 2022 19:50:38 -0000
+From: Rob Herring <robh@kernel.org>
+To: bchihi@baylibre.com
+Cc: louis.yu@mediatek.com, james.lo@mediatek.com, khilman@baylibre.com, p.zabel@pengutronix.de, amitk@kernel.org, linux-kernel@vger.kernel.org, mka@chromium.org, abailon@baylibre.com, devicetree@vger.kernel.org, rafael@kernel.org, linux-mediatek@lists.infradead.org, daniel.lezcano@linaro.org, rui.zhang@intel.com, linux-pm@vger.kernel.org, krzk+dt@kernel.org, fan.chen@mediatek.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, rex-bc.chen@mediatek.com, robh+dt@kernel.org
+In-Reply-To: <20220804130912.676043-3-bchihi@baylibre.com>
+References: <20220804130912.676043-1-bchihi@baylibre.com> <20220804130912.676043-3-bchihi@baylibre.com>
+Subject: Re: [PATCH v8.1, 2/7] dt-bindings: thermal: Add binding document for LVTS thermal controllers
+Date: Thu, 04 Aug 2022 13:50:38 -0600
+Message-Id: <1659642638.738608.259294.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220804_124334_806080_70E4798F 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20220804_125043_236259_BAC30F04 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,72 +73,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As the comment right before the mtk_dsi_stop() call advises,
-mtk_dsi_stop() should only be called after
-mtk_drm_crtc_atomic_disable(). That's because that function calls
-drm_crtc_wait_one_vblank(), which requires the vblank irq to be enabled.
+On Thu, 04 Aug 2022 15:09:07 +0200, bchihi@baylibre.com wrote:
+> From: Alexandre Bailon <abailon@baylibre.com>
+> 
+> This patch adds dt-binding documents for mt8192 and mt8195 thermal controllers.
+> 
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> ---
+>  .../thermal/mediatek,lvts-thermal.yaml        | 77 +++++++++++++++++++
+>  1 file changed, 77 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> 
 
-Previously mtk_dsi_stop(), being in mtk_dsi_poweroff() and guarded by a
-refcount, would only be called at the end of
-mtk_drm_crtc_atomic_disable(), through the call to mtk_crtc_ddp_hw_fini().
-Commit cde7e2e35c28 ("drm/mediatek: Separate poweron/poweroff from
-enable/disable and define new funcs") moved the mtk_dsi_stop() call to
-mtk_output_dsi_disable(), causing it to be called before
-mtk_drm_crtc_atomic_disable(), and consequently generating vblank
-timeout warnings during suspend.
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Move the mtk_dsi_stop() call back to mtk_dsi_poweroff() so that we have
-a working vblank irq during mtk_drm_crtc_atomic_disable() and stop
-getting vblank timeout warnings.
+yamllint warnings/errors:
 
-Fixes: cde7e2e35c28 ("drm/mediatek: Separate poweron/poweroff from enable/disable and define new funcs")
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+dtschema/dtc warnings/errors:
+Error: Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.example.dts:32.36-37 syntax error
+FATAL ERROR: Unable to parse input tree
+make[1]: *** [scripts/Makefile.lib:383: Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.example.dtb] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1404: dt_binding_check] Error 2
 
----
+doc reference errors (make refcheckdocs):
 
- drivers/gpu/drm/mediatek/mtk_dsi.c | 21 ++++++++++-----------
- 1 file changed, 10 insertions(+), 11 deletions(-)
+See https://patchwork.ozlabs.org/patch/
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 9cc406e1eee1..f8ad59771551 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -685,6 +685,16 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
- 	if (--dsi->refcount != 0)
- 		return;
- 
-+	/*
-+	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
-+	 * mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(),
-+	 * which needs irq for vblank, and mtk_dsi_stop() will disable irq.
-+	 * mtk_dsi_start() needs to be called in mtk_output_dsi_enable(),
-+	 * after dsi is fully set.
-+	 */
-+	mtk_dsi_stop(dsi);
-+
-+	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
- 	mtk_dsi_reset_engine(dsi);
- 	mtk_dsi_lane0_ulp_mode_enter(dsi);
- 	mtk_dsi_clk_ulp_mode_enter(dsi);
-@@ -735,17 +745,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
- 	if (!dsi->enabled)
- 		return;
- 
--	/*
--	 * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
--	 * mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disable(),
--	 * which needs irq for vblank, and mtk_dsi_stop() will disable irq.
--	 * mtk_dsi_start() needs to be called in mtk_output_dsi_enable(),
--	 * after dsi is fully set.
--	 */
--	mtk_dsi_stop(dsi);
--
--	mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
--
- 	dsi->enabled = false;
- }
- 
--- 
-2.37.1
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
 
 
