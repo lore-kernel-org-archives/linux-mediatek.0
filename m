@@ -4,107 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E371C19F2C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 07:25:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71D1CC19F2C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 07:29:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tnOwkKfhBzXFppIxRkEPpyNln0liXtEqX58YRBpJcr8=; b=09Gw1XP3uHMXOWiVDEZorMHvef
-	zOOA7i5Vw3Y8j2/DG/Q0w0Qk89VZhhnCNchnEskTHEo8NcH/n8DYJl52ZdFQaXYzuRzvcKStG/T8k
-	r2sTAITa+roaPHEYunoC/Bi6X+QUmuZ/ci/sFwITF7yyutep7vnIQx3sj2hl6PVTYLcFJSaFgrjpP
-	QS/SPKj6GgJBssxyzk48xCc2e70yDCk8k/JhsP4TYyVLZLzAKqfIcuaPi2anOKIdFbHD8kz9EBotA
-	RNcBozv+WnPJwp7yiff0MSV2a5aJROi8F1N9rCgKNta92jBQ8Ux3ph0C5tbzpGn3dyzI1gSg9XsOC
-	W7Hg4H9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q5KNkVuPUVsBx+Pw8dLlEjFP335KfJ4AGjax3VcnYFA=; b=IqdTK0MBpBQmFMhWc4glThS409
+	0Xski8/r+Iv6v3qqwny+8iI/DwdhY5saJ1644Q7pmTdVJFPgs1AqMMkYeMKcCusQZCYSZmLiOWlmT
+	2EGrSoQ36UhEr0T/JtztKs85+I8u59m68Uc+drWAXIOVitP8ufgLROvB1nlHjdEpJl/IrF3z029WG
+	XjPO66m5HS0DmXCdY4aAz0Fn9EykU2CmEnVfRFnmOE0fGetl6SgOM77NjMM9bWdldPQZkCabXrji9
+	sAA/eUJvVVOfvGwORSBIQrOr2t2k58w1iD+r2gk5gWEO8GYJEl1OB6KmzQBLhNS8Iom62zGXMZFXC
+	am4ilrfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJVEk-0044Ux-VI; Thu, 04 Aug 2022 07:25:42 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1oJVI2-0045T9-8m; Thu, 04 Aug 2022 07:29:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJVEi-0044SU-ME
-	for linux-mediatek@lists.infradead.org; Thu, 04 Aug 2022 07:25:42 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id x25so875264ljm.5
-        for <linux-mediatek@lists.infradead.org>; Thu, 04 Aug 2022 00:25:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=tnOwkKfhBzXFppIxRkEPpyNln0liXtEqX58YRBpJcr8=;
-        b=KaBX5C27LU2/hiVV41fSRkEObVVMYRvfYHSIbaXVoHOpgKYVOS4QKSU78WR0R5+b9a
-         OF+nzgrQ97gospGyxLfTDJvji0fJzMtG6v4s0CH5S0dGTdF4c3VSDpo87ozuZDrlXGfz
-         hFrmYFfZti4EdlIVJ+ij29gERCwU0TCakfaI/YHBdE6kYhTw8npkUQEKxbQDKaJeEx95
-         bJpHQLNv9DmZlIrF7IrpiHo0n/gntGbQRSL8spUyRFeDqhZm8czbKSHvH0Hr658EMLX+
-         dkaJNTlUaQ+wg7SgajA3tBtf5O+v82Xjx9mcAtSZXmxRtH7D7I20Q63MYjC0Lw0TfrxF
-         KNGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=tnOwkKfhBzXFppIxRkEPpyNln0liXtEqX58YRBpJcr8=;
-        b=7R3cPTu1ewpzJfthc0YsCebOrVQ0JJ9HY2us+bJG8QAxNci6Y+i0dy5InL7u/yCWdi
-         jdfB9pmFE+ZDLZTj5EWs+8soMM1hR5skdZooCbBfMBuA5pQXygHZB9ynckYg02fgK4Uc
-         Ns9zeGlHGkM4U3xGXwecOIPgaZBTGvqCkUALn8Iq+KGw3Bzz6Kc4t7U1bn663TUhoyIO
-         IeI4QP2wUO8Kh6nNDvxHDnxKDR5pq4h7DTXSiGRh1moG/xynd/rNZNTsM9og1GurnQ40
-         HPBPwM3W5JKEE55lvY3sObNz/RYpbFG8wTNL+lF0iCFsXkptJ7A9O8ff6Ui9P27H+uSV
-         /dJQ==
-X-Gm-Message-State: ACgBeo0c5wQaX9ZESnUQWKD+hwyyMY9NgyqVeSRxTONH/RIKqSvwof6+
-	bJ0HfVNhzxi29QiCsmcNkLG3xQ==
-X-Google-Smtp-Source: AA6agR76ryk0wDxrVOrzMuTszxXgfwzTdW7WwyPRIhNvuxMuIMxK8DVdk/uToJEoH+F0vEOAkYdCdw==
-X-Received: by 2002:a2e:9e43:0:b0:25d:d8e9:7b15 with SMTP id g3-20020a2e9e43000000b0025dd8e97b15mr163697ljk.234.1659597935350;
-        Thu, 04 Aug 2022 00:25:35 -0700 (PDT)
-Received: from [192.168.1.6] ([77.222.167.48])
-        by smtp.gmail.com with ESMTPSA id bi36-20020a05651c232400b0025e5ff004a0sm17514ljb.100.2022.08.04.00.25.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 04 Aug 2022 00:25:34 -0700 (PDT)
-Message-ID: <1d6b475b-412d-da94-8505-0fd6f8f6a2c9@linaro.org>
-Date: Thu, 4 Aug 2022 09:25:30 +0200
+	id 1oJVHo-0045Mj-U4; Thu, 04 Aug 2022 07:28:56 +0000
+X-UUID: 714c77df4d414d70971632c34f0fedba-20220804
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:6d4cdfb6-1897-4e43-acd9-64f1cd3e484f,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:871c3e25-a982-4824-82d2-9da3b6056c2a,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 714c77df4d414d70971632c34f0fedba-20220804
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <nancy.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1415026815; Thu, 04 Aug 2022 00:28:40 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 4 Aug 2022 15:28:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 4 Aug 2022 15:28:30 +0800
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp
+ Zabel <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, AngeloGioacchino
+ Del Regno <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Nathan
+ Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
+	"Nancy . Lin" <nancy.lin@mediatek.com>, "jason-jh . lin"
+	<jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
+	<singo.chang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v25 7/7] drm/mediatek: add mediatek-drm of vdosys1 support for MT8195
+Date: Thu, 4 Aug 2022 15:28:27 +0800
+Message-ID: <20220804072827.22383-8-nancy.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220804072827.22383-1-nancy.lin@mediatek.com>
+References: <20220804072827.22383-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH v2] pmic: add mt6366 regulator document
-Content-Language: en-US
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>,
- =?UTF-8?B?WmhpeW9uZyBUYW8gKOmZtuW/l+WLhyk=?= <Zhiyong.Tao@mediatek.com>,
- "lee.jones@linaro.org" <lee.jones@linaro.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
- "broonie@kernel.org" <broonie@kernel.org>,
- =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
- "a.zummo@towertech.it" <a.zummo@towertech.it>,
- "alexandre.belloni@bootlin.com" <alexandre.belloni@bootlin.com>,
- "fshao@chromium.org" <fshao@chromium.org>
-Cc: =?UTF-8?B?U2VuIENodSAo5YKo5qOuKQ==?= <Sen.Chu@mediatek.com>,
- =?UTF-8?B?SHVpIExpdSAo5YiY6L6JKQ==?= <Hui.Liu@mediatek.com>,
- =?UTF-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsyk=?=
- <Allen-KH.Cheng@mediatek.com>,
- =?UTF-8?B?SHNpbi1Ic2l1bmcgV2FuZyAo546L5L+h6ZuEKQ==?=
- <Hsin-Hsiung.Wang@mediatek.com>, Sean Wang <Sean.Wang@mediatek.com>,
- =?UTF-8?B?TWFjcGF1bCBMaW4gKOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
- =?UTF-8?B?V2VuIFN1ICjomIflhqDmlocp?= <Wen.Su@mediatek.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-rtc@vger.kernel.org" <linux-rtc@vger.kernel.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- zhiyong tao <zhiyong.tao@mediatk.com>
-References: <20220728062749.18701-1-zhiyong.tao@mediatek.com>
- <20220728062749.18701-2-zhiyong.tao@mediatek.com>
- <03a13ed4-e7cd-6f7d-f8f7-9b1e6193e202@linaro.org>
- <3d97d4c46467909739b8b69662412fe162dbe613.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <3d97d4c46467909739b8b69662412fe162dbe613.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220804_002540_850227_E422C96D 
-X-CRM114-Status: GOOD (  19.58  )
+X-CRM114-CacheID: sfid-20220804_002853_002403_22AAF167 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,60 +84,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03/08/2022 11:50, Rex-BC Chen wrote:
-> On Thu, 2022-07-28 at 18:46 +0800, Krzysztof Kozlowski wrote:
->> On 28/07/2022 08:27, Zhiyong Tao wrote:
->>> From: zhiyong tao <zhiyong.tao@mediatek.com>
->>>
->>> Add mt6366 regulator document
->>
->> As usual with Mediatek your emails fail to properly pass modern SMTP
->> checks and you end up in spam.
->>
->> I reported it months ago to folks in Mediatek. No improvements since
->> that time.
->>
->> I stopped checking my spam folder for Mediatek stuff and all will be
->> ignored. I will also stop complaining about it - just ignore
->> Mediatek.
->>
->> Fix your systems, instead of putting additional effort on community
->> and
->> on reviewers.
->>
-> 
-> Hello Krzysztof,
-> 
-> I am Rex from MediaTek chrome project team.
-> We noticed your complain of our upstream mail.
-> 
-> First of all, sorry for the inconvenience.
-> We really want to fix this SPAM issue.
-> 
-> From our side, we can make sure mails for kernel upstream from MediaTek
-> is clear and these mails pass the verification of DMARC/DKIM/SPF.
-> Therefore, to identify the root cause, could you please provide us some
-> mails that seen as SPAM from MediaTek?
-> It's more useful if you can use the form of attachment. In that case,
-> we can analyze whole mails including mail headers.
-> 
-> We really appreciate your big support, and we hope we can fix this
-> issue to reduce the inconvenience for reviewing series from MediaTek.
-> If you can spare some time to help us for this, it would very helpful!!
-> 
-> Our IT also adjust the DKIM setting today. If the situation of this
-> issue it much better, please also let us know.
-> 
+Add driver data of mt8195 vdosys1 to mediatek-drm.
 
-Hi,
+Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
 
-Since few days there were no @mediatek.com emails in my spam folder,
-either because nothing was sent to me, or they passed spam filters.
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 48d6a3e9c01e..2ea1627d1278 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -210,6 +210,12 @@ static const unsigned int mt8195_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_DP_INTF0,
+ };
+ 
++static const unsigned int mt8195_mtk_ddp_ext[] = {
++	DDP_COMPONENT_DRM_OVL_ADAPTOR,
++	DDP_COMPONENT_MERGE5,
++	DDP_COMPONENT_DP_INTF1,
++};
++
+ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+ 	.main_path = mt2701_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
+@@ -336,15 +342,19 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
+ 	.io_start = 0x1c01a000,
+ 	.main_path = mt8195_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
+-	.mmsys_dev_num = 1,
++	.mmsys_dev_num = 2,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
+ 	.io_start = 0x1c100000,
++	.ext_path = mt8195_mtk_ddp_ext,
++	.ext_len = ARRAY_SIZE(mt8195_mtk_ddp_ext),
++	.mmsys_id = 1,
++	.mmsys_dev_num = 2,
+ };
+ 
+ static const struct mtk_mmsys_match_data mt8195_mmsys_match_data = {
+-	.num_drv_data = 1,
++	.num_drv_data = 2,
+ 	.drv_data = {
+ 		&mt8195_vdosys0_driver_data,
+ 		&mt8195_vdosys1_driver_data,
+-- 
+2.18.0
 
-If this is the result of some changes, then it seems working. Thank you.
-
-I'll let you now when I find something new in the spam.
-
-Best regards,
-Krzysztof
 
