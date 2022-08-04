@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E4EAC19F29
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 00:57:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F12A5C19F2D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 01:46:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=R9vQaTbFgf2QHP/SuzUhXyOllvBN7Q9RSo8Iw6XoAEo=; b=jthChaHSqyBlSE6TlMUfQbSh+q
-	xiACLv4s+zO1R/fYDTnzoaMbDan5qdXsNQG9w/YJwBUm0Aq5H3XjINJT9No/PZwP7S31lHFXuaim/
-	0ZWOkrJ1CB4c0+K6igeguChQPv3FaCe8hafhsnACtTn59OzupH18gY5OWo99U3YE2O7F1hi/jN0JX
-	cX/9GOaMxHAEbJWSUDY93044PuqqVaebvifP/Ta26b0/nqOeZqGIKQvV1KbzxzR2XGpnZQw3xE6uW
-	gR3SGUZHRjHHDR2VSC/W+TkZ+/j2hdc9TdhB2Ab4xjhXN3Ip4EmVHK84ocXdV0bDrvRVPZkmfaqIC
-	1F8c/SWQ==;
+	bh=8EJJUWiLCZTtqg+M6wNLSqeu/AkL6whTzBN6s36ETl8=; b=ORmrYwmPapmRR415XlbC8XWw7B
+	YvxTEygypS22ks+T2S7Ah0ImIxTX0M2zQ0sgphTak+n2RHd+CQ7pqV3drkTdEqG00ktgDQMI4TF8T
+	4/Y2K7m0xdDLAX38gpoR8hn34/VS5pvyhgLMHWq5H4kuAXBvCfLx/zaGRPg5gwW2cq9KhhvuRo51u
+	JBvaE1EIpk6/RkY5TGRIHrq0jmGXas+97eRgVMaawUPFJNYkIMYuuP5j8lvlIc6paNtcLGhLBXsmX
+	ymVkpD3nCAJpRFSe/ZALHSinv3i67QWIylqw/bBDx7sDtcwr6aZiYcw1C7IVuTMfVndQ0UOeivMnm
+	dB0xhaZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJPAx-00CV1x-Lk; Thu, 04 Aug 2022 00:57:23 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oJPw0-00DK5e-H3; Thu, 04 Aug 2022 01:46:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJPAu-00CUvE-Rb
-	for linux-mediatek@lists.infradead.org; Thu, 04 Aug 2022 00:57:22 +0000
-X-UUID: b5140b48e86e4d769779bd03c0de8743-20220803
+	id 1oJPvx-00DJrG-IP
+	for linux-mediatek@lists.infradead.org; Thu, 04 Aug 2022 01:45:59 +0000
+X-UUID: 5befd216232e489c93d6dffd6d1c78cb-20220803
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:e35b8d28-6ec9-4e57-a322-8f8f344c5208,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:dae24945-0e49-4bf8-842c-824cabc5dd55,OB:0,LO
 	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:1ba029d1-841b-4e95-ad42-8f86e18f54fc,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:62312bd1-841b-4e95-ad42-8f86e18f54fc,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: b5140b48e86e4d769779bd03c0de8743-20220803
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 5befd216232e489c93d6dffd6d1c78cb-20220803
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <sean.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 671235535; Wed, 03 Aug 2022 17:57:10 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 4 Aug 2022 08:26:33 +0800
+	with ESMTP id 70246537; Wed, 03 Aug 2022 18:45:46 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 4 Aug 2022 08:45:12 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 4 Aug 2022 08:26:33 +0800
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 4 Aug 2022 08:45:12 +0800
 From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <luiz.dentz@gmail.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
 	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
 	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
-	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
-	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
-	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
-	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
-	<abhishekpandit@google.com>, <shawnku@google.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] mt76: mt7921: apply the previous MCU timeout
-Date: Thu, 4 Aug 2022 08:26:31 +0800
-Message-ID: <b0dfe8afc5cf88ab9a6d54c88fba4a29631c125a.1659571732.git.objelf@gmail.com>
+	<robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+	<posh.sun@mediatek.com>, <ted.huang@mediatek.com>,
+	<Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+	<steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+	<abhishekpandit@google.com>, <michaelfsun@google.com>, <mcchou@chromium.org>,
+	<shawnku@google.com>, <linux-bluetooth@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Jing
+ Cai <jing.cai@mediatek.com>
+Subject: [PATCH v4] Bluetooth: btusb: mediatek: fix WMT failure during runtime suspend
+Date: Thu, 4 Aug 2022 08:45:11 +0800
+Message-ID: <ab9f6acff9c0d5f5b639827ef9d5c2bfecfe95b7.1659573623.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220803_175720_936132_993DA666 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20220803_184557_636578_A349940B 
+X-CRM114-Status: GOOD (  13.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,31 +84,63 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Apply back the previous MCU timeout that can trigger the chip reset to
-recover the fatal error in time.
+WMT cmd/event doesn't follow up the generic HCI cmd/event handling, it
+needs constantly polling control pipe until the host received the WMT
+event, thus, we should require to specifically acquire PM counter on the
+USB to prevent the interface from entering auto suspended while WMT
+cmd/event in progress.
 
-Fixes: 8fcd1fb7cbd5 ("mt76: move mt76_connac2_mcu_fill_message in mt76_connac module")
+Fixes: a1c49c434e15 ("Bluetooth: btusb: Add protocol support for MediaTek MT7668U USB devices")
+Co-developed-by: Jing Cai <jing.cai@mediatek.com>
+Signed-off-by: Jing Cai <jing.cai@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+v2:
+1. move usb_autopm_[get, put]_interface to btusb_mtk_hci_wmt_sync whenever
+wmt cmd is invoked.
+2. add the explanation why we needed the specific
+usb_autopm_[get, put]_interface there.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 0afcadce87fc..da8223c515eb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -3050,7 +3050,10 @@ int mt76_connac2_mcu_fill_message(struct mt76_dev *dev, struct sk_buff *skb,
- 	u8 seq;
+v3: correct the version and there is no logic changed
+v4: fix GitLint fail due to Title exceeds max length
+---
+ drivers/bluetooth/btusb.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index e25fcd49db70..449b0a474cca 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2436,15 +2436,29 @@ static int btusb_mtk_hci_wmt_sync(struct hci_dev *hdev,
  
- 	/* TODO: make dynamic based on msg type */
--	dev->mcu.timeout = 20 * HZ;
-+	if (is_mt7921(dev))
-+		dev->mcu.timeout = 3 * HZ;
-+	else
-+		dev->mcu.timeout = 20 * HZ;
+ 	set_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags);
  
- 	seq = ++dev->mcu.msg_seq & 0xf;
- 	if (!seq)
++	/* WMT cmd/event doesn't follow up the generic HCI cmd/event handling,
++	 * it needs constantly polling control pipe until the host received the
++	 * WMT event, thus, we should require to specifically acquire PM counter
++	 * on the USB to prevent the interface from entering auto suspended
++	 * while WMT cmd/event in progress.
++	 */
++	err = usb_autopm_get_interface(data->intf);
++	if (err < 0)
++		goto err_free_wc;
++
+ 	err = __hci_cmd_send(hdev, 0xfc6f, hlen, wc);
+ 
+ 	if (err < 0) {
+ 		clear_bit(BTUSB_TX_WAIT_VND_EVT, &data->flags);
++		usb_autopm_put_interface(data->intf);
+ 		goto err_free_wc;
+ 	}
+ 
+ 	/* Submit control IN URB on demand to process the WMT event */
+ 	err = btusb_mtk_submit_wmt_recv_urb(hdev);
++
++	usb_autopm_put_interface(data->intf);
++
+ 	if (err < 0)
+ 		goto err_free_wc;
+ 
 -- 
 2.25.1
 
