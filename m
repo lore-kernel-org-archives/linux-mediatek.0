@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05C0EC19F2B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 11:50:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9EA7C19F2A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 12:42:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O9O5SL25Jo8yWfIEbsOMlI1Tr0gZPHM40p9kdVbdobU=; b=V7HRM7OXwwFbsfDfzjmVKFBlGg
-	/xZ8H2Efmpn+X1oY8gjCr2lNgBgjJEb7YYrNhXZdymSLfD9p7u7Ye9Csq3Q7e9qms48JUvnnxj+rs
-	5JjMD/S0CRKvsj9P8FjZXi+a/Gxi5KU5ftXxehmbWBeMWt8L2HdgZUz5ajqimpbGhTKhsJEg9DkmZ
-	2faIF7Px0EkC+3ToMABQFwp+km/LLnw85TZfPI/plHxqjXbOW6Xp6Lt3bsGDA4m8K+oOki94GoiJd
-	1KmWfNk5Zl9dqaWQ3tyvrtuSlyudefGmrqRHVUOp2jK9LDyxJVnuE5Lz3lCEdE2/rKZmrDWhRHrTx
-	Dutvzkdw==;
+	bh=wCyPA/Z9WRgF3etRntFPxGw0L90aQdi82vXOxAegpZU=; b=Aqyt3ubsiAoWsOOrsU6cectv/w
+	A8OXX4fxborKoMy4hLAVWMqBJtRnap29qeMoj3U8I7Nalt3Za+e1Exwo1U+34EtQBYbF9eCyMZYYl
+	4OSYdKmYTcCJcGSeTQBiTYuUvQxfMa1lcXCN5gpjrP8tWJ8igZYFb2cvtHnzDakhtLp3DHaofH786
+	D4PR0fcEWgJx9x8v/VWUwEzegiH6pjoFQdsON+i1pF2ZKKj+AoERo+ntF4rbDd8pKmamLHm2IArmA
+	/jC1W4K5vZ2O3lGHAf9MF436uI/u9OboFwoHwlPqWgrabWTOSdW2wEUbOg5/8GiRN6VVmDX1cJTiT
+	nhHPvjjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJZMe-005hEp-1t; Thu, 04 Aug 2022 11:50:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oJaAh-0060Y0-Ka; Thu, 04 Aug 2022 12:41:51 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJZMR-005hA7-GR; Thu, 04 Aug 2022 11:49:58 +0000
-X-UUID: d3fd5ef34fc242c9a8f1e3b9e459f2c6-20220804
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:929ac029-0415-4c00-8cfc-e51084c34b18,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:-5
-X-CID-META: VersionHash:0f94e32,CLOUDID:3ec13bd1-841b-4e95-ad42-8f86e18f54fc,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: d3fd5ef34fc242c9a8f1e3b9e459f2c6-20220804
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chengci.xu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1463138269; Thu, 04 Aug 2022 04:49:46 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 4 Aug 2022 18:59:10 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 4 Aug 2022 18:59:10 +0800
-From: Chengci.Xu <chengci.xu@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will
- Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chengci.Xu
-	<chengci.xu@mediatek.com>
-Subject: [PATCH 3/3] iommu/mediatek: Add MT8188 IOMMU Support
-Date: Thu, 4 Aug 2022 18:58:34 +0800
-Message-ID: <20220804105834.626-4-chengci.xu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220804105834.626-1-chengci.xu@mediatek.com>
-References: <20220804105834.626-1-chengci.xu@mediatek.com>
+	id 1oJaAW-0060Sh-UB; Thu, 04 Aug 2022 12:41:42 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 72CE9B82529;
+	Thu,  4 Aug 2022 12:41:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33F5EC433D7;
+	Thu,  4 Aug 2022 12:41:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1659616897;
+	bh=Dc8h4lXPsmDxSsos/j+7yqEliVIW1p/oerQvtS7WdCg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GRsuPn65ESqnBp32JRUoDmuH6zGlK8xou9hyDdZflWicz2iUIEMP6HkB5NkWtbe/+
+	 JWlXBjY7yczQBjyWx6Pft9+ePBzGnA+A68/lMKhv3d5ckL5zq3Yh2S1iS7c7XtH5PL
+	 rHlc2GZbYX1lsjUNfLqdWFwhHAHZmAJkoZRLev7SKVHlGlfxdesblmNHkxpNURNwMa
+	 ONnKlZzDU1JOAH8AJms/hZqoi4OvJ8RwxTSgm02gxSyPUGR/MuxFjWVpPvn3N7gEOG
+	 4kt1RSAYu8ta0fpCR2JXy8G03nMZuzVnuv1LNZRleQv761DhK9hFagSMIBb7kHvxgp
+	 KOeh8yDsATBRg==
+Date: Thu, 4 Aug 2022 13:41:30 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Chunxu Li <chunxu.li@mediatek.com>
+Cc: pierre-louis.bossart@linux.intel.com, peter.ujfalusi@linux.intel.com,
+	lgirdwood@gmail.com, angelogioacchino.delregno@collabora.com,
+	daniel.baluta@nxp.com, matthias.bgg@gmail.com, yc.hung@mediatek.com,
+	tinghan.shen@mediatek.com, linux-kernel@vger.kernel.org,
+	alsa-devel@alsa-project.org, sound-open-firmware@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	project_global_chrome_upstream_group@mediatek.com
+Subject: Re: [PATCH 2/2] ASoC: SOF: mediatek: Add .of_machine_select field
+ for mt8186
+Message-ID: <Yuu+elYxBv3xZ1O2@sirena.org.uk>
+References: <20220804091359.31449-1-chunxu.li@mediatek.com>
+ <20220804091359.31449-3-chunxu.li@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="EPdOmWtiZ4ZH+2f9"
+Content-Disposition: inline
+In-Reply-To: <20220804091359.31449-3-chunxu.li@mediatek.com>
+X-Cookie: Did I say 2?  I lied.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220804_044955_571526_5B65FD92 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20220804_054141_164717_C6111B0A 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,88 +80,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8188 has 3 IOMMU, containing 2 MM IOMMUs, one is for vdo, the other
-is for vpp. and 1 INFRA IOMMU.
 
-Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
----
- drivers/iommu/mtk_iommu.c | 48 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
+--EPdOmWtiZ4ZH+2f9
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 6fe780783ec8..98c2eae5229e 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -164,6 +164,7 @@ enum mtk_iommu_plat {
- 	M4U_MT8173,
- 	M4U_MT8183,
- 	M4U_MT8186,
-+	M4U_MT8188,
- 	M4U_MT8192,
- 	M4U_MT8195,
- };
-@@ -1479,6 +1480,50 @@ static const struct mtk_iommu_plat_data mt8186_data_mm = {
- 	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
- };
- 
-+static const struct mtk_iommu_plat_data mt8188_data_infra = {
-+	.m4u_plat	  = M4U_MT8188,
-+	.flags            = WR_THROT_EN | DCM_DISABLE | STD_AXI_MODE | PM_CLK_AO |
-+			    MTK_IOMMU_TYPE_INFRA | IFA_IOMMU_PCIE_SUPPORT |
-+			    CFG_IFA_MASTER_IN_ATF,
-+	.pericfg_comp_str = "mediatek,mt8188-pericfg_ao",
-+	.inv_sel_reg      = REG_MMU_INV_SEL_GEN2,
-+	.banks_num	  = 1,
-+	.banks_enable     = {true},
-+	.iova_region      = single_domain,
-+	.iova_region_nr   = ARRAY_SIZE(single_domain),
-+};
-+
-+static const struct mtk_iommu_plat_data mt8188_data_vdo = {
-+	.m4u_plat	= M4U_MT8188,
-+	.flags          = HAS_BCLK | HAS_SUB_COMM_3BITS | OUT_ORDER_WR_EN |
-+			  WR_THROT_EN | IOVA_34_EN | SHARE_PGTABLE | MTK_IOMMU_TYPE_MM,
-+	.hw_list        = &m4ulist,
-+	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
-+	.banks_num      = 1,
-+	.banks_enable   = {true},
-+	.iova_region	= mt8192_multi_dom,
-+	.iova_region_nr	= ARRAY_SIZE(mt8192_multi_dom),
-+	.larbid_remap   = {{2}, {0}, {21}, {0}, {19}, {9, 10,
-+			   11 /* 11a */, 25 /* 11c */},
-+			   {13, 0, 29 /* 16b */, 30 /* 17b */, 0}, {5}},
-+};
-+
-+static const struct mtk_iommu_plat_data mt8188_data_vpp = {
-+	.m4u_plat	= M4U_MT8188,
-+	.flags          = HAS_BCLK | HAS_SUB_COMM_3BITS | OUT_ORDER_WR_EN |
-+			  WR_THROT_EN | IOVA_34_EN | SHARE_PGTABLE | MTK_IOMMU_TYPE_MM,
-+	.hw_list        = &m4ulist,
-+	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
-+	.banks_num      = 1,
-+	.banks_enable   = {true},
-+	.iova_region	= mt8192_multi_dom,
-+	.iova_region_nr	= ARRAY_SIZE(mt8192_multi_dom),
-+	.larbid_remap   = {{1}, {3}, {23}, {7}, {MTK_INVALID_LARBID},
-+			   {12, 15, 24 /* 11b */}, {14, MTK_INVALID_LARBID,
-+			   16 /* 16a */, 17 /* 17a */, MTK_INVALID_LARBID,
-+			   27, 28 /* ccu0 */, MTK_INVALID_LARBID}, {4, 6}},
-+};
-+
- static const struct mtk_iommu_plat_data mt8192_data = {
- 	.m4u_plat       = M4U_MT8192,
- 	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
-@@ -1546,6 +1591,9 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
- 	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
- 	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
- 	{ .compatible = "mediatek,mt8186-iommu-mm",    .data = &mt8186_data_mm}, /* mm: m4u */
-+	{ .compatible = "mediatek,mt8188-iommu-infra", .data = &mt8188_data_infra},
-+	{ .compatible = "mediatek,mt8188-iommu-vdo", .data = &mt8188_data_vdo},
-+	{ .compatible = "mediatek,mt8188-iommu-vpp", .data = &mt8188_data_vpp},
- 	{ .compatible = "mediatek,mt8192-m4u", .data = &mt8192_data},
- 	{ .compatible = "mediatek,mt8195-iommu-infra", .data = &mt8195_data_infra},
- 	{ .compatible = "mediatek,mt8195-iommu-vdo",   .data = &mt8195_data_vdo},
--- 
-2.25.1
+On Thu, Aug 04, 2022 at 05:13:59PM +0800, Chunxu Li wrote:
 
+> +static struct snd_sof_of_mach sof_mt8186_machs[] = {
+> +	{
+> +		.board = "mediatek,mt8186",
+> +		.sof_tplg_filename = "sof-mt8186.tplg",
+
+The mediatek,mt8186 compatible looks like a SoC compatible not a board
+compatible...
+
+--EPdOmWtiZ4ZH+2f9
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmLrvnoACgkQJNaLcl1U
+h9CJ+wf+NC3QV3rzYT893qKD9jkvsm37SLmwNK0cEbtOpP0ohpK2gakhRwXQzh+B
+/wS1eGl0aXdtaxOkKueZwXQONVV7MsnuxuGXwyHFrcPwfuVICQPm1vQWwSLmBcS/
+iUmtW8SSN++aMZwgYEUAJiFmbMDl5eH/gHTdn9y5dFi+9yQkE2Rw9uieV8eNfrZD
+GBhv0YHtv687Q8VOL3FXafwlw5qruOIUYZ6ixEYoalp/rajx1CNxta++q+nse1KV
+mDHHEdY4xb84FDeKV/VA8UTHICqp6NYIQgLoRyWkk7n1wPEvSebxTpGJJGoBVabe
+RhAhhFa0pZfWYE5UBgEJ9BOpBQCsCw==
+=zf1M
+-----END PGP SIGNATURE-----
+
+--EPdOmWtiZ4ZH+2f9--
 
