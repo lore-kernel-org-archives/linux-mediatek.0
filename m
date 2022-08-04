@@ -4,68 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17CD8C19F2B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 09:45:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49408C19F2B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 09:53:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xbm63bG2m20HOenxWe9HHMe7Re9TgrNrrbO8Mz3BSF4=; b=yc3DeOerclPsRSZux1UJFKVobp
-	PQmFgmmeqhFG3SXhfVeCDe+ZQsRgYi6JFbqdBdoIU0xo+7y6ETYglsI+6bywSD2sI9xFt2YKk6Eoa
-	swOV3iA2exrgwo+oBTxKyuLAEO1OAr6hUjqpBeOdKiAlfGuxk8olRajpRocXZQs76SlaIarIEa3Tt
-	TGe1sLKOQm/JNLjfuKpBFmpCKoibgeHtm1pNqPdl2p8t/e0zj71kbdVFxl6Gc09bqoc834mzqLE9m
-	lGYPc3y8K9Zcg2bEZWhzaw8bcSdd7JWjkSDuT86+p5oZQnAJ/beaNecutM7+Woarozsd8GE0puqWy
-	212iXeMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Yj4LnoCipKdQooHDqQkSzfPq9k+SbXM64sol04d/ofU=; b=p+xH+QfTfTTUDmXDOdEXpv0xOX
+	lTV8Ls+lRNktDdRqUCy4kH2ZNj9bhZhvyc7Kr8cG7dg273dHWbBeDxEcbjovP28dLx3/3gjzW6s6y
+	AxYdp+bxZ2tNZN2O0SxZy+5xcAdBRkGLNgcd85lWUYJSnQF2LIVCu17ItDTjrhSftGYGMPOdqeiSb
+	RgzLWgkp5EskoYYuLoQHKVc13fXwVBTCtJyV/vrxf4oxHbpHfkGzrJjVCyPmK9EIiibiJkVXCu4Y8
+	IFOFjarZPIipMsU0DXO5sZVx2LB+EbuYsacT0sd+fWzEm1J9O3+Dv9SJP6DzEGyM5KCizLCFI6JQv
+	e0Yxmygg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJXPU-004wdQ-FW; Thu, 04 Aug 2022 09:44:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oJXY5-0050Mi-C1; Thu, 04 Aug 2022 09:53:49 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJXPQ-004waj-28; Thu, 04 Aug 2022 09:44:55 +0000
-X-UUID: 909401551dee48bcb2512a08f9c73de7-20220804
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:76176eb0-c027-4c79-8663-fdc61e71d308,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:25fa38d1-841b-4e95-ad42-8f86e18f54fc,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 909401551dee48bcb2512a08f9c73de7-20220804
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunxu.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 940544518; Thu, 04 Aug 2022 02:44:44 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 4 Aug 2022 17:14:09 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 4 Aug 2022 17:14:08 +0800
-From: Chunxu Li <chunxu.li@mediatek.com>
-To: <pierre-louis.bossart@linux.intel.com>, <peter.ujfalusi@linux.intel.com>,
-	<lgirdwood@gmail.com>, <broonie@kernel.org>,
-	<angelogioacchino.delregno@collabora.com>, <daniel.baluta@nxp.com>
-CC: <matthias.bgg@gmail.com>, <yc.hung@mediatek.com>,
-	<tinghan.shen@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<alsa-devel@alsa-project.org>, <sound-open-firmware@alsa-project.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<project_global_chrome_upstream_group@mediatek.com>, Chunxu Li
-	<chunxu.li@mediatek.com>
-Subject: [PATCH 1/2] ASoC: SOF: Introduce optional callback of_machine_select
-Date: Thu, 4 Aug 2022 17:13:58 +0800
-Message-ID: <20220804091359.31449-2-chunxu.li@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220804091359.31449-1-chunxu.li@mediatek.com>
-References: <20220804091359.31449-1-chunxu.li@mediatek.com>
+	id 1oJXXs-0050H9-PR; Thu, 04 Aug 2022 09:53:37 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id u133so12232472pfc.10;
+        Thu, 04 Aug 2022 02:53:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc;
+        bh=Yj4LnoCipKdQooHDqQkSzfPq9k+SbXM64sol04d/ofU=;
+        b=qVUuazv80uczwDUpa1W45XFLKQkv6E85jaluDS0qPCqx5UqLWXVRj7NNS3iB1u5yMk
+         BpAyrdAWbjN4xan/ozEhpBngVBm4vusnJrSXS6B5BtALu4Q7w0WkatMFosToCwAp0pxw
+         peyWEmojG15dUtIHplxLrARzYTKP87+hpzEs+qJ1Skx6IUC8ArRBWfpqh5foE/L0KuT3
+         5dl0vT47WvE/YFBfLMbib+8Ia4pPLthO02aty10gTq/7cMx0IUzGT+JIGnvuHvmlqhSG
+         +z4BOs0ydQYyC+O9uk363r+pOvEqCbU9PsjpybnRv4n2q2RjbjTJIV3fBXw17xudaCYj
+         TyKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
+        bh=Yj4LnoCipKdQooHDqQkSzfPq9k+SbXM64sol04d/ofU=;
+        b=XaUfBx8yZfr/1fS5z7+44ReJE+wh4OqqZFDzWzmD4UNY49vl3Ui6UIvDg2bqoFLgcX
+         aPHn8ZubQi0Iu+fJ0QEnpfDyIGKNEQaCbjMaZz0O+W5PtOVbJux27cLrqogP22s4fPCu
+         krh0vxINm+aYe3j3yzxG174iuFgfbI7feBbjPJlWYkmxzxJPjlnuCk3AxQkn/w1bqxtD
+         N2pxH79psp2A4O4jp8+Gc46vuuWQNyymTKMBoJSyMs8UcLWsSyhB8vpWaQabk67TzYhM
+         1lLWfiuJhhPaWkoSUYTiymKY/n87bdOZcFP3qLg4uC5WXiabC7qjpJVIlPgDhVgBjs3x
+         n/Jg==
+X-Gm-Message-State: ACgBeo2339PynMXa3ewy7TMuWCgYlvwi4HiLkYeoynnwl7Epn9AxuO9m
+	7U4ejwrjWL/h4jX/WeGFbTi2wvfJM5gkjm8llu8=
+X-Google-Smtp-Source: AA6agR6qwy7xIi0BGj0KdaE31bzJZvJiNHMC9+UQ+P/hml7eIyhBore8DXxCh12e0tZqDO9pfcvT3sY1+E56wep5ub0=
+X-Received: by 2002:a65:694f:0:b0:41c:cc1f:4440 with SMTP id
+ w15-20020a65694f000000b0041ccc1f4440mr1024346pgq.318.1659606814308; Thu, 04
+ Aug 2022 02:53:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-13-peterwu.pub@gmail.com>
+ <20220730214205.GK23307@duo.ucw.cz>
+In-Reply-To: <20220730214205.GK23307@duo.ucw.cz>
+From: Alice Chen <szunichen@gmail.com>
+Date: Thu, 4 Aug 2022 17:53:22 +0800
+Message-ID: <CA+hk2fbEvU2yJbowqKoozb2M0aQc9TFCaxAn++YrmEx+eWt_4w@mail.gmail.com>
+Subject: Re: [PATCH v6 12/13] leds: flash: mt6370: Add MediaTek MT6370
+ flashlight support
+To: Pavel Machek <pavel@ucw.cz>
+Cc: ChiaEn Wu <peterwu.pub@gmail.com>, lee.jones@linaro.org, daniel.thompson@linaro.org, 
+	jingoohan1@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
+	matthias.bgg@gmail.com, sre@kernel.org, chunfeng.yun@mediatek.com, 
+	gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de, 
+	lgirdwood@gmail.com, broonie@kernel.org, linux@roeck-us.net, 
+	heikki.krogerus@linux.intel.com, deller@gmx.de, andy.shevchenko@gmail.com, 
+	chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com, 
+	dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, 
+	linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220804_024452_234806_E1B3B54A 
-X-CRM114-Status: GOOD (  21.12  )
+X-CRM114-CacheID: sfid-20220804_025336_842617_F0A1D0E2 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,193 +95,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From current design in sof_machine_check and snd_sof_new_platform_drv,
-the SOF can only support ACPI type machine.
+Pavel Machek <pavel@ucw.cz> =E6=96=BC 2022=E5=B9=B47=E6=9C=8831=E6=97=A5 =
+=E9=80=B1=E6=97=A5 =E6=B8=85=E6=99=A85:42=E5=AF=AB=E9=81=93=EF=BC=9A
 
-1. In sof_machine_check if there is no ACPI machine exist, the function
-will return -ENODEV directly, that's we don't expected if we do not
-base on ACPI machine.
+> > +// SPDX-License-Identifier: GPL-2.0-only
+> > +/*
+> > + * Copyright (C) 2022 Richtek Technology Corp.
+> > + *
+> > + * Author: Alice Chen <alice_chen@richtek.com
+>
+> Add ">" at end of line.
+>
+> The series is quite big, would it be possible to submit LED changes
+> in separate series?
+>
+Hi Pavel,
 
-2. In snd_sof_new_platform_drv the component driver need a driver name
-to do ignore_machine, currently the driver name is obtained from
-machine->drv_name, and the type of machine is snd_soc_acpi_mach.
+Our mfd dt-bindings depends on flash and LED dt-bindings,
+but our flash and LED config depend on mfd config.
+For the dependency consideration,
+we think submitting them in a patch series is better.
 
-So we add a new function snd_sof_of_machine_select that we can pass
-sof_machine_check and obtain info required by snd_sof_new_platform_drv.
-this callback is optional, each machine that do not based on ACPI can
-use common code implemented in sof-of-dev.c or implement their customized
-specific routine.
-
-Signed-off-by: Chunxu Li <chunxu.li@mediatek.com>
----
- include/sound/sof.h        |  2 ++
- sound/soc/sof/ops.h        |  9 +++++++++
- sound/soc/sof/pcm.c        |  8 +++++++-
- sound/soc/sof/sof-audio.c  |  7 +++++++
- sound/soc/sof/sof-of-dev.c | 23 +++++++++++++++++++++++
- sound/soc/sof/sof-of-dev.h |  8 ++++++++
- sound/soc/sof/sof-priv.h   |  1 +
- 7 files changed, 57 insertions(+), 1 deletion(-)
-
-diff --git a/include/sound/sof.h b/include/sound/sof.h
-index 367dccfea7ad..341fef19e612 100644
---- a/include/sound/sof.h
-+++ b/include/sound/sof.h
-@@ -89,6 +89,7 @@ struct snd_sof_pdata {
- 	/* machine */
- 	struct platform_device *pdev_mach;
- 	const struct snd_soc_acpi_mach *machine;
-+	const struct snd_sof_of_mach *of_machine;
- 
- 	void *hw_pdata;
- 
-@@ -102,6 +103,7 @@ struct snd_sof_pdata {
- struct sof_dev_desc {
- 	/* list of machines using this configuration */
- 	struct snd_soc_acpi_mach *machines;
-+	struct snd_sof_of_mach *of_machines;
- 
- 	/* alternate list of machines using this configuration */
- 	struct snd_soc_acpi_mach *alt_machines;
-diff --git a/sound/soc/sof/ops.h b/sound/soc/sof/ops.h
-index 55d43adb6a29..e20720c09744 100644
---- a/sound/soc/sof/ops.h
-+++ b/sound/soc/sof/ops.h
-@@ -522,6 +522,15 @@ snd_sof_set_mach_params(struct snd_soc_acpi_mach *mach,
- 		sof_ops(sdev)->set_mach_params(mach, sdev);
- }
- 
-+static inline struct snd_sof_of_mach *
-+snd_sof_of_machine_select(struct snd_sof_dev *sdev)
-+{
-+	if (sof_ops(sdev) && sof_ops(sdev)->of_machine_select)
-+		return sof_ops(sdev)->of_machine_select(sdev);
-+
-+	return NULL;
-+}
-+
- /**
-  * snd_sof_dsp_register_poll_timeout - Periodically poll an address
-  * until a condition is met or a timeout occurs
-diff --git a/sound/soc/sof/pcm.c b/sound/soc/sof/pcm.c
-index 6cb6a432be5e..49f7cb049f62 100644
---- a/sound/soc/sof/pcm.c
-+++ b/sound/soc/sof/pcm.c
-@@ -13,6 +13,7 @@
- #include <linux/pm_runtime.h>
- #include <sound/pcm_params.h>
- #include <sound/sof.h>
-+#include "sof-of-dev.h"
- #include "sof-priv.h"
- #include "sof-audio.h"
- #include "sof-utils.h"
-@@ -655,7 +656,12 @@ void snd_sof_new_platform_drv(struct snd_sof_dev *sdev)
- 	struct snd_sof_pdata *plat_data = sdev->pdata;
- 	const char *drv_name;
- 
--	drv_name = plat_data->machine->drv_name;
-+	if (plat_data->machine)
-+		drv_name = plat_data->machine->drv_name;
-+	else if (plat_data->of_machine)
-+		drv_name = plat_data->of_machine->drv_name;
-+	else
-+		drv_name = NULL;
- 
- 	pd->name = "sof-audio-component";
- 	pd->probe = sof_pcm_probe;
-diff --git a/sound/soc/sof/sof-audio.c b/sound/soc/sof/sof-audio.c
-index 28976098a89e..7b3c99d1b2a4 100644
---- a/sound/soc/sof/sof-audio.c
-+++ b/sound/soc/sof/sof-audio.c
-@@ -794,6 +794,7 @@ int sof_machine_check(struct snd_sof_dev *sdev)
- 	struct snd_soc_acpi_mach *mach;
- 
- 	if (!IS_ENABLED(CONFIG_SND_SOC_SOF_FORCE_NOCODEC_MODE)) {
-+		const struct snd_sof_of_mach *of_mach;
- 
- 		/* find machine */
- 		mach = snd_sof_machine_select(sdev);
-@@ -803,6 +804,12 @@ int sof_machine_check(struct snd_sof_dev *sdev)
- 			return 0;
- 		}
- 
-+		of_mach = snd_sof_of_machine_select(sdev);
-+		if (of_mach) {
-+			sof_pdata->of_machine = of_mach;
-+			return 0;
-+		}
-+
- 		if (!IS_ENABLED(CONFIG_SND_SOC_SOF_NOCODEC)) {
- 			dev_err(sdev->dev, "error: no matching ASoC machine driver found - aborting probe\n");
- 			return -ENODEV;
-diff --git a/sound/soc/sof/sof-of-dev.c b/sound/soc/sof/sof-of-dev.c
-index 53faeccedd4f..8df588f9349a 100644
---- a/sound/soc/sof/sof-of-dev.c
-+++ b/sound/soc/sof/sof-of-dev.c
-@@ -31,6 +31,29 @@ const struct dev_pm_ops sof_of_pm = {
- };
- EXPORT_SYMBOL(sof_of_pm);
- 
-+struct snd_sof_of_mach *sof_of_machine_select(struct snd_sof_dev *sdev)
-+{
-+	struct snd_sof_pdata *sof_pdata = sdev->pdata;
-+	const struct sof_dev_desc *desc = sof_pdata->desc;
-+	struct snd_sof_of_mach *mach = desc->of_machines;
-+
-+	if (!mach)
-+		return NULL;
-+
-+	for (; mach->board; mach++) {
-+		if (of_machine_is_compatible(mach->board)) {
-+			sof_pdata->tplg_filename = mach->sof_tplg_filename;
-+			if (mach->fw_filename)
-+				sof_pdata->fw_filename = mach->fw_filename;
-+
-+			return mach;
-+		}
-+	}
-+
-+	return NULL;
-+}
-+EXPORT_SYMBOL(sof_of_machine_select);
-+
- static void sof_of_probe_complete(struct device *dev)
- {
- 	/* allow runtime_pm */
-diff --git a/sound/soc/sof/sof-of-dev.h b/sound/soc/sof/sof-of-dev.h
-index fd950a222ba4..2ab81ced139d 100644
---- a/sound/soc/sof/sof-of-dev.h
-+++ b/sound/soc/sof/sof-of-dev.h
-@@ -9,8 +9,16 @@
- #ifndef __SOUND_SOC_SOF_OF_H
- #define __SOUND_SOC_SOF_OF_H
- 
-+struct snd_sof_of_mach {
-+	const char *board;
-+	const char *drv_name;
-+	const char *fw_filename;
-+	const char *sof_tplg_filename;
-+};
-+
- extern const struct dev_pm_ops sof_of_pm;
- 
-+struct snd_sof_of_mach *sof_of_machine_select(struct snd_sof_dev *sdev);
- int sof_of_probe(struct platform_device *pdev);
- int sof_of_remove(struct platform_device *pdev);
- void sof_of_shutdown(struct platform_device *pdev);
-diff --git a/sound/soc/sof/sof-priv.h b/sound/soc/sof/sof-priv.h
-index 823583086279..c5ed18f99d00 100644
---- a/sound/soc/sof/sof-priv.h
-+++ b/sound/soc/sof/sof-priv.h
-@@ -284,6 +284,7 @@ struct snd_sof_dsp_ops {
- 	void (*machine_unregister)(struct snd_sof_dev *sdev,
- 				   void *pdata); /* optional */
- 	struct snd_soc_acpi_mach * (*machine_select)(struct snd_sof_dev *sdev); /* optional */
-+	struct snd_sof_of_mach * (*of_machine_select)(struct snd_sof_dev *sdev); /* optional */
- 	void (*set_mach_params)(struct snd_soc_acpi_mach *mach,
- 				struct snd_sof_dev *sdev); /* optional */
- 
--- 
-2.25.1
-
+Best Regards,
+Alice
 
