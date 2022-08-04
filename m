@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADB65C19F2B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 08:16:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBEACC19F2B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 08:29:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=orL6gaCTeXqLl3AC+BOQ1EisRhhAac9Y4lBqS21CORM=; b=fgQVd/t9E9aLhxSvMHSeQt1gxA
-	Li74GA2mocB6+N9yQq9P3e3o2p4vvThvnSpCAhqRIS6doysNuSg8q8Krx0TLFzv4N6yPP6VmqLVTY
-	UPg7S/WoF5fEvHY7s8Mn8wKIIEjsSERwtXHwE6amsXhSCYWqvwbuT4U/nfnFqDWiN7itpEb29Rgxw
-	62sssz76RqOJIVvkUhcmRfy73LIqXFeniqOpRCFBgL2lCf8CTi1d7nLCk4AoYackpF5crCyMbh9XR
-	ThafUJyXLpQyJsCv3cUHEWKwIOERGm6iRvOWNRT2tYT73QmWU4wZf3KIlVFqbeIurdqclZ1QjlZTq
-	hqX3qh/w==;
+	bh=EHyU1ZsfMZODGOS++z2Yv1l9OniOXGm8v+LxFdJhRjA=; b=3iDZfpfFf9KRoJ7lFxLPd4rkFc
+	9DnJEZ0GQX/JHTaWxFziLRzEVHDxgZP5FR6zox9VqbS/dupdeu1JubDGB+u1E6QhBe69ZYzssJ6Zv
+	I1Ko0kf+NSqJPIr7uG8aUv3/81PeOPsTpbE3/fnpvVElukunN3SbCeJJ0NHMRyzgN2HaJqAmsSUDx
+	ym1JnEC5Yf5rzAMsXweIDi2Xn5edsJmdAVQGkCdKqUeqH4oKlLaU2m9gsMGveMPbiRjCatLheQSs+
+	3c8Px3Ugt4DOCHgyOrz5G2y55rXRVkiH5knk7UcmnUmO2flhqJeMMTdvWxZSEc2UB+qJJ5SaN9uZY
+	ixJ6NcnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJW26-004NM3-Ii; Thu, 04 Aug 2022 08:16:42 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oJWEN-004SSz-FU; Thu, 04 Aug 2022 08:29:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJW23-004NJx-Cl
-	for linux-mediatek@lists.infradead.org; Thu, 04 Aug 2022 08:16:40 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 4BDAFB824AA;
-	Thu,  4 Aug 2022 08:16:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA01BC433D6;
-	Thu,  4 Aug 2022 08:16:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1659600996;
-	bh=TgAmjiVkTrdSm/6pnCy/kBDPBm8BpNosKqAmgj2xAkk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=izHp11RiDUxVAvYxKVVfQxEUN6795gsrZDGyRUVQJ2/UI3u2Zp0nQqalkKCjoUkfn
-	 Ww3QHNifuyPVF/fz9uOuu20jYHfjtVQopNwjliju5SpGWMe6Pc6+AUSpCgmcWLVSxR
-	 zn0FEwSFJS97LlNC1+w5f9Pb5V0Wb2o9mRaJk78X8Ln9opBRmdAmuKrZzT4Z3VzMAm
-	 pQ5//lS9Hl0lHLFB67iUFhfUOmcQjvK21Pvza5QrUYfIxOxH2GNa2pvxD8WgwEtJ55
-	 eA0IzJLqxQlSFos+dnG2E1LlpgK6fx0zSi1650lP6QaqQQwjLD6eyNMCKDC/cCnrOc
-	 VtaMIqAymFP0Q==
-Date: Thu, 4 Aug 2022 10:16:31 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: sean.wang@mediatek.com
-Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
-	YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
-	Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com,
-	km.lin@mediatek.com, jenhao.yang@mediatek.com,
-	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
-	ch.yeh@mediatek.com, posh.sun@mediatek.com, ted.huang@mediatek.com,
-	Stella.Chang@mediatek.com, Tom.Chou@mediatek.com,
-	steve.lee@mediatek.com, jsiuda@google.com, frankgor@google.com,
-	kuabhs@google.com, druth@google.com, abhishekpandit@google.com,
-	shawnku@google.com, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mt76: mt7921: apply the previous MCU timeout
-Message-ID: <YuuAX3aa/bmL5ZdM@localhost.localdomain>
-References: <b0dfe8afc5cf88ab9a6d54c88fba4a29631c125a.1659571732.git.objelf@gmail.com>
+	id 1oJWEC-004SPK-Os; Thu, 04 Aug 2022 08:29:14 +0000
+X-UUID: ea699849b1d741f9a198ad27c1b81e2c-20220804
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:f6e30316-d5f8-483a-b40b-b48878755177,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:0f94e32,CLOUDID:e63e46d0-a6cf-4fb6-be1b-c60094821ca2,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: ea699849b1d741f9a198ad27c1b81e2c-20220804
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <nancy.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 82296588; Thu, 04 Aug 2022 01:29:06 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 4 Aug 2022 15:28:29 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 4 Aug 2022 15:28:29 +0800
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp
+ Zabel <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, AngeloGioacchino
+ Del Regno <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Nathan
+ Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
+	"Nancy . Lin" <nancy.lin@mediatek.com>, "jason-jh . lin"
+	<jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
+	<singo.chang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v25 4/7] drm/mediatek: add dma dev get function
+Date: Thu, 4 Aug 2022 15:28:24 +0800
+Message-ID: <20220804072827.22383-5-nancy.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220804072827.22383-1-nancy.lin@mediatek.com>
+References: <20220804072827.22383-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="t1gystbou+6iIMQK"
-Content-Disposition: inline
-In-Reply-To: <b0dfe8afc5cf88ab9a6d54c88fba4a29631c125a.1659571732.git.objelf@gmail.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220804_011639_630831_2C94B3FC 
-X-CRM114-Status: GOOD (  18.11  )
+X-CRM114-CacheID: sfid-20220804_012912_843349_75F87389 
+X-CRM114-Status: GOOD (  17.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,66 +84,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This is a preparation for adding support for the ovl_adaptor sub driver
+Ovl_adaptor is a DRM sub driver, which doesn't have dma dev. Add
+dma_dev_get function for getting representative dma dev in ovl_adaptor.
 
---t1gystbou+6iIMQK
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+Reviewed-by: AngeloGioachino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 15 +++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  1 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  8 ++++++++
+ 3 files changed, 24 insertions(+)
 
-> From: Sean Wang <sean.wang@mediatek.com>
->=20
-> Apply back the previous MCU timeout that can trigger the chip reset to
-> recover the fatal error in time.
->=20
-> Fixes: 8fcd1fb7cbd5 ("mt76: move mt76_connac2_mcu_fill_message in
->  mt76_connac module")
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->  b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> index 0afcadce87fc..da8223c515eb 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> @@ -3050,7 +3050,10 @@ int mt76_connac2_mcu_fill_message(struct mt76_dev
->  *dev, struct sk_buff *skb,
->  	u8 seq;
-> =20
->  	/* TODO: make dynamic based on msg type */
-> -	dev->mcu.timeout =3D 20 * HZ;
-> +	if (is_mt7921(dev))
-> +		dev->mcu.timeout =3D 3 * HZ;
-> +	else
-> +		dev->mcu.timeout =3D 20 * HZ;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 42cc7052b050..5251bf070e6e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -59,6 +59,7 @@ struct mtk_drm_crtc {
+ #endif
+ 
+ 	struct device			*mmsys_dev;
++	struct device			*dma_dev;
+ 	struct mtk_mutex		*mutex;
+ 	unsigned int			ddp_comp_nr;
+ 	struct mtk_ddp_comp		**ddp_comp;
+@@ -866,6 +867,13 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
+ 	return 0;
+ }
+ 
++struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc)
++{
++	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
++
++	return mtk_crtc->dma_dev;
++}
++
+ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 			const enum mtk_ddp_comp_id *path, unsigned int path_len)
+ {
+@@ -954,6 +962,13 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 			return ret;
+ 	}
+ 
++	/*
++	 * Default to use the first component as the dma dev.
++	 * In the case of ovl_adaptor sub driver, it needs to use the
++	 * dma_dev_get function to get representative dma dev.
++	 */
++	mtk_crtc->dma_dev = mtk_ddp_comp_dma_dev_get(&priv->ddp_comp[path[0]]);
++
+ 	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, pipe);
+ 	if (ret < 0)
+ 		return ret;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+index cb9a36c48d4f..f5a6e80c5265 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+@@ -22,5 +22,6 @@ int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
+ 			     struct mtk_plane_state *state);
+ void mtk_drm_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
+ 			       struct drm_atomic_state *plane_state);
++struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc);
+ 
+ #endif /* MTK_DRM_CRTC_H */
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index 2d0052c23dcb..364f3f7f59fa 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -71,6 +71,7 @@ struct mtk_ddp_comp_funcs {
+ 	void (*bgclr_in_off)(struct device *dev);
+ 	void (*ctm_set)(struct device *dev,
+ 			struct drm_crtc_state *state);
++	struct device * (*dma_dev_get)(struct device *dev);
+ };
+ 
+ struct mtk_ddp_comp {
+@@ -203,6 +204,13 @@ static inline void mtk_ddp_ctm_set(struct mtk_ddp_comp *comp,
+ 		comp->funcs->ctm_set(comp->dev, state);
+ }
+ 
++static inline struct device *mtk_ddp_comp_dma_dev_get(struct mtk_ddp_comp *comp)
++{
++	if (comp->funcs && comp->funcs->dma_dev_get)
++		return comp->funcs->dma_dev_get(comp->dev);
++	return comp->dev;
++}
++
+ int mtk_ddp_comp_get_id(struct device_node *node,
+ 			enum mtk_ddp_comp_type comp_type);
+ unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
+-- 
+2.18.0
 
-Hi Sean,
-
-I did not get the fix here since we are setting dev->mcu.timeout in
-mt76_connac2_mcu_fill_message caller (e.g. mt7921s_mcu_send_message).
-Am I missing something?
-
-Regards,
-Lorenzo
-
-> =20
->  	seq =3D ++dev->mcu.msg_seq & 0xf;
->  	if (!seq)
-> --=20
-> 2.25.1
->=20
-
---t1gystbou+6iIMQK
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYuuAXAAKCRA6cBh0uS2t
-rGTHAP9ExebmolMqnxYqbtRdAAq10uHV8hUpGFllKQ066SKV7AD/aMllw/3B1LV5
-D8K3fkvd/co6o2v+ZmTf/MmY3NymZAE=
-=RqkO
------END PGP SIGNATURE-----
-
---t1gystbou+6iIMQK--
 
