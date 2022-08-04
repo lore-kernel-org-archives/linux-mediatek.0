@@ -4,75 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DD29C19F29
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 02:37:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 548E7C19F29
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 02:53:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
+	Subject:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zmsrh9X/3g/WCH83lm05EdCSEeqf+efWw7k7n+0nfG0=; b=3dQM4tq4toyJXQpNAm13uD3Bf4
-	z3bobDK3znd+ONtaJDvFWY0ktmlm+5OY8RNqOUX1jGFRwUNYU+WbFGmsm8ybLyuwW1KarAZDxKj4E
-	BQGDPnSlwZ41/IrfpdOREix03Cqbhdm5TO2oKP/Uuyr5uLAT2ghKCrWjCQjb2W/VRm1jJ3x256NxZ
-	TzHNQ/MY4d8abHOccwPvUXMgVgwn1ToxllTXQdP8nxsbg9aK/Oj2KNON4FT2Sc/A/JL1DPf9LgNEr
-	h3sfUgJqXtYWuE9eUlJj+YhkHwwkDC1J4FHzZbZxC/HQlSrsH87ZTFW/tfWYqfCU0vR+wrJVpTZNp
-	6kSvvqkQ==;
+	bh=6h8M1A1G7Y+QL85kji3FNJLQMA3EuQxaas20Zx7PelU=; b=0Qi+MXpb0B/x+7m0tmhGPbxZmk
+	Cvn+6saeAFovGJovQDCcQx0YSoNPj0mXfBz80s/n+2ihL6zGMzQP/z04HiuHRWf1EyqihufwrZ2C2
+	iA4k8v1k7Q1EoJ0UXqu7Ay9jt7aHae434gnk9bu8aDIuItzpiCxyYTotlFQtPipAo9VIuJuGrnTEv
+	DltqmB8BMFwY7AxiI6f7lvbxZQEd79IYqFQgJa2QkqjzbmT4dXfAWSHjU8PAoaXxcN6zrxgLVYKqW
+	7ECv3LVWbk8ujdDaD9t6nFdooJ2kqlvkbtg3GFl16hCKehz79sEZ9SorhYWd8PaZWkO1fjIf9BMD7
+	wIou1huQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJQkC-00EQov-S0; Thu, 04 Aug 2022 02:37:52 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oJQyu-00EpEa-JS; Thu, 04 Aug 2022 02:53:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJQjt-00EQPy-C0; Thu, 04 Aug 2022 02:37:34 +0000
-X-UUID: 05125789ee904e2190d87846df6b036c-20220803
+	id 1oJQyb-00Eok2-Cb; Thu, 04 Aug 2022 02:52:47 +0000
+X-UUID: a4041779cd2b45c98d3737a4276e37b1-20220803
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:d4496ed2-1d2f-468e-b876-7a0653db5481,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:e9fbf282-93bf-4900-869a-73f77628ec91,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:60723cd0-a6cf-4fb6-be1b-c60094821ca2,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:58712dd1-841b-4e95-ad42-8f86e18f54fc,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: 05125789ee904e2190d87846df6b036c-20220803
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
+X-UUID: a4041779cd2b45c98d3737a4276e37b1-20220803
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1028039004; Wed, 03 Aug 2022 19:37:28 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+	with ESMTP id 1649573447; Wed, 03 Aug 2022 19:52:39 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 4 Aug 2022 10:06:53 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ 15.2.792.15; Thu, 4 Aug 2022 10:42:06 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 4 Aug 2022 10:06:53 +0800
-Message-ID: <a745e0bb0ccc6a3686549386cd2aad404ee60faa.camel@mediatek.com>
-Subject: Re: [PATCH v4 01/20] dt-bindings: iommu: mediatek: Increase max
- interrupt number
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
- Deacon" <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, MandyJH Liu
-	<mandyjh.liu@mediatek.com>
-CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<chengci.xu@mediatek.com>
-Date: Thu, 4 Aug 2022 10:06:53 +0800
-In-Reply-To: <0085fdd057687637ebd5a7688897a279e72e03f6.camel@mediatek.com>
-References: <20220729063208.16799-1-tinghan.shen@mediatek.com>
-	 <20220729063208.16799-2-tinghan.shen@mediatek.com>
-	 <0085fdd057687637ebd5a7688897a279e72e03f6.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Thu, 4 Aug 2022 10:42:06 +0800
+Subject: Re: [PATCH] usb: typec: altmodes/displayport: correct pin assignment
+ for UFP receptacles
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, Mediatek WSD Upstream
+	<wsd_upstream@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
+	<stable@vger.kernel.org>
+References: <20220727110503.5260-1-macpaul.lin@mediatek.com>
+ <YujSNEGm2ikg3j8a@kuha.fi.intel.com>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+Message-ID: <09f8d925-7d11-d101-8a12-8df858e74057@mediatek.com>
+Date: Thu, 4 Aug 2022 10:42:05 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <YujSNEGm2ikg3j8a@kuha.fi.intel.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220803_193733_437897_F666CBB6 
-X-CRM114-Status: GOOD (  19.02  )
+X-CRM114-CacheID: sfid-20220803_195245_484636_0B981975 
+X-CRM114-Status: GOOD (  26.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,81 +83,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-08-01 at 20:04 +0800, Yong Wu wrote:
-> On Fri, 2022-07-29 at 14:31 +0800, Tinghan Shen wrote:
-> > mt8195 infra iommu uses 5 interrupts.
-> > 
-> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> > ---
-> >  .../bindings/iommu/mediatek,iommu.yaml         | 18
-> > +++++++++++++++++-
-> >  1 file changed, 17 insertions(+), 1 deletion(-)
-> > 
-> > diff --git
-> > a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> > b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> > index fee0241b50988..5afe2a0045330 100644
-> > --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> > +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> > @@ -91,7 +91,8 @@ properties:
-> >      maxItems: 1
-> >  
-> >    interrupts:
-> > -    maxItems: 1
-> > +    minItems: 1
-> > +    maxItems: 5
-> >  
-> >    clocks:
-> >      items:
-> > @@ -191,9 +192,24 @@ allOf:
-> >                const: mediatek,mt8195-iommu-infra
-> >  
-> >      then:
-> > +      properties:
-> > +        interrupts:
-> > +          maxItems: 1
-> > +
-> >        required:
-> >          - mediatek,larbs
-> >  
-> > +    else:
-> > +      properties:
-> > +        interrupts:
-> > +          description: The IOMMU has 5 banks. Each bank has its own
-> > interrupt.
-> > +          items:
-> > +            - description: The interrupt for IOMMU bank0
-> > +            - description: The interrupt for IOMMU bank1
-> > +            - description: The interrupt for IOMMU bank2
-> > +            - description: The interrupt for IOMMU bank3
-> > +            - description: The interrupt for IOMMU bank4
-> > +
+On 8/2/22 3:28 PM, Heikki Krogerus wrote:
+> Hi guys,
 > 
-> Thanks for improving this.
+> On Wed, Jul 27, 2022 at 07:05:03PM +0800, Macpaul Lin wrote:
+>> From: Pablo Sun <pablo.sun@mediatek.com>
+>>
+>> From: Pablo Sun <pablo.sun@mediatek.com>
 > 
-> Before the meaning for this segment is that it require "mediatek,larbs"
-> if it is NOT infra iommu. Here we add a new block for infra iommu.
-> then we'd better to remove the "not". this should be more readable.
-> Something like below:
+> Looks like there's something wrong with the formating of the patch
+> here?
+
+The duplicated line will be removed in patch v2.
+
+>> Fix incorrect pin assignment values when connecting to a monitor with
+>> Type-C receptacle instead of a plug.
+>>
+>> According to specification, an UFP_D receptacle's pin assignment
+>> should came from the UFP_D pin assignments field (bit 23:16), while
+>> an UFP_D plug's assignments are described in the DFP_D pin assignments
+>> (bit 15:8) during Mode Discovery.
+>>
+>> For example the LG 27 UL850-W is a monitor with Type-C receptacle.
+>> The monitor responds to MODE DISCOVERY command with following
+>> DisplayPort Capability flag:
+>>
+>>          dp->alt->vdo=0x140045
+>>
+>> The existing logic only take cares of UPF_D plug case,
+>> and would take the bit 15:8 for this 0x140045 case.
+>>
+>> This results in an non-existing pin assignment 0x0 in
+>> dp_altmode_configure.
+>>
+>> To fix this problem a new set of macros are introduced
+>> to take plug/receptacle differences into consideration.
+>>
+>> Co-developed-by: Pablo Sun <pablo.sun@mediatek.com>
+>> Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
+>> Co-developed-by: Macpaul Lin <macpaul.lin@mediatek.com>
+>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+>> Reviewed-by: Guillaume Ranquet <granquet@baylibre.com>
+>> Cc: stable@vger.kernel.org
 > 
-> if:
->    /* Remove the not here. */
->    properties:
->      compatible:
->        contains:
->          const: mediatek,mt8195-iommu-infra
-> then:
->   xxx
-> else:
->   xx
+> If this is a fix, then you need to have the "Fixes" tag that tells
+> which commit the patch is fixing.
+
+Thanks for the review.
+Will add "Fixes" tag and "Reviewed-by" tags in patch v2.
+
+>> ---
+>>   drivers/usb/typec/altmodes/displayport.c | 4 ++--
+>>   include/linux/usb/typec_dp.h             | 5 +++++
+>>   2 files changed, 7 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/usb/typec/altmodes/displayport.c b/drivers/usb/typec/altmodes/displayport.c
+>> index 9360ca177c7d..8dd0e505ef99 100644
+>> --- a/drivers/usb/typec/altmodes/displayport.c
+>> +++ b/drivers/usb/typec/altmodes/displayport.c
+>> @@ -98,8 +98,8 @@ static int dp_altmode_configure(struct dp_altmode *dp, u8 con)
+>>   	case DP_STATUS_CON_UFP_D:
+>>   	case DP_STATUS_CON_BOTH: /* NOTE: First acting as DP source */
+>>   		conf |= DP_CONF_UFP_U_AS_UFP_D;
+>> -		pin_assign = DP_CAP_DFP_D_PIN_ASSIGN(dp->alt->vdo) &
+>> -			     DP_CAP_UFP_D_PIN_ASSIGN(dp->port->vdo);
+>> +		pin_assign = DP_CAP_PIN_ASSIGN_UFP_D(dp->alt->vdo) &
+>> +				 DP_CAP_PIN_ASSIGN_DFP_D(dp->port->vdo);
+>>   		break;
+>>   	default:
+>>   		break;
+>> diff --git a/include/linux/usb/typec_dp.h b/include/linux/usb/typec_dp.h
+>> index cfb916cccd31..8d09c2f0a9b8 100644
+>> --- a/include/linux/usb/typec_dp.h
+>> +++ b/include/linux/usb/typec_dp.h
+>> @@ -73,6 +73,11 @@ enum {
+>>   #define DP_CAP_USB			BIT(7)
+>>   #define DP_CAP_DFP_D_PIN_ASSIGN(_cap_)	(((_cap_) & GENMASK(15, 8)) >> 8)
+>>   #define DP_CAP_UFP_D_PIN_ASSIGN(_cap_)	(((_cap_) & GENMASK(23, 16)) >> 16)
+>> +/* Get pin assignment taking plug & receptacle into consideration */
+>> +#define DP_CAP_PIN_ASSIGN_UFP_D(_cap_) ((_cap_ & DP_CAP_RECEPTACLE) ? \
+>> +			DP_CAP_UFP_D_PIN_ASSIGN(_cap_) : DP_CAP_DFP_D_PIN_ASSIGN(_cap_))
+>> +#define DP_CAP_PIN_ASSIGN_DFP_D(_cap_) ((_cap_ & DP_CAP_RECEPTACLE) ? \
+>> +			DP_CAP_DFP_D_PIN_ASSIGN(_cap_) : DP_CAP_UFP_D_PIN_ASSIGN(_cap_))
+>>   
+>>   /* DisplayPort Status Update VDO bits */
+>>   #define DP_STATUS_CONNECTION(_status_)	((_status_) & 3)
+>> -- 
+>> 2.18.0
+> 
+> thanks,
 > 
 
-Ok, I'll update in the next version.
-
-
-Thanks,
-TingHan
-
-
+Thanks.
+Macpaul Lin
 
