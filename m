@@ -4,71 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA1C1C19F2D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 13:10:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6BF4C19F2A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 13:10:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PvoHeZ3GJfhWE1WIZEcM/iMOpmxjHnXPUotPQ7BW2AY=; b=Rk27jiXhkM4lEZGcsk0CozOTLQ
-	4jNmBsD/+z1cCFWNqk52tJCdzLXjFnIz5sk5jHvyrg0LpqNS5CpjlU+NY1C85vtvDOcHFeEgc6gbB
-	O/PeDEprkStTzStnH53O3zrg8r2X2YylhhRAuLkyuYVEsyZcooEDa09/zfANdiQGTlUcBKeBiHHkH
-	SYZWP23mQGuiM/WGDIUy7dIibC9ijsfnETbtWbYugXkchj3O7ulkwg9vubvLRG6GBhx4LWgBBFQxk
-	XKFAx+5gcynhNQ049Ua2fFKs/vJCVukNL8dsmPwu9Y7gHQVs+FTMFW/ThnNIvg5FMI3miwCSqPwYQ
-	31QDGsCw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/550FRoRwhwiWa23UJcURfUhwjAKd0WneHpFmZPlwqw=; b=Ctgs3QpOTA48ER5AKdLXnj/RJw
+	lPLCAK193HdFqmTlQE2uGucr3mPpaeOx4wtk7R8aANeg0JujvS/8DzG6HEi+8KJg4qS4DvI3JBTz8
+	df/1xgLfuaW77butwXWte/GZSQ3X93GeAEXJkS3Qho6yV0/JZxa+U62fJpcstdm+MAINr9plKhyvv
+	/KC57Wbrz7t6Q7B/COMD2A4nrFn7u/IyKFdHLwEOfDgnbnWaBbm9Z9kUsvKgICGIlgETJjHTy4Lgo
+	xPZ9gqnK5JE2KqTG5dxX4wrz0WMM36Wm+SgoJATDPRlY/go7I33wLaJD7Dw3KUbncCmfotQxFtDcS
+	pXT0tDFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJabr-006AVI-CH; Thu, 04 Aug 2022 13:09:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oJacE-006Ajy-P5; Thu, 04 Aug 2022 13:10:18 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJabn-006AT7-PE
-	for linux-mediatek@lists.infradead.org; Thu, 04 Aug 2022 13:09:54 +0000
-X-UUID: 8821042fc5eb4d4cbde2bd233f43e23e-20220804
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:ae302f41-e3c5-476b-8d12-5c11e136c84a,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:3,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:8
-X-CID-META: VersionHash:0f94e32,CLOUDID:51284625-a982-4824-82d2-9da3b6056c2a,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:3,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: 8821042fc5eb4d4cbde2bd233f43e23e-20220804
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 455805607; Thu, 04 Aug 2022 06:09:45 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 4 Aug 2022 21:09:43 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 4 Aug 2022 21:09:42 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
-	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
-	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
-	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
-	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
-	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
-	<abhishekpandit@google.com>, <shawnku@google.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] mt76: mt7921: apply the previous MCU timeout
-Date: Thu, 4 Aug 2022 21:09:41 +0800
-Message-ID: <1659618581-20400-1-git-send-email-sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <YuuAX3aa/bmL5ZdM@localhost.localdomain--annotate>
-References: <YuuAX3aa/bmL5ZdM@localhost.localdomain--annotate>
+	id 1oJabu-006AVo-LE
+	for linux-mediatek@lists.infradead.org; Thu, 04 Aug 2022 13:10:02 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 8-20020a05600c024800b003a2fe343db1so2318501wmj.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 04 Aug 2022 06:09:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=/550FRoRwhwiWa23UJcURfUhwjAKd0WneHpFmZPlwqw=;
+        b=nHKiKcjX72Na/r5yh2xsHteZvjaIFfk3+PwiCpogq5p/Or0Oc//pj3zPrKYmUlEr5V
+         zLzQZ6rmU6Vfkv7uL/DnL7HAtHYnNAakGKkSMbjXhzbQs4HqtZv6UZOy2M016wbIWgOy
+         +wApUHQaQwm0NLF//egJ1amCnId7COEMhnaOMeqGrgXo926zvAgU95BqKK5Gb+xQjBT3
+         78zRJKXfTDc1hvcTOVzh3sfxdDQIiDw8zG0v8RDVUyZXLquxH67A7briquUYzekmDgs/
+         igPuK2C7sPS8vFK0ZEK4GTesaEfgxsLQ4Hxy4+Bi1uFlZI8LKWcSu89Zami5qbnQIanR
+         A5Wg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=/550FRoRwhwiWa23UJcURfUhwjAKd0WneHpFmZPlwqw=;
+        b=1egMzgtR4qWic4WKXqnOWUz0IVDkLC/fCfSZCgRXmTJsao+ruoO8RaZd71Q0M65xX1
+         77C0Up+YnitaBEtSC9t4aqL2S5vnXRx+vQm5LHKDjR3rjdEHmeeeWhs2ML15zGPw5McB
+         pjJgcoxqEwtogKpL+w5bFPNPzR7dLaVrteCeeeD7nzCAmT2nywCx7Ze0yNLrhjg/Tjib
+         Qe+8mlQx4hn9hKl8vQV5yc1gBU8P57nL5q8A/LxXvTRekL0gatnkTiWWs8oWtcE2v0vi
+         bjWUl+jLbeutX1SPprJqlgf0SfBaC1CS+BxYY4WRFf1LCPkqY95wiaIhcx+vkzjo5DOl
+         0b7A==
+X-Gm-Message-State: ACgBeo3C9XEQUWOXOW7VAGWGEM323q78HlZV2o42HHECqPi9AiuZKX2F
+	oVuIQAcGJXyOGLoSzM/OAAjV9g==
+X-Google-Smtp-Source: AA6agR5EDjcdFhE33k318QdP42SioQ8FJinf54Xtn+XGNTbDKaLLK6czAFeIqHHSqOI7XN4hCvAOog==
+X-Received: by 2002:a05:600c:4fd4:b0:3a3:2c30:5749 with SMTP id o20-20020a05600c4fd400b003a32c305749mr1405025wmq.62.1659618596268;
+        Thu, 04 Aug 2022 06:09:56 -0700 (PDT)
+Received: from Balsam-ThinkPad-T480.. (235.163.185.81.rev.sfr.net. [81.185.163.235])
+        by smtp.gmail.com with ESMTPSA id o15-20020adfcf0f000000b0021d6a520ce9sm1156817wrj.47.2022.08.04.06.09.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 04 Aug 2022 06:09:55 -0700 (PDT)
+From: bchihi@baylibre.com
+To: rafael@kernel.org,
+	rui.zhang@intel.com,
+	daniel.lezcano@linaro.org,
+	amitk@kernel.org
+Cc: linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	khilman@baylibre.com,
+	mka@chromium.org,
+	robh+dt@kernel.org,
+	krzk+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	p.zabel@pengutronix.de,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	james.lo@mediatek.com,
+	fan.chen@mediatek.com,
+	louis.yu@mediatek.com,
+	rex-bc.chen@mediatek.com,
+	abailon@baylibre.com
+Subject: [PATCH v8.1, 0/7] Add LVTS architecture thermal
+Date: Thu,  4 Aug 2022 15:09:05 +0200
+Message-Id: <20220804130912.676043-1-bchihi@baylibre.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220804_060951_850263_1F196538 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20220804_060958_943234_FB7FC68C 
+X-CRM114-Status: GOOD (  16.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,53 +102,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: Balsam CHIHI <bchihi@baylibre.com>
 
->> From: Sean Wang <sean.wang@mediatek.com>
->>
->> Apply back the previous MCU timeout that can trigger the chip reset to
->> recover the fatal error in time.
->>
->> Fixes: 8fcd1fb7cbd5 ("mt76: move mt76_connac2_mcu_fill_message in
->> mt76_connac module")
->> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->> ---
->>  drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 5 ++++-
->>  1 file changed, 4 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->>  b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> index 0afcadce87fc..da8223c515eb 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> @@ -3050,7 +3050,10 @@ int mt76_connac2_mcu_fill_message(struct
->> mt76_dev  *dev, struct sk_buff *skb,
->>	u8 seq;
->>
->>	/* TODO: make dynamic based on msg type */
->> -	dev->mcu.timeout = 20 * HZ;
->> +	if (is_mt7921(dev))
->> +		dev->mcu.timeout = 3 * HZ;
->> +	else
->> +		dev->mcu.timeout = 20 * HZ;
->
->Hi Sean,
->
->I did not get the fix here since we are setting dev->mcu.timeout in mt76_connac2_mcu_fill_message caller (e.g. mt7921s_mcu_send_message).
->Am I missing something?
+This series moves thermal files related to MediaTek to the mediatek folder.
+And introduce the new architecture LVTS (low voltage thermal sensor) driver to report
+the highest temperature in the SoC and record the highest temperature sensor,
+each sensor as a hot zone.
+The LVTS body is divided into two parts, the LVTS controller and the LVTS device.
+The LVTS controller can connect up to 4 LVTS devices, and each LVTS device
+can connect up to 7 TSMCUs.
 
-oops! You're right. The patch should be dropped out. Thanks for the head-up.
+The architecture will be the first to be used on mt8192 and mt8195.
 
-	Sean
->
->Regards,
->Lorenzo
->
->>
->>	seq = ++dev->mcu.msg_seq & 0xf;
->>	if (!seq)
->> --
->> 2.25.1
->>
+Changelog:
+Changes in v8.1 :
+        - Fix Coding style issues
+        - Rebase on top of next-20220803
+        - Add multi-instance support :
+          - Rewrite DT-binding and DTS :
+            - Add DT-binding and DTS for LVTS_v4 (MT8192 and MT8195)
+            - One LVTS node for each HW Domain (AP and MCU)
+          - One SW Instance for each HW Domain
+          - Add a Kconfig sub-menu entry for LVTS and LVTS_v4 SoCs
+        - Replace platform_get_resource by platform_get_mem_or_io to get Base Address
+        - Replace platform_get_resource by platform_get_irq to get Interrupt Number
+        - Add "lvts_" prefix to functions and structs
+
+Changes in v7 :
+        - Fix coding style issues
+        - Rewrite dt bindings
+          - was not accurate
+          - Use mt8195 for example (instead of mt8192)
+          - Rename mt6873 to mt8192
+          - Remove clock name
+        - Rebased on top of to series:
+          - https://patchwork.kernel.org/project/linux-mediatek/list/?series=637849
+          - https://patchwork.kernel.org/project/linux-pm/list/?series=639386
+
+Changes in v6 :
+        - Remove temperature aggregation (it will be added in another series)
+        - Update the way to read the temperature (read one sensor instead of all)
+        - Add support of mt8195
+
+Changes in v5 :
+        - Use 'git mv' for the relocated file.
+
+Changes in v4 :
+        - Rebase to kernel-v5.13-rc1
+        - Resend
+
+Changes in v3 :
+        - change the expression in the lvts_temp_to_raw to dev_s64.
+
+Changes in v2 :
+        - Rebase to kernel-5.11-rc1.
+        - sort headers
+        - remove initial value 0 of msr_raw in the lvts_temp_to_raw.
+        - disconstruct the api of lvts_read_tc_msr_raw.
+        - add the initial value max_temp = 0 and compare e.q.
+          in the lvts_read_all_tc_temperature.
+        - add the return with an invalid number in the lvts_init.
+
+Alexandre Bailon (2):
+  dt-bindings: thermal: Add binding document for LVTS thermal
+    controllers
+  arm64: dts: mt8195: Add efuse node to mt8195
+
+Balsam CHIHI (1):
+  arm64: dts: mt8192: Add thermal zone
+
+Michael Kao (3):
+  thermal: mediatek: Relocate driver to mediatek folder
+  thermal: mediatek: Add LVTS driver for mt8192 thermal zones
+  thermal: mediatek: Add thermal zone settings for mt8195
+
+Tinghan Shen (1):
+  arm64: dts: mt8195: Add thermal zone
+
+ .../thermal/mediatek,lvts-thermal.yaml        |  77 ++
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi      | 113 ++-
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 125 ++-
+ drivers/thermal/Kconfig                       |  14 +-
+ drivers/thermal/Makefile                      |   2 +-
+ drivers/thermal/mediatek/Kconfig              |  47 +
+ drivers/thermal/mediatek/Makefile             |   3 +
+ drivers/thermal/mediatek/lvts_thermal.c       | 855 ++++++++++++++++++
+ drivers/thermal/mediatek/lvts_thermal.h       | 377 ++++++++
+ drivers/thermal/mediatek/lvts_v4.c            | 464 ++++++++++
+ .../mtxxxx_thermal.c}                         |   2 +-
+ 11 files changed, 2065 insertions(+), 14 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+ create mode 100644 drivers/thermal/mediatek/Kconfig
+ create mode 100644 drivers/thermal/mediatek/Makefile
+ create mode 100644 drivers/thermal/mediatek/lvts_thermal.c
+ create mode 100644 drivers/thermal/mediatek/lvts_thermal.h
+ create mode 100644 drivers/thermal/mediatek/lvts_v4.c
+ rename drivers/thermal/{mtk_thermal.c => mediatek/mtxxxx_thermal.c} (99%)
+
+-- 
+2.34.1
 
 
