@@ -4,72 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBEACC19F2B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 08:29:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 480F2C19F2B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 08:43:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EHyU1ZsfMZODGOS++z2Yv1l9OniOXGm8v+LxFdJhRjA=; b=3iDZfpfFf9KRoJ7lFxLPd4rkFc
-	9DnJEZ0GQX/JHTaWxFziLRzEVHDxgZP5FR6zox9VqbS/dupdeu1JubDGB+u1E6QhBe69ZYzssJ6Zv
-	I1Ko0kf+NSqJPIr7uG8aUv3/81PeOPsTpbE3/fnpvVElukunN3SbCeJJ0NHMRyzgN2HaJqAmsSUDx
-	ym1JnEC5Yf5rzAMsXweIDi2Xn5edsJmdAVQGkCdKqUeqH4oKlLaU2m9gsMGveMPbiRjCatLheQSs+
-	3c8Px3Ugt4DOCHgyOrz5G2y55rXRVkiH5knk7UcmnUmO2flhqJeMMTdvWxZSEc2UB+qJJ5SaN9uZY
-	ixJ6NcnA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Gq6/HNhAQ3BSIj0Ba+RrM6ince6+tYXHxLdu6U01oYA=; b=wocD2nqmxYrA2MhTWMjBMIQIaQ
+	OvJeyhlDvPcNZgsqf3eWumsYb7pMKWKy/+unAioFD+hyPDfo6BAkRXkYcIgQHP2hqpo2bkqyh9dWC
+	Zd6Sc5zpcPKegpVYD+tbgGglhI2MDuNhN2i+CtfmcyOUS+Q1R4plIHnloKg7WzAyW3kQranaImMnF
+	So3uiiy/fcGJJwxlamEft+awK8Sd0vM6l6j+ZQAx1eMIOr6sHWc7OxuSUDvC1pHXKg4Kc8UALZ8JG
+	4tpd7pJeVLeJXawZmf4Wqe2w+kX/Yv1NMFuFJhwDrI8VtiH+G8J/XuQVzRGRQeADMbyhiuwthWukh
+	W0BxPLLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJWEN-004SSz-FU; Thu, 04 Aug 2022 08:29:23 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oJWRr-004XbE-MN; Thu, 04 Aug 2022 08:43:19 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJWEC-004SPK-Os; Thu, 04 Aug 2022 08:29:14 +0000
-X-UUID: ea699849b1d741f9a198ad27c1b81e2c-20220804
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:f6e30316-d5f8-483a-b40b-b48878755177,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
-	ON:release,TS:5
-X-CID-META: VersionHash:0f94e32,CLOUDID:e63e46d0-a6cf-4fb6-be1b-c60094821ca2,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,QS:nil,BEC:nil,COL:0
-X-UUID: ea699849b1d741f9a198ad27c1b81e2c-20220804
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <nancy.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 82296588; Thu, 04 Aug 2022 01:29:06 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 4 Aug 2022 15:28:29 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 4 Aug 2022 15:28:29 +0800
-From: Nancy.Lin <nancy.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp
- Zabel <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, AngeloGioacchino
- Del Regno <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
-CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Nathan
- Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
-	"Nancy . Lin" <nancy.lin@mediatek.com>, "jason-jh . lin"
-	<jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
-	<singo.chang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v25 4/7] drm/mediatek: add dma dev get function
-Date: Thu, 4 Aug 2022 15:28:24 +0800
-Message-ID: <20220804072827.22383-5-nancy.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220804072827.22383-1-nancy.lin@mediatek.com>
-References: <20220804072827.22383-1-nancy.lin@mediatek.com>
+	id 1oJWRo-004XZ6-Vd; Thu, 04 Aug 2022 08:43:18 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id p10so20187703wru.8;
+        Thu, 04 Aug 2022 01:43:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=Gq6/HNhAQ3BSIj0Ba+RrM6ince6+tYXHxLdu6U01oYA=;
+        b=Bz4WTRlH4WuC24dGsS4v9wUmu3j89xaxP+rFpcK9gzNyf2u7WsaEbVSkqPKTaRhp1K
+         rCtoYXRr7DMDHo0p2wuEyRK5ESAigQlLRsQK048vHx+ZN3MlEJU6NjbligKTJhlDIyCa
+         v6op2mKcqOaJnMtUnL+3EFmjIEyd8NFLRpjI+6Ajx4sstc6mkHuuGC33qfST+QgqVLe0
+         6OxL3SquzsqrtYtHJAICTDBBbSRXx+RqJU98kzovk5vUrn6uhY8GFef0H6u3EW9BCcxA
+         uVmSMsG/ujV2dJnRrdvdW8ZfxWPUNnNXim6cPFWvzprMZqohemyuebKpfnc3SWdroqHK
+         Miag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=Gq6/HNhAQ3BSIj0Ba+RrM6ince6+tYXHxLdu6U01oYA=;
+        b=RTGZLuxdEwx6zPW3Q+H05VMbvgoF6i/EpDbO7herxFehgxYKnI6C9Zzq6HooT5g8yZ
+         A2yHqc8QwEhK4oQXnKDJJMDwysbyJxeX1Gxi1jNg03xmSlkbJQ/dqrCgar30tLtUZvMd
+         3WvUg06Kmc69tF5Td2aPYDMpWlYlb89dBeX02Tr6N/z3LywwqiVdwONW8O1t/TVOmtrb
+         0WR+w5G5yjXMuyGvsIhVPmtC01DS0lNY/HpG6Zedg9vni/aIBpUC0A0N96DZTDhSSwM9
+         ARd2uDsBWIhOFCq0Nc8VhleGiq/0RZVoKFlf8JQNuhIAolWPQ6uJNILgVQs0GK7p15TK
+         uLbg==
+X-Gm-Message-State: ACgBeo03ozfrJxH7juU/zUGlFqF8PO3Z1Qe/S/5lqAwDjCJ6pMQlOcZB
+	8eRiYHClZM1ppH+srRO5Gf4=
+X-Google-Smtp-Source: AA6agR7JMuieExtxMItJInX7x5ROJ6BsC9WvMHLa0/yaf92L6oTFOHBtIasKgc7TcO8y2gvcevC/6A==
+X-Received: by 2002:adf:f407:0:b0:21f:a7b:b81c with SMTP id g7-20020adff407000000b0021f0a7bb81cmr661641wro.42.1659602593746;
+        Thu, 04 Aug 2022 01:43:13 -0700 (PDT)
+Received: from [192.168.1.145] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id b6-20020a5d6346000000b0022063e5228bsm422563wrw.93.2022.08.04.01.43.11
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 04 Aug 2022 01:43:12 -0700 (PDT)
+Message-ID: <11c7b04e-9837-440c-fa5b-3074a706e0ba@gmail.com>
+Date: Thu, 4 Aug 2022 10:43:06 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v4 05/20] dt-bindings: power: mediatek: Update maintainer
+ list
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Lee Jones <lee@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ MandyJH Liu <mandyjh.liu@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
+Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220729063208.16799-1-tinghan.shen@mediatek.com>
+ <20220729063208.16799-6-tinghan.shen@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220729063208.16799-6-tinghan.shen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220804_012912_843349_75F87389 
-X-CRM114-Status: GOOD (  17.14  )
+X-CRM114-CacheID: sfid-20220804_014317_048850_456CDB7D 
+X-CRM114-Status: GOOD (  14.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,99 +101,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a preparation for adding support for the ovl_adaptor sub driver
-Ovl_adaptor is a DRM sub driver, which doesn't have dma dev. Add
-dma_dev_get function for getting representative dma dev in ovl_adaptor.
+Weiyi Lu,
 
-Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: AngeloGioachino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 15 +++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  1 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  8 ++++++++
- 3 files changed, 24 insertions(+)
+On 29/07/2022 08:31, Tinghan Shen wrote:
+> Update the maintainer list of power controller binding.
+> 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> Acked-by: Rob Herring <robh@kernel.org>
+> ---
+>   .../devicetree/bindings/power/mediatek,power-controller.yaml    | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> index 2d6afc0909473..03b7f6aa591d4 100644
+> --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> @@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
+>   title: Mediatek Power Domains Controller
+>   
+>   maintainers:
+> -  - Weiyi Lu <weiyi.lu@mediatek.com>
+> +  - MandyJH Liu <mandyjh.liu@mediatek.com>
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 42cc7052b050..5251bf070e6e 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -59,6 +59,7 @@ struct mtk_drm_crtc {
- #endif
- 
- 	struct device			*mmsys_dev;
-+	struct device			*dma_dev;
- 	struct mtk_mutex		*mutex;
- 	unsigned int			ddp_comp_nr;
- 	struct mtk_ddp_comp		**ddp_comp;
-@@ -866,6 +867,13 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
- 	return 0;
- }
- 
-+struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc)
-+{
-+	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+
-+	return mtk_crtc->dma_dev;
-+}
-+
- int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 			const enum mtk_ddp_comp_id *path, unsigned int path_len)
- {
-@@ -954,6 +962,13 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 			return ret;
- 	}
- 
-+	/*
-+	 * Default to use the first component as the dma dev.
-+	 * In the case of ovl_adaptor sub driver, it needs to use the
-+	 * dma_dev_get function to get representative dma dev.
-+	 */
-+	mtk_crtc->dma_dev = mtk_ddp_comp_dma_dev_get(&priv->ddp_comp[path[0]]);
-+
- 	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, pipe);
- 	if (ret < 0)
- 		return ret;
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-index cb9a36c48d4f..f5a6e80c5265 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-@@ -22,5 +22,6 @@ int mtk_drm_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
- 			     struct mtk_plane_state *state);
- void mtk_drm_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
- 			       struct drm_atomic_state *plane_state);
-+struct device *mtk_drm_crtc_dma_dev_get(struct drm_crtc *crtc);
- 
- #endif /* MTK_DRM_CRTC_H */
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 2d0052c23dcb..364f3f7f59fa 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -71,6 +71,7 @@ struct mtk_ddp_comp_funcs {
- 	void (*bgclr_in_off)(struct device *dev);
- 	void (*ctm_set)(struct device *dev,
- 			struct drm_crtc_state *state);
-+	struct device * (*dma_dev_get)(struct device *dev);
- };
- 
- struct mtk_ddp_comp {
-@@ -203,6 +204,13 @@ static inline void mtk_ddp_ctm_set(struct mtk_ddp_comp *comp,
- 		comp->funcs->ctm_set(comp->dev, state);
- }
- 
-+static inline struct device *mtk_ddp_comp_dma_dev_get(struct mtk_ddp_comp *comp)
-+{
-+	if (comp->funcs && comp->funcs->dma_dev_get)
-+		return comp->funcs->dma_dev_get(comp->dev);
-+	return comp->dev;
-+}
-+
- int mtk_ddp_comp_get_id(struct device_node *node,
- 			enum mtk_ddp_comp_type comp_type);
- unsigned int mtk_drm_find_possible_crtc_by_comp(struct drm_device *drm,
--- 
-2.18.0
+Are you ok with this change. Can you provide a Acked-by tag for that?
 
+Regards,
+Matthias
+
+>     - Matthias Brugger <mbrugger@suse.com>
+>   
+>   description: |
 
