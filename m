@@ -4,83 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49408C19F2B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 09:53:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA27DC19F2B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 10:59:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Yj4LnoCipKdQooHDqQkSzfPq9k+SbXM64sol04d/ofU=; b=p+xH+QfTfTTUDmXDOdEXpv0xOX
-	lTV8Ls+lRNktDdRqUCy4kH2ZNj9bhZhvyc7Kr8cG7dg273dHWbBeDxEcbjovP28dLx3/3gjzW6s6y
-	AxYdp+bxZ2tNZN2O0SxZy+5xcAdBRkGLNgcd85lWUYJSnQF2LIVCu17ItDTjrhSftGYGMPOdqeiSb
-	RgzLWgkp5EskoYYuLoQHKVc13fXwVBTCtJyV/vrxf4oxHbpHfkGzrJjVCyPmK9EIiibiJkVXCu4Y8
-	IFOFjarZPIipMsU0DXO5sZVx2LB+EbuYsacT0sd+fWzEm1J9O3+Dv9SJP6DzEGyM5KCizLCFI6JQv
-	e0Yxmygg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nMH8VVvpGtEg/6R0rI1o7WdbvyAocREfG4SSLR45xhA=; b=BrS6YWDRBzcFNH9M+VUnGmhN8O
+	M06ae1KGFbalNZ99SuRHO2nmY7BPD3UtXwUvNTLJXO8XLA0Moj2XZFnbHECy2xZO4wQOtqmjYte3g
+	3VgANWAYAnEKKhi4bGnt+RHMRMpTltHXkEpzmGin00G0WkRJH3jGUUbTkDl9fRy1StJD4/t9JF8v4
+	PIBB4tvL5Z9rvN9yHBrfpPf4qDAO8oWxv2roVR9DHOYfECMuMA4v4tQlGbQRm+pzmFxVToMUw+CYg
+	rk95FoK/D/una8AGEIUK+JQI7n3EKqq3ee7KJlRbSa5NXILofrDhIs2KeOtopQMYZG4sxoDlRfL9U
+	xT/4Zm4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJXY5-0050Mi-C1; Thu, 04 Aug 2022 09:53:49 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1oJYZX-005PJM-Fs; Thu, 04 Aug 2022 10:59:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJXXs-0050H9-PR; Thu, 04 Aug 2022 09:53:37 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id u133so12232472pfc.10;
-        Thu, 04 Aug 2022 02:53:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc;
-        bh=Yj4LnoCipKdQooHDqQkSzfPq9k+SbXM64sol04d/ofU=;
-        b=qVUuazv80uczwDUpa1W45XFLKQkv6E85jaluDS0qPCqx5UqLWXVRj7NNS3iB1u5yMk
-         BpAyrdAWbjN4xan/ozEhpBngVBm4vusnJrSXS6B5BtALu4Q7w0WkatMFosToCwAp0pxw
-         peyWEmojG15dUtIHplxLrARzYTKP87+hpzEs+qJ1Skx6IUC8ArRBWfpqh5foE/L0KuT3
-         5dl0vT47WvE/YFBfLMbib+8Ia4pPLthO02aty10gTq/7cMx0IUzGT+JIGnvuHvmlqhSG
-         +z4BOs0ydQYyC+O9uk363r+pOvEqCbU9PsjpybnRv4n2q2RjbjTJIV3fBXw17xudaCYj
-         TyKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
-        bh=Yj4LnoCipKdQooHDqQkSzfPq9k+SbXM64sol04d/ofU=;
-        b=XaUfBx8yZfr/1fS5z7+44ReJE+wh4OqqZFDzWzmD4UNY49vl3Ui6UIvDg2bqoFLgcX
-         aPHn8ZubQi0Iu+fJ0QEnpfDyIGKNEQaCbjMaZz0O+W5PtOVbJux27cLrqogP22s4fPCu
-         krh0vxINm+aYe3j3yzxG174iuFgfbI7feBbjPJlWYkmxzxJPjlnuCk3AxQkn/w1bqxtD
-         N2pxH79psp2A4O4jp8+Gc46vuuWQNyymTKMBoJSyMs8UcLWsSyhB8vpWaQabk67TzYhM
-         1lLWfiuJhhPaWkoSUYTiymKY/n87bdOZcFP3qLg4uC5WXiabC7qjpJVIlPgDhVgBjs3x
-         n/Jg==
-X-Gm-Message-State: ACgBeo2339PynMXa3ewy7TMuWCgYlvwi4HiLkYeoynnwl7Epn9AxuO9m
-	7U4ejwrjWL/h4jX/WeGFbTi2wvfJM5gkjm8llu8=
-X-Google-Smtp-Source: AA6agR6qwy7xIi0BGj0KdaE31bzJZvJiNHMC9+UQ+P/hml7eIyhBore8DXxCh12e0tZqDO9pfcvT3sY1+E56wep5ub0=
-X-Received: by 2002:a65:694f:0:b0:41c:cc1f:4440 with SMTP id
- w15-20020a65694f000000b0041ccc1f4440mr1024346pgq.318.1659606814308; Thu, 04
- Aug 2022 02:53:34 -0700 (PDT)
+	id 1oJYZH-005P86-NS; Thu, 04 Aug 2022 10:59:10 +0000
+X-UUID: 48f417bba2424751a9eeb11e18261411-20220804
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:7ceff29d-9466-460c-9d62-4ed4d8c22fa8,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
+	ION:release,TS:-5
+X-CID-META: VersionHash:0f94e32,CLOUDID:eb444ad0-a6cf-4fb6-be1b-c60094821ca2,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: 48f417bba2424751a9eeb11e18261411-20220804
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chengci.xu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 480589305; Thu, 04 Aug 2022 03:58:55 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 4 Aug 2022 18:58:38 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 4 Aug 2022 18:58:37 +0800
+From: Chengci.Xu <chengci.xu@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
+ Deacon" <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chengci.Xu
+	<chengci.xu@mediatek.com>
+Subject: [PATCH 0/3] MT8188 IOMMU SUPPORT
+Date: Thu, 4 Aug 2022 18:58:31 +0800
+Message-ID: <20220804105834.626-1-chengci.xu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20220722102407.2205-1-peterwu.pub@gmail.com> <20220722102407.2205-13-peterwu.pub@gmail.com>
- <20220730214205.GK23307@duo.ucw.cz>
-In-Reply-To: <20220730214205.GK23307@duo.ucw.cz>
-From: Alice Chen <szunichen@gmail.com>
-Date: Thu, 4 Aug 2022 17:53:22 +0800
-Message-ID: <CA+hk2fbEvU2yJbowqKoozb2M0aQc9TFCaxAn++YrmEx+eWt_4w@mail.gmail.com>
-Subject: Re: [PATCH v6 12/13] leds: flash: mt6370: Add MediaTek MT6370
- flashlight support
-To: Pavel Machek <pavel@ucw.cz>
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>, lee.jones@linaro.org, daniel.thompson@linaro.org, 
-	jingoohan1@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
-	matthias.bgg@gmail.com, sre@kernel.org, chunfeng.yun@mediatek.com, 
-	gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de, 
-	lgirdwood@gmail.com, broonie@kernel.org, linux@roeck-us.net, 
-	heikki.krogerus@linux.intel.com, deller@gmx.de, andy.shevchenko@gmail.com, 
-	chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com, 
-	dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, 
-	linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220804_025336_842617_F0A1D0E2 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20220804_035907_810222_63534F05 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,27 +79,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Pavel Machek <pavel@ucw.cz> =E6=96=BC 2022=E5=B9=B47=E6=9C=8831=E6=97=A5 =
-=E9=80=B1=E6=97=A5 =E6=B8=85=E6=99=A85:42=E5=AF=AB=E9=81=93=EF=BC=9A
+This patchset adds MT8188 IOMMU support.
 
-> > +// SPDX-License-Identifier: GPL-2.0-only
-> > +/*
-> > + * Copyright (C) 2022 Richtek Technology Corp.
-> > + *
-> > + * Author: Alice Chen <alice_chen@richtek.com
->
-> Add ">" at end of line.
->
-> The series is quite big, would it be possible to submit LED changes
-> in separate series?
->
-Hi Pavel,
+MT8188 have 3 IOMMU HWs. 2 IOMMU HW is for multimedia, and 1 IOMMU HW
+is for infra-master, like PCIe.
 
-Our mfd dt-bindings depends on flash and LED dt-bindings,
-but our flash and LED config depend on mfd config.
-For the dependency consideration,
-we think submitting them in a patch series is better.
+About the 2 MM IOMMU HW, the connection could be something like this:
 
-Best Regards,
-Alice
+        IOMMU(VDO)          IOMMU(VPP)
+           |                   |
+      SMI_COMMON(VDO)      SMI_COMMON(VPP)
+      ---------------     ----------------
+      |      |   ...      |      |     ...
+    larb0 larb2  ...    larb1 larb3    ...
+
+INFRA IOMMU does not have SMI, the master connects to IOMMU directly.
+
+Although multiple banks supported in MT8188, we only use one of them,
+which means PCIe is put in bank0 of INFRA IOMMU.
+
+So we have two pgtable for MT8188, specifically, these two MM IOMMU HW
+share a pgtable while INFRA IOMMU HW use a independent pgtable.
+
+Another change is that we add some SMC command for INFRA master to 
+enable/disable INFRA IOMMU in ATF considering security concerns.
+
+changes since v1:
+  - base on tag: next-20220803.
+  - adds MT8188 IOMMU support.
+
+Chengci.Xu (3):
+  dt-bindings: mediatek: mt8188: Add binding for MM & INFRA IOMMU
+  iommu/mediatek: Add enable IOMMU SMC command for INFRA master
+  iommu/mediatek: Add MT8188 IOMMU Support
+
+ .../bindings/iommu/mediatek,iommu.yaml        |  12 +-
+ drivers/iommu/mtk_iommu.c                     |  82 ++-
+ .../dt-bindings/memory/mt8188-memory-port.h   | 482 ++++++++++++++++++
+ include/soc/mediatek/smi.h                    |   1 +
+ 4 files changed, 568 insertions(+), 9 deletions(-)
+ create mode 100644 include/dt-bindings/memory/mt8188-memory-port.h
+
+-- 
+2.25.1
+
 
