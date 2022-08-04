@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AD52C19F2A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 13:11:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67E7EC19F2D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Aug 2022 13:11:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ts9wGXUYExk6gtCsSPDiHLEprUWAxTPstjlSxz/66wI=; b=nAdSF7AK/FI2wiGBajY5NmCcxM
-	UiUbbDrzsmdYYb3xHND8NRDnDMo9Xr8SpVwXABFLEy02TDLy9x833OJOrYnmRG3IC5y+s8mQhF8Pl
-	FIrsCzml61fpQ9AGD39qN+3HsJJ/eHIWIKABn+Ga7s0BAnQgfxDQkWshFUlip+yPHkcX8gW3fPDO6
-	eSaICjf8pl1PfDDJCwciiseN2T81ce0vR53vNfinQ1kFCIEkI6z/u1m+xd8i0kWt7bHMNIn86vNPG
-	JLIGAiPaaVQ5PMtrP2SDB93TPKDnWR+AWgc70Duc7aeyUCPKNtfA9n0D4HH3shpctFwkJKmyHtbBZ
-	XcDCd9sA==;
+	bh=WNYml0pJZwTGwtJKLLK7VkX/NLD3rdkLagQmwO0aon0=; b=x5raxNShuPSQnb7xNT0eC5oO7C
+	Ezl/dMyyE5JAtyp+4PuBwy7fKy5bZqOb8kbJ7CDBP3bBbfPkbBsH8eTudJZCSvsV23fpVVG7owkHt
+	T2dZ0Y9R/GOlZVSpDnHIl1f7riqS7wyE3pNDxIllrmwueNiLRp1Zfhc1oChsToiey8IStBUAUismL
+	KND4e9f9wSZi2zGhhtuiMeR7HJv1hvqWfEj3M+mP93PflkKISikC9p1buch+UpzP/feENgluAy8pw
+	OtPAH/XS+LXs041eo2QwbiaPCFCknAYBNby834JLrUUeXEyZSrrENNImT+Kb8yiutlvQ8A3xwiPuT
+	6LVab8xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJad3-006BFx-1K; Thu, 04 Aug 2022 13:11:09 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1oJad5-006BH6-3I; Thu, 04 Aug 2022 13:11:11 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJabz-006AZa-Hw
+	id 1oJac1-006AXk-UK
 	for linux-mediatek@lists.infradead.org; Thu, 04 Aug 2022 13:10:07 +0000
-Received: by mail-wr1-x431.google.com with SMTP id j1so16847739wrw.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 04 Aug 2022 06:10:02 -0700 (PDT)
+Received: by mail-wr1-x433.google.com with SMTP id j15so17129459wrr.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 04 Aug 2022 06:10:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=ts9wGXUYExk6gtCsSPDiHLEprUWAxTPstjlSxz/66wI=;
-        b=bMwcYGHsBIEMrbYzlqomUHZufeEAWm8D1KStc+1SHQNZmazstd2ArhFBuu/ztF9QHj
-         H3kz2IfvpwimKU818GmMAmRDWXueM8lHfGBtN229jA0npnntym3dU8IPoUYQ0OUaPDIv
-         mVVe0jJJcyN69Bwh+Sttsael1VYjQz04wd2lsfayRx+JLK5hbMcYlpE0DR6yI4xN3OZj
-         Pkc/MRvr3Xcyj31H3scdaxgzPpEUZUMrQcmKrt8OOD8kIgwsmD8seSjCea6FPTQxdZBs
-         d3YquQOuxz/SyCOgKlC8WNv+6YltIlnRVg/qmXLQZTYXGBbwVS0K64jNV8ggb5OJzw0G
-         elAQ==
+        bh=WNYml0pJZwTGwtJKLLK7VkX/NLD3rdkLagQmwO0aon0=;
+        b=ZIF8770Ihf88JsnID2E4OKI0p+G1KqCThV1B61k6ZnS8dsLIOYFWyCkB7bDfs7agFr
+         d0wl7p9RVQBrWZNoxLdVC2hu2PCA9l0ZYwEDNXpC8RlnTcJ87X/Owzk6sQ4MCvd9WyWR
+         1MuXn+M5hdTC9n6LvkQ33zzNgRbfwSqFW4ZK4nqYWDhkeg1VCLHk6odj7c4kLWKxG2eg
+         4qdrFDyQbKjanHaWKGYQ5WuWEGMR+Pan0cQPTsTT2Q4dRqMxCxyWtWZ/sPAaEegUKBOA
+         CCcutBRhbY4YNhFVm9AwHvlxP0QBOKRffr9nlfwiomPmmuSXw1iMyW6s4PsoDtUihjbP
+         O6jg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=ts9wGXUYExk6gtCsSPDiHLEprUWAxTPstjlSxz/66wI=;
-        b=aFKFMulH5ZWS86f6KpmuRR7H6qOQwbTDMRy/aDbB8aA4QyxVbLL8XyoImHpIUDQWeN
-         PazKThQN6MgITqiZxXZ3x760/upuDb8Evu5J0Z6Tt/ZbImHuWRP3CnvIHZ0flUhwUZ2i
-         Rj5Pe25zvq2C2ysf5f1DE9Evyz9DSd4BK7+OM2B5nh4vD00CuYKAxk44WwF+LQkgUNDq
-         3YvjNQKbqBkDEvuUVj9in4Za3SLvph9lMC1dvdPOBhHIAZUvOrcypYYB1q5qxrRdF6g5
-         zzmIlnDFZlX4LfGw8vH74/v4tx54UK5VlGJhUfbOTGm5D6khrHMKQ1Ast194jmaFyeFY
-         BPUA==
-X-Gm-Message-State: ACgBeo3NiK1/QQPCIl+4JOtMUU4DQeABBrkDMsSIWO3OObg0LOe8y9bk
-	rAyKx5KQkTm8J4qiScObGtC6hw==
-X-Google-Smtp-Source: AA6agR4hBf9nrcJv9jI+ROSaWAYZZoaanOEqB2H5H2YmKYmGpgitvUOLLcF93mI+x3J0h5O+UNCjhQ==
-X-Received: by 2002:adf:d090:0:b0:220:7188:ac8b with SMTP id y16-20020adfd090000000b002207188ac8bmr1413517wrh.389.1659618601454;
-        Thu, 04 Aug 2022 06:10:01 -0700 (PDT)
+        bh=WNYml0pJZwTGwtJKLLK7VkX/NLD3rdkLagQmwO0aon0=;
+        b=lAgbzEToQE6N4eZSEagM0XxGlzRMMNk9EezZqfDuG55IOtWatXSn+Ht3/cw/77LqDt
+         VxOTSlMlZotfsr6r89qxm1c5xBHQL4BcMSUqYUPdZbPI6aA5QgLd2ViGF/wT5xlOErwM
+         RJdM6+KOYhycL+m4NWrcBpeoWsJnnC8T8sqvPLg62XlHzKQ+HGguFouSgIm6jCG/35LU
+         l1Vo3z9QZEDZEQcCbANuVx4/mkAALP2Ps2UHQsnbpP/MeG0jNEWx7jjOAlMUH+4+qz56
+         S9878QuHQUyLHuw76fg4RZB2rruESs3rYFmHn2MZlFAT7MNrlLalzX+m9GJGZjTTqNd4
+         tPIg==
+X-Gm-Message-State: ACgBeo2AtaELC6KRv0hmTIQe+4uviRKQqqPX9oD+77KMdFvCYpGFh2vs
+	ur84dW0zG0JMhFTEKYkNAcw7eQ==
+X-Google-Smtp-Source: AA6agR4i2eds1JM8hnk2a0haj7V4iukZavQOGw33veGLMXvkiAhhA/wBiCQmQspA8M6Bxt5N1Bt3zQ==
+X-Received: by 2002:adf:ef8b:0:b0:220:8235:124 with SMTP id d11-20020adfef8b000000b0022082350124mr1378639wro.628.1659618605481;
+        Thu, 04 Aug 2022 06:10:05 -0700 (PDT)
 Received: from Balsam-ThinkPad-T480.. (235.163.185.81.rev.sfr.net. [81.185.163.235])
-        by smtp.gmail.com with ESMTPSA id o15-20020adfcf0f000000b0021d6a520ce9sm1156817wrj.47.2022.08.04.06.09.59
+        by smtp.gmail.com with ESMTPSA id o15-20020adfcf0f000000b0021d6a520ce9sm1156817wrj.47.2022.08.04.06.10.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 Aug 2022 06:10:00 -0700 (PDT)
+        Thu, 04 Aug 2022 06:10:05 -0700 (PDT)
 From: bchihi@baylibre.com
 To: rafael@kernel.org,
 	rui.zhang@intel.com,
@@ -79,17 +79,17 @@ Cc: linux-pm@vger.kernel.org,
 	louis.yu@mediatek.com,
 	rex-bc.chen@mediatek.com,
 	abailon@baylibre.com
-Subject: [PATCH v8.1, 3/7] arm64: dts: mt8192: Add thermal zone
-Date: Thu,  4 Aug 2022 15:09:08 +0200
-Message-Id: <20220804130912.676043-4-bchihi@baylibre.com>
+Subject: [PATCH v8.1, 5/7] arm64: dts: mt8195: Add efuse node to mt8195
+Date: Thu,  4 Aug 2022 15:09:10 +0200
+Message-Id: <20220804130912.676043-6-bchihi@baylibre.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220804130912.676043-1-bchihi@baylibre.com>
 References: <20220804130912.676043-1-bchihi@baylibre.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220804_061003_625888_2FDCEE33 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20220804_061006_004548_DCDEF0D4 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,157 +104,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Balsam CHIHI <bchihi@baylibre.com>
+From: Alexandre Bailon <abailon@baylibre.com>
 
-This adds the thermal zone for the mt8192.
+This adds the efuse node. This will be required by the thermal driver
+to get the calibration data.
 
+Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
 Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 113 ++++++++++++++++++++++-
- 1 file changed, 112 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index cbae5a5ee4a0..3320b5c14ee3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 73a0e2103b83..cbd0401968a2 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
 @@ -1,6 +1,6 @@
  // SPDX-License-Identifier: (GPL-2.0 OR MIT)
  /*
-- * Copyright (C) 2020 MediaTek Inc.
-+ * Copyright (C) 2022 MediaTek Inc.
+- * Copyright (c) 2021 MediaTek Inc.
++ * Copyright (c) 2022 MediaTek Inc.
   * Author: Seiya Wang <seiya.wang@mediatek.com>
   */
  
-@@ -12,6 +12,7 @@
- #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
- #include <dt-bindings/phy/phy.h>
- #include <dt-bindings/power/mt8192-power.h>
-+#include <dt-bindings/reset/mt8192-resets.h>
- 
- / {
- 	compatible = "mediatek,mt8192";
-@@ -599,6 +600,28 @@ spi0: spi@1100a000 {
- 			status = "disabled";
+@@ -733,6 +733,18 @@ u2_intr_p3: usb2-intr-p3@189,2 {
+ 				reg = <0x189 0x2>;
+ 				bits = <7 5>;
+ 			};
++
++			lvts_efuse_data1: lvts1-calib@1bc {
++				reg = <0x1bc 0x14>;
++			};
++
++			lvts_efuse_data2: lvts2-calib@1d0 {
++				reg = <0x1d0 0x38>;
++			};
++
++			svs_calibration: calib@580 {
++				reg = <0x580 0x64>;
++			};
  		};
  
-+		lvts_ap: thermal-sensor@1100b000 {
-+			compatible = "mediatek,mt8192-lvts-ap";
-+			#thermal-sensor-cells = <1>;
-+			reg = <0 0x1100b000 0 0x1000>;
-+			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&infracfg CLK_INFRA_THERM>;
-+			resets = <&infracfg MT8192_INFRA_RST0_THERM_CTRL_SWRST>;
-+			nvmem-cells = <&lvts_e_data1>;
-+			nvmem-cell-names = "lvts_calib_data1";
-+		};
-+
-+		lvts_mcu: thermal-sensor@11278000 {
-+			compatible = "mediatek,mt8192-lvts-mcu";
-+			#thermal-sensor-cells = <1>;
-+			reg = <0 0x11278000 0 0x1000>;
-+			interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&infracfg CLK_INFRA_THERM>;
-+			resets = <&infracfg MT8192_INFRA_RST4_THERM_CTRL_MCU_SWRST>;
-+			nvmem-cells = <&lvts_e_data1>;
-+			nvmem-cell-names = "lvts_calib_data1";
-+		};
-+
- 		spi1: spi@11010000 {
- 			compatible = "mediatek,mt8192-spi",
- 				     "mediatek,mt6765-spi";
-@@ -1457,4 +1480,92 @@ larb2: larb@1f002000 {
- 			power-domains = <&spm MT8192_POWER_DOMAIN_MDP>;
- 		};
- 	};
-+
-+	thermal_zones: thermal-zones {
-+		cpu-big1-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu 0>;
-+		};
-+		cpu-big2-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu 1>;
-+		};
-+		cpu-big3-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu 2>;
-+		};
-+		cpu-big4-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu 3>;
-+		};
-+		cpu-little1-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu 4>;
-+		};
-+		cpu-little2-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu 5>;
-+		};
-+		cpu-little3-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu 6>;
-+		};
-+		cpu-little4-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_mcu 7>;
-+		};
-+		vpu1-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_ap 0>;
-+		};
-+		vpu2-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_ap 1>;
-+		};
-+		gpu1-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_ap 2>;
-+		};
-+		gpu2-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_ap 3>;
-+		};
-+		vdec-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_ap 4>;
-+		};
-+		img-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_ap 5>;
-+		};
-+		infra-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_ap 6>;
-+		};
-+		cam1-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_ap 7>;
-+		};
-+		cam2-thermal {
-+			polling-delay = <0>;
-+			polling-delay-passive = <0>;
-+			thermal-sensors = <&lvts_ap 8>;
-+		};
-+	};
- };
+ 		u3phy2: t-phy@11c40000 {
 -- 
 2.34.1
 
