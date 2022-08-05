@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8E36C00140
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 09:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DC85C00140
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 09:44:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2hLRPPmkZ1h9CcY1LbMrqpLmUYQ1Ws42RBDYMgR6Pe8=; b=Hvd3+Q1lMeE9+WATxTmxMf44WQ
-	EAU/HNY8zflNidgzDduwvOzvaxcEorRCqCpnQF0UA8mWQ81x8oVHxtgaRmoqy8hFFsf/MxqNePWaJ
-	cpoP/qeHaFIRQgwZfJVLqchSV5j5V5NnpD4r/8mrgy9RnUfDrrrRCsfYrBIFGtJlUVa6El4Z6Kg8G
-	FyQ0ZwgwTO6xcH9SHOpJiyYDKgnnMo410BdyAveep23USMKEwMPQESi69FJ/1pZilbVF9rklZ5wZg
-	+eCORZTkqtwXU7p72dseeD9yrIwDrZPoXw5jOUUfGX+W5DQcTN+1Vvl2jUvJkS74KmnSbPgDlXg+d
-	uIiR8Ilw==;
+	bh=CbxLH1qbjAXgqvvhqqC308XyXELgDrVVZkaW4QSmJjY=; b=YUo3zLesoIVcWiMKkkfjKWenHf
+	GOkJTo0JlZVDKo0YKT9Az8D3exJGdQVhFdtu2o6WUGoDUwShobZUNxMAim/Ub1C2K3uA8F3VbCwQq
+	3fivEZ5s973A+MUSHqPu4aF7b19w+8eLevfQv7uKwfadzvegS4tQ9WUkO6m9ICuhw30pKTtFl1P5I
+	DqKy+paDAOJQbIdZMYfmDTsDyTllYWuIL1N6s7GP/FHXMft88V8uHNmnPmSlQsEkvSYfwrnsKl1OD
+	if52XcLe8KNQZ+fiv01cktYnElWTOFm9mQ3hbbmua2kVAgs8xXAyoXm1t8/lbX56McsDjc6H8wc8N
+	SNJjKHwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJtY0-00DZBN-91; Fri, 05 Aug 2022 09:23:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oJtrz-00Divx-JF; Fri, 05 Aug 2022 09:43:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJtXx-00DZ6s-Kp; Fri, 05 Aug 2022 09:23:11 +0000
-X-UUID: f48767f4b878444584a47b869de286b8-20220805
+	id 1oJtrv-00Diro-Gl; Fri, 05 Aug 2022 09:43:50 +0000
+X-UUID: b495a035fa744a1583919662e9004577-20220805
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:8bc17338-3fd6-45c6-a63d-f1d61af4be76,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:25,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACT
-	ION:release,TS:25
-X-CID-META: VersionHash:0f94e32,CLOUDID:caf5d248-f57f-4088-93dd-066979cdb4e6,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:4,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.8,REQID:182b81d3-e2cf-4c53-af73-3d57e4547d12,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:5b40e09b-da39-4e3b-a854-56c7d2111b46,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: f48767f4b878444584a47b869de286b8-20220805
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: b495a035fa744a1583919662e9004577-20220805
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <jia-wei.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1041848910; Fri, 05 Aug 2022 02:23:00 -0700
+	with ESMTP id 223512692; Fri, 05 Aug 2022 02:43:41 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 5 Aug 2022 17:12:25 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 5 Aug 2022 17:12:33 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 5 Aug 2022 17:12:25 +0800
+ 15.2.792.15 via Frontend Transport; Fri, 5 Aug 2022 17:12:33 +0800
 From: jia-wei.chang <jia-wei.chang@mediatek.com>
 To: "Rafael J . Wysocki" <rafael@kernel.org>, Viresh Kumar
 	<viresh.kumar@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
@@ -53,9 +53,9 @@ CC: Jia-Wei Chang <jia-wei.chang@mediatek.com>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>
-Subject: [PATCH 1/2] dt-bindings: cpufreq: add mt8188 cpufreq hw dt-bindings
-Date: Fri, 5 Aug 2022 17:12:10 +0800
-Message-ID: <20220805091211.2791-2-jia-wei.chang@mediatek.com>
+Subject: [PATCH 2/2] cpufreq: mediatek-hw: add support for mt8188
+Date: Fri, 5 Aug 2022 17:12:11 +0800
+Message-ID: <20220805091211.2791-3-jia-wei.chang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220805091211.2791-1-jia-wei.chang@mediatek.com>
 References: <20220805091211.2791-1-jia-wei.chang@mediatek.com>
@@ -63,9 +63,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220805_022310_033462_3AFFCD89 
-X-CRM114-Status: UNSURE (   9.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220805_024347_611202_BF1668ED 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,28 +81,42 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 
-Add mt8188 cpufreq hw compatible in dt-bindings.
+MT8188 mediatek-cpufreq-hw uses different register layout so it requires
+a new compatible and platform data.
 
 Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 ---
- .../devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml      | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/cpufreq/mediatek-cpufreq-hw.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-index 9cd42a64b13e..b56d36224612 100644
---- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-+++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
-@@ -16,7 +16,9 @@ description:
+diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
+index f0e0a35c7f21..83ba87545ee7 100644
+--- a/drivers/cpufreq/mediatek-cpufreq-hw.c
++++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
+@@ -50,6 +50,15 @@ static const u16 cpufreq_mtk_offsets[REG_ARRAY_SIZE] = {
+ 	[REG_FREQ_LATENCY]	= 0x110,
+ };
  
- properties:
-   compatible:
--    const: mediatek,cpufreq-hw
-+    enum:
-+      - mediatek,cpufreq-hw
-+      - mediatek,mt8188-cpufreq-hw
++static const u16 cpufreq_mt8188_offsets[REG_ARRAY_SIZE] = {
++	[REG_FREQ_LUT_TABLE]	= 0x0,
++	[REG_FREQ_ENABLE]	= 0x84,
++	[REG_FREQ_PERF_STATE]	= 0x88,
++	[REG_FREQ_HW_STATE]	= 0x8c,
++	[REG_EM_POWER_TBL]	= 0x90,
++	[REG_FREQ_LATENCY]	= 0x114,
++};
++
+ static int __maybe_unused
+ mtk_cpufreq_get_cpu_power(struct device *cpu_dev, unsigned long *uW,
+ 			  unsigned long *KHz)
+@@ -318,6 +327,7 @@ static int mtk_cpufreq_hw_driver_remove(struct platform_device *pdev)
  
-   reg:
-     minItems: 1
+ static const struct of_device_id mtk_cpufreq_hw_match[] = {
+ 	{ .compatible = "mediatek,cpufreq-hw", .data = &cpufreq_mtk_offsets },
++	{ .compatible = "mediatek,mt8188-cpufreq-hw", .data = &cpufreq_mt8188_offsets },
+ 	{}
+ };
+ 
 -- 
 2.18.0
 
