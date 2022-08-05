@@ -4,79 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13571C00140
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 11:54:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6380FC00140
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 13:07:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B02RqxjBTQRs85a8gF2gLe9dL1JOQq3J4L0ycDQz7f4=; b=cIT0/vI6EU4WiQN+fSgjSdrbfs
-	ze5cLPkEnh7Tf6BRmMYnwHFInYkS6KeGcyZLRknwPmWl1qjm0y76R5SSunQAyMIfNSpVH/g3uUk7g
-	AMdZKirtUwFvx+xkQGOU1aYyBG7NPae/SLIfoQFJo6GdE9pqmLmo8LYkxlcUn69h+eW7/Nh+cf346
-	D1ZntzXGhWj/E80ox39m8fQyxnX8XO30roD/nui+3FaDOsJhjCqkwuNQWP70k3KA5uwuzPkPFUTYR
-	Yuz16Jqu9rcXfy2y9otKDn0AOuQcabwHx9fm21bugfprjSlpyIT0yXV1K0hvl3w/AK7WHz+6ZhrXs
-	PYBf22dA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3FEi1CuKFHPWHETXS5rrQ8s9GwbgPfiuBefvLvAoBsk=; b=0sVwc7PuUIDkD6T1q8AQ/yfIm+
+	1fidyC+Gj64Ki6lNEE1h3ihuHAY9dfZUw+pcY+z4sxkGV8kaSVDvaCuD5Tts04vZpk1pPBj4sDWMm
+	eislranxjeWz1Wrn3HfhHKPMQV/erqOSndf3AQ/IWbNwPDcu7gAZwqg/lcitXR+Uv6PbWJ8XXKAlT
+	XSQ64blX2WX9rbtOxugBzcJRjZxbhZhCrZCga1RwTCwM3yoSOnPTrGm1TmI+1k5osssGVfmVQOkKT
+	3Q2csgeHJdjfQu5tccYpAmPXAD7Y8cGB/h/3VWywEDRNc6jQPS8TY+KVP5Jra9drLFQhMxtMKG+zy
+	iTcbFdkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJvuH-00EfQd-5y; Fri, 05 Aug 2022 11:54:21 +0000
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+	id 1oJx31-00FHei-2W; Fri, 05 Aug 2022 13:07:27 +0000
+Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJvuC-00EfNc-UT
-	for linux-mediatek@lists.infradead.org; Fri, 05 Aug 2022 11:54:19 +0000
-Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-31f445bd486so21442567b3.13
-        for <linux-mediatek@lists.infradead.org>; Fri, 05 Aug 2022 04:54:16 -0700 (PDT)
+	id 1oJx2k-00FHRc-JE; Fri, 05 Aug 2022 13:07:15 +0000
+Received: by mail-qk1-x736.google.com with SMTP id f14so1826967qkm.0;
+        Fri, 05 Aug 2022 06:06:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=B02RqxjBTQRs85a8gF2gLe9dL1JOQq3J4L0ycDQz7f4=;
-        b=ECUBjQ6a3KqW1cyowmSgFitTkNeso0Ptc6F6gnpY6N5bqbTzGXPuJcI/pfHBU2BYGG
-         7iUgbmsVaEJrs3RJuNxaMadfi+1iFQnDbL4PJ8FjroL22bN7bMNtzmxHslqP1RMmR257
-         I7k9Tt+x6e2/Cx1n/EnZ1yR2O/CXu5PcOqI9rnlUt1AiqJqp+GgAr1PzA44lJK61HbKa
-         W6D1uq7j4FWlUhlUF4DBHmg2hs/PskkOvgwqeCa25YKkXkvnVDh31JLE9jtk8YV8gFMV
-         DXdJDBdg47uYSw9SPj6TwjWL97g6mwUHBr9xO2D2g8ULIUoBudCP4o7GDa2uitv0myvE
-         Ejig==
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=3FEi1CuKFHPWHETXS5rrQ8s9GwbgPfiuBefvLvAoBsk=;
+        b=KgL/Ti/Sw5zH9EmMfo00bYbabUMlHnfPxzlYp138btnOZ5iHJws2jxCG33uwIKAM57
+         ZH9pcxSaQ3WAvKMK+rlXSIpmF9goTDadcJBOaraf9vF+AYXYuuUCk1nn9mZTAv7A84VS
+         IGN53sF6SexwC9WgkegcjbT+ydEtt7SJLKzuOXSjM7pv7pItuF3vkyrASesCL/DMFAma
+         rvrzVZQfTooocv0qvKbynXnxhJZQrwyBscixkLCW31xTQ5ekgGyzVfdw4/3LfOktLn40
+         aBpsyR98kiE/cfno9Vr7LLF4YuYZgav13rVMy6A3nxoUQo28k9pfuse69foAmsjNPvze
+         VLuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=B02RqxjBTQRs85a8gF2gLe9dL1JOQq3J4L0ycDQz7f4=;
-        b=DDUmAfHxHQzNIjaQ/SxJMn3NcQAlAkOugfVhq+XTXT/vIEWzY5/D9xSBnmfGU6tv9E
-         +2EIpdy8UftvudN6tLaRINGqDAGd3TdXsnrkpHUPoDfwGiRfcWxnMxu3UKeUqXkFCEL9
-         pJyPN2Vp9ICmZXjwErwtOqlx10hKdFPw347cOizKg2Z4bmr3FNAKel2QRaXPCW21/pHG
-         rw/N60XgUKeftvBo1IlIjUO5nwxWRTcInqumYvV4S9SiKplOdI0x1df27rPeckN8ZkrR
-         fTvishVEJ4ukhBmmr3oTgq1aKYbXyvXTUq+G9N6c4815fU0oKPERc+qgA1hr8iVZqVm4
-         MbzQ==
-X-Gm-Message-State: ACgBeo03Ecqv29nBDBn0dORjYfZNaZjzoN4AXUPBhT1Ab6f/tPkjUPKe
-	TcuBlXdcTrsPWWcSwo4yaU1A3l5SVr5VK5LBIri+ow==
-X-Google-Smtp-Source: AA6agR72QleJK186GhMdgMP/yTvyEphneAZ2QYvhg8nnZGfN+KY6QWW+tPlsHTl350LimpY/Cp8NATm/hRG1zpOFkm8=
-X-Received: by 2002:a0d:e88e:0:b0:328:297a:fd9e with SMTP id
- r136-20020a0de88e000000b00328297afd9emr5960768ywe.88.1659700455699; Fri, 05
- Aug 2022 04:54:15 -0700 (PDT)
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=3FEi1CuKFHPWHETXS5rrQ8s9GwbgPfiuBefvLvAoBsk=;
+        b=a0rFzHf/oIr4s2xLUvKdAp7v4ad4T/EYFBl10rofAX0QqsBHgCKGFTOrtf3+1DQut1
+         f8eeXcorak9igoHiB1Tmm+v6JL2nS6xix4U37SZhQv7RKadqE2tRGvDwsRHg2lU2+JxB
+         88CMvt6/FCNhLgI3J6zLqfKgzjqWkedT5cmX/XxRFxi9SaUGixQoRNOc7t9qaaxeuQr6
+         nf7RmLJAqzsjlLozxohI97WPIts0YTrzZZBwmhAWlBzfN53+YRILyMznZ5ClZqBMspDH
+         P4MEVu/bKSsCvzrJSwwUlL9oFE4bW6wuel80MJEL3XYsxsDm5LGmHt8hF8b1YtouFJ0F
+         z55g==
+X-Gm-Message-State: ACgBeo1L/FYN26OeuyB4vIy6Ih/uDZrMIS6sf0xiyrSqa0rJNpIIGJ6f
+	7pQ1cVQE3BGNxrEkgn+tYAW9tmwqnHCwHPlrDE4=
+X-Google-Smtp-Source: AA6agR4j0zsJqZaQf0Yu4UVNEf1JelHQhvwq9j519MOA8iXjVXlQvyGrJ/GntjcmyE7xYpQsU0Y5iOHVvVZTTJcjLGA=
+X-Received: by 2002:a05:620a:31a:b0:6b9:1f1a:7e13 with SMTP id
+ s26-20020a05620a031a00b006b91f1a7e13mr727146qkm.748.1659704817063; Fri, 05
+ Aug 2022 06:06:57 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220804130912.676043-1-bchihi@baylibre.com> <20220804130912.676043-2-bchihi@baylibre.com>
- <20220804230407.kwfsxy74qmmebfsj@notapiano>
-In-Reply-To: <20220804230407.kwfsxy74qmmebfsj@notapiano>
-From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Fri, 5 Aug 2022 13:53:39 +0200
-Message-ID: <CAGuA+ornX-mt-kjYE9693PEYqCpQQGf=CdG1k4kwzaS4BBHxmg@mail.gmail.com>
-Subject: Re: [PATCH v8.1, 1/7] thermal: mediatek: Relocate driver to mediatek folder
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: rafael@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org, 
-	amitk@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	khilman@baylibre.com, mka@chromium.org, robh+dt@kernel.org, 
-	krzk+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, james.lo@mediatek.com, 
-	fan.chen@mediatek.com, louis.yu@mediatek.com, rex-bc.chen@mediatek.com, 
-	abailon@baylibre.com
+References: <20220805070610.3516-1-peterwu.pub@gmail.com> <20220805070610.3516-14-peterwu.pub@gmail.com>
+In-Reply-To: <20220805070610.3516-14-peterwu.pub@gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Fri, 5 Aug 2022 15:06:19 +0200
+Message-ID: <CAHp75VfiYNzmcPN8LNqvU0jKuWVFR3ODY3iWaJwpDxUdSORTOg@mail.gmail.com>
+Subject: Re: [PATCH v7 13/13] video: backlight: mt6370: Add MediaTek MT6370 support
+To: ChiaEn Wu <peterwu.pub@gmail.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
+	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
+	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
+	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
+	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
+	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
+	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
+	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220805_045417_219715_91FBFF51 
-X-CRM114-Status: GOOD (  21.96  )
+X-CRM114-CacheID: sfid-20220805_060710_659258_2658F9BC 
+X-CRM114-Status: GOOD (  15.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,85 +96,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 5, 2022 at 1:04 AM N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
+On Fri, Aug 5, 2022 at 9:08 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
 >
-> Hi Balsam,
+> From: ChiaEn Wu <chiaen_wu@richtek.com>
 >
-> On Thu, Aug 04, 2022 at 03:09:06PM +0200, bchihi@baylibre.com wrote:
-> > From: Michael Kao <michael.kao@mediatek.com>
-> >
-> > Add MediaTek proprietary folder to upstream more thermal zone and coole=
-r
-> > drivers, relocate the original thermal controller driver to it, and ren=
-ame it
-> > as "mtxxxx_thermal.c" to show its purpose more clearly.
-> >
-> > Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> > Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
-> > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-> > ---
-> >  drivers/thermal/Kconfig                       | 14 ++++-------
-> >  drivers/thermal/Makefile                      |  2 +-
-> >  drivers/thermal/mediatek/Kconfig              | 23 +++++++++++++++++++
-> >  drivers/thermal/mediatek/Makefile             |  1 +
-> >  .../mtxxxx_thermal.c}                         |  2 +-
-> >  5 files changed, 30 insertions(+), 12 deletions(-)
-> >  create mode 100644 drivers/thermal/mediatek/Kconfig
-> >  create mode 100644 drivers/thermal/mediatek/Makefile
-> >  rename drivers/thermal/{mtk_thermal.c =3D> mediatek/mtxxxx_thermal.c} =
-(99%)
-> [..]
-> > --- /dev/null
-> > +++ b/drivers/thermal/mediatek/Makefile
-> > @@ -0,0 +1 @@
-> > +obj-$(CONFIG_MTK_SOC_THERMAL)                +=3D mtxxxx_thermal.o
-> > diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mediatek/m=
-txxxx_thermal.c
+> MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
+> with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
+> driver, display bias voltage supply, one general purpose LDO, and the
+> USB Type-C & PD controller complies with the latest USB Type-C and PD
+> standards.
 >
-> When Daniel suggested using a more SoC explicit name like 'mtxxx_thermal'=
- [1]
-> the xxxx was supposed to be substituted for the actual SoC (family) that =
-makes
-> use of this driver :-).
->
-> From the compatibles looks like we have mt8173, mt2701, mt2712, mt7622, m=
-t8183.
-> So it doesn't look like it's a single SoC family... What about calling it
-> auxadc_thermal?
->
-> Thanks,
-> N=C3=ADcolas
+> Add a support for the MediaTek MT6370 backlight driver.
+> It controls 4 channels of 8 series WLEDs in
+> 2048 (only for MT6370/MT6371) / 16384 (only for MT6372)
+> current steps (30 mA) in exponential or linear mapping curves.
 
-Hello N=C3=ADcolas,
+...
 
-"auxadc_thermal.c" makes more sense, since we have "lvts_thermal.c".
-Thank you for the suggestion. I will take it.
+> +#include <linux/backlight.h>
+> +#include <linux/bitfield.h>
+> +#include <linux/bits.h>
+> +#include <linux/gpio/consumer.h>
+> +#include <linux/kernel.h>
+> +#include <linux/minmax.h>
+> +#include <linux/mod_devicetable.h>
+> +#include <linux/module.h>
 
-Best regards,
-Balsam
+> +#include <linux/of_device.h>
 
->
-> [1] https://lore.kernel.org/linux-mediatek/24250d03-b25f-e521-5abd-f36109=
-885c36@linaro.org/
->
-> > similarity index 99%
-> > rename from drivers/thermal/mtk_thermal.c
-> > rename to drivers/thermal/mediatek/mtxxxx_thermal.c
-> > index ede94eadddda..60924f8f98e9 100644
-> > --- a/drivers/thermal/mtk_thermal.c
-> > +++ b/drivers/thermal/mediatek/mtxxxx_thermal.c
-> > @@ -23,7 +23,7 @@
-> >  #include <linux/reset.h>
-> >  #include <linux/types.h>
-> >
-> > -#include "thermal_hwmon.h"
-> > +#include "../thermal_hwmon.h"
-> >
-> >  /* AUXADC Registers */
-> >  #define AUXADC_CON1_SET_V    0x008
-> > --
-> > 2.34.1
-> >
-> >
+Why? Since below drop this and use fully fwnode / device property APIs.
+
+> +#include <linux/platform_device.h>
+
+Missed property.h which is heavily used in.the driver
+
+> +#include <linux/regmap.h>
+
+...
+
+> +       /*
+> +        * MT6372 uses 14 bits to control the brightness but MT6370 and MT6371
+> +        * use 11 bits. They are different so we have to use this function to
+> +        * check the vendor ID and use different mask, shift and default
+> +        * maxiimum brightness value.
+
+Use spell-checker for all your patches.
+
+> +        */
+
+-- 
+With Best Regards,
+Andy Shevchenko
 
