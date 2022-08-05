@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55286C00140
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 07:07:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2300CC00140
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 07:08:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u10vAEHFFPV+m/GXeBz2tZsyM176ncPweeKXNtbzC90=; b=I8EEG1tiopl1545vkJcgv6t0RG
-	Y3ExtIURrNTeIMwrWKwlKZeHU/Wzmkx0bPFvqJtMmhgQTa+hcKlYW9B2wOWmucYQ5Lb9MRZoYYYm4
-	J/WvQiPwTACL3HkGPXLIDfeRhp2K7jl+JfjkpPULiKyWmMcPSFXHmJn9ZHI9of+rgxaSa38WCvEjx
-	PaS/OWGFsbxlr8AWvPq311GMYnOZr7k/c0d6s/3F8RYbkLlIRTwfp0M8yR+GAGTLDhgvOrrrGAQ7q
-	Xr4QA+p/WUbX2Lqe3YfSS3DJLvPhCyRpCO8Qvd7VWO2SIX0nvuLP72Zt5P/WQMkfnFSNQnW5Qq/wj
-	BYhxY+Tw==;
+	bh=pmhuNMasJsnu7yKY0wuXEG96SXA8koMOiIgc3LgLhpU=; b=MajSHScoe6/FSVQSjrlnn9iQIl
+	B62l7oty6jxf+sG3faYa+m+INnDsNjsixYnlaEyO+8qvDttVybN71gtvOqZmFtHUBb0b/uzuUg0Hr
+	4/Dw523YmTfPz3UXTajCT3Xx1gqIPHd2E0AdulvCz3dPXF9ON/F1Y05LaWz7hn3tFBuSe6Qr0RWPU
+	rhfJqMG0dk36/wm6CwIqERwkvDFAvFAO1AGDLqxJo8WTprajYEnU+SgeqhPEAbmYNaGDzXJDd2pYV
+	UE4GHxJbO4ZZnxc7JOCNQzhkJsqE+3ucxF3eVrvGg2GyrZYpdriPUgICikJLYNfamR45fzS7jDfAQ
+	n+T9J/xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJrQw-00Chaj-TZ; Fri, 05 Aug 2022 07:07:47 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1oJrRk-00Chzr-AK; Fri, 05 Aug 2022 07:08:36 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJrPp-00CgrT-CB; Fri, 05 Aug 2022 07:06:38 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id x2-20020a17090ab00200b001f4da5cdc9cso7497593pjq.0;
-        Fri, 05 Aug 2022 00:06:34 -0700 (PDT)
+	id 1oJrPu-00CgxP-QS; Fri, 05 Aug 2022 07:06:44 +0000
+Received: by mail-pf1-x429.google.com with SMTP id 17so1558913pfy.0;
+        Fri, 05 Aug 2022 00:06:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=u10vAEHFFPV+m/GXeBz2tZsyM176ncPweeKXNtbzC90=;
-        b=lpYlKFaodSrlaln8lz1dUNOI4lQWvJ+cRzzDOYyx7EI8KlAYjZuIitS6HOEUQ55W5f
-         PWtVd6lpKNqO8UwhiTfFWePr3eWySMaJkxBCEYByfZwBKNfy0B1tZ1tF6vY6HRslE4bY
-         smKZ+gY3X3WRx2FXUfAq/ekAOdKBFxwUleaomuQRLg6mMBQkLAeGYUi+ihaAc60ujJja
-         3qnW8ixtVDSQ8kBKInU/9OJEZj1PRzkU1v+db2Tuizs6WFlkTzLHc4CuqYn3oXAYRsoE
-         MdETGC8tm2553zWhLzOHMWW8CN4c0t1kiT9g2SbHHeWr/92Zyn/6Ulnm0EClXMiT7iSg
-         3fIA==
+        bh=pmhuNMasJsnu7yKY0wuXEG96SXA8koMOiIgc3LgLhpU=;
+        b=nUlwmtCvyVIkUwCwb6FYP3vJvjibV6gtLqk5691mn09kCOpvxtqcf/X3aaqPq73n0h
+         gfoTh4fmoixiCbHkxMuoru52yn+aL/1ZAiIQwoDo6BWxGhVoHixErdA3g4OfzgSkst3S
+         hVp2R5uSGPZOF8lJwF2xzlIQSWrhGUTn50GXDFou46aamCYgQtT2/EBmjeI1qT21RK/Q
+         iqrfyIBzuzVRfeKzTzioJhdCgFbgYNGMUWjgbAyXRL/KL1le2J2T0z5AyqfHnF9AvZvJ
+         B7QTSNRJBWT0zTCK7Mv1KF0s9s97xGZinY28RGBwMN5oLSm/FoTO+Ku8vQ5rFJRdzeK9
+         7+Kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=u10vAEHFFPV+m/GXeBz2tZsyM176ncPweeKXNtbzC90=;
-        b=Yzq5m1OswhnMxpz8HCdhm8jwWKINmRS3VTqDW7ewjy6kfe37E4uTc9OynuEtUsYQt6
-         /6vbzDQX1Lbx7ykLZAqI8hFZZ9KD0miVr3jTF8KZI2CO6tdX5wIo+LFqbSXGVTuRVjyB
-         DY9SeovSM47/xO54qmPN1/TIB8AM29xzjXR9JOiD9pcKHqQ3VId8QwUOlibcysy0MgQ2
-         Wk0iKlzyhlBQ89HmjKWxkiupbMd8hbQWzxE67xcvzG8TcqCAX3k+dIyYq0R4396Wokwx
-         vLR+u6vXUbxv2h9lJBm/I91iFBo2QT1BTJKRygrNpRGv47BSbhKu9ZNsc01lZJHZn2V9
-         9EoQ==
-X-Gm-Message-State: ACgBeo13riVovl18CqMTsemyt14S37FavQBDRjA6wU4N/gLDpXiagvAT
-	8LNDX6BA7S+bRCk4m61I3dE=
-X-Google-Smtp-Source: AA6agR6uOX2JJQosvwhOiZcfULuJgPT1rgt3CEKqJiZbC5XzNWkHdOg8QcgsZu7eNgGXLbciVCi0Iw==
-X-Received: by 2002:a17:903:11d2:b0:167:8a0f:8d4b with SMTP id q18-20020a17090311d200b001678a0f8d4bmr5573656plh.78.1659683194207;
-        Fri, 05 Aug 2022 00:06:34 -0700 (PDT)
+        bh=pmhuNMasJsnu7yKY0wuXEG96SXA8koMOiIgc3LgLhpU=;
+        b=a4Y9/g8dQPlQO+oYFlYj3mpfNIzP2zgQbFp/B7SgFG6fv6x9bqncu3gAE9rUjAcH8H
+         CJdGwUPSxiRJd/csG4wNOfumB382vTKqQck4ZbWjdFpCuZEcF+2c6wBHjHJ4p0a9kx/F
+         OyAch53hmZCQ1NyomCvh3qr0FI+PIo7w8xtAopF0H64aodYBVPhdIf0ef3vkO+/Eebg5
+         OcP31QPNS7CZxrHXTEiAJcN74tQ7mv2lm0uRcHTO2j+Cv9gtgmna4c9CKUew4m7NV8e6
+         LgjkZ9Wcn00OPm0VKFcKpTpdXjXGHpnhNNQR4vQIC7cCYpTC9256B9IY8jOAzTvIcdUu
+         kaVA==
+X-Gm-Message-State: ACgBeo3RjAmyRqGW7oFM7WsY0YULwxjp138ozioS4YCepWaJAXm0mtxt
+	VBE3iY9rD10fr0tlMg2ALX8=
+X-Google-Smtp-Source: AA6agR6VhklBvSJn5TuPSCr+CU65YQsvP3bd0sBs9mhahisDn9MbyeQJH4+Lgy3EsUMzfnMT/INjcw==
+X-Received: by 2002:a05:6a00:1709:b0:52e:677b:702b with SMTP id h9-20020a056a00170900b0052e677b702bmr5696757pfc.19.1659683201418;
+        Fri, 05 Aug 2022 00:06:41 -0700 (PDT)
 Received: from RD-3580-24288.rt.l (42-72-229-62.emome-ip.hinet.net. [42.72.229.62])
-        by smtp.gmail.com with ESMTPSA id i5-20020a056a00224500b00525343b5047sm2191616pfu.76.2022.08.05.00.06.26
+        by smtp.gmail.com with ESMTPSA id i5-20020a056a00224500b00525343b5047sm2191616pfu.76.2022.08.05.00.06.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 05 Aug 2022 00:06:33 -0700 (PDT)
+        Fri, 05 Aug 2022 00:06:41 -0700 (PDT)
 From: ChiaEn Wu <peterwu.pub@gmail.com>
 To: lee.jones@linaro.org,
 	daniel.thompson@linaro.org,
@@ -91,17 +91,17 @@ Cc: chiaen_wu@richtek.com,
 	linux-fbdev@vger.kernel.org,
 	szunichen@gmail.com,
 	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v7 01/13] dt-bindings: usb: Add MediaTek MT6370 TCPC
-Date: Fri,  5 Aug 2022 15:05:58 +0800
-Message-Id: <20220805070610.3516-2-peterwu.pub@gmail.com>
+Subject: [PATCH v7 02/13] dt-bindings: power: supply: Add MediaTek MT6370 Charger
+Date: Fri,  5 Aug 2022 15:05:59 +0800
+Message-Id: <20220805070610.3516-3-peterwu.pub@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220805070610.3516-1-peterwu.pub@gmail.com>
 References: <20220805070610.3516-1-peterwu.pub@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220805_000637_482283_BEE189D5 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20220805_000642_912858_ACC7DA84 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,60 +116,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
+From: ChiaEn Wu <chiaen_wu@richtek.com>
 
-Add MediaTek MT6370 TCPC binding documentation.
+Add MediaTek MT6370 Charger binding documentation.
 
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
 Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
 ---
- .../bindings/usb/mediatek,mt6370-tcpc.yaml         | 36 ++++++++++++++++++++++
- 1 file changed, 36 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+ .../power/supply/mediatek,mt6370-charger.yaml      | 88 ++++++++++++++++++++++
+ 1 file changed, 88 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml b/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+diff --git a/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml b/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
 new file mode 100644
-index 0000000..72f56cc
+index 0000000..bd09a0a
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
-@@ -0,0 +1,36 @@
++++ b/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
+@@ -0,0 +1,88 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: "http://devicetree.org/schemas/usb/mediatek,mt6370-tcpc.yaml#"
-+$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++$id: http://devicetree.org/schemas/power/supply/mediatek,mt6370-charger.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: MediatTek MT6370 Type-C Port Switch and Power Delivery controller
++title: MediaTek MT6370 Battery Charger
 +
 +maintainers:
-+  - ChiYuan Huang <cy_huang@richtek.com>
++  - ChiaEn Wu <chiaen_wu@richtek.com>
 +
 +description: |
-+  MediaTek MT6370 is a multi-functional device.
-+  It integrates charger, ADC, flash, RGB indicators,
-+  regulators (DSV/VIBLDO), and TypeC Port Switch with Power Delivery controller.
-+  This document only describes MT6370 Type-C Port Switch and
-+  Power Delivery controller.
++  This module is part of the MT6370 MFD device.
++  Provides Battery Charger, Boost for OTG devices and BC1.2 detection.
 +
 +properties:
 +  compatible:
-+    enum:
-+      - mediatek,mt6370-tcpc
++    const: mediatek,mt6370-charger
 +
 +  interrupts:
-+    maxItems: 1
++    description: |
++      Specify what irqs are needed to be handled by MT6370 Charger driver. IRQ
++      "MT6370_IRQ_CHG_MIVR", "MT6370_IRQ_ATTACH" and "MT6370_IRQ_OVPCTRL_UVP_D"
++      are required.
++    items:
++      - description: BC1.2 done irq
++      - description: usb plug in irq
++      - description: mivr irq
 +
-+  connector:
++  interrupt-names:
++    items:
++      - const: attach_i
++      - const: uvp_d_evt
++      - const: mivr
++
++  io-channels:
++    description: |
++      Use ADC channel to read VBUS, IBUS, IBAT, etc., info.
++    minItems: 1
++    items:
++      - description: |
++          VBUS voltage with lower accuracy (+-75mV) but higher measure
++          range (1~22V)
++      - description: |
++          VBUS voltage with higher accuracy (+-30mV) but lower measure
++          range (1~9.76V)
++      - description: the main system input voltage
++      - description: battery voltage
++      - description: battery temperature-sense input voltage
++      - description: IBUS current (required)
++      - description: battery current
++      - description: |
++          regulated output voltage to supply for the PWM low-side gate driver
++          and the bootstrap capacitor
++      - description: IC junction temperature
++
++  io-channel-names:
++    minItems: 1
++    items:
++      - const: vbusdiv5
++      - const: vbusdiv2
++      - const: vsys
++      - const: vbat
++      - const: ts_bat
++      - const: ibus
++      - const: ibat
++      - const: chg_vddp
++      - const: temp_jc
++
++  usb-otg-vbus-regulator:
 +    type: object
-+    $ref: /schemas/connector/usb-connector.yaml#
++    description: OTG boost regulator.
 +    unevaluatedProperties: false
++    $ref: /schemas/regulator/regulator.yaml#
 +
-+additionalProperties: false
++    properties:
++      enable-gpios:
++        maxItems: 1
 +
 +required:
 +  - compatible
 +  - interrupts
++  - interrupt-names
++  - io-channels
++
++additionalProperties: false
++
++...
 -- 
 2.7.4
 
