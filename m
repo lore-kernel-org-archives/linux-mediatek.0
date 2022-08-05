@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B230AC25B07
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 15:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BAD0C00140
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 15:52:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=N25w6OmKovzt8xuscAI6sK2bc+L8VWVuIc8dUanQTYo=; b=lJIJL8zJk0uz3KK+D1mWbR1ROY
-	WSF2Fa2ZDbKilTN27SOvIi+H306DfmuzCOw3mPnt0PJPA+L0JlS3AzSRUUXLja+1+U3DHZVBgNnZC
-	XBrj9kmx0FB7FH7RZvxnGmsV0+11P2EENrU6tq5w2zCCCGm138Y/9KZGDBHHWSygYNtq4lQTbQpRm
-	gFJl6F3fB61Ko2/oxD1zkkHtgTwJ6UVgCxnHnvM/LGfLIXeJLv4WCNW6uUInVaJroc6deLqkPjqH9
-	NLjP1LHmED6aqIWDjtshE8jOhy4U7W05xlaBIIQuxjgGSbLDGLgyxljGnYTUmiQdAenE6Gw9HR/ky
-	ldpj3u0Q==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vutZ2JI+mmeMhK8d0OkSP0odDbfftcBz49/LOfKzAIE=; b=hk5RQLJUMCmtyQi25wKN7WWMpj
+	GZpESkrmA0Bm+Nn/hbic1+mooa6w/3TRueDAs2vawYElO/wb7dvV60hRD7VPP43GJ64CDh8aS6AVD
+	xnF2UBpqpbBWC479eGiFaqKxe68biHeNhAcRxr4aciYhbIdiWrxm/YwFSx7k0C7X8KutyzoRdwcvD
+	0ErjSWveNGl9tl/p5egBWXuNjeaJYqGAxVC0h7aGTcoYNwV6NYkeiCmlbhN2mcKEOfuKytrEyfSIM
+	1cqPeFBPCAazs2wOse4aZukhuQpvKHsy9VbNAdkqQQGgfreQJ5dI/3oVRDUhGoqTR9mcf1UT1Bpl4
+	HAlr+5Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJzag-00GQrh-5f; Fri, 05 Aug 2022 15:50:22 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
+	id 1oJzcW-00GSF3-Mp; Fri, 05 Aug 2022 15:52:16 +0000
+Received: from mga01.intel.com ([192.55.52.88])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJzZc-00GQAi-3M; Fri, 05 Aug 2022 15:49:17 +0000
+	id 1oJzZc-00GQE1-A6; Fri, 05 Aug 2022 15:49:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
   t=1659714556; x=1691250556;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=gqNuEVUhBCL0H7kHU+gOp/djo7FF1HWO1qrDMH826Oo=;
-  b=a+BUL0yOVhI4SPOwciyEape8wW3CsaJErlUcNpLCLdS+gaF5C2BZHirc
-   6yFEn3wwc31AZNHU/oFda1Hbn/zuDmI3QxwAzTYygYtGPEh1Gwr1OqDwH
-   V6pXE1VVMiYY66+tPekuS9yys/iyiHjgOy+w6jYsLDTLbZ3YPMQz+pHTf
-   lnGbJ4xQctFx9UDiwcCTGzaEns/7Hb4D9N90+LyvmAW1pOTFkjx0eWO/r
-   7Ga68mFxWg9twNb4h64dYN7nYEQwkJUkLEDY44QjrjdYkour8DnyNGHyg
-   ME4Jf82VksShd4vwhoV+afnz6DBT1yU6Ex21kjwZfrLzPTe3IRKZaVTdq
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=1IsTbKM8jNHxj4ziPqVComygZINDozfOXf+AY99bFeg=;
+  b=T+4kcgxqSchOdDxr/wPUz19NRr7Z7aqqH1IVL+dBpzHnoge9HXdtiCWU
+   fy65ae//p4XQOUgiO414HrLhTtHiOrLQkrYj3m8SUb8JT7Rw8n9hz5TYh
+   uR9Oo2GXLNKTkVSu2ufaDv71DfYHDSDpJuWkxU8HpMQyaED2lSsmFDeT0
+   H2Q2YKNk9lwoEP8eib3S0/hSh1bYPNs6Lecdsvc9ZIUvLMd/u3zeH55a4
+   WZ3AYwF39ukUcR323kGPgWzE3ZjqHbDrkj8W0pBhm/ui0ia+lQI37da0J
+   KxvDujPfMbt3Dg4LhhEODhpSmUY4gck2uyAejyHplxswOjNbt3IWrLtrV
    g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10430"; a="351943664"
+X-IronPort-AV: E=McAfee;i="6400,9594,10430"; a="316120622"
 X-IronPort-AV: E=Sophos;i="5.93,216,1654585200"; 
-   d="scan'208";a="351943664"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Aug 2022 08:49:10 -0700
+   d="scan'208";a="316120622"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Aug 2022 08:49:15 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.93,216,1654585200"; 
-   d="scan'208";a="693037565"
+   d="scan'208";a="931271163"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by FMSMGA003.fm.intel.com with ESMTP; 05 Aug 2022 08:49:05 -0700
+  by fmsmga005.fm.intel.com with ESMTP; 05 Aug 2022 08:49:10 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 899CAF7; Fri,  5 Aug 2022 18:49:16 +0300 (EEST)
+	id BCCB5303; Fri,  5 Aug 2022 18:49:16 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Gene Chen <gene_chen@richtek.com>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -71,16 +71,17 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
 	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH v2 00/11] leds: deduplicate led_init_default_state_get()
-Date: Fri,  5 Aug 2022 18:48:56 +0300
-Message-Id: <20220805154907.32263-1-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 05/11] leds: bcm6358: Get rid of custom led_init_default_state_get()
+Date: Fri,  5 Aug 2022 18:49:01 +0300
+Message-Id: <20220805154907.32263-6-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220805154907.32263-1-andriy.shevchenko@linux.intel.com>
+References: <20220805154907.32263-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220805_084916_230697_06EA721F 
-X-CRM114-Status: UNSURE (   7.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220805_084916_424536_39777CDA 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,42 +96,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are several users of LED framework that reimplement the
-functionality of led_init_default_state_get(). In order to 
-deduplicate them move the declaration to the global header
-(patch 2) and convert users (patche 3-11).
+LED core provides a helper to parse default state from firmware node.
+Use it instead of custom implementation.
 
-Chnagelog v2:
-- added missed patch 2 and hence make it the series
-- appended tag to patch 7
-- new patch 1
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/leds/leds-bcm6358.c | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
 
-Andy Shevchenko (11):
-  leds: add missing includes and forward declarations in leds.h
-  leds: Move led_init_default_state_get() to the global header
-  leds: an30259a: Get rid of custom led_init_default_state_get()
-  leds: bcm6328: Get rid of custom led_init_default_state_get()
-  leds: bcm6358: Get rid of custom led_init_default_state_get()
-  leds: mt6323: Get rid of custom led_init_default_state_get()
-  leds: mt6360: Get rid of custom led_init_default_state_get()
-  leds: pca955x: Get rid of custom led_init_default_state_get()
-  leds: pm8058: Get rid of custom led_init_default_state_get()
-  leds: syscon: Get rid of custom led_init_default_state_get()
-  net: dsa: hellcreek: Get rid of custom led_init_default_state_get()
-
- drivers/leds/flash/leds-mt6360.c           | 38 +++--------------
- drivers/leds/leds-an30259a.c               | 21 ++--------
- drivers/leds/leds-bcm6328.c                | 49 +++++++++++-----------
- drivers/leds/leds-bcm6358.c                | 32 +++++++-------
- drivers/leds/leds-mt6323.c                 | 30 ++++++-------
- drivers/leds/leds-pca955x.c                | 26 +++---------
- drivers/leds/leds-pm8058.c                 | 29 ++++++-------
- drivers/leds/leds-syscon.c                 | 49 ++++++++++------------
- drivers/leds/leds.h                        |  1 -
- drivers/net/dsa/hirschmann/hellcreek_ptp.c | 45 ++++++++++----------
- include/linux/leds.h                       | 15 ++++---
- 11 files changed, 143 insertions(+), 192 deletions(-)
-
+diff --git a/drivers/leds/leds-bcm6358.c b/drivers/leds/leds-bcm6358.c
+index 9d2e487fa08a..86e51d44a5a7 100644
+--- a/drivers/leds/leds-bcm6358.c
++++ b/drivers/leds/leds-bcm6358.c
+@@ -96,7 +96,8 @@ static int bcm6358_led(struct device *dev, struct device_node *nc, u32 reg,
+ {
+ 	struct led_init_data init_data = {};
+ 	struct bcm6358_led *led;
+-	const char *state;
++	enum led_default_state state;
++	unsigned long val;
+ 	int rc;
+ 
+ 	led = devm_kzalloc(dev, sizeof(*led), GFP_KERNEL);
+@@ -110,29 +111,28 @@ static int bcm6358_led(struct device *dev, struct device_node *nc, u32 reg,
+ 	if (of_property_read_bool(nc, "active-low"))
+ 		led->active_low = true;
+ 
+-	if (!of_property_read_string(nc, "default-state", &state)) {
+-		if (!strcmp(state, "on")) {
++	init_data.fwnode = of_fwnode_handle(nc);
++
++	state = led_init_default_state_get(init_data.fwnode);
++	switch (state) {
++	case LEDS_DEFSTATE_ON:
++		led->cdev.brightness = LED_FULL;
++		break;
++	case LEDS_DEFSTATE_KEEP:
++		val = bcm6358_led_read(led->mem + BCM6358_REG_MODE);
++		val &= BIT(led->pin);
++		if ((led->active_low && !val) || (!led->active_low && val))
+ 			led->cdev.brightness = LED_FULL;
+-		} else if (!strcmp(state, "keep")) {
+-			unsigned long val;
+-			val = bcm6358_led_read(led->mem + BCM6358_REG_MODE);
+-			val &= BIT(led->pin);
+-			if ((led->active_low && !val) ||
+-			    (!led->active_low && val))
+-				led->cdev.brightness = LED_FULL;
+-			else
+-				led->cdev.brightness = LED_OFF;
+-		} else {
++		else
+ 			led->cdev.brightness = LED_OFF;
+-		}
+-	} else {
++		break;
++	default:
+ 		led->cdev.brightness = LED_OFF;
+ 	}
+ 
+ 	bcm6358_led_set(&led->cdev, led->cdev.brightness);
+ 
+ 	led->cdev.brightness_set = bcm6358_led_set;
+-	init_data.fwnode = of_fwnode_handle(nc);
+ 
+ 	rc = devm_led_classdev_register_ext(dev, &led->cdev, &init_data);
+ 	if (rc < 0)
 -- 
 2.35.1
 
