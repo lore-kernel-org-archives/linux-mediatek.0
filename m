@@ -4,85 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C2BCC00140
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 13:10:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE9D8C00140
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 14:56:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9J24cDKKqsOduTS9UUyGj2I+dc2JXq9COm3ho1bp/NE=; b=zdsaOwAy6Teb9D6xND4FqWKAH6
-	biRQbD7K3zvtvW6de+Z8gxUWlUZDgickh1uO/jUqnbxSOx+0xnOdV7KDiQ+yNRfnMsdqjaX5VAhvX
-	1Id2lwgathUVXo6oiNf2LWyq0/eKRCuKS9gv+HmWYGv1qerj595aXOKZLxRzk9cFRhXOvuqNQRYl9
-	KIQA0i+Tnw08o+kxkdUJGiDB21faigQJg3Ox8x12CQ0blfpPYHouSWrrd8JrKoGIm2827vftqHMG7
-	kN778PUq+XdbZ8F0UMsOUQLQoyuZw5qmCsAi1fMnMkc7eFYguvdsQflj0N4AeQHrpMHak/6IXuHDy
-	Hq5LDkgA==;
+	bh=e2ieeXn1XYzQEoAXERAtoiuhedMKxc84xGYpfjmziLo=; b=GeQxM8fXrd4uhVRNfn9VGUZlIK
+	sqdvr5Yl5whJo4TnwUnaxsQKFz4S22bbQNABI/IiAm+K2B9mUSSU56CYqXTXsl4QzdPu+OKCT1yQN
+	qFoaqoopzMAj+ebuBs7Gu9j65vWhAPYBzhHbhhXQ55hy/uSQbXhtFLcvm6zqaM5rfUCXxx9RW+1+J
+	9GQoRC3UxaffA4wVjjViu1/G6GAdDta2lJsdkCk6b7vzgJPqV/XPyFjLCSFy7GKETIq45FtGR4LWF
+	ijtxaB+4E8Xd0gajDo+RhXAxR6S9b6mVhBvHsK2lfzKlF0Vjb4gEfFECM+vb9o9+UfNQXm+QND+GP
+	C/Bk+laA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJx60-00FIzr-AX; Fri, 05 Aug 2022 13:10:32 +0000
-Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
+	id 1oJykG-00G38j-Ai; Fri, 05 Aug 2022 14:56:12 +0000
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJx5m-00FIsO-6g; Fri, 05 Aug 2022 13:10:21 +0000
-Received: by mail-qk1-x72a.google.com with SMTP id w6so1797950qkf.3;
-        Fri, 05 Aug 2022 06:10:16 -0700 (PDT)
+	id 1oJyk3-00G349-Ao
+	for linux-mediatek@lists.infradead.org; Fri, 05 Aug 2022 14:56:02 +0000
+Received: by mail-yb1-xb32.google.com with SMTP id 7so4260422ybw.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 05 Aug 2022 07:55:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=9J24cDKKqsOduTS9UUyGj2I+dc2JXq9COm3ho1bp/NE=;
-        b=NZ/lhCyR9M4uoWmE11gXdKIY5QHCgnKHevuKo4TMG1DjXmtxuHL9IGeJwZ4LfPJ5Sx
-         An9X10WyEwlH6gobWrRkcQrihAvfFo/NEkJHppMNCjVysFpqBcUQppBPmmWv/gJlRwNJ
-         AJ5R5hBz/6Z6zt3zcMCzNBlOWAFcgddiIbDO26176idaVxtdAeLEwOB83fyRhNgFshT0
-         PgEvwdsJAJBc7N5GmC3tSOdTGVFK5PY33vJvxUo6aKPI13T8ZPWktLxzYyY8DyD7/CRd
-         N6n68KF39/cpPvRO/LCj/Zk8AkuXDm7CeFfWTupOMgC5Oh24O5OoP7ydY1qxP317WUAG
-         zV8Q==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=e2ieeXn1XYzQEoAXERAtoiuhedMKxc84xGYpfjmziLo=;
+        b=qTsw1eyE64qeAATFcbipfMIn7kY5QX2XulxCrOIU/qTOWxD47vwam7q1mTXJVm86d5
+         2TbTud/YX7DLm+9sZMbUnnnGcJXFV1E/yHKCqvL2duhDqnWv4ADVuGpcrPgy2o09/be3
+         nwfhocNqiF1S8Pqak4maOt59343+m3BLj4nByhmLZ33FvMPjYHv5lUCkOklPPsJRN0d4
+         eDOCxOqn6ZtHmXYMEZjv6R8ogrujeNhT0UleJWvwfeynm1fivenwwyTWDOlp2MLMWn7t
+         A+WLggNonuMAaPmKKC71zXnpvLC2NnExygeK04xWS/XKXNMxaEnUPsII7Aj/VfykIS0t
+         e8CA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=9J24cDKKqsOduTS9UUyGj2I+dc2JXq9COm3ho1bp/NE=;
-        b=FLOBNOd5wEp55vnCK7KF/srk9yuomGO9c0HQqTnmHUujhUDvp++W4LmIfzcq4fiu0n
-         qhUSQi+4xwHYuh67x0Xv929QhpJrAhC1MB6ihB3mvkc5e7GRx4GGODX/YzeI/1c8r6/N
-         Fghggokt8pO3FNfB5Y5uYF7GSSYc8IhmQoBCLr5JfgqIqCGQsIlgObQsPpfyRGKbzEWQ
-         UCN9cbHoBtJvh46tSoZKceHj4vnLimAeqYoROuhCb7ya8B4EkKgTjSp/xtCInybenXHW
-         8b3i72f3WutZ8sqOmYFEW6PtDTFxRHWOcB2qMMf5Z5I6A36ZW2VmQaWFZ4s7p4v8UKSE
-         XF4g==
-X-Gm-Message-State: ACgBeo22RTbyIFlnAcnjptOLgjVhXRXzhD0V3GxtX6qw/2FYFaeXih4E
-	wK5nICh0B+GPxvK1PLp3nJf4pYSnTYOhJU3u0O0=
-X-Google-Smtp-Source: AA6agR6KCeqnEoqyKUTU9bwzHJxmJAXoC1uA/8jBqjS4KNKKgC3bBRK/UzGUzHpzrq29/PrSFNdU8y5czcT3jzWXnGE=
-X-Received: by 2002:a05:620a:254d:b0:6ab:84b8:25eb with SMTP id
- s13-20020a05620a254d00b006ab84b825ebmr5054205qko.383.1659705015729; Fri, 05
- Aug 2022 06:10:15 -0700 (PDT)
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=e2ieeXn1XYzQEoAXERAtoiuhedMKxc84xGYpfjmziLo=;
+        b=K500nZ9NDBCCgxuEIM1iqe7gBWFI/NwjSgVP0TASaitnGv+LH2UsfxKYkaHoeWnLi6
+         d4wkDXJLlMzD1bu6E96Ob0kQqwKHaOKMNY6eaTYz8OdQNEBPanO4x7F0XuydUWN3Tgga
+         mROwX0JNAzWmYWnm2ezx+ynhi+5kE5K8Urs6g/m6r57ol/xkru8RZngewMFqoI5zWHCU
+         JOJjTzJfK5HEHfjy+Y0qs+S94vgnBv4co3t1tA4S9pv53doDguWIG2MQAyTbEKxBJ7vI
+         auy10SyvcqJJSKHIVgMhZABhUyOykyYUz8uYk6XdlRgH4OFJjEAY7jRICPiz8s9fL87T
+         vHpQ==
+X-Gm-Message-State: ACgBeo0saqquqW2BcBklLi4mB+JftKWPQ2/tKMcCrkscVBvWhV50iAUu
+	lqix8HmHTTPjIUHo5c7y0pshwmh8gQ5o90KtjHBd7g==
+X-Google-Smtp-Source: AA6agR5xvmSSt0uCcPBxYAIibyKWHGuE9VCu0a2Vm34w2xdcAJLM0zp+g7TXIUlYeFQU4IhbgvyvdVh6xhV4KCbq4nI=
+X-Received: by 2002:a25:268d:0:b0:671:7030:f9d7 with SMTP id
+ m135-20020a25268d000000b006717030f9d7mr5627753ybm.513.1659711357090; Fri, 05
+ Aug 2022 07:55:57 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220805070610.3516-1-peterwu.pub@gmail.com> <20220805070610.3516-13-peterwu.pub@gmail.com>
-In-Reply-To: <20220805070610.3516-13-peterwu.pub@gmail.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Fri, 5 Aug 2022 15:09:39 +0200
-Message-ID: <CAHp75VcdU6AVdksuhsHkzvD6mOBJ6G=yrmuHA9zAXLroXDFAjg@mail.gmail.com>
-Subject: Re: [PATCH v7 12/13] leds: flash: mt6370: Add MediaTek MT6370
- flashlight support
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Daniel Thompson <daniel.thompson@linaro.org>, 
-	Jingoo Han <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Guenter Roeck <linux@roeck-us.net>, 
-	"Krogerus, Heikki" <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, 
-	ChiaEn Wu <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, 
-	cy_huang <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, 
-	Linux LED Subsystem <linux-leds@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, 
-	USB <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, 
-	"open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
+References: <20220804130912.676043-1-bchihi@baylibre.com> <20220804130912.676043-6-bchihi@baylibre.com>
+ <0991e867-10bd-56e8-c8c1-b5d0cdefbb52@linaro.org>
+In-Reply-To: <0991e867-10bd-56e8-c8c1-b5d0cdefbb52@linaro.org>
+From: Balsam CHIHI <bchihi@baylibre.com>
+Date: Fri, 5 Aug 2022 16:55:20 +0200
+Message-ID: <CAGuA+or9uZjN3wiRtO_3TsOh+U=ekiZWOo1se0VsKTZXgd3kHA@mail.gmail.com>
+Subject: Re: [PATCH v8.1, 5/7] arm64: dts: mt8195: Add efuse node to mt8195
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: rafael@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org, 
+	amitk@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	khilman@baylibre.com, mka@chromium.org, robh+dt@kernel.org, 
+	krzk+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, james.lo@mediatek.com, 
+	fan.chen@mediatek.com, louis.yu@mediatek.com, rex-bc.chen@mediatek.com, 
+	abailon@baylibre.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220805_061018_269101_CAB681CF 
-X-CRM114-Status: GOOD (  17.87  )
+X-CRM114-CacheID: sfid-20220805_075559_612821_B6391CEE 
+X-CRM114-Status: GOOD (  16.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,49 +90,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 5, 2022 at 9:07 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+On Thu, Aug 4, 2022 at 5:22 PM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
 >
-> From: Alice Chen <alice_chen@richtek.com>
+> On 04/08/2022 15:09, bchihi@baylibre.com wrote:
+> > From: Alexandre Bailon <abailon@baylibre.com>
+> >
+> > This adds the efuse node. This will be required by the thermal driver
+> > to get the calibration data.
+> >
+> > Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 14 +++++++++++++-
+> >  1 file changed, 13 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > index 73a0e2103b83..cbd0401968a2 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > @@ -1,6 +1,6 @@
+> >  // SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> >  /*
+> > - * Copyright (c) 2021 MediaTek Inc.
+> > + * Copyright (c) 2022 MediaTek Inc.
 >
-> The MediaTek MT6370 is a highly-integrated smart power management IC,
-> which includes a single cell Li-Ion/Li-Polymer switching battery
-> charger, a USB Type-C & Power Delivery (PD) controller, dual Flash
-> LED current sources, a RGB LED driver, a backlight WLED driver,
-> a display bias driver and a general LDO for portable devices.
+> Why changing first copyright release date? This was not explained in
+> commit msg.
 >
-> Add a support for the MT6370 Flash LED driver. Flash LED in MT6370
-> has 2 channels and support torch/strobe mode.
+>
+>
+> Best regards,
+> Krzysztof
+Hello Krzysztof,
 
-Same comments as per previous LED related patch.
+I will drop this change from this commit. There is no reason for that.
+Thank you for the review.
 
-...
-
-> +       /*
-> +        * For the flash to turn on/off, we need to wait HW ramping up/down time
-> +        * 5ms/500us to prevent the unexpected problem.
-> +        */
-> +       if (!priv->fled_strobe_used && curr)
-> +               usleep_range(5000, 6000);
-> +       else if (priv->fled_strobe_used && !curr)
-> +               usleep_range(500, 600);
-
-Now it's much better!
-
-...
-
-> +       /*
-> +        * Always configure as min level when off to
-> +        * prevent flash current spike
-
-/*
- * You need to check the style
- * of multi-line comments like
- * this one.
- */
-
-> +        */
-
--- 
-With Best Regards,
-Andy Shevchenko
+Best regards,
+Balsam
 
