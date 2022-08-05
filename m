@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26154C00140
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 15:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70338C00140
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 15:53:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZVkSqxAb1FtD00/Rhi1hyXE+Hn63bye5S1l7NxYvOHg=; b=jNdG/XYvc9n7a+I3SvXaOtYYQP
-	7gGYNf6ecjR5K5JaWnmiClHc3D1+KTvwVsgAhZDMAoK0tfraxoZ3k3hFcUSZjrGXUN9xzVxSdW9Uk
-	TAReKC5chisYg8aeEYWTrmDDVs4S7o2yBXLtaE/lQbDbWUQWN0EkjeJ1xBtbpcho5OJt1NQ1YXgUA
-	n3JEizEy3RdzA4S4TipeL3yLR/1pSG2NBwdzosBCLKXXmzWiUgLjJeirtpxhAl/wSCsDM3D2OWRv4
-	NPBDfEfqh/EFGvDRSxYbEdfD6PyECw3wgreouFvTz6xu+IUQxUMf1DenDIq5cj2lWBKZpic9it4GD
-	XE88/Uww==;
+	bh=EyWyGm+IWdJHu3gONzDaN2BMjaUIuSwzcpBa+jGOmM8=; b=v6Hxa3vYuQLRTh4i4nBEAWTkGZ
+	GeNdDZwriGIsV6xE/J3iZNZAe/Mb0npAzcOybY7rrwcMcwcMwpKD0ih+FQM6akd9Yz0SODqWJN4Sa
+	+7dZw6x+fSPUf1kqgRGaT4It0yB/acxRCJU3r6oOwIMqgvxuwY/vkp1l+IovKQi9JAlb8Ti6JTwoy
+	JuSXvPhf4SvXG2DqQOnA0RyznEhXHvQ3ysUFs5AoSgq/h16WZhv3IBx6NAUqdJJvSa+U+5Zw/+Ksh
+	CVgodqPMYwMM+zG0v5EHcvlCl+QgvJbT9nEVAGkB25OIkZdJ1HujGKYZojU99zZkTDTJ21xhrmO9Q
+	kKmuoMDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJzdK-00GSpg-Gj; Fri, 05 Aug 2022 15:53:06 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1oJzdN-00GSrU-S2; Fri, 05 Aug 2022 15:53:09 +0000
+Received: from mga17.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJzZe-00GQEG-3A; Fri, 05 Aug 2022 15:49:20 +0000
+	id 1oJzZf-00GQFY-Hv; Fri, 05 Aug 2022 15:49:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1659714558; x=1691250558;
+  t=1659714559; x=1691250559;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=kK0hPRdSyvWlZo38p4QMgn/ySqgObmyyzYJGxFidk7g=;
-  b=Qnt+8NEkI9qxk2kTr2GcyCoErBD2G4oUa9yfwnubeei6SrNr/i27y3Re
-   pmyYaDtqMpxyzLfiKH3V+EYUDcqlBG2JD0rXgHv4Ly3leVhMRZ82oqxCN
-   BE1enzJM9I3HV/sPzomsNwhwkKgLk2YU4fuwKV1oNErx7AcIog2kynMiO
-   wznFdUHQ3AnSoWu/mjalgCrmlG7aI32wcGbh3OOO8XRYO7xgg8Jkl0452
-   flvXgb2sUv1E6jBO0YWVwfa+fQCL+vc5ChuoqQbaLAUlFxMXg7FdMqZ8S
-   Gbx9+q065U0/GcONrYqHluXKr4hU9HucD3FbEAw8jMX9/fkMAvBCZbj2h
-   w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10430"; a="287794487"
+  bh=VQzFMWOPVcFhsKxRl9Czr0Mhj2oriMu0x8VLNQGEUCY=;
+  b=KS87/PFud5pn+W3b/ZGkNaAFFOhS+7ErxiCgAsquYvk/4xfX+AnVxzXY
+   r4nc+d7rds2DqWFpy+5pckwr+5jSmBvLhSB9sgWkSS0+2+iyWcNZjXqar
+   1xX8pwnJkImSTxvufnZ1up0ZXtttLOyoWPh1chOQ4ImUKQUenhnOn2JSv
+   UvONSKeK/Ol/WAH18tLlmFL1/gJBukFLvMF+AKc86RPHF05nBpt177qV5
+   9TMQH65jerJYe+1sRzdPQ8PZt2HaZ+fmqostP8EBptAvt68vP03IVU7aC
+   G6UCj6c08vpNE5VkIK+24AhYbfctcoapYvrucA00L+hVxspQbqzMq4H22
+   Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10430"; a="270608785"
 X-IronPort-AV: E=Sophos;i="5.93,216,1654585200"; 
-   d="scan'208";a="287794487"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Aug 2022 08:49:15 -0700
+   d="scan'208";a="270608785"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Aug 2022 08:49:16 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.93,216,1654585200"; 
-   d="scan'208";a="745891350"
+   d="scan'208";a="600399032"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by fmsmga001.fm.intel.com with ESMTP; 05 Aug 2022 08:49:11 -0700
+  by orsmga007.jf.intel.com with ESMTP; 05 Aug 2022 08:49:11 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 0FAF764F; Fri,  5 Aug 2022 18:49:17 +0300 (EEST)
+	id E0D9141F; Fri,  5 Aug 2022 18:49:16 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Gene Chen <gene_chen@richtek.com>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -71,17 +71,17 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
 	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH v2 11/11] net: dsa: hellcreek: Get rid of custom led_init_default_state_get()
-Date: Fri,  5 Aug 2022 18:49:07 +0300
-Message-Id: <20220805154907.32263-12-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v2 08/11] leds: pca955x: Get rid of custom led_init_default_state_get()
+Date: Fri,  5 Aug 2022 18:49:04 +0300
+Message-Id: <20220805154907.32263-9-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220805154907.32263-1-andriy.shevchenko@linux.intel.com>
 References: <20220805154907.32263-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220805_084918_218306_5C98E086 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20220805_084919_637670_6A0B3CBD 
+X-CRM114-Status: GOOD (  13.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,79 +101,78 @@ Use it instead of custom implementation.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/net/dsa/hirschmann/hellcreek_ptp.c | 45 ++++++++++++----------
- 1 file changed, 24 insertions(+), 21 deletions(-)
+ drivers/leds/leds-pca955x.c | 26 ++++++--------------------
+ 1 file changed, 6 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/net/dsa/hirschmann/hellcreek_ptp.c b/drivers/net/dsa/hirschmann/hellcreek_ptp.c
-index b28baab6d56a..793b2c296314 100644
---- a/drivers/net/dsa/hirschmann/hellcreek_ptp.c
-+++ b/drivers/net/dsa/hirschmann/hellcreek_ptp.c
-@@ -297,7 +297,8 @@ static enum led_brightness hellcreek_led_is_gm_get(struct led_classdev *ldev)
- static int hellcreek_led_setup(struct hellcreek *hellcreek)
- {
- 	struct device_node *leds, *led = NULL;
--	const char *label, *state;
-+	enum led_default_state state;
-+	const char *label;
- 	int ret = -EINVAL;
+diff --git a/drivers/leds/leds-pca955x.c b/drivers/leds/leds-pca955x.c
+index 81aaf21212d7..8dca6f99e699 100644
+--- a/drivers/leds/leds-pca955x.c
++++ b/drivers/leds/leds-pca955x.c
+@@ -130,7 +130,7 @@ struct pca955x_led {
+ 	struct led_classdev	led_cdev;
+ 	int			led_num;	/* 0 .. 15 potentially */
+ 	u32			type;
+-	int			default_state;
++	enum led_default_state	default_state;
+ 	struct fwnode_handle	*fwnode;
+ };
  
- 	of_node_get(hellcreek->dev->of_node);
-@@ -318,16 +319,17 @@ static int hellcreek_led_setup(struct hellcreek *hellcreek)
- 	ret = of_property_read_string(led, "label", &label);
- 	hellcreek->led_sync_good.name = ret ? "sync_good" : label;
+@@ -443,7 +443,6 @@ pca955x_get_pdata(struct i2c_client *client, struct pca955x_chipdef *chip)
+ 		return ERR_PTR(-ENOMEM);
  
--	ret = of_property_read_string(led, "default-state", &state);
--	if (!ret) {
--		if (!strcmp(state, "on"))
--			hellcreek->led_sync_good.brightness = 1;
--		else if (!strcmp(state, "off"))
--			hellcreek->led_sync_good.brightness = 0;
--		else if (!strcmp(state, "keep"))
--			hellcreek->led_sync_good.brightness =
--				hellcreek_get_brightness(hellcreek,
--							 STATUS_OUT_SYNC_GOOD);
-+	state = led_init_default_state_get(of_fwnode_handle(led));
-+	switch (state) {
-+	case LEDS_DEFSTATE_ON:
-+		hellcreek->led_sync_good.brightness = 1;
-+		break;
-+	case LEDS_DEFSTATE_KEEP:
-+		hellcreek->led_sync_good.brightness =
-+				hellcreek_get_brightness(hellcreek, STATUS_OUT_SYNC_GOOD);
-+		break;
-+	default:
-+		hellcreek->led_sync_good.brightness = 0;
+ 	device_for_each_child_node(&client->dev, child) {
+-		const char *state;
+ 		u32 reg;
+ 		int res;
+ 
+@@ -454,19 +453,9 @@ pca955x_get_pdata(struct i2c_client *client, struct pca955x_chipdef *chip)
+ 		led = &pdata->leds[reg];
+ 		led->type = PCA955X_TYPE_LED;
+ 		led->fwnode = child;
+-		fwnode_property_read_u32(child, "type", &led->type);
++		led->default_state = led_init_default_state_get(child);
+ 
+-		if (!fwnode_property_read_string(child, "default-state",
+-						 &state)) {
+-			if (!strcmp(state, "keep"))
+-				led->default_state = LEDS_GPIO_DEFSTATE_KEEP;
+-			else if (!strcmp(state, "on"))
+-				led->default_state = LEDS_GPIO_DEFSTATE_ON;
+-			else
+-				led->default_state = LEDS_GPIO_DEFSTATE_OFF;
+-		} else {
+-			led->default_state = LEDS_GPIO_DEFSTATE_OFF;
+-		}
++		fwnode_property_read_u32(child, "type", &led->type);
  	}
  
- 	hellcreek->led_sync_good.max_brightness = 1;
-@@ -344,16 +346,17 @@ static int hellcreek_led_setup(struct hellcreek *hellcreek)
- 	ret = of_property_read_string(led, "label", &label);
- 	hellcreek->led_is_gm.name = ret ? "is_gm" : label;
+ 	pdata->num_leds = chip->bits;
+@@ -578,13 +567,11 @@ static int pca955x_probe(struct i2c_client *client)
+ 			led->brightness_set_blocking = pca955x_led_set;
+ 			led->brightness_get = pca955x_led_get;
  
--	ret = of_property_read_string(led, "default-state", &state);
--	if (!ret) {
--		if (!strcmp(state, "on"))
--			hellcreek->led_is_gm.brightness = 1;
--		else if (!strcmp(state, "off"))
--			hellcreek->led_is_gm.brightness = 0;
--		else if (!strcmp(state, "keep"))
--			hellcreek->led_is_gm.brightness =
--				hellcreek_get_brightness(hellcreek,
--							 STATUS_OUT_IS_GM);
-+	state = led_init_default_state_get(of_fwnode_handle(led));
-+	switch (state) {
-+	case LEDS_DEFSTATE_ON:
-+		hellcreek->led_is_gm.brightness = 1;
-+		break;
-+	case LEDS_DEFSTATE_KEEP:
-+		hellcreek->led_is_gm.brightness =
-+				hellcreek_get_brightness(hellcreek, STATUS_OUT_IS_GM);
-+		break;
-+	default:
-+		hellcreek->led_is_gm.brightness = 0;
- 	}
- 
- 	hellcreek->led_is_gm.max_brightness = 1;
+-			if (pdata->leds[i].default_state ==
+-			    LEDS_GPIO_DEFSTATE_OFF) {
++			if (pdata->leds[i].default_state == LEDS_DEFSTATE_OFF) {
+ 				err = pca955x_led_set(led, LED_OFF);
+ 				if (err)
+ 					return err;
+-			} else if (pdata->leds[i].default_state ==
+-				   LEDS_GPIO_DEFSTATE_ON) {
++			} else if (pdata->leds[i].default_state == LEDS_DEFSTATE_ON) {
+ 				err = pca955x_led_set(led, LED_FULL);
+ 				if (err)
+ 					return err;
+@@ -623,8 +610,7 @@ static int pca955x_probe(struct i2c_client *client)
+ 			 * brightness to see if it's using PWM1. If so, PWM1
+ 			 * should not be written below.
+ 			 */
+-			if (pdata->leds[i].default_state ==
+-			    LEDS_GPIO_DEFSTATE_KEEP) {
++			if (pdata->leds[i].default_state == LEDS_DEFSTATE_KEEP) {
+ 				if (led->brightness != LED_FULL &&
+ 				    led->brightness != LED_OFF &&
+ 				    led->brightness != LED_HALF)
 -- 
 2.35.1
 
