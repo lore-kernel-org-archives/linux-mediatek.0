@@ -4,84 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FB0CC00140
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 15:55:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3C44C00140
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Aug 2022 22:45:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IR6Jzv3DBB4LPS3wuwZKNqFeWntYIN0Fg0BDCjTo7Pc=; b=SfU8IyI5LMyInU3HGCKn+FNFno
-	UEH2vsCX1nrJPEBn7SH21lqFCd6yvp4ovhEGaPZtopaD6A6z0wVPMT1eZIwwOMvnUDl697wdb02BK
-	9h/quH/PPLrHkNVCUV+jKM8iQ5ZCQIbIqs3t8YlObis9VwPBsgTwa8AZik1WFkY87bnYr2jOODwHI
-	C1C8mNaqu6wOD4BqyDlMo3R4ufq5VtCk1GEMkGY+R/Ro7IWRpzLfqnWtfT931/TW03OeSu9Ef0Y0X
-	GMUBzo62sLZXt5jPKti5f/b1RSwfMfPxZBHq3EeaguuxeYOXgTH0bDH7HlxsfTHWBXuMhT5MmXpEh
-	WtT7vneQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7HDmje7hMCl5NV+G0CT0UMQAVeQZFrphIEsYJbLbSJI=; b=Pxj7RVi6675tUqOR5svTDT+Hu4
+	sZ1UMo0pHXXz1oKOCeG4WyWWoDKRxK33U0/A3PCWaVndGpNyN4+8Up1wJp4ENdjYgW/H5kG4nIPnK
+	3jaVhY/Iqo8PnhBecTEyB9iYN/BMSSIBGgPfQF76vXz0MoZx6vNZJtpionNrCB356hpJ4HXnf5WmL
+	NOBeh8jlipisyIb4AbYaeTPWLdxSNpnkvJSKNSPoNPGIVDMcqzjoBqcTTxg25adrxVjHbh6fkRaaf
+	TJGBlkRD2daE5Jb00Rp6HpMPkAMPZJSjVTDu3CaVFy99YdLWoq6uYGv1GhCbwW/+SwlSPowuN2BMz
+	qTxfuDHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJzfs-00GUSm-2l; Fri, 05 Aug 2022 15:55:44 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1oK64h-001O9s-VA; Fri, 05 Aug 2022 22:45:47 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJzZo-00GQLd-Ed; Fri, 05 Aug 2022 15:49:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1659714568; x=1691250568;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=OunVwjFJhL1Q/tamMZepaupTRMyzPHvHM30RUkvfBQg=;
-  b=RzkCwn+LJAI35cNKKjuaKnGSUAQaHauyGrjcwnlCFsjYpuVXRjh7fZqg
-   vPn45ZYRUKQEd2X2yubyyyh55nGAm/MZutdPtjI/Jyltro3d44iEL6FYG
-   SGhcSse+9mp2OAGNyaPKbabsdBUzestHmyRuDFH8W/TKXyjcLW+3n1+ZO
-   TNtZTN2BGj0sxAf5Tu5dzeUGM3gKEur2KDq6Lr1QZDpkD9tMtkW+xOXDe
-   2jMiWbMlzGnx29acSQiKBu2GBSMokEDGlF3uLz46EigKB4CAfktW2GqxY
-   2dWvzcYfq9gul1trUWFbXBn8TnqJvmxxMvpqJs1c5Re6sLgtG1hMYjs/S
-   g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10430"; a="288988428"
-X-IronPort-AV: E=Sophos;i="5.93,216,1654585200"; 
-   d="scan'208";a="288988428"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Aug 2022 08:49:16 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,216,1654585200"; 
-   d="scan'208";a="693037586"
-Received: from black.fi.intel.com ([10.237.72.28])
-  by FMSMGA003.fm.intel.com with ESMTP; 05 Aug 2022 08:49:10 -0700
-Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id C8674347; Fri,  5 Aug 2022 18:49:16 +0300 (EEST)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Gene Chen <gene_chen@richtek.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Pavel Machek <pavel@ucw.cz>,
-	Eddie James <eajames@linux.ibm.com>,
-	Denis Osterland-Heim <Denis.Osterland@diehl.com>,
-	linux-leds@vger.kernel.org,
+	id 1oK633-001N5d-ID
+	for linux-mediatek@bombadil.infradead.org; Fri, 05 Aug 2022 22:44:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=7HDmje7hMCl5NV+G0CT0UMQAVeQZFrphIEsYJbLbSJI=; b=MSWFJF2GmKpxhL0/J96LyhIuk8
+	/A7eL23DoewGKnxY8fVJrpPTfybaReCMdeUtyOxFeLWWbKUdri3ygb58tnsoT/ruOjDnDqTr84IFd
+	tUhqMy63Wmax0DHDSOS/2N/E5yHMs+aA+NAzJKUMmk3bNaEl+8SUQ11eF/KMwgN4s8t9ZQzwIJQ7M
+	aOfyQe3J0jZvnjtSu4aZ99waxMIqhxzhpmB16UcYdF5jNLjw7DG/ZWdwg6pMeKT6B3MmPb431coCF
+	v9dpT+SuzMFEtsksXR5/KNqHjC438MepAiwhXtcFvLfYZstRBjxiIvotCVhp8MeyBfkFthnvUEy6u
+	3vcxcIWQ==;
+Received: from smtp06.smtpout.orange.fr ([80.12.242.128] helo=smtp.smtpout.orange.fr)
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oK5HA-003LQ0-Js
+	for linux-mediatek@lists.infradead.org; Fri, 05 Aug 2022 21:54:51 +0000
+Received: from pop-os.home ([90.11.190.129])
+	by smtp.orange.fr with ESMTPA
+	id K59foKolUKOP1K59foWKJI; Fri, 05 Aug 2022 23:46:53 +0200
+X-ME-Helo: pop-os.home
+X-ME-Auth: YWZlNiIxYWMyZDliZWIzOTcwYTEyYzlhMmU3ZiQ1M2U2MzfzZDfyZTMxZTBkMTYyNDBjNDJlZmQ3ZQ==
+X-ME-Date: Fri, 05 Aug 2022 23:46:53 +0200
+X-ME-IP: 90.11.190.129
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	Matthias Brugger <mbrugger@suse.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH v2 06/11] leds: mt6323: Get rid of custom led_init_default_state_get()
-Date: Fri,  5 Aug 2022 18:49:02 +0300
-Message-Id: <20220805154907.32263-7-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220805154907.32263-1-andriy.shevchenko@linux.intel.com>
-References: <20220805154907.32263-1-andriy.shevchenko@linux.intel.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] soc: mediatek: pm-domains: Simplify some error message
+Date: Fri,  5 Aug 2022 23:46:49 +0200
+Message-Id: <e6ba80d8e27fdb2b1527c7eae6687e481960c81d.1659735996.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220805_084928_587908_C8F7E9CE 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20220805_225449_175482_8B06C98B 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,58 +78,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-LED core provides a helper to parse default state from firmware node.
-Use it instead of custom implementation.
+dev_err_probe() already prints the error code in a human readable way, so
+there is no need to duplicate it as a numerical value at the end of the
+message.
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Fixes: 123e8b4fd0cd ("soc: mediatek: pm-domains: Add subsystem clocks")
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 ---
- drivers/leds/leds-mt6323.c | 30 +++++++++++++++---------------
- 1 file changed, 15 insertions(+), 15 deletions(-)
+ drivers/soc/mediatek/mtk-pm-domains.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/leds/leds-mt6323.c b/drivers/leds/leds-mt6323.c
-index f59e0e8bda8b..17ee88043f52 100644
---- a/drivers/leds/leds-mt6323.c
-+++ b/drivers/leds/leds-mt6323.c
-@@ -339,23 +339,23 @@ static int mt6323_led_set_dt_default(struct led_classdev *cdev,
- 				     struct device_node *np)
- {
- 	struct mt6323_led *led = container_of(cdev, struct mt6323_led, cdev);
--	const char *state;
-+	enum led_default_state state;
- 	int ret = 0;
+diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+index 9734f1091c69..09e3c38b8466 100644
+--- a/drivers/soc/mediatek/mtk-pm-domains.c
++++ b/drivers/soc/mediatek/mtk-pm-domains.c
+@@ -393,7 +393,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 		if (IS_ERR(clk)) {
+ 			ret = PTR_ERR(clk);
+ 			dev_err_probe(scpsys->dev, ret,
+-				      "%pOF: failed to get clk at index %d: %d\n", node, i, ret);
++				      "%pOF: failed to get clk at index %d\n", node, i);
+ 			goto err_put_clocks;
+ 		}
  
--	state = of_get_property(np, "default-state", NULL);
--	if (state) {
--		if (!strcmp(state, "keep")) {
--			ret = mt6323_get_led_hw_brightness(cdev);
--			if (ret < 0)
--				return ret;
--			led->current_brightness = ret;
--			ret = 0;
--		} else if (!strcmp(state, "on")) {
--			ret =
--			mt6323_led_set_brightness(cdev, cdev->max_brightness);
--		} else  {
--			ret = mt6323_led_set_brightness(cdev, LED_OFF);
--		}
-+	state = led_init_default_state_get(of_fwnode_handle(np));
-+	switch (state) {
-+	case LEDS_DEFSTATE_ON:
-+		ret = mt6323_led_set_brightness(cdev, cdev->max_brightness);
-+		break;
-+	case LEDS_DEFSTATE_KEEP:
-+		ret = mt6323_get_led_hw_brightness(cdev);
-+		if (ret < 0)
-+			return ret;
-+		led->current_brightness = ret;
-+		ret = 0;
-+		break;
-+	default:
-+		ret = mt6323_led_set_brightness(cdev, LED_OFF);
- 	}
+@@ -405,8 +405,8 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 		if (IS_ERR(clk)) {
+ 			ret = PTR_ERR(clk);
+ 			dev_err_probe(scpsys->dev, ret,
+-				      "%pOF: failed to get clk at index %d: %d\n", node,
+-				      i + clk_ind, ret);
++				      "%pOF: failed to get clk at index %d\n", node,
++				      i + clk_ind);
+ 			goto err_put_subsys_clocks;
+ 		}
  
- 	return ret;
 -- 
-2.35.1
+2.34.1
 
 
