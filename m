@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18050C19F2D
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Aug 2022 17:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEFC4C25B0C
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Aug 2022 17:53:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hiUr4Gkkl38i8zSWEM6Cyxx7N6i+fu1CzZ+YFH2OFDE=; b=J54b75BMulQ4L+GZkmFW/rx7g7
-	bdiIEA17SEXMi3/XqxVmPab48moXiC2ROt9XYR11/KB8cbg2YEdmsZ30eOl0bz4J7NnA/vwMuaWF3
-	2ncrHslVZXBPtXBmHXS9V1SBxBmrjKUYI49zI8MnpHAjwpRR0fpCpxUq0fls5Dph3T9yUUxw9+7/2
-	5DhIGgfwc/n8pIZMhc3JP3306eQA9oqPQfhU7GsjbI3UigNZxrSl+T4oTbZQRHqxDO7QpFSGH7Zyk
-	l1YKEoVX4EVb8HTYpTc3WjC9/KdZqIErksKMUljYR/dHuZWMnm5H7RrFXw4v9FMS2XywqwekNgRGo
-	euU4D4BA==;
+	bh=EfM0DprUeTcH2b85n04EFGr6iGWRKLwgRegK2IgcWUg=; b=u+4uuogH59wKDsrFgXg+yASTcn
+	JzgAvwFaZCltZjR4VT2+Emr+o+wIaw3eAGipiT2FPAH0R55RY/h4RY8oRQCL/dnZJv1oeV6H+dlCu
+	VeT78MDG2OlW62Bj4WjBfXy8BwgN36RsTT1Z2k57Bb/sWJdiDed0ca3WoavsLSjz1zKR31yzsdK5P
+	GRom8wpFnrFeioS7D/1ye3Yz9NhwO3swkPwhcDq9hQFgPrX7vsarFP/UXvxyY+mtLK7kSOrNdLuDH
+	OVJ2383F+3Ph4ypjNWkj6RNBtjp5lEKa3IbBN2VQz+7TrBU9FGuwWNBfIwlcg4CR8RtfFBnC0fFif
+	scu4xipA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKNvR-00FVog-7x; Sat, 06 Aug 2022 17:49:25 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oKNzR-00FY7X-Tb; Sat, 06 Aug 2022 17:53:35 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKNvN-00FVhX-Nm; Sat, 06 Aug 2022 17:49:23 +0000
+	id 1oKNzO-00FY5s-6c; Sat, 06 Aug 2022 17:53:31 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 3C56FB807E5;
-	Sat,  6 Aug 2022 17:49:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94307C433C1;
-	Sat,  6 Aug 2022 17:48:58 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6FE88611D3;
+	Sat,  6 Aug 2022 17:53:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94870C433C1;
+	Sat,  6 Aug 2022 17:53:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1659808153;
-	bh=RxtmZYHD6JQiPd7rS8xjgpE021L9DBW6BkED3sLEQ5U=;
+	s=k20201202; t=1659808407;
+	bh=N4R6bAIgXf+qR39Qf/icSXDtbAcXLXJGvEsDtUbR9K8=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=RF2gYgcNME2BDUT/1+mqsxrhQCkUILJS8tLZqHtq6KCxhiRKt4/GPP4FrdFCYMitm
-	 dPZTuB4DA/5YoQUJQDbkFPUK/352na6Eg3Gl2oGp6OHjjhuB5IDCvn/R9U4K0ppVAH
-	 qGTTMhsGd9dNZ1aTZXATJm1xUAiuQBnJjuCu00F44RwNNBuiXt4aCjpxDs/plkUZ55
-	 TYcXcHd1W5L8mUIBAl9tSixVQrbEzWRvhPwHygVIaHWGhfoU+V0qnlHvE/nid9ZKCm
-	 KSn0gunoi3xQ76hV6GUvKsM6O5eFbsfA8uPzCK7QCKLmezy6f9M+EKKLl52DX1bdaY
-	 VgVq4b3oNJ4ng==
-Date: Sat, 6 Aug 2022 18:59:19 +0100
+	b=RDKmkPqLK9JBNONow6WuECuYOe71VLiYyxMRujjqpc3fiZ5H1YG8ki07yccB2m/uU
+	 BR/EVwIyFTQALbGMMItSqlLF72BZt951zzF2yhRcB9bvcUqFyys61w77nn0J3NyXvu
+	 9QEP9BBw1lG78sCp+DHTGYA+bIExSwKvRzhV+ng62G3KIvUr5W9NXn/vKoMvzHDz6J
+	 TdxnKGhhJphslZ+ozkKxIibsIbj0KhW1OCrhnEgYwFoUw7+V44ScBM0ANOX8xtEh2e
+	 LJHDYSa5Iy4AevyL9LNtrdBM1TtuoDK+Jgh0S6tmo5FZMyrw7rO0IBr7eVNT2lkOmX
+	 EHsYtlpSnMYDA==
+Date: Sat, 6 Aug 2022 19:03:37 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>
 Cc: <openbmc@lists.ozlabs.org>, <linux-imx@nxp.com>,
@@ -77,18 +77,19 @@ Cc: <openbmc@lists.ozlabs.org>, <linux-imx@nxp.com>,
  Kucheria <amitk@kernel.org>, Michael Hennerich
  <Michael.Hennerich@analog.com>, "Haibo Chen" <haibo.chen@nxp.com>, Jishnu
  Prakash <quic_jprakash@quicinc.com>
-Subject: Re: [PATCH v3 05/15] iio: inkern: move to fwnode properties
-Message-ID: <20220806185919.3ec5b8e6@jic23-huawei>
-In-Reply-To: <20220715122903.332535-6-nuno.sa@analog.com>
+Subject: Re: [PATCH v3 08/15] iio: adc: ab8500-gpadc: convert to device
+ properties
+Message-ID: <20220806190337.5f3086c9@jic23-huawei>
+In-Reply-To: <20220715122903.332535-9-nuno.sa@analog.com>
 References: <20220715122903.332535-1-nuno.sa@analog.com>
-	<20220715122903.332535-6-nuno.sa@analog.com>
+	<20220715122903.332535-9-nuno.sa@analog.com>
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220806_104922_096254_5C1BCECC 
-X-CRM114-Status: GOOD (  26.91  )
+X-CRM114-CacheID: sfid-20220806_105330_348706_F436297F 
+X-CRM114-Status: GOOD (  24.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,94 +104,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 15 Jul 2022 14:28:53 +0200
+On Fri, 15 Jul 2022 14:28:56 +0200
 Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
 
-> This moves the IIO in kernel interface to use fwnode properties and thus
-> be firmware agnostic.
->=20
-> Note that the interface is still not firmware agnostic. At this point we
-> have both OF and fwnode interfaces so that we don't break any user. On
-> top of this we also want to have a per driver conversion and that is the
-> main reason we have both of_xlate() and fwnode_xlate() support.
+> Make the conversion to firmware agnostic device properties. As part of
+> the conversion the IIO inkern interface 'of_xlate()' is also converted to
+> 'fwnode_xlate()'. The goal is to completely drop 'of_xlate' and hence OF
+> dependencies from IIO.
 >=20
 > Signed-off-by: Nuno S=C3=A1 <nuno.sa@analog.com>
+> Acked-by: Linus Walleij <linus.walleij@linaro.org>
 > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+Nitpick, but ideally this would have been two patches.=20
+1) Drop parameter to *_parse_channels()=20
+2) the rest.
 
-Nice. One trivial follow through of wrong comment syntax. I'll fix up
-if I pick the series up before you do a respin for other reasons.
+As that little corner was hardert o check than the rest :)
+
+meh.  It's trivial as I said, otherwise looks good to me.
+
+Jonathan
+
+
 > ---
->  drivers/iio/inkern.c         | 159 ++++++++++++++++++-----------------
->  include/linux/iio/consumer.h |  36 ++++----
->  include/linux/iio/iio.h      |   5 ++
->  3 files changed, 108 insertions(+), 92 deletions(-)
+>  drivers/iio/adc/ab8500-gpadc.c | 27 ++++++++++++---------------
+>  1 file changed, 12 insertions(+), 15 deletions(-)
 >=20
-> -struct iio_channel *__of_iio_channel_get_by_name(struct device_node *np,
-> -						 const char *name)
-> +struct iio_channel *
-> +__fwnode_iio_channel_get_by_name(struct fwnode_handle *fwnode, const cha=
-r *name)
->  {
->  	struct iio_channel *chan;
->  	int index =3D 0;
-> @@ -220,19 +236,20 @@ struct iio_channel *__of_iio_channel_get_by_name(st=
-ruct device_node *np,
->  	/*
->  	 * For named iio channels, first look up the name in the
->  	 * "io-channel-names" property.  If it cannot be found, the
-> -	 * index will be an error code, and of_iio_channel_get()
-> +	 * index will be an error code, and fwnode_iio_channel_get()
->  	 * will fail.
->  	 */
->  	if (name)
-> -		index =3D of_property_match_string(np, "io-channel-names", name);
-> +		index =3D fwnode_property_match_string(fwnode, "io-channel-names",
-> +						     name);
-> =20
-> -	chan =3D of_iio_channel_get(np, index);
-> +	chan =3D fwnode_iio_channel_get(fwnode, index);
->  	if (!IS_ERR(chan) || PTR_ERR(chan) =3D=3D -EPROBE_DEFER)
->  		return chan;
->  	if (name) {
->  		if (index >=3D 0) {
-> -			pr_err("ERROR: could not get IIO channel %pOF:%s(%i)\n",
-> -			       np, name, index);
-> +			pr_err("ERROR: could not get IIO channel %pfw:%s(%i)\n",
-> +			       fwnode, name, index);
->  			/*
->  			 * In this case, we found 'name' in 'io-channel-names'
->  			 * but somehow we still fail so that we should not proceed
-> @@ -242,16 +259,16 @@ struct iio_channel *__of_iio_channel_get_by_name(st=
-ruct device_node *np,
->  			 */
->  			return ERR_PTR(-EINVAL);
->  		}
-> -		/* If index < 0, then of_parse_phandle_with_args() fails
-> -		 * with -EINVAL which is expected. We should not proceed
-> -		 * if we get any other error.
-
-Wrong comment syntax. I guess I can fix this one as well if nothing else co=
-mes up.
-Or I might be lazy and only fix this one as it replaces the previous wrong =
-one.
-
-> +		/* If index < 0, then fwnode_property_get_reference_args() fails
-> +		 * with -EINVAL or -ENOENT (ACPI case) which is expected. We
-> +		 * should not proceed if we get any other error.
->  		 */
-> -		if (PTR_ERR(chan) !=3D -EINVAL)
-> +		if (PTR_ERR(chan) !=3D -EINVAL && PTR_ERR(chan) !=3D -ENOENT)
->  			return chan;
->  	} else if (PTR_ERR(chan) !=3D -ENOENT) {
->  		/*
->  		 * if !name, then we should only proceed the lookup if
-> -		 * of_parse_phandle_with_args() returns -ENOENT.
-> +		 * fwnode_property_get_reference_args() returns -ENOENT.
->  		 */
->  		return chan;
->  	}
-> @@ -260,13 +277,14 @@ struct iio_channel *__of_iio_channel_get_by_name(st=
-ruct device_node *np,
->  	return ERR_PTR(-ENODEV);
+> diff --git a/drivers/iio/adc/ab8500-gpadc.c b/drivers/iio/adc/ab8500-gpad=
+c.c
+> index 930ce96e6ff5..4fa2126a354b 100644
+> --- a/drivers/iio/adc/ab8500-gpadc.c
+> +++ b/drivers/iio/adc/ab8500-gpadc.c
+> @@ -925,8 +925,8 @@ static int ab8500_gpadc_read_raw(struct iio_dev *indi=
+o_dev,
+>  	return -EINVAL;
 >  }
+> =20
+> -static int ab8500_gpadc_of_xlate(struct iio_dev *indio_dev,
+> -				 const struct of_phandle_args *iiospec)
+> +static int ab8500_gpadc_fwnode_xlate(struct iio_dev *indio_dev,
+> +				     const struct fwnode_reference_args *iiospec)
+>  {
+>  	int i;
+> =20
+> @@ -938,7 +938,7 @@ static int ab8500_gpadc_of_xlate(struct iio_dev *indi=
+o_dev,
+>  }
+> =20
+>  static const struct iio_info ab8500_gpadc_info =3D {
+> -	.of_xlate =3D ab8500_gpadc_of_xlate,
+> +	.fwnode_xlate =3D ab8500_gpadc_fwnode_xlate,
+>  	.read_raw =3D ab8500_gpadc_read_raw,
+>  };
+> =20
+> @@ -968,7 +968,7 @@ static int ab8500_gpadc_runtime_resume(struct device =
+*dev)
+>  /**
+>   * ab8500_gpadc_parse_channel() - process devicetree channel configurati=
+on
+>   * @dev: pointer to containing device
+> - * @np: device tree node for the channel to configure
+> + * @fwnode: fw node for the channel to configure
+>   * @ch: channel info to fill in
+>   * @iio_chan: IIO channel specification to fill in
+>   *
+> @@ -976,15 +976,15 @@ static int ab8500_gpadc_runtime_resume(struct devic=
+e *dev)
+>   * and define usage for things like AUX GPADC inputs more precisely.
+>   */
+>  static int ab8500_gpadc_parse_channel(struct device *dev,
+> -				      struct device_node *np,
+> +				      struct fwnode_handle *fwnode,
+>  				      struct ab8500_gpadc_chan_info *ch,
+>  				      struct iio_chan_spec *iio_chan)
+>  {
+> -	const char *name =3D np->name;
+> +	const char *name =3D fwnode_get_name(fwnode);
+>  	u32 chan;
+>  	int ret;
+> =20
+> -	ret =3D of_property_read_u32(np, "reg", &chan);
+> +	ret =3D fwnode_property_read_u32(fwnode, "reg", &chan);
+>  	if (ret) {
+>  		dev_err(dev, "invalid channel number %s\n", name);
+>  		return ret;
+> @@ -1021,22 +1021,20 @@ static int ab8500_gpadc_parse_channel(struct devi=
+ce *dev,
+>  /**
+>   * ab8500_gpadc_parse_channels() - Parse the GPADC channels from DT
+>   * @gpadc: the GPADC to configure the channels for
+> - * @np: device tree node containing the channel configurations
+>   * @chans: the IIO channels we parsed
+>   * @nchans: the number of IIO channels we parsed
+>   */
+>  static int ab8500_gpadc_parse_channels(struct ab8500_gpadc *gpadc,
+> -				       struct device_node *np,
+>  				       struct iio_chan_spec **chans_parsed,
+>  				       unsigned int *nchans_parsed)
+>  {
+> -	struct device_node *child;
+> +	struct fwnode_handle *child;
+>  	struct ab8500_gpadc_chan_info *ch;
+>  	struct iio_chan_spec *iio_chans;
+>  	unsigned int nchans;
+>  	int i;
+> =20
+> -	nchans =3D of_get_available_child_count(np);
+> +	nchans =3D device_get_child_node_count(gpadc->dev);
+>  	if (!nchans) {
+>  		dev_err(gpadc->dev, "no channel children\n");
+>  		return -ENODEV;
+> @@ -1054,7 +1052,7 @@ static int ab8500_gpadc_parse_channels(struct ab850=
+0_gpadc *gpadc,
+>  		return -ENOMEM;
+> =20
+>  	i =3D 0;
+> -	for_each_available_child_of_node(np, child) {
+> +	device_for_each_child_node(gpadc->dev, child) {
+>  		struct iio_chan_spec *iio_chan;
+>  		int ret;
+> =20
+> @@ -1064,7 +1062,7 @@ static int ab8500_gpadc_parse_channels(struct ab850=
+0_gpadc *gpadc,
+>  		ret =3D ab8500_gpadc_parse_channel(gpadc->dev, child, ch,
+>  						 iio_chan);
+>  		if (ret) {
+> -			of_node_put(child);
+> +			fwnode_handle_put(child);
+>  			return ret;
+>  		}
+>  		i++;
+> @@ -1081,7 +1079,6 @@ static int ab8500_gpadc_probe(struct platform_devic=
+e *pdev)
+>  	struct ab8500_gpadc *gpadc;
+>  	struct iio_dev *indio_dev;
+>  	struct device *dev =3D &pdev->dev;
+> -	struct device_node *np =3D pdev->dev.of_node;
+>  	struct iio_chan_spec *iio_chans;
+>  	unsigned int n_iio_chans;
+>  	int ret;
+> @@ -1096,7 +1093,7 @@ static int ab8500_gpadc_probe(struct platform_devic=
+e *pdev)
+>  	gpadc->dev =3D dev;
+>  	gpadc->ab8500 =3D dev_get_drvdata(dev->parent);
+> =20
+> -	ret =3D ab8500_gpadc_parse_channels(gpadc, np, &iio_chans, &n_iio_chans=
+);
+> +	ret =3D ab8500_gpadc_parse_channels(gpadc, &iio_chans, &n_iio_chans);
+>  	if (ret)
+>  		return ret;
+> =20
+
 
