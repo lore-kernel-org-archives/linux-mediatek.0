@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FFACC19F2D
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Aug 2022 17:35:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18050C19F2D
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Aug 2022 17:49:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HlxQG/Abgv4tM46TGsDQfSsfrQhkfsyRxeBklOSJAGc=; b=Gy4seb3ICPE6kgPgGg46WFPCyP
-	ZLJG9PCQL9Pfq0aRogHuybKuNpHSx9mamX9Z0tYYzul2Dc5Tg2kujcf8e+6onyyLGljPaCOjBKkzb
-	rBjryQO+1y61RGQXBcSjp6Z9bEspw4UZmF/P3XkqZ3krgic+QTFWzjTePA4VTdL1eDWGtsQsT8f8A
-	G49mj7f+/BlUZYTby93bWAqSzBgzjEclb4Kgc3EgIfaip+c8lqhusgFqB89j/oe5ensjLENv1sayO
-	hI3lE7u+31KOWC3Rf5wVA1Cqrh6HvVm1JKVATWF9dCn3ZaAcJq6j0ejl958p1N1qY3htPXmlZeWJJ
-	3hKPx3Sw==;
+	bh=hiUr4Gkkl38i8zSWEM6Cyxx7N6i+fu1CzZ+YFH2OFDE=; b=J54b75BMulQ4L+GZkmFW/rx7g7
+	bdiIEA17SEXMi3/XqxVmPab48moXiC2ROt9XYR11/KB8cbg2YEdmsZ30eOl0bz4J7NnA/vwMuaWF3
+	2ncrHslVZXBPtXBmHXS9V1SBxBmrjKUYI49zI8MnpHAjwpRR0fpCpxUq0fls5Dph3T9yUUxw9+7/2
+	5DhIGgfwc/n8pIZMhc3JP3306eQA9oqPQfhU7GsjbI3UigNZxrSl+T4oTbZQRHqxDO7QpFSGH7Zyk
+	l1YKEoVX4EVb8HTYpTc3WjC9/KdZqIErksKMUljYR/dHuZWMnm5H7RrFXw4v9FMS2XywqwekNgRGo
+	euU4D4BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKNhW-00FPMc-7z; Sat, 06 Aug 2022 17:35:02 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oKNvR-00FVog-7x; Sat, 06 Aug 2022 17:49:25 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKNhS-00FPLI-P5; Sat, 06 Aug 2022 17:35:00 +0000
+	id 1oKNvN-00FVhX-Nm; Sat, 06 Aug 2022 17:49:23 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id CFD1A61209;
-	Sat,  6 Aug 2022 17:34:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F2D9C433C1;
-	Sat,  6 Aug 2022 17:34:43 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 3C56FB807E5;
+	Sat,  6 Aug 2022 17:49:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94307C433C1;
+	Sat,  6 Aug 2022 17:48:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1659807297;
-	bh=9V47ZcJgmG3gxd6TEyTt7TnP9+dBJRDESW0GnB21IA4=;
+	s=k20201202; t=1659808153;
+	bh=RxtmZYHD6JQiPd7rS8xjgpE021L9DBW6BkED3sLEQ5U=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=a5tQcy+DFx7uHdSBRZBe8UBYx8KBXqwzs/nW7D4FRgNkM8Q2+IRwkC5jBNJGnodVU
-	 /pktq2S6mhhiDE3BaPMJAcUwJJFPCoPEUZnD3tV8cUalTyOfigbqEpZ1mX/jOpO/kN
-	 KBejr9O/cI4JZSmGYMbb7V82Q+3vIulT7QlTNblzsJEn8uxBcFMv3qH95InXcB2fpO
-	 4t3Lpbqm2UzZtcnYr2PAchvHTmy4CkcopHS8xQZAiIl/wmE221mjHJCYCHbznTGDEV
-	 AF5NBgsQlOJ75mJsseG/ctSCNqmKQ2kUjay4hRBaN1uWrrjLn9nHxK0n+p65HQQx6v
-	 Kam7rqGtXsT+A==
-Date: Sat, 6 Aug 2022 18:45:04 +0100
+	b=RF2gYgcNME2BDUT/1+mqsxrhQCkUILJS8tLZqHtq6KCxhiRKt4/GPP4FrdFCYMitm
+	 dPZTuB4DA/5YoQUJQDbkFPUK/352na6Eg3Gl2oGp6OHjjhuB5IDCvn/R9U4K0ppVAH
+	 qGTTMhsGd9dNZ1aTZXATJm1xUAiuQBnJjuCu00F44RwNNBuiXt4aCjpxDs/plkUZ55
+	 TYcXcHd1W5L8mUIBAl9tSixVQrbEzWRvhPwHygVIaHWGhfoU+V0qnlHvE/nid9ZKCm
+	 KSn0gunoi3xQ76hV6GUvKsM6O5eFbsfA8uPzCK7QCKLmezy6f9M+EKKLl52DX1bdaY
+	 VgVq4b3oNJ4ng==
+Date: Sat, 6 Aug 2022 18:59:19 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>
 Cc: <openbmc@lists.ozlabs.org>, <linux-imx@nxp.com>,
@@ -52,10 +52,10 @@ Cc: <openbmc@lists.ozlabs.org>, <linux-imx@nxp.com>,
  <prabhakar.mahadev-lad.rj@bp.renesas.com>, <linux-arm-msm@vger.kernel.org>,
  Gwendal Grignou <gwendal@chromium.org>, Saravanan Sekar
  <sravanhome@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <mcoquelin.stm32@gmail.com>, "Alexandre Torgue"
  <alexandre.torgue@foss.st.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
  Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- Olivier Moysan <olivier.moysan@foss.st.com>, Tali Perry
+ "Olivier Moysan" <olivier.moysan@foss.st.com>, Tali Perry
  <tali.perry1@gmail.com>, Thara Gopinath <thara.gopinath@linaro.org>, Bjorn
  Andersson <bjorn.andersson@linaro.org>, Arnd Bergmann <arnd@arndb.de>,
  Benjamin Fair <benjaminfair@google.com>, Nicolas Ferre
@@ -64,32 +64,31 @@ Cc: <openbmc@lists.ozlabs.org>, <linux-imx@nxp.com>,
  <kernel@pengutronix.de>, Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
  Daniel Lezcano <daniel.lezcano@linaro.org>, Benson Leung
  <bleung@chromium.org>, Nancy Yuen <yuenn@google.com>, Miquel Raynal
- <miquel.raynal@bootlin.com>, Alexandre Belloni
+ <miquel.raynal@bootlin.com>, "Alexandre Belloni"
  <alexandre.belloni@bootlin.com>, Zhang Rui <rui.zhang@intel.com>, Linus
  Walleij <linus.walleij@linaro.org>, Christophe Branchereau
  <cbranchereau@gmail.com>, Cai Huoqing <cai.huoqing@linux.dev>, Avi Fishman
  <avifishman70@gmail.com>, Eugen Hristev <eugen.hristev@microchip.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer
- <s.hauer@pengutronix.de>, Lars-Peter Clausen <lars@metafoo.de>, Andy
- Shevchenko <andy.shevchenko@gmail.com>, Guenter Roeck
+ <s.hauer@pengutronix.de>, Lars-Peter Clausen <lars@metafoo.de>, "Andy
+ Shevchenko" <andy.shevchenko@gmail.com>, Guenter Roeck
  <groeck@chromium.org>, Paul Cercueil <paul@crapouillou.net>, Claudiu Beznea
  <claudiu.beznea@microchip.com>, Andy Gross <agross@kernel.org>, Amit
  Kucheria <amitk@kernel.org>, Michael Hennerich
- <Michael.Hennerich@analog.com>, Haibo Chen <haibo.chen@nxp.com>, Jishnu
+ <Michael.Hennerich@analog.com>, "Haibo Chen" <haibo.chen@nxp.com>, Jishnu
  Prakash <quic_jprakash@quicinc.com>
-Subject: Re: [PATCH v3 03/15] iio: inkern: only return error codes in
- iio_channel_get_*() APIs
-Message-ID: <20220806184504.58960bd0@jic23-huawei>
-In-Reply-To: <20220715122903.332535-4-nuno.sa@analog.com>
+Subject: Re: [PATCH v3 05/15] iio: inkern: move to fwnode properties
+Message-ID: <20220806185919.3ec5b8e6@jic23-huawei>
+In-Reply-To: <20220715122903.332535-6-nuno.sa@analog.com>
 References: <20220715122903.332535-1-nuno.sa@analog.com>
-	<20220715122903.332535-4-nuno.sa@analog.com>
+	<20220715122903.332535-6-nuno.sa@analog.com>
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220806_103458_920502_FBE80C41 
-X-CRM114-Status: GOOD (  45.24  )
+X-CRM114-CacheID: sfid-20220806_104922_096254_5C1BCECC 
+X-CRM114-Status: GOOD (  26.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,192 +103,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 15 Jul 2022 14:28:51 +0200
+On Fri, 15 Jul 2022 14:28:53 +0200
 Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
 
-> APIs like of_iio_channel_get_by_name() and of_iio_channel_get_all() were
-> returning a mix of NULL and pointers with NULL being the way to
-> "notify" that we should do a "system" lookup for channels. This make
-> it very confusing and prone to errors as commit 9f63cc0921ec
-> ("iio: inkern: fix return value in devm_of_iio_channel_get_by_name()")
-> proves. On top of this, patterns like 'if (channel !=3D NULL) return
-> channel' were being used where channel could actually be an error code
-> which makes the code hard to read.
+> This moves the IIO in kernel interface to use fwnode properties and thus
+> be firmware agnostic.
 >=20
-> This change also makes some functional changes on how errors were being
-> handled. In the original behavior, even if we get an error like '-ENOMEM',
-> we still continue with the search. We should only continue to lookup for
-> the channel when it makes sense to do so. Hence, the main error handling
-> in 'of_iio_channel_get_by_name()' is changed to the following logic:
->=20
->  * If a channel 'name' is provided and we do find it via
-> 'io-channel-names', we should be able to get it. If we get any error,
-> we should not proceed with the lookup. Moreover, we should return an error
-> so that callers won't proceed with a system lookup.
->  * If a channel 'name' is provided and we cannot find it ('index < 0'),
-> 'of_parse_phandle_with_args()' is expected to fail with '-EINVAL'. Hence,
-> we should only continue if we get that error.
->  * If a channel 'name' is not provided we should only carry on with the
-> search if 'of_parse_phandle_with_args()' returns '-ENOENT'.
->=20
-> Also note that a system channel lookup is only done if the returned
-> error code (from 'of_iio_channel_get_by_name()' or
-> 'of_iio_channel_get_all()' is -ENODEV.
+> Note that the interface is still not firmware agnostic. At this point we
+> have both OF and fwnode interfaces so that we don't break any user. On
+> top of this we also want to have a per driver conversion and that is the
+> main reason we have both of_xlate() and fwnode_xlate() support.
 >=20
 > Signed-off-by: Nuno S=C3=A1 <nuno.sa@analog.com>
 > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 
-Hi Nuno,
-
-Sorry for delay on getting to this.  Sometimes the most useful work
-on the core gets queued up at the back of my review queue because it's hard=
-er
-than the average driver :)
-
-Anyhow, only totally trivial stuff in here from me.
-If you don't respin because of other comments, I can clean these up
-whilst applying.
-
-Thanks,
-
-Jonathan
-
+Nice. One trivial follow through of wrong comment syntax. I'll fix up
+if I pick the series up before you do a respin for other reasons.
 > ---
->  drivers/iio/inkern.c | 54 +++++++++++++++++++++++++++++++-------------
->  1 file changed, 38 insertions(+), 16 deletions(-)
+>  drivers/iio/inkern.c         | 159 ++++++++++++++++++-----------------
+>  include/linux/iio/consumer.h |  36 ++++----
+>  include/linux/iio/iio.h      |   5 ++
+>  3 files changed, 108 insertions(+), 92 deletions(-)
 >=20
-> diff --git a/drivers/iio/inkern.c b/drivers/iio/inkern.c
-> index 87fd2a0d44f2..c6f1cfe09bd3 100644
-> --- a/drivers/iio/inkern.c
-> +++ b/drivers/iio/inkern.c
-> @@ -214,7 +214,7 @@ static struct iio_channel *of_iio_channel_get(struct =
-device_node *np, int index)
->  struct iio_channel *of_iio_channel_get_by_name(struct device_node *np,
->  					       const char *name)
+> -struct iio_channel *__of_iio_channel_get_by_name(struct device_node *np,
+> -						 const char *name)
+> +struct iio_channel *
+> +__fwnode_iio_channel_get_by_name(struct fwnode_handle *fwnode, const cha=
+r *name)
 >  {
-> -	struct iio_channel *chan =3D NULL;
-> +	struct iio_channel *chan;
+>  	struct iio_channel *chan;
+>  	int index =3D 0;
+> @@ -220,19 +236,20 @@ struct iio_channel *__of_iio_channel_get_by_name(st=
+ruct device_node *np,
+>  	/*
+>  	 * For named iio channels, first look up the name in the
+>  	 * "io-channel-names" property.  If it cannot be found, the
+> -	 * index will be an error code, and of_iio_channel_get()
+> +	 * index will be an error code, and fwnode_iio_channel_get()
+>  	 * will fail.
+>  	 */
+>  	if (name)
+> -		index =3D of_property_match_string(np, "io-channel-names", name);
+> +		index =3D fwnode_property_match_string(fwnode, "io-channel-names",
+> +						     name);
 > =20
->  	/* Walk up the tree of devices looking for a matching iio channel */
->  	while (np) {
-> @@ -231,13 +231,33 @@ struct iio_channel *of_iio_channel_get_by_name(stru=
-ct device_node *np,
->  							 name);
->  		chan =3D of_iio_channel_get(np, index);
->  		if (!IS_ERR(chan) || PTR_ERR(chan) =3D=3D -EPROBE_DEFER)
-> -			break;
-> -		else if (name && index >=3D 0) {
+> -	chan =3D of_iio_channel_get(np, index);
+> +	chan =3D fwnode_iio_channel_get(fwnode, index);
+>  	if (!IS_ERR(chan) || PTR_ERR(chan) =3D=3D -EPROBE_DEFER)
+>  		return chan;
+>  	if (name) {
+>  		if (index >=3D 0) {
 > -			pr_err("ERROR: could not get IIO channel %pOF:%s(%i)\n",
-> -				np, name ? name : "", index);
-> -			return NULL;
-> +			return chan;
-> +		if (name) {
-> +			if (index >=3D 0) {
-> +				pr_err("ERROR: could not get IIO channel %pOF:%s(%i)\n",
-> +				       np, name, index);
-> +				/*
-> +				 * In this case, we found 'name' in 'io-channel-names'
-> +				 * but somehow we still fail so that we should not proceed
-> +				 * with any other lookup. Hence, explicitly return -EINVAL
-> +				 * (maybe not the better error code) so that the caller
-> +				 * won't do a system lookup.
-> +				 */
-> +				return ERR_PTR(-EINVAL);
-> +			}
-
-Trivial, but wrong comment syntax for IIO + inconsistent with surrounding c=
-omments.
-
-> +			/* If index < 0, then of_parse_phandle_with_args() fails
-> +			 * with -EINVAL which is expected. We should not proceed
-> +			 * if we get any other error.
-> +			 */
-> +			if (PTR_ERR(chan) !=3D -EINVAL)
-> +				return chan;
-> +		} else if (PTR_ERR(chan) !=3D -ENOENT) {
-> +			/*
-> +			 * if !name, then we should only proceed the lookup if
-> +			 * of_parse_phandle_with_args() returns -ENOENT.
-> +			 */
-> +			return chan;
+> -			       np, name, index);
+> +			pr_err("ERROR: could not get IIO channel %pfw:%s(%i)\n",
+> +			       fwnode, name, index);
+>  			/*
+>  			 * In this case, we found 'name' in 'io-channel-names'
+>  			 * but somehow we still fail so that we should not proceed
+> @@ -242,16 +259,16 @@ struct iio_channel *__of_iio_channel_get_by_name(st=
+ruct device_node *np,
+>  			 */
+>  			return ERR_PTR(-EINVAL);
 >  		}
-> -
+> -		/* If index < 0, then of_parse_phandle_with_args() fails
+> -		 * with -EINVAL which is expected. We should not proceed
+> -		 * if we get any other error.
 
-Try to avoid noise like this + I like this whitespace :)
+Wrong comment syntax. I guess I can fix this one as well if nothing else co=
+mes up.
+Or I might be lazy and only fix this one as it replaces the previous wrong =
+one.
 
->  		/*
->  		 * No matching IIO channel found on this node.
->  		 * If the parent node has a "io-channel-ranges" property,
-> @@ -245,10 +265,10 @@ struct iio_channel *of_iio_channel_get_by_name(stru=
-ct device_node *np,
+> +		/* If index < 0, then fwnode_property_get_reference_args() fails
+> +		 * with -EINVAL or -ENOENT (ACPI case) which is expected. We
+> +		 * should not proceed if we get any other error.
 >  		 */
->  		np =3D np->parent;
->  		if (np && !of_get_property(np, "io-channel-ranges", NULL))
-> -			return NULL;
-> +			return ERR_PTR(-ENODEV);
+> -		if (PTR_ERR(chan) !=3D -EINVAL)
+> +		if (PTR_ERR(chan) !=3D -EINVAL && PTR_ERR(chan) !=3D -ENOENT)
+>  			return chan;
+>  	} else if (PTR_ERR(chan) !=3D -ENOENT) {
+>  		/*
+>  		 * if !name, then we should only proceed the lookup if
+> -		 * of_parse_phandle_with_args() returns -ENOENT.
+> +		 * fwnode_property_get_reference_args() returns -ENOENT.
+>  		 */
+>  		return chan;
 >  	}
-> =20
-> -	return chan;
-> +	return ERR_PTR(-ENODEV);
+> @@ -260,13 +277,14 @@ struct iio_channel *__of_iio_channel_get_by_name(st=
+ruct device_node *np,
+>  	return ERR_PTR(-ENODEV);
 >  }
->  EXPORT_SYMBOL_GPL(of_iio_channel_get_by_name);
-> =20
-> @@ -267,8 +287,8 @@ static struct iio_channel *of_iio_channel_get_all(str=
-uct device *dev)
->  			break;
->  	} while (++nummaps);
-> =20
-> -	if (nummaps =3D=3D 0)	/* no error, return NULL to search map table */
-> -		return NULL;
-> +	if (nummaps =3D=3D 0)
-> +		return ERR_PTR(-ENODEV);
-> =20
->  	/* NULL terminated array to save passing size */
->  	chans =3D kcalloc(nummaps + 1, sizeof(*chans), GFP_KERNEL);
-> @@ -295,7 +315,7 @@ static struct iio_channel *of_iio_channel_get_all(str=
-uct device *dev)
-> =20
->  static inline struct iio_channel *of_iio_channel_get_all(struct device *=
-dev)
->  {
-> -	return NULL;
-> +	return ERR_PTR(-ENODEV);
->  }
-> =20
->  #endif /* CONFIG_OF */
-> @@ -362,7 +382,7 @@ struct iio_channel *iio_channel_get(struct device *de=
-v,
->  	if (dev) {
->  		channel =3D of_iio_channel_get_by_name(dev->of_node,
->  						     channel_name);
-> -		if (channel !=3D NULL)
-> +		if (!IS_ERR(channel) || PTR_ERR(channel) !=3D -ENODEV)
->  			return channel;
->  	}
-> =20
-> @@ -412,8 +432,6 @@ struct iio_channel *devm_of_iio_channel_get_by_name(s=
-truct device *dev,
->  	channel =3D of_iio_channel_get_by_name(np, channel_name);
->  	if (IS_ERR(channel))
->  		return channel;
-> -	if (!channel)
-> -		return ERR_PTR(-ENODEV);
-> =20
->  	ret =3D devm_add_action_or_reset(dev, devm_iio_channel_free, channel);
->  	if (ret)
-> @@ -436,7 +454,11 @@ struct iio_channel *iio_channel_get_all(struct devic=
-e *dev)
->  		return ERR_PTR(-EINVAL);
-> =20
->  	chans =3D of_iio_channel_get_all(dev);
-> -	if (chans)
-> +	/*
-> +	 * We only want to carry on if the error is -ENODEV.  Anything else
-> +	 * should be reported up the stack.
-> +	 */
-> +	if (!IS_ERR(chans) || PTR_ERR(chans) !=3D -ENODEV)
->  		return chans;
-> =20
->  	name =3D dev_name(dev);
-
 
