@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEFC4C25B0C
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Aug 2022 17:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B931CC3F6B0
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Aug 2022 17:58:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EfM0DprUeTcH2b85n04EFGr6iGWRKLwgRegK2IgcWUg=; b=u+4uuogH59wKDsrFgXg+yASTcn
-	JzgAvwFaZCltZjR4VT2+Emr+o+wIaw3eAGipiT2FPAH0R55RY/h4RY8oRQCL/dnZJv1oeV6H+dlCu
-	VeT78MDG2OlW62Bj4WjBfXy8BwgN36RsTT1Z2k57Bb/sWJdiDed0ca3WoavsLSjz1zKR31yzsdK5P
-	GRom8wpFnrFeioS7D/1ye3Yz9NhwO3swkPwhcDq9hQFgPrX7vsarFP/UXvxyY+mtLK7kSOrNdLuDH
-	OVJ2383F+3Ph4ypjNWkj6RNBtjp5lEKa3IbBN2VQz+7TrBU9FGuwWNBfIwlcg4CR8RtfFBnC0fFif
-	scu4xipA==;
+	bh=2r2WWZ33U/dlACEmy4S1L/uIkrMPWtHdZZZ6oQkJmLM=; b=CVTKNNYf/hQRI0oe7XN0Z8vyOG
+	ZCiKkS2D9B7H6ZUFg6hBI3qpg0/q288JVaxuVi8xJjFWFIxAwuu3r+Ru2W0b7iF1jqD1j1oQYuRW6
+	rXW53C5ZeARNadxPCEOggpqupoSS4L7jGK2l05HcOotr6fPNpvSlUprgEBmHVkRKXEH1vJkNDJpjj
+	If/5R6QahbYWxgxbDYGxchdN+e07wIzy1+qqpflqH0LgUMJ7ITXusA4oDChG30aF2OgNxkwrglkG8
+	z747SfLHVzu454f0s1vVDwl7QCRNJDnCyXHsz2Vxy07N1fhpMmv3zf8dUN12nIS72QKtPkinSbY0C
+	3FKkV/CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKNzR-00FY7X-Tb; Sat, 06 Aug 2022 17:53:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oKO3o-00Fap5-Rq; Sat, 06 Aug 2022 17:58:04 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKNzO-00FY5s-6c; Sat, 06 Aug 2022 17:53:31 +0000
+	id 1oKO3k-00FalC-Ns; Sat, 06 Aug 2022 17:58:02 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6FE88611D3;
-	Sat,  6 Aug 2022 17:53:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94870C433C1;
-	Sat,  6 Aug 2022 17:53:15 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 1A5C3611CD;
+	Sat,  6 Aug 2022 17:57:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53D7CC433C1;
+	Sat,  6 Aug 2022 17:57:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1659808407;
-	bh=N4R6bAIgXf+qR39Qf/icSXDtbAcXLXJGvEsDtUbR9K8=;
+	s=k20201202; t=1659808678;
+	bh=HVIoATH2rby9Ront6vj1rC1jBMtGPMaPZSaw91TJhtw=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=RDKmkPqLK9JBNONow6WuECuYOe71VLiYyxMRujjqpc3fiZ5H1YG8ki07yccB2m/uU
-	 BR/EVwIyFTQALbGMMItSqlLF72BZt951zzF2yhRcB9bvcUqFyys61w77nn0J3NyXvu
-	 9QEP9BBw1lG78sCp+DHTGYA+bIExSwKvRzhV+ng62G3KIvUr5W9NXn/vKoMvzHDz6J
-	 TdxnKGhhJphslZ+ozkKxIibsIbj0KhW1OCrhnEgYwFoUw7+V44ScBM0ANOX8xtEh2e
-	 LJHDYSa5Iy4AevyL9LNtrdBM1TtuoDK+Jgh0S6tmo5FZMyrw7rO0IBr7eVNT2lkOmX
-	 EHsYtlpSnMYDA==
-Date: Sat, 6 Aug 2022 19:03:37 +0100
+	b=JrXTs20sqJK4vyHSjv3HBS8soWagAa765JcDFbrSEvhF68Gxn9v9nEOPHiBraLNAl
+	 D9jST510x+bMWGdz13Euijka/DfkyioTOMLVLdsGWmUaN15eIUvpTYSO/MTHtOa3n7
+	 FvHvJ9GqQDpp7ZHVHtLFXZiuPoTLzOzLxDYwP0gdKzJH92mUkbbGAAd+aA9L6Ik/Un
+	 83Mr9/Syx4oIJUPpY1Xben4a6jFQ1lyxWm06TYAEY3EJZ/o2h4YcXjlLCJ0+wzlKZ4
+	 +tDNjbUCXLAXUnW8Jrt/A8L+T0/DrGBlHl9qVXZHIZlfbXn7Dj+XEy47HDwgZ2q1Uh
+	 NzR5e6vaHceCg==
+Date: Sat, 6 Aug 2022 19:08:07 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>
 Cc: <openbmc@lists.ozlabs.org>, <linux-imx@nxp.com>,
@@ -79,17 +79,18 @@ Cc: <openbmc@lists.ozlabs.org>, <linux-imx@nxp.com>,
  Prakash <quic_jprakash@quicinc.com>
 Subject: Re: [PATCH v3 08/15] iio: adc: ab8500-gpadc: convert to device
  properties
-Message-ID: <20220806190337.5f3086c9@jic23-huawei>
-In-Reply-To: <20220715122903.332535-9-nuno.sa@analog.com>
+Message-ID: <20220806190807.4f1d078c@jic23-huawei>
+In-Reply-To: <20220806190337.5f3086c9@jic23-huawei>
 References: <20220715122903.332535-1-nuno.sa@analog.com>
 	<20220715122903.332535-9-nuno.sa@analog.com>
+	<20220806190337.5f3086c9@jic23-huawei>
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220806_105330_348706_F436297F 
-X-CRM114-Status: GOOD (  24.54  )
+X-CRM114-CacheID: sfid-20220806_105800_880324_4084C9C5 
+X-CRM114-Status: GOOD (  29.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,155 +105,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 15 Jul 2022 14:28:56 +0200
-Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
+On Sat, 6 Aug 2022 19:03:37 +0100
+Jonathan Cameron <jic23@kernel.org> wrote:
 
-> Make the conversion to firmware agnostic device properties. As part of
-> the conversion the IIO inkern interface 'of_xlate()' is also converted to
-> 'fwnode_xlate()'. The goal is to completely drop 'of_xlate' and hence OF
-> dependencies from IIO.
+> On Fri, 15 Jul 2022 14:28:56 +0200
+> Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
 >=20
-> Signed-off-by: Nuno S=C3=A1 <nuno.sa@analog.com>
-> Acked-by: Linus Walleij <linus.walleij@linaro.org>
-> Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
-Nitpick, but ideally this would have been two patches.=20
-1) Drop parameter to *_parse_channels()=20
-2) the rest.
+> > Make the conversion to firmware agnostic device properties. As part of
+> > the conversion the IIO inkern interface 'of_xlate()' is also converted =
+to
+> > 'fwnode_xlate()'. The goal is to completely drop 'of_xlate' and hence OF
+> > dependencies from IIO.
+> >=20
+> > Signed-off-by: Nuno S=C3=A1 <nuno.sa@analog.com>
+> > Acked-by: Linus Walleij <linus.walleij@linaro.org>
+> > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com> =20
+> Nitpick, but ideally this would have been two patches.=20
+> 1) Drop parameter to *_parse_channels()=20
+> 2) the rest.
+ignore that.  I forgot there isn't a device_of_for_each_child_node().
+So it would have been more effort than it was worth.
 
-As that little corner was hardert o check than the rest :)
-
-meh.  It's trivial as I said, otherwise looks good to me.
-
-Jonathan
-
-
-> ---
->  drivers/iio/adc/ab8500-gpadc.c | 27 ++++++++++++---------------
->  1 file changed, 12 insertions(+), 15 deletions(-)
 >=20
-> diff --git a/drivers/iio/adc/ab8500-gpadc.c b/drivers/iio/adc/ab8500-gpad=
-c.c
-> index 930ce96e6ff5..4fa2126a354b 100644
-> --- a/drivers/iio/adc/ab8500-gpadc.c
-> +++ b/drivers/iio/adc/ab8500-gpadc.c
-> @@ -925,8 +925,8 @@ static int ab8500_gpadc_read_raw(struct iio_dev *indi=
-o_dev,
->  	return -EINVAL;
->  }
-> =20
-> -static int ab8500_gpadc_of_xlate(struct iio_dev *indio_dev,
-> -				 const struct of_phandle_args *iiospec)
-> +static int ab8500_gpadc_fwnode_xlate(struct iio_dev *indio_dev,
-> +				     const struct fwnode_reference_args *iiospec)
->  {
->  	int i;
-> =20
-> @@ -938,7 +938,7 @@ static int ab8500_gpadc_of_xlate(struct iio_dev *indi=
-o_dev,
->  }
-> =20
->  static const struct iio_info ab8500_gpadc_info =3D {
-> -	.of_xlate =3D ab8500_gpadc_of_xlate,
-> +	.fwnode_xlate =3D ab8500_gpadc_fwnode_xlate,
->  	.read_raw =3D ab8500_gpadc_read_raw,
->  };
-> =20
-> @@ -968,7 +968,7 @@ static int ab8500_gpadc_runtime_resume(struct device =
-*dev)
->  /**
->   * ab8500_gpadc_parse_channel() - process devicetree channel configurati=
-on
->   * @dev: pointer to containing device
-> - * @np: device tree node for the channel to configure
-> + * @fwnode: fw node for the channel to configure
->   * @ch: channel info to fill in
->   * @iio_chan: IIO channel specification to fill in
->   *
-> @@ -976,15 +976,15 @@ static int ab8500_gpadc_runtime_resume(struct devic=
+> As that little corner was hardert o check than the rest :)
+
+>=20
+> meh.  It's trivial as I said, otherwise looks good to me.
+>=20
+> Jonathan
+>=20
+>=20
+> > ---
+> >  drivers/iio/adc/ab8500-gpadc.c | 27 ++++++++++++---------------
+> >  1 file changed, 12 insertions(+), 15 deletions(-)
+> >=20
+> > diff --git a/drivers/iio/adc/ab8500-gpadc.c b/drivers/iio/adc/ab8500-gp=
+adc.c
+> > index 930ce96e6ff5..4fa2126a354b 100644
+> > --- a/drivers/iio/adc/ab8500-gpadc.c
+> > +++ b/drivers/iio/adc/ab8500-gpadc.c
+> > @@ -925,8 +925,8 @@ static int ab8500_gpadc_read_raw(struct iio_dev *in=
+dio_dev,
+> >  	return -EINVAL;
+> >  }
+> > =20
+> > -static int ab8500_gpadc_of_xlate(struct iio_dev *indio_dev,
+> > -				 const struct of_phandle_args *iiospec)
+> > +static int ab8500_gpadc_fwnode_xlate(struct iio_dev *indio_dev,
+> > +				     const struct fwnode_reference_args *iiospec)
+> >  {
+> >  	int i;
+> > =20
+> > @@ -938,7 +938,7 @@ static int ab8500_gpadc_of_xlate(struct iio_dev *in=
+dio_dev,
+> >  }
+> > =20
+> >  static const struct iio_info ab8500_gpadc_info =3D {
+> > -	.of_xlate =3D ab8500_gpadc_of_xlate,
+> > +	.fwnode_xlate =3D ab8500_gpadc_fwnode_xlate,
+> >  	.read_raw =3D ab8500_gpadc_read_raw,
+> >  };
+> > =20
+> > @@ -968,7 +968,7 @@ static int ab8500_gpadc_runtime_resume(struct devic=
 e *dev)
->   * and define usage for things like AUX GPADC inputs more precisely.
->   */
->  static int ab8500_gpadc_parse_channel(struct device *dev,
-> -				      struct device_node *np,
-> +				      struct fwnode_handle *fwnode,
->  				      struct ab8500_gpadc_chan_info *ch,
->  				      struct iio_chan_spec *iio_chan)
->  {
-> -	const char *name =3D np->name;
-> +	const char *name =3D fwnode_get_name(fwnode);
->  	u32 chan;
->  	int ret;
-> =20
-> -	ret =3D of_property_read_u32(np, "reg", &chan);
-> +	ret =3D fwnode_property_read_u32(fwnode, "reg", &chan);
->  	if (ret) {
->  		dev_err(dev, "invalid channel number %s\n", name);
->  		return ret;
-> @@ -1021,22 +1021,20 @@ static int ab8500_gpadc_parse_channel(struct devi=
-ce *dev,
->  /**
->   * ab8500_gpadc_parse_channels() - Parse the GPADC channels from DT
->   * @gpadc: the GPADC to configure the channels for
-> - * @np: device tree node containing the channel configurations
->   * @chans: the IIO channels we parsed
->   * @nchans: the number of IIO channels we parsed
->   */
->  static int ab8500_gpadc_parse_channels(struct ab8500_gpadc *gpadc,
-> -				       struct device_node *np,
->  				       struct iio_chan_spec **chans_parsed,
->  				       unsigned int *nchans_parsed)
->  {
-> -	struct device_node *child;
-> +	struct fwnode_handle *child;
->  	struct ab8500_gpadc_chan_info *ch;
->  	struct iio_chan_spec *iio_chans;
->  	unsigned int nchans;
->  	int i;
-> =20
-> -	nchans =3D of_get_available_child_count(np);
-> +	nchans =3D device_get_child_node_count(gpadc->dev);
->  	if (!nchans) {
->  		dev_err(gpadc->dev, "no channel children\n");
->  		return -ENODEV;
-> @@ -1054,7 +1052,7 @@ static int ab8500_gpadc_parse_channels(struct ab850=
-0_gpadc *gpadc,
->  		return -ENOMEM;
-> =20
->  	i =3D 0;
-> -	for_each_available_child_of_node(np, child) {
-> +	device_for_each_child_node(gpadc->dev, child) {
->  		struct iio_chan_spec *iio_chan;
->  		int ret;
-> =20
-> @@ -1064,7 +1062,7 @@ static int ab8500_gpadc_parse_channels(struct ab850=
-0_gpadc *gpadc,
->  		ret =3D ab8500_gpadc_parse_channel(gpadc->dev, child, ch,
->  						 iio_chan);
->  		if (ret) {
-> -			of_node_put(child);
-> +			fwnode_handle_put(child);
->  			return ret;
->  		}
->  		i++;
-> @@ -1081,7 +1079,6 @@ static int ab8500_gpadc_probe(struct platform_devic=
-e *pdev)
->  	struct ab8500_gpadc *gpadc;
->  	struct iio_dev *indio_dev;
->  	struct device *dev =3D &pdev->dev;
-> -	struct device_node *np =3D pdev->dev.of_node;
->  	struct iio_chan_spec *iio_chans;
->  	unsigned int n_iio_chans;
->  	int ret;
-> @@ -1096,7 +1093,7 @@ static int ab8500_gpadc_probe(struct platform_devic=
-e *pdev)
->  	gpadc->dev =3D dev;
->  	gpadc->ab8500 =3D dev_get_drvdata(dev->parent);
-> =20
-> -	ret =3D ab8500_gpadc_parse_channels(gpadc, np, &iio_chans, &n_iio_chans=
-);
-> +	ret =3D ab8500_gpadc_parse_channels(gpadc, &iio_chans, &n_iio_chans);
->  	if (ret)
->  		return ret;
-> =20
+> >  /**
+> >   * ab8500_gpadc_parse_channel() - process devicetree channel configura=
+tion
+> >   * @dev: pointer to containing device
+> > - * @np: device tree node for the channel to configure
+> > + * @fwnode: fw node for the channel to configure
+> >   * @ch: channel info to fill in
+> >   * @iio_chan: IIO channel specification to fill in
+> >   *
+> > @@ -976,15 +976,15 @@ static int ab8500_gpadc_runtime_resume(struct dev=
+ice *dev)
+> >   * and define usage for things like AUX GPADC inputs more precisely.
+> >   */
+> >  static int ab8500_gpadc_parse_channel(struct device *dev,
+> > -				      struct device_node *np,
+> > +				      struct fwnode_handle *fwnode,
+> >  				      struct ab8500_gpadc_chan_info *ch,
+> >  				      struct iio_chan_spec *iio_chan)
+> >  {
+> > -	const char *name =3D np->name;
+> > +	const char *name =3D fwnode_get_name(fwnode);
+> >  	u32 chan;
+> >  	int ret;
+> > =20
+> > -	ret =3D of_property_read_u32(np, "reg", &chan);
+> > +	ret =3D fwnode_property_read_u32(fwnode, "reg", &chan);
+> >  	if (ret) {
+> >  		dev_err(dev, "invalid channel number %s\n", name);
+> >  		return ret;
+> > @@ -1021,22 +1021,20 @@ static int ab8500_gpadc_parse_channel(struct de=
+vice *dev,
+> >  /**
+> >   * ab8500_gpadc_parse_channels() - Parse the GPADC channels from DT
+> >   * @gpadc: the GPADC to configure the channels for
+> > - * @np: device tree node containing the channel configurations
+> >   * @chans: the IIO channels we parsed
+> >   * @nchans: the number of IIO channels we parsed
+> >   */
+> >  static int ab8500_gpadc_parse_channels(struct ab8500_gpadc *gpadc,
+> > -				       struct device_node *np,
+> >  				       struct iio_chan_spec **chans_parsed,
+> >  				       unsigned int *nchans_parsed)
+> >  {
+> > -	struct device_node *child;
+> > +	struct fwnode_handle *child;
+> >  	struct ab8500_gpadc_chan_info *ch;
+> >  	struct iio_chan_spec *iio_chans;
+> >  	unsigned int nchans;
+> >  	int i;
+> > =20
+> > -	nchans =3D of_get_available_child_count(np);
+> > +	nchans =3D device_get_child_node_count(gpadc->dev);
+> >  	if (!nchans) {
+> >  		dev_err(gpadc->dev, "no channel children\n");
+> >  		return -ENODEV;
+> > @@ -1054,7 +1052,7 @@ static int ab8500_gpadc_parse_channels(struct ab8=
+500_gpadc *gpadc,
+> >  		return -ENOMEM;
+> > =20
+> >  	i =3D 0;
+> > -	for_each_available_child_of_node(np, child) {
+> > +	device_for_each_child_node(gpadc->dev, child) {
+> >  		struct iio_chan_spec *iio_chan;
+> >  		int ret;
+> > =20
+> > @@ -1064,7 +1062,7 @@ static int ab8500_gpadc_parse_channels(struct ab8=
+500_gpadc *gpadc,
+> >  		ret =3D ab8500_gpadc_parse_channel(gpadc->dev, child, ch,
+> >  						 iio_chan);
+> >  		if (ret) {
+> > -			of_node_put(child);
+> > +			fwnode_handle_put(child);
+> >  			return ret;
+> >  		}
+> >  		i++;
+> > @@ -1081,7 +1079,6 @@ static int ab8500_gpadc_probe(struct platform_dev=
+ice *pdev)
+> >  	struct ab8500_gpadc *gpadc;
+> >  	struct iio_dev *indio_dev;
+> >  	struct device *dev =3D &pdev->dev;
+> > -	struct device_node *np =3D pdev->dev.of_node;
+> >  	struct iio_chan_spec *iio_chans;
+> >  	unsigned int n_iio_chans;
+> >  	int ret;
+> > @@ -1096,7 +1093,7 @@ static int ab8500_gpadc_probe(struct platform_dev=
+ice *pdev)
+> >  	gpadc->dev =3D dev;
+> >  	gpadc->ab8500 =3D dev_get_drvdata(dev->parent);
+> > =20
+> > -	ret =3D ab8500_gpadc_parse_channels(gpadc, np, &iio_chans, &n_iio_cha=
+ns);
+> > +	ret =3D ab8500_gpadc_parse_channels(gpadc, &iio_chans, &n_iio_chans);
+> >  	if (ret)
+> >  		return ret;
+> >   =20
+>=20
 
 
