@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ADF7C19F2D
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Aug 2022 18:43:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4204C19F2D
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Aug 2022 18:46:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ivwVh7pZb1fcTFGcIsJcA/Ibg0VcRU+F4mqC8+jdWHM=; b=PRozMaFYIrx9NrljL4MtalIHQH
-	hEGwxKvj6VEvNaPGnkyWX6+rH1muV9iGzKvdpAnSUTvqctX1i/Ea7xvp5X7sCnq5KVRluhOpVZ3r3
-	TKxYbgEwhGW0SbER7kOwg4WWBRMKIqHfK+tBqS7DLK9i+LkpgqbMQUUdHEHX4IF6Kj7hh0ylbhhUf
-	yo3fhNpvKxnw0gRhZRhkfH0nGTrcVLyL10+CvzwxL7J7Yy9VkoqWfgF+W6efEUfP630B8TN4Wk9wl
-	QRoQB08XOop2jNIuryrfA8j7Dz9Q6bGG0Y0w1b0lbG9hbvcx6KiiXpzCuKLx36Y2MhhP5uihnWX4k
-	u5V0BZ0Q==;
+	bh=Z6ctC3BGiJkXY956ejA4Nxbcw2E656RqEiMyVTTwPOs=; b=Pkw4wBEfZQHv87gkInkd9hUivG
+	2UdZ6DrEmCxxGLTqvt4VM9MbVmC5iVN3cMrtrxMx8XCBmAAESVwc6h8QCj9a9XT4RGul1gcwGm/c+
+	CrnFmcayL63pIVV/ShrZhk5kZuiOwcbCgAEuZbzRGTMWHhISrHQBUj9I++/RiwhYjXep7giCyzJaA
+	oyWk3/DaItpixjO4YrNAabxQXhrqcQh8C4QP27/red/nEi64S87ZfhP7/dMNoUUeGkvMoq1te3Zzw
+	lmqZ1/cZ2VNJuAsST2YFVPn6P/iN1wl54iAVWwMobY5FWX8Rf8mDLWXrq1FwgYRGJXCr0BB/gZ2LZ
+	6VQCS04g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKOlf-00G6QR-IS; Sat, 06 Aug 2022 18:43:23 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oKOow-00G96z-Os; Sat, 06 Aug 2022 18:46:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKOlb-00G6NL-VG; Sat, 06 Aug 2022 18:43:21 +0000
+	id 1oKOot-00G94b-Gq; Sat, 06 Aug 2022 18:46:45 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 02AB76123F;
-	Sat,  6 Aug 2022 18:43:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4642C433C1;
-	Sat,  6 Aug 2022 18:43:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 89B2961248;
+	Sat,  6 Aug 2022 18:46:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71514C433D6;
+	Sat,  6 Aug 2022 18:46:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1659811398;
-	bh=9zcEKsBlFaq2Abp3Ujre2SKv4E24ne+3Amc5GKr94r8=;
+	s=k20201202; t=1659811601;
+	bh=B/0w1udhvHD/9i0cSXbtONOW92202f2YhMQiT3LJId8=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=c9gsw5fxL6QdsooDIbb4X9vk/stoJ712TyCVJOtC9CJKSkjLFQCmXi/5mDrkXTPFl
-	 jwrx2ij+iN76kBuqX9E1RI3tmZt4rQAFUuSKPdHAlNEoeHtQQmFD+RkvIxrDw+QiHA
-	 pWSLiv4Et6Ox7W7nGspv5/wWXDvIqhyFgJ+QiSbeFsZXNY3pcirIGvvvl4tuSvzzRW
-	 x2bfobAuH8Qw/R6aRDHODz3poGX1Vras3COg4325mAbnVJjU+HP+0u4w7c6iC55bt2
-	 JRB9CaMTRw+5fLxFkM46MspQLfkomAlJE7T8i/QU3kwz6vO3V2HaHuYdvxorrGC8LB
-	 mAA2JfHh4MrsA==
-Date: Sat, 6 Aug 2022 19:53:27 +0100
+	b=pFsBYtApmnG2eqrOLyURupaAFLXeLc7W/9MhUykPguHD+e2ft00vYjP4PgD7meTaL
+	 aPiqJFS71t0cIyfkSjKk98zrKxyjz09pS447wpgFxKM6eWxbQk3PVjXmckPypt4Sfb
+	 Lm30+HGsvQ3Z8zumo7J6GRstmybs7OtVuu+uLeKiYDXuzzCb9QynrGjKoCD5Y60u6J
+	 Zd2cs38zj5zkuUAfwWbj8DgGekQr4BK6wercvB/3Om+mW3sBpol/kP2ySEzM+fgHeh
+	 7NU/Gt2skLPY/Q3zl2jiIS2qg1r4JEz2ddRLnSlZKFPH9bPGC1ox2H1RL+vuQEmBOd
+	 Lib5B34RgV13Q==
+Date: Sat, 6 Aug 2022 19:56:49 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>
 Cc: <openbmc@lists.ozlabs.org>, <linux-imx@nxp.com>,
@@ -77,20 +77,17 @@ Cc: <openbmc@lists.ozlabs.org>, <linux-imx@nxp.com>,
  Kucheria <amitk@kernel.org>, Michael Hennerich
  <Michael.Hennerich@analog.com>, "Haibo Chen" <haibo.chen@nxp.com>, Jishnu
  Prakash <quic_jprakash@quicinc.com>
-Subject: Re: [PATCH v3 13/15] iio: adc: stm32-adc: convert to device
- properties
-Message-ID: <20220806195327.14626e0d@jic23-huawei>
-In-Reply-To: <20220806191538.7019ecfe@jic23-huawei>
+Subject: Re: [PATCH v3 00/15] make iio inkern interface firmware agnostic
+Message-ID: <20220806195649.4aee65fc@jic23-huawei>
+In-Reply-To: <20220715122903.332535-1-nuno.sa@analog.com>
 References: <20220715122903.332535-1-nuno.sa@analog.com>
-	<20220715122903.332535-14-nuno.sa@analog.com>
-	<20220806191538.7019ecfe@jic23-huawei>
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220806_114320_108170_71299E17 
-X-CRM114-Status: GOOD (  21.77  )
+X-CRM114-CacheID: sfid-20220806_114643_672484_D6402382 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,53 +102,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 6 Aug 2022 19:15:38 +0100
-Jonathan Cameron <jic23@kernel.org> wrote:
+On Fri, 15 Jul 2022 14:28:48 +0200
+Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
 
-> On Fri, 15 Jul 2022 14:29:01 +0200
-> Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
+> First version of the series can be found here:
 >=20
-> > Make the conversion to firmware agnostic device properties. As part of
-> > the conversion the IIO inkern interface 'of_xlate()' is also converted =
-to
-> > 'fwnode_xlate()'. The goal is to completely drop 'of_xlate' and hence OF
-> > dependencies from IIO.
-> >=20
-> > Signed-off-by: Nuno S=C3=A1 <nuno.sa@analog.com>
-> > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com> =20
-> One query below. Otherwise LGTM (not that's true of the other patches I h=
-aven't
-> comment on at all)
+> https://lore.kernel.org/linux-iio/20220610084545.547700-1-nuno.sa@analog.=
+com/
 >=20
-> > @@ -1885,8 +1887,12 @@ static int stm32_adc_get_legacy_chan_count(struc=
-t iio_dev *indio_dev, struct stm
-> >  		num_channels +=3D ret;
-> >  	}
-> > =20
-> > -	ret =3D of_property_count_elems_of_size(node, "st,adc-diff-channels",
-> > -					      sizeof(struct stm32_adc_diff_channel));
-> > +	/*
-> > +	 * each st,adc-diff-channels is a group of 2 u32 so we divide @ret
-> > +	 * to get the *real* number of channels.
-> > +	 */
-> > +	ret =3D device_property_count_u32(dev, "st,adc-diff-channels"); =20
+> Second version:
 >=20
-> I think this can return an error code which should probably be handled.
-> More than possible that was true of original code though...
+> https://lore.kernel.org/linux-iio/20220711123835.811358-1-nuno.sa@analog.=
+com/
 >=20
-> If it can't return an error for some reason I'm missing perhaps a
-> comment to explain why.
+> v3 changes:
+>=20
+> [1/15]:
+>   * Improved (spell fixes) commit message.
+>=20
+> [13/15]:
+>   * Get back to u32 API for 'st,adc-diff-channels' but making it more cle=
+ar
+> what's going on;
+>   * Fix infinite loop;
+>   * Store number of st,min-sample-time-nsecs properties to avoid
+> duplication in sanity checks.
+>=20
+> [15/15]
+>   * Improved 'if' condition for readability.
+>=20
+> (hopefulyl did not forgot any tag)
 
-Given this was only outstanding question I stuck a conservative
 
-if (ret < 0)
-	return ret;
-here whilst applying.
+Very nice work.  All applied, with a few minor tweaks as called out in
+relevant patches.  Note I'll push this out as testing.  Will go out as togr=
+eg
+only after I can rebase on rc1 in a week or so time.
+
+Thanks,
+
+Jonathan
 
 >=20
-> > +	ret /=3D (int)(sizeof(struct stm32_adc_diff_channel) / sizeof(u32));
-> >  	if (ret > adc_info->max_channels) {
-> >  		dev_err(&indio_dev->dev, "Bad st,adc-diff-channels?\n");
-> >  		return -EINVAL; =20
+> Nuno S=C3=A1 (15):
+>   iio: inkern: only release the device node when done with it
+>   iio: inkern: fix return value in devm_of_iio_channel_get_by_name()
+>   iio: inkern: only return error codes in iio_channel_get_*() APIs
+>   iio: inkern: split of_iio_channel_get_by_name()
+>   iio: inkern: move to fwnode properties
+>   thermal: qcom: qcom-spmi-adc-tm5: convert to IIO fwnode API
+>   iio: adc: ingenic-adc: convert to IIO fwnode interface
+>   iio: adc: ab8500-gpadc: convert to device properties
+>   iio: adc: at91-sama5d2_adc: convert to device properties
+>   iio: adc: qcom-pm8xxx-xoadc: convert to device properties
+>   iio: adc: qcom-spmi-vadc: convert to device properties
+>   iio: adc: qcom-spmi-adc5: convert to device properties
+>   iio: adc: stm32-adc: convert to device properties
+>   iio: inkern: remove OF dependencies
+>   iio: inkern: fix coding style warnings
+>=20
+>  drivers/iio/adc/ab8500-gpadc.c           |  27 +--
+>  drivers/iio/adc/at91-sama5d2_adc.c       |  30 +--
+>  drivers/iio/adc/ingenic-adc.c            |   8 +-
+>  drivers/iio/adc/qcom-pm8xxx-xoadc.c      |  58 +++--
+>  drivers/iio/adc/qcom-spmi-adc5.c         |  63 +++---
+>  drivers/iio/adc/qcom-spmi-vadc.c         |  44 ++--
+>  drivers/iio/adc/stm32-adc.c              | 125 ++++++-----
+>  drivers/iio/inkern.c                     | 271 +++++++++++++----------
+>  drivers/thermal/qcom/qcom-spmi-adc-tm5.c |   3 +-
+>  include/linux/iio/consumer.h             |  28 +--
+>  include/linux/iio/iio.h                  |   8 +-
+>  11 files changed, 350 insertions(+), 315 deletions(-)
+>=20
 
 
