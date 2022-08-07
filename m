@@ -4,90 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4204C19F2D
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Aug 2022 18:46:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F41FC19F2A
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Aug 2022 06:59:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z6ctC3BGiJkXY956ejA4Nxbcw2E656RqEiMyVTTwPOs=; b=Pkw4wBEfZQHv87gkInkd9hUivG
-	2UdZ6DrEmCxxGLTqvt4VM9MbVmC5iVN3cMrtrxMx8XCBmAAESVwc6h8QCj9a9XT4RGul1gcwGm/c+
-	CrnFmcayL63pIVV/ShrZhk5kZuiOwcbCgAEuZbzRGTMWHhISrHQBUj9I++/RiwhYjXep7giCyzJaA
-	oyWk3/DaItpixjO4YrNAabxQXhrqcQh8C4QP27/red/nEi64S87ZfhP7/dMNoUUeGkvMoq1te3Zzw
-	lmqZ1/cZ2VNJuAsST2YFVPn6P/iN1wl54iAVWwMobY5FWX8Rf8mDLWXrq1FwgYRGJXCr0BB/gZ2LZ
-	6VQCS04g==;
+	bh=M95TLiNkwsL0QeZAeys9UAP5FWDjNm0kDQVp7WcThws=; b=CUzj89gbkPenQzHYS+aZGEkuZK
+	E9jJ6YbkanZLJr/gnGzFLGsXGKUnIO9zwTgLutuFlUseUCezbE3UE/h9l5QzVDTU2r67RrpIO1XzY
+	WT2/ZFt3LRyBHLwC7bYIdx6yw6DVONDue9rAGFWrDWkwevZ2I2+7qwt8t27WgP7MEfizj7CnqIlbp
+	KbM5H8wq1sTMu5t+RAG+JqGzcX9ZofAWztsD3uIvpaooXf2X6ku6Yvd0ngho6VhF75Ur3aHwPni9k
+	hnnm0JixW9Im6gSpfUDGoDQfp3+wzoXr7jczJ80z3pTzPWBD0KlEzhuwI+nptEQfiatFrTEPiJGi2
+	4I7YdQaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKOow-00G96z-Os; Sat, 06 Aug 2022 18:46:46 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oKaFg-007ZvS-6n; Sun, 07 Aug 2022 06:59:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKOot-00G94b-Gq; Sat, 06 Aug 2022 18:46:45 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 89B2961248;
-	Sat,  6 Aug 2022 18:46:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71514C433D6;
-	Sat,  6 Aug 2022 18:46:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1659811601;
-	bh=B/0w1udhvHD/9i0cSXbtONOW92202f2YhMQiT3LJId8=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=pFsBYtApmnG2eqrOLyURupaAFLXeLc7W/9MhUykPguHD+e2ft00vYjP4PgD7meTaL
-	 aPiqJFS71t0cIyfkSjKk98zrKxyjz09pS447wpgFxKM6eWxbQk3PVjXmckPypt4Sfb
-	 Lm30+HGsvQ3Z8zumo7J6GRstmybs7OtVuu+uLeKiYDXuzzCb9QynrGjKoCD5Y60u6J
-	 Zd2cs38zj5zkuUAfwWbj8DgGekQr4BK6wercvB/3Om+mW3sBpol/kP2ySEzM+fgHeh
-	 7NU/Gt2skLPY/Q3zl2jiIS2qg1r4JEz2ddRLnSlZKFPH9bPGC1ox2H1RL+vuQEmBOd
-	 Lib5B34RgV13Q==
-Date: Sat, 6 Aug 2022 19:56:49 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>
-Cc: <openbmc@lists.ozlabs.org>, <linux-imx@nxp.com>,
- <linux-stm32@st-md-mailman.stormreply.com>, <linux-iio@vger.kernel.org>,
- <linux-mips@vger.kernel.org>, <linux-renesas-soc@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <chrome-platform@lists.linux.dev>,
- <linux-arm-kernel@lists.infradead.org>, Lad Prabhakar
- <prabhakar.mahadev-lad.rj@bp.renesas.com>, <linux-arm-msm@vger.kernel.org>,
- Gwendal Grignou <gwendal@chromium.org>, Saravanan Sekar
- <sravanhome@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, "Alexandre Torgue"
- <alexandre.torgue@foss.st.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- "Olivier Moysan" <olivier.moysan@foss.st.com>, Tali Perry
- <tali.perry1@gmail.com>, Thara Gopinath <thara.gopinath@linaro.org>, Bjorn
- Andersson <bjorn.andersson@linaro.org>, Arnd Bergmann <arnd@arndb.de>,
- Benjamin Fair <benjaminfair@google.com>, Nicolas Ferre
- <nicolas.ferre@microchip.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Patrick Venture <venture@google.com>, Pengutronix Kernel Team
- <kernel@pengutronix.de>, Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Benson Leung
- <bleung@chromium.org>, Nancy Yuen <yuenn@google.com>, Miquel Raynal
- <miquel.raynal@bootlin.com>, "Alexandre Belloni"
- <alexandre.belloni@bootlin.com>, Zhang Rui <rui.zhang@intel.com>, Linus
- Walleij <linus.walleij@linaro.org>, Christophe Branchereau
- <cbranchereau@gmail.com>, Cai Huoqing <cai.huoqing@linux.dev>, Avi Fishman
- <avifishman70@gmail.com>, Eugen Hristev <eugen.hristev@microchip.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer
- <s.hauer@pengutronix.de>, Lars-Peter Clausen <lars@metafoo.de>, "Andy
- Shevchenko" <andy.shevchenko@gmail.com>, Guenter Roeck
- <groeck@chromium.org>, Paul Cercueil <paul@crapouillou.net>, Claudiu Beznea
- <claudiu.beznea@microchip.com>, Andy Gross <agross@kernel.org>, Amit
- Kucheria <amitk@kernel.org>, Michael Hennerich
- <Michael.Hennerich@analog.com>, "Haibo Chen" <haibo.chen@nxp.com>, Jishnu
- Prakash <quic_jprakash@quicinc.com>
-Subject: Re: [PATCH v3 00/15] make iio inkern interface firmware agnostic
-Message-ID: <20220806195649.4aee65fc@jic23-huawei>
-In-Reply-To: <20220715122903.332535-1-nuno.sa@analog.com>
-References: <20220715122903.332535-1-nuno.sa@analog.com>
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-pc-linux-gnu)
+	id 1oKaFd-007Zg1-CQ; Sun, 07 Aug 2022 06:59:06 +0000
+X-UUID: a43545c99c7544269fdc3f5c4c3a3c66-20220806
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.8,REQID:aeb43f62-5b81-4c52-a7be-20111ada9935,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:0f94e32,CLOUDID:9a93eb48-f57f-4088-93dd-066979cdb4e6,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,QS:nil,BEC:nil,COL:0
+X-UUID: a43545c99c7544269fdc3f5c4c3a3c66-20220806
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jing-ting.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1225441419; Sat, 06 Aug 2022 23:58:53 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Sun, 7 Aug 2022 14:58:50 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Sun, 7 Aug 2022 14:58:50 +0800
+Message-ID: <d4f8e1c0dd0a323e5cd6c850083cb126f616bc78.camel@mediatek.com>
+Subject: Re: [Bug] race condition at rebind_subsystems()
+From: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+To: Michal =?ISO-8859-1?Q?Koutn=FD?= <mkoutny@suse.com>
+CC: Tejun Heo <tj@kernel.org>, Johannes Weiner <hannes@cmpxchg.org>, "Zefan
+ Li" <lizefan.x@bytedance.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<cgroups@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Shakeel Butt <shakeelb@google.com>, <wsd_upstream@mediatek.com>,
+	<lixiong.liu@mediatek.com>, <wenju.xu@mediatek.com>,
+	<jonathan.jmchen@mediatek.com>
+Date: Sun, 7 Aug 2022 14:58:50 +0800
+In-Reply-To: <98d738ec5d7d32441f6e62278fff32201fd948de.camel@mediatek.com>
+References: <1978e209e71905d89651e61abd07285912d412a1.camel@mediatek.com>
+	 <20220715115938.GA8646@blackbody.suse.cz>
+	 <YtGaP+e35DZYSQf0@slm.duckdns.org>
+	 <d8f0bc5e2fb6ed259f9334c83279b4c011283c41.camel@mediatek.com>
+	 <20220719133512.GD897@blackbody.suse.cz>
+	 <98d738ec5d7d32441f6e62278fff32201fd948de.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220806_114643_672484_D6402382 
-X-CRM114-Status: GOOD (  15.60  )
+X-CRM114-CacheID: sfid-20220806_235905_441431_39F27E59 
+X-CRM114-Status: GOOD (  20.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,77 +85,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 15 Jul 2022 14:28:48 +0200
-Nuno S=C3=A1 <nuno.sa@analog.com> wrote:
+On Thu, 2022-07-21 at 14:46 +0800, Jing-Ting Wu wrote:
+> On Tue, 2022-07-19 at 15:35 +0200, Michal Koutný wrote:
+> > On Mon, Jul 18, 2022 at 03:44:21PM +0800, Jing-Ting Wu <
+> > jing-ting.wu@mediatek.com> wrote:
+> > > Accroding your description, is the following patch corrent?
+> > 
+> > Yes, this is what I meant (i.e. grace period before invalidating
+> > the
+> > removed rstat_css_node).
+> > 
+> > > If the patch is correct, we will add this patch to our stability
+> > > test.
+> > > And we will continue to observe whether the problem is solved.
+> > 
+> > It'd be great to have such confirmation.
+> 
+> Thanks for confirm the patch.
+> We already add patch to our stability test.
+> We will reply mail if we have any update.
+> 
+> > 
+> > Thanks,
+> > Michal
+> 
 
-> First version of the series can be found here:
->=20
-> https://lore.kernel.org/linux-iio/20220610084545.547700-1-nuno.sa@analog.=
-com/
->=20
-> Second version:
->=20
-> https://lore.kernel.org/linux-iio/20220711123835.811358-1-nuno.sa@analog.=
-com/
->=20
-> v3 changes:
->=20
-> [1/15]:
->   * Improved (spell fixes) commit message.
->=20
-> [13/15]:
->   * Get back to u32 API for 'st,adc-diff-channels' but making it more cle=
-ar
-> what's going on;
->   * Fix infinite loop;
->   * Store number of st,min-sample-time-nsecs properties to avoid
-> duplication in sanity checks.
->=20
-> [15/15]
->   * Improved 'if' condition for readability.
->=20
-> (hopefulyl did not forgot any tag)
+Hi, Michal
+
+Use the patch of previous mail, we pass the stability test at previous
+two week and still testing.
+
+I think the patch is helpful to the syndrome.
+It passed stability test over two week so far. (as-is: < one week
+failed)
+Do you help to upstream this patch to mainline?
+
+Thank you.
 
 
-Very nice work.  All applied, with a few minor tweaks as called out in
-relevant patches.  Note I'll push this out as testing.  Will go out as togr=
-eg
-only after I can rebase on rc1 in a week or so time.
+Best regards,
+Jing-Ting Wu
 
-Thanks,
 
-Jonathan
 
->=20
-> Nuno S=C3=A1 (15):
->   iio: inkern: only release the device node when done with it
->   iio: inkern: fix return value in devm_of_iio_channel_get_by_name()
->   iio: inkern: only return error codes in iio_channel_get_*() APIs
->   iio: inkern: split of_iio_channel_get_by_name()
->   iio: inkern: move to fwnode properties
->   thermal: qcom: qcom-spmi-adc-tm5: convert to IIO fwnode API
->   iio: adc: ingenic-adc: convert to IIO fwnode interface
->   iio: adc: ab8500-gpadc: convert to device properties
->   iio: adc: at91-sama5d2_adc: convert to device properties
->   iio: adc: qcom-pm8xxx-xoadc: convert to device properties
->   iio: adc: qcom-spmi-vadc: convert to device properties
->   iio: adc: qcom-spmi-adc5: convert to device properties
->   iio: adc: stm32-adc: convert to device properties
->   iio: inkern: remove OF dependencies
->   iio: inkern: fix coding style warnings
->=20
->  drivers/iio/adc/ab8500-gpadc.c           |  27 +--
->  drivers/iio/adc/at91-sama5d2_adc.c       |  30 +--
->  drivers/iio/adc/ingenic-adc.c            |   8 +-
->  drivers/iio/adc/qcom-pm8xxx-xoadc.c      |  58 +++--
->  drivers/iio/adc/qcom-spmi-adc5.c         |  63 +++---
->  drivers/iio/adc/qcom-spmi-vadc.c         |  44 ++--
->  drivers/iio/adc/stm32-adc.c              | 125 ++++++-----
->  drivers/iio/inkern.c                     | 271 +++++++++++++----------
->  drivers/thermal/qcom/qcom-spmi-adc-tm5.c |   3 +-
->  include/linux/iio/consumer.h             |  28 +--
->  include/linux/iio/iio.h                  |   8 +-
->  11 files changed, 350 insertions(+), 315 deletions(-)
->=20
+
+
+> 
+> Best regards,
+> Jing-Ting Wu
 
 
