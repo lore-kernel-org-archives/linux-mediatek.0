@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3219DC00140
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Aug 2022 14:26:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45DE9C25B0D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Aug 2022 17:04:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gvKJchs2LDC9wxmUVHgk8GKO+1QGLq3smXS7v9edlzc=; b=be185VqXlYWe1UDsTfi54RDFTH
-	+5rpJp3cWReYTXoHZW5FJ5FDdHcot1O7Pd+5tCE5IFBfoe8CHSTBNroNNFuVDbKTfvHOldQCz1bn3
-	9maoRt2LhKuag7aJliRuNRWmE7ojlX5JGSzQl5sMCkkq9IoF3m3p/Z7rFPtgiOdIJmHykRGeyGhSs
-	T+rHNp7FXRFH05qM6Ob2i+ml2pPk6Vf6fJbnghVn+OAmL0fx8B38OQEfj98QYyZwLLWKUvGfL/3Ob
-	AAdYhKzwrCxS4RJT/riN0eYSvZUzIllvpDFYeOgMeaSupmrARfbcqCME2UjDvjrqQbaL78vLKlKR2
-	Zs+D3nnQ==;
+	bh=Uapoa3R55fmNKG92Nn9KLlnduWLSvMgVMLkFvqeVhq8=; b=p4vU1CNlnyY/dAP+FR08msmLR+
+	ehVKR5nKa+Kb9fkreZN1ADJQubJQVtmbQq4IhTUeCJDAOzbizhNNFO5oobNmwD7kZmVNjW2hqsuHw
+	hlGpMPdpvv9SRLr77pP/gnuzY5nPe8A2UBNetUK1h0K0vjKHLiIZP2QQuVmgEYmVVCAfbzxNNPpGK
+	7XNB3/QMYmnpFEnl4TkOx93p07aGnCDnBSdymP77jevgOSPXP1RjupM/OqjzkUpMqBuZSBx1P2aqC
+	bL1LzQiaCNYdO/Zm3Zp+KCE8fCM26lDKtYlSgOIzDIU0Mo7pfhPaeTqIymenQYhD/KmgJfpfBW5dx
+	VGzWzCsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oL3iR-00EN8B-It; Mon, 08 Aug 2022 14:26:47 +0000
+	id 1oL6At-00F4rq-SR; Mon, 08 Aug 2022 17:04:19 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oL3iF-00EN0I-18; Mon, 08 Aug 2022 14:26:37 +0000
+	id 1oL6Ag-00F4p8-Ns; Mon, 08 Aug 2022 17:04:08 +0000
 Received: from notapiano (unknown [146.70.107.217])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9064B6601C2B;
-	Mon,  8 Aug 2022 15:26:28 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B3DBE6601C27;
+	Mon,  8 Aug 2022 18:03:59 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1659968790;
-	bh=Lmjj/9K8hJ+k57oyBTvp50eiDRhA1CHDdzzZVR6NtzI=;
+	s=mail; t=1659978242;
+	bh=AOBMWXeEPuQq3ZkcDyCVKu0KfdYQt+8GMh7UuYGyUlA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FRPEtsltcdWXIRiiNjCASxDq9fs5Y6Ne/ysFGC4LQbfgq9f7giVHJYbJOdK6tB4x+
-	 /AvVFGJ9zfg87z7cNnaD51MqHIrWGVK6ZTaUa5JK4PbeGm9aGd1Fsnv7xZi5D4MAKZ
-	 dH023pAzCEP9IN7TAC5Hr1XFEkuoRHL7Vru0PFaacFc5yBwLPJWIddV73lQVTotwti
-	 c4/qXZlDBkXwgN+vCzc8cTgtybeF8SEXx2VrczXoaAngd7IQk2HG7QyXBbIzAxDlbd
-	 f9gPWVA0JafEaBFG627bOKOcw97ehWDWPyZySA1s2QQNFQL0nXQwEVqz0kd3e9zlED
-	 OfrwLpyXxjGaw==
-Date: Mon, 8 Aug 2022 10:26:24 -0400
+	b=QAXpTmuOrhR9WNkqgtGuSOTXQ2my/hjzyBuy6wIRHeVgPlasJwPozXYRvHy09ySVM
+	 pKCfmuKVSXYmCbmHYmoRbvA0EeSXONnSSIdXYXdOfuMGJ6yDV0uJIk+vknBOYrgI6K
+	 dmZ+UATZnPRwffDsgKBogVmOFDg8Vsj06ge8d39IC3peCw7XlnHlNwXm2pZ/CKKuBB
+	 ZHR2forxuhlkxGDOAkKPswXhwuBOiVDPk1diDich6qr98erlzJ4Ei/0XLT9DxB31fb
+	 KrmOACSyeozJ1AXbJ9kz71GcyiQUTawCfV6XDPjQe2tZuxpxBgf+wWGMZeqXhaqv1t
+	 ywRlDqp5+BqFw==
+Date: Mon, 8 Aug 2022 13:03:55 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
 	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	angelogioacchino.delregno@collabora.com,
 	Project_Global_Chrome_Upstream_Group@mediatek.com,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	Chen-Yu Tsai <wenst@chromium.org>, hsinyi@chromium.org
-Subject: Re: [PATCH v13 1/1] arm64: dts: Add MediaTek MT8186 dts and
- evaluation board and Makefile
-Message-ID: <20220808142624.rdwx7gh5ntlr6oy2@notapiano>
-References: <20220802085152.31284-1-allen-kh.cheng@mediatek.com>
- <20220802085152.31284-2-allen-kh.cheng@mediatek.com>
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 1/4] dt-bindings: mediatek: watchdog: Fix compatible
+ fallbacks and example
+Message-ID: <20220808170355.c2ih3xwqxlddsal7@notapiano>
+References: <20220721014845.19044-1-allen-kh.cheng@mediatek.com>
+ <20220721014845.19044-2-allen-kh.cheng@mediatek.com>
+ <CAGXv+5HXwVpaJPV-4Z6qw14xZzEkx_E7dVks6-GBa7bQyN8hCg@mail.gmail.com>
+ <5dac39d1-3b42-40e9-5693-0c127e8c689a@gmail.com>
+ <0fadcd9f50d49ecbb329e76a9ceb6ee689648955.camel@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220802085152.31284-2-allen-kh.cheng@mediatek.com>
+In-Reply-To: <0fadcd9f50d49ecbb329e76a9ceb6ee689648955.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220808_072635_325542_C593465D 
-X-CRM114-Status: UNSURE (   7.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220808_100407_146840_70BB6AA3 
+X-CRM114-Status: GOOD (  55.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,13 +84,167 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 02, 2022 at 04:51:52PM +0800, Allen-KH Cheng wrote:
-> Add basic chip support for MediaTek MT8186.
-> 
-> Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+Hi,
 
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+On Wed, Aug 03, 2022 at 05:23:57PM +0800, Allen-KH Cheng wrote:
+> Hi Chen-Yu and Mathias,
+> 
+> Sincere apologies for the delayed response.
+> 
+> On Tue, 2022-08-02 at 13:04 +0200, Matthias Brugger wrote:
+> > 
+> > On 01/08/2022 11:29, Chen-Yu Tsai wrote:
+> > > On Thu, Jul 21, 2022 at 10:50 AM Allen-KH Cheng
+> > > <allen-kh.cheng@mediatek.com> wrote:
+> > > > 
+> > > > The watchdog timer of mt8186. mt8195 and mt7986 have their DT
+> > > > data.
+> > > > We should not use 'mediatek,mt6589-wdt' as fallback.
+> > > > 
+> > > > For mediatek,wdt example of mt8183, We remove mediatek,mt6589-wdt 
+> > > > fallback.
+> > > 
+> > > I think this needs some more information.
+> > > 
+> > > Right now on the kernel side, mt6589-wdt provides just watchdog
+> > > support.
+> > > The SoC-specific compatibles that are touched by this patch provide
+> > > reset
+> > > controls in addition to the standard watchdog, which remains the
+> > > same.
+> > > 
+> > > If that is the case, then the fallback compatibles are correct. A
+> > > fallback
+> > > says that the new hardware is compatible with some older hardware,
+> > > and
+> > > can be run with the driver supporting that older hardware, likely
+> > > with
+> > > reduced functionality.
+> > > 
+> > 
+> > My understanding is, that we add a fallback because although at the
+> > time we 
+> > entered the compatible, the functionality of the device is the same
+> > as the 
+> > fallback. Nonetheless we add a compatible specific for the device in
+> > case in the 
+> > future we realize that the device has some functionality that is not
+> > and can not 
+> > be covered by the fallback.
+> > 
+> > This is the case here. Actually adding the fallback in the first
+> > place was 
+> > wrong, because the driver since ever supports the extra function for
+> > the device, 
+> > the reset.
+> > 
+> > So this is a mere cleanup of the binding to reflect what was always
+> > present in 
+> > the driver.
+> > 
+> > Regards,
+> > Matthias
+> > 
+> 
+> mt6589-wdt dosen't contains a reset control for other modules, like
+> chen-yu mention "mt6589-wdt provides just watchdog support."
+> 
+> For instance, there is a reset control in mt8195-wdt and we have a DT
+> data to define its reset number of TOPRGU. I thought it's better not
+> use mt6589-wdt as fallback.
+> 
+> Please let me know if this works and if you have any suggestions or
+> comments.
+
+The only practical usecase that I can think of that relies on keeping the
+fallback compatibles is using the current DT with an older kernel that didn't
+yet support the specific watchdog compatibles. In this case, dropping the
+fallback compatibles would make the watchdog not work at all in such a kernel.
+
+I'm not sure how relevant/common of a usecase that would be, but maybe it's
+worth considering given that the advantage of removing the fallback compatible
+is purely aesthetic?
 
 Thanks,
 Nícolas
+
+> 
+> Thanks,
+> Allen
+> 
+> > > As an example, if mt8195-wdt is backward compatible with mt6589-
+> > > wdt,
+> > > then it should run as mt6589-wdt, and would just be missing new
+> > > functionality, in this case the reset controls.
+> > > 
+> > > So either mt6589-wdt also contains a reset control that is not the
+> > > same
+> > > as the other newer chips, or has some other functionality that the
+> > > other
+> > > chips contain, and justifies the removal of the fallback, or this
+> > > patch
+> > > is incorrect. Note that mt2701-wdt and mt762*-wdt are still listed
+> > > as
+> > > compatible with mt6589-wdt. So I think a better explanation is
+> > > required.
+> > > 
+> > > 
+> > > Regards
+> > > ChenYu
+> > > 
+> > > 
+> > > > Fixes:a45b408a020b("dt-bindings: watchdog: Add compatible for
+> > > > MediaTek MT8186")
+> > > > Fixes:b326f2c85f3d("dt-bindings: watchdog: Add compatible for
+> > > > Mediatek MT8195")
+> > > > Fixes:41e73feb1024("dt-bindings: watchdog: Add compatible for
+> > > > Mediatek MT7986")
+> > > > Fixes:f43f97a0fc0e("dt-bindings: mediatek: mt8183: Add #reset-
+> > > > cells")
+> > > > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > > > Reviewed-by: AngeloGioacchino Del Regno <
+> > > > angelogioacchino.delregno@collabora.com>
+> > > > ---
+> > > >   Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 9
+> > > > ++++-----
+> > > >   1 file changed, 4 insertions(+), 5 deletions(-)
+> > > > 
+> > > > diff --git a/Documentation/devicetree/bindings/watchdog/mtk-
+> > > > wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+> > > > index 762c62e428ef..67ef991ec4cf 100644
+> > > > --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+> > > > +++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+> > > > @@ -14,12 +14,12 @@ Required properties:
+> > > >          "mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
+> > > >          "mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
+> > > >          "mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
+> > > > -       "mediatek,mt7986-wdt", "mediatek,mt6589-wdt": for MT7986
+> > > > +       "mediatek,mt7986-wdt": for MT7986
+> > > >          "mediatek,mt8183-wdt": for MT8183
+> > > > -       "mediatek,mt8186-wdt", "mediatek,mt6589-wdt": for MT8186
+> > > > +       "mediatek,mt8186-wdt": for MT8186
+> > > >          "mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
+> > > >          "mediatek,mt8192-wdt": for MT8192
+> > > > -       "mediatek,mt8195-wdt", "mediatek,mt6589-wdt": for MT8195
+> > > > +       "mediatek,mt8195-wdt": for MT8195
+> > > > 
+> > > >   - reg : Specifies base physical address and size of the
+> > > > registers.
+> > > > 
+> > > > @@ -32,8 +32,7 @@ Optional properties:
+> > > >   Example:
+> > > > 
+> > > >   watchdog: watchdog@10007000 {
+> > > > -       compatible = "mediatek,mt8183-wdt",
+> > > > -                    "mediatek,mt6589-wdt";
+> > > > +       compatible = "mediatek,mt8183-wdt";
+> > > >          mediatek,disable-extrst;
+> > > >          reg = <0 0x10007000 0 0x100>;
+> > > >          interrupts = <GIC_SPI 139 IRQ_TYPE_NONE>;
+> > > > --
+> > > > 2.18.0
+> > > > 
+> > > > 
+> 
+> 
 
