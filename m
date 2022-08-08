@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC53AC00140
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Aug 2022 06:12:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61D89C00140
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Aug 2022 08:04:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a1HzzRePzEuTmzevPoaY0WG9Aj+DqmyLMfY/ojomtGo=; b=eg8a0IhDEUqR7AHyNJyf1nTPvT
-	N6yAWE2suPjRFMdeKXW7R7CM/e86Pc4b/0wdQVCKYzZbNXwtRyiaKg++4cUSCBy1OMwxf4du3kqNA
-	3JfaXehqugtLaaMfMzNEkjUe2e+mHvSHY9Jj+GDxdovxmMg0LmvilVlwMrCrwgb/ag73uGyi3SrUy
-	0fT/W01SGQi/vzhfeFUimyZWUviLYOtso2BgvEyUNho/UqQXCZDaPAV9edblpMWzqiWLmbiu+67OT
-	QgdIhzsn/2cxXH0nqNnBDoJfWAl8PyDgtd7Xxevmgqzfa8TOlJyAmWlyU1YDDc9DE0HnEIQuvi8oW
-	eWI9n44A==;
+	bh=rLpQA2HDs6HPyBnCtsxUkBeWCCaY6SEoWDsQLMWSn6E=; b=UzT9A6uiuJupTTv9QuMa8qK66c
+	7nXt+igkNWNsXZswt9cUx4iEcmWO/e6oKIsZiGB2WPtYbLgU6RVynwKi9CjsjFNP9TaOs7m5R7DLj
+	A6rDzelon+MjObnOssl44EjExJ2TzVlesTjEB01F35vt/WoclaTKNry113wkCxAkoLQtQKueQZ7wG
+	J+HY7996BmrA69B6CBb6rYSv/SAIxI4x4gaKf+kDmEHx9EKzjDh3+/o9uHntWfvD/FqgUcpKk0aKQ
+	s/xvYaxOZ9ywfLmLfZPwYnzOQnZSoWKn98tgEjwa9YDf5oRM+An/kmUpVinJxFoBTH/u+bTxLfYD7
+	XDp6H8cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKvzq-00BYjE-5P; Mon, 08 Aug 2022 06:12:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oKxkQ-00CI8W-KZ; Mon, 08 Aug 2022 08:04:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKvzn-00BYSu-HP; Mon, 08 Aug 2022 06:12:12 +0000
-X-UUID: c73e2e50b4d8491fbce7b2778ba83b6b-20220807
+	id 1oKxkM-00CI5O-5V; Mon, 08 Aug 2022 08:04:25 +0000
+X-UUID: 44dde70a6a654c4ea8ce33026ccdcda4-20220808
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.8,REQID:e9d9b67b-452f-4101-82de-6e4ed368e090,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.8,REQID:aee4afba-330f-4d23-b78c-ec3e94e17f96,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:0f94e32,CLOUDID:9a6b0a9c-da39-4e3b-a854-56c7d2111b46,C
+X-CID-META: VersionHash:0f94e32,CLOUDID:5bdb0d9c-da39-4e3b-a854-56c7d2111b46,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,QS:nil,BEC:nil,COL:0
-X-UUID: c73e2e50b4d8491fbce7b2778ba83b6b-20220807
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 44dde70a6a654c4ea8ce33026ccdcda4-20220808
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 379258611; Sun, 07 Aug 2022 23:12:08 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 36334641; Mon, 08 Aug 2022 01:04:15 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 8 Aug 2022 13:50:55 +0800
+ 15.2.792.15; Mon, 8 Aug 2022 16:04:01 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 8 Aug 2022 13:50:54 +0800
-Message-ID: <d88ee153da3e881d273862667eae0fdc80af08bc.camel@mediatek.com>
+ Transport; Mon, 8 Aug 2022 16:04:01 +0800
+Message-ID: <575181dc6cdd1fcf391e840c0fcd5722b954a457.camel@mediatek.com>
 Subject: Re: [PATCH v16 3/8] drm/mediatek: Add MT8195 Embedded DisplayPort
  driver
 From: CK Hu <ck.hu@mediatek.com>
@@ -60,7 +60,7 @@ CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-fbdev@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 8 Aug 2022 13:50:54 +0800
+Date: Mon, 8 Aug 2022 16:04:01 +0800
 In-Reply-To: <20220805101459.3386-4-rex-bc.chen@mediatek.com>
 References: <20220805101459.3386-1-rex-bc.chen@mediatek.com>
 	 <20220805101459.3386-4-rex-bc.chen@mediatek.com>
@@ -70,8 +70,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220807_231211_588917_DF5BD077 
-X-CRM114-Status: GOOD (  18.60  )
+X-CRM114-CacheID: sfid-20220808_010422_242565_F8933B55 
+X-CRM114-Status: GOOD (  20.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,30 +121,34 @@ On Fri, 2022-08-05 at 18:14 +0800, Bo-Chen Chen wrote:
 
 [snip]
 
-> +#define MTK_DP_ENC0_P0_3038			(ENC0_OFFSET + 0x38)
-> +#define VIDEO_SOURCE_SEL_DP_ENC0_P0_MASK	BIT(11)
-> +#define VIDEO_SOURCE_SEL_DP_ENC0_P0_SHIFT	(BIT(0) | BIT(1) |
-> BIT(3))
-
-It's not necessary to define a symbol for shift because it's trivial
-that we understand it's a shift.
-
 > +
-> +#define MTK_DP_ENC0_P0_303C			(ENC0_OFFSET + 0x3C)
-> +#define SRAM_START_READ_THRD_DP_ENC0_P0_MASK	GENMASK(5, 0)
-> +#define SRAM_START_READ_THRD_DP_ENC0_P0_SHIFT	0
+> +static enum drm_mode_status
+> +mtk_dp_bridge_mode_valid(struct drm_bridge *bridge,
+> +			 const struct drm_display_info *info,
+> +			 const struct drm_display_mode *mode)
+> +{
+> +	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
+> +	u32 rx_linkrate = (u32)mtk_dp->train_info.link_rate * 27000;
+> +	u32 bpp = info->color_formats & DRM_COLOR_FORMAT_YCBCR422 ? 16
+> : 24;
+> +
+> +	if (rx_linkrate * mtk_dp->train_info.lane_count < mode->clock *
+> bpp / 8)
+> +		return MODE_CLOCK_HIGH;
+> +
+> +	if (mode->clock > 600000)
 
-Ditto.
-
-> +#define VIDEO_COLOR_DEPTH_DP_ENC0_P0_MASK	GENMASK(10, 8)
-> +#define VIDEO_COLOR_DEPTH_DP_ENC0_P0_SHIFT	BIT(3)
-
-Ditto.
+If the clock has pass the linkrate and land_count limitation, the clock
+would be OK because the linkrate and lane_count is trained. Why need to
+check 600000?
 
 Regards,
 CK
 
+> +		return MODE_CLOCK_HIGH;
 > +
-> 
+> +	return MODE_OK;
+> +}
+> +
 
 
