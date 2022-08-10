@@ -4,63 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1951C00140
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Aug 2022 21:16:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31C50C00140
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Aug 2022 22:05:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xn/YDW1oxSCTPE3EsCbcQZP4Vaq6nuvLGE6elbjLbvw=; b=rPLPGV9Y0ETeLGX2tJMBl/tRqh
-	R1/WeK+zxd3zxJhWFs3i3dgMzmqsTQv0RG8sDIehpb/GrJObm/fuAVkl1Mg1biOXGusBnh87rv2N5
-	LgEh/VICBPl72w5MwJ1FLUfzAjdu/1szDlQT3Jk5Wl1OCgJ03xPJWwN53rbiQM7Nq1bMSnNWFOKB9
-	EDcdSqJoeIMhgaK7gt730BSQ9x2uR2CHEO9x7k4/ioIl3N3Oy9tHxgxySWySouVgg5DkkSoEoyawg
-	8xrsciNMEOgzifeBG3DWWBnd9UyBkZ4dGIljxfJyf0PpxklWa0k/VRUBAE75CbcnpGM3pTnEviVTO
-	+dX1R6SQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YYJjRLucIChyK6APevUjSlHLzhvc7kx5V1ce89D+Ci0=; b=lGB2j1aNi7o01+cAVbf8/n3Bdl
+	U9odNpYFCpiCGRMmrzH+ZN/B9JbK+d25CaJn1ZWX1DS4xSsNJ5dm/ADeuyMimY30b1P8NDTVfZV4U
+	AbszhEY2xfp7bZaaBrpWGkyOaXUe8Vu7+WWunu4BpxuG9wygR66iuRTdhlCwG9v3wbcUs2ubMQUvv
+	E6Q9Jv4RZ3YT62A4clZW7iIM8E4xJoh7htU7dLMcDSGf1/gQcHcM7x7skVUTJ2YLK7nrBp9mfvtKf
+	GW1MuWRCtY5npo4TGiWVVMvANqLwpefVkkXE0VPvDuII3rZVvJDnTzJoMDy+6CBfBcmPPDXgEyG7p
+	jnEyvExQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oLt3K-00F3tg-40; Wed, 10 Aug 2022 21:15:46 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oLtp7-00FcXJ-Ej; Wed, 10 Aug 2022 22:05:09 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oLt32-00F3fI-TJ; Wed, 10 Aug 2022 21:15:30 +0000
-Received: from notapiano (korma.collabora.co.uk [168.119.224.208])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5965D6601C74;
-	Wed, 10 Aug 2022 22:15:19 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1660166122;
-	bh=/jwBuBx79c+lk7i4kE7uZcAxqKWyDiBWEZ+cunWmR8o=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GvWzDwX0VnghTEO0QFED/hL1bYc0BmK5NdO9GgXLRMZBmo4xFdsI1+HUKIexdrZU3
-	 t1kciV686A0kO1LKnmvEBDmN+HU/UKXcHqBwOB9IXx4viufCZbIt9AWT3vohoycFYh
-	 j5SrFZnSKHHuMJHCXm4D8urFnrjLTBptx49lPhnwjMG4qbYz0XIBWY+mMuQU5KCZdo
-	 mZwj59EUoqrrCEE1tqhQVnkytD8qIB6mRQ4BI55in0xWVcqUVI7veJatspDIz3HqTo
-	 q1hzwfwFbF3x7fmqd8OycPrqam9pIxQ7tqz54EFzf/QX+esMGspdF9PKcuU7Efp3c3
-	 +hmmAOJaqc7gA==
-Date: Wed, 10 Aug 2022 17:15:14 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
-	daniel@ffwll.ch, matthias.bgg@gmail.com, rex-bc.chen@mediatek.com,
-	jitao.shi@mediatek.com, xinlei.lee@mediatek.com,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] drm/mediatek: dsi: Add atomic {destroy,duplicate}_state,
- reset callbacks
-Message-ID: <20220810211514.nmufrsi6gssb2kel@notapiano>
-References: <20220721172727.14624-1-angelogioacchino.delregno@collabora.com>
+	id 1oLtou-00FcIT-Dy; Wed, 10 Aug 2022 22:04:57 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id q16so15524851pgq.6;
+        Wed, 10 Aug 2022 15:04:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc;
+        bh=YYJjRLucIChyK6APevUjSlHLzhvc7kx5V1ce89D+Ci0=;
+        b=Ina7MvM0fw6Rnu6mFHPASwMT5BfxaVoY0EkYmfHFiRlq+aIBRfdaT68FfyXhysiSa8
+         jXa5mn3ydiUXb72u7LujBk2s48+ssLJaze4g3fA3VI6amiDU5R7P0g+1thVgSJ6I+7NS
+         zEnpr0U557hWqpMmL4d5cB4J6SQKc+OXApWJv/iiWp3PAcTUlIk+QZS0XhfZYAOa2tYL
+         mpyoZAIvG/mOyz2tgA9tUge7Hee5POFzm/aPXFGgBYYys816n9+7cQbGXsCY81dL2zJl
+         bj99Us/lnrMUHnzqwDCAwm9Q28BI/0QXabncSdDe7SEAAjo+Toy75RSnz1ZaWzodTvrG
+         4Nsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc;
+        bh=YYJjRLucIChyK6APevUjSlHLzhvc7kx5V1ce89D+Ci0=;
+        b=EMbC9JE+x98AQpDwzaAnog2sPPZ8E1PxGWBormIYcIen2Nadc0I8lemK+79r/8HzWz
+         gy/lTgmXw0q07HRo2tbLrVGkiVdguxsb+LBwbroED87vbdWVo4+R6Kaz3E1RHHE/KVrP
+         MxUqAZVdojFlUb+sooMADBZgDtg09Mbf9jmV9mg+MnfixgFqz55/EKbvfnHTtzufeO4u
+         6Bkf3mYR87Bsk/OAAxZEeCAB2bSjs9yM/iYldz+HWMnOjsg+/wd8RNETMXFG4BFCk2vD
+         nDVAYrD0nT836RhhZzlNgzf0dtdLb9wwgbK+txcIGZ9nZtPHI3YrT0HGV0qCdkltsA/I
+         FbEw==
+X-Gm-Message-State: ACgBeo13IFLuqX+jaJhaxgoatAxuYkszwAVDHE/b6eHqaP+Mfhbg7eya
+	2gMnDoSm3JLLN0MTbp4uk3Q=
+X-Google-Smtp-Source: AA6agR7MOkZdKiZUvC077NS2slfn3nrTZbPgsNCrIP7XpHTfuH83HFEwqnMTKb/cwOt9pR8K4MbsLQ==
+X-Received: by 2002:a63:c108:0:b0:41d:6bf3:6807 with SMTP id w8-20020a63c108000000b0041d6bf36807mr13939912pgf.157.1660169093850;
+        Wed, 10 Aug 2022 15:04:53 -0700 (PDT)
+Received: from rfl-device.localdomain ([39.124.24.102])
+        by smtp.gmail.com with ESMTPSA id x13-20020a170902a38d00b0016be6a554b5sm13366035pla.233.2022.08.10.15.04.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 10 Aug 2022 15:04:53 -0700 (PDT)
+From: Ruffalo Lavoisier <ruffalolavoisier@gmail.com>
+X-Google-Original-From: Ruffalo Lavoisier <RuffaloLavoisier@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Kalle Valo <kvalo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Ruffalo Lavoisier <RuffaloLavoisier@gmail.com>,
+	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] mt76: connac: fix in comment
+Date: Thu, 11 Aug 2022 07:04:44 +0900
+Message-Id: <20220810220445.8957-1-RuffaloLavoisier@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220721172727.14624-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220810_141529_199619_8734BB1B 
-X-CRM114-Status: GOOD (  16.92  )
+X-CRM114-CacheID: sfid-20220810_150456_487354_6B4D5BE8 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,58 +100,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 21, 2022 at 07:27:27PM +0200, AngeloGioacchino Del Regno wrote:
-> Add callbacks for atomic_destroy_state, atomic_duplicate_state and
-> atomic_reset to restore functionality of the DSI driver: this solves
-> vblank timeouts when another bridge is present in the chain.
-> 
-> Tested bridge chain: DSI <=> ANX7625 => aux-bus panel
-> 
-> Fixes: 7f6335c6a258 ("drm/mediatek: Modify dsi funcs to atomic operations")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Correct spelling on 'transmitted' in comment
 
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Tested-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Signed-off-by: Ruffalo Lavoisier <RuffaloLavoisier@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Tested on mt8183-jacuzzi-juniper. As part of enabling IGT tests on that machine
-in KernelCI, this regression needs to be fixed. [1]
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 9b17bd97ec09..972190f7b81f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -2648,7 +2648,7 @@ int mt76_connac_mcu_add_key(struct mt76_dev *dev, struct ieee80211_vif *vif,
+ }
+ EXPORT_SYMBOL_GPL(mt76_connac_mcu_add_key);
+ 
+-/* SIFS 20us + 512 byte beacon tranmitted by 1Mbps (3906us) */
++/* SIFS 20us + 512 byte beacon transmitted by 1Mbps (3906us) */
+ #define BCN_TX_ESTIMATE_TIME (4096 + 20)
+ void mt76_connac_mcu_bss_ext_tlv(struct sk_buff *skb, struct mt76_vif *mvif)
+ {
+-- 
+2.25.1
 
-Thanks,
-Nícolas
-
-[1] https://github.com/kernelci/kernelci-core/pull/1059
-
-> ---
-> 
-> Note: The commit that has been mentioned in the Fixes tag should
->       *not* have my Reviewed-by tag, as the author changed it but
->       erroneously retained the tag that I had released for an
->       earlier version of that commit (which was fine, but the new
->       version broke mtk_dsi!).
-> 
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index 9cc406e1eee1..5b624e0f5b0a 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -808,10 +808,13 @@ static void mtk_dsi_bridge_atomic_post_disable(struct drm_bridge *bridge,
->  
->  static const struct drm_bridge_funcs mtk_dsi_bridge_funcs = {
->  	.attach = mtk_dsi_bridge_attach,
-> +	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
->  	.atomic_disable = mtk_dsi_bridge_atomic_disable,
-> +	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
->  	.atomic_enable = mtk_dsi_bridge_atomic_enable,
->  	.atomic_pre_enable = mtk_dsi_bridge_atomic_pre_enable,
->  	.atomic_post_disable = mtk_dsi_bridge_atomic_post_disable,
-> +	.atomic_reset = drm_atomic_helper_bridge_reset,
->  	.mode_set = mtk_dsi_bridge_mode_set,
->  };
->  
-> -- 
-> 2.35.1
-> 
-> 
 
