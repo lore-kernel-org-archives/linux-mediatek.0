@@ -4,63 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88EB4C00140
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Aug 2022 16:47:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF570C00140
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Aug 2022 16:49:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZeK40Ft+5R9q5wipXEInTBvncIlqpyvU0zkDu9KKEBM=; b=CeDGrZgEfH7XYIEzl8OOS2hC6k
-	zhnISg7Y9aMR3+3WXuJAi+yeok5zJ6JjSwAP32SFguIJHFRUQy9VHuz5bTXooNF+mothVkE5G85I8
-	hi6VYHVqdtaFHahzMxlPD+DN2Ymk+8gtrtM/uPSlmdZAis1+Y4APuIoaFNA8V+0xDfQwP/Zm/d5dD
-	RKVfvNFK8brLE58lpvrnZmnl+ulHsMiK6i0QUkAhtUREALjPjTaR3RY5fG9sa8oSVjgV0mdsLd7bR
-	dzv+303WTm9WZg7ibushH5J1M68WRhwGOZwhGwdejlutTpU3sMKoFzHvNNfJNpTAdFANy5AaYxv4t
-	3zYKYQfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9OvaNNBpYBwgLNPnv7oZmElWAX/FthLtpvHqRRqBtkU=; b=BxXZyyJugxkk2roqdlevVQtYQ5
+	4F45g9P/7ssNWYNW5+BOPw09U0SxbJqyVC9a5U02lE4hPaxkMuUuL5ZbT64JJeBdsRvPzbsl7sVy3
+	PZdlUuIt6osBOtSnAUODqCzFuTnSMlDII+yAPacLi9HQAid3yXvluTzL7767F54rISGrW+rmaSMHq
+	Nn5vpDaktlX74jQ/BPpHugT20Wh2JIafBe3gB5G97QxN6u6Malc/ibJzaQaxYL9Rat/wNYHcRubX3
+	q/jjN2RI+ImBSBz5RiF32ELuZWPrbkYWCbp8Ryay+EGUC0HXQZZaACRYXlDYTLHiFPCySjx9Disl2
+	Bsw2AwSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oLorW-00D1ta-9J; Wed, 10 Aug 2022 16:47:18 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oLotV-00D2oX-NW; Wed, 10 Aug 2022 16:49:21 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oLorS-00D1pX-6n
-	for linux-mediatek@lists.infradead.org; Wed, 10 Aug 2022 16:47:16 +0000
-X-UUID: 73e71dcf2e62411aa9a14bab01886766-20220810
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.9,REQID:f3c0600f-9a83-424a-b3ed-e7a33df1a665,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_H
-	am,ACTION:release,TS:0
-X-CID-META: VersionHash:3d8acc9,CLOUDID:69a9f1fc-9e71-4a0f-ba6b-417998daea35,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 73e71dcf2e62411aa9a14bab01886766-20220810
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1674725072; Wed, 10 Aug 2022 09:47:06 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 11 Aug 2022 00:37:03 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 11 Aug 2022 00:37:03 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Josh Boyer <jwboyer@kernel.org>
-CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
-	<lorenzo.bianconi@redhat.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn
- Tsai <evelyn.tsai@mediatek.com>, <linux-firmware@kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 1/2] mt76: move move mt76_sta_stats to mt76_wcid
-Date: Thu, 11 Aug 2022 00:37:00 +0800
-Message-ID: <a9ded159fd293b25c745dea966e5b00a2601e56d.1660092593.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oLotQ-00D2i8-Uf
+	for linux-mediatek@lists.infradead.org; Wed, 10 Aug 2022 16:49:18 +0000
+Received: by mail-lf1-x131.google.com with SMTP id a9so21996792lfm.12
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Aug 2022 09:49:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=9OvaNNBpYBwgLNPnv7oZmElWAX/FthLtpvHqRRqBtkU=;
+        b=CFqmbTlVjqivEoe67/oqyI+2x+udBtDwihaeRDF2Cppaa1zBJPtTVpGj370B8XwYWH
+         fJiclMc72Ced+0tnOKQtmt4lisZ4xOasPgXe8LPaMcVi39LywC1vJ0VWKc0Ie+W+FDlZ
+         0z6zbvmKajLZB+nCfxrXiMGIHv1axn3xqNK+VGPaARJ7o3C4JjPxkQNqJyyfqNPx0mfJ
+         i1218/dzKTT+HTeoPFpSvv/9taQv2HgZeQ8Ao3aZT8vpxgaQtpb2cxfyf1wgJjGAG/IN
+         Q0WMlJMfZ+n3vu0MeWtajmQQJRMMzVHIkQiczjriI0ijoJ4ZTkG5ROhbdmx5nvUfwNcI
+         7Cpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=9OvaNNBpYBwgLNPnv7oZmElWAX/FthLtpvHqRRqBtkU=;
+        b=hxxcNub99tKxbTN4MJ+USBP4lD8+/6SbjvzMhsnPZGxoRtdmynfDF+ukoTOlS4bKr1
+         gQ7uYEXO2mP1shvnf7GpiIMKc033PDRFL1juVNJZtyjjTe6ZxkEW2cqaJ8REPnj2iDHe
+         Hr6yezTPB0Xz8P5sn2uWyzQHBEI3stRfB5wz19KW402yNAB+eTE9JZqVNJN8/Guiy9pJ
+         j/ye7Kndhf/5zcR8IHVXmsIUJ9rkYMwkGcD9NlwyaEJ5uGubeGfoCAgBFjH+FHXrQHNT
+         OGbm0TKCuJcPthnGJTU/o4ExlyoGaIZiwUzG/o55zY6IEx4EXW1V8tL/a5JnWcdFWfHP
+         2vGw==
+X-Gm-Message-State: ACgBeo2KcQnA4Q4XBN+XJU97nck/hE9h974S+JlGDMvIYz3qqvnRqSJM
+	m/WTGmqCXXuq+yrY5A9clBTzSA==
+X-Google-Smtp-Source: AA6agR4qPivxoDIsQnpqC+kG7cTrUaCsJ130eoJUjZyWkGIVYS+6ixZZ4ohyh/pZ4zaN2svHMlgsJA==
+X-Received: by 2002:a05:6512:c0c:b0:48d:1e9d:aa14 with SMTP id z12-20020a0565120c0c00b0048d1e9daa14mr1780455lfu.322.1660150154276;
+        Wed, 10 Aug 2022 09:49:14 -0700 (PDT)
+Received: from [192.168.1.39] ([83.146.140.105])
+        by smtp.gmail.com with ESMTPSA id l14-20020a19494e000000b0047f647414efsm395286lfj.190.2022.08.10.09.49.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 10 Aug 2022 09:49:13 -0700 (PDT)
+Message-ID: <5a6545cc-97a2-7aa8-7b67-6488154e9db3@linaro.org>
+Date: Wed, 10 Aug 2022 19:49:12 +0300
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH v4 1/4] dt-bindings: mediatek: watchdog: Fix compatible
+ fallbacks and example
+Content-Language: en-US
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+ <linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ nfraprado@collabora.com
+Cc: angelogioacchino.delregno@collabora.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20220721014845.19044-1-allen-kh.cheng@mediatek.com>
+ <20220721014845.19044-2-allen-kh.cheng@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220721014845.19044-2-allen-kh.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220810_094714_260403_3DC0ACE8 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20220810_094917_104678_38C41875 
+X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,198 +101,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a preliminary patch for WED's TxS support.
+On 21/07/2022 04:48, Allen-KH Cheng wrote:
+> The watchdog timer of mt8186. mt8195 and mt7986 have their DT data.
+> We should not use 'mediatek,mt6589-wdt' as fallback.
+> 
+> For mediatek,wdt example of mt8183, We remove mediatek,mt6589-wdt fallback.
+> 
+> Fixes:a45b408a020b("dt-bindings: watchdog: Add compatible for MediaTek MT8186")
+> Fixes:b326f2c85f3d("dt-bindings: watchdog: Add compatible for Mediatek MT8195")
+> Fixes:41e73feb1024("dt-bindings: watchdog: Add compatible for Mediatek MT7986")
+> Fixes:f43f97a0fc0e("dt-bindings: mediatek: mt8183: Add #reset-cells")
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt76.h     | 42 ++++++++++---------
- .../net/wireless/mediatek/mt76/mt76_connac.h  |  3 +-
- .../wireless/mediatek/mt76/mt76_connac_mac.c  |  4 +-
- .../net/wireless/mediatek/mt76/mt7915/mac.c   |  3 +-
- .../net/wireless/mediatek/mt76/mt7915/main.c  |  2 +-
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  2 -
- .../net/wireless/mediatek/mt76/mt7921/mac.c   |  3 +-
- .../net/wireless/mediatek/mt76/mt7921/main.c  |  2 +-
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 -
- 9 files changed, 29 insertions(+), 33 deletions(-)
+Missing spaces around SHA.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 4da77d47b0a6..a45dd038b967 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -252,6 +252,26 @@ struct mt76_queue_ops {
- 	void (*reset_q)(struct mt76_dev *dev, struct mt76_queue *q);
- };
- 
-+enum mt76_phy_type {
-+	MT_PHY_TYPE_CCK,
-+	MT_PHY_TYPE_OFDM,
-+	MT_PHY_TYPE_HT,
-+	MT_PHY_TYPE_HT_GF,
-+	MT_PHY_TYPE_VHT,
-+	MT_PHY_TYPE_HE_SU = 8,
-+	MT_PHY_TYPE_HE_EXT_SU,
-+	MT_PHY_TYPE_HE_TB,
-+	MT_PHY_TYPE_HE_MU,
-+	__MT_PHY_TYPE_HE_MAX,
-+};
-+
-+struct mt76_sta_stats {
-+	u64 tx_mode[__MT_PHY_TYPE_HE_MAX];
-+	u64 tx_bw[4];		/* 20, 40, 80, 160 */
-+	u64 tx_nss[4];		/* 1, 2, 3, 4 */
-+	u64 tx_mcs[16];		/* mcs idx */
-+};
-+
- enum mt76_wcid_flags {
- 	MT_WCID_FLAG_CHECK_PS,
- 	MT_WCID_FLAG_PS,
-@@ -299,6 +319,8 @@ struct mt76_wcid {
- 
- 	struct list_head list;
- 	struct idr pktid;
-+
-+	struct mt76_sta_stats stats;
- };
- 
- struct mt76_txq {
-@@ -815,26 +837,6 @@ struct mt76_power_limits {
- 	s8 ru[7][12];
- };
- 
--enum mt76_phy_type {
--	MT_PHY_TYPE_CCK,
--	MT_PHY_TYPE_OFDM,
--	MT_PHY_TYPE_HT,
--	MT_PHY_TYPE_HT_GF,
--	MT_PHY_TYPE_VHT,
--	MT_PHY_TYPE_HE_SU = 8,
--	MT_PHY_TYPE_HE_EXT_SU,
--	MT_PHY_TYPE_HE_TB,
--	MT_PHY_TYPE_HE_MU,
--	__MT_PHY_TYPE_HE_MAX,
--};
--
--struct mt76_sta_stats {
--	u64 tx_mode[__MT_PHY_TYPE_HE_MAX];
--	u64 tx_bw[4];		/* 20, 40, 80, 160 */
--	u64 tx_nss[4];		/* 1, 2, 3, 4 */
--	u64 tx_mcs[16];		/* mcs idx */
--};
--
- struct mt76_ethtool_worker_info {
- 	u64 *data;
- 	int idx;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-index d03365530ac1..851874f782c5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-@@ -355,8 +355,7 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
- 				 struct ieee80211_key_conf *key, int pid,
- 				 enum mt76_txq_id qid, u32 changed);
- bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
--				  int pid, __le32 *txs_data,
--				  struct mt76_sta_stats *stats);
-+				  int pid, __le32 *txs_data);
- void mt76_connac2_mac_decode_he_radiotap(struct mt76_dev *dev,
- 					 struct sk_buff *skb,
- 					 __le32 *rxv, u32 mode);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-index 18dea8e1fb20..d0a94cb6d08b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-@@ -551,9 +551,9 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
- EXPORT_SYMBOL_GPL(mt76_connac2_mac_write_txwi);
- 
- bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
--				  int pid, __le32 *txs_data,
--				  struct mt76_sta_stats *stats)
-+				  int pid, __le32 *txs_data)
- {
-+	struct mt76_sta_stats *stats = &wcid->stats;
- 	struct ieee80211_supported_band *sband;
- 	struct mt76_phy *mphy;
- 	struct ieee80211_tx_info *info;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 60ae834d95a6..3ae5f1359483 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1015,8 +1015,7 @@ static void mt7915_mac_add_txs(struct mt7915_dev *dev, void *data)
- 
- 	msta = container_of(wcid, struct mt7915_sta, wcid);
- 
--	mt76_connac2_mac_add_txs_skb(&dev->mt76, wcid, pid, txs_data,
--				     &msta->stats);
-+	mt76_connac2_mac_add_txs_skb(&dev->mt76, wcid, pid, txs_data);
- 	if (!wcid->sta)
- 		goto out;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index bd3386bf0f8a..090c52803052 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -1224,7 +1224,7 @@ static void mt7915_ethtool_worker(void *wi_data, struct ieee80211_sta *sta)
- 	if (msta->vif->mt76.idx != wi->idx)
- 		return;
- 
--	mt76_ethtool_worker(wi, &msta->stats);
-+	mt76_ethtool_worker(wi, &msta->wcid.stats);
- }
- 
- static
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 54ef2a12a443..1eb11617a625 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -127,8 +127,6 @@ struct mt7915_sta {
- 	unsigned long jiffies;
- 	unsigned long ampdu_state;
- 
--	struct mt76_sta_stats stats;
--
- 	struct mt76_connac_sta_key_conf bip;
- 
- 	struct {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 47f0aa81ab02..71596024d61d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -539,8 +539,7 @@ void mt7921_mac_add_txs(struct mt7921_dev *dev, void *data)
- 
- 	msta = container_of(wcid, struct mt7921_sta, wcid);
- 
--	mt76_connac2_mac_add_txs_skb(&dev->mt76, wcid, pid, txs_data,
--				     &msta->stats);
-+	mt76_connac2_mac_add_txs_skb(&dev->mt76, wcid, pid, txs_data);
- 	if (!wcid->sta)
- 		goto out;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 1438a9f8d1fd..e451280d9214 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -1045,7 +1045,7 @@ mt7921_ethtool_worker(void *wi_data, struct ieee80211_sta *sta)
- 	if (msta->vif->mt76.idx != wi->idx)
- 		return;
- 
--	mt76_ethtool_worker(wi, &msta->stats);
-+	mt76_ethtool_worker(wi, &msta->wcid.stats);
- }
- 
- static
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index c161031ac62a..ff109427b94c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -100,7 +100,6 @@ struct mt7921_sta {
- 
- 	unsigned long last_txs;
- 	unsigned long ampdu_state;
--	struct mt76_sta_stats stats;
- 
- 	struct mt76_connac_sta_key_conf bip;
- };
--- 
-2.36.1
-
+Best regards,
+Krzysztof
 
