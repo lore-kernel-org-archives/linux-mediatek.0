@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84162C00140
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Aug 2022 16:57:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B6E5C00140
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Aug 2022 17:11:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ddul03CNSFdwG10oEIvInCTND+aMqKYr8aKYBC14Gc8=; b=oifckaf91oyzf3x8oWZUhzOjLm
-	WgLBOYyx6Zm30RihBhfYi0siCWJ6kQHdVoRsPvhSJGjDxPMScvEiriV75dZzibF0ZuTJY2AUc2rr9
-	1LHzlwL7heCn/kwdLyAoOkUvPbX/0fGzwcv2A1TB9wHfd3qv2FOnedFvt4DChCx9KAGo3ZsQOWoJ0
-	KoKarJsZuJDy08KUOt8/o5Dp+ang/QTxFGplFF+kHlyJjvb+/h2rnfiDQD+FOu/go9OABvoJfzNjd
-	8go/FljPjYsWsC109LruescvcF+yU0MRP4SPH2i1rqy7FTtzXqq6ZnJGgH7kGUiGdW/imLuRpI8jg
-	O5ZuuEBQ==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZeK40Ft+5R9q5wipXEInTBvncIlqpyvU0zkDu9KKEBM=; b=xZXvMeTowT71mt08fZhyiyveqM
+	EqyMjEzOQ5DGx3QLEfYuaMTgF2KT8dxCBWllseYtXLf6Hu3FYOXERHxr4Xn2n6XKC5yruxIgHupjy
+	iTb+fZWnTTY1jJXBMxlPk7tM+ezXdA1LTs28Mt8NYEdJrl1ZoxwVK05hl6pmTw+BO6t4vcJfKI1zj
+	EWGQe4tlVuNaJSPQ+VrpfNb1f+IdPkhFCKXptBvmNwa9DH3F57uAz4Fvqzr79aeWHrIgwqD63VUo+
+	H9rIFDbtHQPZZvGSUTXkTO5Gel90tmWR1iyZmgC0oV08UN6ACa7mROhvcdZkzv0mesRSCtT53oVT4
+	LZapmhHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oLp1O-00D6dc-D6; Wed, 10 Aug 2022 16:57:30 +0000
+	id 1oLpEU-00DD7X-Ss; Wed, 10 Aug 2022 17:11:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oLp1C-00D6YG-Nq
-	for linux-mediatek@lists.infradead.org; Wed, 10 Aug 2022 16:57:28 +0000
-X-UUID: 5985b0c8e511416090773ac42373177f-20220810
+	id 1oLpEN-00DD1p-Oi
+	for linux-mediatek@lists.infradead.org; Wed, 10 Aug 2022 17:11:01 +0000
+X-UUID: 369cdf6606fb40d0b26e30366cd7f44e-20220810
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.9,REQID:57c45216-d56c-460d-be9f-197e26303797,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_H
-	am,ACTION:release,TS:5
-X-CID-META: VersionHash:3d8acc9,CLOUDID:19ce4c9c-da39-4e3b-a854-56c7d2111b46,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+X-CID-O-INFO: VERSION:1.1.9,REQID:11fb6a02-38c6-42d0-8a62-347247622bec,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_H
+	am,ACTION:release,TS:0
+X-CID-META: VersionHash:3d8acc9,CLOUDID:c3f84c9c-da39-4e3b-a854-56c7d2111b46,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 5985b0c8e511416090773ac42373177f-20220810
+X-UUID: 369cdf6606fb40d0b26e30366cd7f44e-20220810
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <ryder.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2040451814; Wed, 10 Aug 2022 09:57:08 -0700
+	with ESMTP id 1088243171; Wed, 10 Aug 2022 10:10:49 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 11 Aug 2022 00:37:04 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 11 Aug 2022 00:40:45 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 11 Aug 2022 00:37:04 +0800
+ 15.2.792.15 via Frontend Transport; Thu, 11 Aug 2022 00:40:45 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
-To: Josh Boyer <jwboyer@kernel.org>
-CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
-	<lorenzo.bianconi@redhat.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	"Evelyn Tsai" <evelyn.tsai@mediatek.com>, <linux-firmware@kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>,
-	Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-Subject: [PATCH 2/2] mt76: add PPDU based TxS support for WED device
-Date: Thu, 11 Aug 2022 00:37:01 +0800
-Message-ID: <dcd41df64a71d1a93fffe7c1d14dbcc7567b1482.1660092593.git.ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, <linux-wireless@vger.kernel.org>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 1/2] mt76: move move mt76_sta_stats to mt76_wcid
+Date: Thu, 11 Aug 2022 00:40:43 +0800
+Message-ID: <a9ded159fd293b25c745dea966e5b00a2601e56d.1660092593.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <a9ded159fd293b25c745dea966e5b00a2601e56d.1660092593.git.ryder.lee@mediatek.com>
-References: <a9ded159fd293b25c745dea966e5b00a2601e56d.1660092593.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220810_095725_838049_00A8657D 
-X-CRM114-Status: GOOD (  22.12  )
+X-CRM114-CacheID: sfid-20220810_101055_985606_0532603B 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,408 +73,199 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+Message-ID: <20220810164043.JMCT0FFxzoHYSiiaJ9Zo6IISXYUHgCy3zs5MrO7xsAo@z>
 
-Given that there's no data coming from network stack for binding flows,
-hence driver counts and reports station's statistics directly through
-NL80211_STA_INFO_* based on active PPDU based TxS for offloading data.
+This is a preliminary patch for WED's TxS support.
 
-Apart from that, WA firmware and its offloading engine (SDO) have hardcoded
-"2" as PID, so we introduce MT_PACKET_ID_WED to differentiate WED reporting.
-
-Note that PPDU format TxS is mutually exclusive with MT_TXD5_TX_STATUS_HOST.
-
-Co-developed-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
-Signed-off-by: Yi-Chia Hsieh <yi-chia.hsieh@mediatek.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h     |  7 +-
- .../net/wireless/mediatek/mt76/mt76_connac.h  |  2 +
- .../wireless/mediatek/mt76/mt76_connac2_mac.h |  8 ++
- .../wireless/mediatek/mt76/mt76_connac_mac.c  | 74 ++++++++++++-------
- .../net/wireless/mediatek/mt76/mt7915/mac.c   | 14 ++--
- .../net/wireless/mediatek/mt76/mt7915/main.c  | 17 +++++
- .../net/wireless/mediatek/mt76/mt7915/mmio.c  |  2 +
- .../net/wireless/mediatek/mt76/mt7915/pci.c   | 23 +++++-
- .../net/wireless/mediatek/mt76/mt7915/regs.h  |  4 +
- 9 files changed, 118 insertions(+), 33 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76.h     | 42 ++++++++++---------
+ .../net/wireless/mediatek/mt76/mt76_connac.h  |  3 +-
+ .../wireless/mediatek/mt76/mt76_connac_mac.c  |  4 +-
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   |  3 +-
+ .../net/wireless/mediatek/mt76/mt7915/main.c  |  2 +-
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  2 -
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   |  3 +-
+ .../net/wireless/mediatek/mt76/mt7921/main.c  |  2 +-
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 -
+ 9 files changed, 29 insertions(+), 33 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index a45dd038b967..2a86fc591e12 100644
+index 4da77d47b0a6..a45dd038b967 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -270,6 +270,10 @@ struct mt76_sta_stats {
- 	u64 tx_bw[4];		/* 20, 40, 80, 160 */
- 	u64 tx_nss[4];		/* 1, 2, 3, 4 */
- 	u64 tx_mcs[16];		/* mcs idx */
-+	u64 tx_bytes;
-+	u32 tx_packets;
-+	u32 tx_retries;
-+	u32 tx_failed;
+@@ -252,6 +252,26 @@ struct mt76_queue_ops {
+ 	void (*reset_q)(struct mt76_dev *dev, struct mt76_queue *q);
  };
  
++enum mt76_phy_type {
++	MT_PHY_TYPE_CCK,
++	MT_PHY_TYPE_OFDM,
++	MT_PHY_TYPE_HT,
++	MT_PHY_TYPE_HT_GF,
++	MT_PHY_TYPE_VHT,
++	MT_PHY_TYPE_HE_SU = 8,
++	MT_PHY_TYPE_HE_EXT_SU,
++	MT_PHY_TYPE_HE_TB,
++	MT_PHY_TYPE_HE_MU,
++	__MT_PHY_TYPE_HE_MAX,
++};
++
++struct mt76_sta_stats {
++	u64 tx_mode[__MT_PHY_TYPE_HE_MAX];
++	u64 tx_bw[4];		/* 20, 40, 80, 160 */
++	u64 tx_nss[4];		/* 1, 2, 3, 4 */
++	u64 tx_mcs[16];		/* mcs idx */
++};
++
  enum mt76_wcid_flags {
-@@ -364,7 +368,8 @@ struct mt76_rx_tid {
- #define MT_PACKET_ID_MASK		GENMASK(6, 0)
- #define MT_PACKET_ID_NO_ACK		0
- #define MT_PACKET_ID_NO_SKB		1
--#define MT_PACKET_ID_FIRST		2
-+#define MT_PACKET_ID_WED		2
-+#define MT_PACKET_ID_FIRST		3
- #define MT_PACKET_ID_HAS_RATE		BIT(7)
- /* This is timer for when to give up when waiting for TXS callback,
-  * with starting time being the time at which the DMA_DONE callback
+ 	MT_WCID_FLAG_CHECK_PS,
+ 	MT_WCID_FLAG_PS,
+@@ -299,6 +319,8 @@ struct mt76_wcid {
+ 
+ 	struct list_head list;
+ 	struct idr pktid;
++
++	struct mt76_sta_stats stats;
+ };
+ 
+ struct mt76_txq {
+@@ -815,26 +837,6 @@ struct mt76_power_limits {
+ 	s8 ru[7][12];
+ };
+ 
+-enum mt76_phy_type {
+-	MT_PHY_TYPE_CCK,
+-	MT_PHY_TYPE_OFDM,
+-	MT_PHY_TYPE_HT,
+-	MT_PHY_TYPE_HT_GF,
+-	MT_PHY_TYPE_VHT,
+-	MT_PHY_TYPE_HE_SU = 8,
+-	MT_PHY_TYPE_HE_EXT_SU,
+-	MT_PHY_TYPE_HE_TB,
+-	MT_PHY_TYPE_HE_MU,
+-	__MT_PHY_TYPE_HE_MAX,
+-};
+-
+-struct mt76_sta_stats {
+-	u64 tx_mode[__MT_PHY_TYPE_HE_MAX];
+-	u64 tx_bw[4];		/* 20, 40, 80, 160 */
+-	u64 tx_nss[4];		/* 1, 2, 3, 4 */
+-	u64 tx_mcs[16];		/* mcs idx */
+-};
+-
+ struct mt76_ethtool_worker_info {
+ 	u64 *data;
+ 	int idx;
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-index 851874f782c5..635192c878cb 100644
+index d03365530ac1..851874f782c5 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-@@ -354,6 +354,8 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
- 				 struct sk_buff *skb, struct mt76_wcid *wcid,
+@@ -355,8 +355,7 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
  				 struct ieee80211_key_conf *key, int pid,
  				 enum mt76_txq_id qid, u32 changed);
-+bool mt76_connac2_mac_fill_txs(struct mt76_dev *dev, struct mt76_wcid *wcid,
-+			       __le32 *txs_data);
  bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 				  int pid, __le32 *txs_data);
+-				  int pid, __le32 *txs_data,
+-				  struct mt76_sta_stats *stats);
++				  int pid, __le32 *txs_data);
  void mt76_connac2_mac_decode_he_radiotap(struct mt76_dev *dev,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac2_mac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac2_mac.h
-index 67ce216fb564..f33171bcd343 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac2_mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac2_mac.h
-@@ -158,6 +158,14 @@ enum {
- 
- #define MT_TXS4_TIMESTAMP		GENMASK(31, 0)
- 
-+/* PPDU based TXS */
-+#define MT_TXS5_MPDU_TX_BYTE		GENMASK(22, 0)
-+#define MT_TXS5_MPDU_TX_CNT		GENMASK(31, 23)
-+
-+#define MT_TXS6_MPDU_FAIL_CNT		GENMASK(31, 23)
-+
-+#define MT_TXS7_MPDU_RETRY_CNT		GENMASK(31, 23)
-+
- /* RXD DW1 */
- #define MT_RXD1_NORMAL_WLAN_IDX		GENMASK(9, 0)
- #define MT_RXD1_NORMAL_GROUP_1		BIT(11)
+ 					 struct sk_buff *skb,
+ 					 __le32 *rxv, u32 mode);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-index d0a94cb6d08b..34ac3d81a510 100644
+index 18dea8e1fb20..d0a94cb6d08b 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-@@ -490,6 +490,10 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
- 		p_fmt = mt76_is_mmio(dev) ? MT_TX_TYPE_CT : MT_TX_TYPE_SF;
- 		q_idx = wmm_idx * MT76_CONNAC_MAX_WMM_SETS +
- 			mt76_connac_lmac_mapping(skb_get_queue_mapping(skb));
-+
-+		/* counting non-offloading skbs */
-+		wcid->stats.tx_bytes += skb->len;
-+		wcid->stats.tx_packets++;
- 	}
- 
- 	val = FIELD_PREP(MT_TXD0_TX_BYTES, skb->len + sz_txd) |
-@@ -550,35 +554,29 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
- }
+@@ -551,9 +551,9 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
  EXPORT_SYMBOL_GPL(mt76_connac2_mac_write_txwi);
  
--bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
--				  int pid, __le32 *txs_data)
-+bool mt76_connac2_mac_fill_txs(struct mt76_dev *dev, struct mt76_wcid *wcid,
-+			       __le32 *txs_data)
+ bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
+-				  int pid, __le32 *txs_data,
+-				  struct mt76_sta_stats *stats)
++				  int pid, __le32 *txs_data)
  {
- 	struct mt76_sta_stats *stats = &wcid->stats;
++	struct mt76_sta_stats *stats = &wcid->stats;
  	struct ieee80211_supported_band *sband;
  	struct mt76_phy *mphy;
--	struct ieee80211_tx_info *info;
--	struct sk_buff_head list;
- 	struct rate_info rate = {};
--	struct sk_buff *skb;
- 	bool cck = false;
- 	u32 txrate, txs, mode;
- 
--	mt76_tx_status_lock(dev, &list);
--	skb = mt76_tx_status_skb_get(dev, wcid, pid, &list);
--	if (!skb)
--		goto out;
--
- 	txs = le32_to_cpu(txs_data[0]);
- 
--	info = IEEE80211_SKB_CB(skb);
--	if (!(txs & MT_TXS0_ACK_ERROR_MASK))
--		info->flags |= IEEE80211_TX_STAT_ACK;
--
--	info->status.ampdu_len = 1;
--	info->status.ampdu_ack_len = !!(info->flags &
--					IEEE80211_TX_STAT_ACK);
--
--	info->status.rates[0].idx = -1;
-+	/* PPDU based reporting */
-+	if (FIELD_GET(MT_TXS0_TXS_FORMAT, txs) > 1) {
-+		stats->tx_bytes +=
-+			le32_get_bits(txs_data[5], MT_TXS5_MPDU_TX_BYTE);
-+		stats->tx_packets +=
-+			le32_get_bits(txs_data[5], MT_TXS5_MPDU_TX_CNT);
-+		stats->tx_failed +=
-+			le32_get_bits(txs_data[6], MT_TXS6_MPDU_FAIL_CNT);
-+		stats->tx_retries +=
-+			le32_get_bits(txs_data[7], MT_TXS7_MPDU_RETRY_CNT);
-+	}
- 
- 	txrate = FIELD_GET(MT_TXS0_TX_RATE, txs);
- 
-@@ -613,7 +611,7 @@ bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 	case MT_PHY_TYPE_HT:
- 	case MT_PHY_TYPE_HT_GF:
- 		if (rate.mcs > 31)
--			goto out;
-+			return false;
- 
- 		rate.flags = RATE_INFO_FLAGS_MCS;
- 		if (wcid->rate.flags & RATE_INFO_FLAGS_SHORT_GI)
-@@ -621,7 +619,7 @@ bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 		break;
- 	case MT_PHY_TYPE_VHT:
- 		if (rate.mcs > 9)
--			goto out;
-+			return false;
- 
- 		rate.flags = RATE_INFO_FLAGS_VHT_MCS;
- 		break;
-@@ -630,14 +628,14 @@ bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 	case MT_PHY_TYPE_HE_TB:
- 	case MT_PHY_TYPE_HE_MU:
- 		if (rate.mcs > 11)
--			goto out;
-+			return false;
- 
- 		rate.he_gi = wcid->rate.he_gi;
- 		rate.he_dcm = FIELD_GET(MT_TX_RATE_DCM, txrate);
- 		rate.flags = RATE_INFO_FLAGS_HE_MCS;
- 		break;
- 	default:
--		goto out;
-+		return false;
- 	}
- 
- 	stats->tx_mode[mode]++;
-@@ -662,10 +660,34 @@ bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
- 	}
- 	wcid->rate = rate;
- 
--out:
--	if (skb)
--		mt76_tx_status_skb_done(dev, skb, &list);
-+	return true;
-+}
-+EXPORT_SYMBOL_GPL(mt76_connac2_mac_fill_txs);
-+
-+bool mt76_connac2_mac_add_txs_skb(struct mt76_dev *dev, struct mt76_wcid *wcid,
-+				  int pid, __le32 *txs_data)
-+{
-+	struct sk_buff_head list;
-+	struct sk_buff *skb;
- 
-+	mt76_tx_status_lock(dev, &list);
-+	skb = mt76_tx_status_skb_get(dev, wcid, pid, &list);
-+	if (skb) {
-+		struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
-+		bool noacked = !(info->flags & IEEE80211_TX_STAT_ACK);
-+
-+		if (!(le32_to_cpu(txs_data[0]) & MT_TXS0_ACK_ERROR_MASK))
-+			info->flags |= IEEE80211_TX_STAT_ACK;
-+
-+		info->status.ampdu_len = 1;
-+		info->status.ampdu_ack_len = !noacked;
-+		info->status.rates[0].idx = -1;
-+
-+		wcid->stats.tx_failed += noacked;
-+
-+		mt76_connac2_mac_fill_txs(dev, wcid, txs_data);
-+		mt76_tx_status_skb_done(dev, skb, &list);
-+	}
- 	mt76_tx_status_unlock(dev, &list);
- 
- 	return !!skb;
+ 	struct ieee80211_tx_info *info;
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 3ae5f1359483..aec6c00f35e2 100644
+index 60ae834d95a6..3ae5f1359483 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -176,7 +176,7 @@ static void mt7915_mac_sta_poll(struct mt7915_dev *dev)
- 		/*
- 		 * We don't support reading GI info from txs packets.
- 		 * For accurate tx status reporting and AQL improvement,
--		  we need to make sure that flags match so polling GI
-+		 * we need to make sure that flags match so polling GI
- 		 * from per-sta counters directly.
- 		 */
- 		rate = &msta->wcid.rate;
-@@ -1001,7 +1001,7 @@ static void mt7915_mac_add_txs(struct mt7915_dev *dev, void *data)
- 	wcidx = le32_get_bits(txs_data[2], MT_TXS2_WCID);
- 	pid = le32_get_bits(txs_data[3], MT_TXS3_PID);
- 
--	if (pid < MT_PACKET_ID_FIRST)
-+	if (pid < MT_PACKET_ID_WED)
- 		return;
- 
- 	if (wcidx >= mt7915_wtbl_size(dev))
-@@ -1015,7 +1015,11 @@ static void mt7915_mac_add_txs(struct mt7915_dev *dev, void *data)
+@@ -1015,8 +1015,7 @@ static void mt7915_mac_add_txs(struct mt7915_dev *dev, void *data)
  
  	msta = container_of(wcid, struct mt7915_sta, wcid);
  
--	mt76_connac2_mac_add_txs_skb(&dev->mt76, wcid, pid, txs_data);
-+	if (pid == MT_PACKET_ID_WED)
-+		mt76_connac2_mac_fill_txs(&dev->mt76, wcid, txs_data);
-+	else
-+		mt76_connac2_mac_add_txs_skb(&dev->mt76, wcid, pid, txs_data);
-+
+-	mt76_connac2_mac_add_txs_skb(&dev->mt76, wcid, pid, txs_data,
+-				     &msta->stats);
++	mt76_connac2_mac_add_txs_skb(&dev->mt76, wcid, pid, txs_data);
  	if (!wcid->sta)
  		goto out;
  
-@@ -1046,7 +1050,7 @@ bool mt7915_rx_check(struct mt76_dev *mdev, void *data, int len)
- 		return false;
- 	case PKT_TYPE_TXS:
- 		for (rxd += 2; rxd + 8 <= end; rxd += 8)
--		    mt7915_mac_add_txs(dev, rxd);
-+			mt7915_mac_add_txs(dev, rxd);
- 		return false;
- 	case PKT_TYPE_RX_FW_MONITOR:
- 		mt7915_debugfs_rx_fw_monitor(dev, data, len);
-@@ -1083,7 +1087,7 @@ void mt7915_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
- 		break;
- 	case PKT_TYPE_TXS:
- 		for (rxd += 2; rxd + 8 <= end; rxd += 8)
--		    mt7915_mac_add_txs(dev, rxd);
-+			mt7915_mac_add_txs(dev, rxd);
- 		dev_kfree_skb(skb);
- 		break;
- 	case PKT_TYPE_RX_FW_MONITOR:
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 090c52803052..89b519cfd14c 100644
+index bd3386bf0f8a..090c52803052 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -1010,6 +1010,23 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
- 	}
- 	sinfo->txrate.flags = txrate->flags;
- 	sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_BITRATE);
-+
-+	/* offloading flows bypass networking stack, so driver counts and
-+	 * reports sta statistics via NL80211_STA_INFO when WED is active.
-+	 */
-+	if (mtk_wed_device_active(&phy->dev->mt76.mmio.wed)) {
-+		sinfo->tx_bytes = msta->wcid.stats.tx_bytes;
-+		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_BYTES64);
-+
-+		sinfo->tx_packets = msta->wcid.stats.tx_packets;
-+		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_PACKETS);
-+
-+		sinfo->tx_failed = msta->wcid.stats.tx_failed;
-+		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_FAILED);
-+
-+		sinfo->tx_retries = msta->wcid.stats.tx_retries;
-+		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_TX_RETRIES);
-+	}
+@@ -1224,7 +1224,7 @@ static void mt7915_ethtool_worker(void *wi_data, struct ieee80211_sta *sta)
+ 	if (msta->vif->mt76.idx != wi->idx)
+ 		return;
+ 
+-	mt76_ethtool_worker(wi, &msta->stats);
++	mt76_ethtool_worker(wi, &msta->wcid.stats);
  }
  
- static void mt7915_sta_rc_work(void *data, struct ieee80211_sta *sta)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index c1256defbea3..7bd5f6725d7b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -75,6 +75,7 @@ static const u32 mt7915_offs[] = {
- 	[AGG_AWSCR0]		= 0x05c,
- 	[AGG_PCR0]		= 0x06c,
- 	[AGG_ACR0]		= 0x084,
-+	[AGG_ACR4]		= 0x08c,
- 	[AGG_MRCR]		= 0x098,
- 	[AGG_ATCR1]		= 0x0f0,
- 	[AGG_ATCR3]		= 0x0f4,
-@@ -148,6 +149,7 @@ static const u32 mt7916_offs[] = {
- 	[AGG_AWSCR0]		= 0x030,
- 	[AGG_PCR0]		= 0x040,
- 	[AGG_ACR0]		= 0x054,
-+	[AGG_ACR4]		= 0x05c,
- 	[AGG_MRCR]		= 0x068,
- 	[AGG_ATCR1]		= 0x1a8,
- 	[AGG_ATCR3]		= 0x080,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-index d74f609775d3..16a5ce352e5f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-@@ -12,7 +12,7 @@
- #include "mac.h"
- #include "../trace.h"
+ static
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 54ef2a12a443..1eb11617a625 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -127,8 +127,6 @@ struct mt7915_sta {
+ 	unsigned long jiffies;
+ 	unsigned long ampdu_state;
  
--static bool wed_enable = false;
-+static bool wed_enable;
- module_param(wed_enable, bool, 0644);
+-	struct mt76_sta_stats stats;
+-
+ 	struct mt76_connac_sta_key_conf bip;
  
- static LIST_HEAD(hif_list);
-@@ -99,6 +99,7 @@ static int mt7915_pci_hif2_probe(struct pci_dev *pdev)
- static int mt7915_wed_offload_enable(struct mtk_wed_device *wed)
- {
- 	struct mt7915_dev *dev;
-+	struct mt7915_phy *phy;
- 	int ret;
+ 	struct {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index 47f0aa81ab02..71596024d61d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -539,8 +539,7 @@ void mt7921_mac_add_txs(struct mt7921_dev *dev, void *data)
  
- 	dev = container_of(wed, struct mt7915_dev, mt76.mmio.wed);
-@@ -112,18 +113,38 @@ static int mt7915_wed_offload_enable(struct mtk_wed_device *wed)
- 	if (!ret)
- 		return -EAGAIN;
+ 	msta = container_of(wcid, struct mt7921_sta, wcid);
  
-+	phy = &dev->phy;
-+	mt76_set(dev, MT_AGG_ACR4(phy->band_idx), MT_AGG_ACR_PPDU_TXS2H);
-+
-+	phy = dev->mt76.phys[MT_BAND1] ? dev->mt76.phys[MT_BAND1]->priv : NULL;
-+	if (phy)
-+		mt76_set(dev, MT_AGG_ACR4(phy->band_idx),
-+			 MT_AGG_ACR_PPDU_TXS2H);
-+
- 	return 0;
+-	mt76_connac2_mac_add_txs_skb(&dev->mt76, wcid, pid, txs_data,
+-				     &msta->stats);
++	mt76_connac2_mac_add_txs_skb(&dev->mt76, wcid, pid, txs_data);
+ 	if (!wcid->sta)
+ 		goto out;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 1438a9f8d1fd..e451280d9214 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -1045,7 +1045,7 @@ mt7921_ethtool_worker(void *wi_data, struct ieee80211_sta *sta)
+ 	if (msta->vif->mt76.idx != wi->idx)
+ 		return;
+ 
+-	mt76_ethtool_worker(wi, &msta->stats);
++	mt76_ethtool_worker(wi, &msta->wcid.stats);
  }
  
- static void mt7915_wed_offload_disable(struct mtk_wed_device *wed)
- {
- 	struct mt7915_dev *dev;
-+	struct mt7915_phy *phy;
+ static
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index c161031ac62a..ff109427b94c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -100,7 +100,6 @@ struct mt7921_sta {
  
- 	dev = container_of(wed, struct mt7915_dev, mt76.mmio.wed);
+ 	unsigned long last_txs;
+ 	unsigned long ampdu_state;
+-	struct mt76_sta_stats stats;
  
- 	spin_lock_bh(&dev->mt76.token_lock);
- 	dev->mt76.token_size = MT7915_TOKEN_SIZE;
- 	spin_unlock_bh(&dev->mt76.token_lock);
-+
-+	/* MT_TXD5_TX_STATUS_HOST (MPDU format) has higher priority than
-+	 * MT_AGG_ACR_PPDU_TXS2H (PPDU format) even though ACR bit is set.
-+	 */
-+	phy = &dev->phy;
-+	mt76_clear(dev, MT_AGG_ACR4(phy->band_idx), MT_AGG_ACR_PPDU_TXS2H);
-+
-+	phy = dev->mt76.phys[MT_BAND1] ? dev->mt76.phys[MT_BAND1]->priv : NULL;
-+	if (phy)
-+		mt76_clear(dev, MT_AGG_ACR4(phy->band_idx),
-+			   MT_AGG_ACR_PPDU_TXS2H);
- }
- #endif
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-index 53061aa727e9..5920e705835a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-@@ -46,6 +46,7 @@ enum offs_rev {
- 	AGG_AWSCR0,
- 	AGG_PCR0,
- 	AGG_ACR0,
-+	AGG_ACR4,
- 	AGG_MRCR,
- 	AGG_ATCR1,
- 	AGG_ATCR3,
-@@ -465,6 +466,9 @@ enum offs_rev {
- #define MT_AGG_ACR_CFEND_RATE		GENMASK(13, 0)
- #define MT_AGG_ACR_BAR_RATE		GENMASK(29, 16)
- 
-+#define MT_AGG_ACR4(_band)		MT_WF_AGG(_band, __OFFS(AGG_ACR4))
-+#define MT_AGG_ACR_PPDU_TXS2H		BIT(1)
-+
- #define MT_AGG_MRCR(_band)		MT_WF_AGG(_band, __OFFS(AGG_MRCR))
- #define MT_AGG_MRCR_BAR_CNT_LIMIT		GENMASK(15, 12)
- #define MT_AGG_MRCR_LAST_RTS_CTS_RN		BIT(6)
+ 	struct mt76_connac_sta_key_conf bip;
+ };
 -- 
 2.36.1
 
