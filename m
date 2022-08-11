@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DDE6C25B0C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40B0FC25B0E
 	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Aug 2022 08:45:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,52 +12,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lsWSqA2HL9bDCW4avw/DgO2p3E9K5sHwSFYZt6gxnxY=; b=bg3UTAnxfbafOZIS9VNxw+TfRv
-	UTO1fAQcjhf3/UpUB48b6U9Dg4IIsczTbCEqGCL0uCXtWlrUA4Bb1vGZz3qb0Zv33+s/UWBi1oMvD
-	Y6JpiayJt97sbzGTSUg7dLFnAKeRt35XklwJiHs1YXEnG14BLvXG0r8tN9vmkvZ86+lYDyw+yybbQ
-	7M5U3CcNm2KqICvHfSRiuZzgjb5QKHy38cEuvcirB1QNWEAA7nFsCUWsIZl5cjLO3PSaPouqYp6I9
-	rYzrFUAR68pkS7K/v/lcS8I0HmJFNKug6B+XnUObYGU2zVX5oNE4sshooUdj00ohrnCobu1L9xkqq
-	yFgOhuBw==;
+	bh=5tIyJd7B0eaGhd67Ybtop510tDngvww4odk8IMMRG6s=; b=4CJDElUes9Hh/rnrjXkeD1CuwL
+	pnoh9TqEQPM0i2GJpf8TQU1hqsK1Nl4B3JvySiIQXghPhYcAKeisB3fjKsPvGke6lRNVmF1/tDyd/
+	qOYk5q5I8t76AhI3PGD8K4je+wmHbTujgxy9AaF+nhDWHoMrQDRuZ9I9or6mznRXd9dVcyFC8vtXT
+	mvdeQrP79FtMf97Vcm5jRCETqk2zMCP4ZuY0B8hqprXUZ5mceELJVLoLJc9bvQ7q70qL5zdhGGSfg
+	xm8V6dOpUYdfxbUeWyC7cDfNNfZ8PyeDaKqvm/SpEQoV54XLPVUZ+Oq0lBzpVyAW+wexLNqR0kd/9
+	821To/Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oM3oZ-00AQD3-0M; Thu, 11 Aug 2022 08:45:15 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1oM3oZ-00AQDL-PC; Thu, 11 Aug 2022 08:45:15 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oM3o8-00AQ15-Ko
-	for linux-mediatek@lists.infradead.org; Thu, 11 Aug 2022 08:44:50 +0000
-Received: by mail-ej1-x632.google.com with SMTP id gb36so32259584ejc.10
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Aug 2022 01:44:45 -0700 (PDT)
+	id 1oM3o5-00AQ0n-9r
+	for linux-mediatek@lists.infradead.org; Thu, 11 Aug 2022 08:44:49 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id b96so22152323edf.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Aug 2022 01:44:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=lsWSqA2HL9bDCW4avw/DgO2p3E9K5sHwSFYZt6gxnxY=;
-        b=T7VphdBfATr9q7YYOWkzhR2WASaWgaytkDtcX6Grl9VADQtt9aChWh3R4qsMzyEPQ2
-         dOta+R31mJ90LoR4XPvs55Qt18vy0h3rwGM4Qdp/JYvSBWgHrCiaZfeDcWV9yCIiWgjr
-         mSnaHa/MswRMtvqlwvezYYhyQKve0WoiETLeS/RVpK7OaKWJEcgAk/ig3kCu6L8i8ED9
-         6x+qiUP+YYYy3YUzZTczw0toC6XarmTXv6TU2J+eZX5wfe1ykixiDYbooxvohS8MuqJz
-         oiFQhwVt/U1qLPwN/BqD56JKn+GSbMQQ57XsoU1nyHx4agm8a6VjyiQ3ylaMjmNWhE0a
-         Drkg==
+        bh=5tIyJd7B0eaGhd67Ybtop510tDngvww4odk8IMMRG6s=;
+        b=59PQQYMw0Zm5ulpJrfvpl5YbbZlB3E3YXKz3F0lHJa6V9iyaHOXFllzSGUA/WttF5q
+         cu8gTEqEoMGsfp58/p3FdS3pDNMN5JgoWaO+ZPACoomPjbxXxxY99qb15ry/coipDDlL
+         ysRZoptSSvNz0FpRKYueVI75Be3rKGACAhrouLBKsiAGEH5aCd6t5npSHGot1XHmPZHZ
+         d2ZnbiE8aJodxHkc7bzA6LlFcohOuu5FyCG8nqxXzUPWxvB+FQDzBwM70Kqd/KMH6ywj
+         KPRPEkmjiF513VWcx3dkX3fg0U+V2vtqrNS5uwzka+VdOiDUe2pooDH6oLyJkoFgrROR
+         jdqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=lsWSqA2HL9bDCW4avw/DgO2p3E9K5sHwSFYZt6gxnxY=;
-        b=jnw1jw3DqDDYIX65lNXAgNlxD6W7jBFPW7IaIYtU2N0YxceKdgQcaE3kpIazYigPaA
-         nQ93FdWcs7CZ+oj5PIh1HDRQl22Ap0o+Mqs7rXvkI5oSGwksmovwmII2tZe99d1WwKfZ
-         UehH4ytRFejJZAAia8NQxJfjk9bVmLsuR29jPo4CGVrWCxmj9zEwiezJ+V3jwUC18Bw9
-         OdyiZwUB93/bJRYhKm9K6hxYOK+qISTaG9AWcLA22q6kAtjBoLTiIXZkygTuKANpCsgg
-         YmHXAGWuoxgKiry9Hj/1lS22F7M056EVERF2UVZ05fQcU0o50ysMDm9cWjic/MG6ABtX
-         i18Q==
-X-Gm-Message-State: ACgBeo3ONqVxaVzQlmEbfidGkfC3mbqF6dHl+z9AuzRVTfvyRud6LmKW
-	pCS1qUPSPhLoipYbRE1B1qGH4Q==
-X-Google-Smtp-Source: AA6agR72qAJm1q+utoby0dFLib1V9rCtlj6nYjVZgz2ip4o5zEoQXrnGANfzlF2y2dp9Cy5Auoya6g==
-X-Received: by 2002:a17:906:ee8e:b0:730:4a24:f311 with SMTP id wt14-20020a170906ee8e00b007304a24f311mr24182040ejb.420.1660207483867;
-        Thu, 11 Aug 2022 01:44:43 -0700 (PDT)
+        bh=5tIyJd7B0eaGhd67Ybtop510tDngvww4odk8IMMRG6s=;
+        b=7CVZ0XaQPokh3WZrEGA42UhD7MGWJ34EHBwiuUGZHLTCbb0Mt+zttTV4tpRQIkEWws
+         7Td5Fs/iNMZy3DOc3u7vrIO6ilhmTI9uL8c6JAFJB/iBWpvyfwQyYYXoPTEoe56482+T
+         6ysxK73WMb6iw7CS+H8CxPQs6174PCc1Fa59FgBts1VyTCOFmUIv+92ovBPsnZQ8fn0O
+         /IXgAlx9BcvrCe5D+JUdKDtXExKR+wJ2i9pVHTQUWWiRM+UnmEZgdgZnmk4SwWer+BdL
+         TYzljnHlTfokdgbEGSzp696Z6y1BdfaoGJQB7uOyJTKFfrdiBc4ErTqVBB9sdXYE7pRG
+         rhmA==
+X-Gm-Message-State: ACgBeo15q99ZZVB6qoYlNp7bnr8zGHBHWQvuEQf+N/WFd4Nlpop6WEMF
+	xYqXUZ71pzlkHPafwdOHUy4ihw==
+X-Google-Smtp-Source: AA6agR6jeK54Uy/TCm3EvDq24pgOJe+pznfoFX6xcVV9Pdh3UyU3/O14iqVLE5vRIMnGnrlKJY5YqQ==
+X-Received: by 2002:a05:6402:2398:b0:43d:fd2c:b0a2 with SMTP id j24-20020a056402239800b0043dfd2cb0a2mr30114294eda.172.1660207482897;
+        Thu, 11 Aug 2022 01:44:42 -0700 (PDT)
 Received: from blmsp.fritz.box ([2001:4090:a243:8036:200c:a862:4253:884])
-        by smtp.gmail.com with ESMTPSA id d15-20020aa7d5cf000000b0043d6ece495asm8799314eds.55.2022.08.11.01.44.42
+        by smtp.gmail.com with ESMTPSA id d15-20020aa7d5cf000000b0043d6ece495asm8799314eds.55.2022.08.11.01.44.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Aug 2022 01:44:43 -0700 (PDT)
+        Thu, 11 Aug 2022 01:44:42 -0700 (PDT)
 From: Markus Schneider-Pargmann <msp@baylibre.com>
 To: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
@@ -72,17 +72,17 @@ Cc: linux-clk@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Markus Schneider-Pargmann <msp@baylibre.com>
-Subject: [PATCH v3 3/4] clk: mediatek: Export required common code symbols
-Date: Thu, 11 Aug 2022 10:44:32 +0200
-Message-Id: <20220811084433.2598575-4-msp@baylibre.com>
+Subject: [PATCH v3 2/4] clk: mediatek: Provide mtk_devm_alloc_clk_data
+Date: Thu, 11 Aug 2022 10:44:31 +0200
+Message-Id: <20220811084433.2598575-3-msp@baylibre.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220811084433.2598575-1-msp@baylibre.com>
 References: <20220811084433.2598575-1-msp@baylibre.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220811_014448_710523_5EE3EF5C 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20220811_014445_357306_DB24C8BB 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,9 +97,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To make clk-mt8365 compilable as a module there are a few function
-symbols missing. This patch adds the required EXPORT_SYMBOL_GPL to the
-functions.
+Provide a helper that replaces the kzalloc with devm_kzalloc so error
+handling gets easier.
 
 Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
 ---
@@ -108,57 +107,75 @@ Notes:
     Changes in v3:
     - New patch
 
- drivers/clk/mediatek/clk-gate.c | 1 +
- drivers/clk/mediatek/clk-mtk.c  | 4 ++++
- 2 files changed, 5 insertions(+)
+ drivers/clk/mediatek/clk-mtk.c | 33 ++++++++++++++++++++++++++++-----
+ drivers/clk/mediatek/clk-mtk.h |  2 ++
+ 2 files changed, 30 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
-index 421806236228..0c867136e49d 100644
---- a/drivers/clk/mediatek/clk-gate.c
-+++ b/drivers/clk/mediatek/clk-gate.c
-@@ -261,6 +261,7 @@ int mtk_clk_register_gates_with_dev(struct device_node *node,
- 
- 	return PTR_ERR(hw);
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_register_gates_with_dev);
- 
- int mtk_clk_register_gates(struct device_node *node,
- 			   const struct mtk_gate *clks, int num,
 diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index a317e69cf298..22519e7ea74f 100644
+index b9188000ab3c..a317e69cf298 100644
 --- a/drivers/clk/mediatek/clk-mtk.c
 +++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -422,6 +422,7 @@ int mtk_clk_register_dividers(const struct mtk_clk_divider *mcds, int num,
+@@ -18,19 +18,42 @@
+ #include "clk-mtk.h"
+ #include "clk-gate.h"
  
- 	return PTR_ERR(hw);
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_register_dividers);
- 
- void mtk_clk_unregister_dividers(const struct mtk_clk_divider *mcds, int num,
- 				 struct clk_hw_onecell_data *clk_data)
-@@ -441,6 +442,7 @@ void mtk_clk_unregister_dividers(const struct mtk_clk_divider *mcds, int num,
- 		clk_data->hws[mcd->id] = ERR_PTR(-ENOENT);
- 	}
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_unregister_dividers);
- 
- int mtk_clk_simple_probe(struct platform_device *pdev)
+-struct clk_hw_onecell_data *mtk_alloc_clk_data(unsigned int clk_num)
++static void mtk_init_clk_data(struct clk_hw_onecell_data *clk_data,
++			      unsigned int clk_num)
  {
-@@ -475,6 +477,7 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
- 	mtk_free_clk_data(clk_data);
- 	return r;
+ 	int i;
++
++	clk_data->num = clk_num;
++
++	for (i = 0; i < clk_num; i++)
++		clk_data->hws[i] = ERR_PTR(-ENOENT);
++}
++
++struct clk_hw_onecell_data *mtk_devm_alloc_clk_data(struct device *dev,
++						    unsigned int clk_num)
++{
+ 	struct clk_hw_onecell_data *clk_data;
+ 
+-	clk_data = kzalloc(struct_size(clk_data, hws, clk_num), GFP_KERNEL);
++	clk_data = devm_kzalloc(dev, struct_size(clk_data, hws, clk_num),
++				GFP_KERNEL);
+ 	if (!clk_data)
+ 		return NULL;
+ 
+-	clk_data->num = clk_num;
++	mtk_init_clk_data(clk_data, clk_num);
+ 
+-	for (i = 0; i < clk_num; i++)
+-		clk_data->hws[i] = ERR_PTR(-ENOENT);
++	return clk_data;
++}
++EXPORT_SYMBOL_GPL(mtk_devm_alloc_clk_data);
++
++struct clk_hw_onecell_data *mtk_alloc_clk_data(unsigned int clk_num)
++{
++	struct clk_hw_onecell_data *clk_data;
++
++	clk_data = kzalloc(struct_size(clk_data, hws, clk_num), GFP_KERNEL);
++	if (!clk_data)
++		return NULL;
++
++	mtk_init_clk_data(clk_data, clk_num);
+ 
+ 	return clk_data;
  }
-+EXPORT_SYMBOL_GPL(mtk_clk_simple_probe);
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index adb1304d35d4..4390058d172c 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -182,6 +182,8 @@ void mtk_clk_unregister_dividers(const struct mtk_clk_divider *mcds, int num,
+ 				 struct clk_hw_onecell_data *clk_data);
  
- int mtk_clk_simple_remove(struct platform_device *pdev)
- {
-@@ -488,5 +491,6 @@ int mtk_clk_simple_remove(struct platform_device *pdev)
+ struct clk_hw_onecell_data *mtk_alloc_clk_data(unsigned int clk_num);
++struct clk_hw_onecell_data *mtk_devm_alloc_clk_data(struct device *dev,
++						    unsigned int clk_num);
+ void mtk_free_clk_data(struct clk_hw_onecell_data *clk_data);
  
- 	return 0;
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_simple_remove);
- 
- MODULE_LICENSE("GPL");
+ struct clk_hw *mtk_clk_register_ref2usb_tx(const char *name,
 -- 
 2.36.1
 
