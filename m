@@ -4,69 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2048FC19F2D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Aug 2022 07:06:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A3B4C25B0C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Aug 2022 08:00:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0IBPpZdboXw9OZnCu4zJtxSMjmCfMGs+4tQ6RiHjMAU=; b=cZ6CaWAXLBmENLzFucj2z2xBv4
-	IOv+vHo0pTlDah+Dqd4OO6LxbZ+0hhj/Q50a1h/Nd1ohyz7atMBfcD3pixa1G0vZXwA4OzPDFcIbq
-	BxAgrXYBINi6yNeTEvlKZGdLSftKoCTQPGMfnsAvYUBgOoLh1SK8eOAvaSY0UYaowSUMZ2SF6vrVH
-	02g/CMOx9/NmK05W69ZDRp7ir3KZnAEQH/0clXYPQCVKtuXiJtM3FZdgBaG5i8Y2g7lts4qH9u+Oy
-	bivszobfsf+ENuj4bqvWgXn0/JLUmTi+n3KZ8lTdvZJZi2zSJgdo/UUqUoFrJMeUhbLAG1eCZRM8i
-	UTHCwJyA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=61XhcT8p7U2ythcRq1ZKIH+rMJLYKYuleNkS3KVnsl4=; b=2aTSJWLyp6pwz8eQjZOPIWSYOH
+	ZP/AzZkhjgt4WGN8iGtrxAY/VrPBNdyDlJ8Qba2agv6MRW+VyxylBMFeXSLN7XeybmJCGgL2ZRZw4
+	opa0PXval6N6FLRBt12R0mAPe5vQvFEY5/p0BEPQzCy0Sr/CsrLSQLNSzweSN2qdus//VIotDOXov
+	F7ug3xEcruFNRzyzA4dMT5cc6EkAQhgzrN+GPyiv4I5qp+uXQre7RkGQneGJAhTi1GtbsvHphL4Sb
+	6znyihTyuNYVxVgkH3gT9EEPJHkUKit82NMVi6ZpTJaRAYI/MxIufDLTXMtdEcNGlBQvSrV3z0a+m
+	2pHvIzdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oM2Gm-007ljt-MS; Thu, 11 Aug 2022 07:06:16 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oM36q-00A7xH-VZ; Thu, 11 Aug 2022 08:00:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oM2GV-007lO1-09; Thu, 11 Aug 2022 07:06:00 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 79725B81E66;
-	Thu, 11 Aug 2022 07:05:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93B09C433C1;
-	Thu, 11 Aug 2022 07:05:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660201556;
-	bh=vgb3/iTI5YEipl1kcOFAk88wMPI+HRjfXvkzfOk4dAY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RMT4dl/aSPCmwBksC4KD8yM9CKqtexuoW8BAjVm5/qyIXmACTc126EsybA4SAAkqR
-	 VSbhbb/lS6dq6M5pLbOGzsIwflmiNBkKTxgQhzBrtxh3N5eVL0RR3Py1KGTaABU8LJ
-	 UxTzfX9FmjRjGr0os1hsW2k+KS4Yr+0YVwJKZqUOuu3nng7g0r5FV7uFnryne4IAMT
-	 9hSL+EGYbKqm5OdsnShfASP9NJ/8sVoOcJVkX0neg8Dt1/PzM85iWBeBZxMGlwXk+k
-	 kYQ0WSSeXhoy8CWIk191DG3jUlbQxOf2nvrqwCOg7TlsfJ5Nmqgj9LjLlyOIYwNJsD
-	 hQ0q2RF4GUmmA==
-Date: Thu, 11 Aug 2022 08:05:48 +0100
-From: Lee Jones <lee@kernel.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	MandyJH Liu <mandyjh.liu@mediatek.com>, iommu@lists.linux.dev,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6 06/20] dt-bindings: power: mediatek: Add bindings for
- MediaTek SCPSYS
-Message-ID: <YvSqTC0aV61sXbd3@google.com>
-References: <20220811025813.21492-1-tinghan.shen@mediatek.com>
- <20220811025813.21492-7-tinghan.shen@mediatek.com>
+	id 1oM36o-00A7o6-5E; Thu, 11 Aug 2022 08:00:03 +0000
+X-UUID: 14c9816caf0840efb1b5843e0f0660ab-20220811
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.9,REQID:a70ea08d-161b-4dd8-b094-04100654afe2,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_H
+	am,ACTION:release,TS:5
+X-CID-META: VersionHash:3d8acc9,CLOUDID:01be5d9c-da39-4e3b-a854-56c7d2111b46,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 14c9816caf0840efb1b5843e0f0660ab-20220811
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1408251052; Thu, 11 Aug 2022 00:59:47 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 11 Aug 2022 15:49:14 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 11 Aug 2022 15:49:13 +0800
+Message-ID: <267e2c23f488756ab3256f787750ef4979398279.camel@mediatek.com>
+Subject: Re: [PATCH v2] usb: common: usb-conn-gpio: Simplify some error
+ message
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-kernel@vger.kernel.org>, <kernel-janitors@vger.kernel.org>,
+	<linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Date: Thu, 11 Aug 2022 15:49:13 +0800
+In-Reply-To: <7505a9dfa1e097070c492d6f6f84afa2a490b040.1659763173.git.christophe.jaillet@wanadoo.fr>
+References: <7505a9dfa1e097070c492d6f6f84afa2a490b040.1659763173.git.christophe.jaillet@wanadoo.fr>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220811025813.21492-7-tinghan.shen@mediatek.com>
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220811_000559_202606_86C5D7FF 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20220811_010002_250226_529A686B 
+X-CRM114-Status: GOOD (  20.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,21 +78,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 11 Aug 2022, Tinghan Shen wrote:
-
-> The System Control Processor System (SCPSYS) has several power
-> management related tasks in the system. Add the bindings for it.
+On Tue, 2022-08-09 at 22:28 +0200, Christophe JAILLET wrote:
+> dev_err_probe() already prints the error code in a human readable
+> way, so
+> there is no need to duplicate it as a numerical value at the end of
+> the
+> message.
 > 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
+> Fixes: ddaf0d6dc467 ("usb: common: usb-conn-gpio: use dev_err_probe()
+> to print log")
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 > ---
->  .../bindings/mfd/mediatek,mt8195-scpsys.yaml  | 67 +++++++++++++++++++
->  .../power/mediatek,power-controller.yaml      |  2 +-
->  2 files changed, 68 insertions(+), 1 deletion(-)
->  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+> Change in v2:
+>   * keep the message on the same line of dev_err_probe() because the
+> line is
+>     still < 100 char   [Chunfeng Yun <chunfeng.yun@mediatek.com>]
+> ---
+>  drivers/usb/common/usb-conn-gpio.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/usb/common/usb-conn-gpio.c
+> b/drivers/usb/common/usb-conn-gpio.c
+> index b39c9f1c375d..44c5127175b7 100644
+> --- a/drivers/usb/common/usb-conn-gpio.c
+> +++ b/drivers/usb/common/usb-conn-gpio.c
+> @@ -208,10 +208,8 @@ static int usb_conn_probe(struct platform_device
+> *pdev)
+>  	if (PTR_ERR(info->vbus) == -ENODEV)
+>  		info->vbus = NULL;
+>  
+> -	if (IS_ERR(info->vbus)) {
+> -		ret = PTR_ERR(info->vbus);
+> -		return dev_err_probe(dev, ret, "failed to get vbus
+> :%d\n", ret);
+> -	}
+> +	if (IS_ERR(info->vbus))
+> +		return dev_err_probe(dev, PTR_ERR(info->vbus), "failed
+> to get vbus\n");
+>  
+>  	info->role_sw = usb_role_switch_get(dev);
+>  	if (IS_ERR(info->role_sw))
+Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
-Applied, thanks.
+Thanks
 
--- 
-Lee Jones [李琼斯]
+
 
