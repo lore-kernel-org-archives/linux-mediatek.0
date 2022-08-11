@@ -4,85 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FB2CC19F2A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Aug 2022 09:07:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 876EBC19F2D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Aug 2022 09:16:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AMPkpS8XZ9CZD7YiSg9zmbD0TWPYAuMvL4cZq8GvvrE=; b=22F69W8m+Xm+KfBzMTpzhZPCNK
-	l2BUCgVBBx+ryRzYhL8csQYI1sAiYHAMZPc1BWrGVcHeh7rJK2hexzv6aeL1fe5veIK4fPEBBrquY
-	A9lWHnlALcHcqN/j8OTy/n/rn70tu6nxPcvG1y8Qj2I4vm0LGT4JseKbqca9L1IA5Q7E4V93jlIE3
-	Ksl6jVgbX0e+S9D1dSnKC10lzlJWcw4uWdNgaUUKhFtfHoS4WbLjUXdqeOOi4UKoDXi20IFYsHdxw
-	CASQqKKBg5e3lWwR64YTupjs6lTBfSdtXR40JxnGJQ+TgGdt+UQUxCOJx9kswRAsuYf/BZudfcKgJ
-	PS5At1cA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eWYdVQgTkSshr+LnqPUerx5UBYrvRFihiIrrHfJRObk=; b=IrpQTclcUhZW6PGOjCQpn0g1PQ
+	AKBZ5yiQ38UoOPSfexTmdNBq/OFSexswzTe0r9KrZaGNS/rCF8SgNamkqBUWt0Mnjmz+Tp1iedsrU
+	f3KZQ6SjHAdivFO5ZwKrY+yyBCwiPnyLDPo0KaR9piVzvMU40LQr38pW41gfD5luWkVsDgyZSj5eA
+	gtNRpfuWwkVMxo8wwCMAWvD4c/JQ06xKXhlbbMXGCQ6mR6OCNPphd1mTlNv2V0GQEbcM5lo7Dem5V
+	jmg4MLK10uoHxOImT7MCpwseDKd6gRffpECI6daKU/qJ3sz/YJMAu2IlPRl1WuufJc7/0IxwRRfz0
+	uCM+lJ9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oM4A0-00Aamx-Tx; Thu, 11 Aug 2022 09:07:24 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1oM4IH-00AfCH-Ha; Thu, 11 Aug 2022 09:15:57 +0000
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oM49w-00Aail-Oa
-	for linux-mediatek@lists.infradead.org; Thu, 11 Aug 2022 09:07:23 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id fy5so1603602ejc.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Aug 2022 02:07:20 -0700 (PDT)
+	id 1oM4IE-00AfBB-DL
+	for linux-mediatek@lists.infradead.org; Thu, 11 Aug 2022 09:15:55 +0000
+Received: by mail-lj1-x231.google.com with SMTP id x10so1086219ljq.4
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Aug 2022 02:15:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc;
-        bh=AMPkpS8XZ9CZD7YiSg9zmbD0TWPYAuMvL4cZq8GvvrE=;
-        b=62a0C5PIahTCbPIksLIFFasCo8TkJnD0NrXBn75/X87Qr/o+/1NPhqnBEbWnu5Wcdk
-         lRYIYl5fXk0Dw9eEbPB1bObIWPebpURMO/843tj5b1d96igg9QQGJREzgVkUEQBd48r1
-         kxKpJKprjM5cQJlGQYHR2VbK+7+9No/cw7W3kOJZb+hNVit8SW9PG6zuwzPCxel/IOlU
-         x4Lj9TjdZwOgBZJn24Ou+97ylNvzLEaRNuj+hDRyPzdMqUWlkbPsCq/VA1u/yB0TsI/s
-         EbDs0yBi+n5roSPaQhaT3pbbdy0H7oramsx+uZ7R9vaKvyP1zLu85dJVZhVje0elW2YR
-         HHqg==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=eWYdVQgTkSshr+LnqPUerx5UBYrvRFihiIrrHfJRObk=;
+        b=V7SzdIVQUah6XvBKizvA1mVgIky9pI9QACts5UE/xHSbnXlzv5qvmt06tCaJpfdMEp
+         8LVG9IdKWBoImtN747jLTjxZsqEQ3SS/svIo8rGmJ/oEiKFkPfEhGmqErGXM58Zmaa3U
+         QgDqrWPMumitFhDxY4nqBRzTUmIUcSJnPGQoXXrYfpa+OvCbBU+5lbHFUthxydyGFpb4
+         wtkR+UzFC43D/+M/57s9tDYzX9kYGHpnFadSkFEFqkBFBkIpsa8vn8ngxL5OU9QgljRO
+         l2JghWSevhNV7NWvHiuF2PdGHxD2BVmk3WYK8lMj8nPIqWFkmNR/66LgmlSScYfjUelZ
+         YxeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
-        bh=AMPkpS8XZ9CZD7YiSg9zmbD0TWPYAuMvL4cZq8GvvrE=;
-        b=nUF2zHBXe6AYC506ZV0IJluIvNjYTEwF0o3LkAL9lp84btdK0RbjD5G2KPBZT+OOJz
-         cUzKESF8ADqdr8IEczUOXS3gOSbtseMfJ+xeh3EFX0WwEwW5JJ8/UptRudJPkerf0oDE
-         Fv5kuVUk/go2t/Uug6JcOsWSh/8fd9lkmc1R25TvGF+TD3rsKFRrGIFv4EZE93njjmBu
-         5RwruvF5E3sGhBfKiU/phlxjnXukTnhCz5gDMvXahywxquTCBeqfZIHVU28Mps1RuKI0
-         x865ZvYEuGLMpoMtQf5B+bPThhzgNsL7Pjb/WTwvyiqOjNSgzoqCrIHZoCamr/LrM9fz
-         GQwA==
-X-Gm-Message-State: ACgBeo0V2j4HJPtWAjZZUhK86kC2xC7ceoOjyew86jGq1OdtM8l3SNjj
-	0zp0PWmVuCEB97yYZ6yM+IDHQw==
-X-Google-Smtp-Source: AA6agR6FPq1KkD0ldPcxaEg0KRXTEf6/cyaUQQuox6k2VfpKYxcf47DjxelzwSrXqEQDqVxug6WiiA==
-X-Received: by 2002:a17:907:763c:b0:730:c378:b860 with SMTP id jy28-20020a170907763c00b00730c378b860mr22547616ejc.97.1660208839498;
-        Thu, 11 Aug 2022 02:07:19 -0700 (PDT)
-Received: from blmsp ([2001:4090:a243:8036:200c:a862:4253:884])
-        by smtp.gmail.com with ESMTPSA id m26-20020aa7c2da000000b0043c0fbdcd8esm8876699edp.70.2022.08.11.02.07.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Aug 2022 02:07:18 -0700 (PDT)
-Date: Thu, 11 Aug 2022 11:07:18 +0200
-From: Markus Schneider-Pargmann <msp@baylibre.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Fabien Parent <parent.f@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Fabien Parent <fparent@baylibre.com>
-Subject: Re: [PATCH v3 4/4] clk: mediatek: add driver for MT8365 SoC
-Message-ID: <20220811090718.spieeqcb5ogknlfc@blmsp>
-References: <20220811084433.2598575-1-msp@baylibre.com>
- <20220811084433.2598575-5-msp@baylibre.com>
- <dc7a4f78-4244-7425-a1c2-509172ec97de@linaro.org>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=eWYdVQgTkSshr+LnqPUerx5UBYrvRFihiIrrHfJRObk=;
+        b=jYwEB4rt5e9hj1hyiOLbfYzGoxHSCLip3nL3RJWLo81X5uFAbH26EMRwA599vE5IOO
+         JeTR4EZwOP2BdJE1uxNIkszl1q4PekS2yVbF49+/0mH5mS4SjminvlBGKdaecWqP+jje
+         4IC7+luLSVCDrB/9rZg3ICECwphigSkIdtdUmZxNLa1U5ePDkNRsS19pveSZZ0EmuQyo
+         wVcOtHOHeStpj7zhX9R6eAoHqRvxxS1tV5ymLXXQHJP9sHnZsZtKIrHcsj8l8icW3hKh
+         v9lzROwy9fj76LbaMCNJMx4E2o4jtfGy25UVqBvmiG/2Qp+Zj0hMF0IooVbulHnPVr3k
+         OG5w==
+X-Gm-Message-State: ACgBeo1uhy8KoZZK9hbwVT5RIfZce7UJrhjssPSEOODlB2Ntonc5+oYN
+	iu396OG+EVGfcjawAJczk10YcQ==
+X-Google-Smtp-Source: AA6agR53XfRpjtqJX/e2qIzfPhAibPRJPgQbeXyD0yMC1ANb0zWWn7gz9PDlDZC9gFwqwtlCvsKCCQ==
+X-Received: by 2002:a2e:2ac1:0:b0:25e:4b39:e3cb with SMTP id q184-20020a2e2ac1000000b0025e4b39e3cbmr10344846ljq.458.1660209352649;
+        Thu, 11 Aug 2022 02:15:52 -0700 (PDT)
+Received: from [192.168.1.39] ([83.146.140.105])
+        by smtp.gmail.com with ESMTPSA id j15-20020a056512028f00b0048b2be5320csm641183lfp.118.2022.08.11.02.15.50
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 11 Aug 2022 02:15:51 -0700 (PDT)
+Message-ID: <a063d48a-2096-ba5b-7f65-d55fec49d534@linaro.org>
+Date: Thu, 11 Aug 2022 12:15:50 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <dc7a4f78-4244-7425-a1c2-509172ec97de@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH v2] pmic: add mt6366 regulator document
+Content-Language: en-US
+To: "zhiyong.tao" <zhiyong.tao@mediatek.com>, lee.jones@linaro.org,
+ robh+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
+ broonie@kernel.org, eddie.huang@mediatek.com, a.zummo@towertech.it,
+ alexandre.belloni@bootlin.com, fshao@chromium.org
+Cc: sen.chu@mediatek.com, hui.liu@mediatek.com, allen-kh.cheng@mediatek.com,
+ hsin-hsiung.wang@mediatek.com, sean.wang@mediatek.com,
+ macpaul.lin@mediatek.com, wen.su@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ zhiyong tao <zhiyong.tao@mediatk.com>
+References: <20220728062749.18701-1-zhiyong.tao@mediatek.com>
+ <20220728062749.18701-2-zhiyong.tao@mediatek.com>
+ <03a13ed4-e7cd-6f7d-f8f7-9b1e6193e202@linaro.org>
+ <111e1073e1ce689e289e52c645a1be2e7dc7fe12.camel@mediatek.com>
+ <86ab77f5-8beb-7237-d6e2-734f52ca176b@linaro.org>
+ <3d120fdb5d26d1211f797e5a26e8af3f34439424.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <3d120fdb5d26d1211f797e5a26e8af3f34439424.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220811_020720_843657_633868AA 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20220811_021554_479554_0543F999 
+X-CRM114-Status: GOOD (  13.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,47 +105,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+On 11/08/2022 12:14, zhiyong.tao wrote:
+> On Thu, 2022-08-11 at 11:58 +0300, Krzysztof Kozlowski wrote:
+>> On 11/08/2022 11:42, zhiyong.tao wrote:
+>>>>
+>>>>>
+>>>>> Signed-off-by: zhiyong tao <zhiyong.tao@mediatk.com>
+>>>>> ---
+>>>>>  .../regulator/mediatek,mt6366-regulator.yaml  | 375
+>>>>> ++++++++++++++++++
+>>>>>  1 file changed, 375 insertions(+)
+>>>>
+>>>> Subject does not match subsystem.
+>>>
+>>> Hi Krzysztof,
+>>>
+>>> Do you mean that we should change the title like this:
+>>> regulator: dt-bindings: mediatek: add mt6366 regulator document
+>>> is it right?
+>>
+>> Yes. And remove redundant pieces so for example:
+>>
+>> regulator: dt-bindings: mediatek: add mt6366
+>> or:
+>> regulator: dt-bindings: add mediatek,mt6366
+> ==>
+> Thanks for your suggestion, we will fix it in next verison.
+>>
+>>
+>> (...)
+>>
+>>>>> +    patternProperties:
+>>>>> +      "^buck-
+>>>>> v(dram1|core|coresshub|proc11|proc12|gpu|s2|modem|s1)$":
+>>>>> +        type: object
+>>>>> +        $ref: "regulator.yaml#"
+>>>>
+>>>> No need for quotes.
+>>>
+>>> ==>
+>>> We will remove the line "$ref: "regulator.yaml#"" in next verison,
+>>> is
+>>> it right?
+>>
+>> No, it is not. Why do you want to remove it?
+> ==>
+> We don't understand "No need for quotes."which means.
+> Do you mean that we should remove the quotation marks.
+> We will change it like this:$ref: regulator.yaml#
+> is it right?
 
-On Thu, Aug 11, 2022 at 11:53:19AM +0300, Krzysztof Kozlowski wrote:
-> On 11/08/2022 11:44, Markus Schneider-Pargmann wrote:
-> > From: Fabien Parent <fparent@baylibre.com>
-> > 
-> > Add clock drivers for MT8365 SoC.
-> > 
-> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > ---
-> > 
-> > Notes:
-> >     Changes in v3:
-> >     - Changed all Kconfig options to be tristate
-> >     - Do not depend on ARM64
-> >     - Fix order of frees on probe errors.
-> >     - Use mtk_clk_register_gates_with_dev
-> >     - Fixed null clocks
-> >     - Removed clk26m_ck
-> >     - Use MUX_GATE_CLR_SET_UPD instead of custom MT8365_MUX_CLR_SET_UPD
-> >     - Use devm_clk_hw_register_mux for top_misc_muxes
-> >     - Use devm_clk_hw_register_gate for peri_clks and top_clks
-> >     - Fix checkpatch warnings
-> >     - Add missing MODULE_LICENSEs in all files
-> > 
-> >  drivers/clk/mediatek/Kconfig                  |   50 +
-> >  drivers/clk/mediatek/Makefile                 |    7 +
-> >  drivers/clk/mediatek/clk-mt8365-apu.c         |   55 +
-> >  drivers/clk/mediatek/clk-mt8365-cam.c         |   57 +
-> >  drivers/clk/mediatek/clk-mt8365-mfg.c         |   63 +
-> >  drivers/clk/mediatek/clk-mt8365-mm.c          |  112 ++
-> >  drivers/clk/mediatek/clk-mt8365-vdec.c        |   63 +
-> >  drivers/clk/mediatek/clk-mt8365-venc.c        |   52 +
-> >  drivers/clk/mediatek/clk-mt8365.c             | 1155 +++++++++++++++++
-> >  .../dt-bindings/clock/mediatek,mt8365-clk.h   |  179 ++-
-> 
-> No, bindings are always separate.
+Yes, remove the quotation marks. You wanted to remove entire line which
+is not correct. $ref should stay.
 
-Of course, I screwed up my rebasing here, sorry. Fixed for v4.
-
-Best,
-Markus
+Best regards,
+Krzysztof
 
