@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFCF5C19F2A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Aug 2022 15:48:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C9EDC25B0C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Aug 2022 16:00:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I/PjryqInJ7i7Yj59nqh4YHHVkYYXAuVHtZYKJoQjUA=; b=x3HtsfzNTIQJV0139rlAxJAntt
-	hlZe4TZZtFEDAnsh22juOb1prxwtSTXWcmEgEWHQbCT1SNikqfIgLYZWFAtekOXaDpzgmjLq6kuZw
-	CTDsWkd4wmc56S0qbemvnnl2Qe1HE157kH81/BsqniVEtvk/DCg83VKoyHVH1y3KchgzNERQdZ9Xz
-	Pm8bUdpXedEzbLFHKn7zKmuTMKNLWd80gsu0ImoGGvsqd9uKF1wjDSfbyCHjjeqXmGhTQqsDQTSfT
-	VtIJ5AAsBH24qHqU5v7LVONFQbTTulcnIYfShSmJpKVaxpk9u2KDNuHYLp5C/paexdNeIITRDVQ1/
-	7QHOhUfg==;
+	bh=o0dx0qbcqiE39h0IbVoj5hT2dyZy0CG6qc8I51k61bQ=; b=QUwcQgPVtVRBQjMME0EZec9DvX
+	Ofl9Rh3LY9Z66JGYr8A97FyCO8eFiCnLY6lqUntLzbFowi1Fe4n2uhNTBaa3bkd0Mb0qGLUtNa3bx
+	ly4/HK5Cg6wSLoQi8zK/xgpEpmdxug9SWf1dbgvJnCJnzSgHZ4Irtiqbn3OesaNUOqKivyotE9mbP
+	4A22r8JgSj8H6FBWIXzKIyp87O5YrFk/0yw3juL88Y695C5IR/6yZRtsmbZFUFaU66KYPIGrt1dD3
+	BbNr1/xoDtYwtBoUwspNSYcEk6TTqe/B2nQGqzr2jtvWDbY8+cYaU90RL5QrZsXYEz5t1pQG7/N0x
+	KX33EqkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMAQT-00EEfN-Q9; Thu, 11 Aug 2022 15:48:49 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oMAbh-00EbAm-8H; Thu, 11 Aug 2022 16:00:25 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMAOs-00ECzT-3e; Thu, 11 Aug 2022 15:47:16 +0000
+	id 1oMAbL-00EadV-VX; Thu, 11 Aug 2022 16:00:05 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B5ED3616FE;
-	Thu, 11 Aug 2022 15:47:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D5D0C433D7;
-	Thu, 11 Aug 2022 15:47:05 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 6E24D61341;
+	Thu, 11 Aug 2022 16:00:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED891C433D6;
+	Thu, 11 Aug 2022 15:59:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660232827;
-	bh=xizQ1FcyAgy3xUVeDsDcPWFhWdEEzYl0CwRjLQCek1c=;
+	s=k20201202; t=1660233601;
+	bh=2r2PnYBxb7RpjZbnQX3kszv4R2LwzqCDy706sRtJkCo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=SlOhIodFFLKhRJVzGBo/DNKEUOS0UD6S9ZYVsBEmhjiB+q76NQrjq3Xc6i9GDsaHj
-	 9AUzDPZQUldRqH6uDAhk5Bi2Dh0qAUHsvUxdrX+LhSfx7jPzrXoFRGGjY6xURAj/Zu
-	 6Ewx8Q9mz/c8Nu4r+ewfLovOrIGyCNLsor4rpLWTEgGVQfWWiejtLusH5JZmJkdhN4
-	 6wOB9vQ30savbr1xVKV6ZfAnXUgTNz1psRFWZn6N8iZAgNZCuKpc21UVKsblesAkK/
-	 CCEY8pi0UGdQedXQvG/dcRdp6npFxmGMOQBPSoHTWDeTbVeUBxoSMzjrvONj7XpMxj
-	 4m+cHn5UkmVpQ==
+	b=NCBMKYA6bkFP/86WtCRQL9rO49WzXfGygEuxPtBwE0GTD+EpKekNibb+H3FkpY7T1
+	 wDfoxjKg0iNZ98Dsy3DojhzSM30sYJyaxyWk8WRio30W0yE87kjL+l/sfbWTf8o657
+	 1foaM9hSwkN+g/6IEJ1MxTEwh5O43od7kGs6sUWHWMhPPu4B2Hhbihphg2UmzW/aDw
+	 Lb5X273SXprRl1Dup7ryiZxFBL+Rb3zrCuJ4yRhYX2DqwDu9vc8g2D2SvTmlFUBz5N
+	 3S7A/AwezVmAn/6Rq1677Ov60rfnx+INijp7O0/fiD3vK9YWNh4H5cevP6kymmNfeG
+	 bCnllIYYeb+jg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Hirokazu Honda <hiroh@chromium.org>,
-	Irui Wang <irui.wang@mediatek.com>,
+Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	tiffany.lin@mediatek.com,
-	andrew-ct.chen@mediatek.com,
 	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	tzungbi@google.com,
+	acourbot@chromium.org,
 	linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.18 44/93] media: mediatek: vcodec: Report supported bitrate modes
-Date: Thu, 11 Aug 2022 11:41:38 -0400
-Message-Id: <20220811154237.1531313-44-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 26/69] media: mediatek: vcodec: prevent kernel crash when scp ipi timeout
+Date: Thu, 11 Aug 2022 11:55:35 -0400
+Message-Id: <20220811155632.1536867-26-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220811154237.1531313-1-sashal@kernel.org>
-References: <20220811154237.1531313-1-sashal@kernel.org>
+In-Reply-To: <20220811155632.1536867-1-sashal@kernel.org>
+References: <20220811155632.1536867-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220811_084710_251450_C765D4C2 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20220811_090004_121672_996026E5 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,52 +84,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hirokazu Honda <hiroh@chromium.org>
+From: Yunfei Dong <yunfei.dong@mediatek.com>
 
-[ Upstream commit d8e8aa866ed8636fd6c1017c3d9453eab2922496 ]
+[ Upstream commit 9223415d47e1efe939fcc791870db8ce5bb6cc03 ]
 
-The media driver supports constant bitrate mode only.
-The supported rate control mode is reported through querymenu() and
-s_ctrl() fails if non constant bitrate mode (e.g. VBR) is requested.
+When SCP timeout during playing video, kernel crashes with following
+message. It's caused by accessing NULL pointer in vpu_dec_ipi_handler.
+This patch doesn't solve the root cause of NULL pointer, but merely
+prevent kernel crashed when encounter the NULL pointer.
 
-Signed-off-by: Hirokazu Honda <hiroh@chromium.org>
-Reviewed-by: Irui Wang <irui.wang@mediatek.com>
+After applied this patch, kernel keeps alive, only the video player turns
+to green screen.
+
+[67242.065474] pc : vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec]
+[67242.065485] [MTK_V4L2] level=0 fops_vcodec_open(),334:
+18000000.vcodec_dec decoder [135]
+[67242.065523] lr : scp_ipi_handler+0x11c/0x244 [mtk_scp]
+[67242.065540] sp : ffffffbb4207fb10
+[67242.065557] x29: ffffffbb4207fb30 x28: ffffffd00a1d5000
+[67242.065592] x27: 1ffffffa0143aa24 x26: 0000000000000000
+[67242.065625] x25: dfffffd000000000 x24: ffffffd0168bfdb0
+[67242.065659] x23: 1ffffff76840ff74 x22: ffffffbb41fa8a88
+[67242.065692] x21: ffffffbb4207fb9c x20: ffffffbb4207fba0
+[67242.065725] x19: ffffffbb4207fb98 x18: 0000000000000000
+[67242.065758] x17: 0000000000000000 x16: ffffffd042022094
+[67242.065791] x15: 1ffffff77ed4b71a x14: 1ffffff77ed4b719
+[67242.065824] x13: 0000000000000000 x12: 0000000000000000
+[67242.065857] x11: 0000000000000000 x10: dfffffd000000001
+[67242.065890] x9 : 0000000000000000 x8 : 0000000000000002
+[67242.065923] x7 : 0000000000000000 x6 : 000000000000003f
+[67242.065956] x5 : 0000000000000040 x4 : ffffffffffffffe0
+[67242.065989] x3 : ffffffd043b841b8 x2 : 0000000000000000
+[67242.066021] x1 : 0000000000000010 x0 : 0000000000000010
+[67242.066055] Call trace:
+[67242.066092]  vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec
+12220d230d83a7426fc38c56b3e7bc6066955bae]
+[67242.066119]  scp_ipi_handler+0x11c/0x244 [mtk_scp
+8fb69c2ef141dd3192518b952b65aba35627b8bf]
+[67242.066145]  mt8192_scp_irq_handler+0x70/0x128 [mtk_scp
+8fb69c2ef141dd3192518b952b65aba35627b8bf]
+[67242.066172]  scp_irq_handler+0xa0/0x114 [mtk_scp
+8fb69c2ef141dd3192518b952b65aba35627b8bf]
+[67242.066200]  irq_thread_fn+0x84/0xf8
+[67242.066220]  irq_thread+0x170/0x1ec
+[67242.066242]  kthread+0x2f8/0x3b8
+[67242.066264]  ret_from_fork+0x10/0x30
+[67242.066292] Code: 38f96908 35003628 91004340 d343fc08 (38f96908)
+
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
 Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../media/platform/mediatek/vcodec/mtk_vcodec_enc.c   | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ drivers/media/platform/mtk-vcodec/vdec_vpu_if.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-index c21367038c34..98d451ce2545 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-@@ -50,6 +50,14 @@ static int vidioc_venc_s_ctrl(struct v4l2_ctrl *ctrl)
- 	int ret = 0;
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+index 58b0e6fa8fd2..ccdd78f21702 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+@@ -42,6 +42,11 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+ 	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
+ 					(unsigned long)msg->ap_inst_addr;
  
- 	switch (ctrl->id) {
-+	case V4L2_CID_MPEG_VIDEO_BITRATE_MODE:
-+		mtk_v4l2_debug(2, "V4L2_CID_MPEG_VIDEO_BITRATE_MODE val= %d",
-+			       ctrl->val);
-+		if (ctrl->val != V4L2_MPEG_VIDEO_BITRATE_MODE_CBR) {
-+			mtk_v4l2_err("Unsupported bitrate mode =%d", ctrl->val);
-+			ret = -EINVAL;
-+		}
-+		break;
- 	case V4L2_CID_MPEG_VIDEO_BITRATE:
- 		mtk_v4l2_debug(2, "V4L2_CID_MPEG_VIDEO_BITRATE val = %d",
- 			       ctrl->val);
-@@ -1373,6 +1381,9 @@ int mtk_vcodec_enc_ctrls_setup(struct mtk_vcodec_ctx *ctx)
- 			       0, V4L2_MPEG_VIDEO_H264_LEVEL_4_0);
- 	v4l2_ctrl_new_std_menu(handler, ops, V4L2_CID_MPEG_VIDEO_VP8_PROFILE,
- 			       V4L2_MPEG_VIDEO_VP8_PROFILE_0, 0, V4L2_MPEG_VIDEO_VP8_PROFILE_0);
-+	v4l2_ctrl_new_std_menu(handler, ops, V4L2_CID_MPEG_VIDEO_BITRATE_MODE,
-+			       V4L2_MPEG_VIDEO_BITRATE_MODE_CBR,
-+			       0, V4L2_MPEG_VIDEO_BITRATE_MODE_CBR);
++	if (!vpu) {
++		mtk_v4l2_err("ap_inst_addr is NULL, did the SCP hang or crash?");
++		return;
++	}
++
+ 	mtk_vcodec_debug(vpu, "+ id=%X", msg->msg_id);
  
- 
- 	if (handler->error) {
+ 	if (msg->status == 0) {
 -- 
 2.35.1
 
