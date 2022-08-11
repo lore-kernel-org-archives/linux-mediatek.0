@@ -4,71 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C231C19F2A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Aug 2022 09:18:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A35E5C19F2A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Aug 2022 09:35:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LiVXk2XwzFDt8yLn3peMfVkSM9+eJCJ3bq5pHTyqyjs=; b=tfcCMuyZ57WdpIWHYCILnYpLlq
-	2RgI9ISgYDYriuhteFlmTOTYi2KwqXr0EU4Hus1GDU70DGYpiFhcS9OfPAujoHp4KHAQxUvVOlvWv
-	fxAG9oxMAnzo/JyuLI+lSGVZDFMS42MpXd85F1MELki/Bq9DdeCknT4yPhs18gDoliGBMiwtmdAA7
-	XnW3WL138sFL72IwVVAimwvSI6+ivTwCejm9S8ZfrJUAxm7iCu6pwwJ+885d5IV5cX38bvPgOODz9
-	Yf3ImvZDocqt3nLWzvov/7O+bdvKT0k27/vZy2wHp3Gls6PYCDz12+iv53+VwM4Pf6emxYrRYzRhZ
-	oGV6CmnA==;
+	bh=3ah6rUr9xsGq5injFXvpQ/BuHt4yI3KWi1ZKu8IrBUo=; b=G87FsRT/A6RRyV5ikVeX46/loT
+	oWGllY/wOwupaGchIZjlkbFnJa5krpEsnXu6S9LQI3TQGSS5dYl5Jwy3gUcKTGMC9GVlBECKwhd8w
+	sB6Ie/MAO+TeAVLgKeg48YFecrv3g1eoPLZYCswT8ssmc9yiXSjiJevjSrOTIbMcmon9ALqCIqTdB
+	EcvZ6j+od1AyvkTQ3Yi/iZ+usHEnh7r9oN5bvW5ws+qmw4BJlGF6Rffcj4YcfFwKIleSB17NSDgSJ
+	lR0vTAupaQvuDomzBr+ggbsIktnJ/hiPr3FVyu5gMA7euhYcBxAyNr+Ai/FknkFhZlsWOxmuVNH9b
+	UShoB0ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oM4Kv-00Agj0-JL; Thu, 11 Aug 2022 09:18:41 +0000
+	id 1oM4b6-00Amu7-9z; Thu, 11 Aug 2022 09:35:24 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oM4Ks-00Agi2-VT; Thu, 11 Aug 2022 09:18:40 +0000
-X-UUID: e1f65cf1cfc146c6b97a88b5f1548654-20220811
+	id 1oM4an-00AmlO-5t; Thu, 11 Aug 2022 09:35:07 +0000
+X-UUID: ca15632b271047ddbabf60a6cb9814dc-20220811
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.9,REQID:8fd13316-cc64-4d66-b653-7ebd03d08e41,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.9,REQID:68cee3f9-d27c-47e5-a260-10066c177d4f,OB:0,LO
 	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_H
 	am,ACTION:release,TS:0
-X-CID-META: VersionHash:3d8acc9,CLOUDID:8652609c-da39-4e3b-a854-56c7d2111b46,C
+X-CID-META: VersionHash:3d8acc9,CLOUDID:e46287ae-9535-44a6-aa9b-7f62b79b6ff6,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: e1f65cf1cfc146c6b97a88b5f1548654-20220811
+X-UUID: ca15632b271047ddbabf60a6cb9814dc-20220811
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(envelope-from <zhiyong.tao@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 351796902; Thu, 11 Aug 2022 02:18:32 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 11 Aug 2022 16:47:58 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+	with ESMTP id 1794256713; Thu, 11 Aug 2022 02:34:57 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 11 Aug 2022 17:14:22 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 11 Aug 2022 16:47:58 +0800
-Message-ID: <a06b9ef2126980724219b488113881f726c7b434.camel@mediatek.com>
-Subject: Re: [PATCH v4 1/4] dt-bindings: mediatek: watchdog: Fix compatible
- fallbacks and example
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Wim Van Sebroeck
-	<wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>, <nfraprado@collabora.com>
-CC: <angelogioacchino.delregno@collabora.com>,
+ Transport; Thu, 11 Aug 2022 17:14:19 +0800
+Message-ID: <3d120fdb5d26d1211f797e5a26e8af3f34439424.camel@mediatek.com>
+Subject: Re: [PATCH v2] pmic: add mt6366 regulator document
+From: zhiyong.tao <zhiyong.tao@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	<lee.jones@linaro.org>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>,
+	<lgirdwood@gmail.com>, <broonie@kernel.org>, <eddie.huang@mediatek.com>,
+	<a.zummo@towertech.it>, <alexandre.belloni@bootlin.com>, <fshao@chromium.org>
+CC: <sen.chu@mediatek.com>, <hui.liu@mediatek.com>,
+	<allen-kh.cheng@mediatek.com>, <hsin-hsiung.wang@mediatek.com>,
+	<sean.wang@mediatek.com>, <macpaul.lin@mediatek.com>, <wen.su@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-rtc@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Date: Thu, 11 Aug 2022 16:47:58 +0800
-In-Reply-To: <5a6545cc-97a2-7aa8-7b67-6488154e9db3@linaro.org>
-References: <20220721014845.19044-1-allen-kh.cheng@mediatek.com>
-	 <20220721014845.19044-2-allen-kh.cheng@mediatek.com>
-	 <5a6545cc-97a2-7aa8-7b67-6488154e9db3@linaro.org>
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	zhiyong tao <zhiyong.tao@mediatk.com>
+Date: Thu, 11 Aug 2022 17:14:19 +0800
+In-Reply-To: <86ab77f5-8beb-7237-d6e2-734f52ca176b@linaro.org>
+References: <20220728062749.18701-1-zhiyong.tao@mediatek.com>
+	 <20220728062749.18701-2-zhiyong.tao@mediatek.com>
+	 <03a13ed4-e7cd-6f7d-f8f7-9b1e6193e202@linaro.org>
+	 <111e1073e1ce689e289e52c645a1be2e7dc7fe12.camel@mediatek.com>
+	 <86ab77f5-8beb-7237-d6e2-734f52ca176b@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220811_021839_044262_FE17CA66 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20220811_023505_274973_E3DEC3DF 
+X-CRM114-Status: GOOD (  19.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,35 +88,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-On Wed, 2022-08-10 at 19:49 +0300, Krzysztof Kozlowski wrote:
-> On 21/07/2022 04:48, Allen-KH Cheng wrote:
-> > The watchdog timer of mt8186. mt8195 and mt7986 have their DT data.
-> > We should not use 'mediatek,mt6589-wdt' as fallback.
+On Thu, 2022-08-11 at 11:58 +0300, Krzysztof Kozlowski wrote:
+> On 11/08/2022 11:42, zhiyong.tao wrote:
+> > > 
+> > > > 
+> > > > Signed-off-by: zhiyong tao <zhiyong.tao@mediatk.com>
+> > > > ---
+> > > >  .../regulator/mediatek,mt6366-regulator.yaml  | 375
+> > > > ++++++++++++++++++
+> > > >  1 file changed, 375 insertions(+)
+> > > 
+> > > Subject does not match subsystem.
 > > 
-> > For mediatek,wdt example of mt8183, We remove mediatek,mt6589-wdt
-> > fallback.
+> > Hi Krzysztof,
 > > 
-> > Fixes:a45b408a020b("dt-bindings: watchdog: Add compatible for
-> > MediaTek MT8186")
-> > Fixes:b326f2c85f3d("dt-bindings: watchdog: Add compatible for
-> > Mediatek MT8195")
-> > Fixes:41e73feb1024("dt-bindings: watchdog: Add compatible for
-> > Mediatek MT7986")
-> > Fixes:f43f97a0fc0e("dt-bindings: mediatek: mt8183: Add #reset-
-> > cells")
+> > Do you mean that we should change the title like this:
+> > regulator: dt-bindings: mediatek: add mt6366 regulator document
+> > is it right?
 > 
-> Missing spaces around SHA.
+> Yes. And remove redundant pieces so for example:
+> 
+> regulator: dt-bindings: mediatek: add mt6366
+> or:
+> regulator: dt-bindings: add mediatek,mt6366
+==>
+Thanks for your suggestion, we will fix it in next verison.
+> 
+> 
+> (...)
+> 
+> > > > +    patternProperties:
+> > > > +      "^buck-
+> > > > v(dram1|core|coresshub|proc11|proc12|gpu|s2|modem|s1)$":
+> > > > +        type: object
+> > > > +        $ref: "regulator.yaml#"
+> > > 
+> > > No need for quotes.
+> > 
+> > ==>
+> > We will remove the line "$ref: "regulator.yaml#"" in next verison,
+> > is
+> > it right?
+> 
+> No, it is not. Why do you want to remove it?
+==>
+We don't understand "No need for quotes."which means.
+Do you mean that we should remove the quotation marks.
+We will change it like this:$ref: regulator.yaml#
+is it right?
+
+Thanks
+> 
 > 
 > Best regards,
 > Krzysztof
-
-Thanks for your friendly reminder.
-
-I'll pay more attention in the next time.
-
-Thanks,
-Allen
 
 
