@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31D79C25B06
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Aug 2022 15:33:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26200C25B0C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Aug 2022 15:34:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4u/Abj3rY1+Lek5W722+KajMOOlBWQ7tsWY3/6QHvJI=; b=TLyUACbVyfpAmnYuepR5dDQndz
-	2W8sV8fW+cTlTFby5he0OfrID8tpTl65VJZaHngp2WKEGDC5Sa54o6rGzweGc2gvLhQn+DaBSGGty
-	DGRBnCmnfK/XTO/fEAqse6k3ZY12PSn/5Iot9KfpqoSasGbHAa6kg2Pth9EueZtOOsYz3ZktBF0Ah
-	VUU3CwLWolicVR8DaPkJO4uCGfYGfKHDbCRE36uC/nBaERWwxdjDcV1eM02+oTX6Lz8ZlCEUaY4cd
-	d9Dnik0aT/8xsFjffDInCQwM64mtc5JUpfHx6vtfbE5Hs2pbNj3Z+MU6+65uWvGzJacZn62Af2bAK
-	Rjl67onw==;
+	bh=HUYdSuMPsOvJpfPuTxiU4QHmtirabAg+qFPXgrTVNGU=; b=xdWKY6hwEqxqEnmQaHrttAOJWn
+	wtfMd0FX6sSKliXq7Yxfa2niiidDzvmzHtPTcsrvCUOBmjOeSzs8eVp6a1cZkSePdeP8SutIqiDxT
+	guatAE42PhxSnZF0d8Z5VW9afdYGXiPYmTnn1kBje+51ywiMF/KzYu2gOZmA7Q0mYIfHlAIXbtVsN
+	Auwn7xVeQ8qgLK84sflkgsZNOVvBSKpEklydcDfadOGkDNQjvawYoLg+zFUe26TC3/Qwt68a5JZCl
+	JZ5//ZgjhTACuA0O/5qN0tuliY/OLQBgAWrE+G5QktytnsWP0RjZMAEo0RsFoz6bL5TQkgYv0PsdB
+	yBp5CxMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMABH-00DztW-Di; Thu, 11 Aug 2022 15:33:07 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oMACG-00E0lV-3b; Thu, 11 Aug 2022 15:34:08 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMAAy-00DzbA-Hu; Thu, 11 Aug 2022 15:32:51 +0000
+	id 1oMABn-00E0Mv-Vn; Thu, 11 Aug 2022 15:33:41 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 37D00B82169;
-	Thu, 11 Aug 2022 15:32:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5389EC433B5;
-	Thu, 11 Aug 2022 15:32:44 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 9A3A6B82157;
+	Thu, 11 Aug 2022 15:33:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3EB29C433C1;
+	Thu, 11 Aug 2022 15:33:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660231965;
-	bh=hg8FFJwuC7EWpywPrnvE71qsCZTP7vCgi/JUOjgj43o=;
+	s=k20201202; t=1660232015;
+	bh=YbP9ChO/K+7SMUXeYPgcaet4O69I6m639FXRxjesmJs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lwEcZE2xFT9AjJ4Bpp4M0IGbWDO5b8CVtbLcM+yyH1W5vwOng5AL4kRslOHYEk2ZO
-	 ic8OAciXYpbD8VmXj5CG0XKmP7ORJOXG+qH1Jy2Vc7GVjdysVP4hyxJDVz6KGaVfs9
-	 wEmrubWwLj0Bpniwm9bQtkfcD929M32tyKDEhUL5xT/H01+fjM7seIeWPLzzxs6MVb
-	 Js+ZrrU8vNjJb/JId5rchCbrzVkOOtuzQokSiVVSLu7jI7gKOwiVbzTSC1m1fqztgB
-	 t/hyiYVhkWLYp/vlKOguAMnHZhDjhpSOv+pFB2QLQtjgobtrx+ZFxj2DtU3FMc8GIF
-	 a53wW/Jpso8kw==
+	b=MZNA3Kn4sZPAPZgyI3bHfU5l92+X2XVjPfqDraPC0+Tc0YW1lQQJ8G8FaCSwOglyo
+	 rcvuD9vaPL/fEke8mBxUJtGxpulXygVXco2RmtiH+t3xWGlr4UYAeH8wJ+xfxWZWBS
+	 5gyLQ97OrFAn8zzpdCgmNREmm8HFjDSeQ2/ahmLxXV+N/1wt6yB49eN3+w+Bk+Baqw
+	 Hwn4YnYviAFKv7F469uK5MpPOqxXtNvhf/e7YawViYwGSTZ7FFOYmYQEnZAyy1LxrO
+	 xfPhTHgOf9KqCqy5rxZ+Mpz3rwLsStUVVMt4gLAK1grQFhzlBhAG9GJ2as9yNF7ax+
+	 fUOpiNHrC01Ng==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
+Cc: Justin Green <greenjustin@chromium.org>,
+	Andres Calderon Jaramillo <andrescj@chromium.org>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
@@ -56,9 +56,9 @@ Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
 	linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.19 032/105] media: mediatek: vcodec: prevent kernel crash when scp ipi timeout
-Date: Thu, 11 Aug 2022 11:27:16 -0400
-Message-Id: <20220811152851.1520029-32-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.19 047/105] media: mediatek: vcodec: return EINVAL if plane is too small
+Date: Thu, 11 Aug 2022 11:27:31 -0400
+Message-Id: <20220811152851.1520029-47-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220811152851.1520029-1-sashal@kernel.org>
 References: <20220811152851.1520029-1-sashal@kernel.org>
@@ -67,8 +67,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220811_083248_915427_455C21D8 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20220811_083340_180283_E969DD7C 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,79 +83,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yunfei Dong <yunfei.dong@mediatek.com>
+From: Justin Green <greenjustin@chromium.org>
 
-[ Upstream commit 9223415d47e1efe939fcc791870db8ce5bb6cc03 ]
+[ Upstream commit f5caaa47f55fa742f1a230e5b4258c139e223c74 ]
 
-When SCP timeout during playing video, kernel crashes with following
-message. It's caused by accessing NULL pointer in vpu_dec_ipi_handler.
-This patch doesn't solve the root cause of NULL pointer, but merely
-prevent kernel crashed when encounter the NULL pointer.
+Modify vb2ops_vdec_buf_prepare to return EINVAL if the size of the plane
+is less than the size of the image. Currently we just log an error and
+return 0 anyway, which may cause a buffer overrun bug.
 
-After applied this patch, kernel keeps alive, only the video player turns
-to green screen.
-
-[67242.065474] pc : vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec]
-[67242.065485] [MTK_V4L2] level=0 fops_vcodec_open(),334:
-18000000.vcodec_dec decoder [135]
-[67242.065523] lr : scp_ipi_handler+0x11c/0x244 [mtk_scp]
-[67242.065540] sp : ffffffbb4207fb10
-[67242.065557] x29: ffffffbb4207fb30 x28: ffffffd00a1d5000
-[67242.065592] x27: 1ffffffa0143aa24 x26: 0000000000000000
-[67242.065625] x25: dfffffd000000000 x24: ffffffd0168bfdb0
-[67242.065659] x23: 1ffffff76840ff74 x22: ffffffbb41fa8a88
-[67242.065692] x21: ffffffbb4207fb9c x20: ffffffbb4207fba0
-[67242.065725] x19: ffffffbb4207fb98 x18: 0000000000000000
-[67242.065758] x17: 0000000000000000 x16: ffffffd042022094
-[67242.065791] x15: 1ffffff77ed4b71a x14: 1ffffff77ed4b719
-[67242.065824] x13: 0000000000000000 x12: 0000000000000000
-[67242.065857] x11: 0000000000000000 x10: dfffffd000000001
-[67242.065890] x9 : 0000000000000000 x8 : 0000000000000002
-[67242.065923] x7 : 0000000000000000 x6 : 000000000000003f
-[67242.065956] x5 : 0000000000000040 x4 : ffffffffffffffe0
-[67242.065989] x3 : ffffffd043b841b8 x2 : 0000000000000000
-[67242.066021] x1 : 0000000000000010 x0 : 0000000000000010
-[67242.066055] Call trace:
-[67242.066092]  vpu_dec_ipi_handler+0xa0/0xb20 [mtk_vcodec_dec
-12220d230d83a7426fc38c56b3e7bc6066955bae]
-[67242.066119]  scp_ipi_handler+0x11c/0x244 [mtk_scp
-8fb69c2ef141dd3192518b952b65aba35627b8bf]
-[67242.066145]  mt8192_scp_irq_handler+0x70/0x128 [mtk_scp
-8fb69c2ef141dd3192518b952b65aba35627b8bf]
-[67242.066172]  scp_irq_handler+0xa0/0x114 [mtk_scp
-8fb69c2ef141dd3192518b952b65aba35627b8bf]
-[67242.066200]  irq_thread_fn+0x84/0xf8
-[67242.066220]  irq_thread+0x170/0x1ec
-[67242.066242]  kthread+0x2f8/0x3b8
-[67242.066264]  ret_from_fork+0x10/0x30
-[67242.066292] Code: 38f96908 35003628 91004340 d343fc08 (38f96908)
-
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Signed-off-by: Justin Green <greenjustin@chromium.org>
+Suggested-by: Andres Calderon Jaramillo <andrescj@chromium.org>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-index 35f4d5583084..df309e8e9379 100644
---- a/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/vdec_vpu_if.c
-@@ -91,6 +91,11 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
- 	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
- 					(unsigned long)msg->ap_inst_addr;
- 
-+	if (!vpu) {
-+		mtk_v4l2_err("ap_inst_addr is NULL, did the SCP hang or crash?");
-+		return;
-+	}
-+
- 	mtk_vcodec_debug(vpu, "+ id=%X", msg->msg_id);
- 
- 	vpu->failure = msg->status;
+diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+index 52e5d36aa912..191e13344c53 100644
+--- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec.c
+@@ -735,6 +735,7 @@ int vb2ops_vdec_buf_prepare(struct vb2_buffer *vb)
+ 			mtk_v4l2_err("data will not fit into plane %d (%lu < %d)",
+ 				i, vb2_plane_size(vb, i),
+ 				q_data->sizeimage[i]);
++			return -EINVAL;
+ 		}
+ 		if (!V4L2_TYPE_IS_OUTPUT(vb->type))
+ 			vb2_set_plane_payload(vb, i, q_data->sizeimage[i]);
 -- 
 2.35.1
 
