@@ -4,60 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9259BC00140
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Aug 2022 15:15:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B9CDC00140
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Aug 2022 20:58:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:References:In-Reply-To:To:From:Reply-To:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ikeEPiuKHYMe9xXHEeJbSPSH1rglZXTX+Lz/Wx8z9D8=; b=xMbJ9j3T6ql88nrXLwRxFTY3eu
-	i/5s4eLfbJEp+raJRiY5+6F0IlW8ET9e9U1dZn6Y99eP5gR94D4gpZfQcWijfx+MwUXQfwFfb7j0W
-	KM1zdg5VT0W0wTjGz10iK7E0CczsjcPuR9sHqn2Oz1dPT6ABvvkh+pGeINk2wJkqqPr5wQ4hTLCm8
-	XTpdz+dT4nYddRviTsG3X6ohipwIPjTvjkTf22vrg3nwHSVpR5Ma8/jxIHxS2inacLQFMYbNlLlOy
-	t7Qu0xOKBUcicetQlRUxtGl6gF5ef5RR41IvrdSvYc0pu5EaX8n158Ou1nVTjBfAydDBO04SbSota
-	/o5lUwHg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Li+ctB3aTvV7FkU9wN8f9wAxHxz6GEd1cuSoX1uT5/I=; b=rPK9tc0GrBYlZylgRFvcXMhE6E
+	EamzDtjmpA4e4LM0/+fsAK92XPK1FVjYbWgNzQsiZKO0X7z7P7hE68eIHQjeQtKITqg9gS4O5eTfj
+	XAyPnD/GSJhAGzEgQrUgO6Eh+9pb9iyIFpLdyh3S7aIIvXWsvAOEHOFYnzkH5/eP2ukJb+qzsqJ08
+	EqYwZUiFX9O5DKiO89GhFF49H9MRlqPjA7I9yvXfpCk4C2UGWXs7RMs8eg9ah7AfqHhvAKhxnTp4F
+	YYN+v7L+yTXvy7ukPmxFPrScp1YJ4mJK0xvBVTaFaDBUFiOYg3tVgbfsVFrDg4Fzc+N43HzsHmq2X
+	2W5tDSmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMWNS-009qI1-QN; Fri, 12 Aug 2022 15:15:10 +0000
-Received: from mail-io1-f49.google.com ([209.85.166.49])
+	id 1oMbjf-00DIAX-Ki; Fri, 12 Aug 2022 20:58:27 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMWMU-009ktx-1Z; Fri, 12 Aug 2022 15:14:13 +0000
-Received: by mail-io1-f49.google.com with SMTP id y82so1036681iof.7;
-        Fri, 12 Aug 2022 08:14:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=message-id:date:subject:references:in-reply-to:cc:to:from
-         :x-gm-message-state:from:to:cc;
-        bh=ikeEPiuKHYMe9xXHEeJbSPSH1rglZXTX+Lz/Wx8z9D8=;
-        b=KP2YETyGv+CZN7G89Y+U2780aWxMk7CKCzNagL/IxLF7p1bwxn2Kv3OzJ0+XgVsh+A
-         +jon/mo/40o7EgwiL79OnQEj/ejpuKdIvK3nsF/pKpvwkshJ/sXcWfHw0xkiT0YOPaCz
-         6av4cOfL8Y7kjaBZ2rl9SlqnOHenaRnivWtCqQNGOPPtyvF6nByDbKSI6acPt5+ds9kb
-         DMsVzoDLj7iV7FAPaQ/O4oagVwYrZj4MmaIwuZFOCaLTmJE63WYC1AVGxmqq+j59Xd4T
-         QQUqwbo+sJ69DVt+dGETbV/4pl+ETVrYlcb+1EOHZDcfOJpc9jpy/FR446ady1I8cGuF
-         jfJw==
-X-Gm-Message-State: ACgBeo1ovYvsLDV33i5y0i6FBrVPx/1cC5BbLaumGgr5oveVDnI/dC+7
-	0xtSk3UEUud8zI9mrUzgEw==
-X-Google-Smtp-Source: AA6agR7QH8e1Cxzl8c/w8Z4o6Wh9QqSi0rqDkC8FsYzAPkC89ZCQl6Gn7SL/x2lPIDRU2S2GKjrQug==
-X-Received: by 2002:a02:b60d:0:b0:343:5ddd:66b3 with SMTP id h13-20020a02b60d000000b003435ddd66b3mr2137872jam.8.1660317248790;
-        Fri, 12 Aug 2022 08:14:08 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id m66-20020a6b3f45000000b0067cb742ad4csm1054062ioa.23.2022.08.12.08.14.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Aug 2022 08:14:08 -0700 (PDT)
-Received: (nullmailer pid 168984 invoked by uid 1000);
-	Fri, 12 Aug 2022 15:13:53 -0000
-From: Rob Herring <robh@kernel.org>
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>
-In-Reply-To: <20220812092901.6429-2-zhiyong.tao@mediatek.com>
-References: <20220812092901.6429-1-zhiyong.tao@mediatek.com> <20220812092901.6429-2-zhiyong.tao@mediatek.com>
-Subject: Re: [PATCH v3 1/1] regulator: dt-bindings: mediatek: add mt6366
-Date: Fri, 12 Aug 2022 09:13:53 -0600
-Message-Id: <1660317233.452120.168983.nullmailer@robh.at.kernel.org>
+	id 1oMbje-00DIA1-Fe
+	for linux-mediatek@bombadil.infradead.org; Fri, 12 Aug 2022 20:58:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=Li+ctB3aTvV7FkU9wN8f9wAxHxz6GEd1cuSoX1uT5/I=; b=W8dWoZia9Jk+xeAzQqtDo6pjTH
+	XEfS9zMMPfJZiTxCYwsZKj9WEzKXnscd7rV9fqLWGxNKA/T2XWjpySvveHl63KXm4i0NAG8/0JcsA
+	BOylr55jloc4J7FHQSRZRhjqyibAVc6AcVyLDk4x5hHbwgcZ9p/fxldGOeFLwcL3hxO31k6+5IIOE
+	WnUkBd9lEo0nhaFx6fB4TU9McYDaECJr5qxsPh/tOEdTnAZhz9NVFGnz5fc/07Dy8evCAchKHd9Kl
+	WNNNSaxXNHOJ8Fk5xH69HxEwdmtdL19jFTzbxDFo6g8Bsdt0zeNFqq60CMcrFcFvP7rvxAFB8XkLY
+	Ru5C4MWw==;
+Received: from mx1.riseup.net ([198.252.153.129])
+	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oMbja-002eZe-5t
+	for linux-mediatek@lists.infradead.org; Fri, 12 Aug 2022 20:58:24 +0000
+Received: from fews1.riseup.net (fews1-pn.riseup.net [10.0.1.83])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256
+	 client-signature RSA-PSS (2048 bits) client-digest SHA256)
+	(Client CN "mail.riseup.net", Issuer "R3" (not verified))
+	by mx1.riseup.net (Postfix) with ESMTPS id 4M4GGl43pczDqPf;
+	Fri, 12 Aug 2022 20:58:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=riseup.net; s=squak;
+	t=1660337888; bh=lqIb/39ravYbx7WCjgTnGhey78nkmC1/ONugMtjoV2A=;
+	h=From:To:Cc:Subject:Date:From;
+	b=JH4Vzc7nuj19eou1mabDepZQSeG0TMLH1J7AJvQ9WK9ubuLFgJx7dXAFUtChxqA87
+	 OhkdOl2vXRFefEhXbtd4rWoBtl0zzriPCouKxRw2ch0Exo5C3F2oxXiHWuW86VAe5Y
+	 +kSqCZCDHfa6yElyc1vy8p/wUxos/QvMsrAF/iQc=
+X-Riseup-User-ID: B98CDF838B390E4E878A3EA4F8DA48AF89E37DB8D26B1A3DCA91AE6A05788F60
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+	 by fews1.riseup.net (Postfix) with ESMTPSA id 4M4GGb0B9hz5vTk;
+	Fri, 12 Aug 2022 20:57:58 +0000 (UTC)
+From: =?UTF-8?q?Ma=C3=ADra=20Canal?= <mairacanal@riseup.net>
+To: David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Maxime Ripard <maxime@cerno.tech>
+Cc: dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Ma=C3=ADra=20Canal?= <mairacanal@riseup.net>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <narmstrong@baylibre.com>,
+	Robert Foss <robert.foss@linaro.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Abhinav Kumar <quic_abhinavk@quicinc.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	Sean Paul <sean@poorly.run>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Emma Anholt <emma@anholt.net>,
+	Maxime Ripard <mripard@kernel.org>,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 0/5] Drop of_gpio header
+Date: Fri, 12 Aug 2022 17:57:41 -0300
+Message-Id: <20220812205746.609107-1-mairacanal@riseup.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220812_081410_130661_62767AEC 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20220812_215822_501584_84330528 
+X-CRM114-Status: UNSURE (   7.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,66 +101,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, allen-kh.cheng@mediatek.com, linux-kernel@vger.kernel.org, macpaul.lin@mediatek.com, lee.jones@linaro.org, hsin-hsiung.wang@mediatek.com, linux-rtc@vger.kernel.org, wen.su@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, hui.liu@mediatek.com, sean.wang@mediatek.com, broonie@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, a.zummo@towertech.it, sen.chu@mediatek.com, lgirdwood@gmail.com, robh+dt@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 12 Aug 2022 17:29:01 +0800, Zhiyong Tao wrote:
-> Add mt6366 regulator document
-> 
-> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> ---
->  .../regulator/mediatek,mt6366-regulator.yaml  | 287 ++++++++++++++++++
->  1 file changed, 287 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.yaml
-> 
+The legacy GPIO header <linux/gpio.h> and the deprecated OF GPIO header
+<linux/of_gpio.h> should not be used anymore due to the existance of the
+new GPIO header <linux/gpio/consumer.h>. Currently, the DRM still holds
+seven OF GPIO header includes. That said, this series drops all the
+OF GPIO header includes from the DRM, replacing it, when proper, with
+the OF header.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Best Regards,
+- Maíra Canal
 
-yamllint warnings/errors:
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>
+Cc: Neil Armstrong <narmstrong@baylibre.com>
+Cc: Robert Foss <robert.foss@linaro.org>
+Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+Cc: Jonas Karlman <jonas@kwiboo.se>
+Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Clark <robdclark@gmail.com>
+Cc: Abhinav Kumar <quic_abhinavk@quicinc.com>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Sean Paul <sean@poorly.run>
+Cc: Alain Volmat <alain.volmat@foss.st.com>
+Cc: Emma Anholt <emma@anholt.net>
+Cc: Maxime Ripard <mripard@kernel.org>
+Cc: linux-mediatek@lists.infradead.org
 
-dtschema/dtc warnings/errors:
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-vrf12: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-vio18: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-vcamio: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-vcn18: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-vfe28: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-vcn28: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-vxo22: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-vaux18: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-vbif28: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-vio28: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-va12: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-vrf18: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.example.dtb: ldo-vaud28: 'regulator-name' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
+Maíra Canal (5):
+  drm/bridge: anx7625: Drop of_gpio header
+  drm/mediatek: Drop of_gpio header
+  drm/msm: Drop of_gpio header
+  drm/sti: Drop of_gpio header
+  drm/vc4: Drop of_gpio header
 
-doc reference errors (make refcheckdocs):
+ drivers/gpu/drm/bridge/analogix/anx7625.c | 1 -
+ drivers/gpu/drm/mediatek/mtk_dpi.c        | 1 -
+ drivers/gpu/drm/mediatek/mtk_hdmi.c       | 1 -
+ drivers/gpu/drm/msm/dp/dp_parser.c        | 2 +-
+ drivers/gpu/drm/msm/hdmi/hdmi.c           | 1 -
+ drivers/gpu/drm/sti/sti_dvo.c             | 2 +-
+ drivers/gpu/drm/vc4/vc4_hdmi.c            | 1 -
+ 7 files changed, 2 insertions(+), 7 deletions(-)
 
-See https://patchwork.ozlabs.org/patch/
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
+-- 
+2.37.1
 
 
