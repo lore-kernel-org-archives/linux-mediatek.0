@@ -4,53 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26CC6C19F2D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Aug 2022 10:45:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89499C19F2D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Aug 2022 15:36:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:To:Date:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mr68/NsAdXC+G9X9bG8jF/vpINHVnEQJpv90ExGKKdA=; b=hybB/fsyer8Vnf1mWsiXuXTRR3
-	ncqW5mPSq1/Deww21H/YzGdt7thqDcJY1IDNjmMFQ9wzOimuDV4inervDotCl29TyCz0bPDz77bZQ
-	+oJGG+FOMqjh79U7KxS+YGzqZerqXqKbmfknmhMTZ+L/c/I7x+9pxRWci85aCzIxhrf/6OO8n0Pwf
-	3Cas1MxAKKXcJnQxtdY4TAivjax2Gc913DAKkXqfpbxUfVbZYkbLhrkodAeKi7vjDV2pEc1CyHQb4
-	BNplMCBSTF4rzsp1Jmvebi9eTE6rW+u0NIrP4EMYvubzOGf/2sCMI7kXinInXg0uWIfcT3lDqgJye
-	Bl2e4D6A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c66mXpSFZ1jxMaRik54SmIRJUbC6X3URqoFqkTSE5Oc=; b=u2BO/HaziM/IfJZjKUqaR5OmZZ
+	FC48ljXTBvHRl7yXpwFnbeTaK67bAMvFi4YNbs/EwMlZ6hbQkCEDALd8V0tSFhyluLjT++0DTXSKG
+	s76ukFJO69XizNiHf/VxuFPDyU9o9cIteKP1lmG6hM18xQ9EXqGfhSO9cQCJaIlpcqBA9S18LDvlU
+	MfvEk3stwsndfZf0MwKWAsv3zElh6wpcPSRgCp9MCAnIQrQL/zYsFMVtKvbKXflHAQF4Gjgb7btYZ
+	72YSSy4nlJQDtxz/MI4MMMGO7uckvP0tq0AU2t8vrmMma9hXGlDIAoWzuG2avb5QI814MzFbXo5H+
+	3X64CfZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMoe2-00E2as-HO; Sat, 13 Aug 2022 10:45:30 +0000
-Received: from mail-4318.protonmail.ch ([185.70.43.18])
+	id 1oMtBA-00FUFc-DP; Sat, 13 Aug 2022 15:36:00 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oModr-00E2XG-61; Sat, 13 Aug 2022 10:45:20 +0000
-Date: Sat, 13 Aug 2022 10:44:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1660387504; x=1660646704;
-	bh=mr68/NsAdXC+G9X9bG8jF/vpINHVnEQJpv90ExGKKdA=;
-	h=Date:To:From:Cc:Reply-To:Subject:Message-ID:In-Reply-To:
-	 References:Feedback-ID:From:To:Cc:Date:Subject:Reply-To:
-	 Feedback-ID:Message-ID;
-	b=sPTb7QdnrMFKFLTxJiv9LuHcKHXbKBlTYsJHejRrkAUAV5Vmpih9IN1+QZNDG4Za3
-	 ImsN0zxdTjD0AmiHohdOyBA42ulCa+cMR9Y6Nxed8ee01z7X6JNvTazf9IV9xakLI+
-	 LuQ31sYYBz1r1Y5kW+7lFK2CP7jprsDtqME8lSzDjeGTmWUSyIuChl06+HxZrpU667
-	 I/y763WUz1i4bHA3C9TXJLiw4rl1M7rUKhGEBknQMjZDRKDgn64BpeaVfDqsGKpGBh
-	 PQzjAZVRAUkXlpN8MvfKyaxXE/1jB0OYtWhXTc7yZ/YsOvP3g42wjJocCdFu0Oej0F
-	 RKC+f4Dekb9Aw==
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-From: Yassine Oudjana <y.oudjana@protonmail.com>
-Cc: Miles Chen <miles.chen@mediatek.com>, yassine.oudjana@gmail.com, bgolaszewski@baylibre.com, chun-jie.chen@mediatek.com, devicetree@vger.kernel.org, ikjn@chromium.org, krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mturquette@baylibre.com, p.zabel@pengutronix.de, robh+dt@kernel.org, sam.shih@mediatek.com, sboyd@kernel.org, tinghan.shen@mediatek.com, weiyi.lu@mediatek.com, wenst@chromium.org, ~postmarketos/upstreaming@lists.sr.ht
-Subject: Re: [PATCH v2 4/4] clk: mediatek: Add drivers for MediaTek MT6735 main clock drivers
-Message-ID: <lAB8fLfWTwUu6FUqPZWoKNEC0ZPYHnvo05u6BGriYQVjanlTzorHaZAflEbzoml-0UVZe-02r6CfzKwGdBCp7E0YeT_hF86P26r-Zeivda4=@protonmail.com>
-In-Reply-To: <c7b98ee4-cd4f-d7b7-726d-1acd4fafd50a@collabora.com>
-References: <NJC6CR.M4CF312LSXXV1@gmail.com> <20220520093501.28758-1-miles.chen@mediatek.com> <c7b98ee4-cd4f-d7b7-726d-1acd4fafd50a@collabora.com>
-Feedback-ID: 6882736:user:proton
+	id 1oMtAv-00FU9R-2T; Sat, 13 Aug 2022 15:35:47 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3B61660EDC;
+	Sat, 13 Aug 2022 15:35:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65329C433D6;
+	Sat, 13 Aug 2022 15:35:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1660404943;
+	bh=H+193s9DhJA+Fo+1yQtUSKQ/Q5LCMqL5XgyPBlKN9iM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=awR9jlAgHn06cl1vhF3zgZ4uZsd98vev6ArN5JzdTNjlXO3+QBqNbjBNOi0fhFqGz
+	 G5xETOIQbS4eacFez5N3d0j1uw6kH5WKR5zSp0Nrp713gqnQjtBPCtO0kxGnmKjY0f
+	 JD+CQejRE5uTr+J/Ba19U9PMtT3dvxdAYw5X8+bRQlfgRkIZnuKnsl1RQDmCKRdQhz
+	 poVbpv0LRHsvzGAW2khsaoJXWSdgxnm1zKGTGcw3liaDhdN/u5ZE9v6ZsSGppbKgUb
+	 vxYeoZ1y3DOWoRlK56myGWtVQMUT5gkiXrk8D5Nnwch4G+00BcZEwgQ8/zE+q7+/Tt
+	 5O5IYB13Ysc0g==
+Date: Sat, 13 Aug 2022 16:46:06 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: ChiaEn Wu <peterwu.pub@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ Daniel Thompson <daniel.thompson@linaro.org>, Jingoo Han
+ <jingoohan1@gmail.com>, Pavel Machek <pavel@ucw.cz>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Lars-Peter Clausen <lars@metafoo.de>, Liam
+ Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Guenter
+ Roeck <linux@roeck-us.net>, "Krogerus, Heikki"
+ <heikki.krogerus@linux.intel.com>, Helge Deller <deller@gmx.de>, ChiaEn Wu
+ <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, cy_huang
+ <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, Linux
+ LED Subsystem <linux-leds@vger.kernel.org>, devicetree
+ <devicetree@vger.kernel.org>, linux-arm Mailing List
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, Linux Kernel Mailing List
+ <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>, USB
+ <linux-usb@vger.kernel.org>, linux-iio <linux-iio@vger.kernel.org>, "open
+ list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>, szuni chen
+ <szunichen@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v7 09/13] iio: adc: mt6370: Add MediaTek MT6370 support
+Message-ID: <20220813164606.3ed93322@jic23-huawei>
+In-Reply-To: <CAHp75VexyNqEFKY4PG_jYQxQGmdvE12SeuvMzHThfPY-gB4f7A@mail.gmail.com>
+References: <20220805070610.3516-1-peterwu.pub@gmail.com>
+	<20220805070610.3516-10-peterwu.pub@gmail.com>
+	<CAHp75VexyNqEFKY4PG_jYQxQGmdvE12SeuvMzHThfPY-gB4f7A@mail.gmail.com>
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220813_034519_416394_222ACDD5 
-X-CRM114-Status: GOOD (  39.83  )
+X-CRM114-CacheID: sfid-20220813_083545_233134_49375D52 
+X-CRM114-Status: GOOD (  41.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,117 +90,422 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Yassine Oudjana <y.oudjana@protonmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Friday, May 20th, 2022 at 11:26 AM, AngeloGioacchino Del Regno <angelogi=
-oacchino.delregno@collabora.com> wrote:
+On Fri, 5 Aug 2022 12:54:04 +0200
+Andy Shevchenko <andy.shevchenko@gmail.com> wrote:
 
-> Il 20/05/22 11:35, Miles Chen ha scritto:
->
-> > > > Thanks for submitting this patch.
-> > > >
-> > > > I compare this with drivers/clk/mediatek/clk-mt7986-apmixed.c,
-> > > > and other clk files are using macros to make the mtk_pll_data array
-> > > > more readable.
-> > >
-> > > I'd actually argue that macros make it less readable. While reading
-> > > other drivers I had a lot of trouble figuring out which argument
-> > > is which field of the struct, and had to constantly go back to the
-> > > macro definitions and count arguments to find it. Having it this
-> > > way, each value is labeled clearly with the field it's in. I think
-> > > the tradeoff between line count and readability here is worth it.
+> On Fri, Aug 5, 2022 at 9:07 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
 > >
-> > It is easier for multiple developers to work together if we have a comm=
-on style.
+> > From: ChiaEn Wu <chiaen_wu@richtek.com>
 > >
-> > How do you think?
->
->
-> In my opinion, Yassine is definitely right about this one: unrolling thes=
-e macros
-> will make the code more readable, even though this has the side effect of=
- making
-> it bigger in the source code form (obviously, when compiled, it's going t=
-o be the
-> exact same size).
->
-> I wouldn't mind getting this clock driver in without the usage of macros,=
- as much
-> as I wouldn't mind converting all of the existing drivers to open-code ev=
-erything
-> instead of using macros that you have to find in various headers... this =
-practice
-> was done in multiple drivers (clock or elsewhere), so I don't think that =
-it would
-> actually be a bad idea to do it here on MediaTek too, even though I'm not=
- aware of
-> any rule that may want us to do that: if you check across drivers/clk/*, =
-there's
-> a big split in how drivers are made, where some are using macros (davinci=
-, renesas,
-> samsung, sprd, etc), and some are not (bcm, sunxi-ng, qcom, tegra, versat=
-ile, etc),
-> so it's really "do it as you wish"...
->
-> ... but:
->
-> Apart from that, I also don't think that it is a good idea to convert the=
- other
-> MTK clock drivers right now, as this would make the upstreaming of MediaT=
-ek clock
-> drivers harder for some of the community in this moment... especially whe=
-n we look
-> at how many MTK SoCs are out there in the wild, and how many we have upst=
-ream:
-> something like 10% of them, or less.
->
-> I see the huge benefit of having a bigger community around MediaTek platf=
-orms as
-> that's beneficial to get a way better support and solidity for all SoCs a=
-s they
-> are sharing the same drivers and same framework, and expanding the suppor=
-t to more
-> of them will only make it better with highly valuable community contribut=
-ions.
->
->
-> That said, Yassine, you should've understood that you have my full suppor=
-t on
-> unrolling these macros - but it's not time to do that yet: you definitely=
- know
-> that MediaTek clock drivers are going through a big cleanup phase which i=
-s, at
-> this point, unavoidable... if we are able to get the aid of scripts (cocc=
-i and
-> others), that will make our life easier in this cleanup, and will also ma=
-ke us
-> able to perform the entire cleanup with less effort and in less overall t=
-ime.
->
-> With that, I'm sad but I have to support Miles' decision on this one, and=
- I also
-> have to ask you to use macros in this driver.
+> > MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
+> > with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
+> > driver, display bias voltage supply, one general purpose LDO, and the
+> > USB Type-C & PD controller complies with the latest USB Type-C and PD
+> > standards.
+> >
+> > Add a support for the MT6370 ADC driver for system monitoring, including
+> > charger current, voltage, and temperature.  
+> 
+> On Fri, Aug 5, 2022 at 9:07 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+> >
+> > From: ChiYuan Huang <cy_huang@richtek.com>
+> >
+> > The MediaTek MT6370 is a highly-integrated smart power management IC,
+> > which includes a single cell Li-Ion/Li-Polymer switching battery
+> > charger, a USB Type-C & Power Delivery (PD) controller, dual
+> > Flash LED current sources, a RGB LED driver, a backlight WLED driver,
+> > a display bias driver and a general LDO for portable devices.
+> >
+> > Add a support for the Type-C & Power Delivery controller in
+> > MediaTek MT6370 IC.  
+> 
+> Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+Oops. I just noticed I replied only to Andy due to a misclick.
 
-I'm picking up this series again now after taking a long break to allow for
-ongoing cleanup and refactoring work to settle down. I was going to make th=
-is
-change but then I couldn't find the PLL macro defined in any common header.
-It seems that it is defined in every driver that uses it, with slight varia=
-tions
-in some of them. Should I just do the same, or would it be better to define=
- it
-in clk-pll.h? Also, would now be a good time to unroll the macros in all dr=
-ivers,
-or is it still too soon?
+Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-Another thing: Since I've been out of touch with the cleanup work for a whi=
-le,
-it would be great if someone makes me aware of any pending cleanup patches =
-that
-I should know of so that I base my patches on them and avoid duplicating wo=
-rk.
+I took a quick glance through, and with Andy's comments now all answered
+to his satisfaction I'm fine with this going through the MFD tree
+(or another path if one makes more sense).
 
-> ...
+Thanks to Andy for his reviewing effort on this one!
+
+Note that because of the bindings header I think this has a build dependency on the
+MFD binding patch.
+
+Jonathan
+
+
+> 
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> > ---
+> >
+> > v7
+> > - Add AICR(100mA ~ 350mA), ICHG(100mA ~ 800mA) macros
+> > - Remove 400mA AICR and 900mA ICHG macros
+> > - Revise using 'if-else' to 'switch-case' in mt6370_adc_read_scale()
+> >   where the adc channel is ibus or ibat
+> > ---
+> >  drivers/iio/adc/Kconfig      |  12 ++
+> >  drivers/iio/adc/Makefile     |   1 +
+> >  drivers/iio/adc/mt6370-adc.c | 305 +++++++++++++++++++++++++++++++++++++++++++
+> >  3 files changed, 318 insertions(+)
+> >  create mode 100644 drivers/iio/adc/mt6370-adc.c
+> >
+> > diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+> > index 7fe5930..995cbb5 100644
+> > --- a/drivers/iio/adc/Kconfig
+> > +++ b/drivers/iio/adc/Kconfig
+> > @@ -736,6 +736,18 @@ config MEDIATEK_MT6360_ADC
+> >           is used in smartphones and tablets and supports a 11 channel
+> >           general purpose ADC.
+> >
+> > +config MEDIATEK_MT6370_ADC
+> > +       tristate "MediaTek MT6370 ADC driver"
+> > +       depends on MFD_MT6370
+> > +       help
+> > +         Say yes here to enable MediaTek MT6370 ADC support.
+> > +
+> > +         This ADC driver provides 9 channels for system monitoring (charger
+> > +         current, voltage, and temperature).
+> > +
+> > +         This driver can also be built as a module. If so, the module
+> > +         will be called "mt6370-adc".
+> > +
+> >  config MEDIATEK_MT6577_AUXADC
+> >         tristate "MediaTek AUXADC driver"
+> >         depends on ARCH_MEDIATEK || COMPILE_TEST
+> > diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
+> > index 1772a54..c6bc35f 100644
+> > --- a/drivers/iio/adc/Makefile
+> > +++ b/drivers/iio/adc/Makefile
+> > @@ -68,6 +68,7 @@ obj-$(CONFIG_MCP320X) += mcp320x.o
+> >  obj-$(CONFIG_MCP3422) += mcp3422.o
+> >  obj-$(CONFIG_MCP3911) += mcp3911.o
+> >  obj-$(CONFIG_MEDIATEK_MT6360_ADC) += mt6360-adc.o
+> > +obj-$(CONFIG_MEDIATEK_MT6370_ADC) += mt6370-adc.o
+> >  obj-$(CONFIG_MEDIATEK_MT6577_AUXADC) += mt6577_auxadc.o
+> >  obj-$(CONFIG_MEN_Z188_ADC) += men_z188_adc.o
+> >  obj-$(CONFIG_MESON_SARADC) += meson_saradc.o
+> > diff --git a/drivers/iio/adc/mt6370-adc.c b/drivers/iio/adc/mt6370-adc.c
+> > new file mode 100644
+> > index 0000000..2a46471
+> > --- /dev/null
+> > +++ b/drivers/iio/adc/mt6370-adc.c
+> > @@ -0,0 +1,305 @@
+> > +// SPDX-License-Identifier: GPL-2.0-only
+> > +/*
+> > + * Copyright (C) 2022 Richtek Technology Corp.
+> > + *
+> > + * Author: ChiaEn Wu <chiaen_wu@richtek.com>
+> > + */
+> > +
+> > +#include <linux/bits.h>
+> > +#include <linux/bitfield.h>
+> > +#include <linux/iio/iio.h>
+> > +#include <linux/kernel.h>
+> > +#include <linux/mod_devicetable.h>
+> > +#include <linux/module.h>
+> > +#include <linux/mutex.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/regmap.h>
+> > +#include <linux/sysfs.h>
+> > +#include <linux/units.h>
+> > +
+> > +#include <dt-bindings/iio/adc/mediatek,mt6370_adc.h>
+> > +
+> > +#define MT6370_REG_CHG_CTRL3           0x113
+> > +#define MT6370_REG_CHG_CTRL7           0x117
+> > +#define MT6370_REG_CHG_ADC             0x121
+> > +#define MT6370_REG_ADC_DATA_H          0x14C
+> > +
+> > +#define MT6370_ADC_START_MASK          BIT(0)
+> > +#define MT6370_ADC_IN_SEL_MASK         GENMASK(7, 4)
+> > +#define MT6370_AICR_ICHG_MASK          GENMASK(7, 2)
+> > +
+> > +#define MT6370_AICR_100_mA             0x0
+> > +#define MT6370_AICR_150_mA             0x1
+> > +#define MT6370_AICR_200_mA             0x2
+> > +#define MT6370_AICR_250_mA             0x3
+> > +#define MT6370_AICR_300_mA             0x4
+> > +#define MT6370_AICR_350_mA             0x5
+> > +
+> > +#define MT6370_ICHG_100_mA             0x0
+> > +#define MT6370_ICHG_200_mA             0x1
+> > +#define MT6370_ICHG_300_mA             0x2
+> > +#define MT6370_ICHG_400_mA             0x3
+> > +#define MT6370_ICHG_500_mA             0x4
+> > +#define MT6370_ICHG_600_mA             0x5
+> > +#define MT6370_ICHG_700_mA             0x6
+> > +#define MT6370_ICHG_800_mA             0x7
+> > +
+> > +#define ADC_CONV_TIME_MS               35
+> > +#define ADC_CONV_POLLING_TIME_US       1000
+> > +
+> > +struct mt6370_adc_data {
+> > +       struct device *dev;
+> > +       struct regmap *regmap;
+> > +       /*
+> > +        * This mutex lock is for preventing the different ADC channels
+> > +        * from being read at the same time.
+> > +        */
+> > +       struct mutex adc_lock;
+> > +};
+> > +
+> > +static int mt6370_adc_read_channel(struct mt6370_adc_data *priv, int chan,
+> > +                                  unsigned long addr, int *val)
+> > +{
+> > +       unsigned int reg_val;
+> > +       __be16 be_val;
+> > +       int ret;
+> > +
+> > +       mutex_lock(&priv->adc_lock);
+> > +
+> > +       reg_val = MT6370_ADC_START_MASK |
+> > +                 FIELD_PREP(MT6370_ADC_IN_SEL_MASK, addr);
+> > +       ret = regmap_write(priv->regmap, MT6370_REG_CHG_ADC, reg_val);
+> > +       if (ret)
+> > +               goto adc_unlock;
+> > +
+> > +       msleep(ADC_CONV_TIME_MS);
+> > +
+> > +       ret = regmap_read_poll_timeout(priv->regmap,
+> > +                                      MT6370_REG_CHG_ADC, reg_val,
+> > +                                      !(reg_val & MT6370_ADC_START_MASK),
+> > +                                      ADC_CONV_POLLING_TIME_US,
+> > +                                      ADC_CONV_TIME_MS * MILLI * 3);
+> > +       if (ret) {
+> > +               dev_err(priv->dev, "Failed to read ADC register (%d)\n", ret);
+> > +               goto adc_unlock;
+> > +       }
+> > +
+> > +       ret = regmap_raw_read(priv->regmap, MT6370_REG_ADC_DATA_H,
+> > +                             &be_val, sizeof(be_val));
+> > +       if (ret)
+> > +               goto adc_unlock;
+> > +
+> > +       *val = be16_to_cpu(be_val);
+> > +       ret = IIO_VAL_INT;
+> > +
+> > +adc_unlock:
+> > +       mutex_unlock(&priv->adc_lock);
+> > +
+> > +       return ret;
+> > +}
+> > +
+> > +static int mt6370_adc_read_scale(struct mt6370_adc_data *priv,
+> > +                                int chan, int *val1, int *val2)
+> > +{
+> > +       unsigned int reg_val;
+> > +       int ret;
+> > +
+> > +       switch (chan) {
+> > +       case MT6370_CHAN_VBAT:
+> > +       case MT6370_CHAN_VSYS:
+> > +       case MT6370_CHAN_CHG_VDDP:
+> > +               *val1 = 5;
+> > +               return IIO_VAL_INT;
+> > +       case MT6370_CHAN_IBUS:
+> > +               ret = regmap_read(priv->regmap, MT6370_REG_CHG_CTRL3, &reg_val);
+> > +               if (ret)
+> > +                       return ret;
+> > +
+> > +               reg_val = FIELD_GET(MT6370_AICR_ICHG_MASK, reg_val);
+> > +               switch (reg_val) {
+> > +               case MT6370_AICR_100_mA:
+> > +               case MT6370_AICR_150_mA:
+> > +               case MT6370_AICR_200_mA:
+> > +               case MT6370_AICR_250_mA:
+> > +               case MT6370_AICR_300_mA:
+> > +               case MT6370_AICR_350_mA:
+> > +                       *val1 = 3350;
+> > +                       break;
+> > +               default:
+> > +                       *val1 = 5000;
+> > +                       break;
+> > +               }
+> > +
+> > +               *val2 = 100;
+> > +
+> > +               return IIO_VAL_FRACTIONAL;
+> > +       case MT6370_CHAN_IBAT:
+> > +               ret = regmap_read(priv->regmap, MT6370_REG_CHG_CTRL7, &reg_val);
+> > +               if (ret)
+> > +                       return ret;
+> > +
+> > +               reg_val = FIELD_GET(MT6370_AICR_ICHG_MASK, reg_val);
+> > +               switch (reg_val) {
+> > +               case MT6370_ICHG_100_mA:
+> > +               case MT6370_ICHG_200_mA:
+> > +               case MT6370_ICHG_300_mA:
+> > +               case MT6370_ICHG_400_mA:
+> > +                       *val1 = 2375;
+> > +                       break;
+> > +               case MT6370_ICHG_500_mA:
+> > +               case MT6370_ICHG_600_mA:
+> > +               case MT6370_ICHG_700_mA:
+> > +               case MT6370_ICHG_800_mA:
+> > +                       *val1 = 2680;
+> > +                       break;
+> > +               default:
+> > +                       *val1 = 5000;
+> > +                       break;
+> > +               }
+> > +
+> > +               *val2 = 100;
+> > +
+> > +               return IIO_VAL_FRACTIONAL;
+> > +       case MT6370_CHAN_VBUSDIV5:
+> > +               *val1 = 25;
+> > +               return IIO_VAL_INT;
+> > +       case MT6370_CHAN_VBUSDIV2:
+> > +               *val1 = 50;
+> > +               return IIO_VAL_INT;
+> > +       case MT6370_CHAN_TS_BAT:
+> > +               *val1 = 25;
+> > +               *val2 = 10000;
+> > +               return IIO_VAL_FRACTIONAL;
+> > +       case MT6370_CHAN_TEMP_JC:
+> > +               *val1 = 2000;
+> > +               return IIO_VAL_FRACTIONAL;
+> > +       default:
+> > +               return -EINVAL;
+> > +       }
+> > +}
+> > +
+> > +static int mt6370_adc_read_offset(struct mt6370_adc_data *priv,
+> > +                                 int chan, int *val)
+> > +{
+> > +       *val = -20;
+> > +
+> > +       return IIO_VAL_INT;
+> > +}
+> > +
+> > +static int mt6370_adc_read_raw(struct iio_dev *iio_dev,
+> > +                              const struct iio_chan_spec *chan,
+> > +                              int *val, int *val2, long mask)
+> > +{
+> > +       struct mt6370_adc_data *priv = iio_priv(iio_dev);
+> > +
+> > +       switch (mask) {
+> > +       case IIO_CHAN_INFO_RAW:
+> > +               return mt6370_adc_read_channel(priv, chan->channel,
+> > +                                              chan->address, val);
+> > +       case IIO_CHAN_INFO_SCALE:
+> > +               return mt6370_adc_read_scale(priv, chan->channel, val, val2);
+> > +       case IIO_CHAN_INFO_OFFSET:
+> > +               return mt6370_adc_read_offset(priv, chan->channel, val);
+> > +       default:
+> > +               return -EINVAL;
+> > +       }
+> > +}
+> > +
+> > +static const char * const mt6370_channel_labels[MT6370_CHAN_MAX] = {
+> > +       [MT6370_CHAN_VBUSDIV5] = "vbusdiv5",
+> > +       [MT6370_CHAN_VBUSDIV2] = "vbusdiv2",
+> > +       [MT6370_CHAN_VSYS] = "vsys",
+> > +       [MT6370_CHAN_VBAT] = "vbat",
+> > +       [MT6370_CHAN_TS_BAT] = "ts_bat",
+> > +       [MT6370_CHAN_IBUS] = "ibus",
+> > +       [MT6370_CHAN_IBAT] = "ibat",
+> > +       [MT6370_CHAN_CHG_VDDP] = "chg_vddp",
+> > +       [MT6370_CHAN_TEMP_JC] = "temp_jc",
+> > +};
+> > +
+> > +static int mt6370_adc_read_label(struct iio_dev *iio_dev,
+> > +                                struct iio_chan_spec const *chan, char *label)
+> > +{
+> > +       return sysfs_emit(label, "%s\n", mt6370_channel_labels[chan->channel]);
+> > +}
+> > +
+> > +static const struct iio_info mt6370_adc_iio_info = {
+> > +       .read_raw = mt6370_adc_read_raw,
+> > +       .read_label = mt6370_adc_read_label,
+> > +};
+> > +
+> > +#define MT6370_ADC_CHAN(_idx, _type, _addr, _extra_info) {     \
+> > +       .type = _type,                                          \
+> > +       .channel = MT6370_CHAN_##_idx,                          \
+> > +       .address = _addr,                                       \
+> > +       .scan_index = MT6370_CHAN_##_idx,                       \
+> > +       .indexed = 1,                                           \
+> > +       .info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |          \
+> > +                             BIT(IIO_CHAN_INFO_SCALE) |        \
+> > +                             _extra_info,                      \
+> > +}
+> > +
+> > +static const struct iio_chan_spec mt6370_adc_channels[] = {
+> > +       MT6370_ADC_CHAN(VBUSDIV5, IIO_VOLTAGE, 1, 0),
+> > +       MT6370_ADC_CHAN(VBUSDIV2, IIO_VOLTAGE, 2, 0),
+> > +       MT6370_ADC_CHAN(VSYS, IIO_VOLTAGE, 3, 0),
+> > +       MT6370_ADC_CHAN(VBAT, IIO_VOLTAGE, 4, 0),
+> > +       MT6370_ADC_CHAN(TS_BAT, IIO_VOLTAGE, 6, 0),
+> > +       MT6370_ADC_CHAN(IBUS, IIO_CURRENT, 8, 0),
+> > +       MT6370_ADC_CHAN(IBAT, IIO_CURRENT, 9, 0),
+> > +       MT6370_ADC_CHAN(CHG_VDDP, IIO_VOLTAGE, 11, 0),
+> > +       MT6370_ADC_CHAN(TEMP_JC, IIO_TEMP, 12, BIT(IIO_CHAN_INFO_OFFSET)),
+> > +};
+> > +
+> > +static int mt6370_adc_probe(struct platform_device *pdev)
+> > +{
+> > +       struct device *dev = &pdev->dev;
+> > +       struct mt6370_adc_data *priv;
+> > +       struct iio_dev *indio_dev;
+> > +       struct regmap *regmap;
+> > +       int ret;
+> > +
+> > +       regmap = dev_get_regmap(pdev->dev.parent, NULL);
+> > +       if (!regmap)
+> > +               return dev_err_probe(dev, -ENODEV, "Failed to get regmap\n");
+> > +
+> > +       indio_dev = devm_iio_device_alloc(dev, sizeof(*priv));
+> > +       if (!indio_dev)
+> > +               return -ENOMEM;
+> > +
+> > +       priv = iio_priv(indio_dev);
+> > +       priv->dev = dev;
+> > +       priv->regmap = regmap;
+> > +       mutex_init(&priv->adc_lock);
+> > +
+> > +       ret = regmap_write(priv->regmap, MT6370_REG_CHG_ADC, 0);
+> > +       if (ret)
+> > +               return dev_err_probe(dev, ret, "Failed to reset ADC\n");
+> > +
+> > +       indio_dev->name = "mt6370-adc";
+> > +       indio_dev->info = &mt6370_adc_iio_info;
+> > +       indio_dev->modes = INDIO_DIRECT_MODE;
+> > +       indio_dev->channels = mt6370_adc_channels;
+> > +       indio_dev->num_channels = ARRAY_SIZE(mt6370_adc_channels);
+> > +
+> > +       return devm_iio_device_register(dev, indio_dev);
+> > +}
+> > +
+> > +static const struct of_device_id mt6370_adc_of_id[] = {
+> > +       { .compatible = "mediatek,mt6370-adc", },
+> > +       {}
+> > +};
+> > +MODULE_DEVICE_TABLE(of, mt6370_adc_of_id);
+> > +
+> > +static struct platform_driver mt6370_adc_driver = {
+> > +       .driver = {
+> > +               .name = "mt6370-adc",
+> > +               .of_match_table = mt6370_adc_of_id,
+> > +       },
+> > +       .probe = mt6370_adc_probe,
+> > +};
+> > +module_platform_driver(mt6370_adc_driver);
+> > +
+> > +MODULE_AUTHOR("ChiaEn Wu <chiaen_wu@richtek.com>");
+> > +MODULE_DESCRIPTION("MT6370 ADC Driver");
+> > +MODULE_LICENSE("GPL v2");
+> > --
+> > 2.7.4
+> >  
+> 
+> 
+
 
