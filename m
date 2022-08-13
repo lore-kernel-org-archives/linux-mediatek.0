@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39238C25B0F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Aug 2022 15:47:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52657C25B0F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Aug 2022 15:47:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jsLNwKu69dMoowXkaVBPR2TlA1Lu17rBjhIrh9GsaeU=; b=LHU+0qPzhjdrvCpNNUM+ZlObev
-	wFfdehC7EVvQ9xlMx9vHC+OzzyJmSo5W68CmX3oI6qusyKnGnZVubm//o2qJkqrA3Myf9nySUJVZn
-	7ecVD5BMhRr3QHux5t03cLY0CrBGCUvHKJeiUBuakvR+kyGeBQ4rJlwjmBzl/ijKKCbFLOxwikia+
-	TznYqKJs6e2xk22arcv71HBXV6lmbtqCYu2+xwJQ7ANDEbi4/7ViWgYOsbxlBtRD7YEcwsFrXUnBE
-	tgFaFLxFV5SPlf1fkjJfQ6WxUMOUBvYUDKh6qyWVdNxikM4O7jLUo3oxUvmmyDgmlbm/FbFkK0tS7
-	ELSoQMbQ==;
+	bh=zy98iC9XC2eVhC07Cr4RMR8a0qJzk56OXu8sNv2CeM4=; b=AKuGF0DIFxZkKifScnTCP6nYh1
+	wnhzQAsjqIGx16qADAQGeTkXWu0lzURHFYljx8DmULSNJO5XltC+DWUnFUdaifxymFBjkLgmf509D
+	EunTZ5+/CgmxeIy9QaXoUVaxTNi/F+3aodJnKqMW2MLOLPbR6tlLD0Cw734Sa6mGZkSK1D6r293dV
+	CLT82/26Py5K5GsHGS672K/R/CKCQfLRN/zwXjzoYL7Adl8mAKQa0vJ4XqSUA6NKnGEocg6hpyEse
+	TIhjE3Tr5RrxmBnq2XZPTHA40UMHdd+LKoS6y8M5frhBWugSwAGLk17cdqU7HEtuunRB+EOW14Mr5
+	NkgwwA5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMtM0-00FZLP-ST; Sat, 13 Aug 2022 15:47:12 +0000
+	id 1oMtMZ-00FZfx-8i; Sat, 13 Aug 2022 15:47:47 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMtKM-00FYDT-RL; Sat, 13 Aug 2022 15:45:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1660405509; cv=none; 
+	id 1oMtKT-00FYJD-JH; Sat, 13 Aug 2022 15:45:39 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1660405515; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=D1Zfk5JkXA6KE5KzpCAb9VVLrjlrX6Lntp8gKyxlnkaRGVy9/8q+uJsXmEUnX9F6cK3dfp0IuTK/ZJORL0EkgLbvOyY/mlNDhXrgnEv2p1DV2sm40VB6Lmcq43w6USRkO2artg2dqfgkogf1G4x5Q1y5+E2wMRjHyFvLbAwCAYw=
+	b=LHguKks0lv7vA3ueibE2h19pXiUvWhpnLecebJ4kCqKf2zVTSqc/EHbKKjX5JkIZ4uyQVRICg94O19OOVjtZ2PVvKU0d6PbQMMMyTaW7//Iz2TJCRKAlEvPRsAbv3/1OxRAFY5QmzbEkHbNhJYMLoYE1foUj4bJ1s7jlkpaR1O8=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1660405509; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=jsLNwKu69dMoowXkaVBPR2TlA1Lu17rBjhIrh9GsaeU=; 
-	b=fmr2aK5GjjT3eU7K9tiVKKzGbnjRZsbbAtm2KLqS+UQzfPJsHvTewBpbGHfumXsEJ5CFY1rMtyWFvn5TxMKSI0dG5GGDGa/m8hIdJX5DyPnw0tGjxvs/cEvQkEr4q8uU+XLOancp4b+SeewL+8ZKoj3xGX0q41dXL0Av5CtRjk0=
+	t=1660405515; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=zy98iC9XC2eVhC07Cr4RMR8a0qJzk56OXu8sNv2CeM4=; 
+	b=fWIYkNz00lm8ELkSMUHDxH9I2bix0PwYEFNozFALqewJ1pa/gAwh32H5lhjyJKkqMIOrcBqlcTZvbci4JVtB55uOuNrdlQaD+lv0zzThsl9SZIwQOZHGfy9nOpiaZ/xqlNYbv+g5+tovavL1aQP5EZwXeqUJTJvMZj5L/jh09R8=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1660405509;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1660405515;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=jsLNwKu69dMoowXkaVBPR2TlA1Lu17rBjhIrh9GsaeU=;
-	b=SRMEhb/h5L6+dlrsVv6DPRaXYXEM4U0TpzWSqh1iM7yNYEOxqTdPNi9iIiIdKA5G
-	XhYQvb6Iw/1/Ex2zWzDsdmtzEhGKLutHpzGpvhvzFsONThLpqdAarrZzrvbIyDik+nq
-	k7Tj1gcIv9U7R+eTT6l8P9gInbL+OcaBE89kMMtg=
+	bh=zy98iC9XC2eVhC07Cr4RMR8a0qJzk56OXu8sNv2CeM4=;
+	b=Nv6cdOYAB97QZBR9N8itpcTzpPm/s3tG9Vy6oynKxXEs9XrJ92P9RBLpPspqNqvv
+	0IvCWV8eK1SFVihhPhCnHsrAHC3rp862bJM96iWbXKrgkPXfRUh/PL/77KRyfyPWWWl
+	9EfbgNjs3GhvEfq3eH8bpriH26tLjTYDwLVsip0I=
 Received: from arinc9-PC.lan (85.117.236.245 [85.117.236.245]) by mx.zohomail.com
-	with SMTPS id 1660405507469429.1380002259672; Sat, 13 Aug 2022 08:45:07 -0700 (PDT)
+	with SMTPS id 166040551423871.94615740500126; Sat, 13 Aug 2022 08:45:14 -0700 (PDT)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Andrew Lunn <andrew@lunn.ch>,
 	Vivien Didelot <vivien.didelot@gmail.com>,
@@ -72,9 +72,9 @@ Cc: netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-Subject: [PATCH v2 5/7] dt-bindings: net: dsa: mediatek,mt7530: remove unnecesary lines
-Date: Sat, 13 Aug 2022 18:44:13 +0300
-Message-Id: <20220813154415.349091-6-arinc.unal@arinc9.com>
+Subject: [PATCH v2 6/7] dt-bindings: net: dsa: mediatek,mt7530: define phy-mode for each compatible
+Date: Sat, 13 Aug 2022 18:44:14 +0300
+Message-Id: <20220813154415.349091-7-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220813154415.349091-1-arinc.unal@arinc9.com>
 References: <20220813154415.349091-1-arinc.unal@arinc9.com>
@@ -83,8 +83,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220813_084531_353115_71ED2CF1 
-X-CRM114-Status: UNSURE (   7.44  )
+X-CRM114-CacheID: sfid-20220813_084537_795774_620358D5 
+X-CRM114-Status: UNSURE (   8.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,114 +100,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove unnecessary lines as they are already included from the referred
-dsa.yaml.
+Define acceptable phy-mode values for CPU port of each compatible device.
+Remove relevant information from the description of the binding.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- .../bindings/net/dsa/mediatek,mt7530.yaml     | 27 -------------------
- 1 file changed, 27 deletions(-)
+ .../bindings/net/dsa/mediatek,mt7530.yaml     | 103 ++++++++++++++++--
+ 1 file changed, 92 insertions(+), 11 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index ff51a2f6875f..a27cb4fa490f 100644
+index a27cb4fa490f..530ef5a75a2f 100644
 --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
 +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -162,15 +162,8 @@ allOf:
+@@ -49,17 +49,6 @@ description: |
+   * mt7621: phy-mode = "rgmii-txid";
+   * mt7623: phy-mode = "rgmii";
  
-       patternProperties:
-         "^(ethernet-)?ports$":
--          type: object
+-  CPU-Ports need a phy-mode property:
+-    Allowed values on mt7530 and mt7621:
+-      - "rgmii"
+-      - "trgmii"
+-    On mt7531:
+-      - "1000base-x"
+-      - "2500base-x"
+-      - "rgmii"
+-      - "sgmii"
 -
-           patternProperties:
-             "^(ethernet-)?port@[0-9]+$":
--              type: object
--              description: Ethernet switch ports
 -
--              unevaluatedProperties: false
--
-               properties:
-                 reg:
-                   description:
-@@ -178,7 +171,6 @@ allOf:
-                     0 to 5 for user ports.
- 
-               allOf:
--                - $ref: dsa-port.yaml#
-                 - if:
-                     properties:
-                       label:
-@@ -186,7 +178,6 @@ allOf:
+ properties:
+   compatible:
+     oneOf:
+@@ -177,6 +166,36 @@ allOf:
+                         items:
                            - const: cpu
                    then:
++                    allOf:
++                      - if:
++                          properties:
++                            reg:
++                              const: 5
++                        then:
++                          properties:
++                            phy-mode:
++                              enum:
++                                - gmii
++                                - mii
++                                - rgmii
++
++                      - if:
++                          properties:
++                            reg:
++                              const: 6
++                        then:
++                          properties:
++                            phy-mode:
++                              enum:
++                                - rgmii
++                                - trgmii
++
++                    properties:
++                      reg:
++                        enum:
++                          - 5
++                          - 6
++
                      required:
--                      - reg
                        - phy-mode
  
-   - if:
-@@ -200,15 +191,8 @@ allOf:
- 
-       patternProperties:
-         "^(ethernet-)?ports$":
--          type: object
--
-           patternProperties:
-             "^(ethernet-)?port@[0-9]+$":
--              type: object
--              description: Ethernet switch ports
--
--              unevaluatedProperties: false
--
-               properties:
-                 reg:
-                   description:
-@@ -216,7 +200,6 @@ allOf:
-                     0 to 5 for user ports.
- 
-               allOf:
--                - $ref: dsa-port.yaml#
-                 - if:
-                     properties:
-                       label:
-@@ -224,7 +207,6 @@ allOf:
+@@ -206,6 +225,38 @@ allOf:
+                         items:
                            - const: cpu
                    then:
++                    allOf:
++                      - if:
++                          properties:
++                            reg:
++                              const: 5
++                        then:
++                          properties:
++                            phy-mode:
++                              enum:
++                                - 1000base-x
++                                - 2500base-x
++                                - rgmii
++                                - sgmii
++
++                      - if:
++                          properties:
++                            reg:
++                              const: 6
++                        then:
++                          properties:
++                            phy-mode:
++                              enum:
++                                - 1000base-x
++                                - 2500base-x
++                                - sgmii
++
++                    properties:
++                      reg:
++                        enum:
++                          - 5
++                          - 6
++
                      required:
--                      - reg
                        - phy-mode
  
-   - if:
-@@ -238,15 +220,8 @@ allOf:
- 
-       patternProperties:
-         "^(ethernet-)?ports$":
--          type: object
--
-           patternProperties:
-             "^(ethernet-)?port@[0-9]+$":
--              type: object
--              description: Ethernet switch ports
--
--              unevaluatedProperties: false
--
-               properties:
-                 reg:
-                   description:
-@@ -254,7 +229,6 @@ allOf:
-                     0 to 5 for user ports.
- 
-               allOf:
--                - $ref: dsa-port.yaml#
-                 - if:
-                     properties:
-                       label:
-@@ -262,7 +236,6 @@ allOf:
+@@ -235,6 +286,36 @@ allOf:
+                         items:
                            - const: cpu
                    then:
++                    allOf:
++                      - if:
++                          properties:
++                            reg:
++                              const: 5
++                        then:
++                          properties:
++                            phy-mode:
++                              enum:
++                                - gmii
++                                - mii
++                                - rgmii
++
++                      - if:
++                          properties:
++                            reg:
++                              const: 6
++                        then:
++                          properties:
++                            phy-mode:
++                              enum:
++                                - rgmii
++                                - trgmii
++
++                    properties:
++                      reg:
++                        enum:
++                          - 5
++                          - 6
++
                      required:
--                      - reg
                        - phy-mode
  
- unevaluatedProperties: false
 -- 
 2.34.1
 
