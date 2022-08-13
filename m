@@ -4,84 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3C5CC25B08
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Aug 2022 08:35:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26CC6C19F2D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Aug 2022 10:45:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IkARQOyCkbKRyiQVo0E+3fF3PnzXAw1PITXNc7Jpyh0=; b=TYPBjAWH3MiFWLFFtivVepPZw/
-	TbDqbNhy3kIHYwfkcShkSKlUl4LiaMFONPgzhd9Vo57puwOk0ec/sdDeUpBW/gSO/IwRHzBxZ0PmY
-	gc6oqiaGPMZ8J8biqm4Oe7ta3hp0N5QNClNI+j7S1Rs+kCrU39Vgv2k/6BXUaG84zSFLc4Q1a06DF
-	IbFCuX2eC4JHl1ISJgGbi/ocjbOIgltLhv2iEsuioNHZ1qt6Rewl4R9MBmuPZGYScrynLn5f4ybPf
-	VkWvCCFEyyyl0er2mib5oS3UCFYYSMGxWCuwd5GWZeU0dyhrPwXzb9CdiHnoCXGYcGq3dh1I8Rp0M
-	smS1RUrQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:From:To:Date:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mr68/NsAdXC+G9X9bG8jF/vpINHVnEQJpv90ExGKKdA=; b=hybB/fsyer8Vnf1mWsiXuXTRR3
+	ncqW5mPSq1/Deww21H/YzGdt7thqDcJY1IDNjmMFQ9wzOimuDV4inervDotCl29TyCz0bPDz77bZQ
+	+oJGG+FOMqjh79U7KxS+YGzqZerqXqKbmfknmhMTZ+L/c/I7x+9pxRWci85aCzIxhrf/6OO8n0Pwf
+	3Cas1MxAKKXcJnQxtdY4TAivjax2Gc913DAKkXqfpbxUfVbZYkbLhrkodAeKi7vjDV2pEc1CyHQb4
+	BNplMCBSTF4rzsp1Jmvebi9eTE6rW+u0NIrP4EMYvubzOGf/2sCMI7kXinInXg0uWIfcT3lDqgJye
+	Bl2e4D6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMmbn-00DQMM-CK; Sat, 13 Aug 2022 08:35:03 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1oMoe2-00E2as-HO; Sat, 13 Aug 2022 10:45:30 +0000
+Received: from mail-4318.protonmail.ch ([185.70.43.18])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMmbc-00DQJp-Ii; Sat, 13 Aug 2022 08:34:53 +0000
-Received: by mail-wr1-x435.google.com with SMTP id j1so3435401wrw.1;
-        Sat, 13 Aug 2022 01:34:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc;
-        bh=IkARQOyCkbKRyiQVo0E+3fF3PnzXAw1PITXNc7Jpyh0=;
-        b=iy2tGlJJWOePjP4JMIf2lWvBMTtWcxBCklDT3Rer6sFEgnlJJEM8z97vQMqav6pmT4
-         Is04EhSQMJadSQuv0fQj0oYzHiIpgrfvRQ2ZvQFvsdsnkk4gSZk/N3G1jAwUMHp71imR
-         kimdykDY14s0nu8Enb9f9vSCxCHQzqjYVfmjceGisBBurTmDOI4G6A4/MLrow2KUmh7p
-         6I8BLVpwbxceUC7ozfY62oeon/v9MJ9RtG++gaUugVc938y4pSUotBSwG7Egl5CAv0/s
-         dLSRQ9l4/yS2jxQI0GEYexvHn3vk/iRdZTKI12cTYXen00JY58bnctTmka273oG6i1Ue
-         fEiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc;
-        bh=IkARQOyCkbKRyiQVo0E+3fF3PnzXAw1PITXNc7Jpyh0=;
-        b=xcaZt4SDKbUhlB2UBeFP+LSreON42dqIHd+KdyTdb3+x6iYm6sHWu6A1f7QWykl65F
-         fCH3vHXvfi4jHVmp5KDKiZVPU1O+NyKWYvaerbJjQxPFkg2LaILquqtanCjCfnOvZYzG
-         BNSiIl97C7142Y2M/tZ+PQtOwq63xuaRQ8SgLVNk4Jk6SwAxr5HqP31pSgyyl9Co1nmW
-         hHR4hdawv2zfW6qvi9imlWfJ/esVCcwoHvyXOt7q2M0YdfoWpbppOEM8bpaCLT4kEEUR
-         ZnfBUpcRx46g6d4SIdS+uuSLhEsCA/BleNOR9T5N2a5rWzfc3aUGq9NaR0e083L3EW5t
-         Bh4w==
-X-Gm-Message-State: ACgBeo0lH/bKzQRxr5odcsBnQKvYMDCw4a+UMbzLLi5lhfHucfrFiLu3
-	HnSNUsUGHzBB5hE2qjDxXZY=
-X-Google-Smtp-Source: AA6agR7rr8NCgKEiWScS7tmJrKZ0xvzCBH96rM1Fx03ZPKypl/m1UJj5NiIZA8ksFaWKOBT90pXuGA==
-X-Received: by 2002:a05:6000:547:b0:218:5f6a:f5db with SMTP id b7-20020a056000054700b002185f6af5dbmr4024036wrf.480.1660379690470;
-        Sat, 13 Aug 2022 01:34:50 -0700 (PDT)
-Received: from localhost.localdomain ([105.235.129.49])
-        by smtp.gmail.com with ESMTPSA id q4-20020a05600000c400b0021e8d205705sm1471365wrx.51.2022.08.13.01.34.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 13 Aug 2022 01:34:50 -0700 (PDT)
-From: Yassine Oudjana <yassine.oudjana@gmail.com>
-X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Miles Chen <miles.chen@mediatek.com>,
-	Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
-	Yassine Oudjana <yassine.oudjana@gmail.com>,
-	Rex-BC Chen <rex-bc.chen@mediatek.com>,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] clk: mediatek: Use mtk_clk_register_gates_with_dev in simple probe
-Date: Sat, 13 Aug 2022 09:33:20 +0100
-Message-Id: <20220813083319.45455-1-y.oudjana@protonmail.com>
-X-Mailer: git-send-email 2.37.1
+	id 1oModr-00E2XG-61; Sat, 13 Aug 2022 10:45:20 +0000
+Date: Sat, 13 Aug 2022 10:44:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1660387504; x=1660646704;
+	bh=mr68/NsAdXC+G9X9bG8jF/vpINHVnEQJpv90ExGKKdA=;
+	h=Date:To:From:Cc:Reply-To:Subject:Message-ID:In-Reply-To:
+	 References:Feedback-ID:From:To:Cc:Date:Subject:Reply-To:
+	 Feedback-ID:Message-ID;
+	b=sPTb7QdnrMFKFLTxJiv9LuHcKHXbKBlTYsJHejRrkAUAV5Vmpih9IN1+QZNDG4Za3
+	 ImsN0zxdTjD0AmiHohdOyBA42ulCa+cMR9Y6Nxed8ee01z7X6JNvTazf9IV9xakLI+
+	 LuQ31sYYBz1r1Y5kW+7lFK2CP7jprsDtqME8lSzDjeGTmWUSyIuChl06+HxZrpU667
+	 I/y763WUz1i4bHA3C9TXJLiw4rl1M7rUKhGEBknQMjZDRKDgn64BpeaVfDqsGKpGBh
+	 PQzjAZVRAUkXlpN8MvfKyaxXE/1jB0OYtWhXTc7yZ/YsOvP3g42wjJocCdFu0Oej0F
+	 RKC+f4Dekb9Aw==
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Yassine Oudjana <y.oudjana@protonmail.com>
+Cc: Miles Chen <miles.chen@mediatek.com>, yassine.oudjana@gmail.com, bgolaszewski@baylibre.com, chun-jie.chen@mediatek.com, devicetree@vger.kernel.org, ikjn@chromium.org, krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mturquette@baylibre.com, p.zabel@pengutronix.de, robh+dt@kernel.org, sam.shih@mediatek.com, sboyd@kernel.org, tinghan.shen@mediatek.com, weiyi.lu@mediatek.com, wenst@chromium.org, ~postmarketos/upstreaming@lists.sr.ht
+Subject: Re: [PATCH v2 4/4] clk: mediatek: Add drivers for MediaTek MT6735 main clock drivers
+Message-ID: <lAB8fLfWTwUu6FUqPZWoKNEC0ZPYHnvo05u6BGriYQVjanlTzorHaZAflEbzoml-0UVZe-02r6CfzKwGdBCp7E0YeT_hF86P26r-Zeivda4=@protonmail.com>
+In-Reply-To: <c7b98ee4-cd4f-d7b7-726d-1acd4fafd50a@collabora.com>
+References: <NJC6CR.M4CF312LSXXV1@gmail.com> <20220520093501.28758-1-miles.chen@mediatek.com> <c7b98ee4-cd4f-d7b7-726d-1acd4fafd50a@collabora.com>
+Feedback-ID: 6882736:user:proton
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220813_013452_639016_FE60263D 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20220813_034519_416394_222ACDD5 
+X-CRM114-Status: GOOD (  39.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,39 +62,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: Yassine Oudjana <y.oudjana@protonmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yassine Oudjana <y.oudjana@protonmail.com>
+On Friday, May 20th, 2022 at 11:26 AM, AngeloGioacchino Del Regno <angelogi=
+oacchino.delregno@collabora.com> wrote:
 
-Register gates with dev in mtk_clk_simple_probe.
+> Il 20/05/22 11:35, Miles Chen ha scritto:
+>
+> > > > Thanks for submitting this patch.
+> > > >
+> > > > I compare this with drivers/clk/mediatek/clk-mt7986-apmixed.c,
+> > > > and other clk files are using macros to make the mtk_pll_data array
+> > > > more readable.
+> > >
+> > > I'd actually argue that macros make it less readable. While reading
+> > > other drivers I had a lot of trouble figuring out which argument
+> > > is which field of the struct, and had to constantly go back to the
+> > > macro definitions and count arguments to find it. Having it this
+> > > way, each value is labeled clearly with the field it's in. I think
+> > > the tradeoff between line count and readability here is worth it.
+> >
+> > It is easier for multiple developers to work together if we have a comm=
+on style.
+> >
+> > How do you think?
+>
+>
+> In my opinion, Yassine is definitely right about this one: unrolling thes=
+e macros
+> will make the code more readable, even though this has the side effect of=
+ making
+> it bigger in the source code form (obviously, when compiled, it's going t=
+o be the
+> exact same size).
+>
+> I wouldn't mind getting this clock driver in without the usage of macros,=
+ as much
+> as I wouldn't mind converting all of the existing drivers to open-code ev=
+erything
+> instead of using macros that you have to find in various headers... this =
+practice
+> was done in multiple drivers (clock or elsewhere), so I don't think that =
+it would
+> actually be a bad idea to do it here on MediaTek too, even though I'm not=
+ aware of
+> any rule that may want us to do that: if you check across drivers/clk/*, =
+there's
+> a big split in how drivers are made, where some are using macros (davinci=
+, renesas,
+> samsung, sprd, etc), and some are not (bcm, sunxi-ng, qcom, tegra, versat=
+ile, etc),
+> so it's really "do it as you wish"...
+>
+> ... but:
+>
+> Apart from that, I also don't think that it is a good idea to convert the=
+ other
+> MTK clock drivers right now, as this would make the upstreaming of MediaT=
+ek clock
+> drivers harder for some of the community in this moment... especially whe=
+n we look
+> at how many MTK SoCs are out there in the wild, and how many we have upst=
+ream:
+> something like 10% of them, or less.
+>
+> I see the huge benefit of having a bigger community around MediaTek platf=
+orms as
+> that's beneficial to get a way better support and solidity for all SoCs a=
+s they
+> are sharing the same drivers and same framework, and expanding the suppor=
+t to more
+> of them will only make it better with highly valuable community contribut=
+ions.
+>
+>
+> That said, Yassine, you should've understood that you have my full suppor=
+t on
+> unrolling these macros - but it's not time to do that yet: you definitely=
+ know
+> that MediaTek clock drivers are going through a big cleanup phase which i=
+s, at
+> this point, unavoidable... if we are able to get the aid of scripts (cocc=
+i and
+> others), that will make our life easier in this cleanup, and will also ma=
+ke us
+> able to perform the entire cleanup with less effort and in less overall t=
+ime.
+>
+> With that, I'm sad but I have to support Miles' decision on this one, and=
+ I also
+> have to ask you to use macros in this driver.
 
-Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-This patch was originally part of a series, and is sent alone now since
-it doesn't depend on the rest of it and can be applied directly:
-https://lore.kernel.org/linux-clk/20220519134728.456643-1-y.oudjana@protonmail.com/
+I'm picking up this series again now after taking a long break to allow for
+ongoing cleanup and refactoring work to settle down. I was going to make th=
+is
+change but then I couldn't find the PLL macro defined in any common header.
+It seems that it is defined in every driver that uses it, with slight varia=
+tions
+in some of them. Should I just do the same, or would it be better to define=
+ it
+in clk-pll.h? Also, would now be a good time to unroll the macros in all dr=
+ivers,
+or is it still too soon?
 
- drivers/clk/mediatek/clk-mtk.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Another thing: Since I've been out of touch with the cleanup work for a whi=
+le,
+it would be great if someone makes me aware of any pending cleanup patches =
+that
+I should know of so that I base my patches on them and avoid duplicating wo=
+rk.
 
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 05a188c62119..4977870912b1 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -434,7 +434,8 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
- 	if (!clk_data)
- 		return -ENOMEM;
- 
--	r = mtk_clk_register_gates(node, mcd->clks, mcd->num_clks, clk_data);
-+	r = mtk_clk_register_gates_with_dev(node, mcd->clks, mcd->num_clks,
-+					    clk_data, &pdev->dev);
- 	if (r)
- 		goto free_data;
- 
--- 
-2.37.1
-
+> ...
 
