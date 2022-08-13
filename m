@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93157C19F2D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Aug 2022 15:46:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39238C25B0F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Aug 2022 15:47:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2jeVUYQX9J/2owiK6eAWTqPnBtbCS5zQ8DbyaccFKw4=; b=u9bYcZ6XQzC8iuT7VAs0/8WmHB
-	6z4jixyaeE7w4Ct+DZZDKwr0aSEXeBkJokvJddwzgQvDuco/lbBxgnuTZl85i7CPcBANN9Ges6Gea
-	2Gwv7WI/DjDdCz2hb63PV8rVycjkz8ZubMdY1c5zlZQfpCP7xYwTJWULZFQClkEP347fTXtMydAtK
-	OWS+Uvj5CY5QQNUWd7i7dUAcZIfqhPvz6SSWQXatWhupBrmR1oh3oU+4JhB9LXLvnxg22y5zy056X
-	yU/lxmIo7rLJ1T1TRGMLf30t1xP72dwZcc8g2Sa7LieqNIm3PV7KTIV+Isfvh4SveEwXF48Ofjv/v
-	rxNUCifw==;
+	bh=jsLNwKu69dMoowXkaVBPR2TlA1Lu17rBjhIrh9GsaeU=; b=LHU+0qPzhjdrvCpNNUM+ZlObev
+	wFfdehC7EVvQ9xlMx9vHC+OzzyJmSo5W68CmX3oI6qusyKnGnZVubm//o2qJkqrA3Myf9nySUJVZn
+	7ecVD5BMhRr3QHux5t03cLY0CrBGCUvHKJeiUBuakvR+kyGeBQ4rJlwjmBzl/ijKKCbFLOxwikia+
+	TznYqKJs6e2xk22arcv71HBXV6lmbtqCYu2+xwJQ7ANDEbi4/7ViWgYOsbxlBtRD7YEcwsFrXUnBE
+	tgFaFLxFV5SPlf1fkjJfQ6WxUMOUBvYUDKh6qyWVdNxikM4O7jLUo3oxUvmmyDgmlbm/FbFkK0tS7
+	ELSoQMbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMtLO-00FYx8-N7; Sat, 13 Aug 2022 15:46:34 +0000
+	id 1oMtM0-00FZLP-ST; Sat, 13 Aug 2022 15:47:12 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMtKD-00FY98-U7; Sat, 13 Aug 2022 15:45:24 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1660405501; cv=none; 
+	id 1oMtKM-00FYDT-RL; Sat, 13 Aug 2022 15:45:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1660405509; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=ErqpvuYoieUM4bDr40iitvrnhevKZD1muIBJaJW10Cvzxuvzfeaab4OIRdOIlzAWGlaXSVad4cFrChjbEys+XdiRoCZtgz6wnoBgE2Sl/Bi4JYDSMvvaaXMpvDfA4Cw9HdzRge8DW7VtMqzmpI6KWu7duCg+NWit3QjyKYzLNqQ=
+	b=D1Zfk5JkXA6KE5KzpCAb9VVLrjlrX6Lntp8gKyxlnkaRGVy9/8q+uJsXmEUnX9F6cK3dfp0IuTK/ZJORL0EkgLbvOyY/mlNDhXrgnEv2p1DV2sm40VB6Lmcq43w6USRkO2artg2dqfgkogf1G4x5Q1y5+E2wMRjHyFvLbAwCAYw=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1660405501; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=2jeVUYQX9J/2owiK6eAWTqPnBtbCS5zQ8DbyaccFKw4=; 
-	b=dgyzKOuqGpcvUgaeqi8tLo9TqVzFnNp5sfyuvARuehEijDND8GpMGGAMz7qrywxcROGC72cj0AiD8bsi28I7gRWM902Mes0/jV3wCQbf1oY2eoV+ZxbcVRtnKnJPjJ6oNrp4qUVoXciwLzvBVsnW+ZX8Q/9memcs8OihdMLJKrs=
+	t=1660405509; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=jsLNwKu69dMoowXkaVBPR2TlA1Lu17rBjhIrh9GsaeU=; 
+	b=fmr2aK5GjjT3eU7K9tiVKKzGbnjRZsbbAtm2KLqS+UQzfPJsHvTewBpbGHfumXsEJ5CFY1rMtyWFvn5TxMKSI0dG5GGDGa/m8hIdJX5DyPnw0tGjxvs/cEvQkEr4q8uU+XLOancp4b+SeewL+8ZKoj3xGX0q41dXL0Av5CtRjk0=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1660405501;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1660405509;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=2jeVUYQX9J/2owiK6eAWTqPnBtbCS5zQ8DbyaccFKw4=;
-	b=HIhGksqYfYrSyXo1fZDr2KdRk1HnkOVjwFMiLGaNpe6G3o+wZP4G2wf6kcvHvhfl
-	rqIOt/5yM0gDAVmUPHVC8OpuZ5vOgH1BADx7n5oPP+Lj5LJNuF0aLGXZkdVTFMM843s
-	PQLbrJWGgmfOT1u50KrebK6zKfktkSQhZnr7kEMo=
+	bh=jsLNwKu69dMoowXkaVBPR2TlA1Lu17rBjhIrh9GsaeU=;
+	b=SRMEhb/h5L6+dlrsVv6DPRaXYXEM4U0TpzWSqh1iM7yNYEOxqTdPNi9iIiIdKA5G
+	XhYQvb6Iw/1/Ex2zWzDsdmtzEhGKLutHpzGpvhvzFsONThLpqdAarrZzrvbIyDik+nq
+	k7Tj1gcIv9U7R+eTT6l8P9gInbL+OcaBE89kMMtg=
 Received: from arinc9-PC.lan (85.117.236.245 [85.117.236.245]) by mx.zohomail.com
-	with SMTPS id 1660405500648584.308589731525; Sat, 13 Aug 2022 08:45:00 -0700 (PDT)
+	with SMTPS id 1660405507469429.1380002259672; Sat, 13 Aug 2022 08:45:07 -0700 (PDT)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Andrew Lunn <andrew@lunn.ch>,
 	Vivien Didelot <vivien.didelot@gmail.com>,
@@ -72,9 +72,9 @@ Cc: netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-Subject: [PATCH v2 4/7] dt-bindings: net: dsa: mediatek,mt7530: define port binding per compatible
-Date: Sat, 13 Aug 2022 18:44:12 +0300
-Message-Id: <20220813154415.349091-5-arinc.unal@arinc9.com>
+Subject: [PATCH v2 5/7] dt-bindings: net: dsa: mediatek,mt7530: remove unnecesary lines
+Date: Sat, 13 Aug 2022 18:44:13 +0300
+Message-Id: <20220813154415.349091-6-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220813154415.349091-1-arinc.unal@arinc9.com>
 References: <20220813154415.349091-1-arinc.unal@arinc9.com>
@@ -83,8 +83,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220813_084522_073875_453C8405 
-X-CRM114-Status: UNSURE (   8.12  )
+X-CRM114-CacheID: sfid-20220813_084531_353115_71ED2CF1 
+X-CRM114-Status: UNSURE (   7.44  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,162 +100,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Define DSA port binding under each compatible device as each device
-requires different values for certain properties.
+Remove unnecessary lines as they are already included from the referred
+dsa.yaml.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- .../bindings/net/dsa/mediatek,mt7530.yaml     | 116 +++++++++++++-----
- 1 file changed, 87 insertions(+), 29 deletions(-)
+ .../bindings/net/dsa/mediatek,mt7530.yaml     | 27 -------------------
+ 1 file changed, 27 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index cc87f48d4d07..ff51a2f6875f 100644
+index ff51a2f6875f..a27cb4fa490f 100644
 --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
 +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -130,35 +130,6 @@ properties:
-       ethsys.
-     maxItems: 1
+@@ -162,15 +162,8 @@ allOf:
  
--patternProperties:
--  "^(ethernet-)?ports$":
--    type: object
+       patternProperties:
+         "^(ethernet-)?ports$":
+-          type: object
 -
--    patternProperties:
--      "^(ethernet-)?port@[0-9]+$":
--        type: object
--        description: Ethernet switch ports
+           patternProperties:
+             "^(ethernet-)?port@[0-9]+$":
+-              type: object
+-              description: Ethernet switch ports
 -
--        unevaluatedProperties: false
+-              unevaluatedProperties: false
 -
--        properties:
--          reg:
--            description:
--              Port address described must be 5 or 6 for CPU port and from 0
--              to 5 for user ports.
--
--        allOf:
--          - $ref: dsa-port.yaml#
--          - if:
--              properties:
--                label:
--                  items:
--                    - const: cpu
--            then:
--              required:
--                - reg
--                - phy-mode
--
- required:
-   - compatible
-   - reg
-@@ -189,6 +160,35 @@ allOf:
-         - core-supply
-         - io-supply
+               properties:
+                 reg:
+                   description:
+@@ -178,7 +171,6 @@ allOf:
+                     0 to 5 for user ports.
  
-+      patternProperties:
-+        "^(ethernet-)?ports$":
-+          type: object
-+
-+          patternProperties:
-+            "^(ethernet-)?port@[0-9]+$":
-+              type: object
-+              description: Ethernet switch ports
-+
-+              unevaluatedProperties: false
-+
-+              properties:
-+                reg:
-+                  description:
-+                    Port address described must be 5 or 6 for CPU port and from
-+                    0 to 5 for user ports.
-+
-+              allOf:
-+                - $ref: dsa-port.yaml#
-+                - if:
-+                    properties:
-+                      label:
-+                        items:
-+                          - const: cpu
-+                  then:
-+                    required:
-+                      - reg
-+                      - phy-mode
-+
+               allOf:
+-                - $ref: dsa-port.yaml#
+                 - if:
+                     properties:
+                       label:
+@@ -186,7 +178,6 @@ allOf:
+                           - const: cpu
+                   then:
+                     required:
+-                      - reg
+                       - phy-mode
+ 
    - if:
-       properties:
-         compatible:
-@@ -198,6 +198,35 @@ allOf:
-       properties:
-         mediatek,mcm: false
+@@ -200,15 +191,8 @@ allOf:
  
-+      patternProperties:
-+        "^(ethernet-)?ports$":
-+          type: object
-+
-+          patternProperties:
-+            "^(ethernet-)?port@[0-9]+$":
-+              type: object
-+              description: Ethernet switch ports
-+
-+              unevaluatedProperties: false
-+
-+              properties:
-+                reg:
-+                  description:
-+                    Port address described must be 5 or 6 for CPU port and from
-+                    0 to 5 for user ports.
-+
-+              allOf:
-+                - $ref: dsa-port.yaml#
-+                - if:
-+                    properties:
-+                      label:
-+                        items:
-+                          - const: cpu
-+                  then:
-+                    required:
-+                      - reg
-+                      - phy-mode
-+
+       patternProperties:
+         "^(ethernet-)?ports$":
+-          type: object
+-
+           patternProperties:
+             "^(ethernet-)?port@[0-9]+$":
+-              type: object
+-              description: Ethernet switch ports
+-
+-              unevaluatedProperties: false
+-
+               properties:
+                 reg:
+                   description:
+@@ -216,7 +200,6 @@ allOf:
+                     0 to 5 for user ports.
+ 
+               allOf:
+-                - $ref: dsa-port.yaml#
+                 - if:
+                     properties:
+                       label:
+@@ -224,7 +207,6 @@ allOf:
+                           - const: cpu
+                   then:
+                     required:
+-                      - reg
+                       - phy-mode
+ 
    - if:
-       properties:
-         compatible:
-@@ -207,6 +236,35 @@ allOf:
-       required:
-         - mediatek,mcm
+@@ -238,15 +220,8 @@ allOf:
  
-+      patternProperties:
-+        "^(ethernet-)?ports$":
-+          type: object
-+
-+          patternProperties:
-+            "^(ethernet-)?port@[0-9]+$":
-+              type: object
-+              description: Ethernet switch ports
-+
-+              unevaluatedProperties: false
-+
-+              properties:
-+                reg:
-+                  description:
-+                    Port address described must be 5 or 6 for CPU port and from
-+                    0 to 5 for user ports.
-+
-+              allOf:
-+                - $ref: dsa-port.yaml#
-+                - if:
-+                    properties:
-+                      label:
-+                        items:
-+                          - const: cpu
-+                  then:
-+                    required:
-+                      - reg
-+                      - phy-mode
-+
+       patternProperties:
+         "^(ethernet-)?ports$":
+-          type: object
+-
+           patternProperties:
+             "^(ethernet-)?port@[0-9]+$":
+-              type: object
+-              description: Ethernet switch ports
+-
+-              unevaluatedProperties: false
+-
+               properties:
+                 reg:
+                   description:
+@@ -254,7 +229,6 @@ allOf:
+                     0 to 5 for user ports.
+ 
+               allOf:
+-                - $ref: dsa-port.yaml#
+                 - if:
+                     properties:
+                       label:
+@@ -262,7 +236,6 @@ allOf:
+                           - const: cpu
+                   then:
+                     required:
+-                      - reg
+                       - phy-mode
+ 
  unevaluatedProperties: false
- 
- examples:
 -- 
 2.34.1
 
