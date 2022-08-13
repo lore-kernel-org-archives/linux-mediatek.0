@@ -4,81 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44F23C00140
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Aug 2022 20:58:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05756C25B08
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Aug 2022 08:33:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nF+ci0c8juSw2FG7lie0JtjDUVepOlyU1sBnwndMfrY=; b=LwgmxkBphn+a87z9je4K0ikm1e
-	Ro5/e+ppwRGOfAWnKaRh3rsh72Ju8ugxAi9fWHVcdYxzkfpjibTin/ntkeJntimqZSd4w+qMzu5WS
-	VqH+pJ9/Ip8M9fT0X/92BOvgEaPP0fApNfp/Zp7QdEQLV7jHRy5dTrBIO9HefWvKP4a+Vum4j4GET
-	IRM27adWafPZO05ED7i8v5horaqpMCI0I1uAmYeRP3E3a/bxRQ7byUkn9ta1cdfrOpCkciuxPnrGV
-	hsiT8uCUpF+AwkZ7vt1HSgDkEZk0s8xeWWuL+PHqZPfHcTmNCm5h4/dp5p+GV75dm0j+eoLZ3QNmw
-	kkaifR+Q==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XGEs78t61pwV6z3o8igEPiG1BYLAhumLfK2vsVLOvIA=; b=I2Yjt+KUVU0fiXJGZDMyUSRPtC
+	Kix81VKmA0jaZUPeCTedYbNEScaGDzF1QI0+Ymot6hJ3Yv+zjxC8Mr6SusPusEmr+4Ek8XUueXEEL
+	qb4TRl+sCL0VA9SZECTIsLokq6sTYq9FtmfGBqzeWtDHSCs5vPQzkYh+Zg5jrGxoaJUT+sHmWFtEV
+	tAu3Bin6HPHosNKYQmw5ekiGbCU4v0SwyUNRkxMzFK9vaf1sWsMhWVWaLYXBQoueh30HVhrIqTQ39
+	1JqCNQRAEwEkB8pQoTE6WZbF+P2l0flWI3b30UW1cs1HHSyINdMvl9ctv2NlfZ3n4tImoSQxg6SZt
+	dchs/QGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMbjr-00DIGd-NC; Fri, 12 Aug 2022 20:58:39 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1oMmaL-00DQ9h-Qs; Sat, 13 Aug 2022 08:33:33 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMbjq-00DIFj-Uw
-	for linux-mediatek@bombadil.infradead.org; Fri, 12 Aug 2022 20:58:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=nF+ci0c8juSw2FG7lie0JtjDUVepOlyU1sBnwndMfrY=; b=PH3cs8hX+EP63QmbuL2vX1yECF
-	eMQEpzHPGeDsNJ9HOJwEpmEVoTL/3sdFNBsB3Vm2hEPcZkrq/i7+nrch+x966+/uDQxQrnCZUScrz
-	wr18eA6jBR2iuJcfCFhKWJwpzhINzCvw6tceXpbBme2t6ROLgbb5ZJqqbunvKAjj8OGv00FNbCdJb
-	Eu89rvvGMsUjnwMS9IluF7I4q6aUAWxmvN7AmgobTpQcfwUbHvPEKmSW6FlbtihtFsk5r6xyUq+uV
-	KxzNtHIBMXiFQ2n/gBfGSqLw2IXB5MlEmnqElveAG56LkIcxr6vw7gPORUKwKrKkW025bZEMFgmWZ
-	SMd0+VRQ==;
-Received: from mx1.riseup.net ([198.252.153.129])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMbjn-002ecE-Tz
-	for linux-mediatek@lists.infradead.org; Fri, 12 Aug 2022 20:58:38 +0000
-Received: from fews1.riseup.net (fews1-pn.riseup.net [10.0.1.83])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256
-	 client-signature RSA-PSS (2048 bits) client-digest SHA256)
-	(Client CN "mail.riseup.net", Issuer "R3" (not verified))
-	by mx1.riseup.net (Postfix) with ESMTPS id 4M4GHG0kgyzDrVy;
-	Fri, 12 Aug 2022 20:58:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=riseup.net; s=squak;
-	t=1660337914; bh=+5D7uHE/auwFvlOw3q1l74r90MUsvTeHdD2XmuMoZAg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=sEx6338JJrL2aTWU6Djp837PM+GosfWj+fPpEIDv98j6DpdFIhOno7czJXNtaTBVn
-	 euxSREXqOhalFJT9oE2CT/hebLtdn7NBHFNUn+3gKyMn5EXFXZbVvUnlbU18PZyA4i
-	 XXYMmCSMwZDR5EcySQaGq0RuH+R7Bg51T7XKkki0=
-X-Riseup-User-ID: 3E3F3A4663E39F6CE14249ECF034F0D0F5DCA7766374AF9685B88D20D0D69A1E
-Received: from [127.0.0.1] (localhost [127.0.0.1])
-	 by fews1.riseup.net (Postfix) with ESMTPSA id 4M4GHB6TWCz5vTk;
-	Fri, 12 Aug 2022 20:58:30 +0000 (UTC)
-From: =?UTF-8?q?Ma=C3=ADra=20Canal?= <mairacanal@riseup.net>
-To: David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Maxime Ripard <maxime@cerno.tech>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Ma=C3=ADra=20Canal?= <mairacanal@riseup.net>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
+	id 1oMma9-00DQ8H-FM; Sat, 13 Aug 2022 08:33:22 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id n4so3391841wrp.10;
+        Sat, 13 Aug 2022 01:33:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc;
+        bh=XGEs78t61pwV6z3o8igEPiG1BYLAhumLfK2vsVLOvIA=;
+        b=Au8c358uhsjusyM1DYBsBAk6XpkgxHtNdF0Mo4H7rpPFZfeua78wPKIT82gnkdWiL6
+         3pcRhBfcMF1EjOoaW6sWed78nJ/oAnJuGfRo6uERH7iy5aWvlnBcOJ9G/1ElexJh5D8M
+         V7wmotx1ITh6LXVnlaOtjwst/hdEPtkonvzrZGxBJE4R2x8tYYSicvB/J6/Kbq+amqbk
+         6Z4W8yBc17YQI6igVOrqHojnX2e0n0ESqtIQUpQURHrNycd8v1eagV0D0sWx0YF+7rl7
+         jbs62XVPFg8XSqpxXXCcw7dbTQg6Lxp4I07099QSA09x8DSbGmhaPE0IYGV7HraLV8Ag
+         Pj5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc;
+        bh=XGEs78t61pwV6z3o8igEPiG1BYLAhumLfK2vsVLOvIA=;
+        b=5BLbGLA4DpBRBgB/AgqHLgWy95VK8NSRp08UIHzB5NkHxKMobXkrmNklIgyVNzmkha
+         Qgi/jjuBozWqkZjrEtsRq6Jc8At4+upFgX+fioJpMecoQxO3vx1a7l0+eX0gQ9N7Xsrh
+         7GgHuKRW4C9SLVBGVGK74W4K3Tay8RO+xpMzxXyL6rMP7sHOkNeArJCLeuikdOgA8zYJ
+         VwEXXaD+5Y5GtkJhBT8n3SSDloZM8v5Cf9cl+LYRXzz640b8n29qVILPOW+8IW3eijjD
+         OmMYiWK611FIQFn4ZAnRlWkeeTumWVFkOYgnj5RtgI9sccIu0vfJpPDTIwCtGXebafiD
+         rxHw==
+X-Gm-Message-State: ACgBeo0F9WxzjYZIOepqyrlwBN6ba9jy6nZCFdaj6I+A7b0uLSSVrLt7
+	uDw17g1SG8niGQ89p00rj0I=
+X-Google-Smtp-Source: AA6agR5/Uen48okuYlyJMikWEFJDJ47YA4XkvLJ/qnLoWqk+4jNv47jTLJHr3RNKjp+insaSa9wJcg==
+X-Received: by 2002:adf:e542:0:b0:21e:c148:3ef2 with SMTP id z2-20020adfe542000000b0021ec1483ef2mr3912848wrm.533.1660379593822;
+        Sat, 13 Aug 2022 01:33:13 -0700 (PDT)
+Received: from localhost.localdomain ([105.235.129.49])
+        by smtp.gmail.com with ESMTPSA id a3-20020a05600c224300b003a54109a6a0sm2142267wmm.3.2022.08.13.01.33.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 13 Aug 2022 01:33:13 -0700 (PDT)
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 2/5] drm/mediatek: Drop of_gpio header
-Date: Fri, 12 Aug 2022 17:57:43 -0300
-Message-Id: <20220812205746.609107-3-mairacanal@riseup.net>
-In-Reply-To: <20220812205746.609107-1-mairacanal@riseup.net>
-References: <20220812205746.609107-1-mairacanal@riseup.net>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Miles Chen <miles.chen@mediatek.com>,
+	Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
+	Yassine Oudjana <yassine.oudjana@gmail.com>,
+	Rex-BC Chen <rex-bc.chen@mediatek.com>,
+	linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] clk: mediatek: gate: Export mtk_clk_register_gates_with_dev
+Date: Sat, 13 Aug 2022 09:32:49 +0100
+Message-Id: <20220813083249.45427-1-y.oudjana@protonmail.com>
+X-Mailer: git-send-email 2.37.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220812_215836_202806_21BE111D 
-X-CRM114-Status: UNSURE (   8.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220813_013321_554890_6EFFF8D2 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,43 +96,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These drivers include the deprecated OF GPIO header <linux/of_gpio.h>
-yet fail to use symbols from it, so drop the include.
+From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org
-Signed-off-by: Maíra Canal <mairacanal@riseup.net>
+This allows it to be used in drivers built as modules.
+
+Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c  | 1 -
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 1 -
- 2 files changed, 2 deletions(-)
+This patch was originally part of a series, and is sent alone now since
+it doesn't depend on the rest of it and can be applied directly:
+https://lore.kernel.org/linux-clk/20220519134728.456643-1-y.oudjana@protonmail.com/
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 630a4e301ef6..508a6d994e83 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -11,7 +11,6 @@
- #include <linux/media-bus-format.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
--#include <linux/of_gpio.h>
- #include <linux/of_graph.h>
- #include <linux/pinctrl/consumer.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 3196189429bc..4c80b6896dc3 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -16,7 +16,6 @@
- #include <linux/mutex.h>
- #include <linux/of_platform.h>
- #include <linux/of.h>
--#include <linux/of_gpio.h>
- #include <linux/of_graph.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
+ drivers/clk/mediatek/clk-gate.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
+index 421806236228..0c867136e49d 100644
+--- a/drivers/clk/mediatek/clk-gate.c
++++ b/drivers/clk/mediatek/clk-gate.c
+@@ -261,6 +261,7 @@ int mtk_clk_register_gates_with_dev(struct device_node *node,
+ 
+ 	return PTR_ERR(hw);
+ }
++EXPORT_SYMBOL_GPL(mtk_clk_register_gates_with_dev);
+ 
+ int mtk_clk_register_gates(struct device_node *node,
+ 			   const struct mtk_gate *clks, int num,
 -- 
 2.37.1
 
