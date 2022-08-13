@@ -4,73 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B2AC19F2D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Aug 2022 15:37:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4B00C19F2D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Aug 2022 15:45:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YrxeWYVqwHcz/RGDRF2/ZwwFUnUxdU7yXD9JFNxZb2Q=; b=RmiR5jz2M0SfQZBJfqVdbN4DSr
-	hydjBI6G30A9VQdtiyudDgOj58dRxAmKRx4/6p9JIfyt0KORxIpSpqx1d58TvdiVB+zI8rjzL2xkH
-	0S6LpBNG1/aR3M3y3lLYaAHdToVsK7e7ae/00tysxTeEytQylSltdc42bmFSYsbtSm7T637dU344+
-	ClfL7oAd8cLG01s4RwtnUCmX1m229etFKpOYSS+Twzs3tLxo6HomDVlNMbu8pdsFxhSqQUVe5Agw9
-	bbJiimIvn17OllVUQ5LMl7aDMpWxbd65/yW1bbyuDdK3OQTk4XadMdMS4LZ61nmwJTLml5K9mZiwk
-	OXjzlk2Q==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tC2GhhC8WwZTml4OrKQ+dOaX+Zfkd8eMJ9gy4ApGFtQ=; b=sCNlMvF7mFmCIR9pJZCfH9xJcT
+	qOe1bPtTLbidpJLjTvt686WXgtgebr2BcD0BEbkaqMAmOyat59akHYwmuI3ystYN1Go3Mh4S8QTHA
+	v4QpqR+AGunBo9V5I/pRQA/Q/N0lEzuJuqi4HNneP7niKZIshvHxAVXuMaNcvqjoM+FnkHJWeM8yL
+	1De5HXldNWIHfLzdgMNbnoC1zuYRgb9YeGQOAmpHhe522VJQZifhmaKZDVJhAYABafXrpmic7j5Zb
+	lT9/Oh7NBpZjHoN+5Sin5LTvHuo1iI4agxzowicuJOMR5zvHzkR7APxymwTVo0eqa21FH2YNM4NLh
+	9ZsQQbQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMtCo-00FVAJ-8l; Sat, 13 Aug 2022 15:37:42 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oMtKK-00FYBW-PO; Sat, 13 Aug 2022 15:45:28 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMtCa-00FV2R-DA; Sat, 13 Aug 2022 15:37:29 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 17949B8069B;
-	Sat, 13 Aug 2022 15:37:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 928BEC433D6;
-	Sat, 13 Aug 2022 15:37:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660405045;
-	bh=YKS5k8HQOL4Skk22H+cxjJPrMUDWvdWUTz36jDqZAJY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=cXROFHWGoInf1pK354gp5Gb9NyimQMtBez5XiY9JTc+SxkCr6CWCJe+n2oZqHfzlH
-	 wfzhWVtq6NHlL5/TjcUp4bmN36+oYBF5bh041xeTET3yfGzrenYrA0fDV7khptS650
-	 zb5W4MOzma2Xk26UWd8/VQLvRxwsrTO8C2J5P992bopRmg1EIpDz8gOorUsKv3Ii7F
-	 Qy+gg6gmNcisR4OqIC402ov2Evvymt2UYJXnySgcq0igmFxGrnoADcSwhpGGeuT+wA
-	 JccQ8kCw2Jy7xQMfLherw5k43kwBXycb4aj4+Rft3sWzV5XyMZrS3FQxr8QZW/NcNO
-	 qDKiTP1zMFlUw==
-Date: Sat, 13 Aug 2022 16:47:48 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Lee Jones <lee.jones@linaro.org>
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>, daniel.thompson@linaro.org,
- jingoohan1@gmail.com, pavel@ucw.cz, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, sre@kernel.org,
- chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org, lars@metafoo.de,
- lgirdwood@gmail.com, broonie@kernel.org, linux@roeck-us.net,
- heikki.krogerus@linux.intel.com, deller@gmx.de, andy.shevchenko@gmail.com,
- chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
- dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org,
- szunichen@gmail.com, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Lee Jones <lee@kernel.org>
-Subject: Re: [PATCH v7 06/13] dt-bindings: mfd: Add MediaTek MT6370
-Message-ID: <20220813164748.0c5564c2@jic23-huawei>
-In-Reply-To: <YvJdpq0MWNPQZw5c@google.com>
-References: <20220805070610.3516-1-peterwu.pub@gmail.com>
-	<20220805070610.3516-7-peterwu.pub@gmail.com>
-	<YvJdpq0MWNPQZw5c@google.com>
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-pc-linux-gnu)
+	id 1oMtJv-00FY0I-8A; Sat, 13 Aug 2022 15:45:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1660405475; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=UoDUPawCJzPV93BFqlANuNJ48wXWXD/wKvh87Ls7sTkHI1HwkLILCvYqzdUyYIEthHXwKH62yV5XeGhVVaAVt+E8mf9huUbnVwhff0dAG9Gv1kx85c4fzN2ROLLvAGCtvYSsMjobgJ8SNOfVjl5QjLEf6Fjm5J4zo7Bj+FksVVc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1660405475; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To; 
+	bh=tC2GhhC8WwZTml4OrKQ+dOaX+Zfkd8eMJ9gy4ApGFtQ=; 
+	b=S+KKdqFVMAjdaEKEOKmdH1gjgCm9fZyXSAI2BKhMw6kt6p80tuUNlx1+3Wvzs9E+mrYXSjYfqsE/1YYfShdnNgO+L9s8ASCDfxVyaQFhyUx/38FLNWv16fT98/sxaSQemsQ8NSpmYxd4XsSI3/pKtglblNAC6+qaY3dNEeSp3Qc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1660405475;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
+	bh=tC2GhhC8WwZTml4OrKQ+dOaX+Zfkd8eMJ9gy4ApGFtQ=;
+	b=XJ1HybxkpDbmxmmlzZ9MFghlUwXGAEiqakT8JApuVST6U4fB+BTT1mfZSnxl9TsD
+	6hQXRBtYrPnhUYDx8gDuQHfwtQ5S/umbXeTrKBcheGGIg8BHG/HuY0/aOT7ZZMnMFIm
+	rd7arNgssq0ODltiiyZCkaCXxUbh6r9DO3x18bzk=
+Received: from arinc9-PC.lan (85.117.236.245 [85.117.236.245]) by mx.zohomail.com
+	with SMTPS id 1660405472608660.8592124322715; Sat, 13 Aug 2022 08:44:32 -0700 (PDT)
+From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+To: Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Luiz Angelo Daros de Luca <luizluca@gmail.com>,
+	Sander Vanheule <sander@svanheule.net>,
+	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	erkin.bozoglu@xeront.com,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Cc: netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+Subject: [PATCH v2 0/7] completely rework mediatek,mt7530 binding
+Date: Sat, 13 Aug 2022 18:44:08 +0300
+Message-Id: <20220813154415.349091-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220813_083728_627358_C3E1E3A8 
-X-CRM114-Status: GOOD (  14.54  )
+X-CRM114-CacheID: sfid-20220813_084503_391881_AE0F9B52 
+X-CRM114-Status: UNSURE (   8.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,40 +98,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 9 Aug 2022 14:14:14 +0100
-Lee Jones <lee.jones@linaro.org> wrote:
+Hello.
 
-> On Fri, 05 Aug 2022, ChiaEn Wu wrote:
-> 
-> > From: ChiYuan Huang <cy_huang@richtek.com>
-> > 
-> > Add MediaTek MT6370 binding documentation.
-> > 
-> > Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-> > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
-> > ---
-> >  .../devicetree/bindings/mfd/mediatek,mt6370.yaml   | 280 +++++++++++++++++++++
-> >  include/dt-bindings/iio/adc/mediatek,mt6370_adc.h  |  18 ++
-> >  2 files changed, 298 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-> >  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6370_adc.h  
-> 
-> Applied, thanks.
-> 
-Hi Lee,
+This patch series brings complete rework of the mediatek,mt7530 binding.
 
-The iio: adc: patch is dependent on this (due to the binding header) -
-so either you should pick that up as well, or it'll get delayed until what
-you've picked up is available upstream - or I guess some hackery to allow them
-to go via different trees and flip to the header only once all the prior steps
-are in place.
+The binding is checked with "make dt_binding_check
+DT_SCHEMA_FILES=mediatek,mt7530.yaml".
 
-Note I'd messed up sending an Ack on the ADC patch which I've now fixed.
+If anyone knows the GIC bit for interrupt for multi-chip module MT7530 in
+MT7623AI SoC, let me know. I'll add it to the examples.
 
-Thanks,
+If anyone got a Unielec U7623 or another MT7623AI board, please reach out.
 
-Jonathan
+v2:
+- Change the way of adding descriptions for each compatible string.
+- Split the patch for updating the json-schema.
+- Make slight changes on the patch for the binding description.
+
+Arınç ÜNAL (7):
+  dt-bindings: net: dsa: mediatek,mt7530: make trivial changes
+  dt-bindings: net: dsa: mediatek,mt7530: fix reset lines
+  dt-bindings: net: dsa: mediatek,mt7530: update examples
+  dt-bindings: net: dsa: mediatek,mt7530: define port binding per compatible
+  dt-bindings: net: dsa: mediatek,mt7530: remove unnecesary lines
+  dt-bindings: net: dsa: mediatek,mt7530: define phy-mode for each compatible
+  dt-bindings: net: dsa: mediatek,mt7530: update binding description
+
+ .../bindings/net/dsa/mediatek,mt7530.yaml       | 1017 +++++++++++++-----
+ 1 file changed, 767 insertions(+), 250 deletions(-)
 
 
 
