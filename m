@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63D3CC25B06
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Aug 2022 16:20:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 662FDC25B06
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Aug 2022 16:24:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xnjk+YmOnVh6z93j9RnIfkfkOyvyCts13G+hq+bKR7k=; b=TexLpC/uKKapBxwPpuGK0tW9EX
-	y/qEOSvC5USgpKnWtxWofnIRr0tbKjiq7wK2Vc9klMnHeCMCg0fHxKf1kMx6EuFkIvKjFCwuB6VJM
-	ILRzon5u4deEoBMEvfE+7XBhS/CiG7+LU/YryXIQ3IWGdtZSPkd4QmFmVx1A3FpNpHMBF97Yh0gi3
-	KS3k11o8XkHuNO/gqZwRX7ZyWzmjZpNZ1nqJS1hdJ/ZER6K1FWTKbNyEsD2oIqjP4Dltf8HtM1FBZ
-	1b7+I187ZC7T/YiUqWVgaTl+PCgjrhnjNkzAxxoW6DQsDNM93ZPoLSY4R9MIBIgtmU2+q8A3vQ+6j
-	OL9KLByA==;
+	bh=Xnjk+YmOnVh6z93j9RnIfkfkOyvyCts13G+hq+bKR7k=; b=3+Noi+FgzC5duLJuH1AGKnIZFu
+	scG/TBIzxQPb1f0sMHRGMPgFjjt5RhwPcEkkv0B3eHIAdyaGuOUhfF1f/Z5tXk942Z4MqOYV/OdZv
+	CMLdjv5KZ18vAnq9H31FmZbz1a3veKYTdLw2pmObGZVS58pCwamv1DquhgTHMkICYwF+CkvzDZxak
+	YJOMchOBJvucGAnvwAeQ2MlYL8WXHfluGIXiEZG88bi+va8AtXq5CpgaCKHHVFTO/EE/oaHOQGZR0
+	WJcIXbqJaZKNq6YDAeLwpH0hHNYyWhaJBw4mr5lxQoWN4h+PJznOx3UBZSNCruSFIwUHV5D0HEaVq
+	aMM6EGnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNGLb-007pPm-W0; Sun, 14 Aug 2022 16:20:19 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1oNGPC-007rdB-9D; Sun, 14 Aug 2022 16:24:02 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNGLN-007pJC-ES; Sun, 14 Aug 2022 16:20:08 +0000
+	id 1oNGP0-007rY1-GF; Sun, 14 Aug 2022 16:23:52 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 949E3CE0B6B;
-	Sun, 14 Aug 2022 16:20:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59CF6C433D6;
-	Sun, 14 Aug 2022 16:19:58 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id D740EB80B7F;
+	Sun, 14 Aug 2022 16:23:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37A5AC433D7;
+	Sun, 14 Aug 2022 16:23:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660493999;
+	s=k20201202; t=1660494227;
 	bh=YI2a3bQsRpitOm3qvXNGbLX4UFt3jIL05K8HgbujqzQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Q7UL13Xr3n8vsNcHpB5q3DRXA4nVdL1AtEFl6qlMcJOUzN0daGytf/cNN6UIO//Iv
-	 5jjeW+WxKBv6Q0Sm9t+LD7BdYJUDTdyfcahoT90P+AsPnI885nKV8tvBEC9ZT+Moqy
-	 5jM3eoQ2Vy1kjsWUdqRybx8fRkxG54xWxJTtJkuuGev7klSrOrUQ1Tb2uNkwZdqBa5
-	 HKg3e4QDAFg2qKhGNUBW59Irpt2p4LzT4AJR6pCOQ3StgV0ZtDKbAlQrRax/AlI10+
-	 JrfFc3JBGQgVpO+uHWp2Z2vRIuPvfvaHeb1A63q8EfzDofs6tYFO9M6ZBVdu5QZUkT
-	 GnRCVU2jJnZXQ==
+	b=DuQU+yKcKMwY6zgxLG/PUM9Vm9o+9C9u9X7gCGw8byo70EzhgypSiLlBgnm8/Mine
+	 j7HDfSy21Al/EOu4s+SuZtCdSKg0p4YsycwaE8EhD04r4VDBX37X5t48KVh25R8hiV
+	 EqJh7tNCt3a0tYlgMBlLaZbOYSlVSgcS1QSrhm5oDjVxaClISfSTLck+3vQzDmAHSO
+	 nnEzMKl0y+iYK+cVB/11zpdshycBA0SHxQCybzD3mLzFq+wB8w3Q3E+3a0A7VpT53j
+	 9DaAsxgdHfonItzNCV3DVtXCJriIkhv+6EryXpxxNRv+6OxnmTcK1xG3RVuWh/fSX3
+	 deC9Eri/qqbeA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -55,18 +55,18 @@ Cc: Yunfei Wang <yf.wang@mediatek.com>,
 	linux-arm-kernel@lists.infradead.org,
 	iommu@lists.linux.dev,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.19 07/48] iommu/io-pgtable-arm-v7s: Add a quirk to allow pgtable PA up to 35bit
-Date: Sun, 14 Aug 2022 12:19:00 -0400
-Message-Id: <20220814161943.2394452-7-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.18 06/39] iommu/io-pgtable-arm-v7s: Add a quirk to allow pgtable PA up to 35bit
+Date: Sun, 14 Aug 2022 12:22:55 -0400
+Message-Id: <20220814162332.2396012-6-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220814161943.2394452-1-sashal@kernel.org>
-References: <20220814161943.2394452-1-sashal@kernel.org>
+In-Reply-To: <20220814162332.2396012-1-sashal@kernel.org>
+References: <20220814162332.2396012-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220814_092005_838132_5947DEA3 
+X-CRM114-CacheID: sfid-20220814_092350_839237_08E7B94B 
 X-CRM114-Status: GOOD (  18.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
