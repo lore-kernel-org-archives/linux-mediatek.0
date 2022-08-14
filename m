@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 398A7C25B06
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Aug 2022 15:55:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63D3CC25B06
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Aug 2022 16:20:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5+Ze4+iFAwPoaeLsA1kJwUf97AtHna1ubUlC6NJ+/B8=; b=RzXmdaVsg8HDeeMzYxWh8xErVz
-	S21JokPl8SuPGlO9gkPMD8toUTUTGpsKaqkus+c2ThemTTK0/2FvLrHEFLo30Py8wMae8lgTm5+gu
-	Q7aiV3FCY82O8za6KEo+fiMB539D/6iCjia4xTP8hHLfrTlqyDIHwYlQ5d+l2Flg0hVYu5YLo2oG6
-	Av0Egy+qtzrRpJsM3Y0g8QBhtVghxjV9OHt5fHEbakpXHgIk7a2RpksNGhpflyO/VsM78i254vVvX
-	2yo+N/N7EXJpXvLOg6DS8peLfc40NXk/BswMvS73vewCruv0YaE9ZtW6bCYWB88Y0Ij1OlEnoEaKa
-	+2K9+ahg==;
+	bh=Xnjk+YmOnVh6z93j9RnIfkfkOyvyCts13G+hq+bKR7k=; b=TexLpC/uKKapBxwPpuGK0tW9EX
+	y/qEOSvC5USgpKnWtxWofnIRr0tbKjiq7wK2Vc9klMnHeCMCg0fHxKf1kMx6EuFkIvKjFCwuB6VJM
+	ILRzon5u4deEoBMEvfE+7XBhS/CiG7+LU/YryXIQ3IWGdtZSPkd4QmFmVx1A3FpNpHMBF97Yh0gi3
+	KS3k11o8XkHuNO/gqZwRX7ZyWzmjZpNZ1nqJS1hdJ/ZER6K1FWTKbNyEsD2oIqjP4Dltf8HtM1FBZ
+	1b7+I187ZC7T/YiUqWVgaTl+PCgjrhnjNkzAxxoW6DQsDNM93ZPoLSY4R9MIBIgtmU2+q8A3vQ+6j
+	OL9KLByA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNFxS-007ed1-RO; Sun, 14 Aug 2022 15:55:23 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oNGLb-007pPm-W0; Sun, 14 Aug 2022 16:20:19 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNFfH-007T9e-73; Sun, 14 Aug 2022 15:36:37 +0000
+	id 1oNGLN-007pJC-ES; Sun, 14 Aug 2022 16:20:08 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id CFF66B80B4D;
-	Sun, 14 Aug 2022 15:36:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BCBD9C433C1;
-	Sun, 14 Aug 2022 15:36:30 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTPS id 949E3CE0B6B;
+	Sun, 14 Aug 2022 16:20:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59CF6C433D6;
+	Sun, 14 Aug 2022 16:19:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660491392;
-	bh=q5kiw8naP7PwJuTLnKuePRU9H2AsX4gbeJfUoiBuD24=;
+	s=k20201202; t=1660493999;
+	bh=YI2a3bQsRpitOm3qvXNGbLX4UFt3jIL05K8HgbujqzQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=UtGMmOIz2BublFgE87Uqk8/GY927ef4MsN+0+xwenNuL7PkDWLvhV14Yy5Tmi7y9V
-	 gkJ2dKvPRybVC38aYu+xORM20h8duanamA8Z+IokZT0vbosuKasmTvgsldirfJBhDI
-	 8h/w/WnLreMKxCZ11IfMiCLzr7fZhUKzjDJsfzZ0EfptQO8yGGragyTsBGte/sLcR/
-	 chiyyZt8OHY9iX66ldEG/09vpUSg1vhfob6uk6yGfb3sFkIyDo9Z6pgACw01fVUyZg
-	 9THL0G3rFrb51ni4vlIwDgSH+eWqR2RhAT3ZFw0AczBtm4/v1f2UFd+5/YHpO6pGmF
-	 c3fiMcEe2KiyQ==
+	b=Q7UL13Xr3n8vsNcHpB5q3DRXA4nVdL1AtEFl6qlMcJOUzN0daGytf/cNN6UIO//Iv
+	 5jjeW+WxKBv6Q0Sm9t+LD7BdYJUDTdyfcahoT90P+AsPnI885nKV8tvBEC9ZT+Moqy
+	 5jM3eoQ2Vy1kjsWUdqRybx8fRkxG54xWxJTtJkuuGev7klSrOrUQ1Tb2uNkwZdqBa5
+	 HKg3e4QDAFg2qKhGNUBW59Irpt2p4LzT4AJR6pCOQ3StgV0ZtDKbAlQrRax/AlI10+
+	 JrfFc3JBGQgVpO+uHWp2Z2vRIuPvfvaHeb1A63q8EfzDofs6tYFO9M6ZBVdu5QZUkT
+	 GnRCVU2jJnZXQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Russell King <rmk+kernel@armlinux.org.uk>,
+Cc: Yunfei Wang <yf.wang@mediatek.com>,
+	Ning Li <ning.li@mediatek.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Joerg Roedel <jroedel@suse.de>,
 	Sasha Levin <sashal@kernel.org>,
-	linux@armlinux.org.uk,
+	joro@8bytes.org,
 	matthias.bgg@gmail.com,
-	arnd@arndb.de,
-	ardb@kernel.org,
-	rostedt@goodmis.org,
-	nick.hawkins@hpe.com,
-	john@phrozen.org,
 	linux-arm-kernel@lists.infradead.org,
+	iommu@lists.linux.dev,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.19 10/13] ARM: 9203/1: kconfig: fix MODULE_PLTS for KASAN with KASAN_VMALLOC
-Date: Sun, 14 Aug 2022 11:36:07 -0400
-Message-Id: <20220814153610.2380234-10-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.19 07/48] iommu/io-pgtable-arm-v7s: Add a quirk to allow pgtable PA up to 35bit
+Date: Sun, 14 Aug 2022 12:19:00 -0400
+Message-Id: <20220814161943.2394452-7-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220814153610.2380234-1-sashal@kernel.org>
-References: <20220814153610.2380234-1-sashal@kernel.org>
+In-Reply-To: <20220814161943.2394452-1-sashal@kernel.org>
+References: <20220814161943.2394452-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220814_083635_679959_D5CA7482 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20220814_092005_838132_5947DEA3 
+X-CRM114-Status: GOOD (  18.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,124 +82,215 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lecopzer Chen <lecopzer.chen@mediatek.com>
+From: Yunfei Wang <yf.wang@mediatek.com>
 
-[ Upstream commit 8fa7ea40bf56945c3ff5af00c0dca1fd9e26f129 ]
+[ Upstream commit bfdd231374181254742c5e2faef0bef2d30c0ee4 ]
 
-When we run out of module space address with ko insertion,
-and with MODULE_PLTS, module would turn to try to find memory
-from VMALLOC address space.
+Single memory zone feature will remove ZONE_DMA32 and ZONE_DMA and
+cause pgtable PA size larger than 32bit.
 
-Unfortunately, with KASAN enabled, VMALLOC doesn't work without
-KASAN_VMALLOC, thus select KASAN_VMALLOC by default.
+Since Mediatek IOMMU hardware support at most 35bit PA in pgtable,
+so add a quirk to allow the PA of pgtables support up to bit35.
 
-8<--- cut here ---
- Unable to handle kernel paging request at virtual address bd300860
- [bd300860] *pgd=41cf1811, *pte=41cf26df, *ppte=41cf265f
- Internal error: Oops: 80f [#1] PREEMPT SMP ARM
- Modules linked in: hello(O+)
- CPU: 0 PID: 89 Comm: insmod Tainted: G           O      5.16.0-rc6+ #19
- Hardware name: Generic DT based system
- PC is at mmioset+0x30/0xa8
- LR is at 0x0
- pc : [<c077ed30>]    lr : [<00000000>]    psr: 20000013
- sp : c451fc18  ip : bd300860  fp : c451fc2c
- r10: f18042cc  r9 : f18042d0  r8 : 00000000
- r7 : 00000001  r6 : 00000003  r5 : 01312d00  r4 : f1804300
- r3 : 00000000  r2 : 00262560  r1 : 00000000  r0 : bd300860
- Flags: nzCv  IRQs on  FIQs on  Mode SVC_32  ISA ARM  Segment none
- Control: 10c5387d  Table: 43e9406a  DAC: 00000051
- Register r0 information: non-paged memory
- Register r1 information: NULL pointer
- Register r2 information: non-paged memory
- Register r3 information: NULL pointer
- Register r4 information: 4887-page vmalloc region starting at 0xf1802000 allocated at load_module+0x14f4/0x32a8
- Register r5 information: non-paged memory
- Register r6 information: non-paged memory
- Register r7 information: non-paged memory
- Register r8 information: NULL pointer
- Register r9 information: 4887-page vmalloc region starting at 0xf1802000 allocated at load_module+0x14f4/0x32a8
- Register r10 information: 4887-page vmalloc region starting at 0xf1802000 allocated at load_module+0x14f4/0x32a8
- Register r11 information: non-slab/vmalloc memory
- Register r12 information: non-paged memory
- Process insmod (pid: 89, stack limit = 0xc451c000)
- Stack: (0xc451fc18 to 0xc4520000)
- fc00:                                                       f18041f0 c04803a4
- fc20: c451fc44 c451fc30 c048053c c0480358 f1804030 01312cff c451fc64 c451fc48
- fc40: c047f330 c0480500 f18040c0 c1b52ccc 00000001 c5be7700 c451fc74 c451fc68
- fc60: f1802098 c047f300 c451fcb4 c451fc78 c026106c f180208c c4880004 00000000
- fc80: c451fcb4 bf001000 c044ff48 c451fec0 f18040c0 00000000 c1b54cc4 00000000
- fca0: c451fdf0 f1804268 c451fe64 c451fcb8 c0264e88 c0260d48 ffff8000 00007fff
- fcc0: f18040c0 c025cd00 c451fd14 00000003 0157f008 f1804258 f180425c f1804174
- fce0: f1804154 f180424c f18041f0 f180414c f1804178 f18041c0 bf0025d4 188a3fa8
- fd00: 0000009e f1804170 f2b18000 c451ff10 c0d92e40 f180416c c451feec 00000001
- fd20: 00000000 c451fec8 c451fe20 c451fed0 f18040cc 00000000 f17ea000 c451fdc0
- fd40: 41b58ab3 c1387729 c0261c28 c047fb5c c451fe2c c451fd60 c0525308 c048033c
- fd60: 188a3fb4 c3ccb090 c451fe00 c3ccb080 00000000 00000000 00016920 00000000
- fd80: c02d0388 c047f55c c02d0388 00000000 c451fddc c451fda0 c02d0388 00000000
- fda0: 41b58ab3 c13a72d0 c0524ff0 c1705f48 c451fdfc c451fdc0 c02d0388 c047f55c
- fdc0: 00016920 00000000 00000003 c1bb2384 c451fdfc c3ccb080 c1bb2384 00000000
- fde0: 00000000 00000000 00000000 00000000 c451fe1c c451fe00 c04e9d70 c1705f48
- fe00: c1b54cc4 c1bbc71c c3ccb080 00000000 c3ccb080 00000000 00000003 c451fec0
- fe20: c451fe64 c451fe30 c0525918 c0524ffc c451feb0 c1705f48 00000000 c1b54cc4
- fe40: b78a3fd0 c451ff60 00000000 0157f008 00000003 c451fec0 c451ffa4 c451fe68
- fe60: c0265480 c0261c34 c451feb0 7fffffff 00000000 00000002 00000000 c4880000
- fe80: 41b58ab3 c138777b c02652cc c04803ec 000a0000 c451ff00 ffffff9c b6ac9f60
- fea0: c451fed4 c1705f48 c04a4a90 b78a3fdc f17ea000 ffffff9c b6ac9f60 c0100244
- fec0: f17ea21a f17ea300 f17ea000 00016920 f1800240 f18000ac f17fb7dc 01316000
- fee0: 013161b0 00002590 01316250 00000000 00000000 00000000 00002580 00000029
- ff00: 0000002a 00000013 00000000 0000000c 00000000 00000000 0157f004 c451ffb0
- ff20: c1719be0 aed6f410 c451ff74 c451ff38 c0c4103c c0c407d0 c451ff84 c451ff48
- ff40: 00000805 c02c8658 c1604230 c1719c30 00000805 0157f004 00000005 c451ffb0
- ff60: c1719be0 aed6f410 c451ffac c451ff78 c0122130 c1705f48 c451ffac 0157f008
- ff80: 00000006 0000005f 0000017b c0100244 c4880000 0000017b 00000000 c451ffa8
- ffa0: c0100060 c02652d8 0157f008 00000006 00000003 0157f008 00000000 b6ac9f60
- ffc0: 0157f008 00000006 0000005f 0000017b 00000000 00000000 aed85f74 00000000
- ffe0: b6ac9cd8 b6ac9cc8 00030200 aecf2d60 a0000010 00000003 00000000 00000000
- Backtrace:
- [<c048034c>] (kasan_poison) from [<c048053c>] (kasan_unpoison+0x48/0x5c)
- [<c04804f4>] (kasan_unpoison) from [<c047f330>] (__asan_register_globals+0x3c/0x64)
-  r5:01312cff r4:f1804030
- [<c047f2f4>] (__asan_register_globals) from [<f1802098>] (_sub_I_65535_1+0x18/0xf80 [hello])
-  r7:c5be7700 r6:00000001 r5:c1b52ccc r4:f18040c0
- [<f1802080>] (_sub_I_65535_1 [hello]) from [<c026106c>] (do_init_module+0x330/0x72c)
- [<c0260d3c>] (do_init_module) from [<c0264e88>] (load_module+0x3260/0x32a8)
-  r10:f1804268 r9:c451fdf0 r8:00000000 r7:c1b54cc4 r6:00000000 r5:f18040c0
-  r4:c451fec0
- [<c0261c28>] (load_module) from [<c0265480>] (sys_finit_module+0x1b4/0x1e8)
-  r10:c451fec0 r9:00000003 r8:0157f008 r7:00000000 r6:c451ff60 r5:b78a3fd0
-  r4:c1b54cc4
- [<c02652cc>] (sys_finit_module) from [<c0100060>] (ret_fast_syscall+0x0/0x1c)
- Exception stack(0xc451ffa8 to 0xc451fff0)
- ffa0:                   0157f008 00000006 00000003 0157f008 00000000 b6ac9f60
- ffc0: 0157f008 00000006 0000005f 0000017b 00000000 00000000 aed85f74 00000000
- ffe0: b6ac9cd8 b6ac9cc8 00030200 aecf2d60
-  r10:0000017b r9:c4880000 r8:c0100244 r7:0000017b r6:0000005f r5:00000006
-  r4:0157f008
- Code: e92d4100 e1a08001 e1a0e003 e2522040 (a8ac410a)
- ---[ end trace df6e12843197b6f5 ]---
-
-Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-Tested-by: Linus Walleij <linus.walleij@linaro.org>
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Signed-off-by: Ning Li <ning.li@mediatek.com>
+Signed-off-by: Yunfei Wang <yf.wang@mediatek.com>
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+Acked-by: Will Deacon <will@kernel.org>
+Link: https://lore.kernel.org/r/20220630092927.24925-2-yf.wang@mediatek.com
+Signed-off-by: Joerg Roedel <jroedel@suse.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/iommu/io-pgtable-arm-v7s.c | 75 ++++++++++++++++++++++--------
+ include/linux/io-pgtable.h         | 15 ++++--
+ 2 files changed, 66 insertions(+), 24 deletions(-)
 
-diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index d89d013f586c..6b7d9f2fdb44 100644
---- a/arch/arm/Kconfig
-+++ b/arch/arm/Kconfig
-@@ -1706,6 +1706,7 @@ config ARCH_WANT_GENERAL_HUGETLB
- config ARM_MODULE_PLTS
- 	bool "Use PLTs to allow module memory to spill over into vmalloc area"
- 	depends on MODULES
-+	select KASAN_VMALLOC if KASAN
- 	default y
- 	help
- 	  Allocate PLTs when loading modules so that jumps and calls whose
+diff --git a/drivers/iommu/io-pgtable-arm-v7s.c b/drivers/iommu/io-pgtable-arm-v7s.c
+index be066c1503d3..ba3115fd0f86 100644
+--- a/drivers/iommu/io-pgtable-arm-v7s.c
++++ b/drivers/iommu/io-pgtable-arm-v7s.c
+@@ -182,14 +182,8 @@ static bool arm_v7s_is_mtk_enabled(struct io_pgtable_cfg *cfg)
+ 		(cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_EXT);
+ }
+ 
+-static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
+-				    struct io_pgtable_cfg *cfg)
++static arm_v7s_iopte to_mtk_iopte(phys_addr_t paddr, arm_v7s_iopte pte)
+ {
+-	arm_v7s_iopte pte = paddr & ARM_V7S_LVL_MASK(lvl);
+-
+-	if (!arm_v7s_is_mtk_enabled(cfg))
+-		return pte;
+-
+ 	if (paddr & BIT_ULL(32))
+ 		pte |= ARM_V7S_ATTR_MTK_PA_BIT32;
+ 	if (paddr & BIT_ULL(33))
+@@ -199,6 +193,17 @@ static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
+ 	return pte;
+ }
+ 
++static arm_v7s_iopte paddr_to_iopte(phys_addr_t paddr, int lvl,
++				    struct io_pgtable_cfg *cfg)
++{
++	arm_v7s_iopte pte = paddr & ARM_V7S_LVL_MASK(lvl);
++
++	if (arm_v7s_is_mtk_enabled(cfg))
++		return to_mtk_iopte(paddr, pte);
++
++	return pte;
++}
++
+ static phys_addr_t iopte_to_paddr(arm_v7s_iopte pte, int lvl,
+ 				  struct io_pgtable_cfg *cfg)
+ {
+@@ -240,10 +245,17 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
+ 	dma_addr_t dma;
+ 	size_t size = ARM_V7S_TABLE_SIZE(lvl, cfg);
+ 	void *table = NULL;
++	gfp_t gfp_l1;
++
++	/*
++	 * ARM_MTK_TTBR_EXT extend the translation table base support larger
++	 * memory address.
++	 */
++	gfp_l1 = cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT ?
++		 GFP_KERNEL : ARM_V7S_TABLE_GFP_DMA;
+ 
+ 	if (lvl == 1)
+-		table = (void *)__get_free_pages(
+-			__GFP_ZERO | ARM_V7S_TABLE_GFP_DMA, get_order(size));
++		table = (void *)__get_free_pages(gfp_l1 | __GFP_ZERO, get_order(size));
+ 	else if (lvl == 2)
+ 		table = kmem_cache_zalloc(data->l2_tables, gfp);
+ 
+@@ -251,7 +263,8 @@ static void *__arm_v7s_alloc_table(int lvl, gfp_t gfp,
+ 		return NULL;
+ 
+ 	phys = virt_to_phys(table);
+-	if (phys != (arm_v7s_iopte)phys) {
++	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT ?
++	    phys >= (1ULL << cfg->oas) : phys != (arm_v7s_iopte)phys) {
+ 		/* Doesn't fit in PTE */
+ 		dev_err(dev, "Page table does not fit in PTE: %pa", &phys);
+ 		goto out_free;
+@@ -457,9 +470,14 @@ static arm_v7s_iopte arm_v7s_install_table(arm_v7s_iopte *table,
+ 					   arm_v7s_iopte curr,
+ 					   struct io_pgtable_cfg *cfg)
+ {
++	phys_addr_t phys = virt_to_phys(table);
+ 	arm_v7s_iopte old, new;
+ 
+-	new = virt_to_phys(table) | ARM_V7S_PTE_TYPE_TABLE;
++	new = phys | ARM_V7S_PTE_TYPE_TABLE;
++
++	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT)
++		new = to_mtk_iopte(phys, new);
++
+ 	if (cfg->quirks & IO_PGTABLE_QUIRK_ARM_NS)
+ 		new |= ARM_V7S_ATTR_NS_TABLE;
+ 
+@@ -779,6 +797,8 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+ 						void *cookie)
+ {
+ 	struct arm_v7s_io_pgtable *data;
++	slab_flags_t slab_flag;
++	phys_addr_t paddr;
+ 
+ 	if (cfg->ias > (arm_v7s_is_mtk_enabled(cfg) ? 34 : ARM_V7S_ADDR_BITS))
+ 		return NULL;
+@@ -788,7 +808,8 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+ 
+ 	if (cfg->quirks & ~(IO_PGTABLE_QUIRK_ARM_NS |
+ 			    IO_PGTABLE_QUIRK_NO_PERMS |
+-			    IO_PGTABLE_QUIRK_ARM_MTK_EXT))
++			    IO_PGTABLE_QUIRK_ARM_MTK_EXT |
++			    IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT))
+ 		return NULL;
+ 
+ 	/* If ARM_MTK_4GB is enabled, the NO_PERMS is also expected. */
+@@ -796,15 +817,27 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+ 	    !(cfg->quirks & IO_PGTABLE_QUIRK_NO_PERMS))
+ 			return NULL;
+ 
++	if ((cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT) &&
++	    !arm_v7s_is_mtk_enabled(cfg))
++		return NULL;
++
+ 	data = kmalloc(sizeof(*data), GFP_KERNEL);
+ 	if (!data)
+ 		return NULL;
+ 
+ 	spin_lock_init(&data->split_lock);
++
++	/*
++	 * ARM_MTK_TTBR_EXT extend the translation table base support larger
++	 * memory address.
++	 */
++	slab_flag = cfg->quirks & IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT ?
++		    0 : ARM_V7S_TABLE_SLAB_FLAGS;
++
+ 	data->l2_tables = kmem_cache_create("io-pgtable_armv7s_l2",
+ 					    ARM_V7S_TABLE_SIZE(2, cfg),
+ 					    ARM_V7S_TABLE_SIZE(2, cfg),
+-					    ARM_V7S_TABLE_SLAB_FLAGS, NULL);
++					    slab_flag, NULL);
+ 	if (!data->l2_tables)
+ 		goto out_free_data;
+ 
+@@ -850,12 +883,16 @@ static struct io_pgtable *arm_v7s_alloc_pgtable(struct io_pgtable_cfg *cfg,
+ 	wmb();
+ 
+ 	/* TTBR */
+-	cfg->arm_v7s_cfg.ttbr = virt_to_phys(data->pgd) | ARM_V7S_TTBR_S |
+-				(cfg->coherent_walk ? (ARM_V7S_TTBR_NOS |
+-				 ARM_V7S_TTBR_IRGN_ATTR(ARM_V7S_RGN_WBWA) |
+-				 ARM_V7S_TTBR_ORGN_ATTR(ARM_V7S_RGN_WBWA)) :
+-				(ARM_V7S_TTBR_IRGN_ATTR(ARM_V7S_RGN_NC) |
+-				 ARM_V7S_TTBR_ORGN_ATTR(ARM_V7S_RGN_NC)));
++	paddr = virt_to_phys(data->pgd);
++	if (arm_v7s_is_mtk_enabled(cfg))
++		cfg->arm_v7s_cfg.ttbr = paddr | upper_32_bits(paddr);
++	else
++		cfg->arm_v7s_cfg.ttbr = paddr | ARM_V7S_TTBR_S |
++					(cfg->coherent_walk ? (ARM_V7S_TTBR_NOS |
++					 ARM_V7S_TTBR_IRGN_ATTR(ARM_V7S_RGN_WBWA) |
++					 ARM_V7S_TTBR_ORGN_ATTR(ARM_V7S_RGN_WBWA)) :
++					(ARM_V7S_TTBR_IRGN_ATTR(ARM_V7S_RGN_NC) |
++					 ARM_V7S_TTBR_ORGN_ATTR(ARM_V7S_RGN_NC)));
+ 	return &data->iop;
+ 
+ out_free_data:
+diff --git a/include/linux/io-pgtable.h b/include/linux/io-pgtable.h
+index 86af6f0a00a2..ca98aeadcc80 100644
+--- a/include/linux/io-pgtable.h
++++ b/include/linux/io-pgtable.h
+@@ -74,17 +74,22 @@ struct io_pgtable_cfg {
+ 	 *	to support up to 35 bits PA where the bit32, bit33 and bit34 are
+ 	 *	encoded in the bit9, bit4 and bit5 of the PTE respectively.
+ 	 *
++	 * IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT: (ARM v7s format) MediaTek IOMMUs
++	 *	extend the translation table base support up to 35 bits PA, the
++	 *	encoding format is same with IO_PGTABLE_QUIRK_ARM_MTK_EXT.
++	 *
+ 	 * IO_PGTABLE_QUIRK_ARM_TTBR1: (ARM LPAE format) Configure the table
+ 	 *	for use in the upper half of a split address space.
+ 	 *
+ 	 * IO_PGTABLE_QUIRK_ARM_OUTER_WBWA: Override the outer-cacheability
+ 	 *	attributes set in the TCR for a non-coherent page-table walker.
+ 	 */
+-	#define IO_PGTABLE_QUIRK_ARM_NS		BIT(0)
+-	#define IO_PGTABLE_QUIRK_NO_PERMS	BIT(1)
+-	#define IO_PGTABLE_QUIRK_ARM_MTK_EXT	BIT(3)
+-	#define IO_PGTABLE_QUIRK_ARM_TTBR1	BIT(5)
+-	#define IO_PGTABLE_QUIRK_ARM_OUTER_WBWA	BIT(6)
++	#define IO_PGTABLE_QUIRK_ARM_NS			BIT(0)
++	#define IO_PGTABLE_QUIRK_NO_PERMS		BIT(1)
++	#define IO_PGTABLE_QUIRK_ARM_MTK_EXT		BIT(3)
++	#define IO_PGTABLE_QUIRK_ARM_MTK_TTBR_EXT	BIT(4)
++	#define IO_PGTABLE_QUIRK_ARM_TTBR1		BIT(5)
++	#define IO_PGTABLE_QUIRK_ARM_OUTER_WBWA		BIT(6)
+ 	unsigned long			quirks;
+ 	unsigned long			pgsize_bitmap;
+ 	unsigned int			ias;
 -- 
 2.35.1
 
