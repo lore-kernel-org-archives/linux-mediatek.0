@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCBECC25B06
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Aug 2022 15:46:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34812C25B0F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Aug 2022 15:50:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WCXwbaFhXrri6MopwRji0P2I74e+x6jZp9sS62PXeHQ=; b=Xy+BJUKoZYEZZYkD4uEDLg4m0A
-	fGNarzjR8ZNg3uPUl8Y7BIrSrjV4B/sUkwKJHF2fyjZu5HcOe82pzBELv+ymzzEq9eU4xaaaDraKH
-	6Lx5fpGtazLWbxg9fIqjw7hKTqx34pe0rahZefyyR3RtIM4DLku97yp+HbP4v+q+y4dmLmID3gYCZ
-	zPIDxM9cIUJC5bGV4A1T9KgsFPN677pqBRSxT7iDBLVsPSjfS0P1bKOdEtzt8dPZGBVQ4T3Qug3Pe
-	W5sVVcPI/UyLHq4w0vSWzbHLzzM/kr0FgmUzIZLVwGP63pohgxzeSEN5u7G5+JTYKDA1xdVoMTxQ3
-	5BhSvKeQ==;
+	bh=IG+jkgr06wa/Cy5KlRYtFKvK3+EIinpEyKJueAhFIpY=; b=J3Kx46J1tkkWKPpUH8biwiPbBK
+	phO9HvVXNdAIoREVdkNkCsU/xE1GSK2CUm01Q2rgJqX1expwFczFV3ZjI4OZm3BAxYSESJ3XVujJL
+	YUWWDUL5zhBrlcecZXLFcdmkU0fUTO9QTKn2H70uJ9lU32UkmHj8jgDmyj6nsYrdUSMPBAnDD/8hD
+	7OMFVBk4COEHD7G5GZdQJdqpoOH8wdXyr1ZWG37N75sgVqDNx3f7+xm5SQh53Cr5bjNBXshAaqD66
+	/XKZWfUsA2oLOm/K1gKRyEYsHpOY/N2kO82yPwaK6O1610XryA9u13mjbagLbWc/3twvW4YWwWXXQ
+	yIzMNfPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNFof-007Z5o-9R; Sun, 14 Aug 2022 15:46:17 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oNFsR-007bWT-DG; Sun, 14 Aug 2022 15:50:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNFd5-007Rlc-Cc; Sun, 14 Aug 2022 15:34:21 +0000
+	id 1oNFe9-007STM-IX; Sun, 14 Aug 2022 15:35:27 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id CDE53B80B77;
-	Sun, 14 Aug 2022 15:34:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98F67C433D6;
-	Sun, 14 Aug 2022 15:34:14 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id D07F960B90;
+	Sun, 14 Aug 2022 15:35:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8F75C433C1;
+	Sun, 14 Aug 2022 15:35:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660491256;
-	bh=FS7Lhb50NnBO1vFtTQkRPecpHDqEuYiEPvJPsWRI0fY=;
+	s=k20201202; t=1660491324;
+	bh=OGmMYQtr3snVEWFz3+EMj3eCxP/ElJtY42eT+tXGG48=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=iL84zyRXm0Eky68ssKVhfj0XOoRWH1w3fxNW5u6x++EJpctIFzjGFAFnMzY4rM8hf
-	 alMzNHV6hEwxYGKGc5u6r9WDOwd7aDh8sFqn2szWPVEcnp4tr2ysWeL21uyxUnmH7/
-	 7JHcarUl8qzPQBp2sgoMYBORXPI84wA3mEalTeo5Mf6xf7nign5MaX1SxmifEcWj4N
-	 uTPdCZD8sTpOTwlzEZ87DNUrQ/ZrmAatpp3ubZjywfhZHa0udBgO0JtlHLUWseR+72
-	 KyELcm1LAukSgaTIrcLJyrC1TDXob8jxmvj/sJKWWfyuGSJm+vKRAu/wb4w7AyrcoB
-	 69eNXVkBM03zQ==
+	b=EoyYJFw3DOcLT9OKl9NkJATX2P2ObY+ZD3FqBlUIbxv4M5dEqDkLbXqpH2M4hHmvA
+	 YYSTNm599opqpOxYNAh7vuxzviGcpTLj8kwidgGMIMRQhBGqreLlfnIrU1XVvEKlvi
+	 s56UC0zRORUzLA3ZAipYag1/k6Yh/n5EeImZB6Q6i/vbMTwCMDJZ464iUzfu+v/Nre
+	 P+NcD34iAQqszxM9cAlxxpbzr8HF3mSjd+tQGd1V+A89O7JZajigZDlkQgXioFdvsN
+	 EuHSoYgtU8PcS0S7HhnhAaAftNUIPDVz3msvxBCs/pk2AphmeZuZ2g+iV6+sfmBeZg
+	 QdNXLLWZUTgOg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -57,18 +57,18 @@ Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>,
 	john@phrozen.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 39/46] ARM: 9203/1: kconfig: fix MODULE_PLTS for KASAN with KASAN_VMALLOC
-Date: Sun, 14 Aug 2022 11:32:40 -0400
-Message-Id: <20220814153247.2378312-39-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.10 26/31] ARM: 9203/1: kconfig: fix MODULE_PLTS for KASAN with KASAN_VMALLOC
+Date: Sun, 14 Aug 2022 11:34:26 -0400
+Message-Id: <20220814153431.2379231-26-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220814153247.2378312-1-sashal@kernel.org>
-References: <20220814153247.2378312-1-sashal@kernel.org>
+In-Reply-To: <20220814153431.2379231-1-sashal@kernel.org>
+References: <20220814153431.2379231-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220814_083419_958345_288578BD 
+X-CRM114-CacheID: sfid-20220814_083526_103966_6F07A3BD 
 X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -191,10 +191,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index 44f328fa5996..700612e8cc38 100644
+index b587ecc6f949..6181b22cdcd9 100644
 --- a/arch/arm/Kconfig
 +++ b/arch/arm/Kconfig
-@@ -1507,6 +1507,7 @@ config ARCH_WANT_GENERAL_HUGETLB
+@@ -1554,6 +1554,7 @@ config ARCH_WANT_GENERAL_HUGETLB
  config ARM_MODULE_PLTS
  	bool "Use PLTs to allow module memory to spill over into vmalloc area"
  	depends on MODULES
