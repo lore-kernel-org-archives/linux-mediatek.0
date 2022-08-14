@@ -4,58 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 471C3C25B06
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Aug 2022 15:29:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90486C25B06
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Aug 2022 15:30:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1tVad2UoWC41F9roF1C4ewEYGfOEOaDIS2stJ+8HrJI=; b=gttKI2w11U5Z0Bpkp9RFd/I2ml
-	lZbN55ac4jw8Rxw0sAApe8GGMbkRyEljVKMH4n+GTQA8u2+iQ3p5XMATTslwfS8shaohfvbbFFIyn
-	UY0udWGLgNyUgwzKLgJE1yeQC7OctEz8sH6V5dLrPwVjBrPTjVNwrMHcOmybyM+y6N7EGxq5C6fj1
-	1NSyxwaoyPMKseSVo865LyurBaRJoX2qO3Z+5PY61AqPW/f+matpdgWM+V6frNjEajUODDViihosS
-	/20/rskY+tj9C6LPZAZ0VC0k96xytbXVPIMAzrdy71z4KwjslPqMjGMm7LXtJEB5VlKLTbcqo27Tk
-	puvbOg9w==;
+	bh=s2djNZABbvmH2AvUX+S2K4U66TjxzdyJZ6lYmrkXhvM=; b=HCRGrR6ldr/G/5UKMbHL1pE+XE
+	/LWFP6uqq3RNphJ1lbcquNuLwww7UC/V6BNIE2AbzCY0Ze3pFdiSR3rytDjvrr3KiVgmQ53h0Y9h+
+	orKyqVr31h9Vj2rUG55RwEMh5rFrNbOzjBW1HA9Z9Ap27GPzvjmpaJ2G6YKOVNhQFHx7Erq8OGR41
+	ZLLEfTSZC2xui0lPOOdYpl71+h6Y7EdUPel+QtQduf9qphoK8ojyPkW/KBOeGaXmNdRyVhErXNfZV
+	oacM8i4MvzGQScSj2YC8PqQvn8tm93Fnk3Q3hNWPYMwie4cF4LNj5BQWcEeQd1foQm1y1l6qtWmkd
+	maKNDPvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNFXs-007Nnq-Tw; Sun, 14 Aug 2022 15:28:56 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oNFZK-007P0k-WA; Sun, 14 Aug 2022 15:30:27 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNFXY-007Nbx-1J; Sun, 14 Aug 2022 15:28:38 +0000
+	id 1oNFYw-007OgW-64; Sun, 14 Aug 2022 15:30:03 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B56A3B80B74;
-	Sun, 14 Aug 2022 15:28:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FAF2C433D7;
-	Sun, 14 Aug 2022 15:28:32 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B7F2160C40;
+	Sun, 14 Aug 2022 15:30:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A8DBC433C1;
+	Sun, 14 Aug 2022 15:29:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660490913;
-	bh=a4/LmbqCcfw4a/dBf+i02Qljn4gGGMGLZNQ7He7NoVg=;
+	s=k20201202; t=1660491001;
+	bh=j0ae/WdP7gEyPtfKQLveka6TokTh1KSumwSZFAyHfIc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=tWp9wQyEuxWVxFCNGDYVRYbbPEOniSDzHwVKgsl0Ym9sbEJgwzEiaA53/xqYWws6l
-	 MBXXnr16QSi4KNOrn+ugD7UzqqITFGRq2OoG7BUcg6HBthDY8Ec4sc8gGXaOjlKYD+
-	 e+FjO3RutjLQq3Nm3UQyH3Ad1IEm5ZmzrFa/rFF4rF4rYPw5bk0ahDtq8vHXTYWddI
-	 viMCbmTSGDTr4CKP8CLxyd5ya35igj5QCbi0KJsHodYT4cRc7PPnuE2+L+H2KaKvDv
-	 u+LrQChXSJLq3d/BLzanfufj1B+ftQAMkK6jcorwYigMQkFBrqrvEcY7qXvn511hgL
-	 MS+5RhmRyrYcw==
+	b=GtAorFRNBgAJ3AH0EwM1n+k0WiDz7/GpAwo4dPV+DaetaLfU+pIVHn5Bahinvuj60
+	 69FvOw6QdARAG7wG05677Nz0JvTHSh7SkZxDl9qeRXpnb6fJcLKzx/hYwnVUiX1twr
+	 K5CC/A8PzBkD5gpreAT1mI+k4oBas+hBH//jp8j/XJAdZ+erpJpkvs9ZcCIG1gVd+Z
+	 8vnMjbpwVVPJ8ui41EeALhR7oSJ4F5/s46W32rJ8oDN/X61DxC2zva0nQb8aaPlr0i
+	 ynSAUlNQGsNZV3yxHX4ZAR1dBCzkLtPeqKeim+xPHQGHfvAtXtEBBHiRBkONKd0F/O
+	 4329rJ3UdRg+g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Po-Wen Kao <powen.kao@mediatek.com>,
-	Stanley Chu <stanley.chu@mediatek.com>,
-	"Martin K . Petersen" <martin.petersen@oracle.com>,
+Cc: Lecopzer Chen <lecopzer.chen@mediatek.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Russell King <rmk+kernel@armlinux.org.uk>,
 	Sasha Levin <sashal@kernel.org>,
-	jejb@linux.ibm.com,
+	linux@armlinux.org.uk,
+	ryabinin.a.a@gmail.com,
 	matthias.bgg@gmail.com,
-	linux-scsi@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.19 18/64] scsi: ufs: ufs-mediatek: Fix the timing of configuring device regulators
-Date: Sun, 14 Aug 2022 11:23:51 -0400
-Message-Id: <20220814152437.2374207-18-sashal@kernel.org>
+	arnd@arndb.de,
+	ardb@kernel.org,
+	rostedt@goodmis.org,
+	nick.hawkins@hpe.com,
+	john@phrozen.org,
+	linux-arm-kernel@lists.infradead.org,
+	kasan-dev@googlegroups.com,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.19 54/64] ARM: 9202/1: kasan: support CONFIG_KASAN_VMALLOC
+Date: Sun, 14 Aug 2022 11:24:27 -0400
+Message-Id: <20220814152437.2374207-54-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220814152437.2374207-1-sashal@kernel.org>
 References: <20220814152437.2374207-1-sashal@kernel.org>
@@ -64,8 +70,8 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220814_082836_432185_B215750B 
-X-CRM114-Status: GOOD (  15.86  )
+X-CRM114-CacheID: sfid-20220814_083002_612153_6F0DCF5D 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,113 +86,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Po-Wen Kao <powen.kao@mediatek.com>
+From: Lecopzer Chen <lecopzer.chen@mediatek.com>
 
-[ Upstream commit 3fd23b8dfb54d9b74eba6dfdd3225db3ac116785 ]
+[ Upstream commit 565cbaad83d83e288927b96565211109bc984007 ]
 
-Currently the LPM configurations of device regulators may not work since
-VCC is not disabled yet while ufs_mtk_vreg_set_lpm() is executed.
+Simply make shadow of vmalloc area mapped on demand.
 
-Fix this by changing the timing of invoking ufs_mtk_vreg_set_lpm().
+Since the virtual address of vmalloc for Arm is also between
+MODULE_VADDR and 0x100000000 (ZONE_HIGHMEM), which means the shadow
+address has already included between KASAN_SHADOW_START and
+KASAN_SHADOW_END.
+Thus we need to change nothing for memory map of Arm.
 
-Link: https://lore.kernel.org/r/20220616053725.5681-5-stanley.chu@mediatek.com
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
-Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+This can fix ARM_MODULE_PLTS with KASan, support KASan for higmem
+and support CONFIG_VMAP_STACK with KASan.
+
+Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
+Tested-by: Linus Walleij <linus.walleij@linaro.org>
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/ufs/host/ufs-mediatek.c | 58 ++++++++++++++++++++++++++++++---
- 1 file changed, 53 insertions(+), 5 deletions(-)
+ arch/arm/Kconfig         | 1 +
+ arch/arm/mm/kasan_init.c | 6 +++++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index beabc3ccd30b..8b9daa281cc4 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1026,7 +1026,6 @@ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op,
- 		 * ufshcd_suspend() re-enabling regulators while vreg is still
- 		 * in low-power mode.
- 		 */
--		ufs_mtk_vreg_set_lpm(hba, true);
- 		err = ufs_mtk_mphy_power_on(hba, false);
- 		if (err)
- 			goto fail;
-@@ -1050,12 +1049,13 @@ static int ufs_mtk_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- {
- 	int err;
+diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
+index 7630ba9cb6cc..545d2d4a492b 100644
+--- a/arch/arm/Kconfig
++++ b/arch/arm/Kconfig
+@@ -75,6 +75,7 @@ config ARM
+ 	select HAVE_ARCH_KFENCE if MMU && !XIP_KERNEL
+ 	select HAVE_ARCH_KGDB if !CPU_ENDIAN_BE32 && MMU
+ 	select HAVE_ARCH_KASAN if MMU && !XIP_KERNEL
++	select HAVE_ARCH_KASAN_VMALLOC if HAVE_ARCH_KASAN
+ 	select HAVE_ARCH_MMAP_RND_BITS if MMU
+ 	select HAVE_ARCH_PFN_VALID
+ 	select HAVE_ARCH_SECCOMP
+diff --git a/arch/arm/mm/kasan_init.c b/arch/arm/mm/kasan_init.c
+index 5ad0d6c56d56..29caee9c79ce 100644
+--- a/arch/arm/mm/kasan_init.c
++++ b/arch/arm/mm/kasan_init.c
+@@ -236,7 +236,11 @@ void __init kasan_init(void)
  
-+	if (hba->ufshcd_state != UFSHCD_STATE_OPERATIONAL)
-+		ufs_mtk_vreg_set_lpm(hba, false);
-+
- 	err = ufs_mtk_mphy_power_on(hba, true);
- 	if (err)
- 		goto fail;
+ 	clear_pgds(KASAN_SHADOW_START, KASAN_SHADOW_END);
  
--	ufs_mtk_vreg_set_lpm(hba, false);
--
- 	if (ufshcd_is_link_hibern8(hba)) {
- 		err = ufs_mtk_link_set_hpm(hba);
- 		if (err)
-@@ -1220,9 +1220,57 @@ static int ufs_mtk_remove(struct platform_device *pdev)
- 	return 0;
- }
+-	kasan_populate_early_shadow(kasan_mem_to_shadow((void *)VMALLOC_START),
++	if (!IS_ENABLED(CONFIG_KASAN_VMALLOC))
++		kasan_populate_early_shadow(kasan_mem_to_shadow((void *)VMALLOC_START),
++					    kasan_mem_to_shadow((void *)VMALLOC_END));
++
++	kasan_populate_early_shadow(kasan_mem_to_shadow((void *)VMALLOC_END),
+ 				    kasan_mem_to_shadow((void *)-1UL) + 1);
  
-+int ufs_mtk_system_suspend(struct device *dev)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+	int ret;
-+
-+	ret = ufshcd_system_suspend(dev);
-+	if (ret)
-+		return ret;
-+
-+	ufs_mtk_vreg_set_lpm(hba, true);
-+
-+	return 0;
-+}
-+
-+int ufs_mtk_system_resume(struct device *dev)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+
-+	ufs_mtk_vreg_set_lpm(hba, false);
-+
-+	return ufshcd_system_resume(dev);
-+}
-+
-+int ufs_mtk_runtime_suspend(struct device *dev)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+	int ret = 0;
-+
-+	ret = ufshcd_runtime_suspend(dev);
-+	if (ret)
-+		return ret;
-+
-+	ufs_mtk_vreg_set_lpm(hba, true);
-+
-+	return 0;
-+}
-+
-+int ufs_mtk_runtime_resume(struct device *dev)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+
-+	ufs_mtk_vreg_set_lpm(hba, false);
-+
-+	return ufshcd_runtime_resume(dev);
-+}
-+
- static const struct dev_pm_ops ufs_mtk_pm_ops = {
--	SET_SYSTEM_SLEEP_PM_OPS(ufshcd_system_suspend, ufshcd_system_resume)
--	SET_RUNTIME_PM_OPS(ufshcd_runtime_suspend, ufshcd_runtime_resume, NULL)
-+	SET_SYSTEM_SLEEP_PM_OPS(ufs_mtk_system_suspend,
-+				ufs_mtk_system_resume)
-+	SET_RUNTIME_PM_OPS(ufs_mtk_runtime_suspend,
-+			   ufs_mtk_runtime_resume, NULL)
- 	.prepare	 = ufshcd_suspend_prepare,
- 	.complete	 = ufshcd_resume_complete,
- };
+ 	for_each_mem_range(i, &pa_start, &pa_end) {
 -- 
 2.35.1
 
