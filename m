@@ -4,87 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E0C0C19F2D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Aug 2022 15:48:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 471C3C25B06
+	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Aug 2022 15:29:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j22i5MR9w029DUAEHN8kKSEghHmcDwTXP1TjeGZr3iE=; b=FzVZ3NaalMcvDNWF+oZr2gkTXD
-	v9AV2+EOk8SgSGbQ2xGrVahwagAPQJOJR6leHyMZEXsCkspAA2bsUGodXRQ9nnMc25VzCfi018WjS
-	EqUnoRmQepPS3zd1p6mADbGkdx83HUN5uMlc/VcSi+Xn8R2Iz4iTytxehx3spZcYRtIagFpEOoNYn
-	9zTqiUyEUGzjOGIBA2lktCacgJ75hlQKsHKp1OexbqSn1XtZogFYSYUtYrnNmzZ+QMwvE1A2KsxcF
-	Ykt87gGxtPyL5rD+APtIT6ChviHd/3qLiTD1U2oKdg1axeGdkpQwLWlwCmZxAamvv3i3ZUba0a8JE
-	Dfvkq/iw==;
+	bh=1tVad2UoWC41F9roF1C4ewEYGfOEOaDIS2stJ+8HrJI=; b=gttKI2w11U5Z0Bpkp9RFd/I2ml
+	lZbN55ac4jw8Rxw0sAApe8GGMbkRyEljVKMH4n+GTQA8u2+iQ3p5XMATTslwfS8shaohfvbbFFIyn
+	UY0udWGLgNyUgwzKLgJE1yeQC7OctEz8sH6V5dLrPwVjBrPTjVNwrMHcOmybyM+y6N7EGxq5C6fj1
+	1NSyxwaoyPMKseSVo865LyurBaRJoX2qO3Z+5PY61AqPW/f+matpdgWM+V6frNjEajUODDViihosS
+	/20/rskY+tj9C6LPZAZ0VC0k96xytbXVPIMAzrdy71z4KwjslPqMjGMm7LXtJEB5VlKLTbcqo27Tk
+	puvbOg9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMtNA-00Fa1I-Vh; Sat, 13 Aug 2022 15:48:25 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1oNFXs-007Nnq-Tw; Sun, 14 Aug 2022 15:28:56 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMtKa-00FYMq-1A; Sat, 13 Aug 2022 15:45:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1660405521; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=RLsdr3Yo716LCnIomaVyK4mCMUM7m4YtXAxHYSPrYOe9cpXKpnp5VPeerLCMFvHsLEJ2v5WB+5xAAT8Xf+zh/xOEJURMMO7HDxz0BF+m2ZWdMK7oUiuDv/lJIgEhS68NGsrUylukoE+Lp5G2ziOiP9J08zdQIvVIEiXXcxlt6OA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1660405521; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=j22i5MR9w029DUAEHN8kKSEghHmcDwTXP1TjeGZr3iE=; 
-	b=VJGyfk7UEPTBXitTAZfKzAI+yBHOiGG0EPIoycbCKAOJK30YIvYHXEOfOMTMmj/GGPRVqJl3bnLh7BK0bsgKFEqwwO++NwU9P2zYU124gvlOooPoPavNNHEbIOME1feXsMnppB851UGnWNOrrSM26X2HLLw0vHR6DcKAuQ4rc5U=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1660405521;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=j22i5MR9w029DUAEHN8kKSEghHmcDwTXP1TjeGZr3iE=;
-	b=fiemmpknnmCY91rP8RGfJi0DaAClw47eDcCWZBbuyr8KbquGGCgV3kGTnSkff11l
-	XcBnt2W5qMQLz5DoUzdSMpFO0I2qiUMyKHC1B0oFdKl/3XM9noKqLbkiSsZnPSuEIcI
-	MHIRpSzRCV6dwXNA9aHyxia0TKQCw9Tlv06vTL44=
-Received: from arinc9-PC.lan (85.117.236.245 [85.117.236.245]) by mx.zohomail.com
-	with SMTPS id 1660405521013543.4864287339316; Sat, 13 Aug 2022 08:45:21 -0700 (PDT)
-From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	Luiz Angelo Daros de Luca <luizluca@gmail.com>,
-	Sander Vanheule <sander@svanheule.net>,
-	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	erkin.bozoglu@xeront.com,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1oNFXY-007Nbx-1J; Sun, 14 Aug 2022 15:28:38 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id B56A3B80B74;
+	Sun, 14 Aug 2022 15:28:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FAF2C433D7;
+	Sun, 14 Aug 2022 15:28:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1660490913;
+	bh=a4/LmbqCcfw4a/dBf+i02Qljn4gGGMGLZNQ7He7NoVg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=tWp9wQyEuxWVxFCNGDYVRYbbPEOniSDzHwVKgsl0Ym9sbEJgwzEiaA53/xqYWws6l
+	 MBXXnr16QSi4KNOrn+ugD7UzqqITFGRq2OoG7BUcg6HBthDY8Ec4sc8gGXaOjlKYD+
+	 e+FjO3RutjLQq3Nm3UQyH3Ad1IEm5ZmzrFa/rFF4rF4rYPw5bk0ahDtq8vHXTYWddI
+	 viMCbmTSGDTr4CKP8CLxyd5ya35igj5QCbi0KJsHodYT4cRc7PPnuE2+L+H2KaKvDv
+	 u+LrQChXSJLq3d/BLzanfufj1B+ftQAMkK6jcorwYigMQkFBrqrvEcY7qXvn511hgL
+	 MS+5RhmRyrYcw==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Po-Wen Kao <powen.kao@mediatek.com>,
+	Stanley Chu <stanley.chu@mediatek.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Sasha Levin <sashal@kernel.org>,
+	jejb@linux.ibm.com,
+	matthias.bgg@gmail.com,
+	linux-scsi@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-Subject: [PATCH v2 7/7] dt-bindings: net: dsa: mediatek,mt7530: update binding description
-Date: Sat, 13 Aug 2022 18:44:15 +0300
-Message-Id: <20220813154415.349091-8-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220813154415.349091-1-arinc.unal@arinc9.com>
-References: <20220813154415.349091-1-arinc.unal@arinc9.com>
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.19 18/64] scsi: ufs: ufs-mediatek: Fix the timing of configuring device regulators
+Date: Sun, 14 Aug 2022 11:23:51 -0400
+Message-Id: <20220814152437.2374207-18-sashal@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220814152437.2374207-1-sashal@kernel.org>
+References: <20220814152437.2374207-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+X-stable: review
+X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220813_084544_165771_00F8446C 
-X-CRM114-Status: GOOD (  21.40  )
+X-CRM114-CacheID: sfid-20220814_082836_432185_B215750B 
+X-CRM114-Status: GOOD (  15.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,127 +80,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update the description of the binding.
+From: Po-Wen Kao <powen.kao@mediatek.com>
 
-- Describe the switches, which SoCs they are in, or if they are standalone.
-- Explain the various ways of configuring MT7530's port 5.
-- Remove phy-mode = "rgmii-txid" from description. Same code path is
-followed for delayed rgmii and rgmii phy-mode on mtk_eth_soc.c.
+[ Upstream commit 3fd23b8dfb54d9b74eba6dfdd3225db3ac116785 ]
 
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Currently the LPM configurations of device regulators may not work since
+VCC is not disabled yet while ufs_mtk_vreg_set_lpm() is executed.
+
+Fix this by changing the timing of invoking ufs_mtk_vreg_set_lpm().
+
+Link: https://lore.kernel.org/r/20220616053725.5681-5-stanley.chu@mediatek.com
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Po-Wen Kao <powen.kao@mediatek.com>
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../bindings/net/dsa/mediatek,mt7530.yaml     | 97 ++++++++++++-------
- 1 file changed, 62 insertions(+), 35 deletions(-)
+ drivers/ufs/host/ufs-mediatek.c | 58 ++++++++++++++++++++++++++++++---
+ 1 file changed, 53 insertions(+), 5 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 530ef5a75a2f..cf6340d072df 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -13,41 +13,68 @@ maintainers:
-   - Sean Wang <sean.wang@mediatek.com>
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index beabc3ccd30b..8b9daa281cc4 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -1026,7 +1026,6 @@ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op,
+ 		 * ufshcd_suspend() re-enabling regulators while vreg is still
+ 		 * in low-power mode.
+ 		 */
+-		ufs_mtk_vreg_set_lpm(hba, true);
+ 		err = ufs_mtk_mphy_power_on(hba, false);
+ 		if (err)
+ 			goto fail;
+@@ -1050,12 +1049,13 @@ static int ufs_mtk_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ {
+ 	int err;
  
- description: |
--  Port 5 of mt7530 and mt7621 switch is muxed between:
--  1. GMAC5: GMAC5 can interface with another external MAC or PHY.
--  2. PHY of port 0 or port 4: PHY interfaces with an external MAC like 2nd GMAC
--     of the SOC. Used in many setups where port 0/4 becomes the WAN port.
--     Note: On a MT7621 SOC with integrated switch: 2nd GMAC can only connected to
--       GMAC5 when the gpios for RGMII2 (GPIO 22-33) are not used and not
--       connected to external component!
--
--  Port 5 modes/configurations:
--  1. Port 5 is disabled and isolated: An external phy can interface to the 2nd
--     GMAC of the SOC.
--     In the case of a build-in MT7530 switch, port 5 shares the RGMII bus with 2nd
--     GMAC and an optional external phy. Mind the GPIO/pinctl settings of the SOC!
--  2. Port 5 is muxed to PHY of port 0/4: Port 0/4 interfaces with 2nd GMAC.
--     It is a simple MAC to PHY interface, port 5 needs to be setup for xMII mode
--     and RGMII delay.
--  3. Port 5 is muxed to GMAC5 and can interface to an external phy.
--     Port 5 becomes an extra switch port.
--     Only works on platform where external phy TX<->RX lines are swapped.
--     Like in the Ubiquiti ER-X-SFP.
--  4. Port 5 is muxed to GMAC5 and interfaces with the 2nd GAMC as 2nd CPU port.
--     Currently a 2nd CPU port is not supported by DSA code.
--
--  Depending on how the external PHY is wired:
--  1. normal: The PHY can only connect to 2nd GMAC but not to the switch
--  2. swapped: RGMII TX, RX are swapped; external phy interface with the switch as
--     a ethernet port. But can't interface to the 2nd GMAC.
--
--    Based on the DT the port 5 mode is configured.
--
--  Driver tries to lookup the phy-handle of the 2nd GMAC of the master device.
--  When phy-handle matches PHY of port 0 or 4 then port 5 set-up as mode 2.
--  phy-mode must be set, see also example 2 below!
--  * mt7621: phy-mode = "rgmii-txid";
--  * mt7623: phy-mode = "rgmii";
-+  There are two versions of MT7530, standalone and in a multi-chip module.
++	if (hba->ufshcd_state != UFSHCD_STATE_OPERATIONAL)
++		ufs_mtk_vreg_set_lpm(hba, false);
 +
-+  MT7530 is a part of the multi-chip module in MT7620AN, MT7620DA, MT7620DAN,
-+  MT7620NN, MT7621AT, MT7621DAT, MT7621ST and MT7623AI SoCs.
-+
-+  MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs has got 10/100 PHYs
-+  and the switch registers are directly mapped into SoC's memory map rather than
-+  using MDIO. There is currently no support for this.
-+
-+  There is only the standalone version of MT7531.
-+
-+  Port 5 on MT7530 has got various ways of configuration.
-+
-+  For standalone MT7530:
-+
-+    - Port 5 can be used as a CPU port.
-+
-+    - PHY 0 or 4 of the switch can be muxed to connect to the gmac of the SoC
-+      which port 5 is wired to. Usually used for connecting the wan port
-+      directly to the CPU to achieve 2 Gbps routing in total.
-+
-+      The driver looks up the reg on the ethernet-phy node which the phy-handle
-+      property refers to on the gmac node to mux the specified phy.
-+
-+      The driver requires the gmac of the SoC to have "mediatek,eth-mac" as the
-+      compatible string and the reg must be 1. So, for now, only gmac1 of an
-+      MediaTek SoC can benefit this. Banana Pi BPI-R2 suits this.
-+      Check out example 5 for a similar configuration.
-+
-+    - Port 5 can be wired to an external phy. Port 5 becomes a DSA slave.
-+      Check out example 7 for a similar configuration.
-+
-+  For multi-chip module MT7530:
-+
-+    - Port 5 can be used as a CPU port.
-+
-+    - PHY 0 or 4 of the switch can be muxed to connect to gmac1 of the SoC.
-+      Usually used for connecting the wan port directly to the CPU to achieve 2
-+      Gbps routing in total.
-+
-+      The driver looks up the reg on the ethernet-phy node which the phy-handle
-+      property refers to on the gmac node to mux the specified phy.
-+
-+      For the MT7621 SoCs, rgmii2 group must be claimed with rgmii2 function.
-+      Check out example 5.
-+
-+    - In case of an external phy wired to gmac1 of the SoC, port 5 must not be
-+      enabled.
-+
-+      In case of muxing PHY 0 or 4, the external phy must not be enabled.
-+
-+      For the MT7621 SoCs, rgmii2 group must be claimed with rgmii2 function.
-+      Check out example 6.
-+
-+    - Port 5 can be muxed to an external phy. Port 5 becomes a DSA slave.
-+      The external phy must be wired TX to TX to gmac1 of the SoC for this to
-+      work. Ubiquiti EdgeRouter X SFP is wired this way.
-+
-+      Muxing PHY 0 or 4 won't work when the external phy is connected TX to TX.
-+
-+      For the MT7621 SoCs, rgmii2 group must be claimed with gpio function.
-+      Check out example 7.
+ 	err = ufs_mtk_mphy_power_on(hba, true);
+ 	if (err)
+ 		goto fail;
  
- properties:
-   compatible:
+-	ufs_mtk_vreg_set_lpm(hba, false);
+-
+ 	if (ufshcd_is_link_hibern8(hba)) {
+ 		err = ufs_mtk_link_set_hpm(hba);
+ 		if (err)
+@@ -1220,9 +1220,57 @@ static int ufs_mtk_remove(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
++int ufs_mtk_system_suspend(struct device *dev)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++	int ret;
++
++	ret = ufshcd_system_suspend(dev);
++	if (ret)
++		return ret;
++
++	ufs_mtk_vreg_set_lpm(hba, true);
++
++	return 0;
++}
++
++int ufs_mtk_system_resume(struct device *dev)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++
++	ufs_mtk_vreg_set_lpm(hba, false);
++
++	return ufshcd_system_resume(dev);
++}
++
++int ufs_mtk_runtime_suspend(struct device *dev)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++	int ret = 0;
++
++	ret = ufshcd_runtime_suspend(dev);
++	if (ret)
++		return ret;
++
++	ufs_mtk_vreg_set_lpm(hba, true);
++
++	return 0;
++}
++
++int ufs_mtk_runtime_resume(struct device *dev)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++
++	ufs_mtk_vreg_set_lpm(hba, false);
++
++	return ufshcd_runtime_resume(dev);
++}
++
+ static const struct dev_pm_ops ufs_mtk_pm_ops = {
+-	SET_SYSTEM_SLEEP_PM_OPS(ufshcd_system_suspend, ufshcd_system_resume)
+-	SET_RUNTIME_PM_OPS(ufshcd_runtime_suspend, ufshcd_runtime_resume, NULL)
++	SET_SYSTEM_SLEEP_PM_OPS(ufs_mtk_system_suspend,
++				ufs_mtk_system_resume)
++	SET_RUNTIME_PM_OPS(ufs_mtk_runtime_suspend,
++			   ufs_mtk_runtime_resume, NULL)
+ 	.prepare	 = ufshcd_suspend_prepare,
+ 	.complete	 = ufshcd_resume_complete,
+ };
 -- 
-2.34.1
+2.35.1
 
 
