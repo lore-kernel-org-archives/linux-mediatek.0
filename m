@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D9EAC00140
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Aug 2022 16:32:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EBD7C00140
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Aug 2022 16:34:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AlyDAFbyCoy+MXEHKuA7vDkqz9kvmuJ6xma2BiX31vM=; b=eaEsapDPHKAtZvuaNiqQBxpzL4
-	UivSQWMF4LKmB16AhtEg2oo4/yDoyK05LiTs+fZIllxSUbxyAzXjlaNtkDj6CTF/7/31wTOOKTANF
-	A63RwTVn1NWvi/myqABBwfOhzvM1dc5639KbcBERkKU2fxmgXUXgPNZXsgDecV9nP+Ck2khFy5q3w
-	DuQPiNuEsrMKbcQklZDz/xYVEu+DHIK8zfq60eYX12+kO7Q2GV8snMnF3lIo9sI6wk8hHGw9nkupE
-	xTWtLRcJboX4K7iC0yMlve9VGxiOS9B/G4SDQpURuQUEKmmpNALoMJtyYd26STKdDTVBzChob4Dcg
-	9OSTtstw==;
+	bh=IqdJ15U5P52EyStiXpKOkAJSZU/ujlclAiUvwGZwAHM=; b=AoWTfbkRfR9IrRK/LnsiC4ReIT
+	4L6Ettc4mZD1bKeNRwXikYFYqA6dq5t82lrM65rvK5QkQ2XNVvYp1Pw0IctujyBEFDSvxE+X32ND+
+	yscXLC8HFJd1pDdvhoX2d/tMTRXr1NYadCTMckEDLk+IY1K+oWUaD05kChdZALTshDqMVvfc3z7Nw
+	McwC7Ad0UtK3156EhB4zve0eZZK2Qdc/YNf7GqqnvGs7yr5AUvnLsWWF0Tzpb26CKBO448VzqkIRc
+	rKpi5Rxht25O31Z9GEC4VxZfV0uWJMbDm3W5X3ZObmT8vTICn/jGk0T7spuLEx06DxXEmzB9u0DBA
+	mIEUIepA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNd0v-001gG0-DC; Mon, 15 Aug 2022 16:32:29 +0000
+	id 1oNd2W-001hEe-7I; Mon, 15 Aug 2022 16:34:08 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNcrp-001YaE-AA
-	for linux-mediatek@lists.infradead.org; Mon, 15 Aug 2022 16:23:07 +0000
+	id 1oNcs8-001YmU-LD
+	for linux-mediatek@lists.infradead.org; Mon, 15 Aug 2022 16:23:28 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 83067611B1;
-	Mon, 15 Aug 2022 16:23:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB92EC433C1;
-	Mon, 15 Aug 2022 16:22:59 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2B111611E8;
+	Mon, 15 Aug 2022 16:23:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94311C4347C;
+	Mon, 15 Aug 2022 16:23:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660580581;
-	bh=e7z1wZFXKyKTx+/Gp205MIBB5Y2JE/nLNvE5mKdLmXo=;
+	s=k20201202; t=1660580602;
+	bh=M48z2KqCHhL953p7b1Jg0Gu4m0TjqNK8KDEbgoo0JM8=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=swWLDFdwixRMFnyIcl35ZTLWeedljORzZDGDlFZh3QvDRfNe6/gmdy6t5vNSOUCMs
-	 cFISGVQPxpedO9pFaxqUTBkVeCBDd9eaI83aFsIZwpehtBo00koo7k2f12NZUZPKvy
-	 SmcfpEZvylc2uRegQo9l3/Wl6HwIx06MRNmBLp5zar4H1r/mPBQANOCllbgF0Fcjg4
-	 rT0d8M16VP0HWqCwV24Mced9oCvNfoPV2ciZw7xFBXfBlUr2gZ6FWsB4+60TPboZsH
-	 wz1ffFFcu69E/UwtwCCJugZM5Nlmb6Q26yx6CJ+t6gFvWkANg89rGPfSdwd30gSBEv
-	 STpwYIxwladCw==
+	b=FXq9TSSYTg7OpDTuH1ZAddk6xdRmPg/M2VqfFMK5gt0bsnL3QVez4AZAZNCyRXiSM
+	 NOdlOYS6T4qufeYEdhi6y6C35ew+IOkuT7DiaI67iPHNhfMirG0P8wDi1oVqnuAOFV
+	 CsQvZfeZUnvTwJpHn/dL5hdv8Cjg4vu71h10IfzLbpkY9+xnEf5Rr+W9s42HjW5GHy
+	 7s4SRipdH7iORl66cbaUSBwqsF2tLqkleK7ni6c5B8P566CA/jpVdFPt6opUcew30n
+	 +bwWyp+5vHJCHeyIU07yzpU1fPtox03xyA7pCjbz12wlSgs3ar+Rhjprtuy2TXiLK8
+	 Iop3mp0X+d6/A==
 From: Mark Brown <broonie@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>, Dan Carpenter <dan.carpenter@oracle.com>, Liam Girdwood <lgirdwood@gmail.com>
-Cc: Jaroslav Kysela <perex@perex.cz>, kernel-janitors@vger.kernel.org, Takashi Iwai <tiwai@suse.com>,
- alsa-devel@alsa-project.org, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org
-In-Reply-To: <Yuo7LGPk8KnBW6ac@kili>
-References: <Yuo7LGPk8KnBW6ac@kili>
-Subject: Re: [PATCH] ASoC: mediatek: mt8186: remove unnecessary NULL check
-Message-Id: <166058057968.769843.14245211698253942822.b4-ty@kernel.org>
-Date: Mon, 15 Aug 2022 17:22:59 +0100
+To: Dan Carpenter <dan.carpenter@oracle.com>, Argus Lin <argus.lin@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>
+Cc: Jaroslav Kysela <perex@perex.cz>, Liang He <windhl@126.com>, kernel-janitors@vger.kernel.org,
+ Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <YvThhr86N3qQM2EO@kili>
+References: <YvThhr86N3qQM2EO@kili>
+Subject: Re: [PATCH] ASoC: mt6359: fix tests for platform_get_irq() failure
+Message-Id: <166058060031.769843.15519074468480649760.b4-ty@kernel.org>
+Date: Mon, 15 Aug 2022 17:23:20 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.10.0-dev-fe10a
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220815_092305_450659_9FF1C382 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20220815_092325_060633_314B74B5 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,10 +73,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 3 Aug 2022 12:09:00 +0300, Dan Carpenter wrote:
-> The "i2s_priv" pointer cannot be NULL.  Some NULL checks were deleted
-> in commit d7bffbe9cbd3 ("ASoC: mediatek: mt8186: remove unnecessary
-> judgments") but this one was accidentally left behind.
+On Thu, 11 Aug 2022 14:01:26 +0300, Dan Carpenter wrote:
+> The platform_get_irq() returns negative error codes.  It can't actually
+> return zero, but if it did that should be treated as success.
 > 
 > 
 
@@ -86,8 +85,8 @@ Applied to
 
 Thanks!
 
-[1/1] ASoC: mediatek: mt8186: remove unnecessary NULL check
-      commit: b9f0a8ffd6265e7d8c7464a7990330da85ee07ef
+[1/1] ASoC: mt6359: fix tests for platform_get_irq() failure
+      commit: 51eea3a6fb4d39c2cc71824e6eee5949d7ae4d1c
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
