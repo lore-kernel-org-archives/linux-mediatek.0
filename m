@@ -4,77 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51637C00140
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Aug 2022 06:36:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ABCAC00140
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Aug 2022 09:06:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0oVsLLs6Bg4oTydvl/icM72CiYInRV1zOsDw1/gzWl8=; b=O7L6SRucZkyAOZ4uCBY4b00xPQ
-	019RbtKTnSzQ45IEJ48dBRvwb1iSlbDyXuNhirD/UVp0GR3TkUt02RnzihA/avyKBPFIQ+VOmgkHK
-	+eZ4JKRr3Hqls3cIwvHLj/O/2OHEnrJzSWP9xT4ZqxGNL1//Oz73XfvTlIl7Ylw2WzxB60FSodrVH
-	/0pCIenlE/KKZ5jH4xrPNWjNUGF9xcA41lPM1y78w1YBFRUWcS6sKEj4caztE3PFJugBbp1pqJt2D
-	2rJkDifdyqhbmV3AUbzVnIJz+cLSrxwAW5l1mew8ADQAc2s+4s5UvQku/iFLHq5gROZOTa4pEDLnX
-	P4UJmoGQ==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FJfewIna3Ib507R/A7jMdp8TpFWTpq/l1JZjoGjf4xY=; b=RmlDrjBLvxDSAmG4DbM3/4bGUm
+	0bhBBOvKMytzZXzy/2mxrxR1oLKyGuDeqMft+z8gyOWdMYjI6bIR0ekZgm9j9aKmVQqS4D8s3vQPs
+	T1jrx1I6ENm/eRGIo6RIzt3ENu/X26sAWOPJ87dCRK68gQMH6zS7jxKBVaNNo1fnsLa5q4d4F0Bc/
+	tjlMFioRCIgI8PilqmkefhK0+MbA/rUTnIbKRP3fWUKoagj6XOjLL3jzrULKAnHHvhPqNkVXa35/A
+	O4b45zcRddGWWu5DxecvBCaFy0VOvyDRk8aGLNOoi6Hrn/eMQaKFouAiy1JYZW0rAlrR/bcc2JXnH
+	yZ7/aMFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNTi3-00C2kL-PM; Mon, 15 Aug 2022 06:36:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oNW2u-00Da2x-TN; Mon, 15 Aug 2022 09:06:05 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNThb-00C2X6-Jn; Mon, 15 Aug 2022 06:35:59 +0000
-X-UUID: f767395cd6154d0f8e26f2aef3da0670-20220814
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=0oVsLLs6Bg4oTydvl/icM72CiYInRV1zOsDw1/gzWl8=;
-	b=b1TZF60fI73azApmuMiKOOHfNOLdUDNdOqpXBwGYvj8oSvonTK6SyWY9AUxU2vJCfv9PFqwfPkVI62AniEd9F/LWj2zwTVUhbbJH7sWtBjrQ8hzoDNfYUPAv1Il+CaSf+uPG5529F7yd+7Z1WWapFC9MpjzdonK8bLnlSKYCnfs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.9,REQID:a06f7b86-73c8-4451-934e-2aa4cd834910,OB:0,LO
-	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_H
-	am,ACTION:release,TS:0
-X-CID-META: VersionHash:3d8acc9,CLOUDID:0ff6d2ae-9535-44a6-aa9b-7f62b79b6ff6,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: f767395cd6154d0f8e26f2aef3da0670-20220814
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1532883790; Sun, 14 Aug 2022 23:35:49 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 15 Aug 2022 14:34:57 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 15 Aug 2022 14:34:57 +0800
-Message-ID: <f5a27f00c89cadfb4fd2347f35a9504f964a4205.camel@mediatek.com>
-Subject: Re: [PATCH v25 0/7] Add MediaTek SoC DRM (vdosys1) support for
- mt8195
-From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-To: Nancy.Lin <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
-	<wim@linux-watchdog.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>
-CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
- Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
-	"jason-jh . lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu
-	<yongqiang.niu@mediatek.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <dri-devel@lists.freedesktop.org>,
-	<llvm@lists.linux.dev>, <singo.chang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 15 Aug 2022 14:34:57 +0800
-In-Reply-To: <20220804072827.22383-1-nancy.lin@mediatek.com>
-References: <20220804072827.22383-1-nancy.lin@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oNVym-00DWg6-3Q; Mon, 15 Aug 2022 09:01:55 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id jm11so3640225plb.13;
+        Mon, 15 Aug 2022 02:01:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc;
+        bh=FJfewIna3Ib507R/A7jMdp8TpFWTpq/l1JZjoGjf4xY=;
+        b=LrhmmIBT1IN9alApQeIXw8XXjB2a/StrgKLNPxuvGgh0by6k4EagGqVqPtncf4nB2b
+         IibTd1aq/wlR5oQQxknOZFyb0mbJfmA4c224AT4kqAAe5HGORM7Mon0f4cVMhPdDoqHX
+         912GoUnBPVkVO9pOn86dZCZDJ+XJfYzzaxgU3ICrO4YwWPgiM6Gw5502XYjGCgEM4xVZ
+         ixoAQ0dra+XJVE+9rGITxdfZQfSDGAqdfFkWV1nnI38PzT1Y6u8TsjTiH6DV44nk3Gye
+         oPfTj3SsU3KUCSLrkgEshVEVYFdJ3d4po482hBUKPE//tbZQtGL8rkhFRqC9vCN4VH6l
+         aL+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc;
+        bh=FJfewIna3Ib507R/A7jMdp8TpFWTpq/l1JZjoGjf4xY=;
+        b=BasjL6WSoOqogjHkBiGy4ZSDrfuD0qzSgqk3Z6VY4MGaGUI2/QKsBA4JMqFbjzQbb0
+         Wr8j0Jr3yHuTbxrdcxKMRQGT4x4oMlqkMZTg+BBqdcRwCMKJH/KRJqi8UvyM7H/IF8ov
+         eRhLORIALH2dnVPjNFw1H95h6fs1Lha4IB3Av76R6Sgoie1E89Io+Mo6LZlXFmDEJTnu
+         FTMQKEomkGoXVWAHzEIAxYtn8NAN3Z4moL0XhE1osIFzWmmu0klnP/Y+LwVve/x1zTrk
+         3m35N5RUM5zoffY3onRAnfiZ3t5pijKqlNMVFaX5jXpKh+Cuk/+hufD9A9tYz6jGpz49
+         oyxw==
+X-Gm-Message-State: ACgBeo0NQZi7wCbAOc/SPdLaPc4Tz/1+EcI5S3HpcHlktZIzuek5Qrq7
+	0ieXP9CqdUwzTE/WbIRHqO0=
+X-Google-Smtp-Source: AA6agR4i9U6xldbiIpmBJnNEFcpG5XKe02KhOmos8VjB8n8TJwGH9VeK+FnTbFbrGW0qj8Jf4+S2zA==
+X-Received: by 2002:a17:90b:1a81:b0:1f4:f9ff:9028 with SMTP id ng1-20020a17090b1a8100b001f4f9ff9028mr27803616pjb.44.1660554104220;
+        Mon, 15 Aug 2022 02:01:44 -0700 (PDT)
+Received: from DESKTOP-IBN2BAQ.localdomain ([123.110.155.185])
+        by smtp.gmail.com with ESMTPSA id a17-20020a656411000000b00412a708f38asm5491612pgv.35.2022.08.15.02.01.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 15 Aug 2022 02:01:43 -0700 (PDT)
+From: ChiaEn Wu <peterwu.pub@gmail.com>
+To: lee@kernel.org,
+	daniel.thompson@linaro.org,
+	jingoohan1@gmail.com,
+	pavel@ucw.cz,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	sre@kernel.org,
+	chunfeng.yun@mediatek.com,
+	gregkh@linuxfoundation.org,
+	jic23@kernel.org,
+	lars@metafoo.de,
+	linux@roeck-us.net,
+	heikki.krogerus@linux.intel.com,
+	deller@gmx.de,
+	broonie@kernel.org,
+	mazziesaccount@gmail.com,
+	lgirdwood@gmail.com,
+	andriy.shevchenko@linux.intel.com
+Cc: chiaen_wu@richtek.com,
+	alice_chen@richtek.com,
+	cy_huang@richtek.com,
+	dri-devel@lists.freedesktop.org,
+	linux-leds@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-usb@vger.kernel.org,
+	linux-iio@vger.kernel.org,
+	linux-fbdev@vger.kernel.org,
+	szunichen@gmail.com
+Subject: [RESEND PATCH v8 00/12] Add MediaTek MT6370 PMIC support
+Date: Mon, 15 Aug 2022 17:01:13 +0800
+Message-Id: <20220815090125.27705-1-peterwu.pub@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220814_233556_962178_FA1DB559 
-X-CRM114-Status: GOOD (  30.81  )
+X-CRM114-CacheID: sfid-20220815_020148_296500_A232EA8B 
+X-CRM114-Status: GOOD (  22.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,250 +115,550 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2022-08-04 at 15:28 +0800, Nancy.Lin wrote:
-> The hardware path of vdosys1 with DPTx output need to go through by
-> several modules, such as, OVL_ADAPTOR and MERGE.
-> 
-> Add DRM and these modules support by the patches below:
-> 
-> Changes in v25:
-> - rebase to next-20220803
-> 
-> Changes in v24:
-> - fix ovl_adaptor binding issue (mtk_disp_ovl_adaptor.c)
->   - Since ovl_adaptor is an aggregated component, it should be
-> bounded after
->     all its child components are bounded.
-> - rebase to next-20220708
-> 
-> Changes in v23:
-> - separate[7] mmsys/mutex and drm patches into two series
-> 
-> Changes in v22:
-> - rebase to next-20220525
-> - rebase to vdosys0 series v22
-> - separate dts to a new patch
-> 
-> Changes in v21:
-> - fix reviewer comment
->   - fix rdma and ethdr binding doc and dts
-> 
-> Changes in v20:
-> - fix reviewer comment
->   - update mmsys update bit api name
->   - add mtk_mmsys_update_bits error message if lose gce property
->   - list all mt8195 vdosys1 reset bits
-> 
-> Changes in v19:
-> - fix reviewer comment
->   - separate mt8195 mmsys component to a new patch
->   - separate mt8195 vdo0 and vdo1 routing table
->   - separate mmsys_write_reg api to a new patch and simplify write
-> reg code
->   - separate mmsys 64 bit reset to a new patch
->   - separate mtk-mutex dp_intf1 component to a new patch
-> 
-> Changes in v18:
-> - fix reviewer comment
->   - fix rdma binding doc
->   - fix ethdr binding doc
->   - refine mmsys config cmdq support
->   - refine merge reset control flow, get reset control in probe
-> function
->   - add ethdr reset control error handling and remove dbg log
-> - rebase to vdosys0 series v20 (ref [5])
-> 
-> Changes in v17:
-> - fix reviewer comment in v16
->   - separate ovl adaptor comp in mtk-mmsys and mtk-mutex
->   - separate mmsys config API
->   - move mdp_rdma binding yaml
-> - fix ovl adaptor pm runtime get sync timing issue
-> - rebase to vdosys0 series v19 (ref [5])
-> - rebase to [7] for modify vblank register change
-> 
-> Changes in v16:
-> - fix reviewer comment in v 15
->   - fix mtk_drm_ddp_comp.c alignment
->   - fix vdosys0 mmsys num before adding vdosys1 patch
-> 
-> Changes in v15:
-> - fix ethdr uppercase hex number in dts
-> 
-> Changes in v14:
-> - remove MTK_MMSYS 64 bit dependency
-> - add ethdr.yaml back and fix dt_schema check fail
-> 
-> Resend v13
-> - add related maintainer in maillist
-> 
-> Changes in v13:
-> - fix reviewer comment in v12
->   - fix rdma dt-binding format
->   - fix dts node naming
-> - fix 32 bit build error
->   - modify 64bit dependency for mtk-mmsys
-> - rebase to vdosys0 series v16. (ref [5])
-> 
-> Changes in v12:
-> - fix reviewer comment in v11
->   - modify mbox index
->   - refine dma dev for ovl_adaptor sub driver
-> 
-> Changes in v11:
-> - remove ethdr vblank spin lock
-> - refine ovl_adaptor print message
-> 
-> Changes in v10:
-> - refine ethdr reset control using
-> devm_reset_control_array_get_optional_exclusive
-> - fix ovl_adaptor mtk_ovl_adaptor_clk_enable error handle issue
-> 
-> Changes in v9:
-> - rebase on kernel-5.16-rc1
-> - rebase on vdosys0 series v13. (ref [5])
-> - fix ovl_adaptor sub driver is brought up unintentionally
-> - fix clang build test fail- duplicate ethdr/mdp_rdma
-> init_module/cleanup_module symbol issue 
-> 
-> Changes in v8:
-> - separate merge async reset to new patch.
-> - separate drm ovl_adaptor sub driver to new patch.
-> - fix reviewer comment in v7.
-> 
-> Changes in v7:
-> - rebase on vdosys0 series v12 (ref[5])
-> - add dma description in ethdr binding document.
-> - refine vdosys1 bit definition of mmsys routing table.
-> - separate merge modification into 3 pathces.
-> - separate mutex modification into 2 patches.
-> - add plane color coding for mdp_rdma csc.
-> - move mdp_rdma pm control to ovl_adaptor.
-> - fix reviewer comment in v6.
-> 
-> Changes in v6:
-> - rebase on kernel-5.15-rc1.
-> - change mbox label to gce0 for dts node of vdosys1.
-> - modify mmsys reset num for mt8195.
-> - rebase on vdosys0 series v10. (ref [5])
-> - use drm to bring up ovl_adaptor driver.
-> - move drm iommu/mutex check from kms init to drm bind.
-> - modify rdma binding doc location.
-> (Documentation/devicetree/bindings/arm/)
-> - modify for reviewer's comment in v5.
-> 
-> Changes in v5:
-> - add mmsys reset controller reference.
-> 
-> Changes in v4:
-> - use merge common driver for merge1~4.
-> - refine ovl_adaptor rdma driver.
-> - use ovl_adaptor ddp_comp function instead of ethdr.
-> - modify for reviewer's comment in v3.
-> 
-> Changes in v3:
-> - modify for reviewer's comment in v2.
-> - add vdosys1 2 pixels align limit.
-> - add mixer odd offset support.
-> 
-> Changes in v2:
-> - Merge PSEUDO_OVL and ETHDR into one DRM component.
-> - Add mmsys config API for vdosys1 hardware setting.
-> - Add mmsys reset control using linux reset framework.
-> 
-> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-> 
-> This series are based on the following patch:
-> [1] arm64: dts: Add mediatek SoC mt8195 and evaluation board
->     20220112114724.1953-4-tinghan.shen@mediatek.com
-> [2] arm64: dts: mt8195: add IOMMU and smi nodes
->     20210615173233.26682-15-tinghan.shen@mediatek.com
-> [3] [v2] arm64: dts: mt8195: add display node for vdosys0
->     20220225021535.2655-1-jason-jh.lin@mediatek.com
-> [4] dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
->     20220407075726.17771-2-yong.wu@mediatek.com
-> [5] Add MediaTek SoC DRM (vdosys1) support for mt8195
->     20220526110233.20080-1-nancy.lin@mediatek.com
-> 
-> Nancy.Lin (7):
->   dt-bindings: mediatek: add ethdr definition for mt8195
->   drm/mediatek: add ETHDR support for MT8195
->   drm/mediatek: add ovl_adaptor support for MT8195
->   drm/mediatek: add dma dev get function
->   drm/mediatek: modify mediatek-drm for mt8195 multi mmsys support
->   drm/mediatek: add drm ovl_adaptor sub driver for MT8195
->   drm/mediatek: add mediatek-drm of vdosys1 support for MT8195
-> 
->  .../display/mediatek/mediatek,ethdr.yaml      | 188 +++++++
->  drivers/gpu/drm/mediatek/Makefile             |   2 +
->  drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  26 +
->  .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 528
-> ++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |  96 ++--
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.h       |   6 +-
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   | 129 +++--
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  58 +-
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 359 ++++++++----
->  drivers/gpu/drm/mediatek/mtk_drm_drv.h        |  24 +-
->  drivers/gpu/drm/mediatek/mtk_ethdr.c          | 370 ++++++++++++
->  drivers/gpu/drm/mediatek/mtk_ethdr.h          |  26 +
->  12 files changed, 1615 insertions(+), 197 deletions(-)
->  create mode 100644
-> Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yam
-> l
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.c
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.h
+From: ChiaEn Wu <chiaen_wu@richtek.com>
 
-Hello all,
+I apologize for using the wrong mail list to send the wrong emails
+for the last v8 patchset...
 
-Because Kernel 6.0-rc1 is released, I re-test this series.
-I use dp series [1] to test this mmsys series because this series is
-used to control external display.
+This patch series add MediaTek MT6370 PMIC support and add a index macro
+to <linear_range.h>. The MT6370 is a highly-integrated smart power management
+IC, which includes a single cell Li-Ion/Li-Polymer switching battery charger,
+a USB Type-C & Power Delivery (PD) controller, dual Flash LED current sources,
+a RGB LED driver, a backlight WLED driver, a display bias driver and a
+general LDO for portable devices.
 
-In my test, I can do modtest of these mode for DP and it passed.
-Whole series again for 6.0-rc1:
-Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+First, in this series of patches,
+'dt-binding: mfd', 'mfd driver' has been applied by Lee in the v7.
+https://lore.kernel.org/all/YvJdpq0MWNPQZw5c@google.com/
+https://lore.kernel.org/all/YvJdxEpC2cB58Bq9@google.com/
 
-  #0 1920x1080 60.00 1920 2008 2052 2200 1080 1084 1089 1125 148500
-flags: phsync, pvsync; type: preferred, driver
-  #1 1920x1080 59.94 1920 2008 2052 2200 1080 1084 1089 1125 148352
-flags: phsync, pvsync; type: driver
-  #2 1920x1080 50.00 1920 2448 2492 2640 1080 1084 1089 1125 148500
-flags: phsync, pvsync; type: driver
-  #3 1680x1050 59.95 1680 1784 1960 2240 1050 1053 1059 1089 146250
-flags: nhsync, pvsync; type: driver
-  #4 1600x900 60.00 1600 1624 1704 1800 900 901 904 1000 108000 flags:
-phsync, pvsync; type: driver
-  #5 1280x1024 60.02 1280 1328 1440 1688 1024 1025 1028 1066 108000
-flags: phsync, pvsync; type: driver
-  #6 1280x800 59.81 1280 1352 1480 1680 800 803 809 831 83500 flags:
-nhsync, pvsync; type: driver
-  #7 1280x720 60.00 1280 1390 1430 1650 720 725 730 750 74250 flags:
-phsync, pvsync; type: driver
-  #8 1280x720 59.94 1280 1390 1430 1650 720 725 730 750 74176 flags:
-phsync, pvsync; type: driver
-  #9 1280x720 50.00 1280 1720 1760 1980 720 725 730 750 74250 flags:
-phsync, pvsync; type: driver
-  #10 1024x768 60.00 1024 1048 1184 1344 768 771 777 806 65000 flags:
-nhsync, nvsync; type: driver
-  #11 800x600 60.32 800 840 968 1056 600 601 605 628 40000 flags:
-phsync, pvsync; type: driver
-  #12 720x576 50.00 720 732 796 864 576 581 586 625 27000 flags:
-nhsync, nvsync; type: driver
-  #13 720x480 60.00 720 736 798 858 480 489 495 525 27027 flags:
-nhsync, nvsync; type: driver
-  #14 720x480 59.94 720 736 798 858 480 489 495 525 27000 flags:
-nhsync, nvsync; type: driver
-  #15 640x480 60.00 640 656 752 800 480 490 492 525 25200 flags:
-nhsync, nvsync; type: driver
-  #16 640x480 59.94 640 656 752 800 480 490 492 525 25175 flags:
-nhsync, nvsync; type: driver
+Second, the LED RGB driver is based on Andy Shevchenko's patch which moves
+led_init_default_state_get() to the global header.
+https://lore.kernel.org/all/20220805154907.32263-3-andriy.shevchenko@linux.intel.com/
 
-[1]:
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=665597
+In addition, we added a macro to the <<linear_range.h> for declaring the
+linear_range struct simply (see patch v8-0006) and made some changes for
+MT6370 drivers (see v8 section of the change log below).
 
-BRs,
-Bo-Chen
+Thank you,
+ChiaEn Wu
+---
+Changes in v8:
+- In Patch 06/12:
+	- Add linear_range_idx macro for declaring the linear_range
+	  struct simply.
+
+- In Patch 09/12:
+	- Remove MT6370_CHG_LINEAR_RANGE() macro, and change to use
+	  LINEAR_RANGE_IDX() macro
+
+- In Patch 10/12:
+	- Add include header file <linux/leds.h>
+	- Remove useless 'enum mt6370_state' because of using 'enum led_default_state'
+	- Revise the calculation of 'val' in 'mt6370_gen_breath_pattern()'
+	- Replace the medthod of getting default-state by using
+	  led_init_default_state_get()
+
+- In Patch 11/12:
+	- Add missing 'dependency config' in Kconfig
+	- Revise all multi-line comments
+
+- In Patch 12/12:
+	- Add missing header file <linux/property.h>
+	- Remove useledd header file <linux/of_device.h>
+	- Revise the comment of 'mt6370_check_vendor_info()'
+
+
+Changes in v7:
+- In Patch 05/13:
+	- Add the second compatible string for 'mt6372'
+	- Add 'mediatek,bled-exponential-mode-enable' property for enable the
+	  exponential mode of backlight brightness
+	- Add validation for the maximum value of 'default-brightness' and
+	  'max-brightness'
+
+- In Patch 07/13:
+	- Move '#define MT6370_REG_MAXADDR' to the next line of
+	  '#define MT6370_REG_CHG_MASK1'
+	- Rename 'MT6370_REG_ADDRLEN' to 'MT6370_MAX_ADDRLEN'
+
+- In Patch 08/13:
+	- Revise 'devm_add_action_or_reset(dev, ...)' to one line
+	- Revise 'return regmap_update_bits(...)' with using positive
+	  conditional
+
+- In Patch 09/13:
+	- Add AICR(100mA ~ 350mA), ICHG(100mA ~ 800mA) macros
+	- Remove 400mA AICR and 900mA ICHG macros
+	- Revise using 'if-else' to 'switch-case' in mt6370_adc_read_scale()
+	  where the adc channel is ibus or ibat
+
+- In Patch 10/13:
+	- Revise the method to enable/disable irq
+	- Revise all 'if (ret < 0)' to 'if (ret)' after using
+	  mt6370_chg_field_set/get()
+	- Revise all 'OTG' text again
+
+- In Patch 11/13:
+	- Add the comment for the union of 'struct mt6370_led'
+	- Revise the wrong description of 'Authors'
+	- Revise some typos (e.g. led --> LED)
+	- Revise 'if (!fwnode_property_read_string())' to
+	  'ret = fwnode_property_read_string()'
+	- Replace 'memcpy(...)' with 'put_unaligned_be24()' in
+	  mt6370_gen_breath_pattern()
+	- Replace all 'LED_OFF' with 0
+	- Remove the redundant assignment in mt6370_mc_pattern_clear()
+
+- In Patch 12/13:
+	- Fix the indentation.
+	- For the well defined macro, the parenthesis is needed for input parameters.
+	- Replace some dev_warn to dev_info in 'init_flash_properties'.
+	- Add sentinel comment for the terminator entry of of_device_id.
+	- Use priv->fled_torch_used directly.
+	- Delete 0 in {}.
+	- Use _uA instead of _UA in definition.
+	- Refine the description.
+	- Use usleep_range instead of udelay.
+	- Rename config to LEDS_MT6370_FLASH.
+	- Add missing ">" in copyright.
+	- Change the Kconfig order
+
+- In Patch 13/13:
+	- Add support 'exponential mode' property parsing
+	- Add 'return dev_err_probe()' after 'if (IS_ERR(priv->enable_gpio))'
+	- Add 'mt6372' compatible string
+	- Revise Kconfig help text
+	- Revise update()/get() for supporting 16384 steps (MT6372)
+	- Revise all shift usages form using 'ffs() and fls()' to defining the
+	  _SHIFT macros.
+	- Revise 'brightness ? 1 : 0' to '!!brightness' in gpiod_set_value()
+
+
+Changes in v6:
+- In Patch 03/13:
+	- Add 'reg' property of led of multi-led to prevent checking
+	  error.
+
+- In Patch 08/13:
+	- Convert tcpci as device resource managed with
+	  'devm_add_action_or_reset' api.
+	- Refine remvoe callback.
+	- Refine the commit text from 'this commit add' to 'add'.
+
+- In Patch 09/13:
+	- Using 'struct device *dev = &pdev->dev' in probe()
+	- Revise the sixth parameter of regmap_read_poll_timeout() by
+	  Replacing '1000' with 'MILLI'
+	- Revise the units of three macros
+	- MT6370_AICR_400MA --> MT6370_AICR_400_mA
+	- MT6370_ICHG_500MA --> MT6370_ICHG_500_mA
+	- MT6370_ICHG_900MA --> MT6370_ICHG_900_mA
+
+- In patch 10/13:
+	- Remove the varable (*psy_desc) of struct mt6370_priv
+	- Remove the deprecated usb type (POWER_SUPPLY_TYPE_USB_CDP and
+	  POWER_SUPPLY_TYPE_USB_DCP)
+	- Remove useless remove()
+	- Revise all units from mini- to micro-
+	- Revise get/set power_supply_prop (change to directly return get/set
+	  regmap_field)
+	- Revise probe() and use devm_add_action_or_reset() for handling of the
+	  workqueue/delayed_work/mutex
+	- Revise mt6370_chg_psy_desc
+		- Add '.name = "mt6370-charger"'
+		- Use 'static const'
+
+- In patch 11/13:
+	- Remove the 'ko' from mt6370 led Kconfig description.
+	- Add both authors for Alice and ChiYuan.
+	- Use pdata to distinguish the code from mt6370/71 to mt6372.
+	- Instead of 'state' define, use the 'state' enum.
+	- Fix the typo for 'MT6372_PMW_DUTY'.
+	- For pwm_duty define, replace with bit macro - 1.
+	- Refine all the labels from 'out' to 'out_unlock'.
+	- Use struct 'dev' variable and 'dev_err_probe' to optimize the LOC.
+	- Revise for the array initialization from {0} to {}.
+	- Move into rgb folder and rename file name to 'leds-mt6370-rgb'.
+	- Refine the 'comma' usage in struct/enum.
+
+- In patch 12/13:
+	- Use 'GENMASK' instead of 'BIT'.
+	- Use dev_err_probe to decrease LOC.
+	- Use 'dev' variable to make probe function more clean.
+	- Refine the return of _mt6370_flash_brightness_set function.
+	- Refine the descriptions.
+	- Use mt6370_clamp() instead of clamp_align().
+	- Use device resource managed API for v4l2 flash_release.
+
+
+Changes in v5:
+- In patch 07/13:
+	- Add the comma in the last REGMAP_IRQ_REG_LINE(),
+	  DEFINE_RES_IRQ_NAMED() and MFD_CELL_RES()
+	- Add the prefix in the first parameter of all mfd_cell
+	- Move enum and struct mt6370_info to mt6370.h
+	- Remove struct device *dev in struct mt6370_info
+	- Revise the description of Kconfig help text
+	- Revise MODULE_DESCRIPTION()
+
+- In patch 08/13:
+	- Add comma for the last index of mt6370_reg_init.
+	- Use dev_err_probe to decrease LOC.
+	- Use 'dev' variable to make probe function more clean.
+	- Refine kconfig text.
+	- Remove both 'else' in set_vbus callback.
+	- Remove comma for of_device_id if the assigned member is only one.
+
+- In patch 09/13:
+	- Replace using snprintf() with sysfs_emit() in mt6370_adc_read_label()
+	- Remove macro ADC_CONV_TIME_US
+	- Revise all variable ordering
+	- Revise the description of Kconfig help text
+	- Revise MODULE_DESCRIPTION()
+
+- In patch 10/13:
+	- Replace unsigned int type of pwr_rdy with bool in
+	  mt6370_chg_set_online()
+	- Remove redundant 'else' in mt6370_chg_field_get()
+	- Revise 'if-else' in mt6370_chg_field_set()
+	- Revise 'if' condition in mt6370_chg_enable_irq()
+	- Revise all text 'otg' --> 'OTG'
+	- Revise MT6370_MIVR_IBUS_TH_100_MA --> MT6370_MIVR_IBUS_TH_100_mA
+	- Revise the description of Kconfig help text
+
+- In patch 12/13:
+	- Refine the coding style.
+	- Use "dev" instead of "&pdev->dev".
+
+- In patch 13/13:
+	- Add missed <mod_devicetable.h>
+	- Add struct device *dev in probe() to make code cleaning
+	- Remove useless including header file <gpio/driver.h>, <of.h>
+	- Remove useless variable uasage in mt6370_init_backlight_properties()
+	- Remove redundant checking enable_gpio in mt6370_bl_update_status()
+	- Remove redundant parentheses in mt6370_bl_get_brightness()
+	- Revise the description of Kconfig help text
+	- Revise the calculation of hys_th_steps
+
+
+Changes in v4:
+- In patch 02/13:
+	- Add minItems of "io-channel-names"
+	- Replace text "Mediatek" with "MediaTek"
+
+- In patch 06/13:
+	- Roll back all "$ref: " to v2 patch style (using "/schemas/...")
+
+- In patch 07/13:
+	- Replace text "Mediatek" with "MediaTek" in Kconfig
+	- Replace "first break and then return" with "return directly"
+	  in "mt6370_check_vendor_info()"
+	- Add module name related description in Kconfig helptext
+	- Add Copyright in the source code
+	- Add header file "mt6370.h" for all "#define IRQ"
+	- Adjust Makefile order of MT6370
+	- Refine "bank_idx" and "bank_addr" in
+	  "mt6375_regmap_read()" / "mt6375_regmap_write()"
+	- Refine redundant "else if" in "mt6370_regmap_read()"
+
+- In patch 08/13:
+	- Replace text "Mediatek" with "MediaTek" in Kconfig
+	- Replace "first ret=regulator_(dis/en)able and then return"
+	  with "return directly" in "mt6370_tcpc_set_vbus()"
+	- Replace header file <linux/of.h> with <linux/mod_devicetable.h>
+	- Add Copyright in the source code
+	- Add module name related description in Kconfig helptext
+	- Remove header file <linux/of.h>
+	- Refine all probe error by using dev_err_probe()
+
+- In patch 09/13:
+	- Replace text "Mediatek" with "MediaTek"
+	- Replace all "first dev_err() and then return" with
+	  "return dev_err_probe()"
+	- Add Copyright in the source code
+	- Add module name related description in Kconfig
+	- Add unit suffix of macro "ADC_CONV_POLLING_TIME"
+	- Add new macro "ADC_CONV_TIME_MS"
+	- Adjust the position of include file <mediatek,mt6370_adc.h>
+	- Adjust the postions between <linux/module.h> and
+	   <linux/mod_devicetable.h>
+	- Fix some incorrect characters
+
+- In patch 10/13:
+	- Replace text "Mediatek" with "MediaTek" in Kconfig and
+	  MODULE_DESCRIPTION()
+	- Replace "mt6370_chg_val_to_reg" and "mt6370_chg_reg_to_val"
+	  with "linear_range" API
+	- Replace "first break and then return" with "return directly"
+	  in all cases of get/set power_supply_property
+	- Replace all "first dev_err() and then return" with "return
+	  dev_err_probe()"
+	- Replace all "return IS_ERR(priv->rdev) ? PTR_ERR(priv->rdev) : 0"
+	  with "PTR_ERR_OR_ZERO()"
+	- Replace "priv->dev->of_node" with "dev_of_node()"
+	- Add Copyright in the source code
+	- Add module name related description in Kconfig helptext
+	- Add proper unit of "MT6370_MIVR_IBUS_TH"
+	- Add error check in "mt6370_chg_get_status"
+	- Remove including <mediatek,mt6370_adc.h> header file
+	- Remove redundant comma of every enum terminator line
+	- Remove unwanted blank lines
+	- Remove the useless label (toggle_cfo_exit:)
+	- Remove using atomic
+	- Remove using of_match_ptr()
+	- Fix some incorrect characters
+	- Fix updating wrong bits when using ena_gpiod of OTG regulator
+	- Adjust the probe order in probe()
+
+- In patch 11/13:
+	- Replace text "Mediatek" with "MediaTek" in Kconfig
+	- Replace text "const" with "constant" in Kconfig
+	- Add Copyright in the source code
+
+- In patch 12/13:
+	- Replace text "Mediatek" with "MediaTek" in Kconfig
+	- Add Copyright in the source code
+
+- In patch 13/13:
+	- Replace text "Mediatek" with "MediaTek" in Kconfig
+	- Add Copyright in the source code
+	- Revise the comment of "PWM HYS STEPS"
+
+
+Changes in v3:
+- Remove ADC ABI file, which is added in v2 Patch 7
+- In patch 02/14:
+	- Add items and remove maxItems of io-channels
+	- Add io-channel-names and describe each item
+	- Add "unevaluatedProperties: false" in "usb-otg-vbus-regulator"
+	- Rename "enable-gpio" to "enable-gpios" in "usb-otg-vbus-regulator"
+
+- In patch 03/14:
+	- Use leds-class-multicolor.yaml instead of common.yaml.
+	- Split multi-led and led node.
+	- Add subdevice "led" in "multi-led".
+
+- In patch 04/14:
+	- Remove the description of enum.
+
+- In patch 05/14:
+	- Rename "mediatek,bled-pwm-hys-input-threshold-steps" to
+	  "mediatek,bled-pwm-hys-input-th-steps"
+	- Refine "bled-pwm-hys-input-th-steps", "bled-ovp-microvolt",
+	  "bled-ocp-microamp" enum values
+
+- In patch 06/14:
+	- Use " in entire patchset
+	- Refine ADC description
+	- Rename "enable-gpio" to "enable-gpios" in "regualtor"
+
+- In patch 07/14:
+	- Refine Kconfig help text
+	- Refine error message of unknown vendor ID in
+	  mt6370_check_vendor_info()
+	- Refine return value handling of mt6370_regmap_read()
+	- Refine all probe error by using dev_err_probe()
+	- Refine "bank_idx" and "bank_addr" in mt6370_regmap_read() and
+	  mt6370_regmap_write()
+	- Add "#define VENID*" and drop the comments in
+	  mt6370_check_vendor_info()
+	- Drop "MFD" in MODULE_DESCRIPTION()
+
+- In patch 09/14:
+	- Refine Kconfig help text
+
+- In patch 10/14:
+	- Refine Kconfig help text
+	- Refine all channel value in read_scale()
+		a. current: uA --> mA
+		b. voltage: uV --> mV
+		c. temperature: degrees Celsius --> milli degrees Celsius
+	- Add "default:" condition of switch statement in read_scale() and read_raw()
+	- Add error message for reading ADC register failed
+	- Add the comment for adc_lock
+	- Add <linux/mod_devicetable.h> header file for struct of_device_id
+	- Replace "adc" text with "ADC" in all of the error messages
+
+- In patch 12/14:
+	- Refine the grammer of the Kconfig.
+	- Change reg mode to the const current mode.
+
+- In patch 14/14:
+	- Refine bool properties parsing (pwm-enable, ovp-shutdown, ocp-shutdown) in DT
+	  parsing function
+	- Refine u32 and u8 properties parsing (pwm-hys-input-th-steps, ovp-microvolt,
+	  ocp-microamp), from using register value to using actual value
+	- Refine error string of "channle-use" parsing failed
+	- Refine Kconfig help text
+
+
+Changes in v2:
+- In patch 01/15:
+	- Add "unevaluatedProperties: false".
+	- Delete "DT bindings".
+	- Refine the description to fit in 80 columns.
+	- Skip the connector description.
+
+- In patch 02/15:
+	- Refine items description of interrupt-name
+	- Rename "usb-otg-vbus" to "usb-otg-vbus-regulator"
+	- Add constraint properties for ADC
+
+- In patch 03/15:
+	- Skip not useful description of "^(multi-)?led@[0-3]$"
+	  and reg.
+	- Due to the dependency, remove the mention of mfd
+	  document directory.
+	- Delete Soft-start property. In design aspect, we think
+	  soft-restart should always be enabled, our new chip
+	  has deleted the related setting register , also, we don’t
+	  allow user adjust this parameter in this chip.
+	- Refine the commit message.
+
+- In patch 04/15:
+	- Skip not useful description of "^led@[0-1]$" and reg.
+	- Add apace after '#'.
+	- Refine the commit message.
+
+- In patch 05/15:
+	- Remove "binding documentation" in subject title
+	- Refine description of mt6370 backlight binding
+	  document
+	- Refine properties name(bled-pwm-hys-input-bit,
+	  bled-ovp-microvolt, bled-ocp-microamp) and their
+	  description
+
+- In patch 06/15:
+	- Refine ADC and Regulator descriptions
+	- Refine include header usage in example
+	- Refine node name to generic node name("pmic@34")
+	- Refine led example indentation
+	- Refine license of mediatek,mt6370_adc.h
+	- Rename the dts example from IRQ define to number.
+	- Remove mediatek,mt6370.h
+
+- In patch 07/15:
+	- Add ABI documentation for mt6370 non-standard ADC
+	  sysfs interfaces.
+
+- In patch 08/15:
+	- Add all IRQ define into mt6370.c.
+	- Refine include header usage
+
+- In patch 09/15:
+	- No changes.
+
+- In patch 10/15:
+	- Use 'gpiod_get_from_of_node' to replace
+	  'fwnode_gpiod_get_index'.
+
+- In patch 11/15:
+	- Refine Kconfig mt6370 help text
+	- Refine mask&shift to FIELD_PREP()
+	- Refine mutex lock name ("lock" -> "adc_lock")
+	- Refine mt6370_adc_read_scale()
+	- Refine mt6370_adc_read_offset()
+	- Refine mt6370_channel_labels[] by using enum to index
+	  chan spec
+	- Refine MT6370_ADC_CHAN()
+	- Refine indio_dev->name
+	- Remove useless include header files
+
+- In patch 12/15:
+	- Refine mt6370_chg_otg_rdesc.of_match
+	  ("mt6370,otg-vbus" -> "usb-otg-vbus-regulator") to match
+	  DT binding
+
+- In patch 13/15:
+	- Refine Kconfig description.
+	- Remove include "linux/of.h" and use
+	  "linux/mod_devicetable.h".
+	- Place a comma for the last element of the const
+	  unsigned int array.
+	- Add a comment line for the mutex 'lock'.
+	- In probe function, use 'dev_err_probe' in some
+	  judgement to reduce the LOC.
+	- Refine include header usage.
+	  BIT/GENMASK -> linux/bits.h
+	  FIELD_GET -> linux/bitfield.h
+
+- In patch 14/15:
+	- Add blank line.
+	- Replace container_of() with to_mt6370_led() .
+	- Refine description of ramping.
+	- Refine the mt6370_init_common_properties function.
+	- Refine the probe return.
+
+- In patch 15/15:
+	- Refine MT6370 help text in Kconfig
+	- Refine DT Parse function
+	- Remove useless enum
+	- Add comment for 6372 backward compatible in
+	  bl_update_status() and
+	  check_vendor_info()
+	- Using dev_err_probe(); insteads dev_err()&return; in
+	  the probe()
+
+
+Alice Chen (2):
+  dt-bindings: leds: Add MediaTek MT6370 flashlight
+  leds: flash: mt6370: Add MediaTek MT6370 flashlight support
+
+ChiYuan Huang (5):
+  dt-bindings: usb: Add MediaTek MT6370 TCPC
+  dt-bindings: leds: mt6370: Add MediaTek MT6370 current sink type LED
+    indicator
+  dt-bindings: backlight: Add MediaTek MT6370 backlight
+  usb: typec: tcpci_mt6370: Add MediaTek MT6370 tcpci driver
+  leds: rgb: mt6370: Add MediaTek MT6370 current sink type LED Indicator
+    support
+
+ChiaEn Wu (5):
+  dt-bindings: power: supply: Add MediaTek MT6370 Charger
+  lib: add linear range index macro
+  iio: adc: mt6370: Add MediaTek MT6370 support
+  power: supply: mt6370: Add MediaTek MT6370 charger driver
+  video: backlight: mt6370: Add MediaTek MT6370 support
+
+ .../backlight/mediatek,mt6370-backlight.yaml  |  121 ++
+ .../leds/mediatek,mt6370-flashlight.yaml      |   41 +
+ .../leds/mediatek,mt6370-indicator.yaml       |   81 ++
+ .../power/supply/mediatek,mt6370-charger.yaml |   88 ++
+ .../bindings/usb/mediatek,mt6370-tcpc.yaml    |   36 +
+ drivers/iio/adc/Kconfig                       |   12 +
+ drivers/iio/adc/Makefile                      |    1 +
+ drivers/iio/adc/mt6370-adc.c                  |  305 +++++
+ drivers/leds/flash/Kconfig                    |   14 +
+ drivers/leds/flash/Makefile                   |    1 +
+ drivers/leds/flash/leds-mt6370-flash.c        |  632 +++++++++++
+ drivers/leds/rgb/Kconfig                      |   13 +
+ drivers/leds/rgb/Makefile                     |    1 +
+ drivers/leds/rgb/leds-mt6370-rgb.c            | 1010 +++++++++++++++++
+ drivers/power/supply/Kconfig                  |   14 +
+ drivers/power/supply/Makefile                 |    1 +
+ drivers/power/supply/mt6370-charger.c         |  957 ++++++++++++++++
+ drivers/usb/typec/tcpm/Kconfig                |   11 +
+ drivers/usb/typec/tcpm/Makefile               |    1 +
+ drivers/usb/typec/tcpm/tcpci_mt6370.c         |  207 ++++
+ drivers/video/backlight/Kconfig               |   13 +
+ drivers/video/backlight/Makefile              |    1 +
+ drivers/video/backlight/mt6370-backlight.c    |  351 ++++++
+ include/linux/linear_range.h                  |    8 +
+ 24 files changed, 3920 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/leds/backlight/mediatek,mt6370-backlight.yaml
+ create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
+ create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-indicator.yaml
+ create mode 100644 Documentation/devicetree/bindings/power/supply/mediatek,mt6370-charger.yaml
+ create mode 100644 Documentation/devicetree/bindings/usb/mediatek,mt6370-tcpc.yaml
+ create mode 100644 drivers/iio/adc/mt6370-adc.c
+ create mode 100644 drivers/leds/flash/leds-mt6370-flash.c
+ create mode 100644 drivers/leds/rgb/leds-mt6370-rgb.c
+ create mode 100644 drivers/power/supply/mt6370-charger.c
+ create mode 100644 drivers/usb/typec/tcpm/tcpci_mt6370.c
+ create mode 100644 drivers/video/backlight/mt6370-backlight.c
+
+-- 
+2.34.1
 
 
