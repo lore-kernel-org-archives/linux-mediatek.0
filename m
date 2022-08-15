@@ -4,84 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9563AC00140
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Aug 2022 19:53:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3372C25B0E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Aug 2022 22:00:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FFs3HBZ2sYo5B0KlYg3UGKXoZhke/2HXpu3Qn6wXDmk=; b=4RF5n2rpVZqNzF8PzEajCUbp16
-	UqC3TpUhnqA1e0aT3oO7+iL1mRyPXPlskp6nmEQzxTqMkykPCvjiKbgdIwUsEYOgp8a2KbIyIXp2O
-	V9C2z39sIvpU6cW+eg1ZkcWfnCqkIbzIf5cKKK9s1OGs561MLwLrkm2Hfm6CZvJIOVpXv9VztIP+R
-	CNmOMdzAxlY7EZofGE5v9cKr3o389GiSWrnCN1jtZTsKnjrzGKcpAdtJqfFe+iant7Pi62cmSsdC1
-	UxfQ0kjs3JavWxC8LZGxUji5bEFwV0lpfWYQgm/FkblrmFj5yYphGDbnf4gq48uQEGwrhIdIB54kK
-	CBXLgTug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=F2rGFENzHI0E3i8mswF35hHoUMszy0CZxP2MWQKHpBQ=; b=boVWCDEOec94MPRPGztPwk7Ijy
+	8dLM/LOItY9utuOzKjUrcJz/Gw4l08yp/C7Mr/WxF6kpaCO915czO6Gmupei9ogzsPu79XSUM7XHX
+	gbc+X8JQfDLSScdOH6ecFMabWt90eMQJzfltkWrFzKJ9xaaoSlOVTztp49o7g+93AVbihrFpieB0p
+	P8mhJkc8RY4gNY/5Nex+EQ2JewE+yHK+gHJwhRENdhYPSsJvKTkj9+jZJC8xu3rb7gwiKevTnFVQs
+	r2y9KebmyC0Jar85jHaHyZgun32qAWaB7M8AjHtjhJxfJCaN7IgdmNKZROwFVcAfNxPXJDSDVW6iC
+	EXTXp6TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNg9A-004MGq-97; Mon, 15 Aug 2022 19:53:12 +0000
-Received: from mout.kundenserver.de ([212.227.126.135])
+	id 1oNi89-006LM6-Dc; Mon, 15 Aug 2022 22:00:17 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNg96-004MAe-3Y; Mon, 15 Aug 2022 19:53:09 +0000
-Received: from mail-ej1-f47.google.com ([209.85.218.47]) by
- mrelayeu.kundenserver.de (mreue009 [213.165.67.97]) with ESMTPSA (Nemesis) id
- 1MG9c4-1o9Mnl2RrA-00GWuz; Mon, 15 Aug 2022 21:53:05 +0200
-Received: by mail-ej1-f47.google.com with SMTP id fy5so15281302ejc.3;
-        Mon, 15 Aug 2022 12:53:05 -0700 (PDT)
-X-Gm-Message-State: ACgBeo0VN+ARzDJQ3XkOJbtucnMnB4wQdxPv5q9l/j+yxyMTnQSiIMvu
-	JVVoOUwXnhx4U6CV9szrdUBpX91jgxyhiXzNFZQ=
-X-Google-Smtp-Source: AA6agR6WukBGcfTJVUl5CIbKuxExURcZy41XrLH6cR4WZu9dKLWxqz0LIbjhFDRnvnzwIquLGWfm92gIJBXogAGXdQo=
-X-Received: by 2002:a17:907:7609:b0:730:d70a:1efc with SMTP id
- jx9-20020a170907760900b00730d70a1efcmr11372637ejc.766.1660593185195; Mon, 15
- Aug 2022 12:53:05 -0700 (PDT)
+	id 1oNi85-006LFd-Df; Mon, 15 Aug 2022 22:00:15 +0000
+Received: by mail-wr1-x435.google.com with SMTP id j7so10514491wrh.3;
+        Mon, 15 Aug 2022 15:00:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc;
+        bh=F2rGFENzHI0E3i8mswF35hHoUMszy0CZxP2MWQKHpBQ=;
+        b=SwigwelJnmy5DhbwCbX4EIFty2vdJVo6HL901+2tfj45cuM+Dm4xSkjCK5i5aB1ucr
+         BogTShuXqf9zG5AWFiFvUfiIYTKNG+Gg/fdYxyYjBA0kqyQujK08eirJUAS6pF40YghK
+         QHw3mHBtJLp0EJC/vs3bl/khLlZXi1+zp6i+VlHNGVUbEaOwZUEaJpRNj+e44esGtT3J
+         IY6Ljvy2jvT6QOjEJwNIM3fhCw4sSXWsNBGueBXZvsWAf8E3OQ4Q5LdITTsM15uvvpFT
+         oJGa+TnZX7IzahqmWQDHMWYfb701XbLihdRlnBqtunzTIdlATyWMi9NKr58jl2M0mYLM
+         sl9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc;
+        bh=F2rGFENzHI0E3i8mswF35hHoUMszy0CZxP2MWQKHpBQ=;
+        b=U81+9ICSUS1C8o51l/1Sffs/5cuGMYbilJLbthfTZjnvjkVx/zJvAZEl2Dtce7yKEp
+         aZ5AEck2i4xsqK/Lv1uT94SWRHRzAkYVRIUHM7q3owpgkfQC0QKYigwbDlId1LTjMZR9
+         Qntgy1VFWBdCLpw/SwCeP9BjbKlW2NNz8LUtbCwaj3dXQNdycXnTKPbwKJXfpfuNyLHE
+         mYyUIkOCriUvboaX5pxlyECbAuRcuyXRr8e8l6276m49YzNgsn6flhnQgU8tpvrocX+k
+         fD4tdHE9KibW618HrNV/rtSgW5fGG4dlgemf9RppuEkUEQuCfrQr4e22U/igUv30FWio
+         ymcg==
+X-Gm-Message-State: ACgBeo2AfQa61eMzUKh6n3r0uFYrMdCOXscFJu+vTx/W+S3MHiFOig3V
+	UHKhFDg1iAeVGu9EtaN3G40=
+X-Google-Smtp-Source: AA6agR7uQBKz9p2RoPuPctiBHIoYB4Qu2te8eOPpUxlusmYdKqLIHMU/LCxGvX4St+OzDGJl/1h/uw==
+X-Received: by 2002:adf:dbc1:0:b0:224:fc61:fef7 with SMTP id e1-20020adfdbc1000000b00224fc61fef7mr4956247wrj.312.1660600810584;
+        Mon, 15 Aug 2022 15:00:10 -0700 (PDT)
+Received: from localhost.localdomain ([105.235.130.28])
+        by smtp.gmail.com with ESMTPSA id y10-20020adfee0a000000b00223664ab3a8sm10195480wrn.90.2022.08.15.15.00.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 15 Aug 2022 15:00:10 -0700 (PDT)
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Kishon Vijay Abraham I <kishon@ti.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
+	Yassine Oudjana <yassine.oudjana@gmail.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [RFC PATCH] phy: phy-mtk-tphy: Make USB PHY work on MT6735
+Date: Mon, 15 Aug 2022 22:58:59 +0100
+Message-Id: <20220815215859.253962-1-y.oudjana@protonmail.com>
+X-Mailer: git-send-email 2.37.1
 MIME-Version: 1.0
-References: <20220712164235.40293-1-f.fainelli@gmail.com> <CAK8P3a2QrYbWOqV+CG-W0ZkzW6ORgw8R6Dv-L3o2ZAtJs-B3Kw@mail.gmail.com>
- <0131e1d6-09c0-31a4-5b9d-0e2fc49d61ac@linaro.org> <CAMuHMdWDDY_72y3WYt401hG122xg1s7_VRCG9Vyhhkzco-nBYw@mail.gmail.com>
- <fb4f4444-20c2-0e35-bb83-79a419ec87a7@gmail.com> <f4adf05b-d3da-a692-3bd8-0b4d705e0dc2@gmail.com>
-In-Reply-To: <f4adf05b-d3da-a692-3bd8-0b4d705e0dc2@gmail.com>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Mon, 15 Aug 2022 21:52:49 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a0R7tL0+saXK-+pHUfT=ZsmOVr6LEecn40e+OSUtZAWLw@mail.gmail.com>
-Message-ID: <CAK8P3a0R7tL0+saXK-+pHUfT=ZsmOVr6LEecn40e+OSUtZAWLw@mail.gmail.com>
-Subject: Re: [PATCH] arm64: Kconfig.platforms: Re-organized Broadcom menu
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: Geert Uytterhoeven <geert@linux-m68k.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Arnd Bergmann <arnd@arndb.de>, 
-	Linux ARM <linux-arm-kernel@lists.infradead.org>, SoC Team <soc@kernel.org>, 
-	bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, william.zhang@broadcom.com, 
-	anand.gore@broadcom.com, Olof Johansson <olof@lixom.net>, 
-	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
-	open list <linux-kernel@vger.kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
-	Li Yang <leoyang.li@nxp.com>, Wei Xu <xuwei5@hisilicon.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	"moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
-	Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>, Matthias Brugger <mbrugger@suse.com>, 
-	linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, 
-	"moderated list:ARM/SAMSUNG EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, Dinh Nguyen <dinguyen@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Provags-ID: V03:K1:4i5P9KTi82dRV2RXeslF02kSwCeaf2KhTskbuBgGc4LHQiFc9Q8
- yFQrTAKdkr9ktr8M5nKQ1pUtLhvLEdTU68hjp86J0sxzTvLS63gJwJx2ZwxKYnvZQoLk2jf
- cuFsTDKj6719TtqHTlRWLt4k7C1K+EzBtsucCvZQsfxo1iuMDCNUFGEkG/XwnjITvPEe6eu
- VpSuyIhRx1EnUY3yPY+3A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:pe73b2HhoW0=:zyhenjFHjpVe/3S08a5obJ
- QDWWeH/KJkH4va96JYZxGNa+X24TGVQh9Ybre7KxLDfCQW0i+vwgK2k8NcSQyo4gCnHwQxZ4m
- i8z/dKVVjk6EPhrYZs4uaE4EB/5VxD9Sd+69dlZ+DT6yT0FdI5NI1iS3G0lg+mx1kehXdVTqm
- V9giT627NCQvofq/Qxww0Pbnn8/DCO9WroYT3+bjusQ0Pg+ZkIArSNBA8oLW7oUKuh+KhCjEy
- MXv1zv7qQ8khbrKri5x+dzWoLAwaPHM4+OOLFxaIBKGvXFkeRkUBb4sgmRW+cXWNOlwukdn0M
- eYSfS0YO1+zLunPi06klKsCQmX9clFZeForuitWrBgGCVjtHJ8ojttdgQggGQDRvaS61Z3cUh
- qzM26dtJTE7k5dJ5WVyQK2kVIwws29gLwLa+0mh3IGLda2Fn+aK34WKrqQjtduGuqTpSW6BfW
- Djau2Nf/SIIHPlY7ehCdOQd6XV/qqVhDb7qUdYfS82k1dxIv+AX6z8VsccDWfRscNK0vd7zDs
- X3oGlmNqUbky6E3w5XpfYXnPnwul1ALyZ+0O01D7uOrMHL7jpQI66T4+EEn3UO/Dviz41AZgR
- /OWmXYHgDSP/0rVRiSJzdH3Ugig0KTIhA82nG7H6xDeraMxwCg813cb+w7zfLRbLrkOEgGNVh
- /TIKlL+tMg+kb9cxV8lCoaoVyruK/dwHY9bbZ8Y1dh9562ykg0YqSc92Lia89mi8u6ra+dObW
- 2rXHjA0zAG8CVfxl55buZ6PcLmdgCkR7IxSAut7vq7fag/PxAeKnNX/VYKMLfYjUhri0dK4QT
- SC+Y1xOcgqxuPrFgvH5M/4ZDBYSA28wYOb1kqTkIbjLlkSd65wNLdeGsM/uOTXYWcuTZEAKO2
- t45lkzFFYmlaCbPtlqPw==
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220815_125308_507586_6B3DDC79 
-X-CRM114-Status: GOOD (  17.68  )
+X-CRM114-CacheID: sfid-20220815_150013_507302_9429EA5E 
+X-CRM114-Status: GOOD (  20.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,24 +93,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 15, 2022 at 7:15 PM Florian Fainelli <f.fainelli@gmail.com> wrote:
-> On 7/13/22 15:05, Florian Fainelli wrote:
-> > On 7/13/22 02:17, Geert Uytterhoeven wrote:
-> >
-> > The itch that I wanted to calm was that ARCH_BRCMSTB was after the other
-> > Broadcom platforms separated by ARCH_BERLIN. if you prefer a pair of
-> > KConfig comments to delineate them and flatten the platform selection,
-> > that works for me, too.
->
-> There are 2 Marvell-based platforms (Berlin and mvebu) as well as two
-> NXP-based platforms (MXC and S32), would it be better to also group them
-> under an ARCH_MARVELL and ARCH_NXP menuconfig symbol the same way this
-> patch does it for Broadcom-based SoCs?
+The USB PHY on MT6735 seems to be a TPHY V1, but the FMREG base
+here is 0xf00 rather than 0x100. Since it is definitely not a V2
+or later as it has shared registers, would this mean that it is
+an even earlier revision, or one between V1 and V2? Or is the
+address used currently in this driver wrong?
 
-Berlin is now Synaptics after Marvell sold them the business unit, so that one
-should probably stay separate. For NXP, there is also Layerscape. I
-agree it would
-be nice to group the three NXP together.
+Furthermore, there is one additional step needed in the power on
+sequence to make USB work on MT6735, which is to set the 10th bit
+of U3P_U2PHYDTM1. This was found through trial and error by adding
+the power on sequence from the downstream driver then stripping
+parts of it until a critical part is found. This specific part[1]
+was found under a comment saying "force enter device mode", but
+there are other bits that are cleared/set under the same comment,
+some of which are set in the same write as this bit, so it is
+unclear whether this bit is the one (or the only one) responsible
+for "forcing enter device mode". There is no documentation on this
+register (or any port registers for that matter) so this bit's
+name and function are unknown. Does anyone have more information
+on this? And if no information were to be found, would leaving
+this as a magic value, or with the placeholder name currently used
+(P2C_FORCE_ENTER_DEVICE_MODE) be acceptable?
 
-        Arnd
+[1] https://gitlab.com/Tooniis/linux-samsung-grandpplte/-/blob/master/drivers/misc/mediatek/usb20/mt6735/usb20_phy.c#L404
+---
+ drivers/phy/mediatek/phy-mtk-tphy.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index 8ee7682b8e93..f54b8a9872bf 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -23,7 +23,7 @@
+ /* version V1 sub-banks offset base address */
+ /* banks shared by multiple phys */
+ #define SSUSB_SIFSLV_V1_SPLLC		0x000	/* shared by u3 phys */
+-#define SSUSB_SIFSLV_V1_U2FREQ		0x100	/* shared by u2 phys */
++#define SSUSB_SIFSLV_V1_U2FREQ		0xf00	/* shared by u2 phys */
+ #define SSUSB_SIFSLV_V1_CHIP		0x300	/* shared by u3 phys */
+ /* u2 phy bank */
+ #define SSUSB_SIFSLV_V1_U2PHY_COM	0x000
+@@ -119,6 +119,7 @@
+ 
+ #define U3P_U2PHYDTM1		0x06C
+ #define P2C_RG_UART_EN			BIT(16)
++#define P2C_FORCE_ENTER_DEVICE_MODE	BIT(10)
+ #define P2C_FORCE_IDDIG		BIT(9)
+ #define P2C_RG_VBUSVALID		BIT(5)
+ #define P2C_RG_SESSEND			BIT(4)
+@@ -579,6 +580,8 @@ static void u2_phy_instance_power_on(struct mtk_tphy *tphy,
+ 		mtk_phy_set_bits(com + U3P_U2PHYDTM0, P2C_RG_SUSPENDM | P2C_FORCE_SUSPENDM);
+ 	}
+ 	dev_dbg(tphy->dev, "%s(%d)\n", __func__, index);
++
++	mtk_phy_set_bits(com + U3P_U2PHYDTM1, P2C_FORCE_ENTER_DEVICE_MODE);
+ }
+ 
+ static void u2_phy_instance_power_off(struct mtk_tphy *tphy,
+-- 
+2.37.1
+
 
