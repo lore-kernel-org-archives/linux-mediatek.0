@@ -4,89 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5D2EC00140
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Aug 2022 12:03:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 659F7C25B06
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Aug 2022 12:20:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/XsHCAAUo/oLtA4l5n4XUmocauuvUzyU7VbH9wcjXcQ=; b=wCY7gzx39zk66+lkTTmYvlLGLb
-	D3ZFJoXNdra7b3drmZPRHe8CvAzELDUuDR9N12FhakvMuQqYCEU9C11oZB2ivv6Hh9eDE9cfk7YQB
-	JWyeuTEXQvxWUcrlavEN6VB35KZyoob4SOIHp0U/9E6lFpxezIxnf33Kr08FOGH2UrP8USWxMVw/c
-	IcM6s8L1uVBgAMvNxkVpcxRLZRawcfnh3+NF4zWbaAZMW7BMeUGCKj0C0koal9/lFq6FT8d2C7Hfk
-	WUNSigFVAsgMl52DPl8TznbAeHfj97+5rB7kx4XnUoykJjvDXrkEGN8QTp/LIpJR1T6JHiVfG4+U7
-	igTQgKXw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Cb0QvKMoKu2xzU2m5fn8KpdSBP1r0jNnjaCG9BaoJf8=; b=kUPYPDNrn+loxp7JKgbmpx4pf2
+	nDleZQ+dFK6slSTpaTYdrrXWSOJzxk3oAbtkSBqaWe8zbRzm6GZIX2R1Ln1gJk1/VS8e7nM3IiCn6
+	fR1xX4LJ+TShp+gXBif6r0KK8/fUL4/+e8W9YhTQIOglevU+9HB2ESP9pfsTM2+APi5uPb+IN8lqn
+	7b0BCWBp4LmblYpLOM+eiNNg9zOitf6BH0f8YjRk+vqfFkyfOM3iHEzWTiqxZHbPhtCmCWK47weAL
+	EODuL3ALzdjDo1PQFhIbUQ95hMEJzrQMcEpl6VH3Qnj02DR7jHLSFBw20VRnU/DjCHssSxOwmy0wY
+	0COr3n9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNYoP-00FpL9-Bx; Mon, 15 Aug 2022 12:03:17 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1oNZ4i-00G1d1-6d; Mon, 15 Aug 2022 12:20:08 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNYo9-00Fp2Z-31; Mon, 15 Aug 2022 12:03:03 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id c28so6283935lfh.3;
-        Mon, 15 Aug 2022 05:02:56 -0700 (PDT)
+	id 1oNZ4c-00G1VG-S6
+	for linux-mediatek@lists.infradead.org; Mon, 15 Aug 2022 12:20:05 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id l4so8848049wrm.13
+        for <linux-mediatek@lists.infradead.org>; Mon, 15 Aug 2022 05:19:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id:from:to:cc;
-        bh=/XsHCAAUo/oLtA4l5n4XUmocauuvUzyU7VbH9wcjXcQ=;
-        b=ErUX/iJM60mg/GIhgD9m2o8Zsimzt51AWru/dx19gtiQS8+UJAccBHKTCddaet4TL/
-         rEMwij3r1MnT4WMxRr+n8tI+hgQvFYSU4A+na+zrazwGfgyPwI2qpZ6NcVpZgYBQU1vw
-         YnYlPGp8CSlmgHsuOypQ+2k2G75mzmpUIAyAQblYZWsbHoZ3D7uBunM2iAEjxonZUruq
-         XmQvyKmgrdxBuqrUSY5a5XnpN/CCCP/7/hdlyeD+ChsNjOc1+g5KERM6GSB1gIbDR8ZM
-         elh7UJtmD8U4ToCIwcM8PvG0qMTtWsCzvISExiM7RTPenDiFEYWS5gDjaJp7M3FiYxci
-         wuDw==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc;
+        bh=Cb0QvKMoKu2xzU2m5fn8KpdSBP1r0jNnjaCG9BaoJf8=;
+        b=f+PqK1yxoLrzKdv8s2Gx0dw1GGRi6kzs2WtESzUBUGQG7gNf8/5tPqz5d6f0l+0Ky6
+         7ndLFsBkewX2QTK2z0l3UYTB2sYOin1HS0/9taL7mPO08fZK3Ju66PG/VFHq94m2oaF+
+         xVn2KK9BpqqxxaBq8/HQSQPgTz8TLhYBRrgAI0TAzDciDdidR9yGAx1Vb+KW/jTmVTvW
+         35zTA2WK3EaDTcXPDxVeqvlGQPHGM5mhZocrw0Lv8IHEB6LzqY7dlPwJ/CKQch2sTKkE
+         wehf/6PQ3X71Wj4IIRU+XYRTJGVM6u4iK8XAGfIHRuquPeHL2hFylVMgyUdwkXpDILqd
+         vDwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc;
-        bh=/XsHCAAUo/oLtA4l5n4XUmocauuvUzyU7VbH9wcjXcQ=;
-        b=elh8ctC9qqE0+Mgj0HYYgcua7REisFkCit50TqCh53IEBfzq1YbjtkdF+W5J8/lKRX
-         Ld+yr+OFgSVaVzJq2izth9FXu3za6tm+o1BzDYEo97Rzo0L2BHyf6KAX4RjmiNy8o3WP
-         e8v+ygYJaCJ7sz+s5jEIwpPc83v+4qVklCIR/sTV4U3z7//m3hOqxkH2JKQRTSrHdn1G
-         /WnaE84xa2Yz1kj9yKHJnUgp8mTT9z1EAoh0xltyo8smWz2VGUL6n4/WElwxvtaTv1Fi
-         evUBk4FyFkBTLRNvopANpQDJtEP2ZJiakFSziMRg1iFK3HJ6zTTihEKWPilWa4OcX16N
-         vbXA==
-X-Gm-Message-State: ACgBeo3zvhY0wnHnOln6gbY1jfRcouiye8HWINwRJgZJELBhRvX4w8hM
-	6vKBClJqWfiDtusy7OZk6k0=
-X-Google-Smtp-Source: AA6agR5bn+jCdjoc5L3WS7gsgG/DC+Ia6If8+ihGn5S9bGfb+XvBKScyMfO5upO4+SQ2quD69RF6Lg==
-X-Received: by 2002:a05:6512:1581:b0:492:8c61:5bef with SMTP id bp1-20020a056512158100b004928c615befmr1251567lfb.518.1660564975422;
-        Mon, 15 Aug 2022 05:02:55 -0700 (PDT)
-Received: from [172.16.192.210] ([213.255.186.46])
-        by smtp.gmail.com with ESMTPSA id f26-20020a2e381a000000b0025e2e70b41fsm1384223lja.71.2022.08.15.05.02.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 15 Aug 2022 05:02:54 -0700 (PDT)
-Message-ID: <5a1a5a80-526c-2f76-0086-15cc76e88a06@gmail.com>
-Date: Mon, 15 Aug 2022 15:02:53 +0300
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
+        bh=Cb0QvKMoKu2xzU2m5fn8KpdSBP1r0jNnjaCG9BaoJf8=;
+        b=U7QDKSXWhfhe1i8azR2UAWFYCf+y/ti/VB7Fm0NZPq34k7dq0aq8P0KD5SD1JB4p8h
+         kjLDHkb+MvYXDePysgclCcDXboddrekVYp6TjVOtgoRbGxP5Au6kSYzGw69UTTVufRRz
+         nl+bNFeqffCoI/olwe0MT6AODiGpwVxhmUNsJA61Jm/7AAxbGq4L2KVLiTexVtlpM8Zt
+         vyUL4i0nNABPw2sal58ff7NzIlq+HbG+Oo1OmpsdBCa10DMX4PAlhjX7Y7ZeoT2H/EGC
+         M7QdUDVUWLXeZVNvOUV0hhQXm5ifx5O9gXz87cplDhkLC07K3AKZ1q7LcX78ZhQ3YGKX
+         AtIg==
+X-Gm-Message-State: ACgBeo1fHHZYkk1J5n41R4o38OGCmnEOfqy3j/XuSoWM4/dzvAdPp51B
+	4UcRuVgHIYIxyD8C24efXWF3UA==
+X-Google-Smtp-Source: AA6agR5jpGzcnMVoqZ1w4ypUaJvlsmJvJ2YUHA0qHL2TGohWVGn+LfqxLQC+7LvF2t549pKJvp84Vg==
+X-Received: by 2002:a5d:684e:0:b0:220:63df:3760 with SMTP id o14-20020a5d684e000000b0022063df3760mr8120665wrw.508.1660565998532;
+        Mon, 15 Aug 2022 05:19:58 -0700 (PDT)
+Received: from blmsp ([2001:4090:a243:8036:200c:a862:4253:884])
+        by smtp.gmail.com with ESMTPSA id x15-20020a5d490f000000b002205a5de337sm7084777wrq.102.2022.08.15.05.19.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 15 Aug 2022 05:19:57 -0700 (PDT)
+Date: Mon, 15 Aug 2022 14:19:57 +0200
+From: Markus Schneider-Pargmann <msp@baylibre.com>
+To: Yassine Oudjana <yassine.oudjana@gmail.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Miles Chen <miles.chen@mediatek.com>,
+	Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+	Yassine Oudjana <y.oudjana@protonmail.com>,
+	Rex-BC Chen <rex-bc.chen@mediatek.com>, linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] clk: mediatek: gate: Export
+ mtk_clk_register_gates_with_dev
+Message-ID: <20220815121957.hmdjsznp4zj2ijmh@blmsp>
+References: <20220813083249.45427-1-y.oudjana@protonmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Content-Language: en-US
-To: ChiaEn Wu <peterwu.pub@gmail.com>, lee@kernel.org,
- daniel.thompson@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, sre@kernel.org, chunfeng.yun@mediatek.com,
- gregkh@linuxfoundation.org, jic23@kernel.org, lars@metafoo.de,
- linux@roeck-us.net, heikki.krogerus@linux.intel.com, deller@gmx.de,
- broonie@kernel.org, lgirdwood@gmail.com, andriy.shevchenko@linux.intel.com
-Cc: chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
- dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-fbdev@vger.kernel.org, szunichen@gmail.com
-References: <20220815090125.27705-1-peterwu.pub@gmail.com>
- <20220815090125.27705-7-peterwu.pub@gmail.com>
-From: Matti Vaittinen <mazziesaccount@gmail.com>
-Subject: Re: [RESEND PATCH v8 06/12] lib: add linear range index macro
-In-Reply-To: <20220815090125.27705-7-peterwu.pub@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20220813083249.45427-1-y.oudjana@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220815_050301_230716_074D6DE8 
-X-CRM114-Status: GOOD (  18.50  )
+X-CRM114-CacheID: sfid-20220815_052003_174125_7F561D55 
+X-CRM114-Status: GOOD (  18.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,67 +97,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi ChiaEn,
+Hi Yassine,
 
-On 8/15/22 12:01, ChiaEn Wu wrote:
-> From: ChiaEn Wu <chiaen_wu@richtek.com>
+On Sat, Aug 13, 2022 at 09:32:49AM +0100, Yassine Oudjana wrote:
+> From: Yassine Oudjana <y.oudjana@protonmail.com>
 > 
-> Add linear_range_idx macro for declaring the linear_range struct simply.
+> This allows it to be used in drivers built as modules.
 > 
-> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+This change overlaps with my patch [1], I added export symbol for more
+functions as it was necessary to build the mt8365 clock driver as a
+module. I will rebase after this one was applied.
+
+You already have two reviewed-bys, but if you need one more, here you go
+;)
+
+Reviewed-by: Markus Schneider-Pargmann <msp@baylibre.com>
+
+Best,
+Markus
+
+[1] https://lore.kernel.org/linux-mediatek/20220811084433.2598575-4-msp@baylibre.com/
+
 > ---
->   include/linux/linear_range.h | 8 ++++++++
->   1 file changed, 8 insertions(+)
+> This patch was originally part of a series, and is sent alone now since
+> it doesn't depend on the rest of it and can be applied directly:
+> https://lore.kernel.org/linux-clk/20220519134728.456643-1-y.oudjana@protonmail.com/
 > 
-> diff --git a/include/linux/linear_range.h b/include/linux/linear_range.h
-> index fd3d0b358f22..fb53ea13c593 100644
-> --- a/include/linux/linear_range.h
-> +++ b/include/linux/linear_range.h
-> @@ -26,6 +26,14 @@ struct linear_range {
->   	unsigned int step;
->   };
->   
-> +#define LINEAR_RANGE_IDX(_min, _min_sel, _max_sel, _step)	\
-> +	{							\
-> +		.min = _min,					\
-> +		.min_sel = _min_sel,				\
-> +		.max_sel = _max_sel,				\
-> +		.step = _step,					\
-> +	}
-> +
-
-I think this somewhat differs from what you had originally scetched. Eg, 
-if I didn't misread the patch earlier - you had:
-
-#define MT6370_CHG_LINEAR_RANGE(_rfd, _min, _min_sel, _max_sel, _step) \
-[_rfd] = {                                                             \
-	...
-
-instead of the
- > +#define LINEAR_RANGE_IDX(_min, _min_sel, _max_sel, _step)	\
- > +	{							\
-
-I think the latter (without the []-index) is more generic, and very 
-welcome. However, the IDX-suffix does no longer make much sense, right? 
-I suggested name LINEAR_RANGE_IDX for macro taking the array index as it 
-would also be useful when dealing with arrays.
-
-Do you think you could still drop the IDX from macro name or keep the 
-array index as the original did?
-
-Maybe ideally introduce both macros (unless Mark has objections), one 
-with the [_rfd] and suffix IDX, and the other w/o the suffix and w/o the 
-[_rfd]?
-
-Thanks for the improvements and the patience! ;)
-
-Yours
-   -- Matti
-
--- 
-Matti Vaittinen
-Linux kernel developer at ROHM Semiconductors
-Oulu Finland
-
-~~ When things go utterly wrong vim users can always type :help! ~~
+>  drivers/clk/mediatek/clk-gate.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
+> index 421806236228..0c867136e49d 100644
+> --- a/drivers/clk/mediatek/clk-gate.c
+> +++ b/drivers/clk/mediatek/clk-gate.c
+> @@ -261,6 +261,7 @@ int mtk_clk_register_gates_with_dev(struct device_node *node,
+>  
+>  	return PTR_ERR(hw);
+>  }
+> +EXPORT_SYMBOL_GPL(mtk_clk_register_gates_with_dev);
+>  
+>  int mtk_clk_register_gates(struct device_node *node,
+>  			   const struct mtk_gate *clks, int num,
+> -- 
+> 2.37.1
+> 
+> 
 
