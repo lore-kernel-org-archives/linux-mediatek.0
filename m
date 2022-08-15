@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C97FC00140
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Aug 2022 06:24:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0382C00140
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Aug 2022 06:25:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QyH/Uqp1hFTTlwZapiD7j/ly2kqStnxRNZkhMYgYIDs=; b=X28u+bWAFamse7MoKYejzqPZtC
-	cImUIKQagfgTPluv/52Im8t2jlfW3QO1eXQRS5rYsibPu+DZ8j+dhgiL5EQZHu89PJKtmX3fPrlJU
-	65Yzn847Cea0QiSmwPrI0BKe7zhlzRCCuEqbLvByXa5wsHyDLAeAM0SVubWnsrFxfLq2ZvUvDT59Y
-	UQLAdDBKlsNYa4KJWlKBDwwMtwyve5kt8q1/RTu95xlEodbBmEwy4QY0CUz0V0Is52NYna0Ha86h6
-	bvBQJ81jRoAzLkoPEy2pzP7u59i+xsknU3q46AWfl9MIEd5za3ohSg38Xd1bUVurB+t1GhiiKiKLv
-	yzml8Zug==;
+	bh=oW+ozNMa+YXU9OXxaHR0dKouPvVPflDEV452LhocDiE=; b=qpHa42cXsllG9b41zJXsO3pgsn
+	HniG6Hvlbd2fj0Oa4E0Pyhq0STuwQAoqSRzn+Qyzpql7yryafogFnopy8b350bhxAvaDmBCseYn3x
+	/bZU0NqoMpDFSJyVgaBfbOa1VncySN8NqYMjL0Ii/TxZhmkHVHCj2Qa+Zzb7w5l+6H+sDT037CkOs
+	Cq+jPzgnE1tHqvUU5+t2pbJpGu8lXH0Pv4TF6Jlk639VtBfilrVJq7/84voN+NZGA5sQtX0XoaMbf
+	OPOWze818nqnyN8Jjl1fQhvFsvS209YBb6CuJmDUqf1UDlBg5B53tiH6OY3X04zB+hx9DLoaxFOX9
+	hLi8Obnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNTWl-00BuFx-8a; Mon, 15 Aug 2022 06:24:43 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oNTXZ-00BvAE-Qm; Mon, 15 Aug 2022 06:25:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNTWe-00Bu9y-J0; Mon, 15 Aug 2022 06:24:39 +0000
-X-UUID: c20393615e564be18b19ae993ac55317-20220814
+	id 1oNTXU-00BuzV-Ur; Mon, 15 Aug 2022 06:25:30 +0000
+X-UUID: 3236faf1fdce4a12ab28d05997a39c16-20220814
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=QyH/Uqp1hFTTlwZapiD7j/ly2kqStnxRNZkhMYgYIDs=;
-	b=Ce29DVf/z9ideCpMoZtedqD/DwOhshOD1nOKllQgXAvXVurMMJF7FxC6bMeqKPIXLOrPWK1T7IG7FJlRiuopBIP0oR05bFPMIn4uuOAa8Mrvr+Ou1LmNOh02ezwm4MmvvmhuUI8fOnCvhWJlb1fjMts0StXNpUp+bs2Etm+1Hyc=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=oW+ozNMa+YXU9OXxaHR0dKouPvVPflDEV452LhocDiE=;
+	b=gn1JgkojUKe3QZ36a1ial+JLyP8W5Go8rvH8qWyeBtNxxD+MCIxfCscjdF79drEYDc6vkVw8kuD3sRgqp1Y5TDvaKNuE0Tism6QrXgoWtgm/MYF+fFbfROrI3gfoaBJPLWBEGOTYIqRyM1HuuC+PUpZgPZiq3fsmEkwk46Imbx4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.9,REQID:2edf3f67-e690-4c33-acc1-818568df9106,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.9,REQID:16ad6bb3-9d1c-4ea6-a946-1008114567f4,OB:0,LO
 	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_H
 	am,ACTION:release,TS:5
-X-CID-META: VersionHash:3d8acc9,CLOUDID:d31b51fd-9e71-4a0f-ba6b-417998daea35,C
+X-CID-META: VersionHash:3d8acc9,CLOUDID:da2551fd-9e71-4a0f-ba6b-417998daea35,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
 	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: c20393615e564be18b19ae993ac55317-20220814
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-UUID: 3236faf1fdce4a12ab28d05997a39c16-20220814
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1488271277; Sun, 14 Aug 2022 23:24:30 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 1227284009; Sun, 14 Aug 2022 23:25:19 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 15 Aug 2022 14:23:55 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 15 Aug 2022 14:23:55 +0800
-Message-ID: <312adeb830eb31e81915dd2189b03e5c05ef4155.camel@mediatek.com>
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 15 Aug 2022 13:24:41 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 15 Aug 2022 13:24:40 +0800
+Message-ID: <d2e6147dc342867aba18f71869c9b4d4230f6ccc.camel@mediatek.com>
 Subject: Re: [PATCH v1, 1/1] mailbox: mtk-cmdq: fix gce timeout issue
 From: CK Hu <ck.hu@mediatek.com>
-To: yongqiang.niu <yongqiang.niu@mediatek.com>, Chun-Kuang Hu
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>, Chun-Kuang Hu
 	<chunkuang.hu@kernel.org>
 CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
 	<matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
@@ -59,20 +59,18 @@ CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
 	<hsinyi@chromium.org>, Yongqiang Niu
 	<yongqiang.niu@mediatek.corp-partner.google.com>, Allen-kh Cheng
 	<allen-kh.cheng@mediatek.corp-partner.google.com>
-Date: Mon, 15 Aug 2022 14:23:54 +0800
-In-Reply-To: <36abe0f4e45c81f4b6f1e4914f8c19baa0155912.camel@mediatek.com>
+Date: Mon, 15 Aug 2022 13:24:40 +0800
+In-Reply-To: <20220815030740.28899-2-yongqiang.niu@mediatek.com>
 References: <20220815030740.28899-1-yongqiang.niu@mediatek.com>
 	 <20220815030740.28899-2-yongqiang.niu@mediatek.com>
-	 <d2e6147dc342867aba18f71869c9b4d4230f6ccc.camel@mediatek.com>
-	 <36abe0f4e45c81f4b6f1e4914f8c19baa0155912.camel@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220814_232436_923366_519FDBCA 
-X-CRM114-Status: GOOD (  30.19  )
+X-CRM114-CacheID: sfid-20220814_232529_037421_5ABF9249 
+X-CRM114-Status: GOOD (  23.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,203 +87,166 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi, Yongqiang:
 
-On Mon, 2022-08-15 at 13:51 +0800, yongqiang.niu wrote:
-> On Mon, 2022-08-15 at 13:24 +0800, CK Hu wrote:
-> > Hi, Yongqiang:
-> > 
-> > 
-> > On Mon, 2022-08-15 at 11:07 +0800, Yongqiang Niu wrote:
-> > > From: Yongqiang Niu <
-> > > yongqiang.niu@mediatek.corp-partner.google.com
-> > > > 
-> > > 
-> > > 1. enable gce ddr enable(gce reigster offset 0x48, bit 16 to 18)
-> > > when
-> > > gce work,
-> > > and disable gce ddr enable when gce work job done
-> > 
-> > Why need gce ddr enable? I think gce works fine without this.
-> > Describe
-> > more about this.
-> > 
-> > Regards,
-> > CK
-> 
-> this is only for some SOC which has flag "control_by_sw".
-> for this kind of gce, there is a handshake flow between gce and ddr
-> hardware,
-> if not set ddr enable flag of gce, ddr will fall into idle mode, 
-> then gce instructions will not process done.
-> we need set this flag of gce to tell ddr when gce is idle or busy
-> controlled by software flow.
 
-You [1] and Jason [2] has already enable control_by_sw and I believe
-you two have test your patch in general. Is the ddr problem a special
-case? How to operate to trigger this bug? Describe more in commit
-message to let us know why need this patch.
-
-[1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/mailbox/mtk-cmdq-mailbox.c?h=v6.0-rc1&id=84fd4201b78b96f8d31f6a2624be27ad6306a9bc
-[2] 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/mailbox/mtk-cmdq-mailbox.c?h=v6.0-rc1&id=9388501fbb99a1b6a23f28634d125567a3b45a3d
-
-
+On Mon, 2022-08-15 at 11:07 +0800, Yongqiang Niu wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.corp-partner.google.com>
 > 
-> > 
-> > > 2. split cmdq clk enable/disable api, and control gce ddr
-> > > enable/disable
-> > > in clk enable/disable function to make sure it could protect when
-> > > cmdq
-> > > is multiple used by display and mdp
-> > > 
-> > > Signed-off-by: Yongqiang Niu <
-> > > yongqiang.niu@mediatek.corp-partner.google.com>
-> > > Signed-off-by: Allen-kh Cheng <
-> > > allen-kh.cheng@mediatek.corp-partner.google.com>
-> > > ---
-> > >  drivers/mailbox/mtk-cmdq-mailbox.c | 57
-> > > ++++++++++++++++++++++++++
-> > > ----
-> > >  1 file changed, 51 insertions(+), 6 deletions(-)
-> > > 
-> > > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > > b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > > index 2578e5aaa935..64a47470f062 100644
-> > > --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > > @@ -81,6 +81,8 @@ struct cmdq {
-> > >  	u8			shift_pa;
-> > >  	bool			control_by_sw;
-> > >  	u32			gce_num;
-> > > +	atomic_t		usage;
-> > > +	spinlock_t		lock;
-> > >  };
-> > >  
-> > >  struct gce_plat {
-> > > @@ -90,6 +92,46 @@ struct gce_plat {
-> > >  	u32 gce_num;
-> > >  };
-> > >  
-> > > +static s32 cmdq_clk_enable(struct cmdq *cmdq)
-> > > +{
-> > > +	s32 usage, ret;
-> > > +	unsigned long flags;
-> > > +
-> > > +	spin_lock_irqsave(&cmdq->lock, flags);
-> > > +
-> > > +	usage = atomic_inc_return(&cmdq->usage);
-> > > +
-> > > +	ret = clk_bulk_enable(cmdq->gce_num, cmdq->clocks);
-> > > +	if (usage <=0 || ret < 0) {
-> > > +		dev_err(cmdq->mbox.dev, "ref count %d ret %d suspend
-> > > %d\n",
-> > > +			usage, ret, cmdq->suspended);
-> > > +	} else if (usage == 1) {
-> > > +		if (cmdq->control_by_sw)
-> > > +			writel((0x7 << 16) + 0x7, cmdq->base +
-> > > GCE_GCTL_VALUE);
-> > > +	}
-> > > +
-> > > +	spin_unlock_irqrestore(&cmdq->lock, flags);
-> > > +
-> > > +	return ret;
-> > > +}
-> > > +
-> > > +static void cmdq_clk_disable(struct cmdq *cmdq)
-> > > +{
-> > > +	s32 usage;
-> > > +
-> > > +	usage = atomic_dec_return(&cmdq->usage);
-> > > +
-> > > +	if (usage < 0) {
-> > > +		dev_err(cmdq->mbox.dev, "ref count %d suspend %d\n",
-> > > +			usage, cmdq->suspended);
-> > > +	} else if (usage == 0) {
-> > > +		if (cmdq->control_by_sw)
-> > > +			writel(0x7, cmdq->base + GCE_GCTL_VALUE);
-> > > +	}
-> > > +
-> > > +	clk_bulk_disable(cmdq->gce_num, cmdq->clocks);
-> > > +}
-> > > +
-> > >  u8 cmdq_get_shift_pa(struct mbox_chan *chan)
-> > >  {
-> > >  	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq,
-> > > mbox);
-> > > @@ -271,7 +313,8 @@ static void cmdq_thread_irq_handler(struct
-> > > cmdq
-> > > *cmdq,
-> > >  
-> > >  	if (list_empty(&thread->task_busy_list)) {
-> > >  		cmdq_thread_disable(cmdq, thread);
-> > > -		clk_bulk_disable(cmdq->gce_num, cmdq->clocks);
-> > > +
-> > > +		cmdq_clk_disable(cmdq);
-> > >  	}
-> > >  }
-> > >  
-> > > @@ -360,8 +403,7 @@ static int cmdq_mbox_send_data(struct
-> > > mbox_chan
-> > > *chan, void *data)
-> > >  	task->pkt = pkt;
-> > >  
-> > >  	if (list_empty(&thread->task_busy_list)) {
-> > > -		WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
-> > > -
-> > > +		WARN_ON(cmdq_clk_enable(cmdq) < 0);
-> > >  		/*
-> > >  		 * The thread reset will clear thread related register
-> > > to 0,
-> > >  		 * including pc, end, priority, irq, suspend and
-> > > enable. Thus
-> > > @@ -433,7 +475,7 @@ static void cmdq_mbox_shutdown(struct
-> > > mbox_chan
-> > > *chan)
-> > >  	}
-> > >  
-> > >  	cmdq_thread_disable(cmdq, thread);
-> > > -	clk_bulk_disable(cmdq->gce_num, cmdq->clocks);
-> > > +	cmdq_clk_disable(cmdq);
-> > >  
-> > >  done:
-> > >  	/*
-> > > @@ -479,7 +521,8 @@ static int cmdq_mbox_flush(struct mbox_chan
-> > > *chan, unsigned long timeout)
-> > >  
-> > >  	cmdq_thread_resume(thread);
-> > >  	cmdq_thread_disable(cmdq, thread);
-> > > -	clk_bulk_disable(cmdq->gce_num, cmdq->clocks);
-> > > +
-> > > +	cmdq_clk_disable(cmdq);
-> > >  
-> > >  out:
-> > >  	spin_unlock_irqrestore(&thread->chan->lock, flags);
-> > > @@ -490,7 +533,8 @@ static int cmdq_mbox_flush(struct mbox_chan
-> > > *chan, unsigned long timeout)
-> > >  	spin_unlock_irqrestore(&thread->chan->lock, flags);
-> > >  	if (readl_poll_timeout_atomic(thread->base +
-> > > CMDQ_THR_ENABLE_TASK,
-> > >  				      enable, enable == 0, 1, timeout))
-> > > {
-> > > -		dev_err(cmdq->mbox.dev, "Fail to wait GCE thread 0x%x
-> > > done\n",
-> > > +		dev_err(cmdq->mbox.dev,
-> > > +			"Fail to wait GCE thread 0x%x done\n",
-> > >  			(u32)(thread->base - cmdq->base));
-> > >  
-> > >  		return -EFAULT;
-> > > @@ -626,6 +670,7 @@ static int cmdq_probe(struct platform_device
-> > > *pdev)
-> > >  
-> > >  	WARN_ON(clk_bulk_prepare(cmdq->gce_num, cmdq->clocks));
-> > >  
-> > > +	spin_lock_init(&cmdq->lock);
-> > >  	cmdq_init(cmdq);
-> > >  
-> > >  	return 0;
-> > 
-> > 
+> 1. enable gce ddr enable(gce reigster offset 0x48, bit 16 to 18) when
+> gce work,
+> and disable gce ddr enable when gce work job done
+
+Why need gce ddr enable? I think gce works fine without this. Describe
+more about this.
+
+Regards,
+CK
+
+> 2. split cmdq clk enable/disable api, and control gce ddr
+> enable/disable
+> in clk enable/disable function to make sure it could protect when
+> cmdq
+> is multiple used by display and mdp
 > 
+> Signed-off-by: Yongqiang Niu <
+> yongqiang.niu@mediatek.corp-partner.google.com>
+> Signed-off-by: Allen-kh Cheng <
+> allen-kh.cheng@mediatek.corp-partner.google.com>
+> ---
+>  drivers/mailbox/mtk-cmdq-mailbox.c | 57 ++++++++++++++++++++++++++
+> ----
+>  1 file changed, 51 insertions(+), 6 deletions(-)
 > 
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
+> b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index 2578e5aaa935..64a47470f062 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -81,6 +81,8 @@ struct cmdq {
+>  	u8			shift_pa;
+>  	bool			control_by_sw;
+>  	u32			gce_num;
+> +	atomic_t		usage;
+> +	spinlock_t		lock;
+>  };
+>  
+>  struct gce_plat {
+> @@ -90,6 +92,46 @@ struct gce_plat {
+>  	u32 gce_num;
+>  };
+>  
+> +static s32 cmdq_clk_enable(struct cmdq *cmdq)
+> +{
+> +	s32 usage, ret;
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(&cmdq->lock, flags);
+> +
+> +	usage = atomic_inc_return(&cmdq->usage);
+> +
+> +	ret = clk_bulk_enable(cmdq->gce_num, cmdq->clocks);
+> +	if (usage <=0 || ret < 0) {
+> +		dev_err(cmdq->mbox.dev, "ref count %d ret %d suspend
+> %d\n",
+> +			usage, ret, cmdq->suspended);
+> +	} else if (usage == 1) {
+> +		if (cmdq->control_by_sw)
+> +			writel((0x7 << 16) + 0x7, cmdq->base +
+> GCE_GCTL_VALUE);
+> +	}
+> +
+> +	spin_unlock_irqrestore(&cmdq->lock, flags);
+> +
+> +	return ret;
+> +}
+> +
+> +static void cmdq_clk_disable(struct cmdq *cmdq)
+> +{
+> +	s32 usage;
+> +
+> +	usage = atomic_dec_return(&cmdq->usage);
+> +
+> +	if (usage < 0) {
+> +		dev_err(cmdq->mbox.dev, "ref count %d suspend %d\n",
+> +			usage, cmdq->suspended);
+> +	} else if (usage == 0) {
+> +		if (cmdq->control_by_sw)
+> +			writel(0x7, cmdq->base + GCE_GCTL_VALUE);
+> +	}
+> +
+> +	clk_bulk_disable(cmdq->gce_num, cmdq->clocks);
+> +}
+> +
+>  u8 cmdq_get_shift_pa(struct mbox_chan *chan)
+>  {
+>  	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq,
+> mbox);
+> @@ -271,7 +313,8 @@ static void cmdq_thread_irq_handler(struct cmdq
+> *cmdq,
+>  
+>  	if (list_empty(&thread->task_busy_list)) {
+>  		cmdq_thread_disable(cmdq, thread);
+> -		clk_bulk_disable(cmdq->gce_num, cmdq->clocks);
+> +
+> +		cmdq_clk_disable(cmdq);
+>  	}
+>  }
+>  
+> @@ -360,8 +403,7 @@ static int cmdq_mbox_send_data(struct mbox_chan
+> *chan, void *data)
+>  	task->pkt = pkt;
+>  
+>  	if (list_empty(&thread->task_busy_list)) {
+> -		WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
+> -
+> +		WARN_ON(cmdq_clk_enable(cmdq) < 0);
+>  		/*
+>  		 * The thread reset will clear thread related register
+> to 0,
+>  		 * including pc, end, priority, irq, suspend and
+> enable. Thus
+> @@ -433,7 +475,7 @@ static void cmdq_mbox_shutdown(struct mbox_chan
+> *chan)
+>  	}
+>  
+>  	cmdq_thread_disable(cmdq, thread);
+> -	clk_bulk_disable(cmdq->gce_num, cmdq->clocks);
+> +	cmdq_clk_disable(cmdq);
+>  
+>  done:
+>  	/*
+> @@ -479,7 +521,8 @@ static int cmdq_mbox_flush(struct mbox_chan
+> *chan, unsigned long timeout)
+>  
+>  	cmdq_thread_resume(thread);
+>  	cmdq_thread_disable(cmdq, thread);
+> -	clk_bulk_disable(cmdq->gce_num, cmdq->clocks);
+> +
+> +	cmdq_clk_disable(cmdq);
+>  
+>  out:
+>  	spin_unlock_irqrestore(&thread->chan->lock, flags);
+> @@ -490,7 +533,8 @@ static int cmdq_mbox_flush(struct mbox_chan
+> *chan, unsigned long timeout)
+>  	spin_unlock_irqrestore(&thread->chan->lock, flags);
+>  	if (readl_poll_timeout_atomic(thread->base +
+> CMDQ_THR_ENABLE_TASK,
+>  				      enable, enable == 0, 1, timeout))
+> {
+> -		dev_err(cmdq->mbox.dev, "Fail to wait GCE thread 0x%x
+> done\n",
+> +		dev_err(cmdq->mbox.dev,
+> +			"Fail to wait GCE thread 0x%x done\n",
+>  			(u32)(thread->base - cmdq->base));
+>  
+>  		return -EFAULT;
+> @@ -626,6 +670,7 @@ static int cmdq_probe(struct platform_device
+> *pdev)
+>  
+>  	WARN_ON(clk_bulk_prepare(cmdq->gce_num, cmdq->clocks));
+>  
+> +	spin_lock_init(&cmdq->lock);
+>  	cmdq_init(cmdq);
+>  
+>  	return 0;
 
 
