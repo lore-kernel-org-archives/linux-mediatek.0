@@ -4,70 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38C5AC25B0E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 14:45:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D3D6C25B0E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 15:38:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oX7Uw1GdRzWPUR63yLpyR3Y8vFILF4KqV1mUqs3+f2U=; b=kmfbqdTbFURxcawDM8usUbyvns
-	28+YnX3zNtP/bWNq4syn8P+WXjNbe0ynWpt+3+1HuJJgwRpjC3lY9GCgx8ebIDuNk3uCRZKpUJhzg
-	CE9M9L7D7vfAtFSj/R65TdZ2B0UYXNwCe9Cyva4y5v9TSoRzB5QQxp0LMADxUAJk5o1IyQH+pKn3L
-	TBSexqGCqnDvknMAwSwxCG7LEYTfJtBhUO4bFZNA0vVm6yV5Bz3j7HFHR8C26/qxuWtECIpRPNmdp
-	bjt/FnZGuIIPfMiUPWnlHSyBLf7QwzScjda3fXAbtjdjblFI2bbLoAEoRYzYNh6F1Y7M5Wve6u21J
-	1RSWYgxA==;
+	bh=J5WiUIEakaBIT3EhpAEayc6sO+2fsKfDY6BFWpgB1bc=; b=pEFF81WWv4WG6G3k5BP+nuS6hv
+	0PlQ7KFfnEsH1YHk8RzgSgITzFHci1biynB6ztKu2x7UvNl4+JLd4o0S69EH2sYnB0448qU4N0He9
+	N33CzdfE2ugqv2MwoZwUDBZaNbXTZTwFLqtepQqfr82/qZvPQGsTqTlaA6UGjMe0WMpc4z83GiHYY
+	1Iam0WIoQ6IUHGSizcn9N+cEYUP5uS+mHw8KsZzfl3fBlup1e+LygYP1WXdZ3HXmRaGT2FTIUZoOl
+	5TfcWZDP8RaIibEkbA/xccCP9xa71M4q0SRJGgG6pTXZTV9nDrJfVZFeXquIHuYw1XXD2QgGXpbE1
+	qv/vM4Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNxpA-003Zdd-71; Tue, 16 Aug 2022 14:45:44 +0000
+	id 1oNydv-0040MU-7s; Tue, 16 Aug 2022 15:38:11 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNxov-003ZUn-Ri; Tue, 16 Aug 2022 14:45:31 +0000
+	id 1oNyde-003zu9-I6; Tue, 16 Aug 2022 15:37:56 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B56A3610E7;
-	Tue, 16 Aug 2022 14:45:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8958FC43144;
-	Tue, 16 Aug 2022 14:45:27 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3F5E3611EC;
+	Tue, 16 Aug 2022 15:37:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E562C4347C;
+	Tue, 16 Aug 2022 15:37:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660661127;
-	bh=xZzBfr/VvA4fl3EbZW4ZxaDkGPC5m8/WRe3PfD6pY54=;
+	s=k20201202; t=1660664272;
+	bh=V49dgqu/RAkWRS3001yah3EjBpkjCkpA7y5OPLHrM9Q=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=V99ax+ID6rclDTUIBrCce/ZZOMJ6HYyMR5MXZ93azt+fU7Q5cM9q5XgmgsPF93PjR
-	 jPOgSCCuQWxR1fM0ZgLJ7A7Xg1tvqr6Ne2vFCZZOj1SXSQ0Cd615ej/r4YGfDtzV6S
-	 DHGEK04pAXShvEPBg+vxg0nEFrC55eytopkEHXgNsZ1dJCm0Xa6f/cM59rAvExiYLr
-	 /trybM3fams6TtgpOvGtEggm9k1bBTjnj0V+3Pstj9lMsarcG6LCK2gNVsfU2xuR9d
-	 gsjRf6ag/Ttl+sQZKaVFtV3L0+3cNzWUNcOI8nl0tzRjcQA17PS/oUL90diN0HSMrn
-	 dfJCb+/cc6cBw==
-Received: by mail-wr1-f49.google.com with SMTP id v3so12942792wrp.0;
-        Tue, 16 Aug 2022 07:45:27 -0700 (PDT)
-X-Gm-Message-State: ACgBeo3of7bPDNHF3cbL7TcI0s1ZcgR/i9K4ud+dOAV+0hTj1m4QuapS
-	09NR3WbCuM45n0XrzHPc4lAku2pFq2n2015kPXk=
-X-Google-Smtp-Source: AA6agR7JnQbViXE0WQ5IRSRqxR1MS+ODZfFKzYZJNwhcX6lu+uLF0bhIlhQSwp40TtpGDSVYuLnOKCWT7GSnefojbGg=
-X-Received: by 2002:adf:d238:0:b0:21e:c972:7505 with SMTP id
- k24-20020adfd238000000b0021ec9727505mr12174103wrh.536.1660661125577; Tue, 16
- Aug 2022 07:45:25 -0700 (PDT)
+	b=HM6nA176MfOgvwM4aYzgxrXtkZNsyPzieWFtOM7wfa7Y6HbUs11ekwRDWDVFGGXGw
+	 27V34YIPzdRIqrOl8k53roAb4tMeD5UDDV3RvxJs4/nEufjpEz3ytpRzUlb75UoX7f
+	 SROELHAJ8Mbne9KSmP6mgvraDA/lHVPnonXJXTuB2h/9bkscGKgJ5nrdhIZtDpIjEo
+	 kBNP11wnL1imt6wjN99dVad9lNWWj9FE1BCqH6GH4kVXnOR+yujHEy4YqWd9AVAx0H
+	 WxHwbprxicMp3T+ovVm4DD6URYmFQxUHfQ68vJnbup2ojgM6/H6z1HwLET+nn0RO97
+	 fcXe1fZzFaopQ==
+Received: by mail-ua1-f50.google.com with SMTP id m21so275980uab.13;
+        Tue, 16 Aug 2022 08:37:52 -0700 (PDT)
+X-Gm-Message-State: ACgBeo0U4Nir3JL7tZrsp5PwAidVeyP0i7+lo0J4eoINRmxdjNkH8bjz
+	WrkHQKmdGyXoYAUq+XeTCv2ahB4B9vqznf2zyg==
+X-Google-Smtp-Source: AA6agR6P6tx9Y0Tb4qmdIdqjNQDONt+9JZtqem7UsItHKI1hbGP9NpYbZ5qL4HTr0AbwT9oos2Tvh2M0MtkHzHMsHgQ=
+X-Received: by 2002:ab0:2b06:0:b0:384:c4af:107c with SMTP id
+ e6-20020ab02b06000000b00384c4af107cmr8599136uar.77.1660664270971; Tue, 16 Aug
+ 2022 08:37:50 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220814152437.2374207-1-sashal@kernel.org> <20220814152437.2374207-54-sashal@kernel.org>
-In-Reply-To: <20220814152437.2374207-54-sashal@kernel.org>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Tue, 16 Aug 2022 16:45:14 +0200
-X-Gmail-Original-Message-ID: <CAMj1kXEzSwOtMGUi1VMg9xj60sHJ=9GHdjK2LXBXahSPmm56jw@mail.gmail.com>
-Message-ID: <CAMj1kXEzSwOtMGUi1VMg9xj60sHJ=9GHdjK2LXBXahSPmm56jw@mail.gmail.com>
-Subject: Re: [PATCH AUTOSEL 5.19 54/64] ARM: 9202/1: kasan: support CONFIG_KASAN_VMALLOC
-To: Sasha Levin <sashal@kernel.org>
-Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org, 
-	Lecopzer Chen <lecopzer.chen@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, 
-	Russell King <rmk+kernel@armlinux.org.uk>, linux@armlinux.org.uk, ryabinin.a.a@gmail.com, 
-	matthias.bgg@gmail.com, arnd@arndb.de, rostedt@goodmis.org, 
-	nick.hawkins@hpe.com, john@phrozen.org, linux-arm-kernel@lists.infradead.org, 
-	kasan-dev@googlegroups.com, linux-mediatek@lists.infradead.org
+References: <20220805070610.3516-1-peterwu.pub@gmail.com> <20220805070610.3516-7-peterwu.pub@gmail.com>
+ <YvJdpq0MWNPQZw5c@google.com>
+In-Reply-To: <YvJdpq0MWNPQZw5c@google.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Tue, 16 Aug 2022 09:37:39 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqJriSbJvejCi7n50T-NaOW+GF8yb6Fi4m-GvUkggf-9kw@mail.gmail.com>
+Message-ID: <CAL_JsqJriSbJvejCi7n50T-NaOW+GF8yb6Fi4m-GvUkggf-9kw@mail.gmail.com>
+Subject: Re: [PATCH v7 06/13] dt-bindings: mfd: Add MediaTek MT6370
+To: Lee Jones <lee.jones@linaro.org>
+Cc: ChiaEn Wu <peterwu.pub@gmail.com>, daniel.thompson@linaro.org, jingoohan1@gmail.com, 
+	pavel@ucw.cz, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, 
+	sre@kernel.org, chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org, 
+	jic23@kernel.org, lars@metafoo.de, lgirdwood@gmail.com, broonie@kernel.org, 
+	linux@roeck-us.net, heikki.krogerus@linux.intel.com, deller@gmx.de, 
+	andy.shevchenko@gmail.com, chiaen_wu@richtek.com, alice_chen@richtek.com, 
+	cy_huang@richtek.com, dri-devel@lists.freedesktop.org, 
+	linux-leds@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, linux-iio@vger.kernel.org, 
+	linux-fbdev@vger.kernel.org, szunichen@gmail.com, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Lee Jones <lee@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220816_074530_020386_8C11DC66 
-X-CRM114-Status: GOOD (  24.79  )
+X-CRM114-CacheID: sfid-20220816_083754_718670_C7B1CC4F 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,73 +90,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 14 Aug 2022 at 17:30, Sasha Levin <sashal@kernel.org> wrote:
+On Tue, Aug 9, 2022 at 7:14 AM Lee Jones <lee.jones@linaro.org> wrote:
 >
-> From: Lecopzer Chen <lecopzer.chen@mediatek.com>
+> On Fri, 05 Aug 2022, ChiaEn Wu wrote:
 >
-> [ Upstream commit 565cbaad83d83e288927b96565211109bc984007 ]
+> > From: ChiYuan Huang <cy_huang@richtek.com>
+> >
+> > Add MediaTek MT6370 binding documentation.
+> >
+> > Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> > Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> > ---
+> >  .../devicetree/bindings/mfd/mediatek,mt6370.yaml   | 280 +++++++++++++++++++++
+> >  include/dt-bindings/iio/adc/mediatek,mt6370_adc.h  |  18 ++
+> >  2 files changed, 298 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
+> >  create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6370_adc.h
 >
-> Simply make shadow of vmalloc area mapped on demand.
->
-> Since the virtual address of vmalloc for Arm is also between
-> MODULE_VADDR and 0x100000000 (ZONE_HIGHMEM), which means the shadow
-> address has already included between KASAN_SHADOW_START and
-> KASAN_SHADOW_END.
-> Thus we need to change nothing for memory map of Arm.
->
-> This can fix ARM_MODULE_PLTS with KASan, support KASan for higmem
-> and support CONFIG_VMAP_STACK with KASan.
->
-> Signed-off-by: Lecopzer Chen <lecopzer.chen@mediatek.com>
-> Tested-by: Linus Walleij <linus.walleij@linaro.org>
-> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> Signed-off-by: Sasha Levin <sashal@kernel.org>
+> Applied, thanks.
 
-This patch does not belong in -stable. It has no fixes: or cc:stable
-tags, and the contents are completely inappropriate for backporting
-anywhere. In general, I think that no patch that touches arch/arm
-(with the exception of DTS updates, perhaps) should ever be backported
-unless proposed or acked by the maintainer.
+Without the backlight schema applied, this is the result:
 
-I know I shouldn't ask, but how were these patches build/boot tested?
-KAsan is very tricky to get right, especially on 32-bit ARM ...
-
-> ---
->  arch/arm/Kconfig         | 1 +
->  arch/arm/mm/kasan_init.c | 6 +++++-
->  2 files changed, 6 insertions(+), 1 deletion(-)
->
-> diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-> index 7630ba9cb6cc..545d2d4a492b 100644
-> --- a/arch/arm/Kconfig
-> +++ b/arch/arm/Kconfig
-> @@ -75,6 +75,7 @@ config ARM
->         select HAVE_ARCH_KFENCE if MMU && !XIP_KERNEL
->         select HAVE_ARCH_KGDB if !CPU_ENDIAN_BE32 && MMU
->         select HAVE_ARCH_KASAN if MMU && !XIP_KERNEL
-> +       select HAVE_ARCH_KASAN_VMALLOC if HAVE_ARCH_KASAN
->         select HAVE_ARCH_MMAP_RND_BITS if MMU
->         select HAVE_ARCH_PFN_VALID
->         select HAVE_ARCH_SECCOMP
-> diff --git a/arch/arm/mm/kasan_init.c b/arch/arm/mm/kasan_init.c
-> index 5ad0d6c56d56..29caee9c79ce 100644
-> --- a/arch/arm/mm/kasan_init.c
-> +++ b/arch/arm/mm/kasan_init.c
-> @@ -236,7 +236,11 @@ void __init kasan_init(void)
->
->         clear_pgds(KASAN_SHADOW_START, KASAN_SHADOW_END);
->
-> -       kasan_populate_early_shadow(kasan_mem_to_shadow((void *)VMALLOC_START),
-> +       if (!IS_ENABLED(CONFIG_KASAN_VMALLOC))
-> +               kasan_populate_early_shadow(kasan_mem_to_shadow((void *)VMALLOC_START),
-> +                                           kasan_mem_to_shadow((void *)VMALLOC_END));
-> +
-> +       kasan_populate_early_shadow(kasan_mem_to_shadow((void *)VMALLOC_END),
->                                     kasan_mem_to_shadow((void *)-1UL) + 1);
->
->         for_each_mem_range(i, &pa_start, &pa_end) {
-> --
-> 2.35.1
->
+./Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml: Unable
+to find schema file matching $id:
+http://devicetree.org/schemas/leds/backlight/mediatek,mt6370-backlight.yaml
+/builds/robherring/linux-dt/Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb:
+pmic@34: backlight: False schema does not allow {'compatible':
+['mediatek,mt6370-backlight'], 'mediatek,bled-channel-use': b'\x0f'}
+ From schema: /builds/robherring/linux-dt/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
+/builds/robherring/linux-dt/Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb:
+pmic@34: charger: False schema does not allow {'compatible':
+['mediatek,mt6370-charger'], 'interrupts': [[48], [68], [6]],
+'interrupt-names': ['attach_i', 'uvp_d_evt', 'mivr'], 'io-channels':
+[[1, 5]], 'usb-otg-vbus-regulator': {'regulator-name':
+['mt6370-usb-otg-vbus'], 'regulator-min-microvolt': [[4350000]],
+'regulator-max-microvolt': [[5800000]], 'regulator-min-microamp':
+[[500000]], 'regulator-max-microamp': [[3000000]], 'phandle': [[2]]}}
+ From schema: /builds/robherring/linux-dt/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
+/builds/robherring/linux-dt/Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb:
+pmic@34: tcpc: False schema does not allow {'compatible':
+['mediatek,mt6370-tcpc'], 'interrupts-extended': [[4294967295, 4, 8]],
+'connector': {'compatible': ['usb-c-connector'], 'label': ['USB-C'],
+'vbus-supply': [[2]], 'data-role': ['dual'], 'power-role': ['dual'],
+'try-power-role': ['sink'], 'source-pdos': [[570527844]], 'sink-pdos':
+[[570527944]], 'op-sink-microwatt': [[10000000]], 'ports':
+{'#address-cells': [[1]], '#size-cells': [[0]], 'port@0': {'reg':
+[[0]], 'endpoint': {'remote-endpoint': [[4294967295]]}}, 'port@1':
+{'reg': [[1]], 'endpoint': {'remote-endpoint': [[4294967295]]}},
+'port@2': {'reg': [[2]], 'endpoint': {'remote-endpoint':
+[[4294967295]]}}}}}
+ From schema: /builds/robherring/linux-dt/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
+/builds/robherring/linux-dt/Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb:
+pmic@34: indicator: False schema does not allow {'compatible':
+['mediatek,mt6370-indicator'], '#address-cells': [[1]], '#size-cells':
+[[0]], 'multi-led@0': {'reg': [[0]], 'function': ['indicator'],
+'color': [[9]], 'led-max-microamp': [[24000]], '#address-cells':
+[[1]], '#size-cells': [[0]], 'led@0': {'reg': [[0]], 'color': [[1]]},
+'led@1': {'reg': [[1]], 'color': [[2]]}, 'led@2': {'reg': [[2]],
+'color': [[3]]}}, 'led@3': {'reg': [[3]], 'function': ['indicator'],
+'color': [[0]], 'led-max-microamp': [[6000]]}}
+ From schema: /builds/robherring/linux-dt/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
+/builds/robherring/linux-dt/Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb:
+pmic@34: flashlight: False schema does not allow {'compatible':
+['mediatek,mt6370-flashlight'], '#address-cells': [[1]],
+'#size-cells': [[0]], 'led@0': {'reg': [[0]], 'led-sources': [[0]],
+'function': ['flash'], 'color': [[0]], 'function-enumerator': [[1]],
+'led-max-microamp': [[200000]], 'flash-max-microamp': [[500000]],
+'flash-max-timeout-us': [[1248000]]}, 'led@1': {'reg': [[1]],
+'led-sources': [[1]], 'function': ['flash'], 'color': [[0]],
+'function-enumerator': [[2]], 'led-max-microamp': [[200000]],
+'flash-max-microamp': [[500000]], 'flash-max-timeout-us':
+[[1248000]]}}
+ From schema: /builds/robherring/linux-dt/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
+/builds/robherring/linux-dt/Documentation/devicetree/bindings/mfd/mediatek,mt6370.example.dtb:
+backlight: mediatek,bled-channel-use: b'\x0f' is not of type 'object',
+'array', 'boolean', 'null'
+ From schema: /usr/local/lib/python3.10/dist-packages/dtschema/schemas/dt-core.yaml
 
