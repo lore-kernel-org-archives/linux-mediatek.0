@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CB6DC2BB41
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 08:39:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 673B6C2BB41
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 08:59:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0rfrDY0ew2VMjQjsOZ1u2MHFXAegfu4ILXAlANJbEH8=; b=LwY2LcdyPvIBdyNdn++wjSvlJx
-	BkNA+ppOJvOs+KHW1JHMTNVVjLPw3Dhx6eodqE/t8e1wMYmgeCqUAH8XlMEopT21FG34MQ5lGtRuJ
-	Van5eoTcSddnCz7yKpEaBGarZuk7eALPGLbfwpyVTntLr9UB9gjkyt+ihTwz3Iorp6R3r+E9lwmqY
-	DrVcXtEtvdeuRq26aEsXYEN/PJGIsUBmyIZnLAopQWwOQihPKjEcJhUSjVu6wDKgV2FIsnxLsgYNC
-	W5zJtucYd6z4ep9La47nagHSygpIjMJpWgjliwyuGm56ODBDCt1jxlxc9JMfpaRGzIdT+3jsZBlQo
-	mQyQrf7A==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UV497+nq9aRZ6EHD8/12Y71WbNxm7+fRZfBRKqrBQwM=; b=sp7HZDZGoPi9qIaXt2q3REFehD
+	R1Twr2i3WI4HcMouJCMsItqLnQqKfr0Foe4cC4lrrGDS1pPOO6FCZaEJmPwc2ubpMJ6SMlisnQj0I
+	pOIIcVqwGbsL5ju7Mvmp1skC9eCcW/Vr69xlFupXe4Q/tXgAZW/67GSxWHx8khabeRm0qml5vEmZF
+	SEROyFak62W+os9cMDQgkYx7thHmy4Eh2+RCfa5GtpKbXn6d21h7uyRRsV+7wFJYHGbArf9gt0ivL
+	Sq5Id9qjhjwvjhodu2w+RfqTkbgPuGmXqo1GJLN2Q5HmDItKjoFMbNlMRw4bdk8z2U5e1vVHcUP+F
+	Yla3+0OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNs6s-00GsaR-64; Tue, 16 Aug 2022 08:39:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oNsPo-00H4Yo-8O; Tue, 16 Aug 2022 08:59:12 +0000
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNs6Q-00GsIO-Gj; Tue, 16 Aug 2022 08:39:12 +0000
-X-UUID: dfafa3bbe49c43d197293b3db21b4b8d-20220816
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=0rfrDY0ew2VMjQjsOZ1u2MHFXAegfu4ILXAlANJbEH8=;
-	b=bM0ngYYPpoFQ4L/WsNEiHjJrRmhnCyRD00Ih2UugKhNJ8PibvmnDfEH9FrKu+C48n7yi4zdKvyN6p0ltnRH9uPfvuwwOxzNBhR8Uouq3fRs3qpNr6EFZ0MXuuhcOssKJcMQYdA21g0a8zSczQHPgUY45L/q582nbMEYrgSbcrZU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:df54ce14-c9be-4015-8c02-0bc855ac0479,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:e4f0cd9c-da39-4e3b-a854-56c7d2111b46,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: dfafa3bbe49c43d197293b3db21b4b8d-20220816
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 138465884; Tue, 16 Aug 2022 01:38:59 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 16 Aug 2022 15:58:19 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 16 Aug 2022 15:58:19 +0800
-Message-ID: <e9943d0fb9aca562afe1ca11372392883d2b6d5a.camel@mediatek.com>
-Subject: Re: [RFC PATCH] phy: phy-mtk-tphy: Make USB PHY work on MT6735
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Yassine Oudjana <yassine.oudjana@gmail.com>, Kishon Vijay Abraham I
-	<kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Yassine Oudjana <y.oudjana@protonmail.com>,
-	<linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Date: Tue, 16 Aug 2022 15:58:19 +0800
-In-Reply-To: <20220815215859.253962-1-y.oudjana@protonmail.com>
-References: <20220815215859.253962-1-y.oudjana@protonmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oNsPc-00H4Rk-0l; Tue, 16 Aug 2022 08:59:01 +0000
+Received: by mail-pj1-x1044.google.com with SMTP id o5-20020a17090a3d4500b001ef76490983so9025542pjf.2;
+        Tue, 16 Aug 2022 01:58:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc;
+        bh=UV497+nq9aRZ6EHD8/12Y71WbNxm7+fRZfBRKqrBQwM=;
+        b=CQoQ8WFq7aduitDEdmjUkyykiF1V1Q40rxJ6zyuzNCuJ7Xu0CDc+RMhO1m3ehYAgdy
+         wVMlVAakJKiadX6VSivL79hJriVdtS8XHoTHYi4DZeh3Aqla1eiO6Os0BejcmJ+xJC93
+         lrw0gEC8B1HHQOxGSMBoD2IXv0LjmUzT8l3vrhF7aYLs0F+XB0Kj2TAWj6qz23l4zZ/T
+         7mC+i1TTPI4/EVDVjtW3HtETDG/jOjk1kp+m1tdCaHUqMN7zu6hy7PNzfsvyuTZEEpJe
+         6Wz8Hjae39X2ErNk38HqXXftFUeIZHlSCVrrbZQh5za9q9/wzEKCSP4oWhNo0eh8eL0Z
+         QN2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc;
+        bh=UV497+nq9aRZ6EHD8/12Y71WbNxm7+fRZfBRKqrBQwM=;
+        b=HugREv93pir6Mh99sEKfXAZu+DEPSahFigrj37kVyXLxLqwevdjyDFg37zlx9Um+VB
+         rlm6BGtUpZtC5wxpu7a2DVBb0NcGV8S4g0x6hFSpgZMmvRWgTo1QJPP/2qCweLTKipxi
+         /nFpf1tIiN365NHIW42Q7XSBBKl7SjP3GQs6gZC7rL2hinwSAJsPvSlH8QGqNqb+exc5
+         nxCdToBn0Fe/2k9FMImsKjUJUu1Rpd0THntGDgoAE4bj3Z93ZWH+VR9OnRec40vG1nSv
+         /s80RYSa5PbmSZflTfe5v5Rg3sFNqlK9fhaLszKfn8/pXjzKsowtyQ2qjropJZrnWsam
+         IbjA==
+X-Gm-Message-State: ACgBeo33wpz+i4Kpgw3/GNLR2jPN4oG1DYF60QXPHn3Zzyd77SkYU0/H
+	aZ29Atdib8+8oKYzKpt8YqM=
+X-Google-Smtp-Source: AA6agR6h4VsRwPE0IQM4jMyBWSUeeD40gs80UzAbpro2X2WbTUDtRikbrK3DGxrU6kDvw7MrxB0zsw==
+X-Received: by 2002:a17:90b:390c:b0:1f5:5bbc:2e8 with SMTP id ob12-20020a17090b390c00b001f55bbc02e8mr32891611pjb.233.1660640336247;
+        Tue, 16 Aug 2022 01:58:56 -0700 (PDT)
+Received: from localhost.localdomain ([129.227.148.126])
+        by smtp.gmail.com with ESMTPSA id x1-20020a17090300c100b00170a8973137sm8446285plc.17.2022.08.16.01.58.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 16 Aug 2022 01:58:55 -0700 (PDT)
+From: Hangyu Hua <hbh25y@gmail.com>
+To: narmstrong@baylibre.com,
+	mchehab@kernel.org,
+	khilman@baylibre.com,
+	jbrunet@baylibre.com,
+	martin.blumenstingl@googlemail.com,
+	bin.liu@mediatek.com,
+	matthias.bgg@gmail.com,
+	m.szyprowski@samsung.com,
+	andrzej.hajda@intel.com
+Cc: linux-media@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Hangyu Hua <hbh25y@gmail.com>
+Subject: [PATCH] media: platform: fix some double free in meson-ge2d and mtk-jpeg and s5p-mfc
+Date: Tue, 16 Aug 2022 16:58:19 +0800
+Message-Id: <20220816085819.39108-1-hbh25y@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220816_013910_595853_C2381AE0 
-X-CRM114-Status: GOOD (  31.45  )
+X-CRM114-CacheID: sfid-20220816_015900_249693_D37DBCDA 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,76 +97,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-08-15 at 22:58 +0100, Yassine Oudjana wrote:
-> The USB PHY on MT6735 seems to be a TPHY V1, but the FMREG base
-> here is 0xf00 rather than 0x100. Since it is definitely not a V2
-> or later as it has shared registers, would this mean that it is
-> an even earlier revision, or one between V1 and V2? Or is the
-> address used currently in this driver wrong?
-> 
-> Furthermore, there is one additional step needed in the power on
-> sequence to make USB work on MT6735, which is to set the 10th bit
-> of U3P_U2PHYDTM1. This was found through trial and error by adding
-> the power on sequence from the downstream driver then stripping
-> parts of it until a critical part is found. This specific part[1]
-> was found under a comment saying "force enter device mode", but
-> there are other bits that are cleared/set under the same comment,
-> some of which are set in the same write as this bit, so it is
-> unclear whether this bit is the one (or the only one) responsible
-> for "forcing enter device mode". There is no documentation on this
-> register (or any port registers for that matter) so this bit's
-> name and function are unknown. Does anyone have more information
-> on this? And if no information were to be found, would leaving
-> this as a magic value, or with the placeholder name currently used
-> (P2C_FORCE_ENTER_DEVICE_MODE) be acceptable?
+video_unregister_device will release device internally. There is no need to
+call video_device_release after video_unregister_device.
 
-Can't use force mode, there is side-effect with dual-role controller.
+Signed-off-by: Hangyu Hua <hbh25y@gmail.com>
+---
+ drivers/media/platform/amlogic/meson-ge2d/ge2d.c     | 1 -
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 1 -
+ drivers/media/platform/samsung/s5p-mfc/s5p_mfc.c     | 3 +--
+ 3 files changed, 1 insertion(+), 4 deletions(-)
 
-> 
-> [1] 
-> https://urldefense.com/v3/__https://gitlab.com/Tooniis/linux-samsung-grandpplte/-/blob/master/drivers/misc/mediatek/usb20/mt6735/usb20_phy.c*L404__;Iw!!CTRNKA9wMg0ARbw!26SfFWZy9e7D178mgOIWZ6iv4hM4OCTq4cndOspiaTxIQgvATHYlMsPCd4YiWq3S3Fal$
->  
-> ---
->  drivers/phy/mediatek/phy-mtk-tphy.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c
-> b/drivers/phy/mediatek/phy-mtk-tphy.c
-> index 8ee7682b8e93..f54b8a9872bf 100644
-> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
-> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-> @@ -23,7 +23,7 @@
->  /* version V1 sub-banks offset base address */
->  /* banks shared by multiple phys */
->  #define SSUSB_SIFSLV_V1_SPLLC		0x000	/* shared by
-> u3 phys */
-> -#define SSUSB_SIFSLV_V1_U2FREQ		0x100	/* shared by
-> u2 phys */
-> +#define SSUSB_SIFSLV_V1_U2FREQ		0xf00	/* shared by
-> u2 phys */
->  #define SSUSB_SIFSLV_V1_CHIP		0x300	/* shared by u3 phys
-> */
->  /* u2 phy bank */
->  #define SSUSB_SIFSLV_V1_U2PHY_COM	0x000
-> @@ -119,6 +119,7 @@
->  
->  #define U3P_U2PHYDTM1		0x06C
->  #define P2C_RG_UART_EN			BIT(16)
-> +#define P2C_FORCE_ENTER_DEVICE_MODE	BIT(10)
->  #define P2C_FORCE_IDDIG		BIT(9)
->  #define P2C_RG_VBUSVALID		BIT(5)
->  #define P2C_RG_SESSEND			BIT(4)
-> @@ -579,6 +580,8 @@ static void u2_phy_instance_power_on(struct
-> mtk_tphy *tphy,
->  		mtk_phy_set_bits(com + U3P_U2PHYDTM0, P2C_RG_SUSPENDM |
-> P2C_FORCE_SUSPENDM);
->  	}
->  	dev_dbg(tphy->dev, "%s(%d)\n", __func__, index);
-> +
-> +	mtk_phy_set_bits(com + U3P_U2PHYDTM1,
-> P2C_FORCE_ENTER_DEVICE_MODE);
->  }
->  
->  static void u2_phy_instance_power_off(struct mtk_tphy *tphy,
+diff --git a/drivers/media/platform/amlogic/meson-ge2d/ge2d.c b/drivers/media/platform/amlogic/meson-ge2d/ge2d.c
+index 5e7b319f300d..142d421a8d76 100644
+--- a/drivers/media/platform/amlogic/meson-ge2d/ge2d.c
++++ b/drivers/media/platform/amlogic/meson-ge2d/ge2d.c
+@@ -1030,7 +1030,6 @@ static int ge2d_remove(struct platform_device *pdev)
+ 
+ 	video_unregister_device(ge2d->vfd);
+ 	v4l2_m2m_release(ge2d->m2m_dev);
+-	video_device_release(ge2d->vfd);
+ 	v4l2_device_unregister(&ge2d->v4l2_dev);
+ 	clk_disable_unprepare(ge2d->clk);
+ 
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 87685a62a5c2..3071b61946c3 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1414,7 +1414,6 @@ static int mtk_jpeg_remove(struct platform_device *pdev)
+ 
+ 	pm_runtime_disable(&pdev->dev);
+ 	video_unregister_device(jpeg->vdev);
+-	video_device_release(jpeg->vdev);
+ 	v4l2_m2m_release(jpeg->m2m_dev);
+ 	v4l2_device_unregister(&jpeg->v4l2_dev);
+ 
+diff --git a/drivers/media/platform/samsung/s5p-mfc/s5p_mfc.c b/drivers/media/platform/samsung/s5p-mfc/s5p_mfc.c
+index 761341934925..f85d1eebafac 100644
+--- a/drivers/media/platform/samsung/s5p-mfc/s5p_mfc.c
++++ b/drivers/media/platform/samsung/s5p-mfc/s5p_mfc.c
+@@ -1399,6 +1399,7 @@ static int s5p_mfc_probe(struct platform_device *pdev)
+ /* Deinit MFC if probe had failed */
+ err_enc_reg:
+ 	video_unregister_device(dev->vfd_dec);
++	dev->vfd_dec = NULL;
+ err_dec_reg:
+ 	video_device_release(dev->vfd_enc);
+ err_enc_alloc:
+@@ -1444,8 +1445,6 @@ static int s5p_mfc_remove(struct platform_device *pdev)
+ 
+ 	video_unregister_device(dev->vfd_enc);
+ 	video_unregister_device(dev->vfd_dec);
+-	video_device_release(dev->vfd_enc);
+-	video_device_release(dev->vfd_dec);
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+ 	s5p_mfc_unconfigure_dma_memory(dev);
+ 
+-- 
+2.25.1
 
 
