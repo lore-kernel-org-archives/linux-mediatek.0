@@ -4,81 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3372C25B0E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Aug 2022 22:00:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01726C00140
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 00:05:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=F2rGFENzHI0E3i8mswF35hHoUMszy0CZxP2MWQKHpBQ=; b=boVWCDEOec94MPRPGztPwk7Ijy
-	8dLM/LOItY9utuOzKjUrcJz/Gw4l08yp/C7Mr/WxF6kpaCO915czO6Gmupei9ogzsPu79XSUM7XHX
-	gbc+X8JQfDLSScdOH6ecFMabWt90eMQJzfltkWrFzKJ9xaaoSlOVTztp49o7g+93AVbihrFpieB0p
-	P8mhJkc8RY4gNY/5Nex+EQ2JewE+yHK+gHJwhRENdhYPSsJvKTkj9+jZJC8xu3rb7gwiKevTnFVQs
-	r2y9KebmyC0Jar85jHaHyZgun32qAWaB7M8AjHtjhJxfJCaN7IgdmNKZROwFVcAfNxPXJDSDVW6iC
-	EXTXp6TQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iPlojUoTV6eO5+XQEy/h8OUvuvUoALvHcaSlna0fkI0=; b=47iF6zvhimqUOJKGfvM4OQ5G4s
+	1tuP/U8JWa2xbm3VOKcL8aOTK34fevmJA+6YTukjITEm3US0Brn+m97v12o34LjEFZ8X2Pe76IjES
+	ICdDcXgcy7aw4Itm2ig0YXaC1cvLAqPuAFHDHTehxCxu1pb80vef5ijvfOaU0shggu0lUHeQ+cP6G
+	pVC+NgBt6Rq9kY0EnQuklmekuJm9rRxf58QsPhVP8DQ7htnFFzW4BTUy/GbeSK7favs5Fsm4nh3HS
+	Ao25vajQmBoBiAKDF8qgI6LhbOPKEHmXtsGFCbMZMBqr1YALU56jDCsYlg8wcusNbT4EIo5HP+E6x
+	VOgb+DgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNi89-006LM6-Dc; Mon, 15 Aug 2022 22:00:17 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1oNk4k-007lNi-Bx; Tue, 16 Aug 2022 00:04:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNi85-006LFd-Df; Mon, 15 Aug 2022 22:00:15 +0000
-Received: by mail-wr1-x435.google.com with SMTP id j7so10514491wrh.3;
-        Mon, 15 Aug 2022 15:00:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc;
-        bh=F2rGFENzHI0E3i8mswF35hHoUMszy0CZxP2MWQKHpBQ=;
-        b=SwigwelJnmy5DhbwCbX4EIFty2vdJVo6HL901+2tfj45cuM+Dm4xSkjCK5i5aB1ucr
-         BogTShuXqf9zG5AWFiFvUfiIYTKNG+Gg/fdYxyYjBA0kqyQujK08eirJUAS6pF40YghK
-         QHw3mHBtJLp0EJC/vs3bl/khLlZXi1+zp6i+VlHNGVUbEaOwZUEaJpRNj+e44esGtT3J
-         IY6Ljvy2jvT6QOjEJwNIM3fhCw4sSXWsNBGueBXZvsWAf8E3OQ4Q5LdITTsM15uvvpFT
-         oJGa+TnZX7IzahqmWQDHMWYfb701XbLihdRlnBqtunzTIdlATyWMi9NKr58jl2M0mYLM
-         sl9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc;
-        bh=F2rGFENzHI0E3i8mswF35hHoUMszy0CZxP2MWQKHpBQ=;
-        b=U81+9ICSUS1C8o51l/1Sffs/5cuGMYbilJLbthfTZjnvjkVx/zJvAZEl2Dtce7yKEp
-         aZ5AEck2i4xsqK/Lv1uT94SWRHRzAkYVRIUHM7q3owpgkfQC0QKYigwbDlId1LTjMZR9
-         Qntgy1VFWBdCLpw/SwCeP9BjbKlW2NNz8LUtbCwaj3dXQNdycXnTKPbwKJXfpfuNyLHE
-         mYyUIkOCriUvboaX5pxlyECbAuRcuyXRr8e8l6276m49YzNgsn6flhnQgU8tpvrocX+k
-         fD4tdHE9KibW618HrNV/rtSgW5fGG4dlgemf9RppuEkUEQuCfrQr4e22U/igUv30FWio
-         ymcg==
-X-Gm-Message-State: ACgBeo2AfQa61eMzUKh6n3r0uFYrMdCOXscFJu+vTx/W+S3MHiFOig3V
-	UHKhFDg1iAeVGu9EtaN3G40=
-X-Google-Smtp-Source: AA6agR7uQBKz9p2RoPuPctiBHIoYB4Qu2te8eOPpUxlusmYdKqLIHMU/LCxGvX4St+OzDGJl/1h/uw==
-X-Received: by 2002:adf:dbc1:0:b0:224:fc61:fef7 with SMTP id e1-20020adfdbc1000000b00224fc61fef7mr4956247wrj.312.1660600810584;
-        Mon, 15 Aug 2022 15:00:10 -0700 (PDT)
-Received: from localhost.localdomain ([105.235.130.28])
-        by smtp.gmail.com with ESMTPSA id y10-20020adfee0a000000b00223664ab3a8sm10195480wrn.90.2022.08.15.15.00.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Aug 2022 15:00:10 -0700 (PDT)
-From: Yassine Oudjana <yassine.oudjana@gmail.com>
-X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Kishon Vijay Abraham I <kishon@ti.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
-	Yassine Oudjana <yassine.oudjana@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [RFC PATCH] phy: phy-mtk-tphy: Make USB PHY work on MT6735
-Date: Mon, 15 Aug 2022 22:58:59 +0100
-Message-Id: <20220815215859.253962-1-y.oudjana@protonmail.com>
-X-Mailer: git-send-email 2.37.1
+	id 1oNk4d-007lED-FF
+	for linux-mediatek@lists.infradead.org; Tue, 16 Aug 2022 00:04:51 +0000
+X-UUID: 7f1634e5ab704cc8ba36985a3f5d1626-20220815
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=iPlojUoTV6eO5+XQEy/h8OUvuvUoALvHcaSlna0fkI0=;
+	b=hdD90ltrCgmxB5kqpElENaD7gKOY4cpWLYDQv2LBRXvl7daN2gRzG5+0Ak/+h3pHAdeUXpFtK32d22EzxxhYe7TI9uaZH+hb5djO/DTyZMfae1WbwosN4L3+jqi0ukkZfVVW1XEHR+ZegYtTDb0zYg8d3dQBHgIkvXcvzrL/pVg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.9,REQID:b23863eb-79b6-4032-860e-eb798d3ebdaf,OB:0,LO
+	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_H
+	am,ACTION:release,TS:5
+X-CID-META: VersionHash:3d8acc9,CLOUDID:b07fe4ae-9535-44a6-aa9b-7f62b79b6ff6,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 7f1634e5ab704cc8ba36985a3f5d1626-20220815
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 959144356; Mon, 15 Aug 2022 17:04:40 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 16 Aug 2022 08:04:20 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 16 Aug 2022 08:04:20 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
+	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
+	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
+	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
+	<abhishekpandit@google.com>, <shawnku@google.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 7/9] wifi: mt76: connac: accept hw scan request at a time
+Date: Tue, 16 Aug 2022 08:03:45 +0800
+Message-ID: <51d7ac3d29f5a6817265ba4c3bfd0d013dbc35ed.1660606893.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <cover.1660606893.git.objelf@gmail.com>
+References: <cover.1660606893.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220815_150013_507302_9429EA5E 
-X-CRM114-Status: GOOD (  20.86  )
+X-CRM114-CacheID: sfid-20220815_170447_604764_DD35F0A2 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,64 +87,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The USB PHY on MT6735 seems to be a TPHY V1, but the FMREG base
-here is 0xf00 rather than 0x100. Since it is definitely not a V2
-or later as it has shared registers, would this mean that it is
-an even earlier revision, or one between V1 and V2? Or is the
-address used currently in this driver wrong?
+From: Sean Wang <sean.wang@mediatek.com>
 
-Furthermore, there is one additional step needed in the power on
-sequence to make USB work on MT6735, which is to set the 10th bit
-of U3P_U2PHYDTM1. This was found through trial and error by adding
-the power on sequence from the downstream driver then stripping
-parts of it until a critical part is found. This specific part[1]
-was found under a comment saying "force enter device mode", but
-there are other bits that are cleared/set under the same comment,
-some of which are set in the same write as this bit, so it is
-unclear whether this bit is the one (or the only one) responsible
-for "forcing enter device mode". There is no documentation on this
-register (or any port registers for that matter) so this bit's
-name and function are unknown. Does anyone have more information
-on this? And if no information were to be found, would leaving
-this as a magic value, or with the placeholder name currently used
-(P2C_FORCE_ENTER_DEVICE_MODE) be acceptable?
+The current hw scan cannot accept multiple hw scan requests at a time, we
+return the proper error code when the hw scan is still undergoing.
 
-[1] https://gitlab.com/Tooniis/linux-samsung-grandpplte/-/blob/master/drivers/misc/mediatek/usb20/mt6735/usb20_phy.c#L404
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/phy/mediatek/phy-mtk-tphy.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index 8ee7682b8e93..f54b8a9872bf 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -23,7 +23,7 @@
- /* version V1 sub-banks offset base address */
- /* banks shared by multiple phys */
- #define SSUSB_SIFSLV_V1_SPLLC		0x000	/* shared by u3 phys */
--#define SSUSB_SIFSLV_V1_U2FREQ		0x100	/* shared by u2 phys */
-+#define SSUSB_SIFSLV_V1_U2FREQ		0xf00	/* shared by u2 phys */
- #define SSUSB_SIFSLV_V1_CHIP		0x300	/* shared by u3 phys */
- /* u2 phy bank */
- #define SSUSB_SIFSLV_V1_U2PHY_COM	0x000
-@@ -119,6 +119,7 @@
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index c2ed5e755893..0ade122de632 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -1536,6 +1536,9 @@ int mt76_connac_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 	struct mt76_connac_hw_scan_req *req;
+ 	struct sk_buff *skb;
  
- #define U3P_U2PHYDTM1		0x06C
- #define P2C_RG_UART_EN			BIT(16)
-+#define P2C_FORCE_ENTER_DEVICE_MODE	BIT(10)
- #define P2C_FORCE_IDDIG		BIT(9)
- #define P2C_RG_VBUSVALID		BIT(5)
- #define P2C_RG_SESSEND			BIT(4)
-@@ -579,6 +580,8 @@ static void u2_phy_instance_power_on(struct mtk_tphy *tphy,
- 		mtk_phy_set_bits(com + U3P_U2PHYDTM0, P2C_RG_SUSPENDM | P2C_FORCE_SUSPENDM);
- 	}
- 	dev_dbg(tphy->dev, "%s(%d)\n", __func__, index);
++	if (test_bit(MT76_HW_SCANNING, &phy->state))
++		return -EBUSY;
 +
-+	mtk_phy_set_bits(com + U3P_U2PHYDTM1, P2C_FORCE_ENTER_DEVICE_MODE);
- }
- 
- static void u2_phy_instance_power_off(struct mtk_tphy *tphy,
+ 	skb = mt76_mcu_msg_alloc(mdev, NULL, sizeof(*req));
+ 	if (!skb)
+ 		return -ENOMEM;
 -- 
-2.37.1
+2.25.1
 
 
