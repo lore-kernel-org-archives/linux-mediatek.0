@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCD9CC25B0D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 00:05:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A29AFC00140
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 00:14:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kECh0wNU119oEV/LptBPxjwfbwW/P70bQy0YJwQ56ME=; b=nyUM243YpjWZDk3WtPRDQt7bjz
-	bDhnKUO5TRFE0IEZ3LsvZN6UfBtzQMTzhveZeUhRRBDuUVJ/156wgVWE8I1w9z3H+XaHxIXtFn5/y
-	OnVMKqd6hcGYlCsxCVeHeylsuqMP0vHOUz15+FLr7mtjuODUydh+5BAmL7tcxCY/RF5l25BycaXfB
-	IOup4Ljd4124Nprw2onGZ5kWuLuLFfujRvaWUKAsp2rLJOukglmgB9lCIRQuCRAV171GDNF8tRkGY
-	pJWqiJ+CvE/nshBJ6aYcU7fYXffNDUUbXDVixTg4Od02WHUVeNGzr75RHTzq83NXiTc4H7Mw8g9F2
-	490pOFAg==;
+	bh=Pk12J1PvmWS5oCrmECy0Iw17fYlCMUVZW45eZEevfVo=; b=Mt4TBmDN4LtCc07KWER4RdnImd
+	gR11QYP9Hn/p/yC5xvvcwFoUGNe6s5CmHWBNZ6TrWrhzgRWRyYoUw554DSFSPjaHRXINlB6QtoQeo
+	cqPPtwvdthvSwK7/vXAWiCh4Gz/2jGzmQlOk1QsMRRC6wIhNMR6GHHyEGpcY/BjUrb5f2Ts7LcouO
+	95Lu8mftUJKRAQuEGLtfo+lAt6biIlOOLVFZP/HEL9uJqmng1krBsPSOfXY8VpyyEEZLJNmWkYbo8
+	xDuDeZopbXCcT97uq9/PHPhyPILeZYEUoM8RlvBikcRUXsytiTWqFN+d1DUGbkHLhYOdizlbTHW9o
+	gpqf2a/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNk51-007lc9-J1; Tue, 16 Aug 2022 00:05:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oNkDl-007rj3-QC; Tue, 16 Aug 2022 00:14:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNk4y-007lYc-T4
-	for linux-mediatek@lists.infradead.org; Tue, 16 Aug 2022 00:05:10 +0000
-X-UUID: c99cf6c2fb26419e9fc97e3f4d7490da-20220815
+	id 1oNkDi-007rbh-0B
+	for linux-mediatek@lists.infradead.org; Tue, 16 Aug 2022 00:14:11 +0000
+X-UUID: 53b03ed0bf924052b64bda243b38ac35-20220815
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=kECh0wNU119oEV/LptBPxjwfbwW/P70bQy0YJwQ56ME=;
-	b=gOkk6pjpLbwZ0u6qSlnDwrlZAvVbodOZGgNIs+v4sNNJj3lOX6QP1xh3trzKTHKTBIplR4aN3th760ggRSIVNEsn4zjCK56X8XFDxGRW4MK7AFunw7gBn0I+z1jcpc1NWRBBINkOnbbfZwazPmdi6vkh0HRd3AIaiup9rhrBmIE=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Pk12J1PvmWS5oCrmECy0Iw17fYlCMUVZW45eZEevfVo=;
+	b=l0IxEBSFcAQKiHc1pwoY7si6uGj2V5XY97TBSvQATtI5Xf3JicAgoEiOzSMDICA3wXsH0bbBe0Nh0gRUW04yVvZnmc58S5+ydfCxo5XFz7ImpUkSsDMeJxf6yND8Nq4UyWZZZt7bw08b0JJOBKBEls0xNWCok3dafdwFtrZOyew=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.9,REQID:03b584a5-3e65-45ee-a1d4-546587dc5b9c,OB:0,LO
+X-CID-O-INFO: VERSION:1.1.9,REQID:06e1adfa-4db5-495d-92fa-420155d8ff69,OB:0,LO
 	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_H
 	am,ACTION:release,TS:5
-X-CID-META: VersionHash:3d8acc9,CLOUDID:211963fd-9e71-4a0f-ba6b-417998daea35,C
+X-CID-META: VersionHash:3d8acc9,CLOUDID:5a4c63fd-9e71-4a0f-ba6b-417998daea35,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
 	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: c99cf6c2fb26419e9fc97e3f4d7490da-20220815
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-UUID: 53b03ed0bf924052b64bda243b38ac35-20220815
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <sean.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 383401157; Mon, 15 Aug 2022 17:05:06 -0700
+	with ESMTP id 972250933; Mon, 15 Aug 2022 17:13:59 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Tue, 16 Aug 2022 08:04:29 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 16 Aug 2022 08:03:56 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 16 Aug 2022 08:04:29 +0800
+ Transport; Tue, 16 Aug 2022 08:03:55 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -59,11 +59,10 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
 	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
 	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
 	<abhishekpandit@google.com>, <shawnku@google.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	"Deren Wu" <deren.wu@mediatek.com>
-Subject: [PATCH 9/9] wifi: mt76: mt7921: introduce chanctx support
-Date: Tue, 16 Aug 2022 08:03:47 +0800
-Message-ID: <3cf2e1a9658e971392b9b42f05f7b2a36815c7af.1660606893.git.objelf@gmail.com>
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 1/9] wifi: mac80211: allow enabling chanctx until hw registration
+Date: Tue, 16 Aug 2022 08:03:39 +0800
+Message-ID: <473fc7b169f288b7815a7736cf33ac0ec1599a09.1660606893.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <cover.1660606893.git.objelf@gmail.com>
 References: <cover.1660606893.git.objelf@gmail.com>
@@ -71,8 +70,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220815_170509_118186_1B053326 
-X-CRM114-Status: GOOD (  20.68  )
+X-CRM114-CacheID: sfid-20220815_171410_094483_659732B9 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,279 +88,34 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-The firmware can have the capability to manage the channel context
-scheduling on multiple roles running on the device including Station,
-AP and P2P GC/GO mode (will be extended based on the patchset) to help
-users sharing the network with others on a single device.
+MT7921 device can be supported with the channel context depending on
+the newer firmware so that we need a way to enable the chanctx related
+methods until hw is being registered.
 
-The firmware is able to support the channel chanctx up to 2 interface
-simultaneously running on the different channels.
-
-Another thing to be noted is that before the driver is going sent out the
-management frames, the driver has to get the privilege from the firmware
-to occupy the current channel context until the frame handshake is
-completed and then get the privilege back to the firmware.
-
-We temporarily disable the feature with a module parameter
-mt7921_disable_cnm for a while until we can ensure the patchset doesn't
-cause any regression.
-
-Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7921/init.c  |  40 ++++++-
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 111 +++++++++++++++++-
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |   1 +
- 3 files changed, 145 insertions(+), 7 deletions(-)
+ net/mac80211/main.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index 1b7a18d42f5b..208a6117cb69 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -7,6 +7,10 @@
- #include "mcu.h"
- #include "eeprom.h"
+diff --git a/net/mac80211/main.c b/net/mac80211/main.c
+index 5b1c47ed0cc0..98d05ed1a081 100644
+--- a/net/mac80211/main.c
++++ b/net/mac80211/main.c
+@@ -1011,6 +1011,14 @@ int ieee80211_register_hw(struct ieee80211_hw *hw)
+ 		return -EINVAL;
+ #endif
  
-+static bool mt7921_disable_cnm = true;
-+module_param_named(disable_cnm, mt7921_disable_cnm, bool, 0644);
-+MODULE_PARM_DESC(disable_cnm, "disable concurrent network support");
++	/* check all or no channel context operations exist */
++	i = !!local->ops->add_chanctx + !!local->ops->remove_chanctx +
++	    !!local->ops->change_chanctx + !!local->ops->assign_vif_chanctx +
++	    !!local->ops->unassign_vif_chanctx;
++	if (WARN_ON(i != 0 && i != 5))
++		return -EINVAL;
++	local->use_chanctx = i == 5;
 +
- static const struct ieee80211_iface_limit if_limits[] = {
- 	{
- 		.max = MT7921_MAX_INTERFACES,
-@@ -25,6 +29,27 @@ static const struct ieee80211_iface_combination if_comb[] = {
- 		.max_interfaces = MT7921_MAX_INTERFACES,
- 		.num_different_channels = 1,
- 		.beacon_int_infra_match = true,
-+	},
-+};
-+
-+static const struct ieee80211_iface_limit if_limits_chanctx[] = {
-+	{
-+		.max = 2,
-+		.types = BIT(NL80211_IFTYPE_STATION),
-+	},
-+	{
-+		.max = 1,
-+		.types = BIT(NL80211_IFTYPE_AP),
-+	}
-+};
-+
-+static const struct ieee80211_iface_combination if_comb_chanctx[] = {
-+	{
-+		.limits = if_limits_chanctx,
-+		.n_limits = ARRAY_SIZE(if_limits_chanctx),
-+		.max_interfaces = 2,
-+		.num_different_channels = 2,
-+		.beacon_int_infra_match = false,
- 	}
- };
- 
-@@ -63,11 +88,20 @@ static int mt7921_check_offload_capability(struct mt7921_dev *dev)
- 	fw_can_roc =  mktime64(year, mon, day, hour, min, sec) >=
- 		      mktime64(2022, 7, 15, 12, 1, 1);
- out:
--	if (!fw_can_roc) {
-+	if (!fw_can_roc || mt7921_disable_cnm) {
- 		dev->ops->remain_on_channel = NULL;
- 		dev->ops->cancel_remain_on_channel = NULL;
-+		dev->ops->add_chanctx = NULL;
-+		dev->ops->remove_chanctx = NULL;
-+		dev->ops->change_chanctx = NULL;
-+		dev->ops->assign_vif_chanctx = NULL;
-+		dev->ops->unassign_vif_chanctx = NULL;
-+		dev->ops->mgd_prepare_tx = NULL;
-+		dev->ops->mgd_complete_tx = NULL;
- 
- 		wiphy->flags &= ~WIPHY_FLAG_HAS_REMAIN_ON_CHANNEL;
-+		wiphy->iface_combinations = if_comb;
-+		wiphy->n_iface_combinations = ARRAY_SIZE(if_comb);
- 	}
- 
- 	return 0;
-@@ -93,12 +127,12 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
- 	hw->sta_data_size = sizeof(struct mt7921_sta);
- 	hw->vif_data_size = sizeof(struct mt7921_vif);
- 
--	wiphy->iface_combinations = if_comb;
-+	wiphy->iface_combinations = if_comb_chanctx;
- 	wiphy->flags &= ~(WIPHY_FLAG_IBSS_RSN | WIPHY_FLAG_4ADDR_AP |
- 			  WIPHY_FLAG_4ADDR_STATION);
- 	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
- 				 BIT(NL80211_IFTYPE_AP);
--	wiphy->n_iface_combinations = ARRAY_SIZE(if_comb);
-+	wiphy->n_iface_combinations = ARRAY_SIZE(if_comb_chanctx);
- 	wiphy->max_remain_on_channel_duration = 5000;
- 	wiphy->max_scan_ie_len = MT76_CONNAC_SCAN_IE_LEN;
- 	wiphy->max_scan_ssids = 4;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index ae0aabe052e3..6386290ba71c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -858,7 +858,7 @@ void mt7921_mac_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 
- 	if (vif->type == NL80211_IFTYPE_STATION && !sta->tdls)
- 		mt76_connac_mcu_uni_add_bss(&dev->mphy, vif, &mvif->sta.wcid,
--					    true, NULL);
-+					    true, mvif->ctx);
- 
- 	mt7921_mac_wtbl_update(dev, msta->wcid.idx,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
-@@ -890,7 +890,7 @@ void mt7921_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 		if (!sta->tdls)
- 			mt76_connac_mcu_uni_add_bss(&dev->mphy, vif,
- 						    &mvif->sta.wcid, false,
--						    NULL);
-+						    mvif->ctx);
- 	}
- 
- 	spin_lock_bh(&dev->sta_poll_lock);
-@@ -1640,7 +1640,7 @@ mt7921_start_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	mt7921_mutex_acquire(dev);
- 
- 	err = mt76_connac_mcu_uni_add_bss(phy->mt76, vif, &mvif->sta.wcid,
--					  true, NULL);
-+					  true, mvif->ctx);
- 	if (err)
- 		goto failed;
- 
-@@ -1672,12 +1672,108 @@ mt7921_stop_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		goto failed;
- 
- 	mt76_connac_mcu_uni_add_bss(phy->mt76, vif, &mvif->sta.wcid, false,
--				    NULL);
-+				    mvif->ctx);
- 
- failed:
- 	mt7921_mutex_release(dev);
- }
- 
-+static int
-+mt7921_add_chanctx(struct ieee80211_hw *hw,
-+		   struct ieee80211_chanctx_conf *ctx)
-+{
-+	return 0;
-+}
-+
-+static void
-+mt7921_remove_chanctx(struct ieee80211_hw *hw,
-+		      struct ieee80211_chanctx_conf *ctx)
-+{
-+}
-+
-+static void mt7921_ctx_iter(void *priv, u8 *mac,
-+			    struct ieee80211_vif *vif)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct ieee80211_chanctx_conf *ctx = priv;
-+
-+	if (ctx != mvif->ctx)
-+		return;
-+
-+	mt76_connac_mcu_uni_set_chctx(mvif->phy->mt76, &mvif->mt76, ctx);
-+}
-+
-+static void
-+mt7921_change_chanctx(struct ieee80211_hw *hw,
-+		      struct ieee80211_chanctx_conf *ctx,
-+		      u32 changed)
-+{
-+	struct mt7921_phy *phy = mt7921_hw_phy(hw);
-+
-+	mt7921_mutex_acquire(phy->dev);
-+	ieee80211_iterate_active_interfaces(phy->mt76->hw,
-+					    IEEE80211_IFACE_ITER_ACTIVE,
-+					    mt7921_ctx_iter, ctx);
-+	mt7921_mutex_release(phy->dev);
-+}
-+
-+static int
-+mt7921_assign_vif_chanctx(struct ieee80211_hw *hw,
-+			  struct ieee80211_vif *vif,
-+			  struct ieee80211_bss_conf *link_conf,
-+			  struct ieee80211_chanctx_conf *ctx)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+
-+	mt7921_mutex_acquire(dev);
-+	mvif->ctx = ctx;
-+	mt7921_mutex_release(dev);
-+
-+	return 0;
-+}
-+
-+static void
-+mt7921_unassign_vif_chanctx(struct ieee80211_hw *hw,
-+			    struct ieee80211_vif *vif,
-+			    struct ieee80211_bss_conf *link_conf,
-+			    struct ieee80211_chanctx_conf *ctx)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+
-+	mt7921_mutex_acquire(dev);
-+	mvif->ctx = NULL;
-+	mt7921_mutex_release(dev);
-+}
-+
-+static void mt7921_mgd_prepare_tx(struct ieee80211_hw *hw,
-+				  struct ieee80211_vif *vif,
-+				  struct ieee80211_prep_tx_info *info)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+	u16 duration = info->duration ? info->duration :
-+		       jiffies_to_msecs(HZ);
-+
-+	mt7921_mutex_acquire(dev);
-+	mt7921_set_roc(mvif->phy, mvif, mvif->ctx->def.chan, duration,
-+		       MT7921_ROC_REQ_JOIN);
-+	mt7921_mutex_release(dev);
-+}
-+
-+static void mt7921_mgd_complete_tx(struct ieee80211_hw *hw,
-+				   struct ieee80211_vif *vif,
-+				   struct ieee80211_prep_tx_info *info)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+
-+	mt7921_mutex_acquire(dev);
-+	mt7921_abort_roc(mvif->phy, mvif);
-+	mt7921_mutex_release(dev);
-+}
-+
- const struct ieee80211_ops mt7921_ops = {
- 	.tx = mt7921_tx,
- 	.start = mt7921_start,
-@@ -1730,6 +1826,13 @@ const struct ieee80211_ops mt7921_ops = {
- 	.set_sar_specs = mt7921_set_sar_specs,
- 	.remain_on_channel = mt7921_remain_on_channel,
- 	.cancel_remain_on_channel = mt7921_cancel_remain_on_channel,
-+	.add_chanctx = mt7921_add_chanctx,
-+	.remove_chanctx = mt7921_remove_chanctx,
-+	.change_chanctx = mt7921_change_chanctx,
-+	.assign_vif_chanctx = mt7921_assign_vif_chanctx,
-+	.unassign_vif_chanctx = mt7921_unassign_vif_chanctx,
-+	.mgd_prepare_tx = mt7921_mgd_prepare_tx,
-+	.mgd_complete_tx = mt7921_mgd_complete_tx,
- };
- EXPORT_SYMBOL_GPL(mt7921_ops);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index 280605ffc4da..fda85252325c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -156,6 +156,7 @@ struct mt7921_vif {
- 	struct ewma_rssi rssi;
- 
- 	struct ieee80211_tx_queue_params queue_params[IEEE80211_NUM_ACS];
-+	struct ieee80211_chanctx_conf *ctx;
- };
- 
- struct mib_stats {
+ 	if (!local->use_chanctx) {
+ 		for (i = 0; i < local->hw.wiphy->n_iface_combinations; i++) {
+ 			const struct ieee80211_iface_combination *comb;
 -- 
 2.25.1
 
