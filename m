@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A29AFC00140
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 00:14:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11376C00140
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 00:44:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pk12J1PvmWS5oCrmECy0Iw17fYlCMUVZW45eZEevfVo=; b=Mt4TBmDN4LtCc07KWER4RdnImd
-	gR11QYP9Hn/p/yC5xvvcwFoUGNe6s5CmHWBNZ6TrWrhzgRWRyYoUw554DSFSPjaHRXINlB6QtoQeo
-	cqPPtwvdthvSwK7/vXAWiCh4Gz/2jGzmQlOk1QsMRRC6wIhNMR6GHHyEGpcY/BjUrb5f2Ts7LcouO
-	95Lu8mftUJKRAQuEGLtfo+lAt6biIlOOLVFZP/HEL9uJqmng1krBsPSOfXY8VpyyEEZLJNmWkYbo8
-	xDuDeZopbXCcT97uq9/PHPhyPILeZYEUoM8RlvBikcRUXsytiTWqFN+d1DUGbkHLhYOdizlbTHW9o
-	gpqf2a/A==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Lm1AQw3YFZZlPESa4lMip8VKuSZLiDNwaOiCz0WcwXc=; b=nl0pgeEuSOSaexhNSNgyUNJmdE
+	Sf+ruOGyccOnPoTyHUh69l16bIegjZSfFR+KmwAvnF4RivXs2bbp/ffr6auCVpRt3AJ1F7MIBPK0m
+	ZO4MJU8dxEkRMgUdoz/C99uB2hxC+/9Y9/T2/fyxcRBTQKC6KjwcfsK3ALXrCNuAY73g20o9uinLP
+	1TjFQWm6Mz2EjNWLjh5zgq21r/jZkbVB/ed9A+Wjn48J6tjWzKs5WSsoE8rxCi+cc4x7RHyNAyAlY
+	fnp+xSwH7WyEnYfuQ3qPonLe4nynmWCF12VSTpTewEyg7hNG4n57yGSg4GIoTNX1aFddfR2gjoK/b
+	YmRNWImw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNkDl-007rj3-QC; Tue, 16 Aug 2022 00:14:13 +0000
+	id 1oNkgi-008Bxh-3F; Tue, 16 Aug 2022 00:44:08 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNkDi-007rbh-0B
-	for linux-mediatek@lists.infradead.org; Tue, 16 Aug 2022 00:14:11 +0000
-X-UUID: 53b03ed0bf924052b64bda243b38ac35-20220815
+	id 1oNkgf-008Bu2-11
+	for linux-mediatek@lists.infradead.org; Tue, 16 Aug 2022 00:44:06 +0000
+X-UUID: e3fa7f5ccd214c109b823bd7c6277207-20220815
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Pk12J1PvmWS5oCrmECy0Iw17fYlCMUVZW45eZEevfVo=;
-	b=l0IxEBSFcAQKiHc1pwoY7si6uGj2V5XY97TBSvQATtI5Xf3JicAgoEiOzSMDICA3wXsH0bbBe0Nh0gRUW04yVvZnmc58S5+ydfCxo5XFz7ImpUkSsDMeJxf6yND8Nq4UyWZZZt7bw08b0JJOBKBEls0xNWCok3dafdwFtrZOyew=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Lm1AQw3YFZZlPESa4lMip8VKuSZLiDNwaOiCz0WcwXc=;
+	b=VSMCgO+btMY61zeH/VpbLm4auohuvGrujdCKitxz9eO3x+Nshw6ofTbjExF22agvHe0G/t4KUxbUj0gMgJ3zRmfp7N9mi1oiG+oGlt1AFa+p6d8QOF2am5ghGRC+fRbRpaUVSBfVh+zNV2fdaXc2yJX3UEWnVfjXBhAF8He8BaU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.9,REQID:06e1adfa-4db5-495d-92fa-420155d8ff69,OB:0,LO
-	B:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_H
-	am,ACTION:release,TS:5
-X-CID-META: VersionHash:3d8acc9,CLOUDID:5a4c63fd-9e71-4a0f-ba6b-417998daea35,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 53b03ed0bf924052b64bda243b38ac35-20220815
+X-CID-O-INFO: VERSION:1.1.9,REQID:19b5fd51-e6b1-4ca6-9e20-850aeb53024a,OB:0,LO
+	B:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_H
+	am,ACTION:release,TS:0
+X-CID-META: VersionHash:3d8acc9,CLOUDID:6dfabe9c-da39-4e3b-a854-56c7d2111b46,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: e3fa7f5ccd214c109b823bd7c6277207-20220815
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <sean.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 972250933; Mon, 15 Aug 2022 17:13:59 -0700
+	with ESMTP id 51267039; Mon, 15 Aug 2022 17:43:57 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 16 Aug 2022 08:03:56 +0800
+ 15.2.792.15; Tue, 16 Aug 2022 08:03:53 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 16 Aug 2022 08:03:55 +0800
+ Transport; Tue, 16 Aug 2022 08:03:53 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -59,19 +59,18 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
 	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
 	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
 	<abhishekpandit@google.com>, <shawnku@google.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 1/9] wifi: mac80211: allow enabling chanctx until hw registration
-Date: Tue, 16 Aug 2022 08:03:39 +0800
-Message-ID: <473fc7b169f288b7815a7736cf33ac0ec1599a09.1660606893.git.objelf@gmail.com>
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Sean
+ Wang <objelf@gmail.com>
+Subject: [PATCH 0/9] wifi: mt76: mt7921: introduce chanctx support
+Date: Tue, 16 Aug 2022 08:03:38 +0800
+Message-ID: <cover.1660606893.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <cover.1660606893.git.objelf@gmail.com>
-References: <cover.1660606893.git.objelf@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220815_171410_094483_659732B9 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20220815_174405_283244_D38179A4 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,36 +85,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: Sean Wang <objelf@gmail.com>
 
-MT7921 device can be supported with the channel context depending on
-the newer firmware so that we need a way to enable the chanctx related
-methods until hw is being registered.
-
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- net/mac80211/main.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/net/mac80211/main.c b/net/mac80211/main.c
-index 5b1c47ed0cc0..98d05ed1a081 100644
---- a/net/mac80211/main.c
-+++ b/net/mac80211/main.c
-@@ -1011,6 +1011,14 @@ int ieee80211_register_hw(struct ieee80211_hw *hw)
- 		return -EINVAL;
- #endif
+The patchset introduces chanctx support to enable the capability
+on the newer firmware to manage the channel context scheduling on multiple 
+roles running on the device including Station, AP, and P2P GC/GO mode
+(will be extended based on the patchset in the future) to help users share
+the network with others on a single device.
  
-+	/* check all or no channel context operations exist */
-+	i = !!local->ops->add_chanctx + !!local->ops->remove_chanctx +
-+	    !!local->ops->change_chanctx + !!local->ops->assign_vif_chanctx +
-+	    !!local->ops->unassign_vif_chanctx;
-+	if (WARN_ON(i != 0 && i != 5))
-+		return -EINVAL;
-+	local->use_chanctx = i == 5;
-+
- 	if (!local->use_chanctx) {
- 		for (i = 0; i < local->hw.wiphy->n_iface_combinations; i++) {
- 			const struct ieee80211_iface_combination *comb;
+The things to be noted is that
+1) The newer firmware is able to support the channel chanctx up to 2
+interfaces simultaneously running on the different channels.
+
+2) Before the driver is going sent out the management frames, the driver
+has to get the privilege from the firmware to acquire the current channel
+context for the frame until the frame handshake is completed and then get
+the privilege back to the firmware.
+
+3) The patchset has to rely on
+("mt76: mt7921: fix the firmware version report")
+("mt76: mt7921: add mt7921_mutex_acquire at mt7921_[start, stop]_ap")
+
+Quan Zhou (1):
+  wifi: mt76: mt7921: add unified ROC cmd/event support
+
+Sean Wang (8):
+  wifi: mac80211: allow enabling chanctx until hw registration
+  wifi: mt76: connac: add mt76_connac_mcu_uni_set_chctx
+  wifi: mt76: connac: rely on mt76_connac_mcu_uni_set_chctx
+  wifi: mt76: mt7921: add chanctx parameter to
+    mt76_connac_mcu_uni_add_bss signature
+  wifi: mt76: mt7921: drop ieee80211_[start, stop]_queues in driver
+  wifi: mt76: connac: accept hw scan request at a time
+  wifi: mt76: mt7921: introduce remain_on_channel support
+  wifi: mt76: mt7921: introduce chanctx support
+
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c   |   2 +-
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 152 ++++++------
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  16 +-
+ .../net/wireless/mediatek/mt76/mt7921/init.c  |  74 +++++-
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   |   2 +-
+ .../net/wireless/mediatek/mt76/mt7921/main.c  | 225 +++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 151 +++++++++++-
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  54 +++++
+ .../net/wireless/mediatek/mt76/mt7921/pci.c   |  13 +-
+ .../net/wireless/mediatek/mt76/mt7921/sdio.c  |  11 +-
+ .../net/wireless/mediatek/mt76/mt7921/usb.c   |   1 +
+ net/mac80211/main.c                           |   8 +
+ 12 files changed, 620 insertions(+), 89 deletions(-)
+
 -- 
 2.25.1
 
