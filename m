@@ -4,68 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00C10C25B0E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 13:45:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B964C25B0E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 13:56:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Iw/SSRIt2bx5g7YglTcs3Dv772nZSS4o9RU41JHxk5A=; b=IJ6WONkVyRZcz+
-	ua5i/OPrqtMV9wabeeInZa5HDFNerlAGcmZr+HDgoSgCoh+RoZYgz6Y8IM/wWk0kX0BTB8WruOhAw
-	Kt9RhuwxzUc1qen0EaSck5zzmbu+wmUMm7EeGpM5Mv1N1qVYxy3BHwoCjK46LqTDpR0Lqq+xPuqzs
-	SiHGyA7bFk89LEqgdnWhvkY8UF6PbplWyDGnD6piFndWNR+gvQB/31Ji3kU68RYm08PXNKPk9TLqt
-	tqmOVJtyaLxg46p48X+O5vnHn9/w9lAM2ZU+yMbM54ommwGETQVwOjTnvy448JyPFqbQzzn8Whwnh
-	TvvtpOCMKeWMBDcHmcZg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xtsIq1uDUUFshftfGHmMdF9c6lD7cY1mGwUtoM45Wk0=; b=x4z0aFwiMIDNbl860ptJ8z3J41
+	K73LBaIfbcAWYPc8jWypFJMgolu/bDbkAHV21zeVKprB6jzJokiY91y3hZM5exsO429h1ei/QdXJB
+	NbdgPvmLIjyy+XNzEoVLoNQXFsycNz7VTSbchFVF6OUTkvG3b+CJCpkktgNBcvjuwYWm7rxiqi7O2
+	ATsygYQ5vqOHqJLD382VjE0zKtwQJtEsgTcAPTCybA0o3RCfYFLWKx6B6FInUg+gW0vHkE2gAeGmy
+	SISH6R017m1De018sazJLLbLJjHQdI2dB/EgRM6wp5pUAj/MjMy8L7iz7Xj9QXqnH5ET1c/OkLBaq
+	XbvJW8og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNwsn-0030kH-Vx; Tue, 16 Aug 2022 13:45:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oNx3M-0035vU-6s; Tue, 16 Aug 2022 13:56:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNwsj-0030fR-JL; Tue, 16 Aug 2022 13:45:24 +0000
-X-UUID: b459ee0b485944ba9af6d37c3ad060aa-20220816
+	id 1oNx3J-0035rm-6Y; Tue, 16 Aug 2022 13:56:18 +0000
+X-UUID: 58ed207b720347bcbacaeb419cbc6353-20220816
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=Iw/SSRIt2bx5g7YglTcs3Dv772nZSS4o9RU41JHxk5A=;
-	b=KZeo2XTyYFJn6/EQt7mxLLkjj+//qL++vbyW8+yT7iGmdeUywKXtos3j63npvU01haRxcincbTnaS9tyBYdwZaosEsPIFwozpdlbBN233eOOBZr14eyMv39VOR8y5IWoEu95Ilz8jY0kBuCdbbmwAJnEKD9AE4XDjcd5BbB6NqQ=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=xtsIq1uDUUFshftfGHmMdF9c6lD7cY1mGwUtoM45Wk0=;
+	b=umskDh4KLwOww2AjUZFXJtoiQWH/M6Elhg7G3saKU7Y4HW/CrgmMKbK/yI0knE5bvpJtws+jfMCG+uNGAqKTiMvuDZURMdkg60jKxwk6q3xB+WoyqWouq7req2OhXcD/CPdgdyC5hPdSbsnqd+dNZ8w5UZ2xfjvCRAdbXFt2SBs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:c8726beb-e001-4d52-8116-ec7c9a587dc2,OB:0,L
+X-CID-O-INFO: VERSION:1.1.10,REQID:b64efa76-2d23-4a09-bdc9-2788a194c491,OB:0,L
 	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
 	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:2f91faae-9535-44a6-aa9b-7f62b79b6ff6,C
+X-CID-META: VersionHash:84eae18,CLOUDID:91b7faae-9535-44a6-aa9b-7f62b79b6ff6,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: b459ee0b485944ba9af6d37c3ad060aa-20220816
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <zhiyong.tao@mediatek.com>)
+X-UUID: 58ed207b720347bcbacaeb419cbc6353-20220816
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 984596815; Tue, 16 Aug 2022 06:45:12 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+	with ESMTP id 2049308287; Tue, 16 Aug 2022 06:56:08 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 16 Aug 2022 20:54:33 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 16 Aug 2022 20:54:31 +0800
-Message-ID: <9bc148119fc36c34f404091ca0f5a2e37727c285.camel@mediatek.com>
-Subject: Re: [PATCH v3 1/1] regulator: dt-bindings: mediatek: add mt6366
-From: zhiyong.tao <zhiyong.tao@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Tue, 16 Aug 2022 20:54:31 +0800
-In-Reply-To: <CAGE=qrohYZ6f9bbEuYfF=2Rz21nbW_8ho3rBQmHt1D+kQG2-jA@mail.gmail.com>
-References: <20220812092901.6429-1-zhiyong.tao@mediatek.com>
-	 <20220812092901.6429-2-zhiyong.tao@mediatek.com>
-	 <cbe761af-5011-83a2-0509-2b3c4fe0a79c@linaro.org>
-	 <4a49b619deb5453749a47874377cad6a36a9a054.camel@mediatek.com>
-	 <CAGE=qrohYZ6f9bbEuYfF=2Rz21nbW_8ho3rBQmHt1D+kQG2-jA@mail.gmail.com>
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 16 Aug 2022 20:55:30 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Tue, 16 Aug 2022 20:55:30 +0800
+Message-ID: <51abb54a5d5bea76a855f20d3e28e90a3eb0efba.camel@mediatek.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: mt8186: Fix 'reg-names' for
+ pinctrl nodes
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Linus Walleij
+	<linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Guodong
+ Liu <guodong.liu@mediatek.com>
+Date: Tue, 16 Aug 2022 20:55:29 +0800
+In-Reply-To: <c411c5c5-0a8b-c85c-2d57-1a387eb0d28f@linaro.org>
+References: <20220815122503.2768-1-allen-kh.cheng@mediatek.com>
+	 <c411c5c5-0a8b-c85c-2d57-1a387eb0d28f@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220816_064521_726983_0B149838 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20220816_065617_299464_05183ED2 
+X-CRM114-Status: GOOD (  19.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,62 +81,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, allen-kh.cheng@mediatek.com, linux-kernel@vger.kernel.org, macpaul.lin@mediatek.com, lee.jones@linaro.org, hsin-hsiung.wang@mediatek.com, linux-rtc@vger.kernel.org, wen.su@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, sean.wang@mediatek.com, hui.liu@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, a.zummo@towertech.it, sen.chu@mediatek.com, lgirdwood@gmail.com, broonie@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-08-12 at 15:55 +0300, Krzysztof Kozlowski wrote:
-> On Fri, 12 Aug 2022 at 15:52, zhiyong.tao <zhiyong.tao@mediatek.com>
-> wrote:
-> > 
-> > On Fri, 2022-08-12 at 13:55 +0300, Krzysztof Kozlowski wrote:
-> > > On 12/08/2022 12:29, Zhiyong Tao wrote:
-> > > > Add mt6366 regulator document
-> > > > 
-> > > > +
-> > > > +properties:
-> > > > +  compatible:
-> > > > +    const: mediatek,mt6366-regulator
-> > > > +
-> > > > +  regulators:
-> > > > +    type: object
-> > > > +    description: List of regulators and its properties
-> > > > +
-> > > > +    patternProperties:
-> > > > +      "^buck-
-> > > > v(dram1|core|coresshub|proc11|proc12|gpu|s2|modem|s1)$":
-> > > > +        type: object
-> > > > +        $ref: regulator.yaml#
-> > > > +        unevaluatedProperties: false
-> > > > +
-> > > > +      "^ldo-v(dram2|sim1|ibr|rf12|usb|camio|camd|cn18|fe28)$":
-> > > > +        type: object
-> > > > +        $ref: regulator.yaml#
-> > > 
-> > > You miss unevaluatedProperties in most of the places.
-> > 
-> > Hi Krzysztof,
-> >    Thanks for your suggestion,
-> >    Do you mean that all places should have the
-> > unevaluatedProperties
-> > Properties ?
-> 
-> Yes. You put it in some of the places which does not really make
-> sense...
-
 Hi Krzysztof,
-   Thanks for your suggestion,
-   We find that if there is a properties "compatible = "regulator-
-fixed";" in ldo-vrf12, we should set unevaluatedProperties as true.
-or it will check yaml warning "Unevaluated Properties are not
-allowed('compatible' was unexpected)". is it right?
-   There is a properties "compatible = "regulator-fixed";"in ldo-vrf12.
-It will cause the checking yaml error "ldo-vrf12: 'regulator-name' is a
-required property". Can you help to give a suggestion to fix the
-warning? Add regulator-name for ldo-vrf12 or other suggestion?
 
-Thanks
+On Tue, 2022-08-16 at 10:14 +0300, Krzysztof Kozlowski wrote:
+> On 15/08/2022 15:25, Allen-KH Cheng wrote:
+> > There are 8 GPIO physical address bases in mt8186, corresponding to
+> > the
+> > items of 'reg-names' with the pinctrl driver. but the order of
+> 
+> New sentences start with capital letter.
+> 
+> > 'reg-names' is not correct. The mt8186 pinctrl driver would get the
+> > wrong address, causing the system to restart when regulator
+> > initializes
+> > . we 
+> 
+> ^^^ Something is missing. Sentence looks unfinished, full stop is in
+> new
+> line, next sentence does not start with capital letter.
+> 
+> 
 
+Thanks for your kind reminder.
+I'll update in the next version.
+
+Best regards,
+Allen
+
+> > fix 'reg-names' for pinctrl nodes and the pinctrl-mt8186 example
+> > in bindings.
+> > 
+> > Fixes: 338e953f1bd1 ("dt-bindings: pinctrl: mt8186: add pinctrl
+> > file and binding document")
+> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+> > ---
 > 
 > Best regards,
 > Krzysztof
