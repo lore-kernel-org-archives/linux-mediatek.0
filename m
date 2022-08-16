@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75E12C32772
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 07:54:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21B3EC32772
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 08:00:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OMBvxrYpYXvQuRyN25bILzhvoPmLavCn4lFuGeOOtg0=; b=1Rn+Gwc1xcDcD/k3q6KdvX4odX
-	X1mBRPxZAR5t4FCvNR5HIfH8+gH559CX/abQlegLmUI4/P+8qmUOfUZHGKM2wSjqkBo2hq2Vlvs0u
-	7tgXLWSlEQqNXAEHeqRxHw4/LYW5IKrI9CLLt9+jWWcCoiz7zchEUBQMZAi4IV/MCrLZ3Dt+KCgyT
-	QIPTA9uSKuYJgHyiFeYMAzbao11+HI7dMR5DkZxavbMDiIsrITAw2gS9J4dbdWVBzOMPieh/n+elK
-	4wQmEDQLV04lUzzOKi7XrmVYkDIFXo7wvR2sWmwSeHSOBua6MTGr3xFm01IHctyj82MaYNQ5z/+/w
-	+UwXH9eg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Eu2do1XRwq+CXSuxzYHlN3maNMEKZozRPcSMcyBJtRY=; b=ui3UIeXFV45X+/vrvuO+9v8ugD
+	ALehHywfQ3gl/7FFbsw89pCg8QPll3POniDT/TPojUTp03XPZZ4sOuOqexpQZC4tBSq7JjuR6Z60H
+	yjJVWLEtfyOGELJ50brOgv+3dgF9C61jEDKJc0ge2T8BBbPosdaSjASufya7UzYgtgGEaAdpbbknA
+	vyrYYej7d/Wdwpk0ZKrujcWaetu26CRQ0uQIIhzIZ4aaDjpGRu0n+dqgNtzDXtosXoymvgB6YwiVP
+	tnjLgoe9KeXUueBGFwpnHiHXJ11oHwg3SAbgUEG7Aswt3hRlYcPi3XGZuuyAYwZZbTnpy1ZL2jHnd
+	gOwA2ljQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNrOd-00Fptr-76; Tue, 16 Aug 2022 07:53:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oNrVJ-00FvuY-W5; Tue, 16 Aug 2022 08:00:50 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNrOV-00Fpn2-P6; Tue, 16 Aug 2022 07:53:52 +0000
-X-UUID: 9b47f5488aa94a6d86e240e11b483637-20220816
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=OMBvxrYpYXvQuRyN25bILzhvoPmLavCn4lFuGeOOtg0=;
-	b=MaoVU48eesYRgetgqU/UI2QLGYXBqlAiL7kuoGrwcfGM1aosM5XF9jEzpbqKuV8jcnDkZbpxl4wnaaWhuMIrs1hyS7hiCGX43h61ePfCM2YYHETvIp4cY89KZH9b2IJqf9OIYhda+lxUNeEW3Ligc90rsy4XQqAcjbXWdWb3xiQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:9da09e2f-3d03-4907-a8d3-eb90fba9d07d,OB:0,L
-	OB:0,IP:0,URL:5,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:5
-X-CID-META: VersionHash:84eae18,CLOUDID:c5d7f2ae-9535-44a6-aa9b-7f62b79b6ff6,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 9b47f5488aa94a6d86e240e11b483637-20220816
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <runyang.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2123164277; Tue, 16 Aug 2022 00:53:45 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 16 Aug 2022 14:53:40 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 16 Aug 2022 14:53:39 +0800
-From: Runyang Chen <Runyang.Chen@mediatek.com>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
-	<linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	<nfraprado@collabora.com>
-CC: <angelogioacchino.delregno@collabora.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Runyang
- Chen <runyang.chen@mediatek.com>
-Subject: [PATCH v2 0/3] Add watchdog support for MT8188 Soc
-Date: Tue, 16 Aug 2022 14:53:27 +0800
-Message-ID: <20220816065330.27570-1-Runyang.Chen@mediatek.com>
-X-Mailer: git-send-email 2.9.2
+	id 1oNrV7-00Fvoz-ER
+	for linux-mediatek@lists.infradead.org; Tue, 16 Aug 2022 08:00:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 617F1610A4;
+	Tue, 16 Aug 2022 08:00:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E2B9C433C1;
+	Tue, 16 Aug 2022 08:00:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1660636835;
+	bh=/zMMHKlKM8s9WCqb2q73VdEph+NkYHoIat6uFjL+JjI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=UBtXnKDUgqs6foZAyBY89rUevgsPWiZMuICcUwFdXOE/qy9sa+g1tJS1zOFXRULvJ
+	 yQrqfzQ0nhJtK7Ca9Pdtz+o8z/49nwfWTtVGVHRFfQYAXmYAGdhCBazyA7ED19f3Od
+	 VKXuPn+NGk0KHo7maJ0kfbe6bmjFqeGHQebFr1K0qCJgG6WUZMjKpT4KeuI3b/1OMa
+	 ZyiX+3dPcqvBAUbFlEZ+l6sEvvg2V8KaRQJp8lq1FAuTSahNvrqD8WFsKviTlKllLv
+	 Wl9FY4eWjV1VQjTK4QBqTG0G6IpnpD8z4C0zyZrskWUf1yeZeIPlg17b7/NJTHDA1L
+	 oI8bWF/z/j2wQ==
+Date: Tue, 16 Aug 2022 10:00:31 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: sean.wang@mediatek.com
+Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
+	YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
+	Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com,
+	km.lin@mediatek.com, jenhao.yang@mediatek.com,
+	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com,
+	ch.yeh@mediatek.com, posh.sun@mediatek.com, ted.huang@mediatek.com,
+	Stella.Chang@mediatek.com, Tom.Chou@mediatek.com,
+	steve.lee@mediatek.com, jsiuda@google.com, frankgor@google.com,
+	kuabhs@google.com, druth@google.com, abhishekpandit@google.com,
+	shawnku@google.com, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] mt76: mt7921: get rid of the false positive reset
+Message-ID: <YvtOnx1/jXtKy86Q@lore-desk>
+References: <95b03bb77ce93cb2cade98d947309cd669721939.1660519674.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ccOvUDBAjIrhQcpt"
+Content-Disposition: inline
+In-Reply-To: <95b03bb77ce93cb2cade98d947309cd669721939.1660519674.git.objelf@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220816_005350_591454_C2E8F3DD 
-X-CRM114-Status: UNSURE (   8.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220816_010037_693101_D3048553 
+X-CRM114-Status: GOOD (  18.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,32 +81,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Runyang Chen <runyang.chen@mediatek.com>
 
-Based on tag: next-20220815, linux-next/master
+--ccOvUDBAjIrhQcpt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Refer to the discussion in the link: https://patchwork.kernel.org/project/linux-mediatek/patch/20220721014845.19044-2-allen-kh.cheng@mediatek.com/
-The other wdt compatible strings are unchanged.So, won't apply the series above
+> From: Sean Wang <sean.wang@mediatek.com>
+>=20
+> False positive reset would be possibly triggered by those commands we
+> applied in suspend with HZ MCU timeout, especially it happened when we
+> enabled kernel log in pm core to diagnose how much time we spend in each
+> driver during suspend procedure. So we enlarge the value and align the MCU
+> timeout as other commands we did to reduce the false positive reset.
+>=20
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-v2:
-Revert wdt compatible for MT8188.
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-v1:
-1. Add mt8188-resets.h to define definition of reset bits.
-2. Add wdt compatible for MT8188.
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c  | 7 +------
+>  drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c | 7 +------
+>  drivers/net/wireless/mediatek/mt76/mt7921/usb.c      | 7 +------
+>  3 files changed, 3 insertions(+), 18 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c b/driver=
+s/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
+> index 5efda694fb9d..64568536c1e9 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
+> @@ -30,12 +30,7 @@ mt7921_mcu_send_message(struct mt76_dev *mdev, struct =
+sk_buff *skb,
+>  	if (ret)
+>  		return ret;
+> =20
+> -	if (cmd =3D=3D MCU_UNI_CMD(HIF_CTRL) ||
+> -	    cmd =3D=3D MCU_UNI_CMD(SUSPEND) ||
+> -	    cmd =3D=3D MCU_UNI_CMD(OFFLOAD))
+> -		mdev->mcu.timeout =3D HZ;
+> -	else
+> -		mdev->mcu.timeout =3D 3 * HZ;
+> +	mdev->mcu.timeout =3D 3 * HZ;
+> =20
+>  	if (cmd =3D=3D MCU_CMD(FW_SCATTER))
+>  		txq =3D MT_MCUQ_FWDL;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c b/drive=
+rs/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
+> index e038d7404323..5c1489766d9f 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
+> @@ -33,12 +33,7 @@ mt7921s_mcu_send_message(struct mt76_dev *mdev, struct=
+ sk_buff *skb,
+>  	if (ret)
+>  		return ret;
+> =20
+> -	if (cmd =3D=3D MCU_UNI_CMD(HIF_CTRL) ||
+> -	    cmd =3D=3D MCU_UNI_CMD(SUSPEND) ||
+> -	    cmd =3D=3D MCU_UNI_CMD(OFFLOAD))
+> -		mdev->mcu.timeout =3D HZ;
+> -	else
+> -		mdev->mcu.timeout =3D 3 * HZ;
+> +	mdev->mcu.timeout =3D 3 * HZ;
+> =20
+>  	if (cmd =3D=3D MCU_CMD(FW_SCATTER))
+>  		type =3D MT7921_SDIO_FWDL;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/usb.c
+> index dd3b8884e162..d06cee386acd 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+> @@ -106,12 +106,7 @@ mt7921u_mcu_send_message(struct mt76_dev *mdev, stru=
+ct sk_buff *skb,
+>  	if (ret)
+>  		return ret;
+> =20
+> -	if (cmd =3D=3D MCU_UNI_CMD(HIF_CTRL) ||
+> -	    cmd =3D=3D MCU_UNI_CMD(SUSPEND) ||
+> -	    cmd =3D=3D MCU_UNI_CMD(OFFLOAD))
+> -		mdev->mcu.timeout =3D HZ;
+> -	else
+> -		mdev->mcu.timeout =3D 3 * HZ;
+> +	mdev->mcu.timeout =3D 3 * HZ;
+> =20
+>  	if (cmd !=3D MCU_CMD(FW_SCATTER))
+>  		ep =3D MT_EP_OUT_INBAND_CMD;
+> --=20
+> 2.25.1
+>=20
 
-Runyang Chen (3):
-  dt-bindings: watchdog: Add compatible for MediaTek MT8188
-  dt-bindings: reset: mt8188: add toprgu reset-controller header file
-  watchdog: mediatek: mt8188: add wdt support
+--ccOvUDBAjIrhQcpt
+Content-Type: application/pgp-signature; name="signature.asc"
 
- .../devicetree/bindings/watchdog/mtk-wdt.txt  |  1 +
- drivers/watchdog/mtk_wdt.c                    |  6 ++++
- include/dt-bindings/reset/mt8188-resets.h     | 36 +++++++++++++++++++
- 3 files changed, 43 insertions(+)
- create mode 100644 include/dt-bindings/reset/mt8188-resets.h
+-----BEGIN PGP SIGNATURE-----
 
--- 
-2.18.0
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYvtOnwAKCRA6cBh0uS2t
+rN/KAQDfEBOueDc+W35AUsmTHAL9nFzJRbGYzP90wSMJZ3l2CwD9FpkaYX5DTU67
+2YsunTsm5J0Sdo4op8DYAS6JoUFejgI=
+=9TqW
+-----END PGP SIGNATURE-----
 
+--ccOvUDBAjIrhQcpt--
 
