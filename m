@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B97ACC25B0E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 22:16:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3503C25B0E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Aug 2022 22:21:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:To:Subject:From
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SxBVhVumfgFXAdQqW2kPOpPPhvJtnmmOvTBSGY8R4R8=; b=RtoW7i+Jx+WOES
-	VTRQ0IsXwYAvFSwr+1mRweVEuxoDxnTCmhlnAGU+xspwA0ux8U0rcqRNkMUE+6Dx3sEFyMZjHB6+A
-	fGO6jit6CpiEZXx+FNFlOuqT/rZUhU7B8tnqbLAzDlEwafxoLgHtGFuUyObAi6aclLrN07Qiplnqg
-	a9S/QlkN1UMmhzbzY7aJC0HCbc3Af+0QJ6kmUN/buYoBPMmhug4Ag7dvtLa+bu8gs5FcWyraM7HvX
-	714ScixRlttOrX3sERhsTcE5P7gX5ExvbHpzCsoXgTb0Z3cwwp++aYFXrslKW4SP/cJWEHaHJVyfp
-	+qFg/FG0gkp/xCszEDWw==;
+	List-Owner; bh=nDTa5//nWj0Esms9kmwbp72Q9GG2XuE8CLV0rVm05OU=; b=gHM/igYN+2t8Hd
+	VZjuOcrGH8pNmOD5p3D9dOs/TyPMNmDNdjNIZNc/BAUXEsd+owFiH4zTvQXIv4tBTi8nnqmDzNZKp
+	RRM5Dh+Slpm1uEwdkB3Oq8vpsuLZ27Ozg49uZN43QUZRl6+mNs0x0fySkctwkZ+X1I6xQsUvFq0jB
+	iLPJFm4XKVJZgoPY6hj+aFS67A+7al/ZeeryGQVHs7xJDk4o+GOCYsZrmYa2Yeu+v+umhvZxMKD1C
+	VWwD3RsX/x/CMXF+HDZj4NrG0KbR8s7XFp9GEE9RdUq+KSdurE0/VJriiJLRtgPaQeSiSrKJmBigU
+	rJlkv3sG+aCPIdft7s0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oO4r6-007Qnh-4p; Tue, 16 Aug 2022 22:16:12 +0000
+	id 1oO4wa-007SkR-Af; Tue, 16 Aug 2022 22:21:52 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oO4qu-007Qkl-Qh; Tue, 16 Aug 2022 22:16:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1660688137; cv=none; 
+	id 1oO4wO-007Sf9-Ir; Tue, 16 Aug 2022 22:21:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1660688477; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=bPMcKkRyVZfUCCU335HWN3m6zTrsaHlK3Btl7KbRFeYjBT3CNQxVK+IZhowIVhi5NKsxEvyKxR7fUGhzGbjZvY9gwbkQWGOxSSJsi7RB6UXThgDtGs0FayAilNjdCnyNhUih1SSDZX8rJcJexsL5aEsJ5fkGN4Z1MVCOHbi28l0=
+	b=NDa+061Xblq9xAwNXmKcv17QPR2sLX3FhHhmESb1b8pgFXJpC4RsjI6lshyl5b8uGAnsfd0VenkgKfQmvlvUb4xb3FzeG6IQ1y5bDzj8igQsM3qWAMtf530W0VzbQSx6WOHGxZA4EIUnEURTp+yCWpEaKfu4OBzi5zaWlBXiUIk=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1660688137; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=SxBVhVumfgFXAdQqW2kPOpPPhvJtnmmOvTBSGY8R4R8=; 
-	b=L8JpVq9FoaMKGbicq99QYbsitH2gBv6Ibi0xo3ohhJosM+GLbRtNBVP0lOAn3DZPJllsf+BqLYmkjEkMj54WLoYUIbjspNq3jMZRvXuR5TAe/sBjviKXfFVpZzJg3/4besBpSW9fEbkj6G2RvaZccKrIJikvHnbnfHheX/6fIac=
+	t=1660688477; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=nDTa5//nWj0Esms9kmwbp72Q9GG2XuE8CLV0rVm05OU=; 
+	b=FNd0K0wsnycSXgfDGw+2jBnr+YiOBQNV87VdOrVPrP0D+a1Hh71XiBgKM0a0QPiJOei3knCh+ZBA5tvjEB82nv1wnAkmTtswjDCpzlfOCx6tv5ByV+AX8yJ7vaL81xV9DuxtPm4rnwyPgvELLuaMUuBBEnl4UY2pKdy2C52nwOc=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1660688137;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1660688477;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=Message-ID:Date:Date:MIME-Version:From:From:Subject:Subject:To:To:Cc:Cc:References:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=SxBVhVumfgFXAdQqW2kPOpPPhvJtnmmOvTBSGY8R4R8=;
-	b=DmlpJKR3MvTM0N0qcTqT15C4TRmCQy6JO34GQgyjW9ua1VCRx/LlWQXuv431kc08
-	cn8fT4hYxyO9jcyDbdW1l5XYbgT1Ek/UTcgvSrEWhp2SmH2LZiaqq+GaK2MQKQ4anYw
-	He0lWbDSj9IgtZuI5uHzE8LoN6LbCanwXcpGbm30=
+	bh=nDTa5//nWj0Esms9kmwbp72Q9GG2XuE8CLV0rVm05OU=;
+	b=PrUQ84eiaZMAzNAz87ySIRMyHo6lq90+7mpr+fefTGiTteckeRDGLgem3+0MIEcn
+	+lIjubL1TdKrUwk5E/B95tNIdkQxoGNppf9KeaMv3OGMAInBY0JBY+Vo+z9aXcL637X
+	iJUiy5lrPhl4XRPkWO6CvObCMpF66Drzb0FlyfP4=
 Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1660688134449648.2828314113265; Tue, 16 Aug 2022 15:15:34 -0700 (PDT)
-Message-ID: <53672ace-ad26-efdf-b3e5-bc8e4163c567@arinc9.com>
-Date: Wed, 17 Aug 2022 01:15:16 +0300
+	with SMTPS id 1660688475774900.170062109623; Tue, 16 Aug 2022 15:21:15 -0700 (PDT)
+Message-ID: <5d51394b-cef2-6bb2-763c-e801994f67ea@arinc9.com>
+Date: Wed, 17 Aug 2022 01:21:09 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.11.0
 From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Subject: Re: [PATCH v2 3/7] dt-bindings: net: dsa: mediatek,mt7530: update
- examples
+Subject: Re: [PATCH v2 5/7] dt-bindings: net: dsa: mediatek,mt7530: remove
+ unnecesary lines
 To: Rob Herring <robh@kernel.org>
 References: <20220813154415.349091-1-arinc.unal@arinc9.com>
- <20220813154415.349091-4-arinc.unal@arinc9.com>
- <20220816210223.GA2714004-robh@kernel.org>
+ <20220813154415.349091-6-arinc.unal@arinc9.com>
+ <20220816211454.GA2734299-robh@kernel.org>
 Content-Language: en-US
-In-Reply-To: <20220816210223.GA2714004-robh@kernel.org>
+In-Reply-To: <20220816211454.GA2734299-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220816_151600_977007_A46035FD 
-X-CRM114-Status: GOOD (  21.34  )
+X-CRM114-CacheID: sfid-20220816_152140_702649_1237E8F6 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,420 +79,132 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Sander Vanheule <sander@svanheule.net>, linux-
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17.08.2022 00:02, Rob Herring wrote:
-> On Sat, Aug 13, 2022 at 06:44:11PM +0300, Arınç ÜNAL wrote:
->> Update the examples on the binding.
->>
->> - Add examples which include a wide variation of configurations.
->> - Make example comments YAML comment instead of DT binding comment.
->> - Define examples from platform to make the bindings clearer.
->> - Add interrupt controller to the examples. Include header file for
->> interrupt.
->> - Change reset line for MT7621 examples.
->> - Pretty formatting for the examples.
->> - Change switch reg to 0.
->> - Change port labels to fit the example, change port 4 label to wan.
->> - Change ethernet-ports to ports.
+On 17.08.2022 00:14, Rob Herring wrote:
+> On Sat, Aug 13, 2022 at 06:44:13PM +0300, Arınç ÜNAL wrote:
+>> Remove unnecessary lines as they are already included from the referred
+>> dsa.yaml.
 > 
-> Again, why?
+> You are duplicating the schema and then removing parts twice. I would
+> combine patches 4 and 5 or reverse the order.
 
-For wrong reasons as it seems. Will revert that one.
+Will combine.
 
 > 
 >>
 >> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 >> ---
->>   .../bindings/net/dsa/mediatek,mt7530.yaml     | 663 +++++++++++++-----
->>   1 file changed, 502 insertions(+), 161 deletions(-)
+>>   .../bindings/net/dsa/mediatek,mt7530.yaml     | 27 -------------------
+>>   1 file changed, 27 deletions(-)
 >>
 >> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->> index 4c99266ce82a..cc87f48d4d07 100644
+>> index ff51a2f6875f..a27cb4fa490f 100644
 >> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
 >> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->> @@ -210,144 +210,374 @@ allOf:
+>> @@ -162,15 +162,8 @@ allOf:
+>>   
+>>         patternProperties:
+>>           "^(ethernet-)?ports$":
+>> -          type: object
+>> -
+>>             patternProperties:
+>>               "^(ethernet-)?port@[0-9]+$":
+>> -              type: object
+>> -              description: Ethernet switch ports
+>> -
+>> -              unevaluatedProperties: false
+>> -
+>>                 properties:
+>>                   reg:
+>>                     description:
+>> @@ -178,7 +171,6 @@ allOf:
+>>                       0 to 5 for user ports.
+>>   
+>>                 allOf:
+>> -                - $ref: dsa-port.yaml#
+>>                   - if:
+> 
+> This 'if' schema is the only part you need actually (though you have to
+> create the node structure).
+
+Do you mean that I should take "if:" out of allOf?
+
+> 
+>>                       properties:
+>>                         label:
+>> @@ -186,7 +178,6 @@ allOf:
+>>                             - const: cpu
+>>                     then:
+>>                       required:
+>> -                      - reg
+>>                         - phy-mode
+>>   
+>>     - if:
+>> @@ -200,15 +191,8 @@ allOf:
+>>   
+>>         patternProperties:
+>>           "^(ethernet-)?ports$":
+>> -          type: object
+>> -
+>>             patternProperties:
+>>               "^(ethernet-)?port@[0-9]+$":
+>> -              type: object
+>> -              description: Ethernet switch ports
+>> -
+>> -              unevaluatedProperties: false
+>> -
+>>                 properties:
+>>                   reg:
+>>                     description:
+>> @@ -216,7 +200,6 @@ allOf:
+>>                       0 to 5 for user ports.
+>>   
+>>                 allOf:
+>> -                - $ref: dsa-port.yaml#
+>>                   - if:
+>>                       properties:
+>>                         label:
+>> @@ -224,7 +207,6 @@ allOf:
+>>                             - const: cpu
+>>                     then:
+>>                       required:
+>> -                      - reg
+>>                         - phy-mode
+>>   
+>>     - if:
+>> @@ -238,15 +220,8 @@ allOf:
+>>   
+>>         patternProperties:
+>>           "^(ethernet-)?ports$":
+>> -          type: object
+>> -
+>>             patternProperties:
+>>               "^(ethernet-)?port@[0-9]+$":
+>> -              type: object
+>> -              description: Ethernet switch ports
+>> -
+>> -              unevaluatedProperties: false
+>> -
+>>                 properties:
+>>                   reg:
+>>                     description:
+>> @@ -254,7 +229,6 @@ allOf:
+>>                       0 to 5 for user ports.
+>>   
+>>                 allOf:
+>> -                - $ref: dsa-port.yaml#
+>>                   - if:
+>>                       properties:
+>>                         label:
+>> @@ -262,7 +236,6 @@ allOf:
+>>                             - const: cpu
+>>                     then:
+>>                       required:
+>> -                      - reg
+>>                         - phy-mode
+>>   
 >>   unevaluatedProperties: false
->>   
->>   examples:
->> +  # Example 1: Standalone MT7530
->>     - |
->>       #include <dt-bindings/gpio/gpio.h>
->> -    mdio {
->> -        #address-cells = <1>;
->> -        #size-cells = <0>;
->> -        switch@0 {
->> -            compatible = "mediatek,mt7530";
->> -            reg = <0>;
->> -
->> -            core-supply = <&mt6323_vpa_reg>;
->> -            io-supply = <&mt6323_vemc3v3_reg>;
->> -            reset-gpios = <&pio 33 GPIO_ACTIVE_HIGH>;
->> -
->> -            ethernet-ports {
->> +
->> +    platform {
->> +        ethernet {
-> 
-> Don't need these nodes.
-
-Will remove.
-
-> 
->> +            mdio {
->>                   #address-cells = <1>;
->>                   #size-cells = <0>;
->> -                port@0 {
->> +
->> +                switch@0 {
->> +                    compatible = "mediatek,mt7530";
->>                       reg = <0>;
->> -                    label = "lan0";
->> -                };
->>   
->> -                port@1 {
->> -                    reg = <1>;
->> -                    label = "lan1";
->> -                };
->> +                    reset-gpios = <&pio 33 0>;
->>   
->> -                port@2 {
->> -                    reg = <2>;
->> -                    label = "lan2";
->> -                };
->> +                    core-supply = <&mt6323_vpa_reg>;
->> +                    io-supply = <&mt6323_vemc3v3_reg>;
->> +
->> +                    ports {
-> 
-> 'ports' is for the DT graph binding. 'ethernet-ports' is for DSA
-> binding. The former is allowed due to existing users. Don't add more.
-
-Will fix.
-
-> 
->> +                        #address-cells = <1>;
->> +                        #size-cells = <0>;
->>   
->> -                port@3 {
->> -                    reg = <3>;
->> -                    label = "lan3";
->> +                        port@0 {
->> +                            reg = <0>;
->> +                            label = "lan1";
->> +                        };
->> +
->> +                        port@1 {
->> +                            reg = <1>;
->> +                            label = "lan2";
->> +                        };
->> +
->> +                        port@2 {
->> +                            reg = <2>;
->> +                            label = "lan3";
->> +                        };
->> +
->> +                        port@3 {
->> +                            reg = <3>;
->> +                            label = "lan4";
->> +                        };
->> +
->> +                        port@4 {
->> +                            reg = <4>;
->> +                            label = "wan";
->> +                        };
->> +
->> +                        port@6 {
->> +                            reg = <6>;
->> +                            label = "cpu";
->> +                            ethernet = <&gmac0>;
->> +                            phy-mode = "rgmii";
->> +
->> +                            fixed-link {
->> +                                speed = <1000>;
->> +                                full-duplex;
->> +                                pause;
->> +                            };
->> +                        };
->> +                    };
->>                   };
->> +            };
->> +        };
->> +    };
->>   
->> -                port@4 {
->> -                    reg = <4>;
->> -                    label = "wan";
->> +  # Example 2: MT7530 in MT7623AI SoC
-> 
-> Looks almost the same as example 1. Examples are not an enumeration of
-> every possible DT. Limit them to cases which are significantly
-> different.
-
-It seemed to me it would be useful to reference the reset line for the 
-MT7623AI SoC. Using mediatek,mcm and especially MT2701_ETHSYS_MCM_RST in 
-dt-bindings/reset/mt2701-resets.h.
-
-Should I remove anyway?
-
-> 
->> +  - |
->> +    #include <dt-bindings/reset/mt2701-resets.h>
->> +
->> +    platform {
->> +        ethernet {
->> +            mdio {
->> +                #address-cells = <1>;
->> +                #size-cells = <0>;
->> +
->> +                switch@0 {
->> +                    compatible = "mediatek,mt7530";
->> +                    reg = <0>;
->> +
->> +                    mediatek,mcm;
->> +                    resets = <&ethsys MT2701_ETHSYS_MCM_RST>;
->> +                    reset-names = "mcm";
->> +
->> +                    core-supply = <&mt6323_vpa_reg>;
->> +                    io-supply = <&mt6323_vemc3v3_reg>;
->> +
->> +                    ports {
->> +                        #address-cells = <1>;
->> +                        #size-cells = <0>;
->> +
->> +                        port@0 {
->> +                            reg = <0>;
->> +                            label = "lan1";
->> +                        };
->> +
->> +                        port@1 {
->> +                            reg = <1>;
->> +                            label = "lan2";
->> +                        };
->> +
->> +                        port@2 {
->> +                            reg = <2>;
->> +                            label = "lan3";
->> +                        };
->> +
->> +                        port@3 {
->> +                            reg = <3>;
->> +                            label = "lan4";
->> +                        };
->> +
->> +                        port@4 {
->> +                            reg = <4>;
->> +                            label = "wan";
->> +                        };
->> +
->> +                        port@6 {
->> +                            reg = <6>;
->> +                            label = "cpu";
->> +                            ethernet = <&gmac0>;
->> +                            phy-mode = "trgmii";
->> +
->> +                            fixed-link {
->> +                                speed = <1000>;
->> +                                full-duplex;
->> +                                pause;
->> +                            };
->> +                        };
->> +                    };
->>                   };
->> +            };
->> +        };
->> +    };
->> +
->> +  # Example 3: Standalone MT7531
->> +  - |
->> +    #include <dt-bindings/gpio/gpio.h>
->> +    #include <dt-bindings/interrupt-controller/irq.h>
->> +
->> +    platform {
->> +        ethernet {
->> +            mdio {
->> +                #address-cells = <1>;
->> +                #size-cells = <0>;
->> +
->> +                switch@0 {
->> +                    compatible = "mediatek,mt7531";
->> +                    reg = <0>;
->> +
->> +                    reset-gpios = <&pio 54 0>;
->> +
->> +                    interrupt-controller;
->> +                    #interrupt-cells = <1>;
->> +                    interrupt-parent = <&pio>;
->> +                    interrupts = <53 IRQ_TYPE_LEVEL_HIGH>;
->> +
->> +                    ports {
->> +                        #address-cells = <1>;
->> +                        #size-cells = <0>;
->> +
->> +                        port@0 {
->> +                            reg = <0>;
->> +                            label = "lan1";
->> +                        };
->> +
->> +                        port@1 {
->> +                            reg = <1>;
->> +                            label = "lan2";
->> +                        };
->> +
->> +                        port@2 {
->> +                            reg = <2>;
->> +                            label = "lan3";
->> +                        };
->> +
->> +                        port@3 {
->> +                            reg = <3>;
->> +                            label = "lan4";
->> +                        };
->>   
->> -                port@6 {
->> -                    reg = <6>;
->> -                    label = "cpu";
->> -                    ethernet = <&gmac0>;
->> -                    phy-mode = "trgmii";
->> -                    fixed-link {
->> -                        speed = <1000>;
->> -                        full-duplex;
->> +                        port@4 {
->> +                            reg = <4>;
->> +                            label = "wan";
->> +                        };
->> +
->> +                        port@6 {
->> +                            reg = <6>;
->> +                            label = "cpu";
->> +                            ethernet = <&gmac0>;
->> +                            phy-mode = "2500base-x";
->> +
->> +                            fixed-link {
->> +                                speed = <2500>;
->> +                                full-duplex;
->> +                                pause;
->> +                            };
->> +                        };
->>                       };
->>                   };
->>               };
->>           };
->>       };
->>   
->> +  # Example 4: MT7530 in MT7621AT, MT7621DAT and MT7621ST SoCs
->>     - |
->> -    //Example 2: MT7621: Port 4 is WAN port: 2nd GMAC -> Port 5 -> PHY port 4.
->> -
->> -    ethernet {
->> -        #address-cells = <1>;
->> -        #size-cells = <0>;
->> -        gmac0: mac@0 {
->> -            compatible = "mediatek,eth-mac";
->> -            reg = <0>;
->> -            phy-mode = "rgmii";
->> -
->> -            fixed-link {
->> -                speed = <1000>;
->> -                full-duplex;
->> -                pause;
->> +    #include <dt-bindings/interrupt-controller/mips-gic.h>
->> +    #include <dt-bindings/reset/mt7621-reset.h>
->> +
->> +    platform {
->> +        ethernet {
->> +            mdio {
->> +                #address-cells = <1>;
->> +                #size-cells = <0>;
->> +
->> +                switch@0 {
->> +                    compatible = "mediatek,mt7621";
->> +                    reg = <0>;
->> +
->> +                    mediatek,mcm;
->> +                    resets = <&sysc MT7621_RST_MCM>;
->> +                    reset-names = "mcm";
->> +
->> +                    interrupt-controller;
->> +                    #interrupt-cells = <1>;
->> +                    interrupt-parent = <&gic>;
->> +                    interrupts = <GIC_SHARED 23 IRQ_TYPE_LEVEL_HIGH>;
->> +
->> +                    ports {
->> +                        #address-cells = <1>;
->> +                        #size-cells = <0>;
->> +
->> +                        port@0 {
->> +                            reg = <0>;
->> +                            label = "lan1";
->> +                        };
->> +
->> +                        port@1 {
->> +                            reg = <1>;
->> +                            label = "lan2";
->> +                        };
->> +
->> +                        port@2 {
->> +                            reg = <2>;
->> +                            label = "lan3";
->> +                        };
->> +
->> +                        port@3 {
->> +                            reg = <3>;
->> +                            label = "lan4";
->> +                        };
->> +
->> +                        port@4 {
->> +                            reg = <4>;
->> +                            label = "wan";
->> +                        };
->> +
->> +                        port@6 {
->> +                            reg = <6>;
->> +                            label = "cpu";
->> +                            ethernet = <&gmac0>;
->> +                            phy-mode = "trgmii";
->> +
->> +                            fixed-link {
->> +                                speed = <1000>;
->> +                                full-duplex;
->> +                                pause;
->> +                            };
->> +                        };
->> +                    };
->> +                };
->>               };
->>           };
->> +    };
->>   
->> -        gmac1: mac@1 {
->> -            compatible = "mediatek,eth-mac";
->> -            reg = <1>;
->> -            phy-mode = "rgmii-txid";
->> -            phy-handle = <&phy4>;
->> +  # Example 5: MT7621: mux MT7530's phy4 to SoC's gmac1
->> +  - |
->> +    #include <dt-bindings/interrupt-controller/mips-gic.h>
->> +    #include <dt-bindings/reset/mt7621-reset.h>
->> +
->> +    platform {
->> +        pinctrl {
->> +            example5_rgmii2_pins: rgmii2-pins {
->> +                pinmux {
->> +                    groups = "rgmii2";
->> +                    function = "rgmii2";
->> +                };
->> +            };
-> 
-> No need to put this in the example. We don't put provide nodes in
-> the examples of the consumers. It's also incomplete and can't be
-> validated.
-
-Will remove.
-
-> 
->>           };
->>   
->> -        mdio: mdio-bus {
->> +        ethernet {
->>               #address-cells = <1>;
->>               #size-cells = <0>;
+>> -- 
+>> 2.34.1
+>>
+>>
 
