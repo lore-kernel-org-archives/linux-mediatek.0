@@ -4,96 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8870C2BB41
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 06:26:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23EE7C25B08
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 06:27:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=guVwRYHb/3tPD4YUcYl2zZXQzxPVqgggnejxGyEtXkU=; b=Et1h5A1ALL3eVTCGUNqQTaXMZm
-	R2LDVVug7/CEDdzGrC+O7djCiqiOozMckp0qcUSkcmsFV8O3h62dpdiu9wqaLDnlZdNu2ntgMlHr1
-	/eUbkqD2ay1rzYaUD4VT1sm/T2BA/JpFfkm1Rd+V2CMnX0dCjivhtSihS5eanh8/F6KvoRKwJfqYh
-	motEltgfHkB2vdTFRtsMFkqsYhMSCxub3a6L04J2fIqgn3SaqQvyiiCI+pmVMPxE3296iR3gV7zRz
-	WfQL0GHIsYjhyCYPp7NjRsarvfwHaZlW4L+DypYAYCaO2v1fWmgJM0UiCt8F2sjEoq2CjAodgsihu
-	J3QOBDLw==;
+	bh=+61FKuBZ2E54vbXTp6HuMJjGwe8HZxYw+DY8yWRPFeA=; b=HejOAjPNUyD7VkoeiFTcv4L+NM
+	26BFewQspAuuvaxSiAerLSeMa5TIPJz4oX3/EN1Q2FMXgmhtAoJvGBf2sMcu13BHHAhRUJESXvrlr
+	3KGd+qsNTwWpnznXENY1j8qnSpQ6jMuhdh4OP4QKvo4afVPDKs6/3Ppreo1fSO+plN9uTyyVzdk+p
+	+3lysuJkeLQ1Jok15W243tf9ku3GWpghAroMQv0jIOuzLr2YBpuXcPUE2QKrC8QyrVwobnlu8D7y6
+	+Y4NTSrOd4A6NL3RqZWltZqPBvuaSLyIXLCm6COndkPR4kBwdnnYLTPZBrSAJCAotdH45iX4o57v4
+	W3z0lPJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOCV0-00BvAU-2X; Wed, 17 Aug 2022 06:25:54 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1oOCW7-00BwEO-K1; Wed, 17 Aug 2022 06:27:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOCUo-00Bv0Q-6f
-	for linux-mediatek@lists.infradead.org; Wed, 17 Aug 2022 06:25:43 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id r17so17776184lfm.11
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Aug 2022 23:25:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc;
-        bh=guVwRYHb/3tPD4YUcYl2zZXQzxPVqgggnejxGyEtXkU=;
-        b=KbeOUIoM9yby5Yomhn4o0VC5YzJ40kFhiRc4Wd/GWN0fy0o4Ng6nUV2YaHdeIFPoPV
-         dwSaF1KnuXbuxGR5WzE8q+6w83z34s+aLUWazlKA8Yn9+uuAlvKi1wiRYwGrmWlYuob/
-         /QTvsrCCU6BW6FMaKvc40eR8m9nW46FgGjIfA3Kk7jJlxzUkFdEjKsCGQyQ5neuhEwaH
-         qDj+8vJgmanJw+ZlNciLfwUU0TXyhbYugRh82NidfHNgJ4FlOS31WiAo7oieqwrTl1Fz
-         Yo+4VT6Tk9p6j2aVkufZzWhfxKBlRYGqZJJ9+/Q/gj0NBfrGAkRcXdlwkprQUjTPPqLM
-         dIvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc;
-        bh=guVwRYHb/3tPD4YUcYl2zZXQzxPVqgggnejxGyEtXkU=;
-        b=bF98g2fVru0M33tvxsi0KEJbhnVYq2X6E1Ge4OEiw/uxiTsXwNj1hQsZrvGO7EX1Da
-         TZ50fGcS+khnYH0vONnsFquK5+dxZBLCL3o2UvRJEkzsn8yPySbrnVo0un3g+LFQ/eBb
-         LAJB/7DryTpgnp3ABdtUQvp+CG+sQ/lI74mdmpJSw+i+V7B2lruDVyolJlTEGtvRiquJ
-         TewT62/aShDoPOQnpkeeWsJhY/rDwq17RA3OlmsorrSx304I/53t3AwxFKWjsSV5mAWc
-         TWqt96jiD3SvQnm5IHXmuBmO9Vj3atQSgd9+r9X7SITV7PgKn/MmhhDdbw5b/pFLHwht
-         qK6Q==
-X-Gm-Message-State: ACgBeo1DCLhHKehGyMvJ3zTxmg2DPmGjiTIwm8bWMHEYcSC8xzXp3spn
-	Cx97RAp3UYztPvA5louZoWUYkQ==
-X-Google-Smtp-Source: AA6agR5P5rXqmmHFgywOnH+IYAiRqXSQU7AhevL0GU7rLKmPJkOR6GsdL8LqQ5goaYKSEecI8yEiIA==
-X-Received: by 2002:a05:6512:1584:b0:481:31e4:1489 with SMTP id bp4-20020a056512158400b0048131e41489mr7929105lfb.509.1660717537551;
-        Tue, 16 Aug 2022 23:25:37 -0700 (PDT)
-Received: from krzk-bin.. (d15l54h48cw7vbh-qr4-4.rev.dnainternet.fi. [2001:14bb:ae:539c:1b1c:14b7:109b:ed76])
-        by smtp.gmail.com with ESMTPSA id j5-20020a056512344500b0048fdb3efa20sm1537655lfr.185.2022.08.16.23.25.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Aug 2022 23:25:37 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Georgi Djakov <djakov@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Andy Gross <agross@kernel.org>,
-	Bjorn Andersson <bjorn.andersson@linaro.org>,
-	Konrad Dybcio <konrad.dybcio@somainline.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Leonard Crestez <leonard.crestez@nxp.com>,
-	Jia-Wei Chang <jia-wei.chang@mediatek.com>,
-	Johnson Wang <johnson.wang@mediatek.com>,
-	linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] dt-bindings: interconnect: restrict opp-table to objects
-Date: Wed, 17 Aug 2022 09:25:33 +0300
-Message-Id: <20220817062533.20076-1-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
+	id 1oOCW4-00Bw8k-Rj; Wed, 17 Aug 2022 06:27:02 +0000
+X-UUID: a8f987317290446fb833fefbc29a8450-20220816
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+61FKuBZ2E54vbXTp6HuMJjGwe8HZxYw+DY8yWRPFeA=;
+	b=qiEMjBEv7oJW73pwFPC49kgT3u8PGP8MyeQ7IIzFXm3m1Z72DqXVjLQDmbLTim4GQi2sHHoAu5vLDRTQ8Lkis16JGywDgV8agMG1P80HLanHi2BGzZ59LpV0VSZiUb8lKb9xawa2Je+rylnMpICzGayJCq6iOnzvedXMk0jN1pg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:9780ddd7-09a8-4587-887d-1881021b4c27,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Releas
+	e_Ham,ACTION:release,TS:-25
+X-CID-META: VersionHash:84eae18,CLOUDID:8d8f0eaf-9535-44a6-aa9b-7f62b79b6ff6,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: a8f987317290446fb833fefbc29a8450-20220816
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1217395518; Tue, 16 Aug 2022 23:26:53 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 17 Aug 2022 13:26:17 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 17 Aug 2022 13:26:17 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+CC: <angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+	Guodong Liu <guodong.liu@mediatek.com>
+Subject: [PATCH v2] dt-bindings: pinctrl: mt8186: Fix 'reg-names' for pinctrl nodes
+Date: Wed, 17 Aug 2022 13:26:15 +0800
+Message-ID: <20220817052615.27153-1-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220816_232542_316934_FB85740B 
-X-CRM114-Status: UNSURE (   9.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220816_232700_998567_4F235089 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,59 +81,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Simple 'opp-table:true' accepts a boolean property as opp-table, so
-restrict it to object to properly enfoerce real OPP table nodes.
+The mt8186 contains 8 GPIO physical address bases that correspond to
+the 'reg-names' of the pinctrl driver. The 'reg-names' entries in
+bindings are ordered incorrectly, though. The system crashes due of an
+erroneous address when the regulator initializes.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+We fix the 'reg-names' for the pinctrl nodes and the pinctrl-mt8186
+example in bindings.
+
+Fixes: 338e953f1bd1 ("dt-bindings: pinctrl: mt8186: add pinctrl file and binding document")
+Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
 ---
- .../devicetree/bindings/interconnect/fsl,imx8m-noc.yaml        | 3 ++-
- .../devicetree/bindings/interconnect/mediatek,cci.yaml         | 3 ++-
- .../devicetree/bindings/interconnect/qcom,msm8998-bwmon.yaml   | 3 ++-
- 3 files changed, 6 insertions(+), 3 deletions(-)
+Change in v1:
+  * Capitalize First Letter of Sentences and rephrase the commit message
+    [Allen-KH Cheng <allen-kh.cheng@mediatek.com>]
+---
+---
+ .../bindings/pinctrl/pinctrl-mt8186.yaml         | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/interconnect/fsl,imx8m-noc.yaml b/Documentation/devicetree/bindings/interconnect/fsl,imx8m-noc.yaml
-index 09c8948b5e25..7d8d0896e979 100644
---- a/Documentation/devicetree/bindings/interconnect/fsl,imx8m-noc.yaml
-+++ b/Documentation/devicetree/bindings/interconnect/fsl,imx8m-noc.yaml
-@@ -47,7 +47,8 @@ properties:
-     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
+index 1eeb885ce0c6..604445e390a7 100644
+--- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
+@@ -41,12 +41,12 @@ properties:
+       Gpio base register names.
+     items:
+       - const: iocfg0
+-      - const: iocfg_bm
+-      - const: iocfg_bl
+-      - const: iocfg_br
++      - const: iocfg_lt
+       - const: iocfg_lm
++      - const: iocfg_lb
++      - const: iocfg_bl
+       - const: iocfg_rb
+-      - const: iocfg_tl
++      - const: iocfg_rt
+       - const: eint
  
-   operating-points-v2: true
--  opp-table: true
-+  opp-table:
-+    type: object
- 
-   fsl,ddrc:
-     $ref: "/schemas/types.yaml#/definitions/phandle"
-diff --git a/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
-index 449c7c988229..58611ba2a0f4 100644
---- a/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
-+++ b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
-@@ -36,7 +36,8 @@ properties:
-       - const: intermediate
- 
-   operating-points-v2: true
--  opp-table: true
-+  opp-table:
-+    type: object
- 
-   proc-supply:
-     description:
-diff --git a/Documentation/devicetree/bindings/interconnect/qcom,msm8998-bwmon.yaml b/Documentation/devicetree/bindings/interconnect/qcom,msm8998-bwmon.yaml
-index c2e697f6e6cf..a4743386c4c1 100644
---- a/Documentation/devicetree/bindings/interconnect/qcom,msm8998-bwmon.yaml
-+++ b/Documentation/devicetree/bindings/interconnect/qcom,msm8998-bwmon.yaml
-@@ -35,7 +35,8 @@ properties:
-     maxItems: 1
- 
-   operating-points-v2: true
--  opp-table: true
-+  opp-table:
-+    type: object
- 
-   reg:
-     # BWMON v4 (currently described) and BWMON v5 use one register address
+   interrupt-controller: true
+@@ -232,12 +232,12 @@ examples:
+             <0x10002200 0x0200>,
+             <0x10002400 0x0200>,
+             <0x10002600 0x0200>,
+-            <0x10002A00 0x0200>,
++            <0x10002a00 0x0200>,
+             <0x10002c00 0x0200>,
+             <0x1000b000 0x1000>;
+-      reg-names = "iocfg0", "iocfg_bm", "iocfg_bl",
+-                  "iocfg_br", "iocfg_lm", "iocfg_rb",
+-                  "iocfg_tl", "eint";
++      reg-names = "iocfg0", "iocfg_lt", "iocfg_lm",
++                  "iocfg_lb", "iocfg_bl", "iocfg_rb",
++                  "iocfg_rt", "eint";
+       gpio-controller;
+       #gpio-cells = <2>;
+       gpio-ranges = <&pio 0 0 185>;
 -- 
-2.34.1
+2.18.0
 
 
