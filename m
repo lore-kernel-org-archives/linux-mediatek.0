@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74C1CC25B08
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 12:50:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97871C25B08
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 12:54:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t3avrf0tq6qTnEWZDuk/e0bs7qVAMSgucssyhOI51z0=; b=hht2eCObSqub6EdYB4TtFe010W
-	r7PzmX02uoaqEmIcspG7PZO/jmGpYb6B7+TeUbHgRGzAx4izQmrv2JHefO4kKjY9WIxb/rhfMCas1
-	9pER/7NnquleqZEuGRcxCeoWq2FAtFXsoOKqGwkuqZvP2I3tgqyOniMyKGjjwuNT3vVeTqahGqrrI
-	Dlzc7NiDZ+rkHOqZwy2kuOkXPjZNaThV+5AeH6lb/kf0hX0owZB8YMqIv343azLqOFgeTIf4JIRE8
-	3nnros36PM84VITXKt1QS0Y1UGvmuFUunkNLoKiJwvOA8FA4aO3Tkr6GyXnTaRgNUYOCe5A3U2zMP
-	RXTbTPsw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9tgKy4x8+asiDhS0xkZI24d19RhiRQbW1lkvOv6I8hI=; b=mEeQ00Zr5NgEqZNMXxsRMlMld4
+	TCI5DsUWR/1FY/IK2doX4pTXADkTqZNisO02Iv9NUKAM9B294XtYMcYOMo1/XorrZkZbvk4Se861j
+	saLXpZSvol5qMcDd59flaoml7KdpwuutNpYp9qjjsbWHT2vOXYizqzLRujFWpfCoK/V7vQdwKEhZT
+	gH3NSIz4UxwMjpJR/EOnFHsijw2ZCfwyr9DiG13YMhv/o4IqzCL8OcQGp8oL66rJhEr9kZcTpaSD2
+	O+lJ34C9cVe/DV6pZQcFhYDB5p63Zwo6oYs2BYpemO/FZn2duzEhN8cA51evHLhqE6ztv75gC4ZO1
+	V/qni2bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOIUu-0022aP-DJ; Wed, 17 Aug 2022 12:50:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oOIZ4-0024up-FR; Wed, 17 Aug 2022 12:54:30 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOIUj-0022W4-Ck; Wed, 17 Aug 2022 12:50:03 +0000
-X-UUID: 642dcecfe36c440e81ab7f45d0a0bd5d-20220817
+	id 1oOIYt-0024jx-Vf; Wed, 17 Aug 2022 12:54:21 +0000
+X-UUID: aad0e7acf3074efbabb43f701e266b22-20220817
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=t3avrf0tq6qTnEWZDuk/e0bs7qVAMSgucssyhOI51z0=;
-	b=S3t/LpSrzHNfHIz7ufXNeYo5XUaMCK6c4eu0IykbLDsY7mGmx/4GDG9AFPE72yNgDnNTjcp1/9vOFCnPOsocwDzOqs3wlnRUtSaRhl44dZ5TJKx6iV44qyF2MuYRspSoW7WNKsYBF5FEGwpmKUrslFveM8nYOK0F1ObAqBv2pY4=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=9tgKy4x8+asiDhS0xkZI24d19RhiRQbW1lkvOv6I8hI=;
+	b=B/PFVrliz2evxpFYkpPl+VH06rtOxXMhePAW1HnXQdkyNfGd4lxl2+PouzFwnChtAHC1o2PmCjhZ7vULkVpQ6ycSf22mmRUkbEjxo6jYJ2IYX2y0+kM+iDrUKQvsj8p2dD604WkLCa0oYsLF9xlfuuX7Ld125LAO8aEfQjYCFyg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:1d816727-e6c5-4d2d-ad2c-18918e3a2895,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Releas
-	e_Ham,ACTION:release,TS:-20
-X-CID-META: VersionHash:84eae18,CLOUDID:5d3d18af-9535-44a6-aa9b-7f62b79b6ff6,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:1,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-O-INFO: VERSION:1.1.10,REQID:e0939295-baac-435f-95e9-7eb675f1e95b,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:93d2f19c-da39-4e3b-a854-56c7d2111b46,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 642dcecfe36c440e81ab7f45d0a0bd5d-20220817
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-UUID: aad0e7acf3074efbabb43f701e266b22-20220817
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <chengci.xu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1250174339; Wed, 17 Aug 2022 05:49:55 -0700
+	with ESMTP id 932206643; Wed, 17 Aug 2022 05:54:14 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 17 Aug 2022 20:49:22 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 17 Aug 2022 20:43:36 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 17 Aug 2022 20:49:21 +0800
+ Transport; Wed, 17 Aug 2022 20:43:35 +0800
+Message-ID: <9291fe610313640532ac62a8457dc5d2ac4bab4a.camel@mediatek.com>
+Subject: Re: [PATCH v4 3/4] memory: mtk-smi: Add enable IOMMU SMC command
+ for MM master
 From: Chengci.Xu <chengci.xu@mediatek.com>
 To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>
+	<krzysztof.kozlowski@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
 CC: <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <yi.kuo@mediatek.com>,
-	<anthony.huang@mediatek.com>, <wendy-st.lin@mediatek.com>, Chengci.Xu
-	<chengci.xu@mediatek.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v5 4/4] memory: mtk-smi: mt8188: Add SMI Support
-Date: Wed, 17 Aug 2022 20:46:08 +0800
-Message-ID: <20220817124608.10062-5-chengci.xu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220817124608.10062-1-chengci.xu@mediatek.com>
-References: <20220817124608.10062-1-chengci.xu@mediatek.com>
+	<anthony.huang@mediatek.com>, <wendy-st.lin@mediatek.com>, Rob Herring
+	<robh+dt@kernel.org>
+Date: Wed, 17 Aug 2022 20:43:33 +0800
+In-Reply-To: <7ab5a37101be00f1c0438fb61e1b125db5cf6480.camel@mediatek.com>
+References: <20220801021851.7169-1-chengci.xu@mediatek.com>
+	 <20220801021851.7169-4-chengci.xu@mediatek.com>
+	 <7ab5a37101be00f1c0438fb61e1b125db5cf6480.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220817_055001_614935_184287A9 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220817_055420_084019_C4A5C636 
+X-CRM114-Status: GOOD (  35.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,126 +84,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8188 smi common & larb support
+On Tue, 2022-08-09 at 13:58 +0800, Yong Wu wrote:
+> On Mon, 2022-08-01 at 10:18 +0800, Chengci.Xu wrote:
+> > For concerns about security, the register to enable/disable IOMMU
+> > of
+> > SMI LARB should only be configured in secure world. Thus, we add
+> > some
+> > SMC command for multimedia master to enable/disable MM IOMMU in ATF
+> > by
+> > setting the register of SMI LARB. This function is prepared for
+> > MT8188.
+> > 
+> > Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
+> > ---
+> >  drivers/memory/mtk-smi.c                 | 19 +++++++++++++++++++
+> >  include/linux/soc/mediatek/mtk_sip_svc.h |  3 +++
+> >  include/soc/mediatek/smi.h               |  5 +++++
+> >  3 files changed, 27 insertions(+)
+> > 
+> > diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> > index 08c1668d47bf..28e1123f9d76 100644
+> > --- a/drivers/memory/mtk-smi.c
+> > +++ b/drivers/memory/mtk-smi.c
+> > @@ -3,6 +3,7 @@
+> >   * Copyright (c) 2015-2016 MediaTek Inc.
+> >   * Author: Yong Wu <yong.wu@mediatek.com>
+> >   */
+> > +#include <linux/arm-smccc.h>
+> >  #include <linux/clk.h>
+> >  #include <linux/component.h>
+> >  #include <linux/device.h>
+> > @@ -14,6 +15,7 @@
+> >  #include <linux/of_platform.h>
+> >  #include <linux/platform_device.h>
+> >  #include <linux/pm_runtime.h>
+> > +#include <linux/soc/mediatek/mtk_sip_svc.h>
+> >  #include <soc/mediatek/smi.h>
+> >  #include <dt-bindings/memory/mt2701-larb-port.h>
+> >  #include <dt-bindings/memory/mtk-memory-port.h>
+> > @@ -89,6 +91,7 @@
+> >  #define MTK_SMI_FLAG_THRT_UPDATE	BIT(0)
+> >  #define MTK_SMI_FLAG_SW_FLAG		BIT(1)
+> >  #define MTK_SMI_FLAG_SLEEP_CTL		BIT(2)
+> > +#define MTK_SMI_FLAG_CFG_PORT_SEC_CTL	BIT(3)
+> >  #define MTK_SMI_CAPS(flags, _x)		(!!((flags) & (_x)))
+> >  
+> >  struct mtk_smi_reg_pair {
+> > @@ -238,6 +241,7 @@ static int
+> > mtk_smi_larb_config_port_gen2_general(struct device *dev)
+> >  	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
+> >  	u32 reg, flags_general = larb->larb_gen->flags_general;
+> >  	const u8 *larbostd = larb->larb_gen->ostd ? larb->larb_gen-
+> > > ostd[larb->larbid] : NULL;
+> > 
+> > +	struct arm_smccc_res res;
+> >  	int i;
+> >  
+> >  	if (BIT(larb->larbid) & larb->larb_gen-
+> > > larb_direct_to_common_mask)
+> > 
+> > @@ -262,6 +266,21 @@ static int
+> > mtk_smi_larb_config_port_gen2_general(struct device *dev)
+> >  		reg |= BANK_SEL(larb->bank[i]);
+> >  		writel(reg, larb->base + SMI_LARB_NONSEC_CON(i));
+> >  	}
+> > +
+> > +	/*
+> > +	 * We still need to write above NONSEC_CON register for bank
+> > selection
+> > +	 * even if enabling IOMMU is failed by SMC call. Otherwise, all
+> > master
+> > +	 * will be configured to bank 0 with a state of IOMMU enable
+> > due to the
+> > +	 * HW default value of register.
+> 
+> I don't understand this. Does bankX(X!=0) make sense if SMC fail? 
+> 
+> I guess the below segment should be before SMI_LARB_NONSEC_CON. It
+> means we shouldn't touch bank_sel while SMC fail.
 
-Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/memory/mtk-smi.c | 71 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 71 insertions(+)
+If SMC call failed, we do have no need to configure bank_sel. All we
+can do is stop following step and report an error. So it is a good
+choice to put the code about MTK_SMI_FLAG_CFG_PORT_SEC_CTL in front of
+SMI_LARB_NONSEC_CON. I will do it in next version.
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index 73a8a9867082..5a9754442bc7 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -283,6 +283,55 @@ static int mtk_smi_larb_config_port_gen2_general(struct device *dev)
- 	return 0;
- }
- 
-+static const u8 mtk_smi_larb_mt8188_ostd[][SMI_LARB_PORT_NR_MAX] = {
-+	[0] = {0x02, 0x18, 0x22, 0x22, 0x01, 0x02, 0x0a,},
-+	[1] = {0x12, 0x02, 0x14, 0x14, 0x01, 0x18, 0x0a,},
-+	[2] = {0x12, 0x12, 0x12, 0x12, 0x0a,},
-+	[3] = {0x12, 0x12, 0x12, 0x12, 0x28, 0x28, 0x0a,},
-+	[4] = {0x06, 0x01, 0x17, 0x06, 0x0a, 0x07, 0x07,},
-+	[5] = {0x02, 0x01, 0x04, 0x02, 0x06, 0x01, 0x06, 0x0a,},
-+	[6] = {0x06, 0x01, 0x06, 0x0a,},
-+	[7] = {0x0c, 0x0c, 0x12,},
-+	[8] = {0x0c, 0x01, 0x0a, 0x05, 0x02, 0x03, 0x01, 0x01, 0x14, 0x14,
-+	       0x0a, 0x14, 0x1e, 0x01, 0x0c, 0x0a, 0x05, 0x02, 0x02, 0x05,
-+	       0x03, 0x01, 0x1e, 0x01, 0x05,},
-+	[9] = {0x1e, 0x01, 0x0a, 0x0a, 0x01, 0x01, 0x03, 0x1e, 0x1e, 0x10,
-+	       0x07, 0x01, 0x0a, 0x06, 0x03, 0x03, 0x0e, 0x01, 0x04, 0x28,},
-+	[10] = {0x03, 0x20, 0x01, 0x20, 0x01, 0x01, 0x14, 0x0a, 0x0a, 0x0c,
-+		0x0a, 0x05, 0x02, 0x03, 0x02, 0x14, 0x0a, 0x0a, 0x14, 0x14,
-+		0x14, 0x01, 0x01, 0x14, 0x1e, 0x01, 0x05, 0x03, 0x02, 0x28,},
-+	[11] = {0x03, 0x20, 0x01, 0x20, 0x01, 0x01, 0x14, 0x0a, 0x0a, 0x0c,
-+		0x0a, 0x05, 0x02, 0x03, 0x02, 0x14, 0x0a, 0x0a, 0x14, 0x14,
-+		0x14, 0x01, 0x01, 0x14, 0x1e, 0x01, 0x05, 0x03, 0x02, 0x28,},
-+	[12] = {0x03, 0x20, 0x01, 0x20, 0x01, 0x01, 0x14, 0x0a, 0x0a, 0x0c,
-+		0x0a, 0x05, 0x02, 0x03, 0x02, 0x14, 0x0a, 0x0a, 0x14, 0x14,
-+		0x14, 0x01, 0x01, 0x14, 0x1e, 0x01, 0x05, 0x03, 0x02, 0x28,},
-+	[13] = {0x07, 0x02, 0x04, 0x02, 0x05, 0x05, 0x05, 0x05, 0x05, 0x05,
-+		0x07, 0x02, 0x04, 0x02, 0x05, 0x05,},
-+	[14] = {0x02, 0x02, 0x0c, 0x0c, 0x0c, 0x0c, 0x01, 0x01, 0x02, 0x02,
-+		0x02, 0x02, 0x0c, 0x0c, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02,
-+		0x02, 0x02, 0x01, 0x01,},
-+	[15] = {0x0c, 0x0c, 0x02, 0x02, 0x02, 0x02, 0x01, 0x01, 0x0c, 0x0c,
-+		0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x01, 0x02,
-+		0x0c, 0x01, 0x01,},
-+	[16] = {0x28, 0x28, 0x03, 0x01, 0x01, 0x03, 0x14, 0x14, 0x0a, 0x0d,
-+		0x03, 0x05, 0x0e, 0x01, 0x01, 0x05, 0x06, 0x0d, 0x01,},
-+	[17] = {0x28, 0x02, 0x02, 0x12, 0x02, 0x12, 0x10, 0x02, 0x02, 0x0a,
-+		0x12, 0x02, 0x02, 0x0a, 0x16, 0x02, 0x04,},
-+	[18] = {0x28, 0x02, 0x02, 0x12, 0x02, 0x12, 0x10, 0x02, 0x02, 0x0a,
-+		0x12, 0x02, 0x02, 0x0a, 0x16, 0x02, 0x04,},
-+	[19] = {0x1a, 0x0e, 0x0a, 0x0a, 0x0c, 0x0e, 0x10,},
-+	[20] = {0x1a, 0x0e, 0x0a, 0x0a, 0x0c, 0x0e, 0x10,},
-+	[21] = {0x01, 0x04, 0x01, 0x01, 0x01, 0x01, 0x01, 0x04, 0x04, 0x01,
-+		0x01, 0x01, 0x04, 0x0a, 0x06, 0x01, 0x01, 0x01, 0x0a, 0x06,
-+		0x01, 0x01, 0x05, 0x03, 0x03, 0x04, 0x01,},
-+	[22] = {0x28, 0x19, 0x0c, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x04,
-+		0x01,},
-+	[23] = {0x01, 0x01, 0x04, 0x01, 0x01, 0x01, 0x18, 0x01, 0x01,},
-+	[24] = {0x12, 0x06, 0x12, 0x06,},
-+	[25] = {0x01},
-+};
-+
- static const u8 mtk_smi_larb_mt8195_ostd[][SMI_LARB_PORT_NR_MAX] = {
- 	[0] = {0x0a, 0xc, 0x22, 0x22, 0x01, 0x0a,}, /* larb0 */
- 	[1] = {0x0a, 0xc, 0x22, 0x22, 0x01, 0x0a,}, /* larb1 */
-@@ -369,6 +418,13 @@ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8186 = {
- 	.flags_general	            = MTK_SMI_FLAG_SLEEP_CTL,
- };
- 
-+static const struct mtk_smi_larb_gen mtk_smi_larb_mt8188 = {
-+	.config_port                = mtk_smi_larb_config_port_gen2_general,
-+	.flags_general	            = MTK_SMI_FLAG_THRT_UPDATE | MTK_SMI_FLAG_SW_FLAG |
-+				      MTK_SMI_FLAG_SLEEP_CTL | MTK_SMI_FLAG_CFG_PORT_SEC_CTL,
-+	.ostd		            = mtk_smi_larb_mt8188_ostd,
-+};
-+
- static const struct mtk_smi_larb_gen mtk_smi_larb_mt8192 = {
- 	.config_port                = mtk_smi_larb_config_port_gen2_general,
- };
-@@ -389,6 +445,7 @@ static const struct of_device_id mtk_smi_larb_of_ids[] = {
- 	{.compatible = "mediatek,mt8173-smi-larb", .data = &mtk_smi_larb_mt8173},
- 	{.compatible = "mediatek,mt8183-smi-larb", .data = &mtk_smi_larb_mt8183},
- 	{.compatible = "mediatek,mt8186-smi-larb", .data = &mtk_smi_larb_mt8186},
-+	{.compatible = "mediatek,mt8188-smi-larb", .data = &mtk_smi_larb_mt8188},
- 	{.compatible = "mediatek,mt8192-smi-larb", .data = &mtk_smi_larb_mt8192},
- 	{.compatible = "mediatek,mt8195-smi-larb", .data = &mtk_smi_larb_mt8195},
- 	{}
-@@ -617,6 +674,18 @@ static const struct mtk_smi_common_plat mtk_smi_common_mt8186 = {
- 	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(4) | F_MMU1_LARB(7),
- };
- 
-+static const struct mtk_smi_common_plat mtk_smi_common_mt8188_vdo = {
-+	.type     = MTK_SMI_GEN2,
-+	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(5) | F_MMU1_LARB(7),
-+	.init     = mtk_smi_common_mt8195_init,
-+};
-+
-+static const struct mtk_smi_common_plat mtk_smi_common_mt8188_vpp = {
-+	.type     = MTK_SMI_GEN2,
-+	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(2) | F_MMU1_LARB(7),
-+	.init     = mtk_smi_common_mt8195_init,
-+};
-+
- static const struct mtk_smi_common_plat mtk_smi_common_mt8192 = {
- 	.type     = MTK_SMI_GEN2,
- 	.has_gals = true,
-@@ -653,6 +722,8 @@ static const struct of_device_id mtk_smi_common_of_ids[] = {
- 	{.compatible = "mediatek,mt8173-smi-common", .data = &mtk_smi_common_gen2},
- 	{.compatible = "mediatek,mt8183-smi-common", .data = &mtk_smi_common_mt8183},
- 	{.compatible = "mediatek,mt8186-smi-common", .data = &mtk_smi_common_mt8186},
-+	{.compatible = "mediatek,mt8188-smi-common-vdo", .data = &mtk_smi_common_mt8188_vdo},
-+	{.compatible = "mediatek,mt8188-smi-common-vpp", .data = &mtk_smi_common_mt8188_vpp},
- 	{.compatible = "mediatek,mt8192-smi-common", .data = &mtk_smi_common_mt8192},
- 	{.compatible = "mediatek,mt8195-smi-common-vdo", .data = &mtk_smi_common_mt8195_vdo},
- 	{.compatible = "mediatek,mt8195-smi-common-vpp", .data = &mtk_smi_common_mt8195_vpp},
--- 
-2.25.1
+> 
+> Just add a comment like:
+> /* When mmu_en bits are in security world, the bank_sel still is in
+> the
+> LARB_NONSEC_CON below. and the mmu_en of LARB_NONSEC_CON have no
+> effect
+> in this case. */
+
+OK, got it, thanks.
+
+> 
+> > +	 */
+> > +	if (MTK_SMI_CAPS(flags_general, MTK_SMI_FLAG_CFG_PORT_SEC_CTL))
+> > {
+> > +		arm_smccc_smc(MTK_SIP_KERNEL_IOMMU_CONTROL,
+> > IOMMU_ATF_CMD_CONFIG_SMI_LARB,
+> > +			      larb->larbid, (u32)(*larb->mmu), 0, 0, 0,
+> 
+> The type of mmu is "u32", no need the "(u32)".
+> 
+> > 0, &res);
+> > +		if (res.a0 != 0) {
+> > +			dev_err(dev, "Enable iommu fail, ret %ld\n",
+> > res.a0);
+> > +			return -EINVAL;
+> > +		}
+> > +	}
+> >  	return 0;
+> >  }
+> >  
+> > diff --git a/include/linux/soc/mediatek/mtk_sip_svc.h
+> > b/include/linux/soc/mediatek/mtk_sip_svc.h
+> > index 082398e0cfb1..0761128b4354 100644
+> > --- a/include/linux/soc/mediatek/mtk_sip_svc.h
+> > +++ b/include/linux/soc/mediatek/mtk_sip_svc.h
+> > @@ -22,4 +22,7 @@
+> >  	ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, MTK_SIP_SMC_CONVENTION,
+> > \
+> >  			   ARM_SMCCC_OWNER_SIP, fn_id)
+> >  
+> > +/* IOMMU related SMC call */
+> > +#define MTK_SIP_KERNEL_IOMMU_CONTROL	MTK_SIP_SMC_CMD(0x514)
+> > +
+> >  #endif
+> > diff --git a/include/soc/mediatek/smi.h
+> > b/include/soc/mediatek/smi.h
+> > index 11f7d6b59642..dfd8efca5e60 100644
+> > --- a/include/soc/mediatek/smi.h
+> > +++ b/include/soc/mediatek/smi.h
+> > @@ -11,6 +11,11 @@
+> >  
+> >  #if IS_ENABLED(CONFIG_MTK_SMI)
+> >  
+> > +enum iommu_atf_cmd {
+> > +	IOMMU_ATF_CMD_CONFIG_SMI_LARB,		/* For mm master to
+> > en/disable iommu */
+> > +	IOMMU_ATF_CMD_MAX,
+> > +};
+> > +
+> >  #define MTK_SMI_MMU_EN(port)	BIT(port)
+> >  
+> >  struct mtk_smi_larb_iommu {
+> 
+> 
 
 
