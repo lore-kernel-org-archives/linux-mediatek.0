@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63224C32772
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 08:12:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46D0AC25B08
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 08:13:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XFhFdGS4gab18LiNO0E9EIMJdc3E4TwobGsMEPo69aw=; b=YQMhz/Iwfygrd7TDyXQZUDobUt
-	L7k+tUJ6wVfm062euLXL+TY9g/TPi9spXifPTMBEkCde+wMZVkIQUTuyM8wIk2Dz37aox09IesaJY
-	jzoKCiYJy+S/rHi+ECiBlHch8/tRU5e8sZiJkESxsV1My8rXER3FujuQJpdhSJ6uGYp5MpkDph6k4
-	VdiJocR7JF29EueROZv3YS3D5fJpN3pExOcWNXmsfl4f43vkE4kbui2w7Qq6mTzEhZKGrTqv0wVHg
-	2RDi7Q2d3UkXIcxH7/0Lq8AieL8UsLeUfp+ZUsHEOGv7UbN7fUoRI9oPp30PY/WG3a+r1hsK+h9jA
-	nobIoisg==;
+	bh=vHkwxzsudrVxqicDXKTih8N8OK6yYAZy8EiUAJDQT8Q=; b=N26ViUPSpxnWFApNfXRkGImakK
+	ARnasqIgzqvvSMpnROlQVGuw3VxtLY9au9RnNjMWykPoG/yzUB80/NA6c0I6a1KZA4gtNBA51MS76
+	gfOQUvqE0wASLTw9XC44HtXFSRbZ6SS85urTyXEdbFrMOfpko5h72FqG5Co/i5sfYjFir6lsKQmUz
+	tIqZ73g9KYCgxQog+DcBakVOhYa7xBE4Boo8FyCVvoumuGT2610FOODi/mPaP7+yhOP8EL4Sr+e+E
+	5fEJvpI7yxchUeUIDai00vCyRYf6YHxdq5oEDI+ELo0oPTOElQimRzf2LTbWmsFJtsUQOZAZUb+GT
+	Hpw3dbDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOE9y-00Ef2N-58; Wed, 17 Aug 2022 08:12:18 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1oOEAs-00EgME-5a; Wed, 17 Aug 2022 08:13:14 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOE6f-00EZgg-Dk
-	for linux-mediatek@lists.infradead.org; Wed, 17 Aug 2022 08:08:55 +0000
-Received: by mail-wr1-x429.google.com with SMTP id bs25so15322623wrb.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Aug 2022 01:08:52 -0700 (PDT)
+	id 1oOE6h-00EZmw-6Y
+	for linux-mediatek@lists.infradead.org; Wed, 17 Aug 2022 08:08:59 +0000
+Received: by mail-wm1-x330.google.com with SMTP id m3-20020a05600c3b0300b003a5e0557150so1519413wms.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Aug 2022 01:08:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=XFhFdGS4gab18LiNO0E9EIMJdc3E4TwobGsMEPo69aw=;
-        b=6SH+adSirsQoZZ7hs2noCxi688TUpUJhcU0j79bRwxs/rHH8544iWt2GNS+4gkg1Kt
-         c+MnCThDyXByjMNz0sV7zovfXokhtb0HR/SiCUCAGgZHY0OS2dOtmQz/bAHKDxmS8GJk
-         vP0AxBjik0XVs6MwvhVZfc/BIJ3GZgclGg5oneyMi5gs/wKyEWhyRkUi27jZtM43z5h9
-         0XHhLuJDzHRsazjbBd6fWRBVaxIiBV4K5FfofPp0Ny+k0SgGARP21sXNORwQXC94c9eB
-         NId4tZ6/v6t8A5eX7JGmiiZ8PasGUvXyQ3V0NUGQq6KPtV6WQg49X6tJ7PSlv+yxb6An
-         wBcA==
+        bh=vHkwxzsudrVxqicDXKTih8N8OK6yYAZy8EiUAJDQT8Q=;
+        b=YfI4beuQw+jEoemgIqC3NHoOTNGC3jQjNRXPWRKpuUH9Iy4PU7MMuNez09OlH/EqS8
+         Ohff2URi0/UwNiDPw1rgUEVoUrfct3DrmCxd6T4CbnIcunTkVp9xaADR+Ox6YFOYtLIJ
+         MXXC1iqYgVTC0LUUrgq16c7n33WyQ/qA8C30DLNZ16Exlw6SiQQiDy1OPsxHppmFK2bl
+         x/GLWrEzqsgLUWg1dhggrnt+7kd4vCtWCeCaXnaieJxKfYV+AmRC/fbPuH31O88sSd5t
+         q3jNuFJcCBwT4OwLV2O3sITKwrzxgI8+1vd+ov8TYeguzcl4MNHA4950slApO9r5Gy5f
+         Av/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=XFhFdGS4gab18LiNO0E9EIMJdc3E4TwobGsMEPo69aw=;
-        b=fJvBw49KFS2+PqKNG/0fnywI5F2QrXWfr+k1UwLBROZh2w/Q0BYIDUIsgj7J438tKA
-         jlIvjxrvVrr5rlHByxi9pp/yBnQkyxFALm7KW6ivk9t0dq+wbD1MZPnqYhKrW8pPdByG
-         vgs8uP2q62hJ14NkoqzLePyuMKsysejLxRzbSd/tG0NZJWvpqKxycSMQ1wrwpz+2pKta
-         vBMKJjk3lN4S4aSCeMqQE+b001zwLqSmoYKsHZtZsj1fKjxezegOFds1oR/oH0XHIgAN
-         piEmBm7xqAn7K3jR04XClkxOcM26rgNz9yvdUSomi86jKvfHwqWmQaFeIrVzQZ8WCCoi
-         PkLw==
-X-Gm-Message-State: ACgBeo0K2Ig5Wj1qko5va7AURlrzVv7s5IsU/O5IZgNBU43ILdEb/RNX
-	kK9BwBkUdxRtwgcI2QbVz6xLIQ==
-X-Google-Smtp-Source: AA6agR51Zl6xt+vxQT7gT7KACFEBbbFyESTGV94CTa/rv4g0vzVgLg37XjUImbsILtMPON9atLrVTQ==
-X-Received: by 2002:a5d:6f05:0:b0:223:8bfc:dd0f with SMTP id ay5-20020a5d6f05000000b002238bfcdd0fmr13349400wrb.547.1660723730931;
-        Wed, 17 Aug 2022 01:08:50 -0700 (PDT)
+        bh=vHkwxzsudrVxqicDXKTih8N8OK6yYAZy8EiUAJDQT8Q=;
+        b=A/Ap/Agq9bLAxc0RoCsNIjGtuNlLfsLbD9281rnvs0jqLdLHkyIz5JwkMkwsFzlij4
+         Gvrl5uQLko0OT49HIVY4RMlLuEM+5bDH/93P4Q8w3YNnnuQpPPLon21HZMDNmoXJ0by3
+         9owZMsqL2BgWMwoVUJbA2goUnH6rIiVEEtyuqcAAj+H75r5T7QauX0tonoVATUAyXtoO
+         GdlBwcaCcZ3SCIoAQklcMri1tfBEg8fbbhtz3DEjz69Pg51wL5Jt4G+IB/tAnwTw+mvB
+         xteg4bFitsM1l2yG+izAQTmIXGKuI/RIhmX0tOUAEmxdtidy6rowrYy+UXFfEjWelcQC
+         2Glw==
+X-Gm-Message-State: ACgBeo2JJtdplg4ebEI97Q+JMO57BsWXoSyHMUc1cLkHawnq674goXoe
+	gBKgDRrtpStJz5t6d3IHZ3rGlg==
+X-Google-Smtp-Source: AA6agR5KjYclAQozdwJI9frY8l6H0O7fXXwcf2KuIsy9jc4oRs04gp7uX7VpcWRR2WV7sSZ885m1Aw==
+X-Received: by 2002:a7b:cd14:0:b0:3a5:c5b3:508 with SMTP id f20-20020a7bcd14000000b003a5c5b30508mr1248270wmj.179.1660723733751;
+        Wed, 17 Aug 2022 01:08:53 -0700 (PDT)
 Received: from Balsam-ThinkPad-T480.civfrance.com (58.188.158.77.rev.sfr.net. [77.158.188.58])
-        by smtp.gmail.com with ESMTPSA id u15-20020a05600c19cf00b003a54d610e5fsm1391992wmq.26.2022.08.17.01.08.49
+        by smtp.gmail.com with ESMTPSA id u15-20020a05600c19cf00b003a54d610e5fsm1391992wmq.26.2022.08.17.01.08.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Aug 2022 01:08:50 -0700 (PDT)
+        Wed, 17 Aug 2022 01:08:53 -0700 (PDT)
 From: bchihi@baylibre.com
 To: rafael@kernel.org,
 	rui.zhang@intel.com,
@@ -79,18 +79,17 @@ Cc: linux-pm@vger.kernel.org,
 	louis.yu@mediatek.com,
 	rex-bc.chen@mediatek.com,
 	abailon@baylibre.com
-Subject: [PATCH v9,5/7] arm64: dts: mt8195: Add efuse node to mt8195
-Date: Wed, 17 Aug 2022 10:07:55 +0200
-Message-Id: <20220817080757.352021-6-bchihi@baylibre.com>
+Subject: [PATCH v9,7/7] thermal: mediatek: Add LVTS driver settings for mt8195 thermal zones
+Date: Wed, 17 Aug 2022 10:07:57 +0200
+Message-Id: <20220817080757.352021-8-bchihi@baylibre.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220817080757.352021-1-bchihi@baylibre.com>
 References: <20220817080757.352021-1-bchihi@baylibre.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220817_010853_525370_A618628C 
-X-CRM114-Status: UNSURE (   8.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220817_010855_464207_94635856 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,41 +104,308 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alexandre Bailon <abailon@baylibre.com>
+From: Michael Kao <michael.kao@mediatek.com>
 
-Add efuse node.
-This will be required by the thermal driver to get the calibration data.
+Add LVTS v4 (Low Voltage Thermal Sensor) driver settings to report junction
+temperatures in MediaTek SoC mt8195 and register the maximum temperature
+of sensors and each sensor as a thermal zone.
 
+Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+Co-developed-by: Ben Tseng <ben.tseng@mediatek.com>
+Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
+Co-developed-by: Alexandre Bailon <abailon@baylibre.com>
 Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
 Co-developed-by: Balsam CHIHI <bchihi@baylibre.com>
 Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ drivers/thermal/mediatek/lvts_thermal.h |   1 +
+ drivers/thermal/mediatek/lvts_v4.c      | 230 ++++++++++++++++++++++++
+ 2 files changed, 231 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 066c14989708..95967a0196d8 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -733,6 +733,18 @@ u2_intr_p3: usb2-intr-p3@189,2 {
- 				reg = <0x189 0x2>;
- 				bits = <7 5>;
- 			};
-+
-+			lvts_efuse_data1: lvts1-calib@1bc {
-+				reg = <0x1bc 0x14>;
-+			};
-+
-+			lvts_efuse_data2: lvts2-calib@1d0 {
-+				reg = <0x1d0 0x38>;
-+			};
-+
-+			svs_calibration: calib@580 {
-+				reg = <0x580 0x64>;
-+			};
- 		};
+diff --git a/drivers/thermal/mediatek/lvts_thermal.h b/drivers/thermal/mediatek/lvts_thermal.h
+index a94ce46acccd..059b1eb98b1c 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.h
++++ b/drivers/thermal/mediatek/lvts_thermal.h
+@@ -16,6 +16,7 @@
+ #define FEATURE_DEVICE_AUTO_RCK	BIT(0)
+ #define NUM_EFUSE_ADDR			22
+ #define NUM_EFUSE_BLOCK_MT8192	1
++#define NUM_EFUSE_BLOCK_MT8195	2
+ #define DEFAULT_GOLDEN_TEMP		50
+ #define DEFAULT_CUONT_R			35000
+ #define DEFAULT_CUONT_RC		2750
+diff --git a/drivers/thermal/mediatek/lvts_v4.c b/drivers/thermal/mediatek/lvts_v4.c
+index 3dc00d2589f9..41473312b644 100644
+--- a/drivers/thermal/mediatek/lvts_v4.c
++++ b/drivers/thermal/mediatek/lvts_v4.c
+@@ -32,6 +32,31 @@ enum mt8192_lvts_ap_sensor_enum {
+ 	MT8192_NUM_TS_AP
+ };
  
- 		u3phy2: t-phy@11c40000 {
++enum mt8195_lvts_mcu_sensor_enum {
++	MT8195_TS1_0,		// cpu_big1
++	MT8195_TS1_1,		// cpu_big2
++	MT8195_TS2_0,		// cpu_big3
++	MT8195_TS2_1,		// cpu_big4
++	MT8195_TS3_0,		// cpu_little1
++	MT8195_TS3_1,		// cpu_little2
++	MT8195_TS3_2,		// cpu_little3
++	MT8195_TS3_3,		// cpu_little4
++	MT8195_NUM_TS_MCU
++};
++
++enum mt8195_lvts_ap_sensor_enum {
++	MT8195_TS4_0,		// vpu1
++	MT8195_TS4_1,		// vpu2
++	MT8195_TS5_0,		// gpu1
++	MT8195_TS5_1,		// gpu2
++	MT8195_TS6_0,		// vdec
++	MT8195_TS6_1,		// img
++	MT8195_TS6_2,		// infra
++	MT8195_TS7_0,		// cam1
++	MT8195_TS7_1,		// cam2
++	MT8195_NUM_TS_AP
++};
++
+ static void mt8192_mcu_efuse_to_cal_data(struct lvts_data *lvts_data)
+ {
+ 	const unsigned int mt8192_ts[] = { MT8192_TS2_0, MT8192_TS3_0 };
+@@ -74,6 +99,60 @@ static void mt8192_ap_efuse_to_cal_data(struct lvts_data *lvts_data)
+ 	}
+ }
+ 
++static void mt8195_mcu_efuse_to_cal_data(struct lvts_data *lvts_data)
++{
++	struct lvts_sensor_cal_data *cal_data = &lvts_data->cal_data;
++
++	cal_data->golden_temp = GET_CAL_DATA_BITMASK(0, lvts_data, 31, 24);
++
++	cal_data->count_r[MT8195_TS1_0] = GET_CAL_DATA_BITMASK(1, lvts_data, 23, 0);
++	cal_data->count_r[MT8195_TS1_1] = (GET_CAL_DATA_BITMASK(2, lvts_data, 15, 0) << 8) +
++		GET_CAL_DATA_BITMASK(1, lvts_data, 31, 24);
++	cal_data->count_r[MT8195_TS2_0] = GET_CAL_DATA_BITMASK(3, lvts_data, 31, 8);
++	cal_data->count_r[MT8195_TS2_1] = GET_CAL_DATA_BITMASK(4, lvts_data, 23, 0);
++	cal_data->count_r[MT8195_TS3_0] = (GET_CAL_DATA_BITMASK(6, lvts_data, 7, 0) << 16) +
++		GET_CAL_DATA_BITMASK(5, lvts_data, 31, 16);
++	cal_data->count_r[MT8195_TS3_1] = GET_CAL_DATA_BITMASK(6, lvts_data, 31, 8);
++	cal_data->count_r[MT8195_TS3_2] = GET_CAL_DATA_BITMASK(7, lvts_data, 23, 0);
++	cal_data->count_r[MT8195_TS3_3] = (GET_CAL_DATA_BITMASK(8, lvts_data, 15, 0) << 8) +
++		GET_CAL_DATA_BITMASK(7, lvts_data, 31, 24);
++
++	cal_data->count_rc[MT8195_TS1_0] = (GET_CAL_DATA_BITMASK(3, lvts_data, 7, 0) << 16) +
++		GET_CAL_DATA_BITMASK(2, lvts_data, 31, 16);
++	cal_data->count_rc[MT8195_TS2_0] = (GET_CAL_DATA_BITMASK(5, lvts_data, 15, 0) << 8) +
++		GET_CAL_DATA_BITMASK(4, lvts_data, 31, 24);
++	cal_data->count_rc[MT8195_TS3_0] = (GET_CAL_DATA_BITMASK(9, lvts_data, 7, 0) << 16) +
++		GET_CAL_DATA_BITMASK(8, lvts_data, 31, 16);
++}
++
++static void mt8195_ap_efuse_to_cal_data(struct lvts_data *lvts_data)
++{
++	struct lvts_sensor_cal_data *cal_data = &lvts_data->cal_data;
++
++	cal_data->golden_temp = GET_CAL_DATA_BITMASK(0, lvts_data, 31, 24);
++
++	cal_data->count_r[MT8195_TS4_0] = GET_CAL_DATA_BITMASK(9, lvts_data, 31, 8);
++	cal_data->count_r[MT8195_TS4_1] = GET_CAL_DATA_BITMASK(10, lvts_data, 23, 0);
++	cal_data->count_r[MT8195_TS5_0] = (GET_CAL_DATA_BITMASK(12, lvts_data, 7, 0) << 16) +
++		GET_CAL_DATA_BITMASK(11, lvts_data, 31, 16);
++	cal_data->count_r[MT8195_TS5_1] = GET_CAL_DATA_BITMASK(12, lvts_data, 31, 8);
++	cal_data->count_r[MT8195_TS6_0] = (GET_CAL_DATA_BITMASK(14, lvts_data, 15, 0) << 8) +
++		GET_CAL_DATA_BITMASK(13, lvts_data, 31, 24);
++	cal_data->count_r[MT8195_TS6_1] = (GET_CAL_DATA_BITMASK(15, lvts_data, 7, 0) << 16) +
++		GET_CAL_DATA_BITMASK(14, lvts_data, 31, 16);
++	cal_data->count_r[MT8195_TS6_2] = GET_CAL_DATA_BITMASK(15, lvts_data, 31, 8);
++	cal_data->count_r[MT8195_TS7_0] = (GET_CAL_DATA_BITMASK(17, lvts_data, 15, 0) << 8) +
++		GET_CAL_DATA_BITMASK(16, lvts_data, 31, 24);
++	cal_data->count_r[MT8195_TS7_1] = (GET_CAL_DATA_BITMASK(18, lvts_data, 7, 0) << 16) +
++		GET_CAL_DATA_BITMASK(17, lvts_data, 31, 16);
++
++	cal_data->count_rc[MT8195_TS4_0] = (GET_CAL_DATA_BITMASK(11, lvts_data, 15, 0) << 8) +
++						GET_CAL_DATA_BITMASK(10, lvts_data, 31, 24);
++	cal_data->count_rc[MT8195_TS5_0] = GET_CAL_DATA_BITMASK(13, lvts_data, 23, 0);
++	cal_data->count_rc[MT8195_TS6_0] = GET_CAL_DATA_BITMASK(16, lvts_data, 23, 0);
++	cal_data->count_rc[MT8195_TS7_0] = GET_CAL_DATA_BITMASK(18, lvts_data, 31, 8);
++}
++
+ static struct lvts_speed_settings tc_speed_mt8192 = {
+ 	.period_unit = PERIOD_UNIT,
+ 	.group_interval_delay = GROUP_INTERVAL_DELAY,
+@@ -81,6 +160,13 @@ static struct lvts_speed_settings tc_speed_mt8192 = {
+ 	.sensor_interval_delay = SENSOR_INTERVAL_DELAY,
+ };
+ 
++static struct lvts_speed_settings tc_speed_mt8195 = {
++	.period_unit = PERIOD_UNIT,
++	.group_interval_delay = GROUP_INTERVAL_DELAY,
++	.filter_interval_delay = FILTER_INTERVAL_DELAY,
++	.sensor_interval_delay = SENSOR_INTERVAL_DELAY,
++};
++
+ static const struct lvts_tc_settings mt8192_tc_mcu_settings[] = {
+ 	[0] = {
+ 		.dev_id = 0x81,
+@@ -171,6 +257,96 @@ static const struct lvts_tc_settings mt8192_tc_ap_settings[] = {
+ 	}
+ };
+ 
++static const struct lvts_tc_settings mt8195_tc_mcu_settings[] = {
++	[0] = {
++		.dev_id = 0x81,
++		.addr_offset = 0x0,
++		.num_sensor = 2,
++		.ts_offset = 0,
++		.sensor_map = { MT8195_TS1_0, MT8195_TS1_1 },
++		.tc_speed = &tc_speed_mt8195,
++		.hw_filter = LVTS_FILTER_2_OF_4,
++		.dominator_sensing_point = SENSING_POINT1,
++		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
++		.irq_bit = BIT(3),
++	},
++	[1] = {
++		.dev_id = 0x82,
++		.addr_offset = 0x100,
++		.num_sensor = 2,
++		.ts_offset = 0,
++		.sensor_map = { MT8195_TS2_0, MT8195_TS2_1 },
++		.tc_speed = &tc_speed_mt8195,
++		.hw_filter = LVTS_FILTER_2_OF_4,
++		.dominator_sensing_point = SENSING_POINT0,
++		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
++		.irq_bit = BIT(4),
++	},
++	[2] = {
++		.dev_id = 0x83,
++		.addr_offset = 0x200,
++		.num_sensor = 4,
++		.ts_offset = 0,
++		.sensor_map = { MT8195_TS3_0, MT8195_TS3_1, MT8195_TS3_2, MT8195_TS3_3 },
++		.tc_speed = &tc_speed_mt8195,
++		.hw_filter = LVTS_FILTER_2_OF_4,
++		.dominator_sensing_point = SENSING_POINT0,
++		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
++		.irq_bit = BIT(5),
++	}
++};
++
++static const struct lvts_tc_settings mt8195_tc_ap_settings[] = {
++	[0] = {
++		.dev_id = 0x84,
++		.addr_offset = 0x0,
++		.num_sensor = 2,
++		.ts_offset = 0,
++		.sensor_map = { MT8195_TS4_0, MT8195_TS4_1 },
++		.tc_speed = &tc_speed_mt8195,
++		.hw_filter = LVTS_FILTER_2_OF_4,
++		.dominator_sensing_point = SENSING_POINT0,
++		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
++		.irq_bit = BIT(3),
++	},
++	[1] = {
++		.dev_id = 0x85,
++		.addr_offset = 0x100,
++		.num_sensor = 2,
++		.ts_offset = 0,
++		.sensor_map = { MT8195_TS5_0, MT8195_TS5_1 },
++		.tc_speed = &tc_speed_mt8195,
++		.hw_filter = LVTS_FILTER_2_OF_4,
++		.dominator_sensing_point = SENSING_POINT1,
++		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
++		.irq_bit = BIT(4),
++	},
++	[2] = {
++		.dev_id = 0x86,
++		.addr_offset = 0x200,
++		.num_sensor = 3,
++		.ts_offset = 0,
++		.sensor_map = { MT8195_TS6_0, MT8195_TS6_1, MT8195_TS6_2 },
++		.tc_speed = &tc_speed_mt8195,
++		.hw_filter = LVTS_FILTER_2_OF_4,
++		.dominator_sensing_point = SENSING_POINT1,
++		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
++		.irq_bit = BIT(5),
++	},
++	[3] = {
++		.dev_id = 0x87,
++		.addr_offset = 0x300,
++		.num_sensor = 2,
++		.ts_offset = 0,
++		.sensor_map = { MT8195_TS7_0, MT8195_TS7_1 },
++		.tc_speed = &tc_speed_mt8195,
++		.hw_filter = LVTS_FILTER_2_OF_4,
++		.dominator_sensing_point = SENSING_POINT0,
++		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
++		.irq_bit = BIT(6),
++	}
++};
++
+ static const struct lvts_data mt8192_lvts_mcu_data = {
+ 	.num_tc = (ARRAY_SIZE(mt8192_tc_mcu_settings)),
+ 	.tc = mt8192_tc_mcu_settings,
+@@ -223,9 +399,63 @@ static const struct lvts_data mt8192_lvts_ap_data = {
+ 	},
+ };
+ 
++static const struct lvts_data mt8195_lvts_mcu_data = {
++	.num_tc = (ARRAY_SIZE(mt8195_tc_mcu_settings)),
++	.tc = mt8195_tc_mcu_settings,
++	.num_sensor = MT8195_NUM_TS_MCU,
++	.ops = {
++		.efuse_to_cal_data = mt8195_mcu_efuse_to_cal_data,
++		.device_enable_and_init = lvts_device_enable_and_init,
++		.device_enable_auto_rck = lvts_device_enable_auto_rck_v4,
++		.device_read_count_rc_n = lvts_device_read_count_rc_n_v4,
++		.set_cal_data = lvts_set_calibration_data_v4,
++		.init_controller = lvts_init_controller_v4,
++	},
++	.feature_bitmap = FEATURE_DEVICE_AUTO_RCK,
++	.num_efuse_addr = NUM_EFUSE_ADDR,
++	.num_efuse_block = NUM_EFUSE_BLOCK_MT8195,
++	.cal_data = {
++		.default_golden_temp = DEFAULT_GOLDEN_TEMP,
++		.default_count_r = DEFAULT_CUONT_R,
++		.default_count_rc = DEFAULT_CUONT_RC,
++	},
++	.coeff = {
++		.a = COEFF_A,
++		.b = COEFF_B,
++	},
++};
++
++static const struct lvts_data mt8195_lvts_ap_data = {
++	.num_tc = (ARRAY_SIZE(mt8195_tc_ap_settings)),
++	.tc = mt8195_tc_ap_settings,
++	.num_sensor = MT8195_NUM_TS_AP,
++	.ops = {
++		.efuse_to_cal_data = mt8195_ap_efuse_to_cal_data,
++		.device_enable_and_init = lvts_device_enable_and_init,
++		.device_enable_auto_rck = lvts_device_enable_auto_rck_v4,
++		.device_read_count_rc_n = lvts_device_read_count_rc_n_v4,
++		.set_cal_data = lvts_set_calibration_data_v4,
++		.init_controller = lvts_init_controller_v4,
++	},
++	.feature_bitmap = FEATURE_DEVICE_AUTO_RCK,
++	.num_efuse_addr = NUM_EFUSE_ADDR,
++	.num_efuse_block = NUM_EFUSE_BLOCK_MT8195,
++	.cal_data = {
++		.default_golden_temp = DEFAULT_GOLDEN_TEMP,
++		.default_count_r = DEFAULT_CUONT_R,
++		.default_count_rc = DEFAULT_CUONT_RC,
++	},
++	.coeff = {
++		.a = COEFF_A,
++		.b = COEFF_B,
++	},
++};
++
+ static const struct of_device_id lvts_of_match[] = {
+ 	{ .compatible = "mediatek,mt8192-lvts-mcu", .data = &mt8192_lvts_mcu_data, },
+ 	{ .compatible = "mediatek,mt8192-lvts-ap", .data = &mt8192_lvts_ap_data, },
++	{ .compatible = "mediatek,mt8195-lvts-mcu", .data = &mt8195_lvts_mcu_data, },
++	{ .compatible = "mediatek,mt8195-lvts-ap", .data = &mt8195_lvts_ap_data, },
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, lvts_of_match);
 -- 
 2.34.1
 
