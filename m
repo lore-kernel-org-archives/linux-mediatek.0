@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B062DC25B08
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 13:49:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B465C25B08
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 16:09:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cGBeDHbqNgsnmKFfngjGLY+pCx0gqO+ijLhKaQFLTCg=; b=3SztcQtxuEM6pcZ8YomFqFSse4
-	4TlgVz2tfqwMFW1uDsqQXtKvgDwWrvulWXyvUeMHAiwZ/+b7kXCqmpohq7dKvD6gjpiXXidp4RSji
-	Ji+02jTgkwLsj9RgXm5hEn8y74ynLtLZzZpr5hsu4/cnZ+f/Bb8+pz8zt+X/PnY3vpPIEawE4ilSK
-	gXU07YViOoNfehDb5esqBUn01VV2ZeKh653xRBg6pc6cifKgBe+h18gm6GCRxkOv2gcfCm7Y+qIWd
-	2TLievd8DAorSPllGXizDIksZCP8p5ZiAxkgtCNLpYoq6g6cPv3TRZh85NUzc8dEEzqeT1v3lhKlX
-	+btrC2nQ==;
+	bh=swwT+TkLAVdnFfvKH4QquAkODkMxOcrPfum/cjVHZso=; b=QPERaEhfKZc86LSrMtohrXuG8W
+	zVqsdYnoYxCxxXJblq3hlQqDcYjOl2F0NUBcjgneLnxExgtAG6+7v/2PCORY9PLDQeZ0biChbEMKG
+	2OfPgIL0GVwnOD9to4duuiqDlM53FBhSKqxFTSSny/lYfX+2f5Kzc5O8hFtMsMdUvbvBUok0r/s1a
+	TVT8h22YN2xvi9WGHc6dOmaOzhZdiM+EQS+eKXLN0/GDOrdDqZd2beZ5MtAvXftfCYThTcB/PDVC9
+	KhX4JGOeWumcSVsQRoZEWnq1CcsKrrWvyryTGQNsE1r0xk7mEjyGZJIDjGcF1vAPr+3dPZTNV7trx
+	Wpu8RwIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOJQP-002WoX-Hm; Wed, 17 Aug 2022 13:49:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oOLc6-003dxg-4h; Wed, 17 Aug 2022 16:09:50 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOJQA-002Wh2-9q; Wed, 17 Aug 2022 13:49:26 +0000
-X-UUID: 06b76ee545894ef4823b8292f6fc3c0b-20220817
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=cGBeDHbqNgsnmKFfngjGLY+pCx0gqO+ijLhKaQFLTCg=;
-	b=EirlS+lst9JGopA0uiF7K908RHJMXUlQui+a6x+Agi7WV4DxWLzoOgyBoRaezespzK9yIqUzSkMUCRvMpStKDvJ6mxNkacjJnUB9/+0voQ+Wb3sPzBdBRm4WBOGrGJo7p/l6tgjol+7+F53k8CtHgUakIOsw3Mo7Hzm8XVbpyBc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:c3be8911-6f00-4264-8fa3-a081becb2eaf,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:e2fa18af-9535-44a6-aa9b-7f62b79b6ff6,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 06b76ee545894ef4823b8292f6fc3c0b-20220817
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chengci.xu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 329996871; Wed, 17 Aug 2022 06:49:18 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 17 Aug 2022 20:48:38 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 17 Aug 2022 20:48:37 +0800
-From: Chengci.Xu <chengci.xu@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>
-CC: <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <yi.kuo@mediatek.com>,
-	<anthony.huang@mediatek.com>, <wendy-st.lin@mediatek.com>, Chengci.Xu
-	<chengci.xu@mediatek.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v5 1/4] dt-bindings: memory: mediatek: Add mt8188 smi binding
-Date: Wed, 17 Aug 2022 20:46:05 +0800
-Message-ID: <20220817124608.10062-2-chengci.xu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220817124608.10062-1-chengci.xu@mediatek.com>
-References: <20220817124608.10062-1-chengci.xu@mediatek.com>
+	id 1oOLbu-003dpB-08; Wed, 17 Aug 2022 16:09:39 +0000
+Received: from notapiano (unknown [70.107.189.129])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5EF6F660184A;
+	Wed, 17 Aug 2022 17:09:32 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1660752574;
+	bh=e/Of4jtD4ScJ5WePhgSWEAVJX0lhg7eBLY1bsDyCvTA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ctwVd0yGuilnyXL+Huj1WqffMGwtY9wmtAQMlBsoYakIjyqjlPw2XVzYVMaNNmauo
+	 VKPLLIeLzFSWdt0EYUhQ3NCV4Q2zanjViWw8aQlaaladQLlWDcWlF67VG4w7So7apY
+	 5r0FuSqQ34y+rjfKpboGh/PHS/ErUjzVLqCg3nEQwxeJmRD76riNuS3R6wCs6Us4iM
+	 Te7AQyuGVWUi32v7YVmRQ1Ix9SCBCbLtHKSfsBPNgzsQ9j3w8N8cmg0Jur8nmrPUFL
+	 YbFhhv14NXg1tQKH918xRqOF6Y8INxlbFf/f3IAPDvUrEkvTiww4C6CD/Q2ZcUPqKm
+	 4v8F+6Pe8AoXQ==
+Date: Wed, 17 Aug 2022 12:09:28 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	angelogioacchino.delregno@collabora.com,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Guodong Liu <guodong.liu@mediatek.com>
+Subject: Re: [PATCH v2] dt-bindings: pinctrl: mt8186: Fix 'reg-names' for
+ pinctrl nodes
+Message-ID: <20220817160928.ppkjonuymr7rn4bu@notapiano>
+References: <20220817052615.27153-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+In-Reply-To: <20220817052615.27153-1-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220817_064922_432595_94524164 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20220817_090938_272149_CF7CFB9D 
+X-CRM114-Status: GOOD (  16.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,81 +80,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8188 smi supporting in the bindings.
+Hi Allen,
 
-In mt8188, there are two smi-common HW, one is for vdo(video output),
-the other is for vpp(video processing pipe). They connect with different
-smi-larbs, then some setting(bus_sel) is different. Differentiate them
-with the compatible string.
+On Wed, Aug 17, 2022 at 01:26:15PM +0800, Allen-KH Cheng wrote:
+> The mt8186 contains 8 GPIO physical address bases that correspond to
+> the 'reg-names' of the pinctrl driver. The 'reg-names' entries in
+> bindings are ordered incorrectly, though. The system crashes due of an
+> erroneous address when the regulator initializes.
+> 
+> We fix the 'reg-names' for the pinctrl nodes and the pinctrl-mt8186
+> example in bindings.
+> 
+> Fixes: 338e953f1bd1 ("dt-bindings: pinctrl: mt8186: add pinctrl file and binding document")
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
 
-Something like this:
+The sender's (your) signed-off-by should come last [1]. Also, what is the
+participation of Guodong in this patch? If Guodong helped in writing the patch
+there should also be a Co-developed-by tag for Guodong, as shown in [1].
 
-   IOMMU(VDO)          IOMMU(VPP)
-       |                   |
-SMI_COMMON_VDO       SMI_COMMON_VPP
-----------------     ----------------
-   |     |   ...       |     |    ...
- larb0 larb2 ...     larb1 larb3  ...
+[1] https://www.kernel.org/doc/html/latest/process/submitting-patches.html#when-to-use-acked-by-cc-and-co-developed-by
 
-Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Yong Wu <yong.wu@mediatek.com>
----
- .../bindings/memory-controllers/mediatek,smi-common.yaml      | 4 +++-
- .../bindings/memory-controllers/mediatek,smi-larb.yaml        | 3 +++
- 2 files changed, 6 insertions(+), 1 deletion(-)
+> ---
+[..]
+> --- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
+[..]
+> @@ -232,12 +232,12 @@ examples:
+>              <0x10002200 0x0200>,
+>              <0x10002400 0x0200>,
+>              <0x10002600 0x0200>,
+> -            <0x10002A00 0x0200>,
+> +            <0x10002a00 0x0200>,
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-index 4f5dd0a20109..a8fda30cccbb 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-@@ -16,7 +16,7 @@ description: |
-   MediaTek SMI have two generations of HW architecture, here is the list
-   which generation the SoCs use:
-   generation 1: mt2701 and mt7623.
--  generation 2: mt2712, mt6779, mt8167, mt8173, mt8183, mt8186, mt8192 and mt8195.
-+  generation 2: mt2712, mt6779, mt8167, mt8173, mt8183, mt8186, mt8188, mt8192 and mt8195.
- 
-   There's slight differences between the two SMI, for generation 2, the
-   register which control the iommu port is at each larb's register base. But
-@@ -37,6 +37,8 @@ properties:
-           - mediatek,mt8173-smi-common
-           - mediatek,mt8183-smi-common
-           - mediatek,mt8186-smi-common
-+          - mediatek,mt8188-smi-common-vdo
-+          - mediatek,mt8188-smi-common-vpp
-           - mediatek,mt8192-smi-common
-           - mediatek,mt8195-smi-common-vdo
-           - mediatek,mt8195-smi-common-vpp
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-index 59dcd163668f..5f4ac3609887 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-@@ -25,6 +25,7 @@ properties:
-           - mediatek,mt8173-smi-larb
-           - mediatek,mt8183-smi-larb
-           - mediatek,mt8186-smi-larb
-+          - mediatek,mt8188-smi-larb
-           - mediatek,mt8192-smi-larb
-           - mediatek,mt8195-smi-larb
- 
-@@ -78,6 +79,7 @@ allOf:
-           enum:
-             - mediatek,mt8183-smi-larb
-             - mediatek,mt8186-smi-larb
-+            - mediatek,mt8188-smi-larb
-             - mediatek,mt8195-smi-larb
- 
-     then:
-@@ -111,6 +113,7 @@ allOf:
-               - mediatek,mt2712-smi-larb
-               - mediatek,mt6779-smi-larb
-               - mediatek,mt8186-smi-larb
-+              - mediatek,mt8188-smi-larb
-               - mediatek,mt8192-smi-larb
-               - mediatek,mt8195-smi-larb
- 
--- 
-2.25.1
+Also, you should avoid making changes that don't have to do with the patch
+itself. This patch is about fixing the reg names, so no need to touch the
+formatting of addresses. It just adds noise.
 
+Other than that,
+
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+Thanks,
+Nícolas
 
