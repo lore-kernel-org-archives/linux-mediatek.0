@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B465C25B08
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 16:09:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B8B6C25B08
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 19:55:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=swwT+TkLAVdnFfvKH4QquAkODkMxOcrPfum/cjVHZso=; b=QPERaEhfKZc86LSrMtohrXuG8W
-	zVqsdYnoYxCxxXJblq3hlQqDcYjOl2F0NUBcjgneLnxExgtAG6+7v/2PCORY9PLDQeZ0biChbEMKG
-	2OfPgIL0GVwnOD9to4duuiqDlM53FBhSKqxFTSSny/lYfX+2f5Kzc5O8hFtMsMdUvbvBUok0r/s1a
-	TVT8h22YN2xvi9WGHc6dOmaOzhZdiM+EQS+eKXLN0/GDOrdDqZd2beZ5MtAvXftfCYThTcB/PDVC9
-	KhX4JGOeWumcSVsQRoZEWnq1CcsKrrWvyryTGQNsE1r0xk7mEjyGZJIDjGcF1vAPr+3dPZTNV7trx
-	Wpu8RwIQ==;
+	bh=PGuRTvTpKH+A8dEr00SIChlMqKCLBV3tsb9cp6OFfGY=; b=BCObkBW1WXua0yWkxZam7rm4ge
+	EMG7wez4lKILYxhwPJ5w/QX79i9m5D3t49F4N7EPF7iN6OQbZ/aeJEC5yxwyy6gKexULIjrOUCTQs
+	2U1/x0hKVPKCUVnyliylziLmLi4RL7P+LSXbcux4CprB8Yxy1Kqdhfv9skSbbjLhV3ONNQRTe1zFA
+	6cZBkOY9TwhrFirS/PwLeCIzYYz0zfyIRPeadgBPHthwOqb9yey1evIDhA1GJJNSjkqFJNPy4CMrt
+	GK+sqUl62u1v2EpLqMQjlEJwRtWNtn9836ZdNpAKJiOFUkMfN11CwL8vn0VOKvjF6PGdPcSJFhh5+
+	qoh95xPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOLc6-003dxg-4h; Wed, 17 Aug 2022 16:09:50 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oOP8R-0060TR-4V; Wed, 17 Aug 2022 19:55:27 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOLbu-003dpB-08; Wed, 17 Aug 2022 16:09:39 +0000
+	id 1oOP8D-0060JT-QH; Wed, 17 Aug 2022 19:55:15 +0000
 Received: from notapiano (unknown [70.107.189.129])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5EF6F660184A;
-	Wed, 17 Aug 2022 17:09:32 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 43C6F66019FB;
+	Wed, 17 Aug 2022 20:55:05 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1660752574;
-	bh=e/Of4jtD4ScJ5WePhgSWEAVJX0lhg7eBLY1bsDyCvTA=;
+	s=mail; t=1660766106;
+	bh=HyKYDfF8C/EjS61VvfNy5zCttuH25Xk3EwKzKCsv2mU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ctwVd0yGuilnyXL+Huj1WqffMGwtY9wmtAQMlBsoYakIjyqjlPw2XVzYVMaNNmauo
-	 VKPLLIeLzFSWdt0EYUhQ3NCV4Q2zanjViWw8aQlaaladQLlWDcWlF67VG4w7So7apY
-	 5r0FuSqQ34y+rjfKpboGh/PHS/ErUjzVLqCg3nEQwxeJmRD76riNuS3R6wCs6Us4iM
-	 Te7AQyuGVWUi32v7YVmRQ1Ix9SCBCbLtHKSfsBPNgzsQ9j3w8N8cmg0Jur8nmrPUFL
-	 YbFhhv14NXg1tQKH918xRqOF6Y8INxlbFf/f3IAPDvUrEkvTiww4C6CD/Q2ZcUPqKm
-	 4v8F+6Pe8AoXQ==
-Date: Wed, 17 Aug 2022 12:09:28 -0400
+	b=DAVuz1nTEiUf8s45bB89PTn3EzZBWzGhrbmAfbSXSDAWAyQwwxE+3lWCkUG1Baxck
+	 xS+pUdIZU/7Nr6uN9zdmHxVu0g5d4OOCN81VVaTr8ndDis7WGCwSedV2IOD/jR95bD
+	 8OBuhX1r8g6BI3bCF5HmdTuHn9IMSuq/uLxtQftGOIRdaNFNPmJRgPgPmzQgKnyscH
+	 xM+/NEi1ZWt01Gf/fWLg5vfGJmOlnRT3F4F9haSW/ol3Fds3YSakSeQvLc+34G5ykN
+	 hYm920WJjKTBQ2DggQ3XeIS93BcBYKltJ/b7ZV/r4DwjyIPU4s1VaCmpivQig7Tor2
+	 N0w999/ahh/yQ==
+Date: Wed, 17 Aug 2022 15:55:00 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	angelogioacchino.delregno@collabora.com,
+To: Hui Liu <hui.liu@mediatek.com>
+Cc: linus.walleij@linaro.org, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
 	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	jianguo.zhang@mediatek.com, zhiyong.tao@mediatek.com,
+	sean.wang@mediatek.com, linux-gpio@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Guodong Liu <guodong.liu@mediatek.com>
-Subject: Re: [PATCH v2] dt-bindings: pinctrl: mt8186: Fix 'reg-names' for
- pinctrl nodes
-Message-ID: <20220817160928.ppkjonuymr7rn4bu@notapiano>
-References: <20220817052615.27153-1-allen-kh.cheng@mediatek.com>
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 2/2] pinctrl: mediatek: add mt8188 driver
+Message-ID: <20220817195500.d6roam5gyghburjs@notapiano>
+References: <20220801095215.10876-1-hui.liu@mediatek.com>
+ <20220801095215.10876-3-hui.liu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220817052615.27153-1-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220801095215.10876-3-hui.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220817_090938_272149_CF7CFB9D 
-X-CRM114-Status: GOOD (  16.45  )
+X-CRM114-CacheID: sfid-20220817_125514_028863_1F879431 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,44 +77,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Allen,
+Hi Hui,
 
-On Wed, Aug 17, 2022 at 01:26:15PM +0800, Allen-KH Cheng wrote:
-> The mt8186 contains 8 GPIO physical address bases that correspond to
-> the 'reg-names' of the pinctrl driver. The 'reg-names' entries in
-> bindings are ordered incorrectly, though. The system crashes due of an
-> erroneous address when the regulator initializes.
+On Mon, Aug 01, 2022 at 05:52:15PM +0800, Hui Liu wrote:
+> From: "Hui.Liu" <hui.liu@mediatek.com>
 > 
-> We fix the 'reg-names' for the pinctrl nodes and the pinctrl-mt8186
-> example in bindings.
+> Add pinctrl driver support for MediaTek SoC mt8188.
 > 
-> Fixes: 338e953f1bd1 ("dt-bindings: pinctrl: mt8186: add pinctrl file and binding document")
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
-
-The sender's (your) signed-off-by should come last [1]. Also, what is the
-participation of Guodong in this patch? If Guodong helped in writing the patch
-there should also be a Co-developed-by tag for Guodong, as shown in [1].
-
-[1] https://www.kernel.org/doc/html/latest/process/submitting-patches.html#when-to-use-acked-by-cc-and-co-developed-by
-
+> Signed-off-by: Hui.Liu <hui.liu@mediatek.com>
 > ---
 [..]
-> --- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
+> --- /dev/null
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8188.c
 [..]
-> @@ -232,12 +232,12 @@ examples:
->              <0x10002200 0x0200>,
->              <0x10002400 0x0200>,
->              <0x10002600 0x0200>,
-> -            <0x10002A00 0x0200>,
-> +            <0x10002a00 0x0200>,
+> +static const struct mtk_pin_field_calc mt8188_pin_mode_range[] = {
+> +	PIN_FIELD(0, 177, 0x0300, 0x10, 0, 4),
+> +};
 
-Also, you should avoid making changes that don't have to do with the patch
-itself. This patch is about fixing the reg names, so no need to touch the
-formatting of addresses. It just adds noise.
+Missing blank line after declaration.
 
-Other than that,
+> +static const struct mtk_pin_field_calc mt8188_pin_dir_range[] = {
+> +	PIN_FIELD(0, 177, 0x0000, 0x10, 0, 1),
+> +};
+
+Ditto.
+
+> +static const struct mtk_pin_field_calc mt8188_pin_di_range[] = {
+> +	PIN_FIELD(0, 177, 0x0200, 0x10, 0, 1),
+> +};
+
+Ditto.
+
+> +static const struct mtk_pin_field_calc mt8188_pin_do_range[] = {
+> +	PIN_FIELD(0, 177, 0x0100, 0x10, 0, 1),
+> +};
+
+Ditto.
+
+> +static const struct mtk_pin_field_calc mt8188_pin_smt_range[] = {
+[..]
+> +static const struct mtk_pin_reg_calc mt8188_reg_cals[PINCTRL_PIN_REG_MAX] = {
+> +	[PINCTRL_PIN_REG_MODE]	= MTK_RANGE(mt8188_pin_mode_range),
+> +	[PINCTRL_PIN_REG_DIR]	= MTK_RANGE(mt8188_pin_dir_range),
+> +	[PINCTRL_PIN_REG_DI]	= MTK_RANGE(mt8188_pin_di_range),
+> +	[PINCTRL_PIN_REG_DO]	= MTK_RANGE(mt8188_pin_do_range),
+> +	[PINCTRL_PIN_REG_SMT]	= MTK_RANGE(mt8188_pin_smt_range),
+> +	[PINCTRL_PIN_REG_IES]	= MTK_RANGE(mt8188_pin_ies_range),
+> +	[PINCTRL_PIN_REG_TDSEL]	= MTK_RANGE(mt8188_pin_tdsel_range),
+> +	[PINCTRL_PIN_REG_RDSEL]	= MTK_RANGE(mt8188_pin_rdsel_range),
+> +	[PINCTRL_PIN_REG_PUPD]	= MTK_RANGE(mt8188_pin_pupd_range),
+> +	[PINCTRL_PIN_REG_R0]	= MTK_RANGE(mt8188_pin_r0_range),
+> +	[PINCTRL_PIN_REG_R1]	= MTK_RANGE(mt8188_pin_r1_range),
+> +	[PINCTRL_PIN_REG_PU]	= MTK_RANGE(mt8188_pin_pu_range),
+> +	[PINCTRL_PIN_REG_PD]	= MTK_RANGE(mt8188_pin_pd_range),
+> +	[PINCTRL_PIN_REG_DRV]	= MTK_RANGE(mt8188_pin_drv_range),
+> +	[PINCTRL_PIN_REG_DRV_ADV]	= MTK_RANGE(mt8188_pin_drv_adv_range),
+> +	[PINCTRL_PIN_REG_RSEL]	= MTK_RANGE(mt8188_pin_rsel_range),
+
+Please use just space around the = instead of tabs. Like is done on mt8183,
+mt8186, mt8192 and mt8195.
+
+> +};
+[..]
+> +static const struct mtk_pin_soc mt8188_data = {
+> +	.reg_cal	= mt8188_reg_cals,
+> +	.pins	= mtk_pins_mt8188,
+> +	.npins	= ARRAY_SIZE(mtk_pins_mt8188),
+> +	.ngrps	= ARRAY_SIZE(mtk_pins_mt8188),
+> +	.eint_hw	= &mt8188_eint_hw,
+> +	.nfuncs	= 8,
+> +	.gpio_m	= 0,
+> +	.base_names	= mt8188_pinctrl_register_base_name,
+> +	.nbase_names	= ARRAY_SIZE(mt8188_pinctrl_register_base_name),
+> +	.bias_set_combo	= mtk_pinconf_bias_set_combo,
+> +	.pull_type = mt8188_pull_type,
+> +	.pin_rsel = mt8188_pin_rsel_val_range,
+> +	.npin_rsel = ARRAY_SIZE(mt8188_pin_rsel_val_range),
+> +	.bias_get_combo	= mtk_pinconf_bias_get_combo,
+
+Keep this one together with bias_set_combo.
+
+> +	.drive_set	= mtk_pinconf_drive_set_rev1,
+> +	.drive_get	= mtk_pinconf_drive_get_rev1,
+> +	.adv_drive_set	= mtk_pinconf_adv_drive_set_raw,
+> +	.adv_drive_get	= mtk_pinconf_adv_drive_get_raw,
+
+And also use spaces instead of tabs for all entries here.
+
+With those changes,
 
 Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
