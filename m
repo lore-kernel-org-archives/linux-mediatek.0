@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 073FFC25B08
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 08:09:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C78C0C2BB41
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 08:10:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ak72FGFbfXpSRonkz3yL70wABVme2CnwT8ZwOZfKHbk=; b=O52KISvVmmEEppO1DiyJs2axM2
-	YdPrn6abqOz+dJSGjQ27JB7RqSYqROeYUGTi1Yc+aYSIE+prP0LLgBpji4/1YNah0ncq2vZmQpkHB
-	kOpF2hiC9Ke7tf3lrUV73AKkvbS7zt56DRShop4lKUC6qMJP01I3ISdKk8t6di5oMP0djf2Y4mG5O
-	uqF7Oj3eofzGB1LXBNgpzwGWwx4HLqNz2WR+7fvYqTlcKZFgV2Bt3bm3jNuw32pv+uWret+Ujicy2
-	6vgYYa02C1ANtx39R9n2NajYfeFIaNycKmmctWAdWHVgd+7P5sB0cuz3QPFTYrt8WDWhaq1A2x2vA
-	FbctYDWA==;
+	bh=LWK95oP5oKx5jLZsARdUZBbefoGwp+gOvhma7vrlCpI=; b=W/pjg4vDDW+6G/NMfz/kzGij7S
+	ef5yZVJQwLLVUijE7ty5CueE3smq0KXzdOkAItAwyVPULrgfpZ7zxfGct6TlTQctPiww7beF9aVgz
+	+imVRZvPt9L+N1rSGz0/WLbVpE6jQXpqc51U3FY34VxpGryAXq02W2zoBK1VaS4xEw/aatKvCkjbt
+	2KBdRtWuKAwyvbpC+PpIS3icpFv0wvuJRmHJhoOxGHLC5IL10PPEIoFpc0ISeb1qSlxZ5KobFX3cj
+	pItLYTPSM7oycScgJTOXIcx3QfBzmvbC7LuQOqHz9AZLmOH7qScpEvnCXgOVvhcCAeimtkzjx/2x7
+	bGKyh/Fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOE7b-00EbA2-0o; Wed, 17 Aug 2022 08:09:51 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1oOE8F-00EcGP-N7; Wed, 17 Aug 2022 08:10:31 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOE6R-00EZ4r-Hd
-	for linux-mediatek@lists.infradead.org; Wed, 17 Aug 2022 08:08:44 +0000
-Received: by mail-wr1-x433.google.com with SMTP id z16so15262681wrh.12
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Aug 2022 01:08:37 -0700 (PDT)
+	id 1oOE6V-00EZHL-3k
+	for linux-mediatek@lists.infradead.org; Wed, 17 Aug 2022 08:08:45 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id z16so15262848wrh.12
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Aug 2022 01:08:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=Ak72FGFbfXpSRonkz3yL70wABVme2CnwT8ZwOZfKHbk=;
-        b=Ajvpgr8bma/+PrVmx7XaOtQ49NzWRN9qEw5X0ud3GIXmt/6SU8O1FfBlqYK+5MRnvl
-         k082reGCUiZFOn8mjysSGp3UlnXUNOSBNXyufVFKQDaVG3Ap0kvEXvnO0fKcgBPLN+FS
-         YDusNfm2UUWgu/4mq1QDMvDX/u5XxLrEDI9mAFpWEm/ebPWm+AYBE+PbteKStS0ykrn0
-         EBlDms3VVM4Av1CZt71PudPptXrrh0T50oBnj1FPl50XGS8C+hgE6uqX1Cou96qrtMaG
-         jeDIwjp2RErYd786ARvI2UXD7V3a73oU8C2VkpZa8il/RHYsXoIWjrmIi+Q0zMBAgGvK
-         rxfw==
+        bh=LWK95oP5oKx5jLZsARdUZBbefoGwp+gOvhma7vrlCpI=;
+        b=f0o8HbL81Cbajn0LlWxCI23dsDL/AOMSWSwK9bLg3BtFqxuu0TQnlZgMI7NIfD1j/x
+         VONDXYw5T42+UTm7ljFx6jHpNiDCK6bfieHRhCGZ6WLnonO8sStKp2ASsUwYgTMEbiNl
+         Afs4hhndKZkov9gggCnJYANns2YJByAxPRFXqkaQAfmPPCIyJ75jKKAqkRf6seXuFgjW
+         Fp9w8Ia4eHjbHEAmhlmX9U/S2WHlRxof7+BEYGG4KB9UmHBZLCXv9vIRysONaywC7MlD
+         UcNpYySrxUFzJQkidtCvuy3ozSDwb8ItzxUKCL4YwZuXP4v3fVyig5DM+bB2M2y694sQ
+         XAcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=Ak72FGFbfXpSRonkz3yL70wABVme2CnwT8ZwOZfKHbk=;
-        b=gtKjqtAhK2bkIKePPw+bGxQMTZbhU6WWtbQdhisNUNVqBKL0gPrBrTY6JGoElfj1VZ
-         zIFaLeFYxLtbRfyFyP+mh4MYyE31mZ+ONYPEj7r3rW4QXS127fJ+Wgayz6f2hyak83gI
-         RlXiM/GpoISfz3MIvFPbu3t8Ex2N660DI5ykaN8EB9s8j0pcynsMn9KjN8qjvLGHzyZa
-         rCHEia9+NTIFGEsktmlHVC+vnyV0EQtEHGGeUfuBR7xr/4Iyxx095XabO6vb7axMQXbr
-         YYZR1EsDLPQY9J8uGzxfGvNCtfH0dvCJLA69mn2hJcrKe8C1tIBN14Ev5y7tD2PMjUmd
-         UFgA==
-X-Gm-Message-State: ACgBeo2td331/5SLTrBp14gkmbqtiTBshGq0t/ah7wWIPTCMeRluYAiX
-	xzokTNmMWc2Hn0W8lyYnP56aRg==
-X-Google-Smtp-Source: AA6agR6s+hpMiCmi6f0fKUxsw27bi9vrOcIGbIViJi2IROSVBsDAsYU1ZIvyV4w1sWcfqauxhtc27Q==
-X-Received: by 2002:a05:6000:1d82:b0:220:5f9b:9a77 with SMTP id bk2-20020a0560001d8200b002205f9b9a77mr13360040wrb.622.1660723715881;
-        Wed, 17 Aug 2022 01:08:35 -0700 (PDT)
+        bh=LWK95oP5oKx5jLZsARdUZBbefoGwp+gOvhma7vrlCpI=;
+        b=I0Qhr7jseenH52Dc/w/OYP5bCPVCbU4F7y0iyIcdTfdp4dx5r9UmnzMg3qPgjFCI4u
+         jTBGRYXrrUb9hyFdvTUk2SzJxzu3yhiDOPaKX7yu9+Nm7L0seD0rTbRr/YJZRaASschA
+         W6ABbXzm2GzTaOM2qFysHHWDAsy7naXjrXHcL6fFwpKSzN9+oXmLESqOeesgL8NHsJxM
+         BqpgSqQyqmzj9C3ZNjDfeJedyXEAOO2nKFxychv+fcaLw/P6wCA7eW9SMdmtsG9KhxuL
+         cOCztwFyKJ0J/ShDlROXMXJj609DCaiRF4VqdfmOSvIB7L2GA4jOwv18fZMuc8MnBp7b
+         8HgQ==
+X-Gm-Message-State: ACgBeo2l+U58zmYQdrOHyFsVncJYzbR/5vpVB0nZy+IqsvFnVTkyITOh
+	OyS2convTHCEWCOZwGBaIsovyA==
+X-Google-Smtp-Source: AA6agR4nxG9zqxTof6Y+siXBdw1kqtlHb/D0yV1+6gVF3PSI/A35+NZWfSjXcxpiP1+cNMMLqFn9kQ==
+X-Received: by 2002:adf:de91:0:b0:225:2609:27c5 with SMTP id w17-20020adfde91000000b00225260927c5mr808023wrl.252.1660723719447;
+        Wed, 17 Aug 2022 01:08:39 -0700 (PDT)
 Received: from Balsam-ThinkPad-T480.civfrance.com (58.188.158.77.rev.sfr.net. [77.158.188.58])
-        by smtp.gmail.com with ESMTPSA id u15-20020a05600c19cf00b003a54d610e5fsm1391992wmq.26.2022.08.17.01.08.34
+        by smtp.gmail.com with ESMTPSA id u15-20020a05600c19cf00b003a54d610e5fsm1391992wmq.26.2022.08.17.01.08.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Aug 2022 01:08:35 -0700 (PDT)
+        Wed, 17 Aug 2022 01:08:39 -0700 (PDT)
 From: bchihi@baylibre.com
 To: rafael@kernel.org,
 	rui.zhang@intel.com,
@@ -79,17 +79,18 @@ Cc: linux-pm@vger.kernel.org,
 	louis.yu@mediatek.com,
 	rex-bc.chen@mediatek.com,
 	abailon@baylibre.com
-Subject: [PATCH v9,1/7] thermal: mediatek: Relocate driver to mediatek folder
-Date: Wed, 17 Aug 2022 10:07:51 +0200
-Message-Id: <20220817080757.352021-2-bchihi@baylibre.com>
+Subject: [PATCH v9,3/7] arm64: dts: mt8192: Add thermal zones and thermal nodes
+Date: Wed, 17 Aug 2022 10:07:53 +0200
+Message-Id: <20220817080757.352021-4-bchihi@baylibre.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220817080757.352021-1-bchihi@baylibre.com>
 References: <20220817080757.352021-1-bchihi@baylibre.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220817_010839_647966_5D515838 
-X-CRM114-Status: GOOD (  16.09  )
+X-CRM114-CacheID: sfid-20220817_010843_245668_50AD4D4D 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,117 +105,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Michael Kao <michael.kao@mediatek.com>
+From: Balsam CHIHI <bchihi@baylibre.com>
 
-Add MediaTek proprietary folder to upstream more thermal zone and cooler
-drivers, relocate the original thermal controller driver to it, and rename it
-as "auxadc_thermal.c" to show its purpose more clearly.
+Add thermal zones and thermal nodes for the mt8192.
 
-Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-Co-developed-by: Ben Tseng <ben.tseng@mediatek.com>
-Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
-Co-developed-by: Balsam CHIHI <bchihi@baylibre.com>
 Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
 ---
- drivers/thermal/Kconfig                       | 14 ++++--------
- drivers/thermal/Makefile                      |  2 +-
- drivers/thermal/mediatek/Kconfig              | 22 +++++++++++++++++++
- drivers/thermal/mediatek/Makefile             |  1 +
- .../auxadc_thermal.c}                         |  2 +-
- 5 files changed, 29 insertions(+), 12 deletions(-)
- create mode 100644 drivers/thermal/mediatek/Kconfig
- create mode 100644 drivers/thermal/mediatek/Makefile
- rename drivers/thermal/{mtk_thermal.c => mediatek/auxadc_thermal.c} (99%)
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 111 +++++++++++++++++++++++
+ 1 file changed, 111 insertions(+)
 
-diff --git a/drivers/thermal/Kconfig b/drivers/thermal/Kconfig
-index e052dae614eb..d35f63daca3b 100644
---- a/drivers/thermal/Kconfig
-+++ b/drivers/thermal/Kconfig
-@@ -412,16 +412,10 @@ config DA9062_THERMAL
- 	  zone.
- 	  Compatible with the DA9062 and DA9061 PMICs.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index cbae5a5ee4a0..59ef4da06a70 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -12,6 +12,7 @@
+ #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
+ #include <dt-bindings/phy/phy.h>
+ #include <dt-bindings/power/mt8192-power.h>
++#include <dt-bindings/reset/mt8192-resets.h>
  
--config MTK_THERMAL
--	tristate "Temperature sensor driver for mediatek SoCs"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
--	depends on HAS_IOMEM
--	depends on NVMEM || NVMEM=n
--	depends on RESET_CONTROLLER
--	default y
--	help
--	  Enable this option if you want to have support for thermal management
--	  controller present in Mediatek SoCs
-+menu "Mediatek thermal drivers"
-+depends on ARCH_MEDIATEK || COMPILE_TEST
-+source "drivers/thermal/mediatek/Kconfig"
-+endmenu
+ / {
+ 	compatible = "mediatek,mt8192";
+@@ -599,6 +600,28 @@ spi0: spi@1100a000 {
+ 			status = "disabled";
+ 		};
  
- config AMLOGIC_THERMAL
- 	tristate "Amlogic Thermal Support"
-diff --git a/drivers/thermal/Makefile b/drivers/thermal/Makefile
-index def8e1a0399c..f7daeb8056c4 100644
---- a/drivers/thermal/Makefile
-+++ b/drivers/thermal/Makefile
-@@ -55,7 +55,7 @@ obj-y				+= st/
- obj-$(CONFIG_QCOM_TSENS)	+= qcom/
- obj-y				+= tegra/
- obj-$(CONFIG_HISI_THERMAL)     += hisi_thermal.o
--obj-$(CONFIG_MTK_THERMAL)	+= mtk_thermal.o
-+obj-y				+= mediatek/
- obj-$(CONFIG_GENERIC_ADC_THERMAL)	+= thermal-generic-adc.o
- obj-$(CONFIG_UNIPHIER_THERMAL)	+= uniphier_thermal.o
- obj-$(CONFIG_AMLOGIC_THERMAL)     += amlogic_thermal.o
-diff --git a/drivers/thermal/mediatek/Kconfig b/drivers/thermal/mediatek/Kconfig
-new file mode 100644
-index 000000000000..8ff32370b591
---- /dev/null
-+++ b/drivers/thermal/mediatek/Kconfig
-@@ -0,0 +1,22 @@
-+config MTK_THERMAL
-+	tristate "MediaTek thermal drivers"
-+	depends on THERMAL_OF
-+	help
-+	  This is the option for MediaTek thermal software solutions.
-+	  Please enable corresponding options to get temperature
-+	  information from thermal sensors or turn on throttle
-+	  mechaisms for thermal mitigation.
++		lvts_ap: thermal-sensor@1100b000 {
++			compatible = "mediatek,mt8192-lvts-ap";
++			#thermal-sensor-cells = <1>;
++			reg = <0 0x1100b000 0 0x1000>;
++			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&infracfg CLK_INFRA_THERM>;
++			resets = <&infracfg MT8192_INFRA_RST0_THERM_CTRL_SWRST>;
++			nvmem-cells = <&lvts_e_data1>;
++			nvmem-cell-names = "lvts_calib_data1";
++		};
 +
-+if MTK_THERMAL
++		lvts_mcu: thermal-sensor@11278000 {
++			compatible = "mediatek,mt8192-lvts-mcu";
++			#thermal-sensor-cells = <1>;
++			reg = <0 0x11278000 0 0x1000>;
++			interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&infracfg CLK_INFRA_THERM>;
++			resets = <&infracfg MT8192_INFRA_RST4_THERM_CTRL_MCU_SWRST>;
++			nvmem-cells = <&lvts_e_data1>;
++			nvmem-cell-names = "lvts_calib_data1";
++		};
 +
-+config MTK_SOC_THERMAL
-+	tristate "AUXADC temperature sensor driver for MediaTek SoCs"
-+	depends on HAS_IOMEM
-+	depends on NVMEM
-+	depends on RESET_CONTROLLER
-+	help
-+	  Enable this option if you want to get SoC temperature
-+	  information for MediaTek platforms. This driver configures
-+	  thermal controllers to collect temperature via AUXADC interface.
+ 		spi1: spi@11010000 {
+ 			compatible = "mediatek,mt8192-spi",
+ 				     "mediatek,mt6765-spi";
+@@ -1457,4 +1480,92 @@ larb2: larb@1f002000 {
+ 			power-domains = <&spm MT8192_POWER_DOMAIN_MDP>;
+ 		};
+ 	};
 +
-+endif
-diff --git a/drivers/thermal/mediatek/Makefile b/drivers/thermal/mediatek/Makefile
-new file mode 100644
-index 000000000000..bec325f06a46
---- /dev/null
-+++ b/drivers/thermal/mediatek/Makefile
-@@ -0,0 +1 @@
-+obj-$(CONFIG_MTK_SOC_THERMAL)		+= auxadc_thermal.o
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-similarity index 99%
-rename from drivers/thermal/mtk_thermal.c
-rename to drivers/thermal/mediatek/auxadc_thermal.c
-index ede94eadddda..60924f8f98e9 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mediatek/auxadc_thermal.c
-@@ -23,7 +23,7 @@
- #include <linux/reset.h>
- #include <linux/types.h>
- 
--#include "thermal_hwmon.h"
-+#include "../thermal_hwmon.h"
- 
- /* AUXADC Registers */
- #define AUXADC_CON1_SET_V	0x008
++	thermal_zones: thermal-zones {
++		cpu0-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_mcu 0>;
++		};
++		cpu1-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_mcu 1>;
++		};
++		cpu2-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_mcu 2>;
++		};
++		cpu3-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_mcu 3>;
++		};
++		cpu4-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_mcu 4>;
++		};
++		cpu5-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_mcu 5>;
++		};
++		cpu6-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_mcu 6>;
++		};
++		cpu7-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_mcu 7>;
++		};
++		vpu1-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_ap 0>;
++		};
++		vpu2-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_ap 1>;
++		};
++		gpu1-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_ap 2>;
++		};
++		gpu2-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_ap 3>;
++		};
++		infra-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_ap 4>;
++		};
++		cam-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_ap 5>;
++		};
++		md1-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_ap 6>;
++		};
++		md2-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_ap 7>;
++		};
++		md3-thermal {
++			polling-delay = <0>;
++			polling-delay-passive = <0>;
++			thermal-sensors = <&lvts_ap 8>;
++		};
++	};
+ };
 -- 
 2.34.1
 
