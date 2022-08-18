@@ -4,66 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 840A5C00140
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 11:03:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1978CC00140
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 13:27:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZX9A3gZvFNdk2JAqR4Ial8X9goWPWpAqjBmh4FNbkC4=; b=4uadbxcNMQrufWEzK0wHRI1Zr4
-	4oABAaGlUhuB7dtct9kLSCXdvtF8TapFJ3ZArw0jzfq9bSWaWiO9+E6749LT5jfznyD0g1NxYgztW
-	9F1MPSI/Ecz1UndiWtK58uEHPUdLnTWqxJh3vp1SUw2I7vqhJZiRO0Ht58HAi5k4j4olNWsYc4xKP
-	QDGw4ZOJHAa0oxaFljLphLC8KAFU4Xs/Qy/zKIxeKCaSs5izbpx1yUrA7heTxmBn32bS4F41sshYI
-	jeE2bUoYWwyYUkC/JwmACUaOBdITmP4/LqUcEMcCo4pLEFMIm1QNH0/hryG7AdiHo1nwegiKQw6zV
-	L421cXVw==;
+	bh=wAqai+lXG/XM8EttQSkFjFqBGi7USxO4pZCplt3DnME=; b=VK8vsPccEs7KhQTJGghZvuxnOB
+	QrGbcSVx8iF2lya8Lj9HXHUWWLI4iMBVqRnL0fx+xri8BvIKdJzBrUFXForMhc57tU7T8GKvD0Bq+
+	JfbPcFjUwxTGX8m7AG60sEWZIWZpOscF81hl9RJP5YSVnhDXXCc1Bp8Iy4Nx3e6NlGE2oN04T7WWT
+	tlLp4xdSBAa6umYLSd+rj+qCQp0xvzvDBRybzTFYa2Ng3z9MxMqztCWL3nnecIDER1nCGJPvQ5vOe
+	vEG2oE6aGaoPfNnXgprOApYs8kjDjMiY9gLp+W+zwKPipPOGDHnOAZmCV4yWO8TdOt1vEFvNqvshr
+	cxBYIjUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOdIe-003AEJ-O7; Thu, 18 Aug 2022 11:02:56 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1oOfYb-005NpX-HS; Thu, 18 Aug 2022 13:27:33 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOdIH-0039MJ-Bc; Thu, 18 Aug 2022 11:02:35 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id 70B84CE2033;
-	Thu, 18 Aug 2022 11:02:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66FFFC433D6;
-	Thu, 18 Aug 2022 11:02:24 +0000 (UTC)
-Message-ID: <b0b4ff87-355e-1910-c6d2-a9690f3d7543@xs4all.nl>
-Date: Thu, 18 Aug 2022 13:02:23 +0200
+	id 1oOezz-004qyQ-DK
+	for linux-mediatek@lists.infradead.org; Thu, 18 Aug 2022 12:51:48 +0000
+Received: by mail-lj1-x232.google.com with SMTP id t21so1599555ljc.13
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 05:51:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=wAqai+lXG/XM8EttQSkFjFqBGi7USxO4pZCplt3DnME=;
+        b=mVVqXERkdEtMBQvWvwInmEeiAtkRN2jSEfsK/gHOd+N3so+k1Z7TEAWpWI0w6pSX2K
+         zkAohq61XTRTyDz6+UUGzX1uZOHgp61QPeu9P2Uv6ZsgmiwgTvbWcsAJZW5kgIu5NF8v
+         cLgf3I/sthTuqGVdybqLZ0piop06pn4P6NsEDQXraP1HprX1cXhl0w/sDCOGmQQZ4l0d
+         IrPDp9H0uvZ4sr97AVvQXqdAe7N5FTRA0P8RJw2GiE730oQBt0lCIE3lEfkxjQT+cR4I
+         4r1gCgLB4OmIVEvge7SHdIr0W58W3HuOu+RxYO7V0m5HVFDlCZDzmiXhbFx48pOYE/zN
+         PntA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=wAqai+lXG/XM8EttQSkFjFqBGi7USxO4pZCplt3DnME=;
+        b=fBPygLCsF66gIQXlfDA1oxt9OGRLsaCGSzpfyv5Hm7BQrSjd+Z7ThhR8BoZtu4xXA2
+         PfzUFX/mTmQlrm6Jy0VqDX7h0TZdYdbuRNfwez7gNKytDF1T60lVQSkLawJOli8pTJOj
+         gwbRzjpuXwAaPgMT2nuVIbvsaUgumBNdBIGlLx32PBqOG7mKJS+fMC204ER7T1Ep5vf5
+         sky6rZrH+1ELf336XSmrUCBQKgLN+uHG0ePSO+/YX5V17uQIN3GRsRVhdxg0GG5V+H6q
+         4Xj0vwR7sj9j5A59+Rv8ZOyqCoHGXGxSj/UoQpiVL7AL2XDhrXTsDX7O9HID5fqolpBJ
+         bS4Q==
+X-Gm-Message-State: ACgBeo0I4sctUyRqKJP8U6+b/N/qHRHQOW5lN6+bo7im3u97KsJU4Kte
+	t9Ufmh+6Z26itOmOWsmufeeXwQ==
+X-Google-Smtp-Source: AA6agR7nEPbqE+6xr6o+AFM2JxbiRFCsOLtcOWcSBgLsZS5/v6lBOfAfGh51i5XsjzugZinmU4Fksg==
+X-Received: by 2002:a2e:9acd:0:b0:261:6fd6:cc with SMTP id p13-20020a2e9acd000000b002616fd600ccmr830228ljj.55.1660827103843;
+        Thu, 18 Aug 2022 05:51:43 -0700 (PDT)
+Received: from ?IPV6:2001:14bb:ae:539c:53ab:2635:d4f2:d6d5? (d15l54z9nf469l8226z-4.rev.dnainternet.fi. [2001:14bb:ae:539c:53ab:2635:d4f2:d6d5])
+        by smtp.gmail.com with ESMTPSA id i19-20020a2ea233000000b0025df4aa1e3asm209865ljm.64.2022.08.18.05.51.42
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 18 Aug 2022 05:51:43 -0700 (PDT)
+Message-ID: <3d91fe87-feed-d083-9eeb-51293aead67a@linaro.org>
+Date: Thu, 18 Aug 2022 15:51:41 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v25 4/4] media: platform: mtk-mdp3: add MediaTek MDP3
- driver
+ Thunderbird/91.12.0
+Subject: Re: [PATCH RESEND] dt-bindings: timer: Add compatible for MediaTek
+ MT8188
 Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Alexandre Courbot
- <acourbot@chromium.org>, tfiga@chromium.org, drinkcat@chromium.org,
- pihsun@chromium.org, hsinyi@google.com,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com, cellopoint.kai@gmail.com,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- daoyuan huang <daoyuan.huang@mediatek.com>
-References: <20220817095629.29911-1-moudy.ho@mediatek.com>
- <20220817095629.29911-5-moudy.ho@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20220817095629.29911-5-moudy.ho@mediatek.com>
+To: Johnson Wang <johnson.wang@mediatek.com>, daniel.lezcano@linaro.org,
+ matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220818124602.20394-1-johnson.wang@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220818124602.20394-1-johnson.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220818_040233_817738_450FEFE4 
-X-CRM114-Status: GOOD (  18.32  )
+X-CRM114-CacheID: sfid-20220818_055147_546085_50163938 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,71 +95,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Moudy,
-
-I noticed one more thing (and it is probably better to post a v26 after all):
-
-On 17/08/2022 11:56, Moudy Ho wrote:
-> This patch adds driver for MediaTek's Media Data Path ver.3 (MDP3).
-> It provides the following functions:
->   color transform, format conversion, resize, crop, rotate, flip
->   and additional image quality enhancement.
+On 18/08/2022 15:46, Johnson Wang wrote:
+> Add dt-binding documentation of timer for MediaTek MT8188 SoC
+> platform.
 > 
-> The MDP3 driver is mainly used for Google Chromebook products to
-> import the new architecture to set the HW settings as shown below:
->   User -> V4L2 framework
->     -> MDP3 driver -> SCP (setting calculations)
->       -> MDP3 driver -> CMDQ (GCE driver) -> HW
+> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> Each modules' related operation control is sited in mtk-mdp3-comp.c
-> Each modules' register table is defined in file with "mdp_reg_" prefix
-> GCE related API, operation control  sited in mtk-mdp3-cmdq.c
-> V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
-> Probe, power, suspend/resume, system level functions are defined in
-> mtk-mdp3-core.c
-> 
-> v4l2-compliance 1.22.1, 32 bits, 32-bit time_t
+> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> index f1c848af91d3..8bbb6e94508b 100644
+> --- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> @@ -25,6 +25,7 @@ Required properties:
+>  	For those SoCs that use SYST
+>  	* "mediatek,mt8183-timer" for MT8183 compatible timers (SYST)
+>  	* "mediatek,mt8186-timer" for MT8186 compatible timers (SYST)
+> +	* "mediatek,mt8188-timer" for MT8188 compatible timers (SYST)
 
-First of all, the v4l2-compliance output belongs to the cover letter, not
-to a commit log for a patch.
+Where is the driver change implementing this?
 
-More importantly, I can tell that v4l2-compliance was a prepackaged version,
-but you need to compile it from the git repo yourself:
-
-git clone git://linuxtv.org/v4l-utils.git
-cd v4l-utils
-./bootstrap.sh
-./configure
-make
-sudo make install
-
-Running v4l2-compliance should start with this (or something close):
-
-v4l2-compliance 1.23.0-4941, 64 bits, 64-bit time_t
-v4l2-compliance SHA: 71112d214762 2022-07-28 15:31:13
-
-I need to see the SHA to confirm that you tested with a sufficiently new
-v4l2-compliance version. Prepackaged v4l2-compliance binaries tend to
-be too old, at least for the purpose of compliance checking a new driver.
-
-Regards,
-
-	Hans
-
-> Compliance test for mtk-mdp3 device /dev/video0:
-> Driver Info:
-> 	Driver name      : mtk-mdp3
-> 	Card type        : MediaTek MDP3
-> 	Bus info         : platform:14001000.mdp3-rdma0
-> 	Driver version   : 6.0.0
-> 	Capabilities     : 0x84204000
-> 		Video Memory-to-Memory Multiplanar
-> 		Streaming
-> 		Extended Pix Format
-> 		Device Capabilities
-> 	Device Caps      : 0x04204000
-> 		Video Memory-to-Memory Multiplanar
-> 		Streaming
-> 		Extended Pix Format
-
+Best regards,
+Krzysztof
 
