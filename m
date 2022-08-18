@@ -4,87 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9403C00140
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 09:21:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDCFDC00140
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 09:28:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kCoStLRYCDJomu2FK7JWpgJUoeguj2TGBHb8GnavUkA=; b=ENMhMgZKxRJdD13fIKhLywAyiF
-	H6wlnLTKdJwRo6Ua9R1DYrrYMIFhNyH/NggBVnQNIMNb52Wv8sHz5V8BQvOsnrL1O3w4l4TlORPk9
-	Bhwo5aV1lLE7NtXnECPu6rH1lkU+J9wxUm9YsNn9GNjVt5vO2gaxnSGOUgoJocKa7TGoov/vG3Zc/
-	4mwIdNBdJ0xlaIomdifRXLHR/9SW4f/ryMQ2k9ajvgZKC6uN5NrDL386bgZb9X8po7By46DYGJ9Ss
-	gjiOinrpR4CkGpbCwm3TQyBodDv7zJRV5BDIkyFtpLX0NFF3FsuoQO/oYWNT8A2BmRa9zHYxZ541E
-	NRW1/giA==;
+	bh=GkI2Q29NX4fYBfJbo6t6SxsmffGa04COpADeR3pZqb8=; b=too4jwAYk530cLJIC7VGr8O+35
+	QOWQ+TDebNTYtdRUoVL8/UzvX+FvU4ZDesSYKfK39dOaCM3qTmGhb2WyaI9Q4K83dkNamvmMHqL4E
+	WHp9/rXHPDGACeKgqgCR8JLMqs5A+vZQarupf8NSeBMJNGGhLTxOF47Hqs3VvO075DXSYwtweXUu6
+	57n53RpIgkCpTOEsoCBT7b5sdHss+7g1WQAN6syr0UkY56f09cIu7Y5bs7HTBR7CZnJDGVXQYi8ag
+	4Hc5534WuxSl1+WdO5qelwb/EU6YVSR5rJn2SZ6xYr1Gv2FwmPWe41u0CdoKX7zIhBrgy/76GQTiN
+	u7vaH5tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oObhu-001X81-SL; Thu, 18 Aug 2022 09:20:54 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1oOboe-001cGQ-9p; Thu, 18 Aug 2022 09:27:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOben-001UND-IT; Thu, 18 Aug 2022 09:17:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1660814239; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=cBP8geGX2ylyhP3nABk3rAijRIaQY633+iZ8iexA7hNYJHYmjhjiTpXncvaEHR07kDcXyF4wV5YSgmGkJ4dqBCOH/H0jJp/k/pwowDBsjlJG9B3KGnCyvrtVgCZwLQ/6ZbNtGaJqQRRzTswcqDzN1wuRXqGgaAUuKama1ogusuI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1660814239; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=kCoStLRYCDJomu2FK7JWpgJUoeguj2TGBHb8GnavUkA=; 
-	b=SLD1IGXgc8fc8/LwY+fh2QF/AjaBszVct5rdFI2YklD28Ziy53vRDMqaqyQMfJaMDF1p6ok4QBkv0r3tanbRD5/yiAC6JnDEz+BGGoLubACZewWSFH7DwK0vC9Qy0y+kMgyWh5C54k6vmOYSEC9V51ax5gzmXLLxRWjsPsrrwgA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1660814239;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=kCoStLRYCDJomu2FK7JWpgJUoeguj2TGBHb8GnavUkA=;
-	b=LQTdkQNlPNElQOBLSFSFZTrpMyGq4/uVD34ACdq/L+U94S3C52Xmr6L/zMrOp2QJ
-	2YpHDLnYd6n1kUN01D7GPIpR5iQO316B6ib+2mwr7XA1QA5dwYr0hDnZ3QPSlrK2nNv
-	PjQKQ8PGogC82WMXmOO3nDYVWpOamGlpxFsJOals=
-Received: from arinc9-PC.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1660814237710308.04653731142696; Thu, 18 Aug 2022 02:17:17 -0700 (PDT)
-From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	id 1oOboZ-001c7h-6U; Thu, 18 Aug 2022 09:27:49 +0000
+X-UUID: 6f83e694241a46358a5165482f9060f2-20220818
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=GkI2Q29NX4fYBfJbo6t6SxsmffGa04COpADeR3pZqb8=;
+	b=dhZzPg7/g0t8WwEC2uyGtO1YGyjH7IYxe1ShudiT9s3AjtHapN6uX+2RY+Ec9o1L/uRj8HhH/q6/oBsH8SJSOux1GZHs3zV1BwfKJ4zbNfJQlAx0K2lJdUbhatymfS+Qkkxe8QrTxqaBHHABzvwZ+r4QJQaSIy1sJy2mK2QvJ58=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:b4393b3e-b72b-4a31-91ce-6fa625507b78,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:d8d0099d-da39-4e3b-a854-56c7d2111b46,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 6f83e694241a46358a5165482f9060f2-20220818
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 281951684; Thu, 18 Aug 2022 02:27:35 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 18 Aug 2022 16:47:02 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 18 Aug 2022 16:47:01 +0800
+Message-ID: <61af66dd70c7a4a95072868cdf217d3747b97634.camel@mediatek.com>
+Subject: Re: [PATCH v2] dt-bindings: pinctrl: mt8186: Fix 'reg-names' for
+ pinctrl nodes
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
+CC: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	Luiz Angelo Daros de Luca <luizluca@gmail.com>,
-	Sander Vanheule <sander@svanheule.net>,
-	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	erkin.bozoglu@xeront.com,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-Subject: [PATCH v3 6/6] dt-bindings: net: dsa: mediatek,mt7530: update binding description
-Date: Thu, 18 Aug 2022 12:16:27 +0300
-Message-Id: <20220818091627.51878-7-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220818091627.51878-1-arinc.unal@arinc9.com>
-References: <20220818091627.51878-1-arinc.unal@arinc9.com>
+	<angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	"Chen-Yu Tsai" <wenst@chromium.org>, Guodong Liu <guodong.liu@mediatek.com>
+Date: Thu, 18 Aug 2022 16:47:01 +0800
+In-Reply-To: <20220817160928.ppkjonuymr7rn4bu@notapiano>
+References: <20220817052615.27153-1-allen-kh.cheng@mediatek.com>
+	 <20220817160928.ppkjonuymr7rn4bu@notapiano>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220818_021741_697605_47ACD2F5 
-X-CRM114-Status: GOOD (  22.34  )
+X-CRM114-CacheID: sfid-20220818_022747_293963_F993A29A 
+X-CRM114-Status: GOOD (  25.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,127 +86,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update the description of the binding.
+Hi Nícolas,
 
-- Describe the switches, which SoCs they are in, or if they are standalone.
-- Explain the various ways of configuring MT7530's port 5.
-- Remove phy-mode = "rgmii-txid" from description. Same code path is
-followed for delayed rgmii and rgmii phy-mode on mtk_eth_soc.c.
+On Wed, 2022-08-17 at 12:09 -0400, Nícolas F. R. A. Prado wrote:
+> Hi Allen,
+> 
+> On Wed, Aug 17, 2022 at 01:26:15PM +0800, Allen-KH Cheng wrote:
+> > The mt8186 contains 8 GPIO physical address bases that correspond
+> > to
+> > the 'reg-names' of the pinctrl driver. The 'reg-names' entries in
+> > bindings are ordered incorrectly, though. The system crashes due of
+> > an
+> > erroneous address when the regulator initializes.
+> > 
+> > We fix the 'reg-names' for the pinctrl nodes and the pinctrl-mt8186
+> > example in bindings.
+> > 
+> > Fixes: 338e953f1bd1 ("dt-bindings: pinctrl: mt8186: add pinctrl
+> > file and binding document")
+> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> > Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+> 
+> The sender's (your) signed-off-by should come last [1]. Also, what is
+> the
+> participation of Guodong in this patch? If Guodong helped in writing
+> the patch
+> there should also be a Co-developed-by tag for Guodong, as shown in
+> [1].
+> 
+> [1] 
+> https://urldefense.com/v3/__https://www.kernel.org/doc/html/latest/process/submitting-patches.html*when-to-use-acked-by-cc-and-co-developed-by__;Iw!!CTRNKA9wMg0ARbw!1_mWpRIIYugoUq7AlCzsuuJoxY3jETMdZ6U3QXxh8a8FKe2mb5kCUOSAvZGqK3bUHBje7g$
+>  
 
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
----
- .../bindings/net/dsa/mediatek,mt7530.yaml     | 97 ++++++++++++-------
- 1 file changed, 62 insertions(+), 35 deletions(-)
+Guodong and I consult on this patch. I will add a Co-developed-by tag
+for Guodong.
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index b36497c4636e..caecdf224e2b 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -13,41 +13,68 @@ maintainers:
-   - Sean Wang <sean.wang@mediatek.com>
- 
- description: |
--  Port 5 of mt7530 and mt7621 switch is muxed between:
--  1. GMAC5: GMAC5 can interface with another external MAC or PHY.
--  2. PHY of port 0 or port 4: PHY interfaces with an external MAC like 2nd GMAC
--     of the SOC. Used in many setups where port 0/4 becomes the WAN port.
--     Note: On a MT7621 SOC with integrated switch: 2nd GMAC can only connected to
--       GMAC5 when the gpios for RGMII2 (GPIO 22-33) are not used and not
--       connected to external component!
--
--  Port 5 modes/configurations:
--  1. Port 5 is disabled and isolated: An external phy can interface to the 2nd
--     GMAC of the SOC.
--     In the case of a build-in MT7530 switch, port 5 shares the RGMII bus with 2nd
--     GMAC and an optional external phy. Mind the GPIO/pinctl settings of the SOC!
--  2. Port 5 is muxed to PHY of port 0/4: Port 0/4 interfaces with 2nd GMAC.
--     It is a simple MAC to PHY interface, port 5 needs to be setup for xMII mode
--     and RGMII delay.
--  3. Port 5 is muxed to GMAC5 and can interface to an external phy.
--     Port 5 becomes an extra switch port.
--     Only works on platform where external phy TX<->RX lines are swapped.
--     Like in the Ubiquiti ER-X-SFP.
--  4. Port 5 is muxed to GMAC5 and interfaces with the 2nd GAMC as 2nd CPU port.
--     Currently a 2nd CPU port is not supported by DSA code.
--
--  Depending on how the external PHY is wired:
--  1. normal: The PHY can only connect to 2nd GMAC but not to the switch
--  2. swapped: RGMII TX, RX are swapped; external phy interface with the switch as
--     a ethernet port. But can't interface to the 2nd GMAC.
--
--    Based on the DT the port 5 mode is configured.
--
--  Driver tries to lookup the phy-handle of the 2nd GMAC of the master device.
--  When phy-handle matches PHY of port 0 or 4 then port 5 set-up as mode 2.
--  phy-mode must be set, see also example 2 below!
--  * mt7621: phy-mode = "rgmii-txid";
--  * mt7623: phy-mode = "rgmii";
-+  There are two versions of MT7530, standalone and in a multi-chip module.
-+
-+  MT7530 is a part of the multi-chip module in MT7620AN, MT7620DA, MT7620DAN,
-+  MT7620NN, MT7621AT, MT7621DAT, MT7621ST and MT7623AI SoCs.
-+
-+  MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs has got 10/100 PHYs
-+  and the switch registers are directly mapped into SoC's memory map rather than
-+  using MDIO. The DSA driver currently doesn't support this.
-+
-+  There is only the standalone version of MT7531.
-+
-+  Port 5 on MT7530 has got various ways of configuration.
-+
-+  For standalone MT7530:
-+
-+    - Port 5 can be used as a CPU port.
-+
-+    - PHY 0 or 4 of the switch can be muxed to connect to the gmac of the SoC
-+      which port 5 is wired to. Usually used for connecting the wan port
-+      directly to the CPU to achieve 2 Gbps routing in total.
-+
-+      The driver looks up the reg on the ethernet-phy node which the phy-handle
-+      property refers to on the gmac node to mux the specified phy.
-+
-+      The driver requires the gmac of the SoC to have "mediatek,eth-mac" as the
-+      compatible string and the reg must be 1. So, for now, only gmac1 of an
-+      MediaTek SoC can benefit this. Banana Pi BPI-R2 suits this.
-+      Check out example 5 for a similar configuration.
-+
-+    - Port 5 can be wired to an external phy. Port 5 becomes a DSA slave.
-+      Check out example 7 for a similar configuration.
-+
-+  For multi-chip module MT7530:
-+
-+    - Port 5 can be used as a CPU port.
-+
-+    - PHY 0 or 4 of the switch can be muxed to connect to gmac1 of the SoC.
-+      Usually used for connecting the wan port directly to the CPU to achieve 2
-+      Gbps routing in total.
-+
-+      The driver looks up the reg on the ethernet-phy node which the phy-handle
-+      property refers to on the gmac node to mux the specified phy.
-+
-+      For the MT7621 SoCs, rgmii2 group must be claimed with rgmii2 function.
-+      Check out example 5.
-+
-+    - In case of an external phy wired to gmac1 of the SoC, port 5 must not be
-+      enabled.
-+
-+      In case of muxing PHY 0 or 4, the external phy must not be enabled.
-+
-+      For the MT7621 SoCs, rgmii2 group must be claimed with rgmii2 function.
-+      Check out example 6.
-+
-+    - Port 5 can be muxed to an external phy. Port 5 becomes a DSA slave.
-+      The external phy must be wired TX to TX to gmac1 of the SoC for this to
-+      work. Ubiquiti EdgeRouter X SFP is wired this way.
-+
-+      Muxing PHY 0 or 4 won't work when the external phy is connected TX to TX.
-+
-+      For the MT7621 SoCs, rgmii2 group must be claimed with gpio function.
-+      Check out example 7.
- 
- properties:
-   compatible:
--- 
-2.34.1
+> 
+> > ---
+> 
+> [..]
+> > --- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
+> > +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
+> 
+> [..]
+> > @@ -232,12 +232,12 @@ examples:
+> >              <0x10002200 0x0200>,
+> >              <0x10002400 0x0200>,
+> >              <0x10002600 0x0200>,
+> > -            <0x10002A00 0x0200>,
+> > +            <0x10002a00 0x0200>,
+> 
+> Also, you should avoid making changes that don't have to do with the
+> patch
+> itself. This patch is about fixing the reg names, so no need to touch
+> the
+> formatting of addresses. It just adds noise.
+> 
+> Other than that,
+> 
+> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> Thanks,
+> Nícolas
+
+
+Ok, no problem. I will remove unrelated part.
+
+Thanks,
+Allen
+
 
 
