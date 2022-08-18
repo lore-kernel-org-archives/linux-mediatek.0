@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F29DC32772
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 10:55:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 840A5C00140
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 11:03:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=al5GHWwhCTpOiprZMy9QpziXfUbyTxU9Hp/ahf5SI2E=; b=N6Ppn3fl2NfHEN8JH0wTDqzzi8
-	vCNP0HkJ0UKoTn9hUZjnytRFjorZpFNQU5rTxrFHSRpUbhLO4OcyD8Ta1IzhwoeU3U+KVlEBSMqB3
-	iKp50dpp/b9EVwQ6uv1wAeFd2EYHjhog7MzNCfC2FPEMdY+e0O4vgndLAHr7nVf4IV9Lb0pYuEc3N
-	NeYYJD4v93fd1JoKa8UYj2BjCN1q6bFa5WUavwn6YmY+dQeTdGAdNj1iZ1/Ts+evboSwi3jVBqbUt
-	PzNg+pTm6SlgOjJHlrxmlVmLFiXZ9kN7X9j81VvlB01kr25gVsPgOoalTM7w0+me9uk4Xg+6gWkko
-	XxPFAxag==;
+	bh=ZX9A3gZvFNdk2JAqR4Ial8X9goWPWpAqjBmh4FNbkC4=; b=4uadbxcNMQrufWEzK0wHRI1Zr4
+	4oABAaGlUhuB7dtct9kLSCXdvtF8TapFJ3ZArw0jzfq9bSWaWiO9+E6749LT5jfznyD0g1NxYgztW
+	9F1MPSI/Ecz1UndiWtK58uEHPUdLnTWqxJh3vp1SUw2I7vqhJZiRO0Ht58HAi5k4j4olNWsYc4xKP
+	QDGw4ZOJHAa0oxaFljLphLC8KAFU4Xs/Qy/zKIxeKCaSs5izbpx1yUrA7heTxmBn32bS4F41sshYI
+	jeE2bUoYWwyYUkC/JwmACUaOBdITmP4/LqUcEMcCo4pLEFMIm1QNH0/hryG7AdiHo1nwegiKQw6zV
+	L421cXVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOdBi-002zn5-Bc; Thu, 18 Aug 2022 10:55:46 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oOdIe-003AEJ-O7; Thu, 18 Aug 2022 11:02:56 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOdBR-002zDo-FH; Thu, 18 Aug 2022 10:55:31 +0000
+	id 1oOdIH-0039MJ-Bc; Thu, 18 Aug 2022 11:02:35 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B488A61485;
-	Thu, 18 Aug 2022 10:55:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3CC0C433C1;
-	Thu, 18 Aug 2022 10:55:17 +0000 (UTC)
-Message-ID: <e716f649-dec7-ec71-8054-05f05167a042@xs4all.nl>
-Date: Thu, 18 Aug 2022 12:55:15 +0200
+	by sin.source.kernel.org (Postfix) with ESMTPS id 70B84CE2033;
+	Thu, 18 Aug 2022 11:02:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66FFFC433D6;
+	Thu, 18 Aug 2022 11:02:24 +0000 (UTC)
+Message-ID: <b0b4ff87-355e-1910-c6d2-a9690f3d7543@xs4all.nl>
+Date: Thu, 18 Aug 2022 13:02:23 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.10.0
@@ -62,8 +62,8 @@ In-Reply-To: <20220817095629.29911-5-moudy.ho@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220818_035529_641463_D4A2A150 
-X-CRM114-Status: GOOD (  29.06  )
+X-CRM114-CacheID: sfid-20220818_040233_817738_450FEFE4 
+X-CRM114-Status: GOOD (  18.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,7 +80,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Moudy,
 
-Just two nitpicks:
+I noticed one more thing (and it is probably better to post a v26 after all):
 
 On 17/08/2022 11:56, Moudy Ho wrote:
 > This patch adds driver for MediaTek's Media Data Path ver.3 (MDP3).
@@ -100,96 +100,49 @@ On 17/08/2022 11:56, Moudy Ho wrote:
 > V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
 > Probe, power, suspend/resume, system level functions are defined in
 > mtk-mdp3-core.c
+> 
+> v4l2-compliance 1.22.1, 32 bits, 32-bit time_t
 
-<snip>
+First of all, the v4l2-compliance output belongs to the cover letter, not
+to a commit log for a patch.
 
-> diff --git a/drivers/media/platform/mediatek/mdp3/Kconfig b/drivers/media/platform/mediatek/mdp3/Kconfig
-> new file mode 100644
-> index 000000000000..e8c593c1eb69
-> --- /dev/null
-> +++ b/drivers/media/platform/mediatek/mdp3/Kconfig
-> @@ -0,0 +1,20 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +config VIDEO_MEDIATEK_MDP3
-> +	tristate "MediaTek MDP v3 driver"
-> +	depends on MTK_IOMMU || COMPILE_TEST
-> +	depends on VIDEO_DEV
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	depends on MTK_MMSYS
+More importantly, I can tell that v4l2-compliance was a prepackaged version,
+but you need to compile it from the git repo yourself:
 
-This needs to be MTK_MMSYS || COMPILE_TEST.
+git clone git://linuxtv.org/v4l-utils.git
+cd v4l-utils
+./bootstrap.sh
+./configure
+make
+sudo make install
 
-> +	depends on HAS_DMA
-> +	select VIDEOBUF2_DMA_CONTIG
-> +	select V4L2_MEM2MEM_DEV
-> +	select VIDEO_MEDIATEK_VPU
-> +	select MTK_CMDQ
-> +	select MTK_SCP
-> +	default n
-> +	help
-> +	    It is a v4l2 driver and present in MediaTek MT8183 SoC.
-> +	    The driver supports scaling and color space conversion.
-> +
-> +	    To compile this driver as a module, choose M here: the
-> +	    module will be called mtk-mdp3.
+Running v4l2-compliance should start with this (or something close):
 
-<snip>
+v4l2-compliance 1.23.0-4941, 64 bits, 64-bit time_t
+v4l2-compliance SHA: 71112d214762 2022-07-28 15:31:13
 
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-> new file mode 100644
-> index 000000000000..0c1675c6dce2
-> --- /dev/null
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-> @@ -0,0 +1,724 @@
-
-<snip>
-
-> +static int mdp_m2m_s_selection(struct file *file, void *fh,
-> +			       struct v4l2_selection *s)
-> +{
-> +	struct mdp_m2m_ctx *ctx = fh_to_ctx(fh);
-> +	struct mdp_frame *frame = ctx_get_frame(ctx, s->type);
-> +	struct mdp_frame *capture;
-> +	struct v4l2_rect r;
-> +	struct device *dev = &ctx->mdp_dev->pdev->dev;
-> +	bool valid = false;
-> +	int ret;
-> +
-> +	if (s->type == V4L2_BUF_TYPE_VIDEO_OUTPUT)
-> +		valid = (s->target == V4L2_SEL_TGT_CROP);
-> +	else if (s->type == V4L2_BUF_TYPE_VIDEO_CAPTURE)
-> +		valid = (s->target == V4L2_SEL_TGT_COMPOSE);
-> +
-> +	if (!valid) {
-> +		dev_err(dev, "[%s:%d] invalid type:%u target:%u", __func__,
-> +			ctx->id, s->type, s->target);
-
-This needs to be dev_dbg: you don't want to spam the kernel log for
-userspace errors.
-
-> +		return -EINVAL;
-> +	}
-> +
-> +	ret = mdp_try_crop(ctx, &r, s, frame);
-> +	if (ret)
-> +		return ret;
-> +	capture = ctx_get_frame(ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
-> +
-> +	if (mdp_target_is_crop(s->target))
-> +		capture->crop.c = r;
-> +	else
-> +		capture->compose = r;
-> +
-> +	s->r = r;
-> +
-> +	return 0;
-> +}
-
-I can modify these two changes myself if you are OK with that. Just let me know.
-
-If you prefer to post a v26 that's OK too.
+I need to see the SHA to confirm that you tested with a sufficiently new
+v4l2-compliance version. Prepackaged v4l2-compliance binaries tend to
+be too old, at least for the purpose of compliance checking a new driver.
 
 Regards,
 
 	Hans
+
+> Compliance test for mtk-mdp3 device /dev/video0:
+> Driver Info:
+> 	Driver name      : mtk-mdp3
+> 	Card type        : MediaTek MDP3
+> 	Bus info         : platform:14001000.mdp3-rdma0
+> 	Driver version   : 6.0.0
+> 	Capabilities     : 0x84204000
+> 		Video Memory-to-Memory Multiplanar
+> 		Streaming
+> 		Extended Pix Format
+> 		Device Capabilities
+> 	Device Caps      : 0x04204000
+> 		Video Memory-to-Memory Multiplanar
+> 		Streaming
+> 		Extended Pix Format
+
 
