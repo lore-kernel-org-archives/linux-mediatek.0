@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A08EC00140
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 13:50:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D8BEC32772
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 13:55:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GqdFW3oQXAaOy2vD929UNnW4uaTA9ODo4Hnd/8x5r/w=; b=ajTYZ/fjV8w96MbjBmNqukNvzk
-	f1pkp98eNHC1F2xBfaiJjZX6MU81tu4tyeDcUsF9DjpBkms1+EtplPx68u0xN2gWQkLiAcyzqQx0C
-	aXr2xRED6F4/kjUc5dEFo0bZtbRUL3aPedbX12LRXX52u0eNlHTUBvhSELBN18pqn8xZAsLjuuueZ
-	XPsqqRqGYK7k2gLdazNBI3PfU2ev30dcE6ZE9TEqqSOQtOIVcEptD8liVXUQ9gx9+jx8TpvZg6tTR
-	h4hO8UmsgKEIDQzzH+QoA82jsMUyqIcDAOFAi364YmBKnxwDSLUGBNKPQ6YTDPYxg03Hmrj3YHAHj
-	LZitqRCQ==;
+	bh=Is+DOcT8Igc7YLkCSkZJEYbaJMo6lo7wsCMqnBIM3m8=; b=gZgYqoifZxhZTdsencfg8nVvF3
+	Sb3vXOu8J1mqbqp9lQXX1yaINVw2Mtpasjbw/CwvgMO/Q5z3DxiAh9djwbZ0U4F+r8x19OAvmt0Iy
+	xMnoMvGWrdJfls5eW1HHfuJSJL7z91ogfXYc3K7sF+1u7CFo94KlIxoIJ4EXinuhhCDgRwhCG0TXg
+	hyVrRfrx3H7Ev9KIy3QHbCfjiiCj84/OtEXA6opwYyOTWknbLGzoZd0xIrnZAJmF1tnw77YAfm4p5
+	4QWTiOjBZ2oRkjAbjcXDobMqc0vnclMryf/sUNMdFoQMjz8I6yXzX2dfhXCbYSvmFMMAKZ8krd4le
+	Z9D9R68w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOfup-005hc0-9U; Thu, 18 Aug 2022 13:50:31 +0000
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+	id 1oOfzQ-005kpu-2s; Thu, 18 Aug 2022 13:55:16 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOflQ-005Zr4-4p
-	for linux-mediatek@lists.infradead.org; Thu, 18 Aug 2022 13:40:49 +0000
-Received: by mail-lj1-x233.google.com with SMTP id q18so750539ljg.12
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 06:40:46 -0700 (PDT)
+	id 1oOft2-005gNN-9H
+	for linux-mediatek@lists.infradead.org; Thu, 18 Aug 2022 13:48:43 +0000
+Received: by mail-lf1-x133.google.com with SMTP id h5so1931144lfk.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 06:48:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc;
-        bh=GqdFW3oQXAaOy2vD929UNnW4uaTA9ODo4Hnd/8x5r/w=;
-        b=YuQDwPUo3DIr0crrpdiKWa7aeyFVRW4wxBAAJDKYqTTesQxo3XNEB7/JwZoqafvALT
-         r11HeAmBrv9QiucR0M4IVeb3YctfJRVwDqIC9CNS6ERimqwegYhqz0qJOGA9HYrl+Chs
-         pMgMGU+JXY/sTK8TJF/d9B0kYD/ojMFW1HY4YWSi7r6Gg1nnPnRjComN/AVWdpqVvbZg
-         ThmVGm3VmvUG0iyuk9kqhUITpc1meIymgB79yc+laAB0OzzkFVlmYjeFCHWm3vAAtixI
-         FXifZNAdGxr1Fl7ab5VDZrYCbH2mwR/eSD66rBj74nccZIRCLmh0fiqVkZFlz+awnEm/
-         8c7w==
+        bh=Is+DOcT8Igc7YLkCSkZJEYbaJMo6lo7wsCMqnBIM3m8=;
+        b=d2t/eQslOw6CIAXZUHpxg7gzDtChs9KCal7MZkOmjM3YWVQOOUX4L/bYH1rFo2Am7z
+         G6Sc+58dt++Tv41j4TWkAwFK+J09xa3eE0btttj/DIdWPc7ldTOAWu7AjiQrdb4xshnU
+         E3BX4PDUM4BBgXW3A7tyCAy0jaev8rHJ7E49J0Q6ik5kBH54Kx45rXrYv6PAbjqAnlKZ
+         OP6IRaql2kfMWfUXfhGLP9fSsDm6inhcgmdOVNXQMdhB/gaGjzkZx2l8oZDmNJo/+Jvo
+         GCeggSbUGGo0uaaLzDAklxt5wS1b2XApY59lC9x8Vf93DxzvfaVprQi7WW5g5ZvAqDTn
+         faXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc;
-        bh=GqdFW3oQXAaOy2vD929UNnW4uaTA9ODo4Hnd/8x5r/w=;
-        b=4T/8Wtd5Ty/gcM/vlyQxWOXqvw0l7Hac5brkd/g+ITkxuUdMQMLHnHHdeu1to0I8aE
-         0vsNQN2FoU1pSGgT9Sz+QcTDc5cTeyxj7jxupJyx8h3ZK17nRCiwWPSMf3ElTwgkXYio
-         yNVHwLWAtOVYQneQ6Iok77m3vRMAcoVAW0yVjhwFuPWw7XtjjJhpUjZULuKVc7Unda5i
-         xKqgkeVMm8Pplh/HykzhokMMFa4AJlo0/ceWuB7AoA5IncgEY5BVFai9lNvpAk4ql5Cv
-         Q00qD/kzBUV8eIUR52Onm1hoRURPZ7vAwXM8tsS2KjLrthMoZaj7onciDKUlIYxSnMkF
-         BQ4w==
-X-Gm-Message-State: ACgBeo3lnNl01cgzs1O554y6DWpaCSWtKifCTjuMP+3rdVwlicsQ1Jry
-	/+iYoWXSaE+pvQs/dmW63htM5g==
-X-Google-Smtp-Source: AA6agR6canFiyg1kTCJm0l42OJhT+cDmUJ3ZeFSp8L6NUXKQ7yoOlW+9GVvc+6KFzATTGH1C1AljcA==
-X-Received: by 2002:a05:651c:12c4:b0:25d:d71c:e249 with SMTP id 4-20020a05651c12c400b0025dd71ce249mr834770lje.17.1660830045692;
-        Thu, 18 Aug 2022 06:40:45 -0700 (PDT)
+        bh=Is+DOcT8Igc7YLkCSkZJEYbaJMo6lo7wsCMqnBIM3m8=;
+        b=67vswomtOrE6xYGaxTOjyffvEG6QtqB7/q6uK6HnzbiOJBQoK9cPnGYQLEfFglvMam
+         LBZUIgyCZxUuLIIJr55m73DDet/YDvY8Ic/MNZdNs6Zvt+7Rnz+0iF8lwx3HahHLoZpq
+         /i8XdjMReLrzml1RB6GsK5TxAF24EKtxTqUDm/NKUVde3UxgO8U6vx5bE/zQQhQGvneX
+         97M7169HISVjD9VKH5gA8Nsaxo+w3TDo/4v6ejvmwTFhF71S3u0Gr3Y2JtPq2vGJuemI
+         MM4BXFzyKapYC8HQtxKxTsRR4VWDZD4XfrBhVTDFlrjC7b24nHP5QcIAy57jaEM0n3nu
+         EaAw==
+X-Gm-Message-State: ACgBeo1wg6Mh0VV0r5Pokkbwbv/J4+7DDr9sejld+WQMaI636wyn8K6r
+	A0FlsC4Ini0zoWvFXPqhDnF7jA==
+X-Google-Smtp-Source: AA6agR67w3E4BUkZ6aZMi04k3ORgTI6m48dz0+cFIJ6xCaK3+Qo+Ycn28R4IGCll2/oM8gDv5/Pf1w==
+X-Received: by 2002:a05:6512:282c:b0:492:b415:6def with SMTP id cf44-20020a056512282c00b00492b4156defmr1013226lfb.615.1660830517596;
+        Thu, 18 Aug 2022 06:48:37 -0700 (PDT)
 Received: from ?IPV6:2001:14bb:ae:539c:53ab:2635:d4f2:d6d5? (d15l54z9nf469l8226z-4.rev.dnainternet.fi. [2001:14bb:ae:539c:53ab:2635:d4f2:d6d5])
-        by smtp.gmail.com with ESMTPSA id k8-20020a2ea268000000b0025e53413b6dsm241886ljm.2.2022.08.18.06.40.44
+        by smtp.gmail.com with ESMTPSA id be32-20020a056512252000b0048a83ab2d32sm235123lfb.0.2022.08.18.06.48.35
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 18 Aug 2022 06:40:45 -0700 (PDT)
-Message-ID: <9947dc76-ab12-f840-3439-ca383c02c598@linaro.org>
-Date: Thu, 18 Aug 2022 16:40:43 +0300
+        Thu, 18 Aug 2022 06:48:36 -0700 (PDT)
+Message-ID: <18164de9-ad28-939c-a802-69647fc65a37@linaro.org>
+Date: Thu, 18 Aug 2022 16:48:34 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.12.0
-Subject: Re: [PATCH RESEND] dt-bindings: timer: Add compatible for MediaTek
- MT8188
+Subject: Re: [PATCH v9,2/7] dt-bindings: thermal: Add dt-binding document for
+ LVTS thermal controllers
 Content-Language: en-US
+To: bchihi@baylibre.com, rafael@kernel.org, rui.zhang@intel.com,
+ daniel.lezcano@linaro.org, amitk@kernel.org
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ khilman@baylibre.com, mka@chromium.org, robh+dt@kernel.org,
+ krzk+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, james.lo@mediatek.com,
+ fan.chen@mediatek.com, louis.yu@mediatek.com, rex-bc.chen@mediatek.com,
+ abailon@baylibre.com
+References: <20220817080757.352021-1-bchihi@baylibre.com>
+ <20220817080757.352021-3-bchihi@baylibre.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Johnson Wang <johnson.wang@mediatek.com>, daniel.lezcano@linaro.org,
- matthias.bgg@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220818124602.20394-1-johnson.wang@mediatek.com>
- <3d91fe87-feed-d083-9eeb-51293aead67a@linaro.org>
-In-Reply-To: <3d91fe87-feed-d083-9eeb-51293aead67a@linaro.org>
+In-Reply-To: <20220817080757.352021-3-bchihi@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220818_064048_241278_94D81362 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20220818_064840_389157_D01D7534 
+X-CRM114-Status: GOOD (  18.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,31 +100,179 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/08/2022 15:51, Krzysztof Kozlowski wrote:
-> On 18/08/2022 15:46, Johnson Wang wrote:
->> Add dt-binding documentation of timer for MediaTek MT8188 SoC
->> platform.
->>
->> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
->> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->> ---
->>  Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
->> index f1c848af91d3..8bbb6e94508b 100644
->> --- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
->> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
->> @@ -25,6 +25,7 @@ Required properties:
->>  	For those SoCs that use SYST
->>  	* "mediatek,mt8183-timer" for MT8183 compatible timers (SYST)
->>  	* "mediatek,mt8186-timer" for MT8186 compatible timers (SYST)
->> +	* "mediatek,mt8188-timer" for MT8188 compatible timers (SYST)
+On 17/08/2022 11:07, bchihi@baylibre.com wrote:
+> From: Alexandre Bailon <abailon@baylibre.com>
 > 
-> Where is the driver change implementing this?
+> Add dt-binding document for mt8192 and mt8195 LVTS thermal controllers.
 
-Or is there a generic fallback and you just added a specific one (not
-visible on the diff)?
+Rebase your patchset on decent kernel tree. You seem to use something a
+bit old.
+
+> 
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> Co-developed-by: Balsam CHIHI <bchihi@baylibre.com>
+> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+> ---
+>  .../thermal/mediatek,lvts-thermal.yaml        | 152 ++++++++++++++++++
+>  1 file changed, 152 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> new file mode 100644
+> index 000000000000..31d9e220513a
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> @@ -0,0 +1,152 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/thermal/mediatek,lvts-thermal.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek SoC LVTS thermal controller
+> +
+> +maintainers:
+> +  - Yu-Chia Chang <ethan.chang@mediatek.com>
+> +  - Ben Tseng <ben.tseng@mediatek.com>
+> +
+> +description: |
+> +  LVTS (Low Voltage Thermal Sensor).
+> +  The architecture will be first used on mt8192 and mt8195.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt8192-lvts-ap
+> +      - mediatek,mt8192-lvts-mcu
+> +      - mediatek,mt8195-lvts-ap
+> +      - mediatek,mt8195-lvts-mcu
+> +
+> +  "#thermal-sensor-cells":
+> +    const: 1
+> +
+> +  reg:
+> +    maxItems: 1
+> +    description: LVTS instance registers.
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +    description: LVTS instance interrupts.
+> +
+> +  clocks:
+> +    maxItems: 1
+> +    description: LVTS instance clock.
+
+Skip all these three descriptions. They are obvious.
+
+> +
+> +  resets:
+> +    maxItems: 1
+> +    description: |
+> +      LVTS instance SW reset for HW AP/MCU domain to clean temporary data
+> +      on HW initialization/resume.
+> +
+> +  nvmem-cells:
+> +    minItems: 1
+> +    maxItems: 2
+> +    description: Calibration efuse data for LVTS
+> +
+> +  nvmem-cell-names:
+> +    minItems: 1
+> +    maxItems: 2
+> +    description: Calibration efuse cell names for LVTS
+> +
+> +allOf:
+> +  - $ref: thermal-sensor.yaml#
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8192-lvts-ap
+> +              - mediatek,mt8192-lvts-mcu
+> +    then:
+> +      properties:
+> +        nvmem-cells:
+> +          items:
+> +            - description: Calibration efuse data for LVTS
+> +
+> +        nvmem-cell-names:
+> +          items:
+> +            - const: lvts_calib_data1
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8195-lvts-ap
+> +              - mediatek,mt8195-lvts-mcu
+> +    then:
+> +      properties:
+> +        nvmem-cells:
+> +          items:
+> +            - description: Calibration efuse data 1 for LVTS
+> +            - description: Calibration efuse data 2 for LVTS
+> +
+> +        nvmem-cell-names:
+> +          items:
+> +            - const: lvts_calib_data1
+> +            - const: lvts_calib_data2
+> +
+> +required:
+> +  - compatible
+> +  - '#thermal-sensor-cells'
+
+Use consistent quotes: either ' or "
+
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - resets
+> +  - nvmem-cells
+> +  - nvmem-cell-names
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/clock/mt8192-clk.h>
+> +    #include <dt-bindings/reset/mt8192-resets.h>
+> +
+> +    soc {
+> +      #address-cells = <2>;
+> +      #size-cells = <2>;
+> +
+> +      lvts_ap: thermal-sensor@1100b000 {
+> +        compatible = "mediatek,mt8192-lvts-ap";
+> +        #thermal-sensor-cells = <1>;
+> +        reg = <0 0x1100b000 0 0x1000>;
+
+Convention is: compatible, then reg, then the rest of properties
+
+> +        interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        clocks = <&infracfg CLK_INFRA_THERM>;
+> +        resets = <&infracfg MT8192_INFRA_RST0_THERM_CTRL_SWRST>;
+> +        nvmem-cells = <&lvts_e_data1>;
+> +        nvmem-cell-names = "lvts_calib_data1";
+> +      };
+> +
+> +      lvts_mcu: thermal-sensor@11278000 {
+> +        compatible = "mediatek,mt8192-lvts-mcu";
+> +        #thermal-sensor-cells = <1>;
+> +        reg = <0 0x11278000 0 0x1000>;
+> +        interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        clocks = <&infracfg CLK_INFRA_THERM>;
+> +        resets = <&infracfg MT8192_INFRA_RST4_THERM_CTRL_MCU_SWRST>;
+> +        nvmem-cells = <&lvts_e_data1>;
+> +        nvmem-cell-names = "lvts_calib_data1";
+> +      };
+> +    };
+
+This part is the same as previous, so just skip it or replace with an
+example which is different somehow.
 
 Best regards,
 Krzysztof
