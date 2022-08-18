@@ -4,65 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B8B6C25B08
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Aug 2022 19:55:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BA73C25B08
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 00:12:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PGuRTvTpKH+A8dEr00SIChlMqKCLBV3tsb9cp6OFfGY=; b=BCObkBW1WXua0yWkxZam7rm4ge
-	EMG7wez4lKILYxhwPJ5w/QX79i9m5D3t49F4N7EPF7iN6OQbZ/aeJEC5yxwyy6gKexULIjrOUCTQs
-	2U1/x0hKVPKCUVnyliylziLmLi4RL7P+LSXbcux4CprB8Yxy1Kqdhfv9skSbbjLhV3ONNQRTe1zFA
-	6cZBkOY9TwhrFirS/PwLeCIzYYz0zfyIRPeadgBPHthwOqb9yey1evIDhA1GJJNSjkqFJNPy4CMrt
-	GK+sqUl62u1v2EpLqMQjlEJwRtWNtn9836ZdNpAKJiOFUkMfN11CwL8vn0VOKvjF6PGdPcSJFhh5+
-	qoh95xPA==;
+	bh=Ku7R+2tnT1/PcWq+UB/v9DdP1lt1rkcxhef05o0ooII=; b=12Xbmncksne6jClHxyBQI6j5p4
+	6ELCPTODl17EOsq/ojZT0HL9ieggkNYlGE7mltnXYp7ipaYBDvD+Mr7TadnM5AzOCOUCJMi95LTn1
+	JLuER1SswpHLG1/hKOy4Kj1uWpiL9tpWVGrqDGyuMa7jBgIQqYKmEac1FWf/a11L8Vgb0qtzoRNKz
+	5xYaf/vj1odRWcr51bexa/p0jL/2oY+JR3b/McgsRAzTITE9zrbNRL7PlRa3uzVgWIh69HZT3AONy
+	iDzavWH3lObWxAKRL0b4yn9wsTEA9cNJdZc4Ta1DLMLUoqkwtrP9kLwYVhkS2Asp6vpwV0jLtbpg0
+	bLUoXTqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOP8R-0060TR-4V; Wed, 17 Aug 2022 19:55:27 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oOT8i-0094Op-UC; Thu, 18 Aug 2022 00:12:01 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOP8D-0060JT-QH; Wed, 17 Aug 2022 19:55:15 +0000
-Received: from notapiano (unknown [70.107.189.129])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1oOT8f-0094KC-JZ
+	for linux-mediatek@lists.infradead.org; Thu, 18 Aug 2022 00:11:59 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 43C6F66019FB;
-	Wed, 17 Aug 2022 20:55:05 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1660766106;
-	bh=HyKYDfF8C/EjS61VvfNy5zCttuH25Xk3EwKzKCsv2mU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DAVuz1nTEiUf8s45bB89PTn3EzZBWzGhrbmAfbSXSDAWAyQwwxE+3lWCkUG1Baxck
-	 xS+pUdIZU/7Nr6uN9zdmHxVu0g5d4OOCN81VVaTr8ndDis7WGCwSedV2IOD/jR95bD
-	 8OBuhX1r8g6BI3bCF5HmdTuHn9IMSuq/uLxtQftGOIRdaNFNPmJRgPgPmzQgKnyscH
-	 xM+/NEi1ZWt01Gf/fWLg5vfGJmOlnRT3F4F9haSW/ol3Fds3YSakSeQvLc+34G5ykN
-	 hYm920WJjKTBQ2DggQ3XeIS93BcBYKltJ/b7ZV/r4DwjyIPU4s1VaCmpivQig7Tor2
-	 N0w999/ahh/yQ==
-Date: Wed, 17 Aug 2022 15:55:00 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Hui Liu <hui.liu@mediatek.com>
-Cc: linus.walleij@linaro.org, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	jianguo.zhang@mediatek.com, zhiyong.tao@mediatek.com,
-	sean.wang@mediatek.com, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 2/2] pinctrl: mediatek: add mt8188 driver
-Message-ID: <20220817195500.d6roam5gyghburjs@notapiano>
-References: <20220801095215.10876-1-hui.liu@mediatek.com>
- <20220801095215.10876-3-hui.liu@mediatek.com>
+	by ams.source.kernel.org (Postfix) with ESMTPS id D3917B81FCD
+	for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 00:11:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8EF38C4347C
+	for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 00:11:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1660781514;
+	bh=Ku7R+2tnT1/PcWq+UB/v9DdP1lt1rkcxhef05o0ooII=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=HR1nx7iqPCnyMVmkN3PP/0lGjh1kAJFRWmTF7SZakyggGSK6tCJGiUYmVkdCiCGjN
+	 mJw/yLX9vKXxZ8xA2VkZYloqY6VbXlhOLMD0ne5FEgEXjYnkMc0pNQJ7Y0MYxTvvpl
+	 j6odjTYic92jT24bXJtUq9zaU+kTKukV/eCQz2jQvs4vwNORYE4Lp4Jd7Hv2f3ejdg
+	 BhxcWsGKrjPDTtqIsM7rJwxxTpWtmeS5BU+6sTIA6TT8qyt7pU7ThyPsoMJWxI3JfC
+	 0p3PCvzKTBWakeir3E68CrZ8WuD869ZtaUuIzYxL3bd68hL7EJ6oIzedZ7a4bqRm1t
+	 mcLFpwTRJchAg==
+Received: by mail-wr1-f44.google.com with SMTP id bs25so17922868wrb.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Aug 2022 17:11:54 -0700 (PDT)
+X-Gm-Message-State: ACgBeo1SQmODAswUWm/DXymt/P+grTijNdCeL28EI3+7fAJFDc5nbYaA
+	kyMIJJPwNypL8rErTWKkqatrAZLH5OMM2H4HtHw=
+X-Google-Smtp-Source: AA6agR6CsWfdjBKQD5ZqOtuIcydzYKdrcHHF/JH7gTE5dMbJs3tEciW5hJZKUau/Qn+2TPBnkGasGScaW6I+D+vYrGo=
+X-Received: by 2002:adf:d238:0:b0:21e:c972:7505 with SMTP id
+ k24-20020adfd238000000b0021ec9727505mr193529wrh.536.1660781512698; Wed, 17
+ Aug 2022 17:11:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220801095215.10876-3-hui.liu@mediatek.com>
+References: <cover.1660606893.git.objelf@gmail.com> <473fc7b169f288b7815a7736cf33ac0ec1599a09.1660606893.git.objelf@gmail.com>
+ <edd45a1e732a0eef1894b9f6eda2d4e3c692359b.camel@sipsolutions.net>
+ <CAGp9LzrqYsXAPsbZvTy-_3Tnu23oc11KHdxNs9WvYfe0JHQaDg@mail.gmail.com> <5b24421363048bff1a9f03174cb0223b3e226bf9.camel@sipsolutions.net>
+In-Reply-To: <5b24421363048bff1a9f03174cb0223b3e226bf9.camel@sipsolutions.net>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Wed, 17 Aug 2022 17:11:39 -0700
+X-Gmail-Original-Message-ID: <CAGp9Lzrag1b3G+QfW0RCQPGLnR_WzGSg4k+Zdx4zi4b_oeunRQ@mail.gmail.com>
+Message-ID: <CAGp9Lzrag1b3G+QfW0RCQPGLnR_WzGSg4k+Zdx4zi4b_oeunRQ@mail.gmail.com>
+Subject: Re: [PATCH 1/9] wifi: mac80211: allow enabling chanctx until hw registration
+To: Johannes Berg <johannes@sipsolutions.net>
+Cc: =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang@mediatek.com>, 
+	Felix Fietkau <nbd@nbd.name>, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com, 
+	YN.Chen@mediatek.com, Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com, 
+	Deren Wu <Deren.Wu@mediatek.com>, km.lin@mediatek.com, jenhao.yang@mediatek.com, 
+	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, 
+	posh.sun@mediatek.com, ted.huang@mediatek.com, Stella.Chang@mediatek.com, 
+	Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com, 
+	frankgor@google.com, kuabhs@google.com, druth@google.com, 
+	abhishekpandit@google.com, shawnku@google.com, linux-wireless@vger.kernel.org, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220817_125514_028863_1F879431 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20220817_171157_985863_6FF04E6B 
+X-CRM114-Status: GOOD (  26.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,97 +89,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hui,
+Hi Johannes,
 
-On Mon, Aug 01, 2022 at 05:52:15PM +0800, Hui Liu wrote:
-> From: "Hui.Liu" <hui.liu@mediatek.com>
-> 
-> Add pinctrl driver support for MediaTek SoC mt8188.
-> 
-> Signed-off-by: Hui.Liu <hui.liu@mediatek.com>
-> ---
-[..]
-> --- /dev/null
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8188.c
-[..]
-> +static const struct mtk_pin_field_calc mt8188_pin_mode_range[] = {
-> +	PIN_FIELD(0, 177, 0x0300, 0x10, 0, 4),
-> +};
+On Wed, Aug 17, 2022 at 1:30 AM Johannes Berg <johannes@sipsolutions.net> wrote:
+>
+> On Wed, 2022-08-17 at 01:28 -0700, Sean Wang wrote:
+> > Based on mt76 driver logic, alloc_hw would be needed before loading firmware
+> > because alloc_hw creates an instance of "struct mt76_dev*" the
+> > firmware loading relies on,
+> > and so the firmware capabilities cannot be decided before we alloc_hw
+> > in mt76 driver.
+> >
+>
+> I don't really see why you couldn't change that though? There's no
+> fundamental reason you need to load the firmware before registering with
+> mac80211?
+>
 
-Missing blank line after declaration.
+It could be changed but it would break the consistency of the current
+mt76 driver.
 
-> +static const struct mtk_pin_field_calc mt8188_pin_dir_range[] = {
-> +	PIN_FIELD(0, 177, 0x0000, 0x10, 0, 1),
-> +};
+mt76 driver does the things in the following order
+- ieee80211_alloc_hw (where an instance of "struct mt76_dev *" would be created)
+- register bus operation into mt76 core (depending on struct mt76_dev
+to provide an abstraction layer for mt76 core to access bus)
+- read chip identifier (depending on bus operation)
+- load the firmware capabilities (depending on chip identifier)
+- initialize the hardware
+....
+-ieee80211_register_hw
 
-Ditto.
+If firmware capability is needed to load before ieee80211_alloc_hw, we
+need to create kind of similar functions to read chip identifiers and
+load firmware.
+I know It may not a strong reason not to change, but if we can support
+read firmware capabilities after alloc_hw, it provides flexibility to
+the vendor driver
+and helps mt7921 look more consistent and save a few changes across
+different mt7921 bus drivers (mt7921 now supports SDIO, USB, PCIe type
+driver).
 
-> +static const struct mtk_pin_field_calc mt8188_pin_di_range[] = {
-> +	PIN_FIELD(0, 177, 0x0200, 0x10, 0, 1),
-> +};
+> And fundamentally, I'm not even sure how you are achieving a change of
 
-Ditto.
+I kmemdup the const ops and ieee80211_alloc_hw with the duplicated ops
+the duplicated ops would be updated by the actual firmware
+capabilities before ieee80211_register_hw.
 
-> +static const struct mtk_pin_field_calc mt8188_pin_do_range[] = {
-> +	PIN_FIELD(0, 177, 0x0100, 0x10, 0, 1),
-> +};
+> the ops - you're meant to point those to a *const* ops, so you need two
+> versions of the ops, one with and one without chanctx, and point to the
+> correct one at allocation ...
+>
 
-Ditto.
+If you don't like the reason and the way I proposed in the patch,
+please let me know. I still can move on to the way you suggested here.
 
-> +static const struct mtk_pin_field_calc mt8188_pin_smt_range[] = {
-[..]
-> +static const struct mtk_pin_reg_calc mt8188_reg_cals[PINCTRL_PIN_REG_MAX] = {
-> +	[PINCTRL_PIN_REG_MODE]	= MTK_RANGE(mt8188_pin_mode_range),
-> +	[PINCTRL_PIN_REG_DIR]	= MTK_RANGE(mt8188_pin_dir_range),
-> +	[PINCTRL_PIN_REG_DI]	= MTK_RANGE(mt8188_pin_di_range),
-> +	[PINCTRL_PIN_REG_DO]	= MTK_RANGE(mt8188_pin_do_range),
-> +	[PINCTRL_PIN_REG_SMT]	= MTK_RANGE(mt8188_pin_smt_range),
-> +	[PINCTRL_PIN_REG_IES]	= MTK_RANGE(mt8188_pin_ies_range),
-> +	[PINCTRL_PIN_REG_TDSEL]	= MTK_RANGE(mt8188_pin_tdsel_range),
-> +	[PINCTRL_PIN_REG_RDSEL]	= MTK_RANGE(mt8188_pin_rdsel_range),
-> +	[PINCTRL_PIN_REG_PUPD]	= MTK_RANGE(mt8188_pin_pupd_range),
-> +	[PINCTRL_PIN_REG_R0]	= MTK_RANGE(mt8188_pin_r0_range),
-> +	[PINCTRL_PIN_REG_R1]	= MTK_RANGE(mt8188_pin_r1_range),
-> +	[PINCTRL_PIN_REG_PU]	= MTK_RANGE(mt8188_pin_pu_range),
-> +	[PINCTRL_PIN_REG_PD]	= MTK_RANGE(mt8188_pin_pd_range),
-> +	[PINCTRL_PIN_REG_DRV]	= MTK_RANGE(mt8188_pin_drv_range),
-> +	[PINCTRL_PIN_REG_DRV_ADV]	= MTK_RANGE(mt8188_pin_drv_adv_range),
-> +	[PINCTRL_PIN_REG_RSEL]	= MTK_RANGE(mt8188_pin_rsel_range),
-
-Please use just space around the = instead of tabs. Like is done on mt8183,
-mt8186, mt8192 and mt8195.
-
-> +};
-[..]
-> +static const struct mtk_pin_soc mt8188_data = {
-> +	.reg_cal	= mt8188_reg_cals,
-> +	.pins	= mtk_pins_mt8188,
-> +	.npins	= ARRAY_SIZE(mtk_pins_mt8188),
-> +	.ngrps	= ARRAY_SIZE(mtk_pins_mt8188),
-> +	.eint_hw	= &mt8188_eint_hw,
-> +	.nfuncs	= 8,
-> +	.gpio_m	= 0,
-> +	.base_names	= mt8188_pinctrl_register_base_name,
-> +	.nbase_names	= ARRAY_SIZE(mt8188_pinctrl_register_base_name),
-> +	.bias_set_combo	= mtk_pinconf_bias_set_combo,
-> +	.pull_type = mt8188_pull_type,
-> +	.pin_rsel = mt8188_pin_rsel_val_range,
-> +	.npin_rsel = ARRAY_SIZE(mt8188_pin_rsel_val_range),
-> +	.bias_get_combo	= mtk_pinconf_bias_get_combo,
-
-Keep this one together with bias_set_combo.
-
-> +	.drive_set	= mtk_pinconf_drive_set_rev1,
-> +	.drive_get	= mtk_pinconf_drive_get_rev1,
-> +	.adv_drive_set	= mtk_pinconf_adv_drive_set_raw,
-> +	.adv_drive_get	= mtk_pinconf_adv_drive_get_raw,
-
-And also use spaces instead of tabs for all entries here.
-
-With those changes,
-
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-
-Thanks,
-Nícolas
+> johannes
 
