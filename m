@@ -4,76 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3A5CC25B08
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 01:03:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5CC2C25B08
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 02:50:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SI7RFlp0x+DBJDSS3/HfizGBcM9feWYKDKG4bjli0GA=; b=yu1ah/T+Kflwv5LPK/y1ET3h7v
-	xBiRZN+zJ1g6f5Y+u8oBMJkS4L7ZQaCHpbcUHn9iFjr0XoHcbqnGw4v7rjTpiIW/hOwHfttgL0UdZ
-	88RUpg25gWpbzVWQKPXMg3nZgzfQ/Vf2x0EmOMvVrXG5UYiU/E4NvSEy8VoFDf7P87d8CMj2yjUlU
-	VVefe7AYq4AfzuXQE2IXfb+TGwTFrw3dN3QjMQemlJc3qSW2HHR0ZLJVr7HSVCg9rfaVuwR0doxUo
-	p7DyWqkievXAK+GMpdoq0334IKwQWeyHV41eWd2zl/6MMSTD/XUiwmqd2/x8PlFV+/1ucq9x12Quk
-	9CFuRCgA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xK7311ANU00lS4znpHOZCY3yfTNv79MRZvxQaegyvUw=; b=hRzZGeD76GS4IyC3f+NsdI486W
+	wfgf+syGx3RcQk9f947KckZaaLX6DFud94ljFpEBdLMCjSd0w/K8CFWsHbbomqqe7blsfTdxDm7DI
+	lmPfFzg+dvjlEqLKqegj0TPOrj6BDHNuWHeqPEIWcIh+WDYi6KDJUy8q43FcBQjp1kUpm2oqf1Suo
+	iSNTO8GJTD+pV68gEL0QMgtQ9Iid8wJI1eLb5hrR8CP8LeYVddmNd7eUQb+INRujOx0stomXXiAxb
+	VqVwNnwDQUyZcaw3TVVaYg098WcIiVr1gJwP2YsAFVqXP6D+jiv8oD5Mrrl7llXs+6tvuZA2csfXc
+	3YmJ5tmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOTwT-009llC-6i; Thu, 18 Aug 2022 01:03:25 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oOVcG-00C2Me-5k; Thu, 18 Aug 2022 02:50:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOTwP-009lh7-Pz
-	for linux-mediatek@lists.infradead.org; Thu, 18 Aug 2022 01:03:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 96EC8613F9
-	for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 01:03:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DB1AC43142
-	for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 01:03:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660784597;
-	bh=rWdT6qEModoSI9xXRcIpm8iqNE6nUY/RnIJFj+s1hjs=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=VFfn/5yHujdXlip5BPm0k4QrS9IltOL1xcC4sXAB/iuvQqe8vsUDdIF5L+2ZWhvca
-	 Oua+zDm7GLtrGpQIuh7UY16Y8/QQnuAQ6YVxmACK4ChnkS603lawcj8/mA03yn5Xoc
-	 z6d97vQnYNwxu1M71cE84b5QoU7kXrswS+WsggIral07Dg96eyjxPTngX4fDS6dsXg
-	 oRAW7i2z5GmOfpJ2fhnlyLg1Wo9hAxnDtlUG/Z6fDTzyDmpkpYH7G03+CWNYuSqy7T
-	 w6DG4vAeNpaLQaT3OEanHt/nst3s0hIYUKQqVDoUTRKPecKzQCa7nf6P3ZJnfqSOCi
-	 UOmMjr10x/UEg==
-Received: by mail-wr1-f45.google.com with SMTP id h24so33012wrb.8
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Aug 2022 18:03:17 -0700 (PDT)
-X-Gm-Message-State: ACgBeo1jnRp+lH/i9h/qoWRRPM2YkhUXmfRg7gRQbXR5XuDe8tk6lX46
-	xOhH6aII8+5BLvhqNFwfoAXjNpQQCvLcX119sBQ=
-X-Google-Smtp-Source: AA6agR7WUGfHJEtABoe4O2C8JL/ornG85/f8F0i5r8wgfvRMtc3qaZGwP4FFZ+eF+QLqBzMbPKDJNMsCURF7LNfLLI8=
-X-Received: by 2002:a5d:4601:0:b0:21d:8db4:37c with SMTP id
- t1-20020a5d4601000000b0021d8db4037cmr240113wrq.390.1660784595575; Wed, 17 Aug
- 2022 18:03:15 -0700 (PDT)
-MIME-Version: 1.0
-References: <cover.1660606893.git.objelf@gmail.com> <f48a750e8ad17d5b2410eea03fc30a6403732168.1660606893.git.objelf@gmail.com>
- <YvyUwEdURYHiAduf@lore-desk>
-In-Reply-To: <YvyUwEdURYHiAduf@lore-desk>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Wed, 17 Aug 2022 18:03:03 -0700
-X-Gmail-Original-Message-ID: <CAGp9LzrvVQOrUNPR8aguUTgWo1wZFMR2Y3kdTk8WqxmG=B8--w@mail.gmail.com>
-Message-ID: <CAGp9LzrvVQOrUNPR8aguUTgWo1wZFMR2Y3kdTk8WqxmG=B8--w@mail.gmail.com>
-Subject: Re: [PATCH 8/9] wifi: mt76: mt7921: introduce remain_on_channel support
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang@mediatek.com>, 
-	Felix Fietkau <nbd@nbd.name>, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com, 
-	YN.Chen@mediatek.com, Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com, 
-	Deren Wu <Deren.Wu@mediatek.com>, km.lin@mediatek.com, jenhao.yang@mediatek.com, 
-	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, 
-	posh.sun@mediatek.com, ted.huang@mediatek.com, Stella.Chang@mediatek.com, 
-	Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com, 
-	frankgor@google.com, kuabhs@google.com, druth@google.com, 
-	abhishekpandit@google.com, shawnku@google.com, linux-wireless@vger.kernel.org, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+	id 1oOVcC-00C270-UI; Thu, 18 Aug 2022 02:50:38 +0000
+X-UUID: 6e26809c694a49d9bffd93650d5f7b92-20220817
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=xK7311ANU00lS4znpHOZCY3yfTNv79MRZvxQaegyvUw=;
+	b=NwhEtBIItolTdIq4Kv3herp1IfpqSpIU0ezM62GD7kl5SijpZCq4EShj/dR+BZFFIhvSp662xusfLKqaWoaAiCf9ix7oNQPWewEaLL4JLUjJTOMneHaUopou1JXQXIB3Jrl51P8UkZlzD0a4tLPZqZoFNiZqoYvt15JFWe9khwU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:aabc4d1e-776a-4f25-99db-fa9306403447,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
+	_Ham,ACTION:release,TS:-5
+X-CID-META: VersionHash:84eae18,CLOUDID:a6effd9c-da39-4e3b-a854-56c7d2111b46,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 6e26809c694a49d9bffd93650d5f7b92-20220817
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <hui.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 887895802; Wed, 17 Aug 2022 19:50:19 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 18 Aug 2022 10:49:44 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 18 Aug 2022 10:49:43 +0800
+Message-ID: <e1e9fef1d776c7051d708b7bf9f6e347a9107dd5.camel@mediatek.com>
+Subject: Re: [PATCH v5 2/2] pinctrl: mediatek: add mt8188 driver
+From: hui.liu <hui.liu@mediatek.com>
+To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
+CC: <linus.walleij@linaro.org>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <matthias.bgg@gmail.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<jianguo.zhang@mediatek.com>, <zhiyong.tao@mediatek.com>,
+	<sean.wang@mediatek.com>, <linux-gpio@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Date: Thu, 18 Aug 2022 10:49:43 +0800
+In-Reply-To: <20220817195500.d6roam5gyghburjs@notapiano>
+References: <20220801095215.10876-1-hui.liu@mediatek.com>
+	 <20220801095215.10876-3-hui.liu@mediatek.com>
+	 <20220817195500.d6roam5gyghburjs@notapiano>
 Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220817_180321_961653_206E6ED8 
-X-CRM114-Status: GOOD (  29.92  )
+X-CRM114-CacheID: sfid-20220817_195037_148606_49AB13FF 
+X-CRM114-Status: GOOD (  18.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,159 +84,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lorenzo,
+Hi Nicolas,
 
-On Wed, Aug 17, 2022 at 12:18 AM Lorenzo Bianconi <lorenzo@kernel.org> wrote:
->
-> > From: Sean Wang <sean.wang@mediatek.com>
-> >
-> > Introduce remain_on_channel support. Additionally, we add
-> > mt7921_check_offload_capability to disable .remain_on_channel and
-> > .cancel_remain_on_channel and related configuration because those
-> > operations would rely on the fundamental MCU commands that will be only
-> > supported with newer firmware.
-> >
-> > Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-> > Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Thanks for you suggestion. I will update them in v6.
+
+BRs,
+Hui.Liu
+
+On Wed, 2022-08-17 at 15:55 -0400, Nícolas F. R. A. Prado wrote:
+> Hi Hui,
+> 
+> On Mon, Aug 01, 2022 at 05:52:15PM +0800, Hui Liu wrote:
+> > From: "Hui.Liu" <hui.liu@mediatek.com>
+> > 
+> > Add pinctrl driver support for MediaTek SoC mt8188.
+> > 
+> > Signed-off-by: Hui.Liu <hui.liu@mediatek.com>
 > > ---
-> >  .../net/wireless/mediatek/mt76/mt7921/init.c  |  36 ++++++
-> >  .../net/wireless/mediatek/mt76/mt7921/main.c  | 112 ++++++++++++++++++
-> >  .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  24 ++++
-> >  .../wireless/mediatek/mt76/mt7921/mt7921.h    |  34 ++++++
-> >  .../net/wireless/mediatek/mt76/mt7921/pci.c   |  13 +-
-> >  .../net/wireless/mediatek/mt76/mt7921/sdio.c  |  11 +-
-> >  .../net/wireless/mediatek/mt76/mt7921/usb.c   |   1 +
-> >  7 files changed, 225 insertions(+), 6 deletions(-)
-> >
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> > index cd960e23770f..1b7a18d42f5b 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> > @@ -44,6 +44,35 @@ mt7921_regd_notifier(struct wiphy *wiphy,
-> >       mt7921_mutex_release(dev);
-> >  }
-> >
-> > +static int mt7921_check_offload_capability(struct mt7921_dev *dev)
-> > +{
-> > +     struct ieee80211_hw *hw = mt76_hw(dev);
-> > +     int year, mon, day, hour, min, sec;
-> > +     struct wiphy *wiphy = hw->wiphy;
-> > +     bool fw_can_roc = false;
-> > +     int ret;
-> > +
-> > +     ret = sscanf(dev->mt76.hw->wiphy->fw_version + 11, "%4d%2d%2d%2d%2d%2d",
-> > +                  &year, &mon, &day, &hour, &min, &sec);
->
-> does the fw have a differnt base version with respect to the previous ones?
-> checking the date is a bit ugly.
+> 
+> [..]
+> > --- /dev/null
+> > +++ b/drivers/pinctrl/mediatek/pinctrl-mt8188.c
+> 
+> [..]
+> > +static const struct mtk_pin_field_calc mt8188_pin_mode_range[] = {
+> > +	PIN_FIELD(0, 177, 0x0300, 0x10, 0, 4),
+> > +};
+> 
+> Missing blank line after declaration.
+> 
+> > +static const struct mtk_pin_field_calc mt8188_pin_dir_range[] = {
+> > +	PIN_FIELD(0, 177, 0x0000, 0x10, 0, 1),
+> > +};
+> 
+> Ditto.
+> 
+> > +static const struct mtk_pin_field_calc mt8188_pin_di_range[] = {
+> > +	PIN_FIELD(0, 177, 0x0200, 0x10, 0, 1),
+> > +};
+> 
+> Ditto.
+> 
+> > +static const struct mtk_pin_field_calc mt8188_pin_do_range[] = {
+> > +	PIN_FIELD(0, 177, 0x0100, 0x10, 0, 1),
+> > +};
+> 
+> Ditto.
+> 
+> > +static const struct mtk_pin_field_calc mt8188_pin_smt_range[] = {
+> 
+> [..]
+> > +static const struct mtk_pin_reg_calc
+> > mt8188_reg_cals[PINCTRL_PIN_REG_MAX] = {
+> > +	[PINCTRL_PIN_REG_MODE]	= MTK_RANGE(mt8188_pin_mode_range),
+> > +	[PINCTRL_PIN_REG_DIR]	= MTK_RANGE(mt8188_pin_dir_range),
+> > +	[PINCTRL_PIN_REG_DI]	= MTK_RANGE(mt8188_pin_di_range),
+> > +	[PINCTRL_PIN_REG_DO]	= MTK_RANGE(mt8188_pin_do_range),
+> > +	[PINCTRL_PIN_REG_SMT]	= MTK_RANGE(mt8188_pin_smt_range),
+> > +	[PINCTRL_PIN_REG_IES]	= MTK_RANGE(mt8188_pin_ies_range),
+> > +	[PINCTRL_PIN_REG_TDSEL]	=
+> > MTK_RANGE(mt8188_pin_tdsel_range),
+> > +	[PINCTRL_PIN_REG_RDSEL]	=
+> > MTK_RANGE(mt8188_pin_rdsel_range),
+> > +	[PINCTRL_PIN_REG_PUPD]	= MTK_RANGE(mt8188_pin_pupd_range),
+> > +	[PINCTRL_PIN_REG_R0]	= MTK_RANGE(mt8188_pin_r0_range),
+> > +	[PINCTRL_PIN_REG_R1]	= MTK_RANGE(mt8188_pin_r1_range),
+> > +	[PINCTRL_PIN_REG_PU]	= MTK_RANGE(mt8188_pin_pu_range),
+> > +	[PINCTRL_PIN_REG_PD]	= MTK_RANGE(mt8188_pin_pd_range),
+> > +	[PINCTRL_PIN_REG_DRV]	= MTK_RANGE(mt8188_pin_drv_range),
+> > +	[PINCTRL_PIN_REG_DRV_ADV]	=
+> > MTK_RANGE(mt8188_pin_drv_adv_range),
+> > +	[PINCTRL_PIN_REG_RSEL]	= MTK_RANGE(mt8188_pin_rsel_range),
+> 
+> Please use just space around the = instead of tabs. Like is done on
+> mt8183,
+> mt8186, mt8192 and mt8195.
+> 
+> > +};
+> 
+> [..]
+> > +static const struct mtk_pin_soc mt8188_data = {
+> > +	.reg_cal	= mt8188_reg_cals,
+> > +	.pins	= mtk_pins_mt8188,
+> > +	.npins	= ARRAY_SIZE(mtk_pins_mt8188),
+> > +	.ngrps	= ARRAY_SIZE(mtk_pins_mt8188),
+> > +	.eint_hw	= &mt8188_eint_hw,
+> > +	.nfuncs	= 8,
+> > +	.gpio_m	= 0,
+> > +	.base_names	= mt8188_pinctrl_register_base_name,
+> > +	.nbase_names	=
+> > ARRAY_SIZE(mt8188_pinctrl_register_base_name),
+> > +	.bias_set_combo	= mtk_pinconf_bias_set_combo,
+> > +	.pull_type = mt8188_pull_type,
+> > +	.pin_rsel = mt8188_pin_rsel_val_range,
+> > +	.npin_rsel = ARRAY_SIZE(mt8188_pin_rsel_val_range),
+> > +	.bias_get_combo	= mtk_pinconf_bias_get_combo,
+> 
+> Keep this one together with bias_set_combo.
+> 
+> > +	.drive_set	= mtk_pinconf_drive_set_rev1,
+> > +	.drive_get	= mtk_pinconf_drive_get_rev1,
+> > +	.adv_drive_set	= mtk_pinconf_adv_drive_set_raw,
+> > +	.adv_drive_get	= mtk_pinconf_adv_drive_get_raw,
+> 
+> And also use spaces instead of tabs for all entries here.
+> 
+> With those changes,
+> 
+> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> Thanks,
+> Nícolas
 
-I admitted that way was a bit ugly, but I have investigated for a
-while, and that is the only way we can use to distinguish the version
-in current mt7921 firmware.
-
->
-> > +     if (ret != 6)
-> > +             goto out;
-> > +
-> > +     /* Old firmware cannot support remained on channel and channel
-> > +      * context management.
-> > +      */
-> > +     fw_can_roc =  mktime64(year, mon, day, hour, min, sec) >=
-> > +                   mktime64(2022, 7, 15, 12, 1, 1);
-> > +out:
-> > +     if (!fw_can_roc) {
-> > +             dev->ops->remain_on_channel = NULL;
-> > +             dev->ops->cancel_remain_on_channel = NULL;
-> > +
-> > +             wiphy->flags &= ~WIPHY_FLAG_HAS_REMAIN_ON_CHANNEL;
-> > +     }
-> > +
-> > +     return 0;
-> > +}
-> > +
-
-<snip>
-
-> > -     mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), &mt7921_ops,
-> > -                              &drv_ops);
-> > +     ops = devm_kmemdup(&pdev->dev, &mt7921_ops, sizeof(mt7921_ops),
-> > +                        GFP_KERNEL);
->
-> why do we need to copy mt7921_ops?
->
-
-As the old fw cannot support the roc and chanctx and considering
-backward compatibility, I need to copy the mt7921_ops here and
-disable related operations for old fw before registering the hw to mac80211.
-
-     Sean
-
-> Regards,
-> Lorenzo
->
-> > +     if (!ops) {
-> > +             ret = -ENOMEM;
-> > +             goto err_free_pci_vec;
-> > +     }
-> > +
-> > +     mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), ops, &drv_ops);
-> >       if (!mdev) {
-> >               ret = -ENOMEM;
-> >               goto err_free_pci_vec;
-> > @@ -286,7 +293,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
-> >
-> >       dev = container_of(mdev, struct mt7921_dev, mt76);
-> >       dev->hif_ops = &mt7921_pcie_ops;
-> > -
-> > +     dev->ops = ops;
-> >       mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
-> >       tasklet_init(&dev->irq_tasklet, mt7921_irq_tasklet, (unsigned long)dev);
-> >
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-> > index 487acd6e2be8..6d27875f41b8 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-> > @@ -120,18 +120,23 @@ static int mt7921s_probe(struct sdio_func *func,
-> >               .fw_own = mt7921s_mcu_fw_pmctrl,
-> >       };
-> >
-> > +     struct ieee80211_ops *ops;
-> >       struct mt7921_dev *dev;
-> >       struct mt76_dev *mdev;
-> >       int ret;
-> >
-> > -     mdev = mt76_alloc_device(&func->dev, sizeof(*dev), &mt7921_ops,
-> > -                              &drv_ops);
-> > +     ops = devm_kmemdup(&func->dev, &mt7921_ops, sizeof(mt7921_ops),
-> > +                        GFP_KERNEL);
-> > +     if (!ops)
-> > +             return -ENOMEM;
-> > +
-> > +     mdev = mt76_alloc_device(&func->dev, sizeof(*dev), ops, &drv_ops);
-> >       if (!mdev)
-> >               return -ENOMEM;
-> >
-> >       dev = container_of(mdev, struct mt7921_dev, mt76);
-> >       dev->hif_ops = &mt7921_sdio_ops;
-> > -
-> > +     dev->ops = ops;
-> >       sdio_set_drvdata(func, dev);
-> >
-> >       ret = mt76s_init(mdev, func, &mt7921s_ops);
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-> > index d06cee386acd..cf3ec59a4270 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
-> > @@ -217,6 +217,7 @@ static int mt7921u_probe(struct usb_interface *usb_intf,
-> >
-> >       dev = container_of(mdev, struct mt7921_dev, mt76);
-> >       dev->hif_ops = &hif_ops;
-> > +     dev->ops = ops;
-> >
-> >       udev = usb_get_dev(udev);
-> >       usb_reset_device(udev);
-> > --
-> > 2.25.1
-> >
 
