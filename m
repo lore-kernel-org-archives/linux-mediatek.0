@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB618C25B08
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 00:44:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3A5CC25B08
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 01:03:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6CaxtAYiTS0Q/JbqlLjhs4hB/carPEU9EwHyTaT0VSc=; b=4VXWhjvbB4+Zf1KRiDbBGs810v
-	Cb02koZFsjg+AlgzMyvEPOE9gWJqRZamywl2brh+P/0DNjEw7SynnQxyIP7iPciQLZoopE1fY31Mg
-	W3FIH6PbSBndjgvFoMvmjt3WjU/j9kFpkiIXxiiWxI3f0m01HvZHJpvZxuhNmqlCuvvXdy9PdR5k+
-	MX2S4iqU0k63CTJmqVtfxpNNzF53dl+XlAsPeocRFHB43tF0JQhJOwa1YvdEIc1sjYhsWU1+4G4Rr
-	tOuJJJj9x+Dq1CcyB0z5BPYgD0hbmcLR1c/vlhUpt/qn0iktsq+Ce6TXO+JavHVpWj0yq6rWCiXlS
-	CPla3NXQ==;
+	bh=SI7RFlp0x+DBJDSS3/HfizGBcM9feWYKDKG4bjli0GA=; b=yu1ah/T+Kflwv5LPK/y1ET3h7v
+	xBiRZN+zJ1g6f5Y+u8oBMJkS4L7ZQaCHpbcUHn9iFjr0XoHcbqnGw4v7rjTpiIW/hOwHfttgL0UdZ
+	88RUpg25gWpbzVWQKPXMg3nZgzfQ/Vf2x0EmOMvVrXG5UYiU/E4NvSEy8VoFDf7P87d8CMj2yjUlU
+	VVefe7AYq4AfzuXQE2IXfb+TGwTFrw3dN3QjMQemlJc3qSW2HHR0ZLJVr7HSVCg9rfaVuwR0doxUo
+	p7DyWqkievXAK+GMpdoq0334IKwQWeyHV41eWd2zl/6MMSTD/XUiwmqd2/x8PlFV+/1ucq9x12Quk
+	9CFuRCgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOTeC-009Toi-5s; Thu, 18 Aug 2022 00:44:32 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oOTwT-009llC-6i; Thu, 18 Aug 2022 01:03:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOTe9-009Tkk-8b
-	for linux-mediatek@lists.infradead.org; Thu, 18 Aug 2022 00:44:30 +0000
+	id 1oOTwP-009lh7-Pz
+	for linux-mediatek@lists.infradead.org; Thu, 18 Aug 2022 01:03:23 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B1E91B82000
-	for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 00:44:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 326BBC43145
-	for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 00:44:26 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 96EC8613F9
+	for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 01:03:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DB1AC43142
+	for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 01:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660783466;
-	bh=3kIk1qrELETqqdtSh1vAVI42Nm+C7jEY8yunalwBG98=;
+	s=k20201202; t=1660784597;
+	bh=rWdT6qEModoSI9xXRcIpm8iqNE6nUY/RnIJFj+s1hjs=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=AI03jv2ri6hi2nxdPQ3B/awPYiJst62jfo0KJznajtFATfQ+Fw/GcU6NVUgNWyTeS
-	 YgB3KeB7jrNR6aNzL5+2IIQzL9J1zp1k7Ih+sVgi219vBlM/wGBn2MDXcMTK+7PUmv
-	 Lzhf/TIh8OlgxBp9VQgSKJIWWUgXHbuT62i+4z9v7meG/223rlOZs/2EvG5UvRRxSe
-	 LGzNEOnfqA6bqXgKk84jbpxM2xAYp1z/Uh8EFYXO6CVqfngKWDxcwt88ZrBPNgUDvb
-	 vT/oxa2RbBRdqKxLNKB8mvOsyxnnJnd+Vq6hj5OvlpNXdLrx4HtVjL+C/loVeTAZQR
-	 s5sNmJr+dlRuw==
-Received: by mail-wm1-f47.google.com with SMTP id j26so128077wms.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Aug 2022 17:44:26 -0700 (PDT)
-X-Gm-Message-State: ACgBeo3Sqtj1bPoOZbNLrhRCVRrO71hydpXZ55W4fqzNANXWh2y1a99K
-	CjuWfDtLgOc80qlmIRtcEGgz65JQ224vR008vyQ=
-X-Google-Smtp-Source: AA6agR4AdYpfuOh6x5teVCDNh6jxcqpeUvAMgqc+Wpi81TJk0UX6wtq5nPxzYV9jMHWrD2S7+mcaRBzbdnDeA3L7p+w=
-X-Received: by 2002:a05:600c:5008:b0:3a6:1cd8:570d with SMTP id
- n8-20020a05600c500800b003a61cd8570dmr281830wmr.57.1660783464388; Wed, 17 Aug
- 2022 17:44:24 -0700 (PDT)
+	b=VFfn/5yHujdXlip5BPm0k4QrS9IltOL1xcC4sXAB/iuvQqe8vsUDdIF5L+2ZWhvca
+	 Oua+zDm7GLtrGpQIuh7UY16Y8/QQnuAQ6YVxmACK4ChnkS603lawcj8/mA03yn5Xoc
+	 z6d97vQnYNwxu1M71cE84b5QoU7kXrswS+WsggIral07Dg96eyjxPTngX4fDS6dsXg
+	 oRAW7i2z5GmOfpJ2fhnlyLg1Wo9hAxnDtlUG/Z6fDTzyDmpkpYH7G03+CWNYuSqy7T
+	 w6DG4vAeNpaLQaT3OEanHt/nst3s0hIYUKQqVDoUTRKPecKzQCa7nf6P3ZJnfqSOCi
+	 UOmMjr10x/UEg==
+Received: by mail-wr1-f45.google.com with SMTP id h24so33012wrb.8
+        for <linux-mediatek@lists.infradead.org>; Wed, 17 Aug 2022 18:03:17 -0700 (PDT)
+X-Gm-Message-State: ACgBeo1jnRp+lH/i9h/qoWRRPM2YkhUXmfRg7gRQbXR5XuDe8tk6lX46
+	xOhH6aII8+5BLvhqNFwfoAXjNpQQCvLcX119sBQ=
+X-Google-Smtp-Source: AA6agR7WUGfHJEtABoe4O2C8JL/ornG85/f8F0i5r8wgfvRMtc3qaZGwP4FFZ+eF+QLqBzMbPKDJNMsCURF7LNfLLI8=
+X-Received: by 2002:a5d:4601:0:b0:21d:8db4:37c with SMTP id
+ t1-20020a5d4601000000b0021d8db4037cmr240113wrq.390.1660784595575; Wed, 17 Aug
+ 2022 18:03:15 -0700 (PDT)
 MIME-Version: 1.0
-References: <cover.1660606893.git.objelf@gmail.com> <44acac2a0c1ce4a5d554a24227f80c6ccb3af878.1660606893.git.objelf@gmail.com>
- <YvyV3EBXL1TBQrc0@lore-desk>
-In-Reply-To: <YvyV3EBXL1TBQrc0@lore-desk>
+References: <cover.1660606893.git.objelf@gmail.com> <f48a750e8ad17d5b2410eea03fc30a6403732168.1660606893.git.objelf@gmail.com>
+ <YvyUwEdURYHiAduf@lore-desk>
+In-Reply-To: <YvyUwEdURYHiAduf@lore-desk>
 From: Sean Wang <sean.wang@kernel.org>
-Date: Wed, 17 Aug 2022 17:44:12 -0700
-X-Gmail-Original-Message-ID: <CAGp9LzoM6wMiQ2g3r8G-JaZS-Y=_91edM2FVbAmHZPC4d8nyQQ@mail.gmail.com>
-Message-ID: <CAGp9LzoM6wMiQ2g3r8G-JaZS-Y=_91edM2FVbAmHZPC4d8nyQQ@mail.gmail.com>
-Subject: Re: [PATCH 6/9] wifi: mt76: mt7921: drop ieee80211_[start,
- stop]_queues in driver
+Date: Wed, 17 Aug 2022 18:03:03 -0700
+X-Gmail-Original-Message-ID: <CAGp9LzrvVQOrUNPR8aguUTgWo1wZFMR2Y3kdTk8WqxmG=B8--w@mail.gmail.com>
+Message-ID: <CAGp9LzrvVQOrUNPR8aguUTgWo1wZFMR2Y3kdTk8WqxmG=B8--w@mail.gmail.com>
+Subject: Re: [PATCH 8/9] wifi: mt76: mt7921: introduce remain_on_channel support
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang@mediatek.com>, 
 	Felix Fietkau <nbd@nbd.name>, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com, 
@@ -73,8 +72,8 @@ Cc: =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang@mediatek.com>,
 	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220817_174429_471579_D4F772E7 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20220817_180321_961653_206E6ED8 
+X-CRM114-Status: GOOD (  29.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,26 +88,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-HI Lorenzo,
+Hi Lorenzo,
+
+On Wed, Aug 17, 2022 at 12:18 AM Lorenzo Bianconi <lorenzo@kernel.org> wrote:
+>
+> > From: Sean Wang <sean.wang@mediatek.com>
+> >
+> > Introduce remain_on_channel support. Additionally, we add
+> > mt7921_check_offload_capability to disable .remain_on_channel and
+> > .cancel_remain_on_channel and related configuration because those
+> > operations would rely on the fundamental MCU commands that will be only
+> > supported with newer firmware.
+> >
+> > Co-developed-by: Deren Wu <deren.wu@mediatek.com>
+> > Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > ---
+> >  .../net/wireless/mediatek/mt76/mt7921/init.c  |  36 ++++++
+> >  .../net/wireless/mediatek/mt76/mt7921/main.c  | 112 ++++++++++++++++++
+> >  .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  24 ++++
+> >  .../wireless/mediatek/mt76/mt7921/mt7921.h    |  34 ++++++
+> >  .../net/wireless/mediatek/mt76/mt7921/pci.c   |  13 +-
+> >  .../net/wireless/mediatek/mt76/mt7921/sdio.c  |  11 +-
+> >  .../net/wireless/mediatek/mt76/mt7921/usb.c   |   1 +
+> >  7 files changed, 225 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> > index cd960e23770f..1b7a18d42f5b 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> > @@ -44,6 +44,35 @@ mt7921_regd_notifier(struct wiphy *wiphy,
+> >       mt7921_mutex_release(dev);
+> >  }
+> >
+> > +static int mt7921_check_offload_capability(struct mt7921_dev *dev)
+> > +{
+> > +     struct ieee80211_hw *hw = mt76_hw(dev);
+> > +     int year, mon, day, hour, min, sec;
+> > +     struct wiphy *wiphy = hw->wiphy;
+> > +     bool fw_can_roc = false;
+> > +     int ret;
+> > +
+> > +     ret = sscanf(dev->mt76.hw->wiphy->fw_version + 11, "%4d%2d%2d%2d%2d%2d",
+> > +                  &year, &mon, &day, &hour, &min, &sec);
+>
+> does the fw have a differnt base version with respect to the previous ones?
+> checking the date is a bit ugly.
+
+I admitted that way was a bit ugly, but I have investigated for a
+while, and that is the only way we can use to distinguish the version
+in current mt7921 firmware.
+
+>
+> > +     if (ret != 6)
+> > +             goto out;
+> > +
+> > +     /* Old firmware cannot support remained on channel and channel
+> > +      * context management.
+> > +      */
+> > +     fw_can_roc =  mktime64(year, mon, day, hour, min, sec) >=
+> > +                   mktime64(2022, 7, 15, 12, 1, 1);
+> > +out:
+> > +     if (!fw_can_roc) {
+> > +             dev->ops->remain_on_channel = NULL;
+> > +             dev->ops->cancel_remain_on_channel = NULL;
+> > +
+> > +             wiphy->flags &= ~WIPHY_FLAG_HAS_REMAIN_ON_CHANNEL;
+> > +     }
+> > +
+> > +     return 0;
+> > +}
+> > +
 
 <snip>
-> > +
-> > +     dev_dbg(dev->mt76.dev, "BSS %d is %s\n", event->bss_idx,
-> > +             event->is_absent ? "Absent" : "Present");
->
-> do we really need this? I guess we can just drop mt7921_mcu_bss_event entirely
 
-That is not really necessary. That was just what I used to diagnose
-firmware behavior. I think I will remove it in the next version.
+> > -     mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), &mt7921_ops,
+> > -                              &drv_ops);
+> > +     ops = devm_kmemdup(&pdev->dev, &mt7921_ops, sizeof(mt7921_ops),
+> > +                        GFP_KERNEL);
+>
+> why do we need to copy mt7921_ops?
+>
+
+As the old fw cannot support the roc and chanctx and considering
+backward compatibility, I need to copy the mt7921_ops here and
+disable related operations for old fw before registering the hw to mac80211.
 
      Sean
->
+
 > Regards,
 > Lorenzo
 >
-> >  }
+> > +     if (!ops) {
+> > +             ret = -ENOMEM;
+> > +             goto err_free_pci_vec;
+> > +     }
+> > +
+> > +     mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), ops, &drv_ops);
+> >       if (!mdev) {
+> >               ret = -ENOMEM;
+> >               goto err_free_pci_vec;
+> > @@ -286,7 +293,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
 > >
-> >  static void
+> >       dev = container_of(mdev, struct mt7921_dev, mt76);
+> >       dev->hif_ops = &mt7921_pcie_ops;
+> > -
+> > +     dev->ops = ops;
+> >       mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
+> >       tasklet_init(&dev->irq_tasklet, mt7921_irq_tasklet, (unsigned long)dev);
+> >
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+> > index 487acd6e2be8..6d27875f41b8 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+> > @@ -120,18 +120,23 @@ static int mt7921s_probe(struct sdio_func *func,
+> >               .fw_own = mt7921s_mcu_fw_pmctrl,
+> >       };
+> >
+> > +     struct ieee80211_ops *ops;
+> >       struct mt7921_dev *dev;
+> >       struct mt76_dev *mdev;
+> >       int ret;
+> >
+> > -     mdev = mt76_alloc_device(&func->dev, sizeof(*dev), &mt7921_ops,
+> > -                              &drv_ops);
+> > +     ops = devm_kmemdup(&func->dev, &mt7921_ops, sizeof(mt7921_ops),
+> > +                        GFP_KERNEL);
+> > +     if (!ops)
+> > +             return -ENOMEM;
+> > +
+> > +     mdev = mt76_alloc_device(&func->dev, sizeof(*dev), ops, &drv_ops);
+> >       if (!mdev)
+> >               return -ENOMEM;
+> >
+> >       dev = container_of(mdev, struct mt7921_dev, mt76);
+> >       dev->hif_ops = &mt7921_sdio_ops;
+> > -
+> > +     dev->ops = ops;
+> >       sdio_set_drvdata(func, dev);
+> >
+> >       ret = mt76s_init(mdev, func, &mt7921s_ops);
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+> > index d06cee386acd..cf3ec59a4270 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+> > @@ -217,6 +217,7 @@ static int mt7921u_probe(struct usb_interface *usb_intf,
+> >
+> >       dev = container_of(mdev, struct mt7921_dev, mt76);
+> >       dev->hif_ops = &hif_ops;
+> > +     dev->ops = ops;
+> >
+> >       udev = usb_get_dev(udev);
+> >       usb_reset_device(udev);
 > > --
 > > 2.25.1
 > >
