@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14181C00140
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 09:17:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45747C28B2B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 09:18:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wpAUAfc07ylNY9oSdQ6DPJcvSW66IDwq4Ksnwpr1SWA=; b=rxb6z/yWEm2sqRioYT3R4C/gpB
-	NPxtuz8eST9aTXHEtcHCNsjo9LpYt49wM+eTpP/EUBiI9LYMJ6uJ+pHvSOdzdUSWvrwdpFOZO8+5t
-	4Z3L23iF8naZd6WvtOTQDhy4sfi9+zMr+B9olP/PMo59ieNq8fofEDp62uw+ZDBvzr9nEUGSOWBoT
-	YPIcpybr4JP2oxSEVfa/2fw60YNNltQmuPMluboBLo1Be86ezXayG6v0JVxwa0/Luybi947Bp07KT
-	qMJp9vkdWOTACCfhDzY3s1IjWwFQnru6HfdpjNidkuICcln2KpdFGq4sYy4YDyJNEYPGUaVNqBhkA
-	ZRoMM1wg==;
+	bh=tUPXDCTkwC2zhPMuq078yFzwDdf8nbUXFo0CgcNnnAg=; b=R5ev6K0bfK62fNBH7+gPSrsr4+
+	4JNnkYURYbqBBkUzEqii46HJMPh8m6WC9+WwV7jxGdhRTnNhYHNyIildaP4kThKCneWNlqEifkx2a
+	VKnvYs4JIbJY78acoThhPg28LVMC/LO4bdFEs98/SP9RdPdcJtcOVGa+jl8pB2fIphncD7EHN32q+
+	YRc1gv43/ZDSBGmV85K7+vNgEvPMG2dAxBs6+DT27/II7Xv+EHHQWRDBl4h7HChH8RJxySKljEWKj
+	UfSq5GSHP8eZ+RJz1y8LqM4M8LWdh5ffOMa7VLzAwY7pcosSTlK81Mdt9qnyIALfg8APt4uXHZXhB
+	YFAPrE0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oObel-001UMV-PS; Thu, 18 Aug 2022 09:17:39 +0000
+	id 1oObf8-001Ui8-KK; Thu, 18 Aug 2022 09:18:02 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oObeK-001Tr5-0x; Thu, 18 Aug 2022 09:17:13 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1660814205; cv=none; 
+	id 1oObeL-001Ttw-1y; Thu, 18 Aug 2022 09:17:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1660814211; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=mfWE9788EDfsm55K8i8vHWwCMzj+jvHGrVXjWFgD+3NI0Se/zUBg9SkK0YE/x6QeCrndEwoqdKIJCTjbS0EQg27O2zkigNB8VS3q9yMVIn9t7g1UXMcHKXH4piZv66ftIYjiw3/QJsStbQcgMADRbZfYe5Ks1OCqcRjO1NLtdu4=
+	b=iSK5aEHEz2NKsaTUHblmGN+Z5pVtKSH8OgDzOFj90fAKga+dH50mWMB9+qQ7wUeS8p5Aaq1L93RomIW68+f1aO3raNjWOiQiXvxud03HAW7x9MVD8IoJ/7J35hBQAEVQwMBf6rpDYsrXyuZ280X98RTlrbEdO0URdGE4oQdtIbw=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1660814205; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=wpAUAfc07ylNY9oSdQ6DPJcvSW66IDwq4Ksnwpr1SWA=; 
-	b=RrhhNRiX/4mh+bl6eE4oNd45nR2F9ndMoUvmHxhFfHJgGxeYmmBmdcDORsRbmfSQorB7Q8sDBeyD9WhZ0XJzFQtqP8hzP1sKAB4kH4aK/swQ2nlaHb3oZ18T0HBgAnh8BSSBDozFShu366PuAKjS7MX80IO2FmIhb3xUvUMINOY=
+	t=1660814211; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=tUPXDCTkwC2zhPMuq078yFzwDdf8nbUXFo0CgcNnnAg=; 
+	b=SiwuLfHgKVmz2KSkESTYCsRYuMieBJ3R2/dW6MpFew/z5WE2kcRKBFDiLZko/l27wovFFuW95VJ0jv72wPPShWaRb/+kNwNlDBgcwND4epKAlS8H6IxvFYx1QgeIBNHnlXgQ/S/wItwFP1lxDhrKGhI7BN0q4uR6UUdFMiNUhWg=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1660814205;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1660814211;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=wpAUAfc07ylNY9oSdQ6DPJcvSW66IDwq4Ksnwpr1SWA=;
-	b=d/Te43mme5wi6A1Qtwq2i2032uIc1QxhgO7Ypz5rcxXD7UyirsmOCWREZT6Bksnb
-	bw/MMHGfs7OSIHA7QUx2+Rj0IjUXk4kTmtyb17oSCU2gb/2q3B9bq4hsyw7D4KGOxmI
-	pAkYVq/EHYXnoKMzf0GpIx+QveGvhNHuUIrbuf1Y=
+	bh=tUPXDCTkwC2zhPMuq078yFzwDdf8nbUXFo0CgcNnnAg=;
+	b=CVZZLg4CvcouhU8MKyUBZAC4OlA5yIlRgBNdecIalutTdo3sCj8ZJvJl/8dGyI+r
+	mcWNof2dn8s2LNljHEV+1TkQ2dEI/9P/g7BoQIlo01pD1aKImlKckIoufMANtE48z6H
+	AcHdkPNQwyAtj4j6EqtOvjzFFREpnqUjNH2Dwu/Q=
 Received: from arinc9-PC.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 166081420373773.15587554921001; Thu, 18 Aug 2022 02:16:43 -0700 (PDT)
+	with SMTPS id 1660814210407956.4809054082643; Thu, 18 Aug 2022 02:16:50 -0700 (PDT)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Andrew Lunn <andrew@lunn.ch>,
 	Vivien Didelot <vivien.didelot@gmail.com>,
@@ -71,11 +71,10 @@ Cc: netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 1/6] dt-bindings: net: dsa: mediatek,mt7530: make trivial changes
-Date: Thu, 18 Aug 2022 12:16:22 +0300
-Message-Id: <20220818091627.51878-2-arinc.unal@arinc9.com>
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+Subject: [PATCH v3 2/6] dt-bindings: net: dsa: mediatek,mt7530: fix reset lines
+Date: Thu, 18 Aug 2022 12:16:23 +0300
+Message-Id: <20220818091627.51878-3-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220818091627.51878-1-arinc.unal@arinc9.com>
 References: <20220818091627.51878-1-arinc.unal@arinc9.com>
@@ -84,8 +83,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220818_021712_136361_DA88AB92 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20220818_021713_203922_F5E51D82 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,107 +99,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make trivial changes on the binding.
-
-- Update title to include MT7531 switch.
-- Add me as a maintainer. List maintainers in alphabetical order by first
-name.
-- Add description to compatible strings.
-- Stretch descriptions up to the 80 character limit.
-- Remove quotes from $ref: "dsa.yaml#".
+- Fix description of mediatek,mcm. mediatek,mcm is not used on MT7623NI.
+- Add description for reset-gpios.
+- Invalidate reset-gpios if mediatek,mcm is used. We cannot use multiple
+reset lines at the same time.
+- Invalidate mediatek,mcm if the compatible device is mediatek,mt7531.
+There is no multi-chip module version of mediatek,mt7531.
+- Require mediatek,mcm for mediatek,mt7621 as the compatible string is only
+used for the multi-chip module version of MT7530.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/net/dsa/mediatek,mt7530.yaml     | 36 ++++++++++++-------
- 1 file changed, 24 insertions(+), 12 deletions(-)
+ .../bindings/net/dsa/mediatek,mt7530.yaml     | 31 +++++++++++++++++--
+ 1 file changed, 28 insertions(+), 3 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 17ab6c69ecc7..edf48e917173 100644
+index edf48e917173..4c99266ce82a 100644
 --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
 +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -4,12 +4,13 @@
- $id: http://devicetree.org/schemas/net/dsa/mediatek,mt7530.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
- 
--title: Mediatek MT7530 Ethernet switch
-+title: Mediatek MT7530 and MT7531 Ethernet Switches
- 
- maintainers:
--  - Sean Wang <sean.wang@mediatek.com>
-+  - Arınç ÜNAL <arinc.unal@arinc9.com>
-   - Landen Chao <Landen.Chao@mediatek.com>
-   - DENG Qingfang <dqfext@gmail.com>
-+  - Sean Wang <sean.wang@mediatek.com>
- 
- description: |
-   Port 5 of mt7530 and mt7621 switch is muxed between:
-@@ -61,10 +62,21 @@ description: |
- 
- properties:
-   compatible:
--    enum:
--      - mediatek,mt7530
--      - mediatek,mt7531
--      - mediatek,mt7621
-+    oneOf:
-+      - description:
-+          Standalone MT7530 and multi-chip module MT7530 in MT7623AI SoC
-+        items:
-+          - const: mediatek,mt7530
-+
-+      - description:
-+          Standalone MT7531
-+        items:
-+          - const: mediatek,mt7531
-+
-+      - description:
-+          Multi-chip module MT7530 in MT7621AT, MT7621DAT and MT7621ST SoCs
-+        items:
-+          - const: mediatek,mt7621
- 
-   reg:
-     maxItems: 1
-@@ -79,7 +91,7 @@ properties:
-   gpio-controller:
-     type: boolean
-     description:
--      if defined, MT7530's LED controller will run on GPIO mode.
-+      If defined, MT7530's LED controller will run on GPIO mode.
- 
-   "#interrupt-cells":
-     const: 1
-@@ -92,8 +104,8 @@ properties:
-   io-supply:
-     description:
-       Phandle to the regulator node necessary for the I/O power.
--      See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
--      for details for the regulator setup on these boards.
-+      See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt for
-+      details for the regulator setup on these boards.
- 
+@@ -110,11 +110,15 @@ properties:
    mediatek,mcm:
      type: boolean
-@@ -110,8 +122,8 @@ properties:
- 
-   resets:
      description:
--      Phandle pointing to the system reset controller with line index for
--      the ethsys.
-+      Phandle pointing to the system reset controller with line index for the
-+      ethsys.
+-      if defined, indicates that either MT7530 is the part on multi-chip
+-      module belong to MT7623A has or the remotely standalone chip as the
+-      function MT7623N reference board provided for.
++      Used for MT7621AT, MT7621DAT, MT7621ST and MT7623AI SoCs which the MT7530
++      switch is a part of the multi-chip module.
+ 
+   reset-gpios:
++    description:
++      GPIO to reset the switch. Use this if mediatek,mcm is not used.
++      This property is optional because some boards share the reset line with
++      other components which makes it impossible to probe the switch if the
++      reset line is used.
      maxItems: 1
  
- patternProperties:
-@@ -148,7 +160,7 @@ required:
-   - reg
- 
- allOf:
--  - $ref: "dsa.yaml#"
-+  - $ref: dsa.yaml#
-   - if:
+   reset-names:
+@@ -165,6 +169,9 @@ allOf:
        required:
          - mediatek,mcm
+     then:
++      properties:
++        reset-gpios: false
++
+       required:
+         - resets
+         - reset-names
+@@ -182,6 +189,24 @@ allOf:
+         - core-supply
+         - io-supply
+ 
++  - if:
++      properties:
++        compatible:
++          items:
++            - const: mediatek,mt7531
++    then:
++      properties:
++        mediatek,mcm: false
++
++  - if:
++      properties:
++        compatible:
++          items:
++            - const: mediatek,mt7621
++    then:
++      required:
++        - mediatek,mcm
++
+ unevaluatedProperties: false
+ 
+ examples:
 -- 
 2.34.1
 
