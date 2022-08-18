@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDCFDC00140
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 09:28:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBC91C00140
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 10:50:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GkI2Q29NX4fYBfJbo6t6SxsmffGa04COpADeR3pZqb8=; b=too4jwAYk530cLJIC7VGr8O+35
-	QOWQ+TDebNTYtdRUoVL8/UzvX+FvU4ZDesSYKfK39dOaCM3qTmGhb2WyaI9Q4K83dkNamvmMHqL4E
-	WHp9/rXHPDGACeKgqgCR8JLMqs5A+vZQarupf8NSeBMJNGGhLTxOF47Hqs3VvO075DXSYwtweXUu6
-	57n53RpIgkCpTOEsoCBT7b5sdHss+7g1WQAN6syr0UkY56f09cIu7Y5bs7HTBR7CZnJDGVXQYi8ag
-	4Hc5534WuxSl1+WdO5qelwb/EU6YVSR5rJn2SZ6xYr1Gv2FwmPWe41u0CdoKX7zIhBrgy/76GQTiN
-	u7vaH5tA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Cxh+pX2nwTETQjm5J+NETFUMm39MsJUeCFIoGI8bqZE=; b=jUqj9ZZzby+oDMATYJnJgNcJvH
+	Z7q4HVAV8WNrVXKM6SXih+JzfHiWDOv3PswPNjtwIwKrUpiQaBqJPehMwRUJRzXp2YCYfyZADTkZ+
+	6OuCeMkvPGiyQb/bm/e2bvBLEVd5YsGqVFqHEHYchUHglhE/TAIe5M2Wjvfmvjp08agkmGLLgd5ih
+	SN04sKDJebOe0rGmuvSKo5prJbwb9vHF9jka3vnA+z9byvhHuIuBt8k8V0Mpl4e0S6rvq+AGzLt+R
+	GZwNYGjQZ32HTgftMAOcnU2ZRyWNbFW+5CVrcH5pT/w+NKV/Xp207z/5VaIWDpikFIRYSnE41uPT4
+	ddeXUfrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOboe-001cGQ-9p; Thu, 18 Aug 2022 09:27:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oOd5x-002srb-Vf; Thu, 18 Aug 2022 10:49:50 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOboZ-001c7h-6U; Thu, 18 Aug 2022 09:27:49 +0000
-X-UUID: 6f83e694241a46358a5165482f9060f2-20220818
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=GkI2Q29NX4fYBfJbo6t6SxsmffGa04COpADeR3pZqb8=;
-	b=dhZzPg7/g0t8WwEC2uyGtO1YGyjH7IYxe1ShudiT9s3AjtHapN6uX+2RY+Ec9o1L/uRj8HhH/q6/oBsH8SJSOux1GZHs3zV1BwfKJ4zbNfJQlAx0K2lJdUbhatymfS+Qkkxe8QrTxqaBHHABzvwZ+r4QJQaSIy1sJy2mK2QvJ58=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:b4393b3e-b72b-4a31-91ce-6fa625507b78,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:d8d0099d-da39-4e3b-a854-56c7d2111b46,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 6f83e694241a46358a5165482f9060f2-20220818
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 281951684; Thu, 18 Aug 2022 02:27:35 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 18 Aug 2022 16:47:02 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 18 Aug 2022 16:47:01 +0800
-Message-ID: <61af66dd70c7a4a95072868cdf217d3747b97634.camel@mediatek.com>
-Subject: Re: [PATCH v2] dt-bindings: pinctrl: mt8186: Fix 'reg-names' for
- pinctrl nodes
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
-CC: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	"Chen-Yu Tsai" <wenst@chromium.org>, Guodong Liu <guodong.liu@mediatek.com>
-Date: Thu, 18 Aug 2022 16:47:01 +0800
-In-Reply-To: <20220817160928.ppkjonuymr7rn4bu@notapiano>
-References: <20220817052615.27153-1-allen-kh.cheng@mediatek.com>
-	 <20220817160928.ppkjonuymr7rn4bu@notapiano>
+	id 1oOd5v-002snC-4Z
+	for linux-mediatek@lists.infradead.org; Thu, 18 Aug 2022 10:49:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=Cxh+pX2nwTETQjm5J+NETFUMm39MsJUeCFIoGI8bqZE=;
+	t=1660819784; x=1662029384; b=XO2lISUDD6+HuaokA434xa3btDgMhOFTGgu0yhRRzejayUh
+	ttaUW61ptsbcfcv4v3y8fno52xzMK3DaIqMi72q4qwzZ2XTwRiZO+PRDcWVnqtCLKbpYw/A7uPzLJ
+	9Ia+YqEFGN1m3/Ng1em+/wiilIobIXTnBH25Z+icWTkdSCkYgq8F7zMm//HylhPKD6qCrZPG22Gi8
+	dxvTX+JQSiefZGZSnCer6xMl7pvlRVSyvQOEwO6yUCf5/IDtOwmYY76F4A/XxKarS/h0vZ4GhUrvT
+	ZhI9sI3rzjv75GQgOphvHFQp0VBnzRUhs+UrzWwMa5uRW7wlMn3+bnGxZNir9k4A==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.96)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1oOd5a-00BCG2-2y;
+	Thu, 18 Aug 2022 12:49:27 +0200
+Message-ID: <dc45daf23fc8084596f1da8cb41afb422b24160d.camel@sipsolutions.net>
+Subject: Re: [PATCH 1/9] wifi: mac80211: allow enabling chanctx until hw
+ registration
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Sean Wang <sean.wang@kernel.org>
+Cc: Sean Wang =?UTF-8?Q?=28=E7=8E=8B=E5=BF=97=E4=BA=98=29?=
+ <sean.wang@mediatek.com>, Felix Fietkau <nbd@nbd.name>, 
+ lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com, YN.Chen@mediatek.com,
+  Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com, Deren Wu
+ <Deren.Wu@mediatek.com>,  km.lin@mediatek.com, jenhao.yang@mediatek.com,
+ robin.chiu@mediatek.com,  Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
+ posh.sun@mediatek.com,  ted.huang@mediatek.com, Stella.Chang@mediatek.com,
+ Tom.Chou@mediatek.com,  steve.lee@mediatek.com, jsiuda@google.com,
+ frankgor@google.com, kuabhs@google.com,  druth@google.com,
+ abhishekpandit@google.com, shawnku@google.com, 
+ linux-wireless@vger.kernel.org, "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+Date: Thu, 18 Aug 2022 12:49:25 +0200
+In-Reply-To: <CAGp9Lzrag1b3G+QfW0RCQPGLnR_WzGSg4k+Zdx4zi4b_oeunRQ@mail.gmail.com>
+References: <cover.1660606893.git.objelf@gmail.com>
+	 <473fc7b169f288b7815a7736cf33ac0ec1599a09.1660606893.git.objelf@gmail.com>
+	 <edd45a1e732a0eef1894b9f6eda2d4e3c692359b.camel@sipsolutions.net>
+	 <CAGp9LzrqYsXAPsbZvTy-_3Tnu23oc11KHdxNs9WvYfe0JHQaDg@mail.gmail.com>
+	 <5b24421363048bff1a9f03174cb0223b3e226bf9.camel@sipsolutions.net>
+	 <CAGp9Lzrag1b3G+QfW0RCQPGLnR_WzGSg4k+Zdx4zi4b_oeunRQ@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.4 (3.44.4-1.fc36) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-MTK: N
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220818_022747_293963_F993A29A 
-X-CRM114-Status: GOOD (  25.22  )
+X-CRM114-CacheID: sfid-20220818_034947_227453_1D1447C5 
+X-CRM114-Status: GOOD (  23.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,74 +87,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nícolas,
+Hi Sean,
 
-On Wed, 2022-08-17 at 12:09 -0400, Nícolas F. R. A. Prado wrote:
-> Hi Allen,
-> 
-> On Wed, Aug 17, 2022 at 01:26:15PM +0800, Allen-KH Cheng wrote:
-> > The mt8186 contains 8 GPIO physical address bases that correspond
-> > to
-> > the 'reg-names' of the pinctrl driver. The 'reg-names' entries in
-> > bindings are ordered incorrectly, though. The system crashes due of
-> > an
-> > erroneous address when the regulator initializes.
-> > 
-> > We fix the 'reg-names' for the pinctrl nodes and the pinctrl-mt8186
-> > example in bindings.
-> > 
-> > Fixes: 338e953f1bd1 ("dt-bindings: pinctrl: mt8186: add pinctrl
-> > file and binding document")
-> > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> > Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
-> 
-> The sender's (your) signed-off-by should come last [1]. Also, what is
-> the
-> participation of Guodong in this patch? If Guodong helped in writing
-> the patch
-> there should also be a Co-developed-by tag for Guodong, as shown in
-> [1].
-> 
-> [1] 
-> https://urldefense.com/v3/__https://www.kernel.org/doc/html/latest/process/submitting-patches.html*when-to-use-acked-by-cc-and-co-developed-by__;Iw!!CTRNKA9wMg0ARbw!1_mWpRIIYugoUq7AlCzsuuJoxY3jETMdZ6U3QXxh8a8FKe2mb5kCUOSAvZGqK3bUHBje7g$
->  
+> It could be changed but it would break the consistency of the current
+> mt76 driver.
 
-Guodong and I consult on this patch. I will add a Co-developed-by tag
-for Guodong.
+I'm not really convinced ...
 
-> 
-> > ---
-> 
-> [..]
-> > --- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
-> > +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8186.yaml
-> 
-> [..]
-> > @@ -232,12 +232,12 @@ examples:
-> >              <0x10002200 0x0200>,
-> >              <0x10002400 0x0200>,
-> >              <0x10002600 0x0200>,
-> > -            <0x10002A00 0x0200>,
-> > +            <0x10002a00 0x0200>,
-> 
-> Also, you should avoid making changes that don't have to do with the
-> patch
-> itself. This patch is about fixing the reg names, so no need to touch
-> the
-> formatting of addresses. It just adds noise.
-> 
-> Other than that,
-> 
-> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> 
-> Thanks,
-> Nícolas
+> mt76 driver does the things in the following order
+> - ieee80211_alloc_hw (where an instance of "struct mt76_dev *" would be c=
+reated)
+> - register bus operation into mt76 core (depending on struct mt76_dev
+> to provide an abstraction layer for mt76 core to access bus)
+> - read chip identifier (depending on bus operation)
+> - load the firmware capabilities (depending on chip identifier)
+> - initialize the hardware
+> ....
+> -ieee80211_register_hw
+>=20
+> If firmware capability is needed to load before ieee80211_alloc_hw, we
+> need to create kind of similar functions to read chip identifiers and
+> load firmware.
+> I know It may not a strong reason not to change, but if we can support
+> read firmware capabilities after alloc_hw, it provides flexibility to
+> the vendor driver
+> and helps mt7921 look more consistent and save a few changes across
+> different mt7921 bus drivers (mt7921 now supports SDIO, USB, PCIe type
+> driver).
 
+But you're loading _firmware_, so to determine the capabilities all you
+should need is the actual file, no? I mean, you don't even have to load
+it into the device. Like iwlwifi, you could have an indication (or many
+flags, or TLVs, or whatnot) in the file that says what it's capable of.
 
-Ok, no problem. I will remove unrelated part.
+> I kmemdup the const ops and ieee80211_alloc_hw with the duplicated ops
+> the duplicated ops would be updated by the actual firmware
+> capabilities before ieee80211_register_hw.
 
-Thanks,
-Allen
+Well ... yeah ok that works, but it's pretty wasteful, and also makes
+this a nice security attack target - there's a reason ops structs are
+supposed to be const, that's because they can then be really read-only
+and you can't have function pointer changes. Some of the CFI stuff is
+meant to help avoid that, but still ...
 
+So anyway. I'm not really sure I buy this - even you while doing this
+already kind of introduced a bug because you didn't change this code:
 
+        if (!use_chanctx || ops->remain_on_channel)
+                wiphy->flags |=3D WIPHY_FLAG_HAS_REMAIN_ON_CHANNEL;
+
+I guess you didn't notice because you have remain_on_channel in the
+first place, but that's not the only code there assuming that we have
+the ops in place and they don't change.
+
+If we really, really need to allow changing the ops, then we should
+probably make a much larger change to not even pass the ops until
+register, though I'm not really sure it's worth it just to have mt7921
+avoid loading the firmware from disk before allocation?
+
+johannes
 
