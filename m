@@ -4,79 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BC2BC00140
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Aug 2022 23:41:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4A83C00140
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 01:47:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KEf+9oe7rBGfKa0RbKd0ia0PNz6udrYgCbbGFQ8PjW0=; b=3SuuM4mdQF63VjLZ9ZrusxwZSP
-	d50dwdZBkSPwW4YGneLCVhDdy7tQCn4WVIj3TBDip8jRyLxZWLvTzEPzTw42pyVoep4YP/Rjvy1DD
-	w1QzZCRQzlTK3NXuxOSTL/r4UfIdRBB6HEJ8+z6KiXwzhk2SSu/OApM8Xl3V0/xT6SnNkO571A/vv
-	n/ttnKsa9IviklL9xLa3/HM9kavKTPJ+9ckNz9sjh+5GeKqZezXF2mh9xqBzTSjdiDikViwErjpcC
-	hDw1KEUdYZ+619tOCESXVZw0QQpEphRXeNhWt5UBCDC4YbiJVmuKzSHVS8Qum1ueb6a+p8JPyaKT7
-	VMZj4ytQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IOWVM8voEZOj8QsIgEwHtQL5oZR9puzNe4gdcUCy3PI=; b=yS2tIM8cR9hhyWUEWGoc7tTERS
+	xDrA67AA54kLZz/rQgEYuZTW7A1GQwuSn+yMUaeqZKnARL3A/5s0VJwmzKhG6LvW0DKGVP+bdN9iH
+	jledwUZfqEcJH+079cIm8Qv0sqf3DABy7RKQtm8RyodvePXrRSyLv6ZL3DBTbeB9XxfmoPNlpNZh1
+	uEWb9vfzpYC+IRpG4HnqhV8SXNfpYzy/Ysy2G+Qn2uJV/7c6Oj5ArFOfXM1Mi9lyzWIbfXCJCdr6W
+	uXnFhxlwRRgnyfTXHnbO3NE5SUm32n37SZlhSGBlbsiObfL3d6dbLkNygY08cIrKcmYHuBRYWkiir
+	P580g+Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOp8V-00BMUL-TY; Thu, 18 Aug 2022 23:41:15 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oOr67-00DbPx-KZ; Fri, 19 Aug 2022 01:46:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOp8S-00BMS1-TT
-	for linux-mediatek@lists.infradead.org; Thu, 18 Aug 2022 23:41:14 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id A25DCB824CD
-	for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 23:41:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 640DEC433C1
-	for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 23:41:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660866069;
-	bh=4/ee5rBqbhthSFfgx0AiAmy1Qrru12HILchShtOcxxE=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=PGZc0ZZuDKI2e7yhIoCCNA+EjMy5Gqjw76eWfTVFJRPd1z7vb3FGb8+CmM+qd2CYt
-	 xhFj2kCt4Naay/kzSAaqbA437zIo1JJh63HBq7I7+h2ETTG2bOshoiONlysoyIifvG
-	 J98+V9pSjXFJpYtFv79RC7bLRWXBkRyNC2m5TE5gCyE32NeXqa4L0UXDLOob1XA0xb
-	 lz6lI93M7V6kaOlSatrk1R1BVgg+GbkU/OlH6z+4rOLyN/2F6Vosl/xA4UAe+/mJ84
-	 48Th56rPkuIGk9m/Kt2kMKFvtP0ALFx4ye5F3ZyCQOJcc30p2xr2xzgp8upUQvg+Jd
-	 wm9ca4YXwgUmw==
-Received: by mail-wr1-f51.google.com with SMTP id u14so3358106wrq.9
-        for <linux-mediatek@lists.infradead.org>; Thu, 18 Aug 2022 16:41:09 -0700 (PDT)
-X-Gm-Message-State: ACgBeo1Qn2nO26ZVFF4thsPFDCDSBtmjOUxoW01YTCqOOY7/JXzD/7TS
-	Xqjq6mSAm0CXSBziB5/ZC0MKKn1jkvOKzCSLfl4=
-X-Google-Smtp-Source: AA6agR5ZJ6gxUVqKmNxkae+ip9TV++y1z/ialgt2eVNcbJFbYVoS3eSGEcSkdmBf40A//TgWbFV9Gr8ZGglYARFpSDU=
-X-Received: by 2002:a05:6000:1547:b0:221:7a23:ab67 with SMTP id
- 7-20020a056000154700b002217a23ab67mr2756819wry.515.1660866067658; Thu, 18 Aug
- 2022 16:41:07 -0700 (PDT)
-MIME-Version: 1.0
-References: <cover.1660606893.git.objelf@gmail.com> <473fc7b169f288b7815a7736cf33ac0ec1599a09.1660606893.git.objelf@gmail.com>
- <edd45a1e732a0eef1894b9f6eda2d4e3c692359b.camel@sipsolutions.net>
- <CAGp9LzrqYsXAPsbZvTy-_3Tnu23oc11KHdxNs9WvYfe0JHQaDg@mail.gmail.com>
- <5b24421363048bff1a9f03174cb0223b3e226bf9.camel@sipsolutions.net>
- <CAGp9Lzrag1b3G+QfW0RCQPGLnR_WzGSg4k+Zdx4zi4b_oeunRQ@mail.gmail.com> <dc45daf23fc8084596f1da8cb41afb422b24160d.camel@sipsolutions.net>
-In-Reply-To: <dc45daf23fc8084596f1da8cb41afb422b24160d.camel@sipsolutions.net>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Thu, 18 Aug 2022 16:40:55 -0700
-X-Gmail-Original-Message-ID: <CAGp9LzqmFKs8wp-g7WsJ=uUj_OqucQskdMDwM6yf2dZyuP0ABA@mail.gmail.com>
-Message-ID: <CAGp9LzqmFKs8wp-g7WsJ=uUj_OqucQskdMDwM6yf2dZyuP0ABA@mail.gmail.com>
-Subject: Re: [PATCH 1/9] wifi: mac80211: allow enabling chanctx until hw registration
-To: Johannes Berg <johannes@sipsolutions.net>
-Cc: =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang@mediatek.com>, 
-	Felix Fietkau <nbd@nbd.name>, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com, 
-	YN.Chen@mediatek.com, Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com, 
-	Deren Wu <Deren.Wu@mediatek.com>, km.lin@mediatek.com, jenhao.yang@mediatek.com, 
-	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, 
-	posh.sun@mediatek.com, ted.huang@mediatek.com, Stella.Chang@mediatek.com, 
-	Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com, 
-	frankgor@google.com, kuabhs@google.com, druth@google.com, 
-	abhishekpandit@google.com, shawnku@google.com, linux-wireless@vger.kernel.org, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+	id 1oOr63-00DbGR-EO; Fri, 19 Aug 2022 01:46:54 +0000
+X-UUID: c3a1f6bcdc034379a52a6fde657c2a59-20220818
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=IOWVM8voEZOj8QsIgEwHtQL5oZR9puzNe4gdcUCy3PI=;
+	b=Gu1gDOBfZARtTpls85okNmzvsIr5wRLxLvDJ3NwWFr4qo3wDHR2qVshLBmsA4tf5dAVTshf4m49yY3tCSTQbhOjOewQTigHC7HLXjQ9Lg4RnNbD0ox/w7+cWzBLJy4IWqPssOTJ0t9hpXVMCXUU6xS+GtiIIs58zsGtYZBuR+6E=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:04241f1f-a44e-45e1-aba5-4f5b30aec21c,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:f339179d-da39-4e3b-a854-56c7d2111b46,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c3a1f6bcdc034379a52a6fde657c2a59-20220818
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <johnson.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2033740076; Thu, 18 Aug 2022 18:46:45 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 19 Aug 2022 09:46:11 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 19 Aug 2022 09:46:11 +0800
+Message-ID: <0fb7809abab73c82f7ab98a80e5e04444381cf8e.camel@mediatek.com>
+Subject: Re: [PATCH RESEND] dt-bindings: timer: Add compatible for MediaTek
+ MT8188
+From: Johnson Wang <johnson.wang@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	<daniel.lezcano@linaro.org>, <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Fri, 19 Aug 2022 09:46:11 +0800
+In-Reply-To: <9947dc76-ab12-f840-3439-ca383c02c598@linaro.org>
+References: <20220818124602.20394-1-johnson.wang@mediatek.com>
+	 <3d91fe87-feed-d083-9eeb-51293aead67a@linaro.org>
+	 <9947dc76-ab12-f840-3439-ca383c02c598@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220818_164113_279943_12CFFF3A 
-X-CRM114-Status: GOOD (  38.33  )
+X-CRM114-CacheID: sfid-20220818_184651_538915_CD032878 
+X-CRM114-Status: GOOD (  18.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,70 +84,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Johannes,
+On Thu, 2022-08-18 at 16:40 +0300, Krzysztof Kozlowski wrote:
+> On 18/08/2022 15:51, Krzysztof Kozlowski wrote:
+> > On 18/08/2022 15:46, Johnson Wang wrote:
+> > > Add dt-binding documentation of timer for MediaTek MT8188 SoC
+> > > platform.
+> > > 
+> > > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> > > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> > > ---
+> > >  Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt |
+> > > 1 +
+> > >  1 file changed, 1 insertion(+)
+> > > 
+> > > diff --git
+> > > a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> > > b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+> > > index f1c848af91d3..8bbb6e94508b 100644
+> > > --- a/Documentation/devicetree/bindings/timer/mediatek,mtk-
+> > > timer.txt
+> > > +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-
+> > > timer.txt
+> > > @@ -25,6 +25,7 @@ Required properties:
+> > >  	For those SoCs that use SYST
+> > >  	* "mediatek,mt8183-timer" for MT8183 compatible timers (SYST)
+> > >  	* "mediatek,mt8186-timer" for MT8186 compatible timers (SYST)
+> > > +	* "mediatek,mt8188-timer" for MT8188 compatible timers (SYST)
+> > 
+> > Where is the driver change implementing this?
+> 
+> Or is there a generic fallback and you just added a specific one (not
+> visible on the diff)?
+> 
+> Best regards,
+> Krzysztof
 
-On Thu, Aug 18, 2022 at 3:49 AM Johannes Berg <johannes@sipsolutions.net> wrote:
->
-> Hi Sean,
->
-> > It could be changed but it would break the consistency of the current
-> > mt76 driver.
->
-> I'm not really convinced ...
->
-> > mt76 driver does the things in the following order
-> > - ieee80211_alloc_hw (where an instance of "struct mt76_dev *" would be created)
-> > - register bus operation into mt76 core (depending on struct mt76_dev
-> > to provide an abstraction layer for mt76 core to access bus)
-> > - read chip identifier (depending on bus operation)
-> > - load the firmware capabilities (depending on chip identifier)
-> > - initialize the hardware
-> > ....
-> > -ieee80211_register_hw
-> >
-> > If firmware capability is needed to load before ieee80211_alloc_hw, we
-> > need to create kind of similar functions to read chip identifiers and
-> > load firmware.
-> > I know It may not a strong reason not to change, but if we can support
-> > read firmware capabilities after alloc_hw, it provides flexibility to
-> > the vendor driver
-> > and helps mt7921 look more consistent and save a few changes across
-> > different mt7921 bus drivers (mt7921 now supports SDIO, USB, PCIe type
-> > driver).
->
-> But you're loading _firmware_, so to determine the capabilities all you
-> should need is the actual file, no? I mean, you don't even have to load
-> it into the device. Like iwlwifi, you could have an indication (or many
-> flags, or TLVs, or whatnot) in the file that says what it's capable of.
->
-> > I kmemdup the const ops and ieee80211_alloc_hw with the duplicated ops
-> > the duplicated ops would be updated by the actual firmware
-> > capabilities before ieee80211_register_hw.
->
-> Well ... yeah ok that works, but it's pretty wasteful, and also makes
-> this a nice security attack target - there's a reason ops structs are
-> supposed to be const, that's because they can then be really read-only
-> and you can't have function pointer changes. Some of the CFI stuff is
-> meant to help avoid that, but still ...
->
-> So anyway. I'm not really sure I buy this - even you while doing this
-> already kind of introduced a bug because you didn't change this code:
->
->         if (!use_chanctx || ops->remain_on_channel)
->                 wiphy->flags |= WIPHY_FLAG_HAS_REMAIN_ON_CHANNEL;
->
-> I guess you didn't notice because you have remain_on_channel in the
-> first place, but that's not the only code there assuming that we have
-> the ops in place and they don't change.
->
-> If we really, really need to allow changing the ops, then we should
-> probably make a much larger change to not even pass the ops until
-> register, though I'm not really sure it's worth it just to have mt7921
-> avoid loading the firmware from disk before allocation?
->
-> johannes
+Hi Krzysztof,
 
-Thanks for your input. I thought I'd try to write a patch to follow up
-on the idea you mentioned here.
-    sean
+Yes, MT8188 uses "mediatek,mt6765-timer" as fallback compatible.
+
+BRs,
+Johnson Wang
+
 
