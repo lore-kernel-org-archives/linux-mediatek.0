@@ -4,69 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECC38C25B0E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 08:37:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 402B1C25B0E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 08:55:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ORM6sl5194E0I4ytj2g+FRhv8tYC54a1lBFdsDfzRCM=; b=k37vrulbTsElBbpmMDTeAAkw/j
-	8jap+ndehRPmYQS1XynjgwTQwjbwMG5ETVA/Y5a48fYeR8O5XzHyHXdcckWBTuVRyyI6cjflY2MuI
-	QYl2OJQItCZsRLrbprwn6neqdtdbTAKBVfJ9yvcxbLK5xbb4BPKIRu/sjQHPIiBlZuwtRGYKOMojk
-	DcBr/xKRJRymVvpKKa4rVl/71C2ZWvUiqz3NxLt3Xskqk22npwKdxRcmAb5rIb+hbCVHThbbLS8eK
-	vhcHFtPDwi9egPQgAGn6soGtnuvMQDvp27M/BZpYvOihIPbs3DtYcU2w5ACUG7Q8qDurPF61cF2GC
-	HMGUCYiw==;
+	bh=zJrUE1n5Ovan/JyovJcsx14Og32K8gUsuio6OznGSm8=; b=XYGT00k4XGKWSGdfMcsA9n1AxL
+	gFUgiLq2y1Wg71g20iKzyrwhqbCfzl5LDh/FTqJOevKNR42WNt4D58FkwbaiUafjmeTts8oFl/K3/
+	nIOJKdq4KYv+xd6NeM87lHy6ryogqJHE4YF73d5LVpWGrWTl2FHx8CCz7X0S+JS0YjunubMTEfyS+
+	SYw75AmTmDiHSDxcEz+PWtbZJP9ak616KRx3C/Ikd0F+S0hQ3OWGaiHSE8lvrFJOT+uNMw/XtKSPg
+	M0Dnm2TLPt3QIq0qINLB+SugvEEdFvfdVkIKwLdrIJCGYoMNyWe6kOFdVr2kzrrA+/qhwffFQ1snt
+	dnDIehew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOxVW-004BqS-1X; Fri, 19 Aug 2022 08:37:34 +0000
+	id 1oOxmN-004OiH-2s; Fri, 19 Aug 2022 08:54:59 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOxVS-004BaJ-Cg; Fri, 19 Aug 2022 08:37:31 +0000
-X-UUID: f6b921c38b414f05ba066c2b431d84c5-20220819
+	id 1oOxm5-004OSL-3d; Fri, 19 Aug 2022 08:54:44 +0000
+X-UUID: 26a5d32e97dc49029894c6231b84b9d0-20220819
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ORM6sl5194E0I4ytj2g+FRhv8tYC54a1lBFdsDfzRCM=;
-	b=cvj4ug/Q4mXC52uF5AGR9gu88RbQdW31S8B3/g7gCVvY1Ic0sajJUAbt/wmYEwBUS0Ujf4bLvqUn/aqkb1T4R35k0lDmbV7SU7ESFSSwyo3X4dZzbrrQiF8BWkmBy/Bx9E5kQnbj6qXOKoatVMd+nhrJyL5xfBu29VL3GCoZ6gw=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=zJrUE1n5Ovan/JyovJcsx14Og32K8gUsuio6OznGSm8=;
+	b=hPOO/7hBQuKcOHzjOPbcoTag3xyrwVMS/Z1Vbu5DMFK6kyrn3sAYYI6tOtp5sAE7uGwe2zNvaabKQ4C3oR9YBzg8BavsxwZCmLSzYBjxBgrZ2Tpm7Oi9vEV/uR1ZcEJqhQq5U/Gsv6dQiy16PPE5i5OOgHpXhPSRShPayu0TjXA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:9179c982-2abe-40dd-a9be-5ddbc1126a93,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:57c102cf-20bd-4e5e-ace8-00692b7ab380,C
+X-CID-O-INFO: VERSION:1.1.10,REQID:026b929f-a14a-4ff4-932f-7b291599f8b2,OB:0,L
+	OB:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
+	_Ham,ACTION:release,TS:25
+X-CID-META: VersionHash:84eae18,CLOUDID:4fbcb567-a9d9-4672-a3c8-12721739a220,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
 	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: f6b921c38b414f05ba066c2b431d84c5-20220819
+X-UUID: 26a5d32e97dc49029894c6231b84b9d0-20220819
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
+	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 341986926; Fri, 19 Aug 2022 01:37:22 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 19 Aug 2022 16:05:58 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 19 Aug 2022 16:05:58 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: Mathias Nyman <mathias.nyman@intel.com>, Chunfeng Yun
-	<chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Eddie
- Hung" <eddie.hung@mediatek.com>
-Subject: [PATCH RESEND v2 2/2] usb: xhci-mtk: fix bandwidth release issue
-Date: Fri, 19 Aug 2022 16:05:56 +0800
-Message-ID: <20220819080556.32215-2-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220819080556.32215-1-chunfeng.yun@mediatek.com>
-References: <20220819080556.32215-1-chunfeng.yun@mediatek.com>
+	with ESMTP id 309069515; Fri, 19 Aug 2022 01:54:31 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 19 Aug 2022 16:54:25 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 19 Aug 2022 16:54:25 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
+	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<cellopoint.kai@gmail.com>, Moudy Ho <moudy.ho@mediatek.com>
+Subject: [PATCH v26 2/4] dt-binding: mediatek: add bindings for MediaTek CCORR and WDMA
+Date: Fri, 19 Aug 2022 16:54:21 +0800
+Message-ID: <20220819085423.17023-3-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220819085423.17023-1-moudy.ho@mediatek.com>
+References: <20220819085423.17023-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220819_013730_621758_55164E10 
-X-CRM114-Status: GOOD (  13.50  )
+X-CRM114-CacheID: sfid-20220819_015441_903920_5B99E106 
+X-CRM114-Status: GOOD (  15.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,49 +89,183 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This happens when @udev->reset_resume is set to true, when usb resume,
-the flow as below:
-  - hub_resume
-    - usb_disable_interface
-      - usb_disable_endpoint
-        - usb_hcd_disable_endpoint
-          - xhci_endpoint_disable  // it set @ep->hcpriv to NULL
+This patch adds DT binding documentation for MediaTek's CCORR and
+WDMA components.
+These components exist in both MediaTek's Media Data Path 3(MDP3) and DRM,
+and the bindings are placed under the folder "./soc/mediatek" to prevent
+duplicate builds.
 
-Then when reset usb device, it will drop allocated endpoints,
-the flow as below:
-  - usb_reset_and_verify_device
-    - usb_hcd_alloc_bandwidth
-      - xhci_mtk_drop_ep
-
-but @ep->hcpriv is already set to NULL, the bandwidth will be not
-released anymore.
-
-Due to the added endponts are stored in hash table, we can drop the check
-of @ep->hcpriv.
-
-Fixes: 4ce186665e7c ("usb: xhci-mtk: Do not use xhci's virt_dev in drop_endpoint")
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-v2: add comment
----
- drivers/usb/host/xhci-mtk-sch.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../bindings/soc/mediatek/mediatek,ccorr.yaml | 68 ++++++++++++++++
+ .../bindings/soc/mediatek/mediatek,wdma.yaml  | 81 +++++++++++++++++++
+ 2 files changed, 149 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
 
-diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index a17bc584ee99..579899eb24c1 100644
---- a/drivers/usb/host/xhci-mtk-sch.c
-+++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -764,8 +764,8 @@ int xhci_mtk_drop_ep(struct usb_hcd *hcd, struct usb_device *udev,
- 	if (ret)
- 		return ret;
- 
--	if (ep->hcpriv)
--		drop_ep_quirk(hcd, udev, ep);
-+	/* needn't check @ep->hcpriv, xhci_endpoint_disable set it NULL */
-+	drop_ep_quirk(hcd, udev, ep);
- 
- 	return 0;
- }
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+new file mode 100644
+index 000000000000..10786d769750
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+@@ -0,0 +1,68 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,ccorr.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek color correction
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++
++description: |
++  MediaTek color correction with 3X3 matrix.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8183-mdp3-ccorr
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  mediatek,gce-events:
++    description:
++      The event id which is mapping to the specific hardware event signal
++      to gce. The event id is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - mediatek,gce-events
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++
++    mdp3_ccorr: mdp3-ccorr@1401c000 {
++      compatible = "mediatek,mt8183-mdp3-ccorr";
++      reg = <0x1401c000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
++      mediatek,gce-events = <CMDQ_EVENT_MDP_CCORR_SOF>,
++                            <CMDQ_EVENT_MDP_CCORR_EOF>;
++      clocks = <&mmsys CLK_MM_MDP_CCORR>;
++    };
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
+new file mode 100644
+index 000000000000..95ec19543945
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
+@@ -0,0 +1,81 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,wdma.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek Write Direct Memory Access
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++
++description: |
++  MediaTek Write Direct Memory Access(WDMA) component used to write
++  the data into DMA.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8183-mdp3-wdma
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      items:
++        - description: phandle of GCE
++        - description: GCE subsys id
++        - description: register offset
++        - description: register size
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property. Each GCE subsys id is mapping to
++      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
++
++  mediatek,gce-events:
++    description:
++      The event id which is mapping to the specific hardware event signal
++      to gce. The event id is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    minItems: 1
++
++  iommus:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - mediatek,gce-events
++  - power-domains
++  - clocks
++  - iommus
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++    #include <dt-bindings/power/mt8183-power.h>
++    #include <dt-bindings/memory/mt8183-larb-port.h>
++
++    mdp3_wdma: mdp3-wdma@14006000 {
++      compatible = "mediatek,mt8183-mdp3-wdma";
++      reg = <0x14006000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
++      mediatek,gce-events = <CMDQ_EVENT_MDP_WDMA0_SOF>,
++                            <CMDQ_EVENT_MDP_WDMA0_EOF>;
++      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++      clocks = <&mmsys CLK_MM_MDP_WDMA0>;
++      iommus = <&iommu>;
++    };
 -- 
 2.18.0
 
