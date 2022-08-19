@@ -4,104 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 714F8C32771
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 12:41:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DCA0C32771
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 12:42:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vu2lHdZxEJpxevVE8eil1qxgFt43nikAxZVf13/nJys=; b=c4m9nsLf27IwUGeLUt+u55wx5f
-	kiOIjtImNkdBdkDuwxWeqa2zmiMJD1mFE0AdkARQ1bPGrkYVSdvwcIw6kTmyXABACc/mxCm6+ZK+W
-	GewjV/z2bbd5kdKkzz9T0/P2D0p7ZkIJXiMP0HdSibav6Gj1FX0SNyq+gS5Phl5IgwTXgjkp4NJx5
-	gBmckDyxp8xYgxuQe1IFWBuS391X5MZG28wnXEMExoDHQdX/twcyyihw+y9HISYK7B37siaCPAg5w
-	y+5V4DmnhtE5tb187PN1QNdMyFnf5tJqAcnbZCPxdzlfVl8vOes887I2e4F6RWFQuNgyeEm+r/PQl
-	InyE9HRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=STFUwd3P3RCFDKggsHSgjhqp3ELyGxnNRW4j2OtnQqw=; b=olfLCukTbBG9odxV2AbScKoKtR
+	ux/g/+PrH9qKVHyFBML0o8bis8HuJjR/e/Eugh9SZkTrxSJsi+HL/IbxcOeLl3N+hXWykEWZhGMog
+	Fxx8khlR3UE73XhyQCPFCnYKaDIrKq/2OaDhxZUIo0VZ5dL5oMfxsh2g1tnu4RQwf4pvJNI2ubn7C
+	RZG2Y+VMFkU/dAk+xqGAqcKeYEx1V4QqW91UkocVl0pfY9k19PmsD4RXz/fJqH6i4WRLYIT04Zhcl
+	QVhfHD8eh+d/F0qjYe0hRe3pM2fDqAIECDtX2Oreqw5c2mzfUCv14vyFGdqTW4uyi00lIZRfokI6e
+	IGF8fqeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oP1J8-00877f-NM; Fri, 19 Aug 2022 12:41:02 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1oP1KU-0088hC-FJ; Fri, 19 Aug 2022 12:42:26 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oP1J5-0086sm-83
-	for linux-mediatek@lists.infradead.org; Fri, 19 Aug 2022 12:41:00 +0000
-Received: by mail-lf1-x132.google.com with SMTP id e15so6017654lfs.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Aug 2022 05:40:58 -0700 (PDT)
+	id 1oP1KG-0088Rb-HQ
+	for linux-mediatek@lists.infradead.org; Fri, 19 Aug 2022 12:42:16 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id r16so5051377wrm.6
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Aug 2022 05:42:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc;
-        bh=vu2lHdZxEJpxevVE8eil1qxgFt43nikAxZVf13/nJys=;
-        b=VDbRbwgBCqlvGplcG49N2W2pqBty1ZXmsqM9ti5lVULn8qCrNwpzo4W4gHp2usxMya
-         oAsYzH5Vhwu7qq0lKCQdIujO24m/7EVtTOkK365b3AQtl3fYUBSvV75onErnYW1XMzNm
-         U6KpBKZInfm1Hd8R4FTmo1Vq4lZuzkz5UTcjOAXN6xx6tVneuRGeBLIBEnuzRSKA3YXz
-         Z3wOBk7yoLLZWrC8AvjYuBN8Cv6W9D9TpCakQwJKdoUlkqsPJJrKxKdmMYZ4IYJLwZeX
-         r91KoUsH5bsl1e6OkR3y+iG7hnX5yUehzk4JBygP6g6p6yHVzxmIS3O6B1HmJWupv4H8
-         tZuw==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc;
+        bh=STFUwd3P3RCFDKggsHSgjhqp3ELyGxnNRW4j2OtnQqw=;
+        b=XiwKUUgJKSwVfDJgFeGLX+5Jsc5ngW2f82DuBhhMw7iB8ZzpdNFBy4cQN19QfhCpxO
+         jnbMs6vtaJU+iEJMxA0HERAJemrrcM4EYzqYTjMqNFqqj+W8fWLqc9hnOxOogyreZLhe
+         2wifpDhGJFIm33r3fhtY3n2aK68KI1uq7KE6ecatvEjOY2wTa+EZoGXF1Rs6jlWnVIcp
+         4ji/4iVpKQE1Wx/ki9f2+mupXwnc5cVS74BUa4aI1twkWWoqIrK0Kwo1wN0LwSds3r4t
+         iCKfTnLheBDPAThEaLRUwK+s6qhoX5QpZnDlnj64e55FVV6czlSdDJMjQ0N8SqF/kCNC
+         D+iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc;
-        bh=vu2lHdZxEJpxevVE8eil1qxgFt43nikAxZVf13/nJys=;
-        b=WIBd5dn9ZlzdBjajB+7dOqmL9HmURyEZB+aFNdEwdlwHYKbRBtRL5tz+9MYu76u7o8
-         ZLiyjuEZUCdYdBSzW14YUlPoR9LEJ73A66UK20b63U0bf0wNgzBFlaJtNBLosu9WZFU9
-         uLunktBQLsT+fEg3i1eIwqNIAG0IPXrMpYnFO5vS6IE4lKSRcPONnCJeFE/ocRMukwfH
-         u1zWLBBVBXYCJZvj/5XnKSqHGflRfmLDC+LiD/1Dm/ZUfNGiW92BIMc8YCabcgSHcWFP
-         mkj9X7bQioZH+HOPKHsRU4pB0nFI/VzBi9dNEvEz5BlHmcSj58fKTDp2eHxz5kMWbZKc
-         znNw==
-X-Gm-Message-State: ACgBeo0CDuIowUGVB93An0Wv1Gv7jjV3bEoZYl7fM9C0RZ3SZZc+jWZR
-	g1I6BBU6SBjt+QVTbjJ3XplDzg==
-X-Google-Smtp-Source: AA6agR4J0Ea6eFpB2FAYhtL/1C6G9QtgQ0s9SRqW88AqI0njZbR8KWIKtwNgd6F0NHKqPvcSU9d+Dw==
-X-Received: by 2002:a05:6512:1091:b0:491:f135:4633 with SMTP id j17-20020a056512109100b00491f1354633mr2651400lfg.553.1660912857246;
-        Fri, 19 Aug 2022 05:40:57 -0700 (PDT)
-Received: from ?IPV6:2001:14bb:ac:e5a8:ef73:73ed:75b3:8ed5? (d1xw6v77xrs23np8r6z-4.rev.dnainternet.fi. [2001:14bb:ac:e5a8:ef73:73ed:75b3:8ed5])
-        by smtp.gmail.com with ESMTPSA id d4-20020ac25444000000b0048ad4c718f3sm628432lfn.30.2022.08.19.05.40.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 19 Aug 2022 05:40:56 -0700 (PDT)
-Message-ID: <cb605db2-62f2-b585-1978-ef0d675bcfb3@linaro.org>
-Date: Fri, 19 Aug 2022 15:40:54 +0300
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
+        bh=STFUwd3P3RCFDKggsHSgjhqp3ELyGxnNRW4j2OtnQqw=;
+        b=0W4P3hqcABuShQUZMSr3v8GqOs4mMH8Ft4I3YPLULRRZ5h+DmE0jXWtwVX71AhBk6Q
+         Ob0DB2DnFd2313L+3jKFy6Y0yMdFpm+a0JO3yX8ERSQ/O7prRVN5SL0SfT+gl59tVfB2
+         HJniJSjK0tiD2glpA7zjHvqGwZGKYv+9VzxIC9E7DC6rUa0Nuni8hk7+v0fxESN9vawV
+         jFa/Xj9P0ZFZrd2CE9Muds+lqCpVilQZUfPhmWNnE30w5F7KbZiU6KWJ1yfnsEdlVM9Z
+         hEV699tUT32TL9EfOcjN2wM1frpYt/8ERm0yX03A5whJtOi3D4KuWzW7JWaORjNBC7ts
+         3rPQ==
+X-Gm-Message-State: ACgBeo2fgUfU1vWDg8f1LRKSay/30U9pWnkp9Y2z4C/csu2T0VEQuRDl
+	/uumjEwgC/pGb6pbDnUW+HEnBw==
+X-Google-Smtp-Source: AA6agR6iKn9BNfE00AOvWvIw3AI7ymdDxs2QDsG5cCU1owiwmljXcUhpNRRydJslODlItFSFymCybg==
+X-Received: by 2002:adf:eb52:0:b0:223:9164:b5b4 with SMTP id u18-20020adfeb52000000b002239164b5b4mr4182090wrn.518.1660912927505;
+        Fri, 19 Aug 2022 05:42:07 -0700 (PDT)
+Received: from blmsp ([2001:4090:a245:8020:2658:1f7c:362:3e99])
+        by smtp.gmail.com with ESMTPSA id i21-20020a05600c355500b003a5ee64cc98sm10122201wmq.33.2022.08.19.05.42.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Aug 2022 05:42:06 -0700 (PDT)
+Date: Fri, 19 Aug 2022 14:42:06 +0200
+From: Markus Schneider-Pargmann <msp@baylibre.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Weiyi Lu <weiyi.lu@mediatek.com>,
+	Fabien Parent <parent.f@gmail.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Alexandre Bailon <abailon@baylibre.com>,
+	Fabien Parent <fparent@baylibre.com>
+Subject: Re: [PATCH v2 2/4] soc: mediatek: Add support of WAY_EN operations
+Message-ID: <20220819124206.kwp6ammicyy4z3jb@blmsp>
+References: <20220725081853.1636444-1-msp@baylibre.com>
+ <20220725081853.1636444-3-msp@baylibre.com>
+ <dccc2863-a9db-d9ea-01e1-a18cf0db1d1e@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH 4/4] dt-bindings: net: dsa: mediatek,mt7530: update
- json-schema
-Content-Language: en-US
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Frank Wunderlich
- <frank-w@public-files.de>, Luiz Angelo Daros de Luca <luizluca@gmail.com>,
- Sander Vanheule <sander@svanheule.net>,
- =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
- Daniel Golle <daniel@makrotopia.org>, erkin.bozoglu@xeront.com,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220730142627.29028-1-arinc.unal@arinc9.com>
- <20220730142627.29028-5-arinc.unal@arinc9.com>
- <e5cf8a19-637c-95cf-1527-11980c73f6c0@linaro.org>
- <bb60608a-7902-99fa-72aa-5765adabd300@arinc9.com>
- <8a665b7a-bbd0-99ce-658e-bc78568bdca2@linaro.org>
- <40130c63-1e36-bb43-43b4-444a8f287226@linaro.org>
- <70e246af-c336-0896-95b5-9e42a17a239d@arinc9.com>
- <3731cd56-f7e8-6807-06b5-b8b176b078b6@linaro.org>
- <24e251d7-f5db-5715-463d-333f5dfbfceb@arinc9.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <24e251d7-f5db-5715-463d-333f5dfbfceb@arinc9.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <dccc2863-a9db-d9ea-01e1-a18cf0db1d1e@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220819_054059_383608_45291B54 
-X-CRM114-Status: GOOD (  22.23  )
+X-CRM114-CacheID: sfid-20220819_054212_957281_0FF5B5D2 
+X-CRM114-Status: GOOD (  38.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,141 +96,222 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/08/2022 17:06, Arınç ÜNAL wrote:
-> 
-> 
-> On 12.08.2022 16:48, Krzysztof Kozlowski wrote:
->> On 12/08/2022 16:41, Arınç ÜNAL wrote:
->>> On 12.08.2022 10:01, Krzysztof Kozlowski wrote:
->>>> On 12/08/2022 09:57, Krzysztof Kozlowski wrote:
->>>>> On 12/08/2022 01:09, Arınç ÜNAL wrote:
->>>>>>>> -patternProperties:
->>>>>>>> -  "^(ethernet-)?ports$":
->>>>>>>> -    type: object
->>>>>>>
->>>>>>> Actually four patches...
->>>>>>>
->>>>>>> I don't find this change explained in commit msg. What is more, it looks
->>>>>>> incorrect. All properties and patternProperties should be explained in
->>>>>>> top-level part.
->>>>>>>
->>>>>>> Defining such properties (with big piece of YAML) in each if:then: is no
->>>>>>> readable.
->>>>>>
->>>>>> I can't figure out another way. I need to require certain properties for
->>>>>> a compatible string AND certain enum/const for certain properties which
->>>>>> are inside patternProperties for "^(ethernet-)?port@[0-9]+$" by reading
->>>>>> the compatible string.
->>>>>
->>>>> requiring properties is not equal to defining them and nothing stops you
->>>>> from defining all properties top-level and requiring them in
->>>>> allOf:if:then:patternProperties.
->>>>>
->>>>>
->>>>>> If I put allOf:if:then under patternProperties, I can't do the latter.
->>>>>
->>>>> You can.
->>>
->>> Am I supposed to do something like this:
->>>
->>> patternProperties:
->>>     "^(ethernet-)?ports$":
->>>       type: object
->>>
->>>       patternProperties:
->>>         "^(ethernet-)?port@[0-9]+$":
->>>           type: object
->>>           description: Ethernet switch ports
->>>
->>>           unevaluatedProperties: false
->>>
->>>           properties:
->>>             reg:
->>>               description:
->>>                 Port address described must be 5 or 6 for CPU port and
->>>                 from 0 to 5 for user ports.
->>>
->>>           allOf:
->>>             - $ref: dsa-port.yaml#
->>>             - if:
->>>                 properties:
->>>                   label:
->>>                     items:
->>>                       - const: cpu
->>>               then:
->>>                 allOf:
->>>                   - if:
->>>                       properties:
->>
->> Not really, this is absolutely unreadable.
->>
->> Usually the way it is handled is:
->>
->> patternProperties:
->>     "^(ethernet-)?ports$":
->>       type: object
->>
->>       patternProperties:
->>         "^(ethernet-)?port@[0-9]+$":
->>           type: object
->>           description: Ethernet switch ports
->>           unevaluatedProperties: false
->>           ... regular stuff follows
->>
->> allOf:
->>   - if:
->>       properties:
->>         compatible:
->>           .....
->>     then:
->>       patternProperties:
->>         "^(ethernet-)?ports$":
->>           patternProperties:
->>             "^(ethernet-)?port@[0-9]+$":
->>               properties:
->>                 reg:
->>                   const: 5
->>
->>
->> I admit that it is still difficult to parse, which could justify
->> splitting to separate schema. Anyway the point of my comment was to
->> define all properties in top level, not in allOf.
->>
->> allOf should be used to constrain these properties.
-> 
-> The problem is:
-> - only specific values of reg are allowed if label is cpu.
-> - only specific values of phy-mode are allowed if reg is 5 or 6.
-> 
-> This forces me to define properties under allOf:if:then. 
+Hi Angelo,
 
-None of the reasons above force you to define properties in some
-allOf:if:then subblock. These force you to constrain the properties in
-allOf:if:then, but not define.
+Thanks for your review, I fixed most, comments inline.
 
-> Splitting to 
-> separate schema (per compatible string?) wouldn't help in this case.
+On Mon, Jul 25, 2022 at 11:55:27AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 25/07/22 10:18, Markus Schneider-Pargmann ha scritto:
+> > From: Alexandre Bailon <abailon@baylibre.com>
+> > 
+> > This updates the power domain to support WAY_EN operations. These
+> > operations enable a path between different units of the chip and are
+> > labeled as 'way_en' in the register descriptions.
+> > 
+> > This operation is required by the mt8365 for the MM power domain.
+> > 
+> > Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > ---
+> > 
+> > Notes:
+> >      Changes in v2:
+> >      - some minor style fixes.
+> >      - Renamed 'wayen' to 'way_en' to clarify the meaning
+> >      - Updated commit message
+> > 
+> >   drivers/soc/mediatek/mtk-pm-domains.c | 64 +++++++++++++++++++++------
+> >   drivers/soc/mediatek/mtk-pm-domains.h | 28 +++++++-----
+> >   2 files changed, 68 insertions(+), 24 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+> > index 5ced254b082b..d0eae2227813 100644
+> > --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> > +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> > @@ -44,6 +44,7 @@ struct scpsys_domain {
+> >   	struct clk_bulk_data *subsys_clks;
+> >   	struct regmap *infracfg;
+> >   	struct regmap *smi;
+> > +	struct regmap *infracfg_nao;
+> 
+> What does "nao" mean?
 
-True.
+I couldn't find the meaning of nao right now. It is the name of the
+infracfg node in the datasheet. The normal one is called 'infracfg_ao'
+the other one 'infracfg_nao' as far as I can see.
 
 > 
-> I can split patternProperties to two sections, but I can't directly 
-> define the reg property like you put above.
+> Besides, please move that before *infracfg to at least keep the same type members
+> alphabetically sorted..
+> 
+> >   	struct regulator *supply;
+> >   };
+> > @@ -116,23 +117,38 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
+> >   					MTK_POLL_TIMEOUT);
+> >   }
+> > -static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, struct regmap *regmap)
+> > +static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
+> > +				      struct regmap *regmap, struct regmap *infracfg_nao)
+> >   {
+> >   	int i, ret;
+> >   	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+> > -		u32 val, mask = bpd[i].bus_prot_mask;
+> > +		u32 mask = bpd[i].bus_prot_mask;
+> > +		u32 val = mask, sta_mask = mask;
+> 
+> You have modified the macros to use sta_mask as mask, so, why are you doing
+> that distinction in here between the two? You can simply keep assigning
+> 
+> 		u32 mask = bpd[1].bus_prot_mask;
+> 		u32 sta_mask = bpd[1].bus_prot_sta_mask;
+> 
+> > +		struct regmap *ack_regmap = regmap;
+> 
+> Double assignment. You're reassigning this if way_en == true.
+> 
+> >   		if (!mask)
+> >   			break;
+> > +		if (bpd[i].way_en) {
+> > +			if (!infracfg_nao)
+> > +				return -ENODEV;
+> > +
+> > +			val = 0;
+> > +			sta_mask = bpd[i].bus_prot_sta_mask;
+> > +			ack_regmap = infracfg_nao;
+> > +		}
+> 
+> 		if (bpd[i].way_en) {
+> 			ack_regmap = regmap_nao;
+> 			val = 0;
+> 		} else {
+> 			ack_regmap = regmap;
+> 			val = mask;
+> 		}
+> 
+> > +
+> >   		if (bpd[i].bus_prot_reg_update)
+> > -			regmap_set_bits(regmap, bpd[i].bus_prot_set, mask);
+> > +			regmap_update_bits(regmap, bpd[i].bus_prot_set, mask, val);
+> >   		else
+> >   			regmap_write(regmap, bpd[i].bus_prot_set, mask);
+> > -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+> > -					       val, (val & mask) == mask,
+> > +		if (bpd[i].ignore_clr_ack)
+> > +			continue;
+> 
+> You're adding that ignore_clr_ack here in the bus prot enablement function
+> which wasn't here before... and I didn't check carefully, but I think that
+> this is wrong: as the name says, it's to "ignore CLEAR ack", we're not doing
+> any clearing here, we're not in bus_protect_disable.
+> 
+> If you're really sure that this is not a mistake, you should guard it for way_en.
 
-Of course you can and original bindings were doing it.
+We are clearing bits here if way_en is true and bus_prot_reg_update is
+true as well. Then val=0 and regmap_update_bits(..., mask, val) will
+clear the bits given in mask. And yes either way_en or val==0 should
+probably be checked here. Thanks.
 
-Let me ask specific questions (yes, no):
-1. Are ethernet-ports and ethernet-port present in each variant?
+> 
+> > +
+> > +		ret = regmap_read_poll_timeout(ack_regmap, bpd[i].bus_prot_sta,
+> > +					       val, (val & sta_mask) == sta_mask,
+> >   					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> >   		if (ret)
+> >   			return ret;
+> > @@ -145,34 +161,49 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
+> >   {
+> >   	int ret;
+> > -	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg, pd->infracfg);
+> > +	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg,
+> > +					 pd->infracfg, pd->infracfg_nao);
+> >   	if (ret)
+> >   		return ret;
+> > -	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi);
+> > +	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi, NULL);
+> >   }
+> > +#define mask_cond(way_en, val, mask) \
+> > +	((way_en && ((val & mask) == mask)) || (!way_en && !(val & mask)))
+> > +
+> >   static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
+> > -				       struct regmap *regmap)
+> > +				       struct regmap *regmap, struct regmap *infracfg_nao)
+> >   {
+> >   	int i, ret;
+> >   	for (i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
+> > -		u32 val, mask = bpd[i].bus_prot_mask;
+> > +		u32 val = 0, mask = bpd[i].bus_prot_mask;
+> > +		u32 sta_mask = mask;
+> > +		struct regmap *ack_regmap = regmap;
+> >   		if (!mask)
+> >   			continue;
+> > +		if (bpd[i].way_en) {
+> > +			if (!infracfg_nao)
+> > +				return -ENODEV;
+> > +
+> > +			val = mask;
+> > +			sta_mask = bpd[i].bus_prot_sta_mask;
+> > +			ack_regmap = infracfg_nao;
+> > +		}
+> > +
+> >   		if (bpd[i].bus_prot_reg_update)
+> > -			regmap_clear_bits(regmap, bpd[i].bus_prot_clr, mask);
+> > +			regmap_update_bits(regmap, bpd[i].bus_prot_clr, mask, val);
+> >   		else
+> >   			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
+> >   		if (bpd[i].ignore_clr_ack)
+> >   			continue;
+> > -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+> > -					       val, !(val & mask),
+> > +		ret = regmap_read_poll_timeout(ack_regmap, bpd[i].bus_prot_sta,
+> > +					       val, mask_cond(bpd[i].way_en, val, sta_mask),
+> 
+> "I don't know why", my brain still keeps telling me that using different functions
+> for the WAY_EN (en/dis) is just better.
+> 
+> This commit seems to be overcomplicating two "easy" en/dis functions.
 
-2. Is dsa-port.yaml applicable to each variant? (looks like that - three
-compatibles, three all:if:then)
-3. If reg appearing in each variant?
-4. If above is true, if reg is maximum one item in each variant?
+Looking at the code again, I think you are right. I redesigned basically
+this whole patch, and I think it is easier to understand now.
+> 
+> >   					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> >   		if (ret)
+> >   			return ret;
+> > @@ -185,11 +216,12 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
+> >   {
+> >   	int ret;
+> > -	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi);
+> > +	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi, NULL);
+> >   	if (ret)
+> >   		return ret;
+> > -	return _scpsys_bus_protect_disable(pd->data->bp_infracfg, pd->infracfg);
+> > +	return _scpsys_bus_protect_disable(pd->data->bp_infracfg,
+> > +			pd->infracfg, pd->infracfg_nao);
+> >   }
+> >   static int scpsys_regulator_enable(struct regulator *supply)
+> > @@ -363,6 +395,10 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+> >   			return ERR_CAST(pd->smi);
+> >   	}
+> > +	pd->infracfg_nao = syscon_regmap_lookup_by_phandle_optional(node, "mediatek,infracfg_nao");
+> > +	if (IS_ERR(pd->infracfg_nao))
+> > +		return ERR_CAST(pd->infracfg_nao);
+> > +
+> 
+> I think that we should enforce a check here:
+> 
+> pd->infracfg_nao = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg_nao");
+> if (IS_ERR(pd->infracfg_nao)) {
+> 	/* checking if infracfg_nao != NULL at every pwoeron/poweroff is largely
+> 	 * suboptimal, as if it't present once, it's present always (!)
+> 	 */
+> 	if (we have WAY_EN)
+> 		return ERR_CAST ...
+> 	pd->infracfg_nao = NULL;
+> }
 
-Looking at your patch, I think answer is 4x yes, which means you can
-define them in one place and constrain in allOf:if:then, just like all
-other schemas, because this one is not different.
+Yes, I added another check that enforces .bp_smi not having any way_en
+configuration.
 
-Best regards,
-Krzysztof
+Thanks,
+Markus
 
