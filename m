@@ -4,78 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBA03C28B2B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 17:36:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A5E6C28B2B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 18:43:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nDYQHSpmiLl1/ragWnSJn7Ry61REEHBIrGbQHrUMEsQ=; b=IJfn30BSMqd7+yaTIUKhp0/bJV
-	h7HMB5nENo8I1hYT4TqTEqxOs+DzKbqlGUbiHhrtw57Ug3lefetHzotsUPQKqYw4SaDtiXusnqMKH
-	WRZun32A9PJNEGQs8t6hfuwR4dhUGmpV2KDANJKk4G0UYmg7ThyV3ATVzxZ51pQHHED6J5NWoWeaD
-	OsMJIvF19T8KazAOjyrCMJPcr9NF75DaQdZWnj6pIjO4Zaw2MHqJGq7eByTaUqpPDG97pjR+QeRMT
-	iS7hFALy5JVdT1zgtjMucLjZHmsSra2LsYiM/XNrnKNbwghNuDIlKcI3xQNvElw7hZ2PjJKTNI4aN
-	lY0WX75w==;
+	bh=A/j60EG4aje7Ee2eUMKbtvaa6NlfJAHCz0dRCg1qhdc=; b=aVZvH5G11Bck6PtuFSPcENUNJc
+	VNa5zuiq0axl9XbV2Z8AUgxnh8q6MxSNmZeaAcXcH7WsmYMSe9+S3UR5+9HTa+vEug5jAhsaR0hgZ
+	yvZyTtjg1TdMw1g27cZUpq8PZYNgkPnHjNOtA8NYpio+jhzTkJb2yqix5nQ/70opUS3ELKK4Tl4rX
+	4nXkt8c3SrFWKsvOtmy0Q2NmMf6iTmOQiZGnMOGqs+hkmP6BbvGAQ8Xwi3ANRXPfV5f7nbO5O0RgQ
+	HzPqwWI+Nz/9L93bSEA7z4Lqkhey8DTHt77FNKkRYptdWonc/9AHN4JGc2IWkKP0jqP1lMJ6QgYap
+	3Pyvd7Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oP5vG-00Ambt-7i; Fri, 19 Aug 2022 17:36:42 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2] helo=sipsolutions.net)
+	id 1oP6xy-00BF7G-OX; Fri, 19 Aug 2022 18:43:34 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oP5vD-00AmaM-39
-	for linux-mediatek@lists.infradead.org; Fri, 19 Aug 2022 17:36:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=nDYQHSpmiLl1/ragWnSJn7Ry61REEHBIrGbQHrUMEsQ=;
-	t=1660930598; x=1662140198; b=HVUltvjm5RREE+y+ZcR1U2u5n+0BZVMpC7ZzBcEfyearD8q
-	HUrg3BYZUl17r3f+HELtbC9OUE36DMA25Oet1VW/FAgK4G72dsN47b1SM+Urx4JxgGupxFNesErJI
-	gLRFn5GaUiSPTslrIsyw1ZcGRXYvEbZgcGXVhLCvFA4HVdoZQzfKwGJJpKDiBvkUFq1jUmENloN1X
-	SdYqvz9yNR2bZSWmh9yIQ1AYq4YwzsadDPg9LhECzQYa6s4tODe+zMPUJ7MrQsZfhAmcv9QY/7MJm
-	1KCTP0MMwILjNl9KF8y0vjAYYawjSZ4d2ZossdZsJ5ciOaGZ1xyge7TN53JJQnlg==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.96)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1oP5v0-00C72f-2M;
-	Fri, 19 Aug 2022 19:36:26 +0200
-Message-ID: <d2d51f2b8afa5f11fbb6be5940c745be3907efe1.camel@sipsolutions.net>
-Subject: Re: [PATCH 1/9] wifi: mac80211: allow enabling chanctx until hw
- registration
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Sean Wang <sean.wang@kernel.org>
-Cc: Sean Wang =?UTF-8?Q?=28=E7=8E=8B=E5=BF=97=E4=BA=98=29?=
- <sean.wang@mediatek.com>, Felix Fietkau <nbd@nbd.name>, 
- lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com, YN.Chen@mediatek.com,
-  Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com, Deren Wu
- <Deren.Wu@mediatek.com>,  km.lin@mediatek.com, jenhao.yang@mediatek.com,
- robin.chiu@mediatek.com,  Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
- posh.sun@mediatek.com,  ted.huang@mediatek.com, Stella.Chang@mediatek.com,
- Tom.Chou@mediatek.com,  steve.lee@mediatek.com, jsiuda@google.com,
- frankgor@google.com, kuabhs@google.com,  druth@google.com,
- abhishekpandit@google.com, shawnku@google.com, 
- linux-wireless@vger.kernel.org, "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-Date: Fri, 19 Aug 2022 19:36:25 +0200
-In-Reply-To: <096c975e7287cbe22fd355bcfd4b3889c890bdc7.camel@sipsolutions.net>
-References: <cover.1660606893.git.objelf@gmail.com>
-	 <473fc7b169f288b7815a7736cf33ac0ec1599a09.1660606893.git.objelf@gmail.com>
-	 <edd45a1e732a0eef1894b9f6eda2d4e3c692359b.camel@sipsolutions.net>
-	 <CAGp9LzrqYsXAPsbZvTy-_3Tnu23oc11KHdxNs9WvYfe0JHQaDg@mail.gmail.com>
-	 <5b24421363048bff1a9f03174cb0223b3e226bf9.camel@sipsolutions.net>
-	 <CAGp9Lzrag1b3G+QfW0RCQPGLnR_WzGSg4k+Zdx4zi4b_oeunRQ@mail.gmail.com>
-	 <dc45daf23fc8084596f1da8cb41afb422b24160d.camel@sipsolutions.net>
-	 <CAGp9LzqmFKs8wp-g7WsJ=uUj_OqucQskdMDwM6yf2dZyuP0ABA@mail.gmail.com>
-	 <096c975e7287cbe22fd355bcfd4b3889c890bdc7.camel@sipsolutions.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.4 (3.44.4-1.fc36) 
+	id 1oP6xm-00BEzO-3Z; Fri, 19 Aug 2022 18:43:23 +0000
+Received: from notapiano (unknown [70.107.189.129])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 9C89A6601DC8;
+	Fri, 19 Aug 2022 19:43:15 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1660934597;
+	bh=ILaOGVh98GDP5+WP//VmaaaeeN+NdUHFMp8L/cMJ5N8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lH9AI9hI05AHE6WW4SzFYv4TAgWaES0kDR13kjkSxM1QozCHO3NlvGg94EZQK0/Ml
+	 Z6r4sRJ1rHw9aSqfVYt/CDSaeLcFjjz57YkuosP4VP2WyW9tODcPE8bpewMO3ykOmC
+	 Da4DKqfgfQITTEM1iBSJviPoT21mGxtQZ26YXr93ufEUuuHP4y0tsrNJCFzbs0Z548
+	 OWnokVbyNkXP8FAb6VhG83aZKDxeS2gnLvHjMFRw2x6cYc5T7pLupE93M9+pE1et+m
+	 6FbAvTmED0dfwLwQ4a8kyuxRQn8wLeMT00o4D88gVHY2q6AVooxcOgZmTisbXxuh94
+	 ZM3Mo+4wsnzSw==
+Date: Fri, 19 Aug 2022 14:43:11 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: xinlei.lee@mediatek.com
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
+	daniel@ffwll.ch, matthias.bgg@gmail.com,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [PATCH v2,2/2] drm: mediatek: Adjust the dpi output format to
+ MT8186
+Message-ID: <20220819184311.4ty3hkzfdrrdg4sd@notapiano>
+References: <1659693461-27057-1-git-send-email-xinlei.lee@mediatek.com>
+ <1659693461-27057-3-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1659693461-27057-3-git-send-email-xinlei.lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220819_103639_152739_D25F5BE9 
-X-CRM114-Status: GOOD (  19.91  )
+X-CRM114-CacheID: sfid-20220819_114322_381097_40966F08 
+X-CRM114-Status: GOOD (  13.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,35 +77,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-08-19 at 19:16 +0200, Johannes Berg wrote:
-> Hi Sean,
->=20
-> > > If we really, really need to allow changing the ops, then we should
-> > > probably make a much larger change to not even pass the ops until
-> > > register, though I'm not really sure it's worth it just to have mt792=
-1
-> > > avoid loading the firmware from disk before allocation?
->=20
-> > Thanks for your input. I thought I'd try to write a patch to follow up
-> > on the idea you mentioned here.
-> >=20
->=20
-> I think you will introduce a bug into mt7921 when you do this, and I'm
-> curious if you will find it ;-)
->=20
+Hi Xinlei,
 
-Actually, no, clearing WIPHY_FLAG_IBSS_RSN in mt7921_init_wiphy()
-actually does nothing, I thought it was required.
+On Fri, Aug 05, 2022 at 05:57:41PM +0800, xinlei.lee@mediatek.com wrote:
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
+> 
+> Dpi output needs to adjust the output format to dual edge for MT8186.
 
-Anyway, the point is that now we set some defaults in alloc_hw(), some
-based on the ops, and then the driver could override those before it
-does register_hw().
+Could you explain a bit more why this is needed? What does this configuration
+do? And why is MMSYS involved in a DPI configuration?
 
-With the proposed change, that's no longer possible, and I'm not sure I
-(or you) would want to audit each and every driver - WIPHY_FLAG_IBSS_RSN
-was something that showed up easily in grep though.
+Also, is this a configuration specific to MT8186? I enabled the flag on MT8192
+just to test and didn't see any difference in behavior.
 
-So I still think you're better off doing it in the firmware file :-)
+> 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 
-johannes
+If Jitao also helped in the writing of this code, then there should also be a
+co-developed-by tag for Jitao before the Signed-off-by [1].
+
+[1] https://www.kernel.org/doc/html/latest/process/submitting-patches.html#when-to-use-acked-by-cc-and-co-developed-by
+
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+[..]
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+[..]
+> @@ -151,6 +154,7 @@ struct mtk_dpi_conf {
+>  	u32 yuv422_en_bit;
+>  	u32 csc_enable_bit;
+>  	u32 pixels_per_iter;
+> +	bool rgb888_dual_enable;
+
+You're missing a description of this property in the struct's comment above:
+
+drivers/gpu/drm/mediatek/mtk_dpi.c:160: warning: Function parameter or member 'rgb888_dual_enable' not described in 'mtk_dpi_conf'
+
+Thanks,
+Nícolas
 
