@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E1D9C25B0E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 07:06:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86E50C25B0E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 07:11:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XNpyGlgBl9SZPhFeKALEIhFld+lzd+Z0HIMWFtYFTLM=; b=AoM8YVg/nV9HxZVSXqwjkt/D6e
-	aLGelwAsiQTiyh6FmL3y0S86aXJdAXxKS3HRdvxENJUCi2UOFBi4CQw+RUd1i6pDed+tP38iaVc/h
-	NTh0mf8lu/EjVwuO04u/ber37NGm0K2HfBAV+c8yMP+p8pk7I/bcLd06UZYjcV+yCMT9km1aAAS6+
-	uHEQfl63bUx1xQrUQiU8pqRQQk3ImY09U1wkMtse9gTVNkCeqvWm3r+bXGYHnDPGYO21Hlbjp1fYJ
-	hY0w8IkcN83hgAwl326SQJHWqDFuyNyUrP6BsvRWXfZn81e8IHqQ7UHm2x4KSX6GiHRP/7wVn4Qgd
-	6HjzjdXw==;
+	bh=hG/QBrHPW8a0bTeaT1XZ20Y/lhBKTqH35umY6cEVsOI=; b=Vp9Nx69oI6sFSLyY+eVhFmfzs2
+	zDYPTD+JQzx3dwFxFTYgQQwTI6m+IVsv88j5MULBWrTCuDHu/X5+4PYBTV7fGeNUFfplrpUGyfr2L
+	/cWcNgZtgIBimrR5Vf5i4Gt58noKdWQpX0hFXP8ASF1ssUjiTOq1OzevFhhvUagrFSnc5RRywERVm
+	uQi+SsPKrUaoOTIQUkKUmC72jbpBGJG3r+PE9OspfmtL1wfFFe3hGKwwkpNw2GUrFbx34Uh1v/KyB
+	2gSGtolHR08UVXprQ6Yp0Q/cD3QsVp5Q0woJYYTO+i6vQJReBMEYpD7O8kg5m5q9h3lYw9NympkB+
+	kt0Hzh4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOw4p-0032Ug-M8; Fri, 19 Aug 2022 07:05:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oOw9v-0036tR-Tv; Fri, 19 Aug 2022 07:11:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOw4b-0032J2-CP; Fri, 19 Aug 2022 07:05:45 +0000
-X-UUID: 314bb630fbf44545849fc73f6f7012b5-20220819
+	id 1oOw9d-0036QL-3y; Fri, 19 Aug 2022 07:10:54 +0000
+X-UUID: 8387ff8cdfd64e55be49856b1daf337c-20220819
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=XNpyGlgBl9SZPhFeKALEIhFld+lzd+Z0HIMWFtYFTLM=;
-	b=B8w6beS1CCo9546KwIJQzwqwAy5ruFuMHioApg+aC5ml+2+/nVl82tiXg+5W24j3y88kljLKJSdP8FN/krEGOAq7ORlfXdDciVS14oD1qyj2HffOZ+7z8s7yY4SApdmYrJYmhxBGgdhEtckwjTFdK4Vdh4ED3dVYoA7d1Afhr0o=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=hG/QBrHPW8a0bTeaT1XZ20Y/lhBKTqH35umY6cEVsOI=;
+	b=FtSbSKTbzz0ytu6zFq+qP1VCJFOFB8+nYSS5VZ0cuKM91SmTgm3REBZspLB4rITirmWh4hssQwra++uHCCPgk72qF+rM39LJZFQCM3uf4Kjbk9UJPaUK6qEuRGmkkfQPk0VFvuh6eSMJVN5qvr6RRyEZ4pENQMdAly1LyzxBCHQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:215260e1-5f48-400c-8b05-a683d16b24d9,OB:0,L
-	OB:0,IP:0,URL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Relea
-	se_Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:ae7bc5fd-9e71-4a0f-ba6b-417998daea35,C
+X-CID-O-INFO: VERSION:1.1.10,REQID:39c90d58-739f-4d0d-9b0e-4007bcd0dddc,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:3c92209d-da39-4e3b-a854-56c7d2111b46,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
 	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 314bb630fbf44545849fc73f6f7012b5-20220819
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 8387ff8cdfd64e55be49856b1daf337c-20220819
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <nancy.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1223990758; Fri, 19 Aug 2022 00:05:37 -0700
+	with ESMTP id 131497534; Fri, 19 Aug 2022 00:10:49 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 19 Aug 2022 14:14:58 +0800
+ 15.2.792.15; Fri, 19 Aug 2022 14:10:14 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 19 Aug 2022 14:14:57 +0800
+ Transport; Fri, 19 Aug 2022 14:10:13 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, "AngeloGioacchino
- Del Regno" <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>,
+	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp
+ Zabel <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, AngeloGioacchino
+ Del Regno <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>,
 	<nfraprado@collabora.com>
-CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
- Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Nathan
+ Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
 	"Nancy . Lin" <nancy.lin@mediatek.com>, "jason-jh . lin"
 	<jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
@@ -62,18 +62,18 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
 	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
 	<singo.chang@mediatek.com>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v26 1/7] dt-bindings: mediatek: add ethdr definition for mt8195
-Date: Fri, 19 Aug 2022 14:14:50 +0800
-Message-ID: <20220819061456.8042-2-nancy.lin@mediatek.com>
+Subject: [PATCH v26 04/10] soc: mediatek: add mtk_mmsys_update_bits API
+Date: Fri, 19 Aug 2022 14:10:05 +0800
+Message-ID: <20220819061011.7672-5-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220819061456.8042-1-nancy.lin@mediatek.com>
-References: <20220819061456.8042-1-nancy.lin@mediatek.com>
+In-Reply-To: <20220819061011.7672-1-nancy.lin@mediatek.com>
+References: <20220819061011.7672-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220819_000541_466895_B6946697 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20220819_001053_229050_F00A4F26 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,212 +88,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add vdosys1 ETHDR definition.
+Add mtk_mmsys_update_bits API. Simplify code for update  mmsys reg.
+It is a preparation for adding support for mmsys config API.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 ---
- .../display/mediatek/mediatek,ethdr.yaml      | 188 ++++++++++++++++++
- 1 file changed, 188 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
+ drivers/soc/mediatek/mtk-mmsys.c | 36 ++++++++++++++------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
-new file mode 100644
-index 000000000000..3b11e47a8834
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
-@@ -0,0 +1,188 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/mediatek/mediatek,ethdr.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index a74c86197d6a..b7c7cd469343 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -192,22 +192,27 @@ static int mtk_mmsys_find_match_drvdata(struct mtk_mmsys *mmsys,
+ 	return -EINVAL;
+ }
+ 
++static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask, u32 val)
++{
++	u32 tmp;
 +
-+title: MediaTek Ethdr Device
++	tmp = readl_relaxed(mmsys->regs + offset);
++	tmp = (tmp & ~mask) | val;
++	writel_relaxed(tmp, mmsys->regs + offset);
++}
 +
-+maintainers:
-+  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
-+  - Philipp Zabel <p.zabel@pengutronix.de>
-+
-+description:
-+  ETHDR (ET High Dynamic Range) is a MediaTek internal HDR engine and is
-+  designed for HDR video and graphics conversion in the external display path.
-+  It handles multiple HDR input types and performs tone mapping, color
-+  space/color format conversion, and then combine different layers,
-+  output the required HDR or SDR signal to the subsequent display path.
-+  This engine is composed of two video frontends, two graphic frontends,
-+  one video backend and a mixer. ETHDR has two DMA function blocks, DS and ADL.
-+  These two function blocks read the pre-programmed registers from DRAM and
-+  set them to HW in the v-blanking period.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt8195-disp-ethdr
-+
-+  reg:
-+    maxItems: 7
-+
-+  reg-names:
-+    items:
-+      - const: mixer
-+      - const: vdo_fe0
-+      - const: vdo_fe1
-+      - const: gfx_fe0
-+      - const: gfx_fe1
-+      - const: vdo_be
-+      - const: adl_ds
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  iommus:
-+    minItems: 1
-+    maxItems: 2
-+
-+  clocks:
-+    items:
-+      - description: mixer clock
-+      - description: video frontend 0 clock
-+      - description: video frontend 1 clock
-+      - description: graphic frontend 0 clock
-+      - description: graphic frontend 1 clock
-+      - description: video backend clock
-+      - description: autodownload and menuload clock
-+      - description: video frontend 0 async clock
-+      - description: video frontend 1 async clock
-+      - description: graphic frontend 0 async clock
-+      - description: graphic frontend 1 async clock
-+      - description: video backend async clock
-+      - description: ethdr top clock
-+
-+  clock-names:
-+    items:
-+      - const: mixer
-+      - const: vdo_fe0
-+      - const: vdo_fe1
-+      - const: gfx_fe0
-+      - const: gfx_fe1
-+      - const: vdo_be
-+      - const: adl_ds
-+      - const: vdo_fe0_async
-+      - const: vdo_fe1_async
-+      - const: gfx_fe0_async
-+      - const: gfx_fe1_async
-+      - const: vdo_be_async
-+      - const: ethdr_top
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  resets:
-+    items:
-+      - description: video frontend 0 async reset
-+      - description: video frontend 1 async reset
-+      - description: graphic frontend 0 async reset
-+      - description: graphic frontend 1 async reset
-+      - description: video backend async reset
-+
-+  reset-names:
-+    items:
-+      - const: vdo_fe0_async
-+      - const: vdo_fe1_async
-+      - const: gfx_fe0_async
-+      - const: gfx_fe1_async
-+      - const: vdo_be_async
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: The register of display function block to be set by gce.
-+      There are 4 arguments in this property, gce node, subsys id, offset and
-+      register size. The subsys id is defined in the gce header of each chips
-+      include/dt-bindings/gce/<chip>-gce.h, mapping to the register of display
-+      function block.
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    minItems: 7
-+    maxItems: 7
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - interrupts
-+  - power-domains
-+  - resets
-+  - mediatek,gce-client-reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+    #include <dt-bindings/memory/mt8195-memory-port.h>
-+    #include <dt-bindings/power/mt8195-power.h>
-+    #include <dt-bindings/reset/mt8195-resets.h>
-+
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        hdr-engine@1c114000 {
-+                compatible = "mediatek,mt8195-disp-ethdr";
-+                reg = <0 0x1c114000 0 0x1000>,
-+                      <0 0x1c115000 0 0x1000>,
-+                      <0 0x1c117000 0 0x1000>,
-+                      <0 0x1c119000 0 0x1000>,
-+                      <0 0x1c11a000 0 0x1000>,
-+                      <0 0x1c11b000 0 0x1000>,
-+                      <0 0x1c11c000 0 0x1000>;
-+                reg-names = "mixer", "vdo_fe0", "vdo_fe1", "gfx_fe0", "gfx_fe1",
-+                            "vdo_be", "adl_ds";
-+                mediatek,gce-client-reg = <&gce0 SUBSYS_1c11XXXX 0x4000 0x1000>,
-+                                          <&gce0 SUBSYS_1c11XXXX 0x5000 0x1000>,
-+                                          <&gce0 SUBSYS_1c11XXXX 0x7000 0x1000>,
-+                                          <&gce0 SUBSYS_1c11XXXX 0x9000 0x1000>,
-+                                          <&gce0 SUBSYS_1c11XXXX 0xa000 0x1000>,
-+                                          <&gce0 SUBSYS_1c11XXXX 0xb000 0x1000>,
-+                                          <&gce0 SUBSYS_1c11XXXX 0xc000 0x1000>;
-+                clocks = <&vdosys1 CLK_VDO1_DISP_MIXER>,
-+                         <&vdosys1 CLK_VDO1_HDR_VDO_FE0>,
-+                         <&vdosys1 CLK_VDO1_HDR_VDO_FE1>,
-+                         <&vdosys1 CLK_VDO1_HDR_GFX_FE0>,
-+                         <&vdosys1 CLK_VDO1_HDR_GFX_FE1>,
-+                         <&vdosys1 CLK_VDO1_HDR_VDO_BE>,
-+                         <&vdosys1 CLK_VDO1_26M_SLOW>,
-+                         <&vdosys1 CLK_VDO1_HDR_VDO_FE0_DL_ASYNC>,
-+                         <&vdosys1 CLK_VDO1_HDR_VDO_FE1_DL_ASYNC>,
-+                         <&vdosys1 CLK_VDO1_HDR_GFX_FE0_DL_ASYNC>,
-+                         <&vdosys1 CLK_VDO1_HDR_GFX_FE1_DL_ASYNC>,
-+                         <&vdosys1 CLK_VDO1_HDR_VDO_BE_DL_ASYNC>,
-+                         <&topckgen CLK_TOP_ETHDR>;
-+                clock-names = "mixer", "vdo_fe0", "vdo_fe1", "gfx_fe0", "gfx_fe1",
-+                              "vdo_be", "adl_ds", "vdo_fe0_async", "vdo_fe1_async",
-+                              "gfx_fe0_async", "gfx_fe1_async","vdo_be_async",
-+                              "ethdr_top";
-+                power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+                iommus = <&iommu_vpp M4U_PORT_L3_HDR_DS>,
-+                         <&iommu_vpp M4U_PORT_L3_HDR_ADL>;
-+                interrupts = <GIC_SPI 517 IRQ_TYPE_LEVEL_HIGH 0>; /* disp mixer */
-+                resets = <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0_DL_ASYNC>,
-+                         <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1_DL_ASYNC>,
-+                         <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0_DL_ASYNC>,
-+                         <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1_DL_ASYNC>,
-+                         <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE_DL_ASYNC>;
-+                reset-names = "vdo_fe0_async", "vdo_fe1_async", "gfx_fe0_async",
-+                              "gfx_fe1_async", "vdo_be_async";
-+        };
-+    };
-+...
+ void mtk_mmsys_ddp_connect(struct device *dev,
+ 			   enum mtk_ddp_comp_id cur,
+ 			   enum mtk_ddp_comp_id next)
+ {
+ 	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+ 	const struct mtk_mmsys_routes *routes = mmsys->data->routes;
+-	u32 reg;
+ 	int i;
+ 
+ 	for (i = 0; i < mmsys->data->num_routes; i++)
+-		if (cur == routes[i].from_comp && next == routes[i].to_comp) {
+-			reg = readl_relaxed(mmsys->regs + routes[i].addr);
+-			reg &= ~routes[i].mask;
+-			reg |= routes[i].val;
+-			writel_relaxed(reg, mmsys->regs + routes[i].addr);
+-		}
++		if (cur == routes[i].from_comp && next == routes[i].to_comp)
++			mtk_mmsys_update_bits(mmsys, routes[i].addr, routes[i].mask,
++					      routes[i].val);
+ }
+ EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_connect);
+ 
+@@ -217,15 +222,11 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
+ {
+ 	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+ 	const struct mtk_mmsys_routes *routes = mmsys->data->routes;
+-	u32 reg;
+ 	int i;
+ 
+ 	for (i = 0; i < mmsys->data->num_routes; i++)
+-		if (cur == routes[i].from_comp && next == routes[i].to_comp) {
+-			reg = readl_relaxed(mmsys->regs + routes[i].addr);
+-			reg &= ~routes[i].mask;
+-			writel_relaxed(reg, mmsys->regs + routes[i].addr);
+-		}
++		if (cur == routes[i].from_comp && next == routes[i].to_comp)
++			mtk_mmsys_update_bits(mmsys, routes[i].addr, routes[i].mask, 0);
+ }
+ EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
+ 
+@@ -234,18 +235,13 @@ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned l
+ {
+ 	struct mtk_mmsys *mmsys = container_of(rcdev, struct mtk_mmsys, rcdev);
+ 	unsigned long flags;
+-	u32 reg;
+ 
+ 	spin_lock_irqsave(&mmsys->lock, flags);
+ 
+-	reg = readl_relaxed(mmsys->regs + mmsys->data->sw0_rst_offset);
+-
+ 	if (assert)
+-		reg &= ~BIT(id);
++		mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset, BIT(id), 0);
+ 	else
+-		reg |= BIT(id);
+-
+-	writel_relaxed(reg, mmsys->regs + mmsys->data->sw0_rst_offset);
++		mtk_mmsys_update_bits(mmsys, mmsys->data->sw0_rst_offset, BIT(id), BIT(id));
+ 
+ 	spin_unlock_irqrestore(&mmsys->lock, flags);
+ 
 -- 
 2.18.0
 
