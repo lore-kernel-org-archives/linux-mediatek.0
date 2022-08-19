@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76F6AC25B0E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 06:46:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57159C25B0E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 06:50:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=onmTO1h81hVIsXulS/b79ibJwBZw1ohzMsaAV6BlaQQ=; b=LT9d2iCrvHqf/zIY3wwMaXACnB
-	+wbNUG6kgMCgpoZuLFOTq52nQDYBiB/PR3JZOE6HxvNNXiI2yFY2AysjJ7+RWQ/o0xKr76lilMrr3
-	eYlaN8MOb74cz/hP0VkYJEMhkXuBRLIMzUNbP6/tj25yoP8Vm3Y4gxdgXVQs6PIfmQMUJRF+7Rk7m
-	uhkNsTWRi40WhN++kGe5ZVnn4q2EGFolg0oUR004VA22fMqQ9sfB2UrgL0bu1OVwTVJTYX+JqzA4t
-	zQ1N9MxgTFGLVTVXyQbc8NUUtXC1qW73khyLU9jnFrnU9088ar6mRmq/02mzCwTKWO05fcCmeT8vB
-	kYeX8ijQ==;
+	bh=4oHdF9FD0tJ7RX2kTHsT6ojaRt0OgaV/rprm4wcVSU0=; b=1e+3BUMwlxZMJSY7ukNW+3aP6f
+	cc3pRZa3VvOEcuoBidASyYzHmaSqkF0Am807CHFikwqjfRNGgxb+WdPXdv8CuLdJxOWuFKoYkL0EW
+	BY5GPpuSXgsU+ueDYogkkqreUYKFKz19W/yT+1HjmjFKsVZJOevBbT17/556fdXis016jrCmXHoOb
+	7ko253UdL5Y3zsf57DyqmRzVHnfBpQsJXGUaHcGhXuLt86/UA2x3++fG/H1J6bwvFzR7/9+QSOezx
+	CfdqJJIiGlPhMZ12flUbQ6Umpl96uMLzqf5cSowKA4l7kslxhB4g5+gPYe8MdjnMgzJL98yevZjbt
+	/ZZzxAgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOvlQ-002ljg-Lo; Fri, 19 Aug 2022 06:45:52 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oOvq0-002qP1-Af; Fri, 19 Aug 2022 06:50:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOvlE-002lYQ-W7; Fri, 19 Aug 2022 06:45:42 +0000
-X-UUID: 07e61177342845cc8e636d00b0104bf4-20220818
+	id 1oOvpp-002qEy-1l; Fri, 19 Aug 2022 06:50:26 +0000
+X-UUID: 8915b3865e2644d4b987c9c5e694195c-20220818
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=onmTO1h81hVIsXulS/b79ibJwBZw1ohzMsaAV6BlaQQ=;
-	b=YqxPtg7MLmwWddM258U3G6/6YGONI6OmG5yYWCW/qatWwBKQ+CuvagPZh3+AdCrJcvbLOvtTehYRV/6DVFqrnEypUrqTujoMG/lq9aKPkh3+J3eLXCQTmonMCq0AOyDfQkXoIbq9+JrbRzNNWCPfoqnc0qv87dhPBIxs+0ih8fs=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4oHdF9FD0tJ7RX2kTHsT6ojaRt0OgaV/rprm4wcVSU0=;
+	b=nKPV6KQUtOCW6i9n67FXVBAXBBoa2uaU5Vmx9anC8YaVgsVIMAnpGeOdarv2OJEnXKMQ5AXbnB6A+uVECB7eal2GTCdtqlLcQ/El7i+/w2Qa0iPxU7yINl1F6Ufo6DbF9sVLpr5A530r37XmULdHgOo+1tYjzEA94+gUIiQ2RqM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:f9cab211-3ad2-4934-8c95-51057e980f7b,OB:0,L
+X-CID-O-INFO: VERSION:1.1.10,REQID:fc5f225b-ab6e-4eda-9461-3c3ce72333ea,OB:0,L
 	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
 	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:e9e0c4fd-9e71-4a0f-ba6b-417998daea35,C
+X-CID-META: VersionHash:84eae18,CLOUDID:216946af-9535-44a6-aa9b-7f62b79b6ff6,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 07e61177342845cc8e636d00b0104bf4-20220818
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 8915b3865e2644d4b987c9c5e694195c-20220818
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <nancy.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2135855452; Thu, 18 Aug 2022 23:45:36 -0700
+	with ESMTP id 2031132366; Thu, 18 Aug 2022 23:50:18 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 19 Aug 2022 14:14:57 +0800
+ 15.2.792.15; Fri, 19 Aug 2022 14:10:13 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 19 Aug 2022 14:14:57 +0800
+ Transport; Fri, 19 Aug 2022 14:10:13 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp
@@ -62,16 +62,16 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Nathan
 	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
 	<singo.chang@mediatek.com>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v26 0/7] Add MediaTek SoC DRM (vdosys1) support for mt8195
-Date: Fri, 19 Aug 2022 14:14:49 +0800
-Message-ID: <20220819061456.8042-1-nancy.lin@mediatek.com>
+Subject: [PATCH v26 00/10] Add MediaTek SoC(vdosys1) support for mt8195
+Date: Fri, 19 Aug 2022 14:10:01 +0800
+Message-ID: <20220819061011.7672-1-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220818_234541_076958_5A45042E 
-X-CRM114-Status: GOOD (  19.06  )
+X-CRM114-CacheID: sfid-20220818_235025_151451_74C7EDC1 
+X-CRM114-Status: GOOD (  16.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,20 +88,22 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 The hardware path of vdosys1 with DPTx output need to go through by several modules, such as, OVL_ADAPTOR and MERGE.
 
-Add DRM and these modules support by the patches below:
+Add mmsys and mutex modules support by the patches below:
 
 Changes in v26:
+- fix reviewer comment
+  - set mmsys num_resets to 32 for 8192
 - rebase to next-20220819
-- resend for patch corrupted in v25
 
 Changes in v25:
-- rebase to next-20220803
+- fix reviewer comment
+  - refine mtk_mmsys_reset_update func
+- rebase to next-20220708
 
 Changes in v24:
-- fix ovl_adaptor binding issue (mtk_disp_ovl_adaptor.c)
-  - Since ovl_adaptor is an aggregated component, it should be bounded after
-    all its child components are bounded.
-- rebase to next-20220708
+- fix reviewer comment
+  - refine mtk_mmsys_reset_update func
+- rebase to next-20220622
 
 Changes in v23:
 - separate[7] mmsys/mutex and drm patches into two series
@@ -240,39 +242,37 @@ This series are based on the following patch:
     20220112114724.1953-4-tinghan.shen@mediatek.com
 [2] arm64: dts: mt8195: add IOMMU and smi nodes
     20210615173233.26682-15-tinghan.shen@mediatek.com
-[3] [v2] arm64: dts: mt8195: add display node for vdosys0
+[3] arm64: dts: mt8195: add gce node
+    20220126090109.32143-1-jason-jh.lin@mediatek.com
+[4] [v2] arm64: dts: mt8195: add display node for vdosys0
     20220225021535.2655-1-jason-jh.lin@mediatek.com
-[4] dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
+[5] Add MediaTek SoC DRM (vdosys0) support for mt8195 - v22 series
+    20220526102126.19756-1-jason-jh.lin@mediatek.com
+[6] dt-bindings: mediatek: mt8195: Add binding for MM IOMMU
     20220407075726.17771-2-yong.wu@mediatek.com
-[5] Add MediaTek SoC DRM (vdosys1) support for mt8195
+[7] Add MediaTek SoC DRM (vdosys1) support for mt8195
     20220526110233.20080-1-nancy.lin@mediatek.com
 
-Nancy.Lin (7):
-  dt-bindings: mediatek: add ethdr definition for mt8195
-  drm/mediatek: add ETHDR support for MT8195
-  drm/mediatek: add ovl_adaptor support for MT8195
-  drm/mediatek: add dma dev get function
-  drm/mediatek: modify mediatek-drm for mt8195 multi mmsys support
-  drm/mediatek: add drm ovl_adaptor sub driver for MT8195
-  drm/mediatek: add mediatek-drm of vdosys1 support for MT8195
+Nancy.Lin (10):
+  dt-bindings: reset: mt8195: add vdosys1 reset control bit
+  soc: mediatek: add mtk-mmsys ethdr and mdp_rdma components
+  soc: mediatek: add mtk-mmsys support for mt8195 vdosys1
+  soc: mediatek: add mtk_mmsys_update_bits API
+  soc: mediatek: add mtk-mmsys config API for mt8195 vdosys1
+  soc: mediatek: add cmdq support of mtk-mmsys config API for mt8195
+    vdosys1
+  soc: mediatek: mmsys: add mmsys for support 64 reset bits
+  soc: mediatek: mmsys: add reset control for MT8195 vdosys1
+  soc: mediatek: add mtk-mutex component - dp_intf1
+  soc: mediatek: add mtk-mutex support for mt8195 vdosys1
 
- .../display/mediatek/mediatek,ethdr.yaml      | 188 +++++++
- drivers/gpu/drm/mediatek/Makefile             |   2 +
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  26 +
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 528 ++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |  96 ++--
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h       |   6 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   | 129 +++--
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  58 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 359 ++++++++----
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |  24 +-
- drivers/gpu/drm/mediatek/mtk_ethdr.c          | 370 ++++++++++++
- drivers/gpu/drm/mediatek/mtk_ethdr.h          |  26 +
- 12 files changed, 1615 insertions(+), 197 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ethdr.yaml
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.h
+ drivers/soc/mediatek/mt8195-mmsys.h       | 146 ++++++++++++++++++++++
+ drivers/soc/mediatek/mtk-mmsys.c          | 133 +++++++++++++++-----
+ drivers/soc/mediatek/mtk-mmsys.h          |   1 +
+ drivers/soc/mediatek/mtk-mutex.c          |  37 ++++++
+ include/dt-bindings/reset/mt8195-resets.h |  45 +++++++
+ include/linux/soc/mediatek/mtk-mmsys.h    |  25 ++++
+ 6 files changed, 356 insertions(+), 31 deletions(-)
 
 -- 
 2.18.0
