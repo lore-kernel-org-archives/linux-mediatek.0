@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD712C25B0E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 07:11:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C117C25B0E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 07:11:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5yV/OGVoNEOnD2kl8Ms91KuLs6FiTuRxSqFD94y3wNQ=; b=ymriTVYDsNXio5wWDJqRz+JSdd
-	S/E0rrcUXNTHx1okIZQTTMyp6KZzHIsR+iXzU+rRvpxQ9uNHLKnzlhlrG4RYmMU7e0DB0Br6uIEbw
-	NLOyP/Qz6dUW7Sp30JgDs1MRz7GPVQhksOT25tuHr26SX7gedm5h5KRAP0Z0AfsCKakBypqAiYzVB
-	glNFfrATVxEwTl95C43eKxCbADsqN/d0bKPGvOfb6zPUOml5xNB9A1mzb8FnzqUyfzcIfdWoXUJjw
-	scthpQ4oLqpTqKq10JJXoHyQc6KHCHmtXogugz4yWL4lWNwPSHGqIDIgCoEUhJ8NNe49OiBlmyx7M
-	He++ZUCw==;
+	bh=9A1tYxx/M5HgSdrFKJzM3uGCL80y1Pe5PdPVd6y+ZKg=; b=Gt2hCIdUlrsD1Aen/SqtHO84Oj
+	V5VjZtfUicfABVmsYfTfZNH5wMEx4dP0HtPu908Nof6XVEKKZRaGgG5DnCJvBzLv4h9viSYell/8p
+	/62uVP4k9MLmLZ1zYu5SwYAz5ALDUH1BRAbNhJkzgakXakJglyhksdYL4eiPc4oo+4BzIm4gUrQJp
+	dJ1mSnovZsUL/e3PpsPb1o1Zh3Ar4vbOW6Svvww59ABT0pP3EeluIiLmal2JrcWHIZ7oPmZNZ5dO3
+	9k5Kgc00nhe8kGq9ImOG1IyyS4pzf8fWeZTW+1AgfVkXcO0sUF+Jd1GSvs2TeFmUysVlAzo+MuZBC
+	NdKtY2Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOwA6-00373N-Nq; Fri, 19 Aug 2022 07:11:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oOwAV-0037cs-VS; Fri, 19 Aug 2022 07:11:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOw9f-0036Rq-KV; Fri, 19 Aug 2022 07:10:57 +0000
-X-UUID: 57c1eaf4971b42f1b03c807917c598f5-20220819
+	id 1oOwAE-00376j-9Q; Fri, 19 Aug 2022 07:11:31 +0000
+X-UUID: 6f27da424c52416ead50bd6b6aa65a6e-20220819
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5yV/OGVoNEOnD2kl8Ms91KuLs6FiTuRxSqFD94y3wNQ=;
-	b=EqB4iWiloVMWfVo5OMXrVPQ+cycij1M1wLdqvf1qAYLH1qE1IKECS3GjU4Tmx5KqlpMWyNp6keTfbfI9JJ0mpFhjtYht+ux0skchaI24/J2rMyEdiVKDKi2g53chOejhn9ZyfTZOq74nZUnakDv9FhU7MCVidji4gDXLatCY0cI=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=9A1tYxx/M5HgSdrFKJzM3uGCL80y1Pe5PdPVd6y+ZKg=;
+	b=huI+OsU3InWpYkHk2T6zO53XSiz3iAdP293dyilPNslGlWD0Ow2Z45gLPkH2likLdzzrNVN1ey39dJqwE6DJBBPn1ksEHwDm0i5jtrGzwlIwm6+iJGRHAjrPk1Qs2tReMJzwmfPu0QSEJQgpNBtWp8Ar2NMhq9TM1Lvtk19iLrs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:c23d4814-79af-4181-a42b-af71d5a3c4d8,OB:0,L
+X-CID-O-INFO: VERSION:1.1.10,REQID:23ab10b1-e014-497c-80bc-3e3d15a973b8,OB:0,L
 	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
 	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:3aa5c5fd-9e71-4a0f-ba6b-417998daea35,C
+X-CID-META: VersionHash:84eae18,CLOUDID:ba0f47af-9535-44a6-aa9b-7f62b79b6ff6,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
 	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 57c1eaf4971b42f1b03c807917c598f5-20220819
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 6f27da424c52416ead50bd6b6aa65a6e-20220819
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <nancy.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 275198912; Fri, 19 Aug 2022 00:10:52 -0700
+	with ESMTP id 839594273; Fri, 19 Aug 2022 00:11:22 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
@@ -62,9 +62,9 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
 	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
 	<singo.chang@mediatek.com>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v26 01/10] dt-bindings: reset: mt8195: add vdosys1 reset control bit
-Date: Fri, 19 Aug 2022 14:10:02 +0800
-Message-ID: <20220819061011.7672-2-nancy.lin@mediatek.com>
+Subject: [PATCH v26 02/10] soc: mediatek: add mtk-mmsys ethdr and mdp_rdma components
+Date: Fri, 19 Aug 2022 14:10:03 +0800
+Message-ID: <20220819061011.7672-3-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220819061011.7672-1-nancy.lin@mediatek.com>
 References: <20220819061011.7672-1-nancy.lin@mediatek.com>
@@ -72,8 +72,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220819_001055_707480_370D1414 
-X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-CacheID: sfid-20220819_001130_389874_F91B194C 
+X-CRM114-Status: UNSURE (   7.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,73 +89,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add vdosys1 reset control bit for MT8195 platform.
+Add new mmsys component: ethdr_mixer and mdp_rdma. These components will
+use in mt8195 vdosys1.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Acked-by: Philipp Zabel <p.zabel@pengutronix.de>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 ---
- include/dt-bindings/reset/mt8195-resets.h | 45 +++++++++++++++++++++++
- 1 file changed, 45 insertions(+)
+ include/linux/soc/mediatek/mtk-mmsys.h | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/include/dt-bindings/reset/mt8195-resets.h b/include/dt-bindings/reset/mt8195-resets.h
-index 0b1937f14b36..c87ba621e72e 100644
---- a/include/dt-bindings/reset/mt8195-resets.h
-+++ b/include/dt-bindings/reset/mt8195-resets.h
-@@ -32,4 +32,49 @@
- #define MT8195_INFRA_RST3_THERM_CTRL_PTP_SWRST 1
- #define MT8195_INFRA_RST4_THERM_CTRL_MCU_SWRST 2
- 
-+/* VDOSYS1 */
-+#define MT8195_VDOSYS1_SW0_RST_B_SMI_LARB2                     0
-+#define MT8195_VDOSYS1_SW0_RST_B_SMI_LARB3                     1
-+#define MT8195_VDOSYS1_SW0_RST_B_GALS                          2
-+#define MT8195_VDOSYS1_SW0_RST_B_FAKE_ENG0                     3
-+#define MT8195_VDOSYS1_SW0_RST_B_FAKE_ENG1                     4
-+#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA0                     5
-+#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA1                     6
-+#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA2                     7
-+#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA3                     8
-+#define MT8195_VDOSYS1_SW0_RST_B_VPP_MERGE0                    9
-+#define MT8195_VDOSYS1_SW0_RST_B_VPP_MERGE1                    10
-+#define MT8195_VDOSYS1_SW0_RST_B_VPP_MERGE2                    11
-+#define MT8195_VDOSYS1_SW0_RST_B_VPP_MERGE3                    12
-+#define MT8195_VDOSYS1_SW0_RST_B_VPP_MERGE4                    13
-+#define MT8195_VDOSYS1_SW0_RST_B_VPP2_TO_VDO1_DL_ASYNC         14
-+#define MT8195_VDOSYS1_SW0_RST_B_VPP3_TO_VDO1_DL_ASYNC         15
-+#define MT8195_VDOSYS1_SW0_RST_B_DISP_MUTEX                    16
-+#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA4                     17
-+#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA5                     18
-+#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA6                     19
-+#define MT8195_VDOSYS1_SW0_RST_B_MDP_RDMA7                     20
-+#define MT8195_VDOSYS1_SW0_RST_B_DP_INTF0                      21
-+#define MT8195_VDOSYS1_SW0_RST_B_DPI0                          22
-+#define MT8195_VDOSYS1_SW0_RST_B_DPI1                          23
-+#define MT8195_VDOSYS1_SW0_RST_B_DISP_MONITOR                  24
-+#define MT8195_VDOSYS1_SW0_RST_B_MERGE0_DL_ASYNC               25
-+#define MT8195_VDOSYS1_SW0_RST_B_MERGE1_DL_ASYNC               26
-+#define MT8195_VDOSYS1_SW0_RST_B_MERGE2_DL_ASYNC               27
-+#define MT8195_VDOSYS1_SW0_RST_B_MERGE3_DL_ASYNC               28
-+#define MT8195_VDOSYS1_SW0_RST_B_MERGE4_DL_ASYNC               29
-+#define MT8195_VDOSYS1_SW0_RST_B_VDO0_DSC_TO_VDO1_DL_ASYNC     30
-+#define MT8195_VDOSYS1_SW0_RST_B_VDO0_MERGE_TO_VDO1_DL_ASYNC   31
-+#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0                   32
-+#define MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0                   33
-+#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE                    34
-+#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1                   48
-+#define MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1                   49
-+#define MT8195_VDOSYS1_SW1_RST_B_DISP_MIXER                    50
-+#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0_DL_ASYNC          51
-+#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1_DL_ASYNC          52
-+#define MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0_DL_ASYNC          53
-+#define MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1_DL_ASYNC          54
-+#define MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE_DL_ASYNC           55
-+
- #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8195 */
+diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+index 59117d970daf..321ac8e33a69 100644
+--- a/include/linux/soc/mediatek/mtk-mmsys.h
++++ b/include/linux/soc/mediatek/mtk-mmsys.h
+@@ -29,7 +29,16 @@ enum mtk_ddp_comp_id {
+ 	DDP_COMPONENT_DSI1,
+ 	DDP_COMPONENT_DSI2,
+ 	DDP_COMPONENT_DSI3,
++	DDP_COMPONENT_ETHDR_MIXER,
+ 	DDP_COMPONENT_GAMMA,
++	DDP_COMPONENT_MDP_RDMA0,
++	DDP_COMPONENT_MDP_RDMA1,
++	DDP_COMPONENT_MDP_RDMA2,
++	DDP_COMPONENT_MDP_RDMA3,
++	DDP_COMPONENT_MDP_RDMA4,
++	DDP_COMPONENT_MDP_RDMA5,
++	DDP_COMPONENT_MDP_RDMA6,
++	DDP_COMPONENT_MDP_RDMA7,
+ 	DDP_COMPONENT_MERGE0,
+ 	DDP_COMPONENT_MERGE1,
+ 	DDP_COMPONENT_MERGE2,
 -- 
 2.18.0
 
