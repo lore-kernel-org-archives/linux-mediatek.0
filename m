@@ -4,77 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C117C25B0E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 07:11:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 825A2C25B0E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 07:32:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9A1tYxx/M5HgSdrFKJzM3uGCL80y1Pe5PdPVd6y+ZKg=; b=Gt2hCIdUlrsD1Aen/SqtHO84Oj
-	V5VjZtfUicfABVmsYfTfZNH5wMEx4dP0HtPu908Nof6XVEKKZRaGgG5DnCJvBzLv4h9viSYell/8p
-	/62uVP4k9MLmLZ1zYu5SwYAz5ALDUH1BRAbNhJkzgakXakJglyhksdYL4eiPc4oo+4BzIm4gUrQJp
-	dJ1mSnovZsUL/e3PpsPb1o1Zh3Ar4vbOW6Svvww59ABT0pP3EeluIiLmal2JrcWHIZ7oPmZNZ5dO3
-	9k5Kgc00nhe8kGq9ImOG1IyyS4pzf8fWeZTW+1AgfVkXcO0sUF+Jd1GSvs2TeFmUysVlAzo+MuZBC
-	NdKtY2Tw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RV+ARt4gQhvfrcS7u827ZCv30OBKAwgCr4iLi8/48cU=; b=chuDNG648AeuHU3/VVQhNJnkDF
+	Pv07x9zIaxIWct24syBvRAuEzt4yCD6O2CogRVtXnlA1sdMmdEMDhehmMPtpMj3IuAbwGMCLD1LkS
+	ovIHXn0RiRlT7cXNWvZe3JjNtNqmQrSDiHv53cSwe3yc8llPxMiFCrrQWi9x825ngd4nHRMBxAyK6
+	nO4abn+ltHNSUZCS14FPYrnjqeewZ6O48g9U/y8xvxthNJbOK1yvR1ErEG+c5PuYYGOhlZ5d3WGZs
+	KytZBS4fDoZ5EMjYTmZ1u5UeP3pPaNdHjD/dtI+G7JEo+sZ5YTKbpHVStWbP6Pphy8zO9Fh7uX5T0
+	yqPAOKMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOwAV-0037cs-VS; Fri, 19 Aug 2022 07:11:47 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oOwTw-003PFZ-W4; Fri, 19 Aug 2022 07:31:53 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOwAE-00376j-9Q; Fri, 19 Aug 2022 07:11:31 +0000
-X-UUID: 6f27da424c52416ead50bd6b6aa65a6e-20220819
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=9A1tYxx/M5HgSdrFKJzM3uGCL80y1Pe5PdPVd6y+ZKg=;
-	b=huI+OsU3InWpYkHk2T6zO53XSiz3iAdP293dyilPNslGlWD0Ow2Z45gLPkH2likLdzzrNVN1ey39dJqwE6DJBBPn1ksEHwDm0i5jtrGzwlIwm6+iJGRHAjrPk1Qs2tReMJzwmfPu0QSEJQgpNBtWp8Ar2NMhq9TM1Lvtk19iLrs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:23ab10b1-e014-497c-80bc-3e3d15a973b8,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:ba0f47af-9535-44a6-aa9b-7f62b79b6ff6,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 6f27da424c52416ead50bd6b6aa65a6e-20220819
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <nancy.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 839594273; Fri, 19 Aug 2022 00:11:22 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 19 Aug 2022 14:10:13 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 19 Aug 2022 14:10:13 +0800
-From: Nancy.Lin <nancy.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, <wim@linux-watchdog.org>, "AngeloGioacchino
- Del Regno" <angelogioacchino.delregno@collabora.com>, <linux@roeck-us.net>,
-	<nfraprado@collabora.com>
-CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Nathan
- Chancellor" <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
-	"Nancy . Lin" <nancy.lin@mediatek.com>, "jason-jh . lin"
-	<jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<dri-devel@lists.freedesktop.org>, <llvm@lists.linux.dev>,
-	<singo.chang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v26 02/10] soc: mediatek: add mtk-mmsys ethdr and mdp_rdma components
-Date: Fri, 19 Aug 2022 14:10:03 +0800
-Message-ID: <20220819061011.7672-3-nancy.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220819061011.7672-1-nancy.lin@mediatek.com>
-References: <20220819061011.7672-1-nancy.lin@mediatek.com>
+	id 1oOwTl-003P6W-QP
+	for linux-mediatek@lists.infradead.org; Fri, 19 Aug 2022 07:31:43 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ba1so4183209wrb.5
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Aug 2022 00:31:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=RV+ARt4gQhvfrcS7u827ZCv30OBKAwgCr4iLi8/48cU=;
+        b=uPBQyrxzcJRob7in8TPErUSfRm3jOEFuSNQgZupp8+Ej6fHuZgxgNhI7L58GtA/r4q
+         1kUAaFh6sZFr/Lv+8LELzSu7XAh+MbsHbi13EThBfYvbnJqLgnGj6tE0rCGEptfWco8C
+         MisfjK6/VbW6wfA783dRwWjORTSsFkok6kGias/7AYzKYgYir3Rz2uDzdAt4x5PLJ47+
+         u1QDM4t2Iu6tqff52mzhzokQh+79xRvvjosSTd8QGXJrncta5xHxMxgxiRoxCXETnHwp
+         pNhzPnLLPf8MsgNmxQViIFmXB6tN3Y3gHN//f/lN7erANYZrr7IYck/UIt7SNzRfhfy1
+         ryZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=RV+ARt4gQhvfrcS7u827ZCv30OBKAwgCr4iLi8/48cU=;
+        b=eWkjeOOlu5PTrO4lS+BIOV8M/HqJoDuTfh81mowj9ZBR64I/AbBdFQbbqG7CdKHsYi
+         rnj/QgOmcqFaweWyHoMNWj4w+3aS4iVJt3hKhiTrJH0RgSyTydbhIgLo8+yzfjJtv4Q3
+         25dQxN/Iy41ebU2OWzXxtYuOJag2VTc2vEiVwjKtUwyFIrmj1/4yCFwH/d47dYh9WU5H
+         Iq6MIGQtHNLrKZZI1W2S4bCMRiBsQ/Goh//OWDPUaF7s7WdhxagaBMmjeSTBIcW011Dz
+         MMRa8jPEwxxv6uU1qulZsn1tpD9vTn/RbNOO0/aQR0s3OqN/xY+xxnR4NtXNzsZoiBbF
+         tKCA==
+X-Gm-Message-State: ACgBeo2GDhz7C+X6YanExT49skSQOuaB/UdkGju6URiw4mwNrJz0pTJk
+	L0CF32Y9bM+rdsnTPiz9r9UPZA==
+X-Google-Smtp-Source: AA6agR4CGIlqAV6RizwDoxYJFGlwJm1SK13W9rHLu2V5WQfDmh0FysHCD1l7Q3/xJfa5DFO9Az+90A==
+X-Received: by 2002:a05:6000:2cc:b0:21e:e8c1:2704 with SMTP id o12-20020a05600002cc00b0021ee8c12704mr3693424wry.378.1660894298251;
+        Fri, 19 Aug 2022 00:31:38 -0700 (PDT)
+Received: from [192.168.86.238] (cpc90716-aztw32-2-0-cust825.18-1.cable.virginm.net. [86.26.103.58])
+        by smtp.googlemail.com with ESMTPSA id v8-20020a05600c214800b003a5c244fc13sm8237202wml.2.2022.08.19.00.31.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 19 Aug 2022 00:31:37 -0700 (PDT)
+Message-ID: <1e365b6a-abc0-7745-572e-4bb76ff9a4c8@linaro.org>
+Date: Fri, 19 Aug 2022 08:31:36 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 3/3] dt-bindings: nvmem: mediatek: efuse: Add support for
+ MT8188
+Content-Language: en-US
+To: Johnson Wang <johnson.wang@mediatek.com>, matthias.bgg@gmail.com,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220715120114.4243-1-johnson.wang@mediatek.com>
+ <20220715120114.4243-3-johnson.wang@mediatek.com>
+ <8ab34dd4-ca5a-2824-ccbf-867996ac6536@linaro.org>
+ <726ec17f1b8d42f7ec9858a54ee952cb53f03188.camel@mediatek.com>
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+In-Reply-To: <726ec17f1b8d42f7ec9858a54ee952cb53f03188.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220819_001130_389874_F91B194C 
-X-CRM114-Status: UNSURE (   7.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220819_003141_931639_DFB24CCA 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +98,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add new mmsys component: ethdr_mixer and mdp_rdma. These components will
-use in mt8195 vdosys1.
 
-Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
----
- include/linux/soc/mediatek/mtk-mmsys.h | 9 +++++++++
- 1 file changed, 9 insertions(+)
 
-diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
-index 59117d970daf..321ac8e33a69 100644
---- a/include/linux/soc/mediatek/mtk-mmsys.h
-+++ b/include/linux/soc/mediatek/mtk-mmsys.h
-@@ -29,7 +29,16 @@ enum mtk_ddp_comp_id {
- 	DDP_COMPONENT_DSI1,
- 	DDP_COMPONENT_DSI2,
- 	DDP_COMPONENT_DSI3,
-+	DDP_COMPONENT_ETHDR_MIXER,
- 	DDP_COMPONENT_GAMMA,
-+	DDP_COMPONENT_MDP_RDMA0,
-+	DDP_COMPONENT_MDP_RDMA1,
-+	DDP_COMPONENT_MDP_RDMA2,
-+	DDP_COMPONENT_MDP_RDMA3,
-+	DDP_COMPONENT_MDP_RDMA4,
-+	DDP_COMPONENT_MDP_RDMA5,
-+	DDP_COMPONENT_MDP_RDMA6,
-+	DDP_COMPONENT_MDP_RDMA7,
- 	DDP_COMPONENT_MERGE0,
- 	DDP_COMPONENT_MERGE1,
- 	DDP_COMPONENT_MERGE2,
--- 
-2.18.0
+On 19/08/2022 04:28, Johnson Wang wrote:
+> On Wed, 2022-08-17 at 13:21 +0100, Srinivas Kandagatla wrote:
+>>
+>> On 15/07/2022 13:01, Johnson Wang wrote:
+>>> Add compatible for MT8188 SoC.
+>>>
+>>> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+>>> ---
+>>> This patch is based on "linux-next"[1].
+>>> [1]
+>>> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git__;!!CTRNKA9wMg0ARbw!yz8fBHH39-ntsRnAlXZfmS1k9PoKMtITUk-DhcvGQJOJSu9HP70OmFoCYMfvxnjWw4Ql$
+>>>   
+>>> ---
+>>
+>> Applied thanks,
+>>
+>> --srini
+>>>    Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 1 +
+>>>    1 file changed, 1 insertion(+)
+>>>
+>>> diff --git
+>>> a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+>>> b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+>>> index b5a1109f2ee1..75e0a516e59a 100644
+>>> --- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+>>> +++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+>>> @@ -30,6 +30,7 @@ properties:
+>>>                  - mediatek,mt8173-efuse
+>>>                  - mediatek,mt8183-efuse
+>>>                  - mediatek,mt8186-efuse
+>>> +              - mediatek,mt8188-efuse
+>>>                  - mediatek,mt8192-efuse
+>>>                  - mediatek,mt8195-efuse
+>>>                  - mediatek,mt8516-efuse
+> 
+> Hi Srinivas,
+> 
+> Just a gentle ping on this.
+> It seems that this patch hasn't been applied into [1].
 
+Its applied and pushed now!
+
+--srini
+> 
+> If you have any concern about this patch, please let me know.
+> 
+> Thanks.
+> 
+> [1] git://git.kernel.org/pub/scm/linux/kernel/git/srini/nvmem.git
+
+
+> 
+> BRs,
+> Johnson Wang
+> 
 
