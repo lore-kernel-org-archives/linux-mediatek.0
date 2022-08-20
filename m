@@ -4,87 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7C50C25B08
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Aug 2022 08:11:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6042C25B08
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Aug 2022 08:14:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=efZyIMqhvsHv7kWVzGyHqdrHhC0Tjwb1XVhmNHq+bJ4=; b=xe5PTyyZEiKmqG0CaxvG0MVg7N
-	P/agR/y1ZMFSe/HpKFD6xu4RcHLrQyYWbGFHbGQnANkN+NQyNrHODJs/r3/SxV4F4i14go6kfzLC/
-	lvxKHzGZPkZsrcYBh0TRjlOJKheeUPYIODDWkOimr43tR+7OkADjYatfhmRL7YsiW+nx/8a8cIVfG
-	fKMxJldaQafLy6HpXvetNKB9O7DhaEF496A4X/RGSpXotuWDVskvc4mGg3kTlMfCE1OBsgCEYVeeP
-	OED8N+n9Rv7gYqHfJRkA3xD3MMf52En66NFHqBBmFipLEThrgz5X/Tc4Fl+rzYX48YzM35fzvwQBw
-	uZLah+Hw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fJ9NfQcMD4SWm22U/8ZFi7fW6pAkd/2SmzzTkLIJaJs=; b=xfj37wyC4gTZIBUxw/zckV/Z5I
+	iH/3eLml35JC/8TArdbWEgIjGHrWwsozUXqLTO28+x52eFrY+/sqETOPokrbpVq/aCCdjfc7vVa7s
+	mZpRBhbqA0JySd7jT2sijVvJHICAkUFy8eqyLb1hA29WbvVy5P20ctpFANuIuUa+7fhuLxQOet/x8
+	JF/HPclDv5z47OP+CjVr7mVJCXohofgkV9CSpfdlLybt8bCpRmWMa0tvduL9XDUcZTNgmKFLS8pmf
+	vBI/ZxObV4KWaXbWK/q7UsQoyaDAaeF4eprZPXmzq5Gd6vTRZ4wUSAeJFxRHkGlyJBaEim208oawq
+	xtOBVnuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oPJZd-004foT-Vo; Sat, 20 Aug 2022 08:11:18 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1oPJcn-004i4U-Lw; Sat, 20 Aug 2022 08:14:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oPJXb-004eDK-EA; Sat, 20 Aug 2022 08:09:13 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1660982929; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=MEcu3imQh3NYN0O4gumjRRnRT4LWeOT1Am2Ug99PiPY1eKfFr/pSRv9q2q9e1zDva8TEnyuzXfHfDK5F0+dMDSaHqFAEoFQGFgvgHur1JYokxvD73qneEPXum9Pc2Q26QBCXufr2BvFrXjxxXGGBESaaH284hjJEn86/pJHfRMY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1660982929; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=efZyIMqhvsHv7kWVzGyHqdrHhC0Tjwb1XVhmNHq+bJ4=; 
-	b=HZL9Z4LyI63yBisuO4pnl1BRIXGEZJ/8uFPmx8oee75OdV90wDPXaoRy5WO302xjrcaTeavoir8mZYgEGLk0SEaUNQ2W5HoY5kbPf51Z7MJ/3XzBf9WiJCYQvYeF5hPQipmVhMCqli6BkZ5BRC61D+JeQ+KBvjXq+a3hiEQE/bk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1660982929;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=efZyIMqhvsHv7kWVzGyHqdrHhC0Tjwb1XVhmNHq+bJ4=;
-	b=WVlJw/eAD3Gc7p40X3WujYKXEtCd6IuCCWxb4ouHMeFmSsHL1x1qmDFgQx8+qq79
-	RkdR2PYIcsyLN9N2OHjIsU1P0gm/Q3lL4u/OvysYENynbcyq5g2uLP2vnaZSAIziPoX
-	y2uFbldAQJT6GimGiT0FMBrpLCMlvQ9cDNmuSvXk=
-Received: from arinc9-PC.lan (85.117.236.245 [85.117.236.245]) by mx.zohomail.com
-	with SMTPS id 1660982926255105.11458904953486; Sat, 20 Aug 2022 01:08:46 -0700 (PDT)
-From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	Luiz Angelo Daros de Luca <luizluca@gmail.com>,
-	Sander Vanheule <sander@svanheule.net>,
-	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	erkin.bozoglu@xeront.com,
-	Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-Subject: [PATCH v4 6/6] dt-bindings: net: dsa: mediatek,mt7530: update binding description
-Date: Sat, 20 Aug 2022 11:07:58 +0300
-Message-Id: <20220820080758.9829-7-arinc.unal@arinc9.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220820080758.9829-1-arinc.unal@arinc9.com>
-References: <20220820080758.9829-1-arinc.unal@arinc9.com>
+	id 1oPJck-004i0D-7y; Sat, 20 Aug 2022 08:14:32 +0000
+X-UUID: a0c1513f706b43539a16c7b7ddeb5a93-20220820
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=fJ9NfQcMD4SWm22U/8ZFi7fW6pAkd/2SmzzTkLIJaJs=;
+	b=CsWDZ2b8E+Ikk1bj/hLNQMfqOJZNZIpIRQMwk0ZUMLiBInwb8goF0SFSlcb3XbE2W3y6tvjj57rDAGIYGvLC4zlY+JiPc99qg2CSzLCuN+o1ui4EoJCRGRVhAAG05yDllwGw+yH/Sjqkf/GL64fF9uIpT/lh3Kg8MXAlVFcVAkM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:7de7b1c4-3ed9-443f-b486-4c923a716ba8,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:383313cf-20bd-4e5e-ace8-00692b7ab380,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: a0c1513f706b43539a16c7b7ddeb5a93-20220820
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chunxu.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1759402005; Sat, 20 Aug 2022 01:14:24 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Sat, 20 Aug 2022 15:53:48 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 20 Aug 2022 15:53:47 +0800
+From: Chunxu Li <chunxu.li@mediatek.com>
+To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<nfraprado@collabora.com>, <broonie@kernel.org>
+CC: <lgirdwood@gmail.com>, <matthias.bgg@gmail.com>, <jiaxin.yu@mediatek.com>,
+	<devicetree@vger.kernel.org>, <alsa-devel@alsa-project.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<project_global_chrome_upstream_group@mediatek.com>, chunxu.li
+	<chunxu.li@mediatek.com>
+Subject: [PATCH 2/2] ASoC: mediatek: dt-bindings: modify machine bindings for SOF
+Date: Sat, 20 Aug 2022 15:53:43 +0800
+Message-ID: <20220820075343.13993-3-chunxu.li@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220820075343.13993-1-chunxu.li@mediatek.com>
+References: <20220820075343.13993-1-chunxu.li@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220820_010911_743948_CF332B9F 
-X-CRM114-Status: GOOD (  21.69  )
+X-CRM114-CacheID: sfid-20220820_011430_623308_78166780 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,127 +83,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update the description of the binding.
+From: "chunxu.li" <chunxu.li@mediatek.com>
 
-- Describe the switches, which SoCs they are in, or if they are standalone.
-- Explain the various ways of configuring MT7530's port 5.
-- Remove phy-mode = "rgmii-txid" from description. Same code path is
-followed for delayed rgmii and rgmii phy-mode on mtk_eth_soc.c.
+Add SOF related field.
+1. Add a property "mediatek,adsp", Only when adsp phandle could be
+retrieved from DTS, the SOF related part of machine driver is executed.
+2. Add a property "mediatek,dai-link" to support dai-links could be
+specified from DTS
 
-Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Signed-off-by: chunxu.li <chunxu.li@mediatek.com>
 ---
- .../bindings/net/dsa/mediatek,mt7530.yaml     | 97 ++++++++++++-------
- 1 file changed, 62 insertions(+), 35 deletions(-)
+ .../bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml   | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index eff2f0c6182e..80ec05fd81f6 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -13,41 +13,68 @@ maintainers:
-   - Sean Wang <sean.wang@mediatek.com>
+diff --git a/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml b/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
+index 059a7629b2d3..0281984fc916 100644
+--- a/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
++++ b/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
+@@ -43,6 +43,16 @@ properties:
+     required:
+       - sound-dai
  
- description: |
--  Port 5 of mt7530 and mt7621 switch is muxed between:
--  1. GMAC5: GMAC5 can interface with another external MAC or PHY.
--  2. PHY of port 0 or port 4: PHY interfaces with an external MAC like 2nd GMAC
--     of the SOC. Used in many setups where port 0/4 becomes the WAN port.
--     Note: On a MT7621 SOC with integrated switch: 2nd GMAC can only connected to
--       GMAC5 when the gpios for RGMII2 (GPIO 22-33) are not used and not
--       connected to external component!
--
--  Port 5 modes/configurations:
--  1. Port 5 is disabled and isolated: An external phy can interface to the 2nd
--     GMAC of the SOC.
--     In the case of a build-in MT7530 switch, port 5 shares the RGMII bus with 2nd
--     GMAC and an optional external phy. Mind the GPIO/pinctl settings of the SOC!
--  2. Port 5 is muxed to PHY of port 0/4: Port 0/4 interfaces with 2nd GMAC.
--     It is a simple MAC to PHY interface, port 5 needs to be setup for xMII mode
--     and RGMII delay.
--  3. Port 5 is muxed to GMAC5 and can interface to an external phy.
--     Port 5 becomes an extra switch port.
--     Only works on platform where external phy TX<->RX lines are swapped.
--     Like in the Ubiquiti ER-X-SFP.
--  4. Port 5 is muxed to GMAC5 and interfaces with the 2nd GAMC as 2nd CPU port.
--     Currently a 2nd CPU port is not supported by DSA code.
--
--  Depending on how the external PHY is wired:
--  1. normal: The PHY can only connect to 2nd GMAC but not to the switch
--  2. swapped: RGMII TX, RX are swapped; external phy interface with the switch as
--     a ethernet port. But can't interface to the 2nd GMAC.
--
--    Based on the DT the port 5 mode is configured.
--
--  Driver tries to lookup the phy-handle of the 2nd GMAC of the master device.
--  When phy-handle matches PHY of port 0 or 4 then port 5 set-up as mode 2.
--  phy-mode must be set, see also example 2 below!
--  * mt7621: phy-mode = "rgmii-txid";
--  * mt7623: phy-mode = "rgmii";
-+  There are two versions of MT7530, standalone and in a multi-chip module.
++  mediatek,adsp:
++    $ref: "/schemas/types.yaml#/definitions/phandle"
++    description: The phandle of MT8186 ADSP platform.
 +
-+  MT7530 is a part of the multi-chip module in MT7620AN, MT7620DA, MT7620DAN,
-+  MT7620NN, MT7621AT, MT7621DAT, MT7621ST and MT7623AI SoCs.
++  mediatek,dai-link:
++    $ref: /schemas/types.yaml#/definitions/string-array
++    description:
++      A list of the desired dai-links in the sound card. Each entry is a
++      name defined in the machine driver.
 +
-+  MT7530 in MT7620AN, MT7620DA, MT7620DAN and MT7620NN SoCs has got 10/100 PHYs
-+  and the switch registers are directly mapped into SoC's memory map rather than
-+  using MDIO. The DSA driver currently doesn't support this.
-+
-+  There is only the standalone version of MT7531.
-+
-+  Port 5 on MT7530 has got various ways of configuration.
-+
-+  For standalone MT7530:
-+
-+    - Port 5 can be used as a CPU port.
-+
-+    - PHY 0 or 4 of the switch can be muxed to connect to the gmac of the SoC
-+      which port 5 is wired to. Usually used for connecting the wan port
-+      directly to the CPU to achieve 2 Gbps routing in total.
-+
-+      The driver looks up the reg on the ethernet-phy node which the phy-handle
-+      property refers to on the gmac node to mux the specified phy.
-+
-+      The driver requires the gmac of the SoC to have "mediatek,eth-mac" as the
-+      compatible string and the reg must be 1. So, for now, only gmac1 of an
-+      MediaTek SoC can benefit this. Banana Pi BPI-R2 suits this.
-+      Check out example 5 for a similar configuration.
-+
-+    - Port 5 can be wired to an external phy. Port 5 becomes a DSA slave.
-+      Check out example 7 for a similar configuration.
-+
-+  For multi-chip module MT7530:
-+
-+    - Port 5 can be used as a CPU port.
-+
-+    - PHY 0 or 4 of the switch can be muxed to connect to gmac1 of the SoC.
-+      Usually used for connecting the wan port directly to the CPU to achieve 2
-+      Gbps routing in total.
-+
-+      The driver looks up the reg on the ethernet-phy node which the phy-handle
-+      property refers to on the gmac node to mux the specified phy.
-+
-+      For the MT7621 SoCs, rgmii2 group must be claimed with rgmii2 function.
-+      Check out example 5.
-+
-+    - In case of an external phy wired to gmac1 of the SoC, port 5 must not be
-+      enabled.
-+
-+      In case of muxing PHY 0 or 4, the external phy must not be enabled.
-+
-+      For the MT7621 SoCs, rgmii2 group must be claimed with rgmii2 function.
-+      Check out example 6.
-+
-+    - Port 5 can be muxed to an external phy. Port 5 becomes a DSA slave.
-+      The external phy must be wired TX to TX to gmac1 of the SoC for this to
-+      work. Ubiquiti EdgeRouter X SFP is wired this way.
-+
-+      Muxing PHY 0 or 4 won't work when the external phy is connected TX to TX.
-+
-+      For the MT7621 SoCs, rgmii2 group must be claimed with gpio function.
-+      Check out example 7.
+ additionalProperties: false
  
- properties:
-   compatible:
+ required:
 -- 
-2.34.1
+2.25.1
 
 
