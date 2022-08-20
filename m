@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E08BC25B08
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Aug 2022 16:27:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7415C3F6B0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Aug 2022 21:37:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=k18gZZtJzmZvqNl8i3Ya7rXrvPKynwRxfzsHL1sapf4=; b=j+oSvP0o08qh1DCD7BnDK0T/+1
-	r5ZgFxfLVytFsxW54xksM5xmm46amtseZL16TJ4LUy862UagK5JUDCN04Qcmc6OzqEA7CF8/19D4c
-	kB5qjn2U9mplfDxcgN7Oe7NSiIg/Wa4JIO+VUKQ7h9BFMF5ZepV4kAwU9D10HiuilG6O9qbT5dI4C
-	t7NfcbGslQk31yq26Fr1m2KydUCGXzV1KM9Txqrx30e/2ujDpJDB5FiahIMyU40uLwK9R17JUirmg
-	o7enIU7rmDrcK+leTDxB9Yhc6Kq0ZXISGfdi01TBLRIcmpF3yC2NNjbe+IXzj0uoHPhF+aHHA0QMJ
-	SdtuEa6w==;
+	bh=jbV1371i5Ukeh0rbH2uM6B5K8Dm+kdefS/HHp+Iyam4=; b=LzPAXzppRwdu3wDkssuRTcuidG
+	WDT8PmBDMHayf/ZbCzb/vND4T3K54VKT3z/RQzk5u4YK/odUFStGThtD3UArLnTT5uhU0q07bM1jB
+	cNiYyaLQXmrQ30x6rXjCHm3XvmOz8acradHF7R6bK5yNj64x/+CbnGMKrbyPKxHj1iWst+7gApdi+
+	un3ZP7jsN0w1lYipZZC0yGxBwzruVaqAHKTDWKGmRcBlAQPQ4Yf2Ugui0k9OjFQgTnbK8ztPwRHXp
+	BnCThtj+lvg8eG8f6ZOrS7enfowGJTcVi2A4EBQZdXvJanVsfbmxflnzdZ59VO5bCr6zZ3ka7nCBK
+	4layTk4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oPRJp-00B3gr-Sb; Sat, 20 Aug 2022 16:27:29 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oPWAA-00CXPl-54; Sat, 20 Aug 2022 21:37:50 +0000
+Received: from mail.base45.de ([2001:67c:2050:320::77])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oPRJn-00B3fo-Cu
-	for linux-mediatek@lists.infradead.org; Sat, 20 Aug 2022 16:27:29 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 76E3A601BF;
-	Sat, 20 Aug 2022 16:27:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FACFC433C1;
-	Sat, 20 Aug 2022 16:27:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661012844;
-	bh=ry1rJGS+tAV7CrIY2HE6Mce9Me0XeJsVeGNnnGAJqsk=;
-	h=From:To:Cc:Subject:Date:From;
-	b=cTduyxFQleIgnjDrMaTOoHUCCEE/fsKdlzWCZQol6Bq7z69GcCp7P1NurkRtdyNQ+
-	 qo45JffAiSWX1C7iez6kSBoPWU80+HLH6NezZu3uz1FcL3FTJlBWC/q3T8Cz+OgqYj
-	 UKuRsVG2G+5xqYMwrLTmZx58tMOt2zEixq4aeWdQYebol74usVmZhZv2wIfHmDL9up
-	 X+LiZbizhThKMhA5NV3L67JQjYdq19OBGCz/EBON4XARHm1CTAnytCIvWuYJqKTPt1
-	 v+5PV88NqJuhFJZg9G/UNlGhFo+fJ36qw1LSghJA0miuy75nD3TtEmpSclSQ3XTMr1
-	 ciNqEuT6JQdXQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: netdev@vger.kernel.org
-Cc: nbd@nbd.name,
-	john@phrozen.org,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
+	id 1oPWA6-00CXMo-6y
+	for linux-mediatek@lists.infradead.org; Sat, 20 Aug 2022 21:37:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=fe80.eu;
+	s=20190804; h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:
+	Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=jbV1371i5Ukeh0rbH2uM6B5K8Dm+kdefS/HHp+Iyam4=; b=nWoYvl5DQgAKhWm4gpfKp7TPPX
+	rWZ16GPPdw/DL2LVABuYgIUb50pjhC1vcajpjVQhryNhy6/kPMUGuVLw7gZUpnaBasbuQhGub9ui0
+	kctA4MO7YWTbhJ7a8nyvNEk+osvL2RPfQMztWE9GKLgCK9Za+dKY8QZtmM17b578APSY2OOMvDw0K
+	BlO0ihNHu7ySvM88PZvmC8OId9L7z+89j+0g5kE2w4ZXZBNLgIFEDPJcKTC+aSbo4EKokgaSGQwWu
+	/soeKX8WkH2Urs6HL1MhVIfTHXKYFnVzu0gtU1DNWh70n9yHZAzkGFY4/jbZN9HCdliYiHoHs/yHp
+	RWD+Xytg==;
+Received: from [2a02:2454:9869:1a:9eb6:54ff:0:fa5] (helo=cerator.lan)
+	by mail.base45.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <lynxis@fe80.eu>)
+	id 1oPW9p-00G1Te-HM; Sat, 20 Aug 2022 21:37:29 +0000
+From: Alexander Couzens <lynxis@fe80.eu>
+To: Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Daniel Golle <daniel@makrotopia.org>,
+	netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	lorenzo.bianconi@redhat.com
-Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: fix hw hash reporting for MTK_NETSYS_V2
-Date: Sat, 20 Aug 2022 18:27:17 +0200
-Message-Id: <890fc9b747e7729fb6b082a1f7fd309a58768cca.1661012748.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.37.2
+	linux-kernel@vger.kernel.org,
+	Alexander Couzens <lynxis@fe80.eu>
+Subject: [PATCH 1/2] net: mt7531: only do PLL once after the reset
+Date: Sat, 20 Aug 2022 23:37:06 +0200
+Message-Id: <20220820213707.46138-1-lynxis@fe80.eu>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220820_092727_576170_4F9F6AF1 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20220820_143746_436313_6FE69EA6 
+X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,77 +77,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Properly report hw rx hash for mt7986 chipset accroding to the new dma
-descriptor layout.
+Move the PLL init of the switch out of the pad configuration of the port
+6 (usally cpu port).
 
-Fixes: 197c9e9b17b11 ("net: ethernet: mtk_eth_soc: introduce support for mt7986 chipset")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Fix a unidirectional 100 mbit limitation on 1 gbit or 2.5 gbit links for
+outbound traffic on port 5 or port 6.
+
+Signed-off-by: Alexander Couzens <lynxis@fe80.eu>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 22 +++++++++++----------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  5 +++++
- 2 files changed, 17 insertions(+), 10 deletions(-)
+ drivers/net/dsa/mt7530.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index f1f1742e79e1..96c856ceb0f9 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1893,10 +1893,19 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		skb->dev = netdev;
- 		bytes += skb->len;
- 
--		if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+			hash = trxd.rxd5 & MTK_RXD5_FOE_ENTRY;
-+			if (hash != MTK_RXD5_FOE_ENTRY)
-+				skb_set_hash(skb, jhash_1word(hash, 0),
-+					     PKT_HASH_TYPE_L4);
- 			rxdcsum = &trxd.rxd3;
--		else
-+		} else {
-+			hash = trxd.rxd4 & MTK_RXD4_FOE_ENTRY;
-+			if (hash != MTK_RXD4_FOE_ENTRY)
-+				skb_set_hash(skb, jhash_1word(hash, 0),
-+					     PKT_HASH_TYPE_L4);
- 			rxdcsum = &trxd.rxd4;
-+		}
- 
- 		if (*rxdcsum & eth->soc->txrx.rx_dma_l4_valid)
- 			skb->ip_summed = CHECKSUM_UNNECESSARY;
-@@ -1904,16 +1913,9 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			skb_checksum_none_assert(skb);
- 		skb->protocol = eth_type_trans(skb, netdev);
- 
--		hash = trxd.rxd4 & MTK_RXD4_FOE_ENTRY;
--		if (hash != MTK_RXD4_FOE_ENTRY) {
--			hash = jhash_1word(hash, 0);
--			skb_set_hash(skb, hash, PKT_HASH_TYPE_L4);
--		}
--
- 		reason = FIELD_GET(MTK_RXD4_PPE_CPU_REASON, trxd.rxd4);
- 		if (reason == MTK_PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
--			mtk_ppe_check_skb(eth->ppe, skb,
--					  trxd.rxd4 & MTK_RXD4_FOE_ENTRY);
-+			mtk_ppe_check_skb(eth->ppe, skb, hash);
- 
- 		if (netdev->features & NETIF_F_HW_VLAN_CTAG_RX) {
- 			if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 7405c97cda66..92e116cfc778 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -314,6 +314,11 @@
- #define RX_DMA_L4_VALID_PDMA	BIT(30)		/* when PDMA is used */
- #define RX_DMA_SPECIAL_TAG	BIT(22)
- 
-+/* QDMA descriptor rxd5 */
-+#define MTK_RXD5_FOE_ENTRY	GENMASK(14, 0)
-+#define MTK_RXD5_PPE_CPU_REASON	GENMASK(22, 18)
-+#define MTK_RXD5_SRC_PORT	GENMASK(29, 26)
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 835807911be0..95a57aeb466e 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -506,14 +506,19 @@ static bool mt7531_dual_sgmii_supported(struct mt7530_priv *priv)
+ static int
+ mt7531_pad_setup(struct dsa_switch *ds, phy_interface_t interface)
+ {
+-	struct mt7530_priv *priv = ds->priv;
++	return 0;
++}
 +
- #define RX_DMA_GET_SPORT(x)	(((x) >> 19) & 0xf)
- #define RX_DMA_GET_SPORT_V2(x)	(((x) >> 26) & 0x7)
++static void
++mt7531_pll_setup(struct mt7530_priv *priv)
++{
+ 	u32 top_sig;
+ 	u32 hwstrap;
+ 	u32 xtal;
+ 	u32 val;
  
+ 	if (mt7531_dual_sgmii_supported(priv))
+-		return 0;
++		return;
+ 
+ 	val = mt7530_read(priv, MT7531_CREV);
+ 	top_sig = mt7530_read(priv, MT7531_TOP_SIG_SR);
+@@ -592,8 +597,6 @@ mt7531_pad_setup(struct dsa_switch *ds, phy_interface_t interface)
+ 	val |= EN_COREPLL;
+ 	mt7530_write(priv, MT7531_PLLGP_EN, val);
+ 	usleep_range(25, 35);
+-
+-	return 0;
+ }
+ 
+ static void
+@@ -2331,6 +2334,8 @@ mt7531_setup(struct dsa_switch *ds)
+ 		     SYS_CTRL_PHY_RST | SYS_CTRL_SW_RST |
+ 		     SYS_CTRL_REG_RST);
+ 
++	mt7531_pll_setup(priv);
++
+ 	if (mt7531_dual_sgmii_supported(priv)) {
+ 		priv->p5_intf_sel = P5_INTF_SEL_GMAC5_SGMII;
+ 
+@@ -2887,8 +2892,6 @@ mt7531_cpu_port_config(struct dsa_switch *ds, int port)
+ 	case 6:
+ 		interface = PHY_INTERFACE_MODE_2500BASEX;
+ 
+-		mt7531_pad_setup(ds, interface);
+-
+ 		priv->p6_interface = interface;
+ 		break;
+ 	default:
 -- 
-2.37.2
+2.35.1
 
 
