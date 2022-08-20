@@ -4,60 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 878FCC28D13
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Aug 2022 22:48:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87C95C25B08
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Aug 2022 05:04:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t/SLOcF5OdtKvohQe157tZz0O3rbQZ5KFu5GFrNK/as=; b=fDjZwj2JwEwchyI3UsgZrU4Tp2
-	bBBIYDEcPUft3WWKZxDR93c+Vt94Z5F4Uj5RZt9pA+C/OdyCjCGECsRmDbZMmcgfhjAKtQO05wdPJ
-	WYBpu7C5nIw9XPol80WlTldR90h0WDo2jQZieDbLy3XJq0pTbEWydFfVKm6VcD+8llBP3zvvKM/r/
-	uU/kgo9Y3k1lSty6kgbW3Q01zPlNkOWYJrZ8w+f+putu25CJJ7vAHFST6HTrT1LJeXwtWwbYVPFSj
-	H1p0vRgjO6eFak8WiO0EJjJmKb/PxyHuYb4SZ9WWMrSFKXqHPDD6Sp2POppMlqgmaAoHFFE2/5+ml
-	T5HHQQ9g==;
+	bh=ECAyJs3Ash9rLQKi8udUycepkroxO08HjjjdDql2x/E=; b=DPhF168szP8Fy2dxQnK46jgpJY
+	FjCtkrrVnhMXUG118aI1s5geATnrWANISnmshzk7904AlV3ctsGj+QP9XxzROY4lwOG3TR37Zki3t
+	DhCTsxCs2ZnqAyDeGMelpRpVCAydWUy2lInBQAAW+t7v0OKpHQPet48KmrqbWbBVaQNyLXBAAlfZX
+	5iq9AaVmh4MtNbx8JgYAwc3ZVGbrxfFeEKpd+gLM7PDdnb3ak2GHawYXbl45NXCZDhdATYfqEK4lN
+	vUIC+fDPuHTlsas4hnNzy0XVulvaEa68KJoJj+B78AYFx5pvm476/tDjPvyAhHI5idI0nh2ewEZZI
+	PISdBvCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oPAmX-00D2w6-MU; Fri, 19 Aug 2022 22:48:01 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oPGeL-001QvA-6P; Sat, 20 Aug 2022 05:03:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oPAmK-00D2p2-OI; Fri, 19 Aug 2022 22:47:50 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4F0FD61831;
-	Fri, 19 Aug 2022 22:47:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F755C43147;
-	Fri, 19 Aug 2022 22:47:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660949267;
-	bh=gr61zTXhKdKcoL+U9nYufVpT53h0XuUHqgUWQ/ZCDhk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=H9LOGmLgCybT/7Njtw0vQgLu4tyWlpZKZpBtljeF1D2v0tJEm64oHQyJ9pKxsXbkm
-	 8DhQ276M9td/uMBrxJpVUNjfe/aDKnyKbAtPHcWUuTdcp3vse12eRjXX4mLVqDOpkI
-	 NLUyWC1F1APQlYNXp+HjeF+eGxpMofDvKHM904dkfV0wOqXQ0LG2nbMBJS1rHhvYNu
-	 0vJ7WrpdzsL+25kJoxuBqUomz+zq91FhP7Z0dQ7KVeNJwJASJotpgny/lP4PiH1Jwx
-	 EYvI74DbXB92Q7PNOzRFHzWlp/Q7+mjxCXZe0SuDEApcAuQWCXWBBpBFG8CSucvDqm
-	 P2y4aBOPMaa2g==
-From: Mark Brown <broonie@kernel.org>
-To: Chunxu Li <chunxu.li@mediatek.com>, angelogioacchino.delregno@collabora.com, lgirdwood@gmail.com
-Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- project_global_chrome_upstream_group@mediatek.com, matthias.bgg@gmail.com, jiaxin.yu@mediatek.com, tzungbi@google.com,
- linux-kernel@vger.kernel.org
-In-Reply-To: <20220818025113.17144-1-chunxu.li@mediatek.com>
-References: <20220818025113.17144-1-chunxu.li@mediatek.com>
-Subject: Re: [PATCH RESEND 0/3] ASoC: mediatek: support SOF for mt8186
-Message-Id: <166094926478.19151.18027354027835618602.b4-ty@kernel.org>
-Date: Fri, 19 Aug 2022 23:47:44 +0100
+	id 1oPGe8-001PR0-0q; Sat, 20 Aug 2022 05:03:46 +0000
+X-UUID: 79a5e907aeae48cf88a82af034ebe8f5-20220819
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=ECAyJs3Ash9rLQKi8udUycepkroxO08HjjjdDql2x/E=;
+	b=Ea3cDgAcbgNhg3jCFX3FDABYUInUufnc0BJ3KECdtE9KObhBmj/2troEElUUNAcmPEmmNx/+z8QV9OaqjVUfrdZp9Gyu8LADNve4eB/vy/CAztGXehOTXmvmI+pjtfdygbxlhw5di1LMliB6gSbyJlRY1shMDpopky7qj6vrhEY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:d27b7152-fee9-4ac2-9199-8cffd39a83fe,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:b8c3c367-a9d9-4672-a3c8-12721739a220,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 79a5e907aeae48cf88a82af034ebe8f5-20220819
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 5921068; Fri, 19 Aug 2022 22:03:35 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Sat, 20 Aug 2022 12:33:31 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Sat, 20 Aug 2022 12:33:31 +0800
+Message-ID: <8d551e1f51fe53b7c84afdf476de95b268205923.camel@mediatek.com>
+Subject: Re: [PATCH v26 4/4] media: platform: mtk-mdp3: add MediaTek MDP3
+ driver
+From: 20181221122106 created <moudy.ho@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
+	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<cellopoint.kai@gmail.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, daoyuan
+ huang <daoyuan.huang@mediatek.com>
+Date: Sat, 20 Aug 2022 12:33:31 +0800
+In-Reply-To: <46436973-0de0-f810-5851-6f26bdf460aa@xs4all.nl>
+References: <20220819085423.17023-1-moudy.ho@mediatek.com>
+	 <20220819085423.17023-5-moudy.ho@mediatek.com>
+	 <46436973-0de0-f810-5851-6f26bdf460aa@xs4all.nl>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.10.0-dev-fe10a
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220819_154748_871024_2E02323C 
-X-CRM114-Status: GOOD (  13.39  )
+X-CRM114-CacheID: sfid-20220819_220344_109220_F8E7851C 
+X-CRM114-Status: GOOD (  33.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,50 +94,187 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 18 Aug 2022 10:51:10 +0800, Chunxu Li wrote:
-> From: "chunxu.li" <chunxu.li@mediatek.com>
+Hi Hans,
+
+
+On Fri, 2022-08-19 at 17:37 +0200, Hans Verkuil wrote:
+> Hi Moudy,
 > 
-> In these patches, we add SOF support for mt8186 which have HiFi5 DSP
-> inside.
+> On 19/08/2022 10:54, Moudy Ho wrote:
+> > This patch adds driver for MediaTek's Media Data Path ver.3 (MDP3).
+> > It provides the following functions:
+> >   color transform, format conversion, resize, crop, rotate, flip
+> >   and additional image quality enhancement.
+> > 
+> > The MDP3 driver is mainly used for Google Chromebook products to
+> > import the new architecture to set the HW settings as shown below:
+> >   User -> V4L2 framework
+> >     -> MDP3 driver -> SCP (setting calculations)
+> >       -> MDP3 driver -> CMDQ (GCE driver) -> HW
+> > 
+> > Each modules' related operation control is sited in mtk-mdp3-comp.c
+> > Each modules' register table is defined in file with "mdp_reg_"
+> > prefix
+> > GCE related API, operation control  sited in mtk-mdp3-cmdq.c
+> > V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
+> > Probe, power, suspend/resume, system level functions are defined in
+> > mtk-mdp3-core.c
+> > 
+> > Signed-off-by: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
+> > Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
+> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> > Tested-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  drivers/media/platform/mediatek/Kconfig       |    1 +
+> >  drivers/media/platform/mediatek/Makefile      |    1 +
+> >  drivers/media/platform/mediatek/mdp3/Kconfig  |   20 +
+> >  drivers/media/platform/mediatek/mdp3/Makefile |    6 +
+> >  .../platform/mediatek/mdp3/mdp_reg_ccorr.h    |   19 +
+> >  .../platform/mediatek/mdp3/mdp_reg_rdma.h     |   65 ++
+> >  .../platform/mediatek/mdp3/mdp_reg_rsz.h      |   39 +
+> >  .../platform/mediatek/mdp3/mdp_reg_wdma.h     |   47 +
+> >  .../platform/mediatek/mdp3/mdp_reg_wrot.h     |   55 +
+> >  .../platform/mediatek/mdp3/mtk-img-ipi.h      |  290 +++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    |  466 ++++++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |   43 +
+> >  .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 1031
+> > +++++++++++++++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  186 +++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  357 ++++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-core.h    |   94 ++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     |  724 ++++++++++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-m2m.h     |   48 +
+> >  .../platform/mediatek/mdp3/mtk-mdp3-regs.c    |  733 ++++++++++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-regs.h    |  373 ++++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     |  313 +++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-vpu.h     |   78 ++
+> >  22 files changed, 4989 insertions(+)
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/Kconfig
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/Makefile
+> >  create mode 100644
+> > drivers/media/platform/mediatek/mdp3/mdp_reg_ccorr.h
+> >  create mode 100644
+> > drivers/media/platform/mediatek/mdp3/mdp_reg_rdma.h
+> >  create mode 100644
+> > drivers/media/platform/mediatek/mdp3/mdp_reg_rsz.h
+> >  create mode 100644
+> > drivers/media/platform/mediatek/mdp3/mdp_reg_wdma.h
+> >  create mode 100644
+> > drivers/media/platform/mediatek/mdp3/mdp_reg_wrot.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-img-
+> > ipi.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > cmdq.c
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > cmdq.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > comp.c
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > comp.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > core.c
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > core.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > m2m.c
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > m2m.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > regs.c
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > regs.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > vpu.c
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > vpu.h
+> > 
+> > diff --git a/drivers/media/platform/mediatek/Kconfig
+> > b/drivers/media/platform/mediatek/Kconfig
+> > index af47d9888552..84104e2cd024 100644
+> > --- a/drivers/media/platform/mediatek/Kconfig
+> > +++ b/drivers/media/platform/mediatek/Kconfig
+> > @@ -6,3 +6,4 @@ source
+> > "drivers/media/platform/mediatek/jpeg/Kconfig"
+> >  source "drivers/media/platform/mediatek/mdp/Kconfig"
+> >  source "drivers/media/platform/mediatek/vcodec/Kconfig"
+> >  source "drivers/media/platform/mediatek/vpu/Kconfig"
+> > +source "drivers/media/platform/mediatek/mdp3/Kconfig"
+> > diff --git a/drivers/media/platform/mediatek/Makefile
+> > b/drivers/media/platform/mediatek/Makefile
+> > index d3850a13f128..38e6ba917fe5 100644
+> > --- a/drivers/media/platform/mediatek/Makefile
+> > +++ b/drivers/media/platform/mediatek/Makefile
+> > @@ -3,3 +3,4 @@ obj-y += jpeg/
+> >  obj-y += mdp/
+> >  obj-y += vcodec/
+> >  obj-y += vpu/
+> > +obj-y += mdp3/
+> > diff --git a/drivers/media/platform/mediatek/mdp3/Kconfig
+> > b/drivers/media/platform/mediatek/mdp3/Kconfig
+> > new file mode 100644
+> > index 000000000000..8c8e59687417
+> > --- /dev/null
+> > +++ b/drivers/media/platform/mediatek/mdp3/Kconfig
+> > @@ -0,0 +1,20 @@
+> > +# SPDX-License-Identifier: GPL-2.0-only
+> > +config VIDEO_MEDIATEK_MDP3
+> > +	tristate "MediaTek MDP v3 driver"
+> > +	depends on MTK_IOMMU || COMPILE_TEST
+> > +	depends on VIDEO_DEV
+> > +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +	depends on MTK_MMSYS || COMPILE_TEST
 > 
-> Chunxu Li (3):
->   ASoC: mediatek: mt8186: support DSP downlink
->   ASoC: mediatek: mt8186: add SOF support on
->     mt8186-mt6366-rt1019-rt5682s
->   ASoC: mediatek: mt8186: add SOF support on
->     mt8186-mt6366-da7219-max98357
+> It turned out that this will cause link errors if MTK_MMSYS is not
+> set:
 > 
-> [...]
+> ERROR: modpost: "mtk_mutex_write_sof"
+> [drivers/media/platform/mediatek/mdp3/mtk-mdp3.ko] undefined!
+> ERROR: modpost: "mtk_mutex_enable_by_cmdq"
+> [drivers/media/platform/mediatek/mdp3/mtk-mdp3.ko] undefined!
+> ERROR: modpost: "mtk_mutex_put"
+> [drivers/media/platform/mediatek/mdp3/mtk-mdp3.ko] undefined!
+> ERROR: modpost: "mtk_mutex_write_mod"
+> [drivers/media/platform/mediatek/mdp3/mtk-mdp3.ko] undefined!
+> ERROR: modpost: "mtk_mutex_unprepare"
+> [drivers/media/platform/mediatek/mdp3/mtk-mdp3.ko] undefined!
+> ERROR: modpost: "mtk_mutex_get"
+> [drivers/media/platform/mediatek/mdp3/mtk-mdp3.ko] undefined!
+> ERROR: modpost: "mtk_mutex_prepare"
+> [drivers/media/platform/mediatek/mdp3/mtk-mdp3.ko] undefined!
+> 
+> I wonder if it isn't better to do 'select MTK_MMSYS': that seems to
+> work fine.
+> 
+> What do you think?
+> 
+> Regards,
+> 
+> 	Hans
+> 
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/3] ASoC: mediatek: mt8186: support DSP downlink
-      commit: 3c15abbed0ab99bac2e075ad38d43a7004778e91
-[2/3] ASoC: mediatek: mt8186: add SOF support on mt8186-mt6366-rt1019-rt5682s
-      commit: 4be34e1b70ac72415a55e02683cd847436424588
-[3/3] ASoC: mediatek: mt8186: add SOF support on mt8186-mt6366-da7219-max98357
-      commit: 9398381a3904d8849691fb3ec173b48f077c185e
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+Thank you for bringing this up for discussion, this was added on v10 at
+Geert's suggestion.
+But I didn't take into account all the conditions to avoid the issue
+you mentioned, and replacing "depend on" with "select" would be a
+better option to avoid compilation errors in various combinations.
+Please allow me to release a new version that fixes this problem.
 
 Thanks,
-Mark
+Moudy Ho
+
+> > +	depends on HAS_DMA
+> > +	select VIDEOBUF2_DMA_CONTIG
+> > +	select V4L2_MEM2MEM_DEV
+> > +	select VIDEO_MEDIATEK_VPU
+> > +	select MTK_CMDQ
+> > +	select MTK_SCP
+> > +	default n
+> > +	help
+> > +	    It is a v4l2 driver and present in MediaTek MT8183 SoC.
+> > +	    The driver supports scaling and color space conversion.
+> > +
+> > +	    To compile this driver as a module, choose M here: the
+> > +	    module will be called mtk-mdp3.
+
 
