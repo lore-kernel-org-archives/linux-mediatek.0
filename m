@@ -4,213 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62B4EC32789
-	for <linux-mediatek@archiver.kernel.org>; Sun, 21 Aug 2022 11:39:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88E56C28D13
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Aug 2022 03:35:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cs/tc4LRP05aft+lw1s0Hw9J5qiCtDypCAUcIFCUKxA=; b=zbWV/si40QrDEpwkwAnwkR3NkU
-	7sCRu3SMnxxRvVQCFuNPPhkRGwjabsYOqiCd5frxKe0TG4OgiJohJKtpaWe4ZNt0mcMumJG5BHA1y
-	KzQo9+O3zgU0Kc51h7HJmNYEQjxMoPotd929FtiFr8PKGB9vEoKaGJWkDn0XVAJAfcGrbxyOXzKUs
-	4KNG1JdR89l9dUCc96faQGCgxAZIJb0HUtYAmyGXoseQFOf2ASrGxgCRkU85MpFhcRAPGn4/axT/9
-	FqfSovf55mD2NAAF+eiRx4SoLV8pxxTp7H/o8fg4gLZVGXPFS6+xugt8x7pzPrZulfKDHxN4LPW4N
-	GMcDTGhw==;
+	bh=D/KhD930ivkhssWQuYiLC7xkUq58KTNjSrLVUE3svu0=; b=RZ9aYLXfIsrtGpgTeZJfmOosLo
+	NaU7fanY7wlT6clRHZfMQb8rOmJYSC0hoUi245xQEzYfHNX3Ug0+C2neNxdGqLm4Kdpxh/Vg1+1cw
+	hWwoybzgHoafkcqJmjEM8PoQfZHXtutBNMQvwD1HiZno+IXKLEjHA+p2zm//LSung7eLdWdZaUiXn
+	C5kLHYZkO80iKri7CaAevDhzPqPhL1o3jaoVNi2Pwakn1YKV4bTqBkH+OsRjk2vfKYZXvHB+OX/T1
+	jFhLsXgeA7pVwJu/qrlMHPznMmIr0bAflSAhE+8SlywrEo6pgT2/hrrE2wAsHzypMxXsbLraBJzyf
+	sxbV3fjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oPjIe-009ozy-DN; Sun, 21 Aug 2022 11:39:30 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oPyDT-004RTJ-WE; Mon, 22 Aug 2022 03:35:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oPjIO-009osu-Hf; Sun, 21 Aug 2022 11:39:14 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B806DB80CAD;
-	Sun, 21 Aug 2022 11:39:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16F82C433C1;
-	Sun, 21 Aug 2022 11:39:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661081946;
-	bh=XskdzOo4d6sQ470cDvLPNQUn3vWKINLbams0NyYkyHs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=h2mT+V1f1lnbZkkGAhFAY/FsV+M1AF9PcfNeRDvNZKCJy57DaoMtr9s0psqD3Q1mO
-	 lbDhmNpKNvV/MR3fm6StN1mxNxpQJUC8tyMYcQcHpyiP/DrWCMjJuOVjw/fDkS+Jbx
-	 q48H/NylIMORBfw8L2CaoJxyCseFOceSz7e8e7zajZorpFMEhY5H7KErwdtQ0xCEA5
-	 hvyLFOsrJINBQhAU2H/quZ7hJS+vJsR04M2CqzO5yYMTToisG1GuzCWaEmeBmvQMOw
-	 uIVl8tgoxsIPMIJR37nelEvAqkJqxypMLHMFaQaclZNgvWJYRb3CySjpqDkfgWXLC6
-	 zNIdvXH7Xnd5w==
-Date: Sun, 21 Aug 2022 14:39:01 +0300
-From: Leon Romanovsky <leon@kernel.org>
-To: Wolfram Sang <wsa+renesas@sang-engineering.com>
-Cc: linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Jay Vosburgh <j.vosburgh@gmail.com>,
-	Veaceslav Falico <vfalico@gmail.com>,
-	Andy Gospodarek <andy@greyhouse.net>,
-	Wolfgang Grandegger <wg@grandegger.com>,
-	Marc Kleine-Budde <mkl@pengutronix.de>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Steffen Klassert <klassert@kernel.org>,
-	David Dillow <dave@thedillows.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Ion Badulescu <ionut@badula.org>,
-	Andreas Larsson <andreas@gaisler.com>,
-	Mark Einon <mark.einon@gmail.com>,
-	Lino Sanfilippo <LinoSanfilippo@gmx.de>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Jes Sorensen <jes@trained-monkey.org>,
-	Shay Agroskin <shayagr@amazon.com>,
-	Arthur Kiyanovski <akiyano@amazon.com>,
-	David Arinzon <darinzon@amazon.com>, Noam Dagan <ndagan@amazon.com>,
-	Saeed Bishara <saeedb@amazon.com>, Don Fry <pcnet32@frontier.com>,
-	Tom Lendacky <thomas.lendacky@amd.com>,
-	Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
-	Igor Russkikh <irusskikh@marvell.com>,
-	Chris Snook <chris.snook@gmail.com>,
-	Michael Chan <michael.chan@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
-	Rasesh Mody <rmody@marvell.com>, GR-Linux-NIC-Dev@marvell.com,
-	Ariel Elior <aelior@marvell.com>,
-	Sudarsana Kalluru <skalluru@marvell.com>,
-	Manish Chopra <manishc@marvell.com>,
-	Doug Berger <opendmb@gmail.com>,
-	Siva Reddy Kallam <siva.kallam@broadcom.com>,
-	Prashant Sreedharan <prashant@broadcom.com>,
-	Sunil Goutham <sgoutham@marvell.com>,
-	Raju Rangoju <rajur@chelsio.com>,
-	Ayush Sawal <ayush.sawal@chelsio.com>,
-	Vinay Kumar Yadav <vinay.yadav@chelsio.com>,
-	Rohit Maheshwari <rohitm@chelsio.com>,
-	Hartley Sweeten <hsweeten@visionengravers.com>,
-	Christian Benvenuti <benve@cisco.com>,
-	Govindarajulu Varadarajan <_govind@gmx.com>,
-	Denis Kirjanov <kda@linux-powerpc.org>,
-	Ajit Khaparde <ajit.khaparde@broadcom.com>,
-	Sriharsha Basavapatna <sriharsha.basavapatna@broadcom.com>,
-	Somnath Kotur <somnath.kotur@broadcom.com>,
-	Madalin Bucur <madalin.bucur@nxp.com>,
-	Ioana Ciornei <ioana.ciornei@nxp.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Joakim Zhang <qiangqing.zhang@nxp.com>,
-	Pantelis Antoniou <pantelis.antoniou@gmail.com>,
-	Li Yang <leoyang.li@nxp.com>,
-	Yisen Zhuang <yisen.zhuang@huawei.com>,
-	Salil Mehta <salil.mehta@huawei.com>,
-	Douglas Miller <dougmill@linux.ibm.com>,
-	Michael Ellerman <mpe@ellerman.id.au>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Christophe Leroy <christophe.leroy@csgroup.eu>,
-	Nick Child <nnac123@linux.ibm.com>,
-	Jesse Brandeburg <jesse.brandeburg@intel.com>,
-	Tony Nguyen <anthony.l.nguyen@intel.com>,
-	Guo-Fu Tseng <cooldavid@cooldavid.org>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Marcin Wojtas <mw@semihalf.com>,
-	Geetha sowjanya <gakula@marvell.com>,
-	Subbaraya Sundeep <sbhatta@marvell.com>,
-	hariprasad <hkelam@marvell.com>,
-	Taras Chornyi <tchornyi@marvell.com>,
-	Mirko Lindner <mlindner@marvell.com>,
-	Stephen Hemminger <stephen@networkplumber.org>,
-	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Tariq Toukan <tariqt@nvidia.com>,
-	Saeed Mahameed <saeedm@nvidia.com>,
-	Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>,
-	Bryan Whitehead <bryan.whitehead@microchip.com>,
-	UNGLinuxDriver@microchip.com, Chris Lee <christopher.lee@cspi.com>,
-	Jon Mason <jdmason@kudzu.us>,
-	Simon Horman <simon.horman@corigine.com>,
-	Rain River <rain.1986.08.12@gmail.com>,
-	Zhu Yanjun <zyjzyj2000@gmail.com>,
-	Vladimir Zapolskiy <vz@mleia.com>, Rahul Verma <rahulv@marvell.com>,
-	Shahed Shaikh <shshaikh@marvell.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>, nic_swsd@realtek.com,
-	Jiri Pirko <jiri@resnulli.us>, Byungho An <bh74.an@samsung.com>,
-	Edward Cree <ecree.xilinx@gmail.com>,
-	Martin Habets <habetsm.xilinx@gmail.com>,
-	Ralf Baechle <ralf@linux-mips.org>,
-	Francois Romieu <romieu@fr.zoreil.com>,
-	Daniele Venzano <venza@brownhat.org>,
-	Nicolas Pitre <nico@fluxnic.net>,
-	Steve Glendinning <steve.glendinning@shawell.net>,
-	Jassi Brar <jaswinder.singh@linaro.org>,
-	Ilias Apalodimas <ilias.apalodimas@linaro.org>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Grygorii Strashko <grygorii.strashko@ti.com>,
-	Samuel Chessman <chessman@tux.org>,
-	Geoff Levand <geoff@infradead.org>,
-	Ishizaki Kou <kou.ishizaki@toshiba.co.jp>,
-	Kevin Brace <kevinbrace@bracecomputerlab.com>,
-	Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
-	Michal Simek <michal.simek@xilinx.com>,
-	Krzysztof Halasa <khalasa@piap.pl>,
-	"K. Y. Srinivasan" <kys@microsoft.com>,
-	Haiyang Zhang <haiyangz@microsoft.com>,
-	Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
-	Sridhar Samudrala <sridhar.samudrala@intel.com>,
-	Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
-	Michael Hennerich <michael.hennerich@analog.com>,
-	Petko Manolov <petkan@nucleusys.com>,
-	Oliver Neukum <oneukum@suse.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Jason Wang <jasowang@redhat.com>, Ronak Doshi <doshir@vmware.com>,
-	VMware PV-Drivers Reviewers <pv-drivers@vmware.com>,
-	David Ahern <dsahern@kernel.org>, Kalle Valo <kvalo@kernel.org>,
-	Christian Lamparter <chunkeey@googlemail.com>,
-	Simon Kelley <simon@thekelleys.org.uk>,
-	Larry Finger <Larry.Finger@lwfinger.net>,
-	Arend van Spriel <aspriel@gmail.com>,
-	Franky Lin <franky.lin@broadcom.com>,
-	Hante Meuleman <hante.meuleman@broadcom.com>,
-	Stanislav Yakovlev <stas.yakovlev@gmail.com>,
-	Stanislaw Gruszka <stf_xl@wp.pl>, Jouni Malinen <j@w1.fi>,
-	Ajay Singh <ajay.kathat@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Igor Mitsyanko <imitsyanko@quantenna.com>,
-	Sergey Matyukevich <geomatsi@gmail.com>,
-	Herton Ronaldo Krzesinski <herton@canonical.com>,
-	Hin-Tak Leung <htl10@users.sourceforge.net>, netdev@vger.kernel.org,
-	linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-acenic@sunsite.dk,
-	linux-parisc@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	intel-wired-lan@lists.osuosl.org,
-	linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
-	oss-drivers@corigine.com, linux-mips@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-omap@vger.kernel.org, linux-hyperv@vger.kernel.org,
-	ntb@lists.linux.dev, linux-usb@vger.kernel.org,
-	virtualization@lists.linux-foundation.org,
-	linux-wireless@vger.kernel.org, b43-dev@lists.infradead.org,
-	brcm80211-dev-list.pdl@broadcom.com,
-	SHA-cyfmac-dev-list@infineon.com, libertas-dev@lists.infradead.org
-Subject: Re: [PATCH] net: move from strlcpy with unused retval to strscpy
-Message-ID: <YwIZVfRUhwevWN62@unreal>
-References: <20220818210050.7108-1-wsa+renesas@sang-engineering.com>
+	id 1oPyDR-004ROT-Dm; Mon, 22 Aug 2022 03:35:07 +0000
+X-UUID: aaf35a9565654c1b8bb045748e495a8b-20220821
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=D/KhD930ivkhssWQuYiLC7xkUq58KTNjSrLVUE3svu0=;
+	b=jP6N0FyPKsC0/S3/Q+RMWY70Fnmn8oE4Z19lqMy7TrMCj/h5FDULZKM0tIWDmQ4Say14Mnu1xvuVgK/quxZjqUd23b8BJIWmcZUISCXm+VdOKGmc+Mi163ZNyCJYh4DEalgLDWMgDTFc/QhSSljr8Mi43a58jfCMl00u3P3lRgE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:c939bf16-0583-42ad-b902-f1ad2e1ae56b,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
+	_Ham,ACTION:release,TS:-5
+X-CID-META: VersionHash:84eae18,CLOUDID:ba2f5dc9-6b09-4f60-bf82-12f039f5d530,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: aaf35a9565654c1b8bb045748e495a8b-20220821
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <nathan.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 882121052; Sun, 21 Aug 2022 20:34:53 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 22 Aug 2022 11:33:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Mon, 22 Aug 2022 11:33:26 +0800
+From: nathan.lu <nathan.lu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: "jason-jh . lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rex-BC
+ Chen" <rex-bc.chen@mediatek.com>, Enric Balletbo i Serra
+	<enric.balletbo@collabora.com>, Nathan Lu <nathan.lu@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+	<wsd_upstream@mediatek.com>, <lancelot.wu@mediatek.com>, amy zhang
+	<Amy.Zhang@mediatek.com>
+Subject: [PATCH v1 4/4] drm/mediatek: add mediatek-drm of vdosys0 support for mt8188
+Date: Mon, 22 Aug 2022 11:32:13 +0800
+Message-ID: <20220822033213.15769-5-nathan.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220822033213.15769-1-nathan.lu@mediatek.com>
+References: <20220822033213.15769-1-nathan.lu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220818210050.7108-1-wsa+renesas@sang-engineering.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220821_043912_929052_25E1739B 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20220821_203505_532554_BB23C8CB 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -225,23 +91,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 18, 2022 at 11:00:34PM +0200, Wolfram Sang wrote:
-> Follow the advice of the below link and prefer 'strscpy' in this
-> subsystem. Conversion is 1:1 because the return value is not used.
-> Generated by a coccinelle script.
-> 
-> Link: https://lore.kernel.org/r/CAHk-=wgfRnXz0W3D37d01q3JFkr_i_uTL=V6A6G1oUZcprmknw@mail.gmail.com/
-> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
-> ---
+From: Nathan Lu <nathan.lu@mediatek.com>
 
-<...>
+add driver data of mt8188 vdosys0 to mediatek-drm and the sub driver.
 
->  drivers/net/ethernet/mellanox/mlx4/en_ethtool.c  |  6 +++---
->  drivers/net/ethernet/mellanox/mlx4/fw.c          |  2 +-
->  .../net/ethernet/mellanox/mlx5/core/en_ethtool.c |  4 ++--
->  drivers/net/ethernet/mellanox/mlx5/core/en_rep.c |  2 +-
->  .../ethernet/mellanox/mlx5/core/ipoib/ethtool.c  |  2 +-
+Signed-off-by: amy zhang <Amy.Zhang@mediatek.com>
+Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 30 ++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-Thanks,
-Reviewed-by: Leon Romanovsky <leonro@nvidia.com>
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index d72263c8a621..260514006093 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -178,6 +178,18 @@ static const unsigned int mt8186_mtk_ddp_ext[] = {
+ 	DDP_COMPONENT_DPI0,
+ };
+ 
++static const unsigned int mt8188_mtk_ddp_main[] = {
++	DDP_COMPONENT_OVL0,
++	DDP_COMPONENT_RDMA0,
++	DDP_COMPONENT_COLOR0,
++	DDP_COMPONENT_CCORR,
++	DDP_COMPONENT_AAL0,
++	DDP_COMPONENT_GAMMA,
++	DDP_COMPONENT_POSTMASK0,
++	DDP_COMPONENT_DITHER0,
++	DDP_COMPONENT_DP_INTF0,
++};
++
+ static const unsigned int mt8192_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_OVL0,
+ 	DDP_COMPONENT_OVL_2L0,
+@@ -323,6 +335,20 @@ static const struct mtk_mmsys_match_data mt8186_mmsys_match_data = {
+ 	},
+ };
+ 
++static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
++	.io_start = 0x1c01d000,
++	.main_path = mt8188_mtk_ddp_main,
++	.main_len = ARRAY_SIZE(mt8188_mtk_ddp_main),
++	.mmsys_dev_num = 1,
++};
++
++static const struct mtk_mmsys_match_data mt8188_mmsys_match_data = {
++	.num_drv_data = 1,
++	.drv_data = {
++		&mt8188_vdosys0_driver_data,
++	},
++};
++
+ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+ 	.main_path = mt8192_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt8192_mtk_ddp_main),
+@@ -376,6 +402,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
+ 	  .data = &mt8183_mmsys_match_data},
+ 	{ .compatible = "mediatek,mt8186-mmsys",
+ 	  .data = &mt8186_mmsys_match_data},
++	{ .compatible = "mediatek,mt8188-mmsys",
++	  .data = &mt8188_mmsys_match_data},
+ 	{ .compatible = "mediatek,mt8192-mmsys",
+ 	  .data = &mt8192_mmsys_match_data},
+ 	{ .compatible = "mediatek,mt8195-mmsys",
+@@ -734,6 +762,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8186-disp-mutex",
+ 	  .data = (void *)MTK_DISP_MUTEX },
++	{ .compatible = "mediatek,mt8188-disp-mutex",
++	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8192-disp-mutex",
+ 	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8195-disp-mutex",
+-- 
+2.18.0
+
 
