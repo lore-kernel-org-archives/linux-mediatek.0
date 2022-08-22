@@ -4,60 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6C54C28D13
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Aug 2022 14:25:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BB5BC28D13
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Aug 2022 14:32:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xC+pL9qff0EHn5PjTMHA8oJaSkA0yDeDRbuJDm7WLEI=; b=yJLl86D5dpAa0A5yicLTLePi3p
-	6c6wBEm8EFIj2YcHw8/84OvEVIhytAWKpRMuv+PbdVfJKkWQiBnKL7LcBNwfkN36DVXLx7wehw84+
-	OrYmBjgOf4+QQU3v3PpGa6XqZ6KGoONYrfDAn2/4xuqoAt73EQX+thH0wTq4EXwtCfmFQQ2klo9ze
-	5dCVD1LIZbcx6+SgMXYyUox0KzuF8uMPZOemCPUCv3NRsNwb6+ETC0oXRgQwKthvY9l/mtDC3l/A7
-	FMOL00+eHRjt/q6xpfYllH24Fo9GlXRn43jsFP54ZrMnE8OUTFS97xSm/HBmF1kkTF9Et4Ejl/KY8
-	yjSU95EA==;
+	bh=e8rp45GCMeCz0OMnywxQPCUJjJPUfEFDilX4Y8pEpZI=; b=ha4/cDFe8lFGH1fVAbcG/5GWxT
+	9i4bdcM2fAwLSlS0TZUE9XXEX3D2FBSBEJWAtG2b+0LoHu2vxhm5Qf3txYipUnybL0cazOTD+zi7l
+	Q9ucp007Iomn3Omo595UURL8KEefsJSWHerYDc/YjRmw1/Dpwf4GOY+ZuU/TbPE7vZTTIXroUxFOL
+	Ne96C3sEmOxOjf0iah3s+myfM6ImVez5kgase90rnD5j/GzOiZtYX8QX+6Tu4fIsVebF9tESiCwqi
+	+TXwhTbQKhS1HlFZfxwLD7rsmDIIi/7xCulnH+6okpeTH7oR+gYmkt68EYm8lGN1qyzOo9sl9p1Mz
+	K6CoC3qA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ8Mq-00B6R6-B1; Mon, 22 Aug 2022 14:25:28 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oQ8TS-00BDrJ-Ve; Mon, 22 Aug 2022 14:32:19 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ8MM-00B5v5-MF; Mon, 22 Aug 2022 14:25:00 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C6E1D611B4;
-	Mon, 22 Aug 2022 14:24:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76526C433C1;
-	Mon, 22 Aug 2022 14:24:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661178296;
-	bh=PiktLoy2IS2EfJ927VEsYS/q/dcy6NlvZDENwVBGB5w=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=QrLNpaspeL5WMdkHA6jOAuKWgVw6AhxGf7tvw7BFaQKSi5e39Y64Djfshm6Hd7R6V
-	 qjMKDcayPGV/zSVRoM0ycZEgEMlnq3oxrz2B2uo2IhOQRCnBD4dCg+03+YEO9BCVTC
-	 S1TF4oSRjiix1IBqYBB2lYLIpgvQN7gful9RrCpxu3LO/euPnX7ESoRyRWagLU0/Os
-	 w0rRFOOwuegGf6D2GvTuTLATG29byW+WMjKLMGi+EtPGzc4LDEp3WdCq51sNbMSy4N
-	 J7nJcovexmOE21p4iydqe3JWbvGvT4xrZHI9fYbPC0n667UQn1A5e6t9Rd06Ip6ngB
-	 T+vcq5dDUmLVw==
-From: Mark Brown <broonie@kernel.org>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>, angelogioacchino.delregno@collabora.com
-Cc: alsa-devel@alsa-project.org, devicetree@vger.kernel.org, chunxu.li@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20220820071925.13557-1-jiaxin.yu@mediatek.com>
-References: <20220820071925.13557-1-jiaxin.yu@mediatek.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8186: fix DMIC record noise
-Message-Id: <166117829418.94797.5869443265207499782.b4-ty@kernel.org>
-Date: Mon, 22 Aug 2022 15:24:54 +0100
+	id 1oQ8T9-00BDSI-B4; Mon, 22 Aug 2022 14:32:02 +0000
+Received: by mail-wr1-x431.google.com with SMTP id k9so13482427wri.0;
+        Mon, 22 Aug 2022 07:31:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=e8rp45GCMeCz0OMnywxQPCUJjJPUfEFDilX4Y8pEpZI=;
+        b=MMmcWfq/cL54YCfYi+QRrMezlys3RuKILMv0NhI7kuz5I02Ue9qmQmAWRs75ABwrOQ
+         NzgXznxWFSZ8UrinTlq1oRipNyVfHptGlbXSbYTMvgQJtbvVKZjwONe/g5oc/7TIcwxN
+         BTs6WywE/RqKj4W4SB5N80HNtfgsxV8N+3UN+rzIzdvhLHkKhqKVpJJzDmo0aeHpZA8f
+         4V9bxZ00Jy1UmBjO/XzqkIuNa/qrEXKNGiVpqiwui9VfN6R9nJlbq7q88Rtnoef88AMa
+         QTYOGQdpZG8ID8v1gGTNF4ADrQl/OwAK1Qw8mU+vuazIFnIq4M8mxHI8BPxgicmon6xL
+         XouQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=e8rp45GCMeCz0OMnywxQPCUJjJPUfEFDilX4Y8pEpZI=;
+        b=DMCwCWcKKTfoIAq/sHFRDFIieQgyb19VsxhC/zBAw6KcKbmMmvQncvBGugi56ihB6R
+         xiBGnGDOfbMbX17xPvOGAgI8jVYjie1emxKeyJoUOdh6dS/15TjQiKAwTCeTyXDnm8B3
+         9d7+dxEpgmrIWbqBHUfYuB7HH9smxcBaTGrFuW8OU5C+zP+KrQ9ZefbpVdeDw6obsMoU
+         Au6uPNuw+xr7nZEEq8DRwx/3BEqAxDqde/RcYy65VbPJV0lt3j3ey6MHLO56eNR5u4fF
+         EAXrUBAHbS3oWYz6tNsCQgVkREOfhFCjzXKkIyux2C+qFXgDnIprqMqeDQkzIPoWlURM
+         LxTw==
+X-Gm-Message-State: ACgBeo3QAmwl5BCTVGEAgrzzwOulJ7rap4/pT9519Pt7ksY85EMum479
+	AB9yCh8IIn/ctiBrVPUiPlI=
+X-Google-Smtp-Source: AA6agR7V2xlMA1x2MOGtaJffxWJTddD22Tpk+8uk6FO/HmgUscNGWvV/0bH34ZDI2j5RtVTO1jL4EQ==
+X-Received: by 2002:adf:f74b:0:b0:225:1fdb:a787 with SMTP id z11-20020adff74b000000b002251fdba787mr11319386wrp.33.1661178714778;
+        Mon, 22 Aug 2022 07:31:54 -0700 (PDT)
+Received: from [192.168.0.30] ([47.62.125.55])
+        by smtp.gmail.com with ESMTPSA id c7-20020a05600c0a4700b003a342933727sm6098056wmq.3.2022.08.22.07.31.52
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 22 Aug 2022 07:31:52 -0700 (PDT)
+Message-ID: <2e71f901-98da-9a40-780c-5e95c251d78a@gmail.com>
+Date: Mon, 22 Aug 2022 16:31:51 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.10.0-dev-fe10a
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.1.2
+Subject: Re: [PATCH v25 1/4] dt-binding: mediatek: add bindings for MediaTek
+ MDP3 components
+To: Moudy Ho <moudy.ho@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Alexandre Courbot
+ <acourbot@chromium.org>, tfiga@chromium.org, drinkcat@chromium.org,
+ pihsun@chromium.org, hsinyi@google.com,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, cellopoint.kai@gmail.com
+References: <20220817095629.29911-1-moudy.ho@mediatek.com>
+ <20220817095629.29911-2-moudy.ho@mediatek.com>
+Content-Language: en-US
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220817095629.29911-2-moudy.ho@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220822_072458_807270_1599B6FA 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20220822_073159_517430_C516CC37 
+X-CRM114-Status: GOOD (  22.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,38 +104,300 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 20 Aug 2022 15:19:25 +0800, Jiaxin Yu wrote:
-> When the first DMIC recording is power down, mtkaif_dmic will be reset.
-> This will cause configuration error in the second DMIC recording. So do
-> not reset mtkaif_dmic except in "MTKAIF_DMIC Switch" kcontrol.
+
+
+On 17/08/2022 11:56, Moudy Ho wrote:
+> This patch adds DT binding documents for Media Data Path 3 (MDP3)
+> a unit in multimedia system combined with several components and
+> used for scaling and color format convert.
 > 
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   .../bindings/media/mediatek,mdp3-rdma.yaml    | 95 +++++++++++++++++++
+>   .../bindings/media/mediatek,mdp3-rsz.yaml     | 77 +++++++++++++++
+>   .../bindings/media/mediatek,mdp3-wrot.yaml    | 80 ++++++++++++++++
+>   3 files changed, 252 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+>   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+>   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
 > 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> new file mode 100644
+> index 000000000000..94ff74d9c04a
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> @@ -0,0 +1,95 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Read Direct Memory Access
+> +
+> +maintainers:
+> +  - Matthias Brugger <matthias.bgg@gmail.com>
+> +  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
 
-Applied to
+Ping-Hsun Wu isn't even CCed on this mail. Why aren't you the maintainer if you 
+submit the patch?
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Regards,
+Matthias
 
-Thanks!
-
-[1/1] ASoC: mediatek: mt8186: fix DMIC record noise
-      commit: 221ab1f0bf46236cf1a3fef5298ff5894acfb0c5
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+> +
+> +description: |
+> +  MediaTek Read Direct Memory Access(RDMA) component used to do read DMA.
+> +  It contains one line buffer to store the sufficient pixel data, and
+> +  must be siblings to the central MMSYS_CONFIG node.
+> +  For a description of the MMSYS_CONFIG binding, see
+> +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> +  for details.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: mediatek,mt8183-mdp3-rdma
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  mediatek,gce-client-reg:
+> +    $ref: '/schemas/types.yaml#/definitions/phandle-array'
+> +    items:
+> +      items:
+> +        - description: phandle of GCE
+> +        - description: GCE subsys id
+> +        - description: register offset
+> +        - description: register size
+> +    description: The register of client driver can be configured by gce with
+> +      4 arguments defined in this property. Each GCE subsys id is mapping to
+> +      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
+> +
+> +  mediatek,gce-events:
+> +    description:
+> +      The event id which is mapping to the specific hardware event signal
+> +      to gce. The event id is defined in the gce header
+> +      include/dt-bindings/gce/<chip>-gce.h of each chips.
+> +    $ref: /schemas/types.yaml#/definitions/uint32-array
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: RDMA clock
+> +      - description: RSZ clock
+> +
+> +  iommus:
+> +    maxItems: 1
+> +
+> +  mboxes:
+> +    items:
+> +      - description: used for 1st data pipe from RDMA
+> +      - description: used for 2nd data pipe from RDMA
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - mediatek,gce-client-reg
+> +  - mediatek,gce-events
+> +  - power-domains
+> +  - clocks
+> +  - iommus
+> +  - mboxes
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt8183-clk.h>
+> +    #include <dt-bindings/gce/mt8183-gce.h>
+> +    #include <dt-bindings/power/mt8183-power.h>
+> +    #include <dt-bindings/memory/mt8183-larb-port.h>
+> +
+> +    mdp3_rdma0: mdp3-rdma0@14001000 {
+> +      compatible = "mediatek,mt8183-mdp3-rdma";
+> +      reg = <0x14001000 0x1000>;
+> +      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
+> +      mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
+> +                            <CMDQ_EVENT_MDP_RDMA0_EOF>;
+> +      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+> +      clocks = <&mmsys CLK_MM_MDP_RDMA0>,
+> +               <&mmsys CLK_MM_MDP_RSZ1>;
+> +      iommus = <&iommu>;
+> +      mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST>,
+> +               <&gce 21 CMDQ_THR_PRIO_LOWEST>;
+> +    };
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+> new file mode 100644
+> index 000000000000..22c61ed00fdd
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+> @@ -0,0 +1,77 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/mediatek,mdp3-rsz.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Resizer
+> +
+> +maintainers:
+> +  - Matthias Brugger <matthias.bgg@gmail.com>
+> +  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
+> +
+> +description: |
+> +  One of Media Data Path 3 (MDP3) components used to do frame resizing.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - enum:
+> +          - mediatek,mt8183-mdp3-rsz
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  mediatek,gce-client-reg:
+> +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> +    items:
+> +      items:
+> +        - description: phandle of GCE
+> +        - description: GCE subsys id
+> +        - description: register offset
+> +        - description: register size
+> +    description: The register of client driver can be configured by gce with
+> +      4 arguments defined in this property. Each GCE subsys id is mapping to
+> +      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
+> +
+> +  mediatek,gce-events:
+> +    description:
+> +      The event id which is mapping to the specific hardware event signal
+> +      to gce. The event id is defined in the gce header
+> +      include/dt-bindings/gce/<chip>-gce.h of each chips.
+> +    $ref: /schemas/types.yaml#/definitions/uint32-array
+> +
+> +  clocks:
+> +    minItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - mediatek,gce-client-reg
+> +  - mediatek,gce-events
+> +  - clocks
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt8183-clk.h>
+> +    #include <dt-bindings/gce/mt8183-gce.h>
+> +
+> +    mdp3_rsz0: mdp3-rsz0@14003000 {
+> +      compatible = "mediatek,mt8183-mdp3-rsz";
+> +      reg = <0x14003000 0x1000>;
+> +      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
+> +      mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ0_SOF>,
+> +                            <CMDQ_EVENT_MDP_RSZ0_EOF>;
+> +      clocks = <&mmsys CLK_MM_MDP_RSZ0>;
+> +    };
+> +
+> +    mdp3_rsz1: mdp3-rsz1@14004000 {
+> +      compatible = "mediatek,mt8183-mdp3-rsz";
+> +      reg = <0x14004000 0x1000>;
+> +      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
+> +      mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ1_SOF>,
+> +                            <CMDQ_EVENT_MDP_RSZ1_EOF>;
+> +      clocks = <&mmsys CLK_MM_MDP_RSZ1>;
+> +    };
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+> new file mode 100644
+> index 000000000000..76c010720d43
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+> @@ -0,0 +1,80 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/mediatek,mdp3-wrot.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Write DMA with Rotation
+> +
+> +maintainers:
+> +  - Matthias Brugger <matthias.bgg@gmail.com>
+> +  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
+> +
+> +description: |
+> +  One of Media Data Path 3 (MDP3) components used to write DMA with frame rotation.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - enum:
+> +          - mediatek,mt8183-mdp3-wrot
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  mediatek,gce-client-reg:
+> +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> +    items:
+> +      items:
+> +        - description: phandle of GCE
+> +        - description: GCE subsys id
+> +        - description: register offset
+> +        - description: register size
+> +    description: The register of client driver can be configured by gce with
+> +      4 arguments defined in this property. Each GCE subsys id is mapping to
+> +      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
+> +
+> +  mediatek,gce-events:
+> +    description:
+> +      The event id which is mapping to the specific hardware event signal
+> +      to gce. The event id is defined in the gce header
+> +      include/dt-bindings/gce/<chip>-gce.h of each chips.
+> +    $ref: /schemas/types.yaml#/definitions/uint32-array
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    minItems: 1
+> +
+> +  iommus:
+> +    maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - mediatek,gce-client-reg
+> +  - mediatek,gce-events
+> +  - power-domains
+> +  - clocks
+> +  - iommus
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt8183-clk.h>
+> +    #include <dt-bindings/gce/mt8183-gce.h>
+> +    #include <dt-bindings/power/mt8183-power.h>
+> +    #include <dt-bindings/memory/mt8183-larb-port.h>
+> +
+> +    mdp3_wrot0: mdp3-wrot0@14005000 {
+> +      compatible = "mediatek,mt8183-mdp3-wrot";
+> +      reg = <0x14005000 0x1000>;
+> +      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
+> +      mediatek,gce-events = <CMDQ_EVENT_MDP_WROT0_SOF>,
+> +                            <CMDQ_EVENT_MDP_WROT0_EOF>;
+> +      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+> +      clocks = <&mmsys CLK_MM_MDP_WROT0>;
+> +      iommus = <&iommu>;
+> +    };
 
