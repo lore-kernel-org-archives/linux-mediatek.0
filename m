@@ -4,71 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65CD6C28D13
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Aug 2022 10:21:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 674E4C32789
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Aug 2022 12:58:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sRPNxGzXlg+mwfqc/hmjiNSIySOo6Qi3MDyq9ozazxE=; b=Mdw3zLg3e/8upY8G6nFZnZqsM0
-	IPWqgq5AiXeaa+ttFQvzs03TQiX4a1f5G8wdQ0lI06SluwdvYWphs5RMBekE2S+mGzCTEpi/kXItT
-	qkrdjqfEsdHYL7PwfqiDW1hD0Z/vRHSES7EE3zE1zICN+j7eZhisErVr6oo7qFSfibAi5x2NWlptz
-	Nu0IYKGxkfc0o7tYsWlz9cikK3N+J09M451QjTtxJkOaZdqXk9nYMI03fY3lkigGOd+UMzTG5sTmX
-	Q8BRvxz2ngf0DalBgERHo+BdfqWqYbnValY+0r/bhGPuehYpsldmHZ8JVk3pwcRrKa4cmTs1Q3zrv
-	ZXM2fZRw==;
+	bh=fOzuz7u8TSGyZUHk4OhhTcp8+Vy5YMVqIROSBa65Usw=; b=iK2FlROGA++/s5fmlKStjR4RWN
+	kedGC/DN6cV7dY30UkS/zLTW9rx3KAAuJIKDxCWfnXGQPoy6rg8rQQXi37UelDPHjbdUOlbI1tB5T
+	LcKeTPKuPWC1X1P+pwonBRuXEWBs8t2u4ucJTCGord1UjlmPMrQx+t4xGsIxdtyoAhN/XqOB2Rv3m
+	Mi9cAJmUJBabrFKSbkZApQXIaFLfBg+cpDvP1kNRkU6CUnMm0AB/nNaPDi3zo7XtlcTH0NYkKoNCt
+	QWLeesoDhnWclY9hTmhZc+NrbBrl8cy/uKmeH3x/FQVD25RvVRZP/xT+GRGHyTqWI0OonnrjNvHPx
+	FvSfdjXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ4YL-007TVs-B5; Mon, 22 Aug 2022 10:21:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oQ706-009Sas-B4; Mon, 22 Aug 2022 12:57:54 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ4Y9-007TML-0y; Mon, 22 Aug 2022 10:20:55 +0000
-X-UUID: 1fd8b52b24a24105a9b39a33c63c7399-20220822
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sRPNxGzXlg+mwfqc/hmjiNSIySOo6Qi3MDyq9ozazxE=;
-	b=tYQjvKbxc7XFYyUBWJN52z7R8Umqg9Zxga6Bi0u9RFV8Lmke7sqrgPQJAIOPsJxqqRcValxLRsnQyDvrBms+qomuKLylmnUIhZK4x7uQeJrPpV3rkuIaMeIfkQbcDuKyjNk0yHeO2rdsgs8aJixW6Pt9GrURo5kBbqzww3XqK4s=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:21777cca-5672-4847-92f6-9484339679f3,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Releas
-	e_Ham,ACTION:release,TS:-25
-X-CID-META: VersionHash:84eae18,CLOUDID:cd0eed67-a9d9-4672-a3c8-12721739a220,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 1fd8b52b24a24105a9b39a33c63c7399-20220822
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <zheng-yan.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 833910717; Mon, 22 Aug 2022 03:20:47 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 22 Aug 2022 17:20:10 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 22 Aug 2022 17:20:10 +0800
-From: zheng-yan.chen <zheng-yan.chen@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, "Jason-JH . Lin"
-	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, zheng-yan.chen
-	<zheng-yan.chen@mediatek.com>
-Subject: [PATCH 2/3] drm/mediatek: Add gamma lut support for mt8195
-Date: Mon, 22 Aug 2022 17:19:44 +0800
-Message-ID: <20220822091945.21343-3-zheng-yan.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220822091945.21343-1-zheng-yan.chen@mediatek.com>
-References: <20220822091945.21343-1-zheng-yan.chen@mediatek.com>
+	id 1oQ6zf-009SGu-3j; Mon, 22 Aug 2022 12:57:39 +0000
+Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 27MCe8BY031221;
+	Mon, 22 Aug 2022 12:57:20 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : content-type : in-reply-to :
+ mime-version; s=corp-2022-7-12;
+ bh=fOzuz7u8TSGyZUHk4OhhTcp8+Vy5YMVqIROSBa65Usw=;
+ b=mVqTjv8dVJq7e13huaVi0IGCcXvWc0c0WWA2gVsPJn+5Rbpe37lC1TSAX8UfZY6WawCj
+ QfAAjJOK7L2yrm+MQQFAYzxgrFr0xh01cyvvnVN61pc4X6vzWoXJkuvcTXePpy2fnmDc
+ zJ3OLwnd+xOBlhP03gwlUy7MoC4wE0CCjHYnUF+6lRqlis1GtoQlbREKIJCleBVIkrWW
+ NGFuklfPITLomP15cHv1rP+lph6FbFfwmp8y1NQ35+EV6OkLVOds6r+5XUxrjLpDl7G2
+ MAC0CG+S6/Xtl3mEv8HiuApBrBGY8Cw3Mo/bt0guOQ24/wIrj0tiG4VK1Sj16GFMNDvr Rg== 
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3j4a0p81f7-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 22 Aug 2022 12:57:20 +0000
+Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5) with ESMTP id 27MAO3Jt037469;
+	Mon, 22 Aug 2022 12:57:19 GMT
+Received: from nam12-bn8-obe.outbound.protection.outlook.com (mail-bn8nam12lp2172.outbound.protection.outlook.com [104.47.55.172])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 3j3mm87hx9-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 22 Aug 2022 12:57:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=h9ayM9ENxEozeiAdfnMTbQxPiDvAJcgTnd/0O7UaacCZAStYUO8T2/JGGLRCjQsi9O+9yetYE/B4YsXmHcqg8WqRfhaf1vU77zZ//cfPvXRZpmPQGefxzYxTj0HWFZGP9GfMb5fDocRsz2sdKQ5iRvWsWbplRB5zCyxUBw4+a0BLgF2kOdSU3Hpc0FLSFxP1cEG7Zx7bDmwwSJ9ARLleRmCTn0o1Rj1gjsZDnZvqa17kZHXt1lAlizu+3eTaDplyJ8yag7XoIcKXMwioHcGIxkbrbmDza6+U/GF08+kZ/TvG0kjrU9VJuTCKQoQR6zL9zWjqX5Okv2AUC2ygtq4ftA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fOzuz7u8TSGyZUHk4OhhTcp8+Vy5YMVqIROSBa65Usw=;
+ b=B0VCm1aarGkSVk5ohmcCEmsZ0bzIMK8ucmqJp2nYTkyQkyQ3v9gCOHufG8iX4pHxfTPOprgroQCGteHNHrTjcGsbJobEL/dULgxFSPKgEp9gwLVt3WDF+sFvVq9clXTa7UPt1ae03JxCGURF72LIJhamSwM7fSx6W5JUfa7h2qO2ymzB98ruCGRTxfdygzz+2VRHKPADvpgnCjm/AyFxloK3ehL1NC/rH9nwW+RlzFPXzihuFFj+KW07ptuqzwjx1CDFdkx+MP8bo/gnYldnBBw+q4mbxvt7Riybwi8LYtE5qrt+CoAq1jE3soUY9JUgkb+e603uJq/dJz2LhF7qsg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fOzuz7u8TSGyZUHk4OhhTcp8+Vy5YMVqIROSBa65Usw=;
+ b=wXeO7TN8z6zw6oJ2LGfmBX+jmi7n/WLK1U1hid//Id91/ee4nyxe31u4g7Bb4pZLgpMP+k5hQy9W3chUPEs1Jf8HIk/YPeWsMwW+FjOZfg1CmuPjGxIaJibxt2hnZMDD+g+bzCmcC7Bo1r+tSZGmMVFjWgyHZ2kgJupGHbog8Uo=
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by DM6PR10MB2827.namprd10.prod.outlook.com
+ (2603:10b6:5:6e::32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5546.18; Mon, 22 Aug
+ 2022 12:57:17 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::209e:de4d:68ea:c026]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::209e:de4d:68ea:c026%3]) with mapi id 15.20.5546.022; Mon, 22 Aug 2022
+ 12:57:17 +0000
+Date: Mon, 22 Aug 2022 15:57:05 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, ChiYuan Huang <cy_huang@richtek.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        ChiaEn Wu <chiaen_wu@richtek.com>,
+        linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+        "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+        kernel-janitors <kernel-janitors@vger.kernel.org>
+Subject: Re: [PATCH] mfd: mt6370: add bounds checking to regmap_read/write
+ functions
+Message-ID: <20220822125705.GD2695@kadam>
+References: <Yv8ezribLQbq5ggv@kili>
+ <CAHp75VcotcJzqc4iSwNTKcvF3vAYz6VUuMrsj7LF6mi6Xu8D=Q@mail.gmail.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAHp75VcotcJzqc4iSwNTKcvF3vAYz6VUuMrsj7LF6mi6Xu8D=Q@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-ClientProxiedBy: MR2P264CA0082.FRAP264.PROD.OUTLOOK.COM
+ (2603:10a6:500:32::22) To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 94011ce0-7124-4893-35d2-08da843dd77d
+X-MS-TrafficTypeDiagnostic: DM6PR10MB2827:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	bDnoSs3JoGluds3OWRo0kABTAwqEDn3coveKXym4R67p5147bhn991y8AfU6L+L/YNrWi3XFBniO+4kVEcQJbN7OeM6qG8gsp5SDNnKahhpWjRNTEwltQ10BY7n8H352+UJK78ECZWlEZ2/x/BqEYvK4TU6Sa2ukIRK5+oV3+Cid/a7j8FRNYzD0SMbxmf7r0bvD0zVTNMmn8sl0bDBvld59aBXaKXgSp4ru+BPZ16OaFgfRMbJ5vtbxEq5QGQSVGAtJjLPOqoW/+D5WXkgS+ghCqZd7x/sRXWnNwzLBiBK9Vzpjfq7h0bepXv2msjhc2ZH6+enbAa1/MdYyMgLfvsGf99CB01vWOjOk/D5Q67vP5i6L4uztKXwpPezaPMNmAk9fDAJZNrROHVg1a85AvklT4eEtW5N3qH7Q9A/4Erdjm+5gXNZQUOCjr3GXSwaZd5VAOE+zBMygp/S38kWGfCXSQhqq1bMB7l+uKW9bdOcI6Y0aLSqfDYr1IaTt/v3WkUB0ySlLRH4hIGUbJwEZZ2tE1JKIFYbnm/VZ3+GMg0X5jClYPrrdAWTmwGF2Y1KdHcCmk/eFmtFhYc+EvjYDvEiGkKrVq8p+n3Oi4HHBgIvArHlS/pHV3IU5vksZ5mrn2mNOCx77FR7L9k8/RmowwueywtC/i9dW6acMv5cGN3F2h+VyrYHofXI3Sq2Y2y5IAtr43lVjTi3lT3MQNC4b26z/4w0z7eH4RfDtXwVn+BE/tcvDYEiABlnuzBqO8J/ZMAmTKVejZueu3xVxGpX0mQ==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(7916004)(39860400002)(346002)(376002)(396003)(366004)(136003)(6512007)(86362001)(1076003)(6506007)(41300700001)(6666004)(9686003)(6916009)(316002)(54906003)(38350700002)(2906002)(33716001)(38100700002)(26005)(8936002)(44832011)(4326008)(66946007)(186003)(5660300002)(8676002)(66556008)(33656002)(83380400001)(66476007)(6486002)(53546011)(52116002)(478600001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?OlO+9XAoy53+YozFYE2/n6R9LdxQSwzbF5VRx1wmyQEmAjH3YeYm/gPuzao7?=
+ =?us-ascii?Q?X1+pZ1cuERbWvo9XF1BStpHml0UYYaHbEiLz8XniZ6wcamK5ZTswkIHOXTlS?=
+ =?us-ascii?Q?3bdRQV7lGssgpzHq2z9v7jju2qKBQnXeKdrgyoNCYkZKEO/8BXGUWYhPaVqb?=
+ =?us-ascii?Q?ByRO69lpR14B4sB1sXcIpBzufHQ7Ezb6HAc6AhM9PYWluelVBFgAmffR1ZuS?=
+ =?us-ascii?Q?uogsU1Ef4gd8zYBLEGtjKq2CAoV7ZNPX6PIbtJkdgQUjTZYxDrHwwjaQ3sTn?=
+ =?us-ascii?Q?tL4LUIBFPfdzJmL7u88xLezhQugUlf14lLESMuna0Jk1XbyXeGU72VOr9pEP?=
+ =?us-ascii?Q?bEI231EUn3dbVkqJD93350cUIrPSTcEUb2UuUoPj8DDHdgDue/XbqY/pa7WZ?=
+ =?us-ascii?Q?AvzCH1/H5FAM10w5GUJnQp/eFWGdjVil9vLkjgKFw/Oc1ykH+eM5ZsDqO+KT?=
+ =?us-ascii?Q?PFnVvpF1ymCY7Ogh092PzfxkHrAbcOgq4VgN9Nxf8D5+3marIkwrw0T1xcb3?=
+ =?us-ascii?Q?3pYZfL/4lCgoDC+us3AtJcDgjCr8wICwhKx0SkttxiSy9pK9RgDxxFJcW0wZ?=
+ =?us-ascii?Q?78Xxv08OufZbeDJlH+ixNpLDwfNajJe63kNy2CvhJdz4Gfc0G9WbcPvMYRDE?=
+ =?us-ascii?Q?jwAlIdNbkSDQ/wLCGyagM12kYznswijyqcCyUBxikCqjSBrFplSBN2nydMCg?=
+ =?us-ascii?Q?dkuHgno25aS8FyL8rbMy3Qd/VJhDZSU+Wo1BQ7mwS/r/N2CAOubLNNVNJGEN?=
+ =?us-ascii?Q?iaI3qSloahuZIN7NllDnzAm2yCEFi+8GuHh2DFy3n7WHkGuMULLEkbAW8tFB?=
+ =?us-ascii?Q?1zcaQ9wwjKyQjdcODn4g7e4+WA8mbM0ieBkEVt9G3b/4PyCziY2nDKvb15rJ?=
+ =?us-ascii?Q?lA8lZry8J6NdK09rPzgXa2kafIp/Un1YtQiw3ynA/cU6HDvzEKYl47B6fTik?=
+ =?us-ascii?Q?hO6vyyM23C664jo9gIIxLG6mY/TmoSHy+EkArhqBxJbZBMpRFM5SpjmO2F49?=
+ =?us-ascii?Q?aiALfxRX/tNP/rOC7QsZBRTrjH9WtZfuqFbAyJc4691TJGAUgsxACMnTEtSX?=
+ =?us-ascii?Q?lrnTWkXMifPq18orvnFLOc+JlWzZknmbGvmTWW/+ujSTzeWZqEHOd23SiXDo?=
+ =?us-ascii?Q?VDjzg71UFNsrEckqUtFib/d1mshZB5hMQKbUWLYBmkoJHmHPcWMVUOu3tMg0?=
+ =?us-ascii?Q?FkYvkub8IHH9GE9Kgmcd07DIB5jSoUczruHU8bVtIQFHP1lWcy3319WqOS7W?=
+ =?us-ascii?Q?I7D3gnfWrmtyrs3G33cBsdaRh07fB7/s/4uTLhhjSKPTZxPekHQ9dExaaGOI?=
+ =?us-ascii?Q?GwZtnr4C/U8Luj77hnhhsPybM56OE9ZtT5TRpGEft4D+ZqwZ79gXIAHGjqZ8?=
+ =?us-ascii?Q?vr0dH6TAKlpLVXSV20FzZ6lQ1WEYHFlD2U67DVaIdkaZ+C0oeB4tKNTulOy6?=
+ =?us-ascii?Q?jQELHQMixwi1xOk+hdgX2cpgZnFFOwWl1TiYZvkbr3qNT4dRyol974B//n2L?=
+ =?us-ascii?Q?veCA2Vjag2eqEJidV1gaV1GDuqSzKWP6sGI3X8LrvBHJx9DacvoMvDMaccTj?=
+ =?us-ascii?Q?ecdJak5Rg54XIAkC+p+DczqNjJ5NDZrXkfF5k3JYQtjUPngfaX4ibJqgTBKE?=
+ =?us-ascii?Q?nQ=3D=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 94011ce0-7124-4893-35d2-08da843dd77d
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Aug 2022 12:57:17.4056
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: beOui39q5zHx/PwfHwEvzMLxy2I2mgWgnQ2UGgEezrLB0TF00lsmFpa+fbGznHen/9Ejtgq6SCI+6nqwgxtLxIio5vEjILUXUKKn3OifSRY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR10MB2827
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.517,FMLib:17.11.122.1
+ definitions=2022-08-22_08,2022-08-22_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 suspectscore=0 spamscore=0
+ phishscore=0 adultscore=0 mlxscore=0 malwarescore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2207270000
+ definitions=main-2208220054
+X-Proofpoint-GUID: ZwbK8Oz9OPPnu5b6xxZm91JGik3wg2r5
+X-Proofpoint-ORIG-GUID: ZwbK8Oz9OPPnu5b6xxZm91JGik3wg2r5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220822_032053_105912_04B715DA 
-X-CRM114-Status: GOOD (  24.65  )
+X-CRM114-CacheID: sfid-20220822_055738_497504_7D080945 
+X-CRM114-Status: GOOD (  23.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,291 +167,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since the previous gamma_set_common() function is designed for
-9bit-to-10bit conversion, which is not feasible for the
-10bit-to-12bit conversion in mt8195.
+On Fri, Aug 19, 2022 at 09:27:13AM +0300, Andy Shevchenko wrote:
+> On Fri, Aug 19, 2022 at 8:25 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
+> >
+> > It looks like there are a potential out of bounds accesses in the
+> > read/write() functions.  Also can "len" be negative?  Let's check for
+> > that too.
+> 
+> ...
+> 
+> > Fixes: ab9905c5e38e ("mfd: mt6370: Add MediaTek MT6370 support")
+> 
+> > From static analysis.  This code is obviously harmless however it may
+> > not be required.  The regmap range checking is slightly complicated and
+> > I haven't remembered where all it's done.
+> 
+> Exactement! I do not think this Fixes anything, I believe you are
+> adding a dead code. So, can you do deeper analysis?
 
-Update the function to fit the need of mt8195.
+I spent a long time looking at this code before I sent it and I've
+spent a long time looking at it today.
 
-Signed-off-by: zheng-yan.chen <zheng-yan.chen@mediatek.com>
+Smatch said that these values come from the user, but now it seems
+less clear to me and I have rebuilt the DB so I don't have the same
+information I was looking at earlier.
 
----
- drivers/gpu/drm/mediatek/mtk_disp_aal.c     |  2 +-
- drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  3 +-
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c   | 97 ++++++++++++++++-----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  5 +-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  1 -
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  1 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  2 +
- 8 files changed, 83 insertions(+), 29 deletions(-)
+So I can't see if these come from the user but neither can I find any
+bounds checking.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-index 0f9d7efb61d7..f46d4ab73d6a 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-@@ -66,7 +66,7 @@ void mtk_aal_gamma_set(struct device *dev, struct drm_crtc_state *state)
- 	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
- 
- 	if (aal->data && aal->data->has_gamma)
--		mtk_gamma_set_common(aal->regs, state, false);
-+		mtk_gamma_set_common(aal->regs, state);
- }
- 
- void mtk_aal_start(struct device *dev)
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 33e61a136bbc..b662bf8b1c9d 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -51,8 +51,9 @@ void mtk_gamma_clk_disable(struct device *dev);
- void mtk_gamma_config(struct device *dev, unsigned int w,
- 		      unsigned int h, unsigned int vrefresh,
- 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
-+unsigned int mtk_gamma_size(struct device *dev);
- void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state);
--void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state, bool lut_diff);
-+void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state);
- void mtk_gamma_start(struct device *dev);
- void mtk_gamma_stop(struct device *dev);
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index bbd558a036ec..a842e5e1962e 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -18,18 +18,26 @@
- #define DISP_GAMMA_EN				0x0000
- #define GAMMA_EN					BIT(0)
- #define DISP_GAMMA_CFG				0x0020
-+#define RELAY_MODE					BIT(0)
- #define GAMMA_LUT_EN					BIT(1)
- #define GAMMA_DITHERING					BIT(2)
- #define DISP_GAMMA_SIZE				0x0030
-+#define DISP_GAMMA_BANK				0x0100
- #define DISP_GAMMA_LUT				0x0700
--
-+#define DISP_GAMMA_LUT1				0x0b00
- #define LUT_10BIT_MASK				0x03ff
--
-+#define TABLE_9BIT_SIZE				512
-+#define LUT_12BIT_MASK				0x0fff
-+#define TABLE_10BIT_SIZE			1024
-+#define BANK_SIZE				256
- struct mtk_disp_gamma_data {
- 	bool has_dither;
- 	bool lut_diff;
-+	unsigned int lut_size;
- };
- 
-+static unsigned int now_lut_size;
-+static bool now_lut_diff;
- /*
-  * struct mtk_disp_gamma - DISP_GAMMA driver structure
-  */
-@@ -54,40 +62,73 @@ void mtk_gamma_clk_disable(struct device *dev)
- 	clk_disable_unprepare(gamma->clk);
- }
- 
--void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state, bool lut_diff)
-+void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state)
- {
--	unsigned int i, reg;
--	struct drm_color_lut *lut;
-+	unsigned int i, reg, idx;
- 	void __iomem *lut_base;
--	u32 word;
--	u32 diff[3] = {0};
-+	void __iomem *lut1_base;
-+	u32 word, word1;
- 
- 	if (state->gamma_lut) {
-+		u32 table_size;
-+		u32 mask;
-+		struct drm_color_lut color, even, odd;
-+		struct drm_color_lut *lut = (struct drm_color_lut *)state->gamma_lut;
-+		bool lut_12bit = (now_lut_size == TABLE_10BIT_SIZE);
-+
- 		reg = readl(regs + DISP_GAMMA_CFG);
-+		reg = reg & ~RELAY_MODE;
- 		reg = reg | GAMMA_LUT_EN;
- 		writel(reg, regs + DISP_GAMMA_CFG);
- 		lut_base = regs + DISP_GAMMA_LUT;
--		lut = (struct drm_color_lut *)state->gamma_lut->data;
--		for (i = 0; i < MTK_LUT_SIZE; i++) {
-+		lut1_base = regs + DISP_GAMMA_LUT1;
-+		if (lut_12bit) {
-+			table_size = TABLE_10BIT_SIZE;
-+			mask = LUT_12BIT_MASK;
-+		} else {
-+			table_size = TABLE_9BIT_SIZE;
-+			mask = LUT_10BIT_MASK;
-+		}
- 
--			if (!lut_diff || (i % 2 == 0)) {
--				word = (((lut[i].red >> 6) & LUT_10BIT_MASK) << 20) +
--					(((lut[i].green >> 6) & LUT_10BIT_MASK) << 10) +
--					((lut[i].blue >> 6) & LUT_10BIT_MASK);
-+		for (i = 0; i < table_size; i++) {
-+			if (!(i % BANK_SIZE) && lut_12bit)
-+				writel((i / BANK_SIZE), regs + DISP_GAMMA_BANK);
-+
-+			color.red = (lut[i].red >> 6) & mask;
-+			color.green = (lut[i].green >> 6) & mask;
-+			color.blue = (lut[i].blue >> 6) & mask;
-+			if ((i % 2) && now_lut_diff) {
-+				odd = color;
-+				word = (lut_12bit) ? (((odd.green - even.green) << 12) +
-+						      (odd.red - even.red))
-+						   : (((odd.red - even.red) << 20) +
-+						      ((odd.green - even.green) << 10) +
-+						      (odd.blue - even.blue));
-+				word1 = (odd.blue - even.blue);
- 			} else {
--				diff[0] = (lut[i].red >> 6) - (lut[i - 1].red >> 6);
--				diff[1] = (lut[i].green >> 6) - (lut[i - 1].green >> 6);
--				diff[2] = (lut[i].blue >> 6) - (lut[i - 1].blue >> 6);
--
--				word = ((diff[0] & LUT_10BIT_MASK) << 20) +
--					((diff[1] & LUT_10BIT_MASK) << 10) +
--					(diff[2] & LUT_10BIT_MASK);
-+				even = color;
-+				word =  (lut_12bit) ? ((even.green << 12) + even.red)
-+						    : ((even.red << 20) +
-+						       (even.green << 10) + even.blue);
-+				word1 = even.blue;
- 			}
--			writel(word, (lut_base + i * 4));
-+			idx = (lut_12bit) ? (i % BANK_SIZE) : i;
-+			writel(word, (lut_base + idx * 4));
-+			if (lut_12bit)
-+				writel(word1, (lut1_base + idx * 4));
- 		}
- 	}
- }
- 
-+unsigned int mtk_gamma_size(struct device *dev)
-+{
-+	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
-+
-+	if (gamma->data)
-+		return gamma->data->lut_size;
-+	else
-+		return 0;
-+}
- void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
- {
- 	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
-@@ -95,8 +136,7 @@ void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
- 
- 	if (gamma->data)
- 		lut_diff = gamma->data->lut_diff;
--
--	mtk_gamma_set_common(gamma->regs, state, lut_diff);
-+	mtk_gamma_set_common(gamma->regs, state);
- }
- 
- void mtk_gamma_config(struct device *dev, unsigned int w,
-@@ -178,6 +218,8 @@ static int mtk_disp_gamma_probe(struct platform_device *pdev)
- 	ret = component_add(dev, &mtk_disp_gamma_component_ops);
- 	if (ret)
- 		dev_err(dev, "Failed to add component: %d\n", ret);
-+	now_lut_size = priv->data->lut_size;
-+	now_lut_diff = priv->data->lut_diff;
- 
- 	return ret;
- }
-@@ -191,10 +233,17 @@ static int mtk_disp_gamma_remove(struct platform_device *pdev)
- 
- static const struct mtk_disp_gamma_data mt8173_gamma_driver_data = {
- 	.has_dither = true,
-+	.lut_size = 512,
- };
- 
- static const struct mtk_disp_gamma_data mt8183_gamma_driver_data = {
- 	.lut_diff = true,
-+	.lut_size = 512,
-+};
-+
-+static const struct mtk_disp_gamma_data mt8195_gamma_driver_data = {
-+	.lut_diff = true,
-+	.lut_size = 1024,
- };
- 
- static const struct of_device_id mtk_disp_gamma_driver_dt_match[] = {
-@@ -202,6 +251,8 @@ static const struct of_device_id mtk_disp_gamma_driver_dt_match[] = {
- 	  .data = &mt8173_gamma_driver_data},
- 	{ .compatible = "mediatek,mt8183-disp-gamma",
- 	  .data = &mt8183_gamma_driver_data},
-+	{ .compatible = "mediatek,mt8195-disp-gamma",
-+	  .data = &mt8195_gamma_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 42cc7052b050..2a6513259562 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -930,9 +930,8 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 		mtk_crtc->ddp_comp[i] = comp;
- 
- 		if (comp->funcs) {
--			if (comp->funcs->gamma_set)
--				gamma_lut_size = MTK_LUT_SIZE;
--
-+			if (comp->funcs->gamma_set && comp->funcs->gamma_size)
-+				gamma_lut_size = comp->funcs->gamma_size(comp->dev);
- 			if (comp->funcs->ctm_set)
- 				has_ctm = true;
- 		}
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-index cb9a36c48d4f..1799853ef89a 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
-@@ -10,7 +10,6 @@
- #include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_plane.h"
- 
--#define MTK_LUT_SIZE	512
- #define MTK_MAX_BPC	10
- #define MTK_MIN_BPC	3
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 2d72cc5ddaba..4c6538a17b88 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -323,6 +323,7 @@ static const struct mtk_ddp_comp_funcs ddp_gamma = {
- 	.clk_enable = mtk_gamma_clk_enable,
- 	.clk_disable = mtk_gamma_clk_disable,
- 	.gamma_set = mtk_gamma_set,
-+	.gamma_size = mtk_gamma_size,
- 	.config = mtk_gamma_config,
- 	.start = mtk_gamma_start,
- 	.stop = mtk_gamma_stop,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 2d0052c23dcb..bf0cf7f86010 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -59,6 +59,7 @@ struct mtk_ddp_comp_funcs {
- 	void (*disable_vblank)(struct device *dev);
- 	unsigned int (*supported_rotations)(struct device *dev);
- 	unsigned int (*layer_nr)(struct device *dev);
-+	unsigned int (*gamma_size)(struct device *dev);
- 	int (*layer_check)(struct device *dev,
- 			   unsigned int idx,
- 			   struct mtk_plane_state *state);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 0e4c77724b05..473766be56e1 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -567,6 +567,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8183-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
-+	{ .compatible = "mediatek,mt8195-disp-gamma",
-+	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8195-disp-merge",
- 	  .data = (void *)MTK_DISP_MERGE },
- 	{ .compatible = "mediatek,mt2701-disp-mutex",
--- 
-2.18.0
-
+regards,
+dan carpenter
 
