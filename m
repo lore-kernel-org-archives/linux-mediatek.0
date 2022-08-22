@@ -4,80 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C08A9C28D13
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Aug 2022 15:41:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AEE4C28D13
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Aug 2022 16:18:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2TI0JI+udncYDUlOYbvuhZ2qigLaWy/CUALMeyT9d+c=; b=27WOGcSHLRusZkb9I9dKKHSa3z
-	KubZGfBzGHAp16Iv1LVOvv3Of+VJGOCVnobDWQj3oZlvb3by0Mt3Su5rle8e6s+ZQRbYvMtanRViB
-	+Dy/inINwOFKjjQ4d6WRXC/4M9Q0xIbShS5gE8pntNKgc74bhou/YMh1PcAypNdIs4wBF8ouA9Hbf
-	jej0LZuMDjiEQa+KNHXcA4bbIM+Cg0XCx2pM8UQyPf0PmhdEY/xx2WZaZq6RDOZHpJCXcOgsOX3IH
-	2hIYbjP0kQKHOIjw8zC8Al6+xMPNpny5YOSWtksIHDo3MkDQtJKJiZgiOIQkPNLURifhO3SCY0mtv
-	05kFz/zA==;
+	bh=6ixFGQG5e9RKRZHpz9Cu92U2YnlZwaXuKgNBpkgvxkE=; b=QkroHjNKAMnwVuvziHQoGU6WS/
+	+OWBvWbm/2lrdcLzHiTQOlJNXiq5TBO4+qeP2CanKDNWw/lWmOvdq2lX6XTMlXklmfkjVs2cPQGlI
+	CrObx6XYHNw9n5yBvA4cfpTY5VCDrAJgPDhnt3cmxgt/3tcOptddhZWIiz4+U8sQah4K90DkASxAT
+	oJ/As9KSH68ZRewjESb3lrvEprbJq1QnxF5jpeoP0+4apsV20ocCAODgwPbnEBoznqxh6rxNmkuda
+	Kdpkr2hBYJl+5HUXHz9XiIge6wsrKWduZUUAwAYL7/PMnGfLHZRQZsQQG52jljpa944clpRfSDtYz
+	Y//ReLBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ9Yg-00CLE8-Pb; Mon, 22 Aug 2022 15:41:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oQA81-00Cda6-SL; Mon, 22 Aug 2022 16:18:17 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ9YT-00CL4V-BF; Mon, 22 Aug 2022 15:41:35 +0000
-X-UUID: 1c0aaaee8011468fb51d224f9c0916dc-20220822
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=2TI0JI+udncYDUlOYbvuhZ2qigLaWy/CUALMeyT9d+c=;
-	b=qin+5hCLkSvv2ztL7ZWzELKosQcRdyE2mcBROfSOyIcQU6iYmsUW8EFm12DjpOifVrlriF0dsXw5FJFSDiv/z3JGrcgzQORb3pSRlpXqQ2rPVe8S3VIKyq4er9pfZ8ARHsXfYHv5SYMg52DNhnolm6Hb5zzafT/RcTfCtbX6vt0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:c87a8356-e037-4d68-8fa9-56ec2001d2f3,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:2e02f267-a9d9-4672-a3c8-12721739a220,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 1c0aaaee8011468fb51d224f9c0916dc-20220822
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1007738664; Mon, 22 Aug 2022 08:41:24 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 22 Aug 2022 23:10:43 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 22 Aug 2022 23:10:43 +0800
-Message-ID: <f723e962fdea4874078a920efba53ef45b4a3bbc.camel@mediatek.com>
-Subject: Re: [PATCH v25 1/4] dt-binding: mediatek: add bindings for MediaTek
- MDP3 components
-From: moudy ho <moudy.ho@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>
-Date: Mon, 22 Aug 2022 23:10:38 +0800
-In-Reply-To: <2e71f901-98da-9a40-780c-5e95c251d78a@gmail.com>
-References: <20220817095629.29911-1-moudy.ho@mediatek.com>
-	 <20220817095629.29911-2-moudy.ho@mediatek.com>
-	 <2e71f901-98da-9a40-780c-5e95c251d78a@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oQA7m-00CdTG-LM; Mon, 22 Aug 2022 16:18:07 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id l33-20020a05600c1d2100b003a645240a95so3932268wms.1;
+        Mon, 22 Aug 2022 09:18:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id:from:to:cc;
+        bh=6ixFGQG5e9RKRZHpz9Cu92U2YnlZwaXuKgNBpkgvxkE=;
+        b=cDRpGmx7LsRKFvYcCRTxTVMl8aKQmv5vX5bo6SPWyEkhiLqp9QMkwVYRNC5BAZ+wR1
+         BOoSjyuKZKEu8Z3NSX8Wj92W4KlpRO3iOzt5mVwVTusK5Om+hzKibrjEU0PugeP9PoyA
+         nhQJwgIqiDRGyikQzvIyF+0Q6hN2k28XSiBNTkgXvI6kBdOrnylNh6OmRers2WVhyMhX
+         UIfaA8iC70+0PYVxTQPvcPMxmM+/2cAAPBcd34RKK+MpOchyR/SEXb8giLxR/jLy1bOx
+         dH1WYp+JDfi0ATjYj/NiKnnKiNNFCUOYGBoWo12MJrdhGmHUocs0GsCDrkQ4GE46bMtw
+         aLTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=6ixFGQG5e9RKRZHpz9Cu92U2YnlZwaXuKgNBpkgvxkE=;
+        b=72M1+ihfz33KYr/vUvIL9Ij6s4MX51UrXSb1X1+lN+e01A3+U/FTLATsMNTNSFpeI1
+         kexReoh97IlA9FbpLmXeRhDrgEYEAQ+XD9jqZnWQpmVzB2nVcw2yuvJ76yGR0/IR8mQl
+         CN1Y0Ejq+QCb0vxKQEVQCmHFLTIcxyNqAadI1kQwn0/fXeGtAwgtfIDOL3c8Zh82whrJ
+         xr7+Ca70Yd4bLJIm9dVdoo/tN7E7GWcawRf1/D0fULkM2Iikuo5M+s2d5bdnfgjv9VAQ
+         NRaqN/j0JsK8V2PXLOGCN0DNCaPAaM2K9CCdg3gl0DD9seKwFUfYX6u+z8dXKbMQK0L2
+         LBKQ==
+X-Gm-Message-State: ACgBeo3/+jmhf3s0X9ESx8OPe6/xq+71isHMm/YytptuDif3GH472K8Y
+	uvVcJePCGgxIfv5NJnez1Mw=
+X-Google-Smtp-Source: AA6agR7y7pHj5qGSGOXHJmt+ZxMtu/Zf41zSLzBGKYd5mK6HGK789VisccjsBBRadh0oYVXV5FulIw==
+X-Received: by 2002:a05:600c:502b:b0:3a5:d36a:8b93 with SMTP id n43-20020a05600c502b00b003a5d36a8b93mr15707189wmr.180.1661185081107;
+        Mon, 22 Aug 2022 09:18:01 -0700 (PDT)
+Received: from [192.168.0.30] ([47.62.125.55])
+        by smtp.gmail.com with ESMTPSA id o23-20020a05600c511700b003a5c1e916c8sm17342525wms.1.2022.08.22.09.17.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 22 Aug 2022 09:17:59 -0700 (PDT)
+Message-ID: <36dde9aa-b6ea-7194-c1bc-94d52c02649b@gmail.com>
+Date: Mon, 22 Aug 2022 18:17:58 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.1.2
+Content-Language: en-US
+To: Markus Schneider-Pargmann <msp@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Fabien Parent <parent.f@gmail.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Alexandre Bailon <abailon@baylibre.com>,
+ Fabien Parent <fparent@baylibre.com>
+References: <20220822144303.3438467-1-msp@baylibre.com>
+ <20220822144303.3438467-3-msp@baylibre.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3 2/4] soc: mediatek: Add support of WAY_EN operations
+In-Reply-To: <20220822144303.3438467-3-msp@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220822_084133_518918_2751EF2F 
-X-CRM114-Status: GOOD (  29.93  )
+X-CRM114-CacheID: sfid-20220822_091805_220888_A5D0E13C 
+X-CRM114-Status: GOOD (  30.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,362 +97,341 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
 
-On Mon, 2022-08-22 at 16:31 +0200, Matthias Brugger wrote:
-> 
-> On 17/08/2022 11:56, Moudy Ho wrote:
-> > This patch adds DT binding documents for Media Data Path 3 (MDP3)
-> > a unit in multimedia system combined with several components and
-> > used for scaling and color format convert.
-> > 
-> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> > Reviewed-by: Rob Herring <robh@kernel.org>
-> > Reviewed-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > ---
-> >   .../bindings/media/mediatek,mdp3-rdma.yaml    | 95
-> > +++++++++++++++++++
-> >   .../bindings/media/mediatek,mdp3-rsz.yaml     | 77
-> > +++++++++++++++
-> >   .../bindings/media/mediatek,mdp3-wrot.yaml    | 80
-> > ++++++++++++++++
-> >   3 files changed, 252 insertions(+)
-> >   create mode 100644
-> > Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> >   create mode 100644
-> > Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-> >   create mode 100644
-> > Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > rdma.yaml
-> > new file mode 100644
-> > index 000000000000..94ff74d9c04a
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > rdma.yaml
-> > @@ -0,0 +1,95 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml*__;Iw!!CTRNKA9wMg0ARbw!yGA_w2I4HGhwI-nLMb62fFdTf--h1GdolE2RQhH3DW1AWh0WR0AX4klb8Q2Znasv$
-> >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!yGA_w2I4HGhwI-nLMb62fFdTf--h1GdolE2RQhH3DW1AWh0WR0AX4klb8RCccQrB$
-> >  
-> > +
-> > +title: MediaTek Read Direct Memory Access
-> > +
-> > +maintainers:
-> > +  - Matthias Brugger <matthias.bgg@gmail.com>
-> > +  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-> 
-> Ping-Hsun Wu isn't even CCed on this mail. Why aren't you the
-> maintainer if you 
-> submit the patch?
-> 
-> Regards,
-> Matthias
-> 
 
-Thank you for your attention to this matter and apologies for the wrong
-candidate. I'll relist the correct maintainers and release a new
-version for it.
+On 22/08/2022 16:43, Markus Schneider-Pargmann wrote:
+> From: Alexandre Bailon <abailon@baylibre.com>
+> 
+> This updates the power domain to support WAY_EN operations. These
+> operations enable a path between different units of the chip and are
+> labeled as 'way_en' in the register descriptions.
+> 
+> This operation is required by the mt8365 for the MM power domain.
+> 
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> ---
+> 
+> Notes:
+>      Changes in v3:
+>      - Separated the way_en functions for clarity
+>      - Added some checks for infracfg_nao
+>      
+>      Changes in v2:
+>      - some minor style fixes.
+>      - Renamed 'wayen' to 'way_en' to clarify the meaning
+>      - Updated commit message
+> 
+>   drivers/soc/mediatek/mtk-pm-domains.c | 162 +++++++++++++++++++++-----
+>   drivers/soc/mediatek/mtk-pm-domains.h |  28 +++--
+>   2 files changed, 149 insertions(+), 41 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+> index 9734f1091c69..c2cbe0de6aa1 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> @@ -43,6 +43,7 @@ struct scpsys_domain {
+>   	struct clk_bulk_data *clks;
+>   	int num_subsys_clks;
+>   	struct clk_bulk_data *subsys_clks;
+> +	struct regmap *infracfg_nao;
+>   	struct regmap *infracfg;
+>   	struct regmap *smi;
+>   	struct regulator *supply;
+> @@ -117,26 +118,61 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
+>   					MTK_POLL_TIMEOUT);
+>   }
+>   
+> -static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, struct regmap *regmap)
+> +static int __scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
+> +				       struct regmap *regmap)
+> +{
+> +	u32 val;
+> +	u32 mask = bpd->bus_prot_mask;
+> +	u32 sta_mask = bpd->bus_prot_sta_mask;
+> +
+> +	if (bpd->bus_prot_reg_update)
+> +		regmap_set_bits(regmap, bpd->bus_prot_set, mask);
+> +	else
+> +		regmap_write(regmap, bpd->bus_prot_set, mask);
+> +
+> +	return regmap_read_poll_timeout(regmap, bpd->bus_prot_sta, val,
+> +					(val & sta_mask) == sta_mask,
+> +					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> +}
+> +
+> +static int scpsys_bus_way_disable(const struct scpsys_bus_prot_data *bpd,
+> +				  struct regmap *regmap,
+> +				  struct regmap *ack_regmap)
+> +{
+> +	u32 val;
+> +	u32 mask = bpd->bus_prot_mask;
+> +	u32 sta_mask = bpd->bus_prot_sta_mask;
+> +
+> +	if (bpd->bus_prot_reg_update)
+> +		regmap_clear_bits(regmap, bpd->bus_prot_set, mask);
+> +	else
+> +		regmap_write(regmap, bpd->bus_prot_set, mask);
+> +
+> +	if (bpd->ignore_clr_ack)
+> +		return 0;
+> +
+> +	return regmap_read_poll_timeout(ack_regmap, bpd->bus_prot_sta, val,
+> +					(val & sta_mask) == sta_mask,
+> +					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> +}
+> +
+> +static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
+> +				      struct regmap *regmap, struct regmap *infracfg_nao)
+>   {
+>   	int i, ret;
+>   
+>   	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+> -		u32 val, mask = bpd[i].bus_prot_mask;
+> -
+> -		if (!mask)
+> +		if (!bpd[i].bus_prot_mask)
+>   			break;
+>   
+> -		if (bpd[i].bus_prot_reg_update)
+> -			regmap_set_bits(regmap, bpd[i].bus_prot_set, mask);
+> +		if (bpd[i].way_en)
+> +			ret = scpsys_bus_way_disable(&bpd[i], regmap, infracfg_nao);
+>   		else
+> -			regmap_write(regmap, bpd[i].bus_prot_set, mask);
+> -
+> -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+> -					       val, (val & mask) == mask,
+> -					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> -		if (ret)
+> +			ret = __scpsys_bus_protect_enable(&bpd[i], regmap);
+> +		if (ret) {
+> +			pr_err("%s %d %d\n", __PRETTY_FUNCTION__, __LINE__, ret);
+>   			return ret;
+> +		}
+>   	}
+>   
+>   	return 0;
+> @@ -146,37 +182,71 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
+>   {
+>   	int ret;
+>   
+> -	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg, pd->infracfg);
+> +	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg,
+> +					 pd->infracfg, pd->infracfg_nao);
+>   	if (ret)
+>   		return ret;
+>   
+> -	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi);
+> +	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi, NULL);
+> +}
+> +
+> +static int __scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
+> +					struct regmap *regmap)
+> +{
+> +	u32 val;
+> +	u32 mask = bpd->bus_prot_mask;
+> +	u32 sta_mask = bpd->bus_prot_sta_mask;
+> +
+> +	if (bpd->bus_prot_reg_update)
+> +		regmap_clear_bits(regmap, bpd->bus_prot_clr, mask);
+> +	else
+> +		regmap_write(regmap, bpd->bus_prot_clr, mask);
+> +
+> +	if (bpd->ignore_clr_ack)
+> +		return 0;
+> +
+> +	return regmap_read_poll_timeout(regmap, bpd->bus_prot_sta, val,
+> +					!(val & sta_mask), MTK_POLL_DELAY_US,
+> +					MTK_POLL_TIMEOUT);
+> +}
+> +
+> +static int scpsys_bus_way_enable(const struct scpsys_bus_prot_data *bpd,
+> +				 struct regmap *regmap,
+> +				 struct regmap *ack_regmap)
+> +{
+> +	u32 val;
+> +	u32 mask = bpd->bus_prot_mask;
+> +	u32 sta_mask = bpd->bus_prot_sta_mask;
+> +
+> +	if (bpd->bus_prot_reg_update)
+> +		regmap_set_bits(regmap, bpd->bus_prot_clr, mask);
+> +	else
+> +		regmap_write(regmap, bpd->bus_prot_clr, mask);
+> +
+> +	return regmap_read_poll_timeout(ack_regmap, bpd->bus_prot_sta, val,
+> +					(val & sta_mask) == sta_mask,
+> +					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+>   }
+>   
+>   static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
+> -				       struct regmap *regmap)
+> +				       struct regmap *regmap,
+> +				       struct regmap *infracfg_nao)
+>   {
+>   	int i, ret;
+>   
+>   	for (i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
+> -		u32 val, mask = bpd[i].bus_prot_mask;
+> -
+> -		if (!mask)
+> +		if (!bpd[i].bus_prot_mask)
+>   			continue;
+>   
+> -		if (bpd[i].bus_prot_reg_update)
+> -			regmap_clear_bits(regmap, bpd[i].bus_prot_clr, mask);
+> +		if (bpd[i].way_en)
+> +			ret = scpsys_bus_way_enable(&bpd[i], regmap,
+> +						    infracfg_nao);
+>   		else
+> -			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
+> -
+> -		if (bpd[i].ignore_clr_ack)
+> -			continue;
+> -
+> -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+> -					       val, !(val & mask),
+> -					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> -		if (ret)
+> +			ret = __scpsys_bus_protect_disable(&bpd[i], regmap);
+> +		if (ret) {
+> +			pr_err("%s %d %d\n", __PRETTY_FUNCTION__, __LINE__, ret);
+>   			return ret;
+> +		}
+>   	}
+>   
+>   	return 0;
+> @@ -186,11 +256,12 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
+>   {
+>   	int ret;
+>   
+> -	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi);
+> +	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi, NULL);
+>   	if (ret)
+>   		return ret;
+>   
+> -	return _scpsys_bus_protect_disable(pd->data->bp_infracfg, pd->infracfg);
+> +	return _scpsys_bus_protect_disable(pd->data->bp_infracfg,
+> +			pd->infracfg, pd->infracfg_nao);
+>   }
+>   
+>   static int scpsys_regulator_enable(struct regulator *supply)
+> @@ -294,6 +365,21 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>   	return 0;
+>   }
+>   
+> +static bool scpsys_bp_infracfg_has_way_en(const struct scpsys_bus_prot_data *bpd)
+> +{
+> +	int i;
+> +
+> +	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+> +		if (!bpd[i].bus_prot_mask)
+> +			break;
 
+So MT8365_POWER_DOMAIN_MM will return false as the first member of bp_infracfg 
+is BUS_PROT_WR(...)
+
+Apart from that, why don't you use a CAPS to acheive the same?
+
+> +
+> +		if (bpd[i].way_en)
+> +			return true;
+> +	}
+> +
+> +	return false;
+> +}
+> +
+>   static struct
+>   generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node)
+>   {
+> @@ -364,6 +450,20 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+>   			return ERR_CAST(pd->smi);
+>   	}
+>   
+> +	if (scpsys_bp_infracfg_has_way_en(pd->data->bp_smi)) {
+> +		dev_err(scpsys->dev, "bp_smi does not support WAY_EN\n");
+
+Do we really need to check the correctness of the driver data at runtime?
+
+> +		return ERR_PTR(-EINVAL);
+> +	}
+> +
+> +	pd->infracfg_nao = syscon_regmap_lookup_by_phandle_optional(
+> +		node, "mediatek,infracfg_nao");
+
+Not in the binding description.
+
+> +	if (IS_ERR(pd->infracfg_nao)) {
+> +		if (scpsys_bp_infracfg_has_way_en(pd->data->bp_infracfg))
+> +			return ERR_CAST(pd->infracfg_nao);
+> +
+> +		pd->infracfg_nao = NULL;
+> +	}
+> +
+>   	num_clks = of_clk_get_parent_count(node);
+>   	if (num_clks > 0) {
+>   		/* Calculate number of subsys_clks */
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
+> index 7d3c0c36316c..974c68a1d89c 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.h
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
+> @@ -41,23 +41,29 @@
+>   
+>   #define SPM_MAX_BUS_PROT_DATA		6
+>   
+> -#define _BUS_PROT(_mask, _set, _clr, _sta, _update, _ignore) {	\
+> -		.bus_prot_mask = (_mask),			\
+> -		.bus_prot_set = _set,				\
+> -		.bus_prot_clr = _clr,				\
+> -		.bus_prot_sta = _sta,				\
+> -		.bus_prot_reg_update = _update,			\
+> -		.ignore_clr_ack = _ignore,			\
+> +#define _BUS_PROT(_mask, _sta_mask, _set, _clr, _sta, _update, _ignore, _way_en) {	\
+> +		.bus_prot_mask = (_mask),				\
+> +		.bus_prot_set = _set,					\
+> +		.bus_prot_clr = _clr,					\
+> +		.bus_prot_sta = _sta,					\
+> +		.bus_prot_sta_mask = _sta_mask,				\
+> +		.bus_prot_reg_update = _update,				\
+> +		.ignore_clr_ack = _ignore,				\
+> +		.way_en = _way_en,					\
+>   	}
+>   
+>   #define BUS_PROT_WR(_mask, _set, _clr, _sta)			\
+> -		_BUS_PROT(_mask, _set, _clr, _sta, false, false)
+> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, false, false)
+>   
+>   #define BUS_PROT_WR_IGN(_mask, _set, _clr, _sta)		\
+> -		_BUS_PROT(_mask, _set, _clr, _sta, false, true)
+> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, true, false)
+>   
+>   #define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)		\
+> -		_BUS_PROT(_mask, _set, _clr, _sta, true, false)
+> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, true, false, false)
+> +
+> +#define BUS_PROT_WAY_EN(_en_mask, _sta_mask, _set, _sta)	\
+> +		_BUS_PROT(_en_mask, _sta_mask, _set, _set, _sta, true, false, \
+> +			  true)
+>   
+>   #define BUS_PROT_UPDATE_TOPAXI(_mask)				\
+>   		BUS_PROT_UPDATE(_mask,				\
+> @@ -70,8 +76,10 @@ struct scpsys_bus_prot_data {
+>   	u32 bus_prot_set;
+>   	u32 bus_prot_clr;
+>   	u32 bus_prot_sta;
+> +	u32 bus_prot_sta_mask;
+
+I'm not very happy with the naming. In the end we need an extra mask for bus 
+protection using WAY_EN. But right now I can't come up with a good name.
 
 Regards,
-Moudy
+Matthias
 
-> > +
-> > +description: |
-> > +  MediaTek Read Direct Memory Access(RDMA) component used to do
-> > read DMA.
-> > +  It contains one line buffer to store the sufficient pixel data,
-> > and
-> > +  must be siblings to the central MMSYS_CONFIG node.
-> > +  For a description of the MMSYS_CONFIG binding, see
-> > +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.ya
-> > ml
-> > +  for details.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - const: mediatek,mt8183-mdp3-rdma
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  mediatek,gce-client-reg:
-> > +    $ref: '/schemas/types.yaml#/definitions/phandle-array'
-> > +    items:
-> > +      items:
-> > +        - description: phandle of GCE
-> > +        - description: GCE subsys id
-> > +        - description: register offset
-> > +        - description: register size
-> > +    description: The register of client driver can be configured
-> > by gce with
-> > +      4 arguments defined in this property. Each GCE subsys id is
-> > mapping to
-> > +      a client defined in the header include/dt-
-> > bindings/gce/<chip>-gce.h.
-> > +
-> > +  mediatek,gce-events:
-> > +    description:
-> > +      The event id which is mapping to the specific hardware event
-> > signal
-> > +      to gce. The event id is defined in the gce header
-> > +      include/dt-bindings/gce/<chip>-gce.h of each chips.
-> > +    $ref: /schemas/types.yaml#/definitions/uint32-array
-> > +
-> > +  power-domains:
-> > +    maxItems: 1
-> > +
-> > +  clocks:
-> > +    items:
-> > +      - description: RDMA clock
-> > +      - description: RSZ clock
-> > +
-> > +  iommus:
-> > +    maxItems: 1
-> > +
-> > +  mboxes:
-> > +    items:
-> > +      - description: used for 1st data pipe from RDMA
-> > +      - description: used for 2nd data pipe from RDMA
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - mediatek,gce-client-reg
-> > +  - mediatek,gce-events
-> > +  - power-domains
-> > +  - clocks
-> > +  - iommus
-> > +  - mboxes
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/clock/mt8183-clk.h>
-> > +    #include <dt-bindings/gce/mt8183-gce.h>
-> > +    #include <dt-bindings/power/mt8183-power.h>
-> > +    #include <dt-bindings/memory/mt8183-larb-port.h>
-> > +
-> > +    mdp3_rdma0: mdp3-rdma0@14001000 {
-> > +      compatible = "mediatek,mt8183-mdp3-rdma";
-> > +      reg = <0x14001000 0x1000>;
-> > +      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000
-> > 0x1000>;
-> > +      mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
-> > +                            <CMDQ_EVENT_MDP_RDMA0_EOF>;
-> > +      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> > +      clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-> > +               <&mmsys CLK_MM_MDP_RSZ1>;
-> > +      iommus = <&iommu>;
-> > +      mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST>,
-> > +               <&gce 21 CMDQ_THR_PRIO_LOWEST>;
-> > +    };
-> > diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > rsz.yaml
-> > new file mode 100644
-> > index 000000000000..22c61ed00fdd
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > rsz.yaml
-> > @@ -0,0 +1,77 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/media/mediatek,mdp3-rsz.yaml*__;Iw!!CTRNKA9wMg0ARbw!yGA_w2I4HGhwI-nLMb62fFdTf--h1GdolE2RQhH3DW1AWh0WR0AX4klb8XW2iViE$
-> >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!yGA_w2I4HGhwI-nLMb62fFdTf--h1GdolE2RQhH3DW1AWh0WR0AX4klb8RCccQrB$
-> >  
-> > +
-> > +title: MediaTek Resizer
-> > +
-> > +maintainers:
-> > +  - Matthias Brugger <matthias.bgg@gmail.com>
-> > +  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-> > +
-> > +description: |
-> > +  One of Media Data Path 3 (MDP3) components used to do frame
-> > resizing.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - enum:
-> > +          - mediatek,mt8183-mdp3-rsz
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  mediatek,gce-client-reg:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> > +    items:
-> > +      items:
-> > +        - description: phandle of GCE
-> > +        - description: GCE subsys id
-> > +        - description: register offset
-> > +        - description: register size
-> > +    description: The register of client driver can be configured
-> > by gce with
-> > +      4 arguments defined in this property. Each GCE subsys id is
-> > mapping to
-> > +      a client defined in the header include/dt-
-> > bindings/gce/<chip>-gce.h.
-> > +
-> > +  mediatek,gce-events:
-> > +    description:
-> > +      The event id which is mapping to the specific hardware event
-> > signal
-> > +      to gce. The event id is defined in the gce header
-> > +      include/dt-bindings/gce/<chip>-gce.h of each chips.
-> > +    $ref: /schemas/types.yaml#/definitions/uint32-array
-> > +
-> > +  clocks:
-> > +    minItems: 1
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - mediatek,gce-client-reg
-> > +  - mediatek,gce-events
-> > +  - clocks
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/clock/mt8183-clk.h>
-> > +    #include <dt-bindings/gce/mt8183-gce.h>
-> > +
-> > +    mdp3_rsz0: mdp3-rsz0@14003000 {
-> > +      compatible = "mediatek,mt8183-mdp3-rsz";
-> > +      reg = <0x14003000 0x1000>;
-> > +      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000
-> > 0x1000>;
-> > +      mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ0_SOF>,
-> > +                            <CMDQ_EVENT_MDP_RSZ0_EOF>;
-> > +      clocks = <&mmsys CLK_MM_MDP_RSZ0>;
-> > +    };
-> > +
-> > +    mdp3_rsz1: mdp3-rsz1@14004000 {
-> > +      compatible = "mediatek,mt8183-mdp3-rsz";
-> > +      reg = <0x14004000 0x1000>;
-> > +      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000
-> > 0x1000>;
-> > +      mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ1_SOF>,
-> > +                            <CMDQ_EVENT_MDP_RSZ1_EOF>;
-> > +      clocks = <&mmsys CLK_MM_MDP_RSZ1>;
-> > +    };
-> > diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > wrot.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > wrot.yaml
-> > new file mode 100644
-> > index 000000000000..76c010720d43
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > wrot.yaml
-> > @@ -0,0 +1,80 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/media/mediatek,mdp3-wrot.yaml*__;Iw!!CTRNKA9wMg0ARbw!yGA_w2I4HGhwI-nLMb62fFdTf--h1GdolE2RQhH3DW1AWh0WR0AX4klb8Til05HT$
-> >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!yGA_w2I4HGhwI-nLMb62fFdTf--h1GdolE2RQhH3DW1AWh0WR0AX4klb8RCccQrB$
-> >  
-> > +
-> > +title: MediaTek Write DMA with Rotation
-> > +
-> > +maintainers:
-> > +  - Matthias Brugger <matthias.bgg@gmail.com>
-> > +  - Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-> > +
-> > +description: |
-> > +  One of Media Data Path 3 (MDP3) components used to write DMA
-> > with frame rotation.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - enum:
-> > +          - mediatek,mt8183-mdp3-wrot
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  mediatek,gce-client-reg:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> > +    items:
-> > +      items:
-> > +        - description: phandle of GCE
-> > +        - description: GCE subsys id
-> > +        - description: register offset
-> > +        - description: register size
-> > +    description: The register of client driver can be configured
-> > by gce with
-> > +      4 arguments defined in this property. Each GCE subsys id is
-> > mapping to
-> > +      a client defined in the header include/dt-
-> > bindings/gce/<chip>-gce.h.
-> > +
-> > +  mediatek,gce-events:
-> > +    description:
-> > +      The event id which is mapping to the specific hardware event
-> > signal
-> > +      to gce. The event id is defined in the gce header
-> > +      include/dt-bindings/gce/<chip>-gce.h of each chips.
-> > +    $ref: /schemas/types.yaml#/definitions/uint32-array
-> > +
-> > +  power-domains:
-> > +    maxItems: 1
-> > +
-> > +  clocks:
-> > +    minItems: 1
-> > +
-> > +  iommus:
-> > +    maxItems: 1
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - mediatek,gce-client-reg
-> > +  - mediatek,gce-events
-> > +  - power-domains
-> > +  - clocks
-> > +  - iommus
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/clock/mt8183-clk.h>
-> > +    #include <dt-bindings/gce/mt8183-gce.h>
-> > +    #include <dt-bindings/power/mt8183-power.h>
-> > +    #include <dt-bindings/memory/mt8183-larb-port.h>
-> > +
-> > +    mdp3_wrot0: mdp3-wrot0@14005000 {
-> > +      compatible = "mediatek,mt8183-mdp3-wrot";
-> > +      reg = <0x14005000 0x1000>;
-> > +      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000
-> > 0x1000>;
-> > +      mediatek,gce-events = <CMDQ_EVENT_MDP_WROT0_SOF>,
-> > +                            <CMDQ_EVENT_MDP_WROT0_EOF>;
-> > +      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> > +      clocks = <&mmsys CLK_MM_MDP_WROT0>;
-> > +      iommus = <&iommu>;
-> > +    };
-
+>   	bool bus_prot_reg_update;
+>   	bool ignore_clr_ack;
+> +	bool way_en;
+>   };
+>   
+>   /**
 
