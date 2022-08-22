@@ -4,67 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A86F0C28D13
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Aug 2022 13:24:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0030AC28D13
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Aug 2022 13:52:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h2wwJ2mTutwgF6hH2FEyJ9DkgEp0KGkH49PFoZsFmEw=; b=AzX3NAY7VdDESFdP92Wp+VRXnO
-	KzGq3opBY1FoORefu2wkrKVhQe/EpCSVqlB4Cr2LV9uTehXreTGenXfH+4n5Fyhhg8EwqLuLZI29H
-	5cg7tIPWKq4N9pLhl9KM6LoSFLpAKkPNOzpM/5fzMxOhPLEjh5iuNYKtI5t/5V7RMgtZYc6baB6cU
-	J/k5k0dZd3S5wJIZprisNieUWnOfsR6VbiMbDL8kao54qQyDLhBzK3DPm3bltDGN3uxrQyHiD3EsK
-	EDWN1TaJOWsqWhPwKQIm1vebzny5ZUeSmV7yXLDsu3+W0AVywOatkfzkfmGi1YC9VmPVPyfN9+lHJ
-	P9dCIihA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EQD9gzPecKAX3WUKFQ5gMqHbRvP/px4o2I2t3g4HB8E=; b=FKIym5um108CXINmxv9rSzKBEW
+	fVpfFo9Xox+nGhLAuvWTWg802RYh6ECXd+rH1nEJi0l/Y18mZh0pRItfJtj75JoLufpgI6ISO+oHV
+	jNQ9Hvyz5pYQxcOp81Q8f//B159KrPWa4IL3wDlNSKTAGZKuS6iIIdQMHZ8ZvZjudLxNNo2iRUPR1
+	hWbaMd4lbWpJMGEk066WJTFQ9ucPSFMLUMChKPkp5eh2/4BfqKRMHJVfvETXSho0rch03tel6K6mY
+	aZ+PyseQiqRD/Bn0/h9e1lHJyZDMekm1Nih0wgFSiq8m41WYdJJpjAvjkuUQeUjqC8EIAYzRUf8qI
+	hURT7pvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ7Pf-009wYw-Kj; Mon, 22 Aug 2022 13:24:19 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oQ7qa-00ANtt-Mk; Mon, 22 Aug 2022 13:52:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ7PM-009w6o-4s; Mon, 22 Aug 2022 13:24:01 +0000
-Received: from notapiano (unknown [70.107.189.129])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5AC056600015;
-	Mon, 22 Aug 2022 14:23:54 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661174635;
-	bh=UWbfv/xp8Lk8ZUHhil0GHBm6jDjKPoDOB/7CHnZRRRU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Sq83uFV+QSihfQTDt7FEavpyBX/VxM6/UOHzdLT8d6pkw7k5Y2lHtZJmun5vXOwls
-	 L3LRRTqee/6f1tWjvVI7UUSu1splKLhhoejOsFAvIndDyZ1WrYubEbP7Hpmx2xrINd
-	 nqocg17Nrpzgrg/ZoDiyNX16AbWNikAqsOXyV7ckD9b+8oj0r+51yqH5mUieAiPJH0
-	 P3RPQ2PHGtGMdEu+q1AGGzCQ2gdgsGKiPJr+m8QHCyeOO5CJsNyr9b81gv45N35w1H
-	 TnNiHYinvQypJjoUoEEz4MjVX8ZF1Hhfle14tDNi8QhWIYUxgFlnvgDa4fuPiltG1m
-	 56oOwr547m/rg==
-Date: Mon, 22 Aug 2022 09:23:50 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: "xinlei.lee" <xinlei.lee@mediatek.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
-	daniel@ffwll.ch, matthias.bgg@gmail.com,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Jitao Shi <jitao.shi@mediatek.com>
+	id 1oQ7qG-00ANeO-1h; Mon, 22 Aug 2022 13:51:49 +0000
+X-UUID: 3ec0083e1fde40eeab1f84f720923287-20220822
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=EQD9gzPecKAX3WUKFQ5gMqHbRvP/px4o2I2t3g4HB8E=;
+	b=OiT+Txk5kdDVXfPvOyWY/X7A2D6LElJLb7v2qNUv7K4EhGZN0eDm+w/MQuVp8lnsDZyoDMQ+Ex9bS60udUrmn7VSAQ6ORCfgsa8DrlLIxrZxw5rK15GQVrIKVVUhdkkJH2vobcSF2IJnL/2aufGgMZiW0OWdut/KbJKz1kEC260=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:0ff4d1c5-d46d-4c61-9d9d-9c5373f4c0c9,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:881c3ecf-20bd-4e5e-ace8-00692b7ab380,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 3ec0083e1fde40eeab1f84f720923287-20220822
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 834819470; Mon, 22 Aug 2022 06:51:41 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 22 Aug 2022 20:50:32 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 22 Aug 2022 20:50:31 +0800
+Message-ID: <49fcb1b354199b56279ecf1ccb90d48361de796d.camel@mediatek.com>
 Subject: Re: [PATCH v2,1/2] soc: mediatek: Add mmsys func to adapt to dpi
  output for MT8186
-Message-ID: <20220822132350.tw73ph6nnvti6h5i@notapiano>
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
+CC: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jitao Shi
+	<jitao.shi@mediatek.com>
+Date: Mon, 22 Aug 2022 20:50:45 +0800
+In-Reply-To: <20220819185400.aokd53xln6rmc3xk@notapiano>
 References: <1659693461-27057-1-git-send-email-xinlei.lee@mediatek.com>
- <1659693461-27057-2-git-send-email-xinlei.lee@mediatek.com>
- <20220819185400.aokd53xln6rmc3xk@notapiano>
- <49fcb1b354199b56279ecf1ccb90d48361de796d.camel@mediatek.com>
+	 <1659693461-27057-2-git-send-email-xinlei.lee@mediatek.com>
+	 <20220819185400.aokd53xln6rmc3xk@notapiano>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <49fcb1b354199b56279ecf1ccb90d48361de796d.camel@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220822_062400_443700_62F06311 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20220822_065148_118467_285A84B0 
+X-CRM114-Status: GOOD (  17.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,34 +85,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 22, 2022 at 08:50:45PM +0800, xinlei.lee wrote:
-[..]
-> Hi Nícolas:
+On Fri, 2022-08-19 at 14:54 -0400, NÃ­colas F. R. A. Prado wrote:
+> Hi Xinlei,
 > 
-> Thanks for your careful review.
-> I will correct it in the next version:
-> 1. Modify key nouns in the description;
-> 2. Modify the label of jitao to Co-developed-by;
-
-To be clear, you shouldn't change jitao's signed-off-by to a co-developed-by,
-but add a co-developed-by. If you check the link I sent earlier [1], it should
-be clear that you should have something like
-
-Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-
-[1] https://www.kernel.org/doc/html/latest/process/submitting-patches.html#when-to-use-acked-by-cc-and-co-developed-by
-
-Thanks,
-Nícolas
-
-> 3. Macro definition address lowercase problem and function naming.
+> On Fri, Aug 05, 2022 at 05:57:40PM +0800, xinlei.lee@mediatek.com
+> wrote:
+> > From: Xinlei Lee <xinlei.lee@mediatek.com>
+> > 
+> > Add mmsys func to manipulate dpi output format config for MT8186.
 > 
-> If there are no other questions, I will send out the second edition in
-> the near future.
+> func -> function
+> config -> configuration
 > 
-> Best Regards!
-> xinlei
+> > 
+> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 > 
+> Same thing about the co-developed-by.
+> 
+> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> > 
+> > ---
+> >  drivers/soc/mediatek/mt8186-mmsys.h    | 1 +
+> >  drivers/soc/mediatek/mtk-mmsys.c       | 8 ++++++++
+> >  include/linux/soc/mediatek/mtk-mmsys.h | 3 +++
+> >  3 files changed, 12 insertions(+)
+> > 
+> > diff --git a/drivers/soc/mediatek/mt8186-mmsys.h
+> > b/drivers/soc/mediatek/mt8186-mmsys.h
+> > index eb1ad9c37a9c..620c062e4893 100644
+> > --- a/drivers/soc/mediatek/mt8186-mmsys.h
+> > +++ b/drivers/soc/mediatek/mt8186-mmsys.h
+> > @@ -3,6 +3,7 @@
+> >  #ifndef __SOC_MEDIATEK_MT8186_MMSYS_H
+> >  #define __SOC_MEDIATEK_MT8186_MMSYS_H
+> >  
+> > +#define MT8186_DPI_OUTPUT_FORMAT		0X400
+> 
+> 0x400
+> 
+> (lowercase "x")
+> 
+> >  #define MT8186_MMSYS_OVL_CON			0xF04
+> >  #define MT8186_MMSYS_OVL0_CON_MASK			0x3
+> >  #define MT8186_MMSYS_OVL0_2L_CON_MASK			0xC
+> > diff --git a/drivers/soc/mediatek/mtk-mmsys.c
+> > b/drivers/soc/mediatek/mtk-mmsys.c
+> > index 9bbf0103b225..0e71a3296046 100644
+> > --- a/drivers/soc/mediatek/mtk-mmsys.c
+> > +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> > @@ -252,6 +252,14 @@ void mtk_mmsys_ddp_disconnect(struct device
+> > *dev,
+> >  }
+> >  EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
+> >  
+> > +void mtk_mmsys_ddp_dpi_confing(struct device *dev, u32 mask, u32
+> > val,
+> 
+> confing -> config
+> 
+> But I'd add something to the name to indicate it handles specifically
+> the
+> format:
+> 
+> mtk_mmsys_ddp_dpi_fmt_config
+> 
+> Thanks,
+> NÃ­colas
+
+Hi NÃ­colas:
+
+Thanks for your careful review.
+I will correct it in the next version:
+1. Modify key nouns in the description;
+2. Modify the label of jitao to Co-developed-by;
+3. Macro definition address lowercase problem and function naming.
+
+If there are no other questions, I will send out the second edition in
+the near future.
+
+Best Regards!
+xinlei
+
 
