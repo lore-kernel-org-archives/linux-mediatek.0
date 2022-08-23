@@ -4,85 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F25DC32789
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 14:58:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B71EC32772
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 14:58:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=h0CnVKrOjJedjISgP9+nhkN7E189WcSV8KiZ+ezPrBE=; b=4K/xV3ID8S9uZPlUtjUwOctky5
-	tY5bKdva9ub8M+LqMWQrhKtBTieHne5h/hBXBVRD929WAG3PmovK4+be4EgXAm5lJzB3WR2NPAcPU
-	8Bs6Ds2C/2Xa6Aj9lJHAb/oe9c3n4wntHux0ts3Vs7CX81IyeRp/tl5wYZI6x2aQbYE2lhd56eGY9
-	H3kjty8QuHK3KFI8HNe0M5FFe29AzA/jwQwk44Yl/gY+POYShlQFQPC3viDJ2CcOrZdlV1blfVW43
-	oZ2ZdIu/eHuQNK9FLhtGwFgfUSGPT1gav+Pv7vKP6iv+o/ED0/6KWbug3fUGEX3eVNtFTs9LOyuzR
-	BxDg0zvA==;
+	bh=HGZycrPUJ9tZL1J+2Q0/5E3o17nVGa6AdQi0WZbnIKs=; b=QPynYGfQpet0RcLgseKGhk0E7/
+	rAPePn96HOaYmaarh+gMqcOFaeVPCaejisXYr6IzQ+nff7z2eqhV2TpJvHImiRxFjfY5kja5xOZqq
+	vkmgAOfzMZUGUrQ09kj2wif1mkw7TIkh5awAGSH5PlRng/Lc+qS2BOC4ivQod6S65UufFnIEP/4Pw
+	tk0jujnHQRp9q6GZ0uJx3X+XOCrsAPenqjZe7Lsg57FV9HB1trV/MUKoIht0MupIPYLfe9PQlV7J5
+	6Wd8soAeM6rR387UmANmULGnT+tLuOGPbIrQNV3Os2F1Ef6eo8Sc9siF1bflv0+S6cNIaqBPt5lCD
+	BzaKazZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQVLs-006m3C-CC; Tue, 23 Aug 2022 14:58:00 +0000
-Received: from mail-oi1-f172.google.com ([209.85.167.172])
+	id 1oQVMN-006mWg-Qy; Tue, 23 Aug 2022 14:58:31 +0000
+Received: from mail-oi1-f176.google.com ([209.85.167.176])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQVLH-006lh6-GQ; Tue, 23 Aug 2022 14:57:25 +0000
-Received: by mail-oi1-f172.google.com with SMTP id o204so8830444oia.12;
-        Tue, 23 Aug 2022 07:57:20 -0700 (PDT)
+	id 1oQVLK-006liu-Nn; Tue, 23 Aug 2022 14:57:28 +0000
+Received: by mail-oi1-f176.google.com with SMTP id t140so7459960oie.8;
+        Tue, 23 Aug 2022 07:57:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc;
-        bh=h0CnVKrOjJedjISgP9+nhkN7E189WcSV8KiZ+ezPrBE=;
-        b=ebG6hvkWu6TQKKX/zOycmc/sgaFbV1pvq4B0g7tA4RraAM0gJJRjiw81SZL8WqZ48T
-         UO6ymMlr6Llyw5opPWl55CCmxkkSWsNcP7GwasHqhY+iNxy6MAIRzWZPQW0n/38T8WIl
-         ZKnCPwybsHmBOvj6OaAtk9LoczAiR16ivCjDiEDhD3h7m5/ediIwm9iwhO6grWepUnQU
-         OaD0QmPNlf621FbXzmQWW/YF8lDiBL7RlCF0lDYtkRLV0vnd95/8rSmlysrylWmfWPe7
-         uZu/fC1gOn/8UYZgUkDzhSejWh+K683FyQGWwnCTB8rcOr64w6v7VujsY1G0Hd6x9kEe
-         eshw==
-X-Gm-Message-State: ACgBeo0RPMANuaVJIWUtmlpKQi4dQ0glXzAhvjPUS0i2H1fcwT72suPV
-	dfAGUgxh4itCxktk+J9+5w==
-X-Google-Smtp-Source: AA6agR5OARvxdnc8BmaUXFTmBiSwYZaPHP9yws/NVD55WI4mBLuEUcY0qCEgGgE0JHMJhoGGEYBTzg==
-X-Received: by 2002:aca:f054:0:b0:345:7285:1147 with SMTP id o81-20020acaf054000000b0034572851147mr1505615oih.108.1661266640082;
-        Tue, 23 Aug 2022 07:57:20 -0700 (PDT)
+        bh=HGZycrPUJ9tZL1J+2Q0/5E3o17nVGa6AdQi0WZbnIKs=;
+        b=eDzIP4st8xbi769wEDxho9L4yUzQPgatJr6QYwjtwC8vYpwFmjc+ww4QuvShzegQbY
+         M7+n/16KtVyeFJ51G6WZ78r0WRmD8NJdW3X0NyRfVhoBozB9kznrOABVTv/6n50YYca9
+         0p8p1lJX0ugJaDWkzYjbMO9gdXCxYva9+xJN6RjWqNdXa4Y3JnnXsz72xqRMcT+adyy5
+         C0U3b198OpEDN+kKFJlOtc0Xo+kuigPTf55vhpqfKMdNGPI7nvq2WgOVwx8TDWB2KLDI
+         LVVZqg9kf3gO/CUjryocmRwwvE//3omla+Z7JJ+KKIdKJJMShOxvoOG8JHKKd/91SuWT
+         2Lnw==
+X-Gm-Message-State: ACgBeo3vWQeQBg4q6/6yVjUIfRiLkFkoudB+MeZskNiWBCpHNIDQWpyB
+	NaMr/vqF5b59hNBUbpLkzQ==
+X-Google-Smtp-Source: AA6agR4QTEbRPz/oyZMlkPXRpRj5KOhcjVDz0Qv5pdtbi6Z5AhJie2GGjEV4aAHhi68H4rUZcb4+BQ==
+X-Received: by 2002:a05:6808:f8f:b0:344:c3d4:775e with SMTP id o15-20020a0568080f8f00b00344c3d4775emr1441641oiw.266.1661266643134;
+        Tue, 23 Aug 2022 07:57:23 -0700 (PDT)
 Received: from xps15.. (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.googlemail.com with ESMTPSA id t1-20020a056870600100b0011c65559b04sm3840637oaa.34.2022.08.23.07.57.18
+        by smtp.googlemail.com with ESMTPSA id t1-20020a056870600100b0011c65559b04sm3840637oaa.34.2022.08.23.07.57.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 Aug 2022 07:57:19 -0700 (PDT)
+        Tue, 23 Aug 2022 07:57:22 -0700 (PDT)
 From: Rob Herring <robh@kernel.org>
-To: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
+To: Support Opensource <support.opensource@diasemi.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Javier Martinez Canillas <javier@dowhile0.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Tomasz Figa <tomasz.figa@gmail.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
-	Sowjanya D <lakshmi.sowjanya.d@intel.com>,
-	Chris Packham <chris.packham@alliedtelesis.co.nz>,
-	Andy Teng <andy.teng@mediatek.com>,
-	Jacopo Mondi <jacopo+renesas@jmondi.org>
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <bjorn.andersson@linaro.org>,
+	Konrad Dybcio <konrad.dybcio@somainline.org>,
+	Adam Ward <Adam.Ward.opensource@diasemi.com>,
+	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+	Robert Marko <robimarko@gmail.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	ChiYuan Huang <cy_huang@richtek.com>,
+	Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
 Cc: Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	openbmc@lists.ozlabs.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: [PATCH] dt-bindings: pinctrl: Add missing (unevaluated|additional)Properties on child nodes
-Date: Tue, 23 Aug 2022 09:56:37 -0500
-Message-Id: <20220823145649.3118479-6-robh@kernel.org>
+	linux-arm-msm@vger.kernel.org
+Subject: [PATCH] regulator: dt-bindings: Add missing (unevaluated|additional)Properties on child nodes
+Date: Tue, 23 Aug 2022 09:56:38 -0500
+Message-Id: <20220823145649.3118479-7-robh@kernel.org>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_075723_608019_EB2F8DF7 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20220823_075726_815894_DB8425D8 
+X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,146 +98,148 @@ must have unevaluatedProperties or additionalProperties set to false
 
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- .../devicetree/bindings/pinctrl/brcm,bcm4908-pinctrl.yaml      | 1 +
- .../devicetree/bindings/pinctrl/intel,pinctrl-keembay.yaml     | 1 +
- .../devicetree/bindings/pinctrl/intel,pinctrl-thunderbay.yaml  | 1 +
- .../devicetree/bindings/pinctrl/marvell,ac5-pinctrl.yaml       | 1 +
- .../devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml   | 2 ++
- .../devicetree/bindings/pinctrl/nuvoton,wpcm450-pinctrl.yaml   | 1 +
- .../devicetree/bindings/pinctrl/renesas,rza1-ports.yaml        | 1 +
- Documentation/devicetree/bindings/pinctrl/samsung,pinctrl.yaml | 3 +++
- .../devicetree/bindings/pinctrl/st,stm32-pinctrl.yaml          | 3 +++
- .../devicetree/bindings/pinctrl/toshiba,visconti-pinctrl.yaml  | 1 +
- 10 files changed, 15 insertions(+)
+ .../bindings/regulator/dlg,da9121.yaml           |  1 +
+ .../bindings/regulator/maxim,max77802.yaml       |  1 +
+ .../bindings/regulator/maxim,max8997.yaml        |  1 +
+ .../bindings/regulator/mt6315-regulator.yaml     |  1 +
+ .../bindings/regulator/qcom,spmi-regulator.yaml  |  1 +
+ .../regulator/qcom-labibb-regulator.yaml         | 16 ++++++++++++++++
+ .../regulator/richtek,rt4801-regulator.yaml      |  1 +
+ .../regulator/rohm,bd71815-regulator.yaml        |  1 +
+ 8 files changed, 23 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/brcm,bcm4908-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/brcm,bcm4908-pinctrl.yaml
-index 175a992f15e1..8a9fb9b433ca 100644
---- a/Documentation/devicetree/bindings/pinctrl/brcm,bcm4908-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/brcm,bcm4908-pinctrl.yaml
-@@ -23,6 +23,7 @@ patternProperties:
-   '-pins$':
-     type: object
-     $ref: pinmux-node.yaml#
-+    additionalProperties: false
+diff --git a/Documentation/devicetree/bindings/regulator/dlg,da9121.yaml b/Documentation/devicetree/bindings/regulator/dlg,da9121.yaml
+index 24ace6e1e5ec..63e1161a87de 100644
+--- a/Documentation/devicetree/bindings/regulator/dlg,da9121.yaml
++++ b/Documentation/devicetree/bindings/regulator/dlg,da9121.yaml
+@@ -83,6 +83,7 @@ properties:
  
-     properties:
-       function:
-diff --git a/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-keembay.yaml b/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-keembay.yaml
-index 5e99d79499b4..846651ff77c9 100644
---- a/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-keembay.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-keembay.yaml
-@@ -44,6 +44,7 @@ properties:
- patternProperties:
-   '^gpio@[0-9a-f]*$':
+   regulators:
      type: object
 +    additionalProperties: false
+     description: |
+       List of regulators provided by the device
  
-     description:
-       Child nodes can be specified to contain pin configuration information,
-diff --git a/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-thunderbay.yaml b/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-thunderbay.yaml
-index 0ec476248f21..6f30b5337ca2 100644
---- a/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-thunderbay.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-thunderbay.yaml
-@@ -42,6 +42,7 @@ properties:
- patternProperties:
-   '^gpio@[0-9a-f]*$':
-     type: object
-+    additionalProperties: false
- 
-     description:
-       Child nodes can be specified to contain pin configuration information,
-diff --git a/Documentation/devicetree/bindings/pinctrl/marvell,ac5-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/marvell,ac5-pinctrl.yaml
-index a651b2744caf..491f67e7cc4f 100644
---- a/Documentation/devicetree/bindings/pinctrl/marvell,ac5-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/marvell,ac5-pinctrl.yaml
-@@ -24,6 +24,7 @@ patternProperties:
-   '-pins$':
-     type: object
-     $ref: pinmux-node.yaml#
-+    additionalProperties: false
- 
-     properties:
-       marvell,function:
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-index e7601c0f5a69..840f649e36ce 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-@@ -76,6 +76,8 @@ required:
- patternProperties:
-   '-[0-9]*$':
-     type: object
-+    additionalProperties: false
-+
+diff --git a/Documentation/devicetree/bindings/regulator/maxim,max77802.yaml b/Documentation/devicetree/bindings/regulator/maxim,max77802.yaml
+index 236348c4710c..71138c611b6c 100644
+--- a/Documentation/devicetree/bindings/regulator/maxim,max77802.yaml
++++ b/Documentation/devicetree/bindings/regulator/maxim,max77802.yaml
+@@ -79,6 +79,7 @@ patternProperties:
      patternProperties:
-       '-pins*$':
+       regulator-state-(standby|mem|disk):
          type: object
-diff --git a/Documentation/devicetree/bindings/pinctrl/nuvoton,wpcm450-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/nuvoton,wpcm450-pinctrl.yaml
-index 7a11beb8f222..7b7f840ffc4c 100644
---- a/Documentation/devicetree/bindings/pinctrl/nuvoton,wpcm450-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/nuvoton,wpcm450-pinctrl.yaml
-@@ -30,6 +30,7 @@ patternProperties:
++        additionalProperties: true
+         properties:
+           regulator-mode: false
  
-   "^gpio@[0-7]$":
+diff --git a/Documentation/devicetree/bindings/regulator/maxim,max8997.yaml b/Documentation/devicetree/bindings/regulator/maxim,max8997.yaml
+index 4321f061a7f6..2b266ea43716 100644
+--- a/Documentation/devicetree/bindings/regulator/maxim,max8997.yaml
++++ b/Documentation/devicetree/bindings/regulator/maxim,max8997.yaml
+@@ -111,6 +111,7 @@ properties:
+ 
+   regulators:
      type: object
 +    additionalProperties: false
- 
      description:
-       Eight GPIO banks (gpio@0 to gpio@7), that each contain between 14 and 18
-diff --git a/Documentation/devicetree/bindings/pinctrl/renesas,rza1-ports.yaml b/Documentation/devicetree/bindings/pinctrl/renesas,rza1-ports.yaml
-index 8ed4b98a1628..9083040c996a 100644
---- a/Documentation/devicetree/bindings/pinctrl/renesas,rza1-ports.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/renesas,rza1-ports.yaml
-@@ -41,6 +41,7 @@ required:
- patternProperties:
-   "^gpio-[0-9]*$":
-     type: object
-+    additionalProperties: false
+       List of child nodes that specify the regulators.
  
-     description:
-       Each port of the r7s72100 pin controller hardware is itself a GPIO
-diff --git a/Documentation/devicetree/bindings/pinctrl/samsung,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/samsung,pinctrl.yaml
-index 3a65c66ca71d..d006a940c7c6 100644
---- a/Documentation/devicetree/bindings/pinctrl/samsung,pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/samsung,pinctrl.yaml
-@@ -97,6 +97,9 @@ patternProperties:
-         additionalProperties: false
- 
-   "^(initial|sleep)-state$":
-+    type: object
-+    additionalProperties: false
-+
-     patternProperties:
-       "^(pin-[a-z0-9-]+|[a-z0-9-]+-pin)$":
-         $ref: samsung,pinctrl-pins-cfg.yaml
-diff --git a/Documentation/devicetree/bindings/pinctrl/st,stm32-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/st,stm32-pinctrl.yaml
-index d35dcc4f0242..53c952d93ea2 100644
---- a/Documentation/devicetree/bindings/pinctrl/st,stm32-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/st,stm32-pinctrl.yaml
-@@ -115,9 +115,12 @@ patternProperties:
- 
-   '-[0-9]*$':
-     type: object
-+    additionalProperties: false
-+
-     patternProperties:
-       '^pins':
+diff --git a/Documentation/devicetree/bindings/regulator/mt6315-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6315-regulator.yaml
+index 37402c370fbb..364b58730be2 100644
+--- a/Documentation/devicetree/bindings/regulator/mt6315-regulator.yaml
++++ b/Documentation/devicetree/bindings/regulator/mt6315-regulator.yaml
+@@ -29,6 +29,7 @@ properties:
+       "^vbuck[1-4]$":
          type: object
-+        additionalProperties: false
-         description: |
-           A pinctrl node should contain at least one subnode representing the
-           pinctrl group available on the machine. Each subnode will list the
-diff --git a/Documentation/devicetree/bindings/pinctrl/toshiba,visconti-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/toshiba,visconti-pinctrl.yaml
-index 306524885a2b..98b4663f9766 100644
---- a/Documentation/devicetree/bindings/pinctrl/toshiba,visconti-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/toshiba,visconti-pinctrl.yaml
-@@ -36,6 +36,7 @@ patternProperties:
-       pins it needs, and how they should be configured, with regard to muxer
-       configuration, pullups, drive strength.
-     $ref: "pinmux-node.yaml"
+         $ref: "regulator.yaml#"
++        unevaluatedProperties: false
+ 
+         properties:
+           regulator-compatible:
+diff --git a/Documentation/devicetree/bindings/regulator/qcom,spmi-regulator.yaml b/Documentation/devicetree/bindings/regulator/qcom,spmi-regulator.yaml
+index 8b7c4af4b551..3266cd0c580f 100644
+--- a/Documentation/devicetree/bindings/regulator/qcom,spmi-regulator.yaml
++++ b/Documentation/devicetree/bindings/regulator/qcom,spmi-regulator.yaml
+@@ -35,6 +35,7 @@ patternProperties:
+     description: List of regulators and its properties
+     type: object
+     $ref: regulator.yaml#
++    unevaluatedProperties: false
+ 
+     properties:
+       qcom,ocp-max-retries:
+diff --git a/Documentation/devicetree/bindings/regulator/qcom-labibb-regulator.yaml b/Documentation/devicetree/bindings/regulator/qcom-labibb-regulator.yaml
+index 1ddc1efd19e2..f97b8083678f 100644
+--- a/Documentation/devicetree/bindings/regulator/qcom-labibb-regulator.yaml
++++ b/Documentation/devicetree/bindings/regulator/qcom-labibb-regulator.yaml
+@@ -20,6 +20,7 @@ properties:
+ 
+   lab:
+     type: object
 +    additionalProperties: false
  
      properties:
-       function:
+       qcom,soft-start-us:
+@@ -33,11 +34,19 @@ properties:
+         description:
+           Short-circuit and over-current interrupts for lab.
+ 
++      interrupt-names:
++        minItems: 1
++        items:
++          - const: sc-err
++          - const: ocp
++
+     required:
+       - interrupts
++      - interrupt-names
+ 
+   ibb:
+     type: object
++    additionalProperties: false
+ 
+     properties:
+       qcom,discharge-resistor-kohms:
+@@ -52,8 +61,15 @@ properties:
+         description:
+           Short-circuit and over-current interrupts for ibb.
+ 
++      interrupt-names:
++        minItems: 1
++        items:
++          - const: sc-err
++          - const: ocp
++
+     required:
+       - interrupts
++      - interrupt-names
+ 
+ required:
+   - compatible
+diff --git a/Documentation/devicetree/bindings/regulator/richtek,rt4801-regulator.yaml b/Documentation/devicetree/bindings/regulator/richtek,rt4801-regulator.yaml
+index 091150c4e579..4a8a221bc902 100644
+--- a/Documentation/devicetree/bindings/regulator/richtek,rt4801-regulator.yaml
++++ b/Documentation/devicetree/bindings/regulator/richtek,rt4801-regulator.yaml
+@@ -42,6 +42,7 @@ patternProperties:
+   "^DSV(P|N)$":
+     type: object
+     $ref: regulator.yaml#
++    unevaluatedProperties: false
+     description:
+       Properties for single display bias regulator.
+ 
+diff --git a/Documentation/devicetree/bindings/regulator/rohm,bd71815-regulator.yaml b/Documentation/devicetree/bindings/regulator/rohm,bd71815-regulator.yaml
+index 7d0adb74a396..d61e8675f067 100644
+--- a/Documentation/devicetree/bindings/regulator/rohm,bd71815-regulator.yaml
++++ b/Documentation/devicetree/bindings/regulator/rohm,bd71815-regulator.yaml
+@@ -27,6 +27,7 @@ properties:
+     description:
+       properties for wled regulator
+     $ref: regulator.yaml#
++    unevaluatedProperties: false
+ 
+     properties:
+       regulator-name:
 -- 
 2.34.1
 
