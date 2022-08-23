@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E0F2C32774
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 18:51:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0371CC32772
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 20:16:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q0CqmKLa2cQ4DwoiiFo8goKvn4vEtzbA3oLO4ZkvkJo=; b=YQnSPKYG0S1rhNLpn80I/Z7I3F
-	O9vZgG8ec6pSYmdvKidew515GoCSG9rycIUr5Vs/vZfzQSrknQWnl3OWFger4e7hIFNw6MO7fRtne
-	4bnjugeDoV2pRoHaR6hlZD3eaOmROoGCO+uYrZNnGeMfXXRy4x1wgTxZPuCoLjjtia46d0SgNC+7/
-	9WzmxmXqT2x4a2BHKGvmalrlLzD1UHuUeGS8XEGFMXe0MUYRAWkF6gc2aERum89zavqV/PYgYg2J6
-	JAl6wOHkDAIjRur8wwdOE8H9iBcmtPAHZX/vo9Xp7u1bYiR8FTiweQeEQnjZt47UKUmA1eXOlVM69
-	WydJz9DA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IMjMH8OTt1UaDedq0vDfn7+YJui9OSPJEFRLTT6DbSI=; b=Rw6ZwoDP/IRTip9yjLj9SL38Nz
+	VfMnMy2DdV8ERD1m7YyuqHBM9ynxm1tiuWajwvbiGi7bgDioN3/BTtwsH9mA6pustPtsAD5FVI+YS
+	wy6PV875Wj9S0ZkAFzG2zadsQbhCzUy7Xb+YJQMsjrwxJWQ+atU7wi9Cn55FeqGKv7H6rmT0qQiKB
+	2FPZzBhP5fTnt3FgGrTzjh+REjGidFNfUdgTsT8bHYL7hIjSzkiiPyWFFwJqOptgFPBH6/C9VHhed
+	0ZnGqc+SkGKFGqhwFfFv+hALCbfMYU+SchSu7tzl8Mo9/52zBOacn/2a25Dd68Alt+htHt8HuANX8
+	JEWaw6lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQYzq-008JFT-Go; Tue, 23 Aug 2022 18:51:30 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oQaKO-008fcC-Pg; Tue, 23 Aug 2022 20:16:48 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQYyy-008HsR-VR; Tue, 23 Aug 2022 18:50:38 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1oQaKD-008fZE-5C; Tue, 23 Aug 2022 20:16:38 +0000
+Received: from notapiano (unknown [194.36.25.10])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 5146DB82061;
-	Tue, 23 Aug 2022 18:50:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32DEDC433B5;
-	Tue, 23 Aug 2022 18:50:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661280634;
-	bh=Oyq3LAklv8BSoebYYWHKIy5H9iMh+4uB439rsWCYqJk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=XoZeQPipdtTarbtkshQSe12v5T0JUKXWQL33TnqBdI0ZyeJjx+IMm1F29DMTHxtOU
-	 i86mANEPVU9AA3QQXinb2Vo6yYzVsP2/E9AuP7QpQ51xcqfnglZq+upx0dFofMfwrQ
-	 IUksfOAVEFwLaONGuLz1Iv+I9WixBNsB4PRW85fnkWqECojsBHABBS2j+I72b73N9b
-	 E682Xl1EdaW0bQnAMIStv73bqKJ8MGYorGJGrIj+DJE0Ab7hAQSsUS5RGUIkuAo4ax
-	 ve5aDYmbFheIBWO/A5tg3ZmC9jab8dtmxpbqAx5xU8u7m6Ak8vW/kHE0lPAU8j8VDu
-	 aTLIlFM4x6ezg==
-From: Mark Brown <broonie@kernel.org>
-To: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>, Konrad Dybcio <konrad.dybcio@somainline.org>,
- Robert Marko <robimarko@gmail.com>, Adam Ward <Adam.Ward.opensource@diasemi.com>,
- Javier Martinez Canillas <javier@dowhile0.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>,
- ChiYuan Huang <cy_huang@richtek.com>, Bjorn Andersson <bjorn.andersson@linaro.org>,
- Support Opensource <support.opensource@diasemi.com>, Andy Gross <agross@kernel.org>,
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, devicetree@vger.kernel.org
-In-Reply-To: <20220823145649.3118479-7-robh@kernel.org>
-References: <20220823145649.3118479-7-robh@kernel.org>
-Subject: Re: [PATCH] regulator: dt-bindings: Add missing (unevaluated|additional)Properties on child nodes
-Message-Id: <166128062992.1031899.17043641765652674620.b4-ty@kernel.org>
-Date: Tue, 23 Aug 2022 19:50:29 +0100
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6C0DF6601DBC;
+	Tue, 23 Aug 2022 21:16:27 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1661285791;
+	bh=JzsxxNzouivL3LyaaYX6SnjsVTmMyaN7Zhs2/j5WlOo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nnMaI8bqbVUHlua3CqX6Vwg6KiYF1aJ13rYtZ523ug1LHTLuFd/zVLXFhqg578FRt
+	 2vU/2IujnRXHlNWAJeTv4hIEObDZdoHsukdOKCXcHZ2A4+Baspwkf+nzWmwH9xu2oV
+	 J7+NXvPg62ewlJX+ki1OpWDesCQU8QmFjnFTzHxDDj3b8cKXzX9fmfyDeck8braTFD
+	 KNjpYIzjJRNXruVDPSu8nLiNkFnIHYPMffGRVRmeU8LbRSF/j2JGmxhewPxxNKsCs4
+	 kn1Nm4ttPomESf87rOw4JImZDDG88sKTFAcC/QN3Q9k5DMOrNaZFegAzwq0KMpvHN9
+	 mJxu5m0xKz/SA==
+Date: Tue, 23 Aug 2022 16:16:22 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: xinlei.lee@mediatek.com
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
+	daniel@ffwll.ch, matthias.bgg@gmail.com, rex-bc.chen@mediatek.com,
+	angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com,
+	yongqiang.niu@mediatek.com, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [PATCH v3,2/2] drm: mediatek: Adjust the dpi output format to
+ MT8186
+Message-ID: <20220823201622.meedlqvmixf5ukdf@notapiano>
+References: <1661235517-23699-1-git-send-email-xinlei.lee@mediatek.com>
+ <1661235517-23699-3-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.10.0-dev-0c1df
+In-Reply-To: <1661235517-23699-3-git-send-email-xinlei.lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_115037_216984_DFE1FBF7 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20220823_131637_356566_BAD80B3B 
+X-CRM114-Status: GOOD (  17.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,38 +79,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 23 Aug 2022 09:56:38 -0500, Rob Herring wrote:
-> In order to ensure only documented properties are present, node schemas
-> must have unevaluatedProperties or additionalProperties set to false
-> (typically).
+On Tue, Aug 23, 2022 at 02:18:37PM +0800, xinlei.lee@mediatek.com wrote:
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
 > 
+> Dpi output needs to adjust the output format to dual edge for MT8186.
+> Because MT8186 HW has been modified at that time, SW needs to cooperate.
+> And the register (MMSYS) reserved for dpi will be used for output
+> format control (dual_edge/single_edge).
 > 
+> Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> 
+> ---
+[..]
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+[..]
+>   * @yuv422_en_bit: Enable bit of yuv422.
+>   * @csc_enable_bit: Enable bit of CSC.
+>   * @pixels_per_iter: Quantity of transferred pixels per iteration.
+> + * @rgb888_dual_enable: Control output format for mt8186.
 
-Applied to
+Let's not mention mt8186 in the description to keep the property generic. Also,
+this description should say what having 'rgb888_dual_enable = true' indicates
+about the hardware (in this case mt8186) and it currently doesn't.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+Let's take a step back. What does 'dual enable' mean in this context and how
+does it relate to 'dual edge' and the dpi output format? By answering those
+questions we can find a description (and maybe variable name) that makes more
+sense.
 
-Thanks!
+>   */
+[..]
+> @@ -449,6 +454,9 @@ static void mtk_dpi_dual_edge(struct mtk_dpi *dpi)
+>  		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
+>  			     dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE ?
+>  			     EDGE_SEL : 0, EDGE_SEL);
+> +	if (dpi->conf->rgb888_dual_enable)
+> +		mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev, DPI_RGB888_DDR_CON,
+> +					     DPI_FORMAT_MASK, NULL);
 
-[1/1] regulator: dt-bindings: Add missing (unevaluated|additional)Properties on child nodes
-      commit: de6fbef10c4b9c589f3b84bd926e56ba742263ea
+This if block should be further indented.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+>  	} else {
+>  		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE, 0);
+>  	}
+[..]
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> @@ -235,4 +235,8 @@
+>  #define MATRIX_SEL_RGB_TO_JPEG		0
+>  #define MATRIX_SEL_RGB_TO_BT601		2
+>  
+> +#define DPI_FORMAT_MASK			0x1
+> +#define DPI_RGB888_DDR_CON		BIT(0)
+> +#define DPI_RGB565_SDR_CON		BIT(1)
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+I'm not sure if it would make more sense to have these definitions in the mmsys
+header since they're configurations of a register in mmsys' iospace... I think
+we can keep them here but at least add a comment above:
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+/* Values for DPI configuration in MMSYS address space */
 
 Thanks,
-Mark
+Nícolas
 
