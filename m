@@ -4,74 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C53BC32772
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 09:26:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF06C32774
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 09:48:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2BCez/FmHvEKIJLxsqE9Ry9MkuiaBgiplVsoJtyq5uA=; b=F95sMPw3Ve8wTYOqfWP/w1tesM
-	fCQ5bza60+i4MOhPz+7+gBH+mF0AUX8OTQpuQnl2WZUVmQhu4ieYYOr9DsNee0+8A1y9OuN2aA+S0
-	wnVIh6/Fdpw/3fTE20VCpD32VmUoajBnlgx0zmO+4r2FbvECl1ZyoG7WvRjMildziEe23NRpgBARl
-	tLdJDV2tVV/N17Vak7S+V3R38y52yxwPSC4pI88MRXOjuXL9vgFqwcYL/4jm8s6q38jp3jMEJiZCY
-	suQFMuUY0wRdSFdkLl8ASxMHO4/wGDf6H0d7oV1Oh7OyZ1PDWDDn+xkWlS6vrB9s8K10TvwpCQPCm
-	cgzxhk0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hx+ayzKx09KZ0Gg9uXQuy1F49PSrnmcH29QIBYWqewE=; b=Eel0gyyoI/PVdx1+S2fBOXitg8
+	eiXqc4yUFwfFglnEUsHZzia1VaYPM6D6ZK+c2ZtHTOdEKvK5IgeY/jcV0HpUwTb89HizC+Hyci7wV
+	zFe8q1qT1FwFrPPoT6vBXeSJt0IOQQkAna6cRzLqcuv365iLWlBkjXpCX6d5WaNESuPHegvas1RJK
+	ygKZ3aoN2nUt0ecuJxvKm9idyilP5k1uM5HH+6J5opaoJRW9lhgWnbkLC9EovLHeA3riP1e+OeaZe
+	WCXHz6fz5wnEyhPmBBiemqZVlc3kHMFEUePP6eAFs5HMQXf9jAcqXdDrl3VtfUzrgsAk6DgcD7vSU
+	UqZllTAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQQAm-004SZu-PK; Tue, 23 Aug 2022 09:26:17 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oQQWQ-004drg-6W; Tue, 23 Aug 2022 09:48:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQQ5l-004Pom-CB; Tue, 23 Aug 2022 09:21:13 +0000
-X-UUID: ca7570521abc46ad9f0326759db55a60-20220823
+	id 1oQQWN-004dmL-4d; Tue, 23 Aug 2022 09:48:33 +0000
+X-UUID: 2794d39963294b4e95b16f641f956758-20220823
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=2BCez/FmHvEKIJLxsqE9Ry9MkuiaBgiplVsoJtyq5uA=;
-	b=VGwyfnyO3VlthJP1QsShtRA+zSvewrOtgCZyGL/EgHPdWArXW+akpgUW2eWhL4aZljRu3W/nAb3UVXbn6hsjFWNMllJvU3sY0OyzPWhIrvpSYi59VcxCIk7JUKz6srkY9QsUyRjMW8ZQO1JZudb/RXlwt3aUdFRoXED2xJMO5YQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hx+ayzKx09KZ0Gg9uXQuy1F49PSrnmcH29QIBYWqewE=;
+	b=k/WdqnOvVf+HxVhnS3jo31NrT6BKCYBB86PU7lyB/aHKQEo+u6iOzmRUFrm75fz4a45kv3ev771kORtRSg5ONhrebwjE4vXI1+aS7F9fwXxldQUkRn8kkD1OfzIk9ehpcTW06/aCPB4Bp3Den7Wpp+1LXxbFBxf1d8E5SihHang=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:0c47a575-88f5-4c13-a92c-77201d1b1bf5,OB:0,L
+X-CID-O-INFO: VERSION:1.1.10,REQID:b0a24ea6-9c81-49d6-82f5-2c0f117bdd04,OB:0,L
 	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
 	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:b23b58cf-20bd-4e5e-ace8-00692b7ab380,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: ca7570521abc46ad9f0326759db55a60-20220823
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <xinlei.lee@mediatek.com>)
+X-CID-META: VersionHash:84eae18,CLOUDID:3b2259cf-20bd-4e5e-ace8-00692b7ab380,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 2794d39963294b4e95b16f641f956758-20220823
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chunxu.li@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1936914594; Tue, 23 Aug 2022 02:20:57 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 23 Aug 2022 17:20:21 +0800
-Received: from mszsdhlt06 (10.16.6.206) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 23 Aug 2022 17:20:20 +0800
-Message-ID: <93938744264079d92c2bedf3a9abc4e92abc3ae6.camel@mediatek.com>
-Subject: Re: [PATCH,2/2] pwm: mtk-disp: Fix the parameters calculated by the
- enabled flag of disp_pwm.
-From: xinlei.lee <xinlei.lee@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	<thierry.reding@gmail.com>, <u.kleine-koenig@pengutronix.de>,
-	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<matthias.bgg@gmail.com>
-CC: <linux-pwm@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 23 Aug 2022 17:20:34 +0800
-In-Reply-To: <f621a841-593f-cfed-9560-64c011a00bdd@linaro.org>
-References: <1661239875-19841-1-git-send-email-xinlei.lee@mediatek.com>
-	 <1661239875-19841-3-git-send-email-xinlei.lee@mediatek.com>
-	 <f621a841-593f-cfed-9560-64c011a00bdd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	with ESMTP id 260958769; Tue, 23 Aug 2022 02:48:18 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Tue, 23 Aug 2022 17:07:40 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 23 Aug 2022 17:07:37 +0800
+From: Chunxu Li <chunxu.li@mediatek.com>
+To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <nfraprado@collabora.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <matthias.bgg@gmail.com>, <jiaxin.yu@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <alsa-devel@alsa-project.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<project_global_chrome_upstream_group@mediatek.com>, chunxu.li
+	<chunxu.li@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: mt8186: rename sound card name
+Date: Tue, 23 Aug 2022 17:07:35 +0800
+Message-ID: <20220823090735.12176-1-chunxu.li@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_022111_631336_BF410D46 
-X-CRM114-Status: GOOD (  15.71  )
+X-CRM114-CacheID: sfid-20220823_024831_470055_5056F8A6 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,35 +79,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-08-23 at 11:32 +0300, Krzysztof Kozlowski wrote:
-> On 23/08/2022 10:31, xinlei.lee@mediatek.com wrote:
-> > From: xinlei lee <xinlei.lee@mediatek.com>
-> > 
-> > In the original mtk_disp_pwm_get_state() function, the result of
-> > reading
-> > con0 & BIT(0) is enabled as disp_pwm. 
-> > In order to conform to the register table, we should use the
-> > disp_pwm 
-> > base address as the enabled judgment.
-> > 
-> > Fixes: 3f2b16734914 ("pwm: mtk-disp: Implement atomic API
-> > .get_state()")
-> > Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
-> 
-> This is a fix so not really related with the change adding new
-> device.
-> Send them separately in the future.
-> 
-> Best regards,
-> Krzysztof
+From: "chunxu.li" <chunxu.li@mediatek.com>
 
-Hi Krzysztof:
+The field 'topology_shortname' in 'snd_soc_card' is defined as char[32],
+Current card name will be truncated when SOF is enabled, so rename the
+sound card name.
 
-Thanks for your suggestion.
-If there are no other comments on this revision, I will separate them
-in the next edition.
+Signed-off-by: chunxu.li <chunxu.li@mediatek.com>
+---
+ sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c | 2 +-
+ sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Best Regards!
-Xinlei
+diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
+index 84ee5d95a9f0..17a15bec41da 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
++++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-da7219-max98357.c
+@@ -962,7 +962,7 @@ mt8186_mt6366_da7219_max98357_controls[] = {
+ };
+ 
+ static struct snd_soc_card mt8186_mt6366_da7219_max98357_soc_card = {
+-	.name = "mt8186_mt6366_da7219_max98357",
++	.name = "mt8186_da7219_max98357",
+ 	.owner = THIS_MODULE,
+ 	.dai_link = mt8186_mt6366_da7219_max98357_dai_links,
+ 	.num_links = ARRAY_SIZE(mt8186_mt6366_da7219_max98357_dai_links),
+diff --git a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
+index 6c41706a5621..393d179d61de 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
++++ b/sound/soc/mediatek/mt8186/mt8186-mt6366-rt1019-rt5682s.c
+@@ -938,7 +938,7 @@ mt8186_mt6366_rt1019_rt5682s_controls[] = {
+ };
+ 
+ static struct snd_soc_card mt8186_mt6366_rt1019_rt5682s_soc_card = {
+-	.name = "mt8186_mt6366_rt1019_rt5682s",
++	.name = "mt8186_rt1019_rt5682s",
+ 	.owner = THIS_MODULE,
+ 	.dai_link = mt8186_mt6366_rt1019_rt5682s_dai_links,
+ 	.num_links = ARRAY_SIZE(mt8186_mt6366_rt1019_rt5682s_dai_links),
+-- 
+2.25.1
 
 
