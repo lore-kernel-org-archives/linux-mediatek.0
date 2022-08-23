@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1E8FC25B08
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 03:46:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4010CC25B08
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 03:50:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BuM/OxSeoMC/CIi8dJ3lnDvs7VtMHcyzJkUzD2mHrfI=; b=AlKp0EXUwcwV+H8thcBM2dGG5A
-	DzXgZ/QuD58Mk0zSpNNWdFkZhrSjUPRWgLeSrFTviwYW3cyEfAKMia76ORZSeR+2qN1ApnxfGmlAd
-	8lDltesvcYmlKcCFC8C45/J58o7YrhyJF2vp+9f/bzy8qLcwmORQsUutGE7biqRxpiOLcGQtW6l1h
-	0ok8Erz9zUqzE4wsZu7bFGX+hMGrvD5Zl2Ho644ZSnQPOyV16sV6dHPyIrBi/YoSuUZRvqI86lqbi
-	n8Ne/iOmmRCNTv30a+Pwxb95uTuOkEDYehu7h0ZzvjnxwHxYVkznqt41iymXj8CadhmABNH0PA446
-	jXBdh4mw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cNcI9/CoY7NP5esW1MzGihedbP92Jb5dFXMk1o558tM=; b=JYodZhy6XpTxm9e/I+q0TSfk6q
+	kFPajrBwSe772eTRNp2WNgRAg4Sw6YQupX/d+XVJ4aeZsM1npgVpJH09TfKOXvjKURzTUIPBQul0U
+	5bKOG9yHmQFeKZkRx+L+ZvAibq9iUkyiUdzOVI33QC3X7oo0mtV+retRQsmW1v4iMxc6Io8ssx7cp
+	j6DqHK+9YMR0F3xc6xa2AWIM9Q83fRKwRCnRUQ2nzNr8evhjP9+ZuxSdlnNOrB1KR57ttOmHaa35Y
+	Y3u9WwDS7e5SlkkItZb/iXkBUHAQ4h6dfWg6gaj9O6wQhxcKD+fjo5fLIjzhU4VTY7pQk5pvXg5Mo
+	kyGc6Eiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQKrc-001kdW-V8; Tue, 23 Aug 2022 03:46:04 +0000
+	id 1oQKvT-001nZ9-1S; Tue, 23 Aug 2022 03:50:03 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQKrE-001kIR-D1; Tue, 23 Aug 2022 03:45:42 +0000
-X-UUID: 6f0f0db078904924b0560d2efa59319b-20220822
+	id 1oQKv1-001nLx-TA; Tue, 23 Aug 2022 03:49:38 +0000
+X-UUID: f3aa6f5cfd59453b957c0e671b502d9f-20220822
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BuM/OxSeoMC/CIi8dJ3lnDvs7VtMHcyzJkUzD2mHrfI=;
-	b=N9n64MJAEZYeuPBdej94cJ2kxkuKuThDIMvuUgFoLPB3Zi2Y0MgY7uk8BmFwl22PhYLvoMDLjJk5hZZJqROnLLS5jIYZCsBdDkO/++C+L7oGCg6XDHziDCAfnDWbKArebv3BrCdUIKp904n8vba33HLnb1laLT0tPVBcCj5OnDQ=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=cNcI9/CoY7NP5esW1MzGihedbP92Jb5dFXMk1o558tM=;
+	b=q1bDqfbHTM5SnBNIVnhY3j1i5N4rxY/2ocJ3uVrvc4Yq3GI3enCneztuR12Dho7c5wzhNoiNiViRfJoNVZtkDfEOf59PG8JsvwL96kgG+ZxHDF7CDv/zumTgOlZN6d5XyKTN/CAw8kTgK1IeqMaCPgQqF979/1E1qqjmiJ8ptvs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:2d205f0b-f0fe-4822-a5d6-93c9a42f4ce4,OB:0,L
-	OB:0,IP:0,URL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
-	_Ham,ACTION:release,TS:25
-X-CID-META: VersionHash:84eae18,CLOUDID:bec37bc9-6b09-4f60-bf82-12f039f5d530,C
+X-CID-O-INFO: VERSION:1.1.10,REQID:0109e96a-7a63-4b3d-ba51-04b6562c2cba,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:06157cc9-6b09-4f60-bf82-12f039f5d530,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
 	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 6f0f0db078904924b0560d2efa59319b-20220822
+X-UUID: f3aa6f5cfd59453b957c0e671b502d9f-20220822
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
+	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1334709091; Mon, 22 Aug 2022 20:38:41 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 23 Aug 2022 10:38:04 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 23 Aug 2022 10:38:04 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
-	<robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
-	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
-	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<cellopoint.kai@gmail.com>, Moudy Ho <moudy.ho@mediatek.com>
-Subject: [PATCH v28 1/4] dt-binding: mediatek: add bindings for MediaTek MDP3 components
-Date: Tue, 23 Aug 2022 10:38:00 +0800
-Message-ID: <20220823023803.27850-2-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220823023803.27850-1-moudy.ho@mediatek.com>
-References: <20220823023803.27850-1-moudy.ho@mediatek.com>
+	with ESMTP id 610179923; Mon, 22 Aug 2022 20:49:28 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 23 Aug 2022 11:18:50 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 23 Aug 2022 11:18:50 +0800
+Message-ID: <963274fe71207aabd18dcf4d4ef19b490453fcfd.camel@mediatek.com>
+Subject: Re: [PATCH 2/3] drm/mediatek: Add gamma lut support for mt8195
+From: CK Hu <ck.hu@mediatek.com>
+To: zheng-yan.chen <zheng-yan.chen@mediatek.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, "Jason-JH . Lin"
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 23 Aug 2022 11:18:49 +0800
+In-Reply-To: <20220822091945.21343-3-zheng-yan.chen@mediatek.com>
+References: <20220822091945.21343-1-zheng-yan.chen@mediatek.com>
+	 <20220822091945.21343-3-zheng-yan.chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220822_204540_775406_DCBC4DBA 
-X-CRM114-Status: GOOD (  17.71  )
+X-CRM114-CacheID: sfid-20220822_204935_999172_E84A8692 
+X-CRM114-Status: GOOD (  32.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,293 +85,374 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds DT binding documents for Media Data Path 3 (MDP3)
-a unit in multimedia system combined with several components and
-used for scaling and color format convert.
+Hi, Zheng-yan:
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../bindings/media/mediatek,mdp3-rdma.yaml    | 95 +++++++++++++++++++
- .../bindings/media/mediatek,mdp3-rsz.yaml     | 77 +++++++++++++++
- .../bindings/media/mediatek,mdp3-wrot.yaml    | 80 ++++++++++++++++
- 3 files changed, 252 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+On Mon, 2022-08-22 at 17:19 +0800, zheng-yan.chen wrote:
+> Since the previous gamma_set_common() function is designed for
+> 9bit-to-10bit conversion, which is not feasible for the
+> 10bit-to-12bit conversion in mt8195.
+> 
+> Update the function to fit the need of mt8195.
+> 
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-new file mode 100644
-index 000000000000..9cfc0c7d23e0
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-@@ -0,0 +1,95 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-rdma.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek Read Direct Memory Access
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  MediaTek Read Direct Memory Access(RDMA) component used to do read DMA.
-+  It contains one line buffer to store the sufficient pixel data, and
-+  must be siblings to the central MMSYS_CONFIG node.
-+  For a description of the MMSYS_CONFIG binding, see
-+  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-+  for details.
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: mediatek,mt8183-mdp3-rdma
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: '/schemas/types.yaml#/definitions/phandle-array'
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    description: The register of client driver can be configured by gce with
-+      4 arguments defined in this property. Each GCE subsys id is mapping to
-+      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
-+
-+  mediatek,gce-events:
-+    description:
-+      The event id which is mapping to the specific hardware event signal
-+      to gce. The event id is defined in the gce header
-+      include/dt-bindings/gce/<chip>-gce.h of each chips.
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: RDMA clock
-+      - description: RSZ clock
-+
-+  iommus:
-+    maxItems: 1
-+
-+  mboxes:
-+    items:
-+      - description: used for 1st data pipe from RDMA
-+      - description: used for 2nd data pipe from RDMA
-+
-+required:
-+  - compatible
-+  - reg
-+  - mediatek,gce-client-reg
-+  - mediatek,gce-events
-+  - power-domains
-+  - clocks
-+  - iommus
-+  - mboxes
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    #include <dt-bindings/gce/mt8183-gce.h>
-+    #include <dt-bindings/power/mt8183-power.h>
-+    #include <dt-bindings/memory/mt8183-larb-port.h>
-+
-+    mdp3_rdma0: mdp3-rdma0@14001000 {
-+      compatible = "mediatek,mt8183-mdp3-rdma";
-+      reg = <0x14001000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>;
-+      mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
-+                            <CMDQ_EVENT_MDP_RDMA0_EOF>;
-+      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+      clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-+               <&mmsys CLK_MM_MDP_RSZ1>;
-+      iommus = <&iommu>;
-+      mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST>,
-+               <&gce 21 CMDQ_THR_PRIO_LOWEST>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-new file mode 100644
-index 000000000000..78f9de6192ef
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-@@ -0,0 +1,77 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-rsz.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek Resizer
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to do frame resizing.
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8183-mdp3-rsz
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    description: The register of client driver can be configured by gce with
-+      4 arguments defined in this property. Each GCE subsys id is mapping to
-+      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
-+
-+  mediatek,gce-events:
-+    description:
-+      The event id which is mapping to the specific hardware event signal
-+      to gce. The event id is defined in the gce header
-+      include/dt-bindings/gce/<chip>-gce.h of each chips.
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - mediatek,gce-client-reg
-+  - mediatek,gce-events
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    #include <dt-bindings/gce/mt8183-gce.h>
-+
-+    mdp3_rsz0: mdp3-rsz0@14003000 {
-+      compatible = "mediatek,mt8183-mdp3-rsz";
-+      reg = <0x14003000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
-+      mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ0_SOF>,
-+                            <CMDQ_EVENT_MDP_RSZ0_EOF>;
-+      clocks = <&mmsys CLK_MM_MDP_RSZ0>;
-+    };
-+
-+    mdp3_rsz1: mdp3-rsz1@14004000 {
-+      compatible = "mediatek,mt8183-mdp3-rsz";
-+      reg = <0x14004000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
-+      mediatek,gce-events = <CMDQ_EVENT_MDP_RSZ1_SOF>,
-+                            <CMDQ_EVENT_MDP_RSZ1_EOF>;
-+      clocks = <&mmsys CLK_MM_MDP_RSZ1>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-new file mode 100644
-index 000000000000..0baa77198fa2
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-@@ -0,0 +1,80 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-wrot.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek Write DMA with Rotation
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to write DMA with frame rotation.
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8183-mdp3-wrot
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    items:
-+      items:
-+        - description: phandle of GCE
-+        - description: GCE subsys id
-+        - description: register offset
-+        - description: register size
-+    description: The register of client driver can be configured by gce with
-+      4 arguments defined in this property. Each GCE subsys id is mapping to
-+      a client defined in the header include/dt-bindings/gce/<chip>-gce.h.
-+
-+  mediatek,gce-events:
-+    description:
-+      The event id which is mapping to the specific hardware event signal
-+      to gce. The event id is defined in the gce header
-+      include/dt-bindings/gce/<chip>-gce.h of each chips.
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  clocks:
-+    minItems: 1
-+
-+  iommus:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - mediatek,gce-client-reg
-+  - mediatek,gce-events
-+  - power-domains
-+  - clocks
-+  - iommus
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8183-clk.h>
-+    #include <dt-bindings/gce/mt8183-gce.h>
-+    #include <dt-bindings/power/mt8183-power.h>
-+    #include <dt-bindings/memory/mt8183-larb-port.h>
-+
-+    mdp3_wrot0: mdp3-wrot0@14005000 {
-+      compatible = "mediatek,mt8183-mdp3-wrot";
-+      reg = <0x14005000 0x1000>;
-+      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
-+      mediatek,gce-events = <CMDQ_EVENT_MDP_WROT0_SOF>,
-+                            <CMDQ_EVENT_MDP_WROT0_EOF>;
-+      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+      clocks = <&mmsys CLK_MM_MDP_WROT0>;
-+      iommus = <&iommu>;
-+    };
--- 
-2.18.0
+Add Fixes tag [1].
+
+[1] 
+https://www.kernel.org/doc/html/v5.19/process/submitting-patches.html
+
+
+> Signed-off-by: zheng-yan.chen <zheng-yan.chen@mediatek.com>
+> 
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_aal.c     |  2 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  3 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_gamma.c   | 97 ++++++++++++++++---
+> --
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  5 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  1 -
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  1 +
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 +
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  2 +
+>  8 files changed, 83 insertions(+), 29 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> index 0f9d7efb61d7..f46d4ab73d6a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> @@ -66,7 +66,7 @@ void mtk_aal_gamma_set(struct device *dev, struct
+> drm_crtc_state *state)
+>  	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
+>  
+>  	if (aal->data && aal->data->has_gamma)
+> -		mtk_gamma_set_common(aal->regs, state, false);
+> +		mtk_gamma_set_common(aal->regs, state);
+>  }
+>  
+>  void mtk_aal_start(struct device *dev)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> index 33e61a136bbc..b662bf8b1c9d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> @@ -51,8 +51,9 @@ void mtk_gamma_clk_disable(struct device *dev);
+>  void mtk_gamma_config(struct device *dev, unsigned int w,
+>  		      unsigned int h, unsigned int vrefresh,
+>  		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+> +unsigned int mtk_gamma_size(struct device *dev);
+>  void mtk_gamma_set(struct device *dev, struct drm_crtc_state
+> *state);
+> -void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state
+> *state, bool lut_diff);
+> +void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state
+> *state);
+>  void mtk_gamma_start(struct device *dev);
+>  void mtk_gamma_stop(struct device *dev);
+>  
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> index bbd558a036ec..a842e5e1962e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> @@ -18,18 +18,26 @@
+>  #define DISP_GAMMA_EN				0x0000
+>  #define GAMMA_EN					BIT(0)
+>  #define DISP_GAMMA_CFG				0x0020
+> +#define RELAY_MODE					BIT(0)
+>  #define GAMMA_LUT_EN					BIT(1)
+>  #define GAMMA_DITHERING					BIT(2)
+>  #define DISP_GAMMA_SIZE				0x0030
+> +#define DISP_GAMMA_BANK				0x0100
+>  #define DISP_GAMMA_LUT				0x0700
+> -
+> +#define DISP_GAMMA_LUT1				0x0b00
+>  #define LUT_10BIT_MASK				0x03ff
+> -
+> +#define TABLE_9BIT_SIZE				512
+> +#define LUT_12BIT_MASK				0x0fff
+> +#define TABLE_10BIT_SIZE			1024
+> +#define BANK_SIZE				256
+>  struct mtk_disp_gamma_data {
+>  	bool has_dither;
+>  	bool lut_diff;
+> +	unsigned int lut_size;
+>  };
+>  
+> +static unsigned int now_lut_size;
+> +static bool now_lut_diff;
+
+Don't use global variable.
+
+>  /*
+>   * struct mtk_disp_gamma - DISP_GAMMA driver structure
+>   */
+> @@ -54,40 +62,73 @@ void mtk_gamma_clk_disable(struct device *dev)
+>  	clk_disable_unprepare(gamma->clk);
+>  }
+>  
+> -void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state
+> *state, bool lut_diff)
+> +void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state
+> *state)
+>  {
+> -	unsigned int i, reg;
+> -	struct drm_color_lut *lut;
+> +	unsigned int i, reg, idx;
+>  	void __iomem *lut_base;
+> -	u32 word;
+> -	u32 diff[3] = {0};
+> +	void __iomem *lut1_base;
+> +	u32 word, word1;
+>  
+>  	if (state->gamma_lut) {
+> +		u32 table_size;
+> +		u32 mask;
+> +		struct drm_color_lut color, even, odd;
+> +		struct drm_color_lut *lut = (struct drm_color_lut
+> *)state->gamma_lut;
+> +		bool lut_12bit = (now_lut_size == TABLE_10BIT_SIZE);
+> +
+>  		reg = readl(regs + DISP_GAMMA_CFG);
+> +		reg = reg & ~RELAY_MODE;
+
+Why do you modify this for other SoC?
+
+>  		reg = reg | GAMMA_LUT_EN;
+>  		writel(reg, regs + DISP_GAMMA_CFG);
+>  		lut_base = regs + DISP_GAMMA_LUT;
+> -		lut = (struct drm_color_lut *)state->gamma_lut->data;
+> -		for (i = 0; i < MTK_LUT_SIZE; i++) {
+> +		lut1_base = regs + DISP_GAMMA_LUT1;
+> +		if (lut_12bit) {
+> +			table_size = TABLE_10BIT_SIZE;
+> +			mask = LUT_12BIT_MASK;
+
+lut_bits and lut_size are independent factor, so use two variable in
+private data for each. And I like to use digital value instead of a
+symbol.
+
+lut_bits = 10 or 12;
+lut_size = 512 or 1024;
+mask = GENMASK(lut_bits - 1, 0);
+
+> +		} else {
+> +			table_size = TABLE_9BIT_SIZE;
+> +			mask = LUT_10BIT_MASK;
+> +		}
+>  
+> -			if (!lut_diff || (i % 2 == 0)) {
+> -				word = (((lut[i].red >> 6) &
+> LUT_10BIT_MASK) << 20) +
+> -					(((lut[i].green >> 6) &
+> LUT_10BIT_MASK) << 10) +
+> -					((lut[i].blue >> 6) &
+> LUT_10BIT_MASK);
+> +		for (i = 0; i < table_size; i++) {
+> +			if (!(i % BANK_SIZE) && lut_12bit)
+> +				writel((i / BANK_SIZE), regs +
+> DISP_GAMMA_BANK);
+
+Group register writing together, so move this to bottom of this for-
+loop.
+
+> +
+> +			color.red = (lut[i].red >> 6) & mask;
+> +			color.green = (lut[i].green >> 6) & mask;
+> +			color.blue = (lut[i].blue >> 6) & mask;
+
+Why shift 6 bits for lut 12 bits?
+
+> +			if ((i % 2) && now_lut_diff) {
+
+In original code, !lut_diff is first, so I would like you to keep this
+order.
+
+> +				odd = color;
+> +				word = (lut_12bit) ? (((odd.green -
+> even.green) << 12) +
+> +						      (odd.red -
+> even.red))
+> +						   : (((odd.red -
+> even.red) << 20) +
+> +						      ((odd.green -
+> even.green) << 10) +
+> +						      (odd.blue -
+> even.blue));
+> +				word1 = (odd.blue - even.blue);
+
+I think it's not necessary to create odd and even variable. 
+
+Regards,
+CK
+
+>  			} else {
+> -				diff[0] = (lut[i].red >> 6) - (lut[i -
+> 1].red >> 6);
+> -				diff[1] = (lut[i].green >> 6) - (lut[i
+> - 1].green >> 6);
+> -				diff[2] = (lut[i].blue >> 6) - (lut[i -
+> 1].blue >> 6);
+> -
+> -				word = ((diff[0] & LUT_10BIT_MASK) <<
+> 20) +
+> -					((diff[1] & LUT_10BIT_MASK) <<
+> 10) +
+> -					(diff[2] & LUT_10BIT_MASK);
+> +				even = color;
+> +				word =  (lut_12bit) ? ((even.green <<
+> 12) + even.red)
+> +						    : ((even.red << 20)
+> +
+> +						       (even.green <<
+> 10) + even.blue);
+> +				word1 = even.blue;
+>  			}
+> -			writel(word, (lut_base + i * 4));
+> +			idx = (lut_12bit) ? (i % BANK_SIZE) : i;
+> +			writel(word, (lut_base + idx * 4));
+> +			if (lut_12bit)
+> +				writel(word1, (lut1_base + idx * 4));
+>  		}
+>  	}
+>  }
+>  
+> +unsigned int mtk_gamma_size(struct device *dev)
+> +{
+> +	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+> +
+> +	if (gamma->data)
+> +		return gamma->data->lut_size;
+> +	else
+> +		return 0;
+> +}
+>  void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state)
+>  {
+>  	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+> @@ -95,8 +136,7 @@ void mtk_gamma_set(struct device *dev, struct
+> drm_crtc_state *state)
+>  
+>  	if (gamma->data)
+>  		lut_diff = gamma->data->lut_diff;
+> -
+> -	mtk_gamma_set_common(gamma->regs, state, lut_diff);
+> +	mtk_gamma_set_common(gamma->regs, state);
+>  }
+>  
+>  void mtk_gamma_config(struct device *dev, unsigned int w,
+> @@ -178,6 +218,8 @@ static int mtk_disp_gamma_probe(struct
+> platform_device *pdev)
+>  	ret = component_add(dev, &mtk_disp_gamma_component_ops);
+>  	if (ret)
+>  		dev_err(dev, "Failed to add component: %d\n", ret);
+> +	now_lut_size = priv->data->lut_size;
+> +	now_lut_diff = priv->data->lut_diff;
+>  
+>  	return ret;
+>  }
+> @@ -191,10 +233,17 @@ static int mtk_disp_gamma_remove(struct
+> platform_device *pdev)
+>  
+>  static const struct mtk_disp_gamma_data mt8173_gamma_driver_data = {
+>  	.has_dither = true,
+> +	.lut_size = 512,
+>  };
+>  
+>  static const struct mtk_disp_gamma_data mt8183_gamma_driver_data = {
+>  	.lut_diff = true,
+> +	.lut_size = 512,
+> +};
+> +
+> +static const struct mtk_disp_gamma_data mt8195_gamma_driver_data = {
+> +	.lut_diff = true,
+> +	.lut_size = 1024,
+>  };
+>  
+>  static const struct of_device_id mtk_disp_gamma_driver_dt_match[] =
+> {
+> @@ -202,6 +251,8 @@ static const struct of_device_id
+> mtk_disp_gamma_driver_dt_match[] = {
+>  	  .data = &mt8173_gamma_driver_data},
+>  	{ .compatible = "mediatek,mt8183-disp-gamma",
+>  	  .data = &mt8183_gamma_driver_data},
+> +	{ .compatible = "mediatek,mt8195-disp-gamma",
+> +	  .data = &mt8195_gamma_driver_data},
+>  	{},
+>  };
+>  MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index 42cc7052b050..2a6513259562 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -930,9 +930,8 @@ int mtk_drm_crtc_create(struct drm_device
+> *drm_dev,
+>  		mtk_crtc->ddp_comp[i] = comp;
+>  
+>  		if (comp->funcs) {
+> -			if (comp->funcs->gamma_set)
+> -				gamma_lut_size = MTK_LUT_SIZE;
+> -
+> +			if (comp->funcs->gamma_set && comp->funcs-
+> >gamma_size)
+> +				gamma_lut_size = comp->funcs-
+> >gamma_size(comp->dev);
+>  			if (comp->funcs->ctm_set)
+>  				has_ctm = true;
+>  		}
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> index cb9a36c48d4f..1799853ef89a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> @@ -10,7 +10,6 @@
+>  #include "mtk_drm_ddp_comp.h"
+>  #include "mtk_drm_plane.h"
+>  
+> -#define MTK_LUT_SIZE	512
+>  #define MTK_MAX_BPC	10
+>  #define MTK_MIN_BPC	3
+>  
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> index 2d72cc5ddaba..4c6538a17b88 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> @@ -323,6 +323,7 @@ static const struct mtk_ddp_comp_funcs ddp_gamma
+> = {
+>  	.clk_enable = mtk_gamma_clk_enable,
+>  	.clk_disable = mtk_gamma_clk_disable,
+>  	.gamma_set = mtk_gamma_set,
+> +	.gamma_size = mtk_gamma_size,
+>  	.config = mtk_gamma_config,
+>  	.start = mtk_gamma_start,
+>  	.stop = mtk_gamma_stop,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> index 2d0052c23dcb..bf0cf7f86010 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> @@ -59,6 +59,7 @@ struct mtk_ddp_comp_funcs {
+>  	void (*disable_vblank)(struct device *dev);
+>  	unsigned int (*supported_rotations)(struct device *dev);
+>  	unsigned int (*layer_nr)(struct device *dev);
+> +	unsigned int (*gamma_size)(struct device *dev);
+>  	int (*layer_check)(struct device *dev,
+>  			   unsigned int idx,
+>  			   struct mtk_plane_state *state);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index 0e4c77724b05..473766be56e1 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -567,6 +567,8 @@ static const struct of_device_id
+> mtk_ddp_comp_dt_ids[] = {
+>  	  .data = (void *)MTK_DISP_GAMMA, },
+>  	{ .compatible = "mediatek,mt8183-disp-gamma",
+>  	  .data = (void *)MTK_DISP_GAMMA, },
+> +	{ .compatible = "mediatek,mt8195-disp-gamma",
+> +	  .data = (void *)MTK_DISP_GAMMA, },
+>  	{ .compatible = "mediatek,mt8195-disp-merge",
+>  	  .data = (void *)MTK_DISP_MERGE },
+>  	{ .compatible = "mediatek,mt2701-disp-mutex",
 
 
