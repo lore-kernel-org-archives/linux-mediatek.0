@@ -4,76 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C3F0C28D13
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Aug 2022 23:46:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27E27C28D13
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 01:06:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PrL0R3/CzGMdgG7hnYexz8KRQvfcVOfWXA4xjyieg5o=; b=e8xAY0XTBvRcV03oN2BpiWffMT
-	VWPRpDzH1Qu1lDaMZPwpnu5HJQY+FfNxCaZCg0SHgTqIoz+12Jn+LQYp/SKbJPJd0+PLQdTD0MeD7
-	Rp+haAtN3NaoESJR7u3J+N7vBeA+uaFYDMMeyNF1Zlcz2hKxeI7Rv0DrtUiwnJ2kJsCnJvPJljYDZ
-	fCOd2TElup8oCXOUZm8+JxhnzO8vdFczEZGgf3zsitS8soSiBVz76VGMqScdMAXshLqwsqu8gHtoH
-	zU6MWGvpA4emqF7VbAS5+y+X/hJr5O7QwzcgO3duZ3rys382VhUxH/fVk1781ZqkfcH9S2AV8jfj8
-	Qqu8mCmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f9XJ/umVCFNv6t8k/ytp0cmre1B3OVTxH3RMuk3OoQQ=; b=22VNepIKt9sxD6Gj6AxkrSWFfw
+	NdcE3x0YWEeSyRwDIJnCN3kGJ1q0TIj0tpOEWs9Uy+CLcYjBrvsmjmiY8iqBSwFhA6HNWC4Ivr/ro
+	bbZWla32LX+TM7BRbZgM3O6jbPCQOM8Ql9gGTgDIlx+nnbVpAum1MiyML16yr1kIYpzsPS+rhEGVA
+	DPj+gkQiOb4XG+t7DUDp2f2R/3mgS4+jurkXBsm/OuYOdVygvZs1+m0V9xS369Kzwys/IZOHM+qKW
+	OXE7Mo/3LR6FrXLHh5c4kSDcrvWhgKry+vTlRKikLa80AuD+zGviFwuHx51whMK+jUvtXMv9tOko8
+	iJhiKzSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQH7Q-00G7M7-Hv; Mon, 22 Aug 2022 23:46:08 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1oQIMo-00GzpY-2V; Tue, 23 Aug 2022 01:06:09 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQH6d-00G6qW-Ah; Mon, 22 Aug 2022 23:45:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1661211919; x=1692747919;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=JEtffjsv/UU5sWGCyM3iXEbl5ZR5P6LGzBjiHq53Suo=;
-  b=bXTD87iGNmGGx/V4T2TF7w1qiNeZPx5ditoBH0dVM/Pc9HZ9UAhmQEV5
-   f2mSvNhJorpo5kgTnazJ++5sGfDCmYNlg20B4alw2FJDvdbqm3xodUQ1K
-   xn170NmSHJ/BX8/HFVi2Al73EGB1fDebPuZ/8QQULlOhnTFy5ICPqxYdL
-   o0jj7pbuM5ry5uXQapILWtCawPqpVN0lIldSMDIrW6hMZ40kt1EVcJuXR
-   UelW1/8qz10+g9PkUKHxZeDyBGlrxDT5FbqSI3DyinBO7H/U/wAmGbZRO
-   szEjs0Ywvkn+e0vVZyrIqQ0EyP+d9eicmM17AupsJELEpFZJ9wHDRvf0e
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10447"; a="294831297"
-X-IronPort-AV: E=Sophos;i="5.93,255,1654585200"; 
-   d="scan'208";a="294831297"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Aug 2022 16:45:18 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,255,1654585200"; 
-   d="scan'208";a="642225949"
-Received: from lkp-server01.sh.intel.com (HELO dd9b29378baa) ([10.239.97.150])
-  by orsmga001.jf.intel.com with ESMTP; 22 Aug 2022 16:45:15 -0700
-Received: from kbuild by dd9b29378baa with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1oQH6Y-0000rl-1P;
-	Mon, 22 Aug 2022 23:45:14 +0000
-Date: Tue, 23 Aug 2022 07:44:26 +0800
-From: kernel test robot <lkp@intel.com>
-To: Markus Schneider-Pargmann <msp@baylibre.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Fabien Parent <parent.f@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kbuild-all@lists.01.org, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Markus Schneider-Pargmann <msp@baylibre.com>
-Subject: Re: [PATCH v4 2/4] clk: mediatek: Provide mtk_devm_alloc_clk_data
-Message-ID: <202208230714.8DNW6JjZ-lkp@intel.com>
-References: <20220822152652.3499972-3-msp@baylibre.com>
+	id 1oQIMg-00Gzi6-PG; Tue, 23 Aug 2022 01:06:00 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C773660FB9;
+	Tue, 23 Aug 2022 01:05:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1BD6C433D6;
+	Tue, 23 Aug 2022 01:05:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1661216757;
+	bh=rLzGcuELxlw6wzYQ32smCo931y+93Ix6heiyYta6PuM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=MR96DcUf7/mwpakCtex8peSxXSqw3SkmRpheR1Y9yV9bbsHlS+ylCyc6+FzPARBgs
+	 Dr3pPRLQ+sNVLvh4ozvPIloaIC16Ch13S1QNULTYZYxAIf7HCot8K/HyKwcznycDHt
+	 FFEnCEvqAgrohThuq5DZktMpvxleT+WdES/F+E9iEpwJ22tMbCYIdiD/iC+zHPPPwS
+	 HdJHWKJxW9//GpH/e/xez+EK8EsiOAF9mByy9EBfJnkGqONB0+VKYiP3TIXyiSFaH4
+	 uxFnUaJAdXByRNMSXCmUJZdLn9vOc6s/svAFBhv4wjVkERTxSIyx64fuHvXXcVmkE1
+	 Unzt3mUFsASlw==
+Date: Mon, 22 Aug 2022 18:05:51 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Cc: linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Jay
+ Vosburgh <j.vosburgh@gmail.com>, Veaceslav Falico <vfalico@gmail.com>, Andy
+ Gospodarek <andy@greyhouse.net>, Wolfgang Grandegger <wg@grandegger.com>,
+ Marc Kleine-Budde <mkl@pengutronix.de>, Florian Fainelli
+ <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot
+ <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Steffen Klassert <klassert@kernel.org>,
+ David Dillow <dave@thedillows.org>, Russell King <linux@armlinux.org.uk>,
+ Ion Badulescu <ionut@badula.org>, Andreas Larsson <andreas@gaisler.com>,
+ Mark Einon <mark.einon@gmail.com>, Lino Sanfilippo <LinoSanfilippo@gmx.de>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Jes Sorensen
+ <jes@trained-monkey.org>, Shay Agroskin <shayagr@amazon.com>, Arthur
+ Kiyanovski <akiyano@amazon.com>, David Arinzon <darinzon@amazon.com>, Noam
+ Dagan <ndagan@amazon.com>, Saeed Bishara <saeedb@amazon.com>, Don Fry
+ <pcnet32@frontier.com>, Tom Lendacky <thomas.lendacky@amd.com>, Shyam
+ Sundar S K <Shyam-sundar.S-k@amd.com>, Igor Russkikh
+ <irusskikh@marvell.com>, Chris Snook <chris.snook@gmail.com>, Michael Chan
+ <michael.chan@broadcom.com>, Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>, Rasesh Mody <rmody@marvell.com>,
+ GR-Linux-NIC-Dev@marvell.com, Ariel Elior <aelior@marvell.com>, Sudarsana
+ Kalluru <skalluru@marvell.com>, Manish Chopra <manishc@marvell.com>, Doug
+ Berger <opendmb@gmail.com>, Siva Reddy Kallam <siva.kallam@broadcom.com>,
+ Prashant Sreedharan <prashant@broadcom.com>, Sunil Goutham
+ <sgoutham@marvell.com>, Raju Rangoju <rajur@chelsio.com>, Ayush Sawal
+ <ayush.sawal@chelsio.com>, Vinay Kumar Yadav <vinay.yadav@chelsio.com>,
+ Rohit Maheshwari <rohitm@chelsio.com>, Hartley Sweeten
+ <hsweeten@visionengravers.com>, Christian Benvenuti <benve@cisco.com>,
+ Govindarajulu Varadarajan <_govind@gmx.com>, Denis Kirjanov
+ <kda@linux-powerpc.org>, Ajit Khaparde <ajit.khaparde@broadcom.com>,
+ Sriharsha Basavapatna <sriharsha.basavapatna@broadcom.com>, Somnath Kotur
+ <somnath.kotur@broadcom.com>, Madalin Bucur <madalin.bucur@nxp.com>, Ioana
+ Ciornei <ioana.ciornei@nxp.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>, Pantelis Antoniou
+ <pantelis.antoniou@gmail.com>, Li Yang <leoyang.li@nxp.com>, Yisen Zhuang
+ <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Douglas
+ Miller <dougmill@linux.ibm.com>, Michael Ellerman <mpe@ellerman.id.au>,
+ Nicholas Piggin <npiggin@gmail.com>, Christophe Leroy
+ <christophe.leroy@csgroup.eu>, Nick Child <nnac123@linux.ibm.com>, Jesse
+ Brandeburg <jesse.brandeburg@intel.com>, Tony Nguyen
+ <anthony.l.nguyen@intel.com>, Guo-Fu Tseng <cooldavid@cooldavid.org>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Thomas Petazzoni
+ <thomas.petazzoni@bootlin.com>, Marcin Wojtas <mw@semihalf.com>, Geetha
+ sowjanya <gakula@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>,
+ hariprasad <hkelam@marvell.com>, Taras Chornyi <tchornyi@marvell.com>,
+ Mirko Lindner <mlindner@marvell.com>, Stephen Hemminger
+ <stephen@networkplumber.org>, Felix Fietkau <nbd@nbd.name>, John Crispin
+ <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
+ <Mark-MC.Lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tariq Toukan <tariqt@nvidia.com>, Saeed Mahameed <saeedm@nvidia.com>, Leon
+ Romanovsky <leon@kernel.org>, Ido Schimmel <idosch@nvidia.com>, Petr
+ Machata <petrm@nvidia.com>, Bryan Whitehead
+ <bryan.whitehead@microchip.com>, UNGLinuxDriver@microchip.com, Chris Lee
+ <christopher.lee@cspi.com>, Jon Mason <jdmason@kudzu.us>, Simon Horman
+ <simon.horman@corigine.com>, Rain River <rain.1986.08.12@gmail.com>, Zhu
+ Yanjun <zyjzyj2000@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, Rahul
+ Verma <rahulv@marvell.com>, Shahed Shaikh <shshaikh@marvell.com>, Heiner
+ Kallweit <hkallweit1@gmail.com>, nic_swsd@realtek.com, Jiri Pirko
+ <jiri@resnulli.us>, Byungho An <bh74.an@samsung.com>, Edward Cree
+ <ecree.xilinx@gmail.com>, Martin Habets <habetsm.xilinx@gmail.com>, Ralf
+ Baechle <ralf@linux-mips.org>, Francois Romieu <romieu@fr.zoreil.com>,
+ Daniele Venzano <venza@brownhat.org>, Nicolas Pitre <nico@fluxnic.net>,
+ Steve Glendinning <steve.glendinning@shawell.net>, Jassi Brar
+ <jaswinder.singh@linaro.org>, Ilias Apalodimas
+ <ilias.apalodimas@linaro.org>, Kunihiko Hayashi
+ <hayashi.kunihiko@socionext.com>, Giuseppe Cavallaro
+ <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Grygorii Strashko <grygorii.strashko@ti.com>,
+ Samuel Chessman <chessman@tux.org>, Geoff Levand <geoff@infradead.org>,
+ Ishizaki Kou <kou.ishizaki@toshiba.co.jp>, Kevin Brace
+ <kevinbrace@bracecomputerlab.com>, Radhey Shyam Pandey
+ <radhey.shyam.pandey@xilinx.com>, Michal Simek <michal.simek@xilinx.com>,
+ Krzysztof Halasa <khalasa@piap.pl>, "K. Y. Srinivasan" <kys@microsoft.com>,
+ Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
+ Dexuan Cui <decui@microsoft.com>, Sridhar Samudrala
+ <sridhar.samudrala@intel.com>, Dave Jiang <dave.jiang@intel.com>, Allen
+ Hubbe <allenbh@gmail.com>, Michael Hennerich
+ <michael.hennerich@analog.com>, Petko Manolov <petkan@nucleusys.com>,
+ Oliver Neukum <oneukum@suse.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, Ronak Doshi <doshir@vmware.com>, VMware
+ PV-Drivers Reviewers <pv-drivers@vmware.com>, David Ahern
+ <dsahern@kernel.org>, Kalle Valo <kvalo@kernel.org>, Christian Lamparter
+ <chunkeey@googlemail.com>, Simon Kelley <simon@thekelleys.org.uk>, Larry
+ Finger <Larry.Finger@lwfinger.net>, Arend van Spriel <aspriel@gmail.com>,
+ Franky Lin <franky.lin@broadcom.com>, Hante Meuleman
+ <hante.meuleman@broadcom.com>, Stanislav Yakovlev
+ <stas.yakovlev@gmail.com>, Stanislaw Gruszka <stf_xl@wp.pl>, Jouni Malinen
+ <j@w1.fi>, Ajay Singh <ajay.kathat@microchip.com>, Claudiu Beznea
+ <claudiu.beznea@microchip.com>, Igor Mitsyanko <imitsyanko@quantenna.com>,
+ Sergey Matyukevich <geomatsi@gmail.com>, Herton Ronaldo Krzesinski
+ <herton@canonical.com>, Hin-Tak Leung <htl10@users.sourceforge.net>,
+ netdev@vger.kernel.org, linux-can@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-acenic@sunsite.dk, linux-parisc@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, intel-wired-lan@lists.osuosl.org,
+ linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+ oss-drivers@corigine.com, linux-mips@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-omap@vger.kernel.org,
+ linux-hyperv@vger.kernel.org, ntb@lists.linux.dev,
+ linux-usb@vger.kernel.org, virtualization@lists.linux-foundation.org,
+ linux-wireless@vger.kernel.org, b43-dev@lists.infradead.org,
+ brcm80211-dev-list.pdl@broadcom.com, SHA-cyfmac-dev-list@infineon.com,
+ libertas-dev@lists.infradead.org
+Subject: Re: [PATCH] net: move from strlcpy with unused retval to strscpy
+Message-ID: <20220822180551.160c2a0b@kernel.org>
+In-Reply-To: <20220818210050.7108-1-wsa+renesas@sang-engineering.com>
+References: <20220818210050.7108-1-wsa+renesas@sang-engineering.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220822152652.3499972-3-msp@baylibre.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220822_164519_482385_8BC12A93 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20220822_180558_964292_82DDF004 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,38 +174,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Markus,
+On Thu, 18 Aug 2022 23:00:34 +0200 Wolfram Sang wrote:
+>  261 files changed, 568 insertions(+), 568 deletions(-)
 
-Thank you for the patch! Perhaps something to improve:
+Unfortunately looks like patchwork was unable to ingest this change :(
+Not sure why.
 
-[auto build test WARNING on clk/clk-next]
-[also build test WARNING on robh/for-next linus/master v6.0-rc2 next-20220822]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Markus-Schneider-Pargmann/clk-mediatek-Add-mt8365-support/20220822-233030
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
-config: loongarch-randconfig-c004-20220821 (https://download.01.org/0day-ci/archive/20220823/202208230714.8DNW6JjZ-lkp@intel.com/config)
-compiler: loongarch64-linux-gcc (GCC) 12.1.0
-
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
-
-cocci warnings: (new ones prefixed by >>)
->> drivers/clk/mediatek/clk-mtk.c:64:1-6: WARNING: invalid free of devm_ allocated data
-
-vim +64 drivers/clk/mediatek/clk-mtk.c
-
-9741b1a68035b54 James Liao    2015-04-23  61  
-609cc5e1a82394e Chen-Yu Tsai  2022-05-19  62  void mtk_free_clk_data(struct clk_hw_onecell_data *clk_data)
-300796cad22153f Chun-Jie Chen 2021-09-14  63  {
-300796cad22153f Chun-Jie Chen 2021-09-14 @64  	kfree(clk_data);
-300796cad22153f Chun-Jie Chen 2021-09-14  65  }
-609cc5e1a82394e Chen-Yu Tsai  2022-05-19  66  EXPORT_SYMBOL_GPL(mtk_free_clk_data);
-300796cad22153f Chun-Jie Chen 2021-09-14  67  
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Would you mind splitting it into 3 chunks - wireless, ethernet,
+everything else, and resending? Let's see if that'll be small enough..
 
