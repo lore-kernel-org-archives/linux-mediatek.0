@@ -4,83 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4B60C32772
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 12:38:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5480C32772
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 12:52:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kg0sfx0WR/crCntEVY1ryFztDVm96fjR6hhnhNvqiVo=; b=CXTMJF1AQWdQQwD4X0M8h9YGAS
-	tfbsFPjznYTpwKO39oP7E9Eb5IcV9pDpnRHFspupR0baVelCstBP4d0/vHH/fiUPpz5bug5akQSqs
-	R6mSuK9TfvreEV9AvdYkX6MLSDtlNrOPo+tC7UQeDsrgTfGgyJIL9yRLvhmBkkEz3Fa6ld8E4QS0s
-	AAaH9+/PBAsFj1kSYUXs97/SgJA69+Mc8F5mwbjw0FfFWzbOYFltRb3mqLQjc32P+nKaegVvET3a9
-	D9hcU8Xh8M7q2Yd1k0yRSvcA+DH150xb6ouYDDWRpNJstYNj9M6CyPs7+zMOm0GKZP55YllVZHU3U
-	p+vWIzGQ==;
+	bh=2CjazNJKWxawIRrAspwhPS6UmjSbXOY3YGzYB4E+Plc=; b=sEdR956C07hIe6zUo4V6ESbwF/
+	RzQ+dJPOr4sEoYr58h51uLEOoKH+m0G+VYdII+1lbbNOlRS6jZMNR2TCXqkYsk8Qkhh8Kw19Q15R/
+	jhANWditTmWmEXeVlQlV9adg7yXuqJWv+5q3erNopekxsofN82KSAb2xsq40AvkTnYeFQ/+KYJqsP
+	x1g+EeNGXq5NSYDgPQPEdgd3PAFwtZlEyH/KWL94l8QF+YJJgt4Glik8xyOKpYeijipm28DuNR/f/
+	meHkKlJ8OPry4glRtkt1eoQXqn615Q5CrIrWOOgO4yllClF3hWUw8Z4/siLXauRcbd2OVtGOhhN2H
+	QLbbWGMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQTBA-005wZ4-AZ; Tue, 23 Aug 2022 12:38:48 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1oQTNj-0063Yz-FD; Tue, 23 Aug 2022 12:51:47 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQT4X-005tjB-IS; Tue, 23 Aug 2022 12:31:59 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1661257896; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=P6EIK7KjGJkQkFCZc60aNu46Ap8gaxZqPsoF83NG1V5IiP2sn8nEONPow8BNWdW6VfTtTjjSHRRT0gP2Li/W6QgTBN6T0oqW0/sin0BJIKEPiowLPea8n7WxT/zwpcQRxq1wv3FIVXbF/LC7P4/qCWTIfydaCL607U3McivNbsc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1661257896; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=Kg0sfx0WR/crCntEVY1ryFztDVm96fjR6hhnhNvqiVo=; 
-	b=CSxlUi4YjDQSlin5fgI/oOYtx9n4qC2ewhNemKRGsgETRPYAcYieMVd3EFxJr8L7AOKHi5cu179YYKx0BHY1G64Jbftb6ZbDvjSHI4hZjcaov8HtTCvRafoRvSn4xXi7zWDS0xZv3YxHqSlXd7Z89GuFFK77LWcravDR2pSSy3I=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1661257896;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=Kg0sfx0WR/crCntEVY1ryFztDVm96fjR6hhnhNvqiVo=;
-	b=RsvgFiy43OJmJBpw8P+Usl7X4egqr59jbpgzCeMjq7Jzxff8EmDwXphItkWrb6sf
-	ydwDITP8zcO0rMhfefchEWHWsKL/0lHioOfWr9wHtLxJIAdLYAaMz/9W+C46nKI1GRB
-	kv8EMVS/c+iOgw51O3kVZ2hMQPCgFhTjRqmY/toY=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1661257894955331.02530845137676; Tue, 23 Aug 2022 05:31:34 -0700 (PDT)
-Message-ID: <715237fb-05e6-553b-ace3-7b21eee0a5c9@arinc9.com>
-Date: Tue, 23 Aug 2022 15:31:27 +0300
+	id 1oQTNd-0063U2-LH
+	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 12:51:43 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id l21so13414136ljj.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Aug 2022 05:51:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=2CjazNJKWxawIRrAspwhPS6UmjSbXOY3YGzYB4E+Plc=;
+        b=PPLvIhXyebaOzt5ZAgHRARuDpjE3QXcTZv8jgbNY3zvBxdR5T0KE8RXbL3ML0vLwwB
+         utCyLkgq11HaiFzWK0PFjwBSeIkes+bOWEYJ3CaofriBJbCbD9Qhx0lN8j5/GtjKwYYb
+         m2K9YR+tgW5R1pBYPlAQJkVPKATZjYOH/NCSBf2RhfXcTCWroHyMVa6FoWqCo3dP3inn
+         CjTL8urZ46DjEbFoimD1Pr29eOLhWBHVc5d6dIC6RNja2OZ8AZ2wUPeQ61HgB2f6EfKk
+         PETJTyGEGsqOX15mWMZcrVeKFaWM0VtdOfIdJzvG0XJ0xpUUwCviiqf1gi1dVUDnqb17
+         Os5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=2CjazNJKWxawIRrAspwhPS6UmjSbXOY3YGzYB4E+Plc=;
+        b=F7FhGVLkaUOeg3M6l3oFwMWuoNe7zL7Z756aVINtTU2yTpLhJbHU/+Veq3lbshuuoG
+         H0W5BnFm6umQHXimWpWYpAeiGM9FPMA7fKq7HgQq2w9ypc/UwePs2tJSj6VNO29BS9pv
+         4NXlLdElXup5EfXL4+9sDGjuGQTi9oLxdDcBy7z3ZmXomX8llCth3ZBuAfXfG3IRgw82
+         7PbH5bybag5ieZkwFy3mZ6BfC1SSh/+R9CX3snKEXPvoJWblZiY5deINd+gUMVygAT1j
+         JmfxMKTHNYf9D4uC2M8U1CCsuop/zgJRe4+tQj+LqRXqW22atFATyR4yAgXLaDP2NON9
+         Ppsg==
+X-Gm-Message-State: ACgBeo1/wAmJ9/vbgK75pi3+F+Rkb7G7mjzl2rLXHDANffdEme0QL0mY
+	OxJV9h+4nFdCdTO/OfMVIIi1kQ==
+X-Google-Smtp-Source: AA6agR58Hgvt7z3DYujhjrD2ZnvOcvvv4OymBiELF8Edk9l9F6qF62D2kPrhZN7V9Fcd3PvG3QDT+A==
+X-Received: by 2002:a05:651c:b29:b0:261:d351:9dc4 with SMTP id b41-20020a05651c0b2900b00261d3519dc4mr1840748ljr.409.1661259099827;
+        Tue, 23 Aug 2022 05:51:39 -0700 (PDT)
+Received: from [192.168.0.11] (89-27-92-210.bb.dnainternet.fi. [89.27.92.210])
+        by smtp.gmail.com with ESMTPSA id e9-20020a05651236c900b00492e148365fsm1234663lfs.294.2022.08.23.05.51.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 23 Aug 2022 05:51:38 -0700 (PDT)
+Message-ID: <05f99396-f6e9-a315-7264-c659e3ec507c@linaro.org>
+Date: Tue, 23 Aug 2022 15:51:37 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v4 2/6] dt-bindings: net: dsa: mediatek,mt7530: fix reset
- lines
+ Thunderbird/91.12.0
+Subject: Re: [PATCH v1 1/4] dt-bindings: mediatek: modify VDOSYS0 device tree
+ Documentations for MT8188
 Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
+To: "nathan.lu" <nathan.lu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Frank Wunderlich
- <frank-w@public-files.de>, Luiz Angelo Daros de Luca <luizluca@gmail.com>,
- Sander Vanheule <sander@svanheule.net>,
- =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
- Daniel Golle <daniel@makrotopia.org>, erkin.bozoglu@xeront.com,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220820080758.9829-1-arinc.unal@arinc9.com>
- <20220820080758.9829-3-arinc.unal@arinc9.com>
- <cf10e888-7fe2-7cf8-091a-40207eeb78b5@linaro.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <cf10e888-7fe2-7cf8-091a-40207eeb78b5@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: "jason-jh . lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Moudy Ho <moudy.ho@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
+ wsd_upstream@mediatek.com, lancelot.wu@mediatek.com
+References: <20220822033213.15769-1-nathan.lu@mediatek.com>
+ <20220822033213.15769-2-nathan.lu@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220822033213.15769-2-nathan.lu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_053157_709191_29CEE4A7 
-X-CRM114-Status: GOOD (  19.86  )
+X-CRM114-CacheID: sfid-20220823_055141_749827_D6D7FB18 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,85 +108,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23.08.2022 13:44, Krzysztof Kozlowski wrote:
-> On 20/08/2022 11:07, Arınç ÜNAL wrote:
->> - Fix description of mediatek,mcm. mediatek,mcm is not used on MT7623NI.
+On 22/08/2022 06:32, nathan.lu wrote:
+> From: Nathan Lu <nathan.lu@mediatek.com>
 > 
-> Separate commit. You are still doing here few things at a time.
+> modify VDOSYS0 device tree Documentations for MT8188.
 
-Will split.
+(...)
 
-> 
->> - Add description for reset-gpios.
->> - Invalidate reset-gpios if mediatek,mcm is used. We cannot use multiple
->> reset lines at the same time.
->> - Invalidate mediatek,mcm if the compatible device is mediatek,mt7531.
->> There is no multi-chip module version of mediatek,mt7531.
->> - Require mediatek,mcm for mediatek,mt7621 as the compatible string is only
->> used for the multi-chip module version of MT7530.
->>
->> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->> ---
->>   .../bindings/net/dsa/mediatek,mt7530.yaml     | 31 +++++++++++++++++--
->>   1 file changed, 28 insertions(+), 3 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->> index edf48e917173..4c99266ce82a 100644
->> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->> @@ -110,11 +110,15 @@ properties:
->>     mediatek,mcm:
->>       type: boolean
->>       description:
->> -      if defined, indicates that either MT7530 is the part on multi-chip
->> -      module belong to MT7623A has or the remotely standalone chip as the
->> -      function MT7623N reference board provided for.
->> +      Used for MT7621AT, MT7621DAT, MT7621ST and MT7623AI SoCs which the MT7530
->> +      switch is a part of the multi-chip module.
->>   
->>     reset-gpios:
->> +    description:
->> +      GPIO to reset the switch. Use this if mediatek,mcm is not used.
->> +      This property is optional because some boards share the reset line with
->> +      other components which makes it impossible to probe the switch if the
->> +      reset line is used.
->>       maxItems: 1
->>   
->>     reset-names:
->> @@ -165,6 +169,9 @@ allOf:
->>         required:
->>           - mediatek,mcm
->>       then:
->> +      properties:
->> +        reset-gpios: false
->> +
->>         required:
->>           - resets
->>           - reset-names
->> @@ -182,6 +189,24 @@ allOf:
->>           - core-supply
->>           - io-supply
->>   
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          items:
-> 
-> Again, not items. This can be just const or enum.
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+> index 0882ae86e6c4..d0e6c0dd4dfb 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+> @@ -30,6 +30,8 @@ properties:
+>        - items:
+>            - const: mediatek,mt8183-disp-rdma
+>        - items:
+> +          - enum:
+> +              - mediatek,mt8188-disp-rdma
+>            - const: mediatek,mt8195-disp-rdma
 
-Will do.
+Why do you change existing bindings?
 
-> 
->> +            - const: mediatek,mt7531
->> +    then:
->> +      properties:
->> +        mediatek,mcm: false
->> +
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          items:
-> 
-> Ditto.
-Arınç
+Best regards,
+Krzysztof
 
