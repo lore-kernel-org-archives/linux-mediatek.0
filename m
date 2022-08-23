@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFD0DC32772
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 10:49:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F418C32772
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 10:49:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4iCZIPBqKk4aWYa7eJT+SaYkcQXkWhohlhOpL9YUDVU=; b=bfFc4G2yUD08hz2IfcMQmusFOQ
-	mFeFVErpKgX+3hxiMBXZV7QHgp7ag2Y4MEe14PxRdg3DQu6AT4c4y0Pu+ZKVojEdy/aaz4RymCe5V
-	GCh03Od6r/aJqwQqntHqJsNQRpOlMoeQG7dtg+6Ql5rpbsKxpF7Kp5MNCg8sZulKH9NDE/gGu0ZaP
-	xwHzOv6pdrYYSavSVxcJL9j9kclvonapsY4/IZ76Qb7sbo58FHX+qkcGwBLLcVzF50eyAoyvgwAWv
-	tAKSJPSRam4QMnPmnSEMgCxNfBYOLB0lkUZSKidNlh+NCw8mANxrTdszfr4BegLeac4wqyyExXjQN
-	NkLdHzpw==;
+	bh=tRYEKF+JKDUe+/4PWEAoIKSUJrQI9kSn3rwTj50a5SI=; b=sGGlwnXRynUpf3Vz6MyLRo0q8w
+	01wOnksoBkG3Pp3GROguqlziFDB5Ol7WuXrDvV5BqcC/QyP+TJDTgCxTBVF1PtvimStec2r6Qe+Rj
+	I0XfZCiKAPrnJTm2JPUI7eCC3tqRv09DTV1TuvD0WsK6kRjyEvUdSeiRTq9ZzBrb82d4CxN2y2WQr
+	caqEId5U5bFFOQvAWrWnUEje4Pv/X/vhfrNC6b02pOxGveZIrI+fRETC3Xv3T+w4JbPm/gkUZ4zNk
+	gkegg8/OdO0mGZKShD0ANTZGCKcpVS3vlmEEO2UOgsWkTlvmEoXnRiIpCOFr6ItZ4sDCisll6bIMV
+	dzAKqgiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQRSy-00568y-Pm; Tue, 23 Aug 2022 10:49:04 +0000
+	id 1oQRTR-0056OE-Hi; Tue, 23 Aug 2022 10:49:33 +0000
 Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQRSa-0055tQ-M9
-	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 10:48:44 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id bn9so5572279ljb.6
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Aug 2022 03:48:38 -0700 (PDT)
+	id 1oQRT2-0056AX-Ho
+	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 10:49:11 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id by6so13105812ljb.11
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Aug 2022 03:49:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc;
-        bh=4iCZIPBqKk4aWYa7eJT+SaYkcQXkWhohlhOpL9YUDVU=;
-        b=E/VbHdOW7s+2eeUSVsRs5XJAI+yAma5X7QmOdeUSyI23lBuncOs23O+KSvjE/CB8/x
-         vQ0yLqWOc8zCsUK3qE6LHVCT5n6wWkx1uUoexhfa/Ef7uH8kWkUNTyouNAkO1GsSvs52
-         2c5Io2guzADNJZOb5ZLlwLwyjSpbmzXGRT22xT4ArShG24fQJiRcCB7hnBvwROwTKEwA
-         O10oUQmtEZqIJJypRhKbT1R6+l93NSoAC3YtGXFDFkP0+HzvK6nbxPTK3kLElZh+fWxL
-         0YglQdYiqnYRKbYZP258n9+0y9FxZaOQk/YTqTzUUxofQdoiGFeMqFhZ6bmIPPrgIzYS
-         8kIA==
+        bh=tRYEKF+JKDUe+/4PWEAoIKSUJrQI9kSn3rwTj50a5SI=;
+        b=IDvQiUDTFC9ng1VOeMeft4QD0fVE013eX0K61+0kW9iWz3RrjcL9jCHyEL8sz8Xdx1
+         J01hMvc8yMKanFAuR2qOZbWLBmvFaNRuSEPzoL6qNUfCuQZfMXFrJlXHkn+4zkPUnXIK
+         I4/VUXdVyxDHp5VTGswiy9yRgjzmd3CXEyH+CX/F7yUKrAKk8y92IFZhLRzoXYCGJpEB
+         EieSmaRPNhS1brHHT+K+IWUr7AitagA6BJxTmnuwL9R1voPpwSJcZ6picYFHPuy/DWVZ
+         CigslD767IEBjaDns0EJYUUvgErGiiSZb7ttvw+SEAbSgKDmoJ8K5+LsJWhYx/auRdBo
+         qm8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc;
-        bh=4iCZIPBqKk4aWYa7eJT+SaYkcQXkWhohlhOpL9YUDVU=;
-        b=mxQqjU7FZ9pm/FTcJFpu9ByqC7U+94cKZFKmUtZJd47vzvS4Q8bpdfotCDkQlz8ZHD
-         LNHUiI9ikaLYsTZajyMWcFKxklTGSnLxjkIv9ss3Ca4+xFRm1Dsfij7lTfvAHZNTra/f
-         U20syCn6V8Os0aeoVP37FqTSYq7E2hEJl6i9YDyfe7ChIz+7j7J2Cs64DgiCvxg4KKHr
-         9vvoZgP4d4Du5Cisd3gr1Vi/k8JtfXUdKmu3xJftMmiaeC29T3K+6R+oR9Cev8IjKd91
-         Y8nHOgLOmL5uIdddqKfmvOrvtw4ZD0gvh6BXaVQ+ZBXE6N8EPabMnKW451wXwg8CkU0u
-         n0aA==
-X-Gm-Message-State: ACgBeo3gPCRsYR35ltZmKDFJcwGweCBlmAnb3bkyoOexx6DnlwgmZBEX
-	gM1hwlzNl87J1lmT5tfTsZktNw==
-X-Google-Smtp-Source: AA6agR4WBOwY8UcpEmJ1aepVJpP/ZPvtXXCBnO8R0qkAsHVgv+/VM/SWcR0hP2kXefVSXz44zxUwPg==
-X-Received: by 2002:a2e:92c8:0:b0:25d:6ddf:e71d with SMTP id k8-20020a2e92c8000000b0025d6ddfe71dmr6570635ljh.170.1661251716963;
-        Tue, 23 Aug 2022 03:48:36 -0700 (PDT)
+        bh=tRYEKF+JKDUe+/4PWEAoIKSUJrQI9kSn3rwTj50a5SI=;
+        b=Nl7isX1SjUCMvLnzOudVPaSrr+N5JM2n0EAanJiP5h1nXnaM6xRVRRPDZNyG2zz+lB
+         7VcJgfX5aSvCot2wHxapT6iZkovt77HqgPT84bqGj2UJ3bPzNcJjPfCYNzgIvKIF/9Na
+         lCLLq47XaSoVhJX/3NAVZFUM59OfGV6gRk9gsMp7SSubWrnNB+nPdWEa6g882GM04coN
+         BnU9iXYWCHTrB22YHa0DoXtz3PikZ11jbL7j4G45nfKn7q5aeSKj3AGEz7jY7phS/oFH
+         uaU/SYXsdrsIGQaW003QY87FyxcfANaMuqjseyYmb/yC4kiyQqwj8Wiios51aJRA1rYB
+         VELg==
+X-Gm-Message-State: ACgBeo0H8GDtHlf5OTxMrLJVw0gsRBOFZGkKy51lfQKTX4QZWQCF86yo
+	C8I2izCxMEcQHHz+26nh7Jvg/w==
+X-Google-Smtp-Source: AA6agR7ghepHiUVhQI6lvQs9qB/m0STf+QZAEU8jUCMP/jFawUcPMZeqMdrPF9kXmcLsoAQDZOhTXw==
+X-Received: by 2002:a05:651c:1208:b0:261:cc0e:7555 with SMTP id i8-20020a05651c120800b00261cc0e7555mr3006288lja.198.1661251747077;
+        Tue, 23 Aug 2022 03:49:07 -0700 (PDT)
 Received: from [192.168.0.11] (89-27-92-210.bb.dnainternet.fi. [89.27.92.210])
-        by smtp.gmail.com with ESMTPSA id u7-20020a05651220c700b0048b003c4bf7sm1535952lfr.169.2022.08.23.03.48.35
+        by smtp.gmail.com with ESMTPSA id f7-20020a05651c03c700b00261cc46f4a1sm1053004ljp.0.2022.08.23.03.49.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 23 Aug 2022 03:48:36 -0700 (PDT)
-Message-ID: <50eaf3b1-0681-a0a9-b120-4ade4e91e83a@linaro.org>
-Date: Tue, 23 Aug 2022 13:48:35 +0300
+        Tue, 23 Aug 2022 03:49:06 -0700 (PDT)
+Message-ID: <5d5cf5e4-543b-ecdb-6719-0e6ca3c05640@linaro.org>
+Date: Tue, 23 Aug 2022 13:49:05 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.12.0
-Subject: Re: [PATCH v2 4/7] dt-bindings: net: dsa: mediatek,mt7530: define
- port binding per compatible
+Subject: Re: [PATCH v4 6/6] dt-bindings: net: dsa: mediatek,mt7530: update
+ binding description
 Content-Language: en-US
 To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
  Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
@@ -86,17 +86,16 @@ To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
 Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-References: <20220813154415.349091-1-arinc.unal@arinc9.com>
- <20220813154415.349091-5-arinc.unal@arinc9.com>
- <d2279a7d-bbc3-c772-1f30-251f056341bb@linaro.org>
- <0bf02926-753e-e8d5-1d87-f286ed743fb2@arinc9.com>
+References: <20220820080758.9829-1-arinc.unal@arinc9.com>
+ <20220820080758.9829-7-arinc.unal@arinc9.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <0bf02926-753e-e8d5-1d87-f286ed743fb2@arinc9.com>
+In-Reply-To: <20220820080758.9829-7-arinc.unal@arinc9.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_034842_788458_70847616 
-X-CRM114-Status: GOOD (  16.84  )
+X-CRM114-CacheID: sfid-20220823_034908_678026_E0BAC15A 
+X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,66 +110,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/08/2022 10:34, Arınç ÜNAL wrote:
-> On 19.08.2022 15:43, Krzysztof Kozlowski wrote:
->> On 13/08/2022 18:44, Arınç ÜNAL wrote:
->>> Define DSA port binding under each compatible device as each device
->>> requires different values for certain properties.
->>>
->>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
->>> ---
->>>   .../bindings/net/dsa/mediatek,mt7530.yaml     | 116 +++++++++++++-----
->>>   1 file changed, 87 insertions(+), 29 deletions(-)
->>>
->>> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->>> index cc87f48d4d07..ff51a2f6875f 100644
->>> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->>> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
->>> @@ -130,35 +130,6 @@ properties:
->>>         ethsys.
->>>       maxItems: 1
->>>   
->>> -patternProperties:
->>> -  "^(ethernet-)?ports$":
->>> -    type: object
->>> -
->>> -    patternProperties:
->>> -      "^(ethernet-)?port@[0-9]+$":
->>> -        type: object
->>> -        description: Ethernet switch ports
->>> -
->>
->> my comments from v1 apply here
->>
->> None of the reasons you said force you to define properties in some
->> allOf:if:then subblock. These force you to constrain the properties in
->> allOf:if:then, but not define.
->>
->>
->>> I can split patternProperties to two sections, but I can't directly
->>> define the reg property like you put above.
->>
->> Of course you can and original bindings were doing it.
->>
->> Let me ask specific questions (yes, no):
->> 1. Are ethernet-ports and ethernet-port present in each variant?
->> 2. Is dsa-port.yaml applicable to each variant? (looks like that - three
->> compatibles, three all:if:then)
->> 3. If reg appearing in each variant?
->> 4. If above is true, if reg is maximum one item in each variant?
+On 20/08/2022 11:07, Arınç ÜNAL wrote:
+> Update the description of the binding.
 > 
-> All yes.
+> - Describe the switches, which SoCs they are in, or if they are standalone.
+> - Explain the various ways of configuring MT7530's port 5.
+> - Remove phy-mode = "rgmii-txid" from description. Same code path is
+> followed for delayed rgmii and rgmii phy-mode on mtk_eth_soc.c.
 > 
->>
->> Looking at your patch, I think answer is 4x yes, which means you can
->> define them in one place and constrain in allOf:if:then, just like all
->> other schemas, because this one is not different.
-> 
-> If I understand correctly, I do this already with v3. Properties are 
-> defined under the constructed node. Accepted values for properties are 
-> constrained under if:then.
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-v4 doesn't do it. You removed there patternProperties - again.
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 
 Best regards,
