@@ -4,88 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56ACDC32772
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 10:58:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5A57C32774
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 11:18:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nch+IXHIDBrWVkXtWbywK+c3Bny+KWw7qcMu+C2LRF0=; b=vQdYr5aN1+60B/PeJz62SQ414J
-	5sTwkDd67Tg8tPzQKt/UdCZCXDEZUTvSevgyRzkzBqqIKy88t4sILn4FVNdLvqDb2A8+q9vrDEB1i
-	vhKwphz8G1F0cYTxAqjFqcyI0njIp2rTkmNHoUj86pe400uSPPP8osDB7G5bQVr3L2bG91wGYC/Ha
-	ifUQgjVlWMYIzODAr/ccPUkZ93IKmfybB/IbxPNKSRUw3MQHVslCH9cDWYVk//C+PA9yKXLIDRqnx
-	QBUkB0BXBkZE2s5Y/vY0iK4ChIWW5bOU/QAc4iYyVtt5uN5u2wYxtrT4br6oZc5UUqpNeUH1nUyK/
-	n+jZjkSA==;
+	bh=p/Y+SW+sDFQrxU5iGkzgHTDP+ZT5UJ6i53/083eyQJg=; b=CO3uKoxYfvjnibgNF3R3kTTPC9
+	lhRJt2Nxmbk4jPboSTc287wwcZHTKcJDiRsQOfdRSusZIORgM+Zxw7e/wMaeXDnV+sG3v5XH1gWI6
+	LKVZ4vGnMTqS3jVOIhr1edUQ5cpbbk1UjWHG5NhVtYbYL7kSVXtcUuNO1mBetLySoVqT25ClJZuZL
+	+1vPzXSrjp0p7KNPH8htqb19Sx8pROyv3MnJxirT0BukVF+hR7ma/NDRXEF52rUJpuHGuZBHj5C1V
+	FFIXQ3ITBnQgdAy5/taZfEFShyzZfqF1l/lNwst31q2ivHIumF9v+5NOFXoMJI6AaZXMEuXymeWZ4
+	JxxF2eRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQRbm-005Ai4-FA; Tue, 23 Aug 2022 10:58:10 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1oQRuw-005IBj-Ib; Tue, 23 Aug 2022 11:17:58 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQRbj-005AfR-MX
-	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 10:58:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1661252286;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Nch+IXHIDBrWVkXtWbywK+c3Bny+KWw7qcMu+C2LRF0=;
-	b=Gq9DGZAmePVEsNJIo0hO6P2JL2ptO17gb3c5NaOG9FNE0xbpZrMKcBWa5LHkmw1hltbcmk
-	IWMqHAkVffFlBhplcsP0gX/pXtlHTjy8uw11ivKawYsmpQQuxHXUTTJ8ylDVdbSqrlFTaY
-	Z8WGdexMMXQ5hMBR/ZCS82LvLj6j/Y4=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-316-9ZdGbRs_PhK1Som6Yrczyg-1; Tue, 23 Aug 2022 06:58:05 -0400
-X-MC-Unique: 9ZdGbRs_PhK1Som6Yrczyg-1
-Received: by mail-wm1-f72.google.com with SMTP id h133-20020a1c218b000000b003a5fa79008bso3512811wmh.5
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Aug 2022 03:58:05 -0700 (PDT)
+	id 1oQRus-005I8Z-7y
+	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 11:17:57 +0000
+Received: by mail-lf1-x135.google.com with SMTP id l1so18676185lfk.8
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Aug 2022 04:17:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=p/Y+SW+sDFQrxU5iGkzgHTDP+ZT5UJ6i53/083eyQJg=;
+        b=MrDQbeNHyc+pRDxnzFQ91jU42y8YNo4YNnlkpgLoQaXpcv1pX5XNX4Ql8pN9555LXy
+         Ko2Ml8/H09TKZPX7AuENC8+/Vgftma2mrEv/Jn/vII69uueY29XIsrqc65IcC2uA3pMA
+         6OXK4J602Y6PV57CqlfT0ZjquvSfL/HvjizICTyTDgFOA5zBQkChkyn4CyTPCIKt6ZdZ
+         JeNr1LUxwfKESCglpaPg3wPK3/DnoX5wOgqOuxc94JLgBpy2VGmfMk5gLb1hoddHCgFi
+         JRnhj09DhvvzKsOSTnbjMXApY1lujQJxBRTQM3Vk2XbYEZwiv3w/0C56k+esW1JNjvy1
+         s4tg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc;
-        bh=Nch+IXHIDBrWVkXtWbywK+c3Bny+KWw7qcMu+C2LRF0=;
-        b=jysUM+nRbmwObOq+Pw2kGaKMBaxQN2dvT7EcvMK2AneSYzag4vc4HACuaXrDr3vvEg
-         FmRAIQ0WM2/4UXi/XLbbqcJLJ+Hh69poo6AyNrFbz4lRFoN8uIPXaZ0f40XXO3K/dIb6
-         X+uB50Q7ZiRszXKImkIDN4AsqzU6Pi2WLZJYt4axb9nzTmGuRtwVUqeUlHlWsGjQkYhc
-         xUVCCbdciBF3hnPoobISC0RjOu0wvljJChI1xtZld2TZ162/+zJ8i0ZMddwCASfF5p1D
-         lJzf9D3I6Enh6zZLUllr/6kvnDA2aOYNnh61Igk0ohYLF4v3alL0dCGrf+tksQRwXepg
-         50tw==
-X-Gm-Message-State: ACgBeo0l+M6cqrRyn3p+vRJCAxpah0kPnq1t7FesvYUlQJO9GkkNtLZv
-	Mj6YpedoHw89MzZ66TcHZcTnxaRsFPk/TicpT6MeenoXgSYlY1A9zUR0tcN6+YXwcjtZKf1UQVI
-	SBIJJhNzEY/cL9iUCYvljciadAu/+OkQf
-X-Received: by 2002:a05:600c:3d91:b0:3a5:4132:b6a0 with SMTP id bi17-20020a05600c3d9100b003a54132b6a0mr1691419wmb.126.1661252284494;
-        Tue, 23 Aug 2022 03:58:04 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR6bDQBAoacU9DIFFDvh3Vtxv7kMelU00DA0jkotOluxkAmKaIuNvBHrTwg5CLgfPziqdhVLQA==
-X-Received: by 2002:a05:600c:3d91:b0:3a5:4132:b6a0 with SMTP id bi17-20020a05600c3d9100b003a54132b6a0mr1691414wmb.126.1661252284292;
-        Tue, 23 Aug 2022 03:58:04 -0700 (PDT)
-Received: from gerbillo.redhat.com (146-241-97-176.dyn.eolo.it. [146.241.97.176])
-        by smtp.gmail.com with ESMTPSA id j18-20020a05600c191200b003a5c1e916c8sm2680414wmq.1.2022.08.23.03.58.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 Aug 2022 03:58:03 -0700 (PDT)
-Message-ID: <110a99aba78eb62daa5653104e5ef4e53dc92c74.camel@redhat.com>
-Subject: Re: [PATCH 1/2] net: mt7531: only do PLL once after the reset
-From: Paolo Abeni <pabeni@redhat.com>
-To: Alexander Couzens <lynxis@fe80.eu>, Sean Wang <sean.wang@mediatek.com>, 
-	Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, "David S . Miller" <davem@davemloft.net>, 
- Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org,  linux-kernel@vger.kernel.org
-Date: Tue, 23 Aug 2022 12:58:02 +0200
-In-Reply-To: <20220820213707.46138-1-lynxis@fe80.eu>
-References: <20220820213707.46138-1-lynxis@fe80.eu>
-User-Agent: Evolution 3.42.4 (3.42.4-2.fc35)
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=p/Y+SW+sDFQrxU5iGkzgHTDP+ZT5UJ6i53/083eyQJg=;
+        b=kJnvP9QgOnecwAwxqvTCQXoakcAo/lR4sr5+6xx7RPFG0bzWLB9svgE03kAcl05gPd
+         3FnESEiqKawM9y5kg21ybUhuQ3Ao2RgcHN8KVUJaG1A2AUYT4wGeVYRfteyQwlwCJW69
+         ZGyqmqJcKPZRdaS/c9TbE7NwwX/qPrX2OUA66CixC0V6nOVo0pLHJcdaRIxsfiIjdtCV
+         MNQY2+uJfrg9badjwVIJOMNA4JcjhdMJJppi6anAGwDqhmpzTqjM422VRVy5tmeXoLS4
+         0nxo69fSCLrCiTKEnJTEYGGBXKBErsy07/mRlsWWiYXEuqP/tXKWPVKzg95hS121fvcK
+         jjCw==
+X-Gm-Message-State: ACgBeo3VgWU24v3c48nRWaV0K3jwufsWj6dQKkvlh0JmO74WcK2rzSfg
+	4ZoRUHVpq3a4qb+RTDOEKZffOA==
+X-Google-Smtp-Source: AA6agR7tqyK85+2o04GF7PJMNhOl687ZeYth/rV5QHCEWVFSRi8/kChXM1q2ei8VMMBa3JjYccngJw==
+X-Received: by 2002:a05:6512:1315:b0:492:cbc8:e10d with SMTP id x21-20020a056512131500b00492cbc8e10dmr6406997lfu.41.1661253470590;
+        Tue, 23 Aug 2022 04:17:50 -0700 (PDT)
+Received: from [192.168.0.11] (89-27-92-210.bb.dnainternet.fi. [89.27.92.210])
+        by smtp.gmail.com with ESMTPSA id z20-20020a056512371400b0048b27af9505sm1508855lfr.213.2022.08.23.04.17.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 23 Aug 2022 04:17:49 -0700 (PDT)
+Message-ID: <6ffc497c-5717-cdce-d338-65a8f00624d1@linaro.org>
+Date: Tue, 23 Aug 2022 14:17:48 +0300
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH 1/2] dt-bindings: soc: mediatek: add mt8188 svs
+ dt-bindings
+Content-Language: en-US
+To: "jia-wei.chang" <jia-wei.chang@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Roger Lu <roger.lu@mediatek.com>,
+ Kevin Hilman <khilman@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, hsinyi@google.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20220823091346.519-1-jia-wei.chang@mediatek.com>
+ <20220823091346.519-2-jia-wei.chang@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220823091346.519-2-jia-wei.chang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_035807_844228_0B613C99 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20220823_041755_995221_8EDAC781 
+X-CRM114-Status: UNSURE (   7.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,21 +102,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2022-08-20 at 23:37 +0200, Alexander Couzens wrote:
-> Move the PLL init of the switch out of the pad configuration of the port
-> 6 (usally cpu port).
+On 23/08/2022 12:13, jia-wei.chang wrote:
+> From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 > 
-> Fix a unidirectional 100 mbit limitation on 1 gbit or 2.5 gbit links for
-> outbound traffic on port 5 or port 6.
+> Add mt8188 svs compatible in dt-bindings.
 > 
-> Signed-off-by: Alexander Couzens <lynxis@fe80.eu>
+> Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 
-This (and the next patch) looks like a fix suitable for -net. Could you
-please re-post, targeting the appropriate tree and more importantly
-including a 'Fixes' tag in the commit message of each patch?
 
-Thanks!
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Paolo
 
+Best regards,
+Krzysztof
 
