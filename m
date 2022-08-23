@@ -4,66 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9844EC32792
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 12:29:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C620C32774
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 12:33:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MPhg5MOWbYmYVs1bBrMrpr8e/chIS7h4LzSeJkbnWM8=; b=m3BxTSA3lIJdH+WKvPkSCRInhW
-	ClgQmfEXD/tTBAI2/2vGEXwUk5Bgu3SMoEHnkKNQENC9fscbnNBgM3TJY8bDshentY2S8RS+i/lit
-	O9j2mp0TE+8YMhZgHVC356x13+21+3HKnXVDCTjJggfQeULyhSkBngwh0Mg87w7M7sp0mhsjgVUlz
-	XcTim+rLnVZuA2DLevRUn6/cOEFovNysNt9on0xQKK3cI08d+5Vn4Dtq6bhuIPICKkbRxuwBL0IMl
-	eUfSKP03GSwc79uI/w4Xr+pUiDBYMKDsFrOGspOR1AYzYomMxY1rqYG5XlANgxpkOnje88k3ilXOZ
-	Btoel43g==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bI65T5U8WH6MLxwESf8Rca3+EFGUoI0wB+6IEaK+vu4=; b=cw/ofa/HZzOq+vEBJdPDzvYGHM
+	Eqge4Re7d/AeIpX0LAGJ9wWnyarO4xO3InxZEV64pWM/ZYKMB+PzF3+dfkcPkKO7cvQYEC4kd3IKy
+	7UAmYcxuewU72y3D6bvJ1eovF+oEYgxbvAVl6/D2lY6ohbXIDrV4cO/5NvyWvxoSLgLmMn2NbOfaH
+	jIfV8HU04682pJzSuysj6eiRjWn1i1uAIAoT87RSDptdjOtXDy3+uGGQchGKwrNmUEDkxC5UiAdXy
+	K/E86R8WoRtaj/EYK2cvJCFU2VWrWFQ+UP5a7EHECKYy6BzZlRXlqAvAgadBHC9XPwVVcSh9LEUfk
+	FYmYRCLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQT2G-005sTg-4L; Tue, 23 Aug 2022 12:29:36 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oQT5I-005u0K-Je; Tue, 23 Aug 2022 12:32:44 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQSxA-005prU-R5
-	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 12:24:25 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 41967B81D00;
-	Tue, 23 Aug 2022 12:24:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B4CBC433C1;
-	Tue, 23 Aug 2022 12:24:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661257457;
-	bh=8nD764F8pk/bCJr7lH8SB9JebDWs0dWq+LVCVleKEiI=;
-	h=From:To:Cc:Subject:Date:From;
-	b=qRh+zTLYUJb9bh9KwhEOVH/OjwKNBKYlERoRNLd3SKo+qp2g0O7CfTl7/7IgHZGVL
-	 FGM94eri6TQsT//VHJhQApYvRCciF0vQLmPET7xsVeVhrVijUNkAQU4u+bY3prvyLe
-	 cMey5NnS2VVT1NSMhHFPPucRhwgEAk4JFIzI6fADLwyLdYB0HKCmlEMeBqqfnBsEqy
-	 welYKh8JG+SjRmaxtSUDpVML46NxDPkmkxQGWA+qBjKlGRYqQ2I4FiuTWtu9w+Qzzk
-	 y+MRcsOAY5VTtvpHPPZUXw2ltwBn+xf5c5IHcJfxLCsampxhCFfZ3bvzSwoz/Rkdqx
-	 viHFt/ZpwXDRg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: netdev@vger.kernel.org
-Cc: nbd@nbd.name,
-	john@phrozen.org,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	lorenzo.bianconi@redhat.com
-Subject: [PATCH v2 net] net: ethernet: mtk_eth_soc: fix hw hash reporting for MTK_NETSYS_V2
-Date: Tue, 23 Aug 2022 14:24:07 +0200
-Message-Id: <091394ea4e705fbb35f828011d98d0ba33808f69.1661257293.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.37.2
+	id 1oQT2n-005spu-9m; Tue, 23 Aug 2022 12:30:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1661257780; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=BHewm+fuQ2Jf8TbBMMRrHkgSf/h9nL8rxUYMqJDedMX48rIwap7RN+nwf8/cNAC0oaECy2kWWsFo/0pmGOeJQlcHCTkJZyw/IY07hfcXGwejLajOsvh8YOr5x3OQR9s9hBl63K83rEpzkqGxGnmZmMtKyNzr1IAhpr88Jea/OZ0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1661257780; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=bI65T5U8WH6MLxwESf8Rca3+EFGUoI0wB+6IEaK+vu4=; 
+	b=ELe8V/Ak74tD+q3G3PkU15CL4JUbrOcB9vzt8z2zpmeHYOijt1UAkbxVHSX0JfHXNII1rskrVaHV8mJFZP6U9DZ8EBz12V3j1lETe9BgS832qLKULacUwamJirI17W7+VSJbKAZ19Tp6VdPgIrlPEu4FG+In4QeM0sme/BAjFT0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1661257780;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=bI65T5U8WH6MLxwESf8Rca3+EFGUoI0wB+6IEaK+vu4=;
+	b=d7qh/3Wo7S+Hw9J27o+zWgrWr/yDw1rjCO9ug3viaq2SJBRSFt3PPDNw/xlKMjls
+	yOIBHuTdAGH0SsrygsW669k93CzeIAN/Smh6336qBBuTkBoa61AtwSR4WdIv7FZoXz9
+	f6kidcMsKHx1C0SzlKRmYaFjgK2xkhNqBLJgSAxA=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1661257778178567.9273906517832; Tue, 23 Aug 2022 05:29:38 -0700 (PDT)
+Message-ID: <ea3ceeab-d92b-6ce5-8ea9-aebb3eaa0a91@arinc9.com>
+Date: Tue, 23 Aug 2022 15:29:27 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v4 4/6] dt-bindings: net: dsa: mediatek,mt7530: define
+ port binding per switch
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Frank Wunderlich
+ <frank-w@public-files.de>, Luiz Angelo Daros de Luca <luizluca@gmail.com>,
+ Sander Vanheule <sander@svanheule.net>,
+ =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
+ Daniel Golle <daniel@makrotopia.org>, erkin.bozoglu@xeront.com,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220820080758.9829-1-arinc.unal@arinc9.com>
+ <20220820080758.9829-5-arinc.unal@arinc9.com>
+ <c24da513-e015-8bc6-8874-ba63c22be5d6@linaro.org>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <c24da513-e015-8bc6-8874-ba63c22be5d6@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_052421_273771_3DAAB2C7 
-X-CRM114-Status: GOOD (  13.22  )
+X-CRM114-CacheID: sfid-20220823_053009_462862_B626FB02 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,81 +95,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Properly report hw rx hash for mt7986 chipset accroding to the new dma
-descriptor layout.
 
-Fixes: 197c9e9b17b11 ("net: ethernet: mtk_eth_soc: introduce support for mt7986 chipset")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
-Changes since v1:
-- fix typo in a comment
-- target net tree instead of net-next
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 22 +++++++++++----------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  5 +++++
- 2 files changed, 17 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 8aff4c0c28bd..5ace4609de47 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1891,10 +1891,19 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		skb->dev = netdev;
- 		bytes += skb->len;
- 
--		if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+			hash = trxd.rxd5 & MTK_RXD5_FOE_ENTRY;
-+			if (hash != MTK_RXD5_FOE_ENTRY)
-+				skb_set_hash(skb, jhash_1word(hash, 0),
-+					     PKT_HASH_TYPE_L4);
- 			rxdcsum = &trxd.rxd3;
--		else
-+		} else {
-+			hash = trxd.rxd4 & MTK_RXD4_FOE_ENTRY;
-+			if (hash != MTK_RXD4_FOE_ENTRY)
-+				skb_set_hash(skb, jhash_1word(hash, 0),
-+					     PKT_HASH_TYPE_L4);
- 			rxdcsum = &trxd.rxd4;
-+		}
- 
- 		if (*rxdcsum & eth->soc->txrx.rx_dma_l4_valid)
- 			skb->ip_summed = CHECKSUM_UNNECESSARY;
-@@ -1902,16 +1911,9 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			skb_checksum_none_assert(skb);
- 		skb->protocol = eth_type_trans(skb, netdev);
- 
--		hash = trxd.rxd4 & MTK_RXD4_FOE_ENTRY;
--		if (hash != MTK_RXD4_FOE_ENTRY) {
--			hash = jhash_1word(hash, 0);
--			skb_set_hash(skb, hash, PKT_HASH_TYPE_L4);
--		}
--
- 		reason = FIELD_GET(MTK_RXD4_PPE_CPU_REASON, trxd.rxd4);
- 		if (reason == MTK_PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
--			mtk_ppe_check_skb(eth->ppe, skb,
--					  trxd.rxd4 & MTK_RXD4_FOE_ENTRY);
-+			mtk_ppe_check_skb(eth->ppe, skb, hash);
- 
- 		if (netdev->features & NETIF_F_HW_VLAN_CTAG_RX) {
- 			if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 7405c97cda66..ecf85e9ed824 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -314,6 +314,11 @@
- #define RX_DMA_L4_VALID_PDMA	BIT(30)		/* when PDMA is used */
- #define RX_DMA_SPECIAL_TAG	BIT(22)
- 
-+/* PDMA descriptor rxd5 */
-+#define MTK_RXD5_FOE_ENTRY	GENMASK(14, 0)
-+#define MTK_RXD5_PPE_CPU_REASON	GENMASK(22, 18)
-+#define MTK_RXD5_SRC_PORT	GENMASK(29, 26)
-+
- #define RX_DMA_GET_SPORT(x)	(((x) >> 19) & 0xf)
- #define RX_DMA_GET_SPORT_V2(x)	(((x) >> 26) & 0x7)
- 
--- 
-2.37.2
+On 23.08.2022 13:47, Krzysztof Kozlowski wrote:
+> On 20/08/2022 11:07, Arınç ÜNAL wrote:
+>> Define DSA port binding per switch model as each switch model requires
+>> different values for certain properties.
+>>
+>> Define reg property on $defs as it's the same for all switch models.
+>>
+>> Remove unnecessary lines as they are already included from the referred
+>> dsa.yaml.
+>>
+>> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+>> ---
+>>   .../bindings/net/dsa/mediatek,mt7530.yaml     | 56 +++++++++++--------
+>>   1 file changed, 34 insertions(+), 22 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>> index 657e162a1c01..7c4374e16f96 100644
+>> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>> @@ -130,38 +130,47 @@ properties:
+>>         ethsys.
+>>       maxItems: 1
+>>   
+>> -patternProperties:
+>> -  "^(ethernet-)?ports$":
+>> -    type: object
+>> -
+>> -    patternProperties:
+>> -      "^(ethernet-)?port@[0-9]+$":
+>> -        type: object
+>> -        description: Ethernet switch ports
+> 
+> Again, I don't understand why do you remove definitions of these nodes
+> from top-level properties. I explained what I expect in previous
+> discussion and I am confused to hear "this cannot be done".
 
+I agree it can be done, but the binding is done with less lines the 
+current way.
+
+I would need to add more lines than just for creating the node structure 
+since dsa.yaml is not referred.
+
+Then, I would have to create the node structure again for the dsa-port 
+checks.
+
+Arınç
 
