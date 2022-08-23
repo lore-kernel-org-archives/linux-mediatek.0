@@ -4,58 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 817C1C32772
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 18:47:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EECDC32789
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 18:50:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bc7h/kVnvC9kdTpSvxbBHMd/BzbnifLnlAHcP+hPXgU=; b=G5X4kqyGIKCXBhw7agvL+4Ie7/
-	VM5xuq10+4YOJVskkBgEBuPHRArwSiPdS2kKLE2qs0/E6hHMuB7QpIrl8TyAL8kptg11WolW70lzK
-	1oWeuK4yk3QiYS8hs1H7j2FEztw1y6SqI8NL93q0YjhVfAgylr6pki6mYx7i3dylf826x4O4fXIeH
-	lzXF975k/eIP0LPHGUrqURPSy5Gm8kIgc43CIqGIcb4ie+u/EpCZVw7OcDrSinSUhFRXumffDhMRF
-	bhsOhgnpcFf2Y1PdoZx7kFwDRWmSgFugkvHc5Zt8My2OHfT3bO3YWuRiRsBXy+nvwgv1G8EcncXbz
-	dyqa4jBg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Nw4nblBE9spZ19olIRVzFTYVUzxPvbQMTrBd3vT4Jko=; b=VX9LiABE12qA8nkRnbAOXGjEL0
+	KZt0JQN66hD8Ai9ztXL8v9kYTX7AjQCx8HSzVm4GqUbfjTInTSraWMhy8P6t6DxVzMIj8E1e0Wr8B
+	fbfvlzhXLuU7tD8N2a9K8ylPB7BnPI71RMX29db0+SWlcCXAEtMRLUoUESTaQAbUZHpEtrmqSPJQN
+	HriT5DWuvy985KYuu1o+R0/tEz1NyPS7Sx7S+OscafNSN226cOA3vOsTLuvMuTQQi7Ou9fltrnISX
+	QUTuL5gYTm35hPS1AJp6UrlNp/NRywnJQIDj4FM9uX2MYwK4Br5msHprdYPiCffEvGK3xcDECYw9X
+	b+ivIRSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQYw1-008Dal-N5; Tue, 23 Aug 2022 18:47:33 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oQYys-008HlN-TY; Tue, 23 Aug 2022 18:50:30 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQYvq-008DSI-6M; Tue, 23 Aug 2022 18:47:23 +0000
-Received: from notapiano (unknown [194.36.25.10])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1oQYyW-008H7W-Rb; Tue, 23 Aug 2022 18:50:10 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 029976601E65;
-	Tue, 23 Aug 2022 19:47:09 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661280436;
-	bh=yvZ81keYhwI6G9e7JnIqRWODLEgNPMGKYnHuBSLuw5o=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mOxcpNly5jz4ZfzlyvGKuCt/2JZYpTVvicwdFzsY8NSJP2fR5fEWwLVzSZPYP2dXD
-	 qQQYgIIqom+9AgdlxLQKBnefxPDWQDJH2AGSlhF5xrcrxwsQLXoOPNU7eWAh7Oz+p6
-	 yE82v1LU6up8+LSZ/DcXDZhy03GJ5+6T+g20A3eNVOKIGSAOVy+Z5SGgFNjt9u9LR0
-	 +sLYNGjNX8nqdS6tyORZGrvZpOt8Gis02jjDxXG5tuwUf0NFGtb9ugrEYKqXXKwB8Y
-	 +ajHow3J2rjrpOD/LKGnxsPrRe+0E0zevTcXqArW2XUrKOKdV3uylc5dQ2RSpISlVS
-	 xbIXEt2LLT7CQ==
-Date: Tue, 23 Aug 2022 14:47:05 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Subject: Re: [PATCH v4] regulator: dt-bindings: mediatek: add mt6366
-Message-ID: <20220823184705.6fdpczguait2la4v@notapiano>
-References: <20220823123745.14061-1-zhiyong.tao@mediatek.com>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3B63461716;
+	Tue, 23 Aug 2022 18:50:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7D17C43470;
+	Tue, 23 Aug 2022 18:50:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1661280608;
+	bh=cs17o2i+l63HI0ig2H81rSYNYdqBTrrXaJ5UfzE3tPc=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=gegl/xff6oBa1d0RalUiCoq2qAl+HPe9CyA9nd/UG7QePRTIknGOT3k4AjlyiZ32y
+	 2R3nsWxlw8i+Iqlnn2fVIAiPTAHl3dUnW2HWx/i7n/KBFWyT4RaIE40VUdftjNlnOJ
+	 yEqfzL/mjGr3IbqSG3gJ0S+unCR1frZsQVtZqYpaEImQpJPbnNPaA+pDQ6GbkzJeL7
+	 BPKTkD6TiH7CIXMz7mjYOaQeQTYkvikFmFV2O4d/XkxlxAAT6z0SaS9XIHecFgqDQK
+	 XVHahS97Iw1Mt8VPBaf7ElESu2yPUJ7U1Lvgmm5Ytpoy1oRWQMv3paz7CH+eD+VnId
+	 D7K5e8AdNPuxg==
+From: Mark Brown <broonie@kernel.org>
+To: angelogioacchino.delregno@collabora.com, nfraprado@collabora.com, Chunxu Li <chunxu.li@mediatek.com>,
+ lgirdwood@gmail.com
+Cc: linux-arm-kernel@lists.infradead.org, jiaxin.yu@mediatek.com, matthias.bgg@gmail.com, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org, project_global_chrome_upstream_group@mediatek.com, linux-kernel@vger.kernel.org
+In-Reply-To: <20220823090735.12176-1-chunxu.li@mediatek.com>
+References: <20220823090735.12176-1-chunxu.li@mediatek.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8186: rename sound card name
+Message-Id: <166128060567.1031684.10706581523547029443.b4-ty@kernel.org>
+Date: Tue, 23 Aug 2022 19:50:05 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220823123745.14061-1-zhiyong.tao@mediatek.com>
+X-Mailer: b4 0.10.0-dev-0c1df
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_114722_402530_5DAB362B 
-X-CRM114-Status: UNSURE (   8.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220823_115008_949162_F985F63C 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,58 +69,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, allen-kh.cheng@mediatek.com, linux-kernel@vger.kernel.org, macpaul.lin@mediatek.com, lee.jones@linaro.org, hsin-hsiung.wang@mediatek.com, linux-rtc@vger.kernel.org, wen.su@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, sean.wang@mediatek.com, hui.liu@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, a.zummo@towertech.it, sen.chu@mediatek.com, lgirdwood@gmail.com, broonie@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 23, 2022 at 08:37:45PM +0800, Zhiyong Tao wrote:
-> Add mt6366 regulator document
+On Tue, 23 Aug 2022 17:07:35 +0800, Chunxu Li wrote:
+> From: "chunxu.li" <chunxu.li@mediatek.com>
 > 
-> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> ---
-[..]
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6366-regulator.yaml
-[..]
-> +      "^buck-(vcore)-sshub$":
+> The field 'topology_shortname' in 'snd_soc_card' is defined as char[32],
+> Current card name will be truncated when SOF is enabled, so rename the
+> sound card name.
+> 
+> 
+> [...]
 
-The parentheses here don't serve any purpose, so drop them.
+Applied to
 
-> +        type: object
-> +        $ref: regulator.yaml#
-> +        unevaluatedProperties: false
-[..]
-> +      "^ldo-vcn(33)-wifi$":
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Ditto.
+Thanks!
 
-> +        type: object
-> +        $ref: regulator.yaml#
-> +        unevaluatedProperties: false
-> +
-> +      "^ldo-vsram-(others)-sshub$":
+[1/1] ASoC: mediatek: mt8186: rename sound card name
+      commit: e8ee449bd7a45e871fc84fe51c773f7a6e68a02f
 
-Ditto.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-> +        type: object
-> +        $ref: regulator.yaml#
-> +        unevaluatedProperties: false
-[..]
-> +      "^ldo-vsim[2]$":
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-Based on the example, should be [12].
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
 Thanks,
-Nícolas
-
-> +        type: object
-[..]
-> +            mt6366_vsim1_reg: ldo-vsim1 {
-> +                regulator-enable-ramp-delay = <540>;
-> +            };
-[..]
-> +            mt6366_vsim2_reg: ldo-vsim2 {
-> +                regulator-enable-ramp-delay = <540>;
-> +            };
-[..]
+Mark
 
