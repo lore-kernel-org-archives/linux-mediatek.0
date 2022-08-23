@@ -4,95 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29BF7C32772
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 16:38:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64858C32772
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 18:12:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xe29dpH/lEwoUgqXwXUV/OMUbK9mfNYESN56Bn6Kzu4=; b=fmd+uEdwTQF5RY/SKfEf6ikvFS
-	zTX/Gxvns04shoHnktv2vBOYqJ4SU8pZPOsnG4M8yl7Y5uMM5CDCFMHpN6eBb/fjDQhSoUGBQ2PHF
-	M5Me619NiYahaJBS7gwABl15/fAF8DfwlP/+tngIHqTPpSE+0yFqWozm0bBQcNrV9VoYH+SkRJ3Ik
-	huSUqcvRzQ9YhE35GTx7dYu7zjTdwhslkPtkb05TaWFBJ7EFq6yfP3lQ2wQaw9E5lLCJ7qcwDyFwG
-	u950vie65IPmrIn34sXF50PPZmeOnmhQQaeOJoDmPiIWqus/IloZ/v9VKzE2sYT0+ffNO7k/5aFLf
-	j9e1Khrw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=w6Y6IjnB/7GXBq23acV5syGhC64cBXwxU4OuyhZd8CQ=; b=wfEggj1Kg4H/3QBb0wgSkN4vlO
+	tL7i+5D8RFp14OHTLL6GKj34WiQa09CtFAQTguJWWM2ErS2W79f2oJoIx19HDeB4xoc1A3/eUtB/c
+	9FXhWS67ULeQwcxGXgG4+a7vYlMjAV1TRZ7f88OjaDgrllL0AIDUrkWrL92GPugj2ZJaC+pvqiNGy
+	7GouiPSAa9LkCypyEuhGnAu+6pO60eBzcJmy7xxnSmo+p0kRYcoNxkOShT8RJfGIq5ksesDirJhA+
+	a7ZMvhO3ZHbyksvEPYKiYgHq7OnENxMp6A1pmolyrMnBokJiIHVPdVHgjftOVJyOAMYqITnTY15zK
+	sX2Njfnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQWuq-007LSc-94; Tue, 23 Aug 2022 16:38:12 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1oQYO4-0080Ft-0V; Tue, 23 Aug 2022 18:12:28 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQWum-007LQC-VP
-	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 16:38:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1661272687;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xe29dpH/lEwoUgqXwXUV/OMUbK9mfNYESN56Bn6Kzu4=;
-	b=WY8joLahEERGHVc563Ywgqf/ijzJa4iW4UIxwz8vXUBeg0VqyZluuUaSReEp9ufBtVhC4+
-	tk8KV8BwYbHMTmyfh126YhTVA1IR3n83rPZTb3Jj6/bHqAzgE7XB9i17AqLtWKonJo9zd6
-	oIkwi85xP0TkukyOnIdDPs7HCIFiiuc=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-208-xkAiKOqINtSaakCWJ_5l7g-1; Tue, 23 Aug 2022 12:38:05 -0400
-X-MC-Unique: xkAiKOqINtSaakCWJ_5l7g-1
-Received: by mail-qv1-f71.google.com with SMTP id od16-20020a0562142f1000b00496e2ea7934so3702165qvb.13
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Aug 2022 09:38:05 -0700 (PDT)
+	id 1oQYNt-0080CM-7t; Tue, 23 Aug 2022 18:12:18 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id x14-20020a17090a8a8e00b001fb61a71d99so2866833pjn.2;
+        Tue, 23 Aug 2022 11:12:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :from:to:cc;
+        bh=w6Y6IjnB/7GXBq23acV5syGhC64cBXwxU4OuyhZd8CQ=;
+        b=IaP7cFBpGcNi3/hhyxFebsnvxJsMy54QTl7EkiYLgJCebOU1/sY6ya+8Jj7s9gc5zJ
+         m96Jd0oUB9ii7t+kjHWa0AYbqnMm5HXw9j51y4fR0GTSjpmruV6mcpR1pH2bNOo7Eh9J
+         1+m93Urk2CcVD+dQQvvEOgbAJqBAErrzKbUqYPqCFKfnC9JQXmYBIYNVyoJZVAbB6LO2
+         5fvVxUuzhxJTX2ZCcqC78LL+jJzs7uc6dP6iwGIMRwK76xIIh3W8VDmSaT8p0QyXPYzZ
+         WxnHrnIHJWsGCnNde81/z4kR2sB4563gvDfugD+mJi4dvRasMOT9T+3eMQq+GiKhQ+Kp
+         xOkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc;
-        bh=xe29dpH/lEwoUgqXwXUV/OMUbK9mfNYESN56Bn6Kzu4=;
-        b=DXJCbw262zQ2oafJFiUWmGfzP4V8RDBzhYM7L/L0IcNBPtEkzoAb+zTHmRmJ804fdQ
-         YZj8d8MRR35esyxqKdA0lp+u8DtwXrRbZvmzLj0+u0utA8VdQd2AKMgfKjwCezX+oMyg
-         iE/26XR1TODj63WIgiUp6Ctko4zIpEUkg0iN9gYieDNN0qVGR+YWP3dOTDESlaf1qnaB
-         xxaS+2nZ9rXDIemi8gBqtWGZ02yT4mQBVUIzHDaM6IgAm2F2cD0vtgC0RJH7ftv1oSBw
-         /L+NFeIrMuIioWI30iQEYqYQ+LYzKgVyx/x4CiCm9ydFbxSzM/KbVLmEJpU4+tXT6C/D
-         TmXg==
-X-Gm-Message-State: ACgBeo2cM0ZJuyecvPsWmXAlsf2FoGkyW8WU/TB9aiv1cmE38elvGbam
-	i5kWXKDlb9Wz5IfMERCAqbdwrwi3gQBWxYTp6hu2X2xdTac5p2AHa9tyW9twNtvCVpflcpyajeD
-	CCJsBqHQaYPhj9mIY7iSS2SAj462SAtqt
-X-Received: by 2002:ad4:5aae:0:b0:496:dd09:9cc6 with SMTP id u14-20020ad45aae000000b00496dd099cc6mr10131377qvg.130.1661272685341;
-        Tue, 23 Aug 2022 09:38:05 -0700 (PDT)
-X-Google-Smtp-Source: AA6agR7hiUx6KqHne7ie641hJobc8RQc2G0WUgp2XEXEJJ0nVJG12HNX/e7DZI8cUcUAGpyGHTvJlQ==
-X-Received: by 2002:ad4:5aae:0:b0:496:dd09:9cc6 with SMTP id u14-20020ad45aae000000b00496dd099cc6mr10131352qvg.130.1661272685049;
-        Tue, 23 Aug 2022 09:38:05 -0700 (PDT)
-Received: from gerbillo.redhat.com (146-241-97-176.dyn.eolo.it. [146.241.97.176])
-        by smtp.gmail.com with ESMTPSA id q9-20020a05620a0d8900b006bc0c544d01sm6580768qkl.131.2022.08.23.09.38.02
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :x-gm-message-state:from:to:cc;
+        bh=w6Y6IjnB/7GXBq23acV5syGhC64cBXwxU4OuyhZd8CQ=;
+        b=s/w7Vc0kp7bRT5gKHHVIbF3MAJLb/Jj1rPvUtoJwPLNmPQyv/z+zDMsV+iyHeX4Ueb
+         ICGSCoYwvMWSujW6Bz4nTgxi0gCKPdes6QQMzMfhMo1FZUVoT3pDjtmdQe3wvQAAJLKD
+         mH30qBi9Lp367uQ9YfNcq4fMmagimWOqiJnSbyLfInrI1cmziQpz6ewfvc6EbutyYqPN
+         bBl9jHPaU6zp1sazAYTj6BODrgZ1+RdXwXCoYL9eEs50cSOvovYsx87WHNCDmXBEMNNj
+         EqMotM7pI46b9h9MixhomFiXTyrWguSVMqu3ht0ehqvm5Z5UO7vDNifWJ1CKNTIE6je/
+         658g==
+X-Gm-Message-State: ACgBeo0/57kObmevFh2Ky5KcOIVo8vWNxprlu71kugUbpNJ6ravkX6P7
+	GGzQey9eGij8NrAmoR3SZsc=
+X-Google-Smtp-Source: AA6agR5OMzXPWSEia1ICuDVxlmd5kDRtjxcPzDjzeIQnJSzFFes7fZNXVlt3vyVCqQga04y7fD0YmQ==
+X-Received: by 2002:a17:902:d712:b0:172:e2f8:7f02 with SMTP id w18-20020a170902d71200b00172e2f87f02mr11541384ply.26.1661278334213;
+        Tue, 23 Aug 2022 11:12:14 -0700 (PDT)
+Received: from localhost ([2620:10d:c090:400::5:90fa])
+        by smtp.gmail.com with ESMTPSA id l9-20020a170902f68900b0016be96e07d1sm10712480plg.121.2022.08.23.11.12.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 Aug 2022 09:38:04 -0700 (PDT)
-Message-ID: <d6cfce0d7210762bf0c4130ea4d59470cbabfb56.camel@redhat.com>
-Subject: Re: [PATCH 2/4] net: mediatek: sgmii: ensure the SGMII PHY is
- powered down on configuration
-From: Paolo Abeni <pabeni@redhat.com>
-To: Alexander 'lynxis' Couzens <lynxis@fe80.eu>
-Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
- <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, "David S.
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>,  Matthias Brugger <matthias.bgg@gmail.com>,
- Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Daniel
- Golle <daniel@makrotopia.org>
-Date: Tue, 23 Aug 2022 18:38:00 +0200
-In-Reply-To: <20220823161712.2cafa970@javelin>
-References: <20220820224538.59489-1-lynxis@fe80.eu>
-	 <20220820224538.59489-3-lynxis@fe80.eu>
-	 <efd1c89e3bbd7364ef381292c9ceff430cbeda8d.camel@redhat.com>
-	 <20220823161712.2cafa970@javelin>
-User-Agent: Evolution 3.42.4 (3.42.4-2.fc35)
+        Tue, 23 Aug 2022 11:12:13 -0700 (PDT)
+Date: Tue, 23 Aug 2022 08:12:12 -1000
+From: Tejun Heo <tj@kernel.org>
+To: Jing-Ting Wu <Jing-Ting.Wu@mediatek.com>
+Cc: Michal =?iso-8859-1?Q?Koutn=FD?= <mkoutny@suse.com>,
+	Zefan Li <lizefan.x@bytedance.com>,
+	Johannes Weiner <hannes@cmpxchg.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Jonathan.JMChen@mediatek.com, Lixiong.Liu@mediatek.com,
+	wsd_upstream@mediatek.com, Wenju.Xu@mediatek.com,
+	cgroups@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/1] cgroup: Fix race condition at rebind_subsystems()
+Message-ID: <YwUYfNEVIOyQXP8d@slm.duckdns.org>
+References: <20220823054148.29346-1-Jing-Ting.Wu@mediatek.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220823054148.29346-1-Jing-Ting.Wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_093809_121376_F70B97E5 
-X-CRM114-Status: GOOD (  28.47  )
+X-CRM114-CacheID: sfid-20220823_111217_302940_25FA5F90 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,86 +97,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-08-23 at 16:17 +0200, Alexander 'lynxis' Couzens wrote:
-> On Tue, 23 Aug 2022 15:18:31 +0200
-> Paolo Abeni <pabeni@redhat.com> wrote:
+On Tue, Aug 23, 2022 at 01:41:46PM +0800, Jing-Ting Wu wrote:
+> Root cause:
+> The rebind_subsystems() is no lock held when move css object from A
+> list to B list,then let B's head be treated as css node at
+> list_for_each_entry_rcu().
 > 
-> > On Sun, 2022-08-21 at 00:45 +0200, Alexander Couzens wrote:
-> > > The code expect the PHY to be in power down which is only true
-> > > after reset. Allow changes of the SGMII parameters more than once.
-> > > 
-> > > Signed-off-by: Alexander Couzens <lynxis@fe80.eu>
-> > > ---
-> > >  drivers/net/ethernet/mediatek/mtk_sgmii.c | 16 +++++++++++++++-
-> > >  1 file changed, 15 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c
-> > > b/drivers/net/ethernet/mediatek/mtk_sgmii.c index
-> > > a01bb20ea957..782812434367 100644 ---
-> > > a/drivers/net/ethernet/mediatek/mtk_sgmii.c +++
-> > > b/drivers/net/ethernet/mediatek/mtk_sgmii.c @@ -7,6 +7,7 @@
-> > >   *
-> > >   */
-> > >  
-> > > +#include <linux/delay.h>
-> > >  #include <linux/mfd/syscon.h>
-> > >  #include <linux/of.h>
-> > >  #include <linux/phylink.h>
-> > > @@ -24,6 +25,9 @@ static int mtk_pcs_setup_mode_an(struct mtk_pcs
-> > > *mpcs) {
-> > >  	unsigned int val;
-> > >  
-> > > +	/* PHYA power down */
-> > > +	regmap_write(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL,
-> > > SGMII_PHYA_PWD);  
-> > 
-> > in mtk_pcs_setup_mode_an() and in mtk_pcs_setup_mode_force() the code
-> > carefully flips only the SGMII_PHYA_PWD bit. Is it safe to overwrite
-> > the full register contents?
+> Solution:
+> Add grace period before invalidating the removed rstat_css_node.
 > 
-> I've read out the register without my patch and it's 0x0. The old driver
-> worked as long the engine came out of reset.
-> When writing the single bit SGMII_PHYA_PWD (0x10), the register might
-> end up containing 0x19 and as long 0x9 is in the register the link
-> doesn't work.
-> 
-> I've tested the driver with a mt7622 and Daniel Golle tested it with a
-> mt7986.
-> 
-> 
-> > 
-> > > +
-> > >  	/* Setup the link timer and QPHY power up inside SGMIISYS
-> > > */ regmap_write(mpcs->regmap, SGMSYS_PCS_LINK_TIMER,
-> > >  		     SGMII_LINK_TIMER_DEFAULT);
-> > > @@ -36,6 +40,10 @@ static int mtk_pcs_setup_mode_an(struct mtk_pcs
-> > > *mpcs) val |= SGMII_AN_RESTART;
-> > >  	regmap_write(mpcs->regmap, SGMSYS_PCS_CONTROL_1, val);
-> > >  
-> > > +	/* Release PHYA power down state
-> > > +	 * unknown how much the QPHY needs but it is racy without
-> > > a sleep
-> > > +	 */
-> > > +	usleep_range(50, 100);  
-> > 
-> > Ouch, this looks fragile, without any related H/W specification. 
-> 
-> The datasheet [1] doesn't say anything about it. I'ven't found a
-> mediatek SDK which adds a usleep(). It seems they always expect the
-> SGMII came out of reset and don't change after initial configured.
-> But without it, it's racy.
-> 
-> [1] MT7622 Reference Manual, v1.0, 2018-12-19, 1972 pages
+> Reported-by: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+> Suggested-by: Michal Koutný <mkoutny@suse.com>
+> Signed-off-by: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+> Tested-by: Jing-Ting Wu <jing-ting.wu@mediatek.com>
+> Link: https://lore.kernel.org/linux-arm-kernel/d8f0bc5e2fb6ed259f9334c83279b4c011283c41.camel@mediatek.com/T/
 
-I see. 
+Applied to cgroup/for-6.0-fixes w/ stable tag added.
 
-Since it looks like a new revision of this patchset will be needed - as
-per Russell comments - I suggest to extend/replace the comments with
-something more alike this longer description, it will make the future
-mainteinance simpler.
+Thanks.
 
-Thanks,
-
-Paolo
-
+-- 
+tejun
 
