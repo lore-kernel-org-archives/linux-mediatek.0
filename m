@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1780FC32774
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 08:38:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDE1CC32772
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 08:40:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JKH4ft/HojJoLFaDDgeksLkaodkyHdDC/mjKTNTZhPs=; b=qxcey5NTSqZYUmsRkRWyjT3ukP
-	dD2WaAvIak61cCmSXnsHh8i/4zUKNXlSg4M+nqrGTy95aT4WnatQrMdsZB8npC7Aa+c+QupdLbf22
-	GZtUSOs7xBFmpBvK8CqA5TZmX0cw8qMXVrPPYA98Y91GXL6gvUcDzrxyr8If7L8JpPU5chH0hiADY
-	aB521eq9fQ9+fDzCiGpiQrrtn4lD8+rIxpnFps9OKOwt/AjpX/pjUPu6+AlnytDPe8eX77GADlo2h
-	jLApCNdIfx3X4PyShfA1x80xB8wIvg6t6iVWlw4FbyJHikKezF04dfXiL/xLnZPkqH+CYdXtke9rm
-	DzZPu+jA==;
+	bh=W0I5qGBRorIzU4/M9Z2JKZBtnIIxK+lV/fotyWPu8eo=; b=MijoYFzD7lh9Hj9ITzHSGiXPny
+	Avph5z4xRrS+4ck3FWa+AQa3rqSUBms+Du+kp5bs+3cK5+ldmfmKOgT/JNhem5h+n55ywqAkltHHX
+	5HVCUVvlyKTRbJnypW2WL6A5BTxfPzmoP3nqw782OAWL9ck6GpdaFYDdQ3/6W+CKw3JdaodFfOcX+
+	2vEsorF6xu/6Y3Hk4g/WKXZ1Vs51emh31l0CLlL89RvmdOIEk8AIFe9Xi5ARM6/JJZwgbGI3J7QZP
+	8GLs1dLPVrOdxqX2xoz+y/EtKLqzGdlgUrJhyybO5xF++r8l3nSEx7+qv53UFl8o6wd1msZqKSgFs
+	l4gK6ujw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQPQg-0045X5-On; Tue, 23 Aug 2022 08:38:35 +0000
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+	id 1oQPST-0046Wr-Kw; Tue, 23 Aug 2022 08:40:25 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQPQb-0045Su-Ng
-	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 08:38:32 +0000
-Received: by mail-lj1-x229.google.com with SMTP id v10so12825601ljh.9
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Aug 2022 01:38:29 -0700 (PDT)
+	id 1oQPSP-0046Sp-W2
+	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 08:40:23 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id bq23so9672456lfb.7
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Aug 2022 01:40:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc;
-        bh=JKH4ft/HojJoLFaDDgeksLkaodkyHdDC/mjKTNTZhPs=;
-        b=oEmXzyGTsY1Jm/8QDV/fL0tMWnA8/aqTqARmji/gwW4uTPzoaSR9ltEOjszs48LwHm
-         zyX/2IkiLkYutSnRSWpOccw4/fVZC22paPUEgeX0TFhWjMkc3Eq31lWv0gtcXzhHctXf
-         yo/hfbmujNbjQSELNCY9smsLaTfejwC11ajGhW+AvQqxRQgVPa2G/n7j3SOr1l0A5TiP
-         mr1ekZIM6Ipy1b1AOHF/Xjlj6p8M4AQonkKqaiLQJhZcJhu4wO8rMbt8qed8m9jSjyf5
-         z2XDb1tNAeBwxdP1JbNfNAYNi34zvD0AmyZ+Zf2rVyIj5J31nKNeZl/wWO2qgzSRjokk
-         9dWA==
+        bh=W0I5qGBRorIzU4/M9Z2JKZBtnIIxK+lV/fotyWPu8eo=;
+        b=YfivAOPyp/S0t3HR39n5l6tvClobRS3WjgJLwTgsVGDusGuqa7DeH4gqCzzVzFxepy
+         OW9z5QACGE6BtNdpfnV1/HM8WsRwMVBLMh7YHcIyDUF2/MY8bcVlCehu+nEIZUAsWx9c
+         fkwMmvwOK97l7bl4OC/J8rsmNB/AQuWLY4nvO6ILnWgRoezZMuVZ3kY822corbLuFOpD
+         UYCZ+XlyG4PQbltck8mA2bLjjbXpqsDw1J5IxUXZd+hrmHOhLc70LrN2dJXq+xs6XeFw
+         ThxIm7/BGfRz9voj2AhZY9VnjvoLi91SlfokA7MoysD+QWK15MHumcudOkm1Oi0A03xn
+         Fw8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc;
-        bh=JKH4ft/HojJoLFaDDgeksLkaodkyHdDC/mjKTNTZhPs=;
-        b=GoEOANvXAdlI9a08P+2+kYfBKvnQr5IyXUQEBbbNAC2xcSAU6VpJ7ZE5Vp6aXRwq/Z
-         9nrI0NbymevAMLUKRRKb8JMaxtdSR0XiqNh/C6P1kTQvNH//vYcKhRLmGC9NGIDtBMnh
-         EbVImreJdlm0Uw5EOBXbdokQ2Y2asqE5WB08obRGqG4D/jY4J4YCxFS6PNaBAPNSpVws
-         w8OKis74bsVKIT2X5e0O7tP3D/wuu+49897KeskUzjXHOevXsAgEYnGLb8XiQBdTwMBN
-         pS/CDGrxhl3P0q7rFTLT9hdMXHfRWWQGs1W4zIAo9/giC2rgwNcijFt8AJFHckCmIM1n
-         XKLQ==
-X-Gm-Message-State: ACgBeo0dAndZSPdTsWNhgyLLo6szbxDGcbTXh4pmifVrn1tSQkTJtXwJ
-	9+sycfrY2G2ihFH4Vgy/ZWPbFw==
-X-Google-Smtp-Source: AA6agR4YBTjnWyro2PJsJoAncXN9rtMdAV8mFoIfbItwV+OsR3C7RYb9maJWlvJph7+5H40eCY+DFA==
-X-Received: by 2002:a05:651c:210c:b0:25e:6a39:23ed with SMTP id a12-20020a05651c210c00b0025e6a3923edmr6546406ljq.43.1661243908301;
-        Tue, 23 Aug 2022 01:38:28 -0700 (PDT)
+        bh=W0I5qGBRorIzU4/M9Z2JKZBtnIIxK+lV/fotyWPu8eo=;
+        b=Dt0zCLDRsLgtps0JPXQlgifuisBov5HYc5cFtob5HmOyDP1+4c8coBAAZoy80mOgZc
+         sCqbFha6MKAPgO+eV2hvXA+mzVwhrc+rfegiE0qeJGQTFknoUPrgL4MQ1s2pgrX9SGOA
+         52lWtKz7giZNHOUE0wGJXK0MGbrz/0JZ8EGNJDcJUGnFNzAPB3obkoeMxl6ZghD1C8bb
+         ZzfGcM9U8YOK2eTbhpSX+uXBAWnMrbAVYle/GXkbfYLmCKO3DisxnK4F/0VR7cKACpZO
+         jJ6VqLkAcwWS/bW3+v4JKdTM5tcXhNy2aZjgMiEOSDw9nc0vb0p17Dm07rc++Guh0B8V
+         woPg==
+X-Gm-Message-State: ACgBeo3TW20qPkDupRvkxG9kLlqO95d7Ul6gIfpb0rOf7IvF1QUKOZ2t
+	l3PXQnnFF/dltldQJNgQ9sSzGQ==
+X-Google-Smtp-Source: AA6agR5+rUJS0PTf+2wjIEbj+myfHGedVpyDY4058HVzXxye9slAAObIkitw5XGxHJ1FVj4NKKE3Hg==
+X-Received: by 2002:a05:6512:118d:b0:492:da96:689 with SMTP id g13-20020a056512118d00b00492da960689mr4163856lfr.244.1661244020402;
+        Tue, 23 Aug 2022 01:40:20 -0700 (PDT)
 Received: from [192.168.0.11] (89-27-92-210.bb.dnainternet.fi. [89.27.92.210])
-        by smtp.gmail.com with ESMTPSA id n2-20020a2e7202000000b00261d619fb16sm329148ljc.82.2022.08.23.01.38.26
+        by smtp.gmail.com with ESMTPSA id t20-20020a2e8e74000000b0025e1ec74e25sm2247874ljk.43.2022.08.23.01.40.19
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 23 Aug 2022 01:38:27 -0700 (PDT)
-Message-ID: <2bbafb3f-3f69-c014-b86c-476f56d93659@linaro.org>
-Date: Tue, 23 Aug 2022 11:38:26 +0300
+        Tue, 23 Aug 2022 01:40:19 -0700 (PDT)
+Message-ID: <39f63588-bc88-a716-bc66-7f93c4aabc56@linaro.org>
+Date: Tue, 23 Aug 2022 11:40:18 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.12.0
-Subject: Re: [PATCH 1/3] dt-bindings: mediatek: Add gamma compatible for
- mt8195
+Subject: Re: [PATCH 3/3] arm64: dts: Modify gamma compatible for mt8195
 Content-Language: en-US
 To: "zheng-yan.chen" <zheng-yan.chen@mediatek.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
@@ -79,14 +78,14 @@ Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  Singo Chang <singo.chang@mediatek.com>,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20220822091945.21343-1-zheng-yan.chen@mediatek.com>
- <20220822091945.21343-2-zheng-yan.chen@mediatek.com>
+ <20220822091945.21343-4-zheng-yan.chen@mediatek.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220822091945.21343-2-zheng-yan.chen@mediatek.com>
+In-Reply-To: <20220822091945.21343-4-zheng-yan.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_013829_825031_A2F89C95 
-X-CRM114-Status: GOOD (  15.96  )
+X-CRM114-CacheID: sfid-20220823_014022_158611_FD278D2F 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,37 +101,30 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 22/08/2022 12:19, zheng-yan.chen wrote:
-> mt8195 uses 10bit-to-12bit gamma-LUT, which is different from
-> current 9bit-to-10bit gamma-LUT, so this patch add its own compatible
-> for mt8195.
-
-I am not sure if this explains the need for change. Is mt8195 still
-compatible with mt8183 or not? Your driver change suggests that it is
-and points that this commit is wrong.
-
+> Modify gamma compatible for mt8195.
 > 
 > Signed-off-by: zheng-yan.chen <zheng-yan.chen@mediatek.com>
 > 
 > ---
->  .../devicetree/bindings/display/mediatek/mediatek,gamma.yaml   | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-> index a89ea0ea7542..fbd7b9664a78 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-> @@ -25,11 +25,12 @@ properties:
->            - const: mediatek,mt8173-disp-gamma
->        - items:
->            - const: mediatek,mt8183-disp-gamma
-> +      - items:
-> +          - const: mediatek,mt8195-disp-gamma
->        - items:
->            - enum:
->                - mediatek,mt8186-disp-gamma
->                - mediatek,mt8192-disp-gamma
-> -              - mediatek,mt8195-disp-gamma
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index a50ebb5d145f..8504d01b103a 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -2021,8 +2021,8 @@
+>  			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x5000 0x1000>;
+>  		};
+>  
+> -		gamma0: gamma@1c006000 {
+> -			compatible = "mediatek,mt8195-disp-gamma", "mediatek,mt8183-disp-gamma";
+> +		gamma0: disp_gamma@1c006000 {
 
+No, really, no.
+
+Not explained in commit msg, violates naming convention, violates coding
+style, not related to the patch at all.
 
 Best regards,
 Krzysztof
