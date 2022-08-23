@@ -4,97 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 602E2C32772
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 10:41:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22E62C32772
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 10:42:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CSfrhxT9VAnyJPjGSsK9FNWQxpzeB1/ysg0wyIKwNbo=; b=y5x0B++8hRWiIXunvInfwUFaAx
-	8dL1MJmX91isC/HC11Pw9a2GowzOlq57QxtfKAw1nHXm7sgJ1ulhrEo76oci9sbrVvvPNZPq8VOB9
-	HQDtqETI2ocqW0ETJVQ8xeosq+3pMLTEor77ccfv4mlTrPoJ0dGrss0q21VocKa6EOuU29kNax90E
-	oo8+U0L6TVc0hwuboj1nH1X45mtZxGB9N/QNgXlXRievlmxRqD3KC8sWxjOClkJCXKZo8pDhOzxQx
-	JIC2nBi9nslvjvKY7gMJQopRPnar3th9YncaHkGGz1FeGeF8iFmFy98RIxYE+h6SLeTWt5XKJlnEM
-	asI1SPvg==;
+	bh=rL8SJbgibVkoZ2njYSulQFsOA3EsniOZm6ohlbk2wZI=; b=qbgNl9z5npUMbqg0jJeoBTzilU
+	h0jpw2omChyoP9vT6/TEndTDB9AHoBEg9n5sToHILjSA+z4TabwrnkK20z/qgXKsYlj+nhO44/IsH
+	VSZyo/sCumw5bKWKvSIrYcRcTzYuJv8ka9WyVe82/Y6+CdbiERW0UrqTpVMto3xqQW7TkmxNmyonk
+	ihTD8n4Vvz+qmxsVfjtdZYgvSATuttj0YF8acAN6fhHQnh4wTbkkxd1hQ1klE7tuuR5BeXMCXeitL
+	aCdTb+/3t/gnWTlTaYZhP5DJWSndcsKfJnEtqHVg5JFvLnmpddBvRZFZ2gT9MwBtXta7LZMsAGO7y
+	BFzQhamA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQRL6-0051qQ-Fq; Tue, 23 Aug 2022 10:40:56 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1oQRMr-0052aF-Oe; Tue, 23 Aug 2022 10:42:45 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQRKv-0051jH-EO
-	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 10:40:48 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id m5so8425652lfj.4
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Aug 2022 03:40:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc;
-        bh=CSfrhxT9VAnyJPjGSsK9FNWQxpzeB1/ysg0wyIKwNbo=;
-        b=o+1s4+z44hI/KKr1Dk4qJ+cnrbPWDs8HpV/rQFs3+CacWfFtNXfe9dRvuqwkZRw1kc
-         TbHlDRTcqTMkXvetmyrOJRl2dnEHtlVHiI/uo/qjVW9u8NexN9+2pO3bWk35B/ENgxbW
-         PuyaXqnI/SSRC6U+OAa0UKqeKmsWjGhgBlaDxpIAzd/pNZtq0pWCHTY3lRym0DhiuZcU
-         MEzvyxnEMTVFLDatcNczSPVgp6fbw7xKUfEq4R66aCk71Wu3cONBdxp6IuyaqMrlJ5T6
-         67b0sOLDYkPeo95GXojgq758B2zAOnGyFmq/dkizAnzzjanAQ7dUQPg0y9qY9CULa868
-         WH7w==
+	id 1oQRMp-0052Y6-7C
+	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 10:42:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1661251360;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=rL8SJbgibVkoZ2njYSulQFsOA3EsniOZm6ohlbk2wZI=;
+	b=IDHJf7gnGiZjsSq5K5RWgkPxvtgdU6BN2PZYrpIUNCSit2MxUhJ5m/5DVM4DjFBtx8U7R9
+	nrVxqchZKzYd66Yu1iq3VcjWAYLIWgv3n6NcUHlTAMuQZ8X9umslGmoGMpT+RJBH7M1tIi
+	PsyyS48++8F94pTy/Ws5+mFSXsL2Lxo=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-13-0Fio7xMWOY2UWVENEaxVhw-1; Tue, 23 Aug 2022 06:42:38 -0400
+X-MC-Unique: 0Fio7xMWOY2UWVENEaxVhw-1
+Received: by mail-wm1-f69.google.com with SMTP id j3-20020a05600c1c0300b003a5e72421c2so532340wms.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Aug 2022 03:42:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc;
-        bh=CSfrhxT9VAnyJPjGSsK9FNWQxpzeB1/ysg0wyIKwNbo=;
-        b=Ij2C4HiZF1haBhR234UaCtAp2p9FQcpQQnHcbY+6huAS1U1fTH1xXERviqVQH45WeE
-         KArX8//2lR8i8pqW74IQyIZCMg/2lM232f7T8+wFO/Vrq4CzLaAiRWvxadvwTItl6/3T
-         8WSOxt+YA0IQTEdwTLt9w/FwEbLjVATNKAa7Ftf4ylQNiu6dFOp5pCNny3TX8qNVhr6d
-         +rJBy+DNVYUtZ+N96Mp6owK0iMWEmaMUcL3nNABB/XasqDKJ2yLfZO1rgYUbcDGYwMeB
-         bD6dzHYTQfrhj3u6ltmOxUssiLkrjgQ4jsN8JmcjbIj7zGLsiAt+CLJXYMIfnBPiCy1M
-         O6Zg==
-X-Gm-Message-State: ACgBeo2r0yIqy1UEO/is4JnRhA1ogMheOBwuw4pqEpp2um3TUfezfouJ
-	dRKBX8r6sx3qxTWzJ7G+d66Mlg==
-X-Google-Smtp-Source: AA6agR4oA347epn9X35znOZfjzfSU5oXZ19wKjNx051aYhSs5BsqebDkkBZnPa3Fk9VNmwyv6D3b3w==
-X-Received: by 2002:a05:6512:1322:b0:492:de5b:dc3c with SMTP id x34-20020a056512132200b00492de5bdc3cmr3880326lfu.503.1661251242988;
-        Tue, 23 Aug 2022 03:40:42 -0700 (PDT)
-Received: from [192.168.0.11] (89-27-92-210.bb.dnainternet.fi. [89.27.92.210])
-        by smtp.gmail.com with ESMTPSA id t20-20020a2e8e74000000b0025e1ec74e25sm2300758ljk.43.2022.08.23.03.40.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 23 Aug 2022 03:40:42 -0700 (PDT)
-Message-ID: <70ae25b9-0500-7539-d71f-52c685783554@linaro.org>
-Date: Tue, 23 Aug 2022 13:40:40 +0300
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc;
+        bh=rL8SJbgibVkoZ2njYSulQFsOA3EsniOZm6ohlbk2wZI=;
+        b=k8A3c4AS5oMmbZB5ahQVSFlI9FI1wp7S6jd8A87hVyLLIjfeGu7emiP/Hm1lcD8dNK
+         os2wbmGoY0lpiOsPTx4FUt6KgWUrR1dlTqHkjvFTCHjLq6/5bUZVEhkeiFNhk1doofF+
+         rCOhQCtOBkBZDbQ2EmLW/2S4ITOfedmwfo/MxiSznjOxEhosV3GFXinbPEN6laWGPH/J
+         0KTg+Ha+RfGvJ1DOkznbtLrNfdyeVtk7Y/ARyu4dU/VU4R/hIgTk/N8OQhLHrYa+HkDF
+         qf0J6k1ysqvSommiDRjl1RdTnRMWxHPRgP5jgUqHQWkivt30ws+AjA1MQOYcGrEW5wS/
+         gh+g==
+X-Gm-Message-State: ACgBeo0Xde3rXrjIP/LzYIb3u/X5woGLivrcHERs8weA10p6KCDHf0W5
+	Nol8ywVIXec8wYDH48WOtZPy1WrPUNKFrvXK2D/uPOt6y9YSQ9iVyoXeHGlzc2kbGofE2qe6vpX
+	Y05Wr6xMhg8F852HkVeUVUmMM5fBcPEto
+X-Received: by 2002:a05:6000:178f:b0:221:7dcb:7cbf with SMTP id e15-20020a056000178f00b002217dcb7cbfmr13267570wrg.58.1661251357623;
+        Tue, 23 Aug 2022 03:42:37 -0700 (PDT)
+X-Google-Smtp-Source: AA6agR6HEWu5qW/d+rzi2SfObMW+7Cw8xxikVX1LMuZMnMjuXybMaFefYdUhprqmbI+ylFucll3hJA==
+X-Received: by 2002:a05:6000:178f:b0:221:7dcb:7cbf with SMTP id e15-20020a056000178f00b002217dcb7cbfmr13267545wrg.58.1661251357353;
+        Tue, 23 Aug 2022 03:42:37 -0700 (PDT)
+Received: from gerbillo.redhat.com (146-241-97-176.dyn.eolo.it. [146.241.97.176])
+        by smtp.gmail.com with ESMTPSA id c7-20020a05600c0a4700b003a342933727sm9273171wmq.3.2022.08.23.03.42.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 23 Aug 2022 03:42:36 -0700 (PDT)
+Message-ID: <abce7e128957b3e86a6d73a7b383b6404ba2db65.camel@redhat.com>
+Subject: Re: [PATCH net-next] net: ethernet: mtk_eth_soc: fix hw hash
+ reporting for MTK_NETSYS_V2
+From: Paolo Abeni <pabeni@redhat.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org
+Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com, 
+ Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com, 
+ kuba@kernel.org, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org,  lorenzo.bianconi@redhat.com
+Date: Tue, 23 Aug 2022 12:42:35 +0200
+In-Reply-To: <890fc9b747e7729fb6b082a1f7fd309a58768cca.1661012748.git.lorenzo@kernel.org>
+References: <890fc9b747e7729fb6b082a1f7fd309a58768cca.1661012748.git.lorenzo@kernel.org>
+User-Agent: Evolution 3.42.4 (3.42.4-2.fc35)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH v4 1/6] dt-bindings: net: dsa: mediatek,mt7530: make
- trivial changes
-Content-Language: en-US
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Frank Wunderlich
- <frank-w@public-files.de>, Luiz Angelo Daros de Luca <luizluca@gmail.com>,
- Sander Vanheule <sander@svanheule.net>,
- =?UTF-8?Q?Ren=c3=a9_van_Dorst?= <opensource@vdorst.com>,
- Daniel Golle <daniel@makrotopia.org>, erkin.bozoglu@xeront.com,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>
-References: <20220820080758.9829-1-arinc.unal@arinc9.com>
- <20220820080758.9829-2-arinc.unal@arinc9.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220820080758.9829-2-arinc.unal@arinc9.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_034045_516437_15CC99ED 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20220823_034243_404564_58C35FB5 
+X-CRM114-Status: UNSURE (   6.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,60 +102,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/08/2022 11:07, Arınç ÜNAL wrote:
-> Make trivial changes on the binding.
+Hello,
+
+On Sat, 2022-08-20 at 18:27 +0200, Lorenzo Bianconi wrote:
+> Properly report hw rx hash for mt7986 chipset accroding to the new dma
+> descriptor layout.
 > 
-> - Update title to include MT7531 switch.
-> - Add me as a maintainer. List maintainers in alphabetical order by first
-> name.
-> - Add description to compatible strings.
-> - Stretch descriptions up to the 80 character limit.
-> - Remove quotes from $ref: "dsa.yaml#".
-> 
-> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> ---
->  .../bindings/net/dsa/mediatek,mt7530.yaml     | 36 ++++++++++++-------
->  1 file changed, 24 insertions(+), 12 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> index 17ab6c69ecc7..edf48e917173 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> @@ -4,12 +4,13 @@
->  $id: http://devicetree.org/schemas/net/dsa/mediatek,mt7530.yaml#
->  $schema: http://devicetree.org/meta-schemas/core.yaml#
->  
-> -title: Mediatek MT7530 Ethernet switch
-> +title: Mediatek MT7530 and MT7531 Ethernet Switches
->  
->  maintainers:
-> -  - Sean Wang <sean.wang@mediatek.com>
-> +  - Arınç ÜNAL <arinc.unal@arinc9.com>
->    - Landen Chao <Landen.Chao@mediatek.com>
->    - DENG Qingfang <dqfext@gmail.com>
-> +  - Sean Wang <sean.wang@mediatek.com>
->  
->  description: |
->    Port 5 of mt7530 and mt7621 switch is muxed between:
-> @@ -61,10 +62,21 @@ description: |
->  
->  properties:
->    compatible:
-> -    enum:
-> -      - mediatek,mt7530
-> -      - mediatek,mt7531
-> -      - mediatek,mt7621
-> +    oneOf:
-> +      - description:
-> +          Standalone MT7530 and multi-chip module MT7530 in MT7623AI SoC
-> +        items:
+> Fixes: 197c9e9b17b11 ("net: ethernet: mtk_eth_soc: introduce support for mt7986 chipset")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-You have one item, so don't make it a list. Just const:xxxxx
+This looks like a simple fix and the commit pointed by the 'fixes' tag
+is already on -net. Would you mind to repost this targeting the
+appropriate tree? Or there is any special reason to target net-next
+instead?
 
-Same in other places.
+Thanks!
 
+Paolo
 
-Best regards,
-Krzysztof
 
