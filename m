@@ -4,93 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E631C32774
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 07:35:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33089C32774
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 07:48:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3d/ElBXcPYxKWyW49KyvVjAnEwq+qBCx+4YLXDcWY5k=; b=SGpLbjWOuZXIg1qQTzRkW+JcSZ
-	NqlqhLtDC4t+9VM5eZZdcGWm4gWH4UnYsxrprk2L1eK6M9z1GGMmgN5xOw8ESss/FYcC+hwQXKyzY
-	JfEvJKzd+3g/jN39X3ov/BtonHggLWhy27V31a0Df36sFFkmXXhZ072gamdoUPn2OWncCvHxNCrxA
-	zQ/3BZmc0oiagBV4iaRV6FY40v5ZvHWImsltASyedHDUnkcHcy/5goX5chFBZPlZoxCgc2kKrubuJ
-	0gkSDEgZAvcPr2S+Umj9bZYU227pmEed5+XoKuS6q7VZ8l6vHDdepMeRKp2nxjl95WNAzLDjRxUyD
-	uKgZK4zQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xgtwRS8aLB5PMGBeVTg7Bva5S9RzzRPpyzGw4I2mlag=; b=bDPSrQDNwugCCvpbwGLqJdhkDp
+	rmJ8NtI4r58fwfMf0db97iewvgcjyP159XWVOS4ILQwHcjpackmzLsdMKPeg+y4VWLFxRmPYErPcK
+	vFQZz/cr5//TuCWkHsPIw8dvTWgRjxucX79JvFpl9P+0djiN1ilUlLP8EE9yVzGPQDbeGl437b4IF
+	MJPER+53CdwT/V4wUEg1i7HFOyKWF63QW7qDYpyg02W2Hryb8LUhxqKZUGHo2s+OwoY6mUvUhor7X
+	PiuA08luTxvFR32POkLBQER79MmbhAcpRdJ6n+RCV+Tp9VqlEmc0fzT7lr9i3ADnzMqOTDKLWTADu
+	o90vOfng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQORg-003Uqr-0h; Tue, 23 Aug 2022 07:35:32 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1oQOds-003bFs-Qt; Tue, 23 Aug 2022 07:48:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQORC-003Ud8-5e; Tue, 23 Aug 2022 07:35:03 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 27N5PS1d019134;
-	Tue, 23 Aug 2022 07:34:47 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=3d/ElBXcPYxKWyW49KyvVjAnEwq+qBCx+4YLXDcWY5k=;
- b=SaDJhOAG/4gQ0onXSxFKM92KFD5cJU3jtNBuWjvn4DFo87n6AM77r46kFw39bsFSQ8ai
- E9JDHh31e8YzMtCepEro/qOb88neXAtYAFOMXm/0HsZfPRfaVtWc++ztIcqpXiALHp1e
- 5QS8NFLtCCDILYcwluQnJERkJb5r9pcWJy85KRzM4qTt3JAsnUGdrAZCf+Vz/UZZlRRz
- sVljtmbkPISxsK+7XtLLznl2zglxSGhhTsoPjtfiBco/CXBoeH2kwA24cM88YK4pfE+J
- +A1DiBli75rgxkwScHDJiEpNu527ye6an99ivw2sABtOa1iDw+eU7O9AIFPtca+c3+DU 3A== 
-Received: from nalasppmta04.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3j4je3sp2k-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 23 Aug 2022 07:34:47 +0000
-Received: from nalasex01c.na.qualcomm.com (nalasex01c.na.qualcomm.com [10.47.97.35])
-	by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 27N7YkHc030663
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 23 Aug 2022 07:34:46 GMT
-Received: from [10.216.34.138] (10.80.80.8) by nalasex01c.na.qualcomm.com
- (10.47.97.35) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29; Tue, 23 Aug
- 2022 00:34:39 -0700
-Message-ID: <45e18c45-1c09-863a-65a0-3ae03ba4f859@quicinc.com>
-Date: Tue, 23 Aug 2022 13:03:58 +0530
+	id 1oQOdp-003bCo-OK; Tue, 23 Aug 2022 07:48:07 +0000
+X-UUID: 26917961d9304b07b0c2848a828bdf69-20220823
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xgtwRS8aLB5PMGBeVTg7Bva5S9RzzRPpyzGw4I2mlag=;
+	b=kmoFSBcxN4VF5ZX0YLtTFZE/GwiNlMF6qybA8FG8lDesEe1tuWoUiMgmd45HQ2982ZpbgZgdmuQHTZNrMYd1zStgbPDd21otjOlgIImtE9ltJE9eNZPDRkjdDpTMOAP+gDJk3Vk3+nXsGY8BqDReF/4eb8liEnBr8u8gvZQEMZU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:24c311cc-9b58-484e-9709-cad6c24221bf,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
+	_Ham,ACTION:release,TS:-5
+X-CID-META: VersionHash:84eae18,CLOUDID:6fd283c9-6b09-4f60-bf82-12f039f5d530,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 26917961d9304b07b0c2848a828bdf69-20220823
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jia-wei.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 548307062; Tue, 23 Aug 2022 00:48:01 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Tue, 23 Aug 2022 15:17:27 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 23 Aug 2022 15:17:27 +0800
+From: jia-wei.chang <jia-wei.chang@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Roger Lu
+	<roger.lu@mediatek.com>, Kevin Hilman <khilman@kernel.org>, Jia-Wei Chang
+	<jia-wei.chang@mediatek.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v5 1/4] dt-bindings: soc: mediatek: add mt8186 svs dt-bindings
+Date: Tue, 23 Aug 2022 15:17:05 +0800
+Message-ID: <20220823071708.30927-2-jia-wei.chang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220823071708.30927-1-jia-wei.chang@mediatek.com>
+References: <20220823071708.30927-1-jia-wei.chang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH 1/1] cgroup: Fix race condition at rebind_subsystems()
-Content-Language: en-US
-To: Jing-Ting Wu <Jing-Ting.Wu@mediatek.com>,
-        =?UTF-8?Q?Michal_Koutn=c3=bd?=
-	<mkoutny@suse.com>,
-        Tejun Heo <tj@kernel.org>, Zefan Li
-	<lizefan.x@bytedance.com>,
-        Johannes Weiner <hannes@cmpxchg.org>,
-        Matthias
- Brugger <matthias.bgg@gmail.com>
-CC: <Jonathan.JMChen@mediatek.com>, <Lixiong.Liu@mediatek.com>,
-        <wsd_upstream@mediatek.com>, <Wenju.Xu@mediatek.com>,
-        <cgroups@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>
-References: <20220823054148.29346-1-Jing-Ting.Wu@mediatek.com>
-From: Mukesh Ojha <quic_mojha@quicinc.com>
-In-Reply-To: <20220823054148.29346-1-Jing-Ting.Wu@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01c.na.qualcomm.com (10.47.97.35)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: 9J5LNFkzL4ueqBV8-ngLYs_wAa--4W4Q
-X-Proofpoint-GUID: 9J5LNFkzL4ueqBV8-ngLYs_wAa--4W4Q
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-08-23_03,2022-08-22_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- phishscore=0 priorityscore=1501 adultscore=0 impostorscore=0
- malwarescore=0 mlxscore=0 clxscore=1011 spamscore=0 mlxlogscore=999
- bulkscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2207270000 definitions=main-2208230028
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_003502_245093_9903FD48 
-X-CRM114-Status: GOOD (  15.10  )
+X-CRM114-CacheID: sfid-20220823_004805_834495_4666D4B9 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,43 +84,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Jia-Wei Chang <jia-wei.chang@mediatek.com>
 
+Add mt8186 svs compatible in dt-bindings and add myself as a
+co-maintainer.
 
-On 8/23/2022 11:11 AM, Jing-Ting Wu wrote:
-> Root cause:
-> The rebind_subsystems() is no lock held when move css object from A
-> list to B list,then let B's head be treated as css node at
-> list_for_each_entry_rcu().
-> 
-> Solution:
-> Add grace period before invalidating the removed rstat_css_node.
-> 
-> Reported-by: Jing-Ting Wu <jing-ting.wu@mediatek.com>
-> Suggested-by: Michal Koutný <mkoutny@suse.com>
-> Signed-off-by: Jing-Ting Wu <jing-ting.wu@mediatek.com>
-> Tested-by: Jing-Ting Wu <jing-ting.wu@mediatek.com>
-> Link: https://lore.kernel.org/linux-arm-kernel/d8f0bc5e2fb6ed259f9334c83279b4c011283c41.camel@mediatek.com/T/
-> ---
->   kernel/cgroup/cgroup.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/kernel/cgroup/cgroup.c b/kernel/cgroup/cgroup.c
-> index ffaccd6373f1..0d0c959966ed 100644
-> --- a/kernel/cgroup/cgroup.c
-> +++ b/kernel/cgroup/cgroup.c
-> @@ -1820,6 +1820,7 @@ int rebind_subsystems(struct cgroup_root *dst_root, u16 ss_mask)
->   
->   		if (ss->css_rstat_flush) {
->   			list_del_rcu(&css->rstat_css_node);
-> +			synchronize_rcu();
->   			list_add_rcu(&css->rstat_css_node,
->   				     &dcgrp->rstat_css_list);
->   		}
+Signed-off-by: Jia-Wei Chang <jia-wei.chang@mediatek.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Good catch.
-
-Acked-by: Mukesh Ojha <quic_mojha@quicinc.com>
-
--Mukesh
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+index d911fa2d40ef..c86a5430641f 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+@@ -10,6 +10,7 @@ maintainers:
+   - Roger Lu <roger.lu@mediatek.com>
+   - Matthias Brugger <matthias.bgg@gmail.com>
+   - Kevin Hilman <khilman@kernel.org>
++  - Jia-Wei Chang <jia-wei.chang@mediatek.com>
+ 
+ description: |+
+   The SVS engine is a piece of hardware which has several
+@@ -22,6 +23,7 @@ properties:
+   compatible:
+     enum:
+       - mediatek,mt8183-svs
++      - mediatek,mt8186-svs
+       - mediatek,mt8192-svs
+ 
+   reg:
+-- 
+2.18.0
 
 
