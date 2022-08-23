@@ -4,66 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51149C32789
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 14:32:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F25DC32789
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 14:58:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ogh2atKJ9UodHmzEsteEl10kYw0tZ8eyotdKvJ4XPig=; b=gYaek4hbOlbSth9vZZ6SHMvZxT
-	5B/hPSo6QZhYod5wcu/E30qPoGpjKr28EDDL1KK1nQ8UWhM32frdOLN4gACY3/HGzxD+hOz7AQ4cF
-	YeO3zcvolWOf9R4eaWJ+ctSe5avu6zQhritIgriG9gRLl983kJAiZxUOpOhGQrOjux/ygThDe23k2
-	OOWEpcRjPeTI2DrCXqmP4iXsvYKGYNVbKstRk83XkPGCupPd6g9y8FVBTZBEojmCWfnPpxGjvtZIg
-	rcrbEhNehhKOMVqJjVPyvFCEt2QzMKNb4yv4rYZf8SHPc3GKWdHofOmMFgJpbFwtXKyZe7L7D8nw5
-	pbR79fMw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=h0CnVKrOjJedjISgP9+nhkN7E189WcSV8KiZ+ezPrBE=; b=4K/xV3ID8S9uZPlUtjUwOctky5
+	tY5bKdva9ub8M+LqMWQrhKtBTieHne5h/hBXBVRD929WAG3PmovK4+be4EgXAm5lJzB3WR2NPAcPU
+	8Bs6Ds2C/2Xa6Aj9lJHAb/oe9c3n4wntHux0ts3Vs7CX81IyeRp/tl5wYZI6x2aQbYE2lhd56eGY9
+	H3kjty8QuHK3KFI8HNe0M5FFe29AzA/jwQwk44Yl/gY+POYShlQFQPC3viDJ2CcOrZdlV1blfVW43
+	oZ2ZdIu/eHuQNK9FLhtGwFgfUSGPT1gav+Pv7vKP6iv+o/ED0/6KWbug3fUGEX3eVNtFTs9LOyuzR
+	BxDg0zvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQUwe-006dpy-H6; Tue, 23 Aug 2022 14:31:56 +0000
-Received: from mail.base45.de ([2001:67c:2050:320::77])
+	id 1oQVLs-006m3C-CC; Tue, 23 Aug 2022 14:58:00 +0000
+Received: from mail-oi1-f172.google.com ([209.85.167.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQUwb-006dp2-Dn
-	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 14:31:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=fe80.eu;
-	s=20190804; h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:
-	In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=Ogh2atKJ9UodHmzEsteEl10kYw0tZ8eyotdKvJ4XPig=; b=PQDiMIx1UJ2L7XoqAxhusxDWVz
-	gMWWp3i8+t735BmFt1n250F5qFXi6++sLQh5PTZFV+zWzAW3e6OdTRW57nGThUkk2s2RYxu3gCQCr
-	GB+BYz467FN3Xv66JEKizLzLH/CkqsBx7JTRbj19yi1DReYwCkNoBudvNe2CdYhng9415CR9aM1sy
-	yX2cvDqT7fY1TWdMA8SoxkKLmitSUw8ZwE9OOq8LmfDG0Yjuh1waoe6tc+vXNC/Pc/6Gzcz2R0cne
-	AHxqbZAPlkvFtXAEV7kqZ+XUUKTkpOTXQ039ceSDKQYlJXhuNdwxPyN/mu1uKLYmTHsMmCzmTQOpa
-	S2TdN52g==;
-Received: from [2a02:2454:9869:1a::98b] (helo=javelin)
-	by mail.base45.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <lynxis@fe80.eu>)
-	id 1oQUwL-00HVMm-2u; Tue, 23 Aug 2022 14:31:37 +0000
-Date: Tue, 23 Aug 2022 16:31:35 +0200
-From: Alexander 'lynxis' Couzens <lynxis@fe80.eu>
-To: Paolo Abeni <pabeni@redhat.com>
-Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
- <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, "David S.
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Daniel
- Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH 1/4] net: mediatek: sgmii: fix powering up the SGMII phy
-Message-ID: <20220823163135.013ec257@javelin>
-In-Reply-To: <6f147fbd31980c6155ea6e7deba26d8210ed6afd.camel@redhat.com>
-References: <20220820224538.59489-1-lynxis@fe80.eu>
-	<20220820224538.59489-2-lynxis@fe80.eu>
-	<6f147fbd31980c6155ea6e7deba26d8210ed6afd.camel@redhat.com>
+	id 1oQVLH-006lh6-GQ; Tue, 23 Aug 2022 14:57:25 +0000
+Received: by mail-oi1-f172.google.com with SMTP id o204so8830444oia.12;
+        Tue, 23 Aug 2022 07:57:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc;
+        bh=h0CnVKrOjJedjISgP9+nhkN7E189WcSV8KiZ+ezPrBE=;
+        b=ebG6hvkWu6TQKKX/zOycmc/sgaFbV1pvq4B0g7tA4RraAM0gJJRjiw81SZL8WqZ48T
+         UO6ymMlr6Llyw5opPWl55CCmxkkSWsNcP7GwasHqhY+iNxy6MAIRzWZPQW0n/38T8WIl
+         ZKnCPwybsHmBOvj6OaAtk9LoczAiR16ivCjDiEDhD3h7m5/ediIwm9iwhO6grWepUnQU
+         OaD0QmPNlf621FbXzmQWW/YF8lDiBL7RlCF0lDYtkRLV0vnd95/8rSmlysrylWmfWPe7
+         uZu/fC1gOn/8UYZgUkDzhSejWh+K683FyQGWwnCTB8rcOr64w6v7VujsY1G0Hd6x9kEe
+         eshw==
+X-Gm-Message-State: ACgBeo0RPMANuaVJIWUtmlpKQi4dQ0glXzAhvjPUS0i2H1fcwT72suPV
+	dfAGUgxh4itCxktk+J9+5w==
+X-Google-Smtp-Source: AA6agR5OARvxdnc8BmaUXFTmBiSwYZaPHP9yws/NVD55WI4mBLuEUcY0qCEgGgE0JHMJhoGGEYBTzg==
+X-Received: by 2002:aca:f054:0:b0:345:7285:1147 with SMTP id o81-20020acaf054000000b0034572851147mr1505615oih.108.1661266640082;
+        Tue, 23 Aug 2022 07:57:20 -0700 (PDT)
+Received: from xps15.. (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.googlemail.com with ESMTPSA id t1-20020a056870600100b0011c65559b04sm3840637oaa.34.2022.08.23.07.57.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 23 Aug 2022 07:57:19 -0700 (PDT)
+From: Rob Herring <robh@kernel.org>
+To: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Tomasz Figa <tomasz.figa@gmail.com>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+	Sowjanya D <lakshmi.sowjanya.d@intel.com>,
+	Chris Packham <chris.packham@alliedtelesis.co.nz>,
+	Andy Teng <andy.teng@mediatek.com>,
+	Jacopo Mondi <jacopo+renesas@jmondi.org>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: [PATCH] dt-bindings: pinctrl: Add missing (unevaluated|additional)Properties on child nodes
+Date: Tue, 23 Aug 2022 09:56:37 -0500
+Message-Id: <20220823145649.3118479-6-robh@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_073153_497215_87218476 
-X-CRM114-Status: GOOD (  12.87  )
+X-CRM114-CacheID: sfid-20220823_075723_608019_EB2F8DF7 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,27 +97,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Paolo,
+In order to ensure only documented properties are present, node schemas
+must have unevaluatedProperties or additionalProperties set to false
+(typically).
 
-> On Sun, 2022-08-21 at 00:45 +0200, Alexander Couzens wrote:
-> > There are cases when the SGMII_PHYA_PWD register contains 0x9 which
-> > prevents SGMII from working. The SGMII still shows link but no
-> > traffic can flow. Writing 0x0 to the PHYA_PWD register fix the
-> > issue. 0x0 was taken from a good working state of the SGMII
-> > interface.  
-> 
-> do you have access to register documentation? what does 0x9 actually
-> mean? is the '0' value based on just empirical evaluation?
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/pinctrl/brcm,bcm4908-pinctrl.yaml      | 1 +
+ .../devicetree/bindings/pinctrl/intel,pinctrl-keembay.yaml     | 1 +
+ .../devicetree/bindings/pinctrl/intel,pinctrl-thunderbay.yaml  | 1 +
+ .../devicetree/bindings/pinctrl/marvell,ac5-pinctrl.yaml       | 1 +
+ .../devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml   | 2 ++
+ .../devicetree/bindings/pinctrl/nuvoton,wpcm450-pinctrl.yaml   | 1 +
+ .../devicetree/bindings/pinctrl/renesas,rza1-ports.yaml        | 1 +
+ Documentation/devicetree/bindings/pinctrl/samsung,pinctrl.yaml | 3 +++
+ .../devicetree/bindings/pinctrl/st,stm32-pinctrl.yaml          | 3 +++
+ .../devicetree/bindings/pinctrl/toshiba,visconti-pinctrl.yaml  | 1 +
+ 10 files changed, 15 insertions(+)
 
-I don't have any documentation which describes 0x9.
-The datasheet [1] only contains the PHYA_PWD (0x10) bit and the initial
-value is 0x10. 0x0 value is based on a register readout without the
-patch from a working state.
+diff --git a/Documentation/devicetree/bindings/pinctrl/brcm,bcm4908-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/brcm,bcm4908-pinctrl.yaml
+index 175a992f15e1..8a9fb9b433ca 100644
+--- a/Documentation/devicetree/bindings/pinctrl/brcm,bcm4908-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/brcm,bcm4908-pinctrl.yaml
+@@ -23,6 +23,7 @@ patternProperties:
+   '-pins$':
+     type: object
+     $ref: pinmux-node.yaml#
++    additionalProperties: false
+ 
+     properties:
+       function:
+diff --git a/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-keembay.yaml b/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-keembay.yaml
+index 5e99d79499b4..846651ff77c9 100644
+--- a/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-keembay.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-keembay.yaml
+@@ -44,6 +44,7 @@ properties:
+ patternProperties:
+   '^gpio@[0-9a-f]*$':
+     type: object
++    additionalProperties: false
+ 
+     description:
+       Child nodes can be specified to contain pin configuration information,
+diff --git a/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-thunderbay.yaml b/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-thunderbay.yaml
+index 0ec476248f21..6f30b5337ca2 100644
+--- a/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-thunderbay.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/intel,pinctrl-thunderbay.yaml
+@@ -42,6 +42,7 @@ properties:
+ patternProperties:
+   '^gpio@[0-9a-f]*$':
+     type: object
++    additionalProperties: false
+ 
+     description:
+       Child nodes can be specified to contain pin configuration information,
+diff --git a/Documentation/devicetree/bindings/pinctrl/marvell,ac5-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/marvell,ac5-pinctrl.yaml
+index a651b2744caf..491f67e7cc4f 100644
+--- a/Documentation/devicetree/bindings/pinctrl/marvell,ac5-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/marvell,ac5-pinctrl.yaml
+@@ -24,6 +24,7 @@ patternProperties:
+   '-pins$':
+     type: object
+     $ref: pinmux-node.yaml#
++    additionalProperties: false
+ 
+     properties:
+       marvell,function:
+diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+index e7601c0f5a69..840f649e36ce 100644
+--- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+@@ -76,6 +76,8 @@ required:
+ patternProperties:
+   '-[0-9]*$':
+     type: object
++    additionalProperties: false
++
+     patternProperties:
+       '-pins*$':
+         type: object
+diff --git a/Documentation/devicetree/bindings/pinctrl/nuvoton,wpcm450-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/nuvoton,wpcm450-pinctrl.yaml
+index 7a11beb8f222..7b7f840ffc4c 100644
+--- a/Documentation/devicetree/bindings/pinctrl/nuvoton,wpcm450-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/nuvoton,wpcm450-pinctrl.yaml
+@@ -30,6 +30,7 @@ patternProperties:
+ 
+   "^gpio@[0-7]$":
+     type: object
++    additionalProperties: false
+ 
+     description:
+       Eight GPIO banks (gpio@0 to gpio@7), that each contain between 14 and 18
+diff --git a/Documentation/devicetree/bindings/pinctrl/renesas,rza1-ports.yaml b/Documentation/devicetree/bindings/pinctrl/renesas,rza1-ports.yaml
+index 8ed4b98a1628..9083040c996a 100644
+--- a/Documentation/devicetree/bindings/pinctrl/renesas,rza1-ports.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/renesas,rza1-ports.yaml
+@@ -41,6 +41,7 @@ required:
+ patternProperties:
+   "^gpio-[0-9]*$":
+     type: object
++    additionalProperties: false
+ 
+     description:
+       Each port of the r7s72100 pin controller hardware is itself a GPIO
+diff --git a/Documentation/devicetree/bindings/pinctrl/samsung,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/samsung,pinctrl.yaml
+index 3a65c66ca71d..d006a940c7c6 100644
+--- a/Documentation/devicetree/bindings/pinctrl/samsung,pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/samsung,pinctrl.yaml
+@@ -97,6 +97,9 @@ patternProperties:
+         additionalProperties: false
+ 
+   "^(initial|sleep)-state$":
++    type: object
++    additionalProperties: false
++
+     patternProperties:
+       "^(pin-[a-z0-9-]+|[a-z0-9-]+-pin)$":
+         $ref: samsung,pinctrl-pins-cfg.yaml
+diff --git a/Documentation/devicetree/bindings/pinctrl/st,stm32-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/st,stm32-pinctrl.yaml
+index d35dcc4f0242..53c952d93ea2 100644
+--- a/Documentation/devicetree/bindings/pinctrl/st,stm32-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/st,stm32-pinctrl.yaml
+@@ -115,9 +115,12 @@ patternProperties:
+ 
+   '-[0-9]*$':
+     type: object
++    additionalProperties: false
++
+     patternProperties:
+       '^pins':
+         type: object
++        additionalProperties: false
+         description: |
+           A pinctrl node should contain at least one subnode representing the
+           pinctrl group available on the machine. Each subnode will list the
+diff --git a/Documentation/devicetree/bindings/pinctrl/toshiba,visconti-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/toshiba,visconti-pinctrl.yaml
+index 306524885a2b..98b4663f9766 100644
+--- a/Documentation/devicetree/bindings/pinctrl/toshiba,visconti-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/toshiba,visconti-pinctrl.yaml
+@@ -36,6 +36,7 @@ patternProperties:
+       pins it needs, and how they should be configured, with regard to muxer
+       configuration, pullups, drive strength.
+     $ref: "pinmux-node.yaml"
++    additionalProperties: false
+ 
+     properties:
+       function:
+-- 
+2.34.1
 
-I've tested it on mt7622 and Daniel Golle on mt7986.
-
-[1] MT7622 Reference Manual, v1.0, 2018-12-19, 1972 pages
-
-Best,
-lynxis
 
