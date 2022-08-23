@@ -4,70 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6F29C32772
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 13:43:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C1BC32772
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Aug 2022 13:48:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T2ycAwB9AKCUd7Ti9SviyeWVoLkbuLNtdC5n82XdxWg=; b=gJpOLgMVZGMAae
-	llZ6Cudz4xQ6pgaX70CaIMWnu7BuPPElgcXmiomp3MtguxMWUMMFyPrLqGfKT47oChW0kwt85JZ6R
-	E1HwvBtzQOPkSa9hCYecqKUfN1E6KGHHJfNQ93oQk7Nh05wWktqWQdmcZ22Pg+AkqxpWcXmKBYnCt
-	mFg1NzdX7wz1DKrbqQ2pDfdzztC7F9D/GOb8okU+21Lcu1oNQRIZJbMNoKciIiM1FqSk/XAR98mlU
-	JzYAIDRDROPfxHxsxe5FyyAGuJngCnsl/5Wa++OVD/5rpelgK91I/+2PE0whGfKICLtbRrgcUgY4L
-	w/e5Ox+npNwEpki1c+nQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=etUNLniWHgJEJDCvw5GPxyP6mirBEPYcAYo8g53LeZg=; b=MYG7BIZFt9AJQyiR8Mzufc/hGM
+	KtNCyLSwxGJ3aT9hn3TjeaTKYxmtEwofvLp8dJdyRbiFatVA71gxzwjuecjh8bk+9PIiS7t/g6jvF
+	MbwnsUDoDEsd4vEEX4vRt+uBT4ZzY7F7mvIoOyc7P2i1mKHf0LAizi4w+NAU7H+peVhvrXKne3sMp
+	qN2cdQpWvClbjdDExMpJ+FnX8Pi/AkTDxDIL1lb9iI8UC9zB52shTpWtQy+XVZke5H6L4nBbNa0IK
+	ofnowD25rRBFrz1T9RGKwcZ/RqbaLmcKQKmF1JH608pdmeDhp2QB4gmi+CK4zdJDZlJVW6PK+G4H6
+	1OsoBnkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQUBF-006Ot8-VI; Tue, 23 Aug 2022 13:42:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oQUGR-006Qjm-MD; Tue, 23 Aug 2022 13:48:19 +0000
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQUBC-006Orb-K2; Tue, 23 Aug 2022 13:42:56 +0000
-X-UUID: d5d4b6409af6408baa45b0c0b1e1909d-20220823
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=T2ycAwB9AKCUd7Ti9SviyeWVoLkbuLNtdC5n82XdxWg=;
-	b=M1wZOywpS+oDpY42X/sIuhXLumRtRtCI5SOrVnx9j8yNmKn0Ii40TL6lmZYWisaXbsDFA4D623uIViR+8Hk0ukb1iHhIoeRCyMpgszOb35dIE3gTxcTpN2r7FPpDc0+94xjg2EyIH1fnBKBXCrukE7gtJ6vAY64RdYU2x44yj50=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:e84499f8-bfb2-4e91-80cc-e137c57b3ad1,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:4d201068-a9d9-4672-a3c8-12721739a220,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: d5d4b6409af6408baa45b0c0b1e1909d-20220823
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <zhiyong.tao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1548419458; Tue, 23 Aug 2022 06:42:49 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 23 Aug 2022 20:42:11 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 23 Aug 2022 20:42:10 +0800
-Message-ID: <9cea272d0bc50930b13ce8ce21fa474750b57fe1.camel@mediatek.com>
-Subject: Re: [PATCH v3 1/1] regulator: dt-bindings: mediatek: add mt6366
-From: zhiyong.tao <zhiyong.tao@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Tue, 23 Aug 2022 20:42:10 +0800
-In-Reply-To: <1349b271-796b-c9d2-a568-f9be84926ed4@linaro.org>
-References: <20220812092901.6429-1-zhiyong.tao@mediatek.com>
-	 <20220812092901.6429-2-zhiyong.tao@mediatek.com>
-	 <cbe761af-5011-83a2-0509-2b3c4fe0a79c@linaro.org>
-	 <4a49b619deb5453749a47874377cad6a36a9a054.camel@mediatek.com>
-	 <CAGE=qrohYZ6f9bbEuYfF=2Rz21nbW_8ho3rBQmHt1D+kQG2-jA@mail.gmail.com>
-	 <9bc148119fc36c34f404091ca0f5a2e37727c285.camel@mediatek.com>
-	 <1349b271-796b-c9d2-a568-f9be84926ed4@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oQUGO-006QhK-9b
+	for linux-mediatek@lists.infradead.org; Tue, 23 Aug 2022 13:48:18 +0000
+Received: by mail-lj1-x234.google.com with SMTP id w23so8428907ljj.7
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Aug 2022 06:48:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=etUNLniWHgJEJDCvw5GPxyP6mirBEPYcAYo8g53LeZg=;
+        b=G6u/gMHONj31bKntnY4mYMMepTc/qL4So3m6ypkJTVSM6Qx8oF5a7AjqcKACF0T90o
+         ABUxoYHTA10t/J7O8DagZehl8ZgohPjweSQbDRxeFvG0CKwaGJcJAsh7K0m+Ez5gy60a
+         RnrKHF312WnBAg9ACxc1UIB4SvNn7d8s9aOH2d7Pyg86qIzn+tlaKNlwpDfLpAI29njg
+         OZ9WRyx7e0k/Tbiqe6bDgOR43DH2MzXZWulM58eicHufIU36kVwe+ngKi9Xi8WGEUq26
+         3xRAi6KUKa5Wh2MS0Pm3IaPjvZMtMzUE5ikE5T/s/LxFQ++UU+SXZhe1/GLxsJ+kIC+9
+         NkYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=etUNLniWHgJEJDCvw5GPxyP6mirBEPYcAYo8g53LeZg=;
+        b=dayLV3dzbFdYF9wy1qfEaZ1y1Tk1rpNA6v4yEjs7KlFUeUuehFBIcscux6AVV2jVh4
+         vb1jkYMFAwA6fsjlvWYC+YsyPFb35CaIprt0JUvHbzlOx62R0d0kKaoS4UIBImZhr1Ob
+         dXPYyc8PZ289fgbd/UjDW3bg4qkRw2q3ZCgnsDv7IyxKnBNuXw4TPuLkfGVxczk7W1IC
+         mPuacN4KqlfX3XwUblEDmb0xKLZx595hSco8xPnRoHptmm7l1aoyJFsH2jrceMPaYaIj
+         B8niAaUBFG2LriodD7jKjImsh9Qnya8WntsCPLKwg6lgtTuzQfdzxFqNNvoK0vf9e1mW
+         ec8g==
+X-Gm-Message-State: ACgBeo3n+nC2fLe0BZC5gE35btACCmIjQEcpHI4nCUAjHH9SlwQoiH5l
+	rHryM91ozBSjBk3alMQxkUAurg==
+X-Google-Smtp-Source: AA6agR7LLkgQKhdY0aEo6fL4eDcJ/ReUbDhzV9yPR1SsZVcB8imNPrMITsvk9qQ5MHab1vJPAgJbIA==
+X-Received: by 2002:a2e:a812:0:b0:261:8f2d:9530 with SMTP id l18-20020a2ea812000000b002618f2d9530mr6450626ljq.251.1661262492350;
+        Tue, 23 Aug 2022 06:48:12 -0700 (PDT)
+Received: from [192.168.0.11] (89-27-92-210.bb.dnainternet.fi. [89.27.92.210])
+        by smtp.gmail.com with ESMTPSA id w23-20020ac24437000000b00492f6ddba59sm398330lfl.75.2022.08.23.06.48.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 23 Aug 2022 06:48:10 -0700 (PDT)
+Message-ID: <2d2511c7-760c-31d5-5283-8ab0b20849d6@linaro.org>
+Date: Tue, 23 Aug 2022 16:48:09 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH 1/2] ASoC: mediatek: dt-bindings: modify machine bindings
+ for SOF
+Content-Language: en-US
+To: Chunxu Li <chunxu.li@mediatek.com>, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, nfraprado@collabora.com,
+ broonie@kernel.org
+Cc: lgirdwood@gmail.com, matthias.bgg@gmail.com, jiaxin.yu@mediatek.com,
+ devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ project_global_chrome_upstream_group@mediatek.com
+References: <20220820075343.13993-1-chunxu.li@mediatek.com>
+ <20220820075343.13993-2-chunxu.li@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220820075343.13993-2-chunxu.li@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_064254_733613_656A2EF5 
-X-CRM114-Status: GOOD (  23.99  )
+X-CRM114-CacheID: sfid-20220823_064816_401288_71A2F960 
+X-CRM114-Status: GOOD (  13.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,77 +96,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, allen-kh.cheng@mediatek.com, linux-kernel@vger.kernel.org, macpaul.lin@mediatek.com, lee.jones@linaro.org, hsin-hsiung.wang@mediatek.com, linux-rtc@vger.kernel.org, wen.su@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org, sean.wang@mediatek.com, hui.liu@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, a.zummo@towertech.it, sen.chu@mediatek.com, lgirdwood@gmail.com, broonie@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-08-16 at 15:57 +0300, Krzysztof Kozlowski wrote:
-> On 16/08/2022 15:54, zhiyong.tao wrote:
-> > On Fri, 2022-08-12 at 15:55 +0300, Krzysztof Kozlowski wrote:
-> > > On Fri, 12 Aug 2022 at 15:52, zhiyong.tao <
-> > > zhiyong.tao@mediatek.com>
-> > > wrote:
-> > > > 
-> > > > On Fri, 2022-08-12 at 13:55 +0300, Krzysztof Kozlowski wrote:
-> > > > > On 12/08/2022 12:29, Zhiyong Tao wrote:
-> > > > > > Add mt6366 regulator document
-> > > > > > 
-> > > > > > +
-> > > > > > +properties:
-> > > > > > +  compatible:
-> > > > > > +    const: mediatek,mt6366-regulator
-> > > > > > +
-> > > > > > +  regulators:
-> > > > > > +    type: object
-> > > > > > +    description: List of regulators and its properties
-> > > > > > +
-> > > > > > +    patternProperties:
-> > > > > > +      "^buck-
-> > > > > > v(dram1|core|coresshub|proc11|proc12|gpu|s2|modem|s1)$":
-> > > > > > +        type: object
-> > > > > > +        $ref: regulator.yaml#
-> > > > > > +        unevaluatedProperties: false
-> > > > > > +
-> > > > > > +      "^ldo-
-> > > > > > v(dram2|sim1|ibr|rf12|usb|camio|camd|cn18|fe28)$":
-> > > > > > +        type: object
-> > > > > > +        $ref: regulator.yaml#
-> > > > > 
-> > > > > You miss unevaluatedProperties in most of the places.
-> > > > 
-> > > > Hi Krzysztof,
-> > > >    Thanks for your suggestion,
-> > > >    Do you mean that all places should have the
-> > > > unevaluatedProperties
-> > > > Properties ?
-> > > 
-> > > Yes. You put it in some of the places which does not really make
-> > > sense...
-> > 
-> > Hi Krzysztof,
-> >    Thanks for your suggestion,
-> >    We find that if there is a properties "compatible = "regulator-
-> > fixed";" in ldo-vrf12, we should set unevaluatedProperties as true.
-> > or it will check yaml warning "Unevaluated Properties are not
-> > allowed('compatible' was unexpected)". is it right?
-> >    There is a properties "compatible = "regulator-fixed";"in ldo-
-> > vrf12.
-> > It will cause the checking yaml error "ldo-vrf12: 'regulator-name'
-> > is a
-> > required property". Can you help to give a suggestion to fix the
-> > warning? Add regulator-name for ldo-vrf12 or other suggestion?
-> > 
+On 20/08/2022 10:53, Chunxu Li wrote:
+> From: "chunxu.li" <chunxu.li@mediatek.com>
 > 
-> And how this regulator is supposed to work? Are you populating DT
-> children in your driver?
-==>
-Hi Krzysztof, we will remove the properties "compatible = "regulator-
-fixed" for some ldo. It won't any check error.
-
-Thanks
-
+> Add SOF related field.
+> 1. Add a property "mediatek,adsp", Only when adsp phandle could be
+> retrieved from DTS, the SOF related part of machine driver is executed.
+> 2. Add a property "mediatek,dai-link" to support dai-links could be
+> specified from DTS
 > 
-> Best regards,
-> Krzysztof
+> Signed-off-by: chunxu.li <chunxu.li@mediatek.com>
+> ---
+>  .../bindings/sound/mt8186-mt6366-da7219-max98357.yaml  | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml b/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
+> index 513cd28b2027..d810dfccd1f8 100644
+> --- a/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
+> +++ b/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
+> @@ -43,6 +43,16 @@ properties:
+>      required:
+>        - sound-dai
+>  
+> +  mediatek,adsp:
+> +    $ref: "/schemas/types.yaml#/definitions/phandle"
 
+No need for quotes.
+
+Best regards,
+Krzysztof
 
