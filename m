@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42F8CC32774
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 02:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C8ADC32774
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 02:58:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/KcDcMgUIKjnQamTeV7faHzo4/GRgdb01f938wC0FF0=; b=wswnPOAwDN/K1tWy6dRTpNFMn/
-	vq8PhI/6RuD8InqmeiOxZtBJQn16AqfZtuzltSPYtzo3MXks1LyrfFMegRjCri/RrXFR+JAQEaBvH
-	3aI4tD6hgiK/Ytjuz6uzE+Nh2YRXH0nPCuCWU+NAvG3PdDwVp8RLZRodQ0gmoRcJamI3nx5odsOGG
-	bb8WgDAPj0KayNwW+9Z1c/ntLzpu/uX5swE5oWuijK98JjVishY40Kov2wJHdcrNm7Vt40p6DREna
-	NHS1ObO1lhQLJeQ1iuZ+R+rwGDJGJHISyycnfPFdNQYGjqRvn8Wg9ncxtNzkfc2+ZCBeBx3YzaxxR
-	gz7H+S6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=170kvgtp+PuxY3dCeidNg7sb0rnWVpuKLSPJmcle+pA=; b=0CqgXc99IGmifpPz1TNdmzQ3ki
+	QA/5ndeF7mrJSDnl2OPvlc1T8HMgDbuv+yl0nlwnnTAzs9UnutmHrXR8cenpab386p+oS2oBeRUf6
+	D/gAXreb5jxQ53VvZyXyk7XNs4Bvwmzk4LzDDbCkzOxXsK3R7Gj2bFftaf8y3Xyo4A6j34ll03MQJ
+	Uxt09jtK182gR7l/pLYD5hNV/RcK3Lkq3dqublBwIbyAdhX1654h0k+2VUKK6MPVb/35u43I91doe
+	RV4sXXEPKA7W+YyaRY/1prekgW/fXyRVHMvzHT0a7C5RcNESmGJTthz9/WA3CML6l+8P0cTLq10ok
+	Z9xiAmIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQgaD-00A5Iv-R4; Wed, 24 Aug 2022 02:57:33 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1oQgaf-00A5Qd-I7; Wed, 24 Aug 2022 02:58:01 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQga3-00A5Fn-8U; Wed, 24 Aug 2022 02:57:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1661309843; x=1692845843;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=jy6uHgqMUfjwvrFCqsckoPadRCKuYpnXSLFD6tiP3I0=;
-  b=AucP2gloKzfMmG1Y5OHjg8I12v9uJ14BH0oEXZgvCSOtPKnTuRkNJ+bD
-   f2o/7yzWXRQHDnDornxYf+PiPxOyRSYL13PeAc7ZExZkZVPkM1ClcNva3
-   x06Lr5n1HrkTIMzgUGa5ZpE6HynwLjrNN59hwj0dWxWXpZa7rUXIL5w96
-   dEVZI9AU1kNbYcjAJuuVQxHJHtkvVlvapXynnBRwUKqhVo5tbHgpMLgNy
-   x+JKXj6V3Xr3PzG+2w2+DOzabLAiHfvqgc94ho8Ga2tyw4GG/TkbRAPVp
-   GUjDYS1s7J2saaDPh5I5GOTRUpLvSO1RNReF7MLnxe8oakoOYgfBV9rDG
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10448"; a="293851754"
-X-IronPort-AV: E=Sophos;i="5.93,259,1654585200"; 
-   d="scan'208";a="293851754"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Aug 2022 19:57:18 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,259,1654585200"; 
-   d="scan'208";a="937723909"
-Received: from lkp-server02.sh.intel.com (HELO 9bbcefcddf9f) ([10.239.97.151])
-  by fmsmga005.fm.intel.com with ESMTP; 23 Aug 2022 19:57:15 -0700
-Received: from kbuild by 9bbcefcddf9f with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1oQgZv-0000tf-0o;
-	Wed, 24 Aug 2022 02:57:15 +0000
-Date: Wed, 24 Aug 2022 10:57:12 +0800
-From: kernel test robot <lkp@intel.com>
-To: Markus Schneider-Pargmann <msp@baylibre.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Fabien Parent <parent.f@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kbuild-all@lists.01.org, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Markus Schneider-Pargmann <msp@baylibre.com>
-Subject: Re: [PATCH v4 4/4] clk: mediatek: add driver for MT8365 SoC
-Message-ID: <202208241051.Xi9D8DaW-lkp@intel.com>
-References: <20220822152652.3499972-5-msp@baylibre.com>
+	id 1oQgaS-00A5MY-Ip; Wed, 24 Aug 2022 02:57:49 +0000
+X-UUID: ec3e87626a1049b4a6522db1f2e0ea6d-20220823
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=170kvgtp+PuxY3dCeidNg7sb0rnWVpuKLSPJmcle+pA=;
+	b=Taa89SeLQSulChF66A/7Md95Aw76+ZWzk1DNliE6tIEMmEWUHfcsFqJ7b0mxVpnXOw6UP3gIV7tFHaMYf3O37qA2ihNJO0XUreB2Q9Kz1RUyNX8yfwP0d3kdAOIjrwunPWmyNhJjp7AzX/5yFuOj8RpvcbAurh2k4ZkJXy+WbRo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:0d5e73e4-adb7-41d8-ba79-a87cf1ef9b68,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:660b9ac9-6b09-4f60-bf82-12f039f5d530,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: ec3e87626a1049b4a6522db1f2e0ea6d-20220823
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <zheng-yan.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 850513528; Tue, 23 Aug 2022 19:57:39 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 24 Aug 2022 10:07:00 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Wed, 24 Aug 2022 10:07:00 +0800
+Message-ID: <055d433d0b076af2e27e89c8576d39d2e4adc237.camel@mediatek.com>
+Subject: Re: [PATCH 3/3] arm64: dts: Modify gamma compatible for mt8195
+From: zheng-yan.chen <zheng-yan.chen@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, "Jason-JH . Lin"
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 24 Aug 2022 10:06:58 +0800
+In-Reply-To: <39f63588-bc88-a716-bc66-7f93c4aabc56@linaro.org>
+References: <20220822091945.21343-1-zheng-yan.chen@mediatek.com>
+	 <20220822091945.21343-4-zheng-yan.chen@mediatek.com>
+	 <39f63588-bc88-a716-bc66-7f93c4aabc56@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220822152652.3499972-5-msp@baylibre.com>
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_195723_332964_D74FDAF0 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20220823_195748_634729_536C9E1E 
+X-CRM114-Status: GOOD (  18.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,39 +86,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Markus,
+On Tue, 2022-08-23 at 11:40 +0300, Krzysztof Kozlowski wrote:
+> On 22/08/2022 12:19, zheng-yan.chen wrote:
+> > Modify gamma compatible for mt8195.
+> > 
+> > Signed-off-by: zheng-yan.chen <zheng-yan.chen@mediatek.com>
+> > 
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > index a50ebb5d145f..8504d01b103a 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > @@ -2021,8 +2021,8 @@
+> >  			mediatek,gce-client-reg = <&gce0
+> > SUBSYS_1c00XXXX 0x5000 0x1000>;
+> >  		};
+> >  
+> > -		gamma0: gamma@1c006000 {
+> > -			compatible = "mediatek,mt8195-disp-gamma",
+> > "mediatek,mt8183-disp-gamma";
+> > +		gamma0: disp_gamma@1c006000 {
+> 
+> No, really, no.
+> 
+> Not explained in commit msg, violates naming convention, violates
+> coding
+> style, not related to the patch at all.
+> 
+> Best regards,
+> Krzysztof
 
-Thank you for the patch! Yet something to improve:
+Sorry about that, I will change this "disp_gamma" back to "gamma".
 
-[auto build test ERROR on clk/clk-next]
-[also build test ERROR on robh/for-next linus/master v6.0-rc2 next-20220823]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Markus-Schneider-Pargmann/clk-mediatek-Add-mt8365-support/20220822-233030
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
-config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20220824/202208241051.Xi9D8DaW-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/51c1bac1ab0d284ab6c444966eee437c23095a85
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Markus-Schneider-Pargmann/clk-mediatek-Add-mt8365-support/20220822-233030
-        git checkout 51c1bac1ab0d284ab6c444966eee437c23095a85
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=m68k SHELL=/bin/bash
+Best Regards,
+Zheng-Yan Chen
 
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
-
-All errors (new ones prefixed by >>, old ones prefixed by <<):
-
->> ERROR: modpost: "mtk_clk_register_gates_with_dev" [drivers/clk/mediatek/clk-mt8365-mm.ko] undefined!
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
 
