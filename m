@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A81B9C32793
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 02:33:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42F8CC32774
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 02:57:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KlPzLGpmgNRlFL0JUMEWUMIjTIqCJVvNroVLdGPggLo=; b=Kkldl9ATD+XN7rCIXv6twri0Wy
-	lejsGBowOvyzgP908jcLKtVGu3pFuhzCR4piySNo5IAcB9gdt37+PKWyerUPloWFQ7xCzrSOECRRL
-	tNzFb0kMM+icXiV1o/OM5q+eV7pN1I9oWjX2KC4o9nMr5qlrZc/PaAhoUcdoWJkuFgJN6rv0pyPZk
-	qIoVnOreWa0FjxrGPI3rvhx4pp08sWJ9KuXjfmEIBz2XeolFU572KNjMLm7XJty1v9+e60QZF7tlD
-	3SponxSYQdS7uYecmV9L0Q2xXdF2453OMet4jJ+SV3Ru0QIj4N/kpFTaqoFTJnUV5MDrMvDBC/sYn
-	X0+7CWQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/KcDcMgUIKjnQamTeV7faHzo4/GRgdb01f938wC0FF0=; b=wswnPOAwDN/K1tWy6dRTpNFMn/
+	vq8PhI/6RuD8InqmeiOxZtBJQn16AqfZtuzltSPYtzo3MXks1LyrfFMegRjCri/RrXFR+JAQEaBvH
+	3aI4tD6hgiK/Ytjuz6uzE+Nh2YRXH0nPCuCWU+NAvG3PdDwVp8RLZRodQ0gmoRcJamI3nx5odsOGG
+	bb8WgDAPj0KayNwW+9Z1c/ntLzpu/uX5swE5oWuijK98JjVishY40Kov2wJHdcrNm7Vt40p6DREna
+	NHS1ObO1lhQLJeQ1iuZ+R+rwGDJGJHISyycnfPFdNQYGjqRvn8Wg9ncxtNzkfc2+ZCBeBx3YzaxxR
+	gz7H+S6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQgCd-00A0xi-Rj; Wed, 24 Aug 2022 02:33:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oQgaD-00A5Iv-R4; Wed, 24 Aug 2022 02:57:33 +0000
+Received: from mga14.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQgCS-00A0wE-It; Wed, 24 Aug 2022 02:33:02 +0000
-X-UUID: d73ccdc785b049a8965168466e490db5-20220823
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=KlPzLGpmgNRlFL0JUMEWUMIjTIqCJVvNroVLdGPggLo=;
-	b=jJ2Oh27Xo7OitJ0TGPqFHvRYBLz05e0sIFLjCwHg76CBsx1MKd5XyOuiWvO6kr6dTWY3/njrSKrrjxX+Rkzqgg8395xFfNTxQu2aXTE/02Pz12PNmPwTEWt8tiURSXH7PVOMjkbitEIW0W8mfDYxDl9opZq1BcLw3z+dYyMefjY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:3305fe1f-76b0-42a2-a623-80cd89489bb2,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:50431c68-a9d9-4672-a3c8-12721739a220,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: d73ccdc785b049a8965168466e490db5-20220823
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <xinlei.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1976395257; Tue, 23 Aug 2022 19:29:44 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 24 Aug 2022 09:59:09 +0800
-Received: from mszsdhlt06 (10.16.6.206) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 24 Aug 2022 09:59:08 +0800
-Message-ID: <447770ead17338241849dbbb2281fa8b4e31aefa.camel@mediatek.com>
-Subject: Re: [PATCH v3,2/2] drm: mediatek: Adjust the dpi output format to
- MT8186
-From: xinlei.lee <xinlei.lee@mediatek.com>
-To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
-CC: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
-	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>, <rex-bc.chen@mediatek.com>,
-	<angelogioacchino.delregno@collabora.com>, <jason-jh.lin@mediatek.com>,
-	<yongqiang.niu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jitao Shi
-	<jitao.shi@mediatek.com>
-Date: Wed, 24 Aug 2022 09:59:21 +0800
-In-Reply-To: <20220823201622.meedlqvmixf5ukdf@notapiano>
-References: <1661235517-23699-1-git-send-email-xinlei.lee@mediatek.com>
-	 <1661235517-23699-3-git-send-email-xinlei.lee@mediatek.com>
-	 <20220823201622.meedlqvmixf5ukdf@notapiano>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oQga3-00A5Fn-8U; Wed, 24 Aug 2022 02:57:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1661309843; x=1692845843;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=jy6uHgqMUfjwvrFCqsckoPadRCKuYpnXSLFD6tiP3I0=;
+  b=AucP2gloKzfMmG1Y5OHjg8I12v9uJ14BH0oEXZgvCSOtPKnTuRkNJ+bD
+   f2o/7yzWXRQHDnDornxYf+PiPxOyRSYL13PeAc7ZExZkZVPkM1ClcNva3
+   x06Lr5n1HrkTIMzgUGa5ZpE6HynwLjrNN59hwj0dWxWXpZa7rUXIL5w96
+   dEVZI9AU1kNbYcjAJuuVQxHJHtkvVlvapXynnBRwUKqhVo5tbHgpMLgNy
+   x+JKXj6V3Xr3PzG+2w2+DOzabLAiHfvqgc94ho8Ga2tyw4GG/TkbRAPVp
+   GUjDYS1s7J2saaDPh5I5GOTRUpLvSO1RNReF7MLnxe8oakoOYgfBV9rDG
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10448"; a="293851754"
+X-IronPort-AV: E=Sophos;i="5.93,259,1654585200"; 
+   d="scan'208";a="293851754"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Aug 2022 19:57:18 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,259,1654585200"; 
+   d="scan'208";a="937723909"
+Received: from lkp-server02.sh.intel.com (HELO 9bbcefcddf9f) ([10.239.97.151])
+  by fmsmga005.fm.intel.com with ESMTP; 23 Aug 2022 19:57:15 -0700
+Received: from kbuild by 9bbcefcddf9f with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1oQgZv-0000tf-0o;
+	Wed, 24 Aug 2022 02:57:15 +0000
+Date: Wed, 24 Aug 2022 10:57:12 +0800
+From: kernel test robot <lkp@intel.com>
+To: Markus Schneider-Pargmann <msp@baylibre.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Fabien Parent <parent.f@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kbuild-all@lists.01.org, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Markus Schneider-Pargmann <msp@baylibre.com>
+Subject: Re: [PATCH v4 4/4] clk: mediatek: add driver for MT8365 SoC
+Message-ID: <202208241051.Xi9D8DaW-lkp@intel.com>
+References: <20220822152652.3499972-5-msp@baylibre.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220822152652.3499972-5-msp@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_193300_639768_5E1B1908 
-X-CRM114-Status: GOOD (  29.03  )
+X-CRM114-CacheID: sfid-20220823_195723_332964_D74FDAF0 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,107 +88,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-08-23 at 16:16 -0400, Nícolas F. R. A. Prado wrote:
-> On Tue, Aug 23, 2022 at 02:18:37PM +0800, xinlei.lee@mediatek.com
-> wrote:
-> > From: Xinlei Lee <xinlei.lee@mediatek.com>
-> > 
-> > Dpi output needs to adjust the output format to dual edge for
-> > MT8186.
-> > Because MT8186 HW has been modified at that time, SW needs to
-> > cooperate.
-> > And the register (MMSYS) reserved for dpi will be used for output
-> > format control (dual_edge/single_edge).
-> > 
-> > Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
-> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> > 
-> > ---
-> 
-> [..]
-> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> 
-> [..]
-> >   * @yuv422_en_bit: Enable bit of yuv422.
-> >   * @csc_enable_bit: Enable bit of CSC.
-> >   * @pixels_per_iter: Quantity of transferred pixels per iteration.
-> > + * @rgb888_dual_enable: Control output format for mt8186.
-> 
-> Let's not mention mt8186 in the description to keep the property
-> generic. Also,
-> this description should say what having 'rgb888_dual_enable = true'
-> indicates
-> about the hardware (in this case mt8186) and it currently doesn't.
-> 
-> Let's take a step back. What does 'dual enable' mean in this context
-> and how
-> does it relate to 'dual edge' and the dpi output format? By answering
-> those
-> questions we can find a description (and maybe variable name) that
-> makes more
-> sense.
-> 
-> >   */
-> 
-> [..]
-> > @@ -449,6 +454,9 @@ static void mtk_dpi_dual_edge(struct mtk_dpi
-> > *dpi)
-> >  		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
-> >  			     dpi->output_fmt ==
-> > MEDIA_BUS_FMT_RGB888_2X12_LE ?
-> >  			     EDGE_SEL : 0, EDGE_SEL);
-> > +	if (dpi->conf->rgb888_dual_enable)
-> > +		mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev,
-> > DPI_RGB888_DDR_CON,
-> > +					     DPI_FORMAT_MASK, NULL);
-> 
-> This if block should be further indented.
-> 
-> >  	} else {
-> >  		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE,
-> > 0);
-> >  	}
-> 
-> [..]
-> > --- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> > @@ -235,4 +235,8 @@
-> >  #define MATRIX_SEL_RGB_TO_JPEG		0
-> >  #define MATRIX_SEL_RGB_TO_BT601		2
-> >  
-> > +#define DPI_FORMAT_MASK			0x1
-> > +#define DPI_RGB888_DDR_CON		BIT(0)
-> > +#define DPI_RGB565_SDR_CON		BIT(1)
-> 
-> I'm not sure if it would make more sense to have these definitions in
-> the mmsys
-> header since they're configurations of a register in mmsys'
-> iospace... I think
-> we can keep them here but at least add a comment above:
-> 
-> /* Values for DPI configuration in MMSYS address space */
-> 
-> Thanks,
-> Nícolas
+Hi Markus,
 
-Hi Nícolas:
-Thanks for your careful review!
-I will modify the description of this member variable and add the
-hardware state corresponding to the software setting.
-(eg. rgb888_dual_enable = true the hardware output rgb888_dual_edge
-format data)
+Thank you for the patch! Yet something to improve:
 
-Your suggestion is very necessary, maybe my name is not accurate
-enough, this flag is to enable RGB888_dual_edge format output. 
-Would it be better for the variable to be called
-RGB888_dual_edge_enable then?
+[auto build test ERROR on clk/clk-next]
+[also build test ERROR on robh/for-next linus/master v6.0-rc2 next-20220823]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Also I'll fix the code formatting issues
-and add descriptions to the mmsys registers in the mtk_dpi_regs.h file.
+url:    https://github.com/intel-lab-lkp/linux/commits/Markus-Schneider-Pargmann/clk-mediatek-Add-mt8365-support/20220822-233030
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
+config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20220824/202208241051.Xi9D8DaW-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 12.1.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/51c1bac1ab0d284ab6c444966eee437c23095a85
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Markus-Schneider-Pargmann/clk-mediatek-Add-mt8365-support/20220822-233030
+        git checkout 51c1bac1ab0d284ab6c444966eee437c23095a85
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=m68k SHELL=/bin/bash
 
-Best Regards!
-xinlei
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
 
+All errors (new ones prefixed by >>, old ones prefixed by <<):
+
+>> ERROR: modpost: "mtk_clk_register_gates_with_dev" [drivers/clk/mediatek/clk-mt8365-mm.ko] undefined!
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
