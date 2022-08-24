@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52D71C38145
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 07:14:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1A38C32793
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 07:34:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ImPKbcBfFtxcW/PmArBWSknFSFRwD2ALu+R1AKF/ecw=; b=PT5PK6CXheEAwzcMFlyaVtf8B6
-	naT/4m78T3Z5RUfDmgbbMXSjTH/kDAaIVkt3pPDl/kN+jkXKEFGUuVM41xw7pP00czr3jmZdQuZ10
-	UvmTN/RgRSpx074RRTBA+q/YeSKBALmqxMlENH7FIHtvbTWtktltsRt7aFVS2YSyGYYmS/HUEXwj5
-	1OGH9OnXJPw5yr5lcVLvjyszUGdvUfk/gEPzaF/h+L9TTDvsrUyUcwUmFa8Po6ArmjUiaQDBiHXz/
-	V9bqNfRSmLZVUjyQ9AUFe3nmjEf4H9awe8kwgjH9BXOOWzVUp7/HRssy0lAGoSEV+ULSSki1Oy8Km
-	BlWfvcOQ==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3mv7nC1GidQo3pcX1jLcFhAjG/DTVYdU2ZAAfY1xEIw=; b=FIYDTXnUXZ+qp0dJ1EClzHHJz7
+	hrOZRpD97d9eTbVwBTlqz6Fw0egVkP28VRbgFIXQc7VX4qats/4n0UZuSVBvukCZDEsHX6stx5zZ1
+	8LUl+D3VrayFrNFauOdpKhdGFren2CwGEkgAXuVJ/gN4JIr9EEOMvj/fswf8uIej9NPJwfzdXzCGR
+	OkZlTL4FMlV/vrLKJfe7MWWt0Jv7Ch/JxOqPqBoHNJaw1Q3dwkVcdolDb9Dr9uecT6zxtVi/M860O
+	1Oonmkdh82XcHjcTKAReFteeLtrrgafyQJtYCFwz40jinxpmIi6NIyToZsf+AMMiX/DS7qEez8v0F
+	ZcfsVufA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQkat-00B638-Mp; Wed, 24 Aug 2022 07:14:31 +0000
+	id 1oQkty-00BBXE-SC; Wed, 24 Aug 2022 07:34:14 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQkag-00B5zG-PX; Wed, 24 Aug 2022 07:14:20 +0000
-X-UUID: 1ab2f6cbdc354b1c91fd7b040d289ccf-20220824
+	id 1oQktn-00BBVO-QV; Wed, 24 Aug 2022 07:34:05 +0000
+X-UUID: e4de1f3c25c145ca8518985f91ae9d61-20220824
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ImPKbcBfFtxcW/PmArBWSknFSFRwD2ALu+R1AKF/ecw=;
-	b=k4uI9w1teasmcmKBmmf4c1KqaAj1JxHiperD3Y0bPTv9pUJFIqEG1HO6SDvaPxiQX6oSALo6eOODfvxUhOBXaFVQjpunu+x6h34P16Ct7AFMEuvdcKdwZgfvSzJp7uv9xfLBivT2WhxWrUQPPU0PTsKgKRViIBmGmLgEMIqee0U=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3mv7nC1GidQo3pcX1jLcFhAjG/DTVYdU2ZAAfY1xEIw=;
+	b=odpjMI4YTQ1nbivMO25ukzYX/DQJ9wmCVai8UeHDHDpL8S1Uoy3L2lwTj0HvHeLunYdJpKrTNAybZRB6vFwTQ3dhXgyMHyGEX4sjHrD2HscC7rfMSiM9bsF/CvFNTzMxo+hFxDgp4Fac9SkUmj/vY86aO3K7Apkg7pIdFRGKWhA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:4b4893d3-492d-4c45-8b56-a4006ed626fb,OB:0,L
+X-CID-O-INFO: VERSION:1.1.10,REQID:560310ac-f309-4e25-bb26-85e35e15dfb6,OB:0,L
 	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
 	_Ham,ACTION:release,TS:-5
-X-CID-META: VersionHash:84eae18,CLOUDID:6571a2c9-6b09-4f60-bf82-12f039f5d530,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+X-CID-META: VersionHash:84eae18,CLOUDID:9ee973cf-20bd-4e5e-ace8-00692b7ab380,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 1ab2f6cbdc354b1c91fd7b040d289ccf-20220824
+X-UUID: e4de1f3c25c145ca8518985f91ae9d61-20220824
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <yong.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 924868230; Wed, 24 Aug 2022 00:14:14 -0700
+	with ESMTP id 267699567; Wed, 24 Aug 2022 00:33:58 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 24 Aug 2022 14:43:38 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 24 Aug 2022 14:43:11 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 24 Aug 2022 14:43:37 +0800
+ Transport; Wed, 24 Aug 2022 14:43:10 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
 	Will Deacon <will@kernel.org>
@@ -59,18 +59,17 @@ CC: Robin Murphy <robin.murphy@arm.com>, <iommu@lists.linux.dev>,
 	<youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
 	<xueqi.zhang@mediatek.com>, Guenter Roeck <groeck@chromium.org>, "Dan
  Carpenter" <dan.carpenter@oracle.com>
-Subject: [PATCH v4 2/6] iommu/mediatek: Use component_match_add
-Date: Wed, 24 Aug 2022 14:43:02 +0800
-Message-ID: <20220824064306.21495-3-yong.wu@mediatek.com>
+Subject: [PATCH v4 0/6] iommu/mediatek: Improve safety from invalid dts input
+Date: Wed, 24 Aug 2022 14:43:00 +0800
+Message-ID: <20220824064306.21495-1-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220824064306.21495-1-yong.wu@mediatek.com>
-References: <20220824064306.21495-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220824_001418_850695_36D7778F 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20220824_003403_875291_C5557336 
+X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,50 +84,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to simplify the error patch(avoid call of_node_put), Use
-component_match_add instead component_match_add_release since we are only
-interested in the "device" here. Then we could always call of_node_put in
-normal path.
+This patchset contains misc improve patches. Mainly to improve safety from 
+invalid dts input.
 
-Strictly this is not a fixes patch, but it is a prepare for adding the
-error path, thus I add a Fixes tag too.
+Change notes:
+v4: a) Just remove the first patch about dev_err_probe since it was merged.
+    b) Rebase v6.0-rc1
 
-Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow with the MM TYPE")
-Suggested-by: Robin Murphy <robin.murphy@arm.com>
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/iommu/mtk_iommu.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+v3: https://lore.kernel.org/linux-mediatek/20220701053942.3266-1-yong.wu@mediatek.com/
+    a) Add platform_device_put from Robin.
+    b) Use component_match_add instead component_match_add_release suggested from Robin.
+    
+v2: https://lore.kernel.org/linux-mediatek/20220616054203.11365-1-yong.wu@mediatek.com/
+    a) Rebase on v5.19-rc1.
+    b) Add a New patch [5/5] just remove a variable that only is for v1.
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index f2560ce72b6c..9c5902207bef 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -1066,19 +1066,17 @@ static int mtk_iommu_mm_dts_parse(struct device *dev, struct component_match **m
- 			id = i;
- 
- 		plarbdev = of_find_device_by_node(larbnode);
--		if (!plarbdev) {
--			of_node_put(larbnode);
-+		of_node_put(larbnode);
-+		if (!plarbdev)
- 			return -ENODEV;
--		}
-+
- 		if (!plarbdev->dev.driver) {
--			of_node_put(larbnode);
- 			platform_device_put(plarbdev);
- 			return -EPROBE_DEFER;
- 		}
- 		data->larb_imu[id].dev = &plarbdev->dev;
- 
--		component_match_add_release(dev, match, component_release_of,
--					    component_compare_of, larbnode);
-+		component_match_add(dev, match, component_compare_dev, &plarbdev->dev);
- 		platform_device_put(plarbdev);
- 	}
- 
+v1: https://lore.kernel.org/linux-mediatek/20220511064920.18455-1-yong.wu@mediatek.com/
+    Base on linux-next-20220510.
+    the improve safety from dts is base on:
+    https://lore.kernel.org/linux-mediatek/20211210205704.1664928-1-linux@roeck-us.net/
+
+Guenter Roeck (1):
+  iommu/mediatek: Validate number of phandles associated with
+    "mediatek,larbs"
+
+Yong Wu (5):
+  iommu/mediatek: Add platform_device_put for recovering the device
+    refcnt
+  iommu/mediatek: Use component_match_add
+  iommu/mediatek: Add error path for loop of mm_dts_parse
+  iommu/mediatek: Improve safety for mediatek,smi property in larb nodes
+  iommu/mediatek: Remove unused "mapping" member from mtk_iommu_data
+
+ drivers/iommu/mtk_iommu.c | 115 +++++++++++++++++++++++++++-----------
+ 1 file changed, 83 insertions(+), 32 deletions(-)
+
 -- 
 2.18.0
+
 
 
