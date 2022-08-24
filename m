@@ -4,66 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85B26C00140
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 08:39:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67C4FC00140
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 10:44:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yAXagOo92+MWGQkw86pPu+TQGTJ99qgZAjWXzwKYAx4=; b=wAXjAot+LRfRTp3Yebtv1m1Y0X
-	uBSVJmT/Luda65K598flpi2dz+EN1OONQZ2gYAoDnwAe/mbOdeTeZCNT6IDlXahTY8Kvp52ae9HM4
-	3qEFu092kFxpUuL0XuOgpub9ZVxRO8WNl/8RjPGSq2G/X799FkPpRDyLJg9hJW84GvgJRgzzCaEbl
-	55INlpTmPzsNswSgnQdYBiQH0rtcKCsfS8Nsv4cMsXC9XD2+24CcfbaVuHYCB1oW3MNQoEFGnV7ht
-	wTp7rWDzeYljBIzFQJevmOqPFrPlvyI183pxd5RgDdPRAFV+k57+i2QphSmo27CulrmRLxo5bwAHI
-	XzA6lOUQ==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=WMCxlPsl40flIpJ321yhlNA4xMKLAO8BUfBREIrIJvU=; b=SV4lr4ULQ3bn3HqB3+Ux0Kkev/
+	aSPBbQsgZSlMF1YTxuVgFXf+Kgzj4ur1T1cIep/mKFDUAgIoKlac4GVOUC9wB47A4+sHo4wNyDBzC
+	WA+Bul+dzzozunEv/lTMO07LtS3RufTMgQj30QZNxGUTpvFTKdXmlhX/zM6ky71DchHDrvG/reFuo
+	h1WP0hfBDT2HvVchbIrAATRamre5NM5EXOaMhUzRcZchNy30Nco/dcWPWBR+1egbxcpRYUBVqYPmW
+	m8ySbCFgqZevW2EnGLJiPgfB6A9KOMZAmAz8/6+cxWTdq0aoRplmXz6K9Kx2jsOawIgOd/HFBuUZS
+	hWuIPv5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQlvM-00BX9A-Kk; Wed, 24 Aug 2022 08:39:44 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oQnra-00CA7b-TM; Wed, 24 Aug 2022 10:43:58 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQlvA-00BX5S-CD; Wed, 24 Aug 2022 08:39:34 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0C14C617A5;
-	Wed, 24 Aug 2022 08:39:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF14EC433D6;
-	Wed, 24 Aug 2022 08:39:25 +0000 (UTC)
-Message-ID: <3ccf3023-9b1c-2ae6-dd70-6f318eec22e2@xs4all.nl>
-Date: Wed, 24 Aug 2022 10:39:24 +0200
+	id 1oQnrP-00CA2A-Pm; Wed, 24 Aug 2022 10:43:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1661337795; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=V8wuVU/hNynQg7qL5KKj79KU2uvTdKcQEHSN+Sw2nob+vVldqgwoNBtvaB3oWO5uaaT3sPBE90bZS5qNYadE1IJTTWCkVDIUmlu9kcXFVkKI5IYf4QverM7yzEwPtC8uQok0qjgaILJ9Kz7E64KxhdnfNV5/fl/aZIqKwqBkSjw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1661337795; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To; 
+	bh=WMCxlPsl40flIpJ321yhlNA4xMKLAO8BUfBREIrIJvU=; 
+	b=JJMpF9HrC4TrKi3sKrgQnaYtXmo2TFH42drXwkfpzJKwWC60HIk9gBk/JCLJA5/IUEeqckWBDKrquB1en9F1/fyTtyFlIGaH3vW3v1N8oLDEh2MJdFCNXskmMz+DZZVep6LVp9gop+x4DxXAq3s0fh1dvVsecEHFyXDQ8p/3hpE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1661337795;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
+	bh=WMCxlPsl40flIpJ321yhlNA4xMKLAO8BUfBREIrIJvU=;
+	b=K3agrN48Emhnpyu77XElWQgWTnJtB3/KCD9j9iytvc6TX5R7afSVmPh8/jyNeWAI
+	Em0tzS93qxC8nK9Zftxzzk388+610Ut9F6dpO4zdDAvUfN6y/Ff9c7QJy+fx0+ByfFB
+	VZLAu56L0sqXVSRplPq2sllJ2urLNvOuaclDD7HY=
+Received: from arinc9-PC.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1661337793893739.3704277913475; Wed, 24 Aug 2022 03:43:13 -0700 (PDT)
+From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+To: Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Luiz Angelo Daros de Luca <luizluca@gmail.com>,
+	Sander Vanheule <sander@svanheule.net>,
+	Daniel Golle <daniel@makrotopia.org>,
+	erkin.bozoglu@xeront.com,
+	Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Cc: netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+Subject: [PATCH v5 0/7] completely rework mediatek,mt7530 binding
+Date: Wed, 24 Aug 2022 13:40:33 +0300
+Message-Id: <20220824104040.17527-1-arinc.unal@arinc9.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v28 4/4] media: platform: mtk-mdp3: add MediaTek MDP3
- driver
-Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Alexandre Courbot
- <acourbot@chromium.org>, tfiga@chromium.org, drinkcat@chromium.org,
- pihsun@chromium.org, hsinyi@google.com,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com, cellopoint.kai@gmail.com,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- daoyuan huang <daoyuan.huang@mediatek.com>
-References: <20220823023803.27850-1-moudy.ho@mediatek.com>
- <20220823023803.27850-5-moudy.ho@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <20220823023803.27850-5-moudy.ho@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220824_013932_528476_EC4C4367 
-X-CRM114-Status: GOOD (  28.27  )
+X-CRM114-CacheID: sfid-20220824_034347_909472_5AD36772 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,129 +96,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Moudy,
+Hello.
 
-On 23/08/2022 04:38, Moudy Ho wrote:
-> This patch adds driver for MediaTek's Media Data Path ver.3 (MDP3).
-> It provides the following functions:
->   color transform, format conversion, resize, crop, rotate, flip
->   and additional image quality enhancement.
-> 
-> The MDP3 driver is mainly used for Google Chromebook products to
-> import the new architecture to set the HW settings as shown below:
->   User -> V4L2 framework
->     -> MDP3 driver -> SCP (setting calculations)
->       -> MDP3 driver -> CMDQ (GCE driver) -> HW
-> 
-> Each modules' related operation control is sited in mtk-mdp3-comp.c
-> Each modules' register table is defined in file with "mdp_reg_" prefix
-> GCE related API, operation control  sited in mtk-mdp3-cmdq.c
-> V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
-> Probe, power, suspend/resume, system level functions are defined in
-> mtk-mdp3-core.c
-> 
-> Signed-off-by: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-> Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/media/platform/mediatek/Kconfig       |    1 +
->  drivers/media/platform/mediatek/Makefile      |    1 +
->  drivers/media/platform/mediatek/mdp3/Kconfig  |   20 +
->  drivers/media/platform/mediatek/mdp3/Makefile |    6 +
->  .../platform/mediatek/mdp3/mdp_reg_ccorr.h    |   19 +
->  .../platform/mediatek/mdp3/mdp_reg_rdma.h     |   65 ++
->  .../platform/mediatek/mdp3/mdp_reg_rsz.h      |   39 +
->  .../platform/mediatek/mdp3/mdp_reg_wdma.h     |   47 +
->  .../platform/mediatek/mdp3/mdp_reg_wrot.h     |   55 +
->  .../platform/mediatek/mdp3/mtk-img-ipi.h      |  290 +++++
->  .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    |  466 ++++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |   43 +
->  .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 1033 +++++++++++++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  186 +++
->  .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  357 ++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-core.h    |   94 ++
->  .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     |  724 ++++++++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-m2m.h     |   48 +
->  .../platform/mediatek/mdp3/mtk-mdp3-regs.c    |  735 ++++++++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-regs.h    |  373 ++++++
->  .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     |  313 +++++
->  .../platform/mediatek/mdp3/mtk-mdp3-vpu.h     |   78 ++
->  22 files changed, 4993 insertions(+)
->  create mode 100644 drivers/media/platform/mediatek/mdp3/Kconfig
->  create mode 100644 drivers/media/platform/mediatek/mdp3/Makefile
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_ccorr.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_rdma.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_rsz.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_wdma.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_wrot.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.c
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.h
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
->  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.h
-> 
-> diff --git a/drivers/media/platform/mediatek/Kconfig b/drivers/media/platform/mediatek/Kconfig
-> index af47d9888552..84104e2cd024 100644
-> --- a/drivers/media/platform/mediatek/Kconfig
-> +++ b/drivers/media/platform/mediatek/Kconfig
-> @@ -6,3 +6,4 @@ source "drivers/media/platform/mediatek/jpeg/Kconfig"
->  source "drivers/media/platform/mediatek/mdp/Kconfig"
->  source "drivers/media/platform/mediatek/vcodec/Kconfig"
->  source "drivers/media/platform/mediatek/vpu/Kconfig"
-> +source "drivers/media/platform/mediatek/mdp3/Kconfig"
-> diff --git a/drivers/media/platform/mediatek/Makefile b/drivers/media/platform/mediatek/Makefile
-> index d3850a13f128..38e6ba917fe5 100644
-> --- a/drivers/media/platform/mediatek/Makefile
-> +++ b/drivers/media/platform/mediatek/Makefile
-> @@ -3,3 +3,4 @@ obj-y += jpeg/
->  obj-y += mdp/
->  obj-y += vcodec/
->  obj-y += vpu/
-> +obj-y += mdp3/
-> diff --git a/drivers/media/platform/mediatek/mdp3/Kconfig b/drivers/media/platform/mediatek/mdp3/Kconfig
-> new file mode 100644
-> index 000000000000..af371c17c386
-> --- /dev/null
-> +++ b/drivers/media/platform/mediatek/mdp3/Kconfig
-> @@ -0,0 +1,20 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +config VIDEO_MEDIATEK_MDP3
-> +	tristate "MediaTek MDP v3 driver"
-> +	depends on MTK_IOMMU || COMPILE_TEST
-> +	depends on VIDEO_DEV
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	depends on HAS_DMA
+This patch series brings complete rework of the mediatek,mt7530 binding.
 
-A 'depends on REMOTEPROC' is missing here (see the 'kernel test robot' email
-you received), but I have added that myself.
+The binding is checked with "make dt_binding_check
+DT_SCHEMA_FILES=mediatek,mt7530.yaml".
 
-It's now in my for-v6.1c branch. If I don't see any new 'kernel test robot'
-emails in the next few days, then I'll make a PR early next week.
+If anyone knows the GIC bit for interrupt for multi-chip module MT7530 in
+MT7623AI SoC, let me know. I'll add it to the examples.
 
-Regards,
+If anyone got a Unielec U7623 or another MT7623AI board, please reach out.
 
-	Hans
+v5:
+- Remove lists for single items.
+- Split fix reset lines patch, add new patch to fix mediatek,mcm property.
+- Remove Rob's Reviewed-by: from first patch because of new changes.
+- Add Krzysztof's Reviewed-by: and Acked-by: to where they're given.
 
-> +	select VIDEOBUF2_DMA_CONTIG
-> +	select V4L2_MEM2MEM_DEV
-> +	select MTK_MMSYS
-> +	select VIDEO_MEDIATEK_VPU
-> +	select MTK_CMDQ
-> +	select MTK_SCP
-> +	default n
-> +	help
-> +	    It is a v4l2 driver and present in MediaTek MT8183 SoC.
-> +	    The driver supports scaling and color space conversion.
-> +
-> +	    To compile this driver as a module, choose M here: the
-> +	    module will be called mtk-mdp3.
+v4:
+- Define reg property on $defs as it's the same for all switch models.
+
+v3:
+- Add Rob's Reviewed-by: to first patch.
+- Explain why to invalidating reset-gpios and mediatek,mcm.
+- Do not change ethernet-ports to ports on examples.
+- Remove platform and, when possible, ethernet nodes from examples.
+- Remove pinctrl binding from examples.
+- Combine removing unnecesary lines patch with relocating port binding.
+- Define $defs of mt7530 and mt7531 port binding and refer to them in each
+compatible device.
+- Remove allOf: for cases where there's only a single if:.
+- Use else: for cpu port 6 which simplifies the binding.
+- State clearly that the DSA driver does not support the MT7530 switch in
+MT7620 SoCs.
+
+v2:
+- Change the way of adding descriptions for each compatible string.
+- Split the patch for updating the json-schema.
+- Make slight changes on the patch for the binding description.
+
+Arınç ÜNAL (7):
+  dt-bindings: net: dsa: mediatek,mt7530: make trivial changes
+  dt-bindings: net: dsa: mediatek,mt7530: fix description of mediatek,mcm
+  dt-bindings: net: dsa: mediatek,mt7530: fix reset lines
+  dt-bindings: net: dsa: mediatek,mt7530: update examples
+  dt-bindings: net: dsa: mediatek,mt7530: define port binding per switch
+  dt-bindings: net: dsa: mediatek,mt7530: define phy-mode for switch models
+  dt-bindings: net: dsa: mediatek,mt7530: update binding description
+
+ .../bindings/net/dsa/mediatek,mt7530.yaml       | 677 +++++++++++++++----
+ 1 file changed, 538 insertions(+), 139 deletions(-)
+
+
 
