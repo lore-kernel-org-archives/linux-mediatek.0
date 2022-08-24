@@ -4,124 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F923C32793
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 01:34:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A81B9C32793
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 02:33:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=15+zFGICN73u7PZkuVftuGFAaRqO2hNiuUPbcuB/iDw=; b=o8BMEswFzZCzsKQmtFYEqbpCl1
-	f5w54XR3cDJGL7zXBPRwrYRVGyKIedtGf/3p04zpmhlEwFQmCIqUfqVFKoJokqsH++B186EDwLi3I
-	dTg2P/OQbW1G0u9RQ6GDAM2zhCyFIdWTVhq9EMq9fIhJ+3kgeJZE8fCr31BfmxtkkZflX3s6wLS8C
-	flCFlTiq70MB/Jqr5738Ki6QbvDOWpDwIFg3cRAnzghekGu4lwYxNHvu1k2TI0vxFS3AUiri9VMfT
-	hQVjpetU1bIoIgRLtWdr7SailZ5jafFPiuY0VN6iCYsHKpDho4VWDMDGIi6l+YpMUDk/eFoSFy/Fw
-	diImV7ng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KlPzLGpmgNRlFL0JUMEWUMIjTIqCJVvNroVLdGPggLo=; b=Kkldl9ATD+XN7rCIXv6twri0Wy
+	lejsGBowOvyzgP908jcLKtVGu3pFuhzCR4piySNo5IAcB9gdt37+PKWyerUPloWFQ7xCzrSOECRRL
+	tNzFb0kMM+icXiV1o/OM5q+eV7pN1I9oWjX2KC4o9nMr5qlrZc/PaAhoUcdoWJkuFgJN6rv0pyPZk
+	qIoVnOreWa0FjxrGPI3rvhx4pp08sWJ9KuXjfmEIBz2XeolFU572KNjMLm7XJty1v9+e60QZF7tlD
+	3SponxSYQdS7uYecmV9L0Q2xXdF2453OMet4jJ+SV3Ru0QIj4N/kpFTaqoFTJnUV5MDrMvDBC/sYn
+	X0+7CWQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQfHH-009qNQ-4i; Wed, 24 Aug 2022 01:33:55 +0000
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+	id 1oQgCd-00A0xi-Rj; Wed, 24 Aug 2022 02:33:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQfHB-009qHK-Sw
-	for linux-mediatek@lists.infradead.org; Wed, 24 Aug 2022 01:33:52 +0000
-Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-333a4a5d495so423856257b3.10
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Aug 2022 18:33:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=15+zFGICN73u7PZkuVftuGFAaRqO2hNiuUPbcuB/iDw=;
-        b=ammrl+ffQIbxpXELKnFxaurs3Fbe2bx9R/IRI2+J5pQAM/wfjFh1aSFzyWG/E1RD5I
-         rshOZlmvK+Bt4a2MNbUFbSpkCeSrrxRT3zaVTQqLRUMz4elzDZb4CyvIvtQzq4jGwi+1
-         HBILJXTenmBL8ezDV/XzSltMyRVW8N5pGLVc6ZMhlIDEvl+mrwxpUc5n+db5z5Pfve4k
-         jWbqAzYB3Hyg5oa2ZHgXfW73ElDNxOwcp7mMt28pojnFNBEyD2+0HttoLOb68bdPn3gz
-         h+F5uqyOw5Q9oI+0N52Nr3XEpZ0TzyQMzlW05rWkdP3Hj3nW89n+8r+x6EjcJTcjYaCu
-         dSgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=15+zFGICN73u7PZkuVftuGFAaRqO2hNiuUPbcuB/iDw=;
-        b=zeFwCndPY4ZbfSa/qOfupF9GFMV0osiAONslEZR5aVC2z6Y3gbrqxRgufSFJCrmRdM
-         sFf6qRgNJHHw8ridlvyBm4Rdys4+zHyB+X1VfWURLJEthRmfddpBUM1oMgkoInRSSXql
-         Of92BaviMD+uGEWrziPzKythP0OTFNyDcTR0CY97ej1BH/yNrGvD863mHHNuC+RidsJ9
-         sVTCV4w7+zMQ0pYeWLZs+AddE5JWH6f5AUco8tNaxa1jUJVL91i/s8SHoXeBN8Jnhkvn
-         Gt83m7xPCbGbMAQZLUUuWUTz8PruY00ejYNh2HnaQmb3ZRCPEHGeOYeXazQW07JNfVqF
-         hwcQ==
-X-Gm-Message-State: ACgBeo3Zgt540on0DNNH6x1Jf/Db4c9oZZ4DyyrW4ON9iHTky1UG63NL
-	kZ8+3+YZSkCwhHMOglAsqp63NJcOt+EsXLlliKDNLQ==
-X-Google-Smtp-Source: AA6agR5VUVZnLczkpHKFOKrnd+Tscg/SlOlcCZoOHfOkTvdY9LhPO1gaSJJ+tW/v5A56NSwT8mnZVrMApq5J4jdaQcY=
-X-Received: by 2002:a25:1546:0:b0:68f:8758:7348 with SMTP id
- 67-20020a251546000000b0068f87587348mr24825887ybv.563.1661304824786; Tue, 23
- Aug 2022 18:33:44 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220701012647.2007122-1-saravanak@google.com> <YwS5J3effuHQJRZ5@kroah.com>
-In-Reply-To: <YwS5J3effuHQJRZ5@kroah.com>
-From: Saravana Kannan <saravanak@google.com>
-Date: Tue, 23 Aug 2022 18:33:07 -0700
-Message-ID: <CAGETcx8C_Hw588J_DsDELp2rS-UNnezpqqqvUixqGR7m2wDKaA@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] Fix console probe delay when stdout-path isn't set
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Laurentiu Tudor <laurentiu.tudor@nxp.com>, 
-	Jiri Slaby <jirislaby@kernel.org>, Michael Ellerman <mpe@ellerman.id.au>, 
-	Benjamin Herrenschmidt <benh@kernel.crashing.org>, Paul Mackerras <paulus@samba.org>, 
-	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, 
-	Nicolas Saenz Julienne <nsaenz@kernel.org>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, Al Cooper <alcooperx@gmail.com>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
-	Tobias Klauser <tklauser@distanz.ch>, Russell King <linux@armlinux.org.uk>, 
-	Vineet Gupta <vgupta@kernel.org>, Richard Genoud <richard.genoud@gmail.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Alexander Shiyan <shc_work@mail.ru>, 
-	Baruch Siach <baruch@tkos.co.il>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Karol Gugala <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, 
-	Gabriel Somlo <gsomlo@gmail.com>, Neil Armstrong <narmstrong@baylibre.com>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <bjorn.andersson@linaro.org>, Pali Rohar <pali@kernel.org>, 
-	Andreas Farber <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Laxman Dewangan <ldewangan@nvidia.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang7@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, "David S. Miller" <davem@davemloft.net>, 
-	Hammer Hsieh <hammerh0314@gmail.com>, Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>, 
-	Michal Simek <michal.simek@xilinx.com>, Rob Herring <robh@kernel.org>, 
-	sascha hauer <sha@pengutronix.de>, peng fan <peng.fan@nxp.com>, kevin hilman <khilman@kernel.org>, 
-	ulf hansson <ulf.hansson@linaro.org>, len brown <len.brown@intel.com>, 
-	pavel machek <pavel@ucw.cz>, joerg roedel <joro@8bytes.org>, will deacon <will@kernel.org>, 
-	andrew lunn <andrew@lunn.ch>, heiner kallweit <hkallweit1@gmail.com>, 
-	eric dumazet <edumazet@google.com>, jakub kicinski <kuba@kernel.org>, paolo abeni <pabeni@redhat.com>, 
-	linus walleij <linus.walleij@linaro.org>, hideaki yoshifuji <yoshfuji@linux-ipv6.org>, 
-	david ahern <dsahern@kernel.org>, kernel-team@android.com, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, iommu@lists.linux-foundation.org, 
-	netdev@vger.kernel.org, linux-gpio@vger.kernel.org, 
-	linuxppc-dev@lists.ozlabs.org, linux-serial@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	linux-snps-arc@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-actions@lists.infradead.org, 
-	linux-unisoc@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	sparclinux@vger.kernel.org
+	id 1oQgCS-00A0wE-It; Wed, 24 Aug 2022 02:33:02 +0000
+X-UUID: d73ccdc785b049a8965168466e490db5-20220823
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=KlPzLGpmgNRlFL0JUMEWUMIjTIqCJVvNroVLdGPggLo=;
+	b=jJ2Oh27Xo7OitJ0TGPqFHvRYBLz05e0sIFLjCwHg76CBsx1MKd5XyOuiWvO6kr6dTWY3/njrSKrrjxX+Rkzqgg8395xFfNTxQu2aXTE/02Pz12PNmPwTEWt8tiURSXH7PVOMjkbitEIW0W8mfDYxDl9opZq1BcLw3z+dYyMefjY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:3305fe1f-76b0-42a2-a623-80cd89489bb2,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:50431c68-a9d9-4672-a3c8-12721739a220,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: d73ccdc785b049a8965168466e490db5-20220823
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1976395257; Tue, 23 Aug 2022 19:29:44 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 24 Aug 2022 09:59:09 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Wed, 24 Aug 2022 09:59:08 +0800
+Message-ID: <447770ead17338241849dbbb2281fa8b4e31aefa.camel@mediatek.com>
+Subject: Re: [PATCH v3,2/2] drm: mediatek: Adjust the dpi output format to
+ MT8186
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
+CC: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>, <rex-bc.chen@mediatek.com>,
+	<angelogioacchino.delregno@collabora.com>, <jason-jh.lin@mediatek.com>,
+	<yongqiang.niu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jitao Shi
+	<jitao.shi@mediatek.com>
+Date: Wed, 24 Aug 2022 09:59:21 +0800
+In-Reply-To: <20220823201622.meedlqvmixf5ukdf@notapiano>
+References: <1661235517-23699-1-git-send-email-xinlei.lee@mediatek.com>
+	 <1661235517-23699-3-git-send-email-xinlei.lee@mediatek.com>
+	 <20220823201622.meedlqvmixf5ukdf@notapiano>
 Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_183349_963224_62E8D758 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20220823_193300_639768_5E1B1908 
+X-CRM114-Status: GOOD (  29.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,20 +87,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 23, 2022 at 4:25 AM Greg Kroah-Hartman
-<gregkh@linuxfoundation.org> wrote:
->
-> On Thu, Jun 30, 2022 at 06:26:38PM -0700, Saravana Kannan wrote:
-> > These patches are on top of driver-core-next.
-> >
-> > Even if stdout-path isn't set in DT, this patch should take console
-> > probe times back to how they were before the deferred_probe_timeout
-> > clean up series[1].
->
-> Now dropped from my queue due to lack of a response to other reviewer's
-> questions.
+On Tue, 2022-08-23 at 16:16 -0400, Nícolas F. R. A. Prado wrote:
+> On Tue, Aug 23, 2022 at 02:18:37PM +0800, xinlei.lee@mediatek.com
+> wrote:
+> > From: Xinlei Lee <xinlei.lee@mediatek.com>
+> > 
+> > Dpi output needs to adjust the output format to dual edge for
+> > MT8186.
+> > Because MT8186 HW has been modified at that time, SW needs to
+> > cooperate.
+> > And the register (MMSYS) reserved for dpi will be used for output
+> > format control (dual_edge/single_edge).
+> > 
+> > Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
+> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> > 
+> > ---
+> 
+> [..]
+> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> 
+> [..]
+> >   * @yuv422_en_bit: Enable bit of yuv422.
+> >   * @csc_enable_bit: Enable bit of CSC.
+> >   * @pixels_per_iter: Quantity of transferred pixels per iteration.
+> > + * @rgb888_dual_enable: Control output format for mt8186.
+> 
+> Let's not mention mt8186 in the description to keep the property
+> generic. Also,
+> this description should say what having 'rgb888_dual_enable = true'
+> indicates
+> about the hardware (in this case mt8186) and it currently doesn't.
+> 
+> Let's take a step back. What does 'dual enable' mean in this context
+> and how
+> does it relate to 'dual edge' and the dpi output format? By answering
+> those
+> questions we can find a description (and maybe variable name) that
+> makes more
+> sense.
+> 
+> >   */
+> 
+> [..]
+> > @@ -449,6 +454,9 @@ static void mtk_dpi_dual_edge(struct mtk_dpi
+> > *dpi)
+> >  		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
+> >  			     dpi->output_fmt ==
+> > MEDIA_BUS_FMT_RGB888_2X12_LE ?
+> >  			     EDGE_SEL : 0, EDGE_SEL);
+> > +	if (dpi->conf->rgb888_dual_enable)
+> > +		mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev,
+> > DPI_RGB888_DDR_CON,
+> > +					     DPI_FORMAT_MASK, NULL);
+> 
+> This if block should be further indented.
+> 
+> >  	} else {
+> >  		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE,
+> > 0);
+> >  	}
+> 
+> [..]
+> > --- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+> > @@ -235,4 +235,8 @@
+> >  #define MATRIX_SEL_RGB_TO_JPEG		0
+> >  #define MATRIX_SEL_RGB_TO_BT601		2
+> >  
+> > +#define DPI_FORMAT_MASK			0x1
+> > +#define DPI_RGB888_DDR_CON		BIT(0)
+> > +#define DPI_RGB565_SDR_CON		BIT(1)
+> 
+> I'm not sure if it would make more sense to have these definitions in
+> the mmsys
+> header since they're configurations of a register in mmsys'
+> iospace... I think
+> we can keep them here but at least add a comment above:
+> 
+> /* Values for DPI configuration in MMSYS address space */
+> 
+> Thanks,
+> Nícolas
 
-Sorry, I somehow missed those emails. I'll respond later today/tomorrow.
+Hi Nícolas:
+Thanks for your careful review!
+I will modify the description of this member variable and add the
+hardware state corresponding to the software setting.
+(eg. rgb888_dual_enable = true the hardware output rgb888_dual_edge
+format data)
 
--Saravana
+Your suggestion is very necessary, maybe my name is not accurate
+enough, this flag is to enable RGB888_dual_edge format output. 
+Would it be better for the variable to be called
+RGB888_dual_edge_enable then?
+
+Also I'll fix the code formatting issues
+and add descriptions to the mmsys registers in the mtk_dpi_regs.h file.
+
+Best Regards!
+xinlei
+
 
