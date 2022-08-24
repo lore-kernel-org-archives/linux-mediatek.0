@@ -4,90 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E884BC00140
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 11:33:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B358C00140
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 11:41:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZxZaiCBADunzdKcENR+8Zgx32FiPJLjxDMduGU/Iog4=; b=YIcYmFeyIzBfZ9/oNv82frOLlB
-	9v99k5TLQ1TUNEPAGrgvvJMC7aIvl/tS+POYZcQarybJeUBTrOSCEEtXD8EfFli2nmkLmxH/8/9d5
-	gxWBTDzInEIQrETkHLmfFd/izpDruv+1Ev/HYlE+zG1CBSw7X4fU73j5Obg9vgDMc+YP3LRq1x3fk
-	XCJCDHnwToWcgoCb1snimeICXNi+whmGT3y+XOHtmDQFvBKQ4ODEXAagwTapmTpA19mKHLNJ2UIwu
-	AVCfEHJx0Q5n/6M43BcF2ZIlF8/PYulRxp7+mEribhLbgimYUFTDf/N6r8d58JCTPmbSE1g6SGHab
-	4nUehZKQ==;
+	bh=iRd1JuCUsRDstQ4XnepFMXgh3KSENhu5rGylzjVtscw=; b=ACiwvcPA3nmu3DSQvSRnvxTIU7
+	sijMuFBjPlqgLix6LdTzlP1cynSHTKh0gnvAPjifGVvD4CtJqYdXcvEb8x8deJBC8CPUbHCDMwPge
+	6q9FSxs8hevc3UpR0SNxqTBtOh/OeZisCPoOxjRVxVAcCQBQpOz5TlGrXYqqGLhUxg+aPEx8i+k38
+	2sjsbk+8Edg0KTDdSzYTpJxIR1/jmhLWxp8MCO/rtQsUUmXOOqT9B3vbys1TqOi6HWf5j7DUH5smx
+	xDrC9Znec0AHga7njSo0Cyp3URU/VwDLzXZBg6B6Heabmz2qad3n8YoyOMB+UvPar2dl22r923AbS
+	WZnsRxFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQocy-00CTcY-Mg; Wed, 24 Aug 2022 11:32:56 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1oQolK-00CWny-Re; Wed, 24 Aug 2022 11:41:34 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQock-00CTUo-1v; Wed, 24 Aug 2022 11:32:44 +0000
-Received: by mail-wm1-x330.google.com with SMTP id r83-20020a1c4456000000b003a5cb389944so736482wma.4;
-        Wed, 24 Aug 2022 04:32:37 -0700 (PDT)
+	id 1oQol6-00CWee-NT; Wed, 24 Aug 2022 11:41:22 +0000
+Received: by mail-wm1-x334.google.com with SMTP id d5so8625125wms.5;
+        Wed, 24 Aug 2022 04:41:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc;
-        bh=ZxZaiCBADunzdKcENR+8Zgx32FiPJLjxDMduGU/Iog4=;
-        b=qoMygdz7GmFFtUD/+7+V22nTvFk1cwYZrTDa4DayottF8wFWYc+ZDO3UF6m8XzpK+I
-         GSjNBF5rSalumv8mfsoD8xAqWCYdgRpYTaffU74gqT6Hbj/zJCaLWCx7Wuq72h+7sVO1
-         LWBtrmPSc/gMEHXEp/aP6wQQVTgMWllf2HIenz13rhZJnvgO8V7cpmjH18jmaOypLuzG
-         LbQ9mwNFkLYjo7ErxR7QqsAhPpx4nvvsPod145gMSFAr8lzzi6VasInXC73N8ai2ZSWV
-         00BHQkP1y0XR80kD/Tx2xLmvuN85IwPkEhWgAXwmIToUNCJYplzKdJk7XCDulrqycNtA
-         2B+A==
+        bh=iRd1JuCUsRDstQ4XnepFMXgh3KSENhu5rGylzjVtscw=;
+        b=fbFyIyGRBd1TbKvcIv6v1FsjGJ2wjibvgSzJG6K1k1Bm7S38z4wCVF4hZxlmWHl5/b
+         fU/dKju0dIcg91N4KMyF0EKx0F2NwNa3szfNglU0u28Alnoke1Csdl2xCimMmVsumlak
+         WII3ZniIifAbpLASSbzkFUrjFr042tmOyDqAEu5hydqVPoGHPR4vE5PCfaQPelEWHDnr
+         2bEsZKu1PD++Gn7PXqlY/Z72rV9Wns/0QG/m1icgDWM0P4NjmG0CAXEumS3vSZ01oP89
+         j6QoKrjWZR0E7AySBWUPZcQCctR9sUJ46+r1YYTnAJXovSwJOk5+W7RHfQP9q3kkSeug
+         ZSIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc;
-        bh=ZxZaiCBADunzdKcENR+8Zgx32FiPJLjxDMduGU/Iog4=;
-        b=1GPwHxmNKi1egBvWVst2Dm2BVCVRxcB1qp+eWxriMvseP7MNNqbV1lG//n7pPR0IKp
-         wK2IkX3H9DtcMxipKoDg6X5dIjMAgxeHtUKXrIHuAdqW5+UvYmTNAPYCg/YvAAU0iCyf
-         B0Yh9K8hPVpKGgp+tacVzTzQRFcRVxC7AZQEoobyoyQbx6lFB+8Ud6CJvRcFB5kIhfrq
-         EZrF/yGIY5QOYEcwSAyD72z48+l4iDxDA0HxwjVoRR2zZ8TmnJcKnh+Xv+G06VJ22DeE
-         6NUrqZvGEUxBNB2XdMf5Ylh5gicU3xyYndw0vRJcBNu9Uzb7ps4+cm+CXAQmv8IQbxnq
-         bMRA==
-X-Gm-Message-State: ACgBeo3GOvBKiSn/vuDclk34O+wWKzbU7l6vhcP164O6SpevRtlteeyd
-	tpGGUeO51YXKF+r26x3CL2U=
-X-Google-Smtp-Source: AA6agR73Nm15XEH+rwSiTMB34lbek4g802eDIh+Cb19PGqkkH4PjiBqAMVSq3oOYw6AoGj1I9+2DFw==
-X-Received: by 2002:a05:600c:3d91:b0:3a5:4132:b6a0 with SMTP id bi17-20020a05600c3d9100b003a54132b6a0mr4692147wmb.126.1661340756507;
-        Wed, 24 Aug 2022 04:32:36 -0700 (PDT)
+        bh=iRd1JuCUsRDstQ4XnepFMXgh3KSENhu5rGylzjVtscw=;
+        b=l7zgj7bzaFpVYBLBgmF96qYoFHAGVJXTtcyJ7pdtA8jvGlTloDak+zAXb0a7z3kJlw
+         pfenmqGN/h1Udl6EBd7t7JCEA0FzEKOVcRNDMZG+bHYWr4Vrx8tcwLhk7LMomsXbozJX
+         JoHTM5xBiBxolVw7GbrtbkgfXz8Y1IGK+VIC9PrUbYwIOzjK1W2TSwuP7JU9iwOoJIi2
+         rQlOV+42PeReazJYB01eikGnsiv633Co6MbPhLA7jDo2oxFkeuB+pyUywzCecjOLPx8N
+         aFL/QL/6J0CHrZf/6dzHGLj7sb4QzIrHYdl40CtptDag1y3ZJkf3lYBxY7bwZktTmkOT
+         Wfnw==
+X-Gm-Message-State: ACgBeo1zsXr0sfid8ntxJfo2UnYREUIKNDSVG6VHipoaE5lKW5XSaaOF
+	pjsJelVMwWGlbfuUuDL+0/M=
+X-Google-Smtp-Source: AA6agR5Hk4GDz/jmGGQn2rMBOj9Jqo+Vp8cc07NMZwHew1fytMh4PkKeUfXK6xMdYlVuT6cqYhYf1A==
+X-Received: by 2002:a05:600c:3509:b0:3a6:1888:a4bd with SMTP id h9-20020a05600c350900b003a61888a4bdmr5083036wmq.191.1661341275790;
+        Wed, 24 Aug 2022 04:41:15 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id v15-20020adfedcf000000b0022546f469e1sm11639385wro.28.2022.08.24.04.32.34
+        by smtp.gmail.com with ESMTPSA id p18-20020adfce12000000b002253f18d87fsm13444017wrn.96.2022.08.24.04.41.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 24 Aug 2022 04:32:35 -0700 (PDT)
-Message-ID: <0237d2e2-f753-6a7d-18fd-67b5fd7df99f@gmail.com>
-Date: Wed, 24 Aug 2022 13:32:33 +0200
+        Wed, 24 Aug 2022 04:41:14 -0700 (PDT)
+Message-ID: <db271721-163f-e5ec-25d8-e90357104b6c@gmail.com>
+Date: Wed, 24 Aug 2022 13:41:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.1.2
-Subject: Re: [PATCH v28 0/4] media: mediatek: support mdp3 on mt8183 platform
+Subject: Re: [PATCH v26 07/10] soc: mediatek: mmsys: add mmsys for support 64
+ reset bits
 Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Alexandre Courbot
- <acourbot@chromium.org>, tfiga@chromium.org, drinkcat@chromium.org,
- pihsun@chromium.org, hsinyi@google.com,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+To: "Nancy.Lin" <nancy.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, wim@linux-watchdog.org,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com, cellopoint.kai@gmail.com
-References: <20220823023803.27850-1-moudy.ho@mediatek.com>
+ linux@roeck-us.net, nfraprado@collabora.com
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <ndesaulniers@google.com>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ llvm@lists.linux.dev, singo.chang@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220819061011.7672-1-nancy.lin@mediatek.com>
+ <20220819061011.7672-8-nancy.lin@mediatek.com>
+ <44c86ad9-8158-0a8a-ce31-a995c8d10e0b@gmail.com>
+ <140b3cd10317a5db781df180ce4efb697cdd641b.camel@mediatek.com>
+ <c7c4e73f-dd03-4c88-f434-2aa3bd681e39@gmail.com>
+ <7c59d86501c39fa6e0e182f4a537de814320426e.camel@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220823023803.27850-1-moudy.ho@mediatek.com>
+In-Reply-To: <7c59d86501c39fa6e0e182f4a537de814320426e.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220824_043242_206647_5D4A9925 
-X-CRM114-Status: GOOD (  36.31  )
+X-CRM114-CacheID: sfid-20220824_044120_810158_495A67E4 
+X-CRM114-Status: GOOD (  30.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,398 +108,301 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Patches 1, 2 and 3 now applied to v6.0-next/dts64
 
-Thanks!
+
+On 24/08/2022 04:44, Nancy.Lin wrote:
+> Hi Matthias,
+> 
+> Thanks for your comment.
+> 
+> On Tue, 2022-08-23 at 14:08 +0200, Matthias Brugger wrote:
+>>
+>> On 23/08/2022 13:30, Nancy.Lin wrote:
+>>> Hi Matthias,
+>>>
+>>> Thanks for the review.
+>>>
+>>> On Tue, 2022-08-23 at 12:20 +0200, Matthias Brugger wrote:
+>>>>
+>>>> On 19/08/2022 08:10, Nancy.Lin wrote:
+>>>>> Add mmsys for support 64 reset bits. It is a preparation for
+>>>>> MT8195
+>>>>> vdosys1 HW reset. MT8195 vdosys1 has more than 32 reset bits.
+>>>>>
+>>>>> 1. Add the number of reset bits in mmsys private data
+>>>>> 2. move the whole "reset register code section" behind the
+>>>>> "get mmsys->data" code section for getting the num_resets in
+>>>>> mmsys-
+>>>>>> data.
+>>>>>
+>>>>> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+>>>>> Reviewed-by: AngeloGioacchino Del Regno <
+>>>>> angelogioacchino.delregno@collabora.com>
+>>>>> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+>>>>> Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+>>>>> ---
+>>>>>     drivers/soc/mediatek/mtk-mmsys.c | 40 +++++++++++++++++++++-
+>>>>> ---
+>>>>> -------
+>>>>>     drivers/soc/mediatek/mtk-mmsys.h |  1 +
+>>>>>     2 files changed, 27 insertions(+), 14 deletions(-)
+>>>>>
+>>>>> diff --git a/drivers/soc/mediatek/mtk-mmsys.c
+>>>>> b/drivers/soc/mediatek/mtk-mmsys.c
+>>>>> index 999be064103b..20ae751ad8a7 100644
+>>>>> --- a/drivers/soc/mediatek/mtk-mmsys.c
+>>>>> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+>>>>> @@ -20,6 +20,8 @@
+>>>>>     #include "mt8195-mmsys.h"
+>>>>>     #include "mt8365-mmsys.h"
+>>>>>     
+>>>>> +#define MMSYS_SW_RESET_PER_REG 32
+>>>>> +
+>>>>>     static const struct mtk_mmsys_driver_data
+>>>>> mt2701_mmsys_driver_data = {
+>>>>>     	.clk_driver = "clk-mt2701-mm",
+>>>>>     	.routes = mmsys_default_routing_table,
+>>>>> @@ -86,6 +88,7 @@ static const struct mtk_mmsys_driver_data
+>>>>> mt8173_mmsys_driver_data = {
+>>>>>     	.routes = mmsys_default_routing_table,
+>>>>>     	.num_routes = ARRAY_SIZE(mmsys_default_routing_table),
+>>>>>     	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
+>>>>> +	.num_resets = 32,
+>>>>>     };
+>>>>>     
+>>>>>     static const struct mtk_mmsys_match_data
+>>>>> mt8173_mmsys_match_data
+>>>>> = {
+>>>>> @@ -100,6 +103,7 @@ static const struct mtk_mmsys_driver_data
+>>>>> mt8183_mmsys_driver_data = {
+>>>>>     	.routes = mmsys_mt8183_routing_table,
+>>>>>     	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
+>>>>>     	.sw0_rst_offset = MT8183_MMSYS_SW0_RST_B,
+>>>>> +	.num_resets = 32,
+>>>>>     };
+>>>>>     
+>>>>>     static const struct mtk_mmsys_match_data
+>>>>> mt8183_mmsys_match_data
+>>>>> = {
+>>>>> @@ -114,6 +118,7 @@ static const struct mtk_mmsys_driver_data
+>>>>> mt8186_mmsys_driver_data = {
+>>>>>     	.routes = mmsys_mt8186_routing_table,
+>>>>>     	.num_routes = ARRAY_SIZE(mmsys_mt8186_routing_table),
+>>>>>     	.sw0_rst_offset = MT8186_MMSYS_SW0_RST_B,
+>>>>> +	.num_resets = 32,
+>>>>>     };
+>>>>>     
+>>>>>     static const struct mtk_mmsys_match_data
+>>>>> mt8186_mmsys_match_data
+>>>>> = {
+>>>>> @@ -128,6 +133,7 @@ static const struct mtk_mmsys_driver_data
+>>>>> mt8192_mmsys_driver_data = {
+>>>>>     	.routes = mmsys_mt8192_routing_table,
+>>>>>     	.num_routes = ARRAY_SIZE(mmsys_mt8192_routing_table),
+>>>>>     	.sw0_rst_offset = MT8186_MMSYS_SW0_RST_B,
+>>>>> +	.num_resets = 32,
+>>>>
+>>>> You didn't reply to Nicolas regarding the reset numbers. I
+>>>> actually
+>>>> agree with
+>>>> him that we will need the num_resets declared for all devices.
+>>>> Why do
+>>>> you think
+>>>> this is not the case?
+>>>>
+>>>> Regards,
+>>>> Matthias
+>>>>
+>>>
+>>> Sorry, I lost Nicolas's email.
+>>>
+>>> I checked with the mmsys git log with reset controller function.
+>>>
+>>> 1. Enric add mmsys reset controller function in [1]/[2].
+>>>      => in mtk_mmsys_reset_update(), all mmsys reset offset is
+>>> MMSYS_SW0_RST_B (0x140).
+>>>
+>>> 2. After Enric's patch, Rex add sw0_rst_offset in mmsys driver data
+>>> in
+>>> [3].
+>>>
+>>> So, I think sw0_rst_offset is not zero. Instead of only add
+>>> num_resets
+>>> but also need to add sw0_rst_offset for all mmsys. What do you
+>>> think ?
+>>>
+>>
+>> Good point. It seems we have a bug in the driver. Either all SoCs
+>> have the
+>> reset, but it's broken since
+>> 62dc30150c06 ("soc: mediatek: mmsys: add sw0_rst_offset in mmsys
+>> driver data")
+>> or we are adding a reset controller independently if the silicon has
+>> one, which
+>> would be an error in:
+>> f27ef2856343 ("soc: mediatek: mmsys: Add reset controller support")
+>>
+>> We have to find that out.
+>>
+>> Regards,
+>> Matthias
+> 
+> 
+> In [2], I think the first revision of Enric's reset controller is added
+> for 8173 and 8183, not for all mmsys device.
+>      =>[v3,4/7] arm64: dts: mt8173: Add the mmsys reset bit to reset the
+> dsi0
+>      =>[v3,5/7] arm64: dts: mt8183: Add the mmsys reset bit to reset the
+> dsi0
+> 
+> In [3], Rex only add sw0_rst_offset in 8173 and 8183 mmsys driver data.
+>>
+> 
+> For other SoCs, like mt2701,mt2712..., these SoCs even don't define
+> mmsys hw reset bit[4]. So I think only set the num_resets to 32 or 64
+> to those mmsys devices who really need the reset control, others set to
+> 0(same as my v26 patch).
+> 
+
+Thanks for looking into this, please see my comment further below.
+
+
+> 
+> [4]mt2701-resets.h
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/dt-bindings/reset/mt2701-resets.h?id=62dc30150c06774a8122c52aedd0eddaceaf5940
+> 
+> Regards,
+> Nancy
+> 
+> 
+>>> [1]
+>>>
+> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/soc/mediatek/mtk-mmsys.c?id=f27ef2856343e2ddc392975d7b15120442e4d7b7__;!!CTRNKA9wMg0ARbw!3cWAYlD1mrWRmNZy0zoJs8MNiD3s7K9PteJI9cGEvu_qp3VShfqxsBTb_fKynszs$
+>>>   
+>>> [2]
+>>>
+>>>
+> https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/cover/20210825102632.601614-1-enric.balletbo@collabora.com/__;!!CTRNKA9wMg0ARbw!3cWAYlD1mrWRmNZy0zoJs8MNiD3s7K9PteJI9cGEvu_qp3VShfqxsBTb_cH-3nM8$
+>>>   
+>>> [3]
+>>>
+>>>
+> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/soc/mediatek/mtk-mmsys.c?id=62dc30150c06774a8122c52aedd0eddaceaf5940__;!!CTRNKA9wMg0ARbw!3cWAYlD1mrWRmNZy0zoJs8MNiD3s7K9PteJI9cGEvu_qp3VShfqxsBTb_VXEsbNa$
+>>>   
+>>>
+>>> Regards,
+>>> Nancy
+>>>>
+>>>>>     };
+>>>>>     
+>>>>>     static const struct mtk_mmsys_match_data
+>>>>> mt8192_mmsys_match_data
+>>>>> = {
+>>>>> @@ -288,13 +294,19 @@ static int mtk_mmsys_reset_update(struct
+>>>>> reset_controller_dev *rcdev, unsigned l
+>>>>>     {
+>>>>>     	struct mtk_mmsys *mmsys = container_of(rcdev, struct
+>>>>> mtk_mmsys,
+>>>>> rcdev);
+>>>>>     	unsigned long flags;
+>>>>> +	u32 offset;
+>>>>> +	u32 reg;
+>>>>> +
+>>>>> +	offset = (id / MMSYS_SW_RESET_PER_REG) * sizeof(u32);
+>>>>> +	id = id % MMSYS_SW_RESET_PER_REG;
+>>>>> +	reg = mmsys->data->sw0_rst_offset + offset;
+>>>>>     
+>>>>>     	spin_lock_irqsave(&mmsys->lock, flags);
+>>>>>     
+>>>>>     	if (assert)
+>>>>> -		mtk_mmsys_update_bits(mmsys, mmsys->data-
+>>>>>> sw0_rst_offset, BIT(id), 0, NULL);
+>>>>>
+>>>>> +		mtk_mmsys_update_bits(mmsys, reg, BIT(id), 0,
+>>>>> NULL);
+>>>>>     	else
+>>>>> -		mtk_mmsys_update_bits(mmsys, mmsys->data-
+>>>>>> sw0_rst_offset, BIT(id), BIT(id), NULL);
+>>>>>
+>>>>> +		mtk_mmsys_update_bits(mmsys, reg, BIT(id),
+>>>>> BIT(id),
+>>>>> NULL);
+>>>>>     
+>>>>>     	spin_unlock_irqrestore(&mmsys->lock, flags);
+>>>>>     
+>>>>> @@ -351,18 +363,6 @@ static int mtk_mmsys_probe(struct
+>>>>> platform_device *pdev)
+>>>>>     		return ret;
+>>>>>     	}
+>>>>>     
+>>>>> -	spin_lock_init(&mmsys->lock);
+>>>>> -
+>>>>> -	mmsys->rcdev.owner = THIS_MODULE;
+>>>>> -	mmsys->rcdev.nr_resets = 32;
+>>>>> -	mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
+>>>>> -	mmsys->rcdev.of_node = pdev->dev.of_node;
+>>>>> -	ret = devm_reset_controller_register(&pdev->dev,
+>>>>> &mmsys-
+>>>>>> rcdev);
+>>>>>
+>>>>> -	if (ret) {
+>>>>> -		dev_err(&pdev->dev, "Couldn't register mmsys
+>>>>> reset
+>>>>> controller: %d\n", ret);
+>>>>> -		return ret;
+>>>>> -	}
+>>>>> -
+>>>>>     	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>>>>>     	if (!res) {
+>>>>>     		dev_err(dev, "Couldn't get mmsys resource\n");
+>>>>> @@ -384,6 +384,18 @@ static int mtk_mmsys_probe(struct
+>>>>> platform_device *pdev)
+>>>>>     		mmsys->data = match_data->drv_data[0];
+>>>>>     	}
+>>>>>     
+>>>>> +	spin_lock_init(&mmsys->lock);
+>>>>> +
+>>>>> +	mmsys->rcdev.owner = THIS_MODULE;
+>>>>> +	mmsys->rcdev.nr_resets = mmsys->data->num_resets;
+>>>>> +	mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
+>>>>> +	mmsys->rcdev.of_node = pdev->dev.of_node;
+>>>>> +	ret = devm_reset_controller_register(&pdev->dev,
+>>>>> &mmsys-
+>>>>>> rcdev);
+>>>>>
+>>>>> +	if (ret) {
+>>>>> +		dev_err(&pdev->dev, "Couldn't register mmsys
+>>>>> reset
+>>>>> controller: %d\n", ret);
+>>>>> +		return ret;
+>>>>> +	}
+>>>>> +
+
+
+This code is only relevant if mmsys->data->num_resets > 0. Let's check for that 
+before setting up and registering an interrupt controller. What do you think?
+
+Regards,
 Matthias
 
-On 23/08/2022 04:37, Moudy Ho wrote:
-> Change since v27:
-> - Rebase on v6.0-rc2
-> - Delete duplicate config in MDP3 Kconfig
-> - Relist maintainers in newly added bindings
-> - Minor changes in mtk-mdp3-comp.c and mtk-mdp3-reg.c to
->    avoid unnecessary long line warnings.
-> - The v4l2-compliance test results are the same as v26.
-> 
-> Change since v26:
-> - Set MMSYS config from "depend on" to "select" in MDP3 Kconfig
->    to avoid compilation errors of various combinations.
-> - Fix cast to smaller integer type 'enum mdp_comp_type' from
->    'const void *' in mtk_mdp3_comp.c.
-> - Fix sparse warnings in mtk_mdp3_comp.c.
-> - The v4l2-compliance test results are the same as v26.
-> 
-> Change since v25:
-> - Add more COMPILE_TEST config in MDP3 Kconfig
-> - Adjust unnecessary log level in "mdp_m2m_s_selection" function to
->    avoid spamming the kernel log for userspace errors.
-> - The v4l2-compliance test results list is as follows:
-> 
-> 	v4l2-compliance 1.23.0-4942, 32 bits, 32-bit time_t
-> 	v4l2-compliance SHA: 4cf258c24026 2022-07-28 15:43:45
-> 	
-> 	Compliance test for mtk-mdp3 device /dev/video0:
-> 	
-> 	Driver Info:
-> 		Driver name      : mtk-mdp3
-> 		Card type        : MediaTek MDP3
-> 		Bus info         : platform:14001000.mdp3-rdma0
-> 		Driver version   : 6.0.0
-> 		Capabilities     : 0x84204000
-> 			Video Memory-to-Memory Multiplanar
-> 			Streaming
-> 			Extended Pix Format
-> 			Device Capabilities
-> 		Device Caps      : 0x04204000
-> 			Video Memory-to-Memory Multiplanar
-> 			Streaming
-> 			Extended Pix Format
-> 	Required ioctls:
-> 		test VIDIOC_QUERYCAP: OK
-> 		test invalid ioctls: OK
-> 	Allow for multiple opens:
-> 		test second /dev/video0 open: OK
-> 		test VIDIOC_QUERYCAP: OK
-> 		test VIDIOC_G/S_PRIORITY: OK
-> 		test for unlimited opens: OK
-> 	Debug ioctls:
-> 		test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
-> 		test VIDIOC_LOG_STATUS: OK (Not Supported)
-> 	Input ioctls:
-> 		test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-> 		test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-> 		test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-> 		test VIDIOC_ENUMAUDIO: OK (Not Supported)
-> 		test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
-> 		test VIDIOC_G/S_AUDIO: OK (Not Supported)
-> 		Inputs: 0 Audio Inputs: 0 Tuners: 0
-> 	Output ioctls:
-> 		test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-> 		test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-> 		test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-> 		test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-> 		test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-> 		Outputs: 0 Audio Outputs: 0 Modulators: 0
-> 	Input/Output configuration ioctls:
-> 		test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-> 		test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-> 		test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-> 		test VIDIOC_G/S_EDID: OK (Not Supported)
-> 	Control ioctls:
-> 		test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
-> 		test VIDIOC_QUERYCTRL: OK
-> 		test VIDIOC_G/S_CTRL: OK
-> 		test VIDIOC_G/S/TRY_EXT_CTRLS: OK
-> 		test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
-> 		test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-> 		Standard Controls: 4 Private Controls: 0
-> 	Format ioctls:
-> 		test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-> 		test VIDIOC_G/S_PARM: OK (Not Supported)
-> 		test VIDIOC_G_FBUF: OK (Not Supported)
-> 		test VIDIOC_G_FMT: OK
-> 		test VIDIOC_TRY_FMT: OK
-> 		test VIDIOC_S_FMT: OK
-> 		test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-> 		test Cropping: OK
-> 		test Composing: OK
-> 		test Scaling: OK
-> 	Codec ioctls:
-> 		test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-> 		test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-> 		test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-> 	Buffer ioctls:
-> 		test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-> 		test VIDIOC_EXPBUF: OK
-> 		test Requests: OK (Not Supported)
-> 		test TIME32/64: OK
-> 	Test input 0:
-> 	Streaming ioctls:
-> 		test read/write: OK (Not Supported)
-> 		test blocking wait: OK
-> 		<snip>
-> 		test MMAP (no poll): OK
-> 		<snip>
-> 		test MMAP (select): OK
-> 		<snip>
-> 		test MMAP (epoll): OK
-> 		test USERPTR (no poll): OK (Not Supported)
-> 		test USERPTR (select): OK (Not Supported)
-> 		test DMABUF: Cannot test, specify --expbuf-device
-> 	Stream using all formats:
-> 		<snip>
-> 	Total for mtk-mdp3 device /dev/video0: 1592, Succeeded: 1592, Failed: 0, Warnings: 0
-> 
-> Change since v24:
-> - Rebase on v6.0-rc1.
-> 
-> Change since v23:
-> - Rebase on linux-next.
-> - Fix compilation error.
-> 
-> Change since v22:
-> - Rebase on linux-next.
-> - Fix typo about MDP3 in Kconfig.
-> - Adjust some non-essential logs to lower levels.
-> 
-> Change since v21:
-> - Rebase on linux-next.
-> - Following Hans suggestion, remove redundant kernel logs and
->    revise a few non-functional code to make it clearer.
-> - Remove API abuse to set plane size.
-> - Added VPU send message failure error code for previous shortages.
-> 
-> Change since v20:
-> - Rebase on linux-next.
-> - Move the MDP3 GCE events to the corresponding node and adjust the
->    relevant driver settings.
-> 
-> Change since v19:
-> - Rebase on linux-next.
-> - Export the function "mdp_cmdq_send" suggected by CK.
-> - Fix "Macro argument reuse" reported by checkpatch.pl
-> 
-> Change since v18:
-> - Rebase on linux-next.
-> - Adjust copyright date of MDP3 driver.
-> - Functions renaming as follows:
->    [1] is_output_disable() => is_output_disabled()
->    [2] mdp_component_init() => mdp_comp_config()
->    [3] mdp_component_deinit() => mdp_comp_destroy()
->    [4] mdp_comp_ctx_init() => mdp_comp_ctx_config()
->    [5] mdp_sub_comps_create() => mdp_comp_sub_create()
-> - Document MDP3 10-bit format descriptions in "mtk-mdp3-regs.c".
-> - Add error control for functions mdp_comp_clocks_on and mdp_comp_clock_on.
-> - Moved function "mtk_mutex_put" from function
->    "mdp_comp_destroy"(renamed from mdp_component_deinit) to avoid semantic ambiguity.
-> - For some allocated parameters, assign a value of NULL after freeing
->    to avoid the possibility of repeated use.
-> - Removed unnecessary timestamp pass flow.
-> - About parameters passed by the user in function "mdp_try_fmt_mplane", add relevant checks to
->    clamp them in a reasonable range to avoid the possibility of overflow
-> 
-> Change since v17:
-> - Depend on:
->    [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=649104
-> - In response to future CMDQ api changes listed below:
->    https://patchwork.kernel.org/project/linux-mediatek/patch/20220608144055.27562-1-chunkuang.hu@kernel.org/
->    adjust CMDQ flush and callback flow in MDP3.
-> 
-> Change since v16:
-> - Rebased on v5.19-rc1
-> - Depend on:
->    [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=646131
-> - In response to MUTEX changes, adjust API naming and parameters when
->    used in function "mdp_path_subfrm_require".
-> - Remove unnecessary MDP3 phandle in 8183 dts.
-> 
-> Change since v15:
-> - Depend on:
->    [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=640926
-> - Split the bindings under ./soc/mediatek into a separate patch.
-> - Fix data abort in "mdp_auto_release_work"
-> - Adjust the steps in the function "mdp_cmdq_send" to make the error handling
->    more reasonable
-> 
-> Change since v14:
-> - Rebase on v5.18-rc6
-> - Depend on:
->    [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=640926
-> - In response to CMDQ API change, replace the function "cmdq_pkt_flush_async"
->    with the standard APIs of mbox
-> - Fix the description of "mediatek,gce-client-reg" property in MDP3-related
->    bindings
-> 
-> Change since v13:
-> - Rebase on v5.18-rc4
-> - Depend on:
->    [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=636041
-> - Remove advanced functionality about ISP settings for direct link cases.
-> - Remove the software designation in the mt8183 dts and
->    revise corresponding bindings.
-> 
-> Change since v12:
-> - Rebase on linux-next
-> - Depend on:
->    [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=630948
-> - Remove messages related to routing information in MDP3, and leave the related
->    settings in MMSYS.
-> - Remove unnecessary phandle and redundant property in RDMA dt-binding and
->    adjust the corresponding driver.
-> - Revise MDP3 node name in dts.
-> - Removed unnecessary functions, mutex and work queue in MDP3 driver
-> - Fixed format mapping error for V4L2_PIX_FMT_RGB565X
-> 
-> Change since v11:
-> - Rebase on linux-next tag:next-20220316
-> - Depend on:
->    [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=624281
-> - Remove redundant hardware index in data-binding suggested by Rob Herring.
-> - Referring to Rob Herring's suggestion to improve some descriptions in the
->    RDMA dt-binding
-> - Move MDP3 file folder from "./drive/media/platform/mtk-mdp3" to
->    "./driver/media/platform/mediatek/mdp3"
-> - Fixed the V4L2 and MDP color format mapping error in RGB565 which
->    checked by Benjamin Gaignard
-> 
-> Change since v10:
-> - The routing table needs to be discarded, and the calculation result
->    on the SCP side is used to write a suitable mux setting for
->    1 input port and 2 output ports.
-> - Adjust dts parsing flow to remove redundant HW IDs.
-> - Fix memory leak caused by no free path information in function "mdp_cmdq_send".
-> 
-> Change since v9:
-> - Keep only the MDP3 driver patches and split the remaining mmsys and
->    mutex patches into another mail.
-> - Move mutex mod settings to corresponding driver and make relevant adjustments
->    for this in MDP3 driver.
-> - Fix compile warning reported by kernel test robot.
-> 
-> Change since v8:
-> - Rebase on v5.16-rc2.
-> - Refer to Angelo's suggestion, adjust the register writing format to increase
->    readability and significance.
-> - Refer to Angelo's suggestion, adjust or reduce inappropriate debugging
->    messages.
-> - Refer to Rob Herring's suggestion to correct the the binding file
->    to make it with the specification.
-> - Fix compile warning reported by kernel test robot.
-> 
-> Change since v7:
-> - Rebase on v5.15-rc6.
-> - Revise several V4L2 M2M settings to pass v4l2-compliance test.
-> - Integrate those same component dt-binding documents of DRM and MDP, and
->    move them under the MMSYS domain.
-> - Split MMSYS and MUTEX into two different files according to
->    their functional properties.
-> 
-> Changes since v6:
-> - Refactor GCE event to corresponding node.
-> - Fix dt_binding_check fail.
-> - Fix compilation errors.
-> 
-> Changes since v5:
-> - Rebase on v5.14-rc6.
-> - Move MMSYS/Mutex settings to corresponding driver.
-> - Revise the software license description and copyright.
-> - Remove unnecessary enum. or definitions.
-> - Optimize platform/chip definition conditions.
-> - Use general printing functions instead of MDP3 private ones.
-> - Fix compile warning.
-> 
-> Changes since v4:
-> - Rebase on v5.13-rc1.
-> - Remove the CMDQ flush flow to match the CMDQ API change.
-> - Integrate four of MDP's direct-link subcomponents into MDP controller node
->    from syscon node to avoid illegal clock usage.
-> - Rewrite dt-binding in a JSON compatible subset of YAML
-> - Fix a bit of macro argument precedence.
-> 
-> Changes since v3:
-> - Rebase on v5.9-rc1.
-> - modify code for review comment from Rob Herring, cancel multiple nodes using
->    same register base situation.
-> - control IOMMU port through pm runtime get/put to DMA components' device.
-> - SCP(VPU) driver revision.
-> - stop queuing jobs(remove flush_workqueue()) after mdp_m2m_release().
-> - add computation of plane address with data_offset.
-> - fix scale ratio check issue.
-> - add default v4l2_format setting.
-> 
-> Changes since v2:
-> - modify code for review comment from Tomasz Figa & Alexandre Courbot
-> - review comment from Rob Herring will offer code revision in v4, due to
->    it's related to device node modification, will need to modify code
->    architecture
-> 
-> Changes since v1:
-> - modify code for CMDQ v3 API support
-> - EC ipi cmd migration
-> - fix compliance test fail item (m2m cmd with -f) due to there is two problem in
->    runing all format(-f) cmd:
-> 1. out of memory before test complete
->          Due to capture buffer mmap (refcount + 1) after reqbuf but seems
->          no corresponding munmap called before device close.
->          There are total 12XX items(formats) in format test and each format
->          alloc 8 capture/output buffers.
-> 2. unceasingly captureBufs() (randomly)
->          Seems the break statement didn't catch the count == 0 situation:
->          In v4l2-test-buffers.cpp, function: captureBufs()
->                          ...
->                          count--;
->                          if (!node->is_m2m && !count)
->                                  break;
->          Log is as attachment
-> 
-> Hi,
-> 
-> This patch is used to present Media Data Path 3 (MDP3)
-> which provided scaling and color format conversion.
-> support using GCE to write register in critical time limitation.
-> support V4L2 m2m device control.
-> 
-> 
-> Moudy Ho (4):
->    dt-binding: mediatek: add bindings for MediaTek MDP3 components
->    dt-binding: mediatek: add bindings for MediaTek CCORR and WDMA
->    arm64: dts: mt8183: add MediaTek MDP3 nodes
->    media: platform: mtk-mdp3: add MediaTek MDP3 driver
-> 
->   .../bindings/media/mediatek,mdp3-rdma.yaml    |   95 ++
->   .../bindings/media/mediatek,mdp3-rsz.yaml     |   77 ++
->   .../bindings/media/mediatek,mdp3-wrot.yaml    |   80 ++
->   .../bindings/soc/mediatek/mediatek,ccorr.yaml |   68 ++
->   .../bindings/soc/mediatek/mediatek,wdma.yaml  |   81 ++
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi      |   63 +
->   drivers/media/platform/mediatek/Kconfig       |    1 +
->   drivers/media/platform/mediatek/Makefile      |    1 +
->   drivers/media/platform/mediatek/mdp3/Kconfig  |   20 +
->   drivers/media/platform/mediatek/mdp3/Makefile |    6 +
->   .../platform/mediatek/mdp3/mdp_reg_ccorr.h    |   19 +
->   .../platform/mediatek/mdp3/mdp_reg_rdma.h     |   65 ++
->   .../platform/mediatek/mdp3/mdp_reg_rsz.h      |   39 +
->   .../platform/mediatek/mdp3/mdp_reg_wdma.h     |   47 +
->   .../platform/mediatek/mdp3/mdp_reg_wrot.h     |   55 +
->   .../platform/mediatek/mdp3/mtk-img-ipi.h      |  290 +++++
->   .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    |  466 ++++++++
->   .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |   43 +
->   .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 1033 +++++++++++++++++
->   .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  186 +++
->   .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  357 ++++++
->   .../platform/mediatek/mdp3/mtk-mdp3-core.h    |   94 ++
->   .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     |  724 ++++++++++++
->   .../platform/mediatek/mdp3/mtk-mdp3-m2m.h     |   48 +
->   .../platform/mediatek/mdp3/mtk-mdp3-regs.c    |  735 ++++++++++++
->   .../platform/mediatek/mdp3/mtk-mdp3-regs.h    |  373 ++++++
->   .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     |  313 +++++
->   .../platform/mediatek/mdp3/mtk-mdp3-vpu.h     |   78 ++
->   28 files changed, 5457 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
->   create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
->   create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
->   create mode 100644 drivers/media/platform/mediatek/mdp3/Kconfig
->   create mode 100644 drivers/media/platform/mediatek/mdp3/Makefile
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_ccorr.h
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_rdma.h
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_rsz.h
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_wdma.h
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mdp_reg_wrot.h
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-img-ipi.h
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.h
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.h
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.h
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.c
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-regs.h
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
->   create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.h
+>>>>>     #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+>>>>>     	ret = cmdq_dev_get_client_reg(dev, &mmsys->cmdq_base,
+>>>>> 0);
+>>>>>     	if (ret)
+>>>>> diff --git a/drivers/soc/mediatek/mtk-mmsys.h
+>>>>> b/drivers/soc/mediatek/mtk-mmsys.h
+>>>>> index f01ba206481d..20a271b80b3b 100644
+>>>>> --- a/drivers/soc/mediatek/mtk-mmsys.h
+>>>>> +++ b/drivers/soc/mediatek/mtk-mmsys.h
+>>>>> @@ -92,6 +92,7 @@ struct mtk_mmsys_driver_data {
+>>>>>     	const struct mtk_mmsys_routes *routes;
+>>>>>     	const unsigned int num_routes;
+>>>>>     	const u16 sw0_rst_offset;
+>>>>> +	const u32 num_resets;
+>>>>>     };
+>>>>>     
+>>>>>     struct mtk_mmsys_match_data {
+>>>>
+>>>>
 > 
 
