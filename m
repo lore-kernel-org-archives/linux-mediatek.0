@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09884C00140
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 16:24:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 427FEC00140
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Aug 2022 16:24:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4g4lmwxe7oMJSXLnXZKYse+3MTd80MNCdcoTmhK6ijc=; b=IK3T8qVTX9W/nu4Iamc1mSZ1vc
-	9Xsw9FLgZrwaByOVThl9zab92+IaC5GZY2Sp+WIlhKc852Lri1SyW3WQdCA3LLXFcQcMmXCjjAoYW
-	i1cbb20Mpfaz78SYawtmwK+lwClyQqNZp+XRUeBqXgCHv4Bmh3VdzMFBugMs2MSomtuaPHj5E1ezw
-	ir/GK06jgO+9jlu3hhazhJ/ws/dV6+YpzDRFV3NzkITel55zE5tVxFrL0kIEiqGBqsH6JeO+i0HXv
-	MNM2cvzFx5eaEOkD3nt8ATg4rU6R/w+hJX+jBAEa8vDeyz0KXm+19nqNvPpt1k9H9uT7Ca0ZII1hK
-	piUwn8xw==;
+	bh=YWeHA+vz26sf77PPFdl6bwT+D2wF3SMggB+gM4nmMVE=; b=MThFXsFahukJJSEvz/k+xwnVOB
+	JQfJbhdIXlRwsUkwDMYVXhsbkWKysNo0aupX5iO43mYttWyeGBAg5M4P1sTAY49aTDBpdAi4lq9hx
+	SdxEGMgfkI1rJZuJoTeBY7JBdVJwXJFILIaacKzc2ZHTsKkECogf4x7YvxHlOEevHnHiVh3jAyUGV
+	Eu90Cr0yq/HTDhntvJIAFflJNRIEUlmf4I4JRCI3YccbkkbxiRXV78ZPcw1i6PuEhsvmL6aqVziD3
+	DenhMaeXfvFj9qWYxauDcagOqbxhUal5VPCVOV5sV4NzLP/6UUSvLuRjMvlDzFUzp02wDTNkw2yvZ
+	MejrN9Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQtBG-00EOBf-K8; Wed, 24 Aug 2022 16:24:38 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oQtBS-00EOJ0-6a; Wed, 24 Aug 2022 16:24:50 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQtB2-00EO2i-Sk; Wed, 24 Aug 2022 16:24:26 +0000
+	id 1oQtB6-00EO4x-K9; Wed, 24 Aug 2022 16:24:30 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8AEBB61A14;
+	by ams.source.kernel.org (Postfix) with ESMTPS id 3B2C6B825C1;
+	Wed, 24 Aug 2022 16:24:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69F32C433B5;
 	Wed, 24 Aug 2022 16:24:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D854C433C1;
-	Wed, 24 Aug 2022 16:24:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661358263;
-	bh=Y4eBdkGZIGqWLszQ5IONiL0dwf3AHaygY1nAw/brFPI=;
+	s=k20201202; t=1661358265;
+	bh=LgDF5Ox+bjDfNVdxCe2AZEmz1pOP9XOBZQajiIKH80Y=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=RU2ONLK9WOfTtDPX11OYiLJ72DJnnMM4Y0r91FKLDOBr+sTrgSkpwknaS2Cxdnc4D
-	 ro0B6Gvrvb91B5wBX49rJhAL2yRg+X/tblzBnIv9JRunK421naPc7yvEy16n8u4MGV
-	 EKvm6J9BfGWiayrPQlUofDwLCKJVY4hRVK9tTanC9+YuDxoSMNGyE2qbmTQ2scVi2d
-	 hepqZ0JdD/ItPatE9Svg3Xu4kpNPtm8yj/QeovDdlViNNJYS0jAFpOKM8UxsSV+k+n
-	 0+rV9XJJZtumbZOS3h5fOKe7xOSjYWdCgktKRM5cfHXkYzAJwVfCjQnYDgQWSsMF2l
-	 PgfkIHbh5Ea0A==
+	b=aBUQ4qDHduZc4vcujUzSoPALU4+PnF25liHSk1hoRpSAu1fml/xeiNq2hI0a93jxg
+	 RZ2FBRYHoqtFm4suW9AiRWqLfWw6mI+qayWHO9kxFChRTWE7oRgzTq+p5qUwUchpCi
+	 C46zTJKfBaZLo4XoVKStoGslG/DrUH3gCpFlMIkPBUtkyNyJi9IF0ZVRNSmZd4KvIX
+	 DMi4aEqL6Xj3fKsWv0BTdQVz9YlPGzstmI6ylCnm3ckV4XMsNePQYB0tYvbifQUi7/
+	 kVNmt2f7r5APrb+hUFy6dAis4mMcC8XyPn8zwzPRucJcf/2RlGL5IN1jju1PBp02DC
+	 DChkiA7I+sTLw==
 From: Mark Brown <broonie@kernel.org>
 To: nfraprado@collabora.com, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, Chunxu Li <chunxu.li@mediatek.com>
 Cc: project_global_chrome_upstream_group@mediatek.com, jiaxin.yu@mediatek.com, lgirdwood@gmail.com,
- devicetree@vger.kernel.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
-In-Reply-To: <20220820075343.13993-1-chunxu.li@mediatek.com>
-References: <20220820075343.13993-1-chunxu.li@mediatek.com>
-Subject: Re: [PATCH 0/2] dt-bindings: sound: Add SOF field for mt8186
-Message-Id: <166135826016.480875.10489482967868732209.b4-ty@kernel.org>
-Date: Wed, 24 Aug 2022 17:24:20 +0100
+ matthias.bgg@gmail.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org
+In-Reply-To: <20220824122319.23918-1-chunxu.li@mediatek.com>
+References: <20220824122319.23918-1-chunxu.li@mediatek.com>
+Subject: Re: [PATCH v2 0/2] ASoC: mediatek: dt-bindings: modify machine
+Message-Id: <166135826315.480875.12895204417307260753.b4-ty@kernel.org>
+Date: Wed, 24 Aug 2022 17:24:23 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.10.0-dev-0c1df
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220824_092425_008421_3106F462 
-X-CRM114-Status: GOOD (  13.03  )
+X-CRM114-CacheID: sfid-20220824_092428_843381_89E4FF10 
+X-CRM114-Status: GOOD (  14.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,14 +72,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 20 Aug 2022 15:53:41 +0800, Chunxu Li wrote:
+On Wed, 24 Aug 2022 20:23:17 +0800, Chunxu Li wrote:
 > From: "chunxu.li" <chunxu.li@mediatek.com>
 > 
-> These patches add SOF field for mt8186 machine driver
+> Changes since V1:
+>   - remove unnecessary quotes
 > 
-> chunxu.li (2):
->   ASoC: mediatek: dt-bindings: modify machine bindings for SOF
->   ASoC: mediatek: dt-bindings: modify machine bindings for SOF
+> Add SOF related field.
+> 1. Add a property "mediatek,adsp", Only when adsp phandle could be retrieved,
+>  from DTS, the SOF related part of machine driver is executed.
+> 2. Add a property "mediatek,dai-link" to support dai-links could be specified
+>  from DTS
 > 
 > [...]
 
