@@ -4,57 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA65C04AA5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 11:59:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A618C28D13
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 12:38:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UPgQT59ss7Oiex8/3VqhVZuGL7jKI3aCyhFsdu63L70=; b=yVdXXxO6W+1QNLn9MhihERLhoI
-	TKMic2vRzdStLLtJi04cDZW+AC1wXgVXJJccrwPqp/mFWK60h3TCE9rmxrf6p8V/sR2BcpFIdp0aQ
-	PXHH5/o8Dn8jjGBHdVv6nclZuY//oHA+DcRmQdPve+NF2LGep8xHCdXoqefENWWD1nlUoFi2CVSsA
-	R2ZuQl4/OtI1f4VMYXxA6FCSi8Vytgw5deucUg7R0rYvF+8e2ctlCVPE98pN8YplSlFnUtnqJ2L6U
-	Qvava5+gnK3DPouGqpuTdlSycEF+rqiNDeUmpdEjGnBSDvz1IYRBIHHFZicQHvYAl+nSLKX8zqiGJ
-	rtMZcC0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YWeHA+vz26sf77PPFdl6bwT+D2wF3SMggB+gM4nmMVE=; b=DKV4+UgItnpON8dA3mSL8eyPCl
+	FW2BhHFpVD9LnuAjHqZABs+nnDZb4JP1P0CjI0cuvT3wdI37AA14uLT4rj5GPdX+H+4BB5vjZ9XMX
+	NtBIWWSAXpKeBkatgqp551d+jtNbaMMlaIdnVVsPrNYqYwm2CmICqhhyntrI0242769oWYJJ3R3mQ
+	klnV2megDh11AMKG2G23RsDFwXgluQezjixnryw9AVxJSDhMVRV+c9fW9mvkaaUJPKkFvglN+amhG
+	tzCezeaEUHJ7W3PMof2jBaFKR/qOK5auMTf8ThVOSU0lRRbrdko9L2W+ljl8k+mk/99nQm7Uz46xN
+	S6yNl0CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRBVw-00DA25-59; Thu, 25 Aug 2022 11:59:12 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oRC8A-00DqsS-Mn; Thu, 25 Aug 2022 12:38:42 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRBVt-00D9ve-Kc
-	for linux-mediatek@lists.infradead.org; Thu, 25 Aug 2022 11:59:11 +0000
+	id 1oRC7y-00DqcF-VA; Thu, 25 Aug 2022 12:38:32 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 2897661B11;
-	Thu, 25 Aug 2022 11:59:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3782EC433D7;
-	Thu, 25 Aug 2022 11:59:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1661428748;
-	bh=GLfsjUlNp9WLL2wELbBVeoTLtJbmnVEiPK7O3n+1NV0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mghw3e3sHIr/tw03YSnhgwGtdVUsIfgD4OMxiU0g3yfZzBx6Gt4jvslnRHd3iJebx
-	 YY6j1jIqlllKpY3SSU5bnBrasc7WpFTXDKpAFxKLj/psqV/RWOGvcE5smvPCSCrh9h
-	 ZgdU8wZLOwJOXSgp94Ad2OxfmDiN6+Na3E6A6uYs=
-Date: Thu, 25 Aug 2022 13:59:05 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: sean.wang@mediatek.com
-Cc: stable@vger.kernel.org, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Deren Wu <deren.wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH 5.19] mt76: mt7921: fix command timeout in AP stop period
-Message-ID: <YwdkCRXdOZCTdPQl@kroah.com>
-References: <94065c608ee60d8a96a3d91913cb1e28d0a302e1.1661397440.git.objelf@gmail.com>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 8624D61892;
+	Thu, 25 Aug 2022 12:38:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72A73C433C1;
+	Thu, 25 Aug 2022 12:38:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1661431110;
+	bh=LgDF5Ox+bjDfNVdxCe2AZEmz1pOP9XOBZQajiIKH80Y=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=MgtYnyeRFhEsP1zYUeNrVMqrlICIhJG92NLRD989jirXfF/alwMsyXEstwEPS8VMy
+	 QT1vLMosW8nNHRF8iaq+i7PqTJZyfVuDi0Qzuu8ZxH3CX0CK2oIQsaDemK5VxuNXP7
+	 6o1lzQm/+BEz11aEtp1QaW3oEsVcjSEqPEdnh8LqDDyGQ7bPiLLVLSJ/1BpFx34jY3
+	 deM2BdS5raEY6pfV8F0vGQa2lps5uA92HpGHJc0JoIl6dr3zCXoruMVPAYyFHkeimg
+	 feXhbZ+gq291hSBa5A5GOlauzzKbd3zaQ+GdF6b9FMWn/YeOO5BiZb4UDVa2pFjazf
+	 VvZUpVfAonogg==
+From: Mark Brown <broonie@kernel.org>
+To: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, Chunxu Li <chunxu.li@mediatek.com>, nfraprado@collabora.com
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
+ alsa-devel@alsa-project.org, project_global_chrome_upstream_group@mediatek.com, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, lgirdwood@gmail.com, jiaxin.yu@mediatek.com
+In-Reply-To: <20220824122319.23918-1-chunxu.li@mediatek.com>
+References: <20220824122319.23918-1-chunxu.li@mediatek.com>
+Subject: Re: [PATCH v2 0/2] ASoC: mediatek: dt-bindings: modify machine
+Message-Id: <166143110713.95415.18123711454744125570.b4-ty@kernel.org>
+Date: Thu, 25 Aug 2022 13:38:27 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <94065c608ee60d8a96a3d91913cb1e28d0a302e1.1661397440.git.objelf@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.10.0-dev-0c1df
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_045909_744313_FA421A96 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20220825_053831_061477_97970009 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,42 +72,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 25, 2022 at 11:27:22AM +0800, sean.wang@mediatek.com wrote:
-> From: Deren Wu <deren.wu@mediatek.com>
+On Wed, 24 Aug 2022 20:23:17 +0800, Chunxu Li wrote:
+> From: "chunxu.li" <chunxu.li@mediatek.com>
 > 
-> commit 9d958b60ebc2434f2b7eae83d77849e22d1059eb upstream.
+> Changes since V1:
+>   - remove unnecessary quotes
 > 
-> Due to AP stop improperly, mt7921 driver would face random command timeout
-> by chip fw problem. Migrate AP start/stop process to .start_ap/.stop_ap and
-> congiure BSS network settings in both hooks.
+> Add SOF related field.
+> 1. Add a property "mediatek,adsp", Only when adsp phandle could be retrieved,
+>  from DTS, the SOF related part of machine driver is executed.
+> 2. Add a property "mediatek,dai-link" to support dai-links could be specified
+>  from DTS
 > 
-> The new flow is shown below.
-> * AP start
->     .start_ap()
->       configure BSS network resource
->       set BSS to connected state
->     .bss_info_changed()
->       enable fw beacon offload
-> 
-> * AP stop
->     .bss_info_changed()
->       disable fw beacon offload (skip this command)
->     .stop_ap()
->       set BSS to disconnected state (beacon offload disabled automatically)
->       destroy BSS network resource
-> 
-> Fixes: 116c69603b01 ("mt76: mt7921: Add AP mode support")
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Felix Fietkau <nbd@nbd.name>
-> ---
->  .../wireless/mediatek/mt76/mt76_connac_mcu.c  |  2 +
->  .../net/wireless/mediatek/mt76/mt7921/main.c  | 47 +++++++++++++++----
->  .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  5 +-
->  .../wireless/mediatek/mt76/mt7921/mt7921.h    |  2 +
->  4 files changed, 43 insertions(+), 13 deletions(-)
+> [...]
 
-Now queued up, thanks,
+Applied to
 
-greg k-h
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/2] ASoC: mediatek: dt-bindings: modify machine bindings for SOF
+      commit: 1173107d7c129ff87224814fd38fce5db023aaa0
+[2/2] ASoC: mediatek: dt-bindings: modify machine bindings for SOF
+      commit: 1173107d7c129ff87224814fd38fce5db023aaa0
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
