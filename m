@@ -4,65 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D7CBC32774
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 15:14:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 654B4C32774
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 15:30:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZrIEOKFAPyFOdMHilicm02hb8cnL4B7c7MwW9nQS4Lc=; b=gKPAF5xgUHevEEgZlH3k5Vlk1g
-	170be9cTauGa4P3eVkolVlFleV2P5m2XXENJv1YAPshgofFom9f2qg4FXQ8b/xXQpBsD/JPSyDA24
-	dYPZtENRntvpU7E2cIbKd7TyzINmIbVgx041hKI6kgEmyWboZqxOXUwMmCC+fYLypDNs0d3XBD+p4
-	p7HvVGh6mOD6zJS8Im5wlZUiwehvybcFRrE2agdkHIm6/RXOdNcWHI01hIDR8U7HURYyiQkoeaVyz
-	eioMLtBiSPnMMAEA+oJ27XSVW89T7BfUgkiUA00vSsM9Fk1Ug9vxaN71FAICo//LzNfJbtlwnsZWk
-	LH08w9YQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PNUxDp/ERmJYjT0s1+4MLm1f1tNR40YdclX+Gfdogcc=; b=MM892P69qbgL8PCB2M4v8U1IOT
+	n7AKucLUq1AT2HKJHCkLjjror1LocBidemRLU0B6RpLYO8d27Cp8AUkcvTo0G2qSZ/QcBSoO/k1Mr
+	J9jHMCcsK1n2zvbov82DocH2yNqiu+qPEn+wop08fLEI9w6bOhIyE2UoesWtIcPKm4gTIM/lgUoT7
+	adgOoMhX7uE2Frc31lqZ4aACVHq3RjjcFxCKYlG076nfW5PSh7mLyEFh8prtMjDCKabuO8Uvty0LZ
+	ZwohHKsGlk7ei/1QOsMFRbyvkOkC4uGtpj1J4X7Mv+uuRknMiA2SW/VKR0zrVsIiijeQ5PaM+41Rm
+	eYQwATgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oREZE-00FbSB-0g; Thu, 25 Aug 2022 15:14:48 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oREnu-00FitF-Vn; Thu, 25 Aug 2022 15:29:59 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oREYS-00Fb1U-QR; Thu, 25 Aug 2022 15:14:02 +0000
-Received: from notapiano (unknown [70.107.189.129])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1oREmS-00Fi88-94; Thu, 25 Aug 2022 15:28:29 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4B3396601D97;
-	Thu, 25 Aug 2022 16:13:53 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661440435;
-	bh=YozKHKtuLc9sgOOMnJ698obW3XC7fZK8JlCRNnws3Z8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XCrYGlxCbZXCnEAAfddALgZrTr2weESYZu+q4cSm3CLcCajqiJEFpx3AWHuuFdmdJ
-	 Neci/sVHdyzWoyaMo84+/+KNMV2UmZoKbRJJK7MA9QPnuUtR7hIcszM1O02FnLXGUj
-	 y/YDFaz+7VE6qGZe8ookczri5k3BXzjLTE9rXXRo/5JSP2J3W9IprZzNXziqvWy8bp
-	 8h4EfBlXtn3Hhkqm29huE3Pan2lLAwRbEbTfqTaT+/TV+CeKdB42dM73IObJwS8UvB
-	 SdvLL753ffZRWdejYmDlAkq5HKn2KVxdZQ6hzeahEyop5/x37dV9U03wf7BirrmllR
-	 w9McTn69yNUZg==
-Date: Thu, 25 Aug 2022 11:13:50 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Hui Liu <hui.liu@mediatek.com>, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, wenst@google.com,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	jianguo.zhang@mediatek.com, zhiyong.tao@mediatek.com,
-	sean.wang@mediatek.com, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 0/2] MediaTek pinctrl patch on mt8188
-Message-ID: <20220825151350.mbovhtvcgnf6shwd@notapiano>
-References: <20220818075012.20880-1-hui.liu@mediatek.com>
- <CACRpkdbGjbd9Q9Chcnnc=3nD3XALsCdk7dz9mT3BfJdZs62xjA@mail.gmail.com>
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B4DBD61A9C;
+	Thu, 25 Aug 2022 15:28:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1217C43470;
+	Thu, 25 Aug 2022 15:28:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1661441302;
+	bh=yKyrbvscUxBwrXmqG5oLczuAvPaScnAReCHkvRnGolI=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Cd1w5Anzs8A92wu9QLzQRLi2mmaTdtLxtA0SiMVUgcDjfqgy/OW1BTq629FuYNPWB
+	 AHwLSRCL3JIsaqE1USVAwSlQVho6W1tvURq098/xRi0XRLtc5/JKmsBRsh5tU1yuwj
+	 WoKDmxwOf3zes0JL14l1SVdA7XzM81jc2su/zEwzH3Nk1Iq+dYBiaRvNiLml0xM0+S
+	 DtwvO1ags0IrXU4vyfQBUsWpqn+NhiExewo62RLqXCSgj3s5YZyEaoEC9Y4Jo4CB+T
+	 +1U9VabK9CaRmOmZahgTfdBTv3GuDLehcLiv32HGP+QkWWPPX3tyjFsCszcv7gPYMB
+	 qLhvsO63w40Hw==
+From: Mark Brown <broonie@kernel.org>
+To: chunxu.li@mediatek.com, nfraprado@collabora.com, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, project_global_chrome_upstream_group@mediatek.com, matthias.bgg@gmail.com, alsa-devel@alsa-project.org, lgirdwood@gmail.com, jiaxin.yu@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20220824122319.23918-1-chunxu.li@mediatek.com>
+References: <20220824122319.23918-1-chunxu.li@mediatek.com>
+Subject: Re: [PATCH v2 0/2] ASoC: mediatek: dt-bindings: modify machine
+Message-Id: <166144129763.526663.3235477335040031977.b4-ty@kernel.org>
+Date: Thu, 25 Aug 2022 16:28:17 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CACRpkdbGjbd9Q9Chcnnc=3nD3XALsCdk7dz9mT3BfJdZs62xjA@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_081401_045848_BFA97C12 
-X-CRM114-Status: GOOD (  11.14  )
+X-CRM114-CacheID: sfid-20220825_082828_408246_B94C5DBA 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,16 +69,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 25, 2022 at 02:54:32PM +0200, Linus Walleij wrote:
-> On Thu, Aug 18, 2022 at 9:50 AM Hui Liu <hui.liu@mediatek.com> wrote:
+On Wed, 24 Aug 2022 20:23:17 +0800, Chunxu Li wrote:
+> From: "chunxu.li" <chunxu.li@mediatek.com>
 > 
-> > Changes in patch v6:
-> > 1.Update driver file's coding style.
+> Changes since V1:
+>   - remove unnecessary quotes
 > 
-> No further comments on this version so patch applied. If Sean
-> has further comments they can be addressed in-tree.
+> Add SOF related field.
+> 1. Add a property "mediatek,adsp", Only when adsp phandle could be retrieved,
+>  from DTS, the SOF related part of machine driver is executed.
+> 2. Add a property "mediatek,dai-link" to support dai-links could be specified
+>  from DTS
 > 
-> Nicolas: thanks for helping out with review!
+> [...]
 
-Sure! Glad to help.
+Applied to
+
+   broonie/sound.git for-next
+
+Thanks!
+
+[1/2] ASoC: mediatek: dt-bindings: modify machine bindings for SOF
+      commit: 1173107d7c129ff87224814fd38fce5db023aaa0
+[2/2] ASoC: mediatek: dt-bindings: modify machine bindings for SOF
+      commit: 1173107d7c129ff87224814fd38fce5db023aaa0
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
