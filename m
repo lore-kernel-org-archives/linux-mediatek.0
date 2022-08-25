@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B21AECAA24
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 18:47:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C955AECAA25
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 18:51:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Eg8sGO8iry3CEYG8PqF5DRphz5mzK+s5pUO7VfrICQQ=; b=Suf1eCd/K/3PknjY1VAB3KrBvu
-	pJos/YOrNTFDoLMJu7q4/O2Q3fpaVpHe/WceOb9dXXO5Rx6gWY4kacp9PHlBwAHN0X9wBI6BF70BN
-	GdaR6OObopiNUVC6j6zFn3ubXxjQbAVnL1Lj6rFtVmMgbk54i0uzXe+Hqd2FnOrfPXd4FDcoss1oK
-	KqZ7JtCE/S3X3EzcDBjUDn1mupcI1vNxmICkmoF8Hg62JIuWmTfJTimunbH7yeQ/Lz6LC7F/yacUu
-	vw+cPqyBw4pMfyepq/gQ3agE5waWVZhMw4w5fmXbcwzgSZR0PwEoMOveNAE58OmHfYyiNCCdTCOkx
-	m4an97RA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XULX992igVj6Uiedt+AxlCqUAYRC3smYWUBYWhJowks=; b=ZTtz12DEo9LEsfU+sje3trxtjc
+	WFRmnwowKTJsYipqoALKkU70Cq31mb+GWT7Kz8/xRoxf20aBj294pRLpBfG7qjaa6iE2N26hSqPpS
+	cFJ9cIt9UkGWbLw9UXaHzoe1Mu0enVAr2NtaU9zw5fxyIJCqKd/lJQs6dHPYLYecuJcaYtW9+T670
+	oAvnDB9nizFdS3oc0j5YDLZAry0OlzgRViHyW1vc/bOYGXUw7EKeDn5bYQTj59dVXzYozEQNtdbxb
+	/DZxNU8DSiydDFehJHSmxcmES7s7VswomMTJGIDZN7IFarz8YQSoVXfsSg8/Xrj3MKGyUIfNY9LlM
+	2QE1bVqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRHsr-001eNi-20; Thu, 25 Aug 2022 18:47:17 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oRHwn-001sAi-5W; Thu, 25 Aug 2022 18:51:21 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRHs8-001aOc-V1; Thu, 25 Aug 2022 18:46:35 +0000
-Received: from notapiano.myfiosgateway.com (unknown [70.107.189.129])
+	id 1oRHwX-001rMi-Ti; Thu, 25 Aug 2022 18:51:07 +0000
+Received: from notapiano (unknown [70.107.189.129])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 25FA26601EAF;
-	Thu, 25 Aug 2022 19:46:21 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 942E56601EAE;
+	Thu, 25 Aug 2022 19:51:03 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661453182;
-	bh=dhmaNfxwX2nOLfTfnDrbNJDJaVQkem8mQ34apy48xhg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=G1EJ3DJyzYhFMV/7rbjEqEN1w3Jb3fdf3PLkd1oqYO1v1j4rbvmDGlEOyMBpt+73N
-	 3GoUze36CODFT67SbHOn2cdchH1h37VaaDFirVkurZgzttEnVpYr6AnpUc81+H164+
-	 aCRRENkU1YoJLbdLyUUvW1jxMaPOLAdRgF6t8hJr1j9Msv8r9fMU9qpksD7UjCDqqE
-	 aV/FS8E4dulWDz1LwJRaziL6fWRubtypdeJPa6F1VVtlfbIGjdqVMh/zoaO98RHdej
-	 T6FkK37KIpiR72011U+aBQJ/+xPxDnaErLJaLubMoYwBJkTXJaklXhHltegfhj0sHU
-	 f91JrgoG94ETQ==
-From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+	s=mail; t=1661453464;
+	bh=jqjW7nQ84W8spFHzeSk+rHHJ/4I5iCIJLk6w8rmb7rc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MH5HsrRkh3wk3XSsr+HODwUgKAGKEz2nM078683pQisORGSosmuU2vvz8w2xWrmYP
+	 MxqrWoLWdzzLXFUC2UKgceMIt0yW4/j51rTGu7XUgbBtM0lrmBkCjsDYRyWiEG7uIa
+	 NnQNlLGdxclJmEb25DlZ3/7Kb8xPG9xB7psiNMCm8l3EC69khxFKXdyHiz6eySopIk
+	 gQF+v6zbIiX7Xk5FZICrdgNonPUB5MoosO1BfDdnMcSl60IDQjR/shcL63TB2sbxtI
+	 qvrHz1kLWIk15ATI0mngDAOh/NLof2Ir6ctpYoYpw6DxVd6FgXKnEs9Jm08SMobyq5
+	 RBQUG/Ofj8LpA==
+Date: Thu, 25 Aug 2022 14:50:59 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: khilman@baylibre.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	roger.lu@mediatek.com,
-	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?= <nfraprado@collabora.com>,
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	roger.lu@mediatek.com, khilman@baylibre.com,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 1/2] soc: mediatek: mtk-svs: Commonize t-calibration-data fuse array read
-Date: Thu, 25 Aug 2022 14:46:15 -0400
-Message-Id: <20220825184616.2118870-2-nfraprado@collabora.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20220825184616.2118870-1-nfraprado@collabora.com>
-References: <20220825184616.2118870-1-nfraprado@collabora.com>
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH 6/6] soc: mediatek: mtk-svs: Use bitfield access macros
+ where possible
+Message-ID: <20220825185059.xbh3gigksveg4h4u@notapiano>
+References: <20220726141653.177948-1-angelogioacchino.delregno@collabora.com>
+ <20220726141653.177948-7-angelogioacchino.delregno@collabora.com>
+ <fa5f9bc8-f087-02c6-dd31-efa33244bf1b@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <fa5f9bc8-f087-02c6-dd31-efa33244bf1b@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_114633_303373_7E580DFC 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20220825_115106_355539_166C7C5A 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,136 +77,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Thu, Aug 25, 2022 at 03:29:33PM +0200, Matthias Brugger wrote:
+> 
+> 
+> On 26/07/2022 16:16, AngeloGioacchino Del Regno wrote:
+> > In order to enhance readability and safety during registers setup
+> > and value retrieval, redefine a few register related macros and
+> > convert all open-coded instances of bitfield setting/retrieval
+> > to use the FIELD_PREP() and FIELD_GET() macros.
+> > While at it, some macros were renamed to further enhance readability.
+> > 
+> > This commit brings no functional changes.
+> > 
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> Does not apply, would you mind to resend together with 1/6? Thanks!
 
-Commonize the repeating pattern for reading the "t-calibration-data"
-efuse data in a new function svs_thermal_efuse_get_data(), reducing
-the size of this driver.
+Hi Matthias,
 
-No functional changes.
+Patches 1 and 6 rebased and sent [1].
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: NÃ­colas F. R. A. Prado <nfraprado@collabora.com>
+Thanks,
+Nícolas
 
----
-
-Changes in v2:
-- Rebased and dropped mt8195 and mt8186 hunks, as they're not merged yet
-
- drivers/soc/mediatek/mtk-svs.c | 69 ++++++++++++++++------------------
- 1 file changed, 32 insertions(+), 37 deletions(-)
-
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index d96b9d3f3a83..63253e22abdd 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -1641,11 +1641,36 @@ static int svs_bank_resource_setup(struct svs_platform *svsp)
- 	return 0;
- }
- 
-+static int svs_thermal_efuse_get_data(struct svs_platform *svsp)
-+{
-+	struct nvmem_cell *cell;
-+
-+	/* Thermal efuse parsing */
-+	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
-+	if (IS_ERR_OR_NULL(cell)) {
-+		dev_err(svsp->dev, "no \"t-calibration-data\"? %ld\n", PTR_ERR(cell));
-+		return PTR_ERR(cell);
-+	}
-+
-+	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
-+	if (IS_ERR(svsp->tefuse)) {
-+		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
-+			PTR_ERR(svsp->tefuse));
-+		nvmem_cell_put(cell);
-+		return PTR_ERR(svsp->tefuse);
-+	}
-+
-+	svsp->tefuse_max /= sizeof(u32);
-+	nvmem_cell_put(cell);
-+
-+	return 0;
-+}
-+
- static bool svs_mt8192_efuse_parsing(struct svs_platform *svsp)
- {
- 	struct svs_bank *svsb;
--	struct nvmem_cell *cell;
- 	u32 idx, i, vmin, golden_temp;
-+	int ret;
- 
- 	for (i = 0; i < svsp->efuse_max; i++)
- 		if (svsp->efuse[i])
-@@ -1683,24 +1708,9 @@ static bool svs_mt8192_efuse_parsing(struct svs_platform *svsp)
- 		svsb->vmax += svsb->dvt_fixed;
- 	}
- 
--	/* Thermal efuse parsing */
--	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
--	if (IS_ERR_OR_NULL(cell)) {
--		dev_err(svsp->dev, "no \"t-calibration-data\"? %ld\n",
--			PTR_ERR(cell));
--		return false;
--	}
--
--	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
--	if (IS_ERR(svsp->tefuse)) {
--		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
--			PTR_ERR(svsp->tefuse));
--		nvmem_cell_put(cell);
-+	ret = svs_thermal_efuse_get_data(svsp);
-+	if (ret)
- 		return false;
--	}
--
--	svsp->tefuse_max /= sizeof(u32);
--	nvmem_cell_put(cell);
- 
- 	for (i = 0; i < svsp->tefuse_max; i++)
- 		if (svsp->tefuse[i] != 0)
-@@ -1723,11 +1733,11 @@ static bool svs_mt8192_efuse_parsing(struct svs_platform *svsp)
- static bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
- {
- 	struct svs_bank *svsb;
--	struct nvmem_cell *cell;
- 	int format[6], x_roomt[6], o_vtsmcu[5], o_vtsabb, tb_roomt = 0;
- 	int adc_ge_t, adc_oe_t, ge, oe, gain, degc_cali, adc_cali_en_t;
- 	int o_slope, o_slope_sign, ts_id;
- 	u32 idx, i, ft_pgm, mts, temp0, temp1, temp2;
-+	int ret;
- 
- 	for (i = 0; i < svsp->efuse_max; i++)
- 		if (svsp->efuse[i])
-@@ -1803,24 +1813,9 @@ static bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
- 		}
- 	}
- 
--	/* Get thermal efuse by nvmem */
--	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
--	if (IS_ERR(cell)) {
--		dev_err(svsp->dev, "no \"t-calibration-data\"? %ld\n",
--			PTR_ERR(cell));
--		goto remove_mt8183_svsb_mon_mode;
--	}
--
--	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
--	if (IS_ERR(svsp->tefuse)) {
--		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
--			PTR_ERR(svsp->tefuse));
--		nvmem_cell_put(cell);
--		goto remove_mt8183_svsb_mon_mode;
--	}
--
--	svsp->tefuse_max /= sizeof(u32);
--	nvmem_cell_put(cell);
-+	ret = svs_thermal_efuse_get_data(svsp);
-+	if (ret)
-+		return false;
- 
- 	/* Thermal efuse parsing */
- 	adc_ge_t = (svsp->tefuse[1] >> 22) & GENMASK(9, 0);
--- 
-2.37.2
-
+[1] https://lore.kernel.org/all/20220825184616.2118870-1-nfraprado@collabora.com
 
