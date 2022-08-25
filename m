@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 055A7C65C0D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 13:36:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36CD3C64990
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 13:41:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o1UpxoiRuNt3oUSMcF8VYdjioVIlJJnIPZzUkRCOFOs=; b=w8BiLfvxAJ096xd4pAMns5xETz
-	dByQJMVTXt/qoFFoYaxUUawcuRXbbak6B+PUls7uALbtOXDxhXTdgtlC0k8vNOz0QInp71HJfM1HU
-	LrKkj7E5NjXUoQRPvaheBB2CIh8e498a32R5cNXwZv0L8mgYcxU6ZDDsO5XYtoKY3bDD8rZtux5Wc
-	yvX+DupCPWzMjiGIZQQr6bX1tU3ugazoDoLr3p1JUBFaOy9HV+5XVoWhkAz1g54sEYquUJ1LJg/Rw
-	qPSgC/y7XQ/nDsruyowM5fEWGscNK+tmqCGOnlNHacr8PS9pgDzO6sbNxZyrhRr/yCIsWd3MDsbOg
-	AN5VobQA==;
+	bh=P62ueRssPRWFG3vaYmpYNrxNqu1MLhdwYO9xXHU3Eok=; b=fToh+I5ciG2BLgBIx+M+HDJEFF
+	SvhQuSslfcdctuVyJvk/Zf2OU/FSnvLoX0qT81JstT6euNvF3Sut54EQwIBqq3W4X/+ANH39HczFP
+	576/laPSJAWQRZpveTEpFJvluWtbE2KP07TOHjmVQhDHP7k8b7e+Ocmp7dbeAyBrF5zUVv9TObUvP
+	UuMDYMnyuObUcQ9Io0h7PjIKl3R3bukzGnE5zmVOesMEjM2khH+VS694oYpul0vu7KtlDkaXWalhF
+	/JZ19WIQkFDEVFvxD4MpNQOmu4C9rwIiH+5V14BoOGInfJSVWdUGBKVwGMAFIZ/lxrq7eFW7nqgWt
+	3tIFDzfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRD2I-00EsoG-6f; Thu, 25 Aug 2022 13:36:42 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1oRD79-00EwcV-OE; Thu, 25 Aug 2022 13:41:43 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRD21-00EsYA-7a; Thu, 25 Aug 2022 13:36:26 +0000
-Received: by mail-wr1-x430.google.com with SMTP id h5so23852065wru.7;
-        Thu, 25 Aug 2022 06:36:22 -0700 (PDT)
+	id 1oRD6W-00Ew9A-IH; Thu, 25 Aug 2022 13:41:06 +0000
+Received: by mail-wm1-x330.google.com with SMTP id n23-20020a7bc5d7000000b003a62f19b453so2720638wmk.3;
+        Thu, 25 Aug 2022 06:41:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc;
-        bh=o1UpxoiRuNt3oUSMcF8VYdjioVIlJJnIPZzUkRCOFOs=;
-        b=BAPDeOCpMKXOQRMSoIMiS+mUnKLVXfABtBKM/70xGPTvsTNCwiOL8aeiF6qIitDeKf
-         2ps6ylszW3YeCgmYj/rF/rrQo5dqhFryE0AHN/LYZEZub/FFrtyHX/hf+Oj1DkCZg7rp
-         4Tu3cAcrILV64LGxaFkYK0r3POMb6MgrYmqbBZlZ0S3oLpV3LE1wJt0FhNUuwLZ66LVG
-         NNECmr2MIWVXOnYMalYzU6czysgigZayP3xMrNN8WOMSrrGTQTiFqp4MAjOAynmzszr0
-         N6YD6gjJKCDUAmq46OuRK+WI4e8V8LNNTNixMWXVHmBDvzA1EdKyJPjiw+7INrmhgV15
-         kWig==
+        bh=P62ueRssPRWFG3vaYmpYNrxNqu1MLhdwYO9xXHU3Eok=;
+        b=o5f4hFjZI45NTZlz/j+gp1PsNXot+ZFmfK1pjCF3c/ZkKON5KO2U/U4z3qjDJ5pKHh
+         CfMu6+BUgs0fadkrXr33bOXYs5nZcCUNtREG1btzb00TRe5IV0Fw2MLKDbobygsbSmv+
+         ulmFWzsKO1LCy7kZMuRaScxVZX/sSB2Q1tOelifSdAS+YWR/Dfk2+lsEoaDrc5WOpa8s
+         +ALI41zvnNIBFnNZ3Y4wAAIGxZ9es+16UZ//ZoLewVyBXhkaVmHAnoKsi1PE0YD7jzTi
+         +TLD7NKMIzJAoYCRfdP2kxriS9Khnex1VnPO48BPSWgzf7BXhICyZIiRB72cN/l9tpvT
+         6VXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc;
-        bh=o1UpxoiRuNt3oUSMcF8VYdjioVIlJJnIPZzUkRCOFOs=;
-        b=BOh5jz9cXJldTXkOVFylrWcW5d6pu/G7ygOSm5XrWKZ3wE3VVVW6vIpfLE1c1sVEvL
-         /aOHJkRBab1Vng6OL3kfXYtAfaUoNoWNZUjG7wflZmMx9EHnDGYO594zQoPya+gP/2cf
-         w2AqK0y8oFrDKa/dk9hen51kT+xQyTm2znygga3nGzNcSNpnZYqp0ljGr9QO4/AJKI97
-         dTveDvErcF+2PeTknN6R1pep3YOHeU2O5+5mo9OgxptK6Zi8HnSwTODZxqFBx3jFxPol
-         5nP+43TrR3l40uyf1BrTlJjl7NhAslvHxcU0OMMycEZyLNEGB0pcMKSYd5OFjpVAfOhf
-         nBug==
-X-Gm-Message-State: ACgBeo3UaEH/yfN+OH6gC3hAxaO1GL4NLHZEBNcVpjyfWpfuH1IxALuE
-	GWYSw0P65VcvdNmX2VU0RAY=
-X-Google-Smtp-Source: AA6agR51DTr6LrwquXxqYW/bTahA+91PGJ3st7kartiD0AdFt0Nd5Iv4F33QY1hXXicmBdatc+1D0w==
-X-Received: by 2002:adf:f881:0:b0:225:4f49:55dc with SMTP id u1-20020adff881000000b002254f4955dcmr2437885wrp.414.1661434581558;
-        Thu, 25 Aug 2022 06:36:21 -0700 (PDT)
+        bh=P62ueRssPRWFG3vaYmpYNrxNqu1MLhdwYO9xXHU3Eok=;
+        b=Fy1K3KDjg00FFNrPkoEqQ8lma+r9BoPMwq8v2RnESIQFSHUSx0xjPxe+9ivx1Nv40t
+         epFBrlDuC96Uz8U0jjBRre3wPMbkXuDY/oukmaEqVUR5qz1188kWu8FAmc+7ZO2E5FxX
+         rUQ/tT5pabR/9di/+zfhgKmZBM4XZzXpfKv0VCQng7imL+E3Knb2XeojsM5fLsNNSwiV
+         PMJk9Ftyi901yedbhrFM+UvNrUrRCWSsOe7/r+e425T+WMa6XuJEsLXsDuCwd0Qv3mqI
+         k//ZBZVcsE5CWAazsBYjX4JnAgxzLS2DdYit7WOFBiiod5DNw7la/C2kuNksODqW5/Ee
+         ZBdQ==
+X-Gm-Message-State: ACgBeo2QiDLiW01tFLFSck8W/9ttKf5Y3QWozioZPAvTrZyJGN3plRG+
+	OtgQXoejTKijUGZayXpulMc=
+X-Google-Smtp-Source: AA6agR6HwtACnz86Wj1DGMwmnKmttU1V08jHhgJSrlxz8gPmsiWwe1E9CpRcuRMT3D/r04OwZIh6QA==
+X-Received: by 2002:a05:600c:3508:b0:3a6:10a9:8115 with SMTP id h8-20020a05600c350800b003a610a98115mr8721228wmq.164.1661434862814;
+        Thu, 25 Aug 2022 06:41:02 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id y8-20020a5d4ac8000000b0021f73c66198sm19385965wrs.1.2022.08.25.06.36.19
+        by smtp.gmail.com with ESMTPSA id g8-20020adffc88000000b002258619d342sm641503wrr.2.2022.08.25.06.41.01
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 25 Aug 2022 06:36:20 -0700 (PDT)
-Message-ID: <b96810d6-df43-1599-b3cc-83e97b9faf2c@gmail.com>
-Date: Thu, 25 Aug 2022 15:36:19 +0200
+        Thu, 25 Aug 2022 06:41:01 -0700 (PDT)
+Message-ID: <ad4d2ed4-5ea0-f6a8-65da-9f61ca54b891@gmail.com>
+Date: Thu, 25 Aug 2022 15:41:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.1.2
-Subject: Re: [PATCH v4 05/20] dt-bindings: power: mediatek: Update maintainer
- list
+Subject: Re: [PATCH v6 01/20] dt-bindings: iommu: mediatek: Increase max
+ interrupt number
 Content-Language: en-US
 To: Tinghan Shen <tinghan.shen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
  Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
@@ -78,15 +78,15 @@ Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220729063208.16799-1-tinghan.shen@mediatek.com>
- <20220729063208.16799-6-tinghan.shen@mediatek.com>
+References: <20220811025813.21492-1-tinghan.shen@mediatek.com>
+ <20220811025813.21492-2-tinghan.shen@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220729063208.16799-6-tinghan.shen@mediatek.com>
+In-Reply-To: <20220811025813.21492-2-tinghan.shen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_063625_361139_2605AF94 
-X-CRM114-Status: GOOD (  14.88  )
+X-CRM114-CacheID: sfid-20220825_064104_698778_1039F416 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,29 +103,71 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 29/07/2022 08:31, Tinghan Shen wrote:
-> Update the maintainer list of power controller binding.
+On 11/08/2022 04:57, Tinghan Shen wrote:
+> mt8195 infra iommu uses 5 interrupts.
 > 
 > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> Acked-by: Rob Herring <robh@kernel.org>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Applied, thanks
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+Joerg, will you take this through your tree or shall I take care of it?
+
+Regards,
+Matthias
 
 > ---
->   .../devicetree/bindings/power/mediatek,power-controller.yaml    | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   .../bindings/iommu/mediatek,iommu.yaml        | 29 ++++++++++++++-----
+>   1 file changed, 22 insertions(+), 7 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> index 2d6afc0909473..03b7f6aa591d4 100644
-> --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> @@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
->   title: Mediatek Power Domains Controller
+> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> index fee0241b50988..f5634c1642e20 100644
+> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> @@ -91,7 +91,8 @@ properties:
+>       maxItems: 1
 >   
->   maintainers:
-> -  - Weiyi Lu <weiyi.lu@mediatek.com>
-> +  - MandyJH Liu <mandyjh.liu@mediatek.com>
->     - Matthias Brugger <mbrugger@suse.com>
+>     interrupts:
+> -    maxItems: 1
+> +    minItems: 1
+> +    maxItems: 5
 >   
->   description: |
+>     clocks:
+>       items:
+> @@ -183,14 +184,28 @@ allOf:
+>         required:
+>           - mediatek,infracfg
+>   
+> -  - if: # The IOMMUs don't have larbs.
+> -      not:
+> -        properties:
+> -          compatible:
+> -            contains:
+> -              const: mediatek,mt8195-iommu-infra
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt8195-iommu-infra
+>   
+>       then:
+> +      properties:
+> +        interrupts:
+> +          description: The IOMMU has 5 banks. Each bank has its own interrupt.
+> +          items:
+> +            - description: The interrupt for IOMMU bank0
+> +            - description: The interrupt for IOMMU bank1
+> +            - description: The interrupt for IOMMU bank2
+> +            - description: The interrupt for IOMMU bank3
+> +            - description: The interrupt for IOMMU bank4
+> +
+> +    else: # For the MM IOMMU
+> +      properties:
+> +        interrupts:
+> +          maxItems: 1
+> +
+>         required:
+>           - mediatek,larbs
+>   
 
