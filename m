@@ -4,81 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25068C32774
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 07:24:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D39D4C04AA5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 07:35:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/kpt2RV6NM9K6J+Df1fFRo6EZL8n/4JlPeLG7FAew6U=; b=hK8IoZUUBJw5kZSGZ0fGUDckEc
-	eQG6XcK+5BrEo/R9jE6KiRkQ2yqJZUwdFt3Fmw4FHVlwGMo1QZgz2w+c9zCUV8JZT81V0/eVqhwNi
-	qxbxRLq1ooJi8uEuZ4Xzxu1bKxu+9UOnrhb6VZQIaGf1AJxignYS0hHiKq6DUUei62C7gLEhkdS2O
-	WEwZwA75uGIBg2TBkK12NEGhXKgLn9+hZrskSzEFI3WqggqUGTI5rz/H7L/cKMeDIh+E7iUVAQJgc
-	P5A325GCK2RWI0aDysa4BtVTjZTrZkXFsdxTGifWz9ZraA8AArORvTkM3Y1xv6mPvp01zagIqwmnV
-	RzxPab9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZMxdqidHeMKTU6uO8paqRwQ9GJO1Qr/k1wi7WnYBmfk=; b=BQTzEtkm1LuL9X7uRMIqjAdqCM
+	DA8RhO6j0hehaSe3ouzN1JEBiWha1WLUu9fYJEo9vHJF0jk4H2quvJkB2MjZ9uLausPOZNxtEKQDp
+	s8CoiFEKYkAQ5G2dKjX/VKTJ4lI/jvEtbXKeC5zoI5LOenHnobMMQykf3TWcXIgsqFQ0WSZWsCnw1
+	6ounjjGNq4emG8/A/fBUtRsLk6Cu1Xl6y8rBuUPYyvzfxNPridWdkZGvfdHSy2YX8tP3QzIYOLnkK
+	zX9kpxI6I2My6WBdNP0LTg4X8BNX4OgDVURK8eNvh1sZhEA1rO2SiAJ2bdTSEuypE8XHHZbx6sNTh
+	rjWfyAhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oR7Dj-008xwr-Bb; Thu, 25 Aug 2022 07:24:07 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1oR7OI-009IgO-7L; Thu, 25 Aug 2022 07:35:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oR7Dg-008xrX-CX; Thu, 25 Aug 2022 07:24:05 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id bh13so17145405pgb.4;
-        Thu, 25 Aug 2022 00:24:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc;
-        bh=/kpt2RV6NM9K6J+Df1fFRo6EZL8n/4JlPeLG7FAew6U=;
-        b=UDBqe9YjPW7t3UyrluqNFqCKncHu/IFGNJrVjvdU/qUzU9/RInEy1OUH+YhUtqZSjo
-         H5KCL6YWlLFAc4dzcpZLFyZWVItgkRUiUpAuGkDVWylwYv4S8vPQ3QzXirhjcM4BL5LJ
-         IC7PGzR5x7uffJJB+z5VktykrB0bl6cMp52YSNx+AeW2KWjy/SgD7A2gxFuqBpWoV6hz
-         QQ2zT5406WVkKvb/ykqJgDTja5ESHrRoCMht2AUVoU4nahwFzg2EKNda4NEP51N8k5B6
-         BP2m6t52bad71ST+B+m0XnikxPtbmkkQKkqrjDi3cqas0dJOPRMc4Fgdaa/848EV5/eH
-         /qUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc;
-        bh=/kpt2RV6NM9K6J+Df1fFRo6EZL8n/4JlPeLG7FAew6U=;
-        b=W5aF42sE9H24lvg+SeMX3M9J+drXaqfMmOFOqc208K3YG27pXMFNFn/VGVooQkSIFp
-         vzBUuxy3D6MZSX6/xrc8N+pYhoYAa3uFKtv3iADyDJkT5BCJNu81xLhcEyxgZyy6I4BL
-         nn7zEMxIaJ/8dNXLtpif0Oemq2xUxCx1lPZvSCURumz5xwwPJY2yN3oAW7sSgOciQUiD
-         jKoNnnv12vdfpaD0hiiBVfDMqe4Cf68BYWoUItxiHrpXNkv4jsMF5NbR9YIQOz0rB6aJ
-         hXfq7WOa6EWVbYmtZru6h9tMdiKhuT3czaF469sudOCpSLB8stNqkuFNvNIT+6IjXPcN
-         88vQ==
-X-Gm-Message-State: ACgBeo1K31EUnSUV7sAA57sVtlNUorY7VYSLz8x4M40737j5+seD0vlC
-	AE5fAx7pn3gXNb9HI1+BH50=
-X-Google-Smtp-Source: AA6agR7v/r3DRgd8SnJ0ZIUhy/OVQel9Bx9fmiJXxu11YC3eOwMJefcW1JsusLYI5j/00IiosOtX/w==
-X-Received: by 2002:a65:6b8e:0:b0:42a:162c:e3a0 with SMTP id d14-20020a656b8e000000b0042a162ce3a0mr2215384pgw.464.1661412241538;
-        Thu, 25 Aug 2022 00:24:01 -0700 (PDT)
-Received: from localhost.localdomain ([193.203.214.57])
-        by smtp.gmail.com with ESMTPSA id x124-20020a623182000000b00534cb3872edsm14256958pfx.166.2022.08.25.00.23.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 25 Aug 2022 00:24:00 -0700 (PDT)
-From: cgel.zte@gmail.com
-X-Google-Original-From: ye.xingchen@zte.com.cn
-To: matthias.bgg@gmail.com
-Cc: chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	airlied@linux.ie,
-	daniel@ffwll.ch,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	ye xingchen <ye.xingchen@zte.com.cn>,
-	Zeal Robot <zealci@zte.com.cn>
-Subject: [PATCH linux-next v2] drm/mediatek: Remove the unneeded result
-Date: Thu, 25 Aug 2022 07:23:35 +0000
-Message-Id: <20220825072335.228921-1-ye.xingchen@zte.com.cn>
+	id 1oR7OE-009IVx-QN; Thu, 25 Aug 2022 07:35:00 +0000
+X-UUID: 969f7c27a3aa45fe9edce130ea856045-20220825
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ZMxdqidHeMKTU6uO8paqRwQ9GJO1Qr/k1wi7WnYBmfk=;
+	b=KOKE8dPAKny/qkebfiHgl8m9mqrJF8KFDVMrXDzP6ZrSTJ0HVnrbRSM11veVpIfqQXCadOIAV+deW7frCbBN635xTylhbewZG0JVMRtsKZYwuMNPwSo7bmLV6XQuLSQYGo6hiHEvTlDqVpJph13JVOLvCpVw3d4pOLNQM8gLnw8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:d3645394-644c-426e-ace0-d779cccf65eb,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:293e8855-e800-47dc-8adf-0c936acf4f1b,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 969f7c27a3aa45fe9edce130ea856045-20220825
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chunxu.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1408800752; Thu, 25 Aug 2022 00:34:55 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 25 Aug 2022 14:54:18 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 25 Aug 2022 14:54:17 +0800
+From: Chunxu Li <chunxu.li@mediatek.com>
+To: <broonie@kernel.org>, <pierre-louis.bossart@linux.intel.com>,
+	<peter.ujfalusi@linux.intel.com>, <lgirdwood@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <daniel.baluta@nxp.com>
+CC: <matthias.bgg@gmail.com>, <yc.hung@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <alsa-devel@alsa-project.org>,
+	<sound-open-firmware@alsa-project.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<project_global_chrome_upstream_group@mediatek.com>, Chunxu Li
+	<chunxu.li@mediatek.com>
+Subject: [PATCH 3/3] ASoC: SOF: mediatek: Use generic implementation for .ipc_msg_data field
+Date: Thu, 25 Aug 2022 14:54:11 +0800
+Message-ID: <20220825065411.31279-4-chunxu.li@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220825065411.31279-1-chunxu.li@mediatek.com>
+References: <20220825065411.31279-1-chunxu.li@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_002404_468681_23D86757 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20220825_003458_900346_D082D3D9 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,37 +83,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ye xingchen <ye.xingchen@zte.com.cn>
+Use generic sof_ipc_msg_data instead of specific implementation as
+they do the same things
 
-Return the value drm_mode_config_helper_suspend() directly instead of
- storing it in another redundant variable.
-
-Reported-by: Zeal Robot <zealci@zte.com.cn>
-Signed-off-by: ye xingchen <ye.xingchen@zte.com.cn>
+Signed-off-by: Chunxu Li <chunxu.li@mediatek.com>
 ---
-v1 -> v2
-Add all the mailinglists that get_maintainers.pl give.
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ sound/soc/sof/mediatek/mt8186/mt8186.c | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 5f02f8d0e4fc..91f58db5915f 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -833,11 +833,8 @@ static int mtk_drm_sys_prepare(struct device *dev)
- {
- 	struct mtk_drm_private *private = dev_get_drvdata(dev);
- 	struct drm_device *drm = private->drm;
--	int ret;
--
--	ret = drm_mode_config_helper_suspend(drm);
- 
--	return ret;
-+	return drm_mode_config_helper_suspend(drm);
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+index 5fc206bb0da0..a1be5d74f40b 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.c
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+@@ -460,14 +460,6 @@ static int mt8186_get_bar_index(struct snd_sof_dev *sdev, u32 type)
+ 	return type;
  }
  
- static void mtk_drm_sys_complete(struct device *dev)
+-static int mt8186_ipc_msg_data(struct snd_sof_dev *sdev,
+-			       struct snd_pcm_substream *substream,
+-			       void *p, size_t sz)
+-{
+-	sof_mailbox_read(sdev, sdev->dsp_box.offset, p, sz);
+-	return 0;
+-}
+-
+ static struct snd_soc_dai_driver mt8186_dai[] = {
+ {
+ 	.name = "SOF_DL1",
+@@ -526,7 +518,7 @@ static struct snd_sof_dsp_ops sof_mt8186_ops = {
+ 	.send_msg		= mt8186_send_msg,
+ 	.get_mailbox_offset	= mt8186_get_mailbox_offset,
+ 	.get_window_offset	= mt8186_get_window_offset,
+-	.ipc_msg_data		= mt8186_ipc_msg_data,
++	.ipc_msg_data		= sof_ipc_msg_data,
+ 	.set_stream_data_offset = sof_set_stream_data_offset,
+ 
+ 	/* misc */
 -- 
 2.25.1
+
 
