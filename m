@@ -4,61 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01E79C04AA5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 12:45:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93035C28D13
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 12:54:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RpKP/3hgS7zD6yw3UQjzSyf/WlpyxgPz62sqofyMskE=; b=xiVHuA1vaAuB1MJCrAsIszvan6
-	CI8GVztdj9scDLUT6hgGe/nQbRCrSSKqg823ju6UDN1rhJm/aqdV77pmN8I2IDUGKZWK6A2mY/+Oj
-	x8YmhcQ6tqjReAqbnoTx7cyQiAJ9Ucf6o0oLNFbjZSEXP5OBJRRP6nRGYEv0v+cv32GPahRz9hcKb
-	ZZaKzKZG+K1/qS2QxRYV94dxpjWS6RmeO/CKlFyNcnrEKwQwYGg6Mi1qU0jeIxSLS+y5F/XXd9qoE
-	z8Ed3p6TpuJaQ4T18Lilr/DZNwbBmCJHKfmQUrcc6QwtXZxDwoBk2GmtgWzfF62M7NQzd6gx4pNlY
-	OrCZyPvA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eTyJ5ysyBJphDxI681uzkkLxuflLaDMmY8laThwgM3s=; b=VU6paGH3aNwEEOaB7vYn+fTJTP
+	34jw6sd4QMCJX5e8hlftxHv4qIvvfBXdv7FRdrCmz6mukP2V+cInMS8hyMjFewYXeaohT4Y3xZlMQ
+	W+EoppyxMnLy2uvEeATKgWJXjsxc+34kISkSf9/dNulJclSxHUH/pipDotv7Kz+uBWROY4QYXx68F
+	sMRSowHeGR6/8SwLJgQbMBdn8JbrQq0lsFJ4p/bIVPw+oPXg2jwU1g6ruo3TY4hJ3gu5kaLkGB0GE
+	vG8ayKYmDxOxZTt+wnm2Rc4c9l7waM/NKySrL3AXSIVrXeEVis9b05r6xOziFeVVOB9jHqNHXiR+B
+	H1vMT2ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRCEf-00DydS-Rp; Thu, 25 Aug 2022 12:45:25 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oRCNk-00E508-Fw; Thu, 25 Aug 2022 12:54:48 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRCET-00DyWl-Cy; Thu, 25 Aug 2022 12:45:14 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id BB2F461C35;
-	Thu, 25 Aug 2022 12:45:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D60BC433D6;
-	Thu, 25 Aug 2022 12:45:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661431512;
-	bh=pOtQJt9kEx8p4pkA3MWq57CKBS+/4IwMA0AR5ke4v1I=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=lLxYM08fBDiqRFJl+zb/yqfIPSKEf49j9HQmj4Z9tJE3OGdfTXFYWLu7FXCPzxeDy
-	 oK5AqfeNt0cm9eak1kACO5Koe0/tw4RgysM9ymQU1Qi1GyW3xTCth170Hb3n9P/p1/
-	 dSJWO9Sshl0uaCsBvMdP2fJPjBsz28lCINbX1EZJ31pSYtUn8/Gjm/lKdebdHd9QsC
-	 Va1KwNKEBRBl9IutX0nwRB/oYxzZX0voLVYmW089GdfU39B+dndwyhSuCLBXZJ5v7G
-	 huP+/N2uTUj0g80haKehKDsRhENjpkmm7WPV7oempVCt2icrrKv76Afkx/GhyMOIot
-	 OZH+Y1hwQ6sSg==
-From: Mark Brown <broonie@kernel.org>
-To: peter.ujfalusi@linux.intel.com, lgirdwood@gmail.com, pierre-louis.bossart@linux.intel.com,
- Chunxu Li <chunxu.li@mediatek.com>, daniel.baluta@nxp.com, angelogioacchino.delregno@collabora.com
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
- sound-open-firmware@alsa-project.org, alsa-devel@alsa-project.org, project_global_chrome_upstream_group@mediatek.com,
- yc.hung@mediatek.com, linux-kernel@vger.kernel.org
-In-Reply-To: <20220825065411.31279-1-chunxu.li@mediatek.com>
-References: <20220825065411.31279-1-chunxu.li@mediatek.com>
-Subject: Re: [PATCH 0/3] ASoC: SOF: mediatek: update SOF driver for mt8186
-Message-Id: <166143150803.98448.11310238712995264626.b4-ty@kernel.org>
-Date: Thu, 25 Aug 2022 13:45:08 +0100
+	id 1oRCNh-00E4tO-Bc
+	for linux-mediatek@lists.infradead.org; Thu, 25 Aug 2022 12:54:46 +0000
+Received: by mail-ed1-x530.google.com with SMTP id w10so13833655edc.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 25 Aug 2022 05:54:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=eTyJ5ysyBJphDxI681uzkkLxuflLaDMmY8laThwgM3s=;
+        b=ZZjLAnzUFfkR+G4v+IgfNQyxujKrroHVtRt6sLDmiBVTQl1pPP39LVWYfE+C14b7jy
+         drFFGtc6MLy9HT+qhNoOGpDmgp9Nboo9hsk8n/VBZknHf0aWOQQyO3nzK40UoyCG0HzW
+         fXNWZFVaOMNNvtkDmAdm9sA4YcRvMnM9SQnlAFfOo7DkBCBOSHh9X5DDisnwDiJP5v1w
+         3G2pmpLNsi239BmZHC5GmDihLNEHiBKMXvDnQlNHcRwVVh7BQdClm3jrRWHJhv5h6f0e
+         2nDWc2tbxe/8Dv5Tl/zjy2f33JnCJOxHzk2QC53ZDPcp/U36ngjXCxslQJEmi8JYCPPI
+         ow9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=eTyJ5ysyBJphDxI681uzkkLxuflLaDMmY8laThwgM3s=;
+        b=MqndUJ2pr/SZwk/4k6LZ2XHCr8FdE8SAc8Grcm0/SsJqEyuwE9gZxBnzIOAtOR6UBG
+         zyOIO8+i5bdesKmACemGfchsGIu35Mec/QpGotm+5EYmChzeaoEPcMsZ3t4DEx8uo1he
+         67SJ0dpevxI9OOQ9pK6Kzv1iOAbSzNIe6aRvy6QzGOuFTFMERbr7yccHCLrnWGUGR9pg
+         9NH2An8tq8aPbXeryd3WTJfOxo+9fbKc0zTRqUsRuYFxiw80F7FoK/UkHNrQ4CkSPOjm
+         3uWdNJaERTcanM1klpl8qTvgqpYwuIoQSw9C93qQAx2TnI1BmBYMCvmEKRHwPHaf2AAW
+         RQBA==
+X-Gm-Message-State: ACgBeo1fs9mtiwLsuZpkoMUy9GPJtvY0YASwWtCxi+UCxHv4nVp0ICe5
+	8bU6CvRrbG25SR4mfdA/4ZrRBCyRgs6K9VH6SXC0ow==
+X-Google-Smtp-Source: AA6agR5gBoA+DyRoVe1dyTC0LYezrrsqDvXPMxIYYWdtzgEXrzgLMkOxOeINwsG5S/OWaW8sXg9+wvi2winSXMVBq2c=
+X-Received: by 2002:a05:6402:1f8c:b0:43e:8fab:76c with SMTP id
+ c12-20020a0564021f8c00b0043e8fab076cmr3117148edc.126.1661432083303; Thu, 25
+ Aug 2022 05:54:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.10.0-dev-0c1df
+References: <20220818075012.20880-1-hui.liu@mediatek.com>
+In-Reply-To: <20220818075012.20880-1-hui.liu@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 25 Aug 2022 14:54:32 +0200
+Message-ID: <CACRpkdbGjbd9Q9Chcnnc=3nD3XALsCdk7dz9mT3BfJdZs62xjA@mail.gmail.com>
+Subject: Re: [PATCH v6 0/2] MediaTek pinctrl patch on mt8188
+To: Hui Liu <hui.liu@mediatek.com>, 
+	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	wenst@google.com, Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	jianguo.zhang@mediatek.com, zhiyong.tao@mediatek.com, sean.wang@mediatek.com, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_054513_500112_B88ABFC0 
-X-CRM114-Status: GOOD (  13.53  )
+X-CRM114-CacheID: sfid-20220825_055445_413305_CE16E642 
+X-CRM114-Status: UNSURE (   7.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,47 +90,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 25 Aug 2022 14:54:08 +0800, Chunxu Li wrote:
-> In these patches, we update SOF driver for mt8186
-> 
-> Chunxu Li (3):
->   ASoC: SOF: mediatek: Add dai driver for mt8186
->   ASoC: SOF: mediatek: add snd_sof_dsp_ops callbacks for pcm and mail
->     box
->   ASoC: SOF: mediatek: Use generic implementation for .ipc_msg_data
->     field
-> 
-> [...]
+On Thu, Aug 18, 2022 at 9:50 AM Hui Liu <hui.liu@mediatek.com> wrote:
 
-Applied to
+> Changes in patch v6:
+> 1.Update driver file's coding style.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+No further comments on this version so patch applied. If Sean
+has further comments they can be addressed in-tree.
 
-Thanks!
+Nicolas: thanks for helping out with review!
 
-[1/3] ASoC: SOF: mediatek: Add dai driver for mt8186
-      commit: f3b75e9b56780e3bfaa910e560cb9ba4d8f38e53
-[2/3] ASoC: SOF: mediatek: add snd_sof_dsp_ops callbacks for pcm and mail box
-      commit: 82e93430e0ad13cc31e411cfa575e63118bb0ed4
-[3/3] ASoC: SOF: mediatek: Use generic implementation for .ipc_msg_data field
-      commit: 059846071f468da8389dcb8b8bbb38a781b02955
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Yours,
+Linus Walleij
 
