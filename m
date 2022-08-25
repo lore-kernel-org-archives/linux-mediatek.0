@@ -4,84 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 267E4C28D13
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 14:58:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E794C65C14
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 15:02:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bKqxJIBDaoN4leoGC948rXDy4btWZwIIKEVGbDwuJbM=; b=spAT2YPPF2LBGi0rrU6e390YkR
-	I2xOAbNB3JcATeZygQ7NdSE+wx90ZuhyjjvcqQIkYMHyd56gVTD+s9DqUCsf/d7p9CRB4ZUJK9nsq
-	ZPWtkbLhPrXxfpKMnEOM/KVR+zYUK0uB4Uf2y1eny5ckGvPxAFCO2gh4lajNRUqAr39OzVFN1KMgA
-	1Mq5K0sPQ50HmGs416z6myLngLjkCFYpuiwdAhRnkzKeDlrCnY+jMC0whKbQtu/PbVVHFvOgiXD8U
-	RRs2kT8E+cJJ0/ZbclveMks41/gur5cjO5zwAcAX58AVNmHxNiqYCrTyeceoY70JU0DYDY//sVACl
-	TBKWvPPQ==;
+	bh=qTOBWtrX+pjJ3ahFlS9FAQk7EKs/QTk29vxbSTY4jaY=; b=HOv91fuygC7uvFro7i43V7B4Bf
+	dYFgrklh381rfd1ZzUUa5H+g/9xqxB1TnvSRtBzDpN5+7i7AerzO4NPjAY9ubJKqU7CXq+Kpz6lI9
+	0NlMo8M1GVg5UXIx4QnF1qjsa6j/bc4pWQK2wenwcsw2GaaqZVuKqwYrbMvczV0Q2Ty0xfsw4swjw
+	K1Wp6rwgSNFcWfNBYoO3xWfDdj3hWwcN4rh8meDqKbifRm/z6Q1wggFLX9QikR5sWc+AXoMVi0i4J
+	CGaWNX4+WiDyN85qLiIz8JTMF/hElbX3IEpUNeyt4daQRuqf871BlBXdYLvubjqm0Ief1/uWk+GKX
+	4vQ4VbGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oREJ8-00FT7x-Ud; Thu, 25 Aug 2022 14:58:10 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1oRENJ-00FUyf-Hy; Thu, 25 Aug 2022 15:02:29 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oREIv-00FT1J-UQ; Thu, 25 Aug 2022 14:57:59 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id m17-20020a7bce11000000b003a5bedec07bso2862389wmc.0;
-        Thu, 25 Aug 2022 07:57:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc;
-        bh=bKqxJIBDaoN4leoGC948rXDy4btWZwIIKEVGbDwuJbM=;
-        b=niwLkKWApxiZ9LaQP6x2ZLxlpmxSFUjIjBrJm4WXIOlbAS6k3JphAY/ug4U7/qDzZr
-         1BCAnDAPUB96BFamev8xVvVo/rtd5+HhoGPBKJEGXhjkrtGtZlGbICR7qdNqqbOCL9V/
-         PdJhXg+5FI0mnSBK+yS8l6n8Qb5RD8hMP6yHXJu2Bbk09B91YpjiIbOIra7NK8F9+uXS
-         Ghdppms8BAgMaJkmk4oH05DX9DaJWvlh51FshpMIZBf5iM7eTvpGzNGa6nDdjtHWvBZz
-         99iLZjHEgqQp8O4vLf6oqCXffSuB+c0pV4PsiV1WOXQK4GSy8w3ypP447AXKQZWWP+s3
-         HjAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc;
-        bh=bKqxJIBDaoN4leoGC948rXDy4btWZwIIKEVGbDwuJbM=;
-        b=hCn48b4b/G65XB6oCYvuyPNRVg3Z7dnOs0dgST+NEsGs8uiilhhGI7cd7/exUIUjnq
-         RzIgi4P0TKGPkoH/+wdGCKLe1elFzgn9xeM7B4Gp2PI1MHadtP0rGrlr/ClgYLupsgVO
-         faQJ/wHw6qigFfwxfby/t6SQfnI+1UKD+NNqaYp6utwH0idUV2X9DL0AE/O0bGZHHeij
-         tqmNpbxJdI2AG+ApYuZvDqvkuX/RH6Tet1VRPFRTKyuE36dCdL8+pkfRlGrXGY0lXLsx
-         l1vq61XxWpoCZ6/LFmBEtpvUrqeaMxfC8Y4w9m4q7+q2f9LfPrD/QZkeSemAR3Sofq27
-         zNYg==
-X-Gm-Message-State: ACgBeo2yVePwiMoNc6O8eSFL/wYVnoUW1Ku/XQUNoL4juc3AAVqmUHem
-	W+MH1auipGjCB+Wg28mLh/4=
-X-Google-Smtp-Source: AA6agR7DjigTUF9DSPLsJPn+n8QozB6Xr2ap0MfMSl098vyNmB/BNSxC6kMjQVy++uy2E6Cq9djLOQ==
-X-Received: by 2002:a05:600c:657:b0:3a5:e4e6:ee24 with SMTP id p23-20020a05600c065700b003a5e4e6ee24mr8225959wmm.68.1661439474250;
-        Thu, 25 Aug 2022 07:57:54 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id s1-20020a7bc381000000b003a35ec4bf4fsm5403928wmj.20.2022.08.25.07.57.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 25 Aug 2022 07:57:53 -0700 (PDT)
-Message-ID: <3ed3d73a-1671-708e-7c42-498cca6aaf1d@gmail.com>
-Date: Thu, 25 Aug 2022 16:57:51 +0200
+	id 1oREN6-00FUu0-Rx; Thu, 25 Aug 2022 15:02:18 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5D74761982;
+	Thu, 25 Aug 2022 15:02:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BFEB5C43470;
+	Thu, 25 Aug 2022 15:02:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1661439734;
+	bh=wjzgRFEte1JYnIbn0TO9+w6aujcip3bCGZB7ym5Hwqc=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=HkRRkzc9iafdkf9TMuKnfqx+MEHwzecpp3cFlYHeVXNhCy0CydbQiOhMjHVpUe1oY
+	 z8ppkiRKmmBFXy8f/xvVskAEuR1DQ1GbwTz1qoYisg/Y8P4wll3wAnJK/wKYTf0nXf
+	 xsJRoaTa+1V6PkhjmQOey5EARkduy8bSNR2rHEEQDuXpbw3h2n92Z92JFsPqEHUa/0
+	 1jKFsx0C/45mNLfBD0fpSBeWj375DsH5odKJKfTgMGAhCTSA93C0jFG1ptbeqrC8fr
+	 N2BvGI2buJudq0B41JKkljHZXQK/DCwDHSvY+vz7rLCQM2dc+APZ8lGhH/E0tvXNZM
+	 /qTPFWo3Z3XIw==
+Received: by mail-oa1-f45.google.com with SMTP id 586e51a60fabf-11d7a859b3aso14018968fac.4;
+        Thu, 25 Aug 2022 08:02:14 -0700 (PDT)
+X-Gm-Message-State: ACgBeo3wXlaMdJwXdm5eCC99ZY7iq1EBveGtO+2UCDjTokmHhQ1AQ37z
+	WAQnvmk72ABsSf2F0sPWDazAjkmDHg50m/jYEg==
+X-Google-Smtp-Source: AA6agR70oWHotJ5zvAGB1qZOQksOWhU541/A7VrzrBgK6KvY/ErP5FdHQ4RJbVcMw2k+yzFchbHSwLv1yStFufhZmaA=
+X-Received: by 2002:a05:6870:4690:b0:11c:d599:4f41 with SMTP id
+ a16-20020a056870469000b0011cd5994f41mr5866261oap.69.1661439733913; Thu, 25
+ Aug 2022 08:02:13 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.1.2
-Subject: Re: [PATCH v2] dt-bindings: arm: mediatek: mmsys: change compatible
- for MT8195
-Content-Language: en-US
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: jason-jh.lin@mediatek.com, nancy.lin@mediatek.com, ck.hu@mediatek.com,
- chunkuang.hu@kernel.org, angelogioacchino.delregno@collabora.com,
- hsinyi@google.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220825091448.14008-1-rex-bc.chen@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220825091448.14008-1-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20220721172727.14624-1-angelogioacchino.delregno@collabora.com> <CAGXv+5H+BQcT=JTD3Y1necym=6uLHD8HgWpjjpyTLSin9D1KNA@mail.gmail.com>
+In-Reply-To: <CAGXv+5H+BQcT=JTD3Y1necym=6uLHD8HgWpjjpyTLSin9D1KNA@mail.gmail.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 25 Aug 2022 23:01:54 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-KS8XTqcaNRpzc0xfO23KfdTy8Gx=yGtGWLQJEcgsWjw@mail.gmail.com>
+Message-ID: <CAAOTY_-KS8XTqcaNRpzc0xfO23KfdTy8Gx=yGtGWLQJEcgsWjw@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: dsi: Add atomic {destroy, duplicate}_state,
+ reset callbacks
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, David Airlie <airlied@linux.ie>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	DRI Development <dri-devel@lists.freedesktop.org>, Rex-BC Chen <rex-bc.chen@mediatek.com>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+	xinlei.lee@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_075758_013012_9A1E2CE8 
-X-CRM114-Status: GOOD (  22.93  )
+X-CRM114-CacheID: sfid-20220825_080217_000498_4EFA1985 
+X-CRM114-Status: GOOD (  23.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,67 +85,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Chen-Yu Tsai <wenst@chromium.org> =E6=96=BC 2022=E5=B9=B48=E6=9C=8819=E6=97=
+=A5 =E9=80=B1=E4=BA=94 =E6=99=9A=E4=B8=8A9:29=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> On Fri, Jul 22, 2022 at 1:27 AM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+> >
+> > Add callbacks for atomic_destroy_state, atomic_duplicate_state and
+> > atomic_reset to restore functionality of the DSI driver: this solves
+> > vblank timeouts when another bridge is present in the chain.
+> >
+> > Tested bridge chain: DSI <=3D> ANX7625 =3D> aux-bus panel
+> >
 
+Applied to mediatek-drm-fixes [1], thanks.
 
-On 25/08/2022 11:14, Bo-Chen Chen wrote:
-> From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-> 
-> For previous MediaTek SoCs, such as MT8173, there are 2 display HW
-> pipelines binding to 1 mmsys with the same power domain, the same
-> clock driver and the same mediatek-drm driver.
-> 
-> For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding to
-> 2 different power domains, different clock drivers and different
-> mediatek-drm drivers.
-> 
-> Moreover, Hardware pipeline of VDOSYS0 has these components: COLOR,
-> CCORR, AAL, GAMMA, DITHER. They are related to the PQ (Picture Quality)
-> and they makes VDOSYS0 supports PQ function while they are not
-> including in VDOSYS1.
-> 
-> Hardware pipeline of VDOSYS1 has the component ETHDR (HDR related
-> component). It makes VDOSYS1 supports the HDR function while it's not
-> including in VDOSYS0.
-> 
-> To summarize0:
-> Only VDOSYS0 can support PQ adjustment.
-> Only VDOSYS1 can support HDR adjustment.
-> 
-> Therefore, we need to separate these two different mmsys hardwares to
-> 2 different compatibles for MT8195.
-> 
-> Fixes: 81c5a41d10b9 ("dt-bindings: arm: mediatek: mmsys: add mt8195 SoC binding")
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
-> Changes for v2:
-> 1. Add hardware difference for VDOSYS0 and VDOSYS1 in commit message.
-> ---
->   .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml       | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> index 6ad023eec193..bfbdd30d2092 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> @@ -31,7 +31,8 @@ properties:
->                 - mediatek,mt8183-mmsys
->                 - mediatek,mt8186-mmsys
->                 - mediatek,mt8192-mmsys
-> -              - mediatek,mt8195-mmsys
-> +              - mediatek,mt8195-vdosys0
-
-Thanks for you patch. As I mentioned on v1, I propose to set 
-mediatek,mt8195-mmsys as fallback for mediatek,mt8195-vdosys0 to not break 
-backwards compatibility.
-
-Apart from that, the binding change will need some changes to support the new 
-binding. Please provide these together with this patch.
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-fixes
 
 Regards,
-Matthias
+Chun-Kuang.
 
-> +              - mediatek,mt8195-vdosys >                 - mediatek,mt8365-mmsys
->             - const: syscon
->         - items:
+> > Fixes: 7f6335c6a258 ("drm/mediatek: Modify dsi funcs to atomic operatio=
+ns")
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
+llabora.com>
+>
+> This patch is now needed on top of v6.0-rc1, otherwise booting will
+> stall for a while waiting for display vblank, which never happens
+> because the DSI pipeline is not configured correctly.
+>
+> ChenYu
+>
+> > ---
+> >
+> > Note: The commit that has been mentioned in the Fixes tag should
+> >       *not* have my Reviewed-by tag, as the author changed it but
+> >       erroneously retained the tag that I had released for an
+> >       earlier version of that commit (which was fine, but the new
+> >       version broke mtk_dsi!).
+> >
+> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 3 +++
+> >  1 file changed, 3 insertions(+)
+> >
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/media=
+tek/mtk_dsi.c
+> > index 9cc406e1eee1..5b624e0f5b0a 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > @@ -808,10 +808,13 @@ static void mtk_dsi_bridge_atomic_post_disable(st=
+ruct drm_bridge *bridge,
+> >
+> >  static const struct drm_bridge_funcs mtk_dsi_bridge_funcs =3D {
+> >         .attach =3D mtk_dsi_bridge_attach,
+> > +       .atomic_destroy_state =3D drm_atomic_helper_bridge_destroy_stat=
+e,
+> >         .atomic_disable =3D mtk_dsi_bridge_atomic_disable,
+> > +       .atomic_duplicate_state =3D drm_atomic_helper_bridge_duplicate_=
+state,
+> >         .atomic_enable =3D mtk_dsi_bridge_atomic_enable,
+> >         .atomic_pre_enable =3D mtk_dsi_bridge_atomic_pre_enable,
+> >         .atomic_post_disable =3D mtk_dsi_bridge_atomic_post_disable,
+> > +       .atomic_reset =3D drm_atomic_helper_bridge_reset,
+> >         .mode_set =3D mtk_dsi_bridge_mode_set,
+> >  };
+> >
+> > --
+> > 2.35.1
+> >
 
