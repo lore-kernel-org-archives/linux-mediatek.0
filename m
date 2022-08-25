@@ -4,82 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B326DC04AA5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 13:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 208B7C04AA5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 13:22:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9Q+jKUSpU6kYeBsMhMpzIZThK1oQ2j5LfED+1XJW8bo=; b=SWqJZAPnknLJjP0+vM5ka3mSi2
-	WiaI7Elro14ge84JFvT6rOpGU/rw5b1wEJB6v5HFxAqdzCtxQft/j2/wSGasSolta+h2iRZXEDjd9
-	Z3u1x6fqNgE1kUNmI321/x65EOEKKOCRtl4xcbqvE1iWIP6wCefrPwGRgrQEEMN27Ki0/Xa4U6b2K
-	tdicjCbw8+3DOleGiNpAtDdlrZuY3ux6hY1eBReWE6e+XznQdFBnBYu93e8tOD1C/RyoS3INHs1Ti
-	eC0FaZ2IbTciuP/+bm/KYktIY9T6gfUbGLbzS75FQUC/sue1mPDOz6veS4R9hO1eWtONAuyMqQHS0
-	G9D/knrw==;
+	bh=LjNH+rDqugavNJp3hfKsPFFkZZAo40JmydtK1bPNImg=; b=Rx9SCe8qD4mu7W/PWgHOlcoT3U
+	wiu6z0iR02mF1VA7G8BxeYvLNbQJfLTIpkrY3ed1yFJMlSo+0snJBrZC2WPNmpe5YuAiPkVK3+A9C
+	tE+2NexGPTQqussp+8JD9HU2i9V+AH4M96HDYXXkYnxvPFZ5FDeTvU6Tmhe4oNtk+GBfHW9mbDIXO
+	jiK6P+crfmdNdt5eSIzPuqx1dbsZHdGcy5C9YrHw/4PkhBdYeOv0TA0IILjOYI01rZRUofEYMVu9p
+	gIEtGPecXl/OO6MbY/zvYB6CzTFfu0t5eWQMgljjtH0xDojJ/cLANpk5EM7Lj8jZwK7eiSwCZar5+
+	tzylKKwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRCn8-00Ejnf-Nz; Thu, 25 Aug 2022 13:21:02 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1oRCoW-00EkZP-Sw; Thu, 25 Aug 2022 13:22:28 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRCn5-00Ejjy-RI
-	for linux-mediatek@lists.infradead.org; Thu, 25 Aug 2022 13:21:01 +0000
-Received: by mail-wm1-x334.google.com with SMTP id ay39-20020a05600c1e2700b003a5503a80cfso2515587wmb.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 25 Aug 2022 06:20:57 -0700 (PDT)
+	id 1oRCoD-00EkL3-3n; Thu, 25 Aug 2022 13:22:10 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id k17so10266251wmr.2;
+        Thu, 25 Aug 2022 06:22:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc;
-        bh=9Q+jKUSpU6kYeBsMhMpzIZThK1oQ2j5LfED+1XJW8bo=;
-        b=NPOrDfXwhQw13PErVkRE/qRVT+13aqvs70sZW34P8u5ZPw3Xg8SlXtHWqoOR/28iAK
-         ens5U16cjddk8184UsFHVQhwzz5bB/TV3Nq2ltCHUKTZ/srPrswr7HgSxFnNVwIFMJ6A
-         oakgyqARdIGK7CEl7/nLf0eNdZ0SZ4iTO+hgwFUm1iUZqa/lrohhntohUrbNJF2/nS5F
-         t4+c7OvfrG7QraiIfXRRN7PxBWjhqbzsWv/XOvwG8YtJ1jwm0V9TWsiXlR4Mamkt5Rlz
-         E7XPGy0o9iUF7DHOu9Oszj4aU8seHqthrZu8kUFXvoun4MqDZ3zy60Tgf2qZLrEAlg2m
-         KuAw==
+        bh=LjNH+rDqugavNJp3hfKsPFFkZZAo40JmydtK1bPNImg=;
+        b=IBdWEMzcIojQZhI6OxSv036EP2WxO8Z5sdu1IsUfKrxTEe4fRKdC71m3L6wNR0n2BH
+         p+44qjioNE2OML0H/G8/uxcmc1JPx2xSNQqDyRCMGpuPQHpx8YZUENODrvw2fskG3qMQ
+         IgarLHEEsN/R93RwIag0s2En4aArQPmZhZu11nGTjYo0ed59bL1cYvnXQmGbpjE6f5bd
+         wWNTJFlpl0VxSr7uniTQ12erkIG0f+P2S2zy9V24DJZ99vpEG6ahP6xlhlbuM3yOEk0K
+         jNuEdxfN2rVyar9PSEkFNmVtzup41r2moXkXAxcy/a+kRkjS/uKMyxJH4EqZQcTep5oB
+         5HUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc;
-        bh=9Q+jKUSpU6kYeBsMhMpzIZThK1oQ2j5LfED+1XJW8bo=;
-        b=Wn7kRL0uPdWgad0dohU2nHUxd1PECP5IMdv0jBg7OMq7WKuGkZoOCVC6mfU9icm5rs
-         kAyZkgvRQjjjClkp5UOCshriLPDOyVVJOo7Evxqoyrn6ugz39bdSctCMwLHxMProdGB/
-         7sa+W4JQCA2Ji3lhL4lOlX4GmsRhyzMOEVfpMNopqksffOQEn+vzBcZZLY3p+eLhBodQ
-         k9UFnKnvu4yoXeZZkyuhnT5V3i0B+e31pEZSHLdIBQdkyywCmoNXfqdo0VQGgp59Js04
-         EWf88UoTTHTN+QtApMHwLxzJ4DQZSf4Puwne+3hJR9/iVDQut+JlXWWawhbBEJ9se/V9
-         mL0A==
-X-Gm-Message-State: ACgBeo3xAZ6Cf8C1fLs60Cz3pOHq2/HiiPkvMmljp5b3BTxixkQjYhnR
-	xndxvptGmejZNzl9N8nXLAc=
-X-Google-Smtp-Source: AA6agR73Jf/8yWY2aQLwOFfOqTij7LcqWKBfMA6FeN1t3BfqeohIqdN4nIfexvaK23Z1rLt6dImShA==
-X-Received: by 2002:a1c:a4c6:0:b0:3a6:539b:a820 with SMTP id n189-20020a1ca4c6000000b003a6539ba820mr8251907wme.128.1661433656162;
-        Thu, 25 Aug 2022 06:20:56 -0700 (PDT)
+        bh=LjNH+rDqugavNJp3hfKsPFFkZZAo40JmydtK1bPNImg=;
+        b=m9D1lP567wakPK6acgGGyURivQxO8H9l9FnUddmUW6WvpLi1d3MxS78JsWV7TNVvq7
+         8o3B14JRe6FPiLD+yGIJwJ76PyHG12A5Ab5I837p22/7uEPfHCz353oh0OuKS7r+TPcK
+         Lx6G4kflFiqowbc+g1uEkDe+uS6Ta9JxCLs9eKG604OtVjK+UzNXhV0MhCamcrBlP9yB
+         MdcM0Gr89kPZmoIIkjhxPUCG9jUKsy0Eda9Hr1EYcfDo9i9v0dyOEfM6cCYuFSVcPnbv
+         30yP+GaJKkeYdCaaSU7RBdHvxEj2U4l5T+NzKykofklG5Tg8o+nrsLwUk5+pL2i97sAB
+         pNpg==
+X-Gm-Message-State: ACgBeo22D6mjGeqPIA9oZliwW8OUMoKtrxfkaTeeS5/IrRLf1R+vwUAi
+	w4PynrSOYQoFjGybEQ0r0lg=
+X-Google-Smtp-Source: AA6agR7l+54/fC4VeqRxOTYKdGD9z1iXyk9d6Zeg/VujSTEWSl+r+eiSo8RmJd+yuHHXLVr7pwZS/A==
+X-Received: by 2002:a1c:4c11:0:b0:3a5:4d01:54be with SMTP id z17-20020a1c4c11000000b003a54d0154bemr8559682wmf.32.1661433725318;
+        Thu, 25 Aug 2022 06:22:05 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id l28-20020a056000023c00b00225213fd4a9sm19548439wrz.33.2022.08.25.06.20.54
+        by smtp.gmail.com with ESMTPSA id m10-20020a5d56ca000000b002207cec45cesm23191455wrw.81.2022.08.25.06.22.03
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 25 Aug 2022 06:20:55 -0700 (PDT)
-Message-ID: <ceddc502-0176-cff8-f4f6-06606c42a662@gmail.com>
-Date: Thu, 25 Aug 2022 15:20:53 +0200
+        Thu, 25 Aug 2022 06:22:04 -0700 (PDT)
+Message-ID: <f07cf9b9-aec9-2564-03c6-bf2f0acf897c@gmail.com>
+Date: Thu, 25 Aug 2022 15:22:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.1.2
-Subject: Re: [PATCH v2] soc: mediatek: Let PMIC Wrapper and SCPSYS depend on
- OF
+Subject: Re: [PATCH] dt-bindings: soc: mediatek: pwrap: add compatible for
+ mt8188
 Content-Language: en-US
-To: Jean Delvare <jdelvare@suse.de>, linux-mediatek@lists.infradead.org
-Cc: Sean Wang <sean.wang@mediatek.com>, LKML <linux-kernel@vger.kernel.org>,
- Chenglin Xu <chenglin.xu@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20220730144833.0a0d9825@endymion.delvare>
+To: Sen Chu <sen.chu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Hui Liu <hui.liu@mediatek.com>
+References: <20220726104242.24839-1-sen.chu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220730144833.0a0d9825@endymion.delvare>
+In-Reply-To: <20220726104242.24839-1-sen.chu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_062059_932265_2B0938E2 
-X-CRM114-Status: GOOD (  24.58  )
+X-CRM114-CacheID: sfid-20220825_062209_195265_9F31E955 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,86 +97,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 30/07/2022 14:48, Jean Delvare wrote:
-> With the following configuration options:
-> CONFIG_OF is not set
-> CONFIG_MTK_PMIC_WRAP=y
-> CONFIG_MTK_SCPSYS=y
-> we get the following build warnings:
+On 26/07/2022 12:42, Sen Chu wrote:
+> Add dt-binding documentation of pwrap for Mediatek MT8188
 > 
->    CC      drivers/soc/mediatek/mtk-pmic-wrap.o
-> drivers/soc/mediatek/mtk-pmic-wrap.c:2138:34: warning: ‘of_pwrap_match_tbl’ defined but not used [-Wunused-const-variable=]
-> drivers/soc/mediatek/mtk-pmic-wrap.c:1953:34: warning: ‘of_slave_match_tbl’ defined but not used [-Wunused-const-variable=]
->    CC      drivers/soc/mediatek/mtk-scpsys.o
-> drivers/soc/mediatek/mtk-scpsys.c:1084:34: warning: ‘of_scpsys_match_tbl’ defined but not used [-Wunused-const-variable=]
-> 
-> Looking at the code, both drivers can only bind to OF-defined device
-> nodes, so these drivers are useless without OF and should therefore
-> depend on it.
-> 
-> Also drop of_match_ptr() from both drivers. We already know what it
-> will resolve to, so we might as well save cpp some work.
-> 
-> Developers or QA teams who wish to test-build the code can still do
-> so by enabling CONFIG_OF, which is available on all architectures and
-> has no dependencies.
-> 
-> Signed-off-by: Jean Delvare <jdelvare@suse.de>
-> Reported-by: kernel test robot <lkp@intel.com>
-> Link: https://lore.kernel.org/all/202207240252.ZY5hSCNB-lkp@intel.com/
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Chenglin Xu <chenglin.xu@mediatek.com>
+> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
 
 Applied, thanks!
 
+
+Matthias
+
 > ---
-> Changes since v1:
->   * Drop of_match_ptr() (suggested by AngeloGioacchino Del Regno
+>   Documentation/devicetree/bindings/soc/mediatek/pwrap.txt | 1 +
+>   1 file changed, 1 insertion(+)
 > 
->   drivers/soc/mediatek/Kconfig         |    2 ++
->   drivers/soc/mediatek/mtk-pmic-wrap.c |    2 +-
->   drivers/soc/mediatek/mtk-scpsys.c    |    2 +-
->   3 files changed, 4 insertions(+), 2 deletions(-)
-> 
-> --- linux-5.18.orig/drivers/soc/mediatek/Kconfig	2022-07-28 11:22:23.098393325 +0200
-> +++ linux-5.18/drivers/soc/mediatek/Kconfig	2022-07-28 11:23:58.635687065 +0200
-> @@ -37,6 +37,7 @@ config MTK_INFRACFG
->   config MTK_PMIC_WRAP
->   	tristate "MediaTek PMIC Wrapper Support"
->   	depends on RESET_CONTROLLER
-> +	depends on OF
->   	select REGMAP
->   	help
->   	  Say yes here to add support for MediaTek PMIC Wrapper found
-> @@ -46,6 +47,7 @@ config MTK_PMIC_WRAP
->   config MTK_SCPSYS
->   	bool "MediaTek SCPSYS Support"
->   	default ARCH_MEDIATEK
-> +	depends on OF
->   	select REGMAP
->   	select MTK_INFRACFG
->   	select PM_GENERIC_DOMAINS if PM
-> --- linux-5.18.orig/drivers/soc/mediatek/mtk-pmic-wrap.c	2022-07-30 11:20:22.221919946 +0200
-> +++ linux-5.18/drivers/soc/mediatek/mtk-pmic-wrap.c	2022-07-30 11:41:14.073038643 +0200
-> @@ -2347,7 +2347,7 @@ static int pwrap_probe(struct platform_d
->   static struct platform_driver pwrap_drv = {
->   	.driver = {
->   		.name = "mt-pmic-pwrap",
-> -		.of_match_table = of_match_ptr(of_pwrap_match_tbl),
-> +		.of_match_table = of_pwrap_match_tbl,
->   	},
->   	.probe = pwrap_probe,
->   };
-> --- linux-5.18.orig/drivers/soc/mediatek/mtk-scpsys.c	2022-07-30 11:20:22.221919946 +0200
-> +++ linux-5.18/drivers/soc/mediatek/mtk-scpsys.c	2022-07-30 11:41:22.466154796 +0200
-> @@ -1141,7 +1141,7 @@ static struct platform_driver scpsys_drv
->   		.name = "mtk-scpsys",
->   		.suppress_bind_attrs = true,
->   		.owner = THIS_MODULE,
-> -		.of_match_table = of_match_ptr(of_scpsys_match_tbl),
-> +		.of_match_table = of_scpsys_match_tbl,
->   	},
->   };
->   builtin_platform_driver(scpsys_drv);
-> 
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> index 0581dbda4828..d24e2bc444be 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
+> @@ -28,6 +28,7 @@ Required properties in pwrap device node.
+>   	"mediatek,mt8173-pwrap" for MT8173 SoCs
+>   	"mediatek,mt8183-pwrap" for MT8183 SoCs
+>   	"mediatek,mt8186-pwrap" for MT8186 SoCs
+> +	"mediatek,mt8188-pwrap", "mediatek,mt8195-pwrap" for MT8188 SoCs
+>   	"mediatek,mt8195-pwrap" for MT8195 SoCs
+>   	"mediatek,mt8516-pwrap" for MT8516 SoCs
+>   - interrupts: IRQ for pwrap in SOC
 
