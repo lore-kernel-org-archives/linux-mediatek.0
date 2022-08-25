@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 278C1C04AA5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 00:11:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 592AFC04AA5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 01:43:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O+7S/66SfrFhn5CAvYVvbIshTRBkpe9zLeht1LPViP4=; b=q2feI9ecnsunCQO9BLj4bX/iC1
-	2M+BvHp5NqSziOdK8JP93DVCgaorJ+bfPLY6NgLMIEQ5rJgOnrWosFFJq8jN59s6oYBRXm/5jv7Kw
-	e8qdD5XGKjXo7IsYMKkG27jJVfD+3ha9M/gJMbP2DoolcYt3xdO8iw1Z5sa+8L6FcsR5rQcB4m+NM
-	jo7s8Aeo0UTke8m6LV96UVj99yR4RPWNYWQnvaiVsv97x2p70uBxswomfV9vACK1KgcAfkj5iM8Bs
-	Z+AsxiCxOZR+2Cvv20acIxgwqaYFruDwdU/StXK1A4VlCzcj10Hg2MOBAfaXv23WAonzDPBirxFg3
-	iCwwwFhw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cEEB3wwQbKqjf3obroU9cZkAX6y1y43t12Kx2of3ihA=; b=rPkYm/6z0y3X0REuJxKAp+x5Oj
+	C8pV/zTLYD9e4jjRRfG4JcbGV5mZXw89+sPrijHNvAf4WMtlWB5uEKPB35EHk0x3iOh3M73lV4Cnp
+	vZci4Q0AEvsC6Ls87zrra3rp2Zl09Mht0JMLiMuXDK2qo6Kna1CnxE8U1J7wGYXQLGeGMqISLt0ka
+	ODYtXK/HZirgc51UaLz7lIB8X8Is/6gnJ3jUWabelOh9HnOdKzUkwxzmdCLH392i6qX21geyiJgwd
+	BxpgcGZKCvwuV1/b53ek6O3wYYH3aqrC19BozW2+fezHCh4FlU12vAKPAwzGSBRQ6+VAxhZuUx+km
+	kqQEH92A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oR0Sw-003KuM-N7; Thu, 25 Aug 2022 00:11:22 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oR1tm-0042fS-3j; Thu, 25 Aug 2022 01:43:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oR0Ss-003Kr8-Vg
-	for linux-mediatek@lists.infradead.org; Thu, 25 Aug 2022 00:11:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 6E000B826CB
-	for <linux-mediatek@lists.infradead.org>; Thu, 25 Aug 2022 00:11:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04FAAC43140
-	for <linux-mediatek@lists.infradead.org>; Thu, 25 Aug 2022 00:11:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661386273;
-	bh=E+YugVnu9oRWoUDDh0658NhnE7GJi21VLIvoTbAwFIA=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=rvaZTFaFjhsKE6fLL5wiIbCkPXjkYDxeIXhYGhIuSWWF82Pwd2pY80vUHnlb7WU7/
-	 a+u0bU/89j7u8JKKT6KEfIzxmNXnbNF5ZI5/Psvjw7LOud8FmC0SdZVG2GqCnZhler
-	 ErMoxBVyFdqrK5HNOaAeKAHqTaS4kg/AmNtagSbt0uwORhDmoXxBuq4Mk86s3dacxO
-	 dxD8cwI5KwjIcq7ue+H4SYLgEZMeuSaxOjq7Rx6104M3QigyEnaZ/9J9wUu6rUsBrl
-	 tgEDUYwB7NeYJwWHp2lU0zy7qty5faAX6fx/oket9Mqvgx1Ku/OZD+cDqEKHZs9FyX
-	 qh+bcVAcNsIVw==
-Received: by mail-wr1-f53.google.com with SMTP id z16so3822237wrh.10
-        for <linux-mediatek@lists.infradead.org>; Wed, 24 Aug 2022 17:11:12 -0700 (PDT)
-X-Gm-Message-State: ACgBeo1IpOMq2Dr6QA9n7u/nc/d3hLOHkGsNP1Nf3tadNJI7XaysfXRY
-	4dKKxZ74XZdaRKsn+eMZ1V52uGweoVm1OxvuvKU=
-X-Google-Smtp-Source: AA6agR5e+M3zf283+GLi1bar1aN19ZEkr3JuZhjjx/Oavk+JnUGYkL4RjYbBuaG0lbylLN1eKKeSN569QmtdVaA7h0g=
-X-Received: by 2002:adf:d4c6:0:b0:225:2eeb:fe8e with SMTP id
- w6-20020adfd4c6000000b002252eebfe8emr694101wrk.429.1661386271130; Wed, 24 Aug
- 2022 17:11:11 -0700 (PDT)
-MIME-Version: 1.0
-References: <cover.1660606893.git.objelf@gmail.com> <f48a750e8ad17d5b2410eea03fc30a6403732168.1660606893.git.objelf@gmail.com>
- <YvyUwEdURYHiAduf@lore-desk> <CAGp9LzrvVQOrUNPR8aguUTgWo1wZFMR2Y3kdTk8WqxmG=B8--w@mail.gmail.com>
- <Yv3sqvhXnGiOpKkE@lore-desk>
-In-Reply-To: <Yv3sqvhXnGiOpKkE@lore-desk>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Wed, 24 Aug 2022 17:10:59 -0700
-X-Gmail-Original-Message-ID: <CAGp9LzpjeKH2AHcDGjpeKb02fiE9yHD_p-T9oeY1HS-nDKcUNQ@mail.gmail.com>
-Message-ID: <CAGp9LzpjeKH2AHcDGjpeKb02fiE9yHD_p-T9oeY1HS-nDKcUNQ@mail.gmail.com>
-Subject: Re: [PATCH 8/9] wifi: mt76: mt7921: introduce remain_on_channel support
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang@mediatek.com>, 
-	Felix Fietkau <nbd@nbd.name>, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com, 
-	YN.Chen@mediatek.com, Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com, 
-	Deren Wu <Deren.Wu@mediatek.com>, km.lin@mediatek.com, jenhao.yang@mediatek.com, 
-	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, 
-	posh.sun@mediatek.com, ted.huang@mediatek.com, Stella.Chang@mediatek.com, 
-	Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com, 
-	frankgor@google.com, kuabhs@google.com, druth@google.com, 
-	abhishekpandit@google.com, shawnku@google.com, linux-wireless@vger.kernel.org, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+	id 1oR1tR-0042Ti-RV; Thu, 25 Aug 2022 01:42:52 +0000
+X-UUID: 65a8535497134c0190f17089976be5cd-20220824
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=cEEB3wwQbKqjf3obroU9cZkAX6y1y43t12Kx2of3ihA=;
+	b=SmeuWubrOIVNBMREPADqNL0A/zED8uykXmlpLsYphM/tta+tU3/Un8xWfjqyTVVZN1Djmg2NWbm3YipnCACTumhOko0Puy8izBEyBOFgetboDZu3pgb9YAExgtMMv5JQDxi1/g1wM2ODByve2ypqX6Vy8BZND8VujtWDDcrqM3g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:e406bebf-2a56-4139-a190-c5d146db44ca,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:54833868-a9d9-4672-a3c8-12721739a220,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 65a8535497134c0190f17089976be5cd-20220824
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 634434457; Wed, 24 Aug 2022 18:41:38 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 25 Aug 2022 09:40:59 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 25 Aug 2022 09:40:59 +0800
+Message-ID: <1be44c8e06b935f0540f862adefa7c80c5a7afe2.camel@mediatek.com>
+Subject: Re: [PATCH 2/3] drm/mediatek: Add gamma lut support for mt8195
+From: CK Hu <ck.hu@mediatek.com>
+To: zheng-yan.chen <zheng-yan.chen@mediatek.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, "Jason-JH . Lin"
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 25 Aug 2022 09:40:59 +0800
+In-Reply-To: <bd375bd58f41647687f993bc5db1eea5f4724c8a.camel@mediatek.com>
+References: <20220822091945.21343-1-zheng-yan.chen@mediatek.com>
+	 <20220822091945.21343-3-zheng-yan.chen@mediatek.com>
+	 <963274fe71207aabd18dcf4d4ef19b490453fcfd.camel@mediatek.com>
+	 <bd375bd58f41647687f993bc5db1eea5f4724c8a.camel@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220824_171119_365602_A6C23F4D 
-X-CRM114-Status: GOOD (  30.74  )
+X-CRM114-CacheID: sfid-20220824_184249_969506_397C7146 
+X-CRM114-Status: GOOD (  39.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,72 +87,578 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lorenzo,
+Hi, Zheng-yan:
 
-On Thu, Aug 18, 2022 at 12:39 AM Lorenzo Bianconi <lorenzo@kernel.org> wrote:
->
-> > Hi Lorenzo,
-> >
-> > On Wed, Aug 17, 2022 at 12:18 AM Lorenzo Bianconi <lorenzo@kernel.org> wrote:
-> > >
-> > > > From: Sean Wang <sean.wang@mediatek.com>
-> > > >
-> > > > Introduce remain_on_channel support. Additionally, we add
-> > > > mt7921_check_offload_capability to disable .remain_on_channel and
-> > > > .cancel_remain_on_channel and related configuration because those
-> > > > operations would rely on the fundamental MCU commands that will be only
-> > > > supported with newer firmware.
-> > > >
-> > > > Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-> > > > Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> > > > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > > > ---
-> > > >  .../net/wireless/mediatek/mt76/mt7921/init.c  |  36 ++++++
-> > > >  .../net/wireless/mediatek/mt76/mt7921/main.c  | 112 ++++++++++++++++++
-> > > >  .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  24 ++++
-> > > >  .../wireless/mediatek/mt76/mt7921/mt7921.h    |  34 ++++++
-> > > >  .../net/wireless/mediatek/mt76/mt7921/pci.c   |  13 +-
-> > > >  .../net/wireless/mediatek/mt76/mt7921/sdio.c  |  11 +-
-> > > >  .../net/wireless/mediatek/mt76/mt7921/usb.c   |   1 +
-> > > >  7 files changed, 225 insertions(+), 6 deletions(-)
-> > > >
-> > > > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> > > > index cd960e23770f..1b7a18d42f5b 100644
-> > > > --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> > > > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> > > > @@ -44,6 +44,35 @@ mt7921_regd_notifier(struct wiphy *wiphy,
-> > > >       mt7921_mutex_release(dev);
-> > > >  }
-> > > >
-> > > > +static int mt7921_check_offload_capability(struct mt7921_dev *dev)
-> > > > +{
-> > > > +     struct ieee80211_hw *hw = mt76_hw(dev);
-> > > > +     int year, mon, day, hour, min, sec;
-> > > > +     struct wiphy *wiphy = hw->wiphy;
-> > > > +     bool fw_can_roc = false;
-> > > > +     int ret;
-> > > > +
-> > > > +     ret = sscanf(dev->mt76.hw->wiphy->fw_version + 11, "%4d%2d%2d%2d%2d%2d",
-> > > > +                  &year, &mon, &day, &hour, &min, &sec);
-> > >
-> > > does the fw have a differnt base version with respect to the previous ones?
-> > > checking the date is a bit ugly.
-> >
-> > I admitted that way was a bit ugly, but I have investigated for a
-> > while, and that is the only way we can use to distinguish the version
-> > in current mt7921 firmware.
->
-> the fw seems pretty new (2022/7/15), is it already available in linux-firmware
-> git tree? If not I guess you can increment fw version in a more evident way.
-> For the future please remember to do it for major fw changes.
+On Wed, 2022-08-24 at 15:03 +0800, zheng-yan.chen wrote:
+> On Tue, 2022-08-23 at 11:18 +0800, CK Hu wrote:
+> > Hi, Zheng-yan:
+> > 
+> > On Mon, 2022-08-22 at 17:19 +0800, zheng-yan.chen wrote:
+> > > Since the previous gamma_set_common() function is designed for
+> > > 9bit-to-10bit conversion, which is not feasible for the
+> > > 10bit-to-12bit conversion in mt8195.
+> > > 
+> > > Update the function to fit the need of mt8195.
+> > > 
+> > 
+> > Add Fixes tag [1].
+> > 
+> > [1] 
+> > 
+https://www.kernel.org/doc/html/v5.19/process/submitting-patches.html
+> > 
+> > 
+> > > Signed-off-by: zheng-yan.chen <zheng-yan.chen@mediatek.com>
+> > > 
+> > > ---
+> > >  drivers/gpu/drm/mediatek/mtk_disp_aal.c     |  2 +-
+> > >  drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  3 +-
+> > >  drivers/gpu/drm/mediatek/mtk_disp_gamma.c   | 97
+> > > ++++++++++++++++-
+> > > --
+> > > --
+> > >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  5 +-
+> > >  drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  1 -
+> > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  1 +
+> > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 +
+> > >  drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  2 +
+> > >  8 files changed, 83 insertions(+), 29 deletions(-)
+> > > 
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> > > b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> > > index 0f9d7efb61d7..f46d4ab73d6a 100644
+> > > --- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> > > +++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+> > > @@ -66,7 +66,7 @@ void mtk_aal_gamma_set(struct device *dev,
+> > > struct
+> > > drm_crtc_state *state)
+> > >  	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
+> > >  
+> > >  	if (aal->data && aal->data->has_gamma)
+> > > -		mtk_gamma_set_common(aal->regs, state, false);
+> > > +		mtk_gamma_set_common(aal->regs, state);
+> > >  }
+> > >  
+> > >  void mtk_aal_start(struct device *dev)
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > > b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > > index 33e61a136bbc..b662bf8b1c9d 100644
+> > > --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > > +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > > @@ -51,8 +51,9 @@ void mtk_gamma_clk_disable(struct device *dev);
+> > >  void mtk_gamma_config(struct device *dev, unsigned int w,
+> > >  		      unsigned int h, unsigned int vrefresh,
+> > >  		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+> > > +unsigned int mtk_gamma_size(struct device *dev);
+> > >  void mtk_gamma_set(struct device *dev, struct drm_crtc_state
+> > > *state);
+> > > -void mtk_gamma_set_common(void __iomem *regs, struct
+> > > drm_crtc_state
+> > > *state, bool lut_diff);
+> > > +void mtk_gamma_set_common(void __iomem *regs, struct
+> > > drm_crtc_state
+> > > *state);
+> > >  void mtk_gamma_start(struct device *dev);
+> > >  void mtk_gamma_stop(struct device *dev);
+> > >  
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > > b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > > index bbd558a036ec..a842e5e1962e 100644
+> > > --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > > +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > > @@ -18,18 +18,26 @@
+> > >  #define DISP_GAMMA_EN				0x0000
+> > >  #define GAMMA_EN					BIT(0)
+> > >  #define DISP_GAMMA_CFG				0x0020
+> > > +#define RELAY_MODE					BIT(0)
+> > >  #define GAMMA_LUT_EN					BIT(1)
+> > >  #define GAMMA_DITHERING					BIT(2)
+> > >  #define DISP_GAMMA_SIZE				0x0030
+> > > +#define DISP_GAMMA_BANK				0x0100
+> > >  #define DISP_GAMMA_LUT				0x0700
+> > > -
+> > > +#define DISP_GAMMA_LUT1				0x0b00
+> > >  #define LUT_10BIT_MASK				0x03ff
+> > > -
+> > > +#define TABLE_9BIT_SIZE				512
+> > > +#define LUT_12BIT_MASK				0x0fff
+> > > +#define TABLE_10BIT_SIZE			1024
+> > > +#define BANK_SIZE				256
+> > >  struct mtk_disp_gamma_data {
+> > >  	bool has_dither;
+> > >  	bool lut_diff;
+> > > +	unsigned int lut_size;
+> > >  };
+> > >  
+> > > +static unsigned int now_lut_size;
+> > > +static bool now_lut_diff;
+> > 
+> > Don't use global variable.
+> > 
+> > >  /*
+> > >   * struct mtk_disp_gamma - DISP_GAMMA driver structure
+> > >   */
+> > > @@ -54,40 +62,73 @@ void mtk_gamma_clk_disable(struct device
+> > > *dev)
+> > >  	clk_disable_unprepare(gamma->clk);
+> > >  }
+> > >  
+> > > -void mtk_gamma_set_common(void __iomem *regs, struct
+> > > drm_crtc_state
+> > > *state, bool lut_diff)
+> > > +void mtk_gamma_set_common(void __iomem *regs, struct
+> > > drm_crtc_state
+> > > *state)
+> > >  {
+> > > -	unsigned int i, reg;
+> > > -	struct drm_color_lut *lut;
+> > > +	unsigned int i, reg, idx;
+> > >  	void __iomem *lut_base;
+> > > -	u32 word;
+> > > -	u32 diff[3] = {0};
+> > > +	void __iomem *lut1_base;
+> > > +	u32 word, word1;
+> > >  
+> > >  	if (state->gamma_lut) {
+> > > +		u32 table_size;
+> > > +		u32 mask;
+> > > +		struct drm_color_lut color, even, odd;
+> > > +		struct drm_color_lut *lut = (struct drm_color_lut
+> > > *)state->gamma_lut;
+> > > +		bool lut_12bit = (now_lut_size == TABLE_10BIT_SIZE);
+> > > +
+> > >  		reg = readl(regs + DISP_GAMMA_CFG);
+> > > +		reg = reg & ~RELAY_MODE;
+> > 
+> > Why do you modify this for other SoC?
+> > 
+> > >  		reg = reg | GAMMA_LUT_EN;
+> > >  		writel(reg, regs + DISP_GAMMA_CFG);
+> > >  		lut_base = regs + DISP_GAMMA_LUT;
+> > > -		lut = (struct drm_color_lut *)state->gamma_lut->data;
+> > > -		for (i = 0; i < MTK_LUT_SIZE; i++) {
+> > > +		lut1_base = regs + DISP_GAMMA_LUT1;
+> > > +		if (lut_12bit) {
+> > > +			table_size = TABLE_10BIT_SIZE;
+> > > +			mask = LUT_12BIT_MASK;
+> > 
+> > lut_bits and lut_size are independent factor, so use two variable
+> > in
+> > private data for each. And I like to use digital value instead of a
+> > symbol.
+> > 
+> > lut_bits = 10 or 12;
+> > lut_size = 512 or 1024;
+> > mask = GENMASK(lut_bits - 1, 0);
+> > 
+> > > +		} else {
+> > > +			table_size = TABLE_9BIT_SIZE;
+> > > +			mask = LUT_10BIT_MASK;
+> > > +		}
+> > >  
+> > > -			if (!lut_diff || (i % 2 == 0)) {
+> > > -				word = (((lut[i].red >> 6) &
+> > > LUT_10BIT_MASK) << 20) +
+> > > -					(((lut[i].green >> 6) &
+> > > LUT_10BIT_MASK) << 10) +
+> > > -					((lut[i].blue >> 6) &
+> > > LUT_10BIT_MASK);
+> > > +		for (i = 0; i < table_size; i++) {
+> > > +			if (!(i % BANK_SIZE) && lut_12bit)
+> > > +				writel((i / BANK_SIZE), regs +
+> > > DISP_GAMMA_BANK);
+> > 
+> > Group register writing together, so move this to bottom of this
+> > for-
+> > loop.
+> > 
+> > > +
+> > > +			color.red = (lut[i].red >> 6) & mask;
+> > > +			color.green = (lut[i].green >> 6) & mask;
+> > > +			color.blue = (lut[i].blue >> 6) & mask;
+> > 
+> > Why shift 6 bits for lut 12 bits?
+> > 
+> > > +			if ((i % 2) && now_lut_diff) {
+> > 
+> > In original code, !lut_diff is first, so I would like you to keep
+> > this
+> > order.
+> > 
+> > > +				odd = color;
+> > > +				word = (lut_12bit) ? (((odd.green -
+> > > even.green) << 12) +
+> > > +						      (odd.red -
+> > > even.red))
+> > > +						   : (((odd.red -
+> > > even.red) << 20) +
+> > > +						      ((odd.green -
+> > > even.green) << 10) +
+> > > +						      (odd.blue -
+> > > even.blue));
+> > > +				word1 = (odd.blue - even.blue);
+> > 
+> > I think it's not necessary to create odd and even variable. 
+> > 
+> > Regards,
+> > CK
+> > 
+> > >  			} else {
+> > > -				diff[0] = (lut[i].red >> 6) - (lut[i -
+> > > 1].red >> 6);
+> > > -				diff[1] = (lut[i].green >> 6) - (lut[i
+> > > - 1].green >> 6);
+> > > -				diff[2] = (lut[i].blue >> 6) - (lut[i -
+> > > 1].blue >> 6);
+> > > -
+> > > -				word = ((diff[0] & LUT_10BIT_MASK) <<
+> > > 20) +
+> > > -					((diff[1] & LUT_10BIT_MASK) <<
+> > > 10) +
+> > > -					(diff[2] & LUT_10BIT_MASK);
+> > > +				even = color;
+> > > +				word =  (lut_12bit) ? ((even.green <<
+> > > 12) + even.red)
+> > > +						    : ((even.red << 20)
+> > > +
+> > > +						       (even.green <<
+> > > 10) + even.blue);
+> > > +				word1 = even.blue;
+> > >  			}
+> > > -			writel(word, (lut_base + i * 4));
+> > > +			idx = (lut_12bit) ? (i % BANK_SIZE) : i;
+> > > +			writel(word, (lut_base + idx * 4));
+> > > +			if (lut_12bit)
+> > > +				writel(word1, (lut1_base + idx * 4));
+> > >  		}
+> > >  	}
+> > >  }
+> > >  
+> > > +unsigned int mtk_gamma_size(struct device *dev)
+> > > +{
+> > > +	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+> > > +
+> > > +	if (gamma->data)
+> > > +		return gamma->data->lut_size;
+> > > +	else
+> > > +		return 0;
+> > > +}
+> > >  void mtk_gamma_set(struct device *dev, struct drm_crtc_state
+> > > *state)
+> > >  {
+> > >  	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+> > > @@ -95,8 +136,7 @@ void mtk_gamma_set(struct device *dev, struct
+> > > drm_crtc_state *state)
+> > >  
+> > >  	if (gamma->data)
+> > >  		lut_diff = gamma->data->lut_diff;
+> > > -
+> > > -	mtk_gamma_set_common(gamma->regs, state, lut_diff);
+> > > +	mtk_gamma_set_common(gamma->regs, state);
+> > >  }
+> > >  
+> > >  void mtk_gamma_config(struct device *dev, unsigned int w,
+> > > @@ -178,6 +218,8 @@ static int mtk_disp_gamma_probe(struct
+> > > platform_device *pdev)
+> > >  	ret = component_add(dev, &mtk_disp_gamma_component_ops);
+> > >  	if (ret)
+> > >  		dev_err(dev, "Failed to add component: %d\n", ret);
+> > > +	now_lut_size = priv->data->lut_size;
+> > > +	now_lut_diff = priv->data->lut_diff;
+> > >  
+> > >  	return ret;
+> > >  }
+> > > @@ -191,10 +233,17 @@ static int mtk_disp_gamma_remove(struct
+> > > platform_device *pdev)
+> > >  
+> > >  static const struct mtk_disp_gamma_data mt8173_gamma_driver_data
+> > > =
+> > > {
+> > >  	.has_dither = true,
+> > > +	.lut_size = 512,
+> > >  };
+> > >  
+> > >  static const struct mtk_disp_gamma_data mt8183_gamma_driver_data
+> > > =
+> > > {
+> > >  	.lut_diff = true,
+> > > +	.lut_size = 512,
+> > > +};
+> > > +
+> > > +static const struct mtk_disp_gamma_data mt8195_gamma_driver_data
+> > > =
+> > > {
+> > > +	.lut_diff = true,
+> > > +	.lut_size = 1024,
+> > >  };
+> > >  
+> > >  static const struct of_device_id
+> > > mtk_disp_gamma_driver_dt_match[]
+> > > =
+> > > {
+> > > @@ -202,6 +251,8 @@ static const struct of_device_id
+> > > mtk_disp_gamma_driver_dt_match[] = {
+> > >  	  .data = &mt8173_gamma_driver_data},
+> > >  	{ .compatible = "mediatek,mt8183-disp-gamma",
+> > >  	  .data = &mt8183_gamma_driver_data},
+> > > +	{ .compatible = "mediatek,mt8195-disp-gamma",
+> > > +	  .data = &mt8195_gamma_driver_data},
+> > >  	{},
+> > >  };
+> > >  MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > > b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > > index 42cc7052b050..2a6513259562 100644
+> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > > @@ -930,9 +930,8 @@ int mtk_drm_crtc_create(struct drm_device
+> > > *drm_dev,
+> > >  		mtk_crtc->ddp_comp[i] = comp;
+> > >  
+> > >  		if (comp->funcs) {
+> > > -			if (comp->funcs->gamma_set)
+> > > -				gamma_lut_size = MTK_LUT_SIZE;
+> > > -
+> > > +			if (comp->funcs->gamma_set && comp->funcs-
+> > > > gamma_size)
+> > > 
+> > > +				gamma_lut_size = comp->funcs-
+> > > > gamma_size(comp->dev);
+> > > 
+> > >  			if (comp->funcs->ctm_set)
+> > >  				has_ctm = true;
+> > >  		}
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> > > b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> > > index cb9a36c48d4f..1799853ef89a 100644
+> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+> > > @@ -10,7 +10,6 @@
+> > >  #include "mtk_drm_ddp_comp.h"
+> > >  #include "mtk_drm_plane.h"
+> > >  
+> > > -#define MTK_LUT_SIZE	512
+> > >  #define MTK_MAX_BPC	10
+> > >  #define MTK_MIN_BPC	3
+> > >  
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > > b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > > index 2d72cc5ddaba..4c6538a17b88 100644
+> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > > @@ -323,6 +323,7 @@ static const struct mtk_ddp_comp_funcs
+> > > ddp_gamma
+> > > = {
+> > >  	.clk_enable = mtk_gamma_clk_enable,
+> > >  	.clk_disable = mtk_gamma_clk_disable,
+> > >  	.gamma_set = mtk_gamma_set,
+> > > +	.gamma_size = mtk_gamma_size,
+> > >  	.config = mtk_gamma_config,
+> > >  	.start = mtk_gamma_start,
+> > >  	.stop = mtk_gamma_stop,
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> > > b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> > > index 2d0052c23dcb..bf0cf7f86010 100644
+> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+> > > @@ -59,6 +59,7 @@ struct mtk_ddp_comp_funcs {
+> > >  	void (*disable_vblank)(struct device *dev);
+> > >  	unsigned int (*supported_rotations)(struct device *dev);
+> > >  	unsigned int (*layer_nr)(struct device *dev);
+> > > +	unsigned int (*gamma_size)(struct device *dev);
+> > >  	int (*layer_check)(struct device *dev,
+> > >  			   unsigned int idx,
+> > >  			   struct mtk_plane_state *state);
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > > b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > > index 0e4c77724b05..473766be56e1 100644
+> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > > @@ -567,6 +567,8 @@ static const struct of_device_id
+> > > mtk_ddp_comp_dt_ids[] = {
+> > >  	  .data = (void *)MTK_DISP_GAMMA, },
+> > >  	{ .compatible = "mediatek,mt8183-disp-gamma",
+> > >  	  .data = (void *)MTK_DISP_GAMMA, },
+> > > +	{ .compatible = "mediatek,mt8195-disp-gamma",
+> > > +	  .data = (void *)MTK_DISP_GAMMA, },
+> > >  	{ .compatible = "mediatek,mt8195-disp-merge",
+> > >  	  .data = (void *)MTK_DISP_MERGE },
+> > >  	{ .compatible = "mediatek,mt2701-disp-mutex",
+> > 
+> > 
+> 
+> 1. 
+> 
+> > +static unsigned int now_lut_size;
+> > +static bool now_lut_diff;
+> 
+> Don't use global variable.
+> 
+> 
+> 
+> 	This two variables are only used in mtk_gamma_set_common()
+> function, which is called by only mtk_aal_gamma_set() and
+> mtk_gamma_set(). 
+> 
+> 	Change definition of mtk_gamma_set_common() to something like
+> mtk_gamma_set_common( ..., dev)  
+> 			to bring in "lut_size" and "lut_diff" from dev
+> private data.
+> 
+> 2.
+> 
+> void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state
+> > *state)
+> >  {
+> > -     unsigned int i, reg;
+> > -     struct drm_color_lut *lut;
+> > +     unsigned int i, reg, idx;
+> >       void __iomem *lut_base;
+> > -     u32 word;
+> > -     u32 diff[3] = {0};
+> > +     void __iomem *lut1_base;
+> > +     u32 word, word1;
+> >  
+> >       if (state->gamma_lut) {
+> > +             u32 table_size;
+> > +             u32 mask;
+> > +             struct drm_color_lut color, even, odd;
+> > +             struct drm_color_lut *lut = (struct drm_color_lut
+> > *)state->gamma_lut;
+> > +             bool lut_12bit = (now_lut_size == TABLE_10BIT_SIZE);
+> > +
+> >               reg = readl(regs + DISP_GAMMA_CFG);
+> > +             reg = reg & ~RELAY_MODE;
+> 
+> Why do you modify this for other SoC?
+> 
+> 
+> 	Originally, gamma config initialization is in
+> mtk_gamma_config() , this function would write GAMMA_DITHERING into
+> gamma_CFG if .has_dither flag is true.
+> 	
+> 	This writing actually shut down the relay mode of gamma, thus,
+> in the original version only need to set GAMMA_LUT_EN to make use of
+> gamma.
+> 	
+> 	However, now .has_dither is false, which means
+> mtk_gamma_config() won't modify gamma_CFG anymore.
+> 	
+> 	Therefore, I added above code to manually shut down relay mode,
+> to ensure it running properly.
 
-The new FW is not released in linux-firmware. I will try to figure out
-a better way to recognize the FW can support the feature and add it in
-v2.
+This is a bug-fix for mt8183 gamma, so separate this to an independent
+patch. But the original mt8183 gamma patch [1] does not disable relay
+moden and I believe Chromebook has applied [1] and no one send a bug
+fix for this. Why? So this is a mt8195 only bug?
 
-     Sean
->
-> >
-> > >
-<snip>
+[1] 
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/gpu/drm/mediatek/mtk_disp_gamma.c?h=v6.0-rc2&id=69a4237ab1d13acd7b35e9c7cb31a154fae35a34
+
+Regards,
+CK
+
+> 
+> 
+> 	 
+> 
+> 3.
+> 
+>       reg = reg | GAMMA_LUT_EN;
+> >               writel(reg, regs + DISP_GAMMA_CFG);
+> >               lut_base = regs + DISP_GAMMA_LUT;
+> > -             lut = (struct drm_color_lut *)state->gamma_lut->data;
+> > -             for (i = 0; i < MTK_LUT_SIZE; i++) {
+> > +             lut1_base = regs + DISP_GAMMA_LUT1;
+> > +             if (lut_12bit) {
+> > +                     table_size = TABLE_10BIT_SIZE;
+> > +                     mask = LUT_12BIT_MASK;
+> 
+> lut_bits and lut_size are independent factor, so use two variable in
+> private data for each. And I like to use digital value instead of a
+> symbol.
+> 
+> lut_bits = 10 or 12;
+> lut_size = 512 or 1024;
+> mask = GENMASK(lut_bits - 1, 0);
+> 
+> > +             }
+> 
+> 
+> 	OK, I will fix it.
+> 
+> 
+> 
+> 4.
+> 
+> > +             for (i = 0; i < table_size; i++) {
+> > +                     if (!(i % BANK_SIZE) && lut_12bit)
+> > +                             writel((i / BANK_SIZE), regs +
+> > DISP_GAMMA_BANK);
+> 
+> Group register writing together, so move this to bottom of this for-
+> loop.
+> 
+> 
+> 	OK, I will fix it.
+> 
+> 
+> 
+> 5.
+> 
+> > +                     color.red = (lut[i].red >> 6) & mask;
+> > +                     color.green = (lut[i].green >> 6) & mask;
+> > +                     color.blue = (lut[i].blue >> 6) & mask;
+> 
+> Why shift 6 bits for lut 12 bits?
+> 
+> 
+> 	After testing, I find that right-shift 6bits and mask the
+> Least-Significant(LS) 12bits bring the correct results.
+> 
+> 	It actually make more sense to right-shift 4bits to gain the
+> 12bits, however, when I did this,  the results failed.
+> 
+> 	I wonder if this is the test data problem, since the original
+> test data is for mt8183 10bit lut.
+> 	
+> 	I will contact with designer and try to figure it out.  	
+> 
+> 
+> 
+> 6.
+> > +                     if ((i % 2) && now_lut_diff) {
+> 
+> In original code, !lut_diff is first, so I would like you to keep
+> this
+> order.
+> 
+> 
+> 	OK, I will fix it.
+> 
+> 
+> 
+> 7.
+>  +                             odd = color;
+> > +                             word = (lut_12bit) ? (((odd.green -
+> > even.green) << 12) +
+> > +                                                   (odd.red -
+> > even.red))
+> > +                                                : (((odd.red -
+> > even.red) << 20) +
+> > +                                                   ((odd.green -
+> > even.green) << 10) +
+> > +                                                   (odd.blue -
+> > even.blue));
+> > +                             word1 = (odd.blue - even.blue);
+> 
+> I think it's not necessary to create odd and even variable. 
+> 
+> Regards,
+> CK
+> 
+> 
+> 	OK, I will fix it.
+> 
+
 
