@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF283C28D13
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 06:38:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B50FC28D13
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 06:54:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aUWpRgHtNV4o5Os9E2A3UPYhpEU1YCs0RcI9qd2YUws=; b=r4ER1ofwF6BhcnEv1krMCNhHH+
-	Qk8NohjD0pMuJC+iOKvLMo6YQjsap3BwnRo8DVpioLhn0OOzJQQL9M4ZMs5jrvN6lzG6Oi+yJtXLd
-	3jLnBwGla3iHg32r+xZeLXmrhRfmaxI/c56cJuDByQJO31EhTOdRNrIGg7aS0JbddONwYvvl3ciI5
-	op4r2B70CDRSUnqp6CWGJydjQdJcZ0xwK74cNqJocsBDE8tket4xBxJE5VqizqgOjZKa8jK/HuznC
-	olkBAd9m2fzAg2/D7zlZfy3JAxIkaXe58T1cjJv6YnE50G7IR2ITQAl8MbAoyerH8x0Itq8t88Ord
-	Ic5Ej24Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J7hetefnG4im2lve6kba7kczHC23lp5y+Zw1ri01n2o=; b=pBPmIMgoE0cjKloOG+wS2p0p3m
+	SFKxC+MCAJWmrHcf3kGhYklco67Ln83/PLhcrLqdc5wYZShhYzS5Lar6ooSKd28FEXM2NZv9zj3eu
+	rGssxeflnMW2Urg5XPEf+PJtIA/Bk6O61gaWEDg+ICEtjeh9xjvKx2SxvKH/y1rnh+5ZElpGi6TNo
+	ZKkZTPDAc8G5OjFNsa0Eep4CDfudYDEtU3C+K0bkOVR9PlZ+NDd5I8aeObKKY+oi26tzNvsdFFy8R
+	mb0UtaeOhZsMRjxq0U53BggP0aYvfV9Z5urKU5kr62/tWCaOO9YJ3NihISLMnsTPKxiNjwf4pAfxl
+	knCJjFsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oR6Uw-007xIG-FA; Thu, 25 Aug 2022 06:37:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oR6lH-0085FQ-6R; Thu, 25 Aug 2022 06:54:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oR6Ur-007xE8-Hg; Thu, 25 Aug 2022 06:37:49 +0000
-X-UUID: 08befde43c36479d92872418d024a535-20220824
+	id 1oR6lF-00859P-2l; Thu, 25 Aug 2022 06:54:42 +0000
+X-UUID: 7b5de2550efd4509826597b9dc943142-20220824
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=aUWpRgHtNV4o5Os9E2A3UPYhpEU1YCs0RcI9qd2YUws=;
-	b=sCM5Eht3nH7SqAM7eG/cCXGiL3NqlBpryBguiKPHxkffvUcPe1anDiIgDLSd36JrR9XlhpvLbsW2QMQjyUmGUIW1A4+0s/uppNHGqVSovGUi0SH7GqW2ohUiLhozU4UrN2dEPGJxMmrJHx6Hfwdl6NLF9vu0lhWqWL7sFH39J94=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=J7hetefnG4im2lve6kba7kczHC23lp5y+Zw1ri01n2o=;
+	b=pEqo/Wh0on7rEb+MuZSk5G5n6sl7DIpB3tE5pm1W6+NS9zhFRMSHjJO/yu5MEzXNX9YfXfl8PPSnqLVetk4Ogp3D9eDR6IpOyFrAfxZfv7fa0xI0TqrcaGaHMAW1+QlapWOWV1EEDW7R3ejvApm6K0lDIu8rboXQDPtjfsk+4IU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:f373db1a-d0a1-4f1c-abdd-e69faa415b81,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:c0340f20-1c20-48a5-82a0-25f9c331906d,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 08befde43c36479d92872418d024a535-20220824
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
+X-CID-O-INFO: VERSION:1.1.10,REQID:b84f6947-0805-40ce-ae27-759175bce54e,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
+	_Ham,ACTION:release,TS:-5
+X-CID-META: VersionHash:84eae18,CLOUDID:72c30f20-1c20-48a5-82a0-25f9c331906d,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 7b5de2550efd4509826597b9dc943142-20220824
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chunxu.li@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 890671744; Wed, 24 Aug 2022 23:37:36 -0700
+	with ESMTP id 842356814; Wed, 24 Aug 2022 23:54:36 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 25 Aug 2022 13:57:00 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 25 Aug 2022 13:57:00 +0800
-From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<matthias.bgg@gmail.com>
-CC: <jason-jh.lin@mediatek.com>, <nancy.lin@mediatek.com>,
-	<ck.hu@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<angelogioacchino.delregno@collabora.com>, <hsinyi@google.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ 15.2.792.15; Thu, 25 Aug 2022 14:54:16 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 25 Aug 2022 14:54:15 +0800
+From: Chunxu Li <chunxu.li@mediatek.com>
+To: <broonie@kernel.org>, <pierre-louis.bossart@linux.intel.com>,
+	<peter.ujfalusi@linux.intel.com>, <lgirdwood@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <daniel.baluta@nxp.com>
+CC: <matthias.bgg@gmail.com>, <yc.hung@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <alsa-devel@alsa-project.org>,
+	<sound-open-firmware@alsa-project.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
-	<rex-bc.chen@mediatek.com>
-Subject: [PATCH] dt-bindings: arm: mediatek: mmsys: change compatible for MT8195
-Date: Thu, 25 Aug 2022 13:56:58 +0800
-Message-ID: <20220825055658.12429-1-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	<project_global_chrome_upstream_group@mediatek.com>, Chunxu Li
+	<chunxu.li@mediatek.com>
+Subject: [PATCH 1/3] ASoC: SOF: mediatek: Add dai driver for mt8186
+Date: Thu, 25 Aug 2022 14:54:09 +0800
+Message-ID: <20220825065411.31279-2-chunxu.li@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220825065411.31279-1-chunxu.li@mediatek.com>
+References: <20220825065411.31279-1-chunxu.li@mediatek.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220824_233745_653334_9A4FD3C9 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20220824_235441_164971_A58D2C7A 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,41 +83,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Add dsp ops callback to register AFE DL1/DL2/UL1/UL2 SOF dai's with ALSA
 
-For previous MediaTek SoCs, such as MT8173, there are 2 display HW
-pipelines binding to 1 mmsys with the same power domain, the same
-clock driver and the same mediatek-drm driver.
-
-For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding to
-2 different power domains, different clock drivers and different
-mediatek-drm drivers.
-
-Therefore, we need to separate these two different mmsys hardwares to
-2 different compatibles for MT8195.
-
-Fixes: 81c5a41d10b9 ("dt-bindings: arm: mediatek: mmsys: add mt8195 SoC binding")
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Signed-off-by: Chunxu Li <chunxu.li@mediatek.com>
 ---
- .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml       | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ sound/soc/sof/mediatek/mt8186/mt8186.c | 35 ++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-index 6ad023eec193..bfbdd30d2092 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-@@ -31,7 +31,8 @@ properties:
-               - mediatek,mt8183-mmsys
-               - mediatek,mt8186-mmsys
-               - mediatek,mt8192-mmsys
--              - mediatek,mt8195-mmsys
-+              - mediatek,mt8195-vdosys0
-+              - mediatek,mt8195-vdosys1
-               - mediatek,mt8365-mmsys
-           - const: syscon
-       - items:
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+index 014afe33b3d9..b47bb7a6ba70 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.c
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+@@ -468,6 +468,37 @@ static int mt8186_ipc_msg_data(struct snd_sof_dev *sdev,
+ 	return 0;
+ }
+ 
++static struct snd_soc_dai_driver mt8186_dai[] = {
++{
++	.name = "SOF_DL1",
++	.playback = {
++		.channels_min = 1,
++		.channels_max = 2,
++	},
++},
++{
++	.name = "SOF_DL2",
++	.playback = {
++		.channels_min = 1,
++		.channels_max = 2,
++	},
++},
++{
++	.name = "SOF_UL1",
++	.capture = {
++		.channels_min = 1,
++		.channels_max = 2,
++	},
++},
++{
++	.name = "SOF_UL2",
++	.capture = {
++		.channels_min = 1,
++		.channels_max = 2,
++	},
++},
++};
++
+ /* mt8186 ops */
+ static struct snd_sof_dsp_ops sof_mt8186_ops = {
+ 	/* probe and remove */
+@@ -503,6 +534,10 @@ static struct snd_sof_dsp_ops sof_mt8186_ops = {
+ 	/* Firmware ops */
+ 	.dsp_arch_ops = &sof_xtensa_arch_ops,
+ 
++	/* DAI drivers */
++	.drv		= mt8186_dai,
++	.num_drv	= ARRAY_SIZE(mt8186_dai),
++
+ 	/* PM */
+ 	.suspend	= mt8186_dsp_suspend,
+ 	.resume		= mt8186_dsp_resume,
 -- 
-2.18.0
+2.25.1
 
 
