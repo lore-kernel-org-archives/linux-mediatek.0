@@ -4,66 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AA0CC04AA5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 11:40:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA65C04AA5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 11:59:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p2ByL5+d6Xm938Zs5paMUvxYFihBGV/kgyBUTJzMrac=; b=vMML75xveNctK+hIoLgjRG7SQX
-	HmDGjYNVDktmefbaodZEDTXkibNOpmDxi1dqpxBqz+3TUbraSAyut2C8Hd//rPE7w5leBbW7HcIPC
-	muWY+8ZdhWro3TPGDxKMa9eMCG7cSHvAiwxrgdlSNNtddNfYOAc3Mg9NZhzvYLZsaWK+x6sF2Cgwo
-	Q42i1ArRzmsB8bHKW+CgdKr9KV7tVIub/jjHIs2Qw5SaUsdg9/d3wbdn+cVBkf2PEMKUNKgHdW619
-	Lwviu9q/vJaYDOcrrm6SSZNXksNL6LJ/5d5RAgfg4MfzraxrHe/RlRTvtIOYIibCOP9q1eGZxg3AM
-	UuWfRSGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UPgQT59ss7Oiex8/3VqhVZuGL7jKI3aCyhFsdu63L70=; b=yVdXXxO6W+1QNLn9MhihERLhoI
+	TKMic2vRzdStLLtJi04cDZW+AC1wXgVXJJccrwPqp/mFWK60h3TCE9rmxrf6p8V/sR2BcpFIdp0aQ
+	PXHH5/o8Dn8jjGBHdVv6nclZuY//oHA+DcRmQdPve+NF2LGep8xHCdXoqefENWWD1nlUoFi2CVSsA
+	R2ZuQl4/OtI1f4VMYXxA6FCSi8Vytgw5deucUg7R0rYvF+8e2ctlCVPE98pN8YplSlFnUtnqJ2L6U
+	Qvava5+gnK3DPouGqpuTdlSycEF+rqiNDeUmpdEjGnBSDvz1IYRBIHHFZicQHvYAl+nSLKX8zqiGJ
+	rtMZcC0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRBDg-00Co2K-Od; Thu, 25 Aug 2022 11:40:20 +0000
+	id 1oRBVw-00DA25-59; Thu, 25 Aug 2022 11:59:12 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRBDc-00CnxD-TF
-	for linux-mediatek@lists.infradead.org; Thu, 25 Aug 2022 11:40:19 +0000
+	id 1oRBVt-00D9ve-Kc
+	for linux-mediatek@lists.infradead.org; Thu, 25 Aug 2022 11:59:11 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 2394161AC9;
-	Thu, 25 Aug 2022 11:40:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 39911C43141;
-	Thu, 25 Aug 2022 11:40:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661427615;
-	bh=H+NOmaWZR86ntcxoWX0UShHEUJazXfL6KCc0YJjq2j8=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=E1u1IsT7u83jGEJGpS/mzcmB8k//ajrPR3JrqmKDYp2g3uSX4ySRdE2SmOyRFSd9W
-	 aCF7YKWlsuI/6RGTIiAq6jfOTkNArCmRqvqo7vb7BckRc2+hraYcWVPPV9YBPtKsWh
-	 +pBxlOYjUvLwd3xBuTymmbR8YMGviPkw8hzxYTP67mO3KWKzi8cjwOQn9JAw6OBlT2
-	 BZygLDjInjuejlCWZsYj6n1PL+upi8e4XkB5eYiuOyjAQhylZT0AgzTEq+lYDwLDpd
-	 B0z/GLeiI1qbPwaYCg7vzvXMYTtosIzuf339V356RWru7dsJ3Dk8MMC0iIG9GPXwi7
-	 8i1hiFjF29iPw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 18498E1CF31;
-	Thu, 25 Aug 2022 11:40:15 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2897661B11;
+	Thu, 25 Aug 2022 11:59:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3782EC433D7;
+	Thu, 25 Aug 2022 11:59:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1661428748;
+	bh=GLfsjUlNp9WLL2wELbBVeoTLtJbmnVEiPK7O3n+1NV0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mghw3e3sHIr/tw03YSnhgwGtdVUsIfgD4OMxiU0g3yfZzBx6Gt4jvslnRHd3iJebx
+	 YY6j1jIqlllKpY3SSU5bnBrasc7WpFTXDKpAFxKLj/psqV/RWOGvcE5smvPCSCrh9h
+	 ZgdU8wZLOwJOXSgp94Ad2OxfmDiN6+Na3E6A6uYs=
+Date: Thu, 25 Aug 2022 13:59:05 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: sean.wang@mediatek.com
+Cc: stable@vger.kernel.org, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Deren Wu <deren.wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>
+Subject: Re: [PATCH 5.19] mt76: mt7921: fix command timeout in AP stop period
+Message-ID: <YwdkCRXdOZCTdPQl@kroah.com>
+References: <94065c608ee60d8a96a3d91913cb1e28d0a302e1.1661397440.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2 net] net: ethernet: mtk_eth_soc: fix hw hash reporting for
- MTK_NETSYS_V2
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <166142761509.23802.7187869473014741631.git-patchwork-notify@kernel.org>
-Date: Thu, 25 Aug 2022 11:40:15 +0000
-References: <091394ea4e705fbb35f828011d98d0ba33808f69.1661257293.git.lorenzo@kernel.org>
-In-Reply-To: <091394ea4e705fbb35f828011d98d0ba33808f69.1661257293.git.lorenzo@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
- lorenzo.bianconi@redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <94065c608ee60d8a96a3d91913cb1e28d0a302e1.1661397440.git.objelf@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_044017_035493_C2FEB207 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20220825_045909_744313_FA421A96 
+X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,32 +69,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net.git (master)
-by Paolo Abeni <pabeni@redhat.com>:
-
-On Tue, 23 Aug 2022 14:24:07 +0200 you wrote:
-> Properly report hw rx hash for mt7986 chipset accroding to the new dma
-> descriptor layout.
+On Thu, Aug 25, 2022 at 11:27:22AM +0800, sean.wang@mediatek.com wrote:
+> From: Deren Wu <deren.wu@mediatek.com>
 > 
-> Fixes: 197c9e9b17b11 ("net: ethernet: mtk_eth_soc: introduce support for mt7986 chipset")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> commit 9d958b60ebc2434f2b7eae83d77849e22d1059eb upstream.
+> 
+> Due to AP stop improperly, mt7921 driver would face random command timeout
+> by chip fw problem. Migrate AP start/stop process to .start_ap/.stop_ap and
+> congiure BSS network settings in both hooks.
+> 
+> The new flow is shown below.
+> * AP start
+>     .start_ap()
+>       configure BSS network resource
+>       set BSS to connected state
+>     .bss_info_changed()
+>       enable fw beacon offload
+> 
+> * AP stop
+>     .bss_info_changed()
+>       disable fw beacon offload (skip this command)
+>     .stop_ap()
+>       set BSS to disconnected state (beacon offload disabled automatically)
+>       destroy BSS network resource
+> 
+> Fixes: 116c69603b01 ("mt76: mt7921: Add AP mode support")
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> Signed-off-by: Felix Fietkau <nbd@nbd.name>
 > ---
-> Changes since v1:
-> - fix typo in a comment
-> - target net tree instead of net-next
-> 
-> [...]
+>  .../wireless/mediatek/mt76/mt76_connac_mcu.c  |  2 +
+>  .../net/wireless/mediatek/mt76/mt7921/main.c  | 47 +++++++++++++++----
+>  .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  5 +-
+>  .../wireless/mediatek/mt76/mt7921/mt7921.h    |  2 +
+>  4 files changed, 43 insertions(+), 13 deletions(-)
 
-Here is the summary with links:
-  - [v2,net] net: ethernet: mtk_eth_soc: fix hw hash reporting for MTK_NETSYS_V2
-    https://git.kernel.org/netdev/net/c/0cf731f9ebb5
+Now queued up, thanks,
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+greg k-h
 
