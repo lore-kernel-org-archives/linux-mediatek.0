@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A62D3C04AA5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 13:28:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 539B5C28D13
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 13:28:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s+yr1+nKT7s8acPwOL/4Z8aHxPGUBZqRyrnHMdHmTAk=; b=fCLm8XvAjLsnRVA4XhPLgExEkK
-	jKT9x1dxyQ/phuK6V+xy7PWD9hihyeUwaNEKus2L/7ikQXVsTcC3BFuyl5A40MR7Syt6g7Won8PPL
-	O3Ifd2JEOzWCBrg77rBLZjSJHhLF4ZHuXU1YcyAQkya3lv2LD6LL7ne030scv0VGMDx8FzPp0p1xQ
-	GvhuE+DCxtbPN/226YHtOFg52qbWnKbAXAkpj8NycQw+UWxhBsHgPlld2RgTDq5cnjiDp/OQRyU83
-	ivEEmpCZ0y8eYNUI/M0Il3b+FVHh46dUFs54nUHoecNxQ54c/iBWrvAYB94NYh0z3uvRkIpxrEDui
-	Z5KKz83A==;
+	bh=KfGKO4gRVHDia7DffjyPAcJcjBq+6O29TGohmEixT6E=; b=UI7QELkQ9LhB15f+bGsmyJco4c
+	8CNdLbC8a3BQaKkvTxpSGsnhmENEIGE7h7A0obj8Zjngd9HllkofS5JS1WUx6I5jMkQ2kesT9l+Tu
+	pezgApDSIwV2JXR9tRfD9bpuZQXWXAicpKuDjAQq37gpniqHWepQB1vc4/bzLsoo1cr+ff4Y7+9Lm
+	1jPOl7qngAc7s1Hy0vWbTEAXsbM1H9XYu48S5AoxCnABn6msYUkW7TPYpOrYtl2KG/Ztifrt7r905
+	98eF1QsBh0D1wQi7oZK0Gf7Cf8XNDz3BwOU76fTjfD9p1cBIgpYANu3SoyS+xllscvN/G8zvAG1PR
+	EbsbYW1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRCtv-00EnI1-5O; Thu, 25 Aug 2022 13:28:03 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1oRCub-00EncS-9I; Thu, 25 Aug 2022 13:28:45 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRCtX-00En6V-Hg; Thu, 25 Aug 2022 13:27:41 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id k9so24642652wri.0;
-        Thu, 25 Aug 2022 06:27:37 -0700 (PDT)
+	id 1oRCuA-00EnQB-TU; Thu, 25 Aug 2022 13:28:20 +0000
+Received: by mail-wm1-x331.google.com with SMTP id h204-20020a1c21d5000000b003a5b467c3abso2684441wmh.5;
+        Thu, 25 Aug 2022 06:28:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc;
-        bh=s+yr1+nKT7s8acPwOL/4Z8aHxPGUBZqRyrnHMdHmTAk=;
-        b=P1Avf2ZgfYbOL0sPZf5JYEGzaYRwlP8IiTh0O1+tUKRdTr31E7o8BVCMUTkZ6ve9Bw
-         qYnrlZMfFdi8anSS9exAp+DUyjMrDaLdBMOLqZcXUx8FisnfEHM0S/Vgt6ao3Fn73l1v
-         W2PFaUkLCMSpcvUIkHYThuhC2Crhb4SPeaJpxziDz04LaO2ZcpFp0bw/+g1/gl4sRNDY
-         jX41WsGlv2zvDsZrOic2GUjGpC7PLUhd0PdxMs62bAMvLGvFvjrBqMg7fAL+Vm571gvR
-         N3UOcxMRMvgpDhd0kFSuA/q6m94YZMK3o0eag4Li9WPxvgobuxM1yHeDUR1HhVXzn6Gn
-         hTRg==
+        bh=KfGKO4gRVHDia7DffjyPAcJcjBq+6O29TGohmEixT6E=;
+        b=gfhg0I9DGV8Q5gc55jPTx1jSwtM6UtBeNZSqgS5SWaysdaYZhB5W6OJmrHN1Hgl8pO
+         5t70mJDysooDK0BRriyZC3Cx6EyYXnVaRaFFMmbkQkN2Wa82MlXllExcYe9JLKkdQ9cT
+         kGhJIAw1J9733Ydo8rWumKglDarKtv/90YLt+ZkvFru9P8A88NLDkGPLHZ2qks4YV05q
+         KHu1NarUTSz6Wk9hj2kDD6S5o6cYZao4NTnRrJFWkSIsWvXeaFAF8Wqmxkxfhq5QlpHV
+         fuSXfcjtlTyW/Qav46x2cqqtyDUyMOEVEk+UcY1hrOyOhCSdIXkXPBIr/pxuh56f04/x
+         B1dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc;
-        bh=s+yr1+nKT7s8acPwOL/4Z8aHxPGUBZqRyrnHMdHmTAk=;
-        b=F7ronU052d4yJfiwwkbkmng1eFQvcM13NjnWEDH0hzfBLNOBlxLZB3Me4J66zQiwfB
-         QEnVjwsgSxgQtLJhdDTJM2a2c4Io36wSIHOwUDlmTGOgnxJ010bEDTBfEZDgF+mrSXv0
-         wVn94hCtq/bANOfSDzkCEhz9DqAiXZm9DylYaT9+DKpibl0T+2ncCSVcw+uMeGPiWHIl
-         xGBGejGIZImrqCOZ5hRGNNNqjRwWV5qd6mNEK/mvBJgQCvc5JwYkMwBihJzcvEp5Q30l
-         UOON47/3SNKorBi9WTq7f7/q7rPA9JtwfLkErWe4QlFgyxs0k8pEL9+2QQ1qkYn9EObo
-         IxWA==
-X-Gm-Message-State: ACgBeo3eaRLRI4Ef27Uyq77d75fCgY9VZswqHj6MYX5TOQorKP5/VCJX
-	X3YCykOyxAG0vQmKMr2Kxd0=
-X-Google-Smtp-Source: AA6agR4+e+gJ953ovCQzhpGeyQWCCrQ/2jVoyirofXcAeX5mDCBEzYBddFBFOkba5IBKK1D2RJF+OQ==
-X-Received: by 2002:a5d:64e9:0:b0:220:7dd7:63eb with SMTP id g9-20020a5d64e9000000b002207dd763ebmr2324617wri.590.1661434055754;
-        Thu, 25 Aug 2022 06:27:35 -0700 (PDT)
+        bh=KfGKO4gRVHDia7DffjyPAcJcjBq+6O29TGohmEixT6E=;
+        b=264XJP2luIctXNPjqTJdyMhfrDnsbgPtOkIjNyNBGLpMPn8pEtNQGyCZLs2VK1CI1F
+         hhBPBse3b4VqSllLUNulGKXrtyLhgRQBBxQpp9faceE8BszieTYJT5sSDdQQulH9tDAm
+         X2ABnTpi15ZZ/9Afu2X/kVGlCWJWCchwFnkIdbGWtZjupTpum5ntScwTqwpgcnv28TdO
+         sx+u0eRzwv2kQc0aExQ3L6nsoBFY1SRBb/WBoEacncui7Y6RXx8tvCKmIuH1WuJJLnoj
+         c6qVuG4Egqq/Bxjsxe1o6zSstdljCWC9hZRc2g2T96iTSJwT29fVQAa6a98RsPeg8LLO
+         EEzg==
+X-Gm-Message-State: ACgBeo3bbx5MVADuLbULT9K7GSpn6OkCUCBT0Oh1RCh38uXTicX9eYo8
+	hA3yWXu7fCndqgcrjvAbelI=
+X-Google-Smtp-Source: AA6agR5a9Ai7VYX7KZ47qWIsUFrlG3Kqel4VjkZPZEG/YVdHcomsm8Mjah2kQb/Q9rfYRRDpbLy+IA==
+X-Received: by 2002:a1c:4c18:0:b0:3a5:3ddd:2f29 with SMTP id z24-20020a1c4c18000000b003a53ddd2f29mr2360318wmf.91.1661434095307;
+        Thu, 25 Aug 2022 06:28:15 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id z17-20020a5d4411000000b002252e5a6841sm19802921wrq.57.2022.08.25.06.27.34
+        by smtp.gmail.com with ESMTPSA id k5-20020a05600c1c8500b003a5f3de6fddsm5620850wms.25.2022.08.25.06.28.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 25 Aug 2022 06:27:34 -0700 (PDT)
-Message-ID: <d41d392b-d80f-c6e2-9d4e-d28663e5b06c@gmail.com>
-Date: Thu, 25 Aug 2022 15:27:33 +0200
+        Thu, 25 Aug 2022 06:28:14 -0700 (PDT)
+Message-ID: <20ad18de-0db0-c1fa-55e5-ad0897269876@gmail.com>
+Date: Thu, 25 Aug 2022 15:28:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.1.2
-Subject: Re: [PATCH 1/6] soc: mediatek: mtk-svs: Commonize t-calibration-data
- fuse array read
+Subject: Re: [PATCH 3/6] soc: mediatek: mtk-svs: Remove hardcoded irqflags
 Content-Language: en-US
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: roger.lu@mediatek.com, khilman@baylibre.com,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, nfraprado@collabora.com, kernel@collabora.com
 References: <20220726141653.177948-1-angelogioacchino.delregno@collabora.com>
- <20220726141653.177948-2-angelogioacchino.delregno@collabora.com>
+ <20220726141653.177948-4-angelogioacchino.delregno@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220726141653.177948-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220726141653.177948-4-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_062739_655803_775A53C0 
-X-CRM114-Status: GOOD (  22.28  )
+X-CRM114-CacheID: sfid-20220825_062819_012946_8B23BB77 
+X-CRM114-Status: GOOD (  18.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,205 +96,77 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 26/07/2022 16:16, AngeloGioacchino Del Regno wrote:
-> Commonize the repeating pattern for reading the "t-calibration-data"
-> efuse data in a new function svs_thermal_efuse_get_data(), reducing
-> the size of this driver.
-> 
-> No functional changes.
+> The interrupt flags are specified in devicetree: forcing them into
+> the driver is suboptimal and not very useful.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Applied, thanks
+
 > ---
->   drivers/soc/mediatek/mtk-svs.c | 111 +++++++++++----------------------
->   1 file changed, 38 insertions(+), 73 deletions(-)
+>   drivers/soc/mediatek/mtk-svs.c | 9 +--------
+>   1 file changed, 1 insertion(+), 8 deletions(-)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-> index 5ac431a04548..600492dc334c 100644
+> index ee990acfc2d5..fcf246a6bb07 100644
 > --- a/drivers/soc/mediatek/mtk-svs.c
 > +++ b/drivers/soc/mediatek/mtk-svs.c
-> @@ -1684,11 +1684,36 @@ static int svs_bank_resource_setup(struct svs_platform *svsp)
->   	return 0;
->   }
+> @@ -262,7 +262,6 @@ static const u32 svs_regs_v2[] = {
+>    * @rst: svs platform reset control
+>    * @efuse_parsing: svs platform efuse parsing function pointer
+>    * @probe: svs platform probe function pointer
+> - * @irqflags: svs platform irq settings flags
+>    * @efuse_max: total number of svs efuse
+>    * @tefuse_max: total number of thermal efuse
+>    * @regs: svs platform registers map
+> @@ -280,7 +279,6 @@ struct svs_platform {
+>   	struct reset_control *rst;
+>   	bool (*efuse_parsing)(struct svs_platform *svsp);
+>   	int (*probe)(struct svs_platform *svsp);
+> -	unsigned long irqflags;
+>   	size_t efuse_max;
+>   	size_t tefuse_max;
+>   	const u32 *regs;
+> @@ -294,7 +292,6 @@ struct svs_platform_data {
+>   	struct svs_bank *banks;
+>   	bool (*efuse_parsing)(struct svs_platform *svsp);
+>   	int (*probe)(struct svs_platform *svsp);
+> -	unsigned long irqflags;
+>   	const u32 *regs;
+>   	u32 bank_max;
+>   };
+> @@ -2680,7 +2677,6 @@ static const struct svs_platform_data svs_mt8192_platform_data = {
+>   	.banks = svs_mt8192_banks,
+>   	.efuse_parsing = svs_mt8192_efuse_parsing,
+>   	.probe = svs_mt8192_platform_probe,
+> -	.irqflags = IRQF_TRIGGER_HIGH,
+>   	.regs = svs_regs_v2,
+>   	.bank_max = ARRAY_SIZE(svs_mt8192_banks),
+>   };
+> @@ -2699,7 +2695,6 @@ static const struct svs_platform_data svs_mt8183_platform_data = {
+>   	.banks = svs_mt8183_banks,
+>   	.efuse_parsing = svs_mt8183_efuse_parsing,
+>   	.probe = svs_mt8183_platform_probe,
+> -	.irqflags = IRQF_TRIGGER_LOW,
+>   	.regs = svs_regs_v2,
+>   	.bank_max = ARRAY_SIZE(svs_mt8183_banks),
+>   };
+> @@ -2743,7 +2738,6 @@ static struct svs_platform *svs_platform_probe(struct platform_device *pdev)
+>   	svsp->banks = svsp_data->banks;
+>   	svsp->efuse_parsing = svsp_data->efuse_parsing;
+>   	svsp->probe = svsp_data->probe;
+> -	svsp->irqflags = svsp_data->irqflags;
+>   	svsp->regs = svsp_data->regs;
+>   	svsp->bank_max = svsp_data->bank_max;
 >   
-> +static int svs_thermal_efuse_get_data(struct svs_platform *svsp)
-> +{
-> +	struct nvmem_cell *cell;
-> +
-> +	/* Thermal efuse parsing */
-> +	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
-> +	if (IS_ERR_OR_NULL(cell)) {
-> +		dev_err(svsp->dev, "no \"t-calibration-data\"? %ld\n", PTR_ERR(cell));
-> +		return PTR_ERR(cell);
-> +	}
-> +
-> +	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
-> +	if (IS_ERR(svsp->tefuse)) {
-> +		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
-> +			PTR_ERR(svsp->tefuse));
-> +		nvmem_cell_put(cell);
-> +		return PTR_ERR(svsp->tefuse);
-> +	}
-> +
-> +	svsp->tefuse_max /= sizeof(u32);
-> +	nvmem_cell_put(cell);
-> +
-> +	return 0;
-> +}
-> +
->   static bool svs_mt8195_efuse_parsing(struct svs_platform *svsp)
-
-Please rebase on upstream driver, no support for mt8195 for now.
-
-Regards,
-Matthias
-
->   {
->   	struct svs_bank *svsb;
-> -	struct nvmem_cell *cell;
->   	u32 idx, i, ft_pgm, vmin, golden_temp;
-> +	int ret;
->   
->   	for (i = 0; i < svsp->efuse_max; i++)
->   		if (svsp->efuse[i])
-> @@ -1730,24 +1755,9 @@ static bool svs_mt8195_efuse_parsing(struct svs_platform *svsp)
->   		svsb->vmax += svsb->dvt_fixed;
+> @@ -2782,8 +2776,7 @@ static int svs_probe(struct platform_device *pdev)
 >   	}
 >   
-> -	/* Thermal efuse parsing */
-> -	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
-> -	if (IS_ERR_OR_NULL(cell)) {
-> -		dev_err(svsp->dev, "no \"t-calibration-data\"? %ld\n",
-> -			PTR_ERR(cell));
-> -		return false;
-> -	}
-> -
-> -	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
-> -	if (IS_ERR(svsp->tefuse)) {
-> -		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
-> -			PTR_ERR(svsp->tefuse));
-> -		nvmem_cell_put(cell);
-> +	ret = svs_thermal_efuse_get_data(svsp);
-> +	if (ret)
->   		return false;
-> -	}
-> -
-> -	svsp->tefuse_max /= sizeof(u32);
-> -	nvmem_cell_put(cell);
->   
->   	for (i = 0; i < svsp->tefuse_max; i++)
->   		if (svsp->tefuse[i] != 0)
-> @@ -1770,8 +1780,8 @@ static bool svs_mt8195_efuse_parsing(struct svs_platform *svsp)
->   static bool svs_mt8192_efuse_parsing(struct svs_platform *svsp)
->   {
->   	struct svs_bank *svsb;
-> -	struct nvmem_cell *cell;
->   	u32 idx, i, vmin, golden_temp;
-> +	int ret;
->   
->   	for (i = 0; i < svsp->efuse_max; i++)
->   		if (svsp->efuse[i])
-> @@ -1809,24 +1819,9 @@ static bool svs_mt8192_efuse_parsing(struct svs_platform *svsp)
->   		svsb->vmax += svsb->dvt_fixed;
->   	}
->   
-> -	/* Thermal efuse parsing */
-> -	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
-> -	if (IS_ERR_OR_NULL(cell)) {
-> -		dev_err(svsp->dev, "no \"t-calibration-data\"? %ld\n",
-> -			PTR_ERR(cell));
-> -		return false;
-> -	}
-> -
-> -	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
-> -	if (IS_ERR(svsp->tefuse)) {
-> -		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
-> -			PTR_ERR(svsp->tefuse));
-> -		nvmem_cell_put(cell);
-> +	ret = svs_thermal_efuse_get_data(svsp);
-> +	if (ret)
->   		return false;
-> -	}
-> -
-> -	svsp->tefuse_max /= sizeof(u32);
-> -	nvmem_cell_put(cell);
->   
->   	for (i = 0; i < svsp->tefuse_max; i++)
->   		if (svsp->tefuse[i] != 0)
-> @@ -1849,8 +1844,8 @@ static bool svs_mt8192_efuse_parsing(struct svs_platform *svsp)
->   static bool svs_mt8186_efuse_parsing(struct svs_platform *svsp)
->   {
->   	struct svs_bank *svsb;
-> -	struct nvmem_cell *cell;
->   	u32 idx, i, golden_temp;
-> +	int ret;
->   
->   	for (i = 0; i < svsp->efuse_max; i++)
->   		if (svsp->efuse[i])
-> @@ -1911,24 +1906,9 @@ static bool svs_mt8186_efuse_parsing(struct svs_platform *svsp)
->   		svsb->vmax += svsb->dvt_fixed;
->   	}
->   
-> -	/* Thermal efuse parsing */
-> -	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
-> -	if (IS_ERR_OR_NULL(cell)) {
-> -		dev_err(svsp->dev, "no \"t-calibration-data\"? %ld\n",
-> -			PTR_ERR(cell));
-> +	ret = svs_thermal_efuse_get_data(svsp);
-> +	if (ret)
->   		return false;
-> -	}
-> -
-> -	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
-> -	if (IS_ERR(svsp->tefuse)) {
-> -		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
-> -			PTR_ERR(svsp->tefuse));
-> -		nvmem_cell_put(cell);
-> -		return false;
-> -	}
-> -
-> -	svsp->tefuse_max /= sizeof(u32);
-> -	nvmem_cell_put(cell);
->   
->   	golden_temp = (svsp->tefuse[0] >> 24) & GENMASK(7, 0);
->   	if (!golden_temp)
-> @@ -1946,11 +1926,11 @@ static bool svs_mt8186_efuse_parsing(struct svs_platform *svsp)
->   static bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
->   {
->   	struct svs_bank *svsb;
-> -	struct nvmem_cell *cell;
->   	int format[6], x_roomt[6], o_vtsmcu[5], o_vtsabb, tb_roomt = 0;
->   	int adc_ge_t, adc_oe_t, ge, oe, gain, degc_cali, adc_cali_en_t;
->   	int o_slope, o_slope_sign, ts_id;
->   	u32 idx, i, ft_pgm, mts, temp0, temp1, temp2;
-> +	int ret;
->   
->   	for (i = 0; i < svsp->efuse_max; i++)
->   		if (svsp->efuse[i])
-> @@ -2026,24 +2006,9 @@ static bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
->   		}
->   	}
->   
-> -	/* Get thermal efuse by nvmem */
-> -	cell = nvmem_cell_get(svsp->dev, "t-calibration-data");
-> -	if (IS_ERR(cell)) {
-> -		dev_err(svsp->dev, "no \"t-calibration-data\"? %ld\n",
-> -			PTR_ERR(cell));
-> -		goto remove_mt8183_svsb_mon_mode;
-> -	}
-> -
-> -	svsp->tefuse = nvmem_cell_read(cell, &svsp->tefuse_max);
-> -	if (IS_ERR(svsp->tefuse)) {
-> -		dev_err(svsp->dev, "cannot read thermal efuse: %ld\n",
-> -			PTR_ERR(svsp->tefuse));
-> -		nvmem_cell_put(cell);
-> -		goto remove_mt8183_svsb_mon_mode;
-> -	}
-> -
-> -	svsp->tefuse_max /= sizeof(u32);
-> -	nvmem_cell_put(cell);
-> +	ret = svs_thermal_efuse_get_data(svsp);
-> +	if (ret)
-> +		return false;
->   
->   	/* Thermal efuse parsing */
->   	adc_ge_t = (svsp->tefuse[1] >> 22) & GENMASK(9, 0);
+>   	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
+> -					svsp->irqflags | IRQF_ONESHOT,
+> -					svsp->name, svsp);
+> +					IRQF_ONESHOT, svsp->name, svsp);
+>   	if (ret) {
+>   		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
+>   			svsp_irq, ret);
 
