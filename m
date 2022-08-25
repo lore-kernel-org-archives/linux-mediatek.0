@@ -4,72 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 238FDECAAA3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 23:39:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C2BAECAAD4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 23:59:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ReQy7i48rPmBEDiAIISgilqXl4TFvLvj+B3GTOq8ba0=; b=D4pSDbiIbaJL4Ezydb9AwPBnSL
-	RxH1PCkkr4JrKKZwWdmvklufaACnEVObGwXuB5ybtmduf6rJ5zH1j6SkUoF+ovb+QzFO7sAk4tJYQ
-	8cYt5Td4KjtuGEn1wbYcp3ovPIkCrDNy2MRjvBpQ3cogvAlTD45CbCiHCTvcLjry4R01/dmKmZnxP
-	YCdYjdggSsuEq4Kp7r0uvD9PorBI+oSy/U3uiciTWtWOQ6WyL7Y4Ku1LpuhLCpB6F3Le+/dcpCGKv
-	7MZc/POlBckU36H9JsZ0lx3IRh8ZLM2PTmez18eRc9+xyD1f2g+WyLW4QVYZ/hXRrDdx3cMqqMxsn
-	fggCzc7Q==;
+	bh=6tr9JX1rDWUseLRDd+rjAH9EQ4DmqGlf98TtCf/E/5k=; b=TlkHC9dh57arnVYnx1vAFNIVaG
+	yij4fvZKB3ZdS/36ypz1XZYkL1ZwXajWHy8N1AyqKMqTRhIavRrIawGuAr7SlO/86dxylAeOPju68
+	Gc+XuUu89KAZLVMpSmCuU/gRrYmZIDV8SnblNbr5dxSB5UuD13fNW8kfVmNonO9SJJE83xJx5x+kZ
+	hbMZnN+5JkSSGqKCe/1ssTYPQmjNbcvVMNkUz7jfoDdmRCsnsWFHd8Ms8UkQBQrQX8T7jxTUp0+Af
+	Sqq5yxZ+ecX1RGbO0PTazAGvLKTfZe3+aRIIPf76xoCe//9rOo5gIEDNlFQsX4+JBHuZspZaR9UYb
+	1mQtNF8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRMRR-004Db7-7q; Thu, 25 Aug 2022 23:39:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oRMkl-004JSm-9G; Thu, 25 Aug 2022 23:59:15 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRMRG-004DYA-25; Thu, 25 Aug 2022 23:39:07 +0000
+	id 1oRMkg-004JDO-GG
+	for linux-mediatek@bombadil.infradead.org; Thu, 25 Aug 2022 23:59:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=6tr9JX1rDWUseLRDd+rjAH9EQ4DmqGlf98TtCf/E/5k=; b=q4elJT76DgHg96jdJP2onvnvHk
+	Q+ZOquL+HpgtpU6zUbfNl0BCsI46+skf2FgggFm5+j/AaU52Mqr27nhiTiqccDnvpKpnW+mCONQu0
+	QAIZ5JNsrMF4UzdLUxejnLuTHW/tlks4TKeDOuDKzm/WRo0xB0mIDb8fCi6JWuvOP2PnmNyJvXMXn
+	GeKZ1OHK6IDscC2DcVRgJvj8CrlqZAEdmRy6sFcnWuTzBVRJHaIFUvWA+CBybG0dgmK2/svyKV+om
+	7Pc+wNXTsdwX1sXN3wt2gwSMBdZMSSmg5zZ9jM5RqEJU+wEI0RtMzuLUSD/7ZvFvVE9cHjQVID+wu
+	Y1F3b/oQ==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oRMEi-0068zu-2h
+	for linux-mediatek@lists.infradead.org; Thu, 25 Aug 2022 23:26:30 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 125CA61D7A;
-	Thu, 25 Aug 2022 23:39:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 689EBC4347C;
-	Thu, 25 Aug 2022 23:39:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id B1ACB61D48
+	for <linux-mediatek@lists.infradead.org>; Thu, 25 Aug 2022 23:25:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76436C43141
+	for <linux-mediatek@lists.infradead.org>; Thu, 25 Aug 2022 23:25:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661470744;
-	bh=VUu5XtDzSApD4jLb7/Kt0DoXKUHclEkJ4teSyXFURGA=;
+	s=k20201202; t=1661469948;
+	bh=gANNeo5xFLWx50TpQgTmSD/ajuMSXdn3OaPyPmhxXLU=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=rD8xvt2pteiCf7B0fVx16f3admXr98oUj03A6jJl33zd/hBrlyoBzEuf62ecPkzn1
-	 d0O2JYJRpVthX+cP8GQX4aDEhfPUPAGLYEqnMtUJQhX0X1ATcMMIbHcrG4u2ifqSd9
-	 AS2QUhvdNqdXaPwM/0ymaqSZjsCFX12KFHxcqPACKrSID0C98MAfl3L9Bcz8zRtMg+
-	 oOqcgpK7sC1h1V331+rE2xU0iTl1/hkYCD1QXXbYdkFujycqruC9LZuXmEvX4+ij20
-	 KAMSIQN2C19FDrJAHSwg9naMe0mux8v59pzsDyN6moWW9VoigbqT7oAsMdB/Y4YD8u
-	 NjkGnIHGUCdQw==
-Received: by mail-oa1-f53.google.com with SMTP id 586e51a60fabf-11d2dcc31dbso108900fac.7;
-        Thu, 25 Aug 2022 16:39:04 -0700 (PDT)
-X-Gm-Message-State: ACgBeo1oAy8AVihrvM+aosBMbJFyFwguwLGa+CN7HuFDK+9pTUtHz5k+
-	ktCvJKZ8LFrfcVbAIZiyX2r83j4vPcuyW26sxQ==
-X-Google-Smtp-Source: AA6agR4yMz40Tc+owCwkA0C1natVNZY/C/63StQqXp7qxYkhIoBcWs+BRlYcrECKpE6WFMhpawFp3BSWiY7+jb/YoyY=
-X-Received: by 2002:a05:6870:4690:b0:11c:d599:4f41 with SMTP id
- a16-20020a056870469000b0011cd5994f41mr634922oap.69.1661470743518; Thu, 25 Aug
- 2022 16:39:03 -0700 (PDT)
+	b=tIjYGOQqVzSB18XFBZDqzuEERpxgkNSETElSZ7o1WjHeCgh94xGTf3IfOLKBp7nQy
+	 m6mlX1GR5rsIDMZtmYmMNZ3SUcqynZIIk4y8hRuncuizi3nkLoSxICTv2zdsfJBgsS
+	 HzPnhpI6YM26VGx9LJqNDIS7KyY/fRR6Mf/bOZ9Y3HA2NF6h1/DzzsS29Xq/gURX8W
+	 +cdfD0P9BFXfz3y61EBOwJ1IrOWto5e+S7QI4LZcowMDFqh2qnZ4mY8e/9ANexfiRP
+	 hxXdNl/KdlbWLAucLx4NQOk3+rFZXPDZYVFNssN1sfmq2HeT5i6p2VA1xHDGz1o13s
+	 7sDqb94lT2SEA==
+Received: by mail-oi1-f172.google.com with SMTP id o204so39291oia.12
+        for <linux-mediatek@lists.infradead.org>; Thu, 25 Aug 2022 16:25:48 -0700 (PDT)
+X-Gm-Message-State: ACgBeo0GCbjE+0np+OkZi0VZ9Lzichk0DoUcBzONLrBqt0/G0dHkrRMP
+	lBUQsyZ6WZ6oWtwNrbCNvkwMzBX2M/3fqCuSDw==
+X-Google-Smtp-Source: AA6agR6/OpIOZrEsWat8SQRwRTVdbJeXbdtydW5Eboufpp739coHjJXCokAIiHdL3oK9fM+r9I0g37gU99hljRaQqhQ=
+X-Received: by 2002:a54:4405:0:b0:343:23df:4ac5 with SMTP id
+ k5-20020a544405000000b0034323df4ac5mr519363oiw.69.1661469947573; Thu, 25 Aug
+ 2022 16:25:47 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220825072335.228921-1-ye.xingchen@zte.com.cn>
-In-Reply-To: <20220825072335.228921-1-ye.xingchen@zte.com.cn>
+References: <20220812205746.609107-1-mairacanal@riseup.net> <20220812205746.609107-3-mairacanal@riseup.net>
+In-Reply-To: <20220812205746.609107-3-mairacanal@riseup.net>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 26 Aug 2022 07:38:51 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-oP0QOpk0Zo_VGrdBoUgn78PhXeYUr-WPvpVcAHx+rEg@mail.gmail.com>
-Message-ID: <CAAOTY_-oP0QOpk0Zo_VGrdBoUgn78PhXeYUr-WPvpVcAHx+rEg@mail.gmail.com>
-Subject: Re: [PATCH linux-next v2] drm/mediatek: Remove the unneeded result
-To: cgel.zte@gmail.com
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
-	Daniel Vetter <daniel@ffwll.ch>, DRI Development <dri-devel@lists.freedesktop.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Linux ARM <linux-arm-kernel@lists.infradead.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, ye xingchen <ye.xingchen@zte.com.cn>, 
-	Zeal Robot <zealci@zte.com.cn>
+Date: Fri, 26 Aug 2022 07:25:35 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__aE+dZ=GDOQN+Yeh9MzDrFnK71E36NGe0gb17hNXgE8w@mail.gmail.com>
+Message-ID: <CAAOTY__aE+dZ=GDOQN+Yeh9MzDrFnK71E36NGe0gb17hNXgE8w@mail.gmail.com>
+Subject: Re: [PATCH 2/5] drm/mediatek: Drop of_gpio header
+To: =?UTF-8?B?TWHDrXJhIENhbmFs?= <mairacanal@riseup.net>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Maxime Ripard <maxime@cerno.tech>, 
+	DRI Development <dri-devel@lists.freedesktop.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_163906_212326_D6B82BB3 
-X-CRM114-Status: GOOD (  16.56  )
+X-CRM114-CacheID: sfid-20220826_002618_893658_DC4994E4 
+X-CRM114-Status: GOOD (  14.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,15 +97,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, cgel:
+Hi, Maira:
 
-<cgel.zte@gmail.com> =E6=96=BC 2022=E5=B9=B48=E6=9C=8825=E6=97=A5 =E9=80=B1=
-=E5=9B=9B =E4=B8=8B=E5=8D=883:24=E5=AF=AB=E9=81=93=EF=BC=9A
+Ma=C3=ADra Canal <mairacanal@riseup.net> =E6=96=BC 2022=E5=B9=B48=E6=9C=881=
+3=E6=97=A5 =E9=80=B1=E5=85=AD =E5=87=8C=E6=99=A84:58=E5=AF=AB=E9=81=93=EF=
+=BC=9A
 >
-> From: ye xingchen <ye.xingchen@zte.com.cn>
->
-> Return the value drm_mode_config_helper_suspend() directly instead of
->  storing it in another redundant variable.
+> These drivers include the deprecated OF GPIO header <linux/of_gpio.h>
+> yet fail to use symbols from it, so drop the include.
 
 Applied to mediatek-drm-next [1], thanks.
 
@@ -103,32 +115,43 @@ Regards,
 Chun-Kuang.
 
 >
-> Reported-by: Zeal Robot <zealci@zte.com.cn>
-> Signed-off-by: ye xingchen <ye.xingchen@zte.com.cn>
+> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Cc: Philipp Zabel <p.zabel@pengutronix.de>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: linux-mediatek@lists.infradead.org
+> Signed-off-by: Ma=C3=ADra Canal <mairacanal@riseup.net>
 > ---
-> v1 -> v2
-> Add all the mailinglists that get_maintainers.pl give.
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_dpi.c  | 1 -
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c | 1 -
+>  2 files changed, 2 deletions(-)
 >
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 5f02f8d0e4fc..91f58db5915f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -833,11 +833,8 @@ static int mtk_drm_sys_prepare(struct device *dev)
->  {
->         struct mtk_drm_private *private =3D dev_get_drvdata(dev);
->         struct drm_device *drm =3D private->drm;
-> -       int ret;
-> -
-> -       ret =3D drm_mode_config_helper_suspend(drm);
->
-> -       return ret;
-> +       return drm_mode_config_helper_suspend(drm);
->  }
->
->  static void mtk_drm_sys_complete(struct device *dev)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediate=
+k/mtk_dpi.c
+> index 630a4e301ef6..508a6d994e83 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -11,7 +11,6 @@
+>  #include <linux/media-bus-format.h>
+>  #include <linux/of.h>
+>  #include <linux/of_device.h>
+> -#include <linux/of_gpio.h>
+>  #include <linux/of_graph.h>
+>  #include <linux/pinctrl/consumer.h>
+>  #include <linux/platform_device.h>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediat=
+ek/mtk_hdmi.c
+> index 3196189429bc..4c80b6896dc3 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> @@ -16,7 +16,6 @@
+>  #include <linux/mutex.h>
+>  #include <linux/of_platform.h>
+>  #include <linux/of.h>
+> -#include <linux/of_gpio.h>
+>  #include <linux/of_graph.h>
+>  #include <linux/phy/phy.h>
+>  #include <linux/platform_device.h>
 > --
-> 2.25.1
+> 2.37.1
+>
 
