@@ -4,72 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7006EC28D13
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 04:21:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C4A1C04AA5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 06:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3fp/5xwv376cjHNs+j3S4zFWc9y6yzeeTVroRO5+4fc=; b=22reTRfBo86WsxXCryE8bsVBzB
-	s4tXBhYAb7NRmOeitSc7zr1IcFSvKEi/fv68FQqmMkaDJW9kayDmImaSdaonXPRuAZ+MIlOoCQ7mq
-	j1xhIXitz/nIVip4m8v9hDUhpYtMk78B/4vQLBjA7BfOjaJpD/MM0jnTRmglfFzJoOfBQXceAeXh5
-	cBBuppTfYV0xVlSrgzghWRpfgH+YODbhQkWvnaF/0fY0/8EwpTxdNw/dR+GLOQipVSgZSMo+LnvX4
-	9+wl+v2/YU8IQC/cGkq/gk+yVNj2zGoGArNHOV+DjztGpUqHKmDn1UBvKi+MuRNdS7joy+cxoPC/f
-	fia9jRfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ummFVBGk0kSJ29azYUV4PMm88NyQ23LzzWJDNGG28Ko=; b=X1DPSWtIBvcLuYD8JzeiTfaQRR
+	P345Vds6rJXgcq0Q9wCtNtIMqEAivVBovv9ZAOuuNwhMV/i5+583t+yallKbLxJ9V9VermBeqgs3R
+	QURREWHSv16AptuObuyBXhKsKVWahl5YhBfezqNLV+GwenD4WHhu02J5f7lnejvj5SMMAnJT4GPWs
+	rA/2V1QnCYiMvWLxn/8ftNZ662zzhXs2+10dUXgdSWC4LWr3gP1T1RtMNG2e/7VhhP2t3zoD2GusZ
+	ac1yGQ+fkRQ2p9glgQhHpU50v4XNlQ45/k958rH+Dj+UJOAv1Ep5D/B8SDzeJ9OoFF+PBE2ZGnQ6e
+	vYk13RAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oR4MG-006XQv-QG; Thu, 25 Aug 2022 04:20:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oR67G-007mKL-O7; Thu, 25 Aug 2022 06:13:22 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oR4ME-006XOZ-1T
-	for linux-mediatek@lists.infradead.org; Thu, 25 Aug 2022 04:20:43 +0000
-X-UUID: bc6188a8db7d41fd85ca7324c3ba6eb6-20220824
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3fp/5xwv376cjHNs+j3S4zFWc9y6yzeeTVroRO5+4fc=;
-	b=bb80r28fuP73JdE9ubLTJ6J+4z5sgUvipkDsL3LBTubsDgKsPRIFSEvzECVPWQcm5dq7Bj3gYW0W5Itu+uy0ILlUMgYNQS28caSdn/tzWdjkd3KPtkabYvzkaA/oovN59aP/eYovNFnsiox+EW2+RO3JSjtSR6aYgVwx5OktDN0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:e19d7d9f-a712-4dc4-908e-b8e001fed7a7,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:cbf30a20-1c20-48a5-82a0-25f9c331906d,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: bc6188a8db7d41fd85ca7324c3ba6eb6-20220824
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 499375532; Wed, 24 Aug 2022 21:20:34 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 25 Aug 2022 12:09:58 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 25 Aug 2022 12:09:58 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
-	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
-	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
-	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
-	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
-	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
-	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
-	<abhishekpandit@google.com>, <shawnku@google.com>,
-	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] mt76: mt7921: reset msta->airtime_ac while clearing up hw value
-Date: Thu, 25 Aug 2022 12:09:57 +0800
-Message-ID: <fd716a393e20d5db89f4f9d705d6dbbfde7260a6.1661400412.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+	id 1oR65a-007lsT-VY
+	for linux-mediatek@lists.infradead.org; Thu, 25 Aug 2022 06:11:40 +0000
+Received: by mail-lf1-x134.google.com with SMTP id bt10so13904167lfb.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 24 Aug 2022 23:11:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=ummFVBGk0kSJ29azYUV4PMm88NyQ23LzzWJDNGG28Ko=;
+        b=OFtTB6mVUJ7bt1R90wBtz2Y6zQCVFUpiOuFR6YC6KJ3Y15humtnaF40mxEMcSq4Fj3
+         IeH6p4VgBaGRevW24zfAkORoqg6d9zBGd5onw0wtuYYPkQHJQpswVnr9XfDncaoaTd1p
+         ZK2EXKpA3/xUw6k0OJmc5V7raAnoKDI02lHDche9JSt9hLHI0mUD2+QjMezZtQIwVU/V
+         vqyuT8OcjcO+wXnsvv8i7QvZRwTkspGofiAtPDY4AXFeftS1ZNh3UKQ09+/7rp89BaR2
+         su15G0IEwNyOs9QPcqpJs8W5d7Vb6KjH4Oj72OaOfYFKNcVNOvf21ELAEMX/URcT2Fow
+         sYwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=ummFVBGk0kSJ29azYUV4PMm88NyQ23LzzWJDNGG28Ko=;
+        b=IoRU5kL2WZp8gfA6OqkXlnrZeh9QnoEZWCT01o1mA9Q1aCiRki/rwV0o8Jgz0Tt76E
+         ruPgM98w0gjwBqSY084RRI0eJsSi1zcfsvYC8xn7qJ8lOKPaPGOnsMGp5WOLxf4TRxhS
+         BhrQppltqL6WLOt3HNB+prB2HI/eWzUQVJP4y+53d4/p4IOjOUCfhgMe2NVCeN30WfAY
+         39JDtwezmMV5YxfGOqdCSh6pz8Br+Unyc7Hvz+VQ2r1Tr6MsIT2Cky1aj7qKJimVEpHG
+         pIr4K5beYA7Mw/pX457NOwZY8Ds1iuEghOMva8VwZsjNg/wSg55nP1PJNgUPR1vYl4KD
+         npaA==
+X-Gm-Message-State: ACgBeo22nlB0aZRvEdKb7OC1h9iv996jyk8Lssegy5kKCOZSybDpw2MO
+	iuvOV7E+WA8pW10zcz/MnHxBMA==
+X-Google-Smtp-Source: AA6agR4niBBOUXc8ecge5sCF13gIkJ6mIJGsa30laM0Wak9E8xVD2qZSPleZA9pDzcn970EDeqF0YQ==
+X-Received: by 2002:a05:6512:220e:b0:492:db7f:e0b3 with SMTP id h14-20020a056512220e00b00492db7fe0b3mr618143lfu.142.1661407895137;
+        Wed, 24 Aug 2022 23:11:35 -0700 (PDT)
+Received: from [192.168.0.71] (82.131.98.15.cable.starman.ee. [82.131.98.15])
+        by smtp.gmail.com with ESMTPSA id t19-20020a195f13000000b004896ed8dce3sm325213lfb.2.2022.08.24.23.11.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 24 Aug 2022 23:11:34 -0700 (PDT)
+Message-ID: <3ff08ae9-a4b6-2b74-23cb-69ea1d7e1033@linaro.org>
+Date: Thu, 25 Aug 2022 09:11:33 +0300
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH] dt-bindings: arm: mediatek: mmsys: change compatible for
+ MT8195
+Content-Language: en-US
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com
+Cc: jason-jh.lin@mediatek.com, nancy.lin@mediatek.com, ck.hu@mediatek.com,
+ chunkuang.hu@kernel.org, angelogioacchino.delregno@collabora.com,
+ hsinyi@google.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220825055658.12429-1-rex-bc.chen@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220825055658.12429-1-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220824_212042_118941_3FF3F40E 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20220824_231139_093748_3CD392C6 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,102 +97,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On 25/08/2022 08:56, Bo-Chen Chen wrote:
+> From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+> 
+> For previous MediaTek SoCs, such as MT8173, there are 2 display HW
+> pipelines binding to 1 mmsys with the same power domain, the same
+> clock driver and the same mediatek-drm driver.
+> 
+> For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding to
+> 2 different power domains, different clock drivers and different
+> mediatek-drm drivers.
 
-We should reset mstat->airtime_ac along with clear up the entries in the
-hardware WLAN table for the Rx and Rx accumulative airtime. Otherwsie, the
-value msta->airtime_ac - [tx, rx]_last may be a negative and that is not
-the actual airtime the device took in the last run.
+I don't see binding to different clock drivers and anyway that's not
+really an argument here. Please focus in description on hardware
+properties, IOW, are devices compatible or different. What is the
+incompatible difference between VDOSYS0 and 1?
 
-Reported-by: YN Chen <YN.Chen@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/mac.c   | 15 ++++++++++-----
- drivers/net/wireless/mediatek/mt76/mt7921/main.c  |  9 +++------
- .../net/wireless/mediatek/mt76/mt7921/mt7921.h    |  2 ++
- 3 files changed, 15 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 47f0aa81ab02..87dd0babff7a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -46,6 +46,14 @@ bool mt7921_mac_wtbl_update(struct mt7921_dev *dev, int idx, u32 mask)
- 			 0, 5000);
- }
- 
-+void mt7921_mac_sta_airtime_clear(struct mt7921_dev *dev,
-+				  struct mt7921_sta *msta)
-+{
-+	mt7921_mac_wtbl_update(dev, msta->wcid.idx,
-+			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
-+	memset(msta->airtime_ac, 0, sizeof(msta->airtime_ac));
-+}
-+
- void mt7921_mac_sta_poll(struct mt7921_dev *dev)
- {
- 	static const u8 ac_to_tid[] = {
-@@ -100,11 +108,8 @@ void mt7921_mac_sta_poll(struct mt7921_dev *dev)
- 			addr += 8;
- 		}
- 
--		if (clear) {
--			mt7921_mac_wtbl_update(dev, idx,
--					       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
--			memset(msta->airtime_ac, 0, sizeof(msta->airtime_ac));
--		}
-+		if (clear)
-+			mt7921_mac_sta_airtime_clear(dev, msta);
- 
- 		if (!msta->wcid.sta)
- 			continue;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 1438a9f8d1fd..9d70884e24af 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -723,8 +723,7 @@ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	if (vif->type == NL80211_IFTYPE_STATION)
- 		mvif->wep_sta = msta;
- 
--	mt7921_mac_wtbl_update(dev, idx,
--			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
-+	mt7921_mac_sta_airtime_clear(dev, msta);
- 
- 	ret = mt7921_mcu_sta_update(dev, sta, vif, true,
- 				    MT76_STA_INFO_STATE_NONE);
-@@ -750,8 +749,7 @@ void mt7921_mac_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 		mt76_connac_mcu_uni_add_bss(&dev->mphy, vif, &mvif->sta.wcid,
- 					    true);
- 
--	mt7921_mac_wtbl_update(dev, msta->wcid.idx,
--			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
-+	mt7921_mac_sta_airtime_clear(dev, msta);
- 
- 	mt7921_mcu_sta_update(dev, sta, vif, true, MT76_STA_INFO_STATE_ASSOC);
- 
-@@ -769,8 +767,7 @@ void mt7921_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	mt76_connac_pm_wake(&dev->mphy, &dev->pm);
- 
- 	mt7921_mcu_sta_update(dev, sta, vif, false, MT76_STA_INFO_STATE_NONE);
--	mt7921_mac_wtbl_update(dev, msta->wcid.idx,
--			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
-+	mt7921_mac_sta_airtime_clear(dev, msta);
- 
- 	if (vif->type == NL80211_IFTYPE_STATION) {
- 		struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index c161031ac62a..8b704d08509d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -362,6 +362,8 @@ void mt7921_stop(struct ieee80211_hw *hw);
- int mt7921_mac_init(struct mt7921_dev *dev);
- bool mt7921_mac_wtbl_update(struct mt7921_dev *dev, int idx, u32 mask);
- void mt7921_mac_reset_counters(struct mt7921_phy *phy);
-+void mt7921_mac_sta_airtime_clear(struct mt7921_dev *dev,
-+				  struct mt7921_sta *msta);
- void mt7921_mac_set_timing(struct mt7921_phy *phy);
- int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 		       struct ieee80211_sta *sta);
--- 
-2.25.1
-
+Best regards,
+Krzysztof
 
