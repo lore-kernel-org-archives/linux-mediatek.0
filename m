@@ -4,69 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65427C00448
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 03:28:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8338EC00448
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Aug 2022 03:36:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SpTyrzPfvhgrnUAG41diDhSK+1EnANAou6LsjSzD3h4=; b=QEkgj0CmbDx38Z1+lUKrHSdpEn
-	T3u8BJLyz23Hx5exIVgH0jObbeCyjjrhY5t2nWyxObsiYwjh+TBWh0RriQrxjdB205WI/jMG9qdce
-	xAKVKnLtMsA9hcIpwLbwGq2SKKl1pE2/Cj+zM+6AzXi6zvjWLl5hsh9Lke2y9P2FZqzGZ6X2c3Etg
-	GxdpaF8UX7mLR3vZqJxcqsGUVKJ13uYEp4ZLUvUrs2VUwNLEI4QvP67a0WP2pu3O2jQx52V9bgx5I
-	rBpsrAn4TcBUENvns37iQRmTmVby/Qoa0LwNwXjLm7iVA49POCQ7cWimQha80fXd82Weuh4WLMA6D
-	lCn7ECFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QOBOjdM80auaLFqiLz2HryuF9Bx4PCj92SDetnBUxZU=; b=jsGAlF7AytS1/BIXL8+6u4i54n
+	tb4CsxRJRRUvEnAxoUj5cWfX1z1D1mVuIt/Apym2+vnUL3PPA5CK5uDZtpMOz9qRs2g1JQCXtk3Hq
+	CkdGLPpZgEApfvRlp5Ha/8aEIKCNUTpxSVnCIQnWhq9AoL2ujsRLgUFmn7+XEFR10h0V0Geh08UPJ
+	TnMiFzDxVmKrzh5Eo6Zx9W+UTG4blatIW6v3mlNHeVNWr0njmWLwfeRIgCTQmdZrFwyc00ndASHhf
+	O5QYh09x97CgwPPCJ16iBxbTxnVrOeUEVUEaqvdWiZbTL7vaeE3Yr/4zEqQ59eZhKhOZyAu36fuit
+	P/w1anKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oR3XJ-005JLB-Kr; Thu, 25 Aug 2022 03:28:05 +0000
+	id 1oR3fI-005TDq-3N; Thu, 25 Aug 2022 03:36:20 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oR3XG-005JJL-VO
-	for linux-mediatek@lists.infradead.org; Thu, 25 Aug 2022 03:28:04 +0000
-X-UUID: 9abb34e6f3b249d2b46f2e6365308663-20220824
+	id 1oR3f4-005SVy-DE; Thu, 25 Aug 2022 03:36:08 +0000
+X-UUID: 0ceda5d2e42341adb6eb293c20e401e8-20220824
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SpTyrzPfvhgrnUAG41diDhSK+1EnANAou6LsjSzD3h4=;
-	b=Fr6Zq2lhoMULxarma6m2kDVIhZVKg7POOtQ8P9DnBQkv9WwWMTw+K4e7RyO0ZvXNd/Eypz67u6HjAG4425a109bP9IToakmqvHRy2K6eOh2k1Cb6G5DdumsfxJZ1DL5i/0DaIYTY9IFr+nDzxJKubj8ngRWeQVZn3DZ7sDg40kw=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=QOBOjdM80auaLFqiLz2HryuF9Bx4PCj92SDetnBUxZU=;
+	b=NL0GZK25BIh/BLmYn9YAeKLrlUh9zPFgcivkjareyNF+fG6IUvs6suYpuJxB7POmS6J0kXWOWsU/8RSiPVQfezxPZ7aOnN4EvsyC2w+Rpx7uZDn9eFn2pDDsGes8efvjQGKKSv+sJQQEZVhkN4ecpztvq688BQQf3YriOab8w3Q=;
 X-CID-UNFAMILIAR: 1
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:7775f847-e521-470e-bb07-a6ec8ab76897,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Releas
-	e_Ham,ACTION:release,TS:100
-X-CID-INFO: VERSION:1.1.10,REQID:7775f847-e521-470e-bb07-a6ec8ab76897,OB:0,LOB
-	:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS9
-	81B3D,ACTION:quarantine,TS:100
-X-CID-META: VersionHash:84eae18,CLOUDID:1b478acf-20bd-4e5e-ace8-00692b7ab380,C
-	OID:f17c7347f493,Recheck:0,SF:28|16|19|48,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 9abb34e6f3b249d2b46f2e6365308663-20220824
+X-CID-O-INFO: VERSION:1.1.10,REQID:0a53e28b-673d-494b-b5be-145586b6615e,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:54,FILE:0,BULK:0,RULE:Releas
+	e_Ham,ACTION:release,TS:49
+X-CID-INFO: VERSION:1.1.10,REQID:0a53e28b-673d-494b-b5be-145586b6615e,OB:0,LOB
+	:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:54,FILE:0,BULK:0,RULE:Release_
+	HamU,ACTION:release,TS:49
+X-CID-META: VersionHash:84eae18,CLOUDID:5fa30920-1c20-48a5-82a0-25f9c331906d,C
+	OID:e4a10fb6b56b,Recheck:0,SF:28|16|19|48,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
+X-UUID: 0ceda5d2e42341adb6eb293c20e401e8-20220824
 Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
+	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 673359271; Wed, 24 Aug 2022 20:27:58 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 25 Aug 2022 11:27:24 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 25 Aug 2022 11:27:24 +0800
-From: <sean.wang@mediatek.com>
-To: <stable@vger.kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, Deren Wu <deren.wu@mediatek.com>, Sean Wang
-	<sean.wang@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH 5.19] mt76: mt7921: fix command timeout in AP stop period
-Date: Thu, 25 Aug 2022 11:27:22 +0800
-Message-ID: <94065c608ee60d8a96a3d91913cb1e28d0a302e1.1661397440.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+	with ESMTP id 1377512702; Wed, 24 Aug 2022 20:36:00 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 25 Aug 2022 11:35:22 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 25 Aug 2022 11:35:22 +0800
+Message-ID: <e9cf051675a9fad161a2e49116397690c28cb6f1.camel@mediatek.com>
+Subject: Re: [PATCH v28 4/4] media: platform: mtk-mdp3: add MediaTek MDP3
+ driver
+From: moudy ho <moudy.ho@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Landley <rob@landley.net>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Courbot
+	<acourbot@chromium.org>, <tfiga@chromium.org>, <drinkcat@chromium.org>,
+	<pihsun@chromium.org>, <hsinyi@google.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<cellopoint.kai@gmail.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, daoyuan
+ huang <daoyuan.huang@mediatek.com>
+Date: Thu, 25 Aug 2022 11:35:22 +0800
+In-Reply-To: <3ccf3023-9b1c-2ae6-dd70-6f318eec22e2@xs4all.nl>
+References: <20220823023803.27850-1-moudy.ho@mediatek.com>
+	 <20220823023803.27850-5-moudy.ho@mediatek.com>
+	 <3ccf3023-9b1c-2ae6-dd70-6f318eec22e2@xs4all.nl>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220824_202803_047977_9FC6015D 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20220824_203606_473352_29A74357 
+X-CRM114-Status: GOOD (  32.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,162 +98,167 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+Hi Hans,
 
-commit 9d958b60ebc2434f2b7eae83d77849e22d1059eb upstream.
+Thank you for your time and effort.
+As a small reminder, Matthias also mentioned that he will help apply
+patches 1 and 2.
 
-Due to AP stop improperly, mt7921 driver would face random command timeout
-by chip fw problem. Migrate AP start/stop process to .start_ap/.stop_ap and
-congiure BSS network settings in both hooks.
+Regards,
+Moudy
 
-The new flow is shown below.
-* AP start
-    .start_ap()
-      configure BSS network resource
-      set BSS to connected state
-    .bss_info_changed()
-      enable fw beacon offload
-
-* AP stop
-    .bss_info_changed()
-      disable fw beacon offload (skip this command)
-    .stop_ap()
-      set BSS to disconnected state (beacon offload disabled automatically)
-      destroy BSS network resource
-
-Fixes: 116c69603b01 ("mt76: mt7921: Add AP mode support")
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
----
- .../wireless/mediatek/mt76/mt76_connac_mcu.c  |  2 +
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 47 +++++++++++++++----
- .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  5 +-
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  2 +
- 4 files changed, 43 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index faa279bbbcb2..7eb23805aa94 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -1403,6 +1403,8 @@ int mt76_connac_mcu_uni_add_bss(struct mt76_phy *phy,
- 		else
- 			conn_type = CONNECTION_INFRA_AP;
- 		basic_req.basic.conn_type = cpu_to_le32(conn_type);
-+		/* Fully active/deactivate BSS network in AP mode only */
-+		basic_req.basic.active = enable;
- 		break;
- 	case NL80211_IFTYPE_STATION:
- 		if (vif->p2p)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index e86fe9ee4623..d3f310877248 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -653,15 +653,6 @@ static void mt7921_bss_info_changed(struct ieee80211_hw *hw,
- 		}
- 	}
- 
--	if (changed & BSS_CHANGED_BEACON_ENABLED && info->enable_beacon) {
--		struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
--
--		mt76_connac_mcu_uni_add_bss(phy->mt76, vif, &mvif->sta.wcid,
--					    true);
--		mt7921_mcu_sta_update(dev, NULL, vif, true,
--				      MT76_STA_INFO_STATE_NONE);
--	}
--
- 	if (changed & (BSS_CHANGED_BEACON |
- 		       BSS_CHANGED_BEACON_ENABLED))
- 		mt7921_mcu_uni_add_beacon_offload(dev, hw, vif,
-@@ -1500,6 +1491,42 @@ mt7921_channel_switch_beacon(struct ieee80211_hw *hw,
- 	mt7921_mutex_release(dev);
- }
- 
-+static int
-+mt7921_start_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_phy *phy = mt7921_hw_phy(hw);
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+	int err;
-+
-+	err = mt76_connac_mcu_uni_add_bss(phy->mt76, vif, &mvif->sta.wcid,
-+					  true);
-+	if (err)
-+		return err;
-+
-+	err = mt7921_mcu_set_bss_pm(dev, vif, true);
-+	if (err)
-+		return err;
-+
-+	return mt7921_mcu_sta_update(dev, NULL, vif, true,
-+				     MT76_STA_INFO_STATE_NONE);
-+}
-+
-+static void
-+mt7921_stop_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
-+{
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+	struct mt7921_phy *phy = mt7921_hw_phy(hw);
-+	struct mt7921_dev *dev = mt7921_hw_dev(hw);
-+	int err;
-+
-+	err = mt7921_mcu_set_bss_pm(dev, vif, false);
-+	if (err)
-+		return;
-+
-+	mt76_connac_mcu_uni_add_bss(phy->mt76, vif, &mvif->sta.wcid, false);
-+}
-+
- const struct ieee80211_ops mt7921_ops = {
- 	.tx = mt7921_tx,
- 	.start = mt7921_start,
-@@ -1510,6 +1537,8 @@ const struct ieee80211_ops mt7921_ops = {
- 	.conf_tx = mt7921_conf_tx,
- 	.configure_filter = mt7921_configure_filter,
- 	.bss_info_changed = mt7921_bss_info_changed,
-+	.start_ap = mt7921_start_ap,
-+	.stop_ap = mt7921_stop_ap,
- 	.sta_state = mt7921_sta_state,
- 	.sta_pre_rcu_remove = mt76_sta_pre_rcu_remove,
- 	.set_key = mt7921_set_key,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 613a94be8ea4..6d0aceb5226a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -1020,7 +1020,7 @@ mt7921_mcu_uni_bss_bcnft(struct mt7921_dev *dev, struct ieee80211_vif *vif,
- 				 &bcnft_req, sizeof(bcnft_req), true);
- }
- 
--static int
-+int
- mt7921_mcu_set_bss_pm(struct mt7921_dev *dev, struct ieee80211_vif *vif,
- 		      bool enable)
- {
-@@ -1049,9 +1049,6 @@ mt7921_mcu_set_bss_pm(struct mt7921_dev *dev, struct ieee80211_vif *vif,
- 	};
- 	int err;
- 
--	if (vif->type != NL80211_IFTYPE_STATION)
--		return 0;
--
- 	err = mt76_mcu_send_msg(&dev->mt76, MCU_CE_CMD(SET_BSS_ABORT),
- 				&req_hdr, sizeof(req_hdr), false);
- 	if (err < 0 || !enable)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index 66054123bcc4..cebc3cfa01b8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -280,6 +280,8 @@ int mt7921_wpdma_reset(struct mt7921_dev *dev, bool force);
- int mt7921_wpdma_reinit_cond(struct mt7921_dev *dev);
- void mt7921_dma_cleanup(struct mt7921_dev *dev);
- int mt7921_run_firmware(struct mt7921_dev *dev);
-+int mt7921_mcu_set_bss_pm(struct mt7921_dev *dev, struct ieee80211_vif *vif,
-+			  bool enable);
- int mt7921_mcu_sta_update(struct mt7921_dev *dev, struct ieee80211_sta *sta,
- 			  struct ieee80211_vif *vif, bool enable,
- 			  enum mt76_sta_info_state state);
--- 
-2.25.1
+On Wed, 2022-08-24 at 10:39 +0200, Hans Verkuil wrote:
+> Hi Moudy,
+> 
+> On 23/08/2022 04:38, Moudy Ho wrote:
+> > This patch adds driver for MediaTek's Media Data Path ver.3 (MDP3).
+> > It provides the following functions:
+> >   color transform, format conversion, resize, crop, rotate, flip
+> >   and additional image quality enhancement.
+> > 
+> > The MDP3 driver is mainly used for Google Chromebook products to
+> > import the new architecture to set the HW settings as shown below:
+> >   User -> V4L2 framework
+> >     -> MDP3 driver -> SCP (setting calculations)
+> >       -> MDP3 driver -> CMDQ (GCE driver) -> HW
+> > 
+> > Each modules' related operation control is sited in mtk-mdp3-comp.c
+> > Each modules' register table is defined in file with "mdp_reg_"
+> > prefix
+> > GCE related API, operation control  sited in mtk-mdp3-cmdq.c
+> > V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
+> > Probe, power, suspend/resume, system level functions are defined in
+> > mtk-mdp3-core.c
+> > 
+> > Signed-off-by: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
+> > Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
+> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> > Tested-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  drivers/media/platform/mediatek/Kconfig       |    1 +
+> >  drivers/media/platform/mediatek/Makefile      |    1 +
+> >  drivers/media/platform/mediatek/mdp3/Kconfig  |   20 +
+> >  drivers/media/platform/mediatek/mdp3/Makefile |    6 +
+> >  .../platform/mediatek/mdp3/mdp_reg_ccorr.h    |   19 +
+> >  .../platform/mediatek/mdp3/mdp_reg_rdma.h     |   65 ++
+> >  .../platform/mediatek/mdp3/mdp_reg_rsz.h      |   39 +
+> >  .../platform/mediatek/mdp3/mdp_reg_wdma.h     |   47 +
+> >  .../platform/mediatek/mdp3/mdp_reg_wrot.h     |   55 +
+> >  .../platform/mediatek/mdp3/mtk-img-ipi.h      |  290 +++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    |  466 ++++++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |   43 +
+> >  .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 1033
+> > +++++++++++++++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  186 +++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  357 ++++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-core.h    |   94 ++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     |  724 ++++++++++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-m2m.h     |   48 +
+> >  .../platform/mediatek/mdp3/mtk-mdp3-regs.c    |  735 ++++++++++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-regs.h    |  373 ++++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     |  313 +++++
+> >  .../platform/mediatek/mdp3/mtk-mdp3-vpu.h     |   78 ++
+> >  22 files changed, 4993 insertions(+)
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/Kconfig
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/Makefile
+> >  create mode 100644
+> > drivers/media/platform/mediatek/mdp3/mdp_reg_ccorr.h
+> >  create mode 100644
+> > drivers/media/platform/mediatek/mdp3/mdp_reg_rdma.h
+> >  create mode 100644
+> > drivers/media/platform/mediatek/mdp3/mdp_reg_rsz.h
+> >  create mode 100644
+> > drivers/media/platform/mediatek/mdp3/mdp_reg_wdma.h
+> >  create mode 100644
+> > drivers/media/platform/mediatek/mdp3/mdp_reg_wrot.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-img-
+> > ipi.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > cmdq.c
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > cmdq.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > comp.c
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > comp.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > core.c
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > core.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > m2m.c
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > m2m.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > regs.c
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > regs.h
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > vpu.c
+> >  create mode 100644 drivers/media/platform/mediatek/mdp3/mtk-mdp3-
+> > vpu.h
+> > 
+> > diff --git a/drivers/media/platform/mediatek/Kconfig
+> > b/drivers/media/platform/mediatek/Kconfig
+> > index af47d9888552..84104e2cd024 100644
+> > --- a/drivers/media/platform/mediatek/Kconfig
+> > +++ b/drivers/media/platform/mediatek/Kconfig
+> > @@ -6,3 +6,4 @@ source
+> > "drivers/media/platform/mediatek/jpeg/Kconfig"
+> >  source "drivers/media/platform/mediatek/mdp/Kconfig"
+> >  source "drivers/media/platform/mediatek/vcodec/Kconfig"
+> >  source "drivers/media/platform/mediatek/vpu/Kconfig"
+> > +source "drivers/media/platform/mediatek/mdp3/Kconfig"
+> > diff --git a/drivers/media/platform/mediatek/Makefile
+> > b/drivers/media/platform/mediatek/Makefile
+> > index d3850a13f128..38e6ba917fe5 100644
+> > --- a/drivers/media/platform/mediatek/Makefile
+> > +++ b/drivers/media/platform/mediatek/Makefile
+> > @@ -3,3 +3,4 @@ obj-y += jpeg/
+> >  obj-y += mdp/
+> >  obj-y += vcodec/
+> >  obj-y += vpu/
+> > +obj-y += mdp3/
+> > diff --git a/drivers/media/platform/mediatek/mdp3/Kconfig
+> > b/drivers/media/platform/mediatek/mdp3/Kconfig
+> > new file mode 100644
+> > index 000000000000..af371c17c386
+> > --- /dev/null
+> > +++ b/drivers/media/platform/mediatek/mdp3/Kconfig
+> > @@ -0,0 +1,20 @@
+> > +# SPDX-License-Identifier: GPL-2.0-only
+> > +config VIDEO_MEDIATEK_MDP3
+> > +	tristate "MediaTek MDP v3 driver"
+> > +	depends on MTK_IOMMU || COMPILE_TEST
+> > +	depends on VIDEO_DEV
+> > +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +	depends on HAS_DMA
+> 
+> A 'depends on REMOTEPROC' is missing here (see the 'kernel test
+> robot' email
+> you received), but I have added that myself.
+> 
+> It's now in my for-v6.1c branch. If I don't see any new 'kernel test
+> robot'
+> emails in the next few days, then I'll make a PR early next week.
+> 
+> Regards,
+> 
+> 	Hans
+> 
+> > +	select VIDEOBUF2_DMA_CONTIG
+> > +	select V4L2_MEM2MEM_DEV
+> > +	select MTK_MMSYS
+> > +	select VIDEO_MEDIATEK_VPU
+> > +	select MTK_CMDQ
+> > +	select MTK_SCP
+> > +	default n
+> > +	help
+> > +	    It is a v4l2 driver and present in MediaTek MT8183 SoC.
+> > +	    The driver supports scaling and color space conversion.
+> > +
+> > +	    To compile this driver as a module, choose M here: the
+> > +	    module will be called mtk-mdp3.
 
 
