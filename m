@@ -4,76 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96D46ECAAA3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Aug 2022 10:50:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BD8CECAAD4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Aug 2022 12:05:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PKKseHVHKQR6iui7Uyfg9OaeqBa/M+e85suXOqcXLnI=; b=sPZ4BWVNFjyyXuYHYb57XnkMxS
-	kp+dAIf+oCkOPEIX/xkwvDNyKM0v+vtrF/bttMMq+cjsM4gKzEnfkevV4307cjt5uLgNOOOB7BWjg
-	BA1JS3cyJd2IgpmQfU13mu5DPwbcnhq8yeQ6e/W51AC9IwWv0tfXvYL251JuXjZzBj+IB6ULULBHH
-	y9Ifc8ESP/M6y/+sBY07Zhu9zgAAVho8b9618fF3UJ4yWUkvXOld7cDkKnm9//c/r8B97bs3quass
-	7L6V4hMgtXOQgsGH/sKIcQLedkOIEMMrbElCvysQKvxgI95Ww1/VmhZiZh/He89oTkEneLk/rTVhZ
-	j/j7lEVA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TOY8Srm9igHzXocskjZgVCgs0DilmgD0eKZvgNYwq1M=; b=Oj0mWp2BX4t2QX30jLcACJXljj
+	F49u/I77h7GKP+Pwnh/s7kzgNxqGDfCzgKxVjPJAZNY98OwoPQ2uxRZW/wAURRKMXpByyeh+ughcm
+	pXezAz28nSR4n4zcJMbhq4w+wJA+7haXLvZrYD3kEXpOPtiK5yiw48MhE/fqE3ypGGKwx2/tNujKP
+	teKh7t+BQxDAAhSF6ErE1VHu2y8Qo8lphHpWBJa1vxXl+uenOrYHs1VFZWi2OCc4INzT9bpgpsFjR
+	Jw8CuiDCQ393oa15liXaUELY3S9X3F51+VQcKYKkiZYedPHMhVTRU0ZoX9u6Dk5lmS5fGxd6Ef07a
+	cfisqW1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRWvF-001gW9-Ak; Fri, 26 Aug 2022 10:50:45 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oRY4y-002L4U-J0; Fri, 26 Aug 2022 12:04:52 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRWvC-001gUy-Iq
-	for linux-mediatek@lists.infradead.org; Fri, 26 Aug 2022 10:50:44 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 67D72B830A8
-	for <linux-mediatek@lists.infradead.org>; Fri, 26 Aug 2022 10:50:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A2E3C433C1
-	for <linux-mediatek@lists.infradead.org>; Fri, 26 Aug 2022 10:50:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661511040;
-	bh=GyPmqNhvJM6Rg2RFDCY39gIB8qMT1X8vz4z7CrUDmKc=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=OJuFYgDJRMum+ZujmhNJfhQK9hyhlw/T2uF6Pstg1w6yGOmLXzFBCMJF5coj/MNvg
-	 fS+UcMZAUKuqphKJ3ZVnl9XMoisDQnIV3zcv6QRZB05DHwXu31rlFswMFnck5GWIKL
-	 TrQBQour2PGmE53Dvs8+Sm0JeyYt2LvrxEuonnf3O2EMN/iibIs0TDzViXHL+mxoNl
-	 VfQ53anCKVZ/+gbxDkJDN2KeWvzmDlTIW3Qp0jbqiYmZw+8dHiuYsAcCvQc4WJrpqb
-	 C+CWq0CikOkvxNoCoprOMssZjNLP6mEae7dE/R1gSX9eIQYZQTJfmvxjfizr17iQTI
-	 7e4uat05MGyog==
-Received: by mail-wr1-f43.google.com with SMTP id b5so1341542wrr.5
-        for <linux-mediatek@lists.infradead.org>; Fri, 26 Aug 2022 03:50:40 -0700 (PDT)
-X-Gm-Message-State: ACgBeo09Pzy9nCF2UI+nESfYpftOtksJb7wlnCyspvs36tNrz7bZRT6V
-	Fa2TCluPwXG14uC7EUV9mh6fKHD3yju5yFtomfY=
-X-Google-Smtp-Source: AA6agR6z4cfT1LyC0KYrLonQjHrBPt3eQqG5KfKkOA0xPqbM5fxaakddMUJQ+f6rD5hhQOREFE4q0zGretEd8X9dqHA=
-X-Received: by 2002:adf:d4c6:0:b0:225:2eeb:fe8e with SMTP id
- w6-20020adfd4c6000000b002252eebfe8emr4563323wrk.429.1661511038296; Fri, 26
- Aug 2022 03:50:38 -0700 (PDT)
+	id 1oRY4v-002JTU-IA
+	for linux-mediatek@lists.infradead.org; Fri, 26 Aug 2022 12:04:51 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 83A1F1888676;
+	Fri, 26 Aug 2022 12:02:30 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id 7AA6425032BD;
+	Fri, 26 Aug 2022 12:02:30 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id 21D369EC0004; Fri, 26 Aug 2022 11:46:14 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+Received: from wse-c0127.beijerelectronics.com (unknown [208.127.141.28])
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id DB2899EC0009;
+	Fri, 26 Aug 2022 11:46:11 +0000 (UTC)
+From: Hans Schultz <netdev@kapio-technology.com>
+To: davem@davemloft.net,
+	kuba@kernel.org
+Cc: netdev@vger.kernel.org,
+	Hans Schultz <netdev@kapio-technology.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>,
+	Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Shuah Khan <shuah@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Yuwei Wang <wangyuweihx@gmail.com>,
+	Ido Schimmel <idosch@nvidia.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bridge@lists.linux-foundation.org,
+	linux-kselftest@vger.kernel.org
+Subject: [PATCH v5 net-next 6/6] selftests: forwarding: add test of MAC-Auth Bypass to locked port tests
+Date: Fri, 26 Aug 2022 13:45:38 +0200
+Message-Id: <20220826114538.705433-7-netdev@kapio-technology.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220826114538.705433-1-netdev@kapio-technology.com>
+References: <20220826114538.705433-1-netdev@kapio-technology.com>
 MIME-Version: 1.0
-References: <727eb5ffd3c7c805245e512da150ecf0a7154020.1659452909.git.deren.wu@mediatek.com>
- <CAGp9LzoZkxONid2Kt-ykuQWiY1pTG6NGxho8FeLwMd9MdWd-rA@mail.gmail.com>
-In-Reply-To: <CAGp9LzoZkxONid2Kt-ykuQWiY1pTG6NGxho8FeLwMd9MdWd-rA@mail.gmail.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Fri, 26 Aug 2022 03:50:26 -0700
-X-Gmail-Original-Message-ID: <CAGp9Lzo+MxynP-Lwb8_eCX4w+EQ6FqZAU3w-OMpcj7x1N8xyyQ@mail.gmail.com>
-Message-ID: <CAGp9Lzo+MxynP-Lwb8_eCX4w+EQ6FqZAU3w-OMpcj7x1N8xyyQ@mail.gmail.com>
-Subject: Re: [PATCH] mt76: mt7921e: fix crash in chip reset fail
-To: Deren Wu <Deren.Wu@mediatek.com>, Kalle Valo <kvalo@kernel.org>, 
-	Johannes Berg <johannes@sipsolutions.net>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
-	Soul Huang <Soul.Huang@mediatek.com>, YN Chen <YN.Chen@mediatek.com>, 
-	Leon Yen <Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, 
-	KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, 
-	CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, 
-	Stella Chang <Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
-	linux-wireless <linux-wireless@vger.kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
+Organization: Westermo Network Technologies AB
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220826_035042_958284_A9EB0851 
-X-CRM114-Status: GOOD (  29.26  )
+X-CRM114-CacheID: sfid-20220826_050449_921537_E5610239 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,89 +98,183 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Johannes,
+Verify that the MAC-Auth mechanism works by adding a FDB entry with the
+locked flag set, denying access until the FDB entry is replaced with a
+FDB entry without the locked flag set.
 
-Kalle seemed not available this week, so I would like to look for help from you.
-If the patch looks good to you, could you help apply the patch to
-wireless-drivers.git because there are getting more users reporting
-the issue with the stable kernel such as [1]. I would like to backport
-it sooner once it appears in the Linus tree to solve the indefinite
-hang issue. Sorry for the hurry request, I knew you just sent the pull
-request one moment ago :(
+Also add a test that verifies that sticky FDB entries cannot roam.
 
-[1] https://lore.kernel.org/linux-wireless/VE1PR04MB64945C660A81D38F290E4A4BE59F9@VE1PR04MB6494.eurprd04.prod.outlook.com/T/
+Signed-off-by: Hans Schultz <netdev@kapio-technology.com>
+---
+ .../net/forwarding/bridge_locked_port.sh      | 107 +++++++++++++++++-
+ .../net/forwarding/bridge_sticky_fdb.sh       |  21 +++-
+ 2 files changed, 126 insertions(+), 2 deletions(-)
 
-Sean
+diff --git a/tools/testing/selftests/net/forwarding/bridge_locked_port.sh b/tools/testing/selftests/net/forwarding/bridge_locked_port.sh
+index 5b02b6b60ce7..b763b3b9fdf0 100755
+--- a/tools/testing/selftests/net/forwarding/bridge_locked_port.sh
++++ b/tools/testing/selftests/net/forwarding/bridge_locked_port.sh
+@@ -1,7 +1,15 @@
+ #!/bin/bash
+ # SPDX-License-Identifier: GPL-2.0
+ 
+-ALL_TESTS="locked_port_ipv4 locked_port_ipv6 locked_port_vlan"
++ALL_TESTS="
++	locked_port_ipv4
++	locked_port_ipv6
++	locked_port_vlan
++	locked_port_mab
++	locked_port_station_move
++	locked_port_mab_station_move
++"
++
+ NUM_NETIFS=4
+ CHECK_TC="no"
+ source lib.sh
+@@ -166,6 +174,103 @@ locked_port_ipv6()
+ 	log_test "Locked port ipv6"
+ }
+ 
++locked_port_mab()
++{
++	RET=0
++	check_locked_port_support || return 0
++
++	ping_do $h1 192.0.2.2
++	check_err $? "MAB: Ping did not work before locking port"
++
++	bridge link set dev $swp1 locked on
++	bridge link set dev $swp1 learning on
++	if ! bridge link set dev $swp1 mab on 2>/dev/null; then
++		echo "SKIP: iproute2 too old; MacAuth feature not supported."
++		return $ksft_skip
++	fi
++
++	ping_do $h1 192.0.2.2
++	check_fail $? "MAB: Ping worked on locked port without FDB entry"
++
++	bridge fdb show | grep `mac_get $h1` | grep -q "locked"
++	check_err $? "MAB: No locked fdb entry after ping on locked port"
++
++	bridge fdb replace `mac_get $h1` dev $swp1 master static
++
++	ping_do $h1 192.0.2.2
++	check_err $? "MAB: Ping did not work with fdb entry without locked flag"
++
++	bridge fdb del `mac_get $h1` dev $swp1 master
++	bridge link set dev $swp1 learning off
++	bridge link set dev $swp1 locked off
++
++	log_test "Locked port MAB"
++}
++
++# No roaming allowed to a simple locked port
++locked_port_station_move()
++{
++	local mac=a0:b0:c0:c0:b0:a0
++
++	RET=0
++	check_locked_port_support || return 0
++
++	bridge link set dev $swp1 locked on
++	bridge link set dev $swp1 learning on
++
++	$MZ $h1 -q -t udp -a $mac -b rand
++	bridge fdb show dev $swp1 | grep -q "$mac vlan 1 master br0"
++	check_fail $? "Locked port station move: FDB entry on first injection"
++
++	$MZ $h2 -q -t udp -a $mac -b rand
++	bridge fdb show dev $swp2 | grep -q "$mac vlan 1 master br0"
++	check_err $? "Locked port station move: Entry not found on unlocked port"
++
++	$MZ $h1 -q -t udp -a $mac -b rand
++	bridge fdb show dev $swp1 | grep -q "$mac vlan 1 master br0"
++	check_fail $? "Locked port station move: entry roamed to locked port"
++
++	log_test "Locked port station move"
++}
++
++# Roaming to and from a MAB enabled port should work if sticky flag is not set
++locked_port_mab_station_move()
++{
++	local mac=10:20:30:30:20:10
++
++	RET=0
++	check_locked_port_support || return 0
++
++	bridge link set dev $swp1 locked on
++	bridge link set dev $swp1 learning on
++	if ! bridge link set dev $swp1 mab on 2>/dev/null; then
++		echo "SKIP: iproute2 too old; MacAuth feature not supported."
++		return $ksft_skip
++	fi
++
++	$MZ $h1 -q -t udp -a $mac -b rand
++	if bridge fdb show dev $swp1 | grep -q "$mac vlan 1 master br0" | grep -q sticky; then
++		echo "SKIP: Roaming not possible with sticky flag, run sticky flag roaming test"
++		return $ksft_skip
++	fi
++
++	bridge fdb show dev $swp1 | grep -q "$mac vlan 1 master br0 locked"
++	check_err $? "MAB station move: no locked entry on first injection"
++
++	$MZ $h2 -q -t udp -a $mac -b rand
++	bridge fdb show dev $swp1 | grep -q "$mac vlan 1 master br0 locked"
++	check_fail $? "MAB station move: locked entry did not move"
++
++	bridge fdb show dev $swp2 | grep -q "$mac vlan 1 master br0"
++	check_err $? "MAB station move: roamed entry not found"
++
++	$MZ $h1 -q -t udp -a $mac -b rand
++	bridge fdb show dev $swp1 | grep -q "$mac vlan 1 master br0 locked"
++	check_err $? "MAB station move: entry did not roam back to locked port"
++
++	log_test "Locked port MAB station move"
++}
++
+ trap cleanup EXIT
+ 
+ setup_prepare
+diff --git a/tools/testing/selftests/net/forwarding/bridge_sticky_fdb.sh b/tools/testing/selftests/net/forwarding/bridge_sticky_fdb.sh
+index 1f8ef0eff862..bca77bc3fe09 100755
+--- a/tools/testing/selftests/net/forwarding/bridge_sticky_fdb.sh
++++ b/tools/testing/selftests/net/forwarding/bridge_sticky_fdb.sh
+@@ -1,7 +1,7 @@
+ #!/bin/bash
+ # SPDX-License-Identifier: GPL-2.0
+ 
+-ALL_TESTS="sticky"
++ALL_TESTS="sticky sticky_no_roaming"
+ NUM_NETIFS=4
+ TEST_MAC=de:ad:be:ef:13:37
+ source lib.sh
+@@ -59,6 +59,25 @@ sticky()
+ 	log_test "Sticky fdb entry"
+ }
+ 
++# No roaming allowed with the sticky flag set
++sticky_no_roaming()
++{
++	local mac=a8:b4:c2:c2:b4:a8
++
++	RET=0
++
++	bridge link set dev $swp2 learning on
++	bridge fdb add $mac dev $swp1 master static sticky
++	bridge fdb show dev $swp1 | grep "$mac master br0" | grep -q sticky
++	check_err $? "Sticky no roaming: No sticky FDB entry found after adding"
++
++	$MZ $h2 -q -t udp -c 10 -d 100msec -a $mac -b rand
++	bridge fdb show dev $swp2 | grep "$mac master br0" | grep -q sticky
++	check_fail $? "Sticky no roaming: Sticky entry roamed"
++
++	log_test "Sticky no roaming"
++}
++
+ trap cleanup EXIT
+ 
+ setup_prepare
+-- 
+2.30.2
 
-On Wed, Aug 24, 2022 at 6:45 PM sean wang <objelf@gmail.com> wrote:
->
-> Hi Kalle,
->
-> If the patch looks good to you, could you help apply the patch to
-> wireless-drivers.git because there are getting more users reporting
-> the issue with the stable kernel such as [1]. I would like to backport
-> it earlier once it appears in the Linus tree to solve the indefinite
-> hang issue.
->
-> [1] https://lore.kernel.org/linux-wireless/VE1PR04MB64945C660A81D38F290E4A4BE59F9@VE1PR04MB6494.eurprd04.prod.outlook.com/T/
->
-> Sean
->
-> On Tue, Aug 2, 2022 at 8:20 AM Deren Wu <Deren.Wu@mediatek.com> wrote:
-> >
-> > From: Deren Wu <deren.wu@mediatek.com>
-> >
-> > In case of drv own fail in reset, we may need to run mac_reset several
-> > times. The sequence would trigger system crash as the log below.
-> >
-> > Because we do not re-enable/schedule "tx_napi" before disable it again,
-> > the process would keep waiting for state change in napi_diable(). To
-> > avoid the problem and keep status synchronize for each run, goto final
-> > resource handling if drv own failed.
-> >
-> > [ 5857.353423] mt7921e 0000:3b:00.0: driver own failed
-> > [ 5858.433427] mt7921e 0000:3b:00.0: Timeout for driver own
-> > [ 5859.633430] mt7921e 0000:3b:00.0: driver own failed
-> > [ 5859.633444] ------------[ cut here ]------------
-> > [ 5859.633446] WARNING: CPU: 6 at kernel/kthread.c:659 kthread_park+0x11d
-> > [ 5859.633717] Workqueue: mt76 mt7921_mac_reset_work [mt7921_common]
-> > [ 5859.633728] RIP: 0010:kthread_park+0x11d/0x150
-> > [ 5859.633736] RSP: 0018:ffff8881b676fc68 EFLAGS: 00010202
-> > ......
-> > [ 5859.633766] Call Trace:
-> > [ 5859.633768]  <TASK>
-> > [ 5859.633771]  mt7921e_mac_reset+0x176/0x6f0 [mt7921e]
-> > [ 5859.633778]  mt7921_mac_reset_work+0x184/0x3a0 [mt7921_common]
-> > [ 5859.633785]  ? mt7921_mac_set_timing+0x520/0x520 [mt7921_common]
-> > [ 5859.633794]  ? __kasan_check_read+0x11/0x20
-> > [ 5859.633802]  process_one_work+0x7ee/0x1320
-> > [ 5859.633810]  worker_thread+0x53c/0x1240
-> > [ 5859.633818]  kthread+0x2b8/0x370
-> > [ 5859.633824]  ? process_one_work+0x1320/0x1320
-> > [ 5859.633828]  ? kthread_complete_and_exit+0x30/0x30
-> > [ 5859.633834]  ret_from_fork+0x1f/0x30
-> > [ 5859.633842]  </TASK>
-> >
-> > Fixes: 0efaf31dec57 ("mt76: mt7921: fix MT7921E reset failure")
-> > Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> > ---
-> >  drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-> > index e1800674089a..576a0149251b 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-> > @@ -261,7 +261,7 @@ int mt7921e_mac_reset(struct mt7921_dev *dev)
-> >
-> >         err = mt7921e_driver_own(dev);
-> >         if (err)
-> > -               return err;
-> > +               goto out;
-> >
-> >         err = mt7921_run_firmware(dev);
-> >         if (err)
-> > --
-> > 2.18.0
-> >
 
