@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F712ECAAA3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Aug 2022 10:01:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A62DDECAAD2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Aug 2022 10:02:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DxZtzrrMYILU+TQgzvVMXY9s7K0x398r8HFUu5ROqBI=; b=A92Ok3bDQLq2x/f186/Bx0kXn6
-	85EK29f+DG5K+dORSiR6tLejdw3AyJZo2mXukbsLeY+VDlqT5BV4nRmTYDzBcYQz8Fgcm4Wl+cF5V
-	ZZ779ZuVMtLqE2b1Csvdl82I0fbor7qBA++2k/l2kgQ3AdPAta69f8EN79hH7gkICEywan/6V2A/N
-	jmnW2RAHEfyja7Uhjbd/T9C6OkdOEsPMkh+UY/ZVXrfrKlds5CO96D01GOrDMrY122gN7ptmJ4OId
-	tOcU/eNyc6bm50S0tD0b73Fxq/BvOtpBP4U3vxDGVQITiw9NPqF2EBFFUgzmfve8n102/T/Ghhe4X
-	ez4zAxYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u4hLrG9oeNrHriu+1FXZ6SG5qgt98th66NbtcopWDi8=; b=rMuOoTaiGs8EjqVZ/MsaU+DF1A
+	Uh/3UJQuQnDLLIueOEv6EweHYj7EyWAGKlaIO2jcpT+P4Yd7+dljjIKt62wqkoJhZO7ewPi1svA6V
+	Zrir/wEuR8xh4UntyZfVsSE0NDhopR3UEQ1pB1T3UOJKTyNAJ72tFnlmCkXqcLHeK3W686uWB7+yM
+	2SP9tls81v2Q1xWjAxOADtQbL9Id1xoNixKVkgVV//Y7ezkbTN/3UiO7UjsLptqPqO3Kg3PGcbnh9
+	c+F26ChAHPtENIOzgNKoQLFpCsty4XzCPjN+u4vOgQBHdf50F22eZqZim15BEIBekWbun1ZrKSu20
+	uHBJSCgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRW8x-00181r-JU; Fri, 26 Aug 2022 10:00:51 +0000
+	id 1oRWA4-0019Sy-ME; Fri, 26 Aug 2022 10:02:00 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRW8u-0017uT-1q
-	for linux-mediatek@lists.infradead.org; Fri, 26 Aug 2022 10:00:50 +0000
-X-UUID: 3fd25f021380401695bad46f026a7a6f-20220826
+	id 1oRW9y-0019JH-Du; Fri, 26 Aug 2022 10:01:58 +0000
+X-UUID: f3dac96fec9143dbb2a2b6df7c350bab-20220826
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=DxZtzrrMYILU+TQgzvVMXY9s7K0x398r8HFUu5ROqBI=;
-	b=Kic0khNEYFclqW4NmFoeOuilWErPfSyDjZy6DHupk/eF40/G/DqUw9b3rLwgf9pYAPkbV9Ws6+0CwHNSLkWsRqSz6ZQjhJ9BOcQvBP4QWO3IEDG42ppLbtv+3mz+qqVpE6k9PjXeHZXoQkw5xnqgbD0S81KbRq0MAUES1pR38V8=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=u4hLrG9oeNrHriu+1FXZ6SG5qgt98th66NbtcopWDi8=;
+	b=lzq2JCo/XBxMx4sdhFlkvKDDUei8Al1DjnrszKsnL4xisSHTqZGasNk0vVeW3LdveK2Z5kjy/tsfWO5/bUyYqESNzfpHv92Kj+hZZqeUPKJUMc/e/k9im6zFhDQtL3JEw0Ptjsk+ahKxopVKeN4HoWAJ+kkbxGYvM8JFyPanfXM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:2cdcc853-2f5f-4355-80fa-672840f237a7,OB:0,L
+X-CID-O-INFO: VERSION:1.1.10,REQID:df09ddaa-8ef5-4db8-814f-a531aa520e6b,OB:0,L
 	OB:0,IP:0,URL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Releas
 	e_Ham,ACTION:release,TS:-25
-X-CID-META: VersionHash:84eae18,CLOUDID:ef57ab55-e800-47dc-8adf-0c936acf4f1b,C
+X-CID-META: VersionHash:84eae18,CLOUDID:d04eb5cf-20bd-4e5e-ace8-00692b7ab380,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
 	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 3fd25f021380401695bad46f026a7a6f-20220826
+X-UUID: f3dac96fec9143dbb2a2b6df7c350bab-20220826
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
+	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 745267636; Fri, 26 Aug 2022 03:00:42 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 1523547661; Fri, 26 Aug 2022 03:01:47 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 26 Aug 2022 17:10:31 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 26 Aug 2022 17:10:31 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
-	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, Eric-SY
- Chang <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
-	<Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder
- Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH] mt76: mt7921: introduce Country Location Control support
-Date: Fri, 26 Aug 2022 17:10:15 +0800
-Message-ID: <9e29c9863b6b6b21b99f46a609866ddc1a00d451.1661503895.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ 15.2.792.15; Fri, 26 Aug 2022 17:29:13 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 26 Aug 2022 17:29:12 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
+	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
+	<wenst@chromium.org>, kyrie wu <kyrie.wu@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
+	<irui.wang@mediatek.com>
+Subject: [V7,5/8] media: mtk-jpegdec: add jpeg decode worker interface
+Date: Fri, 26 Aug 2022 17:29:01 +0800
+Message-ID: <20220826092904.10283-6-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220826092904.10283-1-irui.wang@mediatek.com>
+References: <20220826092904.10283-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220826_030048_157305_9460618F 
-X-CRM114-Status: GOOD (  23.35  )
+X-CRM114-CacheID: sfid-20220826_030154_524670_AF172A50 
+X-CRM114-Status: GOOD (  23.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,418 +86,367 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-Country Location Control (CLC) is an additional control for country rules
-in firmware. We introduce this new feature to make sure mt7921 series
-working properly in all region.
+Add jpeg decoding worker to ensure that three HWs
+run in parallel in MT8195.
 
-The addtional policies would be put into firmware based on differnt
-regions. mt76 driver should be in charge of submitting per region policy.
-
-Reviewed-by: Sean Wang <sean.wang@mediatek.com>
-Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: irui wang <irui.wang@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  11 +-
- .../wireless/mediatek/mt76/mt7921/eeprom.h    |   5 +-
- .../net/wireless/mediatek/mt76/mt7921/init.c  |   1 +
- .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 197 ++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7921/mcu.h   |   2 +-
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  30 +++
- 6 files changed, 243 insertions(+), 3 deletions(-)
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 196 ++++++++++++++++++
+ .../platform/mediatek/jpeg/mtk_jpeg_core.h    |   6 +
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  |  39 ++--
+ 3 files changed, 229 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index f1d7c05bd794..718f427d8f6b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -10,6 +10,7 @@
- #define FW_FEATURE_SET_KEY_IDX		GENMASK(2, 1)
- #define FW_FEATURE_ENCRY_MODE		BIT(4)
- #define FW_FEATURE_OVERRIDE_ADDR	BIT(5)
-+#define FW_FEATURE_NON_DL		BIT(6)
- 
- #define DL_MODE_ENCRYPT			BIT(0)
- #define DL_MODE_KEY_IDX			GENMASK(2, 1)
-@@ -33,6 +34,12 @@
- #define PATCH_SEC_ENC_SCRAMBLE_INFO_MASK	GENMASK(15, 0)
- #define PATCH_SEC_ENC_AES_KEY_MASK		GENMASK(7, 0)
- 
-+enum {
-+	FW_TYPE_DEFAULT = 0,
-+	FW_TYPE_CLC = 2,
-+	FW_TYPE_MAX_NUM = 255
-+};
-+
- #define MCU_PQ_ID(p, q)		(((p) << 15) | ((q) << 10))
- #define MCU_PKT_ID		0xa0
- 
-@@ -174,7 +181,8 @@ struct mt76_connac2_fw_region {
- 	__le32 addr;
- 	__le32 len;
- 	u8 feature_set;
--	u8 rsv1[15];
-+	u8 type;
-+	u8 rsv1[14];
- } __packed;
- 
- struct tlv {
-@@ -1172,6 +1180,7 @@ enum {
- 	MCU_CE_CMD_SET_ROC = 0x1c,
- 	MCU_CE_CMD_SET_EDCA_PARMS = 0x1d,
- 	MCU_CE_CMD_SET_P2P_OPPPS = 0x33,
-+	MCU_CE_CMD_SET_CLC = 0x5c,
- 	MCU_CE_CMD_SET_RATE_TX_POWER = 0x5d,
- 	MCU_CE_CMD_SCHED_SCAN_ENABLE = 0x61,
- 	MCU_CE_CMD_SCHED_SCAN_REQ = 0x62,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h
-index 54f30401343c..4b647278eb30 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h
-@@ -11,12 +11,15 @@ enum mt7921_eeprom_field {
- 	MT_EE_VERSION =		0x002,
- 	MT_EE_MAC_ADDR =	0x004,
- 	MT_EE_WIFI_CONF =	0x07c,
--	__MT_EE_MAX =		0x3bf
-+	MT_EE_HW_TYPE =		0x55b,
-+	__MT_EE_MAX =		0x9ff
- };
- 
- #define MT_EE_WIFI_CONF_TX_MASK			BIT(0)
- #define MT_EE_WIFI_CONF_BAND_SEL		GENMASK(3, 2)
- 
-+#define MT_EE_HW_TYPE_ENCAP			BIT(0)
-+
- enum mt7921_eeprom_band {
- 	MT_EE_NA,
- 	MT_EE_5GHZ,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index cd960e23770f..dcdb3cf04ac1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -39,6 +39,7 @@ mt7921_regd_notifier(struct wiphy *wiphy,
- 	dev->mt76.region = request->dfs_region;
- 
- 	mt7921_mutex_acquire(dev);
-+	mt7921_mcu_set_clc(dev, request->alpha2, request->country_ie_env);
- 	mt76_connac_mcu_set_channel_domain(hw->priv);
- 	mt7921_set_tx_sar_pwr(hw, NULL);
- 	mt7921_mutex_release(dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index da12d0ae0835..d30606f58a9c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -2,14 +2,20 @@
- /* Copyright (C) 2020 MediaTek Inc. */
- 
- #include <linux/fs.h>
-+#include <linux/firmware.h>
- #include "mt7921.h"
- #include "mt7921_trace.h"
-+#include "eeprom.h"
- #include "mcu.h"
- #include "mac.h"
- 
- #define MT_STA_BFER			BIT(0)
- #define MT_STA_BFEE			BIT(1)
- 
-+static bool mt7921_disable_clc;
-+module_param_named(disable_clc, mt7921_disable_clc, bool, 0644);
-+MODULE_PARM_DESC(disable_clc, "disable CLC support");
-+
- static int
- mt7921_mcu_parse_eeprom(struct mt76_dev *dev, struct sk_buff *skb)
- {
-@@ -84,6 +90,27 @@ int mt7921_mcu_parse_response(struct mt76_dev *mdev, int cmd,
- }
- EXPORT_SYMBOL_GPL(mt7921_mcu_parse_response);
- 
-+static int mt7921_mcu_read_eeprom(struct mt7921_dev *dev, u32 offset, u8 *val)
-+{
-+	struct mt7921_mcu_eeprom_info *res, req = {
-+		.addr = cpu_to_le32(round_down(offset,
-+				    MT7921_EEPROM_BLOCK_SIZE)),
-+	};
-+	struct sk_buff *skb;
-+	int ret;
-+
-+	ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_EXT_QUERY(EFUSE_ACCESS),
-+					&req, sizeof(req), true, &skb);
-+	if (ret)
-+		return ret;
-+
-+	res = (struct mt7921_mcu_eeprom_info *)skb->data;
-+	*val = res->data[offset % MT7921_EEPROM_BLOCK_SIZE];
-+	dev_kfree_skb(skb);
-+
-+	return 0;
-+}
-+
- #ifdef CONFIG_PM
- 
- static int
-@@ -354,6 +381,90 @@ static char *mt7921_ram_name(struct mt7921_dev *dev)
- 	return ret;
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 7ef762496556..b1ed045bae4e 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1102,6 +1102,180 @@ static void mtk_jpeg_multicore_enc_device_run(void *priv)
+ 	queue_work(jpeg->workqueue, &ctx->jpeg_work);
  }
  
-+static int mt7921_load_clc(struct mt7921_dev *dev, const char *fw_name)
++static int mtk_jpegdec_get_hw(struct mtk_jpeg_ctx *ctx)
 +{
-+	const struct mt76_connac2_fw_trailer *hdr;
-+	const struct mt76_connac2_fw_region *region;
-+	const struct mt7921_clc *clc;
-+	struct mt76_dev *mdev = &dev->mt76;
-+	struct mt7921_phy *phy = &dev->phy;
-+	const struct firmware *fw;
-+	int ret, i, len, offset = 0;
-+	u8 *clc_base = NULL, hw_encap = 0;
++	struct mtk_jpegdec_comp_dev *comp_jpeg;
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
++	unsigned long flags;
++	int hw_id = -1;
++	int i;
 +
-+	if (mt7921_disable_clc ||
-+	    mt76_is_usb(&dev->mt76))
-+		return 0;
-+
-+	if (mt76_is_mmio(&dev->mt76)) {
-+		ret = mt7921_mcu_read_eeprom(dev, MT_EE_HW_TYPE, &hw_encap);
-+		if (ret)
-+			return ret;
-+		hw_encap = u8_get_bits(hw_encap, MT_EE_HW_TYPE_ENCAP);
-+	}
-+
-+	ret = request_firmware(&fw, fw_name, mdev->dev);
-+	if (ret)
-+		return ret;
-+
-+	if (!fw || !fw->data || fw->size < sizeof(*hdr)) {
-+		dev_err(mdev->dev, "Invalid firmware\n");
-+		ret = -EINVAL;
-+		goto out;
-+	}
-+
-+	hdr = (const void *)(fw->data + fw->size - sizeof(*hdr));
-+	for (i = 0; i < hdr->n_region; i++) {
-+		region = (const void *)((const u8 *)hdr -
-+					(hdr->n_region - i) * sizeof(*region));
-+		len = le32_to_cpu(region->len);
-+
-+		/* check if we have valid buffer size */
-+		if (offset + len > fw->size) {
-+			dev_err(mdev->dev, "Invalid firmware region\n");
-+			ret = -EINVAL;
-+			goto out;
-+		}
-+
-+		if ((region->feature_set & FW_FEATURE_NON_DL) &&
-+		    region->type == FW_TYPE_CLC) {
-+			clc_base = (u8 *)(fw->data + offset);
++	spin_lock_irqsave(&jpeg->hw_lock, flags);
++	for (i = 0; i < MTK_JPEGDEC_HW_MAX; i++) {
++		comp_jpeg = jpeg->dec_hw_dev[i];
++		if (comp_jpeg->hw_state == MTK_JPEG_HW_IDLE) {
++			hw_id = i;
++			comp_jpeg->hw_state = MTK_JPEG_HW_BUSY;
 +			break;
 +		}
-+		offset += len;
 +	}
++	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
 +
-+	if (!clc_base)
-+		goto out;
++	return hw_id;
++}
 +
-+	for (offset = 0; offset < len; offset += le32_to_cpu(clc->len)) {
-+		clc = (const struct mt7921_clc *)(clc_base + offset);
++static int mtk_jpegdec_put_hw(struct mtk_jpeg_dev *jpeg, int hw_id)
++{
++	unsigned long flags;
 +
-+		/* do not init buf again if chip reset triggered */
-+		if (phy->clc[clc->idx])
-+			continue;
++	spin_lock_irqsave(&jpeg->hw_lock, flags);
++	jpeg->dec_hw_dev[hw_id]->hw_state =
++		MTK_JPEG_HW_IDLE;
++	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
 +
-+		/* header content sanity */
-+		if (clc->idx == MT7921_CLC_POWER &&
-+		    u8_get_bits(clc->type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
-+			continue;
++	return 0;
++}
 +
-+		phy->clc[clc->idx] = devm_kmemdup(mdev->dev, clc,
-+						  le32_to_cpu(clc->len),
-+						  GFP_KERNEL);
++static int mtk_jpegdec_set_hw_param(struct mtk_jpeg_ctx *ctx,
++				    int hw_id,
++				    struct vb2_v4l2_buffer *src_buf,
++				    struct vb2_v4l2_buffer *dst_buf)
++{
++	struct mtk_jpegdec_comp_dev *jpeg =
++		ctx->jpeg->dec_hw_dev[hw_id];
 +
-+		if (!phy->clc[clc->idx]) {
-+			ret = -ENOMEM;
-+			goto out;
++	jpeg->hw_param.curr_ctx = ctx;
++	jpeg->hw_param.src_buffer = src_buf;
++	jpeg->hw_param.dst_buffer = dst_buf;
++
++	return 0;
++}
++
++static void mtk_jpegdec_worker(struct work_struct *work)
++{
++	struct mtk_jpeg_ctx *ctx = container_of(work, struct mtk_jpeg_ctx,
++		jpeg_work);
++	struct mtk_jpegdec_comp_dev *comp_jpeg[MTK_JPEGDEC_HW_MAX];
++	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
++	struct mtk_jpeg_src_buf *jpeg_src_buf, *jpeg_dst_buf;
++	struct vb2_v4l2_buffer *src_buf, *dst_buf;
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
++	int ret, i, hw_id = 0;
++	struct mtk_jpeg_bs bs;
++	struct mtk_jpeg_fb fb;
++	unsigned long flags;
++
++	for (i = 0; i < MTK_JPEGDEC_HW_MAX; i++)
++		comp_jpeg[i] = jpeg->dec_hw_dev[i];
++	i = 0;
++
++retry_select:
++	hw_id = mtk_jpegdec_get_hw(ctx);
++	if (hw_id < 0) {
++		ret = wait_event_interruptible_timeout(jpeg->dec_hw_wq,
++						       atomic_read(&jpeg->dechw_rdy) > 0,
++						       MTK_JPEG_HW_TIMEOUT_MSEC);
++		if (ret != 0 || (i++ > MTK_JPEG_MAX_RETRY_TIME)) {
++			dev_err(jpeg->dev, "%s : %d, all HW are busy\n",
++				__func__, __LINE__);
++			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
++			return;
 +		}
-+	}
-+	ret = mt7921_mcu_set_clc(dev, "00", ENVIRON_INDOOR);
-+out:
-+	release_firmware(fw);
 +
-+	return ret;
++		goto retry_select;
++	}
++
++	atomic_dec(&jpeg->dechw_rdy);
++	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
++	if (!src_buf)
++		goto getbuf_fail;
++
++	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
++	if (!dst_buf)
++		goto getbuf_fail;
++
++	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
++	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
++
++	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
++	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
++	jpeg_dst_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
++
++	if (mtk_jpeg_check_resolution_change(ctx,
++					     &jpeg_src_buf->dec_param)) {
++		mtk_jpeg_queue_src_chg_event(ctx);
++		ctx->state = MTK_JPEG_SOURCE_CHANGE;
++		goto dec_end;
++	}
++
++	jpeg_src_buf->curr_ctx = ctx;
++	jpeg_src_buf->frame_num = ctx->total_frame_num;
++	jpeg_dst_buf->curr_ctx = ctx;
++	jpeg_dst_buf->frame_num = ctx->total_frame_num;
++	ctx->total_frame_num++;
++
++	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
++	ret = pm_runtime_get_sync(comp_jpeg[hw_id]->dev);
++	if (ret < 0) {
++		dev_err(jpeg->dev, "%s : %d, pm_runtime_get_sync fail !!!\n",
++			__func__, __LINE__);
++		goto dec_end;
++	}
++
++	ret = clk_prepare_enable(comp_jpeg[hw_id]->jdec_clk.clks->clk);
++	if (ret) {
++		dev_err(jpeg->dev, "%s : %d, jpegdec clk_prepare_enable fail\n",
++			__func__, __LINE__);
++		goto clk_end;
++	}
++
++	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
++			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
++
++	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
++	if (mtk_jpeg_set_dec_dst(ctx,
++				 &jpeg_src_buf->dec_param,
++				 &dst_buf->vb2_buf, &fb)) {
++		dev_err(jpeg->dev, "%s : %d, mtk_jpeg_set_dec_dst fail\n",
++			__func__, __LINE__);
++		goto setdst_end;
++	}
++
++	spin_lock_irqsave(&comp_jpeg[hw_id]->hw_lock, flags);
++	mtk_jpeg_dec_reset(comp_jpeg[hw_id]->reg_base);
++	mtk_jpeg_dec_set_config(jpeg->reg_base,
++				&jpeg_src_buf->dec_param,
++				&bs,
++				&fb);
++	mtk_jpeg_dec_start(comp_jpeg[hw_id]->reg_base);
++	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
++	spin_unlock_irqrestore(&comp_jpeg[hw_id]->hw_lock, flags);
++
++	return;
++
++setdst_end:
++	clk_disable_unprepare(comp_jpeg[hw_id]->jdec_clk.clks->clk);
++clk_end:
++	pm_runtime_put(comp_jpeg[hw_id]->dev);
++dec_end:
++	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
++	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
++	v4l2_m2m_buf_done(src_buf, buf_state);
++	v4l2_m2m_buf_done(dst_buf, buf_state);
++getbuf_fail:
++	atomic_inc(&jpeg->dechw_rdy);
++	mtk_jpegdec_put_hw(jpeg, hw_id);
++	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
 +}
 +
- static int mt7921_load_firmware(struct mt7921_dev *dev)
++static void mtk_jpeg_multicore_dec_device_run(void *priv)
++{
++	struct mtk_jpeg_ctx *ctx = priv;
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
++
++	queue_work(jpeg->workqueue, &ctx->jpeg_work);
++}
++
+ static void mtk_jpeg_dec_device_run(void *priv)
  {
- 	int ret;
-@@ -422,6 +533,10 @@ int mt7921_run_firmware(struct mt7921_dev *dev)
- 	if (err)
- 		return err;
- 
-+	err = mt7921_load_clc(dev, mt7921_ram_name(dev));
-+	if (err)
-+		return err;
-+
- 	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
- 	return mt7921_mcu_fw_log_2_host(dev, 1);
- }
-@@ -930,3 +1045,85 @@ mt7921_mcu_uni_add_beacon_offload(struct mt7921_dev *dev,
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(BSS_INFO_UPDATE),
- 				 &req, sizeof(req), true);
- }
-+
-+static
-+int __mt7921_mcu_set_clc(struct mt7921_dev *dev, u8 *alpha2,
-+			 enum environment_cap env_cap,
-+			 struct mt7921_clc *clc,
-+			 u8 idx)
-+{
-+	struct sk_buff *skb;
-+	struct {
-+		u8 ver;
-+		u8 pad0;
-+		__le16 len;
-+		u8 idx;
-+		u8 env;
-+		u8 pad1[2];
-+		u8 alpha2[2];
-+		u8 type[2];
-+		u8 rsvd[64];
-+	} __packed req = {
-+		.idx = idx,
-+		.env = env_cap,
-+	};
-+	int ret, valid_cnt = 0;
-+	u8 i, *pos;
-+
-+	if (!clc)
-+		return 0;
-+
-+	pos = clc->data;
-+	for (i = 0; i < clc->nr_country; i++) {
-+		struct mt7921_clc_rule *rule = (struct mt7921_clc_rule *)pos;
-+		u16 len = le16_to_cpu(rule->len);
-+
-+		pos += len + sizeof(*rule);
-+		if (rule->alpha2[0] != alpha2[0] ||
-+		    rule->alpha2[1] != alpha2[1])
-+			continue;
-+
-+		memcpy(req.alpha2, rule->alpha2, 2);
-+		memcpy(req.type, rule->type, 2);
-+
-+		req.len = sizeof(req) + len;
-+		skb = __mt76_mcu_msg_alloc(&dev->mt76, &req, req.len,
-+					   sizeof(req), GFP_KERNEL);
-+		if (!skb)
-+			return -ENOMEM;
-+		skb_put_data(skb, rule->data, len);
-+
-+		ret = mt76_mcu_skb_send_msg(&dev->mt76, skb,
-+					    MCU_CE_CMD(SET_CLC), false);
-+		if (ret < 0)
-+			return ret;
-+		valid_cnt++;
-+	}
-+
-+	if (!valid_cnt)
-+		return -ENOENT;
-+
-+	return 0;
-+}
-+
-+int mt7921_mcu_set_clc(struct mt7921_dev *dev, u8 *alpha2,
-+		       enum environment_cap env_cap)
-+{
-+	struct mt7921_phy *phy = (struct mt7921_phy *)&dev->phy;
-+	int i, ret;
-+
-+	/* submit all clc config */
-+	for (i = 0; i < ARRAY_SIZE(phy->clc); i++) {
-+		ret = __mt7921_mcu_set_clc(dev, alpha2, env_cap,
-+					   phy->clc[i], i);
-+
-+		/* If no country found, set "00" as default */
-+		if (ret == -ENOENT)
-+			ret = __mt7921_mcu_set_clc(dev, "00",
-+						   ENVIRON_INDOOR,
-+						   phy->clc[i], i);
-+		if (ret < 0)
-+			return ret;
-+	}
-+	return 0;
-+}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-index 0d20f7d8d474..96dc870fd35e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-@@ -41,7 +41,7 @@ enum {
- struct mt7921_mcu_eeprom_info {
- 	__le32 addr;
- 	__le32 valid;
--	u8 data[16];
-+	u8 data[MT7921_EEPROM_BLOCK_SIZE];
- } __packed;
- 
- #define MT_RA_RATE_NSS			GENMASK(8, 6)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index c161031ac62a..b665c84b109e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -41,6 +41,8 @@
- #define MT7921_EEPROM_SIZE		3584
- #define MT7921_TOKEN_SIZE		8192
- 
-+#define MT7921_EEPROM_BLOCK_SIZE	16
-+
- #define MT7921_CFEND_RATE_DEFAULT	0x49	/* OFDM 24M */
- #define MT7921_CFEND_RATE_11B		0x03	/* 11B LP, 11M */
- 
-@@ -149,6 +151,29 @@ struct mib_stats {
- 	u32 tx_amsdu_cnt;
+ 	struct mtk_jpeg_ctx *ctx = priv;
+@@ -1168,6 +1342,10 @@ static const struct v4l2_m2m_ops mtk_jpeg_multicore_enc_m2m_ops = {
+ 	.device_run = mtk_jpeg_multicore_enc_device_run,
  };
  
-+enum {
-+	MT7921_CLC_POWER,
-+	MT7921_CLC_CHAN,
-+	MT7921_CLC_MAX_NUM,
++static const struct v4l2_m2m_ops mtk_jpeg_multicore_dec_m2m_ops = {
++	.device_run = mtk_jpeg_multicore_dec_device_run,
 +};
 +
-+struct mt7921_clc_rule {
-+	u8 alpha2[2];
-+	u8 type[2];
-+	__le16 len;
-+	u8 data[];
-+} __packed;
+ static const struct v4l2_m2m_ops mtk_jpeg_dec_m2m_ops = {
+ 	.device_run = mtk_jpeg_dec_device_run,
+ 	.job_ready  = mtk_jpeg_dec_job_ready,
+@@ -1371,6 +1549,9 @@ static int mtk_jpeg_open(struct file *file)
+ 	if (jpeg->is_jpgenc_multihw)
+ 		INIT_WORK(&ctx->jpeg_work, mtk_jpegenc_worker);
+ 
++	if (jpeg->is_jpgdec_multihw)
++		INIT_WORK(&ctx->jpeg_work, mtk_jpegdec_worker);
 +
-+struct mt7921_clc {
-+	__le32 len;
-+	u8 idx;
-+	u8 ver;
-+	u8 nr_country;
-+	u8 type;
-+	u8 rsv[8];
-+	u8 data[];
-+};
-+
- struct mt7921_phy {
- 	struct mt76_phy *mt76;
- 	struct mt7921_dev *dev;
-@@ -174,6 +199,8 @@ struct mt7921_phy {
- #ifdef CONFIG_ACPI
- 	struct mt7921_acpi_sar *acpisar;
- #endif
-+
-+	struct mt7921_clc *clc[MT7921_CLC_MAX_NUM];
+ 	INIT_LIST_HEAD(&ctx->dst_done_queue);
+ 	spin_lock_init(&ctx->done_queue_lock);
+ 	v4l2_fh_init(&ctx->fh, vfd);
+@@ -1678,6 +1859,17 @@ static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
+ 	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
  };
  
- #define mt7921_init_reset(dev)		((dev)->hif_ops->init_reset(dev))
-@@ -479,4 +506,7 @@ mt7921_init_acpi_sar_power(struct mt7921_phy *phy, bool set_default)
- #endif
- int mt7921_set_tx_sar_pwr(struct ieee80211_hw *hw,
- 			  const struct cfg80211_sar_specs *sar);
++static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
++	.formats = mtk_jpeg_dec_formats,
++	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
++	.qops = &mtk_jpeg_dec_qops,
++	.m2m_ops = &mtk_jpeg_multicore_dec_m2m_ops,
++	.dev_name = "mtk-jpeg-dec",
++	.ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
++	.out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
++	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
++};
 +
-+int mt7921_mcu_set_clc(struct mt7921_dev *dev, u8 *alpha2,
-+		       enum environment_cap env_cap);
- #endif
+ #if defined(CONFIG_OF)
+ static const struct of_device_id mtk_jpeg_match[] = {
+ 	{
+@@ -1696,6 +1888,10 @@ static const struct of_device_id mtk_jpeg_match[] = {
+ 		.compatible = "mediatek,mt8195-jpgenc",
+ 		.data = &mtk8195_jpegenc_drvdata,
+ 	},
++	{
++		.compatible = "mediatek,mt8195-jpgdec",
++		.data = &mtk8195_jpegdec_drvdata,
++	},
+ 	{},
+ };
+ 
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+index 0d2d2baedcf7..55e2759a0b23 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+@@ -171,6 +171,9 @@ struct mtk_jpegdec_comp_dev {
+ 	int jpegdec_irq;
+ 	struct delayed_work job_timeout_work;
+ 	struct mtk_jpeg_hw_param hw_param;
++	enum mtk_jpeg_hw_state hw_state;
++	/* spinlock protecting the hw device resource */
++	spinlock_t hw_lock;
+ };
+ 
+ /**
+@@ -209,6 +212,9 @@ struct mtk_jpeg_dev {
+ 	void __iomem *reg_decbase[MTK_JPEGDEC_HW_MAX];
+ 	struct mtk_jpegdec_comp_dev *dec_hw_dev[MTK_JPEGDEC_HW_MAX];
+ 	bool is_jpgdec_multihw;
++	wait_queue_head_t dec_hw_wq;
++	struct workqueue_struct	*dec_workqueue;
++	atomic_t dechw_rdy;
+ };
+ 
+ /**
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+index 78d14733b269..6a5806df9917 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+@@ -446,6 +446,7 @@ static void mtk_jpegdec_timeout_work(struct work_struct *work)
+ 	struct mtk_jpegdec_comp_dev *cjpeg =
+ 		container_of(work, struct mtk_jpegdec_comp_dev,
+ 			     job_timeout_work.work);
++	struct mtk_jpeg_dev *master_jpeg = cjpeg->master_dev;
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+ 
+ 	src_buf = cjpeg->hw_param.src_buffer;
+@@ -455,6 +456,9 @@ static void mtk_jpegdec_timeout_work(struct work_struct *work)
+ 	mtk_jpeg_dec_reset(cjpeg->reg_base);
+ 	clk_disable_unprepare(cjpeg->jdec_clk.clks->clk);
+ 	pm_runtime_put(cjpeg->dev);
++	cjpeg->hw_state = MTK_JPEG_HW_IDLE;
++	atomic_inc(&master_jpeg->dechw_rdy);
++	wake_up(&master_jpeg->dec_hw_wq);
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+ 	v4l2_m2m_buf_done(dst_buf, buf_state);
+ }
+@@ -474,22 +478,19 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+ 
+ 	cancel_delayed_work(&jpeg->job_timeout_work);
+ 
++	ctx = jpeg->hw_param.curr_ctx;
++	src_buf = jpeg->hw_param.src_buffer;
++	dst_buf = jpeg->hw_param.dst_buffer;
++	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
++
+ 	irq_status = mtk_jpeg_dec_get_int_status(jpeg->reg_base);
+ 	dec_irq_ret = mtk_jpeg_dec_enum_result(irq_status);
+ 	if (dec_irq_ret >= MTK_JPEG_DEC_RESULT_UNDERFLOW)
+ 		mtk_jpeg_dec_reset(jpeg->reg_base);
+-	if (dec_irq_ret != MTK_JPEG_DEC_RESULT_EOF_DONE)
+-		return IRQ_NONE;
+ 
+-	ctx = v4l2_m2m_get_curr_priv(master_jpeg->m2m_dev);
+-	if (!ctx) {
+-		dev_err(jpeg->dev, "Context is NULL\n");
+-		return IRQ_HANDLED;
+-	}
++	if (dec_irq_ret != MTK_JPEG_DEC_RESULT_EOF_DONE)
++		dev_warn(jpeg->dev, "Jpg Dec occurs unknown Err.");
+ 
+-	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+-	dst_buf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+-	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
+ 	jpeg_src_buf =
+ 		container_of(src_buf, struct mtk_jpeg_src_buf, b);
+ 
+@@ -498,11 +499,14 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+ 				      jpeg_src_buf->dec_param.comp_size[i]);
+ 
+ 	buf_state = VB2_BUF_STATE_DONE;
+-
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+ 	v4l2_m2m_buf_done(dst_buf, buf_state);
+-	v4l2_m2m_job_finish(master_jpeg->m2m_dev, ctx->fh.m2m_ctx);
+ 	pm_runtime_put(ctx->jpeg->dev);
++	clk_disable_unprepare(jpeg->jdec_clk.clks->clk);
++
++	jpeg->hw_state = MTK_JPEG_HW_IDLE;
++	wake_up(&master_jpeg->dec_hw_wq);
++	atomic_inc(&master_jpeg->dechw_rdy);
+ 
+ 	return IRQ_HANDLED;
+ }
+@@ -559,8 +563,19 @@ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
+ 		master_dev->is_jpgdec_multihw = true;
+ 		for (i = 0; i < MTK_JPEGDEC_HW_MAX; i++)
+ 			master_dev->dec_hw_dev[i] = NULL;
++
++		init_waitqueue_head(&master_dev->dec_hw_wq);
++		master_dev->workqueue = alloc_ordered_workqueue(MTK_JPEG_NAME,
++								WQ_MEM_RECLAIM
++								| WQ_FREEZABLE);
++		if (!master_dev->workqueue)
++			return -EINVAL;
+ 	}
+ 
++	atomic_set(&master_dev->dechw_rdy, MTK_JPEGDEC_HW_MAX);
++	spin_lock_init(&dev->hw_lock);
++	dev->hw_state = MTK_JPEG_HW_IDLE;
++
+ 	INIT_DELAYED_WORK(&dev->job_timeout_work,
+ 			  mtk_jpegdec_timeout_work);
+ 
 -- 
 2.18.0
 
