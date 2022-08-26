@@ -4,77 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DAC0ECAAA3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Aug 2022 04:59:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BB52ECAAA3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Aug 2022 05:13:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n4tr0+lGnjhP1+HG3q5WNy3WWhM2Giyan/ikAAd98CM=; b=dYp2RbEAFELUBAv7xm2lrnUX8o
-	LrsERE/dlGCVToySDlBpvuH30w6XTpPo8EUYET9numtG4esg9+CZS5M5dyMoQat+cZ6C7Q2IoCqWo
-	I6GsvErha7Z2JWyo27lzh100nwupydXxORSl3TW7fraJ6h/XuEJT2UD55Zib5xsPL/O6GxEqC++C/
-	ZJ7W/NfxZjloDAELRMRxb7Wioly0hi5FLZbf7baNSsN1/c1XkNI+3oCrMiwBqmmzROnaJBXwjucNP
-	4+sZYTBICwIynu7M2r1bdblOFWWNH08SEXOeRj9SGPkRFiFuRUXPpdF7AoYeDHViCzVJ4qPxBmKdz
-	yAnWaJag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Wh6FLDEnJQ0ruFSeCB7dZ0n+l2/E1h9WWj0E7OrvHN8=; b=VkhD+TS3QLL5AwcYZ2TZHQ/sze
+	0kdm+OtZb85RxnoSRf49jZsiu0USaRvoMdin1TtPeUR3pgu2z6C3MuSOAVpFH5fW+lBYWTQnzhmNz
+	KWAxprl/kN9fpB1fvYYB1doTsnhKGxI2ol2zygEpREAcajMScZyvtmw9NBC+yCUc6w2q+ZapAXhC6
+	MhgJohpAsb46U4tPA/SoDHF7adq7yyHaFLPvtbAFSZGqFif4egMPDw0nrb7LNDTDfHjHKdAQ/hzKL
+	PvJkvMqTYqZC5b6JUAXWfiqWuftlKc+Bm0UHwKD1tq6kzaMyiI6iRmlEE6WE+So+a7FHouKi+lsJK
+	XcPltdtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRRR8-00DVrY-5V; Fri, 26 Aug 2022 04:59:18 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oRRf3-00Dj7A-VE; Fri, 26 Aug 2022 05:13:42 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRRQw-00DVT6-PV; Fri, 26 Aug 2022 04:59:08 +0000
-X-UUID: 7c9f01db7e424ed88ca4678fd92fe6aa-20220825
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=n4tr0+lGnjhP1+HG3q5WNy3WWhM2Giyan/ikAAd98CM=;
-	b=Ks7jHF8fgmUWQ5iQHJR2ySFn5w6xqczk3EFZRHqcOvUp7l5NIORuTkAqq4eQxmU3a1NH8mmEG2pFe34pQdKNdMRwqVAb2KyedHD2ETC4wtfk9xpI0/g+G0g2zRmDt2rLUAt156YYxe3eDTVwoejND71rkMtrS5OAdtRVyhYYGmU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:f0693610-d7f0-4dd9-876a-ae886082165a,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:d9672b20-1c20-48a5-82a0-25f9c331906d,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 7c9f01db7e424ed88ca4678fd92fe6aa-20220825
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <xinlei.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 100429378; Thu, 25 Aug 2022 21:58:57 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 26 Aug 2022 11:58:18 +0800
-Received: from mszsdhlt06 (10.16.6.206) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 26 Aug 2022 11:58:18 +0800
-Message-ID: <a78dbe566a352b2375dfaafc277d757db764d642.camel@mediatek.com>
-Subject: Re: [PATCH v3,2/2] drm: mediatek: Adjust the dpi output format to
- MT8186
-From: xinlei.lee <xinlei.lee@mediatek.com>
-To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
-CC: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
-	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>, <rex-bc.chen@mediatek.com>,
-	<angelogioacchino.delregno@collabora.com>, <jason-jh.lin@mediatek.com>,
-	<yongqiang.niu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jitao Shi
-	<jitao.shi@mediatek.com>
-Date: Fri, 26 Aug 2022 11:58:29 +0800
-In-Reply-To: <20220824154417.5cbfsgqjwajvplvk@notapiano>
-References: <1661235517-23699-1-git-send-email-xinlei.lee@mediatek.com>
-	 <1661235517-23699-3-git-send-email-xinlei.lee@mediatek.com>
-	 <20220823201622.meedlqvmixf5ukdf@notapiano>
-	 <447770ead17338241849dbbb2281fa8b4e31aefa.camel@mediatek.com>
-	 <20220824154417.5cbfsgqjwajvplvk@notapiano>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oRRex-00Diyj-KO
+	for linux-mediatek@lists.infradead.org; Fri, 26 Aug 2022 05:13:39 +0000
+Received: by mail-wm1-x332.google.com with SMTP id i66-20020a1c3b45000000b003a7b6ae4eb2so32741wma.4
+        for <linux-mediatek@lists.infradead.org>; Thu, 25 Aug 2022 22:13:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=Wh6FLDEnJQ0ruFSeCB7dZ0n+l2/E1h9WWj0E7OrvHN8=;
+        b=gzvm+bQtE8AmMsvbkn6i37XPPtXDA1iCHae/C2j4+xAsmHS2vcozSBzu4Y0tzPlkLB
+         frJAVOMQruttFHaVSU4UIT1aWUo7AfH2Ff9H0fE8ZxJIjYfx2ZQukGpsi0/EwQCS143C
+         kD6saRNrvRRAy7i+99+TpMQ011lbZ9hrepoaC4v+FYOXDntQHyC0UPd1kY8r/jplXWU1
+         QygyRHER5lqg45w8vGM6BUuJ+X9XRh3j1I/WrwWRystcpA+idTltyybUOuOCRsJ4QNsp
+         MV5vxp9/x2Lz+8nyK5a9do0S5iruX2dTEhILARFfIaeWgEwVEt7pjePTAQ9dqY5k5rqA
+         Ikrw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=Wh6FLDEnJQ0ruFSeCB7dZ0n+l2/E1h9WWj0E7OrvHN8=;
+        b=6V3jjL6P5NOyMJcD/wJS2W8w3d46vNGL9l8vXn7XkKGEGE9oORNh0K9z6a/AxpWl5j
+         DR4NBp5GtgH3sFUOG4etEoslfHcsRLThEqvSQ4TJy8my2Wer0HFlcgFEm9EGPGQEWXFI
+         7tID85wWeucCRUeKwk+s3d5+f90DpL0CpB5rmalZlshk/bc1tjlZgcm0BfYk25UoTxSj
+         HnwVwusPVY9OEuLSJd4tsz4KpIm0w5e42SBBqHlCRdCUHzsK2/JWZlSOKk2mucw701wS
+         zL1S3RUSa/shRKMpmshPBvC9shhnMBOF3SpolyWIeLpZPa1XYGqx/leTRuEXEFMckwEg
+         9JiQ==
+X-Gm-Message-State: ACgBeo1m+JIYU4W1kIrQIqQGe5vVfTEP1QKGXiQjkGFLDwu6i3l5gC/k
+	mktx+NqoOmnI9yH89Jc2Lcwzax8iqCK8ZcOZ6K4=
+X-Google-Smtp-Source: AA6agR7QFJk2fyWRvEx03DjqaHYun1rzfQlrmhMAnyRnD79orGEX+fPxtFvy6QAk3o0D/25is63NMgz/ewnaoA7X3Cc=
+X-Received: by 2002:a05:600c:5008:b0:3a6:1cd8:570d with SMTP id
+ n8-20020a05600c500800b003a61cd8570dmr4030338wmr.57.1661490812559; Thu, 25 Aug
+ 2022 22:13:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-MTK: N
+References: <fd716a393e20d5db89f4f9d705d6dbbfde7260a6.1661400412.git.objelf@gmail.com>
+ <Ywc1srMmMu51Nuzv@lore-desk>
+In-Reply-To: <Ywc1srMmMu51Nuzv@lore-desk>
+From: sean wang <objelf@gmail.com>
+Date: Thu, 25 Aug 2022 22:13:20 -0700
+Message-ID: <CAGp9LzqmSyj0n__1vOhQcqt-7QXWNzia-zngqyufB4-epgBsQg@mail.gmail.com>
+Subject: Re: [PATCH] mt76: mt7921: reset msta->airtime_ac while clearing up hw value
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang@mediatek.com>, 
+	Felix Fietkau <nbd@nbd.name>, lorenzo.bianconi@redhat.com, 
+	Soul Huang <Soul.Huang@mediatek.com>, YN Chen <YN.Chen@mediatek.com>, 
+	Leon Yen <Leon.Yen@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, 
+	Deren Wu <Deren.Wu@mediatek.com>, KM Lin <km.lin@mediatek.com>, jenhao.yang@mediatek.com, 
+	Robin Chiu <robin.chiu@mediatek.com>, Eddie.Chen@mediatek.com, 
+	CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, ted.huang@mediatek.com, 
+	Stella Chang <Stella.Chang@mediatek.com>, Tom.Chou@mediatek.com, steve.lee@mediatek.com, 
+	jsiuda@google.com, frankgor@google.com, kuabhs@google.com, druth@google.com, 
+	abhishekpandit@google.com, shawnku@google.com, 
+	linux-wireless <linux-wireless@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_215907_003840_37E4C757 
-X-CRM114-Status: GOOD (  50.53  )
+X-CRM114-CacheID: sfid-20220825_221335_732775_B9892970 
+X-CRM114-Status: GOOD (  24.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,172 +94,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-08-24 at 11:44 -0400, Nícolas F. R. A. Prado wrote:
-> On Wed, Aug 24, 2022 at 09:59:21AM +0800, xinlei.lee wrote:
-> > On Tue, 2022-08-23 at 16:16 -0400, Nícolas F. R. A. Prado wrote:
-> > > On Tue, Aug 23, 2022 at 02:18:37PM +0800, xinlei.lee@mediatek.com
-> > > wrote:
-> > > > From: Xinlei Lee <xinlei.lee@mediatek.com>
-> > > > 
-> > > > Dpi output needs to adjust the output format to dual edge for
-> > > > MT8186.
-> > > > Because MT8186 HW has been modified at that time, SW needs to
-> > > > cooperate.
-> > > > And the register (MMSYS) reserved for dpi will be used for
-> > > > output
-> > > > format control (dual_edge/single_edge).
-> > > > 
-> > > > Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
-> > > > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> > > > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> > > > 
-> > > > ---
-> > > 
-> > > [..]
-> > > > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > > > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > > 
-> > > [..]
-> > > >   * @yuv422_en_bit: Enable bit of yuv422.
-> > > >   * @csc_enable_bit: Enable bit of CSC.
-> > > >   * @pixels_per_iter: Quantity of transferred pixels per
-> > > > iteration.
-> > > > + * @rgb888_dual_enable: Control output format for mt8186.
-> > > 
-> > > Let's not mention mt8186 in the description to keep the property
-> > > generic. Also,
-> > > this description should say what having 'rgb888_dual_enable =
-> > > true'
-> > > indicates
-> > > about the hardware (in this case mt8186) and it currently
-> > > doesn't.
-> > > 
-> > > Let's take a step back. What does 'dual enable' mean in this
-> > > context
-> > > and how
-> > > does it relate to 'dual edge' and the dpi output format? By
-> > > answering
-> > > those
-> > > questions we can find a description (and maybe variable name)
-> > > that
-> > > makes more
-> > > sense.
-> > > 
-> > > >   */
-> > > 
-> > > [..]
-> > > > @@ -449,6 +454,9 @@ static void mtk_dpi_dual_edge(struct
-> > > > mtk_dpi
-> > > > *dpi)
-> > > >  		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
-> > > >  			     dpi->output_fmt ==
-> > > > MEDIA_BUS_FMT_RGB888_2X12_LE ?
-> > > >  			     EDGE_SEL : 0, EDGE_SEL);
-> > > > +	if (dpi->conf->rgb888_dual_enable)
-> > > > +		mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev,
-> > > > DPI_RGB888_DDR_CON,
-> > > > +					     DPI_FORMAT_MASK,
-> > > > NULL);
-> > > 
-> > > This if block should be further indented.
-> > > 
-> > > >  	} else {
-> > > >  		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN |
-> > > > DDR_4PHASE,
-> > > > 0);
-> > > >  	}
-> > > 
-> > > [..]
-> > > > --- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> > > > +++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
-> > > > @@ -235,4 +235,8 @@
-> > > >  #define MATRIX_SEL_RGB_TO_JPEG		0
-> > > >  #define MATRIX_SEL_RGB_TO_BT601		2
-> > > >  
-> > > > +#define DPI_FORMAT_MASK			0x1
-> > > > +#define DPI_RGB888_DDR_CON		BIT(0)
-> > > > +#define DPI_RGB565_SDR_CON		BIT(1)
-> > > 
-> > > I'm not sure if it would make more sense to have these
-> > > definitions in
-> > > the mmsys
-> > > header since they're configurations of a register in mmsys'
-> > > iospace... I think
-> > > we can keep them here but at least add a comment above:
-> > > 
-> > > /* Values for DPI configuration in MMSYS address space */
-> > > 
-> > > Thanks,
-> > > Nícolas
-> > 
-> > Hi Nícolas:
-> > Thanks for your careful review!
-> > I will modify the description of this member variable and add the
-> > hardware state corresponding to the software setting.
-> > (eg. rgb888_dual_enable = true the hardware output rgb888_dual_edge
-> > format data)
-> > 
-> > Your suggestion is very necessary, maybe my name is not accurate
-> > enough, this flag is to enable RGB888_dual_edge format output. 
-> > Would it be better for the variable to be called
-> > RGB888_dual_edge_enable then?
-> 
-> The thing is, we also output in rgb888 dual edge format on mt8183 and
-> mt8192,
-> and therefore set DDR_EN in mtk_dpi_dual_edge(), right? But, as you
-> said, we
-> don't need to enable this new rgb888_dual_enable variable on those
-> platforms,
-> only on mt8186. So that's why I don't think the current
-> name/description is
-> suitable. If the variable only needs to be set on mt8186, it should
-> have a name
-> and description that shows what is different between mt8186 and the
-> others. But
-> without containing the "mt8186" name, since this might happen on
-> other SoCs
-> later on.
-> 
-> My understanding is that even though both mt8186 and mt8192 output in
-> the rgb888
-> dual edge format, only mt8186 is able to configure the edge setting
-> in MMSYS (so
-> on mt8192 it would be hardwired to dual edge and not possible to
-> change). So
-> what I propose is
-> 
-> Name: edge_cfg_in_mmsys
-> 
-> Description: "If the edge configuration for DPI's output needs to be
-> set in MMSYS"
-> 
-> But maybe since you know the hardware, you might be able to find an
-> even better
-> name/description.
-> 
-> Thanks,
-> Nícolas
-Hi Nícolas:
+Hi Lorenzo,
 
-Thanks for your suggestion.
+On Thu, Aug 25, 2022 at 1:41 AM Lorenzo Bianconi <lorenzo@kernel.org> wrote:
+>
+> > From: Sean Wang <sean.wang@mediatek.com>
+> >
+> > We should reset mstat->airtime_ac along with clear up the entries in the
+> > hardware WLAN table for the Rx and Rx accumulative airtime. Otherwsie, the
+> > value msta->airtime_ac - [tx, rx]_last may be a negative and that is not
+> > the actual airtime the device took in the last run.
+>
+> the only point where we need it is mt7921_mac_sta_assoc() since in
+> mt7921_mac_sta_add() airtime_ac array is supposed to be already 0 and in
+> mt7921_mac_sta_remove() we are removing the sta. Is my understanding correct?
+> If so, is it better to just add a memset(, 0, ..) in mt7921_mac_sta_assoc()?
+>
 
-At present, it is true that only 8186 needs to set this flag when
-outputting dual_edge format. 
-If other ICs need to modify the output format, they only need to modify
-the DPI register. 
-On the 8186, DPI MUX (0x400) is required for synchronous modification.
-A more detailed explanation of this DPI MUX register is 
-bit[0]: dual_edge enable, bit[1]: rgb565_en.
-And the priority of bit[1] is higher, the following is the format of
-different combinations:
-00: SDR enable
-01: DDR enable
-10: RGB565
-11: RGB565
- 
-The hardware characteristics can be ignored. Based on this situation,
-what is your opinion if it is changed to "edge_cfg_in_mmsys"?
-Best Regards!
-Xinlei
+The way looks good to me. I'll add in the v2. thanks!
 
+    Sean
+
+> Regards,
+> Lorenzo
+>
+> >
+> > Reported-by: YN Chen <YN.Chen@mediatek.com>
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > ---
+> >  drivers/net/wireless/mediatek/mt76/mt7921/mac.c   | 15 ++++++++++-----
+> >  drivers/net/wireless/mediatek/mt76/mt7921/main.c  |  9 +++------
+> >  .../net/wireless/mediatek/mt76/mt7921/mt7921.h    |  2 ++
+> >  3 files changed, 15 insertions(+), 11 deletions(-)
+> >
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+> > index 47f0aa81ab02..87dd0babff7a 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+> > @@ -46,6 +46,14 @@ bool mt7921_mac_wtbl_update(struct mt7921_dev *dev, int idx, u32 mask)
+> >                        0, 5000);
+> >  }
+> >
+> > +void mt7921_mac_sta_airtime_clear(struct mt7921_dev *dev,
+> > +                               struct mt7921_sta *msta)
+> > +{
+> > +     mt7921_mac_wtbl_update(dev, msta->wcid.idx,
+> > +                            MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
+> > +     memset(msta->airtime_ac, 0, sizeof(msta->airtime_ac));
+> > +}
+> > +
+> >  void mt7921_mac_sta_poll(struct mt7921_dev *dev)
+> >  {
+> >       static const u8 ac_to_tid[] = {
+> > @@ -100,11 +108,8 @@ void mt7921_mac_sta_poll(struct mt7921_dev *dev)
+> >                       addr += 8;
+> >               }
+> >
+> > -             if (clear) {
+> > -                     mt7921_mac_wtbl_update(dev, idx,
+> > -                                            MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
+> > -                     memset(msta->airtime_ac, 0, sizeof(msta->airtime_ac));
+> > -             }
+> > +             if (clear)
+> > +                     mt7921_mac_sta_airtime_clear(dev, msta);
+> >
+> >               if (!msta->wcid.sta)
+> >                       continue;
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> > index 1438a9f8d1fd..9d70884e24af 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> > @@ -723,8 +723,7 @@ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+> >       if (vif->type == NL80211_IFTYPE_STATION)
+> >               mvif->wep_sta = msta;
+> >
+> > -     mt7921_mac_wtbl_update(dev, idx,
+> > -                            MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
+> > +     mt7921_mac_sta_airtime_clear(dev, msta);
+> >
+> >       ret = mt7921_mcu_sta_update(dev, sta, vif, true,
+> >                                   MT76_STA_INFO_STATE_NONE);
+> > @@ -750,8 +749,7 @@ void mt7921_mac_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+> >               mt76_connac_mcu_uni_add_bss(&dev->mphy, vif, &mvif->sta.wcid,
+> >                                           true);
+> >
+> > -     mt7921_mac_wtbl_update(dev, msta->wcid.idx,
+> > -                            MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
+> > +     mt7921_mac_sta_airtime_clear(dev, msta);
+> >
+> >       mt7921_mcu_sta_update(dev, sta, vif, true, MT76_STA_INFO_STATE_ASSOC);
+> >
+> > @@ -769,8 +767,7 @@ void mt7921_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+> >       mt76_connac_pm_wake(&dev->mphy, &dev->pm);
+> >
+> >       mt7921_mcu_sta_update(dev, sta, vif, false, MT76_STA_INFO_STATE_NONE);
+> > -     mt7921_mac_wtbl_update(dev, msta->wcid.idx,
+> > -                            MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
+> > +     mt7921_mac_sta_airtime_clear(dev, msta);
+> >
+> >       if (vif->type == NL80211_IFTYPE_STATION) {
+> >               struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+> > index c161031ac62a..8b704d08509d 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+> > @@ -362,6 +362,8 @@ void mt7921_stop(struct ieee80211_hw *hw);
+> >  int mt7921_mac_init(struct mt7921_dev *dev);
+> >  bool mt7921_mac_wtbl_update(struct mt7921_dev *dev, int idx, u32 mask);
+> >  void mt7921_mac_reset_counters(struct mt7921_phy *phy);
+> > +void mt7921_mac_sta_airtime_clear(struct mt7921_dev *dev,
+> > +                               struct mt7921_sta *msta);
+> >  void mt7921_mac_set_timing(struct mt7921_phy *phy);
+> >  int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+> >                      struct ieee80211_sta *sta);
+> > --
+> > 2.25.1
+> >
 
