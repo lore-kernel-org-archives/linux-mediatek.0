@@ -4,69 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 459E1ECAAD5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Aug 2022 13:30:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C27ECAAA3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Aug 2022 13:34:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=igQJP4wt7FLsaM5QhhlevlmdlBDTw13brfXZnP8ec9w=; b=sthA28fgiVXVOW6TKIFj6ri00f
-	ZsYzg/g1+2vKXmN56+LqAnlHi7/4iQ/LiMfJNcHkcaJsmymIaeVwdEJyLDSABsBmm4eTJ9zaqlusI
-	3q0y2f8QvYrgLNHVIRXF84fWKK7v+g37WPfqxGvJ+4GzhHD7jXF/Ii7eedPV5OOyV6yw4OBhrVS0A
-	2a7y41IYIdOWVz4YqVyE8XbLcGU8ibi8HK3n5r6eF0yzIEglHyO9W5U73y6G8YIAhMHrke77GShOx
-	t2UoST7CVvVouOivUP80t+ZgdbRl00Hyu+jGaDkwnzjwxe8e+ytRqiMM1nbQV/VbudOQPMi9Jf0IZ
-	UFfVllkA==;
+	bh=qiR3kqY1FtS7aluiuV2htyDwOrHtB3ABTNirVnY7LY0=; b=jZ/Z8RHT5axSupNBiWW0VbAtbC
+	us5S8xLLxqeaWIaXM6+/kLIIdGOKlVHwdVbV5IaMBiyx7nd+auU/XViwKXUbO4d94hEsQiWhXJPup
+	zTR2D9SaMjQEvQfbGN7pjh2zl8Z9CEepQFKyqZjxhtdFqPV9orDUFeRhrZTD1Dvb+qk0a+2fTMvCQ
+	8TGZ0Sr7FuiwvoskvJTiCB8UvLVm2MUie0yAHSS6ojJiJxRWwueLtwuGXd1nHURWosYCHgue2vPI1
+	7d4LDkMuL5IcHrH2gDHD05KlXccuocp21xz4PIvzmc8HaHLRwTVVPKcowRSc2xTcZdX1qIXGsWFXV
+	/LABGhaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRZPR-00413z-2R; Fri, 26 Aug 2022 13:30:05 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oRZTc-0047Gb-7k; Fri, 26 Aug 2022 13:34:24 +0000
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRZPD-0040ma-GS; Fri, 26 Aug 2022 13:29:53 +0000
-Received: from notapiano (unknown [70.107.189.129])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 224F16601B24;
-	Fri, 26 Aug 2022 14:29:46 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661520587;
-	bh=+m7sis5b7W8J1KdNle4N0fSBG5qi9iWA0tl/U2ExgXg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kbcQ27OiXN4L4WS3AG+PvOv7ae/3Eg8kbk7YBuBUC451fN1xBzRc0WTGIhVkh8HRA
-	 TjnnsPne5t5aFubjmIdbgMCnPSfBYMq8B8N/2i44+DEE6HFX0XI3/J/PLASYLlqRan
-	 ib9M6x+PUgv0jJrNhDpSem+wsnOeqLeBE2sJ9VpHNavFzGqM2JPtCYIkVj1pcaeDu4
-	 0Hac8gIJTwbgOy1YeeL0/8fYXgSET8355QagOgJ5ViauNhJ7lMU0DgJeGQ5OiH/g5n
-	 YPZpygzbV8XhLtZmaV05NRDhq41G9pTlFIIBEeRjmHgfcmjQP2jhjQ4yw/g0B9WM7z
-	 mt2K9gggrZFrA==
-Date: Fri, 26 Aug 2022 09:29:42 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: "xinlei.lee" <xinlei.lee@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
-	rex-bc.chen@mediatek.com, angelogioacchino.delregno@collabora.com,
-	jason-jh.lin@mediatek.com, yongqiang.niu@mediatek.com,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	Jitao Shi <jitao.shi@mediatek.com>
-Subject: Re: [PATCH v3,1/2] soc: mediatek: Add mmsys func to adapt to dpi
- output for MT8186
-Message-ID: <20220826132942.k2rnlz5wwi62tity@notapiano>
-References: <1661236702-30682-1-git-send-email-xinlei.lee@mediatek.com>
- <20220823201758.ffbgb5t5odoicgir@notapiano>
- <b0f6a3c6-8fef-8983-fb69-6157a9859afd@gmail.com>
- <30f536c754829011e78239a9a400945faa4580e4.camel@mediatek.com>
+	id 1oRZTK-0046GB-S0
+	for linux-mediatek@lists.infradead.org; Fri, 26 Aug 2022 13:34:08 +0000
+Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-324ec5a9e97so36197637b3.7
+        for <linux-mediatek@lists.infradead.org>; Fri, 26 Aug 2022 06:34:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=qiR3kqY1FtS7aluiuV2htyDwOrHtB3ABTNirVnY7LY0=;
+        b=Badek9Z3Zw7k7MP3T3YzVdM7CAxTgNBC24Y9sxs8xUcI7ApWgF7W8s+Gcvz5ZVhKP1
+         Gv/BM4JpKuQ0UsB3GLYAcuMHJrwhuMYNb4FXaxY6qW5KzLK0QVcBuDwguYH4jNNxTedj
+         lCUZuv+5g6OWaGpzsg7CujNCCX8jo0zwxY/d62havl0hP9HtOY07Lla1ygso+jhceuRo
+         c6zerpixbQK+eKtQ2/j8/OVTJ7t+7dCHSEbF6H4JAlv0ncMGq4l8alqAwd7ZBJWq49W7
+         dduQbKTdmgNjW5trp2/imaB1kqDb2eJN79QRGfSzutp/zKzz9em/stAFPeeyWGJku245
+         agtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=qiR3kqY1FtS7aluiuV2htyDwOrHtB3ABTNirVnY7LY0=;
+        b=69rAAGgC7TUgJt8nLHe9q7jGzKne6f2MLuYQD0v2xNCIk6c0IotjSsba+8uLO2Lw19
+         bc8JhbLPtolt9kZPco8MWIGB9SmXSuyOqaVU0EHMKR/CJEMBTk+Tleu1VRDssrxOFES+
+         0DOpmyXHJcg7FXpoHN665YgQbGRRe9j5gC3/zTYG+8tcnxT6aXx6ZBdYzBv5ihYTD3Zh
+         95BxURH4+dYBoR46Lmvu4r8AZAWeIQr0QmTsNyhEFDjMAyLtzrVz8de6WsX+tH937+gy
+         p0zg5KDbWAR3GFL4xDX7IhAVoQyqiDOE8DWNMx9jOdpZux9nbi6E8tAI4fpYU0bOqQro
+         ZS3Q==
+X-Gm-Message-State: ACgBeo1cSkpjCtOyPAvNaioGFSORarkMEpnnglvUyqo3YbkcShXGU5CF
+	oycXNY7C9OXkKKmlC4C+rPwuDXLhGQQqOKB/6E1vPg==
+X-Google-Smtp-Source: AA6agR4cSYDUjHjKqgs9zKaZ58NNESabUJfIrLT+OTCGH4HwSfACpDx/ctbx5ozgIrEgXjQk7zDpKuMhmKfrTiLRGm0=
+X-Received: by 2002:a05:6902:124e:b0:668:222c:e8da with SMTP id
+ t14-20020a056902124e00b00668222ce8damr7302689ybu.383.1661520843052; Fri, 26
+ Aug 2022 06:34:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <30f536c754829011e78239a9a400945faa4580e4.camel@mediatek.com>
+References: <20220823145649.3118479-6-robh@kernel.org>
+In-Reply-To: <20220823145649.3118479-6-robh@kernel.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Fri, 26 Aug 2022 15:33:51 +0200
+Message-ID: <CACRpkdZ3syQzLaZJ1aksB6o7Q_xOMGSC1RfT_9iVYgpXHi_mfw@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: Add missing (unevaluated|additional)Properties
+ on child nodes
+To: Rob Herring <robh@kernel.org>
+Cc: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Tomasz Figa <tomasz.figa@gmail.com>, 
+	Sylwester Nawrocki <s.nawrocki@samsung.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
+	Sowjanya D <lakshmi.sowjanya.d@intel.com>, 
+	Chris Packham <chris.packham@alliedtelesis.co.nz>, Andy Teng <andy.teng@mediatek.com>, 
+	Jacopo Mondi <jacopo+renesas@jmondi.org>, Krzysztof Kozlowski <krzk@kernel.org>, linux-gpio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	openbmc@lists.ozlabs.org, linux-renesas-soc@vger.kernel.org, 
+	linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220826_062951_930499_A9FD0A8D 
-X-CRM114-Status: GOOD (  22.84  )
+X-CRM114-CacheID: sfid-20220826_063406_954910_47015060 
+X-CRM114-Status: UNSURE (   8.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,55 +98,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 26, 2022 at 02:12:00PM +0800, xinlei.lee wrote:
-> On Thu, 2022-08-25 at 17:04 +0200, Matthias Brugger wrote:
-> > 
-> > On 23/08/2022 22:17, Nícolas F. R. A. Prado wrote:
-> > > On Tue, Aug 23, 2022 at 02:38:22PM +0800, xinlei.lee@mediatek.com
-> > > wrote:
-> > > > From: Xinlei Lee <xinlei.lee@mediatek.com>
-> > > > 
-> > > > Add mmsys function to manipulate dpi output format configuration
-> > > > for MT8186.
-> > > > 
-> > > > Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
-> > > > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> > > > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> > > 
-> > > Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > > 
-> > 
-> > Patch looks fine, I'll wait for v4 as there is still some discussion
-> > on the DRM 
-> > part. Please try to fix the threading problem you had in sending this
-> > series.
-> > 
-> > Thanks,
-> > Matthias
-> 
-> Hi Matthias:
-> 
-> Thanks for your review.
-> 
-> Before I send the next version, do you mean the treading problem you
-> are talking about is the problem I'm discussing in another patch in
-> this series, or something else?
+On Tue, Aug 23, 2022 at 4:57 PM Rob Herring <robh@kernel.org> wrote:
 
-Hi Xinlei,
+> In order to ensure only documented properties are present, node schemas
+> must have unevaluatedProperties or additionalProperties set to false
+> (typically).
+>
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
-no, the threading problem Matthias is referring to is the fact that this version
-of your series had two cover letters (patch 0) and a patch 2 [1], while patch 1
-was sent in a different email thread [2]. The whole series (cover letter,
-patches 1 and 2), should have been in the same email thread. Also, I noticed
-that your cover letter lists the patches with incorrect prefixes "FROMLIST".
+Patch applied to the pinctrl tree for v6.1
 
-So something weird happened when you sent this version of the series. It was ok
-in the previous version. So just make sure this is fixed when you send the next
-version of the series (after we finish the discussion on patch 2).
-
-[1] https://lore.kernel.org/linux-mediatek/1661235517-23699-1-git-send-email-xinlei.lee@mediatek.com/
-[2] https://lore.kernel.org/linux-mediatek/1661236702-30682-1-git-send-email-xinlei.lee@mediatek.com/
-
-Thanks,
-Nícolas
+Yours,
+Linus Walleij
 
