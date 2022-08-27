@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED7ABECAAD2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Aug 2022 11:42:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B79E4ECAAD2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Aug 2022 11:42:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zhOvMo8crCwc83PCE9yPA+5gT29a+t96Ff1vnrbR/QY=; b=mqtFOaibBcVK7w8EK8JQ88R819
-	MVPMLaTdEoc/M8iRwM/drsEKmRl/sTexsO0wloKE+EiF6M16dSkGUHpqavEoiNAz40w6gPuhYYuoG
-	CRYAN60V+L9rT13oyhhT6A5hmFJCFy5G7nXjrrxJZ0GZwu85pi2RWjeVIBOP8J+CZM175ku3RHich
-	oHvJ98yK/TAMVav7Y5xXnqMOkG2rEcwQ6qMDg+UDaMn2j+j4enAyV+qANER2/wN8Sa++5PFuluohA
-	Ktls2FCZCO1d5NYyfBvfP9A7b02UP5juHiPaq+gpv5SQSCvwBXJ1Pe8tZNiGLqsoRtsCiGRL7S+pq
-	XX2lWf0Q==;
+	bh=p349nESm6zuHc7TMCtHIOxkTvvK6qC0QPhMyWTzoaAc=; b=UFKZ2iJf+6CFypb80hqDx1iGFB
+	WtvWCl6F46dzduycdkZDv0Ydkupy0RoInO+e54L2pMDHthfDjwccT9lH4h/X0N0mISDWFQs8ofozv
+	knK2bkDTxDB7uT/32RyepL6fvJh/+VwCj/WZTwVFhL2TQ2/9fW616BI4bjXMRPWcmvfLUBhFyA16y
+	bIByCQS6QhRTSrOqI/lQUvSrOP1xkUxkTBYksCusWRiPeGwzLp49Qa8xFhl+sQN20GQZSfxf9Tk8D
+	E4KGkIMM2yrempXnB9QC7eM4H1ytHWsVaRGRlKfDjElqSu/+EdtluwzPn3H0hJMN0PZZrDdkqjRN5
+	+GSCVSJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRuCm-008zgj-H4; Sat, 27 Aug 2022 11:42:24 +0000
-Received: from smtp-12.smtpout.orange.fr ([80.12.242.12] helo=smtp.smtpout.orange.fr)
+	id 1oRuCq-008zmU-42; Sat, 27 Aug 2022 11:42:28 +0000
+Received: from smtp01.smtpout.orange.fr ([80.12.242.123] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRuCb-008zZp-GA
-	for linux-mediatek@lists.infradead.org; Sat, 27 Aug 2022 11:42:14 +0000
+	id 1oRuCm-008zfz-Dx
+	for linux-mediatek@lists.infradead.org; Sat, 27 Aug 2022 11:42:26 +0000
 Received: from pop-os.home ([90.11.190.129])
 	by smtp.orange.fr with ESMTPA
-	id RuCVouLLlvbzbRuCVotLzE; Sat, 27 Aug 2022 13:42:10 +0200
+	id RuCioaXfqLFqbRuCioufxe; Sat, 27 Aug 2022 13:42:21 +0200
 X-ME-Helo: pop-os.home
 X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sat, 27 Aug 2022 13:42:10 +0200
+X-ME-Date: Sat, 27 Aug 2022 13:42:21 +0200
 X-ME-IP: 90.11.190.129
 From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 To: broonie@kernel.org,
@@ -44,17 +44,17 @@ Cc: linux-spi@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel-janitors@vger.kernel.org,
 	Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: [PATCH 1/4] spi: mt7621: Fix an error message in mt7621_spi_probe()
-Date: Sat, 27 Aug 2022 13:42:07 +0200
-Message-Id: <928f3fb507d53ba0774df27cea0bbba4b055993b.1661599671.git.christophe.jaillet@wanadoo.fr>
+Subject: [PATCH 2/4] spi: mt7621: Use the devm_clk_get_enabled() helper to simplify error handling
+Date: Sat, 27 Aug 2022 13:42:19 +0200
+Message-Id: <05a7fd22719008c8a905d6328aa9548ce40f2a7a.1661599671.git.christophe.jaillet@wanadoo.fr>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <cover.1661599671.git.christophe.jaillet@wanadoo.fr>
 References: <cover.1661599671.git.christophe.jaillet@wanadoo.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220827_044213_709937_72DD8DC3 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20220827_044224_651293_94583AB9 
+X-CRM114-Status: GOOD (  14.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,38 +69,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-'status' is known to be 0 at this point. The expected error code is
-PTR_ERR(clk).
+The devm_clk_get_enabled() helper:
+   - calls devm_clk_get()
+   - calls clk_prepare_enable() and registers what is needed in order to
+     call clk_disable_unprepare() when needed, as a managed resource.
 
-Switch to dev_err_probe() in order to display the expected error code (in a
-human readable way).
-This also filters -EPROBE_DEFER cases, should it happen.
+This helper is well suited for cases where the clock would be kept
+prepared or enabled for the whole lifetime of the driver.
 
-Fixes: 1ab7f2a43558 ("staging: mt7621-spi: add mt7621 support")
+This simplifies the error handling a lot.
+
+The order between spi_unregister_controller() (in the remove function) and
+the clk_disable_unprepare() (now handle by a  managed resource) is kept
+the same.
+(see commit 46b5c4fb87ce ("spi: mt7621: Don't leak SPI master in probe
+error path") to see why it matters)
+
 Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 ---
- drivers/spi/spi-mt7621.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+The order with  devm_spi_release_controller() (which undoes
+devm_spi_alloc_master()) is reversed, but I don't think it is an issue.
+---
+ drivers/spi/spi-mt7621.c | 14 +-------------
+ 1 file changed, 1 insertion(+), 13 deletions(-)
 
 diff --git a/drivers/spi/spi-mt7621.c b/drivers/spi/spi-mt7621.c
-index b4b9b7309b5e..351b0ef52bbc 100644
+index 351b0ef52bbc..2580b28042be 100644
 --- a/drivers/spi/spi-mt7621.c
 +++ b/drivers/spi/spi-mt7621.c
-@@ -340,11 +340,9 @@ static int mt7621_spi_probe(struct platform_device *pdev)
+@@ -327,7 +327,6 @@ static int mt7621_spi_probe(struct platform_device *pdev)
+ 	struct spi_controller *master;
+ 	struct mt7621_spi *rs;
+ 	void __iomem *base;
+-	int status = 0;
+ 	struct clk *clk;
+ 	int ret;
+ 
+@@ -339,19 +338,14 @@ static int mt7621_spi_probe(struct platform_device *pdev)
+ 	if (IS_ERR(base))
  		return PTR_ERR(base);
  
- 	clk = devm_clk_get(&pdev->dev, NULL);
--	if (IS_ERR(clk)) {
--		dev_err(&pdev->dev, "unable to get SYS clock, err=%d\n",
--			status);
--		return PTR_ERR(clk);
--	}
-+	if (IS_ERR(clk))
-+		return dev_err_probe(&pdev->dev, PTR_ERR(clk),
-+				     "unable to get SYS clock\n");
+-	clk = devm_clk_get(&pdev->dev, NULL);
++	clk = devm_clk_get_enabled(&pdev->dev, NULL);
+ 	if (IS_ERR(clk))
+ 		return dev_err_probe(&pdev->dev, PTR_ERR(clk),
+ 				     "unable to get SYS clock\n");
  
- 	status = clk_prepare_enable(clk);
- 	if (status)
+-	status = clk_prepare_enable(clk);
+-	if (status)
+-		return status;
+-
+ 	master = devm_spi_alloc_master(&pdev->dev, sizeof(*rs));
+ 	if (!master) {
+ 		dev_info(&pdev->dev, "master allocation failed\n");
+-		clk_disable_unprepare(clk);
+ 		return -ENOMEM;
+ 	}
+ 
+@@ -376,13 +370,10 @@ static int mt7621_spi_probe(struct platform_device *pdev)
+ 	ret = device_reset(&pdev->dev);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "SPI reset failed!\n");
+-		clk_disable_unprepare(clk);
+ 		return ret;
+ 	}
+ 
+ 	ret = spi_register_controller(master);
+-	if (ret)
+-		clk_disable_unprepare(clk);
+ 
+ 	return ret;
+ }
+@@ -390,13 +381,10 @@ static int mt7621_spi_probe(struct platform_device *pdev)
+ static int mt7621_spi_remove(struct platform_device *pdev)
+ {
+ 	struct spi_controller *master;
+-	struct mt7621_spi *rs;
+ 
+ 	master = dev_get_drvdata(&pdev->dev);
+-	rs = spi_controller_get_devdata(master);
+ 
+ 	spi_unregister_controller(master);
+-	clk_disable_unprepare(rs->clk);
+ 
+ 	return 0;
+ }
 -- 
 2.34.1
 
