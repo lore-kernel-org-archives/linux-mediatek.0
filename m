@@ -4,70 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB3F8ECAAD2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 11:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC37FECAAD2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 11:03:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r5hKr+vpYAGFnRnjaCcClWM6PHOrBvKMYyDAZpDfF6k=; b=oyPfcisjAA2cWxdfH2jrEoX1Bd
-	40y9i6lC5raHHcrT7yRFwDsvtJI6cAZmkDxluuMEbDrRhl5VF7utLGbtM5ht896BwQd6EqIiA1Ckw
-	CV3Q90aQYlhauVJ7ZVakXRYemOKf1stYIne5Kc8JFkQKxoUsVQL+nJEH6xcI8SUVQcAJWCAJYpkA/
-	siJM98bNCkMulmStN9ROL/zqALNbAeoyEHkG4GVSpj+WL/uTEzsVZO5q70ZyvMjjB89EUnbCVHYk5
-	tuaPhjwSYGlpLUkJNuyHwDJSfSft1/YXdLbgFSA7Tk/e4oz9bLALmnpuYoxYQABAcacnmdBdE/v2R
-	/pSnqWlQ==;
+	bh=CpaB3ddJEDe584NFMiOKZhHWMRiirLWO36hNiUSRyEA=; b=F/st4/TlRkh9w3XAChEW5g3TaS
+	DU0xXKMTwxcZ261u/sNWtUJFNqtCVJVrWtbw7G4IpBJyr5dnFf1pnEuokNmE6qRs6IPhKDx//x+B3
+	9J4WK0fvdaaV84Gd6l5x/RgoEutlCP2o6m/QbkuPyayxMqgTWaWXNg9MGdBIxOwOnt6cIjGu3xtIB
+	6JAKqIFVpQRh16HPQKF8AF1dWo+Q310rE+MV6WrS0ikFlMwdQbcHitbsr1a1C5Sf7dAYkAFQn4a1f
+	RmkKq13gH1B6jqzFyEVNqCywPEG1NpLI9koS/QynVV1Zf2aGPQXram+VQ6LooU1+SZIJ16u6WVouU
+	AXwPlgAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oScWf-007lWE-NU; Mon, 29 Aug 2022 11:01:53 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1oScXy-007nNn-1V; Mon, 29 Aug 2022 11:03:14 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oScWN-007l7e-Lx; Mon, 29 Aug 2022 11:01:37 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 24F0C1884980;
-	Mon, 29 Aug 2022 11:01:29 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 0C5DA25032B7;
-	Mon, 29 Aug 2022 11:01:29 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id E0ADE9EC0003; Mon, 29 Aug 2022 11:01:28 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+	id 1oScXi-007n6k-Dc; Mon, 29 Aug 2022 11:02:59 +0000
+Received: by mail-wr1-x434.google.com with SMTP id c7so3019799wrp.11;
+        Mon, 29 Aug 2022 04:02:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=CpaB3ddJEDe584NFMiOKZhHWMRiirLWO36hNiUSRyEA=;
+        b=MtFVRnlqvFCDp/2JPEM0WuYX9z4sAWXEySwkIEslskyWcWEwk7GwF7mPD8fnNCuka5
+         iZsdTIYsIIz0dJ8SR8H3+W0Q6U7aWML84pUi/t1/GkczgGtm/ASEyvZ2GqlwN6IemqCg
+         MEjwVu9pVjKpjdvaJBfkTI7vFEwtZe2OI9fpO0fPVHxlBbX6Ddw149ocyNxFAAYF+FEz
+         PBuog2YOfo9a95u4PxujzJ1yrwRpOqEXasge7p1iHCzFhINUeq8JLdF9iyBrK5/GboTo
+         +tKXTmep6l6NiakYLuT6k6P7ypdoPHTjvVyi6ADq0r6CGPvaUmuemFRpTkivQXXe2ksn
+         M2fQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=CpaB3ddJEDe584NFMiOKZhHWMRiirLWO36hNiUSRyEA=;
+        b=K0Sn8FbIlRiNanEuXi9uDpSJauRXD3CkVdM3GqQ2rsHj32yd/BxQmCmXkCyngCUf6B
+         yj5uLJvri0pLgSxZpO5Aaoxvk4ktNQBujoMPQvJKpvB15Zg4tin3M6ymWSwen+Eo7sbh
+         GoyBLZgWAsnQS2uAnZTK1Ov3MIiYBH19m0fDqptpExiIAPK3A7d0cWLlx+KrQ3v4Tbpd
+         ZJbDLv8j3xBetb5GrV9pUd9EJ7EHPGDOaNkliqbP7RApd7Gu0VJ19eUZ+GWNkrh5NdfE
+         dfj3gr61OKy/hXk4wksfq31MpuQcnjx+Jmc3aHxq7IoH93f/xJyzErnFXpmijLkv7sic
+         KcBQ==
+X-Gm-Message-State: ACgBeo3I3VWUXqp6Q15aVXQO3ndZuK/E0xWaS70aP0kNKReI8TkMrYEo
+	BifRi3SLlHUfPcbilDOHf1E=
+X-Google-Smtp-Source: AA6agR6JDbKTJ7JqVUrNRRhnLjrcMSZrxoyQmDSWVWy3eJl6CWzFTpZag8RsDca0Ng4LaNIvdXqZhA==
+X-Received: by 2002:a05:6000:2cc:b0:225:6e25:a9f4 with SMTP id o12-20020a05600002cc00b002256e25a9f4mr6255619wry.330.1661770973922;
+        Mon, 29 Aug 2022 04:02:53 -0700 (PDT)
+Received: from [192.168.0.30] ([47.62.125.55])
+        by smtp.gmail.com with ESMTPSA id a11-20020a5d456b000000b0021f15514e7fsm8078909wrc.0.2022.08.29.04.02.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 29 Aug 2022 04:02:52 -0700 (PDT)
+Message-ID: <2629f8ed-9ca5-3b37-3025-85262e5fe848@gmail.com>
+Date: Mon, 29 Aug 2022 13:02:51 +0200
 MIME-Version: 1.0
-Date: Mon, 29 Aug 2022 13:01:28 +0200
-From: netdev@kapio-technology.com
-To: Ido Schimmel <idosch@nvidia.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
- Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
- Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
- Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
- Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
- <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
- <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
- <ansuelsmth@gmail.com>, Daniel Borkmann <daniel@iogearbox.net>, Yuwei Wang
- <wangyuweihx@gmail.com>, linux-kernel@vger.kernel.org,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.1.2
+Subject: Re: [PATCH 6/6] soc: mediatek: mtk-svs: Use bitfield access macros
+ where possible
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: roger.lu@mediatek.com, khilman@baylibre.com,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v5 net-next 1/6] net: bridge: add locked entry fdb flag to
- extend locked port feature
-In-Reply-To: <Ywo16vHMqxxszWzX@shredder>
-References: <20220826114538.705433-1-netdev@kapio-technology.com>
- <20220826114538.705433-2-netdev@kapio-technology.com>
- <Ywo16vHMqxxszWzX@shredder>
-User-Agent: Gigahost Webmail
-Message-ID: <63c78aabe2683b9639717c1a74dbdacc@kapio-technology.com>
-X-Sender: netdev@kapio-technology.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
+ linux-kernel@vger.kernel.org, nfraprado@collabora.com, kernel@collabora.com
+References: <20220726141653.177948-1-angelogioacchino.delregno@collabora.com>
+ <20220726141653.177948-7-angelogioacchino.delregno@collabora.com>
+ <fa5f9bc8-f087-02c6-dd31-efa33244bf1b@gmail.com>
+ <5ef83611-1649-c86b-abd8-dff617993580@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <5ef83611-1649-c86b-abd8-dff617993580@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_040135_940334_CE106898 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20220829_040258_672717_700D701C 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,46 +96,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-08-27 17:19, Ido Schimmel wrote:
-> On Fri, Aug 26, 2022 at 01:45:33PM +0200, Hans Schultz wrote:
+Hi Angelo,
 
-How about this?
+On 29/08/2022 11:33, AngeloGioacchino Del Regno wrote:
+> Il 25/08/22 15:29, Matthias Brugger ha scritto:
+>>
+>>
+>> On 26/07/2022 16:16, AngeloGioacchino Del Regno wrote:
+>>> In order to enhance readability and safety during registers setup
+>>> and value retrieval, redefine a few register related macros and
+>>> convert all open-coded instances of bitfield setting/retrieval
+>>> to use the FIELD_PREP() and FIELD_GET() macros.
+>>> While at it, some macros were renamed to further enhance readability.
+>>>
+>>> This commit brings no functional changes.
+>>>
+>>> Signed-off-by: AngeloGioacchino Del Regno 
+>>> <angelogioacchino.delregno@collabora.com>
+>>
+>> Does not apply, would you mind to resend together with 1/6? Thanks!
+>>
+> 
+> Hey Matthias,
+> 
+> thanks for picking the ones that applied cleanly in the meanwhile.
+> 
+> I'll rebase this and 1/6 as soon as I can!
+> 
 
-diff --git a/net/bridge/br_input.c b/net/bridge/br_input.c
-index 1064a5b2d478..82bb50851716 100644
---- a/net/bridge/br_input.c
-+++ b/net/bridge/br_input.c
-@@ -103,8 +103,19 @@ int br_handle_frame_finish(struct net *net, struct 
-sock *sk, struct sk_buff *skb
-                         br_fdb_find_rcu(br, eth_hdr(skb)->h_source, 
-vid);
+Nicolas did it already and both of them should be part of Linux next. Let me 
+know if there is anything missing.
 
-                 if (!fdb_src || READ_ONCE(fdb_src->dst) != p ||
--                   test_bit(BR_FDB_LOCAL, &fdb_src->flags))
-+                   test_bit(BR_FDB_LOCAL, &fdb_src->flags) ||
-+                   test_bit(BR_FDB_ENTRY_LOCKED, &fdb_src->flags)) {
-+                       if (!fdb_src || ((READ_ONCE(fdb_src->dst) != p) 
-&&
-+                                        
-(!unlikely(test_bit(BR_FDB_LOCAL, &fdb_src->flags))))) {
-+                               unsigned long flags = 0;
-+
-+                               if (p->flags & BR_PORT_MAB) {
-+                                       __set_bit(BR_FDB_ENTRY_LOCKED, 
-&flags);
-+                                       br_fdb_update(br, p, 
-eth_hdr(skb)->h_source, vid, flags);
-+                               }
-+                       }
-                         goto drop;
-+               }
-         }
-
-         nbp_switchdev_frame_mark(p, skb);
-
-It will allow roaming to a MAB enabled port (no roaming to a simply 
-locked port should be allowed of course), and it will not change a local 
-entry and not rely on 'learning on' on the locked port of course.
-Roaming to an unlocked port will also be allowed, and the locked flag 
-will be removed in this case according to code in br_fdb_update().
+Regards,
+Matthias
 
