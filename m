@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EB24C0502C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 14:05:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44709ECAAD2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 14:09:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Etg8ZHwp7/iTySLtvgiSCHfgG75fIdOo/Kv2LUFZung=; b=ZsKYhWdTyv+xRVgsdqcOrmr3XA
-	OHV8jZRBxl9Y2ICZfqKNVS70NG+q8YGZeejzGAq32DLs+IlxxTWSj0eJAVb/4h2t0R9tCnfEothHf
-	p8jyRIrDtFjo652aov/oaZ4ccD90BNZb8QDWvUVFXJ3Zqixas9/JckzS4lbk66Cj6h+EtkLupc5Jv
-	o+osq01Wov089ypEBEOt1fPZpudwoz5rUk2QkRecUSFFtoibS+tIOHvjIfYgiCuDQB9PLzK128aBM
-	JsPR1gmx/Emsko+PsZs+x/i2Z1aJLcsxgTc5IMA2cimQfRZg7QgsegIw/PiBEAuI7A12S1RmCDDdg
-	/akrCW1w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eEY1O3oEzYgy57U5LheCVVAqpcKAkC8HbzzYdSTGgmU=; b=zE9TZxFK/cG+0I8g2rsBNdNNuF
+	At6pQQ0DXbYnjnzrfu8EFKeiwWbpo6FSIhakFygbHWtrELwR7G9S7Spfz2hZYmTOINCSBs8fq+erG
+	La7FpBh5iNlHitu5FUuIAXLGQmN5tH84kbQj7GMUdTuYJmRWVoGPm4bZP6W5LHr8M7gWIJWSvGdpe
+	ZKhmkmwM/D8NLZNt4JUUnb1E1xjLvUuIRGXDKDmYnF2Hxudp+v9+D/yufDMykd3nEHKW1S8ss/UvC
+	n3xM4Ks34I4osUzNxeAVdS3hCtTAPTup6ghyeYl8ra+TJRc3YgNbeoWKEc4yLxDnjr1kw9OV3FWsC
+	EFPt96jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSfO3-00Awb0-Vh; Mon, 29 Aug 2022 14:05:12 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oSfRm-00AyVG-GC; Mon, 29 Aug 2022 14:09:02 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSf9H-00Apxk-7t; Mon, 29 Aug 2022 13:49:59 +0000
-Received: from notapiano (unknown [70.107.189.129])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E2C6A6601DC4;
-	Mon, 29 Aug 2022 14:49:47 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661780989;
-	bh=INGbphvqng/9YH+Uc8bMKz/do1TcHYSTNqW55zHsUwQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fbIIK+JUF9TglZipH4EnVCozhC+uFmadTrTjvS4WSuRd/Tu8QcrhxhabNPE2YZwME
-	 NVvq/jWIyd/YnMG1lkmULUzdRaX6OXi/Pm0LiEZV49bE9vScG7OIgRCP8XnjbtGjPU
-	 iDXuAhvhKROs5bUJkHfCcxHU0CsZZxmc7Ht9eoz1+PTG7OFjBiPWDe7woHOhlVQwup
-	 sOyBO9Ds7MpIyZ167RwCrNgugVHIDC9XBe0vux1SiLx0QodyLQCOQL65DDr2zGRiYZ
-	 eKuoz3bGSIbERwiBe+VU4F75e8Xk0evAwSOXeJ+R2DbA+1+FAZmQWMO5Q7gxOjAqOm
-	 fxZLHDigta+BA==
-Date: Mon, 29 Aug 2022 09:49:44 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: xinlei.lee@mediatek.com
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	rex-bc.chen@mediatek.com, jason-jh.lin@mediatek.com,
-	yongqiang.niu@mediatek.com, chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
-	jitao.shi@mediatek.com, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v4,2/2] drm: mediatek: Adjust the dpi output format to
- MT8186
-Message-ID: <20220829134751.kvljnlsjwvmxhve7@notapiano>
-References: <1661743308-29120-1-git-send-email-xinlei.lee@mediatek.com>
- <1661743308-29120-3-git-send-email-xinlei.lee@mediatek.com>
+	id 1oSfLn-00AvS7-M6; Mon, 29 Aug 2022 14:02:54 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 4E97618848CD;
+	Mon, 29 Aug 2022 14:02:46 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id 3EC5825032B7;
+	Mon, 29 Aug 2022 14:02:46 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id 373FF9EC000B; Mon, 29 Aug 2022 14:02:46 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1661743308-29120-3-git-send-email-xinlei.lee@mediatek.com>
+Date: Mon, 29 Aug 2022 16:02:46 +0200
+From: netdev@kapio-technology.com
+To: Nikolay Aleksandrov <razor@blackwall.org>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
+ Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
+ Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Shuah Khan
+ <shuah@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
+ Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>, Ido
+ Schimmel <idosch@nvidia.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v5 net-next 1/6] net: bridge: add locked entry fdb flag to
+ extend locked port feature
+In-Reply-To: <e9eb5b72-073a-f182-13b7-37fc53611d5f@blackwall.org>
+References: <20220826114538.705433-1-netdev@kapio-technology.com>
+ <20220826114538.705433-2-netdev@kapio-technology.com>
+ <e9eb5b72-073a-f182-13b7-37fc53611d5f@blackwall.org>
+User-Agent: Gigahost Webmail
+Message-ID: <972663825881d135d19f9e391b2b7587@kapio-technology.com>
+X-Sender: netdev@kapio-technology.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_064955_503311_8FA5F32A 
-X-CRM114-Status: UNSURE (   7.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220829_070253_531080_6091CD5E 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,17 +82,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 29, 2022 at 11:21:48AM +0800, xinlei.lee@mediatek.com wrote:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
+On 2022-08-27 13:30, Nikolay Aleksandrov wrote:
+> On 26/08/2022 14:45, Hans Schultz wrote:
 > 
-> Dpi output needs to adjust the output format to dual edge for MT8186.
+> Hi,
+> Please add the blackhole flag in a separate patch.
+> A few more comments and questions below..
 > 
-> Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-
-Thanks,
-Nícolas
+Hi,
+if userspace is to set this flag I think I need to change stuff in 
+rtnetlink.c, as I will need to extent struct ndmsg with a new u32 entry 
+as the old u8 flags is full.
+Maybe this is straight forward, but I am not so sure as I don't know 
+that code too well. Maybe someone can give me a hint...?
 
