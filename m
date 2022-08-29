@@ -4,70 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF6D9ECAAD4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 09:34:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FF0EECAAD4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 09:35:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qj/D2il57D5t/YetyfJIs9q+4PtBHhH2BwEQ71uq+2U=; b=hT26TE20IXFsQGVlb8B0ehYMc4
-	GpnTpy4au2i7rihN0uXVx20s+zQxw+1BcGHQuG+5r04BinSbaTkLruW/CnmLjNqd1eUCkyH4HEEwg
-	n/iuZolinJEycKC2djqjJuCg9rNGcrpF2m7x+SNLbyTFzgU/nAJ1PllaXof2JYONMyz6/55QCmL3Z
-	EI2MOXWG4qPxRs9ANE4c6e8dMP+OL7MDkiZhq/7JOSthBqFC929QQqj9XuMOn6C1R0NLWhnvNq+5r
-	8eoFBTXvp2OpPH90uGbDUGSXH0dt56kRyLIz0CTWmixZxaVX4Fl7oM8pLEiScvpm8T5fGPUjbt4hd
-	xfag9A7g==;
+	bh=eB+3aQ3kL1UWfYUID7xX798KfUmuc+e8SZ1pQzIJZMQ=; b=BRX3Ud8FezQrgrSmD0153G6zSP
+	Szu55Q/sHq53/hjPkMMpjhGpBHf7GxFD4Go3lweJgpn/EYalReyVWPn3/bH8iZmhgnsXBJ1d/8SSp
+	NLB4qhTo9GEGUguMLGxNiFr/zZ4vpPWwMDN+ikyC04BvNUcKBQJHxvtodxTuZtUcGVpDyDrKOwlmT
+	UrcdXC5+6k0PWQW8Jj82NTZpMgbNgk0EX/uYWmISxDZKzrJpX9bX6zJt7WeNmErMfavJENt8pk0eB
+	x6gHn9+itML4/06tS3zzYOSE2nSguzZGZvlWx6kFn6Uct+4WksLssHpVpojsfV9FwxIzzLFniacbN
+	zWrAOjEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSbA7-006mWU-OW; Mon, 29 Aug 2022 09:34:31 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1oSbAX-006moG-0U; Mon, 29 Aug 2022 09:34:57 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSb8F-006lRm-JA; Mon, 29 Aug 2022 09:32:38 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 22BC1188493F;
-	Mon, 29 Aug 2022 09:32:30 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 10FD125032B7;
-	Mon, 29 Aug 2022 09:32:30 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 0C1E59EC0005; Mon, 29 Aug 2022 09:32:30 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+	id 1oSb93-006ln5-MP; Mon, 29 Aug 2022 09:33:27 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5BA496601DB2;
+	Mon, 29 Aug 2022 10:33:23 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1661765603;
+	bh=TeeiT3sOJD7ti95kUOVN+hHl62A13KKzEUX5gr7qxoY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bYFXlHfCvVW3d8M5OyGw5U34C40yYrQTineqrlNQhResTqgK8x1QOy66hNAkKka+I
+	 Ce4pEa8FljcExBpHQlu0UzWag8PIgelGaquxFPg+ubuTAMptCH2oQYDnv2gPWI9ukt
+	 qxDk+jlDmCaIIG8Glg4lWUJfB6oXSYl/un/ZM6vNRp76veV6Bg5ElmQ81PoUP9V97W
+	 w8+tQt6OjwFY0VGjaegF6b1yKIp64dxfp3yNHRKtzyIOQORh3/VmZIQbGg8DY02MT8
+	 dQxXc6cTH5aUc7hpQnKyqEbsDUaWLWlUZxQ1f6gQ/WrpnJr8ieMIQA2O0J+5cwcJCd
+	 JB8bSI7w73KyA==
+Message-ID: <5ef83611-1649-c86b-abd8-dff617993580@collabora.com>
+Date: Mon, 29 Aug 2022 11:33:20 +0200
 MIME-Version: 1.0
-Date: Mon, 29 Aug 2022 11:32:29 +0200
-From: netdev@kapio-technology.com
-To: Ido Schimmel <idosch@nvidia.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
- Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
- Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
- Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
- Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
- <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
- <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
- <ansuelsmth@gmail.com>, Daniel Borkmann <daniel@iogearbox.net>, Yuwei Wang
- <wangyuweihx@gmail.com>, linux-kernel@vger.kernel.org,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 6/6] soc: mediatek: mtk-svs: Use bitfield access macros
+ where possible
+Content-Language: en-US
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: roger.lu@mediatek.com, khilman@baylibre.com,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v5 net-next 1/6] net: bridge: add locked entry fdb flag to
- extend locked port feature
-In-Reply-To: <Ywo16vHMqxxszWzX@shredder>
-References: <20220826114538.705433-1-netdev@kapio-technology.com>
- <20220826114538.705433-2-netdev@kapio-technology.com>
- <Ywo16vHMqxxszWzX@shredder>
-User-Agent: Gigahost Webmail
-Message-ID: <42392a323bdc5324e1e4682fca378c90@kapio-technology.com>
-X-Sender: netdev@kapio-technology.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
+ linux-kernel@vger.kernel.org, nfraprado@collabora.com, kernel@collabora.com
+References: <20220726141653.177948-1-angelogioacchino.delregno@collabora.com>
+ <20220726141653.177948-7-angelogioacchino.delregno@collabora.com>
+ <fa5f9bc8-f087-02c6-dd31-efa33244bf1b@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <fa5f9bc8-f087-02c6-dd31-efa33244bf1b@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_023235_864050_C161A15B 
-X-CRM114-Status: GOOD (  21.87  )
+X-CRM114-CacheID: sfid-20220829_023325_936109_0D5543A4 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,56 +78,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-08-27 17:19, Ido Schimmel wrote:
-> On Fri, Aug 26, 2022 at 01:45:33PM +0200, Hans Schultz wrote:
-> How about the below (untested):
+Il 25/08/22 15:29, Matthias Brugger ha scritto:
 > 
-> diff --git a/net/bridge/br_input.c b/net/bridge/br_input.c
-> index 68b3e850bcb9..9143a94a1c57 100644
-> --- a/net/bridge/br_input.c
-> +++ b/net/bridge/br_input.c
-> @@ -109,9 +109,18 @@ int br_handle_frame_finish(struct net *net,
-> struct sock *sk, struct sk_buff *skb
->                 struct net_bridge_fdb_entry *fdb_src =
->                         br_fdb_find_rcu(br, eth_hdr(skb)->h_source, 
-> vid);
 > 
-> -               if (!fdb_src || READ_ONCE(fdb_src->dst) != p ||
-> -                   test_bit(BR_FDB_LOCAL, &fdb_src->flags))
-> +               if (!fdb_src) {
-> +                       if (p->flags & BR_PORT_MAB) {
-> +                               __set_bit(BR_FDB_ENTRY_LOCKED, &flags);
-> +                               br_fdb_update(br, p, 
-> eth_hdr(skb)->h_source,
-> +                                             vid, flags);
-> +                       }
-> +                       goto drop;
-> +               } else if (READ_ONCE(fdb_src->dst) != p ||
-> +                          test_bit(BR_FDB_LOCAL, &fdb_src->flags) ||
-> +                          test_bit(BR_FDB_LOCKED, &fdb_src->flags)) {
->                         goto drop;
-> +               }
->         }
+> On 26/07/2022 16:16, AngeloGioacchino Del Regno wrote:
+>> In order to enhance readability and safety during registers setup
+>> and value retrieval, redefine a few register related macros and
+>> convert all open-coded instances of bitfield setting/retrieval
+>> to use the FIELD_PREP() and FIELD_GET() macros.
+>> While at it, some macros were renamed to further enhance readability.
+>>
+>> This commit brings no functional changes.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > 
-> The semantics are very clear, IMO. On FDB miss, add a locked FDB entry
-> and drop the packet. On FDB mismatch, drop the packet.
-> 
-> Entry can roam from an unauthorized port to an authorized port, but not
-> the other way around. Not sure what is the use case for allowing 
-> roaming
-> between unauthorized ports.
-> 
-> Note that with the above, locked entries are not refreshed and will
-> therefore age out unless replaced by user space.
+> Does not apply, would you mind to resend together with 1/6? Thanks!
 > 
 
-Okay I was under the impression that entries should be able to roam 
-freely between authorized and unauthorized ports in the bridge as long 
-as the locked flag is on when roaming to the MAB enabled port. As you 
-know roaming is not a big issue with mv88e6xxx.
+Hey Matthias,
 
-As I see this code, an entry cannot roam to an authorized port as there 
-is no update after the port mismatch check and the packet is dropped as 
-it should in this case in the locked section.
+thanks for picking the ones that applied cleanly in the meanwhile.
 
+I'll rebase this and 1/6 as soon as I can!
+
+Cheers,
+Angelo
 
