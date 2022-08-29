@@ -4,71 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72D82ECAAD4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 08:19:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45358ECAAD5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 08:27:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xVxvSjmhQezfhC0S2j5lAGlt+gBCzkVCvfJs45f+cwg=; b=HLQl+QnLdXKgaHwnBZKwsv7n5I
-	E6M7xFNrDDNKpy7tkdoKym0uVH4sqN1u7z1TLbXGe74A9fVjijSK0Vb260DBjVJhzqztTjQCc4u2J
-	RSsa3XPFuX/Qh/fWhlH4jSblO2HbX4VC7am4Zjo73h0sXSOL1bjGabtbexsFHT/mxiLQxZTy7RDxg
-	p/GGLcpJV5SMLlFb2jCQEYj/H8pTUQl1KcWvGoe4hTdcyfSNifCOxyFZoebPb2NGg4u702+q8z4dc
-	SA/I+LC7j+/N2P+e9gtpvSAu33gItw3vSOwtIFwzpHJRhAOifNPzt8ocTai9ARiOsYlBF8ScGMsQC
-	iuLtNDcQ==;
+	bh=uFRiffIvzQ9QFbO1m9r0+ADVKxOh8ctJA6Vb37LR4lM=; b=SdreuzHSzZuo7VV4WAtLVG1uFT
+	k2rrRBK53VifWQ+xABs7O+yfs390kpn8dknoW4ImI4dgllOxzrlRnbYf2UHJ3tyW5QG6ws+lqruXz
+	Ts224HWmWznP54BEFxVHEGlSGvTtRCdg6HNfcBUnKWA50D7lCTf1hUmn+eGp8FnDuEmp73mFTlSq/
+	h9yW6Gqda3VXPTSe650ly/LIN4v5qUSlRwH7PdDcgHSKFjRyYRxWh3BXUTEZVu8nIOYACxAa/iphU
+	8eKfVwBRGTZ2U+/XIdCd8MiRAmiRfK5ALjDq/M5q6FAWe65JdMmnU+5185aHFVfU81Tu1l8TqKWib
+	o2QeSMGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSZzl-0066ic-IM; Mon, 29 Aug 2022 08:19:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oSa7B-006BY6-U7; Mon, 29 Aug 2022 08:27:25 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSZze-0066cz-NO; Mon, 29 Aug 2022 08:19:40 +0000
-X-UUID: c2919ad9eb594c6fb41fe4021bde709b-20220829
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xVxvSjmhQezfhC0S2j5lAGlt+gBCzkVCvfJs45f+cwg=;
-	b=S+kEJSXAASWNg+vrWAkzednvc4sIJH5aoQcBbT6qxiIL56x4rKCOnPVzjG7Ogkdza06gXMGs9Wt008dt+PxBmvdYO/QG0PcF3SWQ8rQu0zCVf+vv4HTHDN7vuIxSVNxbQzzSI//DpOhId7xZ/2360UOWjioA0oX1IKfDbdQYl38=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:89572f1c-ac51-489b-bbf9-16880ee25abc,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:2bbee9cf-20bd-4e5e-ace8-00692b7ab380,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: c2919ad9eb594c6fb41fe4021bde709b-20220829
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 818374050; Mon, 29 Aug 2022 01:19:36 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 29 Aug 2022 16:08:34 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 29 Aug 2022 16:08:33 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
-	<kishon@ti.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	id 1oSa4Z-0069g0-Bq
+	for linux-mediatek@lists.infradead.org; Mon, 29 Aug 2022 08:24:48 +0000
+Received: by mail-wr1-x432.google.com with SMTP id e20so9149946wri.13
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Aug 2022 01:24:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc;
+        bh=uFRiffIvzQ9QFbO1m9r0+ADVKxOh8ctJA6Vb37LR4lM=;
+        b=DShOJXq5b87D/6GDp/67rnM6rxx9a26JTD4M6JJ98xkpuLmxEduKx+iN+vEG0rToOh
+         f1A87IWi5SID7QBCR9Ymnr192zeMv1P/HMm/TVQQbDNz0ZYdhOWObOrF0pO3Jd98OIvE
+         WYheNOU6zbenz7Wo+L4irgajhj+V5piQwtvO43VuNoOHZPVjPE0QxZwC3vXoVzBqQt7e
+         rgzSBO84hyT5YXV4mnIkm6mPMZsd3WZ1fpcFoidfUS+UAw9nhyAxb4dTzL3tP1Ho8Aex
+         9sPejLEeYKjuNBZDk6GxIxvNqtMmUPygZ5a/kOTvtN1bR/kWI+GbTtvqR8NoD/0211Il
+         PlAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
+        bh=uFRiffIvzQ9QFbO1m9r0+ADVKxOh8ctJA6Vb37LR4lM=;
+        b=E8OIhPWULgeiQu6cTmGDn3VEAxjuTWs5VdL5+2eTHcaDQnyVDD+j3p68Yt8dSyGfjQ
+         26sVFy8rw+CTFx6F0huAkhYupiHZyMFUC5zibn+ljsTWxo5pYG9brmM32DmPtg0+mE5s
+         PzMwVYE75pFy+ftl55p7j7QjUTXrk5Zj/27EaDXRJ19KlP2SIP8WkUo1XoTh4POq/PwO
+         yo/LTiomLOsQB3Vwsqd3+HQLWzR8x9Dduf74DHzFR94oWERyTICs+ReKgg+hnL/ORnnj
+         W4lhhlHVp32q/R3UUo/xTaTq7rSp+PtOxrtUzWy6MG1jQfUuCk2dsHNxduFK5M6I5NqB
+         x/mw==
+X-Gm-Message-State: ACgBeo1Dy+npz4Yl01aK5AGLEhi6e1ZkxBdCzUsHd8J3P+VReUnnytWI
+	Div1XdlL3p37atvpLhQ8M/HTkA==
+X-Google-Smtp-Source: AA6agR6JS+DZb+wFfzIPJ1CsDKrTCDWPQF9AJL39E3gMEVQHkxXNrkWzYJYM1oTdX5JQaMuz8KWgmg==
+X-Received: by 2002:a05:6000:1c14:b0:226:deb1:d7cc with SMTP id ba20-20020a0560001c1400b00226deb1d7ccmr846314wrb.494.1661761479688;
+        Mon, 29 Aug 2022 01:24:39 -0700 (PDT)
+Received: from blmsp ([2001:4090:a245:8020:2658:1f7c:362:3e99])
+        by smtp.gmail.com with ESMTPSA id x18-20020a5d4452000000b00225307f43fbsm6283277wrr.44.2022.08.29.01.24.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 29 Aug 2022 01:24:39 -0700 (PDT)
+Date: Mon, 29 Aug 2022 10:24:38 +0200
+From: Markus Schneider-Pargmann <msp@baylibre.com>
+To: kernel test robot <lkp@intel.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@canonical.com>, Eddie Hung <eddie.hung@mediatek.com>
-Subject: [PATCH v2 4/7] phy: phy-mtk-tphy: disable hardware efuse when set INTR
-Date: Mon, 29 Aug 2022 16:08:27 +0800
-Message-ID: <20220829080830.5378-4-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220829080830.5378-1-chunfeng.yun@mediatek.com>
-References: <20220829080830.5378-1-chunfeng.yun@mediatek.com>
+	Fabien Parent <parent.f@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kbuild-all@lists.01.org, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 4/4] clk: mediatek: add driver for MT8365 SoC
+Message-ID: <20220829082438.ayz2qqav63odn3t6@blmsp>
+References: <20220822152652.3499972-5-msp@baylibre.com>
+ <202208241051.Xi9D8DaW-lkp@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <202208241051.Xi9D8DaW-lkp@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_011938_785503_C1525C16 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20220829_012444_896091_279A6D96 
+X-CRM114-Status: GOOD (  16.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,38 +95,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-INTR's value is able autoload from hardware efuse by default, when
-software tries to update its value, should disable hardware efuse
-firstly.
+Hi,
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2: no changes
----
- drivers/phy/mediatek/phy-mtk-tphy.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+On Wed, Aug 24, 2022 at 10:57:12AM +0800, kernel test robot wrote:
+> Hi Markus,
+> 
+> Thank you for the patch! Yet something to improve:
+> 
+> [auto build test ERROR on clk/clk-next]
+> [also build test ERROR on robh/for-next linus/master v6.0-rc2 next-20220823]
+> [If your patch is applied to the wrong git tree, kindly drop us a note.
+> And when submitting patch, we suggest to use '--base' as documented in
+> https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> 
+> url:    https://github.com/intel-lab-lkp/linux/commits/Markus-Schneider-Pargmann/clk-mediatek-Add-mt8365-support/20220822-233030
+> base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
+> config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20220824/202208241051.Xi9D8DaW-lkp@intel.com/config)
+> compiler: m68k-linux-gcc (GCC) 12.1.0
+> reproduce (this is a W=1 build):
+>         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>         chmod +x ~/bin/make.cross
+>         # https://github.com/intel-lab-lkp/linux/commit/51c1bac1ab0d284ab6c444966eee437c23095a85
+>         git remote add linux-review https://github.com/intel-lab-lkp/linux
+>         git fetch --no-tags linux-review Markus-Schneider-Pargmann/clk-mediatek-Add-mt8365-support/20220822-233030
+>         git checkout 51c1bac1ab0d284ab6c444966eee437c23095a85
+>         # save the config file
+>         mkdir build_dir && cp config build_dir/.config
+>         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=m68k SHELL=/bin/bash
+> 
+> If you fix the issue, kindly add following tag where applicable
+> Reported-by: kernel test robot <lkp@intel.com>
+> 
+> All errors (new ones prefixed by >>, old ones prefixed by <<):
+> 
+> >> ERROR: modpost: "mtk_clk_register_gates_with_dev" [drivers/clk/mediatek/clk-mt8365-mm.ko] undefined!
 
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index 986fde0f63a0..7f40b8b052bd 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -874,9 +874,14 @@ static void u2_phy_props_set(struct mtk_tphy *tphy,
- 		mtk_phy_update_bits(com + U3P_USBPHYACR1, PA1_RG_TERM_SEL,
- 				    PA1_RG_TERM_SEL_VAL(instance->eye_term));
- 
--	if (instance->intr)
-+	if (instance->intr) {
-+		if (u2_banks->misc)
-+			mtk_phy_set_bits(u2_banks->misc + U3P_MISC_REG1,
-+					 MR1_EFUSE_AUTO_LOAD_DIS);
-+
- 		mtk_phy_update_bits(com + U3P_USBPHYACR1, PA1_RG_INTR_CAL,
- 				    PA1_RG_INTR_CAL_VAL(instance->intr));
-+	}
- 
- 	if (instance->discth)
- 		mtk_phy_update_bits(com + U3P_USBPHYACR6, PA6_RG_U2_DISCTH,
--- 
-2.18.0
+This series is based on this patch
+https://lore.kernel.org/linux-mediatek/20220813083249.45427-1-y.oudjana@protonmail.com/
+which is not yet applied but adds the required EXPORT.
 
+Best,
+Markus
 
