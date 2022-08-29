@@ -4,70 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AF3CECAAD2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Aug 2022 12:00:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21825C0502A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 01:43:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=77bDqK70NhZ5CT2USOVArQOshIUgC4iXV+yaJcQ6zZo=; b=hEcUrFeYyO1QEF017KUhv+f4JT
-	UawmxlNkvErBpljkDXp9D0lSJG8rsW+qEXD5Olp/yqSDJbamfhSunqfsyPk+rD0Ddl3Qo4l+B/x1h
-	H8wq8eWnDhQEpb2mTRVTDhenm3YsGPgT4jlDkSAAE3cLJSQzUEud9PJeb1vWFvTjRdPblnyhZVxub
-	FsraTJme8FrWVYYiX53M1laLBDk4AICRNEfbPA2Mke2kgcbUerC2MYIW7KKNa/B1gR/X3ov0aUkzc
-	9CT5MhqpVfSmzc3KhGT0C+zUAictIncGr6r/MOj/Q/aX3PU9T7IRnRj/JNkT0fKZQUcKz0eIwanBl
-	2c5ohDeg==;
+	bh=uxEYn82B/sHqpgo3MNp2dCNDWHB+C6Ht7+1Mdh21l/A=; b=i+L65sD+kLc5CmOCBWBsG83qyr
+	pEzIMVlfrEXn5ELg4qqQfYGODuX6yk5a88yR49mMALBkjdIvpwHdXdUdhVoiffdjDU5/9zi+nt1wj
+	7LJUbsSSHSxHvfgpNsJEWE87znvP75GTEIGmudIFgjgTKem6N3vKHL5c3Yx6YaVgX2X+brcxhTpkM
+	F9T1gIBrGiUianJ3fBR72ydF0+zGSvKIHmMU6agTNNkqKXvGEBU8FyKtfuZU4i3LXdmY+E+D3g6dh
+	ZZfWmFx0ZG2Bq5EDRtB1Dq459xwUooIg6oQfk0keu2DNimz6PHa4usbnB2KI/97FWxQoWBK/sz5RJ
+	82IzYhtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSGy3-00GdH7-Cv; Sun, 28 Aug 2022 12:00:43 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1oSTnk-003Tve-P2; Mon, 29 Aug 2022 01:42:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSGxr-00GdD9-9S; Sun, 28 Aug 2022 12:00:33 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 829B718845C3;
-	Sun, 28 Aug 2022 12:00:29 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 797F325032B7;
-	Sun, 28 Aug 2022 12:00:29 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 6C87D9EC0008; Sun, 28 Aug 2022 12:00:29 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+	id 1oSTnX-003TqX-2p; Mon, 29 Aug 2022 01:42:44 +0000
+X-UUID: b408a143f1c34516b50654ab4caa937e-20220828
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=uxEYn82B/sHqpgo3MNp2dCNDWHB+C6Ht7+1Mdh21l/A=;
+	b=VL+zk3SXGQ94ZjEPouFKLyi28uwwn4na2Avh9I6VTMVmz3c5/sPq7nTjxKly2m5Nsy25RcoK9asbY2CN5mdnT3JZqETqzWgwyHYIwoss+ImJ0W2y2EWX3GFxHK6niznxZjRCUkgI5GHYw/s/I18u4uPUgstrkvEuzNxlYKSuu2o=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:533e648e-b4fc-4bc4-aed7-0c986c79128f,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:b3eb5a20-1c20-48a5-82a0-25f9c331906d,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: b408a143f1c34516b50654ab4caa937e-20220828
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 174959520; Sun, 28 Aug 2022 18:39:26 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 29 Aug 2022 09:38:38 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 29 Aug 2022 09:38:37 +0800
+Message-ID: <5675b49942f103f348e8bc4bec4cc2a60d4c4b30.camel@mediatek.com>
+Subject: Re: [PATCH v3,1/2] soc: mediatek: Add mmsys func to adapt to dpi
+ output for MT8186
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: "=?ISO-8859-1?Q?N=EDcolas?= F. R. A. Prado" <nfraprado@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+	<rex-bc.chen@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+	<jason-jh.lin@mediatek.com>, <yongqiang.niu@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jitao Shi
+	<jitao.shi@mediatek.com>
+Date: Mon, 29 Aug 2022 09:38:47 +0800
+In-Reply-To: <20220826132942.k2rnlz5wwi62tity@notapiano>
+References: <1661236702-30682-1-git-send-email-xinlei.lee@mediatek.com>
+	 <20220823201758.ffbgb5t5odoicgir@notapiano>
+	 <b0f6a3c6-8fef-8983-fb69-6157a9859afd@gmail.com>
+	 <30f536c754829011e78239a9a400945faa4580e4.camel@mediatek.com>
+	 <20220826132942.k2rnlz5wwi62tity@notapiano>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Date: Sun, 28 Aug 2022 14:00:29 +0200
-From: netdev@kapio-technology.com
-To: Ido Schimmel <idosch@nvidia.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
- Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
- Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
- Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
- Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
- <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
- <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
- <ansuelsmth@gmail.com>, Daniel Borkmann <daniel@iogearbox.net>, Yuwei Wang
- <wangyuweihx@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
- MAC-Auth Bypass to locked port tests
-In-Reply-To: <YwpgvkojEdytzCAB@shredder>
-References: <20220826114538.705433-1-netdev@kapio-technology.com>
- <20220826114538.705433-7-netdev@kapio-technology.com>
- <YwpgvkojEdytzCAB@shredder>
-User-Agent: Gigahost Webmail
-Message-ID: <7654860e4d7d43c15d482c6caeb6a773@kapio-technology.com>
-X-Sender: netdev@kapio-technology.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220828_050032_220077_915C52AD 
-X-CRM114-Status: GOOD (  17.44  )
+X-CRM114-CacheID: sfid-20220828_184243_134727_AA799D2F 
+X-CRM114-Status: GOOD (  28.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,43 +89,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-08-27 20:21, Ido Schimmel wrote:
-> On Fri, Aug 26, 2022 at 01:45:38PM +0200, Hans Schultz wrote:
->> +locked_port_mab()
->> +{
->> +	RET=0
->> +	check_locked_port_support || return 0
->> +
->> +	ping_do $h1 192.0.2.2
->> +	check_err $? "MAB: Ping did not work before locking port"
->> +
->> +	bridge link set dev $swp1 locked on
->> +	bridge link set dev $swp1 learning on
+On Fri, 2022-08-26 at 09:29 -0400, Nícolas F. R. A. Prado wrote:
+> On Fri, Aug 26, 2022 at 02:12:00PM +0800, xinlei.lee wrote:
+> > On Thu, 2022-08-25 at 17:04 +0200, Matthias Brugger wrote:
+> > > 
+> > > On 23/08/2022 22:17, Nícolas F. R. A. Prado wrote:
+> > > > On Tue, Aug 23, 2022 at 02:38:22PM +0800, 
+> > > > xinlei.lee@mediatek.com
+> > > > wrote:
+> > > > > From: Xinlei Lee <xinlei.lee@mediatek.com>
+> > > > > 
+> > > > > Add mmsys function to manipulate dpi output format
+> > > > > configuration
+> > > > > for MT8186.
+> > > > > 
+> > > > > Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
+> > > > > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > > > > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> > > > 
+> > > > Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > > > 
+> > > 
+> > > Patch looks fine, I'll wait for v4 as there is still some
+> > > discussion
+> > > on the DRM 
+> > > part. Please try to fix the threading problem you had in sending
+> > > this
+> > > series.
+> > > 
+> > > Thanks,
+> > > Matthias
+> > 
+> > Hi Matthias:
+> > 
+> > Thanks for your review.
+> > 
+> > Before I send the next version, do you mean the treading problem
+> > you
+> > are talking about is the problem I'm discussing in another patch in
+> > this series, or something else?
 > 
-> "locked on learning on" is counter intuitive and IMO very much a
-> misconfiguration that we should have disallowed when the "locked" 
-> option
-> was introduced. It is my understanding that the only reason we are even
-> talking about it is because mv88e6xxx needs it for MAB for some reason.
-
-As the way mv88e6xxx implements "learning off" is to remove port 
-association for ingress packets on a port, but that breaks many other 
-things such as refreshing ATU entries and violation interrupts, so it is 
-needed and the question is then what is the worst to have 'learning on' 
-on a locked port or to have the locked port enabling learning in the 
-driver silently?
-
-Opinions seem to differ. Note that even on locked ports without MAB, 
-port association on ingress is still needed in future as I have a 
-dynamic ATU patch set coming, that uses age out violation and hardware 
-refreshing to let the hardware keep the dynamic entries as long as the 
-authorized station is sending, but will age the entry out if the station 
-keeps silent for the ageing time. But that patch set is dependent on 
-this patch set, and I don't think I can send it before this is 
-accepted...
-
-> Please avoid leaking this implementation detail to user space and
-> instead use the "MAB" flag to enable learning if you need it in
-> mv88e6xxx.
+> Hi Xinlei,
 > 
+> no, the threading problem Matthias is referring to is the fact that
+> this version
+> of your series had two cover letters (patch 0) and a patch 2 [1],
+> while patch 1
+> was sent in a different email thread [2]. The whole series (cover
+> letter,
+> patches 1 and 2), should have been in the same email thread. Also, I
+> noticed
+> that your cover letter lists the patches with incorrect prefixes
+> "FROMLIST".
+> 
+> So something weird happened when you sent this version of the series.
+> It was ok
+> in the previous version. So just make sure this is fixed when you
+> send the next
+> version of the series (after we finish the discussion on patch 2).
+> 
+> [1] 
+> https://lore.kernel.org/linux-mediatek/1661235517-23699-1-git-send-email-xinlei.lee@mediatek.com/
+> [2] 
+> https://lore.kernel.org/linux-mediatek/1661236702-30682-1-git-send-email-xinlei.lee@mediatek.com/
+> 
+> Thanks,
+> Nícolas
+
+Hi Nícolas:
+
+Thanks for the thoughtful explanation of this, I may know what caused
+the two patches not to be in a series. 
+I will fix this and revise the "FROMLIST" tag in the cover letter in
+the next version.
+
+Best Regards!
+Xinlei
+
 
