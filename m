@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3536CECAAD4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 08:42:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85654ECAAD2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 08:55:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=l7W11Tx4SbHtuMqriTuLjNI50/+Cb/Z2d6T/q6DOQak=; b=C8EzxvXTD6AR+Ce4aGpl2BepYB
-	mz0NZemhY91wvgSMUA7jAscccRnlDC00fwjp1DQslITzvdH6gGN9+7STrUS+zzUEvlHb83gp5uaI1
-	t1U1HQpY1DIZvcxWuEZILAAkb8tBgCljKx2UjPTtX9y8em+bChVEqTcdH/vY7622TS+3NP3f9EBnj
-	tvOAEtrsQX1wUltf5CHtvC0Z+ZaM5OTDm1NtkcQKBd54dgL1h9YB8W4rdUg0J8rYxPFuY8F4otqwU
-	WoaIpStoBslbzc7qykAPPOECxjAK+08AY0HOUUvKOUVMzwfUQkUbReEVtZ2SfSAxxigU2/mayAz7F
-	EONGzZnQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2NNHvafX++FyyRnITHQ1PF1LKAfoK7GM352PgfzZKO4=; b=ESRcuJ3Rocl8ItuIqf9Y5smHCI
+	W+OXLQi25X5l7zFn2F5GlgKAQxzu7f31/vQ0C4JBzR3vdfvvUl6G9DrmEkY/TIwR76p5Rdjwm9wt1
+	5dLAQ+g4tVktJt7aWZj36jcePB8nZ9rHvYgFvFf9aSg0+iy2KwZqxdN469FZ8hiRuEqXKownHVzrc
+	nzc27gKKmVny6BIUnCqRgdQUtcj3uJLTTBHDPjyeIGOdgt6Iigs2PLZHOuZqLAR6xDtRp/J0gUc5H
+	zM+DQxP3Ixd4/x9QpWJZgYoqK3BGJ0+HVzlZsO7NOdimWzkwICPK75T2kL3sQwtoWkGh8N6fqb6iA
+	P1IBQtaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSaLj-006KEZ-Mh; Mon, 29 Aug 2022 08:42:28 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oSaYQ-006Qhq-9h; Mon, 29 Aug 2022 08:55:34 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSaIa-006Hxm-AE; Mon, 29 Aug 2022 08:39:14 +0000
-X-UUID: 97a2999281694df482ff5a9cb493b28e-20220829
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=l7W11Tx4SbHtuMqriTuLjNI50/+Cb/Z2d6T/q6DOQak=;
-	b=L3NNuh8Q2MxlhcvWh1utHVKVxgrBk6EFat8zeai3sCvwSbI0nImz0M7NtFWm2Z780k6xqFszYyww5Rh1mHz2CWPHX9+KeL2wciWnPWQtIioagC0IS2ocqCynFQciM2hUc70TR/BQehfVxPPqkMGM79UzCotWUkGFKXseciOjoMQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:c9ee0704-94c5-4f6d-b2c9-3db4b987e96d,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:7377eacf-20bd-4e5e-ace8-00692b7ab380,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 97a2999281694df482ff5a9cb493b28e-20220829
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2038172567; Mon, 29 Aug 2022 01:39:07 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 29 Aug 2022 16:08:31 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 29 Aug 2022 16:08:31 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
-	<kishon@ti.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@canonical.com>, Eddie Hung <eddie.hung@mediatek.com>,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v2 1/7] dt-bindings: phy: mediatek,tphy: add support type of SGMII
-Date: Mon, 29 Aug 2022 16:08:24 +0800
-Message-ID: <20220829080830.5378-1-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1oSaY9-006Qab-OI; Mon, 29 Aug 2022 08:55:21 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 00ECB18848CB;
+	Mon, 29 Aug 2022 08:55:16 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id EC9B325032B7;
+	Mon, 29 Aug 2022 08:55:15 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id DE5709EC0003; Mon, 29 Aug 2022 08:55:15 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Date: Mon, 29 Aug 2022 10:55:15 +0200
+From: netdev@kapio-technology.com
+To: Ido Schimmel <idosch@nvidia.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
+ Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
+ Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, Daniel Borkmann <daniel@iogearbox.net>, Yuwei Wang
+ <wangyuweihx@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
+ MAC-Auth Bypass to locked port tests
+In-Reply-To: <YwxtVhlPjq+M9QMY@shredder>
+References: <20220826114538.705433-1-netdev@kapio-technology.com>
+ <20220826114538.705433-7-netdev@kapio-technology.com>
+ <YwpgvkojEdytzCAB@shredder>
+ <7654860e4d7d43c15d482c6caeb6a773@kapio-technology.com>
+ <YwxtVhlPjq+M9QMY@shredder>
+User-Agent: Gigahost Webmail
+Message-ID: <c1123f1b242ea037867a5ec7130232f4@kapio-technology.com>
+X-Sender: netdev@kapio-technology.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_013912_434036_DBD0293B 
-X-CRM114-Status: UNSURE (   7.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220829_015518_186617_53F8380D 
+X-CRM114-Status: GOOD (  19.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,30 +84,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support ethernet SGMII, forgot to update type supported.
+On 2022-08-29 09:40, Ido Schimmel wrote:
+> On Sun, Aug 28, 2022 at 02:00:29PM +0200, netdev@kapio-technology.com 
+> wrote:
+>> On 2022-08-27 20:21, Ido Schimmel wrote:
+>> > "locked on learning on" is counter intuitive and IMO very much a
+>> > misconfiguration that we should have disallowed when the "locked" option
+>> > was introduced. It is my understanding that the only reason we are even
+>> > talking about it is because mv88e6xxx needs it for MAB for some reason.
+>> 
+>> As the way mv88e6xxx implements "learning off" is to remove port 
+>> association
+>> for ingress packets on a port, but that breaks many other things such 
+>> as
+>> refreshing ATU entries and violation interrupts, so it is needed and 
+>> the
+>> question is then what is the worst to have 'learning on' on a locked 
+>> port or
+>> to have the locked port enabling learning in the driver silently?
+>> 
+>> Opinions seem to differ. Note that even on locked ports without MAB, 
+>> port
+>> association on ingress is still needed in future as I have a dynamic 
+>> ATU
+>> patch set coming, that uses age out violation and hardware refreshing 
+>> to let
+>> the hardware keep the dynamic entries as long as the authorized 
+>> station is
+>> sending, but will age the entry out if the station keeps silent for 
+>> the
+>> ageing time. But that patch set is dependent on this patch set, and I 
+>> don't
+>> think I can send it before this is accepted...
+> 
 
-Fixes: c01608b3b46b ("dt-bindings: phy: mediatek: tphy: support type switch by pericfg")
-Acked-by: Rob Herring <robh@kernel.org>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2: add acked-by Rob
----
- Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 1 +
- 1 file changed, 1 insertion(+)
+> # bridge link set dev swp1 learning on locked on
+> # bridge link set dev swp2 learning on locked on
 
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-index b3e409988c17..848edfb1f677 100644
---- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-+++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-@@ -163,6 +163,7 @@ patternProperties:
-                 - PHY_TYPE_USB3
-                 - PHY_TYPE_PCIE
-                 - PHY_TYPE_SATA
-+                - PHY_TYPE_SGMII
- 
-       nvmem-cells:
-         items:
--- 
-2.18.0
+As we must think in how most drivers work, which I am not knowledgeable 
+of, I think that it is probably the best to think of the way mv88e6xxx 
+works as an outlier.
+If that is true, then I think the best option is to go with:
+#bridge link set dev $swp1 learning off locked on
+#bridge link set dev $swp2 learning off locked on
 
+Then the cleanup side will just be:
+#bridge link set dev $swp1 locked off
+#bridge link set dev $swp2 locked off
+
+The state 'learning off' is then consistent with the behavior of both 
+the bridge and driver after the cleanup.
 
