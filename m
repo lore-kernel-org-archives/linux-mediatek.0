@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69A5AECAAD2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 11:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EA14ECAAD2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 11:47:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6X+A/CY6hCesiBm0B3HPbEZOmy/FGctIKVvXMEfqC44=; b=U7HbpOHQGPAmWl/di0n40MjKhB
-	xOb1ZXqZdJzqCkEiZkQTIaJu4YxgCm/wpRdvHOuB2/cQn7NIaF+6WypZN4GqjnspIiIewWTt1cJcZ
-	uMT6G/QlhAfDKe+vlAwph9GNBxWiAx4cpkwW4LPaKiSau/TkdXsX/tAn5FFasCFE3yQlTtlmV9odQ
-	+uY0t7IlCufwO4ibwN7ElnZlFoz3SgB/oRBHuw2CDI2NKrtsvFWcy4tm3t5c5CXmxhiXroP2BB7PJ
-	7FTI9jzyC6t7mx9v/7L/qFC1bTJ99bK5yaryVg4sTqRlNYZC3z9tdNV0ee5GqvHoTv54QsgVSkO0m
-	4KOaxZ/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7e/OdfxuCaAZ0PkMO/IBgTbcYnXuhp/Qb+Zw1FFxSF8=; b=b9HpcKFEDlJPUsazqoUDHq7kl5
+	gY4ItSOG4ONOJfKqwPDDrFSDtennKGbOGjag8i2LtbF8bB2vRI1anOSBJYLECDrm98+kY/3jQv6EZ
+	4d9B5a1InxyROcDbVvvCszikQnQbxXRxXZkdH4bxnXOMNzXlMfysKa4fvvlBRn7VwPKoO10uUZKJx
+	ZJHL8lS+bNtZXYt9nvRFV5nyUbF9jPHdYEtHS3i5w71O6ZEgFEW732D1EsMvZLUR5GwOn9/jU1zE2
+	YV5uOt/BpDj8Jdurr0QQxckuSTyZoQJ5bEH2pA8UDgotmtFhrz3LOWHM94g8TyXCpoX4BOOw9MrBF
+	3b6BYarQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSdAy-008I68-PA; Mon, 29 Aug 2022 11:43:32 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1oSdEU-008Kba-P1; Mon, 29 Aug 2022 11:47:10 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSdAm-008Htg-3C; Mon, 29 Aug 2022 11:43:21 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 5AC4E1884942;
-	Mon, 29 Aug 2022 11:43:18 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 4B03125032B7;
-	Mon, 29 Aug 2022 11:43:18 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 42CC79EC0001; Mon, 29 Aug 2022 11:43:18 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+	id 1oSdEQ-008KWf-C1
+	for linux-mediatek@lists.infradead.org; Mon, 29 Aug 2022 11:47:09 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id C30D2B80FA0
+	for <linux-mediatek@lists.infradead.org>; Mon, 29 Aug 2022 11:47:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72AFFC433B5
+	for <linux-mediatek@lists.infradead.org>; Mon, 29 Aug 2022 11:47:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1661773620;
+	bh=qPR6kY8P1Myf4tVUWJRbQSNSevgMZAHBc2yHAWZJoq8=;
+	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
+	b=g1Ww+wp7/IFs84CtqmpvQDmG41O2BPiahkelCnoSBvT0FiiHXTCHjuNsoUuNe6UV3
+	 QLCdN8cHRDcnUCNCBGJEHefjn9dDMrmyRDZYhiJTDpi0bvjw0VkkUadDxDWweyYxJ6
+	 TstMKViGGQlSskav5fLhZVfPGs+KkhjQ2dO0i4HjweNar56MaVL3WTW31oEVLHCUt6
+	 7PCBHSOCx7FHZikqbVdYyN32Ex38lqAer1oWjNTNwkd8bM2hAQ/OcBJ37SoIACq5AY
+	 KZFO7SbWN+hiTA6agWra5nQ/NavUeC1O64AAkLlEKnxQLjrodPPD/EW/jx1/rEVST1
+	 GWhzrmkhN0ubA==
+Received: by mail-io1-f50.google.com with SMTP id p187so6282715iod.8
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Aug 2022 04:47:00 -0700 (PDT)
+X-Gm-Message-State: ACgBeo2/bjuZ/37uYDKE8dJpw01ehX0uV47DfzZ+px+w1/1bbBEYOZ6X
+	nP6O/zkdvKsHwl+6qlaNmrfifjZDK2V96hCs/Do=
+X-Google-Smtp-Source: AA6agR7ioo8S8kED0FExjat9wjWmmW52Zp1fettg/C47Vks8/xF+JiUUqJ4c4YkCLCDrio0Q6rCKXX3L1ih3kYYtQtc=
+X-Received: by 2002:a05:6602:13c8:b0:68a:db5d:269d with SMTP id
+ o8-20020a05660213c800b0068adb5d269dmr7903708iov.209.1661773619567; Mon, 29
+ Aug 2022 04:46:59 -0700 (PDT)
 MIME-Version: 1.0
-Date: Mon, 29 Aug 2022 13:43:18 +0200
-From: netdev@kapio-technology.com
-To: Nikolay Aleksandrov <razor@blackwall.org>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
- Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
- Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
- Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
- Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
- <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Shuah Khan
- <shuah@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
- Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>, Ido
- Schimmel <idosch@nvidia.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v5 net-next 1/6] net: bridge: add locked entry fdb flag to
- extend locked port feature
-In-Reply-To: <e9eb5b72-073a-f182-13b7-37fc53611d5f@blackwall.org>
-References: <20220826114538.705433-1-netdev@kapio-technology.com>
- <20220826114538.705433-2-netdev@kapio-technology.com>
- <e9eb5b72-073a-f182-13b7-37fc53611d5f@blackwall.org>
-User-Agent: Gigahost Webmail
-Message-ID: <e1e07c4ebdcc494d9a20d1a8ec398b48@kapio-technology.com>
-X-Sender: netdev@kapio-technology.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+References: <bee56d689e67b4bb4d46d14d07e93ab212a6bb6b.camel@mediatek.com> <573792ba92de237d23a9a1c99cb45d5ccdff5067.camel@mediatek.com>
+In-Reply-To: <573792ba92de237d23a9a1c99cb45d5ccdff5067.camel@mediatek.com>
+From: Josh Boyer <jwboyer@kernel.org>
+Date: Mon, 29 Aug 2022 07:46:48 -0400
+X-Gmail-Original-Message-ID: <CA+5PVA4rdvoAqaC2GpmR=bv7KmNXvP+58UW1hzN2KJDsNiRiPA@mail.gmail.com>
+Message-ID: <CA+5PVA4rdvoAqaC2GpmR=bv7KmNXvP+58UW1hzN2KJDsNiRiPA@mail.gmail.com>
+Subject: Re: [PULL linux-firmware] Clean up mediatek WHENCE licence terms
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: linux-firmware@kernel.org, linux-mediatek@lists.infradead.org, 
+	allen-kh.cheng@mediatek.com, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_044320_338330_D9F6D89C 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220829_044707_954871_0311F22F 
+X-CRM114-Status: GOOD (  18.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,37 +80,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> On 2022-08-27 13:30, Nikolay Aleksandrov wrote:
->> @@ -879,6 +888,10 @@ void br_fdb_update(struct net_bridge *br, struct 
->> net_bridge_port *source,
->>  						      &fdb->flags)))
->>  					clear_bit(BR_FDB_ADDED_BY_EXT_LEARN,
->>  						  &fdb->flags);
->> +				if (source->flags & BR_PORT_MAB)
->> +					set_bit(BR_FDB_ENTRY_LOCKED, &fdb->flags);
->> +				else
->> +					clear_bit(BR_FDB_ENTRY_LOCKED, &fdb->flags);
-> Please add a test for that bit and only then change it.
-> 
+On Mon, Aug 15, 2022 at 10:22 PM Tinghan Shen <tinghan.shen@mediatek.com> wrote:
+>
+> Hi maintainers,
+>
+> This pull request cleans up the WHENCE for MediaTek firmwares.
+>
+> Please let me know if there are any problems.
+>
+> Best regards,
+> TingHan
+>
+> ---
+>
+> The following changes since commit 8413c63c7a539a912be8851ce941eea32dcd1786:
+>
+>   Merge branch 'lenovo-thinkpad-x13s' of https://github.com/mrhpearson/linux-firmware (2022-08-15
+> 09:02:17 -0400)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/tinghan-shen/linux_fw_scp mtk-20220816
 
-Okay, I have revised this part now. I hope that it is suitable?
+Pulled and pushed out.  Thanks!
 
-@@ -749,6 +756,10 @@ void br_fdb_update(struct net_bridge *br, struct 
-net_bridge_port *source,
-                                                       &fdb->flags)))
-                                         
-clear_bit(BR_FDB_ADDED_BY_EXT_LEARN,
-                                                   &fdb->flags);
-+                               /* Allow roaming from an unauthorized 
-port to an
-+                                * authorized port */
-+                               if 
-(unlikely(test_bit(BR_FDB_ENTRY_LOCKED, &fdb->flags)))
-+                                       clear_bit(BR_FDB_ENTRY_LOCKED, 
-&fdb->flags);
-                         }
+josh
 
-                         if (unlikely(test_bit(BR_FDB_ADDED_BY_USER, 
-&flags)))
-
+>
+> for you to fetch changes up to a1c4b15986c07cdad873a72b1e130ea1fb02c5fa:
+>
+>   mediatek: reference the LICENCE file for MediaTek firmwares (2022-08-16 10:13:16 +0800)
+>
+> ----------------------------------------------------------------
+> Tinghan Shen (1):
+>       mediatek: reference the LICENCE file for MediaTek firmwares
+>
+>  WHENCE | 42 ++++++------------------------------------
+>  1 file changed, 6 insertions(+), 36 deletions(-)
+>
 
