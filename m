@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E056FECAAD2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 14:51:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3276DC0502C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Aug 2022 15:08:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=145gOx86toxQClz74kJe2cl51jbo56v2bZWCBfLvedQ=; b=MnPDvJRO83eA7jRXWdT8yIZ4Ob
-	7LacmK8K0u2TKuLA2LsZDcE1gMKmZjttXx/I56Cfc7umhMiGwLncbXDGewcHmUk+6vWFFqJ3R5NTI
-	eNKT9azOf6f2ltPCaRMy8cLjGlc+vLhbEm/dxig5qTBsIZEwuB8BITzBEquyzZOu0aagvxHVtahVW
-	C6UzFGaoOI+1Waoz/slU5P2sMUGo67NC2YjbtL+9z350rmJpF1422k3e5aG54K1OHRs0eIdoHdFLG
-	RCufOqS2Nu2Xc0bagS34PLstxIBdioboco8JmO2pQfA1vvY5/jocaWR/6/DM576C2BGXAxlNmhx3u
-	fmZb89Bw==;
+	bh=rDzSNRXKUTjtxosOITlw6mu7cONlUCNBga0ysdVFon8=; b=0EQjU7RncdxreIIGEkT0U4bv2A
+	8DVe47UtE5NeGf8Tj2iJj9OK6ueXkoEWtGr6ialoIx3a+jqRDkoOO6xxuIC/nMV5cbSN5qBJVOz+8
+	7lc+mCFweMpzrm1a0NjN3ch5rwyqmkmBg8LI2weZzvRGEmoWnktZCVRcmky8GNJT1GebJl9HOO4Yr
+	ecEY/u9TfDfgeEVLdNVlAEVJdk7RwMdJ5qPdbrA7/Cyz7ChEVcNWNBxaUkU5od3NzeD7XwoVmQDAh
+	Jk8ihf4jjnDn4w6iksMsoSIyVb0Ng+8Qtc5Z3DP5pkYpg70sppzFuN0H/Z+yh9YsmKgonLJSBKsnd
+	qfommXwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSg6X-00BBXc-N0; Mon, 29 Aug 2022 14:51:09 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1oSgNZ-00BGqB-0a; Mon, 29 Aug 2022 15:08:45 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSg6K-00BBSH-9F; Mon, 29 Aug 2022 14:50:57 +0000
-Received: by mail-wr1-x429.google.com with SMTP id bs25so10523958wrb.2;
-        Mon, 29 Aug 2022 07:50:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=145gOx86toxQClz74kJe2cl51jbo56v2bZWCBfLvedQ=;
-        b=B5he0l1NJFsAgePzHNhCVPDO2fy1g3NhcfJGseemre59ndFS6y61LR6DcTjGcrgmdo
-         ECBwnGuLuzwBTtq3IZ28HPY4s0dTrIk21F8ZYQPsHabpRhzbPhdKtUwSsMXgXbN6JYUv
-         ScNzIlKtaVKsItAVP04255Lx3W8Zqqc58MywaWSYNRv0pcOMiEONyRwE0pRBsXU7q2YC
-         jKg+hri79GrV8N2uQFutbuhUy4HhCJZq4UcrVWlLHalo6slkhKTNE6Hovk+AkjMvQaa8
-         5zLQhWcvLOMSf9HMOdpdQEaOrhQmOLYYvFWcETi/eogaptjlhmkWQflMW96IbPUDKTnV
-         F36Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=145gOx86toxQClz74kJe2cl51jbo56v2bZWCBfLvedQ=;
-        b=u2fmSgdd8agYORJsGmSe4GykkvufGdVz/ppyhyxqypsdaItTBH/qe5bKswXWO7DRaH
-         WgnySM6sYK7ncPKh59iY3CekT3Am1IHoaCxxyLesA6jNkaJlx63BklJhAidsfArHP8g/
-         /3xdoqjdso9c1Ophmz6hCDQqIvbb5MQGvZ7/Kucq4BhXY2f8j+wOQSzylygTIGPftzCE
-         1fuQskGUtVqt+p/FLKkY+yq7aYZnBiRvA8ekVxBQ3mJy9PfjPAlqKV1sl7O0sggTRZCX
-         Ln55fvYRWxhsQ4dyz18HxfpwVy+wlUJgcdSp6tdCgmWwHInMkCMObUEnIqJwYNtBG7El
-         MLzQ==
-X-Gm-Message-State: ACgBeo0qqg85HEiQQCHz1h1f7VN5hXPTLEcBUoSRWSg5iWrGFo6ySIiw
-	zEtRU2b1uhguN029tsjP3g4=
-X-Google-Smtp-Source: AA6agR72nddPfdDk/RdTmQ8R/2eOxuvH8F7fe3aQN3rrRmg8l2imUWwdU7Z5hPjZ73Uy8vf5OGQdBQ==
-X-Received: by 2002:a05:6000:1863:b0:225:8a83:fbea with SMTP id d3-20020a056000186300b002258a83fbeamr6698535wri.277.1661784654126;
-        Mon, 29 Aug 2022 07:50:54 -0700 (PDT)
-Received: from [192.168.0.30] ([47.62.125.55])
-        by smtp.gmail.com with ESMTPSA id b2-20020adff902000000b00226dfac0149sm1036095wrr.114.2022.08.29.07.50.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 29 Aug 2022 07:50:53 -0700 (PDT)
-Message-ID: <cd178f8c-76f0-4494-71c4-a658ee517b70@gmail.com>
-Date: Mon, 29 Aug 2022 16:50:51 +0200
+	id 1oSgNM-00BGlq-Lh; Mon, 29 Aug 2022 15:08:34 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id C72CE188476A;
+	Mon, 29 Aug 2022 15:08:23 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id BB7E325032B7;
+	Mon, 29 Aug 2022 15:08:23 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id AD1409EC0002; Mon, 29 Aug 2022 15:08:23 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.1.2
-Subject: Re: [PATCH v3 0/5] Complete driver nodes for MT8192 SoC
-Content-Language: en-US
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>
-References: <20220712114046.15574-1-allen-kh.cheng@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220712114046.15574-1-allen-kh.cheng@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Date: Mon, 29 Aug 2022 17:08:23 +0200
+From: netdev@kapio-technology.com
+To: Ido Schimmel <idosch@nvidia.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
+ Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
+ Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, Daniel Borkmann <daniel@iogearbox.net>, Yuwei Wang
+ <wangyuweihx@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
+ MAC-Auth Bypass to locked port tests
+In-Reply-To: <YwzPJ2oCYJQHOsXD@shredder>
+References: <20220826114538.705433-1-netdev@kapio-technology.com>
+ <20220826114538.705433-7-netdev@kapio-technology.com>
+ <YwpgvkojEdytzCAB@shredder>
+ <7654860e4d7d43c15d482c6caeb6a773@kapio-technology.com>
+ <YwxtVhlPjq+M9QMY@shredder>
+ <2967ccc234bb672f5440a4b175b73768@kapio-technology.com>
+ <Ywyj1VF1wlYqlHb6@shredder>
+ <9e1a9eb218bbaa0d36cb98ff5d4b97d7@kapio-technology.com>
+ <YwzPJ2oCYJQHOsXD@shredder>
+User-Agent: Gigahost Webmail
+Message-ID: <69db7606896c77924c11a6c175c4b1a6@kapio-technology.com>
+X-Sender: netdev@kapio-technology.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_075056_385143_0D5E376B 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20220829_080832_896123_666F9C03 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,43 +88,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Whole series applied.
-Thanks!
+On 2022-08-29 16:37, Ido Schimmel wrote:
+> On Mon, Aug 29, 2022 at 02:04:42PM +0200, netdev@kapio-technology.com 
+> wrote:
+>> On 2022-08-29 13:32, Ido Schimmel wrote:
+>> Port association is needed for MAB to work at all on mv88e6xxx, but 
+>> for
+>> 802.1X port association is only needed for dynamic ATU entries.
+> 
+> Ageing of dynamic entries in the bridge requires learning to be on as
+> well, but in these test cases you are only using static entries and
+> there is no reason to enable learning in the bridge for that. I prefer
+> not to leak this mv88e6xxx implementation detail to user space and
+> instead have the driver enable port association based on whether
+> "learning" or "mab" is on.
+> 
 
-On 12/07/2022 13:40, Allen-KH Cheng wrote:
-> This series are based on matthias.bgg/linux.git, for-next.
-> 
-> I remove vcodec lat and core nodes PATCH from series and will comfirm
-> clocks usage then resend PATCH.
-> 
-> Also should reference below PATCH for dsi in chunkuang.hu/linux.git
-> dt-bindings: display: mediatek: dsi: Convert dsi_dtbinding to .yaml
-> 
-> changes since v2:
->   - add mmsys #reset-cells PATCH
->   - add missing fallback compatible
->   - add display aliases
->   - remove vcodec lat and core nodes PATCH
-> 
-> changes since v1:
->   - add Reviewed-by Tag
->   - rename dsi-phy from dsi-dphy
->   - add missing power-domains in disp mutex
->   - Add remove mt8192 display rdma compatible PATCH in series
->   - use "mediatek,mt8183-disp-rdma" as fallback
->   - remove mediatek,larb from rdma node
->   - remove syscon-dsi and add power-domains in dsi
->   - add reset property in dsi and mt8192-resets.h
->   - correct Typo: s/ndoe/node in commit message
-> 
-> Allen-KH Cheng (5):
->    arm64: dts: mt8192: Add pwm node
->    arm64: dts: mt8192: Add mipi_tx node
->    arm64: dts: mediatek: Add mmsys #reset-cells property for mt8192
->    arm64: dts: mt8192: Add display nodes
->    arm64: dts: mt8192: Add dsi node
-> 
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 188 +++++++++++++++++++++++
->   1 file changed, 188 insertions(+)
-> 
+Then it makes most sense to have the mv88e6xxx driver enable port 
+association when then port is locked, as it does now.
 
