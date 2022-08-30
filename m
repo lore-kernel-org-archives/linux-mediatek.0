@@ -4,88 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 094C8ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 10:26:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6359CECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 10:57:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ewFvocVNfh/1BMVRJJhj6y+q9DXa1cklPYO4jJJ+ZPI=; b=SlqZZ+cSuGCmZ/PauLxzAHUccx
-	3qAglGvHXDBHBfcGhKGRU82OlyYbC2Fk+Lf6aYQ9Pe6mJJS6tv949ZXBdxVr/gCPZkmYQdfySQBzQ
-	D4z5OqMNZJCTDthrAxxCPxFhutKUKiQSP31rBeM1CUlE01YA0bOlZkgyW4ZkLx9zg3f2Y6Sc8Yrpf
-	e+kZhR41pt1ZymAwIgU2BRmCkA4JtFH/0TtSEuemGOyJm/z0rOG6cRlrpMdBwkInNgFv10AEaWg1e
-	qOoIl5jUAZuGR9gScBFEJjWFtu4P5V9kFxBqmSeYvoBdhBo11+WfTXdRAiNmuGtBcQzoZB0gMJ3dp
-	x8Cnv6Tw==;
+	bh=Mk4M3Eja+4+uXjTFzPwuvsPbNdEIrBnWxoNII/WXHCI=; b=AYVkYSG2BNUMFizFH9fa6/9SzZ
+	cOVrfM5R9BUzq9dWnw51Y9iXmO8QIIi6ymob/ZHnseF+8WdCiBBa98CPWke2Zi0peb2gvvWO1TcYb
+	EqOssFQ9wwFAWA6eygYEWwV+dTLSqfi9i91+17GlAYcFIkKydzXn6IDxzad4xf3+dbw0lt6x4YP0z
+	SuBtrP28E2pPPTc7cdfS/dcnC/f3BRaJSkZ5wAyFgt/TjphmAh/TLLa/e7fQtpdrcEP/9U4hQYhkA
+	wHdyyqRkWTsOrQF3fJL/ERl7/QuQ1wc7t0Q03pW2VDTu3RcF08DKp4I6KLt/ijSlr8bfRyV/hIVew
+	BTCO8b5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSyRo-00G9Sd-M3; Tue, 30 Aug 2022 10:26:20 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1oSyoe-00GI5c-EH; Tue, 30 Aug 2022 10:49:56 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSyNw-00G7nB-6I; Tue, 30 Aug 2022 10:22:22 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id bq23so14874360lfb.7;
-        Tue, 30 Aug 2022 03:22:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc;
-        bh=ewFvocVNfh/1BMVRJJhj6y+q9DXa1cklPYO4jJJ+ZPI=;
-        b=G9w+EHsaYTf3RTd0wF+VIfFaIZEtTiw4ylQgi2J4gfawcB7MJij1hAOQqp127Cp3sV
-         9Tzei6RF70Zq7P0eHDXPdurkyOZKpYeFgoxBN0D5cMrM0uLxYqhKS0l/yQ44wCBmxaY1
-         AUBPV/+Z8fqfQYJ8GHWpjeAs5IfSkBqKmy7vOWlOkf8c5T+fXxDFhYycK2i6UO53EhTY
-         cG5QhtsblzJeRgBxxQjOmn9uK0CJfYkOLVZ3wmGlUZ6MuDmSfKC5y/ZbnjyB+sUEmXyL
-         jv0sIEergg/34/jqdrJr6jA1UbDviYTis75trAfEUisn8YAmdt9KwvPDvprXRBd0r+Wp
-         1VSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc;
-        bh=ewFvocVNfh/1BMVRJJhj6y+q9DXa1cklPYO4jJJ+ZPI=;
-        b=4rJAL/ffJNLc/hLiSW5NDT7Ldsd5JYMbJha/PNJ7fFINwRIXDamPml9ZSW/vpeDUkT
-         Qlt97pe+zg/jqP7tVL5uTW5XQoQqT76Yu4Cfht9rhVa0yOto3FvOjwzJl8Qoh5/Zgzqr
-         WES9CwVfdVc6IXKaU/6DASXlWQi0T8Oo6QFUsBclclIHlyDa6IPYv9Hyyj3l7HGjqzXg
-         wwSDzr+gjVYU+zwLvxS65bRi7sHs2kFX99ZXTVOSeBR0OaTWj16pplYuGxcrkNt6l7Bj
-         ofGekNj57Bz358Jb5hAM5eQUfhz9nTZmQql9gbLNdGBx3P8vrMerlBrn9KG/I4zUTbP+
-         Gzrg==
-X-Gm-Message-State: ACgBeo3+vKeTbVXvL0OSGmabKczUxq1svsA95kZBeDKSBNqynGwn+tiD
-	OchAQ3+8Inz8s/OJC4Ji9eU=
-X-Google-Smtp-Source: AA6agR6roG+6pfy1GbA43X3JSuD5tBGJOEwN6P3O5bTo8eY5FYH8nUbstwZW9bi3uCb39lJN5D/lvA==
-X-Received: by 2002:a19:911d:0:b0:494:6701:1d17 with SMTP id t29-20020a19911d000000b0049467011d17mr3991390lfd.31.1661854936337;
-        Tue, 30 Aug 2022 03:22:16 -0700 (PDT)
-Received: from ?IPV6:2001:14ba:16f3:4a00::1? (dc75zzyyyyyyyyyyyyyyt-3.rev.dnainternet.fi. [2001:14ba:16f3:4a00::1])
-        by smtp.gmail.com with ESMTPSA id t17-20020ac25491000000b004946d1f3cc4sm613954lfk.164.2022.08.30.03.22.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 Aug 2022 03:22:15 -0700 (PDT)
-Message-ID: <a97be2ae-b7d2-2ecf-fa17-de2d8755fb83@gmail.com>
-Date: Tue, 30 Aug 2022 13:22:13 +0300
+	id 1oSyUT-00GARc-OE; Tue, 30 Aug 2022 10:29:07 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 423FE6601D92;
+	Tue, 30 Aug 2022 11:29:00 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1661855340;
+	bh=PKyYLG/23Jae2iv0f8420lyRHaoRQtmdhQus4GBtX3k=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=fbYaphZJdongwYOH2xf/j+qNzpDQmmZ3fdf+w5NANSWPI+ABahvzh0CV2cIQqp+ZY
+	 eUrQyQw9/75pm0mBGLmQ4sKCMEKA1OyXNEZj2/3sMPuLyM9TRru7dBByChzmuGJDMp
+	 F4sFBSeI70zpJJX0yJ2Y7AIEmi3mBDH/jmIofcDdGz4mB53Ufs8Ti0rpzYGXgq0+hi
+	 xcc5IEN9TFy72cRgV0I6hcpZsfiSTHvu6dZkB8Jsl4+haNdr44Qna9sVFBWeTSf13c
+	 41IgHfYj4BdTBXCE1PPksFfB/C6prBGcvSLM+6qwow3oafKixAbbAPiaZ0npZS6Asm
+	 SIOiy5Qp4KitQ==
+Message-ID: <68e2d818-3b82-733d-43d8-288f84df6885@collabora.com>
+Date: Tue, 30 Aug 2022 12:28:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH v9 05/10] lib: add linear range index macro
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v3 3/4] soc: mediatek: add support of MTK_SCPD_STRICT_BUSP
+ cap
 Content-Language: en-US
-To: ChiaEn Wu <peterwu.pub@gmail.com>, lee@kernel.org,
- daniel.thompson@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
- robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, sre@kernel.org, jic23@kernel.org, lars@metafoo.de,
- deller@gmx.de, broonie@kernel.org, andriy.shevchenko@linux.intel.com
-Cc: chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
- dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-fbdev@vger.kernel.org, szunichen@gmail.com, andy.shevchenko@gmail.com
-References: <20220830034042.9354-2-peterwu.pub@gmail.com>
- <20220830034042.9354-6-peterwu.pub@gmail.com>
-From: Matti Vaittinen <mazziesaccount@gmail.com>
-In-Reply-To: <20220830034042.9354-6-peterwu.pub@gmail.com>
+To: Markus Schneider-Pargmann <msp@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Fabien Parent <parent.f@gmail.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Alexandre Bailon <abailon@baylibre.com>,
+ Fabien Parent <fparent@baylibre.com>
+References: <20220822144303.3438467-1-msp@baylibre.com>
+ <20220822144303.3438467-4-msp@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220822144303.3438467-4-msp@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_032220_315863_C2AF6D37 
-X-CRM114-Status: GOOD (  14.99  )
+X-CRM114-CacheID: sfid-20220830_032906_074721_95CA8F31 
+X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,51 +81,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/30/22 06:40, ChiaEn Wu wrote:
-> From: ChiaEn Wu <chiaen_wu@richtek.com>
+Il 22/08/22 16:43, Markus Schneider-Pargmann ha scritto:
+> From: Alexandre Bailon <abailon@baylibre.com>
 > 
-> Add linear_range_idx macro for declaring the linear_range struct simply.
+> This adds support for MTK_SCPD_STRICT_BUSP capability. It is a strict
+> bus protection policy that requires the bus protection to be disabled
+> before accessing the bus.
+> This is required by the mt8365, for the MM power domain.
 > 
-> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
 
-Reviewed-by: Matti Vaittinen <mazziesaccount@gmail.com>
+You've renamed the cap, but you kept the old name in both the commit description
+and title. Please fix that.
+
 
 > ---
 > 
-> v9
-> - Revise LINEAR_RANGE() and LINEAR_RANGE_IDX()
-> ---
->   include/linux/linear_range.h | 11 +++++++++++
->   1 file changed, 11 insertions(+)
+> Notes:
+>      Changes in v3:
+>      - Rename MTK_SCPD_STRICT_BUSP to MTK_SCPD_STRICT_BUS_PROTECTION
+>      - Remove extra bool variable reflecting the capability
+>      
+>      Changes in v2:
+>      - Fixup error handling path.
 > 
-> diff --git a/include/linux/linear_range.h b/include/linux/linear_range.h
-> index fd3d0b3..2e4f4c3 100644
-> --- a/include/linux/linear_range.h
-> +++ b/include/linux/linear_range.h
-> @@ -26,6 +26,17 @@ struct linear_range {
->   	unsigned int step;
->   };
->   
-> +#define LINEAR_RANGE(_min, _min_sel, _max_sel, _step)		\
-> +	{							\
-> +		.min = _min,					\
-> +		.min_sel = _min_sel,				\
-> +		.max_sel = _max_sel,				\
-> +		.step = _step,					\
-> +	}
-> +
-> +#define LINEAR_RANGE_IDX(_idx, _min, _min_sel, _max_sel, _step)	\
-> +	[_idx] = LINEAR_RANGE(_min, _min_sel, _max_sel, _step)
-> +
->   unsigned int linear_range_values_in_range(const struct linear_range *r);
->   unsigned int linear_range_values_in_range_array(const struct linear_range *r,
->   						int ranges);
-
-
--- 
-Matti Vaittinen
-Linux kernel developer at ROHM Semiconductors
-Oulu Finland
-
-~~ When things go utterly wrong vim users can always type :help! ~~
 
