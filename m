@@ -4,93 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 473B3ECAAD4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 10:18:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 094C8ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 10:26:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N19Eu9EqzaEkmTOBC0jt5FngYVfZh2rgh5ndZ/dTCTc=; b=DuaUqlLKUENIxoCU/96Ke1gac2
-	E1r/Gub66/I83SNCc88F7eixfa/yFVU5jwE8SIYll9sG3YRMlDRzoNq8jTrJveRhu4gwik7Z/+Vok
-	8MBSHIvs7bM/8/Xl93C6EF3SFf004/WJQ9DeBHyUXP4+YtQ4MocNpmS8EkrilfJN2gaS4CrLhg3+/
-	RrD6yPZhXyOaHnsEcJD6BiRGtSxayvMiHvlFdSX3op0p6KiSyxNC5do5dMQ5U9HKDFd/EZLyxn+uz
-	qGA2BmtKC9vOy70HJx6SYTKcme4+Q3tLDgCg2ARjgitoC9QmXzjl6lRPADlKv25eQCAtQcAee4onu
-	MRkTZufg==;
+	bh=ewFvocVNfh/1BMVRJJhj6y+q9DXa1cklPYO4jJJ+ZPI=; b=SlqZZ+cSuGCmZ/PauLxzAHUccx
+	3qAglGvHXDBHBfcGhKGRU82OlyYbC2Fk+Lf6aYQ9Pe6mJJS6tv949ZXBdxVr/gCPZkmYQdfySQBzQ
+	D4z5OqMNZJCTDthrAxxCPxFhutKUKiQSP31rBeM1CUlE01YA0bOlZkgyW4ZkLx9zg3f2Y6Sc8Yrpf
+	e+kZhR41pt1ZymAwIgU2BRmCkA4JtFH/0TtSEuemGOyJm/z0rOG6cRlrpMdBwkInNgFv10AEaWg1e
+	qOoIl5jUAZuGR9gScBFEJjWFtu4P5V9kFxBqmSeYvoBdhBo11+WfTXdRAiNmuGtBcQzoZB0gMJ3dp
+	x8Cnv6Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSyJf-00G5r8-He; Tue, 30 Aug 2022 10:17:55 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1oSyRo-00G9Sd-M3; Tue, 30 Aug 2022 10:26:20 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSyAn-00G2NX-LX
-	for linux-mediatek@lists.infradead.org; Tue, 30 Aug 2022 10:08:48 +0000
-Received: by mail-lj1-x234.google.com with SMTP id bn9so10797546ljb.6
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 Aug 2022 03:08:44 -0700 (PDT)
+	id 1oSyNw-00G7nB-6I; Tue, 30 Aug 2022 10:22:22 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id bq23so14874360lfb.7;
+        Tue, 30 Aug 2022 03:22:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
+        d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc;
-        bh=N19Eu9EqzaEkmTOBC0jt5FngYVfZh2rgh5ndZ/dTCTc=;
-        b=fxY1lsTV62zsGEKiAo+a4wIiGAnUlTtBgxmUiOIuraruijHHX7JxfwK8AruouU3V5z
-         yNpy8yVxgX3UDYVfwzyZj20vPm5C7xx4nPAfFuRt43/IOWKZGZdVUv71gtAdIbzzUZBZ
-         VCcrn2jz89xJ08pbAyuP8RA4dnznTXQZOnfYeGtwyAuXEhdEwebJBgb+EqIYAcYBpCuI
-         /lQVHLNw7lohBvkP4omqr7WVq2uvD9ZwzsD/VoENpxWfP30ewIFUplgygxOOYamixiVl
-         nRB0ruMGSAxpswVujcDIhQNNjlCc6JAoG95gt/1cD+8mWNbKMnIxx3tHBeu9ezRh4OXZ
-         qAXg==
+        bh=ewFvocVNfh/1BMVRJJhj6y+q9DXa1cklPYO4jJJ+ZPI=;
+        b=G9w+EHsaYTf3RTd0wF+VIfFaIZEtTiw4ylQgi2J4gfawcB7MJij1hAOQqp127Cp3sV
+         9Tzei6RF70Zq7P0eHDXPdurkyOZKpYeFgoxBN0D5cMrM0uLxYqhKS0l/yQ44wCBmxaY1
+         AUBPV/+Z8fqfQYJ8GHWpjeAs5IfSkBqKmy7vOWlOkf8c5T+fXxDFhYycK2i6UO53EhTY
+         cG5QhtsblzJeRgBxxQjOmn9uK0CJfYkOLVZ3wmGlUZ6MuDmSfKC5y/ZbnjyB+sUEmXyL
+         jv0sIEergg/34/jqdrJr6jA1UbDviYTis75trAfEUisn8YAmdt9KwvPDvprXRBd0r+Wp
+         1VSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc;
-        bh=N19Eu9EqzaEkmTOBC0jt5FngYVfZh2rgh5ndZ/dTCTc=;
-        b=zEv35vHtNF1Avlc8+G/9yrfkuLbAH/RBc6i+6TVFuBQ9OI1fH8YKMMTuGABbbsOvEQ
-         qiQHOmB8E1LZQ4fCBUgcKyoKv1UiBT6UHna9IpwillxoZlAP+xo4NVZkVI677p2KM4r2
-         9gRZN3NsVx921yNwypsMOCCK+EYg872fHDzUAC8SKMXG9GgHic5EuF2PVxGK91qdvpCw
-         EAa8NGg/uvKZxu1dSodBopU54IpM17u4lAJQ93cFDQPvmKLPrvQH923g3vJ1GfKax9P/
-         2hNIFMpQZll2Ql98HziOAGzLWgdcmZuwLaHjGGa+Z1RAXwmUBuv7HMpzlpmU0smElsTN
-         pLHw==
-X-Gm-Message-State: ACgBeo297q5jHNjglj2Fi+Z2mw+mddeErDywBD81V0BGO1QWv+59uKGd
-	ACDn3jpF37xxyg0xdmsrJidQeA==
-X-Google-Smtp-Source: AA6agR62Niuw49b9olkAq7JO7drsxcXqoumzcv5joCz4jLIeKX8wzpv7EC+9+YmDlwyXzeP004eSEw==
-X-Received: by 2002:a2e:93d0:0:b0:266:9e7b:9748 with SMTP id p16-20020a2e93d0000000b002669e7b9748mr1517754ljh.441.1661854122525;
-        Tue, 30 Aug 2022 03:08:42 -0700 (PDT)
-Received: from [192.168.28.124] (balticom-73-99-134.balticom.lv. [109.73.99.134])
-        by smtp.gmail.com with ESMTPSA id z24-20020a2eb538000000b00261b58cbf03sm947843ljm.87.2022.08.30.03.08.41
+        bh=ewFvocVNfh/1BMVRJJhj6y+q9DXa1cklPYO4jJJ+ZPI=;
+        b=4rJAL/ffJNLc/hLiSW5NDT7Ldsd5JYMbJha/PNJ7fFINwRIXDamPml9ZSW/vpeDUkT
+         Qlt97pe+zg/jqP7tVL5uTW5XQoQqT76Yu4Cfht9rhVa0yOto3FvOjwzJl8Qoh5/Zgzqr
+         WES9CwVfdVc6IXKaU/6DASXlWQi0T8Oo6QFUsBclclIHlyDa6IPYv9Hyyj3l7HGjqzXg
+         wwSDzr+gjVYU+zwLvxS65bRi7sHs2kFX99ZXTVOSeBR0OaTWj16pplYuGxcrkNt6l7Bj
+         ofGekNj57Bz358Jb5hAM5eQUfhz9nTZmQql9gbLNdGBx3P8vrMerlBrn9KG/I4zUTbP+
+         Gzrg==
+X-Gm-Message-State: ACgBeo3+vKeTbVXvL0OSGmabKczUxq1svsA95kZBeDKSBNqynGwn+tiD
+	OchAQ3+8Inz8s/OJC4Ji9eU=
+X-Google-Smtp-Source: AA6agR6roG+6pfy1GbA43X3JSuD5tBGJOEwN6P3O5bTo8eY5FYH8nUbstwZW9bi3uCb39lJN5D/lvA==
+X-Received: by 2002:a19:911d:0:b0:494:6701:1d17 with SMTP id t29-20020a19911d000000b0049467011d17mr3991390lfd.31.1661854936337;
+        Tue, 30 Aug 2022 03:22:16 -0700 (PDT)
+Received: from ?IPV6:2001:14ba:16f3:4a00::1? (dc75zzyyyyyyyyyyyyyyt-3.rev.dnainternet.fi. [2001:14ba:16f3:4a00::1])
+        by smtp.gmail.com with ESMTPSA id t17-20020ac25491000000b004946d1f3cc4sm613954lfk.164.2022.08.30.03.22.14
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 Aug 2022 03:08:42 -0700 (PDT)
-Message-ID: <0a82842d-283c-e266-84f4-6306f29b61da@linaro.org>
-Date: Tue, 30 Aug 2022 13:08:40 +0300
+        Tue, 30 Aug 2022 03:22:15 -0700 (PDT)
+Message-ID: <a97be2ae-b7d2-2ecf-fa17-de2d8755fb83@gmail.com>
+Date: Tue, 30 Aug 2022 13:22:13 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH 2/7] dt-bindings: phy: mediatek,tphy: add property to set
- pre-emphasis
+ Thunderbird/91.12.0
+Subject: Re: [PATCH v9 05/10] lib: add linear range index macro
 Content-Language: en-US
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Rob Herring <robh+dt@kernel.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>
-References: <20220819091344.2274-1-chunfeng.yun@mediatek.com>
- <20220819091344.2274-2-chunfeng.yun@mediatek.com>
- <438da392-f419-ad76-7e91-aa4aab36e12c@linaro.org>
- <816ecf6287533137b750c8bde9de5830e4229c56.camel@mediatek.com>
- <bee8abe5-0299-d05e-643c-4810aa33f978@linaro.org>
- <1a16cce9fe164bafc06ae193310be71c6f645d75.camel@mediatek.com>
- <000babd8-5980-3d77-f156-324b3442cbe7@linaro.org>
- <114c357f8d7f049d21ede789a292a8e2d45f4c61.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <114c357f8d7f049d21ede789a292a8e2d45f4c61.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+To: ChiaEn Wu <peterwu.pub@gmail.com>, lee@kernel.org,
+ daniel.thompson@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, sre@kernel.org, jic23@kernel.org, lars@metafoo.de,
+ deller@gmx.de, broonie@kernel.org, andriy.shevchenko@linux.intel.com
+Cc: chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
+ dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-iio@vger.kernel.org,
+ linux-fbdev@vger.kernel.org, szunichen@gmail.com, andy.shevchenko@gmail.com
+References: <20220830034042.9354-2-peterwu.pub@gmail.com>
+ <20220830034042.9354-6-peterwu.pub@gmail.com>
+From: Matti Vaittinen <mazziesaccount@gmail.com>
+In-Reply-To: <20220830034042.9354-6-peterwu.pub@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_030845_756056_A218C676 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20220830_032220_315863_C2AF6D37 
+X-CRM114-Status: GOOD (  14.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,74 +100,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29/08/2022 05:37, Chunfeng Yun wrote:
-> On Fri, 2022-08-26 at 09:36 +0300, Krzysztof Kozlowski wrote:
->> On 26/08/2022 08:36, Chunfeng Yun wrote:
->>> On Tue, 2022-08-23 at 13:24 +0300, Krzysztof Kozlowski wrote:
->>>> On 22/08/2022 10:07, Chunfeng Yun wrote:
->>>>> On Fri, 2022-08-19 at 15:15 +0300, Krzysztof Kozlowski wrote:
->>>>>> On 19/08/2022 12:13, Chunfeng Yun wrote:
->>>>>>> Add a property to set usb2 phy's pre-emphasis.
->>>>>>>
->>>>>>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
->>>>>>> ---
->>>>>>>  Documentation/devicetree/bindings/phy/mediatek,tphy.yaml |
->>>>>>> 7
->>>>>>> +++++++
->>>>>>>  1 file changed, 7 insertions(+)
->>>>>>>
->>>>>>> diff --git
->>>>>>> a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
->>>>>>> b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
->>>>>>> index 848edfb1f677..aee2f3027371 100644
->>>>>>> ---
->>>>>>> a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
->>>>>>> +++
->>>>>>> b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
->>>>>>> @@ -219,6 +219,13 @@ patternProperties:
->>>>>>>          minimum: 1
->>>>>>>          maximum: 15
->>>>>>>  
->>>>>>> +      mediatek,pre-emphasis:
->>>>>>> +        description:
->>>>>>> +          The selection of pre-emphasis (U2 phy)
->>>>>>> +        $ref: /schemas/types.yaml#/definitions/uint32
->>>>>>> +        minimum: 1
->>>>>>> +        maximum: 3
->>>>>>
->>>>>> Instead of hard-coding register values in bindings, you
->>>>>> should
->>>>>> rather
->>>>>> describe here feature/effect. If it is in units, use unit
->>>>>> suffixes.
->>>>>> If
->>>>>> it is some choice, usually string enum is appropriate.
->>>>>
->>>>> How about changing description as bellow:
->>>>>
->>>>> "The level of pre-emphasis, increases one level, boosts the
->>>>> relative
->>>>> amplitudes of signal's higher frequencies components about
->>>>> 4.16%
->>>>> (U2
->>>>> phy)"
->>>>>
->>>>
->>>> Still the question is what is the unit. 4.16%?
->>>
->>> No unit, it's a level value, like an index of array.
->>>
->>
->> So a value from register/device programming? 
-> Yes
->> Rather a regular units
->> should be used if that's possible. If not, this should be clearly
->> described here, not some magical number which you encode into DTS...
-> Ok, I'll add more descriptions.
+On 8/30/22 06:40, ChiaEn Wu wrote:
+> From: ChiaEn Wu <chiaen_wu@richtek.com>
+> 
+> Add linear_range_idx macro for declaring the linear_range struct simply.
+> 
+> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
 
-Better use logical value, e.g.
-https://github.com/devicetree-org/dt-schema/blob/main/dtschema/schemas/property-units.yaml#L38
+Reviewed-by: Matti Vaittinen <mazziesaccount@gmail.com>
 
-Best regards,
-Krzysztof
+> ---
+> 
+> v9
+> - Revise LINEAR_RANGE() and LINEAR_RANGE_IDX()
+> ---
+>   include/linux/linear_range.h | 11 +++++++++++
+>   1 file changed, 11 insertions(+)
+> 
+> diff --git a/include/linux/linear_range.h b/include/linux/linear_range.h
+> index fd3d0b3..2e4f4c3 100644
+> --- a/include/linux/linear_range.h
+> +++ b/include/linux/linear_range.h
+> @@ -26,6 +26,17 @@ struct linear_range {
+>   	unsigned int step;
+>   };
+>   
+> +#define LINEAR_RANGE(_min, _min_sel, _max_sel, _step)		\
+> +	{							\
+> +		.min = _min,					\
+> +		.min_sel = _min_sel,				\
+> +		.max_sel = _max_sel,				\
+> +		.step = _step,					\
+> +	}
+> +
+> +#define LINEAR_RANGE_IDX(_idx, _min, _min_sel, _max_sel, _step)	\
+> +	[_idx] = LINEAR_RANGE(_min, _min_sel, _max_sel, _step)
+> +
+>   unsigned int linear_range_values_in_range(const struct linear_range *r);
+>   unsigned int linear_range_values_in_range_array(const struct linear_range *r,
+>   						int ranges);
+
+
+-- 
+Matti Vaittinen
+Linux kernel developer at ROHM Semiconductors
+Oulu Finland
+
+~~ When things go utterly wrong vim users can always type :help! ~~
 
