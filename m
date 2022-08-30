@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14E8AECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 17:20:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1A52C0502C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 17:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XOsfAkGI40A6CBpIh9NrNBCT5lSN/GtUJ3Dtr8wIVZk=; b=Ou/ktLv6LnkpGLT/kRfTBdc31k
-	dTIjqHDe/YkAsEsuj6kFdXe4O566Zbk1y3NBhUHxKingxal3to+3ac6QwSowvWxXgRzkoOkiw2llM
-	WV+BOaY+ZR6Rqg9DIhUoB0O/osfj/W+rZWZ1WBIYzJh/ophls2dPumabBkJFgKIv0u1W2GxThO2O1
-	vqcmrx/V876T/8Wu16JduP4jdDSCtApz4Dtbj4TELeQ+Gs6r1MKrW10AeY0tskLCWGhBr24ko+Q00
-	Q0R31WNhP5WQ66zp2XThU+gH5gg1AidYESXED6YgeIelGyEjDF00mfErEFRihZUk+y0rSh1gmMa0d
-	KFXQrX4A==;
+	bh=oH/YF/FZ0WyDXHhba0DcSnCsPe665lSaDjJxlS/jIbU=; b=bPWgEe7PzybcwDWjM7zVibpRrF
+	YGTKsdVxmiItwMqjcpmpQRgB61GzpIihYTyC3xNmoCF90uTrcqLceUPru1bEKvZcsUlN/duNt8Ttt
+	k7HUl6KjsWmSda/Q5nR54jC1fAQm86Me9H8/maeslZgShT1+A2/JVTOUyv+/1l1BNiXGzIs8rfbXy
+	PAi0Jt5IOM5cYiFuXFCZl8S/S7Mu76CN+HxtkxjYy5vMoDlj8/HwruqI4+etdgqTKvyxOqMCUKSYf
+	2mNV2gMeAD3IU/2J42/nFTe+iHRHMcL7IC7VqpUnB9Jmvkak2JB6sW/hyayRVBkV2DKhICedkarBF
+	QRfsRKag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT4u4-000loR-Uh; Tue, 30 Aug 2022 17:19:56 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oT4wf-000nDZ-3S; Tue, 30 Aug 2022 17:22:37 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT4tr-000lke-5X; Tue, 30 Aug 2022 17:19:44 +0000
+	id 1oT4wP-000n5z-Am; Tue, 30 Aug 2022 17:22:22 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C1A436172E;
-	Tue, 30 Aug 2022 17:19:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BCC57C433D7;
-	Tue, 30 Aug 2022 17:19:40 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id ED70CB81D14;
+	Tue, 30 Aug 2022 17:22:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED4C7C433C1;
+	Tue, 30 Aug 2022 17:22:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661879982;
-	bh=5QvKRRAHDIo7HHKgbgxqt8ycMrr/leXRZbEgZYnHQDc=;
+	s=k20201202; t=1661880138;
+	bh=mbw7MSPR3g4EtRoj9xhwty39pKwBVqgVI8IGo4q1OC0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eBCtEKRyajrUYKTPT9hUtsMNgrSjio1kOmLhu98UH/W6hGZ/GKwBBUxvQEHFJEnFo
-	 UzPZKMR+gmqgY1aZ7O5YsKC03U4VqfDOcDQrOt1wWnq02CoZeIGHt8/jgiBiFpsl9J
-	 72oIT2611LRuRG19P90hwaUVNWFQpQTQx+Fd4W75d5iPRvh84tlR6S9anT/GhoE+Z3
-	 Nl+Mzgo5/tFG0pfhfpofb5mdJ9yGpePu0VeNH4pUMQScFU8xxnX74+d5qtvJC9jl/T
-	 Ad2ZPsXBBQmUqOaxrDpAb51K81nivPgQlCMw9AqlmN/QZEje4stNpxXusZNpOFHsdB
-	 hVboHQHkHOKHg==
+	b=IF+2Y1sx24FtRDdhwmgYxZ3eGfKe008sG5nYQibJQUgTkEDpOhlGBPbi2iq5ewTjX
+	 q2D6v9tEVH2X36A1+9Sb1gLgUi2QRG34bgMCks0YjYlf8/eBDDxK2EH9yKq9e8iRCz
+	 rGzKYZX9bu0WTKOTc71qfPYCV6PbQEU0+LKgdJk38Ed105szXm2pKSTll7DJEG3uiH
+	 tUEqL+1Q8JqyGS6gSRvk1rnFmQuqQMGpcsJjlXIavf/S5qjXsgYOoEepX/1Ywj614D
+	 a6DL5RamroTmHEaA32yf/xdEdgtKIo8s1AJfmA/5aaTQBodaADLGaG4JN5vOzhpEnc
+	 p8TTWw7NeIWBQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -53,21 +53,22 @@ Cc: Bart Van Assche <bvanassche@acm.org>,
 	beanhuo@micron.com,
 	avri.altman@wdc.com,
 	adrian.hunter@intel.com,
+	j-young.choi@samsung.com,
 	linux-scsi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.19 14/33] scsi: ufs: core: Reduce the power mode change timeout
-Date: Tue, 30 Aug 2022 13:18:05 -0400
-Message-Id: <20220830171825.580603-14-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 09/23] scsi: ufs: core: Reduce the power mode change timeout
+Date: Tue, 30 Aug 2022 13:21:26 -0400
+Message-Id: <20220830172141.581086-9-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220830171825.580603-1-sashal@kernel.org>
-References: <20220830171825.580603-1-sashal@kernel.org>
+In-Reply-To: <20220830172141.581086-1-sashal@kernel.org>
+References: <20220830172141.581086-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_101943_267250_E4EACFE6 
+X-CRM114-CacheID: sfid-20220830_102221_547521_D1E42EA8 
 X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,14 +98,14 @@ Signed-off-by: Bart Van Assche <bvanassche@acm.org>
 Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/ufs/core/ufshcd.c | 9 ++++++++-
+ drivers/scsi/ufs/ufshcd.c | 9 ++++++++-
  1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index a51ca56a0ebe7..829da9cb14a86 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -8723,6 +8723,8 @@ static int ufshcd_set_dev_pwr_mode(struct ufs_hba *hba,
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 2f6468f22b489..dae1a85f1512c 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -8476,6 +8476,8 @@ static int ufshcd_set_dev_pwr_mode(struct ufs_hba *hba,
  	struct scsi_device *sdp;
  	unsigned long flags;
  	int ret, retries;
@@ -112,8 +113,8 @@ index a51ca56a0ebe7..829da9cb14a86 100644
 +	int32_t remaining;
  
  	spin_lock_irqsave(hba->host->host_lock, flags);
- 	sdp = hba->ufs_device_wlun;
-@@ -8755,9 +8757,14 @@ static int ufshcd_set_dev_pwr_mode(struct ufs_hba *hba,
+ 	sdp = hba->sdev_ufs_device;
+@@ -8508,9 +8510,14 @@ static int ufshcd_set_dev_pwr_mode(struct ufs_hba *hba,
  	 * callbacks hence set the RQF_PM flag so that it doesn't resume the
  	 * already suspended childs.
  	 */
