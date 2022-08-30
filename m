@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7B31ECAAD1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 14:36:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6303DECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 14:52:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=us85x22JTlrF7wD8uYoUk5r++buWfK/pYA6gIAEUhK8=; b=QOVSmzSghvLx5UmdfXMapbJIaI
-	8pYWmJgfItHd5hFrPY2rCEhI0d1B8A1rvQljFr3ryw7F4vysHOLe4/QGPa4bWwQ4858W0wOOsaM4I
-	44fI0wyo7dKEZ6IjCIr1MWpt1vBiyUeIO1x2l52ltFHBLvlQt31Ai15QDR3yrE6TjnekmShmBSgv2
-	8jJhDs9/dF65BLPkDdCEFToytEOyf428U4chHlVl1c84+4sjJSTBd2RsZX43ObgM2pXzQZrdiWytu
-	rIRHS0fejEBCFXA3a5g7xliov/xVI/d/lbqzlTMMTztrTkZPcakxoneLjJH7+EbsJVgV+BLdi9OzK
-	SV6fjTRA==;
+	bh=vVOUHVR2PLgo4faefb2vLhSUsuhrw3ywut0de3rhXVw=; b=HdBXf6yHeTXKJOjVtCmofi/7jv
+	JLheUor1YzQZMNMeZdycUNCE+gjxTQ9h4wgAu20u5Qey7xppdjTa51KZxJ9p6IXbQT48kSgCfbTHf
+	RkJLXItBe9jMz+zt/WvsFzgfvJf7lJP3iCV/U+/gxz9SEP1H8s8dbXwzKvi1hNSDeTpkYssSj1Q1K
+	6u0L8Fwbe6ue9dMRlig/foTLMkz69tf+QhjkXSaLFCCnnG+N4ypy3waoIQwzsPJdZ4wD7UphKiitr
+	7xNaLqpSs8OvPDoSPqVrX5oRilirE4wLkecd4UYfvmjjXcxORSlF/7zC/QlxKWTRCr53lPCr6Zp+2
+	UPgADC5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT2Lk-0002NZ-LG; Tue, 30 Aug 2022 14:36:20 +0000
+	id 1oT2ap-0006af-Du; Tue, 30 Aug 2022 14:51:55 +0000
 Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT2LZ-0002LJ-Gg; Tue, 30 Aug 2022 14:36:11 +0000
-Received: by mail-wm1-x329.google.com with SMTP id n17-20020a05600c501100b003a84bf9b68bso1320842wmr.3;
-        Tue, 30 Aug 2022 07:36:08 -0700 (PDT)
+	id 1oT2ac-0006Wh-0f
+	for linux-mediatek@lists.infradead.org; Tue, 30 Aug 2022 14:51:45 +0000
+Received: by mail-wm1-x329.google.com with SMTP id v7-20020a1cac07000000b003a6062a4f81so10093828wme.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Aug 2022 07:51:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
+        d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=us85x22JTlrF7wD8uYoUk5r++buWfK/pYA6gIAEUhK8=;
-        b=COOUiPIa2mOTQAJAn8kcVFqO05W8SHxtgh7b277tT2ei9x7z1DlxP/I6+fCfgtXVaS
-         DfTXuR6UyDGanIwCYIhuUUS3NJtEr907BQ1Make7tQF5GU4M0ryo/bW4rvpVGQwFq+aH
-         msWjVaqTnDps1MT+EzzGVFSFAuJu2sLdk1mmfb6qdFeWEk0mikllVRaq3nrWJW/+sCMP
-         8+rLTZ+y0F+NsCyJq3WR72a93Tc3OSa67utCt9paFoAjiox+jKfJ4k8N/wOmRgiZdCVN
-         rELqFydlcMqkyHlVAebu6OU6waJT+32kwn8NKCTmQKPZ0MaEOuJrhBYxtxX+8nOgYPo8
-         oXiw==
+         :from:to:cc;
+        bh=vVOUHVR2PLgo4faefb2vLhSUsuhrw3ywut0de3rhXVw=;
+        b=sAfwqDbDynPJ5DcsZHn1V+HXNVmts9AkCL9NoArysuOqMOBSTvIo/63wPqh4Iweaar
+         zYUqH8nMPhOj/enNQZquCtsxTjqe6SzuvKrKYBJlozLpxdzWjhpeq4j/ZOjfd094Hmbs
+         TGhArJfg4Qm1Ldhn4F3Jzl140AVYf+JTyHJyj1YjkL8O2GiA/3QH5pBP3JzvE7aK7CIg
+         lH+sGyTROUcat0N+11VkoLZ69CYKZg7Tif7aEzkurhsONog7X3fa/JI3GFtvs3NUWfzs
+         98TMmbmODeOM4X7pzcoBsdKxJ7RjR/37sAdwodOn9Ibe7vLDc7cV7iG6SipOpPiaDjcR
+         K95Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=us85x22JTlrF7wD8uYoUk5r++buWfK/pYA6gIAEUhK8=;
-        b=xaP9bhh021AfqyxxYSs4uJnM4YiO6B1D+shAprBtiJRRKrNWyBuD9S/WzYQdGGm0tl
-         esDxwbbaERmpKCSHNskRdVhAUSxmgDItp7u5OOu8mm12Ypz3GjtivS/fHeq+QTNsKx/k
-         m70aybiHXBQcB3Xn7boh9l3euhZEOEXIB++4Po8HlanLZnJzurOWLJ0AANHk6wJzT37A
-         mJpE9Pv/Qqb7/FFZXPZuCNkkeNiXi8zFUXCHFWrGvs1bfTLD08E0Md/M96h0i/wpDSLD
-         zGms/Jca50Z9LFcQ0MP+EzdajS7MT/yvcOUW2WnaU3A4QFt+zopkbxDURSkh4+Ti4qA5
-         WZHA==
-X-Gm-Message-State: ACgBeo1G2BZjPRcTULHNrcvyeEBLn/vOqbpxEVn8eIHeImVVLS/R4KGn
-	fKjWvEPT1K8w7iJC4dSshT8=
-X-Google-Smtp-Source: AA6agR45ExdTimhT2F8/OeCUtb+YhaF+hFoTBufVmwvO9EZdJ+yS+f8N6ztPsowvo7qAi2/nYByS0g==
-X-Received: by 2002:a05:600c:3b05:b0:3a8:4c81:54df with SMTP id m5-20020a05600c3b0500b003a84c8154dfmr3282778wms.129.1661870166813;
-        Tue, 30 Aug 2022 07:36:06 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id i17-20020a5d55d1000000b00226d945c72esm6686369wrw.96.2022.08.30.07.36.04
+         :x-gm-message-state:from:to:cc;
+        bh=vVOUHVR2PLgo4faefb2vLhSUsuhrw3ywut0de3rhXVw=;
+        b=iynfO6bqP+Vylc4BbFI/3rhE6Ru+ECxgFHu//sqP+pdFDgFsmUl5ADZ5KpQHUlqGnn
+         DLudMbVj1Qs01qwmbHuHcsYO4XTzaHm1pv52t4Bim8yGQ9GkVN6gyjy/0HBvm8b55gOV
+         JtA6A47blxHeUQvy1oAWyaN4pIJjw7cKca/C0sB6g/UEUHtIbHq9rff08ihu8s84c0OQ
+         1TiGKeLiaPkC7MDw1B8IYGmoa3GFxVZ94fa49XT7mE4AFhgCVpoTr+Z4o7vqga2IIOQm
+         lmCaz7EqA8yTSlUcPh077FTXe7ODS5tGJfBYLrEWiuYokc5x6y9XW6qDOAu029x1pyi5
+         ACVg==
+X-Gm-Message-State: ACgBeo18cowAGYwYznugKDGCBooz6KdtVfAHnYGY1vQMG/k+1/I2Fq9r
+	kQCXe+37b5WjhhWuC9rpi4upkg==
+X-Google-Smtp-Source: AA6agR6tlJq/YAXO/1cY2WYYTLI1veoGfTMxlt+IJlkpejsgW/Wcgnlw/JhJndGznvzdPVXtsD7bxw==
+X-Received: by 2002:a05:600c:358c:b0:3a5:dac0:dc3 with SMTP id p12-20020a05600c358c00b003a5dac00dc3mr9538572wmq.60.1661871100519;
+        Tue, 30 Aug 2022 07:51:40 -0700 (PDT)
+Received: from [192.168.86.238] (cpc90716-aztw32-2-0-cust825.18-1.cable.virginm.net. [86.26.103.58])
+        by smtp.googlemail.com with ESMTPSA id u11-20020a05600c19cb00b003a5a5069107sm12109262wmq.24.2022.08.30.07.51.38
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 Aug 2022 07:36:05 -0700 (PDT)
-Message-ID: <8b4da979-fe50-4d09-f679-277053730ff1@gmail.com>
-Date: Tue, 30 Aug 2022 16:36:03 +0200
+        Tue, 30 Aug 2022 07:51:39 -0700 (PDT)
+Message-ID: <6b3056c5-4668-ed8b-73ff-374bcff9c4be@linaro.org>
+Date: Tue, 30 Aug 2022 15:51:37 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.1.2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
 Subject: Re: [PATCH V2 1/2] nvmem: prefix all symbols with NVMEM_
 Content-Language: en-US
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
 Cc: Russell King <linux@armlinux.org.uk>, Andy Gross <agross@kernel.org>,
  Bjorn Andersson <andersson@kernel.org>,
  Konrad Dybcio <konrad.dybcio@somainline.org>,
  Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
  Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
  "Rafael J . Wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>, Amit Kucheria <amitk@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Amit Kucheria <amitk@kernel.org>,
  Thara Gopinath <thara.gopinath@gmail.com>,
  Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
  Arnd Bergmann <arnd@arndb.de>, Joel Stanley <joel@jms.id.au>,
@@ -94,13 +95,13 @@ Cc: Russell King <linux@armlinux.org.uk>, Andy Gross <agross@kernel.org>,
  linux-mediatek@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
  <rafal@milecki.pl>
 References: <20220830134059.18744-1-zajec5@gmail.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 In-Reply-To: <20220830134059.18744-1-zajec5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_073609_586464_05AEF2E0 
-X-CRM114-Status: GOOD (  21.57  )
+X-CRM114-CacheID: sfid-20220830_075142_146254_A9DD86A0 
+X-CRM114-Status: GOOD (  21.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,16 +118,12 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 30/08/2022 15:40, Rafał Miłecki wrote:
+On 30/08/2022 14:40, Rafał Miłecki wrote:
 > From: Rafał Miłecki <rafal@milecki.pl>
 > 
 > This unifies all NVMEM symbols. They follow one style now.
 > 
 > Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
-
-For the MediaTek part:
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
 > ---
 >   arch/arm/configs/multi_v7_defconfig |  6 +++---
 >   arch/arm/configs/qcom_defconfig     |  2 +-
@@ -139,6 +136,10 @@ Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 >   drivers/thermal/qcom/Kconfig        |  2 +-
 >   9 files changed, 37 insertions(+), 37 deletions(-)
 > 
+
+Applied thanks,
+
+--srini
 > diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
 > index b1a25b8c11e7..b61b2e3d116b 100644
 > --- a/arch/arm/configs/multi_v7_defconfig
