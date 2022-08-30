@@ -4,89 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 280E2ECAAD4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 09:11:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9B51ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 09:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+vFCSexr76HlBCHcrQn/vIs9359eDZxRFYJurz0HFmo=; b=xesl6meO11/mjfV4SGtbJV11iX
-	HVDzUbr/WOAPrVJ0dfpuK73KnbafFAKvi8j2nkG/sGKw6+cnGnOhNONi0Cu+816hOLK9TpX+yLzJi
-	OyQ422S3scsx7TlkN2DoCHnNU5tLJh/4jwCdC6I/a9KMhNuc8puCvN/007nBgs2gJX4bAiXgekLjg
-	GnDcS5nTMaZEY5i0YZ18uhLRcpDr8Vj7t8r09ARrErfzqRI+ngIzKRU/hq9u8XPPsEQG4qLuSOcE4
-	0DhVhb7LwwMxhzF2DHsJEUOpgLsUddhOvJEU8THOkYZ7FREymzh/ktavUNOfDIO68hO0xMn+Lo53E
-	yupa/OOQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=psf0bCq1w3vqARA027yWfCxws5BR6AkKlgkDwNehCv4=; b=JutB/EZerG8R3qorvCJIS1K1pz
+	udLPsr8LtUSWLXbSQAsV+rU/omgrhaVBoy2blQI0tcxfWMiYzNRGWHDDFmIh6kJlwbk1aqQ+35rUQ
+	FHOU8Pm4TrJy9a5monza/k1AESfaOy9lT7o915gv2UVE8PVqzK+KfNBHYOJWRVLYWj9wA0wIox5ux
+	QEI0/caLr5CAfpavBrEX85+IQ0T9FPTzlGplNe2Yx4pX05x/Wuk9NfLGJJ1txvcVDWfLyXa+y6zIr
+	dz1aEPul9SM7VaiOyxFEbAQWiBDXYb+mCfChO72HoH/av62JFpAfzMqLv40I+5pcZxhun7e4hxxpH
+	hByo5sbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSxGz-00FTzR-KF; Tue, 30 Aug 2022 09:11:05 +0000
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+	id 1oSxHa-00FUL2-N8; Tue, 30 Aug 2022 09:11:42 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSxGk-00FTpj-Mb
-	for linux-mediatek@lists.infradead.org; Tue, 30 Aug 2022 09:10:52 +0000
-Received: by mail-lj1-x22a.google.com with SMTP id z20so10675513ljq.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 Aug 2022 02:10:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc;
-        bh=+vFCSexr76HlBCHcrQn/vIs9359eDZxRFYJurz0HFmo=;
-        b=CnU/2NHU+5ZWMnfhlGMXRn7vd0rQke55CYHYd58495fnKVaXeP96TZWwX3JyiBzaAo
-         tLa1EeOJ5RW6ctdcTRSEo3eXTALArkmWt6QIRzQv11DAXQWF6g90wcU4FLVaZwkdi1Pi
-         uOZpDqJ48USDbihnJ+aAYdqMWtptMbU8/4tukJW5RQqjTnL0XKLDhC13VAObrjnIuJO9
-         28/UNhVbLU90yiRpL1sjPdMXj7a91Ey1HdW7lB6r7PAVJZcC4BhPX0oR8c5pA0DUSflv
-         +9TaVFt7v0YhmhuOIvkVmdHaUHIt8l+CyqgX+mLkxqQ0ya58BSGwjvQ9ab1+nitEB3Ny
-         sZwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc;
-        bh=+vFCSexr76HlBCHcrQn/vIs9359eDZxRFYJurz0HFmo=;
-        b=wdumTrcFJhVRgSjFNUkL7nYakFe8Hy02sAsucHaqf6iwmFtcSEg4ES3UNFITQGuQqi
-         q4dpxsM6XaZCIQzCvuA2ZyJ1l45tL1uDoOMJe7aTIvNDsV/t+7jsfsFuNchsPdLjP5iN
-         etCb3nB6xfdbHTLzHdWd6HOK6DgnQY4cL+7X9+LdK8eAfZKCOtkcSnqqoLH3LeyQ9Ery
-         FP1j7fHnWM6fn2R3KHlOmmIKqjBnwq7iMvHPrHV9iAaPMm98cUnBkisA1H7wCXKLyD/Y
-         Bag+CNALssqsuuF3cS9ELTvSvKTNW9iHPGaSOQ9aMsWDhZxfPR0DxCxuk20xm+TAaVoP
-         kgew==
-X-Gm-Message-State: ACgBeo2wNzLjVI/L0RFyPKXORihhgx1HtiP8OaKU9U63QgrqndnQsrwT
-	m0Pw1iJV6mCjS+ZdH7NHE0K3pg==
-X-Google-Smtp-Source: AA6agR7NEeEYYtmJpkCNYve98HSAgJWirTpD5nfKvslXsBiBWZAoj/T37NsmSWSobBGbte7eVK4Vig==
-X-Received: by 2002:a2e:534e:0:b0:261:d1b5:dbca with SMTP id t14-20020a2e534e000000b00261d1b5dbcamr6223939ljd.187.1661850648437;
-        Tue, 30 Aug 2022 02:10:48 -0700 (PDT)
-Received: from [192.168.28.124] (balticom-73-99-134.balticom.lv. [109.73.99.134])
-        by smtp.gmail.com with ESMTPSA id t11-20020a2e8e6b000000b0025ebaef9570sm1684850ljk.40.2022.08.30.02.10.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 Aug 2022 02:10:47 -0700 (PDT)
-Message-ID: <23d2764d-17da-5d26-29ed-0b1f5418d004@linaro.org>
-Date: Tue, 30 Aug 2022 12:10:46 +0300
+	id 1oSxHK-00FUAO-QX; Tue, 30 Aug 2022 09:11:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 1A0C8B818C9;
+	Tue, 30 Aug 2022 09:11:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49C1BC433D6;
+	Tue, 30 Aug 2022 09:11:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1661850683;
+	bh=6mH6KAOzeUMtuElAC5LgYu+P+CwsGf8BlEkNtVomIv0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=mtTDSFldT9ZlYtL11lxVm1EUf04IxYhU3aEwp5ywLJX417Pcw1VEXZhViY/lYnGC3
+	 wAL7UaOmu2PQ6u09KsQM0p9usAiG51KluFsfDG3EtZXsikuCjd0O9p1QD4fWhYVaIB
+	 bIHSbsPPMYvlQ5ath/M56s3ZWWfv0TRAdqMmxY3Qx/6wAe5iZ2WMxRtAX5fDYVglhy
+	 bVFQ5p643QbWT5MNf6zhzYaFZpim/f7R+9ZyBrxDnjyjREPfjeWhpmIf/SmkJ8ceoN
+	 hTL86eEuv6OvTFL1wWuLjNwg7RxJRjzUKWVkvgVGIXKaNJC7UOzDjRYiVghXKc6tcY
+	 g1ozAAkxFebKg==
+From: matthias.bgg@kernel.org
+To: matthias.bgg@kernel.org,
+	lee@kernel.org,
+	robh+dt@kernel.org,
+	angelogioacchino.delregno@collabora.com
+Cc: devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	mandyjh.liu@mediatek.com,
+	linux-arm-kernel@lists.infradead.org,
+	Matthias Brugger <mbrugger@suse.com>
+Subject: [PATCH v2] dt-bindings: mfd: Rename mediatek,mt8195-scpsys.yaml
+Date: Tue, 30 Aug 2022 11:11:10 +0200
+Message-Id: <20220830091110.27857-1-matthias.bgg@kernel.org>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH v2 1/3] dt-bindings: mediatek: Add gamma compatible for
- mt8195
-Content-Language: en-US
-To: "zheng-yan.chen" <zheng-yan.chen@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220830063929.13390-1-zheng-yan.chen@mediatek.com>
- <20220830063929.13390-2-zheng-yan.chen@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220830063929.13390-2-zheng-yan.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_021051_603561_32F11A1D 
-X-CRM114-Status: GOOD (  18.24  )
+X-CRM114-CacheID: sfid-20220830_021127_068610_C4BABF3D 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,37 +77,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/08/2022 09:39, zheng-yan.chen wrote:
-> mt8195 uses 10bit-to-12bit gamma-LUT, which is not compatible with
-> current 9bit-to-10bit gamma-LUT.
-> 
-> This patch thus add constant compatible for mt8195, which means that
-> mt8195 should only use specified mt8195 gamma driver data.
-> 
-> Also, delete related compatible from enum, to ensure that
-> mt8195 will not accidentally get others' gamma driver data and thus
-> cause fatal error.
-> 
-> Fixes: a79257bae9bf ("dt-bindings: display: mediatek: add mt8195 SoC binding for vdosys0")
-> Signed-off-by: zheng-yan.chen <zheng-yan.chen@mediatek.com>
-> ---
->  .../devicetree/bindings/display/mediatek/mediatek,gamma.yaml   | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-> index a89ea0ea7542..fbd7b9664a78 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-> @@ -25,11 +25,12 @@ properties:
->            - const: mediatek,mt8173-disp-gamma
->        - items:
->            - const: mediatek,mt8183-disp-gamma
-> +      - items:
-> +          - const: mediatek,mt8195-disp-gamma
+From: Matthias Brugger <mbrugger@suse.com>
 
-This is one item, so not a list. With all such cases this should be
-dedicated enum.
+The file describes the scpsys node for all SoCs and not only the mt8195.
+Rename it to reflect this fact.
 
-Best regards,
-Krzysztof
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+---
+
+Changes in v2:
+- Fix id
+
+ .../mfd/{mediatek,mt8195-scpsys.yaml => mediatek,scpsys.yaml}   | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ rename Documentation/devicetree/bindings/mfd/{mediatek,mt8195-scpsys.yaml => mediatek,scpsys.yaml} (96%)
+
+diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml b/Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+similarity index 96%
+rename from Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+rename to Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+index 3737207d8504..1a5901ca90f5 100644
+--- a/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
++++ b/Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+@@ -1,7 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+ %YAML 1.2
+ ---
+-$id: http://devicetree.org/schemas/mfd/mediatek,mt8195-scpsys.yaml#
++$id: http://devicetree.org/schemas/mfd/mediatek,scpsys.yaml#
+ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ 
+ title: MediaTek System Control Processor System
+-- 
+2.37.2
+
 
