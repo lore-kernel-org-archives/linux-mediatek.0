@@ -4,59 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47107ECAAD5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 03:49:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 593E6ECAAD1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 03:59:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wkGTGJ6wWTf9qroYpkUbY5a+QE4YIYnkQYRn2mIn9b4=; b=muilMZAC5r6yTO7M7QvvpFT+Ey
-	IaTWvtCM3CcQ5z/Q2TMoqcoG8yP/Ew1fIphCS8Z0+lykCOpu3pb33GAXzUI/TWSJlzDWCe0xXhxoR
-	II55RJW2XTlVCGAQsnnCNoSc8caSAOpDPqWdv+XYdkxIyv2ynr+eUhY+1bof84ngk2M3Pj9YSpjh9
-	cAa40UxAJbvPgk76qnFEvEolcKiOwdz3qO3uwBHr07uMAuJeMwvPsxg0/XvfJMOlM7+3Im2lVj9u4
-	IyUGoyOgNmoA/CBVJp0bnzkXNNRwjZ2Ia2Su6Bih1khTEdlF5wBDED/HZPhLrvHLCcWscMOE1874m
-	A4tm9ycQ==;
+	bh=2hKdgQAyBKjuPOFpT2LPAXojP+l5GEDaWzmA/kIxeVs=; b=dlfTbohDsRh7TO69HNQo80N1Qq
+	z9M6O6CoAX3jaXauhjWy+XtIc6Sszcub4INijJP4Vrhdqah6PuEuV1Om+D4JRNdTZoUgDq+VC9exh
+	mLBiXs4ox3rUihkiKLNAE6Uj+6Lq/tud6CtqDIb7r6IArqBXXCLDVaQzLQlJwb9Yuiqf/1nyRuNlk
+	IdveET83plEvpq3D97h6BxxCF6RhkUQ9BNqK2bPTKgkw1s0bMon/hULKaIbpbd2vkAl3Y8iT3QgAq
+	VRLxo9C6ptdzP1JxTGUirmn3annFbnty4Jnd9VvCKbcoavEt4QRIB4ApIW5slI7xvLRlRZOyGxgEV
+	DLtNTtzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSsFu-00Dsro-PB; Tue, 30 Aug 2022 03:49:38 +0000
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+	id 1oSsPC-00Dvtr-MM; Tue, 30 Aug 2022 03:59:14 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSs9Z-00Dq4j-P2; Tue, 30 Aug 2022 03:43:09 +0000
-Received: by mail-pg1-x535.google.com with SMTP id 202so9513354pgc.8;
-        Mon, 29 Aug 2022 20:43:05 -0700 (PDT)
+	id 1oSsOn-00DvrG-8R; Tue, 30 Aug 2022 03:59:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=2hKdgQAyBKjuPOFpT2LPAXojP+l5GEDaWzmA/kIxeVs=; b=KxEAr+AAN7gr5szot6TNp7FC+c
+	iJQyz6OTVW9EFmPMdShWfIH7B4HHuc98LmM375hjuDNTBwvIneftlB6YBmurMse4XgM8X/QL4XXoS
+	Km5ZKI4sNQXgcXCE7aaInMCXPUBpkwy77z1hYkoGsS8VScepuJejKx43JhmRfeRGTCfDM4Jo5W4tj
+	I47hMiz1HHXjKMgyVaEBxV3xH7DU/y0aECJcPdM2KdtzsXoEXyoQyVXWR5cU7ysKpV2u/tFt7TgMp
+	UHbzNO0aBBmwOjvNGAc3hkZBIagsSMyMg/cvkKHS2gYHKZJzt8s5gJk+klQUwBR8fwPtirQglolHE
+	l/mbpcow==;
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oSs9E-007jKW-3X; Tue, 30 Aug 2022 03:42:47 +0000
+Received: by mail-pl1-x629.google.com with SMTP id jm11so9852639plb.13;
+        Mon, 29 Aug 2022 20:42:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=wkGTGJ6wWTf9qroYpkUbY5a+QE4YIYnkQYRn2mIn9b4=;
-        b=U5JilDxSUbtryAeFD7QjgPxSf2JXRn/w0NpKEzo/DKQ17RSvpU61jE46msBVyQ9Jzv
-         qQGv8YGWFTwj+YrgYnyBaoHxjkXVwhhCe7g29UQ5uSsr/dWAQJLTKY+8GXB5h1DGRGJg
-         EJ2T4uuMtstt0t2awRASScfyrhcjozhj76oOwApT8j827GsItZmpddHm4jjFk6UZfPHx
-         0RoUn7uB/ASAWnia5gvp4X18VnscyxID3/F0XsZ7gpvraK9PGEEnyDW8qVreK+4XXCTF
-         eA8qeIu4qlLCK1ank+gxQuBhruXr40Sz1HE5anz0AetrMef3xfNM8kuGmzwTlEUvFYP7
-         1JOA==
+        bh=2hKdgQAyBKjuPOFpT2LPAXojP+l5GEDaWzmA/kIxeVs=;
+        b=HXCiq2GDc+OsQpi+j/TNnKrcTjAlka2ebGycOP279cEUOQ5dw6h3TtKmuLjRdffnb3
+         PnHTDbymxJ/TVqGx9T0bGCGOTb7g4kYpwCOXPrql2EQ5k2Ujib38efocA7s+5dUMcLy5
+         MDCen8OBukXywTiJdYP03kiYjV46zvAp5AzaGAbyAXV06PMqivAnYTXpiqUXHKnYtPcJ
+         08JU+EvY+6k4VPzPI0uMaKQgdA5H2LO6VGsaP8yj/c0Y4Ann9l0sOeVdxXuniHhzIAsf
+         FDe5EMCb+zHqgo2BhBouqZd6RhDH1l4bq2zbC+FgGjoD5O7YThSpetrosvnDz7+ZqLkQ
+         WgPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=wkGTGJ6wWTf9qroYpkUbY5a+QE4YIYnkQYRn2mIn9b4=;
-        b=xoOVhSDL2tVFy91u4lIt7tKISe2+lCKeyg3J1tm5SI6jahlwquj+tqLMwjP9NZSegm
-         BWqO7uq7gG4/Tvqa/vVqZXWtxOhLZFb6v3ypobNIay+mv/YpuXU7561rIcGHnE0smGco
-         71vi5WVV72xVDqB76F7bRH46mMBcFqEqfkgUn5Fe09o1yrhNSwi2hjZVZYCq7HkFnMrw
-         ZFuM6hwOqRFL6OY3l2/+hmTEA4Rstg/zS9oIbBjKju5qlucBtr1OQkSnDZuqJcagzARs
-         ulhkxrH3WbgaC4BAATcmww7YKWO6Z65ryHJxDDyk75BDUMAAwzPhxBjmdfaxLtWasAvU
-         g1/Q==
-X-Gm-Message-State: ACgBeo0MG9BBctKRjGuHYIFG3tpK83SdVrYWQ5znO0hXwIeQVx5uNEuU
-	NnHcWpYJ8tQni8OHQPthQ44=
-X-Google-Smtp-Source: AA6agR53XQ4tIf/pefuICUvYvnYOqEdu8ZT++mXPc9F2Xt6GHHaIS3Nq3zswCdvcZeb96m3oZoTD6A==
-X-Received: by 2002:a65:60d5:0:b0:41a:625e:4c44 with SMTP id r21-20020a6560d5000000b0041a625e4c44mr16213202pgv.364.1661830985076;
-        Mon, 29 Aug 2022 20:43:05 -0700 (PDT)
+        bh=2hKdgQAyBKjuPOFpT2LPAXojP+l5GEDaWzmA/kIxeVs=;
+        b=3UOy3u2N/qQpFXrISxOC6AslHs0XfrMSxBrJOX5xO/lt+oFpzMcp2cibSdlIk5vtZg
+         w/hIzV1rWfUnMebIfC1QM7IVheuOLs44MUa33J1EuGUOSmHO5YviZ4uxvnaZ84MDYQz/
+         idg7ctiqMZe67fIncdTZu6SblafrcCle2pwyHybY1Mr/+wBzLg4LMnQsK6U9pyAh+0HN
+         pmynvXuttac0uESsv5Sse6a+Aw/yNnsK2+R7UDzYV9x21T3L6sNJmX/DCCWJX9mG9wxK
+         +AfInOz5CZglJDCj7r0izUn1nsnOVLB7DUNcUKfUIWoEzJCQ2gwNjZ+oBl9ElxnqdOFw
+         aFlA==
+X-Gm-Message-State: ACgBeo3QcH0mY6xtqaoJuI3Tr0OKWScnSz/b1qnVNi32lR+9GMWfeABm
+	I5giLFZaHem0+2zNuQyUGrk=
+X-Google-Smtp-Source: AA6agR5vyHbjt+ct6XCaBYi2yaOjunj5rC9kT5E02Gdr9vLu8Vyv+2jEY6H6wEn0cEBf+kEN2KuoJQ==
+X-Received: by 2002:a17:902:d643:b0:172:84c4:d513 with SMTP id y3-20020a170902d64300b0017284c4d513mr19521442plh.138.1661830960740;
+        Mon, 29 Aug 2022 20:42:40 -0700 (PDT)
 Received: from RD-3580-24288.rt.l (42-77-88-242.emome-ip.hinet.net. [42.77.88.242])
-        by smtp.gmail.com with ESMTPSA id a6-20020a170902ecc600b0016ed5266a5csm8439577plh.170.2022.08.29.20.42.58
+        by smtp.gmail.com with ESMTPSA id a6-20020a170902ecc600b0016ed5266a5csm8439577plh.170.2022.08.29.20.42.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Aug 2022 20:43:04 -0700 (PDT)
+        Mon, 29 Aug 2022 20:42:39 -0700 (PDT)
 From: ChiaEn Wu <peterwu.pub@gmail.com>
 To: lee@kernel.org,
 	daniel.thompson@linaro.org,
@@ -86,17 +99,17 @@ Cc: chiaen_wu@richtek.com,
 	linux-fbdev@vger.kernel.org,
 	szunichen@gmail.com,
 	andy.shevchenko@gmail.com
-Subject: [PATCH v9 10/10] video: backlight: mt6370: Add MediaTek MT6370 support
-Date: Tue, 30 Aug 2022 11:40:42 +0800
-Message-Id: <20220830034042.9354-11-peterwu.pub@gmail.com>
+Subject: [PATCH v9 07/10] power: supply: mt6370: Add MediaTek MT6370 charger driver
+Date: Tue, 30 Aug 2022 11:40:39 +0800
+Message-Id: <20220830034042.9354-8-peterwu.pub@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220830034042.9354-2-peterwu.pub@gmail.com>
 References: <20220830034042.9354-2-peterwu.pub@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_204306_605001_9985A9E6 
-X-CRM114-Status: GOOD (  25.44  )
+X-CRM114-CacheID: sfid-20220830_044244_978048_BEEC6299 
+X-CRM114-Status: GOOD (  21.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,66 +132,68 @@ driver, display bias voltage supply, one general purpose LDO, and the
 USB Type-C & PD controller complies with the latest USB Type-C and PD
 standards.
 
-Add support for the MediaTek MT6370 backlight driver.
-It controls 4 channels of 8 series WLEDs in
-2048 (only for MT6370/MT6371) / 16384 (only for MT6372)
-current steps (30 mA) in exponential or linear mapping curves.
+Add support for the MediaTek MT6370 Charger driver. The charger module
+of MT6370 supports High-Accuracy Voltage/Current Regulation,
+Average Input Current Regulation, Battery Temperature Sensing,
+Over-Temperature Protection, DPDM Detection for BC1.2.
 
-Reviewed-by: Daniel Thompson <daniel.thompson@linaro.org>
+Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
 ---
 
 v9
-- Revise the format of the comments.
+- Fix wrong 'F_IINLMTSEL' setting in 'mt6370_chg_init_setting()'
+- Revise the usage of LINEAR_RANGE_IDX()
 ---
- drivers/video/backlight/Kconfig            |  13 ++
- drivers/video/backlight/Makefile           |   1 +
- drivers/video/backlight/mt6370-backlight.c | 351 +++++++++++++++++++++++++++++
- 3 files changed, 365 insertions(+)
- create mode 100644 drivers/video/backlight/mt6370-backlight.c
+ drivers/power/supply/Kconfig          |  14 +
+ drivers/power/supply/Makefile         |   1 +
+ drivers/power/supply/mt6370-charger.c | 957 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 972 insertions(+)
+ create mode 100644 drivers/power/supply/mt6370-charger.c
 
-diff --git a/drivers/video/backlight/Kconfig b/drivers/video/backlight/Kconfig
-index a003e02..936ba1e 100644
---- a/drivers/video/backlight/Kconfig
-+++ b/drivers/video/backlight/Kconfig
-@@ -268,6 +268,19 @@ config BACKLIGHT_MAX8925
- 	  If you have a LCD backlight connected to the WLED output of MAX8925
- 	  WLED output, say Y here to enable this driver.
+diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
+index 1aa8323..591deb8 100644
+--- a/drivers/power/supply/Kconfig
++++ b/drivers/power/supply/Kconfig
+@@ -619,6 +619,20 @@ config CHARGER_MT6360
+ 	  Average Input Current Regulation, Battery Temperature Sensing,
+ 	  Over-Temperature Protection, DPDM Detection for BC1.2.
  
-+config BACKLIGHT_MT6370
-+	tristate "MediaTek MT6370 Backlight Driver"
++config CHARGER_MT6370
++	tristate "MediaTek MT6370 Charger Driver"
 +	depends on MFD_MT6370
++	depends on REGULATOR
++	select LINEAR_RANGES
 +	help
-+	  This enables support for Mediatek MT6370 Backlight driver.
-+	  It's commonly used to drive the display WLED. There are 4 channels
-+	  inside, and each channel supports up to 30mA of current capability
-+	  with 2048 current steps (only for MT6370/MT6371) or 16384 current
-+	  steps (only for MT6372) in exponential or linear mapping curves.
++	  Say Y here to enable MT6370 Charger Part.
++	  The device supports High-Accuracy Voltage/Current Regulation,
++	  Average Input Current Regulation, Battery Temperature Sensing,
++	  Over-Temperature Protection, DPDM Detection for BC1.2.
 +
 +	  This driver can also be built as a module. If so, the module
-+	  will be called "mt6370-backlight".
++	  will be called "mt6370-charger".
 +
- config BACKLIGHT_APPLE
- 	tristate "Apple Backlight Driver"
- 	depends on X86 && ACPI
-diff --git a/drivers/video/backlight/Makefile b/drivers/video/backlight/Makefile
-index cae2c83..e815f3f 100644
---- a/drivers/video/backlight/Makefile
-+++ b/drivers/video/backlight/Makefile
-@@ -44,6 +44,7 @@ obj-$(CONFIG_BACKLIGHT_LP855X)		+= lp855x_bl.o
- obj-$(CONFIG_BACKLIGHT_LP8788)		+= lp8788_bl.o
- obj-$(CONFIG_BACKLIGHT_LV5207LP)	+= lv5207lp.o
- obj-$(CONFIG_BACKLIGHT_MAX8925)		+= max8925_bl.o
-+obj-$(CONFIG_BACKLIGHT_MT6370)		+= mt6370-backlight.o
- obj-$(CONFIG_BACKLIGHT_OMAP1)		+= omap1_bl.o
- obj-$(CONFIG_BACKLIGHT_PANDORA)		+= pandora_bl.o
- obj-$(CONFIG_BACKLIGHT_PCF50633)	+= pcf50633-backlight.o
-diff --git a/drivers/video/backlight/mt6370-backlight.c b/drivers/video/backlight/mt6370-backlight.c
+ config CHARGER_QCOM_SMBB
+ 	tristate "Qualcomm Switch-Mode Battery Charger and Boost"
+ 	depends on MFD_SPMI_PMIC || COMPILE_TEST
+diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
+index 7f02f36..8c95276 100644
+--- a/drivers/power/supply/Makefile
++++ b/drivers/power/supply/Makefile
+@@ -82,6 +82,7 @@ obj-$(CONFIG_CHARGER_MAX8997)	+= max8997_charger.o
+ obj-$(CONFIG_CHARGER_MAX8998)	+= max8998_charger.o
+ obj-$(CONFIG_CHARGER_MP2629)	+= mp2629_charger.o
+ obj-$(CONFIG_CHARGER_MT6360)	+= mt6360_charger.o
++obj-$(CONFIG_CHARGER_MT6370)	+= mt6370-charger.o
+ obj-$(CONFIG_CHARGER_QCOM_SMBB)	+= qcom_smbb.o
+ obj-$(CONFIG_CHARGER_BQ2415X)	+= bq2415x_charger.o
+ obj-$(CONFIG_CHARGER_BQ24190)	+= bq24190_charger.o
+diff --git a/drivers/power/supply/mt6370-charger.c b/drivers/power/supply/mt6370-charger.c
 new file mode 100644
-index 0000000..623d4f2
+index 0000000..11c48ec
 --- /dev/null
-+++ b/drivers/video/backlight/mt6370-backlight.c
-@@ -0,0 +1,351 @@
++++ b/drivers/power/supply/mt6370-charger.c
+@@ -0,0 +1,957 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +/*
 + * Copyright (C) 2022 Richtek Technology Corp.
@@ -186,349 +201,955 @@ index 0000000..623d4f2
 + * Author: ChiaEn Wu <chiaen_wu@richtek.com>
 + */
 +
-+#include <linux/backlight.h>
 +#include <linux/bitfield.h>
 +#include <linux/bits.h>
 +#include <linux/gpio/consumer.h>
++#include <linux/iio/consumer.h>
++#include <linux/init.h>
++#include <linux/interrupt.h>
 +#include <linux/kernel.h>
-+#include <linux/minmax.h>
-+#include <linux/mod_devicetable.h>
++#include <linux/linear_range.h>
 +#include <linux/module.h>
++#include <linux/of.h>
 +#include <linux/platform_device.h>
-+#include <linux/property.h>
++#include <linux/power_supply.h>
 +#include <linux/regmap.h>
++#include <linux/regulator/driver.h>
++#include <linux/workqueue.h>
 +
-+#define MT6370_REG_DEV_INFO		0x100
-+#define MT6370_REG_BL_EN		0x1A0
-+#define MT6370_REG_BL_BSTCTRL		0x1A1
-+#define MT6370_REG_BL_PWM		0x1A2
-+#define MT6370_REG_BL_DIM2		0x1A4
++#define MT6370_REG_CHG_CTRL1		0x111
++#define MT6370_REG_CHG_CTRL2		0x112
++#define MT6370_REG_CHG_CTRL3		0x113
++#define MT6370_REG_CHG_CTRL4		0x114
++#define MT6370_REG_CHG_CTRL5		0x115
++#define MT6370_REG_CHG_CTRL6		0x116
++#define MT6370_REG_CHG_CTRL7		0x117
++#define MT6370_REG_CHG_CTRL8		0x118
++#define MT6370_REG_CHG_CTRL9		0x119
++#define MT6370_REG_CHG_CTRL10		0x11A
++#define MT6370_REG_DEVICE_TYPE		0x122
++#define MT6370_REG_USB_STATUS1		0x127
++#define MT6370_REG_CHG_STAT		0x14A
++#define MT6370_REG_FLED_EN		0x17E
++#define MT6370_REG_CHG_STAT1		0X1D0
++#define MT6370_REG_OVPCTRL_STAT		0x1D8
 +
-+#define MT6370_VENID_MASK		GENMASK(7, 4)
-+#define MT6370_BL_EXT_EN_MASK		BIT(7)
-+#define MT6370_BL_EN_MASK		BIT(6)
-+#define MT6370_BL_CODE_MASK		BIT(0)
-+#define MT6370_BL_CH_MASK		GENMASK(5, 2)
-+#define MT6370_BL_CH_SHIFT		2
-+#define MT6370_BL_DIM2_COMMON_MASK	GENMASK(2, 0)
-+#define MT6370_BL_DIM2_COMMON_SHIFT	3
-+#define MT6370_BL_DIM2_6372_MASK	GENMASK(5, 0)
-+#define MT6370_BL_DIM2_6372_SHIFT	6
-+#define MT6370_BL_PWM_EN_MASK		BIT(7)
-+#define MT6370_BL_PWM_HYS_EN_MASK	BIT(2)
-+#define MT6370_BL_PWM_HYS_SEL_MASK	GENMASK(1, 0)
-+#define MT6370_BL_OVP_EN_MASK		BIT(7)
-+#define MT6370_BL_OVP_SEL_MASK		GENMASK(6, 5)
-+#define MT6370_BL_OVP_SEL_SHIFT		5
-+#define MT6370_BL_OC_EN_MASK		BIT(3)
-+#define MT6370_BL_OC_SEL_MASK		GENMASK(2, 1)
-+#define MT6370_BL_OC_SEL_SHIFT		1
++#define MT6370_VOBST_MASK		GENMASK(7, 2)
++#define MT6370_OTG_PIN_EN_MASK		BIT(1)
++#define MT6370_OPA_MODE_MASK		BIT(0)
++#define MT6370_OTG_OC_MASK		GENMASK(2, 0)
 +
-+#define MT6370_BL_PWM_HYS_TH_MIN_STEP	1
-+#define MT6370_BL_PWM_HYS_TH_MAX_STEP	64
-+#define MT6370_BL_OVP_MIN_UV		17000000
-+#define MT6370_BL_OVP_MAX_UV		29000000
-+#define MT6370_BL_OVP_STEP_UV		4000000
-+#define MT6370_BL_OCP_MIN_UA		900000
-+#define MT6370_BL_OCP_MAX_UA		1800000
-+#define MT6370_BL_OCP_STEP_UA		300000
-+#define MT6370_BL_MAX_COMMON_BRIGHTNESS	2048
-+#define MT6370_BL_MAX_6372_BRIGHTNESS	16384
-+#define MT6370_BL_MAX_CH		15
++#define MT6370_MIVR_IBUS_TH_100_mA	100000
++#define MT6370_ADC_CHAN_IBUS		5
++#define MT6370_ADC_CHAN_MAX		9
 +
-+enum {
-+	MT6370_VID_COMMON = 1,
-+	MT6370_VID_6372,
++enum mt6370_chg_reg_field {
++	/* MT6370_REG_CHG_CTRL2 */
++	F_IINLMTSEL, F_CFO_EN, F_CHG_EN,
++	/* MT6370_REG_CHG_CTRL3 */
++	F_IAICR, F_AICR_EN, F_ILIM_EN,
++	/* MT6370_REG_CHG_CTRL4 */
++	F_VOREG,
++	/* MT6370_REG_CHG_CTRL6 */
++	F_VMIVR,
++	/* MT6370_REG_CHG_CTRL7 */
++	F_ICHG,
++	/* MT6370_REG_CHG_CTRL8 */
++	F_IPREC,
++	/* MT6370_REG_CHG_CTRL9 */
++	F_IEOC,
++	/* MT6370_REG_DEVICE_TYPE */
++	F_USBCHGEN,
++	/* MT6370_REG_USB_STATUS1 */
++	F_USB_STAT, F_CHGDET,
++	/* MT6370_REG_CHG_STAT */
++	F_CHG_STAT, F_BOOST_STAT, F_VBAT_LVL,
++	/* MT6370_REG_FLED_EN */
++	F_FL_STROBE,
++	/* MT6370_REG_CHG_STAT1 */
++	F_CHG_MIVR_STAT,
++	/* MT6370_REG_OVPCTRL_STAT */
++	F_UVP_D_STAT,
++	F_MAX
++};
++
++enum mt6370_irq {
++	MT6370_IRQ_ATTACH_I = 0,
++	MT6370_IRQ_UVP_D_EVT,
++	MT6370_IRQ_MIVR,
++	MT6370_IRQ_MAX
 +};
 +
 +struct mt6370_priv {
-+	u8 dim2_mask;
-+	u8 dim2_shift;
-+	int def_max_brightness;
-+	struct backlight_device *bl;
 +	struct device *dev;
-+	struct gpio_desc *enable_gpio;
++	struct iio_channel *iio_adcs;
++	struct mutex attach_lock;
++	struct power_supply *psy;
 +	struct regmap *regmap;
++	struct regmap_field *rmap_fields[F_MAX];
++	struct regulator_dev *rdev;
++	struct workqueue_struct *wq;
++	struct work_struct bc12_work;
++	struct delayed_work mivr_dwork;
++	unsigned int irq_nums[MT6370_IRQ_MAX];
++	int attach;
++	int psy_usb_type;
++	bool pwr_rdy;
 +};
 +
-+static int mt6370_bl_update_status(struct backlight_device *bl_dev)
-+{
-+	struct mt6370_priv *priv = bl_get_data(bl_dev);
-+	int brightness = backlight_get_brightness(bl_dev);
-+	unsigned int enable_val;
-+	u8 brightness_val[2];
-+	int ret;
++enum mt6370_usb_status {
++	MT6370_USB_STAT_NO_VBUS = 0,
++	MT6370_USB_STAT_VBUS_FLOW_IS_UNDER_GOING,
++	MT6370_USB_STAT_SDP,
++	MT6370_USB_STAT_SDP_NSTD,
++	MT6370_USB_STAT_DCP,
++	MT6370_USB_STAT_CDP,
++	MT6370_USB_STAT_MAX
++};
 +
-+	if (brightness) {
-+		brightness_val[0] = (brightness - 1) & priv->dim2_mask;
-+		brightness_val[1] = (brightness - 1) >> priv->dim2_shift;
++struct mt6370_chg_field {
++	const char *name;
++	const struct linear_range *range;
++	struct reg_field field;
++};
 +
-+		ret = regmap_raw_write(priv->regmap, MT6370_REG_BL_DIM2,
-+				       brightness_val, sizeof(brightness_val));
-+		if (ret)
-+			return ret;
-+	}
++enum {
++	MT6370_RANGE_F_IAICR = 0,
++	MT6370_RANGE_F_VOREG,
++	MT6370_RANGE_F_VMIVR,
++	MT6370_RANGE_F_ICHG,
++	MT6370_RANGE_F_IPREC,
++	MT6370_RANGE_F_IEOC,
++	MT6370_RANGE_F_MAX
++};
 +
-+	gpiod_set_value(priv->enable_gpio, !!brightness);
++static const struct linear_range mt6370_chg_ranges[MT6370_RANGE_F_MAX] = {
++	LINEAR_RANGE_IDX(MT6370_RANGE_F_IAICR, 100000, 0x0, 0x3F, 50000),
++	LINEAR_RANGE_IDX(MT6370_RANGE_F_VOREG, 3900000, 0x0, 0x51, 10000),
++	LINEAR_RANGE_IDX(MT6370_RANGE_F_VMIVR, 3900000, 0x0, 0x5F, 100000),
++	LINEAR_RANGE_IDX(MT6370_RANGE_F_ICHG, 900000, 0x08, 0x31, 100000),
++	LINEAR_RANGE_IDX(MT6370_RANGE_F_IPREC, 100000, 0x0, 0x0F, 50000),
++	LINEAR_RANGE_IDX(MT6370_RANGE_F_IEOC, 100000, 0x0, 0x0F, 50000),
++};
 +
-+	enable_val = brightness ? MT6370_BL_EN_MASK : 0;
-+	return regmap_update_bits(priv->regmap, MT6370_REG_BL_EN,
-+				  MT6370_BL_EN_MASK, enable_val);
++#define MT6370_CHG_FIELD(_fd, _reg, _lsb, _msb)				\
++[_fd] = {								\
++	.name = #_fd,							\
++	.range = NULL,							\
++	.field = REG_FIELD(_reg, _lsb, _msb),				\
 +}
 +
-+static int mt6370_bl_get_brightness(struct backlight_device *bl_dev)
-+{
-+	struct mt6370_priv *priv = bl_get_data(bl_dev);
-+	unsigned int enable;
-+	u8 brightness_val[2];
-+	int brightness, ret;
++#define MT6370_CHG_FIELD_RANGE(_fd, _reg, _lsb, _msb)			\
++[_fd] = {								\
++	.name = #_fd,							\
++	.range = &mt6370_chg_ranges[MT6370_RANGE_##_fd],		\
++	.field = REG_FIELD(_reg, _lsb, _msb),				\
++}
 +
-+	ret = regmap_read(priv->regmap, MT6370_REG_BL_EN, &enable);
++static const struct mt6370_chg_field mt6370_chg_fields[F_MAX] = {
++	MT6370_CHG_FIELD(F_IINLMTSEL, MT6370_REG_CHG_CTRL2, 2, 3),
++	MT6370_CHG_FIELD(F_CFO_EN, MT6370_REG_CHG_CTRL2, 1, 1),
++	MT6370_CHG_FIELD(F_CHG_EN, MT6370_REG_CHG_CTRL2, 0, 0),
++	MT6370_CHG_FIELD_RANGE(F_IAICR, MT6370_REG_CHG_CTRL3, 2, 7),
++	MT6370_CHG_FIELD(F_AICR_EN, MT6370_REG_CHG_CTRL3, 1, 1),
++	MT6370_CHG_FIELD(F_ILIM_EN, MT6370_REG_CHG_CTRL3, 0, 0),
++	MT6370_CHG_FIELD_RANGE(F_VOREG, MT6370_REG_CHG_CTRL4, 1, 7),
++	MT6370_CHG_FIELD_RANGE(F_VMIVR, MT6370_REG_CHG_CTRL6, 1, 7),
++	MT6370_CHG_FIELD_RANGE(F_ICHG, MT6370_REG_CHG_CTRL7, 2, 7),
++	MT6370_CHG_FIELD_RANGE(F_IPREC, MT6370_REG_CHG_CTRL8, 0, 3),
++	MT6370_CHG_FIELD_RANGE(F_IEOC, MT6370_REG_CHG_CTRL9, 4, 7),
++	MT6370_CHG_FIELD(F_USBCHGEN, MT6370_REG_DEVICE_TYPE, 7, 7),
++	MT6370_CHG_FIELD(F_USB_STAT, MT6370_REG_USB_STATUS1, 4, 6),
++	MT6370_CHG_FIELD(F_CHGDET, MT6370_REG_USB_STATUS1, 3, 3),
++	MT6370_CHG_FIELD(F_CHG_STAT, MT6370_REG_CHG_STAT, 6, 7),
++	MT6370_CHG_FIELD(F_BOOST_STAT, MT6370_REG_CHG_STAT, 3, 3),
++	MT6370_CHG_FIELD(F_VBAT_LVL, MT6370_REG_CHG_STAT, 5, 5),
++	MT6370_CHG_FIELD(F_FL_STROBE, MT6370_REG_FLED_EN, 2, 2),
++	MT6370_CHG_FIELD(F_CHG_MIVR_STAT, MT6370_REG_CHG_STAT1, 6, 6),
++	MT6370_CHG_FIELD(F_UVP_D_STAT, MT6370_REG_OVPCTRL_STAT, 4, 4),
++};
++
++static inline int mt6370_chg_field_get(struct mt6370_priv *priv,
++				       enum mt6370_chg_reg_field fd,
++				       unsigned int *val)
++{
++	int ret;
++	unsigned int reg_val;
++
++	ret = regmap_field_read(priv->rmap_fields[fd], &reg_val);
 +	if (ret)
 +		return ret;
 +
-+	if (!(enable & MT6370_BL_EN_MASK))
++	if (mt6370_chg_fields[fd].range)
++		return linear_range_get_value(mt6370_chg_fields[fd].range,
++					       reg_val, val);
++
++	*val = reg_val;
++	return 0;
++}
++
++static inline int mt6370_chg_field_set(struct mt6370_priv *priv,
++				       enum mt6370_chg_reg_field fd,
++				       unsigned int val)
++{
++	int ret;
++	bool f;
++	const struct linear_range *r;
++
++	if (mt6370_chg_fields[fd].range) {
++		r = mt6370_chg_fields[fd].range;
++
++		if (fd == F_VMIVR) {
++			ret = linear_range_get_selector_high(r, val, &val, &f);
++			if (ret)
++				val = r->max_sel;
++		} else {
++			linear_range_get_selector_within(r, val, &val);
++		}
++	}
++
++	return regmap_field_write(priv->rmap_fields[fd], val);
++}
++
++enum {
++	MT6370_CHG_STAT_READY = 0,
++	MT6370_CHG_STAT_CHARGE_IN_PROGRESS,
++	MT6370_CHG_STAT_DONE,
++	MT6370_CHG_STAT_FAULT,
++	MT6370_CHG_STAT_MAX
++};
++
++enum {
++	MT6370_ATTACH_STAT_DETACH = 0,
++	MT6370_ATTACH_STAT_ATTACH_BC12_NOT_DONE,
++	MT6370_ATTACH_STAT_ATTACH_BC12_DONE,
++	MT6370_ATTACH_STAT_ATTACH_MAX
++};
++
++static int mt6370_chg_otg_of_parse_cb(struct device_node *of,
++				      const struct regulator_desc *rdesc,
++				      struct regulator_config *rcfg)
++{
++	struct mt6370_priv *priv = rcfg->driver_data;
++
++	rcfg->ena_gpiod = fwnode_gpiod_get_index(of_fwnode_handle(of),
++						 "enable", 0, GPIOD_OUT_LOW |
++						 GPIOD_FLAGS_BIT_NONEXCLUSIVE,
++						 rdesc->name);
++	if (IS_ERR(rcfg->ena_gpiod)) {
++		rcfg->ena_gpiod = NULL;
 +		return 0;
++	}
 +
-+	ret = regmap_raw_read(priv->regmap, MT6370_REG_BL_DIM2,
-+			      brightness_val, sizeof(brightness_val));
-+	if (ret)
-+		return ret;
-+
-+	brightness = brightness_val[1] << priv->dim2_shift;
-+	brightness += brightness_val[0] & priv->dim2_mask;
-+
-+	return brightness + 1;
++	return regmap_update_bits(priv->regmap, MT6370_REG_CHG_CTRL1,
++				  MT6370_OTG_PIN_EN_MASK,
++				  MT6370_OTG_PIN_EN_MASK);
 +}
 +
-+static const struct backlight_ops mt6370_bl_ops = {
-+	.options = BL_CORE_SUSPENDRESUME,
-+	.update_status = mt6370_bl_update_status,
-+	.get_brightness = mt6370_bl_get_brightness,
-+};
-+
-+static int mt6370_init_backlight_properties(struct mt6370_priv *priv,
-+					    struct backlight_properties *props)
++static void mt6370_chg_bc12_work_func(struct work_struct *work)
 +{
-+	struct device *dev = priv->dev;
-+	u8 prop_val;
-+	u32 brightness, ovp_uV, ocp_uA;
-+	unsigned int mask, val;
++	struct mt6370_priv *priv = container_of(work, struct mt6370_priv,
++						bc12_work);
++	int ret;
++	bool rpt_psy = false;
++	unsigned int attach, usb_stat;
++
++	mutex_lock(&priv->attach_lock);
++	attach = priv->attach;
++
++	switch (attach) {
++	case MT6370_ATTACH_STAT_DETACH:
++		usb_stat = 0;
++		break;
++	case MT6370_ATTACH_STAT_ATTACH_BC12_DONE:
++		ret = mt6370_chg_field_get(priv, F_USB_STAT, &usb_stat);
++		if (ret) {
++			dev_err(priv->dev, "Failed to get USB status\n");
++			goto bc12_work_func_out;
++		}
++		break;
++	case MT6370_ATTACH_STAT_ATTACH_BC12_NOT_DONE:
++		ret = mt6370_chg_field_set(priv, F_USBCHGEN, attach);
++		if (ret)
++			dev_err(priv->dev, "Failed to enable USB CHG EN\n");
++		goto bc12_work_func_out;
++	default:
++		dev_err(priv->dev, "Invalid attach state\n");
++		goto bc12_work_func_out;
++	}
++
++	rpt_psy = true;
++
++	switch (usb_stat) {
++	case MT6370_USB_STAT_SDP:
++	case MT6370_USB_STAT_SDP_NSTD:
++		priv->psy_usb_type = POWER_SUPPLY_USB_TYPE_SDP;
++		break;
++	case MT6370_USB_STAT_DCP:
++		priv->psy_usb_type = POWER_SUPPLY_USB_TYPE_DCP;
++		break;
++	case MT6370_USB_STAT_CDP:
++		priv->psy_usb_type = POWER_SUPPLY_USB_TYPE_CDP;
++		break;
++	case MT6370_USB_STAT_NO_VBUS:
++	case MT6370_USB_STAT_VBUS_FLOW_IS_UNDER_GOING:
++	default:
++		priv->psy_usb_type = POWER_SUPPLY_USB_TYPE_UNKNOWN;
++		break;
++	}
++
++bc12_work_func_out:
++	mutex_unlock(&priv->attach_lock);
++
++	if (rpt_psy)
++		power_supply_changed(priv->psy);
++}
++
++static int mt6370_chg_toggle_cfo(struct mt6370_priv *priv)
++{
++	int ret;
++	unsigned int fl_strobe;
++
++	/* check if flash led in strobe mode */
++	ret = mt6370_chg_field_get(priv, F_FL_STROBE, &fl_strobe);
++	if (ret) {
++		dev_err(priv->dev, "Failed to get FL_STROBE_EN\n");
++		return ret;
++	}
++
++	if (fl_strobe) {
++		dev_err(priv->dev, "Flash led is still in strobe mode\n");
++		return ret;
++	}
++
++	/* cfo off */
++	ret = mt6370_chg_field_set(priv, F_CFO_EN, 0);
++	if (ret) {
++		dev_err(priv->dev, "Failed to disable CFO_EN\n");
++		return ret;
++	}
++
++	/* cfo on */
++	ret = mt6370_chg_field_set(priv, F_CFO_EN, 1);
++	if (ret)
++		dev_err(priv->dev, "Failed to enable CFO_EN\n");
++
++	return ret;
++}
++
++static int mt6370_chg_read_adc_chan(struct mt6370_priv *priv, unsigned int chan,
++				    int *val)
++{
 +	int ret;
 +
-+	/* Vendor optional properties */
-+	val = 0;
-+	if (device_property_read_bool(dev, "mediatek,bled-pwm-enable"))
-+		val |= MT6370_BL_PWM_EN_MASK;
++	if (chan >= MT6370_ADC_CHAN_MAX)
++		return -EINVAL;
 +
-+	if (device_property_read_bool(dev, "mediatek,bled-pwm-hys-enable"))
-+		val |= MT6370_BL_PWM_HYS_EN_MASK;
-+
-+	ret = device_property_read_u8(dev,
-+				      "mediatek,bled-pwm-hys-input-th-steps",
-+				      &prop_val);
-+	if (!ret) {
-+		prop_val = clamp_val(prop_val,
-+				     MT6370_BL_PWM_HYS_TH_MIN_STEP,
-+				     MT6370_BL_PWM_HYS_TH_MAX_STEP);
-+		prop_val = prop_val <= 1 ? 0 :
-+			   prop_val <= 4 ? 1 :
-+			   prop_val <= 16 ? 2 : 3;
-+		val |= prop_val;
-+	}
-+
-+	ret = regmap_update_bits(priv->regmap, MT6370_REG_BL_PWM,
-+				 val, val);
++	ret = iio_read_channel_processed(&priv->iio_adcs[chan], val);
 +	if (ret)
-+		return ret;
++		dev_err(priv->dev, "Failed to read ADC\n");
 +
-+	val = 0;
-+	if (device_property_read_bool(dev, "mediatek,bled-ovp-shutdown"))
-+		val |= MT6370_BL_OVP_EN_MASK;
++	return ret;
++}
 +
-+	ret = device_property_read_u32(dev, "mediatek,bled-ovp-microvolt",
-+				       &ovp_uV);
-+	if (!ret) {
-+		ovp_uV = clamp_val(ovp_uV, MT6370_BL_OVP_MIN_UV,
-+				   MT6370_BL_OVP_MAX_UV);
-+		ovp_uV = DIV_ROUND_UP(ovp_uV - MT6370_BL_OVP_MIN_UV,
-+				      MT6370_BL_OVP_STEP_UV);
-+		val |= ovp_uV << MT6370_BL_OVP_SEL_SHIFT;
-+	}
++static void mt6370_chg_mivr_dwork_func(struct work_struct *work)
++{
++	struct mt6370_priv *priv = container_of(work, struct mt6370_priv,
++						mivr_dwork.work);
++	int ret;
++	unsigned int mivr_stat, ibus;
 +
-+	if (device_property_read_bool(dev, "mediatek,bled-ocp-shutdown"))
-+		val |= MT6370_BL_OC_EN_MASK;
-+
-+	ret = device_property_read_u32(dev, "mediatek,bled-ocp-microamp",
-+				       &ocp_uA);
-+	if (!ret) {
-+		ocp_uA = clamp_val(ocp_uA, MT6370_BL_OCP_MIN_UA,
-+				   MT6370_BL_OCP_MAX_UA);
-+		ocp_uA = DIV_ROUND_UP(ocp_uA - MT6370_BL_OCP_MIN_UA,
-+				      MT6370_BL_OCP_STEP_UA);
-+		val |= ocp_uA << MT6370_BL_OC_SEL_SHIFT;
-+	}
-+
-+	ret = regmap_update_bits(priv->regmap, MT6370_REG_BL_BSTCTRL,
-+				 val, val);
-+	if (ret)
-+		return ret;
-+
-+	/* Common properties */
-+	ret = device_property_read_u32(dev, "max-brightness", &brightness);
-+	if (ret)
-+		brightness = priv->def_max_brightness;
-+
-+	props->max_brightness = min_t(u32, brightness, priv->def_max_brightness);
-+
-+	ret = device_property_read_u32(dev, "default-brightness", &brightness);
-+	if (ret)
-+		brightness = props->max_brightness;
-+
-+	props->brightness = min_t(u32, brightness, props->max_brightness);
-+
-+	val = 0;
-+	if (device_property_read_bool(dev, "mediatek,bled-exponential-mode-enable")) {
-+		val |= MT6370_BL_CODE_MASK;
-+		props->scale = BACKLIGHT_SCALE_NON_LINEAR;
-+	} else
-+		props->scale = BACKLIGHT_SCALE_LINEAR;
-+
-+	ret = device_property_read_u8(dev, "mediatek,bled-channel-use",
-+				      &prop_val);
++	ret = mt6370_chg_field_get(priv, F_CHG_MIVR_STAT, &mivr_stat);
 +	if (ret) {
-+		dev_err(dev, "mediatek,bled-channel-use DT property missing\n");
++		dev_err(priv->dev, "Failed to get mivr state\n");
++		goto mivr_handler_out;
++	}
++
++	if (!mivr_stat)
++		goto mivr_handler_out;
++
++	ret = mt6370_chg_read_adc_chan(priv, MT6370_ADC_CHAN_IBUS, &ibus);
++	if (ret) {
++		dev_err(priv->dev, "Failed to get ibus\n");
++		goto mivr_handler_out;
++	}
++
++	if (ibus < MT6370_MIVR_IBUS_TH_100_mA) {
++		ret = mt6370_chg_toggle_cfo(priv);
++		if (ret)
++			dev_err(priv->dev, "Failed to toggle cfo\n");
++	}
++
++mivr_handler_out:
++	enable_irq(priv->irq_nums[MT6370_IRQ_MIVR]);
++	pm_relax(priv->dev);
++}
++
++static void mt6370_chg_pwr_rdy_check(struct mt6370_priv *priv)
++{
++	int ret;
++	unsigned int pwr_rdy, otg_en;
++	union power_supply_propval val;
++
++	/* Check in OTG mode or not */
++	ret = mt6370_chg_field_get(priv, F_BOOST_STAT, &otg_en);
++	if (ret) {
++		dev_err(priv->dev, "Failed to get OTG state\n");
++		return;
++	}
++
++	if (otg_en)
++		return;
++
++	ret = mt6370_chg_field_get(priv, F_UVP_D_STAT, &pwr_rdy);
++	if (ret) {
++		dev_err(priv->dev, "Failed to get pwr_rdy state reg\n");
++		return;
++	}
++
++	val.intval = !pwr_rdy;
++
++	ret = power_supply_set_property(priv->psy, POWER_SUPPLY_PROP_ONLINE,
++					&val);
++	if (ret)
++		dev_err(priv->dev, "Failed to start attach/detach flow\n");
++}
++
++static int mt6370_chg_get_online(struct mt6370_priv *priv,
++				 union power_supply_propval *val)
++{
++	mutex_lock(&priv->attach_lock);
++	val->intval = !!priv->attach;
++	mutex_unlock(&priv->attach_lock);
++
++	return 0;
++}
++
++static int mt6370_chg_get_status(struct mt6370_priv *priv,
++				 union power_supply_propval *val)
++{
++	int ret;
++	unsigned int chg_stat;
++	union power_supply_propval online;
++
++	ret = power_supply_get_property(priv->psy, POWER_SUPPLY_PROP_ONLINE,
++					&online);
++	if (ret) {
++		dev_err(priv->dev, "Failed to get online status\n");
 +		return ret;
 +	}
 +
-+	if (!prop_val || prop_val > MT6370_BL_MAX_CH) {
-+		dev_err(dev,
-+			"No channel specified or over than upper bound (%d)\n",
-+			prop_val);
++	if (!online.intval) {
++		val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
++		return 0;
++	}
++
++	ret = mt6370_chg_field_get(priv, F_CHG_STAT, &chg_stat);
++	if (ret)
++		return ret;
++
++	switch (chg_stat) {
++	case MT6370_CHG_STAT_READY:
++	case MT6370_CHG_STAT_FAULT:
++		val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
++		return ret;
++	case MT6370_CHG_STAT_CHARGE_IN_PROGRESS:
++		val->intval = POWER_SUPPLY_STATUS_CHARGING;
++		return ret;
++	case MT6370_CHG_STAT_DONE:
++		val->intval = POWER_SUPPLY_STATUS_FULL;
++		return ret;
++	default:
++		val->intval = POWER_SUPPLY_STATUS_UNKNOWN;
++		return ret;
++	}
++}
++
++static int mt6370_chg_get_charge_type(struct mt6370_priv *priv,
++				      union power_supply_propval *val)
++{
++	int type, ret;
++	unsigned int chg_stat, vbat_lvl;
++
++	ret = mt6370_chg_field_get(priv, F_CHG_STAT, &chg_stat);
++	if (ret)
++		return ret;
++
++	ret = mt6370_chg_field_get(priv, F_VBAT_LVL, &vbat_lvl);
++	if (ret)
++		return ret;
++
++	switch (chg_stat) {
++	case MT6370_CHG_STAT_CHARGE_IN_PROGRESS:
++		if (vbat_lvl)
++			type = POWER_SUPPLY_CHARGE_TYPE_FAST;
++		else
++			type = POWER_SUPPLY_CHARGE_TYPE_TRICKLE;
++		break;
++	case MT6370_CHG_STAT_READY:
++	case MT6370_CHG_STAT_DONE:
++	case MT6370_CHG_STAT_FAULT:
++	default:
++		type = POWER_SUPPLY_CHARGE_TYPE_NONE;
++		break;
++	}
++
++	val->intval = type;
++
++	return 0;
++}
++
++static int mt6370_chg_set_online(struct mt6370_priv *priv,
++				 const union power_supply_propval *val)
++{
++	bool pwr_rdy = !!val->intval;
++
++	mutex_lock(&priv->attach_lock);
++	if (pwr_rdy == !!priv->attach) {
++		dev_err(priv->dev, "pwr_rdy is same(%d)\n", pwr_rdy);
++		mutex_unlock(&priv->attach_lock);
++		return 0;
++	}
++
++	priv->attach = pwr_rdy;
++	mutex_unlock(&priv->attach_lock);
++
++	if (!queue_work(priv->wq, &priv->bc12_work))
++		dev_err(priv->dev, "bc12 work has already queued\n");
++
++	return 0;
++}
++
++static int mt6370_chg_get_property(struct power_supply *psy,
++				   enum power_supply_property psp,
++				   union power_supply_propval *val)
++{
++	struct mt6370_priv *priv = power_supply_get_drvdata(psy);
++
++	switch (psp) {
++	case POWER_SUPPLY_PROP_ONLINE:
++		return mt6370_chg_get_online(priv, val);
++	case POWER_SUPPLY_PROP_STATUS:
++		return mt6370_chg_get_status(priv, val);
++	case POWER_SUPPLY_PROP_CHARGE_TYPE:
++		return mt6370_chg_get_charge_type(priv, val);
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT:
++		return mt6370_chg_field_get(priv, F_ICHG, &val->intval);
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX:
++		val->intval = linear_range_get_max_value(&mt6370_chg_ranges[MT6370_RANGE_F_ICHG]);
++		return 0;
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE:
++		return mt6370_chg_field_get(priv, F_VOREG, &val->intval);
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX:
++		val->intval = linear_range_get_max_value(&mt6370_chg_ranges[MT6370_RANGE_F_VOREG]);
++		return 0;
++	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
++		return mt6370_chg_field_get(priv, F_IAICR, &val->intval);
++	case POWER_SUPPLY_PROP_INPUT_VOLTAGE_LIMIT:
++		return mt6370_chg_field_get(priv, F_VMIVR, &val->intval);
++	case POWER_SUPPLY_PROP_PRECHARGE_CURRENT:
++		return mt6370_chg_field_get(priv, F_IPREC, &val->intval);
++	case POWER_SUPPLY_PROP_CHARGE_TERM_CURRENT:
++		return mt6370_chg_field_get(priv, F_IEOC, &val->intval);
++	case POWER_SUPPLY_PROP_USB_TYPE:
++		val->intval = priv->psy_usb_type;
++		return 0;
++	default:
 +		return -EINVAL;
 +	}
-+
-+	mask = MT6370_BL_EXT_EN_MASK | MT6370_BL_CH_MASK;
-+	val |= prop_val << MT6370_BL_CH_SHIFT;
-+
-+	if (priv->enable_gpio)
-+		val |= MT6370_BL_EXT_EN_MASK;
-+
-+	return regmap_update_bits(priv->regmap, MT6370_REG_BL_EN, mask, val);
 +}
 +
-+static int mt6370_check_vendor_info(struct mt6370_priv *priv)
++static int mt6370_chg_set_property(struct power_supply *psy,
++				   enum power_supply_property psp,
++				   const union power_supply_propval *val)
 +{
-+	/*
-+	 * Because MT6372 uses 14 bits to control the brightness,
-+	 * MT6370 and MT6371 use 11 bits. This function is used
-+	 * to check the vendor's ID and set the relative hardware
-+	 * mask, shift and default maximum brightness value that
-+	 * should be used.
-+	 */
-+	unsigned int dev_info, hw_vid, of_vid;
-+	int ret;
++	struct mt6370_priv *priv = power_supply_get_drvdata(psy);
 +
-+	ret = regmap_read(priv->regmap, MT6370_REG_DEV_INFO, &dev_info);
-+	if (ret)
-+		return ret;
++	switch (psp) {
++	case POWER_SUPPLY_PROP_ONLINE:
++		return mt6370_chg_set_online(priv, val);
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT:
++		return mt6370_chg_field_set(priv, F_ICHG, val->intval);
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE:
++		return mt6370_chg_field_set(priv, F_VOREG, val->intval);
++	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
++		return mt6370_chg_field_set(priv, F_IAICR, val->intval);
++	case POWER_SUPPLY_PROP_INPUT_VOLTAGE_LIMIT:
++		return mt6370_chg_field_set(priv, F_VMIVR, val->intval);
++	case POWER_SUPPLY_PROP_PRECHARGE_CURRENT:
++		return mt6370_chg_field_set(priv, F_IPREC, val->intval);
++	case POWER_SUPPLY_PROP_CHARGE_TERM_CURRENT:
++		return mt6370_chg_field_set(priv, F_IEOC, val->intval);
++	default:
++		return -EINVAL;
++	}
++}
 +
-+	of_vid = (uintptr_t)device_get_match_data(priv->dev);
-+	hw_vid = FIELD_GET(MT6370_VENID_MASK, dev_info);
-+	hw_vid = (hw_vid == 0x9 || hw_vid == 0xb) ? MT6370_VID_6372 : MT6370_VID_COMMON;
-+	if (hw_vid != of_vid)
-+		return dev_err_probe(priv->dev, -EINVAL,
-+				     "Buggy DT, wrong compatible string\n");
++static int mt6370_chg_property_is_writeable(struct power_supply *psy,
++					    enum power_supply_property psp)
++{
++	switch (psp) {
++	case POWER_SUPPLY_PROP_ONLINE:
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT:
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE:
++	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
++	case POWER_SUPPLY_PROP_INPUT_VOLTAGE_LIMIT:
++	case POWER_SUPPLY_PROP_PRECHARGE_CURRENT:
++	case POWER_SUPPLY_PROP_CHARGE_TERM_CURRENT:
++		return 1;
++	default:
++		return 0;
++	}
++}
 +
-+	if (hw_vid == MT6370_VID_6372) {
-+		priv->dim2_mask = MT6370_BL_DIM2_6372_MASK;
-+		priv->dim2_shift = MT6370_BL_DIM2_6372_SHIFT;
-+		priv->def_max_brightness = MT6370_BL_MAX_6372_BRIGHTNESS;
-+	} else {
-+		priv->dim2_mask = MT6370_BL_DIM2_COMMON_MASK;
-+		priv->dim2_shift = MT6370_BL_DIM2_COMMON_SHIFT;
-+		priv->def_max_brightness = MT6370_BL_MAX_COMMON_BRIGHTNESS;
++static enum power_supply_property mt6370_chg_properties[] = {
++	POWER_SUPPLY_PROP_ONLINE,
++	POWER_SUPPLY_PROP_STATUS,
++	POWER_SUPPLY_PROP_CHARGE_TYPE,
++	POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT,
++	POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX,
++	POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE,
++	POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX,
++	POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT,
++	POWER_SUPPLY_PROP_INPUT_VOLTAGE_LIMIT,
++	POWER_SUPPLY_PROP_PRECHARGE_CURRENT,
++	POWER_SUPPLY_PROP_CHARGE_TERM_CURRENT,
++	POWER_SUPPLY_PROP_USB_TYPE,
++};
++
++static enum power_supply_usb_type mt6370_chg_usb_types[] = {
++	POWER_SUPPLY_USB_TYPE_UNKNOWN,
++	POWER_SUPPLY_USB_TYPE_SDP,
++	POWER_SUPPLY_USB_TYPE_CDP,
++	POWER_SUPPLY_USB_TYPE_DCP,
++};
++
++static const struct power_supply_desc mt6370_chg_psy_desc = {
++	.name = "mt6370-charger",
++	.type = POWER_SUPPLY_TYPE_USB,
++	.properties = mt6370_chg_properties,
++	.num_properties = ARRAY_SIZE(mt6370_chg_properties),
++	.get_property = mt6370_chg_get_property,
++	.set_property = mt6370_chg_set_property,
++	.property_is_writeable = mt6370_chg_property_is_writeable,
++	.usb_types = mt6370_chg_usb_types,
++	.num_usb_types = ARRAY_SIZE(mt6370_chg_usb_types),
++};
++
++static const struct regulator_ops mt6370_chg_otg_ops = {
++	.list_voltage = regulator_list_voltage_linear,
++	.enable = regulator_enable_regmap,
++	.disable = regulator_disable_regmap,
++	.is_enabled = regulator_is_enabled_regmap,
++	.set_voltage_sel = regulator_set_voltage_sel_regmap,
++	.get_voltage_sel = regulator_get_voltage_sel_regmap,
++	.set_current_limit = regulator_set_current_limit_regmap,
++	.get_current_limit = regulator_get_current_limit_regmap,
++};
++
++static const u32 mt6370_chg_otg_oc_ma[] = {
++	500000, 700000, 1100000, 1300000, 1800000, 2100000, 2400000,
++};
++
++static const struct regulator_desc mt6370_chg_otg_rdesc = {
++	.of_match = "usb-otg-vbus-regulator",
++	.of_parse_cb = mt6370_chg_otg_of_parse_cb,
++	.name = "mt6370-usb-otg-vbus",
++	.ops = &mt6370_chg_otg_ops,
++	.owner = THIS_MODULE,
++	.type = REGULATOR_VOLTAGE,
++	.min_uV = 4425000,
++	.uV_step = 25000,
++	.n_voltages = 57,
++	.vsel_reg = MT6370_REG_CHG_CTRL5,
++	.vsel_mask = MT6370_VOBST_MASK,
++	.enable_reg = MT6370_REG_CHG_CTRL1,
++	.enable_mask = MT6370_OPA_MODE_MASK,
++	.curr_table = mt6370_chg_otg_oc_ma,
++	.n_current_limits = ARRAY_SIZE(mt6370_chg_otg_oc_ma),
++	.csel_reg = MT6370_REG_CHG_CTRL10,
++	.csel_mask = MT6370_OTG_OC_MASK,
++};
++
++static int mt6370_chg_init_rmap_fields(struct mt6370_priv *priv)
++{
++	int i;
++	const struct mt6370_chg_field *fds = mt6370_chg_fields;
++
++	for (i = 0; i < F_MAX; i++) {
++		priv->rmap_fields[i] = devm_regmap_field_alloc(priv->dev,
++							       priv->regmap,
++							       fds[i].field);
++		if (IS_ERR(priv->rmap_fields[i]))
++			return dev_err_probe(priv->dev,
++					PTR_ERR(priv->rmap_fields[i]),
++					"Failed to allocate regmapfield[%s]\n",
++					fds[i].name);
 +	}
 +
 +	return 0;
 +}
 +
-+static int mt6370_bl_probe(struct platform_device *pdev)
++static int mt6370_chg_init_setting(struct mt6370_priv *priv)
 +{
-+	struct backlight_properties props = {
-+		.type = BACKLIGHT_RAW,
++	int ret;
++
++	/* Disable usb_chg_en */
++	ret = mt6370_chg_field_set(priv, F_USBCHGEN, 0);
++	if (ret) {
++		dev_err(priv->dev, "Failed to disable usb_chg_en\n");
++		return ret;
++	}
++
++	/* ICHG/IEOC Workaround, ICHG can not be set less than 900mA */
++	ret = mt6370_chg_field_set(priv, F_ICHG, 900000);
++	if (ret) {
++		dev_err(priv->dev, "Failed to set ICHG to 900mA");
++		return ret;
++	}
++
++	/* Change input current limit selection to using IAICR results */
++	ret = mt6370_chg_field_set(priv, F_IINLMTSEL, 2);
++	if (ret) {
++		dev_err(priv->dev, "Failed to set IINLMTSEL\n");
++		return ret;
++	}
++
++	return 0;
++}
++
++#define MT6370_CHG_DT_PROP_DECL(_name, _type, _field)	\
++{							\
++	.name = "mediatek,chg-" #_name,			\
++	.type = MT6370_PARSE_TYPE_##_type,		\
++	.fd = _field,					\
++}
++
++static int mt6370_chg_init_otg_regulator(struct mt6370_priv *priv)
++{
++	struct regulator_config rcfg = {
++		.dev = priv->dev,
++		.regmap = priv->regmap,
++		.driver_data = priv,
 +	};
++
++	priv->rdev = devm_regulator_register(priv->dev, &mt6370_chg_otg_rdesc,
++					     &rcfg);
++
++	return PTR_ERR_OR_ZERO(priv->rdev);
++}
++
++static int mt6370_chg_init_psy(struct mt6370_priv *priv)
++{
++	struct power_supply_config cfg = {
++		.drv_data = priv,
++		.of_node = dev_of_node(priv->dev),
++	};
++
++	priv->psy = devm_power_supply_register(priv->dev, &mt6370_chg_psy_desc,
++					       &cfg);
++
++	return PTR_ERR_OR_ZERO(priv->psy);
++}
++
++static void mt6370_chg_destroy_attach_lock(void *data)
++{
++	struct mutex *attach_lock = data;
++
++	mutex_destroy(attach_lock);
++}
++
++static void mt6370_chg_destroy_wq(void *data)
++{
++	struct workqueue_struct *wq = data;
++
++	flush_workqueue(wq);
++	destroy_workqueue(wq);
++}
++
++static void mt6370_chg_cancel_mivr_dwork(void *data)
++{
++	struct delayed_work *mivr_dwork = data;
++
++	cancel_delayed_work_sync(mivr_dwork);
++}
++
++static irqreturn_t mt6370_attach_i_handler(int irq, void *data)
++{
++	struct mt6370_priv *priv = data;
++	unsigned int otg_en;
++	int ret;
++
++	/* Check in OTG mode or not */
++	ret = mt6370_chg_field_get(priv, F_BOOST_STAT, &otg_en);
++	if (ret) {
++		dev_err(priv->dev, "Failed to get OTG state\n");
++		return IRQ_NONE;
++	}
++
++	if (otg_en)
++		return IRQ_HANDLED;
++
++	mutex_lock(&priv->attach_lock);
++	priv->attach = MT6370_ATTACH_STAT_ATTACH_BC12_DONE;
++	mutex_unlock(&priv->attach_lock);
++
++	if (!queue_work(priv->wq, &priv->bc12_work))
++		dev_err(priv->dev, "bc12 work has already queued\n");
++
++	return IRQ_HANDLED;
++}
++
++static irqreturn_t mt6370_uvp_d_evt_handler(int irq, void *data)
++{
++	struct mt6370_priv *priv = data;
++
++	mt6370_chg_pwr_rdy_check(priv);
++
++	return IRQ_HANDLED;
++}
++
++static irqreturn_t mt6370_mivr_handler(int irq, void *data)
++{
++	struct mt6370_priv *priv = data;
++
++	pm_stay_awake(priv->dev);
++	disable_irq_nosync(priv->irq_nums[MT6370_IRQ_MIVR]);
++	schedule_delayed_work(&priv->mivr_dwork, msecs_to_jiffies(200));
++
++	return IRQ_HANDLED;
++}
++
++#define MT6370_CHG_IRQ(_name)						\
++{									\
++	.name = #_name,							\
++	.handler = mt6370_##_name##_handler,				\
++}
++
++static int mt6370_chg_init_irq(struct mt6370_priv *priv)
++{
++	int i, ret;
++	const struct {
++		char *name;
++		irq_handler_t handler;
++	} mt6370_chg_irqs[] = {
++		MT6370_CHG_IRQ(attach_i),
++		MT6370_CHG_IRQ(uvp_d_evt),
++		MT6370_CHG_IRQ(mivr),
++	};
++
++	for (i = 0; i < ARRAY_SIZE(mt6370_chg_irqs); i++) {
++		ret = platform_get_irq_byname(to_platform_device(priv->dev),
++					      mt6370_chg_irqs[i].name);
++		if (ret < 0)
++			return dev_err_probe(priv->dev, ret,
++					     "Failed to get irq %s\n",
++					     mt6370_chg_irqs[i].name);
++
++		priv->irq_nums[i] = ret;
++		ret = devm_request_threaded_irq(priv->dev, ret, NULL,
++						mt6370_chg_irqs[i].handler,
++						IRQF_TRIGGER_FALLING,
++						dev_name(priv->dev), priv);
++		if (ret)
++			return dev_err_probe(priv->dev, ret,
++					     "Failed to request irq %s\n",
++					     mt6370_chg_irqs[i].name);
++	}
++
++	return 0;
++}
++
++static int mt6370_chg_probe(struct platform_device *pdev)
++{
 +	struct device *dev = &pdev->dev;
 +	struct mt6370_priv *priv;
 +	int ret;
 +
-+	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
 +	if (!priv)
 +		return -ENOMEM;
 +
-+	priv->dev = dev;
++	priv->dev = &pdev->dev;
 +
-+	priv->regmap = dev_get_regmap(dev->parent, NULL);
++	priv->regmap = dev_get_regmap(pdev->dev.parent, NULL);
 +	if (!priv->regmap)
 +		return dev_err_probe(dev, -ENODEV, "Failed to get regmap\n");
 +
-+	ret = mt6370_check_vendor_info(priv);
++	ret = mt6370_chg_init_rmap_fields(priv);
 +	if (ret)
-+		return dev_err_probe(dev, ret, "Failed to check vendor info\n");
++		return dev_err_probe(dev, ret, "Failed to init regmap fields\n");
 +
-+	priv->enable_gpio = devm_gpiod_get_optional(dev, "enable",
-+						    GPIOD_OUT_HIGH);
-+	if (IS_ERR(priv->enable_gpio))
-+		return dev_err_probe(dev, PTR_ERR(priv->enable_gpio),
-+				     "Failed to get 'enable' gpio\n");
-+
-+	ret = mt6370_init_backlight_properties(priv, &props);
-+	if (ret)
-+		return dev_err_probe(dev, ret,
-+				     "Failed to init backlight properties\n");
-+
-+	priv->bl = devm_backlight_device_register(dev, pdev->name, dev, priv,
-+						  &mt6370_bl_ops, &props);
-+	if (IS_ERR(priv->bl))
-+		return dev_err_probe(dev, PTR_ERR(priv->bl),
-+				     "Failed to register backlight\n");
-+
-+	backlight_update_status(priv->bl);
 +	platform_set_drvdata(pdev, priv);
 +
++	priv->iio_adcs = devm_iio_channel_get_all(priv->dev);
++	if (IS_ERR(priv->iio_adcs))
++		return dev_err_probe(dev, PTR_ERR(priv->iio_adcs),
++				     "Failed to get iio adc\n");
++
++	ret = mt6370_chg_init_otg_regulator(priv);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to init OTG regulator\n");
++
++	ret = mt6370_chg_init_psy(priv);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to init psy\n");
++
++	mutex_init(&priv->attach_lock);
++	ret = devm_add_action_or_reset(dev, mt6370_chg_destroy_attach_lock,
++				       &priv->attach_lock);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to init attach lock\n");
++
++	priv->attach = MT6370_ATTACH_STAT_DETACH;
++
++	priv->wq = create_singlethread_workqueue(dev_name(priv->dev));
++	if (IS_ERR(priv->wq))
++		return dev_err_probe(dev, PTR_ERR(priv->wq),
++				     "Failed to create workqueue\n");
++
++	ret = devm_add_action_or_reset(dev, mt6370_chg_destroy_wq, priv->wq);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to init wq\n");
++
++	INIT_WORK(&priv->bc12_work, mt6370_chg_bc12_work_func);
++	INIT_DELAYED_WORK(&priv->mivr_dwork, mt6370_chg_mivr_dwork_func);
++	ret = devm_add_action_or_reset(dev, mt6370_chg_cancel_mivr_dwork,
++				       &priv->mivr_dwork);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to init mivr dwork\n");
++
++	ret = mt6370_chg_init_setting(priv);
++	if (ret)
++		return dev_err_probe(dev, ret,
++				     "Failed to init mt6370 charger setting\n");
++
++	ret = mt6370_chg_init_irq(priv);
++	if (ret)
++		return ret;
++
++	mt6370_chg_pwr_rdy_check(priv);
++
 +	return 0;
 +}
 +
-+static int mt6370_bl_remove(struct platform_device *pdev)
-+{
-+	struct mt6370_priv *priv = platform_get_drvdata(pdev);
-+	struct backlight_device *bl_dev = priv->bl;
-+
-+	bl_dev->props.brightness = 0;
-+	backlight_update_status(priv->bl);
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id mt6370_bl_of_match[] = {
-+	{ .compatible = "mediatek,mt6370-backlight", .data = (void *)MT6370_VID_COMMON },
-+	{ .compatible = "mediatek,mt6372-backlight", .data = (void *)MT6370_VID_6372 },
++static const struct of_device_id mt6370_chg_of_match[] = {
++	{ .compatible = "mediatek,mt6370-charger", },
 +	{}
 +};
-+MODULE_DEVICE_TABLE(of, mt6370_bl_of_match);
++MODULE_DEVICE_TABLE(of, mt6370_chg_of_match);
 +
-+static struct platform_driver mt6370_bl_driver = {
++static struct platform_driver mt6370_chg_driver = {
++	.probe = mt6370_chg_probe,
 +	.driver = {
-+		.name = "mt6370-backlight",
-+		.of_match_table = mt6370_bl_of_match,
++		.name = "mt6370-charger",
++		.of_match_table = mt6370_chg_of_match,
 +	},
-+	.probe = mt6370_bl_probe,
-+	.remove = mt6370_bl_remove,
 +};
-+module_platform_driver(mt6370_bl_driver);
++module_platform_driver(mt6370_chg_driver);
 +
 +MODULE_AUTHOR("ChiaEn Wu <chiaen_wu@richtek.com>");
-+MODULE_DESCRIPTION("MediaTek MT6370 Backlight Driver");
++MODULE_DESCRIPTION("MediaTek MT6370 Charger Driver");
 +MODULE_LICENSE("GPL v2");
 -- 
 2.7.4
