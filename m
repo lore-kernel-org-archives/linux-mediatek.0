@@ -4,158 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F6C2ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 08:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6C2ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 08:44:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hkDhdO7/FqYzC6k2Ce6+IyR+dlYXk4DxyeC9AWfCwaE=; b=aUnHitQaXa6k+EkQkV2wu4j0jM
-	0SUr/dSR0dOxYMdc9DKmpYdZDShjoty12Nab0Fcag691nZ1VdOU65tCsbz3utXbyoLblmihoUYT64
-	dPR1EjcjtwfqEyVnO3UvuVb7v0LLJtOQcb3Un5In0ThVQhOZ3t5aciHjz3YhYuyuiIGKhzn50aQex
-	qZqgfWWhQr2l5/gyUG/N3/y9FEnO8B+uH3Dh8RFx8UGkDUW5KPYeqBmI/hmhck4rZc13w39/r9+4j
-	wTERnV6h3wfqcuY5uWHFahhGDcVM3M5GFkCmaHH6myJE5e0ohhLJPQV35EjVjUJxF6fWZO0WJlPQJ
-	9X6n+sPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8UZoFnb1F6rGUm5J3AoFq/8vqLtlUutVGAITwTyTP5w=; b=sl1XqTEmUy7333LvVrPAFQG9K4
+	aV4EnU12k/z7M49lB5XcY/I0Zw69f3aalaoCQyKzJUNw313usKqzRgvHdjXE4agjWNeLk+cWUE0Sh
+	hFJJm7ElslY2o83oU8LILmCdQSOMXANuad6hWN/1XNpmNtzOO/VbA2XiAZSaL5eLNXL9KJWrgXtFF
+	8RwyDz6pllHCk/nd3sYPkpVilSGdB08hliUPSNeKeriPzItZ7Gl7JiAsqtGoBOQ0/JIXbeeJynDva
+	TVpc/Q3ESZbhyBGY8QVRxRqQcQWDpYZKGjzXFIiJvu5uosBI4LHH24iXqa9q668nvpsdWHoHxvcDz
+	fJm4Q9/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSwgB-00FFGC-NL; Tue, 30 Aug 2022 08:33:03 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1oSwqc-00FJKm-79; Tue, 30 Aug 2022 08:43:50 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSwg8-00FFCL-Ba; Tue, 30 Aug 2022 08:33:02 +0000
-Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 27U77Sia028997;
-	Tue, 30 Aug 2022 08:32:41 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2022-7-12;
- bh=hkDhdO7/FqYzC6k2Ce6+IyR+dlYXk4DxyeC9AWfCwaE=;
- b=PBUCzjYcip4vS4sdR+KRcKY4ta07UuFOm5NOV8H+P0/Ihp++8O18hN6jHzG3S0P3Plae
- VoEzakLQ8A2Fcs4w2VbB2Wr49Xc6DJz7mkuV68358Uwki2/2zg+5hvggWLLb/7aYLWI+
- Al55X+nhPkpbmKLWSr1dFssLyQowWIDBkcEIpUWr05rYiKdGtkwFz9BXQfEChDqVGD2R
- d62LUEeIR7l9xavwebgnDGrXkOWVlc21wDfREri3ocKMRcljXAAC8Puaobwm+zWDz3lk
- oMgEddOeYdbaRE/CGYb92YEbZjMB+VJbknvebzdpQK9//qBkYYIccWaTnFJKbv/aoUMB 5g== 
-Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3j79v0nn68-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 30 Aug 2022 08:32:41 +0000
-Received: from pps.filterd (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5) with ESMTP id 27U8HaJH002468;
-	Tue, 30 Aug 2022 08:32:39 GMT
-Received: from nam02-dm3-obe.outbound.protection.outlook.com (mail-dm3nam02lp2049.outbound.protection.outlook.com [104.47.56.49])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 3j79q9safj-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 30 Aug 2022 08:32:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=b3phl0SyNQOSzeZUjXjsGOsVLpRHgtr3Dbcg38Dh+5lbs6BhiQZQ8MBvl5J+pOqSJl3bQSTdzmJVF95duScrHQTugFWmx5IpqW6H6PzP+LG0NvT2ajb8w2Bx5Cr9F/zpnfckY4zOCQm5LifY4u8Y/6fT4rbIugRGcheY1KUgm71yXRqzOhjxKh7yB2VVuYuMIoSGy9AF+RiCSsfLSCXMS31av8Oci7g22du7Ae2gO5mupk98JjrohHbB3t4FO5N24ndzTIHRaVL9PyhZXABgXiMVqaKEZ4eqd0Sa88zuRb/abpeXnMnDaXhVTqwJmoXYrObfWffLGOAcyLG1P84EHw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hkDhdO7/FqYzC6k2Ce6+IyR+dlYXk4DxyeC9AWfCwaE=;
- b=AilHjo//chNP+hmqRrFGvzZtDxe89q3NOJbm8JTuZYMa/qFPtoX3v9CHqtCy3M8CEBlH5953W3HLZEoV5AHgCFAIWo1f1GTWDDYpBSPvq2aROwpcgk47Aq6LmBbhvP2yQ5wnyy1moorCGpoeYK7ng70MGv0GGWKdxym/VCUMWnNHwSLmzXtDfeYPnuej+MfKE04o85BDqzyWNAlhK5C9aDfCZELKAvBVIZHq7t9YxuOh1Wnz4sOUwFbm9wh3DAWV4gGZ9YRi5K0v9DbqR9nx8sYGkOsfPL/0ua16Mo9VzmWSdW599H7+9uaBB8DKvPCRNpaPjphC6wg6yF3liDZDKA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+	id 1oSwqK-00FJHg-5o; Tue, 30 Aug 2022 08:43:39 +0000
+Received: by mail-wr1-x436.google.com with SMTP id m16so13177593wru.9;
+        Tue, 30 Aug 2022 01:43:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hkDhdO7/FqYzC6k2Ce6+IyR+dlYXk4DxyeC9AWfCwaE=;
- b=NtnQH9wHH7Q8b28IdzCEQ7a3zImrC+33wXdNWd3+lIHYyX8zHy/mO7abN7kxe+shLdWtyCsm5RrtBwT+VX3YvZlQdDgTu7BXVa5G6aWAf508/qRi3SUGx+sH1M5r+dvBCF2VJXZPikm3aU5AcOtNPSZ8dTxa8aBPtqFCTog99Ys=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by CY4PR10MB1237.namprd10.prod.outlook.com
- (2603:10b6:910:6::11) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5566.19; Tue, 30 Aug
- 2022 08:32:32 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::209e:de4d:68ea:c026]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::209e:de4d:68ea:c026%3]) with mapi id 15.20.5566.021; Tue, 30 Aug 2022
- 08:32:32 +0000
-Date: Tue, 30 Aug 2022 11:32:07 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-        Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-        iommu@lists.linux.dev, iommu@lists.linux-foundation.org,
-        linux-mediatek@lists.infradead.org,
-        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        mingyuan.ma@mediatek.com, yf.wang@mediatek.com, libo.kang@mediatek.com,
-        chengci.xu@mediatek.com, youlin.pei@mediatek.com,
-        anan.sun@mediatek.com, xueqi.zhang@mediatek.com,
-        Guenter Roeck <groeck@chromium.org>
-Subject: Re: [PATCH v4 3/6] iommu/mediatek: Add error path for loop of
- mm_dts_parse
-Message-ID: <20220830083206.GT2030@kadam>
-References: <20220824064306.21495-1-yong.wu@mediatek.com>
- <20220824064306.21495-4-yong.wu@mediatek.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220824064306.21495-4-yong.wu@mediatek.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: JN2P275CA0007.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:3::19)
- To MWHPR1001MB2365.namprd10.prod.outlook.com (2603:10b6:301:2d::28)
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id:from:to:cc
+         :subject:date;
+        bh=8UZoFnb1F6rGUm5J3AoFq/8vqLtlUutVGAITwTyTP5w=;
+        b=LjdZ7UQZD9AXPP6mI330AGIIuUK6+dAXdB+7kY9swIp9aQW53SuFRWowoZ60K2Z3M4
+         3Ykc7CagOfcgILwL52RC/Dg7mDiP7DCcsNdMYj2dWW6seuoVqMQlQFjAJhhvASldjoVi
+         VAcD+3zEc6OFodnAfAnnU6ao9lqJ2n2vf0MSvssKOqJqg30n7d9yWX6PlFE3qjF1by+1
+         MfApxAU/t0pFL9+P1ilr261u7LGZzt2C91WY4ZaGynk+qUCpkX0A+dc6ojRjyYCgGLQu
+         fAh6hIrAo3FzmGKAvG8J6YUZKOP00kAp5+ataz/xXd1+AmT7I7oqNKF0mu6gux8ZR0fW
+         HmgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=8UZoFnb1F6rGUm5J3AoFq/8vqLtlUutVGAITwTyTP5w=;
+        b=HYd/GqoMlU+yfJUjTHhFwunQw0tqDvRp2CaSWK5zHVzq3QfGLSr70gDdL4HcKnurSL
+         +ft4faFjicGArPgXf7HiSQTmuyhYffiavOP3WC0g79i3OwF9mvfyHWA9hC0xK/jrP2pb
+         W7YrQ+PRy6IqPlwfLpZUWPx75F8RSxIAN0AgUcKY7NXEClivhSK+iNzxSePp3tO2z5Op
+         ql3pcJqvpJ3tVToscHtQgFvA7JVqEOOprsDeVGx6n7HxrIIfzErDIAzR9iJBaNZWPXi2
+         WYlNZC9FcPXNVVBQejYgQjZEWmwiWFGnGu0fRBhNBjHyVI/a+29aspztKj12Bd/pMz2I
+         Mzwg==
+X-Gm-Message-State: ACgBeo2eTD0U3LM0XycekwcXrclEL6EWDV1pCFOCQpsDvrHGBPGAkqlM
+	yJtsHtP6jBzAB1yGCYVH7lk=
+X-Google-Smtp-Source: AA6agR73cGjwkfal9mmojf4C5Lb+GTMEaXNZyxRN6X0PxORHItiCuU3D+z60IgfOzn5cEUDEsMpZBQ==
+X-Received: by 2002:adf:e187:0:b0:220:6d97:b670 with SMTP id az7-20020adfe187000000b002206d97b670mr8098019wrb.63.1661849009752;
+        Tue, 30 Aug 2022 01:43:29 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id k1-20020adfe8c1000000b0021badf3cb26sm10991266wrn.63.2022.08.30.01.43.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 30 Aug 2022 01:43:28 -0700 (PDT)
+Message-ID: <b6524da2-34d6-cb7b-c8bf-19809e8932ed@gmail.com>
+Date: Tue, 30 Aug 2022 10:43:26 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 03a9ae8f-58ad-4a7d-f81c-08da8a622e9f
-X-MS-TrafficTypeDiagnostic: CY4PR10MB1237:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	AJE0KkOjgEAX+wbAqqsno+gpPqARaX9Q/G3+QddsaMnXMt/DJvfXX7uXxa7cm5KXmKQ1KAK7SRMti/yrRlK7jXYciF+mNDn+6lEYkJJ3INv/bL0bKjkzTlR2b717L9gOZWCtxVkAQCuGUK/bBQg1tzmkOABGFy55gZ0IKcqMvaS8MCVaAaz6en/akwkOL6FOlyg/7ub7uqIYxXeZV9mX8+9L9Ea6md7N3/Trg5IugfL/Uh8ApmoGNCTHOZU9HVwVcmCeTGh2IMGmey9oNiZsBSOl3ser5XCbgP57Jla3aNEmI1OFoPHzlwRRNXXF4lAdOEoCgQOc7Hb5dOrQwM3J7V6Rwh7Vdy5rc+ZgfORnnFkbDJdJXEZXoHPI3IVkW0v/af8XATOSg1h9BbMiWfWqINz7bYES8qPNf9vlvNoruoZLKPBg4KUrPMyJ2dSgTceCPu5BbKWU8+I3882F2jo75PekdSmnZ2gXLHxKmFl8geQXBxm4EY57BzURVNLTvLk2gE7mbgttX9eHShnVs9gHLo6Tf0tuk7E7yf6+evwDSXjkCk041aCPN2H715+cXoCOu0jmr7mDQ1cnf0NpLD4Oec1hvPaaIcNiEOg5uTuYjWngIgVmUCq+DzmbYla5ZguILcHEwoAb0VFfYcLHBo5VGahvEDrjGxBKfZ9L4AOdB6DmhAWELA7FHwV3bQ5pwXYtcvU75lWpLabH9YlQ/3rYvZifus0hFhoYMADWyUN4j2NZQePUQvzx3captZ6VSvo3NR/mc09NNflpQAjF5VfOaQ==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(7916004)(396003)(366004)(346002)(39860400002)(376002)(136003)(5660300002)(66946007)(66556008)(44832011)(6916009)(8936002)(8676002)(4326008)(54906003)(66476007)(33656002)(7416002)(316002)(2906002)(4744005)(6666004)(478600001)(26005)(41300700001)(33716001)(6506007)(6486002)(6512007)(86362001)(52116002)(38350700002)(1076003)(186003)(9686003)(38100700002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?D7CtLa4FF5R6xkt4OWWqt46EeSZdI+GJy//W8D/zxmKzY+z+TW3TY0zr+CWR?=
- =?us-ascii?Q?5572IQZhl8GTexxoXDxZimjlIS27ceMtAn/lGXrQ+X/JTPX3B5Kum8LxrRc+?=
- =?us-ascii?Q?IKGnvWFu7zEniI4S1ZcoRFn+j2AmsauBV53oTUhCoX/Nze9WWNzs3SjDF2b9?=
- =?us-ascii?Q?YN8bs5L8oMyPLqOvQJIm1TyTHZI0hyvDZq9TpAfxJgLMgTvZZixZ29nzUw4v?=
- =?us-ascii?Q?0RJXJLktR/icYHbrnZqjLlwT4/c2WiqSoxKCkMGMlFryELIWr/SWcovvsMKO?=
- =?us-ascii?Q?0PorA1vj9nJ3dR/dfi5KmoRt9of8XFW9Qc3f3gmhksz+m9Q5027zqLY5ruyw?=
- =?us-ascii?Q?wJuNRwo1mrHT72GYEqqeXpggd5d1x1ZjElwb4ktZkAl/Qb32mJe5hWuV0CHG?=
- =?us-ascii?Q?uGa2H2nqCg9ztGs3xOmX3vJ6XT7g/jq2j4YFYy3ZOMVZj9KO5RvJVCjImVSg?=
- =?us-ascii?Q?/k6+bzXKP6e0CFH9JA7pyf+N3tkLUswjT9pPvUUDco55db9vSjZN7O9ZgxYB?=
- =?us-ascii?Q?BUA4L5J08LXILBguesl9Fqv6cbqf9c5qNp3Fm0BWJYofnZfLu7HB3bfmnmYO?=
- =?us-ascii?Q?D7eDX8htVNnVJnmQuidKgY+jvk5kW+CGuRprHxpPOjzsVnEBjAj5AyMg9QjK?=
- =?us-ascii?Q?iEWb6fh5bk7sxZFfbFzshDBV7GwvJx4lZOuV2hMaqJM9qSyZgzhmNFKInInu?=
- =?us-ascii?Q?BaIkYSqsZRk47l7Bprr6LO+ywasmCl8jmqds6Js0FgCunxm7ZT1rJ85dK+yu?=
- =?us-ascii?Q?YJ4rqpewE02CY4fVUe7Go2K342lvpXtmkTWe50hOg2AtVZV4zJJo91g6r7Ur?=
- =?us-ascii?Q?wZy7SMZ+6imIo2XEOUuFi/u89CbLsY0lK45fMvy5Bf0sK3nhdo1JYTgBXOy2?=
- =?us-ascii?Q?m6XTdahaOkaZJ2Cq27lnJme+n0ho0nn1FOCRcB6LHxXzKCeyaZFg2wz599f1?=
- =?us-ascii?Q?YIBR579F+bvR9QVzwY/hjf73IIMb3Rl2fDr/bJUOhOJV2vZTed+lqWDX+MEa?=
- =?us-ascii?Q?vmUXQKY2KRYT8LM2JqHO9dbG1Uz9Y94vAMSadx+3UHpWG2ysbso5teyiDzAn?=
- =?us-ascii?Q?d9z4enh7UZXk9AJcvu1Mas9lZBZ+8XW80hoU7V6AiOtKgNhIwUvyk2H0GSCB?=
- =?us-ascii?Q?v2i/osllstY5YAqC7BztGUeznPm5VioYxf5XZdzyC+tWFg1W7FHbf/unCq5D?=
- =?us-ascii?Q?eZooM0q31iLuGk+IT510ocjFbgPqEMCGTi81pYhEFc1HxlIj+5eHSUbBBmKS?=
- =?us-ascii?Q?pR/BNeuO6vyjrXM6uCCJBUSSNM7GvwhjoiUPENpb2EM8uI+stBjAknDAdIwk?=
- =?us-ascii?Q?odzXCoIyBSjKqnnobb30Le+PPfVqNIwCHIUxrA2bO7asU2NY/yADJ2YSk2yI?=
- =?us-ascii?Q?NPKFye6kOQzp+ltNLf8uLrhC+hoya2xAUCrFtm/rBYvixCtQrQ21Ice/1j3G?=
- =?us-ascii?Q?UBigSWa349h59YEXtiCXkQDZQT6JrLvcO0JwNiGfUcgADXJQStbMhE2a4rIJ?=
- =?us-ascii?Q?MZJkYVCYUreLh9//6K7+kvIHt0bmlI/8TG0AG2UDzzl1oYLuZGz+WI5pStTm?=
- =?us-ascii?Q?pp+AUF++oMIv0IyFsaiRpT6Zd2w/xm4Yi+vJEOKkxR89f0MDzOjTkGx6E0Bo?=
- =?us-ascii?Q?Tg=3D=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 03a9ae8f-58ad-4a7d-f81c-08da8a622e9f
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Aug 2022 08:32:32.1572
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: HoPsiP3tnijN+IGuEg/fuQA92IO5NlpXRnlmHOFj2YsWGJc1nj1mPa69F2voM5ngYWSR3lNvo7Dz/zrmCleLNwjcpGUwP+tWYYvUiAYho08=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR10MB1237
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.517,FMLib:17.11.122.1
- definitions=2022-08-30_04,2022-08-25_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 phishscore=0
- mlxlogscore=999 adultscore=0 bulkscore=0 spamscore=0 malwarescore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2207270000 definitions=main-2208300041
-X-Proofpoint-GUID: uMsHMasyWkuM-nJ8FFIQqI1iCPS50Ngr
-X-Proofpoint-ORIG-GUID: uMsHMasyWkuM-nJ8FFIQqI1iCPS50Ngr
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.1.2
+Content-Language: en-US
+To: Peter Chiu <chui-hao.chiu@mediatek.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.Lee@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220630094909.8014-1-chui-hao.chiu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4] arm64: dts: mt7986: add built-in Wi-Fi device nodes
+In-Reply-To: <20220630094909.8014-1-chui-hao.chiu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_013301_051566_8ECC2C60 
-X-CRM114-Status: GOOD (  19.94  )
+X-CRM114-CacheID: sfid-20220830_014337_703586_786CC43A 
+X-CRM114-Status: GOOD (  16.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -170,31 +94,196 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 24, 2022 at 02:43:03PM +0800, Yong Wu wrote:
-> The mtk_iommu_mm_dts_parse will parse the smi larbs nodes. if the i+1
-> larb is parsed fail, we should put_device for the 0..i larbs.
+
+
+On 30/06/2022 11:49, Peter Chiu wrote:
+> This enables built-in 802.11ax Wi-Fi support.
 > 
-> There are two places need to comment:
-> 1) The larbid may be not linear mapping, we should loop whole
->    the array in the error path.
-> 2) I move this line position: "data->larb_imu[id].dev = &plarbdev->dev;"
->    That means set data->larb_imu[id].dev before the error path.
->    then we don't need "platform_device_put(plarbdev)" again while
->    probe_defer case. All depend on "put_device" in the error path in error
->    cases.
+> Reviewed-by: Sam Shih <sam.shih@mediatek.com>
+> Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+> ---
+> v2: add clocks and clock-names.
+> v3: rename wmac to wifi and change underscores to dash in node names.
+> v4: rebase to the latest codebase.
+> ---
+>   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 41 +++++++++++++++++++
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 23 +++++++++++
+>   arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts | 43 ++++++++++++++++++++
+>   3 files changed, 107 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> index 882277a..28cd168 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> @@ -115,6 +115,13 @@ &uart2 {
+>   	status = "okay";
+>   };
+>   
+> +&wifi {
+> +	status = "okay";
+> +	pinctrl-names = "default", "dbdc";
+> +	pinctrl-0 = <&wf_2g_5g_pins>;
+> +	pinctrl-1 = <&wf_dbdc_pins>;
+> +};
+> +
+>   &pio {
+>   	uart1_pins: uart1-pins {
+>   		mux {
+> @@ -129,4 +136,38 @@ mux {
+>   			groups = "uart2";
+>   		};
+>   	};
+> +
+> +	wf_2g_5g_pins: wf-2g-5g-pins {
+> +		mux {
+> +			function = "wifi";
+> +			groups = "wf_2g", "wf_5g";
 
-I don't understand what you're saying here.  There is still a
-platform_device_put(plarbdev) on the success path after
-component_match_add().
+yaml says:
+          - if:
+               properties:
+                 function:
+                   const: wifi
+             then:
+               properties:
+                 groups:
+                   enum: [wf_2g, wf_5g, wf_dbdc]
 
-So if we fail when i == 2 then we do:
 
-	put_device(data->larb_imu[2].dev);
+Did you run the binding checker against this DTS?
+Why can't we just merge wf_2g_5g_pins with wf_dbdc_pins?
 
-But for the previous iterations has both platform_device_put()
-and put_device() called for them.
+Regards,
+Matthias
 
-regards,
-dan carpenter
-
+> +		};
+> +		conf {
+> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
+> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
+> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
+> +			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
+> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
+> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
+> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
+> +			drive-strength = <4>;
+> +		};
+> +	};
+> +
+> +	wf_dbdc_pins: wf-dbdc-pins {
+> +		mux {
+> +			function = "wifi";
+> +			groups = "wf_dbdc";
+> +		};
+> +		conf {
+> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
+> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
+> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
+> +			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
+> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
+> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
+> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
+> +			drive-strength = <4>;
+> +		};
+> +	};
+>   };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> index e3a407d..890ded0 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -7,6 +7,7 @@
+>   #include <dt-bindings/interrupt-controller/irq.h>
+>   #include <dt-bindings/interrupt-controller/arm-gic.h>
+>   #include <dt-bindings/clock/mt7986-clk.h>
+> +#include <dt-bindings/reset/mt7986-resets.h>
+>   
+>   / {
+>   	interrupt-parent = <&gic>;
+> @@ -70,6 +71,11 @@ secmon_reserved: secmon@43000000 {
+>   			reg = <0 0x43000000 0 0x30000>;
+>   			no-map;
+>   		};
+> +
+> +		wmcpu_emi: wmcpu-reserved@4fc00000 {
+> +			no-map;
+> +			reg = <0 0x4fc00000 0 0x00100000>;
+> +		};
+>   	};
+>   
+>   	timer {
+> @@ -261,6 +267,23 @@ eth: ethernet@15100000 {
+>   			#size-cells = <0>;
+>   			status = "disabled";
+>   		};
+> +
+> +		wifi: wifi@18000000 {
+> +			compatible = "mediatek,mt7986-wmac";
+> +			resets = <&watchdog MT7986_TOPRGU_CONSYS_SW_RST>;
+> +			reset-names = "consys";
+> +			clocks = <&topckgen CLK_TOP_CONN_MCUSYS_SEL>,
+> +				 <&topckgen CLK_TOP_AP2CNN_HOST_SEL>;
+> +			clock-names = "mcu", "ap2conn";
+> +			reg = <0 0x18000000 0 0x1000000>,
+> +			      <0 0x10003000 0 0x1000>,
+> +			      <0 0x11d10000 0 0x1000>;
+> +			interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
+> +				     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
+> +			memory-region = <&wmcpu_emi>;
+> +		};
+>   	};
+>   
+>   };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+> index 0f49d57..7f21b10 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+> @@ -98,3 +98,46 @@ fixed-link {
+>   		};
+>   	};
+>   };
+> +
+> +&wifi {
+> +	status = "okay";
+> +	pinctrl-names = "default", "dbdc";
+> +	pinctrl-0 = <&wf_2g_5g_pins>;
+> +	pinctrl-1 = <&wf_dbdc_pins>;
+> +};
+> +
+> +&pio {
+> +	wf_2g_5g_pins: wf-2g-5g-pins {
+> +		mux {
+> +			function = "wifi";
+> +			groups = "wf_2g", "wf_5g";
+> +		};
+> +		conf {
+> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
+> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
+> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
+> +			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
+> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
+> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
+> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
+> +			drive-strength = <4>;
+> +		};
+> +	};
+> +
+> +	wf_dbdc_pins: wf-dbdc-pins {
+> +		mux {
+> +			function = "wifi";
+> +			groups = "wf_dbdc";
+> +		};
+> +		conf {
+> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
+> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
+> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
+> +			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
+> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
+> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
+> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
+> +			drive-strength = <4>;
+> +		};
+> +	};
+> +};
 
