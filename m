@@ -4,66 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92078ECAAD4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 10:57:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDF1AECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 13:41:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VhsTijnwfKI8OQyYakPV/bcx1YdOCINO5Sp1b9Ooe8s=; b=gsHWpYIGHcr9dKLHzHzlGsK0EY
-	KkmTUvG1OHQu/ar7JumcNurBqmk4Ns1Fs1+3S78GI2go2Y/1R6ufpt3z3zz+gC3czWCMOJ/0bq9kk
-	B8CKopSGlLY3RzOlv9qLb6DwseEGE538/UNdTQ6uPQUKk08LwDBUoNeoH2/TCh752deKMD9skWuzz
-	9DKT1uBIfUVcLbx648E3ebd9BDE3A59ju1IRnVExMW9DT3SBd3lSd9Z5xi2/J0a3g1w6xnaOxGxeX
-	PBKsW0qWsYepY+E1aZA+CxUfLUO2z8sNY/+amD4y+cNYjRp45DH6x6S+82VwFAP5JbQ/Sw2xYycv0
-	e0a67zng==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lhGydNxK55q9xkCqNJ9J0S3Q5544ZKHenHWr3Bzy3jM=; b=wT6r/L54QGAwVDxF3nLGgMPQMx
+	rehipqBwj/VHtHnJdFzhmwflPKXtKmfz8uDz1mPErRnVGBaE0Zg91Am78Q2zXJLzmIs2YARqJ/zA7
+	isbK1CX7YmuTPrRBbRYFGed2PKJ1Vy7dDlVelfaqsNJkTbFDC/UOXipjav0yU+IgtdGXLBQo1AOxW
+	sxC32V5RqSoYjZS6JoPMi2zOs5XELUTFV/lXZMoSeVzvR/mAH+822rHAqzAW0qqLvUgIBs3TLtfBE
+	Uxj7eWP9mPja6xNhgb9jkN6Q1Xker9Hu2gWJKBy/NQb1j0XJW0XKbK1rJfVZ6kQPAAfk5i4hA8TU4
+	p96xOS6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSyp9-00GICl-On; Tue, 30 Aug 2022 10:50:27 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oT1Un-00HQUl-J1; Tue, 30 Aug 2022 13:41:37 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSyc1-00GDPi-5W; Tue, 30 Aug 2022 10:37:02 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 307116601D92;
-	Tue, 30 Aug 2022 11:36:51 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661855811;
-	bh=rss5yhhAOkOZgTjBZofcKSYZN8+ajXcvMRSruFr6dis=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RUAjO6OG7y1chiDV49ps6XX8amWr8x4vu6e0hPO26PpmdZwFEmx3SCcn4hZDfj9+u
-	 ktpfka3e/PYETn0wBuskZycxoQ2crlpZJpeahGRqi7tWwMv/mwh0GZL5kyJgBvGxp7
-	 eyUaOgRaAwVRePrSHz5RfJyzHTjiSGcFA0DCvNaIT9sUd0hiZSYKJjcrCLsUQ8teUQ
-	 fyiz/vEqUwq4Y1ASnBVumYPy1Rm/YDZOehKWxj4e3hmbwiYxIJJNvPKgToU9uDsS6Q
-	 ovMYZpcxOwqQfvUDGK/ERFtuMDJr+c3H5RksGbrBpCt90NQRWm1ON7Y4aPxX7EhBhH
-	 jVuCTKY53gesA==
-Message-ID: <814291c8-e24f-ea5c-8f88-af978f72e335@collabora.com>
-Date: Tue, 30 Aug 2022 12:36:48 +0200
+	id 1oT1UM-00HQKn-By; Tue, 30 Aug 2022 13:41:12 +0000
+Received: by mail-ed1-x534.google.com with SMTP id z41so6849759ede.0;
+        Tue, 30 Aug 2022 06:41:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc;
+        bh=lhGydNxK55q9xkCqNJ9J0S3Q5544ZKHenHWr3Bzy3jM=;
+        b=e6G6ylWJGCb5IL4CsgicyiO7rBiH5bx4Zjuh9qXJyzDoFHI/56tkUFtH8wYTqC0ItM
+         RxIKkNYOVRhBdmVC3Tti8gF274YCgtRJcFrDb7vBy8lntSKIMiUz2scfXxdcuB0sg59A
+         5mSQ0EsoQynJhdwj0S0dN8b97evfyJOk+Jo7XrKDwZ6EdlrbH/yEMs3yd0DN87ONOsy2
+         a5365n97iUAQwrRRRvxczADbT+Kwo7APpOExgcrbkcMopUNS84MzNYa/PboQvR+5oK6f
+         CBO3+pUx8md1UbAFgbnJ7Iyk7r6REV3IdBygiNRAhlLi+c4j5QYWIT16WEe/psI972f2
+         B8gg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc;
+        bh=lhGydNxK55q9xkCqNJ9J0S3Q5544ZKHenHWr3Bzy3jM=;
+        b=eDR1Abyu5xDCejh57mfCwI/7NuW/WIZfYtbUrwkty/LSkKq3i8vlb6fxMuveM7gQ7C
+         yH3U3I72z9zjZaoI/d9uLCcVU+HZdQ9s/MRg+EWfRkD7sv2s1aCqtygZ4GpDcMibVOZf
+         ikkuYJHyM69trACR6G6/qbJL0czPnOmo210SWIjONOkGsMQocrPa12ndJ5TF3rjiv2D8
+         V7LMMhKbpYjraIc8hipMWgH04EqNtyIlLxDzX+6qn3wa+bN09KOpH9nabDwDVLaig9hi
+         BVCT1g7gm9LavLDUNCAWIFvSNc6RjbASlKvuexISKgZEFbqKj3FT8ELKt0kBZx6WA4y4
+         GlRA==
+X-Gm-Message-State: ACgBeo2qGgAPV2g6d0skj7EcywaZuleb65D2Cs9tbOp1anfzUqEEk5zH
+	rc9a7bTIyBwiQaegLW9/FEY=
+X-Google-Smtp-Source: AA6agR4RoPtxvc0EvzqIUGkAyDy9bJK8zIm/5LtTVZXxAbwKTrnfFyOLx4PAya+jHwO18zUD9b8BpQ==
+X-Received: by 2002:a05:6402:40d1:b0:448:7247:4994 with SMTP id z17-20020a05640240d100b0044872474994mr8109400edb.319.1661866866668;
+        Tue, 30 Aug 2022 06:41:06 -0700 (PDT)
+Received: from localhost.lan (ip-194-187-74-233.konfederacka.maverick.com.pl. [194.187.74.233])
+        by smtp.gmail.com with ESMTPSA id z14-20020a1709060ace00b0073d6d6e698bsm5800938ejf.187.2022.08.30.06.41.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 Aug 2022 06:41:06 -0700 (PDT)
+From: =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Russell King <linux@armlinux.org.uk>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konrad.dybcio@somainline.org>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	"Rafael J . Wysocki" <rafael@kernel.org>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Amit Kucheria <amitk@kernel.org>,
+	Thara Gopinath <thara.gopinath@gmail.com>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Joel Stanley <joel@jms.id.au>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Thierry Reding <treding@nvidia.com>,
+	Dmitry Osipenko <digetx@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Stephan Gerhold <stephan@gerhold.net>,
+	Michael Walle <michael@walle.cc>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	Marcel Ziswiler <marcel.ziswiler@toradex.com>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	"H . Nikolaus Schaller" <hns@goldelico.com>,
+	Kees Cook <keescook@chromium.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-mips@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>
+Subject: [PATCH V2 1/2] nvmem: prefix all symbols with NVMEM_
+Date: Tue, 30 Aug 2022 15:40:58 +0200
+Message-Id: <20220830134059.18744-1-zajec5@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] pwm: mtk-disp: Fix the parameters calculated by the
- enabled flag of disp_pwm.
-Content-Language: en-US
-To: xinlei.lee@mediatek.com, thierry.reding@gmail.com,
- u.kleine-koenig@pengutronix.de, matthias.bgg@gmail.com,
- jitao.shi@mediatek.com
-Cc: linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <1661745852-27323-1-git-send-email-xinlei.lee@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <1661745852-27323-1-git-send-email-xinlei.lee@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_033701_409442_95CA5B73 
-X-CRM114-Status: UNSURE (   9.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220830_064110_460012_606D0EC6 
+X-CRM114-Status: GOOD (  17.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,21 +121,310 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/08/22 06:04, xinlei.lee@mediatek.com ha scritto:
-> From: xinlei lee <xinlei.lee@mediatek.com>
-> 
-> In the original mtk_disp_pwm_get_state() function, the result of reading
-> con0 & BIT(0) is enabled as disp_pwm.
-> In order to conform to the register table, we should use the disp_pwm
-> base address as the enabled judgment.
-> 
-> Fixes: 3f2b16734914 ("pwm: mtk-disp: Implement atomic API .get_state()")
-> 
-> Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
-> Reviewed-by: Miles Chen <miles.chen@mediatek.com>
+From: Rafał Miłecki <rafal@milecki.pl>
 
-This fix is valid for all MediaTek SoCs that are currently supported in
-pwm-mtk-disp (and some others that aren't supported yet).
+This unifies all NVMEM symbols. They follow one style now.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+---
+ arch/arm/configs/multi_v7_defconfig |  6 +++---
+ arch/arm/configs/qcom_defconfig     |  2 +-
+ arch/arm64/configs/defconfig        | 10 +++++-----
+ arch/mips/configs/ci20_defconfig    |  2 +-
+ drivers/cpufreq/Kconfig.arm         |  2 +-
+ drivers/nvmem/Kconfig               | 24 ++++++++++++------------
+ drivers/nvmem/Makefile              | 24 ++++++++++++------------
+ drivers/soc/mediatek/Kconfig        |  2 +-
+ drivers/thermal/qcom/Kconfig        |  2 +-
+ 9 files changed, 37 insertions(+), 37 deletions(-)
+
+diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
+index b1a25b8c11e7..b61b2e3d116b 100644
+--- a/arch/arm/configs/multi_v7_defconfig
++++ b/arch/arm/configs/multi_v7_defconfig
+@@ -1188,11 +1188,11 @@ CONFIG_TI_PIPE3=y
+ CONFIG_TWL4030_USB=m
+ CONFIG_RAS=y
+ CONFIG_NVMEM_IMX_OCOTP=y
+-CONFIG_QCOM_QFPROM=y
+-CONFIG_ROCKCHIP_EFUSE=m
++CONFIG_NVMEM_QCOM_QFPROM=y
++CONFIG_NVMEM_ROCKCHIP_EFUSE=m
+ CONFIG_NVMEM_SUNXI_SID=y
+ CONFIG_NVMEM_VF610_OCOTP=y
+-CONFIG_MESON_MX_EFUSE=m
++CONFIG_NVMEM_MESON_MX_EFUSE=m
+ CONFIG_NVMEM_RMEM=m
+ CONFIG_FSI=m
+ CONFIG_FSI_MASTER_GPIO=m
+diff --git a/arch/arm/configs/qcom_defconfig b/arch/arm/configs/qcom_defconfig
+index 12b82c662359..8e1f13faeee5 100644
+--- a/arch/arm/configs/qcom_defconfig
++++ b/arch/arm/configs/qcom_defconfig
+@@ -282,7 +282,7 @@ CONFIG_PHY_QCOM_QMP=y
+ CONFIG_PHY_QCOM_USB_HS=y
+ CONFIG_PHY_QCOM_USB_SNPS_FEMTO_V2=y
+ CONFIG_PHY_QCOM_USB_HSIC=y
+-CONFIG_QCOM_QFPROM=y
++CONFIG_NVMEM_QCOM_QFPROM=y
+ CONFIG_INTERCONNECT=y
+ CONFIG_INTERCONNECT_QCOM=y
+ CONFIG_INTERCONNECT_QCOM_MSM8974=m
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 265454620682..91e58cf59c99 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -1238,12 +1238,12 @@ CONFIG_QCOM_L3_PMU=y
+ CONFIG_HISI_PMU=y
+ CONFIG_NVMEM_IMX_OCOTP=y
+ CONFIG_NVMEM_IMX_OCOTP_SCU=y
+-CONFIG_MTK_EFUSE=y
+-CONFIG_QCOM_QFPROM=y
+-CONFIG_ROCKCHIP_EFUSE=y
++CONFIG_NVMEM_MTK_EFUSE=y
++CONFIG_NVMEM_QCOM_QFPROM=y
++CONFIG_NVMEM_ROCKCHIP_EFUSE=y
+ CONFIG_NVMEM_SUNXI_SID=y
+-CONFIG_UNIPHIER_EFUSE=y
+-CONFIG_MESON_EFUSE=m
++CONFIG_NVMEM_UNIPHIER_EFUSE=y
++CONFIG_NVMEM_MESON_EFUSE=m
+ CONFIG_NVMEM_RMEM=m
+ CONFIG_NVMEM_LAYERSCAPE_SFP=m
+ CONFIG_FPGA=y
+diff --git a/arch/mips/configs/ci20_defconfig b/arch/mips/configs/ci20_defconfig
+index 955b6ac581ab..11f08b6a3013 100644
+--- a/arch/mips/configs/ci20_defconfig
++++ b/arch/mips/configs/ci20_defconfig
+@@ -143,7 +143,7 @@ CONFIG_MEMORY=y
+ CONFIG_JZ4780_NEMC=y
+ CONFIG_PWM=y
+ CONFIG_PWM_JZ4740=m
+-CONFIG_JZ4780_EFUSE=y
++CONFIG_NVMEM_JZ4780_EFUSE=y
+ CONFIG_JZ4770_PHY=y
+ CONFIG_EXT4_FS=y
+ # CONFIG_DNOTIFY is not set
+diff --git a/drivers/cpufreq/Kconfig.arm b/drivers/cpufreq/Kconfig.arm
+index 954749afb5fe..82e5de1f6f8c 100644
+--- a/drivers/cpufreq/Kconfig.arm
++++ b/drivers/cpufreq/Kconfig.arm
+@@ -153,7 +153,7 @@ config ARM_OMAP2PLUS_CPUFREQ
+ config ARM_QCOM_CPUFREQ_NVMEM
+ 	tristate "Qualcomm nvmem based CPUFreq"
+ 	depends on ARCH_QCOM
+-	depends on QCOM_QFPROM
++	depends on NVMEM_QCOM_QFPROM
+ 	depends on QCOM_SMEM
+ 	select PM_OPP
+ 	help
+diff --git a/drivers/nvmem/Kconfig b/drivers/nvmem/Kconfig
+index bab8a29c9861..691375c13381 100644
+--- a/drivers/nvmem/Kconfig
++++ b/drivers/nvmem/Kconfig
+@@ -52,7 +52,7 @@ config NVMEM_IMX_OCOTP_SCU
+ 	  This is a driver for the SCU On-Chip OTP Controller (OCOTP)
+ 	  available on i.MX8 SoCs.
+ 
+-config JZ4780_EFUSE
++config NVMEM_JZ4780_EFUSE
+ 	tristate "JZ4780 EFUSE Memory Support"
+ 	depends on MACH_INGENIC || COMPILE_TEST
+ 	depends on HAS_IOMEM
+@@ -96,7 +96,7 @@ config NVMEM_MXS_OCOTP
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called nvmem-mxs-ocotp.
+ 
+-config MTK_EFUSE
++config NVMEM_MTK_EFUSE
+ 	tristate "Mediatek SoCs EFUSE support"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+ 	depends on HAS_IOMEM
+@@ -107,7 +107,7 @@ config MTK_EFUSE
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called efuse-mtk.
+ 
+-config MICROCHIP_OTPC
++config NVMEM_MICROCHIP_OTPC
+ 	tristate "Microchip OTPC support"
+ 	depends on ARCH_AT91 || COMPILE_TEST
+ 	help
+@@ -126,7 +126,7 @@ config NVMEM_NINTENDO_OTP
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called nvmem-nintendo-otp.
+ 
+-config QCOM_QFPROM
++config NVMEM_QCOM_QFPROM
+ 	tristate "QCOM QFPROM Support"
+ 	depends on ARCH_QCOM || COMPILE_TEST
+ 	depends on HAS_IOMEM
+@@ -145,7 +145,7 @@ config NVMEM_SPMI_SDAM
+ 	  Qualcomm Technologies, Inc. PMICs. It provides the clients
+ 	  an interface to read/write to the SDAM module's shared memory.
+ 
+-config ROCKCHIP_EFUSE
++config NVMEM_ROCKCHIP_EFUSE
+ 	tristate "Rockchip eFuse Support"
+ 	depends on ARCH_ROCKCHIP || COMPILE_TEST
+ 	depends on HAS_IOMEM
+@@ -156,7 +156,7 @@ config ROCKCHIP_EFUSE
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called nvmem_rockchip_efuse.
+ 
+-config ROCKCHIP_OTP
++config NVMEM_ROCKCHIP_OTP
+ 	tristate "Rockchip OTP controller support"
+ 	depends on ARCH_ROCKCHIP || COMPILE_TEST
+ 	depends on HAS_IOMEM
+@@ -199,7 +199,7 @@ config NVMEM_SUNXI_SID
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called nvmem_sunxi_sid.
+ 
+-config UNIPHIER_EFUSE
++config NVMEM_UNIPHIER_EFUSE
+ 	tristate "UniPhier SoCs eFuse support"
+ 	depends on ARCH_UNIPHIER || COMPILE_TEST
+ 	depends on HAS_IOMEM
+@@ -221,7 +221,7 @@ config NVMEM_VF610_OCOTP
+ 	  This driver can also be build as a module. If so, the module will
+ 	  be called nvmem-vf610-ocotp.
+ 
+-config MESON_EFUSE
++config NVMEM_MESON_EFUSE
+ 	tristate "Amlogic Meson GX eFuse Support"
+ 	depends on (ARCH_MESON || COMPILE_TEST) && MESON_SM
+ 	help
+@@ -231,7 +231,7 @@ config MESON_EFUSE
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called nvmem_meson_efuse.
+ 
+-config MESON_MX_EFUSE
++config NVMEM_MESON_MX_EFUSE
+ 	tristate "Amlogic Meson6/Meson8/Meson8b eFuse Support"
+ 	depends on ARCH_MESON || COMPILE_TEST
+ 	help
+@@ -251,13 +251,13 @@ config NVMEM_SNVS_LPGPR
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called nvmem-snvs-lpgpr.
+ 
+-config RAVE_SP_EEPROM
++config NVMEM_RAVE_SP_EEPROM
+ 	tristate "Rave SP EEPROM Support"
+ 	depends on RAVE_SP_CORE
+ 	help
+ 	  Say y here to enable Rave SP EEPROM support.
+ 
+-config SC27XX_EFUSE
++config NVMEM_SC27XX_EFUSE
+ 	tristate "Spreadtrum SC27XX eFuse Support"
+ 	depends on MFD_SC27XX_PMIC || COMPILE_TEST
+ 	depends on HAS_IOMEM
+@@ -278,7 +278,7 @@ config NVMEM_ZYNQMP
+ 
+ 	  If sure, say yes. If unsure, say no.
+ 
+-config SPRD_EFUSE
++config NVMEM_SPRD_EFUSE
+ 	tristate "Spreadtrum SoC eFuse Support"
+ 	depends on ARCH_SPRD || COMPILE_TEST
+ 	depends on HAS_IOMEM
+diff --git a/drivers/nvmem/Makefile b/drivers/nvmem/Makefile
+index 399f9972d45b..7ac988c6966e 100644
+--- a/drivers/nvmem/Makefile
++++ b/drivers/nvmem/Makefile
+@@ -15,7 +15,7 @@ obj-$(CONFIG_NVMEM_IMX_OCOTP)	+= nvmem-imx-ocotp.o
+ nvmem-imx-ocotp-y		:= imx-ocotp.o
+ obj-$(CONFIG_NVMEM_IMX_OCOTP_SCU)	+= nvmem-imx-ocotp-scu.o
+ nvmem-imx-ocotp-scu-y		:= imx-ocotp-scu.o
+-obj-$(CONFIG_JZ4780_EFUSE)		+= nvmem_jz4780_efuse.o
++obj-$(CONFIG_NVMEM_JZ4780_EFUSE)		+= nvmem_jz4780_efuse.o
+ nvmem_jz4780_efuse-y		:= jz4780-efuse.o
+ obj-$(CONFIG_NVMEM_LPC18XX_EEPROM)	+= nvmem_lpc18xx_eeprom.o
+ nvmem_lpc18xx_eeprom-y	:= lpc18xx_eeprom.o
+@@ -25,37 +25,37 @@ obj-$(CONFIG_NVMEM_MXS_OCOTP)	+= nvmem-mxs-ocotp.o
+ nvmem-mxs-ocotp-y		:= mxs-ocotp.o
+ obj-$(CONFIG_NVMEM_NINTENDO_OTP)	+= nvmem-nintendo-otp.o
+ nvmem-nintendo-otp-y		:= nintendo-otp.o
+-obj-$(CONFIG_MTK_EFUSE)		+= nvmem_mtk-efuse.o
++obj-$(CONFIG_NVMEM_MTK_EFUSE)		+= nvmem_mtk-efuse.o
+ nvmem_mtk-efuse-y		:= mtk-efuse.o
+-obj-$(CONFIG_QCOM_QFPROM)	+= nvmem_qfprom.o
++obj-$(CONFIG_NVMEM_QCOM_QFPROM)	+= nvmem_qfprom.o
+ nvmem_qfprom-y			:= qfprom.o
+ obj-$(CONFIG_NVMEM_SPMI_SDAM)	+= nvmem_qcom-spmi-sdam.o
+ nvmem_qcom-spmi-sdam-y		+= qcom-spmi-sdam.o
+-obj-$(CONFIG_ROCKCHIP_EFUSE)	+= nvmem_rockchip_efuse.o
++obj-$(CONFIG_NVMEM_ROCKCHIP_EFUSE)	+= nvmem_rockchip_efuse.o
+ nvmem_rockchip_efuse-y		:= rockchip-efuse.o
+-obj-$(CONFIG_ROCKCHIP_OTP)	+= nvmem-rockchip-otp.o
++obj-$(CONFIG_NVMEM_ROCKCHIP_OTP)	+= nvmem-rockchip-otp.o
+ nvmem-rockchip-otp-y		:= rockchip-otp.o
+ obj-$(CONFIG_NVMEM_SUNXI_SID)	+= nvmem_sunxi_sid.o
+ nvmem_stm32_romem-y 		:= stm32-romem.o
+ obj-$(CONFIG_NVMEM_STM32_ROMEM) += nvmem_stm32_romem.o
+ nvmem_sunxi_sid-y		:= sunxi_sid.o
+-obj-$(CONFIG_UNIPHIER_EFUSE)	+= nvmem-uniphier-efuse.o
++obj-$(CONFIG_NVMEM_UNIPHIER_EFUSE)	+= nvmem-uniphier-efuse.o
+ nvmem-uniphier-efuse-y		:= uniphier-efuse.o
+ obj-$(CONFIG_NVMEM_VF610_OCOTP)	+= nvmem-vf610-ocotp.o
+ nvmem-vf610-ocotp-y		:= vf610-ocotp.o
+-obj-$(CONFIG_MESON_EFUSE)	+= nvmem_meson_efuse.o
++obj-$(CONFIG_NVMEM_MESON_EFUSE)	+= nvmem_meson_efuse.o
+ nvmem_meson_efuse-y		:= meson-efuse.o
+-obj-$(CONFIG_MESON_MX_EFUSE)	+= nvmem_meson_mx_efuse.o
++obj-$(CONFIG_NVMEM_MESON_MX_EFUSE)	+= nvmem_meson_mx_efuse.o
+ nvmem_meson_mx_efuse-y		:= meson-mx-efuse.o
+ obj-$(CONFIG_NVMEM_SNVS_LPGPR)	+= nvmem_snvs_lpgpr.o
+ nvmem_snvs_lpgpr-y		:= snvs_lpgpr.o
+-obj-$(CONFIG_RAVE_SP_EEPROM)	+= nvmem-rave-sp-eeprom.o
++obj-$(CONFIG_NVMEM_RAVE_SP_EEPROM)	+= nvmem-rave-sp-eeprom.o
+ nvmem-rave-sp-eeprom-y		:= rave-sp-eeprom.o
+-obj-$(CONFIG_SC27XX_EFUSE)	+= nvmem-sc27xx-efuse.o
++obj-$(CONFIG_NVMEM_SC27XX_EFUSE)	+= nvmem-sc27xx-efuse.o
+ nvmem-sc27xx-efuse-y		:= sc27xx-efuse.o
+ obj-$(CONFIG_NVMEM_ZYNQMP)	+= nvmem_zynqmp_nvmem.o
+ nvmem_zynqmp_nvmem-y		:= zynqmp_nvmem.o
+-obj-$(CONFIG_SPRD_EFUSE)	+= nvmem_sprd_efuse.o
++obj-$(CONFIG_NVMEM_SPRD_EFUSE)	+= nvmem_sprd_efuse.o
+ nvmem_sprd_efuse-y		:= sprd-efuse.o
+ obj-$(CONFIG_NVMEM_RMEM) 	+= nvmem-rmem.o
+ nvmem-rmem-y			:= rmem.o
+@@ -67,7 +67,7 @@ obj-$(CONFIG_NVMEM_SUNPLUS_OCOTP)	+= nvmem_sunplus_ocotp.o
+ nvmem_sunplus_ocotp-y		:= sunplus-ocotp.o
+ obj-$(CONFIG_NVMEM_APPLE_EFUSES)	+= nvmem-apple-efuses.o
+ nvmem-apple-efuses-y 		:= apple-efuses.o
+-obj-$(CONFIG_MICROCHIP_OTPC)	+= nvmem-microchip-otpc.o
++obj-$(CONFIG_NVMEM_MICROCHIP_OTPC)	+= nvmem-microchip-otpc.o
+ nvmem-microchip-otpc-y		:= microchip-otpc.o
+ obj-$(CONFIG_NVMEM_U_BOOT_ENV)	+= nvmem_u-boot-env.o
+ nvmem_u-boot-env-y		:= u-boot-env.o
+diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+index 73e63920b1b9..40d0cc600cae 100644
+--- a/drivers/soc/mediatek/Kconfig
++++ b/drivers/soc/mediatek/Kconfig
+@@ -77,7 +77,7 @@ config MTK_MMSYS
+ 
+ config MTK_SVS
+ 	tristate "MediaTek Smart Voltage Scaling(SVS)"
+-	depends on MTK_EFUSE && NVMEM
++	depends on NVMEM_MTK_EFUSE && NVMEM
+ 	help
+ 	  The Smart Voltage Scaling(SVS) engine is a piece of hardware
+ 	  which has several controllers(banks) for calculating suitable
+diff --git a/drivers/thermal/qcom/Kconfig b/drivers/thermal/qcom/Kconfig
+index bfd889422dd3..2c7f3f9a26eb 100644
+--- a/drivers/thermal/qcom/Kconfig
++++ b/drivers/thermal/qcom/Kconfig
+@@ -1,7 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+ config QCOM_TSENS
+ 	tristate "Qualcomm TSENS Temperature Alarm"
+-	depends on QCOM_QFPROM
++	depends on NVMEM_QCOM_QFPROM
+ 	depends on ARCH_QCOM || COMPILE_TEST
+ 	help
+ 	  This enables the thermal sysfs driver for the TSENS device. It shows
+-- 
+2.34.1
+
 
