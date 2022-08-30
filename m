@@ -4,64 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AD66ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 07:21:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81074ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 07:36:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SLzPFsB6ZXJpBFA+B5hsIvdwKl9s6wzWx/OLxOkS6vI=; b=bhiK5ym5zA7u4bINoQIlpnqFl1
-	RMTqWcJMNkz4AtQF+rNsJOwc9JUZlU9fZDlBycWUi/3+JLhkecS7acZ63d3YIRuU6FMJIPbtfvca2
-	qCqs7Gf4uc3g5+9LgSSlYJDpfxHRA+q9ZtG7OqlNItYqfFCQtEpDzo0Vu/q+MPSlGM0FVlwnsUAK/
-	Jrue771Ho+LL22iE9OvWBmfFIRGWZWMRbvbdfoNJX73c6cRln3qQy3iSthO4K+yXYLIfPn0cVm7bE
-	7Hev33YRl8txf7Kwm9tmiKBK1A5544cHktX7uCqB7fGrPfbimriorC8tKaED0qXC8+Kkntk6+wt7i
-	oUCBP1sQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=25vij1UR/6n5GNPHiUmQkmyl016Kc+Gq5ww2wTsWwlU=; b=3HH3BwIKmjOVgV+nleihLOhEUX
+	cEsepnWW6uvql9gGfDx2SDfc/1TroR2r1HsUql3T10s7MrPI/gpUc333TO1Bthi1kV/sqwu8EJ0Mm
+	1B+GLzmi9we6B6TQ8yy8HvcHKg0xg245GdyRwj6YW09Ex10IFt9ZlXgv9PBJ2EaD3P+l6ZRFC5S+M
+	gOlcLxNA+GRa+X0NtUcbTinNl2qxd/lgNbhdAdoQRCEoqG7Lo2+5TqI63i+eDjaCEQIE3i2iTCzBh
+	u0JOxMXpTvaQdxeV4foV8X5ny8RGUDGBHYiDhHLPlxDyfNEIDERtwtLcdcjdfQWjNtf/cBOAoDTXQ
+	u/81+jRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSvYU-00EjWg-Dv; Tue, 30 Aug 2022 07:21:02 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oSvnS-00EoCN-Eo; Tue, 30 Aug 2022 07:36:30 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSvYA-00EjSc-Oc; Tue, 30 Aug 2022 07:20:44 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1oSvnB-00Eo52-Hq; Tue, 30 Aug 2022 07:36:14 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7B88B6601B73;
-	Tue, 30 Aug 2022 08:20:36 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661844036;
-	bh=UzmHNdmotVM3jM3ssmk0O3EgfrsDEmWpJq3KHdX97HI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=d/+yNckIGcLBzpE2ZeBn5sYd1EPdpSk/bjsnT1Nq5qHbwat3MCutXgCGWRgboBtx0
-	 RfQDrwYYqbpVC6i4XDyXeGwoG4oN9gLkuUBwSYnrbbRCx1OLll/ljar3GGeLxMm6mG
-	 hrDWRwg5PoXxsmbVZKqmBqafEVCV3gC9MVqI5UYZp4BOKkKfe3jdBSMZJsE9MvRhll
-	 KedsmixzvZX1Dbf+wTkl0HmR7UfmIAFqeTbddOp5z+6xiSMVmgv+kLxLpueVVZCcfP
-	 0qSeMr+shkwiWltqgb+fyLtrvtF/NSqY28ko7CXz+aq1F12YouVdSWedZJQqpkYmlK
-	 75XLggpd96qSg==
-Message-ID: <5e3668af-8841-629c-0df2-8b272167ee19@collabora.com>
-Date: Tue, 30 Aug 2022 09:20:34 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 88443614CC;
+	Tue, 30 Aug 2022 07:36:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F04C3C433D6;
+	Tue, 30 Aug 2022 07:36:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1661844972;
+	bh=N5gaZtyYBowf9OQhQgYdpXYv/RxoiHfSaAtM2SKjB4Y=;
+	h=From:To:Cc:Subject:Date:From;
+	b=MC1Z0vxFG9LMcLq41YRlMOWaezF4X/AFoqzr7qg294jNMUs8JeENcaQ9Q3HpG9IK2
+	 6efyquLZvW3Tm9pR5cl3q9vq3y6luV8bmsmg48RaOgA6X9pmm7vxI6qkLWYD8zuZNf
+	 TlDQcX4lBUe1iBeMdbC50cm91ZFY+0C8zOAlAmDlfOfOZ+LPDb4gFooEWFphclgNMa
+	 h9ao+/QMD5ktHMmHYoSNeh3IG14ISKDd85uxTINnYio0ld+EuuNk332Gt7YfVYgFoD
+	 w84naT+zwD3+kQdq6CTysamc8rwpZVWbEBPOs7FKgkp9PWAgDdXGOsTRv5DliI/5vz
+	 YJfuw0rHvPjww==
+From: matthias.bgg@kernel.org
+To: nfraprado@collabora.com,
+	angelogioacchino.delregno@collabora.com
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH] soc: mediatek: mtk-svs: fix compilation error
+Date: Tue, 30 Aug 2022 09:36:04 +0200
+Message-Id: <20220830073604.21260-1-matthias.bgg@kernel.org>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] soc: mediatek: mtk-svs: Explicitly include bitfield
- header
-Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20220829204439.3748648-1-nfraprado@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220829204439.3748648-1-nfraprado@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_002043_028235_F6E2395B 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220830_003613_676290_D05409DD 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,17 +71,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/08/22 22:44, Nícolas F. R. A. Prado ha scritto:
-> Commit a92438c5a30a ("soc: mediatek: mtk-svs: Use bitfield access macros
-> where possible") introduced the use of FIELD_GET and FIELD_PREP macros,
-> which are defined in the bitfield header. Add an explicit include for it
-> so we're sure to have the symbols defined independently of the config.
-> 
-> Fixes: a92438c5a30a ("soc: mediatek: mtk-svs: Use bitfield access macros where possible")
-> Reported-by: kernel test robot <lkp@intel.com>
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> 
+From: Matthias Brugger <matthias.bgg@gmail.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+When compiling on other architectures, compile test fails due to missing
+bitfield.h include.
+
+Fixes: a92438c5a30a ("soc: mediatek: mtk-svs: Use bitfield access macros where possible")
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ drivers/soc/mediatek/mtk-svs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index da1a3bfc8633..11a571d3f013 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -3,7 +3,7 @@
+  * Copyright (C) 2022 MediaTek Inc.
+  */
+ 
+-#include <linux/bits.h>
++#include <linux/bitfield.h>
+ #include <linux/clk.h>
+ #include <linux/completion.h>
+ #include <linux/cpuidle.h>
+-- 
+2.37.2
 
 
