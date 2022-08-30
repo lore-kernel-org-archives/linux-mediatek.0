@@ -4,82 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6C2ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 08:44:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5007ECAAD4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Aug 2022 08:50:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8UZoFnb1F6rGUm5J3AoFq/8vqLtlUutVGAITwTyTP5w=; b=sl1XqTEmUy7333LvVrPAFQG9K4
-	aV4EnU12k/z7M49lB5XcY/I0Zw69f3aalaoCQyKzJUNw313usKqzRgvHdjXE4agjWNeLk+cWUE0Sh
-	hFJJm7ElslY2o83oU8LILmCdQSOMXANuad6hWN/1XNpmNtzOO/VbA2XiAZSaL5eLNXL9KJWrgXtFF
-	8RwyDz6pllHCk/nd3sYPkpVilSGdB08hliUPSNeKeriPzItZ7Gl7JiAsqtGoBOQ0/JIXbeeJynDva
-	TVpc/Q3ESZbhyBGY8QVRxRqQcQWDpYZKGjzXFIiJvu5uosBI4LHH24iXqa9q668nvpsdWHoHxvcDz
-	fJm4Q9/A==;
+	bh=bnpuipv6GX2MUethGTnKPkcWLDjOZNOV4G3hOika5Vc=; b=zHtFv/lAlhIf66+YTCdFbEPTwp
+	+TRz6WkEpnb0GvULydUrLG64LKNFF+oWPihb16P8An/BSKeqPIDODnIAwD4ZN6TPlsZp7dyZBoUrU
+	2m2IJ1HQxSCg/nJ54TO5uKF9FnM4XwL6xw1xCBDu7MGAq1SqDly72j1gzM644VOfPTnGgo2iiDIQ+
+	Jy+f3RNEO49P7PgqKsY/TlmCqF1QWKXTQDtMaFiP83o1pTf7TBUsOgesw/CUMuD6rZvfPOaEQwtKv
+	WFR81OJeNE00QHo/LufCiDWyEYkSOL5KSoV4FWwt+WhnoGVco6z5SS6+TAdlbdeONJl/YdBzoWBLG
+	0Qlsp/Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSwqc-00FJKm-79; Tue, 30 Aug 2022 08:43:50 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1oSwwg-00FKZc-7q; Tue, 30 Aug 2022 08:50:06 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSwqK-00FJHg-5o; Tue, 30 Aug 2022 08:43:39 +0000
-Received: by mail-wr1-x436.google.com with SMTP id m16so13177593wru.9;
-        Tue, 30 Aug 2022 01:43:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id:from:to:cc
-         :subject:date;
-        bh=8UZoFnb1F6rGUm5J3AoFq/8vqLtlUutVGAITwTyTP5w=;
-        b=LjdZ7UQZD9AXPP6mI330AGIIuUK6+dAXdB+7kY9swIp9aQW53SuFRWowoZ60K2Z3M4
-         3Ykc7CagOfcgILwL52RC/Dg7mDiP7DCcsNdMYj2dWW6seuoVqMQlQFjAJhhvASldjoVi
-         VAcD+3zEc6OFodnAfAnnU6ao9lqJ2n2vf0MSvssKOqJqg30n7d9yWX6PlFE3qjF1by+1
-         MfApxAU/t0pFL9+P1ilr261u7LGZzt2C91WY4ZaGynk+qUCpkX0A+dc6ojRjyYCgGLQu
-         fAh6hIrAo3FzmGKAvG8J6YUZKOP00kAp5+ataz/xXd1+AmT7I7oqNKF0mu6gux8ZR0fW
-         HmgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=8UZoFnb1F6rGUm5J3AoFq/8vqLtlUutVGAITwTyTP5w=;
-        b=HYd/GqoMlU+yfJUjTHhFwunQw0tqDvRp2CaSWK5zHVzq3QfGLSr70gDdL4HcKnurSL
-         +ft4faFjicGArPgXf7HiSQTmuyhYffiavOP3WC0g79i3OwF9mvfyHWA9hC0xK/jrP2pb
-         W7YrQ+PRy6IqPlwfLpZUWPx75F8RSxIAN0AgUcKY7NXEClivhSK+iNzxSePp3tO2z5Op
-         ql3pcJqvpJ3tVToscHtQgFvA7JVqEOOprsDeVGx6n7HxrIIfzErDIAzR9iJBaNZWPXi2
-         WYlNZC9FcPXNVVBQejYgQjZEWmwiWFGnGu0fRBhNBjHyVI/a+29aspztKj12Bd/pMz2I
-         Mzwg==
-X-Gm-Message-State: ACgBeo2eTD0U3LM0XycekwcXrclEL6EWDV1pCFOCQpsDvrHGBPGAkqlM
-	yJtsHtP6jBzAB1yGCYVH7lk=
-X-Google-Smtp-Source: AA6agR73cGjwkfal9mmojf4C5Lb+GTMEaXNZyxRN6X0PxORHItiCuU3D+z60IgfOzn5cEUDEsMpZBQ==
-X-Received: by 2002:adf:e187:0:b0:220:6d97:b670 with SMTP id az7-20020adfe187000000b002206d97b670mr8098019wrb.63.1661849009752;
-        Tue, 30 Aug 2022 01:43:29 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id k1-20020adfe8c1000000b0021badf3cb26sm10991266wrn.63.2022.08.30.01.43.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 Aug 2022 01:43:28 -0700 (PDT)
-Message-ID: <b6524da2-34d6-cb7b-c8bf-19809e8932ed@gmail.com>
-Date: Tue, 30 Aug 2022 10:43:26 +0200
+	id 1oSwwI-00FKRu-6z; Tue, 30 Aug 2022 08:49:44 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AC6CB6601E8E;
+	Tue, 30 Aug 2022 09:49:35 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1661849377;
+	bh=BzYQv5SyDeOC0RvJR6By0SIblbhuVKWfe2nPF1J9ai4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UaPgfY2Q5LVtRq/bWkihHN3QDTjrUU9ONZL2n8Ku/o1PLqo8dcAMQtU2hbdE5rzto
+	 JhjRoNubQWgwjmNvsBQ2otjcn0fs8kEM/FhYulYp1G5ZShBkMpYZqg4SdYP80JzMKE
+	 IM/b9K6pdhcBKb2Dkr78Q1LcBIiyshgCv8E3GI1oEXi4Xm2EugUd3rKEi8pkzvbphv
+	 w25eLqRt414RTHfnn6P4TU+N8OtZvTKRlBGUJSe1gaU2oux7EN78lfOKOgeAKCa06Q
+	 YGC26hIjewzQshS3U3traT1wUC4zs39GdZ2LsElL1HggR7pQ8ctFIeFhi4BFR/Xjec
+	 AG+L6SWZcMHIQ==
+Message-ID: <d78a91f3-483d-75f2-f867-f1a4e4876743@collabora.com>
+Date: Tue, 30 Aug 2022 10:49:33 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.1.2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v9 09/10] leds: flash: mt6370: Add MediaTek MT6370
+ flashlight support
 Content-Language: en-US
-To: Peter Chiu <chui-hao.chiu@mediatek.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.Lee@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220630094909.8014-1-chui-hao.chiu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v4] arm64: dts: mt7986: add built-in Wi-Fi device nodes
-In-Reply-To: <20220630094909.8014-1-chui-hao.chiu@mediatek.com>
+To: ChiaEn Wu <peterwu.pub@gmail.com>, lee@kernel.org,
+ daniel.thompson@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, sre@kernel.org, jic23@kernel.org, lars@metafoo.de,
+ deller@gmx.de, broonie@kernel.org, mazziesaccount@gmail.com,
+ andriy.shevchenko@linux.intel.com
+Cc: chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
+ dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-iio@vger.kernel.org,
+ linux-fbdev@vger.kernel.org, szunichen@gmail.com, andy.shevchenko@gmail.com
+References: <20220830034042.9354-2-peterwu.pub@gmail.com>
+ <20220830034042.9354-10-peterwu.pub@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220830034042.9354-10-peterwu.pub@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_014337_703586_786CC43A 
-X-CRM114-Status: GOOD (  16.77  )
+X-CRM114-CacheID: sfid-20220830_014942_648832_CC19C833 
+X-CRM114-Status: GOOD (  45.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,196 +84,448 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 30/06/2022 11:49, Peter Chiu wrote:
-> This enables built-in 802.11ax Wi-Fi support.
+Il 30/08/22 05:40, ChiaEn Wu ha scritto:
+> From: Alice Chen <alice_chen@richtek.com>
 > 
-> Reviewed-by: Sam Shih <sam.shih@mediatek.com>
-> Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
-> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-> ---
-> v2: add clocks and clock-names.
-> v3: rename wmac to wifi and change underscores to dash in node names.
-> v4: rebase to the latest codebase.
-> ---
->   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 41 +++++++++++++++++++
->   arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 23 +++++++++++
->   arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts | 43 ++++++++++++++++++++
->   3 files changed, 107 insertions(+)
+> The MediaTek MT6370 is a highly-integrated smart power management IC,
+> which includes a single cell Li-Ion/Li-Polymer switching battery
+> charger, a USB Type-C & Power Delivery (PD) controller, dual Flash
+> LED current sources, a RGB LED driver, a backlight WLED driver,
+> a display bias driver and a general LDO for portable devices.
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> index 882277a..28cd168 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> @@ -115,6 +115,13 @@ &uart2 {
->   	status = "okay";
->   };
+> Add support for the MT6370 Flash LED driver. Flash LED in MT6370
+> has 2 channels and support torch/strobe mode.
+> 
+> Signed-off-by: Alice Chen <alice_chen@richtek.com>
+> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> ---
+> 
+> v9
+> - Revise the format of the comments.
+> ---
+>   drivers/leds/flash/Kconfig             |  14 +
+>   drivers/leds/flash/Makefile            |   1 +
+>   drivers/leds/flash/leds-mt6370-flash.c | 632 +++++++++++++++++++++++++++++++++
+>   3 files changed, 647 insertions(+)
+>   create mode 100644 drivers/leds/flash/leds-mt6370-flash.c
+> 
+> diff --git a/drivers/leds/flash/Kconfig b/drivers/leds/flash/Kconfig
+> index d3eb689..405bd16 100644
+> --- a/drivers/leds/flash/Kconfig
+> +++ b/drivers/leds/flash/Kconfig
+> @@ -61,6 +61,20 @@ config LEDS_MT6360
+>   	  Independent current sources supply for each flash LED support torch
+>   	  and strobe mode.
 >   
-> +&wifi {
-> +	status = "okay";
-> +	pinctrl-names = "default", "dbdc";
-> +	pinctrl-0 = <&wf_2g_5g_pins>;
-> +	pinctrl-1 = <&wf_dbdc_pins>;
+> +config LEDS_MT6370_FLASH
+> +	tristate "Flash LED Support for MediaTek MT6370 PMIC"
+> +	depends on LEDS_CLASS && OF
+> +	depends on LEDS_CLASS_FLASH || !LEDS_CLASS_FLASH
+> +	depends on V4L2_FLASH_LED_CLASS || !V4L2_FLASH_LED_CLASS
+> +	depends on MFD_MT6370
+> +	help
+> +	  Support 2 channels and torch/strobe mode.
+> +	  Say Y here to enable support for
+> +	  MT6370_FLASH_LED device.
+> +
+> +	  This driver can also be built as a module. If so, the module
+> +	  will be called "leds-mt6370-flash".
+> +
+>   config LEDS_RT4505
+>   	tristate "LED support for RT4505 flashlight controller"
+>   	depends on I2C && OF
+> diff --git a/drivers/leds/flash/Makefile b/drivers/leds/flash/Makefile
+> index 0acbddc..0c1f3c5 100644
+> --- a/drivers/leds/flash/Makefile
+> +++ b/drivers/leds/flash/Makefile
+> @@ -9,3 +9,4 @@ obj-$(CONFIG_LEDS_MAX77693)	+= leds-max77693.o
+>   obj-$(CONFIG_LEDS_RT4505)	+= leds-rt4505.o
+>   obj-$(CONFIG_LEDS_RT8515)	+= leds-rt8515.o
+>   obj-$(CONFIG_LEDS_SGM3140)	+= leds-sgm3140.o
+> +obj-$(CONFIG_LEDS_MT6370_FLASH)	+= leds-mt6370-flash.o
+> diff --git a/drivers/leds/flash/leds-mt6370-flash.c b/drivers/leds/flash/leds-mt6370-flash.c
+> new file mode 100644
+> index 0000000..a8ec7e1
+> --- /dev/null
+> +++ b/drivers/leds/flash/leds-mt6370-flash.c
+> @@ -0,0 +1,632 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * Copyright (C) 2022 Richtek Technology Corp.
+> + *
+> + * Author: Alice Chen <alice_chen@richtek.com>
+> + */
+> +
+> +#include <linux/bitops.h>
+> +#include <linux/delay.h>
+> +#include <linux/init.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/kernel.h>
+> +#include <linux/led-class-flash.h>
+> +#include <linux/module.h>
+> +#include <linux/mutex.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/property.h>
+> +#include <linux/regmap.h>
+> +
+> +#include <media/v4l2-flash-led-class.h>
+> +
+> +enum {
+> +	MT6370_LED_FLASH1,
+> +	MT6370_LED_FLASH2,
+> +	MT6370_MAX_LEDS
 > +};
 > +
->   &pio {
->   	uart1_pins: uart1-pins {
->   		mux {
-> @@ -129,4 +136,38 @@ mux {
->   			groups = "uart2";
->   		};
->   	};
+> +/* Virtual definition for multicolor */
 > +
-> +	wf_2g_5g_pins: wf-2g-5g-pins {
-> +		mux {
-> +			function = "wifi";
-> +			groups = "wf_2g", "wf_5g";
+> +#define MT6370_REG_FLEDEN		0x17E
+> +#define MT6370_REG_STRBTO		0x173
+> +#define MT6370_REG_CHGSTAT2		0x1D1
+> +#define MT6370_REG_FLEDSTAT1		0x1D9
+> +#define MT6370_REG_FLEDISTRB(_id)	(0x174 + 4 * (_id))
+> +#define MT6370_REG_FLEDITOR(_id)	(0x175 + 4 * (_id))
+> +#define MT6370_ITORCH_MASK		GENMASK(4, 0)
+> +#define MT6370_ISTROBE_MASK		GENMASK(6, 0)
+> +#define MT6370_STRBTO_MASK		GENMASK(6, 0)
+> +#define MT6370_TORCHEN_MASK		BIT(3)
+> +#define MT6370_STROBEN_MASK		BIT(2)
+> +#define MT6370_FLCSEN_MASK(_id)		BIT(MT6370_LED_FLASH2 - (_id))
+> +#define MT6370_FLCSEN_MASK_ALL		GENMASK(1, 0)
+> +#define MT6370_FLEDCHGVINOVP_MASK	BIT(3)
+> +#define MT6370_FLED1STRBTO_MASK		BIT(11)
+> +#define MT6370_FLED2STRBTO_MASK		BIT(10)
+> +#define MT6370_FLED1STRB_MASK		BIT(9)
+> +#define MT6370_FLED2STRB_MASK		BIT(8)
+> +#define MT6370_FLED1SHORT_MASK		BIT(7)
+> +#define MT6370_FLED2SHORT_MASK		BIT(6)
+> +#define MT6370_FLEDLVF_MASK		BIT(3)
+> +
+> +#define MT6370_LED_JOINT		2
+> +#define MT6370_RANGE_FLED_REG		4
+> +#define MT6370_ITORCH_MIN_uA		25000
+> +#define MT6370_ITORCH_STEP_uA		12500
+> +#define MT6370_ITORCH_MAX_uA		400000
+> +#define MT6370_ITORCH_DOUBLE_MAX_uA	800000
+> +#define MT6370_ISTRB_MIN_uA		50000
+> +#define MT6370_ISTRB_STEP_uA		12500
+> +#define MT6370_ISTRB_MAX_uA		1500000
+> +#define MT6370_ISTRB_DOUBLE_MAX_uA	3000000
+> +#define MT6370_STRBTO_MIN_US		64000
+> +#define MT6370_STRBTO_STEP_US		32000
+> +#define MT6370_STRBTO_MAX_US		2432000
+> +
+> +#define STATE_OFF			0
+> +#define STATE_KEEP			1
+> +#define STATE_ON			2
+> +
+> +#define to_mt6370_led(ptr, member) container_of(ptr, struct mt6370_led, member)
+> +
+> +struct mt6370_led {
+> +	struct led_classdev_flash flash;
+> +	struct v4l2_flash *v4l2_flash;
+> +	struct mt6370_priv *priv;
+> +	u32 led_no;
 
-yaml says:
-          - if:
-               properties:
-                 function:
-                   const: wifi
-             then:
-               properties:
-                 groups:
-                   enum: [wf_2g, wf_5g, wf_dbdc]
+The maximum value that we will ever see for `led_no` is 2: this means
+that we don't need 32 full bits here.
 
+	u8 led_no;
 
-Did you run the binding checker against this DTS?
-Why can't we just merge wf_2g_5g_pins with wf_dbdc_pins?
+> +	u32 default_state;
+
+This should be...
+
+	enum led_default_state default_state;
+
+...but then, you're never using this variable as far as I can see, apart from
+initializing it in mt6370_init_common_properties, for which, there's a comment
+below.
+
+In any case, please either fix the initialization and actually make use of
+this variable, or remove it entirely.
+
+> +};
+> +
+> +struct mt6370_priv {
+> +	struct device *dev;
+> +	struct regmap *regmap;
+> +	struct mutex lock;
+> +	unsigned int fled_strobe_used;
+> +	unsigned int fled_torch_used;
+> +	unsigned int leds_active;
+> +	unsigned int leds_count;
+> +	struct mt6370_led leds[];
+> +};
+> +
+> +static int mt6370_torch_brightness_set(struct led_classdev *lcdev,
+> +				       enum led_brightness level)
+> +{
+> +	struct mt6370_led *led = to_mt6370_led(lcdev, flash.led_cdev);
+> +	struct mt6370_priv *priv = led->priv;
+> +	u32 led_enable_mask = (led->led_no == MT6370_LED_JOINT) ?
+> +			      MT6370_FLCSEN_MASK_ALL :
+> +			      MT6370_FLCSEN_MASK(led->led_no);
+> +	u32 enable_mask = MT6370_TORCHEN_MASK | led_enable_mask;
+> +	u32 val = level ? led_enable_mask : 0;
+> +	u32 curr;
+> +	int ret, i;
+> +
+> +	mutex_lock(&priv->lock);
+> +
+> +	/*
+> +	 * There is only one set of flash control logic, and this
+> +	 * flag is used to check if 'strobe' is currently being used.
+> +	 */
+> +	if (priv->fled_strobe_used) {
+> +		dev_warn(lcdev->dev, "Please disable strobe first [%d]\n",
+> +			 priv->fled_strobe_used);
+> +		ret = -EBUSY;
+> +		goto unlock;
+> +	}
+> +
+> +	if (level)
+> +		curr = priv->fled_torch_used | BIT(led->led_no);
+> +	else
+> +		curr = priv->fled_torch_used & ~BIT(led->led_no);
+> +
+> +	if (curr)
+> +		val |= MT6370_TORCHEN_MASK;
+> +
+> +	if (level) {
+> +		level -= 1;
+> +		if (led->led_no == MT6370_LED_JOINT) {
+> +			int flevel[MT6370_MAX_LEDS];
+> +
+> +			flevel[0] = level / 2;
+> +			flevel[1] = level - flevel[0];
+> +			for (i = 0; i < MT6370_MAX_LEDS; i++) {
+> +				ret = regmap_update_bits(priv->regmap,
+> +						MT6370_REG_FLEDITOR(i),
+> +						MT6370_ITORCH_MASK, flevel[i]);
+> +				if (ret)
+> +					goto unlock;
+> +			}
+> +		} else {
+> +			ret = regmap_update_bits(priv->regmap,
+> +					MT6370_REG_FLEDITOR(led->led_no),
+> +					MT6370_ITORCH_MASK, level);
+> +			if (ret)
+> +				goto unlock;
+> +		}
+> +	}
+> +
+> +	ret = regmap_update_bits(priv->regmap, MT6370_REG_FLEDEN,
+> +				 enable_mask, val);
+> +	if (ret)
+> +		goto unlock;
+> +
+> +	priv->fled_torch_used = curr;
+> +
+> +unlock:
+> +	mutex_unlock(&priv->lock);
+> +	return ret;
+> +}
+> +
+> +static int mt6370_flash_brightness_set(struct led_classdev_flash *fl_cdev,
+> +				       u32 brightness)
+> +{
+> +	/*
+> +	 * Because of the current spikes when turning on the flash,
+> +	 * the brightness should be kept by the LED framework. This
+> +	 * empty function is used to prevent checking failure when
+> +	 * led_classdev_flash registers ops.
+> +	 */
+> +	return 0;
+> +}
+> +
+> +static int _mt6370_flash_brightness_set(struct led_classdev_flash *fl_cdev,
+> +					u32 brightness)
+> +{
+> +	struct mt6370_led *led = to_mt6370_led(fl_cdev, flash);
+> +	struct mt6370_priv *priv = led->priv;
+> +	struct led_flash_setting *s = &fl_cdev->brightness;
+> +	u32 val = (brightness - s->min) / s->step;
+> +	int ret, i;
+> +
+> +	if (led->led_no == MT6370_LED_JOINT) {
+> +		int flevel[MT6370_MAX_LEDS];
+
+Since you're writing this value to registers, please use fixed size variables.
+If this is really supposed to be a signed value, it would be:
+
+		s32 flevel[MT6370_MAX_LEDS];
+
+> +
+> +		flevel[0] = val / 2;
+> +		flevel[1] = val - flevel[0];
+> +		for (i = 0; i < MT6370_MAX_LEDS; i++) {
+> +			ret = regmap_update_bits(priv->regmap,
+> +						 MT6370_REG_FLEDISTRB(i),
+> +						 MT6370_ISTROBE_MASK, flevel[i]);
+> +			if (ret)
+> +				return ret;
+> +		}
+> +	} else {
+> +		return regmap_update_bits(priv->regmap,
+> +					  MT6370_REG_FLEDISTRB(led->led_no),
+> +					  MT6370_ISTROBE_MASK, val);
+> +	}
+> +
+> +	return 0;
+
+If we reach this point, this means that led_no is out of range (which is never
+supposed to happen - I know).
+Since that condition is something unexpected and unhandled, you should return
+an error here.
+
+> +}
+> +
+> +static int mt6370_strobe_set(struct led_classdev_flash *fl_cdev, bool state)
+> +{
+> +	struct mt6370_led *led = to_mt6370_led(fl_cdev, flash);
+> +	struct mt6370_priv *priv = led->priv;
+> +	struct led_classdev *lcdev = &fl_cdev->led_cdev;
+> +	struct led_flash_setting *s = &fl_cdev->brightness;
+> +	u32 led_enable_mask = (led->led_no == MT6370_LED_JOINT) ?
+> +			      MT6370_FLCSEN_MASK_ALL :
+> +			      MT6370_FLCSEN_MASK(led->led_no);
+> +	u32 enable_mask = MT6370_STROBEN_MASK | led_enable_mask;
+> +	u32 val = state ? led_enable_mask : 0;
+> +	u32 curr;
+> +	int ret;
+> +
+> +	mutex_lock(&priv->lock);
+> +
+> +	/*
+> +	 * There is only one set of flash control logic, and this
+> +	 * flag is used to check if 'torch' is currently being used.
+> +	 */
+> +	if (priv->fled_torch_used) {
+> +		dev_warn(lcdev->dev, "Please disable torch first [0x%x]\n",
+> +				      priv->fled_torch_used);
+> +		ret = -EBUSY;
+> +		goto unlock;
+> +	}
+> +
+> +	if (state)
+> +		curr = priv->fled_strobe_used | BIT(led->led_no);
+> +	else
+> +		curr = priv->fled_strobe_used & ~BIT(led->led_no);
+> +
+> +	if (curr)
+> +		val |= MT6370_STROBEN_MASK;
+> +
+> +	ret = regmap_update_bits(priv->regmap, MT6370_REG_FLEDEN, enable_mask,
+> +				 val);
+> +	if (ret) {
+> +		dev_err(lcdev->dev, "[%d] control current source %d fail\n",
+> +				     led->led_no, state);
+> +		goto unlock;
+> +	}
+> +
+> +	/*
+> +	 * If the flash needs to turn on, configure the flash current to
+> +	 * ramp up to the setting value. Otherwise, always revert to the
+> +	 * minimum one.
+> +	 */
+> +	ret = _mt6370_flash_brightness_set(fl_cdev, state ? s->val : s->min);
+> +	if (ret)
+> +		goto unlock;
+
+If this fails, I think that we should revert the previous changes to FLEDEN
+before returning.
+
+> +
+> +	/*
+> +	 * For the flash to turn on/off, we must wait for HW ramping
+> +	 * up/down time 5ms/500us to prevent the unexpected problem.
+> +	 */
+> +	if (!priv->fled_strobe_used && curr)
+> +		usleep_range(5000, 6000);
+> +	else if (priv->fled_strobe_used && !curr)
+> +		usleep_range(500, 600);
+> +
+> +	priv->fled_strobe_used = curr;
+> +
+> +unlock:
+> +	mutex_unlock(&priv->lock);
+> +	return ret;
+> +}
+> +
+
+..snip..
+
+> +
+> +static int mt6370_init_common_properties(struct mt6370_led *led,
+> +					 struct led_init_data *init_data)
+> +{
+> +	const char * const states[] = { "off", "keep", "on" };
+> +	const char *str = states[STATE_OFF];
+> +	int ret;
+> +
+> +	fwnode_property_read_string(init_data->fwnode, "default-state", &str);
+> +	ret = match_string(states, ARRAY_SIZE(states), str);
+> +	if (ret >= 0)
+> +		led->default_state = ret;
+> +
+> +	return 0;
+> +}
+> +
+> +static int mt6370_led_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct mt6370_priv *priv;
+> +	struct fwnode_handle *child;
+> +	size_t count;
+> +	int i = 0, ret;
+> +
+> +	count = device_get_child_node_count(dev);
+> +	if (!count || count > MT6370_MAX_LEDS)
+> +		return dev_err_probe(dev, -EINVAL,
+> +		       "No child node or node count over max led number %zu\n", count);
+> +
+> +	priv = devm_kzalloc(dev, struct_size(priv, leds, count), GFP_KERNEL);
+> +	if (!priv)
+> +		return -ENOMEM;
+> +
+> +	priv->leds_count = count;
+> +	priv->dev = dev;
+> +	mutex_init(&priv->lock);
+> +
+> +	priv->regmap = dev_get_regmap(dev->parent, NULL);
+> +	if (!priv->regmap)
+> +		return dev_err_probe(dev, -ENODEV, "Failed to get parent regmap\n");
+> +
+> +	device_for_each_child_node(dev, child) {
+> +		struct mt6370_led *led = priv->leds + i;
+> +		struct led_init_data init_data = { .fwnode = child, };
+> +
+> +		led->priv = priv;
+> +		ret = mt6370_init_common_properties(led, &init_data);
+
+This is only initializing the default state, for which you do have a helper.
+
+Please use led_init_default_state_get(fwnode).
+
+> +		if (ret)
+> +			return ret;
+> +
+> +		ret = mt6370_init_flash_properties(led, &init_data);
+> +		if (ret)
+> +			return ret;
+> +
+> +		ret = mt6370_led_register(dev, led, &init_data);
+> +		if (ret)
+> +			return ret;
+> +
+> +		i++;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
 
 Regards,
-Matthias
+Angelo
 
-> +		};
-> +		conf {
-> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
-> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
-> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
-> +			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
-> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
-> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
-> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
-> +			drive-strength = <4>;
-> +		};
-> +	};
-> +
-> +	wf_dbdc_pins: wf-dbdc-pins {
-> +		mux {
-> +			function = "wifi";
-> +			groups = "wf_dbdc";
-> +		};
-> +		conf {
-> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
-> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
-> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
-> +			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
-> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
-> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
-> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
-> +			drive-strength = <4>;
-> +		};
-> +	};
->   };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> index e3a407d..890ded0 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> @@ -7,6 +7,7 @@
->   #include <dt-bindings/interrupt-controller/irq.h>
->   #include <dt-bindings/interrupt-controller/arm-gic.h>
->   #include <dt-bindings/clock/mt7986-clk.h>
-> +#include <dt-bindings/reset/mt7986-resets.h>
->   
->   / {
->   	interrupt-parent = <&gic>;
-> @@ -70,6 +71,11 @@ secmon_reserved: secmon@43000000 {
->   			reg = <0 0x43000000 0 0x30000>;
->   			no-map;
->   		};
-> +
-> +		wmcpu_emi: wmcpu-reserved@4fc00000 {
-> +			no-map;
-> +			reg = <0 0x4fc00000 0 0x00100000>;
-> +		};
->   	};
->   
->   	timer {
-> @@ -261,6 +267,23 @@ eth: ethernet@15100000 {
->   			#size-cells = <0>;
->   			status = "disabled";
->   		};
-> +
-> +		wifi: wifi@18000000 {
-> +			compatible = "mediatek,mt7986-wmac";
-> +			resets = <&watchdog MT7986_TOPRGU_CONSYS_SW_RST>;
-> +			reset-names = "consys";
-> +			clocks = <&topckgen CLK_TOP_CONN_MCUSYS_SEL>,
-> +				 <&topckgen CLK_TOP_AP2CNN_HOST_SEL>;
-> +			clock-names = "mcu", "ap2conn";
-> +			reg = <0 0x18000000 0 0x1000000>,
-> +			      <0 0x10003000 0 0x1000>,
-> +			      <0 0x11d10000 0 0x1000>;
-> +			interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
-> +			memory-region = <&wmcpu_emi>;
-> +		};
->   	};
->   
->   };
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> index 0f49d57..7f21b10 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> @@ -98,3 +98,46 @@ fixed-link {
->   		};
->   	};
->   };
-> +
-> +&wifi {
-> +	status = "okay";
-> +	pinctrl-names = "default", "dbdc";
-> +	pinctrl-0 = <&wf_2g_5g_pins>;
-> +	pinctrl-1 = <&wf_dbdc_pins>;
-> +};
-> +
-> +&pio {
-> +	wf_2g_5g_pins: wf-2g-5g-pins {
-> +		mux {
-> +			function = "wifi";
-> +			groups = "wf_2g", "wf_5g";
-> +		};
-> +		conf {
-> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
-> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
-> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
-> +			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
-> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
-> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
-> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
-> +			drive-strength = <4>;
-> +		};
-> +	};
-> +
-> +	wf_dbdc_pins: wf-dbdc-pins {
-> +		mux {
-> +			function = "wifi";
-> +			groups = "wf_dbdc";
-> +		};
-> +		conf {
-> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
-> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
-> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
-> +			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
-> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
-> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
-> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
-> +			drive-strength = <4>;
-> +		};
-> +	};
-> +};
 
