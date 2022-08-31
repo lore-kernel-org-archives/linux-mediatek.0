@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87B19ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Aug 2022 08:47:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3D47ECAAD1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Aug 2022 08:57:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lrff28TD41VOT8JHlzCNKhln4TOrQwr23bEroYtgJ4E=; b=QdQhfFCzDTlSSm/WJ+vmZ4fqPF
-	2gpgiqio+qF++oGyKZWqlGgJrZPjHGVDeB7QCBT/BDaXpn2TGNuSsM2Igf8g9n5rQ7cPdntSNJiF7
-	f/0LcCFjDH6Mtb+XyC+GiuHzfeM78vER8jJ8wWWId/7EJoYPX93+iyP5stMafKtDB+EcwrCLZIUFu
-	07/tunrp7ZDOYeb1LJgXGd7N5DPEZs8d8Nmcx8l76xd+m0UkGbhxDNkp8TFFsAEpLM2rojDt7PI01
-	SODN3SDYxLMCfsO7xSgcPovEmuvRv06t6e0SXsEPCJiltEWd5H+eYomAnP3FLItBl6opjmkucB7Z4
-	SPLFOPVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zHSZP1OWHazBgWQXESQByXqKm9vhBpvgdCCmwtEmCjU=; b=EUJnTA65QSdsuP13HtCvH3ZXu9
+	CktZpUZyIrCYXBpK+aF77wbbjVTu2rLy29jnBqoYAo8ycrP9q69cNhjF/0pNYfEMFbtWv8jvZtE8j
+	qXCUVR7jDD/N8B8y8Xrwjfj9YWTz185YICpelJdsMuSt8/JEfUQnHX7kfscLpgBxKKnc6viOnOrXL
+	3qHzsdbTD9YNzQe9xoSCFwZZmWM8hXw70i6j3d4KPwphh9nwEOH4HHcKlkXWZUg/dZ9zNHiT28zhj
+	yKVV0LokQEMqoFq8sROouHSr71Qs0ogBawUFuQOLzJdvcrgtPizdBM0qJI3u0gke3AhiJDqSNHBES
+	7/ZtsPpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTJNw-00537S-Pr; Wed, 31 Aug 2022 08:47:44 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oTJWo-0056Ji-MZ; Wed, 31 Aug 2022 08:56:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTJNl-00534W-Pr; Wed, 31 Aug 2022 08:47:35 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B27336601A13;
-	Wed, 31 Aug 2022 09:47:30 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661935652;
-	bh=hxo/Mnr6Yjql5aAn0oGOMYd56lpZiKpqZDjwTTDU/G0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kny5BPnQtYkeh6rgH2FS7v9pVzRnuGC6c6bkS5iSLemnmVdUz+DVpHwtBlcEh2AiI
-	 ZOJSUBd69LSK7RKV75NItzRkoLOMiT0xqNtqrCmxPWVMwSDEF5TATcL7nLGqZvcsGo
-	 9G++cr0oDVhSGQPe4rVOOjOriHAg1doYzhhWYWCcpV6TuI+e2XQ7Vx6Z2IkrvRSfdN
-	 I+XgmDQYDOeJ9heCa7rwcGSUl98KKWjmKd3Ylbzsd/NSCzscCWgvn6fFz9Blzlvb2K
-	 OB4Ljhwc2UCEerFq2nlSOKWCuATt5bIF87eV6kPHYUFc61Dripi/1NfMWJwjpt4NAw
-	 ypspaU1glbbUA==
-Message-ID: <9c1248a4-d4e5-c7f5-ac8d-685ef3f01365@collabora.com>
-Date: Wed, 31 Aug 2022 10:47:27 +0200
+	id 1oTJWl-0056FH-CL; Wed, 31 Aug 2022 08:56:52 +0000
+X-UUID: 59f123ed2936412782a6f50f38457ddd-20220831
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zHSZP1OWHazBgWQXESQByXqKm9vhBpvgdCCmwtEmCjU=;
+	b=JgkDZEY7OYt/QnXipLh0PXRnpFK2jJyP4x1701TkCaYTJUIjwEKNuQJbuijcafjA7GgUYmJfFiLaucW3WjOoLe73HmgvLf/GHdfFLQDjdV8rJ0Jj3CbJqz7BZgfG42gI043V7h1OkDeTHDk8ycA2yRZKWS2ziQX54OBtTCcTj6E=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:68fb85b2-de8b-4b41-9316-980baa832a8e,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
+	_Ham,ACTION:release,TS:-5
+X-CID-META: VersionHash:84eae18,CLOUDID:423dac20-1c20-48a5-82a0-25f9c331906d,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 59f123ed2936412782a6f50f38457ddd-20220831
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 928465204; Wed, 31 Aug 2022 01:56:42 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 31 Aug 2022 16:56:06 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 31 Aug 2022 16:56:06 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+CC: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	<linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>
+Subject: [v1] media: platform: mtk-mdp3: fix smatch errors and warning
+Date: Wed, 31 Aug 2022 16:56:04 +0800
+Message-ID: <20220831085604.2739-1-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v6 0/8] MediaTek Helio X10 MT6795 - Clock drivers
-Content-Language: en-US
-To: sboyd@kernel.org, Michael Turquette <mturquette@baylibre.com>
-Cc: mturquette@baylibre.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- p.zabel@pengutronix.de, y.oudjana@protonmail.com, jason-jh.lin@mediatek.com,
- ck.hu@mediatek.com, fparent@baylibre.com, rex-bc.chen@mediatek.com,
- tinghan.shen@mediatek.com, ikjn@chromium.org, miles.chen@mediatek.com,
- sam.shih@mediatek.com, wenst@chromium.org, bgolaszewski@baylibre.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-clk@vger.kernel.org, konrad.dybcio@somainline.org,
- marijn.suijten@somainline.org, martin.botka@somainline.org,
- ~postmarketos/upstreaming@lists.sr.ht, phone-devel@vger.kernel.org,
- paul.bouchara@somainline.org, kernel@collabora.com
-References: <20220722090609.52364-1-angelogioacchino.delregno@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220722090609.52364-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220831_014734_132652_8B477CF8 
-X-CRM114-Status: GOOD (  18.08  )
+X-CRM114-CacheID: sfid-20220831_015651_454101_931A0054 
+X-CRM114-Status: GOOD (  14.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,105 +79,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/07/22 11:06, AngeloGioacchino Del Regno ha scritto:
-> In an effort to give some love to the apparently forgotten MT6795 SoC,
-> I am upstreaming more components that are necessary to support platforms
-> powered by this one apart from a simple boot to serial console.
-> 
-> This (very big) series introduces system clock, multimedia clock drivers
-> (including resets) for this SoC.
-> 
-> Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
-> 
-> This series depends on, and can be merged on top of:
-> [1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=640122
-> [2]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=637849
+Fix two errors reported by smatch:
+    drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c:292
+        mdp_probe() error: we previously assumed 'mdp' could be null
+    drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:460
+        mdp_cmdq_send() error: we previously assumed 'cmd' could be null
 
-Hello Stephen, Michael,
+Also, avoid warnings reported by smatch:
+    drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c:872
+        mdp_comp_create() warn: passing devm_ allocated variable to kfree. 'comp'
 
-this series has been well reviewed and has been floating around for months.
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+--
 
-Can you please take a look and/or pick it?
-Many thanks!
+This patch is based on hverkuil/media_tree.git tags/br-v6.1c
 
-P.S.: Dependencies [1], [2] are already upstream.
+---
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c | 2 +-
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c | 2 +-
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 3 ++-
+ 3 files changed, 4 insertions(+), 3 deletions(-)
 
-Regards,
-Angelo
-
-> 
-> Changes in v6:
->   - Added helper function to cleanly unregister ref2usb_tx clocks
->   - Added missing error handling and remove function to clk-mt6795-mm
-> 
-> Changes in v5:
->   - Renamed clock/reset header filenames to add vendor prefix
->   - Removed quotes for $id, $schema in commit [4/7]
-> 
-> Changes in v4:
->   - Removed unnecessary examples for clock controllers in commit [4/7]
->   - Fixed one instance of 88 columns line wrap in commit [4/7]
-> 
-> Changes in v3:
->   - Fixed typo in commit [4/7]
-> 
-> Changes in v2:
->   - Fixed yaml clock bindings as per Rob's review
->   - Added ability to compile all MT6795 clock drivers as modules
->   - Added commits to export some symbols, required to compile as module
-> 
-> 
-> AngeloGioacchino Del Regno (8):
->    dt-bindings: mediatek: Document MT6795 system controllers bindings
->    dt-bindings: clock: Add MediaTek Helio X10 MT6795 clock bindings
->    dt-bindings: reset: Add bindings for MT6795 Helio X10 reset
->      controllers
->    dt-bindings: clock: mediatek: Add clock driver bindings for MT6795
->    clk: mediatek: clk-apmixed: Remove unneeded __init annotation
->    clk: mediatek: Export required symbols to compile clk drivers as
->      module
->    clk: mediatek: clk-apmixed: Add helper function to unregister
->      ref2usb_tx
->    clk: mediatek: Add MediaTek Helio X10 MT6795 clock drivers
-> 
->   .../arm/mediatek/mediatek,infracfg.yaml       |   2 +
->   .../bindings/arm/mediatek/mediatek,mmsys.yaml |   1 +
->   .../arm/mediatek/mediatek,pericfg.yaml        |   1 +
->   .../bindings/clock/mediatek,apmixedsys.yaml   |   1 +
->   .../bindings/clock/mediatek,mt6795-clock.yaml |  66 ++
->   .../clock/mediatek,mt6795-sys-clock.yaml      |  54 ++
->   .../bindings/clock/mediatek,topckgen.yaml     |   1 +
->   drivers/clk/mediatek/Kconfig                  |  37 ++
->   drivers/clk/mediatek/Makefile                 |   6 +
->   drivers/clk/mediatek/clk-apmixed.c            |  12 +-
->   drivers/clk/mediatek/clk-cpumux.c             |   2 +
->   drivers/clk/mediatek/clk-mt6795-apmixedsys.c  | 157 +++++
->   drivers/clk/mediatek/clk-mt6795-infracfg.c    | 151 +++++
->   drivers/clk/mediatek/clk-mt6795-mfg.c         |  50 ++
->   drivers/clk/mediatek/clk-mt6795-mm.c          | 132 ++++
->   drivers/clk/mediatek/clk-mt6795-pericfg.c     | 160 +++++
->   drivers/clk/mediatek/clk-mt6795-topckgen.c    | 610 ++++++++++++++++++
->   drivers/clk/mediatek/clk-mt6795-vdecsys.c     |  55 ++
->   drivers/clk/mediatek/clk-mt6795-vencsys.c     |  50 ++
->   drivers/clk/mediatek/clk-mtk.c                |   2 +
->   drivers/clk/mediatek/clk-mtk.h                |   1 +
->   drivers/clk/mediatek/reset.c                  |   1 +
->   .../dt-bindings/clock/mediatek,mt6795-clk.h   | 275 ++++++++
->   .../reset/mediatek,mt6795-resets.h            |  53 ++
->   24 files changed, 1879 insertions(+), 1 deletion(-)
->   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
->   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-apmixedsys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-infracfg.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-mfg.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-mm.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-pericfg.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-topckgen.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-vdecsys.c
->   create mode 100644 drivers/clk/mediatek/clk-mt6795-vencsys.c
->   create mode 100644 include/dt-bindings/clock/mediatek,mt6795-clk.h
->   create mode 100644 include/dt-bindings/reset/mediatek,mt6795-resets.h
-> 
-
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+index 29f6c1cd3de7..86c054600a08 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+@@ -457,7 +457,7 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+ 	kfree(path);
+ 	atomic_dec(&mdp->job_count);
+ 	wake_up(&mdp->callback_wq);
+-	if (cmd->pkt.buf_size > 0)
++	if (cmd && cmd->pkt.buf_size > 0)
+ 		mdp_cmdq_pkt_destroy(&cmd->pkt);
+ 	kfree(comps);
+ 	kfree(cmd);
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+index e62abf3587bf..d1064b149ef9 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+@@ -869,7 +869,7 @@ static struct mdp_comp *mdp_comp_create(struct mdp_dev *mdp,
+ 
+ 	ret = mdp_comp_init(mdp, node, comp, id);
+ 	if (ret) {
+-		kfree(comp);
++		devm_kfree(comp);
+ 		return ERR_PTR(ret);
+ 	}
+ 	mdp->comp[id] = comp;
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index cde59579b7ae..c413e59d4286 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -289,7 +289,8 @@ static int mdp_probe(struct platform_device *pdev)
+ 	mdp_comp_destroy(mdp);
+ err_return:
+ 	for (i = 0; i < MDP_PIPE_MAX; i++)
+-		mtk_mutex_put(mdp->mdp_mutex[i]);
++		if (mdp)
++			mtk_mutex_put(mdp->mdp_mutex[i]);
+ 	kfree(mdp);
+ 	dev_dbg(dev, "Errno %d\n", ret);
+ 	return ret;
+-- 
+2.18.0
 
 
