@@ -4,58 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6AE2ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Aug 2022 17:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38F24ECAAD1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Aug 2022 17:52:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:
-	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k4/Lh/z5DKMQLdQdrQD1yNoq4V81hKIpVm5Dc0mJxvo=; b=3FHeLNV47ES/vAVDjEZ+wBcS7P
-	qhLOzLfjj6qVZS3Sb+6/I/m2iFU3p58yX9dlbkLF5eykNppcpOa+g6MpMNCRA3XjWmsrApevQ2/ST
-	iEgesn6Lld5yr9ukc2AeAm0EJ3RIHAmIaS2a1vSZSt7In1VV3HeBegAUlYFCIq6lzBwCEgzh8KVXu
-	h5ukxIPQpKlg4ck2Dhd6aOH8F7c0qtUyuoeVfHx1UQtuv9St84ZPP2TTcYnVdDaWTM0rY5M3VlLU/
-	FE+xO2IeRkiNOWHSeFwGtIp+QoOsUgGcq73OY1VoaHLN1XBb7O/tWUlpZCbNgNbtdEVcxUAir9KZ9
-	xP9/XUsQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tyL8cPvebaCtbUtbRJCGD1Ux/d2Hi5szlibwPANQZ1E=; b=L3pMn3bSac67rcD5cc3L8++mdX
+	zSawu7mzxptEa0qtsGF+HExm4PtyrjQ3XlsQKFwGJee+GPKLBmuZFUqzRHDOVytzAPSrVRfv/YPDq
+	DFbH/pqvtuAv30f9jkitpbq1J/eDaVg5GusGz9M7DDJLGA9ADciWTR1x5G19pFBKu0CWnjUQHCbdy
+	qqd6WCbmHrMJNi0zyZSOBKvCP5ahjlYEbfy2PvDsHMAT8fi30Q6Rk4bBLc0KJyshc6E1iz2eTWKyj
+	8B2jS7yh1Il7JYWj8HpcGKq6g5uxfvHk4wdvPsNjocuPeBvvRqRtntd572riLC5ts6SS4Eq4OLHo8
+	c1W88QuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTRsu-007SMI-Ni; Wed, 31 Aug 2022 17:52:16 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oTRtL-007SUM-Fu; Wed, 31 Aug 2022 17:52:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTRsf-007SJZ-Bf; Wed, 31 Aug 2022 17:52:02 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 953D461B54;
-	Wed, 31 Aug 2022 17:52:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6CFEC433C1;
-	Wed, 31 Aug 2022 17:51:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661968320;
-	bh=HibFnHiEHireM6Wz2swr+uKNOlydCkfiuNU12obEQis=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=OzNnkkzjxbzUuWJnSSfAXE4ue1alYDhPa9bZ0ezsmG8fEaYBlueIaPb1z9J5yUfZO
-	 oYr+0Xkc+HopNx8FCy3jwEBAlhtQhErC2ouTb8RqBPQ350yBDeuRhZtQ74hflb1Sb4
-	 OF3DNXWJEF3nDXZ1+rbRcgv1D+DyvVSJYGws0/MK5crqGPlhD+KFizKZtJADxin0fS
-	 xb2UP/mjRIGvE3nXr1ErOvMqlWFXzcOT6PdYOTJa4/4PqA0Ad/6ud9Im6xdYO8YHzs
-	 dPmi1Av0beClw6gMTcRqo780novJCAnWhL9wKl24LGzfUHmyiElgWWfbCI7MfaHTX0
-	 J4usflqF7FFUw==
-Content-Type: text/plain; charset="utf-8"
+	id 1oTRtJ-007SRT-1D; Wed, 31 Aug 2022 17:52:42 +0000
+X-UUID: 23020a6dbea944b684f9314dbeeeb65f-20220831
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=tyL8cPvebaCtbUtbRJCGD1Ux/d2Hi5szlibwPANQZ1E=;
+	b=Zz77KI36j49AOdps07TRvLAao4aItIEb7BmMKh3x5MZs3/ksimttw/QyXTA+1Vk0SbUnPckPC1TALnonYxlKvcIRirD8n5m1wyb+w4r4G8oR06b4519AtguWzBEtHTbJzSsvh9F1aZsAZa7F0u9QfIOYNnkQJDnSbV9QSYZhjwg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:39a0a916-67da-4640-85d5-34b35ea43594,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:acad36d0-20bd-4e5e-ace8-00692b7ab380,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 23020a6dbea944b684f9314dbeeeb65f-20220831
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <allen-kh.cheng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 850415018; Wed, 31 Aug 2022 10:52:29 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 1 Sep 2022 01:21:53 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 1 Sep 2022 01:21:53 +0800
+From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Subject: [PATCH v3 0/2] Add mt8186 mutex support for mdp3
+Date: Thu, 1 Sep 2022 01:21:49 +0800
+Message-ID: <20220831172151.10215-1-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20220816193257.658487-3-nfraprado@collabora.com>
-References: <20220816193257.658487-1-nfraprado@collabora.com> <20220816193257.658487-3-nfraprado@collabora.com>
-Subject: Re: [RESEND PATCH v3 2/2] clk: mediatek: clk-mt8195-vdo1: Reparent and set rate on vdo1_dpintf's parent
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: Bo-Chen Chen <rex-bc.chen@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?q?N=C3=ADcolas?= F . R . A . Prado <nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Miles Chen <miles.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-To: Michael Turquette <mturquette@baylibre.com>, =?utf-8?q?N=C3=ADcolas?= F. R. A. Prado <nfraprado@collabora.com>
-Date: Wed, 31 Aug 2022 10:51:58 -0700
-User-Agent: alot/0.10
-Message-Id: <20220831175159.E6CFEC433C1@smtp.kernel.org>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220831_105201_467309_E8A00252 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20220831_105241_107235_AFEEA446 
+X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,24 +81,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting N=C3=ADcolas F. R. A. Prado (2022-08-16 12:32:56)
-> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->=20
-> Like it was done for the vdo0_dp_intf0_dp_intf clock (used for eDP),
-> add the CLK_SET_RATE_PARENT flag to CLK_VDO1_DPINTF (used for DP)
-> and also fix its parent clock name as it has to be "top_dp" for two
-> reasons:
->  - This is its real parent!
->  - Likewise to eDP/VDO0 counterpart, we need clock source
->    selection on CLK_TOP_DP.
->=20
-> Fixes: 269987505ba9 ("clk: mediatek: Add MT8195 vdosys1 clock support")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> Tested-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> Reviewed-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
+This series are based on matthias.bgg/linux.git, for-next and provide
+mt8186 mutex support for Media Data Path 3 (MDP3).
 
-Applied to clk-next
+As discussed, we add data field (mt8186_mdp_mutex_driver_data) for 
+mt8186 mdp3 mutex support instead of adding mutex_table_mod into mt8186
+disp mutex data.
+
+changes since v2:
+ - rebase to matthias.bgg/linux.git
+ - add C-d-b, R-b and A-b tags
+
+changes since v1:
+ - add mt8186_mdp_mutex_table_mod
+ - add mt8186_mdp_mutex_driver_data for mt8186-mdp3-mutex
+
+Allen-KH Cheng (2):
+  dt-bindings: soc: mediatek: Add mdp3 mutex support for mt8186
+  soc: mediatek: mutex: Add mt8186 mutex mod settings for mdp3
+
+ .../bindings/soc/mediatek/mediatek,mutex.yaml |  1 +
+ drivers/soc/mediatek/mtk-mutex.c              | 28 +++++++++++++++++++
+ include/linux/soc/mediatek/mtk-mutex.h        |  2 ++
+ 3 files changed, 31 insertions(+)
+
+-- 
+2.18.0
+
 
