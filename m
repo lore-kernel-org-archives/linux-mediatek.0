@@ -4,82 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B63FFECAAD1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Aug 2022 10:23:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A724ECAAD1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Aug 2022 10:29:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QQOr949BNq6Tsz1/GWbY8mmvpE6EQflLuQEMgsG3Mmo=; b=dHpdhTWgRH6r4FIKCRuv6UVvOR
-	tIBAaTSL/FrCZjdRQw+LNIB3+/3gZWwzm8XClzdtr70b/sg3RDFkOTeRePIquTng08r/JXipVmpuu
-	JidkCnvU08NH3kA85QplvMhPrddhx3G+ufIYh3PtXQDdG09IWBMXlbYSLS8W3bIVoOT+TBj2ljRdy
-	X/zPQCVO0dTnaiUZdFlzh+nrLWSWO3pgTtugHvqwi++Ev4gOe1lTeM5tIuRnIe0lAHDGDre5Ei1ni
-	XgcDbrjJVMKIDbJXvr0k2FkoFjV0DCAxoQKpMNrgRxLfiDxSNMwRpWe9/klL5ZozRMpb2Wkm6eIc3
-	avizL3lQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eEFFPWPurfnTLCuJ6XvA8r7eaX08wfQ5CFFfzRlVtVw=; b=Q8olOTik9L/dnlOH+srwe2A6lF
+	8mdkJkVTjptauddMq8JV9jmnBNIlCRnIaNu1+yaO8v8yxdIUUVttdVWc/eKPzIkZWH2xwy6rS1Msx
+	uWOl2SpLUmPec104ek2UqBss3TYRT+anWKXp214KBmiTtz1PdUmnMyP4d2EgQKDJFVvHKog24HQiA
+	TYFgxOg/GD6M4/7JU7F06hq2/Gc7KWhtVJ3TLFr9Q/vPjXaeTdebwghmT/9Ovd2tkcxkaY+4rMoUf
+	NM18NNM059GLJjslHi7ZjVjoYAr2GKlR86VugFNqtmEOVXvZsurXa7G+rEdvCY1uX/+tmYGYFurT4
+	ytJPslRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTKse-005eY6-MU; Wed, 31 Aug 2022 10:23:32 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1oTKy4-005frt-DD; Wed, 31 Aug 2022 10:29:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTKsT-005eVc-Qe; Wed, 31 Aug 2022 10:23:23 +0000
-Received: by mail-wr1-x431.google.com with SMTP id s7so2722221wro.2;
-        Wed, 31 Aug 2022 03:23:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:content-language
-         :references:cc:to:user-agent:mime-version:date:message-id:from:to:cc
-         :subject:date;
-        bh=QQOr949BNq6Tsz1/GWbY8mmvpE6EQflLuQEMgsG3Mmo=;
-        b=N6qelCPephiPlFW95dJC6m2EGeguD6GlubhFgn3yrrYceSIOUjnmv2FjS7kLO784wp
-         qrvliJMZE5Mo7cWGZCCBPEs9u7tIHTvUDcFyadVgRHjD8JMaVGl6e/WQ3w8FXN0Wzgl9
-         WSgndB2UFYpyZGiRsigro0C/cTmIT/GoYcDMpZjyfkfh7z8PY17W3yfjNYbhcW/x5HnL
-         BusJb87qgrJRvZ7VnFcHSX+IHmpOa5WN3l4XTUClj50rO4oltoGifwwy1DW4K4jJ3tUR
-         Q1euY5dxLPmNybYtZJZcKB/HlplhwpnEy8geNmxX8NrnzypUWDE+0/xRFdmaSs15Yeqy
-         U7VQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:content-language
-         :references:cc:to:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=QQOr949BNq6Tsz1/GWbY8mmvpE6EQflLuQEMgsG3Mmo=;
-        b=0PkQoUPJSdQ4AYB/Sly963uNwL8nqVEzlKOM4p5qICIWB3CgOYPBrQCUdB631Z3VaL
-         BQ9nfasTh3B9pDq19CmwYujl1hIiDiDJsJZPkfTYLdYQiNRQPBCCWnh0gJ00VuK4mnVh
-         RhqoICgHfWt1emuP47BLNPFwMDE5P4gszIUhc7L9Nj/rV3AMgIszo073u/bDzY/Vt3Qk
-         KXB+BIvphXdaQfh/VpiKCwZAF7r0imTcwJHNtv0oGKY7klIYNEaY6X8VgcVVnJpbS7Wl
-         LJT10w/Ell3sIPWxE947mQLQH0CcOD7LWITanGEk5vsec9jSIqR/pIJTdwj21vo8C0Kb
-         6wKA==
-X-Gm-Message-State: ACgBeo12hz6dSBg+NrVbmdaMqnqJ8SNmc2PIbjFn5L9nvOnfupF0gUyg
-	W95WAvFAw3G+NU4QZVw7Z6I=
-X-Google-Smtp-Source: AA6agR45AiRbadhtI8VHMxdZMgSj4iWs74MjjZ+50gkYRpG4I1dQpNdnXALXXj7dSaAbUnVb7glEHA==
-X-Received: by 2002:a5d:47a1:0:b0:226:ebfc:f759 with SMTP id 1-20020a5d47a1000000b00226ebfcf759mr1265470wrb.636.1661941399465;
-        Wed, 31 Aug 2022 03:23:19 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id p8-20020a1c5448000000b003a63a3b55c3sm1955370wmi.14.2022.08.31.03.23.17
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 31 Aug 2022 03:23:18 -0700 (PDT)
-Message-ID: <995875c3-5b04-5981-b0e1-f66f73cdfafc@gmail.com>
-Date: Wed, 31 Aug 2022 12:23:17 +0200
+	id 1oTKy1-005fqP-V7; Wed, 31 Aug 2022 10:29:07 +0000
+X-UUID: d53c81cad870427a89bc87dd298cf917-20220831
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=eEFFPWPurfnTLCuJ6XvA8r7eaX08wfQ5CFFfzRlVtVw=;
+	b=EsnLn4s1jNt/LxvFq6yTre7tE5IBwTL8uV+7vKu4tdkP92JG/KDqd+PbRtXFFyYufqcrR/zC4blrg1ikHRlwRJp5z7bRl2ceCNtBuMib3aiAp10nRcUJKfnxmskhzDDPTK06ROqdfcMJre5XMg69VWMRraF12a9VNAi/ATsFdxA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:6c37c6bc-6fab-4fbf-91e0-7821e0906440,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
+	_Ham,ACTION:release,TS:-5
+X-CID-META: VersionHash:84eae18,CLOUDID:bfeeae20-1c20-48a5-82a0-25f9c331906d,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: d53c81cad870427a89bc87dd298cf917-20220831
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1150027755; Wed, 31 Aug 2022 03:28:59 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Wed, 31 Aug 2022 18:28:54 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 31 Aug 2022 18:28:54 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+CC: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	<linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>
+Subject: [v2] media: platform: mtk-mdp3: fix smatch errors and warning
+Date: Wed, 31 Aug 2022 18:28:53 +0800
+Message-ID: <20220831102853.6843-1-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.1.2
-To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220831065100.27722-1-tinghan.shen@mediatek.com>
-Content-Language: en-US
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v1] arm64: dts: mediatek: Fix build warnings of mt8173
- vcodec nodes
-In-Reply-To: <20220831065100.27722-1-tinghan.shen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220831_032321_890127_9C979C28 
-X-CRM114-Status: GOOD (  14.82  )
+X-CRM114-CacheID: sfid-20220831_032906_030176_F389A24D 
+X-CRM114-Status: GOOD (  14.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,40 +79,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Applied, thanks!
+Fix two errors reported by smatch:
+    drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c:292
+        mdp_probe() error: we previously assumed 'mdp' could be null
+    drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:460
+        mdp_cmdq_send() error: we previously assumed 'cmd' could be null
 
-On 31/08/2022 08:51, Tinghan Shen wrote:
-> Correct the phandle of power domain node referenced by vcodec nodes.
-> 
-> arch/arm64/boot/dts/mediatek/mt8173.dtsi:1450.35-1471.5: Warning (power_domains_property): /soc/vcodec@18002000: Missing property '#power-domain-cells' in node /soc/syscon@10006000 or bad phandle (referred from power-domains[0])
-> arch/arm64/boot/dts/mediatek/mt8173.dtsi:1502.35-1522.5: Warning (power_domains_property): /soc/vcodec@19002000: Missing property '#power-domain-cells' in node /soc/syscon@10006000 or bad phandle (referred from power-domains[0])
-> 
-> Fixes: d3dfd4688574 ("arm64: dts: mediatek: Update mt81xx scpsys node to align with dt-bindings")
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8173.dtsi | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index b4d48f8b7eeb..7640b5158ff9 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -1467,7 +1467,7 @@
->   			clock-names = "venc_sel";
->   			assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>;
->   			assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL>;
-> -			power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC>;
-> +			power-domains = <&spm MT8173_POWER_DOMAIN_VENC>;
->   		};
->   
->   		jpegdec: jpegdec@18004000 {
-> @@ -1518,7 +1518,7 @@
->   			assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
->   			assigned-clock-parents =
->   				 <&topckgen CLK_TOP_VCODECPLL_370P5>;
-> -			power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC_LT>;
-> +			power-domains = <&spm MT8173_POWER_DOMAIN_VENC_LT>;
->   		};
->   	};
->   };
+Also, avoid warnings reported by smatch:
+    drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c:872
+        mdp_comp_create() warn: passing devm_ allocated variable to kfree. 'comp'
+
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+--
+
+Changes in v2:
+  Fix compilation fail caused by too few arguments to function call
+  in mtk-mdp3-comp.c
+
+This patch is based on hverkuil/media_tree.git tags/br-v6.1c
+
+---
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c | 2 +-
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c | 2 +-
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 3 ++-
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+index 29f6c1cd3de7..86c054600a08 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+@@ -457,7 +457,7 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+ 	kfree(path);
+ 	atomic_dec(&mdp->job_count);
+ 	wake_up(&mdp->callback_wq);
+-	if (cmd->pkt.buf_size > 0)
++	if (cmd && cmd->pkt.buf_size > 0)
+ 		mdp_cmdq_pkt_destroy(&cmd->pkt);
+ 	kfree(comps);
+ 	kfree(cmd);
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+index e62abf3587bf..43455755a5ac 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+@@ -869,7 +869,7 @@ static struct mdp_comp *mdp_comp_create(struct mdp_dev *mdp,
+ 
+ 	ret = mdp_comp_init(mdp, node, comp, id);
+ 	if (ret) {
+-		kfree(comp);
++		devm_kfree(dev, comp);
+ 		return ERR_PTR(ret);
+ 	}
+ 	mdp->comp[id] = comp;
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index cde59579b7ae..c413e59d4286 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -289,7 +289,8 @@ static int mdp_probe(struct platform_device *pdev)
+ 	mdp_comp_destroy(mdp);
+ err_return:
+ 	for (i = 0; i < MDP_PIPE_MAX; i++)
+-		mtk_mutex_put(mdp->mdp_mutex[i]);
++		if (mdp)
++			mtk_mutex_put(mdp->mdp_mutex[i]);
+ 	kfree(mdp);
+ 	dev_dbg(dev, "Errno %d\n", ret);
+ 	return ret;
+-- 
+2.18.0
+
 
