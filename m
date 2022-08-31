@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 559D5ECAAD1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Aug 2022 13:19:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A698ECAAD5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Aug 2022 13:20:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8ApQ2luuPpMOpqxJ/C2pxjh6Z+2EEHX4gdM+RImixxA=; b=Nk4TtTYiRqFL9oOi+UPDpxIlF8
-	5yKaCeVg8uzGeb9WWbDyZQKE1vG4vtoBycZG5E1e8IEbH3XkOvUT4Qc+WF1hYP7Rni3Sx7W/t+fXf
-	cJPJH5/ra8ETgbBdGFV9fb5CgYS0jPShihuEKodo05UOTXgNOn4fJN80OCTsfIIVpTie2ov5K5xBG
-	OoISs6J3P3xLOvBiG87+jTcFFvdjntfcSINyn5bxUwc3fRH1mHQwRfO2BMvdeF4Blh87xqFBrTcSa
-	W7YRPt1ZWkWNayu7L/NTho9MqjDT4c+aV7/bbjmYtRARVV/z4B8ugUVxs9YJJ9zycprW/1kNCBdtE
-	w8gxKQTg==;
+	bh=39ebN8yN46vkEhOfN7WVyLWWk/+c6irLgIToD0MrqLc=; b=VmV/3YjodTPiLODw3OK30cjwF/
+	NCQ6jLKZmMOV5KhIgt24ZFDMJOT75P/6qBZTHXIcsShSnSLojfhh0xNimr/BIx57AVH/7ZtUzaTYa
+	PMzhJfZ3elCXGL/QNbjZwk54b6m0PRY1xHAVthO6T4FxElOKoCN1R5J+2wJDCThQMxqdx/CUma2LF
+	bKHSl26hyjsQne0xFf1SQHggQ1OFWrFTe5vOdHdulPR+aTZ8yIcTKyy18xSTlO/kKIMp7dj8UauLC
+	xhF5alLuRxrdQv2ifWahmSY5RMdDbxVTCsaVoowjuQAPv5110A/7a/L4I3ajgzuhZSs3FYRDMczyw
+	BoF2AGfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTNd1-006JTS-O3; Wed, 31 Aug 2022 13:19:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oTNdW-006JoK-Tv; Wed, 31 Aug 2022 13:20:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTNcy-006JSK-T6; Wed, 31 Aug 2022 13:19:34 +0000
-X-UUID: 45f1f27b6fe64a7eafdcbb68b885a281-20220831
+	id 1oTNdS-006Jku-Vx; Wed, 31 Aug 2022 13:20:04 +0000
+X-UUID: ddb5fe7108bf4f1b9400da524edff8fd-20220831
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=8ApQ2luuPpMOpqxJ/C2pxjh6Z+2EEHX4gdM+RImixxA=;
-	b=p2pEUCm20TmojPPxdYyEi+rjaGLnmLXsVpiQYyVsqJA9oQ24GkGfs6NQAXNMDzVPk4SUE90aBvdq09ei3WeGd9J9/MpuPybNARw3T080M2B4eodK+5mzdx6CEstzAJ7UOnUUAjJX2LbT1lDX4qvZpJjp9Zs7sCNjN3xS5CKY/bM=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=39ebN8yN46vkEhOfN7WVyLWWk/+c6irLgIToD0MrqLc=;
+	b=Zxd5gc2KlSGY7obT6RhwdhAQ/lXqDC8AQYi3IagVMMEHE8nSX1eMYMpoW3fA7o+Jl6QAr0NvwcF7JF/BWHe3YE0yLDT1ArMI3xqWaPwRVqi+6sBt9JFK8JzaT2TAzu8R5vHpDPL2mUz6iAGtNLYYjXC1S64lUEt6bOD9uZoqiwU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:1b9ce137-d38d-4eff-a1d1-98c0f92e6947,OB:0,L
+X-CID-O-INFO: VERSION:1.1.10,REQID:3359ca24-158e-47f7-8ed8-943005014f08,OB:0,L
 	OB:0,IP:0,URL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Releas
 	e_Ham,ACTION:release,TS:-25
-X-CID-META: VersionHash:84eae18,CLOUDID:0ee032d0-20bd-4e5e-ace8-00692b7ab380,C
+X-CID-META: VersionHash:84eae18,CLOUDID:7fee2856-e800-47dc-8adf-0c936acf4f1b,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
 	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 45f1f27b6fe64a7eafdcbb68b885a281-20220831
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: ddb5fe7108bf4f1b9400da524edff8fd-20220831
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <johnson.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 825318203; Wed, 31 Aug 2022 06:19:29 -0700
+	with ESMTP id 1368946426; Wed, 31 Aug 2022 06:19:58 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.792.15; Wed, 31 Aug 2022 20:48:52 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -55,9 +55,9 @@ CC: <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Johnson Wang
 	<johnson.wang@mediatek.com>, Edward-JW Yang <edward-jw.yang@mediatek.com>
-Subject: [PATCH 4/4] clk: mediatek: Change PLL register API for MT8186
-Date: Wed, 31 Aug 2022 20:48:50 +0800
-Message-ID: <20220831124850.7748-5-johnson.wang@mediatek.com>
+Subject: [PATCH 1/4] clk: mediatek: Export PLL operations symbols
+Date: Wed, 31 Aug 2022 20:48:47 +0800
+Message-ID: <20220831124850.7748-2-johnson.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220831124850.7748-1-johnson.wang@mediatek.com>
 References: <20220831124850.7748-1-johnson.wang@mediatek.com>
@@ -65,8 +65,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220831_061932_959205_956E981C 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20220831_062003_060305_CB9A1973 
+X-CRM114-Status: GOOD (  20.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,120 +81,282 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use mtk_clk_register_pllfhs() to enhance frequency hopping and
-spread spectrum clocking control for MT8186.
+Export PLL operations and register functions for different type
+of clock driver used.
 
 Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
 Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
 Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mt8186-apmixedsys.c | 65 +++++++++++++++++++-
- 1 file changed, 62 insertions(+), 3 deletions(-)
+ drivers/clk/mediatek/clk-pll.c | 84 ++++++++++++++--------------------
+ drivers/clk/mediatek/clk-pll.h | 56 +++++++++++++++++++++++
+ 2 files changed, 90 insertions(+), 50 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8186-apmixedsys.c b/drivers/clk/mediatek/clk-mt8186-apmixedsys.c
-index e692a2a67ce1..f4406d6ad4ea 100644
---- a/drivers/clk/mediatek/clk-mt8186-apmixedsys.c
-+++ b/drivers/clk/mediatek/clk-mt8186-apmixedsys.c
-@@ -9,6 +9,7 @@
+diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+index 54e6cfd29dfc..a4eca5fd539c 100644
+--- a/drivers/clk/mediatek/clk-pll.c
++++ b/drivers/clk/mediatek/clk-pll.c
+@@ -27,37 +27,10 @@
  
- #include "clk-mtk.h"
- #include "clk-pll.h"
-+#include "clk-pllfh.h"
+ #define AUDPLL_TUNER_EN		BIT(31)
  
- #define MT8186_PLL_FMAX		(3800UL * MHZ)
- #define MT8186_PLL_FMIN		(1500UL * MHZ)
-@@ -76,6 +77,59 @@ static const struct mtk_pll_data plls[] = {
- 	    0, 0, 32, 0x034C, 24, 0x0044, 0x000C, 5, 0x0350),
+-#define POSTDIV_MASK		0x7
+-
+ /* default 7 bits integer, can be overridden with pcwibits. */
+ #define INTEGER_BITS		7
+ 
+-/*
+- * MediaTek PLLs are configured through their pcw value. The pcw value describes
+- * a divider in the PLL feedback loop which consists of 7 bits for the integer
+- * part and the remaining bits (if present) for the fractional part. Also they
+- * have a 3 bit power-of-two post divider.
+- */
+-
+-struct mtk_clk_pll {
+-	struct clk_hw	hw;
+-	void __iomem	*base_addr;
+-	void __iomem	*pd_addr;
+-	void __iomem	*pwr_addr;
+-	void __iomem	*tuner_addr;
+-	void __iomem	*tuner_en_addr;
+-	void __iomem	*pcw_addr;
+-	void __iomem	*pcw_chg_addr;
+-	void __iomem	*en_addr;
+-	const struct mtk_pll_data *data;
+-};
+-
+-static inline struct mtk_clk_pll *to_mtk_clk_pll(struct clk_hw *hw)
+-{
+-	return container_of(hw, struct mtk_clk_pll, hw);
+-}
+-
+-static int mtk_pll_is_prepared(struct clk_hw *hw)
++int mtk_pll_is_prepared(struct clk_hw *hw)
+ {
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 
+@@ -161,8 +134,8 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+  * @fin:	The input frequency
+  *
+  */
+-static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
+-		u32 freq, u32 fin)
++void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
++			 u32 freq, u32 fin)
+ {
+ 	unsigned long fmin = pll->data->fmin ? pll->data->fmin : (1000 * MHZ);
+ 	const struct mtk_pll_div_table *div_table = pll->data->div_table;
+@@ -198,8 +171,8 @@ static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
+ 	*pcw = (u32)_pcw;
+ }
+ 
+-static int mtk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+-		unsigned long parent_rate)
++int mtk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
++		     unsigned long parent_rate)
+ {
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 	u32 pcw = 0;
+@@ -211,8 +184,7 @@ static int mtk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+ 	return 0;
+ }
+ 
+-static unsigned long mtk_pll_recalc_rate(struct clk_hw *hw,
+-		unsigned long parent_rate)
++unsigned long mtk_pll_recalc_rate(struct clk_hw *hw, unsigned long parent_rate)
+ {
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 	u32 postdiv;
+@@ -227,8 +199,8 @@ static unsigned long mtk_pll_recalc_rate(struct clk_hw *hw,
+ 	return __mtk_pll_recalc_rate(pll, parent_rate, pcw, postdiv);
+ }
+ 
+-static long mtk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+-		unsigned long *prate)
++long mtk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
++			unsigned long *prate)
+ {
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 	u32 pcw = 0;
+@@ -239,7 +211,7 @@ static long mtk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
+ 	return __mtk_pll_recalc_rate(pll, *prate, pcw, postdiv);
+ }
+ 
+-static int mtk_pll_prepare(struct clk_hw *hw)
++int mtk_pll_prepare(struct clk_hw *hw)
+ {
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 	u32 r;
+@@ -273,7 +245,7 @@ static int mtk_pll_prepare(struct clk_hw *hw)
+ 	return 0;
+ }
+ 
+-static void mtk_pll_unprepare(struct clk_hw *hw)
++void mtk_pll_unprepare(struct clk_hw *hw)
+ {
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 	u32 r;
+@@ -301,7 +273,7 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
+ 	writel(r, pll->pwr_addr);
+ }
+ 
+-static const struct clk_ops mtk_pll_ops = {
++const struct clk_ops mtk_pll_ops = {
+ 	.is_prepared	= mtk_pll_is_prepared,
+ 	.prepare	= mtk_pll_prepare,
+ 	.unprepare	= mtk_pll_unprepare,
+@@ -310,18 +282,15 @@ static const struct clk_ops mtk_pll_ops = {
+ 	.set_rate	= mtk_pll_set_rate,
  };
  
-+enum fh_pll_id {
-+	FH_ARMPLL_LL,
-+	FH_ARMPLL_BL,
-+	FH_CCIPLL,
-+	FH_MAINPLL,
-+	FH_MMPLL,
-+	FH_TVDPLL,
-+	FH_RESERVE6,
-+	FH_ADSPPLL,
-+	FH_MFGPLL,
-+	FH_NNAPLL,
-+	FH_NNA2PLL,
-+	FH_MSDCPLL,
-+	FH_RESERVE12,
-+	FH_NR_FH,
+-static struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
+-		void __iomem *base)
++struct clk_hw *mtk_clk_register_pll_ops(struct mtk_clk_pll *pll,
++					const struct mtk_pll_data *data,
++					void __iomem *base,
++					const struct clk_ops *pll_ops)
+ {
+-	struct mtk_clk_pll *pll;
+ 	struct clk_init_data init = {};
+ 	int ret;
+ 	const char *parent_name = "clk26m";
+ 
+-	pll = kzalloc(sizeof(*pll), GFP_KERNEL);
+-	if (!pll)
+-		return ERR_PTR(-ENOMEM);
+-
+ 	pll->base_addr = base + data->reg;
+ 	pll->pwr_addr = base + data->pwr_reg;
+ 	pll->pd_addr = base + data->pd_reg;
+@@ -343,7 +312,7 @@ static struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
+ 
+ 	init.name = data->name;
+ 	init.flags = (data->flags & PLL_AO) ? CLK_IS_CRITICAL : 0;
+-	init.ops = &mtk_pll_ops;
++	init.ops = pll_ops;
+ 	if (data->parent_name)
+ 		init.parent_names = &data->parent_name;
+ 	else
+@@ -360,7 +329,22 @@ static struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
+ 	return &pll->hw;
+ }
+ 
+-static void mtk_clk_unregister_pll(struct clk_hw *hw)
++struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
++				    void __iomem *base)
++{
++	struct mtk_clk_pll *pll;
++	struct clk_hw *hw;
++
++	pll = kzalloc(sizeof(*pll), GFP_KERNEL);
++	if (!pll)
++		return ERR_PTR(-ENOMEM);
++
++	hw = mtk_clk_register_pll_ops(pll, data, base, &mtk_pll_ops);
++
++	return hw;
++}
++
++void mtk_clk_unregister_pll(struct clk_hw *hw)
+ {
+ 	struct mtk_clk_pll *pll;
+ 
+@@ -423,8 +407,8 @@ int mtk_clk_register_plls(struct device_node *node,
+ }
+ EXPORT_SYMBOL_GPL(mtk_clk_register_plls);
+ 
+-static __iomem void *mtk_clk_pll_get_base(struct clk_hw *hw,
+-					  const struct mtk_pll_data *data)
++__iomem void *mtk_clk_pll_get_base(struct clk_hw *hw,
++				   const struct mtk_pll_data *data)
+ {
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 
+diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pll.h
+index fe3199715688..e87ab08eea9b 100644
+--- a/drivers/clk/mediatek/clk-pll.h
++++ b/drivers/clk/mediatek/clk-pll.h
+@@ -7,6 +7,7 @@
+ #ifndef __DRV_CLK_MTK_PLL_H
+ #define __DRV_CLK_MTK_PLL_H
+ 
++#include <linux/clk-provider.h>
+ #include <linux/types.h>
+ 
+ struct clk_ops;
+@@ -20,6 +21,7 @@ struct mtk_pll_div_table {
+ 
+ #define HAVE_RST_BAR	BIT(0)
+ #define PLL_AO		BIT(1)
++#define POSTDIV_MASK	0x7
+ 
+ struct mtk_pll_data {
+ 	int id;
+@@ -48,10 +50,64 @@ struct mtk_pll_data {
+ 	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
+ };
+ 
++/*
++ * MediaTek PLLs are configured through their pcw value. The pcw value describes
++ * a divider in the PLL feedback loop which consists of 7 bits for the integer
++ * part and the remaining bits (if present) for the fractional part. Also they
++ * have a 3 bit power-of-two post divider.
++ */
++
++struct mtk_clk_pll {
++	struct clk_hw	hw;
++	void __iomem	*base_addr;
++	void __iomem	*pd_addr;
++	void __iomem	*pwr_addr;
++	void __iomem	*tuner_addr;
++	void __iomem	*tuner_en_addr;
++	void __iomem	*pcw_addr;
++	void __iomem	*pcw_chg_addr;
++	void __iomem	*en_addr;
++	const struct mtk_pll_data *data;
 +};
 +
-+#define FH(_pllid, _fhid, _offset) {					\
-+		.data = {						\
-+			.pll_id = _pllid,				\
-+			.fh_id = _fhid,					\
-+			.fhx_offset = _offset,				\
-+			.dds_mask = GENMASK(21, 0),			\
-+			.slope0_value = 0x6003c97,			\
-+			.slope1_value = 0x6003c97,			\
-+			.sfstrx_en = BIT(2),				\
-+			.frddsx_en = BIT(1),				\
-+			.fhctlx_en = BIT(0),				\
-+			.tgl_org = BIT(31),				\
-+			.dvfs_tri = BIT(31),				\
-+			.pcwchg = BIT(31),				\
-+			.dt_val = 0x0,					\
-+			.df_val = 0x9,					\
-+			.updnlmt_shft = 16,				\
-+			.msk_frddsx_dys = GENMASK(23, 20),		\
-+			.msk_frddsx_dts = GENMASK(19, 16),		\
-+		},							\
-+	}
 +
-+static struct mtk_pllfh_data pllfhs[] = {
-+	FH(CLK_APMIXED_ARMPLL_LL, FH_ARMPLL_LL, 0x003C),
-+	FH(CLK_APMIXED_ARMPLL_BL, FH_ARMPLL_BL, 0x0050),
-+	FH(CLK_APMIXED_CCIPLL, FH_CCIPLL, 0x0064),
-+	FH(CLK_APMIXED_MAINPLL, FH_MAINPLL, 0x0078),
-+	FH(CLK_APMIXED_MMPLL, FH_MMPLL, 0x008C),
-+	FH(CLK_APMIXED_TVDPLL, FH_TVDPLL, 0x00A0),
-+	FH(CLK_APMIXED_ADSPPLL, FH_ADSPPLL, 0x00C8),
-+	FH(CLK_APMIXED_MFGPLL, FH_MFGPLL, 0x00DC),
-+	FH(CLK_APMIXED_NNAPLL, FH_NNAPLL, 0x00F0),
-+	FH(CLK_APMIXED_NNA2PLL, FH_NNA2PLL, 0x0104),
-+	FH(CLK_APMIXED_MSDCPLL, FH_MSDCPLL, 0x0118),
-+};
+ int mtk_clk_register_plls(struct device_node *node,
+ 			  const struct mtk_pll_data *plls, int num_plls,
+ 			  struct clk_hw_onecell_data *clk_data);
+ void mtk_clk_unregister_plls(const struct mtk_pll_data *plls, int num_plls,
+ 			     struct clk_hw_onecell_data *clk_data);
+ 
++extern const struct clk_ops mtk_pll_ops;
 +
- static const struct of_device_id of_match_clk_mt8186_apmixed[] = {
- 	{ .compatible = "mediatek,mt8186-apmixedsys", },
- 	{}
-@@ -91,7 +145,10 @@ static int clk_mt8186_apmixed_probe(struct platform_device *pdev)
- 	if (!clk_data)
- 		return -ENOMEM;
- 
--	r = mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
-+	fhctl_parse_dt(pllfhs, ARRAY_SIZE(pllfhs));
++static inline struct mtk_clk_pll *to_mtk_clk_pll(struct clk_hw *hw)
++{
++	return container_of(hw, struct mtk_clk_pll, hw);
++}
 +
-+	r = mtk_clk_register_pllfhs(node, plls, ARRAY_SIZE(plls),
-+				    pllfhs, ARRAY_SIZE(pllfhs), clk_data);
- 	if (r)
- 		goto free_apmixed_data;
- 
-@@ -104,7 +161,8 @@ static int clk_mt8186_apmixed_probe(struct platform_device *pdev)
- 	return r;
- 
- unregister_plls:
--	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-+	mtk_clk_unregister_pllfhs(plls, ARRAY_SIZE(plls), pllfhs,
-+				  ARRAY_SIZE(pllfhs), clk_data);
- free_apmixed_data:
- 	mtk_free_clk_data(clk_data);
- 	return r;
-@@ -116,7 +174,8 @@ static int clk_mt8186_apmixed_remove(struct platform_device *pdev)
- 	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
- 
- 	of_clk_del_provider(node);
--	mtk_clk_unregister_plls(plls, ARRAY_SIZE(plls), clk_data);
-+	mtk_clk_unregister_pllfhs(plls, ARRAY_SIZE(plls), pllfhs,
-+				  ARRAY_SIZE(pllfhs), clk_data);
- 	mtk_free_clk_data(clk_data);
- 
- 	return 0;
++int mtk_pll_is_prepared(struct clk_hw *hw);
++
++int mtk_pll_prepare(struct clk_hw *hw);
++
++void mtk_pll_unprepare(struct clk_hw *hw);
++
++unsigned long mtk_pll_recalc_rate(struct clk_hw *hw, unsigned long parent_rate);
++
++void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
++			 u32 freq, u32 fin);
++int mtk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
++		     unsigned long parent_rate);
++long mtk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
++			unsigned long *prate);
++
++struct clk_hw *mtk_clk_register_pll_ops(struct mtk_clk_pll *pll,
++					const struct mtk_pll_data *data,
++					void __iomem *base,
++					const struct clk_ops *pll_ops);
++struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
++				    void __iomem *base);
++void mtk_clk_unregister_pll(struct clk_hw *hw);
++
++__iomem void *mtk_clk_pll_get_base(struct clk_hw *hw,
++				   const struct mtk_pll_data *data);
++
+ #endif /* __DRV_CLK_MTK_PLL_H */
 -- 
 2.18.0
 
