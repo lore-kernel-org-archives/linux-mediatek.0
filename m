@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A964ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Aug 2022 08:28:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8853AECAAD1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Aug 2022 08:32:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ulOZAUmit6BkkV78coxViSV5L7KIV3X34AcPjU/1+Xk=; b=nmRmMvovqIBM/45fzp058v2+Zx
-	GGSFaUOMhQXmTyJo2yw0BPmOwv2d1dP56avFLYn9R9T5FFrfPwyKj2MKPjtReCVaUcTy+g9lO/Gt/
-	OANAIQPVnMIf7BVp/0m8csrKGwVegjxvidkGvQo59KsjOfuPwlN73qDMRA3gL+0d7kot7P2hKJBzX
-	tpaszo/Xx986JuP3AGlv6uzgjbWkldXeW5hJbKi3qvhHmgHrtyS9Eod1BTkAddq4+3A37YqmswMHR
-	oZW4jip4LCp9KbUb1NSRcp02GEv0OuWLm7rsMDiE7YprJBx5zYxBGQkZI/CB+JwXsRSKdPOdfeIBZ
-	BoAG//8w==;
+	bh=1lAebWmOGpN3HureNzmVijDZcYdGcsy+bz3fpb6N9wk=; b=3J2XJvN5qG9YYypBvukY+b8FZ4
+	U66QdmfS1sOrbdNWKDN85cAA0pAFPxWBVyJjPILU35ckIUsjWwROlZjj1xXuAm6LndoaV2x3dbwRP
+	4txbSMM1828K8aTF2WtVho+TTCt/my0Yt94CwMx6n7i8Fl93BFhgutr3nDU3ayU1dUJwYy7y1ofPH
+	YPLYiTYSlxa2Pau4ixzbGM2ILEubpOkwWktpr/EB3w6hHk25kznp2SPdN12cqaz2wTsFnYEsFlzKV
+	4a/CpcJbcCqeuzrXztKauK/wcgSXC8kXSkdJfDzNPWZwjpXeKK558Le8Ggg5Fil97v0tWswxJZQcS
+	Xaqzb0EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTJ5A-004wqS-6P; Wed, 31 Aug 2022 08:28:20 +0000
+	id 1oTJ8c-004yba-9h; Wed, 31 Aug 2022 08:31:54 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTIzS-004u7v-AP; Wed, 31 Aug 2022 08:22:28 +0000
+	id 1oTJ8E-004yRS-GT; Wed, 31 Aug 2022 08:31:32 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BD1126601A13;
-	Wed, 31 Aug 2022 09:22:23 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4BACD6601A13;
+	Wed, 31 Aug 2022 09:31:28 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661934144;
-	bh=icm/XqsM9PV/fPpno6t23gERjpfmgfqXHBCT1ID9Gfc=;
+	s=mail; t=1661934688;
+	bh=7tmwsymc7qJDSQUSPLXblO4+6Q5hPnTwu9RWsnUwg6M=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lqdhmblp+a9HG/yl8wGkOvItUJSUOxTeTWLQ3ziPLN/7YSmANMWsXqNifudme6opp
-	 FBV4wSuXMocnCZW55OEnyHjHyO4qCzJNgdZTn8FWrSkB+M5Ab0sJYiRPG0srQRGPvr
-	 TZh6iCqOZU8YVoaaVR0vu83c/aClGaY4AW0Y8wkwSl1ILKAPSVQW6ygBmkeju3diYj
-	 etw4+YyRnDRi2ggOAjTRUlwapUVc3dwbSj7Zc00vLkAj4TtyprYXKkAFwp0Rb3uYAC
-	 4WM7c7kmCWEVtgz5IwdTKmakWhLCR1k/HU9b8hS7PLZ65AEkZ2HFZ2kJutbwXRd4nA
-	 +2n5u1DltHBLg==
-Message-ID: <de5ea5b4-1fe3-0e83-7620-f039bcb75bd2@collabora.com>
-Date: Wed, 31 Aug 2022 10:22:21 +0200
+	b=S249Wi/5YyEj1EMvxVnzWOqNZyVMGPy+TSmY8b4L4QP79qmM7PTodfEYCBOX16X32
+	 xyVZ/2sSXTejvWtMlkBezKXPnE2ZmMLMaquISgk96/86g1j39uod9uGbLaexE+2uoh
+	 CJ+GVWHmaPDu6fP4OUpPnATB0PWIT0h54Z/5yKxAhzFLTH22GBsUmSROQjSXA4UtFb
+	 wtyqED6k7Jvaj+X25fEBY/hisXotCet+zqF0OvWIVcfBoKqUxLi0OXbttEEjBj3R3x
+	 HLYnAzzIs/2vxicvFuNjVM5s9jF2HRgSeiDTRDG+TqgX5nJ5B+3q3WwNBI6QVVW5DK
+	 4pf1c7OYtmFyw==
+Message-ID: <9a7abae0-e31e-6beb-74ce-96462d847a88@collabora.com>
+Date: Wed, 31 Aug 2022 10:31:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH v2 4/7] phy: phy-mtk-tphy: disable hardware efuse when set
- INTR
+Subject: Re: [PATCH v2 7/7] phy: phy-mtk-tphy: fix the phy type setting issue
 Content-Language: en-US
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
  Rob Herring <robh+dt@kernel.org>
@@ -60,15 +59,14 @@ Cc: Kishon Vijay Abraham I <kishon@ti.com>,
  Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
  Eddie Hung <eddie.hung@mediatek.com>
 References: <20220829080830.5378-1-chunfeng.yun@mediatek.com>
- <20220829080830.5378-4-chunfeng.yun@mediatek.com>
+ <20220829080830.5378-7-chunfeng.yun@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220829080830.5378-4-chunfeng.yun@mediatek.com>
+In-Reply-To: <20220829080830.5378-7-chunfeng.yun@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220831_012226_729000_E371178B 
-X-CRM114-Status: UNSURE (   7.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220831_013130_757047_BD6DDDBE 
+X-CRM114-Status: GOOD (  17.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,12 +82,48 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 29/08/22 10:08, Chunfeng Yun ha scritto:
-> INTR's value is able autoload from hardware efuse by default, when
-> software tries to update its value, should disable hardware efuse
-> firstly.
+> The PHY type is not set if the index is non zero, prepare type
+> value according to the index, like as mask value.
 > 
 > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+I agree with this change and I'd be happy to give you my R-b tag, but this
+commit clearly needs to be backported, so you need a Fixes tag, or a Cc to stable.
+
+Thanks,
+Angelo
+
+> ---
+> v2: no changes
+> ---
+>   drivers/phy/mediatek/phy-mtk-tphy.c | 7 ++++---
+>   1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+> index e0f227a0d3cc..cc10298bc70d 100644
+> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
+> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+> @@ -915,7 +915,7 @@ static int phy_type_syscon_get(struct mtk_phy_instance *instance,
+>   static int phy_type_set(struct mtk_phy_instance *instance)
+>   {
+>   	int type;
+> -	u32 mask;
+> +	u32 offset;
+>   
+>   	if (!instance->type_sw)
+>   		return 0;
+> @@ -938,8 +938,9 @@ static int phy_type_set(struct mtk_phy_instance *instance)
+>   		return 0;
+>   	}
+>   
+> -	mask = RG_PHY_SW_TYPE << (instance->type_sw_index * BITS_PER_BYTE);
+> -	regmap_update_bits(instance->type_sw, instance->type_sw_reg, mask, type);
+> +	offset = instance->type_sw_index * BITS_PER_BYTE;
+> +	regmap_update_bits(instance->type_sw, instance->type_sw_reg,
+> +			   RG_PHY_SW_TYPE << offset, type << offset);
+>   
+>   	return 0;
+>   }
+> 
 
 
