@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 675CFECAAD1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Sep 2022 04:28:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18B99ECAAD1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Sep 2022 05:03:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xl5ebXbjbzQPJXHpd3wRratKYkzXi1VpgO2J7nGAbjs=; b=ZXAysPakQy4YPhN0v4qe+657SF
-	ItYzTBIkntX86n1uYNYk/HO8jQXtlCUT9yTWNV5U8h9yVaJRtodpcI/P6jswKlEO8z9qoF6fZNIhF
-	QCZukiRMHnj9iXOT/L4g6xQi9dsBI8H6/8tpgVfuhcN/dPj4Orf4WJPJvFlCCtJz18Z6rSpNSujBd
-	vfWvhCVk1lpw7uMcKqN1BrOWJn+R9S72MezA07qVuxwFq/u3FGQQh2igX1hrD7nf0JVJfdJK6h2HK
-	JyGiT1mG91pBblrhORZmA2hB9B1CcM/59ylN3Yi12Lq8aTqcoHHQSMJkCJ25jkNijHolY9OL/Fgsi
-	hhpoio+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rS6eEE9xe6FDfKdMX8ocJhavhqjyxQAggDBfH0aLGsQ=; b=BPEMoerL2EBJW4ZBGAJIIys2N0
+	38eAU6Nu++K3kOm3At3R7lbtuuVUisyBHpyVD1FMfJcobHNIEnNqENLCnHARtg7176N4HHABnV/ob
+	OLvQVyox9viEEKlxRODNgbw/EtoSY6uTLuHBDsM4+ZFSz9G9fgAuOffZIbziZFDe0Nq5mZ8430rqe
+	szVGjkK82qhTnUgsA6l84es7mIemMcWdLqw5o7iAknU8hn+kTv64/3VOHfQfbR4UjnP+S5T3fyVE2
+	tUDMPSiM510xrMpx0Kv+UnQFYF/kuomeiZTSnv0uWA12zH+Z8g0fuR2+LUYVQCAH9Uoc2vL5NDdvJ
+	1IvVZgVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTboA-009YB0-9M; Thu, 01 Sep 2022 04:28:02 +0000
+	id 1oTcMZ-009g9k-El; Thu, 01 Sep 2022 05:03:35 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTbo2-009Y7Y-2O; Thu, 01 Sep 2022 04:27:56 +0000
-X-UUID: 643dacb76c134c8bba455cdb1f5a044e-20220831
+	id 1oTcMW-009g7F-6Z; Thu, 01 Sep 2022 05:03:33 +0000
+X-UUID: 62a4c7383b8e40d6a9909a7c543fee66-20220831
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=xl5ebXbjbzQPJXHpd3wRratKYkzXi1VpgO2J7nGAbjs=;
-	b=LXODQWm3pspRo+zpOOD4Rgrd9IYaB2to+cXoJdH6l2jyEHi0oYpro8hVSINxJn3ijb+t14y/ZvFjd1oSr2tgA2HKPuRIOjRvaTEZwA28aU36fOTBa6pp/12CoABTs7bMe08XvpdHlR/ZYTIst/33/M8Ux47pMGqSDZ0hgGZW6EE=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rS6eEE9xe6FDfKdMX8ocJhavhqjyxQAggDBfH0aLGsQ=;
+	b=qF0tH7I04tp0rU1mY1lQpz6tGfZtfaREvxHJzJsBgiUXK5NlbFP/7ZuCak/ETISuqn/1i50J/f0Q1CXT7nKC9HYEBChh1LO/9Xw/HcLPDdsctLHVgk82aN5wKDdVg44sY4lrUNNoScVlPXkPaE/eRQzmCDH4+ps0lGRnhafEmvE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:f3b84fca-eb87-47e4-afa3-067b4262eedd,OB:0,L
+X-CID-O-INFO: VERSION:1.1.10,REQID:93e8290d-4b4f-4ef6-8388-7f133f36a0aa,OB:0,L
 	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
 	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:c3b3c420-1c20-48a5-82a0-25f9c331906d,C
+X-CID-META: VersionHash:84eae18,CLOUDID:3a8f3c56-e800-47dc-8adf-0c936acf4f1b,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 643dacb76c134c8bba455cdb1f5a044e-20220831
+X-UUID: 62a4c7383b8e40d6a9909a7c543fee66-20220831
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chui-hao.chiu@mediatek.com>)
+	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 610378452; Wed, 31 Aug 2022 21:27:39 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 358230209; Wed, 31 Aug 2022 22:02:57 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 1 Sep 2022 11:47:01 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 1 Sep 2022 11:47:01 +0800
-Message-ID: <deb84c968ba615201619e5c4ef0445f09de6fc7e.camel@mediatek.com>
-Subject: Re: [PATCH v4] arm64: dts: mt7986: add built-in Wi-Fi device nodes
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-CC: <devicetree@vger.kernel.org>, Ryder Lee <ryder.Lee@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>
-Date: Thu, 1 Sep 2022 11:47:01 +0800
-In-Reply-To: <b6524da2-34d6-cb7b-c8bf-19809e8932ed@gmail.com>
-References: <20220630094909.8014-1-chui-hao.chiu@mediatek.com>
-	 <b6524da2-34d6-cb7b-c8bf-19809e8932ed@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ 15.2.792.15; Thu, 1 Sep 2022 12:41:51 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 1 Sep 2022 12:41:51 +0800
+From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <daniel@ffwll.ch>,
+	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<mripard@kernel.org>, <tzimmermann@suse.de>, <matthias.bgg@gmail.com>,
+	<deller@gmx.de>, <airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<ck.hu@mediatek.com>, <liangxu.xu@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
+	<rex-bc.chen@mediatek.com>
+Subject: [PATCH v17 02/10] video/hdmi: Add audio_infoframe packing for DP
+Date: Thu, 1 Sep 2022 12:41:41 +0800
+Message-ID: <20220901044149.16782-3-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
+References: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220831_212754_153680_6FE1EB90 
-X-CRM114-Status: GOOD (  21.04  )
+X-CRM114-CacheID: sfid-20220831_220332_255767_C00B89AD 
+X-CRM114-Status: GOOD (  19.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,236 +86,192 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-08-30 at 10:43 +0200, Matthias Brugger wrote:
-> 
-> On 30/06/2022 11:49, Peter Chiu wrote:
-> > This enables built-in 802.11ax Wi-Fi support.
-> > 
-> > Reviewed-by: Sam Shih <sam.shih@mediatek.com>
-> > Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
-> > Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-> > ---
-> > v2: add clocks and clock-names.
-> > v3: rename wmac to wifi and change underscores to dash in node
-> > names.
-> > v4: rebase to the latest codebase.
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 41
-> > +++++++++++++++++++
-> >   arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 23 +++++++++++
-> >   arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts | 43
-> > ++++++++++++++++++++
-> >   3 files changed, 107 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> > b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> > index 882277a..28cd168 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> > @@ -115,6 +115,13 @@ &uart2 {
-> >   	status = "okay";
-> >   };
-> >   
-> > +&wifi {
-> > +	status = "okay";
-> > +	pinctrl-names = "default", "dbdc";
-> > +	pinctrl-0 = <&wf_2g_5g_pins>;
-> > +	pinctrl-1 = <&wf_dbdc_pins>;
-> > +};
-> > +
-> >   &pio {
-> >   	uart1_pins: uart1-pins {
-> >   		mux {
-> > @@ -129,4 +136,38 @@ mux {
-> >   			groups = "uart2";
-> >   		};
-> >   	};
-> > +
-> > +	wf_2g_5g_pins: wf-2g-5g-pins {
-> > +		mux {
-> > +			function = "wifi";
-> > +			groups = "wf_2g", "wf_5g";
-> 
-> yaml says:
->           - if:
->                properties:
->                  function:
->                    const: wifi
->              then:
->                properties:
->                  groups:
->                    enum: [wf_2g, wf_5g, wf_dbdc]
-> 
-> 
-> Did you run the binding checker against this DTS?
-The binding checker showed the groups setting is too long. We will send
-a patch to fix yaml by setting groups as string-array.
+From: Markus Schneider-Pargmann <msp@baylibre.com>
 
-> Why can't we just merge wf_2g_5g_pins with wf_dbdc_pins?
-Since they use different pinmux settings on the same pin, we need to
-distinguish them.
+Similar to HDMI, DP uses audio infoframes as well which are structured
+very similar to the HDMI ones.
 
-Best Regards,
-Peter Chiu
-> 
-> Regards,
-> Matthias
-> 
-> > +		};
-> > +		conf {
-> > +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3",
-> > "WF0_HB4",
-> > +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5",
-> > "WF0_HB6",
-> > +			       "WF0_HB7", "WF0_HB8", "WF0_HB9",
-> > "WF0_HB10",
-> > +			       "WF0_TOP_CLK", "WF0_TOP_DATA",
-> > "WF1_HB1",
-> > +			       "WF1_HB2", "WF1_HB3", "WF1_HB4",
-> > "WF1_HB0",
-> > +			       "WF1_HB5", "WF1_HB6", "WF1_HB7",
-> > "WF1_HB8",
-> > +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
-> > +			drive-strength = <4>;
-> > +		};
-> > +	};
-> > +
-> > +	wf_dbdc_pins: wf-dbdc-pins {
-> > +		mux {
-> > +			function = "wifi";
-> > +			groups = "wf_dbdc";
-> > +		};
-> > +		conf {
-> > +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3",
-> > "WF0_HB4",
-> > +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5",
-> > "WF0_HB6",
-> > +			       "WF0_HB7", "WF0_HB8", "WF0_HB9",
-> > "WF0_HB10",
-> > +			       "WF0_TOP_CLK", "WF0_TOP_DATA",
-> > "WF1_HB1",
-> > +			       "WF1_HB2", "WF1_HB3", "WF1_HB4",
-> > "WF1_HB0",
-> > +			       "WF1_HB5", "WF1_HB6", "WF1_HB7",
-> > "WF1_HB8",
-> > +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
-> > +			drive-strength = <4>;
-> > +		};
-> > +	};
-> >   };
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> > index e3a407d..890ded0 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> > @@ -7,6 +7,7 @@
-> >   #include <dt-bindings/interrupt-controller/irq.h>
-> >   #include <dt-bindings/interrupt-controller/arm-gic.h>
-> >   #include <dt-bindings/clock/mt7986-clk.h>
-> > +#include <dt-bindings/reset/mt7986-resets.h>
-> >   
-> >   / {
-> >   	interrupt-parent = <&gic>;
-> > @@ -70,6 +71,11 @@ secmon_reserved: secmon@43000000 {
-> >   			reg = <0 0x43000000 0 0x30000>;
-> >   			no-map;
-> >   		};
-> > +
-> > +		wmcpu_emi: wmcpu-reserved@4fc00000 {
-> > +			no-map;
-> > +			reg = <0 0x4fc00000 0 0x00100000>;
-> > +		};
-> >   	};
-> >   
-> >   	timer {
-> > @@ -261,6 +267,23 @@ eth: ethernet@15100000 {
-> >   			#size-cells = <0>;
-> >   			status = "disabled";
-> >   		};
-> > +
-> > +		wifi: wifi@18000000 {
-> > +			compatible = "mediatek,mt7986-wmac";
-> > +			resets = <&watchdog
-> > MT7986_TOPRGU_CONSYS_SW_RST>;
-> > +			reset-names = "consys";
-> > +			clocks = <&topckgen CLK_TOP_CONN_MCUSYS_SEL>,
-> > +				 <&topckgen CLK_TOP_AP2CNN_HOST_SEL>;
-> > +			clock-names = "mcu", "ap2conn";
-> > +			reg = <0 0x18000000 0 0x1000000>,
-> > +			      <0 0x10003000 0 0x1000>,
-> > +			      <0 0x11d10000 0 0x1000>;
-> > +			interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
-> > +				     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
-> > +				     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
-> > +				     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
-> > +			memory-region = <&wmcpu_emi>;
-> > +		};
-> >   	};
-> >   
-> >   };
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> > b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> > index 0f49d57..7f21b10 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> > @@ -98,3 +98,46 @@ fixed-link {
-> >   		};
-> >   	};
-> >   };
-> > +
-> > +&wifi {
-> > +	status = "okay";
-> > +	pinctrl-names = "default", "dbdc";
-> > +	pinctrl-0 = <&wf_2g_5g_pins>;
-> > +	pinctrl-1 = <&wf_dbdc_pins>;
-> > +};
-> > +
-> > +&pio {
-> > +	wf_2g_5g_pins: wf-2g-5g-pins {
-> > +		mux {
-> > +			function = "wifi";
-> > +			groups = "wf_2g", "wf_5g";
-> > +		};
-> > +		conf {
-> > +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3",
-> > "WF0_HB4",
-> > +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5",
-> > "WF0_HB6",
-> > +			       "WF0_HB7", "WF0_HB8", "WF0_HB9",
-> > "WF0_HB10",
-> > +			       "WF0_TOP_CLK", "WF0_TOP_DATA",
-> > "WF1_HB1",
-> > +			       "WF1_HB2", "WF1_HB3", "WF1_HB4",
-> > "WF1_HB0",
-> > +			       "WF1_HB5", "WF1_HB6", "WF1_HB7",
-> > "WF1_HB8",
-> > +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
-> > +			drive-strength = <4>;
-> > +		};
-> > +	};
-> > +
-> > +	wf_dbdc_pins: wf-dbdc-pins {
-> > +		mux {
-> > +			function = "wifi";
-> > +			groups = "wf_dbdc";
-> > +		};
-> > +		conf {
-> > +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3",
-> > "WF0_HB4",
-> > +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5",
-> > "WF0_HB6",
-> > +			       "WF0_HB7", "WF0_HB8", "WF0_HB9",
-> > "WF0_HB10",
-> > +			       "WF0_TOP_CLK", "WF0_TOP_DATA",
-> > "WF1_HB1",
-> > +			       "WF1_HB2", "WF1_HB3", "WF1_HB4",
-> > "WF1_HB0",
-> > +			       "WF1_HB5", "WF1_HB6", "WF1_HB7",
-> > "WF1_HB8",
-> > +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
-> > +			drive-strength = <4>;
-> > +		};
-> > +	};
-> > +};
+This patch adds a helper function to pack the HDMI audio infoframe for
+DP, called hdmi_audio_infoframe_pack_for_dp().
+hdmi_audio_infoframe_pack_only() is split into two parts. One of them
+packs the payload only and can be used for HDMI and DP.
+
+Also constify the frame parameter in hdmi_audio_infoframe_check() as
+it is passed to hdmi_audio_infoframe_check_only() which expects a const.
+
+Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/video/hdmi.c         | 82 +++++++++++++++++++++++++++---------
+ include/drm/display/drm_dp.h |  2 +
+ include/linux/hdmi.h         |  7 ++-
+ 3 files changed, 71 insertions(+), 20 deletions(-)
+
+diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
+index 947be761dfa4..03c7f27dde49 100644
+--- a/drivers/video/hdmi.c
++++ b/drivers/video/hdmi.c
+@@ -21,6 +21,7 @@
+  * DEALINGS IN THE SOFTWARE.
+  */
+ 
++#include <drm/display/drm_dp.h>
+ #include <linux/bitops.h>
+ #include <linux/bug.h>
+ #include <linux/errno.h>
+@@ -381,12 +382,34 @@ static int hdmi_audio_infoframe_check_only(const struct hdmi_audio_infoframe *fr
+  *
+  * Returns 0 on success or a negative error code on failure.
+  */
+-int hdmi_audio_infoframe_check(struct hdmi_audio_infoframe *frame)
++int hdmi_audio_infoframe_check(const struct hdmi_audio_infoframe *frame)
+ {
+ 	return hdmi_audio_infoframe_check_only(frame);
+ }
+ EXPORT_SYMBOL(hdmi_audio_infoframe_check);
+ 
++static void
++hdmi_audio_infoframe_pack_payload(const struct hdmi_audio_infoframe *frame,
++				  u8 *buffer)
++{
++	u8 channels;
++
++	if (frame->channels >= 2)
++		channels = frame->channels - 1;
++	else
++		channels = 0;
++
++	buffer[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
++	buffer[1] = ((frame->sample_frequency & 0x7) << 2) |
++		 (frame->sample_size & 0x3);
++	buffer[2] = frame->coding_type_ext & 0x1f;
++	buffer[3] = frame->channel_allocation;
++	buffer[4] = (frame->level_shift_value & 0xf) << 3;
++
++	if (frame->downmix_inhibit)
++		buffer[4] |= BIT(7);
++}
++
+ /**
+  * hdmi_audio_infoframe_pack_only() - write HDMI audio infoframe to binary buffer
+  * @frame: HDMI audio infoframe
+@@ -404,7 +427,6 @@ EXPORT_SYMBOL(hdmi_audio_infoframe_check);
+ ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
+ 				       void *buffer, size_t size)
+ {
+-	unsigned char channels;
+ 	u8 *ptr = buffer;
+ 	size_t length;
+ 	int ret;
+@@ -420,28 +442,13 @@ ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
+ 
+ 	memset(buffer, 0, size);
+ 
+-	if (frame->channels >= 2)
+-		channels = frame->channels - 1;
+-	else
+-		channels = 0;
+-
+ 	ptr[0] = frame->type;
+ 	ptr[1] = frame->version;
+ 	ptr[2] = frame->length;
+ 	ptr[3] = 0; /* checksum */
+ 
+-	/* start infoframe payload */
+-	ptr += HDMI_INFOFRAME_HEADER_SIZE;
+-
+-	ptr[0] = ((frame->coding_type & 0xf) << 4) | (channels & 0x7);
+-	ptr[1] = ((frame->sample_frequency & 0x7) << 2) |
+-		 (frame->sample_size & 0x3);
+-	ptr[2] = frame->coding_type_ext & 0x1f;
+-	ptr[3] = frame->channel_allocation;
+-	ptr[4] = (frame->level_shift_value & 0xf) << 3;
+-
+-	if (frame->downmix_inhibit)
+-		ptr[4] |= BIT(7);
++	hdmi_audio_infoframe_pack_payload(frame,
++					  ptr + HDMI_INFOFRAME_HEADER_SIZE);
+ 
+ 	hdmi_infoframe_set_checksum(buffer, length);
+ 
+@@ -479,6 +486,43 @@ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+ }
+ EXPORT_SYMBOL(hdmi_audio_infoframe_pack);
+ 
++/**
++ * hdmi_audio_infoframe_pack_for_dp - Pack a HDMI Audio infoframe for DisplayPort
++ *
++ * @frame:      HDMI Audio infoframe
++ * @sdp:        Secondary data packet for DisplayPort.
++ * @dp_version: DisplayPort version to be encoded in the header
++ *
++ * Packs a HDMI Audio Infoframe to be sent over DisplayPort. This function
++ * fills the secondary data packet to be used for DisplayPort.
++ *
++ * Return: Number of total written bytes or a negative errno on failure.
++ */
++ssize_t
++hdmi_audio_infoframe_pack_for_dp(const struct hdmi_audio_infoframe *frame,
++				 struct dp_sdp *sdp, u8 dp_version)
++{
++	int ret;
++
++	ret = hdmi_audio_infoframe_check(frame);
++	if (ret)
++		return ret;
++
++	memset(sdp->db, 0, sizeof(sdp->db));
++
++	/* Secondary-data packet header */
++	sdp->sdp_header.HB0 = 0;
++	sdp->sdp_header.HB1 = frame->type;
++	sdp->sdp_header.HB2 = DP_SDP_AUDIO_INFOFRAME_HB2;
++	sdp->sdp_header.HB3 = (dp_version & 0x3f) << 2;
++
++	hdmi_audio_infoframe_pack_payload(frame, sdp->db);
++
++	/* Return size =  frame length + four HB for sdp_header */
++	return frame->length + 4;
++}
++EXPORT_SYMBOL(hdmi_audio_infoframe_pack_for_dp);
++
+ /**
+  * hdmi_vendor_infoframe_init() - initialize an HDMI vendor infoframe
+  * @frame: HDMI vendor infoframe
+diff --git a/include/drm/display/drm_dp.h b/include/drm/display/drm_dp.h
+index 9e3aff7e68bb..6c0871164771 100644
+--- a/include/drm/display/drm_dp.h
++++ b/include/drm/display/drm_dp.h
+@@ -1536,6 +1536,8 @@ enum drm_dp_phy {
+ #define DP_SDP_VSC_EXT_CEA		0x21 /* DP 1.4 */
+ /* 0x80+ CEA-861 infoframe types */
+ 
++#define DP_SDP_AUDIO_INFOFRAME_HB2	0x1b
++
+ /**
+  * struct dp_sdp_header - DP secondary data packet header
+  * @HB0: Secondary Data Packet ID
+diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
+index c8ec982ff498..2f4dcc8d060e 100644
+--- a/include/linux/hdmi.h
++++ b/include/linux/hdmi.h
+@@ -336,7 +336,12 @@ ssize_t hdmi_audio_infoframe_pack(struct hdmi_audio_infoframe *frame,
+ 				  void *buffer, size_t size);
+ ssize_t hdmi_audio_infoframe_pack_only(const struct hdmi_audio_infoframe *frame,
+ 				       void *buffer, size_t size);
+-int hdmi_audio_infoframe_check(struct hdmi_audio_infoframe *frame);
++int hdmi_audio_infoframe_check(const struct hdmi_audio_infoframe *frame);
++
++struct dp_sdp;
++ssize_t
++hdmi_audio_infoframe_pack_for_dp(const struct hdmi_audio_infoframe *frame,
++				 struct dp_sdp *sdp, u8 dp_version);
+ 
+ enum hdmi_3d_structure {
+ 	HDMI_3D_STRUCTURE_INVALID = -1,
+-- 
+2.18.0
 
 
