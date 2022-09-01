@@ -4,67 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AC7CECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Sep 2022 13:27:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F0B2ECAAD1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Sep 2022 13:40:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9qzHLV2C1qM7HQeRv+rphvEHCRtfLmuNYiUYd4EBH0I=; b=k+mqjsYtioFkaCuPnrw9aZHwxZ
-	pvqCzXQjK0qndP2xHgjfbQ6fnokxjHmZH5IctblH0lN0ycSmfveWvZE1m+FE32BPJNHg/P4Z9Ju8X
-	Q73wQ1fJsspr53mRsM4xd4vqXeeTYX1FkrLjry7tRejDM+ggX8U9K+ItQq5Cf6AYpbyIyZ9K8ushp
-	X8I3npp63j4X4cal250HzAmB9zQQxAkdctjBVaQXbn0Edxdrha1utJH0F4uDR9OThYDDX/0hUI7mS
-	H7rdFmX7ODj0ba36a5rWYSetSWsgKHmtSN7PN6K3KCa2ar8bA/6ZJozQcAksLRRsfI84C7BUmExeH
-	Fi8ZOeBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=stpnIznClyFbSSAZ9XIBAQVJVqGJPgWnuEIsfvw/Kgw=; b=4t3ZdxpeT9oclB7AP+u8wjJeqW
+	SEwGnKpVDPhJ4IjP1WO7BWfCPnh606Jb1PNGyXQRd8Bx1Oi5W+9fX75agnX/Tb8qm+2nRxgXpf2gb
+	tkWYZOZZNOP1IFEavbjM4P5/CkX8EYJCSlQKXwsGjbuiy1vdJ+VkSQArLEtOuEDqIlOstaWGYIlPq
+	fOg9yb4Bgd5sDgnckBE6PIMtxRDQssEDv/b3xcfpS9NgiiLgkGg6yOOV+7ln0/YzqNYWBZKPqFlQa
+	AeFa/QBGu05wBwPE85ON8tQQpSe41iQf1tWHG/i6PveddkLb7XjbbLkXXA/szgSqBBYXjJJYSuNMD
+	0wgxfs9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTkDm-00C1rq-6l; Thu, 01 Sep 2022 13:27:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oTkQY-00C95o-Mp; Thu, 01 Sep 2022 13:40:14 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTk3n-00Bwey-UY; Thu, 01 Sep 2022 13:16:45 +0000
-X-UUID: 29cedd415cb74ede87091bc336ebe786-20220901
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9qzHLV2C1qM7HQeRv+rphvEHCRtfLmuNYiUYd4EBH0I=;
-	b=PrBlLy/V8BbN0qluDCdU2j62GQHeffIk/xKnIDW7hExwJqwDZptBzxi2rwDHp9hIPag3f+XjgJfK8uTLdL8ZSue72RF1TIWI11rbpyBUPx7zKnszAczotsHsjT3/+XWiV9JcX6yRbUTRjZI3F49tv93IrXSQk7AdlhUstr8aMpo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:54e1179c-5191-4551-be14-0ab82688df86,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:3b82d420-1c20-48a5-82a0-25f9c331906d,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 29cedd415cb74ede87091bc336ebe786-20220901
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chui-hao.chiu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 131953604; Thu, 01 Sep 2022 06:16:35 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 1 Sep 2022 21:05:57 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 1 Sep 2022 21:05:57 +0800
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <devicetree@vger.kernel.org>, Ryder Lee <ryder.Lee@mediatek.com>, Evelyn
- Tsai <evelyn.tsai@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, Peter Chiu <chui-hao.chiu@mediatek.com>
-Subject: [PATCH v5] arm64: dts: mt7986: add built-in Wi-Fi device nodes
-Date: Thu, 1 Sep 2022 21:05:52 +0800
-Message-ID: <20220901130552.26234-1-chui-hao.chiu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oTkQQ-00C90V-3S
+	for linux-mediatek@lists.infradead.org; Thu, 01 Sep 2022 13:40:08 +0000
+Received: by mail-wr1-x429.google.com with SMTP id b16so14793998wru.7
+        for <linux-mediatek@lists.infradead.org>; Thu, 01 Sep 2022 06:40:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+        bh=stpnIznClyFbSSAZ9XIBAQVJVqGJPgWnuEIsfvw/Kgw=;
+        b=SgocxATs9nG+dO5eC5Ry/p9RAchwAh7Dpb52+4CBAMfh5whV5zASWzF3gBuq1hnzwp
+         M+7JtEjt88ret/I+CXbQ/8eC7JhJZZYpUMr9LIXHTG//b8nmupFzHkcA4LJTWam7pZbN
+         QBEVv+DsJY1rMjqi9UwKNxes6DzYt2FsHkrUVjyhamtSGhaNqs25BKDjTXNKk09vaU3e
+         5Yey/AIv9z1PeDrbwbxvkjhbGh/JUK1k7rdBskyuIVcMMC9wZb8GxUwSHKfubs+QiSld
+         cv+od58WOfHDtJuJll+69LK2+7eNURITPegLYKastnotHmlVwhKrU1nx5L/e+r0bg/SB
+         S5Yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=stpnIznClyFbSSAZ9XIBAQVJVqGJPgWnuEIsfvw/Kgw=;
+        b=A45MvBXeTpFBPo2Q9lHnmGxJeZU5tR4kjdOd4Zxeu9lT9O7hlvthi8c99ZqP7OzZxj
+         RoEwTZmuS8OzptxQPiVJ4Jwbl6vqGhOy9wNw+KmTdLqGQUidgMwEzcVEA4SfFbI/j28r
+         STAFTAFNYdztw6MKvCvjgSyZ7is7C+b/tVL89OR21wwA7qz/EYn8JMMq3xyzQMurPdM+
+         RomSrB2P9KfPFweVyBBUntZRoN81vT+1gTdc+KElYG2eOAukEXTXVlCVNGfwkHwh1e1v
+         aTzdCbilbyVS98N8fm7sG9Tqa8DTmBRUuX+ONh6TxnR1+0NejflDXGyqHj2bF78SP/5/
+         6/cw==
+X-Gm-Message-State: ACgBeo1zypEBHWvpnqf/vKR2YUkJ54sGiNXxMzMVYvtPBFsYhzsXhSSd
+	DT1vrVqkrlCZCRtpspHYWzNW1fsIFUruvo9w
+X-Google-Smtp-Source: AA6agR63Bzb51JkQHDsQML106QA1SRbThkvFgEfcZxG1oTuPekWXu06XLjwe2W8lGlgpYHROZLAeqg==
+X-Received: by 2002:adf:a702:0:b0:226:e205:fa56 with SMTP id c2-20020adfa702000000b00226e205fa56mr7815687wrd.637.1662039604363;
+        Thu, 01 Sep 2022 06:40:04 -0700 (PDT)
+Received: from localhost.localdomain (210.145.15.109.rev.sfr.net. [109.15.145.210])
+        by smtp.googlemail.com with ESMTPSA id e3-20020adfe383000000b0021ef34124ebsm15399016wrm.11.2022.09.01.06.40.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 01 Sep 2022 06:40:03 -0700 (PDT)
+From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+To: matthias.bgg@gmail.com
+Cc: Markus Schneider-Pargmann <msp@baylibre.com>,
+	rafael@kernel.org,
+	fparent@baylibre.com,
+	amitk@kernel.org,
+	daniel.lezcano@linaro.org,
+	devicetree@vger.kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-pm@vger.kernel.org,
+	robh+dt@kernel.org,
+	rui.zhang@intel.com,
+	Amjad Ouled-Ameur <aouledameur@baylibre.com>
+Subject: [PATCH v3 2/4] thermal: mediatek: control buffer enablement tweaks
+Date: Thu,  1 Sep 2022 15:39:48 +0200
+Message-Id: <20220901133950.115122-3-aouledameur@baylibre.com>
+X-Mailer: git-send-email 2.37.3
+In-Reply-To: <20220901133950.115122-1-aouledameur@baylibre.com>
+References: <20220901133950.115122-1-aouledameur@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_061644_040954_B6B8D19D 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20220901_064006_217450_42D56B7D 
+X-CRM114-Status: GOOD (  15.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,174 +100,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This enables built-in 802.11ax Wi-Fi support.
+From: Markus Schneider-Pargmann <msp@baylibre.com>
 
-Reviewed-by: Sam Shih <sam.shih@mediatek.com>
-Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Add logic in order to be able to turn on the control buffer on MT8365.
+This change now allows to have control buffer support for MTK_THERMAL_V1,
+and it allows to define the register offset, and mask used to enable it.
 
+Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
 ---
-v2: add clocks and clock-names.
-v3: rename wmac to wifi and change underscores to dash in node names.
-v4: rebase to the latest codebase.
-v5: remove useless pins in wf_dbdc_pins node.
----
- arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 38 +++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 23 +++++++++++
- arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts | 40 ++++++++++++++++++++
- 3 files changed, 101 insertions(+)
+Changes in V3:
+- Use GENMASK() and BIT() instead of hardcoded data.
+- Use u32 instead of int for "tmp" var in mtk_thermal_turn_on_buffer() 
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-index 882277a52b69..afe37b702eef 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-@@ -115,6 +115,13 @@
- 	status = "okay";
+ drivers/thermal/mtk_thermal.c | 25 ++++++++++++++++++-------
+ 1 file changed, 18 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index ede94eadddda..b5b4401249e8 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -271,6 +271,9 @@ struct mtk_thermal_data {
+ 	bool need_switch_bank;
+ 	struct thermal_bank_cfg bank_data[MAX_NUM_ZONES];
+ 	enum mtk_thermal_version version;
++	u32 apmixed_buffer_ctl_reg;
++	u32 apmixed_buffer_ctl_mask;
++	u32 apmixed_buffer_ctl_set;
  };
  
-+&wifi {
-+	status = "okay";
-+	pinctrl-names = "default", "dbdc";
-+	pinctrl-0 = <&wf_2g_5g_pins>;
-+	pinctrl-1 = <&wf_dbdc_pins>;
-+};
-+
- &pio {
- 	uart1_pins: uart1-pins {
- 		mux {
-@@ -129,4 +136,35 @@
- 			groups = "uart2";
- 		};
- 	};
-+
-+	wf_2g_5g_pins: wf-2g-5g-pins {
-+		mux {
-+			function = "wifi";
-+			groups = "wf_2g", "wf_5g";
-+		};
-+		conf {
-+			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
-+			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
-+			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
-+			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
-+			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
-+			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
-+			       "WF1_TOP_CLK", "WF1_TOP_DATA";
-+			drive-strength = <4>;
-+		};
-+	};
-+
-+	wf_dbdc_pins: wf-dbdc-pins {
-+		mux {
-+			function = "wifi";
-+			groups = "wf_dbdc";
-+		};
-+		conf {
-+			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
-+			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
-+			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
-+			       "WF0_TOP_CLK", "WF0_TOP_DATA";
-+			drive-strength = <4>;
-+		};
-+	};
+ struct mtk_thermal {
+@@ -514,6 +517,9 @@ static const struct mtk_thermal_data mt7622_thermal_data = {
+ 	.adcpnp = mt7622_adcpnp,
+ 	.sensor_mux_values = mt7622_mux_values,
+ 	.version = MTK_THERMAL_V2,
++	.apmixed_buffer_ctl_reg = APMIXED_SYS_TS_CON1,
++	.apmixed_buffer_ctl_mask = GENMASK(31, 6) | BIT(3),
++	.apmixed_buffer_ctl_set = BIT(0),
  };
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-index e3a407d03551..890ded0efc51 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -7,6 +7,7 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/clock/mt7986-clk.h>
-+#include <dt-bindings/reset/mt7986-resets.h>
  
- / {
- 	interrupt-parent = <&gic>;
-@@ -70,6 +71,11 @@
- 			reg = <0 0x43000000 0 0x30000>;
- 			no-map;
- 		};
-+
-+		wmcpu_emi: wmcpu-reserved@4fc00000 {
-+			no-map;
-+			reg = <0 0x4fc00000 0 0x00100000>;
-+		};
- 	};
- 
- 	timer {
-@@ -261,6 +267,23 @@
- 			#size-cells = <0>;
- 			status = "disabled";
- 		};
-+
-+		wifi: wifi@18000000 {
-+			compatible = "mediatek,mt7986-wmac";
-+			resets = <&watchdog MT7986_TOPRGU_CONSYS_SW_RST>;
-+			reset-names = "consys";
-+			clocks = <&topckgen CLK_TOP_CONN_MCUSYS_SEL>,
-+				 <&topckgen CLK_TOP_AP2CNN_HOST_SEL>;
-+			clock-names = "mcu", "ap2conn";
-+			reg = <0 0x18000000 0 0x1000000>,
-+			      <0 0x10003000 0 0x1000>,
-+			      <0 0x11d10000 0 0x1000>;
-+			interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
-+			memory-region = <&wmcpu_emi>;
-+		};
- 	};
- 
+ /*
+@@ -963,14 +969,18 @@ static const struct of_device_id mtk_thermal_of_match[] = {
  };
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-index 0f49d5764ff3..3443013b5971 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-@@ -98,3 +98,43 @@
- 		};
- 	};
- };
+ MODULE_DEVICE_TABLE(of, mtk_thermal_of_match);
+ 
+-static void mtk_thermal_turn_on_buffer(void __iomem *apmixed_base)
++static void mtk_thermal_turn_on_buffer(struct mtk_thermal *mt,
++				       void __iomem *apmixed_base)
+ {
+-	int tmp;
++	u32 tmp;
 +
-+&wifi {
-+	status = "okay";
-+	pinctrl-names = "default", "dbdc";
-+	pinctrl-0 = <&wf_2g_5g_pins>;
-+	pinctrl-1 = <&wf_dbdc_pins>;
-+};
++	if (!mt->conf->apmixed_buffer_ctl_reg)
++		return;
+ 
+-	tmp = readl(apmixed_base + APMIXED_SYS_TS_CON1);
+-	tmp &= ~(0x37);
+-	tmp |= 0x1;
+-	writel(tmp, apmixed_base + APMIXED_SYS_TS_CON1);
++	tmp = readl(apmixed_base + mt->conf->apmixed_buffer_ctl_reg);
++	tmp &= mt->conf->apmixed_buffer_ctl_mask;
++	tmp |= mt->conf->apmixed_buffer_ctl_set;
++	writel(tmp, apmixed_base + mt->conf->apmixed_buffer_ctl_reg);
+ 	udelay(200);
+ }
+ 
+@@ -1070,8 +1080,9 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 		goto err_disable_clk_auxadc;
+ 	}
+ 
++	mtk_thermal_turn_on_buffer(mt, apmixed_base);
 +
-+&pio {
-+	wf_2g_5g_pins: wf-2g-5g-pins {
-+		mux {
-+			function = "wifi";
-+			groups = "wf_2g", "wf_5g";
-+		};
-+		conf {
-+			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
-+			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
-+			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
-+			       "WF0_TOP_CLK", "WF0_TOP_DATA", "WF1_HB1",
-+			       "WF1_HB2", "WF1_HB3", "WF1_HB4", "WF1_HB0",
-+			       "WF1_HB5", "WF1_HB6", "WF1_HB7", "WF1_HB8",
-+			       "WF1_TOP_CLK", "WF1_TOP_DATA";
-+			drive-strength = <4>;
-+		};
-+	};
-+
-+	wf_dbdc_pins: wf-dbdc-pins {
-+		mux {
-+			function = "wifi";
-+			groups = "wf_dbdc";
-+		};
-+		conf {
-+			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3", "WF0_HB4",
-+			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5", "WF0_HB6",
-+			       "WF0_HB7", "WF0_HB8", "WF0_HB9", "WF0_HB10",
-+			       "WF0_TOP_CLK", "WF0_TOP_DATA";
-+			drive-strength = <4>;
-+		};
-+	};
-+};
+ 	if (mt->conf->version == MTK_THERMAL_V2) {
+-		mtk_thermal_turn_on_buffer(apmixed_base);
+ 		mtk_thermal_release_periodic_ts(mt, auxadc_base);
+ 	}
+ 
 -- 
-2.18.0
+2.37.3
 
 
