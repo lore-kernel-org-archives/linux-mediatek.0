@@ -4,68 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C47E2C64991
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Sep 2022 10:58:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75923ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Sep 2022 10:59:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JAElCVECM3BW4Dh/WGNeYPLRwtunOlI3Ghfnh4z7gDk=; b=XpaNMDe9IJamJMPjIy1FdzqzXD
-	0p7Oz0gw6MZcilYY1D2ojN22b/K/9TEkBeJexRW/SJ1jKY+eAfPzd0XYcMP0TEbwfoi6/IJCj4qHz
-	H3woNnYkF/xV9+WLJt6DXS5u6Jsm/a0gWkLs/6QMWFMP1gaf0NeFt19x/4iAyOYVVXPh0DMDaCNY9
-	ml4OrpJRknVPLFcCM0/fmi7TLYvGbmI1sGGK1RBuH6QXZsKcW83WovjPLpwlyLYFGoSoSDoeYE2s/
-	K7yG4Iie7JdRvS3Tr9w48Du20vEKOOCdgkHOnZEufua0vtNGFtaBVggNXv3IGwKgNVJq4nv6b3XN6
-	UMSPPYgA==;
+	bh=KK3UoclfL8kHmhowR+FoFpgrghLqeaE9E9mavmz6o0s=; b=tpIleZRXPEFXIRP1Mb4lVSSbYq
+	4rqs+rTjDj0m4Q2q1KQaF2AJwjR7LJ9TkmnsFoQRf0nWJIw+JOqU8AQYkhavyA9GQPvJUC889FpP/
+	mLHs+cyIhcVF90VFNpAPyy2Lrrfq5EQS4T8+GIK8a8+1Ao7zGaK2UAEfj0KVcqH7UAZ8NmGT+6RON
+	fcGfbMqNscCY8tG8/fGM6lT418aeRlHcLg2SgNexzkzG1YwR69YkdKCArsbZCppsDMJI/ZBBC7/Z1
+	wAuAHP7QlI15zxJHn0aM39seJDNWwtwWflW4ZNkFU5aWH3TYRcKJC+ztriTM/KW57mnbEPAAxDay1
+	2aC53vsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oThuH-00BBgV-78; Thu, 01 Sep 2022 10:58:45 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oThuM-00BBjc-Gv; Thu, 01 Sep 2022 10:58:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oThu6-00BBcs-PQ; Thu, 01 Sep 2022 10:58:36 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7DBDD6601DF7;
-	Thu,  1 Sep 2022 11:58:31 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662029912;
-	bh=J0a7JIYzSfLJ+NmiuKc1E8YXYw0cLkKnM9rQliRatI8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Vb4UzK09kZ2A61z7ufCdC23usamdiAglog33FnJ+oLYi3dkxmwmTiRvJlzII0IPS7
-	 2LH5JHyAmZE9ywWFhlGNnG5wNUZlRcAS2lEEL5xI7xiQ1Fi8IHDoqHhoBAs9qX9Hx7
-	 WmoGU9oPqgb1BR6+8fQQ1vKbqK44R317SHn3VUscV6y2NHCLmwpqQoCuuW0qShEHuB
-	 HcwocUN3tEsi9OY15U5kTscZYh7jR/DJMH2GuprZLRnAnnDgnzgcYLMSQ6/kINQ/Ai
-	 ucD97vXat0x9ga4eq5wv03AKtE0kj/oW6lSAFMy5pZc+nkZunGShzgl31OZW4rFdYn
-	 WHKCxAjQW5dEg==
-Message-ID: <3ceeb700-4424-6182-6d14-60c569f7c59d@collabora.com>
-Date: Thu, 1 Sep 2022 12:58:28 +0200
+	id 1oThuK-00BBhR-4m; Thu, 01 Sep 2022 10:58:49 +0000
+X-UUID: c83ebb22d42d4c8abcbad2442a56704d-20220901
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=KK3UoclfL8kHmhowR+FoFpgrghLqeaE9E9mavmz6o0s=;
+	b=cTxLfPFRWWWlltNRc07SLaOFK03k3PCyBMdkIoq2bPNdeVjI4OUIED6ZVhoiXkk0POg8IjoMMXJVc9TEM94VHtSAOfyvu5V8ZThhHWogUJKovI/hxfAUyPWrlNGBg6t6yGTZoyG/dmUn0ZDDMqtAWRz7MFxLDTRVq+6JKykqw54=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:fb17f8a3-da82-4658-ba7e-905e5943ad66,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:f6be52d0-20bd-4e5e-ace8-00692b7ab380,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c83ebb22d42d4c8abcbad2442a56704d-20220901
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <liju-clr.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1851158857; Thu, 01 Sep 2022 03:54:39 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 1 Sep 2022 18:03:59 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 1 Sep 2022 18:03:59 +0800
+Message-ID: <36bbb36f1f6a8991856a01a82300298ad5423359.camel@mediatek.com>
+Subject: Re: [PATCH v2 1/3] dt-bindings: watchdog: Add compatible for
+ MediaTek MT8188
+From: Liju-clr Chen <liju-clr.chen@mediatek.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>, Runyang Chen
+	<Runyang.Chen@mediatek.com>, Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	<nfraprado@collabora.com>
+CC: <angelogioacchino.delregno@collabora.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Date: Thu, 1 Sep 2022 18:03:59 +0800
+In-Reply-To: <5dbdcb11-ae9c-e2b5-793b-35fa16a4208b@kernel.org>
+References: <20220816065330.27570-1-Runyang.Chen@mediatek.com>
+	 <20220816065330.27570-2-Runyang.Chen@mediatek.com>
+	 <0b17f336-5c04-e375-ef4a-3804f9702bf8@kernel.org>
+	 <092345db980b30c577350edc46d88dc3888736d4.camel@mediatek.com>
+	 <5dbdcb11-ae9c-e2b5-793b-35fa16a4208b@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v17 00/10] Add MT8195 DisplayPort driver
-Content-Language: en-US
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, daniel@ffwll.ch, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, mripard@kernel.org, tzimmermann@suse.de,
- matthias.bgg@gmail.com, deller@gmx.de, airlied@linux.ie
-Cc: msp@baylibre.com, granquet@baylibre.com, jitao.shi@mediatek.com,
- wenst@chromium.org, ck.hu@mediatek.com, liangxu.xu@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_035834_992197_91924AD1 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20220901_035848_224218_D86A598E 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,51 +89,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/09/22 06:41, Bo-Chen Chen ha scritto:
-> This patch is separated from v10 which is including dp driver, phy driver
-> and dpintf driver. This series is only contained the DisplayPort driver.
-
-For the entire series:
-
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Thanks!
-Angelo
-
+On Thu, 2022-09-01 at 12:44 +0300, Krzysztof Kozlowski wrote:
+> On 01/09/2022 11:16, Liju-clr Chen wrote:
+> > Hi Maintainers,
+> > 
+> > Gentle ping for this patch.
+> > It would be appreciated if you could give some suggestions.
 > 
-> Bo-Chen Chen (4):
->    drm/mediatek: dp: Add multiple bridge types support
->    drm/mediatek: dp: Add multiple smc commands support
->    drm/mediatek: dp: Add multiple calibration data formats support
->    drm/mediatek: dp: Determine device of next_bridge
-> 
-> Guillaume Ranquet (2):
->    drm/mediatek: dp: Add MT8195 External DisplayPort support
->    drm/mediatek: dp: Audio support for MT8195
-> 
-> Jitao Shi (1):
->    drm/mediatek: dp: Add hpd debounce
-> 
-> Markus Schneider-Pargmann (3):
->    dt-bindings: mediatek,dp: Add Display Port binding
->    video/hdmi: Add audio_infoframe packing for DP
->    drm/mediatek: Add MT8195 Embedded DisplayPort driver
-> 
->   .../display/mediatek/mediatek,dp.yaml         |  116 +
->   drivers/gpu/drm/mediatek/Kconfig              |    9 +
->   drivers/gpu/drm/mediatek/Makefile             |    2 +
->   drivers/gpu/drm/mediatek/mtk_dp.c             | 2661 +++++++++++++++++
->   drivers/gpu/drm/mediatek/mtk_dp_reg.h         |  356 +++
->   drivers/video/hdmi.c                          |   82 +-
->   include/drm/display/drm_dp.h                  |    2 +
->   include/linux/hdmi.h                          |    7 +-
->   8 files changed, 3215 insertions(+), 20 deletions(-)
->   create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
->   create mode 100644 drivers/gpu/drm/mediatek/mtk_dp.c
->   create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_reg.h
+> Why ping? You got the ack, so what do you need from me?
 > 
 
+I apologized for this mistake. 
+I should reply this on cover letter instead of this patch.
+Sorry for any inconvenience caused.
 
+Best Regards,
+Liju Chen
+
+> Best regards,
+> Krzysztof
 
 
