@@ -4,67 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 304FBECAAD1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Sep 2022 08:05:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C454ECAAD1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Sep 2022 08:13:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7B0cBJtzSmTJVKspbFItexor/uxZdtj3XFc+izARqCY=; b=b9Uqh/dXSvNDiMwZZz/icGepDS
-	4QfYPx5xv5VHGv0pr9wyn0zEUy727pQHcn0ivv+1MPTshHp6cYd6yCV4KZIJAkE965MEgZ1eAnmdk
-	C7E5YyKncslKKkG0V9Gjreetv5nA5VnNLE/Zser1NgYaMTW1Uv5xdu+fleNwA8YJeUPwg5q/iFwbL
-	hHo2qYeSLOigjq91hdtCn2QC4hIfAOR2a7wGcmwL2uNcsuPeOdl50ck0D9m76SU+o68nv3HFSoD7l
-	iXJ28u2uRDdxlsqPGe/ZNFMfnQDSxQzghhrE2FxHUtXY67UQksAQYj3Uo08CEEio3Nh3eFBJ8ixkx
-	rUEJ4/2g==;
+	bh=gCMA0D9QJ9+gznYf6HXIABOQYxv6ToNZjCmsfbOOWD8=; b=Ioxv9tsJp2nIUCZUMSZZS5yRlM
+	zr5zPu77ofhcMsWNm6M5Xr6qbC4S0L6YNIMEoLwQz6UBiAfe+LXaDb55+ulRmhKdZxMd9sbSc9/FL
+	HedfcjxX5/W+tvrJQXZIlcgpUrXPd1zpwEVlfCoETJJr8GlTvgb8Yk7f2evQmxkGbn7r1AjZqq9Y6
+	5xkzR4qny1/oz+tzsJ0IrDv8MbaxIxBJVgpJzJ8ARiDVx3gaGoRrR9os0JvWY2bBUNBK6LIjVUS2K
+	DbOy4Tk7+xZPohbGvuYbMpn7unWNysoIjRT6G02FB8er2gZiwt2pNzn42R+zzDKTvhJtN1pRWQR7n
+	O6zYJT3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTfCT-00AUFG-Ea; Thu, 01 Sep 2022 08:05:21 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oTfKQ-00AXUF-4E; Thu, 01 Sep 2022 08:13:34 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTfCD-00AU6M-Ht; Thu, 01 Sep 2022 08:05:10 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A08F56601DF7;
-	Thu,  1 Sep 2022 09:05:03 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662019504;
-	bh=Rviw2cwlCbnMamvge2w+lu9CT7JwpJ7O/j9ctvOZMbk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MebE3h/P7pQAnr5WvHNga++kDzZcT8mNZQIIXOzdJrWyf5crf0xDgnVWRkN9ZBmpl
-	 OZsuar8vvA6mvzgIEFWWcopqOmUyrWl/JIvoOrHLoimY7p55KFV14r38ljYQt/H/f9
-	 oQOuTT0nzffmGfsxXA6kdRoq9DI4v1Zg2ARx0jtX15solBN4Mxd46W36wsPBmNGtEm
-	 AvFWv4HDz9wD/qkZlTsqFaAU2sV0AnaXDH29DVXrvagmfQc5rDIH1AMqDmZ41xjK5t
-	 wezGUz7+YGzgqnLoxiEiCyGnYNhVSJytlWuGTgzuEflyGqM9AEzVPPiPD9/NAYvkF1
-	 yyw6SrpafHnQQ==
-Message-ID: <d2abe2d3-f17c-6c22-ccae-514fe196441e@collabora.com>
-Date: Thu, 1 Sep 2022 10:05:00 +0200
+	id 1oTfKE-00AXJl-Pe; Thu, 01 Sep 2022 08:13:24 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id b16so13629194wru.7;
+        Thu, 01 Sep 2022 01:13:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:content-language
+         :references:cc:to:user-agent:mime-version:date:message-id:from:to:cc
+         :subject:date;
+        bh=gCMA0D9QJ9+gznYf6HXIABOQYxv6ToNZjCmsfbOOWD8=;
+        b=F6OllOWZFEwGs7Le2foMXv++xH5Snpp4D2PnVkrcaHssMMk72qQBDLqWIkWNVAEHB1
+         D3EvEWzoMXDJg8qdw6PK7J//gbrL4A3mO5CksK7d43kRI13ktQfy/e4ik50vP0cGLh0w
+         Q4FVy0L57H2c8M0QOO8IVUyYD78XfvLYMiVc5KUk9gT6xhEefISnudJ3+1VkC/gmgJCX
+         FGpfDwQ9jCIX1bklq3aMkjaTRXmHeJlWO1NHzzf1JHBhd5FKQmsLoA/YQWtv0mrUrU9m
+         wNZNk683dAZoRRB7LXHn+5MYzwXbJOZPUk8fhjCo2rwkz9di/0J4rNpvXH2M8ol1yy/F
+         l++Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:content-language
+         :references:cc:to:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=gCMA0D9QJ9+gznYf6HXIABOQYxv6ToNZjCmsfbOOWD8=;
+        b=wbKFQ7rd+T6hb5/NQbHohPk28oAMwPTUVX7tn5GFKC9PnfnQF5EG9Gfgbe0xZh6nEM
+         363EORdIJKZ4C25y8USuE6Dap4QWSYgSYqEWQB5lycImNLTcqtgP6yTzpK5jcwIKq3yx
+         BHRCEOpbTfya3mRu38mI1p5swszIdoxgqsVwU4aqWU9nmziqxW6uc5t2pKzem6r5Zk+A
+         BJOu6xcro+5G4G/PBHxt8AJnGrn6WXJ3dCOBxpnmScXj66W80JwTudr/yEpCIrH+AEWz
+         jSiJPMkKrTvHF/Bq33A5F0EVmEiDE2kXAIDJ9X8M0j24v78ChzXz1vYztddXTbCcYrhr
+         G9/g==
+X-Gm-Message-State: ACgBeo2FnQ/PwzXvvXa4qvJwsXOEw6mFE5konVvnpsh+wCb+b51sdmmB
+	yrgo/62wHiEBR6dPoxCPPj4=
+X-Google-Smtp-Source: AA6agR5JswT6QrU+Vp+hd4JSyR34T9yBfhZDurv6ezZAgtf/4iv1d7oWZtNzPcK5nnDGCtIW3YWHsg==
+X-Received: by 2002:a5d:6d4f:0:b0:225:63aa:27b2 with SMTP id k15-20020a5d6d4f000000b0022563aa27b2mr14471366wri.599.1662020000843;
+        Thu, 01 Sep 2022 01:13:20 -0700 (PDT)
+Received: from [192.168.0.30] ([47.62.125.55])
+        by smtp.gmail.com with ESMTPSA id e18-20020adff352000000b002252d897876sm13668290wrp.32.2022.09.01.01.13.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 01 Sep 2022 01:13:19 -0700 (PDT)
+Message-ID: <079c023c-fa2d-1a5a-41ec-6d364067eb7d@gmail.com>
+Date: Thu, 1 Sep 2022 10:13:18 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH 3/4] clk: mediatek: Add new clock driver to handle FHCTL
- hardware
-To: Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, sboyd@kernel.org
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Edward-JW Yang <edward-jw.yang@mediatek.com>
-References: <20220831124850.7748-1-johnson.wang@mediatek.com>
- <20220831124850.7748-4-johnson.wang@mediatek.com>
+ Thunderbird/102.1.2
+To: Peter Chiu <chui-hao.chiu@mediatek.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: devicetree@vger.kernel.org, Ryder Lee <ryder.Lee@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220630094909.8014-1-chui-hao.chiu@mediatek.com>
+ <b6524da2-34d6-cb7b-c8bf-19809e8932ed@gmail.com>
+ <deb84c968ba615201619e5c4ef0445f09de6fc7e.camel@mediatek.com>
 Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220831124850.7748-4-johnson.wang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4] arm64: dts: mt7986: add built-in Wi-Fi device nodes
+In-Reply-To: <deb84c968ba615201619e5c4ef0445f09de6fc7e.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_010505_898618_DA57AF40 
-X-CRM114-Status: GOOD (  31.31  )
+X-CRM114-CacheID: sfid-20220901_011322_885226_89BDBDFE 
+X-CRM114-Status: GOOD (  20.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,457 +96,252 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 31/08/22 14:48, Johnson Wang ha scritto:
-> To implement frequency hopping and spread spectrum clocking
-> function, we introduce new clock type and APIs to handle
-> FHCTL hardware.
+
+
+On 01/09/2022 05:47, Peter Chiu wrote:
+> On Tue, 2022-08-30 at 10:43 +0200, Matthias Brugger wrote:
+>>
+>> On 30/06/2022 11:49, Peter Chiu wrote:
+>>> This enables built-in 802.11ax Wi-Fi support.
+>>>
+>>> Reviewed-by: Sam Shih <sam.shih@mediatek.com>
+>>> Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+>>> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+>>> ---
+>>> v2: add clocks and clock-names.
+>>> v3: rename wmac to wifi and change underscores to dash in node
+>>> names.
+>>> v4: rebase to the latest codebase.
+>>> ---
+>>>    arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 41
+>>> +++++++++++++++++++
+>>>    arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 23 +++++++++++
+>>>    arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts | 43
+>>> ++++++++++++++++++++
+>>>    3 files changed, 107 insertions(+)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+>>> b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+>>> index 882277a..28cd168 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+>>> @@ -115,6 +115,13 @@ &uart2 {
+>>>    	status = "okay";
+>>>    };
+>>>    
+>>> +&wifi {
+>>> +	status = "okay";
+>>> +	pinctrl-names = "default", "dbdc";
+>>> +	pinctrl-0 = <&wf_2g_5g_pins>;
+>>> +	pinctrl-1 = <&wf_dbdc_pins>;
+>>> +};
+>>> +
+>>>    &pio {
+>>>    	uart1_pins: uart1-pins {
+>>>    		mux {
+>>> @@ -129,4 +136,38 @@ mux {
+>>>    			groups = "uart2";
+>>>    		};
+>>>    	};
+>>> +
+>>> +	wf_2g_5g_pins: wf-2g-5g-pins {
+>>> +		mux {
+>>> +			function = "wifi";
+>>> +			groups = "wf_2g", "wf_5g";
+>>
+>> yaml says:
+>>            - if:
+>>                 properties:
+>>                   function:
+>>                     const: wifi
+>>               then:
+>>                 properties:
+>>                   groups:
+>>                     enum: [wf_2g, wf_5g, wf_dbdc]
+>>
+>>
+>> Did you run the binding checker against this DTS?
+> The binding checker showed the groups setting is too long. We will send
+> a patch to fix yaml by setting groups as string-array.
 > 
-> Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
-> ---
->   drivers/clk/mediatek/Makefile    |   2 +-
->   drivers/clk/mediatek/clk-fhctl.c | 258 +++++++++++++++++++++++++++++
->   drivers/clk/mediatek/clk-fhctl.h |  27 +++
->   drivers/clk/mediatek/clk-pllfh.c | 271 +++++++++++++++++++++++++++++++
->   drivers/clk/mediatek/clk-pllfh.h |  81 +++++++++
->   5 files changed, 638 insertions(+), 1 deletion(-)
->   create mode 100644 drivers/clk/mediatek/clk-fhctl.c
->   create mode 100644 drivers/clk/mediatek/clk-fhctl.h
->   create mode 100644 drivers/clk/mediatek/clk-pllfh.c
->   create mode 100644 drivers/clk/mediatek/clk-pllfh.h
+
+Wait, does this mean the binding was wrong in the first place, as you can't set 
+all three groups in one node?
+
+>> Why can't we just merge wf_2g_5g_pins with wf_dbdc_pins?
+> Since they use different pinmux settings on the same pin, we need to
+> distinguish them.
 > 
-> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-> index caf2ce93d666..0e674a55e51e 100644
-> --- a/drivers/clk/mediatek/Makefile
-> +++ b/drivers/clk/mediatek/Makefile
-> @@ -1,5 +1,5 @@
->   # SPDX-License-Identifier: GPL-2.0
-> -obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o clk-mux.o
-> +obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o clk-mux.o clk-fhctl.o clk-pllfh.o
->   
->   obj-$(CONFIG_COMMON_CLK_MT6765) += clk-mt6765.o
->   obj-$(CONFIG_COMMON_CLK_MT6765_AUDIOSYS) += clk-mt6765-audio.o
-> diff --git a/drivers/clk/mediatek/clk-fhctl.c b/drivers/clk/mediatek/clk-fhctl.c
-> new file mode 100644
-> index 000000000000..69bd4ce2bc72
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-fhctl.c
-> @@ -0,0 +1,258 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> + */
-> +
 
-#include <linux/io.h>
-
-Please don't rely on implicit header inclusion.
-
-> +#include <linux/iopoll.h>
-> +
-> +#include "clk-mtk.h"
-> +#include "clk-pllfh.h"
-> +#include "clk-fhctl.h"
-> +
-> +#define PERCENT_TO_DDSLMT(dds, percent_m10) \
-> +	((((dds) * (percent_m10)) >> 5) / 100)
-> +
-> +static const struct fhctl_offset fhctl_offset = {
-> +	.offset_hp_en = 0x0,
-> +	.offset_clk_con = 0x8,
-> +	.offset_rst_con = 0xc,
-> +	.offset_slope0 = 0x10,
-> +	.offset_slope1 = 0x14,
-> +	.offset_cfg = 0x0,
-> +	.offset_updnlmt = 0x4,
-> +	.offset_dds = 0x8,
-> +	.offset_dvfs = 0xc,
-> +	.offset_mon = 0x10,
-> +};
-> +
-> +const struct fhctl_offset *fhctl_get_offset_table(void)
-> +{
-> +	return &fhctl_offset;
-> +}
-> +
-> +static void dump_hw(struct mtk_clk_pll *pll, struct fh_pll_regs *regs,
-> +		    const struct fh_pll_data *data)
-> +{
-> +	pr_info("hp_en<%x>,clk_con<%x>,slope0<%x>,slope1<%x>\n",
-> +		readl(regs->reg_hp_en), readl(regs->reg_clk_con),
-> +		readl(regs->reg_slope0), readl(regs->reg_slope1));
-> +	pr_info("cfg<%x>,lmt<%x>,dds<%x>,dvfs<%x>,mon<%x>\n",
-> +		readl(regs->reg_cfg), readl(regs->reg_updnlmt),
-> +		readl(regs->reg_dds), readl(regs->reg_dvfs),
-> +		readl(regs->reg_mon));
-> +	pr_info("pcw<%x>\n", readl(pll->pcw_addr));
-> +}
-> +
-> +static int fhctl_set_ssc_regs(struct mtk_clk_pll *pll, struct fh_pll_regs *regs,
-> +			      const struct fh_pll_data *data, u32 rate)
-> +{
-> +	u32 updnlmt_val, r;
-> +
-> +	writel((readl(regs->reg_cfg) & ~(data->frddsx_en)), regs->reg_cfg);
-> +	writel((readl(regs->reg_cfg) & ~(data->sfstrx_en)), regs->reg_cfg);
-> +	writel((readl(regs->reg_cfg) & ~(data->fhctlx_en)), regs->reg_cfg);
-> +
-> +	if (rate > 0) {
-> +		/* Set the relative parameter registers (dt/df/upbnd/downbnd) */
-> +		r = readl(regs->reg_cfg);
-> +		r &= ~(data->msk_frddsx_dys);
-> +		r |= (data->df_val << (ffs(data->msk_frddsx_dys) - 1));
-> +		writel(r, regs->reg_cfg);
-> +
-> +		r = readl(regs->reg_cfg);
-> +		r &= ~(data->msk_frddsx_dts);
-> +		r |= (data->dt_val << (ffs(data->msk_frddsx_dts) - 1));
-> +		writel(r, regs->reg_cfg);
-> +
-> +		writel((readl(pll->pcw_addr) & data->dds_mask) | data->tgl_org,
-> +			regs->reg_dds);
-> +
-> +		/* Calculate UPDNLMT */
-> +		updnlmt_val = PERCENT_TO_DDSLMT((readl(regs->reg_dds) &
-> +						 data->dds_mask), rate) <<
-> +						 data->updnlmt_shft;
-> +
-> +		writel(updnlmt_val, regs->reg_updnlmt);
-> +		writel(readl(regs->reg_hp_en) | BIT(data->fh_id),
-> +		       regs->reg_hp_en);
-> +		/* Enable SSC */
-> +		writel(readl(regs->reg_cfg) | data->frddsx_en, regs->reg_cfg);
-> +		/* Enable Hopping control */
-> +		writel(readl(regs->reg_cfg) | data->fhctlx_en, regs->reg_cfg);
-> +
-> +	} else {
-> +		/* Switch to APMIXEDSYS control */
-> +		writel(readl(regs->reg_hp_en) & ~BIT(data->fh_id),
-> +		       regs->reg_hp_en);
-> +		/* Wait for DDS to be stable */
-> +		udelay(30);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int hopping_hw_flow(struct mtk_clk_pll *pll, struct fh_pll_regs *regs,
-> +			   const struct fh_pll_data *data,
-> +			   struct fh_pll_state *state, unsigned int new_dds)
-> +{
-> +	u32 dds_mask = data->dds_mask;
-> +	u32 mon_dds = 0;
-> +	u32 con_pcw_tmp;
-> +	int ret;
-> +
-> +	if (state->ssc_rate)
-> +		fhctl_set_ssc_regs(pll, regs, data, 0);
-> +
-> +	writel((readl(pll->pcw_addr) & dds_mask) | data->tgl_org,
-> +		regs->reg_dds);
-> +
-> +	writel(readl(regs->reg_cfg) | data->sfstrx_en, regs->reg_cfg);
-> +	writel(readl(regs->reg_cfg) | data->fhctlx_en, regs->reg_cfg);
-> +	writel(data->slope0_value, regs->reg_slope0);
-> +	writel(data->slope1_value, regs->reg_slope1);
-> +
-> +	writel(readl(regs->reg_hp_en) | BIT(data->fh_id), regs->reg_hp_en);
-> +	writel((new_dds) | (data->dvfs_tri), regs->reg_dvfs);
-> +
-> +	/* Wait 1000 us until DDS stable */
-> +	ret = readl_poll_timeout_atomic(regs->reg_mon, mon_dds,
-> +				       (mon_dds & dds_mask) == new_dds,
-> +					10, 1000);
-> +	if (ret) {
-> +		pr_warn("%s: FHCTL hopping timeout\n", pll->data->name);
-> +		dump_hw(pll, regs, data);
-> +	}
-> +
-> +	con_pcw_tmp = readl(pll->pcw_addr) & (~dds_mask);
-> +	con_pcw_tmp = (con_pcw_tmp | (readl(regs->reg_mon) & dds_mask) |
-> +		       data->pcwchg);
-> +
-> +	writel(con_pcw_tmp, pll->pcw_addr);
-> +	writel(readl(regs->reg_hp_en) & ~BIT(data->fh_id), regs->reg_hp_en);
-> +
-> +	if (state->ssc_rate)
-> +		fhctl_set_ssc_regs(pll, regs, data, state->ssc_rate);
-
-Does it really make sense to set the SSC registers if the FH operation times out?
-
-> +
-> +	return ret;
-> +}
-> +
-> +static unsigned int __get_postdiv(struct mtk_clk_pll *pll,
-> +				  struct fh_pll_regs *regs,
-> +				  const struct fh_pll_data *fh_data)
-
-You don't need regs, nor fh_data, so this can be as simple as
-
-static unsigned int __get_postdiv(struct mtk_clk_pll *pll)
-
-> +{
-> +	unsigned int regval;
-> +
-> +	regval = readl(pll->pd_addr) >> pll->data->pd_shift;
-> +	regval &= POSTDIV_MASK;
-> +
-
-	return BIT(regval);
-
-> +	return (1 << regval);
-> +}
-> +
-> +static void __set_postdiv(struct mtk_clk_pll *pll, struct fh_pll_regs *regs,
-> +			  const struct fh_pll_data *data, int postdiv)
-
-static void __set_postdiv(struct mtk_clk_pll *pll, unsigned int val)
-
-> +{
-> +	unsigned int regval;
-> +
-> +	regval = readl(pll->pd_addr);
-> +	regval &= ~(POSTDIV_MASK << pll->data->pd_shift);
-> +	regval |= (ffs(postdiv) - 1) << pll->data->pd_shift;
-> +	writel(regval, pll->pd_addr);
-> +}
-> +
-> +static int fhctl_hopping(struct mtk_fh *fh, unsigned int new_dds, int postdiv)
-
-The postdiv cannot ever be negative, so you can change it to an unsigned type...
-
-static int fhctl_hopping(struct mtk_fh *fh, unsigned int new_dds,
-			 unsigned int postdiv)
-
-> +{
-> +	const struct fh_pll_data *data = &fh->pllfh_data->data;
-> +	struct fh_pll_state *state = &fh->pllfh_data->state;
-> +	struct fh_pll_regs *regs = &fh->regs;
-> +	struct mtk_clk_pll *pll = &fh->clk_pll;
-> +	spinlock_t *lock = fh->lock;
-> +	unsigned int pll_postdiv;
-> +	unsigned long flags = 0;
-> +	int ret;
-> +
-
-...so since postdiv is unsigned, we can write this conditional as
-
-	if (postdiv)
-
-> +	if (postdiv > 0) {
-> +		pll_postdiv = __get_postdiv(pll, regs, data);
-> +
-> +		if (postdiv > pll_postdiv)
-> +			__set_postdiv(pll, regs, data, postdiv);
-> +	}
-> +
-> +	spin_lock_irqsave(lock, flags);
-> +
-> +	ret = hopping_hw_flow(pll, regs, data, state, new_dds);
-> +
-> +	spin_unlock_irqrestore(lock, flags);
-> +
-> +	if (postdiv > 0) {
-> +		if (postdiv < pll_postdiv)
-
-...and this one as
-
-if (postdiv && postdiv < pll_postdiv)
-
-> +			__set_postdiv(pll, regs, data, postdiv);
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static int __fhctl_ssc_enable(struct mtk_fh *fh, u32 rate)
-> +{
-> +	const struct fh_pll_data *data = &fh->pllfh_data->data;
-> +	struct fh_pll_state *state = &fh->pllfh_data->state;
-> +	struct fh_pll_regs *regs = &fh->regs;
-> +	struct mtk_clk_pll *pll = &fh->clk_pll;
-> +	spinlock_t *lock = fh->lock;
-> +	unsigned long flags = 0;
-> +
-> +	spin_lock_irqsave(lock, flags);
-> +
-> +	fhctl_set_ssc_regs(pll, regs, data, rate);
-> +	state->ssc_rate = rate;
-> +
-> +	spin_unlock_irqrestore(lock, flags);
-> +
-> +	return 0;
-> +}
-> +
-> +static int fhctl_ssc_enable(struct mtk_fh *fh, u32 rate)
-> +{
-> +	return __fhctl_ssc_enable(fh, rate);
-> +}
-> +
-> +static int fhctl_ssc_disable(struct mtk_fh *fh)
-> +{
-> +	return __fhctl_ssc_enable(fh, 0);
-> +}
-> +
-> +static const struct fh_operation fhctl_ops = {
-> +	.hopping = fhctl_hopping,
-> +	.ssc_enable = fhctl_ssc_enable,
-
-Just one callback for ssc_enable is enough, it's fine to keep the logic as
-ssc_enable(fh, >0) to enable and ssc_enable(fh <=0) to disable.
-
-> +	.ssc_disable = fhctl_ssc_disable,
-> +};
-> +
-> +const struct fh_operation *fhctl_get_ops(void)
-> +{
-> +	return &fhctl_ops;
-> +}
-> +
-> +void fhctl_hw_init(struct mtk_fh *fh)
-> +{
-> +	const struct fh_pll_data data = fh->pllfh_data->data;
-> +	struct fh_pll_state state = fh->pllfh_data->state;
-> +	struct fh_pll_regs regs = fh->regs;
-> +	u32 val;
-> +
-> +	/* initial hw register */
-> +	val = readl(regs.reg_clk_con) | BIT(data.fh_id);
-> +	writel(val, regs.reg_clk_con);
-> +
-> +	val = readl(regs.reg_rst_con) & ~BIT(data.fh_id);
-> +	writel(val, regs.reg_rst_con);
-> +	val = readl(regs.reg_rst_con) | BIT(data.fh_id);
-> +	writel(val, regs.reg_rst_con);
-> +
-> +	writel(0x0, regs.reg_cfg);
-> +	writel(0x0, regs.reg_updnlmt);
-> +	writel(0x0, regs.reg_dds);
-> +
-> +	/* enable ssc if needed */
-> +	if (state.ssc_rate)
-> +		fh->ops->ssc_enable(fh, state.ssc_rate);
-> +}
-> diff --git a/drivers/clk/mediatek/clk-fhctl.h b/drivers/clk/mediatek/clk-fhctl.h
-> new file mode 100644
-> index 000000000000..3cd4921c39e9
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-fhctl.h
-> @@ -0,0 +1,27 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> + */
-> +
-> +#ifndef __CLK_FHCTL_H
-> +#define __CLK_FHCTL_H
-> +
-
-One blank line is enough.
-
-> +
-> +struct fhctl_offset {
-> +	u32 offset_hp_en;
-> +	u32 offset_clk_con;
-> +	u32 offset_rst_con;
-> +	u32 offset_slope0;
-> +	u32 offset_slope1;
-> +	u32 offset_cfg;
-> +	u32 offset_updnlmt;
-> +	u32 offset_dds;
-> +	u32 offset_dvfs;
-> +	u32 offset_mon;
-> +};
-> +const struct fhctl_offset *fhctl_get_offset_table(void);
-> +const struct fh_operation *fhctl_get_ops(void);
-> +void fhctl_hw_init(struct mtk_fh *fh);
-> +
-> +#endif
-> diff --git a/drivers/clk/mediatek/clk-pllfh.c b/drivers/clk/mediatek/clk-pllfh.c
-> new file mode 100644
-> index 000000000000..71b35323b526
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-pllfh.c
-> @@ -0,0 +1,271 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> + */
-> +
-> +#include <linux/of.h>
-> +#include <linux/of_address.h>
-> +#include <linux/io.h>
-> +#include <linux/slab.h>
-> +#include <linux/clkdev.h>
-> +#include <linux/delay.h>
-> +
-> +#include "clk-mtk.h"
-> +#include "clk-pllfh.h"
-> +#include "clk-fhctl.h"
-> +
-> +static DEFINE_SPINLOCK(pllfh_lock);
-> +
-> +inline struct mtk_fh *to_mtk_fh(struct clk_hw *hw)
-> +{
-> +	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
-> +
-> +	return container_of(pll, struct mtk_fh, clk_pll);
-> +}
-> +
-> +static int mtk_fhctl_set_rate(struct clk_hw *hw, unsigned long rate,
-> +			      unsigned long parent_rate)
-> +{
-> +	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
-> +	struct mtk_fh *fh = to_mtk_fh(hw);
-> +	u32 pcw = 0;
-> +	u32 postdiv;
-> +
-> +	mtk_pll_calc_values(pll, &pcw, &postdiv, rate, parent_rate);
-> +	fh->ops->hopping(fh, pcw, postdiv);
-
-return fh->ops->hopping(....);
-
-> +
-> +	return 0;
-> +}
-> +
-
-..snip..
-
-> diff --git a/drivers/clk/mediatek/clk-pllfh.h b/drivers/clk/mediatek/clk-pllfh.h
-> new file mode 100644
-> index 000000000000..d9f7c8527548
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-pllfh.h
-> @@ -0,0 +1,81 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> + */
-> +
-> +#ifndef __DRV_CLKFH_H
-> +#define __DRV_CLKFH_H
-> +
-> +#include "clk-pll.h"
-> +
-> +struct fh_pll_state {
-
-Please, base as first member.
-
-> +	u32 fh_enable;
-> +	u32 ssc_rate;
-> +	void __iomem *base;
-> +};
-> +
+wf-2g-5g-pins and wf-dbdc-pins set the same drive-strength to the very same 
+group of pins. What do you mean exactly? Sorry I'm not an expert on the pinctrl 
+infrastructure.
 
 Regards,
-Angelo
+Matthias
 
 
+> Best Regards,
+> Peter Chiu
+>>
+>> Regards,
+>> Matthias
+>>
+>>> +		};
+>>> +		conf {
+>>> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3",
+>>> "WF0_HB4",
+>>> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5",
+>>> "WF0_HB6",
+>>> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9",
+>>> "WF0_HB10",
+>>> +			       "WF0_TOP_CLK", "WF0_TOP_DATA",
+>>> "WF1_HB1",
+>>> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4",
+>>> "WF1_HB0",
+>>> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7",
+>>> "WF1_HB8",
+>>> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
+>>> +			drive-strength = <4>;
+>>> +		};
+>>> +	};
+>>> +
+>>> +	wf_dbdc_pins: wf-dbdc-pins {
+>>> +		mux {
+>>> +			function = "wifi";
+>>> +			groups = "wf_dbdc";
+>>> +		};
+>>> +		conf {
+>>> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3",
+>>> "WF0_HB4",
+>>> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5",
+>>> "WF0_HB6",
+>>> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9",
+>>> "WF0_HB10",
+>>> +			       "WF0_TOP_CLK", "WF0_TOP_DATA",
+>>> "WF1_HB1",
+>>> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4",
+>>> "WF1_HB0",
+>>> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7",
+>>> "WF1_HB8",
+>>> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
+>>> +			drive-strength = <4>;
+>>> +		};
+>>> +	};
+>>>    };
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+>>> b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+>>> index e3a407d..890ded0 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+>>> @@ -7,6 +7,7 @@
+>>>    #include <dt-bindings/interrupt-controller/irq.h>
+>>>    #include <dt-bindings/interrupt-controller/arm-gic.h>
+>>>    #include <dt-bindings/clock/mt7986-clk.h>
+>>> +#include <dt-bindings/reset/mt7986-resets.h>
+>>>    
+>>>    / {
+>>>    	interrupt-parent = <&gic>;
+>>> @@ -70,6 +71,11 @@ secmon_reserved: secmon@43000000 {
+>>>    			reg = <0 0x43000000 0 0x30000>;
+>>>    			no-map;
+>>>    		};
+>>> +
+>>> +		wmcpu_emi: wmcpu-reserved@4fc00000 {
+>>> +			no-map;
+>>> +			reg = <0 0x4fc00000 0 0x00100000>;
+>>> +		};
+>>>    	};
+>>>    
+>>>    	timer {
+>>> @@ -261,6 +267,23 @@ eth: ethernet@15100000 {
+>>>    			#size-cells = <0>;
+>>>    			status = "disabled";
+>>>    		};
+>>> +
+>>> +		wifi: wifi@18000000 {
+>>> +			compatible = "mediatek,mt7986-wmac";
+>>> +			resets = <&watchdog
+>>> MT7986_TOPRGU_CONSYS_SW_RST>;
+>>> +			reset-names = "consys";
+>>> +			clocks = <&topckgen CLK_TOP_CONN_MCUSYS_SEL>,
+>>> +				 <&topckgen CLK_TOP_AP2CNN_HOST_SEL>;
+>>> +			clock-names = "mcu", "ap2conn";
+>>> +			reg = <0 0x18000000 0 0x1000000>,
+>>> +			      <0 0x10003000 0 0x1000>,
+>>> +			      <0 0x11d10000 0 0x1000>;
+>>> +			interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
+>>> +				     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
+>>> +				     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
+>>> +				     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
+>>> +			memory-region = <&wmcpu_emi>;
+>>> +		};
+>>>    	};
+>>>    
+>>>    };
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+>>> b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+>>> index 0f49d57..7f21b10 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+>>> @@ -98,3 +98,46 @@ fixed-link {
+>>>    		};
+>>>    	};
+>>>    };
+>>> +
+>>> +&wifi {
+>>> +	status = "okay";
+>>> +	pinctrl-names = "default", "dbdc";
+>>> +	pinctrl-0 = <&wf_2g_5g_pins>;
+>>> +	pinctrl-1 = <&wf_dbdc_pins>;
+>>> +};
+>>> +
+>>> +&pio {
+>>> +	wf_2g_5g_pins: wf-2g-5g-pins {
+>>> +		mux {
+>>> +			function = "wifi";
+>>> +			groups = "wf_2g", "wf_5g";
+>>> +		};
+>>> +		conf {
+>>> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3",
+>>> "WF0_HB4",
+>>> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5",
+>>> "WF0_HB6",
+>>> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9",
+>>> "WF0_HB10",
+>>> +			       "WF0_TOP_CLK", "WF0_TOP_DATA",
+>>> "WF1_HB1",
+>>> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4",
+>>> "WF1_HB0",
+>>> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7",
+>>> "WF1_HB8",
+>>> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
+>>> +			drive-strength = <4>;
+>>> +		};
+>>> +	};
+>>> +
+>>> +	wf_dbdc_pins: wf-dbdc-pins {
+>>> +		mux {
+>>> +			function = "wifi";
+>>> +			groups = "wf_dbdc";
+>>> +		};
+>>> +		conf {
+>>> +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3",
+>>> "WF0_HB4",
+>>> +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5",
+>>> "WF0_HB6",
+>>> +			       "WF0_HB7", "WF0_HB8", "WF0_HB9",
+>>> "WF0_HB10",
+>>> +			       "WF0_TOP_CLK", "WF0_TOP_DATA",
+>>> "WF1_HB1",
+>>> +			       "WF1_HB2", "WF1_HB3", "WF1_HB4",
+>>> "WF1_HB0",
+>>> +			       "WF1_HB5", "WF1_HB6", "WF1_HB7",
+>>> "WF1_HB8",
+>>> +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
+>>> +			drive-strength = <4>;
+>>> +		};
+>>> +	};
+>>> +};
+> 
 
