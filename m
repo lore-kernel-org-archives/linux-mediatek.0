@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F711ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Sep 2022 10:32:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C47E2C64991
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Sep 2022 10:58:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=59KVKyo44arcJSEWdnpNMPNJsn7gA8wJcho+4e9oQPw=; b=g6vlDgYHC+fu0ze4ZPzRvUnRhG
-	Aphu7/tQgRFFsteqxGJLQb/MM3S2PCOq6udl3ovvZassL4YORDHYBPa3DraHHzHCG+nVaYUqjxhXA
-	63bEhdmhILtZz9IUk7a5zDxSU8ChSI5M2ISVU0IxiWFxu+fae3qFdzA2XXTiFeIOzyzOd0kp0F3fn
-	wqqMOk8DR3bIAclulj4vLJzOdU5BzTzibxA/GbHprmmhChc7jfR4ZQ0FTWME0Q0PCRjfRkxW+rsSm
-	GKqfALc2Yhn4S4e6Z7yJL7bt7g8wsZpD7DzecTeQQeFTQ2MlR+1xH75MClEFZB1ObKhf7EjVKJ74C
-	xivz99qQ==;
+	bh=JAElCVECM3BW4Dh/WGNeYPLRwtunOlI3Ghfnh4z7gDk=; b=XpaNMDe9IJamJMPjIy1FdzqzXD
+	0p7Oz0gw6MZcilYY1D2ojN22b/K/9TEkBeJexRW/SJ1jKY+eAfPzd0XYcMP0TEbwfoi6/IJCj4qHz
+	H3woNnYkF/xV9+WLJt6DXS5u6Jsm/a0gWkLs/6QMWFMP1gaf0NeFt19x/4iAyOYVVXPh0DMDaCNY9
+	ml4OrpJRknVPLFcCM0/fmi7TLYvGbmI1sGGK1RBuH6QXZsKcW83WovjPLpwlyLYFGoSoSDoeYE2s/
+	K7yG4Iie7JdRvS3Tr9w48Du20vEKOOCdgkHOnZEufua0vtNGFtaBVggNXv3IGwKgNVJq4nv6b3XN6
+	UMSPPYgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oThUr-00B38j-TT; Thu, 01 Sep 2022 10:32:29 +0000
+	id 1oThuH-00BBgV-78; Thu, 01 Sep 2022 10:58:45 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oThUg-00B35c-QA; Thu, 01 Sep 2022 10:32:20 +0000
+	id 1oThu6-00BBcs-PQ; Thu, 01 Sep 2022 10:58:36 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A0CEA6601DF7;
-	Thu,  1 Sep 2022 11:32:16 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7DBDD6601DF7;
+	Thu,  1 Sep 2022 11:58:31 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662028337;
-	bh=TzpDrl8aXnnF1e6jwiJCsiOD00pZJii9Kr+EB7ormQE=;
+	s=mail; t=1662029912;
+	bh=J0a7JIYzSfLJ+NmiuKc1E8YXYw0cLkKnM9rQliRatI8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iTqWZoDS3yvgnt+jDw5Qc5NchAtI2im7o+mTfK8C6XSsFjd7qsITKhYmIyd+NA9ov
-	 7GaKfswPrjdZfi6wLkAIs542bKH2o4JPwyL+zt5lfgLgbTGIu1puZRN0rExw/FqnVA
-	 h34K/IyizJVRxOmo66uipkYL8TYz02/6YiMTD8u8oebvommu1l9iBcx84MglmSPBcf
-	 K9hOBwTkB/mTI6zMRKhrKFieVg7ZW2yqHEzxYDoJah00DYpYp125eulNdq4tB6exZn
-	 oTQXfJQ6w8HfyaxHpso/olsozh2iyFx20xHsHKTeiAFml65UEXz9XwKCudVt/5ktiV
-	 7yliHyLci4y7A==
-Message-ID: <9b82849e-516b-c798-994e-6bc8945c4831@collabora.com>
-Date: Thu, 1 Sep 2022 12:32:14 +0200
+	b=Vb4UzK09kZ2A61z7ufCdC23usamdiAglog33FnJ+oLYi3dkxmwmTiRvJlzII0IPS7
+	 2LH5JHyAmZE9ywWFhlGNnG5wNUZlRcAS2lEEL5xI7xiQ1Fi8IHDoqHhoBAs9qX9Hx7
+	 WmoGU9oPqgb1BR6+8fQQ1vKbqK44R317SHn3VUscV6y2NHCLmwpqQoCuuW0qShEHuB
+	 HcwocUN3tEsi9OY15U5kTscZYh7jR/DJMH2GuprZLRnAnnDgnzgcYLMSQ6/kINQ/Ai
+	 ucD97vXat0x9ga4eq5wv03AKtE0kj/oW6lSAFMy5pZc+nkZunGShzgl31OZW4rFdYn
+	 WHKCxAjQW5dEg==
+Message-ID: <3ceeb700-4424-6182-6d14-60c569f7c59d@collabora.com>
+Date: Thu, 1 Sep 2022 12:58:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH 2/4] dt-bindings: arm: mediatek: Add new bindings of
- MediaTek frequency hopping
+Subject: Re: [PATCH v17 00/10] Add MT8195 DisplayPort driver
 Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, sboyd@kernel.org
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Edward-JW Yang <edward-jw.yang@mediatek.com>
-References: <20220831124850.7748-1-johnson.wang@mediatek.com>
- <20220831124850.7748-3-johnson.wang@mediatek.com>
- <b1296c37-5283-81f7-1939-7ea20e1f4d0d@linaro.org>
- <1fae0c47-fff9-89e9-c849-536d167d741d@collabora.com>
- <38910de5-89ad-e7a1-261f-18b51c8e7877@linaro.org>
- <955f7200-9d08-0d21-2d1a-5ccbd0f3a8af@collabora.com>
- <93d5de8e-31b2-4412-3348-7ba1903cde84@linaro.org>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, daniel@ffwll.ch, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, mripard@kernel.org, tzimmermann@suse.de,
+ matthias.bgg@gmail.com, deller@gmx.de, airlied@linux.ie
+Cc: msp@baylibre.com, granquet@baylibre.com, jitao.shi@mediatek.com,
+ wenst@chromium.org, ck.hu@mediatek.com, liangxu.xu@mediatek.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <93d5de8e-31b2-4412-3348-7ba1903cde84@linaro.org>
+In-Reply-To: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_033219_010468_B0B4A8AA 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20220901_035834_992197_91924AD1 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,31 +80,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/09/22 12:30, Krzysztof Kozlowski ha scritto:
-> On 01/09/2022 13:22, AngeloGioacchino Del Regno wrote:
->>> That's simply not a proper
->>> hardware description, so again:
->>>
->>> 1. If this is separate device (as you indicated), then it needs
->>> expressing the dependencies and uses of other device resources.
->>
->> Agreed. In this case, what about...
->>
->> mediatek,hopping-ssc-percents = <&provider CLK_SOMEPLL 3>;
->>
->> or would it be better to specify the clocks in a separated property?
->>
->> clocks = <&provider CLK_SOMEPLL>, <&provider CLK_SOME_OTHER_PLL>;
->> mediatek,hopping-ssc-percents = <3>, <5>;
->>
-> 
-> I propose the last one - using standard clocks property and a matching
-> table.
-> 
+Il 01/09/22 06:41, Bo-Chen Chen ha scritto:
+> This patch is separated from v10 which is including dp driver, phy driver
+> and dpintf driver. This series is only contained the DisplayPort driver.
 
-Right. I like the last one a bit better, as well.
+For the entire series:
 
-Thanks for the advices!
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Thanks!
 Angelo
+
+> 
+> Bo-Chen Chen (4):
+>    drm/mediatek: dp: Add multiple bridge types support
+>    drm/mediatek: dp: Add multiple smc commands support
+>    drm/mediatek: dp: Add multiple calibration data formats support
+>    drm/mediatek: dp: Determine device of next_bridge
+> 
+> Guillaume Ranquet (2):
+>    drm/mediatek: dp: Add MT8195 External DisplayPort support
+>    drm/mediatek: dp: Audio support for MT8195
+> 
+> Jitao Shi (1):
+>    drm/mediatek: dp: Add hpd debounce
+> 
+> Markus Schneider-Pargmann (3):
+>    dt-bindings: mediatek,dp: Add Display Port binding
+>    video/hdmi: Add audio_infoframe packing for DP
+>    drm/mediatek: Add MT8195 Embedded DisplayPort driver
+> 
+>   .../display/mediatek/mediatek,dp.yaml         |  116 +
+>   drivers/gpu/drm/mediatek/Kconfig              |    9 +
+>   drivers/gpu/drm/mediatek/Makefile             |    2 +
+>   drivers/gpu/drm/mediatek/mtk_dp.c             | 2661 +++++++++++++++++
+>   drivers/gpu/drm/mediatek/mtk_dp_reg.h         |  356 +++
+>   drivers/video/hdmi.c                          |   82 +-
+>   include/drm/display/drm_dp.h                  |    2 +
+>   include/linux/hdmi.h                          |    7 +-
+>   8 files changed, 3215 insertions(+), 20 deletions(-)
+>   create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+>   create mode 100644 drivers/gpu/drm/mediatek/mtk_dp.c
+>   create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_reg.h
+> 
+
+
 
 
