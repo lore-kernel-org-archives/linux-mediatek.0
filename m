@@ -4,52 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AAA1ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Sep 2022 10:22:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEBCBECAAD1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Sep 2022 10:30:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ROvkh0ThEOUnp9fSB2zvmoy2J4I2zY0/WqKPA+M8wvo=; b=qP+KlTUZ3z1L9wm0hlp9Aiuqel
-	jT1FzCFXYx8xVe6kz6XlDW8dE3ebN2TTj7lF5AZ/a9TCT3hX0KDoHQVhUD4vhU/GRmi+9EbXhKHjT
-	1zvq16+pszOf1vPY7bkawFR1vd/Mh+WuBOq5EtcI+d/kxP9K85dAH832iD+vp19CNHyKt7StMxBgH
-	EY+Id7YTrLs3AAM20IabFyJ+dXAm+OmZdlJ1nzfkSdDPgs6tBj3W48dehc5g70hdUHcCF6kZl61o0
-	TCR6BuDizU9B6qkjecY9IvGLROPCxSbCHYbPVWUIafkR1DxP2CdVjPpF4iU1zlKf0tbaRxHf+AOPi
-	4Y9VJk7w==;
+	bh=Hq/wXphQ4CQCWqFQUckeg7mpeUY2opCgFidU5GlYS/M=; b=3WKTqf0THCPGj+0LcqWwS1GuAx
+	CwnfNmyY5vQ0DEV1HMy1x+/V4RVhrwDoKVqvQK13jnZeEazPFcjGV8Xd3uR16Q3k0+O6k5Z1jlIH6
+	nvF0jf5C6a7L4u2rhVOCUvg4MCes7Gzl8e7Ka5mQgQoUV93ZWK4o+u3uKA6Q5l1vCUqHDhHGBXYux
+	8apHUVdVmoyWXNdS/8LIPtvZ4L32dRUytN4KxmHQ8EBhoyZeGZ137C8Q0o2Ox5yMr7A94MdAPrkWO
+	sIajWl2YIKbGrJrAmTFxKdTwr7vRWlLXSlIZOF5JjfmkP7YUDlvzqk/uqIMd/JZM5K066C59Y2mrm
+	DCm/57VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oThL7-00B0WE-OP; Thu, 01 Sep 2022 10:22:25 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oThTB-00B2dp-3t; Thu, 01 Sep 2022 10:30:45 +0000
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oThKw-00B0TA-GQ; Thu, 01 Sep 2022 10:22:16 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 894856601DF7;
-	Thu,  1 Sep 2022 11:22:07 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662027728;
-	bh=vliuj8fpj7caeOIuls2yuQlrUTuHergsba1k5t5Te4U=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PlFNHJHi3Pc8I8/yuffbHpgB2Mp8/1YNeEcHtJ4RBVgo388GApwZVRJg93+qUCxaV
-	 1sWua+xRUiftYNLLPhLf/IOM2yce0KI9QxbII+bM3SHCwnTukMFnfJqbpEqjjgx5D1
-	 ioctp29KCItY3T2lBy5ljx8HJ60kHHThRxZJpGA9fDGWmfgi5lC+hZYXTOjKjVaXVe
-	 iXojg9dJ3IijmOExWQ97jLKwgFG+svVMAOE50YUU8jrPYzFBSLUorJCALTubsL0fFc
-	 UcvJpswf5PTL6AiKVQh9soSiglZ0XAqYM7TQRjk87+IZDzEWeV5n33Blb2wDI09rkZ
-	 NftQoWbh2wJVA==
-Message-ID: <955f7200-9d08-0d21-2d1a-5ccbd0f3a8af@collabora.com>
-Date: Thu, 1 Sep 2022 12:22:05 +0200
+	id 1oThT1-00B2a7-Np
+	for linux-mediatek@lists.infradead.org; Thu, 01 Sep 2022 10:30:37 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id s15so12265356ljp.5
+        for <linux-mediatek@lists.infradead.org>; Thu, 01 Sep 2022 03:30:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=Hq/wXphQ4CQCWqFQUckeg7mpeUY2opCgFidU5GlYS/M=;
+        b=wMrHD5kd1sjRAGwDOMxCLd5TmCSprc0l8Nf3sWx1dXuMRw6mfEP63hWBtvHNhJ801W
+         QEkV7vymXEa/aXbYqGX4R5yiFQnl8uzfQEIiMjxXJxpx8itKZweitlkO/FPuZmia0adE
+         M6WddBo1NBOeeg5/1y/DaNd3wmc3E/n8vDRwKSngkHvNCgF5wx2WcPhrlyIoBIJtnDOC
+         DWPdhzxfLoAUMhVxP5tYYJk6X9aNydarTKdgb5IBaD2c6MQAxCPQWDlMkv2YMw6j0jj3
+         N/UvpNU9lhbiLUy9Hr6JHYnM5DzYIpAwh8rG0p8VNvFxLcn+dEak3SolRfU50q23CH6t
+         W37g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=Hq/wXphQ4CQCWqFQUckeg7mpeUY2opCgFidU5GlYS/M=;
+        b=b6M5V6TpZUMopf0ryuf6JewGsKu49vHGik/XnvG2Qkv0kmxez1W37GWcE9Yi6tCkIq
+         IGCa6qaw74cP66B1G1yq5W5KQh2I1+a7xqOMCPjyoq9gBO2bn/2LsaARpudsq0a54Mey
+         x6XN3cF+yEQqF2vmQi8wRxYyiwAoRWYg95yQgx09AK058Co3fBFfKNbZcUSKoHUcWtcg
+         MG2pUtBf6qnIY4KuH+/WYFXdz4xYrwL6AEml9bt0g/Z0o1GFLe/ZDnEURyiJoWw3OYNB
+         QjI1rvA0rUY5Lh8um6XWXhDxYkSxN4zOigxl6cOmS4Ta5Hpa6QyV22SbgHaDVQLEyL8i
+         YeJQ==
+X-Gm-Message-State: ACgBeo2UgmHqIp7+tAHT39uzGB4tzq2SF6KQHaxjU7DDyhN2jwRhUppf
+	lrIhXA1gW1rKD1/kCbPr69WHQQ==
+X-Google-Smtp-Source: AA6agR6rVg//wgHti5p5gLXR9YIZj3y2n/9kU9errMO9J/QeGYwVMsfd2wxCYlqzONqcnaXPvhV2VA==
+X-Received: by 2002:a2e:9018:0:b0:266:6871:cdc1 with SMTP id h24-20020a2e9018000000b002666871cdc1mr4524850ljg.244.1662028232455;
+        Thu, 01 Sep 2022 03:30:32 -0700 (PDT)
+Received: from [192.168.28.124] (balticom-73-99-134.balticom.lv. [109.73.99.134])
+        by smtp.gmail.com with ESMTPSA id 8-20020ac25f48000000b00492f84befffsm1567689lfz.192.2022.09.01.03.30.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 01 Sep 2022 03:30:31 -0700 (PDT)
+Message-ID: <93d5de8e-31b2-4412-3348-7ba1903cde84@linaro.org>
+Date: Thu, 1 Sep 2022 13:30:30 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
 Subject: Re: [PATCH 2/4] dt-bindings: arm: mediatek: Add new bindings of
  MediaTek frequency hopping
 Content-Language: en-US
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org,
  krzysztof.kozlowski+dt@linaro.org, sboyd@kernel.org
 Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
@@ -62,13 +81,14 @@ References: <20220831124850.7748-1-johnson.wang@mediatek.com>
  <b1296c37-5283-81f7-1939-7ea20e1f4d0d@linaro.org>
  <1fae0c47-fff9-89e9-c849-536d167d741d@collabora.com>
  <38910de5-89ad-e7a1-261f-18b51c8e7877@linaro.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <38910de5-89ad-e7a1-261f-18b51c8e7877@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <955f7200-9d08-0d21-2d1a-5ccbd0f3a8af@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <955f7200-9d08-0d21-2d1a-5ccbd0f3a8af@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_032214_844330_79BA4632 
-X-CRM114-Status: GOOD (  25.57  )
+X-CRM114-CacheID: sfid-20220901_033035_788585_1DE1FA05 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,115 +103,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/09/22 11:42, Krzysztof Kozlowski ha scritto:
-> On 01/09/2022 11:04, AngeloGioacchino Del Regno wrote:
->> Il 31/08/22 15:19, Krzysztof Kozlowski ha scritto:
->>> On 31/08/2022 15:48, Johnson Wang wrote:
->>>> Add the new binding documentation for MediaTek frequency hopping
->>>> and spread spectrum clocking control.
->>>>
->>>> Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
->>>> Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
->>>> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
->>>> ---
->>>>    .../bindings/arm/mediatek/mediatek,fhctl.yaml | 49 +++++++++++++++++++
->>>>    1 file changed, 49 insertions(+)
->>>>    create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yaml
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yaml
->>>> new file mode 100644
->>>> index 000000000000..c5d76410538b
->>>> --- /dev/null
->>>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yaml
->>>> @@ -0,0 +1,49 @@
->>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->>>> +%YAML 1.2
->>>> +---
->>>> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,fhctl.yaml#
->>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>>> +
->>>> +title: MediaTek frequency hopping and spread spectrum clocking control
->>>> +
->>>> +maintainers:
->>>> +  - Edward-JW Yang <edward-jw.yang@mediatek.com>
->>>> +
->>>> +description: |
->>>> +  Frequency hopping control (FHCTL) is a piece of hardware that control
->>>> +  some PLLs to adopt "hopping" mechanism to adjust their frequency.
->>>> +  Spread spectrum clocking (SSC) is another function provided by this hardware.
->>>> +
->>>> +properties:
->>>> +  compatible:
->>>> +    const: mediatek,fhctl
->>>
->>> You need SoC/device specific compatibles. Preferably only SoC specific,
->>> without generic fallback, unless you can guarantee (while representing
->>> MediaTek), that generic fallback will cover all of their SoCs?
->>>
->>>> +
->>>> +  reg:
->>>> +    maxItems: 1
->>>> +
->>>> +  mediatek,hopping-ssc-percents:
->>>> +    description: |
->>>> +      Determine the enablement of frequency hopping feature and the percentage
->>>> +      of spread spectrum clocking for PLLs.
->>>> +    $ref: /schemas/types.yaml#/definitions/uint32-matrix
->>>> +    items:
->>>> +      items:
->>>> +        - description: PLL id that is expected to enable frequency hopping.
->>>
->>> So the clocks are indices from some specific, yet unnamed
->>> clock-controller? This feels hacky. You should rather take here clock
->>> phandles (1) or integrate it into specific clock controller (2). The
->>> reason is that either your device does something on top of existing
->>> clocks (option 1, thus it takes clock as inputs) or it modifies existing
->>> clocks (option 2, thus it is integral part of clock-controller).
->>>
+On 01/09/2022 13:22, AngeloGioacchino Del Regno wrote:
+>> That's simply not a proper
+>> hardware description, so again:
 >>
->> FHCTL is a MCU that handles (some, or all, depending on what's supported on the
->> SoC and what's needed by the board) PLL frequency setting, doing it in steps and
->> avoiding overshooting and other issues.
->>
->> We had a pretty big conversation about this a while ago and the indices instead
->> of phandles is actually my fault, that happened because I initially proposed your
->> option 2 but then for a number of reasons we went with this kind of solution.
->>
->> I know it's going to be a long read, but the entire conversation is on the list [1]
->>
+>> 1. If this is separate device (as you indicated), then it needs
+>> expressing the dependencies and uses of other device resources.
 > 
-> Sorry, but it's a hacky architecture where one device (which is a clock
-> provider) and second device have no relationship in hardware description
-> but both play with each other resources.
-
-Yes, that's exactly how it is hardware-side. Except, just to be as clear as
-possible, FHCTL plays with the clock provider, but *not* vice-versa.
-
-> That's simply not a proper
-> hardware description, so again:
+> Agreed. In this case, what about...
 > 
-> 1. If this is separate device (as you indicated), then it needs
-> expressing the dependencies and uses of other device resources.
-
-Agreed. In this case, what about...
-
-mediatek,hopping-ssc-percents = <&provider CLK_SOMEPLL 3>;
-
-or would it be better to specify the clocks in a separated property?
-
-clocks = <&provider CLK_SOMEPLL>, <&provider CLK_SOME_OTHER_PLL>;
-mediatek,hopping-ssc-percents = <3>, <5>;
-
-Thanks,
-Angelo
-
+> mediatek,hopping-ssc-percents = <&provider CLK_SOMEPLL 3>;
 > 
-> 2. If this is not a separate device, but integral part of clock
-> controller, then it would be fine but then probably should be child of
-> that device.
+> or would it be better to specify the clocks in a separated property?
 > 
-> Best regards,
-> Krzysztof
+> clocks = <&provider CLK_SOMEPLL>, <&provider CLK_SOME_OTHER_PLL>;
+> mediatek,hopping-ssc-percents = <3>, <5>;
+> 
 
+I propose the last one - using standard clocks property and a matching
+table.
 
+Best regards,
+Krzysztof
 
