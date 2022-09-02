@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45732C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 09:01:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60113C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 09:03:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=me1jYPFdBY24xlXbWTB3vvDDrEcHcZyvdZP+4RKUj/Y=; b=Ucjoyr2NH3wJlylwhTFG/OU1sp
-	xlgaIDnXQR3WKW5kw8FVyXKoe5rpvxfYbyXsY+gt5fZaS/BllNF5/qfzVscTzrF2sDuAQ8TOBp3Gp
-	eBnIzfc9i+VZqtuUsLxlyLM7PbTbyJVa4J3fl7Vx1TB3umrAsu11JirP5Jty9LNgyWbxCBgcausvr
-	LpmnXCKlenP8/3rVCtKtX9PgnL5xUO8Mru9O475j8xc23d9Av4JNcnXRzcGIKztZpShfv9c8dDzBD
-	9JM6aN8gLu7NoQnA97hlbqVeY9/upuGyAqG0NlQH5Kw2cxTomkehEqCfpvKZYOxK8G4OLZ8tio1On
-	8vQmETVg==;
+	bh=pmqfNQ1rpSeqmCSW/up+Y4xTBOUZWeAGJ2HY4TQtBp0=; b=vKcrHbACb7prlKU/jJvpBNf0RU
+	+kTPR3Bgo7Zt29XtfqVfuaNtupnpMXuC+IPb8R/AI/r2KR35/NG2ScEFuy4lZwSzSaWl0CzV6htXs
+	mjwW6U/9karYMBk4Kvw7SOdUhz3KhSu40kDeooDblt+LlL47e483U7AZ5T+qk+f6GssBLKi1lu+qt
+	e8QTIeRL4xkT+1442tNTUKXR57RGeIABj1SBd3WS6VwMuKuC+uFghCb+CcFjhWOAAQyXnirC7Fe0y
+	fl0x1DmpZrkMDYMcURyLivtxILxRt3kCVAFq/tmOEsE8oBfJTl2sjiLnedaNnqPYWf2wDL1ErkTiZ
+	j7p3LrCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU2Xy-002Eb1-DC; Fri, 02 Sep 2022 09:01:06 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oU2aW-002GmW-Fu; Fri, 02 Sep 2022 09:03:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU2Xj-002ERb-7d; Fri, 02 Sep 2022 09:00:55 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BB0196601F04;
-	Fri,  2 Sep 2022 10:00:48 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662109249;
-	bh=7sU033mGQqMgLZYu1qj1vLeGlrTQhMdIgyO5Z9XmQvc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=btPA8d5oKPh+N3MfwdysLrom3fdzX4u65X9qfnk3UySmC4Rr6X36Ear26Wj7FapZi
-	 6u4cDtF0aNsgZWz6UU74e71kArJilGw1D4Tw4M8yPX6bDbQgU12EUjYA8Cl3oHgLCJ
-	 xF9xlD6AJ4y7aEX8OjRESLxjvhlAaVO4kC0XgW4cCVXb10lTkwJrgPTH2KosJMrzJA
-	 LwDKRV7AkWBwbvG/BD4JdtegLUe8Vy9K3eZ91qGsCBWOkPqbzsSPCFQsXHl2o0twv8
-	 3cjsb/g6tSFI2QYWhY6WRSByJm7lunT4Ix7ENhfLbGuWg5DIBTo8dli9LdQR7VOz3s
-	 W59oVfW64KNvg==
-Message-ID: <8e398e71-1283-b5d7-2b17-958a25563c25@collabora.com>
-Date: Fri, 2 Sep 2022 11:00:46 +0200
+	id 1oU2aT-002Gjg-U1; Fri, 02 Sep 2022 09:03:43 +0000
+X-UUID: c86ba494633440aeaab7ff116d4516b2-20220902
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=pmqfNQ1rpSeqmCSW/up+Y4xTBOUZWeAGJ2HY4TQtBp0=;
+	b=e13T1U9lGIdmAkrOiO4XQDMmBRxykHPpm9sdzfEz+Jf+pxwYKCZkEnciIbPSd8ka34sPW5Pm9gOcYq4LS0zIjvXfZGrmvAxCPCtjZ1JGJpovhtidP3IlS670Zf1r4o5GfGXVfvVLWnw9Lew4sZI9j11CQDu3udnPV/+MTzaZocI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:480ede2e-d83d-43d6-a52c-a6086be01f71,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:5b956756-e800-47dc-8adf-0c936acf4f1b,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c86ba494633440aeaab7ff116d4516b2-20220902
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1209032250; Fri, 02 Sep 2022 02:03:35 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 2 Sep 2022 16:12:59 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 2 Sep 2022 16:12:59 +0800
+Message-ID: <fa57b7e392ce8dac005dd572963a8844a7070007.camel@mediatek.com>
+Subject: Re: [PATCH v17 09/10] drm/mediatek: dp: Add hpd debounce
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Fri, 2 Sep 2022 16:12:58 +0800
+In-Reply-To: <20220901044149.16782-10-rex-bc.chen@mediatek.com>
+References: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
+	 <20220901044149.16782-10-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v2 2/3] iommu/mediatek: Add enable IOMMU SMC command for
- INFRA master
-To: "Chengci.Xu" <chengci.xu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220831125502.7818-1-chengci.xu@mediatek.com>
- <20220831125502.7818-3-chengci.xu@mediatek.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220831125502.7818-3-chengci.xu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_020051_467848_9A01F30C 
-X-CRM114-Status: GOOD (  21.92  )
+X-CRM114-CacheID: sfid-20220902_020342_009505_9AACDC43 
+X-CRM114-Status: GOOD (  31.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,74 +88,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 31/08/22 14:55, Chengci.Xu ha scritto:
-> The register which can enable IOMMU for INFRA master should be setted
-> in secure world for security concerns. Therefore, we add a SMC command
-> for INFRA master to enable/disable INFRA IOMMU in ATF. This function is
-> prepared for MT8188.
+Hi, Bo-Chen:
+
+On Thu, 2022-09-01 at 12:41 +0800, Bo-Chen Chen wrote:
+> From: Jitao Shi <jitao.shi@mediatek.com>
 > 
-> Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
+> From the DP spec 1.4a chapter 3.3, upstream devices should implement
+> HPD signal de-bouncing on an external connection.
+> A period of 100ms should be used to detect an HPD connect event.
+> To cover these cases, HPD de-bounce should be implemented only after
+> HPD low has been detected for at least 100ms.
+> 
+> Therefore,
+> 1. If HPD is low (which means plugging out) for longer than 100ms:
+>    we need to do de-bouncing (which means we need to wait for 100ms).
+> 2. If HPD low is for less than 100ms:
+>    we don't need to care about the de-bouncing.
+> 
+> In this patch, we start a 100ms timer and use a need_debounce boolean
+> to implement the feature.
+> 
+> Two cases when HPD is high:
+> 1. If the timer is expired (>100ms):
+>    - need_debounce is true.
+>    - When HPD high (plugging event comes), need_debounce will be true
+>      and then we need to do de-bouncing (wait for 100ms).
+> 2. If the timer is not expired (<100ms):
+>    - need_debounce is false.
+>    - When HPD high (plugging event comes), need_debounce will be
+> false
+>      and no need to do de-bouncing.
+> 
+> HPD_______             __________________
+>           |            |<-  100ms   ->
+>           |____________|
+>           <-  100ms   ->
+> 
+> Without HPD de-bouncing, USB-C to HDMI Adapaters will not be
+> detected.
+> 
+> The change has been successfully tested with the following devices:
+> - Dell Adapter - USB-C to HDMI
+> - Acer 1in1 HDMI dongle
+> - Ugreen 1in1 HDMI dongle
+> - innowatt HDMI + USB3 hub
+> - Acer 2in1 HDMI dongle
+> - Apple 3in1 HDMI dongle (A2119)
+> - J5Create 3in1 HDMI dongle (JAC379)
+
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+
+> 
+> Tested-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
 > ---
->   drivers/iommu/mtk_iommu.c  | 34 ++++++++++++++++++++++++++--------
->   include/soc/mediatek/smi.h |  1 +
->   2 files changed, 27 insertions(+), 8 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_dp.c | 25 ++++++++++++++++++++++++-
+>  1 file changed, 24 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 7e363b1f24df..6fe780783ec8 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -3,6 +3,7 @@
->    * Copyright (c) 2015-2016 MediaTek Inc.
->    * Author: Yong Wu <yong.wu@mediatek.com>
->    */
-> +#include <linux/arm-smccc.h>
->   #include <linux/bitfield.h>
->   #include <linux/bug.h>
->   #include <linux/clk.h>
-> @@ -28,6 +29,7 @@
->   #include <linux/slab.h>
->   #include <linux/spinlock.h>
->   #include <linux/soc/mediatek/infracfg.h>
-> +#include <linux/soc/mediatek/mtk_sip_svc.h>
->   #include <asm/barrier.h>
->   #include <soc/mediatek/smi.h>
->   
-> @@ -138,6 +140,7 @@
->   #define PM_CLK_AO			BIT(15)
->   #define IFA_IOMMU_PCIE_SUPPORT		BIT(16)
->   #define PGTABLE_PA_35_EN		BIT(17)
-> +#define CFG_IFA_MASTER_IN_ATF		BIT(18)
->   
->   #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
->   				((((pdata)->flags) & (mask)) == (_x))
-> @@ -554,14 +557,29 @@ static int mtk_iommu_config(struct mtk_iommu_data *data, struct device *dev,
->   			else
->   				larb_mmu->mmu &= ~MTK_SMI_MMU_EN(portid);
->   		} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA)) {
-> -			peri_mmuen_msk = BIT(portid);
-> -			/* PCI dev has only one output id, enable the next writing bit for PCIe */
-> -			if (dev_is_pci(dev))
-> -				peri_mmuen_msk |= BIT(portid + 1);
-> -
-> -			peri_mmuen = enable ? peri_mmuen_msk : 0;
-> -			ret = regmap_update_bits(data->pericfg, PERICFG_IOMMU_1,
-> -						 peri_mmuen_msk, peri_mmuen);
-> +			if (MTK_IOMMU_HAS_FLAG(data->plat_data, CFG_IFA_MASTER_IN_ATF)) {
-> +				struct arm_smccc_res res;
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c
+> b/drivers/gpu/drm/mediatek/mtk_dp.c
+> index 11a94927c0d0..dd34dae417e5 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -87,6 +87,7 @@ struct mtk_dp_efuse_fmt {
+>  
+>  struct mtk_dp {
+>  	bool enabled;
+> +	bool need_debounce;
+>  	u8 max_lanes;
+>  	u8 max_linkrate;
+>  	u8 rx_cap[DP_RECEIVER_CAP_SIZE];
+> @@ -109,6 +110,7 @@ struct mtk_dp {
+>  	struct platform_device *phy_dev;
+>  	struct phy *phy;
+>  	struct regmap *regs;
+> +	struct timer_list debounce_timer;
+>  };
+>  
+>  struct mtk_dp_data {
+> @@ -1475,14 +1477,24 @@ static irqreturn_t
+> mtk_dp_hpd_event_thread(int hpd, void *dev)
+>  	unsigned long flags;
+>  	u32 status;
+>  
+> +	if (mtk_dp->need_debounce && mtk_dp-
+> >train_info.cable_plugged_in)
+> +		msleep(100);
 > +
-> +				portid = MTK_M4U_TO_PORT(fwspec->ids[i]);
-
-This assignment is redundant, as portid is initialized to the same value
-just a few lines before. Please drop it.
-
-Everything else looks good.
-
-Regards,
-Angelo
-
-> +				arm_smccc_smc(MTK_SIP_KERNEL_IOMMU_CONTROL,
-> +					      IOMMU_ATF_CMD_CONFIG_INFRA_IOMMU,
-> +					      portid, enable, 0, 0, 0, 0, &res);
-> +				ret = (int)res.a0;
+>  	spin_lock_irqsave(&mtk_dp->irq_thread_lock, flags);
+>  	status = mtk_dp->irq_thread_handle;
+>  	mtk_dp->irq_thread_handle = 0;
+>  	spin_unlock_irqrestore(&mtk_dp->irq_thread_lock, flags);
+>  
+> -	if (status & MTK_DP_THREAD_CABLE_STATE_CHG)
+> +	if (status & MTK_DP_THREAD_CABLE_STATE_CHG) {
+>  		drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
+>  
+> +		if (!mtk_dp->train_info.cable_plugged_in) {
+> +			mtk_dp->need_debounce = false;
+> +			mod_timer(&mtk_dp->debounce_timer,
+> +				  jiffies + msecs_to_jiffies(100) - 1);
+> +		}
+> +	}
+> +
+>  	if (status & MTK_DP_THREAD_HPD_EVENT)
+>  		dev_dbg(mtk_dp->dev, "Receive IRQ from sink
+> devices\n");
+>  
+> @@ -1996,6 +2008,13 @@ static const struct drm_bridge_funcs
+> mtk_dp_bridge_funcs = {
+>  	.detect = mtk_dp_bdg_detect,
+>  };
+>  
+> +static void mtk_dp_debounce_timer(struct timer_list *t)
+> +{
+> +	struct mtk_dp *mtk_dp = from_timer(mtk_dp, t, debounce_timer);
+> +
+> +	mtk_dp->need_debounce = true;
+> +}
+> +
+>  static int mtk_dp_probe(struct platform_device *pdev)
+>  {
+>  	struct mtk_dp *mtk_dp;
+> @@ -2069,6 +2088,9 @@ static int mtk_dp_probe(struct platform_device
+> *pdev)
+>  
+>  	drm_bridge_add(&mtk_dp->bridge);
+>  
+> +	mtk_dp->need_debounce = true;
+> +	timer_setup(&mtk_dp->debounce_timer, mtk_dp_debounce_timer, 0);
+> +
+>  	pm_runtime_enable(dev);
+>  	pm_runtime_get_sync(dev);
+>  
+> @@ -2081,6 +2103,7 @@ static int mtk_dp_remove(struct platform_device
+> *pdev)
+>  
+>  	pm_runtime_put(&pdev->dev);
+>  	pm_runtime_disable(&pdev->dev);
+> +	del_timer_sync(&mtk_dp->debounce_timer);
+>  	drm_bridge_remove(&mtk_dp->bridge);
+>  	platform_device_unregister(mtk_dp->phy_dev);
+>  
 
 
