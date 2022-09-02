@@ -4,77 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 623D7C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 08:05:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C74C8ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 08:13:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NyJm/OfsyIJ5uXNbYeIMyaLdtHaPXQQYpfcJJr8LKks=; b=RfSq/TqTKFD9iHP3jts/wSyRTU
-	xlvQ/IcTRDkWhI0B3JwfRHvDP/Jz+zpoVx1/mT8raNIpto/l8iS5+0U7gL2GmtUwmoC1lv+g0hbNs
-	4KM/YcoJChglY+zxeiPSUEf37WFcifcdZ/qz2j35y7GR+Uv2e64KaWzveOPEiuCYwG+qKYG8+TrhJ
-	825EBzozm0bEnN+8wXgvYgxVGg9C4BIYOBAG/wPSBulnK/SlriXjCokwAz4unjx5UzxuZBfyB9MLo
-	OIfdZ54hsCiBiwIYb3bEm91yBvZi06jClZlvwCFejHJeDj+57oaUGlL4vdRzNNqB0a6h7ZqV5nDDg
-	WWVT5vPA==;
+	bh=FsfJPXGMW+gszYGj0ctWW5gURhWWH89vu9x3iR9dZyw=; b=NF2pTbjvt6f/6momStk73YyBKu
+	61Eeb8lrZajwCDZH8TR99rYGE7YLQ7U1t5eBqMhP53JqXSk7o5h8foCyf4dQAn3g10RYQ6DiE7rHI
+	BNxHogcwigOjg9hwgKvcAOR2Mbb/q9uaPNLtYxd4Gl4x6f/+TgnHNGf6Layr9iY5jIqcAXLQ1b1TM
+	EMXFIT92XRoifdFHxmSl362xzF4t4Q7NUC1ue5ie0iGTrvHSYb0pMpbLSTlm7IVB8ujeH38i8Ex8C
+	WhX9LO+pfp4l6yb/4M0ctnL8dSSW2ysDbvFFFxN+KcAdK1AMWYdBlQ2q6HPGcBMrWcgbiOOmw4gc0
+	ji6N2sIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU1gL-001cVD-R3; Fri, 02 Sep 2022 08:05:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oU1nO-001gLb-6j; Fri, 02 Sep 2022 08:12:58 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU1gJ-001cQk-IH; Fri, 02 Sep 2022 08:05:40 +0000
-X-UUID: ef8d553764474985a9856b02209d3e5c-20220902
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=NyJm/OfsyIJ5uXNbYeIMyaLdtHaPXQQYpfcJJr8LKks=;
-	b=CqVqtw5g0paicSvSV4ijFkk4fI5/4lIsCvwagB4D5EwxaWCjLGnnL0g0Nlqz5SDNd3QJETfy1XOcGkD3EVUSHbeH6uq4wEfcvOd0oWDNyPjSrEpGDB8ItIcHk0cko4QbXIhm2zkmz7yiCmFN+r9ojRmnfcE4rNxDDRcsCkSI/DU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:778722eb-2536-42b7-80ac-c5f12f94a019,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:ee086fd0-20bd-4e5e-ace8-00692b7ab380,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: ef8d553764474985a9856b02209d3e5c-20220902
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1173429194; Fri, 02 Sep 2022 01:05:32 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 2 Sep 2022 15:44:57 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 2 Sep 2022 15:44:57 +0800
-Message-ID: <55eec0effd6cd08edbb130ec7f74ad993a75907d.camel@mediatek.com>
-Subject: Re: [PATCH v17 07/10] drm/mediatek: dp: Determine device of
- next_bridge
-From: CK Hu <ck.hu@mediatek.com>
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
-	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
-	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
-	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
-	<airlied@linux.ie>
-CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-fbdev@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 2 Sep 2022 15:44:57 +0800
-In-Reply-To: <20220901044149.16782-8-rex-bc.chen@mediatek.com>
-References: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
-	 <20220901044149.16782-8-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oU1mh-001fv3-DZ; Fri, 02 Sep 2022 08:12:17 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AC1876601F03;
+	Fri,  2 Sep 2022 09:12:09 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1662106330;
+	bh=3OWhZI1FxYYC6TsKTsim+28cYr7jRgmawjyY6vyOJfc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=bdpSDozB4BZBPyQyHm9CehdN4InFb5e8qwmWXUsh1dFcCzN9HMuK+xsPA+NR7x+tI
+	 WHWdWygG3Nt4zp/ib2pFc1b5SR0LaS+mEuKa85XPfIcVtpa9DXzWDf89AZQSETU5SN
+	 5BbBFXnPqqQAE28rOiBDSAsVuSD/F4gSgtfac6hediAYoeyPpPLpiIdw1t2uUiVMK6
+	 mpTGgYdNASG0RikibSckWDk5ZVhBmvQIBRQKnfVpKBM7dtQ0U0HV/iMYHYMrb04Gxc
+	 3UWWVnAb70ReLDPmkAXiiSGf8cxb8qa4mvAJYppZyW2MDHxLxHPjOUPZPKOX55mgIL
+	 nH4gCXoucENlQ==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	wenst@chromium.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 1/7] arm64: dts: mediatek: cherry: Enable the System Companion Processor
+Date: Fri,  2 Sep 2022 10:11:50 +0200
+Message-Id: <20220902081156.38526-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20220902081156.38526-1-angelogioacchino.delregno@collabora.com>
+References: <20220902081156.38526-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_010539_626330_CEBE7ED2 
-X-CRM114-Status: GOOD (  17.30  )
+X-CRM114-CacheID: sfid-20220902_011215_722264_6DC04859 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +77,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Bo-Chen:
+MT8195 features a SCP like some other older SoCs, and Cherry uses it
+for various tasks. Add the required pin configuration and DMA pool
+and enable the node.
 
-On Thu, 2022-09-01 at 12:41 +0800, Bo-Chen Chen wrote:
-> It's not necessary to have a next_bridge for DP device, so we add
-> this
-> patch to judge this.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 29 +++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-> 
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dp.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c
-> b/drivers/gpu/drm/mediatek/mtk_dp.c
-> index 136e13150281..e37c9185e4ec 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-> @@ -1886,7 +1886,10 @@ static int mtk_dp_probe(struct platform_device
-> *pdev)
->  				     "failed to request dp irq
-> resource\n");
->  
->  	mtk_dp->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 
-> 1, 0);
-> -	if (IS_ERR(mtk_dp->next_bridge))
-> +	if (IS_ERR(mtk_dp->next_bridge) &&
-> +	    PTR_ERR(mtk_dp->next_bridge) == -ENODEV)
-> +		mtk_dp->next_bridge = NULL;
-> +	else if (IS_ERR(mtk_dp->next_bridge))
->  		return dev_err_probe(dev, PTR_ERR(mtk_dp->next_bridge),
->  				     "Failed to get bridge\n");
->  
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index fcc600674339..e83d58d99757 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -104,6 +104,18 @@ usb_vbus: regulator-5v0-usb-vbus {
+ 		enable-active-high;
+ 		regulator-always-on;
+ 	};
++
++	reserved_memory: reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++
++		scp_mem: memory@50000000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x50000000 0 0x2900000>;
++			no-map;
++		};
++	};
+ };
+ 
+ &i2c0 {
+@@ -600,6 +612,14 @@ pins-low-power-pupd {
+ 		};
+ 	};
+ 
++	scp_pins: scp-default-pins {
++		pins-vreq {
++			pinmux = <PINMUX_GPIO76__FUNC_SCP_VREQ_VAO>;
++			bias-disable;
++			input-enable;
++		};
++	};
++
+ 	spi0_pins: spi0-default-pins {
+ 		pins-cs-mosi-clk {
+ 			pinmux = <PINMUX_GPIO132__FUNC_SPIM0_CSB>,
+@@ -643,6 +663,15 @@ &pmic {
+ 	interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
+ };
+ 
++&scp {
++	status = "okay";
++
++	firmware-name = "mediatek/mt8195/scp.img";
++	memory-region = <&scp_mem>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&scp_pins>;
++};
++
+ &spi0 {
+ 	status = "okay";
+ 
+-- 
+2.37.2
 
 
