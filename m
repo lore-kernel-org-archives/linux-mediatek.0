@@ -4,74 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D74EAECAAD5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 14:57:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A426FC001B5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 15:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WtXcdd8ScrmiMxXYED78ro39J5fEKT2VrBvKuAZeofY=; b=r+XiV/Hp6nU34p5PnUOTfds3Ik
-	pgYIrp4hr0h02tKvolxscwhJP+PXXyFZsBza8WLzsadxelBWw7Qne0ut3Gomb8nZ2uOQF63he54W2
-	Jydfm8khVou0+nEQ1N5frby5nZeQpMLEGBMQGAzX3hqQI4S7ft97J6dJYRZgkuA4q9SjsEMZXXaz2
-	MQ/Tp4Cj/V1eS5QHhgWY3Z+P4YXq4vqeIiMZYifqv5M6xOnsB/vCYvpb8gmCn6jx3Xmy6XXa4vZRI
-	rOJz/WpjLexj3z6AJCyYiOFqNbhVZ5MEW0aLKnnwj664gfuoK0IufOHShfwmrFFecIGz26b9I5wAK
-	DxkRvcdQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CTrG12qWnI/c/AxI8kTL2+rjoFmKz1TXs568RjVaASw=; b=io8/3RbhmsIvxTUwSzxMUQOVS2
+	XAE0zZx0ab8YONg6KYsFZBvQJwZD12nvL6RP94c6G38MoDtP/sWD2y1BIBxyy2LXo+BQGAbUrf9yK
+	lI61hFzdzP8AM7JciRdDDDUlcb6/wJGMGtMJbusLnT4Hhs7CqaH4PA0HWm0jM0ocTjWZwm69X3j20
+	5m+r8Ft6kQ3km0vIlwEzGY80uIVV7lJ7oMyK3Bv32W1GGAofO7b8aDZnNKCwPrhvGgYqlbvcyYLfI
+	ctlNYoppikisqNc4N2ghXS77jzehxtLXxR289aBtoLpyAG7+Vo+r9A4emJYg0UJpNH7dn9wntnnjT
+	nE07/PNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU86d-005rc1-0I; Fri, 02 Sep 2022 14:57:15 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oU8tf-006T4f-5O; Fri, 02 Sep 2022 15:47:55 +0000
+Received: from mail.base45.de ([2001:67c:2050:320::77])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU85Z-005qz5-Iv; Fri, 02 Sep 2022 14:56:11 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0C7E460A36;
-	Fri,  2 Sep 2022 14:56:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDB38C433D7;
-	Fri,  2 Sep 2022 14:56:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1662130568;
-	bh=8HxsyLelsYqwOCxhTJ5jpbUjl0UPkAy78gN1FK3B4KQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SIfrCsnC9TPzpq/x+bzxefF3RTtWsi1KGr682ovbh1PBJBn9g8++/aZpERT2Hewmq
-	 poSK1QtcWyTv+MHbfWWtQZnuTeqVdBDlR4m7Bm6CxoPZ0ZLTstOh/bnB1mYSAUrYFI
-	 UGcx0TJUS/P9oScrPgZQT/BrI8uvssK25MpOCLp0=
-Date: Fri, 2 Sep 2022 16:56:05 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Al Viro <viro@zeniv.linux.org.uk>
-Cc: Kuyo Chang <kuyo.chang@mediatek.com>, major.chen@samsung.com,
-	Ingo Molnar <mingo@redhat.com>,
-	Peter Zijlstra <peterz@infradead.org>,
-	Juri Lelli <juri.lelli@redhat.com>,
-	Vincent Guittot <vincent.guittot@linaro.org>,
-	Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
-	Daniel Bristot de Oliveira <bristot@redhat.com>,
-	Valentin Schneider <vschneid@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	wsd_upstream@mediatek.com, hongfei.tang@samsung.com,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/1] sched/debug: fix dentry leak in
- update_sched_domain_debugfs
-Message-ID: <YxIZhWB2tCXzlzWj@kroah.com>
-References: <20220902031518.1116-1-kuyo.chang@mediatek.com>
- <YxGUBzp9C7kcNgps@kroah.com>
- <5ce45c874d6a05ca69abed3961d413c4a4360e79.camel@mediatek.com>
- <YxGpp/+lWSzwpVLZ@kroah.com>
- <f14e71182ebf1520aeede06afb44af49ec6128a0.camel@mediatek.com>
- <YxHI2sRgF2gqYcHk@kroah.com>
- <YxIX96nUnwz56fte@ZenIV>
+	id 1oU8td-006T0T-3T
+	for linux-mediatek@lists.infradead.org; Fri, 02 Sep 2022 15:47:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=fe80.eu;
+	s=20190804; h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=CTrG12qWnI/c/AxI8kTL2+rjoFmKz1TXs568RjVaASw=; b=ifKtc5mRxPP/hgk+Ujk1yvgVcL
+	Hd0Yi+M6uyrX3B0eqHzbr8jt3EzwK2h1hez7h9JQijZsTOI/t7b77YbQsg8TdY2kbc1MoO2iNRdqx
+	fZW+VmZsVJeH2MySiJ5JZ5iiLwkpTJLYP/QJ+u3bsptU1mfzf971861j5yM7+VfOck15C0+diOs4j
+	kL+vIvmkhQ8N98uA87gx95GTk2C+k7qFrK5CfD6L/Ay9F4DUKz0oBSilvXKQRLXbmkQV00XqhEMom
+	Y3AJps/tqC2vkBIBL5YH8RPrRMTiOlGrInb/392Q1OI26agkHoUVlC5NwGEFsOUcCRbxKLExnQJoN
+	wxDzstOA==;
+Received: from [92.206.252.219] (helo=javelin)
+	by mail.base45.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <lynxis@fe80.eu>)
+	id 1oU8sx-005KhR-5H; Fri, 02 Sep 2022 15:47:11 +0000
+Date: Fri, 2 Sep 2022 17:47:10 +0200
+From: Alexander 'lynxis' Couzens <lynxis@fe80.eu>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Daniel
+ Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH 3/4] net: mediatek: sgmii: mtk_pcs_setup_mode_an: don't
+ rely on register defaults
+Message-ID: <20220902174710.54a1d317@javelin>
+In-Reply-To: <YwTyLwRnQ+eTXeDr@shell.armlinux.org.uk>
+References: <20220820224538.59489-1-lynxis@fe80.eu>
+	<20220820224538.59489-4-lynxis@fe80.eu>
+	<YwTyLwRnQ+eTXeDr@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <YxIX96nUnwz56fte@ZenIV>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_075609_705952_F36163D0 
-X-CRM114-Status: GOOD (  19.37  )
+X-CRM114-CacheID: sfid-20220902_084753_169038_728BE743 
+X-CRM114-Status: GOOD (  16.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,36 +79,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 02, 2022 at 03:49:27PM +0100, Al Viro wrote:
-> On Fri, Sep 02, 2022 at 11:11:54AM +0200, Greg Kroah-Hartman wrote:
+On Tue, 23 Aug 2022 16:28:47 +0100
+"Russell King (Oracle)" <linux@armlinux.org.uk> wrote:
+
+> On Sun, Aug 21, 2022 at 12:45:37AM +0200, Alexander Couzens wrote:
+> > Ensure autonegotiation is enabled.
+> > 
+> > Signed-off-by: Alexander Couzens <lynxis@fe80.eu>
+> > ---
+> >  drivers/net/ethernet/mediatek/mtk_sgmii.c | 5 +++--
+> >  1 file changed, 3 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c
+> > b/drivers/net/ethernet/mediatek/mtk_sgmii.c index
+> > 782812434367..aa69baf1a42f 100644 ---
+> > a/drivers/net/ethernet/mediatek/mtk_sgmii.c +++
+> > b/drivers/net/ethernet/mediatek/mtk_sgmii.c @@ -32,12 +32,13 @@
+> > static int mtk_pcs_setup_mode_an(struct mtk_pcs *mpcs)
+> > regmap_write(mpcs->regmap, SGMSYS_PCS_LINK_TIMER,
+> > SGMII_LINK_TIMER_DEFAULT); 
+> > +	/* disable remote fault & enable auto neg */
+> >  	regmap_read(mpcs->regmap, SGMSYS_SGMII_MODE, &val);
+> > -	val |= SGMII_REMOTE_FAULT_DIS;
+> > +	val |= SGMII_REMOTE_FAULT_DIS | SGMII_SPEED_DUPLEX_AN;  
 > 
-> > +/**
-> > + * debugfs_lookup_and_remove - lookup a directory or file and recursively remove it
-> > + * @name: a pointer to a string containing the name of the item to look up.
-> > + * @parent: a pointer to the parent dentry of the item.
-> > + *
-> > + * This is the equlivant of doing something like
-> > + * debugfs_remove(debugfs_lookup(..)) but with the proper reference counting
-> > + * handled for the directory being looked up.
-> > + */
-> > +void debugfs_lookup_and_remove(const char *name, struct dentry *parent)
-> > +{
-> > +	struct dentry *dentry;
-> > +
-> > +	dentry = debugfs_lookup(name, parent);
-> > +	if (IS_ERR_OR_NULL(dentry))
-> > +		return;
+> Does SGMII_SPEED_DUPLEX_AN need to be cleared in
+> mtk_pcs_setup_mode_force(), so mtk_pcs_link_up() can force the
+> duplex setting for base-X protocols?
 > 
-> 	Could somebody explain how could that return ERR_PTR()?
 
-If debugfs is not enabled then debugfs_lookup() will return an
-ERR_PTR().  But, doh, this _IS_ debugfs so you are right, that will
-never happen.
+Yes SGMII_SPEED_DUPLEX_AN needs to be cleared to have FORCE_DUPLEX
+working. But mtk_pcs_setup_mode_force() is clearing it implicit by
 
-> Incidentally, IS_ERR_OR_NULL is almost always a sign of bad interface - or
-> that of lazy cargo-culting.  Please, don't propagate that garbage... ;-/
+val &= SGMII_DUPLEX_FULL & ~SGMII_IF_MODE_MASK
 
-Fair enough, I'll fix that up, many thanks for noticing it.
-
-greg k-h
+because it's included in the SGMII_IF_MODE_MASK.
+I also don't understand why it's forcing it in the
+mtk_pcs_link_up().
 
