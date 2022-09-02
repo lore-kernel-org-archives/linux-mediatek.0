@@ -4,71 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C8E8ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 02:56:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 468E5ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 03:26:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oLNGlCRUkI7WrIyYgZdRutE3RCvGTE+Yyyht7nl8QoM=; b=Loo65TP8YZ3i8ulYjwKEIImRNM
-	H6LpwrH0uH3Jos3Ei3h/6fdYQsmgEmTcOjLdamORfLIBq6ymgzhGBYfj38BBWEmSQwN3UJyhWXK+5
-	W9c5tj6OOIXOpnIGZXqGsqOOGsZ4zkD3A8aoxUhOttvMbMMI51MsH0aDUfMsPLKThl69d8XziGKhK
-	mGEXelst1J0ETA7lfFB7ahxhPSe51jI0QWoZ9H47fyMGxwK2kURAvpKjkz78w7kfml2IJNokfl2pA
-	FQxwQl2aCNE95P+A5gjt/jbIwWrCqB+ZFHjoakxumOT+m1QKzH0z98JzA7xk6EhfXRRayOTkyaM/K
-	wK9gf2dw==;
+	bh=GJjAcM3GmyI6PjX3K2R26l59/UA4pSwDavyDI8Mg5+w=; b=hfJYA5rA8LiJ/m1uutYCR4IJ4U
+	lspOhW4bTLB64fbJ1QCGvn8EFljQjGFqVtM/JQAIhM9QYIwfTNs5Y0vq/OjDv88bKWt44Wm9Jnr6S
+	ht2p6vdA2M581KUl2TwuY2Te/yEvEdiBD2Vekhp6Fx58wz6AraYHnB8INebRfY7uDx9JHbCL52zZT
+	WBBFcPWP75oSxffS7jWuHm1eqh4dtnCFr2JoOu2nAzvxMkIctJM6z4kiESidvDJ04Sz0xQKoiCoCk
+	fNgdks00LJx5deQeD074BByPexHgnQ0hOnx/mFwtViBIIaSfBooUGGQqgIgH9k1Msf57q43Qjjd+7
+	HtpcuG0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTwrG-00H8Al-Al; Fri, 02 Sep 2022 02:56:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTwrD-00H88t-Ig
-	for linux-mediatek@lists.infradead.org; Fri, 02 Sep 2022 02:56:36 +0000
-X-UUID: 092f9fb511e6455688c5c0d4acee1cae-20220901
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=oLNGlCRUkI7WrIyYgZdRutE3RCvGTE+Yyyht7nl8QoM=;
-	b=Hl/27i9aiGprfachLfClDJVGEBaUfD/QmFmhOVsoGyT9VKsZkM56TGpbSioSn2Cs2kAMwqeLzZ9mi566OqO6BtiePOip0X/UlaTYIj3yMXGq+QmGlIRysQ6qr0Vf2ekNXnrAqsOZyECtm75gDXnbYpiSKjWKQDgoOya7VBKLg0Q=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:7fb1a1dd-8747-4f98-bdd1-243f8f3c0efc,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
-	_Ham,ACTION:release,TS:-5
-X-CID-META: VersionHash:84eae18,CLOUDID:d19e64d0-20bd-4e5e-ace8-00692b7ab380,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 092f9fb511e6455688c5c0d4acee1cae-20220901
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 482684942; Thu, 01 Sep 2022 19:56:29 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 2 Sep 2022 10:55:55 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 2 Sep 2022 10:55:55 +0800
-Message-ID: <e213e9d8ef900db665fee08b484181e1d47c5171.camel@mediatek.com>
-Subject: Re: linux-next: Tree for Sep 1 (Kconfig for VIDEO_MEDIATEK_VPU)
-From: moudy ho <moudy.ho@mediatek.com>
-To: Randy Dunlap <rdunlap@infradead.org>, Stephen Rothwell
-	<sfr@canb.auug.org.au>, Linux Next Mailing List <linux-next@vger.kernel.org>
-CC: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>
-Date: Fri, 2 Sep 2022 10:55:55 +0800
-In-Reply-To: <f19684d4-9ef0-6308-8245-73c9a4511e67@infradead.org>
-References: <20220901171832.78d88aed@canb.auug.org.au>
-	 <f19684d4-9ef0-6308-8245-73c9a4511e67@infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oTxKA-00HKjm-0A; Fri, 02 Sep 2022 03:26:30 +0000
+Received: from [2601:1c0:6280:3f0::a6b3]
+	by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oTxK7-00HKiG-2d; Fri, 02 Sep 2022 03:26:27 +0000
+Message-ID: <a8ac77b7-60a9-3e62-0d07-fa03c5600740@infradead.org>
+Date: Thu, 1 Sep 2022 20:26:24 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: linux-next: Tree for Sep 1 (Kconfig for VIDEO_MEDIATEK_VPU)
+Content-Language: en-US
+To: moudy ho <moudy.ho@mediatek.com>, Stephen Rothwell
+ <sfr@canb.auug.org.au>, Linux Next Mailing List <linux-next@vger.kernel.org>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+References: <20220901171832.78d88aed@canb.auug.org.au>
+ <f19684d4-9ef0-6308-8245-73c9a4511e67@infradead.org>
+ <e213e9d8ef900db665fee08b484181e1d47c5171.camel@mediatek.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+In-Reply-To: <e213e9d8ef900db665fee08b484181e1d47c5171.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_195635_626667_CCCEC49C 
-X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,43 +58,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Randy,
 
-Thanks for your efforts on this matter, the warning is due to not
-setting V4L_MEM2MEM_DRIVERS on defconfig which the VIDEO_MEDIATEK_VPU
-depends.
-Could I send a patch to add a V4L_MEM2MEM_DRIVERS selection in MDP3
-Kconfig to avoid this warning?
 
-Regards,
-Moudy
+On 9/1/22 19:55, moudy ho wrote:
+> Hi Randy,
+> 
+> Thanks for your efforts on this matter, the warning is due to not
+> setting V4L_MEM2MEM_DRIVERS on defconfig which the VIDEO_MEDIATEK_VPU
+> depends.
+> Could I send a patch to add a V4L_MEM2MEM_DRIVERS selection in MDP3
+> Kconfig to avoid this warning?
+> 
+> Regards,
+> Moudy
 
-On Thu, 2022-09-01 at 13:38 -0700, Randy Dunlap wrote:
+Hi,
+That sounds good to me.
+
+Thanks.
+
 > 
-> On 9/1/22 00:18, Stephen Rothwell wrote:
-> > Hi all,
-> > 
-> > News: there will be no linux-next releases tomorrow or on Monday.
-> > 
-> > Changes since 20220831:
-> > 
-> 
-> on i386 or x86_64:
-> 
-> WARNING: unmet direct dependencies detected for VIDEO_MEDIATEK_VPU
->   Depends on [n]: MEDIA_SUPPORT [=y] && MEDIA_PLATFORM_SUPPORT [=y]
-> && MEDIA_PLATFORM_DRIVERS [=y] && V4L_MEM2MEM_DRIVERS [=n] &&
-> VIDEO_DEV [=y] && (ARCH_MEDIATEK || COMPILE_TEST [=y])
->   Selected by [y]:
->   - VIDEO_MEDIATEK_MDP3 [=y] && MEDIA_SUPPORT [=y] &&
-> MEDIA_PLATFORM_SUPPORT [=y] && MEDIA_PLATFORM_DRIVERS [=y] &&
-> (MTK_IOMMU [=n] || COMPILE_TEST [=y]) && VIDEO_DEV [=y] &&
-> (ARCH_MEDIATEK || COMPILE_TEST [=y]) && HAS_DMA [=y] && REMOTEPROC
-> [=y]
-> 
-> 
-> 
-> Full x86_64 randconfig file is attached.
+> On Thu, 2022-09-01 at 13:38 -0700, Randy Dunlap wrote:
+>>
+>> On 9/1/22 00:18, Stephen Rothwell wrote:
+>>> Hi all,
+>>>
+>>> News: there will be no linux-next releases tomorrow or on Monday.
+>>>
+>>> Changes since 20220831:
+>>>
+>>
+>> on i386 or x86_64:
+>>
+>> WARNING: unmet direct dependencies detected for VIDEO_MEDIATEK_VPU
+>>   Depends on [n]: MEDIA_SUPPORT [=y] && MEDIA_PLATFORM_SUPPORT [=y]
+>> && MEDIA_PLATFORM_DRIVERS [=y] && V4L_MEM2MEM_DRIVERS [=n] &&
+>> VIDEO_DEV [=y] && (ARCH_MEDIATEK || COMPILE_TEST [=y])
+>>   Selected by [y]:
+>>   - VIDEO_MEDIATEK_MDP3 [=y] && MEDIA_SUPPORT [=y] &&
+>> MEDIA_PLATFORM_SUPPORT [=y] && MEDIA_PLATFORM_DRIVERS [=y] &&
+>> (MTK_IOMMU [=n] || COMPILE_TEST [=y]) && VIDEO_DEV [=y] &&
+>> (ARCH_MEDIATEK || COMPILE_TEST [=y]) && HAS_DMA [=y] && REMOTEPROC
+>> [=y]
+>>
+>>
+>>
+>> Full x86_64 randconfig file is attached.
+>>
 > 
 
+-- 
+~Randy
 
