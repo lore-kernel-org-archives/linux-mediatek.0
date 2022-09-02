@@ -4,54 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90C65C38145
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 11:16:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74742C38145
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 11:28:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
-	To:From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0d4YrPeddXF3RBWszuyX87hkfQXL7C/btVCimqkrzbA=; b=1AWWjKYz9Py8Of
-	nt0jhfl7EOQwzNprzd6gRvLYeKaHlxTFWaWFXLtwTUkn4OYtOD6Hol6jZWawmRHU/xSWkrABLe5vT
-	ER6EN/wlj71/nghCHrYPLpqwrEwlzW1by8QsqGS0U57QCsp6YKp74htIu/sH+8BQilDzogCH4jve0
-	5S0cyWAJHda+4PJSDh2Omal6giqBWVrPSh6ty9is5ZxWnqmmRZzBv/Qq/d+eMcajYaFFV6DG+6Zj5
-	IdCAAf7Yk88+vv7H5bK9bSV0KkEUE5dXoy+EjZyR3twbhAtR3yhKLoIQ+AVnmr//FgFQoVX9RERSg
-	xP03AqzmNf1izPY/OhUA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ystxL6pMmDZFW2oA6gSJwS1ksWBAoar/81XZlM0jgkg=; b=Of/fLxqfd3qmT8xtD9JQj4OfJi
+	VcK9FhIRhXmAVMb0A2jB9JPGd9GY+5A5GIMFeTh7Ts/qrlCcyKLKMGn6CmjYXq7G85MnObrYUTJ8d
+	ktYtCSHwj8E7C8xCfb6ojTQFmzx0ZV7B5nDoiBgUH/wr62PwcLugjDGuHW5siGp4Xg6pWZL2eg45B
+	VPzkxKWwnXOscis7zdfMlbw853pG2AswjG1ulNwvXF6HTMHz4/dz1HZ13Wwz+ocY9oap86xzc3WLg
+	F0ju1r84BHsVrAwyBoregSzjv4EHG7qOsaBBv/Jc+Cocc+7PYi0e98BsU/BgfCBG0jvwR6Nutja3B
+	iQnpatag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU4f0-003tx3-El; Fri, 02 Sep 2022 11:16:30 +0000
-Received: from gxaoszxo.piglight.com ([85.217.145.3])
+	id 1oU4qB-0041gm-2p; Fri, 02 Sep 2022 11:28:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU4ex-003tsy-Nr
-	for linux-mediatek@lists.infradead.org; Fri, 02 Sep 2022 11:16:29 +0000
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=piglight.com;
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding; i=and.sco@piglight.com;
- bh=2RNxICSB08QOsISrgdgjONv4BIM=;
- b=ezKpMDSBMeF/8a3qPxopa3vyOzfdf7DRo0qPQx1m0wEX+4KcWZKJl+G+wRT0xpn8oGP/5s6En2vh
-   VXmw5kzXxMJSkWR+jabNxLKDqljjCAHwe0rphFk1duehYU3hV7yGU4ew2wuPsEHb3PnRLlpjrF/t
-   w17U8n3FxYLfrTKspXQVTsRKieNl70/ob18n9khauYgi0FhGnVJDQvRKhCQM6pqA3oz+BlXstqd3
-   WPKgUPCmDsnrZQBjlbBVzLN+sSQUxS//7AWRoME1sV0VAWRBVhmfxzr8SlWNXAKh/+1UDXG1GD01
-   6ng0VVYqhZfi03Ii+pupONUNhznfPwq23qxgIQ==
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=piglight.com;
- b=OMz/t9v4EawQi7QYu3i91oDIAN5vyUzTzZxLI1CbUlIS2wr/yHErXO5P/p8PBN8ZLMfNlGDl+4Dv
-   zAGpRC9AFtEMg9NRTx90IdcVlcj+U29uXYMjHVu6g43xoT1a7yZEQ2UK2PWjBs3vnhMzyaKcwFJh
-   2O8VXYao1rqVc5YFE8we0/rW32bor58foRCRUVD88MQZ4abP38zOHBEcTUecvAjz2PDPgv+my4S2
-   X6qRINVChIt072OxNyqeRz7kRlVfN3NXp7+Eo5XnvjX3LR0tZiqIV8Lv/+A8OY2emUx9lpLGqbex
-   MZxIBb05OxGlIVrz4hKWEkyGdi5hZ5Fc15G/FA==;
-From: Amjad Ali<and.sco@piglight.com>
-To: linux-mediatek@lists.infradead.org
-Subject: IMPORTANT!! Sir, I need your urgent response.
-Date: 02 Sep 2022 04:16:26 -0700
-Message-ID: <20220902041626.22DD1946237D2E93@piglight.com>
+	id 1oU4q8-0041en-0K; Fri, 02 Sep 2022 11:28:02 +0000
+X-UUID: 751c5a988b8c4fa8b78227fde2021f0a-20220902
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=ystxL6pMmDZFW2oA6gSJwS1ksWBAoar/81XZlM0jgkg=;
+	b=ZSIk8RGdJr6QFaOblc1vGslFd5j9HylS8+ft8Nw0T4sSexpOFQEnHbSZ4y8xyOUjscG+x4sl+A+E8mvoRAaVNuJvfi7GzYH61yxp990nz/iKmS14nn0xbksuLXJOV6XPYErMMKOb9p61v5vpUdqlvPCjV5hsceKC5qPn4qhkhF8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:bf065866-cc0a-43e8-8dfa-acada37d7cd5,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:2921f520-1c20-48a5-82a0-25f9c331906d,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 751c5a988b8c4fa8b78227fde2021f0a-20220902
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <kuyo.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1388999658; Fri, 02 Sep 2022 04:27:54 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 2 Sep 2022 18:47:18 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 2 Sep 2022 18:47:18 +0800
+Message-ID: <d893a66ee388f2f2f03e1e903efe84e85475a673.camel@mediatek.com>
+Subject: Re: [PATCH 1/1] sched/debug: fix dentry leak in
+ update_sched_domain_debugfs
+From: Kuyo Chang <kuyo.chang@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+CC: <major.chen@samsung.com>, Ingo Molnar <mingo@redhat.com>, Peter Zijlstra
+	<peterz@infradead.org>, Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
+	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, "Mel
+ Gorman" <mgorman@suse.de>, Daniel Bristot de Oliveira <bristot@redhat.com>,
+	Valentin Schneider <vschneid@redhat.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, <wsd_upstream@mediatek.com>,
+	<hongfei.tang@samsung.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Fri, 2 Sep 2022 18:47:18 +0800
+In-Reply-To: <YxHI2sRgF2gqYcHk@kroah.com>
+References: <20220902031518.1116-1-kuyo.chang@mediatek.com>
+	 <YxGUBzp9C7kcNgps@kroah.com>
+	 <5ce45c874d6a05ca69abed3961d413c4a4360e79.camel@mediatek.com>
+	 <YxGpp/+lWSzwpVLZ@kroah.com>
+	 <f14e71182ebf1520aeede06afb44af49ec6128a0.camel@mediatek.com>
+	 <YxHI2sRgF2gqYcHk@kroah.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_041627_958074_743F1146 
-X-CRM114-Status: UNSURE (  -2.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220902_042800_094749_13C37C03 
+X-CRM114-Status: GOOD (  57.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,29 +88,253 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: amjalia90@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Friend,
+On Fri, 2022-09-02 at 11:11 +0200, Greg Kroah-Hartman wrote:
+> On Fri, Sep 02, 2022 at 03:36:08PM +0800, Kuyo Chang wrote:
+> > On Fri, 2022-09-02 at 08:58 +0200, Greg Kroah-Hartman wrote:
+> > > On Fri, Sep 02, 2022 at 02:40:59PM +0800, Kuyo Chang wrote:
+> > > > On Fri, 2022-09-02 at 07:26 +0200, Greg Kroah-Hartman wrote:
+> > > > > On Fri, Sep 02, 2022 at 11:15:15AM +0800, Kuyo Chang wrote:
+> > > > > > From: kuyo chang <kuyo.chang@mediatek.com>
+> > > > > > 
+> > > > > > [Syndrome]
+> > > > > > Lowmemorykiller triggered while doing hotplug stress test
+> > > > > > as
+> > > > > > below
+> > > > > > cmd:
+> > > > > > echo [0/1] > /sys/devices/system/cpu/cpu${index}/online
+> > > > > > 
+> > > > > > Rootcause:
+> > > > > > Call trace of the slab owner & usage as below after hotplug
+> > > > > > stress
+> > > > > > test(4hr).
+> > > > > > There exists dentry leak at update_sched_domain_debugfs.
+> > > > > > 
+> > > > > > Total size : 322000KB
+> > > > > > <prep_new_page+44>:
+> > > > > > <get_page_from_freelist+672>:
+> > > > > > <__alloc_pages+304>:
+> > > > > > <allocate_slab+144>:
+> > > > > > <___slab_alloc+404>:
+> > > > > > <__slab_alloc+60>:
+> > > > > > <kmem_cache_alloc+1204>:
+> > > > > > <alloc_inode+100>:
+> > > > > > <new_inode+40>:
+> > > > > > <__debugfs_create_file+172>:
+> > > > > > <update_sched_domain_debugfs+824>:
+> > > > > > <partition_sched_domains_locked+1292>:
+> > > > > > <rebuild_sched_domains_locked+576>:
+> > > > > > <cpuset_hotplug_workfn+1052>:
+> > > > > > <process_one_work+584>:
+> > > > > > <worker_thread+1008>:
+> > > > > > 
+> > > > > > [Solution]
+> > > > > > Provided by Major Chen <major.chen@samsung.com> as below
+> > > > > > link.
+> > > > > > 
+> > > > 
+> > > > 
+> > 
+> > 
+https://lore.kernel.org/lkml/20220711030341epcms5p173848e98b13c09eb2fcdf2fd7287526a@epcms5p1/
+> > > > > > update_sched_domain_debugfs() uses debugfs_lookup() to find
+> > > > > > wanted
+> > > > > > dentry(which has
+> > > > > > been created by debugfs_create_dir() before), but not call
+> > > > > > dput()
+> > > > > > to return this dentry
+> > > > > > back. This result in dentry leak even debugfs_remove() is
+> > > > > > called.
+> > > > > > 
+> > > > > > [Test result]
+> > > > > > Using below commands to check inode_cache & dentry leak.
+> > > > > > cat /proc/slabinfo | grep -w inode_cache
+> > > > > > cat /proc/slabinfo | grep -w dentry
+> > > > > > 
+> > > > > > With the patch, the inode_cache & dentry stays consistent
+> > > > > > so the lowmemorykiller will not triggered anymore.
+> > > > > > 
+> > > > > > Fixes: 8a99b6833c88 ("sched: Move SCHED_DEBUG sysctl to
+> > > > > > debugfs")
+> > > > > > 
+> > > > > > Signed-off-by: Major Chen <major.chen@samsung.com>
+> > > > > > Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+> > > > > > Tested-by: kuyo chang <kuyo.chang@mediatek.com>
+> > > > > > 
+> > > > > > ---
+> > > > > >  kernel/sched/debug.c | 7 +++++--
+> > > > > >  1 file changed, 5 insertions(+), 2 deletions(-)
+> > > > > > 
+> > > > > > diff --git a/kernel/sched/debug.c b/kernel/sched/debug.c
+> > > > > > index bb3d63bdf4ae..4ffea2dc01da 100644
+> > > > > > --- a/kernel/sched/debug.c
+> > > > > > +++ b/kernel/sched/debug.c
+> > > > > > @@ -412,11 +412,14 @@ void
+> > > > > > update_sched_domain_debugfs(void)
+> > > > > >  
+> > > > > >  	for_each_cpu(cpu, sd_sysctl_cpus) {
+> > > > > >  		struct sched_domain *sd;
+> > > > > > -		struct dentry *d_cpu;
+> > > > > > +		struct dentry *d_cpu, *d_lookup;
+> > > > > >  		char buf[32];
+> > > > > >  
+> > > > > >  		snprintf(buf, sizeof(buf), "cpu%d", cpu);
+> > > > > > -		debugfs_remove(debugfs_lookup(buf, sd_dentry));
+> > > > > > +		d_lookup = debugfs_lookup(buf, sd_dentry);
+> > > > > > +		debugfs_remove(d_lookup);
+> > > > > > +		if (!IS_ERR_OR_NULL(d_lookup))
+> > > > > > +			dput(d_lookup);
+> > > > > 
+> > > > > That's odd, and means that something else is removing this
+> > > > > file
+> > > > > right
+> > > > > after we looked it up?  Is there a missing lock here that
+> > > > > should
+> > > > > be
+> > > > > used
+> > > > > instead?
+> > > > > 
+> > > > > thanks,
+> > > > > 
+> > > > > greg k-h
+> > > > 
+> > > > 
+> > > > While doing cpu hotlug, the cpu_active_mask is changed, 
+> > > > so it need to update_sched_domain_debugfs.
+> > > > 
+> > > > The original design is to recreate sd_dentry, so it doing
+> > > > debugfs_remove and then debugfs_create_dir.
+> > > > However, by debugfs_lookup function usage.
+> > > > The returned dentry must be passed to dput() when it is no
+> > > > longer
+> > > > needed to avoid dentry leak.
+> > > 
+> > > Eeeek, nice find!  I've been adding this pattern:
+> > > 	debugfs_remove(debugfs_lookup(...));
+> > > all over the place, and as you point out, that's wrong!
+> > > 
+> > > It's as if I didn't even read the documentation I wrote.
+> > > 
+> > > {sigh}
+> > > 
+> > > Ok, as this is going to be a very common pattern, how about we
+> > > create:
+> > > 	debugfs_lookup_and_remove()
+> > > function that does the above logic all in one place and then we
+> > > don't
+> > > have to put that logic everywhere in the kernel.  My goal is for
+> > > users
+> > > of debugfs to never have to worry about anything about 'struct
+> > > dentry'
+> > > at all, and I really failed that goal here in a major way.
+> > > 
+> > > I can work on that this afternoon after I get some other things
+> > > done,
+> > > unless you want to do it now?
+> > > 
+> > > Again, very nice find, thank you for this.
+> > > 
+> > 
+> > Thanks for your kindly support !
+> > Please help to add debugfs_lookup_and_remove() and then we can use
+> > this api to fix this denrty leak issue.
+> 
+> Ok, can you test the patch below with your reproducer to see if it is
+> fixed or not?  If this resolves the issue, I'll split it up into the
+> proper set of patches and sweep the whole tree as every user of
+> debugfs_lookup() that I've found so far got it wrong :(
+> 
+> thanks again!
+> 
+> greg k-h
+> 
+> diff --git a/fs/debugfs/inode.c b/fs/debugfs/inode.c
+> index 3dcf0b8b4e93..87ccd6280a9b 100644
+> --- a/fs/debugfs/inode.c
+> +++ b/fs/debugfs/inode.c
+> @@ -744,6 +744,28 @@ void debugfs_remove(struct dentry *dentry)
+>  }
+>  EXPORT_SYMBOL_GPL(debugfs_remove);
+>  
+> +/**
+> + * debugfs_lookup_and_remove - lookup a directory or file and
+> recursively remove it
+> + * @name: a pointer to a string containing the name of the item to
+> look up.
+> + * @parent: a pointer to the parent dentry of the item.
+> + *
+> + * This is the equlivant of doing something like
+> + * debugfs_remove(debugfs_lookup(..)) but with the proper reference
+> counting
+> + * handled for the directory being looked up.
+> + */
+> +void debugfs_lookup_and_remove(const char *name, struct dentry
+> *parent)
+> +{
+> +	struct dentry *dentry;
+> +
+> +	dentry = debugfs_lookup(name, parent);
+> +	if (IS_ERR_OR_NULL(dentry))
+> +		return;
+> +
+> +	debugfs_remove(dentry);
+> +	dput(dentry);
+> +}
+> +EXPORT_SYMBOL_GPL(debugfs_lookup_and_remove);
+> +
+>  /**
+>   * debugfs_rename - rename a file/directory in the debugfs
+> filesystem
+>   * @old_dir: a pointer to the parent dentry for the renamed object.
+> This
+> diff --git a/include/linux/debugfs.h b/include/linux/debugfs.h
+> index c869f1e73d75..f60674692d36 100644
+> --- a/include/linux/debugfs.h
+> +++ b/include/linux/debugfs.h
+> @@ -91,6 +91,8 @@ struct dentry *debugfs_create_automount(const char
+> *name,
+>  void debugfs_remove(struct dentry *dentry);
+>  #define debugfs_remove_recursive debugfs_remove
+>  
+> +void debugfs_lookup_and_remove(const char *name, struct dentry
+> *parent);
+> +
+>  const struct file_operations *debugfs_real_fops(const struct file
+> *filp);
+>  
+>  int debugfs_file_get(struct dentry *dentry);
+> @@ -225,6 +227,10 @@ static inline void debugfs_remove(struct dentry
+> *dentry)
+>  static inline void debugfs_remove_recursive(struct dentry *dentry)
+>  { }
+>  
+> +static inline void debugfs_lookup_and_remove(const char *name,
+> +					     struct dentry *parent)
+> +{ }
+> +
+>  const struct file_operations *debugfs_real_fops(const struct file
+> *filp);
+>  
+>  static inline int debugfs_file_get(struct dentry *dentry)
+> diff --git a/kernel/sched/debug.c b/kernel/sched/debug.c
+> index bb3d63bdf4ae..667876da8382 100644
+> --- a/kernel/sched/debug.c
+> +++ b/kernel/sched/debug.c
+> @@ -416,7 +416,7 @@ void update_sched_domain_debugfs(void)
+>  		char buf[32];
+>  
+>  		snprintf(buf, sizeof(buf), "cpu%d", cpu);
+> -		debugfs_remove(debugfs_lookup(buf, sd_dentry));
+> +		debugfs_lookup_and_remove(buf, sd_dentry);
+>  		d_cpu = debugfs_create_dir(buf, sd_dentry);
+>  
+>  		i = 0;
 
-How are you doing? I have sourced for your contact online and=20
-decided to contact you. My name is Amjad. I am retained with a=20
-leading Bio Firm. The recent pandemic caused a lot of havoc in=20
-the business and supply industry. It also opened up new=20
-opportunities as well. My company has opened up a bid for=20
-suppliers of some basic raw materials needed in the production of=20
-life saving vaccines, drugs, etc.
+The lowmemorykiller triggered issue while doing hotplug stress is fixed
+after applying your patch.
+Thanks for your kindly support !
 
-I urgently seek a representative to represent my interest in this=20
-bid. As a staff member, it is against the policy for me to bid=20
-directly for this. I assure you that the proceeds from this is=20
-very good. I have already sourced a local supplier to work with=20
-on this. I only need a reliable representative. I think we can=20
-work together on this.
 
-Please get back to me and I can explain in further details.
-
-Regards,
-Amjad Ali
 
