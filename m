@@ -4,74 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B385ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 07:10:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 735E8C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 07:19:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GMxt2oT0D3MCbD0Lp6mcCwpaeEOxm0ZIUUd82Rv5VG0=; b=iRsKiySYyMel7bWWKZLZj0cB7D
-	ZNcUEBkw3WzvpzZh4ZgAnhnLNBigNmBdGFySW8bHWlOAmvEIT59SIoJW39l7yzfjCJ2I0f0ytRA2N
-	cKcUtOE/ykrTrplkYuaFl8twR5DSG3mYCR3RmQnnOsFkv5OFW/KM8CYbSTgPIKOQUgFzglgjXR1e/
-	avjfXz3b9Kj0pXhrpjWm5RGFQ1tdKVaiUNnZHpnPjjWZisbJVwDY+YD6eM/oHmwEhQg5gmVlnNe3t
-	Y2FbVbiUc++ucl7yXBAbaFASgSie268yskrhnP8d4/mGF8AflD8wbf2ALlqPOL8zVsrv9bQfhUQNt
-	F3abYmIA==;
+	bh=4UYaZQaKSvCLWbTE9GXOE3EFR96jqB4zmTTUQs6yR20=; b=qI1IOf0QO9NR61XPl9qXePMP6S
+	Pc4W5U6mMx3c0Kh0hkwElMaZuSJv3g5w9DziQd5IooD38AhWnrJVOxtUTyW301Q6Wqbhqu5QX1aGs
+	ABDTYP8HzTi+AqLfWLEdTsOtRvlvVt7qVKC050lMRfNrIhquoyC9dlSskpX3bCxXkgjTbom1CXrdw
+	QmLRq7IvYmKHP5rB/kaACLJtwOgIROyVf/6Vz0rphRwjw7O2Zv5tMMW5B6YEeeE1PlBiLSyxJhnJX
+	SVRYWht7xzKIPi30WIP2J3sfUZLunHk+yoRChNDgy1qyVfMTHm0pIjd+OFhWmFX4UwdwfxWfcNbVD
+	9UT+sWoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU0oo-001AWz-VN; Fri, 02 Sep 2022 07:10:23 +0000
+	id 1oU0xM-001EhE-1j; Fri, 02 Sep 2022 07:19:12 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU0ol-001AUU-DU; Fri, 02 Sep 2022 07:10:21 +0000
-X-UUID: 6595edd906dc4cb9953748f829855b90-20220902
+	id 1oU0xJ-001Efn-CU
+	for linux-mediatek@lists.infradead.org; Fri, 02 Sep 2022 07:19:11 +0000
+X-UUID: 4dd235ac2f344e019991a0b9b8649891-20220902
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=GMxt2oT0D3MCbD0Lp6mcCwpaeEOxm0ZIUUd82Rv5VG0=;
-	b=TmeP9WsgGG0Tk0phqDb/xcB8YDQKXSe1Gm8bRtynzIcy+dAGAclXjX6rOKjA2hWGIFa5YnBcJNOIn2ZIjbhjHEXrXnq4/6cfLU0sTvH6dbPdCkVADVQAQ8Has/gR8zhVHpyg6D7HFxf1qNaod4FPTVX8BknQCPjs1BZNc08ccAw=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=4UYaZQaKSvCLWbTE9GXOE3EFR96jqB4zmTTUQs6yR20=;
+	b=VekcNvQdjT7X2HUb+eWBhwrcQvgi+izpxErIVRV9OKAAJMAFK8hem0XKkPOfjXCsVi4Gqu3dJnHp7g7emUX95L+Sf4lufJaeEc08TN4moA4s7uVqvrSnwTo9ZHWfoztOjaRXh+v+jzzMmOM/uK+NLJOya9T0G7QVMubdYS6AQOg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:c7854011-ea20-43c1-8260-89dc1707dc99,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:8a39ec20-1c20-48a5-82a0-25f9c331906d,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 6595edd906dc4cb9953748f829855b90-20220902
+X-CID-O-INFO: VERSION:1.1.10,REQID:c8436fe5-a4f6-4bf2-aa37-5d4da1a3dda2,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
+	_Ham,ACTION:release,TS:-5
+X-CID-META: VersionHash:84eae18,CLOUDID:065c6dd0-20bd-4e5e-ace8-00692b7ab380,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 4dd235ac2f344e019991a0b9b8649891-20220902
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <johnson.wang@mediatek.com>)
+	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1711253320; Fri, 02 Sep 2022 00:10:13 -0700
+	with ESMTP id 500466106; Fri, 02 Sep 2022 00:19:04 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 2 Sep 2022 14:39:38 +0800
+ 15.2.792.15; Fri, 2 Sep 2022 14:38:46 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 2 Sep 2022 14:39:37 +0800
-Message-ID: <67237f85d1c4bc72906848d811988209d0112c06.camel@mediatek.com>
-Subject: Re: [PATCH 2/4] dt-bindings: arm: mediatek: Add new bindings of
- MediaTek frequency hopping
-From: Johnson Wang <johnson.wang@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<angelogioacchino.delregno@collabora.com>, <sboyd@kernel.org>
-CC: <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Edward-JW Yang
-	<edward-jw.yang@mediatek.com>
-Date: Fri, 2 Sep 2022 14:39:38 +0800
-In-Reply-To: <b1296c37-5283-81f7-1939-7ea20e1f4d0d@linaro.org>
-References: <20220831124850.7748-1-johnson.wang@mediatek.com>
-	 <20220831124850.7748-3-johnson.wang@mediatek.com>
-	 <b1296c37-5283-81f7-1939-7ea20e1f4d0d@linaro.org>
+ Transport; Fri, 2 Sep 2022 14:38:46 +0800
+Message-ID: <e2697bbc0ab3832909e6d1da1f52d1f4d1d3a206.camel@mediatek.com>
+Subject: Re: [bug report] media: platform: mtk-mdp3: add MediaTek MDP3 driver
+From: moudy ho <moudy.ho@mediatek.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+CC: <linux-media@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Date: Fri, 2 Sep 2022 14:38:46 +0800
+In-Reply-To: <YxB8b8lkU62yJzDM@kili>
+References: <YxB8b8lkU62yJzDM@kili>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_001019_493004_D3D07BE9 
-X-CRM114-Status: GOOD (  24.17  )
+X-CRM114-CacheID: sfid-20220902_001909_467102_79F19830 
+X-CRM114-Status: GOOD (  29.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,104 +78,236 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-08-31 at 16:19 +0300, Krzysztof Kozlowski wrote:
-> On 31/08/2022 15:48, Johnson Wang wrote:
-> > Add the new binding documentation for MediaTek frequency hopping
-> > and spread spectrum clocking control.
-> > 
-> > Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> > Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
-> > ---
-> >  .../bindings/arm/mediatek/mediatek,fhctl.yaml | 49
-> > +++++++++++++++++++
-> >  1 file changed, 49 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yaml
-> > 
-> > diff --git
-> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yam
-> > l
-> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yam
-> > l
-> > new file mode 100644
-> > index 000000000000..c5d76410538b
-> > --- /dev/null
-> > +++
-> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yam
-> > l
-> > @@ -0,0 +1,49 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,fhctl.yaml*__;Iw!!CTRNKA9wMg0ARbw!ysl-bMp7yP9Ym70o6EVB8A36MBxcXGap8doEKR_SbaAQSy8-_RU5jvrWTjzETut_6eXNGut4j-3dY0q7xJdpQbmaOw$
-> >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!ysl-bMp7yP9Ym70o6EVB8A36MBxcXGap8doEKR_SbaAQSy8-_RU5jvrWTjzETut_6eXNGut4j-3dY0q7xJezt7_RBw$
-> >  
-> > +
-> > +title: MediaTek frequency hopping and spread spectrum clocking
-> > control
-> > +
-> > +maintainers:
-> > +  - Edward-JW Yang <edward-jw.yang@mediatek.com>
-> > +
-> > +description: |
-> > +  Frequency hopping control (FHCTL) is a piece of hardware that
-> > control
-> > +  some PLLs to adopt "hopping" mechanism to adjust their
-> > frequency.
-> > +  Spread spectrum clocking (SSC) is another function provided by
-> > this hardware.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: mediatek,fhctl
-> 
-> You need SoC/device specific compatibles. Preferably only SoC
-> specific,
-> without generic fallback, unless you can guarantee (while
-> representing
-> MediaTek), that generic fallback will cover all of their SoCs?
-> 
+Hi Dan,
 
-Hi Krzysztof,
+Thanks for your time and all advices on mdp3 driver!
 
-At this moment, we plan to support FHCTL feature for MT8186 only.
+Regarding note 2 you listed, I tried using a queue event to notify that
+the suspend process will not execute until the CMQ send task done.
+ref: function "mdp_suspend" in mtk-mdp3-core.cmdq
 
-If you prefer SoC-specific compatble, we will improve that in the next
-version.
+Although I've added a patch (as below)to fix the smatch bugs and
+warnings you mentioned, , and it is less complete than your fix
+Message ID = 20220831102853.6843-1-moudy.ho@mediatek.com/
 
-Thanks for your suggestion.
+I'd like to confirm whether I should send the v3 patch as per your
+suggestion or just drop it and let you deal with it.
 
-BRs,
-Johnson Wang
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  mediatek,hopping-ssc-percents:
-> > +    description: |
-> > +      Determine the enablement of frequency hopping feature and
-> > the percentage
-> > +      of spread spectrum clocking for PLLs.
-> > +    $ref: /schemas/types.yaml#/definitions/uint32-matrix
-> > +    items:
-> > +      items:
-> > +        - description: PLL id that is expected to enable frequency
-> > hopping.
+Regards,
+Moudy
+
+On Thu, 2022-09-01 at 12:33 +0300, Dan Carpenter wrote:
+> Hello Moudy Ho,
 > 
-> So the clocks are indices from some specific, yet unnamed
-> clock-controller? This feels hacky. You should rather take here clock
-> phandles (1) or integrate it into specific clock controller (2). The
-> reason is that either your device does something on top of existing
-> clocks (option 1, thus it takes clock as inputs) or it modifies
-> existing
-> clocks (option 2, thus it is integral part of clock-controller).
+> The patch 61890ccaefaf: "media: platform: mtk-mdp3: add MediaTek MDP3
+> driver" from Aug 23, 2022, leads to the following Smatch static
+> checker warning:
 > 
+> 	drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c:292
+> mdp_probe()
+> 	error: we previously assumed 'mdp' could be null (see line 188)
 > 
-> Best regards,
-> Krzysztof
+> My blog entry gives a good overview of how to write Free the Last
+> Thing
+> Style error handling.  Let's take a look at it as it applies to
+> mdp_probe().
+> 
+> drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+>     180 static int mdp_probe(struct platform_device *pdev)
+>     181 {
+>     182         struct device *dev = &pdev->dev;
+>     183         struct mdp_dev *mdp;
+>     184         struct platform_device *mm_pdev;
+>     185         int ret, i;
+>     186 
+>     187         mdp = kzalloc(sizeof(*mdp), GFP_KERNEL);
+>     188         if (!mdp) {
+>     189                 ret = -ENOMEM;
+>     190                 goto err_return;
+> 
+> There is no Last Thing to free.  This should be "return -ENOMEM;".
+> This goto will crash.  The Last thing is now "mdp".
+> 
+>     191         }
+>     192 
+>     193         mdp->pdev = pdev;
+>     194         mdp->mdp_data = of_device_get_match_data(&pdev->dev);
+>     195 
+>     196         mm_pdev = __get_pdev_by_id(pdev, MDP_INFRA_MMSYS);
+>     197         if (!mm_pdev) {
+>     198                 ret = -ENODEV;
+>     199                 goto err_return;
+> 
+> This should be "goto err_free_mdp;".  This goto will trigger a series
+> of WARN_ON() stack traces.  The Last Thing is now mdp->mdp_mmsys.
+> 
+>     200         }
+>     201         mdp->mdp_mmsys = &mm_pdev->dev;
+>     202 
+>     203         mm_pdev = __get_pdev_by_id(pdev, MDP_INFRA_MUTEX);
+>     204         if (WARN_ON(!mm_pdev)) {
+>     205                 ret = -ENODEV;
+>     206                 goto err_return;
+> 
+> This goto should call put on mdp->mdp_mmsys dev_something.  It
+> instead
+> leaks that.  But it does call mtk_mutex_put() and each call will
+> leads
+> to a series of stack traces.  The Last Thing is now mm_pdev.  That
+> doesn't seem to be stored anywhere so it's going to be complicated to
+> free it...  :/
+> 
+>     207         }
+>     208         for (i = 0; i < MDP_PIPE_MAX; i++) {
+>     209                 mdp->mdp_mutex[i] = mtk_mutex_get(&mm_pdev-
+> >dev);
+>     210                 if (!mdp->mdp_mutex[i]) {
+>     211                         ret = -ENODEV;
+>     212                         goto err_return;
+> 
+> If this fails it should unwind the successful allocations:
+> 
+> 	while (--i >= 0) {
+> 
+> But instead it does unwinds everything.  Stack traces.
+> 
+>     213                 }
+>     214         }
+>     215 
+>     216         ret = mdp_comp_config(mdp);
+>     217         if (ret) {
+>     218                 dev_err(dev, "Failed to config mdp
+> components\n");
+>     219                 goto err_return;
+> 
+> Alright.  Good.  This will leak the "mm_pdev" references but it will
+> not
+> print any stack traces.  The mdp_comp_config() function uses One
+> Magic
+> Free Function style error handling so it is buggy.  The Last thing is
+> now comp_config.
+> 
+>     220         }
+>     221 
+>     222         mdp->job_wq = alloc_workqueue(MDP_MODULE_NAME,
+> WQ_FREEZABLE, 0);
+>     223         if (!mdp->job_wq) {
+>     224                 dev_err(dev, "Unable to create job
+> workqueue\n");
+>     225                 ret = -ENOMEM;
+>     226                 goto err_deinit_comp;
+> 
+> Hooray!  This label has a good name and frees the Last Thing.  The
+> new
+> last thing is the ->job_wq.
+> 
+>     227         }
+>     228 
+>     229         mdp->clock_wq = alloc_workqueue(MDP_MODULE_NAME "-
+> clock", WQ_FREEZABLE,
+>     230                                         0);
+>     231         if (!mdp->clock_wq) {
+>     232                 dev_err(dev, "Unable to create clock
+> workqueue\n");
+>     233                 ret = -ENOMEM;
+>     234                 goto err_destroy_job_wq;
+> 
+> Hooray!
+> 
+>     235         }
+>     236 
+>     237         mm_pdev = __get_pdev_by_id(pdev, MDP_INFRA_SCP);
+>     238         if (WARN_ON(!mm_pdev)) {
+>     239                 dev_err(&pdev->dev, "Could not get scp
+> device\n");
+>     240                 ret = -ENODEV;
+>     241                 goto err_destroy_clock_wq;
+> 
+> Hooray!
+> 
+>     242         }
+>     243         mdp->scp = platform_get_drvdata(mm_pdev);
+>     244         mdp->rproc_handle = scp_get_rproc(mdp->scp);
+>     245         dev_dbg(&pdev->dev, "MDP rproc_handle: %pK", mdp-
+> >rproc_handle);
+>     246 
+>     247         mutex_init(&mdp->vpu_lock);
+>     248         mutex_init(&mdp->m2m_lock);
+>     249 
+>     250         mdp->cmdq_clt = cmdq_mbox_create(dev, 0);
+>     251         if (IS_ERR(mdp->cmdq_clt)) {
+>     252                 ret = PTR_ERR(mdp->cmdq_clt);
+>     253                 goto err_put_scp;
+> 
+> Ugh...  The mm_pdev name changed to scp.  It took a while to figure
+> that
+> out.  This unwinds the __get_pdev_by_id().  Fair enough.  The Last
+> thing
+> is now cmdq_clt.
+> 
+>     254         }
+>     255 
+>     256         init_waitqueue_head(&mdp->callback_wq);
+>     257         ida_init(&mdp->mdp_ida);
+>     258         platform_set_drvdata(pdev, mdp);
+>     259 
+>     260         vb2_dma_contig_set_max_seg_size(&pdev->dev,
+> DMA_BIT_MASK(32));
+>     261 
+>     262         ret = v4l2_device_register(dev, &mdp->v4l2_dev);
+>     263         if (ret) {
+>     264                 dev_err(dev, "Failed to register v4l2
+> device\n");
+>     265                 ret = -EINVAL;
+>     266                 goto err_mbox_destroy;
+> 
+> The cmdq_clt is an mbox.  Fair enough.  Good name, label does what we
+> expected.
+> 
+>     267         }
+>     268 
+>     269         ret = mdp_m2m_device_register(mdp);
+>     270         if (ret) {
+>     271                 v4l2_err(&mdp->v4l2_dev, "Failed to register
+> m2m device\n");
+>     272                 goto err_unregister_device;
+> 
+> Good.
+> 
+>     273         }
+>     274 
+>     275         dev_dbg(dev, "mdp-%d registered successfully\n",
+> pdev->id);
+>     276         return 0;
+> 
+> Summary:
+> BUG1: NULL dereference
+> BUG2: Stack traces calling mtk_mutex_put().
+> BUG3&4: Two __get_pdev_by_id() which need a matching put (reference
+> leaks).
+> 
+>     277 
+>     278 err_unregister_device:
+>     279         v4l2_device_unregister(&mdp->v4l2_dev);
+>     280 err_mbox_destroy:
+>     281         cmdq_mbox_destroy(mdp->cmdq_clt);
+>     282 err_put_scp:
+>     283         scp_put(mdp->scp);
+>     284 err_destroy_clock_wq:
+>     285         destroy_workqueue(mdp->clock_wq);
+>     286 err_destroy_job_wq:
+>     287         destroy_workqueue(mdp->job_wq);
+>     288 err_deinit_comp:
+>     289         mdp_comp_destroy(mdp);
+>     290 err_return:
+>     291         for (i = 0; i < MDP_PIPE_MAX; i++)
+> --> 292                 mtk_mutex_put(mdp->mdp_mutex[i]);
+>     293         kfree(mdp);
+>     294         dev_dbg(dev, "Errno %d\n", ret);
+>     295         return ret;
+>     296 }
+> 
+> regards,
+> dan carpenter
 
 
