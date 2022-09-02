@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C74C8ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 08:13:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28B40C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 08:13:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FsfJPXGMW+gszYGj0ctWW5gURhWWH89vu9x3iR9dZyw=; b=NF2pTbjvt6f/6momStk73YyBKu
-	61Eeb8lrZajwCDZH8TR99rYGE7YLQ7U1t5eBqMhP53JqXSk7o5h8foCyf4dQAn3g10RYQ6DiE7rHI
-	BNxHogcwigOjg9hwgKvcAOR2Mbb/q9uaPNLtYxd4Gl4x6f/+TgnHNGf6Layr9iY5jIqcAXLQ1b1TM
-	EMXFIT92XRoifdFHxmSl362xzF4t4Q7NUC1ue5ie0iGTrvHSYb0pMpbLSTlm7IVB8ujeH38i8Ex8C
-	WhX9LO+pfp4l6yb/4M0ctnL8dSSW2ysDbvFFFxN+KcAdK1AMWYdBlQ2q6HPGcBMrWcgbiOOmw4gc0
-	ji6N2sIg==;
+	bh=AGx0ASsjf5zAlHY0KaJ1P0SxTlfY42ZZsRuXis30vkg=; b=LUiZkLpNCS5u328xiaOZuUkIJF
+	x55xPEKVNb5R7wAllL7gt8lIdBbeendvxS9XHQLfOFubQAuiytMLyoGybEGSk41VlflVYXqGTRZ7D
+	4fwCtc1inX1yaKPyNJ/r3vtSy1cK7LdWRiJgp07amASKUmln6usXFWhvLNCQGsmxGmivpcKQNjq5q
+	wSTLzuBTZfpY/5nSKmmF5A8iV/trS0me2wj46xLSYfF94NlwOHnZydA530mwbn++DTihUqvSGwTnZ
+	xqynfWThbjskQaFetWXpniqhk3p2X9f4vxyGcGXR3JpD9Y6O9GsxFdayq3ixhiXyQVuxut7Hn2bcM
+	OUUKdxUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU1nO-001gLb-6j; Fri, 02 Sep 2022 08:12:58 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oU1nO-001gM0-RN; Fri, 02 Sep 2022 08:12:58 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU1mh-001fv3-DZ; Fri, 02 Sep 2022 08:12:17 +0000
+	id 1oU1mh-001fvc-Ii; Fri, 02 Sep 2022 08:12:17 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AC1876601F03;
-	Fri,  2 Sep 2022 09:12:09 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1B64B6601F05;
+	Fri,  2 Sep 2022 09:12:11 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662106330;
-	bh=3OWhZI1FxYYC6TsKTsim+28cYr7jRgmawjyY6vyOJfc=;
+	s=mail; t=1662106331;
+	bh=wp3o4Y17CxutbsfUPDmxWZ120aLT+CWRC1GPj2X5+Bc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=bdpSDozB4BZBPyQyHm9CehdN4InFb5e8qwmWXUsh1dFcCzN9HMuK+xsPA+NR7x+tI
-	 WHWdWygG3Nt4zp/ib2pFc1b5SR0LaS+mEuKa85XPfIcVtpa9DXzWDf89AZQSETU5SN
-	 5BbBFXnPqqQAE28rOiBDSAsVuSD/F4gSgtfac6hediAYoeyPpPLpiIdw1t2uUiVMK6
-	 mpTGgYdNASG0RikibSckWDk5ZVhBmvQIBRQKnfVpKBM7dtQ0U0HV/iMYHYMrb04Gxc
-	 3UWWVnAb70ReLDPmkAXiiSGf8cxb8qa4mvAJYppZyW2MDHxLxHPjOUPZPKOX55mgIL
-	 nH4gCXoucENlQ==
+	b=GLIpDl9BPR0MRTsh3do9lPthy0DgAYgsCPH4GemGyTGzHz9lWaDwkqHO0WxKBem4v
+	 Wcy8gU2uNsfRc2oKp/FmLEI3+4ylOnw4SQXOtcbDdxGVNhyws+OCmKfKX86rbaUT7+
+	 x1VNrmMFBstODhPVoSDkqRYK+twVdc5JBaVdn8fckjAO3XqPbaf2bzLTRJjzW556Eq
+	 Ca9i4ePUHoyvTgt/nnY851ls2jCotbrJ5Bmx7NsIjCui7eyuNR09SFnk+BCj5LW2+5
+	 ZMIIc4LHKHDydTIvw0SulkR130ir1D/adwcXpMH9RyfyZqMOEDleBN9CEnPl6n5Rkh
+	 EQCrsxgfaDtFg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -51,18 +51,17 @@ Cc: robh+dt@kernel.org,
 	linux-kernel@vger.kernel.org,
 	wenst@chromium.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 1/7] arm64: dts: mediatek: cherry: Enable the System Companion Processor
-Date: Fri,  2 Sep 2022 10:11:50 +0200
-Message-Id: <20220902081156.38526-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 3/7] arm64: dts: mediatek: cherry: Add Google Security Chip (GSC) TPM
+Date: Fri,  2 Sep 2022 10:11:52 +0200
+Message-Id: <20220902081156.38526-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20220902081156.38526-1-angelogioacchino.delregno@collabora.com>
 References: <20220902081156.38526-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_011215_722264_6DC04859 
-X-CRM114-Status: UNSURE (   9.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220902_011215_852365_419B27C3 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,69 +76,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8195 features a SCP like some other older SoCs, and Cherry uses it
-for various tasks. Add the required pin configuration and DMA pool
-and enable the node.
+Add support for the Cr50 Google Security Chip (GSC) found on this
+platform on I2C3 to support TPM and to also use it as an entropy
+source for the kernel.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 29 +++++++++++++++++++
- 1 file changed, 29 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index fcc600674339..e83d58d99757 100644
+index 73f531f84fa2..a07e7fe66315 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -104,6 +104,18 @@ usb_vbus: regulator-5v0-usb-vbus {
- 		enable-active-high;
- 		regulator-always-on;
- 	};
+@@ -149,6 +149,14 @@ &i2c3 {
+ 	clock-frequency = <400000>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c3_pins>;
 +
-+	reserved_memory: reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+
-+		scp_mem: memory@50000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x50000000 0 0x2900000>;
-+			no-map;
-+		};
++	tpm@50 {
++		compatible = "google,cr50";
++		reg = <0x50>;
++		interrupts-extended = <&pio 88 IRQ_TYPE_EDGE_FALLING>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&cr50_int>;
 +	};
  };
  
- &i2c0 {
-@@ -600,6 +612,14 @@ pins-low-power-pupd {
- 		};
- 	};
+ &i2c4 {
+@@ -426,6 +434,13 @@ &pio {
+ 		"AP_SPI_FLASH_MOSI",
+ 		"AP_SPI_FLASH_MISO";
  
-+	scp_pins: scp-default-pins {
-+		pins-vreq {
-+			pinmux = <PINMUX_GPIO76__FUNC_SCP_VREQ_VAO>;
-+			bias-disable;
++	cr50_int: cr50-irq-default-pins {
++		pins-gsc-ap-int-odl {
++			pinmux = <PINMUX_GPIO88__FUNC_GPIO88>;
 +			input-enable;
 +		};
 +	};
 +
- 	spi0_pins: spi0-default-pins {
- 		pins-cs-mosi-clk {
- 			pinmux = <PINMUX_GPIO132__FUNC_SPIM0_CSB>,
-@@ -643,6 +663,15 @@ &pmic {
- 	interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
- };
- 
-+&scp {
-+	status = "okay";
-+
-+	firmware-name = "mediatek/mt8195/scp.img";
-+	memory-region = <&scp_mem>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&scp_pins>;
-+};
-+
- &spi0 {
- 	status = "okay";
- 
+ 	cros_ec_int: cros-ec-irq-default-pins {
+ 		pins-ec-ap-int-odl {
+ 			pinmux = <PINMUX_GPIO4__FUNC_GPIO4>;
 -- 
 2.37.2
 
