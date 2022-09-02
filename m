@@ -4,59 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31FC5ECAAD5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 08:49:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45F3CC54EE9
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 08:58:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LpGVPj8CIK19EfZu5dXGNSqeOrOuTWBx1oS8prwzieA=; b=rM4pkoT3oqhVKLqpgAKm8fwkHK
-	wHbH561StM0iL5aso3x4tsCJUvsdOxqbMkphDu4+s0YIkFKbPSJUpZ9Qa363tboBMf0leGiVLadRD
-	UkZi/rNAp8xxvIaSBkRHoUQR8ScgktxvXUEgCRQ2sZJcDtlmDiZCJMlfj/2Buere/dlOgSNWiEl4s
-	MdOl+AlKBazMYZDcKWj/JmlHwzhEvbkjPAf8puI3gAYTXCp1h8h1rsM/LAYT4TVE0zLL1ml7gdLQ/
-	X7dzhaRXvdJn019ROlPOpy4FEKMqr6D8q1jeOaNXQMlE4SecyCWGlVboLvnOn7YKRII3SKGNTsqP9
-	PwGZ2KIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LjdTy1xd5BYoKHJkgGQjVcamnY1XU8R1SpCmvWnZVUs=; b=xu7PyltftAIiyEyuhZy79u9F7e
+	aiBEIegmfVFp37sbNFjkdDnz5B3RACGwbpQ5nS2bNEzV7+ZPvt9J8flBu9y/RUKocevEGnBvKNCLx
+	79uOobb5cm0HryyB0PVEPAziqcX/YGRJOm9OoP+q5uOr1BjkbTM634zRM0AV3EI8nJC1NuNb8qqcW
+	+na6pqjM528mymNoK8Ohx5+kUBn7U+lTj94Iyp87N5QVN5AylNtc8UyCqXWz9VblrcV2inaYZnh8j
+	cB1Nu90d489DLqV7ANXtKi/Kk0uvTUZ55aoao1ygRVhUTuB9RLXp74kJA1kEC2p6umWowdj2n4Zjh
+	aSV44peQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU2Md-0026s8-Sx; Fri, 02 Sep 2022 08:49:23 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1oU2Vg-002CmY-Vr; Fri, 02 Sep 2022 08:58:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU2Kf-0024af-Rp; Fri, 02 Sep 2022 08:47:23 +0000
-Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.53])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4MJrzQ0ZZ9zkWsf;
-	Fri,  2 Sep 2022 16:43:30 +0800 (CST)
-Received: from kwepemm600010.china.huawei.com (7.193.23.86) by
- dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.24; Fri, 2 Sep 2022 16:47:12 +0800
-Received: from huawei.com (10.175.127.227) by kwepemm600010.china.huawei.com
- (7.193.23.86) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 2 Sep
- 2022 16:47:09 +0800
-From: Sun Ke <sunke32@huawei.com>
-To: <mchehab@kernel.org>, <matthias.bgg@gmail.com>,
-	<hverkuil-cisco@xs4all.nl>, <ping-hsun.wu@mediatek.com>,
-	<daoyuan.huang@mediatek.com>, <moudy.ho@mediatek.com>
-CC: <linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <kernel-janitors@vger.kernel.org>,
-	<sunke32@huawei.com>
-Subject: [PATCH 0/3] three fixes for mtk-mdp3
-Date: Fri, 2 Sep 2022 16:58:17 +0800
-Message-ID: <20220902085820.3777360-1-sunke32@huawei.com>
-X-Mailer: git-send-email 2.31.1
+	id 1oU2Ve-002Cfq-Fu; Fri, 02 Sep 2022 08:58:43 +0000
+X-UUID: b21d17f545114927908960be10634177-20220902
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=LjdTy1xd5BYoKHJkgGQjVcamnY1XU8R1SpCmvWnZVUs=;
+	b=AQYfPnEB1lf1xCywnf/7nQX5ptfQ8yrDYBoQKx81Q3s5mCiHpvqOApsZXr2E1ZU8YRUU4kxXXe2PmUWi0DV4bgtVB/v/2Knnh20nyTn7SmBSjdhOGNzgoeDwVU1s5dkB8jygWgdU+eUKSHr/5qq8kWdnnRy5O3R/jpvX52jv9f8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:b7bfa9ad-9f20-4a0e-be3f-deeab5d0e01e,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:d25a6756-e800-47dc-8adf-0c936acf4f1b,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: b21d17f545114927908960be10634177-20220902
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1354851970; Fri, 02 Sep 2022 01:58:35 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 2 Sep 2022 16:57:58 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 2 Sep 2022 16:57:58 +0800
+Message-ID: <e5e925911c428cab87bbe12cda1dd657e1bb5075.camel@mediatek.com>
+Subject: Re: [PATCH v17 10/10] drm/mediatek: dp: Audio support for MT8195
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Fri, 2 Sep 2022 16:57:58 +0800
+In-Reply-To: <20220901044149.16782-11-rex-bc.chen@mediatek.com>
+References: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
+	 <20220901044149.16782-11-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.127.227]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- kwepemm600010.china.huawei.com (7.193.23.86)
-X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_014722_090905_08DD4518 
-X-CRM114-Status: UNSURE (   6.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220902_015842_540115_003A30D6 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,20 +88,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-three fixes for mtk-mdp3
+Hi, Bo-Chen:
 
-Sun Ke (3):
-  media: platform: mtk-mdp3: use devm_kfree to free memory allocated
-    with devm_kmalloc()
-  media: platform: mtk-mdp3: fix PM reference leak in
-    mdp_comp_clock_on()
-  media: platform: mtk-mdp3: fix error return code in mdp_vpu_dev_init()
+On Thu, 2022-09-01 at 12:41 +0800, Bo-Chen Chen wrote:
+> From: Guillaume Ranquet <granquet@baylibre.com>
+> 
+> This patch adds audio support to the DP driver for MT8195 with up to
+> 8
+> channels.
+> 
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dp.c     | 482
+> +++++++++++++++++++++++++-
+>  drivers/gpu/drm/mediatek/mtk_dp_reg.h |  51 +++
+>  2 files changed, 532 insertions(+), 1 deletion(-)
+> 
+> 
 
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c | 7 ++++---
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c  | 1 +
- 2 files changed, 5 insertions(+), 3 deletions(-)
+[snip]
 
--- 
-2.31.1
+> +#define MTK_DP_ENC0_P0_308C			0x308c
+> +#define CH_STATUS_0_DP_ENC0_P0_MASK			GENMASK(15, 0)
+> +#define MTK_DP_ENC0_P0_3090			0x3090
+> +#define CH_STATUS_1_DP_ENC0_P0_MASK			GENMASK(15, 0)
+> +#define MTK_DP_ENC0_P0_3094			0x3094
+> +#define CH_STATUS_2_DP_ENC0_P0_MASK			GENMASK(7, 0)
+> +#define MTK_DP_ENC0_P0_30A0			0x30a0
+
+Useless, so drop it.
+
+Regards,
+CK
+
+> +#define DP_ENC0_30A0_MASK				(BIT(7) |
+> BIT(8) | BIT(12))
+> +#define MTK_DP_ENC0_P0_30A4			0x30a4
+> +#define AU_TS_CFG_DP_ENC0_P0_MASK			GENMASK(7, 0)
+> +#define MTK_DP_ENC0_P0_30A8			0x30a8
+> 
 
 
