@@ -4,73 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9B41ECAAD5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 16:37:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76F64C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 18:19:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V6hJKWK+ULYfDR0vxEt9RZQDPKAk9LpJfzJUF8zaBdM=; b=sphEarj1H/ZWTlXclP/G/sgn/b
-	4jFJST2K9dps6mUIIiB3EJAmfaE6zVWEYpQLJfennjvBhBXqFk2S3G3v0ku/qePILVd+K/y4KwD9Q
-	8wh3wnbZAo33EI/KgBeeV5c29V5Vl4+zMgZhz4IKitQj5DnAoDYXSsaMzNuUNOqPrRbbUPMTEckW2
-	YHOuQ06ITyanc/udAvVIBSyn7vz6L6gpbvxxau3Kag1czIAKTfQzPp98wL1lr7+gh6bzOysY1XIn+
-	iiXyLUt9aPNunPhJf65s+TQE44m3rfRVBdxGzHNUUpJ/j3DgCxgq3bmhcEIEJE0ala9RrIZDKH6s0
-	Auzb6HIw==;
+	bh=KW4nmJxC2UWMUp990Fkr+YzerSKZovQARWrLIEvTTQE=; b=CIxLsCyGqT8deBtkoaB301xIfl
+	t2rYu7rwhbaac6vDTWqaf0j6ZFnH5cdBvmhshBCnVi2mr9IXy7B6Ecubm+UIjxzoxfFWiVI53yTRE
+	dDf1XXLNuAeH1ogHKGihq6SnbdiAEC7emqZ4ivGIUzZuSNL/P8p2GCJbuHrf8xxwISX2Hg/19MK9M
+	nJWng66uILB5UZShHybCNR3VueuIZQJLXwnpYwlwCYFacBcQ9cPkE/E+Fb4+q4PzLEA/CWJZzJdIU
+	7ysAxlVN1m82j+fwX+TLhJf6m+3mdWgcD/JRY3kap6EadIZTZstDF47+vzBSMQ5PzRJkYdeX4ubAp
+	koZP3Fmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU9fO-0078Lk-Hz; Fri, 02 Sep 2022 16:37:14 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1oUBGI-009FbP-Q7; Fri, 02 Sep 2022 18:19:26 +0000
+Received: from mail-oa1-f44.google.com ([209.85.160.44])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU9fM-0078Ik-4d
-	for linux-mediatek@lists.infradead.org; Fri, 02 Sep 2022 16:37:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=V6hJKWK+ULYfDR0vxEt9RZQDPKAk9LpJfzJUF8zaBdM=; b=AY7RDjKS66W1tsRQE2bcTFzYmX
-	2t1Ownj12//mKYm7PZt/xYm/ibLMofaZ931XxjV6flUwOMt5h75DAm9ALCn53aFoEFoqtGTjnVbZ2
-	s3/MEu20PuCS4ANXj2BTJX2RpGU4gNR/gGXroa3+ehuSNpxYVsAiGyLw4Ms48uQevaL4M4U/ZL6bK
-	PDn1HS//AKomAmxIXxa9ulfesXi50FwqRSmMiG05eEWi6M+ayWUxd5EeX5fQk8GYkX5HZmSfhF0st
-	y4sZVD4xjsC0l1Zaar98QrVPBBl6lzysq7k7n/nYPPW3Je6Yxa1H7GL0ny0IuV8l9XPm96N9A2Isd
-	HaTLVVrQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34072)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1oU9f1-0007mF-48; Fri, 02 Sep 2022 17:36:51 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1oU9eu-0004ZJ-HC; Fri, 02 Sep 2022 17:36:44 +0100
-Date: Fri, 2 Sep 2022 17:36:44 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Alexander 'lynxis' Couzens <lynxis@fe80.eu>
-Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH 3/4] net: mediatek: sgmii: mtk_pcs_setup_mode_an: don't
- rely on register defaults
-Message-ID: <YxIxHHyl4cuHH68J@shell.armlinux.org.uk>
-References: <20220820224538.59489-1-lynxis@fe80.eu>
- <20220820224538.59489-4-lynxis@fe80.eu>
- <YwTyLwRnQ+eTXeDr@shell.armlinux.org.uk>
- <20220902174710.54a1d317@javelin>
+	id 1oUBGG-009FUs-Bh; Fri, 02 Sep 2022 18:19:25 +0000
+Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-11eb44f520dso6654930fac.10;
+        Fri, 02 Sep 2022 11:19:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=KW4nmJxC2UWMUp990Fkr+YzerSKZovQARWrLIEvTTQE=;
+        b=59J0S4sl6WIAJdH7smI4WlMRQiImvZ3SJsLK/++9WuJ9bjCLXhRmbJlBB3HA1gUCNk
+         SFy/bmc8y15QfKUh+FXomyUd9zWtbp1+taTgsBKYkJfrYpyKraSpdWOr+tyyIVQGjb0W
+         OClqul44AmLcnZMfUPYIp/6nJxNUL7qwDRvhNoktOQjBnLpTCeJZ2Qv74steWlZ7Pvmq
+         kcNSQh67Hig4LsQwU+RjeR0Cu/KKd6mvWBasoqFIsMzyL3pJSRNwqwjzDCC/tteOVNw8
+         ISs7lrf5mqNZvcYLFiuXnnzEwby4fALH0443hXtkWhsJBm6tFRCJpmGy4Z30fDzRtqns
+         3yMw==
+X-Gm-Message-State: ACgBeo1Cvl3wx+LMdS5EBvtQMROeGBDLvCkW+4hqpfZDAMovjXq71Ozm
+	Fgi01ZxNlW/Qq1wSdBLe0Q==
+X-Google-Smtp-Source: AA6agR7zJKJQn83IPHVAWk3IbF3tpzJEotiRHoaiAoBWuEU29vlzyuig22drfwWxdqfltEM9aCuFNw==
+X-Received: by 2002:a05:6808:45:b0:343:657d:4089 with SMTP id v5-20020a056808004500b00343657d4089mr2421692oic.68.1662142763277;
+        Fri, 02 Sep 2022 11:19:23 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id y11-20020a0568301d8b00b006372969fbdcsm1374873oti.26.2022.09.02.11.19.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 02 Sep 2022 11:19:22 -0700 (PDT)
+Received: (nullmailer pid 172292 invoked by uid 1000);
+	Fri, 02 Sep 2022 18:19:21 -0000
+Date: Fri, 2 Sep 2022 13:19:21 -0500
+From: Rob Herring <robh@kernel.org>
+To: Irui Wang <irui.wang@mediatek.com>
+Cc: xia.jiang@mediatek.com, Tzung-Bi Shih <tzungbi@chromium.org>, angelogioacchino.delregno@collabora.com, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, wenst@chromium.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>, nicolas.dufresne@collabora.com, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, kyrie wu <kyrie.wu@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, maoguang.meng@mediatek.com, Tomasz Figa <tfiga@chromium.org>, linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [V7,1/8] dt-bindings: mediatek: Add mediatek,mt8195-jpgdec
+ compatible
+Message-ID: <20220902181921.GA172239-robh@kernel.org>
+References: <20220826092904.10283-1-irui.wang@mediatek.com>
+ <20220826092904.10283-2-irui.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220902174710.54a1d317@javelin>
+In-Reply-To: <20220826092904.10283-2-irui.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_093712_214686_3CE842A4 
-X-CRM114-Status: GOOD (  30.67  )
+X-CRM114-CacheID: sfid-20220902_111924_423535_C0B3A151 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,85 +78,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 02, 2022 at 05:47:10PM +0200, Alexander 'lynxis' Couzens wrote:
-> On Tue, 23 Aug 2022 16:28:47 +0100
-> "Russell King (Oracle)" <linux@armlinux.org.uk> wrote:
+On Fri, 26 Aug 2022 17:28:57 +0800, Irui Wang wrote:
+> From: kyrie wu <kyrie.wu@mediatek.com>
 > 
-> > On Sun, Aug 21, 2022 at 12:45:37AM +0200, Alexander Couzens wrote:
-> > > Ensure autonegotiation is enabled.
-> > > 
-> > > Signed-off-by: Alexander Couzens <lynxis@fe80.eu>
-> > > ---
-> > >  drivers/net/ethernet/mediatek/mtk_sgmii.c | 5 +++--
-> > >  1 file changed, 3 insertions(+), 2 deletions(-)
-> > > 
-> > > diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c
-> > > b/drivers/net/ethernet/mediatek/mtk_sgmii.c index
-> > > 782812434367..aa69baf1a42f 100644 ---
-> > > a/drivers/net/ethernet/mediatek/mtk_sgmii.c +++
-> > > b/drivers/net/ethernet/mediatek/mtk_sgmii.c @@ -32,12 +32,13 @@
-> > > static int mtk_pcs_setup_mode_an(struct mtk_pcs *mpcs)
-> > > regmap_write(mpcs->regmap, SGMSYS_PCS_LINK_TIMER,
-> > > SGMII_LINK_TIMER_DEFAULT); 
-> > > +	/* disable remote fault & enable auto neg */
-> > >  	regmap_read(mpcs->regmap, SGMSYS_SGMII_MODE, &val);
-> > > -	val |= SGMII_REMOTE_FAULT_DIS;
-> > > +	val |= SGMII_REMOTE_FAULT_DIS | SGMII_SPEED_DUPLEX_AN;  
-> > 
-> > Does SGMII_SPEED_DUPLEX_AN need to be cleared in
-> > mtk_pcs_setup_mode_force(), so mtk_pcs_link_up() can force the
-> > duplex setting for base-X protocols?
-> > 
+> Add mediatek,mt8195-jpgdec compatible to binding document.
 > 
-> Yes SGMII_SPEED_DUPLEX_AN needs to be cleared to have FORCE_DUPLEX
-> working. But mtk_pcs_setup_mode_force() is clearing it implicit by
+> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+> Signed-off-by: irui wang <irui.wang@mediatek.com>
+> ---
+>  .../media/mediatek,mt8195-jpegdec.yaml        | 169 ++++++++++++++++++
+>  1 file changed, 169 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
 > 
-> val &= SGMII_DUPLEX_FULL & ~SGMII_IF_MODE_MASK
 
-It would make the code more reasonable to spell out what is included
-in SGMII_IF_MODE_MASK. It's:
-
-#define SGMII_SPEED_DUPLEX_AN           BIT(1)
-#define SGMII_SPEED_MASK                GENMASK(3, 2)
-#define SGMII_DUPLEX_FULL               BIT(4)
-#define SGMII_IF_MODE_BIT5              BIT(5)
-
-I'm guessing no one knows what SGMII_IF_MODE_BIT0 and
-SGMII_IF_MODE_BIT5 actually do - and as neither seem to be used in
-the code, the definitions are redundant.
-
-> because it's included in the SGMII_IF_MODE_MASK.
-> I also don't understand why it's forcing it in the
-> mtk_pcs_link_up().
-
-Please note that I've forgotten the contents of these patches, so
-these comments may not be entirely accurate...
-
-A lot of the code in the driver is quite weird, so when I converted it
-to phylink_pcs, I tried to keep the decision making the same as in the
-original code. It would help readability if the decision making was
-cleaned up - so similar tests in mtk_pcs_link_up() and
-mtk_pcs_config().
-
-By that, I mean - if the test in mtk_pcs_link_up() is for 802.3z modes,
-then shouldn't the test in mtk_pcs_config() also be using the same?
-From what I understand from mtk_eth_soc.c as it originally stood, the
-PCS driver is only used for SGMII, 1000base-X and 2500base-X.
-
-The SGMII duplex setting is changed in mtk_pcs_link_up() only for 802.3z
-modes - in other words, 1000base-X and 2500base-X.
-
-When mtk_pcs_config() is called for 1000base-X and 2500base-X, it calls
-mtk_pcs_setup_mode_force(). This clears SGMII_AN_ENABLE, disabling
-autonegotiation, and forcing 1000Mbps. Presumably, this PCS as the code
-was originally written is only capable of SGMII negotiation.
-
-It looks to me like the original code does not support autonegotiation
-on 802.3z interface modes.
-
-Thanks.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+Reviewed-by: Rob Herring <robh@kernel.org>
 
