@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB69CC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 07:31:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F69C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 07:32:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kVl11gCVG+L3OOSrvd7lAtcHP1USRC9hCAiJGILnyY4=; b=TlTZkf5XaMncXjDiO7+ogrxq7F
-	gqUp9MX/o3Ie8fm2gywJUCoWpL4StBGyWQUPAITD3uSa90IAW6e6d0stsQ4miHpFYmWicqJRB/8Ro
-	8/5nfIMyCTZPKSaaArJdpF1GrAlNov5HWZV77/YnPFYl+6dHFuqwW6w0nicVlT4+LqcKNuGEoGAmT
-	+5RaV9iParV12JJoGq4n22zlE+M8Lj8QUbn/5wx5DXiYgO8OH3j6OpMZ2ZvZ8kRUk5QUoyib8g81D
-	9B23LPJlXBjYekst4CESNPxoFBZqrkDvUgdQecIGCiFUcg2do6h+96kRkXjoVU2zbbEWIiSNQHtUJ
-	uwdSlKmQ==;
+	bh=qM1qgq1MV7finP/aae8s5yQZ0OBqyz3rZqiMvkPhvrk=; b=zg7HnlQ6wIaNpdjDiUpW/RQWJW
+	0A6+VhJLghpL81/61Ry1h0NtEWzaPD5DvsI7eHRul5AYJBmijLz2rKj3MuTCDbUqi+PdWi1F/5nA3
+	OsAVw9abBHHNfP+aAQbLWm4qLX9qQiaOqHWP/Vk8fkh3fYynwk9SSOmYm+M8DIoYG8B1YOKhLDOzf
+	t00Ms+tmxkhhK9XCVXoZ5pcld8v9FghGNVFj5SBntIMaKL2K2XEG3wHEXRkaG/Npn//PVD2osIuIq
+	Z4fxSXuwbokTFLb8dgiRu+Gw2hRI+JcuarTDWsUhG5cuumriroJ5SggtQ+VKCWCUBDQwW1V0Ujihw
+	QQDlrb8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU191-001JIq-PW; Fri, 02 Sep 2022 07:31:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oU1AU-001KDJ-Ls; Fri, 02 Sep 2022 07:32:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oU18z-001JG4-FD; Fri, 02 Sep 2022 07:31:15 +0000
-X-UUID: e6a5a3aacac041eeab1442a4b9737706-20220902
+	id 1oU1AR-001K5Y-LY; Fri, 02 Sep 2022 07:32:44 +0000
+X-UUID: d0e07dee85994d5881a6ad8bd4611332-20220902
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=kVl11gCVG+L3OOSrvd7lAtcHP1USRC9hCAiJGILnyY4=;
-	b=MN+1p2tLk/0Ss3T0gDnC/RILNKMYkfaVwRJttNmTvVJYZiGiK+1Kik89lAlQMWenADYL12ASqKFcWl7cz4E3RgITiPh4mdiiJrb/cSbAJwMFL6MLFspNznSpuDlqQ/fH+LU66mqXaAhkSdQ8WER8Z1j3YBAs0e/1ACSUPtq+Gt8=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=qM1qgq1MV7finP/aae8s5yQZ0OBqyz3rZqiMvkPhvrk=;
+	b=G4r3C5h5cHvAVDcRRHHgoPLBhlLRM0Vb4tnJrd/KpEQwrnDgIiM/5pzW4RcEgdoVbJkT3ez4P0ZcOB1hjX2oWRZwlO7/ExPeWm61Y+LPFtIefh41VHAXhpbR7+pWlaAIv0U7NP7YhRZpMaI9OJfwSgs7cRi72eukcsdlrujD/ro=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:3dde6d96-a36a-423e-91f2-5535b65c9d47,OB:0,L
+X-CID-O-INFO: VERSION:1.1.10,REQID:ac1abde1-7f9e-47e7-837b-70df5149c052,OB:0,L
 	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
 	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:88e9ec20-1c20-48a5-82a0-25f9c331906d,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: e6a5a3aacac041eeab1442a4b9737706-20220902
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <kuyo.chang@mediatek.com>)
+X-CID-META: VersionHash:84eae18,CLOUDID:5bf7ec20-1c20-48a5-82a0-25f9c331906d,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: d0e07dee85994d5881a6ad8bd4611332-20220902
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 376827081; Fri, 02 Sep 2022 00:31:09 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 2 Sep 2022 14:40:59 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 2 Sep 2022 14:40:59 +0800
-Message-ID: <5ce45c874d6a05ca69abed3961d413c4a4360e79.camel@mediatek.com>
-Subject: Re: [PATCH 1/1] sched/debug: fix dentry leak in
- update_sched_domain_debugfs
-From: Kuyo Chang <kuyo.chang@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: <major.chen@samsung.com>, Ingo Molnar <mingo@redhat.com>, Peter Zijlstra
-	<peterz@infradead.org>, Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
-	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, "Mel
- Gorman" <mgorman@suse.de>, Daniel Bristot de Oliveira <bristot@redhat.com>,
-	Valentin Schneider <vschneid@redhat.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, <wsd_upstream@mediatek.com>,
-	<hongfei.tang@samsung.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Date: Fri, 2 Sep 2022 14:40:59 +0800
-In-Reply-To: <YxGUBzp9C7kcNgps@kroah.com>
-References: <20220902031518.1116-1-kuyo.chang@mediatek.com>
-	 <YxGUBzp9C7kcNgps@kroah.com>
+	with ESMTP id 1225137003; Fri, 02 Sep 2022 00:32:31 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 2 Sep 2022 15:32:15 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 2 Sep 2022 15:32:14 +0800
+Message-ID: <8ae888c3f478112bca0ae40543de878f829f2470.camel@mediatek.com>
+Subject: Re: [PATCH v17 05/10] drm/mediatek: dp: Add multiple smc commands
+ support
+From: CK Hu <ck.hu@mediatek.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+	<p.zabel@pengutronix.de>, <daniel@ffwll.ch>, <robh+dt@kernel.org>,
+	<krzysztof.kozlowski+dt@linaro.org>, <mripard@kernel.org>,
+	<tzimmermann@suse.de>, <matthias.bgg@gmail.com>, <deller@gmx.de>,
+	<airlied@linux.ie>
+CC: <msp@baylibre.com>, <granquet@baylibre.com>, <jitao.shi@mediatek.com>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<liangxu.xu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-fbdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Fri, 2 Sep 2022 15:32:14 +0800
+In-Reply-To: <20220901044149.16782-6-rex-bc.chen@mediatek.com>
+References: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
+	 <20220901044149.16782-6-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_003113_562139_BC454C0E 
-X-CRM114-Status: GOOD (  28.99  )
+X-CRM114-CacheID: sfid-20220902_003243_727777_4822213F 
+X-CRM114-Status: GOOD (  17.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,103 +89,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-09-02 at 07:26 +0200, Greg Kroah-Hartman wrote:
-> On Fri, Sep 02, 2022 at 11:15:15AM +0800, Kuyo Chang wrote:
-> > From: kuyo chang <kuyo.chang@mediatek.com>
-> > 
-> > [Syndrome]
-> > Lowmemorykiller triggered while doing hotplug stress test as below
-> > cmd:
-> > echo [0/1] > /sys/devices/system/cpu/cpu${index}/online
-> > 
-> > Rootcause:
-> > Call trace of the slab owner & usage as below after hotplug stress
-> > test(4hr).
-> > There exists dentry leak at update_sched_domain_debugfs.
-> > 
-> > Total size : 322000KB
-> > <prep_new_page+44>:
-> > <get_page_from_freelist+672>:
-> > <__alloc_pages+304>:
-> > <allocate_slab+144>:
-> > <___slab_alloc+404>:
-> > <__slab_alloc+60>:
-> > <kmem_cache_alloc+1204>:
-> > <alloc_inode+100>:
-> > <new_inode+40>:
-> > <__debugfs_create_file+172>:
-> > <update_sched_domain_debugfs+824>:
-> > <partition_sched_domains_locked+1292>:
-> > <rebuild_sched_domains_locked+576>:
-> > <cpuset_hotplug_workfn+1052>:
-> > <process_one_work+584>:
-> > <worker_thread+1008>:
-> > 
-> > [Solution]
-> > Provided by Major Chen <major.chen@samsung.com> as below link.
-> > 
-https://lore.kernel.org/lkml/20220711030341epcms5p173848e98b13c09eb2fcdf2fd7287526a@epcms5p1/
-> > update_sched_domain_debugfs() uses debugfs_lookup() to find wanted
-> > dentry(which has
-> > been created by debugfs_create_dir() before), but not call dput()
-> > to return this dentry
-> > back. This result in dentry leak even debugfs_remove() is called.
-> > 
-> > [Test result]
-> > Using below commands to check inode_cache & dentry leak.
-> > cat /proc/slabinfo | grep -w inode_cache
-> > cat /proc/slabinfo | grep -w dentry
-> > 
-> > With the patch, the inode_cache & dentry stays consistent
-> > so the lowmemorykiller will not triggered anymore.
-> > 
-> > Fixes: 8a99b6833c88 ("sched: Move SCHED_DEBUG sysctl to debugfs")
-> > 
-> > Signed-off-by: Major Chen <major.chen@samsung.com>
-> > Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
-> > Tested-by: kuyo chang <kuyo.chang@mediatek.com>
-> > 
-> > ---
-> >  kernel/sched/debug.c | 7 +++++--
-> >  1 file changed, 5 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/kernel/sched/debug.c b/kernel/sched/debug.c
-> > index bb3d63bdf4ae..4ffea2dc01da 100644
-> > --- a/kernel/sched/debug.c
-> > +++ b/kernel/sched/debug.c
-> > @@ -412,11 +412,14 @@ void update_sched_domain_debugfs(void)
-> >  
-> >  	for_each_cpu(cpu, sd_sysctl_cpus) {
-> >  		struct sched_domain *sd;
-> > -		struct dentry *d_cpu;
-> > +		struct dentry *d_cpu, *d_lookup;
-> >  		char buf[32];
-> >  
-> >  		snprintf(buf, sizeof(buf), "cpu%d", cpu);
-> > -		debugfs_remove(debugfs_lookup(buf, sd_dentry));
-> > +		d_lookup = debugfs_lookup(buf, sd_dentry);
-> > +		debugfs_remove(d_lookup);
-> > +		if (!IS_ERR_OR_NULL(d_lookup))
-> > +			dput(d_lookup);
+Hi, Bo-Chen:
+
+On Thu, 2022-09-01 at 12:41 +0800, Bo-Chen Chen wrote:
+> The smc commands of eDP and DP are different. We add smc_cmd to the
+> device data to define them.
+
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+
 > 
-> That's odd, and means that something else is removing this file right
-> after we looked it up?  Is there a missing lock here that should be
-> used
-> instead?
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dp.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 > 
-> thanks,
-> 
-> greg k-h
-
-
-While doing cpu hotlug, the cpu_active_mask is changed, 
-so it need to update_sched_domain_debugfs.
-
-The original design is to recreate sd_dentry, so it doing
-debugfs_remove and then debugfs_create_dir.
-However, by debugfs_lookup function usage.
-The returned dentry must be passed to dput() when it is no longer
-needed to avoid dentry leak.
-
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c
+> b/drivers/gpu/drm/mediatek/mtk_dp.c
+> index 2696c1ac1a47..971bd744cdb2 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -112,6 +112,7 @@ struct mtk_dp {
+>  
+>  struct mtk_dp_data {
+>  	int bridge_type;
+> +	unsigned int smc_cmd;
+>  };
+>  static const struct mtk_dp_efuse_fmt
+> mtk_dp_efuse_data[MTK_DP_CAL_MAX] = {
+>  	[MTK_DP_CAL_GLB_BIAS_TRIM] = {
+> @@ -945,11 +946,11 @@ static void mtk_dp_video_mute(struct mtk_dp
+> *mtk_dp, bool enable)
+>  			   VIDEO_MUTE_SW_DP_ENC0_P0);
+>  
+>  	arm_smccc_smc(MTK_DP_SIP_CONTROL_AARCH32,
+> -		      MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE, enable,
+> +		      mtk_dp->data->smc_cmd, enable,
+>  		      0, 0, 0, 0, 0, &res);
+>  
+>  	dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-
+> 0x%lx\n",
+> -		MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE, enable, res.a0,
+> res.a1);
+> +		mtk_dp->data->smc_cmd, enable, res.a0, res.a1);
+>  }
+>  
+>  static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
+> @@ -1981,6 +1982,7 @@ static SIMPLE_DEV_PM_OPS(mtk_dp_pm_ops,
+> mtk_dp_suspend, mtk_dp_resume);
+>  
+>  static const struct mtk_dp_data mt8195_edp_data = {
+>  	.bridge_type = DRM_MODE_CONNECTOR_eDP,
+> +	.smc_cmd = MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE,
+>  };
+>  
+>  static const struct of_device_id mtk_dp_of_match[] = {
 
 
