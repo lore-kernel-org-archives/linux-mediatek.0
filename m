@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF1D8C6FA81
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 03:30:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B820EECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Sep 2022 03:32:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=g2xnOcGvBy3Njjbz6b+gGaRXL1W5YwhL4H3CLYHZZnE=; b=hzxCN/Dm5gv72+b35CjU4/ztVy
-	rrsHDEsATqJHzKmoXKLbHuqhjNRGtTprp197D03Fk5x+KFfUfB7QXYysaLdrYwFd194acPIkEusNO
-	YfekMkVTfFP7aKfwgo/hLw5ql/zMddvMBycsB1Xb14fv5i1Iy03JtV1odRmQF4Huf6tlqr5by/Mri
-	8rqJnoj5+pgMpxQjtIBPNvj4kdh22g7FMx7SELHPFEYOctvBmKnCFgW/Qk/XIjemxELp3+D5ENWWc
-	QeC9eYN/okQXBnQOjNvsSDPjMzYAFeHm+uWR7QcWUA7gg781406CIX5PlJqiGAmKuCf0mV/VEHDjL
-	u9Oo0R4w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EbFnlhXDg72eWTDx+a0rxuRSm17IARkT6d/ukeMGhDU=; b=P0s9TXm8S1q4CyUBqqM1/sNbrX
+	vXdnSXMIKA+dUO/5pXQ1pGjozcfaKwQKOkn7uOzAt0WU2agkn821Kr2kBovkvgD/dnrQhsht6eRjB
+	3tiDiVswwVFgca2ru4ofx90h3cjnz+HGfzx5QDJYSnFkb+/VgAjO3GY7ZnD6tcVMIdvyKfhj927FQ
+	Mks+yU9n7sB3ufP2mMcwyC10tRmCV42CopUT0N51kR4edjEfmp/FTi3Nncu37YVdpsTYFtug1N/hS
+	jsnIrf7hlcrYMjQfIXEBdfj8HY6U6FU6/DCD06PPeti+1JbcKYrArYr1FxHOUiDNUIwjdd1N3FOLd
+	BA0qT+EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTxO5-00HMOX-Kl; Fri, 02 Sep 2022 03:30:33 +0000
+	id 1oTxQA-00HNHp-8i; Fri, 02 Sep 2022 03:32:42 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTxO2-00HML4-VA; Fri, 02 Sep 2022 03:30:32 +0000
-X-UUID: e366445ba6ae4f6ab786cef997444d12-20220901
+	id 1oTxQ7-00HNGS-0q; Fri, 02 Sep 2022 03:32:40 +0000
+X-UUID: 5db1cbb8484e48df9766f1bc23ff6873-20220901
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=g2xnOcGvBy3Njjbz6b+gGaRXL1W5YwhL4H3CLYHZZnE=;
-	b=oEkwR3Wi64K/9jiLcuqJ7nvDXg/FHOLCwD5JOqc8liQ/42rT9A5vcp5U9RVLpT46K4BZNOLgZMgkUKL6pyOFbps9h9VKvNPyuEBIrYY0I8desglfWXl98oUWXPxRldtH/kpfbwQi1DwQ24CGQZxbMsUQD3j7lTrq5PN+1S+kOho=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=EbFnlhXDg72eWTDx+a0rxuRSm17IARkT6d/ukeMGhDU=;
+	b=QsBN6Rh7i+yimV7GRwPsygtcntdY/Uo6DlqqUcsK115rFsctNPGee4Co+5Pg3b6HPQTAj9mub2RO0psdy300RkKXO8ZoBnW6YfG/Scu9xnHX9TwIPwph75u5z3RuF7ZzRgCufM6RSKg6TvHRMM4zABSzeiuUP/3pE5Yu1Xfgg+g=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:be8397f6-bfc3-4f0b-951f-5a98ad7e8865,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Releas
-	e_Ham,ACTION:release,TS:-25
-X-CID-META: VersionHash:84eae18,CLOUDID:63825b56-e800-47dc-8adf-0c936acf4f1b,C
+X-CID-O-INFO: VERSION:1.1.10,REQID:520dc4f3-ad75-46d9-bd3d-0c8d43d50832,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:57f865d0-20bd-4e5e-ace8-00692b7ab380,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:1,File:nil
 	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: e366445ba6ae4f6ab786cef997444d12-20220901
+X-UUID: 5db1cbb8484e48df9766f1bc23ff6873-20220901
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <kuyo.chang@mediatek.com>)
+	(envelope-from <chui-hao.chiu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1878482296; Thu, 01 Sep 2022 20:15:52 -0700
+	with ESMTP id 1669032243; Thu, 01 Sep 2022 20:29:06 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Fri, 2 Sep 2022 11:15:22 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 2 Sep 2022 11:15:22 +0800
-From: Kuyo Chang <kuyo.chang@mediatek.com>
-To: <major.chen@samsung.com>, Ingo Molnar <mingo@redhat.com>, Peter Zijlstra
-	<peterz@infradead.org>, Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
-	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, "Mel
- Gorman" <mgorman@suse.de>, Daniel Bristot de Oliveira <bristot@redhat.com>,
-	Valentin Schneider <vschneid@redhat.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: <wsd_upstream@mediatek.com>, <hongfei.tang@samsung.com>, kuyo chang
-	<kuyo.chang@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 1/1] sched/debug: fix dentry leak in update_sched_domain_debugfs
-Date: Fri, 2 Sep 2022 11:15:15 +0800
-Message-ID: <20220902031518.1116-1-kuyo.chang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 2 Sep 2022 11:08:28 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 2 Sep 2022 11:08:28 +0800
+Message-ID: <63ee30f9febd94dbfd1d3f50825e9f5328465f78.camel@mediatek.com>
+Subject: Re: [PATCH v5] arm64: dts: mt7986: add built-in Wi-Fi device nodes
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+CC: <devicetree@vger.kernel.org>, Ryder Lee <ryder.Lee@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, Sam Shih <sam.shih@mediatek.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>
+Date: Fri, 2 Sep 2022 11:08:27 +0800
+In-Reply-To: <aac98d72-863d-eb7b-caab-73bb0fddeb83@gmail.com>
+References: <20220901130552.26234-1-chui-hao.chiu@mediatek.com>
+	 <aac98d72-863d-eb7b-caab-73bb0fddeb83@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_203031_023189_8EBADE0E 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20220901_203239_099329_C3F7348B 
+X-CRM114-Status: GOOD (  21.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,82 +82,215 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kuyo chang <kuyo.chang@mediatek.com>
+On Thu, 2022-09-01 at 16:31 +0200, Matthias Brugger wrote:
+> 
+> On 01/09/2022 15:05, Peter Chiu wrote:
+> > This enables built-in 802.11ax Wi-Fi support.
+> > 
+> > Reviewed-by: Sam Shih <sam.shih@mediatek.com>
+> > Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+> > Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+> > 
+> 
+> That won't work without the pinctrl yaml file updated. Please send
+> both together 
+> so that we can review them.
+> 
 
-[Syndrome]
-Lowmemorykiller triggered while doing hotplug stress test as below cmd:
-echo [0/1] > /sys/devices/system/cpu/cpu${index}/online
+Thanks for your kind reminder. I just sent the pinctrl yaml patch.
 
-Rootcause:
-Call trace of the slab owner & usage as below after hotplug stress
-test(4hr).
-There exists dentry leak at update_sched_domain_debugfs.
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220902024719.31943-1-chui-hao.chiu@mediatek.com/
 
-Total size : 322000KB
-<prep_new_page+44>:
-<get_page_from_freelist+672>:
-<__alloc_pages+304>:
-<allocate_slab+144>:
-<___slab_alloc+404>:
-<__slab_alloc+60>:
-<kmem_cache_alloc+1204>:
-<alloc_inode+100>:
-<new_inode+40>:
-<__debugfs_create_file+172>:
-<update_sched_domain_debugfs+824>:
-<partition_sched_domains_locked+1292>:
-<rebuild_sched_domains_locked+576>:
-<cpuset_hotplug_workfn+1052>:
-<process_one_work+584>:
-<worker_thread+1008>:
-
-[Solution]
-Provided by Major Chen <major.chen@samsung.com> as below link.
-https://lore.kernel.org/lkml/20220711030341epcms5p173848e98b13c09eb2fcdf2fd7287526a@epcms5p1/
-update_sched_domain_debugfs() uses debugfs_lookup() to find wanted dentry(which has
-been created by debugfs_create_dir() before), but not call dput() to return this dentry
-back. This result in dentry leak even debugfs_remove() is called.
-
-[Test result]
-Using below commands to check inode_cache & dentry leak.
-cat /proc/slabinfo | grep -w inode_cache
-cat /proc/slabinfo | grep -w dentry
-
-With the patch, the inode_cache & dentry stays consistent
-so the lowmemorykiller will not triggered anymore.
-
-Fixes: 8a99b6833c88 ("sched: Move SCHED_DEBUG sysctl to debugfs")
-
-Signed-off-by: Major Chen <major.chen@samsung.com>
-Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
-Tested-by: kuyo chang <kuyo.chang@mediatek.com>
-
----
- kernel/sched/debug.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/kernel/sched/debug.c b/kernel/sched/debug.c
-index bb3d63bdf4ae..4ffea2dc01da 100644
---- a/kernel/sched/debug.c
-+++ b/kernel/sched/debug.c
-@@ -412,11 +412,14 @@ void update_sched_domain_debugfs(void)
- 
- 	for_each_cpu(cpu, sd_sysctl_cpus) {
- 		struct sched_domain *sd;
--		struct dentry *d_cpu;
-+		struct dentry *d_cpu, *d_lookup;
- 		char buf[32];
- 
- 		snprintf(buf, sizeof(buf), "cpu%d", cpu);
--		debugfs_remove(debugfs_lookup(buf, sd_dentry));
-+		d_lookup = debugfs_lookup(buf, sd_dentry);
-+		debugfs_remove(d_lookup);
-+		if (!IS_ERR_OR_NULL(d_lookup))
-+			dput(d_lookup);
- 		d_cpu = debugfs_create_dir(buf, sd_dentry);
- 
- 		i = 0;
--- 
-2.18.0
+Best Regards,
+Peter Chiu
+> Regards,
+> Matthias
+> 
+> > ---
+> > v2: add clocks and clock-names.
+> > v3: rename wmac to wifi and change underscores to dash in node
+> > names.
+> > v4: rebase to the latest codebase.
+> > v5: remove useless pins in wf_dbdc_pins node.
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts | 38
+> > +++++++++++++++++++
+> >   arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 23 +++++++++++
+> >   arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts | 40
+> > ++++++++++++++++++++
+> >   3 files changed, 101 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> > b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> > index 882277a52b69..afe37b702eef 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> > @@ -115,6 +115,13 @@
+> >   	status = "okay";
+> >   };
+> >   
+> > +&wifi {
+> > +	status = "okay";
+> > +	pinctrl-names = "default", "dbdc";
+> > +	pinctrl-0 = <&wf_2g_5g_pins>;
+> > +	pinctrl-1 = <&wf_dbdc_pins>;
+> > +};
+> > +
+> >   &pio {
+> >   	uart1_pins: uart1-pins {
+> >   		mux {
+> > @@ -129,4 +136,35 @@
+> >   			groups = "uart2";
+> >   		};
+> >   	};
+> > +
+> > +	wf_2g_5g_pins: wf-2g-5g-pins {
+> > +		mux {
+> > +			function = "wifi";
+> > +			groups = "wf_2g", "wf_5g";
+> > +		};
+> > +		conf {
+> > +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3",
+> > "WF0_HB4",
+> > +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5",
+> > "WF0_HB6",
+> > +			       "WF0_HB7", "WF0_HB8", "WF0_HB9",
+> > "WF0_HB10",
+> > +			       "WF0_TOP_CLK", "WF0_TOP_DATA",
+> > "WF1_HB1",
+> > +			       "WF1_HB2", "WF1_HB3", "WF1_HB4",
+> > "WF1_HB0",
+> > +			       "WF1_HB5", "WF1_HB6", "WF1_HB7",
+> > "WF1_HB8",
+> > +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
+> > +			drive-strength = <4>;
+> > +		};
+> > +	};
+> > +
+> > +	wf_dbdc_pins: wf-dbdc-pins {
+> > +		mux {
+> > +			function = "wifi";
+> > +			groups = "wf_dbdc";
+> > +		};
+> > +		conf {
+> > +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3",
+> > "WF0_HB4",
+> > +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5",
+> > "WF0_HB6",
+> > +			       "WF0_HB7", "WF0_HB8", "WF0_HB9",
+> > "WF0_HB10",
+> > +			       "WF0_TOP_CLK", "WF0_TOP_DATA";
+> > +			drive-strength = <4>;
+> > +		};
+> > +	};
+> >   };
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > index e3a407d03551..890ded0efc51 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > @@ -7,6 +7,7 @@
+> >   #include <dt-bindings/interrupt-controller/irq.h>
+> >   #include <dt-bindings/interrupt-controller/arm-gic.h>
+> >   #include <dt-bindings/clock/mt7986-clk.h>
+> > +#include <dt-bindings/reset/mt7986-resets.h>
+> >   
+> >   / {
+> >   	interrupt-parent = <&gic>;
+> > @@ -70,6 +71,11 @@
+> >   			reg = <0 0x43000000 0 0x30000>;
+> >   			no-map;
+> >   		};
+> > +
+> > +		wmcpu_emi: wmcpu-reserved@4fc00000 {
+> > +			no-map;
+> > +			reg = <0 0x4fc00000 0 0x00100000>;
+> > +		};
+> >   	};
+> >   
+> >   	timer {
+> > @@ -261,6 +267,23 @@
+> >   			#size-cells = <0>;
+> >   			status = "disabled";
+> >   		};
+> > +
+> > +		wifi: wifi@18000000 {
+> > +			compatible = "mediatek,mt7986-wmac";
+> > +			resets = <&watchdog
+> > MT7986_TOPRGU_CONSYS_SW_RST>;
+> > +			reset-names = "consys";
+> > +			clocks = <&topckgen CLK_TOP_CONN_MCUSYS_SEL>,
+> > +				 <&topckgen CLK_TOP_AP2CNN_HOST_SEL>;
+> > +			clock-names = "mcu", "ap2conn";
+> > +			reg = <0 0x18000000 0 0x1000000>,
+> > +			      <0 0x10003000 0 0x1000>,
+> > +			      <0 0x11d10000 0 0x1000>;
+> > +			interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>,
+> > +				     <GIC_SPI 214 IRQ_TYPE_LEVEL_HIGH>,
+> > +				     <GIC_SPI 215 IRQ_TYPE_LEVEL_HIGH>,
+> > +				     <GIC_SPI 216 IRQ_TYPE_LEVEL_HIGH>;
+> > +			memory-region = <&wmcpu_emi>;
+> > +		};
+> >   	};
+> >   
+> >   };
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+> > b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+> > index 0f49d5764ff3..3443013b5971 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+> > @@ -98,3 +98,43 @@
+> >   		};
+> >   	};
+> >   };
+> > +
+> > +&wifi {
+> > +	status = "okay";
+> > +	pinctrl-names = "default", "dbdc";
+> > +	pinctrl-0 = <&wf_2g_5g_pins>;
+> > +	pinctrl-1 = <&wf_dbdc_pins>;
+> > +};
+> > +
+> > +&pio {
+> > +	wf_2g_5g_pins: wf-2g-5g-pins {
+> > +		mux {
+> > +			function = "wifi";
+> > +			groups = "wf_2g", "wf_5g";
+> > +		};
+> > +		conf {
+> > +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3",
+> > "WF0_HB4",
+> > +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5",
+> > "WF0_HB6",
+> > +			       "WF0_HB7", "WF0_HB8", "WF0_HB9",
+> > "WF0_HB10",
+> > +			       "WF0_TOP_CLK", "WF0_TOP_DATA",
+> > "WF1_HB1",
+> > +			       "WF1_HB2", "WF1_HB3", "WF1_HB4",
+> > "WF1_HB0",
+> > +			       "WF1_HB5", "WF1_HB6", "WF1_HB7",
+> > "WF1_HB8",
+> > +			       "WF1_TOP_CLK", "WF1_TOP_DATA";
+> > +			drive-strength = <4>;
+> > +		};
+> > +	};
+> > +
+> > +	wf_dbdc_pins: wf-dbdc-pins {
+> > +		mux {
+> > +			function = "wifi";
+> > +			groups = "wf_dbdc";
+> > +		};
+> > +		conf {
+> > +			pins = "WF0_HB1", "WF0_HB2", "WF0_HB3",
+> > "WF0_HB4",
+> > +			       "WF0_HB0", "WF0_HB0_B", "WF0_HB5",
+> > "WF0_HB6",
+> > +			       "WF0_HB7", "WF0_HB8", "WF0_HB9",
+> > "WF0_HB10",
+> > +			       "WF0_TOP_CLK", "WF0_TOP_DATA";
+> > +			drive-strength = <4>;
+> > +		};
+> > +	};
+> > +};
 
 
