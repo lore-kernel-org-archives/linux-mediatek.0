@@ -4,69 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E28CEECAAD4
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Sep 2022 03:42:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D740C38145
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Sep 2022 14:27:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fJObzOkxqCK/zu3xiS1JDCbQmMq2BkxFrGab8445ook=; b=Uz1JaWwhvA7ueHpXJPJB0mgu20
-	8r9xhhGJoKLY3Qcp1xDsgB2SfqRQKv8k/rv7hIv2NEQc0hJXFyJagHbqh6VVTtRKxWIpY7tHE4x6K
-	6DoMdXC4BkrzFM64YWbKW6ymDkl4bcA35kOFSWDVwDz8KTc7rOf9Q73Zlsi9sNUMVrYE+Bf9h5tRK
-	VKzrNfsp3Vtylt90aUg4d9PaEgvDKElWhpXms0bQmZ6h+5KIq20X4fwJsjr5tINte+NleDVL3SF4W
-	B4r3PfO0hlw8/oQQKU8mJfartRDksK4vfc3f4I0pr3rGO5i9iEgpqPTVTGNENS/7Fz84KlQOzuHGA
-	2Fyfr3hw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WHAKHgWjZAOaaPp2HHLGjzbEtlsjTXqeR6A1s5GRr4c=; b=e4QxUyxoAa8ghLpxkjU+tVGqeP
+	HTTpfyEwpNkXxx9z1B0J8mQFcW9IEfBfYjldDzGpoEp+p/jvVcA0CNxSUQG1WSsvL/gzxJBqHu5M5
+	Ou2p2Y0o7FCGkSvhfNkwcScatJLnfJJf5YTsIBQzsBecnL29xCablZ3040i2E8LoDc8nCG1yTRkf2
+	DHtSlP3hM4fTOaK4YVBi0/CcOcIQpc5/BpD/ot3rMBX/ytOhDizPfjwrQUlmPR5I/18oN7YxmABog
+	6TX0aO8U9l6wKsEmQ+ndO7ktxMvoz2+2fu6yiSkmLJ0xG+YPY+/P4d8apIglhYAeESgZBVAqLgnec
+	uo/C/mtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oUK2w-00HJRg-0J; Sat, 03 Sep 2022 03:42:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oUU7Y-00CKiW-PM; Sat, 03 Sep 2022 14:27:40 +0000
+Received: from mail-co1nam11on2054.outbound.protection.outlook.com ([40.107.220.54] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oUK2t-00HJ6q-NJ; Sat, 03 Sep 2022 03:42:13 +0000
-X-UUID: 4785353b50794251b576ca6a236fc542-20220902
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=fJObzOkxqCK/zu3xiS1JDCbQmMq2BkxFrGab8445ook=;
-	b=tAA6dul/iLsIDZ4nSY9WTijX+CV3yTuYJHAW0infg2SCOfOfxh62WoemSKUoTt+BSnKAZR9foyts4BvyYS0Uu3+aZ83dveRuna5hjhqfglhTOOJUC0fJFHhwriIQb14gc3vGLpvl3FV8rDy8kOkka1QhG/o3uB6uJVvuC9NNM/c=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:d4e53fd4-4ba4-4481-ac96-0acb3de4964c,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Releas
-	e_Ham,ACTION:release,TS:-25
-X-CID-META: VersionHash:84eae18,CLOUDID:4a457856-e800-47dc-8adf-0c936acf4f1b,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 4785353b50794251b576ca6a236fc542-20220902
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chunxu.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 955830309; Fri, 02 Sep 2022 20:42:00 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sat, 3 Sep 2022 11:21:56 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Sat, 3 Sep 2022 11:21:55 +0800
-From: Chunxu Li <chunxu.li@mediatek.com>
-To: <broonie@kernel.org>, <pierre-louis.bossart@linux.intel.com>,
-	<peter.ujfalusi@linux.intel.com>, <lgirdwood@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <daniel.baluta@nxp.com>
-CC: <matthias.bgg@gmail.com>, <yc.hung@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <alsa-devel@alsa-project.org>,
-	<sound-open-firmware@alsa-project.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<project_global_chrome_upstream_group@mediatek.com>, Chunxu Li
-	<chunxu.li@mediatek.com>
-Subject: [PATCH] ASoC: SOF: Introduce function sof_of_machine_select
-Date: Sat, 3 Sep 2022 11:21:51 +0800
-Message-ID: <20220903032151.13664-1-chunxu.li@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1oUU7U-00CKf4-I9; Sat, 03 Sep 2022 14:27:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=J3BqDwWV5jndyHorQLlkuBTqMARP5mtjkiaEdP4G5bl6bBj3gx7bSJtcUGkBvam2ygEEbBkXa4hbMVlFGvCQZc9tZ8V2MJm2OkLZz0cxsbxJ50DW39i2b0eImfY2fn6SWRNH/dIfFikvjh2Iz66KMemu5tOPcwpz2Vl4jSfVA2VVLoQ6Nr0ZOkAt393EeCUZ1DLFD6ee428TyKWs0wEHRAWlGMntqwrL6kJscpqWm0pAS+sQo16whSrIRQ21+XkMo8Aw0LDc5TCHvmp5/UI7oAJQv4sb0xJTUKH7F6J4mOGffQrlzuAqIOYbegP5ciiSFtn/1TdO1uJjfZUVQSP2EQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=WHAKHgWjZAOaaPp2HHLGjzbEtlsjTXqeR6A1s5GRr4c=;
+ b=m8iXRwa0jXO+NJQ/NAn0nTCcyKl4NZfuAwrVHw1MwwITWVFmyp7UYy4GPHyM4mC7yNOyOXymsPn0pik+eSt/b9p4eZ4hYYLH87jsjJGSpKyhxBX8KpSAmW12LyPSwL6f7uMTcbsdOXjjTRwfjb+5ZxKsd8rhQX0yCfF1doQ/jQPpx0ezKO3vS3Tw+P26KwAYCepSAxJ8deu+2jUCZoJxe+/14bTcp3Rl1zttMuUEsaXzPNgbqrbsHKGGQipYcpyKL8N+TCuUu14nx2ipiVuE7SmILo6LM2moF7mh11cesPD7ynjZeQw6oO6eMdVjlY2DR3uUnW3bXgIUYsH3cCvHIg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=WHAKHgWjZAOaaPp2HHLGjzbEtlsjTXqeR6A1s5GRr4c=;
+ b=ZunKZ7m1QohTUL/Ww3q/sFCuKC1YP9l0QpgkUEnwh21DBf5nDFJhToJGm7AuUUnOGKVnYUY9tfV0ma5VZr9zZjNYMpNXSvtNEIwuBSi9Z8kweiQp+sCMLDHL+S2g8YVIQs9L8OvRQ0WrQfk8DUuP+qZEhH9z7O9Bgr/jqaqQbeQUvUWjQ8KiuUxOWHhNy0pfBe/Wpp2Lsb7LNm8YHqi9HTeAkebQUNEZm3jYl9pB/Gl9i7hHHDhdk8gFc4+4e5VEzT6NxEaL8JXUOcwAMiZblCXVLjJauvfD192ebK8w37ZBniYrz1b5BLbpOQZ3Am0/7EEJUf6ytJ0vz0RgZZygSA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from PH7SPRMB0001.namprd12.prod.outlook.com (2603:10b6:510:13c::20)
+ by LV2PR12MB5800.namprd12.prod.outlook.com (2603:10b6:408:178::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5588.10; Sat, 3 Sep
+ 2022 14:27:31 +0000
+Received: from PH7SPRMB0001.namprd12.prod.outlook.com
+ ([fe80::3ca6:ba11:2893:980e]) by PH7SPRMB0001.namprd12.prod.outlook.com
+ ([fe80::3ca6:ba11:2893:980e%6]) with mapi id 15.20.5504.025; Sat, 3 Sep 2022
+ 14:27:30 +0000
+Date: Sat, 3 Sep 2022 17:27:24 +0300
+From: Ido Schimmel <idosch@nvidia.com>
+To: netdev@kapio-technology.com
+Cc: Nikolay Aleksandrov <razor@blackwall.org>, davem@davemloft.net,
+	kuba@kernel.org, netdev@vger.kernel.org,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>, Shuah Khan <shuah@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Yuwei Wang <wangyuweihx@gmail.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v5 net-next 1/6] net: bridge: add locked entry fdb flag
+ to extend locked port feature
+Message-ID: <YxNkTIYg5eZR6o79@shredder>
+References: <20220826114538.705433-1-netdev@kapio-technology.com>
+ <20220826114538.705433-2-netdev@kapio-technology.com>
+ <e9eb5b72-073a-f182-13b7-37fc53611d5f@blackwall.org>
+ <972663825881d135d19f9e391b2b7587@kapio-technology.com>
+ <Ywzlfzns/vDDiKB1@shredder>
+ <c9f474f0761f77d093db88da05d536cb@kapio-technology.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c9f474f0761f77d093db88da05d536cb@kapio-technology.com>
+X-ClientProxiedBy: VI1PR04CA0083.eurprd04.prod.outlook.com
+ (2603:10a6:803:64::18) To PH7SPRMB0001.namprd12.prod.outlook.com
+ (2603:10b6:510:13c::20)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: ce7d7b87-cb03-4be7-e836-08da8db86f38
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5800:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	SabiY0UnTzVKsN6PSH/NjywdRMA3RfGtbOwC1nibYIZJBOcbvAXKolMzOTWAi0GiYzsvOMHHEkkRNObczFenMwuWeM2KvCaGLjecnZ4J984Z2LAl3kVMGka7QeoDrd1XZbbkMaIe24UgjJTDKFHjG6+VGPMJlAYOG5qZx7e+HVj9I0b1EHCN/alSKZg+w+grKtPB/gPEpkcoL5AYoOX19n1DyoVZoboliTlUnexnvA5u4ztVouSZ+0RGNXC5+3lf495WN+zI5MfqIj22ZPNI8Io2flFfzjJza7s+lV8FzaXl4c+p8Y3YuHFssBNezNaYlMsKUwZSXQSj1EcMSx2MEHr24fXFAAB2wC5PJWfW7jEoPR8qhtBhjNkE9chTVdmvW1OXm/BcDJHKhEanlbQZeD8azANdckKeICcxDL8dP6LM6RZmv35s9ozEUS1aCtdr/B7i2UKmvSL6zvLJia7r6/TKvtBAinw33WF9zKA/y58ZuDUwtxgZwiTP+ePvN73a0jJ3RJ1U0JLUE7qajm9ItovFgeGvxe1iamrFcU28dVGLtlB4MUSmZ/UI7yJEGLIGRsv1FuZAESqW9OoZ4406EtDOYtl2B9lKbAD8AXpH57mFKOxYop1UjJzjr2te2ITSa1yKcck6VlJsua1Ynyfn+dRjQNf2oN2qm9VsuVnG4+o/Tbljsbq/7C05IYOxe1RK+i55ksLLE8c/41U4nKn9P8HBPQO+xg8Y4FCmjM1FUZoXiKKlrXr8gkk/I4NmAn2Z8RxoBAnBMSehZ6wx4aheNw==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7SPRMB0001.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(4636009)(7916004)(39860400002)(376002)(346002)(136003)(396003)(366004)(7406005)(5660300002)(38100700002)(8936002)(186003)(4326008)(66556008)(66946007)(2906002)(66476007)(7416002)(86362001)(6916009)(8676002)(966005)(316002)(33716001)(6506007)(6512007)(6666004)(53546011)(83380400001)(478600001)(9686003)(54906003)(26005)(41300700001)(6486002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?ze7P5EUqGM/+Kzf8ftn7A/d8R/jH3BxO3VDn0zGPhf3PxxuREvIdmcsdvD4P?=
+ =?us-ascii?Q?2UrpCZpQHyAw0zAleEUuguseFNPKsj7Imgbk5qNazKTQdRJ7C0Nn/t52ZQFQ?=
+ =?us-ascii?Q?NCYH81LJWtSrwkJ3Jxt3sMXHcMln7iEvwMXCzgJkhNBQ0kzkoQC/dZCxCUnh?=
+ =?us-ascii?Q?OTFTDFcSj+ZkY7dOHofDu32aWxDp9Wm6XvwIFTjvZH3FnavXPTlm6LXi2ev8?=
+ =?us-ascii?Q?MUG5PsajgJ0JwHrtpBiV0kD+E5j4Kq5HCOn6UaCitkXmpraFyzfBW/CyrLDc?=
+ =?us-ascii?Q?UNR5gkpMXiAGk1zdBwELAy20w5NTsbfKFC6BDOD8WQR0nRN14DbliAZ1yxeA?=
+ =?us-ascii?Q?ygepWyIBk57ceMVuwPky/NX9/olg3RxiyjCWCOgVMJUqZLQjYRoIkIlzIVfX?=
+ =?us-ascii?Q?Vpy+8ekfOf8PDgiSSKHLoj0X5pn3N88ypSYitnC3qZ5ZIxHU8mAYAIZGi+9c?=
+ =?us-ascii?Q?rvrH3MCtgj2akXjqHYqw7NRhFla/cNlxzj3q3YWMV/wxEPTL4ojut2W9wmHx?=
+ =?us-ascii?Q?vAX0867SVqpIRrotHOyURSKIU8d6c1BvlTOVWwgdTQiqSxKZXMKrUUYRZO8d?=
+ =?us-ascii?Q?L3WJ5pQrkHCo7c7CU+f1jKyJkDKo3a72oHwcgQx8RvjkI+8EFQ3B42ovIDlh?=
+ =?us-ascii?Q?d1DMD1uXrJjd0Le5kGcAcApCESajoF3493dlz/zQiLF5gBvL5zQrVgXDoYnP?=
+ =?us-ascii?Q?19l9VIs/8ZxG67Jc0y5Radifmh2/XbQNAHlCap3a3F9REscgbfBQ64Ic++3K?=
+ =?us-ascii?Q?FiNcFdVizP+GS3PXZIxm67bWvRnf3mID9A5exbH1WjW6hs1OMi2c7lxX+Dyz?=
+ =?us-ascii?Q?u/S6gJZhuiRWbqcopwRgPS8lHUIINMCMfAarLbXFMPF5lchynyao1ieboWN0?=
+ =?us-ascii?Q?3J/dKZydoE4CVS9f9a0B7xRG4pAHyeX4qB4cgA9x30/n3vBiA8D5KITPFZCV?=
+ =?us-ascii?Q?fBhA3dHV13lwU5JxOWSxiRL6mtYDdi35ImHFvOybLFBR1LZTxtCcd75859LI?=
+ =?us-ascii?Q?F7801KgmIlB9AMa89gfBBWglst6BLsj2oWDCG2rHmAeQ4M0qBVgbfzvnI87N?=
+ =?us-ascii?Q?8y8Pux9Ts2E1ko/ZDku/yMSH7BRVtoGHjjpgx0GpiBt5UrqOftnkO57a+LD1?=
+ =?us-ascii?Q?UW3zrt6Fm/eStq8xsfo2+X0AHbQSOG8aI/L5GxISxumYXIMmznZztH2vnJVU?=
+ =?us-ascii?Q?trLALW1RD3IPrkWSSuWMZ+gBZadglXQBFd6a+QsHUoZx2wD9kbPQFOLgcPAX?=
+ =?us-ascii?Q?VoeIyc506976bjtXAOjWXNxkZcRtkDPNc9VS0x2ODULpD+ZquzccVyEMB46X?=
+ =?us-ascii?Q?+aD93SksjG1ziWDWiJeZsi06IF3lgt9ENAdxpUpCPwjJdUdpv765bd9xBIoe?=
+ =?us-ascii?Q?2NANzPGHiFm2Cm8WZLG0qWCiBpN6DrgLlHgJ0/zjl7om7s3UXHZJGqD7T1vu?=
+ =?us-ascii?Q?+KNdbmPCGBnhaVnlQij3d22l78m56JhQT4ceoL0VgMe3iGDk6CT9CbDmYZPr?=
+ =?us-ascii?Q?x5jNftVn6PD3Gbzzj/Xz8jk6nuGvnlI8/TrOBpi8378p5l+nPURGjKxBVq9v?=
+ =?us-ascii?Q?6HqQ2/w5W82ndwBPZMYHrThLpUmoR+vYE9OTKK9Z?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ce7d7b87-cb03-4be7-e836-08da8db86f38
+X-MS-Exchange-CrossTenant-AuthSource: PH7SPRMB0001.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Sep 2022 14:27:30.8345
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: vl4YXdQNRVlSblRqkMr5tvg3OJwy8TGlB8kXkgUQXEFKuaQG6F4TRucEupphAjRVv3qdCk+Ru3WbzKoz1GtBhw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB5800
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_204211_793050_20CA3AF7 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20220903_072736_876854_9ECAEDBA 
+X-CRM114-Status: GOOD (  21.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,76 +157,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From current design in sof_machine_check the SOF can only support
-ACPI type machine.
+On Tue, Aug 30, 2022 at 04:19:16PM +0200, netdev@kapio-technology.com wrote:
+> On 2022-08-29 18:12, Ido Schimmel wrote:
+> > On Mon, Aug 29, 2022 at 04:02:46PM +0200, netdev@kapio-technology.com
+> > wrote:
+> > > On 2022-08-27 13:30, Nikolay Aleksandrov wrote:
+> > > > On 26/08/2022 14:45, Hans Schultz wrote:
+> > > >
+> > > > Hi,
+> > > > Please add the blackhole flag in a separate patch.
+> > > > A few more comments and questions below..
+> > > >
+> > > 
+> > > Hi,
+> > > if userspace is to set this flag I think I need to change stuff in
+> > > rtnetlink.c, as I will need to extent struct ndmsg with a new u32
+> > > entry as
+> > > the old u8 flags is full.
+> > 
+> > You cannot extend 'struct ndmsg'. That's why 'NDA_FLAGS_EXT' was
+> > introduced. See:
+> > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2c611ad97a82b51221bb0920cc6cac0b1d4c0e52
+> > 
+> > 'NTF_EXT_BLACKHOLE' belongs in 'NDA_FLAGS_EXT' like you have it now, but
+> > the kernel should not reject it in br_fdb_add().
+> > 
+> > > Maybe this is straight forward, but I am not so sure as I don't know
+> > > that
+> > > code too well. Maybe someone can give me a hint...?
+> 
+> The question I have is if I can use nlh_flags to send the extended flags
+> further on to fdb_add_entry(), where I expect to need it?
 
-In sof_machine_check if there is no ACPI machine exist, the function
-will return -ENODEV directly, that's we don't expected if we do not
-base on ACPI machine.
+A separate argument looks cleaner to me.
 
-So we add a new function named sof_of_machine_select that we can pass
-sof_machine_check and obtain info required by snd_sof_new_platform_drv.
-
-Signed-off-by: Chunxu Li <chunxu.li@mediatek.com>
----
- sound/soc/sof/sof-audio.c | 29 +++++++++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
-
-diff --git a/sound/soc/sof/sof-audio.c b/sound/soc/sof/sof-audio.c
-index c18e723435bd..ea9663d448eb 100644
---- a/sound/soc/sof/sof-audio.c
-+++ b/sound/soc/sof/sof-audio.c
-@@ -785,6 +785,28 @@ int sof_dai_get_bclk(struct snd_soc_pcm_runtime *rtd)
- }
- EXPORT_SYMBOL(sof_dai_get_bclk);
- 
-+static struct snd_sof_of_mach *sof_of_machine_select(struct snd_sof_dev *sdev)
-+{
-+	struct snd_sof_pdata *sof_pdata = sdev->pdata;
-+	const struct sof_dev_desc *desc = sof_pdata->desc;
-+	struct snd_sof_of_mach *mach = desc->of_machines;
-+
-+	if (!mach)
-+		return NULL;
-+
-+	for (; mach->compatible; mach++) {
-+		if (of_machine_is_compatible(mach->compatible)) {
-+			sof_pdata->tplg_filename = mach->sof_tplg_filename;
-+			if (mach->fw_filename)
-+				sof_pdata->fw_filename = mach->fw_filename;
-+
-+			return mach;
-+		}
-+	}
-+
-+	return NULL;
-+}
-+
- /*
-  * SOF Driver enumeration.
-  */
-@@ -795,6 +817,7 @@ int sof_machine_check(struct snd_sof_dev *sdev)
- 	struct snd_soc_acpi_mach *mach;
- 
- 	if (!IS_ENABLED(CONFIG_SND_SOC_SOF_FORCE_NOCODEC_MODE)) {
-+		const struct snd_sof_of_mach *of_mach;
- 
- 		/* find machine */
- 		mach = snd_sof_machine_select(sdev);
-@@ -804,6 +827,12 @@ int sof_machine_check(struct snd_sof_dev *sdev)
- 			return 0;
- 		}
- 
-+		of_mach = sof_of_machine_select(sdev);
-+		if (of_mach) {
-+			sof_pdata->of_machine = of_mach;
-+			return 0;
-+		}
-+
- 		if (!IS_ENABLED(CONFIG_SND_SOC_SOF_NOCODEC)) {
- 			dev_err(sdev->dev, "error: no matching ASoC machine driver found - aborting probe\n");
- 			return -ENODEV;
--- 
-2.25.1
-
+> (the extended flags are u32, while nlh_flags are u16)
 
