@@ -4,144 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A036EC38145
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Sep 2022 14:50:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20A6FECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Sep 2022 12:59:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MjhX63khefmEPOZBGQ4oiXb3rTJ+88WV+CjkJ1/kR5g=; b=e/gdoAv/YmKrk8K9V86lSBLH6i
-	CR3DMR+Tgx+i27WXeoQ6TVlKitD3WMnB+yx5mdaJeDevBH/BnjPi57ImfCe9izLcov8a6iK0yKFdL
-	5h4LySs8LOTJYua0ViDMeEC9FgsaxxzqgRZdKQf0I6ZyqH5xl2ZEvHLnCdcACJRd3AWAMpn6J2QS/
-	n4KBKoNTYlFJ5eCtCQLtihCWvgeI7p/9HOQz9plF9MFjkO4MLqxDtzsN8um2RUofby7gPXsJ3ZchX
-	8jDc29juxtqxve2h72zwVbkr46wveyOQSReWySnliMSQ2P5XynRjNteVYYU3K26akeT2l5dbx5DxJ
-	yOZbM5IA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MaCiino+kPjk0mzeLjaGzc7ngCKP9nbk7eUckZ209Uc=; b=Huh9bzCCntaa/1RHN8zr9nIgQ3
+	p3uYF5MPXsB/i7yhDHZhVts7AxSx1mY3iFGARF0NiTAhATiywVPHrqV4g43uSBKvNmwATPzS1FhFx
+	kDpKCV/MM1PI6B3aavlqhoBU0nXk9BFNeRa9x0Hyzku6NyFPQ2BnB7c+VCvilGfmpkXSK43f7yCyy
+	2YGnGEJLMMWq4JXfPnSl6V+jUQ61OH9waWkJRhUuWsqP2Pjf0sAbIt+TuzGskIMfrJgbw8lreN2BY
+	JAGM5WP8KUHJGirjlYJDZuw/kJb7L4yPN73uX38aLIlxmxk069zSPk9MS3nSPs+bcx7zlhUQ6Am5L
+	hOTbvYqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oUUT7-00CXmR-3S; Sat, 03 Sep 2022 14:49:57 +0000
-Received: from mail-sn1anam02on2040.outbound.protection.outlook.com ([40.107.96.40] helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+	id 1oUpDp-005wGw-Q4; Sun, 04 Sep 2022 12:59:33 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oUUT4-00CXjN-0s; Sat, 03 Sep 2022 14:49:55 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jyUylIJz15wJp2aCV38P245OeypVsAqsHDRpKnr+b6qzgSiovGJWRzTtjzVYtoljhhHC1IkXHLlAn9voJV9U6TlVdR7lVEu8wPs+XEUIjd1KX10M5Ihf1L8CA2+xLB41u2shjxlU6ES0ThABkKtHQ0SyidNOHAfJYj7Bu/O1/Q/CVjmj21RF6QRO+0LkR1+jROj8gzGFIACThcfqmTGNXBB4iaKWWKShlo+3F2hHhPOPFWpZfoNqT5M9bifDGRX03nmTFd+exRURgkI0TIi3W8Q1ic6v6CGAmSjLi/WqNsO+o2qU3Cl7od3B2Vx+VfMfqAcA3mExbbLZZzcQXU9DJw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=MjhX63khefmEPOZBGQ4oiXb3rTJ+88WV+CjkJ1/kR5g=;
- b=OKNmQl/iVou4gNQYYO8HE/zagqrI1ciWnh8CXNKNS86fO8CjewSq3h83ArjWb8nfml2YqJQMuqEXe9yf4SOLGY43vcqRO+HiQu72Cc6G/0xXitAoCUkG1zjKBihZgaOpjmytx5vi9W5aYk4DF6qJAlhYcXl7NKW59ipNriDUXjjaz/ajRo4NZnRS3v0Wpf32O3WHG8dPUqsaULDhBZXubVTXoWNa1fUTkjISrkUmIRVwzMHD/qEGKDyvDkTa98YK/JKY2MYB996gzCBSOiWhzVqeeZXuzDrnmxF7Ro6EvU0uUpWsMQ+z5mPDG8OjppxjpOFQVvyCW6bIPzB0pKrXxQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MjhX63khefmEPOZBGQ4oiXb3rTJ+88WV+CjkJ1/kR5g=;
- b=hesk5c84ZzuLcFFSvtHMnnaNVqSbzwCTMIQzQbmOA4m1VEdj25+7zUhImKEs+nwPP/KXYWG6Dq6m9ohaDd+9SReqTxY5hYrQoKQcgZvnRSpwUPCiW4PlISrW1ulA8zRkbnjbY+QhU3KQhGU4VYu+a/waXp5AbO5YAofn+Ad7gTs8H1NpqT26osMIkeRT26lZL/SDL3XdQQkA2JXl8xcsHd8tSe2NOni0ijWjn1llczEKl9Ro49asKJYHh23oVHF9DEhcYgu+V7+UusVn5d/C6pPDKlun42+omO+O68uxweG8SbTXgvEnM8MP5ZdteZdM2Wzq73DJiHC58sJaIECA3g==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from PH7SPRMB0001.namprd12.prod.outlook.com (2603:10b6:510:13c::20)
- by CH0PR12MB5234.namprd12.prod.outlook.com (2603:10b6:610:d1::24) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5588.10; Sat, 3 Sep
- 2022 14:49:46 +0000
-Received: from PH7SPRMB0001.namprd12.prod.outlook.com
- ([fe80::3ca6:ba11:2893:980e]) by PH7SPRMB0001.namprd12.prod.outlook.com
- ([fe80::3ca6:ba11:2893:980e%6]) with mapi id 15.20.5504.025; Sat, 3 Sep 2022
- 14:49:46 +0000
-Date: Sat, 3 Sep 2022 17:49:39 +0300
-From: Ido Schimmel <idosch@nvidia.com>
-To: netdev@kapio-technology.com
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Yuwei Wang <wangyuweihx@gmail.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
- MAC-Auth Bypass to locked port tests
-Message-ID: <YxNpg76H9ma2zNhZ@shredder>
-References: <20220826114538.705433-1-netdev@kapio-technology.com>
- <20220826114538.705433-7-netdev@kapio-technology.com>
- <YwpgvkojEdytzCAB@shredder>
- <b28717f593461865bbfa6bf12e99a2a1@kapio-technology.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <b28717f593461865bbfa6bf12e99a2a1@kapio-technology.com>
-X-ClientProxiedBy: VI1PR06CA0162.eurprd06.prod.outlook.com
- (2603:10a6:803:c8::19) To PH7SPRMB0001.namprd12.prod.outlook.com
- (2603:10b6:510:13c::20)
+	id 1oUpDm-005w9F-Mw; Sun, 04 Sep 2022 12:59:31 +0000
+Received: by mail-lj1-x232.google.com with SMTP id x10so6752860ljq.4;
+        Sun, 04 Sep 2022 05:59:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=MaCiino+kPjk0mzeLjaGzc7ngCKP9nbk7eUckZ209Uc=;
+        b=nGmzIqyW8Gkt2mTsg3NQcRYeGgZXxAFa0SKkwwbtnDhOav/cvEu3IEgIS5XEWAujOc
+         ckBTBJ+9zEbtTbV0nmLx99sKsvVsIbVQuOxq9SgTHxVuvgcfm9i9UwZQm7hIQFx6otRJ
+         eVvoLDVBHXxQSmVg2U3fSE+lQYqe35iSj5dsJqgbrFqod/6dyxRb36Aav+p1G7BfZjS1
+         ipvEWGJDjk3RtOsB29GEL5phjWhVZxU7G2yvnb5K0pme2LJpPlud4Slnk+iAYG+XXJok
+         7NDF42stOftqkhA7YNClQZCjL60ASc+gWIXZi2ikDYdmdO6t2uiRUL+QU++1cWVOUtJd
+         TbxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=MaCiino+kPjk0mzeLjaGzc7ngCKP9nbk7eUckZ209Uc=;
+        b=km3QeeNeXMKatOln4cpLA4ZfTi0BQPA2S2C/qbc0cJOpxCC6SiPHw12+Uev0kU801c
+         lv8U/5XU5GsekCaobkEZb3KfTp3nFr+aHUwolgqz5SF43OdlkSiqWV2L4RFOYAy+tX2V
+         dQP43b5iuhcAMrneQapvRj6IB+gJMXotGCE4gCtpBUxyztf7M7Nuj2AyHbfrgl3c14PO
+         kDj4bMl0JotKxVZ7j3RA+rU65X89c96L4zZO766AfqztXR9KRyfiH7XmtOybazazBOmg
+         2T3pyo1iyosaTD8i4TLzrzZChXxm6+UY5EtZKvrm+aW1CbErfaFx6DW5WoFXWgc4AltS
+         +z4g==
+X-Gm-Message-State: ACgBeo1JcUURF1x5PgfqyMvdj8QEuG6YcXiVdFzACNT/oYzhlRKUsUWC
+	UbYLgVo1P8zqzOEAXEfCHXI=
+X-Google-Smtp-Source: AA6agR7oDNcqN4n23e8Kl3aqZxtaX3bou67PPbdyBcJiiFNQKq37CjJs3UzaOWRhwQ3dpvALHXbedQ==
+X-Received: by 2002:a2e:b892:0:b0:25f:db66:3b86 with SMTP id r18-20020a2eb892000000b0025fdb663b86mr14179513ljp.79.1662296367003;
+        Sun, 04 Sep 2022 05:59:27 -0700 (PDT)
+Received: from [192.168.2.145] ([109.252.119.13])
+        by smtp.googlemail.com with ESMTPSA id x17-20020ac259d1000000b004947e89ae4bsm888951lfn.294.2022.09.04.05.59.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 04 Sep 2022 05:59:26 -0700 (PDT)
+Message-ID: <af23462c-2d3b-470a-7fd6-2bf09a3174cb@gmail.com>
+Date: Sun, 4 Sep 2022 15:59:25 +0300
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: e633807e-d1c6-4302-ca37-08da8dbb8b56
-X-MS-TrafficTypeDiagnostic: CH0PR12MB5234:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	RL9XyU04O7kKKSbGscy7EMW//AjAYM+zqS1X5ILt7nYrmJS0RFu9R0uyrDs79GTDDpWZO/J8ZQZrhfMFJ7EG1LdugqmTb4TLK9Uo2qMIuIOBuQzgdrNc78MjgJ8CRIS/OQ0CyXo7LTA5joNHxJXE0xoRaNFeLvRFxD+s/l3dRMPCVmsnHt1c801wjHlfJoDM2X2+o/9sE12bA/0xBXt6YBsCkTGMScuAxiajzcFwy8D3hOYvK7o9UzTFv1KLdmfqBvjdG5flkcprjkVYSwwMhglmCFXOf8kvoEdmnV/gAd+1G0cPoIbeGqaZj78PEH27HJnDV27augSu5Bj6s6E2+tF3iX9JbcYNyFHqO+Sy2ezsibJpqSVQ4rP/3/zAF35oACgaARsnJ2jrUYfaghT4+rlxC2XbE0UAyv96+wIhRK8POkkue8gLmDzx856FMH4OSmTvLH2eJ/2MCvIlUxdSNyzHumfgHKeFwTlvCD/oAE9f7IeTf9dcJCH9lGWCg9vE1H2dpvIL9qrV5Gx8QPCgLgviCRQPFNSu77n4t/kaqfiLBMjClPgHWD6Ny9uQdM1t6uWYMCW2JjH0uGam/2oCNTG7C8lpvfgSXjniIuENb4n2hC6jj2g1DD3BnFHX00WPPpTidqPPRl6QIPX1/wxI1bNNuW7sE9p6IsKytekNfXHbrBQPaXrDfs8N3Bgf9g7Ke1Ll4OivugXDx9U/dWZ0Bg==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7SPRMB0001.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(7916004)(4636009)(366004)(39860400002)(346002)(396003)(376002)(136003)(4326008)(83380400001)(8676002)(66946007)(66476007)(66556008)(5660300002)(8936002)(4744005)(7416002)(7406005)(6506007)(26005)(53546011)(6666004)(478600001)(6486002)(41300700001)(186003)(6512007)(9686003)(316002)(6916009)(86362001)(54906003)(33716001)(38100700002)(2906002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?1gOSlLBjAUVRGbUIikaO0eu0oyttN7zWB+io+gms0ihmdyb5K5wDeJi2UN6u?=
- =?us-ascii?Q?U6F0Rb3LXB5fuOPgJ2YFxBF8i+8zOsI2RVhoCOC8pQGDkWPttoikK0X2/yrS?=
- =?us-ascii?Q?/DbBhepxN7/4OM4Mfl7YJgQdwxS4IfggyznAsF8gojkTQujI+uoZTEPOtyAo?=
- =?us-ascii?Q?IGmzxtod6TFtaiNc2uE44rDEwcon7dCUgvCT/TPTecR59whveMFsPw+2H8ZN?=
- =?us-ascii?Q?pkFUu1aW4s2jDJss/PR1v5jVwoFwO1awEEv8q3xiWEQ/w9CvJVWNSHZv+P7X?=
- =?us-ascii?Q?fDeZK1K+hmesscALueHhHAo536LDW6ro4KZ2sm7YNmKhJVpKXy2ceY/0joJo?=
- =?us-ascii?Q?mIGDHGqlOeYtBQywKsqe0AFoevmRNxEMnqzG+pAMMaBOivAmGxiPwM8LHawB?=
- =?us-ascii?Q?7KuYufTNjAQPsSN4Pl7xP1Mkze3ZFKhhuErGeKzoMmY+RrT6sdARVESuGnyl?=
- =?us-ascii?Q?TIruZVZr+YiE277Fagcf2V7wanQ53Vs+85qx8ZspIZWUE6P1rGtmFngv0ZDc?=
- =?us-ascii?Q?YjOh7RhLdMqrt0790HbXZXIk5WmIlNks6bL4wN0+vpTNqc7ixeKoV2zyVzoL?=
- =?us-ascii?Q?8djik+Nu4J8Du/ZlNLn0+wQsuYz60of5gC9WwJzgFzi6zE6ZmYr4QauETX7P?=
- =?us-ascii?Q?sLlB4KsccfNZdtXRN0qIMStnAzLbun/LGiGW3VLOoyvC9BfTDrb/ZPBdwN5W?=
- =?us-ascii?Q?oOfohwbDz5Q+ezx4Q+r2+ryfHPZRSPKMltMTbMWjW3uvrCq1nK0KWHZu1nkU?=
- =?us-ascii?Q?NZ+m8RCoQWnXG8sD7fLxg8/rznAW8e+Yh2ZrN5UePpD2+NZsmX1crt0o6v8d?=
- =?us-ascii?Q?anE8XZBrvKv5XBavciCwHtq3h/00VZsx36kBwF/ahYlPvfsWpl/Q5fkox4x4?=
- =?us-ascii?Q?FQ+TK3gZk7YLhRSlVdyriUIVTsLYjMM8l9MvddhWzBf8wiMYHeBOcVap7ffE?=
- =?us-ascii?Q?hizq7JrEzsEbETpkj0i0vcmx0kXPKm6VUcDDcIjGxkAwx7E89FL+w+XZaZIH?=
- =?us-ascii?Q?Ww+8wsn4MU9ryKarOtwwMWqAxEIK+EuwkYKlKPLgTq3aSG4JsPtLgOSqpUWj?=
- =?us-ascii?Q?QxkKWz3nfHCweot4OGa6KR9avL9NXBbpFJWGMr3QMP1dRhpJsV29BGlK0RoH?=
- =?us-ascii?Q?mekzqGLe4edaUFgKmszbEmbd4a7Idef5dzejF3bdzydhqTwRJU7jsLRgmV02?=
- =?us-ascii?Q?tllWT3oZ3df4cRvyqLb4zNVka6sF3UPbNqj7A9vADvcU7y6jl21t0aaAWMz/?=
- =?us-ascii?Q?9qEXcp11ERpyp9ZI/daTK02WQ3o19nwy5eDJaygRSBV2+MumuDZTJrCOXclB?=
- =?us-ascii?Q?kSodCNeWKl2zvZ5vnilz8xLtZvCD+qDtFCiGqsyXZgjwRSH6LUTSPIgXB0j0?=
- =?us-ascii?Q?ILNsjHBHYZD6//anStiv8TrGDPn+sgq2OzV9fNB47kDKukCrvgeNZZjDPOju?=
- =?us-ascii?Q?0IYTKqbxQUq0sS4uJODdqr0OO0auEW0UjHCQPbxn9tfAxsMk62e8lHUDcKk8?=
- =?us-ascii?Q?e7S2JlZdrMPFd2uaiTj1p3jHj6ds8xw4qGkYo1eINEYXhSTk79jXWG08ferJ?=
- =?us-ascii?Q?i8aDOUI0au1NZk4DbArqDd+u8ropDjAQnk0Suz01?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e633807e-d1c6-4302-ca37-08da8dbb8b56
-X-MS-Exchange-CrossTenant-AuthSource: PH7SPRMB0001.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Sep 2022 14:49:46.4187
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: gXfPbhslE+SnxzmPzzHxsUlGlKTdH0WAGSGSktryMDe0XVfVJTxgh7kguuU0NDy9GrI9mcHdLSN3DhC4E884Rg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR12MB5234
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH v17 00/10] Add MT8195 DisplayPort driver
+Content-Language: en-US
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, daniel@ffwll.ch, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, mripard@kernel.org, tzimmermann@suse.de,
+ matthias.bgg@gmail.com, deller@gmx.de, airlied@linux.ie
+Cc: devicetree@vger.kernel.org, linux-fbdev@vger.kernel.org,
+ granquet@baylibre.com, jitao.shi@mediatek.com, liangxu.xu@mediatek.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ msp@baylibre.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, wenst@chromium.org,
+ linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
+References: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
+From: Dmitry Osipenko <digetx@gmail.com>
+In-Reply-To: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220903_074954_090344_939C1981 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20220904_055930_783979_D1060748 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,32 +99,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 29, 2022 at 06:07:59PM +0200, netdev@kapio-technology.com wrote:
-> On 2022-08-27 20:21, Ido Schimmel wrote:
-> > On Fri, Aug 26, 2022 at 01:45:38PM +0200, Hans Schultz wrote:
+01.09.2022 07:41, Bo-Chen Chen пишет:
+> This patch is separated from v10 which is including dp driver, phy driver
+> and dpintf driver. This series is only contained the DisplayPort driver.
 > 
-> > > +	$MZ $h2 -q -t udp -a $mac -b rand
-> > > +	bridge fdb show dev $swp2 | grep -q "$mac vlan 1 master br0"
-> > > +	check_err $? "Locked port station move: Entry not found on
-> > > unlocked port"
-> > 
-> > Looks like this is going to fail with offloaded data path as according
-> > to fdb_print_flags() in iproute2 both the "extern_learn" and "offload"
-> > flags will be printed before "master".
-> > 
-> 
-> The output shows like:
-> 74:e1:e1:2c:4f:18 dev eth8 vlan 1 master br0 extern_learn offload sticky
-> locked blackhole
-> 
-> "sticky" will of course become "permanent", but I can still make it more
-> resilient by piping grep.
+> This series can be tested using 5.19-rc2 kernel and I test it in MT8195
+> Tomato Chromebook. Modetest these modes:
 
-OK.
-
-> 
-> I suppose that I will keep the "sticky_no_roaming" test even though it is
-> not really needed here anymore?
-
-You can send it separately if you want.
+Applied to drm-misc-next, thanks!
 
