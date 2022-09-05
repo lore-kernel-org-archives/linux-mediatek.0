@@ -4,75 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D929C6FA83
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 11:18:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1AF8ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 11:23:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gSGaGuDis9S2nbhT0z4V8NJbZZk+IiVG0ekrsvMykuw=; b=NLUL9kUm9oAxfPvCTVqOeI7mZb
-	OgJAbGDj4VRaYgj0L5747IUvBKMasiRkUNyzAVs3Un5ZhhaASB7qS8biXWN1Bi8hq1dbkOorrpUAA
-	JGOvLE0t4DX8/glmG1eRS1dhSgzIVdVhMKkUdjsq5rRqkSfJa9h7iNGhCQnmfkhN/M494nV/Zfe8U
-	tpW17D/EmNRhwXhWptyD8IOy+JFuI6z22JlUt9poGqqduTWF1l44WpsXdOc/i2sbMRL+BK69rf4Gx
-	S/VtokInXmYV0gXd2vq/kSXPn82t4GvCSB3WS/jwMVfK8TR9xGt9Pi6HQxDwljg9xC38PQXQLVr89
-	/nSgHZZw==;
+	bh=mDe4HrG4uEg41My7bBkuCl5g5S/VZFrKNQ+TfpERTIw=; b=PyxAnZLMYZ/+wpAO8/Z+RX7DT9
+	KVYC0tn3w+p4YMQjbTpS1ai0XH2nJa+xGXhB2wDFi2jgPoTFtlCmDU94Pv/h8+jPF7Tjg39lVFQ8o
+	IaFURk/C+iUq193LvTEDxd32Oy3v/4eb1wSCgBJ0uGQYgehtFJ5f2FZWdQ7IZBSHotTSmCWy7Iup5
+	95ZeAIof5bF/d+runZxC9Z4e5p+gccSohSsJ7cZNjCIBhbYP+7OoI8yKa+/vCas8W83lUWdSfopKu
+	oDtfp6z9AURW/cKiVl4SGCXjASHu5eUq0+/lL6FezULGFAhTyMKtuX0ZCOvYPNiWiIN4VGqohCG9I
+	l/YeXSBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVA7Z-0013Ao-OX; Mon, 05 Sep 2022 11:18:30 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oVABy-001951-G6; Mon, 05 Sep 2022 11:23:03 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oV8y9-00HI2x-IO; Mon, 05 Sep 2022 10:04:51 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D38E26601EEF;
-	Mon,  5 Sep 2022 11:04:36 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662372277;
-	bh=lcdJy/SnpyOyR+kPA1esQ+M7lPo2TogPW/5ufGPolmg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XRbb5ODci4V8X2YnR/SXcuVsOlfNvwwz/zzXY4wFJDVk0IjIVuW/IWHfRc0PP/rZY
-	 RkheMSUtw0zzstDi+hJBtbGQdkRtFeet6AOsQZspVZz7x0RwDIW/suUY6ukc3UU7Rw
-	 yuYtLuQgyblc/cqF3FPWKXUILB4mKVPtdY+HNsNiDRsqtwXix2uE6COvecSZ4PfAvW
-	 WSFh14zzOusfzXPQu3OkDPMOdR5LvZU8H0loxAVSY04X4P4I3y2Zfs+RhOpgj2tOpV
-	 6EXaHaMEtNi88Jh0srV3v3ls58I7qypPjdDpnZxBEElNRPXIiKuKYT00fXZFV1J3VU
-	 1ZRTqPk0U217Q==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: mturquette@baylibre.com,
-	sboyd@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	miles.chen@mediatek.com,
-	rex-bc.chen@mediatek.com,
-	nfraprado@collabora.com,
-	chun-jie.chen@mediatek.com,
-	jose.exposito89@gmail.com,
-	drinkcat@chromium.org,
-	weiyi.lu@mediatek.com,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org
-Subject: [PATCH 08/10] clk: mediatek: clk-mt8195-topckgen: Drop univplls from mfg mux parents
-Date: Mon,  5 Sep 2022 12:04:14 +0200
-Message-Id: <20220905100416.42421-9-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20220905100416.42421-1-angelogioacchino.delregno@collabora.com>
-References: <20220905100416.42421-1-angelogioacchino.delregno@collabora.com>
+	id 1oV8zK-00HK4l-17
+	for linux-mediatek@lists.infradead.org; Mon, 05 Sep 2022 10:05:58 +0000
+Received: by mail-lf1-x136.google.com with SMTP id z6so12373581lfu.9
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Sep 2022 03:05:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=mDe4HrG4uEg41My7bBkuCl5g5S/VZFrKNQ+TfpERTIw=;
+        b=pL6KsdPpGN8vx+guoN/9sDI2fTIQYSRQ23XeO0oBUWNoMDlQ8GeQ1wymljXpoV6Kyk
+         Vzq8VRGfRiAp79OtTlei++CwoC8o6Wgl4Icw6YfMqa16e4Gk9bT1qqp8564T169qoqSH
+         Sqqe5Kktsi5SowVpwmZzCHoJSKq1U1YkqM0sxJS+yb8NPbHM0eNx/44ilva8DW+JcYFI
+         IZA3qGFV6WhuIKZANEVLyTRIlJFpJcR6P8JMG0J4WuI++NHESawBZAYHxd9vm7muCZRN
+         an6QxoREoWZaAS3+tZpYlk4VFOMHTKZAIz5CQfvh+SuDuaI14hlQYiy38rORIaEe2tdl
+         1/Wg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=mDe4HrG4uEg41My7bBkuCl5g5S/VZFrKNQ+TfpERTIw=;
+        b=lXzEC8NfSpWC+wlHkvciro3vGYqM/05GBSznZ+cfsKbpZ0cFwUtcypR0+81o3ngdm4
+         VNj0DS6mdLqeuEVHp+ghrRgWy6ur4CZWi4TSm5k2ak4lcBTiMk4n3wYRSbO26vpQ6AaZ
+         Pn2I2YOsVZWfvDhWtFP73Nw1hRD7U23ikKynWviP8cCC6MXAhBP2r/OksBberhhycVLb
+         JtAtQHxAAM5aadTb//GhdNE/RiI9gf/rJI3XoEvgo5hM5vg8+67rDxCbhQ6AHt/e4wmH
+         xGmAH4BMstp1fWiPQRyYxR4i/d9B+VbHQBE7SC9HIcZFEUPxKDzGLX8rzKD7rGVuhz+F
+         RC3A==
+X-Gm-Message-State: ACgBeo1SmE5CtzZ1uk0lFA7n+bEgq6fZ1kKaVeZ3tHaz+kD8jVR3KxzX
+	c26r7WCgq9GHihtwxpfJVmu+iQ==
+X-Google-Smtp-Source: AA6agR65NVdbjPjaLtr2xdntMfgD7vsI/O+8yP6SsfEIl9dauBVNVcbWLhOuH+KrIP9k3b9ouwRtaA==
+X-Received: by 2002:a05:6512:1329:b0:492:e050:b0dc with SMTP id x41-20020a056512132900b00492e050b0dcmr17408365lfu.136.1662372351009;
+        Mon, 05 Sep 2022 03:05:51 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id e2-20020ac25462000000b004949f7cbb6esm1144703lfn.79.2022.09.05.03.05.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 Sep 2022 03:05:50 -0700 (PDT)
+Message-ID: <4e5d2fc2-5816-ba31-6a75-da669eddc5cf@linaro.org>
+Date: Mon, 5 Sep 2022 12:05:49 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH 2/4] dt-bindings: arm: mediatek: Add new bindings of
+ MediaTek frequency hopping
+Content-Language: en-US
+To: Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, angelogioacchino.delregno@collabora.com,
+ sboyd@kernel.org
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Edward-JW Yang <edward-jw.yang@mediatek.com>
+References: <20220831124850.7748-1-johnson.wang@mediatek.com>
+ <20220831124850.7748-3-johnson.wang@mediatek.com>
+ <b1296c37-5283-81f7-1939-7ea20e1f4d0d@linaro.org>
+ <67237f85d1c4bc72906848d811988209d0112c06.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <67237f85d1c4bc72906848d811988209d0112c06.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220905_030441_987200_8600481D 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220905_030554_246083_0ADAFE3E 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,34 +101,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These PLLs are conflicting with GPU rates that can be generated by
-the GPU-dedicated MFGPLL and would require a special clock handler
-to be used, for very little and ignorable power consumption benefits.
-Also, we're in any case unable to set the rate of these PLLs to
-something else that is sensible for this task, so simply drop them:
-this will make the GPU to be clocked exclusively from MFGPLL for
-"fast" rates, while still achieving the right "safe" rate during
-PLL frequency locking.
+On 02/09/2022 08:39, Johnson Wang wrote:
+> On Wed, 2022-08-31 at 16:19 +0300, Krzysztof Kozlowski wrote:
+>> On 31/08/2022 15:48, Johnson Wang wrote:
+>>> Add the new binding documentation for MediaTek frequency hopping
+>>> and spread spectrum clocking control.
+>>>
+>>> Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
+>>> Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
+>>> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+>>> ---
+>>>  .../bindings/arm/mediatek/mediatek,fhctl.yaml | 49
+>>> +++++++++++++++++++
+>>>  1 file changed, 49 insertions(+)
+>>>  create mode 100644
+>>> Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yaml
+>>>
+>>> diff --git
+>>> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yam
+>>> l
+>>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yam
+>>> l
+>>> new file mode 100644
+>>> index 000000000000..c5d76410538b
+>>> --- /dev/null
+>>> +++
+>>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yam
+>>> l
+>>> @@ -0,0 +1,49 @@
+>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: 
+>>> https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,fhctl.yaml*__;Iw!!CTRNKA9wMg0ARbw!ysl-bMp7yP9Ym70o6EVB8A36MBxcXGap8doEKR_SbaAQSy8-_RU5jvrWTjzETut_6eXNGut4j-3dY0q7xJdpQbmaOw$
+>>>  
+>>> +$schema: 
+>>> https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!ysl-bMp7yP9Ym70o6EVB8A36MBxcXGap8doEKR_SbaAQSy8-_RU5jvrWTjzETut_6eXNGut4j-3dY0q7xJezt7_RBw$
+>>>  
+>>> +
+>>> +title: MediaTek frequency hopping and spread spectrum clocking
+>>> control
+>>> +
+>>> +maintainers:
+>>> +  - Edward-JW Yang <edward-jw.yang@mediatek.com>
+>>> +
+>>> +description: |
+>>> +  Frequency hopping control (FHCTL) is a piece of hardware that
+>>> control
+>>> +  some PLLs to adopt "hopping" mechanism to adjust their
+>>> frequency.
+>>> +  Spread spectrum clocking (SSC) is another function provided by
+>>> this hardware.
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    const: mediatek,fhctl
+>>
+>> You need SoC/device specific compatibles. Preferably only SoC
+>> specific,
+>> without generic fallback, unless you can guarantee (while
+>> representing
+>> MediaTek), that generic fallback will cover all of their SoCs?
+>>
+> 
+> Hi Krzysztof,
+> 
+> At this moment, we plan to support FHCTL feature for MT8186 only.
+> 
+> If you prefer SoC-specific compatble, we will improve that in the next
+> version.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/clk/mediatek/clk-mt8195-topckgen.c | 2 --
- 1 file changed, 2 deletions(-)
+Then make it only for mt8186.
 
-diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c b/drivers/clk/mediatek/clk-mt8195-topckgen.c
-index 4dde23bece66..6ff610c101ae 100644
---- a/drivers/clk/mediatek/clk-mt8195-topckgen.c
-+++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
-@@ -301,8 +301,6 @@ static const char * const ipu_if_parents[] = {
- static const char * const mfg_parents[] = {
- 	"clk26m",
- 	"mainpll_d5_d2",
--	"univpll_d6",
--	"univpll_d7"
- };
- 
- static const char * const camtg_parents[] = {
--- 
-2.37.2
-
+Best regards,
+Krzysztof
 
