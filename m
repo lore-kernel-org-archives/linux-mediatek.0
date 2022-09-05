@@ -4,88 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DA9CECAAD5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 13:29:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AA4EECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 14:17:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pfS6VfbrB2hhKB3MP/E2QySNmwkMTvwsYKUzykDeyHs=; b=N4BZ41/O2GVymwmcdw/kThZPcs
-	DYezmvsxKNaMkSyoukTiz0q2LTZn5irdFBqA7XLqnSIN60pVYMI26YqGJpMDoRGn6XfHB81CHoihO
-	BZIb6LCjhfC8EtvXbtGP9rOcRu5UTT5nYIUj/qQV8T4B9v7cXm4nwN1t6YdxY1V3e6mJ10U4JFcUi
-	4vVYMjEnBYDQ6GpnvHL5SI3V+i9KHmPnwGM0zC9dca1WRsM/4DbJOa+LlM4lR8WR3FiBkD4skCc0b
-	cjIOCChEuhhLFCcwkQKcQVKK2cNLGoWxNtDFZZWlIJ6lv7Yb244vJHrqxrVWQ9l7ooPqMKfcZwl5p
-	Mh7iSe2w==;
+	bh=C0n04ujEUjx7UGkPmfvD+1dER4WUMtiOaLVZJLRMxAk=; b=zBUil/8jFCMDChuC3scl7DvF6E
+	jqz54vwMg8FPSLBj+KNwMmTZgHeTFgJq/hxvWB00mVQf88uQo8rUX9/OS1ErZb36vNic39fVWvWqK
+	M58FLodyG94L5DWKYkBidNg0b5PbsahTPmJETtiHMftCte76V3lrBMO45ovFDl5D54f81OWUytagR
+	q/EdTPZ/W7fHwDIeLbk2nYvA0bEvklaFl29KJeN4ljiwK8YGjh8et/mw99dpqJpbn2z3W0VJOsDq4
+	nHnt9LNU/vX+nIkg0GGeXDTk/QkP3bcRw6gxRd5SwioHwT93ooTy4OscHcedqeY7MtTTj5OeAMPkN
+	1Vt3y59w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVCA3-003CN3-Dc; Mon, 05 Sep 2022 13:29:11 +0000
-Received: from casper.infradead.org ([90.155.50.34])
+	id 1oVCuw-004IPS-5w; Mon, 05 Sep 2022 14:17:38 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oV8yF-00HID1-NR; Mon, 05 Sep 2022 10:04:47 +0000
+	id 1oVA0S-000vM7-Qz; Mon, 05 Sep 2022 11:11:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=pfS6VfbrB2hhKB3MP/E2QySNmwkMTvwsYKUzykDeyHs=; b=VIhpt7vD5qMlUt2Vd+lT6Y/uI5
-	7V5MYMNVnyfZI8YoBqu+kbU2YurIFmpELPGyx1NfeE03hSgh5VKTATg83vFrRFad/rI+QUrKdi3Rb
-	sHND750goCbUJGfi6rNVxyflyNHCeNTNRAAGfj+Mr3pa7Z7y5cVEgDNAGr0iMWfVKbgB7UkszZiGs
-	RLDJp6UXC2BrLMbKo2hWrMbE5SeLMIUytQLsg3vRH5YnaVlCEo5SmOtsOQuYKYT1F8UQvQeKb6+04
-	vvSsCeg8emhBTMYPpuGZRVWiyEPu1oscvXI6pg2NNIA0spuj63/f3HC1OJPULLg8j6Cb0Z0AbaNsL
-	G8QVnt/w==;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=C0n04ujEUjx7UGkPmfvD+1dER4WUMtiOaLVZJLRMxAk=; b=Xk3BMidR6abFgTkzB29smKHvAu
+	N6ldl54HYNx8zBjM7aHywO9ZwKcBoLfnlwwKIa+ZoYWK9phzjf7pljwKHBu8B2EKaWn5ZwxbYX4oO
+	tle2oTA4LfAjJN7yqkLg4XezeronIJk5xXSdNqAj141gx4T2PcAR7H1iU5pi/nTsjmV/DQQbdGgDM
+	lexRxM8gHls88YnHszCkmquefI6pd6QUTbv0TclEyAIPTdZ5YX8fXpA++nJ5G8hgNN230J6og18CC
+	eyjmOQs8qkYwN2HJmtQ/h5Zw1a44SnmgF6nkdIP7L1uxpEhKiCGZSnU9JBholJSU4Zd7spboBk7ze
+	UvGh+hrw==;
 Received: from madras.collabora.co.uk ([46.235.227.172])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oV8yC-009NGc-OU; Mon, 05 Sep 2022 10:04:47 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oV9jv-009Y5c-Ra; Mon, 05 Sep 2022 10:54:08 +0000
+Received: from [192.168.2.145] (unknown [109.252.119.13])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 051916601F31;
-	Mon,  5 Sep 2022 11:04:37 +0100 (BST)
+	(Authenticated sender: dmitry.osipenko)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 481FC6601EE3;
+	Mon,  5 Sep 2022 11:53:42 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662372279;
-	bh=HrCKKc/4oHF8ameggu4aG6O2V2G7VX/dsz8S56XbbxA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KcF6CebA9m1M0yB5Gh3ymTfDLM3L0SKuavBBxR9Fgg6EXH7J74i3Ahmrwghuhbmgq
-	 k+qo/KvEIwX/9iOCDBwzUUUrHpkTnylY73luFG9QnQtT+L1lLVfhNFcsGkxopc6FU9
-	 zu+Goz/InJSVjQMJiIJUlsTlViWCn1yzJNUoX73L3MHETu/0lNcNuDetWm8t5Rf/u/
-	 bzGBPct1YRhwUAuwc1Se0hME85PZ7cp3o5+uYVzpi+69QTOoXs/SADU6aDWreDsjB5
-	 JCi7qsq1TQNsMUifFTJMBH7u4xT7P8ZMID5YTue1HIyePHEU4MpqBmAuCXuHqyX96X
-	 4kXHo2QeF24EQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: mturquette@baylibre.com,
-	sboyd@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	miles.chen@mediatek.com,
-	rex-bc.chen@mediatek.com,
-	nfraprado@collabora.com,
-	chun-jie.chen@mediatek.com,
-	jose.exposito89@gmail.com,
-	drinkcat@chromium.org,
-	weiyi.lu@mediatek.com,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org
-Subject: [PATCH 09/10] clk: mediatek: clk-mt8192-mfg: Propagate rate changes to parent
-Date: Mon,  5 Sep 2022 12:04:15 +0200
-Message-Id: <20220905100416.42421-10-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20220905100416.42421-1-angelogioacchino.delregno@collabora.com>
-References: <20220905100416.42421-1-angelogioacchino.delregno@collabora.com>
+	s=mail; t=1662375223;
+	bh=tUTd2m3nR6U01woQKAodDrlaOuHhF5+x2TW8FD72guk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=QDVKaBW+A1Hwo04iGcKbPUC1E2zUzzl+LF//Tj5x3fJdHDPLj2xM1R6GFnViVR1Gt
+	 cRv/C2z76XL5CAWqmwjvdtvHYFRRLxdwQKylPWDhkWIK3KRWz0xsckY1698E1Cn76e
+	 CKro+FXClUE06ko1BHN7mbOjuDN4Bk2zC7yU0YrY4WmPjFRqjJhxfbZHGfWYKN0XQR
+	 jSg6GHzW2x2FdpZHDGGuo+uU2HIO8itcP7y4fIKs54UhTa/a8JH8GvkRhZULqap4Ex
+	 KGIyQKIXamGfvLvR8ji2pvqiz2MFxJyzNvDe64dde6dh5+2iFEZix3Pksg0gDzvuHe
+	 JWk33/t/bjyJw==
+Message-ID: <80985882-c46f-cfb1-b077-a92866536678@collabora.com>
+Date: Mon, 5 Sep 2022 13:53:39 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH v17 00/10] Add MT8195 DisplayPort driver
+Content-Language: en-US
+To: chunkuang.hu@kernel.org, angelogioacchino.delregno@collabora.com
+Cc: devicetree@vger.kernel.org, linux-fbdev@vger.kernel.org,
+ granquet@baylibre.com, jitao.shi@mediatek.com, liangxu.xu@mediatek.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ msp@baylibre.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, wenst@chromium.org,
+ linux-arm-kernel@lists.infradead.org, Dmitry Osipenko <digetx@gmail.com>,
+ Bo-Chen Chen <rex-bc.chen@mediatek.com>, p.zabel@pengutronix.de,
+ daniel@ffwll.ch, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ mripard@kernel.org, tzimmermann@suse.de, matthias.bgg@gmail.com,
+ deller@gmx.de, airlied@linux.ie
+References: <20220901044149.16782-1-rex-bc.chen@mediatek.com>
+ <af23462c-2d3b-470a-7fd6-2bf09a3174cb@gmail.com>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <af23462c-2d3b-470a-7fd6-2bf09a3174cb@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220905_110444_824509_C0DF2544 
-X-CRM114-Status: UNSURE (   8.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220905_115404_031793_0CD36FD8 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,32 +95,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Following what was done on MT8183 and MT8195, also propagate the rate
-changes to MFG_BG3D's parent on MT8192 to allow for proper GPU DVFS.
+On 9/4/22 15:59, Dmitry Osipenko wrote:
+> 01.09.2022 07:41, Bo-Chen Chen пишет:
+>> This patch is separated from v10 which is including dp driver, phy driver
+>> and dpintf driver. This series is only contained the DisplayPort driver.
+>>
+>> This series can be tested using 5.19-rc2 kernel and I test it in MT8195
+>> Tomato Chromebook. Modetest these modes:
+> 
+> Applied to drm-misc-next, thanks!
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/clk/mediatek/clk-mt8192-mfg.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Hello Chun-Kuang Hu,
 
-diff --git a/drivers/clk/mediatek/clk-mt8192-mfg.c b/drivers/clk/mediatek/clk-mt8192-mfg.c
-index 3bbc7469f0e4..8ea5acdf832c 100644
---- a/drivers/clk/mediatek/clk-mt8192-mfg.c
-+++ b/drivers/clk/mediatek/clk-mt8192-mfg.c
-@@ -18,8 +18,10 @@ static const struct mtk_gate_regs mfg_cg_regs = {
- 	.sta_ofs = 0x0,
- };
- 
--#define GATE_MFG(_id, _name, _parent, _shift)	\
--	GATE_MTK(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+#define GATE_MFG(_id, _name, _parent, _shift)			\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs,	\
-+		       _shift, &mtk_clk_gate_ops_setclr,	\
-+		       CLK_SET_RATE_PARENT)
- 
- static const struct mtk_gate mfg_clks[] = {
- 	GATE_MFG(CLK_MFG_BG3D, "mfg_bg3d", "mfg_pll_sel", 0),
+Angelo told me today that you wanted to pick up the MTK driver patches
+and I applied them all to the drm-misc instead just of the "video/hdmi"
+patch. The series was fully reviewed and tested, so I had no doubts when
+applied all the patches.
+
+The applied patches can't be reverted, so if you have more changes
+prepared for the MTK driver, then please rebase them on top of the
+latest drm-misc-next.
+
+Apologizes for this confusion. Please let us know if we can help you.
+
 -- 
-2.37.2
-
+Best regards,
+Dmitry
 
