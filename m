@@ -4,83 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C417ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 18:15:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41692ECAAD5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 18:18:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0gAThCdrASz4i29I8aFP1pjqTtXlCGbHPk559uSsFRM=; b=FBYQnROhAOJKeKiNB3z7dAcRVg
-	migSl3PA68Fbf4bXBAihPX1zQnNei/dP8iYeKHI0Tf9OFFbgM4vsLlvVa196y3EwpCo6mkRr9I76M
-	7zvM+KHVNGhocYCCkv+dTcWXIrQO0h3WbKO48XTKBxdZLRe4cMqrNa4sc71xP6gxPRgk2XKBU+l9C
-	0IydlfuDtTaeiwCVFpLgTzgRynm/qMijzyt8zPPop9TA5xqURVZLy4pKFr8sXbeQRUck9CiT2JSOT
-	bllQQclS1M6urFzpxWhfpbO3VTWrVarWgaD0zs169PZE3oxfGkjMpL38pkxhh96EyFuBfr2ayMk9U
-	iFj9VHlA==;
+	bh=KKwU5dcXIaZTyjqEFjCDgM3tWx5DZqGsmYBDKCs/GJ0=; b=URWozETuUMsfnToN8ycHN3nKK4
+	YW19SIBHWheq0t16PiB3/hOjMK/O69wn7NWtL2ShB9YDAYfPvJca3MtZnDZ56faplud436POvZgsx
+	vGewvSBi0UkT624BPfSdXA4ebGebMcEzzmRfDNQKTmXx6s0NTNnhIhA5gIQ1A9aNGO/6U0ZIp1u/s
+	But7/BzIhLgSKJHGsENRBYHeKXQOBSuUIVqbNgSmKMSzuaL+ElY4KqhQtYqBeY0ytNgxqNdyacNTc
+	MaTv6KJYVykNgjf2/B8ffp31AayY94i8eEXHAJOhu1A2XtmCubJDmA+9But5ffSKaxrcs+h5G/Tp3
+	HsjcUkmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVGcp-008EY0-4Y; Mon, 05 Sep 2022 18:15:11 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1oVGg6-008HU3-6X; Mon, 05 Sep 2022 18:18:34 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVBeS-002cjK-Uz; Mon, 05 Sep 2022 12:56:46 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id q21so3606521edc.9;
-        Mon, 05 Sep 2022 05:56:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=0gAThCdrASz4i29I8aFP1pjqTtXlCGbHPk559uSsFRM=;
-        b=CiK72N0wBCG658QIKiEwIGfl85vMH9/yIlnXeWYA+FAdOycP2NbxES2Ukgh1m/NEZ/
-         Y3yAIyYvuD8CmBREErPwXBCXjUSvaYx+TY/6n0yYb4LmSS0UkCS/y1LgMqmkTbfg/AK6
-         eR9AClrdsu+GX/u65+a7h8Ibd/V3WM327RKa5jSXWkNj9axn7JIe9Yop6PdQPlrafmif
-         nD9zZOJb1K9j1xVEC9FQ6/CLop4m7KP+Q4ITj3Cap93f2M6rvpl2pnp+RIsKGU8PqI52
-         ewPuvC++pY5V01Py870ABd/oQhyHCgWP53WUkdh22XcZn4X1Uaoh3JrHiRp9MRXAzSdD
-         pjnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=0gAThCdrASz4i29I8aFP1pjqTtXlCGbHPk559uSsFRM=;
-        b=F3uDwfGLl9Kc/bAeHM5T3q2FMK/uDcr/0S0nDkhvoVBeHvSTREOrJxoxzxkFNswvLO
-         7lis/fsiGqHDlC8bycHciNJ4GUTKqagL34GdmprYmtp+dYgvODLIl1oMwt6h7gWm/Zoo
-         vNTqPd1jxoECmd5aduFsY68W0pUyq9d9Yqx0oBI/rjHB+HtI7MhJVL+eyzSq7SdM2/RV
-         BBgJv36w4flW1EokTZWEFRRcPLbM+UDd5izpCzBGp/tQ3TgRUP0TctnSPXrogTx9llkx
-         F+8TCAxCbvlJc+VtTsZSZetddFj6tlTRM6wAktUCFV34elb/By0BaHAWYkuf44m7G1fy
-         1m2g==
-X-Gm-Message-State: ACgBeo2JgAgWyQOp11Ieqaxwc9cMpK7JrX75eCVsbu8IEi0dXuEedUwQ
-	TekKyYp29MR1HA81Q/KXH30=
-X-Google-Smtp-Source: AA6agR7tHQz8yCPykbig7EMDbh8yZ3Z9bpq/JAYy6xdettSljo2LZv2RuRhZyy77J133ZIugYLeqZQ==
-X-Received: by 2002:aa7:c74c:0:b0:44e:a7b9:d5c9 with SMTP id c12-20020aa7c74c000000b0044ea7b9d5c9mr1764250eds.19.1662382588386;
-        Mon, 05 Sep 2022 05:56:28 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id s5-20020aa7cb05000000b0044e9e5ce396sm1109481edt.95.2022.09.05.05.56.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Sep 2022 05:56:27 -0700 (PDT)
-Message-ID: <d314d734-eb9e-1767-6186-b12460eea604@gmail.com>
-Date: Mon, 5 Sep 2022 14:56:26 +0200
+	id 1oVEBg-0066Hp-0t; Mon, 05 Sep 2022 15:39:03 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 0D603B81158;
+	Mon,  5 Sep 2022 15:38:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 27E30C4314B;
+	Mon,  5 Sep 2022 15:38:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1662392336;
+	bh=BLZGHzBh5oYUyLXC7SF+E4GBdswvlK4T1kxFL5aA+CE=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=a8o6eMNWU3T1UHA1gu6f+bZ3Ryw5DsQc/qecNv3j4hVyvWtWwtt3Z800BAefUyT7d
+	 KnQLoiWSrOvVMR9XYN5t2aWmJGIzHB/KjmrFdlnrPQTIaLkuhMZtRtYc4YTsrsfsiy
+	 YFGcKmeU4S6kUmq2orrZVbneD6ilVTgWuZVcIjJ76leNX0OKUDsKrmpHmaAhCAUH+N
+	 aLVi/i0zF6Xhei4lg5OElfbzwYXb7PKoq+krdVZdCUxnnJDEfsxG/96jNGYPb5jvUm
+	 W/rp9I9Sxt21q2BoglpyyEdUTxuJAwAuGu7rvcwp6P47qDUFzJYh/Xm9R4XEWRpwG0
+	 B6H2QbtuSmQvg==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, angelogioacchino.delregno@collabora.com, daniel.baluta@nxp.com,
+ pierre-louis.bossart@linux.intel.com, Chunxu Li <chunxu.li@mediatek.com>, peter.ujfalusi@linux.intel.com
+Cc: sound-open-firmware@alsa-project.org, linux-arm-kernel@lists.infradead.org, yc.hung@mediatek.com,
+ project_global_chrome_upstream_group@mediatek.com, linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org,
+ matthias.bgg@gmail.com, linux-kernel@vger.kernel.org
+In-Reply-To: <20220903032151.13664-1-chunxu.li@mediatek.com>
+References: <20220903032151.13664-1-chunxu.li@mediatek.com>
+Subject: Re: [PATCH] ASoC: SOF: Introduce function sof_of_machine_select
+Message-Id: <166239233387.736206.8864417821862907650.b4-ty@kernel.org>
+Date: Mon, 05 Sep 2022 16:38:53 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.1.2
-Subject: Re: [PATCH] dt-bindings: pinctrl: update bindings for MT7986 SoC
-Content-Language: en-US
-To: Peter Chiu <chui-hao.chiu@mediatek.com>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Sean Wang <sean.wang@kernel.org>, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Ryder Lee <ryder.Lee@mediatek.com>, Evelyn Tsai
- <evelyn.tsai@mediatek.com>, Sam Shih <sam.shih@mediatek.com>
-References: <20220902024719.31943-1-chui-hao.chiu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220902024719.31943-1-chui-hao.chiu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220905_055644_246208_B86D9292 
-X-CRM114-Status: GOOD (  16.11  )
+X-CRM114-CacheID: sfid-20220905_083900_656953_186953E2 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,92 +73,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 02/09/2022 04:47, Peter Chiu wrote:
-> Add wifi pins in the description and set groups to string-array to support
-> multiple groups in a node.
+On Sat, 3 Sep 2022 11:21:51 +0800, Chunxu Li wrote:
+> From current design in sof_machine_check the SOF can only support
+> ACPI type machine.
 > 
-> Reviewed-by: Sam Shih <sam.shih@mediatek.com>
-> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> ---
->   .../pinctrl/mediatek,mt7986-pinctrl.yaml      | 48 +++++++++++--------
->   1 file changed, 28 insertions(+), 20 deletions(-)
+> In sof_machine_check if there is no ACPI machine exist, the function
+> will return -ENODEV directly, that's we don't expected if we do not
+> base on ACPI machine.
 > 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-> index 4eadea55df10..b08a0a8076e0 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-> @@ -117,6 +117,10 @@ patternProperties:
->             "i2s"             "audio"     62, 63, 64, 65
->             "switch_int"      "eth"       66
->             "mdc_mdio"        "eth"       67
-> +          "wf_2g"           "wifi"      74, 75, 76, 77, 78, 79, 80, 81, 82, 83
-> +          "wf_5g"           "wifi"      91, 92, 93, 94, 95, 96, 97, 98, 99, 100
-> +          "wf_dbdc"         "wifi"      74, 75, 76, 77, 78, 79, 80, 81, 82, 83,
-> +                                        84, 85
->   
->           $ref: "/schemas/pinctrl/pinmux-node.yaml"
->           properties:
-> @@ -234,7 +238,9 @@ patternProperties:
->               then:
->                 properties:
->                   groups:
-> -                  enum: [wf_2g, wf_5g, wf_dbdc]
-> +                  $ref: /schemas/types.yaml#/definitions/string-array
-> +                  items:
-> +                    enum: [wf_2g, wf_5g, wf_dbdc]
->         '.*conf.*':
->           type: object
->           additionalProperties: false
-> @@ -248,25 +254,27 @@ patternProperties:
->                 An array of strings. Each string contains the name of a pin.
->                 There is no PIN 41 to PIN 65 above on mt7686b, you can only use
->                 those pins on mt7986a.
-> -            enum: [SYS_WATCHDOG, WF2G_LED, WF5G_LED, I2C_SCL, I2C_SDA, GPIO_0,
-> -                   GPIO_1, GPIO_2, GPIO_3, GPIO_4, GPIO_5, GPIO_6, GPIO_7,
-> -                   GPIO_8, GPIO_9, GPIO_10, GPIO_11, GPIO_12, GPIO_13, GPIO_14,
-> -                   GPIO_15, PWM0, PWM1, SPI0_CLK, SPI0_MOSI, SPI0_MISO, SPI0_CS,
-> -                   SPI0_HOLD, SPI0_WP, SPI1_CLK, SPI1_MOSI, SPI1_MISO, SPI1_CS,
-> -                   SPI2_CLK, SPI2_MOSI, SPI2_MISO, SPI2_CS, SPI2_HOLD, SPI2_WP,
-> -                   UART0_RXD, UART0_TXD, PCIE_PERESET_N, UART1_RXD, UART1_TXD,
-> -                   UART1_CTS, UART1_RTS, UART2_RXD, UART2_TXD, UART2_CTS,
-> -                   UART2_RTS, EMMC_DATA_0, EMMC_DATA_1, EMMC_DATA_2,
-> -                   EMMC_DATA_3, EMMC_DATA_4, EMMC_DATA_5, EMMC_DATA_6,
-> -                   EMMC_DATA_7, EMMC_CMD, EMMC_CK, EMMC_DSL, EMMC_RSTB, PCM_DTX,
-> -                   PCM_DRX, PCM_CLK, PCM_FS, MT7531_INT, SMI_MDC, SMI_MDIO,
-> -                   WF0_DIG_RESETB, WF0_CBA_RESETB, WF0_XO_REQ, WF0_TOP_CLK,
-> -                   WF0_TOP_DATA, WF0_HB1, WF0_HB2, WF0_HB3, WF0_HB4, WF0_HB0,
-> -                   WF0_HB0_B, WF0_HB5, WF0_HB6, WF0_HB7, WF0_HB8, WF0_HB9,
-> -                   WF0_HB10, WF1_DIG_RESETB, WF1_CBA_RESETB, WF1_XO_REQ,
-> -                   WF1_TOP_CLK, WF1_TOP_DATA, WF1_HB1, WF1_HB2, WF1_HB3,
-> -                   WF1_HB4, WF1_HB0, WF1_HB0_B, WF1_HB5, WF1_HB6, WF1_HB7,
-> -                   WF1_HB8]
-> +            $ref: /schemas/types.yaml#/definitions/string-array
-> +            items:
-> +              enum: [SYS_WATCHDOG, WF2G_LED, WF5G_LED, I2C_SCL, I2C_SDA, GPIO_0,
-> +                     GPIO_1, GPIO_2, GPIO_3, GPIO_4, GPIO_5, GPIO_6, GPIO_7,
-> +                     GPIO_8, GPIO_9, GPIO_10, GPIO_11, GPIO_12, GPIO_13, GPIO_14,
-> +                     GPIO_15, PWM0, PWM1, SPI0_CLK, SPI0_MOSI, SPI0_MISO, SPI0_CS,
-> +                     SPI0_HOLD, SPI0_WP, SPI1_CLK, SPI1_MOSI, SPI1_MISO, SPI1_CS,
-> +                     SPI2_CLK, SPI2_MOSI, SPI2_MISO, SPI2_CS, SPI2_HOLD, SPI2_WP,
-> +                     UART0_RXD, UART0_TXD, PCIE_PERESET_N, UART1_RXD, UART1_TXD,
-> +                     UART1_CTS, UART1_RTS, UART2_RXD, UART2_TXD, UART2_CTS,
-> +                     UART2_RTS, EMMC_DATA_0, EMMC_DATA_1, EMMC_DATA_2,
-> +                     EMMC_DATA_3, EMMC_DATA_4, EMMC_DATA_5, EMMC_DATA_6,
-> +                     EMMC_DATA_7, EMMC_CMD, EMMC_CK, EMMC_DSL, EMMC_RSTB, PCM_DTX,
-> +                     PCM_DRX, PCM_CLK, PCM_FS, MT7531_INT, SMI_MDC, SMI_MDIO,
-> +                     WF0_DIG_RESETB, WF0_CBA_RESETB, WF0_XO_REQ, WF0_TOP_CLK,
-> +                     WF0_TOP_DATA, WF0_HB1, WF0_HB2, WF0_HB3, WF0_HB4, WF0_HB0,
-> +                     WF0_HB0_B, WF0_HB5, WF0_HB6, WF0_HB7, WF0_HB8, WF0_HB9,
-> +                     WF0_HB10, WF1_DIG_RESETB, WF1_CBA_RESETB, WF1_XO_REQ,
-> +                     WF1_TOP_CLK, WF1_TOP_DATA, WF1_HB1, WF1_HB2, WF1_HB3,
-> +                     WF1_HB4, WF1_HB0, WF1_HB0_B, WF1_HB5, WF1_HB6, WF1_HB7,
-> +                     WF1_HB8]
->   
->             bias-disable: true
->   
+> [...]
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: SOF: Introduce function sof_of_machine_select
+      commit: 354f6008b730a217a3e6ad982eda42e90e6f7473
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
