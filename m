@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9573DC6FA83
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 11:17:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A278ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 11:18:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4Tv1D8xpB0AirzCm+uQeZ3a4DhARqdvR/3+811r/xj4=; b=FlgHVj3STDtUHmQmt/UKx3Iosy
-	j+/5qmlL+6TY8lNjCii9K7Dky1EXxI35wNNPY465TNxlCqlkeH5IsXQz6CACF1SCVfx9n1pqCAqCp
-	H3FPvCx4alLGlG5WmX/V3UpN/DUt5VvRMiu0pODjW0ojVjbvLyIauluE1srYV/h1kFZO5fLZ2E32H
-	iwMSdYsqLaZMDfg6lwmCwljzZJ7GzMbpkEss7YWC7T1en5E18sWCr7cde3s7YUe5Dg9RjDHfC4QK6
-	msS6wEKLw3X3Sd7+Mtjl9zBFDIfUFOVouyO8+cg9Bgvbd5Kdj054ixL7uqA9D5ATnzKNP7yeS98SU
-	vOx7j+8Q==;
+	bh=fU04sl6BYnVhhtvS46Oq0Umw3lLntsxJGwq3IOJh7s4=; b=h7DdzhDKAVfXgq7Qo1cPlozwi0
+	bC6mkgugjWDYJZ3ybWNpr742NiqHGhMMYuBUeESlKbZl8aODpG6z9zCerQLkUYC4df0FQmK5NOF22
+	/0H4elLt3cDM5oqjhR1z+8bnzWNhHQhtqvsEIDZ6SEvBrq2vX4HdsHkjhf0AmB61PX/2GxHg6/Ibd
+	140RzDjdBw80H9nB0rQxsXYbw2iUfS1QEaznaEp4WJ8X8mOOQB6q45fvbHGZnFsAJ+XPxZduAuBgt
+	+eM4VzdSHQ3gIuIKl4TaNaBqjfLBR9O5vnNNG9f8BCrQ4UxGm4evmtnMMoubSzpxaIwY9cLHDhk0u
+	HkJuG41g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVA6a-0011qx-44; Mon, 05 Sep 2022 11:17:28 +0000
+	id 1oVA6p-001284-7O; Mon, 05 Sep 2022 11:17:43 +0000
 Received: from casper.infradead.org ([90.155.50.34])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oV8yG-00HIFV-A0; Mon, 05 Sep 2022 10:04:48 +0000
+	id 1oV8yG-00HIFV-JS; Mon, 05 Sep 2022 10:04:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=4Tv1D8xpB0AirzCm+uQeZ3a4DhARqdvR/3+811r/xj4=; b=EyCOIllCcRu3VpFr/wCkownHdz
-	waVCsO4XnpN6TVLsSPSJUp2MX1mZniR2B2FlxB63W3cHtHzDgOvvNpeVeILWtvUkOs+3jbTandX7v
-	7vuC8h+Ppyz1zO+R1SHiaJfL3lu+KV+6voynkklAsCZlJl0J+xympTvGWoRGaSwI5V3GawuAOPKO5
-	PMrp5eOnY8WdifSDI0ygoIArbRUrSGrLcNy+SlwpbYhA/VDs1oipNaOHDzNImUWiaZPf0mQ+aObM/
-	bYZHED/E3/A9NhQimlPnNilfJYvFpNuPm8Sv7t1y6b7MFP0S0J6lGLybFjPPKyPrn8FmEhW/g96f1
-	yxT2/NzA==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	bh=fU04sl6BYnVhhtvS46Oq0Umw3lLntsxJGwq3IOJh7s4=; b=UnZtwcAGhXw5HHg0v5uTm6C//5
+	Qz49teKg1UN053QgY1F50SBG5pl8BQjLXtKp+7Y3X+8EZbDN2dzRmI+scYDVSQIffesuGacB1HDeY
+	xac3z5ik3ePeMgONDntihce7GBB/1muhR2ZkZLDkD/mijakGsuddgnIGE2DKlCYT15gtjKOJ6Ih7k
+	tIRpiPsxYx8vTKghqllmaWWA8SsQqwSAV3oZzwNTWG73ypVYAhq+pVz8ptIfq7JTLZD71vKJX0CWK
+	4ftmZVjwokzcEHAwcJE5eEDgkhkUAJ2LbZgEcH3RdsX5Qvuw6JsE0lNdyTJDnV83q2F/yug003PNJ
+	HkLuZSUw==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oV8yC-009NGD-Iz; Mon, 05 Sep 2022 10:04:48 +0000
+	id 1oV8yD-009NGe-9M; Mon, 05 Sep 2022 10:04:49 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AF8F26601EEC;
-	Mon,  5 Sep 2022 11:04:35 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2A6836601F3A;
+	Mon,  5 Sep 2022 11:04:39 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662372276;
-	bh=jffXD3T2MOBqqGwvO+kvgVzF9lzP8ZPWA3RUmt8BGfY=;
+	s=mail; t=1662372280;
+	bh=6GKwElOpPO/EzvphH5H6i47s+zy8VO878SMP2y1sjwE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NKj4IwwP1ArxiD/Yn9oQYg4/iqAs/lypWASlzcKvephHVC2zKUiLfhBIF7KcxGgcW
-	 EhYhy3I/uZzl9gI4YNxMTRGMt7RcIUY3PEUVg1gObWdYkJ4FBj2tz7MQZ2LE81NvT1
-	 yRPjYLdUu88Erff+QYeez/IZJt9Z/40nf0QuhgWs1YbDGhoDpPE3ey7R4HWc2Apj9U
-	 gSnVJ2XsTkvkz5Mk/Aj4EwV/W5YFG9VlHZNcMfdRkwl2l6sh91HMIH3MleYly625YY
-	 sXfcl7qOEoB/a33DA9EQcTgfS0sBbajzzV5x/C9R92o7+7MuDNXnHpFEtzPNg04XLq
-	 Wwv7yxF0QkDfw==
+	b=RuL182S0xoyK8tsGbzDbCL5ATeQHaM/fnHLfZfRK6jsNEq8D0ezrBJAJ3xQrPTQhv
+	 lrF2A5jv5mrX/dzmjY6D/AeiWIukHVruY18FGOkk5WN6MZU2Vt2nhqT9m48+0JuRsm
+	 uiAbCA9Tx4ENtOqkUEthQoIiuScY5h3FzeOAiIMRXD2g09QnrTVC+bRPRxOFz/Bhn2
+	 H8KOnqW1pHWMN+YkhoSKQiSoXZ0jSk5oMNwmIRS/2wXQXJEVHxsBwljhbgegL+EieV
+	 XCkYN9Je6UZLlLEY3H9MMdMbetbREgalVV1ajxkn25NHK2hJpl/X4ogtAWZlK+Mvlh
+	 +tW7+4th8Ew/A==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: mturquette@baylibre.com,
@@ -74,17 +74,17 @@ Cc: mturquette@baylibre.com,
 	linux-clk@vger.kernel.org,
 	robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org
-Subject: [PATCH 07/10] clk: mediatek: clk-mt8195-topckgen: Add GPU clock mux notifier
-Date: Mon,  5 Sep 2022 12:04:13 +0200
-Message-Id: <20220905100416.42421-8-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 10/10] clk: mediatek: clk-mt8192: Add clock mux notifier for mfg_pll_sel
+Date: Mon,  5 Sep 2022 12:04:16 +0200
+Message-Id: <20220905100416.42421-11-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20220905100416.42421-1-angelogioacchino.delregno@collabora.com>
 References: <20220905100416.42421-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220905_110444_709531_0E35C9A0 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20220905_110445_394524_E5BA4126 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,52 +99,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Following the changes done to MT8183, register a similar notifier
-for MT8195 as well, allowing safe clockrate updates for the MFGPLL.
+Following the changes that were done for mt8183, add a clock notifier
+for the GPU PLL selector mux: this allows safe clock rate changes by
+temporarily reparenting the GPU to a safe clock (clk26m) while the
+MFGPLL is reprogrammed and stabilizes.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-mt8195-topckgen.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ drivers/clk/mediatek/clk-mt8192.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c b/drivers/clk/mediatek/clk-mt8195-topckgen.c
-index e1c3ab4e146b..4dde23bece66 100644
---- a/drivers/clk/mediatek/clk-mt8195-topckgen.c
-+++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
-@@ -1217,6 +1217,21 @@ static const struct of_device_id of_match_clk_mt8195_topck[] = {
- 	{}
- };
+diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
+index ebbd2798d9a3..187dbffeb987 100644
+--- a/drivers/clk/mediatek/clk-mt8192.c
++++ b/drivers/clk/mediatek/clk-mt8192.c
+@@ -1224,6 +1224,28 @@ static void clk_mt8192_top_init_early(struct device_node *node)
+ CLK_OF_DECLARE_DRIVER(mt8192_topckgen, "mediatek,mt8192-topckgen",
+ 		      clk_mt8192_top_init_early);
  
 +/* Register mux notifier for MFG mux */
-+static int clk_mt8195_reg_mfg_mux_notifier(struct device *dev, struct clk *clk)
++static int clk_mt8192_reg_mfg_mux_notifier(struct device *dev, struct clk *clk)
 +{
 +	struct mtk_mux_nb *mfg_mux_nb;
++	int i;
 +
 +	mfg_mux_nb = devm_kzalloc(dev, sizeof(*mfg_mux_nb), GFP_KERNEL);
 +	if (!mfg_mux_nb)
 +		return -ENOMEM;
 +
-+	mfg_mux_nb->ops = &clk_mux_ops;
-+	mfg_mux_nb->bypass_index = 0; /* Bypass to TOP_MFG_CORE_TMP */
++	for (i = 0; i < ARRAY_SIZE(top_mtk_muxes); i++)
++		if (top_mtk_muxes[i].id == CLK_TOP_MFG_PLL_SEL)
++			break;
++	if (i == ARRAY_SIZE(top_mtk_muxes))
++		return -EINVAL;
++
++	mfg_mux_nb->ops = top_mtk_muxes[i].ops;
++	mfg_mux_nb->bypass_index = 0; /* Bypass to 26M crystal */
 +
 +	return devm_mtk_clk_mux_notifier_register(dev, clk, mfg_mux_nb);
 +}
 +
- static int clk_mt8195_topck_probe(struct platform_device *pdev)
+ static int clk_mt8192_top_probe(struct platform_device *pdev)
  {
- 	struct clk_hw_onecell_data *top_clk_data;
-@@ -1256,6 +1271,11 @@ static int clk_mt8195_topck_probe(struct platform_device *pdev)
- 		goto unregister_muxes;
- 	top_clk_data->hws[CLK_TOP_MFG_CK_FAST_REF] = hw;
- 
-+	r = clk_mt8195_reg_mfg_mux_notifier(&pdev->dev,
-+					    top_clk_data->hws[CLK_TOP_MFG_CK_FAST_REF]->clk);
-+	if (r)
-+		goto unregister_muxes;
-+
- 	r = mtk_clk_register_composites(top_adj_divs, ARRAY_SIZE(top_adj_divs), base,
- 					&mt8195_clk_lock, top_clk_data);
+ 	struct device_node *node = pdev->dev.of_node;
+@@ -1247,6 +1269,12 @@ static int clk_mt8192_top_probe(struct platform_device *pdev)
  	if (r)
+ 		return r;
+ 
++	r = clk_mt8192_reg_mfg_mux_notifier(&pdev->dev,
++					    top_clk_data->hws[CLK_TOP_MFG_PLL_SEL]->clk);
++	if (r)
++		return r;
++
++
+ 	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get,
+ 				      top_clk_data);
+ }
 -- 
 2.37.2
 
