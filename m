@@ -4,68 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26090ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 12:08:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DA9CECAAD5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 13:29:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/vXREIpzCFM0XN5esUxvfLKNBf7Xpy2/iSg1kyOkwRA=; b=bgKRn3mdUycRMM1VI/1W1lGHeT
-	eNj7lHm8aC3E4yoMCa7CMkUNzW3SNYt6r39AZCS23++ujp9CLyNmkBgKqhU7ZXz7gJ1mNGr/zUrMv
-	8WRcGEpkdRTbPRyj35glRT42xwkQjCoVGq+JMNh6rE3BpRvWfQFgDUKOTvO7hp8qEPZ18IXc1LON8
-	e0JJICEWyL5Y46fAAhe9LU/Aal19tGux1EOJQlrcrbyTapqRUwpJ/8cSKCFi0egS6s9GDM3JSSYJE
-	deCHIzcutOjSKApTDqAi4MgGGGXbt4ztvcYNCbpsJSUM888mKVUMS9sBdRywGGKlFz+M4Vvc3DivL
-	A8Qodf/w==;
+	bh=pfS6VfbrB2hhKB3MP/E2QySNmwkMTvwsYKUzykDeyHs=; b=N4BZ41/O2GVymwmcdw/kThZPcs
+	DYezmvsxKNaMkSyoukTiz0q2LTZn5irdFBqA7XLqnSIN60pVYMI26YqGJpMDoRGn6XfHB81CHoihO
+	BZIb6LCjhfC8EtvXbtGP9rOcRu5UTT5nYIUj/qQV8T4B9v7cXm4nwN1t6YdxY1V3e6mJ10U4JFcUi
+	4vVYMjEnBYDQ6GpnvHL5SI3V+i9KHmPnwGM0zC9dca1WRsM/4DbJOa+LlM4lR8WR3FiBkD4skCc0b
+	cjIOCChEuhhLFCcwkQKcQVKK2cNLGoWxNtDFZZWlIJ6lv7Yb244vJHrqxrVWQ9l7ooPqMKfcZwl5p
+	Mh7iSe2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVAtp-001q49-BU; Mon, 05 Sep 2022 12:08:21 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oVCA3-003CN3-Dc; Mon, 05 Sep 2022 13:29:11 +0000
+Received: from casper.infradead.org ([90.155.50.34])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oV9H1-000APq-L5; Mon, 05 Sep 2022 10:24:14 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	id 1oV8yF-00HID1-NR; Mon, 05 Sep 2022 10:04:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=pfS6VfbrB2hhKB3MP/E2QySNmwkMTvwsYKUzykDeyHs=; b=VIhpt7vD5qMlUt2Vd+lT6Y/uI5
+	7V5MYMNVnyfZI8YoBqu+kbU2YurIFmpELPGyx1NfeE03hSgh5VKTATg83vFrRFad/rI+QUrKdi3Rb
+	sHND750goCbUJGfi6rNVxyflyNHCeNTNRAAGfj+Mr3pa7Z7y5cVEgDNAGr0iMWfVKbgB7UkszZiGs
+	RLDJp6UXC2BrLMbKo2hWrMbE5SeLMIUytQLsg3vRH5YnaVlCEo5SmOtsOQuYKYT1F8UQvQeKb6+04
+	vvSsCeg8emhBTMYPpuGZRVWiyEPu1oscvXI6pg2NNIA0spuj63/f3HC1OJPULLg8j6Cb0Z0AbaNsL
+	G8QVnt/w==;
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oV8yC-009NGc-OU; Mon, 05 Sep 2022 10:04:47 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2534A6601EB2;
-	Mon,  5 Sep 2022 11:24:09 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 051916601F31;
+	Mon,  5 Sep 2022 11:04:37 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662373449;
-	bh=bYfDLiA2ERg8hGGzHNEQdP7PWNDTavkHqOv/zPnBBww=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WgGwH1cmE6gheXGmxT/u4IMMyAum+qgVztsmQr7lxhp3QOOSpYLqsbzghWxVF+/JI
-	 YYzGdRvlB1synFtDv8yu00wqK3Sm69PSJg0FUZnP+DI99eM8ZdWFG82M1Wf7EzF886
-	 cChSHa4suMf0gvaVvRwpeg2y0yYU3Xcgy3gAyn9BOv1G690kzVFPdAyS+n31bRSk+8
-	 9yyj1AVgYq3E43gLsdIT7EisyY9aFefKCb2ExDu9NFgrB+RnJQJA46BOHp1G42XZN2
-	 YUG08HZZUbvWST4rkXJi+3+nvGBvViTiqTJNs6NTkx56RCHwMfU8Pozr7MWbaubLnU
-	 xlIOJbDYSxkJA==
-Message-ID: <f7913808-d9b7-9f42-1a16-aedcc0d21497@collabora.com>
-Date: Mon, 5 Sep 2022 12:24:06 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH 00/19] Add driver for dvfsrc, support for interconnect
-Content-Language: en-US
-To: Dawei Chien <dawei.chien@mediatek.com>,
- Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
- <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>,
- Rex-BC Chen <rex-bc.chen@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat
- <drinkcat@google.com>, devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Fan Chen <fan.chen@mediatek.com>,
- Arvin Wang <arvin.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>
-References: <20210812085846.2628-1-dawei.chien@mediatek.com>
+	s=mail; t=1662372279;
+	bh=HrCKKc/4oHF8ameggu4aG6O2V2G7VX/dsz8S56XbbxA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=KcF6CebA9m1M0yB5Gh3ymTfDLM3L0SKuavBBxR9Fgg6EXH7J74i3Ahmrwghuhbmgq
+	 k+qo/KvEIwX/9iOCDBwzUUUrHpkTnylY73luFG9QnQtT+L1lLVfhNFcsGkxopc6FU9
+	 zu+Goz/InJSVjQMJiIJUlsTlViWCn1yzJNUoX73L3MHETu/0lNcNuDetWm8t5Rf/u/
+	 bzGBPct1YRhwUAuwc1Se0hME85PZ7cp3o5+uYVzpi+69QTOoXs/SADU6aDWreDsjB5
+	 JCi7qsq1TQNsMUifFTJMBH7u4xT7P8ZMID5YTue1HIyePHEU4MpqBmAuCXuHqyX96X
+	 4kXHo2QeF24EQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20210812085846.2628-1-dawei.chien@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: matthias.bgg@gmail.com
+Cc: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	wenst@chromium.org,
+	miles.chen@mediatek.com,
+	rex-bc.chen@mediatek.com,
+	nfraprado@collabora.com,
+	chun-jie.chen@mediatek.com,
+	jose.exposito89@gmail.com,
+	drinkcat@chromium.org,
+	weiyi.lu@mediatek.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org
+Subject: [PATCH 09/10] clk: mediatek: clk-mt8192-mfg: Propagate rate changes to parent
+Date: Mon,  5 Sep 2022 12:04:15 +0200
+Message-Id: <20220905100416.42421-10-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20220905100416.42421-1-angelogioacchino.delregno@collabora.com>
+References: <20220905100416.42421-1-angelogioacchino.delregno@collabora.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220905_032412_080453_6D5024E1 
-X-CRM114-Status: GOOD (  33.01  )
+X-CRM114-CacheID: sfid-20220905_110444_824509_C0DF2544 
+X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,179 +100,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Dawei,
-this series brings very nice improvements to many MediaTek platforms, it would
-be a real pity to abandon it.
+Following what was done on MT8183 and MT8195, also propagate the rate
+changes to MFG_BG3D's parent on MT8192 to allow for proper GPU DVFS.
 
-Can you, or anyone else from MediaTek, please respin on the latest -next?
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/clk/mediatek/clk-mt8192-mfg.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-Thanks,
-Angelo
-
-> This series is based on v5.14-rc1.
-> 
-> The patchsets add support for MediaTek hardware module named DVFSRC
-> (dynamic voltage and frequency scaling resource collector). The DVFSRC is
-> a HW module which is used to collect all the requests from both software
-> and hardware and turn into the decision of minimum operating voltage and
-> minimum DRAM frequency to fulfill those requests.
-> 
-> So, This series is to implement the dvfsrc driver to collect all the
-> requests of operating voltage or DRAM bandwidth from other device drivers
-> likes GPU/Camera through 3 frameworks basically:
-> 
-> 1. interconnect framework: to aggregate the bandwidth
->     requirements from different clients
-> 
-> [1] https://patchwork.kernel.org/cover/10766329/
-> 
-> There has a hw module "DRAM scheduler", which used to control the
-> throughput.
-> The DVFSRC will collect forecast data of dram bandwidth from
-> SW consumers(camera/gpu...), and according the forecast to change the DRAM
-> frequency
-> 
-> 2. Regualtor framework: to handle the operating voltage requirement from
->     user or cosumer which not belong any power domain
-> 
-> Changes in V11:
-> * rebase all patches on v5.14-rc1.
-> * support platform mt8195.
-> * add initial bw in mediatek interconnect driver.
-> * add one more pcie client in mediatek interconnect driver.
-> * add compatible for MT8195 dvfsrc.
-> 
-> Changes in V10:
-> * rebase all patches on v5.13-rc1
-> * add acked TAG for interconnect provider driver (Georgi)
-> * update comment message for typos. (Georgi)
-> * update cover leter for typos.
-> 
-> Changes in V9:
-> * modify the configuration of dvfsrc.yaml. (Rob)
-> 
-> Changes in V8:
-> * Fixed the dt_binding_check error of dvfsrc.yaml. (Rob)
-> * Remove Kconfig dependency of DVFSRC
-> 
-> Changes in V7:
-> * Fixed the dt_binding_check error of dvfsrc.yaml. (Rob)
-> * Fixed the checkpatch complains of "Signed-off-by:
-> email name mismatch". (Georgi)
-> * Fixed coding style of interconnect driver. (Georgi)
-> * Update comment of the years to 2021. (Georgi)
-> 
-> Changes in V6:
-> * Remove the performace state support, because the request from consumer
-> can be replaced by using interconnect and regulator framework.
-> * Update the DT patches and convert them to DT schema. (Georgi)
-> * Modify the comment format and coding style. (Mark)
-> 
-> Changes in V5:
-> * Support more platform mt6873/mt8192
-> * Drop the compatible and interconnect provider node and make the parent
-> node an interconnect provider. (Rob/Georgi)
-> * Make modification of interconnect driver from coding suggestion. (Georgi)
-> * Move interconnect diagram into the commit text of patch. (Georgi)
-> * Register the interconnect provider as a platform sub-device. (Georgi)
-> 
-> Changes in V4:
-> * Add acked TAG on dt-bindings patches. (Rob)
-> * Declaration of emi_icc_aggregate since the prototype of aggregate
-> function has changed meanwhile. (Georgi)
-> * Used emi_icc_remove instead of icc_provider_del on probe. (Georgi)
-> * Add dvfsrc regulator driver into series.
-> * Bug fixed of mt8183_get_current_level.
-> * Add mutex protection for pstate operation on dvfsrc_set_performance.
-> 
-> Changes in V3:
-> * Remove RFC from the subject prefix of the series
-> * Combine dt-binding patch and move interconnect dt-binding document into
-> dvfsrc. (Rob)
-> * Remove unused header, add unit descirption to the bandwidth, rename
-> compatible name on interconnect driver. (Georgi)
-> * Fixed some coding style: check flow, naming, used readx_poll_timeout
-> on dvfsrc driver. (Ryan)
-> * Rename interconnect driver mt8183.c to mtk-emi.c
-> * Rename interconnect header mtk,mt8183.h to mtk,emi.h
-> * mtk-scpsys.c: Add opp table check first to avoid OF runtime parse failed
-> 
-> Changes in RFC V2:
-> * Remove the DT property dram_type. (Rob)
-> * Used generic dts property 'opp-level' to get the performace
-> state. (Stephen)
-> * Remove unnecessary dependency config on Kconfig. (Stephen)
-> * Remove unused header file, fixed some coding style issue, typo,
-> error handling on dvfsrc driver. (Nicolas/Stephen)
-> * Remove irq handler on dvfsrc driver. (Stephen)
-> * Remove init table on dvfsrc driver, combine hw init on trustzone.
-> * Add interconnect support of mt8183 to aggregate the emi bandwidth.
-> (Georgi)
-> 
-> v10: https://patchwork.kernel.org/project/linux-mediatek/list/?series=494095
-> V9: https://patchwork.kernel.org/project/linux-mediatek/list/?series=440389
-> V8: https://patchwork.kernel.org/project/linux-mediatek/list/?series=421713
-> V7: https://patchwork.kernel.org/project/linux-mediatek/list/?series=411057
-> V6: https://patchwork.kernel.org/project/linux-mediatek/list/?series=406077
-> V5: https://patchwork.kernel.org/project/linux-mediatek/list/?series=348065
-> V4: https://lore.kernel.org/patchwork/cover/1209284/
-> V3: https://patchwork.kernel.org/cover/11118867/
-> RFC V2: https://lore.kernel.org/patchwork/patch/1068113/
-> RFC V1: https://lore.kernel.org/patchwork/cover/1028535/
-> 
-> Dawei Chien (8):
->    dt-bindings: mediatek: add compatible for MT8195 dvfsrc
->    soc: mediatek: add support for mt8195
->    arm64: dts: mt8195: add dvfsrc related nodes
->    dt-bindings: interconnect: add MT8195 interconnect dt-bindings
->    interconnect: mediatek: add support for mt8195
->    interconnect: mediatek: add initial bandwidth
->    regulator: mediatek: add support for mt8195
->    arm64: dts: mt8195: add dvfsrc related nodes
-> 
-> Henry Chen (11):
->    dt-bindings: soc: Add dvfsrc driver bindings
->    soc: mediatek: add header for mediatek SIP interface
->    soc: mediatek: add driver for dvfsrc support
->    soc: mediatek: add support for mt6873
->    arm64: dts: mt8183: add dvfsrc related nodes
->    arm64: dts: mt8192: add dvfsrc related nodes
->    dt-bindings: interconnect: add MT6873 interconnect dt-bindings
->    interconnect: mediatek: Add interconnect provider driver
->    arm64: dts: mt8183: add dvfsrc related nodes
->    arm64: dts: mt8192: add dvfsrc related nodes
->    arm64: dts: mt8192: add dvfsrc regulator nodes
-> 
->   .../devicetree/bindings/soc/mediatek/dvfsrc.yaml   |  68 +++
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi           |   7 +
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi           |  14 +
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi           |   7 +
->   drivers/interconnect/Kconfig                       |   1 +
->   drivers/interconnect/Makefile                      |   1 +
->   drivers/interconnect/mediatek/Kconfig              |  13 +
->   drivers/interconnect/mediatek/Makefile             |   3 +
->   drivers/interconnect/mediatek/mtk-emi.c            | 385 +++++++++++++++
->   drivers/regulator/mtk-dvfsrc-regulator.c           |  23 +
->   drivers/soc/mediatek/Kconfig                       |  11 +
->   drivers/soc/mediatek/Makefile                      |   1 +
->   drivers/soc/mediatek/mtk-dvfsrc.c                  | 538 +++++++++++++++++++++
->   include/dt-bindings/interconnect/mtk,mt6873-emi.h  |  41 ++
->   include/dt-bindings/interconnect/mtk,mt8183-emi.h  |  21 +
->   include/dt-bindings/interconnect/mtk,mt8195-emi.h  |  42 ++
->   include/linux/soc/mediatek/mtk_dvfsrc.h            |  35 ++
->   include/linux/soc/mediatek/mtk_sip_svc.h           |   4 +
->   18 files changed, 1215 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml
->   create mode 100644 drivers/interconnect/mediatek/Kconfig
->   create mode 100644 drivers/interconnect/mediatek/Makefile
->   create mode 100644 drivers/interconnect/mediatek/mtk-emi.c
->   create mode 100644 drivers/soc/mediatek/mtk-dvfsrc.c
->   create mode 100644 include/dt-bindings/interconnect/mtk,mt6873-emi.h
->   create mode 100644 include/dt-bindings/interconnect/mtk,mt8183-emi.h
->   create mode 100644 include/dt-bindings/interconnect/mtk,mt8195-emi.h
->   create mode 100644 include/linux/soc/mediatek/mtk_dvfsrc.h
-> 
-
-
+diff --git a/drivers/clk/mediatek/clk-mt8192-mfg.c b/drivers/clk/mediatek/clk-mt8192-mfg.c
+index 3bbc7469f0e4..8ea5acdf832c 100644
+--- a/drivers/clk/mediatek/clk-mt8192-mfg.c
++++ b/drivers/clk/mediatek/clk-mt8192-mfg.c
+@@ -18,8 +18,10 @@ static const struct mtk_gate_regs mfg_cg_regs = {
+ 	.sta_ofs = 0x0,
+ };
+ 
+-#define GATE_MFG(_id, _name, _parent, _shift)	\
+-	GATE_MTK(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
++#define GATE_MFG(_id, _name, _parent, _shift)			\
++	GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs,	\
++		       _shift, &mtk_clk_gate_ops_setclr,	\
++		       CLK_SET_RATE_PARENT)
+ 
+ static const struct mtk_gate mfg_clks[] = {
+ 	GATE_MFG(CLK_MFG_BG3D, "mfg_bg3d", "mfg_pll_sel", 0),
+-- 
+2.37.2
 
 
