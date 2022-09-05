@@ -4,89 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1AF8ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 11:23:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26090ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 12:08:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mDe4HrG4uEg41My7bBkuCl5g5S/VZFrKNQ+TfpERTIw=; b=PyxAnZLMYZ/+wpAO8/Z+RX7DT9
-	KVYC0tn3w+p4YMQjbTpS1ai0XH2nJa+xGXhB2wDFi2jgPoTFtlCmDU94Pv/h8+jPF7Tjg39lVFQ8o
-	IaFURk/C+iUq193LvTEDxd32Oy3v/4eb1wSCgBJ0uGQYgehtFJ5f2FZWdQ7IZBSHotTSmCWy7Iup5
-	95ZeAIof5bF/d+runZxC9Z4e5p+gccSohSsJ7cZNjCIBhbYP+7OoI8yKa+/vCas8W83lUWdSfopKu
-	oDtfp6z9AURW/cKiVl4SGCXjASHu5eUq0+/lL6FezULGFAhTyMKtuX0ZCOvYPNiWiIN4VGqohCG9I
-	l/YeXSBg==;
+	bh=/vXREIpzCFM0XN5esUxvfLKNBf7Xpy2/iSg1kyOkwRA=; b=bgKRn3mdUycRMM1VI/1W1lGHeT
+	eNj7lHm8aC3E4yoMCa7CMkUNzW3SNYt6r39AZCS23++ujp9CLyNmkBgKqhU7ZXz7gJ1mNGr/zUrMv
+	8WRcGEpkdRTbPRyj35glRT42xwkQjCoVGq+JMNh6rE3BpRvWfQFgDUKOTvO7hp8qEPZ18IXc1LON8
+	e0JJICEWyL5Y46fAAhe9LU/Aal19tGux1EOJQlrcrbyTapqRUwpJ/8cSKCFi0egS6s9GDM3JSSYJE
+	deCHIzcutOjSKApTDqAi4MgGGGXbt4ztvcYNCbpsJSUM888mKVUMS9sBdRywGGKlFz+M4Vvc3DivL
+	A8Qodf/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVABy-001951-G6; Mon, 05 Sep 2022 11:23:03 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1oVAtp-001q49-BU; Mon, 05 Sep 2022 12:08:21 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oV8zK-00HK4l-17
-	for linux-mediatek@lists.infradead.org; Mon, 05 Sep 2022 10:05:58 +0000
-Received: by mail-lf1-x136.google.com with SMTP id z6so12373581lfu.9
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Sep 2022 03:05:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=mDe4HrG4uEg41My7bBkuCl5g5S/VZFrKNQ+TfpERTIw=;
-        b=pL6KsdPpGN8vx+guoN/9sDI2fTIQYSRQ23XeO0oBUWNoMDlQ8GeQ1wymljXpoV6Kyk
-         Vzq8VRGfRiAp79OtTlei++CwoC8o6Wgl4Icw6YfMqa16e4Gk9bT1qqp8564T169qoqSH
-         Sqqe5Kktsi5SowVpwmZzCHoJSKq1U1YkqM0sxJS+yb8NPbHM0eNx/44ilva8DW+JcYFI
-         IZA3qGFV6WhuIKZANEVLyTRIlJFpJcR6P8JMG0J4WuI++NHESawBZAYHxd9vm7muCZRN
-         an6QxoREoWZaAS3+tZpYlk4VFOMHTKZAIz5CQfvh+SuDuaI14hlQYiy38rORIaEe2tdl
-         1/Wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=mDe4HrG4uEg41My7bBkuCl5g5S/VZFrKNQ+TfpERTIw=;
-        b=lXzEC8NfSpWC+wlHkvciro3vGYqM/05GBSznZ+cfsKbpZ0cFwUtcypR0+81o3ngdm4
-         VNj0DS6mdLqeuEVHp+ghrRgWy6ur4CZWi4TSm5k2ak4lcBTiMk4n3wYRSbO26vpQ6AaZ
-         Pn2I2YOsVZWfvDhWtFP73Nw1hRD7U23ikKynWviP8cCC6MXAhBP2r/OksBberhhycVLb
-         JtAtQHxAAM5aadTb//GhdNE/RiI9gf/rJI3XoEvgo5hM5vg8+67rDxCbhQ6AHt/e4wmH
-         xGmAH4BMstp1fWiPQRyYxR4i/d9B+VbHQBE7SC9HIcZFEUPxKDzGLX8rzKD7rGVuhz+F
-         RC3A==
-X-Gm-Message-State: ACgBeo1SmE5CtzZ1uk0lFA7n+bEgq6fZ1kKaVeZ3tHaz+kD8jVR3KxzX
-	c26r7WCgq9GHihtwxpfJVmu+iQ==
-X-Google-Smtp-Source: AA6agR65NVdbjPjaLtr2xdntMfgD7vsI/O+8yP6SsfEIl9dauBVNVcbWLhOuH+KrIP9k3b9ouwRtaA==
-X-Received: by 2002:a05:6512:1329:b0:492:e050:b0dc with SMTP id x41-20020a056512132900b00492e050b0dcmr17408365lfu.136.1662372351009;
-        Mon, 05 Sep 2022 03:05:51 -0700 (PDT)
-Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id e2-20020ac25462000000b004949f7cbb6esm1144703lfn.79.2022.09.05.03.05.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Sep 2022 03:05:50 -0700 (PDT)
-Message-ID: <4e5d2fc2-5816-ba31-6a75-da669eddc5cf@linaro.org>
-Date: Mon, 5 Sep 2022 12:05:49 +0200
+	id 1oV9H1-000APq-L5; Mon, 05 Sep 2022 10:24:14 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2534A6601EB2;
+	Mon,  5 Sep 2022 11:24:09 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1662373449;
+	bh=bYfDLiA2ERg8hGGzHNEQdP7PWNDTavkHqOv/zPnBBww=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=WgGwH1cmE6gheXGmxT/u4IMMyAum+qgVztsmQr7lxhp3QOOSpYLqsbzghWxVF+/JI
+	 YYzGdRvlB1synFtDv8yu00wqK3Sm69PSJg0FUZnP+DI99eM8ZdWFG82M1Wf7EzF886
+	 cChSHa4suMf0gvaVvRwpeg2y0yYU3Xcgy3gAyn9BOv1G690kzVFPdAyS+n31bRSk+8
+	 9yyj1AVgYq3E43gLsdIT7EisyY9aFefKCb2ExDu9NFgrB+RnJQJA46BOHp1G42XZN2
+	 YUG08HZZUbvWST4rkXJi+3+nvGBvViTiqTJNs6NTkx56RCHwMfU8Pozr7MWbaubLnU
+	 xlIOJbDYSxkJA==
+Message-ID: <f7913808-d9b7-9f42-1a16-aedcc0d21497@collabora.com>
+Date: Mon, 5 Sep 2022 12:24:06 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH 2/4] dt-bindings: arm: mediatek: Add new bindings of
- MediaTek frequency hopping
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH 00/19] Add driver for dvfsrc, support for interconnect
 Content-Language: en-US
-To: Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, angelogioacchino.delregno@collabora.com,
- sboyd@kernel.org
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Edward-JW Yang <edward-jw.yang@mediatek.com>
-References: <20220831124850.7748-1-johnson.wang@mediatek.com>
- <20220831124850.7748-3-johnson.wang@mediatek.com>
- <b1296c37-5283-81f7-1939-7ea20e1f4d0d@linaro.org>
- <67237f85d1c4bc72906848d811988209d0112c06.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <67237f85d1c4bc72906848d811988209d0112c06.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+To: Dawei Chien <dawei.chien@mediatek.com>,
+ Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
+ <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>,
+ Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat
+ <drinkcat@google.com>, devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Fan Chen <fan.chen@mediatek.com>,
+ Arvin Wang <arvin.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>
+References: <20210812085846.2628-1-dawei.chien@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20210812085846.2628-1-dawei.chien@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220905_030554_246083_0ADAFE3E 
-X-CRM114-Status: GOOD (  14.60  )
+X-CRM114-CacheID: sfid-20220905_032412_080453_6D5024E1 
+X-CRM114-Status: GOOD (  33.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,78 +80,179 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/09/2022 08:39, Johnson Wang wrote:
-> On Wed, 2022-08-31 at 16:19 +0300, Krzysztof Kozlowski wrote:
->> On 31/08/2022 15:48, Johnson Wang wrote:
->>> Add the new binding documentation for MediaTek frequency hopping
->>> and spread spectrum clocking control.
->>>
->>> Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
->>> Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
->>> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
->>> ---
->>>  .../bindings/arm/mediatek/mediatek,fhctl.yaml | 49
->>> +++++++++++++++++++
->>>  1 file changed, 49 insertions(+)
->>>  create mode 100644
->>> Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yaml
->>>
->>> diff --git
->>> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yam
->>> l
->>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yam
->>> l
->>> new file mode 100644
->>> index 000000000000..c5d76410538b
->>> --- /dev/null
->>> +++
->>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,fhctl.yam
->>> l
->>> @@ -0,0 +1,49 @@
->>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->>> +%YAML 1.2
->>> +---
->>> +$id: 
->>> https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,fhctl.yaml*__;Iw!!CTRNKA9wMg0ARbw!ysl-bMp7yP9Ym70o6EVB8A36MBxcXGap8doEKR_SbaAQSy8-_RU5jvrWTjzETut_6eXNGut4j-3dY0q7xJdpQbmaOw$
->>>  
->>> +$schema: 
->>> https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!ysl-bMp7yP9Ym70o6EVB8A36MBxcXGap8doEKR_SbaAQSy8-_RU5jvrWTjzETut_6eXNGut4j-3dY0q7xJezt7_RBw$
->>>  
->>> +
->>> +title: MediaTek frequency hopping and spread spectrum clocking
->>> control
->>> +
->>> +maintainers:
->>> +  - Edward-JW Yang <edward-jw.yang@mediatek.com>
->>> +
->>> +description: |
->>> +  Frequency hopping control (FHCTL) is a piece of hardware that
->>> control
->>> +  some PLLs to adopt "hopping" mechanism to adjust their
->>> frequency.
->>> +  Spread spectrum clocking (SSC) is another function provided by
->>> this hardware.
->>> +
->>> +properties:
->>> +  compatible:
->>> +    const: mediatek,fhctl
->>
->> You need SoC/device specific compatibles. Preferably only SoC
->> specific,
->> without generic fallback, unless you can guarantee (while
->> representing
->> MediaTek), that generic fallback will cover all of their SoCs?
->>
-> 
-> Hi Krzysztof,
-> 
-> At this moment, we plan to support FHCTL feature for MT8186 only.
-> 
-> If you prefer SoC-specific compatble, we will improve that in the next
-> version.
+Hello Dawei,
+this series brings very nice improvements to many MediaTek platforms, it would
+be a real pity to abandon it.
 
-Then make it only for mt8186.
+Can you, or anyone else from MediaTek, please respin on the latest -next?
 
-Best regards,
-Krzysztof
+Thanks,
+Angelo
+
+> This series is based on v5.14-rc1.
+> 
+> The patchsets add support for MediaTek hardware module named DVFSRC
+> (dynamic voltage and frequency scaling resource collector). The DVFSRC is
+> a HW module which is used to collect all the requests from both software
+> and hardware and turn into the decision of minimum operating voltage and
+> minimum DRAM frequency to fulfill those requests.
+> 
+> So, This series is to implement the dvfsrc driver to collect all the
+> requests of operating voltage or DRAM bandwidth from other device drivers
+> likes GPU/Camera through 3 frameworks basically:
+> 
+> 1. interconnect framework: to aggregate the bandwidth
+>     requirements from different clients
+> 
+> [1] https://patchwork.kernel.org/cover/10766329/
+> 
+> There has a hw module "DRAM scheduler", which used to control the
+> throughput.
+> The DVFSRC will collect forecast data of dram bandwidth from
+> SW consumers(camera/gpu...), and according the forecast to change the DRAM
+> frequency
+> 
+> 2. Regualtor framework: to handle the operating voltage requirement from
+>     user or cosumer which not belong any power domain
+> 
+> Changes in V11:
+> * rebase all patches on v5.14-rc1.
+> * support platform mt8195.
+> * add initial bw in mediatek interconnect driver.
+> * add one more pcie client in mediatek interconnect driver.
+> * add compatible for MT8195 dvfsrc.
+> 
+> Changes in V10:
+> * rebase all patches on v5.13-rc1
+> * add acked TAG for interconnect provider driver (Georgi)
+> * update comment message for typos. (Georgi)
+> * update cover leter for typos.
+> 
+> Changes in V9:
+> * modify the configuration of dvfsrc.yaml. (Rob)
+> 
+> Changes in V8:
+> * Fixed the dt_binding_check error of dvfsrc.yaml. (Rob)
+> * Remove Kconfig dependency of DVFSRC
+> 
+> Changes in V7:
+> * Fixed the dt_binding_check error of dvfsrc.yaml. (Rob)
+> * Fixed the checkpatch complains of "Signed-off-by:
+> email name mismatch". (Georgi)
+> * Fixed coding style of interconnect driver. (Georgi)
+> * Update comment of the years to 2021. (Georgi)
+> 
+> Changes in V6:
+> * Remove the performace state support, because the request from consumer
+> can be replaced by using interconnect and regulator framework.
+> * Update the DT patches and convert them to DT schema. (Georgi)
+> * Modify the comment format and coding style. (Mark)
+> 
+> Changes in V5:
+> * Support more platform mt6873/mt8192
+> * Drop the compatible and interconnect provider node and make the parent
+> node an interconnect provider. (Rob/Georgi)
+> * Make modification of interconnect driver from coding suggestion. (Georgi)
+> * Move interconnect diagram into the commit text of patch. (Georgi)
+> * Register the interconnect provider as a platform sub-device. (Georgi)
+> 
+> Changes in V4:
+> * Add acked TAG on dt-bindings patches. (Rob)
+> * Declaration of emi_icc_aggregate since the prototype of aggregate
+> function has changed meanwhile. (Georgi)
+> * Used emi_icc_remove instead of icc_provider_del on probe. (Georgi)
+> * Add dvfsrc regulator driver into series.
+> * Bug fixed of mt8183_get_current_level.
+> * Add mutex protection for pstate operation on dvfsrc_set_performance.
+> 
+> Changes in V3:
+> * Remove RFC from the subject prefix of the series
+> * Combine dt-binding patch and move interconnect dt-binding document into
+> dvfsrc. (Rob)
+> * Remove unused header, add unit descirption to the bandwidth, rename
+> compatible name on interconnect driver. (Georgi)
+> * Fixed some coding style: check flow, naming, used readx_poll_timeout
+> on dvfsrc driver. (Ryan)
+> * Rename interconnect driver mt8183.c to mtk-emi.c
+> * Rename interconnect header mtk,mt8183.h to mtk,emi.h
+> * mtk-scpsys.c: Add opp table check first to avoid OF runtime parse failed
+> 
+> Changes in RFC V2:
+> * Remove the DT property dram_type. (Rob)
+> * Used generic dts property 'opp-level' to get the performace
+> state. (Stephen)
+> * Remove unnecessary dependency config on Kconfig. (Stephen)
+> * Remove unused header file, fixed some coding style issue, typo,
+> error handling on dvfsrc driver. (Nicolas/Stephen)
+> * Remove irq handler on dvfsrc driver. (Stephen)
+> * Remove init table on dvfsrc driver, combine hw init on trustzone.
+> * Add interconnect support of mt8183 to aggregate the emi bandwidth.
+> (Georgi)
+> 
+> v10: https://patchwork.kernel.org/project/linux-mediatek/list/?series=494095
+> V9: https://patchwork.kernel.org/project/linux-mediatek/list/?series=440389
+> V8: https://patchwork.kernel.org/project/linux-mediatek/list/?series=421713
+> V7: https://patchwork.kernel.org/project/linux-mediatek/list/?series=411057
+> V6: https://patchwork.kernel.org/project/linux-mediatek/list/?series=406077
+> V5: https://patchwork.kernel.org/project/linux-mediatek/list/?series=348065
+> V4: https://lore.kernel.org/patchwork/cover/1209284/
+> V3: https://patchwork.kernel.org/cover/11118867/
+> RFC V2: https://lore.kernel.org/patchwork/patch/1068113/
+> RFC V1: https://lore.kernel.org/patchwork/cover/1028535/
+> 
+> Dawei Chien (8):
+>    dt-bindings: mediatek: add compatible for MT8195 dvfsrc
+>    soc: mediatek: add support for mt8195
+>    arm64: dts: mt8195: add dvfsrc related nodes
+>    dt-bindings: interconnect: add MT8195 interconnect dt-bindings
+>    interconnect: mediatek: add support for mt8195
+>    interconnect: mediatek: add initial bandwidth
+>    regulator: mediatek: add support for mt8195
+>    arm64: dts: mt8195: add dvfsrc related nodes
+> 
+> Henry Chen (11):
+>    dt-bindings: soc: Add dvfsrc driver bindings
+>    soc: mediatek: add header for mediatek SIP interface
+>    soc: mediatek: add driver for dvfsrc support
+>    soc: mediatek: add support for mt6873
+>    arm64: dts: mt8183: add dvfsrc related nodes
+>    arm64: dts: mt8192: add dvfsrc related nodes
+>    dt-bindings: interconnect: add MT6873 interconnect dt-bindings
+>    interconnect: mediatek: Add interconnect provider driver
+>    arm64: dts: mt8183: add dvfsrc related nodes
+>    arm64: dts: mt8192: add dvfsrc related nodes
+>    arm64: dts: mt8192: add dvfsrc regulator nodes
+> 
+>   .../devicetree/bindings/soc/mediatek/dvfsrc.yaml   |  68 +++
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi           |   7 +
+>   arch/arm64/boot/dts/mediatek/mt8192.dtsi           |  14 +
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi           |   7 +
+>   drivers/interconnect/Kconfig                       |   1 +
+>   drivers/interconnect/Makefile                      |   1 +
+>   drivers/interconnect/mediatek/Kconfig              |  13 +
+>   drivers/interconnect/mediatek/Makefile             |   3 +
+>   drivers/interconnect/mediatek/mtk-emi.c            | 385 +++++++++++++++
+>   drivers/regulator/mtk-dvfsrc-regulator.c           |  23 +
+>   drivers/soc/mediatek/Kconfig                       |  11 +
+>   drivers/soc/mediatek/Makefile                      |   1 +
+>   drivers/soc/mediatek/mtk-dvfsrc.c                  | 538 +++++++++++++++++++++
+>   include/dt-bindings/interconnect/mtk,mt6873-emi.h  |  41 ++
+>   include/dt-bindings/interconnect/mtk,mt8183-emi.h  |  21 +
+>   include/dt-bindings/interconnect/mtk,mt8195-emi.h  |  42 ++
+>   include/linux/soc/mediatek/mtk_dvfsrc.h            |  35 ++
+>   include/linux/soc/mediatek/mtk_sip_svc.h           |   4 +
+>   18 files changed, 1215 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml
+>   create mode 100644 drivers/interconnect/mediatek/Kconfig
+>   create mode 100644 drivers/interconnect/mediatek/Makefile
+>   create mode 100644 drivers/interconnect/mediatek/mtk-emi.c
+>   create mode 100644 drivers/soc/mediatek/mtk-dvfsrc.c
+>   create mode 100644 include/dt-bindings/interconnect/mtk,mt6873-emi.h
+>   create mode 100644 include/dt-bindings/interconnect/mtk,mt8183-emi.h
+>   create mode 100644 include/dt-bindings/interconnect/mtk,mt8195-emi.h
+>   create mode 100644 include/linux/soc/mediatek/mtk_dvfsrc.h
+> 
+
+
+
 
