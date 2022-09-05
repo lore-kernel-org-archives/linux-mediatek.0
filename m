@@ -4,84 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB7E0ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 15:19:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 694E9C6FA83
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 16:36:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FuWCEQrkq67hH5XIbvmOYYp78soeMvCFJK03dgG0hnU=; b=JCl5rRo0WRka6GScM4RiUGhKJl
-	Sa3nJTteP/ZVZIXgOdF0ZsIjEfoNtN6TGSWUSpsvnNbeB8va3zA1LpHQXnkTV1bZtbN57qIf12FwE
-	CB4x4Z3fmnNj8+ptTPAqSlpcpE+BX4eiXIrFM6lbaFIWgnKoSTGZqIiPGfGyubV47sy9eD3zA7EmU
-	zWi3W5PilaUtmHlUurHgJFH69DEOsgSlNuQMkpqOO/jMikhBUcFbeNoyAZaWkCzH6vpI+S2pm6/cf
-	WPCqZUDmM1z41x322CpWXBJDI1kFBj8Cn3h0x6p02DUptQSoUJ1E1v/NwVuz1C0ty46xwMe4TkQLb
-	3Hk9XODQ==;
+	bh=sL9kXrTMDCO4yvK2qt/npaInteWU0HXqLCHCfKa0eqk=; b=yBNswSJQzkoIKZ99JdToBbM+bi
+	vFSltCUPhawl/JLHaInu3orzv6yKTZu2VhKyG322YWkOUspoUSNiRKBE9T7mQ47oIaVXjjLgvr9rM
+	U+a5mTMMgpPu1tDawyGFbuoqj/UqHp7r5rFDDncOgq6KqcI2NjBtrMWdDWsQz0HmXo8Zrd/Mmz74f
+	cn65jZNvN1tS9IfClMq3KkFgkKwHufeAWbiUfURmp4oaCd3u7is5VdQ8v34M6MGtsfGB3kSclB1sS
+	qrcKeAcnGWGP9WJQTovEkK0dIWTaaf84zK5Wh16BUTmOBkRfu+byZ+tWFT3X94P2kbz6UXOQ4nicw
+	Hp35SOOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVDsc-005oGA-VD; Mon, 05 Sep 2022 15:19:19 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1oVF4e-006w5Z-7t; Mon, 05 Sep 2022 16:35:48 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVAWP-001WBH-DC
-	for linux-mediatek@lists.infradead.org; Mon, 05 Sep 2022 11:44:19 +0000
-Received: by mail-ej1-x629.google.com with SMTP id gb36so16507724ejc.10
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Sep 2022 04:43:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=FuWCEQrkq67hH5XIbvmOYYp78soeMvCFJK03dgG0hnU=;
-        b=MUFymhzxKYlVlOPNYX8dVu6Mtzpf23C+FsQK5w6ZTavZerG6wjjtpWMrWr5ZK4DAje
-         ozsMSl30+9NId+ecbgjNyYyglP6JoUVi28GIVE4APZ6Z2aaLKIAsLkIRLtmvNNZh34ZW
-         S3RFhmNZja38AjKT5u5ymolzw2NP8XS04pUtt/LdzkAZsjUHQ/kC60yBJ8Zu7HEBAZLh
-         NZX7OYylAlK3a9fnFO8WuoSslFDCXpJb3HsEfQv9FqdfMouhOBK9KqxQN9o+CBce3hWm
-         vSJEk3VFzs8z7HdWi7Udvfo5+Ex4KIgLTZQk0K23Z4rSizF/FFCUZQeXXE36o+tlmRbf
-         V4Mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=FuWCEQrkq67hH5XIbvmOYYp78soeMvCFJK03dgG0hnU=;
-        b=baBH4kKXICia89edq6gGY+HtV4WGnyg6lgvMaSgtzmXUdGEQuvMHvrVzkUorLRmrOC
-         fCmL7dPU0EF4SfsnzzkUg0fXlu8y+hXkd/6HtbAGoQRnY35KBY3cKF1VM83h7BlnNCxw
-         bFnSQB7kF+c5C8zDdzXr6RiwjzUDtr16HauAuBEbjd8zyN+Mdm46ub5nkkAkUjyR/2y3
-         Up3dzz7nBhLmgP8orZsuxLRBpx6z2fEmIACnbGSYR4CwUugXZW8VriQwYYAq0AIGnnXj
-         JKnv1aOi+8uqyI20J3tjblZV+bBABTHFav2l2KfiqLf8T43m56wbCr/OedlC/D7+2Jqc
-         plEw==
-X-Gm-Message-State: ACgBeo0B3+As3HfPZ1+ZRi0MrHKFI/urBLbGlV4I1i119IifZ7WkSq/G
-	sWWbNL1yh8PsHhDZfkMev+Y=
-X-Google-Smtp-Source: AA6agR4crvawfs6ErjZK3rzI+30+3kCDqoQqsAtSzu6Pnnl1xPCDOdlrdZA4EktV07KkEa8Ur/Rj+g==
-X-Received: by 2002:a17:907:2cea:b0:741:6251:3a22 with SMTP id hz10-20020a1709072cea00b0074162513a22mr26754245ejc.6.1662378237788;
-        Mon, 05 Sep 2022 04:43:57 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id kv12-20020a17090778cc00b0073dd0b0ba67sm4856017ejc.200.2022.09.05.04.43.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Sep 2022 04:43:56 -0700 (PDT)
-Message-ID: <7b0ce06b-1e56-0db6-c07b-dd2946af6741@gmail.com>
-Date: Mon, 5 Sep 2022 13:43:55 +0200
+	id 1oVCP3-003Oxz-B2; Mon, 05 Sep 2022 13:44:43 +0000
+X-UUID: f680e40928cd4deba77e0c416092de0e-20220905
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sL9kXrTMDCO4yvK2qt/npaInteWU0HXqLCHCfKa0eqk=;
+	b=a7jXxT4Lf6AVUQL38GUCh7ilgyhJU+RCRuxIweHew8vfnj+4aeZZtoHgbYqBv7Upz+9dVVh7xvOqf52G0rVV6MNGHOadrp7qziI3jipdf1hcyXA0oRp5K2+Fzy6P//Z5mcOAz2t4VLGxylVQiDKqokwgawM2PsXsUhCHNaC7UnU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:65cf1e3e-6392-424b-8f2e-c1e98954aba9,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
+	_Ham,ACTION:release,TS:-5
+X-CID-META: VersionHash:84eae18,CLOUDID:79fcbcd0-20bd-4e5e-ace8-00692b7ab380,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: f680e40928cd4deba77e0c416092de0e-20220905
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1558416818; Mon, 05 Sep 2022 06:44:32 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 5 Sep 2022 21:34:28 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Mon, 5 Sep 2022 21:34:28 +0800
+From: <xinlei.lee@mediatek.com>
+To: <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<rex-bc.chen@mediatek.com>, <jason-jh.lin@mediatek.com>,
+	<chunkuang.hu@kernel.org>, <yongqiang.niu@mediatek.com>,
+	<p.zabel@pengutronix.de>, <airlied@linux.ie>, <daniel@ffwll.ch>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<jitao.shi@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>
+Subject: [PATCH v5,1/2] soc: mediatek: Add mmsys func to adapt to dpi output for MT8186
+Date: Mon, 5 Sep 2022 21:34:22 +0800
+Message-ID: <1662384863-17281-2-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1662384863-17281-1-git-send-email-xinlei.lee@mediatek.com>
+References: <1662384863-17281-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.1.2
-Subject: Re: [PATCH] media: platform: mtk-mdp3: fix error code in
- mdp_vpu_dev_init()
-Content-Language: en-US
-To: Dan Carpenter <dan.carpenter@oracle.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- daoyuan huang <daoyuan.huang@mediatek.com>,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-References: <YxDGFMwyeNXFPaig@kili>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <YxDGFMwyeNXFPaig@kili>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="yes"
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220905_044411_925663_3749C0C9 
-X-CRM114-Status: GOOD (  14.84  )
+X-CRM114-CacheID: sfid-20220905_064441_725349_1E583D86 
+X-CRM114-Status: UNSURE (   8.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,32 +84,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Xinlei Lee <xinlei.lee@mediatek.com>
 
+Add mmsys func to manipulate dpi output format config for MT8186.
 
-On 01/09/2022 16:47, Dan Carpenter wrote:
-> Return a negative error code if mdp_vpu_shared_mem_alloc() fails.
-> 
-> Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver")
-> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+Reviewed-by: Nílas F. R. A. Prado <nfraprado@collabora.com>
+---
+ drivers/soc/mediatek/mt8186-mmsys.h    |  1 +
+ drivers/soc/mediatek/mtk-mmsys.c       | 16 ++++++++++++++++
+ include/linux/soc/mediatek/mtk-mmsys.h |  2 ++
+ 3 files changed, 19 insertions(+)
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+diff --git a/drivers/soc/mediatek/mt8186-mmsys.h b/drivers/soc/mediatek/mt8186-mmsys.h
+index eb1ad9c37a9c..3db0806647c3 100644
+--- a/drivers/soc/mediatek/mt8186-mmsys.h
++++ b/drivers/soc/mediatek/mt8186-mmsys.h
+@@ -3,6 +3,7 @@
+ #ifndef __SOC_MEDIATEK_MT8186_MMSYS_H
+ #define __SOC_MEDIATEK_MT8186_MMSYS_H
+ 
++#define MT8186_MMSYS_DPI_OUTPUT_FORMAT		0x400
+ #define MT8186_MMSYS_OVL_CON			0xF04
+ #define MT8186_MMSYS_OVL0_CON_MASK			0x3
+ #define MT8186_MMSYS_OVL0_2L_CON_MASK			0xC
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index 06d8e83a2cb5..d7d17d4a9a5d 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -227,6 +227,22 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
+ }
+ EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
+ 
++static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask, u32 val)
++{
++	u32 tmp;
++
++	tmp = readl_relaxed(mmsys->regs + offset);
++	tmp = (tmp & ~mask) | val;
++	writel_relaxed(tmp, mmsys->regs + offset);
++}
++
++void mtk_mmsys_ddp_dpi_fmt_config(struct device *dev, u32 mask, u32 val)
++{
++	mtk_mmsys_update_bits(dev_get_drvdata(dev), MT8186_MMSYS_DPI_OUTPUT_FORMAT, mask,
++			      val);
++}
++EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_dpi_fmt_config);
++
+ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned long id,
+ 				  bool assert)
+ {
+diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+index 59117d970daf..7a378d247505 100644
+--- a/include/linux/soc/mediatek/mtk-mmsys.h
++++ b/include/linux/soc/mediatek/mtk-mmsys.h
+@@ -65,4 +65,6 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
+ 			      enum mtk_ddp_comp_id cur,
+ 			      enum mtk_ddp_comp_id next);
+ 
++void mtk_mmsys_ddp_dpi_fmt_config(struct device *dev, u32 mask, u32 val);
++
+ #endif /* __MTK_MMSYS_H */
+-- 
+2.18.0
 
-> ---
->   drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
-> index 9f5844385c8f..a72bed927bb6 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
-> @@ -173,7 +173,8 @@ int mdp_vpu_dev_init(struct mdp_vpu_dev *vpu, struct mtk_scp *scp,
->   	/* vpu work_size was set in mdp_vpu_ipi_handle_init_ack */
->   
->   	mem_size = vpu_alloc_size;
-> -	if (mdp_vpu_shared_mem_alloc(vpu)) {
-> +	err = mdp_vpu_shared_mem_alloc(vpu);
-> +	if (err) {
->   		dev_err(&mdp->pdev->dev, "VPU memory alloc fail!");
->   		goto err_mem_alloc;
->   	}
 
