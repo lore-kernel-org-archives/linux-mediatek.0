@@ -4,81 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF01CECAAD5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 17:13:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40F4CECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 17:27:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Z0XFKHND/hJ+Iw2Nmfh8A0TLsmnBnuzThppH0CZyUsM=; b=gQjEKLzuj2aerqy+beJRI+212U
-	PEOIXLsd/1wAaSSaDVPyT3twryfIlbpaGDGdxHHk7o2qjrD5kxJsLuATSJIXhLyN8d8aBbwLPf8i1
-	WSimQstpsi0g3EZsYC4U5TpwBGwRTZQy2FrhJEpIxfDVEvYUNy3u5EJaKJW58m0q0VhtKG5ED6G9s
-	21A8diinO1ffJew//QN68g5GF25K506JLFQXIVrfuQoT0kiUn+HUo4SzR0fy1xJUmDByjTQuRV36Y
-	mpA5Rr3bRfs9MKILhxR/wn1Svu0FW49scCg2PMzycsFUl2G6FnFtZjQ08KFEumu88nRwxhTbttFJU
-	0bkLABLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5y/yYRirByd+lMioU/3yI33k356DCFTzd+1VuBc8YOY=; b=xmYyJl6VwgCCtdvT50oiRzwfQe
+	coTXbWaIX3r/b0POmOFIyNGAVcyVtI/0twdiUeLgQT4ayELg5NrthZId2Rq79QOIhUkT7s/XmpeXq
+	39AJSPi9c3YOY/eOyofWpYkZpUAv3FM5tGokoxb3MYUJBeo+0BQxHshVyivlJNTxX9STYfNK2j62C
+	Prq70AMjag86KOBWKgqd7QXBVNygii+cqZ12mg6CGaqJc1rn7muBfdz/+G+ZH4EFx0fL+aUT8UFpO
+	oKW/z7R8mL7J2B3Xu5MkNv5qGdUn7BFfF0rYEydvsXTEai0LK+Iz0FN4uA4sDfrCGr9UoyVf3GFx3
+	EHhjd1JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVFeu-007LHZ-7d; Mon, 05 Sep 2022 17:13:16 +0000
-Received: from desiato.infradead.org ([90.155.92.199])
+	id 1oVFsW-007Y1N-Qf; Mon, 05 Sep 2022 17:27:20 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVDMq-004fEa-LH
-	for linux-mediatek@bombadil.infradead.org; Mon, 05 Sep 2022 14:46:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=Z0XFKHND/hJ+Iw2Nmfh8A0TLsmnBnuzThppH0CZyUsM=; b=HVu/HNKadmyIiq1W+xXkvFIB3P
-	uKw5r3dlBPJwsZvaD25YBChDYezhMSHfpblm9fBBAl+QsqgoDDGL0duu0+qoCWk3Inp1Czn4FQNXt
-	9N3/RaTCI7bHizGNgst+oPKToEXom1iFfBJ1B58uwlZgmfXzQG8rC5oB9qB9nlIxnjIWuNNXfaxr0
-	sqlmK5IHwvoPfdRMvLbOz+UhNdpjfqc7BdqkXJw6sb0b9PcecYqmemrlAT1xR144ytpguHigOyM0G
-	WsxGvNjKnVfd20gVJy3FtyzwyOUP1aZYmN+MUA9wY7XI6T0RlOoF59MqV0Hyw8keo7J2kWRWtsR/v
-	2tBqejdQ==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVBUo-009cqH-0p
-	for linux-mediatek@lists.infradead.org; Mon, 05 Sep 2022 12:46:37 +0000
+	id 1oVDqh-005mQb-Jw; Mon, 05 Sep 2022 15:17:22 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id AEC2B61274;
-	Mon,  5 Sep 2022 12:46:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93992C433C1;
-	Mon,  5 Sep 2022 12:46:30 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9FE6A61325;
+	Mon,  5 Sep 2022 15:17:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 024F9C433D6;
+	Mon,  5 Sep 2022 15:17:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1662381991;
-	bh=zTgkc3/O7ys8ZEP2DtrdlEqxPju/WVeIDg0OqeCo9Ug=;
-	h=From:To:Cc:Subject:Date:From;
-	b=mRRvS0mSi/j+ueQT7e26x4k0pPaZW8g1VcTCyASLrUDccMr8atlbnwt5W9mEoiUSw
-	 Pio4mGAoqIz7Iyo8RNKYHaI+89X9W1Mt9SEIGH7vgMAI7bechyK+ttuMtzUOufuWiM
-	 p0jb/NBsIZDNIIay0NH/PHxovnTyQVveVgo21ETdaGAJBR/AQZP+2pe+RvAeJuE+0a
-	 /WQYcqI6QEdSUbqHrL+IzhlObhIYQpHgBmQUA35tiGJLYzbYxWfe71RLuL6S++rs2m
-	 FgqtUzehdIU6sRChfkXjBGfHynnT1MyB9CC4I8NIKUg+qFjYhc4d3wq6GpwAW2ePc9
-	 Y+/sCcObej5yQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: netdev@vger.kernel.org
-Cc: nbd@nbd.name,
-	john@phrozen.org,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	lorenzo.bianconi@redhat.com
-Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: remove mtk_foe_entry_timestamp
-Date: Mon,  5 Sep 2022 14:46:01 +0200
-Message-Id: <724dc466880787ae099ea037013cf5c9537128b6.1662380540.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.37.3
+	s=k20201202; t=1662391035;
+	bh=+1JZVikczD6oMQstBHmmQ6IUy+FzfgWRuCZFth/S+Dw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JjbTx5WsrgNdOUEf0hAeeafisFv1eS6CmLwbhpwQvtLdLcpPH1peisZcFAhR5xTMZ
+	 Nr4nbdRktkjImvMIYnfyYcT33pNCCM3qy0U4PiMeM8ynYP5oJ+KgoPe17ExxQuily0
+	 tuXegK4H++l+ffyv6CWE6+VOanhV082OMtBVim7GWweaeUqFYPPg4bxuYsLCZJHgiR
+	 LMucXbg1Wtj5poQ9yZfXbhK2vKTi8Kg4rNguspyeq+PiRQ2kPg1AoV3EVK7HDAbA12
+	 XAj9zaehTm2IRrCSqw09jRmL4FnEoTSRxBteU8pTg1Fs8qL0kVnXQcNwPC8c7Nhqxb
+	 p3KAfpKGDnoJQ==
+Date: Mon, 5 Sep 2022 16:17:03 +0100
+From: Lee Jones <lee@kernel.org>
+To: ChiaEn Wu <peterwu.pub@gmail.com>
+Cc: daniel.thompson@linaro.org, jingoohan1@gmail.com, pavel@ucw.cz,
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com, sre@kernel.org, jic23@kernel.org,
+	lars@metafoo.de, deller@gmx.de, broonie@kernel.org,
+	mazziesaccount@gmail.com, andriy.shevchenko@linux.intel.com,
+	chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
+	dri-devel@lists.freedesktop.org, linux-leds@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-iio@vger.kernel.org,
+	linux-fbdev@vger.kernel.org, szunichen@gmail.com,
+	andy.shevchenko@gmail.com
+Subject: Re: [PATCH v9 10/10] video: backlight: mt6370: Add MediaTek MT6370
+ support
+Message-ID: <YxYS7/dZI69lMXeh@google.com>
+References: <20220830034042.9354-2-peterwu.pub@gmail.com>
+ <20220830034042.9354-11-peterwu.pub@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220830034042.9354-11-peterwu.pub@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220905_134634_316368_AAE3FF86 
-X-CRM114-Status: UNSURE (   8.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220905_081719_898645_6D0641F3 
+X-CRM114-Status: GOOD (  14.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,36 +83,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Get rid of mtk_foe_entry_timestamp routine since it is no longer used.
+On Tue, 30 Aug 2022, ChiaEn Wu wrote:
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/mediatek/mtk_ppe.h | 11 -----------
- 1 file changed, 11 deletions(-)
+> From: ChiaEn Wu <chiaen_wu@richtek.com>
+> 
+> MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
+> with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
+> driver, display bias voltage supply, one general purpose LDO, and the
+> USB Type-C & PD controller complies with the latest USB Type-C and PD
+> standards.
+> 
+> Add support for the MediaTek MT6370 backlight driver.
+> It controls 4 channels of 8 series WLEDs in
+> 2048 (only for MT6370/MT6371) / 16384 (only for MT6372)
+> current steps (30 mA) in exponential or linear mapping curves.
+> 
+> Reviewed-by: Daniel Thompson <daniel.thompson@linaro.org>
+> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> ---
+> 
+> v9
+> - Revise the format of the comments.
+> ---
+>  drivers/video/backlight/Kconfig            |  13 ++
+>  drivers/video/backlight/Makefile           |   1 +
+>  drivers/video/backlight/mt6370-backlight.c | 351 +++++++++++++++++++++++++++++
+>  3 files changed, 365 insertions(+)
+>  create mode 100644 drivers/video/backlight/mt6370-backlight.c
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
-index 69ffce04d630..8f786c47b61a 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.h
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
-@@ -305,17 +305,6 @@ mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
- 	__mtk_ppe_check_skb(ppe, skb, hash);
- }
- 
--static inline int
--mtk_foe_entry_timestamp(struct mtk_ppe *ppe, u16 hash)
--{
--	u32 ib1 = READ_ONCE(ppe->foe_table[hash].ib1);
--
--	if (FIELD_GET(MTK_FOE_IB1_STATE, ib1) != MTK_FOE_STATE_BIND)
--		return -1;
--
--	return FIELD_GET(MTK_FOE_IB1_BIND_TIMESTAMP, ib1);
--}
--
- int mtk_foe_entry_prepare(struct mtk_foe_entry *entry, int type, int l4proto,
- 			  u8 pse_port, u8 *src_mac, u8 *dest_mac);
- int mtk_foe_entry_set_pse_port(struct mtk_foe_entry *entry, u8 port);
+Applied, thanks.
+
 -- 
-2.37.3
-
+Lee Jones [李琼斯]
 
