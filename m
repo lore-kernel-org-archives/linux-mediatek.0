@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 169B0C6FA83
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 14:08:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A56C6FA8E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 14:14:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D5tHmAq8XEUna0E5RSbSOZ4xapHQ0h6yyTb36gWfi4Y=; b=JFnMNYsmDpxXLeb8GK3s2lyKVy
-	oJPyJ/GX4C2flO4zdDH45rZ8yaTVdD8pOoFVvlDqOg6zOa63MrqGd7njcDYy+F/iF+9glCMCtDzxP
-	6CoqxAp/ShSaNVEi9x4oq4xUQlbP3EMiQnvXuDnqDaTTbFIK1Y6LaAHZ+J8pD6fbTIctCuaRsuZuM
-	EZTRQocUG+h4F2RVxL7LwX9qpofKMKeoMXthN+O+NGH2xaRfSIMZ1PqWVUbVmM4JrmBvl8AmGrm03
-	aAyjUZmDdrgaXfwpCsUWR+4n6vottHrn3+fnn23qm5lrUdMWRxo77zjaQ9S1VVnR1aJTwhcycv9q7
-	gqlN2Mgw==;
+	bh=whtg+X8APOE7axzskbilEU6qOgpVAHq4XkJqOAxAWVA=; b=bVWnjBKuCczsLYOjSrh/+D0rbB
+	BUK/PIO1TCfLuVV6jX8r7vnOwA5RAu9NxEW9JRR/GhoG5XzKNTLAopw4rHCBnJoaeYeo9M0n5TY0t
+	MDWOIE+OhVuS7p2/Q2laJ6hnbyodgi3h26zv2oqpRn4Dnm7Yob+K1bknmUvh79gmwVSROdJROIzg5
+	EgzOFpPL6DU6lD77R98eTPxPlmP+ZDD6mPVfMoJAGsJW6r4dO+gsvbHoPEDWNPgyTwxogEkKlF+1q
+	5/5JwReBiMNole8QKTabwEgTWVJkBEgyBxMTUqyah2kRUp+fWeLVNkdfzTpfGkH5mXfDF1L2cZwsc
+	Ckr5tTPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVZFH-00E9Wq-Ro; Tue, 06 Sep 2022 14:08:07 +0000
+	id 1oVZLQ-00EC7N-LX; Tue, 06 Sep 2022 14:14:28 +0000
 Received: from mga01.intel.com ([192.55.52.88])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVYxl-00Dzmz-50; Tue, 06 Sep 2022 13:50:03 +0000
+	id 1oVYxn-00Dzmz-9E; Tue, 06 Sep 2022 13:50:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1662472201; x=1694008201;
+  t=1662472203; x=1694008203;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=b85nclneF9BX61RtcZxdbpTMJV7DSQfjZ+m4p4X2wC0=;
-  b=k7+zBNLN9DNJmQ1oavKZvswx/BN+WKryBrJn67S6KqDYuIdRCRSdyFCh
-   phtDeeiq6aHwSL3WIUM1HTc3UzklOOYif+Fu1hr3FTt0Ljpj9yDwYl+2T
-   DneM8tHgoA59oQKxb1Y92sybgoxWYi0bzpLcgcsCJleSSOIOupL2HkHWn
-   vvkpMENKddo6wd/Ssy5hdK2NW6eVB41rCyVlig9z+niDB9kGf6VHkquCB
-   7vh2Zdut050xNI/2ZhnJftXhqWe8z/RnKCLrRDGkZyhQOdB7nIC8oW8X+
-   S0fI0Skg7JO1MJVDAI4jge/yKiqhH18sfJmV/EJXTWMVGM0bMDAec3++D
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10462"; a="322771118"
+  bh=2vu7l/6K0nvkzNmUjyptRlngyguT+RoN4sYZnyNxAgU=;
+  b=g8F6IIpfhCpcrGsrjNPqxntDoJ3rsmbfW+N548CpBHgHzaGmyva1nMF8
+   QD4f62KGH9EiunHzCTx3xVM4zG3aydEV3Q+e9HEmC9Ub0gasuSuMLUVPb
+   Q24//Yw8gvAFf8yOekfRXGaucYeeCbfGMTy9Q5Ho5QNvtC+Bm3VeNl+Gj
+   mi5iKzAfCuJe3FAmsg3fqi/MgSDbi5EVSVBJ9v8FlHXR3jXog91TXah9C
+   7ioqGUqQloXHyIQUGchmuUKR8/Lihcc/MgH7C9yozRlWb2P6u9gY/0K8F
+   2oMkjpmYqXJpuYFQ1ffLfQ4JnUA5EyCwQ7NF0zsfNrdapAxnpzbM3vpx4
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10462"; a="322771122"
 X-IronPort-AV: E=Sophos;i="5.93,294,1654585200"; 
-   d="scan'208";a="322771118"
+   d="scan'208";a="322771122"
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
   by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Sep 2022 06:49:59 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.93,294,1654585200"; 
-   d="scan'208";a="756372522"
+   d="scan'208";a="756372523"
 Received: from black.fi.intel.com ([10.237.72.28])
   by fmsmga001.fm.intel.com with ESMTP; 06 Sep 2022 06:49:54 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 5469186; Tue,  6 Sep 2022 16:50:10 +0300 (EEST)
+	id 6F82145C; Tue,  6 Sep 2022 16:50:10 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Gene Chen <gene_chen@richtek.com>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -71,17 +71,17 @@ Cc: Pavel Machek <pavel@ucw.cz>,
 	Jakub Kicinski <kuba@kernel.org>,
 	Paolo Abeni <pabeni@redhat.com>,
 	Lee Jones <lee@kernel.org>
-Subject: [PATCH v3 01/11] leds: add missing includes and forward declarations in leds.h
-Date: Tue,  6 Sep 2022 16:49:54 +0300
-Message-Id: <20220906135004.14885-2-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v3 03/11] leds: an30259a: Get rid of custom led_init_default_state_get()
+Date: Tue,  6 Sep 2022 16:49:56 +0300
+Message-Id: <20220906135004.14885-4-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
 References: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_065001_315167_D10EF4EC 
-X-CRM114-Status: GOOD (  14.67  )
+X-CRM114-CacheID: sfid-20220906_065003_445318_343F76FC 
+X-CRM114-Status: GOOD (  16.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,52 +96,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add missing includes and forward declarations to leds.h. While at it,
-replace headers by forward declarations and vise versa.
+LED core provides a helper to parse default state from firmware node.
+Use it instead of custom implementation.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- include/linux/leds.h | 13 ++++++++-----
- 1 file changed, 8 insertions(+), 5 deletions(-)
+ drivers/leds/leds-an30259a.c | 21 ++++-----------------
+ 1 file changed, 4 insertions(+), 17 deletions(-)
 
-diff --git a/include/linux/leds.h b/include/linux/leds.h
-index ba4861ec73d3..499aea1e59b9 100644
---- a/include/linux/leds.h
-+++ b/include/linux/leds.h
-@@ -10,17 +10,21 @@
+diff --git a/drivers/leds/leds-an30259a.c b/drivers/leds/leds-an30259a.c
+index e072ee5409f7..89df267853a9 100644
+--- a/drivers/leds/leds-an30259a.c
++++ b/drivers/leds/leds-an30259a.c
+@@ -55,10 +55,6 @@
  
- #include <dt-bindings/leds/common.h>
- #include <linux/device.h>
--#include <linux/kernfs.h>
--#include <linux/list.h>
- #include <linux/mutex.h>
- #include <linux/rwsem.h>
- #include <linux/spinlock.h>
- #include <linux/timer.h>
-+#include <linux/types.h>
- #include <linux/workqueue.h>
+ #define AN30259A_NAME "an30259a"
  
--struct device;
--struct led_pattern;
-+struct attribute_group;
- struct device_node;
-+struct fwnode_handle;
-+struct gpio_desc;
-+struct kernfs_node;
-+struct led_pattern;
-+struct platform_device;
-+
- /*
-  * LED Core
-  */
-@@ -508,7 +512,6 @@ struct led_properties {
- 	const char	*label;
+-#define STATE_OFF 0
+-#define STATE_KEEP 1
+-#define STATE_ON 2
+-
+ struct an30259a;
+ 
+ struct an30259a_led {
+@@ -66,7 +62,7 @@ struct an30259a_led {
+ 	struct fwnode_handle *fwnode;
+ 	struct led_classdev cdev;
+ 	u32 num;
+-	u32 default_state;
++	enum led_default_state default_state;
+ 	bool sloping;
  };
  
--struct gpio_desc;
- typedef int (*gpio_blink_set_t)(struct gpio_desc *desc, int state,
- 				unsigned long *delay_on,
- 				unsigned long *delay_off);
+@@ -205,7 +201,6 @@ static int an30259a_dt_init(struct i2c_client *client,
+ 	struct device_node *np = dev_of_node(&client->dev), *child;
+ 	int count, ret;
+ 	int i = 0;
+-	const char *str;
+ 	struct an30259a_led *led;
+ 
+ 	count = of_get_available_child_count(np);
+@@ -228,15 +223,7 @@ static int an30259a_dt_init(struct i2c_client *client,
+ 		led->num = source;
+ 		led->chip = chip;
+ 		led->fwnode = of_fwnode_handle(child);
+-
+-		if (!of_property_read_string(child, "default-state", &str)) {
+-			if (!strcmp(str, "on"))
+-				led->default_state = STATE_ON;
+-			else if (!strcmp(str, "keep"))
+-				led->default_state = STATE_KEEP;
+-			else
+-				led->default_state = STATE_OFF;
+-		}
++		led->default_state = led_init_default_state_get(led->fwnode);
+ 
+ 		i++;
+ 	}
+@@ -261,10 +248,10 @@ static void an30259a_init_default_state(struct an30259a_led *led)
+ 	int led_on, err;
+ 
+ 	switch (led->default_state) {
+-	case STATE_ON:
++	case LEDS_DEFSTATE_ON:
+ 		led->cdev.brightness = LED_FULL;
+ 		break;
+-	case STATE_KEEP:
++	case LEDS_DEFSTATE_KEEP:
+ 		err = regmap_read(chip->regmap, AN30259A_REG_LED_ON, &led_on);
+ 		if (err)
+ 			break;
 -- 
 2.35.1
 
