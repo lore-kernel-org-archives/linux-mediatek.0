@@ -4,79 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ABB0C38145
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 09:47:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A6BC38145
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 09:54:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2WKJ/wVUkeTQLKTawlGlXDOI8foFUVG3UjyUJ12fdDE=; b=4Lrqw5ZTtKllKUbSXC3OM5yV40
-	/L2Q1QpZsNVG1uE9knN8oyxjNfV7imScS+9mC3OuyK4L3fW1xSdzCT0wizsk4aq5EuXwxSaU99AFs
-	LdqJTvCnUvwPTDnt6beKIeq/OBvSOM/DICIUk/gTkR6qiEc2lFyfA2W33LSRmQFjdi8PlJZylMQpf
-	tb5DmWVcbbAN5fHXC8eopg5C3//tY9w16YpPGEFMZpzQhNaevPNyI0ndGeMpnfEENzICq8TapnEEn
-	ooKYDDgpBBdjvwp6PFsAOTT4OP/eKduJP5SXZaxjLw+ESyUvY5qJu8JI94bycgE9mcPDfC4W3RGQS
-	9K3/qTIw==;
+	bh=Q9bzmF3ZoiraH8bSCm3RFyfs5y83CCLS0cNFcKgRys4=; b=ybt0wCsmDTSuSRYKlAf0er1ZtE
+	RKkwAKR2fXUSH11dFgNJ2jBEzOXdYqxIm6VES2abQ4j1nXbbUFTaG3Ja8y//l6UKTgrWupitrCZBk
+	cekfNltWJw+ksaKiKs/oxVPTQpZgnwwDXP0Pxj9EcRIGQa5vIw4FZnlyi0P5YrhN93B9lz43/3VJg
+	6KFDin5ZrGqbXAgDmvtI9RweGbcTAMCsxc84qgDTurn/HtyZ/c8hhxuvaO4rdignW7JZI5sdXKmIS
+	aQuD7zyU92hxzotluuiv1gsQ5I2lmhug+GhD0tHFrcev9ZKMqu+dWDSjjWmf8PFPcpEhpjMkeRuYR
+	APKudi+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVVAR-00C2nw-LW; Tue, 06 Sep 2022 09:46:51 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oVVHG-00C6uX-5l; Tue, 06 Sep 2022 09:53:54 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVVAJ-00C2d8-Gz; Tue, 06 Sep 2022 09:46:48 +0000
-X-UUID: 861d5f7df8ec47e2bcb73e2b254f2528-20220906
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=2WKJ/wVUkeTQLKTawlGlXDOI8foFUVG3UjyUJ12fdDE=;
-	b=a/vLjNbOJRjAHuwYhmD0cmGzfmc+Br1HBgqC2Y82TqBi3sS9kOmPVblpQXlpAr1ZnkQUGScYwtLiki8X/4u37LaUfKpEFR1YXpXl2EMjlpWfnVSefcWcnF8jRrD0nBkOP8lpmi0gqv4swm53T3jNN2ietHHfSl4IyvUr0r8CbcQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:ee4fd71f-396c-4dff-b9ae-757be5504a71,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:324a5a21-1c20-48a5-82a0-25f9c331906d,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 861d5f7df8ec47e2bcb73e2b254f2528-20220906
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <nathan.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1392099115; Tue, 06 Sep 2022 02:46:35 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 6 Sep 2022 16:45:18 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 6 Sep 2022 16:45:18 +0800
-From: nathan.lu <nathan.lu@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: "jason-jh . lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rex-BC
- Chen <rex-bc.chen@mediatek.com>, Nathan Lu <nathan.lu@mediatek.com>, Moudy Ho
-	<moudy.ho@mediatek.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>,
-	<linux-arm-kernel@lists.infradead.org>, <wsd_upstream@mediatek.com>,
-	<lancelot.wu@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, amy zhang
-	<Amy.Zhang@mediatek.com>
-Subject: [PATCH v2 4/6] soc: mediatek: add mtk-mmsys support for mt8188 vdosys0
-Date: Tue, 6 Sep 2022 16:44:47 +0800
-Message-ID: <20220906084449.20124-5-nathan.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220906084449.20124-1-nathan.lu@mediatek.com>
-References: <20220906084449.20124-1-nathan.lu@mediatek.com>
+	id 1oVVDL-00C4bS-Pj
+	for linux-mediatek@lists.infradead.org; Tue, 06 Sep 2022 09:49:55 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id b5so14587365wrr.5
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Sep 2022 02:49:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date;
+        bh=Q9bzmF3ZoiraH8bSCm3RFyfs5y83CCLS0cNFcKgRys4=;
+        b=KdK4qwT0irjOT2AQeXx/5UpyUeahzWzRRlGp1f3qAcdBjQ3PoHtX2lmiC8yJeFVeWl
+         l51ATIXK590R5ssFIRueUCRmSw6uRbub5TPnNIwjRFCKVb7B316cdKuCfGdieqB4Xt6m
+         3DxlUcYxxmFktBI1mXDxUFIe/tcZ5I3W+IWRSwmmtOsq1D6O+Nc3zUU7iFyKa/S0HxTt
+         M6lYX5jnvxtbFd4WRPIkFYElnbYwgKjtTdydPsoITThKUQGBWA6Wa5qOj5hTeiSsE77e
+         sz7rDf/sw8N6BvEqZzXOb70NsZFhGpae/kpBql8JRT5tM4BU/tInO3LzSIzlYW9ONROY
+         peqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=Q9bzmF3ZoiraH8bSCm3RFyfs5y83CCLS0cNFcKgRys4=;
+        b=0Qp1W7+/N+9x+cuF+JTvF/Kqsdsyc3PTC10D93SciJpl4Q21+TJn4f/j7zXx5nADdc
+         j6VzXZg3/VGV0JbqsMo7BBLMz/BpgTehvcxOnLvMPS/xC+MZ8dFw/CJx+8CxzmF8qix8
+         HCn36i6OhgEX6uDfRHO0kNFj89XlWXMu3tT9rwNDx34H859TRP9g7aLsIXlu+ch4pta9
+         mw3ESH0xhKSXUZqkpy0VdLeA0j3AjtP7v0+QFl2eeEj+Xm9OkEObS2zE7eM2dLQ75Z7s
+         Np4I/cK4sEy6BqQDdZYn4GTYsM0+hMwreWtbjW4llBEbBO+7rEvPIVHNPv/dI7FI3Gug
+         dDbw==
+X-Gm-Message-State: ACgBeo3jCIxaG00HCWuYEZ168Pwxx/55xhZmzueMB6R/oQvtYnR4AdqM
+	Bh5Ug4CbMpXSd9WsBy7xTVC5oA==
+X-Google-Smtp-Source: AA6agR4+Twzcd6vBm/mPzYR2jsCd4XsMTcWdwqeWbofop1Tcdw0vvcLYU8XtK5OByIufbNKXiaYoOg==
+X-Received: by 2002:adf:e19b:0:b0:225:448c:9ba8 with SMTP id az27-20020adfe19b000000b00225448c9ba8mr26945008wrb.532.1662457789169;
+        Tue, 06 Sep 2022 02:49:49 -0700 (PDT)
+Received: from blmsp (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.gmail.com with ESMTPSA id co18-20020a0560000a1200b0021f15514e7fsm14587231wrb.0.2022.09.06.02.49.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 Sep 2022 02:49:48 -0700 (PDT)
+Date: Tue, 6 Sep 2022 11:49:47 +0200
+From: Markus Schneider-Pargmann <msp@baylibre.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Fabien Parent <parent.f@gmail.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Alexandre Bailon <abailon@baylibre.com>,
+	Fabien Parent <fparent@baylibre.com>
+Subject: Re: [PATCH v3 2/4] soc: mediatek: Add support of WAY_EN operations
+Message-ID: <20220906094947.ghfy2tj4bj4kaule@blmsp>
+References: <20220822144303.3438467-1-msp@baylibre.com>
+ <20220822144303.3438467-3-msp@baylibre.com>
+ <36dde9aa-b6ea-7194-c1bc-94d52c02649b@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <36dde9aa-b6ea-7194-c1bc-94d52c02649b@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_024643_662878_834D3CB0 
-X-CRM114-Status: GOOD (  15.07  )
+X-CRM114-CacheID: sfid-20220906_024951_882107_B53D68D3 
+X-CRM114-Status: GOOD (  41.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,218 +96,348 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Nathan Lu <nathan.lu@mediatek.com>
+Hi Matthias,
 
-1. add mt8188 mmsys
-2. add mt8188 vdosys0 routing table settings
+On Mon, Aug 22, 2022 at 06:17:58PM +0200, Matthias Brugger wrote:
+> 
+> 
+> On 22/08/2022 16:43, Markus Schneider-Pargmann wrote:
+> > From: Alexandre Bailon <abailon@baylibre.com>
+> > 
+> > This updates the power domain to support WAY_EN operations. These
+> > operations enable a path between different units of the chip and are
+> > labeled as 'way_en' in the register descriptions.
+> > 
+> > This operation is required by the mt8365 for the MM power domain.
+> > 
+> > Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > ---
+> > 
+> > Notes:
+> >      Changes in v3:
+> >      - Separated the way_en functions for clarity
+> >      - Added some checks for infracfg_nao
+> >      Changes in v2:
+> >      - some minor style fixes.
+> >      - Renamed 'wayen' to 'way_en' to clarify the meaning
+> >      - Updated commit message
+> > 
+> >   drivers/soc/mediatek/mtk-pm-domains.c | 162 +++++++++++++++++++++-----
+> >   drivers/soc/mediatek/mtk-pm-domains.h |  28 +++--
+> >   2 files changed, 149 insertions(+), 41 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+> > index 9734f1091c69..c2cbe0de6aa1 100644
+> > --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> > +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> > @@ -43,6 +43,7 @@ struct scpsys_domain {
+> >   	struct clk_bulk_data *clks;
+> >   	int num_subsys_clks;
+> >   	struct clk_bulk_data *subsys_clks;
+> > +	struct regmap *infracfg_nao;
+> >   	struct regmap *infracfg;
+> >   	struct regmap *smi;
+> >   	struct regulator *supply;
+> > @@ -117,26 +118,61 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
+> >   					MTK_POLL_TIMEOUT);
+> >   }
+> > -static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, struct regmap *regmap)
+> > +static int __scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
+> > +				       struct regmap *regmap)
+> > +{
+> > +	u32 val;
+> > +	u32 mask = bpd->bus_prot_mask;
+> > +	u32 sta_mask = bpd->bus_prot_sta_mask;
+> > +
+> > +	if (bpd->bus_prot_reg_update)
+> > +		regmap_set_bits(regmap, bpd->bus_prot_set, mask);
+> > +	else
+> > +		regmap_write(regmap, bpd->bus_prot_set, mask);
+> > +
+> > +	return regmap_read_poll_timeout(regmap, bpd->bus_prot_sta, val,
+> > +					(val & sta_mask) == sta_mask,
+> > +					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> > +}
+> > +
+> > +static int scpsys_bus_way_disable(const struct scpsys_bus_prot_data *bpd,
+> > +				  struct regmap *regmap,
+> > +				  struct regmap *ack_regmap)
+> > +{
+> > +	u32 val;
+> > +	u32 mask = bpd->bus_prot_mask;
+> > +	u32 sta_mask = bpd->bus_prot_sta_mask;
+> > +
+> > +	if (bpd->bus_prot_reg_update)
+> > +		regmap_clear_bits(regmap, bpd->bus_prot_set, mask);
+> > +	else
+> > +		regmap_write(regmap, bpd->bus_prot_set, mask);
+> > +
+> > +	if (bpd->ignore_clr_ack)
+> > +		return 0;
+> > +
+> > +	return regmap_read_poll_timeout(ack_regmap, bpd->bus_prot_sta, val,
+> > +					(val & sta_mask) == sta_mask,
+> > +					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> > +}
+> > +
+> > +static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
+> > +				      struct regmap *regmap, struct regmap *infracfg_nao)
+> >   {
+> >   	int i, ret;
+> >   	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+> > -		u32 val, mask = bpd[i].bus_prot_mask;
+> > -
+> > -		if (!mask)
+> > +		if (!bpd[i].bus_prot_mask)
+> >   			break;
+> > -		if (bpd[i].bus_prot_reg_update)
+> > -			regmap_set_bits(regmap, bpd[i].bus_prot_set, mask);
+> > +		if (bpd[i].way_en)
+> > +			ret = scpsys_bus_way_disable(&bpd[i], regmap, infracfg_nao);
+> >   		else
+> > -			regmap_write(regmap, bpd[i].bus_prot_set, mask);
+> > -
+> > -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+> > -					       val, (val & mask) == mask,
+> > -					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> > -		if (ret)
+> > +			ret = __scpsys_bus_protect_enable(&bpd[i], regmap);
+> > +		if (ret) {
+> > +			pr_err("%s %d %d\n", __PRETTY_FUNCTION__, __LINE__, ret);
+> >   			return ret;
+> > +		}
+> >   	}
+> >   	return 0;
+> > @@ -146,37 +182,71 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
+> >   {
+> >   	int ret;
+> > -	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg, pd->infracfg);
+> > +	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg,
+> > +					 pd->infracfg, pd->infracfg_nao);
+> >   	if (ret)
+> >   		return ret;
+> > -	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi);
+> > +	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi, NULL);
+> > +}
+> > +
+> > +static int __scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
+> > +					struct regmap *regmap)
+> > +{
+> > +	u32 val;
+> > +	u32 mask = bpd->bus_prot_mask;
+> > +	u32 sta_mask = bpd->bus_prot_sta_mask;
+> > +
+> > +	if (bpd->bus_prot_reg_update)
+> > +		regmap_clear_bits(regmap, bpd->bus_prot_clr, mask);
+> > +	else
+> > +		regmap_write(regmap, bpd->bus_prot_clr, mask);
+> > +
+> > +	if (bpd->ignore_clr_ack)
+> > +		return 0;
+> > +
+> > +	return regmap_read_poll_timeout(regmap, bpd->bus_prot_sta, val,
+> > +					!(val & sta_mask), MTK_POLL_DELAY_US,
+> > +					MTK_POLL_TIMEOUT);
+> > +}
+> > +
+> > +static int scpsys_bus_way_enable(const struct scpsys_bus_prot_data *bpd,
+> > +				 struct regmap *regmap,
+> > +				 struct regmap *ack_regmap)
+> > +{
+> > +	u32 val;
+> > +	u32 mask = bpd->bus_prot_mask;
+> > +	u32 sta_mask = bpd->bus_prot_sta_mask;
+> > +
+> > +	if (bpd->bus_prot_reg_update)
+> > +		regmap_set_bits(regmap, bpd->bus_prot_clr, mask);
+> > +	else
+> > +		regmap_write(regmap, bpd->bus_prot_clr, mask);
+> > +
+> > +	return regmap_read_poll_timeout(ack_regmap, bpd->bus_prot_sta, val,
+> > +					(val & sta_mask) == sta_mask,
+> > +					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> >   }
+> >   static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
+> > -				       struct regmap *regmap)
+> > +				       struct regmap *regmap,
+> > +				       struct regmap *infracfg_nao)
+> >   {
+> >   	int i, ret;
+> >   	for (i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
+> > -		u32 val, mask = bpd[i].bus_prot_mask;
+> > -
+> > -		if (!mask)
+> > +		if (!bpd[i].bus_prot_mask)
+> >   			continue;
+> > -		if (bpd[i].bus_prot_reg_update)
+> > -			regmap_clear_bits(regmap, bpd[i].bus_prot_clr, mask);
+> > +		if (bpd[i].way_en)
+> > +			ret = scpsys_bus_way_enable(&bpd[i], regmap,
+> > +						    infracfg_nao);
+> >   		else
+> > -			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
+> > -
+> > -		if (bpd[i].ignore_clr_ack)
+> > -			continue;
+> > -
+> > -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+> > -					       val, !(val & mask),
+> > -					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> > -		if (ret)
+> > +			ret = __scpsys_bus_protect_disable(&bpd[i], regmap);
+> > +		if (ret) {
+> > +			pr_err("%s %d %d\n", __PRETTY_FUNCTION__, __LINE__, ret);
+> >   			return ret;
+> > +		}
+> >   	}
+> >   	return 0;
+> > @@ -186,11 +256,12 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
+> >   {
+> >   	int ret;
+> > -	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi);
+> > +	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi, NULL);
+> >   	if (ret)
+> >   		return ret;
+> > -	return _scpsys_bus_protect_disable(pd->data->bp_infracfg, pd->infracfg);
+> > +	return _scpsys_bus_protect_disable(pd->data->bp_infracfg,
+> > +			pd->infracfg, pd->infracfg_nao);
+> >   }
+> >   static int scpsys_regulator_enable(struct regulator *supply)
+> > @@ -294,6 +365,21 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+> >   	return 0;
+> >   }
+> > +static bool scpsys_bp_infracfg_has_way_en(const struct scpsys_bus_prot_data *bpd)
+> > +{
+> > +	int i;
+> > +
+> > +	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+> > +		if (!bpd[i].bus_prot_mask)
+> > +			break;
+> 
+> So MT8365_POWER_DOMAIN_MM will return false as the first member of
+> bp_infracfg is BUS_PROT_WR(...)
 
-Signed-off-by: amy zhang <Amy.Zhang@mediatek.com>
-Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
----
- drivers/soc/mediatek/mt8188-mmsys.h | 149 ++++++++++++++++++++++++++++
- drivers/soc/mediatek/mtk-mmsys.c    |  18 ++++
- 2 files changed, 167 insertions(+)
- create mode 100644 drivers/soc/mediatek/mt8188-mmsys.h
+I am not sure I understand what you mean. Why should it break out of the
+loop if the first member is a BUS_PROT_WR()? BUS_PROT_WR() sets a mask
+as well which is checked here exactly the same way as is done in
+_scpsys_bus_protect_enable() even before this patch.
 
-diff --git a/drivers/soc/mediatek/mt8188-mmsys.h b/drivers/soc/mediatek/mt8188-mmsys.h
-new file mode 100644
-index 000000000000..e1ab318c9192
---- /dev/null
-+++ b/drivers/soc/mediatek/mt8188-mmsys.h
-@@ -0,0 +1,149 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+
-+#ifndef __SOC_MEDIATEK_MT8188_MMSYS_H
-+#define __SOC_MEDIATEK_MT8188_MMSYS_H
-+
-+#define MT8188_VDO0_OVL_MOUT_EN				0xf14
-+#define MT8188_MOUT_DISP_OVL0_TO_DISP_RDMA0		BIT(0)
-+#define MT8188_MOUT_DISP_OVL0_TO_DISP_WDMA0		BIT(1)
-+#define MT8188_MOUT_DISP_OVL0_TO_DISP_OVL1		BIT(2)
-+#define MT8188_MOUT_DISP_OVL1_TO_DISP_RDMA1		BIT(4)
-+#define MT8188_MOUT_DISP_OVL1_TO_DISP_WDMA1		BIT(5)
-+#define MT8188_MOUT_DISP_OVL1_TO_DISP_OVL0		BIT(6)
-+
-+#define MT8188_VDO0_SEL_IN				0xf34
-+#define MT8188_VDO0_SEL_OUT				0xf38
-+
-+#define MT8188_VDO0_DISP_RDMA_SEL			0xf40
-+#define MT8188_SOUT_DISP_RDMA0_TO_MASK			GENMASK(2, 0)
-+#define MT8188_SOUT_DISP_RDMA0_TO_DISP_COLOR0		(0 << 0)
-+#define MT8188_SOUT_DISP_RDMA0_TO_DISP_DSI0		(1 << 0)
-+#define MT8188_SOUT_DISP_RDMA0_TO_DISP_DP_INTF0		(5 << 0)
-+#define MT8188_SEL_IN_DISP_RDMA0_FROM_MASK		GENMASK(8, 8)
-+#define MT8188_SEL_IN_DISP_RDMA0_FROM_DISP_OVL0		(0 << 8)
-+#define MT8188_SEL_IN_DISP_RDMA0_FROM_DISP_RSZ0		(1 << 8)
-+
-+
-+#define MT8188_VDO0_DSI0_SEL_IN				0xf44
-+#define MT8188_SEL_IN_DSI0_FROM_MASK			GENMASK(16, 16)
-+#define MT8188_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT		(0 << 16)
-+#define MT8188_SEL_IN_DSI0_FROM_DISP_DITHER0		(1 << 16)
-+
-+#define MT8188_VDO0_DP_INTF0_SEL_IN			0xf4C
-+#define MT8188_SEL_IN_DP_INTF0_FROM_MASK		GENMASK(2, 0)
-+#define MT8188_SEL_IN_DP_INTF0_FROM_DSC_WRAP0C1_OUT	(0 << 0)
-+#define MT8188_SEL_IN_DP_INTF0_FROM_VPP_MERGE		(1 << 0)
-+#define MT8188_SEL_IN_DP_INTF0_FROM_DISP_DITHER0	(3 << 0)
-+
-+#define MT8188_VDO0_DISP_DITHER0_SEL_OUT		0xf58
-+#define MT8188_SOUT_DISP_DITHER0_TO_MASK		BIT(0)
-+#define MT8188_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN	(0 << 0)
-+#define MT8188_SOUT_DISP_DITHER0_TO_DSI0		(1 << 0)
-+#define MT8188_SOUT_DISP_DITHER0_TO_VPP_MERGE0		(6 << 0)
-+#define MT8188_SOUT_DISP_DITHER0_TO_DP_INTF0		(7 << 0)
-+
-+#define MT8188_VDO0_VPP_MERGE_SEL			0xf60
-+#define MT8188_SEL_IN_VPP_MERGE_FROM_MASK		GENMASK(1, 0)
-+#define MT8188_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT	(0 << 0)
-+#define MT8188_SEL_IN_VPP_MERGE_FROM_DITHER0_OUT	(3 << 0)
-+
-+#define MT8188_SOUT_VPP_MERGE_TO_MASK			GENMASK(6, 4)
-+#define MT8188_SOUT_VPP_MERGE_TO_DSI1			(0 << 4)
-+#define MT8188_SOUT_VPP_MERGE_TO_DP_INTF0		(1 << 4)
-+#define MT8188_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0		(2 << 4)
-+#define MT8188_SOUT_VPP_MERGE_TO_DISP_WDMA1		(3 << 4)
-+#define MT8188_SOUT_VPP_MERGE_TO_DSC_WRAP0_IN		(4 << 4)
-+#define MT8188_SOUT_VPP_MERGE_TO_DISP_WDMA0		(5 << 4)
-+#define MT8188_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN_MASK	GENMASK(11, 11)
-+#define MT8188_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN		(0 << 11)
-+
-+#define MT8188_VDO0_DSC_WARP_SEL			0xf64
-+#define MT8188_SEL_IN_DSC_WRAP0C0_IN_FROM_MASK		GENMASK(0, 0)
-+#define MT8188_SEL_IN_DSC_WRAP0C0_IN_FROM_DISP_DITHER0	(0 << 0)
-+#define MT8188_SEL_IN_DSC_WRAP0C0_IN_FROM_VPP_MERGE	(1 << 0)
-+#define MT8188_SOUT_DSC_WRAP0_OUT_TO_MASK		GENMASK(19, 16)
-+#define MT8188_SOUT_DSC_WRAP0_OUT_TO_DSI0		BIT(16)
-+#define MT8188_SOUT_DSC_WRAP0_OUT_TO_SINB_VIRTUAL0	BIT(17)
-+#define MT8188_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE		BIT(18)
-+#define MT8188_SOUT_DSC_WRAP0_OUT_TO_DISP_WDMA0		BIT(19)
-+
-+static const struct mtk_mmsys_routes mmsys_mt8188_routing_table[] = {
-+	{
-+		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
-+		MT8188_VDO0_OVL_MOUT_EN, MT8188_MOUT_DISP_OVL0_TO_DISP_RDMA0,
-+		MT8188_MOUT_DISP_OVL0_TO_DISP_RDMA0
-+	}, {
-+		DDP_COMPONENT_OVL0, DDP_COMPONENT_WDMA0,
-+		MT8188_VDO0_OVL_MOUT_EN, MT8188_MOUT_DISP_OVL0_TO_DISP_WDMA0,
-+		MT8188_MOUT_DISP_OVL0_TO_DISP_WDMA0
-+	}, {
-+		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
-+		MT8188_VDO0_DISP_RDMA_SEL, MT8188_SEL_IN_DISP_RDMA0_FROM_MASK,
-+		MT8188_SEL_IN_DISP_RDMA0_FROM_DISP_OVL0
-+	}, {
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
-+		MT8188_VDO0_DSI0_SEL_IN, MT8188_SEL_IN_DSI0_FROM_MASK,
-+		MT8188_SEL_IN_DSI0_FROM_DISP_DITHER0
-+	}, {
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_MERGE0,
-+		MT8188_VDO0_VPP_MERGE_SEL, MT8188_SEL_IN_VPP_MERGE_FROM_MASK,
-+		MT8188_SEL_IN_VPP_MERGE_FROM_DITHER0_OUT
-+	}, {
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSC0,
-+		MT8188_VDO0_DSC_WARP_SEL,
-+		MT8188_SEL_IN_DSC_WRAP0C0_IN_FROM_MASK,
-+		MT8188_SEL_IN_DSC_WRAP0C0_IN_FROM_DISP_DITHER0
-+	}, {
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DP_INTF0,
-+		MT8188_VDO0_DP_INTF0_SEL_IN, MT8188_SEL_IN_DP_INTF0_FROM_MASK,
-+		MT8188_SEL_IN_DP_INTF0_FROM_DISP_DITHER0
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
-+		MT8188_VDO0_VPP_MERGE_SEL, MT8188_SEL_IN_VPP_MERGE_FROM_MASK,
-+		MT8188_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
-+		MT8188_VDO0_DSI0_SEL_IN, MT8188_SEL_IN_DSI0_FROM_MASK,
-+		MT8188_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT
-+	}, {
-+		DDP_COMPONENT_RDMA0, DDP_COMPONENT_COLOR0,
-+		MT8188_VDO0_DISP_RDMA_SEL, MT8188_SOUT_DISP_RDMA0_TO_MASK,
-+		MT8188_SOUT_DISP_RDMA0_TO_DISP_COLOR0
-+	},  {
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
-+		MT8188_VDO0_DISP_DITHER0_SEL_OUT,
-+		MT8188_SOUT_DISP_DITHER0_TO_MASK,
-+		MT8188_SOUT_DISP_DITHER0_TO_DSI0
-+	},  {
-+		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DP_INTF0,
-+		MT8188_VDO0_DISP_DITHER0_SEL_OUT,
-+		MT8188_SOUT_DISP_DITHER0_TO_MASK,
-+		MT8188_SOUT_DISP_DITHER0_TO_DP_INTF0
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF0,
-+		MT8188_VDO0_VPP_MERGE_SEL, MT8188_SOUT_VPP_MERGE_TO_MASK,
-+		MT8188_SOUT_VPP_MERGE_TO_DP_INTF0
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DPI0,
-+		MT8188_VDO0_VPP_MERGE_SEL, MT8188_SOUT_VPP_MERGE_TO_MASK,
-+		MT8188_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_WDMA0,
-+		MT8188_VDO0_VPP_MERGE_SEL, MT8188_SOUT_VPP_MERGE_TO_MASK,
-+		MT8188_SOUT_VPP_MERGE_TO_DISP_WDMA0
-+	}, {
-+		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSC0,
-+		MT8188_VDO0_VPP_MERGE_SEL, MT8188_SOUT_VPP_MERGE_TO_MASK,
-+		MT8188_SOUT_VPP_MERGE_TO_DSC_WRAP0_IN
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
-+		MT8188_VDO0_DSC_WARP_SEL, MT8188_SOUT_DSC_WRAP0_OUT_TO_MASK,
-+		MT8188_SOUT_DSC_WRAP0_OUT_TO_DSI0
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
-+		MT8188_VDO0_DSC_WARP_SEL, MT8188_SOUT_DSC_WRAP0_OUT_TO_MASK,
-+		MT8188_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE
-+	},
-+};
-+
-+#endif /* __SOC_MEDIATEK_MT8188_MMSYS_H */
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index 114defd48298..9fba969dce1c 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -16,6 +16,7 @@
- #include "mt8167-mmsys.h"
- #include "mt8183-mmsys.h"
- #include "mt8186-mmsys.h"
-+#include "mt8188-mmsys.h"
- #include "mt8192-mmsys.h"
- #include "mt8195-mmsys.h"
- #include "mt8365-mmsys.h"
-@@ -128,6 +129,19 @@ static const struct mtk_mmsys_match_data mt8186_mmsys_match_data = {
- 	},
- };
- 
-+static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
-+	.clk_driver = "clk-mt8188-vdo0",
-+	.routes = mmsys_mt8188_routing_table,
-+	.num_routes = ARRAY_SIZE(mmsys_mt8188_routing_table),
-+};
-+
-+static const struct mtk_mmsys_match_data mt8188_mmsys_match_data = {
-+	.num_drv_data = 1,
-+	.drv_data = {
-+		&mt8188_vdosys0_driver_data,
-+	},
-+};
-+
- static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
- 	.clk_driver = "clk-mt8192-mm",
- 	.routes = mmsys_mt8192_routing_table,
-@@ -453,6 +467,10 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
- 		.compatible = "mediatek,mt8186-mmsys",
- 		.data = &mt8186_mmsys_match_data,
- 	},
-+	{
-+		.compatible = "mediatek,mt8188-mmsys",
-+		.data = &mt8188_mmsys_match_data,
-+	},
- 	{
- 		.compatible = "mediatek,mt8192-mmsys",
- 		.data = &mt8192_mmsys_match_data,
--- 
-2.18.0
+This is only a loop condition. Actually I can move it into the loop
+header as well. Either you define SPM_MAX_BUS_PROT_DATA fields or you
+have to exit if you find a field that is empty, basically the mask not
+being set.
 
+> 
+> Apart from that, why don't you use a CAPS to acheive the same?
+> 
+> > +
+> > +		if (bpd[i].way_en)
+> > +			return true;
+> > +	}
+> > +
+> > +	return false;
+> > +}
+> > +
+> >   static struct
+> >   generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node)
+> >   {
+> > @@ -364,6 +450,20 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+> >   			return ERR_CAST(pd->smi);
+> >   	}
+> > +	if (scpsys_bp_infracfg_has_way_en(pd->data->bp_smi)) {
+> > +		dev_err(scpsys->dev, "bp_smi does not support WAY_EN\n");
+> 
+> Do we really need to check the correctness of the driver data at runtime?
+
+bp_smi is called without a infracfg_nao regmap. If we don't check it
+here, we need to make a check during bus protection operations. Last
+time I got a review to not do it during in the bus protection path.
+
+> 
+> > +		return ERR_PTR(-EINVAL);
+> > +	}
+> > +
+> > +	pd->infracfg_nao = syscon_regmap_lookup_by_phandle_optional(
+> > +		node, "mediatek,infracfg_nao");
+> 
+> Not in the binding description.
+
+Thanks, I will fix that for the next version.
+
+> 
+> > +	if (IS_ERR(pd->infracfg_nao)) {
+> > +		if (scpsys_bp_infracfg_has_way_en(pd->data->bp_infracfg))
+> > +			return ERR_CAST(pd->infracfg_nao);
+> > +
+> > +		pd->infracfg_nao = NULL;
+> > +	}
+> > +
+> >   	num_clks = of_clk_get_parent_count(node);
+> >   	if (num_clks > 0) {
+> >   		/* Calculate number of subsys_clks */
+> > diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
+> > index 7d3c0c36316c..974c68a1d89c 100644
+> > --- a/drivers/soc/mediatek/mtk-pm-domains.h
+> > +++ b/drivers/soc/mediatek/mtk-pm-domains.h
+> > @@ -41,23 +41,29 @@
+> >   #define SPM_MAX_BUS_PROT_DATA		6
+> > -#define _BUS_PROT(_mask, _set, _clr, _sta, _update, _ignore) {	\
+> > -		.bus_prot_mask = (_mask),			\
+> > -		.bus_prot_set = _set,				\
+> > -		.bus_prot_clr = _clr,				\
+> > -		.bus_prot_sta = _sta,				\
+> > -		.bus_prot_reg_update = _update,			\
+> > -		.ignore_clr_ack = _ignore,			\
+> > +#define _BUS_PROT(_mask, _sta_mask, _set, _clr, _sta, _update, _ignore, _way_en) {	\
+> > +		.bus_prot_mask = (_mask),				\
+> > +		.bus_prot_set = _set,					\
+> > +		.bus_prot_clr = _clr,					\
+> > +		.bus_prot_sta = _sta,					\
+> > +		.bus_prot_sta_mask = _sta_mask,				\
+> > +		.bus_prot_reg_update = _update,				\
+> > +		.ignore_clr_ack = _ignore,				\
+> > +		.way_en = _way_en,					\
+> >   	}
+> >   #define BUS_PROT_WR(_mask, _set, _clr, _sta)			\
+> > -		_BUS_PROT(_mask, _set, _clr, _sta, false, false)
+> > +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, false, false)
+> >   #define BUS_PROT_WR_IGN(_mask, _set, _clr, _sta)		\
+> > -		_BUS_PROT(_mask, _set, _clr, _sta, false, true)
+> > +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, true, false)
+> >   #define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)		\
+> > -		_BUS_PROT(_mask, _set, _clr, _sta, true, false)
+> > +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, true, false, false)
+> > +
+> > +#define BUS_PROT_WAY_EN(_en_mask, _sta_mask, _set, _sta)	\
+> > +		_BUS_PROT(_en_mask, _sta_mask, _set, _set, _sta, true, false, \
+> > +			  true)
+> >   #define BUS_PROT_UPDATE_TOPAXI(_mask)				\
+> >   		BUS_PROT_UPDATE(_mask,				\
+> > @@ -70,8 +76,10 @@ struct scpsys_bus_prot_data {
+> >   	u32 bus_prot_set;
+> >   	u32 bus_prot_clr;
+> >   	u32 bus_prot_sta;
+> > +	u32 bus_prot_sta_mask;
+> 
+> I'm not very happy with the naming. In the end we need an extra mask for bus
+> protection using WAY_EN. But right now I can't come up with a good name.
+
+I think the naming is good as it is a specific mask for the status
+register. bus_prot_mask is now basically only responsible for set and
+clr. Maybe renaming bus_prot_mask to bus_prot_set_clr_mask is better?
+
+Thanks,
+Markus
+
+> 
+> Regards,
+> Matthias
+> 
+> >   	bool bus_prot_reg_update;
+> >   	bool ignore_clr_ack;
+> > +	bool way_en;
+> >   };
+> >   /**
 
