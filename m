@@ -4,86 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0C60ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 21:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1654ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 22:04:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wOjFY7tNKFL7dFNVA6yx/TeGWvfp5wOKn+I8yQQqSS4=; b=Ph98sxsHOn2ZHSB8fWzwdcH+kM
-	QZbeVD8q4rLYTm8sfWDJmuYfE+5X0UGWz4/GAu31i63HVpkyRGkkYD8FwurfSXKdmAkw1kKTJXjgU
-	ZVNRLeUA42uIw6mNqZaQ6oVtxJCzVHX9zingOiY4acxM0LUE49qdnsd3eIR6ghC5ZlZSh9JL0ykFL
-	jlFaJhYtH2skQx0DDl+4ReM9QdqidrY+Yo9PzzWO2hnI7iIfBmk6D59hRjJRL8CgeFDAAs9FA7T++
-	57SooO/AzcF5WFLRk/U0gXXURaoSNJf+k+0ln17dQHpf9TL+J9Mlf98zmRp5zk6+2HRJ5tWlcI/oa
-	tNYvRaUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rNM1Dk5Ll03tOjQz9Az7Wfavz5MwQq0drimKQ6r02HA=; b=xrUDmBfi5faXCj9TPFnQM/l/yK
+	E6wVM1X4Dl+d2tdhofNIKvLGqKYwlWniUuruGMWzwudrg/cMJTS4MfufLhxCnT4dMMThYBhwJuQRq
+	mu0t6ViDkUHfoXmxh8nbHVQDUbe1ASOVFmA3pt+Qd5zeRnR2RtM508nMNAybQUZmp+NVxvyEfS5fe
+	sTN01Xmrw340dhH+CjVluIHT1qUs/EbbzCTN4ONHuhooPxLolbGCKNG7F3oR6LsNfFhB69Gt0/qnC
+	th5mT3MvehY7P8AQoUvTDoHMHkswqpjvjymtK16fe3RlGZ+ma9FuoGSU18H9HPGafa2bQJ7jWQJS9
+	Ff5ikPSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVfiI-00HLQ0-2J; Tue, 06 Sep 2022 21:02:30 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1oVgfm-0008o5-0N; Tue, 06 Sep 2022 22:03:58 +0000
+Received: from mga17.intel.com ([192.55.52.151])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVfiF-00HLNx-69
-	for linux-mediatek@lists.infradead.org; Tue, 06 Sep 2022 21:02:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1662498145;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=wOjFY7tNKFL7dFNVA6yx/TeGWvfp5wOKn+I8yQQqSS4=;
-	b=Ju1onuYKug+swmkdBSR2v9LEcsyecazwiRANYZ+KIu+KoHu6PWTbDpqtyuxhN05GZ9v+8L
-	13I/ulcBuKPc5Lk+yG/+l8MbFAbHj6oopJ3q/DZ4KhH3wjohejS6VB/V48CeyOpVsCLI9I
-	8gBMWMaF0AY/0KNEyOGFqYstH12kp1M=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-375-WupwlPYUPr2I2vTup4ohvA-1; Tue, 06 Sep 2022 17:02:22 -0400
-X-MC-Unique: WupwlPYUPr2I2vTup4ohvA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 792CC1C05EAC;
-	Tue,  6 Sep 2022 21:02:21 +0000 (UTC)
-Received: from [10.18.17.215] (dhcp-17-215.bos.redhat.com [10.18.17.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C17CEC15BC3;
-	Tue,  6 Sep 2022 21:02:20 +0000 (UTC)
-Message-ID: <879886ba-7d77-11fc-5357-b21e141637ef@redhat.com>
-Date: Tue, 6 Sep 2022 17:02:20 -0400
+	id 1oVgfj-0008ml-8N
+	for linux-mediatek@lists.infradead.org; Tue, 06 Sep 2022 22:03:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1662501835; x=1694037835;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Gzsx0sqcIR+vSmALrntEU2uCEsZm8SlFkhJyCcOSmgI=;
+  b=gPFCjQsniKiYFKyouitgjbcsWyb7klNUrkqXF3r8C7jUl+zfmpX+I0eN
+   WkTE9yIWUirBpa0kuZaTPOdbvw9j4rtFegxaAdkdu5stGRsnWHgMVQH1S
+   voMDQ73HBrlW2m2qnKvxntp+1doOt5J99BAaAT8iU4SGvwYGx5aVAmTGT
+   of9Ic++1SOj0qjBP/tTSJ/73zVK1Thr4AHcrhvbW3LmSWcva9nIx72ADX
+   43dIr3Z/HS0yNd1oZ3kHdmaGD7SbB7HTaHXch6UpuFFC45rROJly75Y+f
+   562vrswJB9J52WvE9MzRSX60B5LNQBhLXqh8OxQ9Vq9yXr57dtW8yETW3
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10462"; a="277111913"
+X-IronPort-AV: E=Sophos;i="5.93,294,1654585200"; 
+   d="scan'208";a="277111913"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Sep 2022 15:03:53 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,294,1654585200"; 
+   d="scan'208";a="682564896"
+Received: from lkp-server02.sh.intel.com (HELO 95dfd251caa2) ([10.239.97.151])
+  by fmsmga004.fm.intel.com with ESMTP; 06 Sep 2022 15:03:49 -0700
+Received: from kbuild by 95dfd251caa2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1oVgfc-0005hj-1d;
+	Tue, 06 Sep 2022 22:03:48 +0000
+Date: Wed, 7 Sep 2022 06:03:39 +0800
+From: kernel test robot <lkp@intel.com>
+To: Deren Wu <Deren.Wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: kbuild-all@lists.01.org, Sean Wang <sean.wang@mediatek.com>,
+	Soul Huang <Soul.Huang@mediatek.com>,
+	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
+	Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
+	Deren Wu <Deren.Wu@mediatek.com>, KM Lin <km.lin@mediatek.com>,
+	Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>,
+	Posh Sun <posh.sun@mediatek.com>,
+	Stella Chang <Stella.Chang@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Subject: Re: [PATCH v2] wifi: mt76: mt7921: introduce Country Location
+ Control support
+Message-ID: <202209070520.bQXe62tP-lkp@intel.com>
+References: <a7b8353c71c5c8689d22dc450721c98ed11ab912.1662454722.git.deren.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: BUG: HANG_DETECT waiting for migration_cpu_stop() complete
-Content-Language: en-US
-To: Peter Zijlstra <peterz@infradead.org>
-Cc: Tejun Heo <tj@kernel.org>, Jing-Ting Wu <jing-ting.wu@mediatek.com>,
- Mukesh Ojha <quic_mojha@quicinc.com>,
- Valentin Schneider <vschneid@redhat.com>, wsd_upstream@mediatek.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Jonathan.JMChen@mediatek.com,
- "chris.redpath@arm.com" <chris.redpath@arm.com>,
- Dietmar Eggemann <dietmar.eggemann@arm.com>,
- Vincent Donnefort <vdonnefort@gmail.com>, Ingo Molnar <mingo@redhat.com>,
- Juri Lelli <juri.lelli@redhat.com>,
- Vincent Guittot <vincent.guittot@linaro.org>,
- Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>,
- Mel Gorman <mgorman@suse.de>, Christian Brauner <brauner@kernel.org>,
- cgroups@vger.kernel.org, lixiong.liu@mediatek.com, wenju.xu@mediatek.com
-References: <88b2910181bda955ac46011b695c53f7da39ac47.camel@mediatek.com>
- <b605c3ec-94ab-a55f-5825-9b370d77ecf3@quicinc.com>
- <203d4614c1b2a498a240ace287156e9f401d5395.camel@mediatek.com>
- <YxeR0RoiTdm8sWCJ@slm.duckdns.org>
- <02b8e7b3-941d-8bb9-cd0e-992738893ba3@redhat.com>
- <36a73401-7011-834a-7949-c65a2f66246c@redhat.com>
- <YxeylMvgc/wKcJqk@hirez.programming.kicks-ass.net>
-From: Waiman Long <longman@redhat.com>
-In-Reply-To: <YxeylMvgc/wKcJqk@hirez.programming.kicks-ass.net>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a7b8353c71c5c8689d22dc450721c98ed11ab912.1662454722.git.deren.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_140227_322940_A742315A 
-X-CRM114-Status: GOOD (  18.76  )
+X-CRM114-CacheID: sfid-20220906_150355_371730_B98B7216 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,52 +95,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Deren,
 
-On 9/6/22 16:50, Peter Zijlstra wrote:
-> On Tue, Sep 06, 2022 at 04:40:03PM -0400, Waiman Long wrote:
->
-> I've not followed the earlier stuff due to being unreadable; just
-> reacting to this..
->
->> diff --git a/kernel/sched/core.c b/kernel/sched/core.c
->> index 838623b68031..5d9ea1553ec0 100644
->> --- a/kernel/sched/core.c
->> +++ b/kernel/sched/core.c
->> @@ -2794,9 +2794,9 @@ static int __set_cpus_allowed_ptr_locked(struct
->> task_struct *p,
->>                  if (cpumask_equal(&p->cpus_mask, new_mask))
->>                          goto out;
->>
->> -               if (WARN_ON_ONCE(p == current &&
->> -                                is_migration_disabled(p) &&
->> -                                !cpumask_test_cpu(task_cpu(p), new_mask)))
->> {
->> +               if (is_migration_disabled(p) &&
->> +                   !cpumask_test_cpu(task_cpu(p), new_mask)) {
->> +                       WARN_ON_ONCE(p == current);
->>                          ret = -EBUSY;
->>                          goto out;
->>                  }
->> @@ -2818,7 +2818,11 @@ static int __set_cpus_allowed_ptr_locked(struct
->> task_struct *p,
->>          if (flags & SCA_USER)
->>                  user_mask = clear_user_cpus_ptr(p);
->>
->> -       ret = affine_move_task(rq, p, rf, dest_cpu, flags);
->> +       if (!is_migration_disabled(p) || (flags & SCA_MIGRATE_ENABLE)) {
->> +               ret = affine_move_task(rq, p, rf, dest_cpu, flags);
->> +       } else {
->> +               task_rq_unlock(rq, p, rf);
->> +       }
-> This cannot be right. There might be previous set_cpus_allowed_ptr()
-> callers that are blocked and waiting for the task to land on a valid
-> CPU.
+Thank you for the patch! Perhaps something to improve:
 
-You are probably right. I haven't fully understand all the migration 
-disable code yet. However, if migration is disabled, there are some 
-corner cases we need to handle properly.
+[auto build test WARNING on wireless-next/main]
+[also build test WARNING on wireless/main linus/master v6.0-rc4 next-20220906]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Cheers,
-Longman
+url:    https://github.com/intel-lab-lkp/linux/commits/Deren-Wu/wifi-mt76-mt7921-introduce-Country-Location-Control-support/20220906-171401
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
+config: arm64-randconfig-s042-20220906 (https://download.01.org/0day-ci/archive/20220907/202209070520.bQXe62tP-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 12.1.0
+reproduce:
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # apt-get install sparse
+        # sparse version: v0.6.4-39-gce1a6720-dirty
+        # https://github.com/intel-lab-lkp/linux/commit/e0bf37418dbcff6f111fbf6dad1d142180e2ec4f
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Deren-Wu/wifi-mt76-mt7921-introduce-Country-Location-Control-support/20220906-171401
+        git checkout e0bf37418dbcff6f111fbf6dad1d142180e2ec4f
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__' O=build_dir ARCH=arm64 SHELL=/bin/bash
 
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
+
+sparse warnings: (new ones prefixed by >>)
+>> drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1089:25: sparse: sparse: incorrect type in assignment (different base types) @@     expected restricted __le16 [addressable] [usertype] len @@     got unsigned long @@
+   drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1089:25: sparse:     expected restricted __le16 [addressable] [usertype] len
+   drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1089:25: sparse:     got unsigned long
+>> drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1090:65: sparse: sparse: incorrect type in argument 3 (different base types) @@     expected int len @@     got restricted __le16 [addressable] [usertype] len @@
+   drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1090:65: sparse:     expected int len
+   drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1090:65: sparse:     got restricted __le16 [addressable] [usertype] len
+
+vim +1089 drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+
+  1048	
+  1049	static
+  1050	int __mt7921_mcu_set_clc(struct mt7921_dev *dev, u8 *alpha2,
+  1051				 enum environment_cap env_cap,
+  1052				 struct mt7921_clc *clc,
+  1053				 u8 idx)
+  1054	{
+  1055		struct sk_buff *skb;
+  1056		struct {
+  1057			u8 ver;
+  1058			u8 pad0;
+  1059			__le16 len;
+  1060			u8 idx;
+  1061			u8 env;
+  1062			u8 pad1[2];
+  1063			u8 alpha2[2];
+  1064			u8 type[2];
+  1065			u8 rsvd[64];
+  1066		} __packed req = {
+  1067			.idx = idx,
+  1068			.env = env_cap,
+  1069		};
+  1070		int ret, valid_cnt = 0;
+  1071		u8 i, *pos;
+  1072	
+  1073		if (!clc)
+  1074			return 0;
+  1075	
+  1076		pos = clc->data;
+  1077		for (i = 0; i < clc->nr_country; i++) {
+  1078			struct mt7921_clc_rule *rule = (struct mt7921_clc_rule *)pos;
+  1079			u16 len = le16_to_cpu(rule->len);
+  1080	
+  1081			pos += len + sizeof(*rule);
+  1082			if (rule->alpha2[0] != alpha2[0] ||
+  1083			    rule->alpha2[1] != alpha2[1])
+  1084				continue;
+  1085	
+  1086			memcpy(req.alpha2, rule->alpha2, 2);
+  1087			memcpy(req.type, rule->type, 2);
+  1088	
+> 1089			req.len = sizeof(req) + len;
+> 1090			skb = __mt76_mcu_msg_alloc(&dev->mt76, &req, req.len,
+  1091						   sizeof(req), GFP_KERNEL);
+  1092			if (!skb)
+  1093				return -ENOMEM;
+  1094			skb_put_data(skb, rule->data, len);
+  1095	
+  1096			ret = mt76_mcu_skb_send_msg(&dev->mt76, skb,
+  1097						    MCU_CE_CMD(SET_CLC), false);
+  1098			if (ret < 0)
+  1099				return ret;
+  1100			valid_cnt++;
+  1101		}
+  1102	
+  1103		if (!valid_cnt)
+  1104			return -ENOENT;
+  1105	
+  1106		return 0;
+  1107	}
+  1108	
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
