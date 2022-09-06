@@ -4,84 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A6BC38145
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 09:54:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 951AAC38145
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 10:02:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q9bzmF3ZoiraH8bSCm3RFyfs5y83CCLS0cNFcKgRys4=; b=ybt0wCsmDTSuSRYKlAf0er1ZtE
-	RKkwAKR2fXUSH11dFgNJ2jBEzOXdYqxIm6VES2abQ4j1nXbbUFTaG3Ja8y//l6UKTgrWupitrCZBk
-	cekfNltWJw+ksaKiKs/oxVPTQpZgnwwDXP0Pxj9EcRIGQa5vIw4FZnlyi0P5YrhN93B9lz43/3VJg
-	6KFDin5ZrGqbXAgDmvtI9RweGbcTAMCsxc84qgDTurn/HtyZ/c8hhxuvaO4rdignW7JZI5sdXKmIS
-	aQuD7zyU92hxzotluuiv1gsQ5I2lmhug+GhD0tHFrcev9ZKMqu+dWDSjjWmf8PFPcpEhpjMkeRuYR
-	APKudi+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=l+mEBaCH5FKWjqxus6NsRI117Wm53hrvgYmA5OyMmw4=; b=CiMJS9NevWn+btpPdF7vhmtwk3
+	e07C501OVI10PwaGnIO4ONuN/XVX0RP6wPrrJYPd9pnKPVBAMzo5y8U+06A/Ew2NA/StVHpy2+3Zk
+	ot8M2aPP26lGCO9y19ixPwKnVYfJ/l6Vcib/E0EAVNtHN0flSoGr2JLRok8kUZpmoiF+tGPq49Hzv
+	WQvcZV5EZZMjQCLRjKzWr7LVoojIws7RCnmGzI7VPGLXuKIIhgtPr51U5L54enyzXyUGIj7BLDr2Z
+	7lEevAlNmPLa9f87HRuJcDhKVv/3ccNWWMu/zbb+KOmVTrdxQ1utI9hUlDFwm+IXLAp2JwXM0EStS
+	yRFFxNPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVVHG-00C6uX-5l; Tue, 06 Sep 2022 09:53:54 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1oVVPU-00CC9M-Go; Tue, 06 Sep 2022 10:02:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVVDL-00C4bS-Pj
-	for linux-mediatek@lists.infradead.org; Tue, 06 Sep 2022 09:49:55 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id b5so14587365wrr.5
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Sep 2022 02:49:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date;
-        bh=Q9bzmF3ZoiraH8bSCm3RFyfs5y83CCLS0cNFcKgRys4=;
-        b=KdK4qwT0irjOT2AQeXx/5UpyUeahzWzRRlGp1f3qAcdBjQ3PoHtX2lmiC8yJeFVeWl
-         l51ATIXK590R5ssFIRueUCRmSw6uRbub5TPnNIwjRFCKVb7B316cdKuCfGdieqB4Xt6m
-         3DxlUcYxxmFktBI1mXDxUFIe/tcZ5I3W+IWRSwmmtOsq1D6O+Nc3zUU7iFyKa/S0HxTt
-         M6lYX5jnvxtbFd4WRPIkFYElnbYwgKjtTdydPsoITThKUQGBWA6Wa5qOj5hTeiSsE77e
-         sz7rDf/sw8N6BvEqZzXOb70NsZFhGpae/kpBql8JRT5tM4BU/tInO3LzSIzlYW9ONROY
-         peqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=Q9bzmF3ZoiraH8bSCm3RFyfs5y83CCLS0cNFcKgRys4=;
-        b=0Qp1W7+/N+9x+cuF+JTvF/Kqsdsyc3PTC10D93SciJpl4Q21+TJn4f/j7zXx5nADdc
-         j6VzXZg3/VGV0JbqsMo7BBLMz/BpgTehvcxOnLvMPS/xC+MZ8dFw/CJx+8CxzmF8qix8
-         HCn36i6OhgEX6uDfRHO0kNFj89XlWXMu3tT9rwNDx34H859TRP9g7aLsIXlu+ch4pta9
-         mw3ESH0xhKSXUZqkpy0VdLeA0j3AjtP7v0+QFl2eeEj+Xm9OkEObS2zE7eM2dLQ75Z7s
-         Np4I/cK4sEy6BqQDdZYn4GTYsM0+hMwreWtbjW4llBEbBO+7rEvPIVHNPv/dI7FI3Gug
-         dDbw==
-X-Gm-Message-State: ACgBeo3jCIxaG00HCWuYEZ168Pwxx/55xhZmzueMB6R/oQvtYnR4AdqM
-	Bh5Ug4CbMpXSd9WsBy7xTVC5oA==
-X-Google-Smtp-Source: AA6agR4+Twzcd6vBm/mPzYR2jsCd4XsMTcWdwqeWbofop1Tcdw0vvcLYU8XtK5OByIufbNKXiaYoOg==
-X-Received: by 2002:adf:e19b:0:b0:225:448c:9ba8 with SMTP id az27-20020adfe19b000000b00225448c9ba8mr26945008wrb.532.1662457789169;
-        Tue, 06 Sep 2022 02:49:49 -0700 (PDT)
-Received: from blmsp (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id co18-20020a0560000a1200b0021f15514e7fsm14587231wrb.0.2022.09.06.02.49.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Sep 2022 02:49:48 -0700 (PDT)
-Date: Tue, 6 Sep 2022 11:49:47 +0200
-From: Markus Schneider-Pargmann <msp@baylibre.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Chun-Jie Chen <chun-jie.chen@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Fabien Parent <parent.f@gmail.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Alexandre Bailon <abailon@baylibre.com>,
-	Fabien Parent <fparent@baylibre.com>
-Subject: Re: [PATCH v3 2/4] soc: mediatek: Add support of WAY_EN operations
-Message-ID: <20220906094947.ghfy2tj4bj4kaule@blmsp>
-References: <20220822144303.3438467-1-msp@baylibre.com>
- <20220822144303.3438467-3-msp@baylibre.com>
- <36dde9aa-b6ea-7194-c1bc-94d52c02649b@gmail.com>
+	id 1oVVPO-00CC26-6h
+	for linux-mediatek@lists.infradead.org; Tue, 06 Sep 2022 10:02:20 +0000
+X-UUID: ad897be2499843c2a43b435a79ed7c23-20220906
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=l+mEBaCH5FKWjqxus6NsRI117Wm53hrvgYmA5OyMmw4=;
+	b=AAaL0NFLQSBapamhd4oVXz3iOTSzbVdsxTNIA5SgLrxb1M3xdajeDFRuYONDY4bKlmWT0es5OOA7ThA95GD5OpiYeHQhxhlXAlZD5C9z47ECsL6A5hJUOHOKVLjoCpLxDIk511gGVNIX0Z1cVXurkHiBVnIOUOmyuLNhXThQ9cw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:a5f00e54-8311-4631-8bf6-19ae9c5f583c,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Releas
+	e_Ham,ACTION:release,TS:-25
+X-CID-META: VersionHash:84eae18,CLOUDID:b1a2dbd0-20bd-4e5e-ace8-00692b7ab380,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: ad897be2499843c2a43b435a79ed7c23-20220906
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <deren.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 62286825; Tue, 06 Sep 2022 03:02:10 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 6 Sep 2022 17:11:35 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 6 Sep 2022 17:11:35 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
+	<Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, "Ryder
+ Lee" <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH v2] wifi: mt76: mt7921: introduce Country Location Control support
+Date: Tue, 6 Sep 2022 17:11:19 +0800
+Message-ID: <a7b8353c71c5c8689d22dc450721c98ed11ab912.1662454722.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <36dde9aa-b6ea-7194-c1bc-94d52c02649b@gmail.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_024951_882107_B53D68D3 
-X-CRM114-Status: GOOD (  41.02  )
+X-CRM114-CacheID: sfid-20220906_030218_354324_7BCB5A2E 
+X-CRM114-Status: GOOD (  23.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,348 +84,424 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Matthias,
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-On Mon, Aug 22, 2022 at 06:17:58PM +0200, Matthias Brugger wrote:
-> 
-> 
-> On 22/08/2022 16:43, Markus Schneider-Pargmann wrote:
-> > From: Alexandre Bailon <abailon@baylibre.com>
-> > 
-> > This updates the power domain to support WAY_EN operations. These
-> > operations enable a path between different units of the chip and are
-> > labeled as 'way_en' in the register descriptions.
-> > 
-> > This operation is required by the mt8365 for the MM power domain.
-> > 
-> > Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > ---
-> > 
-> > Notes:
-> >      Changes in v3:
-> >      - Separated the way_en functions for clarity
-> >      - Added some checks for infracfg_nao
-> >      Changes in v2:
-> >      - some minor style fixes.
-> >      - Renamed 'wayen' to 'way_en' to clarify the meaning
-> >      - Updated commit message
-> > 
-> >   drivers/soc/mediatek/mtk-pm-domains.c | 162 +++++++++++++++++++++-----
-> >   drivers/soc/mediatek/mtk-pm-domains.h |  28 +++--
-> >   2 files changed, 149 insertions(+), 41 deletions(-)
-> > 
-> > diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
-> > index 9734f1091c69..c2cbe0de6aa1 100644
-> > --- a/drivers/soc/mediatek/mtk-pm-domains.c
-> > +++ b/drivers/soc/mediatek/mtk-pm-domains.c
-> > @@ -43,6 +43,7 @@ struct scpsys_domain {
-> >   	struct clk_bulk_data *clks;
-> >   	int num_subsys_clks;
-> >   	struct clk_bulk_data *subsys_clks;
-> > +	struct regmap *infracfg_nao;
-> >   	struct regmap *infracfg;
-> >   	struct regmap *smi;
-> >   	struct regulator *supply;
-> > @@ -117,26 +118,61 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
-> >   					MTK_POLL_TIMEOUT);
-> >   }
-> > -static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, struct regmap *regmap)
-> > +static int __scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
-> > +				       struct regmap *regmap)
-> > +{
-> > +	u32 val;
-> > +	u32 mask = bpd->bus_prot_mask;
-> > +	u32 sta_mask = bpd->bus_prot_sta_mask;
-> > +
-> > +	if (bpd->bus_prot_reg_update)
-> > +		regmap_set_bits(regmap, bpd->bus_prot_set, mask);
-> > +	else
-> > +		regmap_write(regmap, bpd->bus_prot_set, mask);
-> > +
-> > +	return regmap_read_poll_timeout(regmap, bpd->bus_prot_sta, val,
-> > +					(val & sta_mask) == sta_mask,
-> > +					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> > +}
-> > +
-> > +static int scpsys_bus_way_disable(const struct scpsys_bus_prot_data *bpd,
-> > +				  struct regmap *regmap,
-> > +				  struct regmap *ack_regmap)
-> > +{
-> > +	u32 val;
-> > +	u32 mask = bpd->bus_prot_mask;
-> > +	u32 sta_mask = bpd->bus_prot_sta_mask;
-> > +
-> > +	if (bpd->bus_prot_reg_update)
-> > +		regmap_clear_bits(regmap, bpd->bus_prot_set, mask);
-> > +	else
-> > +		regmap_write(regmap, bpd->bus_prot_set, mask);
-> > +
-> > +	if (bpd->ignore_clr_ack)
-> > +		return 0;
-> > +
-> > +	return regmap_read_poll_timeout(ack_regmap, bpd->bus_prot_sta, val,
-> > +					(val & sta_mask) == sta_mask,
-> > +					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> > +}
-> > +
-> > +static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
-> > +				      struct regmap *regmap, struct regmap *infracfg_nao)
-> >   {
-> >   	int i, ret;
-> >   	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
-> > -		u32 val, mask = bpd[i].bus_prot_mask;
-> > -
-> > -		if (!mask)
-> > +		if (!bpd[i].bus_prot_mask)
-> >   			break;
-> > -		if (bpd[i].bus_prot_reg_update)
-> > -			regmap_set_bits(regmap, bpd[i].bus_prot_set, mask);
-> > +		if (bpd[i].way_en)
-> > +			ret = scpsys_bus_way_disable(&bpd[i], regmap, infracfg_nao);
-> >   		else
-> > -			regmap_write(regmap, bpd[i].bus_prot_set, mask);
-> > -
-> > -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
-> > -					       val, (val & mask) == mask,
-> > -					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> > -		if (ret)
-> > +			ret = __scpsys_bus_protect_enable(&bpd[i], regmap);
-> > +		if (ret) {
-> > +			pr_err("%s %d %d\n", __PRETTY_FUNCTION__, __LINE__, ret);
-> >   			return ret;
-> > +		}
-> >   	}
-> >   	return 0;
-> > @@ -146,37 +182,71 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
-> >   {
-> >   	int ret;
-> > -	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg, pd->infracfg);
-> > +	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg,
-> > +					 pd->infracfg, pd->infracfg_nao);
-> >   	if (ret)
-> >   		return ret;
-> > -	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi);
-> > +	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi, NULL);
-> > +}
-> > +
-> > +static int __scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
-> > +					struct regmap *regmap)
-> > +{
-> > +	u32 val;
-> > +	u32 mask = bpd->bus_prot_mask;
-> > +	u32 sta_mask = bpd->bus_prot_sta_mask;
-> > +
-> > +	if (bpd->bus_prot_reg_update)
-> > +		regmap_clear_bits(regmap, bpd->bus_prot_clr, mask);
-> > +	else
-> > +		regmap_write(regmap, bpd->bus_prot_clr, mask);
-> > +
-> > +	if (bpd->ignore_clr_ack)
-> > +		return 0;
-> > +
-> > +	return regmap_read_poll_timeout(regmap, bpd->bus_prot_sta, val,
-> > +					!(val & sta_mask), MTK_POLL_DELAY_US,
-> > +					MTK_POLL_TIMEOUT);
-> > +}
-> > +
-> > +static int scpsys_bus_way_enable(const struct scpsys_bus_prot_data *bpd,
-> > +				 struct regmap *regmap,
-> > +				 struct regmap *ack_regmap)
-> > +{
-> > +	u32 val;
-> > +	u32 mask = bpd->bus_prot_mask;
-> > +	u32 sta_mask = bpd->bus_prot_sta_mask;
-> > +
-> > +	if (bpd->bus_prot_reg_update)
-> > +		regmap_set_bits(regmap, bpd->bus_prot_clr, mask);
-> > +	else
-> > +		regmap_write(regmap, bpd->bus_prot_clr, mask);
-> > +
-> > +	return regmap_read_poll_timeout(ack_regmap, bpd->bus_prot_sta, val,
-> > +					(val & sta_mask) == sta_mask,
-> > +					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> >   }
-> >   static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
-> > -				       struct regmap *regmap)
-> > +				       struct regmap *regmap,
-> > +				       struct regmap *infracfg_nao)
-> >   {
-> >   	int i, ret;
-> >   	for (i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
-> > -		u32 val, mask = bpd[i].bus_prot_mask;
-> > -
-> > -		if (!mask)
-> > +		if (!bpd[i].bus_prot_mask)
-> >   			continue;
-> > -		if (bpd[i].bus_prot_reg_update)
-> > -			regmap_clear_bits(regmap, bpd[i].bus_prot_clr, mask);
-> > +		if (bpd[i].way_en)
-> > +			ret = scpsys_bus_way_enable(&bpd[i], regmap,
-> > +						    infracfg_nao);
-> >   		else
-> > -			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
-> > -
-> > -		if (bpd[i].ignore_clr_ack)
-> > -			continue;
-> > -
-> > -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
-> > -					       val, !(val & mask),
-> > -					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> > -		if (ret)
-> > +			ret = __scpsys_bus_protect_disable(&bpd[i], regmap);
-> > +		if (ret) {
-> > +			pr_err("%s %d %d\n", __PRETTY_FUNCTION__, __LINE__, ret);
-> >   			return ret;
-> > +		}
-> >   	}
-> >   	return 0;
-> > @@ -186,11 +256,12 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
-> >   {
-> >   	int ret;
-> > -	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi);
-> > +	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi, NULL);
-> >   	if (ret)
-> >   		return ret;
-> > -	return _scpsys_bus_protect_disable(pd->data->bp_infracfg, pd->infracfg);
-> > +	return _scpsys_bus_protect_disable(pd->data->bp_infracfg,
-> > +			pd->infracfg, pd->infracfg_nao);
-> >   }
-> >   static int scpsys_regulator_enable(struct regulator *supply)
-> > @@ -294,6 +365,21 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
-> >   	return 0;
-> >   }
-> > +static bool scpsys_bp_infracfg_has_way_en(const struct scpsys_bus_prot_data *bpd)
-> > +{
-> > +	int i;
-> > +
-> > +	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
-> > +		if (!bpd[i].bus_prot_mask)
-> > +			break;
-> 
-> So MT8365_POWER_DOMAIN_MM will return false as the first member of
-> bp_infracfg is BUS_PROT_WR(...)
+Country Location Control (CLC) is an additional control for country rules
+in firmware. We introduce this new feature to make sure mt7921 series
+working properly in all region.
 
-I am not sure I understand what you mean. Why should it break out of the
-loop if the first member is a BUS_PROT_WR()? BUS_PROT_WR() sets a mask
-as well which is checked here exactly the same way as is done in
-_scpsys_bus_protect_enable() even before this patch.
+The addtional policies would be put into firmware based on differnt
+regions. mt76 driver should be in charge of submitting per region policy.
 
-This is only a loop condition. Actually I can move it into the loop
-header as well. Either you define SPM_MAX_BUS_PROT_DATA fields or you
-have to exit if you find a field that is empty, basically the mask not
-being set.
+Reviewed-by: Sean Wang <sean.wang@mediatek.com>
+Tested-by: YN Chen <YN.Chen@mediatek.com>
+Co-developed-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+v2: 1. Run mt7921_load_clc() after MT76_STATE_MCU_RUNNING to make sure
+       MCU-CMD ready, for all bus type
+    2. Add tag Tested-by YN.Chen
+---
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  11 +-
+ .../wireless/mediatek/mt76/mt7921/eeprom.h    |   5 +-
+ .../net/wireless/mediatek/mt76/mt7921/init.c  |   1 +
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 197 ++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7921/mcu.h   |   2 +-
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  30 +++
+ 6 files changed, 243 insertions(+), 3 deletions(-)
 
-> 
-> Apart from that, why don't you use a CAPS to acheive the same?
-> 
-> > +
-> > +		if (bpd[i].way_en)
-> > +			return true;
-> > +	}
-> > +
-> > +	return false;
-> > +}
-> > +
-> >   static struct
-> >   generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node)
-> >   {
-> > @@ -364,6 +450,20 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
-> >   			return ERR_CAST(pd->smi);
-> >   	}
-> > +	if (scpsys_bp_infracfg_has_way_en(pd->data->bp_smi)) {
-> > +		dev_err(scpsys->dev, "bp_smi does not support WAY_EN\n");
-> 
-> Do we really need to check the correctness of the driver data at runtime?
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index f1d7c05bd794..718f427d8f6b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -10,6 +10,7 @@
+ #define FW_FEATURE_SET_KEY_IDX		GENMASK(2, 1)
+ #define FW_FEATURE_ENCRY_MODE		BIT(4)
+ #define FW_FEATURE_OVERRIDE_ADDR	BIT(5)
++#define FW_FEATURE_NON_DL		BIT(6)
+ 
+ #define DL_MODE_ENCRYPT			BIT(0)
+ #define DL_MODE_KEY_IDX			GENMASK(2, 1)
+@@ -33,6 +34,12 @@
+ #define PATCH_SEC_ENC_SCRAMBLE_INFO_MASK	GENMASK(15, 0)
+ #define PATCH_SEC_ENC_AES_KEY_MASK		GENMASK(7, 0)
+ 
++enum {
++	FW_TYPE_DEFAULT = 0,
++	FW_TYPE_CLC = 2,
++	FW_TYPE_MAX_NUM = 255
++};
++
+ #define MCU_PQ_ID(p, q)		(((p) << 15) | ((q) << 10))
+ #define MCU_PKT_ID		0xa0
+ 
+@@ -174,7 +181,8 @@ struct mt76_connac2_fw_region {
+ 	__le32 addr;
+ 	__le32 len;
+ 	u8 feature_set;
+-	u8 rsv1[15];
++	u8 type;
++	u8 rsv1[14];
+ } __packed;
+ 
+ struct tlv {
+@@ -1172,6 +1180,7 @@ enum {
+ 	MCU_CE_CMD_SET_ROC = 0x1c,
+ 	MCU_CE_CMD_SET_EDCA_PARMS = 0x1d,
+ 	MCU_CE_CMD_SET_P2P_OPPPS = 0x33,
++	MCU_CE_CMD_SET_CLC = 0x5c,
+ 	MCU_CE_CMD_SET_RATE_TX_POWER = 0x5d,
+ 	MCU_CE_CMD_SCHED_SCAN_ENABLE = 0x61,
+ 	MCU_CE_CMD_SCHED_SCAN_REQ = 0x62,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h
+index 54f30401343c..4b647278eb30 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/eeprom.h
+@@ -11,12 +11,15 @@ enum mt7921_eeprom_field {
+ 	MT_EE_VERSION =		0x002,
+ 	MT_EE_MAC_ADDR =	0x004,
+ 	MT_EE_WIFI_CONF =	0x07c,
+-	__MT_EE_MAX =		0x3bf
++	MT_EE_HW_TYPE =		0x55b,
++	__MT_EE_MAX =		0x9ff
+ };
+ 
+ #define MT_EE_WIFI_CONF_TX_MASK			BIT(0)
+ #define MT_EE_WIFI_CONF_BAND_SEL		GENMASK(3, 2)
+ 
++#define MT_EE_HW_TYPE_ENCAP			BIT(0)
++
+ enum mt7921_eeprom_band {
+ 	MT_EE_NA,
+ 	MT_EE_5GHZ,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index cd960e23770f..dcdb3cf04ac1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -39,6 +39,7 @@ mt7921_regd_notifier(struct wiphy *wiphy,
+ 	dev->mt76.region = request->dfs_region;
+ 
+ 	mt7921_mutex_acquire(dev);
++	mt7921_mcu_set_clc(dev, request->alpha2, request->country_ie_env);
+ 	mt76_connac_mcu_set_channel_domain(hw->priv);
+ 	mt7921_set_tx_sar_pwr(hw, NULL);
+ 	mt7921_mutex_release(dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index da12d0ae0835..49758f50d4a6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -2,14 +2,20 @@
+ /* Copyright (C) 2020 MediaTek Inc. */
+ 
+ #include <linux/fs.h>
++#include <linux/firmware.h>
+ #include "mt7921.h"
+ #include "mt7921_trace.h"
++#include "eeprom.h"
+ #include "mcu.h"
+ #include "mac.h"
+ 
+ #define MT_STA_BFER			BIT(0)
+ #define MT_STA_BFEE			BIT(1)
+ 
++static bool mt7921_disable_clc;
++module_param_named(disable_clc, mt7921_disable_clc, bool, 0644);
++MODULE_PARM_DESC(disable_clc, "disable CLC support");
++
+ static int
+ mt7921_mcu_parse_eeprom(struct mt76_dev *dev, struct sk_buff *skb)
+ {
+@@ -84,6 +90,27 @@ int mt7921_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ }
+ EXPORT_SYMBOL_GPL(mt7921_mcu_parse_response);
+ 
++static int mt7921_mcu_read_eeprom(struct mt7921_dev *dev, u32 offset, u8 *val)
++{
++	struct mt7921_mcu_eeprom_info *res, req = {
++		.addr = cpu_to_le32(round_down(offset,
++				    MT7921_EEPROM_BLOCK_SIZE)),
++	};
++	struct sk_buff *skb;
++	int ret;
++
++	ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_EXT_QUERY(EFUSE_ACCESS),
++					&req, sizeof(req), true, &skb);
++	if (ret)
++		return ret;
++
++	res = (struct mt7921_mcu_eeprom_info *)skb->data;
++	*val = res->data[offset % MT7921_EEPROM_BLOCK_SIZE];
++	dev_kfree_skb(skb);
++
++	return 0;
++}
++
+ #ifdef CONFIG_PM
+ 
+ static int
+@@ -354,6 +381,90 @@ static char *mt7921_ram_name(struct mt7921_dev *dev)
+ 	return ret;
+ }
+ 
++static int mt7921_load_clc(struct mt7921_dev *dev, const char *fw_name)
++{
++	const struct mt76_connac2_fw_trailer *hdr;
++	const struct mt76_connac2_fw_region *region;
++	const struct mt7921_clc *clc;
++	struct mt76_dev *mdev = &dev->mt76;
++	struct mt7921_phy *phy = &dev->phy;
++	const struct firmware *fw;
++	int ret, i, len, offset = 0;
++	u8 *clc_base = NULL, hw_encap = 0;
++
++	if (mt7921_disable_clc ||
++	    mt76_is_usb(&dev->mt76))
++		return 0;
++
++	if (mt76_is_mmio(&dev->mt76)) {
++		ret = mt7921_mcu_read_eeprom(dev, MT_EE_HW_TYPE, &hw_encap);
++		if (ret)
++			return ret;
++		hw_encap = u8_get_bits(hw_encap, MT_EE_HW_TYPE_ENCAP);
++	}
++
++	ret = request_firmware(&fw, fw_name, mdev->dev);
++	if (ret)
++		return ret;
++
++	if (!fw || !fw->data || fw->size < sizeof(*hdr)) {
++		dev_err(mdev->dev, "Invalid firmware\n");
++		ret = -EINVAL;
++		goto out;
++	}
++
++	hdr = (const void *)(fw->data + fw->size - sizeof(*hdr));
++	for (i = 0; i < hdr->n_region; i++) {
++		region = (const void *)((const u8 *)hdr -
++					(hdr->n_region - i) * sizeof(*region));
++		len = le32_to_cpu(region->len);
++
++		/* check if we have valid buffer size */
++		if (offset + len > fw->size) {
++			dev_err(mdev->dev, "Invalid firmware region\n");
++			ret = -EINVAL;
++			goto out;
++		}
++
++		if ((region->feature_set & FW_FEATURE_NON_DL) &&
++		    region->type == FW_TYPE_CLC) {
++			clc_base = (u8 *)(fw->data + offset);
++			break;
++		}
++		offset += len;
++	}
++
++	if (!clc_base)
++		goto out;
++
++	for (offset = 0; offset < len; offset += le32_to_cpu(clc->len)) {
++		clc = (const struct mt7921_clc *)(clc_base + offset);
++
++		/* do not init buf again if chip reset triggered */
++		if (phy->clc[clc->idx])
++			continue;
++
++		/* header content sanity */
++		if (clc->idx == MT7921_CLC_POWER &&
++		    u8_get_bits(clc->type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
++			continue;
++
++		phy->clc[clc->idx] = devm_kmemdup(mdev->dev, clc,
++						  le32_to_cpu(clc->len),
++						  GFP_KERNEL);
++
++		if (!phy->clc[clc->idx]) {
++			ret = -ENOMEM;
++			goto out;
++		}
++	}
++	ret = mt7921_mcu_set_clc(dev, "00", ENVIRON_INDOOR);
++out:
++	release_firmware(fw);
++
++	return ret;
++}
++
+ static int mt7921_load_firmware(struct mt7921_dev *dev)
+ {
+ 	int ret;
+@@ -423,6 +534,10 @@ int mt7921_run_firmware(struct mt7921_dev *dev)
+ 		return err;
+ 
+ 	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
++	err = mt7921_load_clc(dev, mt7921_ram_name(dev));
++	if (err)
++		return err;
++
+ 	return mt7921_mcu_fw_log_2_host(dev, 1);
+ }
+ EXPORT_SYMBOL_GPL(mt7921_run_firmware);
+@@ -930,3 +1045,85 @@ mt7921_mcu_uni_add_beacon_offload(struct mt7921_dev *dev,
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(BSS_INFO_UPDATE),
+ 				 &req, sizeof(req), true);
+ }
++
++static
++int __mt7921_mcu_set_clc(struct mt7921_dev *dev, u8 *alpha2,
++			 enum environment_cap env_cap,
++			 struct mt7921_clc *clc,
++			 u8 idx)
++{
++	struct sk_buff *skb;
++	struct {
++		u8 ver;
++		u8 pad0;
++		__le16 len;
++		u8 idx;
++		u8 env;
++		u8 pad1[2];
++		u8 alpha2[2];
++		u8 type[2];
++		u8 rsvd[64];
++	} __packed req = {
++		.idx = idx,
++		.env = env_cap,
++	};
++	int ret, valid_cnt = 0;
++	u8 i, *pos;
++
++	if (!clc)
++		return 0;
++
++	pos = clc->data;
++	for (i = 0; i < clc->nr_country; i++) {
++		struct mt7921_clc_rule *rule = (struct mt7921_clc_rule *)pos;
++		u16 len = le16_to_cpu(rule->len);
++
++		pos += len + sizeof(*rule);
++		if (rule->alpha2[0] != alpha2[0] ||
++		    rule->alpha2[1] != alpha2[1])
++			continue;
++
++		memcpy(req.alpha2, rule->alpha2, 2);
++		memcpy(req.type, rule->type, 2);
++
++		req.len = sizeof(req) + len;
++		skb = __mt76_mcu_msg_alloc(&dev->mt76, &req, req.len,
++					   sizeof(req), GFP_KERNEL);
++		if (!skb)
++			return -ENOMEM;
++		skb_put_data(skb, rule->data, len);
++
++		ret = mt76_mcu_skb_send_msg(&dev->mt76, skb,
++					    MCU_CE_CMD(SET_CLC), false);
++		if (ret < 0)
++			return ret;
++		valid_cnt++;
++	}
++
++	if (!valid_cnt)
++		return -ENOENT;
++
++	return 0;
++}
++
++int mt7921_mcu_set_clc(struct mt7921_dev *dev, u8 *alpha2,
++		       enum environment_cap env_cap)
++{
++	struct mt7921_phy *phy = (struct mt7921_phy *)&dev->phy;
++	int i, ret;
++
++	/* submit all clc config */
++	for (i = 0; i < ARRAY_SIZE(phy->clc); i++) {
++		ret = __mt7921_mcu_set_clc(dev, alpha2, env_cap,
++					   phy->clc[i], i);
++
++		/* If no country found, set "00" as default */
++		if (ret == -ENOENT)
++			ret = __mt7921_mcu_set_clc(dev, "00",
++						   ENVIRON_INDOOR,
++						   phy->clc[i], i);
++		if (ret < 0)
++			return ret;
++	}
++	return 0;
++}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
+index 0d20f7d8d474..96dc870fd35e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
+@@ -41,7 +41,7 @@ enum {
+ struct mt7921_mcu_eeprom_info {
+ 	__le32 addr;
+ 	__le32 valid;
+-	u8 data[16];
++	u8 data[MT7921_EEPROM_BLOCK_SIZE];
+ } __packed;
+ 
+ #define MT_RA_RATE_NSS			GENMASK(8, 6)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index c161031ac62a..b665c84b109e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -41,6 +41,8 @@
+ #define MT7921_EEPROM_SIZE		3584
+ #define MT7921_TOKEN_SIZE		8192
+ 
++#define MT7921_EEPROM_BLOCK_SIZE	16
++
+ #define MT7921_CFEND_RATE_DEFAULT	0x49	/* OFDM 24M */
+ #define MT7921_CFEND_RATE_11B		0x03	/* 11B LP, 11M */
+ 
+@@ -149,6 +151,29 @@ struct mib_stats {
+ 	u32 tx_amsdu_cnt;
+ };
+ 
++enum {
++	MT7921_CLC_POWER,
++	MT7921_CLC_CHAN,
++	MT7921_CLC_MAX_NUM,
++};
++
++struct mt7921_clc_rule {
++	u8 alpha2[2];
++	u8 type[2];
++	__le16 len;
++	u8 data[];
++} __packed;
++
++struct mt7921_clc {
++	__le32 len;
++	u8 idx;
++	u8 ver;
++	u8 nr_country;
++	u8 type;
++	u8 rsv[8];
++	u8 data[];
++};
++
+ struct mt7921_phy {
+ 	struct mt76_phy *mt76;
+ 	struct mt7921_dev *dev;
+@@ -174,6 +199,8 @@ struct mt7921_phy {
+ #ifdef CONFIG_ACPI
+ 	struct mt7921_acpi_sar *acpisar;
+ #endif
++
++	struct mt7921_clc *clc[MT7921_CLC_MAX_NUM];
+ };
+ 
+ #define mt7921_init_reset(dev)		((dev)->hif_ops->init_reset(dev))
+@@ -479,4 +506,7 @@ mt7921_init_acpi_sar_power(struct mt7921_phy *phy, bool set_default)
+ #endif
+ int mt7921_set_tx_sar_pwr(struct ieee80211_hw *hw,
+ 			  const struct cfg80211_sar_specs *sar);
++
++int mt7921_mcu_set_clc(struct mt7921_dev *dev, u8 *alpha2,
++		       enum environment_cap env_cap);
+ #endif
+-- 
+2.18.0
 
-bp_smi is called without a infracfg_nao regmap. If we don't check it
-here, we need to make a check during bus protection operations. Last
-time I got a review to not do it during in the bus protection path.
-
-> 
-> > +		return ERR_PTR(-EINVAL);
-> > +	}
-> > +
-> > +	pd->infracfg_nao = syscon_regmap_lookup_by_phandle_optional(
-> > +		node, "mediatek,infracfg_nao");
-> 
-> Not in the binding description.
-
-Thanks, I will fix that for the next version.
-
-> 
-> > +	if (IS_ERR(pd->infracfg_nao)) {
-> > +		if (scpsys_bp_infracfg_has_way_en(pd->data->bp_infracfg))
-> > +			return ERR_CAST(pd->infracfg_nao);
-> > +
-> > +		pd->infracfg_nao = NULL;
-> > +	}
-> > +
-> >   	num_clks = of_clk_get_parent_count(node);
-> >   	if (num_clks > 0) {
-> >   		/* Calculate number of subsys_clks */
-> > diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
-> > index 7d3c0c36316c..974c68a1d89c 100644
-> > --- a/drivers/soc/mediatek/mtk-pm-domains.h
-> > +++ b/drivers/soc/mediatek/mtk-pm-domains.h
-> > @@ -41,23 +41,29 @@
-> >   #define SPM_MAX_BUS_PROT_DATA		6
-> > -#define _BUS_PROT(_mask, _set, _clr, _sta, _update, _ignore) {	\
-> > -		.bus_prot_mask = (_mask),			\
-> > -		.bus_prot_set = _set,				\
-> > -		.bus_prot_clr = _clr,				\
-> > -		.bus_prot_sta = _sta,				\
-> > -		.bus_prot_reg_update = _update,			\
-> > -		.ignore_clr_ack = _ignore,			\
-> > +#define _BUS_PROT(_mask, _sta_mask, _set, _clr, _sta, _update, _ignore, _way_en) {	\
-> > +		.bus_prot_mask = (_mask),				\
-> > +		.bus_prot_set = _set,					\
-> > +		.bus_prot_clr = _clr,					\
-> > +		.bus_prot_sta = _sta,					\
-> > +		.bus_prot_sta_mask = _sta_mask,				\
-> > +		.bus_prot_reg_update = _update,				\
-> > +		.ignore_clr_ack = _ignore,				\
-> > +		.way_en = _way_en,					\
-> >   	}
-> >   #define BUS_PROT_WR(_mask, _set, _clr, _sta)			\
-> > -		_BUS_PROT(_mask, _set, _clr, _sta, false, false)
-> > +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, false, false)
-> >   #define BUS_PROT_WR_IGN(_mask, _set, _clr, _sta)		\
-> > -		_BUS_PROT(_mask, _set, _clr, _sta, false, true)
-> > +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, true, false)
-> >   #define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)		\
-> > -		_BUS_PROT(_mask, _set, _clr, _sta, true, false)
-> > +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, true, false, false)
-> > +
-> > +#define BUS_PROT_WAY_EN(_en_mask, _sta_mask, _set, _sta)	\
-> > +		_BUS_PROT(_en_mask, _sta_mask, _set, _set, _sta, true, false, \
-> > +			  true)
-> >   #define BUS_PROT_UPDATE_TOPAXI(_mask)				\
-> >   		BUS_PROT_UPDATE(_mask,				\
-> > @@ -70,8 +76,10 @@ struct scpsys_bus_prot_data {
-> >   	u32 bus_prot_set;
-> >   	u32 bus_prot_clr;
-> >   	u32 bus_prot_sta;
-> > +	u32 bus_prot_sta_mask;
-> 
-> I'm not very happy with the naming. In the end we need an extra mask for bus
-> protection using WAY_EN. But right now I can't come up with a good name.
-
-I think the naming is good as it is a specific mask for the status
-register. bus_prot_mask is now basically only responsible for set and
-clr. Maybe renaming bus_prot_mask to bus_prot_set_clr_mask is better?
-
-Thanks,
-Markus
-
-> 
-> Regards,
-> Matthias
-> 
-> >   	bool bus_prot_reg_update;
-> >   	bool ignore_clr_ack;
-> > +	bool way_en;
-> >   };
-> >   /**
 
