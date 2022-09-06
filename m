@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3B42ECAAD5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 14:14:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2A9ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 14:18:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oVArDv0lIfvc7Grsn0zO3GkVHpa3SVAzDsMkv50A9yY=; b=DXI5PxeQuRGbLWE1U4qiMALrJg
-	7jW6NqP8TuZV7R1hD1fW/TTgiI6MDk5Um3YYvl3gimEWTFGYyYZQphuTCm5y5e4M7jWWcIP16F2Mg
-	+20Ar6NmuFr5fs4p27+yXhvZUXNcbvvLggwqlJ7K763hGgq5Z8MTUID9zG6ko83jmHWxySiEtpWxh
-	QlxDS9hTeEKjckp8HB6ESBTX57GxsGTn5BaufKMJlgjq4ADOX1aO2ZT1JKXee10yWxF4Vg0BnEOOL
-	BQt5IgKzV7ZEI0k75ayYIK0PXcJHcy/sPVTV1CLt4W/EZWzDNnrml/Hzou6gAwF6AcrDODtlnOZ22
-	z/W280+Q==;
+	bh=vutZ2JI+mmeMhK8d0OkSP0odDbfftcBz49/LOfKzAIE=; b=djmLqqPLsS8vVVT5o+LLJBS28Z
+	RyPKFMFMbyQmUEyZsXA900jv/RJG1XkwO/Zxzf6cUKM8eoNpPE3/5uwwxjeKBNViBVnaSJWqgX26G
+	BD4PJDQxYcCqVIJ7kbbWeOUsMjeTNpiGYRIyaYFRyHfFqI4UYnhtNe64GSP9qXLieKVsOcuWSR33Y
+	ZjzhTmilwLhh/sQiKoTXZ23XQo/OW2reHsGFlrLf1x1Zf2kI2w/OzDzSnMhxfqEIM6ATcvSLnhmaL
+	Ttq8S9PgH3cQn69vAN3gke1V/J+SYq3fhA7q7YbQaZQYdWBIyJmOHZdROMGlgtXcghHxvxBYr8J4G
+	35QKsTkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVZLd-00ECCc-BC; Tue, 06 Sep 2022 14:14:41 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1oVZPN-00EE0L-KK; Tue, 06 Sep 2022 14:18:33 +0000
+Received: from mga14.intel.com ([192.55.52.115])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVYxo-00Dzog-2G; Tue, 06 Sep 2022 13:50:08 +0000
+	id 1oVYxq-00Dzqn-78; Tue, 06 Sep 2022 13:50:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1662472204; x=1694008204;
+  t=1662472206; x=1694008206;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=NEeFuL7s2HGlJGPjMrfp/6jwPjBk7uYpbdHP2kx39AA=;
-  b=eg9yVAPNTw+NPDQDSnTK6uHaInsCh/nlQrf275Cul0QOSdf8ZFZUijL6
-   Qs/IPG05tQNyPM5sRRMWw8R3hUf3kHTF+GHy7KP3RTTr824Mg7HuszePL
-   EbNdAe2ApRXvlHEKiPF8Fk/fO7oIhpZPu1mhQVTe8wx4z4O3cxIZ1rFvv
-   Zt9Pxh6O8j1ekHKzi9e6Qn+DKKBfxoMzm1hJepxc05RAcNmGvXfsg5Jhb
-   XmuaQ1IeM9yoWO7eTThEYg1kCwkgtKhw8bgsjOwKnnuZFOJsxTUS/hHcG
-   UPNyNdMRoPZ0J9GJX6h2lUdYS2gm+3QO/+G4Ur4Morh7M7F9fq7tc531v
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10462"; a="294181881"
+  bh=1IsTbKM8jNHxj4ziPqVComygZINDozfOXf+AY99bFeg=;
+  b=l87i5e54XjOapp+SKm8HRzmdxtTbxZRz5i/8W19eT2xMOYfjJxSrrKoO
+   snN05J3pzUO1OyTtNTH5W2YQaW/nsAyMolYdHuYejxbXWYScWYRgEw4OP
+   nmrjRQvke7vihGBYsRjWwz5brdZ9TG14W5uzKXYuy3cvzmsUvLCLtPlCY
+   jvHmX/YFRwf6yz9J4ZRAAOENkkGkkVKOMSPY8CzArngNNNtXoYXZqTCV2
+   TMRQhH+utNqZLISUJh4m0QIyqO9HrXrqkj0ocBykR2e02Ar0osVUIs/pg
+   yZECQIui55k9dYcgaOb9It08ITg+G+EfIhVfJfOpYdFu0dR+7TKv5OaF8
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10462"; a="296597104"
 X-IronPort-AV: E=Sophos;i="5.93,294,1654585200"; 
-   d="scan'208";a="294181881"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Sep 2022 06:50:02 -0700
+   d="scan'208";a="296597104"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Sep 2022 06:50:05 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.93,294,1654585200"; 
-   d="scan'208";a="616712869"
+   d="scan'208";a="703214850"
 Received: from black.fi.intel.com ([10.237.72.28])
-  by fmsmga007.fm.intel.com with ESMTP; 06 Sep 2022 06:49:54 -0700
+  by FMSMGA003.fm.intel.com with ESMTP; 06 Sep 2022 06:50:00 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 6404F363; Tue,  6 Sep 2022 16:50:10 +0300 (EEST)
+	id 86D8957F; Tue,  6 Sep 2022 16:50:10 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Gene Chen <gene_chen@richtek.com>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -71,17 +71,17 @@ Cc: Pavel Machek <pavel@ucw.cz>,
 	Jakub Kicinski <kuba@kernel.org>,
 	Paolo Abeni <pabeni@redhat.com>,
 	Lee Jones <lee@kernel.org>
-Subject: [PATCH v3 02/11] leds: Move led_init_default_state_get() to the global header
-Date: Tue,  6 Sep 2022 16:49:55 +0300
-Message-Id: <20220906135004.14885-3-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v3 05/11] leds: bcm6358: Get rid of custom led_init_default_state_get()
+Date: Tue,  6 Sep 2022 16:49:58 +0300
+Message-Id: <20220906135004.14885-6-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
 References: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_065004_166834_0596EB06 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20220906_065006_346275_08B7FC7C 
+X-CRM114-Status: GOOD (  14.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,42 +96,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are users inside and outside LED framework that have implemented
-a local copy of led_init_default_state_get(). In order to deduplicate
-that, as the first step move the declaration from LED header to the
-global one.
+LED core provides a helper to parse default state from firmware node.
+Use it instead of custom implementation.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/leds/leds.h  | 1 -
- include/linux/leds.h | 2 ++
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ drivers/leds/leds-bcm6358.c | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/leds/leds.h b/drivers/leds/leds.h
-index aa64757a4d89..345062ccabda 100644
---- a/drivers/leds/leds.h
-+++ b/drivers/leds/leds.h
-@@ -27,7 +27,6 @@ ssize_t led_trigger_read(struct file *filp, struct kobject *kobj,
- ssize_t led_trigger_write(struct file *filp, struct kobject *kobj,
- 			struct bin_attribute *bin_attr, char *buf,
- 			loff_t pos, size_t count);
--enum led_default_state led_init_default_state_get(struct fwnode_handle *fwnode);
+diff --git a/drivers/leds/leds-bcm6358.c b/drivers/leds/leds-bcm6358.c
+index 9d2e487fa08a..86e51d44a5a7 100644
+--- a/drivers/leds/leds-bcm6358.c
++++ b/drivers/leds/leds-bcm6358.c
+@@ -96,7 +96,8 @@ static int bcm6358_led(struct device *dev, struct device_node *nc, u32 reg,
+ {
+ 	struct led_init_data init_data = {};
+ 	struct bcm6358_led *led;
+-	const char *state;
++	enum led_default_state state;
++	unsigned long val;
+ 	int rc;
  
- extern struct rw_semaphore leds_list_lock;
- extern struct list_head leds_list;
-diff --git a/include/linux/leds.h b/include/linux/leds.h
-index 499aea1e59b9..b96feacc73f8 100644
---- a/include/linux/leds.h
-+++ b/include/linux/leds.h
-@@ -67,6 +67,8 @@ struct led_init_data {
- 	bool devname_mandatory;
- };
+ 	led = devm_kzalloc(dev, sizeof(*led), GFP_KERNEL);
+@@ -110,29 +111,28 @@ static int bcm6358_led(struct device *dev, struct device_node *nc, u32 reg,
+ 	if (of_property_read_bool(nc, "active-low"))
+ 		led->active_low = true;
  
-+enum led_default_state led_init_default_state_get(struct fwnode_handle *fwnode);
+-	if (!of_property_read_string(nc, "default-state", &state)) {
+-		if (!strcmp(state, "on")) {
++	init_data.fwnode = of_fwnode_handle(nc);
 +
- struct led_hw_trigger_type {
- 	int dummy;
- };
++	state = led_init_default_state_get(init_data.fwnode);
++	switch (state) {
++	case LEDS_DEFSTATE_ON:
++		led->cdev.brightness = LED_FULL;
++		break;
++	case LEDS_DEFSTATE_KEEP:
++		val = bcm6358_led_read(led->mem + BCM6358_REG_MODE);
++		val &= BIT(led->pin);
++		if ((led->active_low && !val) || (!led->active_low && val))
+ 			led->cdev.brightness = LED_FULL;
+-		} else if (!strcmp(state, "keep")) {
+-			unsigned long val;
+-			val = bcm6358_led_read(led->mem + BCM6358_REG_MODE);
+-			val &= BIT(led->pin);
+-			if ((led->active_low && !val) ||
+-			    (!led->active_low && val))
+-				led->cdev.brightness = LED_FULL;
+-			else
+-				led->cdev.brightness = LED_OFF;
+-		} else {
++		else
+ 			led->cdev.brightness = LED_OFF;
+-		}
+-	} else {
++		break;
++	default:
+ 		led->cdev.brightness = LED_OFF;
+ 	}
+ 
+ 	bcm6358_led_set(&led->cdev, led->cdev.brightness);
+ 
+ 	led->cdev.brightness_set = bcm6358_led_set;
+-	init_data.fwnode = of_fwnode_handle(nc);
+ 
+ 	rc = devm_led_classdev_register_ext(dev, &led->cdev, &init_data);
+ 	if (rc < 0)
 -- 
 2.35.1
 
