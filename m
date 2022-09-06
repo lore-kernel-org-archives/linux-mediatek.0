@@ -4,84 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0CA8ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 14:28:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FD6EECAAD5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 15:08:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lx2FQRVWWgw6WPYO+fmeKD7FqE4cN7FhKtaqgCAtLVA=; b=sSrD/x9gZPh4DwdIYt3kthj1Et
-	U40Pf03xie+OokM4wnITw8aOnMgFt8RiFVqAkTEa2sHTcpgh4F+xtwVSn/f/+oPlUQCVNuiMIegAZ
-	xQRDvQ+GUGVoStxPKguSZohDK6X6wN/ryKanrnERfh0MA4eiogACCojcjQSms4Sldz1eKZXhA6STf
-	Cgt0tv6r0IBL3cemEyK5bAK9NuJGP7jzIDPdA28fu75In12s6OXvuYZp9WD8ZhMRlkuXubEVgfI8F
-	nTGWhBZ39VmecxJU+wPBKdkBJRh6+J5Da933G9hsmYQWajfj/zCOoAjDPCjnRqJgryjf0uWLjYBNC
-	UKzFl/KQ==;
+	bh=AsdRGrs87kf0i8+EWyw8r2HvTKLRvVLu6cd9HilCCdQ=; b=wN6n7/x8pULi8dupD9aTD9HK4c
+	8Qk9r3kbRHhq1AwQGmK6jYFC16o8C4rB4CVtdDiWe9mDArgesNxjClCSUpmwD6lBreG9SJ2KZlfBE
+	csnwM5rokPgoZljtX1mX7AJmx+Vt45R10VLM9h2iXudpq2X9xNzGmv9Z9Evyt19qptWyMb8GeBnY2
+	eKJwLbxJy/ENChAaIuf2obL/u0WcTwG7xwtLVrN0VM66/e4dwPdqJ71k5UQ0EdfSZOGDvmh3dOZjG
+	/M9Qt4PsW03FeuW+o57/xlTfVIyN5Ldmm+Zm1c7rcNEg/nzD1CZIFQRA1Z8OrxpWjiD1kjAH+wERR
+	rQmvf1+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVZZK-00EIwy-FJ; Tue, 06 Sep 2022 14:28:50 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1oVaBa-00EaTc-5p; Tue, 06 Sep 2022 15:08:22 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVYy0-00Dzsd-Bu; Tue, 06 Sep 2022 13:50:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1662472216; x=1694008216;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=6f8YWbifkD3gaKrThtIFn69fcF7c6kePJ4btJm1Xl8s=;
-  b=fRq9TRuxMNulBiWKaR9GYlXKwV6hXjtkD029STmaDBH25hXGMxjrBNBl
-   JRNr0p9PJBRnQSjMgDs6gqfhxLoa38RZfnQdAB4mIGZFon97sCov2BJ+3
-   kGx1jkoznz5D+DPFZe//Su1zdgTiek1Bc2+S696VqQypFJnARTya8HRjp
-   i7YDGSniYzCi1PozJi3CsfYpEQ/suR/Mhtul3GTcefD9eilC58hqQwRCV
-   qizlrD9Q5zVEFQJCvlG1pYg1VSvr+NzWuffVZTGVX7WyVLThZew7G5cBp
-   HjJh5d49WdDtE0tOUSqDaMd/j4/ef0uT5q/eUelEz6hPF0x6z5AEnedLy
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10462"; a="276990327"
-X-IronPort-AV: E=Sophos;i="5.93,294,1654585200"; 
-   d="scan'208";a="276990327"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Sep 2022 06:50:07 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,294,1654585200"; 
-   d="scan'208";a="859264824"
-Received: from black.fi.intel.com ([10.237.72.28])
-  by fmsmga006.fm.intel.com with ESMTP; 06 Sep 2022 06:50:00 -0700
-Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 9E9636CD; Tue,  6 Sep 2022 16:50:10 +0300 (EEST)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Gene Chen <gene_chen@richtek.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	linux-leds@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org
-Cc: Pavel Machek <pavel@ucw.cz>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Lee Jones <lee@kernel.org>
-Subject: [PATCH v3 07/11] leds: mt6360: Get rid of custom led_init_default_state_get()
-Date: Tue,  6 Sep 2022 16:50:00 +0300
-Message-Id: <20220906135004.14885-8-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
-References: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
+	id 1oVZG5-00E9sM-Rv; Tue, 06 Sep 2022 14:08:59 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 789B5B81637;
+	Tue,  6 Sep 2022 14:08:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1D08C433C1;
+	Tue,  6 Sep 2022 14:08:51 +0000 (UTC)
+Message-ID: <918ec569-8dde-2b5d-b623-b35eaf9ce11c@xs4all.nl>
+Date: Tue, 6 Sep 2022 16:08:50 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [V13,0/7] Enable two hardware jpeg encoder for MT8195
+Content-Language: en-US
+To: Irui Wang <irui.wang@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tzung-Bi Shih <tzungbi@chromium.org>,
+ angelogioacchino.delregno@collabora.com, nicolas.dufresne@collabora.com,
+ wenst@chromium.org, kyrie wu <kyrie.wu@mediatek.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
+ xia.jiang@mediatek.com, maoguang.meng@mediatek.com
+References: <20220826092956.10340-1-irui.wang@mediatek.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20220826092956.10340-1-irui.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_065016_680506_545652C6 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20220906_070858_211266_E361A22E 
+X-CRM114-Status: GOOD (  25.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,104 +71,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-LED core provides a helper to parse default state from firmware node.
-Use it instead of custom implementation.
+Hi Irui,
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- drivers/leds/flash/leds-mt6360.c | 38 +++++---------------------------
- 1 file changed, 6 insertions(+), 32 deletions(-)
+On 26/08/2022 11:29, Irui Wang wrote:
+> From: kyrie wu <kyrie.wu@mediatek.com>
+> 
+> This series adds support for multi hardware jpeg encoding, by first
+> adding use of_platform_populate to manage each hardware information:
+> interrupt, clock, register bases and power. Secondly add encoding
+> work queue to deal with the encoding requestsof multi-hardware
+> at the same time. Lastly, add output picture reorder function
+> interface to eliminate the out of order images.
+> 
+> This series has been tested with MT8195 Gstreamer.
+> Encoding worked for this chip.
 
-diff --git a/drivers/leds/flash/leds-mt6360.c b/drivers/leds/flash/leds-mt6360.c
-index e1066a52d2d2..1af6c5898343 100644
---- a/drivers/leds/flash/leds-mt6360.c
-+++ b/drivers/leds/flash/leds-mt6360.c
-@@ -71,10 +71,6 @@ enum {
- #define MT6360_STRBTO_STEPUS		32000
- #define MT6360_STRBTO_MAXUS		2432000
- 
--#define STATE_OFF			0
--#define STATE_KEEP			1
--#define STATE_ON			2
--
- struct mt6360_led {
- 	union {
- 		struct led_classdev isnk;
-@@ -84,7 +80,7 @@ struct mt6360_led {
- 	struct v4l2_flash *v4l2_flash;
- 	struct mt6360_priv *priv;
- 	u32 led_no;
--	u32 default_state;
-+	enum led_default_state default_state;
- };
- 
- struct mt6360_priv {
-@@ -405,10 +401,10 @@ static int mt6360_isnk_init_default_state(struct mt6360_led *led)
- 		level = LED_OFF;
- 
- 	switch (led->default_state) {
--	case STATE_ON:
-+	case LEDS_DEFSTATE_ON:
- 		led->isnk.brightness = led->isnk.max_brightness;
- 		break;
--	case STATE_KEEP:
-+	case LEDS_DEFSTATE_KEEP:
- 		led->isnk.brightness = min(level, led->isnk.max_brightness);
- 		break;
- 	default:
-@@ -443,10 +439,10 @@ static int mt6360_flash_init_default_state(struct mt6360_led *led)
- 		level = LED_OFF;
- 
- 	switch (led->default_state) {
--	case STATE_ON:
-+	case LEDS_DEFSTATE_ON:
- 		flash->led_cdev.brightness = flash->led_cdev.max_brightness;
- 		break;
--	case STATE_KEEP:
-+	case LEDS_DEFSTATE_KEEP:
- 		flash->led_cdev.brightness =
- 			min(level, flash->led_cdev.max_brightness);
- 		break;
-@@ -760,25 +756,6 @@ static int mt6360_init_flash_properties(struct mt6360_led *led,
- 	return 0;
- }
- 
--static int mt6360_init_common_properties(struct mt6360_led *led,
--					 struct led_init_data *init_data)
--{
--	const char *const states[] = { "off", "keep", "on" };
--	const char *str;
--	int ret;
--
--	if (!fwnode_property_read_string(init_data->fwnode,
--					 "default-state", &str)) {
--		ret = match_string(states, ARRAY_SIZE(states), str);
--		if (ret < 0)
--			ret = STATE_OFF;
--
--		led->default_state = ret;
--	}
--
--	return 0;
--}
--
- static void mt6360_v4l2_flash_release(struct mt6360_priv *priv)
- {
- 	int i;
-@@ -852,10 +829,7 @@ static int mt6360_led_probe(struct platform_device *pdev)
- 
- 		led->led_no = reg;
- 		led->priv = priv;
--
--		ret = mt6360_init_common_properties(led, &init_data);
--		if (ret)
--			goto out_flash_release;
-+		led->default_state = led_init_default_state_get(child);
- 
- 		if (reg == MT6360_VIRTUAL_MULTICOLOR ||
- 		    reg <= MT6360_LED_ISNKML)
--- 
-2.35.1
+When building this I get a sparse warning and a number of kerneldoc
+warnings:
+
+sparse: WARNINGS
+SPARSE:drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c:401:24: warning: symbol 'mtk_jpegenc_hw_driver' was not declared. Should it be static?
+
+kerneldoc: WARNINGS
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h:111: warning: Function parameter or member 'clks' not described in 'mtk_jpegenc_clk'
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h:111: warning: Function parameter or member 'clk_num' not described in 'mtk_jpegenc_clk'
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h:173: warning: Function parameter or member 'reg_encbase' not described in 'mtk_jpeg_dev'
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h:173: warning: Function parameter or member 'enc_hw_dev' not described in 'mtk_jpeg_dev'
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h:173: warning: Function parameter or member 'is_jpgenc_multihw' not described in 'mtk_jpeg_dev'
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h:173: warning: Function parameter or member 'enc_hw_wq' not described in 'mtk_jpeg_dev'
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h:173: warning: Function parameter or member 'enchw_rdy' not described in 'mtk_jpeg_dev'
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h:238: warning: Function parameter or member 'jpeg_work' not described in 'mtk_jpeg_ctx'
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h:238: warning: Function parameter or member 'total_frame_num' not described in 'mtk_jpeg_ctx'
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h:238: warning: Function parameter or member 'dst_done_queue' not described in 'mtk_jpeg_ctx'
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h:238: warning: Function parameter or member 'done_queue_lock' not described in 'mtk_jpeg_ctx'
+drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h:238: warning: Function parameter or member 'last_done_frame_num' not described in 'mtk_jpeg_ctx'
+
+Can you fix this in a v14?
+
+Thank you!
+
+	Hans
+
+> 
+> Patches 1 Adds jpeg encoder dt-bindings for mt8195
+> 
+> Patches 2 jpeg encoder builds two module for using Multi-HW,
+> export some functions to make them visible by other modules.
+> 
+> Patches 3 use devm_of_platform_populate to manage multi-hardware.
+> 
+> Patch 4 add jpeg encoding timeout function to judge hardware timeout.
+> 
+> Patch 5 add encoding work queue to deal with multi-hardware encoding
+> at the same time.
+> 
+> Patch 6 add output picture reorder function to order images.
+> 
+> Patch 7 add stop cmd function to deal with EOS operation.
+> ---
+> This series patches dependent on:
+> media_stage tree:
+> [1]
+> https://git.linuxtv.org/media_stage.git/commit/?id=b3627647f9ea7473d10fb08a95fd7c4133a17ca4
+> 
+> patch1 new jpegenc dt-bindings included files
+> [2] MM IOMMU binding:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20220217113453.13658-2-yong.wu@mediatek.com/
+> 
+> [3] MT8195 power domain:
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=580579
+> 
+> Changes compared with v12:
+> - some modifications for patch v12's review comments.
+> 
+> Changes compared with v11:
+> - some modifications for patch v11's review comments.
+> - fix yaml file check errors.
+> 
+> Changes compared with v10:
+> - some modifications for patch v10's review comments.
+> - fix Gstreamer test errors.
+> 
+> Changes compared with v9:
+> - some modifications for patch v9's review comments.
+> 
+> Changes compared with v8:
+> - some modifications for patch v8's review comments.
+> - add stop cmd function.
+> 
+> Changes compared with v7:
+> - some modifications for patch v6's review comments.
+> 
+> Changes compared with v6:
+> - new yaml file for mt8195 jpeg encoder.
+> - some modifications for patch v5's review comments.
+> 
+> Changes compared with v5:
+> - use of_platform_populate to replace component framework to
+>   manage multi-hardware in patch 2.
+> 
+> Changes compared with v4:
+> - No change compaered with v4
+> 
+> Changes compared with v3:
+> - Structure patches for consistency, non-backward
+>   compatible and do not break any existing functionality
+> 
+> Changes compared with v2:
+> - Split the last two patches into several patches
+>   to enhance readability
+> - Correct some syntax errors
+> - Explain why the component framework is used
+> 
+> Changes compared with v1:
+> - Add jpeg encoder dt-bindings for MT8195
+> - Use component framework to manage jpegenc HW
+> - Add jpegenc output pic reorder function interface
+> 
+> kyrie wu (7):
+>   dt-bindings: mediatek: Add mediatek, mt8195-jpgenc compatible
+>   mtk-jpegenc: export jpeg encoder functions
+>   mtk-jpegenc: support jpegenc multi-hardware
+>   mtk-jpegenc: add jpegenc timeout func interface
+>   mtk-jpegenc: add jpeg encode worker interface
+>   mtk-jpegenc: add output pic reorder interface
+>   mtk-jpegenc: add stop cmd interface for jpgenc
+> 
+>  .../media/mediatek,mt8195-jpegenc.yaml        | 147 ++++++++++
+>  drivers/media/platform/mediatek/jpeg/Makefile |  11 +-
+>  .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 255 ++++++++++++++---
+>  .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  81 +++++-
+>  .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  |   1 +
+>  .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.h  |   3 +-
+>  .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 258 ++++++++++++++++++
+>  7 files changed, 715 insertions(+), 41 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+> 
 
 
