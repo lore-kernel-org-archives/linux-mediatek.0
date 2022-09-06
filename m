@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14FFDC38145
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 09:30:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92F84ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 09:36:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jvGbJ+KC1RP80Rzn1mqrYiL/R0gbW0BhvVQJYjHpVCU=; b=exAQx84I7mmkP5Qkh6Yksqn3Uq
-	wAQ8sZNqbwBNYFGl4oqV7QNzzBzzHfnty8V8tQwfgXzsiJC6cSM7ZxTK0erSQPFkiwvprQd9Se0O2
-	uel/F4V4Co011sgPUbzRCm0av9+A/4QWlneld7M+qAGIcNvzAyC7mdlJcegA25mA+uVnPlsx+zD2s
-	bGcgqQh0WWp+TlbJZYVmLXGtKYOYHZ0pD4YgcUcmZEnuZOwFH0yiJjAoCZ47WFJxFod8i0u7ECwVc
-	YX7KM2q/yUuord2kEwV/wiP7RrWQl38ntOklNYUC69n+JkGSI0dQJozZutcADrV8A9u49tc1Xmhd1
-	v0P553UA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iXNrNuT55qB4UEKn0dm1EhQ6AW108Y1kOKA357cPY9Y=; b=BTlaYhbHwHmi+geVluIqBJYmf8
+	d+BOSkJSkb5hQ8mmvPtHX3pKmShiAOA1re1u0gD96hPDkIydgUxM5V+38A6AxSdBbblyxIFB7supP
+	pvLMwKK77PkQCQPQ809Twe8McOOKwe9N5cRMgyfIZxFhh4Z3hiVkQ3uMO0CSB+/eE2dI6Ijaclz1c
+	beMUmh5zy+2MNcNazfvRdgyG4Phgx+yC+B1MUPFljUwDvouRyKqGQolrMxqcdOFMkznZMOa1qtXzL
+	5A1tlKwCib3UDNTNHMk9oZBxEa4HQGvERnUpCWfG9zgT+in36YflD8+T8h2Gw5qVRfVH+lnijQrrD
+	PG1QLiaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVUu7-00BpG8-A3; Tue, 06 Sep 2022 09:29:59 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oVV0A-00BujO-BJ; Tue, 06 Sep 2022 09:36:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVUrw-00BnwF-Kw; Tue, 06 Sep 2022 09:27:46 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1A36D6601F39;
-	Tue,  6 Sep 2022 10:27:42 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662456463;
-	bh=q/pjRlc+P1EXAov84vHYYZkyXsNxDJtdjpHTIHnbw+w=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=X7j7JJNoV/4qGA8hHzxbjp29Roe1pEwLywRePOz7quQpuSF3ELkhNFcFELz4usSLR
-	 ma9qGN9glh2aoynYH44mhPSEr5MX4SB38P5Dzu2KhkvV3PP1Sled5nHEjvl3+4dkAN
-	 S9d7FBvig4OAydOT3pxG5AipzTqt471gt8hspnXlkaKtFjh3mjSZIpKfU8/Q1XMiLJ
-	 BNs79djZuVQXHT1FJUSqlU6zKaC9YGJqfwc3pQzc68D7EMRIpjOsLPm+zp3vXLg2LE
-	 ZublxmPgPhgumD9twr6pXezF0Albz7sAyU/WPAmyuNYyuck3VVOfxwZ7L/O3c5gJ52
-	 SU+2RwqRrJA7w==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: broonie@kernel.org
-Cc: lgirdwood@gmail.com,
-	perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com,
-	wenst@chromium.org,
-	pierre-louis.bossart@linux.intel.com,
-	peter.ujfalusi@linux.intel.com,
-	yung-chuan.liao@linux.intel.com,
-	ranjani.sridharan@linux.intel.com,
-	kai.vehmanen@linux.intel.com,
-	daniel.baluta@nxp.com,
-	trevor.wu@mediatek.com,
-	tzungbi@google.com,
-	angelogioacchino.delregno@collabora.com,
-	yc.hung@mediatek.com,
-	Allen-KH.Cheng@mediatek.com,
-	geert@linux-m68k.org,
-	chunxu.li@mediatek.com,
-	alsa-devel@alsa-project.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	sound-open-firmware@alsa-project.org,
-	kernel@collabora.com
-Subject: [PATCH 5/5] ASoC: SOF: mediatek: mt8195: Add devicetree support to select topologies
-Date: Tue,  6 Sep 2022 11:27:27 +0200
-Message-Id: <20220906092727.37324-6-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20220906092727.37324-1-angelogioacchino.delregno@collabora.com>
-References: <20220906092727.37324-1-angelogioacchino.delregno@collabora.com>
+	id 1oVV04-00BuaS-99; Tue, 06 Sep 2022 09:36:11 +0000
+X-UUID: 8db9a2fbf0024335a14e03fee1822126-20220906
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=iXNrNuT55qB4UEKn0dm1EhQ6AW108Y1kOKA357cPY9Y=;
+	b=e1fhNF4kfa/U7ZwVk9QWr8gi+fn8qm+fpj5cXm0B0cF7+Vbs6IOtOiYu1jfMXNhzEn+40Ed9K2ICAxntQ4ZH4ML4Fl6eDanKUXNFFniYpIrNbTyavgkDYOg813HzyjWpzbnpoZ4J7c+fErlOLSW8KXH4o9R2N2MUcJU/FpKqI7M=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:96ed65ad-5f73-4d31-b60e-83635c403119,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
+	_Ham,ACTION:release,TS:-5
+X-CID-META: VersionHash:84eae18,CLOUDID:dbfbd056-e800-47dc-8adf-0c936acf4f1b,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 8db9a2fbf0024335a14e03fee1822126-20220906
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <nathan.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 588875315; Tue, 06 Sep 2022 02:36:02 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.186) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Tue, 6 Sep 2022 16:45:21 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 6 Sep 2022 16:45:21 +0800
+From: nathan.lu <nathan.lu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: "jason-jh . lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rex-BC
+ Chen" <rex-bc.chen@mediatek.com>, Nathan Lu <nathan.lu@mediatek.com>, Moudy
+ Ho <moudy.ho@mediatek.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <wsd_upstream@mediatek.com>,
+	<lancelot.wu@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, amy zhang
+	<Amy.Zhang@mediatek.com>
+Subject: [PATCH v2 6/6] drm/mediatek: add mediatek-drm of vdosys0 support for mt8188
+Date: Tue, 6 Sep 2022 16:44:49 +0800
+Message-ID: <20220906084449.20124-7-nathan.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220906084449.20124-1-nathan.lu@mediatek.com>
+References: <20220906084449.20124-1-nathan.lu@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_022744_863460_AEF564BF 
-X-CRM114-Status: GOOD (  10.32  )
+X-CRM114-CacheID: sfid-20220906_023608_488650_4E567172 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,41 +91,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support devicetree by adding a snd_soc_of_mach array, specifying SOF
-topologies for a generic MT8195 machine and for Google Tomato
-Chromebooks.
+From: Nathan Lu <nathan.lu@mediatek.com>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+add driver data of mt8188 vdosys0 to mediatek-drm and the sub driver.
+
+Signed-off-by: amy zhang <Amy.Zhang@mediatek.com>
+Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
 ---
- sound/soc/sof/mediatek/mt8195/mt8195.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 29 ++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
-index c1590e78edd4..8e359c296308 100644
---- a/sound/soc/sof/mediatek/mt8195/mt8195.c
-+++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
-@@ -615,7 +615,20 @@ static struct snd_sof_dsp_ops sof_mt8195_ops = {
- 			SNDRV_PCM_INFO_NO_PERIOD_WAKEUP,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index d72263c8a621..649f22ac8cab 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -178,6 +178,18 @@ static const unsigned int mt8186_mtk_ddp_ext[] = {
+ 	DDP_COMPONENT_DPI0,
  };
  
-+static struct snd_sof_of_mach sof_mt8195_machs[] = {
-+	{
-+		.compatible = "google,tomato",
-+		.sof_tplg_filename = "sof-mt8195-mt6359-rt1019-rt5682-dts.tplg"
-+	}, {
-+		.compatible = "mediatek,mt8195",
-+		.sof_tplg_filename = "sof-mt8195.tplg"
-+	}, {
-+		/* sentinel */
-+	}
++static const unsigned int mt8188_mtk_ddp_main[] = {
++	DDP_COMPONENT_OVL0,
++	DDP_COMPONENT_RDMA0,
++	DDP_COMPONENT_COLOR0,
++	DDP_COMPONENT_CCORR,
++	DDP_COMPONENT_AAL0,
++	DDP_COMPONENT_GAMMA,
++	DDP_COMPONENT_POSTMASK0,
++	DDP_COMPONENT_DITHER0,
++	DDP_COMPONENT_DP_INTF0,
 +};
 +
- static const struct sof_dev_desc sof_of_mt8195_desc = {
-+	.of_machines = sof_mt8195_machs,
- 	.ipc_supported_mask	= BIT(SOF_IPC),
- 	.ipc_default		= SOF_IPC,
- 	.default_fw_path = {
+ static const unsigned int mt8192_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_OVL0,
+ 	DDP_COMPONENT_OVL_2L0,
+@@ -323,6 +335,19 @@ static const struct mtk_mmsys_match_data mt8186_mmsys_match_data = {
+ 	},
+ };
+ 
++static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
++	.main_path = mt8188_mtk_ddp_main,
++	.main_len = ARRAY_SIZE(mt8188_mtk_ddp_main),
++	.mmsys_dev_num = 1,
++};
++
++static const struct mtk_mmsys_match_data mt8188_mmsys_match_data = {
++	.num_drv_data = 1,
++	.drv_data = {
++		&mt8188_vdosys0_driver_data,
++	},
++};
++
+ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+ 	.main_path = mt8192_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt8192_mtk_ddp_main),
+@@ -376,6 +401,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
+ 	  .data = &mt8183_mmsys_match_data},
+ 	{ .compatible = "mediatek,mt8186-mmsys",
+ 	  .data = &mt8186_mmsys_match_data},
++	{ .compatible = "mediatek,mt8188-mmsys",
++	  .data = &mt8188_mmsys_match_data},
+ 	{ .compatible = "mediatek,mt8192-mmsys",
+ 	  .data = &mt8192_mmsys_match_data},
+ 	{ .compatible = "mediatek,mt8195-mmsys",
+@@ -734,6 +761,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8186-disp-mutex",
+ 	  .data = (void *)MTK_DISP_MUTEX },
++	{ .compatible = "mediatek,mt8188-disp-mutex",
++	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8192-disp-mutex",
+ 	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8195-disp-mutex",
 -- 
-2.37.2
+2.18.0
 
 
