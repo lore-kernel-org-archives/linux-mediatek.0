@@ -4,83 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C461ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 20:01:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 923EAECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 20:38:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2kt6CEFAueWK0HKI9UIQ8H4IFzaooggSyLPO1T4AFfQ=; b=iucM2VQ04Rw0c4TShVaXFfszBm
-	a2x7tiQGDU+lml4R3CzcvE3KbwKmrm9KLz0QOcNW+9SLM7Qfo9R2nox7a1uVyChJf+F9LiXyqrAJy
-	ruMmo+URY8N1na0k8D+aRwdhEIcojWVU+VosCJzwoUqZTTecY31JWVPfq4AAhVBBDWO07Zrj102eZ
-	tUkh4rChx0DHV7iU5qhEpDad4niRlv5DH3pN9PWq5yqF0gurornzYra3UgzthCz7lU6aNhqHIB9ts
-	B+PKzNDOlCIihyg4jKPOwpPRBKt8oe6boWAK4s8vQhiSh4NwLIfd8B9g6FTClgSCmNFIpq7N6i+fC
-	//OZXvNA==;
+	bh=h237n7/UKMUwrtK2SdW8VgK2awMEb5gtKYbegstNBYY=; b=bjSvvIC3QOmyOEsQYrLlnAozi2
+	RIIgLFaBcNR1jKzDBBHFgLCOKuhNJ4dy5LlcRP20RX854ke0LhIbxxMuXpZ9661Y0c+ewzjsGCfns
+	g/yeObKuA+eljz1AxDN8ZiBFiPqQ4cilPxyBFQmnUjf0z45E7DW6WsC7bWw72UQW5Jb5l3Mxs9N0H
+	Sv6Qd3R0hJi2vqAFHJNTghKPFz+cjrN/LN8BuQ+eGsRIyoA1B7PsAQ5Gs2afEwVDFQbHKq9Hw3J4K
+	0A6dwrEabZy6Efm2P2GL+6egMvIzY0XDZpmRXDmdMyg81rqVxud94Ipz2Lk8h39Z1DJGPWhXht4a1
+	M9C3HgXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVelJ-00Gx3B-0O; Tue, 06 Sep 2022 20:01:33 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1oVfLG-00HBkf-2N; Tue, 06 Sep 2022 20:38:42 +0000
+Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVel1-00Gwwn-Cf
-	for linux-mediatek@lists.infradead.org; Tue, 06 Sep 2022 20:01:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1662494474;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2kt6CEFAueWK0HKI9UIQ8H4IFzaooggSyLPO1T4AFfQ=;
-	b=dVL8SxPSOVrDQ9dbXWZFibqo8ImcRIM/NzedLI2Bi78Gu9gYCm1llHYHmwlsbNbl89V697
-	53vwwS3h7sGwXrFS+tajeFf9gcplvSq1W2kxL1Sk8MuD+OWi+R2IDjImgTpxYEpWEIBj90
-	kmaZRBQmMlCSK+87AHhdGoZM1TzBxQQ=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-176-95P6QindO7OjDY5gAuEzBA-1; Tue, 06 Sep 2022 16:01:12 -0400
-X-MC-Unique: 95P6QindO7OjDY5gAuEzBA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5CA503C138A2;
-	Tue,  6 Sep 2022 20:01:07 +0000 (UTC)
-Received: from [10.18.17.215] (dhcp-17-215.bos.redhat.com [10.18.17.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8EA191121315;
-	Tue,  6 Sep 2022 20:01:06 +0000 (UTC)
-Message-ID: <02b8e7b3-941d-8bb9-cd0e-992738893ba3@redhat.com>
-Date: Tue, 6 Sep 2022 16:01:06 -0400
+	id 1oVfL4-00HBfA-N9; Tue, 06 Sep 2022 20:38:32 +0000
+Received: by mail-qv1-xf32.google.com with SMTP id d1so9261514qvs.0;
+        Tue, 06 Sep 2022 13:38:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=h237n7/UKMUwrtK2SdW8VgK2awMEb5gtKYbegstNBYY=;
+        b=lCUlfk1RNpuxwAiYCvs/3Af6ZbW9gCaXR/t4W5EZj0lvBH2IGsJKDmR0RcAgRSdjbG
+         FIpDo9RB+OvUpMm3j3sp0ux9UB/EVGw6dw13YTCzjzUwUEUN8MpSur1hoUcF8dI+74ED
+         BdnCwwU3de5L7GIapuk4DTxRQ5GvNLcLJak13f6Pzq46uyjgbaNchtVelkZ0LouCTEtk
+         XinXrlCwiEKpdYkM7tWtGyPZUnAKprJ2+bTbUMnVyHrKJagiLap86OFpO5+gsHHG5YvD
+         iWNkKF+Z0KCIagRozUWrRO9QgDLOHaoW2xn1lFtbOEB1DfDwB85A0OMG14DiKOH1JJau
+         TEXg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=h237n7/UKMUwrtK2SdW8VgK2awMEb5gtKYbegstNBYY=;
+        b=pTs9mwpwjLq3zxiM34x1O+KVEhtLPHbOeeGp+secgdEIcMbbU0B6z2Qy9I0476lsyr
+         /dHT+OXu+Vf/ZF6gLVl5oOropSMFB8RHILu/+v/TY7ljl1wf7AqNmLW0slnr5StjSdnT
+         0Q4l3c2ERC9T9bD26av1CCM5jPL3HrUFng/uzlbCpSM9NvxGPmLz0nCvXaufIPhK/ZEm
+         QcNHu5XxRgEpKszdnXLFgfP0CGRnyTFR86kRTKcjGiaFQ2BlaM0TqwJy7p9AEvkfiIY8
+         ZfZbyx0MujAjqfwjcQ6XWAkKYjKB/uFH9vsWwvdP0XOhz/FcGI6K8thU8OUpmazzvYWH
+         CARQ==
+X-Gm-Message-State: ACgBeo0oTuuRcJOeeS7QgkuMnULVXL4O17zR/TA6lotnXU8lbWGGAadf
+	7L6lmWc77KCZDCrjNHQQd4hnqZrkE2E=
+X-Google-Smtp-Source: AA6agR4/gnXe/kw9M8c9Ft8wZy+DRa7WhO497d/AyApMFfagKNLbUVb7qzJX/XoqxQvZyYcORdmRMg==
+X-Received: by 2002:a0c:b2de:0:b0:499:363f:222f with SMTP id d30-20020a0cb2de000000b00499363f222fmr319781qvf.73.1662496706717;
+        Tue, 06 Sep 2022 13:38:26 -0700 (PDT)
+Received: from [192.168.1.3] (ip72-194-116-95.oc.oc.cox.net. [72.194.116.95])
+        by smtp.gmail.com with ESMTPSA id bn5-20020a05620a2ac500b006bb41ac3b6bsm12005175qkb.113.2022.09.06.13.38.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 06 Sep 2022 13:38:26 -0700 (PDT)
+Message-ID: <9df7311e-3b8c-40e0-d100-b8dbeb24373e@gmail.com>
+Date: Tue, 6 Sep 2022 13:38:19 -0700
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: BUG: HANG_DETECT waiting for migration_cpu_stop() complete
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.1
+Subject: Re: [PATCH v3 04/11] leds: bcm6328: Get rid of custom
+ led_init_default_state_get()
 Content-Language: en-US
-To: Tejun Heo <tj@kernel.org>, Jing-Ting Wu <jing-ting.wu@mediatek.com>
-Cc: Mukesh Ojha <quic_mojha@quicinc.com>,
- Peter Zijlstra <peterz@infradead.org>,
- Valentin Schneider <vschneid@redhat.com>, wsd_upstream@mediatek.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Jonathan.JMChen@mediatek.com,
- "chris.redpath@arm.com" <chris.redpath@arm.com>,
- Dietmar Eggemann <dietmar.eggemann@arm.com>,
- Vincent Donnefort <vdonnefort@gmail.com>, Ingo Molnar <mingo@redhat.com>,
- Juri Lelli <juri.lelli@redhat.com>,
- Vincent Guittot <vincent.guittot@linaro.org>,
- Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>,
- Mel Gorman <mgorman@suse.de>, Christian Brauner <brauner@kernel.org>,
- cgroups@vger.kernel.org, lixiong.liu@mediatek.com, wenju.xu@mediatek.com
-References: <88b2910181bda955ac46011b695c53f7da39ac47.camel@mediatek.com>
- <b605c3ec-94ab-a55f-5825-9b370d77ecf3@quicinc.com>
- <203d4614c1b2a498a240ace287156e9f401d5395.camel@mediatek.com>
- <YxeR0RoiTdm8sWCJ@slm.duckdns.org>
-From: Waiman Long <longman@redhat.com>
-In-Reply-To: <YxeR0RoiTdm8sWCJ@slm.duckdns.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Gene Chen <gene_chen@richtek.com>, Andrew Jeffery <andrew@aj.id.au>,
+ linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org
+Cc: Pavel Machek <pavel@ucw.cz>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Kurt Kanzenbach <kurt@linutronix.de>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Lee Jones <lee@kernel.org>
+References: <20220906135004.14885-1-andriy.shevchenko@linux.intel.com>
+ <20220906135004.14885-5-andriy.shevchenko@linux.intel.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <20220906135004.14885-5-andriy.shevchenko@linux.intel.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_130115_567674_046F284A 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20220906_133830_785516_1037D2D7 
+X-CRM114-Status: UNSURE (   7.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,30 +103,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/6/22 14:30, Tejun Heo wrote:
-> Hello,
->
-> (cc'ing Waiman in case he has a better idea)
->
-> On Mon, Sep 05, 2022 at 04:22:29PM +0800, Jing-Ting Wu wrote:
->> https://lore.kernel.org/lkml/YvrWaml3F+x9Dk+T@slm.duckdns.org/ is for
->> fix cgroup_threadgroup_rwsem <-> cpus_read_lock() deadlock.
->> But this issue is cgroup_threadgroup_rwsem <-> cpuset_rwsem deadlock.
-> If I'm understanding what you're writing correctly, this isn't a deadlock.
-> The cpuset_hotplug_workfn simply isn't being woken up while holding
-> cpuset_rwsem and others are just waiting for that lock to be released.
 
-I believe it is probably a bug in the scheduler core code. 
-__set_cpus_allowed_ptr_locked() calls affine_move_task() to move to a 
-random cpu within the new set allowable CPUs. However, if migration is 
-disabled, it shouldn't call affine_move_task() at all. Instead, I would 
-suggest that if the current cpu is within the new allowable cpus, it 
-should just skip doing affine_move_task(). Otherwise, it should fail 
-__set_cpus_allowed_ptr_locked().
 
-My 2 cents.
+On 9/6/2022 6:49 AM, Andy Shevchenko wrote:
+> LED core provides a helper to parse default state from firmware node.
+> Use it instead of custom implementation.
+> 
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-Cheers,
-Longman
-
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+-- 
+Florian
 
