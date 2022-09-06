@@ -4,88 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B7E0ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Sep 2022 18:39:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6E5ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 00:14:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K1MTDdfAKz9aoSX8ilXubTYZq/WPr36VrJHx6svKATQ=; b=n0tujSb6mpGmj7erx81GkDF6jd
-	xrALkDmnrVtlbnRuXDPLcJ8lTkV+8FjkRcHXPF++2+1v7fMYYpT7b82MODWHhPWhtnVrtnkRRKl+x
-	kJoVttgVZj9iDFzW/Hg9ekKTjbKKFF15zBlrr68Q9BKJaIq0yAJQji5RzXea/oqg3L6aEf+FPyJlB
-	YBnL9hzk48m9xyEOqAzobdYKnkvyP7A70kbiE6AzFzPE5u0LbxAXkUJBylE417c2+KV2/z0AaNrk+
-	5opOUQpxomiHPqmGikg2uuqXdeSl9MkpMmdE992Fvw4xWcnBcI1uU0WZ7fI87NlpBeeJoOTpSeMuc
-	giLIkj8Q==;
+	bh=m3LDgAKJxaJg9PpJj0i7Ohs7ZKByFbwNIQ2cg+Ecots=; b=4YcuRqHAprj2SMajtvjhLJNntM
+	sCj6NLOTJhB3zzrmBLhjMUSY4Q7n6SANa7k4YZAfFEqDAG/R/uIUh/ZUVs6j26Y6aOA5CkXasz33c
+	rNtOV6iuPWVdDb2N0hCYuhcGWHPavnHvYMDs9G6oI6E01ilf7P8fQTpDbABzmFvoRgY2cJ7uUJ4sr
+	nBE7r2QV1aDpMlz1MQUrVnCOnXnU6XjDsccL3NT+Ch5drrJa6ybGH6jP6GbYwBxFNhxM/nc40tLpS
+	k0f1Os07Av1loAzl+0/X8GWI0A32XWoOKNbPcMjpRjluHbigrPNq4eqz1LlzdwqnjKv8V3rnD9NJ7
+	qmZhxX0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVH0L-008YQt-Jp; Mon, 05 Sep 2022 18:39:29 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1oVMEQ-000csk-56; Tue, 06 Sep 2022 00:14:22 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVFDd-0072Tx-3R
-	for linux-mediatek@lists.infradead.org; Mon, 05 Sep 2022 16:45:14 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id f15so7303169wrw.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Sep 2022 09:45:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date;
-        bh=K1MTDdfAKz9aoSX8ilXubTYZq/WPr36VrJHx6svKATQ=;
-        b=Mdbe4lNEjOKt1m/PIP5k4T93n4/hWuCfvqW5xyt5F1giDcWH5pRihFrgnYzNZ6jH3N
-         PVthLMZOn1TijTS8UGOomkkEkjytWXbUddSTbGw++X9FxICXlCXjqAZiIosODJeyVsnT
-         IdEuI6wOELPjKqrtgVPH8p24mbfxW0XZrMhJf0AaSr8uDQqUrsz0EHyQDRVluGPTqKDo
-         puTSZeqE7aDznZMvOd1Y04Xqt6sQDGsX2yV/3hNZnpICYlkXlVZ4dI8PC6FGCMyFuXUR
-         Nc4EcvRP+25XqhfkKKeF09qeCllHAMOWhggmi9aymtaYzY+YaMOFm4mbmZ9qbWU79/za
-         +pBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=K1MTDdfAKz9aoSX8ilXubTYZq/WPr36VrJHx6svKATQ=;
-        b=gRLMNW5VWOIWG2nja2zWbM2luChnSxat2bJXbhWYVzxeXVvrswBU4NmmmA1/k80oc/
-         WxkgrIDgVpMt3j0qFL+/tkCeKSPvOlTmdj+LsnUoflZAnevL6OkwAT2jjmRE6oZoDxjV
-         9JYfBuqkbXEx3g8o00pRC8kPgJt+rsID82Qk7UAmXTje8Vt/RCGVQnq172pApUoR2mXW
-         OBCrqBneVgYX4nTeGjWeBh5AJnJ0jDGNF+l4W0Tzgba3+rSONAgl6Y2yYYH3thbDSJoF
-         uV83FiM2JNDRpkTDDrNbDqyULoBzWtmIOifYLN4jpyHh2Cp8obrtLIYvOhTYUP9crPvs
-         9ybA==
-X-Gm-Message-State: ACgBeo1TmKEfR1mos4+fPy7ffcu6Mbh2gOrdKXXTjNgfPYQVN6qKsZTM
-	o/xGT9vhVwBsZxNmmNTJgNe1tA==
-X-Google-Smtp-Source: AA6agR7t7aJ+mQvwyZ7GyHu2aiCC097TUevBiMrtfX3x5O01CUJBT+T+h8nzcxw1HlNWIIR8vtWjpg==
-X-Received: by 2002:adf:d1ec:0:b0:226:d538:40b0 with SMTP id g12-20020adfd1ec000000b00226d53840b0mr23811675wrd.693.1662396296690;
-        Mon, 05 Sep 2022 09:44:56 -0700 (PDT)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id f3-20020a1cc903000000b003a604a29a34sm11217135wmb.35.2022.09.05.09.44.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Sep 2022 09:44:56 -0700 (PDT)
-Message-ID: <e2bcc0db-8810-2652-0eba-9cdc096b2054@linaro.org>
-Date: Mon, 5 Sep 2022 18:44:54 +0200
+	id 1oVM83-000Yj3-Jy; Tue, 06 Sep 2022 00:07:51 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A74EB611EB;
+	Tue,  6 Sep 2022 00:07:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0ABEC4347C;
+	Tue,  6 Sep 2022 00:07:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1662422864;
+	bh=RxQyOvfbzTJkC9ckq7/uP41kOb0nxGHixfMNPEkB6RA=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=kFwY5KqNb6b9n8NOFXWpz+HYE6YVqjx81SNPB3/oVYGTK/5yH6Qxt+hzvmJ1+EX4U
+	 OhRXHIFyanQEwG9zkjd+4s23X61mcSLowRhl8eWZ2EnDcUppJ0nWDankWF0QuGbVy+
+	 3tfa9yTR51+Tg5UP8lJsxurCae1k7Loh8OeXAkdhidCGQjF7pQRh9+Uov/ulAF3rmr
+	 U+qBDamFkwwILDWq2syCyM1uzyFPoai1ofg7kMKWuIYnlz2kl7DkJJjPdWcJkXfXcL
+	 Rf6uwwSNThoi4EYMAnK/atlZ9pTbmG4NpYz398rd+FH7sbtaY4bpD1eUJsNj0OEyUS
+	 jABPKtUT/6P0w==
+Received: by mail-oa1-f50.google.com with SMTP id 586e51a60fabf-1225219ee46so24673649fac.2;
+        Mon, 05 Sep 2022 17:07:43 -0700 (PDT)
+X-Gm-Message-State: ACgBeo2obOi90c1vIi08/gDmAPFTTM9/qX5kJ5ivy3PzQkjtmD5GdPdV
+	ecTvkiEH5DuJ9De7xf2p1hzOHhf+15ixlQS2eQ==
+X-Google-Smtp-Source: AA6agR46ebI4rLN5RRhRCAOQDygpog78f0GxeDOcg5xJMYnLMdSYXFm5zfWlTiUQ7NgrhuKg9KWHhObK133bvniKzvM=
+X-Received: by 2002:a05:6871:96:b0:11d:ca1b:db19 with SMTP id
+ u22-20020a056871009600b0011dca1bdb19mr10929345oaa.74.1662422862591; Mon, 05
+ Sep 2022 17:07:42 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH v9,4/7] thermal: mediatek: Add LVTS driver for mt8192
- thermal zones
-To: bchihi@baylibre.com, rafael@kernel.org, rui.zhang@intel.com,
- amitk@kernel.org
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- khilman@baylibre.com, mka@chromium.org, robh+dt@kernel.org,
- krzk+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, james.lo@mediatek.com,
- fan.chen@mediatek.com, louis.yu@mediatek.com, rex-bc.chen@mediatek.com,
- abailon@baylibre.com
-References: <20220817080757.352021-1-bchihi@baylibre.com>
- <20220817080757.352021-5-bchihi@baylibre.com>
-Content-Language: en-US
-In-Reply-To: <20220817080757.352021-5-bchihi@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220905_094506_584188_52CF256C 
-X-CRM114-Status: GOOD (  48.18  )
+References: <20220901044149.16782-1-rex-bc.chen@mediatek.com> <20220901044149.16782-4-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220901044149.16782-4-rex-bc.chen@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 6 Sep 2022 08:07:21 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9iSFYzz2-EZRyPDAZ40DM1M-pSVi9Nzto+hHEFXduPHw@mail.gmail.com>
+Message-ID: <CAAOTY_9iSFYzz2-EZRyPDAZ40DM1M-pSVi9Nzto+hHEFXduPHw@mail.gmail.com>
+Subject: Re: [PATCH v17 03/10] drm/mediatek: Add MT8195 Embedded DisplayPort driver
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, krzysztof.kozlowski+dt@linaro.org, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, deller@gmx.de, David Airlie <airlied@linux.ie>, 
+	Markus Schneider-Pargmann <msp@baylibre.com>, Guillaume Ranquet <granquet@baylibre.com>, 
+	Jitao Shi <jitao.shi@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
+	liangxu.xu@mediatek.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-fbdev@vger.kernel.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,1808 +86,2594 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi, Bo-Chen:
 
-Hi Balsam,
+Please help to fix the compile warning:
 
-On 17/08/2022 10:07, bchihi@baylibre.com wrote:
-> From: Michael Kao <michael.kao@mediatek.com>
-> 
-> Add LVTS v4 (Low Voltage Thermal Sensor) driver to report junction
-> temperatures in MediaTek SoC mt8192 and register the maximum temperature
-> of sensors and each sensor as a thermal zone.
+../drivers/gpu/drm/mediatek/mtk_dp.c: In function =E2=80=98mtk_dp_video_mut=
+e=E2=80=99:
+../drivers/gpu/drm/mediatek/mtk_dp.c:947:23: warning: format =E2=80=98%x=E2=
+=80=99
+expects argument of type =E2=80=98unsigned int=E2=80=99, but argument 4 has=
+ type =E2=80=98long
+unsigned int=E2=80=99 [-Wformat=3D]
+  947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n"=
+,
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../include/linux/dev_printk.h:129:27: note: in definition of macro =E2=80=
+=98dev_printk=E2=80=99
+  129 |   _dev_printk(level, dev, fmt, ##__VA_ARGS__);  \
+      |                           ^~~
+../include/linux/dev_printk.h:163:31: note: in expansion of macro =E2=80=98=
+dev_fmt=E2=80=99
+  163 |   dev_printk(KERN_DEBUG, dev, dev_fmt(fmt), ##__VA_ARGS__); \
+      |                               ^~~~~~~
+../drivers/gpu/drm/mediatek/mtk_dp.c:947:2: note: in expansion of
+macro =E2=80=98dev_dbg=E2=80=99
+  947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n"=
+,
+      |  ^~~~~~~
+../drivers/gpu/drm/mediatek/mtk_dp.c:947:36: note: format string is defined=
+ here
+  947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n"=
+,
+      |                                   ~^
+      |                                    |
+      |                                    unsigned int
+      |                                   %lx
 
-As it is a new driver submission, a more detailed hardware description 
-of the sensors may help to have a better understanding of the driver 
-implementation
+Regards,
+Chun-Kuang.
 
-I think also the patch size is too big and the driver should be 
-submitted with a reduced number of changes.
-
-The header file should be simplified as much as possible. As well as the 
-structures.
-
-The driver initialization should be lvts_v4_init -> lvts_init, that 
-means one function to init and one to exit. No other functions being 
-called from lvts_v4 to lvts
-
-Overall the driver is very complex and hard to review. I tried to review 
-as much as possible but there is too much code. So I gave up the review 
-after digging into too many details to be reworked.
-
-See below
-
-> Co-developed-by: Yu-Chia Chang <ethan.chang@mediatek.com>
-> Signed-off-by: Yu-Chia Chang <ethan.chang@mediatek.com>
-> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> Co-developed-by: Ben Tseng <ben.tseng@mediatek.com>
-> Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
-> Co-developed-by: Alexandre Bailon <abailon@baylibre.com>
-> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> Co-developed-by: Balsam CHIHI <bchihi@baylibre.com>
-> Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
+Bo-Chen Chen <rex-bc.chen@mediatek.com> =E6=96=BC 2022=E5=B9=B49=E6=9C=881=
+=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=AD=E5=8D=8812:42=E5=AF=AB=E9=81=93=EF=
+=BC=9A
+>
+> From: Markus Schneider-Pargmann <msp@baylibre.com>
+>
+> This patch adds a embedded displayport driver for the MediaTek mt8195 SoC=
+.
+>
+> It supports the MT8195, the embedded DisplayPort units. It offers
+> DisplayPort 1.4 with up to 4 lanes.
+>
+> The driver creates a child device for the phy. The child device will
+> never exist without the parent being active. As they are sharing a
+> register range, the parent passes a regmap pointer to the child so that
+> both can work with the same register range. The phy driver sets device
+> data that is read by the parent to get the phy device that can be used
+> to control the phy properties.
+>
+> This driver is based on an initial version by
+> Jitao shi <jitao.shi@mediatek.com>
+>
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 > ---
->   drivers/thermal/mediatek/Kconfig        |  21 +
->   drivers/thermal/mediatek/Makefile       |   2 +
->   drivers/thermal/mediatek/lvts_thermal.c | 861 ++++++++++++++++++++++++
->   drivers/thermal/mediatek/lvts_thermal.h | 385 +++++++++++
->   drivers/thermal/mediatek/lvts_v4.c      | 249 +++++++
->   5 files changed, 1518 insertions(+)
->   create mode 100644 drivers/thermal/mediatek/lvts_thermal.c
->   create mode 100644 drivers/thermal/mediatek/lvts_thermal.h
->   create mode 100644 drivers/thermal/mediatek/lvts_v4.c
-> 
-> diff --git a/drivers/thermal/mediatek/Kconfig b/drivers/thermal/mediatek/Kconfig
-> index 8ff32370b591..02a1b3b42ce0 100644
-> --- a/drivers/thermal/mediatek/Kconfig
-> +++ b/drivers/thermal/mediatek/Kconfig
-> @@ -19,4 +19,25 @@ config MTK_SOC_THERMAL
->   	  information for MediaTek platforms. This driver configures
->   	  thermal controllers to collect temperature via AUXADC interface.
->   
-> +config MTK_LVTS_THERMAL
-> +	tristate "LVTS temperature sensor driver for MediaTek SoCs"
-> +	depends on HAS_IOMEM
-> +	depends on NVMEM
-> +	depends on RESET_CONTROLLER
-> +	help
-> +	  Enable this option if you want to get SoC temperature information
-> +	  for MediaTek platforms. This driver configures LVTS
-> +	  (Low Voltage Thermal Sensor) thermal controllers to collect
-> +	  temperatures via ASIF (Analog Serial Interface).
-
-lvts_thermal.c is some kindof library and should be compiled 
-unconditionnaly if MTK_LVTS_V4
-
-So the block above should disappear. The help moved below and the option 
-'if MTK_LVTS_THERMAL' removed.
-
-When MTK_LVTS_V4 is set, then it selects MTK_LVTS_THERMAL. All the 
-export symbols can be removed from lvts_thermal
-
-> +if MTK_LVTS_THERMAL > +
-> +config MTK_LVTS_V4
-> +	tristate "LVTS v4 driver for MediaTek SoCs"
-> +	help
-> +	  Enable this option if you want to get temperature information
-> +	  for LVTS v4 SoCs.
+>  drivers/gpu/drm/mediatek/Kconfig      |    9 +
+>  drivers/gpu/drm/mediatek/Makefile     |    2 +
+>  drivers/gpu/drm/mediatek/mtk_dp.c     | 1999 +++++++++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_dp_reg.h |  305 ++++
+>  4 files changed, 2315 insertions(+)
+>  create mode 100644 drivers/gpu/drm/mediatek/mtk_dp.c
+>  create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_reg.h
+>
+> diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/=
+Kconfig
+> index 2976d21e9a34..e66f4a3b6be0 100644
+> --- a/drivers/gpu/drm/mediatek/Kconfig
+> +++ b/drivers/gpu/drm/mediatek/Kconfig
+> @@ -21,6 +21,15 @@ config DRM_MEDIATEK
+>           This driver provides kernel mode setting and
+>           buffer management to userspace.
+>
+> +config DRM_MEDIATEK_DP
+> +       tristate "DRM DPTX Support for MediaTek SoCs"
+> +       depends on DRM_MEDIATEK
+> +       select PHY_MTK_DP
+> +       select DRM_DISPLAY_HELPER
+> +       select DRM_DISPLAY_DP_HELPER
+> +       help
+> +         DRM/KMS Display Port driver for MediaTek SoCs.
 > +
-> +endif
+>  config DRM_MEDIATEK_HDMI
+>         tristate "DRM HDMI Support for Mediatek SoCs"
+>         depends on DRM_MEDIATEK
+> diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek=
+/Makefile
+> index 6e604a933ed0..3517d1c65cd7 100644
+> --- a/drivers/gpu/drm/mediatek/Makefile
+> +++ b/drivers/gpu/drm/mediatek/Makefile
+> @@ -23,3 +23,5 @@ mediatek-drm-hdmi-objs :=3D mtk_cec.o \
+>                           mtk_hdmi_ddc.o
+>
+>  obj-$(CONFIG_DRM_MEDIATEK_HDMI) +=3D mediatek-drm-hdmi.o
 > +
->   endif
-> diff --git a/drivers/thermal/mediatek/Makefile b/drivers/thermal/mediatek/Makefile
-> index bec325f06a46..e4e62d726776 100644
-> --- a/drivers/thermal/mediatek/Makefile
-> +++ b/drivers/thermal/mediatek/Makefile
-> @@ -1 +1,3 @@
->   obj-$(CONFIG_MTK_SOC_THERMAL)		+= auxadc_thermal.o
-> +obj-$(CONFIG_MTK_LVTS_THERMAL)		+= lvts_thermal.o
-> +obj-$(CONFIG_MTK_LVTS_V4)			+= lvts_v4.o
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+> +obj-$(CONFIG_DRM_MEDIATEK_DP) +=3D mtk_dp.o
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek=
+/mtk_dp.c
 > new file mode 100644
-> index 000000000000..a1681b914c69
+> index 000000000000..e2ec9b02b1aa
 > --- /dev/null
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> @@ -0,0 +1,861 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -0,0 +1,1999 @@
+> +// SPDX-License-Identifier: GPL-2.0
 > +/*
-> + * Copyright (c) 2022 MediaTek Inc.
+> + * Copyright (c) 2019-2022 MediaTek Inc.
+> + * Copyright (c) 2022 BayLibre
 > + */
 > +
-> +#include <linux/bits.h>
+> +#include <drm/display/drm_dp.h>
+> +#include <drm/display/drm_dp_helper.h>
+> +#include <drm/drm_atomic_helper.h>
+> +#include <drm/drm_bridge.h>
+> +#include <drm/drm_crtc.h>
+> +#include <drm/drm_edid.h>
+> +#include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+> +#include <drm/drm_print.h>
+> +#include <drm/drm_probe_helper.h>
+> +#include <linux/arm-smccc.h>
 > +#include <linux/clk.h>
 > +#include <linux/delay.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/io.h>
-> +#include <linux/iopoll.h>
+> +#include <linux/errno.h>
 > +#include <linux/kernel.h>
-> +#include <linux/module.h>
+> +#include <linux/media-bus-format.h>
 > +#include <linux/nvmem-consumer.h>
 > +#include <linux/of.h>
-> +#include <linux/of_address.h>
-> +#include <linux/of_device.h>
 > +#include <linux/of_irq.h>
+> +#include <linux/of_platform.h>
+> +#include <linux/phy/phy.h>
 > +#include <linux/platform_device.h>
-> +#include <linux/reset.h>
-> +#include <linux/slab.h>
-> +#include <linux/string.h>
-> +#include <linux/thermal.h>
-> +#include "lvts_thermal.h"
+> +#include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+> +#include <linux/soc/mediatek/mtk_sip_svc.h>
+> +#include <video/videomode.h>
 > +
-> +static int lvts_raw_to_temp(struct lvts_formula_coeff *co, unsigned int msr_raw)
-> +{
-> +	/* This function returns degree mC */
-
-nit: extra line
-
-> +	int temp;
+> +#include "mtk_dp_reg.h"
 > +
-> +	temp = (co->a * ((unsigned long long)msr_raw)) >> 14;
-> +	temp = temp + co->golden_temp * 500 + co->b;
+> +#define MTK_DP_SIP_CONTROL_AARCH32     MTK_SIP_SMC_CMD(0x523)
+> +#define MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE        (BIT(0) | BIT(5))
 > +
-> +	return temp;
-> +}
+> +#define MTK_DP_THREAD_CABLE_STATE_CHG  BIT(0)
+> +#define MTK_DP_THREAD_HPD_EVENT                BIT(1)
 > +
-> +static unsigned int lvts_temp_to_raw(struct lvts_formula_coeff *co, int temp)
-> +{
-> +	unsigned int msr_raw;
+> +#define MTK_DP_4P1T 4
+> +#define MTK_DP_HDE 2
+> +#define MTK_DP_PIX_PER_ADDR 2
+> +#define MTK_DP_AUX_WAIT_REPLY_COUNT 20
+> +#define MTK_DP_TBC_BUF_READ_START_ADDR 0x8
+> +#define MTK_DP_TRAIN_VOLTAGE_LEVEL_RETRY 5
+> +#define MTK_DP_TRAIN_DOWNSCALE_RETRY 10
 > +
-> +	msr_raw = div_s64((s64)((co->golden_temp * 500 + co->b - temp)) << 14, (-1 * co->a));
-> +
-> +	return msr_raw;
-> +}
-
-Please explain and document the formulas raw <--> temp above
-> +
-> +static int soc_temp_lvts_read_temp(void *data, int *temperature)
-> +{
-> +	struct soc_temp_tz *lvts_tz = (struct soc_temp_tz *)data;
-> +	struct lvts_data *lvts_data = lvts_tz->lvts_data;
-> +	struct device *dev = lvts_data->dev;
-> +	unsigned int msr_raw;
-> +
-> +	msr_raw = readl(lvts_data->reg[lvts_tz->id]) & MRS_RAW_MASK;
-> +	if (msr_raw == 0) {
-> +		/* Prevents a false critical temperature trap */
-> +		*temperature = 0;
-> +		dev_dbg(dev, "LVTS not yet ready\n");
-> +
-> +	} else
-> +		*temperature = lvts_raw_to_temp(&lvts_data->coeff, msr_raw);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct thermal_zone_of_device_ops soc_temp_lvts_ops = {
-> +	.get_temp = soc_temp_lvts_read_temp,
-> +};
-
-[ ... ] ^^
-
-> +static void lvts_write_device(struct lvts_data *lvts_data, unsigned int data, int tc_id)
-> +{
-> +	void __iomem *base = GET_BASE_ADDR(lvts_data, tc_id);
-
-Here every call is computing the base + addr_offset. But addr_offset is 
-only used in the structure to compute this base address.
-
-Pre-compute the base address for the slot and remove the GET_BASE_ADDR 
-macro.
-
-> +	writel(DEVICE_WRITE(lvts_data) | data, LVTS_CONFIG_0 + base);
-> +	usleep_range(20, 30);
-
-Why this delay is needed? There are a lot of calls to this function, 
-these delays will sum.
-
-IMO, a good understanding of why this is needed, will help to find out 
-when to use it.
-
-> +}
-> +
-> +static unsigned int lvts_read_device(struct lvts_data *lvts_data, unsigned int reg_idx, int tc_id)
-> +{
-> +	void __iomem *base = GET_BASE_ADDR(lvts_data, tc_id);
-
-ditto
-
-> +	struct device *dev = lvts_data->dev;
-> +	unsigned int data;
-> +	int ret;
-> +
-> +	writel(READ_DEVICE_REG(lvts_data, reg_idx), LVTS_CONFIG_0 + base);
-> +	usleep_range(20, 30);
-
-ditto
-
-> +	ret = readl_poll_timeout(LVTS_CONFIG_0 + base, data, !(data & DEVICE_ACCESS_STARTUS), 2, 200);
-> +	if (ret)
-> +		dev_err(dev, "LVTS_TC_%d DEVICE_ACCESS_START is not ready\n", tc_id);
-
-Should it return?
-
-> +
-> +	data = readl(LVTSRDATA0_0 + base);
-> +
-> +	return data;
-> +}
-> +
-> +static const char * const lvts_error_table[] = {
-> +	"Idle",
-> +	"Write transaction",
-> +	"Waiting for read after write",
-> +	"Disable continue fetching on device",
-> +	"Read transaction",
-> +	"Set device special register for voltage threshold",
-> +	"Set TSMCU number for fetch"
+> +enum {
+> +       MTK_DP_CAL_GLB_BIAS_TRIM =3D 0,
+> +       MTK_DP_CAL_CLKTX_IMPSE,
+> +       MTK_DP_CAL_LN_TX_IMPSEL_PMOS_0,
+> +       MTK_DP_CAL_LN_TX_IMPSEL_PMOS_1,
+> +       MTK_DP_CAL_LN_TX_IMPSEL_PMOS_2,
+> +       MTK_DP_CAL_LN_TX_IMPSEL_PMOS_3,
+> +       MTK_DP_CAL_LN_TX_IMPSEL_NMOS_0,
+> +       MTK_DP_CAL_LN_TX_IMPSEL_NMOS_1,
+> +       MTK_DP_CAL_LN_TX_IMPSEL_NMOS_2,
+> +       MTK_DP_CAL_LN_TX_IMPSEL_NMOS_3,
+> +       MTK_DP_CAL_MAX,
 > +};
 > +
-> +static void wait_all_tc_sensing_point_idle(struct lvts_data *lvts_data)
-
-return an error
-
+> +struct mtk_dp_train_info {
+> +       bool sink_ssc;
+> +       bool cable_plugged_in;
+> +       /* link_rate is in multiple of 0.27Gbps */
+> +       int link_rate;
+> +       int lane_count;
+> +       unsigned int channel_eq_pattern;
+> +};
+> +
+> +struct mtk_dp_info {
+> +       enum dp_pixelformat format;
+> +       struct videomode vm;
+> +};
+> +
+> +struct mtk_dp_efuse_fmt {
+> +       unsigned short idx;
+> +       unsigned short shift;
+> +       unsigned short mask;
+> +       unsigned short min_val;
+> +       unsigned short max_val;
+> +       unsigned short default_val;
+> +};
+> +
+> +struct mtk_dp {
+> +       bool enabled;
+> +       u8 max_lanes;
+> +       u8 max_linkrate;
+> +       u8 rx_cap[DP_RECEIVER_CAP_SIZE];
+> +       u32 cal_data[MTK_DP_CAL_MAX];
+> +       u32 irq_thread_handle;
+> +       /* irq_thread_lock is used to protect irq_thread_handle */
+> +       spinlock_t irq_thread_lock;
+> +
+> +       struct device *dev;
+> +       struct drm_bridge bridge;
+> +       struct drm_bridge *next_bridge;
+> +       struct drm_connector *conn;
+> +       struct drm_device *drm_dev;
+> +       struct drm_dp_aux aux;
+> +
+> +       struct mtk_dp_info info;
+> +       struct mtk_dp_train_info train_info;
+> +
+> +       struct platform_device *phy_dev;
+> +       struct phy *phy;
+> +       struct regmap *regs;
+> +};
+> +
+> +static const struct mtk_dp_efuse_fmt mtk_dp_efuse_data[MTK_DP_CAL_MAX] =
+=3D {
+> +       [MTK_DP_CAL_GLB_BIAS_TRIM] =3D {
+> +               .idx =3D 3,
+> +               .shift =3D 27,
+> +               .mask =3D 0x1f,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0x1e,
+> +               .default_val =3D 0xf,
+> +       },
+> +       [MTK_DP_CAL_CLKTX_IMPSE] =3D {
+> +               .idx =3D 0,
+> +               .shift =3D 9,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_PMOS_0] =3D {
+> +               .idx =3D 2,
+> +               .shift =3D 28,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_PMOS_1] =3D {
+> +               .idx =3D 2,
+> +               .shift =3D 20,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_PMOS_2] =3D {
+> +               .idx =3D 2,
+> +               .shift =3D 12,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_PMOS_3] =3D {
+> +               .idx =3D 2,
+> +               .shift =3D 4,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_NMOS_0] =3D {
+> +               .idx =3D 2,
+> +               .shift =3D 24,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_NMOS_1] =3D {
+> +               .idx =3D 2,
+> +               .shift =3D 16,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_NMOS_2] =3D {
+> +               .idx =3D 2,
+> +               .shift =3D 8,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_NMOS_3] =3D {
+> +               .idx =3D 2,
+> +               .shift =3D 0,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +};
+> +
+> +static struct regmap_config mtk_dp_regmap_config =3D {
+> +       .reg_bits =3D 32,
+> +       .val_bits =3D 32,
+> +       .reg_stride =3D 4,
+> +       .max_register =3D SEC_OFFSET + 0x90,
+> +       .name =3D "mtk-dp-registers",
+> +};
+> +
+> +static struct mtk_dp *mtk_dp_from_bridge(struct drm_bridge *b)
 > +{
-> +	void __iomem *base;
-> +	struct device *dev = lvts_data->dev;
-> +	unsigned int error_code, is_error;
-> +	int i, cnt, ret;
-> +
-> +	for (cnt = 0; cnt < 2; cnt++) {
-
-Why 2 loops? It should be documented.
-
-No litterals please.
-
-> +		is_error = 0;
-> +
-> +		for (i = 0; i < lvts_data->num_tc; i++) {
-> +			base = GET_BASE_ADDR(lvts_data, i);
-> +			ret = readl_poll_timeout(LVTSMSRCTL1_0 + base, error_code,
-> +				!(error_code & ALL_TC_SENSING_POINT_STATUS), 2, 200);
-
-readl_poll_timeout() can fail, return ret
-
-Replace 2, 200 by macros
-
-> +			error_code = ((error_code & TC_SENSING_POINT_10) >> 8) +
-> +				((error_code & TC_SENSING_POINT_7) >> 6) + (error_code & TC_SENSING_POINT_0);
-
-Please document de decoding of the error code and move it after the 
-check of 'ret'
-
-> +			if (ret)
-> +				dev_err(dev, "LVTS_TC_%d Error Code : %s\n", i, lvts_error_table[error_code]);
-
-The error is coming from the read_poll_timeout() no from error_code, so 
-if error_code is positive, then return something:
-
-something:
-  - "Write transaction", "Waiting for read after write", "Read 
-transaction" -> -EBUSY ?
-
-  - Other -> -EIO ?
-
-I suggest to remove the lvts_error_table, just write a comment for the 
-errors and write the number in the trace
-
-> +
-> +			if (error_code != 0)
-> +				is_error = 1;
-			
-			return the error
-
-> +		}
-> +
-> +		if (is_error == 0)
-> +			break;
-> +	}
-
-return 0;
-
+> +       return container_of(b, struct mtk_dp, bridge);
 > +}
 > +
-> +static void lvts_reset(struct lvts_data *lvts_data)
-
-error handling: static int ...
-
+> +static u32 mtk_dp_read(struct mtk_dp *mtk_dp, u32 offset)
 > +{
-> +	if (lvts_data->reset)
-> +		reset_control_assert(lvts_data->reset);
-
-error handling
-
+> +       u32 read_val;
+> +       int ret;
 > +
-> +	if (lvts_data->reset)
-> +		reset_control_deassert(lvts_data->reset);
-
-error handling
-
-It is the same condition, both calls can go under the same block.
-
-
-BTW, why assert + deassert ?
-
+> +       ret =3D regmap_read(mtk_dp->regs, offset, &read_val);
+> +       if (ret) {
+> +               dev_err(mtk_dp->dev, "Failed to read register 0x%x: %d\n"=
+,
+> +                       offset, ret);
+> +               return 0;
+> +       }
+> +
+> +       return read_val;
 > +}
 > +
-> +static void device_identification(struct lvts_data *lvts_data)
-
-error handling: static int ...
-
+> +static int mtk_dp_write(struct mtk_dp *mtk_dp, u32 offset, u32 val)
 > +{
-> +	void __iomem *base;
-> +	struct device *dev = lvts_data->dev;
-> +	unsigned int i, data;
+> +       int ret =3D regmap_write(mtk_dp->regs, offset, val);
 > +
-> +	for (i = 0; i < lvts_data->num_tc; i++) {
-> +		base = GET_BASE_ADDR(lvts_data, i);
-> +		writel(ENABLE_LVTS_CTRL_CLK, LVTSCLKEN_0 + base);
-
-Isn't it already done with the clk framework ?
-
-> +		lvts_write_device(lvts_data, RESET_ALL_DEVICES(lvts_data), i);
-
-Why a call to RESET_*ALL*_DEVICES in the loop? I'm confused, it is 
-resetting all the devices but with a 'tc_id' passed as parameter
-
-Is it possible to use the assert reset for that ?
-
-> +		writel(READ_BACK_DEVICE_ID(lvts_data), LVTS_CONFIG_0 + base);
-
-What means READ_BACK?
-
-> +		usleep_range(20, 30);
-
-Why is that needed ?
-
-> +		/* Check LVTS device ID */
-> +		data = (readl(LVTS_ID_0 + base) & DEVICE_REG_DATA);
-> +		if (data != (lvts_data->tc->dev_id + i))
-> +			dev_err(dev, "LVTS_TC_%d, Device ID should be 0x%x, but 0x%x\n",
-> +				i, (lvts_data->tc->dev_id + i), data);
-
-I'm confused, what is the purpose of the device_identification() 
-function if you already know the id? When this situation can happen?
-
-> +	}
+> +       if (ret)
+> +               dev_err(mtk_dp->dev,
+> +                       "Failed to write register 0x%x with value 0x%x\n"=
+,
+> +                       offset, val);
+> +       return ret;
 > +}
 > +
-> +static void disable_all_sensing_points(struct lvts_data *lvts_data)
+> +static int mtk_dp_update_bits(struct mtk_dp *mtk_dp, u32 offset,
+> +                             u32 val, u32 mask)
 > +{
-> +	void __iomem *base;
-> +	unsigned int i;
+> +       int ret =3D regmap_update_bits(mtk_dp->regs, offset, mask, val);
 > +
-> +	for (i = 0; i < lvts_data->num_tc; i++) {
-> +		base = GET_BASE_ADDR(lvts_data, i);
-> +		writel(DISABLE_SENSING_POINT, LVTSMONCTL0_0 + base);
-> +	}
+> +       if (ret)
+> +               dev_err(mtk_dp->dev,
+> +                       "Failed to update register 0x%x with value 0x%x, =
+mask 0x%x\n",
+> +                       offset, val, mask);
+> +       return ret;
 > +}
 > +
-> +static void enable_all_sensing_points(struct lvts_data *lvts_data)
+> +static void mtk_dp_bulk_16bit_write(struct mtk_dp *mtk_dp, u32 offset, u=
+8 *buf,
+> +                                   size_t length)
 > +{
-> +	void __iomem *base;
-> +	struct device *dev = lvts_data->dev;
-> +	const struct lvts_tc_settings *tc = lvts_data->tc;
-> +	unsigned int i, num;
+> +       int i;
 > +
-> +	for (i = 0; i < lvts_data->num_tc; i++) {
-> +		base = GET_BASE_ADDR(lvts_data, i);
-> +		num = tc[i].num_sensor;
-> +		if (num > ALL_SENSING_POINTS) {
-> +			dev_err(dev, "LVTS_TC_%d, illegal number of sensors: %d\n", i, tc[i].num_sensor);
+> +       /* 2 bytes per register */
+> +       for (i =3D 0; i < length; i +=3D 2) {
+> +               u32 val =3D buf[i] | (i + 1 < length ? buf[i + 1] << 8 : =
+0);
 > +
-> +			continue;
-> +		}
-> +
-> +		if ((tc[i].ts_offset == 1) && (num == 1))
-> +			writel(LVTS_SINGLE_SENSE | (0x1 << tc[i].ts_offset), LVTSMONCTL0_0 + base);
-> +
-> +		else
-> +			writel(ENABLE_SENSING_POINT(num), LVTSMONCTL0_0 + base);
-> +	}
+> +               if (mtk_dp_write(mtk_dp, offset + i * 2, val))
+> +                       return;
+> +       }
 > +}
 > +
-> +static void set_polling_speed(struct lvts_data *lvts_data, int tc_id)
+> +static void mtk_dp_msa_bypass_enable(struct mtk_dp *mtk_dp, bool enable)
 > +{
-> +	void __iomem *base = GET_BASE_ADDR(lvts_data, tc_id);
-> +	struct device *dev = lvts_data->dev;
-> +	const struct lvts_tc_settings *tc = lvts_data->tc;
-> +	unsigned int lvts_mon_ctl_1, lvts_mon_ctl_2;
+> +       u32 mask =3D HTOTAL_SEL_DP_ENC0_P0 | VTOTAL_SEL_DP_ENC0_P0 |
+> +                  HSTART_SEL_DP_ENC0_P0 | VSTART_SEL_DP_ENC0_P0 |
+> +                  HWIDTH_SEL_DP_ENC0_P0 | VHEIGHT_SEL_DP_ENC0_P0 |
+> +                  HSP_SEL_DP_ENC0_P0 | HSW_SEL_DP_ENC0_P0 |
+> +                  VSP_SEL_DP_ENC0_P0 | VSW_SEL_DP_ENC0_P0;
 > +
-> +	lvts_mon_ctl_1 = ((tc[tc_id].tc_speed->group_interval_delay << 20) &
-> +		GROUP_INTERVAL_DELAY_MASK) | (tc[tc_id].tc_speed->period_unit & PERIOD_UNIT_MASK);
-> +	lvts_mon_ctl_2 = ((tc[tc_id].tc_speed->filter_interval_delay << 16) &
-> +		FILTER_INTERVAL_DELAY_MASK) | (tc[tc_id].tc_speed->sensor_interval_delay &
-> +		SENSOR_INTERVAL_DELAY_MASK);
-> +	/*
-> +	 * Clock source of LVTS thermal controller is 26MHz.
-> +	 * Period unit is a base for all interval delays
-> +	 * All interval delays must multiply it to convert a setting to time.
-> +	 * Filter interval delay is a delay between two samples of the same sensor
-> +	 * Sensor interval delay is a delay between two samples of differnet sensors
-
-s/differnet/different/
-
-> +	 * Group interval delay is a delay between different rounds.
-> +	 * For example:
-> +	 *     If Period unit = C, filter delay = 1, sensor delay = 2, group delay = 1,
-> +	 *     and two sensors, TS1 and TS2, are in a LVTS thermal controller
-> +	 *     and then
-> +	 *     Period unit = C * 1/26M * 256 = 12 * 38.46ns * 256 = 118.149us
-> +	 *     Filter interval delay = 1 * Period unit = 118.149us
-> +	 *     Sensor interval delay = 2 * Period unit = 236.298us
-> +	 *     Group interval delay = 1 * Period unit = 118.149us
-> +	 *
-> +	 *     TS1    TS1 ... TS1    TS2    TS2 ... TS2    TS1...
-> +	 *        <--> Filter interval delay
-> +	 *                       <--> Sensor interval delay
-> +	 *                                             <--> Group interval delay
-> +	 */
-> +	writel(lvts_mon_ctl_1, LVTSMONCTL1_0 + base);
-> +	writel(lvts_mon_ctl_2, LVTSMONCTL2_0 + base);
-> +	dev_dbg(dev, "lvts_tc_%d, LVTSMONCTL1_0= 0x%x, LVTSMONCTL2_0= 0x%x\n",
-> +		 tc_id, readl(LVTSMONCTL1_0 + base), readl(LVTSMONCTL2_0 + base));
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3030, enable ? 0 : mask=
+, mask);
 > +}
 > +
-> +static void set_hw_filter(struct lvts_data *lvts_data, int tc_id)
+> +static void mtk_dp_set_msa(struct mtk_dp *mtk_dp)
 > +{
-> +	void __iomem *base = GET_BASE_ADDR(lvts_data, tc_id);
-> +	struct device *dev = lvts_data->dev;
-> +	const struct lvts_tc_settings *tc = lvts_data->tc;
-> +	unsigned int option = tc[tc_id].hw_filter & 0x7;
+> +       struct drm_display_mode mode;
+> +       struct videomode *vm =3D &mtk_dp->info.vm;
 > +
-> +	/*
-> +	 * hw filter
-> +	 * 000: Get one sample
-> +	 * 001: Get 2 samples and average them
-> +	 * 010: Get 4 samples, drop max and min, then average the rest of 2 samples
-> +	 * 011: Get 6 samples, drop max and min, then average the rest of 4 samples
-> +	 * 100: Get 10 samples, drop max and min, then average the rest of 8 samples
-> +	 * 101: Get 18 samples, drop max and min, then average the rest of 16 samples
-> +	 */
-> +	option = (option << 9) | (option << 6) | (option << 3) | option;
-
-I'm missing to understand, can you explain this bit changes?
-
-> +	writel(option, LVTSMSRCTL0_0 + base);
-> +	dev_dbg(dev, "lvts_tc_%d, LVTSMSRCTL0_0= 0x%x\n", tc_id, readl(LVTSMSRCTL0_0 + base));
+> +       drm_display_mode_from_videomode(vm, &mode);
+> +
+> +       /* horizontal */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3010,
+> +                          mode.htotal, HTOTAL_SW_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3018,
+> +                          vm->hsync_len + vm->hback_porch,
+> +                          HSTART_SW_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3028,
+> +                          vm->hsync_len, HSW_SW_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3028,
+> +                          0, HSP_SW_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3020,
+> +                          vm->hactive, HWIDTH_SW_DP_ENC0_P0_MASK);
+> +
+> +       /* vertical */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3014,
+> +                          mode.vtotal, VTOTAL_SW_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_301C,
+> +                          vm->vsync_len + vm->vback_porch,
+> +                          VSTART_SW_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_302C,
+> +                          vm->vsync_len, VSW_SW_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_302C,
+> +                          0, VSP_SW_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3024,
+> +                          vm->vactive, VHEIGHT_SW_DP_ENC0_P0_MASK);
+> +
+> +       /* horizontal */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3064,
+> +                          vm->hactive, HDE_NUM_LAST_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3154,
+> +                          mode.htotal, PGEN_HTOTAL_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3158,
+> +                          vm->hfront_porch,
+> +                          PGEN_HSYNC_RISING_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_315C,
+> +                          vm->hsync_len,
+> +                          PGEN_HSYNC_PULSE_WIDTH_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3160,
+> +                          vm->hback_porch + vm->hsync_len,
+> +                          PGEN_HFDE_START_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3164,
+> +                          vm->hactive,
+> +                          PGEN_HFDE_ACTIVE_WIDTH_DP_ENC0_P0_MASK);
+> +
+> +       /* vertical */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3168,
+> +                          mode.vtotal,
+> +                          PGEN_VTOTAL_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_316C,
+> +                          vm->vfront_porch,
+> +                          PGEN_VSYNC_RISING_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3170,
+> +                          vm->vsync_len,
+> +                          PGEN_VSYNC_PULSE_WIDTH_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3174,
+> +                          vm->vback_porch + vm->vsync_len,
+> +                          PGEN_VFDE_START_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3178,
+> +                          vm->vactive,
+> +                          PGEN_VFDE_ACTIVE_WIDTH_DP_ENC0_P0_MASK);
 > +}
 > +
-
-This function deserves an explanation. Why a dominator index exists?
-
-> +static int get_dominator_index(struct lvts_data *lvts_data, int tc_id)
+> +static int mtk_dp_set_color_format(struct mtk_dp *mtk_dp,
+> +                                  enum dp_pixelformat color_format)
 > +{
-> +	struct device *dev = lvts_data->dev;
-> +	const struct lvts_tc_settings *tc = lvts_data->tc;
-> +	int d_index;
+> +       u32 val;
 > +
-> +	if (tc[tc_id].dominator_sensing_point == ALL_SENSING_POINTS) {
-> +		d_index = ALL_SENSING_POINTS;
+> +       /* update MISC0 */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3034,
+> +                          color_format << DP_TEST_COLOR_FORMAT_SHIFT,
+> +                          DP_TEST_COLOR_FORMAT_MASK);
 > +
-> +	} else if ((tc[tc_id].dominator_sensing_point < tc[tc_id].num_sensor) ||
-> +		(tc[tc_id].ts_offset != 0)) {
-> +		d_index = tc[tc_id].dominator_sensing_point;
+> +       switch (color_format) {
+> +       case DP_PIXELFORMAT_YUV422:
+> +               val =3D PIXEL_ENCODE_FORMAT_DP_ENC0_P0_YCBCR422;
+> +               break;
+> +       case DP_PIXELFORMAT_RGB:
+> +               val =3D PIXEL_ENCODE_FORMAT_DP_ENC0_P0_RGB;
+> +               break;
+> +       default:
+> +               drm_warn(mtk_dp->drm_dev, "Unsupported color format: %d\n=
+",
+> +                        color_format);
+> +               return -EINVAL;
+> +       }
 > +
-> +	} else {
-> +		dev_err(dev, "LVTS_TC_%d: dominator sensing point = %d. \
-> +			It should be smaller than num_sensor %d\n",
-> +			tc_id, tc[tc_id].dominator_sensing_point, tc[tc_id].num_sensor);
-> +		dev_err(dev, "Using the sensing point 0 as the dominated sensor\n");
-> +		d_index = SENSING_POINT0;
-> +	}
-> +
-> +	return d_index;
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_303C,
+> +                          val, PIXEL_ENCODE_FORMAT_DP_ENC0_P0_MASK);
+> +       return 0;
 > +}
 > +
-> +static void disable_hw_reboot_interrupt(struct lvts_data *lvts_data, int tc_id)
+> +static void mtk_dp_set_color_depth(struct mtk_dp *mtk_dp)
 > +{
-> +	void __iomem *base = GET_BASE_ADDR(lvts_data, tc_id);
-> +	unsigned int temp;
+> +       /* Only support 8 bits currently */
+> +       /* Update MISC0 */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3034,
+> +                          DP_MSA_MISC_8_BPC, DP_TEST_BIT_DEPTH_MASK);
 > +
-> +	/*
-> +	* LVTS thermal controller has two interrupts for thermal HW reboot.
-> +	* One is for AP SW and the other is for RGU.
-
-May be reword "thermal controller" to something like "thermal domain" or 
-whatever. It is confusing with the thermal controller contained in 
-lvts_data.
-
-> +	* The interrupt of AP SW can be turned off by a bit of a register,
-> +	* but the other for RGU cannot.
-> +	* To prevent rebooting device accidentally, we are going to add
-> +	* a huge offset 0x3FFF to LVTS and make it always report extremely low temperature.
-> +	* LVTS always adds the offset 0x3FFF to MSR_RAW.
-> +	* When MSR_RAW is larger, SW will convert lower temperature.
-
-I'm not sure to fully understand the explanation and the goal.
-
-> +	*/ > +	temp = readl(LVTSPROTCTL_0 + base);
-> +	writel(temp | 0x3FFF, LVTSPROTCTL_0 + base);
-> +
-> +	/* Disable the interrupt of AP SW */
-> +	temp = readl(LVTSMONINT_0 + base);
-> +	writel(temp & ~(STAGE3_INT_EN), LVTSMONINT_0 + base);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_303C,
+> +                          VIDEO_COLOR_DEPTH_DP_ENC0_P0_8BIT,
+> +                          VIDEO_COLOR_DEPTH_DP_ENC0_P0_MASK);
 > +}
 > +
-> +static void enable_hw_reboot_interrupt(struct lvts_data *lvts_data, int tc_id)
+> +static void mtk_dp_config_mn_mode(struct mtk_dp *mtk_dp)
 > +{
-> +	void __iomem *base = GET_BASE_ADDR(lvts_data, tc_id);
-> +	unsigned int temp;
-> +
-> +	/* Enable the interrupt of AP SW */
-> +	temp = readl(LVTSMONINT_0 + base);
-> +	writel(temp | STAGE3_INT_EN, LVTSMONINT_0 + base);
-> +
-> +	/* Clear the offset */
-> +	temp = readl(LVTSPROTCTL_0 + base);
-> +	writel(temp & ~PROTOFFSET, LVTSPROTCTL_0 + base);
+> +       /* 0: hw mode, 1: sw mode */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3004,
+> +                          0, VIDEO_M_CODE_SEL_DP_ENC0_P0_MASK);
 > +}
 > +
-> +static void set_tc_hw_reboot_threshold(struct lvts_data *lvts_data, int trip_point, int tc_id)
+> +static void mtk_dp_set_sram_read_start(struct mtk_dp *mtk_dp, u32 val)
 > +{
-> +	void __iomem *base = GET_BASE_ADDR(lvts_data, tc_id);
-> +	struct device *dev = lvts_data->dev;
-> +	unsigned int msr_raw, temp, config, d_index;
-> +
-> +	d_index = get_dominator_index(lvts_data, tc_id);
-> +
-> +	dev_dbg(dev, "lvts_tc_%d: dominator sensing point = %d\n", tc_id, d_index);
-> +
-> +	disable_hw_reboot_interrupt(lvts_data, tc_id);
-> +	temp = readl(LVTSPROTCTL_0 + base);
-> +	if (d_index == ALL_SENSING_POINTS) {
-> +		/* Maximum of 4 sensing points */
-> +		config = (0x1 << 16);
-> +		writel(config | temp, LVTSPROTCTL_0 + base);
-> +
-> +	} else {
-> +		/* Select protection sensor */
-> +		config = ((d_index << 2) + 0x2) << 16;
-> +		writel(config | temp, LVTSPROTCTL_0 + base);
-> +	}
-
-So if ALL_SENSING_POINTS is set, the hardware is able to reboot on the 
-first sensors reaching the hw reboot temp, otherwise it is the specified 
-sensor which triggers the hw reboot? Do I read it correctly?
-
-Why not use the ALL_SENSING_POINTS for all the cases?
-
-> +	msr_raw = lvts_temp_to_raw(&lvts_data->coeff, trip_point);
-> +	writel(msr_raw, LVTSPROTTC_0 + base);
-> +	enable_hw_reboot_interrupt(lvts_data, tc_id);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_303C,
+> +                          val, SRAM_START_READ_THRD_DP_ENC0_P0_MASK);
 > +}
 > +
-> +static void set_all_tc_hw_reboot(struct lvts_data *lvts_data)
+> +static void mtk_dp_setup_encoder(struct mtk_dp *mtk_dp)
 > +{
-> +	const struct lvts_tc_settings *tc = lvts_data->tc;
-> +	int i, trip_point;
-> +
-> +	for (i = 0; i < lvts_data->num_tc; i++) {
-> +		trip_point = tc[i].hw_reboot_trip_point;
-> +
-> +		if (tc[i].num_sensor == 0)
-> +			continue;
-> +
-> +		if (trip_point == THERMAL_TEMP_INVALID)
-> +			continue;
-
-This initialization happens nowhere AFAICT.
-
-> +		set_tc_hw_reboot_threshold(lvts_data, trip_point, i);
-> +	}
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_303C,
+> +                          VIDEO_MN_GEN_EN_DP_ENC0_P0,
+> +                          VIDEO_MN_GEN_EN_DP_ENC0_P0);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3040,
+> +                          SDP_DOWN_CNT_DP_ENC0_P0_VAL,
+> +                          SDP_DOWN_CNT_INIT_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3364,
+> +                          SDP_DOWN_CNT_IN_HBLANK_DP_ENC1_P0_VAL,
+> +                          SDP_DOWN_CNT_INIT_IN_HBLANK_DP_ENC1_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3300,
+> +                          VIDEO_AFIFO_RDY_SEL_DP_ENC1_P0_VAL << 8,
+> +                          VIDEO_AFIFO_RDY_SEL_DP_ENC1_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3364,
+> +                          FIFO_READ_START_POINT_DP_ENC1_P0_VAL << 12,
+> +                          FIFO_READ_START_POINT_DP_ENC1_P0_MASK);
+> +       mtk_dp_write(mtk_dp, MTK_DP_ENC1_P0_3368, DP_ENC1_P0_3368_VAL);
 > +}
 > +
-> +static int lvts_init(struct lvts_data *lvts_data)
+> +static void mtk_dp_pg_enable(struct mtk_dp *mtk_dp, bool enable)
 > +{
-> +	struct platform_ops *ops = &lvts_data->ops;
-> +	struct device *dev = lvts_data->dev;
-> +	int ret;
-> +
-> +	ret = clk_prepare_enable(lvts_data->clk);
-> +	if (ret) {
-> +		dev_err(dev, "Failed to enable lvts controller clock: %d\n", ret);
-> +
-> +		return ret;
-> +	}
-> +
-> +	lvts_reset(lvts_data);
-> +	device_identification(lvts_data);
-> +	if (ops->device_enable_and_init)
-> +		ops->device_enable_and_init(lvts_data);
-> +
-> +	if (HAS_FEATURE(lvts_data, FEATURE_DEVICE_AUTO_RCK) && (ops->device_enable_auto_rck))
-> +		ops->device_enable_auto_rck(lvts_data);
-> +
-> +	else if (ops->device_read_count_rc_n)
-> +		ops->device_read_count_rc_n(lvts_data);
-> +
-> +	if (ops->set_cal_data)
-> +		ops->set_cal_data(lvts_data);
-> +
-> +	disable_all_sensing_points(lvts_data);
-> +	wait_all_tc_sensing_point_idle(lvts_data);
-
-Check the return code from wait_all_tc_sensing_point_idle() and if it is 
--EBUSY retry, if it fails again, return ret.
-
-> +	if (ops->init_controller)
-> +		ops->init_controller(lvts_data);
-> +
-> +	enable_all_sensing_points(lvts_data);
-> +	set_all_tc_hw_reboot(lvts_data);
-
-I'm not seeing so many error handling. Please check the errors, that 
-will probably help removing all the dev_dbg around
-
-> +	return 0;
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3038,
+> +                          enable ? VIDEO_SOURCE_SEL_DP_ENC0_P0_MASK : 0,
+> +                          VIDEO_SOURCE_SEL_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_31B0,
+> +                          PGEN_PATTERN_SEL_VAL << 4, PGEN_PATTERN_SEL_MA=
+SK);
 > +}
 > +
-> +static int prepare_calibration_data(struct lvts_data *lvts_data)
+> +static void mtk_dp_aux_irq_clear(struct mtk_dp *mtk_dp)
 > +{
-> +	struct device *dev = lvts_data->dev;
-> +	struct lvts_sensor_cal_data *cal_data = &lvts_data->cal_data;
-> +	struct platform_ops *ops = &lvts_data->ops;
-> +	int i;
-> +
-> +	cal_data->count_r = devm_kcalloc(dev, lvts_data->num_sensor,
-> +		sizeof(*cal_data->count_r), GFP_KERNEL);
-> +	if (!cal_data->count_r)
-> +		return -ENOMEM;
-> +
-> +	cal_data->count_rc = devm_kcalloc(dev, lvts_data->num_sensor,
-> +		sizeof(*cal_data->count_rc), GFP_KERNEL);
-> +	if (!cal_data->count_rc)
-> +		return -ENOMEM;
-> +
-> +	if (ops->efuse_to_cal_data && !cal_data->use_fake_efuse)
-> +		ops->efuse_to_cal_data(lvts_data);
-> +
-> +	if (cal_data->golden_temp == 0 || cal_data->golden_temp > GOLDEN_TEMP_MAX)
-> +		cal_data->use_fake_efuse = 1;
-> +
-> +	if (cal_data->use_fake_efuse) {
-> +		/* It means all efuse data are equal to 0 */
-> +		dev_err(dev, "This sample is not calibrated, fake !!\n");
-> +		cal_data->golden_temp = cal_data->default_golden_temp;
-> +		for (i = 0; i < lvts_data->num_sensor; i++) {
-> +			cal_data->count_r[i] = cal_data->default_count_r;
-> +			cal_data->count_rc[i] = cal_data->default_count_rc;
-> +		}
-> +	}
-> +
-> +	lvts_data->coeff.golden_temp = cal_data->golden_temp;
-> +	dev_dbg(dev, "golden_temp = %d\n", cal_data->golden_temp);
-> +
-> +	return 0;
+> +       mtk_dp_write(mtk_dp, MTK_DP_AUX_P0_3640, DP_AUX_P0_3640_VAL);
 > +}
 > +
-> +static int get_calibration_data(struct lvts_data *lvts_data)
+> +static void mtk_dp_aux_set_cmd(struct mtk_dp *mtk_dp, u8 cmd, u32 addr)
 > +{
-> +	struct device *dev = lvts_data->dev;
-> +	char cell_name[32];
-> +	struct nvmem_cell *cell;
-> +	u32 *buf;
-> +	size_t len;
-> +	int i, j, index = 0, ret;
-> +
-> +	lvts_data->efuse = devm_kcalloc(dev, lvts_data->num_efuse_addr,
-> +		sizeof(*lvts_data->efuse), GFP_KERNEL);
-> +	if (!lvts_data->efuse)
-> +		return -ENOMEM;
-> +
-> +	for (i = 0; i < lvts_data->num_efuse_block; i++) {
-> +		snprintf(cell_name, sizeof(cell_name), "lvts_calib_data%d", i + 1);
-> +		cell = nvmem_cell_get(dev, cell_name);
-> +		if (IS_ERR(cell)) {
-> +			dev_err(dev, "Failed to get nvmem cell %s\n", cell_name);
-> +
-> +			return PTR_ERR(cell);
-> +		}
-> +
-> +		buf = (u32 *)nvmem_cell_read(cell, &len);
-> +		nvmem_cell_put(cell);
-> +		if (IS_ERR(buf))
-> +			return PTR_ERR(buf);
-> +
-> +		for (j = 0; j < (len / sizeof(u32)); j++) {
-> +			if (index >= lvts_data->num_efuse_addr) {
-> +				dev_err(dev, "Array efuse is going to overflow");
-> +				kfree(buf);
-> +
-> +				return -EINVAL;
-> +			}
-> +
-> +			lvts_data->efuse[index] = buf[j];
-> +			index++;
-> +		}
-> +
-> +		kfree(buf);
-> +	}
-> +
-> +	ret = prepare_calibration_data(lvts_data);
-> +
-> +	return ret;
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3644,
+> +                          cmd, MCU_REQUEST_COMMAND_AUX_TX_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3648,
+> +                          addr, MCU_REQUEST_ADDRESS_LSB_AUX_TX_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_364C,
+> +                          addr >> 16, MCU_REQUEST_ADDRESS_MSB_AUX_TX_P0_=
+MASK);
 > +}
 > +
-> +static int lvts_init_tc_regs(struct device *dev, struct lvts_data *lvts_data)
+> +static void mtk_dp_aux_clear_fifo(struct mtk_dp *mtk_dp)
 > +{
-> +	void __iomem *base;
-> +	const struct lvts_tc_settings *tc = lvts_data->tc;
-> +	unsigned int i, j, s_index, x;
-> +
-> +	lvts_data->reg = devm_kcalloc(dev, lvts_data->num_sensor,
-> +		sizeof(*lvts_data->reg), GFP_KERNEL);
-> +	if (!lvts_data->reg)
-> +		return -ENOMEM;
-> +
-> +	for (i = 0; i < lvts_data->num_tc; i++) {
-> +		base = GET_BASE_ADDR(lvts_data, i);
-> +		for (j = 0; j < tc[i].num_sensor; j++) {
-> +			s_index = tc[i].sensor_map[j];
-> +			x = j + tc[i].ts_offset;
-> +			lvts_data->reg[s_index] = LVTSMSR0_0 + base + 0x4 * x;
-> +		}
-> +	}
-> +
-> +	return 0;
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3650,
+> +                          MCU_ACK_TRAN_COMPLETE_AUX_TX_P0,
+> +                          MCU_ACK_TRAN_COMPLETE_AUX_TX_P0 |
+> +                          PHY_FIFO_RST_AUX_TX_P0_MASK |
+> +                          MCU_REQ_DATA_NUM_AUX_TX_P0_MASK);
 > +}
 > +
-> +static int of_update_lvts_data(struct lvts_data *lvts_data, struct platform_device *pdev)
+> +static void mtk_dp_aux_request_ready(struct mtk_dp *mtk_dp)
 > +{
-> +	struct device *dev = lvts_data->dev;
-> +	struct resource *res;
-> +	int ret;
-> +
-> +	lvts_data->clk = devm_clk_get(dev, NULL);
-> +	if (IS_ERR(lvts_data->clk))
-> +		return PTR_ERR(lvts_data->clk);
-> +
-> +	/* Get base address */
-> +	res = platform_get_mem_or_io(pdev, 0);
-> +	if (!res) {
-> +		dev_err(dev, "No IO resource\n");
-> +
-> +		return -ENXIO;
-> +	}
-> +
-> +	lvts_data->base = devm_ioremap_resource(dev, res);
-> +	if (IS_ERR(lvts_data->base)) {
-> +		dev_err(dev, "Failed to remap io\n");
-> +
-> +		return PTR_ERR(lvts_data->base);
-> +	}
-> +
-> +	/* Get interrupt number */
-> +	ret = platform_get_irq(pdev, 0);
-> +	if (ret < 0) {
-> +		dev_err(dev, "No irq resource\n");
-> +
-> +		return ret;
-> +	}
-> +
-> +	lvts_data->irq_num = ret;
-> +	/* Get reset control */
-> +	lvts_data->reset = devm_reset_control_get_by_index(dev, 0);
-> +	if (IS_ERR(lvts_data->reset)) {
-> +		dev_err(dev, "Failed to get reset control\n");
-> +
-> +		return PTR_ERR(lvts_data->reset);
-> +	}
-> +
-> +	ret = lvts_init_tc_regs(dev, lvts_data);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = get_calibration_data(lvts_data);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3630,
+> +                          AUX_TX_REQUEST_READY_AUX_TX_P0,
+> +                          AUX_TX_REQUEST_READY_AUX_TX_P0);
 > +}
 > +
-> +static void lvts_device_close(struct lvts_data *lvts_data)
+> +static void mtk_dp_aux_fill_write_fifo(struct mtk_dp *mtk_dp, u8 *buf,
+> +                                      size_t length)
 > +{
-> +	void __iomem *base;
-> +	unsigned int i;
-> +
-> +	for (i = 0; i < lvts_data->num_tc; i++) {
-> +		base = GET_BASE_ADDR(lvts_data, i);
-> +		lvts_write_device(lvts_data, RESET_ALL_DEVICES(lvts_data), i);
-> +		writel(DISABLE_LVTS_CTRL_CLK, LVTSCLKEN_0 + base);
-> +	}
+> +       mtk_dp_bulk_16bit_write(mtk_dp, MTK_DP_AUX_P0_3708, buf, length);
 > +}
 > +
-> +static void lvts_close(struct lvts_data *lvts_data)
+> +static void mtk_dp_aux_read_rx_fifo(struct mtk_dp *mtk_dp, u8 *buf,
+> +                                   size_t length, int read_delay)
 > +{
-> +	disable_all_sensing_points(lvts_data);
-> +	wait_all_tc_sensing_point_idle(lvts_data);
-> +	lvts_device_close(lvts_data);
-> +	clk_disable_unprepare(lvts_data->clk);
+> +       int read_pos;
+> +
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3620,
+> +                          0, AUX_RD_MODE_AUX_TX_P0_MASK);
+> +
+> +       for (read_pos =3D 0; read_pos < length; read_pos++) {
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3620,
+> +                                  AUX_RX_FIFO_READ_PULSE_TX_P0,
+> +                                  AUX_RX_FIFO_READ_PULSE_TX_P0);
+> +
+> +               /* Hardware needs time to update the data */
+> +               usleep_range(read_delay, read_delay * 2);
+> +               buf[read_pos] =3D (u8)(mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_=
+3620) &
+> +                                    AUX_RX_FIFO_READ_DATA_AUX_TX_P0_MASK=
+);
+> +       }
 > +}
 > +
-> +static void tc_irq_handler(struct lvts_data *lvts_data, int tc_id)
+> +static void mtk_dp_aux_set_length(struct mtk_dp *mtk_dp, size_t length)
 > +{
-> +	void __iomem *base = GET_BASE_ADDR(lvts_data, tc_id);
-> +	const struct device *dev = lvts_data->dev;
-> +	unsigned int ret = readl(LVTSMONINTSTS_0 + base);
-> +
-> +	/* Write back to clear interrupt status */
-> +	writel(ret, LVTSMONINTSTS_0 + base);
-> +	dev_dbg(dev, "LVTS thermal controller %d, LVTSMONINTSTS=0x%08x\n", tc_id, ret);
-> +	if (ret & THERMAL_PROTECTION_STAGE_3)
-
-That means ?
-
-> +		dev_dbg(dev, "Thermal protection stage 3 interrupt triggered\n");
-
-When do we notify the thermal zone an interrupt happened because of a 
-trip point?
-
+> +       if (length > 0) {
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3650,
+> +                                  (length - 1) << 12,
+> +                                  MCU_REQ_DATA_NUM_AUX_TX_P0_MASK);
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_362C,
+> +                                  0,
+> +                                  AUX_NO_LENGTH_AUX_TX_P0 |
+> +                                  AUX_TX_AUXTX_OV_EN_AUX_TX_P0_MASK |
+> +                                  AUX_RESERVED_RW_0_AUX_TX_P0_MASK);
+> +       } else {
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_362C,
+> +                                  AUX_NO_LENGTH_AUX_TX_P0,
+> +                                  AUX_NO_LENGTH_AUX_TX_P0 |
+> +                                  AUX_TX_AUXTX_OV_EN_AUX_TX_P0_MASK |
+> +                                  AUX_RESERVED_RW_0_AUX_TX_P0_MASK);
+> +       }
 > +}
 > +
-> +static irqreturn_t irq_handler(int irq, void *dev_id)
+> +static int mtk_dp_aux_wait_for_completion(struct mtk_dp *mtk_dp, bool is=
+_read)
 > +{
-> +	void __iomem *base;
-> +	struct lvts_data *lvts_data = (struct lvts_data *)dev_id;
-> +	struct device *dev = lvts_data->dev;
-> +	const struct lvts_tc_settings *tc = lvts_data->tc;
-> +	unsigned int i, irq_bitmap;
+> +       int wait_reply =3D MTK_DP_AUX_WAIT_REPLY_COUNT;
 > +
-> +	base = lvts_data->base;
-> +	irq_bitmap = readl(THERMINTST + base);
-> +	dev_dbg(dev, "THERMINTST = 0x%x\n", irq_bitmap);
-
-IIUC, there is one interrupt happening when a temperature threshold is 
-crossed but we don't know which sensor it is. So we retrieve the bit 
-mask of interrupt pending, right ? ...
-
-> +	for (i = 0; i < lvts_data->num_tc; i++) {
-> +		if (tc[i].irq_bit == 0)
-
-... but then what do we do with this bitmap ?
-
-> +			tc_irq_handler(lvts_data, i);
-> +	}
+> +       while (--wait_reply) {
+> +               u32 aux_irq_status;
 > +
-> +	return IRQ_HANDLED;
+> +               if (is_read) {
+> +                       u32 fifo_status =3D mtk_dp_read(mtk_dp, MTK_DP_AU=
+X_P0_3618);
+> +
+> +                       if (fifo_status &
+> +                           (AUX_RX_FIFO_WRITE_POINTER_AUX_TX_P0_MASK |
+> +                            AUX_RX_FIFO_FULL_AUX_TX_P0_MASK)) {
+> +                               return 0;
+> +                       }
+> +               }
+> +
+> +               aux_irq_status =3D mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3640=
+);
+> +               if (aux_irq_status & AUX_RX_AUX_RECV_COMPLETE_IRQ_AUX_TX_=
+P0)
+> +                       return 0;
+> +
+> +               if (aux_irq_status & AUX_400US_TIMEOUT_IRQ_AUX_TX_P0)
+> +                       return -ETIMEDOUT;
+> +
+> +               /* Give the hardware a chance to reach completion before =
+retrying */
+> +               usleep_range(100, 500);
+> +       }
+> +
+> +       return -ETIMEDOUT;
 > +}
 > +
-> +static int lvts_register_irq_handler(struct lvts_data *lvts_data)
-
-You should use lvts_register_irq_handler(struct device *dev, int irq, 
-void *data)
-
+> +static int mtk_dp_aux_do_transfer(struct mtk_dp *mtk_dp, bool is_read, u=
+8 cmd,
+> +                                 u32 addr, u8 *buf, size_t length)
 > +{
-> +	struct device *dev = lvts_data->dev;
-> +	int ret;
+> +       int ret;
+> +       u32 reply_cmd;
 > +
-> +	ret = devm_request_irq(dev, lvts_data->irq_num, irq_handler, IRQF_TRIGGER_NONE,
-> +		"mtk_lvts", lvts_data);
-
-Change the name in order to prevent duplicate names, eg. dev_name(dev)
-
-> +	if (ret) {
-> +		dev_err(dev, "Failed to register LVTS IRQ, ret %d, irq_num %d\n",
-> +			ret, lvts_data->irq_num);
-> +		lvts_close(lvts_data);
-
-lvts_close() should be called from the call site of 
-lvts_register_irq_handler() if this one fails
-
+> +       if (is_read && (length > DP_AUX_MAX_PAYLOAD_BYTES ||
+> +                       (cmd =3D=3D DP_AUX_NATIVE_READ && !length)))
+> +               return -EINVAL;
 > +
-> +		return ret;
-> +	}
+> +       if (!is_read)
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3704,
+> +                                  AUX_TX_FIFO_NEW_MODE_EN_AUX_TX_P0,
+> +                                  AUX_TX_FIFO_NEW_MODE_EN_AUX_TX_P0);
 > +
-> +	return 0;
+> +       /* We need to clear fifo and irq before sending commands to the s=
+ink device. */
+> +       mtk_dp_aux_clear_fifo(mtk_dp);
+> +       mtk_dp_aux_irq_clear(mtk_dp);
+> +
+> +       mtk_dp_aux_set_cmd(mtk_dp, cmd, addr);
+> +       mtk_dp_aux_set_length(mtk_dp, length);
+> +
+> +       if (!is_read) {
+> +               if (length)
+> +                       mtk_dp_aux_fill_write_fifo(mtk_dp, buf, length);
+> +
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3704,
+> +                                  AUX_TX_FIFO_WDATA_NEW_MODE_T_AUX_TX_P0=
+_MASK,
+> +                                  AUX_TX_FIFO_WDATA_NEW_MODE_T_AUX_TX_P0=
+_MASK);
+> +       }
+> +
+> +       mtk_dp_aux_request_ready(mtk_dp);
+> +
+> +       /* Wait for feedback from sink device. */
+> +       ret =3D mtk_dp_aux_wait_for_completion(mtk_dp, is_read);
+> +
+> +       reply_cmd =3D mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3624) &
+> +                   AUX_RX_REPLY_COMMAND_AUX_TX_P0_MASK;
+> +
+> +       if (ret || reply_cmd) {
+> +               u32 phy_status =3D mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3628=
+) &
+> +                                AUX_RX_PHY_STATE_AUX_TX_P0_MASK;
+> +               if (phy_status !=3D AUX_RX_PHY_STATE_AUX_TX_P0_RX_IDLE) {
+> +                       drm_err(mtk_dp->drm_dev,
+> +                               "AUX Rx Aux hang, need SW reset\n");
+> +                       return -EIO;
+> +               }
+> +
+> +               return -ETIMEDOUT;
+> +       }
+> +
+> +       if (!length) {
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_362C,
+> +                                  0,
+> +                                  AUX_NO_LENGTH_AUX_TX_P0 |
+> +                                  AUX_TX_AUXTX_OV_EN_AUX_TX_P0_MASK |
+> +                                  AUX_RESERVED_RW_0_AUX_TX_P0_MASK);
+> +       } else if (is_read) {
+> +               int read_delay;
+> +
+> +               if (cmd =3D=3D (DP_AUX_I2C_READ | DP_AUX_I2C_MOT) ||
+> +                   cmd =3D=3D DP_AUX_I2C_READ)
+> +                       read_delay =3D 500;
+> +               else
+> +                       read_delay =3D 100;
+> +
+> +               mtk_dp_aux_read_rx_fifo(mtk_dp, buf, length, read_delay);
+> +       }
+> +
+> +       return 0;
 > +}
 > +
-> +static int lvts_register_thermal_zones(struct lvts_data *lvts_data)
+> +static void mtk_dp_set_swing_pre_emphasis(struct mtk_dp *mtk_dp, int lan=
+e_num,
+> +                                         int swing_val, int preemphasis)
 > +{
-> +	struct device *dev = lvts_data->dev;
-> +	struct thermal_zone_device *tzdev;
-> +	struct soc_temp_tz *lvts_tz;
-> +	int i, ret;
+> +       u32 lane_shift =3D lane_num * DP_TX1_VOLT_SWING_SHIFT;
 > +
-> +	for (i = 0; i < lvts_data->num_sensor; i++) {
-> +		lvts_tz = devm_kzalloc(dev, sizeof(*lvts_tz), GFP_KERNEL);
-> +		if (!lvts_tz) {
-> +			lvts_close(lvts_data);
+> +       dev_dbg(mtk_dp->dev,
+> +               "link training: swing_val =3D 0x%x, pre-emphasis =3D 0x%x=
+\n",
+> +               swing_val, preemphasis);
 > +
-> +			return -ENOMEM;
-> +		}
-> +
-> +		lvts_tz->id = i;
-> +		lvts_tz->lvts_data = lvts_data;
-> +		tzdev = devm_thermal_zone_of_sensor_register(dev, lvts_tz->id, lvts_tz,
-> +			&soc_temp_lvts_ops);
-> +		if (IS_ERR(tzdev)) {
-> +			if (lvts_tz->id != 0)
-> +				return 0;
-> +
-> +			ret = PTR_ERR(tzdev);
-> +			dev_err(dev, "Failed to register lvts tz %d, ret = %d\n", lvts_tz->id, ret);
-> +			lvts_close(lvts_data);
-> +
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	return 0;
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_SWING_EMP,
+> +                          swing_val << (DP_TX0_VOLT_SWING_SHIFT + lane_s=
+hift),
+> +                          DP_TX0_VOLT_SWING_MASK << lane_shift);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_SWING_EMP,
+> +                          preemphasis << (DP_TX0_PRE_EMPH_SHIFT + lane_s=
+hift),
+> +                          DP_TX0_PRE_EMPH_MASK << lane_shift);
 > +}
 > +
-> +void lvts_device_enable_and_init(struct lvts_data *lvts_data)
+> +static void mtk_dp_reset_swing_pre_emphasis(struct mtk_dp *mtk_dp)
 > +{
-> +	unsigned int i;
-> +
-> +	for (i = 0; i < lvts_data->num_tc; i++) {
-> +		lvts_write_device(lvts_data, STOP_COUNTING_V4, i);
-> +		lvts_write_device(lvts_data, SET_RG_TSFM_LPDLY_V4, i);
-> +		lvts_write_device(lvts_data, SET_COUNTING_WINDOW_20US1_V4, i);
-> +		lvts_write_device(lvts_data, SET_COUNTING_WINDOW_20US2_V4, i);
-> +		lvts_write_device(lvts_data, TSV2F_CHOP_CKSEL_AND_TSV2F_EN_V4, i);
-> +		lvts_write_device(lvts_data, TSBG_DEM_CKSEL_X_TSBG_CHOP_EN_V4, i);
-> +		lvts_write_device(lvts_data, SET_TS_RSV_V4, i);
-> +		lvts_write_device(lvts_data, SET_TS_EN_V4, i);
-> +		lvts_write_device(lvts_data, TOGGLE_RG_TSV2F_VCO_RST1_V4, i);
-> +		lvts_write_device(lvts_data, TOGGLE_RG_TSV2F_VCO_RST2_V4, i);
-> +	}
-> +
-> +	lvts_data->counting_window_us = 20;
-> +}
-> +EXPORT_SYMBOL_GPL(lvts_device_enable_and_init);
-> +
-> +void lvts_device_enable_auto_rck_v4(struct lvts_data *lvts_data)
-> +{
-> +	unsigned int i;
-> +
-> +	for (i = 0; i < lvts_data->num_tc; i++)
-> +		lvts_write_device(lvts_data, SET_LVTS_AUTO_RCK_V4, i);
-> +}
-> +EXPORT_SYMBOL_GPL(lvts_device_enable_auto_rck_v4);
-> +
-> +int lvts_device_read_count_rc_n_v4(struct lvts_data *lvts_data)
-> +{
-> +	void __iomem *base;
-> +	struct device *dev = lvts_data->dev;
-> +	const struct lvts_tc_settings *tc = lvts_data->tc;
-> +	struct lvts_sensor_cal_data *cal_data = &lvts_data->cal_data;
-> +	unsigned int s_index, data;
-> +	int ret, i, j;
-> +
-> +	cal_data->count_rc_now = devm_kcalloc(dev, lvts_data->num_sensor,
-> +		sizeof(*cal_data->count_rc_now), GFP_KERNEL);
-> +	if (!cal_data->count_rc_now)
-> +		return -ENOMEM;
-> +
-> +	for (i = 0; i < lvts_data->num_tc; i++) {
-> +		base = GET_BASE_ADDR(lvts_data, i);
-> +		for (j = 0; j < tc[i].num_sensor; j++) {
-> +			s_index = tc[i].sensor_map[j];
-> +			lvts_write_device(lvts_data, SELECT_SENSOR_RCK_V4(j), i);
-> +			lvts_write_device(lvts_data, SET_DEVICE_SINGLE_MODE_V4, i);
-> +			lvts_write_device(lvts_data, KICK_OFF_RCK_COUNTING_V4, i);
-> +			ret = readl_poll_timeout(LVTS_CONFIG_0 + base, data,
-> +				!(data & DEVICE_SENSING_STATUS), 2, 200);
-> +			if (ret)
-> +				dev_err(dev, "LVTS_TC_%d DEVICE_SENSING_STATUS didn't ready\n", i);
-> +
-> +			data = lvts_read_device(lvts_data, 0x00, i);
-> +			cal_data->count_rc_now[s_index] = (data & COUNT_RC_NOW_MASK);
-> +		}
-> +
-> +		/* Recover Setting for Normal Access on
-> +		 * temperature fetch
-> +		 */
-> +		lvts_write_device(lvts_data, SET_SENSOR_NO_RCK_V4, i);
-> +		lvts_write_device(lvts_data, SET_DEVICE_LOW_POWER_SINGLE_MODE_V4, i);
-> +	}
-> +
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL_GPL(lvts_device_read_count_rc_n_v4);
-> +
-> +void lvts_set_calibration_data_v4(struct lvts_data *lvts_data)
-> +{
-> +	void __iomem *base;
-> +	const struct lvts_tc_settings *tc = lvts_data->tc;
-> +	struct lvts_sensor_cal_data *cal_data = &lvts_data->cal_data;
-> +	unsigned int i, j, s_index, x;
-> +	u32 lvts_calib_data;
-> +
-> +	for (i = 0; i < lvts_data->num_tc; i++) {
-> +		base = GET_BASE_ADDR(lvts_data, i);
-> +		for (j = 0; j < tc[i].num_sensor; j++) {
-> +			s_index = tc[i].sensor_map[j];
-> +			x = j + tc[i].ts_offset;
-> +			if (HAS_FEATURE(lvts_data, FEATURE_DEVICE_AUTO_RCK))
-> +				lvts_calib_data = cal_data->count_r[s_index];
-> +
-> +			else
-> +				lvts_calib_data = (((u32)cal_data->count_rc_now[s_index]) *
-> +					cal_data->count_r[s_index]) >> 14;
-> +
-> +			writel(lvts_calib_data, LVTSEDATA00_0 + base + 0x4 * x);
-> +		}
-> +	}
-> +}
-> +EXPORT_SYMBOL_GPL(lvts_set_calibration_data_v4);
-> +
-> +void lvts_init_controller_v4(struct lvts_data *lvts_data)
-> +{
-> +	void __iomem *base;
-> +	struct device *dev = lvts_data->dev;
-> +	unsigned int i;
-> +
-> +	for (i = 0; i < lvts_data->num_tc; i++) {
-> +		base = GET_BASE_ADDR(lvts_data, i);
-> +		lvts_write_device(lvts_data, SET_DEVICE_LOW_POWER_SINGLE_MODE_V4, i);
-> +		writel(SET_SENSOR_INDEX, LVTSTSSEL_0 + base);
-> +		writel(SET_CALC_SCALE_RULES, LVTSCALSCALE_0 + base);
-> +		set_polling_speed(lvts_data, i);
-> +		set_hw_filter(lvts_data, i);
-> +		dev_dbg(dev, "lvts_tc_%d: read all %d sensors in %d us, one in %d us\n",
-> +			i, GET_TC_SENSOR_NUM(lvts_data, i), GROUP_LATENCY_US(lvts_data, i),
-> +			SENSOR_LATENCY_US(lvts_data, i));
-> +	}
-> +}
-> +EXPORT_SYMBOL_GPL(lvts_init_controller_v4);
-> +
-> +int lvts_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct lvts_data *lvts_data;
-> +	int ret;
-> +
-> +	lvts_data = (struct lvts_data *)of_device_get_match_data(dev);
-> +	if (!lvts_data)	{
-> +		dev_err(dev, "Failed to get lvts platform data\n");
-> +
-> +		return -ENODATA;
-> +	}
-> +
-> +	lvts_data->dev = &pdev->dev;
-> +	ret = of_update_lvts_data(lvts_data, pdev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	platform_set_drvdata(pdev, lvts_data);
-> +	ret = lvts_init(lvts_data);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = lvts_register_irq_handler(lvts_data);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = lvts_register_thermal_zones(lvts_data);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_SWING_EMP,
+> +                          0,
+> +                          DP_TX0_VOLT_SWING_MASK |
+> +                          DP_TX1_VOLT_SWING_MASK |
+> +                          DP_TX2_VOLT_SWING_MASK |
+> +                          DP_TX3_VOLT_SWING_MASK |
+> +                          DP_TX0_PRE_EMPH_MASK |
+> +                          DP_TX1_PRE_EMPH_MASK |
+> +                          DP_TX2_PRE_EMPH_MASK |
+> +                          DP_TX3_PRE_EMPH_MASK);
 > +}
 > +
-> +int lvts_remove(struct platform_device *pdev)
+> +static u32 mtk_dp_swirq_get_clear(struct mtk_dp *mtk_dp)
 > +{
-> +	struct lvts_data *lvts_data;
+> +       u32 irq_status =3D mtk_dp_read(mtk_dp, MTK_DP_TRANS_P0_35D0) &
+> +                        SW_IRQ_FINAL_STATUS_DP_TRANS_P0_MASK;
 > +
-> +	lvts_data = (struct lvts_data *)platform_get_drvdata(pdev);
-> +	lvts_close(lvts_data);
+> +       if (irq_status) {
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_35C8,
+> +                                  irq_status, SW_IRQ_CLR_DP_TRANS_P0_MAS=
+K);
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_35C8,
+> +                                  0, SW_IRQ_CLR_DP_TRANS_P0_MASK);
+> +       }
 > +
-> +	return 0;
+> +       return irq_status;
 > +}
 > +
-> +int lvts_suspend(struct platform_device *pdev, pm_message_t state)
+> +static u32 mtk_dp_hwirq_get_clear(struct mtk_dp *mtk_dp)
 > +{
-> +	int ret;
+> +       u32 irq_status =3D (mtk_dp_read(mtk_dp, MTK_DP_TRANS_P0_3418) &
+> +                         IRQ_STATUS_DP_TRANS_P0_MASK) >> 12;
 > +
-> +	ret = lvts_remove(pdev);
-> +	if (ret)
-> +		return ret;
+> +       if (irq_status) {
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3418,
+> +                                  irq_status, IRQ_CLR_DP_TRANS_P0_MASK);
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3418,
+> +                                  0, IRQ_CLR_DP_TRANS_P0_MASK);
+> +       }
 > +
-> +	return 0;
+> +       return irq_status;
 > +}
 > +
-> +int lvts_resume(struct platform_device *pdev)
+> +static void mtk_dp_hwirq_enable(struct mtk_dp *mtk_dp, bool enable)
 > +{
-> +	int ret;
-> +
-> +	ret = lvts_probe(pdev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3418,
+> +                          enable ? 0 :
+> +                          IRQ_MASK_DP_TRANS_P0_DISC_IRQ |
+> +                          IRQ_MASK_DP_TRANS_P0_CONN_IRQ |
+> +                          IRQ_MASK_DP_TRANS_P0_INT_IRQ,
+> +                          IRQ_MASK_DP_TRANS_P0_MASK);
 > +}
 > +
-> +void lvts_shutdown(struct platform_device *pdev)
+> +static void mtk_dp_initialize_settings(struct mtk_dp *mtk_dp)
 > +{
-> +	lvts_remove(pdev);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_342C,
+> +                          XTAL_FREQ_DP_TRANS_P0_DEFAULT,
+> +                          XTAL_FREQ_DP_TRANS_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3540,
+> +                          FEC_CLOCK_EN_MODE_DP_TRANS_P0,
+> +                          FEC_CLOCK_EN_MODE_DP_TRANS_P0);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_31EC,
+> +                          AUDIO_CH_SRC_SEL_DP_ENC0_P0,
+> +                          AUDIO_CH_SRC_SEL_DP_ENC0_P0);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_304C,
+> +                          0, SDP_VSYNC_RISING_MASK_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_IRQ_MASK,
+> +                          IRQ_MASK_AUX_TOP_IRQ, IRQ_MASK_AUX_TOP_IRQ);
 > +}
 > +
-> +MODULE_AUTHOR("Yu-Chia Chang <ethan.chang@mediatek.com>");
-> +MODULE_AUTHOR("Michael Kao <michael.kao@mediatek.com>");
-> +MODULE_DESCRIPTION("MediaTek LVTS Thermal Driver");
+> +static void mtk_dp_initialize_hpd_detect_settings(struct mtk_dp *mtk_dp)
+> +{
+> +       u32 val;
+> +       /* Debounce threshold */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3410,
+> +                          8, HPD_DEB_THD_DP_TRANS_P0_MASK);
+> +
+> +       val =3D (HPD_INT_THD_DP_TRANS_P0_LOWER_500US |
+> +              HPD_INT_THD_DP_TRANS_P0_UPPER_1100US) << 4;
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3410,
+> +                          val, HPD_INT_THD_DP_TRANS_P0_MASK);
+> +
+> +       /*
+> +        * Connect threshold 1.5ms + 5 x 0.1ms =3D 2ms
+> +        * Disconnect threshold 1.5ms + 5 x 0.1ms =3D 2ms
+> +        */
+> +       val =3D (5 << 8) | (5 << 12);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3410,
+> +                          val,
+> +                          HPD_DISC_THD_DP_TRANS_P0_MASK |
+> +                          HPD_CONN_THD_DP_TRANS_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3430,
+> +                          HPD_INT_THD_ECO_DP_TRANS_P0_HIGH_BOUND_EXT,
+> +                          HPD_INT_THD_ECO_DP_TRANS_P0_MASK);
+> +}
+> +
+> +static void mtk_dp_initialize_aux_settings(struct mtk_dp *mtk_dp)
+> +{
+> +       /* modify timeout threshold =3D 0x1595 */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_360C,
+> +                          AUX_TIMEOUT_THR_AUX_TX_P0_VAL,
+> +                          AUX_TIMEOUT_THR_AUX_TX_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3658,
+> +                          0, AUX_TX_OV_EN_AUX_TX_P0_MASK);
+> +       /* 25 for 26M */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3634,
+> +                          AUX_TX_OVER_SAMPLE_RATE_FOR_26M << 8,
+> +                          AUX_TX_OVER_SAMPLE_RATE_AUX_TX_P0_MASK);
+> +       /* 13 for 26M */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3614,
+> +                          AUX_RX_UI_CNT_THR_AUX_FOR_26M,
+> +                          AUX_RX_UI_CNT_THR_AUX_TX_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_37C8,
+> +                          MTK_ATOP_EN_AUX_TX_P0,
+> +                          MTK_ATOP_EN_AUX_TX_P0);
+> +}
+> +
+> +static void mtk_dp_initialize_digital_settings(struct mtk_dp *mtk_dp)
+> +{
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_304C,
+> +                          0, VBID_VIDEO_MUTE_DP_ENC0_P0_MASK);
+> +
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC1_P0_3368,
+> +                          BS2BS_MODE_DP_ENC1_P0_VAL << 12,
+> +                          BS2BS_MODE_DP_ENC1_P0_MASK);
+> +
+> +       /* dp tx encoder reset all sw */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3004,
+> +                          DP_TX_ENCODER_4P_RESET_SW_DP_ENC0_P0,
+> +                          DP_TX_ENCODER_4P_RESET_SW_DP_ENC0_P0);
+> +
+> +       /* Wait for sw reset to complete */
+> +       usleep_range(1000, 5000);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3004,
+> +                          0, DP_TX_ENCODER_4P_RESET_SW_DP_ENC0_P0);
+> +}
+> +
+> +static void mtk_dp_digital_sw_reset(struct mtk_dp *mtk_dp)
+> +{
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_340C,
+> +                          DP_TX_TRANSMITTER_4P_RESET_SW_DP_TRANS_P0,
+> +                          DP_TX_TRANSMITTER_4P_RESET_SW_DP_TRANS_P0);
+> +
+> +       /* Wait for sw reset to complete */
+> +       usleep_range(1000, 5000);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_340C,
+> +                          0, DP_TX_TRANSMITTER_4P_RESET_SW_DP_TRANS_P0);
+> +}
+> +
+> +static void mtk_dp_set_lanes(struct mtk_dp *mtk_dp, int lanes)
+> +{
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_35F0,
+> +                          lanes =3D=3D 0 ? 0 : DP_TRANS_DUMMY_RW_0,
+> +                          DP_TRANS_DUMMY_RW_0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3000,
+> +                          lanes, LANE_NUM_DP_ENC0_P0_MASK);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_34A4,
+> +                          lanes << 2, LANE_NUM_DP_TRANS_P0_MASK);
+> +}
+> +
+> +static void mtk_dp_get_calibration_data(struct mtk_dp *mtk_dp)
+> +{
+> +       const struct mtk_dp_efuse_fmt *fmt;
+> +       struct device *dev =3D mtk_dp->dev;
+> +       struct nvmem_cell *cell;
+> +       u32 *cal_data =3D mtk_dp->cal_data;
+> +       u32 *buf;
+> +       int i;
+> +       size_t len;
+> +
+> +       cell =3D nvmem_cell_get(dev, "dp_calibration_data");
+> +       if (IS_ERR(cell)) {
+> +               dev_warn(dev, "Failed to get nvmem cell dp_calibration_da=
+ta\n");
+> +               goto use_default_val;
+> +       }
+> +
+> +       buf =3D (u32 *)nvmem_cell_read(cell, &len);
+> +       nvmem_cell_put(cell);
+> +
+> +       if (IS_ERR(buf) || ((len / sizeof(u32)) !=3D 4)) {
+> +               dev_warn(dev, "Failed to read nvmem_cell_read\n");
+> +
+> +               if (!IS_ERR(buf))
+> +                       kfree(buf);
+> +
+> +               goto use_default_val;
+> +       }
+> +
+> +       for (i =3D 0; i < MTK_DP_CAL_MAX; i++) {
+> +               fmt =3D &mtk_dp_efuse_data[i];
+> +               cal_data[i] =3D (buf[fmt->idx] >> fmt->shift) & fmt->mask=
+;
+> +
+> +               if (cal_data[i] < fmt->min_val || cal_data[i] > fmt->max_=
+val) {
+> +                       dev_warn(mtk_dp->dev, "Invalid efuse data, idx =
+=3D %d\n", i);
+> +                       kfree(buf);
+> +                       goto use_default_val;
+> +               }
+> +       }
+> +       kfree(buf);
+> +
+> +       return;
+> +
+> +use_default_val:
+> +       dev_warn(mtk_dp->dev, "Use default calibration data\n");
+> +       for (i =3D 0; i < MTK_DP_CAL_MAX; i++)
+> +               cal_data[i] =3D mtk_dp_efuse_data[i].default_val;
+> +}
+> +
+> +static void mtk_dp_set_calibration_data(struct mtk_dp *mtk_dp)
+> +{
+> +       u32 *cal_data =3D mtk_dp->cal_data;
+> +
+> +       mtk_dp_update_bits(mtk_dp, DP_PHY_GLB_DPAUX_TX,
+> +                          cal_data[MTK_DP_CAL_CLKTX_IMPSE] << 20,
+> +                          RG_CKM_PT0_CKTX_IMPSEL);
+> +       mtk_dp_update_bits(mtk_dp, DP_PHY_GLB_BIAS_GEN_00,
+> +                          cal_data[MTK_DP_CAL_GLB_BIAS_TRIM] << 16,
+> +                          RG_XTP_GLB_BIAS_INTR_CTRL);
+> +       mtk_dp_update_bits(mtk_dp, DP_PHY_LANE_TX_0,
+> +                          cal_data[MTK_DP_CAL_LN_TX_IMPSEL_PMOS_0] << 12=
+,
+> +                          RG_XTP_LN0_TX_IMPSEL_PMOS);
+> +       mtk_dp_update_bits(mtk_dp, DP_PHY_LANE_TX_0,
+> +                          cal_data[MTK_DP_CAL_LN_TX_IMPSEL_NMOS_0] << 16=
+,
+> +                          RG_XTP_LN0_TX_IMPSEL_NMOS);
+> +       mtk_dp_update_bits(mtk_dp, DP_PHY_LANE_TX_1,
+> +                          cal_data[MTK_DP_CAL_LN_TX_IMPSEL_PMOS_1] << 12=
+,
+> +                          RG_XTP_LN1_TX_IMPSEL_PMOS);
+> +       mtk_dp_update_bits(mtk_dp, DP_PHY_LANE_TX_1,
+> +                          cal_data[MTK_DP_CAL_LN_TX_IMPSEL_NMOS_1] << 16=
+,
+> +                          RG_XTP_LN1_TX_IMPSEL_NMOS);
+> +       mtk_dp_update_bits(mtk_dp, DP_PHY_LANE_TX_2,
+> +                          cal_data[MTK_DP_CAL_LN_TX_IMPSEL_PMOS_2] << 12=
+,
+> +                          RG_XTP_LN2_TX_IMPSEL_PMOS);
+> +       mtk_dp_update_bits(mtk_dp, DP_PHY_LANE_TX_2,
+> +                          cal_data[MTK_DP_CAL_LN_TX_IMPSEL_NMOS_2] << 16=
+,
+> +                          RG_XTP_LN2_TX_IMPSEL_NMOS);
+> +       mtk_dp_update_bits(mtk_dp, DP_PHY_LANE_TX_3,
+> +                          cal_data[MTK_DP_CAL_LN_TX_IMPSEL_PMOS_3] << 12=
+,
+> +                          RG_XTP_LN3_TX_IMPSEL_PMOS);
+> +       mtk_dp_update_bits(mtk_dp, DP_PHY_LANE_TX_3,
+> +                          cal_data[MTK_DP_CAL_LN_TX_IMPSEL_NMOS_3] << 16=
+,
+> +                          RG_XTP_LN3_TX_IMPSEL_NMOS);
+> +}
+> +
+> +static int mtk_dp_phy_configure(struct mtk_dp *mtk_dp,
+> +                               u32 link_rate, int lane_count)
+> +{
+> +       int ret;
+> +       union phy_configure_opts phy_opts =3D {
+> +               .dp =3D {
+> +                       .link_rate =3D drm_dp_bw_code_to_link_rate(link_r=
+ate) / 100,
+> +                       .set_rate =3D 1,
+> +                       .lanes =3D lane_count,
+> +                       .set_lanes =3D 1,
+> +                       .ssc =3D mtk_dp->train_info.sink_ssc,
+> +               }
+> +       };
+> +
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE, DP_PWR_STATE_BAN=
+DGAP,
+> +                          DP_PWR_STATE_MASK);
+> +
+> +       ret =3D phy_configure(mtk_dp->phy, &phy_opts);
+> +       if (ret)
+> +               return ret;
+> +
+> +       mtk_dp_set_calibration_data(mtk_dp);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+> +                          DP_PWR_STATE_BANDGAP_TPLL_LANE, DP_PWR_STATE_M=
+ASK);
+> +
+> +       return 0;
+> +}
+> +
+> +static void mtk_dp_set_idle_pattern(struct mtk_dp *mtk_dp, bool enable)
+> +{
+> +       u32 val =3D POST_MISC_DATA_LANE0_OV_DP_TRANS_P0_MASK |
+> +                 POST_MISC_DATA_LANE1_OV_DP_TRANS_P0_MASK |
+> +                 POST_MISC_DATA_LANE2_OV_DP_TRANS_P0_MASK |
+> +                 POST_MISC_DATA_LANE3_OV_DP_TRANS_P0_MASK;
+> +
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3580,
+> +                          enable ? val : 0, val);
+> +}
+> +
+> +static void mtk_dp_train_set_pattern(struct mtk_dp *mtk_dp, int pattern)
+> +{
+> +       /* TPS1 */
+> +       if (pattern =3D=3D 1)
+> +               mtk_dp_set_idle_pattern(mtk_dp, false);
+> +
+> +       mtk_dp_update_bits(mtk_dp,
+> +                          MTK_DP_TRANS_P0_3400,
+> +                          pattern ? BIT(pattern - 1) << 12 : 0,
+> +                          PATTERN1_EN_DP_TRANS_P0_MASK |
+> +                          PATTERN2_EN_DP_TRANS_P0_MASK |
+> +                          PATTERN3_EN_DP_TRANS_P0_MASK |
+> +                          PATTERN4_EN_DP_TRANS_P0_MASK);
+> +}
+> +
+> +static void mtk_dp_set_enhanced_frame_mode(struct mtk_dp *mtk_dp)
+> +{
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3000,
+> +                          ENHANCED_FRAME_EN_DP_ENC0_P0,
+> +                          ENHANCED_FRAME_EN_DP_ENC0_P0);
+> +}
+> +
+> +static void mtk_dp_training_set_scramble(struct mtk_dp *mtk_dp, bool ena=
+ble)
+> +{
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3404,
+> +                          enable ? DP_SCR_EN_DP_TRANS_P0_MASK : 0,
+> +                          DP_SCR_EN_DP_TRANS_P0_MASK);
+> +}
+> +
+> +static void mtk_dp_video_mute(struct mtk_dp *mtk_dp, bool enable)
+> +{
+> +       struct arm_smccc_res res;
+> +       u32 val =3D VIDEO_MUTE_SEL_DP_ENC0_P0 |
+> +                 (enable ? VIDEO_MUTE_SW_DP_ENC0_P0 : 0);
+> +
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3000,
+> +                          val,
+> +                          VIDEO_MUTE_SEL_DP_ENC0_P0 |
+> +                          VIDEO_MUTE_SW_DP_ENC0_P0);
+> +
+> +       arm_smccc_smc(MTK_DP_SIP_CONTROL_AARCH32,
+> +                     MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE, enable,
+> +                     0, 0, 0, 0, 0, &res);
+> +
+> +       dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n=
+",
+> +               MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE, enable, res.a0, res.a1);
+> +}
+> +
+> +static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
+> +{
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_RESET_AND_PROBE,
+> +                          0, SW_RST_B_PHYD);
+> +
+> +       /* Wait for power enable */
+> +       usleep_range(10, 200);
+> +
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_RESET_AND_PROBE,
+> +                          SW_RST_B_PHYD, SW_RST_B_PHYD);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+> +                          DP_PWR_STATE_BANDGAP_TPLL, DP_PWR_STATE_MASK);
+> +       mtk_dp_write(mtk_dp, MTK_DP_1040,
+> +                    RG_DPAUX_RX_VALID_DEGLITCH_EN | RG_XTP_GLB_CKDET_EN =
+|
+> +                    RG_DPAUX_RX_EN);
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_0034, 0, DA_CKM_CKTX0_EN_FORCE_=
+EN);
+> +}
+> +
+> +static void mtk_dp_power_disable(struct mtk_dp *mtk_dp)
+> +{
+> +       mtk_dp_write(mtk_dp, MTK_DP_TOP_PWR_STATE, 0);
+> +
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_0034,
+> +                          DA_CKM_CKTX0_EN_FORCE_EN, DA_CKM_CKTX0_EN_FORC=
+E_EN);
+> +
+> +       /* Disable RX */
+> +       mtk_dp_write(mtk_dp, MTK_DP_1040, 0);
+> +       mtk_dp_write(mtk_dp, MTK_DP_TOP_MEM_PD,
+> +                    0x550 | FUSE_SEL | MEM_ISO_EN);
+> +}
+> +
+> +static void mtk_dp_initialize_priv_data(struct mtk_dp *mtk_dp)
+> +{
+> +       mtk_dp->train_info.link_rate =3D DP_LINK_BW_5_4;
+> +       mtk_dp->train_info.lane_count =3D mtk_dp->max_lanes;
+> +       mtk_dp->train_info.cable_plugged_in =3D false;
+> +
+> +       mtk_dp->info.format =3D DP_PIXELFORMAT_RGB;
+> +       memset(&mtk_dp->info.vm, 0, sizeof(struct videomode));
+> +}
+> +
+> +static void mtk_dp_setup_tu(struct mtk_dp *mtk_dp)
+> +{
+> +       u32 sram_read_start =3D min_t(u32, MTK_DP_TBC_BUF_READ_START_ADDR=
+,
+> +                                   mtk_dp->info.vm.hactive /
+> +                                   mtk_dp->train_info.lane_count /
+> +                                   MTK_DP_4P1T / MTK_DP_HDE /
+> +                                   MTK_DP_PIX_PER_ADDR);
+> +       mtk_dp_set_sram_read_start(mtk_dp, sram_read_start);
+> +       mtk_dp_setup_encoder(mtk_dp);
+> +}
+> +
+> +static void mtk_dp_set_tx_out(struct mtk_dp *mtk_dp)
+> +{
+> +       mtk_dp_setup_tu(mtk_dp);
+> +}
+> +
+> +static void mtk_dp_train_update_swing_pre(struct mtk_dp *mtk_dp, int lan=
+es,
+> +                                         u8 dpcd_adjust_req[2])
+> +{
+> +       int lane;
+> +
+> +       for (lane =3D 0; lane < lanes; ++lane) {
+> +               u8 val;
+> +               u8 swing;
+> +               u8 preemphasis;
+> +               int index =3D lane / 2;
+> +               int shift =3D lane % 2 ? DP_ADJUST_VOLTAGE_SWING_LANE1_SH=
+IFT : 0;
+> +
+> +               swing =3D (dpcd_adjust_req[index] >> shift) &
+> +                       DP_ADJUST_VOLTAGE_SWING_LANE0_MASK;
+> +               preemphasis =3D ((dpcd_adjust_req[index] >> shift) &
+> +                              DP_ADJUST_PRE_EMPHASIS_LANE0_MASK) >>
+> +                             DP_ADJUST_PRE_EMPHASIS_LANE0_SHIFT;
+> +               val =3D swing << DP_TRAIN_VOLTAGE_SWING_SHIFT |
+> +                     preemphasis << DP_TRAIN_PRE_EMPHASIS_SHIFT;
+> +
+> +               if (swing =3D=3D DP_TRAIN_VOLTAGE_SWING_LEVEL_3)
+> +                       val |=3D DP_TRAIN_MAX_SWING_REACHED;
+> +               if (preemphasis =3D=3D 3)
+> +                       val |=3D DP_TRAIN_MAX_PRE_EMPHASIS_REACHED;
+> +
+> +               mtk_dp_set_swing_pre_emphasis(mtk_dp, lane, swing, preemp=
+hasis);
+> +               drm_dp_dpcd_writeb(&mtk_dp->aux, DP_TRAINING_LANE0_SET + =
+lane,
+> +                                  val);
+> +       }
+> +}
+> +
+> +static void mtk_dp_pattern(struct mtk_dp *mtk_dp, bool is_tps1)
+> +{
+> +       int pattern;
+> +       unsigned int aux_offset;
+> +
+> +       if (is_tps1) {
+> +               pattern =3D 1;
+> +               aux_offset =3D DP_LINK_SCRAMBLING_DISABLE | DP_TRAINING_P=
+ATTERN_1;
+> +       } else {
+> +               aux_offset =3D mtk_dp->train_info.channel_eq_pattern;
+> +
+> +               switch (mtk_dp->train_info.channel_eq_pattern) {
+> +               case DP_TRAINING_PATTERN_4:
+> +                       pattern =3D 4;
+> +                       break;
+> +               case DP_TRAINING_PATTERN_3:
+> +                       pattern =3D 3;
+> +                       aux_offset |=3D DP_LINK_SCRAMBLING_DISABLE;
+> +                       break;
+> +               case DP_TRAINING_PATTERN_2:
+> +               default:
+> +                       pattern =3D 2;
+> +                       aux_offset |=3D DP_LINK_SCRAMBLING_DISABLE;
+> +                       break;
+> +               }
+> +       }
+> +
+> +       mtk_dp_train_set_pattern(mtk_dp, pattern);
+> +       drm_dp_dpcd_writeb(&mtk_dp->aux, DP_TRAINING_PATTERN_SET, aux_off=
+set);
+> +}
+> +
+> +static int mtk_dp_train_setting(struct mtk_dp *mtk_dp, u8 target_link_ra=
+te,
+> +                               u8 target_lane_count)
+> +{
+> +       int ret;
+> +
+> +       drm_dp_dpcd_writeb(&mtk_dp->aux, DP_LINK_BW_SET, target_link_rate=
+);
+> +       drm_dp_dpcd_writeb(&mtk_dp->aux, DP_LANE_COUNT_SET,
+> +                          target_lane_count | DP_LANE_COUNT_ENHANCED_FRA=
+ME_EN);
+> +
+> +       if (mtk_dp->train_info.sink_ssc)
+> +               drm_dp_dpcd_writeb(&mtk_dp->aux, DP_DOWNSPREAD_CTRL,
+> +                                  DP_SPREAD_AMP_0_5);
+> +
+> +       mtk_dp_set_lanes(mtk_dp, target_lane_count / 2);
+> +       ret =3D mtk_dp_phy_configure(mtk_dp, target_link_rate, target_lan=
+e_count);
+> +       if (ret)
+> +               return ret;
+> +
+> +       dev_dbg(mtk_dp->dev,
+> +               "Link train target_link_rate =3D 0x%x, target_lane_count =
+=3D 0x%x\n",
+> +               target_link_rate, target_lane_count);
+> +
+> +       return 0;
+> +}
+> +
+> +static int mtk_dp_train_cr(struct mtk_dp *mtk_dp, u8 target_lane_count)
+> +{
+> +       u8 lane_adjust[2] =3D {};
+> +       u8 link_status[DP_LINK_STATUS_SIZE] =3D {};
+> +       u8 prev_lane_adjust =3D 0xff;
+> +       int train_retries =3D 0;
+> +       int voltage_retries =3D 0;
+> +
+> +       mtk_dp_pattern(mtk_dp, true);
+> +
+> +       /* In DP spec 1.4, the retry count of CR is defined as 10. */
+> +       do {
+> +               train_retries++;
+> +               if (!mtk_dp->train_info.cable_plugged_in) {
+> +                       mtk_dp_train_set_pattern(mtk_dp, 0);
+> +                       return -ENODEV;
+> +               }
+> +
+> +               drm_dp_dpcd_read(&mtk_dp->aux, DP_ADJUST_REQUEST_LANE0_1,
+> +                                lane_adjust, sizeof(lane_adjust));
+> +               mtk_dp_train_update_swing_pre(mtk_dp, target_lane_count,
+> +                                             lane_adjust);
+> +
+> +               drm_dp_link_train_clock_recovery_delay(&mtk_dp->aux,
+> +                                                      mtk_dp->rx_cap);
+> +
+> +               /* check link status from sink device */
+> +               drm_dp_dpcd_read_link_status(&mtk_dp->aux, link_status);
+> +               if (drm_dp_clock_recovery_ok(link_status,
+> +                                            target_lane_count)) {
+> +                       dev_dbg(mtk_dp->dev, "Link train CR pass\n");
+> +                       return 0;
+> +               }
+> +
+> +               /*
+> +                * In DP spec 1.4, if current voltage level is the same
+> +                * with previous voltage level, we need to retry 5 times.
+> +                */
+> +               if (prev_lane_adjust =3D=3D link_status[4]) {
+> +                       voltage_retries++;
+> +                       /*
+> +                        * Condition of CR fail:
+> +                        * 1. Failed to pass CR using the same voltage
+> +                        *    level over five times.
+> +                        * 2. Failed to pass CR when the current voltage
+> +                        *    level is the same with previous voltage
+> +                        *    level and reach max voltage level (3).
+> +                        */
+> +                       if (voltage_retries > MTK_DP_TRAIN_VOLTAGE_LEVEL_=
+RETRY ||
+> +                           (prev_lane_adjust & DP_ADJUST_VOLTAGE_SWING_L=
+ANE0_MASK) =3D=3D 3) {
+> +                               dev_dbg(mtk_dp->dev, "Link train CR fail\=
+n");
+> +                               break;
+> +                       }
+> +               } else {
+> +                       /*
+> +                        * If the voltage level is changed, we need to
+> +                        * re-calculate this retry count.
+> +                        */
+> +                       voltage_retries =3D 0;
+> +               }
+> +               prev_lane_adjust =3D link_status[4];
+> +       } while (train_retries < MTK_DP_TRAIN_DOWNSCALE_RETRY);
+> +
+> +       /* Failed to train CR, and disable pattern. */
+> +       drm_dp_dpcd_writeb(&mtk_dp->aux, DP_TRAINING_PATTERN_SET,
+> +                          DP_TRAINING_PATTERN_DISABLE);
+> +       mtk_dp_train_set_pattern(mtk_dp, 0);
+> +
+> +       return -ETIMEDOUT;
+> +}
+> +
+> +static int mtk_dp_train_eq(struct mtk_dp *mtk_dp, u8 target_lane_count)
+> +{
+> +       u8 lane_adjust[2] =3D {};
+> +       u8 link_status[DP_LINK_STATUS_SIZE] =3D {};
+> +       int train_retries =3D 0;
+> +
+> +       mtk_dp_pattern(mtk_dp, false);
+> +
+> +       do {
+> +               train_retries++;
+> +               if (!mtk_dp->train_info.cable_plugged_in) {
+> +                       mtk_dp_train_set_pattern(mtk_dp, 0);
+> +                       return -ENODEV;
+> +               }
+> +
+> +               drm_dp_dpcd_read(&mtk_dp->aux, DP_ADJUST_REQUEST_LANE0_1,
+> +                                lane_adjust, sizeof(lane_adjust));
+> +               mtk_dp_train_update_swing_pre(mtk_dp, target_lane_count,
+> +                                             lane_adjust);
+> +
+> +               drm_dp_link_train_channel_eq_delay(&mtk_dp->aux,
+> +                                                  mtk_dp->rx_cap);
+> +
+> +               /* check link status from sink device */
+> +               drm_dp_dpcd_read_link_status(&mtk_dp->aux, link_status);
+> +               if (drm_dp_channel_eq_ok(link_status, target_lane_count))=
+ {
+> +                       dev_dbg(mtk_dp->dev, "Link train EQ pass\n");
+> +
+> +                       /* Training done, and disable pattern. */
+> +                       drm_dp_dpcd_writeb(&mtk_dp->aux, DP_TRAINING_PATT=
+ERN_SET,
+> +                                          DP_TRAINING_PATTERN_DISABLE);
+> +                       mtk_dp_train_set_pattern(mtk_dp, 0);
+> +                       return 0;
+> +               }
+> +               dev_dbg(mtk_dp->dev, "Link train EQ fail\n");
+> +       } while (train_retries < MTK_DP_TRAIN_DOWNSCALE_RETRY);
+> +
+> +       /* Failed to train EQ, and disable pattern. */
+> +       drm_dp_dpcd_writeb(&mtk_dp->aux, DP_TRAINING_PATTERN_SET,
+> +                          DP_TRAINING_PATTERN_DISABLE);
+> +       mtk_dp_train_set_pattern(mtk_dp, 0);
+> +
+> +       return -ETIMEDOUT;
+> +}
+> +
+> +static int mtk_dp_parse_capabilities(struct mtk_dp *mtk_dp)
+> +{
+> +       u8 val;
+> +       ssize_t ret;
+> +
+> +       drm_dp_read_dpcd_caps(&mtk_dp->aux, mtk_dp->rx_cap);
+> +
+> +       if (drm_dp_tps4_supported(mtk_dp->rx_cap))
+> +               mtk_dp->train_info.channel_eq_pattern =3D DP_TRAINING_PAT=
+TERN_4;
+> +       else if (drm_dp_tps3_supported(mtk_dp->rx_cap))
+> +               mtk_dp->train_info.channel_eq_pattern =3D DP_TRAINING_PAT=
+TERN_3;
+> +       else
+> +               mtk_dp->train_info.channel_eq_pattern =3D DP_TRAINING_PAT=
+TERN_2;
+> +
+> +       mtk_dp->train_info.sink_ssc =3D drm_dp_max_downspread(mtk_dp->rx_=
+cap);
+> +
+> +       ret =3D drm_dp_dpcd_readb(&mtk_dp->aux, DP_MSTM_CAP, &val);
+> +       if (ret < 1) {
+> +               drm_err(mtk_dp->drm_dev, "Read mstm cap failed\n");
+> +               return ret =3D=3D 0 ? -EIO : ret;
+> +       }
+> +
+> +       if (val & DP_MST_CAP) {
+> +               /* Clear DP_DEVICE_SERVICE_IRQ_VECTOR_ESI0 */
+> +               ret =3D drm_dp_dpcd_readb(&mtk_dp->aux,
+> +                                       DP_DEVICE_SERVICE_IRQ_VECTOR_ESI0=
+,
+> +                                       &val);
+> +               if (ret < 1) {
+> +                       drm_err(mtk_dp->drm_dev, "Read irq vector failed\=
+n");
+> +                       return ret =3D=3D 0 ? -EIO : ret;
+> +               }
+> +
+> +               if (val)
+> +                       drm_dp_dpcd_writeb(&mtk_dp->aux,
+> +                                          DP_DEVICE_SERVICE_IRQ_VECTOR_E=
+SI0,
+> +                                          val);
+> +       }
+> +
+> +       return 0;
+> +}
+> +
+> +static void mtk_dp_train_change_mode(struct mtk_dp *mtk_dp)
+> +{
+> +       phy_reset(mtk_dp->phy);
+> +       mtk_dp_reset_swing_pre_emphasis(mtk_dp);
+> +}
+> +
+> +static int mtk_dp_training(struct mtk_dp *mtk_dp)
+> +{
+> +       int ret;
+> +       u8 lane_count, link_rate, train_limit, max_link_rate;
+> +
+> +       link_rate =3D min_t(u8, mtk_dp->max_linkrate,
+> +                         mtk_dp->rx_cap[DP_MAX_LINK_RATE]);
+> +       max_link_rate =3D link_rate;
+> +       lane_count =3D min_t(u8, mtk_dp->max_lanes,
+> +                          drm_dp_max_lane_count(mtk_dp->rx_cap));
+> +
+> +       /*
+> +        * TPS are generated by the hardware pattern generator. From the
+> +        * hardware setting we need to disable this scramble setting befo=
+re
+> +        * use the TPS pattern generator.
+> +        */
+> +       mtk_dp_training_set_scramble(mtk_dp, false);
+> +
+> +       for (train_limit =3D 6; train_limit > 0; train_limit--) {
+> +               mtk_dp_train_change_mode(mtk_dp);
+> +
+> +               ret =3D mtk_dp_train_setting(mtk_dp, link_rate, lane_coun=
+t);
+> +               if (ret)
+> +                       return ret;
+> +
+> +               ret =3D mtk_dp_train_cr(mtk_dp, lane_count);
+> +               if (ret =3D=3D -ENODEV) {
+> +                       return ret;
+> +               } else if (ret) {
+> +                       /* reduce link rate */
+> +                       switch (link_rate) {
+> +                       case DP_LINK_BW_1_62:
+> +                               lane_count =3D lane_count / 2;
+> +                               link_rate =3D max_link_rate;
+> +                               if (lane_count =3D=3D 0)
+> +                                       return -EIO;
+> +                               break;
+> +                       case DP_LINK_BW_2_7:
+> +                               link_rate =3D DP_LINK_BW_1_62;
+> +                               break;
+> +                       case DP_LINK_BW_5_4:
+> +                               link_rate =3D DP_LINK_BW_2_7;
+> +                               break;
+> +                       case DP_LINK_BW_8_1:
+> +                               link_rate =3D DP_LINK_BW_5_4;
+> +                               break;
+> +                       default:
+> +                               return -EINVAL;
+> +                       };
+> +                       continue;
+> +               }
+> +
+> +               ret =3D mtk_dp_train_eq(mtk_dp, lane_count);
+> +               if (ret =3D=3D -ENODEV) {
+> +                       return ret;
+> +               } else if (ret) {
+> +                       /* reduce lane count */
+> +                       if (lane_count =3D=3D 0)
+> +                               return -EIO;
+> +                       lane_count /=3D 2;
+> +                       continue;
+> +               }
+> +
+> +               /* if we can run to this, training is done. */
+> +               break;
+> +       }
+> +
+> +       if (train_limit =3D=3D 0)
+> +               return -ETIMEDOUT;
+> +
+> +       mtk_dp->train_info.link_rate =3D link_rate;
+> +       mtk_dp->train_info.lane_count =3D lane_count;
+> +
+> +       /*
+> +        * After training done, we need to output normal stream instead o=
+f TPS,
+> +        * so we need to enable scramble.
+> +        */
+> +       mtk_dp_training_set_scramble(mtk_dp, true);
+> +       mtk_dp_set_enhanced_frame_mode(mtk_dp);
+> +
+> +       return 0;
+> +}
+> +
+> +static void mtk_dp_video_enable(struct mtk_dp *mtk_dp, bool enable)
+> +{
+> +       /* the mute sequence is different between enable and disable */
+> +       if (enable) {
+> +               mtk_dp_msa_bypass_enable(mtk_dp, false);
+> +               mtk_dp_pg_enable(mtk_dp, false);
+> +               mtk_dp_set_tx_out(mtk_dp);
+> +               mtk_dp_video_mute(mtk_dp, false);
+> +       } else {
+> +               mtk_dp_video_mute(mtk_dp, true);
+> +               mtk_dp_pg_enable(mtk_dp, true);
+> +               mtk_dp_msa_bypass_enable(mtk_dp, true);
+> +       }
+> +}
+> +
+> +static int mtk_dp_video_config(struct mtk_dp *mtk_dp)
+> +{
+> +       mtk_dp_config_mn_mode(mtk_dp);
+> +       mtk_dp_set_msa(mtk_dp);
+> +       mtk_dp_set_color_depth(mtk_dp);
+> +       return mtk_dp_set_color_format(mtk_dp, mtk_dp->info.format);
+> +}
+> +
+> +static void mtk_dp_init_port(struct mtk_dp *mtk_dp)
+> +{
+> +       mtk_dp_set_idle_pattern(mtk_dp, true);
+> +       mtk_dp_initialize_priv_data(mtk_dp);
+> +
+> +       mtk_dp_initialize_settings(mtk_dp);
+> +       mtk_dp_initialize_aux_settings(mtk_dp);
+> +       mtk_dp_initialize_digital_settings(mtk_dp);
+> +
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3690,
+> +                          RX_REPLY_COMPLETE_MODE_AUX_TX_P0,
+> +                          RX_REPLY_COMPLETE_MODE_AUX_TX_P0);
+> +       mtk_dp_initialize_hpd_detect_settings(mtk_dp);
+> +
+> +       mtk_dp_digital_sw_reset(mtk_dp);
+> +}
+> +
+> +static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+> +{
+> +       struct mtk_dp *mtk_dp =3D dev;
+> +       unsigned long flags;
+> +       u32 status;
+> +
+> +       spin_lock_irqsave(&mtk_dp->irq_thread_lock, flags);
+> +       status =3D mtk_dp->irq_thread_handle;
+> +       mtk_dp->irq_thread_handle =3D 0;
+> +       spin_unlock_irqrestore(&mtk_dp->irq_thread_lock, flags);
+> +
+> +       if (status & MTK_DP_THREAD_CABLE_STATE_CHG)
+> +               drm_helper_hpd_irq_event(mtk_dp->bridge.dev);
+> +
+> +       if (status & MTK_DP_THREAD_HPD_EVENT)
+> +               dev_dbg(mtk_dp->dev, "Receive IRQ from sink devices\n");
+> +
+> +       return IRQ_HANDLED;
+> +}
+> +
+> +static irqreturn_t mtk_dp_hpd_event(int hpd, void *dev)
+> +{
+> +       struct mtk_dp *mtk_dp =3D dev;
+> +       bool cable_sta_chg =3D false;
+> +       unsigned long flags;
+> +       u32 irq_status =3D mtk_dp_swirq_get_clear(mtk_dp) |
+> +                        mtk_dp_hwirq_get_clear(mtk_dp);
+> +
+> +       if (!irq_status)
+> +               return IRQ_HANDLED;
+> +
+> +       spin_lock_irqsave(&mtk_dp->irq_thread_lock, flags);
+> +
+> +       if (irq_status & MTK_DP_HPD_INTERRUPT)
+> +               mtk_dp->irq_thread_handle |=3D MTK_DP_THREAD_HPD_EVENT;
+> +
+> +       /* Cable state is changed. */
+> +       if (irq_status !=3D MTK_DP_HPD_INTERRUPT) {
+> +               mtk_dp->irq_thread_handle |=3D MTK_DP_THREAD_CABLE_STATE_=
+CHG;
+> +               cable_sta_chg =3D true;
+> +       }
+> +
+> +       spin_unlock_irqrestore(&mtk_dp->irq_thread_lock, flags);
+> +
+> +       if (cable_sta_chg) {
+> +               if (!!(mtk_dp_read(mtk_dp, MTK_DP_TRANS_P0_3414) &
+> +                      HPD_DB_DP_TRANS_P0_MASK))
+> +                       mtk_dp->train_info.cable_plugged_in =3D true;
+> +               else
+> +                       mtk_dp->train_info.cable_plugged_in =3D false;
+> +       }
+> +
+> +       return IRQ_WAKE_THREAD;
+> +}
+> +
+> +static int mtk_dp_dt_parse(struct mtk_dp *mtk_dp,
+> +                          struct platform_device *pdev)
+> +{
+> +       struct device_node *endpoint;
+> +       struct device *dev =3D &pdev->dev;
+> +       int ret;
+> +       void __iomem *base;
+> +       u32 linkrate;
+> +       int len;
+> +
+> +       base =3D devm_platform_ioremap_resource(pdev, 0);
+> +       if (IS_ERR(base))
+> +               return PTR_ERR(base);
+> +
+> +       mtk_dp->regs =3D devm_regmap_init_mmio(dev, base, &mtk_dp_regmap_=
+config);
+> +       if (IS_ERR(mtk_dp->regs))
+> +               return PTR_ERR(mtk_dp->regs);
+> +
+> +       endpoint =3D of_graph_get_endpoint_by_regs(pdev->dev.of_node, 1, =
+-1);
+> +       len =3D of_property_count_elems_of_size(endpoint,
+> +                                             "data-lanes", sizeof(u32));
+> +       if (len < 0 || len > 4 || len =3D=3D 3) {
+> +               dev_err(dev, "invalid data lane size: %d\n", len);
+> +               return -EINVAL;
+> +       }
+> +
+> +       mtk_dp->max_lanes =3D len;
+> +
+> +       ret =3D device_property_read_u32(dev, "max-linkrate-mhz", &linkra=
+te);
+> +       if (ret) {
+> +               dev_err(dev, "failed to read max linkrate: %d\n", ret);
+> +               return ret;
+> +       }
+> +
+> +       mtk_dp->max_linkrate =3D drm_dp_link_rate_to_bw_code(linkrate * 1=
+00);
+> +
+> +       return 0;
+> +}
+> +
+> +static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
+> +                                   struct drm_connector *connector)
+> +{
+> +       struct mtk_dp *mtk_dp =3D mtk_dp_from_bridge(bridge);
+> +       bool enabled =3D mtk_dp->enabled;
+> +       struct edid *new_edid =3D NULL;
+> +
+> +       if (!enabled) {
+> +               drm_bridge_chain_pre_enable(bridge);
+> +
+> +               /* power on aux */
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+> +                                  DP_PWR_STATE_BANDGAP_TPLL_LANE,
+> +                                  DP_PWR_STATE_MASK);
+> +
+> +               /* power on panel */
+> +               drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POW=
+ER_D0);
+> +               usleep_range(2000, 5000);
+> +       }
+> +
+> +       new_edid =3D drm_get_edid(connector, &mtk_dp->aux.ddc);
+> +
+> +       /*
+> +        * Parse capability here to let atomic_get_input_bus_fmts and
+> +        * mode_valid use the capability to calculate sink bitrates.
+> +        */
+> +       if (mtk_dp_parse_capabilities(mtk_dp)) {
+> +               drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
+> +               new_edid =3D NULL;
+> +       }
+> +
+> +       if (!enabled) {
+> +               /* power off panel */
+> +               drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POW=
+ER_D3);
+> +               usleep_range(2000, 3000);
+> +
+> +               /* power off aux */
+> +               mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+> +                                  DP_PWR_STATE_BANDGAP_TPLL,
+> +                                  DP_PWR_STATE_MASK);
+> +
+> +               drm_bridge_chain_post_disable(bridge);
+> +       }
+> +
+> +       return new_edid;
+> +}
+> +
+> +static ssize_t mtk_dp_aux_transfer(struct drm_dp_aux *mtk_aux,
+> +                                  struct drm_dp_aux_msg *msg)
+> +{
+> +       struct mtk_dp *mtk_dp;
+> +       bool is_read;
+> +       u8 request;
+> +       size_t accessed_bytes =3D 0;
+> +       int ret;
+> +
+> +       mtk_dp =3D container_of(mtk_aux, struct mtk_dp, aux);
+> +
+> +       if (!mtk_dp->train_info.cable_plugged_in) {
+> +               ret =3D -EAGAIN;
+> +               goto err;
+> +       }
+> +
+> +       switch (msg->request) {
+> +       case DP_AUX_I2C_MOT:
+> +       case DP_AUX_I2C_WRITE:
+> +       case DP_AUX_NATIVE_WRITE:
+> +       case DP_AUX_I2C_WRITE_STATUS_UPDATE:
+> +       case DP_AUX_I2C_WRITE_STATUS_UPDATE | DP_AUX_I2C_MOT:
+> +               request =3D msg->request & ~DP_AUX_I2C_WRITE_STATUS_UPDAT=
+E;
+> +               is_read =3D false;
+> +               break;
+> +       case DP_AUX_I2C_READ:
+> +       case DP_AUX_NATIVE_READ:
+> +       case DP_AUX_I2C_READ | DP_AUX_I2C_MOT:
+> +               request =3D msg->request;
+> +               is_read =3D true;
+> +               break;
+> +       default:
+> +               drm_err(mtk_aux->drm_dev, "invalid aux cmd =3D %d\n",
+> +                       msg->request);
+> +               ret =3D -EINVAL;
+> +               goto err;
+> +       }
+> +
+> +       do {
+> +               size_t to_access =3D min_t(size_t, DP_AUX_MAX_PAYLOAD_BYT=
+ES,
+> +                                        msg->size - accessed_bytes);
+> +
+> +               ret =3D mtk_dp_aux_do_transfer(mtk_dp, is_read, request,
+> +                                            msg->address + accessed_byte=
+s,
+> +                                            msg->buffer + accessed_bytes=
+,
+> +                                            to_access);
+> +
+> +               if (ret) {
+> +                       drm_info(mtk_dp->drm_dev,
+> +                                "Failed to do AUX transfer: %d\n", ret);
+> +                       goto err;
+> +               }
+> +               accessed_bytes +=3D to_access;
+> +       } while (accessed_bytes < msg->size);
+> +
+> +       msg->reply =3D DP_AUX_NATIVE_REPLY_ACK | DP_AUX_I2C_REPLY_ACK;
+> +       return msg->size;
+> +err:
+> +       msg->reply =3D DP_AUX_NATIVE_REPLY_NACK | DP_AUX_I2C_REPLY_NACK;
+> +       return ret;
+> +}
+> +
+> +static int mtk_dp_poweron(struct mtk_dp *mtk_dp)
+> +{
+> +       int ret;
+> +
+> +       ret =3D phy_init(mtk_dp->phy);
+> +       if (ret) {
+> +               dev_err(mtk_dp->dev, "Failed to initialize phy: %d\n", re=
+t);
+> +               return ret;
+> +       }
+> +
+> +       mtk_dp_init_port(mtk_dp);
+> +       mtk_dp_power_enable(mtk_dp);
+> +
+> +       return 0;
+> +}
+> +
+> +static void mtk_dp_poweroff(struct mtk_dp *mtk_dp)
+> +{
+> +       mtk_dp_power_disable(mtk_dp);
+> +       phy_exit(mtk_dp->phy);
+> +}
+> +
+> +static int mtk_dp_bridge_attach(struct drm_bridge *bridge,
+> +                               enum drm_bridge_attach_flags flags)
+> +{
+> +       struct mtk_dp *mtk_dp =3D mtk_dp_from_bridge(bridge);
+> +       int ret;
+> +
+> +       if (!(flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR)) {
+> +               dev_err(mtk_dp->dev, "Driver does not provide a connector=
+!");
+> +               return -EINVAL;
+> +       }
+> +
+> +       mtk_dp->aux.drm_dev =3D bridge->dev;
+> +       ret =3D drm_dp_aux_register(&mtk_dp->aux);
+> +       if (ret) {
+> +               dev_err(mtk_dp->dev,
+> +                       "failed to register DP AUX channel: %d\n", ret);
+> +               return ret;
+> +       }
+> +
+> +       ret =3D mtk_dp_poweron(mtk_dp);
+> +       if (ret)
+> +               goto err_aux_register;
+> +
+> +       if (mtk_dp->next_bridge) {
+> +               ret =3D drm_bridge_attach(bridge->encoder, mtk_dp->next_b=
+ridge,
+> +                                       &mtk_dp->bridge, flags);
+> +               if (ret) {
+> +                       drm_warn(mtk_dp->drm_dev,
+> +                                "Failed to attach external bridge: %d\n"=
+, ret);
+> +                       goto err_bridge_attach;
+> +               }
+> +       }
+> +
+> +       mtk_dp->drm_dev =3D bridge->dev;
+> +
+> +       mtk_dp_hwirq_enable(mtk_dp, true);
+> +
+> +       return 0;
+> +
+> +err_bridge_attach:
+> +       mtk_dp_poweroff(mtk_dp);
+> +err_aux_register:
+> +       drm_dp_aux_unregister(&mtk_dp->aux);
+> +       return ret;
+> +}
+> +
+> +static void mtk_dp_bridge_detach(struct drm_bridge *bridge)
+> +{
+> +       struct mtk_dp *mtk_dp =3D mtk_dp_from_bridge(bridge);
+> +
+> +       mtk_dp_hwirq_enable(mtk_dp, false);
+> +       mtk_dp->drm_dev =3D NULL;
+> +       mtk_dp_poweroff(mtk_dp);
+> +       drm_dp_aux_unregister(&mtk_dp->aux);
+> +}
+> +
+> +static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
+> +                                       struct drm_bridge_state *old_stat=
+e)
+> +{
+> +       struct mtk_dp *mtk_dp =3D mtk_dp_from_bridge(bridge);
+> +       int ret;
+> +
+> +       mtk_dp->conn =3D drm_atomic_get_new_connector_for_encoder(old_sta=
+te->base.state,
+> +                                                               bridge->e=
+ncoder);
+> +       if (!mtk_dp->conn) {
+> +               drm_err(mtk_dp->drm_dev,
+> +                       "Can't enable bridge as connector is missing\n");
+> +               return;
+> +       }
+> +
+> +       /* power on aux */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+> +                          DP_PWR_STATE_BANDGAP_TPLL_LANE,
+> +                          DP_PWR_STATE_MASK);
+> +
+> +       if (mtk_dp->train_info.cable_plugged_in) {
+> +               drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POW=
+ER_D0);
+> +               usleep_range(2000, 5000);
+> +       }
+> +
+> +       /* Training */
+> +       ret =3D mtk_dp_training(mtk_dp);
+> +       if (ret) {
+> +               drm_err(mtk_dp->drm_dev, "Training failed, %d\n", ret);
+> +               goto power_off_aux;
+> +       }
+> +
+> +       ret =3D mtk_dp_video_config(mtk_dp);
+> +       if (ret)
+> +               goto power_off_aux;
+> +
+> +       mtk_dp_video_enable(mtk_dp, true);
+> +
+> +       mtk_dp->enabled =3D true;
+> +
+> +       return;
+> +power_off_aux:
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+> +                          DP_PWR_STATE_BANDGAP_TPLL,
+> +                          DP_PWR_STATE_MASK);
+> +}
+> +
+> +static void mtk_dp_bridge_atomic_disable(struct drm_bridge *bridge,
+> +                                        struct drm_bridge_state *old_sta=
+te)
+> +{
+> +       struct mtk_dp *mtk_dp =3D mtk_dp_from_bridge(bridge);
+> +
+> +       mtk_dp->enabled =3D false;
+> +       mtk_dp_video_enable(mtk_dp, false);
+> +
+> +       if (mtk_dp->train_info.cable_plugged_in) {
+> +               drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POW=
+ER_D3);
+> +               usleep_range(2000, 3000);
+> +       }
+> +
+> +       /* power off aux */
+> +       mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+> +                          DP_PWR_STATE_BANDGAP_TPLL,
+> +                          DP_PWR_STATE_MASK);
+> +
+> +       /* Ensure the sink is muted */
+> +       msleep(20);
+> +}
+> +
+> +static enum drm_mode_status
+> +mtk_dp_bridge_mode_valid(struct drm_bridge *bridge,
+> +                        const struct drm_display_info *info,
+> +                        const struct drm_display_mode *mode)
+> +{
+> +       struct mtk_dp *mtk_dp =3D mtk_dp_from_bridge(bridge);
+> +       u32 bpp =3D info->color_formats & DRM_COLOR_FORMAT_YCBCR422 ? 16 =
+: 24;
+> +       u32 rate =3D min_t(u32, drm_dp_max_link_rate(mtk_dp->rx_cap) *
+> +                             drm_dp_max_lane_count(mtk_dp->rx_cap),
+> +                        drm_dp_bw_code_to_link_rate(mtk_dp->max_linkrate=
+) *
+> +                        mtk_dp->max_lanes);
+> +
+> +       if (rate < mode->clock * bpp / 8)
+> +               return MODE_CLOCK_HIGH;
+> +
+> +       return MODE_OK;
+> +}
+> +
+> +static u32 *mtk_dp_bridge_atomic_get_output_bus_fmts(struct drm_bridge *=
+bridge,
+> +                                                    struct drm_bridge_st=
+ate *bridge_state,
+> +                                                    struct drm_crtc_stat=
+e *crtc_state,
+> +                                                    struct drm_connector=
+_state *conn_state,
+> +                                                    unsigned int *num_ou=
+tput_fmts)
+> +{
+> +       u32 *output_fmts;
+> +
+> +       *num_output_fmts =3D 0;
+> +       output_fmts =3D kmalloc(sizeof(*output_fmts), GFP_KERNEL);
+> +       if (!output_fmts)
+> +               return NULL;
+> +       *num_output_fmts =3D 1;
+> +       output_fmts[0] =3D MEDIA_BUS_FMT_FIXED;
+> +       return output_fmts;
+> +}
+> +
+> +static const u32 mt8195_input_fmts[] =3D {
+> +       MEDIA_BUS_FMT_RGB888_1X24,
+> +       MEDIA_BUS_FMT_YUV8_1X24,
+> +       MEDIA_BUS_FMT_YUYV8_1X16,
+> +};
+> +
+> +static u32 *mtk_dp_bridge_atomic_get_input_bus_fmts(struct drm_bridge *b=
+ridge,
+> +                                                   struct drm_bridge_sta=
+te *bridge_state,
+> +                                                   struct drm_crtc_state=
+ *crtc_state,
+> +                                                   struct drm_connector_=
+state *conn_state,
+> +                                                   u32 output_fmt,
+> +                                                   unsigned int *num_inp=
+ut_fmts)
+> +{
+> +       u32 *input_fmts;
+> +       struct mtk_dp *mtk_dp =3D mtk_dp_from_bridge(bridge);
+> +       struct drm_display_mode *mode =3D &crtc_state->adjusted_mode;
+> +       struct drm_display_info *display_info =3D
+> +               &conn_state->connector->display_info;
+> +       u32 rate =3D min_t(u32, drm_dp_max_link_rate(mtk_dp->rx_cap) *
+> +                             drm_dp_max_lane_count(mtk_dp->rx_cap),
+> +                        drm_dp_bw_code_to_link_rate(mtk_dp->max_linkrate=
+) *
+> +                        mtk_dp->max_lanes);
+> +
+> +       *num_input_fmts =3D 0;
+> +
+> +       /*
+> +        * If the linkrate is smaller than datarate of RGB888, larger tha=
+n
+> +        * datarate of YUV422 and sink device supports YUV422, we output =
+YUV422
+> +        * format. Use this condition, we can support more resolution.
+> +        */
+> +       if ((rate < (mode->clock * 24 / 8)) &&
+> +           (rate > (mode->clock * 16 / 8)) &&
+> +           (display_info->color_formats & DRM_COLOR_FORMAT_YCBCR422)) {
+> +               input_fmts =3D kcalloc(1, sizeof(*input_fmts), GFP_KERNEL=
+);
+> +               if (!input_fmts)
+> +                       return NULL;
+> +               *num_input_fmts =3D 1;
+> +               input_fmts[0] =3D MEDIA_BUS_FMT_YUYV8_1X16;
+> +       } else {
+> +               input_fmts =3D kcalloc(ARRAY_SIZE(mt8195_input_fmts),
+> +                                    sizeof(*input_fmts),
+> +                                    GFP_KERNEL);
+> +               if (!input_fmts)
+> +                       return NULL;
+> +
+> +               *num_input_fmts =3D ARRAY_SIZE(mt8195_input_fmts);
+> +               memcpy(input_fmts, mt8195_input_fmts, sizeof(mt8195_input=
+_fmts));
+> +       }
+> +
+> +       return input_fmts;
+> +}
+> +
+> +static int mtk_dp_bridge_atomic_check(struct drm_bridge *bridge,
+> +                                     struct drm_bridge_state *bridge_sta=
+te,
+> +                                     struct drm_crtc_state *crtc_state,
+> +                                     struct drm_connector_state *conn_st=
+ate)
+> +{
+> +       struct mtk_dp *mtk_dp =3D mtk_dp_from_bridge(bridge);
+> +       struct drm_crtc *crtc =3D conn_state->crtc;
+> +       unsigned int input_bus_format;
+> +
+> +       input_bus_format =3D bridge_state->input_bus_cfg.format;
+> +
+> +       dev_dbg(mtk_dp->dev, "input format 0x%04x, output format 0x%04x\n=
+",
+> +               bridge_state->input_bus_cfg.format,
+> +                bridge_state->output_bus_cfg.format);
+> +
+> +       if (input_bus_format =3D=3D MEDIA_BUS_FMT_YUYV8_1X16)
+> +               mtk_dp->info.format =3D DP_PIXELFORMAT_YUV422;
+> +       else
+> +               mtk_dp->info.format =3D DP_PIXELFORMAT_RGB;
+> +
+> +       if (!crtc) {
+> +               drm_err(mtk_dp->drm_dev,
+> +                       "Can't enable bridge as connector state doesn't h=
+ave a crtc\n");
+> +               return -EINVAL;
+> +       }
+> +
+> +       drm_display_mode_to_videomode(&crtc_state->adjusted_mode, &mtk_dp=
+->info.vm);
+> +
+> +       return 0;
+> +}
+> +
+> +static const struct drm_bridge_funcs mtk_dp_bridge_funcs =3D {
+> +       .atomic_check =3D mtk_dp_bridge_atomic_check,
+> +       .atomic_duplicate_state =3D drm_atomic_helper_bridge_duplicate_st=
+ate,
+> +       .atomic_destroy_state =3D drm_atomic_helper_bridge_destroy_state,
+> +       .atomic_get_output_bus_fmts =3D mtk_dp_bridge_atomic_get_output_b=
+us_fmts,
+> +       .atomic_get_input_bus_fmts =3D mtk_dp_bridge_atomic_get_input_bus=
+_fmts,
+> +       .atomic_reset =3D drm_atomic_helper_bridge_reset,
+> +       .attach =3D mtk_dp_bridge_attach,
+> +       .detach =3D mtk_dp_bridge_detach,
+> +       .atomic_enable =3D mtk_dp_bridge_atomic_enable,
+> +       .atomic_disable =3D mtk_dp_bridge_atomic_disable,
+> +       .mode_valid =3D mtk_dp_bridge_mode_valid,
+> +       .get_edid =3D mtk_dp_get_edid,
+> +};
+> +
+> +static int mtk_dp_probe(struct platform_device *pdev)
+> +{
+> +       struct mtk_dp *mtk_dp;
+> +       struct device *dev =3D &pdev->dev;
+> +       int ret, irq_num;
+> +
+> +       mtk_dp =3D devm_kzalloc(dev, sizeof(*mtk_dp), GFP_KERNEL);
+> +       if (!mtk_dp)
+> +               return -ENOMEM;
+> +
+> +       mtk_dp->dev =3D dev;
+> +
+> +       irq_num =3D platform_get_irq(pdev, 0);
+> +       if (irq_num < 0)
+> +               return dev_err_probe(dev, irq_num,
+> +                                    "failed to request dp irq resource\n=
+");
+> +
+> +       mtk_dp->next_bridge =3D devm_drm_of_get_bridge(dev, dev->of_node,=
+ 1, 0);
+> +       if (IS_ERR(mtk_dp->next_bridge))
+> +               return dev_err_probe(dev, PTR_ERR(mtk_dp->next_bridge),
+> +                                    "Failed to get bridge\n");
+> +
+> +       ret =3D mtk_dp_dt_parse(mtk_dp, pdev);
+> +       if (ret)
+> +               return dev_err_probe(dev, ret, "Failed to parse dt\n");
+> +
+> +       drm_dp_aux_init(&mtk_dp->aux);
+> +       mtk_dp->aux.name =3D "aux_mtk_dp";
+> +       mtk_dp->aux.transfer =3D mtk_dp_aux_transfer;
+> +
+> +       spin_lock_init(&mtk_dp->irq_thread_lock);
+> +
+> +       ret =3D devm_request_threaded_irq(dev, irq_num, mtk_dp_hpd_event,
+> +                                       mtk_dp_hpd_event_thread,
+> +                                       IRQ_TYPE_LEVEL_HIGH, dev_name(dev=
+),
+> +                                       mtk_dp);
+> +       if (ret)
+> +               return dev_err_probe(dev, ret,
+> +                                    "failed to request mediatek dptx irq=
+\n");
+> +
+> +       platform_set_drvdata(pdev, mtk_dp);
+> +
+> +       mtk_dp->phy_dev =3D platform_device_register_data(dev, "mediatek-=
+dp-phy",
+> +                                                       PLATFORM_DEVID_AU=
+TO,
+> +                                                       &mtk_dp->regs,
+> +                                                       sizeof(struct reg=
+map *));
+> +       if (IS_ERR(mtk_dp->phy_dev))
+> +               return dev_err_probe(dev, PTR_ERR(mtk_dp->phy_dev),
+> +                                    "Failed to create device mediatek-dp=
+-phy\n");
+> +
+> +       mtk_dp_get_calibration_data(mtk_dp);
+> +
+> +       mtk_dp->phy =3D devm_phy_get(&mtk_dp->phy_dev->dev, "dp");
+> +
+> +       if (IS_ERR(mtk_dp->phy)) {
+> +               platform_device_unregister(mtk_dp->phy_dev);
+> +               return dev_err_probe(dev, PTR_ERR(mtk_dp->phy),
+> +                                    "Failed to get phy\n");
+> +       }
+> +
+> +       mtk_dp->bridge.funcs =3D &mtk_dp_bridge_funcs;
+> +       mtk_dp->bridge.of_node =3D dev->of_node;
+> +
+> +       mtk_dp->bridge.ops =3D
+> +               DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP=
+_HPD;
+> +       mtk_dp->bridge.type =3D DRM_MODE_CONNECTOR_eDP;
+> +
+> +       drm_bridge_add(&mtk_dp->bridge);
+> +
+> +       pm_runtime_enable(dev);
+> +       pm_runtime_get_sync(dev);
+> +
+> +       return 0;
+> +}
+> +
+> +static int mtk_dp_remove(struct platform_device *pdev)
+> +{
+> +       struct mtk_dp *mtk_dp =3D platform_get_drvdata(pdev);
+> +
+> +       pm_runtime_put(&pdev->dev);
+> +       pm_runtime_disable(&pdev->dev);
+> +       drm_bridge_remove(&mtk_dp->bridge);
+> +       platform_device_unregister(mtk_dp->phy_dev);
+> +
+> +       return 0;
+> +}
+> +
+> +#ifdef CONFIG_PM_SLEEP
+> +static int mtk_dp_suspend(struct device *dev)
+> +{
+> +       struct mtk_dp *mtk_dp =3D dev_get_drvdata(dev);
+> +
+> +       mtk_dp_power_disable(mtk_dp);
+> +       mtk_dp_hwirq_enable(mtk_dp, false);
+> +       pm_runtime_put_sync(dev);
+> +
+> +       return 0;
+> +}
+> +
+> +static int mtk_dp_resume(struct device *dev)
+> +{
+> +       struct mtk_dp *mtk_dp =3D dev_get_drvdata(dev);
+> +
+> +       pm_runtime_get_sync(dev);
+> +       mtk_dp_init_port(mtk_dp);
+> +       mtk_dp_hwirq_enable(mtk_dp, true);
+> +       mtk_dp_power_enable(mtk_dp);
+> +
+> +       return 0;
+> +}
+> +#endif
+> +
+> +static SIMPLE_DEV_PM_OPS(mtk_dp_pm_ops, mtk_dp_suspend, mtk_dp_resume);
+> +
+> +static const struct of_device_id mtk_dp_of_match[] =3D {
+> +       { .compatible =3D "mediatek,mt8195-edp-tx" },
+> +       {},
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_dp_of_match);
+> +
+> +struct platform_driver mtk_dp_driver =3D {
+> +       .probe =3D mtk_dp_probe,
+> +       .remove =3D mtk_dp_remove,
+> +       .driver =3D {
+> +               .name =3D "mediatek-drm-dp",
+> +               .of_match_table =3D mtk_dp_of_match,
+> +               .pm =3D &mtk_dp_pm_ops,
+> +       },
+> +};
+> +
+> +module_platform_driver(mtk_dp_driver);
+> +
+> +MODULE_AUTHOR("Jitao Shi <jitao.shi@mediatek.com>");
+> +MODULE_AUTHOR("Markus Schneider-Pargmann <msp@baylibre.com>");
+> +MODULE_AUTHOR("Bo-Chen Chen <rex-bc.chen@mediatek.com>");
+> +MODULE_DESCRIPTION("MediaTek DisplayPort Driver");
 > +MODULE_LICENSE("GPL");
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.h b/drivers/thermal/mediatek/lvts_thermal.h
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/medi=
+atek/mtk_dp_reg.h
 > new file mode 100644
-> index 000000000000..a94ce46acccd
+> index 000000000000..3f01ba44871f
 > --- /dev/null
-> +++ b/drivers/thermal/mediatek/lvts_thermal.h
-> @@ -0,0 +1,385 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
+> @@ -0,0 +1,305 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
 > +/*
-> + * Copyright (c) 2022 MediaTek Inc.
+> + * Copyright (c) 2019-2022 MediaTek Inc.
+> + * Copyright (c) 2022 BayLibre
 > + */
+> +#ifndef _MTK_DP_REG_H_
+> +#define _MTK_DP_REG_H_
 > +
-> +#ifndef __MTK_SOC_TEMP_LVTS_H__
-> +#define __MTK_SOC_TEMP_LVTS_H__
+> +#define SEC_OFFSET     0x4000
 > +
-> +#define PERIOD_UNIT				12
-> +#define GROUP_INTERVAL_DELAY	1
-> +#define FILTER_INTERVAL_DELAY	1
-> +#define SENSOR_INTERVAL_DELAY	1
+> +#define MTK_DP_HPD_DISCONNECT          BIT(1)
+> +#define MTK_DP_HPD_CONNECT             BIT(2)
+> +#define MTK_DP_HPD_INTERRUPT           BIT(3)
 > +
-> +#define HW_REBOOT_TRIP_POINT	117000
+> +/* offset: 0x0 */
+> +#define DP_PHY_GLB_BIAS_GEN_00         0x0
+> +#define RG_XTP_GLB_BIAS_INTR_CTRL              GENMASK(20, 16)
+> +#define DP_PHY_GLB_DPAUX_TX            0x8
+> +#define RG_CKM_PT0_CKTX_IMPSEL                 GENMASK(23, 20)
+> +#define MTK_DP_0034                    0x34
+> +#define DA_XTP_GLB_CKDET_EN_FORCE_VAL          BIT(15)
+> +#define DA_XTP_GLB_CKDET_EN_FORCE_EN           BIT(14)
+> +#define DA_CKM_INTCKTX_EN_FORCE_VAL            BIT(13)
+> +#define DA_CKM_INTCKTX_EN_FORCE_EN             BIT(12)
+> +#define DA_CKM_CKTX0_EN_FORCE_VAL              BIT(11)
+> +#define DA_CKM_CKTX0_EN_FORCE_EN               BIT(10)
+> +#define DA_CKM_XTAL_CK_FORCE_VAL               BIT(9)
+> +#define DA_CKM_XTAL_CK_FORCE_EN                        BIT(8)
+> +#define DA_CKM_BIAS_LPF_EN_FORCE_VAL           BIT(7)
+> +#define DA_CKM_BIAS_LPF_EN_FORCE_EN            BIT(6)
+> +#define DA_CKM_BIAS_EN_FORCE_VAL               BIT(5)
+> +#define DA_CKM_BIAS_EN_FORCE_EN                        BIT(4)
+> +#define DA_XTP_GLB_AVD10_ON_FORCE_VAL          BIT(3)
+> +#define DA_XTP_GLB_AVD10_ON_FORCE              BIT(2)
+> +#define DA_XTP_GLB_LDO_EN_FORCE_VAL            BIT(1)
+> +#define DA_XTP_GLB_LDO_EN_FORCE_EN             BIT(0)
+> +#define DP_PHY_LANE_TX_0               0x104
+> +#define RG_XTP_LN0_TX_IMPSEL_PMOS              GENMASK(15, 12)
+> +#define RG_XTP_LN0_TX_IMPSEL_NMOS              GENMASK(19, 16)
+> +#define DP_PHY_LANE_TX_1               0x204
+> +#define RG_XTP_LN1_TX_IMPSEL_PMOS              GENMASK(15, 12)
+> +#define RG_XTP_LN1_TX_IMPSEL_NMOS              GENMASK(19, 16)
+> +#define DP_PHY_LANE_TX_2               0x304
+> +#define RG_XTP_LN2_TX_IMPSEL_PMOS              GENMASK(15, 12)
+> +#define RG_XTP_LN2_TX_IMPSEL_NMOS              GENMASK(19, 16)
+> +#define DP_PHY_LANE_TX_3               0x404
+> +#define RG_XTP_LN3_TX_IMPSEL_PMOS              GENMASK(15, 12)
+> +#define RG_XTP_LN3_TX_IMPSEL_NMOS              GENMASK(19, 16)
+> +#define MTK_DP_1040                    0x1040
+> +#define RG_DPAUX_RX_VALID_DEGLITCH_EN          BIT(2)
+> +#define RG_XTP_GLB_CKDET_EN                    BIT(1)
+> +#define RG_DPAUX_RX_EN                         BIT(0)
 > +
-> +#define FEATURE_DEVICE_AUTO_RCK	BIT(0)
-> +#define NUM_EFUSE_ADDR			22
-> +#define NUM_EFUSE_BLOCK_MT8192	1
-> +#define DEFAULT_GOLDEN_TEMP		50
-> +#define DEFAULT_CUONT_R			35000
-> +#define DEFAULT_CUONT_RC		2750
-> +#define COEFF_A					-250460
-> +#define COEFF_B					250460
+> +/* offset: TOP_OFFSET (0x2000) */
+> +#define MTK_DP_TOP_PWR_STATE           0x2000
+> +#define DP_PWR_STATE_MASK                      GENMASK(1, 0)
+> +#define DP_PWR_STATE_BANDGAP                   BIT(0)
+> +#define DP_PWR_STATE_BANDGAP_TPLL              BIT(1)
+> +#define DP_PWR_STATE_BANDGAP_TPLL_LANE         GENMASK(1, 0)
+> +#define MTK_DP_TOP_SWING_EMP           0x2004
+> +#define DP_TX0_VOLT_SWING_MASK                 GENMASK(1, 0)
+> +#define DP_TX0_VOLT_SWING_SHIFT                        0
+> +#define DP_TX0_PRE_EMPH_MASK                   GENMASK(3, 2)
+> +#define DP_TX0_PRE_EMPH_SHIFT                  2
+> +#define DP_TX1_VOLT_SWING_MASK                 GENMASK(9, 8)
+> +#define DP_TX1_VOLT_SWING_SHIFT                        8
+> +#define DP_TX1_PRE_EMPH_MASK                   GENMASK(11, 10)
+> +#define DP_TX2_VOLT_SWING_MASK                 GENMASK(17, 16)
+> +#define DP_TX2_PRE_EMPH_MASK                   GENMASK(19, 18)
+> +#define DP_TX3_VOLT_SWING_MASK                 GENMASK(25, 24)
+> +#define DP_TX3_PRE_EMPH_MASK                   GENMASK(27, 26)
+> +#define MTK_DP_TOP_RESET_AND_PROBE     0x2020
+> +#define SW_RST_B_PHYD                          BIT(4)
+> +#define MTK_DP_TOP_IRQ_MASK            0x202c
+> +#define IRQ_MASK_AUX_TOP_IRQ                   BIT(2)
+> +#define MTK_DP_TOP_MEM_PD              0x2038
+> +#define MEM_ISO_EN                             BIT(0)
+> +#define FUSE_SEL                               BIT(2)
 > +
-> +#define CLOCK_26MHZ_CYCLE_NS	38
-> +#define BUS_ACCESS_US			2
-> +#define GOLDEN_TEMP_MAX			62
+> +/* offset: ENC0_OFFSET (0x3000) */
+> +#define MTK_DP_ENC0_P0_3000                    0x3000
+> +#define LANE_NUM_DP_ENC0_P0_MASK                       GENMASK(1, 0)
+> +#define VIDEO_MUTE_SW_DP_ENC0_P0                       BIT(2)
+> +#define VIDEO_MUTE_SEL_DP_ENC0_P0                      BIT(3)
+> +#define ENHANCED_FRAME_EN_DP_ENC0_P0                   BIT(4)
+> +#define MTK_DP_ENC0_P0_3004                    0x3004
+> +#define VIDEO_M_CODE_SEL_DP_ENC0_P0_MASK               BIT(8)
+> +#define DP_TX_ENCODER_4P_RESET_SW_DP_ENC0_P0           BIT(9)
+> +#define MTK_DP_ENC0_P0_3010                    0x3010
+> +#define HTOTAL_SW_DP_ENC0_P0_MASK                      GENMASK(15, 0)
+> +#define MTK_DP_ENC0_P0_3014                    0x3014
+> +#define VTOTAL_SW_DP_ENC0_P0_MASK                      GENMASK(15, 0)
+> +#define MTK_DP_ENC0_P0_3018                    0x3018
+> +#define HSTART_SW_DP_ENC0_P0_MASK                      GENMASK(15, 0)
+> +#define MTK_DP_ENC0_P0_301C                    0x301c
+> +#define VSTART_SW_DP_ENC0_P0_MASK                      GENMASK(15, 0)
+> +#define MTK_DP_ENC0_P0_3020                    0x3020
+> +#define HWIDTH_SW_DP_ENC0_P0_MASK                      GENMASK(15, 0)
+> +#define MTK_DP_ENC0_P0_3024                    0x3024
+> +#define VHEIGHT_SW_DP_ENC0_P0_MASK                     GENMASK(15, 0)
+> +#define MTK_DP_ENC0_P0_3028                    0x3028
+> +#define HSW_SW_DP_ENC0_P0_MASK                         GENMASK(14, 0)
+> +#define HSP_SW_DP_ENC0_P0_MASK                         BIT(15)
+> +#define MTK_DP_ENC0_P0_302C                    0x302c
+> +#define VSW_SW_DP_ENC0_P0_MASK                         GENMASK(14, 0)
+> +#define VSP_SW_DP_ENC0_P0_MASK                         BIT(15)
+> +#define MTK_DP_ENC0_P0_3030                    0x3030
+> +#define HTOTAL_SEL_DP_ENC0_P0                          BIT(0)
+> +#define VTOTAL_SEL_DP_ENC0_P0                          BIT(1)
+> +#define HSTART_SEL_DP_ENC0_P0                          BIT(2)
+> +#define VSTART_SEL_DP_ENC0_P0                          BIT(3)
+> +#define HWIDTH_SEL_DP_ENC0_P0                          BIT(4)
+> +#define VHEIGHT_SEL_DP_ENC0_P0                         BIT(5)
+> +#define HSP_SEL_DP_ENC0_P0                             BIT(6)
+> +#define HSW_SEL_DP_ENC0_P0                             BIT(7)
+> +#define VSP_SEL_DP_ENC0_P0                             BIT(8)
+> +#define VSW_SEL_DP_ENC0_P0                             BIT(9)
+> +#define MTK_DP_ENC0_P0_3034                    0x3034
+> +#define MTK_DP_ENC0_P0_3038                    0x3038
+> +#define VIDEO_SOURCE_SEL_DP_ENC0_P0_MASK               BIT(11)
+> +#define MTK_DP_ENC0_P0_303C                    0x303c
+> +#define SRAM_START_READ_THRD_DP_ENC0_P0_MASK           GENMASK(5, 0)
+> +#define VIDEO_COLOR_DEPTH_DP_ENC0_P0_MASK              GENMASK(10, 8)
+> +#define VIDEO_COLOR_DEPTH_DP_ENC0_P0_16BIT             (0 << 8)
+> +#define VIDEO_COLOR_DEPTH_DP_ENC0_P0_12BIT             (1 << 8)
+> +#define VIDEO_COLOR_DEPTH_DP_ENC0_P0_10BIT             (2 << 8)
+> +#define VIDEO_COLOR_DEPTH_DP_ENC0_P0_8BIT              (3 << 8)
+> +#define VIDEO_COLOR_DEPTH_DP_ENC0_P0_6BIT              (4 << 8)
+> +#define PIXEL_ENCODE_FORMAT_DP_ENC0_P0_MASK            GENMASK(14, 12)
+> +#define PIXEL_ENCODE_FORMAT_DP_ENC0_P0_RGB             (0 << 12)
+> +#define PIXEL_ENCODE_FORMAT_DP_ENC0_P0_YCBCR422                (1 << 12)
+> +#define PIXEL_ENCODE_FORMAT_DP_ENC0_P0_YCBCR420                (2 << 12)
+> +#define VIDEO_MN_GEN_EN_DP_ENC0_P0                     BIT(15)
+> +#define MTK_DP_ENC0_P0_3040                    0x3040
+> +#define SDP_DOWN_CNT_DP_ENC0_P0_VAL                    0x20
+> +#define SDP_DOWN_CNT_INIT_DP_ENC0_P0_MASK              GENMASK(11, 0)
+> +#define MTK_DP_ENC0_P0_304C                    0x304c
+> +#define VBID_VIDEO_MUTE_DP_ENC0_P0_MASK                        BIT(2)
+> +#define SDP_VSYNC_RISING_MASK_DP_ENC0_P0_MASK          BIT(8)
+> +#define MTK_DP_ENC0_P0_3064                    0x3064
+> +#define HDE_NUM_LAST_DP_ENC0_P0_MASK                   GENMASK(15, 0)
+> +#define MTK_DP_ENC0_P0_3154                    0x3154
+> +#define PGEN_HTOTAL_DP_ENC0_P0_MASK                    GENMASK(13, 0)
+> +#define MTK_DP_ENC0_P0_3158                    0x3158
+> +#define PGEN_HSYNC_RISING_DP_ENC0_P0_MASK              GENMASK(13, 0)
+> +#define MTK_DP_ENC0_P0_315C                    0x315c
+> +#define PGEN_HSYNC_PULSE_WIDTH_DP_ENC0_P0_MASK         GENMASK(13, 0)
+> +#define MTK_DP_ENC0_P0_3160                    0x3160
+> +#define PGEN_HFDE_START_DP_ENC0_P0_MASK                        GENMASK(1=
+3, 0)
+> +#define MTK_DP_ENC0_P0_3164                    0x3164
+> +#define PGEN_HFDE_ACTIVE_WIDTH_DP_ENC0_P0_MASK         GENMASK(13, 0)
+> +#define MTK_DP_ENC0_P0_3168                    0x3168
+> +#define PGEN_VTOTAL_DP_ENC0_P0_MASK                    GENMASK(12, 0)
+> +#define MTK_DP_ENC0_P0_316C                    0x316c
+> +#define PGEN_VSYNC_RISING_DP_ENC0_P0_MASK              GENMASK(12, 0)
+> +#define MTK_DP_ENC0_P0_3170                    0x3170
+> +#define PGEN_VSYNC_PULSE_WIDTH_DP_ENC0_P0_MASK         GENMASK(12, 0)
+> +#define MTK_DP_ENC0_P0_3174                    0x3174
+> +#define PGEN_VFDE_START_DP_ENC0_P0_MASK                        GENMASK(1=
+2, 0)
+> +#define MTK_DP_ENC0_P0_3178                    0x3178
+> +#define PGEN_VFDE_ACTIVE_WIDTH_DP_ENC0_P0_MASK         GENMASK(12, 0)
+> +#define MTK_DP_ENC0_P0_31B0                    0x31b0
+> +#define PGEN_PATTERN_SEL_VAL                           4
+> +#define PGEN_PATTERN_SEL_MASK                          GENMASK(6, 4)
+> +#define MTK_DP_ENC0_P0_31EC                    0x31ec
+> +#define AUDIO_CH_SRC_SEL_DP_ENC0_P0                    BIT(4)
+> +#define ISRC1_HB3_DP_ENC0_P0_MASK                      GENMASK(15, 8)
 > +
-> +#define LVTS_FILTER_SAMPLES_1	1
-> +#define LVTS_FILTER_SAMPLES_2	2
-> +#define LVTS_FILTER_SAMPLES_4	4
-> +#define LVTS_FILTER_SAMPLES_6	6
-> +#define LVTS_FILTER_SAMPLES_10	10
-> +#define LVTS_FILTER_SAMPLES_18	18
+> +/* offset: ENC1_OFFSET (0x3200) */
+> +#define MTK_DP_ENC1_P0_3300                    0x3300
+> +#define VIDEO_AFIFO_RDY_SEL_DP_ENC1_P0_VAL             2
+> +#define VIDEO_AFIFO_RDY_SEL_DP_ENC1_P0_MASK            GENMASK(9, 8)
+> +#define MTK_DP_ENC1_P0_3364                    0x3364
+> +#define SDP_DOWN_CNT_IN_HBLANK_DP_ENC1_P0_VAL          0x20
+> +#define SDP_DOWN_CNT_INIT_IN_HBLANK_DP_ENC1_P0_MASK    GENMASK(11, 0)
+> +#define FIFO_READ_START_POINT_DP_ENC1_P0_VAL           4
+> +#define FIFO_READ_START_POINT_DP_ENC1_P0_MASK          GENMASK(15, 12)
+> +#define MTK_DP_ENC1_P0_3368                    0x3368
+> +#define VIDEO_SRAM_FIFO_CNT_RESET_SEL_DP_ENC1_P0       BIT(0)
+> +#define VIDEO_STABLE_CNT_THRD_DP_ENC1_P0               BIT(4)
+> +#define SDP_DP13_EN_DP_ENC1_P0                         BIT(8)
+> +#define BS2BS_MODE_DP_ENC1_P0                          BIT(12)
+> +#define BS2BS_MODE_DP_ENC1_P0_MASK                     GENMASK(13, 12)
+> +#define BS2BS_MODE_DP_ENC1_P0_VAL                      1
+> +#define DP_ENC1_P0_3368_VAL                            (VIDEO_SRAM_FIFO_=
+CNT_RESET_SEL_DP_ENC1_P0 | \
+> +                                                        VIDEO_STABLE_CNT=
+_THRD_DP_ENC1_P0 | \
+> +                                                        SDP_DP13_EN_DP_E=
+NC1_P0 | \
+> +                                                        BS2BS_MODE_DP_EN=
+C1_P0)
 > +
-> +#define TC_SENSING_POINT_0			BIT(0)
-> +#define TC_SENSING_POINT_7			BIT(7)
-> +#define TC_SENSING_POINT_10			BIT(10)
-> +#define ALL_TC_SENSING_POINT_STATUS	(BIT(10) | BIT(7) | BIT(0))
-> +#define COUNT_RC_NOW_MASK			GENMASK(23, 0)
-> +#define PERIOD_UNIT_MASK			GENMASK(9, 0)
-> +#define GROUP_INTERVAL_DELAY_MASK	GENMASK(29, 20)
-> +#define FILTER_INTERVAL_DELAY_MASK	GENMASK(25, 16)
-> +#define SENSOR_INTERVAL_DELAY_MASK	GENMASK(9, 0)
+> +/* offset: TRANS_OFFSET (0x3400) */
+> +#define MTK_DP_TRANS_P0_3400                           0x3400
+> +#define PATTERN1_EN_DP_TRANS_P0_MASK                           BIT(12)
+> +#define PATTERN2_EN_DP_TRANS_P0_MASK                           BIT(13)
+> +#define PATTERN3_EN_DP_TRANS_P0_MASK                           BIT(14)
+> +#define PATTERN4_EN_DP_TRANS_P0_MASK                           BIT(15)
+> +#define MTK_DP_TRANS_P0_3404                           0x3404
+> +#define DP_SCR_EN_DP_TRANS_P0_MASK                             BIT(0)
+> +#define MTK_DP_TRANS_P0_340C                           0x340c
+> +#define DP_TX_TRANSMITTER_4P_RESET_SW_DP_TRANS_P0              BIT(13)
+> +#define MTK_DP_TRANS_P0_3410                           0x3410
+> +#define HPD_DEB_THD_DP_TRANS_P0_MASK                           GENMASK(3=
+, 0)
+> +#define HPD_INT_THD_DP_TRANS_P0_MASK                           GENMASK(7=
+, 4)
+> +#define HPD_INT_THD_DP_TRANS_P0_LOWER_500US                    (2 << 4)
+> +#define HPD_INT_THD_DP_TRANS_P0_UPPER_1100US                   (2 << 6)
+> +#define HPD_DISC_THD_DP_TRANS_P0_MASK                          GENMASK(1=
+1, 8)
+> +#define HPD_CONN_THD_DP_TRANS_P0_MASK                          GENMASK(1=
+5, 12)
+> +#define MTK_DP_TRANS_P0_3414                           0x3414
+> +#define HPD_DB_DP_TRANS_P0_MASK                                        B=
+IT(2)
+> +#define MTK_DP_TRANS_P0_3418                           0x3418
+> +#define IRQ_CLR_DP_TRANS_P0_MASK                               GENMASK(3=
+, 0)
+> +#define IRQ_MASK_DP_TRANS_P0_MASK                              GENMASK(7=
+, 4)
+> +#define IRQ_MASK_DP_TRANS_P0_DISC_IRQ                          (BIT(1) <=
+< 4)
+> +#define IRQ_MASK_DP_TRANS_P0_CONN_IRQ                          (BIT(2) <=
+< 4)
+> +#define IRQ_MASK_DP_TRANS_P0_INT_IRQ                           (BIT(3) <=
+< 4)
+> +#define IRQ_STATUS_DP_TRANS_P0_MASK                            GENMASK(1=
+5, 12)
+> +#define MTK_DP_TRANS_P0_342C                           0x342c
+> +#define XTAL_FREQ_DP_TRANS_P0_DEFAULT                          (BIT(0) |=
+ BIT(3) | BIT(5) | BIT(6))
+> +#define XTAL_FREQ_DP_TRANS_P0_MASK                             GENMASK(7=
+, 0)
+> +#define MTK_DP_TRANS_P0_3430                           0x3430
+> +#define HPD_INT_THD_ECO_DP_TRANS_P0_MASK                       GENMASK(1=
+, 0)
+> +#define HPD_INT_THD_ECO_DP_TRANS_P0_HIGH_BOUND_EXT             BIT(1)
+> +#define MTK_DP_TRANS_P0_34A4                           0x34a4
+> +#define LANE_NUM_DP_TRANS_P0_MASK                              GENMASK(3=
+, 2)
+> +#define MTK_DP_TRANS_P0_3540                           0x3540
+> +#define FEC_EN_DP_TRANS_P0_MASK                                        B=
+IT(0)
+> +#define FEC_CLOCK_EN_MODE_DP_TRANS_P0                          BIT(3)
+> +#define MTK_DP_TRANS_P0_3580                           0x3580
+> +#define POST_MISC_DATA_LANE0_OV_DP_TRANS_P0_MASK               BIT(8)
+> +#define POST_MISC_DATA_LANE1_OV_DP_TRANS_P0_MASK               BIT(9)
+> +#define POST_MISC_DATA_LANE2_OV_DP_TRANS_P0_MASK               BIT(10)
+> +#define POST_MISC_DATA_LANE3_OV_DP_TRANS_P0_MASK               BIT(11)
+> +#define MTK_DP_TRANS_P0_35C8                           0x35c8
+> +#define SW_IRQ_CLR_DP_TRANS_P0_MASK                            GENMASK(1=
+5, 0)
+> +#define SW_IRQ_STATUS_DP_TRANS_P0_MASK                         GENMASK(1=
+5, 0)
+> +#define MTK_DP_TRANS_P0_35D0                           0x35d0
+> +#define SW_IRQ_FINAL_STATUS_DP_TRANS_P0_MASK                   GENMASK(1=
+5, 0)
+> +#define MTK_DP_TRANS_P0_35F0                           0x35f0
+> +#define DP_TRANS_DUMMY_RW_0                                    BIT(3)
+> +#define DP_TRANS_DUMMY_RW_0_MASK                               GENMASK(3=
+, 2)
 > +
-> +/* LVTS device register */
-> +#define RG_TSFM_DATA_0			0x00
-> +#define RG_TSFM_DATA_1			0x01
-> +#define RG_TSFM_DATA_2			0x02
-> +#define RG_TSFM_CTRL_0			0x03
-> +#define RG_TSFM_CTRL_1			0x04
-> +#define RG_TSFM_CTRL_2			0x05
-> +#define RG_TSFM_CTRL_3			0x06
-> +#define RG_TSFM_CTRL_4			0x07
-> +#define RG_TSV2F_CTRL_0			0x08
-> +#define RG_TSV2F_CTRL_1			0x09
-> +#define RG_TSV2F_CTRL_2			0x0A
-> +#define RG_TSV2F_CTRL_3			0x0B
-> +#define RG_TSV2F_CTRL_4			0x0C
-> +#define RG_TSV2F_CTRL_5			0x0D
-> +#define RG_TSV2F_CTRL_6			0x0E
-> +#define RG_TEMP_DATA_0			0x10
-> +#define RG_TEMP_DATA_1			0x11
-> +#define RG_TEMP_DATA_2			0x12
-> +#define RG_TEMP_DATA_3			0x13
-> +#define RG_RC_DATA_0			0x14
-> +#define RG_RC_DATA_1			0x15
-> +#define RG_RC_DATA_2			0x16
-> +#define RG_RC_DATA_3			0x17
-> +#define RG_DIV_DATA_0			0x18
-> +#define RG_DIV_DATA_1			0x19
-> +#define RG_DIV_DATA_2			0x1A
-> +#define RG_DIV_DATA_3			0x1B
-> +#define RG_TST_DATA_0			0x70
-> +#define RG_TST_DATA_1			0x71
-> +#define RG_TST_DATA_2			0x72
-> +#define RG_TST_CTRL				0x73
-> +#define RG_DBG_FQMTR			0xF0
-> +#define RG_DBG_LPSEQ			0xF1
-> +#define RG_DBG_STATE			0xF2
-> +#define RG_DBG_CHKSUM			0xF3
-> +#define RG_DID_LVTS				0xFC
-> +#define RG_DID_REV				0xFD
-> +#define RG_TSFM_RST				0xFF
+> +/* offset: AUX_OFFSET (0x3600) */
+> +#define MTK_DP_AUX_P0_360C                     0x360c
+> +#define AUX_TIMEOUT_THR_AUX_TX_P0_MASK                 GENMASK(12, 0)
+> +#define AUX_TIMEOUT_THR_AUX_TX_P0_VAL                  0x1595
+> +#define MTK_DP_AUX_P0_3614                     0x3614
+> +#define AUX_RX_UI_CNT_THR_AUX_TX_P0_MASK               GENMASK(6, 0)
+> +#define AUX_RX_UI_CNT_THR_AUX_FOR_26M                  13
+> +#define MTK_DP_AUX_P0_3618                     0x3618
+> +#define AUX_RX_FIFO_FULL_AUX_TX_P0_MASK                        BIT(9)
+> +#define AUX_RX_FIFO_WRITE_POINTER_AUX_TX_P0_MASK       GENMASK(3, 0)
+> +#define MTK_DP_AUX_P0_3620                     0x3620
+> +#define AUX_RD_MODE_AUX_TX_P0_MASK                     BIT(9)
+> +#define AUX_RX_FIFO_READ_PULSE_TX_P0                   BIT(8)
+> +#define AUX_RX_FIFO_READ_DATA_AUX_TX_P0_MASK           GENMASK(7, 0)
+> +#define MTK_DP_AUX_P0_3624                     0x3624
+> +#define AUX_RX_REPLY_COMMAND_AUX_TX_P0_MASK            GENMASK(3, 0)
+> +#define MTK_DP_AUX_P0_3628                     0x3628
+> +#define AUX_RX_PHY_STATE_AUX_TX_P0_MASK                        GENMASK(9=
+, 0)
+> +#define AUX_RX_PHY_STATE_AUX_TX_P0_RX_IDLE             BIT(0)
+> +#define MTK_DP_AUX_P0_362C                     0x362c
+> +#define AUX_NO_LENGTH_AUX_TX_P0                                BIT(0)
+> +#define AUX_TX_AUXTX_OV_EN_AUX_TX_P0_MASK              BIT(1)
+> +#define AUX_RESERVED_RW_0_AUX_TX_P0_MASK               GENMASK(15, 2)
+> +#define MTK_DP_AUX_P0_3630                     0x3630
+> +#define AUX_TX_REQUEST_READY_AUX_TX_P0                 BIT(3)
+> +#define MTK_DP_AUX_P0_3634                     0x3634
+> +#define AUX_TX_OVER_SAMPLE_RATE_AUX_TX_P0_MASK         GENMASK(15, 8)
+> +#define AUX_TX_OVER_SAMPLE_RATE_FOR_26M                        25
+> +#define MTK_DP_AUX_P0_3640                     0x3640
+> +#define AUX_RX_AUX_RECV_COMPLETE_IRQ_AUX_TX_P0         BIT(6)
+> +#define AUX_RX_EDID_RECV_COMPLETE_IRQ_AUX_TX_P0                BIT(5)
+> +#define AUX_RX_MCCS_RECV_COMPLETE_IRQ_AUX_TX_P0                BIT(4)
+> +#define AUX_RX_CMD_RECV_IRQ_AUX_TX_P0                  BIT(3)
+> +#define AUX_RX_ADDR_RECV_IRQ_AUX_TX_P0                 BIT(2)
+> +#define AUX_RX_DATA_RECV_IRQ_AUX_TX_P0                 BIT(1)
+> +#define AUX_400US_TIMEOUT_IRQ_AUX_TX_P0                        BIT(0)
+> +#define DP_AUX_P0_3640_VAL                             (AUX_400US_TIMEOU=
+T_IRQ_AUX_TX_P0 | \
+> +                                                        AUX_RX_DATA_RECV=
+_IRQ_AUX_TX_P0 | \
+> +                                                        AUX_RX_ADDR_RECV=
+_IRQ_AUX_TX_P0 | \
+> +                                                        AUX_RX_CMD_RECV_=
+IRQ_AUX_TX_P0 | \
+> +                                                        AUX_RX_MCCS_RECV=
+_COMPLETE_IRQ_AUX_TX_P0 | \
+> +                                                        AUX_RX_EDID_RECV=
+_COMPLETE_IRQ_AUX_TX_P0 | \
+> +                                                        AUX_RX_AUX_RECV_=
+COMPLETE_IRQ_AUX_TX_P0)
+> +#define MTK_DP_AUX_P0_3644                     0x3644
+> +#define MCU_REQUEST_COMMAND_AUX_TX_P0_MASK             GENMASK(3, 0)
+> +#define MTK_DP_AUX_P0_3648                     0x3648
+> +#define MCU_REQUEST_ADDRESS_LSB_AUX_TX_P0_MASK         GENMASK(15, 0)
+> +#define MTK_DP_AUX_P0_364C                     0x364c
+> +#define MCU_REQUEST_ADDRESS_MSB_AUX_TX_P0_MASK         GENMASK(3, 0)
+> +#define MTK_DP_AUX_P0_3650                     0x3650
+> +#define MCU_REQ_DATA_NUM_AUX_TX_P0_MASK                        GENMASK(1=
+5, 12)
+> +#define PHY_FIFO_RST_AUX_TX_P0_MASK                    BIT(9)
+> +#define MCU_ACK_TRAN_COMPLETE_AUX_TX_P0                        BIT(8)
+> +#define MTK_DP_AUX_P0_3658                     0x3658
+> +#define AUX_TX_OV_EN_AUX_TX_P0_MASK                    BIT(0)
+> +#define MTK_DP_AUX_P0_3690                     0x3690
+> +#define RX_REPLY_COMPLETE_MODE_AUX_TX_P0               BIT(8)
+> +#define MTK_DP_AUX_P0_3704                     0x3704
+> +#define AUX_TX_FIFO_WDATA_NEW_MODE_T_AUX_TX_P0_MASK    BIT(1)
+> +#define AUX_TX_FIFO_NEW_MODE_EN_AUX_TX_P0              BIT(2)
+> +#define MTK_DP_AUX_P0_3708                     0x3708
+> +#define MTK_DP_AUX_P0_37C8                     0x37c8
+> +#define MTK_ATOP_EN_AUX_TX_P0                          BIT(0)
 > +
-> +/* LVTS controller register */
-> +#define LVTSMONCTL0_0				0x000
-> +#define ENABLE_SENSING_POINT(num)	(LVTS_SINGLE_SENSE | GENMASK(((num) - 1), 0))
-> +#define DISABLE_SENSING_POINT		(LVTS_SINGLE_SENSE | 0x0)
-> +#define LVTSMONCTL1_0				0x004
-> +#define LVTSMONCTL2_0				0x008
-> +#define LVTSMONINT_0				0x00C
-> +#define STAGE3_INT_EN				BIT(31)
-> +#define LVTSMONINTSTS_0				0x010
-> +#define LVTSMONIDET0_0				0x014
-> +#define LVTSMONIDET1_0				0x018
-> +#define LVTSMONIDET2_0				0x01C
-> +#define LVTSMONIDET3_0				0x020
-> +#define LVTSH2NTHRE_0				0x024
-> +#define LVTSHTHRE_0					0x028
-> +#define LVTSCTHRE_0					0x02C
-> +#define LVTSOFFSETH_0				0x030
-> +#define LVTSOFFSETL_0				0x034
-> +#define LVTSMSRCTL0_0				0x038
-> +#define LVTSMSRCTL1_0				0x03C
-> +#define LVTSTSSEL_0					0x040
-> +#define SET_SENSOR_INDEX			0x13121110
-> +#define LVTSDEVICETO_0				0x044
-> +#define LVTSCALSCALE_0				0x048
-> +#define SET_CALC_SCALE_RULES		0x00000300
-> +#define LVTS_ID_0					0x04C
-> +#define LVTS_CONFIG_0				0x050
-> +
-> +#define SCK_ONLY					BIT(31)
-> +#define BROADCAST_ID_UPDATE			BIT(26)
-> +#define DEVICE_SENSING_STATUS		BIT(25)
-> +#define DEVICE_ACCESS_STARTUS		BIT(24)
-> +#define READ_32BIT_ACCESS			BIT(17)
-> +#define WRITE_ACCESS				BIT(16)
-> +#define LVTS_SINGLE_SENSE			BIT(9)
-> +#define FEATURE_CK26M_ACTIVE		BIT(1)
-> +#define DEVICE_REG_DATA				GENMASK(7, 0)
-> +
-> +#define LVTSEDATA00_0				0x054
-> +#define LVTSEDATA01_0				0x058
-> +#define LVTSEDATA02_0				0x05C
-> +#define LVTSEDATA03_0				0x060
-> +#define LVTSMSR0_0					0x090
-> +#define MRS_RAW_MASK				GENMASK(15, 0)
-> +#define MRS_RAW_VALID_BIT			BIT(16)
-> +#define LVTSMSR1_0					0x094
-> +#define LVTSMSR2_0					0x098
-> +#define LVTSMSR3_0					0x09C
-> +#define LVTSIMMD0_0					0x0A0
-> +#define LVTSIMMD1_0					0x0A4
-> +#define LVTSIMMD2_0					0x0A8
-> +#define LVTSIMMD3_0					0x0AC
-> +#define LVTSRDATA0_0				0x0B0
-> +#define LVTSRDATA1_0				0x0B4
-> +#define LVTSRDATA2_0				0x0B8
-> +#define LVTSRDATA3_0				0x0BC
-> +#define LVTSPROTCTL_0				0x0C0
-> +#define PROTOFFSET					GENMASK(15, 0)
-> +#define LVTSPROTTA_0				0x0C4
-> +#define LVTSPROTTB_0				0x0C8
-> +#define LVTSPROTTC_0				0x0CC
-> +#define LVTSCLKEN_0					0x0E4
-> +#define ENABLE_LVTS_CTRL_CLK		(1)
-> +#define DISABLE_LVTS_CTRL_CLK		(0)
-> +#define LVTSDBGSEL_0				0x0E8
-> +#define LVTSDBGSIG_0				0x0EC
-> +#define LVTSSPARE0_0				0x0F0
-> +#define LVTSSPARE1_0				0x0F4
-> +#define LVTSSPARE2_0				0x0F8
-> +#define LVTSSPARE3_0				0x0FC
-> +#define THERMINTST					0xF04
-> +
-> +/* LVTS register mask */
-> +#define THERMAL_COLD_INTERRUPT_0			BIT(0)
-> +#define THERMAL_HOT_INTERRUPT_0				BIT(1)
-> +#define THERMAL_LOW_OFFSET_INTERRUPT_0		BIT(2)
-> +#define THERMAL_HIGH_OFFSET_INTERRUPT_0		BIT(3)
-> +#define THERMAL_HOT2NORMAL_INTERRUPT_0		BIT(4)
-> +#define THERMAL_COLD_INTERRUPT_1			BIT(5)
-> +#define THERMAL_HOT_INTERRUPT_1				BIT(6)
-> +#define THERMAL_LOW_OFFSET_INTERRUPT_1		BIT(7)
-> +#define THERMAL_HIGH_OFFSET_INTERRUPT_1		BIT(8)
-> +#define THERMAL_HOT2NORMAL_INTERRUPT_1		BIT(9)
-> +#define THERMAL_COLD_INTERRUPT_2			BIT(10)
-> +#define THERMAL_HOT_INTERRUPT_2				BIT(11)
-> +#define THERMAL_LOW_OFFSET_INTERRUPT_2		BIT(12)
-> +#define THERMAL_HIGH_OFFSET_INTERRUPT_2		BIT(13)
-> +#define THERMAL_HOT2NORMAL_INTERRUPT_2		BIT(14)
-> +#define THERMAL_AHB_TIMEOUT_INTERRUPT		BIT(15)
-> +#define THERMAL_DEVICE_TIMEOUT_INTERRUPT	BIT(15)
-> +#define THERMAL_IMMEDIATE_INTERRUPT_0		BIT(16)
-> +#define THERMAL_IMMEDIATE_INTERRUPT_1		BIT(17)
-> +#define THERMAL_IMMEDIATE_INTERRUPT_2		BIT(18)
-> +#define THERMAL_FILTER_INTERRUPT_0			BIT(19)
-> +#define THERMAL_FILTER_INTERRUPT_1			BIT(20)
-> +#define THERMAL_FILTER_INTERRUPT_2			BIT(21)
-> +#define THERMAL_COLD_INTERRUPT_3			BIT(22)
-> +#define THERMAL_HOT_INTERRUPT_3				BIT(23)
-> +#define THERMAL_LOW_OFFSET_INTERRUPT_3		BIT(24)
-> +#define THERMAL_HIGH_OFFSET_INTERRUPT_3		BIT(25)
-> +#define THERMAL_HOT2NORMAL_INTERRUPT_3		BIT(26)
-> +#define THERMAL_IMMEDIATE_INTERRUPT_3		BIT(27)
-> +#define THERMAL_FILTER_INTERRUPT_3			BIT(28)
-> +#define THERMAL_PROTECTION_STAGE_1			BIT(29)
-> +#define THERMAL_PROTECTION_STAGE_2			BIT(30)
-> +#define THERMAL_PROTECTION_STAGE_3			BIT(31)
-> +
-> +#define CFG_REGISTER(reg, value)			(reg << 8 | value)
-> +#define STOP_COUNTING_V4					CFG_REGISTER(RG_TSFM_CTRL_0, 0x00)
-> +#define SET_RG_TSFM_LPDLY_V4				CFG_REGISTER(RG_TSFM_CTRL_4, 0xA6)
-> +#define SET_COUNTING_WINDOW_20US1_V4		CFG_REGISTER(RG_TSFM_CTRL_2, 0x00)
-> +#define SET_COUNTING_WINDOW_20US2_V4		CFG_REGISTER(RG_TSFM_CTRL_1, 0x20)
-> +#define TSV2F_CHOP_CKSEL_AND_TSV2F_EN_V4	CFG_REGISTER(RG_TSV2F_CTRL_2, 0x84)
-> +#define TSBG_DEM_CKSEL_X_TSBG_CHOP_EN_V4	CFG_REGISTER(RG_TSV2F_CTRL_4, 0x7C)
-> +#define SET_TS_RSV_V4						CFG_REGISTER(RG_TSV2F_CTRL_1, 0x8D)
-> +#define SET_TS_EN_V4						CFG_REGISTER(RG_TSV2F_CTRL_0, 0xF4)
-> +#define TOGGLE_RG_TSV2F_VCO_RST1_V4			CFG_REGISTER(RG_TSV2F_CTRL_0, 0xFC)
-> +#define TOGGLE_RG_TSV2F_VCO_RST2_V4			CFG_REGISTER(RG_TSV2F_CTRL_0, 0xF4)
-> +
-> +#define SET_LVTS_AUTO_RCK_V4				CFG_REGISTER(RG_TSV2F_CTRL_6, 0x01)
-> +#define SELECT_SENSOR_RCK_V4(id)			CFG_REGISTER(RG_TSV2F_CTRL_5, (id))
-> +#define SET_DEVICE_SINGLE_MODE_V4			CFG_REGISTER(RG_TSFM_CTRL_3, 0x78)
-> +#define KICK_OFF_RCK_COUNTING_V4			CFG_REGISTER(RG_TSFM_CTRL_0, 0x02)
-> +#define SET_SENSOR_NO_RCK_V4				CFG_REGISTER(RG_TSV2F_CTRL_5, 0x10)
-> +#define SET_DEVICE_LOW_POWER_SINGLE_MODE_V4	CFG_REGISTER(RG_TSFM_CTRL_3, 0xB8)
-> +
-> +#define HAS_FEATURE(lvts_data, feature)		(lvts_data->feature_bitmap & (feature))
-> +#define GET_BASE_ADDR(lvts_data, tc_id)		(lvts_data->base + lvts_data->tc[tc_id].addr_offset)
-> +#define GET_CAL_DATA_BITMASK(index, lvts_data, h, l)	(((index) < lvts_data->num_efuse_addr) ? \
-> +	((lvts_data->efuse[(index)] & GENMASK(h, l)) >> l) : 0)
-> +
-> +#define GET_TC_SENSOR_NUM(lvts_data, tc_id)	(lvts_data->tc[tc_id].num_sensor)
-> +#define ONE_SAMPLE(lvts_data)				(lvts_data->counting_window_us + 2 * BUS_ACCESS_US)
-> +#define NUM_OF_SAMPLE(lvts_data, tc_id)		((lvts_data->tc[tc_id].hw_filter < LVTS_FILTER_2) ? \
-> +	LVTS_FILTER_SAMPLES_1 : ((lvts_data->tc[tc_id].hw_filter > LVTS_FILTER_16_OF_18) ? \
-> +	LVTS_FILTER_SAMPLES_1 : ((lvts_data->tc[tc_id].hw_filter == LVTS_FILTER_16_OF_18) ? \
-> +	LVTS_FILTER_SAMPLES_18 : ((lvts_data->tc[tc_id].hw_filter == LVTS_FILTER_8_OF_10) ? \
-> +	LVTS_FILTER_SAMPLES_10 : (lvts_data->tc[tc_id].hw_filter * 2)))))
-> +
-> +#define PERIOD_UNIT_US(lvts_data, tc_id)   ((lvts_data->tc[tc_id].tc_speed->period_unit * 256 \
-> +	* CLOCK_26MHZ_CYCLE_NS) / 1000)
-> +#define FILTER_INT_US(lvts_data, tc_id)    (lvts_data->tc[tc_id].tc_speed->filter_interval_delay \
-> +	* PERIOD_UNIT_US(lvts_data, tc_id))
-> +#define SENSOR_INT_US(lvts_data, tc_id)    (lvts_data->tc[tc_id].tc_speed->sensor_interval_delay \
-> +	* PERIOD_UNIT_US(lvts_data, tc_id))
-> +#define GROUP_INT_US(lvts_data, tc_id)     (lvts_data->tc[tc_id].tc_speed->group_interval_delay \
-> +	* PERIOD_UNIT_US(lvts_data, tc_id))
-> +#define SENSOR_LATENCY_US(lvts_data, tc_id)	((NUM_OF_SAMPLE(lvts_data, tc_id) - 1) * \
-> +	FILTER_INT_US(lvts_data, tc_id) + NUM_OF_SAMPLE(lvts_data, tc_id) * ONE_SAMPLE(lvts_data))
-> +#define GROUP_LATENCY_US(lvts_data, tc_id)	(GET_TC_SENSOR_NUM(lvts_data, tc_id) * \
-> +	SENSOR_LATENCY_US(lvts_data, tc_id) + (GET_TC_SENSOR_NUM(lvts_data, tc_id) - 1) * \
-> +	SENSOR_INT_US(lvts_data, tc_id) + GROUP_INT_US(lvts_data, tc_id))
-> +
-> +#define CK26M_ACTIVE(lvts_data)				(((lvts_data->feature_bitmap & FEATURE_CK26M_ACTIVE) \
-> +	? 1 : 0) << 30)
-> +#define DEVICE_ACCESS					  (SCK_ONLY | DEVICE_ACCESS_STARTUS | READ_32BIT_ACCESS)
-> +#define DEVICE_READ(lvts_data)			  (CK26M_ACTIVE(lvts_data) | DEVICE_ACCESS)
-> +#define DEVICE_WRITE(lvts_data)			  (CK26M_ACTIVE(lvts_data) | DEVICE_ACCESS | WRITE_ACCESS)
-> +#define RESET_ALL_DEVICES(lvts_data)	  (DEVICE_WRITE(lvts_data) | RG_TSFM_RST << 8 | 0xFF)
-> +#define READ_DEVICE_REG(lvts_data, reg_id) (DEVICE_READ(lvts_data) | (reg_id) << 8 | 0x00)
-> +#define READ_BACK_DEVICE_ID(lvts_data)	   (CK26M_ACTIVE(lvts_data) | DEVICE_ACCESS | \
-> +	BROADCAST_ID_UPDATE | RG_DID_LVTS << 8)
-> +
-> +/*
-> + * LVTS HW filter settings
-> + * 000: Get one sample
-> + * 001: Get 2 samples and average them
-> + * 010: Get 4 samples, drop max and min, then average the rest of 2 samples
-> + * 011: Get 6 samples, drop max and min, then average the rest of 4 samples
-> + * 100: Get 10 samples, drop max and min, then average the rest of 8 samples
-> + * 101: Get 18 samples, drop max and min, then average the rest of 16 samples
-> + */
-> +enum lvts_hw_filter {
-> +	LVTS_FILTER_1,
-> +	LVTS_FILTER_2,
-> +	LVTS_FILTER_2_OF_4,
-> +	LVTS_FILTER_4_OF_6,
-> +	LVTS_FILTER_8_OF_10,
-> +	LVTS_FILTER_16_OF_18
-> +};
-> +
-> +enum lvts_sensing_point {
-> +	SENSING_POINT0,
-> +	SENSING_POINT1,
-> +	SENSING_POINT2,
-> +	SENSING_POINT3,
-> +	ALL_SENSING_POINTS
-
-Usually, the naming convention is NUM_SENSING_POINTS
-
-> +};
-> +
-> +struct lvts_data;
-
-This forward declaration should not be needed
-
-> +/**
-> + * struct lvts_speed_settings - A structure to hold the data related to polling rate
-> + * @period_unit: Period unit is a base for all interval delays
-> + * @group_interval_delay:  Delay between different rounds
-> + * @filter_interval_delay: Delay between two samples of the same sensor
-> + * @sensor_interval_delay: Delay between two samples of differnet sensors
-> + *
-> + * Calculation is achieved with the following equations:
-> + * For the period unit: (period_us * 1000) / (256 * clock_26mhz_cycle_ns)
-> + * For the interval delays: delay / period_us
-> + */
-> +struct lvts_speed_settings {
-> +	unsigned int period_unit;
-> +	unsigned int group_interval_delay;
-> +	unsigned int filter_interval_delay;
-> +	unsigned int sensor_interval_delay;
-> +};
-> +
-> +struct lvts_tc_settings {
-> +	unsigned int dev_id;
-> +	unsigned int addr_offset;
-> +	unsigned int num_sensor;
-> +	unsigned int ts_offset;
-> +	unsigned int sensor_map[ALL_SENSING_POINTS];	/* In sensor ID */
-
-Can you explain what is for the sensor_map?
-
-> +	struct lvts_speed_settings *tc_speed;
-> +	/*
-> +	 * HW filter setting
-> +	 * 000: Get one sample
-> +	 * 001: Get 2 samples and average them
-> +	 * 010: Get 4 samples, drop max and min, then average the rest of 2 samples
-> +	 * 011: Get 6 samples, drop max and min, then average the rest of 4 samples
-> +	 * 100: Get 10 samples, drop max and min, then average the rest of 8 samples
-> +	 * 101: Get 18 samples, drop max and min, then average the rest of 16 samples
-> +	 */
-> +	unsigned int hw_filter;
-
-Isn't possible to specify a latency constraint instead of a hw_filter 
-and deduce this one?
-
-> +	/*
-> +	 * Dominator_sensing point is used to select a sensing point
-> +	 * and reference its temperature to trigger Thermal HW Reboot
-> +	 * When it is ALL_SENSING_POINTS, it will select all sensing points
-> +	 */
-> +	int dominator_sensing_point;
-
-replace int by the enum, hopefully 'clang' can detect enum mismatches
-
-> +	int hw_reboot_trip_point;		/* -274000: Disable HW reboot */
-
-It is not necessary to specify the hw_reboot_trip_point, it is all the 
-same in the declaration.
-
-> +	unsigned int irq_bit;
-> +};
-> +
-> +struct lvts_formula_coeff {
-> +	int a;
-> +	int b;
-> +	unsigned int golden_temp;
-> +};
-> +
-> +struct lvts_sensor_cal_data {
-> +	int use_fake_efuse;				/* 1: Use fake efuse, 0: Use real efuse */
-> +	unsigned int golden_temp;
-> +	unsigned int *count_r;
-> +	unsigned int *count_rc;
-> +	unsigned int *count_rc_now;
-> +	unsigned int default_golden_temp;
-> +	unsigned int default_count_r;
-> +	unsigned int default_count_rc;
-> +};
-> +
-> +struct platform_ops {
-> +	void (*efuse_to_cal_data)(struct lvts_data *lvts_data);
-> +	void (*device_enable_and_init)(struct lvts_data *lvts_data);
-> +	void (*device_enable_auto_rck)(struct lvts_data *lvts_data);
-> +	int (*device_read_count_rc_n)(struct lvts_data *lvts_data);
-> +	void (*set_cal_data)(struct lvts_data *lvts_data);
-> +	void (*init_controller)(struct lvts_data *lvts_data);
-> +};
-> +
-> +struct lvts_data {
-
-IMO it would make sense to rename the lvts_data to lvts_thermal_domain
-
-> +	struct device *dev;
-> +	struct clk *clk;
-> +	void __iomem *base;				/* LVTS base addresses */
-> +	unsigned int irq_num;			/* LVTS interrupt numbers */
-
-The probe function can be reworked to get the irq and the pass it the 
-register function. No need to store it in this structure.
-
-> +	struct reset_control *reset;
-> +	int num_tc;						/* Number of LVTS thermal controllers */
-> +	const struct lvts_tc_settings *tc;
-> +	int counting_window_us;			/* LVTS device counting window */
-> +	int num_sensor;					/* Number of sensors in this platform */
-> +	void __iomem **reg;
-> +	struct platform_ops ops;
-> +	int feature_bitmap;				/* Show what features are enabled */
-> +	unsigned int num_efuse_addr;
-> +	unsigned int *efuse;
-> +	unsigned int num_efuse_block;	/* Number of contiguous efuse indexes */
-> +	struct lvts_sensor_cal_data cal_data;
-
-Everything related to the initialization must be somehow removed from 
-this structure.
-
-> +	struct lvts_formula_coeff coeff;
-> +};
-> +
-> +struct soc_temp_tz {
-> +	unsigned int id;
-> +	struct lvts_data *lvts_data;
-> +};
-> +
-> +extern void lvts_device_enable_and_init(struct lvts_data *lvts_data);
-> +extern void lvts_device_enable_auto_rck_v4(struct lvts_data *lvts_data);
-> +extern int lvts_device_read_count_rc_n_v4(struct lvts_data *lvts_data);
-> +extern void lvts_set_calibration_data_v4(struct lvts_data *lvts_data);
-> +extern void lvts_init_controller_v4(struct lvts_data *lvts_data);
-> +
-> +extern int lvts_probe(struct platform_device *pdev);
-> +extern int lvts_remove(struct platform_device *pdev);
-> +extern int lvts_suspend(struct platform_device *pdev, pm_message_t state);
-> +extern int lvts_resume(struct platform_device *pdev);
-> +extern void lvts_shutdown(struct platform_device *pdev);
-> +
-> +#endif /* __MTK_SOC_TEMP_LVTS_H__ */
-> diff --git a/drivers/thermal/mediatek/lvts_v4.c b/drivers/thermal/mediatek/lvts_v4.c
-> new file mode 100644
-> index 000000000000..3dc00d2589f9
-> --- /dev/null
-> +++ b/drivers/thermal/mediatek/lvts_v4.c
-> @@ -0,0 +1,249 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + */
-> +
-> +#include <linux/of_irq.h>
-> +#include <linux/platform_device.h>
-> +#include "lvts_thermal.h"
-> +
-> +enum mt8192_lvts_mcu_sensor_enum {
-> +	MT8192_TS1_0,
-> +	MT8192_TS1_1,
-> +	MT8192_TS2_0,
-> +	MT8192_TS2_1,
-> +	MT8192_TS3_0,
-> +	MT8192_TS3_1,
-> +	MT8192_TS3_2,
-> +	MT8192_TS3_3,
-> +	MT8192_NUM_TS_MCU
-> +};
-> +
-> +enum mt8192_lvts_ap_sensor_enum {
-> +	MT8192_TS4_0,
-> +	MT8192_TS4_1,
-> +	MT8192_TS5_0,
-> +	MT8192_TS5_1,
-> +	MT8192_TS6_0,
-> +	MT8192_TS6_1,
-> +	MT8192_TS7_0,
-> +	MT8192_TS7_1,
-> +	MT8192_TS7_2,
-> +	MT8192_NUM_TS_AP
-> +};
-> +
-> +static void mt8192_mcu_efuse_to_cal_data(struct lvts_data *lvts_data)
-> +{
-> +	const unsigned int mt8192_ts[] = { MT8192_TS2_0, MT8192_TS3_0 };
-> +	struct lvts_sensor_cal_data *cal_data = &lvts_data->cal_data;
-> +	unsigned int i, j;
-> +
-> +	cal_data->golden_temp = GET_CAL_DATA_BITMASK(0, lvts_data, 31, 24);
-> +
-> +	for (i = 0; i < MT8192_NUM_TS_MCU; i++)
-> +		cal_data->count_r[i] = GET_CAL_DATA_BITMASK(i + 1, lvts_data, 23, 0);
-> +
-> +	cal_data->count_rc[MT8192_TS1_0] = GET_CAL_DATA_BITMASK(21, lvts_data, 23, 0);
-> +
-> +	for (i = 0; i < (ARRAY_SIZE(mt8192_ts)); i++) {
-> +		for (j = 1; j <= 18; j++) {
-> +			cal_data->count_rc[mt8192_ts[i]] = (GET_CAL_DATA_BITMASK(j, lvts_data, 31, 24)
-> +				<< 16) + (GET_CAL_DATA_BITMASK(j, lvts_data, 31, 24) << 8) +
-> +				GET_CAL_DATA_BITMASK(j, lvts_data, 31, 24);
-> +		}
-> +	}
-> +}
-> +
-> +static void mt8192_ap_efuse_to_cal_data(struct lvts_data *lvts_data)
-> +{
-> +	const unsigned int mt8192_ts[] = { MT8192_TS4_0, MT8192_TS5_0, MT8192_TS6_0, MT8192_TS7_0 };
-> +	struct lvts_sensor_cal_data *cal_data = &lvts_data->cal_data;
-> +	unsigned int i, j;
-> +
-> +	cal_data->golden_temp = GET_CAL_DATA_BITMASK(0, lvts_data, 31, 24);
-> +
-> +	for (i = 0; i < MT8192_NUM_TS_AP; i++)
-> +		cal_data->count_r[i] = GET_CAL_DATA_BITMASK(i + 1, lvts_data, 23, 0);
-> +
-> +	for (i = 0; i < (ARRAY_SIZE(mt8192_ts)); i++) {
-> +		for (j = 1; j <= 18; j++) {
-> +			cal_data->count_rc[mt8192_ts[i]] = (GET_CAL_DATA_BITMASK(j, lvts_data, 31, 24)
-> +				<< 16) + (GET_CAL_DATA_BITMASK(j, lvts_data, 31, 24) << 8) +
-> +				GET_CAL_DATA_BITMASK(j, lvts_data, 31, 24);
-> +		}
-> +	}
-> +}
-> +
-> +static struct lvts_speed_settings tc_speed_mt8192 = {
-> +	.period_unit = PERIOD_UNIT,
-> +	.group_interval_delay = GROUP_INTERVAL_DELAY,
-> +	.filter_interval_delay = FILTER_INTERVAL_DELAY,
-> +	.sensor_interval_delay = SENSOR_INTERVAL_DELAY,
-> +};
-> +
-> +static const struct lvts_tc_settings mt8192_tc_mcu_settings[] = {
-> +	[0] = {
-> +		.dev_id = 0x81,
-> +		.addr_offset = 0x0,
-> +		.num_sensor = 2,
-> +		.ts_offset = 0,
-> +		.sensor_map = { MT8192_TS1_0, MT8192_TS1_1 },
-> +		.tc_speed = &tc_speed_mt8192,
-> +		.hw_filter = LVTS_FILTER_2_OF_4,
-> +		.dominator_sensing_point = SENSING_POINT1,
-> +		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-> +		.irq_bit = BIT(3),
-> +	},
-> +	[1] = {
-> +		.dev_id = 0x82,
-> +		.addr_offset = 0x100,
-> +		.num_sensor = 2,
-> +		.ts_offset = 0,
-> +		.sensor_map = { MT8192_TS2_0, MT8192_TS2_1 },
-> +		.tc_speed = &tc_speed_mt8192,
-> +		.hw_filter = LVTS_FILTER_2_OF_4,
-> +		.dominator_sensing_point = SENSING_POINT0,
-> +		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-> +		.irq_bit = BIT(4),
-> +	},
-> +	[2] = {
-> +		.dev_id = 0x83,
-> +		.addr_offset = 0x200,
-> +		.num_sensor = 4,
-> +		.ts_offset = 0,
-> +		.sensor_map = { MT8192_TS3_0, MT8192_TS3_1, MT8192_TS3_2, MT8192_TS3_3 },
-> +		.tc_speed = &tc_speed_mt8192,
-> +		.hw_filter = LVTS_FILTER_2_OF_4,
-> +		.dominator_sensing_point = SENSING_POINT0,
-> +		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-> +		.irq_bit = BIT(5),
-> +	}
-> +};
-> +
-> +static const struct lvts_tc_settings mt8192_tc_ap_settings[] = {
-> +	[0] = {
-> +		.dev_id = 0x84,
-> +		.addr_offset = 0x0,
-> +		.num_sensor = 2,
-> +		.ts_offset = 0,
-> +		.sensor_map = { MT8192_TS4_0, MT8192_TS4_1 },
-> +		.tc_speed = &tc_speed_mt8192,
-> +		.hw_filter = LVTS_FILTER_2_OF_4,
-> +		.dominator_sensing_point = SENSING_POINT0,
-> +		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-> +		.irq_bit = BIT(3),
-> +	},
-> +	[1] = {
-> +		.dev_id = 0x85,
-> +		.addr_offset = 0x100,
-> +		.num_sensor = 2,
-> +		.ts_offset = 0,
-> +		.sensor_map = { MT8192_TS5_0, MT8192_TS5_1 },
-> +		.tc_speed = &tc_speed_mt8192,
-> +		.hw_filter = LVTS_FILTER_2_OF_4,
-> +		.dominator_sensing_point = SENSING_POINT1,
-> +		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-> +		.irq_bit = BIT(4),
-> +	},
-> +	[2] = {
-> +		.dev_id = 0x86,
-> +		.addr_offset = 0x200,
-> +		.num_sensor = 2,
-> +		.ts_offset = 0,
-> +		.sensor_map = { MT8192_TS6_0, MT8192_TS6_1 },
-> +		.tc_speed = &tc_speed_mt8192,
-> +		.hw_filter = LVTS_FILTER_2_OF_4,
-> +		.dominator_sensing_point = SENSING_POINT1,
-> +		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-> +		.irq_bit = BIT(5),
-> +	},
-> +	[3] = {
-> +		.dev_id = 0x87,
-> +		.addr_offset = 0x300,
-> +		.num_sensor = 3,
-> +		.ts_offset = 0,
-> +		.sensor_map = { MT8192_TS7_0, MT8192_TS7_1, MT8192_TS7_2 },
-> +		.tc_speed = &tc_speed_mt8192,
-> +		.hw_filter = LVTS_FILTER_2_OF_4,
-> +		.dominator_sensing_point = SENSING_POINT2,
-> +		.hw_reboot_trip_point = HW_REBOOT_TRIP_POINT,
-> +		.irq_bit = BIT(6),
-> +	}
-> +};
-> +
-> +static const struct lvts_data mt8192_lvts_mcu_data = {
-> +	.num_tc = (ARRAY_SIZE(mt8192_tc_mcu_settings)),
-> +	.tc = mt8192_tc_mcu_settings,
-> +	.num_sensor = MT8192_NUM_TS_MCU,
-> +	.ops = {
-> +		.efuse_to_cal_data = mt8192_mcu_efuse_to_cal_data,
-> +		.device_enable_and_init = lvts_device_enable_and_init,
-> +		.device_enable_auto_rck = lvts_device_enable_auto_rck_v4,
-> +		.device_read_count_rc_n = lvts_device_read_count_rc_n_v4,
-> +		.set_cal_data = lvts_set_calibration_data_v4,
-> +		.init_controller = lvts_init_controller_v4,
-> +	},
-> +	.feature_bitmap = FEATURE_DEVICE_AUTO_RCK,
-> +	.num_efuse_addr = NUM_EFUSE_ADDR,
-> +	.num_efuse_block = NUM_EFUSE_BLOCK_MT8192,
-> +	.cal_data = {
-> +		.default_golden_temp = DEFAULT_GOLDEN_TEMP,
-> +		.default_count_r = DEFAULT_CUONT_R,
-> +		.default_count_rc = DEFAULT_CUONT_RC,
-> +	},
-> +	.coeff = {
-> +		.a = COEFF_A,
-> +		.b = COEFF_B,
-> +	},
-> +};
-> +
-> +static const struct lvts_data mt8192_lvts_ap_data = {
-> +	.num_tc = (ARRAY_SIZE(mt8192_tc_ap_settings)),
-> +	.tc = mt8192_tc_ap_settings,
-> +	.num_sensor = MT8192_NUM_TS_AP,
-> +	.ops = {
-> +		.efuse_to_cal_data = mt8192_ap_efuse_to_cal_data,
-> +		.device_enable_and_init = lvts_device_enable_and_init,
-> +		.device_enable_auto_rck = lvts_device_enable_auto_rck_v4,
-> +		.device_read_count_rc_n = lvts_device_read_count_rc_n_v4,
-> +		.set_cal_data = lvts_set_calibration_data_v4,
-> +		.init_controller = lvts_init_controller_v4,
-> +	},
-> +	.feature_bitmap = FEATURE_DEVICE_AUTO_RCK,
-> +	.num_efuse_addr = NUM_EFUSE_ADDR,
-> +	.num_efuse_block = NUM_EFUSE_BLOCK_MT8192,
-> +	.cal_data = {
-> +		.default_golden_temp = DEFAULT_GOLDEN_TEMP,
-> +		.default_count_r = DEFAULT_CUONT_R,
-> +		.default_count_rc = DEFAULT_CUONT_RC,
-> +	},
-> +	.coeff = {
-> +		.a = COEFF_A,
-> +		.b = COEFF_B,
-> +	},
-> +};
-> +
-> +static const struct of_device_id lvts_of_match[] = {
-> +	{ .compatible = "mediatek,mt8192-lvts-mcu", .data = &mt8192_lvts_mcu_data, },
-> +	{ .compatible = "mediatek,mt8192-lvts-ap", .data = &mt8192_lvts_ap_data, },
-> +	{},
-> +};
-> +MODULE_DEVICE_TABLE(of, lvts_of_match);
-> +
-> +static struct platform_driver soc_temp_lvts = {
-> +	.probe = lvts_probe,
-> +	.remove = lvts_remove,
-> +	.suspend = lvts_suspend,
-> +	.resume = lvts_resume,
-> +	.shutdown = lvts_shutdown,
-> +	.driver = {
-> +		.name = "mtk-lvts-thermal-v4",
-> +		.of_match_table = lvts_of_match,
-> +	},
-> +};
-> +module_platform_driver(soc_temp_lvts);
-> +
-> +MODULE_AUTHOR("Yu-Chia Chang <ethan.chang@mediatek.com>");
-> +MODULE_AUTHOR("Michael Kao <michael.kao@mediatek.com>");
-> +MODULE_DESCRIPTION("MediaTek LVTS V4 Thermal Driver");
-> +MODULE_LICENSE("GPL");
-
-
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+> +#endif /*_MTK_DP_REG_H_*/
+> --
+> 2.18.0
+>
 
