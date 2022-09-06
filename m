@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE54C38145
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 09:42:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ABB0C38145
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 09:47:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qRQ+bsJdGYFtoehZXJ9CG9hmZnA3qGLazL+DfrVMStg=; b=sFP8Mi1vFYnFoYtt+CuuxrzbYl
-	yKAF0gnan1QMwLlpsqNQG7q922z80o6IEuV6EkOyPJDxtmVA8SH6RQc5nTMPDfmZaChTcitA/MetW
-	TGvBg4ileSTZo/0ef4nA7i69986TikZY8UCVUBTIDtkj2X1rrmls/ySWoSKCm1OIBsggBLzSf7nOh
-	XKkctJJZiyxBufgpiyaqkXsq39fTq+mFC9clEH/rkblPGbsr+XvTGbD7VIlL+BZStf08iIAnmiYcv
-	09sB5eJi83Ik9EDD5o5e63eCietXkjV8T401AKctVTbGSVVirOTuH4L1aHU0qnsu4h9tEdbC+PSGq
-	Yh1CGgsw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2WKJ/wVUkeTQLKTawlGlXDOI8foFUVG3UjyUJ12fdDE=; b=4Lrqw5ZTtKllKUbSXC3OM5yV40
+	/L2Q1QpZsNVG1uE9knN8oyxjNfV7imScS+9mC3OuyK4L3fW1xSdzCT0wizsk4aq5EuXwxSaU99AFs
+	LdqJTvCnUvwPTDnt6beKIeq/OBvSOM/DICIUk/gTkR6qiEc2lFyfA2W33LSRmQFjdi8PlJZylMQpf
+	tb5DmWVcbbAN5fHXC8eopg5C3//tY9w16YpPGEFMZpzQhNaevPNyI0ndGeMpnfEENzICq8TapnEEn
+	ooKYDDgpBBdjvwp6PFsAOTT4OP/eKduJP5SXZaxjLw+ESyUvY5qJu8JI94bycgE9mcPDfC4W3RGQS
+	9K3/qTIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVV66-00Bzjb-NY; Tue, 06 Sep 2022 09:42:22 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oVVAR-00C2nw-LW; Tue, 06 Sep 2022 09:46:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVV5f-00BzIU-C0; Tue, 06 Sep 2022 09:41:56 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8B21D6601EF9;
-	Tue,  6 Sep 2022 10:41:52 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662457313;
-	bh=7pEeYix4E4mRwD8IkrPe/sydx5F80OmM4j61hvpJHDo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Atz850aqdqnVP4OlM865gUC2IfObKvqgM12LzdJyn/95T3UwH9DBsSurrIoOR8tQE
-	 uOJUQtGcVE8ItupeK1l0jrqsabMEiRhUL0R+tni/mheB2wzL/47zfoKwAXdxEYrxtj
-	 ifnWiXmptF0GpptgWiXu0QP1dVgBpF1OtCFdO42POyDbmGoOuXvFDaZh6LnR28arOL
-	 usWYocvC/7yq5H1AmOFWmp6Mo7voZ9hy7pr41GeuG+K8jMPUhs89jqmKpztovPv1F+
-	 1cBRzhhXzWyi3rZGvTPvbPJEwKvjh72xl7j46sKOCn/pggWzajazWhYMearHWw37ZG
-	 J+zCjZ4PNDLyQ==
-Message-ID: <fa26f4f5-032e-f5cf-8e67-c4a34d963e70@collabora.com>
-Date: Tue, 6 Sep 2022 11:41:49 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v2 5/6] soc: mediatek: add mtk-mutex support for mt8188
- vdosys0
-Content-Language: en-US
-To: "nathan.lu" <nathan.lu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: "jason-jh . lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Rex-BC Chen <rex-bc.chen@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, wsd_upstream@mediatek.com,
- lancelot.wu@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
- amy zhang <Amy.Zhang@mediatek.com>
+	id 1oVVAJ-00C2d8-Gz; Tue, 06 Sep 2022 09:46:48 +0000
+X-UUID: 861d5f7df8ec47e2bcb73e2b254f2528-20220906
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=2WKJ/wVUkeTQLKTawlGlXDOI8foFUVG3UjyUJ12fdDE=;
+	b=a/vLjNbOJRjAHuwYhmD0cmGzfmc+Br1HBgqC2Y82TqBi3sS9kOmPVblpQXlpAr1ZnkQUGScYwtLiki8X/4u37LaUfKpEFR1YXpXl2EMjlpWfnVSefcWcnF8jRrD0nBkOP8lpmi0gqv4swm53T3jNN2ietHHfSl4IyvUr0r8CbcQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:ee4fd71f-396c-4dff-b9ae-757be5504a71,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:324a5a21-1c20-48a5-82a0-25f9c331906d,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 861d5f7df8ec47e2bcb73e2b254f2528-20220906
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <nathan.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1392099115; Tue, 06 Sep 2022 02:46:35 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 6 Sep 2022 16:45:18 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 6 Sep 2022 16:45:18 +0800
+From: nathan.lu <nathan.lu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: "jason-jh . lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rex-BC
+ Chen <rex-bc.chen@mediatek.com>, Nathan Lu <nathan.lu@mediatek.com>, Moudy Ho
+	<moudy.ho@mediatek.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <wsd_upstream@mediatek.com>,
+	<lancelot.wu@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, amy zhang
+	<Amy.Zhang@mediatek.com>
+Subject: [PATCH v2 4/6] soc: mediatek: add mtk-mmsys support for mt8188 vdosys0
+Date: Tue, 6 Sep 2022 16:44:47 +0800
+Message-ID: <20220906084449.20124-5-nathan.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220906084449.20124-1-nathan.lu@mediatek.com>
 References: <20220906084449.20124-1-nathan.lu@mediatek.com>
- <20220906084449.20124-6-nathan.lu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220906084449.20124-6-nathan.lu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_024155_629996_F75BB812 
-X-CRM114-Status: UNSURE (   8.13  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220906_024643_662878_834D3CB0 
+X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,14 +91,218 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/09/22 10:44, nathan.lu ha scritto:
-> From: Nathan Lu <nathan.lu@mediatek.com>
-> 
-> add mtk-mutex support for mt8188 vdosys0.
-> 
-> Signed-off-by: amy zhang <Amy.Zhang@mediatek.com>
-> Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
+From: Nathan Lu <nathan.lu@mediatek.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+1. add mt8188 mmsys
+2. add mt8188 vdosys0 routing table settings
+
+Signed-off-by: amy zhang <Amy.Zhang@mediatek.com>
+Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
+---
+ drivers/soc/mediatek/mt8188-mmsys.h | 149 ++++++++++++++++++++++++++++
+ drivers/soc/mediatek/mtk-mmsys.c    |  18 ++++
+ 2 files changed, 167 insertions(+)
+ create mode 100644 drivers/soc/mediatek/mt8188-mmsys.h
+
+diff --git a/drivers/soc/mediatek/mt8188-mmsys.h b/drivers/soc/mediatek/mt8188-mmsys.h
+new file mode 100644
+index 000000000000..e1ab318c9192
+--- /dev/null
++++ b/drivers/soc/mediatek/mt8188-mmsys.h
+@@ -0,0 +1,149 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++
++#ifndef __SOC_MEDIATEK_MT8188_MMSYS_H
++#define __SOC_MEDIATEK_MT8188_MMSYS_H
++
++#define MT8188_VDO0_OVL_MOUT_EN				0xf14
++#define MT8188_MOUT_DISP_OVL0_TO_DISP_RDMA0		BIT(0)
++#define MT8188_MOUT_DISP_OVL0_TO_DISP_WDMA0		BIT(1)
++#define MT8188_MOUT_DISP_OVL0_TO_DISP_OVL1		BIT(2)
++#define MT8188_MOUT_DISP_OVL1_TO_DISP_RDMA1		BIT(4)
++#define MT8188_MOUT_DISP_OVL1_TO_DISP_WDMA1		BIT(5)
++#define MT8188_MOUT_DISP_OVL1_TO_DISP_OVL0		BIT(6)
++
++#define MT8188_VDO0_SEL_IN				0xf34
++#define MT8188_VDO0_SEL_OUT				0xf38
++
++#define MT8188_VDO0_DISP_RDMA_SEL			0xf40
++#define MT8188_SOUT_DISP_RDMA0_TO_MASK			GENMASK(2, 0)
++#define MT8188_SOUT_DISP_RDMA0_TO_DISP_COLOR0		(0 << 0)
++#define MT8188_SOUT_DISP_RDMA0_TO_DISP_DSI0		(1 << 0)
++#define MT8188_SOUT_DISP_RDMA0_TO_DISP_DP_INTF0		(5 << 0)
++#define MT8188_SEL_IN_DISP_RDMA0_FROM_MASK		GENMASK(8, 8)
++#define MT8188_SEL_IN_DISP_RDMA0_FROM_DISP_OVL0		(0 << 8)
++#define MT8188_SEL_IN_DISP_RDMA0_FROM_DISP_RSZ0		(1 << 8)
++
++
++#define MT8188_VDO0_DSI0_SEL_IN				0xf44
++#define MT8188_SEL_IN_DSI0_FROM_MASK			GENMASK(16, 16)
++#define MT8188_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT		(0 << 16)
++#define MT8188_SEL_IN_DSI0_FROM_DISP_DITHER0		(1 << 16)
++
++#define MT8188_VDO0_DP_INTF0_SEL_IN			0xf4C
++#define MT8188_SEL_IN_DP_INTF0_FROM_MASK		GENMASK(2, 0)
++#define MT8188_SEL_IN_DP_INTF0_FROM_DSC_WRAP0C1_OUT	(0 << 0)
++#define MT8188_SEL_IN_DP_INTF0_FROM_VPP_MERGE		(1 << 0)
++#define MT8188_SEL_IN_DP_INTF0_FROM_DISP_DITHER0	(3 << 0)
++
++#define MT8188_VDO0_DISP_DITHER0_SEL_OUT		0xf58
++#define MT8188_SOUT_DISP_DITHER0_TO_MASK		BIT(0)
++#define MT8188_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN	(0 << 0)
++#define MT8188_SOUT_DISP_DITHER0_TO_DSI0		(1 << 0)
++#define MT8188_SOUT_DISP_DITHER0_TO_VPP_MERGE0		(6 << 0)
++#define MT8188_SOUT_DISP_DITHER0_TO_DP_INTF0		(7 << 0)
++
++#define MT8188_VDO0_VPP_MERGE_SEL			0xf60
++#define MT8188_SEL_IN_VPP_MERGE_FROM_MASK		GENMASK(1, 0)
++#define MT8188_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT	(0 << 0)
++#define MT8188_SEL_IN_VPP_MERGE_FROM_DITHER0_OUT	(3 << 0)
++
++#define MT8188_SOUT_VPP_MERGE_TO_MASK			GENMASK(6, 4)
++#define MT8188_SOUT_VPP_MERGE_TO_DSI1			(0 << 4)
++#define MT8188_SOUT_VPP_MERGE_TO_DP_INTF0		(1 << 4)
++#define MT8188_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0		(2 << 4)
++#define MT8188_SOUT_VPP_MERGE_TO_DISP_WDMA1		(3 << 4)
++#define MT8188_SOUT_VPP_MERGE_TO_DSC_WRAP0_IN		(4 << 4)
++#define MT8188_SOUT_VPP_MERGE_TO_DISP_WDMA0		(5 << 4)
++#define MT8188_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN_MASK	GENMASK(11, 11)
++#define MT8188_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN		(0 << 11)
++
++#define MT8188_VDO0_DSC_WARP_SEL			0xf64
++#define MT8188_SEL_IN_DSC_WRAP0C0_IN_FROM_MASK		GENMASK(0, 0)
++#define MT8188_SEL_IN_DSC_WRAP0C0_IN_FROM_DISP_DITHER0	(0 << 0)
++#define MT8188_SEL_IN_DSC_WRAP0C0_IN_FROM_VPP_MERGE	(1 << 0)
++#define MT8188_SOUT_DSC_WRAP0_OUT_TO_MASK		GENMASK(19, 16)
++#define MT8188_SOUT_DSC_WRAP0_OUT_TO_DSI0		BIT(16)
++#define MT8188_SOUT_DSC_WRAP0_OUT_TO_SINB_VIRTUAL0	BIT(17)
++#define MT8188_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE		BIT(18)
++#define MT8188_SOUT_DSC_WRAP0_OUT_TO_DISP_WDMA0		BIT(19)
++
++static const struct mtk_mmsys_routes mmsys_mt8188_routing_table[] = {
++	{
++		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
++		MT8188_VDO0_OVL_MOUT_EN, MT8188_MOUT_DISP_OVL0_TO_DISP_RDMA0,
++		MT8188_MOUT_DISP_OVL0_TO_DISP_RDMA0
++	}, {
++		DDP_COMPONENT_OVL0, DDP_COMPONENT_WDMA0,
++		MT8188_VDO0_OVL_MOUT_EN, MT8188_MOUT_DISP_OVL0_TO_DISP_WDMA0,
++		MT8188_MOUT_DISP_OVL0_TO_DISP_WDMA0
++	}, {
++		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
++		MT8188_VDO0_DISP_RDMA_SEL, MT8188_SEL_IN_DISP_RDMA0_FROM_MASK,
++		MT8188_SEL_IN_DISP_RDMA0_FROM_DISP_OVL0
++	}, {
++		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
++		MT8188_VDO0_DSI0_SEL_IN, MT8188_SEL_IN_DSI0_FROM_MASK,
++		MT8188_SEL_IN_DSI0_FROM_DISP_DITHER0
++	}, {
++		DDP_COMPONENT_DITHER0, DDP_COMPONENT_MERGE0,
++		MT8188_VDO0_VPP_MERGE_SEL, MT8188_SEL_IN_VPP_MERGE_FROM_MASK,
++		MT8188_SEL_IN_VPP_MERGE_FROM_DITHER0_OUT
++	}, {
++		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSC0,
++		MT8188_VDO0_DSC_WARP_SEL,
++		MT8188_SEL_IN_DSC_WRAP0C0_IN_FROM_MASK,
++		MT8188_SEL_IN_DSC_WRAP0C0_IN_FROM_DISP_DITHER0
++	}, {
++		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DP_INTF0,
++		MT8188_VDO0_DP_INTF0_SEL_IN, MT8188_SEL_IN_DP_INTF0_FROM_MASK,
++		MT8188_SEL_IN_DP_INTF0_FROM_DISP_DITHER0
++	}, {
++		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
++		MT8188_VDO0_VPP_MERGE_SEL, MT8188_SEL_IN_VPP_MERGE_FROM_MASK,
++		MT8188_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT
++	}, {
++		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
++		MT8188_VDO0_DSI0_SEL_IN, MT8188_SEL_IN_DSI0_FROM_MASK,
++		MT8188_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT
++	}, {
++		DDP_COMPONENT_RDMA0, DDP_COMPONENT_COLOR0,
++		MT8188_VDO0_DISP_RDMA_SEL, MT8188_SOUT_DISP_RDMA0_TO_MASK,
++		MT8188_SOUT_DISP_RDMA0_TO_DISP_COLOR0
++	},  {
++		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DSI0,
++		MT8188_VDO0_DISP_DITHER0_SEL_OUT,
++		MT8188_SOUT_DISP_DITHER0_TO_MASK,
++		MT8188_SOUT_DISP_DITHER0_TO_DSI0
++	},  {
++		DDP_COMPONENT_DITHER0, DDP_COMPONENT_DP_INTF0,
++		MT8188_VDO0_DISP_DITHER0_SEL_OUT,
++		MT8188_SOUT_DISP_DITHER0_TO_MASK,
++		MT8188_SOUT_DISP_DITHER0_TO_DP_INTF0
++	}, {
++		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DP_INTF0,
++		MT8188_VDO0_VPP_MERGE_SEL, MT8188_SOUT_VPP_MERGE_TO_MASK,
++		MT8188_SOUT_VPP_MERGE_TO_DP_INTF0
++	}, {
++		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DPI0,
++		MT8188_VDO0_VPP_MERGE_SEL, MT8188_SOUT_VPP_MERGE_TO_MASK,
++		MT8188_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0
++	}, {
++		DDP_COMPONENT_MERGE0, DDP_COMPONENT_WDMA0,
++		MT8188_VDO0_VPP_MERGE_SEL, MT8188_SOUT_VPP_MERGE_TO_MASK,
++		MT8188_SOUT_VPP_MERGE_TO_DISP_WDMA0
++	}, {
++		DDP_COMPONENT_MERGE0, DDP_COMPONENT_DSC0,
++		MT8188_VDO0_VPP_MERGE_SEL, MT8188_SOUT_VPP_MERGE_TO_MASK,
++		MT8188_SOUT_VPP_MERGE_TO_DSC_WRAP0_IN
++	}, {
++		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
++		MT8188_VDO0_DSC_WARP_SEL, MT8188_SOUT_DSC_WRAP0_OUT_TO_MASK,
++		MT8188_SOUT_DSC_WRAP0_OUT_TO_DSI0
++	}, {
++		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
++		MT8188_VDO0_DSC_WARP_SEL, MT8188_SOUT_DSC_WRAP0_OUT_TO_MASK,
++		MT8188_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE
++	},
++};
++
++#endif /* __SOC_MEDIATEK_MT8188_MMSYS_H */
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index 114defd48298..9fba969dce1c 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -16,6 +16,7 @@
+ #include "mt8167-mmsys.h"
+ #include "mt8183-mmsys.h"
+ #include "mt8186-mmsys.h"
++#include "mt8188-mmsys.h"
+ #include "mt8192-mmsys.h"
+ #include "mt8195-mmsys.h"
+ #include "mt8365-mmsys.h"
+@@ -128,6 +129,19 @@ static const struct mtk_mmsys_match_data mt8186_mmsys_match_data = {
+ 	},
+ };
+ 
++static const struct mtk_mmsys_driver_data mt8188_vdosys0_driver_data = {
++	.clk_driver = "clk-mt8188-vdo0",
++	.routes = mmsys_mt8188_routing_table,
++	.num_routes = ARRAY_SIZE(mmsys_mt8188_routing_table),
++};
++
++static const struct mtk_mmsys_match_data mt8188_mmsys_match_data = {
++	.num_drv_data = 1,
++	.drv_data = {
++		&mt8188_vdosys0_driver_data,
++	},
++};
++
+ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+ 	.clk_driver = "clk-mt8192-mm",
+ 	.routes = mmsys_mt8192_routing_table,
+@@ -453,6 +467,10 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
+ 		.compatible = "mediatek,mt8186-mmsys",
+ 		.data = &mt8186_mmsys_match_data,
+ 	},
++	{
++		.compatible = "mediatek,mt8188-mmsys",
++		.data = &mt8188_mmsys_match_data,
++	},
+ 	{
+ 		.compatible = "mediatek,mt8192-mmsys",
+ 		.data = &mt8192_mmsys_match_data,
+-- 
+2.18.0
 
 
