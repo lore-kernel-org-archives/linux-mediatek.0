@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BF13C38145
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Sep 2022 03:21:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB334C38145
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Sep 2022 03:51:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t97iS4YcYk2aQLZEbYiw0ExZyEUa2KjpAGNCB69JMoA=; b=rXZ1jkDpjWeb+hVmQMp6jOPLvT
-	If9SZl6z1qxrxi2eQsILzcBanPP6ZUaIPT+X5SxwskvnU9fiP1NPOiKHytlGPpliLVHoWjmptmaW5
-	BA0UKrFjNIRKFKfDo6tyPwJNjb7jiQMCdKQI6hcQO73kbbdpdmA6YoqVquc6MsJ9yLZzIoJk5TdSA
-	vbGB+w4GKTaMtRwnO5AKf00Tg46q4WBuyVYwgp57ChQUp2eY82vmIybWwJ2pNhyaBxCmgef2F7sxC
-	va7U/HC2nyaA+/+MdPx/DYgdJDYtWjZv5Q6KhCFzt3Du8ZF1kRgQFUDl7aMmLOyiSDw9B+uN17wq7
-	qARX6Oig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W4m9+NDppUp7sQi+UOD21uigXlltsiEIftmf4JBbKiQ=; b=yBvMsB5pwPdEUqReN0bwk8fRQO
+	XjpQZMo63gh4kDWmR6WJDtgkVNQjtD4pf3Zfeph/UTFVhod2hGCwla7FqUoy/N+0zO7cwqXiKAEyT
+	VdGjC3f986xdklpsDfVIFj14Bn+0yzUz1yYWqOZj8h4dyl3lVs04nf9ckYyfeNicz40N6sjT0YMXr
+	QaVxswxDN/LdkLAcmyPxYxZiXv74RZKbvZhdAe0C5SYurBMm0kPOWJNAVGF10cKRWN/wwUDQ5+Nav
+	u056avx7Wil0Sm4f9G8DDOpI44Ez8hSxYVJ2GjsAMnDcekVvNsUtjZUKT52tcmFZZ3oBoc0tL0lts
+	esV1a5sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVlcc-001xwA-90; Wed, 07 Sep 2022 03:21:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oVm5q-002Bkb-WC; Wed, 07 Sep 2022 03:51:15 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVlc2-001xgs-I7; Wed, 07 Sep 2022 03:20:33 +0000
-X-UUID: a3414b63f8484033a887de90a91b8fac-20220906
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=t97iS4YcYk2aQLZEbYiw0ExZyEUa2KjpAGNCB69JMoA=;
-	b=dipnh0LarnZGzf7pqBEQurTAU4UsDGQ8/jRfJ+aLlVf2y+uUnfbWFmJYBGeN069KgayE9aeudRmM/vQNPyJ3MQTnoQp0WRJydocQGVK/SFYcea5UH3OPFPcw/sjYTBPOlQnFI41OBHe3MTyJ2Kfti6U/ksMDEYIONn7EgFD/MbQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:3f986764-4de0-4974-bff5-2d4faed2a314,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:5e0d6f21-1c20-48a5-82a0-25f9c331906d,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: a3414b63f8484033a887de90a91b8fac-20220906
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 692475890; Tue, 06 Sep 2022 20:11:10 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Wed, 7 Sep 2022 11:10:12 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 7 Sep 2022 11:10:11 +0800
-Message-ID: <bfd6d40474d4d5f589a825b0cc193ae229c42d52.camel@mediatek.com>
-Subject: Re: [PATCH v4 3/6] iommu/mediatek: Add error path for loop of
- mm_dts_parse
-From: Yong Wu <yong.wu@mediatek.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-CC: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
-	<iommu@lists.linux.dev>, <iommu@lists.linux-foundation.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <mingyuan.ma@mediatek.com>,
-	<yf.wang@mediatek.com>, <libo.kang@mediatek.com>, <chengci.xu@mediatek.com>,
-	<youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
-	<xueqi.zhang@mediatek.com>, Guenter Roeck <groeck@chromium.org>
-Date: Wed, 7 Sep 2022 11:10:11 +0800
-In-Reply-To: <20220830083206.GT2030@kadam>
-References: <20220824064306.21495-1-yong.wu@mediatek.com>
-	 <20220824064306.21495-4-yong.wu@mediatek.com> <20220830083206.GT2030@kadam>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oVm4r-002BHC-H7
+	for linux-mediatek@lists.infradead.org; Wed, 07 Sep 2022 03:50:15 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id l14so4066028eja.7
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Sep 2022 20:50:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date;
+        bh=W4m9+NDppUp7sQi+UOD21uigXlltsiEIftmf4JBbKiQ=;
+        b=S8XLl/R4T6De2Gn/PbHbRk4v/CW/S2fj6vDkgz8kmZX7PoW1RLsUJZo0DcJJlnnGoQ
+         tg8tncuKa2r0KclUVqbQjUFUxyWtdIdI0jhEWw+H87vxgXqARJZl7YaaRXTCR1+UDHdK
+         SaWO7+sLzRTTEnbJESVjIe7VEx/F511xtsDK0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date;
+        bh=W4m9+NDppUp7sQi+UOD21uigXlltsiEIftmf4JBbKiQ=;
+        b=2/9bBmfPT9h2mlK7K1o4Flr8XyTSx3k3eFY8C4UZTsi46O/rrbtU1FQ44xy+h1Hc7a
+         FW/e9yh7CB9fNiIOG87lE/ls+kScWJiyiWxJVHl7tKMu7jrm/wjwv0co2J+5cpOMaLUj
+         7pwOGs+JrRkuFdE9wKfeLP7A4bRaat+/Z2I1n0lA2t0nq02pD7Y7rOeveoxPRXv4D2GU
+         HljeqFnvJ/gex+jj//rfH7JMvqycHZ2RKt6u1bZOB3B78hil1TY9UKpkU+6gQBRWV/lE
+         5GohLhrzM4J8gZ4Nuedt8k705T2vHAxfqBp2hYPZDlSXrfjUfV64rmHuCHXX8eqCLmTt
+         z0fQ==
+X-Gm-Message-State: ACgBeo02Xp5WCwLJ9p7Z7KYq/lPLJx7Alny5aqlYWCsJl7ORUzoUR+2r
+	+2AaVcRKRLA+uGmO3k63f/ceIOLc04snRflsvMRcDQ==
+X-Google-Smtp-Source: AA6agR5cWmVDk4BJzUa4/gpQoBsGtpeBnOAIB6yOKvCmn5A0rx51ZiLMS0dQ5apC/zJsAc85IvVujDW8CkEPx4x6pXA=
+X-Received: by 2002:a17:907:60c7:b0:731:17e4:7fcc with SMTP id
+ hv7-20020a17090760c700b0073117e47fccmr971016ejc.73.1662522606825; Tue, 06 Sep
+ 2022 20:50:06 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+References: <20220905100416.42421-1-angelogioacchino.delregno@collabora.com> <20220905100416.42421-9-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220905100416.42421-9-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 7 Sep 2022 11:49:55 +0800
+Message-ID: <CAGXv+5G52--wF=e=nd3ezDPoQcOdsqMd_1WdzGEWxjjZaJsRLg@mail.gmail.com>
+Subject: Re: [PATCH 08/10] clk: mediatek: clk-mt8195-topckgen: Drop univplls
+ from mfg mux parents
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: matthias.bgg@gmail.com, mturquette@baylibre.com, sboyd@kernel.org, 
+	miles.chen@mediatek.com, rex-bc.chen@mediatek.com, nfraprado@collabora.com, 
+	chun-jie.chen@mediatek.com, jose.exposito89@gmail.com, drinkcat@chromium.org, 
+	weiyi.lu@mediatek.com, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, robh+dt@kernel.org, 
+	krzysztof.kozlowski+dt@linaro.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_202026_636437_2D25CF00 
-X-CRM114-Status: GOOD (  23.48  )
+X-CRM114-CacheID: sfid-20220906_205013_691175_05DE40CB 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,44 +86,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dan,
+Hi,
 
-Thanks very much for your review:)
+On Mon, Sep 5, 2022 at 6:04 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> These PLLs are conflicting with GPU rates that can be generated by
+> the GPU-dedicated MFGPLL and would require a special clock handler
+> to be used, for very little and ignorable power consumption benefits.
+> Also, we're in any case unable to set the rate of these PLLs to
+> something else that is sensible for this task, so simply drop them:
+> this will make the GPU to be clocked exclusively from MFGPLL for
+> "fast" rates, while still achieving the right "safe" rate during
+> PLL frequency locking.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/clk/mediatek/clk-mt8195-topckgen.c | 2 --
+>  1 file changed, 2 deletions(-)
+>
+> diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c b/drivers/clk/mediatek/clk-mt8195-topckgen.c
+> index 4dde23bece66..6ff610c101ae 100644
+> --- a/drivers/clk/mediatek/clk-mt8195-topckgen.c
+> +++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
+> @@ -301,8 +301,6 @@ static const char * const ipu_if_parents[] = {
+>  static const char * const mfg_parents[] = {
+>         "clk26m",
+>         "mainpll_d5_d2",
+> -       "univpll_d6",
+> -       "univpll_d7"
 
-On Tue, 2022-08-30 at 11:32 +0300, Dan Carpenter wrote:
-> On Wed, Aug 24, 2022 at 02:43:03PM +0800, Yong Wu wrote:
-> > The mtk_iommu_mm_dts_parse will parse the smi larbs nodes. if the
-> > i+1
-> > larb is parsed fail, we should put_device for the 0..i larbs.
-> > 
-> > There are two places need to comment:
-> > 1) The larbid may be not linear mapping, we should loop whole
-> >    the array in the error path.
-> > 2) I move this line position: "data->larb_imu[id].dev = &plarbdev-
-> > >dev;"
-> >    That means set data->larb_imu[id].dev before the error path.
-> >    then we don't need "platform_device_put(plarbdev)" again while
-> >    probe_defer case. All depend on "put_device" in the error path
-> > in error
-> >    cases.
-> 
-> I don't understand what you're saying here.  There is still a
-> platform_device_put(plarbdev) on the success path after
-> component_match_add().
-> 
-> So if we fail when i == 2 then we do:
-> 
-> 	put_device(data->larb_imu[2].dev);
-> 
-> But for the previous iterations has both platform_device_put()
-> and put_device() called for them.
+I'd just comment them out and leave a note about it. Or remove them but
+leave a note. Removed code will not be obvious to others. And given this
+is probably the only public documentation of the hardware, it'd be a shame
+to lose evidence of it.
 
-Sorry for this. Right! For the goto outside the loop, it did put twice.
-I will fix this.
-
-> 
-> regards,
-> dan carpenter
-> 
-
+ChenYu
 
