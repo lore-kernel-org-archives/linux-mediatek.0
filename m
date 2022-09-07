@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1654ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Sep 2022 22:04:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78857ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Sep 2022 03:20:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rNM1Dk5Ll03tOjQz9Az7Wfavz5MwQq0drimKQ6r02HA=; b=xrUDmBfi5faXCj9TPFnQM/l/yK
-	E6wVM1X4Dl+d2tdhofNIKvLGqKYwlWniUuruGMWzwudrg/cMJTS4MfufLhxCnT4dMMThYBhwJuQRq
-	mu0t6ViDkUHfoXmxh8nbHVQDUbe1ASOVFmA3pt+Qd5zeRnR2RtM508nMNAybQUZmp+NVxvyEfS5fe
-	sTN01Xmrw340dhH+CjVluIHT1qUs/EbbzCTN4ONHuhooPxLolbGCKNG7F3oR6LsNfFhB69Gt0/qnC
-	th5mT3MvehY7P8AQoUvTDoHMHkswqpjvjymtK16fe3RlGZ+ma9FuoGSU18H9HPGafa2bQJ7jWQJS9
-	Ff5ikPSQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VkcihY9ABi04XqXVV22kyb/oL68WO+uzwQnvKJrjdU8=; b=4dNcmY48hElIWzeu3dGvsXlTnN
+	iF5QmQxQY6hFqgbbKruog48LQt2kNyDHVCCMd3PQlxt34glGJaSm1fJrLTtoe6STjduB1u0t0Jdfm
+	y6jX0jRmg3FzftIqxEJ3YAS1cXMWdjQFW9MJJujdrhkIGdQ+qYFDAGZUqEz4RuH7UOKbMcWJ71Nuj
+	ZJUCwUkPdAdgO6cUrgvsTrjpGrFr48sBAFF5+zvWqGoeK9F97geI4JzOv2X+E4HpETJq1wS6kf1dE
+	v0xy+hkOyv/60gCGffXSEmFE5nLkzY1M5KeLT3vk5w2lKE7R/wPce+E3jxumfo2hO85GwEfxc31js
+	VSKd7xxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVgfm-0008o5-0N; Tue, 06 Sep 2022 22:03:58 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1oVlbQ-001xGX-PJ; Wed, 07 Sep 2022 03:19:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVgfj-0008ml-8N
-	for linux-mediatek@lists.infradead.org; Tue, 06 Sep 2022 22:03:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1662501835; x=1694037835;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Gzsx0sqcIR+vSmALrntEU2uCEsZm8SlFkhJyCcOSmgI=;
-  b=gPFCjQsniKiYFKyouitgjbcsWyb7klNUrkqXF3r8C7jUl+zfmpX+I0eN
-   WkTE9yIWUirBpa0kuZaTPOdbvw9j4rtFegxaAdkdu5stGRsnWHgMVQH1S
-   voMDQ73HBrlW2m2qnKvxntp+1doOt5J99BAaAT8iU4SGvwYGx5aVAmTGT
-   of9Ic++1SOj0qjBP/tTSJ/73zVK1Thr4AHcrhvbW3LmSWcva9nIx72ADX
-   43dIr3Z/HS0yNd1oZ3kHdmaGD7SbB7HTaHXch6UpuFFC45rROJly75Y+f
-   562vrswJB9J52WvE9MzRSX60B5LNQBhLXqh8OxQ9Vq9yXr57dtW8yETW3
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10462"; a="277111913"
-X-IronPort-AV: E=Sophos;i="5.93,294,1654585200"; 
-   d="scan'208";a="277111913"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Sep 2022 15:03:53 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,294,1654585200"; 
-   d="scan'208";a="682564896"
-Received: from lkp-server02.sh.intel.com (HELO 95dfd251caa2) ([10.239.97.151])
-  by fmsmga004.fm.intel.com with ESMTP; 06 Sep 2022 15:03:49 -0700
-Received: from kbuild by 95dfd251caa2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1oVgfc-0005hj-1d;
-	Tue, 06 Sep 2022 22:03:48 +0000
-Date: Wed, 7 Sep 2022 06:03:39 +0800
-From: kernel test robot <lkp@intel.com>
-To: Deren Wu <Deren.Wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: kbuild-all@lists.01.org, Sean Wang <sean.wang@mediatek.com>,
-	Soul Huang <Soul.Huang@mediatek.com>,
-	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
-	Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
-	Deren Wu <Deren.Wu@mediatek.com>, KM Lin <km.lin@mediatek.com>,
-	Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>,
-	Posh Sun <posh.sun@mediatek.com>,
-	Stella Chang <Stella.Chang@mediatek.com>,
-	Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Subject: Re: [PATCH v2] wifi: mt76: mt7921: introduce Country Location
- Control support
-Message-ID: <202209070520.bQXe62tP-lkp@intel.com>
-References: <a7b8353c71c5c8689d22dc450721c98ed11ab912.1662454722.git.deren.wu@mediatek.com>
+	id 1oVlb7-001x82-13; Wed, 07 Sep 2022 03:19:30 +0000
+X-UUID: c566a0e39325401e821eefd611e6ae38-20220906
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=VkcihY9ABi04XqXVV22kyb/oL68WO+uzwQnvKJrjdU8=;
+	b=ibO1SJX8+yDFWg5f9V+JoYcmF8wLZyzTrHDL/tJHxJXvjF9QfxS/vTB1u6CPWB+IjaiHHu8/FzNg401qIYlhYHvk31ilPYKWX75kpCmm33oQZCzVua9bpsvgOHvnSxk17EWbvSJpItVTl/qC7w8xFN0otgL2Kk2GADiGGlCGAJg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:38ea4518-817f-41af-b306-10fafb256656,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:0a03e656-e800-47dc-8adf-0c936acf4f1b,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c566a0e39325401e821eefd611e6ae38-20220906
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 859803432; Tue, 06 Sep 2022 20:08:44 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 7 Sep 2022 11:08:09 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Wed, 7 Sep 2022 11:08:06 +0800
+Message-ID: <c5eca9b0154adf5a201ab89f3a9fa120b4519d25.camel@mediatek.com>
+Subject: Re: [PATCH v4 3/6] iommu/mediatek: Add error path for loop of
+ mm_dts_parse
+From: Yong Wu <yong.wu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Will Deacon <will@kernel.org>
+CC: Robin Murphy <robin.murphy@arm.com>, <iommu@lists.linux.dev>,
+	<iommu@lists.linux-foundation.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>,
+	<chengci.xu@mediatek.com>, <youlin.pei@mediatek.com>,
+	<anan.sun@mediatek.com>, <xueqi.zhang@mediatek.com>, Guenter Roeck
+	<groeck@chromium.org>, Dan Carpenter <dan.carpenter@oracle.com>
+Date: Wed, 7 Sep 2022 11:08:05 +0800
+In-Reply-To: <f0cc5ea8-9fd8-dc77-e595-33973e315d28@collabora.com>
+References: <20220824064306.21495-1-yong.wu@mediatek.com>
+	 <20220824064306.21495-4-yong.wu@mediatek.com>
+	 <f0cc5ea8-9fd8-dc77-e595-33973e315d28@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <a7b8353c71c5c8689d22dc450721c98ed11ab912.1662454722.git.deren.wu@mediatek.com>
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_150355_371730_B98B7216 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20220906_201929_101140_C8DBB304 
+X-CRM114-Status: GOOD (  27.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,109 +88,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Deren,
+On Tue, 2022-08-30 at 10:14 +0200, AngeloGioacchino Del Regno wrote:
+> Il 24/08/22 08:43, Yong Wu ha scritto:
+> > The mtk_iommu_mm_dts_parse will parse the smi larbs nodes. if the
+> > i+1
+> > larb is parsed fail, we should put_device for the 0..i larbs.
+> > 
+> > There are two places need to comment:
+> > 1) The larbid may be not linear mapping, we should loop whole
+> >     the array in the error path.
+> > 2) I move this line position: "data->larb_imu[id].dev = &plarbdev-
+> > >dev;"
+> >     That means set data->larb_imu[id].dev before the error path.
+> >     then we don't need "platform_device_put(plarbdev)" again while
+> >     probe_defer case. All depend on "put_device" in the error path
+> > in error
+> >     cases.
+> > 
+> > Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow with
+> > the MM TYPE")
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > ---
+> >   drivers/iommu/mtk_iommu.c | 42 ++++++++++++++++++++++++++++----
+> > -------
+> >   1 file changed, 30 insertions(+), 12 deletions(-)
 
-Thank you for the patch! Perhaps something to improve:
+[...]
 
-[auto build test WARNING on wireless-next/main]
-[also build test WARNING on wireless/main linus/master v6.0-rc4 next-20220906]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> > +
+> > +err_larbdev_put:
+> > +	/* id may be not linear mapping, loop whole the array */
+> > +	for (i = 0; i < MTK_LARB_NR_MAX; i++) {
+> 
+> Since there may be a case in which the mapping is linear and we're
+> doing teardown,
+> I think it would be sensible to loop the other way around instead,
+> from
+> MTK_LARB_NR_MAX to 0.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Deren-Wu/wifi-mt76-mt7921-introduce-Country-Location-Control-support/20220906-171401
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-config: arm64-randconfig-s042-20220906 (https://download.01.org/0day-ci/archive/20220907/202209070520.bQXe62tP-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 12.1.0
-reproduce:
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # apt-get install sparse
-        # sparse version: v0.6.4-39-gce1a6720-dirty
-        # https://github.com/intel-lab-lkp/linux/commit/e0bf37418dbcff6f111fbf6dad1d142180e2ec4f
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Deren-Wu/wifi-mt76-mt7921-introduce-Country-Location-Control-support/20220906-171401
-        git checkout e0bf37418dbcff6f111fbf6dad1d142180e2ec4f
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__' O=build_dir ARCH=arm64 SHELL=/bin/bash
+Thanks very much. I will change from MTK_LARB_NR_MAX to 0.
 
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
+> 
+> Everything else looks good to me.
+> 
+> Cheers,
+> Angelo
+> 
+> > +		if (!data->larb_imu[i].dev)
+> > +			continue;
+> > +		put_device(data->larb_imu[i].dev);
+> > +	}
+> > +	return ret;
+> >   }
+> >   
+> >   static int mtk_iommu_probe(struct platform_device *pdev)
+> 
+> 
 
-sparse warnings: (new ones prefixed by >>)
->> drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1089:25: sparse: sparse: incorrect type in assignment (different base types) @@     expected restricted __le16 [addressable] [usertype] len @@     got unsigned long @@
-   drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1089:25: sparse:     expected restricted __le16 [addressable] [usertype] len
-   drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1089:25: sparse:     got unsigned long
->> drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1090:65: sparse: sparse: incorrect type in argument 3 (different base types) @@     expected int len @@     got restricted __le16 [addressable] [usertype] len @@
-   drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1090:65: sparse:     expected int len
-   drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1090:65: sparse:     got restricted __le16 [addressable] [usertype] len
-
-vim +1089 drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-
-  1048	
-  1049	static
-  1050	int __mt7921_mcu_set_clc(struct mt7921_dev *dev, u8 *alpha2,
-  1051				 enum environment_cap env_cap,
-  1052				 struct mt7921_clc *clc,
-  1053				 u8 idx)
-  1054	{
-  1055		struct sk_buff *skb;
-  1056		struct {
-  1057			u8 ver;
-  1058			u8 pad0;
-  1059			__le16 len;
-  1060			u8 idx;
-  1061			u8 env;
-  1062			u8 pad1[2];
-  1063			u8 alpha2[2];
-  1064			u8 type[2];
-  1065			u8 rsvd[64];
-  1066		} __packed req = {
-  1067			.idx = idx,
-  1068			.env = env_cap,
-  1069		};
-  1070		int ret, valid_cnt = 0;
-  1071		u8 i, *pos;
-  1072	
-  1073		if (!clc)
-  1074			return 0;
-  1075	
-  1076		pos = clc->data;
-  1077		for (i = 0; i < clc->nr_country; i++) {
-  1078			struct mt7921_clc_rule *rule = (struct mt7921_clc_rule *)pos;
-  1079			u16 len = le16_to_cpu(rule->len);
-  1080	
-  1081			pos += len + sizeof(*rule);
-  1082			if (rule->alpha2[0] != alpha2[0] ||
-  1083			    rule->alpha2[1] != alpha2[1])
-  1084				continue;
-  1085	
-  1086			memcpy(req.alpha2, rule->alpha2, 2);
-  1087			memcpy(req.type, rule->type, 2);
-  1088	
-> 1089			req.len = sizeof(req) + len;
-> 1090			skb = __mt76_mcu_msg_alloc(&dev->mt76, &req, req.len,
-  1091						   sizeof(req), GFP_KERNEL);
-  1092			if (!skb)
-  1093				return -ENOMEM;
-  1094			skb_put_data(skb, rule->data, len);
-  1095	
-  1096			ret = mt76_mcu_skb_send_msg(&dev->mt76, skb,
-  1097						    MCU_CE_CMD(SET_CLC), false);
-  1098			if (ret < 0)
-  1099				return ret;
-  1100			valid_cnt++;
-  1101		}
-  1102	
-  1103		if (!valid_cnt)
-  1104			return -ENOENT;
-  1105	
-  1106		return 0;
-  1107	}
-  1108	
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
 
