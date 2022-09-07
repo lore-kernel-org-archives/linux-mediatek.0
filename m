@@ -4,64 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11C9AC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Sep 2022 20:46:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8727DC6FA8A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Sep 2022 21:12:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=upXcPuQ+AymjlAP813ikt1+Dlj+izCoKBqGmw9TwiEA=; b=v8EXBwvREDxrE958/WZZuaUwfx
-	g4qUFskvFFEjnqFnxxlRDdJRYpG6Bmk82uWHevImn/xqHgmgM1pwHe8PD6siU0/iCCGeWcWBc5PUu
-	djA5GIwbgghb3h6Gbf6AkmAVSgh9kJJMzD9pFXN4NHpwOd9RZCeFbaOOpLOUBj8G1qwByAWhgRq0B
-	KP7v5buv2jx6Y868KqhvU4gbDZXYRxs9cRuy8YXRXViU6UyOVo+c+ju9TdePb2qgqQ0neXPC5/il/
-	DsINRsTbSvwIslrZWReasdM9IzKcf01vHbIudIJ6qrGB1pfT3mry6gQJ/ozNEu3APi9z5taXMh89s
-	F8zLoBkw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZOpqQckQvaqtnlGkcXV6685y4tknkRwthwV0Ap0jxF0=; b=IxTsdjWvYWOifAsu67d9gYA7Sf
+	i0uSCz9nbpQl/SYt+vhbLG0eIPTN50b7bNBKVAAlZXwgbLL70rOes6uZ415sdzTzA331ANniwLiM+
+	fJElOh092VR/jTN6l2E8mhyVlVRVkoiy8fxG/pGpOjk44aPGaDxXwYjSqWD9n9UPWJb/n1aWWetNI
+	3QtywU6OmVF95LRIFThP6t8cffS7XqyjorO1VKkRCiXt8XIj5hxV/3w1MXPykq53MZHdHBLfgqEPZ
+	bWyW8uOFuadyDhAarMmXNO0r6p584qENG1rDSPkwLH9mAVPMAC5+1AVE+cYeN59Vl/x68drGx3Vd2
+	yMqPvlPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oW1wC-009kDw-61; Wed, 07 Sep 2022 20:46:20 +0000
-Received: from mail-ot1-f44.google.com ([209.85.210.44])
+	id 1oW2LV-009zJi-Vm; Wed, 07 Sep 2022 21:12:30 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oW1vt-009k3v-QW; Wed, 07 Sep 2022 20:46:03 +0000
-Received: by mail-ot1-f44.google.com with SMTP id m21-20020a9d6ad5000000b00638df677850so11062157otq.5;
-        Wed, 07 Sep 2022 13:45:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=upXcPuQ+AymjlAP813ikt1+Dlj+izCoKBqGmw9TwiEA=;
-        b=6BsrDnssnfpZhMLo9z/Iu0Y2xqrYVr4PSP4hMcf4BEeIYXcfIDneun6oSNr7ZdF51n
-         PB69h8ygesHDS2oZuyk8TzPY3cv0XSyvmFvtS61nRqblhElU71To8oCfGFsuk/Ezr4L7
-         ntc8c+3BG90G2c57tqkUQtb3zOgcGs8WN9o16GgLMYeXEY3AxsEcoFN0bcY5pBedrGjC
-         ui3wbIgF3JbLkDah1IjXkrliOIuoHZn/rEnc56VsXFHtdd62Cyqx9x7EwFR29zFOWCX9
-         dhfkKZmlPYSN7z/JLNSKKvIFqb7B69RbM+mGlNy27Eq5CIR1c2diHYG5oMgBZN7lwv60
-         3S+Q==
-X-Gm-Message-State: ACgBeo3gdv2Stw0ar0BhFP0q1gPXUxkOHOaESjIG0YUkGsCdOvYt8bq2
-	lo7Q8dNTWBW+7ocssyf0TA==
-X-Google-Smtp-Source: AA6agR7XOBU/6/O2TwW9lBjbS8h05cyYcmFka/myRzOWQ4uhgMLB77hg5WkWiwvPbKFR5xw241HTpg==
-X-Received: by 2002:a05:6830:4386:b0:637:3636:e29f with SMTP id s6-20020a056830438600b006373636e29fmr2072794otv.294.1662583558179;
-        Wed, 07 Sep 2022 13:45:58 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id y2-20020a4ae7c2000000b0042859bebfebsm5410539oov.45.2022.09.07.13.45.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Sep 2022 13:45:57 -0700 (PDT)
-Received: (nullmailer pid 312607 invoked by uid 1000);
-	Wed, 07 Sep 2022 20:45:56 -0000
-Date: Wed, 7 Sep 2022 15:45:56 -0500
-From: Rob Herring <robh@kernel.org>
-To: Peter Chiu <chui-hao.chiu@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Ryder Lee <ryder.Lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Sam Shih <sam.shih@mediatek.com>
-Subject: Re: [PATCH] dt-bindings: pinctrl: update bindings for MT7986 SoC
-Message-ID: <20220907204556.GA307930-robh@kernel.org>
-References: <20220902024719.31943-1-chui-hao.chiu@mediatek.com>
+	id 1oW2LI-009xjU-A7; Wed, 07 Sep 2022 21:12:18 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id E956A1884A6C;
+	Wed,  7 Sep 2022 21:10:07 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id CD0D525032B7;
+	Wed,  7 Sep 2022 21:10:07 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id BF8139EC0006; Wed,  7 Sep 2022 21:10:07 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220902024719.31943-1-chui-hao.chiu@mediatek.com>
+Date: Wed, 07 Sep 2022 23:10:07 +0200
+From: netdev@kapio-technology.com
+To: Ido Schimmel <idosch@nvidia.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
+ Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
+ Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, Daniel Borkmann <daniel@iogearbox.net>, Yuwei Wang
+ <wangyuweihx@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
+ MAC-Auth Bypass to locked port tests
+In-Reply-To: <YxNo/0+/Sbg9svid@shredder>
+References: <YwpgvkojEdytzCAB@shredder>
+ <7654860e4d7d43c15d482c6caeb6a773@kapio-technology.com>
+ <YwxtVhlPjq+M9QMY@shredder>
+ <2967ccc234bb672f5440a4b175b73768@kapio-technology.com>
+ <Ywyj1VF1wlYqlHb6@shredder>
+ <9e1a9eb218bbaa0d36cb98ff5d4b97d7@kapio-technology.com>
+ <YwzPJ2oCYJQHOsXD@shredder>
+ <69db7606896c77924c11a6c175c4b1a6@kapio-technology.com>
+ <YwzjPcQjfLPk3q/k@shredder>
+ <f1a17512266ac8b61444e7f0e568aca7@kapio-technology.com>
+ <YxNo/0+/Sbg9svid@shredder>
+User-Agent: Gigahost Webmail
+Message-ID: <5cee059b65f6f7671e099150f9da79c1@kapio-technology.com>
+X-Sender: netdev@kapio-technology.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220907_134601_923309_0B5818D8 
-X-CRM114-Status: GOOD (  19.53  )
+X-CRM114-CacheID: sfid-20220907_141216_528326_FEF6CE34 
+X-CRM114-Status: GOOD (  37.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,102 +90,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 02, 2022 at 10:47:19AM +0800, Peter Chiu wrote:
-> Add wifi pins in the description and set groups to string-array to support
-> multiple groups in a node.
+On 2022-09-03 16:47, Ido Schimmel wrote:
+> On Mon, Aug 29, 2022 at 06:13:14PM +0200, netdev@kapio-technology.com 
+> wrote:
+>> On 2022-08-29 18:03, Ido Schimmel wrote:
+>> > On Mon, Aug 29, 2022 at 05:08:23PM +0200, netdev@kapio-technology.com
+>> > wrote:
+>> > > On 2022-08-29 16:37, Ido Schimmel wrote:
+>> > > > On Mon, Aug 29, 2022 at 02:04:42PM +0200, netdev@kapio-technology.com
+>> > > > wrote:
+>> > > > > On 2022-08-29 13:32, Ido Schimmel wrote:
+>> > > > > Port association is needed for MAB to work at all on mv88e6xxx, but
+>> > > > > for
+>> > > > > 802.1X port association is only needed for dynamic ATU entries.
+>> > > >
+>> > > > Ageing of dynamic entries in the bridge requires learning to be on as
+>> > > > well, but in these test cases you are only using static entries and
+>> > > > there is no reason to enable learning in the bridge for that. I prefer
+>> > > > not to leak this mv88e6xxx implementation detail to user space and
+>> > > > instead have the driver enable port association based on whether
+>> > > > "learning" or "mab" is on.
+>> > > >
+>> > >
+>> > > Then it makes most sense to have the mv88e6xxx driver enable port
+>> > > association when then port is locked, as it does now.
+>> >
+>> > As you wish, but like you wrote "802.1X port association is only needed
+>> > for dynamic ATU entries" and in this case user space needs to enable
+>> > learning (for refresh only) so you can really key off learning on
+>> > "learning || mab". User space can decide to lock the port and work with
+>> > static entries and then learning is not required.
+>> 
+>> I will of course remove all "learning on" in the selftests, which is 
+>> what I
+>> think you are referring to. In the previous I am referring to the code 
+>> in
+>> the driver itself which I understand shall turn on port association 
+>> with
+>> locked ports, e.g. no need for "learning on" when using the feature in
+>> general outside selftests...
 > 
-> Reviewed-by: Sam Shih <sam.shih@mediatek.com>
-> Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-> ---
->  .../pinctrl/mediatek,mt7986-pinctrl.yaml      | 48 +++++++++++--------
->  1 file changed, 28 insertions(+), 20 deletions(-)
+> "learning on" is needed when dynamic FDB entries are used to authorize
+> hosts. Without learning being enabled, the bridge driver (or the
+> underlying hardware) will not refresh the entries during forwarding and
+> they will age out, resulting in packet loss until the hosts are
+> re-authorized.
 > 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-> index 4eadea55df10..b08a0a8076e0 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-> @@ -117,6 +117,10 @@ patternProperties:
->            "i2s"             "audio"     62, 63, 64, 65
->            "switch_int"      "eth"       66
->            "mdc_mdio"        "eth"       67
-> +          "wf_2g"           "wifi"      74, 75, 76, 77, 78, 79, 80, 81, 82, 83
-> +          "wf_5g"           "wifi"      91, 92, 93, 94, 95, 96, 97, 98, 99, 100
-> +          "wf_dbdc"         "wifi"      74, 75, 76, 77, 78, 79, 80, 81, 82, 83,
-> +                                        84, 85
->  
->          $ref: "/schemas/pinctrl/pinmux-node.yaml"
->          properties:
-> @@ -234,7 +238,9 @@ patternProperties:
->              then:
->                properties:
->                  groups:
-> -                  enum: [wf_2g, wf_5g, wf_dbdc]
-> +                  $ref: /schemas/types.yaml#/definitions/string-array
+> Given the current test cases only use static entries, there is no need
+> to enable learning on locked ports. This will change when test cases 
+> are
+> added with dynamic entries.
+> 
+> Regarding mv88e6xxx, my understanding is that you also need learning
+> enabled for MAB (I assume for the violation interrupts). Therefore, for
+> mv88e6xxx, learning can be enabled if learning is on or MAB is on.
+> Enabling it based on whether the port is locked or not seems 
+> inaccurate.
 
-'groups' already has a type. You can redefine it here.
+Given that 'learning on' is needed for hardware refreshing of ATU 
+entries (mv88e6xxx), and that will in the future be needed in general, I 
+think it is best to enable it when a port is locked. Also the matter is 
+that the locked feature needs to modify the register that contains the 
+PAV. So I see it as natural that it is done there, as it will eventually 
+have to be done there.
+That the selftests do not need it besides when activating MAB, I think, 
+is a special case.
 
-> +                  items:
-> +                    enum: [wf_2g, wf_5g, wf_dbdc]
->        '.*conf.*':
->          type: object
->          additionalProperties: false
-> @@ -248,25 +254,27 @@ patternProperties:
->                An array of strings. Each string contains the name of a pin.
->                There is no PIN 41 to PIN 65 above on mt7686b, you can only use
->                those pins on mt7986a.
-> -            enum: [SYS_WATCHDOG, WF2G_LED, WF5G_LED, I2C_SCL, I2C_SDA, GPIO_0,
-> -                   GPIO_1, GPIO_2, GPIO_3, GPIO_4, GPIO_5, GPIO_6, GPIO_7,
-> -                   GPIO_8, GPIO_9, GPIO_10, GPIO_11, GPIO_12, GPIO_13, GPIO_14,
-> -                   GPIO_15, PWM0, PWM1, SPI0_CLK, SPI0_MOSI, SPI0_MISO, SPI0_CS,
-> -                   SPI0_HOLD, SPI0_WP, SPI1_CLK, SPI1_MOSI, SPI1_MISO, SPI1_CS,
-> -                   SPI2_CLK, SPI2_MOSI, SPI2_MISO, SPI2_CS, SPI2_HOLD, SPI2_WP,
-> -                   UART0_RXD, UART0_TXD, PCIE_PERESET_N, UART1_RXD, UART1_TXD,
-> -                   UART1_CTS, UART1_RTS, UART2_RXD, UART2_TXD, UART2_CTS,
-> -                   UART2_RTS, EMMC_DATA_0, EMMC_DATA_1, EMMC_DATA_2,
-> -                   EMMC_DATA_3, EMMC_DATA_4, EMMC_DATA_5, EMMC_DATA_6,
-> -                   EMMC_DATA_7, EMMC_CMD, EMMC_CK, EMMC_DSL, EMMC_RSTB, PCM_DTX,
-> -                   PCM_DRX, PCM_CLK, PCM_FS, MT7531_INT, SMI_MDC, SMI_MDIO,
-> -                   WF0_DIG_RESETB, WF0_CBA_RESETB, WF0_XO_REQ, WF0_TOP_CLK,
-> -                   WF0_TOP_DATA, WF0_HB1, WF0_HB2, WF0_HB3, WF0_HB4, WF0_HB0,
-> -                   WF0_HB0_B, WF0_HB5, WF0_HB6, WF0_HB7, WF0_HB8, WF0_HB9,
-> -                   WF0_HB10, WF1_DIG_RESETB, WF1_CBA_RESETB, WF1_XO_REQ,
-> -                   WF1_TOP_CLK, WF1_TOP_DATA, WF1_HB1, WF1_HB2, WF1_HB3,
-> -                   WF1_HB4, WF1_HB0, WF1_HB0_B, WF1_HB5, WF1_HB6, WF1_HB7,
-> -                   WF1_HB8]
-> +            $ref: /schemas/types.yaml#/definitions/string-array
-> +            items:
-
-Same for 'pins'.
-
-> +              enum: [SYS_WATCHDOG, WF2G_LED, WF5G_LED, I2C_SCL, I2C_SDA, GPIO_0,
-> +                     GPIO_1, GPIO_2, GPIO_3, GPIO_4, GPIO_5, GPIO_6, GPIO_7,
-> +                     GPIO_8, GPIO_9, GPIO_10, GPIO_11, GPIO_12, GPIO_13, GPIO_14,
-> +                     GPIO_15, PWM0, PWM1, SPI0_CLK, SPI0_MOSI, SPI0_MISO, SPI0_CS,
-> +                     SPI0_HOLD, SPI0_WP, SPI1_CLK, SPI1_MOSI, SPI1_MISO, SPI1_CS,
-> +                     SPI2_CLK, SPI2_MOSI, SPI2_MISO, SPI2_CS, SPI2_HOLD, SPI2_WP,
-> +                     UART0_RXD, UART0_TXD, PCIE_PERESET_N, UART1_RXD, UART1_TXD,
-> +                     UART1_CTS, UART1_RTS, UART2_RXD, UART2_TXD, UART2_CTS,
-> +                     UART2_RTS, EMMC_DATA_0, EMMC_DATA_1, EMMC_DATA_2,
-> +                     EMMC_DATA_3, EMMC_DATA_4, EMMC_DATA_5, EMMC_DATA_6,
-> +                     EMMC_DATA_7, EMMC_CMD, EMMC_CK, EMMC_DSL, EMMC_RSTB, PCM_DTX,
-> +                     PCM_DRX, PCM_CLK, PCM_FS, MT7531_INT, SMI_MDC, SMI_MDIO,
-> +                     WF0_DIG_RESETB, WF0_CBA_RESETB, WF0_XO_REQ, WF0_TOP_CLK,
-> +                     WF0_TOP_DATA, WF0_HB1, WF0_HB2, WF0_HB3, WF0_HB4, WF0_HB0,
-> +                     WF0_HB0_B, WF0_HB5, WF0_HB6, WF0_HB7, WF0_HB8, WF0_HB9,
-> +                     WF0_HB10, WF1_DIG_RESETB, WF1_CBA_RESETB, WF1_XO_REQ,
-> +                     WF1_TOP_CLK, WF1_TOP_DATA, WF1_HB1, WF1_HB2, WF1_HB3,
-> +                     WF1_HB4, WF1_HB0, WF1_HB0_B, WF1_HB5, WF1_HB6, WF1_HB7,
-> +                     WF1_HB8]
->  
->            bias-disable: true
->  
-> -- 
-> 2.18.0
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-> 
+I am at the blackhole driver implementation now, as I suppose that the 
+iproute2 command should work with the mv88e6xxx driver when adding 
+blackhole entries (with a added selftest)?
+I decided to add the blackhole feature as new ops for drivers with 
+functions blackhole_fdb_add() and blackhole_fdb_del(). Do you agree with 
+that approach?
 
