@@ -4,72 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7094BECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Sep 2022 23:56:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EEDAECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 01:40:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mjRt+wNHF3dVVkvBVf/EVLn116VkNseKdsavsd/XDvo=; b=2IXtubDW+L+LN8ydhzDHS/hP8Y
-	bEW5QjclUM5M2zCLMo0NwcV1z+k4hzqfNVsxM0yhTGVeEScS2lvSW7kWxhFoh7Ts5hQj3GwctGDLU
-	Oa4a4oShckaDQ9O51FVTLRGKkiCbEZwq1l3o0ntzeDaNv550zTifj1sziKAa0DZxz6rN6rBycm99u
-	nG+EMa0MIa5d/EAhuanLXXA7qzFe+dYHgSweQusma91VaAYKOpvddM1Gw3naJTqE/fSslmWs2nhkO
-	+Ct7t7zC3gZio4ECKmGDfFiXEwVu0RmyFxAIXXRBW4BjwdGHDqxg6xRdO5FRXcG9EduumUlVeHfmd
-	CeSnbjIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/RTSQNPPLI/qYLfJwsavfRsg22Jon9x2KTHWb9ohw8I=; b=E9c4lNDO/ZAocHVBRnRbNel0iV
+	tRmqcuqBoMLduGXDTFQkmmuY0on8sSR4TO+2+QL8cE1lUtjJYjgiE25j5WNwC2tAk+4iNQ+JpOhnN
+	D+2DePtrFQq5sp4Jli/+sil/UgQVklAPEo1rgLLAYBIDNi5+L8uSSQfgZ/Dp7KJ1EC3TtG2kLyMns
+	nd0SLv3AFSftpKzeDn8x2nukPJGEJuKxNRTnxc/Eut/WrzNh1aY0HgVlrRXcjNxlbcZg5+GCEtDAA
+	vHftCdDUmVAuETXfZglWYrpl6XmF0Z73+PnSPd4w+V6ZKVwz+dr8BfdHAloSVrgZj1l1DjYoRPqSa
+	maSkjCug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oW4uP-00CLsd-ON; Wed, 07 Sep 2022 23:56:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oW6WW-00ENae-5t; Thu, 08 Sep 2022 01:40:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oW4uK-00CLjp-Rp; Wed, 07 Sep 2022 23:56:38 +0000
-X-UUID: 722c326ba6974323857b7d69f0ff4089-20220907
+	id 1oW6WS-00ENY7-Jw; Thu, 08 Sep 2022 01:40:05 +0000
+X-UUID: ea58f5b749384a4388d4d8a91aa58bee-20220907
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mjRt+wNHF3dVVkvBVf/EVLn116VkNseKdsavsd/XDvo=;
-	b=UCl8LSAIrfkawgXjQM3XozxlxxMn9tnoO8R/3MrbN3CxYv897LvpwzJp4LJvMQ7GAKMDUWRJDqPbSd4riTIx1l6qXi4uukCIA7gDGoiTR6+BozKdlv2qdplmz+i17kA3QrK2DbQmYXkWN8IUx2fykhAh5vxMbNmNywaYGU6k65k=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=/RTSQNPPLI/qYLfJwsavfRsg22Jon9x2KTHWb9ohw8I=;
+	b=GtdW4CffqRbxg5U7Nfv9mcBUHLxZJk3KmTayNak0uNe8nT1P7jBvlvQ0/cs+8/eTsZ9HVXs4pM0Om+wEfqvURzmXbaS055d9Gi1V7TltK92UO33VQYdLysHunu0hdtrKelaDmTKxIct+X43h3Li7ldBuCtLDUJxLcgFCld44iAc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:22e61152-b82c-413d-a8e7-4097644fe35d,OB:0,L
+X-CID-O-INFO: VERSION:1.1.10,REQID:3411d269-9cc3-44f5-8c63-0c0237d25aed,OB:0,L
 	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
 	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:21c80ed1-20bd-4e5e-ace8-00692b7ab380,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:-5,EDM:-3,IP:nil,URL:0,File:ni
-	l,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 722c326ba6974323857b7d69f0ff4089-20220907
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <miles.chen@mediatek.com>)
+X-CID-META: VersionHash:84eae18,CLOUDID:e6780857-e800-47dc-8adf-0c936acf4f1b,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: ea58f5b749384a4388d4d8a91aa58bee-20220907
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 81012324; Wed, 07 Sep 2022 16:56:31 -0700
+	with ESMTP id 1730347178; Wed, 07 Sep 2022 18:39:49 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 8 Sep 2022 07:05:55 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 8 Sep 2022 07:05:55 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: <angelogioacchino.delregno@collabora.com>
-CC: <chun-jie.chen@mediatek.com>, <devicetree@vger.kernel.org>,
-	<drinkcat@chromium.org>, <jose.exposito89@gmail.com>,
-	<krzysztof.kozlowski+dt@linaro.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
-	<miles.chen@mediatek.com>, <mturquette@baylibre.com>,
-	<nfraprado@collabora.com>, <rex-bc.chen@mediatek.com>, <robh+dt@kernel.org>,
-	<sboyd@kernel.org>, <weiyi.lu@mediatek.com>, <wenst@chromium.org>
-Subject: Re: [PATCH 07/10] clk: mediatek: clk-mt8195-topckgen: Add GPU clock mux notifier
-Date: Thu, 8 Sep 2022 07:05:55 +0800
-Message-ID: <20220907230555.10691-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220905100416.42421-8-angelogioacchino.delregno@collabora.com>
-References: <20220905100416.42421-8-angelogioacchino.delregno@collabora.com>
+ 15.2.792.15; Thu, 8 Sep 2022 09:39:23 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 8 Sep 2022 09:39:22 +0800
+Message-ID: <a4e5f9e360a3fc6d094bc719aa4523a4886cae93.camel@mediatek.com>
+Subject: Re: [PATCH v2 3/7] phy: phy-mtk-tphy: add property to set
+ pre-emphasis
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>
+CC: Kishon Vijay Abraham I <kishon@ti.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski@canonical.com>, Eddie Hung
+	<eddie.hung@mediatek.com>
+Date: Thu, 8 Sep 2022 09:39:22 +0800
+In-Reply-To: <219aef5a-af2a-6873-f682-cb6aef862425@collabora.com>
+References: <20220829080830.5378-1-chunfeng.yun@mediatek.com>
+	 <20220829080830.5378-3-chunfeng.yun@mediatek.com>
+	 <219aef5a-af2a-6873-f682-cb6aef862425@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220907_165636_932761_FF328DB4 
-X-CRM114-Status: UNSURE (   7.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220907_184004_690770_8173979E 
+X-CRM114-Status: GOOD (  22.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,11 +87,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Following the changes done to MT8183, register a similar notifier
-> for MT8195 as well, allowing safe clockrate updates for the MFGPLL.
+On Wed, 2022-08-31 at 10:14 +0200, AngeloGioacchino Del Regno wrote:
+> Il 29/08/22 10:08, Chunfeng Yun ha scritto:
+> > Add a property to set usb2 phy's pre-emphasis, it's disabled by
+> > default
+> > on some SoCs.
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> > v2: no changes
+> > ---
+> >   drivers/phy/mediatek/phy-mtk-tphy.c | 10 ++++++++++
+> >   1 file changed, 10 insertions(+)
+> > 
+> > diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c
+> > b/drivers/phy/mediatek/phy-mtk-tphy.c
+> > index 8ee7682b8e93..986fde0f63a0 100644
+> > --- a/drivers/phy/mediatek/phy-mtk-tphy.c
+> > +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+> > @@ -72,6 +72,8 @@
+> >   #define PA5_RG_U2_HS_100U_U3_EN	BIT(11)
+> >   
+> >   #define U3P_USBPHYACR6		0x018
+> > +#define PA6_RG_U2_PRE_EMP		GENMASK(31, 30)
+> > +#define PA6_RG_U2_PRE_EMP_VAL(x)	((0x3 & (x)) << 30)
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Hello Chunfeng,
+> 
+> can you please clarify which SoC is this change referred to?
+These bits are reserved before using 12nm process.
 
-Reviewed-by: Miles Chen <miles.chen@mediatek.com> 
+> 
+> If I'm not missing anything, there may be a register layout conflict 
+As I know these reserved bits are not used before, but now used to tune
+pre-emphasis after supporting 12nm or 5nm process.
+
+> between
+> one version and the other for T-PHYs, for which, it may be a good
+> idea to add
+> a PHY version check before allowing to write settings that are
+> supported only
+> on a specific IP...
+Do you know which SoC used bits, I can confirm it with our DE.
+
+Thanks a lot
+
+> 
+> Regards,
+> Angelo
+> 
 
 
