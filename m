@@ -4,106 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3FA1C38145
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 11:21:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B900DC38145
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 11:39:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G8ZnoARtuecckP3hweHke5GOybQ4Tx8AFkQAdpOiTb4=; b=dnJQEkA2ACbECNs/lKzMSVcFK2
-	ciQcUD9Ml6Ku/0mns9othfzSDaOCrdjCmk3krQgrA1ViuzfZw7bIHsYrsjDIGN72Jt6ZOWItDFpk4
-	v+5qal/HtwrXA+p+5Z7glFZYe7wrE1yoLeyGmkVWr7QEwDL3CE/+HjkxL91TGGVeVraZ/QN+YNOOS
-	xUriWIbdBpirqOLKz5iwJRQVzcnXh5a0GAraUxwKmFhawjtkrn6t+3WPDNLwGhgE8oz7+EsqCp66d
-	X/d4OanfpPHbZelCwKTxwEXHEfUP6rxpwu/dozv2qbECWEOfM5buubQCZ8efw5Z2thjcMSlO4463c
-	OXxY/BUw==;
+	bh=4EAQ100GUJ4755+8cZ4lBtaSz0v0TFrMx0G0ZmrS6II=; b=zU8S0BBU64pOpV7FM8pd0s1iKE
+	gvFMA/5/kXWykNhcg+UlguSSExzC+vKETzY6phCGpoXLDLhXhr+F+Y1laai+IaVfn2etWRUEBQ5Ic
+	bwHLkTmoXV8XXm7tHnbG/0L4dqDm6+0kUrvvKgxQGW0TTgwqdvSBE76GIAePhFN0KqJrm7Hs3hNMa
+	PUSY6zRMUaxw6soCCdMoDSHtwN5HYa/eShpDqW8+9tSPDJ7b7OKkmjFmK6Nb2nVEMK2ymDnnFCc8c
+	nF8W8zE1rSs8aM9OFaq6fkMCBKdOdOpw+dkkAFYpcA4GTYewn9WXXTBAg654atUcKID5dlWMFkpPp
+	/UpLNgsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWFaq-002fcO-0T; Thu, 08 Sep 2022 11:21:12 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1oWFsh-002pXb-AN; Thu, 08 Sep 2022 11:39:39 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWFaa-002fUn-OU; Thu, 08 Sep 2022 11:20:58 +0000
-Received: by mail-ed1-x532.google.com with SMTP id q21so16199834edc.9;
-        Thu, 08 Sep 2022 04:20:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date;
-        bh=G8ZnoARtuecckP3hweHke5GOybQ4Tx8AFkQAdpOiTb4=;
-        b=o3CYbDyCbEVhWcKDUNyemWRpDB/jalwhB9aKwfAiQiAAIycxvO3x8vNjM2BbbmGETQ
-         qmYVGwNejRe0ZiGsWxi1PC8OdZqDIWoZb6HYHGpLUxXu7Om1xnQ034XpYv4zMiLlLX2h
-         sg4C2k2Xv+IX34PF6zos9eS3dY/zY+vCALN73udNDncKWjxals7NZRLSiXB42Q2fNGPw
-         co3sk3l0aMsDyc4fy+12gj1OOrSw+NB0qHRKLgqxrc3+6GvPnmIf7NdGZtkt+84PR2n1
-         pzz0uWK02TyFNkFyV46Dr3F5EA1HbcwnOnOGQ4r60egXvGebPdNn6mZrsBtgihpNyO8R
-         N1xg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=G8ZnoARtuecckP3hweHke5GOybQ4Tx8AFkQAdpOiTb4=;
-        b=tH2oKXNxo8tBdOqivI4cGtDx1jqQd8O1PPLoTH1rDGBKSaYdWCF7ZY/Zyvz33Twlsw
-         b9bhw5P9mn3hDv05Kx438HkADKfmBCnB9oycFQNb495ACVBBffEwmCLssjE3qfJxJrrk
-         NQrqLEpOctwfaUpDVhPL71LWdmr4ngyaCM1ObNTnIGmtmMoRuTCtkjwPIcqjKpiUc+1F
-         F5mxAeOS2bVm7Sa5WAARP8F6Q1Ism+qIw6xqaRREauV/BkmyFfSboszjzbjxPhMDgJeo
-         +LTpYMeeAAKfTH2IFhpSL3MNQlmZ7JL68YNWr8AcuGpZiJSTEssZ8qrJfnoj6g9XYEm7
-         FhOA==
-X-Gm-Message-State: ACgBeo1PJ61dDMwRI+bh7Tgw0HKTca5mkzL8e4m12ZhDVPg2MrFM0nbh
-	jvakUVrYDjIyQo6jvr5CVMo=
-X-Google-Smtp-Source: AA6agR5FVS+CRHX7ZNRp3l6+bfFEe/zLpbi+VIWGy2rLmJ3mU9ZkunVXWhrZz/JnhHHr46WP0K1dVQ==
-X-Received: by 2002:aa7:d703:0:b0:44e:a7b9:d5bd with SMTP id t3-20020aa7d703000000b0044ea7b9d5bdmr6773436edq.425.1662636051345;
-        Thu, 08 Sep 2022 04:20:51 -0700 (PDT)
-Received: from skbuf ([188.27.184.197])
-        by smtp.gmail.com with ESMTPSA id lr23-20020a170906fb9700b0077077c62cadsm1120329ejb.31.2022.09.08.04.20.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Sep 2022 04:20:49 -0700 (PDT)
-Date: Thu, 8 Sep 2022 14:20:44 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: netdev@kapio-technology.com
-Cc: Ido Schimmel <idosch@nvidia.com>, davem@davemloft.net, kuba@kernel.org,
-	netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Yuwei Wang <wangyuweihx@gmail.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
- MAC-Auth Bypass to locked port tests
-Message-ID: <20220908112044.czjh3xkzb4r27ohq@skbuf>
-References: <Ywyj1VF1wlYqlHb6@shredder>
- <9e1a9eb218bbaa0d36cb98ff5d4b97d7@kapio-technology.com>
- <YwzPJ2oCYJQHOsXD@shredder>
- <69db7606896c77924c11a6c175c4b1a6@kapio-technology.com>
- <YwzjPcQjfLPk3q/k@shredder>
- <f1a17512266ac8b61444e7f0e568aca7@kapio-technology.com>
- <YxNo/0+/Sbg9svid@shredder>
- <5cee059b65f6f7671e099150f9da79c1@kapio-technology.com>
- <Yxmgs7Du62V1zyjK@shredder>
- <8dfc9b525f084fa5ad55019f4418a35e@kapio-technology.com>
+	id 1oWFsJ-002pJG-3K; Thu, 08 Sep 2022 11:39:17 +0000
+X-UUID: 1ba7976d61614110a397e78460875303-20220908
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4EAQ100GUJ4755+8cZ4lBtaSz0v0TFrMx0G0ZmrS6II=;
+	b=P2y57cVACONShty2dZ8tzIDBXIIMjXIcAsIdqY/KxkE8eycM8fGvumrhhzTtU6Ck+5uEaT0QRkmofnCv420qG6CcJCipDmIfM5smcv3uV/YlgdAPcQW/YzN5qPq01fH4mHa3CpdwK1yU56weJ1/b0f3U+ibBG3jAJ1lFWkIledk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:31fe0566-537d-469e-a92a-473a9268ee0c,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:c24ccbf5-6e85-48d9-afd8-0504bbfe04cb,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 1ba7976d61614110a397e78460875303-20220908
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1445509030; Thu, 08 Sep 2022 04:39:09 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 8 Sep 2022 18:38:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 8 Sep 2022 18:38:34 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: <mathieu.poirier@linaro.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<bjorn.andersson@linaro.org>, <bleung@chromium.org>,
+	<chrome-platform@lists.linux.dev>, <devicetree@vger.kernel.org>,
+	<dnojiri@chromium.org>, <enric.balletbo@collabora.com>,
+	<groeck@chromium.org>, <gustavoars@kernel.org>, <keescook@chromium.org>,
+	<krzk+dt@kernel.org>, <lee.jones@linaro.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-remoteproc@vger.kernel.org>,
+	<matthias.bgg@gmail.com>, <pmalani@chromium.org>, <robh+dt@kernel.org>,
+	<sebastian.reichel@collabora.com>, <tinghan.shen@mediatek.com>,
+	<weishunc@google.com>
+Subject: Re: [PATCH v2 2/9] remoteproc: mediatek: Support hanlding scp core 1 wdt timeout
+Date: Thu, 8 Sep 2022 18:38:28 +0800
+Message-ID: <20220908103828.23644-1-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220829174021.GA2264818@p14s>
+References: <20220829174021.GA2264818@p14s>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <8dfc9b525f084fa5ad55019f4418a35e@kapio-technology.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_042056_838126_4C6566BB 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20220908_043915_207063_4C1F9128 
+X-CRM114-Status: GOOD (  24.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,20 +86,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 08, 2022 at 01:14:59PM +0200, netdev@kapio-technology.com wrote:
-> On 2022-09-08 09:59, Ido Schimmel wrote:
-> > On Wed, Sep 07, 2022 at 11:10:07PM +0200, netdev@kapio-technology.com wrote:
-> > > I am at the blackhole driver implementation now, as I suppose that the
-> > > iproute2 command should work with the mv88e6xxx driver when adding blackhole
-> > > entries (with a added selftest)?
-> > > I decided to add the blackhole feature as new ops for drivers with functions
-> > > blackhole_fdb_add() and blackhole_fdb_del(). Do you agree with that approach?
-> > 
-> > I assume you are talking about extending 'dsa_switch_ops'?
-> 
-> Yes, that is the idea.
-> 
-> > If so, it's up to the DSA maintainers to decide.
+Hi Mathieu,
 
-What will be the usefulness of adding a blackhole FDB entry from user space?
+> Hi Tinghan,
+> 
+> I have started reviewing this set and I expect comments to be spread out over a few
+> days.  I will tell you when I am done.
+> 
+> Please see below for comments...
+> 
+> On Wed, Jun 08, 2022 at 04:35:46PM +0800, Tinghan Shen wrote:
+> > MT8195 SCP is a dual-core processor. The SCP core 1 watchdog timeout
+> > interrupt uses the same interrupt line of SCP core 0 watchdog timeout
+> > interrupt.
+> > 
+> > Add support for handling SCP core 1 watchdog timeout interrupt in the
+> > SCP IRQ handler.
+> > 
+> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> > ---
+> >  drivers/remoteproc/mtk_common.h |  4 ++++
+> >  drivers/remoteproc/mtk_scp.c    | 27 ++++++++++++++++++++++++++-
+> >  2 files changed, 30 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+> > index ea6fa1100a00..73e8adf00de3 100644
+> > --- a/drivers/remoteproc/mtk_common.h
+> > +++ b/drivers/remoteproc/mtk_common.h
+> > @@ -54,6 +54,10 @@
+> >  #define MT8192_CORE0_WDT_IRQ		0x10030
+> >  #define MT8192_CORE0_WDT_CFG		0x10034
+> >  
+> > +#define MT8195_SYS_STATUS		0x4004
+> > +#define MT8195_CORE0_WDT		BIT(16)
+> > +#define MT8195_CORE1_WDT		BIT(17)
+> > +
+> >  #define MT8195_L1TCM_SRAM_PDN_RESERVED_RSI_BITS		GENMASK(7, 4)
+> >  
+> >  #define SCP_FW_VER_LEN			32
+> > diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> > index 47b2a40e1b4a..3510c6d0bbc8 100644
+> > --- a/drivers/remoteproc/mtk_scp.c
+> > +++ b/drivers/remoteproc/mtk_scp.c
+> > @@ -212,6 +212,31 @@ static void mt8192_scp_irq_handler(struct mtk_scp *scp)
+> >  	}
+> >  }
+> >  
+> > +static void mt8195_scp_irq_handler(struct mtk_scp *scp)
+> > +{
+> > +	u32 scp_to_host;
+> > +
+> > +	scp_to_host = readl(scp->reg_base + MT8192_SCP2APMCU_IPC_SET);
+> > +
+> > +	if (scp_to_host & MT8192_SCP_IPC_INT_BIT) {
+> > +		scp_ipi_handler(scp);
+> > +
+> > +		/*
+> > +		 * SCP won't send another interrupt until we clear
+> > +		 * MT8192_SCP2APMCU_IPC.
+> > +		 */
+> > +		writel(MT8192_SCP_IPC_INT_BIT,
+> > +		       scp->reg_base + MT8192_SCP2APMCU_IPC_CLR);
+> > +	} else {
+> > +		if (readl(scp->reg_base + MT8195_SYS_STATUS) & MT8195_CORE1_WDT) {
+> > +			writel(1, scp->reg_base + MT8195_CORE1_WDT_IRQ);
+> > +		} else {
+> > +			writel(1, scp->reg_base + MT8192_CORE0_WDT_IRQ);
+> > +			scp_wdt_handler(scp, scp_to_host);
+> 
+> Why is scp_wdt_handler() not called when CORE1 signals a watchdog failure?  If
+> this is the intended behaviour there is no way for anyone but you to know that
+> it is the case.  
+
+It's becuase the handler of CORE1 timeout doesn't exist at this patch.
+The CORE1 timeout handler is added at patch 7 of this series.
+
+You're right. This makes people confused.
+I'll combine this patch with the CORE1 timeout handler.
+
+Best regards,
+TingHan
 
