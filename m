@@ -4,74 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7182C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 10:14:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16A3AECAAD5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 10:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=trAVb6VnzvU7/puWpO46KfN9AIa8AF7fJCjsxmjkW6g=; b=QbF9ypiAakkbS+seSiKi1rhKVP
-	WFtar6R6OlFweRm9v/HRZOJabKmH72fF0KrlAwXQFP/hDux2/+LmQmTuD9jw+1nrBcR375i4y+KZF
-	N/buJ7RI9ObR9zIrs1Dck4jttk3hA66nQ+ePtRoR0CoytzNCFRAczR/2Lbpz3BKoAOhV8nWuVN7rh
-	4Q3QLlJHrvkknxfpRazBVAFjrFxcP39bJrZB97IiEn2dB9ReRj7hQXO2+CQLD1wWWxJ1QYhROZ8VA
-	tFzSN241MT+MDm/alWzCSGmBibg5fsitX1njVN5TtmZau0GzCyAGBRJv45lA4x2ZghuagnW1rOfhb
-	feAE+INA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=adoeW70AatjMutwsKP8sauG53vCHad/2gXKEdy8p6Bw=; b=0ICVXat8J+j2Z4Ui0Hu+7MaLEY
+	z1JtvhYpUb/S4tabRwuKL/eIyYZPYvuKs985IqcTuxygZk1ybJRTzymHB52qYpzKW9svZHrO60uRO
+	Eam9OdZU/DpYmeNfKA0+sRqYzKdp2WADOtswufnbW4JPRUvrdvPFUi3S5AsbLA/ccH0bBwY9V5sVu
+	wCbA49J/tPOYKcpu+7+DcVNuchG/Veq2E+Vvu/yTLYv6376LvW0p7LIGGn8/czPD0Res74fyI9g6Z
+	1AM7C2SuO51gVo9lWYwAEDVoQtenjAeSPojbs7bEBZTW0SAqfNQ5NUe0ml1nmEA6dZ5MPHCPdZgAe
+	LALADQ5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWEYS-002Hq6-EM; Thu, 08 Sep 2022 10:14:40 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oWEvL-002MdS-3B; Thu, 08 Sep 2022 10:38:19 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWEYE-002Hls-EY; Thu, 08 Sep 2022 10:14:28 +0000
-X-UUID: a436b10ac78145708b90587fd8bb2a12-20220908
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=trAVb6VnzvU7/puWpO46KfN9AIa8AF7fJCjsxmjkW6g=;
-	b=mf3+go/05fzT4WWK8EE1e4cagu8Uu+pTyxFCh8sMmMNofYusgEU280b204QuS02RlISD+F72wQo6dsMoNoRFTMF9zDNRVYDtdH0rkmm5Og2MyBf7L9eoHRtspRn0VRQLAaPiU7i40pxs8P88WbtALV96qEoAO0asl8u2PPDMon8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:4cf1eab5-d2c2-41e3-b80b-6cd97f83835f,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:a215d1eb-2856-4fce-b125-09d4c7ebe045,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: a436b10ac78145708b90587fd8bb2a12-20220908
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chengci.xu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 177457100; Thu, 08 Sep 2022 03:14:22 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 8 Sep 2022 18:03:44 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 8 Sep 2022 18:03:43 +0800
-Message-ID: <1cf216299b1a061d16ba56956b0b9f8f51a836e9.camel@mediatek.com>
-Subject: Re: [PATCH v2 2/3] iommu/mediatek: Add enable IOMMU SMC command for
- INFRA master
-From: Chengci.Xu <chengci.xu@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>
-CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Joerg Roedel
-	<joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy
-	<robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-Date: Thu, 8 Sep 2022 18:03:43 +0800
-In-Reply-To: <9ceced14196f19c38867cc3a2ded979ac25079c8.camel@mediatek.com>
-References: <20220831125502.7818-1-chengci.xu@mediatek.com>
-	 <20220831125502.7818-3-chengci.xu@mediatek.com>
-	 <9ceced14196f19c38867cc3a2ded979ac25079c8.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oWEv8-002MZ2-GM; Thu, 08 Sep 2022 10:38:08 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id EC7E7CE1EF7;
+	Thu,  8 Sep 2022 10:38:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5EC0C433C1;
+	Thu,  8 Sep 2022 10:37:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1662633482;
+	bh=aVgNvnlf+obNPZ41468yJSBJvyr5RJlsGyre5mdxcLM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gBSxgTWuXbBZWViin4YyOhV6IqZykDgfz4WKfqifjkTCw1a01+owwQGyjrVwq4w9x
+	 OQQTd6eWP83SseyVesif4Xo1Vu+7C9IsDlMjCDBTgQTt3EhWY3q9kdPtzefXvl/EwG
+	 cx2uvALOusP+EvU4opD7ylyHs81mwuV1KuL9HEBmB/9xLxPY+UIohbiXWb1EdaHLgB
+	 mtTzhgfjpt3cGxTG3g4P1lTs9gFf5RZu/sL4/T4CoUVA8Z6URnoPqe+cPS4bHcPvqG
+	 jRXticwyf92yNDifATJqVcrBkg+oq4jJyWOhkRBOex2F6LnmzeBY3wToBK/Fq73Psd
+	 JUIrBCAVWR1Dw==
+Date: Thu, 8 Sep 2022 11:37:56 +0100
+From: Lee Jones <lee@kernel.org>
+To: matthias.bgg@kernel.org
+Cc: robh+dt@kernel.org, angelogioacchino.delregno@collabora.com,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+	mandyjh.liu@mediatek.com, linux-arm-kernel@lists.infradead.org,
+	Matthias Brugger <mbrugger@suse.com>
+Subject: Re: [PATCH v2] dt-bindings: mfd: Rename mediatek,mt8195-scpsys.yaml
+Message-ID: <YxnGBN4QEb1yMrGw@google.com>
+References: <20220830091110.27857-1-matthias.bgg@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220830091110.27857-1-matthias.bgg@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_031426_504148_41CA7AFB 
-X-CRM114-Status: GOOD (  28.94  )
+X-CRM114-CacheID: sfid-20220908_033806_746001_E2481853 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,144 +75,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-09-07 at 11:37 +0800, Yong Wu wrote:
-> On Wed, 2022-08-31 at 20:55 +0800, Chengci.Xu wrote:
-> > The register which can enable IOMMU for INFRA master should be
-> > setted
-> > in secure world for security concerns. Therefore, we add a SMC
-> > command
-> > for INFRA master to enable/disable INFRA IOMMU in ATF. This
-> > function
-> > is
-> > prepared for MT8188.
-> > 
-> > Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
-> > ---
-> >  drivers/iommu/mtk_iommu.c  | 34 ++++++++++++++++++++++++++--------
-> >  include/soc/mediatek/smi.h |  1 +
-> >  2 files changed, 27 insertions(+), 8 deletions(-)
-> > 
-> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> > index 7e363b1f24df..6fe780783ec8 100644
-> > --- a/drivers/iommu/mtk_iommu.c
-> > +++ b/drivers/iommu/mtk_iommu.c
-> > @@ -3,6 +3,7 @@
-> >   * Copyright (c) 2015-2016 MediaTek Inc.
-> >   * Author: Yong Wu <yong.wu@mediatek.com>
-> >   */
-> > +#include <linux/arm-smccc.h>
-> >  #include <linux/bitfield.h>
-> >  #include <linux/bug.h>
-> >  #include <linux/clk.h>
-> > @@ -28,6 +29,7 @@
-> >  #include <linux/slab.h>
-> >  #include <linux/spinlock.h>
-> >  #include <linux/soc/mediatek/infracfg.h>
-> > +#include <linux/soc/mediatek/mtk_sip_svc.h>
-> >  #include <asm/barrier.h>
-> >  #include <soc/mediatek/smi.h>
-> >  
-> > @@ -138,6 +140,7 @@
-> >  #define PM_CLK_AO			BIT(15)
-> >  #define IFA_IOMMU_PCIE_SUPPORT		BIT(16)
-> >  #define PGTABLE_PA_35_EN		BIT(17)
-> > +#define CFG_IFA_MASTER_IN_ATF		BIT(18)
-> >  
-> >  #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
-> >  				((((pdata)->flags) & (mask)) == (_x))
-> > @@ -554,14 +557,29 @@ static int mtk_iommu_config(struct
-> > mtk_iommu_data *data, struct device *dev,
-> >  			else
-> >  				larb_mmu->mmu &=
-> > ~MTK_SMI_MMU_EN(portid);
-> >  		} else if (MTK_IOMMU_IS_TYPE(data->plat_data,
-> > MTK_IOMMU_TYPE_INFRA)) {
-> > -			peri_mmuen_msk = BIT(portid);
-> > -			/* PCI dev has only one output id, enable the
-> > next writing bit for PCIe */
-> > -			if (dev_is_pci(dev))
-> > -				peri_mmuen_msk |= BIT(portid + 1);
-> > -
-> > -			peri_mmuen = enable ? peri_mmuen_msk : 0;
-> > -			ret = regmap_update_bits(data->pericfg,
-> > PERICFG_IOMMU_1,
-> > -						 peri_mmuen_msk,
-> > peri_mmuen);
-> > +			if (MTK_IOMMU_HAS_FLAG(data->plat_data,
-> > CFG_IFA_MASTER_IN_ATF)) {
-> > +				struct arm_smccc_res res;
-> > +
-> > +				portid = MTK_M4U_TO_PORT(fwspec-
-> > > ids[i]);
-> > 
-> > +				arm_smccc_smc(MTK_SIP_KERNEL_IOMMU_CONT
-> > ROL,
-> > +					      IOMMU_ATF_CMD_CONFIG_INFR
-> > A_IOMMU,
-> > +					      portid, enable, 0, 0, 0,
-> > 0, &res);
-> > +				ret = (int)res.a0;
-> 
-> Too many indentations. Please create a new interface or even just use
-> "if", like:
-> 
-> if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_MM)) {
->  xx
-> } else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA &&
->            MTK_IOMMU_HAS_FLAG(data->plat_data,
-> CFG_IFA_MASTER_IN_ATF))
-> { /* Configure the mmu_en in the ATF for infra IOMMU */
->   xx
-> } else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA) {
-> }
-> 
+On Tue, 30 Aug 2022, matthias.bgg@kernel.org wrote:
 
-Thanks for your review.
-
-We will use the second way to reduce indentations.
-
-Best regards,
-Chengci Xu
-
-> > +
-> > +			} else {
-> > +				peri_mmuen_msk = BIT(portid);
-> > +				/* PCI dev has only one output id,
-> > +				 * enable the next writing bit for PCIe
-> > +				 */
-> > +				if (dev_is_pci(dev))
-> > +					peri_mmuen_msk |= BIT(portid +
-> > 1);
-> > +
-> > +				peri_mmuen = enable ? peri_mmuen_msk :
-> > 0;
-> > +				ret = regmap_update_bits(data->pericfg,
-> > +							 PERICFG_IOMMU_
-> > 1,
-> > +							 peri_mmuen_msk
-> > ,
-> > +							 peri_mmuen);
-> > +			}
-> >  			if (ret)
-> >  				dev_err(dev, "%s iommu(%s) inframaster
-> > 0x%x fail(%d).\n",
-> >  					enable ? "enable" : "disable",
-> > diff --git a/include/soc/mediatek/smi.h
-> > b/include/soc/mediatek/smi.h
-> > index dfd8efca5e60..99f13b0e416d 100644
-> > --- a/include/soc/mediatek/smi.h
-> > +++ b/include/soc/mediatek/smi.h
-> > @@ -13,6 +13,7 @@
-> >  
-> >  enum iommu_atf_cmd {
-> >  	IOMMU_ATF_CMD_CONFIG_SMI_LARB,		/* For mm master to
-> > en/disable iommu */
-> > +	IOMMU_ATF_CMD_CONFIG_INFRA_IOMMU,	/* For infra master
-> > en/disable iommu */
-> >  	IOMMU_ATF_CMD_MAX,
-> >  };
-> >  
+> From: Matthias Brugger <mbrugger@suse.com>
 > 
-> 
+> The file describes the scpsys node for all SoCs and not only the mt8195.
+> Rename it to reflect this fact.
 
+Actually, this is fairly typical.  Same with actual drivers.
+
+Both tend to adopt the name of the module first supported.
+
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> ---
+> 
+> Changes in v2:
+> - Fix id
+> 
+>  .../mfd/{mediatek,mt8195-scpsys.yaml => mediatek,scpsys.yaml}   | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>  rename Documentation/devicetree/bindings/mfd/{mediatek,mt8195-scpsys.yaml => mediatek,scpsys.yaml} (96%)
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml b/Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+> similarity index 96%
+> rename from Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+> rename to Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+> index 3737207d8504..1a5901ca90f5 100644
+> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+> +++ b/Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+> @@ -1,7 +1,7 @@
+>  # SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+>  %YAML 1.2
+>  ---
+> -$id: http://devicetree.org/schemas/mfd/mediatek,mt8195-scpsys.yaml#
+> +$id: http://devicetree.org/schemas/mfd/mediatek,scpsys.yaml#
+>  $schema: http://devicetree.org/meta-schemas/core.yaml#
+>  
+>  title: MediaTek System Control Processor System
+
+-- 
+Lee Jones [李琼斯]
 
