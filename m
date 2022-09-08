@@ -4,62 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDA78C38145
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 06:11:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B258DECAAD5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 06:57:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cU+09lOU4zTuAgpOslti0rZ9rLjeFaqpSXuvsSPnhHY=; b=fHme6sjHLTqWR7vZ+jhZQyxJcO
-	ctK7pgcq/vMcKoD6kofZCIBYmNUMgte8znoVWkTq71Fy2J6xFBMSkxTthJwbdtC3AX5xpWTjMMQBa
-	xq0+IrRrSJnfmrnhTJz/U2NjAGr96d85qlrAPhGOo6yASRmL0X7plfyKw1vN2ftFwqrGYzgTGSNYa
-	jIlUaevnbhHXburKKpYalZKWraMsMSPstHhFRZsKCjhn0uqI5/B10FxmoX7Wni57acHAB8CaZcj6T
-	ECGt9v6QYCIUii9jj7LGz9n8GhGhxk/LtVraJY89mCudex/xZwsRJ52Zkr0uuO5rt7y31Cg3+iqEi
-	ORwtz6oQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0GlDwqSJlJ62tFCrYz0xSOIlooFAAT4vRDl6xRQBOak=; b=2KUJ2WLZkpeIqJJk7GKoBvl8Op
+	BCRzlywiNCpmCL51Ao4eno3k/Vxe4Czg/C9vvMfSNBmSLxhcnMF/OF7XUGyJ08uMVNyUH57spiPGo
+	W98vFkvBidFWOMh8LVtaDp5W0p1rwQinLzpYL55XkeAiHa9mh3bmsozlykh7xH6MiD9dv+xVzSHdl
+	i4MwSN4KpH8zp3KKCHqdqEQ9ArPXqxdHEeSsSZVXipGWVhkX5nye8E7k9K5IPDb9lzGVkiACdqrcj
+	AnlhkcYh5lZ8PQovJDf0PmrWvqt/kkODyK/cxfHuV+vTNkI19Ph7QaWD9rYROtG96b6ZIv4F9Y5sy
+	kfQXvNig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWAl0-00HEh3-95; Thu, 08 Sep 2022 06:11:22 +0000
-Received: from [124.126.103.232] (helo=mailgw.kylinos.cn)
+	id 1oWBTi-0002P0-Sm; Thu, 08 Sep 2022 06:57:34 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWAkw-00HEQs-PC
-	for linux-mediatek@lists.infradead.org; Thu, 08 Sep 2022 06:11:20 +0000
-X-UUID: cac2b31c330c46de886a8369cf80a009-20220908
-X-CPASD-INFO: 910a53312bca4eda99fb55a0f56c13f4@goFqgWJlYWFegqWtg6ivm1lqlpJlYYF
-	_qG9Wk19jklSVhH5xTV5uYFV9fWtVYV9dYVR6eGxQYmBgZFJ4i3-XblBgXoZgUZB3iHNqgWdhYw==
-X-CLOUD-ID: 910a53312bca4eda99fb55a0f56c13f4
-X-CPASD-SUMMARY: SIP:-1,APTIP:-2.0,KEY:0.0,FROMBLOCK:1,OB:0.0,URL:-5,TVAL:185.
-	0,ESV:0.0,ECOM:-5.0,ML:0.0,FD:0.0,CUTS:140.0,IP:-2.0,MAL:-5.0,PHF:-5.0,PHC:-5
-	.0,SPF:4.0,EDMS:-5,IPLABEL:4480.0,FROMTO:0,AD:0,FFOB:0.0,CFOB:2.0,SPC:0,SIG:-
-	5,AUF:11,DUF:4343,ACD:74,DCD:74,SL:0,EISP:0,AG:0,CFC:0.436,CFSR:0.038,UAT:0,R
-	AF:0,IMG:-5.0,DFA:0,DTA:0,IBL:-2.0,ADI:-5,SBL:0,REDM:0,REIP:0,ESB:0,ATTNUM:0,
-	EAF:0,CID:-5.0,VERSION:2.3.17
-X-CPASD-ID: cac2b31c330c46de886a8369cf80a009-20220908
-X-CPASD-BLOCK: 1000
-X-CPASD-STAGE: 1
-X-UUID: cac2b31c330c46de886a8369cf80a009-20220908
-X-User: chenzhang@kylinos.cn
-Received: from localhost.localdomain [(112.64.161.44)] by mailgw
-	(envelope-from <chenzhang@kylinos.cn>)
-	(Generic MTA)
-	with ESMTP id 85301; Thu, 08 Sep 2022 14:11:26 +0800
-From: chen zhang <chenzhang@kylinos.cn>
-To: chunfeng.yun@mediatek.com,
-	gregkh@linuxfoundation.org
-Cc: chenzhang_0901@163.com,
-	linux-usb@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3] usb: mtu3: Fix spelling typo in comments
-Date: Thu,  8 Sep 2022 14:10:57 +0800
-Message-Id: <20220908061057.16990-1-chenzhang@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1oWBTW-0002BB-Hy; Thu, 08 Sep 2022 06:57:24 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 1315C61B48;
+	Thu,  8 Sep 2022 06:57:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 22FC6C433C1;
+	Thu,  8 Sep 2022 06:57:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1662620241;
+	bh=RKj0p7+2DV/jN/iA6U4WYLQVoMCZshcyv2vDEmRBeAo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=pzlCI3AR14y4reXJ0jTJZ2rn5kWNEscL5/QYctNJYCYvmijtkfyM6OX9OMlQfkHkx
+	 u9CCf4liu5qODolVl6EIhLuqfkNVhsOnayE1Qt1opWUf2gnXqKBzPEV5XB5BGHYkfJ
+	 9p2yn8+BU8Db0gy/2EMO3Bl+r0Uzcrxnu7fhqKpjpa97emZdeQVNUxO1owEwl2HCEG
+	 uavSMmAL7Q2ckUKI/ZmORqVWqLDBVR9vj0niuISEBSwe91FwkIud2cThoaGBH5nkJI
+	 RNx82ugPhxUj03wXqjqJA0kZ79GDbbKllJrBSyCzJyjUKJQHgRZbTMFX/xQ2N5bX2E
+	 yB3t4aNVng5fA==
+Date: Thu, 8 Sep 2022 07:57:16 +0100
+From: Lee Jones <lee@kernel.org>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Andy Shevchenko <andy.shevchenko@gmail.com>,
+	ChiYuan Huang <cy_huang@richtek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	ChiaEn Wu <chiaen_wu@richtek.com>,
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	kernel-janitors <kernel-janitors@vger.kernel.org>
+Subject: Re: [PATCH] mfd: mt6370: add bounds checking to regmap_read/write
+ functions
+Message-ID: <YxmSTH5ETSC0D3Rp@google.com>
+References: <Yv8ezribLQbq5ggv@kili>
+ <CAHp75VcotcJzqc4iSwNTKcvF3vAYz6VUuMrsj7LF6mi6Xu8D=Q@mail.gmail.com>
+ <20220822125705.GD2695@kadam>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220822125705.GD2695@kadam>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220907_231119_180654_8C880499 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220907_235722_774143_1B1ABF20 
+X-CRM114-Status: GOOD (  24.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,42 +79,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix spelling typo in comments.
+On Mon, 22 Aug 2022, Dan Carpenter wrote:
 
-K2ci (Kylin Continuous Integration) is a code pre-verification tool
-independently developed by KylinSoft, which is used for ensuring the
-code quality of code submission. K2ci includes the comment check tool
-notes_check.
+> On Fri, Aug 19, 2022 at 09:27:13AM +0300, Andy Shevchenko wrote:
+> > On Fri, Aug 19, 2022 at 8:25 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
+> > >
+> > > It looks like there are a potential out of bounds accesses in the
+> > > read/write() functions.  Also can "len" be negative?  Let's check for
+> > > that too.
+> > 
+> > ...
+> > 
+> > > Fixes: ab9905c5e38e ("mfd: mt6370: Add MediaTek MT6370 support")
+> > 
+> > > From static analysis.  This code is obviously harmless however it may
+> > > not be required.  The regmap range checking is slightly complicated and
+> > > I haven't remembered where all it's done.
+> > 
+> > Exactement! I do not think this Fixes anything, I believe you are
+> > adding a dead code. So, can you do deeper analysis?
+> 
+> I spent a long time looking at this code before I sent it and I've
+> spent a long time looking at it today.
+> 
+> Smatch said that these values come from the user, but now it seems
+> less clear to me and I have rebuilt the DB so I don't have the same
+> information I was looking at earlier.
+> 
+> So I can't see if these come from the user but neither can I find any
+> bounds checking.
 
-This spelling typo was found using notes_check tool, which reported the
-following warning when check the v5.19 kernel release:
+What's the consensus please?
 
-python3 notes_check.py
-drivers/usb/mtu3/mtu3_qmu.c emtpy
-
-Reported-by: k2ci <kernel-bot@kylinos.cn>
-Signed-off-by: chen zhang <chenzhang@kylinos.cn>
----
-change for v3: move k2ci tool explain to changelog text 
-change for v2: add k2ci tool explain
----
- drivers/usb/mtu3/mtu3_qmu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
-index 2ea3157ddb6e..5c3fbfcf6483 100644
---- a/drivers/usb/mtu3/mtu3_qmu.c
-+++ b/drivers/usb/mtu3/mtu3_qmu.c
-@@ -220,7 +220,7 @@ static struct qmu_gpd *advance_deq_gpd(struct mtu3_gpd_ring *ring)
- 	return ring->dequeue;
- }
- 
--/* check if a ring is emtpy */
-+/* check if a ring is empty */
- static int gpd_ring_empty(struct mtu3_gpd_ring *ring)
- {
- 	struct qmu_gpd *enq = ring->enqueue;
 -- 
-2.25.1
-
+Lee Jones [李琼斯]
 
