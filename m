@@ -4,68 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 535CCC38145
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 14:16:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71D43C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 14:18:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0UoEd5b55tCizD086zkm12TKFfpaeGwDnJSOjTxJDLI=; b=nX0FkK14ze+NAWE/Q1yTChvwmT
-	MT8hofEIoT9H5qT2jwIm5BrvdiLB5ER/fcxCaPd9GViVFGdW+OAupMrZ0eEFWJMrRN6yaLmqHQl0Z
-	ZJDsb/PqFgyoTifr494c81BdeJhjw4OPGBW54oZTnvn9K7BguKuphhKrilXY2TfSFnwZh1iNjdLxL
-	8qaVwQfcZItXCj69gNeYs91LzxFa3t6RnFKLTcGMpHSXFTrvA7gSCwZ1/WRB1gZlo04cFvpQGdhDy
-	57Mnbp0DUS/5GOhAiH1cwt+A54CJYuRmuNE75cLAhd6ZK2oQmpKO6dafVcPtrv2O86CEA9C9jYE+w
-	XSzN9vEg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8/WneAIH4doGZWwalQYiIRIPWbn6dY3tzQchBDy6uq8=; b=caF/Mnh57OcdL6NkSw3XOV0avg
+	tIHDNIckErEZndoeYdmY2vpZtMeVwcmSetr6d02+iuJziqQgb1eZqOqvMPpBXFv4L8iHE6u1t3WJv
+	UHk3w6cY7vlt5uOwz3L7VxPQuMYFrp3G+U9SL8fYlw9TcVO03xMkgETzurBOA7ByK5koUnWAy01B/
+	PW8M9n900+H06LqnhcjD+EknCK7xhRmYeM5mNEEyDulK4ofIaoLCzqnX21F5JWL0ElUtrIEubVOof
+	QvAvf+YZETjBRB2LwyaXc5Ed8MEcJ5fJICVeuIQ5hAC5mxXCWCVZiJL5M/c5BRFXHX7gs64iHWNyn
+	Esb3aytw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWIKA-004WNH-V2; Thu, 08 Sep 2022 14:16:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oWILv-004XUw-6K; Thu, 08 Sep 2022 14:17:59 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWIK4-004WEW-NK; Thu, 08 Sep 2022 14:16:09 +0000
-X-UUID: 5d8eee40345a4fb4bc025649d19a5de7-20220908
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=0UoEd5b55tCizD086zkm12TKFfpaeGwDnJSOjTxJDLI=;
-	b=VYFvXij/ELxMrPdDtafm0fyQczUnjapkfwMJne5LulYQxF60B1mEOBsnvFFLrOvoApwnQIz6t1jCtrAN9NvZ7CrWL6QALTsQuoscIEZgqEUH7rR/wn4q6mzZo7rM93j5jmYcI/OFefPP9H1VcCckvqQT50ZuOxDGHspbSIG73aI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:d43bf7e7-3d90-466f-bb44-d4d3f66648ba,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:ef9ed5eb-2856-4fce-b125-09d4c7ebe045,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 5d8eee40345a4fb4bc025649d19a5de7-20220908
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 68152473; Thu, 08 Sep 2022 07:12:44 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 8 Sep 2022 22:12:07 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 8 Sep 2022 22:12:07 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
-	<daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Allen-KH Cheng
-	<allen-kh.cheng@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>
-Subject: [PATCH] drm/mediatek: Fix wrong dither settings
-Date: Thu, 8 Sep 2022 22:12:05 +0800
-Message-ID: <20220908141205.18256-1-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oWILs-004XRZ-0Q
+	for linux-mediatek@lists.infradead.org; Thu, 08 Sep 2022 14:17:57 +0000
+Received: by mail-lf1-x133.google.com with SMTP id z25so28005869lfr.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 08 Sep 2022 07:17:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=8/WneAIH4doGZWwalQYiIRIPWbn6dY3tzQchBDy6uq8=;
+        b=FW3NoVsk/D0Nf3JbkkTKy/wW5LGJUF6TucHDO5cDKLvBTnSC1Yi10PBSCfzXp5kIvj
+         VF/j/gCFY5s6lhqw4xknnQn92Z74hzDmuxlxblmy8IQyrUbpvjuM/VCZsHFnEogQWFPQ
+         h5yRCq3kYolxf8LMP759YSutYbxuix/6DjulZfkDB93YBSMqI3vg3S1QlTJtBEDW5Yh8
+         Xcb+KZRu70DtccNSnYn57w5eCiCEXMsgze0Nc7XcF6e/8W2d9Z0FiSKY6vhE6XUqTits
+         d1jQVqWO5WIwxAecj9clvgBRR6YS8BsnmRFEmFrfs1ALQC9Wdi/fs8MSC0eC9NE0tPvA
+         D7bQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=8/WneAIH4doGZWwalQYiIRIPWbn6dY3tzQchBDy6uq8=;
+        b=qp8SfG0rCz9YCvbww2eQzSyME90D3FZPikKJLuMOsR32yv9BWfUvyfC0h7TPHRHo0d
+         uGEbE9NScj5VpY8Dfir9Hwtn3tf1+cvFO4W9sJLvqQysjjAXVhFHkDLepc+PPq2baQaU
+         uYabKJ6Dx8xnnpTYCGdjdqFHcYkSx/uPWVn3S6Uv2Bf9lsiJv0ZtdZXrNaynQOZkree1
+         oscJhqgl+dwL/ZzJZv9lwsJ6sfo8KOWRzzGbvw8a4Q2/jnwCp2oYsaHMT4gQvy/tawSq
+         N3Au7MWWnmoRXGsb6kp2VfUHY7aswwpUuZ3eWCPN3zjf2CkoD7WBJFES7fzHtk/v4xr9
+         VsoA==
+X-Gm-Message-State: ACgBeo2a3waL95pkOePixDSEq13yOxJWCtoY9wuNyn7wo6kyiZJ8dTm/
+	e/138SHe7LlrVl3NgO8yUlIJsQ==
+X-Google-Smtp-Source: AA6agR4mHUGqtjIx4fWu+AWyjmDlfv8bavpAUqYbTfxi3wJ8vaWjQj312qDOFEZGYwmEJx35Mt6jZQ==
+X-Received: by 2002:a05:6512:2201:b0:492:f874:39fa with SMTP id h1-20020a056512220100b00492f87439famr2713913lfu.365.1662646670821;
+        Thu, 08 Sep 2022 07:17:50 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id k5-20020ac257c5000000b00492e98c27ebsm3049186lfo.91.2022.09.08.07.17.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 08 Sep 2022 07:17:50 -0700 (PDT)
+Message-ID: <83818ffc-bc38-0d3a-b225-d6671c6a1f3c@linaro.org>
+Date: Thu, 8 Sep 2022 16:17:49 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH v2] dt-bindings: iommu: mediatek: mt8195: Fix max
+ interrupts
+Content-Language: en-US
+To: matthias.bgg@kernel.org, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: devicetree@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>,
+ linux-kernel@vger.kernel.org, iommu@lists.linux.dev,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+References: <20220908141529.1478-1-matthias.bgg@kernel.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220908141529.1478-1-matthias.bgg@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_071604_793588_DE90EF1C 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20220908_071756_113069_6B5012C1 
+X-CRM114-Status: UNSURE (   8.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,32 +99,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The width and height arguments in the cmdq packet for mtk_dither_config()
-are inverted. We fix the incorrect width and height for dither settings
-in mtk_dither_config().
+On 08/09/2022 16:15, matthias.bgg@kernel.org wrote:
+> From: Matthias Brugger <mbrugger@suse.com>
+> 
+> The mt8195-iommu-infra has five banks and one interrupt for each.
+> Reflect that in the binding.
+> 
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 
-Fixes: 73d3724745db ("drm/mediatek: Adjust to the alphabetic order for mediatek-drm")
-Co-developed-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 2d72cc5ddaba..6b6d5335c834 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -157,7 +157,7 @@ static void mtk_dither_config(struct device *dev, unsigned int w,
- {
- 	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
- 
--	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs, DISP_REG_DITHER_SIZE);
-+	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv->regs, DISP_REG_DITHER_SIZE);
- 	mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, &priv->cmdq_reg, priv->regs,
- 		      DISP_REG_DITHER_CFG);
- 	mtk_dither_set_common(priv->regs, &priv->cmdq_reg, bpc, DISP_REG_DITHER_CFG,
--- 
-2.18.0
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
+
+Best regards,
+Krzysztof
 
