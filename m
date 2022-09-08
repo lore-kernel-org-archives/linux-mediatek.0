@@ -4,74 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79A19C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 11:52:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B260C6FA8A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 13:07:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8G3RXmk6EX/J/uFVEBqNvgPb8Qx9waaWfpLdoQyA9os=; b=maBxAwkWQ6L9OmzzIzXgtvvfun
-	EhA+RmGCcWGbKstVrsZDcQt33SxVh4igdQLFNW0xePO+yK1ah9ow42hWdeQreajmyVb5ayUe4o7Kv
-	eQeEe0RTxDt++vHwhBFAm0LNaTO+6+HAgLx7VFWtI1tA1mDhC0R6Jm6PmpP4fez8BmDR869on8b0/
-	61xloK+/G2mgWZBas2/isk39x5VfR9JSg/zAit5H/E+Qic4SJ6cccLsKB/1Q1MlaTRqnK5PLS+IFZ
-	LlN3RY73MzkiUC4NFO3eBPkaF9cgbFbWvQODYmcFem9Iib/cICodnDXzbzaGhGge85Oghnwr9cMcj
-	5lKprXBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gOAXxPoSqwbSOG0ofk9DT91+7QBHKnohIB4quLfJkAk=; b=NgeKInqgr5AOpfugn2uimdxnTv
+	8Pe6abJsvNOPSAECuDz0MfUrSnbPExTxqfSm60NXqoPK3GFfpCVPzJSU227xFRYXJL6WlrmNYBpYi
+	dJBTS+mqToNw1zla2Aj2EyGoS0cXxfvB8ntZYz3Uq0EP3i3LGwoFkCm81WDmWsNmx8DyxS26bp0pe
+	TpteSb/mBKoBw3C7MYHOQrbAd0qmfZSnISqrHpkN3/AiuRgzJx6iZQgRr8C7Fe1JCFGot9ux0FQav
+	Rp0pGjPCC3bRN6AWABb5uU4Du1CZyEdjX6BTFlMV7WUpYmhxTwpQcBqMkZMvLcLyVn4oOmqwGVWjG
+	0+d8/HWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWG5M-002vQZ-Tk; Thu, 08 Sep 2022 11:52:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oWHFL-003ZY4-Rq; Thu, 08 Sep 2022 13:07:07 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWG59-002vLO-Va; Thu, 08 Sep 2022 11:52:33 +0000
-X-UUID: 58b244dc2ddd499a9eb73a7f91be7d27-20220908
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=8G3RXmk6EX/J/uFVEBqNvgPb8Qx9waaWfpLdoQyA9os=;
-	b=fQzkJcAWMStV2PgW5K0hm4MnIJFjief+o/XVOZW47Bei/bwuUy4JBKAixn7dctKuXmiKUAf5CXpVaUQ9fwAX0JZYvU63sHUhbXGJMk9byaMS2XEgcvS4DEH2pw8oPP6L/X+TwfvlOOlJtaR+0HDaust8bpmbUhTQw5FTaukIvIw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:9dc9893e-65b1-4bd8-b4e1-ef5be90de972,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:e85ed3eb-2856-4fce-b125-09d4c7ebe045,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 58b244dc2ddd499a9eb73a7f91be7d27-20220908
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 56807483; Thu, 08 Sep 2022 04:52:26 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 8 Sep 2022 19:21:50 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 8 Sep 2022 19:21:50 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: <mathieu.poirier@linaro.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<bjorn.andersson@linaro.org>, <bleung@chromium.org>,
-	<chrome-platform@lists.linux.dev>, <devicetree@vger.kernel.org>,
-	<dnojiri@chromium.org>, <enric.balletbo@collabora.com>,
-	<groeck@chromium.org>, <gustavoars@kernel.org>, <keescook@chromium.org>,
-	<krzk+dt@kernel.org>, <lee.jones@linaro.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-remoteproc@vger.kernel.org>,
-	<matthias.bgg@gmail.com>, <pmalani@chromium.org>, <robh+dt@kernel.org>,
-	<sebastian.reichel@collabora.com>, <tinghan.shen@mediatek.com>,
-	<weishunc@google.com>
-Subject: Re: [PATCH v2 4/9] remoteproc: mediatek: Support probing for the 2nd core of dual-core SCP
-Date: Thu, 8 Sep 2022 19:17:57 +0800
-Message-ID: <20220908111757.14633-1-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220829194247.GC2264818@p14s>
-References: <20220829194247.GC2264818@p14s>
+	id 1oWHFA-003ZNJ-Io
+	for linux-mediatek@lists.infradead.org; Thu, 08 Sep 2022 13:07:01 +0000
+Received: by mail-lf1-x134.google.com with SMTP id w8so27558168lft.12
+        for <linux-mediatek@lists.infradead.org>; Thu, 08 Sep 2022 06:06:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=gOAXxPoSqwbSOG0ofk9DT91+7QBHKnohIB4quLfJkAk=;
+        b=i+RfaVmr6TwYbrjKu2rs37bY30XQzhyA7yLm4s9A22Uu+/HQYoKfOy5Q03iILzxn65
+         6NjhMKI92f/OlDQunY7TBeXo9SKKxkIw89N/07527phtr5Bp1ly67fDqatRR5S9spGBN
+         mdYeT6DfN5K1a+fvCDD+94yXS/UAH2WXTnxZ17VjF6pW7Akk0qHnlLc+QKVHKiMFcrpP
+         cPkFIMjqdfzWFGWn0ymj4wGf5NIFAvG+Z2078mv7kYKNBZtPQ9rAz86zbmlHA8F0U7Uz
+         sb8k649vh0kUt6smBTqEHiugCuLgC4ZnJcji4aaAL/hQBUkyYZQv6DD7FWW4YpSYMHeJ
+         mbRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=gOAXxPoSqwbSOG0ofk9DT91+7QBHKnohIB4quLfJkAk=;
+        b=XKwxmK4MO8HAV57cuVBUljqluVRUxF5O8GHCyADzDKgdOhkNBiPnSgIm9Dd6N5AdDT
+         CuxKSvPr+03kf1jVKCF8ubf5EVHX4efjim5xixGsNbpF+LeCcwmxkM+1xTlkI15YTGv9
+         xJ+UCGEYcHPIywIOpkW/p30jJwdC0UhouSTHNKxQm2vdNw3eU7Wq9pS0roIp17BsMOFp
+         Ja+h3u02PYlr0I5cMNzHSRwG4WPbwcU/qH87rtM6+J8MjotSwazQ08TP2tqYbobgWVdu
+         0l2OCOuwMjPqDrhuwJj0ZUx2ijjWcul+/wrSysJxECio+24/LBq5yGqVUNDcQgUgXOIQ
+         1LSw==
+X-Gm-Message-State: ACgBeo2LAYLg069MRw+c/etjXxN4Wo2rUQQ15Urwe8NN3GEgww9DK6iD
+	M7KH7+ORjiL0buDNUMUaOW0NAQ==
+X-Google-Smtp-Source: AA6agR7AH0qv7axgXMrX7mRX46ybs/CgAIoyHustwbaI5FQqFhUa2Ora0+qrERSUdxYriHwxcymxYg==
+X-Received: by 2002:a05:6512:3f90:b0:48a:826d:f727 with SMTP id x16-20020a0565123f9000b0048a826df727mr2541872lfa.281.1662642412767;
+        Thu, 08 Sep 2022 06:06:52 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id v7-20020a2e9247000000b00264bb2351e8sm1623322ljg.7.2022.09.08.06.06.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 08 Sep 2022 06:06:52 -0700 (PDT)
+Message-ID: <cfa357f6-ac12-c391-b3a4-0175167dd358@linaro.org>
+Date: Thu, 8 Sep 2022 15:06:50 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH v2 1/6] dt-bindings: mediatek: modify VDOSYS0 display
+ device tree Documentations for MT8188
+Content-Language: en-US
+To: "nathan.lu" <nathan.lu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: "jason-jh . lin" <jason-jh.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rex-BC Chen <rex-bc.chen@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, wsd_upstream@mediatek.com,
+ lancelot.wu@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220906084449.20124-1-nathan.lu@mediatek.com>
+ <20220906084449.20124-2-nathan.lu@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220906084449.20124-2-nathan.lu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_045232_218791_F0F1E185 
-X-CRM114-Status: GOOD (  34.49  )
+X-CRM114-CacheID: sfid-20220908_060656_698279_D86F6F3D 
+X-CRM114-Status: UNSURE (   8.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,111 +107,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mathieu,
+On 06/09/2022 10:44, nathan.lu wrote:
+> From: Nathan Lu <nathan.lu@mediatek.com>
+> 
+> modify VDOSYS0 display device tree Documentations for MT8188.
+> 
+> Signed-off-by: Nathan Lu <nathan.lu@mediatek.com>
+> ---
 
-> > The mtk_scp.c driver only supports the single core SCP and the
-> > 1st core of a dual-core SCP. This patch extends it for the 2nd core.
-> > 
-> > MT8195 SCP is a dual-core MCU. Both cores are housed in the same subsys.
-> 
-> s/subsys/subsystem
-> 
-> > They have the same viewpoint of registers and memory.
-> > 
-> > Core 1 of the SCP features its own set of core configuration registers,
-> > interrupt controller, timers, and DMAs. The rest of the peripherals
-> > in this subsystem are shared by core 0 and core 1.
-> > 
-> > As for memory, core 1 has its own cache memory. the SCP SRAM is shared
-> 
-> /the/The
-> 
-> > by core 0 and core 1.
-> > 
-> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > ---
-> >  drivers/remoteproc/mtk_scp.c | 22 ++++++++++++++++++++--
-> >  1 file changed, 20 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> > index 3510c6d0bbc8..91b4aefde4ac 100644
-> > --- a/drivers/remoteproc/mtk_scp.c
-> > +++ b/drivers/remoteproc/mtk_scp.c
-> > @@ -23,6 +23,10 @@
-> >  #define MAX_CODE_SIZE 0x500000
-> >  #define SECTION_NAME_IPI_BUFFER ".ipi_buffer"
-> >  
-> > +#define SCP_CORE_0 0
-> > +#define SCP_CORE_1 1
-> > +#define SCP_CORE_SINGLE 0xF
-> > +
-> >  /**
-> >   * scp_get() - get a reference to SCP.
-> >   *
-> > @@ -836,6 +840,7 @@ static int scp_probe(struct platform_device *pdev)
-> >  	struct resource *res;
-> >  	const char *fw_name = "scp.img";
-> >  	int ret, i;
-> > +	u32 core_id = SCP_CORE_SINGLE;
-> >  
-> >  	ret = rproc_of_parse_firmware(dev, 0, &fw_name);
-> >  	if (ret < 0 && ret != -EINVAL)
-> > @@ -851,8 +856,16 @@ static int scp_probe(struct platform_device *pdev)
-> >  	scp->data = of_device_get_match_data(dev);
-> >  	platform_set_drvdata(pdev, scp);
-> >  
-> > +	ret = of_property_read_u32_index(dev->of_node, "mediatek,scp-core", 1, &core_id);
-> > +	if (ret == 0)
-> > +		dev_info(dev, "Boot SCP dual core %u\n", core_id);
-> 
-> Why is the DT property "mediatek,scp-core" needed at all?  Since the compatible
-> "mediatek,mt8195-scp-dual" has already been defined previously in this patchset,
-> initialising the second core, if present, is a matter of looking at the
-> compatile string. 
 
-This idea of identify cores by the compatible looks workable.
-I'll update this series at next version.
-Thanks!
-
-> 
-> > +
-> >  	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
-> > -	scp->sram_base = devm_ioremap_resource(dev, res);
-> > +	if (core_id == SCP_CORE_1)
-> > +		scp->sram_base = devm_ioremap(dev, res->start, resource_size(res));
-> > +	else
-> > +		scp->sram_base = devm_ioremap_resource(dev, res);
-> > +
-> 
-> This looks very broken...  For this to work you would need to have two DT
-> entries with the "mediatek,mt8195-scp-dual" compatible properly, one with
-> "mediatek,scp-core = <&scp_dual1 0>;" and another one with "mediatek,scp-core = <&scp_dual0 1>;".
-> 
-> Which is also very broken...  Here you have a binding whose first argument is a
-> reference to the core sibling while the second argument is a characteristic of
-> the current core, which is highly confusing.
-> 
-> I suggest what when you see the compatible binding "mediatek,mt8195-scp", a
-> single core is initialized.  If you see "mediatek,mt8195-scp-dual", both cores
-> are initialized as part of the _same_ probe.
-> 
-> If the above analysis is not correct it means I misinterpreted your
-> work and if so, a serious amount of comments is needed _and_ a very detailed
-> example in "mtk,scp.yaml" that leaves no room for interpretation.
-> 
-> I will stop reviewing this patchset until you have clarified how this works.
-> 
-> Thanks,
-> Mathieu
-
-There's one problem of initializng the CORE1 using the same probe flow.
-The register space of CORE0 and CORE1 are overlapped in the device node.
-Both cores need to use the 'cfg' registers defined in scp yaml. 
-The devm_ioremap_resource catches address overlapping and returns error when 
-probing CORE1 driver.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 
 Best regards,
-TingHan
-
+Krzysztof
 
