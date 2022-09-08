@@ -4,55 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64B45C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 17:12:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D32C38145
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 17:12:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:From:Cc:To:Subject:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=q4Ki71ThFUBHY2m5Wcakdz7+cQ1Jf4uoFRHT151vB7k=; b=tROhAwwV730YAn5mHGo6iSU9Fs
-	18Sh/ii0fQG+0lbRdp+Ga3Efu/D0ArmZ0j89r7VmNeiykzr2bZC0X3O+5oJgcyIRwCyLYyB4Moqsy
-	omXA+1Ljdjj/PrY5nL6dl1RT/336NK2ur3fuJscKCQphmFptGQAxjmgH/P4Wn/DtY5M+fiAZWoJmu
-	WvG9jACk93PWRzx3qDt/YSRk68pP1kHzXKf5y0Q2IELkbp8B+lO6ENubaAKWcn5mAfYV6Y60cnT7D
-	oQOsD+d3l5cPnvFRs+rebzewLKhxsEz9TaQFwUs8dN2HAUSw4v78Z7MUXPrlCwH2Q7CXC3swOUlRp
-	Ell3GTlg==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fjLqMc8NpJbLnT48m+MsTv3JPGTaqXfmRrPUyJi7IiU=; b=P9J+V+n71EudD5vV5vp8DhkrlH
+	q+XNwdW9P/EXzIUn+pLqShKz0cknnqxoy5Rlgy6nuII+T3X+R7F+uosK9RVT9m7C+ywf9plmvs58a
+	JYKMaDsL/2t/0ZGr8hzajVmXPWrnYr6usJlM0EDSuc+EgOJlNA4zVZhWFs5XTa4QR1XPAv81X8eVm
+	P1b353CrB252XdzhQ/N9v1HCBrIdDKXge5lXIks94GsxDedp7jKDzSwPD65Xc+hGZNhTP8SA3ARj8
+	orQBz6C2A0H3qFRpkOsOdmThT8OJXdhSX/b+FvIeBIF0HJTlENJOVZL4z9DWOe7X2J0hBZdWTd6uH
+	5w77zTfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWL4M-0069aE-4v; Thu, 08 Sep 2022 17:12:02 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oWL4q-006A3F-D7; Thu, 08 Sep 2022 17:12:32 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWL3s-00694r-Jp; Thu, 08 Sep 2022 17:11:34 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1oWL4K-0069WT-D2; Thu, 08 Sep 2022 17:12:01 +0000
+Received: from notapiano.myfiosgateway.com (unknown [70.107.189.129])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id F0D9361DA1;
-	Thu,  8 Sep 2022 17:11:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EEE08C433C1;
-	Thu,  8 Sep 2022 17:11:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1662657091;
-	bh=vlJ9NPARz7PNil6mzVvV0BfTW++oMYSi971u+kTIonU=;
-	h=Subject:To:Cc:From:Date:In-Reply-To:From;
-	b=tyia1cwD663lIOtuCJTlCo2g5dlGInRGl+Ti+vj30JWoBWFfC0eEBNvX1fBFHWXtl
-	 OYal9bJ/WJZvYCR8nu6j71Mv5zMLWfnp/5zMghJYccUGOsAG2LhBWvRgDS3fzcTSRU
-	 CeMWhA1acPsFDSU1x0gRyck7nKUX9VXAs0UZJ1A4=
-Subject: Patch "Revert "mm: kmemleak: take a full lowmem check in kmemleak_*_phys()"" has been added to the 5.19-stable tree
-To: akpm@linux-foundation.org,catalin.marinas@arm.com,gregkh@linuxfoundation.org,linux-arm-kernel@lists.infradead.org,linux-mediatek@lists.infradead.org,linux-mm@kvack.org,matthias.bgg@gmail.com,patrick.wang.shcn@gmail.com,yee.lee@mediatek.com
-Cc: <stable-commits@vger.kernel.org>
-From: <gregkh@linuxfoundation.org>
-Date: Thu, 08 Sep 2022 19:11:13 +0200
-In-Reply-To: <20220906070309.18809-1-yee.lee@mediatek.com>
-Message-ID: <166265707377100@kroah.com>
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 581D76601F99;
+	Thu,  8 Sep 2022 18:11:57 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1662657118;
+	bh=VsIS3dSMx2WzTOtjQQmlSmAEX/x9faKlbCRiz+4NKNw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=A1KrYxAOUiuEfd46COkVb6W0Kqr9Nu9YHu7+D7QGOeb+QgNwPVdIW/SgVgFBslfQj
+	 yu+fEDL4nyJqGuCxUiLoxLn2mEPXn0pOg7p6ZhmCSTU4p4JYYSlB9NW2ZI8Ps1dL+z
+	 VMUAjxVGbG5LwuPp/iUPN3Zq/DIjwWsE06RS9EqSWA482jx6n1EyZuv4yDY7WeaQZ8
+	 BhFEsZ9Fx61mOHFIj6mJ0ty4I+fft5L3p0OTZw0oWSvcAkYGhCMnH9wfF5YbPqKz5u
+	 P/AfW1kLKk3B7OdY6v7zz8Il68CJazVndWoP85wxRXKm85QSWni6PqB6jAp5yp213Z
+	 tEH1s1o1Tm8Ww==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 0/3] arm64: dts: mediatek: asurada: Enable internal display
+Date: Thu,  8 Sep 2022 13:11:50 -0400
+Message-Id: <20220908171153.670762-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=ANSI_X3.4-1968
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-stable: commit
-X-Patchwork-Hint: ignore 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_101132_802082_9E455626 
-X-CRM114-Status: GOOD (  15.41  )
+X-CRM114-CacheID: sfid-20220908_101200_603457_38E56C93 
+X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,112 +79,19 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-This is a note to let you know that I've just added the patch titled
-
-    Revert "mm: kmemleak: take a full lowmem check in kmemleak_*_phys()"
-
-to the 5.19-stable tree which can be found at:
-    http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
-
-The filename of the patch is:
-     revert-mm-kmemleak-take-a-full-lowmem-check-in-kmemleak_-_phys.patch
-and it can be found in the queue-5.19 subdirectory.
-
-If you, or anyone else, feels it should not be added to the stable tree,
-please let <stable@vger.kernel.org> know about it.
+This series adds and enables all components required to have a working
+internal display on the Asurada platform.
 
 
-From yee.lee@mediatek.com  Thu Sep  8 19:05:17 2022
-From: <yee.lee@mediatek.com>
-Date: Tue, 6 Sep 2022 15:03:06 +0800
-Subject: Revert "mm: kmemleak: take a full lowmem check in kmemleak_*_phys()"
-To: <linux-kernel@vger.kernel.org>
-Cc: <patrick.wang.shcn@gmail.com>, Yee Lee <yee.lee@mediatek.com>, <stable@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, "Andrew Morton" <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>, "moderated list:ARM/Mediatek SoC support"  <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support"  <linux-mediatek@lists.infradead.org>
-Message-ID: <20220906070309.18809-1-yee.lee@mediatek.com>
+Nícolas F. R. A. Prado (3):
+  arm64: dts: mediatek: asurada: Add display regulators
+  arm64: dts: mediatek: asurada: Add display backlight
+  arm64: dts: mediatek: asurada: Enable internal display
 
-From: Yee Lee <yee.lee@mediatek.com>
+ .../boot/dts/mediatek/mt8192-asurada.dtsi     | 215 ++++++++++++++++++
+ 1 file changed, 215 insertions(+)
 
-This reverts commit 23c2d497de21f25898fbea70aeb292ab8acc8c94.
+-- 
+2.37.3
 
-Commit 23c2d497de21 ("mm: kmemleak: take a full lowmem check in
-kmemleak_*_phys()") brought false leak alarms on some archs like arm64
-that does not init pfn boundary in early booting. The final solution
-lands on linux-6.0: commit 0c24e061196c ("mm: kmemleak: add rbtree and
-store physical address for objects allocated with PA").
-
-Revert this commit before linux-6.0. The original issue of invalid PA
-can be mitigated by additional check in devicetree.
-
-The false alarm report is as following: Kmemleak output: (Qemu/arm64)
-unreferenced object 0xffff0000c0170a00 (size 128):
-  comm "swapper/0", pid 1, jiffies 4294892404 (age 126.208s)
-  hex dump (first 32 bytes):
- 62 61 73 65 00 00 00 00 00 00 00 00 00 00 00 00  base............
-    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
-  backtrace:
-    [<(____ptrval____)>] __kmalloc_track_caller+0x1b0/0x2e4
-    [<(____ptrval____)>] kstrdup_const+0x8c/0xc4
-    [<(____ptrval____)>] kvasprintf_const+0xbc/0xec
-    [<(____ptrval____)>] kobject_set_name_vargs+0x58/0xe4
-    [<(____ptrval____)>] kobject_add+0x84/0x100
-    [<(____ptrval____)>] __of_attach_node_sysfs+0x78/0xec
-    [<(____ptrval____)>] of_core_init+0x68/0x104
-    [<(____ptrval____)>] driver_init+0x28/0x48
-    [<(____ptrval____)>] do_basic_setup+0x14/0x28
-    [<(____ptrval____)>] kernel_init_freeable+0x110/0x178
-    [<(____ptrval____)>] kernel_init+0x20/0x1a0
-    [<(____ptrval____)>] ret_from_fork+0x10/0x20
-
-This pacth is also applicable to linux-5.17.y/linux-5.18.y/linux-5.19.y
-
-Cc: <stable@vger.kernel.org>
-Signed-off-by: Yee Lee <yee.lee@mediatek.com>
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
----
- mm/kmemleak.c |    8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
---- a/mm/kmemleak.c
-+++ b/mm/kmemleak.c
-@@ -1132,7 +1132,7 @@ EXPORT_SYMBOL(kmemleak_no_scan);
- void __ref kmemleak_alloc_phys(phys_addr_t phys, size_t size, int min_count,
- 			       gfp_t gfp)
- {
--	if (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn)
-+	if (!IS_ENABLED(CONFIG_HIGHMEM) || PHYS_PFN(phys) < max_low_pfn)
- 		kmemleak_alloc(__va(phys), size, min_count, gfp);
- }
- EXPORT_SYMBOL(kmemleak_alloc_phys);
-@@ -1146,7 +1146,7 @@ EXPORT_SYMBOL(kmemleak_alloc_phys);
-  */
- void __ref kmemleak_free_part_phys(phys_addr_t phys, size_t size)
- {
--	if (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn)
-+	if (!IS_ENABLED(CONFIG_HIGHMEM) || PHYS_PFN(phys) < max_low_pfn)
- 		kmemleak_free_part(__va(phys), size);
- }
- EXPORT_SYMBOL(kmemleak_free_part_phys);
-@@ -1158,7 +1158,7 @@ EXPORT_SYMBOL(kmemleak_free_part_phys);
-  */
- void __ref kmemleak_not_leak_phys(phys_addr_t phys)
- {
--	if (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn)
-+	if (!IS_ENABLED(CONFIG_HIGHMEM) || PHYS_PFN(phys) < max_low_pfn)
- 		kmemleak_not_leak(__va(phys));
- }
- EXPORT_SYMBOL(kmemleak_not_leak_phys);
-@@ -1170,7 +1170,7 @@ EXPORT_SYMBOL(kmemleak_not_leak_phys);
-  */
- void __ref kmemleak_ignore_phys(phys_addr_t phys)
- {
--	if (PHYS_PFN(phys) >= min_low_pfn && PHYS_PFN(phys) < max_low_pfn)
-+	if (!IS_ENABLED(CONFIG_HIGHMEM) || PHYS_PFN(phys) < max_low_pfn)
- 		kmemleak_ignore(__va(phys));
- }
- EXPORT_SYMBOL(kmemleak_ignore_phys);
-
-
-Patches currently in stable-queue which might be from yee.lee@mediatek.com are
-
-queue-5.19/revert-mm-kmemleak-take-a-full-lowmem-check-in-kmemleak_-_phys.patch
 
