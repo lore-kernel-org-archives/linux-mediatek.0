@@ -4,87 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B55EC38145
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 15:54:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03071C38145
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 16:12:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EBSJBt/4rQeZDrPhVl92JJf+1TNIVaSARc45/lfhD5k=; b=dsFCz1715aINvozXkFbAvryZ92
-	JRQLMpeQVjMJCkTT/YBdBD6nEK4EoTS9MKXfx0OB9IriDvqotQljKSUw3EV6y+/HV2pJ8agnOYejW
-	gklsuLxJcoNpAA49Lf0WOEkGsXpJ9t0kDpxGX9RYhL1AyHwRiuSsJjcJNptYpAnJU3QVRmiHj+4d8
-	kkJ9pZ+JbW616Wf6VJ74KvHWlrk28Yyrhrdzpl0WCZgvtNMa1TWdStyZPGeo9DyYgCArJVKoMF8D2
-	CbUWYVyZ+qlKNj8v2MU93DQAUWOHjaAcCbd/wbaL+1z+0OyHv7T67cYqvl4ZhlZqCzHhoLITjn/vJ
-	/yTminCA==;
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=U2HHkaBo43RQM3lxoQ61XM94q0pz3tgASv1m478+Noc=; b=yBmemA+OTPO5M3IqrzqxNv2EfW
+	zrGDY5+TfWeF6uEY8VPvZQNZ+P71uru+vcYyGasDieDcfKMXwLq5Jf9fKyNx/9dxalctQNEacYiPx
+	JA7Ysp+KrrbHG43VyOSjibxkUWaBUvBeMI7fyphNXa71XK6tczuA8OikyCMRe5yWdUSk3MQzc9Iao
+	CshqQjV2sgFTGLfkLAOqY/DlDsjN+r1cODmRHjw/cTSKlFVogbDVIRzXYcLRYGLu2D6+ZhzuTrLu+
+	efxLEYfAqiJigb5rdcBT6GHOX157ajMgH6a8p6eUy86dMVGi4a80yYKd/g5xxAodpf1/Qa8BOEIkd
+	If8NVM5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWJql-005Rg5-FO; Thu, 08 Sep 2022 15:53:55 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1oWK8k-005bJz-Ot; Thu, 08 Sep 2022 16:12:30 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWJpT-005Qrv-Pp
-	for linux-mediatek@lists.infradead.org; Thu, 08 Sep 2022 15:52:41 +0000
-Received: by mail-wr1-x436.google.com with SMTP id t7so21821912wrm.10
-        for <linux-mediatek@lists.infradead.org>; Thu, 08 Sep 2022 08:52:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=EBSJBt/4rQeZDrPhVl92JJf+1TNIVaSARc45/lfhD5k=;
-        b=kAbENSgl5oBuyAsqN9csM5nPWPbMNDsODznGSODjKr4XRlpAuZL6v+RFXt1qNuv4q0
-         qd6k40C8yqN3BLXLyELPOQ33a59jMF3dRBbipe1WZTXnYX/UVEO1JojmosuG1RzDhqyA
-         2VUb2KNGDBzAvH3E0vtIoBCt0lOnAYLVcE40i4OLdDGbYnH2ZCrRa8DpxZHQEtrzoDBP
-         +GMAdJcTZ6o7MaV4+Edze/0uwd1uwgjBJB9i8iEpiRstBSmfPl5GX2izLnfNI2ciR9VJ
-         GELo9Dyb0jeyh8E2xo5xrVGjqwIo/ap54f32M36JJMIOLiW1O2IXqgyfL6pTX049x3h4
-         +w/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=EBSJBt/4rQeZDrPhVl92JJf+1TNIVaSARc45/lfhD5k=;
-        b=BQRKBX5Cd3Ykvweycz2kNay2LTHjhtbSwuWsNML+gGTsozeGSTm4HhjnDXiVGxAhQx
-         9DKQPr1jnRvrql5GdXrZZ0QwEy386qnHo4nPzVLZ0B6WJs9iFPWf2t9/BbDQhIWMMp6F
-         pykegcIPKpNnhrRodPPMe87OKBCueYXbaYnOa58Km44pP0q42FxpwVAG584148gnsdHp
-         GOqS4v9OhBCqrmcpRVEpwo0uVWfci2sn6Gp4ffe6ReunQ4eM2430oNMYLIUEPUOKMVqr
-         TJdQ51qfwmU3nwJ5bgYPtM2hKXHoUREtHO3/U696SvsXEpjM3Jv2XUo7CvUeZWwDIy/L
-         zhrg==
-X-Gm-Message-State: ACgBeo3kVVNVOSvfAtsCQ96uT5AOWYok7Y0kulUxM5HjYnrUn13wkAsy
-	8/0P6/h/rZxsV78nGM+UX3vNQg==
-X-Google-Smtp-Source: AA6agR4HtMD485TQhY3FS7WjuK4l4FWt4RBZAxXc90hNyiyULvd42jHlYtgBPSBjMyr8H+5QGmUwjA==
-X-Received: by 2002:adf:f54a:0:b0:228:951a:2949 with SMTP id j10-20020adff54a000000b00228951a2949mr5428850wrp.240.1662652352815;
-        Thu, 08 Sep 2022 08:52:32 -0700 (PDT)
-Received: from [10.1.4.17] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.gmail.com with ESMTPSA id y8-20020adfe6c8000000b00228de58ae2bsm8665682wrm.12.2022.09.08.08.52.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 08 Sep 2022 08:52:31 -0700 (PDT)
-Message-ID: <aa4cc3c6-7f1b-28ff-9d05-287287a1eaa3@baylibre.com>
-Date: Thu, 8 Sep 2022 17:52:29 +0200
+	id 1oWK8N-005b2U-S7; Thu, 08 Sep 2022 16:12:09 +0000
+Received: from notapiano.myfiosgateway.com (unknown [70.107.189.129])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7C7D66601FA8;
+	Thu,  8 Sep 2022 17:11:58 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1662653520;
+	bh=s1PBe/pF5jJRbyhX3WY2pGtR1K/IVs/yQHt+cEPY7+0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=V7N5SxKgNXkE3uhhv7ZXVkgT4pvDUknukRkXkl61R4/jVZ4XBueUDpfCU1lxCPOwH
+	 LvJSO6jNTMRoOWPJGXIvz10MNmkDuCn9oi7WK1IurPMc+Qh74TKrzlDSt0U7SCcOqU
+	 MZhGzF6qsaA1i9eXPUFJJ0Gv38EZwaXcu2ELIplCvJCX9ivQkykgO2PkN85j6VxssY
+	 6vL/OwMn8f4Vm2jWxrj9Umayk+m33VIBt7i3gAXRghoKsZhArCMG0dbI8W+prz+EIt
+	 h6v7GWRjdI6+DINlzVa8Fy+v8DBRSouseVm9wT43xDi1joxYUxFzkxVpkYyA8txfop
+	 9djx3x4z6uSRg==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Akihiko Odaki <akihiko.odaki@gmail.com>,
+	Chunxu Li <chunxu.li@mediatek.com>,
+	Dan Carpenter <dan.carpenter@oracle.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Jiaxin Yu <jiaxin.yu@mediatek.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Miaoqian Lin <linmq006@gmail.com>,
+	Rikard Falkeborn <rikard.falkeborn@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Takashi Iwai <tiwai@suse.com>,
+	Tzung-Bi Shih <tzungbi@google.com>,
+	alsa-devel@alsa-project.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 00/10] ASoC: mediatek: Set i2s clock sharing from machine drivers
+Date: Thu,  8 Sep 2022 12:11:44 -0400
+Message-Id: <20220908161154.648557-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH v3 4/4] thermal: mediatek: add another get_temp ops for
- thermal sensors
-Content-Language: en-US
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, matthias.bgg@gmail.com
-Cc: rafael@kernel.org, fparent@baylibre.com, amitk@kernel.org,
- devicetree@vger.kernel.org, krzysztof.kozlowski+dt@linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
- robh+dt@kernel.org, rui.zhang@intel.com,
- Michael Kao <michael.kao@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>
-References: <20220901133950.115122-1-aouledameur@baylibre.com>
- <20220901133950.115122-5-aouledameur@baylibre.com>
- <a5fd6f3e-4795-5953-5fdf-8857051b5e87@linaro.org>
-From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-In-Reply-To: <a5fd6f3e-4795-5953-5fdf-8857051b5e87@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_085236_076091_4897E6D6 
-X-CRM114-Status: GOOD (  28.15  )
+X-CRM114-CacheID: sfid-20220908_091208_089577_72C7A95E 
+X-CRM114-Status: GOOD (  12.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,211 +88,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
 
-Thank you for the review.
+The i2s ports on MediaTek SoCs only support a single data lane. In order
+to achieve full-duplex operation thus two i2s ports, one for input and
+one for output, need to be used together and sharing a single clock from
+one of the ports.
 
-On 9/8/22 11:07, Daniel Lezcano wrote:
->
-> Hi Amjad,
->
-> On 01/09/2022 15:39, Amjad Ouled-Ameur wrote:
->> Provide thermal zone to read thermal sensor in the SoC. We can read 
->> all the
->> thermal sensors value in the SoC by the node /sys/class/thermal/
->>
->> In mtk_thermal_bank_temperature, return -EAGAIN instead of -EACCESS
->> on the first read of sensor that often are bogus values.
->> This can avoid following warning on boot:
->>
->>    thermal thermal_zone6: failed to read out thermal zone (-13)
->>
->> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
->> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
->> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
->> ---
->> Changes in V3:
->> - Use proper types.
->> - Use devm_kmalloc() instead of kmalloc().
->> - Fix tabs and spaces.
->>
->>   drivers/thermal/mtk_thermal.c | 100 ++++++++++++++++++++++++++--------
->>   1 file changed, 76 insertions(+), 24 deletions(-)
->>
->> diff --git a/drivers/thermal/mtk_thermal.c 
->> b/drivers/thermal/mtk_thermal.c
->> index 088c388da241..5901787c57f5 100644
->> --- a/drivers/thermal/mtk_thermal.c
->> +++ b/drivers/thermal/mtk_thermal.c
->> @@ -259,6 +259,11 @@ enum mtk_thermal_version {
->>     struct mtk_thermal;
->>   +struct mtk_thermal_zone {
->> +    struct mtk_thermal *mt;
->> +    int id;
->> +};
->> +
->>   struct thermal_bank_cfg {
->>       unsigned int num_sensors;
->>       const int *sensors;
->> @@ -709,6 +714,32 @@ static void mtk_thermal_put_bank(struct 
->> mtk_thermal_bank *bank)
->>           mutex_unlock(&mt->lock);
->>   }
->>   +static int _get_sensor_temp(struct mtk_thermal *mt, int id)
->> +{
->> +    u32 raw;
->> +    int temp;
->> +
->> +    const struct mtk_thermal_data *conf = mt->conf;
->> +
->> +    raw = readl(mt->thermal_base + conf->msr[id]);
->> +
->> +    if (mt->conf->version == MTK_THERMAL_V1)
->> +        temp = raw_to_mcelsius_v1(mt, id, raw);
->> +    else
->> +        temp = raw_to_mcelsius_v2(mt, id, raw);
->
-> Can you set a callback at init time instead of checking the version at 
-> each get_sensor_temp() ?
->
-Good idea, will add it in v4.
->> +    /*
->> +     * The first read of a sensor often contains very high bogus
->> +     * temperature value. Filter these out so that the system does
->> +     * not immediately shut down.
->> +     */
->> +
->> +    if (temp > 200000)
->> +        return -EAGAIN;
->> +    else
->> +        return temp;
->> +}
->> +
->>   /**
->>    * mtk_thermal_bank_temperature - get the temperature of a bank
->>    * @bank:    The bank
->> @@ -721,26 +752,9 @@ static int mtk_thermal_bank_temperature(struct 
->> mtk_thermal_bank *bank)
->>       struct mtk_thermal *mt = bank->mt;
->>       const struct mtk_thermal_data *conf = mt->conf;
->>       int i, temp = INT_MIN, max = INT_MIN;
->> -    u32 raw;
->>         for (i = 0; i < conf->bank_data[bank->id].num_sensors; i++) {
->> -        raw = readl(mt->thermal_base + conf->msr[i]);
->> -
->> -        if (mt->conf->version == MTK_THERMAL_V1) {
->> -            temp = raw_to_mcelsius_v1(
->> -                mt, conf->bank_data[bank->id].sensors[i], raw);
->> -        } else {
->> -            temp = raw_to_mcelsius_v2(
->> -                mt, conf->bank_data[bank->id].sensors[i], raw);
->> -        }
->> -
->> -        /*
->> -         * The first read of a sensor often contains very high bogus
->> -         * temperature value. Filter these out so that the system does
->> -         * not immediately shut down.
->> -         */
->> -        if (temp > 200000)
->> -            temp = 0;
->> +        temp = _get_sensor_temp(mt, i);
->>             if (temp > max)
->>               max = temp;
->> @@ -751,7 +765,8 @@ static int mtk_thermal_bank_temperature(struct 
->> mtk_thermal_bank *bank)
->>     static int mtk_read_temp(void *data, int *temperature)
->>   {
->> -    struct mtk_thermal *mt = data;
->> +    struct mtk_thermal_zone *tz = data;
->> +    struct mtk_thermal *mt = tz->mt;
->>       int i;
->>       int tempmax = INT_MIN;
->>   @@ -770,10 +785,28 @@ static int mtk_read_temp(void *data, int 
->> *temperature)
->>       return 0;
->>   }
->>   +static int mtk_read_sensor_temp(void *data, int *temperature)
->> +{
->> +    struct mtk_thermal_zone *tz = data;
->> +    struct mtk_thermal *mt = tz->mt;
->> +    int id = tz->id - 1;
->> +
->> +    if (id < 0)
->> +        return -EACCES;
->> +
->> +    *temperature = _get_sensor_temp(mt, id);
->> +
->> +    return 0;
->> +}
->> +
->>   static const struct thermal_zone_of_device_ops mtk_thermal_ops = {
->>       .get_temp = mtk_read_temp,
->>   };
->>
->> +static const struct thermal_zone_of_device_ops 
->> mtk_thermal_sensor_ops = {
->> +    .get_temp = mtk_read_sensor_temp,
->> +};
->
-> Please respin against linux-next, the thermal_zone_of_device_ops 
-> structure does no longer exist. The conversion is trivial, here is a 
-> example:
->
-> https://lore.kernel.org/all/20220804224349.1926752-21-daniel.lezcano@linexp.org/ 
->
->
-Sure, will do.
->
->>   static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
->>                     u32 apmixed_phys_base, u32 auxadc_phys_base,
->>                     int ctrl_id)
->> @@ -1072,6 +1105,7 @@ static int mtk_thermal_probe(struct 
->> platform_device *pdev)
->>       u64 auxadc_phys_base, apmixed_phys_base;
->>       struct thermal_zone_device *tzdev;
->>       void __iomem *apmixed_base, *auxadc_base;
->> +    struct mtk_thermal_zone *tz;
->>         mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
->>       if (!mt)
->> @@ -1161,11 +1195,29 @@ static int mtk_thermal_probe(struct 
->> platform_device *pdev)
->>         platform_set_drvdata(pdev, mt);
->>   -    tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
->> -                             &mtk_thermal_ops);
->> -    if (IS_ERR(tzdev)) {
->> -        ret = PTR_ERR(tzdev);
->> -        goto err_disable_clk_peri_therm;
->> +    for (i = 0; i < mt->conf->num_sensors + 1; i++) {
->> +        tz = devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
->> +        if (!tz)
->> +            return -ENOMEM;
->> +
->> +        tz->mt = mt;
->> +        tz->id = i;
->> +
->> +        tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, i, 
->> tz, (i == 0) ?
->> +                                 &mtk_thermal_ops :
->> +                                 &mtk_thermal_sensor_ops);
->> +
->> +        if (IS_ERR(tzdev)) {
->> +            if (PTR_ERR(tzdev) == -ENODEV) {
->> +                dev_warn(&pdev->dev,
->> +                     "sensor %d not registered in thermal zone in 
->> dt\n", i);
->> +                continue;
->> +            }
->> +            if (PTR_ERR(tzdev) == -EACCES) {
->> +                ret = PTR_ERR(tzdev);
->> +                goto err_disable_clk_peri_therm;
->> +            }
->> +        }
->>       }
->>         ret = devm_thermal_add_hwmon_sysfs(tzdev);
->
->
-Regards,
+This clock sharing setting was previously read by the sound platform
+driver from the devicetree, but given that the input/output pairing is
+closely related to which codecs are connected to which ports, the
+machine sound driver can infer and set it, so that no DT property is
+required.
 
-Amjad
+At this point only mt8183-kukui was using the DT property, but given
+that this property was never documented, and that the API introduced in
+this series makes it obsolete, the undocumented DT property can safely
+be removed.
+
+This series adds a function to allow setting the i2s shared clocks,
+makes use of it in the machine drivers as required, and removes the no
+longer required DT properties and support for them in the drivers, for
+all of mt8192, mt8183 and mt8186.
+
+
+Nícolas F. R. A. Prado (10):
+  ASoC: mediatek: mt8192: Allow setting shared clocks from machine
+    driver
+  ASoC: mediatek: mt8192-mt6359: Make i2s9 share the clock from i2s8
+  ASoC: mediatek: mt8192: Remove clock share parsing from DT
+  ASoC: mediatek: mt8183: Allow setting shared clocks from machine
+    driver
+  ASoC: mediatek: mt8183: Configure shared clocks
+  ASoC: mediatek: mt8183: Remove clock share parsing from DT
+  arm64: dts: mediatek: kukui: Remove i2s-share properties
+  ASoC: mediatek: mt8186: Allow setting shared clocks from machine
+    driver
+  ASoC: mediatek: mt8186: Configure shared clocks
+  ASoC: mediatek: mt8186: Remove clock share parsing from DT
+
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |  5 --
+ sound/soc/mediatek/mt8183/mt8183-afe-common.h |  3 ++
+ .../mediatek/mt8183/mt8183-da7219-max98357.c  | 33 +++++++++++++
+ sound/soc/mediatek/mt8183/mt8183-dai-i2s.c    | 45 ++++++++---------
+ .../mt8183/mt8183-mt6358-ts3a227-max98357.c   | 33 +++++++++++++
+ sound/soc/mediatek/mt8186/mt8186-afe-common.h |  3 ++
+ sound/soc/mediatek/mt8186/mt8186-dai-i2s.c    | 44 ++++++++---------
+ .../mt8186/mt8186-mt6366-da7219-max98357.c    | 18 +++++++
+ .../mt8186/mt8186-mt6366-rt1019-rt5682s.c     | 18 +++++++
+ sound/soc/mediatek/mt8192/mt8192-afe-common.h |  3 ++
+ sound/soc/mediatek/mt8192/mt8192-dai-i2s.c    | 49 ++++++++-----------
+ .../mt8192/mt8192-mt6359-rt1015-rt5682.c      |  9 ++++
+ 12 files changed, 180 insertions(+), 83 deletions(-)
+
+-- 
+2.37.3
 
 
