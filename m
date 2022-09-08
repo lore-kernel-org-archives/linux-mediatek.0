@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34FC3C6FA86
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 19:35:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABEB8C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 19:35:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8Pwq4EHxPkJegWDPryip04mxxSdIcKdjU6VWGi7ffIo=; b=1iiQS5LL9V8rrVFrdLDG0ZAOwj
-	MDnTJMsAaVNEluUAYt6UiyI4IGUyr7WnLW4GHjUCc4Vz2ZF0jatkXHJrNUQ4Qyd99ocj4ElKY0RV/
-	RaHCTjWv05bE0cNMTTq8DPlkhiHtjM6X1gx/OyuaP+rUsTnRZxWPrrKb67He82i1uOlKF3nqMyhii
-	NYqs5JWRMgnJG21XXD24aD8aHCJKrqXMEoce565EUbCx8fiiiyBxPR2+GsKzUaqDTjoGv9BLh10lH
-	1z1ylygNpt63crB5Ze+WQ5T48ufIaS8hTz/fts/wLK6RwAfPvjRMgqQF3Yxbzoag8og+sArpDkEYP
-	Gjc7/L2g==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=d2EUzV+G3uC3ePCWYbk593/JpZ+RvbGfmhip3I9rPIw=; b=rIYulJmIiIGSIVX3jo+8rL3oBu
+	rq73/cuDqwkmMLmNgtZI1F1fW8lBgL9SF6SXOz8nkWDymK12s6bL4IBbAvHqPqve77PMWBkWu1W9U
+	UMUsUXchZ8HCbXuNs4maAB8seksYJS0dIp1f36mjQczhkDk72l2+0f5IYSfVeaqohHvYNP1saEvhJ
+	e32uTMZP+Q2ONa3Xf58GRFC8nZ/Kg0bxwUs0LhN7qAPtYSvujyhAirO1/HWWNH8SAXOEZN0U8g3SW
+	5a4sbVCEvAVm2mJIQ6lRp511a+ghGLhI9rCChPR+8qbqxnhBD2ZSYVEX79bnzjy6fTpTvCqAb9eDo
+	FbnrhWfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWNIw-007gwo-Ms; Thu, 08 Sep 2022 19:35:14 +0000
+	id 1oWNIr-007gt9-Vh; Thu, 08 Sep 2022 19:35:09 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWNIr-007gso-7Q
-	for linux-mediatek@lists.infradead.org; Thu, 08 Sep 2022 19:35:12 +0000
+	id 1oWNIp-007gqs-K4
+	for linux-mediatek@lists.infradead.org; Thu, 08 Sep 2022 19:35:08 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C8CB361E00;
-	Thu,  8 Sep 2022 19:35:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0FDD2C433D6;
-	Thu,  8 Sep 2022 19:35:07 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id CD46D61DE7;
+	Thu,  8 Sep 2022 19:35:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AEDA1C433C1;
+	Thu,  8 Sep 2022 19:34:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1662665708;
-	bh=mzm5L4CAPDFUvFpZmOoeFfGUUflQPsc++RkAX676KYM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=UpThxICq2otDlIIYFawQj8gPWRjBrQ5CS2MOSsvhqNQ33MpTBSPvEjcwUuoJSzGZt
-	 kKIiRiIKu7k2q1nhbpWD0mHPs71LTY1pKityb2W6tUTR89Bp9SCSgUy/3Ho+aFTHEJ
-	 tP7rYVVnld2MqbXjXrEpO4+LlUtdAXddu5UpOE9fqMpBCLoiheAgbUM2N+KStT4c6/
-	 11wuoXWEH1JI8KaZ0BDTUYyIk8MYShCtNGIfzgb4VZiLIWsOXlSDu9J45j6mBem7Yy
-	 9B4rRNEbWfmlaESOZ9eW5IE85nf07XjhlhewAnFodoZNHfpSf5IlTvE1X+Cn7SOVLf
-	 1PMtrBTMaYN+Q==
+	s=k20201202; t=1662665700;
+	bh=BioAyTQYLotc4j+JLo7fzrrs4D6BavNTrHJbE7RcGyw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=hLpkvCTxYqlA1cxFmtMeoA6e4w45k9DzrRjkemHJjM6RWcEvj5Way0YuuNC+KxT5j
+	 +hG8ml6sfYiOpoeMieixXQk4/gaxjZgBbq+H2P6H0g6V5dl7d7xaQiOhrjwjqKV7Ln
+	 TuQNPyjfhGEgWqgNNOu75unCe5XGLax51wmVQfym9ISCEKQjp3pcrhh958qBXKapjQ
+	 dysQxCQFlYjzE0UB2v4G0hgJ0XxnLzKzV2xTg1HRFFCWII+sgkwPT8pKaUb+X3uPZR
+	 kJCq5sxWmhlt4nGhI/B6yj8MtXkORoODBrRWRjEm/r/iJSaRwPt1NhRL5+VSfJcG5y
+	 9saTY62Bb0JEQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: nbd@nbd.name,
@@ -61,18 +61,15 @@ Cc: nbd@nbd.name,
 	evelyn.tsai@mediatek.com,
 	devicetree@vger.kernel.org,
 	robh@kernel.org
-Subject: [PATCH net-next 02/12] dt-bindings: net: mediatek: add WED binding for MT7986 eth driver
-Date: Thu,  8 Sep 2022 21:33:36 +0200
-Message-Id: <e8e2e1134fde632b7f6aaf9d96feab471385f84c.1662661555.git.lorenzo@kernel.org>
+Subject: [PATCH net-next 00/12] Add WED support for MT7986 chipset
+Date: Thu,  8 Sep 2022 21:33:34 +0200
+Message-Id: <cover.1662661555.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.37.3
-In-Reply-To: <cover.1662661555.git.lorenzo@kernel.org>
-References: <cover.1662661555.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_123509_322035_F62D6F88 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220908_123507_738062_CD8C99D3 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,34 +84,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the binding for the Wireless Ethernet Dispatch core on the
-MT7986 ethernet driver
+Similar to MT7622, introduce Wireless Ethernet Dispatch (WED) support
+for MT7986 chipset in order to offload to the hw packet engine traffic
+received from LAN/WAN device to WLAN nic (MT7915E).
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- Documentation/devicetree/bindings/net/mediatek,net.yaml | 9 +++++++++
- 1 file changed, 9 insertions(+)
+Lorenzo Bianconi (12):
+  arm64: dts: mediatek: mt7986: add support for Wireless Ethernet
+    Dispatch
+  dt-bindings: net: mediatek: add WED binding for MT7986 eth driver
+  net: ethernet: mtk_eth_soc: move gdma_to_ppe and ppe_base definitions
+    in mtk register map
+  net: ethernet: mtk_eth_soc: move ppe table hash offset to mtk_soc_data
+    structure
+  net: ethernet: mtk_eth_soc: add the capability to run multiple ppe
+  net: ethernet: mtk_eth_soc: move wdma_base definitions in mtk register
+    map
+  net: ethernet: mtk_eth_soc: add foe_entry_size to mtk_eth_soc
+  net: ethernet: mtk_eth_soc: add foe info in mtk_soc_data structure
+  net: ethernet: mtk_eth_wed: add mtk_wed_configure_irq and
+    mtk_wed_dma_{enable/disable}
+  net: ethernet: mtk_eth_wed: add wed support for mt7986 chipset
+  net: ethernet: mtk_eth_wed: add axi bus support
+  net: ethernet: mtk_eth_soc: introduce flow offloading support for
+    mt7986
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-index f5564ecddb62..0116f100ef19 100644
---- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-+++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-@@ -238,6 +238,15 @@ allOf:
-           minItems: 2
-           maxItems: 2
- 
-+        mediatek,wed:
-+          $ref: /schemas/types.yaml#/definitions/phandle-array
-+          minItems: 2
-+          maxItems: 2
-+          items:
-+            maxItems: 1
-+          description:
-+            List of phandles to wireless ethernet dispatch nodes.
-+
- patternProperties:
-   "^mac@[0-1]$":
-     type: object
+ .../devicetree/bindings/net/mediatek,net.yaml |   9 +
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  20 +
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 184 ++++++-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h   |  45 +-
+ drivers/net/ethernet/mediatek/mtk_ppe.c       | 271 ++++++----
+ drivers/net/ethernet/mediatek/mtk_ppe.h       |  54 +-
+ .../net/ethernet/mediatek/mtk_ppe_debugfs.c   |  10 +-
+ .../net/ethernet/mediatek/mtk_ppe_offload.c   |  62 ++-
+ drivers/net/ethernet/mediatek/mtk_ppe_regs.h  |   8 +
+ drivers/net/ethernet/mediatek/mtk_wed.c       | 473 ++++++++++++++----
+ drivers/net/ethernet/mediatek/mtk_wed.h       |   8 +-
+ .../net/ethernet/mediatek/mtk_wed_debugfs.c   |   3 +
+ drivers/net/ethernet/mediatek/mtk_wed_regs.h  |  85 +++-
+ include/linux/soc/mediatek/mtk_wed.h          |  15 +
+ 14 files changed, 955 insertions(+), 292 deletions(-)
+
 -- 
 2.37.3
 
