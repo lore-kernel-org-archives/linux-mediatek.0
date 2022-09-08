@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EFCEC38145
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 17:09:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AA6EC54EE9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 17:09:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:From:Cc:To:Subject:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=Q1w/TysGFOSQyOnygLDdAt76eGPsO6Bq3raFmTHJ2sk=; b=kfq7/PViTnaqHnnoaCS2nF/nYG
-	Kovoy8pNR5yOwof4i/1WVdLdR0rHfR7rdk2vtl057mrDfK8IDHdMeSqxg2wHEVp48yFqb5mBmnpxX
-	SX82Cn5aLJ5475jCcJbn3H+rtDvtFryNoRDXlfX5vfSZL/6ZuZ/ULTYq8LZoMEfOImzvynXACFJdK
-	7f9/mEhrUwx3nNhrhCC/shGHnvQlNNDFs16mSOY3UDFtRMa3vLpw7h+WXboV50Ckp6HTw08LWHMu2
-	L0bG9w0sgP7wdHktHYzvreULi63tduSkRqssAvOI7/+caYoCRIcORfXvyUHFIyOkXvLYTeGoswce4
-	SuAv5aDw==;
+	bh=X7JWtddcTTPIGmwr0Vk6WfcSPYqsivKkidB8+MMgtwc=; b=P0HXolFPOqlOI7FQYHAOtsuOMb
+	vUAkRDWCLU5jVXOfBSwzZi5Gxl+TKvIx8JWivPs9CQ3uYlphXbDdu8dPsg6FwSoMjJyr9YRr/5LPM
+	UG05ZLmGEAr0cQ5DXW7VajrzAdZMtBaxaWcuhMcMtIq+x7XY8qSlDUVP0GnJ75IVHPOcJh1NXntTe
+	AFWJki2wl9OkjEwXxoqF2RuywakIDVUjhK5GpQvfCYFPghWJ8zyUrT7vHwJUTFjwAiLwH01VbL1PT
+	UhpOGB5fNzsgB+QEUUND6gocV8f29pxP4Cwnu3pZTjQRgjNwBVbo65oaDLxtmEHiTyRorhWEf45ab
+	T7y7WOtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWL1x-00678Q-3m; Thu, 08 Sep 2022 17:09:33 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oWL2G-0067Uz-1h; Thu, 08 Sep 2022 17:09:52 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWL1k-0066fT-Qi; Thu, 08 Sep 2022 17:09:22 +0000
+	id 1oWL24-0067Kz-5E; Thu, 08 Sep 2022 17:09:41 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 64B9261DA1;
-	Thu,  8 Sep 2022 17:09:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70863C433D6;
-	Thu,  8 Sep 2022 17:09:19 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 67A8C61D3F;
+	Thu,  8 Sep 2022 17:09:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75001C433D6;
+	Thu,  8 Sep 2022 17:09:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1662656959;
-	bh=WY9vTunbqeuuvo0kj0/u7TB+QNWIBNbR4wNmVl6tHmM=;
+	s=korg; t=1662656978;
+	bh=3GZRGxLLZRztPVAGWhplbSuis+mMuxh3aToQhmMvIY8=;
 	h=Subject:To:Cc:From:Date:In-Reply-To:From;
-	b=QDdrjcpNPEmhCX1m+wMCfbrT1ytbguKSUyKKXlm2CU4TVvubwsqixAOckoyYEHvzO
-	 hsLfG76y7Tjj4XsBKx7Miu9rxjFcU1nK//wZGpKdCnU2Z4ybqc162rrLZKJBHg67/b
-	 JbSNVIfJ7itW6sBxAgu1DuCukVP36HuqlSPI9dTk=
-Subject: Patch "Revert "mm: kmemleak: take a full lowmem check in kmemleak_*_phys()"" has been added to the 4.9-stable tree
+	b=nT0WsAJj3p60wbZnoBDHlA5ujIe5KybnopQrg0qQ6p4Yw1qNIhLRHRG58gZH+u9QA
+	 QtE60ZzF29JKLhKi/cYVbP9UqOlnw8qXcqfRDjjvk7DX4XwyCK/0xCwuPKCe4Io2zS
+	 hSXOAQyVgksvVYLEbe5Q7LBl54Vw6v19i5uLkbYM=
+Subject: Patch "Revert "mm: kmemleak: take a full lowmem check in kmemleak_*_phys()"" has been added to the 4.14-stable tree
 To: akpm@linux-foundation.org,catalin.marinas@arm.com,gregkh@linuxfoundation.org,linux-arm-kernel@lists.infradead.org,linux-mediatek@lists.infradead.org,linux-mm@kvack.org,matthias.bgg@gmail.com,patrick.wang.shcn@gmail.com,yee.lee@mediatek.com
 Cc: <stable-commits@vger.kernel.org>
 From: <gregkh@linuxfoundation.org>
-Date: Thu, 08 Sep 2022 19:09:33 +0200
+Date: Thu, 08 Sep 2022 19:09:52 +0200
 In-Reply-To: <20220906070309.18809-1-yee.lee@mediatek.com>
-Message-ID: <1662656973133197@kroah.com>
+Message-ID: <1662656992781@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=ANSI_X3.4-1968
 Content-Transfer-Encoding: 8bit
 X-stable: commit
 X-Patchwork-Hint: ignore 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_100920_974257_F0DD82BA 
-X-CRM114-Status: GOOD (  15.50  )
+X-CRM114-CacheID: sfid-20220908_100940_310330_384033A8 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,12 +72,12 @@ This is a note to let you know that I've just added the patch titled
 
     Revert "mm: kmemleak: take a full lowmem check in kmemleak_*_phys()"
 
-to the 4.9-stable tree which can be found at:
+to the 4.14-stable tree which can be found at:
     http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
 
 The filename of the patch is:
      revert-mm-kmemleak-take-a-full-lowmem-check-in-kmemleak_-_phys.patch
-and it can be found in the queue-4.9 subdirectory.
+and it can be found in the queue-4.14 subdirectory.
 
 If you, or anyone else, feels it should not be added to the stable tree,
 please let <stable@vger.kernel.org> know about it.
@@ -135,7 +135,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 --- a/mm/kmemleak.c
 +++ b/mm/kmemleak.c
-@@ -1130,7 +1130,7 @@ EXPORT_SYMBOL(kmemleak_no_scan);
+@@ -1192,7 +1192,7 @@ EXPORT_SYMBOL(kmemleak_no_scan);
  void __ref kmemleak_alloc_phys(phys_addr_t phys, size_t size, int min_count,
  			       gfp_t gfp)
  {
@@ -144,7 +144,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  		kmemleak_alloc(__va(phys), size, min_count, gfp);
  }
  EXPORT_SYMBOL(kmemleak_alloc_phys);
-@@ -1141,7 +1141,7 @@ EXPORT_SYMBOL(kmemleak_alloc_phys);
+@@ -1203,7 +1203,7 @@ EXPORT_SYMBOL(kmemleak_alloc_phys);
   */
  void __ref kmemleak_free_part_phys(phys_addr_t phys, size_t size)
  {
@@ -153,7 +153,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  		kmemleak_free_part(__va(phys), size);
  }
  EXPORT_SYMBOL(kmemleak_free_part_phys);
-@@ -1152,7 +1152,7 @@ EXPORT_SYMBOL(kmemleak_free_part_phys);
+@@ -1214,7 +1214,7 @@ EXPORT_SYMBOL(kmemleak_free_part_phys);
   */
  void __ref kmemleak_not_leak_phys(phys_addr_t phys)
  {
@@ -162,7 +162,7 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
  		kmemleak_not_leak(__va(phys));
  }
  EXPORT_SYMBOL(kmemleak_not_leak_phys);
-@@ -1163,7 +1163,7 @@ EXPORT_SYMBOL(kmemleak_not_leak_phys);
+@@ -1225,7 +1225,7 @@ EXPORT_SYMBOL(kmemleak_not_leak_phys);
   */
  void __ref kmemleak_ignore_phys(phys_addr_t phys)
  {
@@ -175,5 +175,5 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 Patches currently in stable-queue which might be from yee.lee@mediatek.com are
 
-queue-4.9/revert-mm-kmemleak-take-a-full-lowmem-check-in-kmemleak_-_phys.patch
+queue-4.14/revert-mm-kmemleak-take-a-full-lowmem-check-in-kmemleak_-_phys.patch
 
