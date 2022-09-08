@@ -4,88 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B59A0C38145
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 10:50:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EC2FC38145
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 11:15:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FO9BCtAdjl5PI944Vegw3TyVJtWAoaowtQm2TG38rZo=; b=IsY6Hal58gsOKywe5DHLbzH+ZZ
-	/wCRnF1cS52fWh7qWYuXfldNcyCmHxF2uTW1eAHx2fZ00VCILLw/oXngXrSeJbE1fDoVFqeutMcqZ
-	svY6vtSgo4Vu90i6P842z91ypZorA7i4XXnxKNEuWkQAYgSNEcWWy+h/DuvhxF0lKsONvaBhhPLpF
-	g9NgdOj95Zji84EIGZl3p5iT49YOjQdON9Il2NjgtPL0dZI5Mxk/bT+xg+8P5EK15c4y3PQlJ0iDR
-	E50YYYZiBDh91wxwHI3QYGgpfBYTuVfOOlLVm8ueoRKFaY8cZvDJ+YScwhEO+zRoBd7uhgKxpLfsj
-	tgbgFXRw==;
+	bh=iDVmnH3AKWodRgoYHZDtosqK0E5PEDVI3lJbZ6EXyFg=; b=oEw4M2yIYiIY+gczY0RcYIjD8A
+	ReZk/z69wpXlv0Dk8SJ0v8NtKH6gQ/wFlN2AdE1rRAaouIEfQ8nuiWWqbV+BAmOTOtnjrFQO9hBqc
+	Q2filVkcMpz/HyhBpblDlnbAPijW9pZmQwooe83V2ikiAx+jPu6ose2DH4c+rw/CaSQ7LS76ohSUD
+	BVopV6auDyRSIdJobfspqz6us1SlwwY7ZVuCbd3UHJKyGYjnG1lp8ZuH0qusPBqkFpj5IVaIwwA/c
+	7AQPFEv5AM95ixrL/4pB1gVYoF7B865y0kPPu4WTbTD9CoaH0aa4vvR/OWedid59sEUu7Uqqyl4PC
+	B7B0I+9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWF76-002QzV-8h; Thu, 08 Sep 2022 10:50:28 +0000
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+	id 1oWFV9-002cbi-Cf; Thu, 08 Sep 2022 11:15:19 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWF6K-002Qfi-KA
-	for linux-mediatek@lists.infradead.org; Thu, 08 Sep 2022 10:49:43 +0000
-Received: by mail-lj1-x233.google.com with SMTP id x10so19408608ljq.4
-        for <linux-mediatek@lists.infradead.org>; Thu, 08 Sep 2022 03:49:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=FO9BCtAdjl5PI944Vegw3TyVJtWAoaowtQm2TG38rZo=;
-        b=kVhIpvQcg33Vr8Tvlxq4JzJdu83HxShDz+VCPW+/zVSedQfV32YodjnRDz5Q0bEtF5
-         neQnsoY6HrEu7ovhqpmFBcWjyBOSh3eA9ga3BaGL6YCsiOM5noaZysSDaMmyJ5GVk9S2
-         3rt401hf15pvJVJLra4u8GQmIj4jDO66Ku51LZOiijwad16dJ8Mv0L0nNclGHIOpTfAT
-         NOHRfeqEGhDcb3vhWKM+oHnne/hIbesCLTmJYH4rLqsHkiBDymzob7NbKP00PDqBIN3z
-         D6HBruLXKqpOyA/6RV6DEV9fbJIDayrZc7aN3MQWxynlQATz8ooxPD8Uqj51JxLgPR8M
-         8WRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=FO9BCtAdjl5PI944Vegw3TyVJtWAoaowtQm2TG38rZo=;
-        b=gMD6VWNdBQ+96iE4gnamTlGbRYUFV/rZjihN+3mVEHUw4Ottp0jyJ1qj6URvLjiYLX
-         E2iKt1lqYGJkaND9669EZHbj2Znk8fiEIc/D/fXN4lmp6c3I/U1nVOsNpFZ2j7nSJW/X
-         oGx70WO478s5EJVD8A5VxVQX5PlzYBKkWRES7im9J5TMLeagMrEEEBn9ESNz0beH5ISy
-         NXwT99Zvwt4/QeuDMbi4ak8XpSg44TD0kNmWpfyXJxwjThT+4DqhljDyIW8RiLJHaxp/
-         EWYYmEvz42Sl635RL4/yWIUqa8DdxpJYADiGOgG3gRozj2p2OELZhDnawOMzo9qa3RYB
-         VJew==
-X-Gm-Message-State: ACgBeo0joX6ATvpxJYuUb1lK+TAbPoEloXCBywY7mE+wGrsQYOHE1OY6
-	odYUdGGAqkIWxNXx6lN5vyIcjA==
-X-Google-Smtp-Source: AA6agR5enzuiL7nHDIxq2vO3krABgPwQHKwYJura+/kGgktQ0R6FajdwvACAYu1/LM8XDhJ33YwGsQ==
-X-Received: by 2002:a2e:be9b:0:b0:25f:e027:4999 with SMTP id a27-20020a2ebe9b000000b0025fe0274999mr2353474ljr.395.1662634176744;
-        Thu, 08 Sep 2022 03:49:36 -0700 (PDT)
-Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id q6-20020a056512210600b0048b0696d0b1sm2983866lfr.90.2022.09.08.03.49.35
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 08 Sep 2022 03:49:36 -0700 (PDT)
-Message-ID: <2e575ed1-b82c-c7bd-3ddf-ccb6022b2461@linaro.org>
-Date: Thu, 8 Sep 2022 12:49:35 +0200
+	id 1oWFUw-002cWT-FM; Thu, 08 Sep 2022 11:15:07 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id D485618850B3;
+	Thu,  8 Sep 2022 11:14:59 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id C4B3B25032B8;
+	Thu,  8 Sep 2022 11:14:59 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id BA5099EC0006; Thu,  8 Sep 2022 11:14:59 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH v2 1/3] dt-bindings: mediatek: mt8188: Add binding for MM
- & INFRA IOMMU
-Content-Language: en-US
-To: "Chengci.Xu" <chengci.xu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220831125502.7818-1-chengci.xu@mediatek.com>
- <20220831125502.7818-2-chengci.xu@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220831125502.7818-2-chengci.xu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+Date: Thu, 08 Sep 2022 13:14:59 +0200
+From: netdev@kapio-technology.com
+To: Ido Schimmel <idosch@nvidia.com>
+Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
+ Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
+ Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
+ Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, Daniel Borkmann <daniel@iogearbox.net>, Yuwei Wang
+ <wangyuweihx@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
+ MAC-Auth Bypass to locked port tests
+In-Reply-To: <Yxmgs7Du62V1zyjK@shredder>
+References: <YwxtVhlPjq+M9QMY@shredder>
+ <2967ccc234bb672f5440a4b175b73768@kapio-technology.com>
+ <Ywyj1VF1wlYqlHb6@shredder>
+ <9e1a9eb218bbaa0d36cb98ff5d4b97d7@kapio-technology.com>
+ <YwzPJ2oCYJQHOsXD@shredder>
+ <69db7606896c77924c11a6c175c4b1a6@kapio-technology.com>
+ <YwzjPcQjfLPk3q/k@shredder>
+ <f1a17512266ac8b61444e7f0e568aca7@kapio-technology.com>
+ <YxNo/0+/Sbg9svid@shredder>
+ <5cee059b65f6f7671e099150f9da79c1@kapio-technology.com>
+ <Yxmgs7Du62V1zyjK@shredder>
+User-Agent: Gigahost Webmail
+Message-ID: <8dfc9b525f084fa5ad55019f4418a35e@kapio-technology.com>
+X-Sender: netdev@kapio-technology.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_034940_679697_C7D9BD10 
-X-CRM114-Status: GOOD (  12.79  )
+X-CRM114-CacheID: sfid-20220908_041506_701553_A34A05B8 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,26 +90,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/08/2022 14:55, Chengci.Xu wrote:
-> This patch adds descriptions for mt8188 IOMMU which also use ARM
-> Short-Descriptor translation table format.
+On 2022-09-08 09:59, Ido Schimmel wrote:
+> On Wed, Sep 07, 2022 at 11:10:07PM +0200, netdev@kapio-technology.com 
+> wrote:
+>> I am at the blackhole driver implementation now, as I suppose that the
+>> iproute2 command should work with the mv88e6xxx driver when adding 
+>> blackhole
+>> entries (with a added selftest)?
+>> I decided to add the blackhole feature as new ops for drivers with 
+>> functions
+>> blackhole_fdb_add() and blackhole_fdb_del(). Do you agree with that
+>> approach?
+> 
+> I assume you are talking about extending 'dsa_switch_ops'?
 
-Do not use "This commit/patch".
-https://elixir.bootlin.com/linux/v5.17.1/source/Documentation/process/submitting-patches.rst#L95
+Yes, that is the idea.
 
->  
->      then:
->        required:
-> diff --git a/include/dt-bindings/memory/mediatek,mt8188-memory-port.h b/include/dt-bindings/memory/mediatek,mt8188-memory-port.h
-> new file mode 100644
-> index 000000000000..9363e132c43a
-> --- /dev/null
-> +++ b/include/dt-bindings/memory/mediatek,mt8188-memory-port.h
-> @@ -0,0 +1,482 @@
-> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause) */
+> If so, it's up to the DSA maintainers to decide.
 
-Why do you license it under BSD-3 clause?
-
-Best regards,
-Krzysztof
 
