@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47229C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 17:10:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE696C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Sep 2022 17:11:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:From:Cc:To:Subject:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=9fZI48YT/rWobQE1da9nanJ7KWGMx2qJJ30ID+iyUMo=; b=l7WIaTw1NYEd8Fm3Qq1VU8Lv+W
-	szuoopAMWXAyP42yyUe2pz+1yc1WYmrlUyGT5XmLzkLNyqSy5bwGk3a6cuBAv5wEkYnUtZo69kGE0
-	BtqBckNUmcVeQQruWFYBhp4szqMu6rJf4Tm5mhWeQ4krVNzIF54XC07siOO2+5KXSMhDROVEac9VB
-	cVYak/Ydzkl5uN90Y2YbcT/fNewXLOhi6VGzjsmORE0XlTnLokQK4hh5vTKLxd7QUxICG5d9K97g4
-	3WL/aadoIt+hzUjl3n7wjR+9EUmoluKhZiaHBYFVYo9wnoPqwOpvTDYsNqBw9dfrNdytbBdH11LXs
-	z924Jp/g==;
+	bh=YT1uIkx8jul3bGIN4b2zOqGnelQrClOzDeqE96nF6cc=; b=sT+wKpm/R796lpzJKhDfi/3fur
+	QS+fmUkr6lawPzNniGdmSbf/4IeU8lz492Nm/ontSXO7NFsZKbAl/pyNGk6Xa3wzgRv8ZyWzf4TU0
+	z4tEpGfz2y2QlRaaciFPfMi1eiRvLEdnKcDQ4d0ADx7rol4U/z9AI0y4ZHWefS6QUiv+y4XIBL2kF
+	czyOfyI1cXuBz05qO237wk/lteSF/TfxAZmRd+rGytIQC991ZpvvgAY5U93zRRrLJc7lNBKAFZ/JY
+	teixIXjx019yr2KsUC9VsvURvr2yHVAjG+r//OgRtFwzyaVlwzAjeTO77Mzqd+UOREZ4SN27GcyEK
+	rIAB/dcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWL36-0068Kl-Rj; Thu, 08 Sep 2022 17:10:44 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oWL3Y-0068lZ-Jm; Thu, 08 Sep 2022 17:11:12 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWL2q-00680Y-LS; Thu, 08 Sep 2022 17:10:30 +0000
+	id 1oWL3G-0068X9-TL; Thu, 08 Sep 2022 17:10:56 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 57723B821BC;
-	Thu,  8 Sep 2022 17:10:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE0E5C433C1;
-	Thu,  8 Sep 2022 17:10:25 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 64E20B82194;
+	Thu,  8 Sep 2022 17:10:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 389EEC433D6;
+	Thu,  8 Sep 2022 17:10:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1662657026;
-	bh=+ndjqbnn8RdcVz/H0jHr0miA6uQqJW3ZIyD4RPuom7w=;
+	s=korg; t=1662657052;
+	bh=9F5CpnV+yMlP6UNyeFpMMSeycsOh1cqro/gmzOq/zK4=;
 	h=Subject:To:Cc:From:Date:In-Reply-To:From;
-	b=KqryAns6Xc8VYhYGOAr+/dSGhyUktooM6NXx6TloO+5+1A2VMD9xxyenFl3/8mrkm
-	 aHOYxxnDHdr+m2WyI0ZCSvfoF+OrwdVtvK+iS6Hm6WanILQimN0gZ5/2Ahp9+SPnPo
-	 VIVOLCGAgML/dBGRjN7tlAAYO9rPS8eLRMKd8sdM=
-Subject: Patch "Revert "mm: kmemleak: take a full lowmem check in kmemleak_*_phys()"" has been added to the 5.4-stable tree
+	b=mI8KbLlb1gbEgrHPhmq7EFJ6s/0g5U+WGMgQjd+Fjvc/t/NOhmwgQqcasLtBD/Xie
+	 WjOf69v17d9sMzJPAd1Qxvrt8381vIrb7XG/ALUZibqQOEZATCOabDDVApTinhQklc
+	 WlJezsuShVnQVelVkBXpCzJ+LndsRE5v04cg5peI=
+Subject: Patch "Revert "mm: kmemleak: take a full lowmem check in kmemleak_*_phys()"" has been added to the 5.10-stable tree
 To: akpm@linux-foundation.org,catalin.marinas@arm.com,gregkh@linuxfoundation.org,linux-arm-kernel@lists.infradead.org,linux-mediatek@lists.infradead.org,linux-mm@kvack.org,matthias.bgg@gmail.com,patrick.wang.shcn@gmail.com,yee.lee@mediatek.com
 Cc: <stable-commits@vger.kernel.org>
 From: <gregkh@linuxfoundation.org>
-Date: Thu, 08 Sep 2022 19:10:22 +0200
+Date: Thu, 08 Sep 2022 19:10:39 +0200
 In-Reply-To: <20220906070309.18809-1-yee.lee@mediatek.com>
-Message-ID: <166265702215155@kroah.com>
+Message-ID: <166265703924251@kroah.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=ANSI_X3.4-1968
 Content-Transfer-Encoding: 8bit
 X-stable: commit
 X-Patchwork-Hint: ignore 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_101029_033702_4AEB2F26 
-X-CRM114-Status: GOOD (  15.11  )
+X-CRM114-CacheID: sfid-20220908_101055_272131_BCD385B9 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,12 +72,12 @@ This is a note to let you know that I've just added the patch titled
 
     Revert "mm: kmemleak: take a full lowmem check in kmemleak_*_phys()"
 
-to the 5.4-stable tree which can be found at:
+to the 5.10-stable tree which can be found at:
     http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
 
 The filename of the patch is:
      revert-mm-kmemleak-take-a-full-lowmem-check-in-kmemleak_-_phys.patch
-and it can be found in the queue-5.4 subdirectory.
+and it can be found in the queue-5.10 subdirectory.
 
 If you, or anyone else, feels it should not be added to the stable tree,
 please let <stable@vger.kernel.org> know about it.
@@ -175,5 +175,5 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 Patches currently in stable-queue which might be from yee.lee@mediatek.com are
 
-queue-5.4/revert-mm-kmemleak-take-a-full-lowmem-check-in-kmemleak_-_phys.patch
+queue-5.10/revert-mm-kmemleak-take-a-full-lowmem-check-in-kmemleak_-_phys.patch
 
