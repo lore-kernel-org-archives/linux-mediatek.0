@@ -4,71 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B5B5ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 19:30:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34505C6FA8A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 19:37:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3CiHpK0woNdmM/och6DLffqp5S43SPlre/Yb6rwV2nk=; b=L6rNGZIiLcJgZULiNIs2DitsG8
-	DtkG2ULY07T+xZFECnIbvrbmrZ2NJAuIdlCZhzWdgMUIUo/pey87aAGexujiipJ3Jg5IlG8bjM9hz
-	2M+3jOI3ZkmEHuFarRjEb17jAYHIhgR08sXN8ygvwyRsD08NwkOCZOUdiV2/R076s4Jz88aIUXegM
-	X3b3fGJNfXKTHNgOzg6uET7F05kpryxVWqYmmrJPd2hxXxlD9zfpLYcyFfQcWMYA9TbH9Hods6fkD
-	1C6nGVoujQZ3KdWt7YRmMf9degi2AdMrMdgkzdt2nw6Lw7Hbc/1vQJvEMwrUdXLOeR/PKEnNzakuj
-	PhR4HVlA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rhrnZSbWpC1+1M+RgTKZFn+aypUJXi4N7nzDSxZUsFI=; b=d1cCjXO1Mk57ZuRnga7OOgZQHB
+	02E5vYC/C5saKF24FIHqqITYlz5HtKzeyCO9EGnbRnpZUHSpbbL79z8ejJfUOdVj23k1Z1yN4NJGA
+	pRtXhnRjyEHqONbgkogbF3GRyePycETXgqVZBJmwkVcr/HR8atr16RbtMON72oxUDp2OICYaf4U3s
+	DVgOz2A4HqjLnb3PNzEcgooEvUe4YX4MRCZqDDIkRkiZllyS7/FeBBUmtSIKaUNjDxu5bo759q3aV
+	kJQHt+bmSA/1sCKRoy1oSzq9wrax2A1q76ynS3cwZMRPX3yQv/1tjum+o+EGSFn9gl/n4mHxwFGB3
+	4d6L1Sog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWjhn-001rWM-8X; Fri, 09 Sep 2022 19:30:23 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWjhk-001rT2-FH
-	for linux-mediatek@lists.infradead.org; Fri, 09 Sep 2022 19:30:22 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 58CC2B82625;
-	Fri,  9 Sep 2022 19:30:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 08469C433D7;
-	Fri,  9 Sep 2022 19:30:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1662751817;
-	bh=TlR5KkdKFGZEA3IVTZd6lKfqF7mgIKXOnZzTEUCZlvE=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=s49j/z2MegOyfjiF+cd/XOyEPA+aOWDq6rAVy509zPAAoguzoTvjHvjcxm0NBcRXW
-	 +ns9TWpkTQ2hN8zitTFp0aF6ZtHan15j1OepuokEG5+4C+uZW2vDl4JWXhdaZXPFcm
-	 QI3wW3PUyb8SGNou5PoO4Fe2mSWnQA3kBvNIQUTFq4KlkAiQC0p0HvCGELdiHn4kNt
-	 mYIL7BDIXn6aQUYh11pRzvTTmGr6pjG53rVHqlngILghmvXrxh/+7dEZqXPTMinZNX
-	 3KhAKQlBKn1pY3FyoFUl8B1jYZeCEKVHE03JsyNkXwjaQFcbSy5ZfMkNqNBn2wx18M
-	 tC15R/g8ZSdug==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id DDDEEE1CABD;
-	Fri,  9 Sep 2022 19:30:16 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1oWjo7-001ze6-2x; Fri, 09 Sep 2022 19:36:55 +0000
+Received: from mail.baikalelectronics.com ([87.245.175.230])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oWjnv-001zar-91; Fri, 09 Sep 2022 19:36:45 +0000
+Received: from mail (mail.baikal.int [192.168.51.25])
+	by mail.baikalelectronics.com (Postfix) with ESMTP id 0E152DC0;
+	Fri,  9 Sep 2022 22:40:25 +0300 (MSK)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.baikalelectronics.com 0E152DC0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=baikalelectronics.ru; s=mail; t=1662752425;
+	bh=rhrnZSbWpC1+1M+RgTKZFn+aypUJXi4N7nzDSxZUsFI=;
+	h=From:To:CC:Subject:Date:In-Reply-To:References:From;
+	b=X1RgDR7uBneTQoIDep2jJUEo9CCjeOOta0eN3C0t+s9oksDoa/hc5XjEHFo986btS
+	 GQ8+NfzEKF/dc4GRQG8N6zUeDvO385oY84GPutS5oXYG65TvoeDDGnTPheVogbuwGv
+	 Z26tuO6krIsRSLJsuZUgBNBMftqtOGYtSFJ3fJ2A=
+Received: from localhost (192.168.168.10) by mail (192.168.51.25) with
+ Microsoft SMTP Server (TLS) id 15.0.1395.4; Fri, 9 Sep 2022 22:36:36 +0300
+From: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+To: Damien Le Moal <damien.lemoal@opensource.wdc.com>, Hans de Goede
+	<hdegoede@redhat.com>, Jens Axboe <axboe@kernel.dk>, Hannes Reinecke
+	<hare@suse.de>, Matthias Brugger <matthias.bgg@gmail.com>, Patrice Chotard
+	<patrice.chotard@foss.st.com>
+CC: Serge Semin <Sergey.Semin@baikalelectronics.ru>, Serge Semin
+	<fancer.lancer@gmail.com>, Alexey Malahov
+	<Alexey.Malahov@baikalelectronics.ru>, Pavel Parkhomenko
+	<Pavel.Parkhomenko@baikalelectronics.ru>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	<linux-ide@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v8 09/23] ata: libahci_platform: Parse ports-implemented property in resources getter
+Date: Fri, 9 Sep 2022 22:36:07 +0300
+Message-ID: <20220909193621.17380-10-Sergey.Semin@baikalelectronics.ru>
+In-Reply-To: <20220909193621.17380-1-Sergey.Semin@baikalelectronics.ru>
+References: <20220909193621.17380-1-Sergey.Semin@baikalelectronics.ru>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] Bluetooth: btusb: Add a new PID/VID 13d3/3578 for MT7921
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id:  <166275181690.14413.3140542582465641512.git-patchwork-notify@kernel.org>
-Date: Fri, 09 Sep 2022 19:30:16 +0000
-References: <575471871695aaae73ebc15eee73411ee53f4bb4.1661596165.git.objelf@gmail.com>
-In-Reply-To: <575471871695aaae73ebc15eee73411ee53f4bb4.1661596165.git.objelf@gmail.com>
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
- Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
- robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
- posh.sun@mediatek.com, ted.huang@mediatek.com, Stella.Chang@mediatek.com,
- Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com,
- frankgor@google.com, abhishekpandit@google.com, michaelfsun@google.com,
- mcchou@chromium.org, shawnku@google.com, linux-bluetooth@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- chris.lu@mediatek.com
+Content-Type: text/plain
+X-ClientProxiedBy: MAIL.baikal.int (192.168.51.25) To mail (192.168.51.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_123020_702351_673D1514 
-X-CRM114-Status: UNSURE (   9.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220909_123643_697999_B0CB07A6 
+X-CRM114-Status: GOOD (  14.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,29 +76,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+The ports-implemented property is mainly used on the OF-based platforms
+with no ports mapping initialized by a bootloader/BIOS firmware. Seeing
+the same of_property_read_u32()-based pattern has already been implemented
+in the generic AHCI LLDD (glue) driver and in the Mediatek, St AHCI
+drivers let's move the property read procedure to the generic
+ahci_platform_get_resources() method. Thus we'll have the forced ports
+mapping feature supported for each OF-based platform which requires that,
+and stop re-implementing the same pattern in there a bit simplifying the
+code.
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+Signed-off-by: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+---
+ drivers/ata/ahci_mtk.c         | 2 --
+ drivers/ata/ahci_platform.c    | 3 ---
+ drivers/ata/ahci_st.c          | 3 ---
+ drivers/ata/libahci_platform.c | 3 +++
+ 4 files changed, 3 insertions(+), 8 deletions(-)
 
-On Tue, 30 Aug 2022 06:55:58 +0800 you wrote:
-> From: Chris Lu <chris.lu@mediatek.com>
-> 
-> Add VID 13D3 & PID 3578 for MediaTek MT7921 USB Bluetooth chip.
-> 
-> The information in /sys/kernel/debug/usb/devices about the Bluetooth
-> device is listed as the below.
-> 
-> [...]
-
-Here is the summary with links:
-  - Bluetooth: btusb: Add a new PID/VID 13d3/3578 for MT7921
-    https://git.kernel.org/bluetooth/bluetooth-next/c/a614ee94a849
-
-You are awesome, thank you!
+diff --git a/drivers/ata/ahci_mtk.c b/drivers/ata/ahci_mtk.c
+index 1f6c85fde983..c056378e3e72 100644
+--- a/drivers/ata/ahci_mtk.c
++++ b/drivers/ata/ahci_mtk.c
+@@ -118,8 +118,6 @@ static int mtk_ahci_parse_property(struct ahci_host_priv *hpriv,
+ 				   SYS_CFG_SATA_EN);
+ 	}
+ 
+-	of_property_read_u32(np, "ports-implemented", &hpriv->force_port_map);
+-
+ 	return 0;
+ }
+ 
+diff --git a/drivers/ata/ahci_platform.c b/drivers/ata/ahci_platform.c
+index 28a8de5b48b9..9b56490ecbc3 100644
+--- a/drivers/ata/ahci_platform.c
++++ b/drivers/ata/ahci_platform.c
+@@ -56,9 +56,6 @@ static int ahci_probe(struct platform_device *pdev)
+ 	if (rc)
+ 		return rc;
+ 
+-	of_property_read_u32(dev->of_node,
+-			     "ports-implemented", &hpriv->force_port_map);
+-
+ 	if (of_device_is_compatible(dev->of_node, "hisilicon,hisi-ahci"))
+ 		hpriv->flags |= AHCI_HFLAG_NO_FBS | AHCI_HFLAG_NO_NCQ;
+ 
+diff --git a/drivers/ata/ahci_st.c b/drivers/ata/ahci_st.c
+index 7526653c843b..068621099c00 100644
+--- a/drivers/ata/ahci_st.c
++++ b/drivers/ata/ahci_st.c
+@@ -168,9 +168,6 @@ static int st_ahci_probe(struct platform_device *pdev)
+ 
+ 	st_ahci_configure_oob(hpriv->mmio);
+ 
+-	of_property_read_u32(dev->of_node,
+-			     "ports-implemented", &hpriv->force_port_map);
+-
+ 	err = ahci_platform_init_host(pdev, hpriv, &st_ahci_port_info,
+ 				      &ahci_platform_sht);
+ 	if (err) {
+diff --git a/drivers/ata/libahci_platform.c b/drivers/ata/libahci_platform.c
+index bacb974c1b16..085f99b2eb5a 100644
+--- a/drivers/ata/libahci_platform.c
++++ b/drivers/ata/libahci_platform.c
+@@ -485,6 +485,9 @@ struct ahci_host_priv *ahci_platform_get_resources(struct platform_device *pdev,
+ 		goto err_out;
+ 	}
+ 
++	of_property_read_u32(dev->of_node,
++			     "ports-implemented", &hpriv->force_port_map);
++
+ 	if (child_nodes) {
+ 		for_each_child_of_node(dev->of_node, child) {
+ 			u32 port;
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.37.2
 
 
