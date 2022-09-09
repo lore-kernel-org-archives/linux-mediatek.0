@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CD62ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 07:52:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C38ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 07:54:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oBh0hRQbSXN9aOKzUJPzC26JpmI0MZJcvY4rpX4IZvU=; b=e0q/0XvHIBUjh8lRYtiIVyonaA
-	YklEs0QOleTRbEmV8Q6IpdghTE9J9iIkZKy16yrTTX+kOXxKFyC3IMQSZv3TVprqdeNXMyrYLjhQM
-	7zCC8GJzWM0iXYglUJGYcCloIMtrOtJNjqbbyiXxEnYVeZaupKS8eoemXSG0kE1XCJgY4cDGjsRyz
-	McaQzz2CSnGAuJkTg0A42NB2PaoP4TSXW8Lj09owoVNMusOzAtIsWvb2TAuMlMPuYjSSxVUD9t6CS
-	DICZWkm8sP9Z8G2eRX48EgeDv7czI/6Xx1rijsYvgE4gjiBFMMHrAfQf7R5wmumXQjoqv7sB6e1pO
-	D0LOxQXQ==;
+	bh=ctybIeOcBBXJaw7cjrI8Dvtg5IIS4ffpqAeCOrO4z8U=; b=NkQyOgCfGgJjsE3+zpc0k+K/j7
+	5g1gysNsg0OLg/lYnqnHmSnjDNsbQPLh2A/ykNWTMjslP3J7JJfLvlyD8FCCQIxVn2a+KkbDBmQjV
+	DHsI8SKIjoIqseXgR7fXRfGEJKFR/cX0x0OZwjNHcP0gWuqtSxneKZxmzAobqogAJRSRzdZ3YcFnR
+	v+fV4UNvoxakSH6DGh4Wn9QCJVVrFA/n/HYjKcrPlWzYh4BRhy/CHQzvbLeoG14GMZK7rRWgBIW+i
+	wnCY7XHc0G8rDDO1/5TZ3A9GnLFlREPCBmyslwcrlWoRBu9gfcpYFhXOpi3rN6rb+3SdgZUCNhBmH
+	6ApA6M5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWYog-00EAcN-Pg; Fri, 09 Sep 2022 07:52:46 +0000
+	id 1oWYpk-00EBTY-Nq; Fri, 09 Sep 2022 07:53:52 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWYik-00E6vn-Vn; Fri, 09 Sep 2022 07:46:42 +0000
+	id 1oWYlE-00E8Jp-7w; Fri, 09 Sep 2022 07:49:14 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B60B96601F9B;
-	Fri,  9 Sep 2022 08:46:36 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1DEFD6601F9B;
+	Fri,  9 Sep 2022 08:49:10 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662709597;
-	bh=7kCb8Q9ZMu3AI6cJXYCkilwxUD9TCXEnwK4oypdPsiQ=;
+	s=mail; t=1662709750;
+	bh=jMGgQw3flSvEElU0iAiEiuXLD9yc+tyfB4ZbbObfSCs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AGxDqSEytkwhvo2Uxi9UjmnHhTy7fqYOxvXwpJ/jHff+uZZVkKw9JkubKnJhUoH4/
-	 HK7GHtYg5QKRAByTog8CTOtZRcbcZDIdrbAHFgflwj8QXYkn04Ak8FpFEIeTX88vgx
-	 LFoKX6cn2eZobROzQHB3kRm7JUP/4XybUe/ZogGnFLskQEbhAU8kjEVVsZlQrcBXAv
-	 1ZYuljWARkZ/so0fBv8YLNXwq9iV4+EDSfgcGB366fnkiXus3+vashk7mJyywwmVwA
-	 gKmMqDKFFo4pidz6eF1C4TlAhDVxJTsJw1ZMHQH+N2x6kwlcciXl2pACssk/XV/0Gw
-	 8t2jpsMPmRT4w==
-Message-ID: <ab2027b9-17e8-4fe8-3847-84c54d6f9d58@collabora.com>
-Date: Fri, 9 Sep 2022 09:46:33 +0200
+	b=lqahKRi5D2fcH1XTZOcLLNJxVA8+jnjRiNNWbq05YAqMDCWlMh/37KaueNTxEGT4C
+	 1EAgD+7qpYuDQ7YzSNU2+gJs8K99DRBEkjmGXVNskV4EY/a1GAG19u7rq5yFGkaFQW
+	 QCfMGJTHb9HIns0wO91BQuJUSVwb/IRmpE5unXPatduVx02qRwHjaUtWE8102MkblG
+	 0okIN5+AzfY4R73Rhd09pOpmit01q3JNSP7mYlHwcLD4OVfqg+NbT3iqSVZvajBRqu
+	 phh6LGYrHF7cAd1OhPp/XAhkSxmfYAwM4TpfOB3owWbBbQmymBUVaMZOtmtFI546Pt
+	 cQmCEMkaW+F2w==
+Message-ID: <5032e29d-dfa0-e071-b3c2-845136443b0e@collabora.com>
+Date: Fri, 9 Sep 2022 09:49:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH 1/3] arm64: dts: mediatek: asurada: Add display regulators
+Subject: Re: [PATCH v2] dt-bindings: iommu: mediatek: mt8195: Fix max
+ interrupts
 Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20220908171153.670762-1-nfraprado@collabora.com>
- <20220908171153.670762-2-nfraprado@collabora.com>
+To: matthias.bgg@kernel.org, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: devicetree@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>,
+ linux-kernel@vger.kernel.org, iommu@lists.linux.dev,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+References: <20220908141529.1478-1-matthias.bgg@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220908171153.670762-2-nfraprado@collabora.com>
+In-Reply-To: <20220908141529.1478-1-matthias.bgg@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_004639_196150_4EF35CD0 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20220909_004912_463942_F045B61A 
+X-CRM114-Status: UNSURE (   8.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,74 +80,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/09/22 19:11, Nícolas F. R. A. Prado ha scritto:
-> Add the regulators present on the Asurada platform that are used to
-> power the internal and external displays.
+Il 08/09/22 16:15, matthias.bgg@kernel.org ha scritto:
+> From: Matthias Brugger <mbrugger@suse.com>
 > 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> The mt8195-iommu-infra has five banks and one interrupt for each.
+> Reflect that in the binding.
 > 
-> ---
-> 
->   .../boot/dts/mediatek/mt8192-asurada.dtsi     | 114 ++++++++++++++++++
->   1 file changed, 114 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> index 4b314435f8fd..1d99e470ea1a 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-..snip..
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> @@ -56,6 +116,18 @@ pp3300_ldo_z: regulator-3v3-z {
->   		vin-supply = <&ppvar_sys>;
->   	};
->   
-
-Can you please add a comment here advertising that this regulator
-will not only provide power to the MIPI bridge, but *also* to the
-display panel itself?
-
-This is to make sure that everyone understands what's going on, and
-also that we ourselves don't forget about that.
-
-Probably something like:
-/* pp3300_mipibrdg also enables pp3300_panel */
-
-I would then propose to add a "regulator-fixed" that has no GPIO
-but with vin-supply as this one.
-
-pp3300_panel: regulator-3v3-panel {
-	compatible = "regulator-fixed";
-	regulator-name = "pp3300_panel";
-	regulator-min-microvolt = <3300000>;
-	regulator-max-microvolt = <3300000>;
-
-	vin-supply = <&pp3300_mipibrdg>;
-};
-
-I would also test assigning this regulator to the panel node, as this
-will make sure to cover future corner cases (think about PM suspend/resume).
-
-P.S.: If you add the pp3300_panel regulator-fixed with that vin-supply,
-       maybe the proposed comment would become a bit overkill. Your choice!
-
-Cheers,
-Angelo
-
-> +	pp3300_mipibrdg: regulator-3v3-mipibrdg {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "pp3300_mipibrdg";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pp3300_mipibrdg_en_pins>;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		enable-active-high;
-> +		regulator-boot-on;
-> +		gpio = <&pio 127 GPIO_ACTIVE_HIGH>;
-> +	};
-> +
->   	/* separately switched 3.3V power rail */
->   	pp3300_u: regulator-3v3-u {
->   		compatible = "regulator-fixed";
 
 
