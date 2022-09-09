@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 667BFECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 07:39:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D578ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 07:39:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K/vr/y/5FkbY1yH172GGerYCgJTilSQGA3WZrN5AJMM=; b=zWfbC20xewZm5WXT0U4zjIC/kH
-	4joU+FlpAvwpfYbctRaQjqxSQUE8AkNR/IysPPnEsfYt+YN0Rz083UANKN8VLZW//j2+WuLTR9eiO
-	UiujD1rlNu624pJhHpGpZZrSDUF7g7M4j8saSwhZG52xU74FbNrVpokU6lbhfS2lVr0HKQcMnZ3pd
-	T+v2Mw/Ycg6yt7nSYmcl1WdlNZ2ir17wAPWaEl5bjTUy82A5DNMAN7bNGRsfstbyN9KcanD6iMFbG
-	L7hHX80LtZGCn33katdGI4ZK5SRhUs/lhUF6A58gnA2K4yClei92jv7PWUqOB2LWoA59wProiNpDx
-	V5mQU/Gw==;
+	bh=4RD4yIKhohgZXALTMPsw8hrs4txaA7XOyWr0L1yelcs=; b=Yih9BThVgDumiVqzY6PKwnIZJQ
+	nX1nIZPrllFh6bE9v/L4WxJ69MZOGeYcs6tJTrSMxtWrLhTRZCYQ9LsDR5QoKyZC+iXZV9M/mVXz2
+	EOXx2JJ0x9GMWJGqFFsbC2GjN6yZXigMXaqHHrZQK3XEOLLo7t+20MWZ5PVO+5rpnoUtOcQsTqGnF
+	wOC8PNGDP4pA/jURwlUqk/YLd03hTa7MWG2e4A78RrryTO8WUlW9PVC864Cbn+mG9MDyl7kQFABYz
+	53SZkrQ8/hJjUIN4S+PR5xi/G5wkZ9kSeL/eEMVk/f/fDq8+9QaB9JsV5YN5mnsqSckpOH1Sw5oEK
+	Wx3frklw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWYbO-00E23W-Uc; Fri, 09 Sep 2022 07:39:02 +0000
+	id 1oWYbo-00E2JO-NL; Fri, 09 Sep 2022 07:39:28 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWYXA-00DylJ-TI; Fri, 09 Sep 2022 07:34:42 +0000
+	id 1oWYXE-00Dynk-3l; Fri, 09 Sep 2022 07:34:45 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C606F6601FAF;
-	Fri,  9 Sep 2022 08:34:38 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0D17B6601FB8;
+	Fri,  9 Sep 2022 08:34:42 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662708879;
-	bh=6E3R+e0qWzBvUZmD+FxdrrNf0X8j9G+FBty9PotvMbE=;
+	s=mail; t=1662708882;
+	bh=UX+vi+FdnLov80MlTgas9MMxCaC7dGmiE21tUnnYlkw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DQuGFRS9IGu9Ua+HhX4kdB01raUTOemdunfdjpLgLo605WDOWN2pFc/xXu/fJSPm8
-	 BfE0TTBmqV5LLfj4Sg92uYEiKux2zzpRjXzxfL1kuWC7ez8JLh3QApLyzR04vHUcQy
-	 xQh73kkkE40uzgIKEe8xwjeRxOjYcGOLrml0wCQ6XkyQDnafJ/byLZN/JoqYLsSeEX
-	 BWSttFilhCsdGOhuWGcg8/LI+SUNeVeFWdLn53++LKG1j397/CzNH0+Kw/FeadKwAh
-	 jzsoLzfzQyypR6TKK0GvwabuX2UEVZjFbdwzKdP1q3LZuj/gkAeWYQxjaqq9vr4wl7
-	 3RPP9CHbqaI0Q==
-Message-ID: <302f9468-e64d-eba2-868a-ee6c196238fb@collabora.com>
-Date: Fri, 9 Sep 2022 09:34:36 +0200
+	b=fYqple5AGtnvz9nIggKzsiVfg9ersxHSb2UJiEBqEb5qk54iOdalXoxti0AnYFaEn
+	 4Kep4SfSfHJBNMiTKMU4s4P5MlSJiDv8ZfpjqhkZzi7BStCyvYgn3AO+eS4MeuLMsg
+	 728ykeOuDsnqBUQ9aZGU7YyuK5y3REpr9D8UBdAC6iDJOUwi52DFT+P/xs8iZ+RG+R
+	 s5HuIKUKt+pMwImBOmy6N3qTv2vDNMeEb2G7iKphDqsr1OtVDoWp7CUSbzzCQBuinJ
+	 Mi/axLFu2OiOWHqi20ydk27ZSxY43d20x1RRTLZ4SZbuBeyYKtqNiYXKp3oJQtGHDv
+	 ISI196tY9DUBg==
+Message-ID: <3b7f5a3c-c1f2-7bb3-7583-74b244d9fc13@collabora.com>
+Date: Fri, 9 Sep 2022 09:34:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH 05/10] ASoC: mediatek: mt8183: Configure shared clocks
+Subject: Re: [PATCH 02/10] ASoC: mediatek: mt8192-mt6359: Make i2s9 share the
+ clock from i2s8
 Content-Language: en-US
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 Cc: kernel@collabora.com, Akihiko Odaki <akihiko.odaki@gmail.com>,
  Jaroslav Kysela <perex@perex.cz>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
  Liam Girdwood <lgirdwood@gmail.com>, Miaoqian Lin <linmq006@gmail.com>,
- Rikard Falkeborn <rikard.falkeborn@gmail.com>, Takashi Iwai
- <tiwai@suse.com>, Tzung-Bi Shih <tzungbi@google.com>,
+ Takashi Iwai <tiwai@suse.com>, Tzung-Bi Shih <tzungbi@google.com>,
  alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 References: <20220908161154.648557-1-nfraprado@collabora.com>
- <20220908161154.648557-6-nfraprado@collabora.com>
+ <20220908161154.648557-3-nfraprado@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220908161154.648557-6-nfraprado@collabora.com>
+In-Reply-To: <20220908161154.648557-3-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_003441_102651_AC8B8A43 
-X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-CacheID: sfid-20220909_003444_330911_CE58965D 
+X-CRM114-Status: UNSURE (   9.12  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,13 +82,17 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 08/09/22 18:11, Nícolas F. R. A. Prado ha scritto:
-> i2s0 and i2s5 are paired input/output connected to the same codec and
-> should share the same clock. Likewise for i2s2 and i2s3. Set the clock
-> sharing for each pair during the DAI initialization.
+> Both i2s8 and i2s9 are connected to the rt5682 codec and should share
+> the same clock to work in a full-duplex manner. Set the clock sharing
+> during the initialization for rt5682.
 > 
 > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
+
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+[For MT8192 Asurada]
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
