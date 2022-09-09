@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 110A7ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 21:47:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 559EBC6FA82
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 22:46:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=95p6AP3sUT/dASIGWwdGLj3incOhvOUM3cSIPAoJ4oQ=; b=UKMw2IviVVL7Rw+WqH63MK4n51
-	zlZ9Xz63qbsf/pyvhLUgRDJtxfTwJzQNXQ/BiveXlMMJzyxCEso5+mNGqDcV8n4tvlci2VFYJeCcG
-	u1BABp0tywdIfHNjJwYLx8svN0kAdP8SShJ1lNBRf+e3wSwB9wfQTrfpay1QCJeq6RLgWAb6ycNyB
-	eGcWvQtr3vfHV+Hec26uato6jB0bhylDCc3ucI31pAaAQM/Mg1TtDFWNXFqoYdlzma5VZWf5XEiBs
-	p7oZ1tU1eEOfU4TtNs03oLGe8m1vDgf5ZxR1tpaa3jHhPAhlKOTOGiaSaDt38Q1g3NmMxlQa+Y9Gh
-	6DofPg8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h5YP0M6LSt3+anIApucpkSp2fHKZv2m4eQl2A18QhAY=; b=XLIf67bcFFrUp6UK0ucfpoH2Os
+	RTfLkJG31BN+MfTHv7RowCRw/LFaktsZo+3EqLPx4EkaNWkD3pK9XaREMyL/moX6ALmun5HB9qlaD
+	yIjg7ia/yC+3RdXWYbeRtOcrogM2w0ZnLMhS7Aj/vxhSXEjejHxeG//3xQXqY/SnpAUs4+BjtfqFM
+	aG9sfCEWHccJBCiCq4pFsyRuVC4u0P/bqn2ji8p7PIjMOpQjMs1EOzuZhLZepewoEraXDHBJa29Y4
+	hIj7++x3XRGn2YwLIQMlgeo+CrX4Z/AbPnXxztWBOnsFtx7kLL0XSJ46GHTYvUktntiy6hc4tp16W
+	YE0DNeWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWlqX-003BsX-1q; Fri, 09 Sep 2022 21:47:33 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oWmlF-003bGy-Eu; Fri, 09 Sep 2022 22:46:09 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWlqU-003Brf-4d
-	for linux-mediatek@lists.infradead.org; Fri, 09 Sep 2022 21:47:31 +0000
+	id 1oWml3-003bFh-OO; Fri, 09 Sep 2022 22:45:59 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id D308CB82628;
-	Fri,  9 Sep 2022 21:47:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04275C433D7;
-	Fri,  9 Sep 2022 21:47:25 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 512AF620C0;
+	Fri,  9 Sep 2022 22:45:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4AC1C433D6;
+	Fri,  9 Sep 2022 22:45:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1662760046;
-	bh=Ax/uvAY03/zgpeUKLhwstiXZ3hgfRZwfa9av35aAHXg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OwoSfo3Bd9xYfIGwgcbVQjmaS1OKWhafPVU2M5E3uQ3xVQnIxtPJSRfMy5XpdEsuB
-	 YbuN3yYoFTM9yEEHtcY+gRDAPEN//SxS4FIOh0MBzinNjwPwwSgKih9xdJxRNeECHU
-	 wNeY1+eyKj8axBJi8t9g8ewh/rBfEga7G4OYFnW7aDAjnQOFzqLOrmk2zbeE7woStX
-	 fHYoPmUCtIZloQhFL3zay3IzE879R+qTC1LGkxr00/m4g2Kuyt29Q1evNWrDBU/bsZ
-	 7mvrTZddtXkcbpevydhkCPRCQH1Rx+7GjE0PxvMfPM5wMSVq2BZKnfVXAG+h85pBgG
-	 k7IU9aU1+X8FA==
-Date: Fri, 9 Sep 2022 23:47:22 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
-	Bo.Jiao@mediatek.com, sujuan.chen@mediatek.com,
-	ryder.Lee@mediatek.com, evelyn.tsai@mediatek.com,
-	devicetree@vger.kernel.org, robh@kernel.org
-Subject: Re: [PATCH net-next 08/12] net: ethernet: mtk_eth_soc: add foe info
- in mtk_soc_data structure
-Message-ID: <Yxu0aoBcCirDkm9j@lore-desk>
-References: <cover.1662661555.git.lorenzo@kernel.org>
- <0d0bfa99e313c0b00bf75f943f58b6fe552ed004.1662661555.git.lorenzo@kernel.org>
- <YxuL45OghfKVGTrM@makrotopia.org>
+	s=k20201202; t=1662763554;
+	bh=RCTi+9mtpSaq7q1v+5QZetecuQ2vgM2DG0dznXZ0s44=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=WX1XLdz0E4Z8g+ZqTpgb/fnJLigeXFowXDbZIyRDEWBujZ9khF1l4CKgnxD9TZLge
+	 9AVwAKjOZWOYir7F/zmoJ3EAmWsymTjdeCjcGu6QcNCDIaYnBRUvnXa3K/PjBbUIjP
+	 cW+T0zZJzp02sLhNC8QU7nbE7xq6pm28+/adTHWHmgV0YVm8FSa0OANQLtYL9QDsl5
+	 916GU/iMMHBkJLzLhK4hdGpzI45QoUqbcwpfpwLgKzHZpdYR1p+PKPyVyGNc7l6esT
+	 OwCrzpDBkq/1CJZmj7uHjXfwNHGx9tIu/yMoxwKkQVyTsJdibg5M5qr9aOM11T5gtC
+	 BFVgJVUhJoPxA==
+From: Mark Brown <broonie@kernel.org>
+To: Nícolas F. R. A. Prado <nfraprado@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Chunxu Li <chunxu.li@mediatek.com>, Akihiko Odaki <akihiko.odaki@gmail.com>,
+ Jiaxin Yu <jiaxin.yu@mediatek.com>, kernel@collabora.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tzung-Bi Shih <tzungbi@google.com>,
+ linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org,
+ Dan Carpenter <dan.carpenter@oracle.com>, linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, linux-mediatek@lists.infradead.org,
+ Rikard Falkeborn <rikard.falkeborn@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, Miaoqian Lin <linmq006@gmail.com>
+In-Reply-To: <20220908161154.648557-1-nfraprado@collabora.com>
+References: <20220908161154.648557-1-nfraprado@collabora.com>
+Subject: Re: [PATCH 00/10] ASoC: mediatek: Set i2s clock sharing from machine drivers
+Message-Id: <166276355052.332114.1969052042106279493.b4-ty@kernel.org>
+Date: Fri, 09 Sep 2022 23:45:50 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="o/fDb3p0UsNpkYZx"
-Content-Disposition: inline
-In-Reply-To: <YxuL45OghfKVGTrM@makrotopia.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_144730_497313_80CB2AE9 
-X-CRM114-Status: GOOD (  19.01  )
+X-CRM114-CacheID: sfid-20220909_154557_893324_4E062715 
+X-CRM114-Status: GOOD (  17.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,97 +76,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 8 Sep 2022 12:11:44 -0400, Nícolas F. R. A. Prado wrote:
+> The i2s ports on MediaTek SoCs only support a single data lane. In order
+> to achieve full-duplex operation thus two i2s ports, one for input and
+> one for output, need to be used together and sharing a single clock from
+> one of the ports.
+> 
+> This clock sharing setting was previously read by the sound platform
+> driver from the devicetree, but given that the input/output pairing is
+> closely related to which codecs are connected to which ports, the
+> machine sound driver can infer and set it, so that no DT property is
+> required.
+> 
+> [...]
 
---o/fDb3p0UsNpkYZx
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Applied to
 
-> On Thu, Sep 08, 2022 at 09:33:42PM +0200, Lorenzo Bianconi wrote:
-> > Introduce foe struct in mtk_soc_data as a container for foe table chip
-> > related definitions.
-> > This is a preliminary patch to enable mt7986 wed support.
-> >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> >  drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  70 +++++++-
-> >  drivers/net/ethernet/mediatek/mtk_eth_soc.h   |  27 ++-
-> >  drivers/net/ethernet/mediatek/mtk_ppe.c       | 161 ++++++++++--------
-> >  drivers/net/ethernet/mediatek/mtk_ppe.h       |  29 ++--
-> >  .../net/ethernet/mediatek/mtk_ppe_offload.c   |  34 ++--
-> >  5 files changed, 208 insertions(+), 113 deletions(-)
-> >=20
-> > [...]
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethe=
-rnet/mediatek/mtk_ppe.h
-> > index 6d4c91acd1a5..a364f45edf38 100644
-> > --- a/drivers/net/ethernet/mediatek/mtk_ppe.h
-> > +++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
-> > @@ -61,6 +61,8 @@ enum {
-> >  #define MTK_FOE_VLAN2_WINFO_WCID	GENMASK(13, 6)
-> >  #define MTK_FOE_VLAN2_WINFO_RING	GENMASK(15, 14)
-> > =20
-> > +#define MTK_FIELD_PREP(mask, val)	(((typeof(mask))(val) << __bf_shf(ma=
-sk)) & (mask))
-> > +#define MTK_FIELD_GET(mask, val)	((typeof(mask))(((val) & (mask)) >> _=
-_bf_shf(mask)))
->=20
-> This seems to trigger a compiler bug on ARMv7 (e.g. MT7623) builds:
->=20
->   LD      .tmp_vmlinux.kallsyms1
-> arm-openwrt-linux-muslgnueabi-ld: drivers/net/ethernet/mediatek/mtk_ppe.o=
-: in function `mtk_flow_entry_match':
-> /usr/src/lede/build_dir/target-arm_cortex-a7+neon-vfpv4_musl_eabi/linux-m=
-ediatek_mt7623/linux-5.15.67/drivers/net/ethernet/mediatek/mtk_ppe.c:406: u=
-ndefined reference to `__ffsdi2'
-> arm-openwrt-linux-muslgnueabi-ld: drivers/net/ethernet/mediatek/mtk_ppe.o=
-: in function `__mtk_foe_entry_commit':
-> /usr/src/lede/build_dir/target-arm_cortex-a7+neon-vfpv4_musl_eabi/linux-m=
-ediatek_mt7623/linux-5.15.67/drivers/net/ethernet/mediatek/mtk_ppe.c:533: u=
-ndefined reference to `__ffsdi2'
-> arm-openwrt-linux-muslgnueabi-ld: drivers/net/ethernet/mediatek/mtk_ppe.o=
-: in function `mtk_foe_entry_l2':
-> /usr/src/lede/build_dir/target-arm_cortex-a7+neon-vfpv4_musl_eabi/linux-m=
-ediatek_mt7623/linux-5.15.67/drivers/net/ethernet/mediatek/mtk_ppe.c:134: u=
-ndefined reference to `__ffsdi2'
-> arm-openwrt-linux-muslgnueabi-ld: drivers/net/ethernet/mediatek/mtk_ppe.o=
-: in function `mtk_foe_entry_commit_subflow':
-> /usr/src/lede/build_dir/target-arm_cortex-a7+neon-vfpv4_musl_eabi/linux-m=
-ediatek_mt7623/linux-5.15.67/drivers/net/ethernet/mediatek/mtk_ppe.c:611: u=
-ndefined reference to `__ffsdi2'
-> arm-openwrt-linux-muslgnueabi-ld: drivers/net/ethernet/mediatek/mtk_ppe.o=
-: in function `mtk_foe_entry_ib2':
-> /usr/src/lede/build_dir/target-arm_cortex-a7+neon-vfpv4_musl_eabi/linux-m=
-ediatek_mt7623/linux-5.15.67/drivers/net/ethernet/mediatek/mtk_ppe.c:148: u=
-ndefined reference to `__ffsdi2'
-> arm-openwrt-linux-muslgnueabi-ld: drivers/net/ethernet/mediatek/mtk_ppe.o=
-:/usr/src/lede/build_dir/target-arm_cortex-a7+neon-vfpv4_musl_eabi/linux-me=
-diatek_mt7623/linux-5.15.67/drivers/net/ethernet/mediatek/mtk_ppe.c:169: mo=
-re undefined references to `__ffsdi2' follow
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Hi Daniel,
+Thanks!
 
-ack, I will fix it in v2.
+[01/10] ASoC: mediatek: mt8192: Allow setting shared clocks from machine driver
+        commit: 8ae4fcfd5b11b5c33154732fcad99ad0f5843ce2
+[02/10] ASoC: mediatek: mt8192-mt6359: Make i2s9 share the clock from i2s8
+        commit: 3ffb9fa3963964a730c34f48e502ac0625efc145
+[03/10] ASoC: mediatek: mt8192: Remove clock share parsing from DT
+        commit: 9ccd51ce396a46d9d4d0c87aa6a82dd26a2f281a
+[04/10] ASoC: mediatek: mt8183: Allow setting shared clocks from machine driver
+        commit: fea84890e5c1fb65ae8e25b2f9b86363af1f45f2
+[05/10] ASoC: mediatek: mt8183: Configure shared clocks
+        commit: 4583392a135cc30409f5a6ceebb8374e550b03e0
+[06/10] ASoC: mediatek: mt8183: Remove clock share parsing from DT
+        commit: cbebe67859a0e8d51e578fdd9f927f8ef2504ba4
+[07/10] arm64: dts: mediatek: kukui: Remove i2s-share properties
+        commit: b3821f7839c2ec322926d16557aff29f4be1f4dc
+[08/10] ASoC: mediatek: mt8186: Allow setting shared clocks from machine driver
+        commit: 4132a778e806f77c2bd01a9a34b07edc9dd99d76
+[09/10] ASoC: mediatek: mt8186: Configure shared clocks
+        commit: 9986bdaee4776c5d595933cace9d54c6bc084e91
+[10/10] ASoC: mediatek: mt8186: Remove clock share parsing from DT
+        commit: 62da80c6a124dd68b12c4d2197ecc74b79823571
 
-Regards,
-Lorenzo
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
->=20
->=20
-> >  enum {
-> >  	MTK_FOE_STATE_INVALID,
-> >  	MTK_FOE_STATE_UNBIND,
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
---o/fDb3p0UsNpkYZx
-Content-Type: application/pgp-signature; name="signature.asc"
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
------BEGIN PGP SIGNATURE-----
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYxu0agAKCRA6cBh0uS2t
-rIASAQC4DrW2Z2WRfMzAKwO9ZVvP2jDgt/p3kM30a/xV699wywEA9xq3pzx4TYa7
-H2xGS3bd8wdUqwiGkljU0zhYoWxG5Qg=
-=WiH2
------END PGP SIGNATURE-----
-
---o/fDb3p0UsNpkYZx--
+Thanks,
+Mark
 
