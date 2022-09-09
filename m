@@ -4,72 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73BD7ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 05:41:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48336ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 06:46:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/2FnCSlbbHJWQKxN7AYhUkZiYtVMd3brjjKFw4/ArqE=; b=w2GMXYcDuFDY1PL/6VXUjmEh0o
-	Uw/NMlxZYOqv7kNyMllr4PjjKh40LIjFhd0Wm5vuu5RM1A/mlZsoUcNVyxIv3gWXAIxllFH6VrmwZ
-	8e+/lVEnpaUSJu6hGP7HcVYJOS9nIrLNw5KAg/tCsqCxtziq8Upg41bNU7GJqTbgwrd1kZNRlpDdW
-	3iyhVlxjgKaFJSOmLTbDNJ3x1NuN9+n7ZlCAq2ZVeT/gLeIP5tBNbShM+s5BGkYiPVw6qu7zCz3Kt
-	LE4R98Nysr59nct8xtl9AngrnzC2BZ7GK1lgXU3d8aPcaZ5OWjGPn77uyRKpoCmZ4/Os2xn6b8Imq
-	6s61VYBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=JmGZk+jQFAEiH3JwSTcQKy/FhWJAfUDEUzJ2Ol2leIo=; b=QNpNJJkHKyPc2ktHlQwkbZPqhS
+	uNEuye07srQ9RtznklYzVfTJCjXMHY8h8ScudEagwL3NO5qNC1TedvXXrcnXAdlt9f6O+r9tgGzF4
+	jpm+JUC6vjbhtrJOtZf6mbf782Q91B9U+2PjCq/U6ZW12mpiWNIiSGjhW3ko79bPDlusB7ZHZk+db
+	NTQbCD+hQpRoAp2x2aYkMMkG3sqQnAkzrDAsagqcVegBJbcNwh98QwmKDx/muDUyTFXMVEiEaTAPP
+	684JFLtW1EWe1NdvZy6OlplKJCTGWHB7ybZEG2Gr3VVfmLD3ZL2/gAqtyFgxy6TNgBJWfv5Kfmr4w
+	43EEWGag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWWlN-00CrtB-Bb; Fri, 09 Sep 2022 05:41:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWWlK-00Crs0-H3; Fri, 09 Sep 2022 05:41:11 +0000
-X-UUID: 55863464a4ee474ab9435df31a25a8c1-20220908
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=/2FnCSlbbHJWQKxN7AYhUkZiYtVMd3brjjKFw4/ArqE=;
-	b=q1cuJR/qtzPATR7rUQc0MzhC7c2e/pkm7o31Zjkyn8HbFL7DN7gS3feJjurMgBT+EbvM1xPdTuxO+1Tmr1D7o5D3CDvDLmbkGK8OSiiqwf2vTmCp5krezWjY7+HvwPoLF7lZ1pk9BbeItCYGl/UQE6F5GpL9sFctC9A0ZuaCDcU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:80889701-51a0-4d22-a662-e78161ed7a42,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release
-	_Ham,ACTION:release,TS:-5
-X-CID-META: VersionHash:84eae18,CLOUDID:c0e2daf5-6e85-48d9-afd8-0504bbfe04cb,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 55863464a4ee474ab9435df31a25a8c1-20220908
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <elvis.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1802452729; Thu, 08 Sep 2022 22:41:05 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 9 Sep 2022 13:40:29 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 9 Sep 2022 13:40:29 +0800
-Message-ID: <d67e27ae5779cfa4782af3a425546659465aeb2c.camel@mediatek.com>
-Subject: Re: [PATCH 1/2] dt-bindings: mailbox: add definition for mt8188
-From: elvis.wang <elvis.wang@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Jassi Brar <jassisinghbrar@gmail.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 9 Sep 2022 13:40:28 +0800
-In-Reply-To: <20220803222553.GA2727128-robh@kernel.org>
-References: <20220729084319.6880-1-Elvis.Wang@mediatek.com>
-	 <20220729084319.6880-2-Elvis.Wang@mediatek.com>
-	 <20220803222553.GA2727128-robh@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+	id 1oWXmX-00DSnX-VD; Fri, 09 Sep 2022 06:46:29 +0000
+Received: from mail.nfschina.com ([124.16.136.209])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oWXmL-00DSjq-Ny; Fri, 09 Sep 2022 06:46:19 +0000
+Received: from localhost (unknown [127.0.0.1])
+	by mail.nfschina.com (Postfix) with ESMTP id 73E231E80D5E;
+	Fri,  9 Sep 2022 14:44:37 +0800 (CST)
+X-Virus-Scanned: amavisd-new at test.com
+Received: from mail.nfschina.com ([127.0.0.1])
+	by localhost (mail.nfschina.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KCJdTlgd51AI; Fri,  9 Sep 2022 14:44:34 +0800 (CST)
+Received: from localhost.localdomain (unknown [180.167.10.98])
+	(Authenticated sender: yuzhe@nfschina.com)
+	by mail.nfschina.com (Postfix) with ESMTPA id 4EE7A1E80D06;
+	Fri,  9 Sep 2022 14:44:34 +0800 (CST)
+From: Yu Zhe <yuzhe@nfschina.com>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com,
+	matthias.bgg@gmail.com
+Cc: alsa-devel@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	liqiong@nfschina.com,
+	Yu Zhe <yuzhe@nfschina.com>
+Subject: [PATCH] ASoC: mediatek: mt6359: fix platform_get_irq error checking
+Date: Fri,  9 Sep 2022 14:45:11 +0800
+Message-Id: <20220909064511.22343-1-yuzhe@nfschina.com>
+X-Mailer: git-send-email 2.11.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_224110_598139_718FBC42 
-X-CRM114-Status: GOOD (  19.49  )
+X-CRM114-CacheID: sfid-20220908_234618_011984_087E815B 
+X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,45 +69,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Rob,
+The platform_get_irq() function returns negative error codes on error,
+fix the checking.
 
-The "mediatek,gce.yaml" file will be added in the next version.
+Signed-off-by: Yu Zhe <yuzhe@nfschina.com>
+---
+ sound/soc/codecs/mt6359-accdet.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Thanks
-BRs
-Elvis
-
-On Wed, 2022-08-03 at 16:25 -0600, Rob Herring wrote:
-> On Fri, Jul 29, 2022 at 04:43:18PM +0800, Elvis Wang wrote:
-> > Add dt-binding header for mt8188.
-> > 
-> > Signed-off-by: Elvis Wang <Elvis.Wang@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/mailbox/mtk-gce.txt | 6 +++---
-> >  1 file changed, 3 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> > b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> > index c2aeba63bd47..50f97f6feeef 100644
-> > --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> > +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> > @@ -41,9 +41,9 @@ Optional properties for a client mutex node:
-> >    defined in 'dt-bindings/gce/<chip>-gce.h'.
-> >  
-> >  Some vaules of properties are defined in 'dt-bindings/gce/mt8173-
-> > gce.h',
-> > -'dt-bindings/gce/mt8183-gce.h', 'dt-bindings/gce/mt8186-gce.h'
-> > -'dt-bindings/gce/mt8192-gce.h', 'dt-bindings/gce/mt8195-gce.h' or
-> > -'dt-bindings/gce/mt6779-gce.h'.
-> > +'dt-bindings/gce/mt8183-gce.h', 'dt-bindings/gce/mt8186-gce.h',
-> > +'dt-bindings/gce/mt8188-gce.h', 'dt-bindings/gce/mt8192-gce.h',
-> > +'dt-bindings/gce/mt8195-gce.h' or 'dt-bindings/gce/mt6779-gce.h'.
-> >  Such as sub-system ids, thread priority, event ids.
-> 
-> What about a new compatible string?
-> 
-> Really, this needs to be converted to schema...
-> 
-> Rob
+diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
+index c190628e2905..b70aac5075ad 100644
+--- a/sound/soc/codecs/mt6359-accdet.c
++++ b/sound/soc/codecs/mt6359-accdet.c
+@@ -965,7 +965,7 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
+ 	mutex_init(&priv->res_lock);
+ 
+ 	priv->accdet_irq = platform_get_irq(pdev, 0);
+-	if (priv->accdet_irq) {
++	if (priv->accdet_irq > 0) {
+ 		ret = devm_request_threaded_irq(&pdev->dev, priv->accdet_irq,
+ 						NULL, mt6359_accdet_irq,
+ 						IRQF_TRIGGER_HIGH | IRQF_ONESHOT,
+@@ -979,7 +979,7 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
+ 
+ 	if (priv->caps & ACCDET_PMIC_EINT0) {
+ 		priv->accdet_eint0 = platform_get_irq(pdev, 1);
+-		if (priv->accdet_eint0) {
++		if (priv->accdet_eint0 > 0) {
+ 			ret = devm_request_threaded_irq(&pdev->dev,
+ 							priv->accdet_eint0,
+ 							NULL, mt6359_accdet_irq,
+@@ -994,7 +994,7 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
+ 		}
+ 	} else if (priv->caps & ACCDET_PMIC_EINT1) {
+ 		priv->accdet_eint1 = platform_get_irq(pdev, 2);
+-		if (priv->accdet_eint1) {
++		if (priv->accdet_eint1 > 0) {
+ 			ret = devm_request_threaded_irq(&pdev->dev,
+ 							priv->accdet_eint1,
+ 							NULL, mt6359_accdet_irq,
+-- 
+2.11.0
 
 
