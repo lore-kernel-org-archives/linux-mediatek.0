@@ -4,85 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 219ACECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 07:44:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90E99ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 07:49:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WAXuAdMYCi1g4B3dZtIrUPbn2Rjq0LvUklClvaIr8b8=; b=3JXIQIFdfuZ81looDBZXdSyavO
-	rwLTKJt2zvtp7ahULDPymb9WqNMu0cS+SO8bxWYLskvyv7v6r7FUbO1DGEQRV+5caXMEO+C6U4I/b
-	DSKznGNZMrLi2vMZ9gQbZWeknZ2RwjZt1QEWuDJ1hmjAnZqZ1bmX8o4H09a+i57oGhK9fpT585Y8l
-	/CTUkUEMzGecibWN/yWQKZAGjmLzAas9nYYhTj6qLjM7stmKYtM5+2mBwuxcay4kaR+36OzLoBx3L
-	5Nr7Swom9UCy3W+ieqnKMtePjr7bnqvVzpFRxTIaDmSVfb60wepjD87qChMu+lP/kA7PG/sEXX2dt
-	UjBT/wBg==;
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0+mFt5oOb+qqgFR3EfXheSjsteVBRKUjXyMdk+LEkyI=; b=Z+JqS8tDWrCNUGSJYbLumbC2Y5
+	I2H2yRzYOTe85WvFs1inBp/qToCaiMwg6xoog7DIYuwGJ6g2NyEiqWyZKeNjKZBINTmPKoXJTytPt
+	mB967MfQHGv5yhAFJu3XKFBhgxEHjA0gu796UdCSodrNM4bU9uCjpzIW99SnPTP3btiKbH+IYhhgm
+	YYVN453UKVvS8y2JZljQkORHJS3C9A00pU3HCJXY9kd1ClQfOnFdNePXEm+3mmqhgNTw4oQ/u3Y7H
+	0iPSztrer02P6cBUqoNtllrYXvHQ76/J+tTq/4l7AznXlGz1aZBRsJsVpyz4MMj1vJefLf1eS4Pt/
+	nQQ1hW1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWYgS-00E5JX-SY; Fri, 09 Sep 2022 07:44:16 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1oWYkt-00E84y-4t; Fri, 09 Sep 2022 07:48:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWYa1-00E17h-QL
-	for linux-mediatek@lists.infradead.org; Fri, 09 Sep 2022 07:37:39 +0000
-Received: by mail-wr1-x436.google.com with SMTP id k9so1359586wri.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Sep 2022 00:37:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date;
-        bh=WAXuAdMYCi1g4B3dZtIrUPbn2Rjq0LvUklClvaIr8b8=;
-        b=hixeKMNDSjZK3KfMycWsysM82K7TRLETak/YdjVEpPzYcAiTEyk1am1Y6ucG8fceex
-         gOBbgIHZEWeBRdgDLIHXwL/X4Bl2ustyrVlJlTITV9SlwE6ZstmXh/kthIVTS1Hbo6Ty
-         4LOP/ZaSecGllpo7+qyebW78n6H7y/TICy3iRg5GW/WwK/8Fv/2mNWFX3zxZYwolR+OQ
-         +GfGCLfmC1vuUWsIIvGsq8HPALZUPSB9sR7qLw4yZHU0Jx0FWdVZcDQoahIOb6A9giT+
-         KDtlJQdeSPKs98fcE/Y9nj/GIKcWMT9HMZn7fsw0bzoCfE9lN9M4UuiDtHMoxgTcM6O9
-         mq7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date;
-        bh=WAXuAdMYCi1g4B3dZtIrUPbn2Rjq0LvUklClvaIr8b8=;
-        b=YXAIarVnOnPkSBN5a/MLYNAWIXmM3f0vUXzjK/0FUtiolbE+Dz+8D8cPkjPDLghmjZ
-         7LlLITerk5qRx7Nvh2UNwP6l/zTp83aTBPIqiwDC8zMr9Ygek1Lw1J/RQRqSeoRWA0jv
-         gHkteKq/OHkn9NiXywCPR/vU/MYFB4OW6CQLLrNxfkkBl4FKz1pHsmpDYodebY8ibYK8
-         /gDx+xP5b2NdjFPuWmdZMal3H6GDLJfqukdsdFiZVvJjRkEm2TNKafn3UULDxE/fC904
-         DpbOXa8/SyuVhgkQkTfqbQPXZQlpg1cNoNP20kwOhIDIWjB4QQKTtZncVr7yj2KoHgc8
-         2BwA==
-X-Gm-Message-State: ACgBeo2RsZzWsiGx/7TogiKW6a7hs8Gk8cedEoYPg66a7B8wFsWvR328
-	W9Ee0J/qOYxLkrcFBhcKgfdJjA==
-X-Google-Smtp-Source: AA6agR75OF2EH+cFAiCFUtN0kMdkH9+f5B4FNPLDQ7a3iVi2EQXbEUCBkPoYSszQ+aDBYO//mF1y4w==
-X-Received: by 2002:a5d:494d:0:b0:228:d840:99f5 with SMTP id r13-20020a5d494d000000b00228d84099f5mr7203566wrs.458.1662709053950;
-        Fri, 09 Sep 2022 00:37:33 -0700 (PDT)
-Received: from amjad-ThinkPad-T490.baylibre (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id h7-20020a05600c414700b003a83ca67f73sm1252976wmm.3.2022.09.09.00.37.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Sep 2022 00:37:33 -0700 (PDT)
-From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-To: matthias.bgg@gmail.com
-Cc: Markus Schneider-Pargmann <msp@baylibre.com>,
-	rafael@kernel.org,
-	fparent@baylibre.com,
-	amitk@kernel.org,
-	daniel.lezcano@linaro.org,
-	devicetree@vger.kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-pm@vger.kernel.org,
-	robh+dt@kernel.org,
-	rui.zhang@intel.com,
-	Amjad Ouled-Ameur <aouledameur@baylibre.com>
-Subject: [PATCH v4 2/4] thermal: mediatek: control buffer enablement tweaks
-Date: Fri,  9 Sep 2022 09:37:26 +0200
-Message-Id: <20220909073726.32423-1-aouledameur@baylibre.com>
-X-Mailer: git-send-email 2.37.3
+	id 1oWYcJ-00E2eS-5D; Fri, 09 Sep 2022 07:40:03 +0000
+X-UUID: c69e7b6928d04e72b0492d073e856c41-20220909
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=0+mFt5oOb+qqgFR3EfXheSjsteVBRKUjXyMdk+LEkyI=;
+	b=Pv+9ZG1wQXnmta8e9p0nQyS0UeMcGRwjxsGV5GEfZOwwmdTG5h2mCuShdkzVYAk0lI6d6A9upkQH9d/Cw1fUUcmp6lIu+yvu9k5lV5fmFMuW09gXhQZCGHJUr+V4RCWcoiGUAd8y3Nfztv+Iw2eBk/GNjZGX/Yxm+YrgY3PCLZw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:8ae723a7-68f9-44f3-834c-28c938ad63c9,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:cce6e4eb-2856-4fce-b125-09d4c7ebe045,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:1,EDM:-3,IP:nil,URL:0,File:nil
+	,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c69e7b6928d04e72b0492d073e856c41-20220909
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <chengci.xu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 293756634; Fri, 09 Sep 2022 00:39:51 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 9 Sep 2022 15:39:15 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 9 Sep 2022 15:39:14 +0800
+Message-ID: <f70232ad7365fbd8fb27a8658b9633897c7b18a4.camel@mediatek.com>
+Subject: Re: [PATCH v2 1/3] dt-bindings: mediatek: mt8188: Add binding for
+ MM & INFRA IOMMU
+From: Chengci.Xu <chengci.xu@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Yong Wu
+	<yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon
+	<will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Fri, 9 Sep 2022 15:39:14 +0800
+In-Reply-To: <87307ae4-a320-5880-1333-6ea700b61ca7@linaro.org>
+References: <20220831125502.7818-1-chengci.xu@mediatek.com>
+	 <20220831125502.7818-2-chengci.xu@mediatek.com>
+	 <2e575ed1-b82c-c7bd-3ddf-ccb6022b2461@linaro.org>
+	 <c09f262422dd6cd0bf2147870a109bd2ede36d4f.camel@mediatek.com>
+	 <87307ae4-a320-5880-1333-6ea700b61ca7@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_003737_879325_1CCABCBE 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20220909_003959_280623_D4490375 
+X-CRM114-Status: GOOD (  17.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,80 +89,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Markus Schneider-Pargmann <msp@baylibre.com>
+On Fri, 2022-09-09 at 09:11 +0200, Krzysztof Kozlowski wrote:
+> On 09/09/2022 05:20, Chengci.Xu wrote:
+> > > > +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause) */
+> > > 
+> > > Why do you license it under BSD-3 clause?
+> > > 
+> > 
+> > A mediatek internal wiki suggest me use "BSD-3-Clause" without
+> > detial
+> > reason. May be it is not suitable for this file.
+> > 
+> > If you don't approve of this, I can change this license to "GPL-
+> > 2.0-
+> > only OR BSD-2-Clause", which is perferred by DT bindings file
+> > according
+> > to "submitting-patches.rst". 
+> > 
+> > Do you think "BSD-2-Clause" is OK? Or could you kindly share me
+> > another
+> > proper license?
+> 
+> Please switch to "GPL-2.0-only OR BSD-2-Clause", which is preferred
+> for
+> bindings.
 
-Add logic in order to be able to turn on the control buffer on MT8365.
-This change now allows to have control buffer support for MTK_THERMAL_V1,
-and it allows to define the register offset, and mask used to enable it.
+Thanks for your advice, we will use "GPL-2.0-only OR BSD-2-Clause".
 
-Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
----
- drivers/thermal/mtk_thermal.c | 25 ++++++++++++++++++-------
- 1 file changed, 18 insertions(+), 7 deletions(-)
+Best regards,
+Chengci Xu
 
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index 8440692e3890..d8ddceb75372 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -271,6 +271,9 @@ struct mtk_thermal_data {
- 	bool need_switch_bank;
- 	struct thermal_bank_cfg bank_data[MAX_NUM_ZONES];
- 	enum mtk_thermal_version version;
-+	u32 apmixed_buffer_ctl_reg;
-+	u32 apmixed_buffer_ctl_mask;
-+	u32 apmixed_buffer_ctl_set;
- };
- 
- struct mtk_thermal {
-@@ -514,6 +517,9 @@ static const struct mtk_thermal_data mt7622_thermal_data = {
- 	.adcpnp = mt7622_adcpnp,
- 	.sensor_mux_values = mt7622_mux_values,
- 	.version = MTK_THERMAL_V2,
-+	.apmixed_buffer_ctl_reg = APMIXED_SYS_TS_CON1,
-+	.apmixed_buffer_ctl_mask = GENMASK(31, 6) | BIT(3),
-+	.apmixed_buffer_ctl_set = BIT(0),
- };
- 
- /*
-@@ -963,14 +969,18 @@ static const struct of_device_id mtk_thermal_of_match[] = {
- };
- MODULE_DEVICE_TABLE(of, mtk_thermal_of_match);
- 
--static void mtk_thermal_turn_on_buffer(void __iomem *apmixed_base)
-+static void mtk_thermal_turn_on_buffer(struct mtk_thermal *mt,
-+				       void __iomem *apmixed_base)
- {
--	int tmp;
-+	u32 tmp;
-+
-+	if (!mt->conf->apmixed_buffer_ctl_reg)
-+		return;
- 
--	tmp = readl(apmixed_base + APMIXED_SYS_TS_CON1);
--	tmp &= ~(0x37);
--	tmp |= 0x1;
--	writel(tmp, apmixed_base + APMIXED_SYS_TS_CON1);
-+	tmp = readl(apmixed_base + mt->conf->apmixed_buffer_ctl_reg);
-+	tmp &= mt->conf->apmixed_buffer_ctl_mask;
-+	tmp |= mt->conf->apmixed_buffer_ctl_set;
-+	writel(tmp, apmixed_base + mt->conf->apmixed_buffer_ctl_reg);
- 	udelay(200);
- }
- 
-@@ -1070,8 +1080,9 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 		goto err_disable_clk_auxadc;
- 	}
- 
-+	mtk_thermal_turn_on_buffer(mt, apmixed_base);
-+
- 	if (mt->conf->version == MTK_THERMAL_V2) {
--		mtk_thermal_turn_on_buffer(apmixed_base);
- 		mtk_thermal_release_periodic_ts(mt, auxadc_base);
- 	}
- 
--- 
-2.37.3
+> 
+> 
+> Best regards,
+> Krzysztof
 
 
