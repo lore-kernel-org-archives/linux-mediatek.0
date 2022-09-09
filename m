@@ -4,67 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE5EFECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 09:37:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 914D6ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 13:12:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ex8tDGo/LAaoWcPmTVZ1I6qos48tVSO9colG8zIGD2s=; b=SVem0eK44MpciVIh9tyT6oyzlG
-	GhoCy7FffK03p8QBNHXrFzJ3lv5QRzMskaTVkCXPZe02hfzNae5FPaWktm1BAGi/8vRWKHcxZdwnc
-	W+eU0LkNmoYiMaUmohCLlPHhKJQbil/AaQ7HKrcim/KGz/f9xmda82rDrIXGwKFAoSLLIKN7x7CWC
-	ccY1bo9Tv5LAM5g9zgMB+spXcFix+yNa6Phh8sUi09C4SZUOgjxrMRWLlLONwD6aDkgOPq9rKGlf0
-	3hs22GCyGXVa56MCk+6eJVTjMuzIbGXVxzujui4OxrfDOrDMwrhMaq0XSX7MuRVAVk+tywF9/VaBB
-	WV9++W0g==;
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O1xxtavjv9gkNx7YTvu4B6Onh/rgfoue4BCVfPshp5Q=; b=v5J5QmfpsFfNoquhad/GUH4epZ
+	VL+7rc0sCLp2jfalOCv+UDm98tvDyZd2LneEuavRFKW4d0B59Pe1H69MJPkdq+Mwoj4Vc8p2vihWI
+	Lm30ApY8308tWMYcWIUnrnj6tcQO4mHZPjEhwKGlVigVC96RsIEw+YJqRpg5vIDnXl4J2VjW8kBEb
+	NzpE4s7HNkaMmSGbvM/dzlXZkvzqdEwOx7VjGsm3PVi86ZGRP6HiWpLqoG8SSeyTvQegZPySn/SNI
+	dRl/JjR2CrRKRM829nUbRO8mA1eQs6f7mivD8tv3aGdMbnK+oVW8sR/AubTGdHN/pNjstpKR6vK06
+	sGkC2fdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWaSJ-00F5n9-4G; Fri, 09 Sep 2022 09:37:47 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oWdnx-00GGBM-WA; Fri, 09 Sep 2022 13:12:22 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWaS7-00F5jb-Kv; Fri, 09 Sep 2022 09:37:37 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BC1136601657;
-	Fri,  9 Sep 2022 10:37:30 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662716251;
-	bh=VUIE2ULcIZ7NEXZB53jupjRin58XQGFQ/42Sux2176I=;
-	h=From:To:Cc:Subject:Date:From;
-	b=LVuPgSXSB1Q94QcHPkBlwznaWhMhNik57Es0RYRkm5EF2fIW0UG9UhUNf7y3bUWjW
-	 19XtHTJyuv5DtMYpHHiWSRFyfu7J/G9DsM1qeU5JZFQhE3tbAhAU4pu4BrIFSIKbH3
-	 PAyVB+Nc+p3wXz2Cj6vE6kX++OfbehaS1Esm1mkRF7eODzukX4tRp715gC4C4jrKFz
-	 MhN61qfYysiInZ/++gvBhIGMQdYLYKH9JmrQ01J9ntUUPg9QmaPoTby0loyAu+RyWI
-	 14GfqhZd6+MsbuxFNp4RzrCGM3Ljy+P+NQZyeGU9Vb0YN/lm/Y6kMSwz44vmPWZ0hL
-	 rYYAEmfBAxjHw==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: rafael@kernel.org
-Cc: viresh.kumar@linaro.org,
-	lgirdwood@gmail.com,
-	broonie@kernel.org,
-	matthias.bgg@gmail.com,
-	andrew-sh.cheng@mediatek.com,
-	jia-wei.chang@mediatek.com,
-	rex-bc.chen@mediatek.com,
-	nfraprado@collabora.com,
-	linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] cpufreq: mediatek: Fix KP and lockups on proc/sram regulators error
-Date: Fri,  9 Sep 2022 11:37:24 +0200
-Message-Id: <20220909093724.40078-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.37.2
+	id 1oWdnm-00GG5G-GI; Fri, 09 Sep 2022 13:12:11 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id F0F37188528F;
+	Fri,  9 Sep 2022 13:11:56 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id E8A0725032B7;
+	Fri,  9 Sep 2022 13:11:56 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id DDD2B9EC0002; Fri,  9 Sep 2022 13:11:56 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Date: Fri, 09 Sep 2022 15:11:56 +0200
+From: netdev@kapio-technology.com
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Ido Schimmel <idosch@nvidia.com>, davem@davemloft.net, kuba@kernel.org,
+ netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, Andrew Lunn
+ <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Eric Dumazet
+ <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt Kanzenbach
+ <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung Huh
+ <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Christian Marangi
+ <ansuelsmth@gmail.com>, Daniel Borkmann <daniel@iogearbox.net>, Yuwei Wang
+ <wangyuweihx@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
+ MAC-Auth Bypass to locked port tests
+In-Reply-To: <20220908112044.czjh3xkzb4r27ohq@skbuf>
+References: <Ywyj1VF1wlYqlHb6@shredder>
+ <9e1a9eb218bbaa0d36cb98ff5d4b97d7@kapio-technology.com>
+ <YwzPJ2oCYJQHOsXD@shredder>
+ <69db7606896c77924c11a6c175c4b1a6@kapio-technology.com>
+ <YwzjPcQjfLPk3q/k@shredder>
+ <f1a17512266ac8b61444e7f0e568aca7@kapio-technology.com>
+ <YxNo/0+/Sbg9svid@shredder>
+ <5cee059b65f6f7671e099150f9da79c1@kapio-technology.com>
+ <Yxmgs7Du62V1zyjK@shredder>
+ <8dfc9b525f084fa5ad55019f4418a35e@kapio-technology.com>
+ <20220908112044.czjh3xkzb4r27ohq@skbuf>
+User-Agent: Gigahost Webmail
+Message-ID: <152c0ceadefbd742331c340bec2f50c0@kapio-technology.com>
+X-Sender: netdev@kapio-technology.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_023735_922070_0407B511 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20220909_061210_732547_61F95892 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,64 +90,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Function regulator_get_optional() returns a negative error number on
-any kind of regulator_get() failure: failing to check for that in the
-teardown path will lead to a kernel panic due to a call to function
-regulator_disable().
+On 2022-09-08 13:20, Vladimir Oltean wrote:
+> On Thu, Sep 08, 2022 at 01:14:59PM +0200, netdev@kapio-technology.com 
+> wrote:
+>> On 2022-09-08 09:59, Ido Schimmel wrote:
+>> > On Wed, Sep 07, 2022 at 11:10:07PM +0200, netdev@kapio-technology.com wrote:
+>> > > I am at the blackhole driver implementation now, as I suppose that the
+>> > > iproute2 command should work with the mv88e6xxx driver when adding blackhole
+>> > > entries (with a added selftest)?
+>> > > I decided to add the blackhole feature as new ops for drivers with functions
+>> > > blackhole_fdb_add() and blackhole_fdb_del(). Do you agree with that approach?
+>> >
+>> > I assume you are talking about extending 'dsa_switch_ops'?
+>> 
+>> Yes, that is the idea.
+>> 
+>> > If so, it's up to the DSA maintainers to decide.
+> 
+> What will be the usefulness of adding a blackhole FDB entry from user 
+> space?
 
-Besides that, the "proc" regulator does actually provide power to the
-CPU cluster(s): disabling it will produce a lockup on at least some
-SoCs, such as MT8173.
-
-That consideration is also valid for the "sram" regulator, providing
-power to the CPU caches instead, present on some other SoCs, such as
-MT8183, MT8186 (and others).
-
-Resolve both situations and by simply removing the entire faulty
-branches responsible for disabling the aforementioned regulators if
-enabled, keeping in mind that these are enabled (and left enabled)
-by the bootloader before booting the kernel.
-
-Fixes: 4b9ceb757bbb ("cpufreq: mediatek: Enable clocks and regulators")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/cpufreq/mediatek-cpufreq.c | 13 ++-----------
- 1 file changed, 2 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index 7f2680bc9a0f..d68f16f475a6 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -534,11 +534,6 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
- 
- out_free_resources:
--	if (regulator_is_enabled(info->proc_reg))
--		regulator_disable(info->proc_reg);
--	if (info->sram_reg && regulator_is_enabled(info->sram_reg))
--		regulator_disable(info->sram_reg);
--
- 	if (!IS_ERR(info->proc_reg))
- 		regulator_put(info->proc_reg);
- 	if (!IS_ERR(info->sram_reg))
-@@ -553,14 +548,10 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 
- static void mtk_cpu_dvfs_info_release(struct mtk_cpu_dvfs_info *info)
- {
--	if (!IS_ERR(info->proc_reg)) {
--		regulator_disable(info->proc_reg);
-+	if (!IS_ERR(info->proc_reg))
- 		regulator_put(info->proc_reg);
--	}
--	if (!IS_ERR(info->sram_reg)) {
--		regulator_disable(info->sram_reg);
-+	if (!IS_ERR(info->sram_reg))
- 		regulator_put(info->sram_reg);
--	}
- 	if (!IS_ERR(info->cpu_clk)) {
- 		clk_disable_unprepare(info->cpu_clk);
- 		clk_put(info->cpu_clk);
--- 
-2.37.2
-
+With the software bridge it could be used to signal a untrusted host in 
+connection with a locked port entry attempt. I don't see so much use 
+other that test purposes with the driver though.
 
