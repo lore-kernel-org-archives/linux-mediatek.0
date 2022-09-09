@@ -4,57 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48336ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 06:46:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34E24ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Sep 2022 07:00:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JmGZk+jQFAEiH3JwSTcQKy/FhWJAfUDEUzJ2Ol2leIo=; b=QNpNJJkHKyPc2ktHlQwkbZPqhS
-	uNEuye07srQ9RtznklYzVfTJCjXMHY8h8ScudEagwL3NO5qNC1TedvXXrcnXAdlt9f6O+r9tgGzF4
-	jpm+JUC6vjbhtrJOtZf6mbf782Q91B9U+2PjCq/U6ZW12mpiWNIiSGjhW3ko79bPDlusB7ZHZk+db
-	NTQbCD+hQpRoAp2x2aYkMMkG3sqQnAkzrDAsagqcVegBJbcNwh98QwmKDx/muDUyTFXMVEiEaTAPP
-	684JFLtW1EWe1NdvZy6OlplKJCTGWHB7ybZEG2Gr3VVfmLD3ZL2/gAqtyFgxy6TNgBJWfv5Kfmr4w
-	43EEWGag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=o66MHsRIAwadkZeTDf6tPmrJmbsO0jRuPmHDJYtcQEs=; b=mLCWLiloQYywwxj/9tUxdhRXqS
+	D1/tyf6we5rRFI7fnoVZDV8pQh5PvRAnPfYFpVES9IUl7jedJQgs6I2UchX0fgZxgf+DyzxLFRBQX
+	bs8KQMMpyqxY/LiIOMs8IWNhrWaBNktxB4Oz9BVvlyvCj0Uomsaqz0nt+VWUanhcKYq/nh6wKDL8o
+	LsE95Ftj4iF1klA/yOAE9O2iDGyAdxJk9GB4nb3KhEAFNAUq1xMHfAQ3p3pnfQvLJFpxHr/PyhAAq
+	pHkwFkd6EgTLBRi4Rn0EEsFTs07/NzdqItZCI42bynUhngHl6BU1c8+wTGy+Hq0dQ4y1YhwU7RSUE
+	YHr8TryA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWXmX-00DSnX-VD; Fri, 09 Sep 2022 06:46:29 +0000
-Received: from mail.nfschina.com ([124.16.136.209])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWXmL-00DSjq-Ny; Fri, 09 Sep 2022 06:46:19 +0000
-Received: from localhost (unknown [127.0.0.1])
-	by mail.nfschina.com (Postfix) with ESMTP id 73E231E80D5E;
-	Fri,  9 Sep 2022 14:44:37 +0800 (CST)
-X-Virus-Scanned: amavisd-new at test.com
-Received: from mail.nfschina.com ([127.0.0.1])
-	by localhost (mail.nfschina.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KCJdTlgd51AI; Fri,  9 Sep 2022 14:44:34 +0800 (CST)
-Received: from localhost.localdomain (unknown [180.167.10.98])
-	(Authenticated sender: yuzhe@nfschina.com)
-	by mail.nfschina.com (Postfix) with ESMTPA id 4EE7A1E80D06;
-	Fri,  9 Sep 2022 14:44:34 +0800 (CST)
-From: Yu Zhe <yuzhe@nfschina.com>
-To: lgirdwood@gmail.com,
-	broonie@kernel.org,
-	perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com
-Cc: alsa-devel@alsa-project.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	liqiong@nfschina.com,
-	Yu Zhe <yuzhe@nfschina.com>
-Subject: [PATCH] ASoC: mediatek: mt6359: fix platform_get_irq error checking
-Date: Fri,  9 Sep 2022 14:45:11 +0800
-Message-Id: <20220909064511.22343-1-yuzhe@nfschina.com>
-X-Mailer: git-send-email 2.11.0
+	id 1oWXzp-00DbaF-5Q; Fri, 09 Sep 2022 07:00:13 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oWXzZ-00DbLu-5P; Fri, 09 Sep 2022 06:59:58 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 9B773B8236C;
+	Fri,  9 Sep 2022 06:59:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D411C433C1;
+	Fri,  9 Sep 2022 06:59:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1662706794;
+	bh=NjnETBEQovFTHW/atuk0epV1j9ubAlRp1T2wsPCQGs0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FzGQZ/+Gnbsqio4Xxee9bwn59GpYnV3pdfpVRBm2cSnqmKIoo7JDr7OOZ6dP2bQmw
+	 IPbykM6K+kGdeTnfLY5R8h9H+ZhTSlpjJreTuebeComEykTksfLnTJPdmOrMoZLcQm
+	 vvtDtC/NgLjctJJFd4m4J2vx1syQ9LsiU24DqYsnlOyDocLTVndtuE9G2gR9utto5Y
+	 t9od9fsfDx6+48lUujj0CmstVeugcv8OVwg19tW3BhJe82iF25pZROd2nRjCQp2I+M
+	 O0+jvYqhtEQ8drg+PISf0P2gGdv1LE3f0EwT+R/SzTSAaPKMaGGryiJrObVD8zn2gY
+	 f8clRYqE5CJ8g==
+Date: Fri, 9 Sep 2022 07:59:49 +0100
+From: Lee Jones <lee@kernel.org>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Andy Shevchenko <andy.shevchenko@gmail.com>,
+	ChiYuan Huang <cy_huang@richtek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	ChiaEn Wu <chiaen_wu@richtek.com>,
+	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	kernel-janitors <kernel-janitors@vger.kernel.org>
+Subject: Re: [PATCH] mfd: mt6370: add bounds checking to regmap_read/write
+ functions
+Message-ID: <YxrkZX36wzVlzq5u@google.com>
+References: <Yv8ezribLQbq5ggv@kili>
+ <CAHp75VcotcJzqc4iSwNTKcvF3vAYz6VUuMrsj7LF6mi6Xu8D=Q@mail.gmail.com>
+ <20220822125705.GD2695@kadam>
+ <YxmSTH5ETSC0D3Rp@google.com>
+ <Yxm7eztkQKDPU/Kl@kadam>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <Yxm7eztkQKDPU/Kl@kadam>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_234618_011984_087E815B 
-X-CRM114-Status: UNSURE (   8.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220908_235957_367738_933C0E19 
+X-CRM114-Status: GOOD (  27.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,46 +81,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The platform_get_irq() function returns negative error codes on error,
-fix the checking.
+On Thu, 08 Sep 2022, Dan Carpenter wrote:
 
-Signed-off-by: Yu Zhe <yuzhe@nfschina.com>
----
- sound/soc/codecs/mt6359-accdet.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+> On Thu, Sep 08, 2022 at 07:57:16AM +0100, Lee Jones wrote:
+> > On Mon, 22 Aug 2022, Dan Carpenter wrote:
+> > 
+> > > On Fri, Aug 19, 2022 at 09:27:13AM +0300, Andy Shevchenko wrote:
+> > > > On Fri, Aug 19, 2022 at 8:25 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
+> > > > >
+> > > > > It looks like there are a potential out of bounds accesses in the
+> > > > > read/write() functions.  Also can "len" be negative?  Let's check for
+> > > > > that too.
+> > > > 
+> > > > ...
+> > > > 
+> > > > > Fixes: ab9905c5e38e ("mfd: mt6370: Add MediaTek MT6370 support")
+> > > > 
+> > > > > From static analysis.  This code is obviously harmless however it may
+> > > > > not be required.  The regmap range checking is slightly complicated and
+> > > > > I haven't remembered where all it's done.
+> > > > 
+> > > > Exactement! I do not think this Fixes anything, I believe you are
+> > > > adding a dead code. So, can you do deeper analysis?
+> > > 
+> > > I spent a long time looking at this code before I sent it and I've
+> > > spent a long time looking at it today.
+> > > 
+> > > Smatch said that these values come from the user, but now it seems
+> > > less clear to me and I have rebuilt the DB so I don't have the same
+> > > information I was looking at earlier.
+> > > 
+> > > So I can't see if these come from the user but neither can I find any
+> > > bounds checking.
+> > 
+> > What's the consensus please?
+> 
+> Let's drop it.  I think it's not required.
 
-diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
-index c190628e2905..b70aac5075ad 100644
---- a/sound/soc/codecs/mt6359-accdet.c
-+++ b/sound/soc/codecs/mt6359-accdet.c
-@@ -965,7 +965,7 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
- 	mutex_init(&priv->res_lock);
- 
- 	priv->accdet_irq = platform_get_irq(pdev, 0);
--	if (priv->accdet_irq) {
-+	if (priv->accdet_irq > 0) {
- 		ret = devm_request_threaded_irq(&pdev->dev, priv->accdet_irq,
- 						NULL, mt6359_accdet_irq,
- 						IRQF_TRIGGER_HIGH | IRQF_ONESHOT,
-@@ -979,7 +979,7 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
- 
- 	if (priv->caps & ACCDET_PMIC_EINT0) {
- 		priv->accdet_eint0 = platform_get_irq(pdev, 1);
--		if (priv->accdet_eint0) {
-+		if (priv->accdet_eint0 > 0) {
- 			ret = devm_request_threaded_irq(&pdev->dev,
- 							priv->accdet_eint0,
- 							NULL, mt6359_accdet_irq,
-@@ -994,7 +994,7 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
- 		}
- 	} else if (priv->caps & ACCDET_PMIC_EINT1) {
- 		priv->accdet_eint1 = platform_get_irq(pdev, 2);
--		if (priv->accdet_eint1) {
-+		if (priv->accdet_eint1 > 0) {
- 			ret = devm_request_threaded_irq(&pdev->dev,
- 							priv->accdet_eint1,
- 							NULL, mt6359_accdet_irq,
+Dropped.
+
 -- 
-2.11.0
-
+Lee Jones [李琼斯]
 
