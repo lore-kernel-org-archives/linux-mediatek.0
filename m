@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 609A8ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Sep 2022 08:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93737ECAAD5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Sep 2022 08:57:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8nqBvEoYhhM10pqeIUysrjTuBKAUboHsqeHxK1jGstA=; b=nirYJ2KTTjczIEURZ1LX6wgAWV
-	nBck3/hXS2/MQuLyRGkTyMMCv203SdI0laAT9ZpfmT2tynqdhP5eABDG9GvplJZEm196aXf0oUADu
-	sKIoQwTcWCZWG6p8IUyAWqPpFzpiC0sz598Qdvu7lhQtvZj5lvOL7BGqTlr9FEhy2/Eb1qvu4+GS6
-	DWbQJMYRErYP/o2VTrU4Lw0u3A7u3i8WWgv/undrWTtEWhEmpgwAJPqLybyyaKw3QPDrEM7mIvjSq
-	txQtP+htTJhz1yfIuplI/Xxz6LqvaCng9daDmhn/oUP8ASiI+IUpC+Tqf2sKkre6kfEl4QpHgeAAG
-	0EgJZOGA==;
+	bh=fWzLf+2o2chpqxMuyBDD5OnTzdJietvytSqErA07EVU=; b=D8VJNu365ncdXa6SKJcqG8bZYE
+	9S2k/VDFB8VhMtTngY8Q/6Oz8hiqDEIV5Jq44g6dAWJXaKBQha7J/cUVq0YATErJ4JRIUsDuPNGtr
+	0Aq9VLMrtObxF97t0wV1/CcDCRQv5Zl2zWL3A+zj8jqYLT3r9fWmtsizvaCB8k7PQxLXSv5MEOttE
+	xbgX71hGkB71pStukwbkBq1xnF+7KeFi4lECEtNhoFDziTpw+UgFrUih+3xFWiYjZwo2ZL7HcmylB
+	ij+hAUyPCSx6jeOePhdwpgtRYfnaiCIsQbEfsMovAr8eBFKdYIFw9GybwxzBlximk+4QurdUsl4mW
+	WkOJaueQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXf7K-007wzl-9M; Mon, 12 Sep 2022 08:48:34 +0000
+	id 1oXfFP-0081iK-Me; Mon, 12 Sep 2022 08:56:55 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXf60-007w8o-JZ
-	for linux-mediatek@lists.infradead.org; Mon, 12 Sep 2022 08:47:18 +0000
-X-UUID: 1fb0f59c3a264c028705fb92a4b4816d-20220912
+	id 1oXfFM-0081gQ-59
+	for linux-mediatek@lists.infradead.org; Mon, 12 Sep 2022 08:56:53 +0000
+X-UUID: 3412e3bdc2c54d1ebf9d7aee7a56fca6-20220912
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=8nqBvEoYhhM10pqeIUysrjTuBKAUboHsqeHxK1jGstA=;
-	b=O6uT2cFoKC41d0EaVV522525+9lckgOck4c3Lt1VN2TQTqYA1cHorzfZpXEWa44CMguIlQ4oEu2XmMgB9e5MGOwqpsDUxuwl0hy5YrTEJH+fBDgBtN6fTNS0YQIODeYd19TVa2rz8oXgy++M41Cs506qekQPNG8chPw0gBz565c=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=fWzLf+2o2chpqxMuyBDD5OnTzdJietvytSqErA07EVU=;
+	b=dCGUSemk+QScKyPANM+fp/VPpTJH/2vbY+yD5GJo3M6tRWXYMhzSWPxj35rsOb4ADU1G+l8+f3R057iDqpCnqm+M+ASmeUK4ufro5ohsY0WagsxVi5QNUJ2tyLaCvH9U368MPLQKBdJZMAy99m8At1I107DyNquSOswZCLwk6wM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:0d3e3cb6-6926-4d92-bbbb-da4b593dfa6b,OB:0,L
+X-CID-O-INFO: VERSION:1.1.10,REQID:c5228870-1f8c-49d2-ab86-ce2dfe7c19b9,OB:0,L
 	OB:0,IP:0,URL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Releas
 	e_Ham,ACTION:release,TS:-25
-X-CID-META: VersionHash:84eae18,CLOUDID:ca49555d-5ed4-4e28-8b00-66ed9f042fbd,C
+X-CID-META: VersionHash:84eae18,CLOUDID:c39e1dec-2856-4fce-b125-09d4c7ebe045,C
 	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
 	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 1fb0f59c3a264c028705fb92a4b4816d-20220912
+X-UUID: 3412e3bdc2c54d1ebf9d7aee7a56fca6-20220912
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <deren.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1475892352; Mon, 12 Sep 2022 01:47:05 -0700
+	with ESMTP id 274027481; Mon, 12 Sep 2022 01:56:45 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 12 Sep 2022 15:46:28 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Mon, 12 Sep 2022 16:46:08 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 12 Sep 2022 15:46:28 +0800
+ 15.2.792.15 via Frontend Transport; Mon, 12 Sep 2022 16:46:08 +0800
 From: Deren Wu <Deren.Wu@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
 CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
@@ -60,16 +60,16 @@ CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
 	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>,
 	<stable@vger.kernel.org>
-Subject: [PATCH] wifi: mt76: mt7921e: fix random fw download fail
-Date: Mon, 12 Sep 2022 15:45:48 +0800
-Message-ID: <c513094e569a21f23c9b5dfe17cd299b76b514d2.1662968113.git.deren.wu@mediatek.com>
+Subject: [PATCH v2] wifi: mt76: mt7921e: fix random fw download fail
+Date: Mon, 12 Sep 2022 16:45:52 +0800
+Message-ID: <1190a401463547e555912ef9417138df4ab2c363.1662972106.git.deren.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220912_014713_310120_40775CD9 
-X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-CacheID: sfid-20220912_015652_304316_7F092F2C 
+X-CRM114-Status: UNSURE (   9.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,7 +88,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 From: Deren Wu <deren.wu@mediatek.com>
 
 In case of PCIe interoperability problem shows up, the firmware
-payload my be corrupted in download stage. Turn off L0s to keep
+payload may be corrupted in download stage. Turn off L0s to keep
 fw download process accurately.
 
 [ 1093.528363] mt7921e 0000:3b:00.0: Message 00000007 (seq 7) timeout
@@ -109,6 +109,8 @@ fw download process accurately.
 Cc: stable@vger.kernel.org
 Fixes: bf3747ae2e25 ("mt76: mt7921: enable aspm by default")
 Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+v2: fix typo in commit message
 ---
  drivers/net/wireless/mediatek/mt76/mt7921/pci.c     | 1 +
  drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c | 2 ++
