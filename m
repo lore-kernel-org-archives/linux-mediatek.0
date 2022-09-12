@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B10AECAAD5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Sep 2022 10:41:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88100ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Sep 2022 10:43:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mW8rJXOdYePJsySLwZBYq0baYTnTTctj1Lb6RMqyucc=; b=g+F2T/IFaJnU7Eb+APB+5YnQOj
-	IEyKMNLnrX3Qrx5JAyi5qLN3Ulw3CTYGzW2lZEMGbvBgnHKfTYP69BJWuXsmLTVwCuyiSL0BUb/dd
-	gEA3w+Llg+wkzNwMgab91quMBbd8RV4TkeUwTGkpk0sVRxju6ftpatTam4RYZcXC/xyjMBPkbPKJk
-	2oK4PxlhiaaHlJ0fnHHNRPKJBt7th99vIwyjnreE68xAqMXUdehcrTeALG6C4/gBbwjZoCNtdINFs
-	COjWL0ZcG4qDMXvm2ra3+FgoPfWex509rdDDuDmWGn2I+Iw9Y91LWDK5Rwgikk565yVhi4h19mF+u
-	jqHbRLjA==;
+	bh=pa6W1YODU5uWUjf7zUhRw95uZp1QNrawRSVyyiW7Vl0=; b=C8otYPHvXW18Ymz0/ot9ecICNj
+	dSr06hYJsyRyzB1iyrzxbi5O2U8NDBmkwO3Y+U0ul6kXjrNap49KeuxkTFmKxPfb6mdKAVvZ+H7wk
+	So+8dIriAcH0Aegz+zBMU8R+ih+GdSX5TFBH65+ksnpl8TXAZ4CI1P4IUOs2y//mjqPFsd/ECyChY
+	auSFlbO7l90NHgiTAxA6CzoZPqGIuE+abEs5N8EkIV7hF7qRteS10zS4MMW8aytyUtP8L86KqQo98
+	e87r9zcrstFXDpovnD2nDVUtB48zcUPaPs3S7KjHmhkDp3FN1x46B5ZXnKgUAgtcSuITj0j/kZRpR
+	L79RLDog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXglR-008njc-QE; Mon, 12 Sep 2022 10:34:05 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oXgnq-008qKs-PR; Mon, 12 Sep 2022 10:36:34 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXgeZ-008ji7-OU; Mon, 12 Sep 2022 10:27:02 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id BA5DC6601FDB;
-	Mon, 12 Sep 2022 11:26:57 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662978418;
-	bh=lsakC5tXlXnwjZ+SXxeOjNZ2MoFmMoIsT0zJ4vJo5oc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IoVq3MfDQ8Lq/69DJYionI4z0bCBxPZDwZDZXcK6CaMLDtptMrQZ9S5NcGnaCpV/E
-	 WO5+MytT5DVhIi0Us7pHAB8we6kAYnpaWwY8hwFgcdCJXVEyLK6c0ducJz8cFqkxeg
-	 XE2RyAGtqXhOSFTYIpcGorjtbtlc9AlwWH3OS9nfuSilhbqWdj7um0BRsHpGNuAaGH
-	 7Nq0KTNWdziVMeQBdRRiLd1yjPga0SpRCN5OtcSgBcZcIfXkMq2qw0tUeRKkBAp2Ve
-	 Q5s9ciPg0dH1qDawwpsraC04BLszfQGAERB7tF3uOpLxCQJVs+WAzITzDPOu+hUvVF
-	 tBHfe49Mvg7og==
-Message-ID: <ed7ca57f-81c8-514d-2c64-26a4aa8e75d2@collabora.com>
-Date: Mon, 12 Sep 2022 12:26:55 +0200
+	id 1oXgkO-008mjs-CF
+	for linux-mediatek@lists.infradead.org; Mon, 12 Sep 2022 10:33:02 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id z97so12020897ede.8
+        for <linux-mediatek@lists.infradead.org>; Mon, 12 Sep 2022 03:32:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date;
+        bh=pa6W1YODU5uWUjf7zUhRw95uZp1QNrawRSVyyiW7Vl0=;
+        b=RbzFH4Z4USAJQAYUrNqiIlm2Ou3paeEKXx7EA6MqxzRIeMg5OYjW7hnVzCRokjI8Uh
+         UlSugb4mjNXVJA3f+6Stg4HhjA1g6w4rzssqcy+trVOXpReT/SWY/DhL00wgMFauBPY4
+         +9KqJAYCJwyhtrWvNCzGEsoSLnpJdz1zmnzBA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=pa6W1YODU5uWUjf7zUhRw95uZp1QNrawRSVyyiW7Vl0=;
+        b=qGDdT8mgjveM9jS5qd3J18OmSGeVJTcAiOd3lI9zU4cX2jKnQVx59KcF4Fku0guivT
+         /s2A2N6AJ0Je9HvSEvjkXK1Oftf+tAjRIcoQtEi3BHjQj1w0tKoZ9VhtrQIMemVnxnjY
+         WljAPMyhprllUO4Ku3cul8yStFEePE+1oHS+SMx4buNiwSQxnRfT/uVBKc60Mt1H9U4C
+         VkZ9cEEoMPhJR0VfISxbY+YbKdWBjrhgs6WWHt7Pl/o9c8WZaIiqk+zVp4Ja5ieWbU+n
+         2DlDGGIPOPBJVQ52qXiYqlmDbld289nK7FYacojyWWmGb/kwajF1p2vz4Y2z+7jPzX5b
+         OjPg==
+X-Gm-Message-State: ACgBeo2k7BprqBfAxyKDYhozWSoXBocJWMxyLP59rBdXDSW+Frcpuh7b
+	CkfliuHYcQRPn8OtdyxpaczxaytR5hz3tDFs56s44w==
+X-Google-Smtp-Source: AA6agR4M8kUfW+1+K71sRAnTB0B7zC1boeAgnNmeFDTIx6IxH5frVa+UGb0pWsh9PfgPzIod9Cpy0WGwITz9nMf2SRs=
+X-Received: by 2002:a05:6402:890:b0:44e:bb54:7f54 with SMTP id
+ e16-20020a056402089000b0044ebb547f54mr22112611edy.307.1662978777293; Mon, 12
+ Sep 2022 03:32:57 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v3 8/9] drm/mediatek: Add clear RELAY_MODE bit to set
- gamma
-Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220911153734.24243-1-jason-jh.lin@mediatek.com>
- <20220911153734.24243-9-jason-jh.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220911153734.24243-9-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20220908171153.670762-1-nfraprado@collabora.com>
+In-Reply-To: <20220908171153.670762-1-nfraprado@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 12 Sep 2022 18:32:46 +0800
+Message-ID: <CAGXv+5ERm1kXf+YgeDMOgkEY77Fx1o8FK=anWn22g7SAGXSfhw@mail.gmail.com>
+Subject: Re: [PATCH 0/3] arm64: dts: mediatek: asurada: Enable internal display
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220912_032700_236567_B6B955E8 
-X-CRM114-Status: UNSURE (   9.28  )
+X-CRM114-CacheID: sfid-20220912_033300_460088_2EF97AAE 
+X-CRM114-Status: UNSURE (   9.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,16 +86,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/09/22 17:37, Jason-JH.Lin ha scritto:
-> Since the bootlaoder may set the RELAY_MODE to gamma be for the kerenl,
-> we have to clear the RELAY_MODE bit to make sure that the gamma is
-> enabled correctly.
-> 
-> Fixes: b10023b03082 ("FROMGIT: drm/mediatek: Separate gamma module")
+On Fri, Sep 9, 2022 at 1:11 AM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
+>
+>
+> This series adds and enables all components required to have a working
+> internal display on the Asurada platform.
+>
+>
+> N=C3=ADcolas F. R. A. Prado (3):
+>   arm64: dts: mediatek: asurada: Add display regulators
+>   arm64: dts: mediatek: asurada: Add display backlight
+>   arm64: dts: mediatek: asurada: Enable internal display
 
-This Fixes tag is invalid. Please fix.
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Regards,
-Angelo
-
+Tested _remotely_ on Hayato, with EDID read back correctly.
 
