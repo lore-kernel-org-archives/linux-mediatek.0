@@ -4,76 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBA5CECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Sep 2022 10:21:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4E03ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Sep 2022 10:24:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8E4oKsKC+QVQyNZL8GnXou+uvzCZT3mx6g9q6UnxG+k=; b=rs047u46lfytEFkdP/gea8pvCQ
-	6DvepU9U+Fvv3Y4qWrNmY87ziwTj95pMJ8dQKBcymahmFIENIW2JdDgQQel5rOkO/e7Ldzz17jxHb
-	CP3zgYGKhkQBe9Y2llD1QQdPC6X/rSTLP4EH3FI/+4Dy5VKgKnEafxueuZZQP7NMN1e7sCMeKN3aV
-	+I8VvoLavXFgsNtBXF/v7rngaAI4myx/BCylmrc5TlbAv/Tx7jVwx0pDCdSsFTo2NnhEfw5ouA9WG
-	hTE82p9g+TbkDo4mZ1y8Si/v1q4/n0mZyPYXmp8rbL9WvBaGPV2i7b8rvKRjuL8K+uHonZukhuffz
-	yeHi1JqA==;
+	bh=JC2npHs7pPCCZ3AgqReE3otPh0KaXHEd+xhwp6pL8uw=; b=TDsMi/TWx2Aamq95tEgrMy0DUM
+	XJFfbzY878INVqEsyftO2WDSsX5If0WZs0yZD3RnOP8HKyTtcC9XWXkSt9lhJg/eptDz4iT65w0AH
+	/Zlkulsrp8dWzCdqyWC6/MiPbXm5B8on+osEZGLLzrL8kkbai0MhaQty5RJw6OMiJJgFrtipogUJt
+	I9Xua/V9htUieyRweD+zCKuHqs0WOaLzLzMWqTMcxKkAGaC2bZYNznD3Y+kIC9MATEo4nBhXCPw+6
+	NQqkc93Z+Drxd/MGAMEb8uYkV3Ra427TprbtwJM55nNGC8L9MgsLVLgzt8dsii8AXajJt6pPpNNII
+	IPztO5hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXgYc-008h76-Ar; Mon, 12 Sep 2022 10:20:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oXgc6-008iYp-Jg; Mon, 12 Sep 2022 10:24:26 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXgPS-008cJa-8z; Mon, 12 Sep 2022 10:11:27 +0000
-X-UUID: b84545ce58ce40b9b941f05d2c6435f2-20220912
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=8E4oKsKC+QVQyNZL8GnXou+uvzCZT3mx6g9q6UnxG+k=;
-	b=qmEWwU/o1Zzm/WirGIhOaF7Log8So1aE1dgRYRrJC/ph1fUDUwHlpWErLQdbk8QI8wY/gHo1rORRVpW9it0ZSf7d+om1riim1hB8LjwU+xqwBLTS+SsOI0DwAFIX5dTygK+t01ZHgfwYP486DWOiW17Y3cq6MTqd9Dla8Hry5t4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:ea34c12a-2502-4868-b69e-42cf2f7ba95e,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
-	Ham,ACTION:release,TS:0
-X-CID-META: VersionHash:84eae18,CLOUDID:214818f6-6e85-48d9-afd8-0504bbfe04cb,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
-	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: b84545ce58ce40b9b941f05d2c6435f2-20220912
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 95128813; Mon, 12 Sep 2022 03:11:15 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 12 Sep 2022 18:00:38 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 12 Sep 2022 18:00:38 +0800
-Message-ID: <916f87cd706fef3bad919fe1dbee810af5980d5c.camel@mediatek.com>
-Subject: Re: [PATCH RESEND v3 7/9] drm/mediatek: Add gamma lut support for
- mt8195
-From: CK Hu <ck.hu@mediatek.com>
-To: Jason-JH.Lin <jason-jh.lin@mediatek.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Rex-BC Chen <rex-bc.chen@mediatek.com>, Singo Chang
-	<singo.chang@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, zheng-yan.chen
-	<zheng-yan.chen@mediatek.com>
-Date: Mon, 12 Sep 2022 18:00:38 +0800
-In-Reply-To: <20220912013006.27541-8-jason-jh.lin@mediatek.com>
-References: <20220912013006.27541-1-jason-jh.lin@mediatek.com>
-	 <20220912013006.27541-8-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oXgQf-008d4m-25; Mon, 12 Sep 2022 10:12:40 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5F2786601FD3;
+	Mon, 12 Sep 2022 11:12:31 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1662977552;
+	bh=8cFaxVFQUN8rcz0SgV1ILziN/080VIloT1ViIdRANRA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=E0wZdAHv/k7SwZ5nem3qLmiY/quR2SBQTV1Y65LT7vmmNhNr5FvR99jhZMuHKbXZI
+	 cp2ikmumJSHaXQrksk45UMwbSmhPuE5H7uowNak/BbWlqZqmzowYUB7G94eYy9uxok
+	 9vNBmt0Sy5hdan/HBy0Ks9XctehwWZoyyrikllFlaj2GbPSveI0zbQUmnOpcaqOHGl
+	 BpeO7gI9v1fbWUfPiHCoGGdiliqUrqcuZFHdxu+awy3ZUxqTAw3zbzFPr0pmoZN/Kt
+	 xRsVoV1WNDkpu29qwDjlykp9UUYZitFMrUrtBrCVPWw5ggBnESGHIe/YjI5+HQe3gm
+	 +J6dzF6YZqG9w==
+Message-ID: <90908764-b5aa-34a0-74c8-9f9215dcb89b@collabora.com>
+Date: Mon, 12 Sep 2022 12:12:28 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v3 3/9] drm/mediatek: Adjust mtk_drm_gamma_set_common
+ parameters
+Content-Language: en-US
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220911153734.24243-1-jason-jh.lin@mediatek.com>
+ <20220911153734.24243-4-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220911153734.24243-4-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220912_031122_673280_C3A1031C 
-X-CRM114-Status: GOOD (  25.91  )
+X-CRM114-CacheID: sfid-20220912_031237_554247_A7D7EEEA 
+X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,166 +82,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Jason:
-
-On Mon, 2022-09-12 at 09:30 +0800, Jason-JH.Lin wrote:
-> From: "zheng-yan.chen" <zheng-yan.chen@mediatek.com>
+Il 11/09/22 17:37, Jason-JH.Lin ha scritto:
+> Adjust the parameters in mtk_drm_gamma_set_common()
+>    - add (struct device *dev) to get lut_diff from gamma's driver data
+>    - remove (bool lut_diff) and use false as default value in the function
 > 
-> Since the previous gamma_set_common() function is designed for
-> 9bit-to-10bit conversion, which is not feasible for the
-> 10bit-to-12bit conversion in mt8195.
-> 
-> 1. Update the function to fit the need of mt8195.
-> 2. Add gamma driver data for mt8195.
-> 
-> Signed-off-by: zheng-yan.chen <zheng-yan.chen@mediatek.com>
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 57 ++++++++++++++++-----
-> --
->  1 file changed, 40 insertions(+), 17 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> index 45da2b6206c8..d706f76fd30e 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-> @@ -23,6 +23,7 @@
->  #define DISP_GAMMA_SIZE				0x0030
->  #define DISP_GAMMA_BANK				0x0100
->  #define DISP_GAMMA_LUT				0x0700
-> +#define DISP_GAMMA_LUT1				0x0b00
->  
->  #define LUT_10BIT_MASK				0x03ff
->  #define LUT_SIZE_DEFAULT			512 /* for setting
-> gamma lut from AAL */
-> @@ -82,9 +83,8 @@ void mtk_gamma_set_common(struct device *dev, void
-> __iomem *regs, struct drm_crt
->  	u8 shift_bits;
->  	unsigned int i, j, reg, bank_num;
->  	struct drm_color_lut *lut;
-> -	void __iomem *lut_base;
-> -	u32 word, mask;
-> -	u32 diff[3] = {0};
-> +	void __iomem *lut_base, *lut1_base;
-> +	u32 word, word1, mask;
->  
->  	if (gamma && gamma->data) {
->  		lut_diff = gamma->data->lut_diff;
-> @@ -102,27 +102,41 @@ void mtk_gamma_set_common(struct device *dev,
-> void __iomem *regs, struct drm_crt
->  		reg = reg | GAMMA_LUT_EN;
->  		writel(reg, regs + DISP_GAMMA_CFG);
->  		lut_base = regs + DISP_GAMMA_LUT;
-> +		lut1_base = regs + DISP_GAMMA_LUT1;
->  		lut = (struct drm_color_lut *)state->gamma_lut->data;
->  		for (j = 0; j < bank_num; j++) {
->  			writel(j, regs + DISP_GAMMA_BANK);
->  			for (i = 0; i < bank_size; i++) {
-> -				if (!lut_diff || (i % 2 == 0)) {
-> -					word = (((lut[i].red >>
-> shift_bits) & mask) << 20) +
-> -						(((lut[i].green >>
-> shift_bits) & mask) << 10) +
-> -						((lut[i].blue >>
-> shift_bits) & mask);
-> +				struct drm_color_lut input;
-> +
-> +				input.red = (lut[i].red >> shift_bits)
-> & mask;
-> +				input.green = (lut[i].green >>
-> shift_bits) & mask;
-> +				input.blue = (lut[i].blue >>
-> shift_bits) & mask;
-> +				if (!lut_diff || i % 2 == 0) {
-> +					word = (lut_bits == 12) ?
+> Fixes: 051524cbe62d ("FROMGIT: drm/mediatek: Add lut diff flag for new gamma hardware support")
 
-Move lut_bits modification to the patch "drm/mediatek: Add gamma
-support different lut_bits for other SoC".
-
-> +					       (input.red +
-> (input.green << 12)) :
-> +					       ((input.red << 20) +
-> (input.green << 10) +
-> +						input.blue);
-> +					word1 = input.blue;
->  				} else {
-> -					diff[0] = (lut[i].red >>
-> shift_bits) -
-> -						  (lut[i - 1].red >>
-> shift_bits);
-> -					diff[1] = (lut[i].green >>
-> shift_bits) -
-> -						  (lut[i - 1].green >>
-> shift_bits);
-> -					diff[2] = (lut[i].blue >>
-> shift_bits) -
-> -						  (lut[i - 1].blue >>
-> shift_bits);
-> -
-> -					word = ((diff[0] & mask) << 20)
-> +
-> -						((diff[1] & mask) <<
-> 10) +
-> -						(diff[2] & mask);
-> +					struct drm_color_lut diff;
-> +
-> +					diff.red = input.red  -
-> +						   ((lut[i - 1].red >>
-> shift_bits) & mask);
-> +					diff.green = input.green -
-> +						     ((lut[i - 1].green
-> >> shift_bits & mask));
-> +					diff.blue = input.blue -
-> +						    ((lut[i - 1].blue
-> >> shift_bits) & mask);
-> +
-> +					word = (lut_bits == 12) ?
-
-Ditto.
-
-> +					       (input.red +
-> (input.green << 12)) :
-> +					       (diff.red << 20) +
-> (diff.green << 10) + diff.blue;
-> +					word1 = input.blue;
->  				}
-> +
->  				writel(word, (lut_base + i * 4));
-> +				if (lut_bits == 12)
-
-Ditto.
+This Fixes tag contains a commit from a downstream kernel, which is useless
+fo upstream. Please fix it.
 
 Regards,
-CK
-
-> +					writel(word1, (lut1_base + i *
-> 4));
->  			}
->  		}
->  	}
-> @@ -237,11 +251,20 @@ static const struct mtk_disp_gamma_data
-> mt8183_gamma_driver_data = {
->  	.lut_bits = 10,
->  };
->  
-> +static const struct mtk_disp_gamma_data mt8195_gamma_driver_data = {
-> +	.lut_diff = true,
-> +	.lut_size = 512,
-> +	.lut_bits = 10,
-> +	.bank_size = 256,
-> +};
-> +
->  static const struct of_device_id mtk_disp_gamma_driver_dt_match[] =
-> {
->  	{ .compatible = "mediatek,mt8173-disp-gamma",
->  	  .data = &mt8173_gamma_driver_data},
->  	{ .compatible = "mediatek,mt8183-disp-gamma",
->  	  .data = &mt8183_gamma_driver_data},
-> +	{ .compatible = "mediatek,mt8195-disp-gamma",
-> +	  .data = &mt8195_gamma_driver_data},
->  	{},
->  };
->  MODULE_DEVICE_TABLE(of, mtk_disp_gamma_driver_dt_match);
-
+Angelo
 
