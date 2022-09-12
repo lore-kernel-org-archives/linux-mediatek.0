@@ -4,73 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93737ECAAD5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Sep 2022 08:57:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D76CDECAAD5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Sep 2022 09:08:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fWzLf+2o2chpqxMuyBDD5OnTzdJietvytSqErA07EVU=; b=D8VJNu365ncdXa6SKJcqG8bZYE
-	9S2k/VDFB8VhMtTngY8Q/6Oz8hiqDEIV5Jq44g6dAWJXaKBQha7J/cUVq0YATErJ4JRIUsDuPNGtr
-	0Aq9VLMrtObxF97t0wV1/CcDCRQv5Zl2zWL3A+zj8jqYLT3r9fWmtsizvaCB8k7PQxLXSv5MEOttE
-	xbgX71hGkB71pStukwbkBq1xnF+7KeFi4lECEtNhoFDziTpw+UgFrUih+3xFWiYjZwo2ZL7HcmylB
-	ij+hAUyPCSx6jeOePhdwpgtRYfnaiCIsQbEfsMovAr8eBFKdYIFw9GybwxzBlximk+4QurdUsl4mW
-	WkOJaueQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8XjmlklY01QSensRJAISfplHO3/WppVzYUPXq+tuvdc=; b=qPOjHchRq62a99fXDKKvQCazoO
+	9UdFGPAS1dH2sPLBRwvlAErnztLAXLJ+ofWm6k/SHI0aPsjyLeiXdM/GhjFJdR13EwRmrLQoIEYuY
+	2zX/qQ4w1fjhls6wi/ebLKWk9F20GuICp0a9dhVt7mIETaH9e8IA4oVATpC7oVzUXwgi12gXVnQdl
+	Gg6PEE4zT5AcyQF4QjjoJJuBJcw+7RJPf0C8rf6wCDQVbEnPRfWYGvLZKZKCOvnIDqdHYzRytCKpO
+	Vl9MqP5ib/yRLAnAsh9/lGD9cuAzIndoZ2ksuS/LBECND7BJ0P+SM2PfYUIUdVuShMfgKEF2wOyo3
+	+dgRD8vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXfFP-0081iK-Me; Mon, 12 Sep 2022 08:56:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oXfQu-0087Ry-Bd; Mon, 12 Sep 2022 09:08:48 +0000
+Received: from mail-bn8nam11on2040.outbound.protection.outlook.com ([40.107.236.40] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXfFM-0081gQ-59
-	for linux-mediatek@lists.infradead.org; Mon, 12 Sep 2022 08:56:53 +0000
-X-UUID: 3412e3bdc2c54d1ebf9d7aee7a56fca6-20220912
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=fWzLf+2o2chpqxMuyBDD5OnTzdJietvytSqErA07EVU=;
-	b=dCGUSemk+QScKyPANM+fp/VPpTJH/2vbY+yD5GJo3M6tRWXYMhzSWPxj35rsOb4ADU1G+l8+f3R057iDqpCnqm+M+ASmeUK4ufro5ohsY0WagsxVi5QNUJ2tyLaCvH9U368MPLQKBdJZMAy99m8At1I107DyNquSOswZCLwk6wM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.10,REQID:c5228870-1f8c-49d2-ab86-ce2dfe7c19b9,OB:0,L
-	OB:0,IP:0,URL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Releas
-	e_Ham,ACTION:release,TS:-25
-X-CID-META: VersionHash:84eae18,CLOUDID:c39e1dec-2856-4fce-b125-09d4c7ebe045,C
-	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:0,File:nil
-	,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 3412e3bdc2c54d1ebf9d7aee7a56fca6-20220912
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 274027481; Mon, 12 Sep 2022 01:56:45 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 12 Sep 2022 16:46:08 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 12 Sep 2022 16:46:08 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
-	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin
-	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
-	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
-	<Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, "Ryder
- Lee" <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>,
-	<stable@vger.kernel.org>
-Subject: [PATCH v2] wifi: mt76: mt7921e: fix random fw download fail
-Date: Mon, 12 Sep 2022 16:45:52 +0800
-Message-ID: <1190a401463547e555912ef9417138df4ab2c363.1662972106.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oXfQr-0087Pp-8m; Mon, 12 Sep 2022 09:08:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=XhDCNe/QR+huZUXDhk+jxzlj6AtjjEpXBtnO0tJC34roAxDFifqz9NyCwAGgIddGvY+fS8qbSSUYz8v3I16Aa05Hve9QehgonZz0EWtId0WbCgqD7WP1e7rHOK2SS6IHeeDAnf1C0eQDpW8zvuUmvNAYCdvfDUTszBluHQgeBO2/TtspmIgrbNUFb1XLnIZ96KqykwYSOQ+hBOV+u4ckLdN29yQjxCUT3vvjk1PgDkCmWfl/jtfJDvPkz8Xb13IEGs+r9+V5Tlb9DO6VoCGg59TjfmGrQ2F2WNgpSSto+jQKk1+MvJg0ZZwz+CSCVZjfoU+XuXPsliK6CDIdgBkvkQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8XjmlklY01QSensRJAISfplHO3/WppVzYUPXq+tuvdc=;
+ b=cc0OKDBrXxULkLI4xkbLSGVph2FMbJ3ruBcYVzyC2LBD2KSbFdFGNcJ5qaBs0RgaRf7YyAgu5fFcdwkFUtv1jOLfPfgz2N+WIpJEazj9eS5a0MWh2ZgStH1dxRBZILI9kWLA237oVfOatzyRDBkMlGC+1VZmNEg0vXdpSu4CL+jrEFojDWY1AQqCGQK1GCt8Ih+bZqETHDLGkHxnDMQ+aeTeZczjFdn4vRjPOwi/cmdhPc9HlqdRdLEotb6DgAm4cMQJrjKlSj2j0SrvPimibQX25jSV97/Cbyzo0f4ZLY9/8GAi75Q6rdMzsXDOuonNWlW0FoD6RuQA7wFefX7eCA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8XjmlklY01QSensRJAISfplHO3/WppVzYUPXq+tuvdc=;
+ b=PTaHAI/aJ8of8r4fYeWDoWYdqVok7/a3oVrJFBSpEjlkTawRM3ZvuH8G520II02rfcrXmaspc/+qUp38Zqe1J/t0KXpdMi32Ihg7GtfmM7NKfuXZYWtR07+y/5dZbXfzI3LYBlOgxXdZpPg5c+6lB2i05/WIcQvpNcp8EaZzWYQVcCb3V3N4kFMOxxp3tvPuSur9m/wF1PD9Q6n7SKDkAzSicpBRt0l+xzOdSrEt8sayN55RKLmNu6VGs5wDblP/L5Wde6izO/EIJjVoWgF2kZZiQrsswpDM75lhU/9Z4jNwaDxyX8VnIUaOzhKOQgwmBXz+NvgHipoLn/UaDPfGqA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CY5PR12MB6179.namprd12.prod.outlook.com (2603:10b6:930:24::22)
+ by DM8PR12MB5429.namprd12.prod.outlook.com (2603:10b6:8:29::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.14; Mon, 12 Sep
+ 2022 09:08:41 +0000
+Received: from CY5PR12MB6179.namprd12.prod.outlook.com
+ ([fe80::18a5:7a35:3bb2:929b]) by CY5PR12MB6179.namprd12.prod.outlook.com
+ ([fe80::18a5:7a35:3bb2:929b%3]) with mapi id 15.20.5612.022; Mon, 12 Sep 2022
+ 09:08:41 +0000
+Date: Mon, 12 Sep 2022 12:08:36 +0300
+From: Ido Schimmel <idosch@nvidia.com>
+To: netdev@kapio-technology.com
+Cc: Vladimir Oltean <olteanv@gmail.com>, davem@davemloft.net,
+	kuba@kernel.org, netdev@vger.kernel.org,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Shuah Khan <shuah@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Yuwei Wang <wangyuweihx@gmail.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
+ MAC-Auth Bypass to locked port tests
+Message-ID: <Yx73FOpN5uhPQhFl@shredder>
+References: <YwzjPcQjfLPk3q/k@shredder>
+ <f1a17512266ac8b61444e7f0e568aca7@kapio-technology.com>
+ <YxNo/0+/Sbg9svid@shredder>
+ <5cee059b65f6f7671e099150f9da79c1@kapio-technology.com>
+ <Yxmgs7Du62V1zyjK@shredder>
+ <8dfc9b525f084fa5ad55019f4418a35e@kapio-technology.com>
+ <20220908112044.czjh3xkzb4r27ohq@skbuf>
+ <152c0ceadefbd742331c340bec2f50c0@kapio-technology.com>
+ <20220911001346.qno33l47i6nvgiwy@skbuf>
+ <15ee472a68beca4a151118179da5e663@kapio-technology.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <15ee472a68beca4a151118179da5e663@kapio-technology.com>
+X-ClientProxiedBy: VE1PR08CA0011.eurprd08.prod.outlook.com
+ (2603:10a6:803:104::24) To CY5PR12MB6179.namprd12.prod.outlook.com
+ (2603:10b6:930:24::22)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY5PR12MB6179:EE_|DM8PR12MB5429:EE_
+X-MS-Office365-Filtering-Correlation-Id: a1d795a3-0537-47d4-9e63-08da949e62c4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	BPUNXraNRhq9QKFrsuHnwDpROgUPjP3OHZWZqumhjO6xPGeLRPbVqrk82WKliIcaqqvB/jEcL/9hfFxtKIW1qNJfvjfevmBAMauph0mtVGY9J9sIpnztD8/nLtbdaFz+B6nFP5DgvVd2e1bKz8GzAc+ipvvcKz7Pe2iNPOL1bLlx1yNa9B1eL+1PTp+PGnROo5yxLaC1gWpzQm1dds1p0QxEhD0OkqUzkZzBl14JL02fkfJf4AO8HFSZs6uC5pFwlnmbNBjDL4D5VbxQBTFSnqyPAIwRByMcO9kQKhmvlS0p+41WPq3C192ttKuP5SbMTpT4bBCw4s13VkD5dzckQUfEsFUqAKpCkaArLJmNvX3qAtjMj6aCzKLYkQOtcaIewiyhhktfiaNUmGfbDC+hvr8bUvwCasENcpdbAtfCYVPffyIaF542ntogUvrxmnNZsxUuKr6IFDk8PuZKasiGlaKErSnE2wjknpyQXC8Sm/+DnTp2ZW/2iCZNBE7vaIYlxsDNuEX1bOql6+TjfeJdao8oOVRYkxn5oT5bWgBHdL64dKGRN4/nPdnpuwWrO58J7sCJ4cRi30xz5NV474bI/DDSR6Fqn9OJzzvuAxG/bH0tyeyCk3z2D17fqi7k4yZUEcUXVdGRwzdjgkb7bki2P9bNogg64N2BBb3aD7xIFY8DB/jhH2N5s2ThV4LviTinSogEctbJdCJ+cbHdF4TVaw==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR12MB6179.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(7916004)(4636009)(396003)(136003)(346002)(376002)(366004)(39860400002)(33716001)(7416002)(86362001)(38100700002)(6666004)(7406005)(66476007)(66556008)(66946007)(4326008)(8676002)(5660300002)(8936002)(41300700001)(54906003)(6916009)(478600001)(6486002)(316002)(83380400001)(6506007)(6512007)(26005)(2906002)(9686003)(186003)(53546011);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?D07mIkI0PCh1OEPupbhcy8BX1r9bcWsEZHhuFWb4YXNGbQe/H7z/Aa8iJMSO?=
+ =?us-ascii?Q?MTiovmnqNm1OQgR+qEnz05onC40iA/Gf/POx/HJYH+pmXeJm35jkasBsuh5Z?=
+ =?us-ascii?Q?U4Lpp2aepg98cYFX7cFY6yGRZ/riEOWg6ED+A9IauWXpc3hNgMETXi+FGo0b?=
+ =?us-ascii?Q?G/kgJvVWwNF66C3E49/EsdlyCHniIupsMjRSUCYqA7+u8NlgsFIcfoTZ4rlK?=
+ =?us-ascii?Q?qbHTLsbuGNZwSSyM+v50awFJpwSVWPB9EJ8wcx1ML9mc4pWOcFMyQmLiqY7q?=
+ =?us-ascii?Q?OEJ6cqSoe5PTeDbdDFFlUGrDGr1t+skL44I9K/1OTyCr8e/jMqsSuZaSM71c?=
+ =?us-ascii?Q?xFmsCGnS3j1wvVyjaoJLphoRapm9KEKHB/b8XYuvr0ekL99RpCyK7Li6Q94l?=
+ =?us-ascii?Q?stGesyXHmFFWFfTasVUeuNKbXIHzO9rXnR6GgdpF3qmZXD9/9BEF+1G8G4ud?=
+ =?us-ascii?Q?N02yAAn1a+IYmAlILVxg7AgNmQg9/wppXQaSm1c5dWD5gCOLntPeSJIMd6a7?=
+ =?us-ascii?Q?wWGl/l/TBXzTdBJeJm8Sy8+FI9ojh6o6R21oxsvALLPkNS9QE9TBCrHqceZ4?=
+ =?us-ascii?Q?i3Xh7AmMHL1kZgY94z1BCALlJ8WR7P06WEzf2P68mB/Tcw49hSwMfLUYtH+L?=
+ =?us-ascii?Q?TC04Cip60x0EpvzvSVqcu87j9pq+FmKfqkjAuTRAmeeIL8m9u1EXTfpU8N0v?=
+ =?us-ascii?Q?EAaVq/h8q6Fd32628BX413lDMwGyQAEfz0Yxi7Fi8fzPkqq5PTUW82YxbTGy?=
+ =?us-ascii?Q?6IxqWAZ1dksllRUbqGDyHoOdhEPhVFJ6/JjZLvig4dBs53RbMz9zDLKab1jH?=
+ =?us-ascii?Q?X+CBjPiz5IePV9hlqAAQaqbKZUZSgTq8kv2lPhpgarZNL0jHYBlFfRTrd09P?=
+ =?us-ascii?Q?IMV6f4q6cMawKuuA2TZhhWrdAgNe+7VntoW/rq34bc74x25wpc8Hqh1CInY0?=
+ =?us-ascii?Q?Qme5tOCyLUdrfIGk4SlUVI+6p6bg+naoZdgqDsOi3MY6vx15DUyRmIeVP4oC?=
+ =?us-ascii?Q?gStVHzrCU50ZmldHlrixs5PfCTuLu62TSEzxOxvaGUNhpezuA7YiWl7Ggnqm?=
+ =?us-ascii?Q?0azR8/dXWAQ3mz9pLpgAL1AGJsFEUFV6d3mFqFIVrw9duvbo0OZhFlsz8V5o?=
+ =?us-ascii?Q?va96M0mEgOVCc6HrKV6LehZBhgfApn/qgN/hFpZEnofGNd355NynQEbMVrAX?=
+ =?us-ascii?Q?P8EX6prUbFbM12WzBNAn7463puw3t/2LFHvx7kFqiiNy7GyEItcQoscYLAux?=
+ =?us-ascii?Q?xyWUGmQ7eK5fNQDDuFUid5fVUnzfP8J0iMg+Yd1M+itoFAI+8ArZtqIXdv5w?=
+ =?us-ascii?Q?bSvwzbssMJBBprepmGDegsIEyCvihAkZAAjvVIPWAuOO+CWoChSy0E0nJc3g?=
+ =?us-ascii?Q?cJ4ujFX89kKFJ/JhtSqTuwRcLzn1VE66HrMax2zQpkOexU9/gz4VMA+yrC0G?=
+ =?us-ascii?Q?rIRFP+6Lw4fzR6IdAG2iELNqcxhZsG5nh6uPOS6BKkIl4+olLr9vsvL8dSBJ?=
+ =?us-ascii?Q?DQb1KNH5HNFVKdqVB2Boq8EVgRX9kvQ8FjxyLjccQELFVzZbi67Rp0PBbTG1?=
+ =?us-ascii?Q?STAHCmQ6heChcdkPJp2vd/AqwBFLhzhsycUo/0mS?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a1d795a3-0537-47d4-9e63-08da949e62c4
+X-MS-Exchange-CrossTenant-AuthSource: CY5PR12MB6179.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Sep 2022 09:08:41.1016
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: PAOTYUUUl0sbrkSf6Xdmgx/3ymZw9X9R++FAf/tQhWzqmad/N3oq1R0Sb+fBM742IZCTUAFx4rrehWXk8pxYNw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM8PR12MB5429
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220912_015652_304316_7F092F2C 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220912_020845_353465_1DADFB96 
+X-CRM114-Status: GOOD (  27.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,77 +162,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+On Sun, Sep 11, 2022 at 11:23:55AM +0200, netdev@kapio-technology.com wrote:
+> On 2022-09-11 02:13, Vladimir Oltean wrote:
+> > On Fri, Sep 09, 2022 at 03:11:56PM +0200, netdev@kapio-technology.com
+> > wrote:
+> > > > > > On Wed, Sep 07, 2022 at 11:10:07PM +0200, netdev@kapio-technology.com wrote:
+> > > > > > > I am at the blackhole driver implementation now, as I suppose that the
+> > > > > > > iproute2 command should work with the mv88e6xxx driver when adding blackhole
+> > > > > > > entries (with a added selftest)?
+> > > > > > > I decided to add the blackhole feature as new ops for drivers with functions
+> > > > > > > blackhole_fdb_add() and blackhole_fdb_del(). Do you agree with that approach?
+> > > > > >
+> > > > > > I assume you are talking about extending 'dsa_switch_ops'?
+> > > > >
+> > > > > Yes, that is the idea.
+> > > > >
+> > > > > > If so, it's up to the DSA maintainers to decide.
+> > > >
+> > > > What will be the usefulness of adding a blackhole FDB entry from user
+> > > > space?
+> > > 
+> > > With the software bridge it could be used to signal a untrusted host
+> > > in
+> > > connection with a locked port entry attempt. I don't see so much use
+> > > other
+> > > that test purposes with the driver though.
+> > 
+> > Not a huge selling point, to be honest. Can't the blackhole flag remain
+> > settable only in the device -> bridge direction, with user space just
+> > reading it?
+> 
+> That is possible, but it would of course not make sense to have selftests of
+> the feature as that would not work unless there is a driver with this
+> capability (now just mv88e6xxx).
 
-In case of PCIe interoperability problem shows up, the firmware
-payload may be corrupted in download stage. Turn off L0s to keep
-fw download process accurately.
-
-[ 1093.528363] mt7921e 0000:3b:00.0: Message 00000007 (seq 7) timeout
-[ 1093.528414] mt7921e 0000:3b:00.0: Failed to start patch
-[ 1096.600156] mt7921e 0000:3b:00.0: Message 00000010 (seq 8) timeout
-[ 1096.600207] mt7921e 0000:3b:00.0: Failed to release patch semaphore
-[ 1097.699031] mt7921e 0000:3b:00.0: Timeout for driver own
-[ 1098.758427] mt7921e 0000:3b:00.0: Timeout for driver own
-[ 1099.834408] mt7921e 0000:3b:00.0: Timeout for driver own
-[ 1100.915264] mt7921e 0000:3b:00.0: Timeout for driver own
-[ 1101.990625] mt7921e 0000:3b:00.0: Timeout for driver own
-[ 1103.077587] mt7921e 0000:3b:00.0: Timeout for driver own
-[ 1104.173258] mt7921e 0000:3b:00.0: Timeout for driver own
-[ 1105.248466] mt7921e 0000:3b:00.0: Timeout for driver own
-[ 1106.336969] mt7921e 0000:3b:00.0: Timeout for driver own
-[ 1106.397542] mt7921e 0000:3b:00.0: hardware init failed
-
-Cc: stable@vger.kernel.org
-Fixes: bf3747ae2e25 ("mt76: mt7921: enable aspm by default")
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
-v2: fix typo in commit message
----
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c     | 1 +
- drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c | 2 ++
- drivers/net/wireless/mediatek/mt76/mt7921/regs.h    | 2 ++
- 3 files changed, 5 insertions(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 9d1ba838e54f..43a8deeb17df 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -148,6 +148,7 @@ static u32 __mt7921_reg_addr(struct mt7921_dev *dev, u32 addr)
- 		{ 0x820c8000, 0x0c000, 0x02000 }, /* WF_UMAC_TOP (PSE) */
- 		{ 0x820cc000, 0x0e000, 0x01000 }, /* WF_UMAC_TOP (PP) */
- 		{ 0x820cd000, 0x0f000, 0x01000 }, /* WF_MDP_TOP */
-+		{ 0x74030000, 0x10000, 0x10000 }, /* PCIE_MAC_IREG */
- 		{ 0x820ce000, 0x21c00, 0x00200 }, /* WF_LMAC_TOP (WF_SEC) */
- 		{ 0x820cf000, 0x22000, 0x01000 }, /* WF_LMAC_TOP (WF_PF) */
- 		{ 0x820e0000, 0x20000, 0x00400 }, /* WF_LMAC_TOP BN0 (WF_CFG) */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
-index 5efda694fb9d..19facf31e4e1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
-@@ -59,6 +59,8 @@ int mt7921e_mcu_init(struct mt7921_dev *dev)
- 	if (err)
- 		return err;
- 
-+	mt76_rmw_field(dev, MT_PCIE_MAC_PM, MT_PCIE_MAC_PM_L0S_DIS, 1);
-+
- 	err = mt7921_run_firmware(dev);
- 
- 	mt76_queue_tx_cleanup(dev, dev->mt76.q_mcu[MT_MCUQ_FWDL], false);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-index ea643260ceb6..c65582acfa55 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-@@ -440,6 +440,8 @@
- #define MT_PCIE_MAC_BASE		0x10000
- #define MT_PCIE_MAC(ofs)		(MT_PCIE_MAC_BASE + (ofs))
- #define MT_PCIE_MAC_INT_ENABLE		MT_PCIE_MAC(0x188)
-+#define MT_PCIE_MAC_PM			MT_PCIE_MAC(0x194)
-+#define MT_PCIE_MAC_PM_L0S_DIS		BIT(8)
- 
- #define MT_DMA_SHDL(ofs)		(0x7c026000 + (ofs))
- #define MT_DMASHDL_SW_CONTROL		MT_DMA_SHDL(0x004)
--- 
-2.18.0
-
+The new "blackhole" flag requires changes in the bridge driver and
+without allowing user space to add such entries, the only way to test
+these changes is with mv88e6xxx which many of us do not have...
 
