@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D14EECAAD5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Sep 2022 10:39:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E6FBC6FA83
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Sep 2022 10:39:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DhmnVGZ1xwRrwcxQQcxn7z/LNtnaTF5xaqQKhD6XZ0U=; b=oaJRhzxhuvyjJp6ZOAJn0BB4oD
-	pFlcGQ/bwQ3fAcJuUqohN2e4WvfLqSYZLr7/byjEJIe6bmmc4bVA4Gavd2glNZKLSUWRWsZ1XfPl9
-	38QydAFMJaF8ZByUradZ2TGXCiWh3ZRCKl49yEy4hBVMzhNvSKL/mPya1Q8EkG1ymdF+omqqeso/A
-	a9Dh0Gp4ikcyIlTOjHZRrCl6CK4fO7ABsxEVzf8CUxo8LsOnCq8i2M6XKNvRaBC1JqgbqiSFZfG+H
-	8mtbodc4gc4kIfGJdWRy58i70Gi0bQg17KmkG0pXSPRwVV+Lls3h+BhX/AWaoh7LqyvaBdC+aCR4d
-	PkhHdezA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iSyx+y5QWw6Fql4uXPmf3DbJBuZiaBaqnWt3c3nanl8=; b=geuO4bxdxGq9MGJYvfshhispx1
+	RRnMz/mA3E3WPfrcymHBdgh20Mydu9+M0ig6xtz6rMagHDofJ1tVrUZMfxFos1m9jIvn3nr6BMyTX
+	TGuA9WOzGGEf0FgwKWdaMSNiDexX/qR6pELMorhFNXzlGp5pPTXGyRfjMaPZ5+dvIv2Tj+NZ+D22X
+	OWmG7pHMuSbDOsHht5bgRvlhWrZY0AHgPvZw6BytAvAVnLt89YFn0fBJm7WrD2GjNGBXIi9pb794M
+	2R9miNfX5WgoIkNNVkUlD96Quceq5k1bfz6xXYZnDgLBA9Eag3ZLuYSjeGiVt7xdVPLwboKcB4rW3
+	70agbYpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXgjl-008mEO-7G; Mon, 12 Sep 2022 10:32:21 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oXgjk-008mDZ-B0; Mon, 12 Sep 2022 10:32:20 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXgbu-008iSK-LM; Mon, 12 Sep 2022 10:24:18 +0000
-Received: from mercury (unknown [185.122.133.20])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1oXgby-008iUK-8m; Mon, 12 Sep 2022 10:24:22 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 23F4A6601FD2;
-	Mon, 12 Sep 2022 11:24:11 +0100 (BST)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2CD6E6601FD9;
+	Mon, 12 Sep 2022 11:24:15 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662978251;
-	bh=wGBIlvKje4FgHqTdo2MburWH2bvJgnDyHAqqfxkP0yo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MSBzYp8s99gXfGN5lZJrpXNDS7i0MFjnjP5ccBa7zLkGNKTJU7vNZMzNObIZ3AjMD
-	 ZRPA+eXE7rj+nhMfMpi2qdru9eMKj9cMJ9VHNl6MOMqyqvSFHQpoYTDkbRLo4sYKjk
-	 gAVm4qZa8blIyMFgD4nwahT9lT+8CHrI5ioAyAhAc7podq+Iiu0oc8LIY8ej9I4ixf
-	 /WaK2BnKU4KygHuXdc1lHYdk3Jr2F0PE5TcLqvbRp9j+SQ2xHCMF+gUT/W/NMgTY0I
-	 mMm0KxoDCrM/2+5c2bOZCgd2PouSmTprbUQxTwufEv7Zjv8cea4dLG/ShWumhcbuRA
-	 kWoWLo09WYfKw==
-Received: by mercury (Postfix, from userid 1000)
-	id E32EA106084A; Mon, 12 Sep 2022 12:24:07 +0200 (CEST)
-Date: Mon, 12 Sep 2022 12:24:07 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: pavel@ucw.cz, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com, jic23@kernel.org, lars@metafoo.de,
-	broonie@kernel.org, mazziesaccount@gmail.com, chiaen_wu@richtek.com,
-	alice_chen@richtek.com, cy_huang@richtek.com,
-	linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-iio@vger.kernel.org,
-	szunichen@gmail.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v10 1/8] dt-bindings: power: supply: Add MediaTek MT6370
- Charger
-Message-ID: <20220912102407.znzd2buqpkopvawp@mercury.elektranox.org>
-References: <cover.1662476695.git.chiaen_wu@richtek.com>
- <3184e9e5f59edf41788bb95e2ad496772dc70a4a.1662476695.git.chiaen_wu@richtek.com>
+	s=mail; t=1662978256;
+	bh=kiqQbnIn7/5ut/Bpv9ksnG72E+m6XZrvIdfMBPIWiDs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=nWiUu98eh2uGOzmLk0SWdME8yzF3fTBfsXzrEQ87DFJjiBY1vOH7HPzJvISUPMfS6
+	 xVPxZpve8trRoYmAvy599zNpzxcBF4Dx3jYO9peJC9GXm04aIzVbSQv5NEsAt8+k/3
+	 0WdoGIuxzbP1IHImxfostd9DszbMyinHF+R1aH8HdlYdPuFlV8MRzG+Am+kXyhaQyM
+	 VgLJt2fTJdictRb6SGPt3VCFU4VnEfy3kbWjafXVKTpmpQUEmES0+OSkWb5ML4KBo1
+	 poYaGyMvWyrXJvKRgctf0Bq+o3EdggZL1UV2EY2eUJZq0Fueb68b2p9eXzyAqqZAug
+	 On2OPOb0PpQOg==
+Message-ID: <97ac2b35-bb3b-360a-4078-f72146136a7f@collabora.com>
+Date: Mon, 12 Sep 2022 12:24:12 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zly4a6vosjjv2mrv"
-Content-Disposition: inline
-In-Reply-To: <3184e9e5f59edf41788bb95e2ad496772dc70a4a.1662476695.git.chiaen_wu@richtek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v3 4/9] drm/mediatek: Add gamma support different lut_size
+ for other SoC
+Content-Language: en-US
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220911153734.24243-1-jason-jh.lin@mediatek.com>
+ <20220911153734.24243-5-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220911153734.24243-5-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220912_032415_093244_D08ADAAB 
-X-CRM114-Status: GOOD (  20.11  )
+X-CRM114-CacheID: sfid-20220912_032418_594227_053A071A 
+X-CRM114-Status: GOOD (  20.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,163 +81,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---zly4a6vosjjv2mrv
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Tue, Sep 06, 2022 at 04:33:57PM +0800, ChiaEn Wu wrote:
-> From: ChiaEn Wu <chiaen_wu@richtek.com>
->=20
-> Add MediaTek MT6370 Charger binding documentation.
->=20
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+Il 11/09/22 17:37, Jason-JH.Lin ha scritto:
+> 1. Add mtk_drm_gamma_get_lut_size() and remove MTK_LUT_SIZE macro.
+> 2. Add lut_size to gamma driver data for different SoC.
+> 
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 > ---
->  .../power/supply/mediatek,mt6370-charger.yaml      | 88 ++++++++++++++++=
-++++++
->  1 file changed, 88 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/power/supply/mediat=
-ek,mt6370-charger.yaml
->=20
-> diff --git a/Documentation/devicetree/bindings/power/supply/mediatek,mt63=
-70-charger.yaml b/Documentation/devicetree/bindings/power/supply/mediatek,m=
-t6370-charger.yaml
-> new file mode 100644
-> index 0000000..bd09a0a
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-char=
-ger.yaml
-> @@ -0,0 +1,88 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/power/supply/mediatek,mt6370-charger.=
-yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>   drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  1 +
+>   drivers/gpu/drm/mediatek/mtk_disp_gamma.c   | 22 +++++++++++++++++++--
+>   drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  4 ++--
+>   drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  1 -
+>   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  9 +++++++++
+>   5 files changed, 32 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> index a83e5fbc8724..6a05bb56e693 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> @@ -51,6 +51,7 @@ void mtk_gamma_clk_disable(struct device *dev);
+>   void mtk_gamma_config(struct device *dev, unsigned int w,
+>   		      unsigned int h, unsigned int vrefresh,
+>   		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+> +unsigned int mtk_gamma_get_lut_size(struct device *dev);
+>   void mtk_gamma_set(struct device *dev, struct drm_crtc_state *state);
+>   void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crtc_state *state);
+>   void mtk_gamma_start(struct device *dev);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> index f54a6a618348..e69d0b205b9a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> @@ -24,10 +24,12 @@
+>   #define DISP_GAMMA_LUT				0x0700
+>   
+>   #define LUT_10BIT_MASK				0x03ff
+> +#define LUT_SIZE_DEFAULT			512 /* for setting gamma lut from AAL */
+>   
+>   struct mtk_disp_gamma_data {
+>   	bool has_dither;
+>   	bool lut_diff;
+> +	u16 lut_size;
+>   };
+>   
+>   /*
+> @@ -54,18 +56,32 @@ void mtk_gamma_clk_disable(struct device *dev)
+>   	clk_disable_unprepare(gamma->clk);
+>   }
+>   
+> +unsigned int mtk_gamma_get_size(struct device *dev)
+> +{
+> +	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+> +	unsigned int lut_size = LUT_SIZE_DEFAULT;
 > +
-> +title: MediaTek MT6370 Battery Charger
+> +	if (gamma && gamma->data)
+> +		lut_size = gamma->data->lut_size;
 > +
-> +maintainers:
-> +  - ChiaEn Wu <chiaen_wu@richtek.com>
+> +	return lut_size;
+> +}
 > +
-> +description: |
-> +  This module is part of the MT6370 MFD device.
-> +  Provides Battery Charger, Boost for OTG devices and BC1.2 detection.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt6370-charger
-> +
-> +  interrupts:
-> +    description: |
-> +      Specify what irqs are needed to be handled by MT6370 Charger drive=
-r. IRQ
-> +      "MT6370_IRQ_CHG_MIVR", "MT6370_IRQ_ATTACH" and "MT6370_IRQ_OVPCTRL=
-_UVP_D"
-> +      are required.
+>   void mtk_gamma_set_common(struct device *dev, void __iomem *regs, struct drm_crtc_state *state)
+>   {
+>   	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+>   	bool lut_diff = false;
+> +	u16 lut_size = LUT_SIZE_DEFAULT;
 
-This does not look like a useful description. It just lists the
-below in wrong order?
+This makes us get a double assignment in case gamma->data is populated.
 
-> +    items:
-> +      - description: BC1.2 done irq
-> +      - description: usb plug in irq
-> +      - description: mivr irq
+>   	unsigned int i, reg;
+>   	struct drm_color_lut *lut;
+>   	void __iomem *lut_base;
+>   	u32 word;
+>   	u32 diff[3] = {0};
+>   
+> -	if (gamma && gamma->data)
+> +	if (gamma && gamma->data) {
+>   		lut_diff = gamma->data->lut_diff;
+> +		lut_size = gamma->data->lut_size;
+> +	}
 
-I had to lookup, that mivr is supposed to mean "minimum input voltage regul=
-ation"
-for Mediatek/Richtek. Please spell it out here.
+...you can avoid it like that:
 
--- Sebastian
+} else {
+	lut_size = LUT_SIZE_DEFAULT;
+}
 
-> +
-> +  interrupt-names:
-> +    items:
-> +      - const: attach_i
-> +      - const: uvp_d_evt
-> +      - const: mivr
-> +
-> +  io-channels:
-> +    description: |
-> +      Use ADC channel to read VBUS, IBUS, IBAT, etc., info.
-> +    minItems: 1
-> +    items:
-> +      - description: |
-> +          VBUS voltage with lower accuracy (+-75mV) but higher measure
-> +          range (1~22V)
-> +      - description: |
-> +          VBUS voltage with higher accuracy (+-30mV) but lower measure
-> +          range (1~9.76V)
-> +      - description: the main system input voltage
-> +      - description: battery voltage
-> +      - description: battery temperature-sense input voltage
-> +      - description: IBUS current (required)
-> +      - description: battery current
-> +      - description: |
-> +          regulated output voltage to supply for the PWM low-side gate d=
-river
-> +          and the bootstrap capacitor
-> +      - description: IC junction temperature
-> +
-> +  io-channel-names:
-> +    minItems: 1
-> +    items:
-> +      - const: vbusdiv5
-> +      - const: vbusdiv2
-> +      - const: vsys
-> +      - const: vbat
-> +      - const: ts_bat
-> +      - const: ibus
-> +      - const: ibat
-> +      - const: chg_vddp
-> +      - const: temp_jc
-> +
-> +  usb-otg-vbus-regulator:
-> +    type: object
-> +    description: OTG boost regulator.
-> +    unevaluatedProperties: false
-> +    $ref: /schemas/regulator/regulator.yaml#
-> +
-> +    properties:
-> +      enable-gpios:
-> +        maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - interrupts
-> +  - interrupt-names
-> +  - io-channels
-> +
-> +additionalProperties: false
-> +
-> +...
-> --=20
-> 2.7.4
->=20
 
---zly4a6vosjjv2mrv
-Content-Type: application/pgp-signature; name="signature.asc"
+Regards,
+Angelo
 
------BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmMfCMMACgkQ2O7X88g7
-+prG+g/+IL/Rc+kycHrb7Jfw2EV0b6A+45R087Ob3Dy1Kf/LHxOHOeyD31c7AMTI
-aicts0U9FYihYjdXrnAVp32UYgCFQW3HWd0SEcLFqgKaU8Xa/5zy40rCqPmEhc1X
-PjU6pasOjIhT2uVxqTjdeI3rX7zatlnqAQBEkmRbdfCs9TZY2FPZVt/6916scKjl
-KzyHyHMaXM/I8BaADFri0bm0SCUSfiewje4R2T6qFYRPYQ3f2K0SJq2lJBDi2qp/
-JuFhd/DyvD6C5CrZrF80z6yL8m0XPXWLa58qPSTY8ytmoB7aECt+Xz9J4KFUJJpW
-AasdfJLmyITBw2c5YJ4tZTice8w3WzijRPI6RCmTgncB0t7NkEt4CXUosXI/A0Tv
-sM/o/17Av/2XvKbmMHCeoaPaPqnO6qo18aaHpBLbXHHTS503k1SOpYZFtzTPYO0Z
-5B09/S1HZGJ6qxcBPRwfzW0Pg9O2lrlKhaExg0RgInRpAZaYDJfC+7UP+oZfmr3K
-4P9wim6khdqaAg8b7tFcCYEvjFyIouV4ObwR69WZS6JFyjZAP5QKAOPhvGjn5RPK
-4rW77VttfIARWAjtRbqq7LU1N8yu2gwe2OwW6++TNnpS72cBhuKeNd3R9eyS7Ki+
-zko36FKuEdMnU5LCWUBDmbHXBvrovj++3N4s5qB5tZCSmvD+os8=
-=QiKk
------END PGP SIGNATURE-----
-
---zly4a6vosjjv2mrv--
 
