@@ -4,98 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E661C6FA83
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Sep 2022 18:13:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7180C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Sep 2022 22:18:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8E7PntAsREeNfSHyD8ppPZ5kkKGXgsJxyvl0PQ0fJI8=; b=zD4Ov3e5IekZd8XD34+TVKZy5k
-	JVbshNDNj1vwyN57+/k6jW3vQL7RxXDrteASZis3uNb+MCCHu25nqLNfIdjgn4KHIOm2PC9TpptBZ
-	7HNB2X4S2++emzkOCN5Y+3l9KA/o+9VFsgNSw5Ou1hoeCQ7GGxnqOPB54hMLzRCc1TU+vJyy/h7X0
-	RUL6FNMl2+lVpuCyIN/y8cYAFZbs0Qz0+85RWv4lJi9iIP6wPT/3oiwHJQysCQjpg0VrbyL76CwMN
-	2uIOHhQ6q/HgPnwqr7o7Bk/yD909u8j98lnE46WM8P5S1DB8s1P8ITTVHumWaikEt89A9PkJotM+v
-	X/dUTvog==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gOBWTS4xugh82iE+iVZ2feiJQnVLRL/GOJqIkU88mfM=; b=nR+fwr/4sxCrS5kK3KUxWr9Eta
+	eax8OfMB04YfPa8Tlkd+caoZVCsb4VUtv43cR26YOCrXq4rNwDoeQlUZwkE4KcKCe4cK6yeIn1F/k
+	joY6NvZ+a0k6WlJsgYbzNrHcJYm65GFYZmzAR8psC1QIWipvHvfNOHBU1SoPKUgqzDs0b+MHuf0hi
+	4dMHEYRrllyhszFRXefsoXDbmgBp0OKZBa+It5HwplcWWxei/Aawox7pr3q1n6nrZUCuWkCKk7CnT
+	vbXTNZwu8jLpaIB7NL+qFZ0sr2hniupLV1CaT6g8/sJKkqpJk2jJwVNRVXIt0uhq8Wq8DFA3n0RXQ
+	pZBCC3BQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXnvS-00CMh0-1S; Mon, 12 Sep 2022 18:12:54 +0000
-Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
+	id 1oXrlH-00Ei0Z-U8; Mon, 12 Sep 2022 22:18:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXnvB-00CMX5-QU; Mon, 12 Sep 2022 18:12:39 +0000
-Received: by mail-qk1-x730.google.com with SMTP id d15so6645658qka.9;
-        Mon, 12 Sep 2022 11:12:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=8E7PntAsREeNfSHyD8ppPZ5kkKGXgsJxyvl0PQ0fJI8=;
-        b=I/7RINzP0Z0yZPVoIdOreH/t6XQdmWwGtveYCBeVEu5VJWh7lW6ppFjR9BkhxaUGo9
-         AXnm14DvFNOfLCYuhMPnWdMDSyu4jNhn/TQCzSO7SzxJl6HR8kmL8dsZdXp1D9OCxw/L
-         ++SJAmew/2FAK7arDApyRpJPCVPmVDtqADcTUVX2YwFFI3OKeqQyyQq7lnDwX8gVHdxy
-         pQpaIMgO2POsUO1G/jQD7sNfN1xGL/Pp7VweYWJem1GbMTBu/QqAAWj39zxADN7sBQIR
-         u83wMD9Ydf812TL92+6+Nk+IYGDxuqNZ+RqlMan0MaNnL7tRAkew40Son8O+TYzh1fo8
-         WwWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=8E7PntAsREeNfSHyD8ppPZ5kkKGXgsJxyvl0PQ0fJI8=;
-        b=Hy4saTtizXXNA6Fy0P1BXxW9BB8BzWD/8hgqoyi1Zoz0oHmydCkYrvdm+HElWD0iDb
-         32adScqAKBDsKLwdGsRJxhvAEfjSLOdOS+r5Xwv/KP4xHkSBd8bLcIrdqFyIXIk/XM6k
-         cPwkOILdadAj8MK6ku7pqFj85i9fYD9/kj209SfGouTwQcjIeZ/P1kTVjM967buW6aMD
-         0DeC+VpkfGg+o1Lfs3xT2u30hLHsjnPSHQH+CbxRjsEQf/Z2nvDLj9stOm4bRpjmEfmu
-         sxRSRvjuIcOd0TloT0lvJPtDd+3TNfex+iwIsoXamLejkdO72hXMKVyFdZYPGpGlJp6x
-         Tb1g==
-X-Gm-Message-State: ACgBeo1IU3EgLdTdNQaUHaTQsaApmqxd0qFi+aZ+2Xqw1J44uaTt6TbY
-	MAZyMS3SOd6Hfn1ov9fpdz4=
-X-Google-Smtp-Source: AA6agR7EaWz1dfDbiGlBhX0giEUzB6WX6YP4xReDzRQPT/z8Lax4IuXZ12+4iPhwm+Wyq1EU8+FPrA==
-X-Received: by 2002:a05:620a:22f9:b0:6ce:5ea1:a957 with SMTP id p25-20020a05620a22f900b006ce5ea1a957mr1658052qki.359.1663006356312;
-        Mon, 12 Sep 2022 11:12:36 -0700 (PDT)
-Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.googlemail.com with ESMTPSA id h8-20020a05620a284800b006cbc40f4b36sm7450846qkp.39.2022.09.12.11.12.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Sep 2022 11:12:35 -0700 (PDT)
-Message-ID: <cb90a930-8322-3d4b-ff7a-2bdde0787bd4@gmail.com>
-Date: Mon, 12 Sep 2022 11:12:28 -0700
+	id 1oXrlD-00Ehsc-Vu
+	for linux-mediatek@lists.infradead.org; Mon, 12 Sep 2022 22:18:38 +0000
+X-UUID: a71cdf98af884814a543973b31228a64-20220912
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gOBWTS4xugh82iE+iVZ2feiJQnVLRL/GOJqIkU88mfM=;
+	b=F2URJptcaTsdutuRPbn3NGr2Z3nlw66/AhLjScg5rE++PIXC85lkPRxgWhn0xBMpNecwqKysPkPnknmN1LyhhjgfH8BNfpRSuPo+7RGTQQzzQIS0RkKoCOgBL6GE5WDb294BMfhLtrYJMS7AE5OjvtUI0kH4LMBp6svE92zQLz0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.10,REQID:65c790c4-31d9-4d64-877a-6450e5181236,OB:0,L
+	OB:0,IP:0,URL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_
+	Ham,ACTION:release,TS:0
+X-CID-META: VersionHash:84eae18,CLOUDID:474023f6-6e85-48d9-afd8-0504bbfe04cb,C
+	OID:IGNORED,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,URL:11|1,File:
+	nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: a71cdf98af884814a543973b31228a64-20220912
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 338286374; Mon, 12 Sep 2022 15:18:22 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 13 Sep 2022 06:18:20 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 13 Sep 2022 06:18:19 +0800
+From: <sean.wang@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <luiz.dentz@gmail.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+	<posh.sun@mediatek.com>, <ted.huang@mediatek.com>,
+	<Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+	<steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+	<abhishekpandit@google.com>, <michaelfsun@google.com>,
+	<abhishekpandit@chromium.org>, <mcchou@chromium.org>, <shawnku@google.com>,
+	<linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>
+Subject: [PATCH 3/4] Bluetooth: btusb: mediatek: reset the device as WMT failed
+Date: Tue, 13 Sep 2022 06:18:12 +0800
+Message-ID: <a432abf4cf95e93783864b27bafa53d45bdd5212.1663020936.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <43b68b1f48c20b1dfcd7e6663c3dcb38e4e0648c.1663020936.git.objelf@gmail.com>
+References: <43b68b1f48c20b1dfcd7e6663c3dcb38e4e0648c.1663020936.git.objelf@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH net-next 3/3] dt-bindings: net: dsa: remove label = "cpu"
- from examples
-Content-Language: en-US
-To: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org
-Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- George McCollister <george.mccollister@gmail.com>,
- Kurt Kanzenbach <kurt@linutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
- Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
- =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Marek Vasut <marex@denx.de>,
- John Crispin <john@phrozen.org>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-References: <20220912175058.280386-1-vladimir.oltean@nxp.com>
- <20220912175058.280386-4-vladimir.oltean@nxp.com>
-From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <20220912175058.280386-4-vladimir.oltean@nxp.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220912_111237_888789_BB639902 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20220912_151836_234043_42712BB0 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,12 +87,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/12/22 10:50, Vladimir Oltean wrote:
-> This is not used by the DSA dt-binding, so remove it from all examples.
-> 
-> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+From: Sean Wang <sean.wang@mediatek.com>
 
-Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+Reset the BT device whenever the driver detected any WMT failure happened
+to recover such kind of system-level error as soon as possible.
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 653f57a98233..dc86726c8271 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2576,6 +2576,10 @@ static int btusb_mtk_hci_wmt_sync(struct hci_dev *hdev,
+ 	data->evt_skb = NULL;
+ err_free_wc:
+ 	kfree(wc);
++
++	if (err < 0)
++		btmtk_reset_sync(hdev);
++
+ 	return err;
+ }
+ 
 -- 
-Florian
+2.25.1
+
 
