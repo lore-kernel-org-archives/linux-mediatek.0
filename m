@@ -4,132 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C213DC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 11:52:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36350C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 12:09:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8PLvGqU3gEdjFyXken2n9tU+ZZnzU4jm//XhXhbKfhs=; b=g3KUbgceOh+PHs9OYvZz1MyLZQ
-	WFRHlb2gfsyfwWIEKsilqwAKl4ylZRhvdD3R7MFGfDoiHNQg4DfhxLRfCpsJKmkpeUEcWzB3KO7Xc
-	oheJ4kAKhPq4YXwDz8eYGMCiL/ZJFUqV8ru9LnugK+Kjj4MR1RrhzRGzNlAJf00d+Bbbnc4yKZRpt
-	gurEALoELC8Gds/Yy2ZqVWTYb+4EEkmmTl6nDIclcn72v1JFBr4KO13YpeCjWzUQKpPAT19x8H9za
-	G33Yh99EtALouPwzwD0NqBRQSKrAASjCWZZAqcFgC8EmurSpBMTJubJyYQeT2or4oizyP9lH55A2s
-	JH5wUqhw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kJu39uKQb5FUWStjjO5RSJfgZUiVaMUMW+vetWTKfvI=; b=ZhgHF4iC36gnzid2MndKUPXR/D
+	ggWR3w+YLQmbZ1vY11DiYkaT+yvN3DtOqRPiuV6tq6UuvEBq5PcFnZM9GYYG0B3cqLfuMRgDBdLg9
+	QoKLzHgGzlDphkZ0lXMTpEpFWBdX4gVZQoxgzuzM4wB+EBUIJguojb3sx94r43cHPI9DQkSnJ/9td
+	SfM7EOipd6ibN8WIPron5E7qES1/mrdv+9clsM+5JbPA74fdFy/sa92NHvYKFOPiNAUqYw0ohT2Hr
+	N4G2Hr0y0QU63OX94cP8k59LE9iPHDWBsSr9NIXKxoyJbyf24sJ/dDNuCBha2F969iI5DBsnqhvIT
+	zPOmYS+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY4SN-009N8h-7F; Tue, 13 Sep 2022 11:51:59 +0000
-Received: from mail-eopbgr20064.outbound.protection.outlook.com ([40.107.2.64] helo=EUR02-VE1-obe.outbound.protection.outlook.com)
+	id 1oY4j3-009gxK-JP; Tue, 13 Sep 2022 12:09:13 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY4SK-009Mpc-0W; Tue, 13 Sep 2022 11:51:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=n0jxK1fc8PP6x0tuHGSgWPcZhrVxMzsDnaLusTO3RBZHOouffpLGxT0Vo+0NSQFppKjN8XNgVCWHJzniiACRyfPHoAtXE+AxlKPJJQK9fBNm0FrtkU59OHx6Btg8A4CWHU8UnkS9yx+8TMLB9hDRYRlYgjaVcr76fIMRi+FtvwmL6zC+Gx3cCssFmbz0CKQNsyDIPuatDHibUey8L6YLESpZwYUKnag0QN4xsrN+9fNqZSLz6DqnY9Bui2lJK1Ykl0zVdeVQjWHWuImasag0PAVmupI+7vIvXMXUdEC2rig0kGrpAa2b4AMYuFE1GBoMTIgbhrT+lH+mh0XQR171nQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8PLvGqU3gEdjFyXken2n9tU+ZZnzU4jm//XhXhbKfhs=;
- b=aLYpbEYCWdCopWsdVbCJFCXM4YXpwY9huUM+XRfr8GLxgTdFfzOZzFYFQ/eZmoLzYkvloxV1IMf6vfp6bey72qKF/U+F1cK3wYJGNsUpTpl95qK36AJSF9JgX7HcFSpasD8DhfTlHhVRkjgh1H6Zk3iKg5xMicY+BBS2loggX8Mtoz0L6vQSlArJ1iR2wIsmD0TveCnddV36eZw0hbxlt25+Ji7RdedViTY0U9EUP07l/X7QuTaPr+4aACWvnxEVif3y5RorPYk4/LUOwNgw1ltT9DGHrD1JdQa+MucjfT0JrRrF0N5UJf1CDdG15c6w2ds9V1yGNFvdxXw99E7X8Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
- dkim=pass header.d=suse.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8PLvGqU3gEdjFyXken2n9tU+ZZnzU4jm//XhXhbKfhs=;
- b=30BWq2XySQ9vwPpFoE9W/9VWNjfoe0e+uXrN+6aBdZPUi3G+H17WQwF8aWBfF2tPvoYZlLgdTphITmECfn2JLoDZst6XyKfVT3Pq1oYwbKmx0a364sGmEBXdVBagVOk4UaCjMvG7ezd9hN7lbA9SG88gsbUBBMJFjvBJAoc1M7F/kEmKJroS8YGXgvcX+VMblZowJmJk8in2x1gSoCPeQiDedkPny7nQyaX++jEhLWBVBkUWjCDI3nOU3KcTBmLJmdUdVo7igvPbVCvHYQHpcI1BGdY1pWim9b350qp6AA+WH8uuIZHE9dwpRL/TXQ0X3Ubrmc1c0Wq6JwAJA/wBnQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=suse.com;
-Received: from AM6PR04MB5366.eurprd04.prod.outlook.com (2603:10a6:20b:9d::19)
- by AM9PR04MB8908.eurprd04.prod.outlook.com (2603:10a6:20b:40b::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.22; Tue, 13 Sep
- 2022 11:51:50 +0000
-Received: from AM6PR04MB5366.eurprd04.prod.outlook.com
- ([fe80::c98c:ae67:148d:bdbb]) by AM6PR04MB5366.eurprd04.prod.outlook.com
- ([fe80::c98c:ae67:148d:bdbb%4]) with mapi id 15.20.5612.022; Tue, 13 Sep 2022
- 11:51:50 +0000
-Message-ID: <336cb80f-8f58-92ba-aa92-1bb57a75f0fb@suse.com>
-Date: Tue, 13 Sep 2022 13:51:47 +0200
+	id 1oY4ir-009gKS-Rs; Tue, 13 Sep 2022 12:09:03 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4649A6602002;
+	Tue, 13 Sep 2022 13:08:57 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1663070937;
+	bh=ytNEmiOcTsgWo0PMOFDU/i6E5lJKDu8uqwY6x00ydfU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bFHlB0J2yobOwBvsWUUS07kgVmtwvhQ8i0BmdU0Mc14MRQ8k2mS60QKiOyPOT4BIm
+	 aZrp8CbbkzYxHPK2wQopWJ68KZ0ISvf8ddrLGwPNK4t7Ts336PtSjjQBmSDyZONOF8
+	 Wc+MYU+dWW0Wct9deGcnCiuAa1O3kXKQsBY4fh38B2f88+8SoVJHlQmI3Z1VmN0kYq
+	 9xSorSGxfXLbz3SXAjKJiZ55Hc6yT/JhjPAYyWLK+9LlwHhEmOssamkXBlXswm07dg
+	 PRNhCH/5FHNEIb3pY7pY5YNx7zwndByB4z+BDES0tryYxvo7WERu5BVyJY0+1C+WDX
+	 ydQ55sH6DQwdA==
+Message-ID: <ca89b96f-cb17-e6b0-5dcd-fede79737770@collabora.com>
+Date: Tue, 13 Sep 2022 14:08:54 +0200
+MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.1
-Subject: Re: [PATCH v2] dt-bindings: mfd: Rename mediatek,mt8195-scpsys.yaml
-To: Lee Jones <lee@kernel.org>, matthias.bgg@kernel.org
-Cc: robh+dt@kernel.org, angelogioacchino.delregno@collabora.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, mandyjh.liu@mediatek.com,
- linux-arm-kernel@lists.infradead.org
-References: <20220830091110.27857-1-matthias.bgg@kernel.org>
- <YxnGBN4QEb1yMrGw@google.com>
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v3] soc: mediatek: Introduce mediatek-regulator-coupler
+ driver
 Content-Language: en-US
-From: Matthias Brugger <mbrugger@suse.com>
-In-Reply-To: <YxnGBN4QEb1yMrGw@google.com>
+To: matthias.bgg@gmail.com
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, wenst@chromium.org,
+ alyssa.rosenzweig@collabora.com, nfraprado@collabora.com,
+ dmitry.osipenko@collabora.com
+References: <20220628120224.81180-1-angelogioacchino.delregno@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220628120224.81180-1-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: AM6P195CA0004.EURP195.PROD.OUTLOOK.COM
- (2603:10a6:209:81::17) To AM6PR04MB5366.eurprd04.prod.outlook.com
- (2603:10a6:20b:9d::19)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM6PR04MB5366:EE_|AM9PR04MB8908:EE_
-X-MS-Office365-Filtering-Correlation-Id: 01fcf582-b185-443e-4e88-08da957e57ca
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	mktjcQUstlE/IHeWaS4FGrU9VPnraj9sbsGCHNWZeDo1KDgIkh3Sny94c8TWVw6Dk1+jRbjpOXc84bgyM2iBhJOczfvV3w/1og1px/sQPLMkGFAC8mjdPQah0xXRLWg7qFhkVQS9Asn6+VsukGNzvidWncW7zSW2rQIsfLbvmAMYvzDa+w7vRflOs1ewLtuNw3Xo0YBy5justHJsj8/q0SZV0wXHKqB7CFp8ZU1HhH4u8oCiUTMxdAwuwUSPyRIZDFSzYdhnftwje5CB4dJRITaI7yI4O6Md5CH8glHpebcSJOIjxnhcos6aPEJbuJ2ZkWz4hLQs91ThFJ8zjroATNbtxtf1WfXGECFwJE77rsk8Up9eqjFIoIKy4fraW+6nAQpblppSKPFx40qlvSTlP1zamgqYcNbn28NggoDSPzScqSWfFbraF/Ywq+4GohZQrnebv0J8ax/XdsyNvGp269rF4QMSEHkPwERESJiKnqZCRorjsB1B+eSw/R92LJ6m7H08DI90Yrc5TnVP9xlW1Bi3Hr6ia6j6AeFHQ8oqYRvN4Ch1pLsjKjnWwZKRV3nDUZ/r/+JYtvpWN6AAWSQc6vtDmF1fy/y7H0RIWT/eDZsqMV4+10ZmMzigfj2GbO+ScjKMwLtQc4HCGPdLI2lRiBXO9EiqCHSUDVPYtSiC2y3BYpGrLS4yhDeokGln8A1a4Bpe75oK8IZBn38vJxthIHOs31fIGm0CB0u1i6zGNQB6ba+sLkBTDrKUyF/po4yCc/HxM6YVz0xC8PxPr4wU81GMm7OvGAb1RmW0mHt1Tx1cGEnqZNS4jo3+h16Zrf+A
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR04MB5366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(396003)(376002)(39860400002)(346002)(136003)(366004)(451199015)(86362001)(41300700001)(5660300002)(6666004)(6486002)(966005)(31686004)(36756003)(7416002)(8936002)(478600001)(66556008)(8676002)(66476007)(4326008)(316002)(38100700002)(2616005)(6506007)(66946007)(2906002)(83380400001)(6512007)(186003)(31696002)(26005)(53546011)(45980500001)(43740500002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?VGhSZ3p4TzEyc3ZYM2VvMGc0WmFCNDJZSENuZHdVNDZlbnlncHhURVVHY1Rr?=
- =?utf-8?B?L3pHMDNZTGw5N1FwaGlZejdHd1RsZVM2SVhJK0k5QU5WeTVOZktEaytpSytx?=
- =?utf-8?B?b3FTL3V0dFlPeWVYbEhtMGdQMit4aTNQWWhmQUxZaFlCODc2WHprbXRobkxH?=
- =?utf-8?B?V1FvMjN3U21Sa05ORHpOdTA5VVlXVGZaNHdNNU55ZnZKcFVCQTczK3crSFEw?=
- =?utf-8?B?bG5Scm5uUG9ONnZBNFpxMHhNS0ZjYWpJL2hIYkt1R1NpQnFvM0ZoT09BVjFF?=
- =?utf-8?B?TEFYa0FsdnZZQi9VWjE5Skh2V1FPMDhPRkI3NDVDei9WcEdoUTk2NmZLRTNr?=
- =?utf-8?B?ZjJQRUlFNEttOHRqN04zMHlJNDF0MC9ZU1pMbGVSeVd5bmRtYkFZU0JWemVC?=
- =?utf-8?B?QmRhSFVMNU1uMmxabUJ4T1JoUVlsdjQwMEhOekE4WGpTYXRwZ3pJMlgyMnND?=
- =?utf-8?B?OE10WGxBN2NiNmRqRGNkcTRCNWFZVTVDd1VkY2FSUE0wbkpJZkdObnNkdjg3?=
- =?utf-8?B?UmowcURINHpaNEx4dG80cjRlajNvQ3ZjYzBnQWNwS25IRjAwRFR0TE5VZ0Fy?=
- =?utf-8?B?T2lmTFpyd0VkRHNhTHpmdnQ3UCtSRWREc3dhcWtpY2FJVkMxTFVYT0RUaUQ3?=
- =?utf-8?B?QWV6T25NVlo4VmZjUXpGbU93MCs4QjRSVjhoM0V3VERqRStSQXcxN2lmeEtw?=
- =?utf-8?B?dEJGa3NMZlY0aFAvQWVUNkFvaTZLRUZBK0IwR3REZGUvekV4YTRWSWlueWZt?=
- =?utf-8?B?RXI0S00xK2hlSDdhcGNoK2FETXdYY3laWGFtQ2l1NCtRN2hZR2UwQzlVcW1a?=
- =?utf-8?B?S2FKSE1jbHdSdnhhdlRqUVQ0MkhSYjVzR08wUWYySk4wNGIwZnpwSWd6Uys3?=
- =?utf-8?B?em1PUDl0QitMZElFbS9sOGRad01nQnhobHI4clgyNEhxaUtnMGd2Z2Z2RWZY?=
- =?utf-8?B?bzhXVElBOWs1c1NzbFowVTFXMlZEajBKbjgrSGFzeldaWGlFWFUrZUhZVXRV?=
- =?utf-8?B?OE9Jem0vc29sL1IwMC9DQ080dlpBZ1NTc2hlL1hJZHIxT2tDMFdSb3NrMnJZ?=
- =?utf-8?B?MWhmd2NEU0c3WUQ4OFlzbGtjZWc5dTQ2bGp6RTV0UlVtSGxPUWsyeGwrVWtN?=
- =?utf-8?B?dDVRWldhU3o1OHB1MVRuWk44dm9hWkwzUVRaMHZNSEFMN1BXMkJub0thWDRo?=
- =?utf-8?B?aGdzdTZTWEQ0Umd0REJvNjQzN0l2OWxRRzNsNlhkbnNQc2I1anhpWXJOaUNw?=
- =?utf-8?B?VzVNR0cvMTVDNGljTllTakFCUUQrZW55amt0OG5ITHZxOWREcEtKanRjaUFx?=
- =?utf-8?B?QUNiS3JNL1llVzA1WDlUd080blJWYys2Q2llclZjV0o3Vm5qSStxQitjZUVj?=
- =?utf-8?B?N1pTejhSV1lKdUlsTHNIeTMycThHeVlVdHNmOGwweDFFbHN1MGw5cFZCcm55?=
- =?utf-8?B?MU9rRnMvcWw2MEpGK0JOQ2MvS29iRG15bnZvYXNGUE9tTG9LeEVpc1lSakZm?=
- =?utf-8?B?RVlnV3REL1gwdHJHcmlxK2Z4bEQ5TWJVV0VZdzRENU9DMEkxV3ZjblRHSkt5?=
- =?utf-8?B?d2ZZRzVVTzlUbUs3T1hjekYzUnFyaUo4dXExUmwrU2dpZld4SEVBMnZiUDJK?=
- =?utf-8?B?dWJ6bktvbkNiSXo4ZG1yVFV4ZWV3eC9xTUY0bFZuM00rYk1oU1NJMmhRN1Jj?=
- =?utf-8?B?b2lHU1c3MjFPSmMvVU0xR2JWVm4rTHNLSGFFZGdLZSt4Vm5BRzBrY2pFc1Nq?=
- =?utf-8?B?cVpLczhCZVRKbVljZzFFUk5hVkgyNktocFFGMFB0WjFNQXJwRnhpSG1EK1hy?=
- =?utf-8?B?bm9ZSG5iNXIwVExOVG14N1ZZVGpFMjJldGdvenJPRm9NN3Avb1dHbWNJYzM5?=
- =?utf-8?B?V2tOdmdKSmFoajZtdk1pWlB0WnE1UzRHTjZOMmxla29HVHVDcXpKdWRaL3M4?=
- =?utf-8?B?a0xMZk9oYkc0TzdTQnhmSDdSLzhUZDMwbG9jN3dnbWNKemFLTE5tLzdORVZj?=
- =?utf-8?B?S0VjNktXZm12SFFVL2RIL2w2YTRGN2RhaEN2Y1NiQU1UTERuYTBvb1dQWkJG?=
- =?utf-8?B?bCtQMk11WEliWVhtOTBrRDl4WUdiTDUzS1JBYU1ZclhDL0VEWjkwcUlmMFpK?=
- =?utf-8?Q?MHXz7Y7qD+zsieO5hdz+q96QG?=
-X-OriginatorOrg: suse.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 01fcf582-b185-443e-4e88-08da957e57ca
-X-MS-Exchange-CrossTenant-AuthSource: AM6PR04MB5366.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Sep 2022 11:51:50.2796
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: f7a17af6-1c5c-4a36-aa8b-f5be247aa4ba
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: GNABLcf9XIkEEko3g8K2ysxsr7o5MJtEDukhmXfnpFJdAR7TTi7d47btWl2qb3oMLXTNMXFIzjZna7yHliDHTA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR04MB8908
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_045156_342826_F5E3A6F4 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20220913_050902_161459_8DE5531B 
+X-CRM114-Status: GOOD (  18.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,56 +76,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 08/09/2022 12:37, Lee Jones wrote:
-> On Tue, 30 Aug 2022, matthias.bgg@kernel.org wrote:
+Il 28/06/22 14:02, AngeloGioacchino Del Regno ha scritto:
+> This driver currently deals with GPU-SRAM regulator coupling, ensuring
+> that the SRAM voltage is always between a specific range of distance to
+> the GPU voltage, depending on the SoC, necessary in order to achieve
+> system stability across the full range of supported GPU frequencies.
 > 
->> From: Matthias Brugger <mbrugger@suse.com>
->>
->> The file describes the scpsys node for all SoCs and not only the mt8195.
->> Rename it to reflect this fact.
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+
+Hello Matthias,
+
+gentle ping for this one, as it has been tested for quite a while here,
+on multiple MediaTek SoCs, and it's working as expected.
+
+Can we get it upstream? Is there any blocker?
+
+Cheers,
+Angelo
+
+> ---
 > 
-> Actually, this is fairly typical.  Same with actual drivers.
+> Changes in v3:
+>   - Added braces to else-if branch
 > 
-> Both tend to adopt the name of the module first supported.
+> Changes in v2:
+>   - Added check for n_coupled
+>   - Added check for vgpu to enforce attaching to vgpu<->sram coupling only
+> 
+> Context:
+> This driver is one of the pieces of a bigger puzzle, aiming to finally
+> enable Dynamic Voltage/Frequency Scaling for Mali GPUs found on MediaTek
+> SoCs on the fully open source graphics stack (Panfrost driver).
+> 
+> No devicetree bindings are provided because this does not require any
+> driver-specific binding at all.
+> 
+> Last but not least: it was chosen to have this driver enabled for
+> ( ARCH_MEDIATEK && REGULATOR ) without really giving a free configuration
+> choice because, once the DVFS mechanism will be fully working, using one
+> of the listed MediaTek SoCs *without* this coupling mechanism *will* lead
+> to unstabilities and system crashes.
+> For COMPILE_TEST, choice is given for obvious reasons.
 > 
 
-Well I think that's unfortunate as it can create confusion for people searching 
-for the binding as well as people adding a new compatible as they might think 
-each SoC should have a independent yaml file. For that I reason I think it makes 
-sense to fix the naming.
-
-Regards,
-Matthias
-
->> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
->> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>
->> ---
->>
->> Changes in v2:
->> - Fix id
->>
->>   .../mfd/{mediatek,mt8195-scpsys.yaml => mediatek,scpsys.yaml}   | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>   rename Documentation/devicetree/bindings/mfd/{mediatek,mt8195-scpsys.yaml => mediatek,scpsys.yaml} (96%)
->>
->> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml b/Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
->> similarity index 96%
->> rename from Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
->> rename to Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
->> index 3737207d8504..1a5901ca90f5 100644
->> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
->> +++ b/Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
->> @@ -1,7 +1,7 @@
->>   # SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
->>   %YAML 1.2
->>   ---
->> -$id: http://devicetree.org/schemas/mfd/mediatek,mt8195-scpsys.yaml#
->> +$id: http://devicetree.org/schemas/mfd/mediatek,scpsys.yaml#
->>   $schema: http://devicetree.org/meta-schemas/core.yaml#
->>   
->>   title: MediaTek System Control Processor System
-> 
 
