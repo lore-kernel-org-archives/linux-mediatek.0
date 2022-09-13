@@ -4,89 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E579C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 14:00:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 513E4C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 14:02:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YTIg1OEXQ1/dcwcVxi+ZGuAdkeMfYekXYmzBim0nPwo=; b=C912wqzyhKHF12XBu/NY1aS/HS
-	z8c2UKf+raG/F2f4tdIlQHv1G841dbr4QtFI0FKbyAVLCFEhCRBxoXvKW2F0/CDZUJ1k3c0XrnKxH
-	YRBK7H7u2FF76+T8BYzZ6q3/USLEd4bJtd1zqY/K49WW6T0uHGm99wuQcVprnEOlBjKwWLhCMRg69
-	yu+tBnJh2kAMT8W2rly7yD+Q3q/d8yA/VNMJHHh3ERZhKyLt1veKdWZSOd/D4rFneN1PGKpEQUMgA
-	k8owpz3uV99N+DA5Mkx2B5VsWWPty76U4hIq4SWn6VjgG/IdVTP7ttXgujrnOB4MiifxeaF2Yf0i0
-	Au4NE8Nw==;
+	bh=jYH/vW2OLehIujzgRg7XAJRKCDfixu1/Z5j/bwipGnI=; b=VRmDlRiWXfFm30IGe2L/oujZBd
+	fEeNXFphK1nTSsmN6cbT1TSosrULNKC0cKXAyNerdeEIo/zYXiiNRev4zDpdFnAWbfV3Ub+8+eqTu
+	pHtJa2BoihX9alPa6zF4sXyJD+bnnIki05L8vu6I7c12vmkaiPTE9vPwwZENVuWFB4dm4MX+YGp8Y
+	rKzk7qwK3nuCnuveimOYiockb1/+B3CjnHAcYwVBqyH8HDwtpuNmLRU198K4yFuR7BTz35Xr3Dj3n
+	tGxEZnx159cO+MWYaYRQCkQN7a8Vfm1QsBIwHFmTvnCmf2IEnRzQ5la844IukJjwtqhvOHU8W9GZu
+	XJec1B4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY6T6-00B9y3-3y; Tue, 13 Sep 2022 14:00:52 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1oY6Ua-00BBZW-Vi; Tue, 13 Sep 2022 14:02:25 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY6So-00B98q-EU
-	for linux-mediatek@lists.infradead.org; Tue, 13 Sep 2022 14:00:35 +0000
-Received: by mail-wm1-x333.google.com with SMTP id l8so4161293wmi.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 13 Sep 2022 07:00:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=YTIg1OEXQ1/dcwcVxi+ZGuAdkeMfYekXYmzBim0nPwo=;
-        b=hrDCYLEP1zzGWYMHHDLGYWIigPeQSwQMzhJFuPFlSGf/ZedgoAtZUQ67l9GsBD10oq
-         LQ61+//hDPef+UROY1UFHL/IOKC/t1jMkimOMibMBfwcZBes9tc6Ob6qRVGzPVanIcBI
-         OnmMgK6IwI1Dr2T4JN8Ws4DTyPkEBvP7DFYGYHnS+NYHZbiZfNkxeWDaO5RVgG9ytyJD
-         2tGLX4UxKzZHQCifoq23qSC4Awc828J+PUfR7b7l7yFgAzVzE0urmluDMBkLWwrqUKNY
-         yHrlr+dJ/gaeIefR5sn07jQualrsm48m9IFNGNHrAs0f8WqdV/XWQHvIMC1LXKnU33W1
-         fdCw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=YTIg1OEXQ1/dcwcVxi+ZGuAdkeMfYekXYmzBim0nPwo=;
-        b=Oso9YiryBLW7FSt17DnRxj+a21aAi60hm3s+jtxrCctnkMAARibVB+jZI1pis2beSy
-         btvnlRyF+rTdgGPinlOFLMk2aY9e4V0oIbrfNScfUNoRwbXE4fr0IVYflFFHLr9u/OvF
-         dqrebngWmPwRd9Oz5THZhPfqvhefD9esCA853MWvNrghGpf+9iPfSX6mEohZQ2TWvbR7
-         KfZ/Jexg4/25E9gi4QeWjl4SZTUaMPs3ueNN0QXNctT/vy84P6IrU9Jr9liyIcZkUZ/p
-         u/vz5MLf3GY3JW67s+Sg1wripKIDGhb7YZv57vCM/KpNvsSAS89hDfofoIK3QVej2tBY
-         1I7A==
-X-Gm-Message-State: ACgBeo0i9cWYtHxVY73YoA6D7S6Bd7JTcjfEwqm/oCIzWJKcqLuRnp7p
-	PqD5UzJ5h+SecMyuiGmnji691w==
-X-Google-Smtp-Source: AA6agR6eb5yCW6EoZ0KxQRuBsKpwheJjnMgMzi9W9LXmWNAhnASIkVMi98VWdxKNTTbBTWXhTT3Usg==
-X-Received: by 2002:a05:600c:1e10:b0:3a5:4f31:3064 with SMTP id ay16-20020a05600c1e1000b003a54f313064mr2490080wmb.136.1663077630890;
-        Tue, 13 Sep 2022 07:00:30 -0700 (PDT)
-Received: from [10.119.22.201] ([89.101.193.67])
-        by smtp.gmail.com with ESMTPSA id c1-20020a7bc001000000b003a5ffec0b91sm13123005wmb.30.2022.09.13.07.00.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Sep 2022 07:00:30 -0700 (PDT)
-Message-ID: <affc47aa-a11f-d18b-7c6c-a3698d97b3b4@linaro.org>
-Date: Tue, 13 Sep 2022 16:00:29 +0200
+	id 1oY6UL-00BBAu-On; Tue, 13 Sep 2022 14:02:11 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0ADB46602016;
+	Tue, 13 Sep 2022 15:02:07 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1663077727;
+	bh=fiGIiNykQrjpzh1k5qa71sltsz5JgetWMFsEzWdQqUU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=QIP/l+02X2HOzkBv4sasLj1bbI5kuH2esQsBfcnTt7BM2GYmaIgiwnV7h1Zi7i7+c
+	 2NSq3boPtXFBxSxyxiKZQOYc/fprhlVw3qSZ2+1L0fnctMFEmYkSGP+YOwm6/ciLQB
+	 E/33CLOzJ4mY7BgZS7Cx2KwwZD4ZIXd8H6J5zFz2a+x3zHi61M+j4WKbt50VQioLbN
+	 U2A9gLs50gbNA2CoyPG5sTw6zIUO+CmJ9pRsBsXAXTv4T/zZ0By8D8I93moxQf4VbY
+	 uCbL+XM+JPqBxLfCW5PPtdbEZnA61WNHdmGVtjZYIzszz0CdtwzBS/rtQT+S8lPEWf
+	 Wrr9vIks6FAPA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: robh+dt@kernel.org
+Cc: krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	chunkuang.hu@kernel.org,
+	jason-jh.lin@mediatek.com,
+	rex-bc.chen@mediatek.com,
+	moudy.ho@mediatek.com,
+	allen-kh.cheng@mediatek.com,
+	p.zabel@pengutronix.de,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 2/2] soc: mediatek: mutex: Add support for MT6795 Helio X10 display mutex
+Date: Tue, 13 Sep 2022 16:01:21 +0200
+Message-Id: <20220913140121.403637-3-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20220913140121.403637-1-angelogioacchino.delregno@collabora.com>
+References: <20220913140121.403637-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH v5 1/3] dt-bindings: mediatek: Add bindings for MT6795 M4U
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- joro@8bytes.org
-Cc: yong.wu@mediatek.com, will@kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, konrad.dybcio@somainline.org,
- marijn.suijten@somainline.org, martin.botka@somainline.org,
- ~postmarketos/upstreaming@lists.sr.ht, phone-devel@vger.kernel.org,
- paul.bouchara@somainline.org, Rob Herring <robh@kernel.org>
-References: <20220913122428.374280-1-angelogioacchino.delregno@collabora.com>
- <20220913122428.374280-2-angelogioacchino.delregno@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220913122428.374280-2-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_070034_552855_6E217AAC 
-X-CRM114-Status: UNSURE (   7.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220913_070210_053782_636F9E5A 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,16 +81,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/09/2022 14:24, AngeloGioacchino Del Regno wrote:
-> Add bindings for the MediaTek Helio X10 (MT6795) IOMMU/M4U.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Acked-by: Rob Herring <robh@kernel.org>
+MT6795 has the same mutex mod/sof register layout as MT2712 and MT8173,
+but supports only four SOF, as it has two DSI and one DPI.
+Support is added by reusing most of the MT8173 data, with the addition
+of a mt6795-specific SOF array (and devicetree compatible, of course).
 
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/soc/mediatek/mtk-mutex.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index e82421386335..eb021e347753 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -433,6 +433,13 @@ static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+ 	[MUTEX_SOF_DSI3] = MUTEX_SOF_DSI3,
+ };
+ 
++static const unsigned int mt6795_mutex_sof[DDP_MUTEX_SOF_MAX] = {
++	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
++	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
++	[MUTEX_SOF_DSI1] = MUTEX_SOF_DSI1,
++	[MUTEX_SOF_DPI0] = MUTEX_SOF_DPI0,
++};
++
+ static const unsigned int mt8167_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+ 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
+ 	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
+@@ -487,6 +494,13 @@ static const struct mtk_mutex_data mt2712_mutex_driver_data = {
+ 	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
+ };
+ 
++static const struct mtk_mutex_data mt6795_mutex_driver_data = {
++	.mutex_mod = mt8173_mutex_mod,
++	.mutex_sof = mt6795_mutex_sof,
++	.mutex_mod_reg = MT2701_MUTEX0_MOD0,
++	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
++};
++
+ static const struct mtk_mutex_data mt8167_mutex_driver_data = {
+ 	.mutex_mod = mt8167_mutex_mod,
+ 	.mutex_sof = mt8167_mutex_sof,
+@@ -865,6 +879,8 @@ static const struct of_device_id mutex_driver_dt_match[] = {
+ 	  .data = &mt2701_mutex_driver_data},
+ 	{ .compatible = "mediatek,mt2712-disp-mutex",
+ 	  .data = &mt2712_mutex_driver_data},
++	{ .compatible = "mediatek,mt6795-disp-mutex",
++	  .data = &mt6795_mutex_driver_data},
+ 	{ .compatible = "mediatek,mt8167-disp-mutex",
+ 	  .data = &mt8167_mutex_driver_data},
+ 	{ .compatible = "mediatek,mt8173-disp-mutex",
+-- 
+2.37.2
 
-
-Best regards,
-Krzysztof
 
