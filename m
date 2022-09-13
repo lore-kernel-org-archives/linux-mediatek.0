@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0AC8ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 17:02:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2CB2C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 17:02:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xrMsqtImkD2B2rzGRAWvIYHVPQW1eiX1GhxHtv73ZDI=; b=pkYDjFvfqSXiefyimyYSCQHwfw
-	Pbqi+5n3XLkyElOGBDtpSowrvYorj426o73qFPdv91099ilDeZQVPal/RxqmnzG/WmvBf32/iLGrZ
-	H206YNc4uVN5Xvp+FbdcfNMlbRw82LYL6m4CQiKJFsE64VlqhYJhxHtP/XGaMjvj0XToH/UsCxD/F
-	gZRh9Z/axNtp9MXoqiGKEvp92eP9pXbNQ8OJjiEPcPAyCb55WjqxixDD7Ba4K34juehCOpq5SLBUq
-	h+xXsiGZ0C1SD9ASl0CjIHveZNUKNOkdg/4bDVoVeaKZZefcWCwe+4/le7h4mZDVRiJ0H+f/gDsk+
-	4ot76GFw==;
+	bh=NwzvXiI9a1HdC8pdd8df/ErJ+ZH5eSXvdhSSIAjxGh8=; b=DGCBtptxrvBI+StmzstgYQKAc8
+	7yO/2s/Q0XT3IbClvwBW6FX7am1coxxy9/8uOBJfLHG9odKlha94IaHJeDxvNlvK9exdmkjqDus8g
+	ddkfIoVMdfPrVDlE37RCBpP+pSsWtkGY+NpNkVjbVAUpdB5eodLoHKB5fNz55fI9NAcnSFsDJFKxp
+	HiSALn8BMO5T6YbcpvfgJ97X8Srxef/rztveFlSjbYT9oTZlLxH4pMZQZVNW6N5jxJT9E/Jb7z76+
+	QfpJGI0XZeGz78RT3p096OGBehtgtigzNcX91S/1umvcOauwV6XZ8goIWC4Hv8WZk/hxKpLBiT0+c
+	zXsS/Y2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY9IM-00Dith-EZ; Tue, 13 Sep 2022 17:01:58 +0000
+	id 1oY9IQ-00Dix5-83; Tue, 13 Sep 2022 17:02:02 +0000
 Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY9II-00Dilk-Iu
-	for linux-mediatek@lists.infradead.org; Tue, 13 Sep 2022 17:01:56 +0000
+	id 1oY9IM-00DirV-Rs
+	for linux-mediatek@lists.infradead.org; Tue, 13 Sep 2022 17:02:01 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 2BB70B81034;
-	Tue, 13 Sep 2022 17:01:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84B2AC433D6;
-	Tue, 13 Sep 2022 17:01:51 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 54721B81042;
+	Tue, 13 Sep 2022 17:01:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 914EEC433B5;
+	Tue, 13 Sep 2022 17:01:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663088511;
-	bh=HTELgz85dgkOVYCUXWEEGsWAO5SlTj5qt8mMqZOd+0o=;
+	s=k20201202; t=1663088516;
+	bh=glKED/0Y4fO2g8zx6ZFea7N26bEnJHPkIB6vu3yBSX0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AIPLtMOIFXlnSd8YxBWQ2nJAE3r092k0rxUxzDfyOWtxQF5pdsUYgijJJbomOhow/
-	 LZpGTVYg3jHs7LRSz7dt6xmEooVdru0mG7nzZYhSbIhKhm3cH7SH9jMgSXO5Q1NKo0
-	 qsjoN/v+OHJwfZcI29zXH/ZHIucZicOufKd8LHTCr+7K8LbWIXYSOPQ051viXgGWQG
-	 LztoeVXv+i8t8kTCp5seVAh7S+jui95zM8aq9HQmag4Q8jV9Jjd7WREwPHsDKTjX0j
-	 9hT39MsFGv3+B5iwZ8SKWhQwcEG6KfEyAnJDUJc3VaPtemXTvPUuJ4aLAv2ZRN4aGL
-	 S6Tzeq9Htp7OA==
+	b=mAc95L0VTO3CvDFYVHedPjFehpXmRkRotMUuzmg9n2953an5BtPfnYFJtnFt/A4MA
+	 d0LwQaY8/XjSBtX5ILnXZs9FQ9mm9ARrPMNMEw82r7kMFYbIZnnMjSHbkFQJiVKBcw
+	 h9Uhtx7Fde1ba/gERQ2OWT7nGI/Cj4dEX+TXLnR+KYgsOpQrpVlJQ1lkxd1JnwRZga
+	 Fl4IZ1Gi7Vc35w7RgduPqZPf7S8lqRbBgxVM9z4r7ZSqKMYtfii3OvseQL6Vm13EX6
+	 ACIK9c4AkUq1J01em3XpZncZlrJhKen+EWUl0ZqZb9boJkdTrajYn/iPy7hs7A/4g1
+	 51qljzvWX76Lw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: nbd@nbd.name,
@@ -62,17 +62,17 @@ Cc: nbd@nbd.name,
 	devicetree@vger.kernel.org,
 	robh@kernel.org,
 	daniel@makrotopia.org
-Subject: [PATCH v2 net-next 03/11] net: ethernet: mtk_eth_soc: move gdma_to_ppe and ppe_base definitions in mtk register map
-Date: Tue, 13 Sep 2022 19:00:53 +0200
-Message-Id: <504ce1157f92013b16c2a3ceb729675852e215d2.1663087836.git.lorenzo@kernel.org>
+Subject: [PATCH v2 net-next 04/11] net: ethernet: mtk_eth_soc: move ppe table hash offset to mtk_soc_data structure
+Date: Tue, 13 Sep 2022 19:00:54 +0200
+Message-Id: <aaa9e85827eee34d4a50c0652c8b37d28f3dc99e.1663087836.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <cover.1663087836.git.lorenzo@kernel.org>
 References: <cover.1663087836.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_100154_973696_B6FA18F8 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20220913_100159_248148_7ED36B37 
+X-CRM114-Status: GOOD (  17.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,106 +90,181 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 This is a preliminary patch to introduce mt7986 hw packet engine.
 
 Tested-by: Daniel Golle <daniel@makrotopia.org>
+Co-developed-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 15 +++++++++++----
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  3 ++-
- drivers/net/ethernet/mediatek/mtk_ppe.h     |  2 --
- 3 files changed, 13 insertions(+), 7 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c |  4 ++++
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  2 ++
+ drivers/net/ethernet/mediatek/mtk_ppe.c     | 24 +++++++++++++++------
+ drivers/net/ethernet/mediatek/mtk_ppe.h     |  2 +-
+ 4 files changed, 25 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index c19c67a480ae..b2b92fe2a96a 100644
+index b2b92fe2a96a..d09717d4f3be 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -73,6 +73,8 @@ static const struct mtk_reg_map mtk_reg_map = {
- 		.fq_blen	= 0x1b2c,
- 	},
- 	.gdm1_cnt		= 0x2400,
-+	.gdma_to_ppe		= 0x4444,
-+	.ppe_base		= 0x0c00,
- };
- 
- static const struct mtk_reg_map mt7628_reg_map = {
-@@ -126,6 +128,8 @@ static const struct mtk_reg_map mt7986_reg_map = {
- 		.fq_blen	= 0x472c,
- 	},
- 	.gdm1_cnt		= 0x1c00,
-+	.gdma_to_ppe		= 0x3333,
-+	.ppe_base		= 0x2000,
- };
- 
- /* strings used by ethtool */
-@@ -2978,21 +2982,22 @@ static int mtk_open(struct net_device *dev)
- 
- 	/* we run 2 netdevs on the same dma ring so we only bring it up once */
- 	if (!refcount_read(&eth->dma_refcnt)) {
-+		const struct mtk_soc_data *soc = eth->soc;
- 		u32 gdm_config = MTK_GDMA_TO_PDMA;
- 
- 		err = mtk_start_dma(eth);
- 		if (err)
- 			return err;
- 
--		if (eth->soc->offload_version && mtk_ppe_start(eth->ppe) == 0)
--			gdm_config = MTK_GDMA_TO_PPE;
-+		if (soc->offload_version && mtk_ppe_start(eth->ppe) == 0)
-+			gdm_config = soc->reg_map->gdma_to_ppe;
- 
- 		mtk_gdm_config(eth, gdm_config);
- 
- 		napi_enable(&eth->tx_napi);
- 		napi_enable(&eth->rx_napi);
- 		mtk_tx_irq_enable(eth, MTK_TX_DONE_INT);
--		mtk_rx_irq_enable(eth, eth->soc->txrx.rx_irq_done_mask);
-+		mtk_rx_irq_enable(eth, soc->txrx.rx_irq_done_mask);
- 		refcount_set(&eth->dma_refcnt, 1);
- 	}
- 	else
-@@ -4098,7 +4103,9 @@ static int mtk_probe(struct platform_device *pdev)
- 	}
- 
- 	if (eth->soc->offload_version) {
--		eth->ppe = mtk_ppe_init(eth, eth->base + MTK_ETH_PPE_BASE, 2);
-+		u32 ppe_addr = eth->soc->reg_map->ppe_base;
-+
-+		eth->ppe = mtk_ppe_init(eth, eth->base + ppe_addr, 2);
- 		if (!eth->ppe) {
- 			err = -ENOMEM;
- 			goto err_free_dev;
+@@ -4201,6 +4201,7 @@ static const struct mtk_soc_data mt7621_data = {
+ 	.required_clks = MT7621_CLKS_BITMAP,
+ 	.required_pctl = false,
+ 	.offload_version = 2,
++	.hash_offset = 2,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+ 		.rxd_size = sizeof(struct mtk_rx_dma),
+@@ -4219,6 +4220,7 @@ static const struct mtk_soc_data mt7622_data = {
+ 	.required_clks = MT7622_CLKS_BITMAP,
+ 	.required_pctl = false,
+ 	.offload_version = 2,
++	.hash_offset = 2,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+ 		.rxd_size = sizeof(struct mtk_rx_dma),
+@@ -4236,6 +4238,7 @@ static const struct mtk_soc_data mt7623_data = {
+ 	.required_clks = MT7623_CLKS_BITMAP,
+ 	.required_pctl = true,
+ 	.offload_version = 2,
++	.hash_offset = 2,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+ 		.rxd_size = sizeof(struct mtk_rx_dma),
+@@ -4269,6 +4272,7 @@ static const struct mtk_soc_data mt7986_data = {
+ 	.caps = MT7986_CAPS,
+ 	.required_clks = MT7986_CLKS_BITMAP,
+ 	.required_pctl = false,
++	.hash_offset = 4,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma_v2),
+ 		.rxd_size = sizeof(struct mtk_rx_dma_v2),
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index ecf85e9ed824..2617cbecdfca 100644
+index 2617cbecdfca..6c5e144cb9f0 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -105,7 +105,6 @@
- #define MTK_GDMA_TCS_EN		BIT(21)
- #define MTK_GDMA_UCS_EN		BIT(20)
- #define MTK_GDMA_TO_PDMA	0x0
--#define MTK_GDMA_TO_PPE		0x4444
- #define MTK_GDMA_DROP_ALL       0x7777
+@@ -969,6 +969,7 @@ struct mtk_reg_map {
+  *				the target SoC
+  * @required_pctl		A bool value to show whether the SoC requires
+  *				the extra setup for those pins used by GMAC.
++ * @hash_offset			Flow table hash offset.
+  * @txd_size			Tx DMA descriptor size.
+  * @rxd_size			Rx DMA descriptor size.
+  * @rx_irq_done_mask		Rx irq done register mask.
+@@ -983,6 +984,7 @@ struct mtk_soc_data {
+ 	u32		required_clks;
+ 	bool		required_pctl;
+ 	u8		offload_version;
++	u8		hash_offset;
+ 	netdev_features_t hw_features;
+ 	struct {
+ 		u32	txd_size;
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+index cfe804bc8d20..1cc7d8338722 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+@@ -88,7 +88,7 @@ static void mtk_ppe_cache_enable(struct mtk_ppe *ppe, bool enable)
+ 		enable * MTK_PPE_CACHE_CTL_EN);
+ }
  
- /* Unicast Filter MAC Address Register - Low */
-@@ -955,6 +954,8 @@ struct mtk_reg_map {
- 		u32	fq_blen;	/* fq free page buffer length */
- 	} qdma;
- 	u32	gdm1_cnt;
-+	u32	gdma_to_ppe;
-+	u32	ppe_base;
- };
+-static u32 mtk_ppe_hash_entry(struct mtk_foe_entry *e)
++static u32 mtk_ppe_hash_entry(struct mtk_eth *eth, struct mtk_foe_entry *e)
+ {
+ 	u32 hv1, hv2, hv3;
+ 	u32 hash;
+@@ -122,7 +122,7 @@ static u32 mtk_ppe_hash_entry(struct mtk_foe_entry *e)
+ 	hash = (hash >> 24) | ((hash & 0xffffff) << 8);
+ 	hash ^= hv1 ^ hv2 ^ hv3;
+ 	hash ^= hash >> 16;
+-	hash <<= 1;
++	hash <<= (ffs(eth->soc->hash_offset) - 1);
+ 	hash &= MTK_PPE_ENTRIES - 1;
  
- /* struct mtk_eth_data -	This is the structure holding all differences
+ 	return hash;
+@@ -540,15 +540,16 @@ mtk_foe_entry_commit_l2(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
+ int mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
+ {
+ 	int type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->data.ib1);
++	const struct mtk_soc_data *soc = ppe->eth->soc;
+ 	u32 hash;
+ 
+ 	if (type == MTK_PPE_PKT_TYPE_BRIDGE)
+ 		return mtk_foe_entry_commit_l2(ppe, entry);
+ 
+-	hash = mtk_ppe_hash_entry(&entry->data);
++	hash = mtk_ppe_hash_entry(ppe->eth, &entry->data);
+ 	entry->hash = 0xffff;
+ 	spin_lock_bh(&ppe_lock);
+-	hlist_add_head(&entry->list, &ppe->foe_flow[hash / 2]);
++	hlist_add_head(&entry->list, &ppe->foe_flow[hash / soc->hash_offset]);
+ 	spin_unlock_bh(&ppe_lock);
+ 
+ 	return 0;
+@@ -558,6 +559,7 @@ static void
+ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
+ 			     u16 hash)
+ {
++	const struct mtk_soc_data *soc = ppe->eth->soc;
+ 	struct mtk_flow_entry *flow_info;
+ 	struct mtk_foe_entry foe, *hwe;
+ 	struct mtk_foe_mac_info *l2;
+@@ -572,7 +574,8 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
+ 	flow_info->l2_data.base_flow = entry;
+ 	flow_info->type = MTK_FLOW_TYPE_L2_SUBFLOW;
+ 	flow_info->hash = hash;
+-	hlist_add_head(&flow_info->list, &ppe->foe_flow[hash / 2]);
++	hlist_add_head(&flow_info->list,
++		       &ppe->foe_flow[hash / soc->hash_offset]);
+ 	hlist_add_head(&flow_info->l2_data.list, &entry->l2_flows);
+ 
+ 	hwe = &ppe->foe_table[hash];
+@@ -596,7 +599,8 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
+ 
+ void __mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
+ {
+-	struct hlist_head *head = &ppe->foe_flow[hash / 2];
++	const struct mtk_soc_data *soc = ppe->eth->soc;
++	struct hlist_head *head = &ppe->foe_flow[hash / soc->hash_offset];
+ 	struct mtk_foe_entry *hwe = &ppe->foe_table[hash];
+ 	struct mtk_flow_entry *entry;
+ 	struct mtk_foe_bridge key = {};
+@@ -680,9 +684,11 @@ int mtk_foe_entry_idle_time(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
+ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base,
+ 		 int version)
+ {
++	const struct mtk_soc_data *soc = eth->soc;
+ 	struct device *dev = eth->dev;
+ 	struct mtk_foe_entry *foe;
+ 	struct mtk_ppe *ppe;
++	u32 foe_flow_size;
+ 
+ 	ppe = devm_kzalloc(dev, sizeof(*ppe), GFP_KERNEL);
+ 	if (!ppe)
+@@ -705,6 +711,12 @@ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base,
+ 
+ 	ppe->foe_table = foe;
+ 
++	foe_flow_size = (MTK_PPE_ENTRIES / soc->hash_offset) *
++			sizeof(*ppe->foe_flow);
++	ppe->foe_flow = devm_kzalloc(dev, foe_flow_size, GFP_KERNEL);
++	if (!ppe->foe_flow)
++		return NULL;
++
+ 	mtk_ppe_debugfs_init(ppe);
+ 
+ 	return ppe;
 diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
-index 8f786c47b61a..bb079e3c0417 100644
+index bb079e3c0417..22efed6599c2 100644
 --- a/drivers/net/ethernet/mediatek/mtk_ppe.h
 +++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
-@@ -8,8 +8,6 @@
- #include <linux/bitfield.h>
- #include <linux/rhashtable.h>
+@@ -270,7 +270,7 @@ struct mtk_ppe {
+ 	dma_addr_t foe_phys;
  
--#define MTK_ETH_PPE_BASE		0xc00
--
- #define MTK_PPE_ENTRIES_SHIFT		3
- #define MTK_PPE_ENTRIES			(1024 << MTK_PPE_ENTRIES_SHIFT)
- #define MTK_PPE_HASH_MASK		(MTK_PPE_ENTRIES - 1)
+ 	u16 foe_check_time[MTK_PPE_ENTRIES];
+-	struct hlist_head foe_flow[MTK_PPE_ENTRIES / 2];
++	struct hlist_head *foe_flow;
+ 
+ 	struct rhashtable l2_flows;
+ 
 -- 
 2.37.3
 
