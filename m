@@ -4,81 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B932DECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 15:55:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F17CC54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 15:57:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gp+xU4sE8xgnQ6QfOuz2cTyIgHVRPnIYNOZIMtkoz24=; b=rIDhNA0Juow3r/FA0RA2SRffxJ
-	sZyGdX7gKSO7QomWQe4zf93WUhqsKRdp9MrnWfE6R6I8MML5Flg7EPzoogWG9QEyfRLGWMmih0WvH
-	BinlNDiD22BiJXzaMBIsOYmVRXRuvAim2m0ewLO1I4vFU7lkwf8NzCE66mvKODqOghyFd5F+0fmKF
-	ZPz2255yP8mowKmyFFfJYto18uFGXFEb33755ZC6x7InIsBwc6qBG58H0kL9onXwFLjUV1nabv6cN
-	eOT2kgIM5Jsbd+agBn/ZN+w3vkrUoetZ+Hig35Ugmeqbj0xE8UrQrYpbq60i0Hf1Mu6zHy5XxY1e+
-	HbD42a4A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UXdtqi6HBBB/B8fCTaBiJara3bZ6zFCee1eqkkfM+Lc=; b=lxFt1F1gDYgCa3Bt+KF+mDN8Tv
+	OBlGt+YmlyYt4dlOxsLeq5rMZOTIgPcxCfSuTn8VJAoY+l0zp71AWJvmRkjqSkQGKSUqm+glq79Jh
+	ELYXOAFQ1VcUgNJGeV2FZ3w+yFgtTFhVOytwxIGczLqsWI3nMKsHQt54fPRac2quVqT6/U1N4XFyn
+	goF/TVV31IZmoUzOngJwJys9EBv3Ht4VD+sVCeIjuJnuoTUV9C+5BsnV1PMf9+YQy9qpvdNMWcTLs
+	JqlxAzWrr95xbM9wCbM1F8B9+p7S9LNfn20MD+3C31yvFnCxROOvUHuqTROriEilcId3g4o/iGzeB
+	a0zb+42A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY8Fr-00Cs64-J5; Tue, 13 Sep 2022 15:55:19 +0000
-Received: from mail-ot1-f54.google.com ([209.85.210.54])
+	id 1oY8HS-00Ctds-IP; Tue, 13 Sep 2022 15:56:58 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY8FQ-00Crj0-IE; Tue, 13 Sep 2022 15:55:01 +0000
-Received: by mail-ot1-f54.google.com with SMTP id 92-20020a9d0be5000000b0063946111607so8372745oth.10;
-        Tue, 13 Sep 2022 08:54:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=gp+xU4sE8xgnQ6QfOuz2cTyIgHVRPnIYNOZIMtkoz24=;
-        b=suFNAz3IIpkwHuXa8jhYIbwmWlK9jZlXLNl2hBvn2FNFwmtfYM3GDvJpducQhMIqBn
-         icpToBFHlLtESFwfRjgLpONCEstjLe9+0w/D5iBRcOvcjCrUeF1I5A3rrJaCPy3/GMI5
-         1Xe59TMtWfTaTwGTERFumtsrThuCYkzL2bqvG9rqxRiQZeCXtACMPGkOGTUewCLll6kh
-         RAi4qE9o3DhPzm+EJumbxhAeQEAZBj9Fb2LhqiqJ8IfGVfhdOT0ICyGvTyKDJG5ANZnm
-         dt5r6NJEDkX/8nH7KpsRADa+Ef4txSXE0D8kdzoirtm37biYgBFAHo7yZOBDBBGVv2e8
-         sFyA==
-X-Gm-Message-State: ACgBeo3zxIA44X6FyUUg2Hl9USE20i+g55BxiV9E93lHh8VdLiJ1BxSN
-	/2C5BeT52C8kstc65Cn5Mw==
-X-Google-Smtp-Source: AA6agR4MQlnAHtl45e8P0paPvA3OMjCOfUqMmnYSQk6J/fNxNbf1aZVEL/1TNMQ265oczn67305usw==
-X-Received: by 2002:a9d:1e2:0:b0:656:c789:2b52 with SMTP id e89-20020a9d01e2000000b00656c7892b52mr814035ote.112.1663084490183;
-        Tue, 13 Sep 2022 08:54:50 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id 30-20020a9d0321000000b00655ca9a109bsm5224267otv.36.2022.09.13.08.54.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Sep 2022 08:54:49 -0700 (PDT)
-Received: (nullmailer pid 3806977 invoked by uid 1000);
-	Tue, 13 Sep 2022 15:54:48 -0000
-Date: Tue, 13 Sep 2022 10:54:48 -0500
-From: Rob Herring <robh@kernel.org>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Paolo Abeni <pabeni@redhat.com>, Woojung Huh <woojung.huh@microchip.com>, 
-	Eric Dumazet <edumazet@google.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
-	Andrew Lunn <andrew@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	linux-arm-kernel@lists.infradead.org, Kurt Kanzenbach <kurt@linutronix.de>, 
-	John Crispin <john@phrozen.org>, linux-renesas-soc@vger.kernel.org, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	Linus Walleij <linus.walleij@linaro.org>, Vivien Didelot <vivien.didelot@gmail.com>, 
-	Marek Vasut <marex@denx.de>, linux-mediatek@lists.infradead.org, 
-	Vladimir Oltean <olteanv@gmail.com>, linux-kernel@vger.kernel.org, 
-	DENG Qingfang <dqfext@gmail.com>, =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>, 
-	devicetree@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, 
-	UNGLinuxDriver@microchip.com, netdev@vger.kernel.org, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
-	Landen Chao <Landen.Chao@mediatek.com>, 
-	George McCollister <george.mccollister@gmail.com>, =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>
-Subject: Re: [PATCH net-next 3/3] dt-bindings: net: dsa: remove label = "cpu"
- from examples
-Message-ID: <20220913155448.GA3806944-robh@kernel.org>
-References: <20220912175058.280386-1-vladimir.oltean@nxp.com>
- <20220912175058.280386-4-vladimir.oltean@nxp.com>
+	id 1oY8GQ-00CsYq-Gj; Tue, 13 Sep 2022 15:55:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1663084516; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=ZNzr5cS4PoJX7wrZG10Q6TWliR6BgVKQGmJuJp6wuGoslH4+TGng3s7jrnaGjRAjmw8Cqce1vIQesxOOuRys2c0xIjKoLqD8VIMI/z+Vvyk5fPOiUOmyaF0lNPgGlxgta20Z8p6bP6V72G/cE7GGwKAkmtO2rsN821TMmut9+Po=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1663084516; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=UXdtqi6HBBB/B8fCTaBiJara3bZ6zFCee1eqkkfM+Lc=; 
+	b=hcfi3ncwg7YEepO9spUIwS0TzNYzpTjD7lhEM6GdDYCcD3xuGxEiCg/BISASXeVTIno+/zSHDRLI2e1tOD+E1WstQ2nY0p8hxcHU++1J9mBqwvpjZp+q7XJqOKNDL4d4uA3KtqXh6FT8hfVyDsBcZmh/Q4eke3eKPE8LxGDjt88=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663084516;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=UXdtqi6HBBB/B8fCTaBiJara3bZ6zFCee1eqkkfM+Lc=;
+	b=Rbar/MDmOBryUQ8XdW0t8OZeH1xMp9m57JRXhs5Ql7oy9JFxA4Gmtr6nBPgfJo8M
+	dMRrOpaoHgxk3W5qOgIb02mEPXxdKfV9OAZXuzxB2cL/BF2Btq526hRzzuSrGruYGDd
+	Tg1ed8yk6TOc5UguU++CudJuGlqe87qZvKo9iTAk=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1663084512771268.36068470563725; Tue, 13 Sep 2022 08:55:12 -0700 (PDT)
+Message-ID: <68902e34-8ef4-994b-8e89-d42b55aeaaec@arinc9.com>
+Date: Tue, 13 Sep 2022 18:55:05 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220912175058.280386-4-vladimir.oltean@nxp.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH net-next 1/3] dt-bindings: net: dsa: mt7530: replace label
+ = "cpu" with proper checks
+Content-Language: en-US
+To: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org
+Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ George McCollister <george.mccollister@gmail.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
+ Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
+ =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Marek Vasut <marex@denx.de>,
+ John Crispin <john@phrozen.org>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+References: <20220912175058.280386-1-vladimir.oltean@nxp.com>
+ <20220912175058.280386-2-vladimir.oltean@nxp.com>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20220912175058.280386-2-vladimir.oltean@nxp.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_085457_918503_BE42BD4F 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20220913_085554_646910_A3E92071 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,25 +95,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 12 Sep 2022 20:50:58 +0300, Vladimir Oltean wrote:
-> This is not used by the DSA dt-binding, so remove it from all examples.
+On 12.09.2022 20:50, Vladimir Oltean wrote:
+> The fact that some DSA device trees use 'label = "cpu"' for the CPU port
+> is nothing but blind cargo cult copying. The 'label' property was never
+> part of the DSA DT bindings for anything except the user ports, where it
+> provided a hint as to what name the created netdevs should use.
+> 
+> DSA does use the "cpu" port label to identify a CPU port in dsa_port_parse(),
+> but this is only for non-OF code paths (platform data).
+> 
+> The proper way to identify a CPU port is to look at whether the
+> 'ethernet' phandle is present.
 > 
 > Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
-> ---
->  Documentation/devicetree/bindings/net/dsa/ar9331.txt       | 1 -
->  .../devicetree/bindings/net/dsa/arrow,xrs700x.yaml         | 1 -
->  Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml    | 2 --
->  .../devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml  | 1 -
->  Documentation/devicetree/bindings/net/dsa/lan9303.txt      | 2 --
->  Documentation/devicetree/bindings/net/dsa/lantiq-gswip.txt | 1 -
->  .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml       | 7 -------
->  .../devicetree/bindings/net/dsa/microchip,ksz.yaml         | 2 --
->  Documentation/devicetree/bindings/net/dsa/qca8k.yaml       | 3 ---
->  Documentation/devicetree/bindings/net/dsa/realtek.yaml     | 2 --
->  .../devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml    | 1 -
->  .../devicetree/bindings/net/dsa/vitesse,vsc73xx.txt        | 2 --
->  12 files changed, 25 deletions(-)
-> 
 
-Acked-by: Rob Herring <robh@kernel.org>
+I realised "dt-bindings: net: dsa: mt7530:" prefix is used here instead 
+of the usual "dt-bindings: net: dsa: mediatek,mt7530:". Does this matter?
+
+Arınç
 
