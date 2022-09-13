@@ -4,80 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1582ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 16:29:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 542E9ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 16:51:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=feABSJN9jpizOdnxJqE+tP/2w15qPXg0lbOz999CO18=; b=v3aGPgm+f3A4NVf9iWypbFlA/X
-	iEyCx9zXXMESGg6+XKbnJSYkLdfqtWnppcBmf9otqljMcLNql9lFXqXt28yWuW647mKpgWgcsRXqo
-	EHjsPIi2AJnHW6elhw+8yBdXX94z9CK5QAODveXFjFykdcKaMKZ5T0wKDUlaeSpnvjBR0TreOhZ3S
-	yV2ry9LdM1dXJAruIsD7Z5+JqIorr00h+Sx/mnLXbDiE6VCnPWJuWNB6S8Nw+RNqnlRcW7nZKQaFK
-	Zns0jabfh3xCqb+hA2W3nreJBIkRUqmkMMwW7emgiSzt0nM8Xok+j95NauJoyU/0BhishxFs7DGQR
-	yO2Mhvxw==;
+	bh=8kStY2Og2g3FQ4Uh+BWFfEr+7o6KsjtohOa8XqQso/8=; b=jr0aTfkAcl+/FcyL3h/nwrDLzg
+	3lpPLNTHuejRY1g1gpWB25pZq3VgcXW0P4W8Z6nj/mxRs8oe7akHi1f/mI00x2v+0gcUCnFK64LfN
+	j2llqalmVZtXosy+2P7uh8gjNh1Xl18TS+VBAyRRBGPixr2t5/GiTYDDVnsyVYfqVf9FGtdTdQ8y/
+	4/3xwPGUHHk5VrIxQBqTiIaFMj1P/5Ix+GKYJH5wv4hSVj5f49An6DaEKcskn4VUPaSbPpZ+eYmY5
+	ouCK04ft5m7quaFMIo03NJmzzqYwNr6u6sPq/SmEw207D8IhVwPQ0sJA81it2Rds9y3CO0YfqtNhJ
+	s6mL9lPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY8mt-00DKNh-Bk; Tue, 13 Sep 2022 16:29:27 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1oY97j-00Da6p-84; Tue, 13 Sep 2022 16:50:59 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY8mP-00DJsj-Ap; Tue, 13 Sep 2022 16:28:58 +0000
-Received: by mail-wr1-x436.google.com with SMTP id e16so21679000wrx.7;
-        Tue, 13 Sep 2022 09:28:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=feABSJN9jpizOdnxJqE+tP/2w15qPXg0lbOz999CO18=;
-        b=XGKT34MSDxeBpVcSFtMIZtXOTkr3LqymTjtxWqRpgA1FnKflx9nfgU24xXIxJbPTan
-         KTDSeo0I+gKbLPN/iPMwbWBWVk2SDsRXvzFRXePtDNmixbNf8Yt30dvvIKpgoA0aBvxq
-         UNT4uQer7wSvzhu/WQoLab3MtzMaJ1wDvQf1HVX9xoS+C62K+xbZALou004TJTbh1my/
-         uUhcDwm7DJUhqcWdPJpee8miIyQiawJdSUSEf/hAHbcBAjAR+JGb/2sagjislWbyuiW4
-         /ikSpmAldYljm6CohArw06FXMDdMWGgD1cjGbU8oLSOOX78Zaqe5nSc/FcZUBKZUZRDS
-         UGng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=feABSJN9jpizOdnxJqE+tP/2w15qPXg0lbOz999CO18=;
-        b=YVpMnStatuEkgJ129Q2kz2Tk5T593GAulLqdOJM5nx5NAuzQwlTRM85kc3lQd+INl1
-         H8IA/+p+2MzSOXzurc4pWaXHhhNbVdFwbPUY6FBGxphDI0DMRDok+VbJSSihIStzfaoY
-         HVTu84lu9tYD/BvEmevMnty/y4ctVeurtS/9yybkuVte7HATzz+DHEDxvYy+rIqsa0tD
-         PQDV+subTv2OeNHaTJm7GRNjyTdwSfudPFeE2yvD7+yedMHPV9j/4qeVo8c27nD2Fku0
-         +nfsK0nDEJL2qr5ZKlS3WDUPQh2aKKGiG8uzlElqIjfuxf0efmVkgxjjeKeWkkc1Nv1c
-         E/Kg==
-X-Gm-Message-State: ACgBeo2Oo0SLgoST/JFZEbSXBch9vlBYkoFEn8pvubRgcr7xd6GQXs6g
-	uVzkNVTOAdcdNufqOUij3YE=
-X-Google-Smtp-Source: AA6agR6l4NvWXOFt/iyhGaqbS5S4G5XjDHsBhqS+mN041t/T9rGzhMiNbnnD9Lmg/uKdn4P+PReJMg==
-X-Received: by 2002:a5d:6dac:0:b0:227:41e9:e00d with SMTP id u12-20020a5d6dac000000b0022741e9e00dmr18356009wrs.643.1663086534923;
-        Tue, 13 Sep 2022 09:28:54 -0700 (PDT)
-Received: from [192.168.0.30] ([47.62.125.55])
-        by smtp.gmail.com with ESMTPSA id x14-20020a5d60ce000000b0022862fd933asm10853505wrt.96.2022.09.13.09.28.53
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 13 Sep 2022 09:28:53 -0700 (PDT)
-Message-ID: <d9f08c83-6742-ed89-3963-f518f33e4df7@gmail.com>
-Date: Tue, 13 Sep 2022 18:28:52 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.1
-Subject: Re: [PATCH v3 0/7] MT8195 Acer Tomato - devicetrees Part 2
-Content-Language: en-US
+	id 1oY91a-00DWKD-3l; Tue, 13 Sep 2022 16:44:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 7B5D66151F;
+	Tue, 13 Sep 2022 16:44:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D4C7C433D7;
+	Tue, 13 Sep 2022 16:44:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1663087477;
+	bh=LazoKil10sVAZo5jouuuvttZYHH0Wrl8ysZuo+MFHqA=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=UGMg0ZxrSB5Y6y8eMg/Y0A/G+j9ibH66bPhWEedVUf2YD4QweIwj/SbhyEWlWNG36
+	 rK7QXPvjiOQq18oefDdZs7C7wm2umGln1VW2I4LhUmnFYpzgpes8lfP2ZutmGnyGS3
+	 vqpzYJYyQewKn4+iIszV+eOoSQRaYy+/5og1k4DlTJ7Ktd1KoegY5gf9gwWl9ahJuT
+	 EpGhjwUIa8wCC2Tp+knxbWDkSXBRuCNIl958P4h/C2eHOJvEaSQSCqhF00yLKCQ+0z
+	 qnddPHDYBAJNgbxrByylGyfQA72RswR6iHn2N1MSoIXGO0N3OvGr51L3d/1aZR+iDz
+	 Bj9/kwajdbHog==
+From: Mark Brown <broonie@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, wenst@chromium.org
-References: <20220902081156.38526-1-angelogioacchino.delregno@collabora.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220902081156.38526-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Cc: krzysztof.kozlowski+dt@linaro.org, lgirdwood@gmail.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org, matthias.bgg@gmail.com
+In-Reply-To: <20220913123456.384513-1-angelogioacchino.delregno@collabora.com>
+References: <20220913123456.384513-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v4 0/4] MediaTek Helio X10 MT6795 - MT6331/6332 Regulators
+Message-Id: <166308747505.261771.11158894502965288583.b4-ty@kernel.org>
+Date: Tue, 13 Sep 2022 17:44:35 +0100
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.10.0-dev-7dade
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_092857_611000_B24F2721 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20220913_094438_439292_44F7DAF6 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,52 +71,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 02/09/2022 10:11, AngeloGioacchino Del Regno wrote:
-> This series enables more functionality on the MT8195 Tomato Chromebooks,
-> bringing it to an almost usable state.
+On Tue, 13 Sep 2022 14:34:52 +0200, AngeloGioacchino Del Regno wrote:
+> In an effort to give some love to the apparently forgotten MT6795 SoC,
+> I am upstreaming more components that are necessary to support platforms
+> powered by this one apart from a simple boot to serial console.
 > 
-> With this series, the device is able to boot from the MicroSD card
-> and is able to communicate with the EC for various functions,
-> including the enablement of the Chromebook's keyboard, battery
-> charging, fuel gauge and other standard ChromeOS EC functionality.
+> This series adds support for the regulators found in MT6331 and MT6332
+> main/companion PMICs.
 > 
-> This also enables the Audio DSP, codec and sound card and adds support
-> for the regulators found on the SPMI bus.
-> 
+> [...]
 
-Whole series applied.
+Applied to
+
+   broonie/regulator.git for-next
 
 Thanks!
 
-> What's missing (coming in the next part)?
-> 
-> * Format:    feature  (location)
-> *
-> * MediaTek vcodec enc/dec (mt8195.dtsi only)
-> * PCI-Express WiFi card (mt8195 and mt8195-cherry)
-> * VDOSYS1 (mt8195.dtsi and mediatek-drm/mmsys drivers)
-> * DP/eDP outputs for external/internal display (mt8195 and mt8195-cherry)
-> * LVTS Thermal Sensors (mt8195.dtsi, driver is missing)
-> * GPU support (comes later, clocks implementation is in the works)
-> * Audio/ADSP support (waiting on SOF OF commits)
-> 
-> Changes in v3:
->   - Commonized pin definitions for secondary SD/MMC controller
->   - Added firmware-name for SCP
->   - Changed keyboard backlight to google,cros-kbd-led-backlight
-> 
-> AngeloGioacchino Del Regno (7):
->    arm64: dts: mediatek: cherry: Enable the System Companion Processor
->    arm64: dts: mediatek: cherry: Wire up the ChromeOS Embedded Controller
->    arm64: dts: mediatek: cherry: Add Google Security Chip (GSC) TPM
->    arm64: dts: mediatek: cherry: Add keyboard mapping for the top row
->    arm64: dts: mediatek: cherry: Enable secondary SD/MMC controller
->    arm64: dts: mediatek: cherry: Enable Elantech eKTH3000 i2c trackpad
->    arm64: dts: mediatek: cherry: Enable MT6315 regulators on SPMI bus
-> 
->   .../boot/dts/mediatek/mt8195-cherry.dtsi      | 256 ++++++++++++++++++
->   1 file changed, 256 insertions(+)
-> 
+[1/4] dt-bindings: regulator: Add bindings for MT6331 regulator
+      commit: 6385e21692bbb0b35eca8120d576b3c1ba1ad9d3
+[2/4] regulator: Add driver for MT6331 PMIC regulators
+      commit: 6f7a71f804287a7566314ab1a73d8ca2c18ca0d7
+[3/4] dt-bindings: regulator: Add bindings for MT6332 regulator
+      commit: e22943e32e1fc314b8e2b095ae3495d1bfa9aca5
+[4/4] regulator: Add driver for MT6332 PMIC regulators
+      commit: 1cc5a52e873a4f9725eafe5aa9cd213b7b58e29e
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
