@@ -4,70 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56FB8C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 14:03:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51790C6FA89
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 14:21:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iTAn/m/YlJsSUDR82KQhgEA2KgpeEvGALi/1FEr1v5o=; b=VwiRCGfOqAhTrRLhAf5+RGJlZA
-	OV72ZoPU6JLpjB+XPVVu/rC4gt2Xytioiyygfzsah5XAxaUl4nP+Og3m2W0JMSETEe/uW6l/7UWJ9
-	l7jfGfcwa2AXNCt7bzKboRxgmdId9J5I+gJgHqfhx8vih0uqjEW33RW+VOxU04idDuRPBdF1OVqIz
-	fC8lSZ3g6WEFsdpDXL1unQf/3nTnrYX8ZYbIyoVytV/OBjv4Wl9pkpKOLwoE2KKSU7vExbty2Q8+4
-	nrNCYShnHxcEVZoev1698Fi4iX/0BRJha1zVAp3VAlQm3N0+aI+4bii7rBEksQhHefpJG/BGsz5oE
-	KCZmZQKw==;
+	bh=iRLdT3aU1LgBOiMK66KmiIjapaD8BSf3ORp6HQO/xhk=; b=kGRDOs6iBNEnwyJZZfbZoz2a8R
+	pBWVptJM2IhO+fUaw5RL7tMjv5dXEnF1GbsC7KiZvUEM3YEB/RATXUKF0CKqxht9zoEDBFYqySaa1
+	rbJnLTHhoZWVXMMQ3FO6M/nwaNdtkJPtcFje/0ciZMfLZY4rtPbcIpGY7MC+ODmxCNxAk5vfTUkCc
+	qaha7sVF6M6erZDZHmu9kc+tP9lTxIFmEs9eONVozeft6rBnK3U52L9OGxvvAEpP0KWZnxoKkCCxy
+	3EYOHkRXRIfgqHx2VZvJuByBNVsus602t4qBPu7OHGJbyrGBW7FHagyqXbCGkyO0FQKT2ySkxOrQn
+	JvDJ2BBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY6V4-00BCN7-0d; Tue, 13 Sep 2022 14:02:54 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oY6nD-00BVQE-Pu; Tue, 13 Sep 2022 14:21:40 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY6UM-00BB8p-KB; Tue, 13 Sep 2022 14:02:12 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 281E96602006;
-	Tue, 13 Sep 2022 15:02:06 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663077726;
-	bh=ErT3ESbOa0vk9bZS+9TSr45Pf6iZdWC5H+hlE0INnY0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RJYmSs73FepwOwIMBcXJo14SVTarVl0tD9gnZ1PTlzIo2FTtmK1owHlvYSENheeBF
-	 opGwe37fjNsT4xRnC3Lg50PKtRmhjbxEmr5u3i1Yc+djPcqstgBvwN89imroO0+9w2
-	 L92faVBBCMJMKpX5mC8ZNXEzpFYWJb4NiU8+WBaTy98atXRHukmMLya5Ay9bEXNNb+
-	 HTzKRA3YPzCwFWsffE3cMkU+3AOdT0bVG6PbWIzznpWKWxhHgd8YVgC85RPanwH/hy
-	 WPApudvvt+iWgH2UCDJrzeGjFq5IUQSvPXUSegNf8Pu40KUuBwg444gEsl+B5aGdKs
-	 Uo8obMwIWxARg==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: robh+dt@kernel.org
-Cc: krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chunkuang.hu@kernel.org,
-	jason-jh.lin@mediatek.com,
-	rex-bc.chen@mediatek.com,
-	moudy.ho@mediatek.com,
-	allen-kh.cheng@mediatek.com,
-	p.zabel@pengutronix.de,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 1/2] dt-bindings: soc: mediatek: Add display mutex support for MT6795
-Date: Tue, 13 Sep 2022 16:01:20 +0200
-Message-Id: <20220913140121.403637-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20220913140121.403637-1-angelogioacchino.delregno@collabora.com>
-References: <20220913140121.403637-1-angelogioacchino.delregno@collabora.com>
+	id 1oY6gw-00BPUN-IE; Tue, 13 Sep 2022 14:15:12 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1663078468; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=MzaZa2WQtlRdTzi8tOfC68cBb2Ceoq6HZIXuoCniI+UsmBlEUbgdTUFEOxA590gw9Pkcar2YZbgmIEmsMwzn1UDx4dLmZGbJpUClfgRoA/UizsILxKXFKZCTGCLfQuaKzp2mzW7Feuf4YthZSwMsgrph7tTMfCQEIxiYGXOAgI0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1663078468; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=iRLdT3aU1LgBOiMK66KmiIjapaD8BSf3ORp6HQO/xhk=; 
+	b=Sj5M2WrMUU+xzkit+73aGwdT5nu/lb4tQWW2BkXNSiUw3IAWLUjAXu3yLzksNdXTOVQYcuswid9kOcnoOEqhK5IlWpdjn6Daazn4YVItxhN5Bl1dgN3caDWft4BkSv+U8i3VAkAa2Z3e+tI7i7unmqyNsFCTi1vGnMC0WM7d0kE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663078468;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=iRLdT3aU1LgBOiMK66KmiIjapaD8BSf3ORp6HQO/xhk=;
+	b=Z090IQ4OFjTbEZuFX9rMNBgs8TJ77OP+I4U3QyGJ6LrvNASxlc80n3qUxvS9b9Wb
+	Vcdv4RuDMGcAgUY6YQmt8UEF+2T+JJS0CKujOiF0PzkHo8EMTPZ6wfAb2tJKNCnXyr3
+	8B2kSgl5I/iPVFSPw0gFtcd3//DoDMQ2QfqTs43Y=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1663078466851413.63336965516294; Tue, 13 Sep 2022 07:14:26 -0700 (PDT)
+Message-ID: <8a323fc4-bf98-a808-899a-957438b0d792@arinc9.com>
+Date: Tue, 13 Sep 2022 17:14:19 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH net-next 3/3] dt-bindings: net: dsa: remove label = "cpu"
+ from examples
+Content-Language: en-US
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ George McCollister <george.mccollister@gmail.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Woojung Huh <woojung.huh@microchip.com>,
+ "UNGLinuxDriver@microchip.com" <UNGLinuxDriver@microchip.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
+ =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Marek Vasut <marex@denx.de>,
+ John Crispin <john@phrozen.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>
+References: <20220912175058.280386-1-vladimir.oltean@nxp.com>
+ <20220912175058.280386-4-vladimir.oltean@nxp.com>
+ <b11e86c6-ff35-2103-cebe-ebe5f737d9de@arinc9.com>
+ <20220913133122.gzs2uhuk626eazee@skbuf>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20220913133122.gzs2uhuk626eazee@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_070210_807793_A9C3E7B9 
-X-CRM114-Status: UNSURE (   8.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220913_071510_732719_A35352CC 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,26 +103,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible for MT6795 Helio X10 SoC.
+On 13.09.2022 16:31, Vladimir Oltean wrote:
+> On Tue, Sep 13, 2022 at 11:20:04AM +0300, Arınç ÜNAL wrote:
+>> Is there also a plan to remove this from every devicetree on mainline that
+>> has got this property on the CPU port?
+>>
+>> I'd like to do the same on the DTs on OpenWrt.
+> 
+> I don't really have the time to split patches towards every individual
+> platform maintainer and follow up with them until such patches would get
+> accepted. I would encourage such an initiative coming from somebody else,
+> though.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml         | 1 +
- 1 file changed, 1 insertion(+)
+Understood, I think I can deal with this.
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-index 234fa5dc07c2..9241e5fc7cff 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-@@ -26,6 +26,7 @@ properties:
-     enum:
-       - mediatek,mt2701-disp-mutex
-       - mediatek,mt2712-disp-mutex
-+      - mediatek,mt6795-disp-mutex
-       - mediatek,mt8167-disp-mutex
-       - mediatek,mt8173-disp-mutex
-       - mediatek,mt8183-disp-mutex
--- 
-2.37.2
-
+Arınç
 
