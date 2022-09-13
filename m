@@ -4,83 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE043C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 08:21:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EACDBC6FA82
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 08:26:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l3Uz5ApxLpqDacPxjaTwky27X6aovDun2GVwHWsZDR4=; b=yTHZPeL1PHIn/PiatauuBmYo9t
-	+pKYKehybv7b8535Tufu1uSrqzkrv/7hlgZUjyxhRDso8afovY+3N3/0mOCK+vhikSTCQgVkViVq+
-	hOBid2OYUpr9m9ZHOHaU77GsekD0dx7ggr3BrNRz3VBG9Xf5bHZ9L2ruKfOe78t2azS1LhNYfKVOi
-	qIzk5EAYiKZCmfChS2Np5oTHP4N8zM21l0HYQnWIgLIchhfLt7OplO9SzuPES/aPsMhPh8JX7Aeov
-	UIy3TwCuc7bcCqLjLEZBWBkllZfBLwBMJlrhQOKju05Pdl/l0UWLN2rpO7yQNqd8ZuWi9wxpiysNM
-	/yJYxKEw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MQ4/fyZCnjIg7QgMmsopcMYiM+CksOqR8A6+qGvlwcs=; b=4p6CzQ4OjN+MC5kmy8ZXNY6Y7V
+	FXNwWd0jIY00+X0YO3/kc3tClYzeJaaU9e4iJX5tHYxrfRYGIM7/8w+Ez/aO5WpmtSs7u1mak23hb
+	sibcCmPt5frEkB2XsJnVzUrhICil5KPqs6ilcqznjR6C98j73dFYHTY7JjexG8tewf2kWz9evR72M
+	/2epEMrS8pOElLtYu0P1BbH+knfyKj6Co4hN5CbkrOi37pJKbv+prK9jyqvKy5Le/3WIRV3T1LwUP
+	2K6IxH9sRK5dybOvr7GLMyFbQgUZ1ohWJDFYPcckFZzFqFQtyQ49tCm7BtOAn6tzcG3eJU0JzTNvz
+	xxfrC0uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY1AT-004Fd1-VE; Tue, 13 Sep 2022 08:21:18 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1oY1F0-004K28-KB; Tue, 13 Sep 2022 08:25:58 +0000
+Received: from mail-mw2nam04on2064.outbound.protection.outlook.com ([40.107.101.64] helo=NAM04-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY19x-004FA6-SW; Tue, 13 Sep 2022 08:20:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1663057212; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=aKmnmo4Olu9MWAcAT2MG18Z5BRqVo0rcAvLuuLpTX1OpirHF8MilMToScvcKZwBf431rVxSs30KWrdvviXWJRl8Y2XKkFgDxV7SOaE9/vt1Jzyajoz/FlBUN3/MEtn7fAPlPOJsJeZooVZnVKpc67JBHQREr/vBnVgPtw/yL4b8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1663057212; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=l3Uz5ApxLpqDacPxjaTwky27X6aovDun2GVwHWsZDR4=; 
-	b=ffzCcNYDVPernkp9cI4jPDQ/Nat/wzX31gbbkq7naS5IOXxci+mF5XjCS2E5NWfFVLN8ssSJpEcQwe1VmG+9Sl+oQmu9z0r3+kfNP65Oza4TI/fBfluL8EgucIHuRnOVGfXP0y8+FLSAQF0Arq979C79WdqklP2vWvNVIZxgnDc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663057212;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=l3Uz5ApxLpqDacPxjaTwky27X6aovDun2GVwHWsZDR4=;
-	b=JcN70WqP4fzeC2Q4KMs4M5h1dzuD/rZjSEXtIBqc4xAH1mAv3f2K7lb5MuXxkPyY
-	flyvBx2S5C/t/Ajgf2czVsHzdsOFwK1GntOUkj6YIPSYrNN0gTDiL+EMeo6kTua/1gq
-	xygWtdEmlp4/AhfOGcsKU1Rqgv8bQ4T1s+W5qlxg=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1663057211696211.31218869420593; Tue, 13 Sep 2022 01:20:11 -0700 (PDT)
-Message-ID: <b11e86c6-ff35-2103-cebe-ebe5f737d9de@arinc9.com>
-Date: Tue, 13 Sep 2022 11:20:04 +0300
+	id 1oY1E5-004IjY-0k; Tue, 13 Sep 2022 08:25:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NEofIU3dLllKzl+bxYGHo8YiIkZG91ibxL8XzNBGNvnaQOKyahYvigyImVYGJu7sYemGzDkFbofTvhtzp+ez2jObfWWW+EWr8I7Bu9qb/TgzPIlim7zlQ1lmEn3elH6PJ3w1VjVnfNVOhyVl3eg5TjxvNS922vSRSyQUy+bud7551iI1/MnBto+gp8SHHNGHWhAK/fFSlJCk3zS0194o7htCHtQsnAySYf8iBKa/LkW3I+9IRd+M3nr9YwwV5dyfVYXnPRCW8td+dNofc/wU3LucLu4rIFrgngstRhAl9UIv/VC1q/90l846qnPizzPIhrd4zsDj5Nm3eX+T0NZ7jg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=MQ4/fyZCnjIg7QgMmsopcMYiM+CksOqR8A6+qGvlwcs=;
+ b=Oqjo+WlGtKnuw5K0GMubqJJ0y6cFrpyMnFUJkduyYxRe3vQPUKpYRib27KL7AKHDsFHfjS9Bnl3Unguv6S+ZdYxZ+pDraVOKiNoLmIvS3cckerFv1+aMbqbF1mEDD36GFqu2T7Rca6ZAxkcyHJNtqQh3wuaBg+jZhkCKskMKNYFfe6TkczSaUC+0Ve2ikbCfFDDlcA/RzFTDs5iiUDCH3LzXvxcN7rb401uP5byGXDpWqutEJwwFHuD5NwLdJLJ7dJp2R1cQ+l3DjiM98RGYrseIMrCcvrFZ/Fv55t4WJ8QAOpwTxXayZ5EbWSqpSlkF5uoXX7t5oUQ5UAdvyTYCQw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 12.22.5.234) smtp.rcpttodomain=kernel.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MQ4/fyZCnjIg7QgMmsopcMYiM+CksOqR8A6+qGvlwcs=;
+ b=JOvm+yiLXV03MSvlCUXIrq7/3jWTMCprIWyHRcoS33ZYf0s3M/p37BOxTruJgSrSqKS72/volSOu1omSp2Q0FnGzfPJusM6IJxXWdvl9/gXo94e2UKhwZz0liABWpByETt+PIAW1OU+siRsVVDMEYNHMOhqW1XRZWIV6Sn+JyyrpoFnOiaw39zha5jU6XujhmnpKqDOBWm4BCqk0MsXn8xQ+dkKHyxLjoEEXA1Bqip36uWH3W5DqK6i+NbAQaRHi8B1Z69ZXH6kBPIX1KaJyQJKaNX35M+L7u0+01GnZJRF36ml83dL082IlKFoM/fRp3Mdi6D5fvUICM7Es6f8NzQ==
+Received: from BN1PR14CA0002.namprd14.prod.outlook.com (2603:10b6:408:e3::7)
+ by SN7PR12MB6861.namprd12.prod.outlook.com (2603:10b6:806:266::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.20; Tue, 13 Sep
+ 2022 08:24:55 +0000
+Received: from BN8NAM11FT068.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:e3:cafe::66) by BN1PR14CA0002.outlook.office365.com
+ (2603:10b6:408:e3::7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.18 via Frontend
+ Transport; Tue, 13 Sep 2022 08:24:55 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.234)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 12.22.5.234 as permitted sender) receiver=protection.outlook.com;
+ client-ip=12.22.5.234; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (12.22.5.234) by
+ BN8NAM11FT068.mail.protection.outlook.com (10.13.177.69) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.5612.13 via Frontend Transport; Tue, 13 Sep 2022 08:24:54 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by
+ DRHQMAIL101.nvidia.com (10.27.9.10) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.38; Tue, 13 Sep 2022 08:24:54 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by
+ drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.29; Tue, 13 Sep 2022 01:24:54 -0700
+Received: from Asurada-Nvidia.nvidia.com (10.127.8.11) by mail.nvidia.com
+ (10.126.190.181) with Microsoft SMTP Server id 15.2.986.29 via Frontend
+ Transport; Tue, 13 Sep 2022 01:24:52 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: <joro@8bytes.org>, <suravee.suthikulpanit@amd.com>, <will@kernel.org>,
+	<robin.murphy@arm.com>, <robdclark@gmail.com>, <dwmw2@infradead.org>,
+	<baolu.lu@linux.intel.com>, <agross@kernel.org>,
+	<bjorn.andersson@linaro.org>, <konrad.dybcio@somainline.org>,
+	<matthias.bgg@gmail.com>, <heiko@sntech.de>, <orsonzhai@gmail.com>,
+	<baolin.wang@linux.alibaba.com>, <zhang.lyra@gmail.com>,
+	<thierry.reding@gmail.com>, <jean-philippe@linaro.org>, <jgg@nvidia.com>,
+	<sricharan@codeaurora.org>
+CC: <yong.wu@mediatek.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
+	<tglx@linutronix.de>, <shameerali.kolothum.thodi@huawei.com>,
+	<thunder.leizhen@huawei.com>, <christophe.jaillet@wanadoo.fr>,
+	<yangyingliang@huawei.com>, <jon@solid-run.com>, <iommu@lists.linux.dev>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
+	<virtualization@lists.linux-foundation.org>
+Subject: [PATCH 0/5] iommu: Define EINVAL as device/domain incompatibility
+Date: Tue, 13 Sep 2022 01:24:43 -0700
+Message-ID: <20220913082448.31120-1-nicolinc@nvidia.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH net-next 3/3] dt-bindings: net: dsa: remove label = "cpu"
- from examples
-Content-Language: en-US
-To: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org
-Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- George McCollister <george.mccollister@gmail.com>,
- Kurt Kanzenbach <kurt@linutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
- Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
- =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Marek Vasut <marex@denx.de>,
- John Crispin <john@phrozen.org>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-References: <20220912175058.280386-1-vladimir.oltean@nxp.com>
- <20220912175058.280386-4-vladimir.oltean@nxp.com>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20220912175058.280386-4-vladimir.oltean@nxp.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN8NAM11FT068:EE_|SN7PR12MB6861:EE_
+X-MS-Office365-Filtering-Correlation-Id: 25a05856-dc4e-4e42-ff64-08da95617009
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	=?us-ascii?Q?y2AbQPrwctxHIY7UMKfGY8ElMlqnq0bOeMWoffIIMDk4wivNZ+F/VDf/ht47?=
+ =?us-ascii?Q?0M1h2i5OvYWlJEDrQdi0iA7wLVQbuOdiuPZfnbYNPp26/aVan14F7mFt4Siu?=
+ =?us-ascii?Q?CVLjV6I/z7gL4eFi8DDueFvqmMSXPEBwVkNWTfElTy3asA8kBBruV5tD7/9x?=
+ =?us-ascii?Q?kIZCkwFu9N+FKvrkyCbHo1ngqDcazl1mMstczgbh6OiPUmmbbJc++mM1mNFE?=
+ =?us-ascii?Q?2aJQMX7TRToEJ+/AHn79zShhD+GEan3VSABEn1CKQqGbta3XReLYgknxQbLN?=
+ =?us-ascii?Q?d5XCR2UTxbkXR3nXPkJXljNsah0YDi8Z+fnx0Bfk2yD7bBBke8brobhcGqrr?=
+ =?us-ascii?Q?yg7UFTaiNMZWTSN+exbE474s0JYSKDf6UVfo3iUYKZcWeweHRT8ysx2Tkz4Q?=
+ =?us-ascii?Q?EQP7W7VQ8IHwM52EICjvI0DZEyuUkhLig7pctQsMxi19bBFzb6tPIvGSM7GO?=
+ =?us-ascii?Q?Kr8nz6OPEOtS2M0UaSSLj1s19nV5VuxnRE+/hGKgrJKFbD3Gtj4S04VDpv9+?=
+ =?us-ascii?Q?kw/9E2rCB00lrOyzoYZsaohAskaz4iehSNs3HXe5K8+exjYCM9EWcllQ+n2p?=
+ =?us-ascii?Q?17ZG0BIhg5KlXc25PNGxjny3iM3CqOF5xZdDgH9mcc1vwz7AzN7v1xy5maw2?=
+ =?us-ascii?Q?Xza86eL6+1Jc+etndobVXOe1lqcqq6z10fVm/V3RvSPVVRGsmqRA4b2d4XN3?=
+ =?us-ascii?Q?wbvOddpLyV/b4ezgBYb5KsRNC53pUMIe51EwJFlzUOT7f5xa/e8MILVIdYBo?=
+ =?us-ascii?Q?QRUeMulL4wLR+P6/A1tGfHWF9sncOIkkS9M0nAcfb7L7RFhiCOvSU/PxrgyX?=
+ =?us-ascii?Q?GHxujHWNyt0XMVNS8M/W+TIvYBF8TxbvLMD737n6NLymYc+/j2GSSDHrBJsi?=
+ =?us-ascii?Q?rqebUlEVitBWgEUVyhWBMngNy+k3FEWz2GpDccEjkPod0HBcD54AIJ5ZRBqz?=
+ =?us-ascii?Q?9cuQsB57Be69RmeOH+kiBYVFzpqc8D1bkROd6vPkrOM=3D?=
+X-Forefront-Antispam-Report: 	CIP:12.22.5.234;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230022)(4636009)(376002)(39860400002)(396003)(136003)(346002)(451199015)(36840700001)(46966006)(40470700004)(1076003)(186003)(4326008)(26005)(82740400003)(54906003)(921005)(478600001)(82310400005)(36860700001)(2616005)(86362001)(356005)(7416002)(316002)(41300700001)(8676002)(7696005)(70586007)(110136005)(83380400001)(426003)(6666004)(966005)(36756003)(70206006)(81166007)(336012)(8936002)(47076005)(40460700003)(2906002)(7406005)(40480700001)(5660300002)(83996005)(2101003)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Sep 2022 08:24:54.8696
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 25a05856-dc4e-4e42-ff64-08da95617009
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.234];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT068.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB6861
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_012047_242138_14F61AC3 
-X-CRM114-Status: GOOD (  17.94  )
+X-CRM114-CacheID: sfid-20220913_012501_319327_2B5E624C 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,281 +145,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12.09.2022 20:50, Vladimir Oltean wrote:
-> This is not used by the DSA dt-binding, so remove it from all examples.
-> 
-> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+This series is to replace the previous EMEDIUMTYPE patch in a VFIO series:
+https://lore.kernel.org/kvm/Yxnt9uQTmbqul5lf@8bytes.org/
 
-Acked-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+The purpose is to regulate all existing ->attach_dev callback functions to
+use EINVAL exclusively for an incompatibility error between a device and a
+domain. This allows VFIO and IOMMUFD to detect such a soft error, and then
+try a different domain with the same device.
 
-Is there also a plan to remove this from every devicetree on mainline 
-that has got this property on the CPU port?
+Among the five patches, the first two are preparatory changes. And then a
+patch to update kdocs and another two patches for the enforcement efforts.
 
-I'd like to do the same on the DTs on OpenWrt.
+Although it might be ideal to merge the previous VFIO series together with
+this series, given the number of new changes, the review in the IOMMU list
+might need a couple of rounds to finalize. Also, considering that v6.0 is
+at rc5 now, perhaps we could merge this IOMMU series and the VFIO one in
+different cycles to avoid merge conflicts. If there's less concern for it,
+I can respin the finalized version of this series with the previous VFIO
+one to merge together into the VFIO tree.
 
-Arınç
+This series is also available on Github:
+https://github.com/nicolinc/iommufd/commits/iommu_attach_dev
 
-> ---
->   Documentation/devicetree/bindings/net/dsa/ar9331.txt       | 1 -
->   .../devicetree/bindings/net/dsa/arrow,xrs700x.yaml         | 1 -
->   Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml    | 2 --
->   .../devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml  | 1 -
->   Documentation/devicetree/bindings/net/dsa/lan9303.txt      | 2 --
->   Documentation/devicetree/bindings/net/dsa/lantiq-gswip.txt | 1 -
->   .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml       | 7 -------
->   .../devicetree/bindings/net/dsa/microchip,ksz.yaml         | 2 --
->   Documentation/devicetree/bindings/net/dsa/qca8k.yaml       | 3 ---
->   Documentation/devicetree/bindings/net/dsa/realtek.yaml     | 2 --
->   .../devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml    | 1 -
->   .../devicetree/bindings/net/dsa/vitesse,vsc73xx.txt        | 2 --
->   12 files changed, 25 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/ar9331.txt b/Documentation/devicetree/bindings/net/dsa/ar9331.txt
-> index 320607cbbb17..f824fdae0da2 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/ar9331.txt
-> +++ b/Documentation/devicetree/bindings/net/dsa/ar9331.txt
-> @@ -76,7 +76,6 @@ eth1: ethernet@1a000000 {
->   
->   				switch_port0: port@0 {
->   					reg = <0x0>;
-> -					label = "cpu";
->   					ethernet = <&eth1>;
->   
->   					phy-mode = "gmii";
-> diff --git a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
-> index eb01a8f37ce4..259a0c6547f3 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/arrow,xrs700x.yaml
-> @@ -61,7 +61,6 @@ examples:
->                   };
->                   ethernet-port@3 {
->                       reg = <3>;
-> -                    label = "cpu";
->                       ethernet = <&fec1>;
->                       phy-mode = "rgmii-id";
->   
-> diff --git a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
-> index 2e01371b8288..1219b830b1a4 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/brcm,b53.yaml
-> @@ -169,7 +169,6 @@ examples:
->   
->                   port@8 {
->                       reg = <8>;
-> -                    label = "cpu";
->                       phy-mode = "rgmii-txid";
->                       ethernet = <&eth0>;
->                       fixed-link {
-> @@ -252,7 +251,6 @@ examples:
->   
->                   port@8 {
->                       ethernet = <&amac2>;
-> -                    label = "cpu";
->                       reg = <8>;
->                       phy-mode = "internal";
->   
-> diff --git a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
-> index 1ff44dd68a61..73b774eadd0b 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/hirschmann,hellcreek.yaml
-> @@ -91,7 +91,6 @@ examples:
->   
->                   port@0 {
->                       reg = <0>;
-> -                    label = "cpu";
->                       ethernet = <&gmac0>;
->                       phy-mode = "mii";
->   
-> diff --git a/Documentation/devicetree/bindings/net/dsa/lan9303.txt b/Documentation/devicetree/bindings/net/dsa/lan9303.txt
-> index 464d6bf87605..46a732087f5c 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/lan9303.txt
-> +++ b/Documentation/devicetree/bindings/net/dsa/lan9303.txt
-> @@ -46,7 +46,6 @@ I2C managed mode:
->   
->   			port@0 { /* RMII fixed link to master */
->   				reg = <0>;
-> -				label = "cpu";
->   				ethernet = <&master>;
->   			};
->   
-> @@ -83,7 +82,6 @@ MDIO managed mode:
->   
->   					port@0 {
->   						reg = <0>;
-> -						label = "cpu";
->   						ethernet = <&master>;
->   					};
->   
-> diff --git a/Documentation/devicetree/bindings/net/dsa/lantiq-gswip.txt b/Documentation/devicetree/bindings/net/dsa/lantiq-gswip.txt
-> index e3829d3e480e..8bb1eff21cb1 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/lantiq-gswip.txt
-> +++ b/Documentation/devicetree/bindings/net/dsa/lantiq-gswip.txt
-> @@ -96,7 +96,6 @@ switch@e108000 {
->   
->   		port@6 {
->   			reg = <0x6>;
-> -			label = "cpu";
->   			ethernet = <&eth0>;
->   		};
->   	};
-> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> index 84bb36cab518..bc6446e1f55a 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> @@ -325,7 +325,6 @@ examples:
->   
->                   port@6 {
->                       reg = <6>;
-> -                    label = "cpu";
->                       ethernet = <&gmac0>;
->                       phy-mode = "rgmii";
->   
-> @@ -389,7 +388,6 @@ examples:
->   
->                   port@6 {
->                       reg = <6>;
-> -                    label = "cpu";
->                       ethernet = <&gmac0>;
->                       phy-mode = "trgmii";
->   
-> @@ -454,7 +452,6 @@ examples:
->   
->                   port@6 {
->                       reg = <6>;
-> -                    label = "cpu";
->                       ethernet = <&gmac0>;
->                       phy-mode = "2500base-x";
->   
-> @@ -521,7 +518,6 @@ examples:
->   
->                   port@6 {
->                       reg = <6>;
-> -                    label = "cpu";
->                       ethernet = <&gmac0>;
->                       phy-mode = "trgmii";
->   
-> @@ -610,7 +606,6 @@ examples:
->   
->                       port@6 {
->                           reg = <6>;
-> -                        label = "cpu";
->                           ethernet = <&gmac0>;
->                           phy-mode = "trgmii";
->   
-> @@ -699,7 +694,6 @@ examples:
->   
->                       port@6 {
->                           reg = <6>;
-> -                        label = "cpu";
->                           ethernet = <&gmac0>;
->                           phy-mode = "trgmii";
->   
-> @@ -787,7 +781,6 @@ examples:
->   
->                       port@6 {
->                           reg = <6>;
-> -                        label = "cpu";
->                           ethernet = <&gmac0>;
->                           phy-mode = "trgmii";
->   
-> diff --git a/Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml b/Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml
-> index 456802affc9d..4da75b1f9533 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/microchip,ksz.yaml
-> @@ -107,7 +107,6 @@ examples:
->                   };
->                   port@5 {
->                       reg = <5>;
-> -                    label = "cpu";
->                       ethernet = <&eth0>;
->                       phy-mode = "rgmii";
->   
-> @@ -146,7 +145,6 @@ examples:
->                   };
->                   port@6 {
->                       reg = <6>;
-> -                    label = "cpu";
->                       ethernet = <&eth0>;
->                       phy-mode = "rgmii";
->   
-> diff --git a/Documentation/devicetree/bindings/net/dsa/qca8k.yaml b/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
-> index f3c88371d76c..978162df51f7 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
-> @@ -159,7 +159,6 @@ examples:
->   
->                   port@0 {
->                       reg = <0>;
-> -                    label = "cpu";
->                       ethernet = <&gmac1>;
->                       phy-mode = "rgmii";
->   
-> @@ -221,7 +220,6 @@ examples:
->   
->                   port@0 {
->                       reg = <0>;
-> -                    label = "cpu";
->                       ethernet = <&gmac1>;
->                       phy-mode = "rgmii";
->   
-> @@ -268,7 +266,6 @@ examples:
->   
->                   port@6 {
->                       reg = <0>;
-> -                    label = "cpu";
->                       ethernet = <&gmac1>;
->                       phy-mode = "sgmii";
->   
-> diff --git a/Documentation/devicetree/bindings/net/dsa/realtek.yaml b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-> index 4f99aff029dc..1a7d45a8ad66 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/realtek.yaml
-> @@ -189,7 +189,6 @@ examples:
->                               };
->                               port@5 {
->                                       reg = <5>;
-> -                                    label = "cpu";
->                                       ethernet = <&gmac0>;
->                                       phy-mode = "rgmii";
->                                       fixed-link {
-> @@ -277,7 +276,6 @@ examples:
->                               };
->                               port@6 {
->                                       reg = <6>;
-> -                                    label = "cpu";
->                                       ethernet = <&fec1>;
->                                       phy-mode = "rgmii";
->                                       tx-internal-delay-ps = <2000>;
-> diff --git a/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml b/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
-> index 14a1f0b4c32b..7ca9c19a157c 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
-> @@ -130,7 +130,6 @@ examples:
->               port@4 {
->                   reg = <4>;
->                   ethernet = <&gmac2>;
-> -                label = "cpu";
->                   phy-mode = "internal";
->   
->                   fixed-link {
-> diff --git a/Documentation/devicetree/bindings/net/dsa/vitesse,vsc73xx.txt b/Documentation/devicetree/bindings/net/dsa/vitesse,vsc73xx.txt
-> index bbf4a13f6d75..258bef483673 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/vitesse,vsc73xx.txt
-> +++ b/Documentation/devicetree/bindings/net/dsa/vitesse,vsc73xx.txt
-> @@ -75,7 +75,6 @@ switch@0 {
->   		};
->   		vsc: port@6 {
->   			reg = <6>;
-> -			label = "cpu";
->   			ethernet = <&gmac1>;
->   			phy-mode = "rgmii";
->   			fixed-link {
-> @@ -117,7 +116,6 @@ switch@2,0 {
->   		};
->   		vsc: port@6 {
->   			reg = <6>;
-> -			label = "cpu";
->   			ethernet = <&enet0>;
->   			phy-mode = "rgmii";
->   			fixed-link {
+Thanks!
+
+Nicolin Chen (5):
+  iommu/msm: Add missing __disable_clocks calls
+  iommu/amd: Drop unnecessary checks in amd_iommu_attach_device()
+  iommu: Add return errno rules to ->attach_dev ops
+  iommu: Regulate errno in ->attach_dev callback functions
+  iommu: Use EINVAL for incompatible device/domain in ->attach_dev
+
+ drivers/iommu/amd/iommu.c                   | 12 ++----------
+ drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 13 ++-----------
+ drivers/iommu/arm/arm-smmu/arm-smmu.c       |  7 ++-----
+ drivers/iommu/arm/arm-smmu/qcom_iommu.c     |  9 ++-------
+ drivers/iommu/fsl_pamu.c                    |  6 +++---
+ drivers/iommu/fsl_pamu_domain.c             |  4 ++--
+ drivers/iommu/intel/iommu.c                 | 10 +++-------
+ drivers/iommu/intel/pasid.c                 |  2 +-
+ drivers/iommu/ipmmu-vmsa.c                  |  4 +---
+ drivers/iommu/msm_iommu.c                   |  2 ++
+ drivers/iommu/mtk_iommu.c                   |  9 ++++++---
+ drivers/iommu/omap-iommu.c                  |  6 +++---
+ drivers/iommu/rockchip-iommu.c              |  4 +++-
+ drivers/iommu/sprd-iommu.c                  |  4 +---
+ drivers/iommu/tegra-gart.c                  |  2 +-
+ drivers/iommu/tegra-smmu.c                  |  2 +-
+ drivers/iommu/virtio-iommu.c                |  6 +++---
+ include/linux/iommu.h                       | 11 +++++++++++
+ 18 files changed, 49 insertions(+), 64 deletions(-)
+
+-- 
+2.17.1
+
 
