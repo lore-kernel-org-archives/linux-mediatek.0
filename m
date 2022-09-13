@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1BE0C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 12:26:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42567C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 12:26:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jw+k/rDQLkCky8LdJKYdUJi++evfwVeuBTMRXJGv8ZU=; b=o+0j3PflvC1tNojU1z4KxFs3Vl
-	ynrTuKW1GTzxr2WHLYG6Tqj1zNvfJJ2NCY6GFaKJirtIuXFHnvh3+7jxH/EL3m/gyzgNQpOdEfDNS
-	cFRzKAly+MtEcfA9mdQ6oV7FTo14joSkNjIs8QEktqTHEX8Njiwb4wSKF6mA9JGVlRz9Sr7pMn62L
-	3UUuVDrZUQxthhTyQaXe6IN1oWIk9MrCSoxiB2CCc0KPI0klb3lWLbZp+Kx4YwsnTN3Zy8/OYV5RG
-	Alx6gKqsrK7BReW9boM/EJAPdUGj+1v7AZ3J2BSGKwVETAz511PiMTEbQfzCGlGB8EVGBhbluGFVR
-	P90TwBQQ==;
+	bh=ScYt492+/gaB1NtkESoHr3aX5yd0bLeAH28FOuD+QOE=; b=GuDouAqELtBwH6ec8g9Zlewio7
+	ot91yu8TbcLAmbg3Gro2/QNesa8cERdf2uqHRg6+/WypH9xghxKQS2LI/4EB7MBN5qRAeOobTrFxS
+	pbEiXCtG1byFTorf/Css1/u/BJShrF8UnY1ZIUYLe0FuLeNwaom5SMst3ayObiFacue+akOECvRvW
+	EAOp5/SmAg37DJiWqQDQRnPE92q+DbbS+/kOmOqa0DNPd+9JaDgWL7qYkZLMrMJ55xMp/pRJc32eB
+	mwaJKYZiof5p6nPndnewcLAyqkDYVDdu37lW++05YkSs6N49lHKXtYJhP6eLoxvf4QYC9qHtgEdDL
+	axs+krCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY4zL-009wwo-1A; Tue, 13 Sep 2022 12:26:03 +0000
+	id 1oY4zN-009x08-Cb; Tue, 13 Sep 2022 12:26:05 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY4y7-009wHH-CH; Tue, 13 Sep 2022 12:24:53 +0000
+	id 1oY4y7-009wHg-CC; Tue, 13 Sep 2022 12:24:52 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A273F6602006;
-	Tue, 13 Sep 2022 13:24:43 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A9664660201B;
+	Tue, 13 Sep 2022 13:24:44 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663071884;
-	bh=WOUSateELXlzHG3K47IrUrnsoLD92+RuWk191vvLhA0=;
+	s=mail; t=1663071885;
+	bh=Upr1CZnAlEt+3JwKmYKTBI9Ip2x7C+ZicowckZI35Q8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NaHiFdtXvxCxJH/u2004m5dfWV9p+DPxILn5ImAAEy95hwctV3CvZirWSO6SLRazt
-	 xuByTiZlODok/rddm689FRP3oPXF8QtisUVEVCqEG9GfCcDLDVOBRSrMhv6QYfZqo+
-	 7ulTuOQMIBGiMibBW1TzNqd7SDIVpkW3evQ9UQhN+gCYxVl1lYwWZQLkMN7Im3MdrC
-	 jkFJwLVZcONFj6K0Ww8r0wlrYylMZChsDiYkcNbef3Ja+OiYhWwyJWRf+K/J9yB2kZ
-	 n2GY3eJjC/rtv1zc5bzljvqIUuuFATyWL4SUvOfXX1o3QIUjUQIIID6zbomwDXvwoq
-	 wl4K+H1fl0DZg==
+	b=ZWwHhBThJmMRW4dl0ji3MMgDUZ79XURrkUYNaOFL4tKCpmZtJriyWMMuAp5PVDcqE
+	 cVZuoAx48PqJFgi57C58hq+1J8lUGRndeZOlfhFkODqJdjkxRpUPeYHMzzrXtBulFO
+	 s7HPh3J5wqwp7+7hjbCge7DaGi1M+yg3xRA39cppv/I0HMQhPJVFBMFWRXuXJsZrww
+	 bVArS2Tp4C6Ss7iYKS1nC9l4GuHU3Ml0BKyae7JGYcvvaSZsE2dR5zGYgDEi+7zCYj
+	 A6PwXchJoBLfcf+FuTkEuQbZRL8juoPd8P9N5Y6sTnNCrDNnU9mSCCrSGzcsjpz5Nb
+	 xqbV8LZroFcEQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: joro@8bytes.org
 Cc: yong.wu@mediatek.com,
@@ -59,19 +59,18 @@ Cc: yong.wu@mediatek.com,
 	~postmarketos/upstreaming@lists.sr.ht,
 	phone-devel@vger.kernel.org,
 	paul.bouchara@somainline.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v5 1/3] dt-bindings: mediatek: Add bindings for MT6795 M4U
-Date: Tue, 13 Sep 2022 14:24:26 +0200
-Message-Id: <20220913122428.374280-2-angelogioacchino.delregno@collabora.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v5 2/3] iommu/mediatek: Introduce new flag TF_PORT_TO_ADDR_MT8173
+Date: Tue, 13 Sep 2022 14:24:27 +0200
+Message-Id: <20220913122428.374280-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20220913122428.374280-1-angelogioacchino.delregno@collabora.com>
 References: <20220913122428.374280-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_052449_838796_36C63C45 
-X-CRM114-Status: GOOD (  12.36  )
+X-CRM114-CacheID: sfid-20220913_052449_782339_A89E3D7E 
+X-CRM114-Status: GOOD (  16.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,153 +85,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add bindings for the MediaTek Helio X10 (MT6795) IOMMU/M4U.
+In preparation for adding support for MT6795, add a new flag named
+TF_PORT_TO_ADDR_MT8173 and use that instead of checking for m4u_plat
+type in mtk_iommu_hw_init() to avoid seeing a long list of m4u_plat
+checks there in the future.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Yong Wu <yong.wu@mediatek.com>
 ---
- .../bindings/iommu/mediatek,iommu.yaml        |  4 +
- include/dt-bindings/memory/mt6795-larb-port.h | 95 +++++++++++++++++++
- 2 files changed, 99 insertions(+)
- create mode 100644 include/dt-bindings/memory/mt6795-larb-port.h
+ drivers/iommu/mtk_iommu.c | 6 ++++--
+ drivers/memory/mtk-smi.c  | 1 +
+ 2 files changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index f5bfe28efa89..a8288691ed87 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -73,6 +73,7 @@ properties:
-           - mediatek,mt2701-m4u  # generation one
-           - mediatek,mt2712-m4u  # generation two
-           - mediatek,mt6779-m4u  # generation two
-+          - mediatek,mt6795-m4u  # generation two
-           - mediatek,mt8167-m4u  # generation two
-           - mediatek,mt8173-m4u  # generation two
-           - mediatek,mt8183-m4u  # generation two
-@@ -129,6 +130,7 @@ properties:
-       dt-binding/memory/mt2701-larb-port.h for mt2701 and mt7623,
-       dt-binding/memory/mt2712-larb-port.h for mt2712,
-       dt-binding/memory/mt6779-larb-port.h for mt6779,
-+      dt-binding/memory/mt6795-larb-port.h for mt6795,
-       dt-binding/memory/mt8167-larb-port.h for mt8167,
-       dt-binding/memory/mt8173-larb-port.h for mt8173,
-       dt-binding/memory/mt8183-larb-port.h for mt8183,
-@@ -153,6 +155,7 @@ allOf:
-             enum:
-               - mediatek,mt2701-m4u
-               - mediatek,mt2712-m4u
-+              - mediatek,mt6795-m4u
-               - mediatek,mt8173-m4u
-               - mediatek,mt8186-iommu-mm
-               - mediatek,mt8192-m4u
-@@ -182,6 +185,7 @@ allOf:
-           contains:
-             enum:
-               - mediatek,mt2712-m4u
-+              - mediatek,mt6795-m4u
-               - mediatek,mt8173-m4u
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 7e363b1f24df..b511359376f4 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -138,6 +138,7 @@
+ #define PM_CLK_AO			BIT(15)
+ #define IFA_IOMMU_PCIE_SUPPORT		BIT(16)
+ #define PGTABLE_PA_35_EN		BIT(17)
++#define TF_PORT_TO_ADDR_MT8173		BIT(18)
  
-     then:
-diff --git a/include/dt-bindings/memory/mt6795-larb-port.h b/include/dt-bindings/memory/mt6795-larb-port.h
-new file mode 100644
-index 000000000000..58cf6a6b6372
---- /dev/null
-+++ b/include/dt-bindings/memory/mt6795-larb-port.h
-@@ -0,0 +1,95 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-+/*
-+ * Copyright (c) 2022 Collabora Ltd.
-+ * Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#ifndef _DT_BINDINGS_MEMORY_MT6795_LARB_PORT_H_
-+#define _DT_BINDINGS_MEMORY_MT6795_LARB_PORT_H_
-+
-+#include <dt-bindings/memory/mtk-memory-port.h>
-+
-+#define M4U_LARB0_ID			0
-+#define M4U_LARB1_ID			1
-+#define M4U_LARB2_ID			2
-+#define M4U_LARB3_ID			3
-+#define M4U_LARB4_ID			4
-+
-+/* larb0 */
-+#define M4U_PORT_DISP_OVL0		MTK_M4U_ID(M4U_LARB0_ID, 0)
-+#define M4U_PORT_DISP_RDMA0		MTK_M4U_ID(M4U_LARB0_ID, 1)
-+#define M4U_PORT_DISP_RDMA1		MTK_M4U_ID(M4U_LARB0_ID, 2)
-+#define M4U_PORT_DISP_WDMA0		MTK_M4U_ID(M4U_LARB0_ID, 3)
-+#define M4U_PORT_DISP_OVL1		MTK_M4U_ID(M4U_LARB0_ID, 4)
-+#define M4U_PORT_DISP_RDMA2		MTK_M4U_ID(M4U_LARB0_ID, 5)
-+#define M4U_PORT_DISP_WDMA1		MTK_M4U_ID(M4U_LARB0_ID, 6)
-+#define M4U_PORT_DISP_OD_R		MTK_M4U_ID(M4U_LARB0_ID, 7)
-+#define M4U_PORT_DISP_OD_W		MTK_M4U_ID(M4U_LARB0_ID, 8)
-+#define M4U_PORT_MDP_RDMA0		MTK_M4U_ID(M4U_LARB0_ID, 9)
-+#define M4U_PORT_MDP_RDMA1		MTK_M4U_ID(M4U_LARB0_ID, 10)
-+#define M4U_PORT_MDP_WDMA		MTK_M4U_ID(M4U_LARB0_ID, 11)
-+#define M4U_PORT_MDP_WROT0		MTK_M4U_ID(M4U_LARB0_ID, 12)
-+#define M4U_PORT_MDP_WROT1		MTK_M4U_ID(M4U_LARB0_ID, 13)
-+
-+/* larb1 */
-+#define M4U_PORT_VDEC_MC		MTK_M4U_ID(M4U_LARB1_ID, 0)
-+#define M4U_PORT_VDEC_PP		MTK_M4U_ID(M4U_LARB1_ID, 1)
-+#define M4U_PORT_VDEC_UFO		MTK_M4U_ID(M4U_LARB1_ID, 2)
-+#define M4U_PORT_VDEC_VLD		MTK_M4U_ID(M4U_LARB1_ID, 3)
-+#define M4U_PORT_VDEC_VLD2		MTK_M4U_ID(M4U_LARB1_ID, 4)
-+#define M4U_PORT_VDEC_AVC_MV		MTK_M4U_ID(M4U_LARB1_ID, 5)
-+#define M4U_PORT_VDEC_PRED_RD		MTK_M4U_ID(M4U_LARB1_ID, 6)
-+#define M4U_PORT_VDEC_PRED_WR		MTK_M4U_ID(M4U_LARB1_ID, 7)
-+#define M4U_PORT_VDEC_PPWRAP		MTK_M4U_ID(M4U_LARB1_ID, 8)
-+
-+/* larb2 */
-+#define M4U_PORT_CAM_IMGO		MTK_M4U_ID(M4U_LARB2_ID, 0)
-+#define M4U_PORT_CAM_RRZO		MTK_M4U_ID(M4U_LARB2_ID, 1)
-+#define M4U_PORT_CAM_AAO		MTK_M4U_ID(M4U_LARB2_ID, 2)
-+#define M4U_PORT_CAM_LCSO		MTK_M4U_ID(M4U_LARB2_ID, 3)
-+#define M4U_PORT_CAM_ESFKO		MTK_M4U_ID(M4U_LARB2_ID, 4)
-+#define M4U_PORT_CAM_IMGO_S		MTK_M4U_ID(M4U_LARB2_ID, 5)
-+#define M4U_PORT_CAM_LSCI		MTK_M4U_ID(M4U_LARB2_ID, 6)
-+#define M4U_PORT_CAM_LSCI_D		MTK_M4U_ID(M4U_LARB2_ID, 7)
-+#define M4U_PORT_CAM_BPCI		MTK_M4U_ID(M4U_LARB2_ID, 8)
-+#define M4U_PORT_CAM_BPCI_D		MTK_M4U_ID(M4U_LARB2_ID, 9)
-+#define M4U_PORT_CAM_UFDI		MTK_M4U_ID(M4U_LARB2_ID, 10)
-+#define M4U_PORT_CAM_IMGI		MTK_M4U_ID(M4U_LARB2_ID, 11)
-+#define M4U_PORT_CAM_IMG2O		MTK_M4U_ID(M4U_LARB2_ID, 12)
-+#define M4U_PORT_CAM_IMG3O		MTK_M4U_ID(M4U_LARB2_ID, 13)
-+#define M4U_PORT_CAM_VIPI		MTK_M4U_ID(M4U_LARB2_ID, 14)
-+#define M4U_PORT_CAM_VIP2I		MTK_M4U_ID(M4U_LARB2_ID, 15)
-+#define M4U_PORT_CAM_VIP3I		MTK_M4U_ID(M4U_LARB2_ID, 16)
-+#define M4U_PORT_CAM_LCEI		MTK_M4U_ID(M4U_LARB2_ID, 17)
-+#define M4U_PORT_CAM_RB			MTK_M4U_ID(M4U_LARB2_ID, 18)
-+#define M4U_PORT_CAM_RP			MTK_M4U_ID(M4U_LARB2_ID, 19)
-+#define M4U_PORT_CAM_WR			MTK_M4U_ID(M4U_LARB2_ID, 20)
-+
-+/* larb3 */
-+#define M4U_PORT_VENC_RCPU		MTK_M4U_ID(M4U_LARB3_ID, 0)
-+#define M4U_PORT_VENC_REC		MTK_M4U_ID(M4U_LARB3_ID, 1)
-+#define M4U_PORT_VENC_BSDMA		MTK_M4U_ID(M4U_LARB3_ID, 2)
-+#define M4U_PORT_VENC_SV_COMV		MTK_M4U_ID(M4U_LARB3_ID, 3)
-+#define M4U_PORT_VENC_RD_COMV		MTK_M4U_ID(M4U_LARB3_ID, 4)
-+#define M4U_PORT_JPGENC_BSDMA		MTK_M4U_ID(M4U_LARB3_ID, 5)
-+#define M4U_PORT_REMDC_SDMA		MTK_M4U_ID(M4U_LARB3_ID, 6)
-+#define M4U_PORT_REMDC_BSDMA		MTK_M4U_ID(M4U_LARB3_ID, 7)
-+#define M4U_PORT_JPGENC_RDMA		MTK_M4U_ID(M4U_LARB3_ID, 8)
-+#define M4U_PORT_JPGENC_SDMA		MTK_M4U_ID(M4U_LARB3_ID, 9)
-+#define M4U_PORT_JPGDEC_WDMA		MTK_M4U_ID(M4U_LARB3_ID, 10)
-+#define M4U_PORT_JPGDEC_BSDMA		MTK_M4U_ID(M4U_LARB3_ID, 11)
-+#define M4U_PORT_VENC_CUR_LUMA		MTK_M4U_ID(M4U_LARB3_ID, 12)
-+#define M4U_PORT_VENC_CUR_CHROMA	MTK_M4U_ID(M4U_LARB3_ID, 13)
-+#define M4U_PORT_VENC_REF_LUMA		MTK_M4U_ID(M4U_LARB3_ID, 14)
-+#define M4U_PORT_VENC_REF_CHROMA	MTK_M4U_ID(M4U_LARB3_ID, 15)
-+#define M4U_PORT_REMDC_WDMA		MTK_M4U_ID(M4U_LARB3_ID, 16)
-+#define M4U_PORT_VENC_NBM_RDMA		MTK_M4U_ID(M4U_LARB3_ID, 17)
-+#define M4U_PORT_VENC_NBM_WDMA		MTK_M4U_ID(M4U_LARB3_ID, 18)
-+
-+/* larb4 */
-+#define M4U_PORT_MJC_MV_RD		MTK_M4U_ID(M4U_LARB4_ID, 0)
-+#define M4U_PORT_MJC_MV_WR		MTK_M4U_ID(M4U_LARB4_ID, 1)
-+#define M4U_PORT_MJC_DMA_RD		MTK_M4U_ID(M4U_LARB4_ID, 2)
-+#define M4U_PORT_MJC_DMA_WR		MTK_M4U_ID(M4U_LARB4_ID, 3)
-+
-+#endif
+ #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
+ 				((((pdata)->flags) & (mask)) == (_x))
+@@ -955,7 +956,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int ban
+ 	 * Global control settings are in bank0. May re-init these global registers
+ 	 * since no sure if there is bank0 consumers.
+ 	 */
+-	if (data->plat_data->m4u_plat == M4U_MT8173) {
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, TF_PORT_TO_ADDR_MT8173)) {
+ 		regval = F_MMU_PREFETCH_RT_REPLACE_MOD |
+ 			 F_MMU_TF_PROT_TO_PROGRAM_ADDR_MT8173;
+ 	} else {
+@@ -1427,7 +1428,8 @@ static const struct mtk_iommu_plat_data mt8167_data = {
+ static const struct mtk_iommu_plat_data mt8173_data = {
+ 	.m4u_plat     = M4U_MT8173,
+ 	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI |
+-			HAS_LEGACY_IVRP_PADDR | MTK_IOMMU_TYPE_MM,
++			HAS_LEGACY_IVRP_PADDR | MTK_IOMMU_TYPE_MM |
++			TF_PORT_TO_ADDR_MT8173,
+ 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
+ 	.banks_num    = 1,
+ 	.banks_enable = {true},
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index 5a9754442bc7..cd415ed1f4ca 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -462,6 +462,7 @@ static int mtk_smi_larb_sleep_ctrl_enable(struct mtk_smi_larb *larb)
+ 	if (ret) {
+ 		/* TODO: Reset this larb if it fails here. */
+ 		dev_err(larb->smi.dev, "sleep ctrl is not ready(0x%x).\n", tmp);
++		ret = -EAGAIN;
+ 	}
+ 	return ret;
+ }
 -- 
 2.37.2
 
