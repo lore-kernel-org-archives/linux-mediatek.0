@@ -4,75 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A38BAC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 17:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 668A3ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 17:40:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5lLEWiJpbdGbIpYKHBbHe67BD4W7DRbukVulGr4TM4s=; b=Hl+GZOIjAO+t4KFTJdkuenC6Rq
-	tI45K2J42fCwGx9FOQ4IBDLy8AobctvAi7hEjikYbP1AY4+HTc4HyHkQWhQDuNDKUwItk8mUD+Q+D
-	H11JUKitu8Xqj9jds2+4jkWv0g8T+YLOR4qtvS1NzgRB601yYbCpS0by2qnZNa8BCa+Z21dpqZ6d3
-	vfHhHpBhW1MIbUzOtDZ33cmrVgtwUAcnwxCMFlSzTr9vEPrZRTDsEuHquQfwKoDMQSVxoJgsw70Vi
-	5QTKPv5jtw/slkvpFYLVHLPxAM9Gik8jHBYGvh0fz1wLKg4LPCn9+X5Jo9Yj3upWkly5rjcC54AEp
-	aI0xhzQg==;
+	bh=RdcHjCsaDefRyRHPR0Hf32H56umlXY/a3I9R1lAvmqE=; b=zBe5yt9o0+JCKz3r4r0QOq98hz
+	WeLRL13vh02L2+jGK5Oe5FEqrroQNoB+HMQpejv+3z4zzbS/nByoYMQTZMvpszagdYB+k2FYg1eq0
+	ZvyIPxcP4VDFXBj3FHXih+m7ZlMx2zqqEyakX9VTMvsIjLixSCgn+TDxcJGW9xg6qDPKaWIbOVWeq
+	HPGLiuZoGnO5BYS8UtzdFL5LjsZIkwT+EB1wANP7eGeUKjQa1C2JiYbTW1ykRxf1ocBpaHAxlf4fG
+	uxOlKdRU+ZTrodK500mLW+mqBEyyt5uQlR8T9gDGuB68PdlX8UAYDQfEB8nLW5xy5mDvVlv5R+46b
+	hAwsGwzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY9J0-00DjX3-1Z; Tue, 13 Sep 2022 17:02:38 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oY9tv-00E7rS-JM; Tue, 13 Sep 2022 17:40:47 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY9In-00DjN6-4W
-	for linux-mediatek@lists.infradead.org; Tue, 13 Sep 2022 17:02:34 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 85A0B61521;
-	Tue, 13 Sep 2022 17:02:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69D35C433C1;
-	Tue, 13 Sep 2022 17:02:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663088543;
-	bh=OaC8UScHhr8eCVY6QI/rTPBW0T/Cv32I6j4GOZtNjrA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=HA67xDgk6MBH2q2w8511PIBGkhEa0Z8Pw9Ltz50+5FKE+4dImAM9HQ+pXnj1C3vRR
-	 wLmiOSNYEXiRXJM7YumjGLjAQYRZMpeAmDlrKmBIRAcU8OLKLOBPGIbVUUJBhOEkFr
-	 OmlJWtTR1W7Q7vgcFTRpbITq+8xa4JTtTV1ESKMBakO2Z2cDcYmE6HyyfOH3T0siUj
-	 0AgpDdhnsaHXhMmEKS3UIIsjCUiKb2FjGPBmoeVtE838eJXSLjmXwiQDhj8skmo+q/
-	 B1TK4T1t0zHrpjHvi4GcmwQAqufAbGa58rw35mIPqAXoUJw0hTOd81IJQ6Ne08gL25
-	 qXXjfYcb0qUmg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: netdev@vger.kernel.org
-Cc: nbd@nbd.name,
-	john@phrozen.org,
-	sean.wang@mediatek.com,
-	Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	lorenzo.bianconi@redhat.com,
-	Bo.Jiao@mediatek.com,
-	sujuan.chen@mediatek.com,
-	ryder.Lee@mediatek.com,
-	evelyn.tsai@mediatek.com,
-	devicetree@vger.kernel.org,
-	robh@kernel.org,
-	daniel@makrotopia.org
-Subject: [PATCH v2 net-next 11/11] net: ethernet: mtk_eth_soc: introduce flow offloading support for mt7986
-Date: Tue, 13 Sep 2022 19:01:01 +0200
-Message-Id: <324078ce1e273c7b634cab27a1a2ed053377b608.1663087836.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <cover.1663087836.git.lorenzo@kernel.org>
-References: <cover.1663087836.git.lorenzo@kernel.org>
+	id 1oY9tg-00E7eq-2H; Tue, 13 Sep 2022 17:40:34 +0000
+Received: by mail-wm1-x329.google.com with SMTP id v185-20020a1cacc2000000b003b42e4f278cso10886177wme.5;
+        Tue, 13 Sep 2022 10:40:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id:from:to:cc
+         :subject:date;
+        bh=RdcHjCsaDefRyRHPR0Hf32H56umlXY/a3I9R1lAvmqE=;
+        b=HdqvJv4L3oxVYNAKEvHjg8zsMVYeFw5KPG/P4O6yLBF1ihpgWdDfe3xhnPIc9kbr1J
+         gX1ZBxQ4uB2CM9EQkOM6sMsjHau2MaLuVfa0VhGE5326tzQCWOTt0SAcY5Iby//SWwXP
+         7ebcXFuTj5or574nUaTD9kckuhjMH3lAjo7KQ3/wGNKSDPA5jmKvK3u9cj/YneZKrUNX
+         88pcMcyieas6UIPrvaN0yKNSYpLOVd3fP2puugbjt/QlZmULwgJTYJ636qVxTKb7ALEJ
+         s6VpK6Mme+p/iZjJFiYkhQPCIffIboA2OtpdCZ/E5THq7Cr/HLkTS0eWdy/5wLw2fmF3
+         qpHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=RdcHjCsaDefRyRHPR0Hf32H56umlXY/a3I9R1lAvmqE=;
+        b=8I2K1vpg8o6PY8atSjZlp8h1EH185OkoSd0VyXl7dtWYTQmNrYFI1f6f84jTx+xD8Z
+         B6auQNNl2qo/cH17xZjibBYrKmH0mVXKgFuGGibYCORZiCW1sNzZl72e8lPPN5TL0iGa
+         Itgr/3tiJnzUBOUGNqKzkpJW/WIM5OevdylEcwoLCBCgsvWcKDXW+y1pM4WHVzuaXA7s
+         xERUciJYmZZL9RIjCs81hfYIVpIfcQwMXFoHKjBFGZ95w0xd1NoH73khuHC2260P0nY5
+         7MF3mSTfLR9p5ousrFJu7b154Ls10bMCON2ZQQjoamKJIQhihm3LoWoP2NLgG+GoWWHR
+         M6rQ==
+X-Gm-Message-State: ACgBeo1m9MjjnBAorAVHANcX1SeEmMesQDLeGHRldvvKwgRCW7KsQ27C
+	OfjurQCNyg0FwantCDRKXDvUK9QF5lQ=
+X-Google-Smtp-Source: AA6agR7R7b+h2yDACiO3/VXG6La/kBP6aq0KZamqGaIhlOdXIIIbpnrzg7LRG5xnMiuJJS7zZhj79A==
+X-Received: by 2002:a05:600c:3583:b0:3a7:eeaf:62d3 with SMTP id p3-20020a05600c358300b003a7eeaf62d3mr310690wmq.170.1663090830375;
+        Tue, 13 Sep 2022 10:40:30 -0700 (PDT)
+Received: from [192.168.0.30] ([47.62.125.55])
+        by smtp.gmail.com with ESMTPSA id id11-20020a05600ca18b00b003b332a7b898sm13909084wmb.45.2022.09.13.10.40.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 13 Sep 2022 10:40:29 -0700 (PDT)
+Message-ID: <ef8215be-1b68-09b7-ca93-f32a0acd9d5c@gmail.com>
+Date: Tue, 13 Sep 2022 19:40:28 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.1
+Content-Language: en-US
+To: Markus Schneider-Pargmann <msp@baylibre.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Fabien Parent <parent.f@gmail.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Alexandre Bailon <abailon@baylibre.com>,
+ Fabien Parent <fparent@baylibre.com>
+References: <20220822144303.3438467-1-msp@baylibre.com>
+ <20220822144303.3438467-3-msp@baylibre.com>
+ <36dde9aa-b6ea-7194-c1bc-94d52c02649b@gmail.com>
+ <20220906094947.ghfy2tj4bj4kaule@blmsp>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3 2/4] soc: mediatek: Add support of WAY_EN operations
+In-Reply-To: <20220906094947.ghfy2tj4bj4kaule@blmsp>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_100230_457375_18BD6C7F 
-X-CRM114-Status: GOOD (  19.53  )
+X-CRM114-CacheID: sfid-20220913_104032_149536_251A06FB 
+X-CRM114-Status: GOOD (  42.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,892 +100,399 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce hw flow offload support for mt7986 chipset. PPE is not enabled
-yet in mt7986 since mt76 support is not available yet.
 
-Tested-by: Daniel Golle <daniel@makrotopia.org>
-Co-developed-by: Bo Jiao <Bo.Jiao@mediatek.com>
-Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
-Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  11 +-
- drivers/net/ethernet/mediatek/mtk_eth_soc.h   |  72 ++++++
- drivers/net/ethernet/mediatek/mtk_ppe.c       | 213 +++++++++++-------
- drivers/net/ethernet/mediatek/mtk_ppe.h       |  52 ++++-
- .../net/ethernet/mediatek/mtk_ppe_offload.c   |  49 ++--
- drivers/net/ethernet/mediatek/mtk_ppe_regs.h  |   8 +
- 6 files changed, 289 insertions(+), 116 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index f706924b249b..516875cd698f 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1906,12 +1906,14 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		bytes += skb->len;
- 
- 		if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+			reason = FIELD_GET(MTK_RXD5_PPE_CPU_REASON, trxd.rxd5);
- 			hash = trxd.rxd5 & MTK_RXD5_FOE_ENTRY;
- 			if (hash != MTK_RXD5_FOE_ENTRY)
- 				skb_set_hash(skb, jhash_1word(hash, 0),
- 					     PKT_HASH_TYPE_L4);
- 			rxdcsum = &trxd.rxd3;
- 		} else {
-+			reason = FIELD_GET(MTK_RXD4_PPE_CPU_REASON, trxd.rxd4);
- 			hash = trxd.rxd4 & MTK_RXD4_FOE_ENTRY;
- 			if (hash != MTK_RXD4_FOE_ENTRY)
- 				skb_set_hash(skb, jhash_1word(hash, 0),
-@@ -1925,7 +1927,6 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			skb_checksum_none_assert(skb);
- 		skb->protocol = eth_type_trans(skb, netdev);
- 
--		reason = FIELD_GET(MTK_RXD4_PPE_CPU_REASON, trxd.rxd4);
- 		if (reason == MTK_PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
- 			mtk_ppe_check_skb(eth->ppe[0], skb, hash);
- 
-@@ -4233,7 +4234,7 @@ static const struct mtk_soc_data mt7621_data = {
- 	.required_pctl = false,
- 	.offload_version = 2,
- 	.hash_offset = 2,
--	.foe_entry_size = sizeof(struct mtk_foe_entry),
-+	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
- 		.rxd_size = sizeof(struct mtk_rx_dma),
-@@ -4253,7 +4254,7 @@ static const struct mtk_soc_data mt7622_data = {
- 	.required_pctl = false,
- 	.offload_version = 2,
- 	.hash_offset = 2,
--	.foe_entry_size = sizeof(struct mtk_foe_entry),
-+	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
- 		.rxd_size = sizeof(struct mtk_rx_dma),
-@@ -4272,7 +4273,7 @@ static const struct mtk_soc_data mt7623_data = {
- 	.required_pctl = true,
- 	.offload_version = 2,
- 	.hash_offset = 2,
--	.foe_entry_size = sizeof(struct mtk_foe_entry),
-+	.foe_entry_size = sizeof(struct mtk_foe_entry) - 16,
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
- 		.rxd_size = sizeof(struct mtk_rx_dma),
-@@ -4304,9 +4305,11 @@ static const struct mtk_soc_data mt7986_data = {
- 	.reg_map = &mt7986_reg_map,
- 	.ana_rgc3 = 0x128,
- 	.caps = MT7986_CAPS,
-+	.hw_features = MTK_HW_FEATURES,
- 	.required_clks = MT7986_CLKS_BITMAP,
- 	.required_pctl = false,
- 	.hash_offset = 4,
-+	.foe_entry_size = sizeof(struct mtk_foe_entry),
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma_v2),
- 		.rxd_size = sizeof(struct mtk_rx_dma_v2),
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 08236e054616..1efaba5d4337 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -1153,6 +1153,78 @@ mtk_foe_get_entry(struct mtk_ppe *ppe, u16 hash)
- 	return ppe->foe_table + hash * soc->foe_entry_size;
- }
- 
-+static inline u32 mtk_get_ib1_ts_mask(struct mtk_eth *eth)
-+{
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		return MTK_FOE_IB1_BIND_TIMESTAMP_V2;
-+
-+	return MTK_FOE_IB1_BIND_TIMESTAMP;
-+}
-+
-+static inline u32 mtk_get_ib1_ppoe_mask(struct mtk_eth *eth)
-+{
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		return MTK_FOE_IB1_BIND_PPPOE_V2;
-+
-+	return MTK_FOE_IB1_BIND_PPPOE;
-+}
-+
-+static inline u32 mtk_get_ib1_vlan_tag_mask(struct mtk_eth *eth)
-+{
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		return MTK_FOE_IB1_BIND_VLAN_TAG_V2;
-+
-+	return MTK_FOE_IB1_BIND_VLAN_TAG;
-+}
-+
-+static inline u32 mtk_get_ib1_vlan_layer_mask(struct mtk_eth *eth)
-+{
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		return MTK_FOE_IB1_BIND_VLAN_LAYER_V2;
-+
-+	return MTK_FOE_IB1_BIND_VLAN_LAYER;
-+}
-+
-+static inline u32 mtk_prep_ib1_vlan_layer(struct mtk_eth *eth, u32 val)
-+{
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		return FIELD_PREP(MTK_FOE_IB1_BIND_VLAN_LAYER_V2, val);
-+
-+	return FIELD_PREP(MTK_FOE_IB1_BIND_VLAN_LAYER, val);
-+}
-+
-+static inline u32 mtk_get_ib1_vlan_layer(struct mtk_eth *eth, u32 val)
-+{
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		return FIELD_GET(MTK_FOE_IB1_BIND_VLAN_LAYER_V2, val);
-+
-+	return FIELD_GET(MTK_FOE_IB1_BIND_VLAN_LAYER, val);
-+}
-+
-+static inline u32 mtk_get_ib1_pkt_type_mask(struct mtk_eth *eth)
-+{
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		return MTK_FOE_IB1_PACKET_TYPE_V2;
-+
-+	return MTK_FOE_IB1_PACKET_TYPE;
-+}
-+
-+static inline u32 mtk_get_ib1_pkt_type(struct mtk_eth *eth, u32 val)
-+{
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		return FIELD_GET(MTK_FOE_IB1_PACKET_TYPE_V2, val);
-+
-+	return FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, val);
-+}
-+
-+static inline u32 mtk_get_ib2_multicast_mask(struct mtk_eth *eth)
-+{
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2))
-+		return MTK_FOE_IB2_MULTICAST_V2;
-+
-+	return MTK_FOE_IB2_MULTICAST;
-+}
-+
- /* read the hardware status register */
- void mtk_stats_update_mac(struct mtk_mac *mac);
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index 8c52cfc7ce76..25f8738a062b 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -56,7 +56,7 @@ static u32 ppe_clear(struct mtk_ppe *ppe, u32 reg, u32 val)
- 
- static u32 mtk_eth_timestamp(struct mtk_eth *eth)
- {
--	return mtk_r32(eth, 0x0010) & MTK_FOE_IB1_BIND_TIMESTAMP;
-+	return mtk_r32(eth, 0x0010) & mtk_get_ib1_ts_mask(eth);
- }
- 
- static int mtk_ppe_wait_busy(struct mtk_ppe *ppe)
-@@ -93,7 +93,7 @@ static u32 mtk_ppe_hash_entry(struct mtk_eth *eth, struct mtk_foe_entry *e)
- 	u32 hv1, hv2, hv3;
- 	u32 hash;
- 
--	switch (FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, e->ib1)) {
-+	switch (mtk_get_ib1_pkt_type(eth, e->ib1)) {
- 		case MTK_PPE_PKT_TYPE_IPV4_ROUTE:
- 		case MTK_PPE_PKT_TYPE_IPV4_HNAPT:
- 			hv1 = e->ipv4.orig.ports;
-@@ -129,9 +129,9 @@ static u32 mtk_ppe_hash_entry(struct mtk_eth *eth, struct mtk_foe_entry *e)
- }
- 
- static inline struct mtk_foe_mac_info *
--mtk_foe_entry_l2(struct mtk_foe_entry *entry)
-+mtk_foe_entry_l2(struct mtk_eth *eth, struct mtk_foe_entry *entry)
- {
--	int type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->ib1);
-+	int type = mtk_get_ib1_pkt_type(eth, entry->ib1);
- 
- 	if (type == MTK_PPE_PKT_TYPE_BRIDGE)
- 		return &entry->bridge.l2;
-@@ -143,9 +143,9 @@ mtk_foe_entry_l2(struct mtk_foe_entry *entry)
- }
- 
- static inline u32 *
--mtk_foe_entry_ib2(struct mtk_foe_entry *entry)
-+mtk_foe_entry_ib2(struct mtk_eth *eth, struct mtk_foe_entry *entry)
- {
--	int type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->ib1);
-+	int type = mtk_get_ib1_pkt_type(eth, entry->ib1);
- 
- 	if (type == MTK_PPE_PKT_TYPE_BRIDGE)
- 		return &entry->bridge.ib2;
-@@ -156,27 +156,38 @@ mtk_foe_entry_ib2(struct mtk_foe_entry *entry)
- 	return &entry->ipv4.ib2;
- }
- 
--int mtk_foe_entry_prepare(struct mtk_foe_entry *entry, int type, int l4proto,
--			  u8 pse_port, u8 *src_mac, u8 *dest_mac)
-+int mtk_foe_entry_prepare(struct mtk_eth *eth, struct mtk_foe_entry *entry,
-+			  int type, int l4proto, u8 pse_port, u8 *src_mac,
-+			  u8 *dest_mac)
- {
- 	struct mtk_foe_mac_info *l2;
- 	u32 ports_pad, val;
- 
- 	memset(entry, 0, sizeof(*entry));
- 
--	val = FIELD_PREP(MTK_FOE_IB1_STATE, MTK_FOE_STATE_BIND) |
--	      FIELD_PREP(MTK_FOE_IB1_PACKET_TYPE, type) |
--	      FIELD_PREP(MTK_FOE_IB1_UDP, l4proto == IPPROTO_UDP) |
--	      MTK_FOE_IB1_BIND_TTL |
--	      MTK_FOE_IB1_BIND_CACHE;
--	entry->ib1 = val;
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+		val = FIELD_PREP(MTK_FOE_IB1_STATE, MTK_FOE_STATE_BIND) |
-+		      FIELD_PREP(MTK_FOE_IB1_PACKET_TYPE_V2, type) |
-+		      FIELD_PREP(MTK_FOE_IB1_UDP, l4proto == IPPROTO_UDP) |
-+		      MTK_FOE_IB1_BIND_CACHE_V2 | MTK_FOE_IB1_BIND_TTL_V2;
-+		entry->ib1 = val;
- 
--	val = FIELD_PREP(MTK_FOE_IB2_PORT_MG, 0x3f) |
--	      FIELD_PREP(MTK_FOE_IB2_PORT_AG, 0x1f) |
--	      FIELD_PREP(MTK_FOE_IB2_DEST_PORT, pse_port);
-+		val = FIELD_PREP(MTK_FOE_IB2_DEST_PORT_V2, pse_port) |
-+		      FIELD_PREP(MTK_FOE_IB2_PORT_AG_V2, 0xf);
-+	} else {
-+		val = FIELD_PREP(MTK_FOE_IB1_STATE, MTK_FOE_STATE_BIND) |
-+		      FIELD_PREP(MTK_FOE_IB1_PACKET_TYPE, type) |
-+		      FIELD_PREP(MTK_FOE_IB1_UDP, l4proto == IPPROTO_UDP) |
-+		      MTK_FOE_IB1_BIND_CACHE | MTK_FOE_IB1_BIND_TTL;
-+		entry->ib1 = val;
-+
-+		val = FIELD_PREP(MTK_FOE_IB2_DEST_PORT, pse_port) |
-+		      FIELD_PREP(MTK_FOE_IB2_PORT_MG, 0x3f) |
-+		      FIELD_PREP(MTK_FOE_IB2_PORT_AG, 0x1f);
-+	}
- 
- 	if (is_multicast_ether_addr(dest_mac))
--		val |= MTK_FOE_IB2_MULTICAST;
-+		val |= mtk_get_ib2_multicast_mask(eth);
- 
- 	ports_pad = 0xa5a5a500 | (l4proto & 0xff);
- 	if (type == MTK_PPE_PKT_TYPE_IPV4_ROUTE)
-@@ -210,24 +221,30 @@ int mtk_foe_entry_prepare(struct mtk_foe_entry *entry, int type, int l4proto,
- 	return 0;
- }
- 
--int mtk_foe_entry_set_pse_port(struct mtk_foe_entry *entry, u8 port)
-+int mtk_foe_entry_set_pse_port(struct mtk_eth *eth,
-+			       struct mtk_foe_entry *entry, u8 port)
- {
--	u32 *ib2 = mtk_foe_entry_ib2(entry);
--	u32 val;
-+	u32 *ib2 = mtk_foe_entry_ib2(eth, entry);
-+	u32 val = *ib2;
- 
--	val = *ib2;
--	val &= ~MTK_FOE_IB2_DEST_PORT;
--	val |= FIELD_PREP(MTK_FOE_IB2_DEST_PORT, port);
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+		val &= ~MTK_FOE_IB2_DEST_PORT_V2;
-+		val |= FIELD_PREP(MTK_FOE_IB2_DEST_PORT_V2, port);
-+	} else {
-+		val &= ~MTK_FOE_IB2_DEST_PORT;
-+		val |= FIELD_PREP(MTK_FOE_IB2_DEST_PORT, port);
-+	}
- 	*ib2 = val;
- 
- 	return 0;
- }
- 
--int mtk_foe_entry_set_ipv4_tuple(struct mtk_foe_entry *entry, bool egress,
-+int mtk_foe_entry_set_ipv4_tuple(struct mtk_eth *eth,
-+				 struct mtk_foe_entry *entry, bool egress,
- 				 __be32 src_addr, __be16 src_port,
- 				 __be32 dest_addr, __be16 dest_port)
- {
--	int type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->ib1);
-+	int type = mtk_get_ib1_pkt_type(eth, entry->ib1);
- 	struct mtk_ipv4_tuple *t;
- 
- 	switch (type) {
-@@ -262,11 +279,12 @@ int mtk_foe_entry_set_ipv4_tuple(struct mtk_foe_entry *entry, bool egress,
- 	return 0;
- }
- 
--int mtk_foe_entry_set_ipv6_tuple(struct mtk_foe_entry *entry,
-+int mtk_foe_entry_set_ipv6_tuple(struct mtk_eth *eth,
-+				 struct mtk_foe_entry *entry,
- 				 __be32 *src_addr, __be16 src_port,
- 				 __be32 *dest_addr, __be16 dest_port)
- {
--	int type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->ib1);
-+	int type = mtk_get_ib1_pkt_type(eth, entry->ib1);
- 	u32 *src, *dest;
- 	int i;
- 
-@@ -297,39 +315,41 @@ int mtk_foe_entry_set_ipv6_tuple(struct mtk_foe_entry *entry,
- 	return 0;
- }
- 
--int mtk_foe_entry_set_dsa(struct mtk_foe_entry *entry, int port)
-+int mtk_foe_entry_set_dsa(struct mtk_eth *eth, struct mtk_foe_entry *entry,
-+			  int port)
- {
--	struct mtk_foe_mac_info *l2 = mtk_foe_entry_l2(entry);
-+	struct mtk_foe_mac_info *l2 = mtk_foe_entry_l2(eth, entry);
- 
- 	l2->etype = BIT(port);
- 
--	if (!(entry->ib1 & MTK_FOE_IB1_BIND_VLAN_LAYER))
--		entry->ib1 |= FIELD_PREP(MTK_FOE_IB1_BIND_VLAN_LAYER, 1);
-+	if (!(entry->ib1 & mtk_get_ib1_vlan_layer_mask(eth)))
-+		entry->ib1 |= mtk_prep_ib1_vlan_layer(eth, 1);
- 	else
- 		l2->etype |= BIT(8);
- 
--	entry->ib1 &= ~MTK_FOE_IB1_BIND_VLAN_TAG;
-+	entry->ib1 &= ~mtk_get_ib1_vlan_tag_mask(eth);
- 
- 	return 0;
- }
- 
--int mtk_foe_entry_set_vlan(struct mtk_foe_entry *entry, int vid)
-+int mtk_foe_entry_set_vlan(struct mtk_eth *eth, struct mtk_foe_entry *entry,
-+			   int vid)
- {
--	struct mtk_foe_mac_info *l2 = mtk_foe_entry_l2(entry);
-+	struct mtk_foe_mac_info *l2 = mtk_foe_entry_l2(eth, entry);
- 
--	switch (FIELD_GET(MTK_FOE_IB1_BIND_VLAN_LAYER, entry->ib1)) {
-+	switch (mtk_prep_ib1_vlan_layer(eth, entry->ib1)) {
- 	case 0:
--		entry->ib1 |= MTK_FOE_IB1_BIND_VLAN_TAG |
--			      FIELD_PREP(MTK_FOE_IB1_BIND_VLAN_LAYER, 1);
-+		entry->ib1 |= mtk_get_ib1_vlan_tag_mask(eth) |
-+			      mtk_prep_ib1_vlan_layer(eth, 1);
- 		l2->vlan1 = vid;
- 		return 0;
- 	case 1:
--		if (!(entry->ib1 & MTK_FOE_IB1_BIND_VLAN_TAG)) {
-+		if (!(entry->ib1 & mtk_get_ib1_vlan_tag_mask(eth))) {
- 			l2->vlan1 = vid;
- 			l2->etype |= BIT(8);
- 		} else {
- 			l2->vlan2 = vid;
--			entry->ib1 += FIELD_PREP(MTK_FOE_IB1_BIND_VLAN_LAYER, 1);
-+			entry->ib1 += mtk_prep_ib1_vlan_layer(eth, 1);
- 		}
- 		return 0;
- 	default:
-@@ -337,34 +357,42 @@ int mtk_foe_entry_set_vlan(struct mtk_foe_entry *entry, int vid)
- 	}
- }
- 
--int mtk_foe_entry_set_pppoe(struct mtk_foe_entry *entry, int sid)
-+int mtk_foe_entry_set_pppoe(struct mtk_eth *eth, struct mtk_foe_entry *entry,
-+			    int sid)
- {
--	struct mtk_foe_mac_info *l2 = mtk_foe_entry_l2(entry);
-+	struct mtk_foe_mac_info *l2 = mtk_foe_entry_l2(eth, entry);
- 
--	if (!(entry->ib1 & MTK_FOE_IB1_BIND_VLAN_LAYER) ||
--	    (entry->ib1 & MTK_FOE_IB1_BIND_VLAN_TAG))
-+	if (!(entry->ib1 & mtk_get_ib1_vlan_layer_mask(eth)) ||
-+	    (entry->ib1 & mtk_get_ib1_vlan_tag_mask(eth)))
- 		l2->etype = ETH_P_PPP_SES;
- 
--	entry->ib1 |= MTK_FOE_IB1_BIND_PPPOE;
-+	entry->ib1 |= mtk_get_ib1_ppoe_mask(eth);
- 	l2->pppoe_id = sid;
- 
- 	return 0;
- }
- 
--int mtk_foe_entry_set_wdma(struct mtk_foe_entry *entry, int wdma_idx, int txq,
--			   int bss, int wcid)
-+int mtk_foe_entry_set_wdma(struct mtk_eth *eth, struct mtk_foe_entry *entry,
-+			   int wdma_idx, int txq, int bss, int wcid)
- {
--	struct mtk_foe_mac_info *l2 = mtk_foe_entry_l2(entry);
--	u32 *ib2 = mtk_foe_entry_ib2(entry);
--
--	*ib2 &= ~MTK_FOE_IB2_PORT_MG;
--	*ib2 |= MTK_FOE_IB2_WDMA_WINFO;
--	if (wdma_idx)
--		*ib2 |= MTK_FOE_IB2_WDMA_DEVIDX;
-+	struct mtk_foe_mac_info *l2 = mtk_foe_entry_l2(eth, entry);
-+	u32 *ib2 = mtk_foe_entry_ib2(eth, entry);
- 
--	l2->vlan2 = FIELD_PREP(MTK_FOE_VLAN2_WINFO_BSS, bss) |
--		    FIELD_PREP(MTK_FOE_VLAN2_WINFO_WCID, wcid) |
--		    FIELD_PREP(MTK_FOE_VLAN2_WINFO_RING, txq);
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+		*ib2 &= ~MTK_FOE_IB2_PORT_MG_V2;
-+		*ib2 |=  FIELD_PREP(MTK_FOE_IB2_RX_IDX, txq) |
-+			 MTK_FOE_IB2_WDMA_WINFO_V2;
-+		l2->winfo = FIELD_PREP(MTK_FOE_WINFO_WCID, wcid) |
-+			    FIELD_PREP(MTK_FOE_WINFO_BSS, bss);
-+	} else {
-+		*ib2 &= ~MTK_FOE_IB2_PORT_MG;
-+		*ib2 |= MTK_FOE_IB2_WDMA_WINFO;
-+		if (wdma_idx)
-+			*ib2 |= MTK_FOE_IB2_WDMA_DEVIDX;
-+		l2->vlan2 = FIELD_PREP(MTK_FOE_VLAN2_WINFO_BSS, bss) |
-+			    FIELD_PREP(MTK_FOE_VLAN2_WINFO_WCID, wcid) |
-+			    FIELD_PREP(MTK_FOE_VLAN2_WINFO_RING, txq);
-+	}
- 
- 	return 0;
- }
-@@ -376,14 +404,15 @@ static inline bool mtk_foe_entry_usable(struct mtk_foe_entry *entry)
- }
- 
- static bool
--mtk_flow_entry_match(struct mtk_flow_entry *entry, struct mtk_foe_entry *data)
-+mtk_flow_entry_match(struct mtk_eth *eth, struct mtk_flow_entry *entry,
-+		     struct mtk_foe_entry *data)
- {
- 	int type, len;
- 
- 	if ((data->ib1 ^ entry->data.ib1) & MTK_FOE_IB1_UDP)
- 		return false;
- 
--	type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->data.ib1);
-+	type = mtk_get_ib1_pkt_type(eth, entry->data.ib1);
- 	if (type > MTK_PPE_PKT_TYPE_IPV4_DSLITE)
- 		len = offsetof(struct mtk_foe_entry, ipv6._rsv);
- 	else
-@@ -427,14 +456,12 @@ __mtk_foe_entry_clear(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- 
- static int __mtk_foe_entry_idle_time(struct mtk_ppe *ppe, u32 ib1)
- {
--	u16 timestamp;
--	u16 now;
--
--	now = mtk_eth_timestamp(ppe->eth) & MTK_FOE_IB1_BIND_TIMESTAMP;
--	timestamp = ib1 & MTK_FOE_IB1_BIND_TIMESTAMP;
-+	u32 ib1_ts_mask = mtk_get_ib1_ts_mask(ppe->eth);
-+	u16 now = mtk_eth_timestamp(ppe->eth);
-+	u16 timestamp = ib1 & ib1_ts_mask;
- 
- 	if (timestamp > now)
--		return MTK_FOE_IB1_BIND_TIMESTAMP + 1 - timestamp + now;
-+		return ib1_ts_mask + 1 - timestamp + now;
- 	else
- 		return now - timestamp;
- }
-@@ -442,6 +469,7 @@ static int __mtk_foe_entry_idle_time(struct mtk_ppe *ppe, u32 ib1)
- static void
- mtk_flow_entry_update_l2(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- {
-+	u32 ib1_ts_mask = mtk_get_ib1_ts_mask(ppe->eth);
- 	struct mtk_flow_entry *cur;
- 	struct mtk_foe_entry *hwe;
- 	struct hlist_node *tmp;
-@@ -466,8 +494,8 @@ mtk_flow_entry_update_l2(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- 			continue;
- 
- 		idle = cur_idle;
--		entry->data.ib1 &= ~MTK_FOE_IB1_BIND_TIMESTAMP;
--		entry->data.ib1 |= hwe->ib1 & MTK_FOE_IB1_BIND_TIMESTAMP;
-+		entry->data.ib1 &= ~ib1_ts_mask;
-+		entry->data.ib1 |= hwe->ib1 & ib1_ts_mask;
- 	}
- }
- 
-@@ -489,7 +517,7 @@ mtk_flow_entry_update(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- 
- 	hwe = mtk_foe_get_entry(ppe, entry->hash);
- 	memcpy(&foe, hwe, ppe->eth->soc->foe_entry_size);
--	if (!mtk_flow_entry_match(entry, &foe)) {
-+	if (!mtk_flow_entry_match(ppe->eth, entry, &foe)) {
- 		entry->hash = 0xffff;
- 		goto out;
- 	}
-@@ -504,16 +532,22 @@ static void
- __mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_foe_entry *entry,
- 		       u16 hash)
- {
-+	struct mtk_eth *eth = ppe->eth;
-+	u16 timestamp = mtk_eth_timestamp(eth);
- 	struct mtk_foe_entry *hwe;
--	u16 timestamp;
- 
--	timestamp = mtk_eth_timestamp(ppe->eth);
--	timestamp &= MTK_FOE_IB1_BIND_TIMESTAMP;
--	entry->ib1 &= ~MTK_FOE_IB1_BIND_TIMESTAMP;
--	entry->ib1 |= FIELD_PREP(MTK_FOE_IB1_BIND_TIMESTAMP, timestamp);
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+		entry->ib1 &= ~MTK_FOE_IB1_BIND_TIMESTAMP_V2;
-+		entry->ib1 |= FIELD_PREP(MTK_FOE_IB1_BIND_TIMESTAMP_V2,
-+					 timestamp);
-+	} else {
-+		entry->ib1 &= ~MTK_FOE_IB1_BIND_TIMESTAMP;
-+		entry->ib1 |= FIELD_PREP(MTK_FOE_IB1_BIND_TIMESTAMP,
-+					 timestamp);
-+	}
- 
- 	hwe = mtk_foe_get_entry(ppe, hash);
--	memcpy(&hwe->data, &entry->data, ppe->eth->soc->foe_entry_size);
-+	memcpy(&hwe->data, &entry->data, eth->soc->foe_entry_size);
- 	wmb();
- 	hwe->ib1 = entry->ib1;
- 
-@@ -540,8 +574,8 @@ mtk_foe_entry_commit_l2(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- 
- int mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- {
--	int type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->data.ib1);
- 	const struct mtk_soc_data *soc = ppe->eth->soc;
-+	int type = mtk_get_ib1_pkt_type(ppe->eth, entry->data.ib1);
- 	u32 hash;
- 
- 	if (type == MTK_PPE_PKT_TYPE_BRIDGE)
-@@ -564,7 +598,7 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
- 	struct mtk_flow_entry *flow_info;
- 	struct mtk_foe_entry foe = {}, *hwe;
- 	struct mtk_foe_mac_info *l2;
--	u32 ib1_mask = MTK_FOE_IB1_PACKET_TYPE | MTK_FOE_IB1_UDP;
-+	u32 ib1_mask = mtk_get_ib1_pkt_type_mask(ppe->eth) | MTK_FOE_IB1_UDP;
- 	int type;
- 
- 	flow_info = kzalloc(offsetof(struct mtk_flow_entry, l2_data.end),
-@@ -584,16 +618,16 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
- 	foe.ib1 &= ib1_mask;
- 	foe.ib1 |= entry->data.ib1 & ~ib1_mask;
- 
--	l2 = mtk_foe_entry_l2(&foe);
-+	l2 = mtk_foe_entry_l2(ppe->eth, &foe);
- 	memcpy(l2, &entry->data.bridge.l2, sizeof(*l2));
- 
--	type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, foe.ib1);
-+	type = mtk_get_ib1_pkt_type(ppe->eth, foe.ib1);
- 	if (type == MTK_PPE_PKT_TYPE_IPV4_HNAPT)
- 		memcpy(&foe.ipv4.new, &foe.ipv4.orig, sizeof(foe.ipv4.new));
- 	else if (type >= MTK_PPE_PKT_TYPE_IPV6_ROUTE_3T && l2->etype == ETH_P_IP)
- 		l2->etype = ETH_P_IPV6;
- 
--	*mtk_foe_entry_ib2(&foe) = entry->data.bridge.ib2;
-+	*mtk_foe_entry_ib2(ppe->eth, &foe) = entry->data.bridge.ib2;
- 
- 	__mtk_foe_entry_commit(ppe, &foe, hash);
- }
-@@ -626,7 +660,7 @@ void __mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
- 			continue;
- 		}
- 
--		if (found || !mtk_flow_entry_match(entry, hwe)) {
-+		if (found || !mtk_flow_entry_match(ppe->eth, entry, hwe)) {
- 			if (entry->hash != 0xffff)
- 				entry->hash = 0xffff;
- 			continue;
-@@ -771,6 +805,8 @@ void mtk_ppe_start(struct mtk_ppe *ppe)
- 			 MTK_PPE_SCAN_MODE_KEEPALIVE_AGE) |
- 	      FIELD_PREP(MTK_PPE_TB_CFG_ENTRY_NUM,
- 			 MTK_PPE_ENTRIES_SHIFT);
-+	if (MTK_HAS_CAPS(ppe->eth->soc->caps, MTK_NETSYS_V2))
-+		val |= MTK_PPE_TB_CFG_INFO_SEL;
- 	ppe_w32(ppe, MTK_PPE_TB_CFG, val);
- 
- 	ppe_w32(ppe, MTK_PPE_IP_PROTO_CHK,
-@@ -778,15 +814,21 @@ void mtk_ppe_start(struct mtk_ppe *ppe)
- 
- 	mtk_ppe_cache_enable(ppe, true);
- 
--	val = MTK_PPE_FLOW_CFG_IP4_TCP_FRAG |
--	      MTK_PPE_FLOW_CFG_IP4_UDP_FRAG |
--	      MTK_PPE_FLOW_CFG_IP6_3T_ROUTE |
-+	val = MTK_PPE_FLOW_CFG_IP6_3T_ROUTE |
- 	      MTK_PPE_FLOW_CFG_IP6_5T_ROUTE |
- 	      MTK_PPE_FLOW_CFG_IP6_6RD |
- 	      MTK_PPE_FLOW_CFG_IP4_NAT |
- 	      MTK_PPE_FLOW_CFG_IP4_NAPT |
- 	      MTK_PPE_FLOW_CFG_IP4_DSLITE |
- 	      MTK_PPE_FLOW_CFG_IP4_NAT_FRAG;
-+	if (MTK_HAS_CAPS(ppe->eth->soc->caps, MTK_NETSYS_V2))
-+		val |= MTK_PPE_MD_TOAP_BYP_CRSN0 |
-+		       MTK_PPE_MD_TOAP_BYP_CRSN1 |
-+		       MTK_PPE_MD_TOAP_BYP_CRSN2 |
-+		       MTK_PPE_FLOW_CFG_IP4_HASH_GRE_KEY;
-+	else
-+		val |= MTK_PPE_FLOW_CFG_IP4_TCP_FRAG |
-+		       MTK_PPE_FLOW_CFG_IP4_UDP_FRAG;
- 	ppe_w32(ppe, MTK_PPE_FLOW_CFG, val);
- 
- 	val = FIELD_PREP(MTK_PPE_UNBIND_AGE_MIN_PACKETS, 1000) |
-@@ -820,6 +862,11 @@ void mtk_ppe_start(struct mtk_ppe *ppe)
- 	ppe_w32(ppe, MTK_PPE_GLO_CFG, val);
- 
- 	ppe_w32(ppe, MTK_PPE_DEFAULT_CPU_PORT, 0);
-+
-+	if (MTK_HAS_CAPS(ppe->eth->soc->caps, MTK_NETSYS_V2)) {
-+		ppe_w32(ppe, MTK_PPE_DEFAULT_CPU_PORT1, 0xcb777);
-+		ppe_w32(ppe, MTK_PPE_SBW_CTRL, 0x7f);
-+	}
- }
- 
- int mtk_ppe_stop(struct mtk_ppe *ppe)
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
-index 6d4c91acd1a5..0b7a67a958e4 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.h
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
-@@ -32,6 +32,15 @@
- #define MTK_FOE_IB1_UDP			BIT(30)
- #define MTK_FOE_IB1_STATIC		BIT(31)
- 
-+/* CONFIG_MEDIATEK_NETSYS_V2 */
-+#define MTK_FOE_IB1_BIND_TIMESTAMP_V2	GENMASK(7, 0)
-+#define MTK_FOE_IB1_BIND_VLAN_LAYER_V2	GENMASK(16, 14)
-+#define MTK_FOE_IB1_BIND_PPPOE_V2	BIT(17)
-+#define MTK_FOE_IB1_BIND_VLAN_TAG_V2	BIT(18)
-+#define MTK_FOE_IB1_BIND_CACHE_V2	BIT(20)
-+#define MTK_FOE_IB1_BIND_TTL_V2		BIT(22)
-+#define MTK_FOE_IB1_PACKET_TYPE_V2	GENMASK(27, 23)
-+
- enum {
- 	MTK_PPE_PKT_TYPE_IPV4_HNAPT = 0,
- 	MTK_PPE_PKT_TYPE_IPV4_ROUTE = 1,
-@@ -53,14 +62,25 @@ enum {
- 
- #define MTK_FOE_IB2_PORT_MG		GENMASK(17, 12)
- 
-+#define MTK_FOE_IB2_RX_IDX		GENMASK(18, 17)
- #define MTK_FOE_IB2_PORT_AG		GENMASK(23, 18)
- 
- #define MTK_FOE_IB2_DSCP		GENMASK(31, 24)
- 
-+/* CONFIG_MEDIATEK_NETSYS_V2 */
-+#define MTK_FOE_IB2_PORT_MG_V2		BIT(7)
-+#define MTK_FOE_IB2_DEST_PORT_V2	GENMASK(12, 9)
-+#define MTK_FOE_IB2_MULTICAST_V2	BIT(13)
-+#define MTK_FOE_IB2_WDMA_WINFO_V2	BIT(19)
-+#define MTK_FOE_IB2_PORT_AG_V2		GENMASK(23, 20)
-+
- #define MTK_FOE_VLAN2_WINFO_BSS		GENMASK(5, 0)
- #define MTK_FOE_VLAN2_WINFO_WCID	GENMASK(13, 6)
- #define MTK_FOE_VLAN2_WINFO_RING	GENMASK(15, 14)
- 
-+#define MTK_FOE_WINFO_BSS		GENMASK(5, 0)
-+#define MTK_FOE_WINFO_WCID		GENMASK(15, 6)
-+
- enum {
- 	MTK_FOE_STATE_INVALID,
- 	MTK_FOE_STATE_UNBIND,
-@@ -81,6 +101,9 @@ struct mtk_foe_mac_info {
- 
- 	u16 pppoe_id;
- 	u16 src_mac_lo;
-+
-+	u16 minfo;
-+	u16 winfo;
- };
- 
- /* software-only entry type */
-@@ -198,7 +221,7 @@ struct mtk_foe_entry {
- 		struct mtk_foe_ipv4_dslite dslite;
- 		struct mtk_foe_ipv6 ipv6;
- 		struct mtk_foe_ipv6_6rd ipv6_6rd;
--		u32 data[19];
-+		u32 data[23];
- 	};
- };
- 
-@@ -306,20 +329,27 @@ mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
- 	__mtk_ppe_check_skb(ppe, skb, hash);
- }
- 
--int mtk_foe_entry_prepare(struct mtk_foe_entry *entry, int type, int l4proto,
--			  u8 pse_port, u8 *src_mac, u8 *dest_mac);
--int mtk_foe_entry_set_pse_port(struct mtk_foe_entry *entry, u8 port);
--int mtk_foe_entry_set_ipv4_tuple(struct mtk_foe_entry *entry, bool orig,
-+int mtk_foe_entry_prepare(struct mtk_eth *eth, struct mtk_foe_entry *entry,
-+			  int type, int l4proto, u8 pse_port, u8 *src_mac,
-+			  u8 *dest_mac);
-+int mtk_foe_entry_set_pse_port(struct mtk_eth *eth,
-+			       struct mtk_foe_entry *entry, u8 port);
-+int mtk_foe_entry_set_ipv4_tuple(struct mtk_eth *eth,
-+				 struct mtk_foe_entry *entry, bool orig,
- 				 __be32 src_addr, __be16 src_port,
- 				 __be32 dest_addr, __be16 dest_port);
--int mtk_foe_entry_set_ipv6_tuple(struct mtk_foe_entry *entry,
-+int mtk_foe_entry_set_ipv6_tuple(struct mtk_eth *eth,
-+				 struct mtk_foe_entry *entry,
- 				 __be32 *src_addr, __be16 src_port,
- 				 __be32 *dest_addr, __be16 dest_port);
--int mtk_foe_entry_set_dsa(struct mtk_foe_entry *entry, int port);
--int mtk_foe_entry_set_vlan(struct mtk_foe_entry *entry, int vid);
--int mtk_foe_entry_set_pppoe(struct mtk_foe_entry *entry, int sid);
--int mtk_foe_entry_set_wdma(struct mtk_foe_entry *entry, int wdma_idx, int txq,
--			   int bss, int wcid);
-+int mtk_foe_entry_set_dsa(struct mtk_eth *eth, struct mtk_foe_entry *entry,
-+			  int port);
-+int mtk_foe_entry_set_vlan(struct mtk_eth *eth, struct mtk_foe_entry *entry,
-+			   int vid);
-+int mtk_foe_entry_set_pppoe(struct mtk_eth *eth, struct mtk_foe_entry *entry,
-+			    int sid);
-+int mtk_foe_entry_set_wdma(struct mtk_eth *eth, struct mtk_foe_entry *entry,
-+			   int wdma_idx, int txq, int bss, int wcid);
- int mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_flow_entry *entry);
- void mtk_foe_entry_clear(struct mtk_ppe *ppe, struct mtk_flow_entry *entry);
- int mtk_foe_entry_idle_time(struct mtk_ppe *ppe, struct mtk_flow_entry *entry);
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index 0324e7750065..c63eeee0ceba 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -52,18 +52,19 @@ static const struct rhashtable_params mtk_flow_ht_params = {
- };
- 
- static int
--mtk_flow_set_ipv4_addr(struct mtk_foe_entry *foe, struct mtk_flow_data *data,
--		       bool egress)
-+mtk_flow_set_ipv4_addr(struct mtk_eth *eth, struct mtk_foe_entry *foe,
-+		       struct mtk_flow_data *data, bool egress)
- {
--	return mtk_foe_entry_set_ipv4_tuple(foe, egress,
-+	return mtk_foe_entry_set_ipv4_tuple(eth, foe, egress,
- 					    data->v4.src_addr, data->src_port,
- 					    data->v4.dst_addr, data->dst_port);
- }
- 
- static int
--mtk_flow_set_ipv6_addr(struct mtk_foe_entry *foe, struct mtk_flow_data *data)
-+mtk_flow_set_ipv6_addr(struct mtk_eth *eth, struct mtk_foe_entry *foe,
-+		       struct mtk_flow_data *data)
- {
--	return mtk_foe_entry_set_ipv6_tuple(foe,
-+	return mtk_foe_entry_set_ipv6_tuple(eth, foe,
- 					    data->v6.src_addr.s6_addr32, data->src_port,
- 					    data->v6.dst_addr.s6_addr32, data->dst_port);
- }
-@@ -190,16 +191,29 @@ mtk_flow_set_output_device(struct mtk_eth *eth, struct mtk_foe_entry *foe,
- 	int pse_port, dsa_port;
- 
- 	if (mtk_flow_get_wdma_info(dev, dest_mac, &info) == 0) {
--		mtk_foe_entry_set_wdma(foe, info.wdma_idx, info.queue, info.bss,
--				       info.wcid);
--		pse_port = 3;
-+		mtk_foe_entry_set_wdma(eth, foe, info.wdma_idx, info.queue,
-+				       info.bss, info.wcid);
-+		if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_V2)) {
-+			switch (info.wdma_idx) {
-+			case 0:
-+				pse_port = 8;
-+				break;
-+			case 1:
-+				pse_port = 9;
-+				break;
-+			default:
-+				return -EINVAL;
-+			}
-+		} else {
-+			pse_port = 3;
-+		}
- 		*wed_index = info.wdma_idx;
- 		goto out;
- 	}
- 
- 	dsa_port = mtk_flow_get_dsa_port(&dev);
- 	if (dsa_port >= 0)
--		mtk_foe_entry_set_dsa(foe, dsa_port);
-+		mtk_foe_entry_set_dsa(eth, foe, dsa_port);
- 
- 	if (dev == eth->netdev[0])
- 		pse_port = 1;
-@@ -209,7 +223,7 @@ mtk_flow_set_output_device(struct mtk_eth *eth, struct mtk_foe_entry *foe,
- 		return -EOPNOTSUPP;
- 
- out:
--	mtk_foe_entry_set_pse_port(foe, pse_port);
-+	mtk_foe_entry_set_pse_port(eth, foe, pse_port);
- 
- 	return 0;
- }
-@@ -333,9 +347,8 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 	    !is_valid_ether_addr(data.eth.h_dest))
- 		return -EINVAL;
- 
--	err = mtk_foe_entry_prepare(&foe, offload_type, l4proto, 0,
--				    data.eth.h_source,
--				    data.eth.h_dest);
-+	err = mtk_foe_entry_prepare(eth, &foe, offload_type, l4proto, 0,
-+				    data.eth.h_source, data.eth.h_dest);
- 	if (err)
- 		return err;
- 
-@@ -360,7 +373,7 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 		data.v4.src_addr = addrs.key->src;
- 		data.v4.dst_addr = addrs.key->dst;
- 
--		mtk_flow_set_ipv4_addr(&foe, &data, false);
-+		mtk_flow_set_ipv4_addr(eth, &foe, &data, false);
- 	}
- 
- 	if (addr_type == FLOW_DISSECTOR_KEY_IPV6_ADDRS) {
-@@ -371,7 +384,7 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 		data.v6.src_addr = addrs.key->src;
- 		data.v6.dst_addr = addrs.key->dst;
- 
--		mtk_flow_set_ipv6_addr(&foe, &data);
-+		mtk_flow_set_ipv6_addr(eth, &foe, &data);
- 	}
- 
- 	flow_action_for_each(i, act, &rule->action) {
-@@ -401,7 +414,7 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 	}
- 
- 	if (addr_type == FLOW_DISSECTOR_KEY_IPV4_ADDRS) {
--		err = mtk_flow_set_ipv4_addr(&foe, &data, true);
-+		err = mtk_flow_set_ipv4_addr(eth, &foe, &data, true);
- 		if (err)
- 			return err;
- 	}
-@@ -413,10 +426,10 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 		if (data.vlan.proto != htons(ETH_P_8021Q))
- 			return -EOPNOTSUPP;
- 
--		mtk_foe_entry_set_vlan(&foe, data.vlan.id);
-+		mtk_foe_entry_set_vlan(eth, &foe, data.vlan.id);
- 	}
- 	if (data.pppoe.num == 1)
--		mtk_foe_entry_set_pppoe(&foe, data.pppoe.sid);
-+		mtk_foe_entry_set_pppoe(eth, &foe, data.pppoe.sid);
- 
- 	err = mtk_flow_set_output_device(eth, &foe, odev, data.eth.h_dest,
- 					 &wed_index);
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_regs.h b/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
-index 0c45ea0900f1..59596d823d8b 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_regs.h
-@@ -21,6 +21,9 @@
- #define MTK_PPE_GLO_CFG_BUSY			BIT(31)
- 
- #define MTK_PPE_FLOW_CFG			0x204
-+#define MTK_PPE_MD_TOAP_BYP_CRSN0		BIT(1)
-+#define MTK_PPE_MD_TOAP_BYP_CRSN1		BIT(2)
-+#define MTK_PPE_MD_TOAP_BYP_CRSN2		BIT(3)
- #define MTK_PPE_FLOW_CFG_IP4_TCP_FRAG		BIT(6)
- #define MTK_PPE_FLOW_CFG_IP4_UDP_FRAG		BIT(7)
- #define MTK_PPE_FLOW_CFG_IP6_3T_ROUTE		BIT(8)
-@@ -54,6 +57,7 @@
- #define MTK_PPE_TB_CFG_HASH_MODE		GENMASK(15, 14)
- #define MTK_PPE_TB_CFG_SCAN_MODE		GENMASK(17, 16)
- #define MTK_PPE_TB_CFG_HASH_DEBUG		GENMASK(19, 18)
-+#define MTK_PPE_TB_CFG_INFO_SEL			BIT(20)
- 
- enum {
- 	MTK_PPE_SCAN_MODE_DISABLED,
-@@ -112,6 +116,8 @@ enum {
- #define MTK_PPE_DEFAULT_CPU_PORT		0x248
- #define MTK_PPE_DEFAULT_CPU_PORT_MASK(_n)	(GENMASK(2, 0) << ((_n) * 4))
- 
-+#define MTK_PPE_DEFAULT_CPU_PORT1		0x24c
-+
- #define MTK_PPE_MTU_DROP			0x308
- 
- #define MTK_PPE_VLAN_MTU0			0x30c
-@@ -141,4 +147,6 @@ enum {
- #define MTK_PPE_MIB_CACHE_CTL_EN		BIT(0)
- #define MTK_PPE_MIB_CACHE_CTL_FLUSH		BIT(2)
- 
-+#define MTK_PPE_SBW_CTRL			0x374
-+
- #endif
--- 
-2.37.3
+On 06/09/2022 11:49, Markus Schneider-Pargmann wrote:
+> Hi Matthias,
+> 
+> On Mon, Aug 22, 2022 at 06:17:58PM +0200, Matthias Brugger wrote:
+>>
+>>
+>> On 22/08/2022 16:43, Markus Schneider-Pargmann wrote:
+>>> From: Alexandre Bailon <abailon@baylibre.com>
+>>>
+>>> This updates the power domain to support WAY_EN operations. These
+>>> operations enable a path between different units of the chip and are
+>>> labeled as 'way_en' in the register descriptions.
 
+If you can come up with a more verbose description of WAY_EN functionality it 
+would be appreciated, although I know it's not always easy to get that 
+information. 10 years in it will help to understand better what this is about.
+
+>>>
+>>> This operation is required by the mt8365 for the MM power domain.
+>>>
+>>> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+>>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+>>> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+>>> ---
+>>>
+>>> Notes:
+>>>       Changes in v3:
+>>>       - Separated the way_en functions for clarity
+>>>       - Added some checks for infracfg_nao
+>>>       Changes in v2:
+>>>       - some minor style fixes.
+>>>       - Renamed 'wayen' to 'way_en' to clarify the meaning
+>>>       - Updated commit message
+>>>
+>>>    drivers/soc/mediatek/mtk-pm-domains.c | 162 +++++++++++++++++++++-----
+>>>    drivers/soc/mediatek/mtk-pm-domains.h |  28 +++--
+>>>    2 files changed, 149 insertions(+), 41 deletions(-)
+>>>
+>>> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+>>> index 9734f1091c69..c2cbe0de6aa1 100644
+>>> --- a/drivers/soc/mediatek/mtk-pm-domains.c
+>>> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+>>> @@ -43,6 +43,7 @@ struct scpsys_domain {
+>>>    	struct clk_bulk_data *clks;
+>>>    	int num_subsys_clks;
+>>>    	struct clk_bulk_data *subsys_clks;
+>>> +	struct regmap *infracfg_nao;
+>>>    	struct regmap *infracfg;
+>>>    	struct regmap *smi;
+>>>    	struct regulator *supply;
+>>> @@ -117,26 +118,61 @@ static int scpsys_sram_disable(struct scpsys_domain *pd)
+>>>    					MTK_POLL_TIMEOUT);
+>>>    }
+>>> -static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd, struct regmap *regmap)
+>>> +static int __scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
+>>> +				       struct regmap *regmap)
+>>> +{
+>>> +	u32 val;
+>>> +	u32 mask = bpd->bus_prot_mask;
+>>> +	u32 sta_mask = bpd->bus_prot_sta_mask;
+>>> +
+>>> +	if (bpd->bus_prot_reg_update)
+>>> +		regmap_set_bits(regmap, bpd->bus_prot_set, mask);
+>>> +	else
+>>> +		regmap_write(regmap, bpd->bus_prot_set, mask);
+>>> +
+>>> +	return regmap_read_poll_timeout(regmap, bpd->bus_prot_sta, val,
+>>> +					(val & sta_mask) == sta_mask,
+>>> +					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+>>> +}
+>>> +
+>>> +static int scpsys_bus_way_disable(const struct scpsys_bus_prot_data *bpd,
+>>> +				  struct regmap *regmap,
+>>> +				  struct regmap *ack_regmap)
+>>> +{
+>>> +	u32 val;
+>>> +	u32 mask = bpd->bus_prot_mask;
+>>> +	u32 sta_mask = bpd->bus_prot_sta_mask;
+>>> +
+>>> +	if (bpd->bus_prot_reg_update)
+>>> +		regmap_clear_bits(regmap, bpd->bus_prot_set, mask);
+>>> +	else
+>>> +		regmap_write(regmap, bpd->bus_prot_set, mask);
+
+BUS_PROT_WAY_EN sets bus_prot_reg_update to true, what do we need the else 
+branch for?
+
+>>> +
+>>> +	if (bpd->ignore_clr_ack)
+>>> +		return 0;
+
+Same here, ignore_clr_ack is always false.
+
+Actually it seems to me that __scpsys_bus_protect_enable and 
+scpsys_bus_way_disable is nearly the same (other regmap, regmap_clear_bits 
+instead of set_bits). Can't we put the check of way_en in e.g. the old 
+_scpsys_bus_protect_enable to get rid of all the code duplication?
+
+>>> +
+>>> +	return regmap_read_poll_timeout(ack_regmap, bpd->bus_prot_sta, val,
+>>> +					(val & sta_mask) == sta_mask,
+>>> +					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+>>> +}
+>>> +
+>>> +static int _scpsys_bus_protect_enable(const struct scpsys_bus_prot_data *bpd,
+>>> +				      struct regmap *regmap, struct regmap *infracfg_nao)
+>>>    {
+>>>    	int i, ret;
+>>>    	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+>>> -		u32 val, mask = bpd[i].bus_prot_mask;
+>>> -
+>>> -		if (!mask)
+>>> +		if (!bpd[i].bus_prot_mask)
+>>>    			break;
+>>> -		if (bpd[i].bus_prot_reg_update)
+>>> -			regmap_set_bits(regmap, bpd[i].bus_prot_set, mask);
+>>> +		if (bpd[i].way_en)
+>>> +			ret = scpsys_bus_way_disable(&bpd[i], regmap, infracfg_nao);
+>>>    		else
+>>> -			regmap_write(regmap, bpd[i].bus_prot_set, mask);
+>>> -
+>>> -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+>>> -					       val, (val & mask) == mask,
+>>> -					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+>>> -		if (ret)
+>>> +			ret = __scpsys_bus_protect_enable(&bpd[i], regmap);
+>>> +		if (ret) {
+>>> +			pr_err("%s %d %d\n", __PRETTY_FUNCTION__, __LINE__, ret);
+>>>    			return ret;
+>>> +		}
+>>>    	}
+>>>    	return 0;
+>>> @@ -146,37 +182,71 @@ static int scpsys_bus_protect_enable(struct scpsys_domain *pd)
+>>>    {
+>>>    	int ret;
+>>> -	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg, pd->infracfg);
+>>> +	ret = _scpsys_bus_protect_enable(pd->data->bp_infracfg,
+>>> +					 pd->infracfg, pd->infracfg_nao);
+>>>    	if (ret)
+>>>    		return ret;
+>>> -	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi);
+>>> +	return _scpsys_bus_protect_enable(pd->data->bp_smi, pd->smi, NULL);
+>>> +}
+>>> +
+>>> +static int __scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
+>>> +					struct regmap *regmap)
+>>> +{
+>>> +	u32 val;
+>>> +	u32 mask = bpd->bus_prot_mask;
+>>> +	u32 sta_mask = bpd->bus_prot_sta_mask;
+>>> +
+>>> +	if (bpd->bus_prot_reg_update)
+>>> +		regmap_clear_bits(regmap, bpd->bus_prot_clr, mask);
+>>> +	else
+>>> +		regmap_write(regmap, bpd->bus_prot_clr, mask);
+>>> +
+>>> +	if (bpd->ignore_clr_ack)
+>>> +		return 0;
+>>> +
+>>> +	return regmap_read_poll_timeout(regmap, bpd->bus_prot_sta, val,
+>>> +					!(val & sta_mask), MTK_POLL_DELAY_US,
+>>> +					MTK_POLL_TIMEOUT);
+>>> +}
+>>> +
+>>> +static int scpsys_bus_way_enable(const struct scpsys_bus_prot_data *bpd,
+>>> +				 struct regmap *regmap,
+>>> +				 struct regmap *ack_regmap)
+>>> +{
+>>> +	u32 val;
+>>> +	u32 mask = bpd->bus_prot_mask;
+>>> +	u32 sta_mask = bpd->bus_prot_sta_mask;
+>>> +
+>>> +	if (bpd->bus_prot_reg_update)
+>>> +		regmap_set_bits(regmap, bpd->bus_prot_clr, mask);
+>>> +	else
+>>> +		regmap_write(regmap, bpd->bus_prot_clr, mask);
+
+same as disable case.
+
+>>> +
+>>> +	return regmap_read_poll_timeout(ack_regmap, bpd->bus_prot_sta, val,
+>>> +					(val & sta_mask) == sta_mask,
+>>> +					MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+>>>    }
+>>>    static int _scpsys_bus_protect_disable(const struct scpsys_bus_prot_data *bpd,
+>>> -				       struct regmap *regmap)
+>>> +				       struct regmap *regmap,
+>>> +				       struct regmap *infracfg_nao)
+>>>    {
+>>>    	int i, ret;
+>>>    	for (i = SPM_MAX_BUS_PROT_DATA - 1; i >= 0; i--) {
+>>> -		u32 val, mask = bpd[i].bus_prot_mask;
+>>> -
+>>> -		if (!mask)
+>>> +		if (!bpd[i].bus_prot_mask)
+>>>    			continue;
+>>> -		if (bpd[i].bus_prot_reg_update)
+>>> -			regmap_clear_bits(regmap, bpd[i].bus_prot_clr, mask);
+>>> +		if (bpd[i].way_en)
+>>> +			ret = scpsys_bus_way_enable(&bpd[i], regmap,
+>>> +						    infracfg_nao);
+>>>    		else
+>>> -			regmap_write(regmap, bpd[i].bus_prot_clr, mask);
+>>> -
+>>> -		if (bpd[i].ignore_clr_ack)
+>>> -			continue;
+>>> -
+>>> -		ret = regmap_read_poll_timeout(regmap, bpd[i].bus_prot_sta,
+>>> -					       val, !(val & mask),
+>>> -					       MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+>>> -		if (ret)
+>>> +			ret = __scpsys_bus_protect_disable(&bpd[i], regmap);
+>>> +		if (ret) {
+>>> +			pr_err("%s %d %d\n", __PRETTY_FUNCTION__, __LINE__, ret);
+>>>    			return ret;
+>>> +		}
+>>>    	}
+>>>    	return 0;
+>>> @@ -186,11 +256,12 @@ static int scpsys_bus_protect_disable(struct scpsys_domain *pd)
+>>>    {
+>>>    	int ret;
+>>> -	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi);
+>>> +	ret = _scpsys_bus_protect_disable(pd->data->bp_smi, pd->smi, NULL);
+>>>    	if (ret)
+>>>    		return ret;
+>>> -	return _scpsys_bus_protect_disable(pd->data->bp_infracfg, pd->infracfg);
+>>> +	return _scpsys_bus_protect_disable(pd->data->bp_infracfg,
+>>> +			pd->infracfg, pd->infracfg_nao);
+>>>    }
+>>>    static int scpsys_regulator_enable(struct regulator *supply)
+>>> @@ -294,6 +365,21 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>>>    	return 0;
+>>>    }
+>>> +static bool scpsys_bp_infracfg_has_way_en(const struct scpsys_bus_prot_data *bpd)
+>>> +{
+>>> +	int i;
+>>> +
+>>> +	for (i = 0; i < SPM_MAX_BUS_PROT_DATA; i++) {
+>>> +		if (!bpd[i].bus_prot_mask)
+>>> +			break;
+>>
+>> So MT8365_POWER_DOMAIN_MM will return false as the first member of
+>> bp_infracfg is BUS_PROT_WR(...)
+> 
+> I am not sure I understand what you mean. Why should it break out of the
+> loop if the first member is a BUS_PROT_WR()? BUS_PROT_WR() sets a mask
+> as well which is checked here exactly the same way as is done in
+> _scpsys_bus_protect_enable() even before this patch.
+
+Right, my error, please see comment further down about the new macros.
+
+> 
+> This is only a loop condition. Actually I can move it into the loop
+> header as well. Either you define SPM_MAX_BUS_PROT_DATA fields or you
+> have to exit if you find a field that is empty, basically the mask not
+> being set.
+> 
+>>
+>> Apart from that, why don't you use a CAPS to acheive the same?
+>>
+
+Just in case you missed that. I'd pretty much prefer to add a caps to 
+scpsys_domain_data signaling that the power domain uses WAY_EN.
+
+>>> +
+>>> +		if (bpd[i].way_en)
+>>> +			return true;
+>>> +	}
+>>> +
+>>> +	return false;
+>>> +}
+>>> +
+>>>    static struct
+>>>    generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node)
+>>>    {
+>>> @@ -364,6 +450,20 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+>>>    			return ERR_CAST(pd->smi);
+>>>    	}
+>>> +	if (scpsys_bp_infracfg_has_way_en(pd->data->bp_smi)) {
+>>> +		dev_err(scpsys->dev, "bp_smi does not support WAY_EN\n");
+>>
+>> Do we really need to check the correctness of the driver data at runtime?
+> 
+> bp_smi is called without a infracfg_nao regmap. If we don't check it
+> here, we need to make a check during bus protection operations. Last
+> time I got a review to not do it during in the bus protection path.
+> 
+
+Maybe I'm missing something here but bpi_smi is defined in the 
+scpsys_domain_data. Why do we need to check at runtime if the SoC specific data 
+hardcoded in the dirver is correct? What am I missing here?
+
+Apart do I understand correctly that the second call to 
+_scpsys_bus_protect_enable() in scpsys_bus_protect_enable() will never use 
+way_en? My understanding that this also holds for the disable path. Can't we 
+remodel the code that in this case we don't loop over scpsys_bus_prot_data and 
+check for way_en?
+
+>>
+>>> +		return ERR_PTR(-EINVAL);
+>>> +	}
+>>> +
+>>> +	pd->infracfg_nao = syscon_regmap_lookup_by_phandle_optional(
+>>> +		node, "mediatek,infracfg_nao");
+>>
+>> Not in the binding description.
+> 
+> Thanks, I will fix that for the next version.
+> 
+>>
+>>> +	if (IS_ERR(pd->infracfg_nao)) {
+>>> +		if (scpsys_bp_infracfg_has_way_en(pd->data->bp_infracfg))
+>>> +			return ERR_CAST(pd->infracfg_nao);
+>>> +
+>>> +		pd->infracfg_nao = NULL;
+>>> +	}
+>>> +
+>>>    	num_clks = of_clk_get_parent_count(node);
+>>>    	if (num_clks > 0) {
+>>>    		/* Calculate number of subsys_clks */
+>>> diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
+>>> index 7d3c0c36316c..974c68a1d89c 100644
+>>> --- a/drivers/soc/mediatek/mtk-pm-domains.h
+>>> +++ b/drivers/soc/mediatek/mtk-pm-domains.h
+>>> @@ -41,23 +41,29 @@
+>>>    #define SPM_MAX_BUS_PROT_DATA		6
+>>> -#define _BUS_PROT(_mask, _set, _clr, _sta, _update, _ignore) {	\
+>>> -		.bus_prot_mask = (_mask),			\
+>>> -		.bus_prot_set = _set,				\
+>>> -		.bus_prot_clr = _clr,				\
+>>> -		.bus_prot_sta = _sta,				\
+>>> -		.bus_prot_reg_update = _update,			\
+>>> -		.ignore_clr_ack = _ignore,			\
+>>> +#define _BUS_PROT(_mask, _sta_mask, _set, _clr, _sta, _update, _ignore, _way_en) {	\
+
+_sta_mask is second parameter but not second member of the struct. That makes 
+reading the driver unnecessary complicated.
+
+>>> +		.bus_prot_mask = (_mask),				\
+>>> +		.bus_prot_set = _set,					\
+>>> +		.bus_prot_clr = _clr,					\
+>>> +		.bus_prot_sta = _sta,					\
+>>> +		.bus_prot_sta_mask = _sta_mask,				\
+>>> +		.bus_prot_reg_update = _update,				\
+>>> +		.ignore_clr_ack = _ignore,				\
+>>> +		.way_en = _way_en,					\
+>>>    	}
+>>>    #define BUS_PROT_WR(_mask, _set, _clr, _sta)			\
+>>> -		_BUS_PROT(_mask, _set, _clr, _sta, false, false)
+>>> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, false, false)
+>>>    #define BUS_PROT_WR_IGN(_mask, _set, _clr, _sta)		\
+>>> -		_BUS_PROT(_mask, _set, _clr, _sta, false, true)
+>>> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, false, true, false)
+>>>    #define BUS_PROT_UPDATE(_mask, _set, _clr, _sta)		\
+>>> -		_BUS_PROT(_mask, _set, _clr, _sta, true, false)
+>>> +		_BUS_PROT(_mask, _mask, _set, _clr, _sta, true, false, false)
+>>> +
+>>> +#define BUS_PROT_WAY_EN(_en_mask, _sta_mask, _set, _sta)	\
+>>> +		_BUS_PROT(_en_mask, _sta_mask, _set, _set, _sta, true, false, \
+>>> +			  true)
+>>>    #define BUS_PROT_UPDATE_TOPAXI(_mask)				\
+>>>    		BUS_PROT_UPDATE(_mask,				\
+>>> @@ -70,8 +76,10 @@ struct scpsys_bus_prot_data {
+>>>    	u32 bus_prot_set;
+>>>    	u32 bus_prot_clr;
+>>>    	u32 bus_prot_sta;
+>>> +	u32 bus_prot_sta_mask;
+>>
+>> I'm not very happy with the naming. In the end we need an extra mask for bus
+>> protection using WAY_EN. But right now I can't come up with a good name.
+> 
+> I think the naming is good as it is a specific mask for the status
+> register. bus_prot_mask is now basically only responsible for set and
+> clr. Maybe renaming bus_prot_mask to bus_prot_set_clr_mask is better?
+
+Yes makes sense. Please add this as an extra patch for easier review.
+
+Regards,
+Matthias
+
+> 
+> Thanks,
+> Markus
+> 
+>>
+>> Regards,
+>> Matthias
+>>
+>>>    	bool bus_prot_reg_update;
+>>>    	bool ignore_clr_ack;
+>>> +	bool way_en;
+>>>    };
+>>>    /**
 
