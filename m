@@ -4,81 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC85FC6FA82
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 10:57:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C213DC54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 11:52:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qUoPzEtThAWjsYUPgqVWVm3cY7uRUzVgyIgIHSxL3DY=; b=lxDIl14JCPvkvs3zTSvXHYCa6G
-	7ycj586XIe3meUJnXwGlQrb/dFyQ6PZcyBnAd3NIFyaDk8XDmFN7tPRoh0b3wXa/Fif+FVBpryxqO
-	xZoJP9MzMmnlva62qIwFSpH+L4oWIP4EvdLc22McpXgG6XlIcm1Nwhx17+TDCnE5D92CMBgtSv5lC
-	ZyYEylytnZAQcbVkQjq80xXY5r7A4qfOCCVQymOTnt2GBQkZuK0EtJ23yocCFQEl2q81pdECaela8
-	tvcQJDbeii9pfHQLQfDurM6oOjHI4HCTs/FypshfW1lW7WwCtNLJrdZLcpV/t+s8rf5RsQ6QxGzI4
-	1171eNNw==;
+	bh=8PLvGqU3gEdjFyXken2n9tU+ZZnzU4jm//XhXhbKfhs=; b=g3KUbgceOh+PHs9OYvZz1MyLZQ
+	WFRHlb2gfsyfwWIEKsilqwAKl4ylZRhvdD3R7MFGfDoiHNQg4DfhxLRfCpsJKmkpeUEcWzB3KO7Xc
+	oheJ4kAKhPq4YXwDz8eYGMCiL/ZJFUqV8ru9LnugK+Kjj4MR1RrhzRGzNlAJf00d+Bbbnc4yKZRpt
+	gurEALoELC8Gds/Yy2ZqVWTYb+4EEkmmTl6nDIclcn72v1JFBr4KO13YpeCjWzUQKpPAT19x8H9za
+	G33Yh99EtALouPwzwD0NqBRQSKrAASjCWZZAqcFgC8EmurSpBMTJubJyYQeT2or4oizyP9lH55A2s
+	JH5wUqhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY3bU-0072qK-ND; Tue, 13 Sep 2022 10:57:20 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1oY4SN-009N8h-7F; Tue, 13 Sep 2022 11:51:59 +0000
+Received: from mail-eopbgr20064.outbound.protection.outlook.com ([40.107.2.64] helo=EUR02-VE1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY3bM-0072Y2-9Y
-	for linux-mediatek@lists.infradead.org; Tue, 13 Sep 2022 10:57:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1663066632; x=1694602632;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=11l4HL2ZNwzx83esXqcj5RkTzUWCjv48wB1HSJzPoHY=;
-  b=VYhUSg5cgGeZkXBfpEgEioMrELi82d2LMOgWJXSWQ54EkTPa00YZ6FAs
-   FbZJye1I3DfupxXSBPA172I7upJmChx+R5N79PQSdNy7hBQIdWIMmdHzd
-   h/mva888TDYYLkGqRcEGIo8sEGcQj4Zp3TxW9dshIJRsIiIvTDab+S19E
-   8m21grQoou5fWe1tteet24CyGJusAU2OcwuyMkwHmeCyIgOMs3dSU+0iK
-   InHvQbvotqnQvGfFgevAEJK5PlpOQHt7bWEEAHxO2vzxBardWQmzRYobQ
-   m1Qm5iuWXmcteo41scXxa0Egg6+b39FuirQKj7Els/ubFq+7FHOta8jnh
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10468"; a="277839560"
-X-IronPort-AV: E=Sophos;i="5.93,312,1654585200"; 
-   d="scan'208";a="277839560"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Sep 2022 03:57:07 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,312,1654585200"; 
-   d="scan'208";a="861511474"
-Received: from lkp-server02.sh.intel.com (HELO 4011df4f4fd3) ([10.239.97.151])
-  by fmsmga006.fm.intel.com with ESMTP; 13 Sep 2022 03:57:01 -0700
-Received: from kbuild by 4011df4f4fd3 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1oY3bB-0003WI-0V;
-	Tue, 13 Sep 2022 10:57:01 +0000
-Date: Tue, 13 Sep 2022 18:56:32 +0800
-From: kernel test robot <lkp@intel.com>
-To: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com,
-	luiz.dentz@gmail.com
-Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org, sean.wang@mediatek.com,
-	Soul.Huang@mediatek.com, YN.Chen@mediatek.com,
-	Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com,
-	Deren.Wu@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com,
-	Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
-	ted.huang@mediatek.com, Stella.Chang@mediatek.com,
-	Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com,
-	frankgor@google.com, abhishekpandit@google.com,
-	michaelfsun@google.com, abhishekpandit@chromium.org,
-	mcchou@chromium.org, shawnku@google.com,
-	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, Jing Cai <jing.cai@mediatek.com>
-Subject: Re: [PATCH 4/4] Bluetooth: btusb: mediatek: add MediaTek devcoredump
- support
-Message-ID: <202209131807.OuwXBmKi-lkp@intel.com>
-References: <540fc6d93481e72e18b51f82f022ab34d57d5caa.1663020936.git.objelf@gmail.com>
+	id 1oY4SK-009Mpc-0W; Tue, 13 Sep 2022 11:51:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=n0jxK1fc8PP6x0tuHGSgWPcZhrVxMzsDnaLusTO3RBZHOouffpLGxT0Vo+0NSQFppKjN8XNgVCWHJzniiACRyfPHoAtXE+AxlKPJJQK9fBNm0FrtkU59OHx6Btg8A4CWHU8UnkS9yx+8TMLB9hDRYRlYgjaVcr76fIMRi+FtvwmL6zC+Gx3cCssFmbz0CKQNsyDIPuatDHibUey8L6YLESpZwYUKnag0QN4xsrN+9fNqZSLz6DqnY9Bui2lJK1Ykl0zVdeVQjWHWuImasag0PAVmupI+7vIvXMXUdEC2rig0kGrpAa2b4AMYuFE1GBoMTIgbhrT+lH+mh0XQR171nQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8PLvGqU3gEdjFyXken2n9tU+ZZnzU4jm//XhXhbKfhs=;
+ b=aLYpbEYCWdCopWsdVbCJFCXM4YXpwY9huUM+XRfr8GLxgTdFfzOZzFYFQ/eZmoLzYkvloxV1IMf6vfp6bey72qKF/U+F1cK3wYJGNsUpTpl95qK36AJSF9JgX7HcFSpasD8DhfTlHhVRkjgh1H6Zk3iKg5xMicY+BBS2loggX8Mtoz0L6vQSlArJ1iR2wIsmD0TveCnddV36eZw0hbxlt25+Ji7RdedViTY0U9EUP07l/X7QuTaPr+4aACWvnxEVif3y5RorPYk4/LUOwNgw1ltT9DGHrD1JdQa+MucjfT0JrRrF0N5UJf1CDdG15c6w2ds9V1yGNFvdxXw99E7X8Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
+ dkim=pass header.d=suse.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8PLvGqU3gEdjFyXken2n9tU+ZZnzU4jm//XhXhbKfhs=;
+ b=30BWq2XySQ9vwPpFoE9W/9VWNjfoe0e+uXrN+6aBdZPUi3G+H17WQwF8aWBfF2tPvoYZlLgdTphITmECfn2JLoDZst6XyKfVT3Pq1oYwbKmx0a364sGmEBXdVBagVOk4UaCjMvG7ezd9hN7lbA9SG88gsbUBBMJFjvBJAoc1M7F/kEmKJroS8YGXgvcX+VMblZowJmJk8in2x1gSoCPeQiDedkPny7nQyaX++jEhLWBVBkUWjCDI3nOU3KcTBmLJmdUdVo7igvPbVCvHYQHpcI1BGdY1pWim9b350qp6AA+WH8uuIZHE9dwpRL/TXQ0X3Ubrmc1c0Wq6JwAJA/wBnQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=suse.com;
+Received: from AM6PR04MB5366.eurprd04.prod.outlook.com (2603:10a6:20b:9d::19)
+ by AM9PR04MB8908.eurprd04.prod.outlook.com (2603:10a6:20b:40b::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.22; Tue, 13 Sep
+ 2022 11:51:50 +0000
+Received: from AM6PR04MB5366.eurprd04.prod.outlook.com
+ ([fe80::c98c:ae67:148d:bdbb]) by AM6PR04MB5366.eurprd04.prod.outlook.com
+ ([fe80::c98c:ae67:148d:bdbb%4]) with mapi id 15.20.5612.022; Tue, 13 Sep 2022
+ 11:51:50 +0000
+Message-ID: <336cb80f-8f58-92ba-aa92-1bb57a75f0fb@suse.com>
+Date: Tue, 13 Sep 2022 13:51:47 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.1
+Subject: Re: [PATCH v2] dt-bindings: mfd: Rename mediatek,mt8195-scpsys.yaml
+To: Lee Jones <lee@kernel.org>, matthias.bgg@kernel.org
+Cc: robh+dt@kernel.org, angelogioacchino.delregno@collabora.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, mandyjh.liu@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
+References: <20220830091110.27857-1-matthias.bgg@kernel.org>
+ <YxnGBN4QEb1yMrGw@google.com>
+Content-Language: en-US
+From: Matthias Brugger <mbrugger@suse.com>
+In-Reply-To: <YxnGBN4QEb1yMrGw@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: AM6P195CA0004.EURP195.PROD.OUTLOOK.COM
+ (2603:10a6:209:81::17) To AM6PR04MB5366.eurprd04.prod.outlook.com
+ (2603:10a6:20b:9d::19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <540fc6d93481e72e18b51f82f022ab34d57d5caa.1663020936.git.objelf@gmail.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM6PR04MB5366:EE_|AM9PR04MB8908:EE_
+X-MS-Office365-Filtering-Correlation-Id: 01fcf582-b185-443e-4e88-08da957e57ca
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	mktjcQUstlE/IHeWaS4FGrU9VPnraj9sbsGCHNWZeDo1KDgIkh3Sny94c8TWVw6Dk1+jRbjpOXc84bgyM2iBhJOczfvV3w/1og1px/sQPLMkGFAC8mjdPQah0xXRLWg7qFhkVQS9Asn6+VsukGNzvidWncW7zSW2rQIsfLbvmAMYvzDa+w7vRflOs1ewLtuNw3Xo0YBy5justHJsj8/q0SZV0wXHKqB7CFp8ZU1HhH4u8oCiUTMxdAwuwUSPyRIZDFSzYdhnftwje5CB4dJRITaI7yI4O6Md5CH8glHpebcSJOIjxnhcos6aPEJbuJ2ZkWz4hLQs91ThFJ8zjroATNbtxtf1WfXGECFwJE77rsk8Up9eqjFIoIKy4fraW+6nAQpblppSKPFx40qlvSTlP1zamgqYcNbn28NggoDSPzScqSWfFbraF/Ywq+4GohZQrnebv0J8ax/XdsyNvGp269rF4QMSEHkPwERESJiKnqZCRorjsB1B+eSw/R92LJ6m7H08DI90Yrc5TnVP9xlW1Bi3Hr6ia6j6AeFHQ8oqYRvN4Ch1pLsjKjnWwZKRV3nDUZ/r/+JYtvpWN6AAWSQc6vtDmF1fy/y7H0RIWT/eDZsqMV4+10ZmMzigfj2GbO+ScjKMwLtQc4HCGPdLI2lRiBXO9EiqCHSUDVPYtSiC2y3BYpGrLS4yhDeokGln8A1a4Bpe75oK8IZBn38vJxthIHOs31fIGm0CB0u1i6zGNQB6ba+sLkBTDrKUyF/po4yCc/HxM6YVz0xC8PxPr4wU81GMm7OvGAb1RmW0mHt1Tx1cGEnqZNS4jo3+h16Zrf+A
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR04MB5366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(396003)(376002)(39860400002)(346002)(136003)(366004)(451199015)(86362001)(41300700001)(5660300002)(6666004)(6486002)(966005)(31686004)(36756003)(7416002)(8936002)(478600001)(66556008)(8676002)(66476007)(4326008)(316002)(38100700002)(2616005)(6506007)(66946007)(2906002)(83380400001)(6512007)(186003)(31696002)(26005)(53546011)(45980500001)(43740500002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?VGhSZ3p4TzEyc3ZYM2VvMGc0WmFCNDJZSENuZHdVNDZlbnlncHhURVVHY1Rr?=
+ =?utf-8?B?L3pHMDNZTGw5N1FwaGlZejdHd1RsZVM2SVhJK0k5QU5WeTVOZktEaytpSytx?=
+ =?utf-8?B?b3FTL3V0dFlPeWVYbEhtMGdQMit4aTNQWWhmQUxZaFlCODc2WHprbXRobkxH?=
+ =?utf-8?B?V1FvMjN3U21Sa05ORHpOdTA5VVlXVGZaNHdNNU55ZnZKcFVCQTczK3crSFEw?=
+ =?utf-8?B?bG5Scm5uUG9ONnZBNFpxMHhNS0ZjYWpJL2hIYkt1R1NpQnFvM0ZoT09BVjFF?=
+ =?utf-8?B?TEFYa0FsdnZZQi9VWjE5Skh2V1FPMDhPRkI3NDVDei9WcEdoUTk2NmZLRTNr?=
+ =?utf-8?B?ZjJQRUlFNEttOHRqN04zMHlJNDF0MC9ZU1pMbGVSeVd5bmRtYkFZU0JWemVC?=
+ =?utf-8?B?QmRhSFVMNU1uMmxabUJ4T1JoUVlsdjQwMEhOekE4WGpTYXRwZ3pJMlgyMnND?=
+ =?utf-8?B?OE10WGxBN2NiNmRqRGNkcTRCNWFZVTVDd1VkY2FSUE0wbkpJZkdObnNkdjg3?=
+ =?utf-8?B?UmowcURINHpaNEx4dG80cjRlajNvQ3ZjYzBnQWNwS25IRjAwRFR0TE5VZ0Fy?=
+ =?utf-8?B?T2lmTFpyd0VkRHNhTHpmdnQ3UCtSRWREc3dhcWtpY2FJVkMxTFVYT0RUaUQ3?=
+ =?utf-8?B?QWV6T25NVlo4VmZjUXpGbU93MCs4QjRSVjhoM0V3VERqRStSQXcxN2lmeEtw?=
+ =?utf-8?B?dEJGa3NMZlY0aFAvQWVUNkFvaTZLRUZBK0IwR3REZGUvekV4YTRWSWlueWZt?=
+ =?utf-8?B?RXI0S00xK2hlSDdhcGNoK2FETXdYY3laWGFtQ2l1NCtRN2hZR2UwQzlVcW1a?=
+ =?utf-8?B?S2FKSE1jbHdSdnhhdlRqUVQ0MkhSYjVzR08wUWYySk4wNGIwZnpwSWd6Uys3?=
+ =?utf-8?B?em1PUDl0QitMZElFbS9sOGRad01nQnhobHI4clgyNEhxaUtnMGd2Z2Z2RWZY?=
+ =?utf-8?B?bzhXVElBOWs1c1NzbFowVTFXMlZEajBKbjgrSGFzeldaWGlFWFUrZUhZVXRV?=
+ =?utf-8?B?OE9Jem0vc29sL1IwMC9DQ080dlpBZ1NTc2hlL1hJZHIxT2tDMFdSb3NrMnJZ?=
+ =?utf-8?B?MWhmd2NEU0c3WUQ4OFlzbGtjZWc5dTQ2bGp6RTV0UlVtSGxPUWsyeGwrVWtN?=
+ =?utf-8?B?dDVRWldhU3o1OHB1MVRuWk44dm9hWkwzUVRaMHZNSEFMN1BXMkJub0thWDRo?=
+ =?utf-8?B?aGdzdTZTWEQ0Umd0REJvNjQzN0l2OWxRRzNsNlhkbnNQc2I1anhpWXJOaUNw?=
+ =?utf-8?B?VzVNR0cvMTVDNGljTllTakFCUUQrZW55amt0OG5ITHZxOWREcEtKanRjaUFx?=
+ =?utf-8?B?QUNiS3JNL1llVzA1WDlUd080blJWYys2Q2llclZjV0o3Vm5qSStxQitjZUVj?=
+ =?utf-8?B?N1pTejhSV1lKdUlsTHNIeTMycThHeVlVdHNmOGwweDFFbHN1MGw5cFZCcm55?=
+ =?utf-8?B?MU9rRnMvcWw2MEpGK0JOQ2MvS29iRG15bnZvYXNGUE9tTG9LeEVpc1lSakZm?=
+ =?utf-8?B?RVlnV3REL1gwdHJHcmlxK2Z4bEQ5TWJVV0VZdzRENU9DMEkxV3ZjblRHSkt5?=
+ =?utf-8?B?d2ZZRzVVTzlUbUs3T1hjekYzUnFyaUo4dXExUmwrU2dpZld4SEVBMnZiUDJK?=
+ =?utf-8?B?dWJ6bktvbkNiSXo4ZG1yVFV4ZWV3eC9xTUY0bFZuM00rYk1oU1NJMmhRN1Jj?=
+ =?utf-8?B?b2lHU1c3MjFPSmMvVU0xR2JWVm4rTHNLSGFFZGdLZSt4Vm5BRzBrY2pFc1Nq?=
+ =?utf-8?B?cVpLczhCZVRKbVljZzFFUk5hVkgyNktocFFGMFB0WjFNQXJwRnhpSG1EK1hy?=
+ =?utf-8?B?bm9ZSG5iNXIwVExOVG14N1ZZVGpFMjJldGdvenJPRm9NN3Avb1dHbWNJYzM5?=
+ =?utf-8?B?V2tOdmdKSmFoajZtdk1pWlB0WnE1UzRHTjZOMmxla29HVHVDcXpKdWRaL3M4?=
+ =?utf-8?B?a0xMZk9oYkc0TzdTQnhmSDdSLzhUZDMwbG9jN3dnbWNKemFLTE5tLzdORVZj?=
+ =?utf-8?B?S0VjNktXZm12SFFVL2RIL2w2YTRGN2RhaEN2Y1NiQU1UTERuYTBvb1dQWkJG?=
+ =?utf-8?B?bCtQMk11WEliWVhtOTBrRDl4WUdiTDUzS1JBYU1ZclhDL0VEWjkwcUlmMFpK?=
+ =?utf-8?Q?MHXz7Y7qD+zsieO5hdz+q96QG?=
+X-OriginatorOrg: suse.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 01fcf582-b185-443e-4e88-08da957e57ca
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR04MB5366.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Sep 2022 11:51:50.2796
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: f7a17af6-1c5c-4a36-aa8b-f5be247aa4ba
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: GNABLcf9XIkEEko3g8K2ysxsr7o5MJtEDukhmXfnpFJdAR7TTi7d47btWl2qb3oMLXTNMXFIzjZna7yHliDHTA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR04MB8908
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_035712_491430_4ED613A2 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20220913_045156_342826_F5E3A6F4 
+X-CRM114-Status: GOOD (  16.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,98 +144,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-Thank you for the patch! Yet something to improve:
-
-[auto build test ERROR on bluetooth/master]
-[also build test ERROR on bluetooth-next/master linus/master v6.0-rc5 next-20220912]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/sean-wang-mediatek-com/Bluetooth-btusb-mediatek-use-readx_poll_timeout-instead-of-open-coding/20220913-062200
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth.git master
-config: i386-randconfig-a016-20220912 (https://download.01.org/0day-ci/archive/20220913/202209131807.OuwXBmKi-lkp@intel.com/config)
-compiler: clang version 14.0.6 (https://github.com/llvm/llvm-project f28c006a5895fc0e329fe15fead81e37457cb1d1)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/d478461e2fd5fdd8d505c00c7864a421170a54bb
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review sean-wang-mediatek-com/Bluetooth-btusb-mediatek-use-readx_poll_timeout-instead-of-open-coding/20220913-062200
-        git checkout d478461e2fd5fdd8d505c00c7864a421170a54bb
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=i386 SHELL=/bin/bash drivers/bluetooth/
-
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
-
-All errors (new ones prefixed by >>):
-
->> drivers/bluetooth/btmtk.c:111:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_ACTIVE'; did you mean 'BTMTK_COREDUMP_ACTIVE'?
-           case HCI_DEVCOREDUMP_ACTIVE:
-                ^~~~~~~~~~~~~~~~~~~~~~
-                BTMTK_COREDUMP_ACTIVE
-   drivers/bluetooth/btmtk.c:27:2: note: 'BTMTK_COREDUMP_ACTIVE' declared here
-           BTMTK_COREDUMP_ACTIVE,
-           ^
->> drivers/bluetooth/btmtk.c:114:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_TIMEOUT'
-           case HCI_DEVCOREDUMP_TIMEOUT:
-                ^
->> drivers/bluetooth/btmtk.c:115:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_ABORT'
-           case HCI_DEVCOREDUMP_ABORT:
-                ^
->> drivers/bluetooth/btmtk.c:116:7: error: use of undeclared identifier 'HCI_DEVCOREDUMP_DONE'
-           case HCI_DEVCOREDUMP_DONE:
-                ^
->> drivers/bluetooth/btmtk.c:376:2: error: implicit declaration of function 'hci_devcoredump_register' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-           hci_devcoredump_register(hdev, btmtk_coredump, btmtk_coredump_hdr,
-           ^
->> drivers/bluetooth/btmtk.c:393:9: error: implicit declaration of function 'hci_devcoredump_init' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                   err = hci_devcoredump_init(hdev, 1024000);
-                         ^
->> drivers/bluetooth/btmtk.c:397:32: error: no member named 'dump' in 'struct hci_dev'
-                   schedule_delayed_work(&hdev->dump.dump_timeout,
-                                          ~~~~  ^
->> drivers/bluetooth/btmtk.c:402:9: error: implicit declaration of function 'hci_devcoredump_append' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                   err = hci_devcoredump_append(hdev, skb);
-                         ^
-   drivers/bluetooth/btmtk.c:402:9: note: did you mean 'hci_devcoredump_init'?
-   drivers/bluetooth/btmtk.c:393:9: note: 'hci_devcoredump_init' declared here
-                   err = hci_devcoredump_init(hdev, 1024000);
-                         ^
->> drivers/bluetooth/btmtk.c:409:4: error: implicit declaration of function 'hci_devcoredump_complete' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-                           hci_devcoredump_complete(hdev);
-                           ^
-   drivers/bluetooth/btmtk.c:409:4: note: did you mean 'hci_devcoredump_append'?
-   drivers/bluetooth/btmtk.c:402:9: note: 'hci_devcoredump_append' declared here
-                   err = hci_devcoredump_append(hdev, skb);
-                         ^
-   9 errors generated.
 
 
-vim +111 drivers/bluetooth/btmtk.c
+On 08/09/2022 12:37, Lee Jones wrote:
+> On Tue, 30 Aug 2022, matthias.bgg@kernel.org wrote:
+> 
+>> From: Matthias Brugger <mbrugger@suse.com>
+>>
+>> The file describes the scpsys node for all SoCs and not only the mt8195.
+>> Rename it to reflect this fact.
+> 
+> Actually, this is fairly typical.  Same with actual drivers.
+> 
+> Both tend to adopt the name of the module first supported.
+> 
 
-   107	
-   108	static void btmtk_coredump_notify(struct hci_dev *hdev, int state)
-   109	{
-   110		switch (state) {
- > 111		case HCI_DEVCOREDUMP_ACTIVE:
-   112			coredump_info.state = BTMTK_COREDUMP_ACTIVE;
-   113			break;
- > 114		case HCI_DEVCOREDUMP_TIMEOUT:
- > 115		case HCI_DEVCOREDUMP_ABORT:
- > 116		case HCI_DEVCOREDUMP_DONE:
-   117			coredump_info.state = BTMTK_COREDUMP_INIT;
-   118			btmtk_reset_sync(coredump_info.hdev);
-   119			break;
-   120		}
-   121	}
-   122	
+Well I think that's unfortunate as it can create confusion for people searching 
+for the binding as well as people adding a new compatible as they might think 
+each SoC should have a independent yaml file. For that I reason I think it makes 
+sense to fix the naming.
 
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Regards,
+Matthias
+
+>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>
+>> ---
+>>
+>> Changes in v2:
+>> - Fix id
+>>
+>>   .../mfd/{mediatek,mt8195-scpsys.yaml => mediatek,scpsys.yaml}   | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>   rename Documentation/devicetree/bindings/mfd/{mediatek,mt8195-scpsys.yaml => mediatek,scpsys.yaml} (96%)
+>>
+>> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml b/Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+>> similarity index 96%
+>> rename from Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+>> rename to Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+>> index 3737207d8504..1a5901ca90f5 100644
+>> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+>> +++ b/Documentation/devicetree/bindings/mfd/mediatek,scpsys.yaml
+>> @@ -1,7 +1,7 @@
+>>   # SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+>>   %YAML 1.2
+>>   ---
+>> -$id: http://devicetree.org/schemas/mfd/mediatek,mt8195-scpsys.yaml#
+>> +$id: http://devicetree.org/schemas/mfd/mediatek,scpsys.yaml#
+>>   $schema: http://devicetree.org/meta-schemas/core.yaml#
+>>   
+>>   title: MediaTek System Control Processor System
+> 
 
