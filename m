@@ -4,65 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B93E1C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 16:14:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2852CECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 16:27:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yWXSG4Yli06kSi42oAtuHhgepB/kOSDoGFF2eOgHVK0=; b=NE9pHCcpHfmJROd0nKhXAyRlDr
-	W50Hmjgpge3fnmxKrlagfA7CiJWSH0s7nrQB+467Fw/FeIilETMJPG7hcr/VSBm2Bh8shpEqf7dzZ
-	tSwtI3Bw42Sw7REU89VuQoRNsLdK3GtRr7lnjiVBuGVxkj4Z0iNnSuAhXZxqFgW9fqyDF8t5NykyX
-	dTZyM8h9SXFsh0q0E++Ka09YASB/NDWaEyB3QVPm4zAeHB7MN4Rwk6Pu+jf5AgNWmPz6amoHt9k/g
-	WwTZE/kPt5a7TdYHJWhjrRrvV12UB6UtuTPpEZ9kl8Cc+LSmog9LoIMg6PnlT2iKSNS1zchJWgJfZ
-	SbTQ0PSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bneaA6Can9EltQ9Idu83GL3ml+XS+3QAoChRHElZZ8c=; b=QE1NuC/m27TXkZq/Zrfp1TaA6T
+	NFl6S8FyqIppm6FHFhOiwiCvdElb4K6aTK4wxCrcD58HSOujfvvewCTh2TZf/qo3ugqScLvA2gSOj
+	S4rjnftOV/rZWZuJpRHgHMgT8iqlI/b6iTJUN9PofXZPwRayhzAMZXr2QS0BQ0kfihw4qA5aVVdtL
+	y+uwHGyGe0dT+I5q2Czn6gHEMO777OdAyCgDva28If2Jo76GEHAYPveM8hhEwWi6pVsD+u/4ahyZI
+	G2qdtni7920J4iFRrYVKoN+ovg4CJCH3Zbu53DizdJU28B8zqZFtOlp7JB4xjejkEnyQVUpftnooX
+	9VMsHzKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY8Xt-00D7mg-J4; Tue, 13 Sep 2022 16:13:57 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oY8kd-00DIRV-Dt; Tue, 13 Sep 2022 16:27:07 +0000
+Received: from mail-am6eur05lp2111.outbound.protection.outlook.com ([104.47.18.111] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY8X2-00D6zv-V5; Tue, 13 Sep 2022 16:13:09 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 32264614FA;
-	Tue, 13 Sep 2022 16:13:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25259C4347C;
-	Tue, 13 Sep 2022 16:12:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663085582;
-	bh=PG0muHFwpwSU/4bNe3BCzAEY7GVjsF3WIAKqtwzCkSk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Du/ntLa7sphhQazStEIJb2YN/ATuWn2pLiL7EUcerVj8XfCHo3n3gHGs+el6h/Cn5
-	 +uNJbJucIUEg/mkHdFroh/hlMx83VvN/r1LP+EJBFk9o7byDzlO9vvOLF3CbDZ6jqO
-	 66IbCXDW93Y9AMHM7jjyxRd7YxAjor+ge1XbR3E6USojQcK/sCu3pnTVhNPpV0BSY6
-	 4lOwUtFUqJ8/S0fAPfTk79p8mGZSlVWiFlsob53ZeNG8Glvw1fymc1+I45ln91VNsb
-	 s0Hnt3zidFOLydNiq8lZGVC5j4qOyvFrobRplDbfNJW3yfphZ7ejCORyODS6cs9Wkt
-	 f76CmYFOTn2sg==
-From: Mark Brown <broonie@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org,
- Jiaxin Yu <jiaxin.yu@mediatek.com>, Tzung-Bi Shih <tzungbi@google.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-mediatek@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, Takashi Iwai <tiwai@suse.com>, Dan Carpenter <dan.carpenter@oracle.com>,
- devicetree@vger.kernel.org, kernel@collabora.com, Chunxu Li <chunxu.li@mediatek.com>,
- Akihiko Odaki <akihiko.odaki@gmail.com>, linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Miaoqian Lin <linmq006@gmail.com>,
- Rikard Falkeborn <rikard.falkeborn@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>
-In-Reply-To: <20220908161154.648557-1-nfraprado@collabora.com>
-References: <20220908161154.648557-1-nfraprado@collabora.com>
-Subject: Re: [PATCH 00/10] ASoC: mediatek: Set i2s clock sharing from machine drivers
-Message-Id: <166308557689.242391.16022261619344306074.b4-ty@kernel.org>
-Date: Tue, 13 Sep 2022 17:12:56 +0100
-MIME-Version: 1.0
+	id 1oY8kQ-00DI9E-DW; Tue, 13 Sep 2022 16:26:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hi5dK6jCILfpYbbAPL/hOj95gYQrhvI3dK6MM4YTaMaqlcCABeDg9PsT+3teWvqX9JfnKzsKo4yhTCgnU86wykOpyPIMB52U4+/da0UgmW0HQCGJlQ6j5TiSKgXNgT6Uw5xgRyjkmwjC3qLkjQk8iikpyAHfgfTv75VxQr/vTdYe7OgXvtC9p8Zn/pViDOAOqfYbg5P8+4hf8opfm9gS91vgbEDHlVw1ajlvQ6Wcaf0RplzrM/o+hnlCv0mXZVGoxQJ6nBpMpSGUPAMraGtVpPIQyopocx6j7XAwMNVVguoKOG+PQyZNBunGiKYT5X4bW0FUesE7gSP3Xtc0vtMmJQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bneaA6Can9EltQ9Idu83GL3ml+XS+3QAoChRHElZZ8c=;
+ b=lGY2v2vxddUr5K0+aN/eZL0qM57SRVSvhCOWtxznzFlO7cNT53bE5Vf9C5Lu5rU2xT0RjpzLKthtCvFjxa6pwgg0cVdHMnOljxRodGjZXu28e0gtQxfmg2QKmqGS/ilVfHMsoXRnJJhOGabsrM1sQIEbJX3O3sy5my6xege/L76CAbK35uvSw/j5owTcWp+RNXbsuE0t7Ob1sqSNpjRkyZ+0bI5ycOfzNykz0WDyNh6rVAEhYG7ewZqBPbS0hNWF11PrpZtyQ1ASoJFjkB6GgwS2C5U5tyfMCb7LVnDZBK8iOJKi7ZZoOm3tXFGnh8P+Az7AnIgK4/uKQ6J18MHGOg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bneaA6Can9EltQ9Idu83GL3ml+XS+3QAoChRHElZZ8c=;
+ b=Hau5V3WfsHofCe1tvNMy8ovu1wHY3J3k2/KC4v+N015N+sejjbFS9FKtSa6QvSU1sd16ugOvkcIgfSreg0qMi8Fni5EYMWGKmib38mPXrsrbYw4tBSB00u+wIWdchPmBhBRRWvHDH6n/BmdXfOLwfCYe9d2JxE0eoYNuSeeCKu8=
+Received: from VI1PR04MB5136.eurprd04.prod.outlook.com (2603:10a6:803:55::19)
+ by DB9PR04MB8362.eurprd04.prod.outlook.com (2603:10a6:10:241::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.22; Tue, 13 Sep
+ 2022 16:26:48 +0000
+Received: from VI1PR04MB5136.eurprd04.prod.outlook.com
+ ([fe80::a67a:849c:aeff:cad1]) by VI1PR04MB5136.eurprd04.prod.outlook.com
+ ([fe80::a67a:849c:aeff:cad1%7]) with mapi id 15.20.5612.022; Tue, 13 Sep 2022
+ 16:26:48 +0000
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Andrew Lunn
+	<andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli
+	<f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, George McCollister
+	<george.mccollister@gmail.com>, Kurt Kanzenbach <kurt@linutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Woojung Huh
+	<woojung.huh@microchip.com>, "UNGLinuxDriver@microchip.com"
+	<UNGLinuxDriver@microchip.com>, Linus Walleij <linus.walleij@linaro.org>,
+	=?utf-8?B?QWx2aW4gxaBpcHJhZ2E=?= <alsi@bang-olufsen.dk>,
+	=?utf-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>, Landen Chao
+	<Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Sean Wang
+	<sean.wang@mediatek.com>, Marek Vasut <marex@denx.de>, John Crispin
+	<john@phrozen.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-renesas-soc@vger.kernel.org"
+	<linux-renesas-soc@vger.kernel.org>
+Subject: Re: [PATCH net-next 1/3] dt-bindings: net: dsa: mt7530: replace label
+ = "cpu" with proper checks
+Thread-Topic: [PATCH net-next 1/3] dt-bindings: net: dsa: mt7530: replace
+ label = "cpu" with proper checks
+Thread-Index: AQHYxtA/dY6uSTfa90GnMoLAnp7gyK3dhMGAgAAI24A=
+Date: Tue, 13 Sep 2022 16:26:48 +0000
+Message-ID: <20220913162647.zylrml4giqxgqngq@skbuf>
+References: <20220912175058.280386-1-vladimir.oltean@nxp.com>
+ <20220912175058.280386-2-vladimir.oltean@nxp.com>
+ <68902e34-8ef4-994b-8e89-d42b55aeaaec@arinc9.com>
+In-Reply-To: <68902e34-8ef4-994b-8e89-d42b55aeaaec@arinc9.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: VI1PR04MB5136:EE_|DB9PR04MB8362:EE_
+x-ms-office365-filtering-correlation-id: beeabaaf-31b4-42a7-dfa8-08da95a4c1a7
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:  E2s7m4klFFw38njZ6nx1bDbCW0BVKuz78/LXXPCXfulhiLgbmxpaD4qTkXQRBSdc2hZ7gsMbAstFtU3J3ISMngjC1PWo08uA8x4uo+Yz7GrwmSBP3vgLDbrGLo6IP8mFNM0I7N/DytO24LYyLEuwHAM4wzNiXVtfyLruuyDRA2QOFGQnCrZkG1LY9EDCS2GBP/TWn8bnvC4DXaArGbXmW8plMwm/GiUnVAb1h80FlLq5htSAu+gwEAY2ag9r8Fl+ZblOReYYDivW1j28OpfBXGXurAREF6budbWSt5elCrSd9VHX6NAzBy4QR/9RqdMnXy63fNVQ5XT1ukRiV+lOKWbseJ7K9DSGOJamvkETOfIIPuSyVkV8s6kDUP/f7R74LfbkbQUO6JSOb3Ife+n7F23JyYYfeht8a96jwHnfM7FLctY0bxNea51/2UCSUDDclNNtUwok00o3P0M8SUHkvjOem12u4V41kvbNIZzC9e/KM/PhMNuPorgU6oa3BEdG0mPTthoC3igbkWY/zcsEMCsSHNgK47Vkqt4rNNXKZJtTPb53a6mY3idV4ii40anrRETeAmXNDOT9a5xyKuznt1DtTli1ARUq/ShKPfDLJPuvP72hP1yGdYNJy3syY2PLLAC0FTJAEyqdeQN+Tw5UHuESQUXOxJDCVMh6UQ1vI5d9n4D149NPFgZE4UPbd3VOw3Kg9O6Eb9maoh8eGyGODDiInK93CYkArdnNMaq8vJA1lc6dYbOUROlHWqPAHOgm7sK6VKueDsYxv/hjX3D2dg==
+x-forefront-antispam-report:  CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VI1PR04MB5136.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(7916004)(4636009)(366004)(376002)(39860400002)(136003)(396003)(346002)(451199015)(6512007)(66574015)(38070700005)(66476007)(478600001)(86362001)(44832011)(2906002)(4326008)(4744005)(41300700001)(66946007)(76116006)(8936002)(26005)(316002)(53546011)(71200400001)(6916009)(54906003)(1076003)(9686003)(5660300002)(186003)(91956017)(6506007)(6486002)(38100700002)(122000001)(66556008)(7406005)(7416002)(66446008)(64756008)(33716001)(8676002);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:  =?utf-8?B?eWRDQklKekpnV0c2UmZiQWFoZGVub3I0RlJvOW1zOWo0Rng1anZZcjNNaGZT?=
+ =?utf-8?B?ZllxWktYZW9WTGFrdWg5L0RDMFNhTkNLam5NcnIwa0NkUnluVUpsb2x5Ync2?=
+ =?utf-8?B?UDU5RGNrMDR1QWlNSVA1QllHWGhVc3dwc3h4SDRKRURYdGM1YzNEb09yZmZv?=
+ =?utf-8?B?bmJRMlVyZUlBeVM1bXJ1T1doM1k2eUIvT3lDdWMxRng3dU0vUVhwbXc4TUFk?=
+ =?utf-8?B?U1ZQbXBqMHhJL1hkMVVoY3R2Z3I2WUNpNU0yVkJ4cWdDa29uUldXcTJqN2t1?=
+ =?utf-8?B?UUV6QitkVDFFMHNDRG1pMi92TUJnMlZsYWp4MzhqMXF3aS9nWm4rcjZsNDRo?=
+ =?utf-8?B?dktmVkg5VDMzSEE4VTd4K0hYaE1OMmRaVFkyVitUd2JrSVRIVUNBR2E0U0NP?=
+ =?utf-8?B?RDJpRUxnSUQzUmh2UzJOMTJrVW96dU9NYmsxdWdqNWQ0NFB5YVV6SjRwL0dX?=
+ =?utf-8?B?TFNWa2Z3UUFMQUVOU2RackIxbEhZcGd1RmlNUW9LZFBtSGRuSVVOYmsyTFFo?=
+ =?utf-8?B?SzdMVkUrUjZZQTFkNHB2akJjNS9KK1E2dW8rRHRQby9GbTJFa29DWjdYNzd4?=
+ =?utf-8?B?NGdTSEFjRnQxNEhPMmhiT04vNk1OQnBGelV5MmRPUmRlQ0E4S0xBYkFMLzZM?=
+ =?utf-8?B?OC9DWDhhbG1QVTI3WG5NbjJWcWNscGl1SkxlMy93SWR3amlQcGdkMUcvbkdr?=
+ =?utf-8?B?Y29XKzJFelpRY0dWMERKQmlUQWZEU1JsY21iSUs1UFkwdjRiRnlJdElnM0lh?=
+ =?utf-8?B?b2tWSjVqSCtnaEp1UzZSTFA0NnFwNEpjN1NOdkYvc285aTdzSXYvNHhpSm1v?=
+ =?utf-8?B?QkdEMFUveFByMDB0ekZlSXFLdEhpZVM0ajg5TUJxdTVRUHNWSVpLTVYraUdv?=
+ =?utf-8?B?UE91Q3A2bXU5ZW9CN3h1b1JqUUJ4dlFOeG9TRUFnTXJLT3NSWDNLQUtqbURS?=
+ =?utf-8?B?SG9XV1RDL3VhNzBYMEpobUVOQkNQa2xrdVRvMVBjVURWbHVOZW01eWR3bjFC?=
+ =?utf-8?B?N3d2RUpRdlZwa2x3Vnp4NWlldXVHVE5rY0RraUJOTEROWENsUWU2Vko2Y2RT?=
+ =?utf-8?B?VGtzZi8zU0ozcjYzbTZFdlVOTDlKSHM5NXFKOFhPUTRHYzdiWUdBV1ovR1hZ?=
+ =?utf-8?B?Qm1FSHVGVHNHOVNxNVFCTDZUWWc4WlVSMkR0S3h1ck5OekU5cktjNHExcXNJ?=
+ =?utf-8?B?eVQ4VVNIMTYvc1FBRjlEVVF3QjRwNzF0WlRmVkwvTUZvQ1NKTnc1L1pUY25Y?=
+ =?utf-8?B?d0c2RWtWNEtxYTNlRjh4WDllWTRxUUZyaFp0SFJRN3VBMlI5WkZMd2JzSHA2?=
+ =?utf-8?B?Q0JhWHVQTE9td1hYZU0zY3AwdGpwMXppTUV6UTJETDNaM0hmSEw2RmZuUFRp?=
+ =?utf-8?B?SzNtNHFOTEtnd0ZCc1lBRmRwL0tpVWptQUwyUjMrclFEdmRWdFc5TndIbktF?=
+ =?utf-8?B?UmpjQzQyeitZeFN3SCsvbWtCODN3VVg2RFFLWWtFRVEzeFB4VjFvdE1NRDkz?=
+ =?utf-8?B?aHhKR09tdEI2THUwcnJPS1FKMnpyNVQ1aW1zdFB6dlBodGVCUVo4SjdWczky?=
+ =?utf-8?B?T3owRk00YVRCczFYZnVRVTBSY0Q5Z0ZlZmJHK2NJbnZReUtEaytnK1NWRFZL?=
+ =?utf-8?B?RWFTVGs0VVU3NVIxZzdHNlRLZFV3Wkwzd3g5WVgzckN6dzQxanlXSnhhRUU0?=
+ =?utf-8?B?K1lzaHBneEpDTitSNmVlcHdpbWhneDRxYnFLaHZXUFpqMjV0VzYvdDR4ZFFm?=
+ =?utf-8?B?TDJrUEQvMnFpMXovd1RFUnZRcnV1bTJxVDdYRGpncnlqNEUrVjhLKy9pTE9I?=
+ =?utf-8?B?YU5kcHRIb21nNlpKN3B3MzJtWE1PcGZtR0dyeEV1YkFMZFZTWm5OLy9PWG1I?=
+ =?utf-8?B?anVkdlNRYzlHS3NGT3pOODB4RGxjN09iRkhtZmFodjhKQm1yeFhBNnpMTm9S?=
+ =?utf-8?B?Y2JJYXlWc3ZzNllwdEN0cFJhSnVqMnlGOGd2NFZwZUlobGtPSVJFVnlqa25z?=
+ =?utf-8?B?d1Vub2ZwNHdESENQSU9WMGg4VlpTOU0xZlZFZ1gyanJsVXlQNnNoeG94Rlgw?=
+ =?utf-8?B?OGUxTlRjbHcrSUJNL3E5UUx1Z2xjcmkxSmwrTUpYQjdNMUZKSnJaZEpTOUVD?=
+ =?utf-8?B?NmRsaWxsbTdkU1FLaWhBUnBabDJvQVZONmZDM3FQV3dyMnM2cFV3UFNBOHds?=
+ =?utf-8?B?ZVE9PQ==?=
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.10.0-dev-7dade
+Content-ID: <FE384459A9982B42AB6021C4C6AFB193@eurprd04.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5136.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: beeabaaf-31b4-42a7-dfa8-08da95a4c1a7
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Sep 2022 16:26:48.2057
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ClUrXAsFlju+0P+KCQw3W0vzCG154eSzQm0AdxLvqoV6dNBuvIycTllmR/oIPYh9BzPVdIylYeebpaqiG97njQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR04MB8362
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_091305_157867_1E42232F 
-X-CRM114-Status: GOOD (  17.53  )
+X-CRM114-CacheID: sfid-20220913_092654_500855_8EBF6CFB 
+X-CRM114-Status: GOOD (  19.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,63 +165,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 8 Sep 2022 12:11:44 -0400, Nícolas F. R. A. Prado wrote:
-> The i2s ports on MediaTek SoCs only support a single data lane. In order
-> to achieve full-duplex operation thus two i2s ports, one for input and
-> one for output, need to be used together and sharing a single clock from
-> one of the ports.
-> 
-> This clock sharing setting was previously read by the sound platform
-> driver from the devicetree, but given that the input/output pairing is
-> closely related to which codecs are connected to which ports, the
-> machine sound driver can infer and set it, so that no DT property is
-> required.
-> 
-> [...]
-
-Applied to
-
-   broonie/sound.git for-next
-
-Thanks!
-
-[01/10] ASoC: mediatek: mt8192: Allow setting shared clocks from machine driver
-        commit: 8ae4fcfd5b11b5c33154732fcad99ad0f5843ce2
-[02/10] ASoC: mediatek: mt8192-mt6359: Make i2s9 share the clock from i2s8
-        commit: 3ffb9fa3963964a730c34f48e502ac0625efc145
-[03/10] ASoC: mediatek: mt8192: Remove clock share parsing from DT
-        commit: 9ccd51ce396a46d9d4d0c87aa6a82dd26a2f281a
-[04/10] ASoC: mediatek: mt8183: Allow setting shared clocks from machine driver
-        commit: fea84890e5c1fb65ae8e25b2f9b86363af1f45f2
-[05/10] ASoC: mediatek: mt8183: Configure shared clocks
-        commit: 4583392a135cc30409f5a6ceebb8374e550b03e0
-[06/10] ASoC: mediatek: mt8183: Remove clock share parsing from DT
-        commit: cbebe67859a0e8d51e578fdd9f927f8ef2504ba4
-[07/10] arm64: dts: mediatek: kukui: Remove i2s-share properties
-        commit: b3821f7839c2ec322926d16557aff29f4be1f4dc
-[08/10] ASoC: mediatek: mt8186: Allow setting shared clocks from machine driver
-        commit: 4132a778e806f77c2bd01a9a34b07edc9dd99d76
-[09/10] ASoC: mediatek: mt8186: Configure shared clocks
-        commit: 9986bdaee4776c5d595933cace9d54c6bc084e91
-[10/10] ASoC: mediatek: mt8186: Remove clock share parsing from DT
-        commit: 62da80c6a124dd68b12c4d2197ecc74b79823571
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+T24gVHVlLCBTZXAgMTMsIDIwMjIgYXQgMDY6NTU6MDVQTSArMDMwMCwgQXLEsW7DpyDDnE5BTCB3
+cm90ZToNCj4gT24gMTIuMDkuMjAyMiAyMDo1MCwgVmxhZGltaXIgT2x0ZWFuIHdyb3RlOg0KPiA+
+IFRoZSBmYWN0IHRoYXQgc29tZSBEU0EgZGV2aWNlIHRyZWVzIHVzZSAnbGFiZWwgPSAiY3B1Iicg
+Zm9yIHRoZSBDUFUgcG9ydA0KPiA+IGlzIG5vdGhpbmcgYnV0IGJsaW5kIGNhcmdvIGN1bHQgY29w
+eWluZy4gVGhlICdsYWJlbCcgcHJvcGVydHkgd2FzIG5ldmVyDQo+ID4gcGFydCBvZiB0aGUgRFNB
+IERUIGJpbmRpbmdzIGZvciBhbnl0aGluZyBleGNlcHQgdGhlIHVzZXIgcG9ydHMsIHdoZXJlIGl0
+DQo+ID4gcHJvdmlkZWQgYSBoaW50IGFzIHRvIHdoYXQgbmFtZSB0aGUgY3JlYXRlZCBuZXRkZXZz
+IHNob3VsZCB1c2UuDQo+ID4gDQo+ID4gRFNBIGRvZXMgdXNlIHRoZSAiY3B1IiBwb3J0IGxhYmVs
+IHRvIGlkZW50aWZ5IGEgQ1BVIHBvcnQgaW4gZHNhX3BvcnRfcGFyc2UoKSwNCj4gPiBidXQgdGhp
+cyBpcyBvbmx5IGZvciBub24tT0YgY29kZSBwYXRocyAocGxhdGZvcm0gZGF0YSkuDQo+ID4gDQo+
+ID4gVGhlIHByb3BlciB3YXkgdG8gaWRlbnRpZnkgYSBDUFUgcG9ydCBpcyB0byBsb29rIGF0IHdo
+ZXRoZXIgdGhlDQo+ID4gJ2V0aGVybmV0JyBwaGFuZGxlIGlzIHByZXNlbnQuDQo+ID4gDQo+ID4g
+U2lnbmVkLW9mZi1ieTogVmxhZGltaXIgT2x0ZWFuIDx2bGFkaW1pci5vbHRlYW5AbnhwLmNvbT4N
+Cj4gDQo+IEkgcmVhbGlzZWQgImR0LWJpbmRpbmdzOiBuZXQ6IGRzYTogbXQ3NTMwOiIgcHJlZml4
+IGlzIHVzZWQgaGVyZSBpbnN0ZWFkIG9mDQo+IHRoZSB1c3VhbCAiZHQtYmluZGluZ3M6IG5ldDog
+ZHNhOiBtZWRpYXRlayxtdDc1MzA6Ii4gRG9lcyB0aGlzIG1hdHRlcj8NCg0KU2luY2UgIm10NzUz
+MCIgaW1wbGllcyAibWVkaWF0ZWsiLCBJIHByZWZlcnJlZCB0byBza2lwIGl0Lg==
 
