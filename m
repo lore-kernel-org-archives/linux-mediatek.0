@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83598C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 12:36:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FD0DC6FA82
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 12:40:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pNjKGYRXxnN5wf91lOjLeTn55t+AvBNEHQlmAA2ILh8=; b=SnLZW1GDZHX+ZC9nPCiZPU+pZw
-	mb7oX8d2BK6j9a05G3stAMKM8Z+8NjxmpMO0VYYJ32IwzhR4FdVAnCRwffOxiafmMsX8srQAGInL0
-	UxaxRcswlOy9fc6elo2qUnrWDcEipmqsJV0PKc1sYqPjgGuTu+UxHd9hXkcV78e4p6WYXn2+/HdzJ
-	atorNSWBnSbT68gTvlsPtFRBWeunaah6Xzd8FlU4VVNua3eKeLI7rfA8xj0Ou7F8NyUKMICEmw84h
-	8TCnNkCiNk2rqG5ynlF92VPeF0oZkvZg0LgGbnA4XSlL0cUOcg6NzwDddVa0PMq+z5EEIyhTxaCot
-	OWuMApFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3Xm5H0rtGkypaZ8EhTgwJ1LPd4bDN6mTj9DOBanR/TA=; b=2eAJR3O63+Arm9N1AHFreOh+Er
+	DxImZm+xJjecB3jogu9nlSDRXBl9Xsf9BRvPMBCwVrF5latt+b7f7urEwbppgmN0B1M/wYFq63xjv
+	1FdRE3pwZWml3AM4PAzzxvivuogQjsluUg4t7RBnLmR4G3yjjTIQxLXm189MbVhBZ5WN5wY5/5lMP
+	PTAOHqE1qiuKhD6g+UmOP0RhJ1b/9ZI+J7Rysu9m5s83FY3YrWDsNBReSQCp3f+bdEnDzRgKP+v6O
+	5S1W/SRz8X6pzYZvG5FxPQYuxbL/Idg+evDiBVyMhC8IMJUXh/BJaBI/ha5Jgn55ylFG1zJoDh12e
+	zCTyADqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY59o-00A4ey-0r; Tue, 13 Sep 2022 12:36:52 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oY5Cu-00A77O-Ef; Tue, 13 Sep 2022 12:40:04 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY58U-00A3ij-Am
-	for linux-mediatek@lists.infradead.org; Tue, 13 Sep 2022 12:35:31 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1oY5Cd-00A6rY-Sa; Tue, 13 Sep 2022 12:39:49 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 5603761471;
-	Tue, 13 Sep 2022 12:35:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A73CCC433D7;
-	Tue, 13 Sep 2022 12:35:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663072528;
-	bh=uHIBPhso38HQKEjnPuE3Q0bWh5FsM+Uxinj0JhYllyE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nB7wHUPdjoC1IC5X4AqEub0UfBrlv+rwv+kvtlii6wiH4LJdtiC1ObJojV1NNqcHr
-	 rzgfkRNxpR2angv+u6PykUQQhGk+GzxfwICyHUz5s6XSzPzmByMh8Rl/CodnEn76d2
-	 VlB1ekO71fwdrGCxOw19Hu4w61wvvXQLNpOsGzvR3yWFGPjVKUZvYRToCd25PVev8a
-	 MQUBzfrAT181SCeTP+6jSk1/Zz5vgod4FCjX8NuvlNH4VytQ3KVl0eiWaFD2Ky9OXU
-	 Jncdl5d2xDOvtM+hGDNbB9lFdV60qDfx4RHuFzzBrtjBVXp/B9757huE80mQ3smcZ9
-	 g9kMvHUYjZpqA==
-Date: Tue, 13 Sep 2022 14:35:24 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, john@phrozen.org,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, matthias.bgg@gmail.com,
-	linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
-	Bo.Jiao@mediatek.com, sujuan.chen@mediatek.com,
-	ryder.Lee@mediatek.com, evelyn.tsai@mediatek.com,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next 02/12] dt-bindings: net: mediatek: add WED
- binding for MT7986 eth driver
-Message-ID: <YyB5DNIihzwdpfnP@lore-desk>
-References: <cover.1662661555.git.lorenzo@kernel.org>
- <e8e2e1134fde632b7f6aaf9d96feab471385f84c.1662661555.git.lorenzo@kernel.org>
- <20220913121149.GB3397630-robh@kernel.org>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D20A56602004;
+	Tue, 13 Sep 2022 13:39:45 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1663072786;
+	bh=4aHkfIG0KyeHeioBIbpPVvyCjS4/hravDIIXVa8y+co=;
+	h=From:To:Cc:Subject:Date:From;
+	b=FoB378OLYcBw9msFo6rgSXlb52EcgjU/9ofr5v+VWUMz4z3ikf6OVhLBsFjL8YcJJ
+	 12LP66OhY+GixrcsPGzBt41KPsRf2TKXulDVwvUZ7M0RxPxGeINNXYk1IUdIVNcXZX
+	 s194ZkaN2z9lDROvw0z1BdlLx+kHRwwanWjkCeKRTeJVPMH5KvCEMDqcbhNrtkvdLF
+	 fz2W2+4hLYm40i1KdNe4XX7CKvvAmyoJspWCjN5rqzwVerfNJGQAGCMRcT+n2rhk7/
+	 iSWVJJn/d3rGvY4DiMf4mlah7JTgqTQyFwfJVaSo0mkZ/c3NIYzS+CeufUpCAiUHpm
+	 32ZFnODAGs/9Q==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: dmitry.torokhov@gmail.com
+Cc: matthias.bgg@gmail.com,
+	mkorpershoek@baylibre.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-input@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v3] Input: mtk-pmic-keys - Add support for MT6331 PMIC keys
+Date: Tue, 13 Sep 2022 14:39:41 +0200
+Message-Id: <20220913123941.385349-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="glOFOUKnXXIJKcRM"
-Content-Disposition: inline
-In-Reply-To: <20220913121149.GB3397630-robh@kernel.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_053530_453692_0BC54242 
-X-CRM114-Status: GOOD (  18.61  )
+X-CRM114-CacheID: sfid-20220913_053948_082016_71B6FA8F 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,62 +73,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add support for PMIC Keys of the MT6331 PMIC.
 
---glOFOUKnXXIJKcRM
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+---
 
-> On Thu, Sep 08, 2022 at 09:33:36PM +0200, Lorenzo Bianconi wrote:
-> > Document the binding for the Wireless Ethernet Dispatch core on the
-> > MT7986 ethernet driver
-> >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> >  Documentation/devicetree/bindings/net/mediatek,net.yaml | 9 +++++++++
-> >  1 file changed, 9 insertions(+)
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/=
-Documentation/devicetree/bindings/net/mediatek,net.yaml
-> > index f5564ecddb62..0116f100ef19 100644
-> > --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> > +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> > @@ -238,6 +238,15 @@ allOf:
-> >            minItems: 2
-> >            maxItems: 2
-> > =20
-> > +        mediatek,wed:
-> > +          $ref: /schemas/types.yaml#/definitions/phandle-array
-> > +          minItems: 2
-> > +          maxItems: 2
-> > +          items:
-> > +            maxItems: 1
-> > +          description:
-> > +            List of phandles to wireless ethernet dispatch nodes.
->=20
-> There's already a definition of this in the binding. Move it to the main=
-=20
-> section and put 'mediatek,wed: false' in if/then schemas for variants=20
-> that don't have it.
+v3: Rebased on next-20220909, leftover patch from series
+    https://patchwork.kernel.org/project/linux-mediatek/list/?series=644591
 
-ack, I will fix it in v2.
+ drivers/input/keyboard/mtk-pmic-keys.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-Regards,
-Lorenzo
+diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+index 6404081253ea..9b34da0ec260 100644
+--- a/drivers/input/keyboard/mtk-pmic-keys.c
++++ b/drivers/input/keyboard/mtk-pmic-keys.c
+@@ -9,6 +9,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/kernel.h>
+ #include <linux/mfd/mt6323/registers.h>
++#include <linux/mfd/mt6331/registers.h>
+ #include <linux/mfd/mt6358/registers.h>
+ #include <linux/mfd/mt6397/core.h>
+ #include <linux/mfd/mt6397/registers.h>
+@@ -22,6 +23,10 @@
+ #define MTK_PMIC_PWRKEY_RST	BIT(6)
+ #define MTK_PMIC_HOMEKEY_RST	BIT(5)
+ 
++#define MTK_PMIC_MT6331_RST_DU_MASK	GENMASK(13, 12)
++#define MTK_PMIC_MT6331_PWRKEY_RST	BIT(9)
++#define MTK_PMIC_MT6331_HOMEKEY_RST	BIT(8)
++
+ #define MTK_PMIC_PWRKEY_INDEX	0
+ #define MTK_PMIC_HOMEKEY_INDEX	1
+ #define MTK_PMIC_MAX_KEY_COUNT	2
+@@ -72,6 +77,19 @@ static const struct mtk_pmic_regs mt6323_regs = {
+ 	.rst_lprst_mask = MTK_PMIC_RST_DU_MASK,
+ };
+ 
++static const struct mtk_pmic_regs mt6331_regs = {
++	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
++		MTK_PMIC_KEYS_REGS(MT6331_TOPSTATUS, 0x2,
++				   MT6331_INT_MISC_CON, 0x4,
++				   MTK_PMIC_MT6331_PWRKEY_RST),
++	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
++		MTK_PMIC_KEYS_REGS(MT6331_TOPSTATUS, 0x4,
++				   MT6331_INT_MISC_CON, 0x2,
++				   MTK_PMIC_MT6331_HOMEKEY_RST),
++	.pmic_rst_reg = MT6331_TOP_RST_MISC,
++	.rst_lprst_mask = MTK_PMIC_MT6331_RST_DU_MASK,
++};
++
+ static const struct mtk_pmic_regs mt6358_regs = {
+ 	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
+ 		MTK_PMIC_KEYS_REGS(MT6358_TOPSTATUS,
+@@ -255,6 +273,9 @@ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
+ 	}, {
+ 		.compatible = "mediatek,mt6323-keys",
+ 		.data = &mt6323_regs,
++	}, {
++		.compatible = "mediatek,mt6331-keys",
++		.data = &mt6331_regs,
+ 	}, {
+ 		.compatible = "mediatek,mt6358-keys",
+ 		.data = &mt6358_regs,
+-- 
+2.37.2
 
->=20
-> Rob
-
---glOFOUKnXXIJKcRM
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYyB5DAAKCRA6cBh0uS2t
-rH5VAP9r5wu/WxhYFf8dIOlicHQDZN6wIFzX8X/7pBVxvvcwBQD+M8TRrQPqazjQ
-ldlFUEfUuFbhyHyCrpeXw08o+DqluwA=
-=Ef0Z
------END PGP SIGNATURE-----
-
---glOFOUKnXXIJKcRM--
 
