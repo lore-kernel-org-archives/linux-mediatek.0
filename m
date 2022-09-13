@@ -4,63 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 805F0C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 09:06:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F1FBC6FA82
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 10:57:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0B3XTdCIkvOxTAmuP/2tDwYdmG/wWuSBW9oZOO9wqU8=; b=AzcYsOMf9mk613WApwanMeNLdy
-	ZCyCaEnFXDRfJU/uv3EGYBcW8w44qOVYBVyCZHkfRMuhA6wSA+LlqrFeLfAPV0g87XjK+NxL+m8o7
-	6uSZ2aW6nXG/KDcAMB51U2TnPz94m02HBlwLRJdXQgOj0ZeES9yut+ssB65DBX1+MKbX2A5Nr22Zn
-	rw2bjWB9xpSs3BJ0jBL0HtlnTjlAH38pJIs7dGuSZpYOhYI4RJY1+n2U/3g3HONRZTPDSDlF6iaql
-	BbFqo24NuKFAHul7jv2xzt+MrtbvkQybEk1IA0igQwu253Gj4eVmrcNeDbOnClhCojoxWNsq7WDUU
-	k+cU/UlQ==;
+	bh=RVPX2Ck+VGKYvVaqCDeyOSwdX2dhR9jiSYCSBZkuzyo=; b=Kfo2mmTpPmTnHY/A9LmT0txO3j
+	bNxv9aHxuCXk2jxp9hEhs659t5m2W9QZ7qx5bR1icN6Ca06dXfiV37c1dafsn8pS3LjSpbdKOs2fW
+	i3XLy4tXsVY/6AKpkDG8k/Ey1zwYWhs67jkwB0fzNml03uc7ZzkBiJRdNjvf6t7fFQNu8Kr5L/i8H
+	7wxQ/hbSbBbIWGGYasw0kJimUaTuqdufhij9Yct7WyvFfMwUGIl9GPhx5ONoEO1qPQEP3iF10Ulj9
+	EuIMCoiXBUaj5hGh7NHCm4OrlBaq4DrQEHY3ETSmhyvOyw/QrG7OHgVgHfrntyyJM478SWefLUM+n
+	NfMyj3Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY1rl-004smo-My; Tue, 13 Sep 2022 09:06:01 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1oY3bQ-0072og-Ps; Tue, 13 Sep 2022 10:57:17 +0000
+Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY1rO-004sRV-U6
-	for linux-mediatek@lists.infradead.org; Tue, 13 Sep 2022 09:05:45 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1oY1rE-0007zx-K3; Tue, 13 Sep 2022 11:05:28 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1oY1rC-000SnT-KM; Tue, 13 Sep 2022 11:05:25 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1oY1rA-000YSD-HX; Tue, 13 Sep 2022 11:05:24 +0200
-Date: Tue, 13 Sep 2022 11:05:21 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: xinlei.lee@mediatek.com
-Cc: thierry.reding@gmail.com, matthias.bgg@gmail.com,
-	jitao.shi@mediatek.com, linux-pwm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH] pwm: mtk-disp: Fix the parameters calculated  by the
- enabled flag of disp_pwm.
-Message-ID: <20220913090521.6ybohvgbehua4rgv@pengutronix.de>
-References: <1661745852-27323-1-git-send-email-xinlei.lee@mediatek.com>
+	id 1oY3bM-0072YX-Pm
+	for linux-mediatek@lists.infradead.org; Tue, 13 Sep 2022 10:57:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1663066632; x=1694602632;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=zjp/S/AcGVNBiOd4qsqoHOGHjb2vjSK71vPXyphH3wA=;
+  b=EZuaSK3P363xCa0SqMCLNSHLcUg+jVnybRFjfkqINUhvTystYDoEYO7Q
+   uRODbO/9FEn2YPsBSLwhVMW8T+iKL8KYibAe8jsX+IgGkHXw0NDXSCNL7
+   rxtjKHoH5wh/LUutbMs3nENbfPHttjztLhxCXCRE+kiR/x/T6Z6Lnu/MW
+   XBTWLJJF94goTr0b+IUn15Hc9supb1g6j+Qkg/HfYx7/lhK9PdfP94G4g
+   Znn74rFki3zSXe5LD2mmts9SAuz/1W7l+SNweFsnDldD1w2CSIBvPvw0G
+   Vy8IyUGSOvggALW/Sec+FBgTPG+u9zur/yjNKbjpz0nlSXhATxcRj+H4n
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10468"; a="359832107"
+X-IronPort-AV: E=Sophos;i="5.93,312,1654585200"; 
+   d="scan'208";a="359832107"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Sep 2022 03:57:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,312,1654585200"; 
+   d="scan'208";a="742124384"
+Received: from lkp-server02.sh.intel.com (HELO 4011df4f4fd3) ([10.239.97.151])
+  by orsmga004.jf.intel.com with ESMTP; 13 Sep 2022 03:57:01 -0700
+Received: from kbuild by 4011df4f4fd3 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1oY3bB-0003WB-0K;
+	Tue, 13 Sep 2022 10:57:01 +0000
+Date: Tue, 13 Sep 2022 18:56:30 +0800
+From: kernel test robot <lkp@intel.com>
+To: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com,
+	luiz.dentz@gmail.com
+Cc: kbuild-all@lists.01.org, sean.wang@mediatek.com,
+	Soul.Huang@mediatek.com, YN.Chen@mediatek.com,
+	Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com,
+	Deren.Wu@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com,
+	Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
+	ted.huang@mediatek.com, Stella.Chang@mediatek.com,
+	Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com,
+	frankgor@google.com, abhishekpandit@google.com,
+	michaelfsun@google.com, abhishekpandit@chromium.org,
+	mcchou@chromium.org, shawnku@google.com,
+	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, Jing Cai <jing.cai@mediatek.com>
+Subject: Re: [PATCH 4/4] Bluetooth: btusb: mediatek: add MediaTek devcoredump
+ support
+Message-ID: <202209131812.1EOjfRYn-lkp@intel.com>
+References: <540fc6d93481e72e18b51f82f022ab34d57d5caa.1663020936.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ss3zheu2y6khfn6n"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1661745852-27323-1-git-send-email-xinlei.lee@mediatek.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+In-Reply-To: <540fc6d93481e72e18b51f82f022ab34d57d5caa.1663020936.git.objelf@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_020539_273113_5682526B 
-X-CRM114-Status: GOOD (  24.30  )
+X-CRM114-CacheID: sfid-20220913_035712_956854_3DD71DAB 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,91 +93,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---ss3zheu2y6khfn6n
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thank you for the patch! Perhaps something to improve:
 
-Hello,
+[auto build test WARNING on bluetooth/master]
+[also build test WARNING on bluetooth-next/master linus/master v6.0-rc5 next-20220912]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-On Mon, Aug 29, 2022 at 12:04:12PM +0800, xinlei.lee@mediatek.com wrote:
-> From: xinlei lee <xinlei.lee@mediatek.com>
->=20
-> In the original mtk_disp_pwm_get_state() function, the result of reading
-> con0 & BIT(0) is enabled as disp_pwm.=20
-> In order to conform to the register table, we should use the disp_pwm=20
-> base address as the enabled judgment.
+url:    https://github.com/intel-lab-lkp/linux/commits/sean-wang-mediatek-com/Bluetooth-btusb-mediatek-use-readx_poll_timeout-instead-of-open-coding/20220913-062200
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth.git master
+config: m68k-randconfig-r033-20220911 (https://download.01.org/0day-ci/archive/20220913/202209131812.1EOjfRYn-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 12.1.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/d478461e2fd5fdd8d505c00c7864a421170a54bb
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review sean-wang-mediatek-com/Bluetooth-btusb-mediatek-use-readx_poll_timeout-instead-of-open-coding/20220913-062200
+        git checkout d478461e2fd5fdd8d505c00c7864a421170a54bb
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=m68k SHELL=/bin/bash drivers/
 
-Do you want to say:
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
 
-	The enable bit of the hardware is bit 0 of the DISP_PWM_EN
-	register at offset 0 for all supported hardwares. Up to now the
-	bit was wrongly assumed to be in the CON0 register.
+All warnings (new ones prefixed by >>):
 
-?
+   In file included from drivers/bluetooth/btusb.c:28:
+>> drivers/bluetooth/btmtk.h:172:6: warning: no previous prototype for 'btmtk_register_coredump' [-Wmissing-prototypes]
+     172 | void btmtk_register_coredump(struct hci_dev *hdev, u32 dev_id, const char *name,
+         |      ^~~~~~~~~~~~~~~~~~~~~~~
 
-> Fixes: 3f2b16734914 ("pwm: mtk-disp: Implement atomic API .get_state()")
->=20
 
-This newline is unusal.
+vim +/btmtk_register_coredump +172 drivers/bluetooth/btmtk.h
 
-> Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
-> Reviewed-by: Miles Chen <miles.chen@mediatek.com>
-> ---
-> Base on the branch of Linux-next/master.
-> Split from series [1].
-> [1] https://patchwork.kernel.org/project/linux-mediatek/cover/1661239875-=
-19841-1-git-send-email-xinlei.lee@mediatek.com/
-> ---
-> ---
->  drivers/pwm/pwm-mtk-disp.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-> index c605013..50425cd 100644
-> --- a/drivers/pwm/pwm-mtk-disp.c
-> +++ b/drivers/pwm/pwm-mtk-disp.c
-> @@ -197,7 +197,7 @@ static void mtk_disp_pwm_get_state(struct pwm_chip *c=
-hip,
->  	rate =3D clk_get_rate(mdp->clk_main);
->  	con0 =3D readl(mdp->base + mdp->data->con0);
->  	con1 =3D readl(mdp->base + mdp->data->con1);
-> -	state->enabled =3D !!(con0 & BIT(0));
-> +	state->enabled =3D !!(readl(mdp->base) & BIT(0));
+   171	
+ > 172	void btmtk_register_coredump(struct hci_dev *hdev, u32 dev_id, const char *name,
+   173				     u32 fw_version)
+   174	{
+   175	}
+   176	
 
-I would expect this to better be:
-
-	state->enabled =3D !!(readl(mdp->base + DISP_PWM_EN) & BIT(0));
-
-which is the same for the compiler but a bit more descriptive for the
-human reader.
-
->  	clk_div =3D FIELD_GET(PWM_CLKDIV_MASK, con0);
->  	period =3D FIELD_GET(PWM_PERIOD_MASK, con1);
->  	/*
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---ss3zheu2y6khfn6n
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmMgR84ACgkQwfwUeK3K
-7AmsfQf/TlNRXjA19E2+0tCASjyiQWsjnKiN3D+nPd9q8hTxXDbGyQ5KOtZWuUDZ
-+D4joVtIozL0FvlLaR/c745PZm3evjT1S4ZfjgMb+f1/ZSwAX3CyUR0DyRvLubMU
-niChOnS0K063Q8RShrCG8qaphmlSrp82HNKfyjt5aT2dvHBKkNo90llkn4BI5h2G
-p3t5fRn/OtbymDjCt7LsFtZqr5Fck5WiW7aTEkZrT5Wz6FQZ9TMbIgmC3X+wNenK
-cbCPPBfFPDADycZjWaZk3HYfG7P2O1cB595u3i87XeuTIZVAZg9F483lA9z7s4MT
-RecWGzcRbCOwRPgtwcI+jSK2WtP1jA==
-=JSbz
------END PGP SIGNATURE-----
-
---ss3zheu2y6khfn6n--
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
