@@ -4,72 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C50C3C6FA86
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 07:49:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8217DC54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 08:20:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=02557o6QWwGoA5/orMYBbco61qHxyewTQ7Y8qKzdwOg=; b=JZfVDuqhXbwyNJIVQLv9OPCxKY
-	bmkSeOWqkqiiaxTu4UsuaercFerdkcMHxs/zAsQ4ZBaWSas0q9AzpHSqEoDn7CGFJsW/zR0bFn9M4
-	jTaI0Ls8ryECuh3e0oko7sXiIAimhwUlGF1vetF6bBeKtIG51NBmQZUuOMgoJOYWwAOEbdV2tI8Gy
-	4wFAKf5Vv/hCfBnfHhskf0FqySqEFJRaiGDclgtDfQ2ru8noAwkc8eHXQfwXxb3xtfR+jkk+SShCd
-	Za5rvl6OSvvo/+2YWOyTnR5u8PDqDyfdGAxd+0aCvO/JyEWxykUkiPfWt2tSu+UjhK+hzoNKrf+3d
-	kZd9CokQ==;
+	bh=5ta8cGICr0VOJM3jC+pGpsMR/rkOeJqhzZDkRQ4xBHw=; b=mSzcBNVctR+kcELQ3GDIAXEJtx
+	IgS4CGYH2NJkJgeaAkPSVdCmFfsnpmNChUTqPs4crDGzjIoPWO6JNHwrRfhbUtO2wI8P9JZ6MqaC8
+	iYMlcBYxPfasVkRdajplC0Bmy+EZNPJEQAKR7ipcl80PIa2uyDw6d7qVM5x9lwKdqVdf5uMTobSKI
+	kLy4eEoC11Z9roWfNX2OvgZmXfeHcsQ1e1rf9rKBlQSrtVTHhQZHastAWhChlpMsSmO88mjld39m7
+	P9Pjem34zK/keIp81bEdFP7yxroErjNGfUUTV3BoQ8595F0kWrzxUpWB5YABXu/Zdy6XDb/4JwCNY
+	R9wB5xKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY0ff-003mWV-0m; Tue, 13 Sep 2022 07:49:27 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oY19W-004EfC-97; Tue, 13 Sep 2022 08:20:18 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY0fb-003mPz-4R
-	for linux-mediatek@lists.infradead.org; Tue, 13 Sep 2022 07:49:24 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4DBC86601FFD;
-	Tue, 13 Sep 2022 08:49:18 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663055359;
-	bh=mD9+p5CeWAabFjztyVRaFCcTYIBpRki8qYznPTDJVbA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=m0lJiLGUXAo4Quv7c6czRS5bVuvU8uC2f1jClP6A6drPqz+deYjO9gv0HMKBujiTy
-	 d9tgiMfaLaFexlr0QHL7mF5M79PHGzLZOOhj9eIxJbH7HjlBpx6nobxm1eNubGmTYu
-	 F5WwQKqa5gvdT/S8NLu22a6ZpaZyabHgP8iJL7zpZjg03AkMjwHY9IzsyTtwGju/AZ
-	 60xSLZzDThQbGPliZ3Vil9fbDcE8tF3n52YWrYA2m8sd2XtdJ9dkCvsVe4uSe8VhbY
-	 AbVhLdTmFG/xAvtAgg+p7/VE0ZnBkEWF7Mlx+rlK6gS41Pw/ObwXa/9v9zxREaowyu
-	 L5AFScQjtX3dg==
-Message-ID: <07016e51-a5b5-a350-cad2-b9fcebfe3706@collabora.com>
-Date: Tue, 13 Sep 2022 09:49:15 +0200
+	id 1oY196-004ELT-9U; Tue, 13 Sep 2022 08:19:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1663057151; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=cbD2oH6qV+7f5NwVYgIJya2nvrNAGDpLFrbMwDhNRhRq0ADLO5oIbXtGn0ZFWg3c0wH64WMNrrxOmfk1KtU6Mn+04VafA9n4Uwt2U6R/iUCRywgzxhPUfYJ1msr6DG7vevuM2kEOPpI1sgPmC6EKMmlkjFFOyyqzCHOSFR5+aag=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1663057151; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=5ta8cGICr0VOJM3jC+pGpsMR/rkOeJqhzZDkRQ4xBHw=; 
+	b=ZrR99btLqzgG+9bJWWYITysE2GBxYdI5P2IhlexV2cyxX7ySwd+GhWnz9Yh9v/SYZCzkOPDSZDLj3AYqqY+juPsOv1RZu7Ogeojk8mb05opMb6v+7gIRXeCrJxb/1XxoRwASJcuErKWTcsR2CQi110VygrpKD0A9Ac8JDssjlWs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663057151;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=5ta8cGICr0VOJM3jC+pGpsMR/rkOeJqhzZDkRQ4xBHw=;
+	b=FIMUqSjX4QdqKRIUAo/ZmX4QYgTQV628cIf8ACY3Gc4sGipLUi5K8tD4+ZB2KbUZ
+	NMXt/GQc/Kiuj1GsXiEmqc1MhTkN7XiQOJC2tlZDwHVCFnmEa/oMThCUcOto7R+DpTy
+	O0cUbIdWZv4RXIaEFJXVXtE+0hTrXhlLyR6uBipY=
+Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1663057148935836.8616576818519; Tue, 13 Sep 2022 01:19:08 -0700 (PDT)
+Message-ID: <a2dd3f5d-9d25-bb24-9db2-1587487c80a2@arinc9.com>
+Date: Tue, 13 Sep 2022 11:19:01 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH 3/4] Bluetooth: btusb: mediatek: reset the device as WMT
- failed
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH net-next 1/3] dt-bindings: net: dsa: mt7530: replace label
+ = "cpu" with proper checks
 Content-Language: en-US
-To: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com,
- luiz.dentz@gmail.com
-Cc: Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
- Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
- robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
- posh.sun@mediatek.com, ted.huang@mediatek.com, Stella.Chang@mediatek.com,
- Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com,
- frankgor@google.com, abhishekpandit@google.com, michaelfsun@google.com,
- abhishekpandit@chromium.org, mcchou@chromium.org, shawnku@google.com,
- linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <43b68b1f48c20b1dfcd7e6663c3dcb38e4e0648c.1663020936.git.objelf@gmail.com>
- <a432abf4cf95e93783864b27bafa53d45bdd5212.1663020936.git.objelf@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <a432abf4cf95e93783864b27bafa53d45bdd5212.1663020936.git.objelf@gmail.com>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org
+Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ George McCollister <george.mccollister@gmail.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
+ Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?Q?Alvin_=c5=a0ipraga?= <alsi@bang-olufsen.dk>,
+ =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?= <clement.leger@bootlin.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Marek Vasut <marex@denx.de>,
+ John Crispin <john@phrozen.org>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+References: <20220912175058.280386-1-vladimir.oltean@nxp.com>
+ <20220912175058.280386-2-vladimir.oltean@nxp.com>
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <20220912175058.280386-2-vladimir.oltean@nxp.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_004923_587593_6C8DDB84 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20220913_011952_450558_52291963 
+X-CRM114-Status: GOOD (  18.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,37 +95,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/09/22 00:18, sean.wang@mediatek.com ha scritto:
-> From: Sean Wang <sean.wang@mediatek.com>
+On 12.09.2022 20:50, Vladimir Oltean wrote:
+> The fact that some DSA device trees use 'label = "cpu"' for the CPU port
+> is nothing but blind cargo cult copying. The 'label' property was never
+> part of the DSA DT bindings for anything except the user ports, where it
+> provided a hint as to what name the created netdevs should use.
 > 
-> Reset the BT device whenever the driver detected any WMT failure happened
-> to recover such kind of system-level error as soon as possible.
+> DSA does use the "cpu" port label to identify a CPU port in dsa_port_parse(),
+> but this is only for non-OF code paths (platform data).
 > 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> The proper way to identify a CPU port is to look at whether the
+> 'ethernet' phandle is present.
+> 
+> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 
-This looks like a fix, so you probably want a Fixes tag for backport.
+Reviewed-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 
-Regards,
-Angelo
+Arınç
 
 > ---
->   drivers/bluetooth/btusb.c | 4 ++++
->   1 file changed, 4 insertions(+)
+>   .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml | 12 +++---------
+>   1 file changed, 3 insertions(+), 9 deletions(-)
 > 
-> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> index 653f57a98233..dc86726c8271 100644
-> --- a/drivers/bluetooth/btusb.c
-> +++ b/drivers/bluetooth/btusb.c
-> @@ -2576,6 +2576,10 @@ static int btusb_mtk_hci_wmt_sync(struct hci_dev *hdev,
->   	data->evt_skb = NULL;
->   err_free_wc:
->   	kfree(wc);
-> +
-> +	if (err < 0)
-> +		btmtk_reset_sync(hdev);
-> +
->   	return err;
->   }
->   
-
+> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> index f9e7b6e20b35..fa271ee16b5e 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> @@ -163,9 +163,7 @@ patternProperties:
+>           allOf:
+>             - $ref: dsa-port.yaml#
+>             - if:
+> -              properties:
+> -                label:
+> -                  const: cpu
+> +              required: [ ethernet ]
+>               then:
+>                 required:
+>                   - phy-mode
+> @@ -187,9 +185,7 @@ $defs:
+>           patternProperties:
+>             "^(ethernet-)?port@[0-9]+$":
+>               if:
+> -              properties:
+> -                label:
+> -                  const: cpu
+> +              required: [ ethernet ]
+>               then:
+>                 if:
+>                   properties:
+> @@ -215,9 +211,7 @@ $defs:
+>           patternProperties:
+>             "^(ethernet-)?port@[0-9]+$":
+>               if:
+> -              properties:
+> -                label:
+> -                  const: cpu
+> +              required: [ ethernet ]
+>               then:
+>                 if:
+>                   properties:
 
