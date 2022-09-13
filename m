@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E311C6FA89
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 15:23:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 498C2C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Sep 2022 15:23:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A23HCJwAKEDpdfMOBaUvcLgSEZ+QnfIpYZsLLPx7uW4=; b=Jz4WoWzfOjx6n1j778mUI4pBsf
-	iPf/tuenbdiXXJr5qZbs3UvDLkhz6twfaXPeXaen8gL0fJxZyda9uImiE0s9wXfKs6OYrkQFgc9Tc
-	l0N5XbR0QeI4KGexXkTRUCcFl2AV++KIgRGLS4OtYfG2L/mL1SrP2Af8LxpVZJgql85HWaFzr8xna
-	KncYxAVNZfpyvBr3d3M1AtnPQo1KA1bVTU5p4/hZAN0MUMndjmqa7v98PsFD6FWUK0dqWBwfX5WUN
-	NW5xy7pd3iBtk2SHbluloolQnHc3vfEO766+avjBGFTKspU5HjM2SzbBtjDd/AD+AzDxJZqMZ4rRY
-	M7ZDss4g==;
+	bh=DSXF3T2IkDy+6+5uU4ontf8klzAACwb/Dss2sH7QdyE=; b=prXAUMJQuNmP5JKn38OcHYTsHo
+	xishgXy16EQDi+Ocj6/mxwdlm1T1rNqDUfO49cYxDZySP3x/t7Ts983xvt+PDc0yDFUnmGWvEBr/T
+	0I1iO4JanYWWl3SJl3ytVjwLlQbtaJrdybV+1MpE7wPj8ZpdMZML8pvpduKXMelJ6jpFKyTRZ4nDB
+	w7c4w3068laGIwoI+MSLB+dPtc9ijOgFTJqJqgPOe2LRICyvpiCHSHqOMrHi+gDSVRfiyuTc6P1zs
+	vKYhgQxmQ57oVRif8NUS9KBAFgBvsCYXCsTk5KHt/vbseLiriVGF37rj5S3MFlXsPImEVi9oGmPFh
+	KscH3phQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY7kT-00CQar-Be; Tue, 13 Sep 2022 15:22:53 +0000
+	id 1oY7kV-00CQc5-JS; Tue, 13 Sep 2022 15:22:55 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY7a2-00CFo4-H3; Tue, 13 Sep 2022 15:12:09 +0000
+	id 1oY7a3-00CFoq-HN; Tue, 13 Sep 2022 15:12:10 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7E4C96601BF7;
-	Tue, 13 Sep 2022 16:12:04 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7AAC66601F95;
+	Tue, 13 Sep 2022 16:12:05 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663081925;
-	bh=cf5hsjYOn6G7Lc7ENq6TOpInHHzZ+vJ1oGSDMkkGGoM=;
+	s=mail; t=1663081926;
+	bh=ffrRKhHcihnlzqwVMU99ZUXWa98jp4gFpa0V3vIwr2g=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=opt4PqghLEWF31cLHWZlQ1sB9rHwqyMNSHmi1XoesYTyF2l2SAcSwq0LnS6gL57/V
-	 RPmLJ6EywqP0QH0CB9Hxjf35T9bQqIph37aqYE5cXezUPo0Cnq4FtFChrMjQ9yYq3w
-	 fRNCRzOyC9+sn+TEyZdM80Hc1S0D9v2EzDkm6g9YYLm3wyFtoyohJ82XNCZBSWE5oE
-	 kGzNJ1Q3wTL/TLhTuzS1uLn9vI3k8HKNeeROUSszwtoAbWxAo+lRkU8hkz4ehPv0YG
-	 8LUzF9OtIaAFnUznYh6nmt0tjfMiHlq9FZvIqY3n8MfrDEUzqayyPJDdC1/m86YPDj
-	 a64xbFxWRlzFg==
+	b=RQS9VIHihfj8AvwI2yPEQjEhXe6R0FyqX1yMf43tRQXA3QuYo8NzYRz1Ca6I4mSVs
+	 /ICqmdIaK+21PEeN9sOjSXY3nHHVfygdozwtTYDMSLx4B5P6OIXOSKVL1OXgexSnwX
+	 T6ds3Y5RxhZHU53jFNetEk/1zNkQXGLf9eDLcoMLmHesOYeF3E5dvDkPS765FT68Ch
+	 CiYbc4OmP9OuKH82E7OIpq5tLqwrQ152MsY9z4Fiq1q4jh5HDCMB4VvfsWIylVsYYA
+	 2ExJ8CGJvqrQss82idz5pbWH9MriNRhnwOQ9eqfxqZTs5dFBuaDxbUI6dv4fhP5NfV
+	 h00R875Qm7ESA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: joro@8bytes.org
 Cc: yong.wu@mediatek.com,
@@ -60,17 +60,18 @@ Cc: yong.wu@mediatek.com,
 	phone-devel@vger.kernel.org,
 	paul.bouchara@somainline.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v6 2/3] iommu/mediatek: Introduce new flag TF_PORT_TO_ADDR_MT8173
-Date: Tue, 13 Sep 2022 17:11:47 +0200
-Message-Id: <20220913151148.412312-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v6 3/3] iommu/mediatek: Add support for MT6795 Helio X10 M4Us
+Date: Tue, 13 Sep 2022 17:11:48 +0200
+Message-Id: <20220913151148.412312-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20220913151148.412312-1-angelogioacchino.delregno@collabora.com>
 References: <20220913151148.412312-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_081206_758183_6B7FCF0B 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20220913_081207_820904_56B1FA0B 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,48 +86,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for adding support for MT6795, add a new flag named
-TF_PORT_TO_ADDR_MT8173 and use that instead of checking for m4u_plat
-type in mtk_iommu_hw_init() to avoid seeing a long list of m4u_plat
-checks there in the future.
+Add support for the M4Us found in the MT6795 Helio X10 SoC.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/iommu/mtk_iommu.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 7e363b1f24df..b511359376f4 100644
+index b511359376f4..e3f03a1d32b8 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -138,6 +138,7 @@
- #define PM_CLK_AO			BIT(15)
- #define IFA_IOMMU_PCIE_SUPPORT		BIT(16)
- #define PGTABLE_PA_35_EN		BIT(17)
-+#define TF_PORT_TO_ADDR_MT8173		BIT(18)
+@@ -158,6 +158,7 @@
+ enum mtk_iommu_plat {
+ 	M4U_MT2712,
+ 	M4U_MT6779,
++	M4U_MT6795,
+ 	M4U_MT8167,
+ 	M4U_MT8173,
+ 	M4U_MT8183,
+@@ -1414,6 +1415,19 @@ static const struct mtk_iommu_plat_data mt6779_data = {
+ 	.larbid_remap  = {{0}, {1}, {2}, {3}, {5}, {7, 8}, {10}, {9}},
+ };
  
- #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
- 				((((pdata)->flags) & (mask)) == (_x))
-@@ -955,7 +956,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int ban
- 	 * Global control settings are in bank0. May re-init these global registers
- 	 * since no sure if there is bank0 consumers.
- 	 */
--	if (data->plat_data->m4u_plat == M4U_MT8173) {
-+	if (MTK_IOMMU_HAS_FLAG(data->plat_data, TF_PORT_TO_ADDR_MT8173)) {
- 		regval = F_MMU_PREFETCH_RT_REPLACE_MOD |
- 			 F_MMU_TF_PROT_TO_PROGRAM_ADDR_MT8173;
- 	} else {
-@@ -1427,7 +1428,8 @@ static const struct mtk_iommu_plat_data mt8167_data = {
- static const struct mtk_iommu_plat_data mt8173_data = {
- 	.m4u_plat     = M4U_MT8173,
- 	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI |
--			HAS_LEGACY_IVRP_PADDR | MTK_IOMMU_TYPE_MM,
++static const struct mtk_iommu_plat_data mt6795_data = {
++	.m4u_plat     = M4U_MT6795,
++	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI |
 +			HAS_LEGACY_IVRP_PADDR | MTK_IOMMU_TYPE_MM |
 +			TF_PORT_TO_ADDR_MT8173,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
- 	.banks_num    = 1,
- 	.banks_enable = {true},
++	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
++	.banks_num    = 1,
++	.banks_enable = {true},
++	.iova_region  = single_domain,
++	.iova_region_nr = ARRAY_SIZE(single_domain),
++	.larbid_remap = {{0}, {1}, {2}, {3}, {4}}, /* Linear mapping. */
++};
++
+ static const struct mtk_iommu_plat_data mt8167_data = {
+ 	.m4u_plat     = M4U_MT8167,
+ 	.flags        = RESET_AXI | HAS_LEGACY_IVRP_PADDR | MTK_IOMMU_TYPE_MM,
+@@ -1526,6 +1540,7 @@ static const struct mtk_iommu_plat_data mt8195_data_vpp = {
+ static const struct of_device_id mtk_iommu_of_ids[] = {
+ 	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
+ 	{ .compatible = "mediatek,mt6779-m4u", .data = &mt6779_data},
++	{ .compatible = "mediatek,mt6795-m4u", .data = &mt6795_data},
+ 	{ .compatible = "mediatek,mt8167-m4u", .data = &mt8167_data},
+ 	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
+ 	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
 -- 
 2.37.2
 
