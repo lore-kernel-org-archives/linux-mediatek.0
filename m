@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35111ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 09:14:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93372ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 09:14:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yAKjMq/uUK9WZ8CnisN9As4Pk+9tXhXvBVyYrH2ZjnQ=; b=tsB8/jhvlVHZZo4laZc/FkVG9C
-	SOkP1D5dBFWkjrQbHWi1qIQbCld/ZHjGzWnxRaerdnquqcHVttNA4jEZxdYOfe41wMOBJ0ioA2VT7
-	0LkPRg+n5qf8hURPbbrhHFjd5e1ev3SNI2yOKNYVp0b+HV06vg13F46ayl2UcNACP9BvbRIdXk8Cq
-	kDL/81i8T8+4G7Nm8b3QgT8iKL8CsY731zHliVaKbLwFw5v7gvn0cKKlULdyo0r7aZ1zfyEOHiT49
-	e8aPR17h/KkJYx5b18WF44zuVWlSu2HLP9OnfwFwbZt5/95pGNrFwfuHLG50gQjYMd2KDrEU72Dd0
-	u+iV3gdA==;
+	bh=gW2h2omwaqsEc8eIL1oqekJ7kF0Gj5PZa7ThxS1nMEo=; b=mCnValwEPIo1W/QrX3Sp0dRnpL
+	MF9DHzMztRpK5Y3tbKEPE/2DHZGpqEVIrseNzw9MlORKbYqsI0bmsWoEXDRLKbS6nQ59dZshYKqBi
+	6TspwtsMU446eaY0gahQYK2X/HerfWfGaidD1fxmNLIoEcfewv3L9w+1UUcn/O/Dh5D4UmTWGasX+
+	RZVv7ozcxCurDVHmR9rIakOIVuNm8e9EWYjyl2lnSslRnmKpcuYeHqDtHvgV7blz/G13mwZv/INJ8
+	dD6/Yaq0+hxnEVG0MqAry7bHSt6QQf+A77wEqPoDx9+jFeOjjUWIr7uXIdwN+W5jqW19f5ZUbidgN
+	rnYRmD2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYOSv-00E11S-6u; Wed, 14 Sep 2022 09:13:53 +0000
+	id 1oYOSx-00E12u-A0; Wed, 14 Sep 2022 09:13:55 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYOBT-00Dl4L-EL; Wed, 14 Sep 2022 08:55:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1663145733; cv=none; 
+	id 1oYOBT-00Dl4M-11; Wed, 14 Sep 2022 08:55:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1663145716; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=AoSBTWqQ39jMdawJUMN6V+Cl0FF7bMWFRIG/oEatTajK1kuQv5lExZHNStFm2XkU+acTYJekrJWKSYKraA+UHM4mAItRFHuuGSwzIfUHmd8QL2y4CxcngLL0/fsQk12cDISrDhlZrky3R1AASXZDS8VCXBL4by+XYBWHRUlQIBo=
+	b=dnIFahyM0IisMC8N0DtTazUfCcWYsEENXNGipecNC6GPYrLsfm5DKi8z2ig/iEh/pLaZgjTpFgHvcPzwjR1AgF56RLjmvGR5g/dadAkzrDyBzjEsFHvm/dyeudS2kBX1CjDRynOzskVVOjBazN5i9Vxvki5ny7eKXrzUwd+dal4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1663145733; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=yAKjMq/uUK9WZ8CnisN9As4Pk+9tXhXvBVyYrH2ZjnQ=; 
-	b=RG+PoUpkaGGxECzyQrpf4ygLaoiqPxbkQMWDS91pZ36b32x929DxFmwNtL08kUmHtq7FXvbTKLODWN7fJXsUUnTCodomomy8IakRMthiGeUpP7xHIhMD9wdj2QXbDl4qwVafjQpbXNF2b5UEAyrlak+UuqbHBzI/+2bCM/tvGto=
+	t=1663145716; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=gW2h2omwaqsEc8eIL1oqekJ7kF0Gj5PZa7ThxS1nMEo=; 
+	b=WrUpT0z2dmZpiUr2xkzUIhLL9aLMqqnmxTABawtER015c0tFbu2UAiT1i3gbVQYuVtyqwf/FRQa9oo2FuI6oF0hgsKgu4c2ycM4cpnRfbMI6Lvx3aqWhrcKkKnb1louGsor0yQgkO/JWJwZf54yJ3kqFMeJD8D0OmA9L5Rpy83c=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663145733;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663145716;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=yAKjMq/uUK9WZ8CnisN9As4Pk+9tXhXvBVyYrH2ZjnQ=;
-	b=jfKnSJunLzTND9Hq/5TTo8MGc0iZZZwSXwE5/eMNAIoD5pVSpJfIXEnnA05CuGxW
-	a44/hv0XiVKmkMl6jFeBs5c1s2LHOsFrnAsDhWv8AvEBnTRA94K5KlDYCY9/ltdBrcT
-	eW7fUQqZPxMENUirNlVCXcRRWCl/y6lmCsfK7SSs=
+	bh=gW2h2omwaqsEc8eIL1oqekJ7kF0Gj5PZa7ThxS1nMEo=;
+	b=BRaCg04LH58aSEuT68+BF4QrsDJKoxjONHtarrYBpGDcIvNfHnk5lZ8pypIT3msD
+	LQvgODEuAUhGFrVXi6IRvs0BPUvYBAyAaVElWenD6oNVwWtmS+1xcgwyFuNmrBjn4KD
+	7S9Jv8NiJ7TgFv8lBWLJc8q4eDtJO3gr90BkOMOk=
 Received: from arinc9-PC.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1663145731156740.504015969723; Wed, 14 Sep 2022 01:55:31 -0700 (PDT)
+	with SMTPS id 1663145713714881.9487168174912; Wed, 14 Sep 2022 01:55:13 -0700 (PDT)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -69,10 +69,11 @@ Cc: netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mips@vger.kernel.org,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-Subject: [PATCH 05/10] mips: dts: ralink: mt7621: fix some dtc warnings
-Date: Wed, 14 Sep 2022 11:54:46 +0300
-Message-Id: <20220914085451.11723-6-arinc.unal@arinc9.com>
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Sungbo Eo <mans0n@gorani.run>
+Subject: [PATCH 02/10] dt-bindings: net: dsa: mediatek,mt7530: change mt7530 switch address
+Date: Wed, 14 Sep 2022 11:54:43 +0300
+Message-Id: <20220914085451.11723-3-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220914085451.11723-1-arinc.unal@arinc9.com>
 References: <20220914085451.11723-1-arinc.unal@arinc9.com>
@@ -81,8 +82,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_015551_607189_67B96EF2 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20220914_015551_165223_F62122C5 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,210 +98,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the dtc warnings below.
+In the case of muxing phy0 of the MT7530 switch, the switch and the phy
+will have the same address on the mdio bus, 0. This causes the ethernet
+driver to fail since devices on the mdio bus cannot share an address.
 
-/cpus/cpu@0: failed to match any schema with compatible: ['mips,mips1004Kc']
-/cpus/cpu@1: failed to match any schema with compatible: ['mips,mips1004Kc']
-uartlite@c00: $nodename:0: 'uartlite@c00' does not match '^serial(@.*)?$'
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/serial/8250.yaml
-uartlite@c00: Unevaluated properties are not allowed ('clock-names' was unexpected)
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/serial/8250.yaml
-sdhci@1e130000: $nodename:0: 'sdhci@1e130000' does not match '^mmc(@.*)?$'
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-sdhci@1e130000: Unevaluated properties are not allowed ('bus-width', 'cap-mmc-highspeed', 'cap-sd-highspeed', 'disable-wp', 'max-frequency', 'vmmc-supply', 'vqmmc-supply' were unexpected)
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-xhci@1e1c0000: $nodename:0: 'xhci@1e1c0000' does not match '^usb(@.*)?'
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-xhci@1e1c0000: compatible: ['mediatek,mt8173-xhci'] is too short
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-switch0@0: $nodename:0: 'switch0@0' does not match '^(ethernet-)?switch(@.*)?$'
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-port@1: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
-	From schema: /home/arinc9/.local/lib/python3.10/site-packages/dtschema/schemas/dt-core.yaml
-port@2: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
-	From schema: /home/arinc9/.local/lib/python3.10/site-packages/dtschema/schemas/dt-core.yaml
-port@3: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
-	From schema: /home/arinc9/.local/lib/python3.10/site-packages/dtschema/schemas/dt-core.yaml
+Any address can be used for the switch, therefore, change the switch
+address to 0x1f.
 
-- Remove "mips,mips1004Kc" compatible string from the cpu nodes. This
-doesn't exist anywhere.
-- Change "memc: syscon@5000" to "memc: memory-controller@5000".
-- Change "uartlite: uartlite@c00" to "serial0: serial@c00" and remove the
-aliases node.
-- Remove "clock-names" from the serial0 node. The property doesn't exist on
-the 8250.yaml schema.
-- Change "sdhci: sdhci@1e130000" to "mmc: mmc@1e130000".
-- Change "xhci: xhci@1e1c0000" to "usb: usb@1e1c0000".
-- Add "mediatek,mtk-xhci" as the second compatible string on the usb node.
-- Change "switch0: switch0@0" to "switch0: switch@0"
-- Change "off" to "disabled" for disabled nodes.
-
-Remaining warnings are caused by the lack of json-schema documentation.
-
-/cpuintc: failed to match any schema with compatible: ['mti,cpu-interrupt-controller']
-/palmbus@1e000000/wdt@100: failed to match any schema with compatible: ['mediatek,mt7621-wdt']
-/palmbus@1e000000/i2c@900: failed to match any schema with compatible: ['mediatek,mt7621-i2c']
-/palmbus@1e000000/spi@b00: failed to match any schema with compatible: ['ralink,mt7621-spi']
-/ethernet@1e100000: failed to match any schema with compatible: ['mediatek,mt7621-eth']
-
+Suggested-by: Sungbo Eo <mans0n@gorani.run>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- .../boot/dts/ralink/mt7621-gnubee-gb-pc1.dts  |  2 +-
- .../boot/dts/ralink/mt7621-gnubee-gb-pc2.dts  |  2 +-
- arch/mips/boot/dts/ralink/mt7621.dtsi         | 32 +++++++------------
- 3 files changed, 14 insertions(+), 22 deletions(-)
+ .../bindings/net/dsa/mediatek,mt7530.yaml     | 24 +++++++++----------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
-index 24eebc5a85b1..6ecb8165efe8 100644
---- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
-+++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
-@@ -53,7 +53,7 @@ system {
- 	};
- };
+diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+index f9e7b6e20b35..2c73d13adf14 100644
+--- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+@@ -294,9 +294,9 @@ examples:
+         #address-cells = <1>;
+         #size-cells = <0>;
  
--&sdhci {
-+&mmc {
- 	status = "okay";
- };
+-        switch@0 {
++        switch@1f {
+             compatible = "mediatek,mt7530";
+-            reg = <0>;
++            reg = <0x1f>;
  
-diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
-index 34006e667780..2e534ea5bab7 100644
---- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
-+++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
-@@ -37,7 +37,7 @@ key-reset {
- 	};
- };
+             reset-gpios = <&pio 33 0>;
  
--&sdhci {
-+&mmc {
- 	status = "okay";
- };
+@@ -356,9 +356,9 @@ examples:
+         #address-cells = <1>;
+         #size-cells = <0>;
  
-diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
-index ee46ace0bcc1..9302bdc04510 100644
---- a/arch/mips/boot/dts/ralink/mt7621.dtsi
-+++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
-@@ -15,13 +15,11 @@ cpus {
+-        switch@0 {
++        switch@1f {
+             compatible = "mediatek,mt7530";
+-            reg = <0>;
++            reg = <0x1f>;
  
- 		cpu@0 {
- 			device_type = "cpu";
--			compatible = "mips,mips1004Kc";
- 			reg = <0>;
- 		};
+             mediatek,mcm;
+             resets = <&ethsys MT2701_ETHSYS_MCM_RST>;
+@@ -486,9 +486,9 @@ examples:
+         #address-cells = <1>;
+         #size-cells = <0>;
  
- 		cpu@1 {
- 			device_type = "cpu";
--			compatible = "mips,mips1004Kc";
- 			reg = <1>;
- 		};
- 	};
-@@ -33,11 +31,6 @@ cpuintc: cpuintc {
- 		compatible = "mti,cpu-interrupt-controller";
- 	};
+-        switch@0 {
++        switch@1f {
+             compatible = "mediatek,mt7621";
+-            reg = <0>;
++            reg = <0x1f>;
  
--	aliases {
--		serial0 = &uartlite;
--	};
--
--
- 	mmc_fixed_3v3: regulator-3v3 {
- 		compatible = "regulator-fixed";
- 		regulator-name = "mmc_power";
-@@ -110,17 +103,16 @@ i2c: i2c@900 {
- 			pinctrl-0 = <&i2c_pins>;
- 		};
+             mediatek,mcm;
+             resets = <&sysc MT7621_RST_MCM>;
+@@ -573,9 +573,9 @@ examples:
+                 reg = <4>;
+             };
  
--		memc: syscon@5000 {
-+		memc: memory-controller@5000 {
- 			compatible = "mediatek,mt7621-memc", "syscon";
- 			reg = <0x5000 0x1000>;
- 		};
+-            switch@0 {
++            switch@1f {
+                 compatible = "mediatek,mt7621";
+-                reg = <0>;
++                reg = <0x1f>;
  
--		uartlite: uartlite@c00 {
-+		serial0: serial@c00 {
- 			compatible = "ns16550a";
- 			reg = <0xc00 0x100>;
+                 mediatek,mcm;
+                 resets = <&sysc MT7621_RST_MCM>;
+@@ -664,9 +664,9 @@ examples:
+                 phy-mode = "rgmii";
+             };
  
- 			clocks = <&sysc MT7621_CLK_UART1>;
--			clock-names = "uart1";
+-            switch@0 {
++            switch@1f {
+                 compatible = "mediatek,mt7621";
+-                reg = <0>;
++                reg = <0x1f>;
  
- 			interrupt-parent = <&gic>;
- 			interrupts = <GIC_SHARED 26 IRQ_TYPE_LEVEL_HIGH>;
-@@ -236,7 +228,7 @@ pinmux {
- 		};
- 	};
+                 mediatek,mcm;
+                 resets = <&sysc MT7621_RST_MCM>;
+@@ -745,9 +745,9 @@ examples:
+                 phy-mode = "rgmii";
+             };
  
--	sdhci: sdhci@1e130000 {
-+	mmc: mmc@1e130000 {
- 		status = "disabled";
+-            switch@0 {
++            switch@1f {
+                 compatible = "mediatek,mt7621";
+-                reg = <0>;
++                reg = <0x1f>;
  
- 		compatible = "mediatek,mt7620-mmc";
-@@ -262,8 +254,8 @@ sdhci: sdhci@1e130000 {
- 		interrupts = <GIC_SHARED 20 IRQ_TYPE_LEVEL_HIGH>;
- 	};
- 
--	xhci: xhci@1e1c0000 {
--		compatible = "mediatek,mt8173-xhci";
-+	usb: usb@1e1c0000 {
-+		compatible = "mediatek,mt8173-xhci", "mediatek,mtk-xhci";
- 		reg = <0x1e1c0000 0x1000
- 		       0x1e1d0700 0x0100>;
- 		reg-names = "mac", "ippc";
-@@ -338,7 +330,7 @@ fixed-link {
- 		gmac1: mac@1 {
- 			compatible = "mediatek,eth-mac";
- 			reg = <1>;
--			status = "off";
-+			status = "disabled";
- 			phy-mode = "rgmii-rxid";
- 		};
- 
-@@ -346,7 +338,7 @@ mdio: mdio-bus {
- 			#address-cells = <1>;
- 			#size-cells = <0>;
- 
--			switch0: switch0@0 {
-+			switch0: switch@0 {
- 				compatible = "mediatek,mt7621";
- 				reg = <0>;
- 				mediatek,mcm;
-@@ -362,31 +354,31 @@ ports {
- 					#size-cells = <0>;
- 
- 					port@0 {
--						status = "off";
-+						status = "disabled";
- 						reg = <0>;
- 						label = "lan0";
- 					};
- 
- 					port@1 {
--						status = "off";
-+						status = "disabled";
- 						reg = <1>;
- 						label = "lan1";
- 					};
- 
- 					port@2 {
--						status = "off";
-+						status = "disabled";
- 						reg = <2>;
- 						label = "lan2";
- 					};
- 
- 					port@3 {
--						status = "off";
-+						status = "disabled";
- 						reg = <3>;
- 						label = "lan3";
- 					};
- 
- 					port@4 {
--						status = "off";
-+						status = "disabled";
- 						reg = <4>;
- 						label = "lan4";
- 					};
+                 mediatek,mcm;
+                 resets = <&sysc MT7621_RST_MCM>;
 -- 
 2.34.1
 
