@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48CE9ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 16:27:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E93F3C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 16:27:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zZD8tJ7NCtrHJsbCaNSP87Y3qe7OynbxFKCss/jxB3I=; b=4s8dvwgawkkWzdaa38j/N4IZXT
-	I/Ze+MNV9577XgahZkfv5izA9fyGoMQCtmPot3sG9y5lQBg740lJfHnPjAj+CneSjRtIzDvB2CKuB
-	2TSaw5p4u66Uw2Ebis1ZLg9uHyNeQt8G5T1KBUzOi+pCvNi4Q9gW/2t9Jqtds/5Zdp/GC6Ew6VXCl
-	eLuRt1GR+seCw1u2Fzh39m+ur57Uljms+nhUY4PYM2lypERhstD/6NiuEnKdYDN8P3osRgn6HSH4I
-	opE3Q7J4vIh2Hg2maIIwQpsNcJse7L7KOSNJF2ySvOo53gR0OYh8xTawvVdeHJCT5TPh50gY8ki1N
-	NqrTyz1g==;
+	bh=0Y050b+bqDXjMFJ0FQAtLb9qk0gbyprIyKNchoQmXT8=; b=HdCj2183MaiCniFgFZOpPuvZs+
+	8XagwS3O0qGDhT775FZJINMG2LEYCQnp91fZ+TUY5qRr8+VF+79vcBWkFS5ld35+eiOy1HUsJ6FS2
+	Gi/wb/ywbd2gkCppOF6a9LQQJs/EQZU7G1LCATiLmC5FJdFBbJV/Bhb/YlZ9Y1X2YbymRMbD6h6GN
+	i3XlXfxXfSIAyZL2eEhuN7A6jpYo18JVcchPtRGI+piKa/u6DY7osFtx1Uz2+mH8OJaynKZUOfC0z
+	ljmCLhdVFBeN0gGzZBc1eg1maDDtnsmkZJlgESjILow1iQOCK11ceni82/TM41MMamPgzjBeByFNH
+	yOhKlIcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYVEq-00567q-1X; Wed, 14 Sep 2022 16:27:48 +0000
-Received: from mail-oa1-f50.google.com ([209.85.160.50])
+	id 1oYVEu-0056I2-BV; Wed, 14 Sep 2022 16:27:52 +0000
+Received: from mail-oa1-f48.google.com ([209.85.160.48])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYVEX-0055Q9-1H; Wed, 14 Sep 2022 16:27:30 +0000
-Received: by mail-oa1-f50.google.com with SMTP id 586e51a60fabf-127ba06d03fso42456427fac.3;
-        Wed, 14 Sep 2022 09:27:26 -0700 (PDT)
+	id 1oYVEn-00564Q-62; Wed, 14 Sep 2022 16:27:46 +0000
+Received: by mail-oa1-f48.google.com with SMTP id 586e51a60fabf-1225219ee46so42435021fac.2;
+        Wed, 14 Sep 2022 09:27:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=zZD8tJ7NCtrHJsbCaNSP87Y3qe7OynbxFKCss/jxB3I=;
-        b=QqSiQ5jDA47rzRUR15uhgc8Jzer9QJLu8DArgbEsyRnjAdRVK6VWzFO5/MDWTfRGSr
-         p78PNi2+6RNxPIwXN+ShTGDoxvolPzVb+6EjK4wb0Z7mIGEfnLzIcdTQA1WemrNYqO2c
-         c0oK0DvskJZBN0OQixIyueTdbpQBwv/Og+oL6GnnV8Ag95SHB3VW39Uqgomlku7qD5wq
-         Q1oPEp8KdnprhUQdXl1sG7RVHWt/2P25ZkPK8wvVcpPMSsdghWtEPALriK+hdiN9BFHX
-         5nfE9gMbNCfQ9Etdbe1EloRRZ9Yx1FFn4GUqgT89rKf0WMz19dcER2QMFlYMBh7KLQR8
-         R7zg==
-X-Gm-Message-State: ACgBeo2Hkl6bgQRFmLNENVJEQ4TmM5iK7IyzrrwJ10oQHSMgmlOKtQhO
-	N4fc9oJkJs/uQOi/MPz23w==
-X-Google-Smtp-Source: AA6agR508A59RRasBqGG0pg5H5/FqMmo9DiIAClotXDA1a4zQTOyhkP1kMxVLkm7CrmxQf7x66/I2A==
-X-Received: by 2002:a05:6870:34d:b0:127:cb87:a169 with SMTP id n13-20020a056870034d00b00127cb87a169mr2787895oaf.87.1663172845636;
-        Wed, 14 Sep 2022 09:27:25 -0700 (PDT)
+        bh=0Y050b+bqDXjMFJ0FQAtLb9qk0gbyprIyKNchoQmXT8=;
+        b=6cbvD9XiossrZcXYTb9aw7fmFaH4KaScUtX8nKOEUZ+e4FPAzl3Ohwlh9FVlr6XBjL
+         0rWp+OgIqqApPrjrmsTWL0Nt7yvzmjqLb5D1p0hlvBVjSWnH7o+wZkGskUe9jAFlUfJ5
+         buyr930XF1upsqu7ANOHInXKovTkbJ9fkqUxp4CK5V1MP9v/yxqQE3WlhNl6ND4Yq6yP
+         /LL1X2I/eFDa0RK6Z4XWOr+JlWx2ieLyOUuHiUWXFjxghnXeRCQCisiiJFjEk8w9vAFS
+         FMcCKN5hNuMQLgwikTLHwr/ej3NeYxPyo/X3YW1DWr1x6T/ETcKO+U3kXmSgMHUDjpCD
+         WZFg==
+X-Gm-Message-State: ACgBeo0TNKR4pjngh/cfc75Z0hSvndUUSTU2u6oYuhkn3/7MOIWDMfEZ
+	ACggIxKMZZgInciVSvPsd0AK5M9X9Q==
+X-Google-Smtp-Source: AA6agR5JPh3F/7WxyKo5hFzduVLue4pftUF2pPAoQkbx7N1C4y8oQD4shtXx254V59inZFs9XEpmlg==
+X-Received: by 2002:a05:6808:140e:b0:344:d2fb:43fe with SMTP id w14-20020a056808140e00b00344d2fb43femr2244433oiv.112.1663172864306;
+        Wed, 14 Sep 2022 09:27:44 -0700 (PDT)
 Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id g9-20020a056830160900b00655d9ea896bsm5587940otr.47.2022.09.14.09.27.24
+        by smtp.gmail.com with ESMTPSA id w35-20020a056830412300b00657a221eb71sm848607ott.65.2022.09.14.09.27.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Sep 2022 09:27:25 -0700 (PDT)
-Received: (nullmailer pid 2501100 invoked by uid 1000);
-	Wed, 14 Sep 2022 16:27:24 -0000
-Date: Wed, 14 Sep 2022 11:27:24 -0500
+        Wed, 14 Sep 2022 09:27:44 -0700 (PDT)
+Received: (nullmailer pid 2502825 invoked by uid 1000);
+	Wed, 14 Sep 2022 16:27:43 -0000
+Date: Wed, 14 Sep 2022 11:27:43 -0500
 From: Rob Herring <robh@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dmitry.torokhov@gmail.com, linux-input@vger.kernel.org, chen.zhong@mediatek.com, robh+dt@kernel.org, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: input: Convert mtk-pmic-keys to DT
- schema
-Message-ID: <20220914162724.GA2500989-robh@kernel.org>
+Cc: dmitry.torokhov@gmail.com, linux-mediatek@lists.infradead.org, robh+dt@kernel.org, devicetree@vger.kernel.org, matthias.bgg@gmail.com, krzysztof.kozlowski+dt@linaro.org, linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, chen.zhong@mediatek.com
+Subject: Re: [PATCH v2 2/2] dt-bindings: input: mediatek,pmic-keys: Add
+ compatible for MT6331 keys
+Message-ID: <20220914162743.GA2502746-robh@kernel.org>
 References: <20220914103021.43593-1-angelogioacchino.delregno@collabora.com>
- <20220914103021.43593-2-angelogioacchino.delregno@collabora.com>
+ <20220914103021.43593-3-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220914103021.43593-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220914103021.43593-3-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_092729_108406_A3E70B0F 
-X-CRM114-Status: GOOD (  11.74  )
+X-CRM114-CacheID: sfid-20220914_092745_269168_A7DBE47D 
+X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,20 +79,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 14 Sep 2022 12:30:20 +0200, AngeloGioacchino Del Regno wrote:
-> Convert the mtk-pmic-keys to DT schema format.
-> 
-> The old binding was missing documentation for key press/release
-> interrupts, even though it was supported in hardware and driver,
-> so support for the same was added during the conversion.
+On Wed, 14 Sep 2022 12:30:21 +0200, AngeloGioacchino Del Regno wrote:
+> Add a compatible for the keys found on MT6331 PMIC.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../bindings/input/mediatek,pmic-keys.yaml    | 113 ++++++++++++++++++
->  .../bindings/input/mtk-pmic-keys.txt          |  46 -------
->  2 files changed, 113 insertions(+), 46 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
->  delete mode 100644 Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+>  Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
