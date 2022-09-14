@@ -4,91 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08018C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 01:34:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69098C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 01:38:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+zR/D7Gt4i2U/ZYSazLjSoiwUJzxb0ZYwel8BdIg17Y=; b=eCFgyIRFE5Ym6MHz//ueJoGKHD
-	4T5dEIe0pCkQ/NbZcbeKJe5zU05oGJWMXqFPuxYkeLLQVIsdvMrkeTJEVs1RuffPrUsFs6Md2RQt6
-	ln4xGahPjz+DmBOsa/hKvB+TF5JIbFaxZkSPqXgKMNKedwD662sRoMUw6GF1qcNrx+HJ6Kf2+gCa+
-	eX+XACmh6zOoYu6NpQRNDlvj2Sp+OjczQKxtgojb20LB18CQCsn438Nkw+Qn8n2arjUp6DRsP4P9E
-	yuICEmYhNZUGgTIXm6W0/qM1vcXkM3f6/aTv28WImHRZukXzLDte8nfc22iRpSIYGB5YnIfDI7bPk
-	gw84UpmQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Wd1G08HC6flVRDFOB/8mfAvI8N21GR0U87+/DU0QX78=; b=hZp118wraHlKoMKQinDloqJoQt
+	3EYhwpXZXQIgZ55DE3ywI96+y2tJ1ipeXVmnBcMGjvzZHPW/Se0bhRBEnbcS9l8plTzFrPEFnIbCa
+	EswyBQyPO7QkKocHrVZ4spXTvGUBORh9xogkmTN4FxFXdcnDEHMiiH7QxwFicxPE1W7SEKP9U4HQA
+	KtxrZ8dbkWzi3bvBNTi1bNV6FbBIzD+Tedq7iLkTfO2D/uDq67pdl0o3F3wHfnpKOG7OpVfgl3uKN
+	HcQLA2yZaKUkcynBxwLBm2E26d5WIFMaOR4XeRHgC14FGPlORCuooMS6lqwfRrFld+gdENfZLYETL
+	pTjrwCHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYHI5-003c6V-JL; Wed, 14 Sep 2022 01:34:13 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1oYHLc-003ffr-Sy; Wed, 14 Sep 2022 01:37:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYHHq-003bk5-Cy; Wed, 14 Sep 2022 01:34:00 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id d64-20020a17090a6f4600b00202ce056566so7906290pjk.4;
-        Tue, 13 Sep 2022 18:33:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:from:to:cc:subject:date;
-        bh=+zR/D7Gt4i2U/ZYSazLjSoiwUJzxb0ZYwel8BdIg17Y=;
-        b=e83yzkSfbqQl4FHCnsCg8QeAgRRFyHw5t04ORjLKvGZj53gvAgj0G9uh1sdZ+kZuP0
-         mzzhcYPiZ9VDYTZ6HAzW1nCT4q4J+UovZbuzcWw4crCugJpiPnUQr1pUe+id1V7Mg3kr
-         qx6L7Vpud8XADS7FJhFcwf9Df5e+LCYzoxinKnHXxaTHCuP9f2vrVTBsNt48asKUN6+w
-         ZrsY4eAUg+WCZzgxR5XjwzAI7922phY1vTz6/VzWsANESlZjbYii907fIG3SpN16tgjW
-         fcql6vhIpWM2foBiNqC3OC+2IuAKVoHTDFQmKhR9VrMKfKy5ellCfn0whtr4nT9Kps9I
-         YrhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=+zR/D7Gt4i2U/ZYSazLjSoiwUJzxb0ZYwel8BdIg17Y=;
-        b=rnhFzA8JWzNY3Yr29dvdJkkGF4gNxougaU93OfByB9D2VG446Q5i3oyYTAuh5pu/lt
-         GeZQu2NedJO3R+/ui9IvadmV8pZCMmqgiQHmQuqB4TeH509yazpavURhdGp9L0fMnjIr
-         yI/hKnUX5pab69zm7GIhZJFSr9n1MuwYkPgwWjFUjZH9SQTwLz9uUGl79uib70lF9tC5
-         vNRw7g+mlj4Or4bi72uTCpwvLRTvAZj4EYnqOdOXFPDmxbnh6q1L1t+wq8JdYz3Fyv2W
-         1BMM+CAfku6VJuiA8+ZwV36X5fABnzkcoDmMxl0HH24eKcnH/gn6M4ba32yOF0r8g7Fn
-         19iw==
-X-Gm-Message-State: ACrzQf3DBIzwSMZA6sY77wnqOYXlB3Mzw7bokM0AHW/+GxaXdEnDCdaL
-	UQ9V/uf6g7fnRKljuG4sSaw=
-X-Google-Smtp-Source: AMsMyM4P6M/na02By5wy5twVLFsbiifoZyhYyzLDPSNF/G5GVIYSiqntzXYncxIbP0HojwZqM/7qQA==
-X-Received: by 2002:a17:90b:4c84:b0:203:20a:7afe with SMTP id my4-20020a17090b4c8400b00203020a7afemr2122581pjb.94.1663119235718;
-        Tue, 13 Sep 2022 18:33:55 -0700 (PDT)
-Received: from cyhuang-hp-elitebook-840-g3.rt ([2402:7500:486:362c:d94f:b1bb:6842:3424])
-        by smtp.gmail.com with ESMTPSA id d21-20020a170902729500b0017441330392sm9025714pll.63.2022.09.13.18.33.52
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 13 Sep 2022 18:33:55 -0700 (PDT)
-Date: Wed, 14 Sep 2022 09:33:49 +0800
-From: ChiYuan Huang <u0084500@gmail.com>
-To: Lee Jones <lee@kernel.org>
-Cc: Dan Carpenter <dan.carpenter@oracle.com>,
-	Andy Shevchenko <andy.shevchenko@gmail.com>,
-	ChiYuan Huang <cy_huang@richtek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	ChiaEn Wu <chiaen_wu@richtek.com>,
-	Gene Chen <gene_chen@richtek.com>,
-	linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	kernel-janitors <kernel-janitors@vger.kernel.org>
-Subject: Re: [PATCH] mfd: mt6370: add bounds checking to regmap_read/write
- functions
-Message-ID: <20220914013345.GA5802@cyhuang-hp-elitebook-840-g3.rt>
-References: <Yv8ezribLQbq5ggv@kili>
- <CAHp75VcotcJzqc4iSwNTKcvF3vAYz6VUuMrsj7LF6mi6Xu8D=Q@mail.gmail.com>
- <20220822125705.GD2695@kadam>
- <YxmSTH5ETSC0D3Rp@google.com>
- <Yxm7eztkQKDPU/Kl@kadam>
- <YxrkZX36wzVlzq5u@google.com>
+	id 1oYHLP-003fZ4-R9; Wed, 14 Sep 2022 01:37:41 +0000
+X-UUID: 0a2bd19fc0574a09bc5fd4ce268a400f-20220913
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=Wd1G08HC6flVRDFOB/8mfAvI8N21GR0U87+/DU0QX78=;
+	b=m9INvP0usr9U1of8vPtJUZ6gGcfF9SSRrTpV2O1YwKV+bDcG5EVDtvetf6esF2doqx176VzxNL47qkIhZksYngLvpZrNnQB8snXMDA2D+uPeRqb0q7YIpAsynlvOnoytVIoX5c8SULblSFbjSyi+2oHpC2uiK3T9hURYvpnwuhU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:ae53c394-e120-4d85-aa87-0ff472e48271,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:b2264cf6-6e85-48d9-afd8-0504bbfe04cb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 0a2bd19fc0574a09bc5fd4ce268a400f-20220913
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 756701701; Tue, 13 Sep 2022 18:37:35 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 14 Sep 2022 09:37:00 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Wed, 14 Sep 2022 09:37:00 +0800
+Message-ID: <374cb457bdd1d77ad5e81b2d24538b6750aebf95.camel@mediatek.com>
+Subject: Re: [PATCH v3 5/9] drm/mediatek: Add gamma support different
+ lut_bits for other SoC
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, Singo
+ Chang <singo.chang@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 14 Sep 2022 09:36:58 +0800
+In-Reply-To: <5419b691-1b89-9878-ac52-4c99fa3af322@collabora.com>
+References: <20220911153734.24243-1-jason-jh.lin@mediatek.com>
+	 <20220911153734.24243-6-jason-jh.lin@mediatek.com>
+	 <5419b691-1b89-9878-ac52-4c99fa3af322@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <YxrkZX36wzVlzq5u@google.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_183358_739053_011066A8 
-X-CRM114-Status: GOOD (  34.52  )
+X-CRM114-CacheID: sfid-20220913_183739_908969_6B071DFD 
+X-CRM114-Status: GOOD (  21.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,124 +87,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 09, 2022 at 07:59:49AM +0100, Lee Jones wrote:
-> On Thu, 08 Sep 2022, Dan Carpenter wrote:
-> 
-> > On Thu, Sep 08, 2022 at 07:57:16AM +0100, Lee Jones wrote:
-> > > On Mon, 22 Aug 2022, Dan Carpenter wrote:
-> > > 
-> > > > On Fri, Aug 19, 2022 at 09:27:13AM +0300, Andy Shevchenko wrote:
-> > > > > On Fri, Aug 19, 2022 at 8:25 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
-> > > > > >
-> > > > > > It looks like there are a potential out of bounds accesses in the
-> > > > > > read/write() functions.  Also can "len" be negative?  Let's check for
-> > > > > > that too.
-> > > > > 
-> > > > > ...
-> > > > > 
-> > > > > > Fixes: ab9905c5e38e ("mfd: mt6370: Add MediaTek MT6370 support")
-> > > > > 
-> > > > > > From static analysis.  This code is obviously harmless however it may
-> > > > > > not be required.  The regmap range checking is slightly complicated and
-> > > > > > I haven't remembered where all it's done.
-> > > > > 
-> > > > > Exactement! I do not think this Fixes anything, I believe you are
-> > > > > adding a dead code. So, can you do deeper analysis?
-> > > > 
-> > > > I spent a long time looking at this code before I sent it and I've
-> > > > spent a long time looking at it today.
-> > > > 
-> > > > Smatch said that these values come from the user, but now it seems
-> > > > less clear to me and I have rebuilt the DB so I don't have the same
-> > > > information I was looking at earlier.
-> > > > 
-> > > > So I can't see if these come from the user but neither can I find any
-> > > > bounds checking.
-> > > 
-> > > What's the consensus please?
+Hi Angelo,
+
+Thanks for the reviews.
+
+On Mon, 2022-09-12 at 12:25 +0200, AngeloGioacchino Del Regno wrote:
+> Il 11/09/22 17:37, Jason-JH.Lin ha scritto:
+> > Add lut_bits in gamma driver data for each SoC and adjust the usage
+> > of lut_bits in mtk_drm_gamma_set_common().
 > > 
-> > Let's drop it.  I think it's not required.
+> > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> > ---
+> >   drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 36 ++++++++++++++++
+> > -------
+> >   1 file changed, 25 insertions(+), 11 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > index e69d0b205b9a..155fb5d94d79 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
+> > @@ -25,11 +25,14 @@
+> >   
+> >   #define LUT_10BIT_MASK				0x03ff
+> >   #define LUT_SIZE_DEFAULT			512 /* for setting
+> > gamma lut from AAL */
+> > +#define LUT_BITS_DEFAULT			10
+> > +#define LUT_INPUT_BITS				16 /* input lut
+> > bit from application */
+> >   
+> >   struct mtk_disp_gamma_data {
+> >   	bool has_dither;
+> >   	bool lut_diff;
+> >   	u16 lut_size;
+> > +	u8 lut_bits;
+> >   };
+> >   
+> >   /*
+> > @@ -72,17 +75,23 @@ void mtk_gamma_set_common(struct device *dev,
+> > void __iomem *regs, struct drm_crt
+> >   	struct mtk_disp_gamma *gamma = dev_get_drvdata(dev);
+> >   	bool lut_diff = false;
+> >   	u16 lut_size = LUT_SIZE_DEFAULT;
+> > +	u8 lut_bits = LUT_BITS_DEFAULT;
 > 
-> Dropped.
+> Please fix this double assignment like shown in the comment for patch
+> [4/9].
 > 
-Hi, all:
-
-  I have reproduced this case.
-If register access over the bound, it'll cause the NULL pointer.
-For the MT6370, the register bank layout is 0 -> TCPC, 1 -> PMU.
-
-From my experiment, I try to access 0x200, it means bank 2 -> empty
-
-[   41.301385] Hardware name: Raspberry Pi 4 Model B Rev 1.2 (DT)
-[   41.307296] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-[   41.314358] pc : i2c_smbus_xfer+0x58/0x120
-[   41.314371] lr : i2c_smbus_read_i2c_block_data+0x74/0xc0
-[   41.314376] sp : ffffffc008ceb9a0
-[   41.327261] x29: ffffffc008ceb9a0 x28: 0000000000000000 x27: ffffffc008cebb94
-[   41.334505] x26: ffffffe529116000 x25: ffffffc008ceba30 x24: 0000000000000008
-[   41.334513] x23: 0000000000000000 x22: 0000000000000001 x21: 0000000000000000
-[   41.334520] x20: 0000000000000000 x19: ffffff804e1e8010 x18: ffffffe529116538
-[   41.348994] x17: 0000000000000000 x16: ffffffe528ae11f0 x15: ffffff804e1be01e
-[   41.349002] x14: 0000000000000000 x13: ffffff804e1bd03c x12: 7220303032783020
-[   41.370710] x11: 0000000000000000 x10: 000000000000000a x9 : ffffffc008cebb60
-[   41.377953] x8 : 0000000000000000 x7 : ffffffe529116538 x6 : ffffffc008ceba30
-[   41.385196] x5 : 0000000000000008 x4 : 0000000000000000 x3 : 0000000000000001
-[   41.392436] x2 : 0000000000000000 x1 : 0000000000000002 x0 : ffffff804e1e8010
-[   41.399677] Call trace:
-[   41.402153]  i2c_smbus_xfer+0x58/0x120
-[   41.405956]  i2c_smbus_read_i2c_block_data+0x74/0xc0
-[   41.410991]  mt6370_regmap_read+0x40/0x60 [mt6370]
-[   41.415855]  _regmap_raw_read+0xe4/0x278
-[   41.419834]  regmap_raw_read+0xec/0x240
-[   41.423721]  rg_bound_show+0xb0/0x120 [mt6370]
-[   41.428226]  dev_attr_show+0x3c/0x80
-[   41.431851]  sysfs_kf_seq_show+0xc4/0x150
-[   41.435916]  kernfs_seq_show+0x48/0x60
-[   41.439718]  seq_read_iter+0x11c/0x450
-[   41.443519]  kernfs_fop_read_iter+0x124/0x1c0
-[   41.447937]  vfs_read+0x1a8/0x288
-[   41.451296]  ksys_read+0x74/0x100
-[   41.454654]  __arm64_sys_read+0x24/0x30
-[   41.458541]  invoke_syscall+0x54/0x118
-[   41.462344]  el0_svc_common.constprop.4+0x94/0x128
-[   41.467202]  do_el0_svc+0x3c/0xd0
-[   41.470562]  el0_svc+0x20/0x60
-[   41.473658]  el0t_64_sync_handler+0x94/0xb8
-[   41.477899]  el0t_64_sync+0x15c/0x160
-[   41.481614] Code: 54000388 f9401262 aa1303e0 52800041 (f9400042) 
-[   41.487793] ---[ end trace 0000000000000000 ]---
-
-I check the APIs regmap_read/write and regmap_raw_read/write.
-
-regmap_read/write -> blocked by boundary check in regmap_readable/writeable
-regmap_raw_read/write -> no additional boundary check.
-
-I guess the result for regmap_bulk_read/write is the same as
-regmap_raw_read/write.
-
-For this case, it seems mt6360 regmap will also cause this issue.
-
-I'll submit one to fix this.
-
-Hi, Dan:
-  Your patch really fix this.
-Just one thing need to be confirmed, but it depends on what Lee prefers.
-
-In mt6370.h, we already defiend the enum for the bank boundary
-"MT6370_MAX_I2C".
-
-Instead of ARRAY_SIZE(info->i2c), you can also use the enum define.
-
-Anyway, many thanks to report this bug.
-
-ChiYuan Huang.
-
-
-> -- 
-> Lee Jones [李琼斯]
+> Thanks,
+> Angelo
 > 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+OK, I'll fix this.
+Regards,
+Jason-JH.Lin
+
+-- 
+Jason-JH Lin <jason-jh.lin@mediatek.com>
+
 
