@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93372ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 09:14:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E975FECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 09:15:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gW2h2omwaqsEc8eIL1oqekJ7kF0Gj5PZa7ThxS1nMEo=; b=mCnValwEPIo1W/QrX3Sp0dRnpL
-	MF9DHzMztRpK5Y3tbKEPE/2DHZGpqEVIrseNzw9MlORKbYqsI0bmsWoEXDRLKbS6nQ59dZshYKqBi
-	6TspwtsMU446eaY0gahQYK2X/HerfWfGaidD1fxmNLIoEcfewv3L9w+1UUcn/O/Dh5D4UmTWGasX+
-	RZVv7ozcxCurDVHmR9rIakOIVuNm8e9EWYjyl2lnSslRnmKpcuYeHqDtHvgV7blz/G13mwZv/INJ8
-	dD6/Yaq0+hxnEVG0MqAry7bHSt6QQf+A77wEqPoDx9+jFeOjjUWIr7uXIdwN+W5jqW19f5ZUbidgN
-	rnYRmD2w==;
+	bh=NobuUIDGzyuidvw+6ptTtuOVjxh1cmrEHK3JsUmEAlI=; b=sKx+1bnNzyaN9/Xo/um+CSABu4
+	nXuExZh71g3kve6MxiaN/c312hdEVFT1B42bfUB8aJ02vnK6gajn7uhS2PLWMUNA5i6hTBs2cuFk1
+	z/QumBz+OMEGHJXVv3QuSgNSsfG36nEzJFpVobAt6zAxQ+27bBUsGPWyJYUjoyxPDU6JI9zU3W4hW
+	2I+B5wnfjztact6sZGfIAnse+0ojc+yhiQk4FHO3WzLM3Htbt5L7I7jFR3R5200wk8dnUbuQH1ifz
+	C3gGfWemRHvNxgoMNkGf73OrG/EyxtpQw5YOdex7YBqy0KT+n7DbTo0zEKQyuUJ03aJA+2/xLHNNJ
+	UjVdEpIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYOSx-00E12u-A0; Wed, 14 Sep 2022 09:13:55 +0000
+	id 1oYOUl-00E2Zp-J5; Wed, 14 Sep 2022 09:15:47 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYOBT-00Dl4M-11; Wed, 14 Sep 2022 08:55:52 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1663145716; cv=none; 
+	id 1oYOBb-00Dl9S-Oi; Wed, 14 Sep 2022 08:56:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1663145739; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=dnIFahyM0IisMC8N0DtTazUfCcWYsEENXNGipecNC6GPYrLsfm5DKi8z2ig/iEh/pLaZgjTpFgHvcPzwjR1AgF56RLjmvGR5g/dadAkzrDyBzjEsFHvm/dyeudS2kBX1CjDRynOzskVVOjBazN5i9Vxvki5ny7eKXrzUwd+dal4=
+	b=ltoEjcbZu+opUCeFag1Q3m7T+Wvgafb9HBaXi1x0kMcJXQCpqDkknwg/Sz+n4EDN5wBPEsYgwyiJtOuevJOU66maHNCz13IqUuQ+JDY9k3NfACIuZTkXDTatC1RzpRlpVvQobtJ/059fc1iMyKdTk832yVA1HwM2IKVc4oMoggQ=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1663145716; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=gW2h2omwaqsEc8eIL1oqekJ7kF0Gj5PZa7ThxS1nMEo=; 
-	b=WrUpT0z2dmZpiUr2xkzUIhLL9aLMqqnmxTABawtER015c0tFbu2UAiT1i3gbVQYuVtyqwf/FRQa9oo2FuI6oF0hgsKgu4c2ycM4cpnRfbMI6Lvx3aqWhrcKkKnb1louGsor0yQgkO/JWJwZf54yJ3kqFMeJD8D0OmA9L5Rpy83c=
+	t=1663145739; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=NobuUIDGzyuidvw+6ptTtuOVjxh1cmrEHK3JsUmEAlI=; 
+	b=D6YppVTMq1IKIFBBHO51zYCXPUDbmljIhtc+W+2ghJGl8pkjUgv+wE5s3Hjy8cPIBxA9p3WuObaZmRdPckABcjTYRWpadUxMMeet8PuSCymiOQFkt88lFFrBpmaeJcFlDJ5wqZ+mA7h9W2xtTmX+dKlEy8DJL48usAdJbWBubmo=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663145716;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663145739;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=gW2h2omwaqsEc8eIL1oqekJ7kF0Gj5PZa7ThxS1nMEo=;
-	b=BRaCg04LH58aSEuT68+BF4QrsDJKoxjONHtarrYBpGDcIvNfHnk5lZ8pypIT3msD
-	LQvgODEuAUhGFrVXi6IRvs0BPUvYBAyAaVElWenD6oNVwWtmS+1xcgwyFuNmrBjn4KD
-	7S9Jv8NiJ7TgFv8lBWLJc8q4eDtJO3gr90BkOMOk=
+	bh=NobuUIDGzyuidvw+6ptTtuOVjxh1cmrEHK3JsUmEAlI=;
+	b=d9d6wRiqyFYSNwC13megxI0ulVgIr/OK5BuklH6+pELdxYqUZ6cw9DAjGb7ICG/i
+	KDsGKbl2SDDvS3/ruCcef+IFCpyeZNAAfUUXadlJdi7ro2hwBxoxrjQT2So9ZKVLzB4
+	+O+sE0g7VcVBW71Y3AaliQylY+wE21VxB7NIswYg=
 Received: from arinc9-PC.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1663145713714881.9487168174912; Wed, 14 Sep 2022 01:55:13 -0700 (PDT)
+	with SMTPS id 1663145736632721.7554876765212; Wed, 14 Sep 2022 01:55:36 -0700 (PDT)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -69,11 +69,10 @@ Cc: netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mips@vger.kernel.org,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Sungbo Eo <mans0n@gorani.run>
-Subject: [PATCH 02/10] dt-bindings: net: dsa: mediatek,mt7530: change mt7530 switch address
-Date: Wed, 14 Sep 2022 11:54:43 +0300
-Message-Id: <20220914085451.11723-3-arinc.unal@arinc9.com>
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+Subject: [PATCH 06/10] mips: dts: ralink: mt7621: remove interrupt-parent from switch node
+Date: Wed, 14 Sep 2022 11:54:47 +0300
+Message-Id: <20220914085451.11723-7-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220914085451.11723-1-arinc.unal@arinc9.com>
 References: <20220914085451.11723-1-arinc.unal@arinc9.com>
@@ -82,8 +81,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_015551_165223_F62122C5 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20220914_015600_023506_07D25B14 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,95 +98,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the case of muxing phy0 of the MT7530 switch, the switch and the phy
-will have the same address on the mdio bus, 0. This causes the ethernet
-driver to fail since devices on the mdio bus cannot share an address.
+The interrupt-parent property is inherited from the ethernet node as it's a
+parent node of the switch node. Therefore, remove the unnecessary
+interrupt-parent property from the switch node.
 
-Any address can be used for the switch, therefore, change the switch
-address to 0x1f.
-
-Suggested-by: Sungbo Eo <mans0n@gorani.run>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 ---
- .../bindings/net/dsa/mediatek,mt7530.yaml     | 24 +++++++++----------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ arch/mips/boot/dts/ralink/mt7621.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index f9e7b6e20b35..2c73d13adf14 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -294,9 +294,9 @@ examples:
-         #address-cells = <1>;
-         #size-cells = <0>;
+diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
+index 9302bdc04510..e9203fec3fdf 100644
+--- a/arch/mips/boot/dts/ralink/mt7621.dtsi
++++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+@@ -346,7 +346,6 @@ switch0: switch@0 {
+ 				reset-names = "mcm";
+ 				interrupt-controller;
+ 				#interrupt-cells = <1>;
+-				interrupt-parent = <&gic>;
+ 				interrupts = <GIC_SHARED 23 IRQ_TYPE_LEVEL_HIGH>;
  
--        switch@0 {
-+        switch@1f {
-             compatible = "mediatek,mt7530";
--            reg = <0>;
-+            reg = <0x1f>;
- 
-             reset-gpios = <&pio 33 0>;
- 
-@@ -356,9 +356,9 @@ examples:
-         #address-cells = <1>;
-         #size-cells = <0>;
- 
--        switch@0 {
-+        switch@1f {
-             compatible = "mediatek,mt7530";
--            reg = <0>;
-+            reg = <0x1f>;
- 
-             mediatek,mcm;
-             resets = <&ethsys MT2701_ETHSYS_MCM_RST>;
-@@ -486,9 +486,9 @@ examples:
-         #address-cells = <1>;
-         #size-cells = <0>;
- 
--        switch@0 {
-+        switch@1f {
-             compatible = "mediatek,mt7621";
--            reg = <0>;
-+            reg = <0x1f>;
- 
-             mediatek,mcm;
-             resets = <&sysc MT7621_RST_MCM>;
-@@ -573,9 +573,9 @@ examples:
-                 reg = <4>;
-             };
- 
--            switch@0 {
-+            switch@1f {
-                 compatible = "mediatek,mt7621";
--                reg = <0>;
-+                reg = <0x1f>;
- 
-                 mediatek,mcm;
-                 resets = <&sysc MT7621_RST_MCM>;
-@@ -664,9 +664,9 @@ examples:
-                 phy-mode = "rgmii";
-             };
- 
--            switch@0 {
-+            switch@1f {
-                 compatible = "mediatek,mt7621";
--                reg = <0>;
-+                reg = <0x1f>;
- 
-                 mediatek,mcm;
-                 resets = <&sysc MT7621_RST_MCM>;
-@@ -745,9 +745,9 @@ examples:
-                 phy-mode = "rgmii";
-             };
- 
--            switch@0 {
-+            switch@1f {
-                 compatible = "mediatek,mt7621";
--                reg = <0>;
-+                reg = <0x1f>;
- 
-                 mediatek,mcm;
-                 resets = <&sysc MT7621_RST_MCM>;
+ 				ports {
 -- 
 2.34.1
 
