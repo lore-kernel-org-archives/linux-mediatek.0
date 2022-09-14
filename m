@@ -4,79 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34D2DECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 13:14:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2764DECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 13:19:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kK+4cuyn2x8bZa+3XjGCMKovnOpMsppyq3qKsdF2ffg=; b=sO/2NNXMjI45w0iV+YDUcl6P3w
-	OpYAFBOAi3yfkiYEnSA+de89M8lm1Pa2/staVpjrOSOFByBIjetzqvcS9/5EnaKq2RRvzV6DJNcgg
-	RIKzfJi5m0XyhErjq36irDehHD6Hj2x4ssncLi2uHBJ/BhtqPRiEuRF+wYZUtc+vxnqS7xbd+dywx
-	99PdWCWFfHo297GREMGDyokDFD4VHbFxSt34Sb7h69e7H112XbJ3VNgViKR8ZNjLIRQm8DSXFN3y6
-	8PYscrDQT2Vy74KIJsqFTU1mAK+o6HE6zsVCbtbNsLr1oPZOB2RHtiVjPGPjGb+yuKeRL9xIKvTl5
-	rwWKAGnQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DS/dB1Z8F2XdEan+7+v8LqVABBrY3Wgrn6yGpXksSnc=; b=WG2Rtw7c1of7Q+3Wh4IAqndNxm
+	36Aa1VgjgK1g1kFVx5O70XhydVvuk+c7dUXayaZ4h5cDZyONjZkwEaVMpxS22CYTkH9BfCjiYLRU0
+	Cyed8QSB8kB8+DoEeW0VeqGRS+qPh4Xby+YmrG+YS9Vowwyk7kXBHOm/lUlRxlYkOOtCx94tbp5w0
+	dC/r1Js+Pn0MZfnRNACGIHkbaqrSUubixLsPtIcjlkm+CmICbtHJ6UTjjnxNAjMIIWEVPz0uFPGxD
+	+VGtcRvPpe2gUontfbXcGepqXMXYXbwEhdbEm3aSfJJReWuzrBMdBQtJoYhTYzWAXIG2biPhs47pe
+	qR1f7Veg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYSDo-000aFI-Nb; Wed, 14 Sep 2022 13:14:32 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1oYSI4-000fWm-V9; Wed, 14 Sep 2022 13:18:56 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYSDb-000Zuc-6x
-	for linux-mediatek@lists.infradead.org; Wed, 14 Sep 2022 13:14:23 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id bz13so25666375wrb.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Sep 2022 06:14:18 -0700 (PDT)
+	id 1oYSHg-000f3Z-EU
+	for linux-mediatek@lists.infradead.org; Wed, 14 Sep 2022 13:18:38 +0000
+Received: by mail-wm1-x330.google.com with SMTP id bg5-20020a05600c3c8500b003a7b6ae4eb2so15475911wmb.4
+        for <linux-mediatek@lists.infradead.org>; Wed, 14 Sep 2022 06:18:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date;
-        bh=kK+4cuyn2x8bZa+3XjGCMKovnOpMsppyq3qKsdF2ffg=;
-        b=QsXOsr8pctoL+dvXPhfMqitnyDpitQBYg6IdWPYLziAKQS/2z68AXxL7Y8ZMgltcne
-         aRWXDvzTef1JmAU1pf2KgQ3C64iplqyg/YeTwBCHmNcJeKXhHUS3gjMMoatV4usMNXqh
-         jT1KbXksezwoec5WtRhMr+2YINIFL+hwCazWfsb7so7TtN26A/d+KthKpin0bK3PZZ9o
-         azLTC/dob2rz2LpTSVPEsaPiJMZeiDbRL6aVLY1oFMG1mksf/l/OxB+yfHxzOJ6kSNt7
-         Zl6U1orgyaCHeeD3igXHWtWyXRcLahQ+59syyXa6vDU8ReDYj8jIy586OOsSRZq9fCCM
-         FsQw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=DS/dB1Z8F2XdEan+7+v8LqVABBrY3Wgrn6yGpXksSnc=;
+        b=U3uQB5mdqAWulEk/fX6kGrPUKTRAaJXxtaOqKnZAK5Ttyefxo59iAwEwEq8JOs8iDO
+         8bg+Va6JCMlpApltHBGInErDhsVO/awvtfjGuzGNSlwI02Q0ktap8u/XuljHFlumrxPW
+         VLi5lh1mJys7EZxxZ/Nr7IES8Ir9goTJkdpzG2VjdnfSsdSNGhvpbQErQ+qsVh2WkQMu
+         oaXx1T8Y9JtzepZG8kPn4V5SP9bnXVKSbygKNW6mTmPEfC/OREA9Im1NSxl4L7Dm0UWf
+         wTkmIKou80/6UwkmnHY8AJxZTKgznM7FrmL6CVqn1JYMegf1VFmsHppG76zsL+OL9EMb
+         yS2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date;
-        bh=kK+4cuyn2x8bZa+3XjGCMKovnOpMsppyq3qKsdF2ffg=;
-        b=4WBb0kGBISXGikRRDdYiGjWmctBOtUwYKTQudDGp4ydIOBHUxgOY+/PwyvEUoi/Bsu
-         4zXYkRUVEWbOvTvAXLyP1mdv1f7LVTveTulfYPUHDisBCfJKAKMF9O6YFRaRip/w+MEg
-         enCic4zyZ8XRPBbWslgOyMubXSkKhDudVsXmtERE9ht+yAGThCw7ICSQ0oTXPKAzB3Hi
-         j7aiVSx92hk3JcyUgGcprAVNbflbh7UU3VKqXinVybaXaNYhl+iJe/W0Ry9XRbfdJ1fd
-         CPyNXgqcU6LqmcsS6kHFI6T4WKO7sL40hVxiYPkTShJ4IwIzZG64ioUrdOSKwmV2OBHE
-         ntUQ==
-X-Gm-Message-State: ACgBeo1jcwzAyzToep8WiUc4PqmB7ZfRrEGDyi5g2jJtw4rcV2G19r1+
-	gdaoXOmI+vMMnjwrSautD4Jh7A==
-X-Google-Smtp-Source: AA6agR5ANUi79WWgOf9jC1tlgp0/htkLuK+NlPCxd4hKwfEcURAD7sCnBetWwAbHCF5GbmcQcIv1Ug==
-X-Received: by 2002:a5d:4602:0:b0:228:62df:7d2f with SMTP id t2-20020a5d4602000000b0022862df7d2fmr21723881wrq.247.1663161257160;
-        Wed, 14 Sep 2022 06:14:17 -0700 (PDT)
-Received: from localhost.localdomain (210.145.15.109.rev.sfr.net. [109.15.145.210])
-        by smtp.googlemail.com with ESMTPSA id o29-20020a05600c511d00b003a319b67f64sm8185249wms.0.2022.09.14.06.14.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Sep 2022 06:14:16 -0700 (PDT)
-From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Amjad Ouled-Ameur <aouledameur@baylibre.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: mediatek: mt8183: remove thermal zones without trips.
-Date: Wed, 14 Sep 2022 15:13:39 +0200
-Message-Id: <20220914131339.18348-1-aouledameur@baylibre.com>
-X-Mailer: git-send-email 2.37.3
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=DS/dB1Z8F2XdEan+7+v8LqVABBrY3Wgrn6yGpXksSnc=;
+        b=vrSSEEywA/LbPjp6pXZXphz9IDYvwp4w6dCLssfgxrzW95OlyqPPJApWloASHW+Jp8
+         PcldKgCq3eRU6WhUS0sQTwnLXnSmCNcO4UELK83wgwsCmnuWIHLspkuuuV8Fsu1jWLeL
+         gId38WDHAacBDhp8BeqWpTkXOgKw/iZkkFATNoicdRzvlRd+RssOv36LVsJHNsflXo7z
+         PW/qB/oQprmXOzQjuUQN9GgT2dYcNglIhdDubP2FUB+yGU1cVk2RMs54ejfQQUmZqb0t
+         4a2PLfUIiwiAB88gtGdva/36rdf5qE2J801C3YlRmgiEr+AOYkbk4pRxgzVa5V3QJ13R
+         lmEA==
+X-Gm-Message-State: ACgBeo25VUXUENgOUbgeJhbJ9zhlpjH/Qn9rT3ZQAEW2fCMPm+zLNTRZ
+	b96dUcWoyk9yv+GUn1LU5gGPWQ==
+X-Google-Smtp-Source: AA6agR4grufWg+c3qXZKBLUKABCRUYDpCsb6qvLVWtV85cOL2R6YF4TAyyUjumc/HzIXaQ4ecB7u6w==
+X-Received: by 2002:a05:600c:1ca8:b0:3b4:a5d1:2033 with SMTP id k40-20020a05600c1ca800b003b4a5d12033mr1741290wms.23.1663161510097;
+        Wed, 14 Sep 2022 06:18:30 -0700 (PDT)
+Received: from [192.168.0.20] (210.145.15.109.rev.sfr.net. [109.15.145.210])
+        by smtp.gmail.com with ESMTPSA id w10-20020a05600c038a00b003b2878b9e0dsm16599554wmd.20.2022.09.14.06.18.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 14 Sep 2022 06:18:29 -0700 (PDT)
+Message-ID: <fda72ade-3c47-e9f8-d041-3a87d55318aa@baylibre.com>
+Date: Wed, 14 Sep 2022 15:18:27 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re:
+Content-Language: en-US
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220914131219.18236-1-aouledameur@baylibre.com>
+From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+In-Reply-To: <20220914131219.18236-1-aouledameur@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_061419_272439_7C793781 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220914_061832_531684_E3031EC3 
+X-CRM114-Status: GOOD (  16.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,87 +94,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thermal zones without trip point are not registered by thermal core.
+Hi,
 
-tzts1 ~ tzts6 zones of mt8183 were intially introduced for test-purpose
-only but are not supposed to remain on DT.
+The subject has not been parsed correctly, I resent a proper patch here:
 
-Remove the zones above and keep only cpu_thermal.
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220914131339.18348-1-aouledameur@baylibre.com/
 
-Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 57 ------------------------
- 1 file changed, 57 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 9d32871973a2..f65fae8939de 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1182,63 +1182,6 @@ THERMAL_NO_LIMIT
- 					};
- 				};
- 			};
--
--			/* The tzts1 ~ tzts6 don't need to polling */
--			/* The tzts1 ~ tzts6 don't need to thermal throttle */
--
--			tzts1: tzts1 {
--				polling-delay-passive = <0>;
--				polling-delay = <0>;
--				thermal-sensors = <&thermal 1>;
--				sustainable-power = <5000>;
--				trips {};
--				cooling-maps {};
--			};
--
--			tzts2: tzts2 {
--				polling-delay-passive = <0>;
--				polling-delay = <0>;
--				thermal-sensors = <&thermal 2>;
--				sustainable-power = <5000>;
--				trips {};
--				cooling-maps {};
--			};
--
--			tzts3: tzts3 {
--				polling-delay-passive = <0>;
--				polling-delay = <0>;
--				thermal-sensors = <&thermal 3>;
--				sustainable-power = <5000>;
--				trips {};
--				cooling-maps {};
--			};
--
--			tzts4: tzts4 {
--				polling-delay-passive = <0>;
--				polling-delay = <0>;
--				thermal-sensors = <&thermal 4>;
--				sustainable-power = <5000>;
--				trips {};
--				cooling-maps {};
--			};
--
--			tzts5: tzts5 {
--				polling-delay-passive = <0>;
--				polling-delay = <0>;
--				thermal-sensors = <&thermal 5>;
--				sustainable-power = <5000>;
--				trips {};
--				cooling-maps {};
--			};
--
--			tztsABB: tztsABB {
--				polling-delay-passive = <0>;
--				polling-delay = <0>;
--				thermal-sensors = <&thermal 6>;
--				sustainable-power = <5000>;
--				trips {};
--				cooling-maps {};
--			};
- 		};
- 
- 		pwm0: pwm@1100e000 {
--- 
-2.37.3
+Sorry for the noise.
 
+Regards,
+
+Amjad
+
+On 9/14/22 15:12, Amjad Ouled-Ameur wrote:
+> Subject: [PATCH] arm64: dts: mediatek: mt8183: remove thermal zones without
+>   trips.
+>
+> Thermal zones without trip point are not registered by thermal core.
+>
+> tzts1 ~ tzts6 zones of mt8183 were intially introduced for test-purpose
+> only but are not supposed to remain on DT.
+>
+> Remove the zones above and keep only cpu_thermal.
+>
+> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 57 ------------------------
+>   1 file changed, 57 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 9d32871973a2..f65fae8939de 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -1182,63 +1182,6 @@ THERMAL_NO_LIMIT
+>   					};
+>   				};
+>   			};
+> -
+> -			/* The tzts1 ~ tzts6 don't need to polling */
+> -			/* The tzts1 ~ tzts6 don't need to thermal throttle */
+> -
+> -			tzts1: tzts1 {
+> -				polling-delay-passive = <0>;
+> -				polling-delay = <0>;
+> -				thermal-sensors = <&thermal 1>;
+> -				sustainable-power = <5000>;
+> -				trips {};
+> -				cooling-maps {};
+> -			};
+> -
+> -			tzts2: tzts2 {
+> -				polling-delay-passive = <0>;
+> -				polling-delay = <0>;
+> -				thermal-sensors = <&thermal 2>;
+> -				sustainable-power = <5000>;
+> -				trips {};
+> -				cooling-maps {};
+> -			};
+> -
+> -			tzts3: tzts3 {
+> -				polling-delay-passive = <0>;
+> -				polling-delay = <0>;
+> -				thermal-sensors = <&thermal 3>;
+> -				sustainable-power = <5000>;
+> -				trips {};
+> -				cooling-maps {};
+> -			};
+> -
+> -			tzts4: tzts4 {
+> -				polling-delay-passive = <0>;
+> -				polling-delay = <0>;
+> -				thermal-sensors = <&thermal 4>;
+> -				sustainable-power = <5000>;
+> -				trips {};
+> -				cooling-maps {};
+> -			};
+> -
+> -			tzts5: tzts5 {
+> -				polling-delay-passive = <0>;
+> -				polling-delay = <0>;
+> -				thermal-sensors = <&thermal 5>;
+> -				sustainable-power = <5000>;
+> -				trips {};
+> -				cooling-maps {};
+> -			};
+> -
+> -			tztsABB: tztsABB {
+> -				polling-delay-passive = <0>;
+> -				polling-delay = <0>;
+> -				thermal-sensors = <&thermal 6>;
+> -				sustainable-power = <5000>;
+> -				trips {};
+> -				cooling-maps {};
+> -			};
+>   		};
+>   
+>   		pwm0: pwm@1100e000 {
 
