@@ -4,67 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A678FECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 08:18:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04DCFECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 08:23:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Llsgat33sbmCea4gLFhOeGPuEHBAi3ix59mCbawYsNw=; b=E3zG++oysz3OQXUPlFzw7DSVSB
-	jVyiZMy68olI2Em4RSvapmQxZtvrCVrs3HnOjfLodZrmLpCYuc8bE1JBk4verVClk0u532H5Huq/2
-	ZRu4WfXVUwCfwdfZe/m8bgG7tkKjYxkct/oVLMXzhhhoYlZQBrt5kX6ma0uZKPFK37Cw296/o6IJx
-	jNY8cdIR5BBiiFEIxg5uKpTP6vnQNYzDWJGb+syuqRfNSA2BLh2FjjDdg3MRu+Plny5uuXWw3K1WB
-	HsDEJhIHj+uCh+BhPhtvL/fY9rVNcLYofnd308zihtpdipyOtE9ityCz4Ob8aSFOHTyLSBAgoISbY
-	t5i4E62A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=P9iChXnOlLAzZFdNLnY5kfU9Doj3uGfj35dzgStEZMU=; b=vGSPWgcdLTRokfK8UqG5a3eBpd
+	pAzI7m7KBFZpFnI7JL/prTSDBoznHFsI6h8GVipTffaOxbSfYyV2ZaxNF4YHxMC6+j4YaOhk9RoJY
+	YbJUNmMBHfJ3MEiqRNiHAIwG0HkMbIpk5Zyl45JqrnEutloLLGm0Kv9LiBR5ZSx0C+IVQ4ZkjqPv0
+	0zj/xlgSZrqdHZgqVVjXqfW5F3xJgXMrPsj7AfzJxIvDccly1MinkFp1OnJ4FkmubcOQL7YDTvxAW
+	ge4lKhOi2vHdZhsX61oK8pRf9Yfpcrbv0ahIX4RAbNXn/4zPMd4yAS7ZapzCZkAR0wAv1edmnBsBy
+	Vj/3WLqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYNaj-00DRjI-Ot; Wed, 14 Sep 2022 08:17:53 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oYNgQ-00DXoH-GW; Wed, 14 Sep 2022 08:23:46 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYNaX-00DRWt-T9; Wed, 14 Sep 2022 08:17:43 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AF0AD660037C;
-	Wed, 14 Sep 2022 09:17:39 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663143460;
-	bh=HFEQ65O/mE3evHovBKdThpzSRkNG08TXQRM2aECKklU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=H9hmToNizNS8Y2APOOTL4yzGIZXc7SvGyz/ZEea1Gh13MMaV/Q7RJkW7sb0ZQLExj
-	 ip5wP8rDIFMeAp1h7Tun+ZDVrrkgFD/nAI7GSKh3bjIkQbk3T8jLENTml9qog51tDC
-	 g9yemHzg37bQhBC/1mLsu1B1pk6BzPTXi9dfkALIQ+guZmvJs7KneFATdCFOGHyD72
-	 8+H4GU+HXaB6M4PdxVUawUeIjEW7okQnIRTyHN0vN4faOOtglAoEZnFoBW/GGV4KUN
-	 RAqxeqQT/kUe/SHR/GJy+QJBrKgrELz/5g2zupAncqJnq6wz0yXnQzy+2M9z4MAaNE
-	 +weBYv+DU3GFg==
-Message-ID: <0723c329-475c-42a1-f6d5-f478d649aef1@collabora.com>
-Date: Wed, 14 Sep 2022 10:17:36 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH] drm: mediatek: Fix display vblank timeout when disable
- dsi
-Content-Language: en-US
-To: xinlei.lee@mediatek.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
- airlied@linux.ie, daniel@ffwll.ch, matthias.bgg@gmail.com,
- jitao.shi@mediatek.com
-Cc: rex-bc.chen@mediatek.com, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <1663136309-29491-1-git-send-email-xinlei.lee@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <1663136309-29491-1-git-send-email-xinlei.lee@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+	id 1oYNgD-00DXR8-6G; Wed, 14 Sep 2022 08:23:34 +0000
+Received: by mail-pg1-x529.google.com with SMTP id s206so13675871pgs.3;
+        Wed, 14 Sep 2022 01:23:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+        bh=P9iChXnOlLAzZFdNLnY5kfU9Doj3uGfj35dzgStEZMU=;
+        b=pE75bF9llgDlVL1tONbpIXNBJPLRnBJ9hkVccGmGOVuo021D3xEEvmTbepvrp8RVQr
+         ksUoC0NRWRrNZLspcVVn15dc6H2MMgAUGlezFBxb336KBr2ISMC+Dob4DjGk0FXlLOdr
+         WkFcg065fEqebST0Ysnz2LT/kpx/5VLtckcfp7gjjoudRS21JgjoxZbTi+2H4DxA0bVn
+         IzKXx6LwUO4kUp22kqP9tM6yPZmYTN1qotSSkGMZmYpLiXRsvbsxLl+Ffm+JeCgEc6kX
+         Ux3dTYooLnUEPTySDAWTWdTXIlOqiLvClX3trv6ZUD6Nz3p9d6P+c2/KkvUMvOIaNd7c
+         buaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=P9iChXnOlLAzZFdNLnY5kfU9Doj3uGfj35dzgStEZMU=;
+        b=73mmGscTITCalciGcIDl2vfI4tNp+X9uTaycJRCHXtdZMC1ccOhTrDzFeVq05HN62a
+         5xjEC82a0Vj38a2dprHQucmKCQ1BJzB21q/a4N8WiDQITCi12WeXi09V5NUZ81e475Hi
+         PH19DHlS9ZYnBQzIpjUfwXwAsPkGYTQG9Xx13PpoC9xxbxj6yuBNUpJwf2SzE+7byLEh
+         t/GQ1pVL/WnOLNR3FG5/eNhUEXxuNpX+ZUD+O5dcPbfpHb3np5uSHSD1pFXqcO5G3cMq
+         jH8KRiPMcFNCl5EtI8zm3D9Te+3dRRYRFl0+wZilHduMazw0HHr+qL7qssqfw4QoWkhy
+         jrHw==
+X-Gm-Message-State: ACgBeo2d6YHmWP/dBXO0soJz2GU3hZjM95Kd1LPTl2dxHmxCYga9ptqQ
+	rqqzFVjUUWVOdnP2xhFlOH4=
+X-Google-Smtp-Source: AA6agR6dE7decz+Ly0pUJByGQRsEwzFqUinIHdNRUA3Q963/UJZSsOEZOG0jYDqSaqN70/rX5SouIQ==
+X-Received: by 2002:a63:81c8:0:b0:438:919e:8256 with SMTP id t191-20020a6381c8000000b00438919e8256mr20790669pgd.39.1663143811878;
+        Wed, 14 Sep 2022 01:23:31 -0700 (PDT)
+Received: from localhost.localdomain ([2402:7500:486:362c:d94f:b1bb:6842:3424])
+        by smtp.gmail.com with ESMTPSA id f8-20020aa79d88000000b0053e468a78a8sm9381986pfq.158.2022.09.14.01.23.27
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Sep 2022 01:23:30 -0700 (PDT)
+From: cy_huang <u0084500@gmail.com>
+To: lee@kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com
+Cc: cy_huang@richtek.com,
+	chiaen_wu@richtek.com,
+	alice_chen@richtek.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] dt-bindings: mfd: mt6370: fix the indentation in the example
+Date: Wed, 14 Sep 2022 16:23:23 +0800
+Message-Id: <1663143803-28660-1-git-send-email-u0084500@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_011742_137900_5CAC470F 
-X-CRM114-Status: UNSURE (   8.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220914_012333_260010_42039679 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,25 +89,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/09/22 08:18, xinlei.lee@mediatek.com ha scritto:
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
-> 
-> Dsi is turned off at bridge.disable, causing crtc to wait for vblank timeout.
-> It is necessary to add count protection to turn off dsi, and turn off at post_disable.
-> 
-> Fixes: cde7e2e35c28 ("drm/mediatek: Separate poweron/poweroff from enable/disable and define new funcs")
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+From: ChiYuan Huang <cy_huang@richtek.com>
 
-Hello Xinlei,
-which machine is this commit targeting?
+Fix the indentation in the binding example. There're two redudant space
+charactors need to be removed.
 
-Can you please try to reproduce again the issue that you're seeing with my
-mtk_dsi fix [1], but without this commit?
+Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+---
+ Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
-Angelo
-
-[1]: 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20220721172727.14624-1-angelogioacchino.delregno@collabora.com/
+diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
+index 410e2d4..250484d 100644
+--- a/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
++++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
+@@ -119,7 +119,7 @@ examples:
+       #address-cells = <1>;
+       #size-cells = <0>;
+ 
+-        pmic@34 {
++      pmic@34 {
+         compatible = "mediatek,mt6370";
+         reg = <0x34>;
+         wakeup-source;
+-- 
+2.7.4
 
 
