@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69DB5ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 19:53:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF393C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 19:55:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=buZ0xc7jSyQwS1KiJEmwlQYHrZkRAgXKNa8Ox3FyP/A=; b=DUuxvJNgNINsL7AkMulgiHaQxA
-	Q/DYYRGrYQZGQLnz/Cc7LEFA7/7s450/BHQ7DAz9qkyPB0pFx2mxbfYUWLEyfud+7Kjpy2kMW+cw1
-	PxuwRjaHBJCvlqwDq/CwCgprHuBxYi7IxCsJ9CEjVK47cu+AXBk5fQdz1/ynTeoY5WDVQYAv/G0WF
-	dWC+dEoHnktOZEbpz2FEhNWqvJ9CGry4UI1pYY84NMEzriAawZc/d3kKMWuB8nY2Qqb5JIGFoc7ja
-	lvuwCdaCI/ZywzFY1oSJBR9O99SA6yVlq804NFAyp9RFaezLD267GnR3XL1qIdOO9snDcz8kfXjkU
-	f33sU9PA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YwyubeJPVUrd1h9FlW76eQo/N10BJF1zmVjG/8LIMQ0=; b=SuHXd5NfET2ZEHLDyz9+luyLVL
+	fXHG6+JBeXr+Q4CLYTR2fd2grbQXYnHI20e4ohyw3N7fVkH+TcEfzEPV2q4SeUxDtG2xSmD7u/tya
+	KYqzGewjyPHZZulMkb3/FvD+STmG0yusiZl7JMI0/+e0EKHrCmAx3UcraHfIo5IWXT/kEAT4vvKDY
+	vpsI8j05EwcpqjiauWssnOr2MslQF8i8Nl3yghYb3hoPWn9/OAVJGqAOcjjT183ojzGQkQgs7LSSU
+	rtK3GCaKkQrr/fACkGDUcb19a68EUOvU1iTa/vZsmBJZcR1Prs18Sx3otHT8EC6MWxsAscK8/x7at
+	vgWdgIkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYYS5-008e6P-98; Wed, 14 Sep 2022 19:53:41 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYYRm-008dUo-B4; Wed, 14 Sep 2022 19:53:24 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 956841576;
-	Wed, 14 Sep 2022 12:53:23 -0700 (PDT)
-Received: from [10.57.18.118] (unknown [10.57.18.118])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 2CB443F73B;
-	Wed, 14 Sep 2022 12:53:12 -0700 (PDT)
-Message-ID: <5f049bb8-76e6-901a-9f8e-b48d270bc4a0@arm.com>
-Date: Wed, 14 Sep 2022 20:53:07 +0100
+	id 1oYYTG-008fxB-1C; Wed, 14 Sep 2022 19:54:54 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oYYT4-008ffe-KR
+	for linux-mediatek@lists.infradead.org; Wed, 14 Sep 2022 19:54:44 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1oYYSu-0002uX-BS; Wed, 14 Sep 2022 21:54:32 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1oYYSr-000krh-Ou; Wed, 14 Sep 2022 21:54:28 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1oYYSp-000vzE-Kt; Wed, 14 Sep 2022 21:54:27 +0200
+Date: Wed, 14 Sep 2022 21:54:21 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: xinlei.lee@mediatek.com
+Cc: thierry.reding@gmail.com, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+	linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH,1/2] dt-bindings: pwm: Add compatible for Mediatek MT8188
+Message-ID: <20220914195421.23z5r3notsmx4sdw@pengutronix.de>
+References: <1661239875-19841-1-git-send-email-xinlei.lee@mediatek.com>
+ <1661239875-19841-2-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
-Subject: Re: [PATCH 4/5] iommu: Regulate errno in ->attach_dev callback
- functions
-Content-Language: en-GB
-To: Nicolin Chen <nicolinc@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: joro@8bytes.org, suravee.suthikulpanit@amd.com, will@kernel.org,
- robdclark@gmail.com, dwmw2@infradead.org, baolu.lu@linux.intel.com,
- agross@kernel.org, bjorn.andersson@linaro.org, konrad.dybcio@somainline.org,
- matthias.bgg@gmail.com, heiko@sntech.de, orsonzhai@gmail.com,
- baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
- thierry.reding@gmail.com, sricharan@codeaurora.org, yong.wu@mediatek.com,
- vdumpa@nvidia.com, jonathanh@nvidia.com, tglx@linutronix.de,
- shameerali.kolothum.thodi@huawei.com, thunder.leizhen@huawei.com,
- christophe.jaillet@wanadoo.fr, yangyingliang@huawei.com, jon@solid-run.com,
- iommu@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-tegra@vger.kernel.org, virtualization@lists.linux-foundation.org
-References: <20220913082448.31120-1-nicolinc@nvidia.com>
- <20220913082448.31120-5-nicolinc@nvidia.com> <YyB3F/o3RfymqiFW@myrica>
- <YyGaqsXSDMn8R12R@nvidia.com> <YyGjtsB2Yq4fQICS@myrica>
- <YyIWQ6rX6AR9KX5E@Asurada-Nvidia>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <YyIWQ6rX6AR9KX5E@Asurada-Nvidia>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="23bdvmkeqotnlzsg"
+Content-Disposition: inline
+In-Reply-To: <1661239875-19841-2-git-send-email-xinlei.lee@mediatek.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_125322_523583_7252DDD7 
-X-CRM114-Status: GOOD (  23.89  )
+X-CRM114-CacheID: sfid-20220914_125442_719152_E8772150 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,75 +76,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-09-14 18:58, Nicolin Chen wrote:
-> On Wed, Sep 14, 2022 at 10:49:42AM +0100, Jean-Philippe Brucker wrote:
->> External email: Use caution opening links or attachments
->>
->>
->> On Wed, Sep 14, 2022 at 06:11:06AM -0300, Jason Gunthorpe wrote:
->>> On Tue, Sep 13, 2022 at 01:27:03PM +0100, Jean-Philippe Brucker wrote:
->>>> I think in the future it will be too easy to forget about the constrained
->>>> return value of attach() while modifying some other part of the driver,
->>>> and let an external helper return EINVAL. So I'd rather not propagate ret
->>>> from outside of viommu_domain_attach() and finalise().
->>>
->>> Fortunately, if -EINVAL is wrongly returned it only creates an
->>> inefficiency, not a functional problem. So we do not need to be
->>> precise here.
->>
->> Ah fair. In that case the attach_dev() documentation should indicate that
->> EINVAL is a hint, so that callers don't rely on it (currently words "must"
->> and "exclusively" indicate that returning EINVAL for anything other than
->> device-domain incompatibility is unacceptable). The virtio-iommu
->> implementation may well return EINVAL from the virtio stack or from the
->> host response.
-> 
-> How about this?
-> 
-> + * * EINVAL    - mainly, device and domain are incompatible, or something went
-> + *               wrong with the domain. It's suggested to avoid kernel prints
-> + *               along with this errno. And it's better to convert any EINVAL
-> + *               returned from kAPIs to ENODEV if it is device-specific, or to
-> + *               some other reasonable errno being listed below
 
-FWIW, I'd say something like:
+--23bdvmkeqotnlzsg
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-"The device and domain are incompatible. If this is due to some previous 
-configuration of the domain, drivers should not log an error, since it 
-is legitimate for callers to test reuse of an existing domain. 
-Otherwise, it may still represent some fundamental problem."
+Hello,
 
-And then at the public interfaces state it from other angle:
+On Tue, Aug 23, 2022 at 03:31:14PM +0800, xinlei.lee@mediatek.com wrote:
+> From: xinlei lee <xinlei.lee@mediatek.com>
+>=20
+> Add dt-binding documentation of pwm for MediaTek MT8188 SoC.
+>=20
+> Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
 
-"The device and domain are incompatible. If the domain has already been 
-used or configured in some way, attaching the same device to a different 
-domain may be expected to succeed. Otherwise, it may still represent 
-some fundamental problem."
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
 
-[ and to save another mail, I'm not sure copying the default comment for 
-ENOSPC is all that helpful either - what is "space" for something that 
-isn't a storage device? I'd guess limited hardware resources in some 
-form, but in the IOMMU context, potential confusion with address space 
-is maybe a little too close for comfort? ]
+Best regards
+Uwe
 
->>>> Since we can't guarantee that APIs like virtio or ida won't ever return
->>>> EINVAL, we should set all return values:
->>>
->>> I dislike this alot, it squashes all return codes to try to optimize
->>> an obscure failure path :(
-> 
-> Hmm...should I revert all the driver changes back to this version?
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
 
-Yeah, I don't think we need to go too mad here. Drivers shouldn't emit 
-their *own* -EINVAL unless appropriate, but if it comes back from some 
-external API then that implies something's gone unexpectedly wrong 
-anyway - maybe it's a transient condition and a subsequent different 
-attach might actually work out OK? We can't really say in general. 
-Besides, if the driver sees an error which implies it's done something 
-wrong itself, it probably shouldn't be trusted to try to reason about it 
-further. The caller can handle any error as long as we set their 
-expectations correctly.
+--23bdvmkeqotnlzsg
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Thanks,
-Robin.
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmMiMWsACgkQwfwUeK3K
+7AkHuAf/YbpnjsXH7ZSoZyTgl2dDDyrYOAiNHDLVW+9H2izU/kcIloGBS5Cifd88
+cf0jqYzIm6oF8Sfl6U8Bs6y38ug7Nb396Pg3RKTcDfkoTgo5fSvIBNcIEZhFWknB
+jIMGHvo0sG584nxnPGtc4qWiczVJjb7ETSG9LQH5hAZYCEPbVTAFlAkzwTlOFAXg
+JtViZbxO5bWiWoN4BZjMQW7DLIhP1S0rLBzLuIBjth6N8Z/jV0ySgrK/jJCbQ/fm
+J20NpniXnGVPIo7UFtI8YaCCw/deVgd7LlD2IVRU+DiXN/mrDhM710INLFkLNBG6
++qnJwyVQncs6gTiC5UZXdaNtfWxhpA==
+=RVce
+-----END PGP SIGNATURE-----
+
+--23bdvmkeqotnlzsg--
 
