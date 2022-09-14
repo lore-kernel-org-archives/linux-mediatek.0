@@ -4,85 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34AAEC6FA89
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 16:17:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48CE9ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 16:27:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wki+1jLIoRTZsjo8Z3mQ/p/MgSXkw7RsuI+0KmLXyS8=; b=hdtnocHtSB/tNxdhZX7EXK9vkp
-	EUyYYS85MlvxH96oOAnnHr44xv9yuBLit7GoSXylLODGtYK+cl0cassrCOvtRfuf/zppzkqEX7dsF
-	sdihDw8VRAXwHpu87Jlxlo4Q0zz9hns/+sjP3znr1qT743hWMCH4MOtpWEogCMbPBpU7m794L87CP
-	Ee3ReFQ+PkJiZOL4NTQqd3r/iosu6atxOaVX3kaDdZXeD1wwUyrj0/TRShrEnXLJDQFzfK2xPRWNE
-	k5jd5fRniyIebHqIcgUjBZYNJl1lGGncziIYuRco2WijNj14UDAc0LG3Kk6vw8KOx6R+tkys4wl9K
-	ge6OOd0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zZD8tJ7NCtrHJsbCaNSP87Y3qe7OynbxFKCss/jxB3I=; b=4s8dvwgawkkWzdaa38j/N4IZXT
+	I/Ze+MNV9577XgahZkfv5izA9fyGoMQCtmPot3sG9y5lQBg740lJfHnPjAj+CneSjRtIzDvB2CKuB
+	2TSaw5p4u66Uw2Ebis1ZLg9uHyNeQt8G5T1KBUzOi+pCvNi4Q9gW/2t9Jqtds/5Zdp/GC6Ew6VXCl
+	eLuRt1GR+seCw1u2Fzh39m+ur57Uljms+nhUY4PYM2lypERhstD/6NiuEnKdYDN8P3osRgn6HSH4I
+	opE3Q7J4vIh2Hg2maIIwQpsNcJse7L7KOSNJF2ySvOo53gR0OYh8xTawvVdeHJCT5TPh50gY8ki1N
+	NqrTyz1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYV4Q-004rDa-Ux; Wed, 14 Sep 2022 16:17:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oYVEq-00567q-1X; Wed, 14 Sep 2022 16:27:48 +0000
+Received: from mail-oa1-f50.google.com ([209.85.160.50])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYV4C-004qrM-KK; Wed, 14 Sep 2022 16:16:50 +0000
-X-UUID: f3cc18d2bfb945459b7c22451fb002d7-20220914
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=Wki+1jLIoRTZsjo8Z3mQ/p/MgSXkw7RsuI+0KmLXyS8=;
-	b=jd2D1wIo1C38e3AEneUOIPKKFI8bxFPfR+O977nm0fPEtI4nl/V7AVKz/J2fBb4JuGD9blIIdxBSLpySjc5nocUL2yH7H/IfKn1naEbUSPg3yxpf0Nh+i5h3jDXWE4t+35GJLXc79dQudKXz17dOegpsl2Em4PChr8CnHFxCuKI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:78b814fc-bd0e-4a1a-83d0-79a074268281,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:7b0767f6-6e85-48d9-afd8-0504bbfe04cb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: f3cc18d2bfb945459b7c22451fb002d7-20220914
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1877994082; Wed, 14 Sep 2022 09:10:53 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 14 Sep 2022 23:09:57 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 14 Sep 2022 23:09:57 +0800
-Message-ID: <08a2ca0cd6392dcf9dea98eed50516ed19cc1504.camel@mediatek.com>
-Subject: Re: [PATCH v2] dt-bindings: arm: mediatek: mmsys: change compatible
- for MT8195
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Bo-Chen Chen
-	<rex-bc.chen@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
-	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>
-CC: Nancy Lin =?UTF-8?Q?=28=E6=9E=97=E6=AC=A3=E8=9E=A2=29?=
-	<Nancy.Lin@mediatek.com>, CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?=
-	<ck.hu@mediatek.com>, "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "hsinyi@google.com"
-	<hsinyi@google.com>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 14 Sep 2022 23:09:56 +0800
-In-Reply-To: <463b0b0a-c1ec-0f89-45cf-50a7587db69b@gmail.com>
-References: <20220825091448.14008-1-rex-bc.chen@mediatek.com>
-	 <3ed3d73a-1671-708e-7c42-498cca6aaf1d@gmail.com>
-	 <8f3dba943170361211d9bb4c8bf1be12bbfdec20.camel@mediatek.com>
-	 <adcbb2b7-cddd-4546-bdf2-66d056a40c1d@linaro.org>
-	 <916bd99bcc4fa77eae5734b22365ce73acd90d58.camel@mediatek.com>
-	 <efedfd3d-9779-514b-0481-f0b669d2e326@gmail.com>
-	 <463b0b0a-c1ec-0f89-45cf-50a7587db69b@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oYVEX-0055Q9-1H; Wed, 14 Sep 2022 16:27:30 +0000
+Received: by mail-oa1-f50.google.com with SMTP id 586e51a60fabf-127ba06d03fso42456427fac.3;
+        Wed, 14 Sep 2022 09:27:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=zZD8tJ7NCtrHJsbCaNSP87Y3qe7OynbxFKCss/jxB3I=;
+        b=QqSiQ5jDA47rzRUR15uhgc8Jzer9QJLu8DArgbEsyRnjAdRVK6VWzFO5/MDWTfRGSr
+         p78PNi2+6RNxPIwXN+ShTGDoxvolPzVb+6EjK4wb0Z7mIGEfnLzIcdTQA1WemrNYqO2c
+         c0oK0DvskJZBN0OQixIyueTdbpQBwv/Og+oL6GnnV8Ag95SHB3VW39Uqgomlku7qD5wq
+         Q1oPEp8KdnprhUQdXl1sG7RVHWt/2P25ZkPK8wvVcpPMSsdghWtEPALriK+hdiN9BFHX
+         5nfE9gMbNCfQ9Etdbe1EloRRZ9Yx1FFn4GUqgT89rKf0WMz19dcER2QMFlYMBh7KLQR8
+         R7zg==
+X-Gm-Message-State: ACgBeo2Hkl6bgQRFmLNENVJEQ4TmM5iK7IyzrrwJ10oQHSMgmlOKtQhO
+	N4fc9oJkJs/uQOi/MPz23w==
+X-Google-Smtp-Source: AA6agR508A59RRasBqGG0pg5H5/FqMmo9DiIAClotXDA1a4zQTOyhkP1kMxVLkm7CrmxQf7x66/I2A==
+X-Received: by 2002:a05:6870:34d:b0:127:cb87:a169 with SMTP id n13-20020a056870034d00b00127cb87a169mr2787895oaf.87.1663172845636;
+        Wed, 14 Sep 2022 09:27:25 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id g9-20020a056830160900b00655d9ea896bsm5587940otr.47.2022.09.14.09.27.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Sep 2022 09:27:25 -0700 (PDT)
+Received: (nullmailer pid 2501100 invoked by uid 1000);
+	Wed, 14 Sep 2022 16:27:24 -0000
+Date: Wed, 14 Sep 2022 11:27:24 -0500
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dmitry.torokhov@gmail.com, linux-input@vger.kernel.org, chen.zhong@mediatek.com, robh+dt@kernel.org, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: input: Convert mtk-pmic-keys to DT
+ schema
+Message-ID: <20220914162724.GA2500989-robh@kernel.org>
+References: <20220914103021.43593-1-angelogioacchino.delregno@collabora.com>
+ <20220914103021.43593-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220914103021.43593-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_091648_842451_4C6C455C 
-X-CRM114-Status: GOOD (  58.16  )
+X-CRM114-CacheID: sfid-20220914_092729_108406_A3E70B0F 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,217 +78,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 2022-09-14 at 16:32 +0200, Matthias Brugger wrote:
+On Wed, 14 Sep 2022 12:30:20 +0200, AngeloGioacchino Del Regno wrote:
+> Convert the mtk-pmic-keys to DT schema format.
 > 
-> On 26/08/2022 17:39, Matthias Brugger wrote:
-> > 
-> > 
-> > On 26/08/2022 09:13, Bo-Chen Chen wrote:
-> > > On Fri, 2022-08-26 at 15:00 +0800, Krzysztof Kozlowski wrote:
-> > > > On 26/08/2022 05:07, Bo-Chen Chen wrote:
-> > > > > On Thu, 2022-08-25 at 22:57 +0800, Matthias Brugger wrote:
-> > > > > > 
-> > > > > > On 25/08/2022 11:14, Bo-Chen Chen wrote:
-> > > > > > > From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-> > > > > > > 
-> > > > > > > For previous MediaTek SoCs, such as MT8173, there are 2
-> > > > > > > display
-> > > > > > > HW
-> > > > > > > pipelines binding to 1 mmsys with the same power domain,
-> > > > > > > the
-> > > > > > > same
-> > > > > > > clock driver and the same mediatek-drm driver.
-> > > > > > > 
-> > > > > > > For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW
-> > > > > > > pipelines
-> > > > > > > binding
-> > > > > > > to
-> > > > > > > 2 different power domains, different clock drivers and
-> > > > > > > different
-> > > > > > > mediatek-drm drivers.
-> > > > > > > 
-> > > > > > > Moreover, Hardware pipeline of VDOSYS0 has these
-> > > > > > > components:
-> > > > > > > COLOR,
-> > > > > > > CCORR, AAL, GAMMA, DITHER. They are related to the PQ
-> > > > > > > (Picture
-> > > > > > > Quality)
-> > > > > > > and they makes VDOSYS0 supports PQ function while they
-> > > > > > > are not
-> > > > > > > including in VDOSYS1.
-> > > > > > > 
-> > > > > > > Hardware pipeline of VDOSYS1 has the component ETHDR (HDR
-> > > > > > > related
-> > > > > > > component). It makes VDOSYS1 supports the HDR function
-> > > > > > > while
-> > > > > > > it's
-> > > > > > > not
-> > > > > > > including in VDOSYS0.
-> > > > > > > 
-> > > > > > > To summarize0:
-> > > > > > > Only VDOSYS0 can support PQ adjustment.
-> > > > > > > Only VDOSYS1 can support HDR adjustment.
-> > > > > > > 
-> > > > > > > Therefore, we need to separate these two different mmsys
-> > > > > > > hardwares
-> > > > > > > to
-> > > > > > > 2 different compatibles for MT8195.
-> > > > > > > 
-> > > > > > > Fixes: 81c5a41d10b9 ("dt-bindings: arm: mediatek: mmsys:
-> > > > > > > add
-> > > > > > > mt8195
-> > > > > > > SoC binding")
-> > > > > > > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> > > > > > > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > > > > > > ---
-> > > > > > > Changes for v2:
-> > > > > > > 1. Add hardware difference for VDOSYS0 and VDOSYS1 in
-> > > > > > > commit
-> > > > > > > message.
-> > > > > > > ---
-> > > > > > > .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> > > > > > > > 
-> > > > > > > 
-> > > > > > > 3 ++-
-> > > > > > >    1 file changed, 2 insertions(+), 1 deletion(-)
-> > > > > > > 
-> > > > > > > diff --git
-> > > > > > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek
-> > > > > > > ,mmsys
-> > > > > > > .yam
-> > > > > > > l
-> > > > > > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek
-> > > > > > > ,mmsys
-> > > > > > > .yam
-> > > > > > > l
-> > > > > > > index 6ad023eec193..bfbdd30d2092 100644
-> > > > > > > ---
-> > > > > > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek
-> > > > > > > ,mmsys
-> > > > > > > .yam
-> > > > > > > l
-> > > > > > > +++
-> > > > > > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek
-> > > > > > > ,mmsys
-> > > > > > > .yam
-> > > > > > > l
-> > > > > > > @@ -31,7 +31,8 @@ properties:
-> > > > > > >                  - mediatek,mt8183-mmsys
-> > > > > > >                  - mediatek,mt8186-mmsys
-> > > > > > >                  - mediatek,mt8192-mmsys
-> > > > > > > -              - mediatek,mt8195-mmsys
-> > > > > > > +              - mediatek,mt8195-vdosys0
-> > > > > > 
-> > > > > > Thanks for you patch. As I mentioned on v1, I propose to
-> > > > > > set
-> > > > > > mediatek,mt8195-mmsys as fallback for mediatek,mt8195-
-> > > > > > vdosys0 to
-> > > > > > not
-> > > > > > break
-> > > > > > backwards compatibility.
-> > > > > > 
-> > > > > > Apart from that, the binding change will need some changes
-> > > > > > to
-> > > > > > support
-> > > > > > the new
-> > > > > > binding. Please provide these together with this patch.
-> > > > > > 
-> > > > > > Regards,
-> > > > > > Matthias
-> > > > > > 
-> > > > > 
-> > > > > Hello Matthias,
-> > > > > 
-> > > > > Thanks for your comments.
-> > > > > The purpose of this patch is to confirm we can separate
-> > > > > mt8195
-> > > > > mmsys
-> > > > > into two compatibles. I think this modification is accepted.
-> > > > 
-> > > > No, it is not accepted following Matthias comments. You
-> > > > received my
-> > > > ack
-> > > > based on assumption that ABI break is perfectly ok for platform
-> > > > maintainer, as he has decisive voice. If anyone is not happy
-> > > > with a
-> > > > ABI
-> > > > break, then his concerns must be addressed.
-> > > > 
-> > > > So let it be specific:
-> > > > NAK.
-> > > > 
-> > > > > 
-> > > > > After this, I think Jason-JH will push another series with
-> > > > > this
-> > > > > binding
-> > > > > patch.
-> > > > 
-> > > > I don't know what do you mean here - another series on top of
-> > > > wrong
-> > > > patch?
-> > > > 
-> > > 
-> > > Hello Krzysztof,
-> > > 
-> > > For this mt8195 mmsys binding separation, we still need to modify
-> > > driver for this. The reason I send this patch is to confirm we
-> > > can do
-> > > this binding modification and I also think we can not pick this
-> > > patch
-> > > here.
-> > > 
-> > > We will push another series and it contains modification of
-> > > binding and
-> > > drivers. (The series will push by Jason-JH Lin)
-> > > 
-> > 
-> > Sounds good. So lets wait for Jason-JH Lin to send this series and
-> > we can go on 
-> > with the review.
-> > 
+> The old binding was missing documentation for key press/release
+> interrupts, even though it was supported in hardware and driver,
+> so support for the same was added during the conversion.
 > 
-> Just to be sure, this has not happened yet, correct?
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../bindings/input/mediatek,pmic-keys.yaml    | 113 ++++++++++++++++++
+>  .../bindings/input/mtk-pmic-keys.txt          |  46 -------
+>  2 files changed, 113 insertions(+), 46 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
 > 
-> Regards,
-> Matthias
 
-Yes, sorry for the late reply to you.
-I'll start to send this series at 9/19.
-
-Regards,
-Jason-JH.Lin
-
-> 
-> > Thanks!
-> > Matthias
-> > 
-> > > Maybe I should use "RFC" for this series, and I think it's more
-> > > correct.
-> > > 
-> > > BRs,
-> > > Bo-Chen
-> > > 
-> > > > > In Jason-JH's series, we will modify mmsys driver based on
-> > > > > this.
-> > > > > And I think we don't need to keep "mediatek,mt8195-mmsys" if
-> > > > > we
-> > > > > also
-> > > > > modify mmsys drivers in the same series.
-> > > > 
-> > > > This does not fux ABI break and broken bisectability.
-> > > > 
-> > > > > 
-> > > > > Is it ok that postpones to pick this patch until we finish
-> > > > > review
-> > > > > follow-up series?
-> > > > > 
-> > > > 
-> > > > No. You got a clear review to fix.
-> > > > 
-> > > > Best regards,
-> > > > Krzysztof
--- 
-Jason-JH Lin <jason-jh.lin@mediatek.com>
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 
