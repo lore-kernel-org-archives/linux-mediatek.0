@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 404A8ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 09:33:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C27B1ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 09:34:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dKB74mBldf0ryE7wHaQ5c2RXlLTkuN5Oo9MVuStsjik=; b=AyUvxDkFVDUTXpeHcGl1/YWCzx
-	sy0msOJ4xc3E5udC0nzs4F8DuJ2ytTEqV2lQTJ1e2RJ4FrmslDUlG/9cxwnpinpMJvWdn+WCKrX9k
-	73O/yTODsNKINNnGPNZqaSU09R5SHr9+mgpjxAhHT48NMVwcDof02OxVIJA5NeH0hWWTNdflBUB0k
-	4UHWWYtqwHl8S2L96FqJfBkCIDU4Yf4JvTsx2tSEJ/E/KWCIsBAZyfQRjby6Sk37uYiHk5B+jtONF
-	sC5MoIzLL/uDkS0wf4xaiLD9Sg9JT6M2bfKeC1wq/ew0L6Gr6LqvBbzQxmotX302NlE1CrOFiXIyS
-	TptAaMoQ==;
+	bh=jCIOhLvVlvNV9HUxfecamktxgICT/5zf1IRbWZuyeiY=; b=UMQjXRiN2lVOHSJSw4vsYTnGau
+	oxZmPTtukQ89fhULYQ+4VSJMtq9FEWxZAcmiV6qOySE6g1JKASgvnyM1rkLKW8jEIihFl2DS+2JKG
+	wq5s8qlsaERmXZSz7X3qYnS1EDDBHU6aLgnPQRN8UQM00NjOekFNxgL7mHeexZsLYn6U6e4dJKQGK
+	Z7OQipdlcp6TYmKWHfe9/wVNG5bCZjhXd4SrSi+nVJC8bTcub0LgzeIPcRtMlvEUQj/A0tdgYwc5/
+	zp6/nU/0e+hky8FLmj9AJCg+oEXizcQLPr+A4/T3Wxh8UnemD9gKBR7otWCmzspxI0VzOWzhT2JkS
+	pMZtu6qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYOlr-00EHwl-4S; Wed, 14 Sep 2022 09:33:27 +0000
-Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
+	id 1oYOn3-00EIuF-KD; Wed, 14 Sep 2022 09:34:41 +0000
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYOUx-00E2mH-BU; Wed, 14 Sep 2022 09:16:00 +0000
-Received: by mail-oa1-x32.google.com with SMTP id 586e51a60fabf-12803ac8113so39242139fac.8;
-        Wed, 14 Sep 2022 02:15:58 -0700 (PDT)
+	id 1oYOWH-00E4Aa-1Z; Wed, 14 Sep 2022 09:17:22 +0000
+Received: by mail-ot1-x329.google.com with SMTP id v2-20020a056830090200b006397457afecso9870345ott.13;
+        Wed, 14 Sep 2022 02:17:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date;
-        bh=dKB74mBldf0ryE7wHaQ5c2RXlLTkuN5Oo9MVuStsjik=;
-        b=LQrcEfQrlyPgojX5I0QYZZZks9ECkgcggZXX41UcDISBB+0WfHaJpmDgtUvBZ/yF4N
-         DKp9QgRLsTGr2fzzsk3qBOwytacITMoOhRbaCaeSrMxCV2OddgNiT206nZ3wCI8/Vb+4
-         RqgQ77kxCZOve4LGBZKZNMDX91Sge2/iKWGlmSHmLw8UIbiMtn1LWEDnX36JMvDWqGuY
-         wkZk5+wxLZ9PkDKRhLWY6zi8tmxLAB8vmrV7a7efQD4i2rhoYYyi3AAxWw7S/mGtQsUN
-         QO0+BeyNaEK5hribqjTsQZMg/jYR0Ffi1UVZ0QMcYsOMpPb9HnDrn09aHidu6m8oLs99
-         WQCg==
+        bh=jCIOhLvVlvNV9HUxfecamktxgICT/5zf1IRbWZuyeiY=;
+        b=YTvc5L6w5aAWrmyBdY3nw/N7B+xVvMzdMLZrPugoPa0yCmTHuZfPxLpvc3UjWheYmA
+         LXcAbiY4XkL+8OevtSbLTgZbcxC6dPUMLYkkyRcNWTI+wQkA6Oba6EfSD49HitSTFhDi
+         VSX4k3c0hjnPYG/Omp5Xx+K9zgNwTuxj8Kzkw3hu/mUDNJJnjgtJRif4Rvg5rcKRghgJ
+         lpbM4x4dKXcVENLNlylRAlj0wD4KHWf98MolUbQG1q+w2PTvusOu6yc0OUODJVqO3n4C
+         bZ0gMq1iXkiy4cm5ikT/5ICzgYVc+1cTsJC90xXVgLbssYJuqqOd5BJUPTnmQDVAoH8A
+         VRFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=dKB74mBldf0ryE7wHaQ5c2RXlLTkuN5Oo9MVuStsjik=;
-        b=mkeNZb5NkX1JsTSnbuxr6T+NW5BwNS5HpSLfIJ53C6EcpyMWWnvH6Lx9y49ub3eZje
-         /e10npQqPt+YyLMtVWQ/8NuKD0RSXQ/ekoEJLpdSsAuckizL3PRuoDr6FcdYUX6iR7xo
-         6yeCHlTz5xp5/5Gj+WhKq9rsR9yY1LTSMjtfKhjOTEYu+kFiDpdTR7pJHZwjkKcKk+t2
-         Z3G7jJB/ZkA9ocvPfkEgNNAYzWPHXxz7C+8UIEgiIwlrU4xCA8JqBirzvXG4j5jYftZg
-         C3cnU2VsTbu5RpkajkWoQz8lVflnlo1zD70PIDc7pzqRjYn5jY6vveKtnTHthnfR0Xv/
-         VDsA==
-X-Gm-Message-State: ACgBeo0dkE1rupn+UvTgxT9qsxEPfGc9h+TxEDRnRAMlygT/jPc9Mjqc
-	X1UHWqzazc2mrZ7ufKwfyz/kY20l01B3XVd+KdU=
-X-Google-Smtp-Source: AA6agR6nLizzgsdW2MtHzQMBHn9DNm9fpJhbQUUIbEXzsw0znlDW/B8uuj/JwEk6De066e8MWwu/aAwd592JAvzdEEo=
-X-Received: by 2002:a05:6808:1b22:b0:34f:7879:53cc with SMTP id
- bx34-20020a0568081b2200b0034f787953ccmr1433120oib.144.1663146957744; Wed, 14
- Sep 2022 02:15:57 -0700 (PDT)
+        bh=jCIOhLvVlvNV9HUxfecamktxgICT/5zf1IRbWZuyeiY=;
+        b=1BG8fgq37RLUsV8Nca04EqlOC88bxQK2AoEmMldTE6UCC+RnxudSf6yfVSGdrFaA1+
+         p59iInfIuCZZ43JlBuwvzNaHC3uxnuNyTH4r4E69Ckeanib0mH3zjJg7/rAZ//DH49kQ
+         8/23O6F3+Ysa9yJulOnkX0yNTja39qnBGil0Eupr86j/yo1DUlVnXwj8jft7iGqnLx8U
+         u7mpDN9V2hAu5ELyrJ5XqC9MwLFHclSjHYFn6uEsYGZUIiUruSQN9VrQFmxscKZ/vf60
+         4RFft39fnJ74KcV5nkgZszR7+lY8hYyw8x3OtU2aKDqGT60skeqSQd2zuYwO/ApNojAE
+         UkyQ==
+X-Gm-Message-State: ACgBeo1JUKmCwNkwCaRbVtP53NsERYTinqLHd/77/AJLnr+BEYsm7fCm
+	czJrgx8nMPR4gS8arovC9/76i7/ZgBMMq4oIOzQ=
+X-Google-Smtp-Source: AA6agR507+omkOoy6Eobpvj7z6t0NT9B9qdaVUmwFrPTtBPz0Sqn1vie6TfYUrdK1+KUiEUglrxPNs70gq8gwNW0amg=
+X-Received: by 2002:a05:6830:150e:b0:655:bc7d:1e5d with SMTP id
+ k14-20020a056830150e00b00655bc7d1e5dmr8562142otp.272.1663147039255; Wed, 14
+ Sep 2022 02:17:19 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220914085451.11723-1-arinc.unal@arinc9.com> <20220914085451.11723-7-arinc.unal@arinc9.com>
-In-Reply-To: <20220914085451.11723-7-arinc.unal@arinc9.com>
+References: <20220914085451.11723-1-arinc.unal@arinc9.com> <20220914085451.11723-8-arinc.unal@arinc9.com>
+In-Reply-To: <20220914085451.11723-8-arinc.unal@arinc9.com>
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Wed, 14 Sep 2022 11:15:46 +0200
-Message-ID: <CAMhs-H8C7QagLK-5+A6U647Lf6u6GbUWNVT3cX1uE8DKWzd-7A@mail.gmail.com>
-Subject: Re: [PATCH 06/10] mips: dts: ralink: mt7621: remove interrupt-parent
- from switch node
+Date: Wed, 14 Sep 2022 11:17:08 +0200
+Message-ID: <CAMhs-H-XRGz5UCkEzOJtBSC9nH4kaw45ziaqfobt1wfo8gDjbw@mail.gmail.com>
+Subject: Re: [PATCH 07/10] mips: dts: ralink: mt7621: change phy-mode of gmac1
+ to rgmii
 To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
@@ -80,8 +80,8 @@ Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring <robh+dt@k
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_021559_440639_3C0E7B73 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20220914_021721_133784_26217CC1 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,15 +99,13 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Wed, Sep 14, 2022 at 10:56 AM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arin=
 c9.com> wrote:
 >
-> The interrupt-parent property is inherited from the ethernet node as it's=
- a
-> parent node of the switch node. Therefore, remove the unnecessary
-> interrupt-parent property from the switch node.
+> Change phy-mode of gmac1 to rgmii on mt7621.dtsi. Same code path is
+> followed for delayed rgmii and rgmii phy-mode on mtk_eth_soc.c.
 >
 > Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
 > ---
->  arch/mips/boot/dts/ralink/mt7621.dtsi | 1 -
->  1 file changed, 1 deletion(-)
-
+>  arch/mips/boot/dts/ralink/mt7621.dtsi | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
 Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 
