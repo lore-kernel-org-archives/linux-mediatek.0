@@ -4,88 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E92BCC6FA82
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 20:46:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37CC0C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 20:55:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m9bGoBe8wCBmkc6gud9Cy1Iqu9DMXje49H2FW2XThhI=; b=fHjzdyQAFh/7U6b4tGlH3qQiyH
-	9OTuJ9PJp/OvXLASfHK6nUFsxY5/85F62qhn5ze2xCnH2XrOQAK5En8ERJ7I/amHpDWPw8JfcWRcV
-	xq0DeqYsQKMMEHqHSTGu7uGMzfbsINJmc9zM11nEjUDy4bBDbRW8nKw0fFY2CSTmlVx/7GmzF8TUi
-	Umy/q+m91fGn813d5Fofar0RLlQTOwnNK8is8J6iv0aprmXhkPwSHGY5TaKgUI3CzyXpap2IT4lXw
-	BMpeQXvut8ceR0iyr1rYUWbmrnHL3+kp2QBMZvG+hQuGobeImI+ozPOI7wni3c6A4j2hGWcYYX8jj
-	ZxnbNWyg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6MrNWONtzhKXiENWB2WK+9D25r0wj9sBSpYtVTAguhQ=; b=BpAJe3FbT9bDotmN8KB+K7WPXV
+	wmY/6vAd8DYHY0o2/zgcvDDW0oFtO8/sRd4mDyHwxFn3sN4d/SIQ0Fg+51E/x2jqkyb++q6thVgnE
+	vQJAx0eVMZjMWaJOY2Uhrgfl0JDOdWHpgPJdSM/rsuOXAnVke7nuzAShCPHaaEwNcAQHgvvFsPWbq
+	TrFY/yti7ZlN+i407SLugPkiCLSGVonVzlR7ew6PSdE/8/RgcpIj+GtZIoDpDiPCweEP7U4EqODCi
+	j00G6zcKRqR6Uo7RvYaQt8ttPm6Mn7ktYZ7Mxff6jU3YqzQxhvKG8jOa9ZFz4EDv5hRqb81/sseil
+	QClexFjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYZGn-009Tp7-Hc; Wed, 14 Sep 2022 20:46:05 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1oYZQ6-009aCo-KG; Wed, 14 Sep 2022 20:55:42 +0000
+Received: from mail-bn8nam11on2040.outbound.protection.outlook.com ([40.107.236.40] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYZGk-009Tfp-HM; Wed, 14 Sep 2022 20:46:04 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id ay36so2872058wmb.0;
-        Wed, 14 Sep 2022 13:46:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=m9bGoBe8wCBmkc6gud9Cy1Iqu9DMXje49H2FW2XThhI=;
-        b=k/LW+8FU6dXTiCSildtV6+lus8xNFn/xqGPYUXzcghwZeYb6llePcT4d7wf0rZbEXX
-         hyppBJay9AZGyBAsr8kHRkKFM0j9D6+yLwXVYrftrkWLHjzvaZbEH2dj2kRk5YGz+C4A
-         jj6ktBTgFgGl0j5aqSOdDtqj3HMK43KfFdOk1FIneIRFyeNLS7YalGI5t3khH5lIgrId
-         b5uD/UFf44ISwEcj9Q1OXjluUCNAYiu+0vT3jEZhqfyi4/i3zbLiurGcVdppBt3gDfvV
-         GMUhEDVbNCshYWBKs85YZ4BsVeqk/duyZnAPsCHEwlQfcvOJxbEWW6kJDuxpHaqZ880s
-         CWXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=m9bGoBe8wCBmkc6gud9Cy1Iqu9DMXje49H2FW2XThhI=;
-        b=oVBOhO4OFU38pGEKJO/lKzqD7z1nyHhdmNcTMQ1ZZbkMlbyn52WK/sSf/UKybF+Ri+
-         uRzSoo/fwMls8kVL2iYoHCbKedxocLMFbzU4h+Hoqiq6OTIbD0aBfQvUjs/T9C3ZqYat
-         7B3fzymIVZ6DPq/WI+CzXuUCHGP9J587x4f5z3oL/5yiIaJ22jhULwyHtq+GYu8AbaFX
-         IoBi5ac9NjpTLyvVZptt0CXgPeJtnBIgLbo+gyeDFHm7zXp0VOI0v9k70k2snskWYW81
-         3ABIhU+OErhDgGtiWB/OE7Lago1AJlsj97DJjVnjsAkMEblEFA7gTwGb7fdhA5mOb1Bq
-         dThw==
-X-Gm-Message-State: ACgBeo3JzS8IUNVW+zthmin2ceRti7e77qrk7nR90cpbGbKgCTByXmsY
-	nQYbBP4Dez6lTllScFumZX0=
-X-Google-Smtp-Source: AA6agR5j+dsaEcuIMXF56rsR2ctpU5gvF4j1nF5xUwvAX9FmtpqOU5JxXYVEgUIZukydfLNl1VMa5Q==
-X-Received: by 2002:a05:600c:4a9a:b0:3b4:78ab:bae5 with SMTP id b26-20020a05600c4a9a00b003b478abbae5mr4551567wmp.114.1663188358968;
-        Wed, 14 Sep 2022 13:45:58 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id d13-20020adff2cd000000b00228dcf471e8sm215086wrp.56.2022.09.14.13.45.57
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Sep 2022 13:45:57 -0700 (PDT)
-Message-ID: <1b3a880f-06a2-1865-3791-03021aa34175@gmail.com>
-Date: Wed, 14 Sep 2022 22:45:56 +0200
+	id 1oYZPu-009a7g-Dk; Wed, 14 Sep 2022 20:55:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NseF4qWINJNbdOFlXYdlMnc2n9rlnQsoDjb0pDuR1ZYdt3z/gSe9bjY6Zj5mc8p4rotUvphHKVMCuZq0nOOHlZ8AVBuG76jr0JfRKPnk/Y3HQuUWwu2uaNVv7hwfNXbBqv3kr224xOQinzTxSdxPxgDvBa0LFULCfW9JVzBpcDFtxa/GlER4S7F0X4GqvRiGezSgT9Lxr7sb3GT1CF3cLLPefMUr3knGefWoI40yG8MfddJPkheAvPhR1A3k5zsfBeLSw1n9pChWr46y2PJ5ggK+r3SyK48AZYPPhsqWSCQSfrTp7nCexip+iRtyAXMbFt+ulroTP0TePeefKYvGjg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=6MrNWONtzhKXiENWB2WK+9D25r0wj9sBSpYtVTAguhQ=;
+ b=NgVB47fh4hIJlBqIiXRmItbS7PBvCqrzkgQ4kn5cia9MBz3A4BleWwgb87d+UUayY/KU3jOmMA6E3dWbsMl+SvefjgosQEnshWyGkLMotdtSGVlMe3PrFr/EquqUb2jbEUoU73bqUo226133D4ckQNDzOZwi1U+zRQ79Qq/P53SLwcmQLKZX+rnWJzswgQQWQ3UP4zahxsaSwUX5wcYNzH/AKnkyhzDmut68bbBWky0fNUtZUf9L0n39mkhqrwzyHqixxk4+jd7IBEfTEYB2k8DSheYYRMv7IhExw8nNCV5M4EeYGTOvBMWe4mIAV7Z2o1tuy+3uPwFtlsOZDkWO4A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=arm.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=6MrNWONtzhKXiENWB2WK+9D25r0wj9sBSpYtVTAguhQ=;
+ b=TGOCK9MfpOtplPaGLkYrnE3UybAsIuwEuXQ9tXRq7kzFfYO+DFaCf+QRCIoWyAZxv9qFuB5WdfbE2pLQQQadnJQ5Yo3km9KK01ihxwVQ0okGUMm4rl3fd1W35740WTLoH63EZ59d3WIiEdCCOl7ntiNaR/XmldSxBkup7Jw1uTylimdK+1NepwdJFi/2dUi4c60rH4yzVsXpoY/NUXPPnhlSn8A2BBjPtiSuNEruUkwWeFtjaIDNy/pQaq4pjwCw9/rxzBpWAVTLICqvm58hRSrE1N/UY1fQa5wYv1z3PusIaZJO6NgpvryldSVbj7bGTI9i6AYIO4LxdSvdJDxIqA==
+Received: from DS7PR03CA0004.namprd03.prod.outlook.com (2603:10b6:5:3b8::9) by
+ PH7PR12MB5856.namprd12.prod.outlook.com (2603:10b6:510:1d7::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.22; Wed, 14 Sep
+ 2022 20:55:26 +0000
+Received: from DM6NAM11FT086.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:5:3b8:cafe::68) by DS7PR03CA0004.outlook.office365.com
+ (2603:10b6:5:3b8::9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.22 via Frontend
+ Transport; Wed, 14 Sep 2022 20:55:26 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ DM6NAM11FT086.mail.protection.outlook.com (10.13.173.75) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5632.12 via Frontend Transport; Wed, 14 Sep 2022 20:55:26 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26; Wed, 14 Sep
+ 2022 13:55:12 -0700
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29; Wed, 14 Sep
+ 2022 13:55:12 -0700
+Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com (10.129.68.8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29 via Frontend
+ Transport; Wed, 14 Sep 2022 13:55:10 -0700
+Date: Wed, 14 Sep 2022 13:55:08 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Robin Murphy <robin.murphy@arm.com>
+CC: Jason Gunthorpe <jgg@nvidia.com>, Jean-Philippe Brucker
+	<jean-philippe@linaro.org>, <joro@8bytes.org>,
+	<suravee.suthikulpanit@amd.com>, <will@kernel.org>, <robdclark@gmail.com>,
+	<dwmw2@infradead.org>, <baolu.lu@linux.intel.com>, <agross@kernel.org>,
+	<bjorn.andersson@linaro.org>, <konrad.dybcio@somainline.org>,
+	<matthias.bgg@gmail.com>, <heiko@sntech.de>, <orsonzhai@gmail.com>,
+	<baolin.wang@linux.alibaba.com>, <zhang.lyra@gmail.com>,
+	<thierry.reding@gmail.com>, <sricharan@codeaurora.org>,
+	<yong.wu@mediatek.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
+	<tglx@linutronix.de>, <shameerali.kolothum.thodi@huawei.com>,
+	<thunder.leizhen@huawei.com>, <christophe.jaillet@wanadoo.fr>,
+	<yangyingliang@huawei.com>, <jon@solid-run.com>, <iommu@lists.linux.dev>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
+	<virtualization@lists.linux-foundation.org>
+Subject: Re: [PATCH 4/5] iommu: Regulate errno in ->attach_dev callback
+ functions
+Message-ID: <YyI/rLRu1qQ57LM0@Asurada-Nvidia>
+References: <20220913082448.31120-1-nicolinc@nvidia.com>
+ <20220913082448.31120-5-nicolinc@nvidia.com>
+ <YyB3F/o3RfymqiFW@myrica>
+ <YyGaqsXSDMn8R12R@nvidia.com>
+ <YyGjtsB2Yq4fQICS@myrica>
+ <YyIWQ6rX6AR9KX5E@Asurada-Nvidia>
+ <5f049bb8-76e6-901a-9f8e-b48d270bc4a0@arm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.1
-Subject: Re: [PATCH 5/5] dt-bindings: arm: mediatek: mmsys: remove the unused
- compatible for mt8195
-Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220914182331.20515-1-jason-jh.lin@mediatek.com>
- <20220914182331.20515-6-jason-jh.lin@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220914182331.20515-6-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <5f049bb8-76e6-901a-9f8e-b48d270bc4a0@arm.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6NAM11FT086:EE_|PH7PR12MB5856:EE_
+X-MS-Office365-Filtering-Correlation-Id: 37464c23-4ea2-44f6-a788-08da96937336
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	eFYiVF9rjky36BTr9CulQLvdOrhn2kFapkMMigQNjatMhqAQXKQ7doria7++uAD5b5WQSpGSBNSfxUPtSYNB5Tt1tRzmoFx3s10Lz0ylhXkhJiNdBT/FHcGCAYUAxj8DxClzaXzuon+1vHOeWP/l0yuVyGaipCrVGJTfO8ctDdee2idUB/bf3NuuaSEFKs0uVir6GW4Vx/sUDkSHSY5FEQahB9P4JvnBZqDoj+o3fW1IhLgSstsIqqbD92gB4X8AvLtfy9bd0eWd/a66TdZyVbKF1fz5njtWhs7MK2++N4hq4cJHyCbU1WqQDhbT7sNxQNDHvKTxiKuiQQ2zrw2yp47B23zfrgX5FjkdFJLp2CDyhc5nCCEGmyn18MVB0bTX4H49r2qVHYV9e7VilTZrslgoEeVtohAhW4TMCc+Bu4NDymNDXXo0B91+4j3NrRD9q6KtIOMDaAtDuwBgezQd2MwAISPePm2nRYCD7ro6jjpIE0nHSdTvqs13+21YgGv8ryN8zYx1Ij2esD3ovs8QBlwF2hW6XGFhS5E+s2FNDMv7A11IJB4VxLsk4V+KD12/z3r+bc5OYKOFhtiw9HJ1LCMPzvk0semrXGB6Aaz+4bkdvcQkdkreAWBO/j+DtT4yNU+koBB+qECjnjnGFyhBYpWMUr2ac5MQJNjtxXakTd5jVrFYKGwpIqNxi7yiKHeN5WIuDUkt0ZfUQ/DA3GIuqu+4WeQE/XBuP9gRpTBpuR1AL91vOkjAvJMWRWdZULq3xB6gqWwICvJ0zL2N8t8E1g==
+X-Forefront-Antispam-Report: 	CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230022)(4636009)(136003)(396003)(346002)(39860400002)(376002)(451199015)(46966006)(40470700004)(36840700001)(7636003)(40460700003)(336012)(2906002)(86362001)(33716001)(70586007)(82310400005)(316002)(53546011)(47076005)(54906003)(36860700001)(83380400001)(9686003)(7416002)(426003)(26005)(478600001)(186003)(5660300002)(7406005)(70206006)(8676002)(356005)(8936002)(82740400003)(41300700001)(4326008)(40480700001)(55016003)(6916009);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Sep 2022 20:55:26.2104
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 37464c23-4ea2-44f6-a788-08da96937336
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	DM6NAM11FT086.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB5856
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_134602_605227_02F4757A 
-X-CRM114-Status: GOOD (  15.53  )
+X-CRM114-CacheID: sfid-20220914_135530_489738_FCD86E6F 
+X-CRM114-Status: GOOD (  40.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,36 +141,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Robin,
 
-
-On 14/09/2022 20:23, Jason-JH.Lin wrote:
-> The compatible properties of mt8195 have changed to mediatek,mt8195-vdosys0
-> and mediatek,mt8195-vdosys1 from mediatek,mt895-mmsys, so remove the unused
-> compatible.
+On Wed, Sep 14, 2022 at 08:53:07PM +0100, Robin Murphy wrote:
+> External email: Use caution opening links or attachments
 > 
-> Fixes: 81c5a41d10b9 ("dt-bindings: arm: mediatek: mmsys: add mt8195 SoC binding")
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
->   .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml         | 1 -
->   1 file changed, 1 deletion(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> index a53b32c0a608..bfbdd30d2092 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> @@ -31,7 +31,6 @@ properties:
->                 - mediatek,mt8183-mmsys
->                 - mediatek,mt8186-mmsys
->                 - mediatek,mt8192-mmsys
-> -              - mediatek,mt8195-mmsys
+> On 2022-09-14 18:58, Nicolin Chen wrote:
+> > On Wed, Sep 14, 2022 at 10:49:42AM +0100, Jean-Philippe Brucker wrote:
+> > > External email: Use caution opening links or attachments
+> > > 
+> > > 
+> > > On Wed, Sep 14, 2022 at 06:11:06AM -0300, Jason Gunthorpe wrote:
+> > > > On Tue, Sep 13, 2022 at 01:27:03PM +0100, Jean-Philippe Brucker wrote:
+> > > > > I think in the future it will be too easy to forget about the constrained
+> > > > > return value of attach() while modifying some other part of the driver,
+> > > > > and let an external helper return EINVAL. So I'd rather not propagate ret
+> > > > > from outside of viommu_domain_attach() and finalise().
+> > > > 
+> > > > Fortunately, if -EINVAL is wrongly returned it only creates an
+> > > > inefficiency, not a functional problem. So we do not need to be
+> > > > precise here.
+> > > 
+> > > Ah fair. In that case the attach_dev() documentation should indicate that
+> > > EINVAL is a hint, so that callers don't rely on it (currently words "must"
+> > > and "exclusively" indicate that returning EINVAL for anything other than
+> > > device-domain incompatibility is unacceptable). The virtio-iommu
+> > > implementation may well return EINVAL from the virtio stack or from the
+> > > host response.
+> > 
+> > How about this?
+> > 
+> > + * * EINVAL    - mainly, device and domain are incompatible, or something went
+> > + *               wrong with the domain. It's suggested to avoid kernel prints
+> > + *               along with this errno. And it's better to convert any EINVAL
+> > + *               returned from kAPIs to ENODEV if it is device-specific, or to
+> > + *               some other reasonable errno being listed below
+> 
+> FWIW, I'd say something like:
+> 
+> "The device and domain are incompatible. If this is due to some previous
+> configuration of the domain, drivers should not log an error, since it
+> is legitimate for callers to test reuse of an existing domain.
+> Otherwise, it may still represent some fundamental problem."
 
-Should be part of the first patch. As described in the review.
+OK. I will use this narrative.
 
-Regards,
-Matthias
+> And then at the public interfaces state it from other angle:
+> 
+> "The device and domain are incompatible. If the domain has already been
+> used or configured in some way, attaching the same device to a different
+> domain may be expected to succeed. Otherwise, it may still represent
+> some fundamental problem."
 
->                 - mediatek,mt8195-vdosys0
->                 - mediatek,mt8195-vdosys1
->                 - mediatek,mt8365-mmsys
+I assume this should go to kdocs of iommu_attach_device/group().
+
+> [ and to save another mail, I'm not sure copying the default comment for
+> ENOSPC is all that helpful either - what is "space" for something that
+> isn't a storage device? I'd guess limited hardware resources in some
+> form, but in the IOMMU context, potential confusion with address space
+> is maybe a little too close for comfort? ]
+
+How about "non-ENOMEM type of resource allocation failure"?
+
+> > > > > Since we can't guarantee that APIs like virtio or ida won't ever return
+> > > > > EINVAL, we should set all return values:
+> > > > 
+> > > > I dislike this alot, it squashes all return codes to try to optimize
+> > > > an obscure failure path :(
+> > 
+> > Hmm...should I revert all the driver changes back to this version?
+> 
+> Yeah, I don't think we need to go too mad here. Drivers shouldn't emit
+> their *own* -EINVAL unless appropriate, but if it comes back from some
+> external API then that implies something's gone unexpectedly wrong
+> anyway - maybe it's a transient condition and a subsequent different
+> attach might actually work out OK? We can't really say in general.
+
+OK. Then there's even no need to convert EINVAL to ENODEV.
+
+> Besides, if the driver sees an error which implies it's done something
+> wrong itself, it probably shouldn't be trusted to try to reason about it
+> further. The caller can handle any error as long as we set their
+> expectations correctly.
+
+Yea. As Jason remarked, a wrongly returned EINVAL would make things
+a bit inefficient: VFIO/IOMMUFD would keep trying attach_dev() with
+its existing domain list and a new domain but fail all of them.
+
+I will change things in v2 back to this 2-patch version, and maybe
+limit a bit further the changes in the first NODEV patch.
+
+Thanks!
+Nic
 
