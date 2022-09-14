@@ -4,82 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72A76ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 15:20:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94C17C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 16:03:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wloC/J0F6yZhG8fSrhhIFOYeY4PZYcuw8/qw0WLhmts=; b=hmgIktNLwpCc0W5jBj7+MLo2Y9
-	B5DC0PBC3zG6UmBtPQB8kM8wO62vPTnVF61pnJ2RoQfuJU3i9rPQ/aqVYGvqClbbWzp3mxOEeOdwr
-	T3/D/I2H4OeF5l9/gIBaY9UjyPLiQ1jRuayBq8wU5+YH2FUMLdnQ2Iu5vfmGCZfp9xddlfc7ic75X
-	cqKv8kye1bgZXszSYQ4lSDBZTQgMUCSbIiyrNObvaF7otvknD7+8p3hPrVYeQtr02skH0spJKFHCo
-	wURcIMt+8VD5OuqVFD9qQ3rlEBpdRxTMNibfn1bu9mx4lzkDpKAsAQPO8oO7LQ6uzEV/JZoGf26aB
-	3CmPflpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0a1rSxvAJG0YnYk7+iIiw+NeG9+9V8j9zpStoZYAMfg=; b=kYrnttQcfDve8Yhm7n40Ytn63+
+	g4S3AYIyMyYEXrJhK27H/t+aJL4WkI5SNV85YaLFmke0u6V/VoYkBr7vmqI2CSuo9lxxk3Y3GQQmM
+	kmS8epm97lI+ZczRuZKq1XoGIhZSlZWZG3SAOJbDueoqA9BZpuX18VRvWyGxQwe0TjJ7DnEZK1/C9
+	IwqqFWRqVbbdbfT4RM3n+9n8GqY0iW2QSiwxT3ypLfR3qNDc57FfCOZh7ppmsoebpx6EcydiDXM8X
+	zKx79cWd4Mk8YOuNwnShuGMnwLZMTMIJLVixOPpWBhzjHcrrEc4t3matCcM6F56yka5+p4p7GN5Y4
+	j6PPnbhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYUB9-003ckn-LA; Wed, 14 Sep 2022 15:19:55 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1oYUrL-004cKV-DL; Wed, 14 Sep 2022 16:03:31 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYUAx-003c6H-NW; Wed, 14 Sep 2022 15:19:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1663168748; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=d18h0VCuUcQlrCNVzd8EEARixB3LaiEII5NJ/cAhdM+pS/xi7tIBSgiQy3ka5+ZSrVuT4UyAe/KNYmZjtCurviNkdscz28ErI9nIFS1dr/FB1R3XMNkdVh++Ieu/ny1Osr06f01k4/FbH+EeNTBJB8u5xHLmj13skdfm1vUxM2I=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1663168748; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=wloC/J0F6yZhG8fSrhhIFOYeY4PZYcuw8/qw0WLhmts=; 
-	b=Kc35hLPDHHRFNBPdLXsB7ca2ooQ2Qh4pt8u+B4zDSzcdOFr2dO98x1/5wnc/95ocK86DfkAWYueARithEsUoJw8419JkhhCX9bQxYfLk36pGSZDkvMOAsdRZCvWV0U2f63wA7zsEE7dzvCoT2tS/EVy+MCqMnKwxabPm3g6Tuus=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663168748;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=wloC/J0F6yZhG8fSrhhIFOYeY4PZYcuw8/qw0WLhmts=;
-	b=HYRqQgZnOA5dUMeMQZnjRkWq2q5fiZVvdxsATLGvgufw/k6xNHAFIdJOJyDF3HvH
-	sMLAyZz5GVqPkarxZt/Kxxx3lH1axtLnS5Xo3Yi6tN0WmasIP1k7FsR6aW5C9AWvtzB
-	SPqc6KtvrFFWWLMhVRRmgRphHUwJ60k8lxnGDHvI=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1663168746065958.7172933428667; Wed, 14 Sep 2022 08:19:06 -0700 (PDT)
-Message-ID: <44045164-692d-c8f5-3216-b043fb821634@arinc9.com>
-Date: Wed, 14 Sep 2022 18:18:58 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 04/10] dt-bindings: memory: mt7621: add syscon as
- compatible string
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>, erkin.bozoglu@xeront.com,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	id 1oYUqf-004bWK-Dc
+	for linux-mediatek@lists.infradead.org; Wed, 14 Sep 2022 16:02:52 +0000
+Received: by mail-wr1-x434.google.com with SMTP id z12so8130050wrp.9
+        for <linux-mediatek@lists.infradead.org>; Wed, 14 Sep 2022 09:02:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:from:to:cc:subject:date;
+        bh=0a1rSxvAJG0YnYk7+iIiw+NeG9+9V8j9zpStoZYAMfg=;
+        b=u7sQ9YzDa9AJttRF+k1/nMcRPdRO+kG+nfqYPxJ3nVXs9DRbmmGr7tuqKKhGqFWK4z
+         kTXcHAfcLUGjEFEyZ0/r4eO8uWM23Fsq0qt+UY0ZHrpmm/WCs8GBsLK9Qnawv0/xn0tN
+         3SMXx/1Dd4d77k/Yj6dxjyZ1c2V+ndnhDXQwdKY82wCixqLbhHm0PnCu0EWVFnIClXyw
+         xUIrmpBknDUwOWb15hb82/S8XCUYzUnORQm1GcGvqo4Y3zLpf044H5WzbhXRif+JxQ8P
+         EXeDQNwV0Mj7XtH3F17ztuSMhj0aNcoHyLdWi6pF66KjdJL17Anltq1bpS3U7DshrFmc
+         ucXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:x-gm-message-state:from:to:cc:subject:date;
+        bh=0a1rSxvAJG0YnYk7+iIiw+NeG9+9V8j9zpStoZYAMfg=;
+        b=EfUPmE2XY8/LezPsjm5ZyFzckozdt+Y/7yrhJWCFXkD76yhAdVRtcWT+mmeJsgW5+G
+         jjQR9nTEbZ093llvitLP/wnAT7h0aLCp8ydq/qfq9wdclrsBr02lEIYUBuWWFrvvh4/2
+         LqwbtDNZmerL8tNKFHuaWYnsf2jDcAeIWvvUbB6Pt4vTbhM8GuHFnTPCyShWTB7UnI9l
+         ukWGS3cX3o/TDUk2Z2R6RNAlt08owCEQNSGkM4skMJkIloqsAaP7eiqH3nIe5OPckQa6
+         JvplE65ETufy6Ft/YjRftgHBAXxvnN/Z3b0pUeOpD56Y343zTsvNsdopGUsmr507Hn8R
+         XZjQ==
+X-Gm-Message-State: ACgBeo2IZofDCDARqTY6M7uOdysiWbhJVGzEX8nQjG2RRUo6fA662Ilt
+	2daoxhjPrKWUDBQDOz3JNaXcAw==
+X-Google-Smtp-Source: AA6agR7zCloyLg9dA6SkmO6teoejjwRwhuaiZfmAYiHwsaIJNXiwj59Jq8E/lGyPllk5k9+m78yl/Q==
+X-Received: by 2002:a5d:47a8:0:b0:226:f124:ad74 with SMTP id 8-20020a5d47a8000000b00226f124ad74mr23034923wrb.18.1663171361878;
+        Wed, 14 Sep 2022 09:02:41 -0700 (PDT)
+Received: from localhost ([185.122.133.20])
+        by smtp.gmail.com with ESMTPSA id h17-20020a05600c2cb100b003a5ca627333sm19229570wmc.8.2022.09.14.09.02.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Sep 2022 09:02:41 -0700 (PDT)
+From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ krzysztof.kozlowski+dt@linaro.org
+Cc: dmitry.torokhov@gmail.com, robh+dt@kernel.org, matthias.bgg@gmail.com,
+ chen.zhong@mediatek.com, linux-input@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org
-References: <20220914085451.11723-1-arinc.unal@arinc9.com>
- <20220914085451.11723-5-arinc.unal@arinc9.com>
- <20220914151414.GA2233841-robh@kernel.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20220914151414.GA2233841-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: input: Convert mtk-pmic-keys to DT
+ schema
+In-Reply-To: <20220914103021.43593-2-angelogioacchino.delregno@collabora.com>
+References: <20220914103021.43593-1-angelogioacchino.delregno@collabora.com>
+ <20220914103021.43593-2-angelogioacchino.delregno@collabora.com>
+Date: Wed, 14 Sep 2022 17:02:40 +0100
+Message-ID: <87leqmt04f.fsf@baylibre.com>
+MIME-Version: 1.0
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_081943_927616_5C4657D4 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220914_090249_498407_B741A461 
+X-CRM114-Status: GOOD (  23.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,17 +92,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14.09.2022 18:14, Rob Herring wrote:
-> On Wed, Sep 14, 2022 at 11:54:45AM +0300, Arınç ÜNAL wrote:
->> Add syscon as a constant string on the compatible property as it's required
->> for the SoC to work. Update the example accordingly.
-> 
-> It's not required. It's required to automagically create a regmap. That
-> can be done yourself as well. The downside to adding 'syscon' is it
-> requires a DT update. Maybe that's fine for this platform? I don't know.
+Hi Angelo,
 
-My GB-PC2 won't boot without syscon on mt7621.dtsi. This string was 
-always there on the memory controller node on mt7621.dtsi.
+On Wed, Sep 14, 2022 at 12:30, AngeloGioacchino Del Regno         <angelogioacchino.delregno@collabora.com> wrote:
 
-Arınç
+> Convert the mtk-pmic-keys to DT schema format.
+>
+> The old binding was missing documentation for key press/release
+> interrupts, even though it was supported in hardware and driver,
+> so support for the same was added during the conversion.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../bindings/input/mediatek,pmic-keys.yaml    | 113 ++++++++++++++++++
+>  .../bindings/input/mtk-pmic-keys.txt          |  46 -------
+>  2 files changed, 113 insertions(+), 46 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+
+Thank you for doing this. I started this but it seemed you were faster
+than me :)
+
+Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+
+>
+> diff --git a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+> new file mode 100644
+> index 000000000000..9d8a0c3aebca
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+> @@ -0,0 +1,113 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/input/mediatek,pmic-keys.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek PMIC Keys
+> +
+> +maintainers:
+> +  - Chen Zhong <chen.zhong@mediatek.com>
+> +
+> +allOf:
+> +  - $ref: input.yaml#
+> +
+> +description: |
+> +  There are two key functions provided by MT6397, MT6323 and other MediaTek
+> +  PMICs: pwrkey and homekey.
+> +  The key functions are defined as the subnode of the function node provided
+> +  by the PMIC that is defined as a Multi-Function Device (MFD).
+> +
+> +  For MediaTek MT6323/MT6397 PMIC bindings see
+> +  Documentation/devicetree/bindings/mfd/mt6397.txt
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt6323-keys
+> +      - mediatek,mt6358-keys
+> +      - mediatek,mt6397-keys
+> +
+> +  power-off-time-sec: true
+> +
+> +  mediatek,long-press-mode:
+> +    description: |
+> +      Key long-press force shutdown setting
+> +      0 - disabled
+> +      1 - pwrkey
+> +      2 - pwrkey+homekey
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    default: 0
+> +    maximum: 2
+> +
+> +patternProperties:
+> +  "^((power|home)|(key-[a-z0-9-]+|[a-z0-9-]+-key))$":
+> +    $ref: input.yaml#
+> +
+> +    properties:
+> +      interrupts:
+> +        minItems: 1
+> +        items:
+> +          - description: Key press interrupt
+> +          - description: Key release interrupt
+> +
+> +      interrupt-names: true
+> +
+> +      linux-keycodes:
+> +        maxItems: 1
+> +
+> +      wakeup-source: true
+> +
+> +    required:
+> +      - linux,keycodes
+> +
+> +    if:
+> +      properties:
+> +        interrupt-names:
+> +          contains:
+> +            const: powerkey
+> +    then:
+> +      properties:
+> +        interrupt-names:
+> +          minItems: 1
+> +          items:
+> +            - const: powerkey
+> +            - const: powerkey_r
+> +    else:
+> +      properties:
+> +        interrupt-names:
+> +          minItems: 1
+> +          items:
+> +            - const: homekey
+> +            - const: homekey_r
+> +
+> +    unevaluatedProperties: false
+> +
+> +required:
+> +  - compatible
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/input/input.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +    pmic {
+> +        compatible = "mediatek,mt6397";
+> +
+> +        keys {
+> +          compatible = "mediatek,mt6397-keys";
+> +          mediatek,long-press-mode = <1>;
+> +          power-off-time-sec = <0>;
+> +
+> +          key-power {
+> +            linux,keycodes = <KEY_POWER>;
+> +            wakeup-source;
+> +          };
+> +
+> +          key-home {
+> +            linux,keycodes = <KEY_VOLUMEDOWN>;
+> +          };
+> +        };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt b/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+> deleted file mode 100644
+> index 9d00f2a8e13a..000000000000
+> --- a/Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+> +++ /dev/null
+> @@ -1,46 +0,0 @@
+> -MediaTek MT6397/MT6323 PMIC Keys Device Driver
+> -
+> -There are two key functions provided by MT6397/MT6323 PMIC, pwrkey
+> -and homekey. The key functions are defined as the subnode of the function
+> -node provided by MT6397/MT6323 PMIC that is being defined as one kind
+> -of Muti-Function Device (MFD)
+> -
+> -For MT6397/MT6323 MFD bindings see:
+> -Documentation/devicetree/bindings/mfd/mt6397.txt
+> -
+> -Required properties:
+> -- compatible: Should be one of:
+> -	- "mediatek,mt6397-keys"
+> -	- "mediatek,mt6323-keys"
+> -	- "mediatek,mt6358-keys"
+> -- linux,keycodes: See Documentation/devicetree/bindings/input/input.yaml
+> -
+> -Optional Properties:
+> -- wakeup-source: See Documentation/devicetree/bindings/power/wakeup-source.txt
+> -- mediatek,long-press-mode: Long press key shutdown setting, 1 for
+> -	pwrkey only, 2 for pwrkey/homekey together, others for disabled.
+> -- power-off-time-sec: See Documentation/devicetree/bindings/input/input.yaml
+> -
+> -Example:
+> -
+> -	pmic: mt6397 {
+> -		compatible = "mediatek,mt6397";
+> -
+> -		...
+> -
+> -		mt6397keys: mt6397keys {
+> -			compatible = "mediatek,mt6397-keys";
+> -			mediatek,long-press-mode = <1>;
+> -			power-off-time-sec = <0>;
+> -
+> -			power {
+> -				linux,keycodes = <116>;
+> -				wakeup-source;
+> -			};
+> -
+> -			home {
+> -				linux,keycodes = <114>;
+> -			};
+> -		};
+> -
+> -	};
+> -- 
+> 2.37.2
 
