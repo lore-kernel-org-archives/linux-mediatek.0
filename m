@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A05E4ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 08:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A678FECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 08:18:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gRzw21CaGseMO2DlCabHmVy0w0tvTchCezYsyHvkMq8=; b=h8gLQoldHOzbJlsuQZtsH/wF6q
-	lVA89I2OOS9K1xdJy/wCcMMPG3XoSyb6We7P+Lspiu2f01TpG51Cn2cH9AkYAvT3J4Ual172vfjM0
-	VD+tKbQirTrO0HtCW8KV3aDxOyrlZ+ns81578doYHlJsG+8h/GBCv0FEqNtS60cn4kjZNgjCOERV9
-	5vV0rtKgHqm7RVOnMYc0uSS8NxLQjovkvszzPR1EKS2ly10wxYaKeuaLxBjstZrXTqhhzhtay8dX+
-	licuHymkaUKKOpXK++B8L8RiaibWuKVG8fh3I+izNYEllkAeWqEh17zCU859chy9OGN+iD19T72kL
-	hZMF4BuQ==;
+	bh=Llsgat33sbmCea4gLFhOeGPuEHBAi3ix59mCbawYsNw=; b=E3zG++oysz3OQXUPlFzw7DSVSB
+	jVyiZMy68olI2Em4RSvapmQxZtvrCVrs3HnOjfLodZrmLpCYuc8bE1JBk4verVClk0u532H5Huq/2
+	ZRu4WfXVUwCfwdfZe/m8bgG7tkKjYxkct/oVLMXzhhhoYlZQBrt5kX6ma0uZKPFK37Cw296/o6IJx
+	jNY8cdIR5BBiiFEIxg5uKpTP6vnQNYzDWJGb+syuqRfNSA2BLh2FjjDdg3MRu+Plny5uuXWw3K1WB
+	HsDEJhIHj+uCh+BhPhtvL/fY9rVNcLYofnd308zihtpdipyOtE9ityCz4Ob8aSFOHTyLSBAgoISbY
+	t5i4E62A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYNN7-00CraS-IT; Wed, 14 Sep 2022 08:03:49 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oYNaj-00DRjI-Ot; Wed, 14 Sep 2022 08:17:53 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYNMj-00CpwA-0R; Wed, 14 Sep 2022 08:03:26 +0000
+	id 1oYNaX-00DRWt-T9; Wed, 14 Sep 2022 08:17:43 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 32B096601FF1;
-	Wed, 14 Sep 2022 09:03:23 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AF0AD660037C;
+	Wed, 14 Sep 2022 09:17:39 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663142603;
-	bh=TITOuthHNLGkMHxvtBcpAKptZhyxFjhWVWDdbx8f6zM=;
+	s=mail; t=1663143460;
+	bh=HFEQ65O/mE3evHovBKdThpzSRkNG08TXQRM2aECKklU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VEJzKu+ubtFGsd5IhUiXO7bzvBSuGuepfJ4V0OMjc5+D9yiuNk6wNVa7IggUl3+oo
-	 gB2QLf+t4rk0uzjX+EsbOXQ4y+4LT6bgoHG9pD0B6U3cA/CZyTiT8msaXkEQX1MOhY
-	 GRDDlUahzVA8IjMyIfJ7A9bfsC3Is9ABewpB2H+N5YUb3wdrfhxErNGcMnOnYSkZAM
-	 JksNOSdBPHDJCBowo/wejdGYw4hUiUsQmoVhXVNNRzU2PKmO8JmwqEbFP9EMjv8kNB
-	 iKGr5iaGD0Xj21Xe7dSqmjkbmEBEOET4caFSxlAUwnwvetRWqL8fUd32Frf+JgCQh+
-	 Ox5rVlzYWCYXw==
-Message-ID: <69b50512-4958-8233-cd6d-4850bd5c5fcf@collabora.com>
-Date: Wed, 14 Sep 2022 10:03:20 +0200
+	b=H9hmToNizNS8Y2APOOTL4yzGIZXc7SvGyz/ZEea1Gh13MMaV/Q7RJkW7sb0ZQLExj
+	 ip5wP8rDIFMeAp1h7Tun+ZDVrrkgFD/nAI7GSKh3bjIkQbk3T8jLENTml9qog51tDC
+	 g9yemHzg37bQhBC/1mLsu1B1pk6BzPTXi9dfkALIQ+guZmvJs7KneFATdCFOGHyD72
+	 8+H4GU+HXaB6M4PdxVUawUeIjEW7okQnIRTyHN0vN4faOOtglAoEZnFoBW/GGV4KUN
+	 RAqxeqQT/kUe/SHR/GJy+QJBrKgrELz/5g2zupAncqJnq6wz0yXnQzy+2M9z4MAaNE
+	 +weBYv+DU3GFg==
+Message-ID: <0723c329-475c-42a1-f6d5-f478d649aef1@collabora.com>
+Date: Wed, 14 Sep 2022 10:17:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH v3] Input: mtk-pmic-keys - Add support for MT6331 PMIC
- keys
+Subject: Re: [PATCH] drm: mediatek: Fix display vblank timeout when disable
+ dsi
 Content-Language: en-US
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: matthias.bgg@gmail.com, mkorpershoek@baylibre.com,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220913123941.385349-1-angelogioacchino.delregno@collabora.com>
- <YyC1zRlf+AUSFKnv@google.com>
+To: xinlei.lee@mediatek.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
+ airlied@linux.ie, daniel@ffwll.ch, matthias.bgg@gmail.com,
+ jitao.shi@mediatek.com
+Cc: rex-bc.chen@mediatek.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <1663136309-29491-1-git-send-email-xinlei.lee@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <YyC1zRlf+AUSFKnv@google.com>
+In-Reply-To: <1663136309-29491-1-git-send-email-xinlei.lee@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_010325_235638_DD0AF901 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20220914_011742_137900_5CAC470F 
+X-CRM114-Status: UNSURE (   8.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,21 +79,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/09/22 18:54, Dmitry Torokhov ha scritto:
-> On Tue, Sep 13, 2022 at 02:39:41PM +0200, AngeloGioacchino Del Regno wrote:
->> Add support for PMIC Keys of the MT6331 PMIC.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+Il 14/09/22 08:18, xinlei.lee@mediatek.com ha scritto:
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
 > 
-> Applied, thank you. But we also need to add the compatible to the list
-> in Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
+> Dsi is turned off at bridge.disable, causing crtc to wait for vblank timeout.
+> It is necessary to add count protection to turn off dsi, and turn off at post_disable.
 > 
-> Thanks.
-> 
+> Fixes: cde7e2e35c28 ("drm/mediatek: Separate poweron/poweroff from enable/disable and define new funcs")
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 
-Right. Sending a commit for that asap.
+Hello Xinlei,
+which machine is this commit targeting?
 
-Thank you!
+Can you please try to reproduce again the issue that you're seeing with my
+mtk_dsi fix [1], but without this commit?
+
+Thanks,
 Angelo
+
+[1]: 
+https://patchwork.kernel.org/project/linux-mediatek/patch/20220721172727.14624-1-angelogioacchino.delregno@collabora.com/
+
 
