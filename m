@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04676ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 10:22:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D491CC6FA86
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 10:22:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tmYa1gCjW6ya2GxwDfsYeVcyPCmQxjZ+lntIPjJ0CYM=; b=pjKVwLTLNGR4VpXDBVzFAnPZuK
-	9kXsFZJztBxwA1iyPUzoR3flmrLJqdW7x3qIQSuPcb8yUYeFepmS9X7/wtHsSEcsSVQpfzgbYS8PB
-	cxsUx4K13ojSSwru8XPpX5G5N+BVSju+HyPquSZacFj4fAo85YmDrtwk2N0QU9l7JTy7BCinZK4Ua
-	rs+CQloPz8UbfiQKSsxTOqmQpuUh9qa9GUYJcUYpex75/8+Sf4jXawifKCKyiHa5FE1u319keolKs
-	3SjaDI8dBJq9eR2Q6V9algRNJAXT4ztwDUaH3TeNJODcz5eulMYVUOtSjr3wTU6obCYYxle4m9qlj
-	wAaV5qJg==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ps7PgMWhxefgbtcNKjLN/FBssr1YHBS4wSEf1QompGQ=; b=Rwxxv6D77uEekROyrokMOY3GQr
+	5/IQ+jLDEg8Yp1LJ984tnfiO6QvdfpnaDSNDBzB0Y3gyjuwqGzKtet9yR6oiq5RC4hlWDUJPjGfrp
+	V/6iuj4MlHC7lqipZpnUwf/lzfTbKQuVBCQLjxV+WfGAcnyJlTgjenCAogjxn1P+zdYuSAhrqwfJK
+	CEOI8D6wVRdBtF5qcx1TcrlSJBwlbSAm3rb9k/RXwsOxYBfme49ake5gMdTKunfTkZn6K2hh3LZja
+	v+7vQWUZHNjdq6hXjce8+wWvfl0HopwC30QKgPm6kTqTzkYqke6bDnuVgVUBTxNqU6UxegmcxcwfJ
+	pp3NbrIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYPWj-00F20l-77; Wed, 14 Sep 2022 10:21:53 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oYPWk-00F21E-By; Wed, 14 Sep 2022 10:21:54 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYPW8-00F1AA-OY; Wed, 14 Sep 2022 10:21:19 +0000
+	id 1oYPWA-00F1Dh-Uq; Wed, 14 Sep 2022 10:21:20 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4ADBD6601FAD;
-	Wed, 14 Sep 2022 11:21:12 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C9212660201C;
+	Wed, 14 Sep 2022 11:21:13 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663150872;
-	bh=QdN2B3QibIErQYqVl05FBiGUQIidoGZDB5zsfyDeIhg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=kuK208OdpKJ/ygCdBVc8RUw7xLAg1BYoyVlcDRodErz+0HWi7i/2l+mKeQKda9jne
-	 3wwhPXTHqokS3xWX4655NL30hnW0ifZXEH85TTEKwFblrHpWgb2d2tXuulQYJwoglt
-	 Zist/UvhMfPFDOOVSF1C3BAqaE63EJ1aSbfDBopCfszheoe1tATJDUSgJAZpENvifs
-	 HmcH+gQ4bwSaSt1pFeUi+2EYNQR77nwX9L0l4CcgNUmLTDsJD6I03zJqucSpskx403
-	 U9uvGpkrmdwRa51socFiI5tNYFBk7CILz/ObpKNO2LMBD/90zH4edl7X7ptdaohYwG
-	 snREHz7IobqXg==
+	s=mail; t=1663150874;
+	bh=+t+eS5uIq7be1EAHToZiBnClNaJKjeBU4Ul3SPxFOAg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=U8xUsm4llePZLK4+gmK9cVOZa6u5GdXx0q9y+xXYW7TEL8roG9249T7pQ7JKw/dth
+	 aYI8FMx0mzU7dXn9er5jfyxsuef0HFjgEtRGAUqHLevq5MiAuiZt5tOSpvqqeuSOra
+	 WLTuT2GAY6ngDengo2Ru4/uNr6jLALaTEGp3jIVxWZ51v7poOribtsURx90/5vJ/oo
+	 125VMs0ilxUxlVkgiP9RcxCHTg+bSBsfwvqD08rsbzWo+VLiJIHarnd05rFIGZ6ZKd
+	 ffp3ezY7Q/bWgTstgtFYwSh8f7+PmlxJqXkG2qNOvYfyfmeXu4G5OrwEylbYvC0tZ+
+	 mrTGQLAUHdz1w==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: krzysztof.kozlowski+dt@linaro.org
 Cc: dmitry.torokhov@gmail.com,
@@ -53,15 +53,17 @@ Cc: dmitry.torokhov@gmail.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 0/2] MediaTek PMIC Keys - DT schema conversion
-Date: Wed, 14 Sep 2022 12:20:57 +0200
-Message-Id: <20220914102059.41757-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 2/2] dt-bindings: input: mediatek,pmic-keys: Add compatible for MT6331 keys
+Date: Wed, 14 Sep 2022 12:20:59 +0200
+Message-Id: <20220914102059.41757-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20220914102059.41757-1-angelogioacchino.delregno@collabora.com>
+References: <20220914102059.41757-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_032117_054058_D365EB15 
-X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-CacheID: sfid-20220914_032119_177746_71DF683F 
+X-CRM114-Status: UNSURE (   8.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,20 +79,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series converts the old mtk-pmic-keys.txt binding to DT schema,
-documents the missing support for key press/release interrupts and
-adds a compatible for the newly introduced MT6331 keys.
+Add a compatible for the keys found on MT6331 PMIC.
 
-AngeloGioacchino Del Regno (2):
-  dt-bindings: input: Convert mtk-pmic-keys to DT schema
-  dt-bindings: input: mediatek,pmic-keys: Add compatible for MT6331 keys
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
- .../bindings/input/mediatek,pmic-keys.yaml    | 118 ++++++++++++++++++
- .../bindings/input/mtk-pmic-keys.txt          |  46 -------
- 2 files changed, 118 insertions(+), 46 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
- delete mode 100644 Documentation/devicetree/bindings/input/mtk-pmic-keys.txt
-
+diff --git a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+index e33fdca50b16..358d027e3e81 100644
+--- a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
++++ b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+@@ -25,6 +25,7 @@ properties:
+   compatible:
+     enum:
+       - mediatek,mt6323-keys
++      - mediatek,mt6331-keys
+       - mediatek,mt6358-keys
+       - mediatek,mt6397-keys
+ 
 -- 
 2.37.2
 
