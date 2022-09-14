@@ -4,78 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83CAFECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 12:56:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34D2DECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 13:14:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mmcKEjTS1hv6gEdnWK2Uvw+XT407+XmrNmwBWhV8Lok=; b=EwPTsgzVQ9UxkN3pXFY5SRKM3l
-	Vf8+gNlvPwVh5MK2P+MP4RIr3yt+fZDG9sossfiOhY0SnGXIomuYaobCOMmvvTx3c1pk764RLHD7N
-	cOgv31OJILm+kysyVJQjN6ZymIbK5hte9T1ZLBmsNOXCgY121qP3rIKrkrVV5Rq3sCLNX/FjONGHz
-	0+OVn6gQP0HXBSCmaB/kOvugIvj7wbPPLSyQg6ELpsad8YeauDTuZNC0Oae1Y7YmOLrB51nfjcUMS
-	pLmRuC2Bup1EKvPojgD+RtrkJA8VSr/dfzYXdvR24pvEe5FvTByd4+Y/0pZWceEA1mo3YBbdoezgb
-	4j3ivxvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kK+4cuyn2x8bZa+3XjGCMKovnOpMsppyq3qKsdF2ffg=; b=sO/2NNXMjI45w0iV+YDUcl6P3w
+	OpYAFBOAi3yfkiYEnSA+de89M8lm1Pa2/staVpjrOSOFByBIjetzqvcS9/5EnaKq2RRvzV6DJNcgg
+	RIKzfJi5m0XyhErjq36irDehHD6Hj2x4ssncLi2uHBJ/BhtqPRiEuRF+wYZUtc+vxnqS7xbd+dywx
+	99PdWCWFfHo297GREMGDyokDFD4VHbFxSt34Sb7h69e7H112XbJ3VNgViKR8ZNjLIRQm8DSXFN3y6
+	8PYscrDQT2Vy74KIJsqFTU1mAK+o6HE6zsVCbtbNsLr1oPZOB2RHtiVjPGPjGb+yuKeRL9xIKvTl5
+	rwWKAGnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYRwQ-000Gme-8t; Wed, 14 Sep 2022 12:56:34 +0000
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+	id 1oYSDo-000aFI-Nb; Wed, 14 Sep 2022 13:14:32 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYRwM-000GZW-NC
-	for linux-mediatek@lists.infradead.org; Wed, 14 Sep 2022 12:56:32 +0000
-Received: by mail-yw1-x112c.google.com with SMTP id 00721157ae682-3457bc84d53so179390907b3.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Sep 2022 05:56:29 -0700 (PDT)
+	id 1oYSDb-000Zuc-6x
+	for linux-mediatek@lists.infradead.org; Wed, 14 Sep 2022 13:14:23 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id bz13so25666375wrb.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 14 Sep 2022 06:14:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date;
-        bh=mmcKEjTS1hv6gEdnWK2Uvw+XT407+XmrNmwBWhV8Lok=;
-        b=E3tQcQgTwxMM8Jz3YFNM2CB98b1QbEi2wST6iyzoPV0qeijgEGW7rV3WUcjqTE71Hn
-         0NTSsnXkcz2xFaaGiTt/6YT0CTa9XFVvYlm5zhXzJqJmjyrTuKNkfS9pgFhE8jRHISRR
-         fXQOUdhLOPVRGiPar1YyTtu06rfJloenQf9Cdd2TlNv4v+A3wcvluYwD6EfVkQq1wS5k
-         deBt9FO2MCw9DcT+zBrJHdxEoCe6Ts3KrzMGE/82yrRnwbeGTRJ48fbRS+lcVkmQKm/q
-         Qbx2gdL57D/j8QJTpDZh1bYsBSzbm/yiVmlq/KIFb0nugWvzQR8aTztgPXnOkADYq+ja
-         46+Q==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date;
+        bh=kK+4cuyn2x8bZa+3XjGCMKovnOpMsppyq3qKsdF2ffg=;
+        b=QsXOsr8pctoL+dvXPhfMqitnyDpitQBYg6IdWPYLziAKQS/2z68AXxL7Y8ZMgltcne
+         aRWXDvzTef1JmAU1pf2KgQ3C64iplqyg/YeTwBCHmNcJeKXhHUS3gjMMoatV4usMNXqh
+         jT1KbXksezwoec5WtRhMr+2YINIFL+hwCazWfsb7so7TtN26A/d+KthKpin0bK3PZZ9o
+         azLTC/dob2rz2LpTSVPEsaPiJMZeiDbRL6aVLY1oFMG1mksf/l/OxB+yfHxzOJ6kSNt7
+         Zl6U1orgyaCHeeD3igXHWtWyXRcLahQ+59syyXa6vDU8ReDYj8jIy586OOsSRZq9fCCM
+         FsQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=mmcKEjTS1hv6gEdnWK2Uvw+XT407+XmrNmwBWhV8Lok=;
-        b=zZJ3mDQ4JGFTIBLTm+yCD1WpQXMP861dLic1mbkjb5foZ4Ze6pnp/b8W7tKQrd0H3m
-         C6VuN7nLgxL6EsmUbC1ZJsSpegVg/zBV3+MJo1wI4R/GAzFFMYpnXJnO3pjVAz4HocmI
-         zYeWaReN2zTBaBt/DUXPdjH7lz2XHwSUTQrBjmkT+CCsTBR/2dQTog13f0sUuViyr9Qg
-         UtJFFKFTho4Yoh9URxK8nRfYZDPDJ1myMmV7WvAw3rl+88x7cq1BKlXajLEEEtFQOYYM
-         WStKhPlH0PTPCKE+wz4sHt8qlnjq7bHFE3vzaEGCo2vqgcRBebM38HnXl9+01KbDUKxj
-         tV6g==
-X-Gm-Message-State: ACgBeo2fvdhvg4uIg2cH53ThCt2ds35fITGSm/8UolyNBcS59RxK2z0Z
-	W87+g1d/jiVxlOXjHq0ePa9fKjkojK3c1lCmLb/CHw==
-X-Google-Smtp-Source: AA6agR4CWQ6/k5R9xvM/2hZ7UEs2ayJ5TYG/Br2SOS3GeCeaVI11cKB8LqqUD5RjhxjT2z6m2HTdQnRqrXAzpUSsxvU=
-X-Received: by 2002:a0d:f204:0:b0:333:c23f:d793 with SMTP id
- b4-20020a0df204000000b00333c23fd793mr30919559ywf.71.1663160188392; Wed, 14
- Sep 2022 05:56:28 -0700 (PDT)
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date;
+        bh=kK+4cuyn2x8bZa+3XjGCMKovnOpMsppyq3qKsdF2ffg=;
+        b=4WBb0kGBISXGikRRDdYiGjWmctBOtUwYKTQudDGp4ydIOBHUxgOY+/PwyvEUoi/Bsu
+         4zXYkRUVEWbOvTvAXLyP1mdv1f7LVTveTulfYPUHDisBCfJKAKMF9O6YFRaRip/w+MEg
+         enCic4zyZ8XRPBbWslgOyMubXSkKhDudVsXmtERE9ht+yAGThCw7ICSQ0oTXPKAzB3Hi
+         j7aiVSx92hk3JcyUgGcprAVNbflbh7UU3VKqXinVybaXaNYhl+iJe/W0Ry9XRbfdJ1fd
+         CPyNXgqcU6LqmcsS6kHFI6T4WKO7sL40hVxiYPkTShJ4IwIzZG64ioUrdOSKwmV2OBHE
+         ntUQ==
+X-Gm-Message-State: ACgBeo1jcwzAyzToep8WiUc4PqmB7ZfRrEGDyi5g2jJtw4rcV2G19r1+
+	gdaoXOmI+vMMnjwrSautD4Jh7A==
+X-Google-Smtp-Source: AA6agR5ANUi79WWgOf9jC1tlgp0/htkLuK+NlPCxd4hKwfEcURAD7sCnBetWwAbHCF5GbmcQcIv1Ug==
+X-Received: by 2002:a5d:4602:0:b0:228:62df:7d2f with SMTP id t2-20020a5d4602000000b0022862df7d2fmr21723881wrq.247.1663161257160;
+        Wed, 14 Sep 2022 06:14:17 -0700 (PDT)
+Received: from localhost.localdomain (210.145.15.109.rev.sfr.net. [109.15.145.210])
+        by smtp.googlemail.com with ESMTPSA id o29-20020a05600c511d00b003a319b67f64sm8185249wms.0.2022.09.14.06.14.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Sep 2022 06:14:16 -0700 (PDT)
+From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Amjad Ouled-Ameur <aouledameur@baylibre.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: mediatek: mt8183: remove thermal zones without trips.
+Date: Wed, 14 Sep 2022 15:13:39 +0200
+Message-Id: <20220914131339.18348-1-aouledameur@baylibre.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-References: <20220817080757.352021-1-bchihi@baylibre.com> <20220817080757.352021-2-bchihi@baylibre.com>
- <48cb4f47-754c-9994-2489-7ffabfc1b3b9@collabora.com>
-In-Reply-To: <48cb4f47-754c-9994-2489-7ffabfc1b3b9@collabora.com>
-From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Wed, 14 Sep 2022 14:55:52 +0200
-Message-ID: <CAGuA+oqnqzABCs1fmeH+bmEGgz_7_rt7co8g8GbyeqHnqaOohQ@mail.gmail.com>
-Subject: Re: [PATCH v9,1/7] thermal: mediatek: Relocate driver to mediatek folder
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: rafael@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org, 
-	amitk@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	khilman@baylibre.com, mka@chromium.org, robh+dt@kernel.org, 
-	krzk+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, james.lo@mediatek.com, 
-	fan.chen@mediatek.com, louis.yu@mediatek.com, rex-bc.chen@mediatek.com, 
-	abailon@baylibre.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_055630_778068_63DDA635 
-X-CRM114-Status: GOOD (  30.27  )
+X-CRM114-CacheID: sfid-20220914_061419_272439_7C793781 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,121 +91,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+Thermal zones without trip point are not registered by thermal core.
 
-Nice to hear from you again.
-Understood. The changes you asked for will be implemented in the v10
-of this series.
-It will be sent very soon, I'm still working on Daniel's review too.
+tzts1 ~ tzts6 zones of mt8183 were intially introduced for test-purpose
+only but are not supposed to remain on DT.
 
-Thank you for the review!
+Remove the zones above and keep only cpu_thermal.
 
-Best regards,
-Balsam
+Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 57 ------------------------
+ 1 file changed, 57 deletions(-)
 
-On Wed, Sep 14, 2022 at 1:58 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 17/08/22 10:07, bchihi@baylibre.com ha scritto:
-> > From: Michael Kao <michael.kao@mediatek.com>
-> >
-> > Add MediaTek proprietary folder to upstream more thermal zone and cooler
-> > drivers, relocate the original thermal controller driver to it, and rename it
-> > as "auxadc_thermal.c" to show its purpose more clearly.
-> >
-> > Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> > Co-developed-by: Ben Tseng <ben.tseng@mediatek.com>
-> > Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
-> > Co-developed-by: Balsam CHIHI <bchihi@baylibre.com>
-> > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-> > ---
-> >   drivers/thermal/Kconfig                       | 14 ++++--------
-> >   drivers/thermal/Makefile                      |  2 +-
-> >   drivers/thermal/mediatek/Kconfig              | 22 +++++++++++++++++++
-> >   drivers/thermal/mediatek/Makefile             |  1 +
-> >   .../auxadc_thermal.c}                         |  2 +-
-> >   5 files changed, 29 insertions(+), 12 deletions(-)
-> >   create mode 100644 drivers/thermal/mediatek/Kconfig
-> >   create mode 100644 drivers/thermal/mediatek/Makefile
-> >   rename drivers/thermal/{mtk_thermal.c => mediatek/auxadc_thermal.c} (99%)
-> >
-> > diff --git a/drivers/thermal/Kconfig b/drivers/thermal/Kconfig
-> > index e052dae614eb..d35f63daca3b 100644
-> > --- a/drivers/thermal/Kconfig
-> > +++ b/drivers/thermal/Kconfig
-> > @@ -412,16 +412,10 @@ config DA9062_THERMAL
-> >         zone.
-> >         Compatible with the DA9062 and DA9061 PMICs.
-> >
-> > -config MTK_THERMAL
-> > -     tristate "Temperature sensor driver for mediatek SoCs"
-> > -     depends on ARCH_MEDIATEK || COMPILE_TEST
-> > -     depends on HAS_IOMEM
-> > -     depends on NVMEM || NVMEM=n
-> > -     depends on RESET_CONTROLLER
-> > -     default y
-> > -     help
-> > -       Enable this option if you want to have support for thermal management
-> > -       controller present in Mediatek SoCs
-> > +menu "Mediatek thermal drivers"
-> > +depends on ARCH_MEDIATEK || COMPILE_TEST
-> > +source "drivers/thermal/mediatek/Kconfig"
-> > +endmenu
-> >
-> >   config AMLOGIC_THERMAL
-> >       tristate "Amlogic Thermal Support"
-> > diff --git a/drivers/thermal/Makefile b/drivers/thermal/Makefile
-> > index def8e1a0399c..f7daeb8056c4 100644
-> > --- a/drivers/thermal/Makefile
-> > +++ b/drivers/thermal/Makefile
-> > @@ -55,7 +55,7 @@ obj-y                               += st/
-> >   obj-$(CONFIG_QCOM_TSENS)    += qcom/
-> >   obj-y                               += tegra/
-> >   obj-$(CONFIG_HISI_THERMAL)     += hisi_thermal.o
-> > -obj-$(CONFIG_MTK_THERMAL)    += mtk_thermal.o
-> > +obj-y                                += mediatek/
-> >   obj-$(CONFIG_GENERIC_ADC_THERMAL)   += thermal-generic-adc.o
-> >   obj-$(CONFIG_UNIPHIER_THERMAL)      += uniphier_thermal.o
-> >   obj-$(CONFIG_AMLOGIC_THERMAL)     += amlogic_thermal.o
-> > diff --git a/drivers/thermal/mediatek/Kconfig b/drivers/thermal/mediatek/Kconfig
-> > new file mode 100644
-> > index 000000000000..8ff32370b591
-> > --- /dev/null
-> > +++ b/drivers/thermal/mediatek/Kconfig
-> > @@ -0,0 +1,22 @@
-> > +config MTK_THERMAL
-> > +     tristate "MediaTek thermal drivers"
-> > +     depends on THERMAL_OF
-> > +     help
-> > +       This is the option for MediaTek thermal software solutions.
-> > +       Please enable corresponding options to get temperature
-> > +       information from thermal sensors or turn on throttle
-> > +       mechaisms for thermal mitigation.
-> > +
-> > +if MTK_THERMAL
-> > +
-> > +config MTK_SOC_THERMAL
-> > +     tristate "AUXADC temperature sensor driver for MediaTek SoCs"
-> > +     depends on HAS_IOMEM
-> > +     depends on NVMEM
->
-> That's not true. This driver doesn't depend on NVMEM, as in function
-> mtk_thermal_get_calibration_data(), the calibration params are initialized
-> with default values and if no "calibration-data" cell was found, it will
-> return 0 and simply go on with probing... and this is because not all SoCs
-> need calibration data from eFuses.
-> If you check carefully, the original entry says "NVMEM || NVMEM=n".
->
-> Please drop the NVMEM dependency from this config entirely.
->
-> > +     depends on RESET_CONTROLLER
->
-> While at it, can you please also drop the dependency for RESET_CONTROLLER?
-> I know it was present on the original config entry, but that's wrong, as
-> the driver doesn't strictly require resets, as it uses device_reset_optional().
->
->
-> Regards,
-> Angelo
->
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 9d32871973a2..f65fae8939de 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1182,63 +1182,6 @@ THERMAL_NO_LIMIT
+ 					};
+ 				};
+ 			};
+-
+-			/* The tzts1 ~ tzts6 don't need to polling */
+-			/* The tzts1 ~ tzts6 don't need to thermal throttle */
+-
+-			tzts1: tzts1 {
+-				polling-delay-passive = <0>;
+-				polling-delay = <0>;
+-				thermal-sensors = <&thermal 1>;
+-				sustainable-power = <5000>;
+-				trips {};
+-				cooling-maps {};
+-			};
+-
+-			tzts2: tzts2 {
+-				polling-delay-passive = <0>;
+-				polling-delay = <0>;
+-				thermal-sensors = <&thermal 2>;
+-				sustainable-power = <5000>;
+-				trips {};
+-				cooling-maps {};
+-			};
+-
+-			tzts3: tzts3 {
+-				polling-delay-passive = <0>;
+-				polling-delay = <0>;
+-				thermal-sensors = <&thermal 3>;
+-				sustainable-power = <5000>;
+-				trips {};
+-				cooling-maps {};
+-			};
+-
+-			tzts4: tzts4 {
+-				polling-delay-passive = <0>;
+-				polling-delay = <0>;
+-				thermal-sensors = <&thermal 4>;
+-				sustainable-power = <5000>;
+-				trips {};
+-				cooling-maps {};
+-			};
+-
+-			tzts5: tzts5 {
+-				polling-delay-passive = <0>;
+-				polling-delay = <0>;
+-				thermal-sensors = <&thermal 5>;
+-				sustainable-power = <5000>;
+-				trips {};
+-				cooling-maps {};
+-			};
+-
+-			tztsABB: tztsABB {
+-				polling-delay-passive = <0>;
+-				polling-delay = <0>;
+-				thermal-sensors = <&thermal 6>;
+-				sustainable-power = <5000>;
+-				trips {};
+-				cooling-maps {};
+-			};
+ 		};
+ 
+ 		pwm0: pwm@1100e000 {
+-- 
+2.37.3
+
 
