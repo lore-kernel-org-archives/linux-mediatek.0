@@ -4,79 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BB67C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 14:02:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C53EECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 14:13:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jpvw6KQrg1S/1pBzjKmf1uB7j3K3Ydzu3g9Y661w0mg=; b=Lw97sr0aS+Mz0WBKfyu00bnXQk
-	p3IvivHw9x0qippEc6+EPiWB8oG5jyXsiQKGALAZe/7M1LMvJh2F1MLugA3txupT8E3XHFZ5TDvBt
-	NrjIMqOwvGunCiw823mrIZplgr1VOElQvMsfhDTnS084g3/M8uE3xa/MX940EI1ChI5je7AzlrGgo
-	2a/SNLMWttR4qeWDgh7ZGbk8HvdiIuchVDPvR8J6lqgIDtJR/yvujeWrGvG3AZeBdnV3nHFplecG9
-	SsUyC6WIcGTEeOzcORbu8WXk6Q392kMpsErXYmqWuS4zDDNHjAtoBquzTqGCVyPXvQ1XcuPo8L+89
-	nGN2EbZg==;
+	bh=SPyIRI2qTfSO2auACHjp148Yr0cJMKWfWPP3G131wXU=; b=K4PvN/VizTfv1TiSlFhKfG7CjN
+	nc6X1WZEHEmypwdxj4ofBmPE6SAYdzseKqronAqN4+qf/hM4GELcWPw6nXWwy/t2EgeSRtDH+RyCx
+	G9oAUeJkVViIZ+ibVyQ9oz/HBQJMStrkGgyYVAYc7nJdefbRT5myJp6MeLxA3lnIwOJjx+956ZkUu
+	lZ900YmbBZakchaRn5CmMJmhhZ2sampwhif6XeM5TwksJQSxlfoabULy2/PkbI8uCE5ujHfXGzw//
+	N2yc6+anbD23eEelwEFDLdmrlVCLno0KEtcT9uvmApJQwEoBN0CQOvkxKPuPifPxXq+WaGJuUvhGL
+	qj2Bfl3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYSxp-001WfB-Sf; Wed, 14 Sep 2022 14:02:05 +0000
-Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+	id 1oYT8e-001p34-AE; Wed, 14 Sep 2022 14:13:16 +0000
+Received: from mail-oa1-f48.google.com ([209.85.160.48])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYSxk-001WVI-8j
-	for linux-mediatek@lists.infradead.org; Wed, 14 Sep 2022 14:02:02 +0000
-Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-3454b0b1b6dso181284987b3.4
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Sep 2022 07:01:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date;
-        bh=Jpvw6KQrg1S/1pBzjKmf1uB7j3K3Ydzu3g9Y661w0mg=;
-        b=SkZLLCuVFtvkjNpiUf9LPgljx+x3GViN3GfToJE6bAHwx8xwEol/R5nw9W/QyFzRZ7
-         gXOjT5KI08bgm1JpKwaz3Sxs9Et4ZJDxyn4xb2JZFOVP13qFGJvXO1nxuXEid0AQ1WLm
-         SnZaYOTTr+rUN0Te1fG7rm+RBTk2Hk2ZJu1CnqLwW0o9DPkv4gTJL3Cj/ctaMZ/zDRZH
-         a/IH8DAJxjb+9Qf8wXXAKSziVHP6QPIwJBC+gjpYM9N5kzTF/BQdeNbghraGPXv/8hiU
-         HQ3AooobyqGbhFAMkhOhrL+1N27n6yOZlA2cMDGzRmp9Y4e6w2kqJSHZaK+9ldoEF0Q8
-         38uw==
+	id 1oYT8Z-001oFM-4w; Wed, 14 Sep 2022 14:13:15 +0000
+Received: by mail-oa1-f48.google.com with SMTP id 586e51a60fabf-12b542cb1d3so31539129fac.13;
+        Wed, 14 Sep 2022 07:12:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=Jpvw6KQrg1S/1pBzjKmf1uB7j3K3Ydzu3g9Y661w0mg=;
-        b=ZyGmxHVb4U5o1yCF7I8xcL4KKNK5dAsJ5cu2D2zHNLk1xbC+r00FfoLDCSIvCqxrZN
-         3CanXBVs5bXxfd9NpbQ/7NXtuuATqE0vmmLb44j1R6sknhCTmko7VUcnbjR6CQXBpW67
-         +k3T0SWHNjB1uimap/YxgHJwQIvqKRiCeKNZIyHeM0lDpiiCDGkMbu2rbPkhQvhqHjJv
-         li0TRxhWfg8B5pikf37oR4MGQjNsYzFDuZcXtGd2ZM5Y47ISq3j38aJZAmMeMklpeKaX
-         vlf+QeP88/JfsxUUHH2qbStTxuu5kbFaGFWvEG4bGtZgt6xePqX7CIPRFcf7NXibo73w
-         g35Q==
-X-Gm-Message-State: ACgBeo0atVvDV8ke1pMgiejFyafsb6Sx30nj8oZHjniC0M36Hv6M16fM
-	V24Azrb963kZocm4aPNdrmnGDeumvKDWcXDnBdbV6Q==
-X-Google-Smtp-Source: AA6agR4nfEc6ZNsx4IMOTInLJ4GeQaYzxa2yEmi0xC39dBnNrVhTzdhx3g4hnT+XIUeaBnxCZhEg3BlhYDeiFM6ISHA=
-X-Received: by 2002:a81:1604:0:b0:345:3b96:a166 with SMTP id
- 4-20020a811604000000b003453b96a166mr31947771yww.30.1663164118168; Wed, 14 Sep
- 2022 07:01:58 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220817080757.352021-1-bchihi@baylibre.com> <20220817080757.352021-3-bchihi@baylibre.com>
- <716d6471-f0e2-489e-5f9e-9e38e9e7953a@collabora.com>
-In-Reply-To: <716d6471-f0e2-489e-5f9e-9e38e9e7953a@collabora.com>
-From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Wed, 14 Sep 2022 16:01:22 +0200
-Message-ID: <CAGuA+orxfcycwcUMpLe+dkjnXPQkELQsz0vBggGKTQ04XRGc+g@mail.gmail.com>
-Subject: Re: [PATCH v9,2/7] dt-bindings: thermal: Add dt-binding document for
- LVTS thermal controllers
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=SPyIRI2qTfSO2auACHjp148Yr0cJMKWfWPP3G131wXU=;
+        b=AZsp68Utdz/Br+qJl04iDFugRdcHFgCaaS5z55SWGLScFK8G6MsxSuSHrt6nthKpfL
+         aU3DEIrYn7ATb3AHFBPJaX/LGpKY1ElZtSKo9PQLuj0g43jPfDZXeOYWedCMb7CKPk0b
+         JCakB1huO8r4ikXfnXk3p9SPyof8KzkbEkTXAsF2WH30bV/4ka/elUgSB7kibxQl6JyS
+         tzWFM8IC3uN8Z0Qti0Qb/So7aHCW+KmRfb3VINvHJDE98/aoMqV9ZAYBDqDZJhwXllkK
+         EelZTuOrPP9I5J44y2GH6od1RXpzU3a2M7yXI5VkZRdSzCnWFaRqXBr8C28CDcr1a9Ad
+         NthA==
+X-Gm-Message-State: ACgBeo36FaVzz1K0v6wP8rVJtuVzmVsRFcQZKwEZJG29SKarz8YbpKjw
+	WX0sBvo2qnod2hFH7/wzcg==
+X-Google-Smtp-Source: AA6agR7QeunMWJohZIlFuCMAfUkU6WKkOLpkzcAPqf/clN22a3MXHYUvpcOCZ79QPAgMSv29PpsnAA==
+X-Received: by 2002:aca:5b0b:0:b0:344:bea0:8c88 with SMTP id p11-20020aca5b0b000000b00344bea08c88mr1980979oib.225.1663164766562;
+        Wed, 14 Sep 2022 07:12:46 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id t184-20020a4a54c1000000b0044b0465bd07sm6451845ooa.20.2022.09.14.07.12.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Sep 2022 07:12:46 -0700 (PDT)
+Received: (nullmailer pid 2131256 invoked by uid 1000);
+	Wed, 14 Sep 2022 14:12:45 -0000
+Date: Wed, 14 Sep 2022 09:12:45 -0500
+From: Rob Herring <robh@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: rafael@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org, 
-	amitk@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	khilman@baylibre.com, mka@chromium.org, robh+dt@kernel.org, 
-	krzk+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, james.lo@mediatek.com, 
-	fan.chen@mediatek.com, louis.yu@mediatek.com, rex-bc.chen@mediatek.com, 
-	abailon@baylibre.com
-Content-Type: text/plain; charset="UTF-8"
+Cc: allen-kh.cheng@mediatek.com, devicetree@vger.kernel.org, chunkuang.hu@kernel.org, rex-bc.chen@mediatek.com, moudy.ho@mediatek.com, matthias.bgg@gmail.com, jason-jh.lin@mediatek.com, linux-mediatek@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org, p.zabel@pengutronix.de, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, robh+dt@kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: soc: mediatek: Add display mutex
+ support for MT6795
+Message-ID: <20220914141245.GA2131194-robh@kernel.org>
+References: <20220913140121.403637-1-angelogioacchino.delregno@collabora.com>
+ <20220913140121.403637-2-angelogioacchino.delregno@collabora.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220913140121.403637-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_070200_380780_0F55209C 
-X-CRM114-Status: GOOD (  23.52  )
+X-CRM114-CacheID: sfid-20220914_071311_230858_201CCB82 
+X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,220 +79,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+On Tue, 13 Sep 2022 16:01:20 +0200, AngeloGioacchino Del Regno wrote:
+> Add compatible for MT6795 Helio X10 SoC.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml         | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-I've got the following errors after implementing these changes :
-[...]
-  nvmem-cells:
-    minItems: 1
-    description: Calibration eFuse data for LVTS
-
-  nvmem-cell-names:
-    minItems: 1
-    items:
-      pattern: 'lvts-calib-data[0-9]+$'
-
-  "#thermal-sensor-cells":
-    const: 1
-
-allOf:
-  - $ref: thermal-sensor.yaml#
-
-  - if:
-      properties:
-        compatible:
-          contains:
-            enum:
-              - mediatek,mt8192-lvts-ap
-              - mediatek,mt8192-lvts-mcu
-    then:
-      properties:
-        nvmem-cells:
-          maxItems: 1
-
-        nvmem-cell-names:
-          maxItems: 1
-
-  - if:
-      properties:
-        compatible:
-          contains:
-            enum:
-              - mediatek,mt8195-lvts-ap
-              - mediatek,mt8195-lvts-mcu
-    then:
-      properties:
-        nvmem-cells:
-          maxItems: 2
-
-        nvmem-cell-names:
-          maxItems: 2
-[...]
-
-$ make DT_CHECKER_FLAGS=-m dt_binding_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-  LINT    Documentation/devicetree/bindings
-  CHKDT   Documentation/devicetree/bindings/processed-schema.json
-/home/balsam/src/linux-mtk-lvts-newThermalOF/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml:
-properties:nvmem-cell-names:items: {'pattern':
-'lvts-calib-data[0-9]+$'} is not of type 'array'
-from schema $id: http://devicetree.org/meta-schemas/string-array.yaml#
-  SCHEMA  Documentation/devicetree/bindings/processed-schema.json
-/home/balsam/src/linux-mtk-lvts-newThermalOF/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml:
-ignoring, error in schema: properties: nvmem-cell-names: items
-  DTEX    Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.example.dts
-  DTC     Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.example.dtb
-  CHECK   Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.example.dtb
-Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.example.dtb:0:0:
-/example-0/soc/thermal-sensor@1100b000: failed to match any schema
-with compatible: ['mediatek,mt8192-lvts-ap']
-
-am I missing something?
-
-Best regards,
-Balsam
-
-On Wed, Sep 14, 2022 at 2:19 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 17/08/22 10:07, bchihi@baylibre.com ha scritto:
-> > From: Alexandre Bailon <abailon@baylibre.com>
-> >
-> > Add dt-binding document for mt8192 and mt8195 LVTS thermal controllers.
-> >
-> > Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
-> > Co-developed-by: Balsam CHIHI <bchihi@baylibre.com>
-> > Signed-off-by: Balsam CHIHI <bchihi@baylibre.com>
-> > ---
-> >   .../thermal/mediatek,lvts-thermal.yaml        | 152 ++++++++++++++++++
-> >   1 file changed, 152 insertions(+)
-> >   create mode 100644 Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-> >
-> > diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-> > new file mode 100644
-> > index 000000000000..31d9e220513a
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-> > @@ -0,0 +1,152 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/thermal/mediatek,lvts-thermal.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MediaTek SoC LVTS thermal controller
->
-> title: MediaTek SoC Low Voltage Thermal Sensor (LVTS)
->
-> > +
-> > +maintainers:
-> > +  - Yu-Chia Chang <ethan.chang@mediatek.com>
-> > +  - Ben Tseng <ben.tseng@mediatek.com>
-> > +
-> > +description: |
->
-> description:
->    LVTS is a thermal management architecture composed of three subsystems,
->    a Sensing device - Thermal Sensing Micro Circuit Unit (TSMCU),
->    a Convertor - Low Voltage Thermal Sensor convertor (LVTS), and
->    a Digital controller (LVTS_CTRL).
->
-> > +  LVTS (Low Voltage Thermal Sensor).
-> > +  The architecture will be first used on mt8192 and mt8195.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      - mediatek,mt8192-lvts-ap
-> > +      - mediatek,mt8192-lvts-mcu
-> > +      - mediatek,mt8195-lvts-ap
-> > +      - mediatek,mt8195-lvts-mcu
-> > +
-> > +  "#thermal-sensor-cells":
-> > +    const: 1
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +    description: LVTS instance registers.
->
-> This description looks obvious, as it doesn't really say anything "new"...
-> I would rather drop it.
->
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +    description: LVTS instance interrupts.
->
-> Same here
->
-> > +
-> > +  clocks:
-> > +    maxItems: 1
-> > +    description: LVTS instance clock.
->
-> and here.
->
-> > +
-> > +  resets:
-> > +    maxItems: 1
-> > +    description: |
-> > +      LVTS instance SW reset for HW AP/MCU domain to clean temporary data
-> > +      on HW initialization/resume.
->
-> What about something like...
->
->    resets:
->      items:
->        - description: LVTS reset for clearing temporary data on AP/MCU
->
-> > +
-> > +  nvmem-cells:
-> > +    minItems: 1
-> > +    maxItems: 2
-> > +    description: Calibration efuse data for LVTS
->
->    nvmem-cells:
->      minItems: 1
->      items:
->        - description: Calibration eFuse data for LVTS
->        - description: Additional eFuse data (?)
->
->
-> > +
-> > +  nvmem-cell-names:
-> > +    minItems: 1
-> > +    maxItems: 2
-> > +    description: Calibration efuse cell names for LVTS
->
-> Actually, maxItems is not really two, but it depends on how many
-> eFuse arrays / nvmem cells we have for each SoC, so I was thinking...
->
-> ...what about doing something like
->
->    nvmem-cell-names:
->      minItems: 1
->      items:
->        pattern: 'lvts-calib-data[0-9]+$'
->
-> and then,
->    if:
->      properties:
->        compatible:
->          contains:
->            enum:
->              - mediatek,blahblah-something
->    then:
->      properties:
->        nvmem-cell-names:
->          maxItems: 2 (or 3, 4, 5...)
->
-> P.S.: I haven't tried any binding check on the proposed lines.
->
-> Krzysztof, any opinions on that?
->
-> Regards,
-> Angelo
->
->
->
+Acked-by: Rob Herring <robh@kernel.org>
 
