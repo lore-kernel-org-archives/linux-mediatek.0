@@ -4,134 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B016FECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 09:29:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCBBDC6FA86
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 09:31:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6CgdsVOtwexyJHIaVRRSoHRaL4Shu61nh8PFdLHvq6U=; b=CqLkNBy6X1Y6Zxg0Pi16WKEc1r
-	eAsfMg4LVyjv/fKtVpz8JXnmCOEr6olgz6SvPVmdREZuN9Lnpujj4GNutRAHCuzAco/vQGJ0NvAyM
-	hN9fZFKQc8KmCRs9tStjGnAC6UncuRWDrLKbmDWOgHkYxA5GF4G8M/Z7r2gRgvny/zTwhDzdTMBQE
-	tINrdxQeRQ9QitZvPRi6Nk8Y78UDKhaEDUm2kxdpcgphpkcQVLO0CBrY5vXriiLFesKfvoS7dLarO
-	GEGWtdQB1QPn+GAJXUi3I8qAwmMxB6d1ZEB4/FmWUcih+tSHFjv/eaUz04SlwuSf95xGMj2lvVgaA
-	SG+GOhtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yHtslchOcjCr/mPzc6No9Ng0yS/x6URBWNqybFN6UX8=; b=iwHxyVlTjbaw72S92WzZixO8L6
+	9KKab47uhNpIDwlob9KzA9VmG89utRUqEWU8Sn9o38hTVsNiQ2yr0BOk4vT+Ls7f6LGAexqDDHGLY
+	FRmzH7MVGIIS3ymQTVYIffQzvu/3JHTUNVEay8GcpedwXXoFqceSQbRw1CFk3TiJv9We8lEsyOX/h
+	itiamoc6EWdJrYb0Mz/ctitOHD/S6EvKdQdXLzvilbyf4LB0iKLm858q4b30hl/yDj0GrMaG7I0Sh
+	iEQjC71k717YpeO2WqqY0LqscMm7DPScuCTk1EjQNltBWEWPp6pZk6dSEf4IuHy+//PBWyMU7866T
+	yt7JOh2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYOhb-00EDvg-Sb; Wed, 14 Sep 2022 09:29:04 +0000
-Received: from mail-mw2nam10on2047.outbound.protection.outlook.com ([40.107.94.47] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+	id 1oYOkC-00EGOR-C6; Wed, 14 Sep 2022 09:31:44 +0000
+Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYOQN-00Dxxz-2r; Wed, 14 Sep 2022 09:11:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jqjEeCuWxNA1snZzMK8Jk1nvl8dF23+mYL1ncRPAr1KsJvxWGqq9heM2jU/zgnUeDawxoaRqMD4ktWp+pJFMAzNJdBmBLklnLkKnenkLMHrv6g193FQWS+q4SRpwsS/AOyKv96k30t4+Q9iNQFkffZyeDJnnA9jiDLdYOuR5uSN+mwJORD3LZnHjUamx1kmnBKQva6jWTo4ZUS6x1h6yXXvVFI2I+2G5/rNwrVotzFDv9JLX5RUuSU1nzmMAKMHNSqyZuWr6AEw3WlEMlj98bn+PQ98v5X/LNV+qvXvFXTxjzj8DWufXl0SNatloZIpj3/YknAlemFxApzjPKmd+Vg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6CgdsVOtwexyJHIaVRRSoHRaL4Shu61nh8PFdLHvq6U=;
- b=NZhWeQ+1yF2u/OD2I4zTpi27+04G5uha5Id+6qT/RA5SdZE9ECG4C2YNt7MivDFv69fPZA4noeDhQ3pF3eYd/t14aVV21YYxiZY0GJzgiusUgzifXk9AYdYXkllBe8XcHQC5Pp+mAdl8K4dnDdH3Qkn7rb9+RENgZne1o5h+5nK3PuVFysaaSxubDFGwV/foPoUeQulwhf+GtHt4wxQgTL2JdwiMtkHW3HIdz13JK/yVzhWWhcPQThLNElI6VELAoGVNqn4GPoa58T9lUSsw1+F90O0CPU0D6tnVfhjDQi9WFSeZw6I494JrYckg+DGZKqPfOljC97c8/OtffXsabQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6CgdsVOtwexyJHIaVRRSoHRaL4Shu61nh8PFdLHvq6U=;
- b=fEqj1J1L3y1MJZKRVpvcejPLZiR+auUGkPH5SGZPO4yaQXKO0djByEvi1AbAMb9Lzs7dvVaArcvv1qqowQi7UX5tniy7N/Y+IBa7WMlqV3sfyUdgbbWnSQr0Xe8Fns1c5SxxLdBBd+bVaTxWSbw3kn1DtKFZZXcRffHzcm1vOtF9X79WrplifQnDIFl9mEECSHZsrc7aTKgWztAO9YmnCAdMJTo8AfzN22ZiWDXnFR0Oc/H40/b/G9F235Tvr7EsWy1oIpU5hk9pgJrAnCEAamZz8KAELcTzzPS4NCkCNTil8LMQcu5uX5kvcPioM2UwyrubrHaW8rEa9/HgXKY3uw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
- by DM4PR12MB7597.namprd12.prod.outlook.com (2603:10b6:8:10b::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.12; Wed, 14 Sep
- 2022 09:11:10 +0000
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::462:7fe:f04f:d0d5]) by MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::462:7fe:f04f:d0d5%7]) with mapi id 15.20.5612.022; Wed, 14 Sep 2022
- 09:11:09 +0000
-Date: Wed, 14 Sep 2022 06:11:06 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: Nicolin Chen <nicolinc@nvidia.com>, joro@8bytes.org,
-	suravee.suthikulpanit@amd.com, will@kernel.org,
-	robin.murphy@arm.com, robdclark@gmail.com, dwmw2@infradead.org,
-	baolu.lu@linux.intel.com, agross@kernel.org,
-	bjorn.andersson@linaro.org, konrad.dybcio@somainline.org,
-	matthias.bgg@gmail.com, heiko@sntech.de, orsonzhai@gmail.com,
-	baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
-	thierry.reding@gmail.com, sricharan@codeaurora.org,
-	yong.wu@mediatek.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
-	tglx@linutronix.de, shameerali.kolothum.thodi@huawei.com,
-	thunder.leizhen@huawei.com, christophe.jaillet@wanadoo.fr,
-	yangyingliang@huawei.com, jon@solid-run.com, iommu@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
-	virtualization@lists.linux-foundation.org
-Subject: Re: [PATCH 4/5] iommu: Regulate errno in ->attach_dev callback
- functions
-Message-ID: <YyGaqsXSDMn8R12R@nvidia.com>
-References: <20220913082448.31120-1-nicolinc@nvidia.com>
- <20220913082448.31120-5-nicolinc@nvidia.com>
- <YyB3F/o3RfymqiFW@myrica>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <YyB3F/o3RfymqiFW@myrica>
-X-ClientProxiedBy: LO2P123CA0026.GBRP123.PROD.OUTLOOK.COM (2603:10a6:600::14)
- To MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
+	id 1oYOTb-00E1Zl-A0; Wed, 14 Sep 2022 09:14:37 +0000
+Received: by mail-ot1-x331.google.com with SMTP id l7-20020a056830154700b0065563d564dfso9862561otp.0;
+        Wed, 14 Sep 2022 02:14:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date;
+        bh=yHtslchOcjCr/mPzc6No9Ng0yS/x6URBWNqybFN6UX8=;
+        b=lpFRvI14pZrA3nhxcP5Pytv8cwHN5jLKDCCTyeAGW7Ke6DjUsfY2X6KKpTUJvwt4Jj
+         cDKlnKoiEmkVhPpepLGwd/5iJT1BVDyTFrBXPVGwdEFLw2YRnUxBkht0lOU7rvcc+TIN
+         kEUj3fkVmF/IMBTBNiYV8ZdidCK79q9D4LdtxlhbQIqMSSe2JoowaHgHQChPGgiB2RTu
+         dmPks9oOSYwWkWX3GRLAaB2kz7Y3hxKSZZJHRQInk4ew3ihE8I9cUCr3A8nhInKQS9YY
+         OqT+/qFAHS8DPRx3WBIXqK54c4FPelsY4ifWjuxMwjIvSlSuEATk9roWavt72iWDcV6r
+         kkqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=yHtslchOcjCr/mPzc6No9Ng0yS/x6URBWNqybFN6UX8=;
+        b=uk9QL1C0SrSaQyWifX84h7favdoDI7T/B5TbyZz2gbsh4+0625zRhKDxDP52FxPRPw
+         3/gp7VBH+F32lmX04cNgQXR5XqSpMa6YuH2/U4DeXvlbpinLCqZb3aN9JZjSepaEsGYY
+         G3+wAeHKRyHFvde06k8cWVA+pXAHEUPs3/unnBarLUCLO5gmCSz4rV66lHiDPEA6r+sg
+         OTWv8pLdHb/PrgKyZSNnB7H+UZLXxO7zxJVZyVLyswE+a6q9UND48dbDwGn7MpMZJ/Za
+         vA0oklX+IfR90Mh963wlYgtifEYomlzOsB+lTxhSYRdZWpPE2eopNQ35fUBOXJubeGTw
+         VYng==
+X-Gm-Message-State: ACgBeo098IwoEp4aLAPXypkmks5Nqoe6nB8/MlcP5mLfALDI5eAca8IU
+	vnZLuO72oCG8oXWR8KaWjuRJwp947HJzBvukKtg=
+X-Google-Smtp-Source: AA6agR6bSUjbG85ucJC+q130oxkWDdbx3NlNWV+Lm2VEA+oAwqsTSs/izz/Nr1azE9VSB7RldC5hXoimcL+bqTwAJmE=
+X-Received: by 2002:a9d:7550:0:b0:655:bcdc:f546 with SMTP id
+ b16-20020a9d7550000000b00655bcdcf546mr8764477otl.304.1663146874070; Wed, 14
+ Sep 2022 02:14:34 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN2PR12MB4192:EE_|DM4PR12MB7597:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8993b424-dbdc-42e3-eba8-08da9631101f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	Xp/Vf2W6Dv4jLI3CiFcwINcg81lQo83AmAS2lNaa3poF/e4IRSQu8qhd3CYzOKoVG/dSZ8EHBDt2SbPQ8No+eheKI7kfbQhTkvgpQpjf3Z1EZ4Tct1T1PwnjxEz/BtnljGbySdondzsWP/wmrIhrFWM8Gs9l55atzuBRj3vQXf6+S/5QL49kTaZELNl/hl62FglqYdn+gBHmPfkFD7y5hEpWpe6kLr8770+fa4HZyFhdwTEocNoUcbMWmNTLpxds3WTmQXT9jDtV7ALW7wjo+CbYOgL8AfqHPQFNzP7F21VvG6U9pjJE7pFmKNUgCSE6KGTTBDJTW3AfTil31SKbLWZGtLL3b7oaexzgOlzQR9VBvRonXtLIFRoqHczDSa3oIw+21IRhtVrBnfrqLRmtZPrqPvEkvhBGb1pObKR0woct8kMNPG7ZQcCewXJgpV9oNZ/m+/Ru4+CVDVFihnTwNkZq2thqgPqVu+90TtX1zxirp4Q63eYDp1YMHB41pI/kgCHcOqVm1tk/1+GEfctBrSGqtXvIGby2zYaU0Id1gFH2gX2ubqhEJw/ib+4vZxEzSqSzS3JuegYm2HqQfHufv3+172NuExuoh4jVp26MMUAt4alH2IWvBNRr7zKXI7ulzqge7PHODVNqL9FlQorgE5XKV/iVtApDMIhXQC2GQitGz3qqm861gzzXKN4+LoNTSvyVSPmAOJwmxCxlA7ZvQA==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB4192.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(366004)(396003)(346002)(376002)(39860400002)(136003)(451199015)(8676002)(66476007)(8936002)(36756003)(6916009)(26005)(2906002)(41300700001)(7416002)(6506007)(86362001)(7406005)(5660300002)(38100700002)(4326008)(316002)(4744005)(186003)(2616005)(83380400001)(6666004)(478600001)(66556008)(66946007)(6486002)(6512007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?7sDx4z4Ei7YWZg7fYs/La8uFhZkG4yg9yKcehgdk4qTHh62sxfvKknfRe/kg?=
- =?us-ascii?Q?u9+4y7SrTM94DRmNj2rvSojKXt0U4IuRCVZweYfM205vvMfA74JVt06aJ3Sq?=
- =?us-ascii?Q?GqfDODwQQP8dpzXaHGTMOjM8FPPZ1tGP5BIElkgj40Qm4UxnjgL76xZvghpQ?=
- =?us-ascii?Q?nFMJryeUBHTevipDajW+9nhzRfOoF3MjXiMdID2W9fc5anr+GE86GVucHVpr?=
- =?us-ascii?Q?D3eWTxb2bwg8RTyvNLPGetIYOVaNlR3BlPnqY/C992SIDnjQ7ER/8SuUOfAR?=
- =?us-ascii?Q?J7sV5qFPLEqRSmtR1bBfGkIGoFAPLsE4MY+Apc8H7p1C6IjIOkhCqOKBx0Ym?=
- =?us-ascii?Q?M+YEIyvZgdxDl7iJyIWVcYxZL0uX08Kg8lJU5iHh3BnylmgCFzBFvJqr4u4n?=
- =?us-ascii?Q?y+QJS824H+UeGFLu2HEtYx8AksqI4pkaSN6NfNOLw/KFBiqA6tOyZZJvoi+P?=
- =?us-ascii?Q?OCtgH2lbXLbdN/kkHvD9NbUhkdLuPnqtKbvCCJImSYKjlDcZqEGumHZZTUxQ?=
- =?us-ascii?Q?hW9fLZnC+5PIkBsrPg0zTsrrikMF77z1eBrDr/K5AF2htzEC7Qw8uUd661hE?=
- =?us-ascii?Q?6sY6vUsYThczJDulIUzuRO307pki++nYiR8WuIs8tfEYzYLhIfPlg/PjpBkx?=
- =?us-ascii?Q?8U/u8kE3FR2+Ybmt278u+3JNjweTX75oSq1TX669DsamxEzsjTdfpwcn7SWj?=
- =?us-ascii?Q?pZbPcFw5+JwteMC1nufH4h30UnskdinOlG1gounNulJfE0aq9otqz3o14CpL?=
- =?us-ascii?Q?XRGFlXvrzmdQrGL61BEbquKtyyOHH/gH8Kr+CHUFbKNZ2WRDvQC1zNKG5xpl?=
- =?us-ascii?Q?0Obe+Kyn6QFq/vsYSySoM0+zVwgZgQyibbuNovbQqMMONRkRcGiKdGgYtaRT?=
- =?us-ascii?Q?MkBpzeXg0s1swc9RVeOxFRuZDdhVLhhIberp/szlV1GdMWYLAtfbdtXLMn0q?=
- =?us-ascii?Q?Qyx5HDhi0bPuf6NmoqgrYI22Az+9nISNB+/12sxTHyAx8tQC6BzLLk7fqroj?=
- =?us-ascii?Q?4GeyJLlJu1YctjcFvt34uoUzMKLIqFkLOUPaoQl9YJ0VWdTOyZcDl3Wasjmr?=
- =?us-ascii?Q?nym4KIrgK4+IFNtYHnXuncFvLjKupjVWsxOF0duAk5JZMWxkm7HJmMh4ZU5W?=
- =?us-ascii?Q?c5M7/hsUiej6+tVhrZEn+L3xn7X61XSR4hT4Sso9J+Qji1EzWD8c/kwcSB78?=
- =?us-ascii?Q?RRYHeb+GY2CB5mwZGtZFmT1XEFzPgkPwgEWwacPOd3okgFKfhSxq6VkqZR/4?=
- =?us-ascii?Q?/wvF4OaUR4A2mHlDif8/h2Pu1skKTeYl3gur8dhEiAvdmPVDdZ8o/tVKOLC3?=
- =?us-ascii?Q?5j7fu3WX0MCHNYmoV275hUwM0MuAECkp1tFURVzC2GLl8PswoH86QYCQ9Yxk?=
- =?us-ascii?Q?6kRiubA377OvAyC+5GePz+nnA4BAxdKv2wzDfJpTZSqXY+zTCU2iEiKzo86h?=
- =?us-ascii?Q?6ehiQCy5lpIHdGL+qrErWZZ+2d1nAdjGBQHuvEhcb6xJXkH1C5KEpOnc4xe8?=
- =?us-ascii?Q?YKcQM8xK/iDv6AxAg8kumGeJZKTfVGmRhiooeecHqCMk0S48Z0RP6A/LAsqo?=
- =?us-ascii?Q?yhHC60Z8iaULCZmO9qU=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8993b424-dbdc-42e3-eba8-08da9631101f
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Sep 2022 09:11:09.8187
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: GwxDJPdoj1wWUg2vxnSAk5/ijr1wZOZ1FiLVSz/Y4qBn4BPewMBS2mvVrKWDHttt
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB7597
+References: <20220914085451.11723-1-arinc.unal@arinc9.com> <20220914085451.11723-6-arinc.unal@arinc9.com>
+In-Reply-To: <20220914085451.11723-6-arinc.unal@arinc9.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Wed, 14 Sep 2022 11:14:22 +0200
+Message-ID: <CAMhs-H9pj+qEdOCEhkyCJPvbFonLuhgSHgL4L6kkhO3YRh52vw@mail.gmail.com>
+Subject: Re: [PATCH 05/10] mips: dts: ralink: mt7621: fix some dtc warnings
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, 
+	Vladimir Oltean <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, 
+	DENG Qingfang <dqfext@gmail.com>, erkin.bozoglu@xeront.com, 
+	netdev <netdev@vger.kernel.org>, 
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	"open list:MIPS" <linux-mips@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_021115_562443_92D89322 
-X-CRM114-Status: UNSURE (   9.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220914_021435_403640_EAAC9000 
+X-CRM114-Status: GOOD (  21.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,21 +95,261 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 13, 2022 at 01:27:03PM +0100, Jean-Philippe Brucker wrote:
-> I think in the future it will be too easy to forget about the constrained
-> return value of attach() while modifying some other part of the driver,
-> and let an external helper return EINVAL. So I'd rather not propagate ret
-> from outside of viommu_domain_attach() and finalise().
+Hi Arinc,
 
-Fortunately, if -EINVAL is wrongly returned it only creates an
-inefficiency, not a functional problem. So we do not need to be
-precise here.
+On Wed, Sep 14, 2022 at 10:55 AM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arin=
+c9.com> wrote:
+>
+> Fix the dtc warnings below.
+>
+> /cpus/cpu@0: failed to match any schema with compatible: ['mips,mips1004K=
+c']
+> /cpus/cpu@1: failed to match any schema with compatible: ['mips,mips1004K=
+c']
+> uartlite@c00: $nodename:0: 'uartlite@c00' does not match '^serial(@.*)?$'
+>         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
+e/bindings/serial/8250.yaml
+> uartlite@c00: Unevaluated properties are not allowed ('clock-names' was u=
+nexpected)
+>         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
+e/bindings/serial/8250.yaml
+> sdhci@1e130000: $nodename:0: 'sdhci@1e130000' does not match '^mmc(@.*)?$=
+'
+>         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
+e/bindings/mmc/mtk-sd.yaml
+> sdhci@1e130000: Unevaluated properties are not allowed ('bus-width', 'cap=
+-mmc-highspeed', 'cap-sd-highspeed', 'disable-wp', 'max-frequency', 'vmmc-s=
+upply', 'vqmmc-supply' were unexpected)
+>         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
+e/bindings/mmc/mtk-sd.yaml
+> xhci@1e1c0000: $nodename:0: 'xhci@1e1c0000' does not match '^usb(@.*)?'
+>         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
+e/bindings/usb/mediatek,mtk-xhci.yaml
+> xhci@1e1c0000: compatible: ['mediatek,mt8173-xhci'] is too short
+>         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
+e/bindings/usb/mediatek,mtk-xhci.yaml
+> switch0@0: $nodename:0: 'switch0@0' does not match '^(ethernet-)?switch(@=
+.*)?$'
+>         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
+e/bindings/net/dsa/mediatek,mt7530.yaml
+> port@1: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
+>         From schema: /home/arinc9/.local/lib/python3.10/site-packages/dts=
+chema/schemas/dt-core.yaml
+> port@2: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
+>         From schema: /home/arinc9/.local/lib/python3.10/site-packages/dts=
+chema/schemas/dt-core.yaml
+> port@3: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
+>         From schema: /home/arinc9/.local/lib/python3.10/site-packages/dts=
+chema/schemas/dt-core.yaml
+>
+> - Remove "mips,mips1004Kc" compatible string from the cpu nodes. This
+> doesn't exist anywhere.
+> - Change "memc: syscon@5000" to "memc: memory-controller@5000".
+> - Change "uartlite: uartlite@c00" to "serial0: serial@c00" and remove the
+> aliases node.
+> - Remove "clock-names" from the serial0 node. The property doesn't exist =
+on
+> the 8250.yaml schema.
+> - Change "sdhci: sdhci@1e130000" to "mmc: mmc@1e130000".
+> - Change "xhci: xhci@1e1c0000" to "usb: usb@1e1c0000".
+> - Add "mediatek,mtk-xhci" as the second compatible string on the usb node=
+.
+> - Change "switch0: switch0@0" to "switch0: switch@0"
+> - Change "off" to "disabled" for disabled nodes.
+>
+> Remaining warnings are caused by the lack of json-schema documentation.
+>
+> /cpuintc: failed to match any schema with compatible: ['mti,cpu-interrupt=
+-controller']
+> /palmbus@1e000000/wdt@100: failed to match any schema with compatible: ['=
+mediatek,mt7621-wdt']
+> /palmbus@1e000000/i2c@900: failed to match any schema with compatible: ['=
+mediatek,mt7621-i2c']
+> /palmbus@1e000000/spi@b00: failed to match any schema with compatible: ['=
+ralink,mt7621-spi']
+> /ethernet@1e100000: failed to match any schema with compatible: ['mediate=
+k,mt7621-eth']
+>
+> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+> ---
+>  .../boot/dts/ralink/mt7621-gnubee-gb-pc1.dts  |  2 +-
+>  .../boot/dts/ralink/mt7621-gnubee-gb-pc2.dts  |  2 +-
+>  arch/mips/boot/dts/ralink/mt7621.dtsi         | 32 +++++++------------
+>  3 files changed, 14 insertions(+), 22 deletions(-)
+>
+> diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts b/arch/mi=
+ps/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
+> index 24eebc5a85b1..6ecb8165efe8 100644
+> --- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
+> +++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
+> @@ -53,7 +53,7 @@ system {
+>         };
+>  };
+>
+> -&sdhci {
+> +&mmc {
+>         status =3D "okay";
+>  };
+>
+> diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts b/arch/mi=
+ps/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
+> index 34006e667780..2e534ea5bab7 100644
+> --- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
+> +++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
+> @@ -37,7 +37,7 @@ key-reset {
+>         };
+>  };
+>
+> -&sdhci {
+> +&mmc {
+>         status =3D "okay";
+>  };
+>
+> diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/r=
+alink/mt7621.dtsi
+> index ee46ace0bcc1..9302bdc04510 100644
+> --- a/arch/mips/boot/dts/ralink/mt7621.dtsi
+> +++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+> @@ -15,13 +15,11 @@ cpus {
+>
+>                 cpu@0 {
+>                         device_type =3D "cpu";
+> -                       compatible =3D "mips,mips1004Kc";
+>                         reg =3D <0>;
+>                 };
+>
+>                 cpu@1 {
+>                         device_type =3D "cpu";
+> -                       compatible =3D "mips,mips1004Kc";
+>                         reg =3D <1>;
+>                 };
+>         };
 
-> Since we can't guarantee that APIs like virtio or ida won't ever return
-> EINVAL, we should set all return values:
+Instead of removing this, since compatible is correct here, I think a
+cpus yaml file needs to be added to properly define mips CPU's but
+compatible strings using all around the sources are a bit messy. Take
+a look of how is this done for arm [0]
 
-I dislike this alot, it squashes all return codes to try to optimize
-an obscure failure path :(
+> @@ -33,11 +31,6 @@ cpuintc: cpuintc {
+>                 compatible =3D "mti,cpu-interrupt-controller";
+>         };
+>
+> -       aliases {
+> -               serial0 =3D &uartlite;
+> -       };
+> -
+> -
+>         mmc_fixed_3v3: regulator-3v3 {
+>                 compatible =3D "regulator-fixed";
+>                 regulator-name =3D "mmc_power";
+> @@ -110,17 +103,16 @@ i2c: i2c@900 {
+>                         pinctrl-0 =3D <&i2c_pins>;
+>                 };
+>
+> -               memc: syscon@5000 {
+> +               memc: memory-controller@5000 {
+>                         compatible =3D "mediatek,mt7621-memc", "syscon";
+>                         reg =3D <0x5000 0x1000>;
+>                 };
+>
 
-Jason
+I think syscon nodes need to use 'syscon' in the node name, but I am
+not 100% sure.
+
+> -               uartlite: uartlite@c00 {
+> +               serial0: serial@c00 {
+>                         compatible =3D "ns16550a";
+>                         reg =3D <0xc00 0x100>;
+>
+>                         clocks =3D <&sysc MT7621_CLK_UART1>;
+> -                       clock-names =3D "uart1";
+>
+>                         interrupt-parent =3D <&gic>;
+>                         interrupts =3D <GIC_SHARED 26 IRQ_TYPE_LEVEL_HIGH=
+>;
+> @@ -236,7 +228,7 @@ pinmux {
+>                 };
+>         };
+>
+> -       sdhci: sdhci@1e130000 {
+> +       mmc: mmc@1e130000 {
+>                 status =3D "disabled";
+>
+>                 compatible =3D "mediatek,mt7620-mmc";
+> @@ -262,8 +254,8 @@ sdhci: sdhci@1e130000 {
+>                 interrupts =3D <GIC_SHARED 20 IRQ_TYPE_LEVEL_HIGH>;
+>         };
+>
+> -       xhci: xhci@1e1c0000 {
+> -               compatible =3D "mediatek,mt8173-xhci";
+> +       usb: usb@1e1c0000 {
+> +               compatible =3D "mediatek,mt8173-xhci", "mediatek,mtk-xhci=
+";
+>                 reg =3D <0x1e1c0000 0x1000
+>                        0x1e1d0700 0x0100>;
+>                 reg-names =3D "mac", "ippc";
+> @@ -338,7 +330,7 @@ fixed-link {
+>                 gmac1: mac@1 {
+>                         compatible =3D "mediatek,eth-mac";
+>                         reg =3D <1>;
+> -                       status =3D "off";
+> +                       status =3D "disabled";
+>                         phy-mode =3D "rgmii-rxid";
+>                 };
+>
+> @@ -346,7 +338,7 @@ mdio: mdio-bus {
+>                         #address-cells =3D <1>;
+>                         #size-cells =3D <0>;
+>
+> -                       switch0: switch0@0 {
+> +                       switch0: switch@0 {
+>                                 compatible =3D "mediatek,mt7621";
+>                                 reg =3D <0>;
+>                                 mediatek,mcm;
+> @@ -362,31 +354,31 @@ ports {
+>                                         #size-cells =3D <0>;
+>
+>                                         port@0 {
+> -                                               status =3D "off";
+> +                                               status =3D "disabled";
+>                                                 reg =3D <0>;
+>                                                 label =3D "lan0";
+>                                         };
+>
+>                                         port@1 {
+> -                                               status =3D "off";
+> +                                               status =3D "disabled";
+>                                                 reg =3D <1>;
+>                                                 label =3D "lan1";
+>                                         };
+>
+>                                         port@2 {
+> -                                               status =3D "off";
+> +                                               status =3D "disabled";
+>                                                 reg =3D <2>;
+>                                                 label =3D "lan2";
+>                                         };
+>
+>                                         port@3 {
+> -                                               status =3D "off";
+> +                                               status =3D "disabled";
+>                                                 reg =3D <3>;
+>                                                 label =3D "lan3";
+>                                         };
+>
+>                                         port@4 {
+> -                                               status =3D "off";
+> +                                               status =3D "disabled";
+>                                                 reg =3D <4>;
+>                                                 label =3D "lan4";
+>                                         };
+> --
+> 2.34.1
+>
+
+Best regards,
+    Sergio Paracuellos
+
+[0]: https://elixir.bootlin.com/linux/v6.0-rc5/source/Documentation/devicet=
+ree/bindings/arm/cpus.yaml
 
