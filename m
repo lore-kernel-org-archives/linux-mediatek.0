@@ -4,71 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390B8ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 07:52:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15D95ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 07:54:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LHvZCMp7Vft1jzba8JcbDaZQJp5Sg/4WTuXkYRujRXs=; b=MYkv/13jsiWJjl6vrND8xS6xWD
-	cOgoGVLrz+rE7SORK2f49k+y1mn1piGiYE2DmmUqfxMRbpkqdKgLdn/XUUqGZK49FxUOokM6kEEAd
-	kp+GbneUl3uoUCE17WrXPY32fN/jhgC3t/19KWLHC35Tug3Fm737iL7aP1YCNSkhFKtVYh2cc5KXx
-	glfD09lqWNj8tUAe2lUBTbFrFX7+qvt8z7Ntop+zTGrhDcPdyHzRBCqynD5tFQ5XqNryN8TO8MYTi
-	1f/iZsRZw8JGYwwj8MXSMDtrEn5Z0Gwvk0cgRSCN0n6nVQvmwecHwG1ioBVYa59f4C5Zxk1Jy0+m5
-	5ZdkmoAA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DfLOdCiOUyUBZ957iIROO5B67gyhmf+1I/2Md8hgqjI=; b=qV7g3HG+Bu023l0RJ1Q+63dDVP
+	oyztHo8wma6D8Hfta1FUp5gYdK5Zqqa15CgemMYL69MfULww6Bt99JvvMxjY2EWzpLBt5K0wKfEsC
+	ywV4yHqz+GxTQ8nP1uff68XJZKif2wCtsvHSbC7Nz4Yks3qG93zKVsuNgHtNnu5zuCKQdoAa7KdL7
+	XqD3g+d5jRLHjSwcFkwtnFIC72rXjm+ehyqEfrDj6wFqtXEyYpoavDoqgPqjWCcqcLya2+QlYCyzs
+	A+zWBjy1EoGjhm+H29rQ0QXmtGq/elt/xdFI/qvY7QXjhh0qlANJrvG9cuEwcOCbkjQIP1yTDAA0J
+	u4o0SqHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYjfX-0035gg-FB; Thu, 15 Sep 2022 07:52:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oYjhl-0037Hj-LS; Thu, 15 Sep 2022 07:54:37 +0000
+Received: from mail-mw2nam10on2087.outbound.protection.outlook.com ([40.107.94.87] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYjey-0035R5-VZ; Thu, 15 Sep 2022 07:51:46 +0000
-X-UUID: 128e6ea250224244a94ae09025a27165-20220915
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LHvZCMp7Vft1jzba8JcbDaZQJp5Sg/4WTuXkYRujRXs=;
-	b=GtgU92wbhr9bQsl04W8QEy8uKcdEprDH4C9QpnYxJfOcWVIIvHI8iaHwF+/kQxQvIys/Kb3BWyrQZFR/OTZZds3WO1z8/2sxGj98RAbgnMSDXnxdiBt9J//3/genGjzIXXQ6frBz0dD/A6yUWf292X3DGzvqElyHmvz9zqgoxQw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:e16f782b-720a-4a93-b9cd-d9eec1961cd7,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:39a5ff1,CLOUDID:e72ab97b-ea28-4199-b57e-003c7d60873a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 128e6ea250224244a94ae09025a27165-20220915
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1355513661; Thu, 15 Sep 2022 00:51:38 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	id 1oYjhH-0036yi-Gv; Thu, 15 Sep 2022 07:54:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jkQdXUs3i7t4+VmwSyAodEqPW1U3/1fSQrDuBy68f/IP/hf5hdRIYeVlsbpy/QRTsHVxycYkR2NxZ5PjZuIjG8wTJQSg7dECxiZgVdGByw7q8tC1Bp/LNo6w2K5E216eamXAooVOTqOpz349g3FaWSLphN2CRhjAdj6f5MH4sAE6CHvaqECFaw02ZJilXoqvS3sGJq8zuNK62FI8T2VE29zOzzv+pKx2FGMGW3NU0R3YDM9XMO+nkfd9mss/fXikoViglYOqgQXNHslC1BhM8N7SHz0IIl6PiDrYgTVGcc7BGKFnvuEQRftgI4GkPo4b6m603e3LsducjDwYue7t8A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DfLOdCiOUyUBZ957iIROO5B67gyhmf+1I/2Md8hgqjI=;
+ b=FGMc4i9k3k/ywkl0AwnG/1UOogN/aApdOz+Z05g22OHs4GGdrxaZmmM2pbeMtzt09dF29cxG/8qP6MgS4+xnRtKTtfY+UugUrRFuBiDH94EgwJgoELJj5wOrCYOiSyRp45/HdM/8JZYyLBWgn2pxhKrTrfQVg9vbbfa16v10nvp5XleI63U+ikIg0XqwxPghXyTcln+r0Zpf7bt79haC2gcFchLaH4wOotmwM8zuoRFCMqkxrBwqdJfHuL1qrGzCm8a/bbOGO/0ridYxmHrB+NZ6BAnIENH3Sp21Gk0OOLT9GYzVKljYOWlF48C0nDziMLQXsf5SVOFcDIuvLxCEXw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=8bytes.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DfLOdCiOUyUBZ957iIROO5B67gyhmf+1I/2Md8hgqjI=;
+ b=LQQbxIWMr3zTIU815Y0VKeV49h5mdLUllAuvhFche9rVni05j9lVXaqmFwHGKHaiLyWbw5yOJUdL5XKbLm2vyn/g9PjxYXQgiLhylSXeVXHlAafE7U7zQGoT3AFyLakPqvuvx3zTjGWEZxsJ2w558gN1L5n0QMjgcwnPNPHUuSjp4GEkQksKEv/ESY5JmmHDTfU5rCTLV/QQdZ4D37CuHB17/Oevp7T1T+H8JZuuCItp2E906wl76GUzpEBvcbrTrTLIpJ3DRO4glJH5SZJWetKBLHe63r15HTtOQm97ayN9lIBiDkdoimvAzVs4/VPQYffZgbXN4EG6U6U30f83wQ==
+Received: from DM6PR02CA0088.namprd02.prod.outlook.com (2603:10b6:5:1f4::29)
+ by BY5PR12MB4035.namprd12.prod.outlook.com (2603:10b6:a03:206::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.16; Thu, 15 Sep
+ 2022 07:54:03 +0000
+Received: from DM6NAM11FT005.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:5:1f4:cafe::da) by DM6PR02CA0088.outlook.office365.com
+ (2603:10b6:5:1f4::29) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5632.15 via Frontend
+ Transport; Thu, 15 Sep 2022 07:54:02 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ DM6NAM11FT005.mail.protection.outlook.com (10.13.172.238) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5632.12 via Frontend Transport; Thu, 15 Sep 2022 07:54:02 +0000
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26; Thu, 15 Sep
+ 2022 00:53:55 -0700
+Received: from drhqmail201.nvidia.com (10.126.190.180) by
+ rnnvmail204.nvidia.com (10.129.68.6) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 15 Sep 2022 15:50:32 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 15 Sep 2022 15:50:32 +0800
-From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>
-CC: <matthias.bgg@gmail.com>, <granquet@baylibre.com>, <daniel@ffwll.ch>,
-	<jitao.shi@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
-	<ck.hu@mediatek.com>, <liangxu.xu@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ 15.2.986.29; Thu, 15 Sep 2022 00:53:55 -0700
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.29; Thu, 15 Sep 2022 00:53:54 -0700
+Received: from Asurada-Nvidia.nvidia.com (10.127.8.9) by mail.nvidia.com
+ (10.126.190.182) with Microsoft SMTP Server id 15.2.986.29 via Frontend
+ Transport; Thu, 15 Sep 2022 00:53:53 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: <joro@8bytes.org>, <suravee.suthikulpanit@amd.com>, <will@kernel.org>,
+	<robin.murphy@arm.com>, <robdclark@gmail.com>, <dwmw2@infradead.org>,
+	<baolu.lu@linux.intel.com>, <agross@kernel.org>,
+	<bjorn.andersson@linaro.org>, <matthias.bgg@gmail.com>,
+	<orsonzhai@gmail.com>, <baolin.wang@linux.alibaba.com>,
+	<zhang.lyra@gmail.com>, <jean-philippe@linaro.org>,
+	<sricharan@codeaurora.org>
+CC: <jgg@nvidia.com>, <kevin.tian@intel.com>, <konrad.dybcio@somainline.org>,
+	<yong.wu@mediatek.com>, <thierry.reding@gmail.com>, <vdumpa@nvidia.com>,
+	<jonathanh@nvidia.com>, <tglx@linutronix.de>,
+	<shameerali.kolothum.thodi@huawei.com>, <christophe.jaillet@wanadoo.fr>,
+	<thunder.leizhen@huawei.com>, <quic_saipraka@quicinc.com>,
+	<jon@solid-run.com>, <yangyingliang@huawei.com>, <iommu@lists.linux.dev>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
-	<rex-bc.chen@mediatek.com>
-Subject: [PATCH 3/3] drm/mediatek: dp: Fix warning in mtk_dp_video_mute()
-Date: Thu, 15 Sep 2022 15:50:28 +0800
-Message-ID: <20220915075028.644-4-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220915075028.644-1-rex-bc.chen@mediatek.com>
-References: <20220915075028.644-1-rex-bc.chen@mediatek.com>
+	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-tegra@vger.kernel.org>, <virtualization@lists.linux-foundation.org>
+Subject: [PATCH v3 5/6] iommu: Use EINVAL for incompatible device/domain in ->attach_dev
+Date: Thu, 15 Sep 2022 00:53:37 -0700
+Message-ID: <effc9efd2160ec19500e1f4c59799991f46674c8.1663227492.git.nicolinc@nvidia.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <cover.1663227492.git.nicolinc@nvidia.com>
+References: <cover.1663227492.git.nicolinc@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-MTK: N
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6NAM11FT005:EE_|BY5PR12MB4035:EE_
+X-MS-Office365-Filtering-Correlation-Id: 485ac931-ce33-4c59-c191-08da96ef74e4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	8i9CRjkDyzT89tBtc5/y5MNpA6xRPblz1erXpUfigA/fN3kcQYzrXlem2lEj+5UPygdVAUr+laHc8mp+vVILpAgcbX91Fzh3SbF4W0+bg4Cv3S9ui9twQKB+5ghFxRW6iMq3LD1OHcdV9155lC5Ij6JFoTAYcSN9kNsQgki/Y7rzkQn7KOY2MBl3J+hlYkH9kQGIJsUHuxPp708khq8GE/qIZMlG689OJvU/40pM48nxAZc6noCeZhTNdymtp1hoU9fB7xG62PL2O4U7n3rM6qobz7uTMWfbzUTVnwma66SXgxvNIjJLKxDYh4NvV73lXR0arAt5/FKl6exFIBbmqGLsZr+C7Z2sVKH6j3790N1sUm0G83iY5xRJjMPRRZ+0D2j7WCFcBhtpFhSpxyXg9UdbaSidNC7LCf/P+57215KCB1gJgTdWPEI6vKV8xbHlNHMmeeQk4hMKZkuQZZy+QKqO7KBkCRRzlBj4vSMIFL27s/LPzj4qYSPWDs8MzrRPLZqzVUxdak5jW6BY097BE/Hrs6oOJn+NXu6iMzOy6KWCTo/0sV/QC9BjP0pQmN5VUrq5zpARSxjX0fcUQK69MPjfqnSeoDlkpGSJHmrw8yseBwXkabZrotc/CPpRWweU+FRVF2XZMcCSPLBg6D0V8OnDMYvXrToyxVDfXvf0OALALLUPFKfHW2ugS2uQCBPTwRcqZd1oieTXyhUF6kDWmLaEgl1lZtLKTG52YKgUMTqLa2kEzCpK6mEojNjVOfA4siOzy5dI5TgF8v4eelj0/1c17Pg36adJCNfiYE+GzPadKjnY6H/4v0OC8C308+qiZHvFrq8gEwtqoYpk5Yhl6yD2odzE0M2sGIx/5iRCgVg=
+X-Forefront-Antispam-Report: 	CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230022)(4636009)(39860400002)(396003)(376002)(346002)(136003)(451199015)(36840700001)(40470700004)(46966006)(7636003)(2616005)(7416002)(82740400003)(921005)(8676002)(40480700001)(36756003)(356005)(2906002)(40460700003)(82310400005)(54906003)(47076005)(186003)(83380400001)(86362001)(336012)(110136005)(7696005)(5660300002)(7406005)(426003)(6666004)(36860700001)(8936002)(70586007)(316002)(70206006)(26005)(41300700001)(478600001)(4326008)(83996005)(2101003)(473944003);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Sep 2022 07:54:02.7283
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 485ac931-ce33-4c59-c191-08da96ef74e4
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	DM6NAM11FT005.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR12MB4035
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_005145_033835_DD277ECC 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20220915_005407_841738_97208FBB 
+X-CRM114-Status: GOOD (  17.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,54 +136,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Warning:
-../drivers/gpu/drm/mediatek/mtk_dp.c: In function ‘mtk_dp_video_mute’:
-../drivers/gpu/drm/mediatek/mtk_dp.c:947:23: warning: format ‘%x’
-expects argument of type ‘unsigned int’, but argument 4 has type ‘long
-unsigned int’ [-Wformat=]
-  947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
-      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../include/linux/dev_printk.h:129:27: note: in definition of macro ‘dev_printk’
-  129 |   _dev_printk(level, dev, fmt, ##__VA_ARGS__);  \
-      |                           ^~~
-../include/linux/dev_printk.h:163:31: note: in expansion of macro ‘dev_fmt’
-  163 |   dev_printk(KERN_DEBUG, dev, dev_fmt(fmt), ##__VA_ARGS__); \
-      |                               ^~~~~~~
-../drivers/gpu/drm/mediatek/mtk_dp.c:947:2: note: in expansion of
-macro ‘dev_dbg’
-  947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
-      |  ^~~~~~~
-../drivers/gpu/drm/mediatek/mtk_dp.c:947:36: note: format string is defined here
-  947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
-      |                                   ~^
-      |                                    |
-      |                                    unsigned int
-      |                                   %lx
+Following the new rules in include/linux/iommu.h kdocs, update all drivers
+->attach_dev callback functions to return EINVAL in the failure paths that
+are related to domain incompatibility.
 
-To fix this issue, we use %s to replace 0x%x.
+Also, drop adjacent error prints to prevent a kernel log spam.
 
-Reported-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 11 +----------
+ drivers/iommu/arm/arm-smmu/arm-smmu.c       |  3 ---
+ drivers/iommu/arm/arm-smmu/qcom_iommu.c     |  7 +------
+ drivers/iommu/intel/iommu.c                 | 10 +++-------
+ drivers/iommu/ipmmu-vmsa.c                  |  2 --
+ drivers/iommu/omap-iommu.c                  |  2 +-
+ drivers/iommu/sprd-iommu.c                  |  4 +---
+ drivers/iommu/tegra-gart.c                  |  2 +-
+ drivers/iommu/virtio-iommu.c                |  3 +--
+ 9 files changed, 9 insertions(+), 35 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index c72c646e25e9..d58e98b2f83a 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1222,8 +1222,8 @@ static void mtk_dp_video_mute(struct mtk_dp *mtk_dp, bool enable)
- 		      mtk_dp->data->smc_cmd, enable,
- 		      0, 0, 0, 0, 0, &res);
+diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
+index d32b02336411..f96f8aad8280 100644
+--- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
++++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
+@@ -2429,23 +2429,14 @@ static int arm_smmu_attach_dev(struct iommu_domain *domain, struct device *dev)
+ 			goto out_unlock;
+ 		}
+ 	} else if (smmu_domain->smmu != smmu) {
+-		dev_err(dev,
+-			"cannot attach to SMMU %s (upstream of %s)\n",
+-			dev_name(smmu_domain->smmu->dev),
+-			dev_name(smmu->dev));
+-		ret = -ENXIO;
++		ret = -EINVAL;
+ 		goto out_unlock;
+ 	} else if (smmu_domain->stage == ARM_SMMU_DOMAIN_S1 &&
+ 		   master->ssid_bits != smmu_domain->s1_cfg.s1cdmax) {
+-		dev_err(dev,
+-			"cannot attach to incompatible domain (%u SSID bits != %u)\n",
+-			smmu_domain->s1_cfg.s1cdmax, master->ssid_bits);
+ 		ret = -EINVAL;
+ 		goto out_unlock;
+ 	} else if (smmu_domain->stage == ARM_SMMU_DOMAIN_S1 &&
+ 		   smmu_domain->stall_enabled != master->stall_enabled) {
+-		dev_err(dev, "cannot attach to stall-%s domain\n",
+-			smmu_domain->stall_enabled ? "enabled" : "disabled");
+ 		ret = -EINVAL;
+ 		goto out_unlock;
+ 	}
+diff --git a/drivers/iommu/arm/arm-smmu/arm-smmu.c b/drivers/iommu/arm/arm-smmu/arm-smmu.c
+index dfa82df00342..dbd12da31707 100644
+--- a/drivers/iommu/arm/arm-smmu/arm-smmu.c
++++ b/drivers/iommu/arm/arm-smmu/arm-smmu.c
+@@ -1167,9 +1167,6 @@ static int arm_smmu_attach_dev(struct iommu_domain *domain, struct device *dev)
+ 	 * different SMMUs.
+ 	 */
+ 	if (smmu_domain->smmu != smmu) {
+-		dev_err(dev,
+-			"cannot attach to SMMU %s whilst already attached to domain on SMMU %s\n",
+-			dev_name(smmu_domain->smmu->dev), dev_name(smmu->dev));
+ 		ret = -EINVAL;
+ 		goto rpm_put;
+ 	}
+diff --git a/drivers/iommu/arm/arm-smmu/qcom_iommu.c b/drivers/iommu/arm/arm-smmu/qcom_iommu.c
+index 17235116d3bb..37c5ddc212c1 100644
+--- a/drivers/iommu/arm/arm-smmu/qcom_iommu.c
++++ b/drivers/iommu/arm/arm-smmu/qcom_iommu.c
+@@ -381,13 +381,8 @@ static int qcom_iommu_attach_dev(struct iommu_domain *domain, struct device *dev
+ 	 * Sanity check the domain. We don't support domains across
+ 	 * different IOMMUs.
+ 	 */
+-	if (qcom_domain->iommu != qcom_iommu) {
+-		dev_err(dev, "cannot attach to IOMMU %s while already "
+-			"attached to domain on IOMMU %s\n",
+-			dev_name(qcom_domain->iommu->dev),
+-			dev_name(qcom_iommu->dev));
++	if (qcom_domain->iommu != qcom_iommu)
+ 		return -EINVAL;
+-	}
  
--	dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
--		mtk_dp->data->smc_cmd, enable, res.a0, res.a1);
-+	dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: %s, ret: 0x%lx-0x%lx\n",
-+		mtk_dp->data->smc_cmd, enable ? "enable" : "disable", res.a0, res.a1);
+ 	return 0;
  }
+diff --git a/drivers/iommu/intel/iommu.c b/drivers/iommu/intel/iommu.c
+index 1f2cd43cf9bc..51ef42b1bd4e 100644
+--- a/drivers/iommu/intel/iommu.c
++++ b/drivers/iommu/intel/iommu.c
+@@ -4158,19 +4158,15 @@ static int prepare_domain_attach_device(struct iommu_domain *domain,
+ 		return -ENODEV;
  
- static void mtk_dp_audio_mute(struct mtk_dp *mtk_dp, bool mute)
+ 	if (dmar_domain->force_snooping && !ecap_sc_support(iommu->ecap))
+-		return -EOPNOTSUPP;
++		return -EINVAL;
+ 
+ 	/* check if this iommu agaw is sufficient for max mapped address */
+ 	addr_width = agaw_to_width(iommu->agaw);
+ 	if (addr_width > cap_mgaw(iommu->cap))
+ 		addr_width = cap_mgaw(iommu->cap);
+ 
+-	if (dmar_domain->max_addr > (1LL << addr_width)) {
+-		dev_err(dev, "%s: iommu width (%d) is not "
+-		        "sufficient for the mapped address (%llx)\n",
+-		        __func__, addr_width, dmar_domain->max_addr);
+-		return -EFAULT;
+-	}
++	if (dmar_domain->max_addr > (1LL << addr_width))
++		return -EINVAL;
+ 	dmar_domain->gaw = addr_width;
+ 
+ 	/*
+diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
+index 1d42084d0276..f5217a4cb9b3 100644
+--- a/drivers/iommu/ipmmu-vmsa.c
++++ b/drivers/iommu/ipmmu-vmsa.c
+@@ -628,8 +628,6 @@ static int ipmmu_attach_device(struct iommu_domain *io_domain,
+ 		 * Something is wrong, we can't attach two devices using
+ 		 * different IOMMUs to the same domain.
+ 		 */
+-		dev_err(dev, "Can't attach IPMMU %s to domain on IPMMU %s\n",
+-			dev_name(mmu->dev), dev_name(domain->mmu->dev));
+ 		ret = -EINVAL;
+ 	} else
+ 		dev_info(dev, "Reusing IPMMU context %u\n", domain->context_id);
+diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
+index 447e40d55918..be12f49140c7 100644
+--- a/drivers/iommu/omap-iommu.c
++++ b/drivers/iommu/omap-iommu.c
+@@ -1472,7 +1472,7 @@ omap_iommu_attach_dev(struct iommu_domain *domain, struct device *dev)
+ 	/* only a single client device can be attached to a domain */
+ 	if (omap_domain->dev) {
+ 		dev_err(dev, "iommu domain is already attached\n");
+-		ret = -EBUSY;
++		ret = -EINVAL;
+ 		goto out;
+ 	}
+ 
+diff --git a/drivers/iommu/sprd-iommu.c b/drivers/iommu/sprd-iommu.c
+index 511959c8a14d..945576039c9e 100644
+--- a/drivers/iommu/sprd-iommu.c
++++ b/drivers/iommu/sprd-iommu.c
+@@ -237,10 +237,8 @@ static int sprd_iommu_attach_device(struct iommu_domain *domain,
+ 	struct sprd_iommu_domain *dom = to_sprd_domain(domain);
+ 	size_t pgt_size = sprd_iommu_pgt_size(domain);
+ 
+-	if (dom->sdev) {
+-		pr_err("There's already a device attached to this domain.\n");
++	if (dom->sdev)
+ 		return -EINVAL;
+-	}
+ 
+ 	dom->pgt_va = dma_alloc_coherent(sdev->dev, pgt_size, &dom->pgt_pa, GFP_KERNEL);
+ 	if (!dom->pgt_va)
+diff --git a/drivers/iommu/tegra-gart.c b/drivers/iommu/tegra-gart.c
+index e5ca3cf1a949..ed53279d1106 100644
+--- a/drivers/iommu/tegra-gart.c
++++ b/drivers/iommu/tegra-gart.c
+@@ -112,7 +112,7 @@ static int gart_iommu_attach_dev(struct iommu_domain *domain,
+ 	spin_lock(&gart->dom_lock);
+ 
+ 	if (gart->active_domain && gart->active_domain != domain) {
+-		ret = -EBUSY;
++		ret = -EINVAL;
+ 	} else if (dev_iommu_priv_get(dev) != domain) {
+ 		dev_iommu_priv_set(dev, domain);
+ 		gart->active_domain = domain;
+diff --git a/drivers/iommu/virtio-iommu.c b/drivers/iommu/virtio-iommu.c
+index 80151176ba12..caca0a638c4d 100644
+--- a/drivers/iommu/virtio-iommu.c
++++ b/drivers/iommu/virtio-iommu.c
+@@ -733,8 +733,7 @@ static int viommu_attach_dev(struct iommu_domain *domain, struct device *dev)
+ 		 */
+ 		ret = viommu_domain_finalise(vdev, domain);
+ 	} else if (vdomain->viommu != vdev->viommu) {
+-		dev_err(dev, "cannot attach to foreign vIOMMU\n");
+-		ret = -EXDEV;
++		ret = -EINVAL;
+ 	}
+ 	mutex_unlock(&vdomain->mutex);
+ 
 -- 
-2.18.0
+2.17.1
 
 
