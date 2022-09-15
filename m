@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04E15ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 09:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F450ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 09:51:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CX/0guoh/DjN4wN8JJoOSTPFmeqM5+Xm+kwBd/9d3Ho=; b=c0P/gfI58YInsph4fYYQSrfT13
-	XG4ioY4V2REu1WEZE6pOhJsnOOI/1Wrf4NEjgK8wDtc03smP1mWrxDQyHDe7bLKgZpltvw0jHkA2W
-	V1AK1pai3f9H6kT+4HcX0MxrDJE6dvptv0UBwmnuzhvDnOz+XZGSw082eZQ/HDamjF72+Mk2F5Vlg
-	PNSWD4Dom8l5SXyojzs6eJk7DJ12w99pI+8the5i1TPEoBSNyM/ZEXBqMWgwMZsbpFMtNkDqrmocw
-	A1JTcE1PGj0scbLf6sswqU7QMnPYRsOZh+UBhc+UpAZMEpGwVcdWTud6E606ZCrSY/dRyDsGmkAV0
-	W9yBXJCg==;
+	bh=BLldUmawu01GzUZglxj6MBSK7Wi8J1495Ow2vHiQCbA=; b=PmzhqdjOvQSPFwlVYdYobTMuvx
+	ULdXXcPEp8+vV1+7z95n2UpDpKANKvxIIchGjn4/gx/XshhFab7yA2o4C/uFzplAj9ZjjJ6H8WymZ
+	VxGaFUyb6+9P//SQwLgE0VlahvLy10Lyx8Q0jbLg2JTlHiUREZu0+WJ3sW6dl6yN1UwjpXYcBk13B
+	Bg9vHDDB8nh+9VFhf2hs0ifflfLzkmLS4or5BBmL6PFrErugImaxLdil6lA0fSXhbGVS3BAbE1oy/
+	2PLS/WcJH6HIzeW9IJU4WaZwhKcW5Kj3SxEsd8lCT6IlgMkF6i/NyFHc9nzk8D6XzAnrSfl47LizI
+	ZQyaqVeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYlWQ-005kAc-IA; Thu, 15 Sep 2022 09:51:02 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1oYlWs-005kc3-Vg; Thu, 15 Sep 2022 09:51:30 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYlUo-005ivG-HJ; Thu, 15 Sep 2022 09:49:24 +0000
-Received: by mail-pg1-x532.google.com with SMTP id q63so16824613pga.9;
-        Thu, 15 Sep 2022 02:49:20 -0700 (PDT)
+	id 1oYlUv-005izO-JG; Thu, 15 Sep 2022 09:49:32 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id i15-20020a17090a4b8f00b0020073b4ac27so17011521pjh.3;
+        Thu, 15 Sep 2022 02:49:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=CX/0guoh/DjN4wN8JJoOSTPFmeqM5+Xm+kwBd/9d3Ho=;
-        b=karGxf6tDVJtMGdp6ovW9u+dUHbs4aPAGfkYDrgwDj5TT+GvOgg4dTIWyTz1ED7ij0
-         bfeR0Qp3CAQu//asFXj9+okTLaUmIex3ffhd6CuNyS2zUj6XV1E8m7IuyEw3gcm9Ttn4
-         WbidfEi5z7T3LroMMpCfWI0kzq2JTSEGZtg/d4aZk+A09YWpArLN3wVO7TuFxMrtbmuT
-         VhkJr7R1fFhVOX9pQ/EdY8mTKY7EsEPf7bDqytIzgqsf8th34IGU7pdhTMSGZ/XTNUpB
-         cJ14KTRyBiGc9iQhsIQ2iGuGeQtqJmLImtD37VzIoKniTjXjwC56YkX6HnjDMCaXJV2I
-         NVMA==
+        bh=BLldUmawu01GzUZglxj6MBSK7Wi8J1495Ow2vHiQCbA=;
+        b=mWs3Joq2+U9sk0TTku4uVfHfyJi54bqPrLJdN+GMWioKOLnEkyRHTv5xRQa+u2QYdw
+         dV95RVVDRAFNhd4CPJ8CDqlym//oYKusNe9pE+0UGlurC7GX9j8A0Jv5IGrQxD/r4B/t
+         X13xnw9hl7TkRq7NoOqQaN5jnWFHhwLI7Auvg/P63ImdtomryUyEtHnnuVHpewnd0ZoO
+         LCFMNAIQACzoLpPObHtHKsS0aYUS7SoFHipgKt6I9xIK+3iAKZeC3j0BoBAU2najHWr6
+         Ss9mWYWzKs3SgdP2noEt8mTzKzK7+QiBVL63MfrogRCkmxX0O33J6DOrFKmGE2fz5bDu
+         YZOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=CX/0guoh/DjN4wN8JJoOSTPFmeqM5+Xm+kwBd/9d3Ho=;
-        b=VOS+hC3cqg/0U09n0whVGFkK9Y9G5sVdDbU5LKnuHa2oSMcYeTiC0kTzTnkxU/alVW
-         4NFB3iThjw3Ztc0+x2NMF9wZ5coBSB/jV7G0wrNLnWpWpHetDnl1uNhTwvyhV/vpu63Y
-         6sTzRWXnVMoczcWnT+xSuCgscDXKyGNe0bvJnV1bkhC2gOVttgZrtskaDvffFDY6G7kl
-         wC1wSJMsYaXC0JI1K0v0XrX6RMCHTum8X9jvNzB8qVxlRTwJ1NLtI01nd0hV5LTWCIOY
-         qy9dLg/k5lhnPxsIJqju6pPy0sYn2fCIHtbRD9QtbDz10eVz5IMaK97/iH4lGX2+mTo5
-         B8bw==
-X-Gm-Message-State: ACgBeo2KkIizdXPeddrqBiJfAWjEEcKq4zLTJBaks1JZQCesOzg3gUw2
-	sLXT1Hr50HWK+jkGw+aqQ58=
-X-Google-Smtp-Source: AA6agR7rP6II6rBPfeu9hDGM5xx1njOwHISVNlhJeHqrJ5o7bqrc/mGE7ZkOKF566mvV5xM7tX85HA==
-X-Received: by 2002:a63:2c8:0:b0:439:3806:32f6 with SMTP id 191-20020a6302c8000000b00439380632f6mr12044018pgc.217.1663235359590;
-        Thu, 15 Sep 2022 02:49:19 -0700 (PDT)
+        bh=BLldUmawu01GzUZglxj6MBSK7Wi8J1495Ow2vHiQCbA=;
+        b=2aXoj8jekKyvCWTX4qmgiR+9YlFcHIyOLhhqYILxOreWKDDAGiao83ftXlrjYr8exj
+         MYxEdzf6T33lYG7kaw6k4wEtXjF+E4qb/hk2W92i6W9qGua1fKVMUr/BLApv5jgN/b54
+         k3+bAWhdQgDr9xdkFbyKN3vB0MYcLnka10nh8NuvSX9hYmFryoFzfirR5vXXdzlPmLP5
+         nFDDRgLdBNZAa6ecEYleLkDfmMEG9kTSWeORtwiATMsTIKdjS5v+r+sGJWzjH6X2TivI
+         njV9MJawQkLPclvVh5ykMf3M8DW+w+NutO2oMSoOIhZcDCG3NyoNqmZH78WiBo5+wuDR
+         TlVw==
+X-Gm-Message-State: ACrzQf0P8++OSalJu97vGF0x0WIMRI6QVxXzh/v4BxMRSKWqShZge3lt
+	8aHmJKSiiRWL+mem2I461LM=
+X-Google-Smtp-Source: AA6agR6yi0j1GpLpIKM8QQVsHOeuU4zo8E/AA6tf+Pawbf6kZNb9CUcIHt39amXLj4c6P9ph2VToYw==
+X-Received: by 2002:a17:90b:4d12:b0:202:e772:fa09 with SMTP id mw18-20020a17090b4d1200b00202e772fa09mr10042498pjb.30.1663235366651;
+        Thu, 15 Sep 2022 02:49:26 -0700 (PDT)
 Received: from RD-3580-24288.rt.l (114-137-177-189.emome-ip.hinet.net. [114.137.177.189])
-        by smtp.gmail.com with ESMTPSA id n4-20020a170903110400b00176675adbe1sm12669010plh.208.2022.09.15.02.49.15
+        by smtp.gmail.com with ESMTPSA id n4-20020a170903110400b00176675adbe1sm12669010plh.208.2022.09.15.02.49.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Sep 2022 02:49:19 -0700 (PDT)
+        Thu, 15 Sep 2022 02:49:26 -0700 (PDT)
 From: ChiaEn Wu <peterwu.pub@gmail.com>
 To: pavel@ucw.cz,
 	robh+dt@kernel.org,
@@ -79,19 +79,19 @@ Cc: chiaen_wu@richtek.com,
 	linux-kernel@vger.kernel.org,
 	linux-pm@vger.kernel.org,
 	linux-iio@vger.kernel.org,
-	szunichen@gmail.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v11 3/8] dt-bindings: leds: Add MediaTek MT6370 flashlight
-Date: Thu, 15 Sep 2022 17:47:31 +0800
-Message-Id: <61ca6fd2094d67b3e3ee9aa9a0426774fa01589e.1663254344.git.chiaen_wu@richtek.com>
+	szunichen@gmail.com
+Subject: [PATCH v11 4/8] lib: add linear range index macro
+Date: Thu, 15 Sep 2022 17:47:32 +0800
+Message-Id: <0418eade65d434a25d304eaa804b34f92318be87.1663254344.git.chiaen_wu@richtek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1663254344.git.chiaen_wu@richtek.com>
 References: <cover.1663254344.git.chiaen_wu@richtek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_024922_637326_80182E17 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20220915_024929_737132_BA6A4638 
+X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,65 +106,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alice Chen <alice_chen@richtek.com>
+From: ChiaEn Wu <chiaen_wu@richtek.com>
 
-Add MediaTek MT6370 flashlight binding documentation.
+Add linear_range_idx macro for declaring the linear_range struct simply.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Signed-off-by: Alice Chen <alice_chen@richtek.com>
+Reviewed-by: Matti Vaittinen <mazziesaccount@gmail.com>
 Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
 ---
- .../bindings/leds/mediatek,mt6370-flashlight.yaml  | 41 ++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
+ include/linux/linear_range.h | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml b/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
-new file mode 100644
-index 0000000..e9d02ed
---- /dev/null
-+++ b/Documentation/devicetree/bindings/leds/mediatek,mt6370-flashlight.yaml
-@@ -0,0 +1,41 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/leds/mediatek,mt6370-flashlight.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/include/linux/linear_range.h b/include/linux/linear_range.h
+index fd3d0b3..2e4f4c3 100644
+--- a/include/linux/linear_range.h
++++ b/include/linux/linear_range.h
+@@ -26,6 +26,17 @@ struct linear_range {
+ 	unsigned int step;
+ };
+ 
++#define LINEAR_RANGE(_min, _min_sel, _max_sel, _step)		\
++	{							\
++		.min = _min,					\
++		.min_sel = _min_sel,				\
++		.max_sel = _max_sel,				\
++		.step = _step,					\
++	}
 +
-+title: Flash LED driver for MT6370 PMIC from MediaTek Integrated.
++#define LINEAR_RANGE_IDX(_idx, _min, _min_sel, _max_sel, _step)	\
++	[_idx] = LINEAR_RANGE(_min, _min_sel, _max_sel, _step)
 +
-+maintainers:
-+  - Alice Chen <alice_chen@richtek.com>
-+
-+description: |
-+  This module is part of the MT6370 MFD device.
-+  Add MT6370 flash LED driver include 2-channel flash LED support Torch/Strobe Mode.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt6370-flashlight
-+
-+  "#address-cells":
-+    const: 1
-+
-+  "#size-cells":
-+    const: 0
-+
-+patternProperties:
-+  "^led@[0-1]$":
-+    type: object
-+    $ref: common.yaml#
-+    unevaluatedProperties: false
-+
-+    properties:
-+      reg:
-+        enum: [0, 1]
-+
-+required:
-+  - compatible
-+  - "#address-cells"
-+  - "#size-cells"
-+
-+additionalProperties: false
+ unsigned int linear_range_values_in_range(const struct linear_range *r);
+ unsigned int linear_range_values_in_range_array(const struct linear_range *r,
+ 						int ranges);
 -- 
 2.7.4
 
