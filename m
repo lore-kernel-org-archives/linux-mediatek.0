@@ -4,87 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1955FECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 06:25:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BB1CECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 06:47:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SaIR9ac/WNESLZgIJ7NfWDPlOEsbmM5EMrQeBc4rRcQ=; b=ZrUk9dCrg3czyeyCxmaWszPpc3
-	UU4RvKUoYelaZx6CY0BMNn0DnnH3geGl5hD9R79KTv/oub2VgfDgNMehER9qUeYmdxuporlGuo+Eq
-	dEwwzjnTRwXke3MwzdbUygQn0su3MHY5K/6uvWobnEjYew2tcJldaoQjLLM08gII0CHXWbOCdgH/i
-	m6kS/yJU5dogIBcgrOW0tqcPXt/sTrkJSLdk2GeRes3yW/t1mX3LKKOpEV+sBPjD2QOA8/T22RnSs
-	QR2CIf8X7Jsjm/Cngxuf72+MUeqMfThjGd0Zx1qehxwHY7/DpjFZQFS2JX6+EI25gplLNPkx+Ti4d
-	eNNewCxQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q4wLYBW96Tx7o8A1V5stxuh2HtcfnqFvSW9gYmXrIWg=; b=M7ZE5jJK750AUqdL2P6WBaKc/X
+	T88yqTW4BeXSDwdaO8sq5sJQTV98MBhnmw/qODlX7sFEfUa9lVwBy8ZjWBDUVMBaGcArx69Q02mU8
+	9Mtg1jzsMjp/gKhTLfJtMjlpQ/ooWPP8r1ChrBBBx4FYohv+TW98ZuQaMMlk+jqKldxwBoiE/ecTI
+	36Gawa3l2CPKggAX/eSm1NecjlWII6Aoz1zjaEk6siFRt1E1Q/ritNOL0M7K+ZDfuwH74h3rO4W6E
+	0mM/Y0QWSY78YlMsE37bUlJtIk0NF1adepPcVftdwvgFE8bquTl349WkwZ6fehHHcbPVdb6w73VvS
+	HRZzLPHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYiJb-0021Mk-4r; Thu, 15 Sep 2022 06:25:35 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1oYieq-002Czc-6o; Thu, 15 Sep 2022 06:47:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYiJD-0021CP-BR; Thu, 15 Sep 2022 06:25:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1663223085; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=QhT+tIPCFvVSGigO6Bnk6e6Bh2/EWYUf/infZjmQGj6iO1TGNFp9mXguDuOUm/DpWvf1OgKkKfqzIb7ZN6l9ctq0lWG5/c7d1CSAjTq9cvsm/EE5alr2+5SNHKUxhuVbtlW8IBJ9ao1FlLD5+bECDV2zoGW0ERjC6wFnGpVteZ0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1663223085; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=SaIR9ac/WNESLZgIJ7NfWDPlOEsbmM5EMrQeBc4rRcQ=; 
-	b=GuqatCqi3aNs0LWmQ5GNwlHSYYwAWDsF+H0n4REekizZUb117F/XuatyMC2g/jcD0YiW3vzn3hJN0FaaKwBPpjtMyOueJBdmUDuH34d8RrIXUsWSeagJIFN/B5GVfqb3tgRyCWelbulAdkRevrMZE3eXoEl767I/gNWhoQyVQ4Q=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663223085;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=SaIR9ac/WNESLZgIJ7NfWDPlOEsbmM5EMrQeBc4rRcQ=;
-	b=XDIDPnVMmzMdjdr4PWLtYOkpEuSco+I7L4NEGf6+WLphaJt9VGVtFjp9BCrmtJuU
-	7ij/J6uM1EF/jrYfl1rkVfuPnaeTFjQfXrlAeYxX/MKVqAxa1Ngir6nbwhzyqohMOwn
-	1gQDBTSmHpK+ZKrFbJ0+d3Q77xQtFQSvBjt7EQxw=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1663223084388940.7928349747789; Wed, 14 Sep 2022 23:24:44 -0700 (PDT)
-Message-ID: <aca736cd-a2f9-2af9-df59-7f8be7c991b6@arinc9.com>
-Date: Thu, 15 Sep 2022 09:24:37 +0300
+	id 1oYief-002ClR-Ah; Thu, 15 Sep 2022 06:47:22 +0000
+X-UUID: 3100683b97ac418daf71605ba831099d-20220914
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Q4wLYBW96Tx7o8A1V5stxuh2HtcfnqFvSW9gYmXrIWg=;
+	b=e2NbcXt5Nmx5QcNK4gBVxGU5kEo5f+N0bniKVD7FsB3zCtfe2qMZdzphsZbKHXCHQIC0EuAIwTRy54oZF/OlKbN7IUD2FcqELru90D4Z8z0IJL/ApLxJTx2LlQG2wUDS7EfiuoE97umIUHwynZfl/7PXPZbkeRNMkWw1DLIyuB4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:ad5a9a4d-1589-491a-8083-b216e3c27f8e,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:39a5ff1,CLOUDID:949fbb5d-5ed4-4e28-8b00-66ed9f042fbd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 3100683b97ac418daf71605ba831099d-20220914
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1176835873; Wed, 14 Sep 2022 23:45:30 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 15 Sep 2022 14:44:00 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 15 Sep 2022 14:43:59 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
+	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
+	<wenst@chromium.org>, kyrie wu <kyrie.wu@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
+	<irui.wang@mediatek.com>
+Subject: [V14,07/15] mtk-jpegenc: add stop cmd interface for jpgenc
+Date: Thu, 15 Sep 2022 14:43:35 +0800
+Message-ID: <20220915064337.2686-8-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220915064337.2686-1-irui.wang@mediatek.com>
+References: <20220915064337.2686-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 04/10] dt-bindings: memory: mt7621: add syscon as
- compatible string
-Content-Language: en-US
-To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, erkin.bozoglu@xeront.com,
- netdev <netdev@vger.kernel.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, linux-arm-kernel@lists.infradead.org,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- "open list:MIPS" <linux-mips@vger.kernel.org>
-References: <20220914085451.11723-1-arinc.unal@arinc9.com>
- <20220914085451.11723-5-arinc.unal@arinc9.com>
- <20220914151414.GA2233841-robh@kernel.org>
- <44045164-692d-c8f5-3216-b043fb821634@arinc9.com>
- <CAMhs-H-0XV9ocrG3_MuVc3Q=o8HnYso2CqUURjVR3OMc=dAMYg@mail.gmail.com>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <CAMhs-H-0XV9ocrG3_MuVc3Q=o8HnYso2CqUURjVR3OMc=dAMYg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_232511_511254_13DDF2AF 
-X-CRM114-Status: GOOD (  16.83  )
+X-CRM114-CacheID: sfid-20220914_234721_380609_CC0E5B09 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,32 +86,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15.09.2022 06:21, Sergio Paracuellos wrote:
-> On Wed, Sep 14, 2022 at 5:19 PM Arınç ÜNAL <arinc.unal@arinc9.com> wrote:
->>
->> On 14.09.2022 18:14, Rob Herring wrote:
->>> On Wed, Sep 14, 2022 at 11:54:45AM +0300, Arınç ÜNAL wrote:
->>>> Add syscon as a constant string on the compatible property as it's required
->>>> for the SoC to work. Update the example accordingly.
->>>
->>> It's not required. It's required to automagically create a regmap. That
->>> can be done yourself as well. The downside to adding 'syscon' is it
->>> requires a DT update. Maybe that's fine for this platform? I don't know.
->>
->> My GB-PC2 won't boot without syscon on mt7621.dtsi. This string was
->> always there on the memory controller node on mt7621.dtsi.
-> 
-> The string was introduced because the mt7621 clock driver needs to
-> read some registers creating a regmap from the syscon. The bindings
-> were added before the clock driver was properly mainlined and at first
-> the clock driver was using ralink architecture dependent operations
-> rt_memc_* defined in
-> 'arch/mips/include/asm/mach-ralink/ralink_regs.h'. I forgot to update
-> the mem controller binding when memc became a syscon so I think this
-> patch is correct. I also think the sample should use 'syscon' in the
-> node name instead of memory-controller.
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-Will change to syscon in v2.
+Add stop cmd interface for jpgenc to stop stream
 
-Arınç
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: irui wang <irui.wang@mediatek.com>
+---
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 0d4e7220e509..e60363e38a90 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -613,6 +613,9 @@ static const struct v4l2_ioctl_ops mtk_jpeg_enc_ioctl_ops = {
+ 	.vidioc_streamoff               = v4l2_m2m_ioctl_streamoff,
+ 
+ 	.vidioc_unsubscribe_event	= v4l2_event_unsubscribe,
++
++	.vidioc_encoder_cmd		= v4l2_m2m_ioctl_encoder_cmd,
++	.vidioc_try_encoder_cmd		= v4l2_m2m_ioctl_try_encoder_cmd,
+ };
+ 
+ static const struct v4l2_ioctl_ops mtk_jpeg_dec_ioctl_ops = {
+@@ -1391,6 +1394,7 @@ static int mtk_jpeg_open(struct file *file)
+ 	} else {
+ 		v4l2_ctrl_handler_init(&ctx->ctrl_hdl, 0);
+ 	}
++
+ 	mtk_jpeg_set_default_params(ctx);
+ 	mutex_unlock(&jpeg->lock);
+ 	return 0;
+-- 
+2.18.0
+
 
