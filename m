@@ -4,83 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53747ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 07:18:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 723D6ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 07:20:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3eRFLEw88J0uDES9QZxJA5FfKWOIMUyzr/FCySFPpBE=; b=Xn13HTIi2BmHkawEg86F8kRmtV
-	o9rQMpgNiMIRLZd9Bf7+tPhuS3McipSefNm/ffY0v4kEp0t1oaoNVUFmKPwrYhZiEgLdyJ+AV5Fpd
-	wRw4fAxQ+xQkfnx+rrWrDbBTzMWXgE1Ror0rSYsVkV6ZpWBu0SQOHJBsOpXtuWCk0eVAzVaalBWMM
-	ixvousP2AtnUePAI3AAQLPL1kbV4afbvxlT+dYgFBIL4gZ1ntilHp1bS9Untr3FGRwMwp/FZEpGck
-	Jpe24nWELexZ+FC86OBJ4qKZtDWPZW0CR/d+rOxGipSifl4oQgcFvoYL1K3pa4ep8sHuZHJo88obT
-	e8wD2H5w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ANMKC6ZkFGtwmZlRf0rejmnqaZVDZSrENWv39ZoGVFk=; b=EnrrmQtgSTlbIVMFLMP6E3stjp
+	EoKaJT14SurAkiMjRlj56GwgDWB5MjSlvs6ypWKhwRQOZBU+TeilT7Vv28ULxAYj2V/SXql2rwg4q
+	McNKIB0Txskp1ai9n2K7nhmLft/TzSPo3jtWO21CHTYTdxMaiFQZBDKbiajVA1145ixMk62D+44+2
+	NkBxj9TrGGvkga4KFsk2BLgTanTdpSfFmi5VrhSt9tDKy4bUNXDig47TLKv4ttE4HHyCVsVZ0dMdp
+	ZrdtQhOqj3ZSTnQ2tdjCHLrv3k58HwxEzUfkaeiTVlAord1nBwSUBm6nYkdSg+301FEwP9w6us+PO
+	W/hPSJTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYj8W-002cJo-3g; Thu, 15 Sep 2022 07:18:12 +0000
-Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
+	id 1oYjA7-002eEM-Ah; Thu, 15 Sep 2022 07:19:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYj8J-002c21-AE; Thu, 15 Sep 2022 07:18:01 +0000
-Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-127d10b4f19so46176780fac.9;
-        Thu, 15 Sep 2022 00:17:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date;
-        bh=3eRFLEw88J0uDES9QZxJA5FfKWOIMUyzr/FCySFPpBE=;
-        b=MpfbXbkPqkhnqHuK4tvefSXgGdcbsfY6BduF4PN1VFScLg0Xp88X3cSpeWCTE40zDW
-         Jkqxx0erc1MkGdoHJ5k0dnpM0+5CsLmif7IBl/ffenE6g2bD4udWWczGnLSpr3YNh0jV
-         jjuuxcpq7qfh9uUtAgn+XELcbk5Y5M7g2nIFwbATtk24ps8O3JdN7TXZ99yeyx0Cyu0U
-         Pmcf288QaLMpUL0pYaitfmlEICA+e8qZQcnZbjMSMzhKDKbWNTEvIIGUyXiyKcwT8gAs
-         ZtIIgGqt4B/f0+Llhat6ry3/wkKKGnzSzwYV4+QuAg7tvoMdeJsIwofp/eP1IwTKa7D/
-         zu1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=3eRFLEw88J0uDES9QZxJA5FfKWOIMUyzr/FCySFPpBE=;
-        b=WxWYQCzewmF1lLXTmklXJ+ASF2vRflI+V+HNB6/2ljwBzYPyqfYx3Zghr7JdaYWlTH
-         beF7v6t0CY58D0R5mTfk33zy3Hxpvm+COA4N4VAmI22ox4MttA0rfWE5sXSzxL6DULgw
-         U8JwUmypXjuyx4Z773t6GkHDdEcPJ+gVLM/Yv94Zh95M2ZcqZTw0h4xlM/ryfxHHUPm7
-         ufouL6AigBtLeI0apNp8zB28VV063qxauX6rgzugDOu/tXlPzFZCHoTTsGAkYTMPnfTY
-         AhqjF8IbJqDRit4EbBDe2OhH6j4r2o1WxnGYj5zeK+j0cks5jagVvKFrwJ+Hh4LzGH/j
-         NRig==
-X-Gm-Message-State: ACgBeo0JOgBrI6a/sQB+Wb1LNK2YhQvn6XMIJdevgMUQtNVI7F2/hJ/L
-	tvqhioTWjPBaUQ87yfWwN/Yat7NII25Cti64qhk=
-X-Google-Smtp-Source: AA6agR4BiNIZdNj+Xh8UoedK2TVbdyHmFFVpeiNBf/cBDd2uukNp4R4umTxBVNCUtKy9Lm3Q7Vkf8ouAyihUDRkiM24=
-X-Received: by 2002:a05:6870:f5a7:b0:12b:4a0d:57c6 with SMTP id
- eh39-20020a056870f5a700b0012b4a0d57c6mr4609523oab.83.1663226276217; Thu, 15
- Sep 2022 00:17:56 -0700 (PDT)
+	id 1oYjA4-002e7i-48; Thu, 15 Sep 2022 07:19:50 +0000
+X-UUID: c6cc4abc116842d7adb190df3bfc9c6d-20220915
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ANMKC6ZkFGtwmZlRf0rejmnqaZVDZSrENWv39ZoGVFk=;
+	b=cI1YZLhJGknzgH8BqWTiyC3wCC77z+91s9zmSCiV6tSG5HCYEuiyNVRC87nvuvlCI4RzlZ2xkKUoBX51ogIuJritknYkZItVz0oJnSiX4mOZdr7tIqHBZuGhwJcABLCz0R5D+OL+Mavt9Sshsw1OyUfm1xhiNsowQEp5BzRbyJo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:0a543621-a81c-4923-a9f9-4535470dbd33,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:36e57cf6-6e85-48d9-afd8-0504bbfe04cb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c6cc4abc116842d7adb190df3bfc9c6d-20220915
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2022979480; Thu, 15 Sep 2022 00:15:31 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 15 Sep 2022 14:43:56 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 15 Sep 2022 14:43:55 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
+	<angelogioacchino.delregno@collabora.com>, <nicolas.dufresne@collabora.com>,
+	<wenst@chromium.org>, kyrie wu <kyrie.wu@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
+	<irui.wang@mediatek.com>
+Subject: [V14,04/15] mtk-jpegenc: add jpegenc timeout func interface
+Date: Thu, 15 Sep 2022 14:43:32 +0800
+Message-ID: <20220915064337.2686-5-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220915064337.2686-1-irui.wang@mediatek.com>
+References: <20220915064337.2686-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
-References: <20220915065542.13150-1-arinc.unal@arinc9.com> <20220915065542.13150-6-arinc.unal@arinc9.com>
-In-Reply-To: <20220915065542.13150-6-arinc.unal@arinc9.com>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Thu, 15 Sep 2022 09:17:44 +0200
-Message-ID: <CAMhs-H87WFJJgFEkZ7XeBsBMJKfZdzUjVChqb3_KbRqPodwTrg@mail.gmail.com>
-Subject: Re: [PATCH v2 net-next 05/10] mips: dts: ralink: mt7621: fix some dtc warnings
-To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
-	Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, 
-	Vladimir Oltean <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, 
-	DENG Qingfang <dqfext@gmail.com>, erkin.bozoglu@xeront.com, 
-	netdev <netdev@vger.kernel.org>, 
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	"open list:MIPS" <linux-mips@vger.kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_001759_399718_BE5CC722 
-X-CRM114-Status: GOOD (  15.33  )
+X-CRM114-CacheID: sfid-20220915_001948_181807_0576689B 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,104 +86,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arinc,
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-On Thu, Sep 15, 2022 at 8:56 AM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc=
-9.com> wrote:
->
-> Fix the dtc warnings below.
->
-> uartlite@c00: $nodename:0: 'uartlite@c00' does not match '^serial(@.*)?$'
->         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
-e/bindings/serial/8250.yaml
-> uartlite@c00: Unevaluated properties are not allowed ('clock-names' was u=
-nexpected)
->         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
-e/bindings/serial/8250.yaml
-> sdhci@1e130000: $nodename:0: 'sdhci@1e130000' does not match '^mmc(@.*)?$=
-'
->         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
-e/bindings/mmc/mtk-sd.yaml
-> sdhci@1e130000: Unevaluated properties are not allowed ('bus-width', 'cap=
--mmc-highspeed', 'cap-sd-highspeed', 'disable-wp', 'max-frequency', 'vmmc-s=
-upply', 'vqmmc-supply' were unexpected)
->         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
-e/bindings/mmc/mtk-sd.yaml
-> xhci@1e1c0000: $nodename:0: 'xhci@1e1c0000' does not match '^usb(@.*)?'
->         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
-e/bindings/usb/mediatek,mtk-xhci.yaml
-> xhci@1e1c0000: compatible: ['mediatek,mt8173-xhci'] is too short
->         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
-e/bindings/usb/mediatek,mtk-xhci.yaml
-> switch0@0: $nodename:0: 'switch0@0' does not match '^(ethernet-)?switch(@=
-.*)?$'
->         From schema: /home/arinc9/Documents/linux/Documentation/devicetre=
-e/bindings/net/dsa/mediatek,mt7530.yaml
-> port@1: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
->         From schema: /home/arinc9/.local/lib/python3.10/site-packages/dts=
-chema/schemas/dt-core.yaml
-> port@2: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
->         From schema: /home/arinc9/.local/lib/python3.10/site-packages/dts=
-chema/schemas/dt-core.yaml
-> port@3: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
->         From schema: /home/arinc9/.local/lib/python3.10/site-packages/dts=
-chema/schemas/dt-core.yaml
->
-> - Change "uartlite: uartlite@c00" to "serial0: serial@c00" and remove the
-> aliases node.
-> - Remove "clock-names" from the serial0 node. The property doesn't exist =
-on
-> the 8250.yaml schema.
-> - Change "sdhci: sdhci@1e130000" to "mmc: mmc@1e130000".
-> - Change "xhci: xhci@1e1c0000" to "usb: usb@1e1c0000".
-> - Add "mediatek,mtk-xhci" as the second compatible string on the usb node=
-.
-> - Change "switch0: switch0@0" to "switch0: switch@0"
-> - Change "off" to "disabled" for disabled nodes.
->
-> Remaining warnings are caused by the lack of json-schema documentation.
+Generalizes jpegenc timeout func interfaces to handle HW timeout.
 
-The followings needs to be ported to yaml schema but exist in its
-previous txt format:
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: irui wang <irui.wang@mediatek.com>
+---
+ .../platform/mediatek/jpeg/mtk_jpeg_core.h    | 10 ++++++++
+ .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 25 +++++++++++++++++++
+ 2 files changed, 35 insertions(+)
 
->
-> /cpuintc: failed to match any schema with compatible: ['mti,cpu-interrupt=
--controller']
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+index 1e0ba466303b..98de83c9ea4c 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+@@ -75,6 +75,12 @@ struct mtk_jpeg_variant {
+ 	u32 cap_q_default_fourcc;
+ };
+ 
++struct mtk_jpeg_hw_param {
++	struct vb2_v4l2_buffer *src_buffer;
++	struct vb2_v4l2_buffer *dst_buffer;
++	struct mtk_jpeg_ctx *curr_ctx;
++};
++
+ enum mtk_jpegenc_hw_id {
+ 	MTK_JPEGENC_HW0,
+ 	MTK_JPEGENC_HW1,
+@@ -99,6 +105,8 @@ struct mtk_jpegenc_clk {
+  * @master_dev:		mtk_jpeg_dev device
+  * @venc_clk:		jpeg encode clock
+  * @jpegenc_irq:	jpeg encode irq num
++ * @job_timeout_work:	encode timeout workqueue
++ * @hw_param:		jpeg encode hw parameters
+  */
+ struct mtk_jpegenc_comp_dev {
+ 	struct device *dev;
+@@ -107,6 +115,8 @@ struct mtk_jpegenc_comp_dev {
+ 	struct mtk_jpeg_dev *master_dev;
+ 	struct mtk_jpegenc_clk venc_clk;
+ 	int jpegenc_irq;
++	struct delayed_work job_timeout_work;
++	struct mtk_jpeg_hw_param hw_param;
+ };
+ 
+ /**
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+index 3dcf83d6d95e..95812f60ab9f 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+@@ -185,6 +185,26 @@ void mtk_jpeg_set_enc_params(struct mtk_jpeg_ctx *ctx,  void __iomem *base)
+ }
+ EXPORT_SYMBOL_GPL(mtk_jpeg_set_enc_params);
+ 
++static void mtk_jpegenc_timeout_work(struct work_struct *work)
++{
++	struct delayed_work *dly_work = to_delayed_work(work);
++	struct mtk_jpegenc_comp_dev *cjpeg =
++		container_of(dly_work,
++			     struct mtk_jpegenc_comp_dev,
++			     job_timeout_work);
++	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
++	struct vb2_v4l2_buffer *src_buf, *dst_buf;
++
++	src_buf = cjpeg->hw_param.src_buffer;
++	dst_buf = cjpeg->hw_param.dst_buffer;
++	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
++
++	mtk_jpeg_enc_reset(cjpeg->reg_base);
++	clk_disable_unprepare(cjpeg->venc_clk.clks->clk);
++	pm_runtime_put(cjpeg->dev);
++	v4l2_m2m_buf_done(src_buf, buf_state);
++}
++
+ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+ {
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+@@ -196,6 +216,8 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+ 	struct mtk_jpegenc_comp_dev *jpeg = priv;
+ 	struct mtk_jpeg_dev *master_jpeg = jpeg->master_dev;
+ 
++	cancel_delayed_work(&jpeg->job_timeout_work);
++
+ 	irq_status = readl(jpeg->reg_base + JPEG_ENC_INT_STS) &
+ 		JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
+ 	if (irq_status)
+@@ -276,6 +298,9 @@ static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
+ 			master_dev->enc_hw_dev[i] = NULL;
+ 	}
+ 
++	INIT_DELAYED_WORK(&dev->job_timeout_work,
++			  mtk_jpegenc_timeout_work);
++
+ 	jpegenc_clk = &dev->venc_clk;
+ 
+ 	jpegenc_clk->clk_num = devm_clk_bulk_get_all(&pdev->dev,
+-- 
+2.18.0
 
-https://elixir.bootlin.com/linux/v6.0-rc5/source/Documentation/devicetree/b=
-indings/mips/cpu_irq.txt#L13
-
-> /palmbus@1e000000/wdt@100: failed to match any schema with compatible: ['=
-mediatek,mt7621-wdt']
-
-https://elixir.bootlin.com/linux/v6.0-rc5/source/Documentation/devicetree/b=
-indings/watchdog/mt7621-wdt.txt#L4
-
-> /palmbus@1e000000/i2c@900: failed to match any schema with compatible: ['=
-mediatek,mt7621-i2c']
-
-https://elixir.bootlin.com/linux/v6.0-rc5/source/Documentation/devicetree/b=
-indings/i2c/i2c-mt7621.txt#L6
-
-> /palmbus@1e000000/spi@b00: failed to match any schema with compatible: ['=
-ralink,mt7621-spi']
-
-https://elixir.bootlin.com/linux/v6.0-rc5/source/Documentation/devicetree/b=
-indings/spi/spi-mt7621.txt#L5
-
-> /ethernet@1e100000: failed to match any schema with compatible: ['mediate=
-k,mt7621-eth']
-
-https://elixir.bootlin.com/linux/v6.0-rc5/source/Documentation/devicetree/b=
-indings/net/ralink,rt2880-net.txt#L15
-
->
-> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
-> ---
->  .../boot/dts/ralink/mt7621-gnubee-gb-pc1.dts  |  2 +-
->  .../boot/dts/ralink/mt7621-gnubee-gb-pc2.dts  |  2 +-
->  arch/mips/boot/dts/ralink/mt7621.dtsi         | 28 ++++++++-----------
->  3 files changed, 13 insertions(+), 19 deletions(-)
-
-Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 
