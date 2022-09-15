@@ -4,66 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38084ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 05:34:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0E79ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 05:59:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EWma00c9UlDtJFUyTqYESk6niPxXlErMpzMitE87/18=; b=QP2vI4yhpxCQyNpxNPZENaUEZt
-	N3R9sL6PZOcgfh+lKa9+jbn62NS2yhmalKDQAUCzsFS3ChAXbyXyJf+OwsIdrT23um8KTJlBJbHur
-	jP7ovkNi8uP/Mad9kCqN8AtK1FhnjteZtMHkhT2uklWhxuuFEiW6v+XdhebnI2Jw7KZ6bhl5xxVNv
-	ZSlwKtjlcQLxY7+hvxcqYX8qw+DxpRd5kW/GjXLBL0njeXZBZJ6Ods/3eLAeKe3E17C0Cqaxzzbb3
-	3tshhGmAyY4uISLinYALxjMoTrZ8Gijt19k9Qk7xqhljnkLlFrdhcY3kd8HCixnLfFBVUwpFNKeDO
-	kRFCp98w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QuYwY1WWD4oc1w5hcjaVeyURITDJWRc1kZVgbGtIbbk=; b=zHljxNYfZW/yctPuZQN6iHVi/L
+	aNTXsPfWtv/kUTOI/C87ELId8XUgMh11xoz8VCiE5y0TvFpA5L61drD8GUJARGSdSebyzdI3QLka7
+	Fnbd/XVrGnawPRuKa7HiQmxiXiZ+xlqrarVSgCpDd57VRnDUkwCIhgvgSLhafON7nSFZDUnMZWqsz
+	533TTvQJ+1Rg3LMhs2MXnkPnF24RgebNT5uy2WydcuVUTYgHH7hOysAzm68iSG5JHO+mvmUT5rFn/
+	7GeAZV4AeOGmmS+glOa+fyuADXnQDuDHvn3YVYITVIw8qDq0w3BR3x5pZ2rHQsRv4Q6Dc1ylnaAMD
+	sYZc2ZSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYhWL-000fyG-Jc; Thu, 15 Sep 2022 05:34:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oYhuM-001du7-VT; Thu, 15 Sep 2022 05:59:30 +0000
+Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYhWJ-000fwm-6J
-	for linux-mediatek@lists.infradead.org; Thu, 15 Sep 2022 05:34:40 +0000
-X-UUID: 7e5c11fda12f4328ab8b86ab876b1ec7-20220914
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=EWma00c9UlDtJFUyTqYESk6niPxXlErMpzMitE87/18=;
-	b=Oyf7ZwBC+XZA7vEVeOO2pbd4efh0t3jy8zydWvqyAvCY0PzSZ0MQ2JBxUI83VJRAUQanPNATE0FD+sf3GlHT2Sa4ZwCsDqqnJ1PksI5olescH/uxVOvg7oGfj+kN0javDE29tC/KHFn1q5ZA/uvyVh0XN94/qCTgBViz0Q9X5hU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:ae1b0ce7-45bd-4eba-9694-4a4a2a929daf,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:39a5ff1,CLOUDID:33acb37b-ea28-4199-b57e-003c7d60873a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 7e5c11fda12f4328ab8b86ab876b1ec7-20220914
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <sean.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 176749377; Wed, 14 Sep 2022 22:32:47 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 15 Sep 2022 13:32:11 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 15 Sep 2022 13:32:11 +0800
-From: <sean.wang@mediatek.com>
-To: <stable@vger.kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, Deren Wu <deren.wu@mediatek.com>, "Johannes
- Berg" <johannes.berg@intel.com>
-Subject: [PATCH 5.18] wifi: mt76: mt7921e: fix crash in chip reset fail
-Date: Thu, 15 Sep 2022 13:32:10 +0800
-Message-ID: <3bb8b13686a6d3f62c4094385b24e38ac769a158.1663219683.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+	id 1oYhuA-001dja-HS; Thu, 15 Sep 2022 05:59:20 +0000
+Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-1274ec87ad5so46121494fac.0;
+        Wed, 14 Sep 2022 22:59:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date;
+        bh=QuYwY1WWD4oc1w5hcjaVeyURITDJWRc1kZVgbGtIbbk=;
+        b=DSP1awPcWe1qx8PIBW3q/pE0+uNiUeGrVwlFlzVld6dQTJO30r+sBX70NGFeDfhk3g
+         nb5lz++dIYu7Vjnrdsd3ZyGNeiUu5QyOMjERF8VZ9H2SMYJMYSpoCAB91fs57kVa94RN
+         u8wr2rxMrMPYv/RsOKfUQP5D5X89yMRnZAhf125eRSMAeACbzPFRJwS9/x8zSdUyyvML
+         KbDDHR/VeYj3bqMxszYOhNico+rHvehIgE4Grrfz4OQaTNhiIRvvtL6XeT5S7fd5dE87
+         uAQjmjDejEe3YxAWHxI1I/RiFu62t97x+6R7/1OYnzwctPkXpCB8Hy6HM7QHRcswgbsY
+         HscA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=QuYwY1WWD4oc1w5hcjaVeyURITDJWRc1kZVgbGtIbbk=;
+        b=4ZbmwqI/r10bniCTwmBz7SHQ+S1TqkeQOyC+BnM08Brf7SQtdo+4aQJs5VAC36aR6M
+         QCidY1QgmN/IZcwS+qyUwwXcrdqS+JIBUwEV5vIAbjoGfzdrD2/d4DNEWJv0WdUayZTj
+         aF1+pirTBm6RhW5GFzRdSUx6S+6+hJns3BXGwBrZ5ET5BmAgKfRSmvlo+XZAYLem5c8y
+         E302ITafacL17IOrnpncCOm4AcQs6EKPgcogr8yo7T9GD4eK8iGnJ99P8htCsDHWbXPt
+         Rd05Z3TQkAGrPfJny30KftMCrmSpXEyL4yI5LdoxXHSKh34o+YWwWqtIwg4Sjm3DGVwu
+         CHNQ==
+X-Gm-Message-State: ACgBeo1BecfLSgO7kU+tIZ/CH8vfeBk1eBM7ECjfZmpmJ35TrfoQQgdt
+	9xI/jvUzr4vDgvWbhJ6+pyCkPW6MDaf2rCdYRQE=
+X-Google-Smtp-Source: AA6agR7q6lVtWmHCXQBdt68pJfxkqrpvlVB8rMWyDEedFfJdCaTm2edGPrVJcncfUWp2Y38mPeBJ2uDrSVgmICNIUu0=
+X-Received: by 2002:a05:6870:c0c8:b0:101:b3c3:abc3 with SMTP id
+ e8-20020a056870c0c800b00101b3c3abc3mr4359750oad.144.1663221556310; Wed, 14
+ Sep 2022 22:59:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20220914085451.11723-1-arinc.unal@arinc9.com> <20220914085451.11723-6-arinc.unal@arinc9.com>
+ <CAMhs-H9pj+qEdOCEhkyCJPvbFonLuhgSHgL4L6kkhO3YRh52vw@mail.gmail.com>
+ <6593afa8-931b-81eb-d9a8-ec3adbd047c6@arinc9.com> <CAMhs-H_woEpWVEWbe+1p76g6M3ALjoVn-OgzpnJQHOjd02tHxw@mail.gmail.com>
+In-Reply-To: <CAMhs-H_woEpWVEWbe+1p76g6M3ALjoVn-OgzpnJQHOjd02tHxw@mail.gmail.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Thu, 15 Sep 2022 07:59:04 +0200
+Message-ID: <CAMhs-H9m9LdQ3J5PjDNo_fh1b6rhSdu5Ddb3nfE=2nWxfTCP=A@mail.gmail.com>
+Subject: Re: [PATCH 05/10] mips: dts: ralink: mt7621: fix some dtc warnings
+To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, 
+	Vladimir Oltean <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sean Wang <sean.wang@mediatek.com>, 
+	Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, erkin.bozoglu@xeront.com, 
+	netdev <netdev@vger.kernel.org>, 
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	"open list:MIPS" <linux-mips@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_223439_262127_DC4109DF 
-X-CRM114-Status: UNSURE (   9.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220914_225918_601458_4D2F546C 
+X-CRM114-Status: GOOD (  40.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,64 +97,222 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+On Thu, Sep 15, 2022 at 5:30 AM Sergio Paracuellos
+<sergio.paracuellos@gmail.com> wrote:
+>
+> On Wed, Sep 14, 2022 at 12:46 PM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@ar=
+inc9.com> wrote:
+> >
+> > Hi Sergio,
+> >
+> > On 14.09.2022 12:14, Sergio Paracuellos wrote:
+> > > Hi Arinc,
+> > >
+> > > On Wed, Sep 14, 2022 at 10:55 AM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.una=
+l@arinc9.com> wrote:
+> > >>
+> > >> Fix the dtc warnings below.
+> > >>
+> > >> /cpus/cpu@0: failed to match any schema with compatible: ['mips,mips=
+1004Kc']
+> > >> /cpus/cpu@1: failed to match any schema with compatible: ['mips,mips=
+1004Kc']
+> > >> uartlite@c00: $nodename:0: 'uartlite@c00' does not match '^serial(@.=
+*)?$'
+> > >>          From schema: /home/arinc9/Documents/linux/Documentation/dev=
+icetree/bindings/serial/8250.yaml
+> > >> uartlite@c00: Unevaluated properties are not allowed ('clock-names' =
+was unexpected)
+> > >>          From schema: /home/arinc9/Documents/linux/Documentation/dev=
+icetree/bindings/serial/8250.yaml
+> > >> sdhci@1e130000: $nodename:0: 'sdhci@1e130000' does not match '^mmc(@=
+.*)?$'
+> > >>          From schema: /home/arinc9/Documents/linux/Documentation/dev=
+icetree/bindings/mmc/mtk-sd.yaml
+> > >> sdhci@1e130000: Unevaluated properties are not allowed ('bus-width',=
+ 'cap-mmc-highspeed', 'cap-sd-highspeed', 'disable-wp', 'max-frequency', 'v=
+mmc-supply', 'vqmmc-supply' were unexpected)
+> > >>          From schema: /home/arinc9/Documents/linux/Documentation/dev=
+icetree/bindings/mmc/mtk-sd.yaml
+> > >> xhci@1e1c0000: $nodename:0: 'xhci@1e1c0000' does not match '^usb(@.*=
+)?'
+> > >>          From schema: /home/arinc9/Documents/linux/Documentation/dev=
+icetree/bindings/usb/mediatek,mtk-xhci.yaml
+> > >> xhci@1e1c0000: compatible: ['mediatek,mt8173-xhci'] is too short
+> > >>          From schema: /home/arinc9/Documents/linux/Documentation/dev=
+icetree/bindings/usb/mediatek,mtk-xhci.yaml
+> > >> switch0@0: $nodename:0: 'switch0@0' does not match '^(ethernet-)?swi=
+tch(@.*)?$'
+> > >>          From schema: /home/arinc9/Documents/linux/Documentation/dev=
+icetree/bindings/net/dsa/mediatek,mt7530.yaml
+> > >> port@1: status:0: 'off' is not one of ['okay', 'disabled', 'reserved=
+']
+> > >>          From schema: /home/arinc9/.local/lib/python3.10/site-packag=
+es/dtschema/schemas/dt-core.yaml
+> > >> port@2: status:0: 'off' is not one of ['okay', 'disabled', 'reserved=
+']
+> > >>          From schema: /home/arinc9/.local/lib/python3.10/site-packag=
+es/dtschema/schemas/dt-core.yaml
+> > >> port@3: status:0: 'off' is not one of ['okay', 'disabled', 'reserved=
+']
+> > >>          From schema: /home/arinc9/.local/lib/python3.10/site-packag=
+es/dtschema/schemas/dt-core.yaml
+> > >>
+> > >> - Remove "mips,mips1004Kc" compatible string from the cpu nodes. Thi=
+s
+> > >> doesn't exist anywhere.
+> > >> - Change "memc: syscon@5000" to "memc: memory-controller@5000".
+> > >> - Change "uartlite: uartlite@c00" to "serial0: serial@c00" and remov=
+e the
+> > >> aliases node.
+> > >> - Remove "clock-names" from the serial0 node. The property doesn't e=
+xist on
+> > >> the 8250.yaml schema.
+> > >> - Change "sdhci: sdhci@1e130000" to "mmc: mmc@1e130000".
+> > >> - Change "xhci: xhci@1e1c0000" to "usb: usb@1e1c0000".
+> > >> - Add "mediatek,mtk-xhci" as the second compatible string on the usb=
+ node.
+> > >> - Change "switch0: switch0@0" to "switch0: switch@0"
+> > >> - Change "off" to "disabled" for disabled nodes.
+> > >>
+> > >> Remaining warnings are caused by the lack of json-schema documentati=
+on.
+> > >>
+> > >> /cpuintc: failed to match any schema with compatible: ['mti,cpu-inte=
+rrupt-controller']
+> > >> /palmbus@1e000000/wdt@100: failed to match any schema with compatibl=
+e: ['mediatek,mt7621-wdt']
+> > >> /palmbus@1e000000/i2c@900: failed to match any schema with compatibl=
+e: ['mediatek,mt7621-i2c']
+> > >> /palmbus@1e000000/spi@b00: failed to match any schema with compatibl=
+e: ['ralink,mt7621-spi']
+> > >> /ethernet@1e100000: failed to match any schema with compatible: ['me=
+diatek,mt7621-eth']
+> > >>
+> > >> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+> > >> ---
+> > >>   .../boot/dts/ralink/mt7621-gnubee-gb-pc1.dts  |  2 +-
+> > >>   .../boot/dts/ralink/mt7621-gnubee-gb-pc2.dts  |  2 +-
+> > >>   arch/mips/boot/dts/ralink/mt7621.dtsi         | 32 +++++++--------=
+----
+> > >>   3 files changed, 14 insertions(+), 22 deletions(-)
+> > >>
+> > >> diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts b/ar=
+ch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
+> > >> index 24eebc5a85b1..6ecb8165efe8 100644
+> > >> --- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
+> > >> +++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
+> > >> @@ -53,7 +53,7 @@ system {
+> > >>          };
+> > >>   };
+> > >>
+> > >> -&sdhci {
+> > >> +&mmc {
+> > >>          status =3D "okay";
+> > >>   };
+> > >>
+> > >> diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts b/ar=
+ch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
+> > >> index 34006e667780..2e534ea5bab7 100644
+> > >> --- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
+> > >> +++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
+> > >> @@ -37,7 +37,7 @@ key-reset {
+> > >>          };
+> > >>   };
+> > >>
+> > >> -&sdhci {
+> > >> +&mmc {
+> > >>          status =3D "okay";
+> > >>   };
+> > >>
+> > >> diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/=
+dts/ralink/mt7621.dtsi
+> > >> index ee46ace0bcc1..9302bdc04510 100644
+> > >> --- a/arch/mips/boot/dts/ralink/mt7621.dtsi
+> > >> +++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+> > >> @@ -15,13 +15,11 @@ cpus {
+> > >>
+> > >>                  cpu@0 {
+> > >>                          device_type =3D "cpu";
+> > >> -                       compatible =3D "mips,mips1004Kc";
+> > >>                          reg =3D <0>;
+> > >>                  };
+> > >>
+> > >>                  cpu@1 {
+> > >>                          device_type =3D "cpu";
+> > >> -                       compatible =3D "mips,mips1004Kc";
+> > >>                          reg =3D <1>;
+> > >>                  };
+> > >>          };
+> > >
+> > > Instead of removing this, since compatible is correct here, I think a
+> > > cpus yaml file needs to be added to properly define mips CPU's but
+> > > compatible strings using all around the sources are a bit messy. Take
+> > > a look of how is this done for arm [0]
+> >
+> > I did investigate the arm bindings beforehand. I've seen that some of
+> > the strings are also checked by code. I don't see the mips strings used
+> > anywhere but DTs so I had decided to remove it here. I guess we can mak=
+e
+> > a basic binding to list the mips processor cores.
+>
+> At the very least I do think a compatible string should exist for cpu
+> nodes :). And because of the mess with MIPS cpu nodes in dts files all
+> around I think we should only add this 'compatible' as a requirement
+> and mark 'reg' and 'device_type' as optionals.
 
-commit fa3fbe64037839f448dc569212bafc5a495d8219 upstream.
+I have just sent a patch to start from containing all compatible
+strings I have found in the 'arch/mips/boot/dts' folder:
 
-In case of drv own fail in reset, we may need to run mac_reset several
-times. The sequence would trigger system crash as the log below.
+https://lore.kernel.org/linux-devicetree/20220915055514.463241-1-sergio.par=
+acuellos@gmail.com/T/#u
 
-Because we do not re-enable/schedule "tx_napi" before disable it again,
-the process would keep waiting for state change in napi_diable(). To
-avoid the problem and keep status synchronize for each run, goto final
-resource handling if drv own failed.
+>
+> >
+> > What do you think Thomas?
+> >
+> > >
+> > >> @@ -33,11 +31,6 @@ cpuintc: cpuintc {
+> > >>                  compatible =3D "mti,cpu-interrupt-controller";
+> > >>          };
+> > >>
+> > >> -       aliases {
+> > >> -               serial0 =3D &uartlite;
+> > >> -       };
+> > >> -
+> > >> -
+> > >>          mmc_fixed_3v3: regulator-3v3 {
+> > >>                  compatible =3D "regulator-fixed";
+> > >>                  regulator-name =3D "mmc_power";
+> > >> @@ -110,17 +103,16 @@ i2c: i2c@900 {
+> > >>                          pinctrl-0 =3D <&i2c_pins>;
+> > >>                  };
+> > >>
+> > >> -               memc: syscon@5000 {
+> > >> +               memc: memory-controller@5000 {
+> > >>                          compatible =3D "mediatek,mt7621-memc", "sys=
+con";
+> > >>                          reg =3D <0x5000 0x1000>;
+> > >>                  };
+> > >>
+> > >
+> > > I think syscon nodes need to use 'syscon' in the node name, but I am
+> > > not 100% sure.
+> >
+> > I've tested this patch series on my GB-PC2, it currently works fine.
+> > Also, DT binding for MT7621 memory controller uses memory-controller on
+> > the example so I guess it's fine?
+>
+> I know that works fine but when the node is a syscon it is good to
+> have that syscon in the node name (I don't know if having it is a rule
+> or something, I guess no). In any case I agree that binding and dts
+> should match.
+>
+> Best regards,
+>     Sergio Paracuellos
+> >
+> > Ar=C4=B1n=C3=A7
 
-[ 5857.353423] mt7921e 0000:3b:00.0: driver own failed
-[ 5858.433427] mt7921e 0000:3b:00.0: Timeout for driver own
-[ 5859.633430] mt7921e 0000:3b:00.0: driver own failed
-[ 5859.633444] ------------[ cut here ]------------
-[ 5859.633446] WARNING: CPU: 6 at kernel/kthread.c:659 kthread_park+0x11d
-[ 5859.633717] Workqueue: mt76 mt7921_mac_reset_work [mt7921_common]
-[ 5859.633728] RIP: 0010:kthread_park+0x11d/0x150
-[ 5859.633736] RSP: 0018:ffff8881b676fc68 EFLAGS: 00010202
-......
-[ 5859.633766] Call Trace:
-[ 5859.633768]  <TASK>
-[ 5859.633771]  mt7921e_mac_reset+0x176/0x6f0 [mt7921e]
-[ 5859.633778]  mt7921_mac_reset_work+0x184/0x3a0 [mt7921_common]
-[ 5859.633785]  ? mt7921_mac_set_timing+0x520/0x520 [mt7921_common]
-[ 5859.633794]  ? __kasan_check_read+0x11/0x20
-[ 5859.633802]  process_one_work+0x7ee/0x1320
-[ 5859.633810]  worker_thread+0x53c/0x1240
-[ 5859.633818]  kthread+0x2b8/0x370
-[ 5859.633824]  ? process_one_work+0x1320/0x1320
-[ 5859.633828]  ? kthread_complete_and_exit+0x30/0x30
-[ 5859.633834]  ret_from_fork+0x1f/0x30
-[ 5859.633842]  </TASK>
-
-Cc: stable@vger.kernel.org
-Fixes: 0efaf31dec57 ("mt76: mt7921: fix MT7921E reset failure")
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-Link: https://lore.kernel.org/r/727eb5ffd3c7c805245e512da150ecf0a7154020.1659452909.git.deren.wu@mediatek.com
-Signed-off-by: Johannes Berg <johannes.berg@intel.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-index 5ca14dbbdd26..79ddab7e4f3e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-@@ -345,7 +345,7 @@ int mt7921e_mac_reset(struct mt7921_dev *dev)
- 
- 	err = mt7921e_driver_own(dev);
- 	if (err)
--		return err;
-+		goto out;
- 
- 	err = mt7921_run_firmware(dev);
- 	if (err)
--- 
-2.25.1
-
+Best regards,
+    Sergio Paracuellos
 
