@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1B41ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 08:19:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A692ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 08:21:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VcfOR6rajSj1mr0bs/JuGWx4Do71T785IC8UO7uZz0I=; b=eg9lXq0+9rDzU8+eyiu16SDvoA
-	NsR+NoF6qR7xKzx3y2SPPVle5j9l+YDmM2sK9iS3wI9QGHCH4V2zNu6+uhCerjVVGo8wHjD71SpvB
-	Zq+kzb5R45QL0wezxPOE/BlrY0pEobtnyj9vD0VGZt0GCEMw7upe5C24LcEu7NfxuCPZir4xrhMhU
-	b8G38M/rl0XMsILJ2getuxsfje9qlLdvgNRrgtIq/hN1NLGbbvbZfg5LV6jDuL1eCoEolmYNEkq28
-	eeRvTGb6vqGVP7py0EADlz8ERYzAUSOB/PdJzlL5QaiAFgvC1Rj2Gi2zBC605e60lzyfP144IGY42
-	c3H4MMWg==;
+	bh=bM3ELfkkQs92nWxvyZEy8dwSBvjWY73mkXxPaavMFvo=; b=0SrT4W+1fvMKKtqpWw8jTQ4NTC
+	bN9qV5z+JTA2J5mJ/BVuJewV+987gKeueJkXHcp6oa69LIs+hicHAw8IBaUUc8SlBi/X73PdG0MA1
+	OL4UrmCqh2v8qHCG47FnmIFaDzBA1OmImR7/LZbyPRB1Po33zPNKE7zmsyVDfcNuNBZQsxprKG5ha
+	7+fJwCn/RI4IiGiXatVRwVNrxMnM4XLL6f1elXfz5jRWj6/e+WYCIjoVkvAJp6A0zcuVA0EUWGEg7
+	streiZftThF1HZwpSWJla0NOU0wAw0/gFl4eMrVuIB3M0gq+8xtCxbBtRYwXbdiAayRSTMizwUq/I
+	Qfw9n3qA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYk5r-003aKW-G6; Thu, 15 Sep 2022 08:19:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oYk7q-003dUU-W5; Thu, 15 Sep 2022 08:21:35 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYk5n-003aCb-RP; Thu, 15 Sep 2022 08:19:29 +0000
-X-UUID: 9828145ab0d440a1b6f5f2379bfdcf72-20220915
+	id 1oYk7X-003d77-KB; Thu, 15 Sep 2022 08:21:18 +0000
+X-UUID: 487850f593db4d09bd56c96761895922-20220915
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VcfOR6rajSj1mr0bs/JuGWx4Do71T785IC8UO7uZz0I=;
-	b=AcD7tLu0ShGC7C8f4It23LaKPc48WtFk6beVHKOUacQowJfeMVz7DcAmzcB3WGLsBrN0/W7Ztj1xJp10I3K/j19BVmQSKDDmePYh4O0dyh6fDfMhkU0Xr6ZlU2f2zwcXjTH+Ylhc33PEWe+g4wpuqLR7mP/6Gns1JM/2B25acbc=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=bM3ELfkkQs92nWxvyZEy8dwSBvjWY73mkXxPaavMFvo=;
+	b=nC8Wc71Oyav3QC6PGxp5JB0AY/WyivOZHnlRjRNHbRtqMsYQlDPL7eL3M6KpT6IRe2M4GnQOLG3Tyn9hQYTyQD9bm1yme44iLEMrHL8sKENot8B1+IOAPfnIGVCOXcdPtD4VjAYS7/Z0l8J4Rk5MNmTb6sd2Gk6uhn+JgLiSxzo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:d6029e73-49cd-4c19-961c-d2102777a96e,IP:0,U
+X-CID-O-INFO: VERSION:1.1.11,REQID:d43b0758-52e9-4613-8bb5-58951fd00331,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:6754ba7b-ea28-4199-b57e-003c7d60873a,B
+X-CID-META: VersionHash:39a5ff1,CLOUDID:3967ba7b-ea28-4199-b57e-003c7d60873a,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 9828145ab0d440a1b6f5f2379bfdcf72-20220915
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: 487850f593db4d09bd56c96761895922-20220915
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 403437641; Thu, 15 Sep 2022 01:19:24 -0700
+	with ESMTP id 1545434192; Thu, 15 Sep 2022 01:21:09 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 15 Sep 2022 15:58:50 +0800
+ 15.2.792.15; Thu, 15 Sep 2022 15:50:32 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 15 Sep 2022 15:58:50 +0800
+ 15.2.792.15 via Frontend Transport; Thu, 15 Sep 2022 15:50:32 +0800
 From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>
-CC: <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>
+CC: <matthias.bgg@gmail.com>, <granquet@baylibre.com>, <daniel@ffwll.ch>,
+	<jitao.shi@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+	<ck.hu@mediatek.com>, <liangxu.xu@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH 2/4] arm64: dts: mt8195: Add dptx nodes
-Date: Thu, 15 Sep 2022 15:58:47 +0800
-Message-ID: <20220915075849.1920-3-rex-bc.chen@mediatek.com>
+Subject: [PATCH 1/3] drm/mediatek: dp: Refactor drivers in mtk_dp_bdg_detect()
+Date: Thu, 15 Sep 2022 15:50:26 +0800
+Message-ID: <20220915075028.644-2-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220915075849.1920-1-rex-bc.chen@mediatek.com>
-References: <20220915075849.1920-1-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220915075028.644-1-rex-bc.chen@mediatek.com>
+References: <20220915075028.644-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_011927_932993_B7AE2E40 
-X-CRM114-Status: UNSURE (   9.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220915_012115_686041_6EE55A28 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,55 +82,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add edptx and dptx nodes for MT8195.
+It is more clear to modify this in mtk_dp_bdg_detect().
 
 Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 25 ++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_dp.c | 66 ++++++++++++++++---------------
+ 1 file changed, 34 insertions(+), 32 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 93e6a106a9b8..6f3f9bf3dc54 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -1241,6 +1241,9 @@
- 				reg = <0x189 0x2>;
- 				bits = <7 5>;
- 			};
-+			dp_calibration: dp-data@1ac {
-+				reg = <0x1ac 0x10>;
-+			};
- 		};
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index dfa942ca62da..c72c646e25e9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -1933,39 +1933,41 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+ 	bool enabled = mtk_dp->enabled;
+ 	u8 sink_count = 0;
  
- 		u3phy2: t-phy@11c40000 {
-@@ -2178,5 +2181,27 @@
- 			clock-names = "engine", "pixel", "pll";
- 			status = "disabled";
- 		};
+-	if (mtk_dp->train_info.cable_plugged_in) {
+-		if (!enabled) {
+-			/* power on aux */
+-			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+-					   DP_PWR_STATE_BANDGAP_TPLL_LANE,
+-					   DP_PWR_STATE_MASK);
+-
+-			/* power on panel */
+-			drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
+-			usleep_range(2000, 5000);
+-		}
+-		/*
+-		 * Some dongles still source HPD when they do not connect to any
+-		 * sink device. To avoid this, we need to read the sink count
+-		 * to make sure we do connect to sink devices. After this detect
+-		 * function, we just need to check the HPD connection to check
+-		 * whether we connect to a sink device.
+-		 */
+-		drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
+-		if (DP_GET_SINK_COUNT(sink_count))
+-			ret = connector_status_connected;
+-
+-		if (!enabled) {
+-			/* power off panel */
+-			drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D3);
+-			usleep_range(2000, 3000);
+-
+-			/* power off aux */
+-			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+-					   DP_PWR_STATE_BANDGAP_TPLL,
+-					   DP_PWR_STATE_MASK);
+-		}
++	if (!mtk_dp->train_info.cable_plugged_in)
++		return ret;
 +
-+		edp_tx: edp-tx@1c500000 {
-+			status = "disabled";
-+			compatible = "mediatek,mt8195-edp-tx";
-+			reg = <0 0x1c500000 0 0x8000>;
-+			nvmem-cells = <&dp_calibration>;
-+			nvmem-cell-names = "dp_calibration_data";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_EPD_TX>;
-+			interrupts = <GIC_SPI 676 IRQ_TYPE_LEVEL_HIGH 0>;
-+			max-linkrate-mhz = <8100>;
-+		};
++	if (!enabled) {
++		/* power on aux */
++		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
++				   DP_PWR_STATE_BANDGAP_TPLL_LANE,
++				   DP_PWR_STATE_MASK);
 +
-+		dp_tx: dp-tx@1c600000 {
-+			compatible = "mediatek,mt8195-dp-tx";
-+			reg = <0 0x1c600000 0 0x8000>;
-+			nvmem-cells = <&dp_calibration>;
-+			nvmem-cell-names = "dp_calibration_data";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_DP_TX>;
-+			interrupts = <GIC_SPI 458 IRQ_TYPE_LEVEL_HIGH 0>;
-+			status = "disabled";
-+			max-linkrate-mhz = <8100>;
-+		};
- 	};
- };
++		/* power on panel */
++		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
++		usleep_range(2000, 5000);
+ 	}
++	/*
++	 * Some dongles still source HPD when they do not connect to any
++	 * sink device. To avoid this, we need to read the sink count
++	 * to make sure we do connect to sink devices. After this detect
++	 * function, we just need to check the HPD connection to check
++	 * whether we connect to a sink device.
++	 */
++	drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
++	if (DP_GET_SINK_COUNT(sink_count))
++		ret = connector_status_connected;
++
++	if (!enabled) {
++		/* power off panel */
++		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D3);
++		usleep_range(2000, 3000);
++
++		/* power off aux */
++		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
++				   DP_PWR_STATE_BANDGAP_TPLL,
++				   DP_PWR_STATE_MASK);
++	}
++
+ 	return ret;
+ }
+ 
 -- 
 2.18.0
 
