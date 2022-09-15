@@ -4,74 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F0BCECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 07:32:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1414ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 07:33:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:Cc:References
+	:Message-Id:Date:Subject:Mime-Version:From:Content-Transfer-Encoding:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pfS6VfbrB2hhKB3MP/E2QySNmwkMTvwsYKUzykDeyHs=; b=SgxGi9naEzT3yEnwBFwIT0Hbg5
-	CU5oCmpPkvrr/qjDLSxdGJM5poIF+ol8TNSpvALMk1plOy3xqXfRUG2u6ngqckb4lydAGCdzE0zYd
-	3sX0DD6mYMUmhRBLSMgXngpq7ykyv1Ddd57v1l3djS+Bh5jjxLQlT6hWPHiDnaWfPLCszEFHPvAjt
-	A9vR1HbDBhlaxXx0J+9f5hzOgl/rewGwYUkszBbfZ8Zf6f6hsK6wDOJDcVG0G4TdZcFkmGdKWPOkT
-	9Cj8TCBs5zwOJ9FrX08FoAeQxFFQahuhzX7SzIEM7HLwGC1Wnob0wMuCLL7/fhKQgu15aXCv+DNU0
-	MwNz+IHA==;
+	bh=jQcUnE175UgPwnG9DUeOUoA4mKHCkNGSqfNYbiRshhA=; b=08hmSAh8AEdKHaDuF/ExGNDt1U
+	1wflMafm1HSk9ueETrHIGwVfR5JFBLycTVCF6CELREbpwebR0HYqHcWKW0zo6zLs0qumC0yBEKoZS
+	o+eqyrguvs7vuDnvQ8qmsT2vqibmA1+nC4GmETX04uvnlAriKTpZiTxW/l9W6bxJ8LDk2cBmCwycV
+	pCelZrrr5TTZGe6Fh3aVgfEsnaZcZMbWAkwvSGaL8KzzwK5YukNsMeTrQYmoa76G7PwXflUjb6pK1
+	vy0N0YoaVNfNO0Ho+XULVoZz+3If7ow3z8/LiadSAKLiRUVx4gZiQK9ljqQdGZhagZWLwouVEfdAA
+	QXFb114Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYjM4-002pCT-Bm; Thu, 15 Sep 2022 07:32:12 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oYjNU-002qV1-0B; Thu, 15 Sep 2022 07:33:40 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYjFN-002jCE-BX; Thu, 15 Sep 2022 07:25:18 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 291116602028;
-	Thu, 15 Sep 2022 08:25:15 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663226716;
-	bh=HrCKKc/4oHF8ameggu4aG6O2V2G7VX/dsz8S56XbbxA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PKXnkr9ANPWLDeqFhge/1hiyFppl+Bbmo8/nkfhfWR9Pta7wSp2UdReVjLkwI/KNn
-	 SJ9iga+A0Lw4u3QUH+lANyaE2jzYmScRpjNko4JQhMGBPvT9cfvspsX5/WK0K+pSVt
-	 ALjnhBgJosa2lSqDK4F4rSp4yJfw55Cfs+j/hndBxL3sQ5sLT6/kFYNKpImVyq4XYG
-	 nPfLPbI2MRcCkVvdzxyf4Dcltvgaxtg6CX7G6XNudue0B97BeZpbHFzJOfiQIWHxaX
-	 cuutD+viTxyun4A8q6kVwRLS020NQmVADoLo9x2KOj0qaAm/HlwR2zm+HQpkZdQyyA
-	 ifdoo3O8eC5wQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: mturquette@baylibre.com,
-	sboyd@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	miles.chen@mediatek.com,
-	rex-bc.chen@mediatek.com,
-	nfraprado@collabora.com,
-	chun-jie.chen@mediatek.com,
-	jose.exposito89@gmail.com,
-	drinkcat@chromium.org,
-	weiyi.lu@mediatek.com,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org
-Subject: [PATCH v2 09/10] clk: mediatek: clk-mt8192-mfg: Propagate rate changes to parent
-Date: Thu, 15 Sep 2022 09:24:57 +0200
-Message-Id: <20220915072458.18232-10-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20220915072458.18232-1-angelogioacchino.delregno@collabora.com>
-References: <20220915072458.18232-1-angelogioacchino.delregno@collabora.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+	id 1oYjGP-002jz2-VW; Thu, 15 Sep 2022 07:26:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1663226756; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Zf0RkVlLGHXKl8ZCuBUFuXyD2Rs48ubT3CqDFtg/KK0kgOxY7Zvo+p0587fG9u1QbJr6TClsRL14h6DCul5gflkJzGVwhlxooWCGt9nbI4CVMyp5rqrI1FtyAsHQGKyS62Tsdi/XNMgkCYTUcr8eTQDLI5Rfvg6Z0OYZPVy5fkA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1663226756; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=jQcUnE175UgPwnG9DUeOUoA4mKHCkNGSqfNYbiRshhA=; 
+	b=Z3SDnKNdXslLMdbOqSirSnIqpxZYvXumwG54Ulwp/GcKx+EjF3/3+O9d1uiJXZ0A2o3LUWCrpyRtTiDyMSIR7Ag+2syNI/+l9YCI1wfmIWYSHjXQiLIH1qtjr1CxPa432Yc4c7CB2DqdldHdWk70O+P5dLcXRWB6353KaTz8VaI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=arinc9.com;
+	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
+	dmarc=pass header.from=<arinc.unal@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663226756;
+	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
+	h=Content-Type:Content-Transfer-Encoding:From:From:Mime-Version:Subject:Subject:Date:Date:Message-Id:Message-Id:References:Cc:Cc:In-Reply-To:To:To:Reply-To;
+	bh=jQcUnE175UgPwnG9DUeOUoA4mKHCkNGSqfNYbiRshhA=;
+	b=DRTg/uP0tvuv85Mcylii770DvKWETLAwB1nyMFz6mRT6ujs2bIqdhJ7Hv74n2SUR
+	6MzeR/E/DwzW81UTYcBEHbmYXq63KD/A+rYpPSwx18eGR12CwfQ863oR3VnQFK7od7k
+	qhLbvjxJ71mCPnRDt0xciORHXaGqcioiecLGna8A=
+Received: from [10.10.9.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
+	with SMTPS id 1663226754115994.2599106423463; Thu, 15 Sep 2022 00:25:54 -0700 (PDT)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+From: =?utf-8?Q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>
+Mime-Version: 1.0 (1.0)
+Subject: Re: [PATCH v2 net-next 05/10] mips: dts: ralink: mt7621: fix some dtc warnings
+Date: Thu, 15 Sep 2022 10:25:44 +0300
+Message-Id: <17638FC4-A129-4620-9BD3-E47AA653A113@arinc9.com>
+References: <CAMhs-H87WFJJgFEkZ7XeBsBMJKfZdzUjVChqb3_KbRqPodwTrg@mail.gmail.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, erkin.bozoglu@xeront.com,
+ netdev <netdev@vger.kernel.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
+ linux-arm-kernel@lists.infradead.org,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ "open list:MIPS" <linux-mips@vger.kernel.org>
+In-Reply-To: <CAMhs-H87WFJJgFEkZ7XeBsBMJKfZdzUjVChqb3_KbRqPodwTrg@mail.gmail.com>
+To: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+X-Mailer: iPhone Mail (17H35)
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_002517_557883_11FD1D4C 
-X-CRM114-Status: GOOD (  10.22  )
+X-CRM114-CacheID: sfid-20220915_002622_138319_7AB6CA76 
+X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,32 +92,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Following what was done on MT8183 and MT8195, also propagate the rate
-changes to MFG_BG3D's parent on MT8192 to allow for proper GPU DVFS.
+> On 15 Sep 2022, at 10:17, Sergio Paracuellos <sergio.paracuellos@gmail.com=
+> wrote:
+>=20
+> =EF=BB=BFHi Arinc,
+>=20
+>> On Thu, Sep 15, 2022 at 8:56 AM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@ari=
+nc9.com> wrote:
+>>=20
+>> Fix the dtc warnings below.
+>>=20
+>> uartlite@c00: $nodename:0: 'uartlite@c00' does not match '^serial(@.*)?$'=
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/clk/mediatek/clk-mt8192-mfg.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+>>        =46rom schema: /home/arinc9/Documents/linux/Documentation/devicetr=
+ee/bindings/serial/8250.yaml
+>> uartlite@c00: Unevaluated properties are not allowed ('clock-names' was u=
+nexpected)
+>>        =46rom schema: /home/arinc9/Documents/linux/Documentation/devicetr=
+ee/bindings/serial/8250.yaml
+>> sdhci@1e130000: $nodename:0: 'sdhci@1e130000' does not match '^mmc(@.*)?$=
+'
+>>        =46rom schema: /home/arinc9/Documents/linux/Documentation/devicetr=
+ee/bindings/mmc/mtk-sd.yaml
+>> sdhci@1e130000: Unevaluated properties are not allowed ('bus-width', 'cap=
+-mmc-highspeed', 'cap-sd-highspeed', 'disable-wp', 'max-frequency', 'vmmc-su=
+pply', 'vqmmc-supply' were unexpected)
+>>        =46rom schema: /home/arinc9/Documents/linux/Documentation/devicetr=
+ee/bindings/mmc/mtk-sd.yaml
+>> xhci@1e1c0000: $nodename:0: 'xhci@1e1c0000' does not match '^usb(@.*)?'
+>>        =46rom schema: /home/arinc9/Documents/linux/Documentation/devicetr=
+ee/bindings/usb/mediatek,mtk-xhci.yaml
+>> xhci@1e1c0000: compatible: ['mediatek,mt8173-xhci'] is too short
+>>        =46rom schema: /home/arinc9/Documents/linux/Documentation/devicetr=
+ee/bindings/usb/mediatek,mtk-xhci.yaml
+>> switch0@0: $nodename:0: 'switch0@0' does not match '^(ethernet-)?switch(@=
+.*)?$'
+>>        =46rom schema: /home/arinc9/Documents/linux/Documentation/devicetr=
+ee/bindings/net/dsa/mediatek,mt7530.yaml
+>> port@1: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
+>>        =46rom schema: /home/arinc9/.local/lib/python3.10/site-packages/dt=
+schema/schemas/dt-core.yaml
+>> port@2: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
+>>        =46rom schema: /home/arinc9/.local/lib/python3.10/site-packages/dt=
+schema/schemas/dt-core.yaml
+>> port@3: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
+>>        =46rom schema: /home/arinc9/.local/lib/python3.10/site-packages/dt=
+schema/schemas/dt-core.yaml
+>>=20
+>> - Change "uartlite: uartlite@c00" to "serial0: serial@c00" and remove the=
 
-diff --git a/drivers/clk/mediatek/clk-mt8192-mfg.c b/drivers/clk/mediatek/clk-mt8192-mfg.c
-index 3bbc7469f0e4..8ea5acdf832c 100644
---- a/drivers/clk/mediatek/clk-mt8192-mfg.c
-+++ b/drivers/clk/mediatek/clk-mt8192-mfg.c
-@@ -18,8 +18,10 @@ static const struct mtk_gate_regs mfg_cg_regs = {
- 	.sta_ofs = 0x0,
- };
- 
--#define GATE_MFG(_id, _name, _parent, _shift)	\
--	GATE_MTK(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+#define GATE_MFG(_id, _name, _parent, _shift)			\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs,	\
-+		       _shift, &mtk_clk_gate_ops_setclr,	\
-+		       CLK_SET_RATE_PARENT)
- 
- static const struct mtk_gate mfg_clks[] = {
- 	GATE_MFG(CLK_MFG_BG3D, "mfg_bg3d", "mfg_pll_sel", 0),
--- 
-2.37.2
+>> aliases node.
+>> - Remove "clock-names" from the serial0 node. The property doesn't exist o=
+n
+>> the 8250.yaml schema.
+>> - Change "sdhci: sdhci@1e130000" to "mmc: mmc@1e130000".
+>> - Change "xhci: xhci@1e1c0000" to "usb: usb@1e1c0000".
+>> - Add "mediatek,mtk-xhci" as the second compatible string on the usb node=
+.
+>> - Change "switch0: switch0@0" to "switch0: switch@0"
+>> - Change "off" to "disabled" for disabled nodes.
+>>=20
+>> Remaining warnings are caused by the lack of json-schema documentation.
+>=20
+> The followings needs to be ported to yaml schema but exist in its
+> previous txt format:
+>=20
+>>=20
+>> /cpuintc: failed to match any schema with compatible: ['mti,cpu-interrupt=
+-controller']
+>=20
+> https://elixir.bootlin.com/linux/v6.0-rc5/source/Documentation/devicetree/=
+bindings/mips/cpu_irq.txt#L13
+>=20
+>> /palmbus@1e000000/wdt@100: failed to match any schema with compatible: ['=
+mediatek,mt7621-wdt']
+>=20
+> https://elixir.bootlin.com/linux/v6.0-rc5/source/Documentation/devicetree/=
+bindings/watchdog/mt7621-wdt.txt#L4
+>=20
+>> /palmbus@1e000000/i2c@900: failed to match any schema with compatible: ['=
+mediatek,mt7621-i2c']
+>=20
+> https://elixir.bootlin.com/linux/v6.0-rc5/source/Documentation/devicetree/=
+bindings/i2c/i2c-mt7621.txt#L6
+>=20
+>> /palmbus@1e000000/spi@b00: failed to match any schema with compatible: ['=
+ralink,mt7621-spi']
+>=20
+> https://elixir.bootlin.com/linux/v6.0-rc5/source/Documentation/devicetree/=
+bindings/spi/spi-mt7621.txt#L5
+>=20
+>> /ethernet@1e100000: failed to match any schema with compatible: ['mediate=
+k,mt7621-eth']
+>=20
+> https://elixir.bootlin.com/linux/v6.0-rc5/source/Documentation/devicetree/=
+bindings/net/ralink,rt2880-net.txt#L15
+
+This binding is old and does not represent the current mtk_eth_soc driver. I=
+ already remove this with the first patch in the series so I=E2=80=99d rathe=
+r do a new schema from scratch.
+
+Ar=C4=B1n=C3=A7
 
 
