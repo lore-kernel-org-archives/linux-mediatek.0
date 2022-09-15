@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3448C6FA89
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 15:51:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95537C6FA89
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 15:59:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8FafyiLKp7Or/rqYTONtDbmDLktFN+TQm06lEnE/xp0=; b=nkGE5YHM7BlRwQAD9Phord25gt
-	8i8LzojQiFQeoy05hI5MncitTvhLaog9w9PcUxWPbyLkacN5E/BiQVoc+hIBUutKqqRTMiugmWmAl
-	3WYaIwQwUWcjT21mPxw6iCAzbF3tz/i3FafHmEOb+Ui1924z0aagEhHKY64pdbywdtYZxQACsE/ar
-	bHf3g0XjnJQgwMqCi9EF6w1ghvc6IUXvvBpWzk8RnZuRq5rj+Eatq6dmf5TEoGrz198ht3WZLQbJr
-	A/+hYEF229Tu4x7/iRYq16zzBF5M9qyF26E6fI9xOJyA47esaD7zfUZFvLhYC2l9eONjDCC83gWkY
-	+EurK2lg==;
+	bh=t0i/TBZDs7elMmSaK59d+TIsx+y7LWOVQuu86421qJg=; b=dHvNpRDJnijaiOysrDZYd+PqXq
+	wtdBjQeNBe2qy/S7kDzeOz95UiTIH909/E8VD/L0GgmZvVyEG2Ncjoi3Ib5neIuvvqnz96I7WrrCm
+	JlDBdipf95Uwl27y3B6EDG0wS8ek1y+5zJ93nJ5P/qpV8R3+dYheYtKI7YF57Jro4D7b5SqoFw7iw
+	yiZ6/74GVmK9U/bNXRg1YYxS4WTl7f+OcqESH3kObtF/SlnhReFTTD3gcYjARXZ3YqWRAgh9y4bjf
+	tCU3zmNlBkydyDpL682YLPW4q6sI/9KFgnNPkN8hw3OZcDITz4qW3fQTX+3wvKZZ6P9eU3G5pztNT
+	nCVstBWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYr92-00CYyd-1g; Thu, 15 Sep 2022 15:51:16 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1oYrGy-00ClFD-Sq; Thu, 15 Sep 2022 15:59:28 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYr8U-00CYnC-Sp
-	for linux-mediatek@lists.infradead.org; Thu, 15 Sep 2022 15:50:45 +0000
-Received: by mail-wr1-x435.google.com with SMTP id f13so819345wrs.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 15 Sep 2022 08:50:41 -0700 (PDT)
+	id 1oYrGv-00CkxO-B8; Thu, 15 Sep 2022 15:59:27 +0000
+Received: by mail-wr1-x436.google.com with SMTP id n10so976149wrw.12;
+        Thu, 15 Sep 2022 08:59:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
+        d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date;
-        bh=8FafyiLKp7Or/rqYTONtDbmDLktFN+TQm06lEnE/xp0=;
-        b=UGvqViR+bEKfooxOKyl61f7zfYyQvT3UR91MaRK85zA5upl5qvDxqCoYKwJ9DbWTbK
-         BXQL3kZQNfu+ZhhTwX2xaT1PBD7Pu3vnSgv12g+kYrQ2LV8GjDH8vmwFKRwZPgX+gFDW
-         TBPL6AoRQG31b3E6zsUUF4ThJvDyFtPPpPzwdVXByH1tUimkdPTSP2WZPTrEOMpALbFB
-         gQMlu9ZPYymNR8I1+X5iHBmP91hAAVgubxZvSgnLsYX+cRx0Lclj9mYlxbT0PYlvNFFN
-         FUInwGCU7YdzwE8wrt6TGzeYpZmzNrsdnFcmv2tLFaUHqB/528M+HtMe8eYJfLm+oKOn
-         RBtQ==
+        bh=t0i/TBZDs7elMmSaK59d+TIsx+y7LWOVQuu86421qJg=;
+        b=XyXui7x1eEUDQwQQYrglR5eB3aj/RM0yZ3vcjpOHBJXQ80mfYNO1sTXtlv++vne7JK
+         /Mb/Gftu6+B1z//gjd9lA9w+3EskiTjR6GrT7VbfPgr8ANZ0NQS/jebJwk/HfeNa1Zda
+         cZUrqR8WgC5m8Ji2tNo7qCIu2tqH3xb97rIUsEvPCDgLx71HziJjgH73WlUiIJahQ3jQ
+         Q8EieUvvkme3gKk3atiXyHnvglkX8hlJtqMig2juqtb2tvbp0M+Tsmq1VTpsrErPWgaY
+         irarFeT8Mcy0NfVUqciaE7pIi1+1tr4hg/t8/EBNNYe53xpssacCXSIjZsl9GO2pMdtn
+         kSfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date;
-        bh=8FafyiLKp7Or/rqYTONtDbmDLktFN+TQm06lEnE/xp0=;
-        b=jsWjOupqwOJDeZJd/4x//rXPQqqC+fY0HiXyDR0648ZlMmODkKcuA/nIl6zzPTL/Zg
-         +z4KnOh7ruvf1nREW9W5B4YeFjPIWLXgRtz6S9kYuBFpIBeNpvg2tbXNb2mTBqoIwnk1
-         lvmepVVreaTn61ToojkJTqLrm5cD6dDLt7qJkEooq5kY+ttJsZfutJF+vQIn+V217ggc
-         qh7UguSFBuXYrBD8gyMrHVXkhK48QSGu9W38sOoJkdQtSzdG4WM6qoP6bLmeFKOusbD2
-         j3gBaSb6Tii+bKM0cyQ7nrNe1yjzrf0fqmzKomsSLDkbAafRAsLSIriFLJWmYK1My7hc
-         4vfg==
-X-Gm-Message-State: ACrzQf1vcGshpS4WuPuvqJWJx98ZDIHfhFCt5Sny8Z4Yc0+9Wi8L4tbc
-	Fq+TQ4oPl2O+esHH1fDb9dbymg==
-X-Google-Smtp-Source: AMsMyM73EKanDBPB3oY8SpNYbImMYZv2oSNslZxghiuD4hWcbfKeoMv+Z3dheYOFVSWUYKvpr0r0rg==
-X-Received: by 2002:a05:6000:10ca:b0:22a:3318:861f with SMTP id b10-20020a05600010ca00b0022a3318861fmr207641wrx.284.1663257040069;
-        Thu, 15 Sep 2022 08:50:40 -0700 (PDT)
-Received: from [192.168.2.1] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id e7-20020adfa747000000b0022878c0cc5esm2880247wrd.69.2022.09.15.08.50.37
+        bh=t0i/TBZDs7elMmSaK59d+TIsx+y7LWOVQuu86421qJg=;
+        b=THLKrKNODY+mJCFajubgcRcsEiKkGAVl/0zJv5Hii05nBZgALy22T1IFa0SDQI2R43
+         ANOQgv6XM6pca4PSNxRYk1OlC2A9l2oldIJu+AM8hVN2AZSQsn33r8q+P+n2ab3pTby+
+         13ObrPE9HRg5lSTYbVt8+dk4PasG4sxYERpYK995E8K/2fo0Zonq8yJUEyiSckvVanVI
+         nrMXUrPAWjvGs0/Y5ucbfF2cySGLw25QExCn00cMKowjqsBoDPVaxDDY9mu+Dh1aj4IB
+         3+l+0SmLNQAihAdth40E7NMchTbDc5B2Woiri23aghjOrIpVoA5IJEh7x+26JSNXg4pA
+         jJiQ==
+X-Gm-Message-State: ACrzQf0GA4uibhu8EshODq6WerlDCpN4OyXgo1vEen0NtLN8svwoECVb
+	AmsGLBijcfa0WXlNzExUBmo=
+X-Google-Smtp-Source: AMsMyM5/jiNeWYU9WoRMSlLzfCdBR8Xnr6/lfRMXtFiqq8S+1eZjAzfpnQw1yT+m4rqEm6haKmPb+A==
+X-Received: by 2002:adf:cc92:0:b0:22a:361c:20b1 with SMTP id p18-20020adfcc92000000b0022a361c20b1mr205701wrj.691.1663257563771;
+        Thu, 15 Sep 2022 08:59:23 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id r17-20020a05600c425100b003a62400724bsm3475950wmm.0.2022.09.15.08.59.22
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Sep 2022 08:50:39 -0700 (PDT)
-Message-ID: <ca326ce8-3eee-8a7a-a522-9ffbdf7d8a82@linaro.org>
-Date: Thu, 15 Sep 2022 17:50:28 +0200
+        Thu, 15 Sep 2022 08:59:22 -0700 (PDT)
+Message-ID: <7c2242ff-f526-a305-9d4b-650427a58a9d@gmail.com>
+Date: Thu, 15 Sep 2022 17:59:21 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8183: remove thermal zones
- without trips.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.1
+Subject: Re: [PATCH 2/3] drm/mediatek: dp: Remove unused register definitions
 Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Amjad Ouled-Ameur <aouledameur@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220914131339.18348-1-aouledameur@baylibre.com>
- <a8af4c54-12a2-a314-f190-f12859ef4ddd@gmail.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <a8af4c54-12a2-a314-f190-f12859ef4ddd@gmail.com>
+To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@linux.ie
+Cc: granquet@baylibre.com, daniel@ffwll.ch, jitao.shi@mediatek.com,
+ angelogioacchino.delregno@collabora.com, ck.hu@mediatek.com,
+ liangxu.xu@mediatek.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220915075028.644-1-rex-bc.chen@mediatek.com>
+ <20220915075028.644-3-rex-bc.chen@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20220915075028.644-3-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_085042_951074_AE304B1B 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20220915_085925_415337_A07E828A 
+X-CRM114-Status: GOOD (  12.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,32 +97,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/09/2022 16:15, Matthias Brugger wrote:
-> 
-> 
-> On 14/09/2022 15:13, Amjad Ouled-Ameur wrote:
->> Thermal zones without trip point are not registered by thermal core.
->>
->> tzts1 ~ tzts6 zones of mt8183 were intially introduced for test-purpose
->> only but are not supposed to remain on DT.
->>
->> Remove the zones above and keep only cpu_thermal.
->>
-> 
-> My understanding is that this thermal zones exist but are not used. DTS 
-> should describe the HW as it is, so I propose to add
-> status = "disabled";
-> to the zones.
-> 
 
-At least the trip points must be declared as stated in the bindings
 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/thermal/thermal-zones.yaml#n213
+On 15/09/2022 09:50, Bo-Chen Chen wrote:
+> Some definitions in mtk_dp_reg.h are not used, so remove these
+> redundant codes.
+> 
+> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+> ---
+>   drivers/gpu/drm/mediatek/mtk_dp_reg.h | 6 ------
+>   1 file changed, 6 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
+> index 096ad6572a5e..84e38cef03c2 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp_reg.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
+> @@ -153,8 +153,6 @@
+>   #define CH_STATUS_1_DP_ENC0_P0_MASK			GENMASK(15, 0)
+>   #define MTK_DP_ENC0_P0_3094			0x3094
+>   #define CH_STATUS_2_DP_ENC0_P0_MASK			GENMASK(7, 0)
+> -#define MTK_DP_ENC0_P0_30A0			0x30a0
+> -#define DP_ENC0_30A0_MASK				(BIT(7) | BIT(8) | BIT(12))
+>   #define MTK_DP_ENC0_P0_30A4			0x30a4
+>   #define AU_TS_CFG_DP_ENC0_P0_MASK			GENMASK(7, 0)
+>   #define MTK_DP_ENC0_P0_30A8			0x30a8
+> @@ -171,8 +169,6 @@
+>   #define MTK_DP_ENC0_P0_312C			0x312c
+>   #define ASP_HB2_DP_ENC0_P0_MASK				GENMASK(7, 0)
+>   #define ASP_HB3_DP_ENC0_P0_MASK				GENMASK(15, 8)
+> -#define MTK_DP_ENC0_P0_3130			0x3130
+> -#define MTK_DP_ENC0_P0_3138			0x3138
+>   #define MTK_DP_ENC0_P0_3154			0x3154
+>   #define PGEN_HTOTAL_DP_ENC0_P0_MASK			GENMASK(13, 0)
+>   #define MTK_DP_ENC0_P0_3158			0x3158
+> @@ -206,8 +202,6 @@
+>   #define SDP_PACKET_TYPE_DP_ENC1_P0_MASK			GENMASK(4, 0)
+>   #define SDP_PACKET_W_DP_ENC1_P0				BIT(5)
+>   #define SDP_PACKET_W_DP_ENC1_P0_MASK			BIT(5)
+> -#define MTK_DP_ENC1_P0_328C			0x328c
+> -#define VSC_DATA_RDY_VESA_DP_ENC1_P0_MASK		BIT(7)
+>   #define MTK_DP_ENC1_P0_3300			0x3300
+>   #define VIDEO_AFIFO_RDY_SEL_DP_ENC1_P0_VAL		2
+>   #define VIDEO_AFIFO_RDY_SEL_DP_ENC1_P0_MASK		GENMASK(9, 8)
 
