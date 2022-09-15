@@ -4,85 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B02CBECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 16:00:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35976ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 16:15:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NtZaXYBrw/AG5wK2lscAo5IyphXo0G6cr0DhN47TYmY=; b=tMFU1kiSe1nyGfByi+/okuRrJi
-	dvm5BpShO7biAta1t5mOqvdZc/d3Bocpx2c9eF/IcB9Y8s4D+PM0HuR0ZhQ1o44dGcLmusMWsBgw1
-	LXSEzcF8+Pzl1gM59BXCwCxJygFB5umPtudBrNp4C9EshzE6/hTegvnOu5Fgr0MoKLUPKhEQiQIPx
-	EipKEBNvS9+BD4OytOFc8CFl4M9Mi/CR+fL4/yE7IXa+/2VqK4Ctc9qbN4O+mGm263kqQegcmWWHW
-	PDowXR1BdYg1CfX9QfsFDEBt1EsL87X7fxWiwB2RIDI9MhCmJqvND9rUgSMdl4ASkDh+0v4ozEpl5
-	nHzR1FPw==;
+	bh=v2ge41u1gkNzSONdXiyudp7Lzl9Dg/unbQXBLoKq9hU=; b=njTgSovaR+eQgDb4PAYDEubBwQ
+	eGAMr0PuVr1SNBm62MFOxcZFnRQcBcKkBZRWU/kT5K2kYWJUs7kD8TCT+PbCM7TdccBgGnQf7hwem
+	c1lFNtkGd/TZxqHOaBhwlH/P9VLEW5uelcb/BSGxnYs+y04lWPFL0Yu/ClWRfJfER/XGWSfRMmZpz
+	EInTXLt/qZ3s+Iw78Yri04FGoKGtMEXYKqGs9JQr1Wu2/NczcZOQVtNjR6LLMbVS5QVl0haXmB4k0
+	yFoi2iSn2TX/IYksl4sk6qfCUxIHNm/CfW8ZNzYWvD4lci3pFy/0F2DlOj+YCpw2jj59LAhiVus+9
+	oBzKWVjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYrHq-00CmSX-A4; Thu, 15 Sep 2022 16:00:22 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1oYrWE-00DDUM-JR; Thu, 15 Sep 2022 16:15:14 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYrHn-00CmJD-PH; Thu, 15 Sep 2022 16:00:21 +0000
-Received: by mail-wr1-x432.google.com with SMTP id t14so31578339wrx.8;
-        Thu, 15 Sep 2022 09:00:16 -0700 (PDT)
+	id 1oYrWB-00DDJL-Qb; Thu, 15 Sep 2022 16:15:13 +0000
+Received: by mail-ej1-x631.google.com with SMTP id y17so38248139ejo.6;
+        Thu, 15 Sep 2022 09:15:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date;
-        bh=NtZaXYBrw/AG5wK2lscAo5IyphXo0G6cr0DhN47TYmY=;
-        b=C8YIcEmdhu28gVUvnH9/7QZ1fFt9ne2TkutofZr7UtX09EouEEFHqGLZpin0xm5b30
-         UwDiR7c+2NvxU4w5mt/fmWN6V8pklnwQx6b/skixsAAz5e1HZm+2TsQIwmsoObcbec+d
-         iEhOwBTEhyRUnnpFnmwZ2Dj9gJf19d7wzVFfVgCcysmS2/qRAiQTTtbUis2VqjD7KzTU
-         N40F/6pAb+tsxoDDrm6pGhAc5/gH8poH2LVE4mlkZZCItAdLO2WB5yuR2bTXdWb/+Aj7
-         Gh2N6wDQ3LZnexSGKqt6yI5LYVBZVWgEXOk+/hBYeGPqrLkVq1+BYq+/HyVNEcLM2eFQ
-         2NhA==
+        bh=v2ge41u1gkNzSONdXiyudp7Lzl9Dg/unbQXBLoKq9hU=;
+        b=iTCO8J125qCrTxA0iFg+H1CARAxPJgyE9NsRJLpA9r9D8bUaWWeCK6S9k7gqxcj3Nm
+         Mu7zY/+rEaZgFvF3wjEs/FobHCbKxmsrSWVf9uhjW17ucx/0cyp/Q1ib2FTk8xzczHyY
+         ywJAEAqZ07B2QbbqEHtOqHcHlhepNzIDpIuWqG5sVY/6MsZdOJTd9iu6/71j0DNuiYCD
+         enZgampz2rDAFbxE+wZj6ogxF96aNxELSuA1qe30H78lJ2taZaCIVIZS+CG8+ggfmQc1
+         cyqx6sWFRvF8/8pLFsW8rTlRDV9dcEw+dm2byuljsDKAO+PVEInoQ4LjchdJHhRI/ul9
+         ktjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date;
-        bh=NtZaXYBrw/AG5wK2lscAo5IyphXo0G6cr0DhN47TYmY=;
-        b=caTAYyaFph8g+LFwj1hsb4CRGizVSf6IAP2Ydu6NveeZ6iP9KLhJJ1XTyOK/Y/5XRf
-         oW8fTgo8SK3y5zKmx4gV2PFq/UUaScuYHBEx8D+k2ZAI9HuYr5AN+FWJQTbJN35hqOep
-         vCMnJ3lOuXTSYcEmJNZQSz/GPfCA+nUDhux7RoeBxRk/7qsLpNEorVzLOoLf+bl4hZ6K
-         VyVerMTeujkxKT4S6hrsmtY+GSimZftzP5Y1WiIyzk3epDwaJ8GWin1Yr8nqodEspbWS
-         p/nmYJ+XDUMNkI1d7gt1ZVcLP4P2CRhQjNTCxQ2jdeul0RdulbkirfKXFaNiiGRvOIqN
-         FCkg==
-X-Gm-Message-State: ACrzQf0Nno92EIOpdEjjLir+YnYbFbu20CbxW+gpTtqNmVWMQSIlV+gt
-	IJD6erE9Ciwi7QrNA5G+uD8=
-X-Google-Smtp-Source: AMsMyM6OQEeLXkxWzioaolT5lZWFXDRwM7L61hQ16+IEMxL+6+zAMajEyf1Uk2/9wt56xCnf8m1PNA==
-X-Received: by 2002:adf:d1e8:0:b0:22a:c131:4c49 with SMTP id g8-20020adfd1e8000000b0022ac1314c49mr211925wrd.647.1663257615219;
-        Thu, 15 Sep 2022 09:00:15 -0700 (PDT)
+        bh=v2ge41u1gkNzSONdXiyudp7Lzl9Dg/unbQXBLoKq9hU=;
+        b=41PXMlOrScQVF4fWmVlMZ3XbF5nZJ1ehAD+F6nBYnhIE8uQgzJlr4N5A2/sgyyTfxd
+         gNBPFF4P67QSYsniDgS4qrJ5y1T/QLcj80DiEKnEhqvyPeKJSfCxm2u5wZP27lPu+lL4
+         ilu0KJ0JdBwLl11XFlgcdJI5tqa4biPtpsEx4rxHgxYhrTp8cVZNjXTGXTineEAl+ckg
+         8AiwoB7/oEwkVhbzzACs0vGe2JrWU9Pb9+GCnF0nA8rpQO8OfogaCKqN+xlsEpDL39x5
+         Y5MhhizKL07J+C7CncAmVfUWQdRioSd17hCWUuGFk9WRJ2fxzSH07WlZsKlvDih21xHI
+         yZvA==
+X-Gm-Message-State: ACrzQf3n+avdhqliGyfKKoXHItkwyS1MfmHE7sEaLkIwIW4sJOyy7iWp
+	D2tpglx2l5zy+R4QuMKuuF5jUmI4Pr4=
+X-Google-Smtp-Source: AMsMyM5GrGz4GNx2hR374vuxPTyGV4EiiDxDSFGeIzTW/B5ABJzPFHP6RC1/GJ37AU08z/DjL8FVuA==
+X-Received: by 2002:a17:907:3e89:b0:779:4869:b799 with SMTP id hs9-20020a1709073e8900b007794869b799mr467545ejc.91.1663258507015;
+        Thu, 15 Sep 2022 09:15:07 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id s2-20020adfdb02000000b002253fd19a6asm3647717wri.18.2022.09.15.09.00.13
+        by smtp.gmail.com with ESMTPSA id r9-20020a1709061ba900b007413360a48fsm9224878ejg.50.2022.09.15.09.15.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Sep 2022 09:00:14 -0700 (PDT)
-Message-ID: <fbf403c5-55c3-d73f-f46c-5d4bf9283984@gmail.com>
-Date: Thu, 15 Sep 2022 18:00:12 +0200
+        Thu, 15 Sep 2022 09:15:05 -0700 (PDT)
+Message-ID: <1fd48fa0-66eb-5af9-6168-d1df602216a5@gmail.com>
+Date: Thu, 15 Sep 2022 18:15:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.1
-Subject: Re: [PATCH 3/3] drm/mediatek: dp: Fix warning in mtk_dp_video_mute()
+Subject: Re: [PATCH 4/5] arm64: dts: change compatible of vdosys0 and vdosys1
+ for mt8195
 Content-Language: en-US
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, airlied@linux.ie
-Cc: granquet@baylibre.com, daniel@ffwll.ch, jitao.shi@mediatek.com,
- angelogioacchino.delregno@collabora.com, ck.hu@mediatek.com,
- liangxu.xu@mediatek.com, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220915075028.644-1-rex-bc.chen@mediatek.com>
- <20220915075028.644-4-rex-bc.chen@mediatek.com>
+References: <20220914182331.20515-1-jason-jh.lin@mediatek.com>
+ <20220914182331.20515-5-jason-jh.lin@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220915075028.644-4-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220914182331.20515-5-jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_090019_846135_A269A27A 
-X-CRM114-Status: GOOD (  16.23  )
+X-CRM114-CacheID: sfid-20220915_091511_891350_F346AABC 
+X-CRM114-Status: GOOD (  22.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,55 +102,63 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 15/09/2022 09:50, Bo-Chen Chen wrote:
-> Warning:
-> ../drivers/gpu/drm/mediatek/mtk_dp.c: In function ‘mtk_dp_video_mute’:
-> ../drivers/gpu/drm/mediatek/mtk_dp.c:947:23: warning: format ‘%x’
-> expects argument of type ‘unsigned int’, but argument 4 has type ‘long
-> unsigned int’ [-Wformat=]
->    947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
->        |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> ../include/linux/dev_printk.h:129:27: note: in definition of macro ‘dev_printk’
->    129 |   _dev_printk(level, dev, fmt, ##__VA_ARGS__);  \
->        |                           ^~~
-> ../include/linux/dev_printk.h:163:31: note: in expansion of macro ‘dev_fmt’
->    163 |   dev_printk(KERN_DEBUG, dev, dev_fmt(fmt), ##__VA_ARGS__); \
->        |                               ^~~~~~~
-> ../drivers/gpu/drm/mediatek/mtk_dp.c:947:2: note: in expansion of
-> macro ‘dev_dbg’
->    947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
->        |  ^~~~~~~
-> ../drivers/gpu/drm/mediatek/mtk_dp.c:947:36: note: format string is defined here
->    947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
->        |                                   ~^
->        |                                    |
->        |                                    unsigned int
->        |                                   %lx
+On 14/09/2022 20:23, Jason-JH.Lin wrote:
+> For previous MediaTek SoCs, such as MT8173, there are 2 display HW
+> pipelines binding to 1 mmsys with the same power domain, the same
+> clock driver and the same mediatek-drm driver.
 > 
-> To fix this issue, we use %s to replace 0x%x.
+> For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding to
+> 2 different power domains, different clock drivers and different
+> mediatek-drm drivers.
 > 
-> Reported-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> Moreover, Hardware pipeline of VDOSYS0 has these components: COLOR,
+> CCORR, AAL, GAMMA, DITHER. They are related to the PQ (Picture Quality)
+> and they makes VDOSYS0 supports PQ function while they are not
+> including in VDOSYS1.
+> 
+> Hardware pipeline of VDOSYS1 has the component ETHDR (HDR related
+> component). It makes VDOSYS1 supports the HDR function while it's not
+> including in VDOSYS0.
+> 
+> To summarize0:
+> Only VDOSYS0 can support PQ adjustment.
+> Only VDOSYS1 can support HDR adjustment.
+> 
+> Therefore, we need to separate these two different mmsys hardwares to
+> 2 different compatibles for MT8195.
+> 
+> Fixes: b852ee68fd72 ("arm64: dts: mt8195: Add display node for vdosys0")
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+No fixes tag needed, there is no runtime bug.
 
+Regards,
+Matthias
+
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 > ---
->   drivers/gpu/drm/mediatek/mtk_dp.c | 4 ++--
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 4 ++--
 >   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-> index c72c646e25e9..d58e98b2f83a 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-> @@ -1222,8 +1222,8 @@ static void mtk_dp_video_mute(struct mtk_dp *mtk_dp, bool enable)
->   		      mtk_dp->data->smc_cmd, enable,
->   		      0, 0, 0, 0, 0, &res);
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 905d1a90b406..6ec6d59a16ec 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -1966,7 +1966,7 @@
+>   		};
 >   
-> -	dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
-> -		mtk_dp->data->smc_cmd, enable, res.a0, res.a1);
-> +	dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: %s, ret: 0x%lx-0x%lx\n",
-> +		mtk_dp->data->smc_cmd, enable ? "enable" : "disable", res.a0, res.a1);
->   }
+>   		vdosys0: syscon@1c01a000 {
+> -			compatible = "mediatek,mt8195-mmsys", "syscon";
+> +			compatible = "mediatek,mt8195-vdosys0", "syscon";
+>   			reg = <0 0x1c01a000 0 0x1000>;
+>   			mboxes = <&gce0 0 CMDQ_THR_PRIO_4>;
+>   			#clock-cells = <1>;
+> @@ -2101,7 +2101,7 @@
+>   		};
 >   
->   static void mtk_dp_audio_mute(struct mtk_dp *mtk_dp, bool mute)
+>   		vdosys1: syscon@1c100000 {
+> -			compatible = "mediatek,mt8195-mmsys", "syscon";
+> +			compatible = "mediatek,mt8195-vdosys1", "syscon";
+>   			reg = <0 0x1c100000 0 0x1000>;
+>   			#clock-cells = <1>;
+>   		};
 
