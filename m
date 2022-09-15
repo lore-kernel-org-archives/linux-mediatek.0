@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43DFCECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 13:41:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C1BFECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 13:44:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qOtw13aTcDK6Dl3MnltSTYrAgW8CXZgwaDXok8V0GFo=; b=tA3GMQGMMzZcPi97YxUgcJtzAG
-	zC1bwtJ4tNdoPvhY3XSDab+GLJnYF9p+S0gqqvl7GCqaeRKnJTm19/2psXvRnXPCSXskky8iYIUr0
-	M5N0kVLLfjPfrDcZYb3AK/MDjragb+2jK47r1IbwA3uCPpOmXQJG81akzt2baKtrhG6oUWxJPfld8
-	uZToRTkT0bcyPIhPodK+H/lWPRYzAZDdlyWiGoBYWH32pwqDCyIi9QtvDjIsmE41aCbHlmdOZA9UC
-	DUAEZbrlyg7VPSTfWo068vLpcv00Z6zLg3hNnf4IzJ97JWh4iKbCoR39FO1/LbRsJ3Ag4mFsAJN8p
-	eMZ0h8Og==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ewl9ccoqSS/pK38WPwPo/QqMTNkX57cZ/0yi66bbkzk=; b=ggprSBNohc4RuhOsspuOtJD2oS
+	C6W7bc7rkB/N4B1MLOWWwRUyiTll6cbvXa8RVLTmBrCkA3N6RsAe+cWvrXhS5u/rWx6ISxhJARNtE
+	SnxIqvM+Q7G8fHZJVitHMadkoaLxfxVyI+6gpijHlMhGmLERz0kG++ezc+zq6MSAMaGsd36tN+LJz
+	67xmSkmdMaA+adeh286ge45QmraS2blAMs5MEZk8CzcIN1xfYQ8CLaPTXCifIAoePHjSuDnjdyCMA
+	fdIXEVeo0/JodIBdKQJOzDzlY3OYfkW2TeF4V7eo3fEK0oDkFzJKii9I0GRVLPTjpGGlOn0bWFCcX
+	8rHBSazA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYp7B-009Yp3-4G; Thu, 15 Sep 2022 13:41:13 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oYp9u-009cu0-5K; Thu, 15 Sep 2022 13:44:02 +0000
+Received: from mail-oa1-f41.google.com ([209.85.160.41])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYp75-009YYR-1K
-	for linux-mediatek@lists.infradead.org; Thu, 15 Sep 2022 13:41:10 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AA2FD660201C;
-	Thu, 15 Sep 2022 14:40:59 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663249260;
-	bh=zYYC92DvHJUObyUM5S/7ri6RSWuGzu/a+XAg0lAgeRM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eB7zaRSdS+qOQmwskdo+APTfYt4q71qhd/MX+RIIc1gmR+YW48sflbJe+Kko5bsoO
-	 6yimiqGBKD5Hj6XgXCI8qHsmV8v5AycFrPUGJRgo9DJvF0rhHfroVAtVpx5ppQAHvu
-	 5SrBi1O6AXzZz9XC3gP8FUxPexUSXfuBLzYNGxWepBhJ4ZvCMOg64t2APWfH2WZpa+
-	 tZttaheNq3u1kCEKcMiW/MmelW0O5EnoaTHcZde+Y8ab1CJt4/OyRPcWVFCSN9Awc3
-	 af3HaWh3mE+QJ58OVhz4bfAgfuX3lYso+f4nxHeiXVgkBYNiRXM/ZlMwDCp74V6VLh
-	 eOzUf3bTtlazA==
-Message-ID: <8eca314f-c6b1-c1fa-4cad-772715de2ba1@collabora.com>
-Date: Thu, 15 Sep 2022 15:40:55 +0200
+	id 1oYp9r-009ck8-CF; Thu, 15 Sep 2022 13:44:00 +0000
+Received: by mail-oa1-f41.google.com with SMTP id 586e51a60fabf-127d10b4f19so47455851fac.9;
+        Thu, 15 Sep 2022 06:43:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=ewl9ccoqSS/pK38WPwPo/QqMTNkX57cZ/0yi66bbkzk=;
+        b=A4L39irZMnocC4SL+yd7/heF9O9JyU1VLk+uQRVPILQ5tuxViXbF91hmE6nlsRuUH6
+         P9bbACmAH+K+Lih1ay/+qoMQphA0YeAf0MjN6a0ozvYgFlZJUVzxZ/Cjxvg3mrvxgF3P
+         Vif/5z2VWQrkZeDoSG7zlXCN4R9bCBKRrxoHazYy3RuPY2oodQUzKgbF9BI/oV1FqW2M
+         gfy2RpFdYE/LhnD2pLwG2Qzvr8BQfvTidkEGSHRF5LZWW8MYi6XGiYC5yxhXRrwZm5hD
+         E4CUjUbN//Ad7p1gQ/vDOn+hP9sJ1TXl3aI2nZ3N8z5QbTO/ePRn5OvLlKluhwTm7+gh
+         RPwg==
+X-Gm-Message-State: ACgBeo3SnGIJpOWbAMlMsDEUj5t9M18Wrno5MkSy68w8p3wvIEBcRuwU
+	BLA+A6W8kWACpsstCoisxg==
+X-Google-Smtp-Source: AA6agR7KpuyZQGv01An5Z6T7hcfabP9X2k1fxaer8B7wdoNGNu8YinFps4J/+3gx+pBofhHdaMN4bw==
+X-Received: by 2002:a05:6870:b494:b0:126:b7fa:f235 with SMTP id y20-20020a056870b49400b00126b7faf235mr5308587oap.266.1663249435226;
+        Thu, 15 Sep 2022 06:43:55 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id b14-20020a056870160e00b00127fbb7afffsm1402056oae.5.2022.09.15.06.43.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 Sep 2022 06:43:54 -0700 (PDT)
+Received: (nullmailer pid 1168692 invoked by uid 1000);
+	Thu, 15 Sep 2022 13:43:53 -0000
+Date: Thu, 15 Sep 2022 08:43:53 -0500
+From: Rob Herring <robh@kernel.org>
+To: cy_huang <u0084500@gmail.com>
+Cc: matthias.bgg@gmail.com, devicetree@vger.kernel.org, cy_huang@richtek.com, linux-mediatek@lists.infradead.org, alice_chen@richtek.com, robh+dt@kernel.org, lee@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, krzysztof.kozlowski+dt@linaro.org, chiaen_wu@richtek.com
+Subject: Re: [PATCH v2] dt-bindings: mfd: mt6370: fix the indentation in the
+ example
+Message-ID: <20220915134353.GA1168381-robh@kernel.org>
+References: <1663157936-5010-1-git-send-email-u0084500@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH] wifi: mt76: mt7921s: Switch to DEFINE_SIMPLE_DEV_PM_OPS()
- and pm_sleep_ptr()
-Content-Language: en-US
-To: Deren Wu <Deren.Wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
- Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin <km.lin@mediatek.com>,
- Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>,
- Posh Sun <posh.sun@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <e5478408c98e51e6903892cf128acdc103a09535.1663229480.git.deren.wu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <e5478408c98e51e6903892cf128acdc103a09535.1663229480.git.deren.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1663157936-5010-1-git-send-email-u0084500@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_064107_533312_64A27338 
-X-CRM114-Status: UNSURE (   7.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220915_064359_494243_2E38F514 
+X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,18 +77,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/09/22 10:36, Deren Wu ha scritto:
-> From: Deren Wu <deren.wu@mediatek.com>
+On Wed, 14 Sep 2022 20:18:56 +0800, cy_huang wrote:
+> From: ChiYuan Huang <cy_huang@richtek.com>
 > 
-> Use the new DEFINE_SIMPLE_DEV_PM_OPS() and pm_sleep_ptr() macros to
-> handle the .suspend/.resume callbacks. The new macros allow suspend
-> and resume functions to be automatically dropped without any #ifdef
-> guards.
+> Fix the indentation in the binding example. There're two redudant space
+> charactors need to be removed.
 > 
-> Tested-by: YN Chen <YN.Chen@mediatek.com>
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> Fixes: 76f52f815f1a ("dt-bindings: mfd: Add MediaTek MT6370")
+> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> ---
+> Since v2:
+> - Add Fixes tag in commit message
+> 
+> ---
+>  Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
+Please add Acked-by/Reviewed-by tags when posting new versions. However,
+there's no need to repost patches *only* to add the tags. The upstream
+maintainer will do that for acks received on the version they apply.
+
+If a tag was not added on purpose, please state why and what changed.
 
 
