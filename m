@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95537C6FA89
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 15:59:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B02CBECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 16:00:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t0i/TBZDs7elMmSaK59d+TIsx+y7LWOVQuu86421qJg=; b=dHvNpRDJnijaiOysrDZYd+PqXq
-	wtdBjQeNBe2qy/S7kDzeOz95UiTIH909/E8VD/L0GgmZvVyEG2Ncjoi3Ib5neIuvvqnz96I7WrrCm
-	JlDBdipf95Uwl27y3B6EDG0wS8ek1y+5zJ93nJ5P/qpV8R3+dYheYtKI7YF57Jro4D7b5SqoFw7iw
-	yiZ6/74GVmK9U/bNXRg1YYxS4WTl7f+OcqESH3kObtF/SlnhReFTTD3gcYjARXZ3YqWRAgh9y4bjf
-	tCU3zmNlBkydyDpL682YLPW4q6sI/9KFgnNPkN8hw3OZcDITz4qW3fQTX+3wvKZZ6P9eU3G5pztNT
-	nCVstBWQ==;
+	bh=NtZaXYBrw/AG5wK2lscAo5IyphXo0G6cr0DhN47TYmY=; b=tMFU1kiSe1nyGfByi+/okuRrJi
+	dvm5BpShO7biAta1t5mOqvdZc/d3Bocpx2c9eF/IcB9Y8s4D+PM0HuR0ZhQ1o44dGcLmusMWsBgw1
+	LXSEzcF8+Pzl1gM59BXCwCxJygFB5umPtudBrNp4C9EshzE6/hTegvnOu5Fgr0MoKLUPKhEQiQIPx
+	EipKEBNvS9+BD4OytOFc8CFl4M9Mi/CR+fL4/yE7IXa+/2VqK4Ctc9qbN4O+mGm263kqQegcmWWHW
+	PDowXR1BdYg1CfX9QfsFDEBt1EsL87X7fxWiwB2RIDI9MhCmJqvND9rUgSMdl4ASkDh+0v4ozEpl5
+	nHzR1FPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYrGy-00ClFD-Sq; Thu, 15 Sep 2022 15:59:28 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1oYrHq-00CmSX-A4; Thu, 15 Sep 2022 16:00:22 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYrGv-00CkxO-B8; Thu, 15 Sep 2022 15:59:27 +0000
-Received: by mail-wr1-x436.google.com with SMTP id n10so976149wrw.12;
-        Thu, 15 Sep 2022 08:59:25 -0700 (PDT)
+	id 1oYrHn-00CmJD-PH; Thu, 15 Sep 2022 16:00:21 +0000
+Received: by mail-wr1-x432.google.com with SMTP id t14so31578339wrx.8;
+        Thu, 15 Sep 2022 09:00:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date;
-        bh=t0i/TBZDs7elMmSaK59d+TIsx+y7LWOVQuu86421qJg=;
-        b=XyXui7x1eEUDQwQQYrglR5eB3aj/RM0yZ3vcjpOHBJXQ80mfYNO1sTXtlv++vne7JK
-         /Mb/Gftu6+B1z//gjd9lA9w+3EskiTjR6GrT7VbfPgr8ANZ0NQS/jebJwk/HfeNa1Zda
-         cZUrqR8WgC5m8Ji2tNo7qCIu2tqH3xb97rIUsEvPCDgLx71HziJjgH73WlUiIJahQ3jQ
-         Q8EieUvvkme3gKk3atiXyHnvglkX8hlJtqMig2juqtb2tvbp0M+Tsmq1VTpsrErPWgaY
-         irarFeT8Mcy0NfVUqciaE7pIi1+1tr4hg/t8/EBNNYe53xpssacCXSIjZsl9GO2pMdtn
-         kSfg==
+        bh=NtZaXYBrw/AG5wK2lscAo5IyphXo0G6cr0DhN47TYmY=;
+        b=C8YIcEmdhu28gVUvnH9/7QZ1fFt9ne2TkutofZr7UtX09EouEEFHqGLZpin0xm5b30
+         UwDiR7c+2NvxU4w5mt/fmWN6V8pklnwQx6b/skixsAAz5e1HZm+2TsQIwmsoObcbec+d
+         iEhOwBTEhyRUnnpFnmwZ2Dj9gJf19d7wzVFfVgCcysmS2/qRAiQTTtbUis2VqjD7KzTU
+         N40F/6pAb+tsxoDDrm6pGhAc5/gH8poH2LVE4mlkZZCItAdLO2WB5yuR2bTXdWb/+Aj7
+         Gh2N6wDQ3LZnexSGKqt6yI5LYVBZVWgEXOk+/hBYeGPqrLkVq1+BYq+/HyVNEcLM2eFQ
+         2NhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date;
-        bh=t0i/TBZDs7elMmSaK59d+TIsx+y7LWOVQuu86421qJg=;
-        b=THLKrKNODY+mJCFajubgcRcsEiKkGAVl/0zJv5Hii05nBZgALy22T1IFa0SDQI2R43
-         ANOQgv6XM6pca4PSNxRYk1OlC2A9l2oldIJu+AM8hVN2AZSQsn33r8q+P+n2ab3pTby+
-         13ObrPE9HRg5lSTYbVt8+dk4PasG4sxYERpYK995E8K/2fo0Zonq8yJUEyiSckvVanVI
-         nrMXUrPAWjvGs0/Y5ucbfF2cySGLw25QExCn00cMKowjqsBoDPVaxDDY9mu+Dh1aj4IB
-         3+l+0SmLNQAihAdth40E7NMchTbDc5B2Woiri23aghjOrIpVoA5IJEh7x+26JSNXg4pA
-         jJiQ==
-X-Gm-Message-State: ACrzQf0GA4uibhu8EshODq6WerlDCpN4OyXgo1vEen0NtLN8svwoECVb
-	AmsGLBijcfa0WXlNzExUBmo=
-X-Google-Smtp-Source: AMsMyM5/jiNeWYU9WoRMSlLzfCdBR8Xnr6/lfRMXtFiqq8S+1eZjAzfpnQw1yT+m4rqEm6haKmPb+A==
-X-Received: by 2002:adf:cc92:0:b0:22a:361c:20b1 with SMTP id p18-20020adfcc92000000b0022a361c20b1mr205701wrj.691.1663257563771;
-        Thu, 15 Sep 2022 08:59:23 -0700 (PDT)
+        bh=NtZaXYBrw/AG5wK2lscAo5IyphXo0G6cr0DhN47TYmY=;
+        b=caTAYyaFph8g+LFwj1hsb4CRGizVSf6IAP2Ydu6NveeZ6iP9KLhJJ1XTyOK/Y/5XRf
+         oW8fTgo8SK3y5zKmx4gV2PFq/UUaScuYHBEx8D+k2ZAI9HuYr5AN+FWJQTbJN35hqOep
+         vCMnJ3lOuXTSYcEmJNZQSz/GPfCA+nUDhux7RoeBxRk/7qsLpNEorVzLOoLf+bl4hZ6K
+         VyVerMTeujkxKT4S6hrsmtY+GSimZftzP5Y1WiIyzk3epDwaJ8GWin1Yr8nqodEspbWS
+         p/nmYJ+XDUMNkI1d7gt1ZVcLP4P2CRhQjNTCxQ2jdeul0RdulbkirfKXFaNiiGRvOIqN
+         FCkg==
+X-Gm-Message-State: ACrzQf0Nno92EIOpdEjjLir+YnYbFbu20CbxW+gpTtqNmVWMQSIlV+gt
+	IJD6erE9Ciwi7QrNA5G+uD8=
+X-Google-Smtp-Source: AMsMyM6OQEeLXkxWzioaolT5lZWFXDRwM7L61hQ16+IEMxL+6+zAMajEyf1Uk2/9wt56xCnf8m1PNA==
+X-Received: by 2002:adf:d1e8:0:b0:22a:c131:4c49 with SMTP id g8-20020adfd1e8000000b0022ac1314c49mr211925wrd.647.1663257615219;
+        Thu, 15 Sep 2022 09:00:15 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id r17-20020a05600c425100b003a62400724bsm3475950wmm.0.2022.09.15.08.59.22
+        by smtp.gmail.com with ESMTPSA id s2-20020adfdb02000000b002253fd19a6asm3647717wri.18.2022.09.15.09.00.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Sep 2022 08:59:22 -0700 (PDT)
-Message-ID: <7c2242ff-f526-a305-9d4b-650427a58a9d@gmail.com>
-Date: Thu, 15 Sep 2022 17:59:21 +0200
+        Thu, 15 Sep 2022 09:00:14 -0700 (PDT)
+Message-ID: <fbf403c5-55c3-d73f-f46c-5d4bf9283984@gmail.com>
+Date: Thu, 15 Sep 2022 18:00:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.1
-Subject: Re: [PATCH 2/3] drm/mediatek: dp: Remove unused register definitions
+Subject: Re: [PATCH 3/3] drm/mediatek: dp: Fix warning in mtk_dp_video_mute()
 Content-Language: en-US
 To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
  p.zabel@pengutronix.de, airlied@linux.ie
@@ -75,14 +75,14 @@ Cc: granquet@baylibre.com, daniel@ffwll.ch, jitao.shi@mediatek.com,
  linux-arm-kernel@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20220915075028.644-1-rex-bc.chen@mediatek.com>
- <20220915075028.644-3-rex-bc.chen@mediatek.com>
+ <20220915075028.644-4-rex-bc.chen@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220915075028.644-3-rex-bc.chen@mediatek.com>
+In-Reply-To: <20220915075028.644-4-rex-bc.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_085925_415337_A07E828A 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20220915_090019_846135_A269A27A 
+X-CRM114-Status: GOOD (  16.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,46 +100,54 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 15/09/2022 09:50, Bo-Chen Chen wrote:
-> Some definitions in mtk_dp_reg.h are not used, so remove these
-> redundant codes.
+> Warning:
+> ../drivers/gpu/drm/mediatek/mtk_dp.c: In function ‘mtk_dp_video_mute’:
+> ../drivers/gpu/drm/mediatek/mtk_dp.c:947:23: warning: format ‘%x’
+> expects argument of type ‘unsigned int’, but argument 4 has type ‘long
+> unsigned int’ [-Wformat=]
+>    947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
+>        |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> ../include/linux/dev_printk.h:129:27: note: in definition of macro ‘dev_printk’
+>    129 |   _dev_printk(level, dev, fmt, ##__VA_ARGS__);  \
+>        |                           ^~~
+> ../include/linux/dev_printk.h:163:31: note: in expansion of macro ‘dev_fmt’
+>    163 |   dev_printk(KERN_DEBUG, dev, dev_fmt(fmt), ##__VA_ARGS__); \
+>        |                               ^~~~~~~
+> ../drivers/gpu/drm/mediatek/mtk_dp.c:947:2: note: in expansion of
+> macro ‘dev_dbg’
+>    947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
+>        |  ^~~~~~~
+> ../drivers/gpu/drm/mediatek/mtk_dp.c:947:36: note: format string is defined here
+>    947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
+>        |                                   ~^
+>        |                                    |
+>        |                                    unsigned int
+>        |                                   %lx
 > 
+> To fix this issue, we use %s to replace 0x%x.
+> 
+> Reported-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->   drivers/gpu/drm/mediatek/mtk_dp_reg.h | 6 ------
->   1 file changed, 6 deletions(-)
+>   drivers/gpu/drm/mediatek/mtk_dp.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-> index 096ad6572a5e..84e38cef03c2 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-> @@ -153,8 +153,6 @@
->   #define CH_STATUS_1_DP_ENC0_P0_MASK			GENMASK(15, 0)
->   #define MTK_DP_ENC0_P0_3094			0x3094
->   #define CH_STATUS_2_DP_ENC0_P0_MASK			GENMASK(7, 0)
-> -#define MTK_DP_ENC0_P0_30A0			0x30a0
-> -#define DP_ENC0_30A0_MASK				(BIT(7) | BIT(8) | BIT(12))
->   #define MTK_DP_ENC0_P0_30A4			0x30a4
->   #define AU_TS_CFG_DP_ENC0_P0_MASK			GENMASK(7, 0)
->   #define MTK_DP_ENC0_P0_30A8			0x30a8
-> @@ -171,8 +169,6 @@
->   #define MTK_DP_ENC0_P0_312C			0x312c
->   #define ASP_HB2_DP_ENC0_P0_MASK				GENMASK(7, 0)
->   #define ASP_HB3_DP_ENC0_P0_MASK				GENMASK(15, 8)
-> -#define MTK_DP_ENC0_P0_3130			0x3130
-> -#define MTK_DP_ENC0_P0_3138			0x3138
->   #define MTK_DP_ENC0_P0_3154			0x3154
->   #define PGEN_HTOTAL_DP_ENC0_P0_MASK			GENMASK(13, 0)
->   #define MTK_DP_ENC0_P0_3158			0x3158
-> @@ -206,8 +202,6 @@
->   #define SDP_PACKET_TYPE_DP_ENC1_P0_MASK			GENMASK(4, 0)
->   #define SDP_PACKET_W_DP_ENC1_P0				BIT(5)
->   #define SDP_PACKET_W_DP_ENC1_P0_MASK			BIT(5)
-> -#define MTK_DP_ENC1_P0_328C			0x328c
-> -#define VSC_DATA_RDY_VESA_DP_ENC1_P0_MASK		BIT(7)
->   #define MTK_DP_ENC1_P0_3300			0x3300
->   #define VIDEO_AFIFO_RDY_SEL_DP_ENC1_P0_VAL		2
->   #define VIDEO_AFIFO_RDY_SEL_DP_ENC1_P0_MASK		GENMASK(9, 8)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+> index c72c646e25e9..d58e98b2f83a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -1222,8 +1222,8 @@ static void mtk_dp_video_mute(struct mtk_dp *mtk_dp, bool enable)
+>   		      mtk_dp->data->smc_cmd, enable,
+>   		      0, 0, 0, 0, 0, &res);
+>   
+> -	dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
+> -		mtk_dp->data->smc_cmd, enable, res.a0, res.a1);
+> +	dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: %s, ret: 0x%lx-0x%lx\n",
+> +		mtk_dp->data->smc_cmd, enable ? "enable" : "disable", res.a0, res.a1);
+>   }
+>   
+>   static void mtk_dp_audio_mute(struct mtk_dp *mtk_dp, bool mute)
 
