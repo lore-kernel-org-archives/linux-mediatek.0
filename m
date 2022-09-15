@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A692ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 08:21:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 795BDC6FA86
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 08:22:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bM3ELfkkQs92nWxvyZEy8dwSBvjWY73mkXxPaavMFvo=; b=0SrT4W+1fvMKKtqpWw8jTQ4NTC
-	bN9qV5z+JTA2J5mJ/BVuJewV+987gKeueJkXHcp6oa69LIs+hicHAw8IBaUUc8SlBi/X73PdG0MA1
-	OL4UrmCqh2v8qHCG47FnmIFaDzBA1OmImR7/LZbyPRB1Po33zPNKE7zmsyVDfcNuNBZQsxprKG5ha
-	7+fJwCn/RI4IiGiXatVRwVNrxMnM4XLL6f1elXfz5jRWj6/e+WYCIjoVkvAJp6A0zcuVA0EUWGEg7
-	streiZftThF1HZwpSWJla0NOU0wAw0/gFl4eMrVuIB3M0gq+8xtCxbBtRYwXbdiAayRSTMizwUq/I
-	Qfw9n3qA==;
+	bh=2EG2etWdzHVJ/Z46DWpBkxuYmBqpu6l6/fcaWloTD+4=; b=ulVbUTArk/eCeiQsjBvab8YoKL
+	p4fCs+vHel7GyercHxCyRk+auXo5GtwrB/G/Cez5ztwNF//+CV4onGxryAILn8yPyu6NwZoZaRx4G
+	DdPIt9RQW0t7N6QpoaKhFQUSPm/vbUtBIXIie9+uIOXS14M9vR9N0i4yQJ6+nsmYnbus8j0+enXd8
+	YAftNahAQXOJiKJSn2cqXpzag1F37ti/oszyXPjH1HXNlNojYKkW2Tb/fffkN6kQ3KbhOJr+bmZlf
+	o2LH71fubn8bCaEV64DJYvpEYXRII8tELkpUOx3oGTLvistI5TZHfiofDVSZrVGQoNHbX7rCLJAv+
+	7Dn1CqNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYk7q-003dUU-W5; Thu, 15 Sep 2022 08:21:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oYk8L-003e2c-7J; Thu, 15 Sep 2022 08:22:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYk7X-003d77-KB; Thu, 15 Sep 2022 08:21:18 +0000
-X-UUID: 487850f593db4d09bd56c96761895922-20220915
+	id 1oYk80-003ddE-3q; Thu, 15 Sep 2022 08:21:46 +0000
+X-UUID: 5d0b61ab9d784eb0922a02d2e3b94f0c-20220915
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=bM3ELfkkQs92nWxvyZEy8dwSBvjWY73mkXxPaavMFvo=;
-	b=nC8Wc71Oyav3QC6PGxp5JB0AY/WyivOZHnlRjRNHbRtqMsYQlDPL7eL3M6KpT6IRe2M4GnQOLG3Tyn9hQYTyQD9bm1yme44iLEMrHL8sKENot8B1+IOAPfnIGVCOXcdPtD4VjAYS7/Z0l8J4Rk5MNmTb6sd2Gk6uhn+JgLiSxzo=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=2EG2etWdzHVJ/Z46DWpBkxuYmBqpu6l6/fcaWloTD+4=;
+	b=FbP4E3YyTxWWZCgD1+K0/jt72/LQTDxwjedBXkqzqATGwk8y477EYZytavI0+IU2SxuAjrA8/+pikc0mI9c2KWocD5dBjPxfuo7jsjgjjzGciIt3poKroTUkDkEfuzXdiL4cvSYMVCk2bvzmGch7juDLX8SG8WmQBAjCgCgpDiE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:d43b0758-52e9-4613-8bb5-58951fd00331,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:3967ba7b-ea28-4199-b57e-003c7d60873a,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:56bb8419-4d74-4e2b-b605-b67eaac00750,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:2e6cba7b-ea28-4199-b57e-003c7d60873a,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 487850f593db4d09bd56c96761895922-20220915
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 5d0b61ab9d784eb0922a02d2e3b94f0c-20220915
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1545434192; Thu, 15 Sep 2022 01:21:09 -0700
+	with ESMTP id 177348336; Thu, 15 Sep 2022 01:21:39 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.792.15; Thu, 15 Sep 2022 15:50:32 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -56,9 +56,9 @@ CC: <matthias.bgg@gmail.com>, <granquet@baylibre.com>, <daniel@ffwll.ch>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH 1/3] drm/mediatek: dp: Refactor drivers in mtk_dp_bdg_detect()
-Date: Thu, 15 Sep 2022 15:50:26 +0800
-Message-ID: <20220915075028.644-2-rex-bc.chen@mediatek.com>
+Subject: [PATCH 2/3] drm/mediatek: dp: Remove unused register definitions
+Date: Thu, 15 Sep 2022 15:50:27 +0800
+Message-ID: <20220915075028.644-3-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220915075028.644-1-rex-bc.chen@mediatek.com>
 References: <20220915075028.644-1-rex-bc.chen@mediatek.com>
@@ -66,8 +66,9 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_012115_686041_6EE55A28 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20220915_012144_198943_F55A0270 
+X-CRM114-Status: UNSURE (   8.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,91 +83,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It is more clear to modify this in mtk_dp_bdg_detect().
+Some definitions in mtk_dp_reg.h are not used, so remove these
+redundant codes.
 
 Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 66 ++++++++++++++++---------------
- 1 file changed, 34 insertions(+), 32 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dp_reg.h | 6 ------
+ 1 file changed, 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index dfa942ca62da..c72c646e25e9 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1933,39 +1933,41 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
- 	bool enabled = mtk_dp->enabled;
- 	u8 sink_count = 0;
- 
--	if (mtk_dp->train_info.cable_plugged_in) {
--		if (!enabled) {
--			/* power on aux */
--			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
--					   DP_PWR_STATE_BANDGAP_TPLL_LANE,
--					   DP_PWR_STATE_MASK);
--
--			/* power on panel */
--			drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
--			usleep_range(2000, 5000);
--		}
--		/*
--		 * Some dongles still source HPD when they do not connect to any
--		 * sink device. To avoid this, we need to read the sink count
--		 * to make sure we do connect to sink devices. After this detect
--		 * function, we just need to check the HPD connection to check
--		 * whether we connect to a sink device.
--		 */
--		drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
--		if (DP_GET_SINK_COUNT(sink_count))
--			ret = connector_status_connected;
--
--		if (!enabled) {
--			/* power off panel */
--			drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D3);
--			usleep_range(2000, 3000);
--
--			/* power off aux */
--			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
--					   DP_PWR_STATE_BANDGAP_TPLL,
--					   DP_PWR_STATE_MASK);
--		}
-+	if (!mtk_dp->train_info.cable_plugged_in)
-+		return ret;
-+
-+	if (!enabled) {
-+		/* power on aux */
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-+				   DP_PWR_STATE_BANDGAP_TPLL_LANE,
-+				   DP_PWR_STATE_MASK);
-+
-+		/* power on panel */
-+		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D0);
-+		usleep_range(2000, 5000);
- 	}
-+	/*
-+	 * Some dongles still source HPD when they do not connect to any
-+	 * sink device. To avoid this, we need to read the sink count
-+	 * to make sure we do connect to sink devices. After this detect
-+	 * function, we just need to check the HPD connection to check
-+	 * whether we connect to a sink device.
-+	 */
-+	drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
-+	if (DP_GET_SINK_COUNT(sink_count))
-+		ret = connector_status_connected;
-+
-+	if (!enabled) {
-+		/* power off panel */
-+		drm_dp_dpcd_writeb(&mtk_dp->aux, DP_SET_POWER, DP_SET_POWER_D3);
-+		usleep_range(2000, 3000);
-+
-+		/* power off aux */
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-+				   DP_PWR_STATE_BANDGAP_TPLL,
-+				   DP_PWR_STATE_MASK);
-+	}
-+
- 	return ret;
- }
- 
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
+index 096ad6572a5e..84e38cef03c2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp_reg.h
++++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
+@@ -153,8 +153,6 @@
+ #define CH_STATUS_1_DP_ENC0_P0_MASK			GENMASK(15, 0)
+ #define MTK_DP_ENC0_P0_3094			0x3094
+ #define CH_STATUS_2_DP_ENC0_P0_MASK			GENMASK(7, 0)
+-#define MTK_DP_ENC0_P0_30A0			0x30a0
+-#define DP_ENC0_30A0_MASK				(BIT(7) | BIT(8) | BIT(12))
+ #define MTK_DP_ENC0_P0_30A4			0x30a4
+ #define AU_TS_CFG_DP_ENC0_P0_MASK			GENMASK(7, 0)
+ #define MTK_DP_ENC0_P0_30A8			0x30a8
+@@ -171,8 +169,6 @@
+ #define MTK_DP_ENC0_P0_312C			0x312c
+ #define ASP_HB2_DP_ENC0_P0_MASK				GENMASK(7, 0)
+ #define ASP_HB3_DP_ENC0_P0_MASK				GENMASK(15, 8)
+-#define MTK_DP_ENC0_P0_3130			0x3130
+-#define MTK_DP_ENC0_P0_3138			0x3138
+ #define MTK_DP_ENC0_P0_3154			0x3154
+ #define PGEN_HTOTAL_DP_ENC0_P0_MASK			GENMASK(13, 0)
+ #define MTK_DP_ENC0_P0_3158			0x3158
+@@ -206,8 +202,6 @@
+ #define SDP_PACKET_TYPE_DP_ENC1_P0_MASK			GENMASK(4, 0)
+ #define SDP_PACKET_W_DP_ENC1_P0				BIT(5)
+ #define SDP_PACKET_W_DP_ENC1_P0_MASK			BIT(5)
+-#define MTK_DP_ENC1_P0_328C			0x328c
+-#define VSC_DATA_RDY_VESA_DP_ENC1_P0_MASK		BIT(7)
+ #define MTK_DP_ENC1_P0_3300			0x3300
+ #define VIDEO_AFIFO_RDY_SEL_DP_ENC1_P0_VAL		2
+ #define VIDEO_AFIFO_RDY_SEL_DP_ENC1_P0_MASK		GENMASK(9, 8)
 -- 
 2.18.0
 
