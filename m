@@ -4,67 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54088ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 09:02:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FF87ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 09:04:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0nq7xfZDD4ZYowzdYVLDw56ampwPWvrE73MxNai3bhk=; b=b657Nw8gey7S0BWD3DXfTQOfbs
-	KbpPJnGmdfH8l18BfDYIGu7TT7U6+18U1LwFvh/4+85rigW9K9WcBPQBVKAaWaP5y1X3I9NsXN/3J
-	LI4pU0aQe2R25hAjr4fd+L8UYfkOAk6kRwD7VeBAN3cI/U8r6Gy0u3kcazJbIyvsDS5bhCT1Z3Nbc
-	xLqGArU4n0F+fXueoLe4k8Wc4WiZKAmPg6qfYNC7kJGx1tmk/XlmJ7UsPDzFxXWmS9zaDNR5hJLfJ
-	F871D6eBQS8fLo/nrmbt3prL9NFxPlE1lvL63K6Rw+qOlj64R3A3R5gT0ZjmGllUv1vbnxjzt3Bq2
-	J4ilPpQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WkWw9n+aMq0f5YReQ23BAqGMvneTFmQvSNVX+N5RGYU=; b=Vg1bFskj7g9rDF4NSux53iV1MG
+	652h7zhkw4iGHYdVFNeWbPIQpJ9YaJKOnugHNdCi8a4V2WqGGdOBbkHeLMFhJ03Kw67uGjX+oJq1S
+	o6jEr/9DuENZ/Bwrrb+OktA64FQBU3h06QOIZ6Z4sMAtzymKJFmyomLpi0ERwqdyl6heZqiyUP1Aq
+	fZ3Lh04QxHd3PV5E8Kpw+OfbGReh7CMpGn545oLV5SOw9Is2X+Lkw65x6plfk/q+C2beI5YEQ2GFF
+	51T3suiE3ARCgxbBhDY+xVXGTKk1/PLh8TANqXjA0kmTd0hZm2e4cugetnCYEMSJv0nyStKrn0bgC
+	rM6UYy3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYklG-004YNK-Ok; Thu, 15 Sep 2022 09:02:18 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oYkmz-004bJy-Uf; Thu, 15 Sep 2022 09:04:05 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYklE-004YIH-9D; Thu, 15 Sep 2022 09:02:17 +0000
-X-UUID: 2e4ac91b6595400389fdf72244134a62-20220915
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=0nq7xfZDD4ZYowzdYVLDw56ampwPWvrE73MxNai3bhk=;
-	b=H8o4MGyDjEqq9sV3a/dJRfBlEDwcDTHY5rEZkkfbD+taj8QXNgWWu9KaUE2xfSRptw3IIaF/c1mKjOMQTxktzlUXGvXLG4xjsaGoUCclGzbILLUFz+QNSsklMWUg1AhgBg4I9Clsqsim1SFDBm5CU6jv+a/kYXHF2hARFR1TxZk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:c9c8ff22-d293-4071-a0fe-7abba598b0b3,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:f216bc7b-ea28-4199-b57e-003c7d60873a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 2e4ac91b6595400389fdf72244134a62-20220915
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1225286618; Thu, 15 Sep 2022 01:59:25 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 15 Sep 2022 15:58:50 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 15 Sep 2022 15:58:50 +0800
-From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>
-CC: <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
-	<rex-bc.chen@mediatek.com>
-Subject: [PATCH 0/4] Add dp-intf and dp nodes
-Date: Thu, 15 Sep 2022 15:58:45 +0800
-Message-ID: <20220915075849.1920-1-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1oYkmx-004bBb-Fx
+	for linux-mediatek@lists.infradead.org; Thu, 15 Sep 2022 09:04:05 +0000
+Received: from [192.168.2.145] (109-252-122-187.nat.spd-mgts.ru [109.252.122.187])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: dmitry.osipenko)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A095A6601DA4;
+	Thu, 15 Sep 2022 10:03:59 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1663232640;
+	bh=S1YLvSizmUIQcrD2uYb2yCCIIfInNdi/mmbDQPuBE7w=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Ug7NuurWv5VYl66s3rVq9CSL/vNzMEOfhHT2ruSW68q9xGzLhp6Qkfn8ZfScefyLt
+	 PRLwH8VtPDW2cDmQqSUMkaAc1TfscCL/9Wh7h0Pyju5MdmhWswtgWgg+yyBa6nQzAg
+	 usXsLgIXDU2UsR6TthrLvKzeUbwwJbUHWV57B6PoUXzTS8sUlkRcrtefimM00NfsTc
+	 Qngewm65dKVK5Ll1gY84IDo1VvWmlH+haIH8XCXbfuvo/le+esG+93p5IW+YVzR0G/
+	 4acjmReIpANfUOfkSEuweeD8PR7g8aaRPVrgl1iXi9jY4BeiVU+rQZDjqS0jTVcdAi
+	 qKN2B3rUDGZJQ==
+Message-ID: <6051fab8-e198-fd58-2dfe-b2b344b67c15@collabora.com>
+Date: Thu, 15 Sep 2022 12:03:56 +0300
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.1
+Subject: Re: [PATCH -next] drm/mediatek: dp: change mtk_dp_driver to static
+To: Yang Yingliang <yangyingliang@huawei.com>,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, msp@baylibre.com
+References: <20220913134929.1970187-1-yangyingliang@huawei.com>
+Content-Language: en-US
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <20220913134929.1970187-1-yangyingliang@huawei.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_020216_357005_3BAC7AB6 
-X-CRM114-Status: UNSURE (   6.13  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220915_020403_718576_2984D84F 
+X-CRM114-Status: GOOD (  15.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,20 +74,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series add MediaTek dp-intf nodes and dp nodes.
-This series is based on linux-next-20220914.
+On 9/13/22 16:49, Yang Yingliang wrote:
+> mtk_dp_driver is only used in mtk_dp.c now, change it
+> to static.
+> 
+> Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
+> Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dp.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+> index dfa942ca62da..6a8c0f4c5c09 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -2642,7 +2642,7 @@ static const struct of_device_id mtk_dp_of_match[] = {
+>  };
+>  MODULE_DEVICE_TABLE(of, mtk_dp_of_match);
+>  
+> -struct platform_driver mtk_dp_driver = {
+> +static struct platform_driver mtk_dp_driver = {
+>  	.probe = mtk_dp_probe,
+>  	.remove = mtk_dp_remove,
+>  	.driver = {
 
-Bo-Chen Chen (4):
-  arm64: dts: mt8195: Add dp-intf nodes
-  arm64: dts: mt8195: Add dptx nodes
-  arm64: dts: mediatek: cherry: Add dp-intf ports
-  arm64: dts: mediatek: cherry: Add edptx and dptx support
-
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 86 +++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 48 +++++++++++
- 2 files changed, 134 insertions(+)
+Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 
 -- 
-2.18.0
+Best regards,
+Dmitry
 
 
