@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71AACECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 07:00:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A89C9ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 07:01:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7MdWHhUIpIB9hPCMMkKR9TwMkQ/sOhJeKEYE0tGzfSg=; b=PSeeFSVcWtFKD1duGHmZeyeVgN
-	rIBMUCHyQ6bmTOsJBiGwDciV+YSsHAoiXeA7suhGBrZc3NMmFEGxcNaJ94TTz7MaAjExCyZw15cvd
-	xH1sLtX0BY3zwqZSB+uY37qxxzG/AD2Fdx5s7DitCmGVvmPNrh0Z1okVCQjHkxEh1qnAyf2boNHTC
-	veGGipIQJq/CT+bgK/fF1sCQ87j7MmmIJRBHaDcLUNx4MAlcNydy1p41A4ohs4FnK+zloK3lReAdv
-	VEwMrt88BaHzrwGcnVT/XKYeFDDaBEjCvefl2kHiM6bOo8VvO7MznQZbBTDPGTm+1LXQrlV7/aEvK
-	gQUhwtgg==;
+	bh=LyKKSIaUWUL8B9tj8IvHXWbgygrP25IoTaLgYk3F3Cw=; b=43SoZikE/la7fscPHyTspKy1rj
+	inmDWKwnXAujfqC2jcrnzB2ToXWzwnhIfCiYSV/zddltns9oR+8ZKQ8OtBYhuVSS0rhRnfsJqyp81
+	43lFxzbg8TJSlH6rdhp4nuDAIvqTP0feW+8ipYF2kYFkFLN/pjGLZKwSNCFDO+z+qxMh1aq1AtLq5
+	QWfpJdVO26F2ybRziK79tieu02SlO7cUUIEYUDeiG/OZaFFVJ2XcsnS8LpbzP2XI8cSBXpZCnZCEe
+	42KRkELb3RjJz0LgYE0I/7Thd1DCWo2H5bS9FmUY34SckNte6L2J/PSYJJH/4C1RC60YCbpM/DvuP
+	W8Mg6daw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYiri-002Neg-GZ; Thu, 15 Sep 2022 07:00:50 +0000
+	id 1oYisD-002O4p-Au; Thu, 15 Sep 2022 07:01:21 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYinq-002K8A-VH; Thu, 15 Sep 2022 06:56:52 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1663224992; cv=none; 
+	id 1oYinz-002KD1-6T; Thu, 15 Sep 2022 06:57:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1663224998; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=KWeiKzwG637uAuaPUl94m19QwtulB0qJ8y7zeOGLQ6dI8IDTs3WVWF0iB8jffE54D2eLko8VGtlhTc0/pbYSbo0QeUq24UCJ7h5ZnX7Mr0UgB7yrddaxhTEkFC7szH5mPbAEShofRLhYSw8kVh8oN+r7foFmMjqol+qQSF1Y/1Y=
+	b=F/v+rbLNG6Wkuqk6FbO0JtWWStX2hycLgNIUJh0NaMaAnblHckGrlR/BfFw32OSD260Zte/3ZmTVHbk8mT2AmWni0XHW/sGGQEl4byey/4qcWUU69qolMroJZ8PoAm9pp9BYaIa4X0JuL5gF8pN3yKgU09bR10IO1QLEuinkIC8=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1663224992; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=7MdWHhUIpIB9hPCMMkKR9TwMkQ/sOhJeKEYE0tGzfSg=; 
-	b=BRVahBgPGruZqEB4M54+5VjMnR+hUxeIe6ndWN4j5PGqwCp5s8jfhvur6UDANofYU+SHvgEI1OX6HhbGxTToOPd7uD+DTuDxcBufxkPG/fFiS5oND9jmAECUvcFv9/f/X5ZsOkOBnukUmNMDsiFV36ZQOW/qYsuUvZlotdRzN/o=
+	t=1663224998; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=LyKKSIaUWUL8B9tj8IvHXWbgygrP25IoTaLgYk3F3Cw=; 
+	b=h5LeeE0nMCHBjFUHjas8IAO0zA7FxsP8mAgMrM7xNf7htTLon2V/hBBqAVBNMW0lQSmyxqiuQAaX2dFKUzRCVOIO8YpQhHy4LGkHqfpGPqHWw5sXpyMaB70jgNNsVs9NfMkE6vaFHobEIoH3UrcoyCQ6RSSwFaj3v0iBrNhDmJw=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663224992;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663224998;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=7MdWHhUIpIB9hPCMMkKR9TwMkQ/sOhJeKEYE0tGzfSg=;
-	b=ezbX7NbRrmC8q7DfAFaxfw3lYQcI9yba6B3jT0jUM9AW6dIFoTHmsOZuG1lXIFiF
-	d/OHaLP/BunTUTbsrDa+xUpgkJjIpHhZaNBRH4+H1QNV7Fhl8apI8aCIyHkiSgonlIO
-	8vUo4Uhd4WcGunM54ChDwk1X9QhR0y56KtBS3xIc=
+	bh=LyKKSIaUWUL8B9tj8IvHXWbgygrP25IoTaLgYk3F3Cw=;
+	b=cD7DyaSoOB8Q2ji6c8YbA65YTDry1LZhGoPCYH0/Ilw2HxU6OjwKFQWCJ1z1ZClT
+	p7WiV8A2dlNzK+GLchckr2s6+VMaIlAlEJ8m3vZ3rYNj/843J+JWOBlA2MXIW9zLk2Y
+	7Mu9nYHlDw0LhNnbuQUyJ6r/rdL6FWUceHYUzASI=
 Received: from arinc9-PC.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1663224991758487.7064324186276; Wed, 14 Sep 2022 23:56:31 -0700 (PDT)
+	with SMTPS id 1663224997559782.071024962817; Wed, 14 Sep 2022 23:56:37 -0700 (PDT)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -70,9 +70,9 @@ Cc: netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-mips@vger.kernel.org,
 	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-Subject: [PATCH v2 net-next 05/10] mips: dts: ralink: mt7621: fix some dtc warnings
-Date: Thu, 15 Sep 2022 09:55:37 +0300
-Message-Id: <20220915065542.13150-6-arinc.unal@arinc9.com>
+Subject: [PATCH v2 net-next 06/10] mips: dts: ralink: mt7621: remove interrupt-parent from switch node
+Date: Thu, 15 Sep 2022 09:55:38 +0300
+Message-Id: <20220915065542.13150-7-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220915065542.13150-1-arinc.unal@arinc9.com>
 References: <20220915065542.13150-1-arinc.unal@arinc9.com>
@@ -81,8 +81,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_235651_074476_E80613DB 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20220914_235659_365760_DD5FE1C9 
+X-CRM114-Status: UNSURE (   9.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,185 +98,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the dtc warnings below.
-
-uartlite@c00: $nodename:0: 'uartlite@c00' does not match '^serial(@.*)?$'
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/serial/8250.yaml
-uartlite@c00: Unevaluated properties are not allowed ('clock-names' was unexpected)
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/serial/8250.yaml
-sdhci@1e130000: $nodename:0: 'sdhci@1e130000' does not match '^mmc(@.*)?$'
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-sdhci@1e130000: Unevaluated properties are not allowed ('bus-width', 'cap-mmc-highspeed', 'cap-sd-highspeed', 'disable-wp', 'max-frequency', 'vmmc-supply', 'vqmmc-supply' were unexpected)
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-xhci@1e1c0000: $nodename:0: 'xhci@1e1c0000' does not match '^usb(@.*)?'
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-xhci@1e1c0000: compatible: ['mediatek,mt8173-xhci'] is too short
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-switch0@0: $nodename:0: 'switch0@0' does not match '^(ethernet-)?switch(@.*)?$'
-	From schema: /home/arinc9/Documents/linux/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-port@1: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
-	From schema: /home/arinc9/.local/lib/python3.10/site-packages/dtschema/schemas/dt-core.yaml
-port@2: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
-	From schema: /home/arinc9/.local/lib/python3.10/site-packages/dtschema/schemas/dt-core.yaml
-port@3: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
-	From schema: /home/arinc9/.local/lib/python3.10/site-packages/dtschema/schemas/dt-core.yaml
-
-- Change "uartlite: uartlite@c00" to "serial0: serial@c00" and remove the
-aliases node.
-- Remove "clock-names" from the serial0 node. The property doesn't exist on
-the 8250.yaml schema.
-- Change "sdhci: sdhci@1e130000" to "mmc: mmc@1e130000".
-- Change "xhci: xhci@1e1c0000" to "usb: usb@1e1c0000".
-- Add "mediatek,mtk-xhci" as the second compatible string on the usb node.
-- Change "switch0: switch0@0" to "switch0: switch@0"
-- Change "off" to "disabled" for disabled nodes.
-
-Remaining warnings are caused by the lack of json-schema documentation.
-
-/cpuintc: failed to match any schema with compatible: ['mti,cpu-interrupt-controller']
-/palmbus@1e000000/wdt@100: failed to match any schema with compatible: ['mediatek,mt7621-wdt']
-/palmbus@1e000000/i2c@900: failed to match any schema with compatible: ['mediatek,mt7621-i2c']
-/palmbus@1e000000/spi@b00: failed to match any schema with compatible: ['ralink,mt7621-spi']
-/ethernet@1e100000: failed to match any schema with compatible: ['mediatek,mt7621-eth']
+The interrupt-parent property is inherited from the ethernet node as it's a
+parent node of the switch node. Therefore, remove the unnecessary
+interrupt-parent property from the switch node.
 
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- .../boot/dts/ralink/mt7621-gnubee-gb-pc1.dts  |  2 +-
- .../boot/dts/ralink/mt7621-gnubee-gb-pc2.dts  |  2 +-
- arch/mips/boot/dts/ralink/mt7621.dtsi         | 28 ++++++++-----------
- 3 files changed, 13 insertions(+), 19 deletions(-)
+ arch/mips/boot/dts/ralink/mt7621.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
-index 24eebc5a85b1..6ecb8165efe8 100644
---- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
-+++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
-@@ -53,7 +53,7 @@ system {
- 	};
- };
- 
--&sdhci {
-+&mmc {
- 	status = "okay";
- };
- 
-diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
-index 34006e667780..2e534ea5bab7 100644
---- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
-+++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
-@@ -37,7 +37,7 @@ key-reset {
- 	};
- };
- 
--&sdhci {
-+&mmc {
- 	status = "okay";
- };
- 
 diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
-index ee46ace0bcc1..294ee453ec36 100644
+index 294ee453ec36..c0529e939a31 100644
 --- a/arch/mips/boot/dts/ralink/mt7621.dtsi
 +++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
-@@ -33,11 +33,6 @@ cpuintc: cpuintc {
- 		compatible = "mti,cpu-interrupt-controller";
- 	};
+@@ -348,7 +348,6 @@ switch0: switch@0 {
+ 				reset-names = "mcm";
+ 				interrupt-controller;
+ 				#interrupt-cells = <1>;
+-				interrupt-parent = <&gic>;
+ 				interrupts = <GIC_SHARED 23 IRQ_TYPE_LEVEL_HIGH>;
  
--	aliases {
--		serial0 = &uartlite;
--	};
--
--
- 	mmc_fixed_3v3: regulator-3v3 {
- 		compatible = "regulator-fixed";
- 		regulator-name = "mmc_power";
-@@ -115,12 +110,11 @@ memc: syscon@5000 {
- 			reg = <0x5000 0x1000>;
- 		};
- 
--		uartlite: uartlite@c00 {
-+		serial0: serial@c00 {
- 			compatible = "ns16550a";
- 			reg = <0xc00 0x100>;
- 
- 			clocks = <&sysc MT7621_CLK_UART1>;
--			clock-names = "uart1";
- 
- 			interrupt-parent = <&gic>;
- 			interrupts = <GIC_SHARED 26 IRQ_TYPE_LEVEL_HIGH>;
-@@ -236,7 +230,7 @@ pinmux {
- 		};
- 	};
- 
--	sdhci: sdhci@1e130000 {
-+	mmc: mmc@1e130000 {
- 		status = "disabled";
- 
- 		compatible = "mediatek,mt7620-mmc";
-@@ -262,8 +256,8 @@ sdhci: sdhci@1e130000 {
- 		interrupts = <GIC_SHARED 20 IRQ_TYPE_LEVEL_HIGH>;
- 	};
- 
--	xhci: xhci@1e1c0000 {
--		compatible = "mediatek,mt8173-xhci";
-+	usb: usb@1e1c0000 {
-+		compatible = "mediatek,mt8173-xhci", "mediatek,mtk-xhci";
- 		reg = <0x1e1c0000 0x1000
- 		       0x1e1d0700 0x0100>;
- 		reg-names = "mac", "ippc";
-@@ -338,7 +332,7 @@ fixed-link {
- 		gmac1: mac@1 {
- 			compatible = "mediatek,eth-mac";
- 			reg = <1>;
--			status = "off";
-+			status = "disabled";
- 			phy-mode = "rgmii-rxid";
- 		};
- 
-@@ -346,7 +340,7 @@ mdio: mdio-bus {
- 			#address-cells = <1>;
- 			#size-cells = <0>;
- 
--			switch0: switch0@0 {
-+			switch0: switch@0 {
- 				compatible = "mediatek,mt7621";
- 				reg = <0>;
- 				mediatek,mcm;
-@@ -362,31 +356,31 @@ ports {
- 					#size-cells = <0>;
- 
- 					port@0 {
--						status = "off";
-+						status = "disabled";
- 						reg = <0>;
- 						label = "lan0";
- 					};
- 
- 					port@1 {
--						status = "off";
-+						status = "disabled";
- 						reg = <1>;
- 						label = "lan1";
- 					};
- 
- 					port@2 {
--						status = "off";
-+						status = "disabled";
- 						reg = <2>;
- 						label = "lan2";
- 					};
- 
- 					port@3 {
--						status = "off";
-+						status = "disabled";
- 						reg = <3>;
- 						label = "lan3";
- 					};
- 
- 					port@4 {
--						status = "off";
-+						status = "disabled";
- 						reg = <4>;
- 						label = "lan4";
- 					};
+ 				ports {
 -- 
 2.34.1
 
