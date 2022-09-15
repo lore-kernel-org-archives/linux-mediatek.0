@@ -4,61 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D649EECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 07:44:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390B8ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 07:52:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jsbwmNhW5NdaPvMNlL3UKRdtNb4LvqIaaMUO7Aoy8xw=; b=SbBy/HpOV058TeVweRlnlHMS0N
-	+b6iFgNL/va6MDSMOhKWqO4pO98hDi9bStPxAknNltGB1gds2Ov2mBsOQ/cQ9uCQ7fmBWg/F6ybj8
-	fKZOV5Ctj3eTaqHu2gc8NTRByYMJO3TuuiuXlHeta/buhmWh33VasrWdTT179qtTYjiDtorP622mu
-	jsgKjAZL2dmARqxrS7hY64aALNM4gQgtSIdnz49HRNeH2izsD+lQ/PH4MT8YTVB1xDGlY0I9s9q1Q
-	HNnl/sd3LoEWrZRUzRJxziRQghdYDApendqFTBRcWMeE6XXdNB403vT4ZJZm2PEEpqbPVWdy5Kd38
-	fX05hk9A==;
+	bh=LHvZCMp7Vft1jzba8JcbDaZQJp5Sg/4WTuXkYRujRXs=; b=MYkv/13jsiWJjl6vrND8xS6xWD
+	cOgoGVLrz+rE7SORK2f49k+y1mn1piGiYE2DmmUqfxMRbpkqdKgLdn/XUUqGZK49FxUOokM6kEEAd
+	kp+GbneUl3uoUCE17WrXPY32fN/jhgC3t/19KWLHC35Tug3Fm737iL7aP1YCNSkhFKtVYh2cc5KXx
+	glfD09lqWNj8tUAe2lUBTbFrFX7+qvt8z7Ntop+zTGrhDcPdyHzRBCqynD5tFQ5XqNryN8TO8MYTi
+	1f/iZsRZw8JGYwwj8MXSMDtrEn5Z0Gwvk0cgRSCN0n6nVQvmwecHwG1ioBVYa59f4C5Zxk1Jy0+m5
+	5ZdkmoAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYjXQ-00304Q-Kw; Thu, 15 Sep 2022 07:43:56 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oYjfX-0035gg-FB; Thu, 15 Sep 2022 07:52:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYjUu-002xmP-N0; Thu, 15 Sep 2022 07:41:26 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E6E4B620C2;
-	Thu, 15 Sep 2022 07:41:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E64CC433D6;
-	Thu, 15 Sep 2022 07:41:14 +0000 (UTC)
-Message-ID: <96d148dc-6525-9977-c1a9-2b1affa889e7@xs4all.nl>
-Date: Thu, 15 Sep 2022 08:41:12 +0100
+	id 1oYjey-0035R5-VZ; Thu, 15 Sep 2022 07:51:46 +0000
+X-UUID: 128e6ea250224244a94ae09025a27165-20220915
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LHvZCMp7Vft1jzba8JcbDaZQJp5Sg/4WTuXkYRujRXs=;
+	b=GtgU92wbhr9bQsl04W8QEy8uKcdEprDH4C9QpnYxJfOcWVIIvHI8iaHwF+/kQxQvIys/Kb3BWyrQZFR/OTZZds3WO1z8/2sxGj98RAbgnMSDXnxdiBt9J//3/genGjzIXXQ6frBz0dD/A6yUWf292X3DGzvqElyHmvz9zqgoxQw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:e16f782b-720a-4a93-b9cd-d9eec1961cd7,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:e72ab97b-ea28-4199-b57e-003c7d60873a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 128e6ea250224244a94ae09025a27165-20220915
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1355513661; Thu, 15 Sep 2022 00:51:38 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 15 Sep 2022 15:50:32 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 15 Sep 2022 15:50:32 +0800
+From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>
+CC: <matthias.bgg@gmail.com>, <granquet@baylibre.com>, <daniel@ffwll.ch>,
+	<jitao.shi@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+	<ck.hu@mediatek.com>, <liangxu.xu@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
+	<rex-bc.chen@mediatek.com>
+Subject: [PATCH 3/3] drm/mediatek: dp: Fix warning in mtk_dp_video_mute()
+Date: Thu, 15 Sep 2022 15:50:28 +0800
+Message-ID: <20220915075028.644-4-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220915075028.644-1-rex-bc.chen@mediatek.com>
+References: <20220915075028.644-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.1
-Subject: Re: [V14,0/15] Enable jpeg enc & dec multi-hardwares for MT8195
-To: "kyrie.wu" <kyrie.wu@mediatek.com>, Irui Wang <irui.wang@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tzung-Bi Shih <tzungbi@chromium.org>,
- angelogioacchino.delregno@collabora.com, nicolas.dufresne@collabora.com,
- wenst@chromium.org
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
- xia.jiang@mediatek.com, maoguang.meng@mediatek.com
-References: <20220915064337.2686-1-irui.wang@mediatek.com>
- <63cbb922a0b5df6af660919727ad9246142f75bf.camel@mediatek.com>
-Content-Language: en-US
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <63cbb922a0b5df6af660919727ad9246142f75bf.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_004120_904493_9B40FDDB 
-X-CRM114-Status: GOOD (  26.78  )
+X-CRM114-CacheID: sfid-20220915_005145_033835_DD277ECC 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,188 +83,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Irui,
+Warning:
+../drivers/gpu/drm/mediatek/mtk_dp.c: In function ‘mtk_dp_video_mute’:
+../drivers/gpu/drm/mediatek/mtk_dp.c:947:23: warning: format ‘%x’
+expects argument of type ‘unsigned int’, but argument 4 has type ‘long
+unsigned int’ [-Wformat=]
+  947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../include/linux/dev_printk.h:129:27: note: in definition of macro ‘dev_printk’
+  129 |   _dev_printk(level, dev, fmt, ##__VA_ARGS__);  \
+      |                           ^~~
+../include/linux/dev_printk.h:163:31: note: in expansion of macro ‘dev_fmt’
+  163 |   dev_printk(KERN_DEBUG, dev, dev_fmt(fmt), ##__VA_ARGS__); \
+      |                               ^~~~~~~
+../drivers/gpu/drm/mediatek/mtk_dp.c:947:2: note: in expansion of
+macro ‘dev_dbg’
+  947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
+      |  ^~~~~~~
+../drivers/gpu/drm/mediatek/mtk_dp.c:947:36: note: format string is defined here
+  947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
+      |                                   ~^
+      |                                    |
+      |                                    unsigned int
+      |                                   %lx
 
-On 9/15/22 08:21, kyrie.wu wrote:
-> On Thu, 2022-09-15 at 14:43 +0800, Irui Wang wrote:
->> From: kyrie wu <kyrie.wu@mediatek.com>
->>
->> This series adds support for multi hardwares jpeg enc & dec,
->> by first adding use of_platform_populate to manage each hardware
->> information:interrupt, clock, register bases and power.
->> Secondly add jpeg enc & dec work queue to deal with the encoding
->> or decoding requests of multi-hardwares at the same time.
->> Lastly, add output picture reorder function interface to
->> eliminate the out of order images.
->>
->> This series has been tested with MT8195 Gstreamer.
->> Encoding and decoding worked for this chip.
-> 
-> Hi Hans,
-> 
-> I'm terrible sorry for that I didn't notice you picked all
-> patches series includes jpeg enc + dec.
-> Please overlook the V14 and I will send a new series to fix
-> kernel-doc warns.
+To fix this issue, we use %s to replace 0x%x.
 
-No, I didn't pick it up. The branch Angelo pointed to is just the branch 
-I used to compile test your series, I haven't posted a PR for it.
+Reported-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Next week I'll try again with v14 to check if it passes all my compile 
-tests, and if OK, then I'll post a PR.
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index c72c646e25e9..d58e98b2f83a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -1222,8 +1222,8 @@ static void mtk_dp_video_mute(struct mtk_dp *mtk_dp, bool enable)
+ 		      mtk_dp->data->smc_cmd, enable,
+ 		      0, 0, 0, 0, 0, &res);
+ 
+-	dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
+-		mtk_dp->data->smc_cmd, enable, res.a0, res.a1);
++	dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: %s, ret: 0x%lx-0x%lx\n",
++		mtk_dp->data->smc_cmd, enable ? "enable" : "disable", res.a0, res.a1);
+ }
+ 
+ static void mtk_dp_audio_mute(struct mtk_dp *mtk_dp, bool mute)
+-- 
+2.18.0
 
-Patches are picked up if I post a PR and they are marked as 'Under 
-Review' in patchwork. When Mauro merges them in our tree, then the state 
-goes to 'Accepted'.
-
-Regards,
-
-	Hans
-
-> 
-> Thanks.
-> 
-> Regards,
-> Kyrie.
->>
->> Patches 1 Adds jpeg encoder dt-bindings for mt8195
->>
->> Patches 2 jpeg encoder builds two module for using Multi-HW,
->> export some functions to make them visible by other modules.
->>
->> Patches 3 use devm_of_platform_populate to manage multi-hardware.
->>
->> Patch 4 add jpeg encoding timeout function to judge hardware timeout.
->>
->> Patch 5 add encoding work queue to deal with multi-hardware encoding
->> at the same time.
->>
->> Patch 6 add output picture reorder function to order images.
->>
->> Patch 7 add stop cmd function to deal with EOS operation.
->>
->> Patch 8 Adds jpeg decoder dt-bindings for mt8195
->>
->> Patches 9 jpeg decoder builds three module for using Multi-HW,
->> export some functions to make them visible by other modules.
->>
->> Patch 10 use of_platform_populate to manage multi-hardware.
->>
->> Patch 11 add jpeg decoding timeout function to judge hardware
->> timeout.
->>
->> Patch 12 add decoding work queue to deal with multi-hardware decoding
->> at the same time.
->>
->> Patch 13 add output picture reorder function to order images.
->>
->> Patch 14 refactor jpegdec func interface for HW working.
->>
->> Patch 15 add stop cmd function to deal with EOS operation.
->>
->> ---
->> This series patches dependent on:
->> media_stage tree:
->> [1]
->>
-> https://git.linuxtv.org/media_stage.git/commit/?id=b3627647f9ea7473d10fb08a95fd7c4133a17ca4
->>
->> patch1 new jpegdec dt-bindings included files
->> [2] MM IOMMU binding:
->>
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20220217113453.13658-2-yong.wu@mediatek.com/
->>
->> [3] MT8195 power domain:
->>
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=580579
->>
->> Changes compared with v13:
->> - some modifications for patch v13's review comments.
->> - fix kernel robot check errors.
->> - fix kernel-doc check warns.
->> - fix sparse check warns.
->> - combine jpeg encoder series with decoder series into
->>    one single series.
->>
->> Changes compared with v12:
->> - some modifications for patch v12's review comments.
->>
->> Changes compared with v11:
->> - some modifications for patch v11's review comments.
->> - fix yaml file check errors.
->>
->> Changes compared with v10:
->> - some modifications for patch v10's review comments.
->> - fix Gstreamer test errors.
->>
->> Changes compared with v9:
->> - some modifications for patch v9's review comments.
->>
->> Changes compared with v8:
->> - some modifications for patch v8's review comments.
->> - add stop cmd function.
->>
->> Changes compared with v7:
->> - some modifications for patch v6's review comments.
->>
->> Changes compared with v6:
->> - new yaml file for mt8195 jpeg encoder.
->> - some modifications for patch v5's review comments.
->>
->> Changes compared with v5:
->> - use of_platform_populate to replace component framework to
->>    manage multi-hardware in patch 2.
->>
->> Changes compared with v4:
->> - No change compaered with v4
->>
->> Changes compared with v3:
->> - Structure patches for consistency, non-backward
->>    compatible and do not break any existing functionality
->>
->> Changes compared with v2:
->> - Split the last two patches into several patches
->>    to enhance readability
->> - Correct some syntax errors
->> - Explain why the component framework is used
->>
->> Changes compared with v1:
->> - Add jpeg encoder dt-bindings for MT8195
->> - Use component framework to manage jpegenc HW
->> - Add jpegenc output pic reorder function interface
->>
->> kyrie wu (15):
->>    dt-bindings: mediatek: Add mediatek, mt8195-jpgenc compatible
->>    mtk-jpegenc: export jpeg encoder functions
->>    mtk-jpegenc: support jpegenc multi-hardware
->>    mtk-jpegenc: add jpegenc timeout func interface
->>    mtk-jpegenc: add jpeg encode worker interface
->>    mtk-jpegenc: add output pic reorder interface
->>    mtk-jpegenc: add stop cmd interface for jpgenc
->>    dt-bindings: mediatek: Add mediatek,mt8195-jpgdec compatible
->>    media: mtk-jpegdec: export jpeg decoder functions
->>    media: mtk-jpegdec: support jpegdec multi-hardware
->>    media: mtk-jpegdec: add jpegdec timeout func interface
->>    media: mtk-jpegdec: add jpeg decode worker interface
->>    media: mtk-jpegdec: add output pic reorder interface
->>    media: mtk-jpegdec: refactor jpegdec func interface
->>    mtk-jpegdec: add stop cmd interface for jpgdec
->>
->>   .../media/mediatek,mt8195-jpegdec.yaml        | 169 ++++++
->>   .../media/mediatek,mt8195-jpegenc.yaml        | 147 ++++++
->>   drivers/media/platform/mediatek/jpeg/Makefile |  14 +-
->>   .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 490
->> ++++++++++++++++--
->>   .../platform/mediatek/jpeg/mtk_jpeg_core.h    | 169 +++++-
->>   .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 315 ++++++++++-
->>   .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.h  |   6 +-
->>   .../platform/mediatek/jpeg/mtk_jpeg_dec_reg.h |   1 +
->>   .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 255 +++++++++
->>   9 files changed, 1483 insertions(+), 83 deletions(-)
->>   create mode 100644
->> Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
->>   create mode 100644
->> Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
->>
-> 
 
