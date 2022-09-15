@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E764BC6FA82
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Sep 2022 23:00:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC304ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 01:25:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hLE/SkXtP2amDBsbmmzNzmFhHJFP2BueWAE58h7qqFs=; b=WLAhJnW552fWt6vtRA7b9f5oDl
-	rICqSTvqb9Q05PlC4/ZYsudRTEpdcGz7OHHOZFpGgXNeOKyNV2GgaTmK+S/bKCJeNnqoVZ3T6ZnQr
-	FBy1+gqjqiWirfLgQuLWwH+xaTD9y3da0A1VrAF/crrCWzYBagZoYb/lG0PC7fXb5192n/OOk7Xw2
-	nD4mX7BojDeKiv1oUgKiq9aNBKsw53toqmuuM2RUQH1gsBS6Fdqiw3YnKBMTMTKcQg5CpW6Mx7TyO
-	5QPNvx0RMDIxgt73LN0Wlou+GhcWj3T0LKkTUa/WjoDaB7J34OZ1PfdWQCO+8jPYjotHwK1iaY38F
-	s3I23rmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yWiqkRoMA5szwFch3bndA/3HuivLlnD9Nl9WlTv4YVY=; b=lHoK4NoI/3Oyau5BYMAf2yxVim
+	wm4bWFSmAAs6SuhSHjtCjoDDRSKYzkzwC4jDTlbElkyw7URIBN5PUnNDjkcl4sdrGpSCN29kCJkf0
+	1+Zhgho0NRFOENTLnpMWbW9cFLCMZIoCa1vDFnHR+MSlXben1IfqGv0xTv7yep4FR4faoaM+D287V
+	UT3MonDkXI3Afla2P8HIKiBBwOwl3uXhwpDRflcNRYJABlUIVR/Sd7CCoRmdo7/o7vZIZvgTGbxg2
+	hyo8wR0d/sSbm8490isJEZQSYjk3VdhkaQXPly2JkDo3ZLvvB56MV6CHgDZSP54ziSOmQKWFx6bJN
+	DiHD48Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYbMK-00Bhna-Sb; Wed, 14 Sep 2022 22:59:56 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oYddC-00ELii-MG; Thu, 15 Sep 2022 01:25:30 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYbMH-00Bheu-Sw
-	for linux-mediatek@lists.infradead.org; Wed, 14 Sep 2022 22:59:55 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 34E2961F6E
-	for <linux-mediatek@lists.infradead.org>; Wed, 14 Sep 2022 22:59:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 863D2C43140
-	for <linux-mediatek@lists.infradead.org>; Wed, 14 Sep 2022 22:59:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663196392;
-	bh=oWqqdyBXsokNJ3n9bzT2vkSRtqN+2pGUWbS5nYnQsTg=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=WpA7MwY3qrlIOvQJuzLzBuUA0PTGT9Lnje7tnXMz3DteGiR1yFr8oPSS1l4qf9Akr
-	 UzUsjPljRzimjKGqUdTNGUtywUef0Bz9EZhHQYgOt1YyXB5dQ1+hq9jNM3dSO6/hop
-	 Uo4/a8KV2ySCM1korX2pji1Eaz8L6hq1yL27ztqg2hLAiue7aOgaSmqL5n91DV+kmP
-	 56k5gVZDiF7f+jbQ7LfiX71LEVZWfWLEFbQK2Yf4VZXvuI4quEwcFOqipgsrYhAmAJ
-	 +0auUWHy1k+ksil4SS5MtvBmgB9pOgg67AVs0XXE1O/OW4haDwKsvARseas6eRwAQK
-	 XMMrPzi1sLjtQ==
-Received: by mail-wm1-f52.google.com with SMTP id ay36so3061838wmb.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Sep 2022 15:59:52 -0700 (PDT)
-X-Gm-Message-State: ACgBeo38Gl5nGP2Dq3PMWhJfQ+hEVeajvogSH5u8bU85wNb9a/aZICRY
-	WS0rqy5FRJPXRpfYV3FeMZrT9g/evrl8I5dOtlw=
-X-Google-Smtp-Source: AA6agR7qaHmVQJjOn3ABWhUEKPyB5dmh5/6FOPhCQ93FD/FBWSx3finiKnKlWC/6fdcKkqMYciv4HAmIrP/+z1PjHoo=
-X-Received: by 2002:a05:600c:22d3:b0:3a8:424d:f386 with SMTP id
- 19-20020a05600c22d300b003a8424df386mr4636751wmg.57.1663196390712; Wed, 14 Sep
- 2022 15:59:50 -0700 (PDT)
-MIME-Version: 1.0
-References: <43b68b1f48c20b1dfcd7e6663c3dcb38e4e0648c.1663020936.git.objelf@gmail.com>
- <8c734b83-aa2a-83a6-cb12-28e36ace2bbb@collabora.com>
-In-Reply-To: <8c734b83-aa2a-83a6-cb12-28e36ace2bbb@collabora.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Wed, 14 Sep 2022 15:59:38 -0700
-X-Gmail-Original-Message-ID: <CAGp9Lzq5LrDi0qgOOWFXtGJObYEyxsMz=M_UBObwstBc9p+1=g@mail.gmail.com>
-Message-ID: <CAGp9Lzq5LrDi0qgOOWFXtGJObYEyxsMz=M_UBObwstBc9p+1=g@mail.gmail.com>
-Subject: Re: [PATCH 1/4] Bluetooth: btusb: mediatek: use readx_poll_timeout
- instead of open coding
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com, 
-	luiz.dentz@gmail.com, Soul.Huang@mediatek.com, YN.Chen@mediatek.com, 
-	Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, 
-	km.lin@mediatek.com, robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, 
-	ch.yeh@mediatek.com, posh.sun@mediatek.com, ted.huang@mediatek.com, 
-	Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, steve.lee@mediatek.com, 
-	jsiuda@google.com, frankgor@google.com, abhishekpandit@google.com, 
-	michaelfsun@google.com, abhishekpandit@chromium.org, mcchou@chromium.org, 
-	shawnku@google.com, linux-bluetooth@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+	id 1oYdd1-00ELXB-QL; Thu, 15 Sep 2022 01:25:21 +0000
+X-UUID: 4006756407044899bcd0a913da5e1087-20220914
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=yWiqkRoMA5szwFch3bndA/3HuivLlnD9Nl9WlTv4YVY=;
+	b=Uuk3FPlR4i6kGpKTRIvihshdQ380JsGYWGpMHTStL/y7BeP1jpQlR1RPqfUbmPE5SqkWT0AUr7A6ujOSWwe82gCr0+se02SGn6LSESZDkSp5mnJoz3Z91rLt9ydV24UecZSo2tL0rd8o4Tnk9fHIx5PWzhmQGRZYACqQtDUruGY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:d9864385-8aa8-4ee8-b218-d56ecf095cf7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:9c80af5d-5ed4-4e28-8b00-66ed9f042fbd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 4006756407044899bcd0a913da5e1087-20220914
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 247275609; Wed, 14 Sep 2022 18:25:06 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 15 Sep 2022 09:24:31 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 15 Sep 2022 09:24:31 +0800
+Message-ID: <296155e2a12a474439ba092e73b4bcffbf3d3edc.camel@mediatek.com>
+Subject: Re: [PATCH 1/5] dt-bindings: arm: mediatek: mmsys: change
+ compatible for MT8195
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, "Singo
+ Chang" <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 15 Sep 2022 09:24:31 +0800
+In-Reply-To: <1b739216-8bb1-162b-1af5-24acba7324bf@gmail.com>
+References: <20220914182331.20515-1-jason-jh.lin@mediatek.com>
+	 <20220914182331.20515-2-jason-jh.lin@mediatek.com>
+	 <1b739216-8bb1-162b-1af5-24acba7324bf@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_155954_046107_EB3C7002 
-X-CRM114-Status: GOOD (  29.53  )
+X-CRM114-CacheID: sfid-20220914_182519_874719_A7E93987 
+X-CRM114-Status: GOOD (  28.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,87 +88,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-HI Angelo,
+Hi Matthias,
 
-On Tue, Sep 13, 2022 at 1:04 AM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 13/09/22 00:18, sean.wang@mediatek.com ha scritto:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> >
-> > Use readx_poll_timeout instead of open coding to poll the hardware reset
-> > status until it is done.
-> >
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->
-> Hello Sean, thanks for the patch!
-> However, there's something to improve...
->
+Thanks for the reviews.
+
+On Wed, 2022-09-14 at 23:24 +0200, Matthias Brugger wrote:
+> 
+> On 14/09/2022 20:23, Jason-JH.Lin wrote:
+> > For previous MediaTek SoCs, such as MT8173, there are 2 display HW
+> > pipelines binding to 1 mmsys with the same power domain, the same
+> > clock driver and the same mediatek-drm driver.
+> > 
+> > For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding
+> > to
+> > 2 different power domains, different clock drivers and different
+> > mediatek-drm drivers.
+> > 
+> > Moreover, Hardware pipeline of VDOSYS0 has these components: COLOR,
+> > CCORR, AAL, GAMMA, DITHER. They are related to the PQ (Picture
+> > Quality)
+> > and they makes VDOSYS0 supports PQ function while they are not
+> > including in VDOSYS1.
+> > 
+> > Hardware pipeline of VDOSYS1 has the component ETHDR (HDR related
+> > component). It makes VDOSYS1 supports the HDR function while it's
+> > not
+> > including in VDOSYS0.
+> > 
+> > To summarize0:
+> > Only VDOSYS0 can support PQ adjustment.
+> > Only VDOSYS1 can support HDR adjustment.
+> > 
+> > Therefore, we need to separate these two different mmsys hardwares
+> > to
+> > 2 different compatibles for MT8195.
+> > 
+> > Fixes: 81c5a41d10b9 ("dt-bindings: arm: mediatek: mmsys: add mt8195
+> > SoC binding")
+> > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> 
+> I'm not sure Krzysztof gave his Acked-by tag.
+
+I'll remove this tag.
+> 
 > > ---
-> >   drivers/bluetooth/btusb.c | 32 ++++++++++++++++++--------------
-> >   1 file changed, 18 insertions(+), 14 deletions(-)
-> >
-> > diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> > index c3daba17de7f..4dc9cae3e937 100644
-> > --- a/drivers/bluetooth/btusb.c
-> > +++ b/drivers/bluetooth/btusb.c
->
-> ..snip..
->
-> > @@ -2910,18 +2918,14 @@ static void btusb_mtk_cmd_timeout(struct hci_dev *hdev)
-> >       btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, 0);
-> >       btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-> >
-> > -     /* Poll the register until reset is completed */
-> > -     do {
-> > -             btusb_mtk_uhw_reg_read(data, MTK_BT_MISC, &val);
-> > -             if (val & MTK_BT_RST_DONE) {
-> > -                     bt_dev_dbg(hdev, "Bluetooth Reset Successfully");
-> > -                     break;
-> > -             }
-> > +     err = readx_poll_timeout(btusb_mtk_reset_done, hdev, val,
-> > +                              val & MTK_BT_RST_DONE,
-> > +                              100000, 1000000);
->
-> I agree with using readx_poll_timeout() instead of open coding the same, but
-> there's a catch: this macro uses usleep_range(), which is meant to be used
-> for sleeping less than ~20ms.
->
-> Even the kerneldoc at include/linux/iopoll.h advertises that:
->
->   * @sleep_us: Maximum time to sleep between reads in us (0
->   *            tight-loops).  Should be less than ~20ms since usleep_range
->   *            is used (see Documentation/timers/timers-howto.rst).
->
-> So, if there's any reason for which you can't sleep for less than 100ms
-> per iteration, I'm afraid that you can't use readx_poll_timeout()...
-> ...otherwise, please change sleep_us to 20000 and keep the timeout at 1 sec.
->
+> >   .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml        |
+> > 2 ++
+> >   1 file changed, 2 insertions(+)
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+> > l
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+> > l
+> > index 6ad023eec193..a53b32c0a608 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+> > l
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+> > l
+> > @@ -32,6 +32,8 @@ properties:
+> >                 - mediatek,mt8186-mmsys
+> >                 - mediatek,mt8192-mmsys
+> >                 - mediatek,mt8195-mmsys
+> > +              - mediatek,mt8195-vdosys0
+> 
+> As I said in the last submission, we should make mediatek,mt8195-
+> mmsys as a 
+> fallback of vdosys0. Actually mediatek,mt8195-mmsys is only used for
+> the 
+> fallback of vdosys0.
 
-It should be able to be done with polling in 20ms until 1 sec expires
-or it is done. It increases some cost in the bus transaction
-interacting with the device, but it seemed fine for me because the
-code path is cold, it is only working in the device reset which should
-rarely happen, and only involves when it is really necessary. That is
-a nice catch. I was trying not to break the existing logic
-but overlooked the requirements of the API.
+I think adding both vdosys0 and vdosys1 can make the description of
+this patch clearer. 
 
-    Sean
+It's find to me to only add "mediatek,mt8195-vdosys0" in this patch.
+So I'll remove the "mediatek,mt8195-vdosys1" at the next version.
 
+Regards,
+Jason-JH.Lin
+> 
 > Regards,
-> Angelo
->
-> > +     if (err < 0)
-> > +             bt_dev_err(hdev, "Reset timeout");
-> >
-> > -             bt_dev_dbg(hdev, "Polling Bluetooth Reset CR");
-> > -             retry++;
-> > -             msleep(MTK_BT_RESET_WAIT_MS);
-> > -     } while (retry < MTK_BT_RESET_NUM_TRIES);
-> > +     if (val & MTK_BT_RST_DONE)
-> > +             bt_dev_dbg(hdev, "Bluetooth Reset Successfully");
-> >
-> >       btusb_mtk_id_get(data, 0x70010200, &val);
-> >       if (!val)
->
+> Matthias
+> 
+> > +              - mediatek,mt8195-vdosys1
+> >                 - mediatek,mt8365-mmsys
+> >             - const: syscon
+> >         - items:
+> 
+> 
+-- 
+Jason-JH Lin <jason-jh.lin@mediatek.com>
+
 
