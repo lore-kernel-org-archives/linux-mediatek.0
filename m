@@ -4,64 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04581C6FA89
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 14:34:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8C8CECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 15:26:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z+5WD1TxU6px/KKmJWU5D2ILBEBGuaTkeYE2I5USLc4=; b=ZkJObpcsvRV5uBRIqoRYx/QEDJ
-	FJ0w2Cs/Vbwer/UXqGLdP0jOMOdKzENgBIkGX65NUMcf5NQ/TT5Q2vgmy+XKyaA0u7KtTaRfn4/vB
-	sdaE8moLGwYysz1qqbzpef2r+9bZPOUMD8WYbxY8TUtUL7RF/GevJ3juuUDYNQkmoJ+BseN/guGtT
-	9C8shycePVqI9y4PCnbKH93zQu7m1hsaqAf01u6ZqODHZ8s/FBJpRcJtgsiZQ7uE1mmk5y0DlQjbL
-	VrV+1gGrBF7VqXyrxiEKb5FgOzwxTI7km1pfbIR5d0+Mn/fAatAHzmTxS/lJPh9jjflKvy9WNDa09
-	4T+oBhsw==;
+	bh=BHcfoRSqhikD1hOYg44uSOWlY3aFvjAHe7q8Qax5QmY=; b=2991DUVjTvuVYjFlPg0ruAvUab
+	Z52dO2SpVQsh5mzhFCd1TGk8LcW4qeoRfojiV7Xg4iIHaZZgf298Wr5ivrYSfcwFD7dl4ML2IGqw5
+	411KvSnsojj2Md5VgmffwWWwBRy4c6Y4xX8LowUWRXeuc3tpjvgiyP3Mq6aEKipqSYi3dXGOPv1K2
+	lB1dt9DTqyhclR4BbwggpjhB99msBsb5jVxljDj/6sQZ5ihx5LOV/3y+1y5X7hJ21wyfjexNfCrHa
+	dnSvj2Dqw+MxnEF195S+Ch/vHNDnOHUktwGZ7xzgNRi+UaU4h8yqzCNRzPit7OYFzyawO2TYaqeV7
+	7SJMOGzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYpws-00B7UK-If; Thu, 15 Sep 2022 14:34:38 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1oYqkb-00CKis-8T; Thu, 15 Sep 2022 15:26:01 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYpwp-00B7Ob-Gw
-	for linux-mediatek@lists.infradead.org; Thu, 15 Sep 2022 14:34:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Z+5WD1TxU6px/KKmJWU5D2ILBEBGuaTkeYE2I5USLc4=; b=afZE1L8pAeCV26tTihTyuFOrXl
-	ITlXl0HhWRToiEN0Or+m8p3f5f2DHDoSY1/iSJouSlKpvG7zGeL/gmrWNVcghS7RH9aqKubAaQlsZ
-	kOiq17wPtf7h4GhJAvihE+43M/d5XVym2ySbwgBznbr9dYgZSy2/dfUa8LF48rRiUiqY=;
-Received: from p200300daa7301d00b82a348903aff2a7.dip0.t-ipconnect.de ([2003:da:a730:1d00:b82a:3489:3af:f2a7] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.94.2)
-	(envelope-from <nbd@nbd.name>)
-	id 1oYpwb-005AgF-MQ; Thu, 15 Sep 2022 16:34:21 +0200
-Message-ID: <b6dbe3f8-7dd0-cd41-ef9b-e5c5d86e54c2@nbd.name>
-Date: Thu, 15 Sep 2022 16:34:21 +0200
+	id 1oYqkP-00CKfs-OE
+	for linux-mediatek@lists.infradead.org; Thu, 15 Sep 2022 15:25:52 +0000
+Received: by mail-wr1-x436.google.com with SMTP id e16so31416789wrx.7
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 Sep 2022 08:25:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=BHcfoRSqhikD1hOYg44uSOWlY3aFvjAHe7q8Qax5QmY=;
+        b=QtgpMJ5u5NKyPnVF5sV8RMe62k5Pq1GkPk+H7kZxWT2atc1Zns1MUPWnp8WWEEAUXN
+         2f+2bevcxW+hU2Zs1ZJ2Pn6G6DkC6HfXsJmkFIYeEQsiMfPaPMTfM1WBCzkT5Ebcrv6O
+         G7pSJhoK0ymrDBryJIIvmR0SS9k8XgHB6vYFxlNmRzZoyKUvclDPnlfs4V0OWcaf8Zgz
+         L1PMFH2hnOVB1E/DrkSu8jlhVDAYSXtZXk1fYbFe1yx0+BQfv7epwdHQO53c/gku3R96
+         4dJgBHea6ALP8/wLjGgQPEvmbXEpcMM81Bh4nVWjyIk9tMm+Vp6pOl8U74N2skEreA85
+         nkAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=BHcfoRSqhikD1hOYg44uSOWlY3aFvjAHe7q8Qax5QmY=;
+        b=SAOeBLCDoZWY7l7hUdN7Daak/lTfKJkRsB4Bq1DDRigVp2/Di6Z0nCn5C5Dk0d4YAd
+         4anF1lY76Mr0fk97jWBemIgWgtxtRt7Deey+ZdaTL257MrOsRBOkPaa2AFQhB9akB5cD
+         NyPxkc5RimzTL0A1Hv+g9hyhWPEbW4ljbC70Yhx6bGG5j93FS6M1bwHIn8F8PwaOe6d8
+         K2vw6hlgDRA4bgVUp/Baoj1tQGRFUVMxOptXFagEaHydtmyBA6uCY3rTeO041YGolwsO
+         LbDVEw1wse6HU17Ne3nNVj9BggBHIcpBXySaaRTSobgQX8z4k/XbrykHzgMKSquWTWR4
+         EX/A==
+X-Gm-Message-State: ACrzQf3UKPyvSNk0PIHNlY8yYz67DjCMUgIqo36Uf1eKhXVki3eDXqHd
+	LZJFDDix0mlnH/9FWbefLRUzLg==
+X-Google-Smtp-Source: AMsMyM6jbHiu69sUiE2afsrEB9VDk+2EF3IxK7ozsl+xHorAt3Mj1j34+HcOi0Wy/USm0LikBipx9g==
+X-Received: by 2002:a05:6000:178c:b0:222:f8ec:9977 with SMTP id e12-20020a056000178c00b00222f8ec9977mr111630wrg.509.1663255547251;
+        Thu, 15 Sep 2022 08:25:47 -0700 (PDT)
+Received: from [10.119.22.201] ([89.101.193.72])
+        by smtp.gmail.com with ESMTPSA id c11-20020a05600c0a4b00b003b47e8a5d22sm3834952wmq.23.2022.09.15.08.25.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 15 Sep 2022 08:25:46 -0700 (PDT)
+Message-ID: <bb932677-d7b5-a39f-ebb9-4a64812591a1@linaro.org>
+Date: Thu, 15 Sep 2022 16:25:45 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.13.0
-Subject: Re: [PATCH] wifi: mac80211: fix decapsulation offload flag for WDS
- interface
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH v2] dt-bindings: mfd: mt6370: fix the indentation in the
+ example
 Content-Language: en-US
-To: Howard Hsu <howard-yh.hsu@mediatek.com>,
- Johannes Berg <johannes@sipsolutions.net>
-Cc: linux-wireless <linux-wireless@vger.kernel.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <20220915081917.3409-1-howard-yh.hsu@mediatek.com>
-From: Felix Fietkau <nbd@nbd.name>
-In-Reply-To: <20220915081917.3409-1-howard-yh.hsu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: ChiYuan Huang <u0084500@gmail.com>, Rob Herring <robh@kernel.org>
+Cc: matthias.bgg@gmail.com, devicetree@vger.kernel.org, cy_huang@richtek.com,
+ linux-mediatek@lists.infradead.org, alice_chen@richtek.com,
+ robh+dt@kernel.org, lee@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ chiaen_wu@richtek.com
+References: <1663157936-5010-1-git-send-email-u0084500@gmail.com>
+ <20220915134353.GA1168381-robh@kernel.org>
+ <CADiBU3_6dXf1TUv9f7HbFfrqsfMUmT1Ejve6+O6OGnmTtxzpEQ@mail.gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <CADiBU3_6dXf1TUv9f7HbFfrqsfMUmT1Ejve6+O6OGnmTtxzpEQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_073435_678936_B51383A1 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20220915_082549_856871_669F074A 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,43 +98,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 15/09/2022 14:56, ChiYuan Huang wrote:
+>>
+>> Please add Acked-by/Reviewed-by tags when posting new versions. However,
+>> there's no need to repost patches *only* to add the tags. The upstream
+>> maintainer will do that for acks received on the version they apply.
+>>
+>> If a tag was not added on purpose, please state why and what changed.
+>>
+> I'm not sure about the rule.
+> AngeloGioacchino said I need to add the 'Fixes' tag.
+> I think it might be important.
+> And I immediately submit the v2 patch and add the 'fixes' tag.
+> So patch v3 and add 'Acked-by' tag?
 
-On 15.09.22 10:19, Howard Hsu wrote:
-> The WDS interface whose iftype is NL80211_IFTYPE_AP_VLAN can not be
-> enabled rx decap offload because its offload_flags is not configured.
-> The offload_flags of wds interface shall be configured by checking
-> hardware information.
-> 
-> Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
-> ---
->   net/mac80211/iface.c | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/net/mac80211/iface.c b/net/mac80211/iface.c
-> index 41531478437c..ea35a7cabd1a 100644
-> --- a/net/mac80211/iface.c
-> +++ b/net/mac80211/iface.c
-> @@ -865,6 +865,7 @@ static bool ieee80211_iftype_supports_hdr_offload(enum nl80211_iftype iftype)
->   	/* P2P GO and client are mapped to AP/STATION types */
->   	case NL80211_IFTYPE_AP:
->   	case NL80211_IFTYPE_STATION:
-> +	case NL80211_IFTYPE_AP_VLAN:
->   		return true;
->   	default:
->   		return false;
-> @@ -2120,6 +2121,7 @@ int ieee80211_if_add(struct ieee80211_local *local, const char *name,
->   
->   	/* setup type-dependent data */
->   	ieee80211_setup_sdata(sdata, type);
-> +	ieee80211_set_sdata_offload_flags(sdata);
-This approach does not look right to me. The flags are typically 
-computed by calling ieee80211_set_sdata_offload_flags for a vif before a 
-drv_add_interface or drv_update_vif_offload call, which allows the 
-driver to set the offload flags to their final state.
+https://lore.kernel.org/all/20220914150620.GA2221443-robh@kernel.org/
 
-I think the right approach for fixing this is to change 
-ieee80211_check_fast_rx to make it check the vif offload flag for the 
-bss sdata instead of the AP_VLAN vif.
+https://elixir.bootlin.com/linux/v5.17/source/Documentation/process/submitting-patches.rst#L540
 
-- Felix
+
+Best regards,
+Krzysztof
 
