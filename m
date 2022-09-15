@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3ADEC6FA89
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 15:31:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3448C6FA89
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 15:51:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=peWX2leln2ZSvGXaMu2OH9aKkEDXDvB9GSTH9krlino=; b=OWYsjK03U+YVtVfU1j1Jn/4l1o
-	Yfbj2LQLUDSVvNM+66+dAv4YG6MhsOBk2bNODWkQYqI7Y+JCoS2jC3I1O2nVhQXtgvb/FvQdcK7zE
-	yTYMw6OWndluvx2qt+J1FPQ6GTq0DisUoDITpX5Yn4BKl7SQRgyVSbdIonI7lViN2FnWQBpzc1u01
-	/TucNKsbfrZli5gr/s/3Q2fiAVR8il0HT85I4gFwcNNuupKjM4hEzcjnSRRwu1FNlblOzRPdr7uem
-	KFOwqt+uZ8KSJzRbMOrkXj1z7SkhT+lNdhw+ay2/sHDiOt3BxVErKd2P0ZfjMK5Z6dJjtzE8+/uTz
-	r+f170mA==;
+	bh=8FafyiLKp7Or/rqYTONtDbmDLktFN+TQm06lEnE/xp0=; b=nkGE5YHM7BlRwQAD9Phord25gt
+	8i8LzojQiFQeoy05hI5MncitTvhLaog9w9PcUxWPbyLkacN5E/BiQVoc+hIBUutKqqRTMiugmWmAl
+	3WYaIwQwUWcjT21mPxw6iCAzbF3tz/i3FafHmEOb+Ui1924z0aagEhHKY64pdbywdtYZxQACsE/ar
+	bHf3g0XjnJQgwMqCi9EF6w1ghvc6IUXvvBpWzk8RnZuRq5rj+Eatq6dmf5TEoGrz198ht3WZLQbJr
+	A/+hYEF229Tu4x7/iRYq16zzBF5M9qyF26E6fI9xOJyA47esaD7zfUZFvLhYC2l9eONjDCC83gWkY
+	+EurK2lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYqpQ-00COMo-B8; Thu, 15 Sep 2022 15:31:00 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1oYr92-00CYyd-1g; Thu, 15 Sep 2022 15:51:16 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYqpN-00COKq-BK
-	for linux-mediatek@lists.infradead.org; Thu, 15 Sep 2022 15:30:58 +0000
-Received: by mail-wr1-x431.google.com with SMTP id bq9so31461761wrb.4
-        for <linux-mediatek@lists.infradead.org>; Thu, 15 Sep 2022 08:30:54 -0700 (PDT)
+	id 1oYr8U-00CYnC-Sp
+	for linux-mediatek@lists.infradead.org; Thu, 15 Sep 2022 15:50:45 +0000
+Received: by mail-wr1-x435.google.com with SMTP id f13so819345wrs.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 Sep 2022 08:50:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date;
-        bh=peWX2leln2ZSvGXaMu2OH9aKkEDXDvB9GSTH9krlino=;
-        b=uaKZlfhNWAwsybApB1eOAM7LNBWicBlt3I++btMi2TJURkhNvIay6Jusv7tU7E1qUK
-         YKtrqSh48n0LlexHOX0Oyjzb8Fe463TwR4Snje0AV5ZCxyiGYySPP3Og7qaUSCfHPKqx
-         FgeUb9ckbGLjeYNUyn81dVTwps/ZC71LeHVCOw5MjYFr/Jk/ZstWzXPv00BuUC+kcRPF
-         Y7/R5AmF+6BkDWci7VS4UHSnu3FaEUFifk83mZWcsM/xzzsPtQSvdI9C64IONvbEfECE
-         WVHUjLCgeogixFOhCFchYarZWt35VpNQyrADs9uKGv4xpbc6iFjdwqE+mW2E45nzNgan
-         akzQ==
+        bh=8FafyiLKp7Or/rqYTONtDbmDLktFN+TQm06lEnE/xp0=;
+        b=UGvqViR+bEKfooxOKyl61f7zfYyQvT3UR91MaRK85zA5upl5qvDxqCoYKwJ9DbWTbK
+         BXQL3kZQNfu+ZhhTwX2xaT1PBD7Pu3vnSgv12g+kYrQ2LV8GjDH8vmwFKRwZPgX+gFDW
+         TBPL6AoRQG31b3E6zsUUF4ThJvDyFtPPpPzwdVXByH1tUimkdPTSP2WZPTrEOMpALbFB
+         gQMlu9ZPYymNR8I1+X5iHBmP91hAAVgubxZvSgnLsYX+cRx0Lclj9mYlxbT0PYlvNFFN
+         FUInwGCU7YdzwE8wrt6TGzeYpZmzNrsdnFcmv2tLFaUHqB/528M+HtMe8eYJfLm+oKOn
+         RBtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date;
-        bh=peWX2leln2ZSvGXaMu2OH9aKkEDXDvB9GSTH9krlino=;
-        b=CEE4CCUC3xb8/btoMifeY9k9g9OknTWT90JJ8MNJ1d9sg96zVZxqRrxkLd1Xgcg0la
-         SGt0lk4+384+476aJVI3WrkptTIDZYj+yPj61XdZr6EumyjwPMahRX4pp/irMM0uZTQG
-         OKy6Pdbz9kKc266WRArGRGrpp9bQKjPXFwxhUOMEQo85ncE93Ix0EFzQh1hJywQXmrcs
-         1GK/rp17zp2vE3yc4+mLgB6ILPqohI77wNSdvBSlJQGldqy5zexfDh7h1x5RsFj+qVaR
-         IEhXUdwmp0pP9ySm+vPWBWPxz0TmkntnyU1F7wkMK559VFt9VUxOpJUfO7etFBE4I2MV
-         jLtw==
-X-Gm-Message-State: ACrzQf2nuggYwwfihvxEO8QQ4AOdrEdIQX9MHKlQuL6X9P/g+JjN3Zth
-	kvz+wV1UFQWudkaejVAJRGzGBw==
-X-Google-Smtp-Source: AMsMyM4JdjbuB3k8yaPzdP6kkU/k6S5PWAUIpyf2xFZ17JyUWm9Y+cRZWv3T9S8Zi8zpNvkSu4R4LQ==
-X-Received: by 2002:a5d:48c2:0:b0:228:6226:381a with SMTP id p2-20020a5d48c2000000b002286226381amr152194wrs.366.1663255853678;
-        Thu, 15 Sep 2022 08:30:53 -0700 (PDT)
-Received: from [10.119.22.201] ([89.101.193.72])
-        by smtp.gmail.com with ESMTPSA id a5-20020adffb85000000b0022a2f4fa042sm2809237wrr.103.2022.09.15.08.30.51
+        bh=8FafyiLKp7Or/rqYTONtDbmDLktFN+TQm06lEnE/xp0=;
+        b=jsWjOupqwOJDeZJd/4x//rXPQqqC+fY0HiXyDR0648ZlMmODkKcuA/nIl6zzPTL/Zg
+         +z4KnOh7ruvf1nREW9W5B4YeFjPIWLXgRtz6S9kYuBFpIBeNpvg2tbXNb2mTBqoIwnk1
+         lvmepVVreaTn61ToojkJTqLrm5cD6dDLt7qJkEooq5kY+ttJsZfutJF+vQIn+V217ggc
+         qh7UguSFBuXYrBD8gyMrHVXkhK48QSGu9W38sOoJkdQtSzdG4WM6qoP6bLmeFKOusbD2
+         j3gBaSb6Tii+bKM0cyQ7nrNe1yjzrf0fqmzKomsSLDkbAafRAsLSIriFLJWmYK1My7hc
+         4vfg==
+X-Gm-Message-State: ACrzQf1vcGshpS4WuPuvqJWJx98ZDIHfhFCt5Sny8Z4Yc0+9Wi8L4tbc
+	Fq+TQ4oPl2O+esHH1fDb9dbymg==
+X-Google-Smtp-Source: AMsMyM73EKanDBPB3oY8SpNYbImMYZv2oSNslZxghiuD4hWcbfKeoMv+Z3dheYOFVSWUYKvpr0r0rg==
+X-Received: by 2002:a05:6000:10ca:b0:22a:3318:861f with SMTP id b10-20020a05600010ca00b0022a3318861fmr207641wrx.284.1663257040069;
+        Thu, 15 Sep 2022 08:50:40 -0700 (PDT)
+Received: from [192.168.2.1] (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.googlemail.com with ESMTPSA id e7-20020adfa747000000b0022878c0cc5esm2880247wrd.69.2022.09.15.08.50.37
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Sep 2022 08:30:52 -0700 (PDT)
-Message-ID: <04187280-3c35-c9ac-fc70-b5066108ac0c@linaro.org>
-Date: Thu, 15 Sep 2022 16:30:51 +0100
+        Thu, 15 Sep 2022 08:50:39 -0700 (PDT)
+Message-ID: <ca326ce8-3eee-8a7a-a522-9ffbdf7d8a82@linaro.org>
+Date: Thu, 15 Sep 2022 17:50:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH] dt-bindings: mailbox: Convert mtk-gce to DT schema
+ Thunderbird/91.11.0
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8183: remove thermal zones
+ without trips.
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- robh+dt@kernel.org
-Cc: jassisinghbrar@gmail.com, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, houlong.wei@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20220915101716.70225-1-angelogioacchino.delregno@collabora.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220915101716.70225-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Amjad Ouled-Ameur <aouledameur@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220914131339.18348-1-aouledameur@baylibre.com>
+ <a8af4c54-12a2-a314-f190-f12859ef4ddd@gmail.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <a8af4c54-12a2-a314-f190-f12859ef4ddd@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_083057_443455_05FE5EFD 
-X-CRM114-Status: UNSURE (   8.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220915_085042_951074_AE304B1B 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,22 +97,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15/09/2022 11:17, AngeloGioacchino Del Regno wrote:
-> Convert the mtk-gce mailbox binding to DT schema format.
+On 14/09/2022 16:15, Matthias Brugger wrote:
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../mailbox/mediatek,gce-mailbox.yaml         | 104 ++++++++++++++++++
->  .../devicetree/bindings/mailbox/mtk-gce.txt   |  82 --------------
->  2 files changed, 104 insertions(+), 82 deletions(-)
+> 
+> On 14/09/2022 15:13, Amjad Ouled-Ameur wrote:
+>> Thermal zones without trip point are not registered by thermal core.
+>>
+>> tzts1 ~ tzts6 zones of mt8183 were intially introduced for test-purpose
+>> only but are not supposed to remain on DT.
+>>
+>> Remove the zones above and keep only cpu_thermal.
+>>
+> 
+> My understanding is that this thermal zones exist but are not used. DTS 
+> should describe the HW as it is, so I propose to add
+> status = "disabled";
+> to the zones.
+> 
 
-How is this related to:
-https://lore.kernel.org/all/66591c84-ee8d-7152-f0c5-5e4a07f632fb@linaro.org/
-?
+At least the trip points must be declared as stated in the bindings
 
-Changelog? Previous review tag?
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/thermal/thermal-zones.yaml#n213
 
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
 
-Best regards,
-Krzysztof
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
