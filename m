@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 085BBECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 01:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A435ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 02:22:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z3Oe28/QXiDkr7yWQ6i1he7Rpb6F2Yud6yOu5wE6qqY=; b=30c0wJ81/31sXpins/9fn42+pi
-	H9u2WoeO/878rq9LZjvBLqxRYcr6yIG1l6mch4b7M6c5EOJlIWMeiWwdYli0ApQ9bOt9UEglZduG+
-	V50PcjUW3mLIamIpBeI+Ae0RmvrodH8q8pmtapdO+IEptPGza67OOfSGfUxTkcYk3U3H0gde/7aMM
-	AmGexS/H4IOYh8invxvT0SKzmZHBWZd7JxqZd9aRGo8+hTuYOEV/jwjqEcxFjFV8gl2Y8ZqPCvVRk
-	jw+L0tpU06cQhncP+ahAcAn2u5hyBGZomf5Mb1KqAaGmRrbeKkW93YNUjxK7Q2iZVG7QhqlNF1dcH
-	oxMT87pg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Hll8D14Qt08YGxyPP/LHoUI1r1mvl/3LO8G0w9Pypy4=; b=FmPABS7uN7tPoDJhcxNAQfF2X8
+	XzdLE/PKWZVNmaEDrWpjz6Mkj9hBpIhEvyzdsPOVZGRGtUQojTFunCr2xupQ9yEk4z8i9eLusAFnL
+	RcNXL3V9OcrdEJn5Eyf+wi77NpqU5kwz3cdUhtGBu1X0rBe0Fp8k6B3U7LG2hqsl4HUo2GRCGKEPV
+	T2ITQfbk8V1jpUhTCsqPd/FVyBiPi7wbwmDXD6fszRddfI/dG5u1OPYO1pQFUta7u9GM69xR+40a/
+	7KEorwxg6jLMCAhVfWZ85TqkvhA3LsNs3HOBy0XWWezWlNewVYTwTHnmGYMFcyOFmpMQh0bdnaJNv
+	jH+sVdow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYe8P-00EiIr-Lf; Thu, 15 Sep 2022 01:57:45 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1oYeW7-00FSUZ-0N; Thu, 15 Sep 2022 02:22:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYe8M-00EiEl-GL
-	for linux-mediatek@lists.infradead.org; Thu, 15 Sep 2022 01:57:44 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sin.source.kernel.org (Postfix) with ESMTPS id AD003CE16C8
-	for <linux-mediatek@lists.infradead.org>; Thu, 15 Sep 2022 01:57:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B3B9C43141
-	for <linux-mediatek@lists.infradead.org>; Thu, 15 Sep 2022 01:57:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663207055;
-	bh=aoSRSTCag8l0MVvAawlhHyEVLuGR7v1VAyAi5bDVdV0=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=pN9YnBUGFwz4p4F0zvwLmYf/rW/NWhUuGFlUjRSaDtid21lXc6Upb5MqPOu5abrxy
-	 A1/1lTkaYiI4L7BHqggJU6AQ3/k5EjG/LIQLUH7OqXC4TZxGCPrYsiuKR7yjnr6u8d
-	 XFBC3F77ft5J1SB9Ip5tzQSaA4k2HVTPeQFYnETLpRWKWYZ9OEOf/PNscYfyhCcrsJ
-	 epTcMieYUBQY5+6dHyqpvYszTUG8Q/EhK9C4WdHn942wZ9/yJCtsLiam+Ok7vIF/o7
-	 QD0z7ZGQ2xD7tukqFGIJy7lGQI3nkIryNAOdV0etGyGpq8tmYWjhp3Lyn6zQ0IOQM1
-	 JKtOYb6gbQF6w==
-Received: by mail-wm1-f52.google.com with SMTP id c2-20020a1c3502000000b003b2973dafb7so16750217wma.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Sep 2022 18:57:34 -0700 (PDT)
-X-Gm-Message-State: ACgBeo1751uqPZRudtBqHoi5m5gIlRwotzSmW/N0sgYEmYT2+OZJ5c36
-	tf0GKliXLA8Ew7nLeOegh4la0pIkFdIIzC5za24=
-X-Google-Smtp-Source: AA6agR5buy/tXnCUXXG3a+BHycJDxuOdO5maD2LttOCF+4xw0zjN1zk3rj4LnQ1oaVye1Z0dlKBUprQ6WPEnuG7yhtw=
-X-Received: by 2002:a05:600c:4e15:b0:3b4:a621:b54e with SMTP id
- b21-20020a05600c4e1500b003b4a621b54emr3312685wmq.47.1663207053256; Wed, 14
- Sep 2022 18:57:33 -0700 (PDT)
-MIME-Version: 1.0
-References: <43b68b1f48c20b1dfcd7e6663c3dcb38e4e0648c.1663020936.git.objelf@gmail.com>
- <a432abf4cf95e93783864b27bafa53d45bdd5212.1663020936.git.objelf@gmail.com> <CABBYNZ+Z+BApMOPEgVBxf6j0sTYFE0tH6Eab-hQW8FKVFqfvqA@mail.gmail.com>
-In-Reply-To: <CABBYNZ+Z+BApMOPEgVBxf6j0sTYFE0tH6Eab-hQW8FKVFqfvqA@mail.gmail.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Wed, 14 Sep 2022 18:57:21 -0700
-X-Gmail-Original-Message-ID: <CAGp9LzrjmKDF_3+Km05eLVkr9ZHKhfMWjVxx=7GvsfRmWNp2dQ@mail.gmail.com>
-Message-ID: <CAGp9LzrjmKDF_3+Km05eLVkr9ZHKhfMWjVxx=7GvsfRmWNp2dQ@mail.gmail.com>
-Subject: Re: [PATCH 3/4] Bluetooth: btusb: mediatek: reset the device as WMT failed
-To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Cc: sean.wang@mediatek.com, marcel@holtmann.org, johan.hedberg@gmail.com, 
-	Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com, 
-	Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com, 
-	robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, 
-	posh.sun@mediatek.com, ted.huang@mediatek.com, Stella.Chang@mediatek.com, 
-	Tom.Chou@mediatek.com, steve.lee@mediatek.com, jsiuda@google.com, 
-	frankgor@google.com, abhishekpandit@google.com, michaelfsun@google.com, 
-	abhishekpandit@chromium.org, mcchou@chromium.org, shawnku@google.com, 
-	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+	id 1oYeVt-00FRR3-F2; Thu, 15 Sep 2022 02:22:02 +0000
+X-UUID: 25c6c3349f4a440e97a0c0e667d4d214-20220914
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=Hll8D14Qt08YGxyPP/LHoUI1r1mvl/3LO8G0w9Pypy4=;
+	b=SW7AwRMt03iywCX638DbFqJFe72Bsdqs4YRABETl8FUwO62IHzhfcMP/pJjjfsawpgYEtK9djRulMWClhVvx57fCEbe1R24DDPrD7oRGdtEhNNpRUSXAviMPQ/Jr1HJ2DFpaXiumE0A0GagtPuioD5OxXDRE7EYQ6HFWzr2DUD8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:0c314b56-fc5e-4900-9915-d4d343bcc42e,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:476071f6-6e85-48d9-afd8-0504bbfe04cb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 25c6c3349f4a440e97a0c0e667d4d214-20220914
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 872333104; Wed, 14 Sep 2022 19:08:20 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 15 Sep 2022 09:37:45 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 15 Sep 2022 09:37:45 +0800
+Message-ID: <f206b9f6c4c61b90306e19c713e2758d471ec037.camel@mediatek.com>
+Subject: Re: [PATCH 5/5] dt-bindings: arm: mediatek: mmsys: remove the
+ unused compatible for mt8195
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, Singo
+ Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 15 Sep 2022 09:37:45 +0800
+In-Reply-To: <1b3a880f-06a2-1865-3791-03021aa34175@gmail.com>
+References: <20220914182331.20515-1-jason-jh.lin@mediatek.com>
+	 <20220914182331.20515-6-jason-jh.lin@mediatek.com>
+	 <1b3a880f-06a2-1865-3791-03021aa34175@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_185742_941112_541B850A 
-X-CRM114-Status: GOOD (  32.04  )
+X-CRM114-CacheID: sfid-20220914_192201_533989_433E6F99 
+X-CRM114-Status: GOOD (  17.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,83 +88,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Luiz,
-
-On Wed, Sep 14, 2022 at 3:46 PM Luiz Augusto von Dentz
-<luiz.dentz@gmail.com> wrote:
->
-> Hi Sean,
->
-> On Mon, Sep 12, 2022 at 3:18 PM <sean.wang@mediatek.com> wrote:
-> >
-> > From: Sean Wang <sean.wang@mediatek.com>
-> >
-> > Reset the BT device whenever the driver detected any WMT failure happened
-> > to recover such kind of system-level error as soon as possible.
-> >
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+On Wed, 2022-09-14 at 22:45 +0200, Matthias Brugger wrote:
+> 
+> On 14/09/2022 20:23, Jason-JH.Lin wrote:
+> > The compatible properties of mt8195 have changed to
+> > mediatek,mt8195-vdosys0
+> > and mediatek,mt8195-vdosys1 from mediatek,mt895-mmsys, so remove
+> > the unused
+> > compatible.
+> > 
+> > Fixes: 81c5a41d10b9 ("dt-bindings: arm: mediatek: mmsys: add mt8195
+> > SoC binding")
+> > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 > > ---
-> >  drivers/bluetooth/btusb.c | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> >
-> > diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> > index 653f57a98233..dc86726c8271 100644
-> > --- a/drivers/bluetooth/btusb.c
-> > +++ b/drivers/bluetooth/btusb.c
-> > @@ -2576,6 +2576,10 @@ static int btusb_mtk_hci_wmt_sync(struct hci_dev *hdev,
-> >         data->evt_skb = NULL;
-> >  err_free_wc:
-> >         kfree(wc);
-> > +
-> > +       if (err < 0)
-> > +               btmtk_reset_sync(hdev);
->
-> Doesn't reset itself can fail?
+> >  
+> > .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml         |
+> > 1 -
+> >   1 file changed, 1 deletion(-)
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+> > l
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+> > l
+> > index a53b32c0a608..bfbdd30d2092 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+> > l
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+> > l
+> > @@ -31,7 +31,6 @@ properties:
+> >                 - mediatek,mt8183-mmsys
+> >                 - mediatek,mt8186-mmsys
+> >                 - mediatek,mt8192-mmsys
+> > -              - mediatek,mt8195-mmsys
+> 
+> Should be part of the first patch. As described in the review.
 
-The reset is supposed not to fail so there is no return value is
-designated in the function
+Ok, I'll merge this patch into the first patch.
 
->
-> >         return err;
->
-> It would probably be better to reset on error at the caller IMO, also
-> in case it fails during firmware upload does reset even work? Also it
+Regards,
+Jason-JH.Lin
 
-The reset is supposed to work even without the firmware uploaded but I
-need to have further confirmation with fw folks to ensure this point.
-Anyway, I will try to move the reset on the error at the caller or
-based on the context in the next version because I thought again that
-will also help
-working out a patch to recover any error present at firmware
-initialization that the driver currently cannot handle and the patch
-cannot cover.
+> 
+> Regards,
+> Matthias
+> 
+> >                 - mediatek,mt8195-vdosys0
+> >                 - mediatek,mt8195-vdosys1
+> >                 - mediatek,mt8365-mmsys
+> 
+> 
+-- 
+Jason-JH Lin <jason-jh.lin@mediatek.com>
 
-> would probably have been better to have its own file for vendor
-> specific commands like this and use btmtk_ prefix as well.
-
-I had tried to move btusb_mtk_hci_wmt_sync to btmtk.c to allow it to
-be reused by all mtk bluetooth drivers but some reason stopped me from
-doing that.
-that is btusb_mtk_hci_wmt_sync has the reference to the data bundled
-with btusb.c and it seemed a bit harder for me to split out from
-btusb.c for the moment,
-such as btusb data->flag the function will refer to and is shared by
-all vendors, so I still temporarily leave the vendor-specific commands
-there.
-I think that would be easy to do if btusb.c can support a pointer in
-struct btusb_data pointed to the vendor-specific data area where I can
-put the flag and other
-vendor-specific stuff the btmtk.c needed there.
-
-             Sean
->
-> >  }
-> >
-> > --
-> > 2.25.1
-> >
->
->
-> --
-> Luiz Augusto von Dentz
 
