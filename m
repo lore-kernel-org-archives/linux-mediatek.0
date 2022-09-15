@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16602ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 09:17:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B44EECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 09:45:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tfXQ2d35MrLc1v4GYZPeQpiq5HAopCVjNu6MieQbaYE=; b=yC/N+1a5FiRAglcIhzVmXCbo4z
-	DVN9X8hH5GWZkpSdXhtD3LIUQOOtUG7bcqmyM7RbMu5ea72fSjfj6ZyAsjH8ILOO2F0cEdqVc+Uzl
-	13lKx/S1D24rMh5yfqvan7hwTgpoV5HzABj/mVEOSjv4tHzvK2bK+imZltgSRnY9+1mC5NrNrQ8ib
-	zOeEuG+F49miVNcz19z4vT0Cl1uaercJk3HH9iioA9vSBOvd1lHOIKUcXAfMzFEJzM7rZJZg4BExB
-	jqLPyaLAGZyBEZwxvXH0WD1ibxwu8xltPXSUTSPJ0yjnjRGxMafQBBQciEHlt4/jeipk2V7Jl4cGJ
-	1d0qWXVA==;
+	bh=8wsvf7XzdAL464C0rzEkWk+2PA7kypLI5OvW/jQeWU4=; b=QOx06j0d7RUwoWBxVbHvpbm90t
+	y3o/E9dQTiDRSq+2NsNPHL20Ctb2lEfiSZPZHJE4JrCttRJIwDkfxJ11XbbuE8WH+DSdTKMEBcEPw
+	ZtJQ2HuHBJzWFiSdc20BOSxjFHvNJ18VJx8ljze3UcVjTpfA3FLbawQHGAaMnr8k9EfD8Eo/UuOGJ
+	LCkwxLyV9DF1NZAcBK2LhHspmWuR/uPt2UZkJmpWyzE2MbpnDzNaBFXk+sLzniF0P6XWedlt7h93r
+	AATNlL7AdNK/4YMcs4G438pS47ySAN36zD2mjnz+cukGcE12sTlZr4FtFX7HKKMPxVlhxWyQcTX0T
+	NDcH13DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYl0B-0051w1-7A; Thu, 15 Sep 2022 09:17:43 +0000
+	id 1oYlRH-005euI-St; Thu, 15 Sep 2022 09:45:43 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYkxy-004yCO-Dh
-	for linux-mediatek@lists.infradead.org; Thu, 15 Sep 2022 09:15:27 +0000
-X-UUID: 3be5086a8d3a4296ae946e618c7eff8d-20220915
+	id 1oYlR1-005eaF-3u
+	for linux-mediatek@lists.infradead.org; Thu, 15 Sep 2022 09:45:28 +0000
+X-UUID: 3d768223a1aa4f63921a5c603b7d12f5-20220915
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=tfXQ2d35MrLc1v4GYZPeQpiq5HAopCVjNu6MieQbaYE=;
-	b=EpPcpgjJqZmgfawJIXACcSrihnhaKvJukOPVyTL3Q+ta49NQ/VlYjUj1il7qX2LEmRGa3MGMpujNSzYVy0DmA+21dt+bTW4qG0r6CihH7qeSF0x6DVfO2iWwzJ5mSGiA+8OnuCLGxANMjitw5ikIAgXJXbZ7dSvDeuDClKr/Mi8=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=8wsvf7XzdAL464C0rzEkWk+2PA7kypLI5OvW/jQeWU4=;
+	b=tKSeICnehbv/LbB3MVO33w+u2dn4Pwl2TmhfLfBj1195hbU2Y/ySRYI5dM7KzOkbryCMTOLmfpAw2QF+LDLTlUtgQ0BwQfORFs+G/b18XzH7c6vQnKBB1aN20pr9z+DqsVdBLAUljLxS72rYTZ8A73O7KV+b/ZQ+LaBQZxp9szA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:62636ef2-d30c-4d29-a693-8c12b8e8ed35,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:319fc15d-5ed4-4e28-8b00-66ed9f042fbd,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:be30fd47-dbe9-4f2a-803b-e7a51113ad11,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:15b882f6-6e85-48d9-afd8-0504bbfe04cb,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 3be5086a8d3a4296ae946e618c7eff8d-20220915
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 3d768223a1aa4f63921a5c603b7d12f5-20220915
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <howard-yh.hsu@mediatek.com>)
+	(envelope-from <deren.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1049661321; Thu, 15 Sep 2022 02:10:06 -0700
+	with ESMTP id 214714338; Thu, 15 Sep 2022 02:36:31 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 15 Sep 2022 16:19:30 +0800
+ 15.2.792.15; Thu, 15 Sep 2022 16:35:54 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Thu, 15 Sep 2022 16:19:30 +0800
-From: Howard Hsu <howard-yh.hsu@mediatek.com>
-To: Johannes Berg <johannes@sipsolutions.net>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Felix Fietkau
-	<nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
-	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Howard Hsu <howard-yh.hsu@mediatek.com>
-Subject: [PATCH] wifi: mac80211: fix decapsulation offload flag for WDS interface
-Date: Thu, 15 Sep 2022 16:19:17 +0800
-Message-ID: <20220915081917.3409-1-howard-yh.hsu@mediatek.com>
+ 15.2.792.15 via Frontend Transport; Thu, 15 Sep 2022 16:35:54 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+	YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, Eric-SY
+ Chang <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Stella Chang
+	<Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder
+ Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7663s: Switch to DEFINE_SIMPLE_DEV_PM_OPS() and pm_sleep_ptr()
+Date: Thu, 15 Sep 2022 16:35:52 +0800
+Message-ID: <0f463aaa811122387b068bac045c51a4959ef6ef.1663229534.git.deren.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_021526_509008_4D5FD490 
-X-CRM114-Status: UNSURE (   8.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220915_024527_199191_4E982E03 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,36 +83,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The WDS interface whose iftype is NL80211_IFTYPE_AP_VLAN can not be
-enabled rx decap offload because its offload_flags is not configured.
-The offload_flags of wds interface shall be configured by checking
-hardware information.
+From: Deren Wu <deren.wu@mediatek.com>
 
-Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
+Use the new DEFINE_SIMPLE_DEV_PM_OPS() and pm_sleep_ptr() macros to
+handle the .suspend/.resume callbacks. The new macros allow suspend
+and resume functions to be automatically dropped without any #ifdef
+guards.
+
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 ---
- net/mac80211/iface.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7615/sdio.c | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
 
-diff --git a/net/mac80211/iface.c b/net/mac80211/iface.c
-index 41531478437c..ea35a7cabd1a 100644
---- a/net/mac80211/iface.c
-+++ b/net/mac80211/iface.c
-@@ -865,6 +865,7 @@ static bool ieee80211_iftype_supports_hdr_offload(enum nl80211_iftype iftype)
- 	/* P2P GO and client are mapped to AP/STATION types */
- 	case NL80211_IFTYPE_AP:
- 	case NL80211_IFTYPE_STATION:
-+	case NL80211_IFTYPE_AP_VLAN:
- 		return true;
- 	default:
- 		return false;
-@@ -2120,6 +2121,7 @@ int ieee80211_if_add(struct ieee80211_local *local, const char *name,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
+index 49ab3a1f3b9b..401d457b7946 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
+@@ -180,7 +180,6 @@ static void mt7663s_remove(struct sdio_func *func)
+ 	mt76_free_device(&dev->mt76);
+ }
  
- 	/* setup type-dependent data */
- 	ieee80211_setup_sdata(sdata, type);
-+	ieee80211_set_sdata_offload_flags(sdata);
+-#ifdef CONFIG_PM
+ static int mt7663s_suspend(struct device *dev)
+ {
+ 	struct sdio_func *func = dev_to_sdio_func(dev);
+@@ -235,28 +234,20 @@ static int mt7663s_resume(struct device *dev)
+ 	return err;
+ }
  
- 	if (ndev) {
- 		ndev->ieee80211_ptr->use_4addr = params->use_4addr;
+-static const struct dev_pm_ops mt7663s_pm_ops = {
+-	.suspend = mt7663s_suspend,
+-	.resume = mt7663s_resume,
+-};
+-#endif
+-
+ MODULE_DEVICE_TABLE(sdio, mt7663s_table);
+ MODULE_FIRMWARE(MT7663_OFFLOAD_FIRMWARE_N9);
+ MODULE_FIRMWARE(MT7663_OFFLOAD_ROM_PATCH);
+ MODULE_FIRMWARE(MT7663_FIRMWARE_N9);
+ MODULE_FIRMWARE(MT7663_ROM_PATCH);
+ 
++static DEFINE_SIMPLE_DEV_PM_OPS(mt7663s_pm_ops, mt7663s_suspend, mt7663s_resume);
++
+ static struct sdio_driver mt7663s_driver = {
+ 	.name		= KBUILD_MODNAME,
+ 	.probe		= mt7663s_probe,
+ 	.remove		= mt7663s_remove,
+ 	.id_table	= mt7663s_table,
+-#ifdef CONFIG_PM
+-	.drv = {
+-		.pm = &mt7663s_pm_ops,
+-	}
+-#endif
++	.drv.pm		= pm_sleep_ptr(&mt7663s_pm_ops),
+ };
+ module_sdio_driver(mt7663s_driver);
+ 
 -- 
 2.18.0
 
