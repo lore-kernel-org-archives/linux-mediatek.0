@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA150ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 03:21:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64B23ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 03:30:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wFkBesRwfqcj3CX5Iz3LowXdYgUQd9xk42DDWFH6z/U=; b=x+bm0g8flKNPmK/b3g9LFs2+uJ
-	65925GNu/rUSaJ9MKnBwXg+5ijmnlsXdJQqO0cuc/QAuhTO2nRmAFaOYQPsTxTpXDNumt0va8yTms
-	jBJLRvixF9IOM1XfRg+47uP0gkE7u3ZFvGZfDmnNKZuEzDsscF6O/wo3EWHxjOq4I49iArTU3rCVS
-	NXMFTq7AgAwUuQWu76tz66+Nbt02Ryr+n1yrjs3PJviYcueW6n/+jyO+F75KSurIejmHJ5jihPi9g
-	FNtaaNhKstZHuOaKvVKEoNJ//T5JsK7JQLdaiUoVliJl5/aaq38+Oa+vX32VCa2f7BUq5tYWg5uUQ
-	zF2tyPzw==;
+	bh=skWBqZAawGkqP4SMhK2X47WIfO2k7FpuMDBF+RA3NOM=; b=QeeEoKbt6Kpg7PR7hIFt8/ds3Z
+	swJXC+0+S0lDcBU8114gxZpyYourGtDjKnXgMY2lLB0IvyQhXDQPPSobdkt80Gn5pc6k6FSPfLqiK
+	YxP9oJ0gwic2+axoQWNk+ev3cLKuk17CzCDRiQhk2WfYI+VsIAtmnDYb2OBSA1BeS9Yon6ADRSf0F
+	BWufZ1K1+XwIeOVrwrHcbf9g75t4QQfiS1OgkcxO8gEOQgmXExAFanVfIyty1AipxGPXlIXqj/fnd
+	jq0zizs1dbMmVltsGvDX/x0INJPj5pyHJ4lUXSRcvv80kKXXyrEbGcprlw2QPcrpX8pOZv3GVRwl3
+	7kKmjlfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYfRi-00GcSe-Sy; Thu, 15 Sep 2022 03:21:46 +0000
-Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
+	id 1oYfa8-00Go0Q-Sv; Thu, 15 Sep 2022 03:30:28 +0000
+Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYfRY-00Gbyh-7l; Thu, 15 Sep 2022 03:21:37 +0000
-Received: by mail-oa1-x2b.google.com with SMTP id 586e51a60fabf-1274ec87ad5so45753135fac.0;
-        Wed, 14 Sep 2022 20:21:34 -0700 (PDT)
+	id 1oYfZx-00Gnuz-7t; Thu, 15 Sep 2022 03:30:19 +0000
+Received: by mail-oa1-x2a.google.com with SMTP id 586e51a60fabf-1274ec87ad5so45772964fac.0;
+        Wed, 14 Sep 2022 20:30:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date;
-        bh=wFkBesRwfqcj3CX5Iz3LowXdYgUQd9xk42DDWFH6z/U=;
-        b=ObM2/plyRnLRqerAadJfngGyddnsH7s6dgOq2cT0ktxpFo0XfRu0J1+0F2FpFWlNxM
-         OX/RJnXBuaDizTG9vbIrPbPx/PSZ+SUoL6cJIk4JIV9N04pJT/j6wbYqXVPDMjFF39eb
-         oLecX6dZOcRicCm72+/m5DTP6/nU/r2ymbWD/FhVubnFXas5KKyeHYFOiz0v2poAaLAX
-         9V5e9Qf74MA6NTXmDkBU5gXxC5m6BNdYP8iYyFukqFAYxhHEBEGP/WS1MyNj3H1EsTcJ
-         uymbx+4999P1sIogKfeJPd9GtBCGilv2bfaUdma2YXCFPBIA2BjcJyQ6UAkHkGz317W5
-         znrw==
+        bh=skWBqZAawGkqP4SMhK2X47WIfO2k7FpuMDBF+RA3NOM=;
+        b=eOQu3t7+9CmN5SZ+qdjaWxvkWWegeElVv5kOdgPhbNgwwxVGcxiqOm9P127FPWq0BN
+         O28pFsAOg/XVBmJCZjK8mR0gAZfFMOqVcdnTmIWykymZuupYxVvmK4kqZ1eqiGSyQZEl
+         lb90JW5z1KUtAZLna1KT3epUE0hT5r/GF0mn1XQ04UvF6YUZv/fw45HH9dPLP+dqCb3X
+         Qss6dbtzOUJfHs6XTH+hGOz2c9lgJ7yFkzDp6fuOg+mQ8x34cOSHDNYcjdaV173q2BAG
+         QrnvRlTsy/Yx6OcIAgdKyivO+iLnj4qBMCVabFWPCSQ1806NyMUHfbJ139xBgdv9Xkmn
+         mhvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=wFkBesRwfqcj3CX5Iz3LowXdYgUQd9xk42DDWFH6z/U=;
-        b=yNFqCI/myq9FFSM02IGLE2iQbcTKJtWZ+birYaYqQdGlVQ5KByi37fVqikZQo374Rx
-         0YMlQuF3Kypr7XKsIdwXBO8r0bFYliuAP0iRk/f0jMX+RTlgodRa5ojGk3XoU0CgmI7I
-         WKx8cPk8dHpqZb2/srTL0xzRpbyyEpAPY3sdOnHIHUtu9TJXvmt42RcBEpy1vMht/sBK
-         j7Z9wzjt2UseIKfR244LzQYEQZErhysQaFCnvJTFj/PeeJ4o6yGK/iUvymy6kT0lPy6w
-         zo0oQDjIH9QUnJeCy9kQqaUsnBoA4gxvGfbgZXe/xWAYGEd45cQn9PsQI6YkSf/91ET7
-         X0xw==
-X-Gm-Message-State: ACgBeo2avbOEriE9lvgvIc+I51rTvJRSn4Zuj16n2RGPq8+g0OeZqKbE
-	pN8ZP4scXpsq1K0LxBElq1C482hTWLZ3V7uRFu4=
-X-Google-Smtp-Source: AA6agR72umOG1lwIjilq8Z+bXLoz6rwSEVoZDQ4luKpynK6vC6GFvDWBy92K6048ExMF+/eov5V8X4fmSHo++P6n4bw=
-X-Received: by 2002:a05:6870:c0c8:b0:101:b3c3:abc3 with SMTP id
- e8-20020a056870c0c800b00101b3c3abc3mr4119832oad.144.1663212093765; Wed, 14
- Sep 2022 20:21:33 -0700 (PDT)
+        bh=skWBqZAawGkqP4SMhK2X47WIfO2k7FpuMDBF+RA3NOM=;
+        b=aFCAPhqP2oRnHdALuqxEQZb6lbZ3FB8C3IIUL8kEX25Grgi3DVGocWvHlqoCEzBcGc
+         vOBjAJhnbZpZoJzaZhqfihMZNAKgJ1Nlq6W8jv0ggjvWIq6CNjNVikYHZoOXPv3L82Du
+         lCstYpcZLEYouDxdyRXU0tuXAs61Brf5bEhjbn+mbjawPeiulYmeN4gm+aDvc6V6SFtC
+         5PApgmMcGt7r2bVcEU8UEaGxRUGEhHuUdinDlhw43ZiFUvW4JgZshe2R8fzH3oI5G0Mp
+         YDt0S1aFhHDulQ1XQk33uU66yqRE/O1N1mq8ECu/1LlgVxD3PAICYEU7eUy+ZhjXJiYB
+         WnIg==
+X-Gm-Message-State: ACgBeo1v/YzqFoHNwS1vWloHZEOm7Fh52G6St5fwdtx3+G5HVW8nUZGz
+	OC13SiFVDXSRnXfA6LY+vIw8AFRyNVgXLafHlt0=
+X-Google-Smtp-Source: AA6agR4dqVIcCEqMlu5/6OgoVBdV6J2TbMSZzncWixSoUhyueLvm82XkgJeP2x4LoGKa+9Cx8Etp0AsHlWGQ71ylfWo=
+X-Received: by 2002:a05:6870:f5a7:b0:12b:4a0d:57c6 with SMTP id
+ eh39-20020a056870f5a700b0012b4a0d57c6mr4251289oab.83.1663212615380; Wed, 14
+ Sep 2022 20:30:15 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220914085451.11723-1-arinc.unal@arinc9.com> <20220914085451.11723-5-arinc.unal@arinc9.com>
- <20220914151414.GA2233841-robh@kernel.org> <44045164-692d-c8f5-3216-b043fb821634@arinc9.com>
-In-Reply-To: <44045164-692d-c8f5-3216-b043fb821634@arinc9.com>
+References: <20220914085451.11723-1-arinc.unal@arinc9.com> <20220914085451.11723-6-arinc.unal@arinc9.com>
+ <CAMhs-H9pj+qEdOCEhkyCJPvbFonLuhgSHgL4L6kkhO3YRh52vw@mail.gmail.com> <6593afa8-931b-81eb-d9a8-ec3adbd047c6@arinc9.com>
+In-Reply-To: <6593afa8-931b-81eb-d9a8-ec3adbd047c6@arinc9.com>
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Thu, 15 Sep 2022 05:21:21 +0200
-Message-ID: <CAMhs-H-0XV9ocrG3_MuVc3Q=o8HnYso2CqUURjVR3OMc=dAMYg@mail.gmail.com>
-Subject: Re: [PATCH 04/10] dt-bindings: memory: mt7621: add syscon as
- compatible string
+Date: Thu, 15 Sep 2022 05:30:03 +0200
+Message-ID: <CAMhs-H_woEpWVEWbe+1p76g6M3ALjoVn-OgzpnJQHOjd02tHxw@mail.gmail.com>
+Subject: Re: [PATCH 05/10] mips: dts: ralink: mt7621: fix some dtc warnings
 To: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
 	Vivien Didelot <vivien.didelot@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, 
 	Vladimir Oltean <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>, 
 	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, 
-	DENG Qingfang <dqfext@gmail.com>, erkin.bozoglu@xeront.com, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Sean Wang <sean.wang@mediatek.com>, 
+	Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, erkin.bozoglu@xeront.com, 
 	netdev <netdev@vger.kernel.org>, 
 	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, 
 	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
@@ -81,8 +80,8 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@lina
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_202136_325357_A00AD45D 
-X-CRM114-Status: GOOD (  17.63  )
+X-CRM114-CacheID: sfid-20220914_203017_308921_55D68244 
+X-CRM114-Status: GOOD (  35.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,33 +96,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 14, 2022 at 5:19 PM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc=
-9.com> wrote:
+On Wed, Sep 14, 2022 at 12:46 PM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arin=
+c9.com> wrote:
 >
-> On 14.09.2022 18:14, Rob Herring wrote:
-> > On Wed, Sep 14, 2022 at 11:54:45AM +0300, Ar=C4=B1n=C3=A7 =C3=9CNAL wro=
-te:
-> >> Add syscon as a constant string on the compatible property as it's req=
-uired
-> >> for the SoC to work. Update the example accordingly.
+> Hi Sergio,
+>
+> On 14.09.2022 12:14, Sergio Paracuellos wrote:
+> > Hi Arinc,
 > >
-> > It's not required. It's required to automagically create a regmap. That
-> > can be done yourself as well. The downside to adding 'syscon' is it
-> > requires a DT update. Maybe that's fine for this platform? I don't know=
+> > On Wed, Sep 14, 2022 at 10:55 AM Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@=
+arinc9.com> wrote:
+> >>
+> >> Fix the dtc warnings below.
+> >>
+> >> /cpus/cpu@0: failed to match any schema with compatible: ['mips,mips10=
+04Kc']
+> >> /cpus/cpu@1: failed to match any schema with compatible: ['mips,mips10=
+04Kc']
+> >> uartlite@c00: $nodename:0: 'uartlite@c00' does not match '^serial(@.*)=
+?$'
+> >>          From schema: /home/arinc9/Documents/linux/Documentation/devic=
+etree/bindings/serial/8250.yaml
+> >> uartlite@c00: Unevaluated properties are not allowed ('clock-names' wa=
+s unexpected)
+> >>          From schema: /home/arinc9/Documents/linux/Documentation/devic=
+etree/bindings/serial/8250.yaml
+> >> sdhci@1e130000: $nodename:0: 'sdhci@1e130000' does not match '^mmc(@.*=
+)?$'
+> >>          From schema: /home/arinc9/Documents/linux/Documentation/devic=
+etree/bindings/mmc/mtk-sd.yaml
+> >> sdhci@1e130000: Unevaluated properties are not allowed ('bus-width', '=
+cap-mmc-highspeed', 'cap-sd-highspeed', 'disable-wp', 'max-frequency', 'vmm=
+c-supply', 'vqmmc-supply' were unexpected)
+> >>          From schema: /home/arinc9/Documents/linux/Documentation/devic=
+etree/bindings/mmc/mtk-sd.yaml
+> >> xhci@1e1c0000: $nodename:0: 'xhci@1e1c0000' does not match '^usb(@.*)?=
+'
+> >>          From schema: /home/arinc9/Documents/linux/Documentation/devic=
+etree/bindings/usb/mediatek,mtk-xhci.yaml
+> >> xhci@1e1c0000: compatible: ['mediatek,mt8173-xhci'] is too short
+> >>          From schema: /home/arinc9/Documents/linux/Documentation/devic=
+etree/bindings/usb/mediatek,mtk-xhci.yaml
+> >> switch0@0: $nodename:0: 'switch0@0' does not match '^(ethernet-)?switc=
+h(@.*)?$'
+> >>          From schema: /home/arinc9/Documents/linux/Documentation/devic=
+etree/bindings/net/dsa/mediatek,mt7530.yaml
+> >> port@1: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
+> >>          From schema: /home/arinc9/.local/lib/python3.10/site-packages=
+/dtschema/schemas/dt-core.yaml
+> >> port@2: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
+> >>          From schema: /home/arinc9/.local/lib/python3.10/site-packages=
+/dtschema/schemas/dt-core.yaml
+> >> port@3: status:0: 'off' is not one of ['okay', 'disabled', 'reserved']
+> >>          From schema: /home/arinc9/.local/lib/python3.10/site-packages=
+/dtschema/schemas/dt-core.yaml
+> >>
+> >> - Remove "mips,mips1004Kc" compatible string from the cpu nodes. This
+> >> doesn't exist anywhere.
+> >> - Change "memc: syscon@5000" to "memc: memory-controller@5000".
+> >> - Change "uartlite: uartlite@c00" to "serial0: serial@c00" and remove =
+the
+> >> aliases node.
+> >> - Remove "clock-names" from the serial0 node. The property doesn't exi=
+st on
+> >> the 8250.yaml schema.
+> >> - Change "sdhci: sdhci@1e130000" to "mmc: mmc@1e130000".
+> >> - Change "xhci: xhci@1e1c0000" to "usb: usb@1e1c0000".
+> >> - Add "mediatek,mtk-xhci" as the second compatible string on the usb n=
+ode.
+> >> - Change "switch0: switch0@0" to "switch0: switch@0"
+> >> - Change "off" to "disabled" for disabled nodes.
+> >>
+> >> Remaining warnings are caused by the lack of json-schema documentation=
 .
+> >>
+> >> /cpuintc: failed to match any schema with compatible: ['mti,cpu-interr=
+upt-controller']
+> >> /palmbus@1e000000/wdt@100: failed to match any schema with compatible:=
+ ['mediatek,mt7621-wdt']
+> >> /palmbus@1e000000/i2c@900: failed to match any schema with compatible:=
+ ['mediatek,mt7621-i2c']
+> >> /palmbus@1e000000/spi@b00: failed to match any schema with compatible:=
+ ['ralink,mt7621-spi']
+> >> /ethernet@1e100000: failed to match any schema with compatible: ['medi=
+atek,mt7621-eth']
+> >>
+> >> Signed-off-by: Ar=C4=B1n=C3=A7 =C3=9CNAL <arinc.unal@arinc9.com>
+> >> ---
+> >>   .../boot/dts/ralink/mt7621-gnubee-gb-pc1.dts  |  2 +-
+> >>   .../boot/dts/ralink/mt7621-gnubee-gb-pc2.dts  |  2 +-
+> >>   arch/mips/boot/dts/ralink/mt7621.dtsi         | 32 +++++++----------=
+--
+> >>   3 files changed, 14 insertions(+), 22 deletions(-)
+> >>
+> >> diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts b/arch=
+/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
+> >> index 24eebc5a85b1..6ecb8165efe8 100644
+> >> --- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
+> >> +++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
+> >> @@ -53,7 +53,7 @@ system {
+> >>          };
+> >>   };
+> >>
+> >> -&sdhci {
+> >> +&mmc {
+> >>          status =3D "okay";
+> >>   };
+> >>
+> >> diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts b/arch=
+/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
+> >> index 34006e667780..2e534ea5bab7 100644
+> >> --- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
+> >> +++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
+> >> @@ -37,7 +37,7 @@ key-reset {
+> >>          };
+> >>   };
+> >>
+> >> -&sdhci {
+> >> +&mmc {
+> >>          status =3D "okay";
+> >>   };
+> >>
+> >> diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dt=
+s/ralink/mt7621.dtsi
+> >> index ee46ace0bcc1..9302bdc04510 100644
+> >> --- a/arch/mips/boot/dts/ralink/mt7621.dtsi
+> >> +++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+> >> @@ -15,13 +15,11 @@ cpus {
+> >>
+> >>                  cpu@0 {
+> >>                          device_type =3D "cpu";
+> >> -                       compatible =3D "mips,mips1004Kc";
+> >>                          reg =3D <0>;
+> >>                  };
+> >>
+> >>                  cpu@1 {
+> >>                          device_type =3D "cpu";
+> >> -                       compatible =3D "mips,mips1004Kc";
+> >>                          reg =3D <1>;
+> >>                  };
+> >>          };
+> >
+> > Instead of removing this, since compatible is correct here, I think a
+> > cpus yaml file needs to be added to properly define mips CPU's but
+> > compatible strings using all around the sources are a bit messy. Take
+> > a look of how is this done for arm [0]
 >
-> My GB-PC2 won't boot without syscon on mt7621.dtsi. This string was
-> always there on the memory controller node on mt7621.dtsi.
+> I did investigate the arm bindings beforehand. I've seen that some of
+> the strings are also checked by code. I don't see the mips strings used
+> anywhere but DTs so I had decided to remove it here. I guess we can make
+> a basic binding to list the mips processor cores.
 
-The string was introduced because the mt7621 clock driver needs to
-read some registers creating a regmap from the syscon. The bindings
-were added before the clock driver was properly mainlined and at first
-the clock driver was using ralink architecture dependent operations
-rt_memc_* defined in
-'arch/mips/include/asm/mach-ralink/ralink_regs.h'. I forgot to update
-the mem controller binding when memc became a syscon so I think this
-patch is correct. I also think the sample should use 'syscon' in the
-node name instead of memory-controller.
+At the very least I do think a compatible string should exist for cpu
+nodes :). And because of the mess with MIPS cpu nodes in dts files all
+around I think we should only add this 'compatible' as a requirement
+and mark 'reg' and 'device_type' as optionals.
+
+>
+> What do you think Thomas?
+>
+> >
+> >> @@ -33,11 +31,6 @@ cpuintc: cpuintc {
+> >>                  compatible =3D "mti,cpu-interrupt-controller";
+> >>          };
+> >>
+> >> -       aliases {
+> >> -               serial0 =3D &uartlite;
+> >> -       };
+> >> -
+> >> -
+> >>          mmc_fixed_3v3: regulator-3v3 {
+> >>                  compatible =3D "regulator-fixed";
+> >>                  regulator-name =3D "mmc_power";
+> >> @@ -110,17 +103,16 @@ i2c: i2c@900 {
+> >>                          pinctrl-0 =3D <&i2c_pins>;
+> >>                  };
+> >>
+> >> -               memc: syscon@5000 {
+> >> +               memc: memory-controller@5000 {
+> >>                          compatible =3D "mediatek,mt7621-memc", "sysco=
+n";
+> >>                          reg =3D <0x5000 0x1000>;
+> >>                  };
+> >>
+> >
+> > I think syscon nodes need to use 'syscon' in the node name, but I am
+> > not 100% sure.
+>
+> I've tested this patch series on my GB-PC2, it currently works fine.
+> Also, DT binding for MT7621 memory controller uses memory-controller on
+> the example so I guess it's fine?
+
+I know that works fine but when the node is a syscon it is good to
+have that syscon in the node name (I don't know if having it is a rule
+or something, I guess no). In any case I agree that binding and dts
+should match.
 
 Best regards,
     Sergio Paracuellos
