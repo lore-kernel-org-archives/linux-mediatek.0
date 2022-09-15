@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AADFECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 10:25:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37155ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 10:27:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JQUPaDejsuC9yzmQ0/i/EFHRfotILL1VonfSIxVGecM=; b=u4QPnwClSP0Hr+ApYzYLu8vleT
-	hCXPkBt2leUhBPsiw078Slu70+6gtRg7o5VaeLW4PPzZR9tpTpAroZMM9tZ/WjNGtDphkQ4PWbwCx
-	91Hbsw7jQFXI2UUcyLRPt4ZwuoKiPrKpHj2GkKTMnpC13hBaoCKXz4kBpc6dG/plxDt2ldgVLrSxW
-	CjI3UtWde0YWwYK0BBHYBB6p3pydeIBkdIE8yAdDt+8nw+wavEk/QkJyPoRJQpH0j9XbP8yOw0Q0h
-	bWoWYbzpTUFesOBJ2ibCLhQ3iLMSEawlEiZYNf5dUrDuvlW8Q72+C3YrWZkH1XzE2mjWO7runTHQa
-	sSqJGygg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aleWP+Qc0EQlETQZQ8wzJbVsDpW6Hr549VkiF5sGFxs=; b=zqNr1KmWrDikRNQGk0BJo/EylT
+	J1LTjoqEVhShl1sY71oGU1V84rz8kOGMEtOPqDnf4nSfoNHi2OdF+C8vHxxvk4b0Qe6hvlucML79l
+	f5pJ95BtHgOwioEm1gLx5NRbh5xBsz/KFSYKmt5yJb25n00sVWJgoJo3SeYOd2Mf7Rtm08jbRvGnD
+	7oOXmyD3SoQBA7GPHojkops5oDXB4I49djf7Z6bhd5VrnR+iyOmIZYD8xY2iClFiiaSjJSBiRh/Oh
+	tXZftcBlK6KyjsAd9YLrSC05QhouvX9ybv/RVHvphsGTW3Q16YtGHUIUB0/OlwLh8i38WRCNimx5H
+	S2g/7UGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYm3R-006f1T-G9; Thu, 15 Sep 2022 10:25:09 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oYm5c-006hSK-8f; Thu, 15 Sep 2022 10:27:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYm3E-006eck-MH; Thu, 15 Sep 2022 10:24:58 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E86936600371;
-	Thu, 15 Sep 2022 11:24:54 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663237495;
-	bh=dzvyAv7u5rz3DlDYP4mS/XsMlrYVI4W8bUZSZ8822rI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IogmJYyCu2reXph7llyGnbDKO2WatCn1H95lf84LDss+/omDaeEbVELjcngQZr7mq
-	 9j14Dd2VhkvL1L9lGzDma2t3eIn0p6ImRd5yval+7QWdUCDn/DTJSDrapMwQoH8/l7
-	 WS6ydCweXMxbjoMtI5tAU/JjAR3fPVR/qmX9Ak67jhZZd1ig0v62mnYonis8c2ioL2
-	 kLZbEP7CZLYCAGKyCaG2B/bNg1zOMA/U+1vsAmA48DE622+Z+SeYQn+1LiUgC8/Usz
-	 U1kCtthnJIB6VdSK+o3P2kzGfimr1t1OlhY0AiLfPTF4yEG9uJvcXS5uvUKT/78xR2
-	 QLJ8JxVe4JkFQ==
-Message-ID: <7498e2dd-1d5e-78ae-54b9-4d5dd9bc7ce1@collabora.com>
-Date: Thu, 15 Sep 2022 12:24:52 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v2 2/4] arm64: dts: mt8195: Add edptx and dptx nodes
-Content-Language: en-US
-To: Bo-Chen Chen <rex-bc.chen@mediatek.com>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-Cc: matthias.bgg@gmail.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
+	id 1oYm5Z-006hRP-Jw; Thu, 15 Sep 2022 10:27:22 +0000
+X-UUID: 81e9fab0c828425aaec9b9764a97b4b6-20220915
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=aleWP+Qc0EQlETQZQ8wzJbVsDpW6Hr549VkiF5sGFxs=;
+	b=FhblS9C2WgOiwFLScPeAtq1uox9E2UO4DFv3t91pYsPZZlntKzuSDQUE4o+xBz6JZbs9Z46QhEhWqeuPuTkho+C86gJermM0Anpsky0/bfZ8D1E93hKhb0n/+gL9y5/RDoSySkKl+Q7MWyKYet3gEAPrAn7owtDI67fb0dgzgMA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:a11ab001-32e6-4110-931b-b659027ffd61,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:cd2ec45d-5ed4-4e28-8b00-66ed9f042fbd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 81e9fab0c828425aaec9b9764a97b4b6-20220915
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1047520462; Thu, 15 Sep 2022 03:27:17 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Thu, 15 Sep 2022 17:46:41 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 15 Sep 2022 17:46:41 +0800
+From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>
+CC: <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
+	<rex-bc.chen@mediatek.com>
+Subject: [PATCH v2 4/4] arm64: dts: mediatek: cherry: Add edptx and dptx support
+Date: Thu, 15 Sep 2022 17:46:40 +0800
+Message-ID: <20220915094640.5571-5-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220915094640.5571-1-rex-bc.chen@mediatek.com>
 References: <20220915094640.5571-1-rex-bc.chen@mediatek.com>
- <20220915094640.5571-3-rex-bc.chen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220915094640.5571-3-rex-bc.chen@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_032456_899542_00E03318 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20220915_032721_690795_B7BEDA54 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,18 +80,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/09/22 11:46, Bo-Chen Chen ha scritto:
-> In MT8195, we use edptx as the internal display interface and use
-> dptx as the external display interface. Therefore, we need to add
-> these nodes to support the internal display and the external display.
-> 
-> - Add dp calibration data in the efuse node.
-> - Add edptx and dptx nodes for MT8195.
-> 
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+In cherry projects, we use edptx as the internal display interface
+and use dptx as the external display interface. To support this, we
+need to add more properties.
 
+- Add pinctrls for edptx and dptx.
+- Add ports for edptx and dptx.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+The port connections for the internal and external display:
+dp-intf0 -> edptx -> panel
+dp-intf1 -> dptx
 
+Because it lacks port of panel, so we keep empty remote-endpoint for
+port1@edptx.
+
+Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+---
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 68 +++++++++++++++++++
+ 1 file changed, 68 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index 303dc32c64dc..560103e29017 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -125,6 +125,7 @@
+ 
+ 	port {
+ 		dp_intf0_out: endpoint {
++			remote-endpoint = <&edp_in>;
+ 		};
+ 	};
+ };
+@@ -134,6 +135,59 @@
+ 
+ 	port {
+ 		dp_intf1_out: endpoint {
++			remote-endpoint = <&dptx_in>;
++		};
++	};
++};
++
++&edp_tx {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&edptx_pins_default>;
++
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			reg = <0>;
++			edp_in: endpoint {
++				remote-endpoint = <&dp_intf0_out>;
++			};
++		};
++
++		port@1 {
++			reg = <1>;
++			edp_out: endpoint {
++				data-lanes = <0 1 2 3>;
++			};
++		};
++	};
++};
++
++&dp_tx {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&dptx_pin>;
++
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			reg = <0>;
++			dptx_in: endpoint {
++				remote-endpoint = <&dp_intf1_out>;
++			};
++		};
++
++		port@1 {
++			reg = <1>;
++			dptx_out: endpoint {
++				data-lanes = <0 1 2 3>;
++			};
+ 		};
+ 	};
+ };
+@@ -497,6 +551,20 @@
+ 		};
+ 	};
+ 
++	edptx_pins_default: edptx-default-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO7__FUNC_EDP_TX_HPD>;
++			bias-pull-up;
++		};
++	};
++
++	dptx_pin: dptx-default-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO18__FUNC_DP_TX_HPD>;
++			bias-pull-up;
++		};
++	};
++
+ 	i2c0_pins: i2c0-default-pins {
+ 		pins-bus {
+ 			pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
+-- 
+2.18.0
 
 
