@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A9FECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 14:08:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 966BCC54EE9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 14:09:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=H+SS6lfeWpWo2fZcJknMvka571dOGDvz57dChhn0FlM=; b=fmbu8SYgBet83OShSa7YFfraVr
-	7RGqAAmkVSc+tqLAl+10SdBWYLkJYLlrKPGotvHIAwTR9g0v9DFMb6wlkUSMAfNZjHPcvdkyIzFKQ
-	adycPmIKBejpjCiVcZpglSN97AX+vpAhNB1SfU4o2E+RJUkbObXp2iejbwOa2NODq2PisJS/zEpjt
-	Xbp2f56q5aagM/B4GN76Kaev/49OHgltoySaN0DknCmDoUhNTA2hgbBbPnaV2r45zmW3H6vjDaaDP
-	xStYYy8rYZqq5VxYdiOH7V+YoT0nUToq17DNKux4hyL144lrLeqTlAL+3MlJMS/yiEUjzswYLBTKr
-	Stb6RcQg==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=//32S1i46vXVRy+d0zvrACix42xN5G/83NKutSBPkE8=; b=iihJyFVO65Ym+36XIhvKTRGZLs
+	IWNMtY5RdW4VZtVM+1qu0HWzY2azZ1e8YZJTk+ZK+UKPXoifILnTvrAs5Vtd6sT58d9b/CKRqsK5S
+	P8k+orAznK9X81wWuVxem2zDofm/VLTzOpDxLwX5TT3LTcgLWzerosVTuKtZPDCOzr52+ef0oTPaU
+	t1sj/f6Z6g/zYJDD1OY+Mjn/q4MPvSxxYs8Zx0mooRVapkIM9JgPv0qSnxA7knyAGfD7J/pYXSl98
+	xcDQkHM8RlJAE7b0sXO1+ucAQl8XuVcQwt47uhlAbO9J/xor4GVlX4Y1kZTVrWYgqc5bvy3b5Nfhy
+	JnjCNebw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZC1O-00Dz1e-4F; Fri, 16 Sep 2022 14:08:46 +0000
+	id 1oZC2O-00DzRV-IB; Fri, 16 Sep 2022 14:09:48 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZC1C-00Dywh-8t; Fri, 16 Sep 2022 14:08:35 +0000
-X-UUID: d438d9a375204b089d7ce0a10c574fac-20220916
+	id 1oZC29-00DzLr-Jg; Fri, 16 Sep 2022 14:09:35 +0000
+X-UUID: 2915dd42dcc746e2b993db22388cc831-20220916
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=H+SS6lfeWpWo2fZcJknMvka571dOGDvz57dChhn0FlM=;
-	b=HJ/Jg7P+/tqVHRImDqsRCC0Sc9tPXQWDn31mNSYEDhkA6iQS3fFemQtAfXWNm9MQyrTSaUO8iAXlH9Xg1Pn79iC9qmgt9Va4FJFi35f0wO3EOam9c6nowC6SMhi0B3SHRXUVx/6/BYlpERVcjGhxMIeg+EUXVBLLRVdIdIXul3g=;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=//32S1i46vXVRy+d0zvrACix42xN5G/83NKutSBPkE8=;
+	b=WF+qMb9NQ3nk/GfQ4gLnS9j1JpfdqEnVY+EaPLrn86JZRkrMzM/N89txDMcEyUmX6YoAcUvfg8eoZHehDeTi5dvTh8ZpdSUo3SZH1OmxMTzWyxmAoyzdHitgafIpP4fxfbmTI4xaDhzJP6BaSY3mBIpDMIQQ4AwaK8Mt/Z2YPa0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:adde18de-6eaf-4370-b7be-808569254d20,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:30c67e8a-35ad-4537-90e7-b56a69d5f8a4,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:792a9e11-06c1-4a3c-b5ed-65402abd3904,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:65f9ea5d-5ed4-4e28-8b00-66ed9f042fbd,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: d438d9a375204b089d7ce0a10c574fac-20220916
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 2915dd42dcc746e2b993db22388cc831-20220916
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <rex-bc.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1677367839; Fri, 16 Sep 2022 07:08:26 -0700
+	with ESMTP id 872199371; Fri, 16 Sep 2022 07:09:29 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.792.15; Fri, 16 Sep 2022 21:38:23 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 16 Sep 2022 21:38:22 +0800
+ 15.2.792.15 via Frontend Transport; Fri, 16 Sep 2022 21:38:23 +0800
 From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>
 CC: <matthias.bgg@gmail.com>, <granquet@baylibre.com>, <daniel@ffwll.ch>,
@@ -56,18 +56,19 @@ CC: <matthias.bgg@gmail.com>, <granquet@baylibre.com>, <daniel@ffwll.ch>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
 	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v2 0/3] Refactor MediaTek DP drivers
-Date: Fri, 16 Sep 2022 21:38:18 +0800
-Message-ID: <20220916133821.27980-1-rex-bc.chen@mediatek.com>
+Subject: [PATCH v2 3/3] drm/mediatek: dp: Fix warning in mtk_dp_video_mute()
+Date: Fri, 16 Sep 2022 21:38:21 +0800
+Message-ID: <20220916133821.27980-4-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220916133821.27980-1-rex-bc.chen@mediatek.com>
+References: <20220916133821.27980-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220916_070834_331151_B69D7BE6 
-X-CRM114-Status: UNSURE (   6.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220916_070933_693633_FD944755 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,22 +83,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For this series, we do some clean-up and fix a build warning.
-This series is based on linux-next-20220915.
+Warning:
+../drivers/gpu/drm/mediatek/mtk_dp.c: In function ‘mtk_dp_video_mute’:
+../drivers/gpu/drm/mediatek/mtk_dp.c:947:23: warning: format ‘%x’
+expects argument of type ‘unsigned int’, but argument 4 has type ‘long
+unsigned int’ [-Wformat=]
+  947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../include/linux/dev_printk.h:129:27: note: in definition of macro ‘dev_printk’
+  129 |   _dev_printk(level, dev, fmt, ##__VA_ARGS__);  \
+      |                           ^~~
+../include/linux/dev_printk.h:163:31: note: in expansion of macro ‘dev_fmt’
+  163 |   dev_printk(KERN_DEBUG, dev, dev_fmt(fmt), ##__VA_ARGS__); \
+      |                               ^~~~~~~
+../drivers/gpu/drm/mediatek/mtk_dp.c:947:2: note: in expansion of
+macro ‘dev_dbg’
+  947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
+      |  ^~~~~~~
+../drivers/gpu/drm/mediatek/mtk_dp.c:947:36: note: format string is defined here
+  947 |  dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
+      |                                   ~^
+      |                                    |
+      |                                    unsigned int
+      |                                   %lx
 
-Changes for v2:
-1. Update commit message in "drm/mediatek: dp: Reduce indentation in mtk_dp_bdg_detect()".
-2. Add fix tag for "drm/mediatek: dp: Fix warning in mtk_dp_video_mute()".
+To fix this issue, we use %s to replace 0x%x.
 
-Bo-Chen Chen (3):
-  drm/mediatek: dp: Reduce indentation in mtk_dp_bdg_detect()
-  drm/mediatek: dp: Remove unused register definitions
-  drm/mediatek: dp: Fix warning in mtk_dp_video_mute()
+Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
+Reported-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- drivers/gpu/drm/mediatek/mtk_dp.c     | 70 ++++++++++++++-------------
- drivers/gpu/drm/mediatek/mtk_dp_reg.h |  6 ---
- 2 files changed, 36 insertions(+), 40 deletions(-)
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index c72c646e25e9..d58e98b2f83a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -1222,8 +1222,8 @@ static void mtk_dp_video_mute(struct mtk_dp *mtk_dp, bool enable)
+ 		      mtk_dp->data->smc_cmd, enable,
+ 		      0, 0, 0, 0, 0, &res);
+ 
+-	dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: 0x%x, ret: 0x%lx-0x%lx\n",
+-		mtk_dp->data->smc_cmd, enable, res.a0, res.a1);
++	dev_dbg(mtk_dp->dev, "smc cmd: 0x%x, p1: %s, ret: 0x%lx-0x%lx\n",
++		mtk_dp->data->smc_cmd, enable ? "enable" : "disable", res.a0, res.a1);
+ }
+ 
+ static void mtk_dp_audio_mute(struct mtk_dp *mtk_dp, bool mute)
 -- 
 2.18.0
 
