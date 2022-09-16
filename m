@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD897ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 01:52:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C927ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 01:59:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aC9p5EUciWE62FXN9xCu29LXkZgaSFsdB9J57e55t1U=; b=kHUK1PnexA3DeHA9YM8Cr09t8t
-	dTyjHSGLoCp4noYTB6XYBOenI2PSBMXvBqTa9rMAEGWoLqhNR9E+kzGjF48/yRs5BQiyA25UTkOc3
-	nqsRsy9IRDkiKVI3BGGm9SWlq6V56aD0X6fBXKmu18kc8KJtl/3KdV3Ke0IZCh3i0ww2TykntmAbk
-	NKbWVfxiN3bMzcc0IjbO9PXQmgj2M7WLaXuDHP8KEd+23Mll//Qj54ay950ZqWStp/6Rxz4LFvV4c
-	OorSiiT+sw3Xi/ZtNdvnIuUnIJO1vWCt9W8smVmVx3e53URZbQ4Q0uYDyS0pJYVsoTFTs0zFi0iHv
-	hJOVbzxw==;
+	bh=pxKJ+gbL8/7B+B3rKoAm20e7s3BjFPOR+hbkLzLpVZw=; b=mmGs481GUs3ksldvivle1OZw5K
+	An7JXsK/a+Hg61wDdn+2zq8TVGgqGODa5ZYof8bRtJB9Xw+ZxmhERBoqy91h03cfGKAni1EtyANFU
+	uqo723B8TObo0C66ZjwuBSm7iCj6wXgWXG1sYbW34ZZLFJe5OcgX1g4tOeNgl4K5SV6FrdXJDSHXr
+	Kw58brrVOvYpB4FvSzGea/Bg6UB2oYeTkW1pAdEORlGxMlzzw/GHSryM8cqVdznGPBviONJ5wTahp
+	UnpLZaAmwJiDm/geyvGyVqY+pfU1Me5r9b4WYZEF6upieOSlLNV9QZl2bv7OkepXNt647GqTNu4ub
+	tUSo9ntQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZ0Wc-004goY-IL; Fri, 16 Sep 2022 01:52:14 +0000
+	id 1oZ0dv-004lMv-65; Fri, 16 Sep 2022 01:59:47 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZ0WR-004gjz-Ii; Fri, 16 Sep 2022 01:52:05 +0000
-X-UUID: a0ae97ef4ab54ee8a39c1c2920810f36-20220915
+	id 1oZ0di-004lDd-Ro; Fri, 16 Sep 2022 01:59:36 +0000
+X-UUID: 6789a39fc38b4167a42f3280234b10c2-20220915
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=aC9p5EUciWE62FXN9xCu29LXkZgaSFsdB9J57e55t1U=;
-	b=bov35MI20lo6NjA1sBWjEIFc2XrdaYjH9hP/GhM5/2AECz4hp2Gq0TxXNzb9Ln90HMOdMZlPlHoswUNc+LohcSwdSqQ45U0xhu8yLzaGUW5LPxIqEIT8e/YDsPAeWSRovW0FP2k8AWvIO6rt5zQAQwSH8K83ECC20RfP1tzviA8=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=pxKJ+gbL8/7B+B3rKoAm20e7s3BjFPOR+hbkLzLpVZw=;
+	b=dUJDFZxnhgD0Peniri4oGNPS5LkJOLGcw6shdoW1s2uFKui/bNitAxvsnimQbC0/H1H5lLJ3UICc6tywpPl55kY0Ft5ewS25YPxOkUMjcJDVvmCLMKuHwesyEHDty+NZamwQSEcs8vARHI9gqcZ6NlGqoiN2Kw1epvFUrAbhmhA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:a131d0f1-13f9-445f-a770-8c3ace4f4ba8,IP:0,U
+X-CID-O-INFO: VERSION:1.1.11,REQID:2e3d1c9d-f0f0-4d2c-bd55-b27a118ed1ed,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:5fa493f6-6e85-48d9-afd8-0504bbfe04cb,B
+X-CID-META: VersionHash:39a5ff1,CLOUDID:c44294f6-6e85-48d9-afd8-0504bbfe04cb,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: a0ae97ef4ab54ee8a39c1c2920810f36-20220915
+X-UUID: 6789a39fc38b4167a42f3280234b10c2-20220915
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 264607678; Thu, 15 Sep 2022 18:41:54 -0700
+	with ESMTP id 1940372005; Thu, 15 Sep 2022 18:59:26 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 16 Sep 2022 09:11:18 +0800
+ 15.2.792.15; Fri, 16 Sep 2022 09:08:48 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 16 Sep 2022 09:11:18 +0800
-Message-ID: <d87203dea8d57868751dfbbce33d210e8976da7c.camel@mediatek.com>
+ Transport; Fri, 16 Sep 2022 09:08:48 +0800
+Message-ID: <e00c1115761b292a6525b71dd7283014f2ade896.camel@mediatek.com>
 Subject: Re: [PATCH 1/5] dt-bindings: arm: mediatek: mmsys: change
  compatible for MT8195
 From: Jason-JH Lin <jason-jh.lin@mediatek.com>
@@ -55,13 +55,13 @@ To: Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
 	<chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
  Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>
-CC: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, "Singo
- Chang" <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+CC: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, Singo
+ Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
 	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 16 Sep 2022 09:11:18 +0800
+Date: Fri, 16 Sep 2022 09:08:47 +0800
 In-Reply-To: <a8e18b62-f49f-7c99-e046-3ee609e11627@gmail.com>
 References: <20220914182331.20515-1-jason-jh.lin@mediatek.com>
 	 <20220914182331.20515-2-jason-jh.lin@mediatek.com>
@@ -74,8 +74,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_185203_780471_BDB08762 
-X-CRM114-Status: GOOD (  42.44  )
+X-CRM114-CacheID: sfid-20220915_185934_918643_FBE6E46A 
+X-CRM114-Status: GOOD (  42.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -199,7 +199,7 @@ On Thu, 2022-09-15 at 18:20 +0200, Matthias Brugger wrote:
 > If we change the compatible, we should keep mediatek,mt8195-mmsys as
 > fallback of 
 > "mediatek,mt8195-vdosys0" so that older device tree blobs won't break
-> with a Mtk811
+> with a 
 > newer kernel.
 > For "mediatek,mt8195-vdosys1" we do not need a fallback compatible as
 > the code 
