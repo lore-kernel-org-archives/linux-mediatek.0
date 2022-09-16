@@ -4,88 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E090C6FA90
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Sep 2022 22:05:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 714D9ECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 00:39:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zpqoR6zYZaDbnVePsdH4FdM+xRD3zWKF1Haict6bhus=; b=UHH/sa+6ZEKgY7/kQKhwvE01UN
-	yFqMI7poTcadzhRdhQdkhVAEmUx9BEq2Mg94Pg8zOf0V77RO63zQlDOELTl4/2Y+rNyDaSEIKJd7g
-	PQROh1mMGirLyiXb++ukjtJ3/+Vg6fZotlNAxoxFQLHAwm+fRsV0Pn7C9qmgtyBAiSHvl3KKiGS6Q
-	59wxCaswAL4+rVscuRtYrGP9zPqPLqwvp4qBGeMl2Rs/BMVx6T1WGENekzFAwfpb9ueNUsXSAU2Kl
-	uD5EWHFq+cvj1q9i0qLbBGstHubXaQVC0fN7L/4Gi8o8t4H6bLIrVpOSvMB3k1ZaJilIbQsbdaXAp
-	NkF2i18w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=btxeb0TAlItcniZCTe2RZdkxn60+QlCFj1RCEVm9Vkw=; b=wrk6RREY1yzyK1nVWPhNtQFzAo
+	hG9zotBD7qhnuGXFSbvGiy0v+Wr2QUB6WymeKMkPhtAl4MzRhZh7zwBjlIjQdVIyg2EyoLeaOG0Nh
+	Uts+9w0oKiw1ZcCuEAchGs/GNrvEu1xLO5ZV66gCQ179/xEFXgumLLMQp3BM25dfWwC+iaE5bGfLl
+	AEqMavZg6rJT/UDVRyq4o/5DHnTqnMp8Z3aovY5ehXu3nCRuldM7PpZ2+JJUzUTuG0N07b5CxTIM6
+	2Mj9y94tQexe9yJmZ+B76zC3lDZaa8qUWUptzFDAQwY2aJzNUr1yN2AvRw2imKovcf1e1R9lRTJa6
+	EI/kcpuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYwzU-000j4c-CO; Thu, 15 Sep 2022 22:05:48 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1oYzOM-003lAk-QF; Fri, 16 Sep 2022 00:39:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYwzQ-000iva-FI; Thu, 15 Sep 2022 22:05:45 +0000
-Received: by mail-wr1-x429.google.com with SMTP id x14so95380wrv.2;
-        Thu, 15 Sep 2022 15:05:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=zpqoR6zYZaDbnVePsdH4FdM+xRD3zWKF1Haict6bhus=;
-        b=XsVZUp1G1GndrcNDmonhqsYyg8HENAjE19GNzlYPa/9kJbmBwf5y8+EJXbj0+cAhPJ
-         K/d+4UWOFoDSxeoGXdWIdcZR/FU8eOo0ROvShTuaP1k0e9WN9d9NxzdivNQz1SyuC1s0
-         HFknvEWVqwQWonj6Hjtb2csapqZ8tthlClB/YlLzrIPHCGItCQSFE+PoO6evABmQEIL6
-         0cXE5lJQ/WGwcjbX8iAqVaG+8Ae5a3o16RGAV+/bFA27j1PzMp2FoCDIx8yMhVjblA2Y
-         fao53K60h9ADNAbZt+b5wHD7mhvKx+8h3JPGzSkufm6Rixa6jeUaX0bsQyWwPVD1Cx7Y
-         DhOA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=zpqoR6zYZaDbnVePsdH4FdM+xRD3zWKF1Haict6bhus=;
-        b=dZfn2I/3bZ9dypGY26Kv+jNYPIfW8wicv1CfQq71U5ny+9eImCWPzld9nGLRMiYWKw
-         Jdb7t3erLxWo2QLZOdoZ0XR3QBJYoqCPACTZcllO0PVaFV4NgoQaCdszwKBg3ZRM5u/0
-         /CDbxwf/P/UTjQLBcsFrIGRh4Nfvg/VGuRDIyrFNR8C6T1U03QoDSzdi8ID6TXHQZNyH
-         DFjQk1OpcoxCd9Yv3rcnub7sFMw01WRArdBNlawC9Ad8wFBr0QQXajLLLz9EXzK0hGsq
-         GMKnFjJ4na7sZglyhdj/R6q2xLpTZ3pSOjNpOeyD6n8YuyMN1y21GWscLZUwuc4orVM4
-         vVgw==
-X-Gm-Message-State: ACrzQf3AIqpaAQs7EAoekEGUJd04Clt6fOpqpgd+W6mkB2QJzd72fNGS
-	/lb8HnD4TUaDaUfj0SHxD4U=
-X-Google-Smtp-Source: AMsMyM5AwDHR+8oZ+u3KaLAwxnWLC8Cjl6pFCJwRn0zoZVRLZeruSgKYx2FpwJShdi51jWomIYHDfQ==
-X-Received: by 2002:a5d:5963:0:b0:22a:47ed:f98f with SMTP id e35-20020a5d5963000000b0022a47edf98fmr1022216wri.155.1663279536730;
-        Thu, 15 Sep 2022 15:05:36 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.167.132])
-        by smtp.gmail.com with ESMTPSA id u15-20020a05600c19cf00b003b33943ce5esm217457wmq.32.2022.09.15.15.05.34
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Sep 2022 15:05:35 -0700 (PDT)
-Message-ID: <e6921ed7-a14c-aadb-abd4-1e7ee0a63be9@gmail.com>
-Date: Fri, 16 Sep 2022 00:05:34 +0200
+	id 1oYzOK-003kF2-KQ
+	for linux-mediatek@lists.infradead.org; Fri, 16 Sep 2022 00:39:38 +0000
+X-UUID: 01c31b86550e492b9b35909ff3d6e932-20220915
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=btxeb0TAlItcniZCTe2RZdkxn60+QlCFj1RCEVm9Vkw=;
+	b=LCEVVJwRUO/GxiWlSWIk4sxmHG+mNM645XA2uM43QicPxcNOxPaFwvWsaEDN1cQlxfQJBpP9G2WeZO8zdLee+C9awsJZn/V46oEEpf7K41WIvke6aWwYBxICeqUNhRRE54p402jBrPn3pOKATbztinu/Ox91Jh9YEySNlQYKNoI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:83fdf506-9bcd-4271-93a9-1d114b483257,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:985ecc7b-ea28-4199-b57e-003c7d60873a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 01c31b86550e492b9b35909ff3d6e932-20220915
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <sean.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1729125796; Thu, 15 Sep 2022 17:39:23 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 16 Sep 2022 08:39:21 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 16 Sep 2022 08:39:21 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+	<YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>,
+	<jenhao.yang@mediatek.com>, <robin.chiu@mediatek.com>,
+	<Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+	<ted.huang@mediatek.com>, <Stella.Chang@mediatek.com>,
+	<Tom.Chou@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
+	<frankgor@google.com>, <kuabhs@google.com>, <druth@google.com>,
+	<abhishekpandit@google.com>, <shawnku@google.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Deren
+ Wu <deren.wu@mediatek.com>
+Subject: [PATCH v3] mt76: mt7921: fix antenna signal are way off in monitor mode
+Date: Fri, 16 Sep 2022 08:39:19 +0800
+Message-ID: <e987d8149d6e00b2bec979a343681ddedea3c347.1663288354.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.1
-Subject: Re: [PATCH v2 1/6] dt-bindings: arm: mediatek: mmsys: change
- compatible for MT8195
-Content-Language: en-US
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220915161817.10307-1-jason-jh.lin@mediatek.com>
- <20220915161817.10307-2-jason-jh.lin@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220915161817.10307-2-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_150544_542840_87BAEE7E 
-X-CRM114-Status: GOOD (  20.93  )
+X-CRM114-CacheID: sfid-20220915_173936_838256_8CB2F470 
+X-CRM114-Status: GOOD (  14.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,57 +85,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Sean Wang <sean.wang@mediatek.com>
 
+Group 3 in RxD is disabled in monitor mode. We should use the group 5 in
+RxD instead to fix antenna signal way off issue, e.g we would see the
+incorrect antenna signal value in wireshark. On the other hand, Group 5
+wouldn't be used in STA or AP mode, so the patch shouldn't cause any
+harm to those modes.
 
-On 15/09/2022 18:18, Jason-JH.Lin wrote:
-> For previous MediaTek SoCs, such as MT8173, there are 2 display HW
-> pipelines binding to 1 mmsys with the same power domain, the same
-> clock driver and the same mediatek-drm driver.
-> 
-> For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding to
-> 2 different power domains, different clock drivers and different
-> mediatek-drm drivers.
-> 
-> Moreover, Hardware pipeline of VDOSYS0 has these components: COLOR,
-> CCORR, AAL, GAMMA, DITHER. They are related to the PQ (Picture Quality)
-> and they makes VDOSYS0 supports PQ function while they are not
-> including in VDOSYS1.
-> 
-> Hardware pipeline of VDOSYS1 has the component ETHDR (HDR related
-> component). It makes VDOSYS1 supports the HDR function while it's not
-> including in VDOSYS0.
-> 
-> To summarize0:
-> Only VDOSYS0 can support PQ adjustment.
-> Only VDOSYS1 can support HDR adjustment.
-> 
-> Therefore, we need to separate these two different mmsys hardwares to
-> 2 different compatibles for MT8195.
-> 
-> Fixes: 81c5a41d10b9 ("dt-bindings: arm: mediatek: mmsys: add mt8195 SoC binding")
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> ---
->   .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml        | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> index 6ad023eec193..0e267428eaa6 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> @@ -31,7 +31,7 @@ properties:
->                 - mediatek,mt8183-mmsys
->                 - mediatek,mt8186-mmsys
->                 - mediatek,mt8192-mmsys
-> -              - mediatek,mt8195-mmsys
-> +              - mediatek,mt8195-vdosys0
+Fixes: cbaa0a404f8d ("mt76: mt7921: fix up the monitor mode")
+Reported-by: Adrian Granados <agranados@gmail.com>
+Co-developed-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+v2: drop an unnecessary blank line and fix typo
+v3: I didn't find wrapped line, just rebase and resend to see
+    if it can properly show in patchwork.
+---
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   | 32 ++++++++++++-------
+ 1 file changed, 21 insertions(+), 11 deletions(-)
 
-Nack, we miss the fallback compatible, as I already said twice.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index e4868c492bc0..8de5e36a3780 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -394,6 +394,27 @@ mt7921_mac_fill_rx(struct mt7921_dev *dev, struct sk_buff *skb)
+ 		if (v0 & MT_PRXV_HT_AD_CODE)
+ 			status->enc_flags |= RX_ENC_FLAG_LDPC;
+ 
++		ret = mt76_connac2_mac_fill_rx_rate(&dev->mt76, status, sband,
++						    rxv, &mode);
++		if (ret < 0)
++			return ret;
++
++		if (rxd1 & MT_RXD1_NORMAL_GROUP_5) {
++			rxd += 6;
++			if ((u8 *)rxd - skb->data >= skb->len)
++				return -EINVAL;
++
++			rxv = rxd;
++			/* Monitor mode would use RCPI described in GROUP 5
++			 * instead.
++			 */
++			v1 = le32_to_cpu(rxv[0]);
++
++			rxd += 12;
++			if ((u8 *)rxd - skb->data >= skb->len)
++				return -EINVAL;
++		}
++
+ 		status->chains = mphy->antenna_mask;
+ 		status->chain_signal[0] = to_rssi(MT_PRXV_RCPI0, v1);
+ 		status->chain_signal[1] = to_rssi(MT_PRXV_RCPI1, v1);
+@@ -408,17 +429,6 @@ mt7921_mac_fill_rx(struct mt7921_dev *dev, struct sk_buff *skb)
+ 			status->signal = max(status->signal,
+ 					     status->chain_signal[i]);
+ 		}
+-
+-		ret = mt76_connac2_mac_fill_rx_rate(&dev->mt76, status, sband,
+-						    rxv, &mode);
+-		if (ret < 0)
+-			return ret;
+-
+-		if (rxd1 & MT_RXD1_NORMAL_GROUP_5) {
+-			rxd += 18;
+-			if ((u8 *)rxd - skb->data >= skb->len)
+-				return -EINVAL;
+-		}
+ 	}
+ 
+ 	amsdu_info = FIELD_GET(MT_RXD4_NORMAL_PAYLOAD_FORMAT, rxd4);
+-- 
+2.25.1
 
-Regards,
-Matthias
-
->                 - mediatek,mt8365-mmsys
->             - const: syscon
->         - items:
 
