@@ -4,63 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1826CC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 08:08:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 907B1ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 08:17:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7GmVK0bU/DawU0FDDjddT4Sg1CXW4oqV7hJoNS2uI8U=; b=LokKc5rGmJvsruwfQKFc0fQXqu
-	LtLQ0GV12FKVH+o8YvStmeDg+Ff7FQrpRmwSMzsqx3G16tHNonELLXfb/knjC6oWHaBI1hVcpcMY6
-	H1oR7+PhEvVfc+Z8p3UaGjAk27I19Fu1S+Jvex1ou1fCRk9b5BSKp+AmE3QpOGEVpnzPHnx+eukBo
-	XSRJcfWF9F6mwvB0sA7ARfV8g4WAWWS86qcTzRH8+W5R3JLDtG8jdUOVLxfdBzwxP4ppPpZ93RcDt
-	tDprUfuVQssp0l3cdrcsZFHWI1ESWEKJmaopk4uFe/tX8vkWq3Qk4fymPq1gke4/MmldAcqRcwV+Z
-	NG/XD6ew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2PnNFNUqQBrbAJ+KLmE5zE/OnqNdj3sYS9lVb/E9pKE=; b=i/2QPG9Jzjtq8lfThe9bbb99cI
+	5dqFRzb8iI0a+eSu94HMlaZs28YmoFVtFRdaWru/yTjUWnQPfHUUyv2c2knvLYW5Mfc5u2c45H6SQ
+	NaZdWGBKQpzinFgUNnV2J/pPITxZ57sZ34pyWwhajQNN+mCwGnCI/M0Kfvd2fyYvaI6JtkGl2FlvH
+	YhewelkPCWcIftz3mVBTb54Yp8q6BV9frF1mTz3J+reDi8Pb3h/FH7rwg/MozE0Vl5Y797rxO+V5/
+	5zTGRKhzlq5OP/4M11MPpqyk80K56TlLz9oIXOwyVre6cd3uX4v3YN9f0Cuors5mSSl7pLMZr9e1H
+	FeKuoFpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZ6OV-00AhRs-Al; Fri, 16 Sep 2022 08:08:15 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oZ6X9-00AtU7-Lw; Fri, 16 Sep 2022 08:17:11 +0000
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZ6O6-00Agko-Mg; Fri, 16 Sep 2022 08:07:52 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EEFF06601FAF;
-	Fri, 16 Sep 2022 09:07:45 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663315666;
-	bh=EGEeQPHzg9d9NeLO4LlWhqbKYOV3HYOQAzbQDjfcLPo=;
-	h=From:To:Cc:Subject:Date:From;
-	b=dwIlyRZpI255XiQ5X5bnfs17TlqwaHJeAxfgxbOmPZYmaWvjo1sddVURK2O5hqGSK
-	 tg7kzERlD8aw6wM5W3r5mKylCFJgfjszbQ9WxOU5oMr8zanVDayOa/Pe3EFTUICmV6
-	 trA6xPZHGGEJFRfGgGfDybjrbyQsnUI9GQBcwxyNUdKMCvFJTfg2/BG6V3Z9etGWFb
-	 pphSD1tFBx7KrY/UQ1EBXlZZsSQ0uJUJfXgvLjGyullzqyz9BgTv+pb8r/hfhHmPhT
-	 AG7+s8MY9cJSTtjtNUYj/2VfvuTVEyaPNo9iqvhdtwE/Gjn3S2ltgYM7T8nYkzDtYB
-	 T04Ika6vl9r6g==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: robh+dt@kernel.org
-Cc: jassisinghbrar@gmail.com,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com,
-	houlong.wei@mediatek.com,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 1/2] dt-bindings: mailbox: Convert mtk-gce to DT schema
-Date: Fri, 16 Sep 2022 10:07:41 +0200
-Message-Id: <20220916080742.26851-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.37.2
+	id 1oZ6Vp-00ArYR-9k
+	for linux-mediatek@lists.infradead.org; Fri, 16 Sep 2022 08:15:52 +0000
+Received: by mail-yb1-xb30.google.com with SMTP id e81so12012381ybb.13
+        for <linux-mediatek@lists.infradead.org>; Fri, 16 Sep 2022 01:15:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date;
+        bh=2PnNFNUqQBrbAJ+KLmE5zE/OnqNdj3sYS9lVb/E9pKE=;
+        b=pVIFVU242w9iq7DXYThjL37Si11OW6ebqwACau4FFnXH9jsTHyXtD8zowpGxU6I/0v
+         CaUibP8uciXBPp1XNVfdZHglARuJhWBYwgHmXt+Zr20mV84GYplmVQGgVXgtIu3nuCGP
+         vSsln3vtuynZvlsfTm9UFMf25wwCkVad5YLnFeL+qMISTWetVArsmrnivbfUvX4L21pd
+         3otUXHDnxt6qZXZyP+59BDEZwYjkItz9gGz4EEPs1jnTmtEYGw+rv3wI3aq6hY5hoNQb
+         NTIiBRfgJtdkdNHeaY8R2ac+TxUceQf27JceMDOugrLFocDMulsDvjjicEtd+NARCvX9
+         mcuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date;
+        bh=2PnNFNUqQBrbAJ+KLmE5zE/OnqNdj3sYS9lVb/E9pKE=;
+        b=1iMPkivbE74Cd2hidLKfUzAwVEM10Rz1jw0rAB0olHCOvfKm9Quzr0yqe+Oo03LAjn
+         vguy+8W9FIcHqI93ATmxWefLtswVIC1QKV7TSjBc3vBD7Kz2yvODHMmKYF52FDSBbTV+
+         3X1D/RNOF/8skm3DkFAFqRN1Ixp2wi2cdKNJk4mOoj+cOzPv12snZvWWQgVImCcMhLxt
+         xOP3b6UFtaJ7eDkR0uvGVVvzK5RY4iH/drqG+Q0K6ctx7ZBrIwivXEIYPyEVnDuqpaVS
+         YpGi/viLNpPiWr0IEn0hXd33vlC4KQo6gwoC/lNpfYlG0NaWvaveLAU9S2xlzDQz0ABD
+         PGxw==
+X-Gm-Message-State: ACrzQf34Fig3O6aPpNCE7H2vZA2hiOLKcB2W8885SB3c3lbcbe4kAPBC
+	QYyyyXlFa0RptUwNQuJ7EO7rcO5jlECGq0B3/nAI1w==
+X-Google-Smtp-Source: AMsMyM4uK5qX0hNriC08kjBGoyryzCAKwvl0ezSa6qMX7DCS06l9JI2YRDdGZ5bpYNAvRVJdroYT4ispXrrbmlqKGf8=
+X-Received: by 2002:a25:708b:0:b0:6b0:8a11:b32 with SMTP id
+ l133-20020a25708b000000b006b08a110b32mr1874467ybc.520.1663316142506; Fri, 16
+ Sep 2022 01:15:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20220817080757.352021-1-bchihi@baylibre.com> <20220817080757.352021-5-bchihi@baylibre.com>
+ <8d6383e0-329e-ca91-6e79-85b3806a2af3@collabora.com> <CAGuA+ooEHPiHuGYXOh7s68HRTv9HSr-BexFsCLUPWTMQ3szCfg@mail.gmail.com>
+ <ccd27ec5-6bce-0f5c-1b58-b7bfcbccdeed@collabora.com>
+In-Reply-To: <ccd27ec5-6bce-0f5c-1b58-b7bfcbccdeed@collabora.com>
+From: Balsam CHIHI <bchihi@baylibre.com>
+Date: Fri, 16 Sep 2022 10:15:06 +0200
+Message-ID: <CAGuA+oroekhVRyxa-z1VTZrzOBW2zCoGaFmH=KLYu_JfwxP3NA@mail.gmail.com>
+Subject: Re: [PATCH v9,4/7] thermal: mediatek: Add LVTS driver for mt8192
+ thermal zones
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: rafael@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org, 
+	amitk@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	khilman@baylibre.com, mka@chromium.org, robh+dt@kernel.org, 
+	krzk+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, james.lo@mediatek.com, 
+	fan.chen@mediatek.com, louis.yu@mediatek.com, rex-bc.chen@mediatek.com, 
+	abailon@baylibre.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220916_010751_025254_CFD1F86E 
-X-CRM114-Status: GOOD (  22.36  )
+X-CRM114-CacheID: sfid-20220916_011549_394255_656C0187 
+X-CRM114-Status: UNSURE (   4.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,228 +93,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the mtk-gce mailbox binding to DT schema format.
+> It's the wrong error number. You have to return -EAGAIN :-)
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-
-A previous attempt for this was made at [1], but it was changing
-the way of getting clocks (by name for all).
-Keeping clock-names not required for the multi-gce case makes this
-binding simpler, hence I chose to abandon the change at [1] and go
-for this one instead.
-
-Any Reviewed-by or Acked-by tag was dropped, as this conversion was
-completely redone from scratch and differs from [1] for the
-aforementioned reasons.
-
-[1]: https://lore.kernel.org/all/20220524151512.247435-1-angelogioacchino.delregno@collabora.com/
-
- .../mailbox/mediatek,gce-mailbox.yaml         | 104 ++++++++++++++++++
- .../devicetree/bindings/mailbox/mtk-gce.txt   |  82 --------------
- 2 files changed, 104 insertions(+), 82 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
- delete mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-
-diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-new file mode 100644
-index 000000000000..ac6ca7fc5302
---- /dev/null
-+++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-@@ -0,0 +1,104 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Global Command Engine Mailbox
-+
-+maintainers:
-+  - Houlong Wei <houlong.wei@mediatek.com>
-+
-+description: |
-+  The Global Command Engine (GCE) is used to help read/write registers with
-+  critical time limitation, such as updating display configuration during the
-+  vblank. The GCE can be used to implement the Command Queue (CMDQ) driver.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt6779-gce
-+      - mediatek,mt8173-gce
-+      - mediatek,mt8183-gce
-+      - mediatek,mt8186-gce
-+      - mediatek,mt8192-gce
-+      - mediatek,mt8195-gce
-+
-+  "#mbox-cells":
-+    const: 2
-+    description:
-+      The first cell describes the Thread ID of the GCE,
-+      the second cell describes the priority of the GCE thread
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: Global Command Engine clock
-+
-+  clock-names:
-+    items:
-+      - const: gce
-+
-+required:
-+  - compatible
-+  - "#mbox-cells"
-+  - reg
-+  - interrupts
-+  - clocks
-+
-+if:
-+  not:
-+    properties:
-+      compatible:
-+        contains:
-+          const: mediatek,mt8195-gce
-+then:
-+  required:
-+    - clock-names
-+
-+additionalProperties: false
-+
-+examples:
-+  # Example for a device client and for a MediaTek mutex client
-+  - |
-+    #include <dt-bindings/clock/mt8173-clk.h>
-+    #include <dt-bindings/gce/mt8173-gce.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/power/mt8173-power.h>
-+
-+    gce: mailbox@12120000 {
-+        compatible = "mediatek,mt8173-gce";
-+        reg = <0x10816000 0x1000>;
-+        interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
-+        #mbox-cells = <2>;
-+        clocks = <&infracfg CLK_INFRA_GCE>;
-+        clock-names = "gce";
-+    };
-+
-+    syscon@14000000 {
-+        compatible = "mediatek,mt8173-mmsys", "syscon";
-+        reg = <0x14000000 0x1000>;
-+        power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
-+        #clock-cells = <1>;
-+        #reset-cells = <1>;
-+        mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST>,
-+                 <&gce 1 CMDQ_THR_PRIO_HIGHEST>;
-+        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
-+    };
-+
-+    mutex@14020000 {
-+        compatible = "mediatek,mt8173-disp-mutex";
-+        reg = <0x14020000 0x1000>;
-+        interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
-+        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
-+        clocks = <&mmsys CLK_MM_MUTEX_32K>;
-+        mediatek,gce-client-reg = <&gce SUBSYS_1402XXXX 0 0x1000>;
-+        mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
-+                              <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
-+    };
-diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-deleted file mode 100644
-index c2aeba63bd47..000000000000
---- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-+++ /dev/null
-@@ -1,82 +0,0 @@
--MediaTek GCE
--===============
--
--The Global Command Engine (GCE) is used to help read/write registers with
--critical time limitation, such as updating display configuration during the
--vblank. The GCE can be used to implement the Command Queue (CMDQ) driver.
--
--CMDQ driver uses mailbox framework for communication. Please refer to
--mailbox.txt for generic information about mailbox device-tree bindings.
--
--Required properties:
--- compatible: can be "mediatek,mt8173-gce", "mediatek,mt8183-gce",
--  "mediatek,mt8186-gce", "mediatek,mt8192-gce", "mediatek,mt8195-gce" or
--  "mediatek,mt6779-gce".
--- reg: Address range of the GCE unit
--- interrupts: The interrupt signal from the GCE block
--- clock: Clocks according to the common clock binding
--- clock-names: Must be "gce" to stand for GCE clock
--- #mbox-cells: Should be 2.
--	<&phandle channel priority>
--	phandle: Label name of a gce node.
--	channel: Channel of mailbox. Be equal to the thread id of GCE.
--	priority: Priority of GCE thread.
--
--Required properties for a client device:
--- mboxes: Client use mailbox to communicate with GCE, it should have this
--  property and list of phandle, mailbox specifiers.
--Optional properties for a client device:
--- mediatek,gce-client-reg: Specify the sub-system id which is corresponding
--  to the register address, it should have this property and list of phandle,
--  sub-system specifiers.
--  <&phandle subsys_number start_offset size>
--  phandle: Label name of a gce node.
--  subsys_number: specify the sub-system id which is corresponding
--                 to the register address.
--  start_offset: the start offset of register address that GCE can access.
--  size: the total size of register address that GCE can access.
--
--Optional properties for a client mutex node:
--- mediatek,gce-events: GCE events used by clients. The event numbers are
--  defined in 'dt-bindings/gce/<chip>-gce.h'.
--
--Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h',
--'dt-bindings/gce/mt8183-gce.h', 'dt-bindings/gce/mt8186-gce.h'
--'dt-bindings/gce/mt8192-gce.h', 'dt-bindings/gce/mt8195-gce.h' or
--'dt-bindings/gce/mt6779-gce.h'.
--Such as sub-system ids, thread priority, event ids.
--
--Example:
--
--	gce: gce@10212000 {
--		compatible = "mediatek,mt8173-gce";
--		reg = <0 0x10212000 0 0x1000>;
--		interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&infracfg CLK_INFRA_GCE>;
--		clock-names = "gce";
--		#mbox-cells = <2>;
--	};
--
--Example for a client device:
--
--	mmsys: clock-controller@14000000 {
--		compatible = "mediatek,mt8173-mmsys";
--		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST>,
--			 <&gce 1 CMDQ_THR_PRIO_LOWEST>;
--		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
--				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
--		mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>,
--					  <&gce SUBSYS_1401XXXX 0x2000 0x100>;
--		...
--	};
--
--Example for a client mutex node:
--	mutex: mutex@14020000 {
--		compatible = "mediatek,mt8173-disp-mutex";
--		reg = <0 0x14020000 0 0x1000>;
--		interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
--		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
--		clocks = <&mmsys CLK_MM_MUTEX_32K>;
--		mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
--				      <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
--	};
--- 
-2.37.2
-
+Got it, thanks! :D
 
