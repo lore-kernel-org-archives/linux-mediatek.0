@@ -4,63 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 481CDC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 07:28:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF288ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 07:34:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZvCDE9XNaLADCdtB8DMHkwQrDY3Vq7nlRxJru1ABOt8=; b=4GaQJKByZAz+ya9YCUSo9spXLr
-	M+BLRRC5O5qX/ttVtGRMeMAgvaiJBOicf+Z29Q78ec9l+Q7HrsY9Fa3UKdLOPWkj/3OVBaOVcyFBj
-	FTGuPlTCbXZCP4nS7fdw5QNhxuJPoxNr0DfTtqJxNkRmtGm6ludYVSycDze+kpizD2V/SEYLsudbs
-	OlIAUL9hp7yUJlJJcJZEMts8N6S4lz99vF2iRuc3WCXK5p7f8VjgcaSYz1l/vYUhnv0XgipDqVCai
-	p7xMCZL2KooGtng6i/HGFkRFApgbwS9b3pg9s8rLcxCBX7evdaX+yRKE2crrX2MGm3DCzEQ3HSoiC
-	W+idcECQ==;
+	bh=SZjaPEz0KW/NGLXDXwJQqk1E1Ha/J2O2+lU9nTzG2VM=; b=a5pMJQW1ktFz7wqpYpQSNQYn9h
+	Sel/0Ej1gh8mFWmmhqi70mhrv/f5Xnz/H5by6KgBQeJ3iP5n+asCiS+gQZuKOhXfKVIEgugvOssFd
+	VtUQ1OI8uK4WcEyEn+8GlMT2uFQ9LQ0mZR2ftuIaJI/ahAzGYMwgR27OURbLMw69neRXLgIxG8GEG
+	jqTu+Bzk752GgnqW6nzMDxlYOlBg+Vo+mtmtv9jqximQeaYeeZdzBSqppLjIPCDX1gYfJnzSKtYBi
+	4s+BY5aeyOhl/IVS4zjz3OaloUMOjRcfRGUy8VuRGAqASh7rbPupkShnxiCkCirzUUpxStw+TgTfp
+	RsOXrxlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZ5m3-009uC4-VG; Fri, 16 Sep 2022 07:28:31 +0000
+	id 1oZ5rR-00A1MN-PJ; Fri, 16 Sep 2022 07:34:05 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZ5lj-009tyJ-2p
-	for linux-mediatek@lists.infradead.org; Fri, 16 Sep 2022 07:28:14 +0000
+	id 1oZ5qy-00A0mE-6x; Fri, 16 Sep 2022 07:33:37 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B340E6601FA1;
-	Fri, 16 Sep 2022 08:28:06 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 957C56601FA1;
+	Fri, 16 Sep 2022 08:33:33 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663313287;
-	bh=O0FbbxQMiGakV9I9s/YIWd4YvZeDELGtzjRh+ITi6J8=;
+	s=mail; t=1663313614;
+	bh=aWtRXRI7fxQBjROCdpFicK7krf9njG3Luudt99ZAeAo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=F7ELVSVA06qolFwkfrwQ0090il7AXNTXCqCnP5wqo/M74pMxxYNLLIRE6gFdsvy17
-	 A572zoP5Xrr1K7zmx4TydLKjSoWwGF2pNERLgVj/e+m+534UlKwIuSuT0nNuG6TQZe
-	 rk7omfXZ7m05nn34m/4bNnKP/F2b9YatdvSa9ivGtDunIc/uFYDRV2DobAdOVpkrlM
-	 wrntAL4QXfg9RLei6mKDAVf8GLyIiO2VajcLBq2hyzPhjq6cmIq6VahByJeDbmU8VJ
-	 AUzBzADKT/5o//slAu0/Ne5W3tSTH0fqD44Ub3l0GG/KUi4qmkkxj3isxFKLYOWHQi
-	 R4e52GZTBqhMw==
-Message-ID: <8b130b9c-1d86-46de-f4c8-1a9cdae45c45@collabora.com>
-Date: Fri, 16 Sep 2022 09:28:04 +0200
+	b=ZTeH9hWylUWWDYAaQO0o4OhhOY5Bn9HdDkUrinzDSsrVSDTaTF8y8f0As5M9EBwxL
+	 o+fphIvpgDmSRDWkhdQW2JdY5dIHZoOYkFvcg07IT0EmNNtMCtqeb1FNP1qJkT2aQf
+	 N4FuWYkjCVAOPMA8taDAHbZ+CTUk8da4e2Fm7ssosj84DI9zREw4MdYG2QdsMPcV+5
+	 ECshjxW9VgHmAu3IRSR85tbWs7b1FPOo10Dhj/8h5PEPighiA48tLa0ydZDE/4ccKb
+	 l8N5X48BGQr2YJ6tcYKcVr7P7wIRwKuHQA4wcFI7FnoXhnFRXyjlTureF27e+giOPx
+	 ucoaa/7eiJCbA==
+Message-ID: <ccd27ec5-6bce-0f5c-1b58-b7bfcbccdeed@collabora.com>
+Date: Fri, 16 Sep 2022 09:33:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PULL linux-firmware] Update mediatek mt81xx SOF firmware
-To: Tinghan Shen <tinghan.shen@mediatek.com>, linux-firmware@kernel.org
-Cc: linux-mediatek@lists.infradead.org, chunxu.li@mediatek.com,
- allen-kh.cheng@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220916032146.17774-1-tinghan.shen@mediatek.com>
+Subject: Re: [PATCH v9,4/7] thermal: mediatek: Add LVTS driver for mt8192
+ thermal zones
 Content-Language: en-US
+To: Balsam CHIHI <bchihi@baylibre.com>
+Cc: rafael@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org,
+ amitk@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ khilman@baylibre.com, mka@chromium.org, robh+dt@kernel.org,
+ krzk+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, james.lo@mediatek.com,
+ fan.chen@mediatek.com, louis.yu@mediatek.com, rex-bc.chen@mediatek.com,
+ abailon@baylibre.com
+References: <20220817080757.352021-1-bchihi@baylibre.com>
+ <20220817080757.352021-5-bchihi@baylibre.com>
+ <8d6383e0-329e-ca91-6e79-85b3806a2af3@collabora.com>
+ <CAGuA+ooEHPiHuGYXOh7s68HRTv9HSr-BexFsCLUPWTMQ3szCfg@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220916032146.17774-1-tinghan.shen@mediatek.com>
+In-Reply-To: <CAGuA+ooEHPiHuGYXOh7s68HRTv9HSr-BexFsCLUPWTMQ3szCfg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220916_002811_399075_69685B2C 
-X-CRM114-Status: GOOD (  15.92  )
+X-CRM114-CacheID: sfid-20220916_003336_416511_E3353C97 
+X-CRM114-Status: GOOD (  19.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,57 +83,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/09/22 05:21, Tinghan Shen ha scritto:
-> Hi maintainers,
+Il 15/09/22 18:58, Balsam CHIHI ha scritto:
+> Hi Angelo,
 > 
-> This pull request adds new MediatekTek MT8195 SOF firmware and
-> updates MT8186 SOF firmware.
+>>> +static int soc_temp_lvts_read_temp(void *data, int *temperature)
+>>> +{
+>>> +     struct soc_temp_tz *lvts_tz = (struct soc_temp_tz *)data;
+>>> +     struct lvts_data *lvts_data = lvts_tz->lvts_data;
+>>> +     struct device *dev = lvts_data->dev;
+>>> +     unsigned int msr_raw;
+>>> +
+>>> +     msr_raw = readl(lvts_data->reg[lvts_tz->id]) & MRS_RAW_MASK;
+>>> +     if (msr_raw == 0) {
+>>> +             /* Prevents a false critical temperature trap */
+>>> +             *temperature = 0;
+>>> +             dev_dbg(dev, "LVTS not yet ready\n");
+>>
+>> ...and you're not returning an error code, despite this function was called
+>> while LVTS is still not ready? :-)
+>>
 > 
-> Please let me know if there is any problem.
+> if I add "return -ENAVAIL;" here, I will get the following errors on boot :
+> [    0.292094] thermal thermal_zone0: failed to read out thermal zone (-119)
+> [    0.293019] thermal thermal_zone1: failed to read out thermal zone (-119)
+> [    0.294158] thermal thermal_zone6: failed to read out thermal zone (-119)
+> [    0.295697] thermal thermal_zone9: failed to read out thermal zone (-119)
+> [    0.296600] thermal thermal_zone10: failed to read out thermal zone (-119)
+> [    0.297698] thermal thermal_zone15: failed to read out thermal zone (-119)
+> [    0.298625] thermal thermal_zone16: failed to read out thermal zone (-119)
+> 
+> I just preferred : *temperature = 0; to avoid a false critical temperature trap,
+> and "return 0;" to suppress these errors.
+> After that (first read at boot when LVTS is not fully ready),
+> "msr_raw" will be always != 0.
+> And I did not want to add a "delay" or a "sleep".
+> Please let me know if you have any suggestions that could fix it in a
+> better way.
 > 
 
-TingHan, please, also add sof-mt8195-mt6359-rt1019-rt5682-dts.tplg as
-that's used by "google,tomato" (for more information, please check
-sound/soc/sof/mediatek/mt8195/mt8195.c).
+It's the wrong error number. You have to return -EAGAIN :-)
 
-Thanks,
-Angelo
-
+>>> +
+>>> +     } else
+>>> +             *temperature = lvts_raw_to_temp(&lvts_data->coeff, msr_raw);
+>>> +
+>>> +     return 0;
+>>> +}
+> 
 > Best regards,
-> TingHan
-> 
-> ---
-> 
-> The following changes since commit f09bebf31b0590bdc875d7236aa705279510cfd0:
-> 
->    amdgpu: update yellow carp DMCUB firmware (2022-09-13 08:02:23 -0400)
-> 
-> are available in the Git repository at:
-> 
->    https://github.com/tinghan-shen/linux_fw_scp mtk-20220915
-> 
-> for you to fetch changes up to 78cff08a90dff21fe6f5f2f961d12604bd125e95:
-> 
->    mediatek: Add new mt8195 SOF firmware (2022-09-16 10:42:01 +0800)
-> 
-> ----------------------------------------------------------------
-> Tinghan Shen (2):
->        mediatek: Update mt8186 SOF firmware
->        mediatek: Add new mt8195 SOF firmware
-> 
->   WHENCE                                                                                      |  11 ++++++++---
->   mediatek/{sof/sof-mt8186-mt6366-da7219-max98357.tplg => sof-tplg/sof-mt8186.tplg}           | Bin
->   .../sof-mt8186-mt6366-rt1019-rt5682s.tplg => sof-tplg/sof-mt8195-mt6359-rt1019-rt5682.tplg} | Bin 16191 -> 16191 bytes
->   mediatek/sof/sof-mt8186.ldc                                                                 | Bin 0 -> 48436 bytes
->   mediatek/sof/sof-mt8186.ri                                                                  | Bin 128712 -> 128712 bytes
->   mediatek/sof/sof-mt8195.ldc                                                                 | Bin 0 -> 40568 bytes
->   mediatek/sof/sof-mt8195.ri                                                                  | Bin 0 -> 100740 bytes
->   7 files changed, 8 insertions(+), 3 deletions(-)
->   rename mediatek/{sof/sof-mt8186-mt6366-da7219-max98357.tplg => sof-tplg/sof-mt8186.tplg} (100%)
->   rename mediatek/{sof/sof-mt8186-mt6366-rt1019-rt5682s.tplg => sof-tplg/sof-mt8195-mt6359-rt1019-rt5682.tplg} (86%)
->   create mode 100644 mediatek/sof/sof-mt8186.ldc
->   create mode 100644 mediatek/sof/sof-mt8195.ldc
->   create mode 100644 mediatek/sof/sof-mt8195.ri
-> 
+> Balsam
 
 
