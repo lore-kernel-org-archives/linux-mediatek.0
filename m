@@ -4,81 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18D37ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 21:48:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEF00ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 22:56:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4GuRfMhQm5Rn+M8LeHVMrehMbznHw6jGuLiFJ01zG90=; b=3EOlD0iDNoaYHntMYKVMrY0mN4
-	VVO7gyrx3LgkcwcxsrULgkWPE1WIxYZGMUjugb4pUzDdH0YxhIEoz+SpTI5Ae5t+H6Xuz6z5v3lXO
-	poEiS0d7Q0PyOyh7QAn9g2S0N2lostlNzAGvOwZR0OhF2paXDdyhG6dGiDrOSrV3WfqMLEom5Vp5m
-	E80YUh/dmfPb/jnH93xxk4aWiflgH8EgckU8jq+gmAlsxtoOQrVg6V9b+3NxKBenCGzYSwHme/sqP
-	HYXkjqoDWcST4AM7sZNMsLEgEWEWJTdlJS5f4UP01FflqWdnw0ws6suHElXy5U5HOTU6jaNBfwPhi
-	hOT9lzDg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gVWdEjZuPErV3h1kBfQaK5huy+7TX0Zb1YdIFGYCgGY=; b=snxz/4b1Wy6j+Wap0kOmYrq1C3
+	NKRqnx4bPgHpp9pAWq2a7eY4/DQ3Vxnyh98LpHD6EdF0JXpmi4ZcJlPPL4NTC55dRyGK4x3th8L/G
+	YKFsuK0u6elXivTTOuNpDl8uzhtFLVNY3jull87xZDEFpxXCsT96GEXyOAk95L2FrKCyaYvJlK0NQ
+	wbY5nbMYtXYLl3rAex6ZKEsEw/Noye3TzQgRMD4QQdlQ8O7b6L9T/KmNOZBCYs/6oPVoQKYodDXMK
+	X0t/LflgVYuPToa8bjeqyPy1ofxvJcHblmgc0+iwO0yoW0uX6eDEMbEqwFmwECTPsfuQBQRnVcGfZ
+	nvNgtAIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZJCe-00HKWM-23; Fri, 16 Sep 2022 21:48:52 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1oZKFa-000DLR-A9; Fri, 16 Sep 2022 22:55:58 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZJCO-00HKQD-UN; Fri, 16 Sep 2022 21:48:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1663364891; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=JLDt2/kFU7PEotggDN6j70oCTJcAHSNiwJtnJ1rZreVe/BBDf5r+1CV56T1eNKPU5d9NAH6+M7hl/yI+IMt3H1vlDspeZkffUpMV85tUqjpahNVK75vSlnPJPhdHEsr/CictAMNkcmgUyss2Wxodr1WwPbHNBfSjyIw2fJ3jpyw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1663364891; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=4GuRfMhQm5Rn+M8LeHVMrehMbznHw6jGuLiFJ01zG90=; 
-	b=dJakwSFQqzlM+viBJlYBIek0BmV9zBFURPWIoqrwq+zimAd/A4aJEQT+rrF31JZbRq3PAcQZu7TCHX7n155j3507EvDOw5lk1OaXxdAr9n348QoblStf5kS73xGOn6w4Eo8IfZ++piDDlUH7WbtmBonWuU9aRDFX6HQn7OtmlOU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663364891;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=4GuRfMhQm5Rn+M8LeHVMrehMbznHw6jGuLiFJ01zG90=;
-	b=LQoYNqy7ViPr/6u6w5K5bvlvGOtK8xyG6VcNvYCqeoLe11wbFdwuCn2ZqvlHTCpn
-	hRzyOKvjoj1NnsK3vwvEdPem9Z+rJvDJy86QqmUuNVswWyAZXsHxmLAwA/1D0eVChvp
-	kqXB4x6YxoKx1529sEx75tRjnZJoa6M1lQO7xa6g=
-Received: from [10.10.10.122] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1663364890239371.4567564648436; Fri, 16 Sep 2022 14:48:10 -0700 (PDT)
-Message-ID: <bc066578-e229-7f08-d6c0-5dc2fede6be7@arinc9.com>
-Date: Sat, 17 Sep 2022 00:48:00 +0300
+	id 1oZKFW-000DJi-QF
+	for linux-mediatek@lists.infradead.org; Fri, 16 Sep 2022 22:55:56 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id CA707B82699
+	for <linux-mediatek@lists.infradead.org>; Fri, 16 Sep 2022 22:55:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83F50C433B5
+	for <linux-mediatek@lists.infradead.org>; Fri, 16 Sep 2022 22:55:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1663368950;
+	bh=CxePb5gSHUo+VC915HSKvQFTvB1YDl7G7mETr2pEKdM=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=bQLRcpJO4wQpxuKyGPt8hrvOCf0+UCyiCoUTiiNwv/aIhNN2dBjfLe9+QF/vrP3qz
+	 yETSihoSo2NYig77KvTY3XH/HlCWIokQfpFPLYX8Qv2gyRTME+saS6Ot3RD4E39+2u
+	 ZbzrYBduaPFhF8M4EDAqy/Ag9+IysO1rAr4ocN5mjDDjZk2rQaERZC+Ey8RuAkZcv8
+	 jATd6s/+YmiMLcTLj/AGvyq1gL5PLUo0akM3FuoXQ9eliemMvzjswZ1xUJIzWfcw+o
+	 xxagVoK8vIdeTEZPhRw3QtjglIMZbew9OpEnnDlG0PTcC4PqVIy8GEhcI3ffi/x3hM
+	 3UtsVZcy30L4A==
+Received: by mail-wm1-f47.google.com with SMTP id d12-20020a05600c3acc00b003b4c12e47f3so665154wms.4
+        for <linux-mediatek@lists.infradead.org>; Fri, 16 Sep 2022 15:55:50 -0700 (PDT)
+X-Gm-Message-State: ACrzQf3Af4Fuizrg4HHt9X9fT49nPAsYd1r9fVf/k0svsFaaDlnq14j+
+	sv75xRyiCHCSHWkTFqfHxBGjG8vj3qgmLeFObO8=
+X-Google-Smtp-Source: AMsMyM4DdIs0+/VNJIbbOCv56yQxPrcSrae4oNrMbcWmbPGfpBk1PqD5XW8+CRbBoA9out17hpCehWfW1Yb7zoW8xm0=
+X-Received: by 2002:a7b:c2a2:0:b0:3a8:4959:a327 with SMTP id
+ c2-20020a7bc2a2000000b003a84959a327mr4772463wmk.50.1663368948773; Fri, 16 Sep
+ 2022 15:55:48 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v2 net-next 04/10] dt-bindings: memory: mt7621: add syscon
- as compatible string
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>, erkin.bozoglu@xeront.com,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org
-References: <20220915065542.13150-1-arinc.unal@arinc9.com>
- <20220915065542.13150-5-arinc.unal@arinc9.com>
- <20220916194127.GA1139257-robh@kernel.org>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20220916194127.GA1139257-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+References: <404d2f5ec663128342541fa392a47226a46e5634.1663219530.git.objelf@gmail.com>
+ <YyRCtrOtPqu2oEPj@kroah.com>
+In-Reply-To: <YyRCtrOtPqu2oEPj@kroah.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Fri, 16 Sep 2022 15:55:36 -0700
+X-Gmail-Original-Message-ID: <CAGp9Lzqyd0c0Aw6XSjsepKw_RsTawvbF512DvzaXisRxdYbMZA@mail.gmail.com>
+Message-ID: <CAGp9Lzqyd0c0Aw6XSjsepKw_RsTawvbF512DvzaXisRxdYbMZA@mail.gmail.com>
+Subject: Re: [PATCH 5.19] wifi: mt76: mt7921e: fix crash in chip reset fail
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: sean.wang@mediatek.com, stable@vger.kernel.org, 
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Deren Wu <deren.wu@mediatek.com>, 
+	Johannes Berg <johannes.berg@intel.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220916_144837_052963_C4D5D345 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20220916_155555_019724_832FC29D 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,20 +82,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16.09.2022 22:41, Rob Herring wrote:
-> On Thu, Sep 15, 2022 at 09:55:36AM +0300, Arınç ÜNAL wrote:
->> Add syscon as a constant string on the compatible property as it's required
->> for the SoC to work. Update the example accordingly.
-> 
-> I read this and start to give you the same reply as v1. Then I remember
-> saying this already...
-> 
-> Update the commit message such that it answers my question and I don't
-> think you just ignored me and have to go find v1. The fact that this
-> change makes the binding match what is already in use in dts files is an
-> important detail.
+Hi, Greg
 
-Sure Rob, will do.
+On Fri, Sep 16, 2022 at 2:39 AM Greg KH <gregkh@linuxfoundation.org> wrote:
+>
+> On Thu, Sep 15, 2022 at 01:32:35PM +0800, sean.wang@mediatek.com wrote:
+> > From: Deren Wu <deren.wu@mediatek.com>
+> >
+> > commit fa3fbe64037839f448dc569212bafc5a495d8219 upstream.
+>
+> This is already in the 5.19.9 kernel release, right?  Do we need it
+> again?
 
-Arınç
+Ah, If so, we don't need it again. It seemed unavailable when I
+submitted the patch. Sorry for bothering you.
+
+    Sean
+
+>
+> thanks,
+>
+> greg k-h
 
