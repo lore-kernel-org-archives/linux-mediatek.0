@@ -4,79 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06372ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 15:26:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88498ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 15:29:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ESU1VgCvmDitc8MsVUItMU0bZbbhXMl1bxk3ZQKwmMc=; b=e1BOa+dzUfBw2i21sD4v3dtj2d
-	u34AqrwhkzQwXvGNwiYpLmmIKEUSEXKj4E4Ci95n4qsgYFvsmGN1RiqggATibCCzVt0WIqMxYgkif
-	oFooiZlmsVR+lkvoV4Q0JNBxoDMhy4TWnrFJiehwuKkNjmT746d8eM9M4ZtMnNanE0+B3WTjqp3Y6
-	T3yxx8PxM7e3uNbRWtMrqRSpFYGyB0Vu+p1J3hmfaBCLqWIYOQQMy1p7046B5q2+IeO4Iz5FwQHHp
-	IuV0Z+fhTNlCF19OuUqoWkHAHJCP8pxTQewPZ1FlCjiG37NelKiN6G+SIv71KP4uvtiV/qLxsuk4m
-	VjwLw+bg==;
+	bh=INFQFudAs4nKStIvoqPpyrmfJKCcgzNpJS8nKrPHAXI=; b=EO5P9gO/iWS2/hsGt322wE8NDw
+	2f8LibntyZ5eRJh5OLW2uIC1vQI2StfheIiLJ6CijFaelax+GWKiaU4rHlLbPr+1W2A8at1+1xsfJ
+	3NBsPDHZ0hFQASwjBeYC7zhHEL6F8ZXJMOdFVnxDtcToxsgMlJpWv2VqubdzJY2f7n7DMLJkV405M
+	iiZ5LM6BUtaycyeI0xcobUA/DwFV0YMlWsStIVUO5FITVqCJUWatrWIqW+3Pan6RRW6oR+ZYyVPa/
+	Ie6qgEfCjfmFXagSJZRqTPDE31GxaSjfnnzBNTjnKoJFEpC49mHAeNL1bK0RcruWvVfwtWpMVMBj2
+	aQqFr+9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZDEq-00EZne-5a; Fri, 16 Sep 2022 15:26:44 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1oZDH7-00Eaih-Kq; Fri, 16 Sep 2022 15:29:05 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZDEd-00EZlD-Li; Fri, 16 Sep 2022 15:26:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1663341960; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Jb1nJDvfJ2LIzVrHDWrucYstv3Y/i7xlX958Phr4TqCJaF/SUBWJiAIZURWWanv2JgOJYPXZNruqXv1De0k5uAeRNnx8kq2KQqSQL3M4QqtfxrEsqshfPYq6shhOIQVGb3+u6F/SQgDuR+YKEvAKHX1P115sG5/g75THa1z1Pcc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1663341960; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=ESU1VgCvmDitc8MsVUItMU0bZbbhXMl1bxk3ZQKwmMc=; 
-	b=Cb6o/GoOjaktmWGaYMmbTIBtLTMbHIGjh48Oxly0cR4BR8YGG13S0le/GCXLUw6lZcqrLoVJWQKNQ0YhqtYUX5PP8VhIkOa9Z3wX09PvnAg9mVQe3sjGX6ZJpv6aNz6SmPAwr4R3BZXlzW7g0YlMPEfa8kWL38lXIpq6DqQ3hXY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=arinc9.com;
-	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
-	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663341960;
-	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=ESU1VgCvmDitc8MsVUItMU0bZbbhXMl1bxk3ZQKwmMc=;
-	b=IqahRRDd7m72Xgk/TWR3GJzwBtDvmJSs79nlirwq2uXoeahRqEZofBE7M48BcMGW
-	HYS0OROQfY4tDNrT8WoLWHB5XdSbpAUvgxwJsMCB1PtndsE95TOW9mZyaHBfPG+nqg8
-	Nw2G7HIljtdt3N6e18sG5/fwPMbE1idPkj5MmyYA=
-Received: from [10.10.10.3] (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1663341958192832.8150534180345; Fri, 16 Sep 2022 08:25:58 -0700 (PDT)
-Message-ID: <dad09430-4f33-7f1d-76c7-4dbd0710e950@arinc9.com>
-Date: Fri, 16 Sep 2022 18:25:52 +0300
+	id 1oZDH1-00Eaep-O4
+	for linux-mediatek@lists.infradead.org; Fri, 16 Sep 2022 15:29:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=INFQFudAs4nKStIvoqPpyrmfJKCcgzNpJS8nKrPHAXI=; b=UZauaVTUjQf7I8eEFR9+GgT93J
+	v6RGQVKGc8bpasEHdRbTIrQx1Tb9ECJQxEtYz7PPkMfzmkPdoXpa26ojvEQwqjLZSFHddf1IkBv8u
+	VszX4gORiTsagIGyCxPqBTpI5nC0rLmoX4y6hiNZu/1iD7GVaujGKYo/VBVZvpfZHSV4=;
+Received: from p200300daa7301d00800d35b6f1da0728.dip0.t-ipconnect.de ([2003:da:a730:1d00:800d:35b6:f1da:728] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.94.2)
+	(envelope-from <nbd@nbd.name>)
+	id 1oZDGh-005M3C-Jb; Fri, 16 Sep 2022 17:28:39 +0200
+Message-ID: <3c9bf984-806e-d670-eefe-1a9d21d5974e@nbd.name>
+Date: Fri, 16 Sep 2022 17:28:38 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: Move MT7530 phy muxing from DSA to PHY driver
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.13.0
+Subject: Re: [PATCH v2] wifi: mac80211: fix decapsulation offload flag for WDS
+ interface
 Content-Language: en-US
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: netdev <netdev@vger.kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, Thibaut <hacks@slashdirt.org>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Sean Wang <sean.wang@mediatek.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>
-References: <0e3ca573-2190-57b0-0e98-7f5b890d328e@arinc9.com>
- <YyKQKRIYDIVeczl1@lunn.ch>
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <YyKQKRIYDIVeczl1@lunn.ch>
+To: Howard Hsu <howard-yh.hsu@mediatek.com>,
+ Johannes Berg <johannes@sipsolutions.net>
+Cc: linux-wireless <linux-wireless@vger.kernel.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <20220916142707.28478-1-howard-yh.hsu@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+In-Reply-To: <20220916142707.28478-1-howard-yh.hsu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220916_082631_782724_C26198DC 
-X-CRM114-Status: GOOD (  25.16  )
+X-CRM114-CacheID: sfid-20220916_082859_886215_25B1864C 
+X-CRM114-Status: GOOD (  13.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,100 +76,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey Andrew,
 
-On 15.09.2022 05:38, Andrew Lunn wrote:
-> On Thu, Sep 15, 2022 at 01:07:13AM +0300, Arınç ÜNAL wrote:
->> Hello folks.
->>
->> MediaTek MT7530 switch has got 5 phys and 7 gmacs. gmac5 and gmac6 are
->> treated as CPU ports.
->>
->> This switch has got a feature which phy0 or phy4 can be muxed to gmac5 of
->> the switch. This allows an ethernet mac connected to gmac5 to directly
->> connect to the phy.
->>
->> PHY muxing works by looking for the compatible string "mediatek,eth-mac"
->> then the mac address to find the gmac1 node. Then, it checks the mdio
->> address on the node which "phy-handle" on the gmac1 node points to. If the
->> mdio address is 0, phy0 is muxed to gmac5 of the switch. If it's 4, phy4 is
->> muxed.
->>
->> https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/tree/drivers/net/dsa/mt7530.c?id=1f9a6abecf538cc73635f6082677a2f4dc9c89a4#n2238
->>
->> Because that DSA probes the switch before muxing the phy, this won't work on
->> devices which only use a single switch phy because probing will fail.
->>
->> I'd like this operation to be done from the MediaTek Gigabit PHY driver
->> instead. The motives for this change are that we solve the behaviour above,
->> liberate the need to use DSA for this operation and get rid of the DSA
->> overhead.
->>
->> Would a change like this make sense and be accepted into netdev?
+On 16.09.22 16:27, Howard Hsu wrote:
+> Rx decapsulation offload cannot be enabled on WDS interface since its
+> offload_flags is not configured. Its offload_flags shall be configured
+> by checking hardware information.
 > 
-> Where in the address range is the mux register? Officially, PHY
-> drivers only have access to PHY registers, via MDIO. If the mux
-> register is in the switch address space, it would be better if the
-> switch did the mux configuration. An alternative might be to represent
-> the mux in DT somewhere, and have a mux driver.
+> Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
+> ---
+> v2:
+>     - Configure offload_flags in ieee80211_check_fast_rx
+>     - Update commit message
+> ---
+>   net/mac80211/rx.c | 10 ++++++++++
+>   1 file changed, 10 insertions(+)
+> 
+> diff --git a/net/mac80211/rx.c b/net/mac80211/rx.c
+> index a57811372027..0d8cfe34b088 100644
+> --- a/net/mac80211/rx.c
+> +++ b/net/mac80211/rx.c
+> @@ -4433,6 +4433,16 @@ void ieee80211_check_fast_rx(struct sta_info *sta)
+>   	if (!test_sta_flag(sta, WLAN_STA_AUTHORIZED))
+>   		goto clear;
+>   
+> +	if (ieee80211_hw_check(&local->hw, SUPPORTS_RX_DECAP_OFFLOAD)) {
+> +		sdata->vif.offload_flags |= IEEE80211_OFFLOAD_DECAP_ENABLED;
+> +
+> +		if (local->monitors &&
+> +		    !ieee80211_hw_check(&local->hw, SUPPORTS_CONC_MON_RX_DECAP))
+> +			sdata->vif.offload_flags &= ~IEEE80211_OFFLOAD_DECAP_ENABLED;
+> +	} else {
+> +		sdata->vif.offload_flags &= ~IEEE80211_OFFLOAD_DECAP_ENABLED;
+> +	}
+I don't think you should be messing with decap flags here.
+Further down there's a piece of code that does:
 
-I don't know this part very well but it's in the register for hw trap 
-modification which, I think, is in the switch address space.
+     offload = assign &&
+           (sdata->vif.offload_flags & IEEE80211_OFFLOAD_DECAP_ENABLED);
 
-https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/tree/drivers/net/dsa/mt7530.c?id=1f9a6abecf538cc73635f6082677a2f4dc9c89a4#n941
+Please change the code so that it gets the sdata from sdata->bss and 
+check sdata_bss->vif.offload_flags.
 
-https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/tree/drivers/net/dsa/mt7530.h?id=1f9a6abecf538cc73635f6082677a2f4dc9c89a4#n500
-
-Like you said, I don't think we can move away from the DSA driver, and 
-would rather keep the driver do the mux configuration.
-
-We could change the check for phy muxing to define the phy muxing 
-bindings in the DSA node instead. If I understand correctly, the mdio 
-address for PHYs is fake, it's for the sole purpose of making the driver 
-check if there's request for phy muxing and which phy to mux. I'm saying 
-this because the MT7530 switch works fine at address 0 while also using 
-phy0 as a slave interface.
-
-A property could be introduced on the DSA node for the MT7530 DSA driver:
-
-     mdio {
-         #address-cells = <1>;
-         #size-cells = <0>;
-
-         switch@0 {
-             compatible = "mediatek,mt7530";
-             reg = <0>;
-
-             reset-gpios = <&pio 33 0>;
-
-             core-supply = <&mt6323_vpa_reg>;
-             io-supply = <&mt6323_vemc3v3_reg>;
-
-             mt7530,mux-phy = <&sw0_p0>;
-
-             ethernet-ports {
-                 #address-cells = <1>;
-                 #size-cells = <0>;
-
-                 sw0_p0: port@0 {
-                     reg = <0>;
-                 };
-             };
-         };
-     };
-
-This would also allow using the phy muxing feature with any ethernet 
-mac. Currently, phy muxing check wants the ethernet mac to be gmac1 of a 
-MediaTek SoC. However, on a standalone MT7530, the switch can be wired 
-to any SoC's ethernet mac.
-
-For the port which is set for PHY muxing, do not bring it as a slave 
-interface, just do the phy muxing operation.
-
-Do not fail because there's no CPU port (ethernet property) defined when 
-there's only one port defined and it's set for PHY muxing.
-
-I don't know if the ethernet mac needs phy-handle defined in this case.
-
-Arınç
+- Felix
 
