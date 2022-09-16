@@ -4,77 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 218C1C32771
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 02:39:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FCE2ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 02:53:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dYL9wlLd/USNcoZdGQTOq8OEjfqINlLA5t7kFKr1hLU=; b=slTrj3GN+ODb3f0GB5FRmJTeW2
-	DBLZ8f+wc3N7OrDBSd4n/GXUF8QYvDIiThILNLmyu8LxX1CUoVw0h8uHyvWrzA78Q9LM4d7I5eagL
-	DRxhH0bErWeIAVDVW9isYsiN8PBD27KbB+mjRC3H3Dh/uBD/tFszYWOXBzeDKSJ6ucp4kjemP+6ar
-	76PKeRCwO/eAB7Z17ZK7wAbNk+1ufW8wAAbf03+ehJm/UUiEDueI/1BfDJZerJsmmtjKeeDLtwiR8
-	iufbYXg6K0IfsMcp992wPJfm2mCXPlJJbyTvJLn/UpvQ385MAud/u+wgkMCZAWAosW1OB7AL54JnO
-	0LSIKJhQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oNoZT8GHmsYXrwIBJ4X7UKKmHGPDl6GG2bXgSJSl9OY=; b=Tcgu3ZRzFHtuRBd9XmGlaJ4Zwi
+	MgmcF56OYmPZ9izJ8av3eo9l0xfQwCzCVX4aM2NRGEp+fgUWwoN0ZdIcQWX6aNttWrLoc5phSKY/1
+	6+oTneftyLgjMMTanwjUCEB5CEZ9GtsGwmaMmiT+nRtlCpUTJ+OkSmck5yW8rJdPnqM8cZUckCUMU
+	jg2ME+UlM2NnLbijNFCfw+B2cBj1EcMwPqmEFTVrMHORKeNNwB//uGIkOEObAlVDpv10/3nQWXU+U
+	vQY5LpBDXFY0fADDDIOryAkvDf/q+8bKLzqV89pru5BlDpGHL42r5VspK7HW0D4ZNWtLpBZ2Sg5Bb
+	TIfBsHbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZ1G1-005kJ0-HF; Fri, 16 Sep 2022 02:39:09 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1oZ1Tw-0062qw-KW; Fri, 16 Sep 2022 02:53:32 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZ1Fq-005k1n-2J; Fri, 16 Sep 2022 02:38:59 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id t3so20151267ply.2;
-        Thu, 15 Sep 2022 19:38:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=dYL9wlLd/USNcoZdGQTOq8OEjfqINlLA5t7kFKr1hLU=;
-        b=QOs9nlCwzQ4O0onMGYNUHEonyh2ChOvardFTCdDwwZarJZT5Pk3dwm0nItbHKIchel
-         cYYMsG59a4UYPrYgbMjERQcbWu+WcwGIMPufaiRK9ImjIIBnXwM7tbXmqu+U+GWYbYrx
-         HVkBOYhLZAFLf4o+kMlkBKuDSnvpWuuvtixIWCG3OgPLjpEd6Rz0ZcNVAq65T/95tAph
-         sNcvKfTCumFIs+sQrkvmBuSwaN/YIlpRP1wkqWGOasIFzqcCCn46rUvzDqPgoen70m2Y
-         wB3wCIgc+4NIVLAzI3x0yPPEh+GrF2Nk3m/hQZbZvzienBNNuqZtMgcS/LDlmqTWLsta
-         B4jw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=dYL9wlLd/USNcoZdGQTOq8OEjfqINlLA5t7kFKr1hLU=;
-        b=EQofVBeVrFYzxLUBaH4dEFobSqTcsYPzY8Kny3/vbtzswoRNr9dl9LhDAzk3x+bdRt
-         CPbTjtpL7Va5KZvGTguDqYzFNVdEZy4TjVaJjh9sbRqOa+z2hDiKmkg9Wq2L9BL5nlFP
-         LwYCAU66R9IpMmEPguMm2ghMRGPQY4iPx6UtIa5hfs3dcyy1n+w5/8f97DpGkATynwN8
-         EFWVbxFhWMvS5qxqL/dlqEXCdqVO/TyU5h5vFZeqK1DJ5x6glxDYWBVkQA23pRBQ+L/4
-         BgKAlliD7w5aVy0OI1i7j6SjPGFVJz5ebpMFLe6ZRQwOJaragRqhAWpkd3N6w4u6BLY5
-         Ihfw==
-X-Gm-Message-State: ACrzQf0Q45Zn06R3uODbIlvngfD76JERmUo1ZUp+1FJtpqEcfYF7jvgn
-	yk88ktYUZSNfbEOeDf4J11A=
-X-Google-Smtp-Source: AMsMyM7HH6nMrLQACZzZgcWn63QuPoiW0OKgwq8iD+IzfoinHYdc086atcyZrpUprByl58WLqVHMag==
-X-Received: by 2002:a17:902:d54e:b0:178:2da7:1bea with SMTP id z14-20020a170902d54e00b001782da71beamr2539423plf.161.1663295936126;
-        Thu, 15 Sep 2022 19:38:56 -0700 (PDT)
-Received: from RD-1129-20047.rt.l ([2402:7500:578:40c5:44cb:7b1e:21e9:77e5])
-        by smtp.gmail.com with ESMTPSA id b9-20020a170902d40900b0016bedcced2fsm13551480ple.35.2022.09.15.19.38.52
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Sep 2022 19:38:55 -0700 (PDT)
-From: cy_huang <u0084500@gmail.com>
-To: lee@kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com
-Cc: cy_huang@richtek.com,
-	chiaen_wu@richtek.com,
-	alice_chen@richtek.com,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3] dt-bindings: mfd: mt6370: fix the indentation in the example
-Date: Fri, 16 Sep 2022 10:38:49 +0800
-Message-Id: <1663295929-9024-1-git-send-email-u0084500@gmail.com>
-X-Mailer: git-send-email 2.7.4
+	id 1oZ1Tt-0062qD-TO; Fri, 16 Sep 2022 02:53:31 +0000
+X-UUID: 9845ad9c199347d5b63b2a4832c9025f-20220915
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oNoZT8GHmsYXrwIBJ4X7UKKmHGPDl6GG2bXgSJSl9OY=;
+	b=UoriI0uAU24ILb9nfJUnXzbLRlzx1qwg2tEqt5bjkStwZATwX58J157Df0RfOzPeIgw0Y5BqEES/cnB9N8Zj0v+QyS2QCIhXr4O7Ucfik6bEE0WifukrQUfCXEEj3nThUwPDWlw20gK0jb/8mhl0Jg5lS3Ws0vZooYK24ifXuuI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:6b711bef-880f-45d9-897e-fc32f44ef519,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:ad5ed17b-ea28-4199-b57e-003c7d60873a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 9845ad9c199347d5b63b2a4832c9025f-20220915
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <rex-bc.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1134366767; Thu, 15 Sep 2022 19:51:38 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 16 Sep 2022 10:51:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 16 Sep 2022 10:51:00 +0800
+From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+	<matthias.bgg@gmail.com>
+CC: <angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
+	<rex-bc.chen@mediatek.com>
+Subject: [PATCH v3 2/4] arm64: dts: mt8195: Add edptx and dptx nodes
+Date: Fri, 16 Sep 2022 10:50:57 +0800
+Message-ID: <20220916025059.16673-3-rex-bc.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220916025059.16673-1-rex-bc.chen@mediatek.com>
+References: <20220916025059.16673-1-rex-bc.chen@mediatek.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_193858_130941_06E4326F 
-X-CRM114-Status: GOOD (  12.92  )
+X-CRM114-CacheID: sfid-20220915_195329_975559_699C484E 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +81,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
+In MT8195, we use edptx as the internal display interface and use
+dptx as the external display interface. Therefore, we need to add
+these nodes to support the internal display and the external display.
 
-Fix the indentation in the binding example. There're two redudant space
-charactors need to be removed.
+- Add dp calibration data in the efuse node.
+- Add edptx and dptx nodes for MT8195.
 
-Acked-by: Rob Herring <robh@kernel.org>
-Fixes: 76f52f815f1a ("dt-bindings: mfd: Add MediaTek MT6370")
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-'Acked-by' must be added in v2. But I seen the reply after I sent patch v2.
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 25 ++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-Sorry to add 'Acked-by' only in v3 change.
-
-Since v3:
-- Add 'Acked-by' tag.
-
-Since v2:
-- Add Fixes tag in commit message
-
----
- Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-index 410e2d4..250484d 100644
---- a/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-+++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6370.yaml
-@@ -119,7 +119,7 @@ examples:
-       #address-cells = <1>;
-       #size-cells = <0>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 82d28e9f60c3..83567d90ede6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1241,6 +1241,9 @@
+ 				reg = <0x189 0x2>;
+ 				bits = <7 5>;
+ 			};
++			dp_calibration: dp-data@1ac {
++				reg = <0x1ac 0x10>;
++			};
+ 		};
  
--        pmic@34 {
-+      pmic@34 {
-         compatible = "mediatek,mt6370";
-         reg = <0x34>;
-         wakeup-source;
+ 		u3phy2: t-phy@11c40000 {
+@@ -2178,5 +2181,27 @@
+ 			clock-names = "engine", "pixel", "pll";
+ 			status = "disabled";
+ 		};
++
++		edp_tx: edp-tx@1c500000 {
++			compatible = "mediatek,mt8195-edp-tx";
++			reg = <0 0x1c500000 0 0x8000>;
++			nvmem-cells = <&dp_calibration>;
++			nvmem-cell-names = "dp_calibration_data";
++			power-domains = <&spm MT8195_POWER_DOMAIN_EPD_TX>;
++			interrupts = <GIC_SPI 676 IRQ_TYPE_LEVEL_HIGH 0>;
++			max-linkrate-mhz = <8100>;
++			status = "disabled";
++		};
++
++		dp_tx: dp-tx@1c600000 {
++			compatible = "mediatek,mt8195-dp-tx";
++			reg = <0 0x1c600000 0 0x8000>;
++			nvmem-cells = <&dp_calibration>;
++			nvmem-cell-names = "dp_calibration_data";
++			power-domains = <&spm MT8195_POWER_DOMAIN_DP_TX>;
++			interrupts = <GIC_SPI 458 IRQ_TYPE_LEVEL_HIGH 0>;
++			max-linkrate-mhz = <8100>;
++			status = "disabled";
++		};
+ 	};
+ };
 -- 
-2.7.4
+2.18.0
 
 
