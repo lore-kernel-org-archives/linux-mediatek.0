@@ -4,62 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53890ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 16:55:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7486ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 17:15:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hdQ0vxWCf/i69ElmKkr7pvNCrQZ7ifmqgzMKPZJaKoM=; b=OWPGdkxdJ2JmbmTXjh2IJpaqUp
-	JAnykWDaDqUVGHVogaKJuGBKq/YBwvYrH28ymZYtDIS/8piIX0bw2xzV4qIdeSP3/e2KeSasrKPrh
-	6F46OTGSrhM3FbkJW6nNxI3GbZ3FoMaRK0/Nv8R8+LSuVsYoEEN2aYMshDBRhYtBpe2udYBzts+MA
-	XpG52FGAeiFWV/LYYrxnoKOqSQqqTHE9EhEADCmu5150lP3lLtdJ8cU7Gfb6PMnROfzwNG3r/sv5y
-	PJ/hndcAEggG9b+cxMhe3prTKCojw1x6xlZtg/p3654IqOTTKY4PZx+vcmg95xzcF1miESm1lA91m
-	dj/+bw3w==;
+	bh=UKj9UGbXYvEgM0CJerOBIFmYNI3OH+KXrWnGoYkjkbc=; b=SpKC2XaDs36GVBeIJTa6gO+QEZ
+	HUD8fQ+95cuK+IADLXvTZ2lUKe2hgX8Lo9APmiCVsFk7KkWZyzuNLv/XDXgc9zZqOq1qOBlmyYt+n
+	6JqcSEvVTIP674i5g+C5tAYuKYs6jZoCvH8lxD0UYpD3zDsUDchsQT04SB9Mg02ryH0pQIm6GeRtq
+	6wuIwpiqakVef/mCfpHmTFyFL21dLTtqi1V18BXEjxusA1oYtxLDevZEEfYkQIF0ELBt27+BYplGC
+	zu6G9J6/5ql2p2Vl1ZHPepgU9aQCjU76bQhsQIYBb+cldsJfbS7551J9sg11ODTfwlChkYt+AtIhi
+	Tb1/r5Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZEd2-00FCPi-1A; Fri, 16 Sep 2022 16:55:48 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2] helo=sipsolutions.net)
+	id 1oZEwA-00FLhq-85; Fri, 16 Sep 2022 17:15:34 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZEYe-00FAY4-Su
-	for linux-mediatek@lists.infradead.org; Fri, 16 Sep 2022 16:51:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=hdQ0vxWCf/i69ElmKkr7pvNCrQZ7ifmqgzMKPZJaKoM=;
-	t=1663347073; x=1664556673; b=eGooR0qUw3dm0f++EWqr05skUR/pQ0arYuUJMeaTv3BanLZ
-	P92EYyyI3TuJZzV0d48F4RU7tqSzArotl6l4mutwRBli6bou029RVZ/Vrt3od1xe20pasdpTBB27+
-	WwiU2AaaYOcNCRuOBHWmLSRcnuC3DE4Kf8kKh69SmEwTaBsvfPJ/SEvlp5lWae5wBmztw2XhQMTLy
-	Iq/9FRfWnCUZVzRV+G4DR+gHWzEHreO2KWvsdBdNSxTnhX7kmkisAebupq2rBCCSNxnhYaBnF8AzN
-	pqIVapiKwM2Q8gfjogPdTLd5Q3uqmdscC6Jg5/F5SBC5mbvyJ3Z8yek1GWnG2RZw==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.96)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1oZEYM-000fxL-2E;
-	Fri, 16 Sep 2022 18:50:59 +0200
-Message-ID: <014de3ef48c3a12bf134e7cef967153665c84d6a.camel@sipsolutions.net>
-Subject: Re: [PATCH] wifi: mac80211: Align with Draft P802.11be_D1.5
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Howard Hsu <howard-yh.hsu@mediatek.com>
-Cc: linux-wireless <linux-wireless@vger.kernel.org>, Felix Fietkau
- <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
- <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn
- Tsai <evelyn.tsai@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>
-Date: Fri, 16 Sep 2022 18:50:55 +0200
-In-Reply-To: <20220916141700.28378-1-howard-yh.hsu@mediatek.com>
-References: <20220916141700.28378-1-howard-yh.hsu@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.4 (3.44.4-1.fc36) 
+	id 1oZEw5-00FLeW-VQ
+	for linux-mediatek@lists.infradead.org; Fri, 16 Sep 2022 17:15:32 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id lh5so9189304ejb.10
+        for <linux-mediatek@lists.infradead.org>; Fri, 16 Sep 2022 10:15:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date;
+        bh=UKj9UGbXYvEgM0CJerOBIFmYNI3OH+KXrWnGoYkjkbc=;
+        b=JkWCKXbyMNHGdGJZpg3xwevNAHEElmCrtUwV0oTmQOerPQBVslZbRYD932oLcbhXC/
+         Af/yZk6mE7xNlm/+jeLPbjRYQt0KeKUXX9A1YZgKq9FUizyvBit8uzSbWys9VPuIGTVH
+         qSvCEGjTYtm0oRTWzEXh2F50X6GvfusYC/xUFpaeNk4btCeEH1YTHFHdQHr2vjKdYgGT
+         9rDm3XN0Fcs/yhc2Ldeb+53NQr4bU3xGcY8rbDFh4BIkjnRhtUsEq/s2kUECcDn1MfrS
+         G+tcUNsVOdhbFIgQHJdvYLGRUQWduPdColxMcPnQylVhxssGoj4v4ESu9CepZ32l/hOD
+         aXUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date;
+        bh=UKj9UGbXYvEgM0CJerOBIFmYNI3OH+KXrWnGoYkjkbc=;
+        b=nqgi1UW1xb5LVx2qld9q6QIsjOPe//SHhhGghfThBJgDFP2mFOfEpzM33AVA6ftlCn
+         M08Z8/vZT7igYs5SyiIbtWBMZ4YD41oeGhWEZbD113rsD7f6/KJx4/TcxiHubk4DWOl/
+         rDU58KEJBCghZyX1u1HO8QaJ6DipzLL63DVj1q+GTjVfrQyNBc1VyEfH2b1qZcQHPLIc
+         rVVER/cAl1npDDcrCZjfvItJVBdBBUZ5QMsGEM8o4/PBGuN0+WIXW9tKYOizyJinJ1uk
+         XZnLie7YqBkVpOPcA31haAyVkH7UCBy9P0lMuj5Z9RR1Q0siFYy1OgN9IREM+DKXUnQp
+         xakw==
+X-Gm-Message-State: ACrzQf13A9KPP1ctRHWWnu+p7dryyznZS9OyU1taAXFVnRRaFLg3YvV9
+	AfP5162jrRJ90sNuJzQWD4Og4CbyPGkyzFii4mV8Dg==
+X-Google-Smtp-Source: AMsMyM79jF/mQUjZkPBzBVS66n8GDckLQzu9iZ4Q2FgLNCzLYn6iwTiqqFodYM/inPq47dG72kAYJzNkRM/I3UtTlRs=
+X-Received: by 2002:a17:907:1df1:b0:779:4f57:6bb2 with SMTP id
+ og49-20020a1709071df100b007794f576bb2mr4327098ejc.407.1663348526555; Fri, 16
+ Sep 2022 10:15:26 -0700 (PDT)
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+References: <20220829194247.GC2264818@p14s> <20220908111757.14633-1-tinghan.shen@mediatek.com>
+ <CANLsYkx6kXk8u_ajFbnhdWTkZBLtrq_z02jryLBSVH0x--_ZFw@mail.gmail.com> <a5ecd1dd567ca58807b289f2488d933f27e087dd.camel@mediatek.com>
+In-Reply-To: <a5ecd1dd567ca58807b289f2488d933f27e087dd.camel@mediatek.com>
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+Date: Fri, 16 Sep 2022 11:15:14 -0600
+Message-ID: <CANLsYkxPdWErZErgGukvsMWcaGSRDpoKEkMeukvFi=BVTdpm8A@mail.gmail.com>
+Subject: Re: [PATCH v2 4/9] remoteproc: mediatek: Support probing for the 2nd
+ core of dual-core SCP
+To: TingHan Shen <tinghan.shen@mediatek.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	bjorn.andersson@linaro.org, bleung@chromium.org, 
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
+	dnojiri@chromium.org, enric.balletbo@collabora.com, groeck@chromium.org, 
+	gustavoars@kernel.org, keescook@chromium.org, krzk+dt@kernel.org, 
+	lee.jones@linaro.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-remoteproc@vger.kernel.org, matthias.bgg@gmail.com, 
+	pmalani@chromium.org, robh+dt@kernel.org, sebastian.reichel@collabora.com, 
+	weishunc@google.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220916_095116_963923_83C4489F 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20220916_101530_074085_2C69B62E 
+X-CRM114-Status: GOOD (  49.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,30 +93,177 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-09-16 at 22:17 +0800, Howard Hsu wrote:
-> Fix ieee80211_prep_channel to aligh with Draft P80211.be_D1.5. It shall
-> shift 4 byte to fetch EHT Operation information.
->=20
-> Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
-> ---
->  net/mac80211/mlme.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/net/mac80211/mlme.c b/net/mac80211/mlme.c
-> index ff449e0c2e62..9bb085eab12a 100644
-> --- a/net/mac80211/mlme.c
-> +++ b/net/mac80211/mlme.c
-> @@ -4735,7 +4735,7 @@ static int ieee80211_prep_channel(struct ieee80211_=
-sub_if_data *sdata,
->  						   cbss_ies->data, cbss_ies->len);
->  		if (eht_oper_ie && eht_oper_ie[1] >=3D
->  		    1 + sizeof(struct ieee80211_eht_operation))
-> -			eht_oper =3D (void *)(eht_oper_ie + 3);
-> +			eht_oper =3D (void *)(eht_oper_ie + 4);
->=20
+On Fri, 16 Sept 2022 at 06:00, TingHan Shen <tinghan.shen@mediatek.com> wrote:
+>
+> On Thu, 2022-09-08 at 14:58 -0600, Mathieu Poirier wrote:
+> > On Thu, 8 Sept 2022 at 05:21, Tinghan Shen <tinghan.shen@mediatek.com>
+> > wrote:
+> >
+> > > Hi Mathieu,
+> > >
+> > > > > The mtk_scp.c driver only supports the single core SCP and the
+> > > > > 1st core of a dual-core SCP. This patch extends it for the 2nd core.
+> > > > >
+> > > > > MT8195 SCP is a dual-core MCU. Both cores are housed in the same
+> > >
+> > > subsys.
+> > > >
+> > > > s/subsys/subsystem
+> > > >
+> > > > > They have the same viewpoint of registers and memory.
+> > > > >
+> > > > > Core 1 of the SCP features its own set of core configuration registers,
+> > > > > interrupt controller, timers, and DMAs. The rest of the peripherals
+> > > > > in this subsystem are shared by core 0 and core 1.
+> > > > >
+> > > > > As for memory, core 1 has its own cache memory. the SCP SRAM is shared
+> > > >
+> > > > /the/The
+> > > >
+> > > > > by core 0 and core 1.
+> > > > >
+> > > > > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> > > > > ---
+> > > > >  drivers/remoteproc/mtk_scp.c | 22 ++++++++++++++++++++--
+> > > > >  1 file changed, 20 insertions(+), 2 deletions(-)
+> > > > >
+> > > > > diff --git a/drivers/remoteproc/mtk_scp.c
+> > >
+> > > b/drivers/remoteproc/mtk_scp.c
+> > > > > index 3510c6d0bbc8..91b4aefde4ac 100644
+> > > > > --- a/drivers/remoteproc/mtk_scp.c
+> > > > > +++ b/drivers/remoteproc/mtk_scp.c
+> > > > > @@ -23,6 +23,10 @@
+> > > > >  #define MAX_CODE_SIZE 0x500000
+> > > > >  #define SECTION_NAME_IPI_BUFFER ".ipi_buffer"
+> > > > >
+> > > > > +#define SCP_CORE_0 0
+> > > > > +#define SCP_CORE_1 1
+> > > > > +#define SCP_CORE_SINGLE 0xF
+> > > > > +
+> > > > >  /**
+> > > > >   * scp_get() - get a reference to SCP.
+> > > > >   *
+> > > > > @@ -836,6 +840,7 @@ static int scp_probe(struct platform_device *pdev)
+> > > > >     struct resource *res;
+> > > > >     const char *fw_name = "scp.img";
+> > > > >     int ret, i;
+> > > > > +   u32 core_id = SCP_CORE_SINGLE;
+> > > > >
+> > > > >     ret = rproc_of_parse_firmware(dev, 0, &fw_name);
+> > > > >     if (ret < 0 && ret != -EINVAL)
+> > > > > @@ -851,8 +856,16 @@ static int scp_probe(struct platform_device *pdev)
+> > > > >     scp->data = of_device_get_match_data(dev);
+> > > > >     platform_set_drvdata(pdev, scp);
+> > > > >
+> > > > > +   ret = of_property_read_u32_index(dev->of_node,
+> > >
+> > > "mediatek,scp-core", 1, &core_id);
+> > > > > +   if (ret == 0)
+> > > > > +           dev_info(dev, "Boot SCP dual core %u\n", core_id);
+> > > >
+> > > > Why is the DT property "mediatek,scp-core" needed at all?  Since the
+> > >
+> > > compatible
+> > > > "mediatek,mt8195-scp-dual" has already been defined previously in this
+> > >
+> > > patchset,
+> > > > initialising the second core, if present, is a matter of looking at the
+> > > > compatile string.
+> > >
+> > > This idea of identify cores by the compatible looks workable.
+> > > I'll update this series at next version.
+> > > Thanks!
+> > >
+> > > >
+> > > > > +
+> > > > >     res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
+> > > > > -   scp->sram_base = devm_ioremap_resource(dev, res);
+> > > > > +   if (core_id == SCP_CORE_1)
+> > > > > +           scp->sram_base = devm_ioremap(dev, res->start,
+> > >
+> > > resource_size(res));
+> > > > > +   else
+> > > > > +           scp->sram_base = devm_ioremap_resource(dev, res);
+> > > > > +
+> > > >
+> > > > This looks very broken...  For this to work you would need to have two DT
+> > > > entries with the "mediatek,mt8195-scp-dual" compatible properly, one with
+> > > > "mediatek,scp-core = <&scp_dual1 0>;" and another one with
+> > >
+> > > "mediatek,scp-core = <&scp_dual0 1>;".
+> > > >
+> > > > Which is also very broken...  Here you have a binding whose first
+> > >
+> > > argument is a
+> > > > reference to the core sibling while the second argument is a
+> > >
+> > > characteristic of
+> > > > the current core, which is highly confusing.
+> > > >
+> > > > I suggest what when you see the compatible binding
+> > >
+> > > "mediatek,mt8195-scp", a
+> > > > single core is initialized.  If you see "mediatek,mt8195-scp-dual", both
+> > >
+> > > cores
+> > > > are initialized as part of the _same_ probe.
+> > > >
+> > > > If the above analysis is not correct it means I misinterpreted your
+> > > > work and if so, a serious amount of comments is needed _and_ a very
+> > >
+> > > detailed
+> > > > example in "mtk,scp.yaml" that leaves no room for interpretation.
+> > > >
+> > > > I will stop reviewing this patchset until you have clarified how this
+> > >
+> > > works.
+> > > >
+> > > > Thanks,
+> > > > Mathieu
+> > >
+> > > There's one problem of initializng the CORE1 using the same probe flow.
+> > > The register space of CORE0 and CORE1 are overlapped in the device node.
+> > > Both cores need to use the 'cfg' registers defined in scp yaml.
+> > > The devm_ioremap_resource catches address overlapping and returns error
+> > > when
+> > > probing CORE1 driver.
+> > >
+> >
+> > That is exactly why I suggest to initialise both cores within the same
+> > probe() function.
+> >
+>
+> Hi Mathieu,
+>
+> I'm thinking about how to initialise in the same probe() function.
+> I'm wondering if this implies that using one scp driver to initialize 2 cores?
+> If it is, I assume the dts descriptions for both cores should be contained in one node.
+>
+> When there's one node for both cores, it looks like that there is a problem of
+> using dma_allocate_coherent(). Each core has its own reserved memory region.
+> When there's only one device for both cores, it's not able to identify the memory region
+> by the device parameter of dma_allocate_coherent().
+>
+> Is it acceptable to consider manually allocating core 1 device in the probe() when probing core 0?
 
+Look at what Suman did for TI's K3 R5[1] and DSP[2] platforms.
+Reviewing the bindings for both platforms will also give you a good
+idea of how things work.
 
-No, the +3 is just to skip the type/len/ext-tag
+[1]. https://elixir.bootlin.com/linux/v6.0-rc5/source/drivers/remoteproc/ti_k3_r5_remoteproc.c#L1683
+[2]. https://elixir.bootlin.com/linux/v6.0-rc5/source/drivers/remoteproc/ti_k3_dsp_remoteproc.c#L673
 
-johannes
+>
+>
+> Best regards,
+> TingHan
+>
+>
+>
+>
+>
+>
+>
+>
 
