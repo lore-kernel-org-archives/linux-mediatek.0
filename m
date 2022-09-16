@@ -4,72 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8803CECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 14:19:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45FBFECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 14:39:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KZonnrvf1gPiBnsRVbF9fUklyaTp4FmPgjTo+qwwvFo=; b=ESH5ipjYeWiNudty7Y8rQeq1sM
-	6vZxRJjzL7gEXvQhUO7mggWmX0FVLpzt3NCN+yqaNYM8QMk6jmY1zhz88pMQeaDnqiNHbUgawOonh
-	5KkamzcGxA5FOTNzFso7QcgdEGUMHnSUTXOhcpWvvOC7maPWKCXrK8JdkjnKXy4plztnlYfGUi1iK
-	GQlUUJhqvuVRKpcNgOAY9SeCJhvkDYu0YrqAqZ+YmYvR5DWLJs3uYMpAtuYni4EfU228qOOERQlZR
-	L+OrkXW1z+ymUaDhoVXFsDBIjfCc5CsKZt3QwS5RG+dFu1W2XQZ7IgozQvOgOJDwl3t8TvXaLFW2L
-	B9vJiGMw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4LVjjoBtKIVD5H3vawJme1nq7gxmF4DCA9ujlSFbYU0=; b=33hci6QngDnlSURaXOSa9Zpl+9
+	h7MG6ecOx6dE6CynTNDfMcICkhI/FmhDhRHGetpKVXJ6EyzNzK1FBZNM3YbFNDJayawrBBfVX3sVJ
+	tFdxwNwsp3R+uK6jBxwuIv9b+vflp+Uq5UffSx6K9/wehGL2UwZPvMOVQu33iqQNWdj6J2YiEYRgb
+	+1uyic6VnaeJ6zYCdvCbLigJnJpEkDIQ8EZTjGmAPsCyBalMP5XffsPmY0/nQ9z2HCCDyL76RLdhc
+	RwkOaJiFxLrWT7IQksHi0egWhUrIPpRYxy9SmqI87cCmEUdWFjAl7Sg4urvUc6LzLwXFO8YlxGvhl
+	b5or9m3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZCBT-00E4h2-JN; Fri, 16 Sep 2022 14:19:11 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oZCUv-00EGJb-Lj; Fri, 16 Sep 2022 14:39:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZCBC-00E4XH-BC; Fri, 16 Sep 2022 14:18:56 +0000
-Received: from mercury (unknown [82.141.252.181])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0DC40660203B;
-	Fri, 16 Sep 2022 15:18:50 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663337930;
-	bh=ZLM9d9F/EoTTN2+Qe1HJE5YhJNqZQ6yu6k4zqiLIIBk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=huXbpgc/7LoK2ak5zlFNwWRCFsHcpe2bvGGx7ThsS5scPh6K7Fn0mt0lww5ikW0tG
-	 w0W/TaSEUrdjnfXJU8qjV+68/ExoMY52Kws5VvW/BCO+6tArhHngiPcH4NBl3H+RTH
-	 c0xBYC3GDN149VGjFUkBwDt+WnI0ptKn5t4NETAyuVEjcqPW6vZN4h9I4WJ+Yas3JC
-	 9uH0NuLiXVeVIHCEP8xYnsVEXs2VHh9h5ffDKRi30kq53g33MQIcHyxyd368LUStkZ
-	 q8GZBebRE7ZX41GTnUzM7MSfD5TapID8gkOSVUFYc+q/Xbmibv8taKed8TLIThv0cq
-	 qxwNucN8tKQnw==
-Received: by mercury (Postfix, from userid 1000)
-	id BA4751060849; Fri, 16 Sep 2022 16:18:43 +0200 (CEST)
-Date: Fri, 16 Sep 2022 16:18:43 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: ChiaEn Wu <peterwu.pub@gmail.com>
-Cc: pavel@ucw.cz, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com, jic23@kernel.org, lars@metafoo.de,
-	broonie@kernel.org, mazziesaccount@gmail.com,
-	andriy.shevchenko@linux.intel.com, chiaen_wu@richtek.com,
-	alice_chen@richtek.com, cy_huang@richtek.com,
-	linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-iio@vger.kernel.org,
-	szunichen@gmail.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v11 1/8] dt-bindings: power: supply: Add MediaTek MT6370
- Charger
-Message-ID: <20220916141843.pmlg3x7yrnkdr26r@mercury.elektranox.org>
-References: <cover.1663254344.git.chiaen_wu@richtek.com>
- <9382254831bb6ed8c228398a68896b0e8e61c7c4.1663254344.git.chiaen_wu@richtek.com>
+	id 1oZCUs-00EGHd-S0
+	for linux-mediatek@lists.infradead.org; Fri, 16 Sep 2022 14:39:16 +0000
+X-UUID: 03eee4a6e747497aa6769f4856269a6b-20220916
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4LVjjoBtKIVD5H3vawJme1nq7gxmF4DCA9ujlSFbYU0=;
+	b=K+yy8oMIwAhhl/2fgQRxyebs7QACwu3OPDdgNyORbYL7vS8+q83qo07y2MAyrPlKZAMNgcqFuW9LvODNRc25sZby5VmMSx6uDKO5RGvf7fewiQGGcT6JyAECKVqrNkR4TIUx2Az+SEzmnhWCErX+1rnyCN2bsktH7GhCsb8Myvw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:402041a5-9df0-489d-ac9d-9e17c3b3e84b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:dd5deb5d-5ed4-4e28-8b00-66ed9f042fbd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 03eee4a6e747497aa6769f4856269a6b-20220916
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <howard-yh.hsu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1417107661; Fri, 16 Sep 2022 07:37:51 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 16 Sep 2022 22:27:18 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 16 Sep 2022 22:27:18 +0800
+From: Howard Hsu <howard-yh.hsu@mediatek.com>
+To: Johannes Berg <johannes@sipsolutions.net>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Felix Fietkau
+	<nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
+	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Howard Hsu <howard-yh.hsu@mediatek.com>
+Subject: [PATCH v2] wifi: mac80211: fix decapsulation offload flag for WDS interface
+Date: Fri, 16 Sep 2022 22:27:07 +0800
+Message-ID: <20220916142707.28478-1-howard-yh.hsu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="fwbn4zdugcfjfhv7"
-Content-Disposition: inline
-In-Reply-To: <9382254831bb6ed8c228398a68896b0e8e61c7c4.1663254344.git.chiaen_wu@richtek.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220916_071854_758319_A6F2DC69 
-X-CRM114-Status: GOOD (  25.50  )
+X-CRM114-CacheID: sfid-20220916_073914_942459_6B05CE11 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,169 +80,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Rx decapsulation offload cannot be enabled on WDS interface since its
+offload_flags is not configured. Its offload_flags shall be configured
+by checking hardware information.
 
---fwbn4zdugcfjfhv7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
+---
+v2:
+   - Configure offload_flags in ieee80211_check_fast_rx
+   - Update commit message
+---
+ net/mac80211/rx.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-Hi,
+diff --git a/net/mac80211/rx.c b/net/mac80211/rx.c
+index a57811372027..0d8cfe34b088 100644
+--- a/net/mac80211/rx.c
++++ b/net/mac80211/rx.c
+@@ -4433,6 +4433,16 @@ void ieee80211_check_fast_rx(struct sta_info *sta)
+ 	if (!test_sta_flag(sta, WLAN_STA_AUTHORIZED))
+ 		goto clear;
+ 
++	if (ieee80211_hw_check(&local->hw, SUPPORTS_RX_DECAP_OFFLOAD)) {
++		sdata->vif.offload_flags |= IEEE80211_OFFLOAD_DECAP_ENABLED;
++
++		if (local->monitors &&
++		    !ieee80211_hw_check(&local->hw, SUPPORTS_CONC_MON_RX_DECAP))
++			sdata->vif.offload_flags &= ~IEEE80211_OFFLOAD_DECAP_ENABLED;
++	} else {
++		sdata->vif.offload_flags &= ~IEEE80211_OFFLOAD_DECAP_ENABLED;
++	}
++
+ 	rcu_read_lock();
+ 	key = rcu_dereference(sta->ptk[sta->ptk_idx]);
+ 	if (!key)
+-- 
+2.18.0
 
-On Thu, Sep 15, 2022 at 05:47:29PM +0800, ChiaEn Wu wrote:
-> From: ChiaEn Wu <chiaen_wu@richtek.com>
->=20
-> Add MediaTek MT6370 Charger binding documentation.
->=20
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
-> ---
-> v11
-> - Add more detailed description of irqs.
-> - Adujust the order of irqs
-> ---
-
-Acked-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
--- Sebastian
-
->  .../power/supply/mediatek,mt6370-charger.yaml      | 96 ++++++++++++++++=
-++++++
->  1 file changed, 96 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/power/supply/mediat=
-ek,mt6370-charger.yaml
->=20
-> diff --git a/Documentation/devicetree/bindings/power/supply/mediatek,mt63=
-70-charger.yaml b/Documentation/devicetree/bindings/power/supply/mediatek,m=
-t6370-charger.yaml
-> new file mode 100644
-> index 0000000..fd491c5
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/power/supply/mediatek,mt6370-char=
-ger.yaml
-> @@ -0,0 +1,96 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/power/supply/mediatek,mt6370-charger.=
-yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT6370 Battery Charger
-> +
-> +maintainers:
-> +  - ChiaEn Wu <chiaen_wu@richtek.com>
-> +
-> +description: |
-> +  This module is part of the MT6370 MFD device.
-> +  Provides Battery Charger, Boost for OTG devices and BC1.2 detection.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt6370-charger
-> +
-> +  interrupts:
-> +    description: |
-> +      Specify what irqs are needed to be handled by MT6370 Charger drive=
-r.
-> +      We need to use the IRQ "MT6370_IRQ_OVPCTRL_UVP_D" to know when USB
-> +      is plugged in, and then the driver will enable BC1.2 detection.
-> +      After the hardware of MT6370 completes the BC1.2 detection,
-> +      IRQ "MT6370_IRQ_ATTACH" will be triggered, and the driver will know
-> +      the result of BC1.2 detection.
-> +      When the IRQ "MT6370_IRQ_CHG_MIVR" is triggered, it means that the
-> +      hardware enters the "Minimum Input Voltage Regulation loop" and
-> +      a workaround needs to be applied at this time.
-> +      In summary, "MT6370_IRQ_OVPCTRL_UVP_D", "MT6370_IRQ_ATTACH" and
-> +      "MT6370_IRQ_CHG_MIVR" are required in this charger driver.
-> +    items:
-> +      - description: irq of "USB is plugged in"
-> +      - description: irq of "BC1.2 is done"
-> +      - description: irq of "Minimum Input Voltage Regulation loop is ac=
-tive"
-> +
-> +  interrupt-names:
-> +    items:
-> +      - const: uvp_d_evt
-> +      - const: attach_i
-> +      - const: mivr
-> +
-> +  io-channels:
-> +    description: |
-> +      Use ADC channel to read VBUS, IBUS, IBAT, etc., info.
-> +    minItems: 1
-> +    items:
-> +      - description: |
-> +          VBUS voltage with lower accuracy (+-75mV) but higher measure
-> +          range (1~22V)
-> +      - description: |
-> +          VBUS voltage with higher accuracy (+-30mV) but lower measure
-> +          range (1~9.76V)
-> +      - description: the main system input voltage
-> +      - description: battery voltage
-> +      - description: battery temperature-sense input voltage
-> +      - description: IBUS current (required)
-> +      - description: battery current
-> +      - description: |
-> +          regulated output voltage to supply for the PWM low-side gate d=
-river
-> +          and the bootstrap capacitor
-> +      - description: IC junction temperature
-> +
-> +  io-channel-names:
-> +    minItems: 1
-> +    items:
-> +      - const: vbusdiv5
-> +      - const: vbusdiv2
-> +      - const: vsys
-> +      - const: vbat
-> +      - const: ts_bat
-> +      - const: ibus
-> +      - const: ibat
-> +      - const: chg_vddp
-> +      - const: temp_jc
-> +
-> +  usb-otg-vbus-regulator:
-> +    type: object
-> +    description: OTG boost regulator.
-> +    unevaluatedProperties: false
-> +    $ref: /schemas/regulator/regulator.yaml#
-> +
-> +    properties:
-> +      enable-gpios:
-> +        maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - interrupts
-> +  - interrupt-names
-> +  - io-channels
-> +
-> +additionalProperties: false
-> +
-> +...
-> --=20
-> 2.7.4
->=20
-
---fwbn4zdugcfjfhv7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmMkhcAACgkQ2O7X88g7
-+prLghAAgaMdleTOkYQYJw7BnJdS13FoSXBt0v+LtednJi/uKwwDFWX9R6t04m4c
-fxSU/K1LiIkUQWw/iT0YXM5m2xl2tbFwTYq7fUwj6soTbHjCuv5ii6b2cQw5+bTe
-SBRQWf4OJqqU0Wo2IpjdsVQeKSCpCoUUjgAf1VWwGh80SH4lXdpKlNuZIlYo6m4R
-S86iaJLgM1Zaf1y4xV1MBoVyhC4peHPlcYl+zqTalN9tRXthDjEbGKsodbxSv3yX
-tVAYuY3YXLmmHfCASxbaFeDxW7GzgmQiHV1a7c5rjvaPqpO1lFJ4+sl04mFPQ+u/
-ZkvT9Dw8SawWQOUa4S/myktxiUrZlEaIVCj+iW0yE0yN03ARG2Le6n3JSFE2Spt5
-4jUjo3VFyFFJNrRzFS00lO8Pwrs143mvKuD28Dh6g4Gdi7IJz6aRZdM2fx9SwwS9
-iQn4Hp/0lrdhpmecZZSS2awHnuGv+wi++Jpx4/GDhE7OMHjWX+pZA7spNJZhb/e6
-DwbIo8zM+y3wosRM8kcxR9PPmLaPpMsP6WkUHDuSaiCzzYPxEWA8g276IUjCtWUs
-gCqHcb7/a+CuMKbVwmqemzhaxcekH5fqdpTqIWEA+QkxCOqCqG5KqK7tw/tg5fYe
-6DUSkNR6hysUsU6DgjeopXNXhPhyE7F8odG1MkFPFcw2EDNskxU=
-=KswM
------END PGP SIGNATURE-----
-
---fwbn4zdugcfjfhv7--
 
