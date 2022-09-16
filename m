@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9ED7ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 03:02:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9224C32771
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Sep 2022 03:31:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o4SwcYmQeEsPhNZNiOlAz3LSIKt52BQiCkN0gMjK+lM=; b=u6FXj3h15C3b/CaYR9y8ITQtNC
-	WQj1sbclYa4jkDVhwrHJXarvFVDm3up2yxzCjgxxoLrrFUjUgn6A9DTjt3jUrmaguf16AfDeNQje/
-	//fySvjDa/DljfmLa9innrrDDJ3hKKjtIcISyppuEwLTmLz4vbcyja40lVL7ab2FRjyHr6UZKjunH
-	xPFJG3IJjl9CXKjcT2lyZtIWfJr/Js+Xa+V1jtMwdHqt9Hb2PR55Wgbdjxla1rCzS/mzl1RBZllS+
-	Iv9mMkYCh+oyCVeOqHOJlY8UWMAI8WXmHq2/26tt7HtBQgqCJQsRT3XQYrZoHbJP7ppleqeneK9as
-	eAEq14fA==;
+	bh=7eWdpkChRc0r8YwNYYnIxHjt2oBpWtyfeq/corPDpK8=; b=lwXqBaNu4OY8Hf4yWMHhk4ablz
+	alG/1KIp0XbISt3NCwSjYTmvFk5NU8Unu7mnYHnrC6SCV6SpcKQhf+vSFkEpLi75xaqHDRBcn5ql3
+	p/IM2WWbbHgR+kHM9WzxB4lV4REOb9nhnU9IaYC2iay7WItwOwVvrBjsQKKiPLOXHEDSrV794JcUY
+	5h+FgoyO/BHTbME3QTW2LWnRPjb43R9yBTJco8e2JZ1LYSKwMM1ZNC2J/rL3ObloWdaNKUMVN4aLa
+	5KQmZtE7ij1Dlv/QwwgDFRYYFj7rA5OFzQJeeKvGY4fWcKqbxCnXbbo7mrjrQn38kOMqh2Iykb4jd
+	P6e/YZ7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZ1cS-0068DA-UD; Fri, 16 Sep 2022 03:02:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oZ24V-006I1v-Oi; Fri, 16 Sep 2022 03:31:19 +0000
+Received: from mga12.intel.com ([192.55.52.136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZ1cR-0068Ar-6C; Fri, 16 Sep 2022 03:02:20 +0000
-X-UUID: 6ddbd344374048bdb79707a843293dd0-20220915
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=o4SwcYmQeEsPhNZNiOlAz3LSIKt52BQiCkN0gMjK+lM=;
-	b=GjhWbedZDVF/70SBb29RJFIaXfiDZxyenGtPssYc3Lu3Mqu3YnwMgnWXewr849KjU9uPONu33kLjX5zsbEczi35zZd465teaPvjxVvBwW9FnwXHeGZItqd2dVxRe8hR5o/LBfJVgJeV8C/sosZ1HID7cAmQG4LsW3egXXgewtmo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:2621e0b1-afb1-4e88-8aac-687c992c7b06,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:aecc96f6-6e85-48d9-afd8-0504bbfe04cb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 6ddbd344374048bdb79707a843293dd0-20220915
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1050574791; Thu, 15 Sep 2022 20:02:08 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 16 Sep 2022 10:51:01 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 16 Sep 2022 10:51:01 +0800
-From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-To: <robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<matthias.bgg@gmail.com>
-CC: <angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Bo-Chen Chen
-	<rex-bc.chen@mediatek.com>
-Subject: [PATCH v3 4/4] arm64: dts: mediatek: cherry: Add edptx and dptx support
-Date: Fri, 16 Sep 2022 10:50:59 +0800
-Message-ID: <20220916025059.16673-5-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220916025059.16673-1-rex-bc.chen@mediatek.com>
-References: <20220916025059.16673-1-rex-bc.chen@mediatek.com>
+	id 1oZ24I-006HvO-9R; Fri, 16 Sep 2022 03:31:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1663299066; x=1694835066;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=W0cfxaJO3/1PDzVFBWy7MMV7m4LDSVvZlQ6U4vLGtjI=;
+  b=OX3cTCvqjEP567slpKNtxqK3unLXpXQw32Zytd/i10y2tY9tHiACq3df
+   kG8P87jm1ljmAEcMaMXzHyMhIVsPTnQ0xdLO2ZJkxnkgjCdbYBzfcSvCB
+   s6dh4TU4Sd38Vjis7g58xNxAxCJm2ST5aIaWMlsPJ3PrE8lPlidAiccZI
+   p/L76NpR9p/01pbC9sf4wG3BHJ7swBFVmzmJLjMMJwE9fmFMOwcAeaU3k
+   +UmesWafs/OsubcxF1I4aSDxB9DvjZeNIF6TNm41SgvxbPKHkQQDzrYEs
+   re4gSDZ4o2v1gbtkKbHxNgbttVtM2LGOf7WdT+qZl7ae3McrIexD53476
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10471"; a="278630048"
+X-IronPort-AV: E=Sophos;i="5.93,319,1654585200"; 
+   d="scan'208";a="278630048"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Sep 2022 20:30:35 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,319,1654585200"; 
+   d="scan'208";a="568689707"
+Received: from lkp-server02.sh.intel.com (HELO 41300c7200ea) ([10.239.97.151])
+  by orsmga003.jf.intel.com with ESMTP; 15 Sep 2022 20:30:33 -0700
+Received: from kbuild by 41300c7200ea with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1oZ23k-0001OI-1a;
+	Fri, 16 Sep 2022 03:30:32 +0000
+Date: Fri, 16 Sep 2022 11:29:35 +0800
+From: kernel test robot <lkp@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	robh+dt@kernel.org
+Cc: kbuild-all@lists.01.org, jassisinghbrar@gmail.com,
+	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+	houlong.wei@mediatek.com, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] dt-bindings: mailbox: Convert mtk-gce to DT schema
+Message-ID: <202209161109.lJhgeduV-lkp@intel.com>
+References: <20220915101716.70225-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220915101716.70225-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_200219_257179_F528AD8F 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20220915_203106_391378_1BFBC853 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,120 +85,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In cherry projects, we use edptx as the internal display interface
-and use dptx as the external display interface. To support this, we
-need to add more properties.
+Hi AngeloGioacchino,
 
-- Add pinctrls for edptx and dptx.
-- Add ports for edptx and dptx.
+Thank you for the patch! Perhaps something to improve:
 
-The port connections for the internal and external display:
-dp-intf0 -> edptx -> panel
-dp-intf1 -> dptx
+[auto build test WARNING on robh/for-next]
+[also build test WARNING on linus/master v6.0-rc5 next-20220915]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-The edptx endpoint is kept empty for now, as the panel addition will
-come in a later commit.
+url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/dt-bindings-mailbox-Convert-mtk-gce-to-DT-schema/20220915-181923
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+reproduce:
+        # https://github.com/intel-lab-lkp/linux/commit/2bc0d648f46bb6438cd4c7a140a613090ee9c1b0
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review AngeloGioacchino-Del-Regno/dt-bindings-mailbox-Convert-mtk-gce-to-DT-schema/20220915-181923
+        git checkout 2bc0d648f46bb6438cd4c7a140a613090ee9c1b0
+        make menuconfig
+        # enable CONFIG_COMPILE_TEST, CONFIG_WARN_MISSING_DOCUMENTS, CONFIG_WARN_ABI_ERRORS
+        make htmldocs
 
-Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 68 +++++++++++++++++++
- 1 file changed, 68 insertions(+)
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index 303dc32c64dc..560103e29017 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -125,6 +125,7 @@
- 
- 	port {
- 		dp_intf0_out: endpoint {
-+			remote-endpoint = <&edp_in>;
- 		};
- 	};
- };
-@@ -134,6 +135,59 @@
- 
- 	port {
- 		dp_intf1_out: endpoint {
-+			remote-endpoint = <&dptx_in>;
-+		};
-+	};
-+};
-+
-+&edp_tx {
-+	status = "okay";
-+
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&edptx_pins_default>;
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@0 {
-+			reg = <0>;
-+			edp_in: endpoint {
-+				remote-endpoint = <&dp_intf0_out>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+			edp_out: endpoint {
-+				data-lanes = <0 1 2 3>;
-+			};
-+		};
-+	};
-+};
-+
-+&dp_tx {
-+	status = "okay";
-+
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&dptx_pin>;
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@0 {
-+			reg = <0>;
-+			dptx_in: endpoint {
-+				remote-endpoint = <&dp_intf1_out>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+			dptx_out: endpoint {
-+				data-lanes = <0 1 2 3>;
-+			};
- 		};
- 	};
- };
-@@ -497,6 +551,20 @@
- 		};
- 	};
- 
-+	edptx_pins_default: edptx-default-pins {
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO7__FUNC_EDP_TX_HPD>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	dptx_pin: dptx-default-pins {
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO18__FUNC_DP_TX_HPD>;
-+			bias-pull-up;
-+		};
-+	};
-+
- 	i2c0_pins: i2c0-default-pins {
- 		pins-bus {
- 			pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
+All warnings (new ones prefixed by >>):
+
+>> Warning: Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml references a file that doesn't exist: Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+
 -- 
-2.18.0
-
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
