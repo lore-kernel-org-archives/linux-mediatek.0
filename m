@@ -4,80 +4,158 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53B86C32771
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Sep 2022 04:47:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DDA3C6FA86
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Sep 2022 04:55:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=knWNcqxz2cOCB5smV7ea1ouYaaqry7RAXOCgo8muCaU=; b=SDjlChtAuwuk7Wzg+vlPlF+oPr
-	7BiOnjidTJhQbX6s1qjQpI0h7QpBbGOel+KH6vdclRs6GHp2ihp5ZQwgWQmCDjBoPyE8y/cloaRH/
-	blIXpHHELVwXVdLaFTWHb80g2kXA+9Qg6InxXdjUvHLfJHBVqgd7cIZwfHWFid9e91TGdkyJcZYAP
-	GaMnx5Nu5abv1cVpn8Bs7MJW7Nxl9QKfsxvytnmUl3xsMocq5sVYE+Ip6IIp46OcGl2kOYffYtzwd
-	hmQvtvvDUUz8YSTSzXSdzooCPDdWOJTQeIXjwbgGPX8Iqy2e1BGxL2MwnvuMkflsPOlyovpugqvoY
-	gK69Gebg==;
+	bh=rafA0NqjJWSlYJNNlXiCQ3yShsWfvaYm+iGDvcsOWoE=; b=OSjLJNjao/yStvF6V5/R4w4+t/
+	IEC4M/uRo7x1n2vXazjau7hR0haURjvsV5/UNE8IOKg8A0IegHhRZs/6A+W4VcfQyj3uTngQu3D+U
+	Wk1Zb+iME9ujFb/9Sa1XhDeLQ/t7Cbgv7c/LFlBs/czXoaNjSeG2N3oCw79NMNcLswGjEN9yxXD7Y
+	sbSsOmNCx0M56aJD05tMwGkNvcsd8qZWrbwrqq+uMVsx9n7VL5NILtdBiU+61OnoJd8B0HuUsTccS
+	xI56MhxKkAqbB0YeO2uMfYk5JIydD0ej+bKythv9f5pD7GmXBpxRWgrvgqpkJ8Y24ssPEsFHZS7MN
+	W2LOzKPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZmD9-00CL9d-4b; Sun, 18 Sep 2022 04:47:19 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oZmKl-00COuF-U1; Sun, 18 Sep 2022 04:55:11 +0000
+Received: from mga18.intel.com ([134.134.136.126])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZmCw-00CL27-8l; Sun, 18 Sep 2022 04:47:07 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 608E7B80E65;
-	Sun, 18 Sep 2022 04:47:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0DF27C43140;
-	Sun, 18 Sep 2022 04:47:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663476423;
-	bh=CSkbwKqFDwoTcrIkATvHljbT5brjkYB/RNCXPtLGAlY=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=gFaXETrEdzfokQVVyjJPra8q/RUwpky72FUJxQHKPjh8IEL5Z45PdareAz1uL7Va7
-	 dDFU9TzZbTRZXTyLTje2Q01FoPEPYPKUx1HMCCDsrqDkIj4ivZ7pKPO0mbFiB/3oNa
-	 8LxpafnPRLvnZJrj6gVSg/wAVfyC39uiyQ94EoI5vUap3VklxCVSWE68ztm13zpvWt
-	 vfrh9QokKUBp67VkByoYz5Sud0XrQhm/ez+Otuy0OsKvrsNfl+kgeglWAbitxUl7cW
-	 u+Up5nvp1l9P0R1Y8iIk+JgxmKVVgGBpXoofSEgKV0T9m0IfrBkbVlPIQKeeDQgGwy
-	 WLT/J0ZwAuPzg==
-Received: by mail-oi1-f175.google.com with SMTP id r125so10852287oia.8;
-        Sat, 17 Sep 2022 21:47:02 -0700 (PDT)
-X-Gm-Message-State: ACgBeo2UYeMEXCbNaCC/4qrp1MvrnJAYVnkfyTT8PRqNP/q6y7wRrGnh
-	1iv4RyCsttLiKL0E3BxU8ygvmX7qzG7inSrNRg==
-X-Google-Smtp-Source: AA6agR5PsQsy27uH4rlZzSjoJwft/wU0ylxMmtvPMOZnQQjqgSNaP0ueHlVHW/PTiamnloKRSL2Qs0zcv2VSLa8lGYk=
-X-Received: by 2002:a05:6808:148a:b0:34f:973c:5838 with SMTP id
- e10-20020a056808148a00b0034f973c5838mr9282007oiw.69.1663476422185; Sat, 17
- Sep 2022 21:47:02 -0700 (PDT)
+	id 1oZmKh-00COsB-M9; Sun, 18 Sep 2022 04:55:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1663476907; x=1695012907;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=epSNHhdQxzAXTtOVkg0lQms6n58dl1u6MupG0x4QYh8=;
+  b=inuc2hd5T01i37FWalcq0dlgwWfk50pz/f/YIS4LsZEblbNvh47v+7/d
+   bRmDAa1fSdBGr/gHYfnTmcWgHfgRvQsZ7Bo1Ouz+6pRNpsSV2/+90vsv2
+   jCD/WIYf9cgigv7eLduIOFEhsKQ6UT1s2HE4/M/Gjwaq+Qq/FNBmx1dbF
+   CMRfRiM+XLz0BOk6VjHUMzB3jwW/cXIAXI+2xYz2qxy3fDXKuD0sl5sIx
+   dFbCNyClJTJ3wBbUDLNIq6BGdfNUNBL1sgx2/ANGw95T+KtUyvIuDQr35
+   lbrcjig7kubam1QYruq+Nq4GiHtQ8rkgRcho/CkbhdEoEhrnB8Jpwiik3
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10473"; a="282228512"
+X-IronPort-AV: E=Sophos;i="5.93,323,1654585200"; 
+   d="scan'208";a="282228512"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Sep 2022 21:55:06 -0700
+X-IronPort-AV: E=Sophos;i="5.93,323,1654585200"; 
+   d="scan'208";a="793503255"
+Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.13.50]) ([10.13.13.50])
+  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Sep 2022 21:54:35 -0700
+Message-ID: <4d81077c-6dcd-a442-201a-113b087f3ca9@linux.intel.com>
+Date: Sun, 18 Sep 2022 07:54:27 +0300
 MIME-Version: 1.0
-References: <20220717174454.46616-1-sam@ravnborg.org> <20220717175801.78668-1-sam@ravnborg.org>
-In-Reply-To: <20220717175801.78668-1-sam@ravnborg.org>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sun, 18 Sep 2022 12:46:51 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8uQ+z9+-Ei5sCFV__AYBzzghgEFBrV4aAZQu7pWcRtUw@mail.gmail.com>
-Message-ID: <CAAOTY_8uQ+z9+-Ei5sCFV__AYBzzghgEFBrV4aAZQu7pWcRtUw@mail.gmail.com>
-Subject: Re: [PATCH v1 08/12] drm/mediatek: Drop mtk_hdmi_bridge_mode_fixup
-To: Sam Ravnborg <sam@ravnborg.org>
-Cc: DRI Development <dri-devel@lists.freedesktop.org>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, 
-	Robert Foss <robert.foss@linaro.org>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, David Airlie <airlied@linux.ie>, 
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Guenter Roeck <groeck@chromium.org>, 
-	chrome-platform@lists.linux.dev, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Jitao Shi <jitao.shi@mediatek.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	Arnd Bergmann <arnd@arndb.de>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Linux ARM <linux-arm-kernel@lists.infradead.org>, 
-	Philip Chen <philipchen@chromium.org>, linux-renesas-soc@vger.kernel.org, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
-	Enric Balletbo i Serra <enric.balletbo@collabora.com>, Cai Huoqing <cai.huoqing@linux.dev>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [Intel-wired-lan] [PATCH v2 3/3] net: ethernet: move from strlcpy
+ with unused retval to strscpy
+Content-Language: en-US
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ linux-kernel@vger.kernel.org
+Cc: Kevin Brace <kevinbrace@bracecomputerlab.com>,
+ Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
+ Igor Russkikh <irusskikh@marvell.com>,
+ Somnath Kotur <somnath.kotur@broadcom.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>, Leon Romanovsky <leonro@nvidia.com>,
+ linux-stm32@st-md-mailman.stormreply.com,
+ Andy Gospodarek <andy@greyhouse.net>, Manish Chopra <manishc@marvell.com>,
+ Samuel Holland <samuel@sholland.org>, Michael Ellerman <mpe@ellerman.id.au>,
+ Madalin Bucur <madalin.bucur@nxp.com>, Michal Simek
+ <michal.simek@xilinx.com>, Christophe Leroy <christophe.leroy@csgroup.eu>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Chris Lee <christopher.lee@cspi.com>,
+ Nick Child <nnac123@linux.ibm.com>, Jiri Pirko <jiri@resnulli.us>,
+ Vinay Kumar Yadav <vinay.yadav@chelsio.com>,
+ Nicholas Piggin <npiggin@gmail.com>, =?UTF-8?Q?Krzysztof_Ha=c5=82asa?=
+ <khalasa@piap.pl>, Shay Agroskin <shayagr@amazon.com>,
+ linux-omap@vger.kernel.org, Petr Machata <petrm@nvidia.com>,
+ Geoff Levand <geoff@infradead.org>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ Douglas Miller <dougmill@linux.ibm.com>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>, Ralf Baechle <ralf@linux-mips.org>,
+ Ion Badulescu <ionut@badula.org>, Rasesh Mody <rmody@marvell.com>,
+ Jon Mason <jdmason@kudzu.us>, Christian Benvenuti <benve@cisco.com>,
+ Samuel Chessman <chessman@tux.org>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Chris Snook <chris.snook@gmail.com>, Denis Kirjanov <kda@linux-powerpc.org>,
+ Prashant Sreedharan <prashant@broadcom.com>,
+ Daniele Venzano <venza@brownhat.org>, Eric Dumazet <edumazet@google.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Ioana Ciornei <ioana.ciornei@nxp.com>, Arthur Kiyanovski
+ <akiyano@amazon.com>, Leon Romanovsky <leon@kernel.org>,
+ Hartley Sweeten <hsweeten@visionengravers.com>,
+ Rain River <rain.1986.08.12@gmail.com>,
+ Martin Habets <habetsm.xilinx@gmail.com>,
+ Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Steve Glendinning <steve.glendinning@shawell.net>,
+ Tom Lendacky <thomas.lendacky@amd.com>, Ido Schimmel <idosch@nvidia.com>,
+ Sean Wang <sean.wang@mediatek.com>, linuxppc-dev@lists.ozlabs.org,
+ Siva Reddy Kallam <siva.kallam@broadcom.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Doug Berger <opendmb@gmail.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ linux-arm-kernel@lists.infradead.org, Mirko Lindner <mlindner@marvell.com>,
+ Sriharsha Basavapatna <sriharsha.basavapatna@broadcom.com>,
+ Nicolas Pitre <nico@fluxnic.net>, David Arinzon <darinzon@amazon.com>,
+ Rohit Maheshwari <rohitm@chelsio.com>, Tariq Toukan <tariqt@nvidia.com>,
+ Sudarsana Kalluru <skalluru@marvell.com>,
+ Taras Chornyi <tchornyi@marvell.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>,
+ Ajit Khaparde <ajit.khaparde@broadcom.com>,
+ Andreas Larsson <andreas@gaisler.com>, oss-drivers@corigine.com,
+ Subbaraya Sundeep <sbhatta@marvell.com>,
+ Jassi Brar <jaswinder.singh@linaro.org>, Noam Dagan <ndagan@amazon.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, linux-rdma@vger.kernel.org,
+ Guo-Fu Tseng <cooldavid@cooldavid.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Simon Horman <simon.horman@corigine.com>, Paolo Abeni <pabeni@redhat.com>,
+ Shahed Shaikh <shshaikh@marvell.com>,
+ Grygorii Strashko <grygorii.strashko@ti.com>,
+ Byungho An <bh74.an@samsung.com>, Vladimir Zapolskiy <vz@mleia.com>,
+ Don Fry <pcnet32@frontier.com>, John Crispin <john@phrozen.org>,
+ Michael Chan <michael.chan@broadcom.com>,
+ Ishizaki Kou <kou.ishizaki@toshiba.co.jp>,
+ Salil Mehta <salil.mehta@huawei.com>, GR-Linux-NIC-Dev@marvell.com,
+ linux-parisc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ Edward Cree <ecree.xilinx@gmail.com>, Zhu Yanjun <zyjzyj2000@gmail.com>,
+ Bryan Whitehead <bryan.whitehead@microchip.com>,
+ Saeed Bishara <saeedb@amazon.com>, Mark Einon <mark.einon@gmail.com>,
+ Geetha sowjanya <gakula@marvell.com>,
+ Pantelis Antoniou <pantelis.antoniou@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Govindarajulu Varadarajan <_govind@gmx.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Ayush Sawal <ayush.sawal@chelsio.com>, UNGLinuxDriver@microchip.com,
+ linux-acenic@sunsite.dk, Rahul Verma <rahulv@marvell.com>,
+ Russell King <linux@armlinux.org.uk>, Lino Sanfilippo
+ <LinoSanfilippo@gmx.de>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Steffen Klassert <klassert@kernel.org>,
+ Sunil Goutham <sgoutham@marvell.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Jes Sorensen <jes@trained-monkey.org>, nic_swsd@realtek.com,
+ Ariel Elior <aelior@marvell.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Marcin Wojtas <mw@semihalf.com>,
+ netdev@vger.kernel.org, linux-mips@vger.kernel.org,
+ Li Yang <leoyang.li@nxp.com>, Stephen Hemminger
+ <stephen@networkplumber.org>, hariprasad <hkelam@marvell.com>,
+ Raju Rangoju <rajur@chelsio.com>, Saeed Mahameed <saeedm@nvidia.com>,
+ Felix Fietkau <nbd@nbd.name>
+References: <20220830201457.7984-1-wsa+renesas@sang-engineering.com>
+ <20220830201457.7984-3-wsa+renesas@sang-engineering.com>
+From: "naamax.meir" <naamax.meir@linux.intel.com>
+In-Reply-To: <20220830201457.7984-3-wsa+renesas@sang-engineering.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220917_214706_631852_93D07ACC 
-X-CRM114-Status: GOOD (  17.89  )
+X-CRM114-CacheID: sfid-20220917_215507_919582_EFE744DA 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,62 +170,225 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Sam:
-
-Sam Ravnborg <sam@ravnborg.org> =E6=96=BC 2022=E5=B9=B47=E6=9C=8818=E6=97=
-=A5 =E9=80=B1=E4=B8=80 =E5=87=8C=E6=99=A81:58=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> The implementation of drm_bridge_funcs.mode_fixup is optional
-> so there is no need to provide an empty implementation.
-> Drop mtk_hdmi_bridge_mode_fixup() so the driver no longer uses the
-> deprecated drm_bridge_funcs.mode_fixup() operation.
-
-Acked-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-
->
-> Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
-> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
+On 8/30/2022 23:14, Wolfram Sang wrote:
+> Follow the advice of the below link and prefer 'strscpy' in this
+> subsystem. Conversion is 1:1 because the return value is not used.
+> Generated by a coccinelle script.
+> 
+> Link: https://lore.kernel.org/r/CAHk-=wgfRnXz0W3D37d01q3JFkr_i_uTL=V6A6G1oUZcprmknw@mail.gmail.com/
+> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+> Reviewed-by: Petr Machata <petrm@nvidia.com> # For drivers/net/ethernet/mellanox/mlxsw
+> Acked-by: Geoff Levand <geoff@infradead.org> # For ps3_gelic_net and spider_net_ethtool
+> Acked-by: Tom Lendacky <thomas.lendacky@amd.com> # For drivers/net/ethernet/amd/xgbe/xgbe-ethtool.c
+> Acked-by: Marcin Wojtas <mw@semihalf.com> # For drivers/net/ethernet/marvell/mvpp2
+> Reviewed-by: Leon Romanovsky <leonro@nvidia.com> # For drivers/net/ethernet/mellanox/mlx{4|5}
+> Reviewed-by: Shay Agroskin <shayagr@amazon.com> # For drivers/net/ethernet/amazon/ena
+> Acked-by: Krzysztof Hałasa <khalasa@piap.pl> # For IXP4xx Ethernet
 > ---
->  drivers/gpu/drm/mediatek/mtk_hdmi.c | 8 --------
->  1 file changed, 8 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediat=
-ek/mtk_hdmi.c
-> index a63b76055f81..7321aa1ee6f0 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -1293,13 +1293,6 @@ static int mtk_hdmi_bridge_attach(struct drm_bridg=
-e *bridge,
->         return 0;
->  }
->
-> -static bool mtk_hdmi_bridge_mode_fixup(struct drm_bridge *bridge,
-> -                                      const struct drm_display_mode *mod=
-e,
-> -                                      struct drm_display_mode *adjusted_=
-mode)
-> -{
-> -       return true;
-> -}
-> -
->  static void mtk_hdmi_bridge_atomic_disable(struct drm_bridge *bridge,
->                                            struct drm_bridge_state *old_b=
-ridge_state)
->  {
-> @@ -1399,7 +1392,6 @@ static const struct drm_bridge_funcs mtk_hdmi_bridg=
-e_funcs =3D {
->         .atomic_destroy_state =3D drm_atomic_helper_bridge_destroy_state,
->         .atomic_reset =3D drm_atomic_helper_bridge_reset,
->         .attach =3D mtk_hdmi_bridge_attach,
-> -       .mode_fixup =3D mtk_hdmi_bridge_mode_fixup,
->         .atomic_disable =3D mtk_hdmi_bridge_atomic_disable,
->         .atomic_post_disable =3D mtk_hdmi_bridge_atomic_post_disable,
->         .mode_set =3D mtk_hdmi_bridge_mode_set,
-> --
-> 2.34.1
->
+> 
+> Changes since v1:
+> * split into smaller patches
+> * added given tags
+> 
+>   drivers/net/ethernet/3com/3c509.c                |  2 +-
+>   drivers/net/ethernet/3com/3c515.c                |  2 +-
+>   drivers/net/ethernet/3com/3c589_cs.c             |  2 +-
+>   drivers/net/ethernet/3com/3c59x.c                |  6 +++---
+>   drivers/net/ethernet/3com/typhoon.c              |  8 ++++----
+>   drivers/net/ethernet/8390/ax88796.c              |  6 +++---
+>   drivers/net/ethernet/8390/etherh.c               |  6 +++---
+>   drivers/net/ethernet/adaptec/starfire.c          |  4 ++--
+>   drivers/net/ethernet/aeroflex/greth.c            |  4 ++--
+>   drivers/net/ethernet/agere/et131x.c              |  4 ++--
+>   drivers/net/ethernet/alacritech/slicoss.c        |  4 ++--
+>   drivers/net/ethernet/allwinner/sun4i-emac.c      |  4 ++--
+>   drivers/net/ethernet/alteon/acenic.c             |  4 ++--
+>   drivers/net/ethernet/amazon/ena/ena_ethtool.c    |  4 ++--
+>   drivers/net/ethernet/amazon/ena/ena_netdev.c     |  2 +-
+>   drivers/net/ethernet/amd/amd8111e.c              |  4 ++--
+>   drivers/net/ethernet/amd/au1000_eth.c            |  2 +-
+>   drivers/net/ethernet/amd/nmclan_cs.c             |  2 +-
+>   drivers/net/ethernet/amd/pcnet32.c               |  4 ++--
+>   drivers/net/ethernet/amd/sunlance.c              |  2 +-
+>   drivers/net/ethernet/amd/xgbe/xgbe-ethtool.c     |  4 ++--
+>   .../net/ethernet/aquantia/atlantic/aq_ethtool.c  |  2 +-
+>   drivers/net/ethernet/arc/emac_main.c             |  2 +-
+>   drivers/net/ethernet/atheros/ag71xx.c            |  4 ++--
+>   .../net/ethernet/atheros/atl1c/atl1c_ethtool.c   |  4 ++--
+>   .../net/ethernet/atheros/atl1e/atl1e_ethtool.c   |  6 +++---
+>   drivers/net/ethernet/atheros/atlx/atl1.c         |  4 ++--
+>   drivers/net/ethernet/atheros/atlx/atl2.c         |  6 +++---
+>   drivers/net/ethernet/broadcom/b44.c              |  6 +++---
+>   drivers/net/ethernet/broadcom/bcm63xx_enet.c     |  4 ++--
+>   drivers/net/ethernet/broadcom/bcmsysport.c       |  4 ++--
+>   drivers/net/ethernet/broadcom/bgmac.c            |  6 +++---
+>   drivers/net/ethernet/broadcom/bnx2.c             |  6 +++---
+>   drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c  |  2 +-
+>   .../net/ethernet/broadcom/bnx2x/bnx2x_ethtool.c  |  6 +++---
+>   drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c |  2 +-
+>   .../net/ethernet/broadcom/bnx2x/bnx2x_sriov.h    |  2 +-
+>   drivers/net/ethernet/broadcom/bnx2x/bnx2x_vfpf.c |  2 +-
+>   .../net/ethernet/broadcom/bnxt/bnxt_ethtool.c    |  8 ++++----
+>   drivers/net/ethernet/broadcom/bnxt/bnxt_vfr.c    |  2 +-
+>   drivers/net/ethernet/broadcom/genet/bcmgenet.c   |  2 +-
+>   drivers/net/ethernet/broadcom/tg3.c              |  6 +++---
+>   drivers/net/ethernet/brocade/bna/bnad_ethtool.c  |  6 +++---
+>   drivers/net/ethernet/cavium/octeon/octeon_mgmt.c |  2 +-
+>   .../net/ethernet/cavium/thunder/nicvf_ethtool.c  |  4 ++--
+>   drivers/net/ethernet/chelsio/cxgb/cxgb2.c        |  4 ++--
+>   drivers/net/ethernet/chelsio/cxgb3/cxgb3_main.c  |  4 ++--
+>   .../net/ethernet/chelsio/cxgb4/cxgb4_ethtool.c   |  4 ++--
+>   drivers/net/ethernet/chelsio/cxgb4/cxgb4_main.c  |  4 ++--
+>   .../net/ethernet/chelsio/cxgb4vf/cxgb4vf_main.c  |  4 ++--
+>   .../chelsio/inline_crypto/chtls/chtls_main.c     |  2 +-
+>   drivers/net/ethernet/cirrus/ep93xx_eth.c         |  2 +-
+>   drivers/net/ethernet/cisco/enic/enic_ethtool.c   |  6 +++---
+>   drivers/net/ethernet/davicom/dm9000.c            |  4 ++--
+>   drivers/net/ethernet/dec/tulip/de2104x.c         |  4 ++--
+>   drivers/net/ethernet/dec/tulip/dmfe.c            |  4 ++--
+>   drivers/net/ethernet/dec/tulip/tulip_core.c      |  4 ++--
+>   drivers/net/ethernet/dec/tulip/uli526x.c         |  4 ++--
+>   drivers/net/ethernet/dec/tulip/winbond-840.c     |  4 ++--
+>   drivers/net/ethernet/dlink/dl2k.c                |  4 ++--
+>   drivers/net/ethernet/dlink/sundance.c            |  4 ++--
+>   drivers/net/ethernet/dnet.c                      |  4 ++--
+>   drivers/net/ethernet/emulex/benet/be_cmds.c      | 12 ++++++------
+>   drivers/net/ethernet/emulex/benet/be_ethtool.c   |  6 +++---
+>   drivers/net/ethernet/faraday/ftgmac100.c         |  4 ++--
+>   drivers/net/ethernet/faraday/ftmac100.c          |  4 ++--
+>   drivers/net/ethernet/fealnx.c                    |  4 ++--
+>   .../net/ethernet/freescale/dpaa/dpaa_ethtool.c   |  4 ++--
+>   drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c |  2 +-
+>   .../net/ethernet/freescale/enetc/enetc_ethtool.c |  4 ++--
+>   drivers/net/ethernet/freescale/fec_main.c        |  8 ++++----
+>   drivers/net/ethernet/freescale/fec_ptp.c         |  2 +-
+>   .../ethernet/freescale/fs_enet/fs_enet-main.c    |  2 +-
+>   drivers/net/ethernet/freescale/gianfar_ethtool.c |  2 +-
+>   .../net/ethernet/freescale/ucc_geth_ethtool.c    |  4 ++--
+>   drivers/net/ethernet/fujitsu/fmvj18x_cs.c        |  4 ++--
+>   drivers/net/ethernet/hisilicon/hip04_eth.c       |  4 ++--
+>   drivers/net/ethernet/ibm/ehea/ehea_ethtool.c     |  4 ++--
+>   drivers/net/ethernet/ibm/emac/core.c             |  4 ++--
+>   drivers/net/ethernet/ibm/ibmveth.c               |  4 ++--
+>   drivers/net/ethernet/intel/e100.c                |  4 ++--
+>   drivers/net/ethernet/intel/e1000/e1000_ethtool.c |  4 ++--
+>   drivers/net/ethernet/intel/e1000e/ethtool.c      |  4 ++--
+>   drivers/net/ethernet/intel/e1000e/netdev.c       |  6 +++---
+>   drivers/net/ethernet/intel/i40e/i40e_ethtool.c   |  6 +++---
+>   drivers/net/ethernet/intel/i40e/i40e_main.c      | 16 ++++++++--------
+>   drivers/net/ethernet/intel/i40e/i40e_ptp.c       |  2 +-
+>   drivers/net/ethernet/intel/iavf/iavf_ethtool.c   |  6 +++---
+>   drivers/net/ethernet/intel/igb/igb_ethtool.c     |  6 +++---
+>   drivers/net/ethernet/intel/igb/igb_main.c        |  2 +-
+>   drivers/net/ethernet/intel/igbvf/ethtool.c       |  4 ++--
+>   drivers/net/ethernet/intel/ixgb/ixgb_ethtool.c   |  4 ++--
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c |  6 +++---
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c    |  2 +-
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c    |  4 ++--
+>   drivers/net/ethernet/intel/ixgbevf/ethtool.c     |  4 ++--
+>   drivers/net/ethernet/jme.c                       |  6 +++---
+>   drivers/net/ethernet/korina.c                    |  6 +++---
+>   drivers/net/ethernet/marvell/mv643xx_eth.c       |  8 ++++----
+>   drivers/net/ethernet/marvell/mvneta.c            |  6 +++---
+>   drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c  |  6 +++---
+>   .../marvell/octeontx2/nic/otx2_ethtool.c         |  8 ++++----
+>   .../ethernet/marvell/prestera/prestera_ethtool.c |  4 ++--
+>   drivers/net/ethernet/marvell/pxa168_eth.c        |  8 ++++----
+>   drivers/net/ethernet/marvell/skge.c              |  6 +++---
+>   drivers/net/ethernet/marvell/sky2.c              |  6 +++---
+>   drivers/net/ethernet/mediatek/mtk_eth_soc.c      |  4 ++--
+>   drivers/net/ethernet/mediatek/mtk_star_emac.c    |  2 +-
+>   drivers/net/ethernet/mellanox/mlx4/en_ethtool.c  |  6 +++---
+>   drivers/net/ethernet/mellanox/mlx4/fw.c          |  2 +-
+>   .../net/ethernet/mellanox/mlx5/core/en_ethtool.c |  4 ++--
+>   drivers/net/ethernet/mellanox/mlx5/core/en_rep.c |  2 +-
+>   .../ethernet/mellanox/mlx5/core/ipoib/ethtool.c  |  2 +-
+>   drivers/net/ethernet/mellanox/mlxsw/core.c       |  2 +-
+>   drivers/net/ethernet/mellanox/mlxsw/minimal.c    |  4 ++--
+>   .../ethernet/mellanox/mlxsw/spectrum_ethtool.c   |  6 +++---
+>   drivers/net/ethernet/micrel/ks8851_common.c      |  6 +++---
+>   drivers/net/ethernet/micrel/ksz884x.c            |  6 +++---
+>   drivers/net/ethernet/microchip/enc28j60.c        |  6 +++---
+>   drivers/net/ethernet/microchip/encx24j600.c      |  6 +++---
+>   drivers/net/ethernet/microchip/lan743x_ethtool.c |  4 ++--
+>   drivers/net/ethernet/myricom/myri10ge/myri10ge.c |  8 ++++----
+>   drivers/net/ethernet/natsemi/natsemi.c           |  6 +++---
+>   drivers/net/ethernet/natsemi/ns83820.c           |  6 +++---
+>   drivers/net/ethernet/neterion/s2io.c             |  6 +++---
+>   .../net/ethernet/netronome/nfp/nfp_net_ethtool.c |  6 +++---
+>   drivers/net/ethernet/ni/nixge.c                  |  4 ++--
+>   drivers/net/ethernet/nvidia/forcedeth.c          |  6 +++---
+>   drivers/net/ethernet/nxp/lpc_eth.c               |  6 +++---
+>   .../ethernet/oki-semi/pch_gbe/pch_gbe_ethtool.c  |  6 +++---
+>   drivers/net/ethernet/packetengines/hamachi.c     |  6 +++---
+>   drivers/net/ethernet/packetengines/yellowfin.c   |  6 +++---
+>   .../ethernet/qlogic/netxen/netxen_nic_ethtool.c  |  6 +++---
+>   drivers/net/ethernet/qlogic/qed/qed_int.c        |  2 +-
+>   drivers/net/ethernet/qlogic/qede/qede_ethtool.c  |  4 ++--
+>   drivers/net/ethernet/qlogic/qede/qede_main.c     |  2 +-
+>   drivers/net/ethernet/qlogic/qla3xxx.c            |  6 +++---
+>   .../net/ethernet/qlogic/qlcnic/qlcnic_ethtool.c  |  6 +++---
+>   drivers/net/ethernet/qualcomm/qca_debug.c        |  8 ++++----
+>   drivers/net/ethernet/rdc/r6040.c                 |  6 +++---
+>   drivers/net/ethernet/realtek/8139cp.c            |  6 +++---
+>   drivers/net/ethernet/realtek/8139too.c           |  6 +++---
+>   drivers/net/ethernet/realtek/r8169_main.c        |  6 +++---
+>   drivers/net/ethernet/rocker/rocker_main.c        |  4 ++--
+>   .../net/ethernet/samsung/sxgbe/sxgbe_ethtool.c   |  4 ++--
+>   drivers/net/ethernet/sfc/efx.c                   |  2 +-
+>   drivers/net/ethernet/sfc/efx_common.c            |  2 +-
+>   drivers/net/ethernet/sfc/ethtool_common.c        |  6 +++---
+>   drivers/net/ethernet/sfc/falcon/efx.c            |  4 ++--
+>   drivers/net/ethernet/sfc/falcon/ethtool.c        |  8 ++++----
+>   drivers/net/ethernet/sfc/falcon/falcon.c         |  2 +-
+>   drivers/net/ethernet/sfc/falcon/nic.c            |  2 +-
+>   drivers/net/ethernet/sfc/mcdi_mon.c              |  2 +-
+>   drivers/net/ethernet/sfc/nic.c                   |  2 +-
+>   drivers/net/ethernet/sfc/siena/efx.c             |  2 +-
+>   drivers/net/ethernet/sfc/siena/efx_common.c      |  2 +-
+>   drivers/net/ethernet/sfc/siena/ethtool_common.c  |  6 +++---
+>   drivers/net/ethernet/sfc/siena/mcdi_mon.c        |  2 +-
+>   drivers/net/ethernet/sfc/siena/nic.c             |  2 +-
+>   drivers/net/ethernet/sgi/ioc3-eth.c              |  6 +++---
+>   drivers/net/ethernet/sis/sis190.c                |  6 +++---
+>   drivers/net/ethernet/sis/sis900.c                |  6 +++---
+>   drivers/net/ethernet/smsc/epic100.c              |  6 +++---
+>   drivers/net/ethernet/smsc/smc911x.c              |  6 +++---
+>   drivers/net/ethernet/smsc/smc91c92_cs.c          |  4 ++--
+>   drivers/net/ethernet/smsc/smc91x.c               |  6 +++---
+>   drivers/net/ethernet/smsc/smsc911x.c             |  6 +++---
+>   drivers/net/ethernet/smsc/smsc9420.c             |  6 +++---
+>   drivers/net/ethernet/socionext/netsec.c          |  4 ++--
+>   drivers/net/ethernet/socionext/sni_ave.c         |  4 ++--
+>   .../net/ethernet/stmicro/stmmac/stmmac_ethtool.c |  8 ++++----
+>   drivers/net/ethernet/sun/cassini.c               |  6 +++---
+>   drivers/net/ethernet/sun/ldmvsw.c                |  4 ++--
+>   drivers/net/ethernet/sun/niu.c                   |  6 +++---
+>   drivers/net/ethernet/sun/sunbmac.c               |  4 ++--
+>   drivers/net/ethernet/sun/sungem.c                |  6 +++---
+>   drivers/net/ethernet/sun/sunhme.c                |  6 +++---
+>   drivers/net/ethernet/sun/sunqe.c                 |  4 ++--
+>   drivers/net/ethernet/sun/sunvnet.c               |  4 ++--
+>   .../net/ethernet/synopsys/dwc-xlgmac-common.c    |  4 ++--
+>   .../net/ethernet/synopsys/dwc-xlgmac-ethtool.c   |  6 +++---
+>   drivers/net/ethernet/tehuti/tehuti.c             |  8 ++++----
+>   drivers/net/ethernet/ti/am65-cpsw-ethtool.c      |  4 ++--
+>   drivers/net/ethernet/ti/cpmac.c                  |  4 ++--
+>   drivers/net/ethernet/ti/cpsw.c                   |  6 +++---
+>   drivers/net/ethernet/ti/cpsw_new.c               |  6 +++---
+>   drivers/net/ethernet/ti/davinci_emac.c           |  4 ++--
+>   drivers/net/ethernet/ti/tlan.c                   |  6 +++---
+>   drivers/net/ethernet/toshiba/ps3_gelic_net.c     |  4 ++--
+>   .../net/ethernet/toshiba/spider_net_ethtool.c    |  8 ++++----
+>   drivers/net/ethernet/toshiba/tc35815.c           |  6 +++---
+>   drivers/net/ethernet/via/via-rhine.c             |  4 ++--
+>   drivers/net/ethernet/via/via-velocity.c          |  8 ++++----
+>   drivers/net/ethernet/wiznet/w5100.c              |  6 +++---
+>   drivers/net/ethernet/wiznet/w5300.c              |  6 +++---
+>   .../net/ethernet/xilinx/xilinx_axienet_main.c    |  4 ++--
+>   drivers/net/ethernet/xilinx/xilinx_emaclite.c    |  2 +-
+>   drivers/net/ethernet/xircom/xirc2ps_cs.c         |  2 +-
+>   drivers/net/ethernet/xscale/ixp4xx_eth.c         |  4 ++--
+>   199 files changed, 457 insertions(+), 457 deletions(-)
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
 
