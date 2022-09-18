@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D3FDC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Sep 2022 09:43:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AF36C32771
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Sep 2022 09:56:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bymflm0cWcyCTcdpDuivzckUWs78vF1VXtEIBmc274U=; b=HQDiqmm8I6ryopg0XI7hBlGhcc
-	QAxg8epGlcBHvRTSWvURG8+uHWXxMmaRaobLBL7MJnNeTZRqeBjc/Q2draR7q8/W9xZwifQ9fY27D
-	Y4QMIbm2v2SXWfGJREcXBViDPosISoe0wciqb34+HXj5VuqbtZX3+FiAkwNSdSG1/246VJA1VZ227
-	a0VTeYY+qFfl5zWuNPlRY/o7/VmSNvU4r3ts839MLy/ijTMONbRi/kEeaJAUEA1IiBsiVQt7dVXcf
-	mW0CQyiMLPpCEXiXaVGVAPCXXPEJ0Dbng2SbGQ+br3rc+r/AikB7k4zrrIhX7SxXwO2QrGZXwvh7q
-	OBOKmoDg==;
+	bh=uJDbkaS+XsYA+l+f+wbMnU3wGxWDofURrR9zLtociWE=; b=ikvwGZvFxFMe8qiEbZPmiZdk8n
+	T84PYS5YJLpaOvY2rjocXesgS5c11vUo6pRJr4gqccicw4edA6IPou4p14GjFpdIdZftlytiOaGS0
+	hMDwkvQ526wa10Z/EXMGoGuDZ0YPD5SKhHos+jLVrHwuu+jPFgiyg7K+clQVAo924v0A+D/RGcnMh
+	/P0kLkxs+iaTD/PpzQADymDsrnrYlQJk1wmg1w/4VdkxX26CAR08S5so8+PavQDh44OT3RMj03iwT
+	irG4nbiAqekW8KOPIDSFSteHCE5vfa2TvB36GODl0dpC3z+gwfj3Kk2Nl8FLJ+gwEEKE/DMzPCWxd
+	pmQ9CcVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZqpW-00ES8e-EX; Sun, 18 Sep 2022 09:43:14 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1oZr1m-00EYex-1Q; Sun, 18 Sep 2022 09:55:54 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZqpL-00ES0f-Tt
-	for linux-mediatek@lists.infradead.org; Sun, 18 Sep 2022 09:43:05 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id s10so29968915ljp.5
-        for <linux-mediatek@lists.infradead.org>; Sun, 18 Sep 2022 02:43:02 -0700 (PDT)
+	id 1oZr1j-00EYdB-Co
+	for linux-mediatek@lists.infradead.org; Sun, 18 Sep 2022 09:55:52 +0000
+Received: by mail-lj1-x229.google.com with SMTP id s10so29985543ljp.5
+        for <linux-mediatek@lists.infradead.org>; Sun, 18 Sep 2022 02:55:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date;
-        bh=bymflm0cWcyCTcdpDuivzckUWs78vF1VXtEIBmc274U=;
-        b=TI0J/rsC/B5GyVft25Qvkb3DYyVwMDmddjhpplWK+hlHUTclerDLmDiCsjcmUzSTjq
-         WDZa7usVHWlBmPh+0lAUg6l8VMWF1fib95uSb+FJyS/sq7R66K/2fq0BVLERFkYVs7CM
-         Fc5avno0PhJKEaw9xoUMVhNMb+CZF2J6Dr/4nV2OCegSKH8vafgCy18voZtuyq0wTKvc
-         YVaV3p0gDQHoEsxP4Z6Z+DPuoE2Cv6wX8WWojV4ni2kNJmSGbBXeXE4x3ZFzQ7FhXrdO
-         3TFC0XTKG6pVompPgIugtC8kChWJ+hb16XieXjhEm2qRQBOihMeRohAgq56bHQEABvMv
-         Mghg==
+        bh=uJDbkaS+XsYA+l+f+wbMnU3wGxWDofURrR9zLtociWE=;
+        b=UTLclj9isYRIkZwI/IEgMUn1xnFFiMIUn5BEDdx4mcbGyCIdk/7lEMpwdsGscUCpfs
+         ZkaA7tyHUbJtjLYuLsZJbUdMIa5zEXoCbJZ4i4yuvbf39j5wgHlu7MFPiKcj9ckbugZj
+         0qXrEc9dOIKLVa08k656mgAwRYs6UvUSH/F+ScYCz1VcutArFRKXB64fxqM/qe6RsXKI
+         gye97Iz0PsXPpFAt8GIUqXCFKDCWxI8SjCy//QfHJ9AOxhC8j6WvWUR/xjgxzWOZWXTZ
+         SZ47WKYZGaIpV5x1HMu9myl2+qZPfim/u6/vw1yH8ZBFspYe9KNDXLHj7Sv8iOw++S9p
+         TvKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date;
-        bh=bymflm0cWcyCTcdpDuivzckUWs78vF1VXtEIBmc274U=;
-        b=60tyxtKq3Rl0nzAKgLc2uCFwK5Dak8dMAQYGUMpt5rGFdFM1D/2bWw2OeL/5unZOG2
-         +9Gb73tKEJQ5EG6fjlzJ2p2tswmP9wmhdWZEYAX245RhsTIDK7dVcJ5vOf5ADU8Mt+53
-         1cy0E06d6wzsozgXItm5/28f4Y+5ZODqFjQPrImQEvTVDxY0gvqimNgaR8BHIcB8iGDE
-         U8ffxU+QNmywCWIVvCx4+1URfKHcLdjKzw5c3zEwwIwJnfRMW8jeUmttH27EcKHHZVna
-         tsqF9hcHrB5fakpLhmo6iLdVjCi7V8p0oYArC2kKWLtaIIGHLY8XH5qRXK2R412oeP5C
-         b9lw==
-X-Gm-Message-State: ACrzQf1fOcCdOf3rXGXpV94nqFtk52CivFFNdDkTziNafaG7ubXsla6X
-	PI44JMgKjGBX/dxgKMQPjG/new==
-X-Google-Smtp-Source: AMsMyM5oa1+BlsQvoBLSHJ7qg8UbLPA6SYwqWrNJ6NOOwZcdHftell11JoXnHhdlBiSB7vRm2amj0g==
-X-Received: by 2002:a2e:9cda:0:b0:26b:e930:6f7d with SMTP id g26-20020a2e9cda000000b0026be9306f7dmr3860677ljj.436.1663494181646;
-        Sun, 18 Sep 2022 02:43:01 -0700 (PDT)
+        bh=uJDbkaS+XsYA+l+f+wbMnU3wGxWDofURrR9zLtociWE=;
+        b=nLWY/+i1G/LIc4kDpioKh1Z5KZgmZ91CHKsQQjl4uRX4MHgVez7+kykAeKeZvMtsTg
+         Se9Dnx6Xn2tBmUfxfgppGxK3NYli+i6oVgGlPIcXgq+jc/9wrgaeLOLZrZl1mQVjw1g4
+         d5Z0fiviNSkxvOl3kvuVy+fCsY1RNzE+06aeLAtCRX1li7GWCsxSbPq29EpicYobK7h6
+         Wvf0G2wwvCEu4Y28i7xUeG0Mixzc9qVNEWc93A9WmrHnAItCJD4CSw96FiMbwy7U34Ku
+         B570vPpnK7h9BQRg+0kiImoK8oZiD6rkaC1WMWqBzNHuzfY7typ0bZAIRA4sGo7mf6wC
+         iA+w==
+X-Gm-Message-State: ACrzQf0jOSYzwGilF+ZzZctbs6XARNqZV2KPUvCFzikcEIp8tpG5wqCv
+	jIAIjIQpHjpi0Ep26S1vD/Sc/Q==
+X-Google-Smtp-Source: AMsMyM7YhycPtcrow7NNduVCQCLpXLeHqzsHwGbPl7HWaKdORAeYW8z0BTfhkDBJyNg+yZ0X1gYzNQ==
+X-Received: by 2002:a2e:891a:0:b0:26b:ebcc:68fb with SMTP id d26-20020a2e891a000000b0026bebcc68fbmr3528397lji.427.1663494949351;
+        Sun, 18 Sep 2022 02:55:49 -0700 (PDT)
 Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id v17-20020a056512349100b0049d3614463dsm2805245lfr.77.2022.09.18.02.43.00
+        by smtp.gmail.com with ESMTPSA id z9-20020a056512370900b00494a27500c1sm4583294lfr.163.2022.09.18.02.55.39
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 18 Sep 2022 02:43:01 -0700 (PDT)
-Message-ID: <46046974-78a5-1aa5-6d39-d6e41645148b@linaro.org>
-Date: Sun, 18 Sep 2022 10:42:58 +0100
+        Sun, 18 Sep 2022 02:55:48 -0700 (PDT)
+Message-ID: <2cccf8a3-20cb-5cdc-cd42-9efe82c35320@linaro.org>
+Date: Sun, 18 Sep 2022 10:55:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.13.0
-Subject: Re: [PATCH v1 1/2] dt-bindings: power: Add MT8188 power domains
+Subject: Re: [PATCH 4/7] dt-bindings: leds: leds-mt6323: Document mt6331
+ compatible
 Content-Language: en-US
-To: "Garmin.Chang" <Garmin.Chang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ sean.wang@mediatek.com
+Cc: pavel@ucw.cz, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, linux-leds@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20220916055216.20139-1-Garmin.Chang@mediatek.com>
- <20220916055216.20139-2-Garmin.Chang@mediatek.com>
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220915091214.59673-1-angelogioacchino.delregno@collabora.com>
+ <20220915091214.59673-5-angelogioacchino.delregno@collabora.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220916055216.20139-2-Garmin.Chang@mediatek.com>
+In-Reply-To: <20220915091214.59673-5-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220918_024304_033440_74B858F8 
-X-CRM114-Status: UNSURE (   7.17  )
+X-CRM114-CacheID: sfid-20220918_025551_463198_41F165D7 
+X-CRM114-Status: UNSURE (   7.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,13 +98,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/09/2022 06:52, Garmin.Chang wrote:
-> Add power domains dt-bindings for MT8188.
+On 15/09/2022 10:12, AngeloGioacchino Del Regno wrote:
+> Add mediatek,mt6331-led compatible for the LED controller found
+> in the MT6331 PMIC.
 > 
-> Signed-off-by: Garmin.Chang <Garmin.Chang@mediatek.com>
-> Change-Id: I62dff8af2bd74d6148712bfaa1caafc0b49e4b0c
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/leds/leds-mt6323.txt | 4 +++-
 
-Run chechpatch before sending any patch.
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 
 Best regards,
