@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44256C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Sep 2022 13:42:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 128C3C32771
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Sep 2022 13:43:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=08pH7piTGTvh/ZeXP1Swxz+oCzEd8UkwdY3/1IA2wBY=; b=YEcOJJ611OJYy+t2difmD3qhi5
-	HyYD01FTzn+6kzM493RVlFVjQ+tTYgfSVwI3v44/N2Dh+ofV8iYg2v8JCYs9S37Pw0SC5tOzQs1NO
-	9EA8kk7hmn4C4WwxFXqOsSXL8Gmd9pdM/xNxre2sGefeuXam2GuYANilFsEarFUZyyBeQ2EEBPitq
-	cYrZbywW0clHFn2AZ7oUtzxZDjUvAlUHIzrfDafkTddmq+M5p6tsyHIukAlrUWxRWkw2IgUBjaO1N
-	3iFoYjTg1GDMuGO8gX4bxOtSBWPUSFaWDwIhA95HQSo+zoMF3pkeQO2Cx2y8D/+EoDgShx3SzksVu
-	eVpzVX5A==;
+	bh=QOwUQUGXzXW7a2cfxQ09efax8bzqXaZd89GFxaHq3Yo=; b=XkMjJcjETrXcaS9/yulNjRxaXz
+	Vz9HHAd3qZF+YWxgpxQlGxxTiszB3CjDI9+UvbwKqvTesCKJm2DeSePQUs/GfM1zVHj13koCrLVYZ
+	4sUX0nvPVG31QksOm2vSlHUE5HS+WNg/VjNvnrE2uNmBWlznV4SCUaSYKUNhkBlSZ+Mw2kJxefpLP
+	bDQXaZFaO7b2FGoYqg9M2dGCt++Y/skygSg9F8YYTmQiMtB8gfk8wM73m/MDf9iz+QugmmOLlCa0m
+	7yQtUsvSYe6FOqteK5RvAbVnc647AVWabSjVseogiWvre7dobaiV07cGxuSZQp8sHGAZZCm/c0HXF
+	M1VDxjcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZuZC-00GZGu-OT; Sun, 18 Sep 2022 13:42:38 +0000
+	id 1oZuZf-00GZeV-M9; Sun, 18 Sep 2022 13:43:07 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZuYf-00GYnv-30; Sun, 18 Sep 2022 13:42:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1663508508; cv=none; 
+	id 1oZuYk-00GYri-94; Sun, 18 Sep 2022 13:42:11 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1663508514; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=VNFOYKWX+MAMRMNdzgDrKx77bE/I/O9IerSAcDbwIEtHWGaxGCBYIRII8e42dKUAE/3iQfUVPIaKBEe8+OkWuaV0zYf9KKulcfe+o4py1Yddz+UwFFodGEAcm+EdngcJOcP20PuGgE9cFgFLgbuVgDVidmIQq6oLMD9ys1Wekjc=
+	b=S1qAyiqCwwGXSXSaum2foeUyBtDGDSP6pgA0t5noF79kSnhl/lmGngF72rFn90F3lN+zVir7kHfxNzCiYKBL1FDiyro3KtOW36MEUY5FJ0zzD3vn1ffdrXPDUxAxXo3/0q/JTgZwy3/03D4kTe8gPNXAXHZazI3UIKFFDZyAJw8=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1663508508; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=08pH7piTGTvh/ZeXP1Swxz+oCzEd8UkwdY3/1IA2wBY=; 
-	b=kw4QhSMI5LvrA4cW1o+4rdGR6PQ6kyL2QUCU2ZdYgSR84ZVanBnjWwxdNnt9AxNCJ5vYYzIPXiggd2vqs2kFZ8K7ZQCxfQjC+nAOToU4RhGBPP1Apz3+I/1sfSOA1PfuXrTR41LDej5HOHfJGecuecwVx6FTymPVXU/B0uGkTEk=
+	t=1663508514; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=QOwUQUGXzXW7a2cfxQ09efax8bzqXaZd89GFxaHq3Yo=; 
+	b=fkPnYbKyc3pHI+tKoFCQd1zRoEO3frde32u0NbrU/Dr+t6jUBIqIkIwUGN/7MF43eYuGwD8hlYQ8eBHzWJma/6NnIVlMr9xoEwxIyXcoFHL2l4zwTCFY7QJC/M4FLrzSVB2tVxwoJS0kmCmGTur0vx3ZHSk4GYRYoacNcTwH0Oc=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663508508;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663508514;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=08pH7piTGTvh/ZeXP1Swxz+oCzEd8UkwdY3/1IA2wBY=;
-	b=bJwJ9pZgGKJ2soleOcTp3Pb4A2Yc9ruWTQHVVczJjVx4FRTqUSgglQ4TXr8YqDcm
-	PI9sMDR0Kq4k05d1/rOh0osy0YpVDB0dfhoKTqeRDEbROq3GDGY0nNl0DXaxpsm8DpI
-	MAruco12d/4SkZYNIsL1tetCx+Rue6Hkwoun8h1k=
+	bh=QOwUQUGXzXW7a2cfxQ09efax8bzqXaZd89GFxaHq3Yo=;
+	b=XZskVF4Jmr/dR96L5mac1dJRQIGQGMg3pfnfMOKRs71CoFYrmoH7AsSVlQJH/a/5
+	KUTFhFOyprMER/LJvT6uYLBs+4N7hAeDwy1ZzUuvms46xHUP9bLwKg6QqLuCnHCcLEP
+	OxBu5HYttglL5R106jmLgC6K0ErccISSrzy9lzCc=
 Received: from arinc9-PC.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1663508507395778.7535002580399; Sun, 18 Sep 2022 06:41:47 -0700 (PDT)
+	with SMTPS id 1663508513207144.86270917599222; Sun, 18 Sep 2022 06:41:53 -0700 (PDT)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -69,11 +69,10 @@ Cc: netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mips@vger.kernel.org,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 net-next 03/10] dt-bindings: net: dsa: mediatek,mt7530: expand gpio-controller description
-Date: Sun, 18 Sep 2022 16:41:11 +0300
-Message-Id: <20220918134118.554813-4-arinc.unal@arinc9.com>
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
+Subject: [PATCH v3 net-next 04/10] dt-bindings: memory: mt7621: add syscon as compatible string
+Date: Sun, 18 Sep 2022 16:41:12 +0300
+Message-Id: <20220918134118.554813-5-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220918134118.554813-1-arinc.unal@arinc9.com>
 References: <20220918134118.554813-1-arinc.unal@arinc9.com>
@@ -82,9 +81,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220918_064205_210104_FC14B6C4 
-X-CRM114-Status: UNSURE (   9.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220918_064210_388213_2B089992 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,46 +97,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Expand the description of the gpio-controller property to include the
-controllable pins of the MT7530 switch.
+The syscon string was introduced because the mt7621 clock driver needs to
+read some registers creating a regmap from the syscon. The bindings were
+added before the clock driver was properly mainlined and at first the clock
+driver was using ralink architecture dependent operations rt_memc_* defined
+in 'arch/mips/include/asm/mach-ralink/ralink_regs.h'.
 
-The gpio-controller property is only used for the MT7530 switch. Therefore,
-invalidate it for the MT7531 switch.
+This string is already there on the memory controller node on mt7621.dtsi.
 
+Add syscon as a constant string on the compatible property, now that memc
+became a syscon. Update the example accordingly.
+
+Fixes: 5278e4a181ff ("dt-bindings: memory: add binding for Mediatek's MT7621 SDRAM memory controller")
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Acked-by: Rob Herring <robh@kernel.org>
+Acked-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml   | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ .../bindings/memory-controllers/mediatek,mt7621-memc.yaml | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 2c73d13adf14..3ec4fffec780 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -104,7 +104,14 @@ properties:
-   gpio-controller:
-     type: boolean
-     description:
--      If defined, MT7530's LED controller will run on GPIO mode.
-+      If defined, LED controller of the MT7530 switch will run on GPIO mode.
-+
-+      There are 15 controllable pins.
-+      port 0 LED 0..2 as GPIO 0..2
-+      port 1 LED 0..2 as GPIO 3..5
-+      port 2 LED 0..2 as GPIO 6..8
-+      port 3 LED 0..2 as GPIO 9..11
-+      port 4 LED 0..2 as GPIO 12..14
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,mt7621-memc.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,mt7621-memc.yaml
+index 85e02854f083..ba8cd6d81d08 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,mt7621-memc.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,mt7621-memc.yaml
+@@ -11,7 +11,9 @@ maintainers:
  
-   "#interrupt-cells":
-     const: 1
-@@ -272,6 +279,7 @@ allOf:
-     then:
-       $ref: "#/$defs/mt7531-dsa-port"
-       properties:
-+        gpio-controller: false
-         mediatek,mcm: false
+ properties:
+   compatible:
+-    const: mediatek,mt7621-memc
++    items:
++      - const: mediatek,mt7621-memc
++      - const: syscon
  
-   - if:
+   reg:
+     maxItems: 1
+@@ -24,7 +26,7 @@ additionalProperties: false
+ 
+ examples:
+   - |
+-    memory-controller@5000 {
+-        compatible = "mediatek,mt7621-memc";
++    syscon@5000 {
++        compatible = "mediatek,mt7621-memc", "syscon";
+         reg = <0x5000 0x1000>;
+     };
 -- 
 2.34.1
 
