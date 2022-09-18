@@ -4,158 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DDA3C6FA86
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Sep 2022 04:55:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8778C32771
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Sep 2022 09:32:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rafA0NqjJWSlYJNNlXiCQ3yShsWfvaYm+iGDvcsOWoE=; b=OSjLJNjao/yStvF6V5/R4w4+t/
-	IEC4M/uRo7x1n2vXazjau7hR0haURjvsV5/UNE8IOKg8A0IegHhRZs/6A+W4VcfQyj3uTngQu3D+U
-	Wk1Zb+iME9ujFb/9Sa1XhDeLQ/t7Cbgv7c/LFlBs/czXoaNjSeG2N3oCw79NMNcLswGjEN9yxXD7Y
-	sbSsOmNCx0M56aJD05tMwGkNvcsd8qZWrbwrqq+uMVsx9n7VL5NILtdBiU+61OnoJd8B0HuUsTccS
-	xI56MhxKkAqbB0YeO2uMfYk5JIydD0ej+bKythv9f5pD7GmXBpxRWgrvgqpkJ8Y24ssPEsFHZS7MN
-	W2LOzKPg==;
+	bh=jRfTWemLr6NthIORn54hYU2A7/v8x5DzAcs7HxCHtt0=; b=1AH7k9+yIYEgJLBCvhslduWeJn
+	LohRMTjEsy/AoO/hpHeRiHti9gCy02YnxHl+D8BGHRRUyXvMWxRlzRpWm8lXEFkY647w+izQctRR3
+	+WYrjAJsCXEmuOT2t2qjWzrbErpGFigZ1JrYVhXCxKPepx6/Klz8a0iBcpLBxUFbullRRQSujgvla
+	6PRRKbRxDYt34PwhOw9LSAKw3ks1SAm/eM551rWQkTtxzeIVjHiHLFhQeRzCa+Vna/c+XZHh0kJwQ
+	J+0HqQ/LQTdxjeNyfz7fwQzvVOEEb8jmcarEQhAxTkW5n7WYIVIJ3bYdH4B51FMEPevXYCCXS3qNU
+	Y81y9sgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZmKl-00COuF-U1; Sun, 18 Sep 2022 04:55:11 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1oZqf4-00ELre-Qi; Sun, 18 Sep 2022 09:32:26 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZmKh-00COsB-M9; Sun, 18 Sep 2022 04:55:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1663476907; x=1695012907;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=epSNHhdQxzAXTtOVkg0lQms6n58dl1u6MupG0x4QYh8=;
-  b=inuc2hd5T01i37FWalcq0dlgwWfk50pz/f/YIS4LsZEblbNvh47v+7/d
-   bRmDAa1fSdBGr/gHYfnTmcWgHfgRvQsZ7Bo1Ouz+6pRNpsSV2/+90vsv2
-   jCD/WIYf9cgigv7eLduIOFEhsKQ6UT1s2HE4/M/Gjwaq+Qq/FNBmx1dbF
-   CMRfRiM+XLz0BOk6VjHUMzB3jwW/cXIAXI+2xYz2qxy3fDXKuD0sl5sIx
-   dFbCNyClJTJ3wBbUDLNIq6BGdfNUNBL1sgx2/ANGw95T+KtUyvIuDQr35
-   lbrcjig7kubam1QYruq+Nq4GiHtQ8rkgRcho/CkbhdEoEhrnB8Jpwiik3
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10473"; a="282228512"
-X-IronPort-AV: E=Sophos;i="5.93,323,1654585200"; 
-   d="scan'208";a="282228512"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Sep 2022 21:55:06 -0700
-X-IronPort-AV: E=Sophos;i="5.93,323,1654585200"; 
-   d="scan'208";a="793503255"
-Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.13.13.50]) ([10.13.13.50])
-  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Sep 2022 21:54:35 -0700
-Message-ID: <4d81077c-6dcd-a442-201a-113b087f3ca9@linux.intel.com>
-Date: Sun, 18 Sep 2022 07:54:27 +0300
+	id 1oZqen-00ELeI-7O
+	for linux-mediatek@lists.infradead.org; Sun, 18 Sep 2022 09:32:10 +0000
+Received: by mail-lf1-x135.google.com with SMTP id a3so30248102lfk.9
+        for <linux-mediatek@lists.infradead.org>; Sun, 18 Sep 2022 02:32:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=jRfTWemLr6NthIORn54hYU2A7/v8x5DzAcs7HxCHtt0=;
+        b=HlQfxtbd4p2nTCd2bPVs6NsfI6/NyeGnjwrBFoVcpxotPfhSAArkhB95zEL3SJtwWH
+         nKbU4i7D1uWa0VIcmsocgNOI5j8nLCBZeesbCENXDcF1i6MGeEqbcwLCu72DtueKZqsm
+         jtkIvLKRSDVLwnehbuBQeENj+01OD3cTC/GTvlQ8NWhUTKnIKSq3joVtgXqUBWsU35eG
+         8GAyHNqI66NlF1adLSwmfxgrsIDk6gpy6BeEZJES5OgsCf1ltuAFyYbOI/UrGoY/Wy2S
+         Lvc2yBC6CQFbYwovKYL5FZiGyHbyy5C9XdT0VYvSIocFky8Z5TafaSdfv0sqLpGilJBS
+         08Lw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=jRfTWemLr6NthIORn54hYU2A7/v8x5DzAcs7HxCHtt0=;
+        b=7AyK0ydC/ME1FzBBUAavfhiT7Mi4iLtj1SXKlJuWDm1T+g1At6sfBJ+srUw8KLzfdS
+         zeeHCFvecXlvUo8D7AFsctThMNOnIIyM7mefcFE1BE9nQNb+asXHYFsPR1Uqe43aAk23
+         tM9O9bcJp/v/duZsflCJDMO+b4+SrbMA6eXwoXbAxHSQtWFnSN0JzsTwYaM4BU4TMYzq
+         mLTZspwBqEGaq6kEdQttASjx3uof4H+rShLZIg69Z7LW1gUMF33srwpmHTDKHtqbKzdy
+         qMjjNryXH7nP7/36oOZnuoFT1fnNUmZaUx8qPwGkI/Ptw3RK7XMbUpKPl0WN5rWNotWo
+         fj8Q==
+X-Gm-Message-State: ACrzQf3WkiOgWQu31t+D4+TVS+m1YNmUfbVyyabj+U6vdoD9t/qL5AQW
+	1lPxvJYhoMu1ATAv0LM1TEkklQ==
+X-Google-Smtp-Source: AMsMyM6LutjsjtgHTG/aA+H1yVQ7fmKsKsJ2x+CnLGCMnrdlR7RpV6+ZVk1d7/e5+0oAOutW6nNuGg==
+X-Received: by 2002:a19:7619:0:b0:49f:6cd7:45c2 with SMTP id c25-20020a197619000000b0049f6cd745c2mr1769336lff.7.1663493525421;
+        Sun, 18 Sep 2022 02:32:05 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id b20-20020a2ebc14000000b0026c15d60ad1sm78103ljf.132.2022.09.18.02.32.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 18 Sep 2022 02:32:04 -0700 (PDT)
+Message-ID: <17cacc6f-173f-ad6c-9056-1b17635c984d@linaro.org>
+Date: Sun, 18 Sep 2022 10:31:55 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.13.0
-Subject: Re: [Intel-wired-lan] [PATCH v2 3/3] net: ethernet: move from strlcpy
- with unused retval to strscpy
+Subject: Re: [PATCH v2 1/6] dt-bindings: arm: mediatek: mmsys: change
+ compatible for MT8195
 Content-Language: en-US
-To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
- linux-kernel@vger.kernel.org
-Cc: Kevin Brace <kevinbrace@bracecomputerlab.com>,
- Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
- Igor Russkikh <irusskikh@marvell.com>,
- Somnath Kotur <somnath.kotur@broadcom.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
- <rafal@milecki.pl>, Leon Romanovsky <leonro@nvidia.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- Andy Gospodarek <andy@greyhouse.net>, Manish Chopra <manishc@marvell.com>,
- Samuel Holland <samuel@sholland.org>, Michael Ellerman <mpe@ellerman.id.au>,
- Madalin Bucur <madalin.bucur@nxp.com>, Michal Simek
- <michal.simek@xilinx.com>, Christophe Leroy <christophe.leroy@csgroup.eu>,
- Jose Abreu <joabreu@synopsys.com>,
- Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Chris Lee <christopher.lee@cspi.com>,
- Nick Child <nnac123@linux.ibm.com>, Jiri Pirko <jiri@resnulli.us>,
- Vinay Kumar Yadav <vinay.yadav@chelsio.com>,
- Nicholas Piggin <npiggin@gmail.com>, =?UTF-8?Q?Krzysztof_Ha=c5=82asa?=
- <khalasa@piap.pl>, Shay Agroskin <shayagr@amazon.com>,
- linux-omap@vger.kernel.org, Petr Machata <petrm@nvidia.com>,
- Geoff Levand <geoff@infradead.org>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- Douglas Miller <dougmill@linux.ibm.com>,
- Joakim Zhang <qiangqing.zhang@nxp.com>, Ralf Baechle <ralf@linux-mips.org>,
- Ion Badulescu <ionut@badula.org>, Rasesh Mody <rmody@marvell.com>,
- Jon Mason <jdmason@kudzu.us>, Christian Benvenuti <benve@cisco.com>,
- Samuel Chessman <chessman@tux.org>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Chris Snook <chris.snook@gmail.com>, Denis Kirjanov <kda@linux-powerpc.org>,
- Prashant Sreedharan <prashant@broadcom.com>,
- Daniele Venzano <venza@brownhat.org>, Eric Dumazet <edumazet@google.com>,
- "David S. Miller" <davem@davemloft.net>,
- Ioana Ciornei <ioana.ciornei@nxp.com>, Arthur Kiyanovski
- <akiyano@amazon.com>, Leon Romanovsky <leon@kernel.org>,
- Hartley Sweeten <hsweeten@visionengravers.com>,
- Rain River <rain.1986.08.12@gmail.com>,
- Martin Habets <habetsm.xilinx@gmail.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>,
- Steve Glendinning <steve.glendinning@shawell.net>,
- Tom Lendacky <thomas.lendacky@amd.com>, Ido Schimmel <idosch@nvidia.com>,
- Sean Wang <sean.wang@mediatek.com>, linuxppc-dev@lists.ozlabs.org,
- Siva Reddy Kallam <siva.kallam@broadcom.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Doug Berger <opendmb@gmail.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- linux-arm-kernel@lists.infradead.org, Mirko Lindner <mlindner@marvell.com>,
- Sriharsha Basavapatna <sriharsha.basavapatna@broadcom.com>,
- Nicolas Pitre <nico@fluxnic.net>, David Arinzon <darinzon@amazon.com>,
- Rohit Maheshwari <rohitm@chelsio.com>, Tariq Toukan <tariqt@nvidia.com>,
- Sudarsana Kalluru <skalluru@marvell.com>,
- Taras Chornyi <tchornyi@marvell.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Heiner Kallweit <hkallweit1@gmail.com>,
- Ajit Khaparde <ajit.khaparde@broadcom.com>,
- Andreas Larsson <andreas@gaisler.com>, oss-drivers@corigine.com,
- Subbaraya Sundeep <sbhatta@marvell.com>,
- Jassi Brar <jaswinder.singh@linaro.org>, Noam Dagan <ndagan@amazon.com>,
- Florian Fainelli <f.fainelli@gmail.com>, linux-rdma@vger.kernel.org,
- Guo-Fu Tseng <cooldavid@cooldavid.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Simon Horman <simon.horman@corigine.com>, Paolo Abeni <pabeni@redhat.com>,
- Shahed Shaikh <shshaikh@marvell.com>,
- Grygorii Strashko <grygorii.strashko@ti.com>,
- Byungho An <bh74.an@samsung.com>, Vladimir Zapolskiy <vz@mleia.com>,
- Don Fry <pcnet32@frontier.com>, John Crispin <john@phrozen.org>,
- Michael Chan <michael.chan@broadcom.com>,
- Ishizaki Kou <kou.ishizaki@toshiba.co.jp>,
- Salil Mehta <salil.mehta@huawei.com>, GR-Linux-NIC-Dev@marvell.com,
- linux-parisc@vger.kernel.org, linux-sunxi@lists.linux.dev,
- Edward Cree <ecree.xilinx@gmail.com>, Zhu Yanjun <zyjzyj2000@gmail.com>,
- Bryan Whitehead <bryan.whitehead@microchip.com>,
- Saeed Bishara <saeedb@amazon.com>, Mark Einon <mark.einon@gmail.com>,
- Geetha sowjanya <gakula@marvell.com>,
- Pantelis Antoniou <pantelis.antoniou@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Govindarajulu Varadarajan <_govind@gmx.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Ayush Sawal <ayush.sawal@chelsio.com>, UNGLinuxDriver@microchip.com,
- linux-acenic@sunsite.dk, Rahul Verma <rahulv@marvell.com>,
- Russell King <linux@armlinux.org.uk>, Lino Sanfilippo
- <LinoSanfilippo@gmx.de>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Steffen Klassert <klassert@kernel.org>,
- Sunil Goutham <sgoutham@marvell.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Jes Sorensen <jes@trained-monkey.org>, nic_swsd@realtek.com,
- Ariel Elior <aelior@marvell.com>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Marcin Wojtas <mw@semihalf.com>,
- netdev@vger.kernel.org, linux-mips@vger.kernel.org,
- Li Yang <leoyang.li@nxp.com>, Stephen Hemminger
- <stephen@networkplumber.org>, hariprasad <hkelam@marvell.com>,
- Raju Rangoju <rajur@chelsio.com>, Saeed Mahameed <saeedm@nvidia.com>,
- Felix Fietkau <nbd@nbd.name>
-References: <20220830201457.7984-1-wsa+renesas@sang-engineering.com>
- <20220830201457.7984-3-wsa+renesas@sang-engineering.com>
-From: "naamax.meir" <naamax.meir@linux.intel.com>
-In-Reply-To: <20220830201457.7984-3-wsa+renesas@sang-engineering.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+To: Jason-JH Lin <jason-jh.lin@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
+ Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220915161817.10307-1-jason-jh.lin@mediatek.com>
+ <20220915161817.10307-2-jason-jh.lin@mediatek.com>
+ <e6921ed7-a14c-aadb-abd4-1e7ee0a63be9@gmail.com>
+ <f30bd382eb8923256d6f39342ec7832774c0f547.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <f30bd382eb8923256d6f39342ec7832774c0f547.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220917_215507_919582_EFE744DA 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20220918_023209_333810_32B7C4DF 
+X-CRM114-Status: GOOD (  21.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -170,225 +104,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/30/2022 23:14, Wolfram Sang wrote:
-> Follow the advice of the below link and prefer 'strscpy' in this
-> subsystem. Conversion is 1:1 because the return value is not used.
-> Generated by a coccinelle script.
+On 16/09/2022 04:34, Jason-JH Lin wrote:
+> Hi Matthias,
 > 
-> Link: https://lore.kernel.org/r/CAHk-=wgfRnXz0W3D37d01q3JFkr_i_uTL=V6A6G1oUZcprmknw@mail.gmail.com/
-> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
-> Reviewed-by: Petr Machata <petrm@nvidia.com> # For drivers/net/ethernet/mellanox/mlxsw
-> Acked-by: Geoff Levand <geoff@infradead.org> # For ps3_gelic_net and spider_net_ethtool
-> Acked-by: Tom Lendacky <thomas.lendacky@amd.com> # For drivers/net/ethernet/amd/xgbe/xgbe-ethtool.c
-> Acked-by: Marcin Wojtas <mw@semihalf.com> # For drivers/net/ethernet/marvell/mvpp2
-> Reviewed-by: Leon Romanovsky <leonro@nvidia.com> # For drivers/net/ethernet/mellanox/mlx{4|5}
-> Reviewed-by: Shay Agroskin <shayagr@amazon.com> # For drivers/net/ethernet/amazon/ena
-> Acked-by: Krzysztof Hałasa <khalasa@piap.pl> # For IXP4xx Ethernet
-> ---
+> Thanks for the review.
 > 
-> Changes since v1:
-> * split into smaller patches
-> * added given tags
+> On Fri, 2022-09-16 at 00:05 +0200, Matthias Brugger wrote:
+>>
+>> On 15/09/2022 18:18, Jason-JH.Lin wrote:
+>>> For previous MediaTek SoCs, such as MT8173, there are 2 display HW
+>>> pipelines binding to 1 mmsys with the same power domain, the same
+>>> clock driver and the same mediatek-drm driver.
+>>>
+>>> For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines binding
+>>> to
+>>> 2 different power domains, different clock drivers and different
+>>> mediatek-drm drivers.
+>>>
+>>> Moreover, Hardware pipeline of VDOSYS0 has these components: COLOR,
+>>> CCORR, AAL, GAMMA, DITHER. They are related to the PQ (Picture
+>>> Quality)
+>>> and they makes VDOSYS0 supports PQ function while they are not
+>>> including in VDOSYS1.
+>>>
+>>> Hardware pipeline of VDOSYS1 has the component ETHDR (HDR related
+>>> component). It makes VDOSYS1 supports the HDR function while it's
+>>> not
+>>> including in VDOSYS0.
+>>>
+>>> To summarize0:
+>>> Only VDOSYS0 can support PQ adjustment.
+>>> Only VDOSYS1 can support HDR adjustment.
+>>>
+>>> Therefore, we need to separate these two different mmsys hardwares
+>>> to
+>>> 2 different compatibles for MT8195.
+>>>
+>>> Fixes: 81c5a41d10b9 ("dt-bindings: arm: mediatek: mmsys: add mt8195
+>>> SoC binding")
+>>> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+>>> Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+>>> ---
+>>>   .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml        |
+>>> 2 +-
+>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git
+>>> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+>>> l
+>>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+>>> l
+>>> index 6ad023eec193..0e267428eaa6 100644
+>>> ---
+>>> a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+>>> l
+>>> +++
+>>> b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+>>> l
+>>> @@ -31,7 +31,7 @@ properties:
+>>>                 - mediatek,mt8183-mmsys
+>>>                 - mediatek,mt8186-mmsys
+>>>                 - mediatek,mt8192-mmsys
+>>> -              - mediatek,mt8195-mmsys
+>>> +              - mediatek,mt8195-vdosys0
+>>
+>> Nack, we miss the fallback compatible, as I already said twice.
+>>
+>> Regards,
+>> Matthias
 > 
->   drivers/net/ethernet/3com/3c509.c                |  2 +-
->   drivers/net/ethernet/3com/3c515.c                |  2 +-
->   drivers/net/ethernet/3com/3c589_cs.c             |  2 +-
->   drivers/net/ethernet/3com/3c59x.c                |  6 +++---
->   drivers/net/ethernet/3com/typhoon.c              |  8 ++++----
->   drivers/net/ethernet/8390/ax88796.c              |  6 +++---
->   drivers/net/ethernet/8390/etherh.c               |  6 +++---
->   drivers/net/ethernet/adaptec/starfire.c          |  4 ++--
->   drivers/net/ethernet/aeroflex/greth.c            |  4 ++--
->   drivers/net/ethernet/agere/et131x.c              |  4 ++--
->   drivers/net/ethernet/alacritech/slicoss.c        |  4 ++--
->   drivers/net/ethernet/allwinner/sun4i-emac.c      |  4 ++--
->   drivers/net/ethernet/alteon/acenic.c             |  4 ++--
->   drivers/net/ethernet/amazon/ena/ena_ethtool.c    |  4 ++--
->   drivers/net/ethernet/amazon/ena/ena_netdev.c     |  2 +-
->   drivers/net/ethernet/amd/amd8111e.c              |  4 ++--
->   drivers/net/ethernet/amd/au1000_eth.c            |  2 +-
->   drivers/net/ethernet/amd/nmclan_cs.c             |  2 +-
->   drivers/net/ethernet/amd/pcnet32.c               |  4 ++--
->   drivers/net/ethernet/amd/sunlance.c              |  2 +-
->   drivers/net/ethernet/amd/xgbe/xgbe-ethtool.c     |  4 ++--
->   .../net/ethernet/aquantia/atlantic/aq_ethtool.c  |  2 +-
->   drivers/net/ethernet/arc/emac_main.c             |  2 +-
->   drivers/net/ethernet/atheros/ag71xx.c            |  4 ++--
->   .../net/ethernet/atheros/atl1c/atl1c_ethtool.c   |  4 ++--
->   .../net/ethernet/atheros/atl1e/atl1e_ethtool.c   |  6 +++---
->   drivers/net/ethernet/atheros/atlx/atl1.c         |  4 ++--
->   drivers/net/ethernet/atheros/atlx/atl2.c         |  6 +++---
->   drivers/net/ethernet/broadcom/b44.c              |  6 +++---
->   drivers/net/ethernet/broadcom/bcm63xx_enet.c     |  4 ++--
->   drivers/net/ethernet/broadcom/bcmsysport.c       |  4 ++--
->   drivers/net/ethernet/broadcom/bgmac.c            |  6 +++---
->   drivers/net/ethernet/broadcom/bnx2.c             |  6 +++---
->   drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c  |  2 +-
->   .../net/ethernet/broadcom/bnx2x/bnx2x_ethtool.c  |  6 +++---
->   drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c |  2 +-
->   .../net/ethernet/broadcom/bnx2x/bnx2x_sriov.h    |  2 +-
->   drivers/net/ethernet/broadcom/bnx2x/bnx2x_vfpf.c |  2 +-
->   .../net/ethernet/broadcom/bnxt/bnxt_ethtool.c    |  8 ++++----
->   drivers/net/ethernet/broadcom/bnxt/bnxt_vfr.c    |  2 +-
->   drivers/net/ethernet/broadcom/genet/bcmgenet.c   |  2 +-
->   drivers/net/ethernet/broadcom/tg3.c              |  6 +++---
->   drivers/net/ethernet/brocade/bna/bnad_ethtool.c  |  6 +++---
->   drivers/net/ethernet/cavium/octeon/octeon_mgmt.c |  2 +-
->   .../net/ethernet/cavium/thunder/nicvf_ethtool.c  |  4 ++--
->   drivers/net/ethernet/chelsio/cxgb/cxgb2.c        |  4 ++--
->   drivers/net/ethernet/chelsio/cxgb3/cxgb3_main.c  |  4 ++--
->   .../net/ethernet/chelsio/cxgb4/cxgb4_ethtool.c   |  4 ++--
->   drivers/net/ethernet/chelsio/cxgb4/cxgb4_main.c  |  4 ++--
->   .../net/ethernet/chelsio/cxgb4vf/cxgb4vf_main.c  |  4 ++--
->   .../chelsio/inline_crypto/chtls/chtls_main.c     |  2 +-
->   drivers/net/ethernet/cirrus/ep93xx_eth.c         |  2 +-
->   drivers/net/ethernet/cisco/enic/enic_ethtool.c   |  6 +++---
->   drivers/net/ethernet/davicom/dm9000.c            |  4 ++--
->   drivers/net/ethernet/dec/tulip/de2104x.c         |  4 ++--
->   drivers/net/ethernet/dec/tulip/dmfe.c            |  4 ++--
->   drivers/net/ethernet/dec/tulip/tulip_core.c      |  4 ++--
->   drivers/net/ethernet/dec/tulip/uli526x.c         |  4 ++--
->   drivers/net/ethernet/dec/tulip/winbond-840.c     |  4 ++--
->   drivers/net/ethernet/dlink/dl2k.c                |  4 ++--
->   drivers/net/ethernet/dlink/sundance.c            |  4 ++--
->   drivers/net/ethernet/dnet.c                      |  4 ++--
->   drivers/net/ethernet/emulex/benet/be_cmds.c      | 12 ++++++------
->   drivers/net/ethernet/emulex/benet/be_ethtool.c   |  6 +++---
->   drivers/net/ethernet/faraday/ftgmac100.c         |  4 ++--
->   drivers/net/ethernet/faraday/ftmac100.c          |  4 ++--
->   drivers/net/ethernet/fealnx.c                    |  4 ++--
->   .../net/ethernet/freescale/dpaa/dpaa_ethtool.c   |  4 ++--
->   drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c |  2 +-
->   .../net/ethernet/freescale/enetc/enetc_ethtool.c |  4 ++--
->   drivers/net/ethernet/freescale/fec_main.c        |  8 ++++----
->   drivers/net/ethernet/freescale/fec_ptp.c         |  2 +-
->   .../ethernet/freescale/fs_enet/fs_enet-main.c    |  2 +-
->   drivers/net/ethernet/freescale/gianfar_ethtool.c |  2 +-
->   .../net/ethernet/freescale/ucc_geth_ethtool.c    |  4 ++--
->   drivers/net/ethernet/fujitsu/fmvj18x_cs.c        |  4 ++--
->   drivers/net/ethernet/hisilicon/hip04_eth.c       |  4 ++--
->   drivers/net/ethernet/ibm/ehea/ehea_ethtool.c     |  4 ++--
->   drivers/net/ethernet/ibm/emac/core.c             |  4 ++--
->   drivers/net/ethernet/ibm/ibmveth.c               |  4 ++--
->   drivers/net/ethernet/intel/e100.c                |  4 ++--
->   drivers/net/ethernet/intel/e1000/e1000_ethtool.c |  4 ++--
->   drivers/net/ethernet/intel/e1000e/ethtool.c      |  4 ++--
->   drivers/net/ethernet/intel/e1000e/netdev.c       |  6 +++---
->   drivers/net/ethernet/intel/i40e/i40e_ethtool.c   |  6 +++---
->   drivers/net/ethernet/intel/i40e/i40e_main.c      | 16 ++++++++--------
->   drivers/net/ethernet/intel/i40e/i40e_ptp.c       |  2 +-
->   drivers/net/ethernet/intel/iavf/iavf_ethtool.c   |  6 +++---
->   drivers/net/ethernet/intel/igb/igb_ethtool.c     |  6 +++---
->   drivers/net/ethernet/intel/igb/igb_main.c        |  2 +-
->   drivers/net/ethernet/intel/igbvf/ethtool.c       |  4 ++--
->   drivers/net/ethernet/intel/ixgb/ixgb_ethtool.c   |  4 ++--
->   drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c |  6 +++---
->   drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c    |  2 +-
->   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c    |  4 ++--
->   drivers/net/ethernet/intel/ixgbevf/ethtool.c     |  4 ++--
->   drivers/net/ethernet/jme.c                       |  6 +++---
->   drivers/net/ethernet/korina.c                    |  6 +++---
->   drivers/net/ethernet/marvell/mv643xx_eth.c       |  8 ++++----
->   drivers/net/ethernet/marvell/mvneta.c            |  6 +++---
->   drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c  |  6 +++---
->   .../marvell/octeontx2/nic/otx2_ethtool.c         |  8 ++++----
->   .../ethernet/marvell/prestera/prestera_ethtool.c |  4 ++--
->   drivers/net/ethernet/marvell/pxa168_eth.c        |  8 ++++----
->   drivers/net/ethernet/marvell/skge.c              |  6 +++---
->   drivers/net/ethernet/marvell/sky2.c              |  6 +++---
->   drivers/net/ethernet/mediatek/mtk_eth_soc.c      |  4 ++--
->   drivers/net/ethernet/mediatek/mtk_star_emac.c    |  2 +-
->   drivers/net/ethernet/mellanox/mlx4/en_ethtool.c  |  6 +++---
->   drivers/net/ethernet/mellanox/mlx4/fw.c          |  2 +-
->   .../net/ethernet/mellanox/mlx5/core/en_ethtool.c |  4 ++--
->   drivers/net/ethernet/mellanox/mlx5/core/en_rep.c |  2 +-
->   .../ethernet/mellanox/mlx5/core/ipoib/ethtool.c  |  2 +-
->   drivers/net/ethernet/mellanox/mlxsw/core.c       |  2 +-
->   drivers/net/ethernet/mellanox/mlxsw/minimal.c    |  4 ++--
->   .../ethernet/mellanox/mlxsw/spectrum_ethtool.c   |  6 +++---
->   drivers/net/ethernet/micrel/ks8851_common.c      |  6 +++---
->   drivers/net/ethernet/micrel/ksz884x.c            |  6 +++---
->   drivers/net/ethernet/microchip/enc28j60.c        |  6 +++---
->   drivers/net/ethernet/microchip/encx24j600.c      |  6 +++---
->   drivers/net/ethernet/microchip/lan743x_ethtool.c |  4 ++--
->   drivers/net/ethernet/myricom/myri10ge/myri10ge.c |  8 ++++----
->   drivers/net/ethernet/natsemi/natsemi.c           |  6 +++---
->   drivers/net/ethernet/natsemi/ns83820.c           |  6 +++---
->   drivers/net/ethernet/neterion/s2io.c             |  6 +++---
->   .../net/ethernet/netronome/nfp/nfp_net_ethtool.c |  6 +++---
->   drivers/net/ethernet/ni/nixge.c                  |  4 ++--
->   drivers/net/ethernet/nvidia/forcedeth.c          |  6 +++---
->   drivers/net/ethernet/nxp/lpc_eth.c               |  6 +++---
->   .../ethernet/oki-semi/pch_gbe/pch_gbe_ethtool.c  |  6 +++---
->   drivers/net/ethernet/packetengines/hamachi.c     |  6 +++---
->   drivers/net/ethernet/packetengines/yellowfin.c   |  6 +++---
->   .../ethernet/qlogic/netxen/netxen_nic_ethtool.c  |  6 +++---
->   drivers/net/ethernet/qlogic/qed/qed_int.c        |  2 +-
->   drivers/net/ethernet/qlogic/qede/qede_ethtool.c  |  4 ++--
->   drivers/net/ethernet/qlogic/qede/qede_main.c     |  2 +-
->   drivers/net/ethernet/qlogic/qla3xxx.c            |  6 +++---
->   .../net/ethernet/qlogic/qlcnic/qlcnic_ethtool.c  |  6 +++---
->   drivers/net/ethernet/qualcomm/qca_debug.c        |  8 ++++----
->   drivers/net/ethernet/rdc/r6040.c                 |  6 +++---
->   drivers/net/ethernet/realtek/8139cp.c            |  6 +++---
->   drivers/net/ethernet/realtek/8139too.c           |  6 +++---
->   drivers/net/ethernet/realtek/r8169_main.c        |  6 +++---
->   drivers/net/ethernet/rocker/rocker_main.c        |  4 ++--
->   .../net/ethernet/samsung/sxgbe/sxgbe_ethtool.c   |  4 ++--
->   drivers/net/ethernet/sfc/efx.c                   |  2 +-
->   drivers/net/ethernet/sfc/efx_common.c            |  2 +-
->   drivers/net/ethernet/sfc/ethtool_common.c        |  6 +++---
->   drivers/net/ethernet/sfc/falcon/efx.c            |  4 ++--
->   drivers/net/ethernet/sfc/falcon/ethtool.c        |  8 ++++----
->   drivers/net/ethernet/sfc/falcon/falcon.c         |  2 +-
->   drivers/net/ethernet/sfc/falcon/nic.c            |  2 +-
->   drivers/net/ethernet/sfc/mcdi_mon.c              |  2 +-
->   drivers/net/ethernet/sfc/nic.c                   |  2 +-
->   drivers/net/ethernet/sfc/siena/efx.c             |  2 +-
->   drivers/net/ethernet/sfc/siena/efx_common.c      |  2 +-
->   drivers/net/ethernet/sfc/siena/ethtool_common.c  |  6 +++---
->   drivers/net/ethernet/sfc/siena/mcdi_mon.c        |  2 +-
->   drivers/net/ethernet/sfc/siena/nic.c             |  2 +-
->   drivers/net/ethernet/sgi/ioc3-eth.c              |  6 +++---
->   drivers/net/ethernet/sis/sis190.c                |  6 +++---
->   drivers/net/ethernet/sis/sis900.c                |  6 +++---
->   drivers/net/ethernet/smsc/epic100.c              |  6 +++---
->   drivers/net/ethernet/smsc/smc911x.c              |  6 +++---
->   drivers/net/ethernet/smsc/smc91c92_cs.c          |  4 ++--
->   drivers/net/ethernet/smsc/smc91x.c               |  6 +++---
->   drivers/net/ethernet/smsc/smsc911x.c             |  6 +++---
->   drivers/net/ethernet/smsc/smsc9420.c             |  6 +++---
->   drivers/net/ethernet/socionext/netsec.c          |  4 ++--
->   drivers/net/ethernet/socionext/sni_ave.c         |  4 ++--
->   .../net/ethernet/stmicro/stmmac/stmmac_ethtool.c |  8 ++++----
->   drivers/net/ethernet/sun/cassini.c               |  6 +++---
->   drivers/net/ethernet/sun/ldmvsw.c                |  4 ++--
->   drivers/net/ethernet/sun/niu.c                   |  6 +++---
->   drivers/net/ethernet/sun/sunbmac.c               |  4 ++--
->   drivers/net/ethernet/sun/sungem.c                |  6 +++---
->   drivers/net/ethernet/sun/sunhme.c                |  6 +++---
->   drivers/net/ethernet/sun/sunqe.c                 |  4 ++--
->   drivers/net/ethernet/sun/sunvnet.c               |  4 ++--
->   .../net/ethernet/synopsys/dwc-xlgmac-common.c    |  4 ++--
->   .../net/ethernet/synopsys/dwc-xlgmac-ethtool.c   |  6 +++---
->   drivers/net/ethernet/tehuti/tehuti.c             |  8 ++++----
->   drivers/net/ethernet/ti/am65-cpsw-ethtool.c      |  4 ++--
->   drivers/net/ethernet/ti/cpmac.c                  |  4 ++--
->   drivers/net/ethernet/ti/cpsw.c                   |  6 +++---
->   drivers/net/ethernet/ti/cpsw_new.c               |  6 +++---
->   drivers/net/ethernet/ti/davinci_emac.c           |  4 ++--
->   drivers/net/ethernet/ti/tlan.c                   |  6 +++---
->   drivers/net/ethernet/toshiba/ps3_gelic_net.c     |  4 ++--
->   .../net/ethernet/toshiba/spider_net_ethtool.c    |  8 ++++----
->   drivers/net/ethernet/toshiba/tc35815.c           |  6 +++---
->   drivers/net/ethernet/via/via-rhine.c             |  4 ++--
->   drivers/net/ethernet/via/via-velocity.c          |  8 ++++----
->   drivers/net/ethernet/wiznet/w5100.c              |  6 +++---
->   drivers/net/ethernet/wiznet/w5300.c              |  6 +++---
->   .../net/ethernet/xilinx/xilinx_axienet_main.c    |  4 ++--
->   drivers/net/ethernet/xilinx/xilinx_emaclite.c    |  2 +-
->   drivers/net/ethernet/xircom/xirc2ps_cs.c         |  2 +-
->   drivers/net/ethernet/xscale/ixp4xx_eth.c         |  4 ++--
->   199 files changed, 457 insertions(+), 457 deletions(-)
-Tested-by: Naama Meir <naamax.meir@linux.intel.com>
+> I'm sorry this happened again.
+> I'll keep the compatible "mediatek,mt8195-mmsys" at next version.
+> 
+> The patch "dt-bindings: arm: mediatek: mmsys: remove the unused
+> compatible for mt8195" should be sent after accepting the vdosys1
+> series, right?
+
+I don't think there will be no such patch...
+
+You need to add a bindings change which will accept device nodes like:
+foo {
+  compatible = "mediatek,mt8195-vdosys0", "mediatek,mt8195-mmsys";
+
+}
+
+Example-schema shows how to do it.
+
+Best regards,
+Krzysztof
 
