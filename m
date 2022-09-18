@@ -4,74 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2F10C6FA86
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Sep 2022 04:33:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC3C7C6FA86
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Sep 2022 04:46:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+joaMY7hqrcCPOaz1s4O/2dULBa1V2QHlCVuiQ9Hdm4=; b=h/2E5BhZpwsb82p4EB7oRyfk/Y
-	rpdLUVY3s2EHfJ4fzPVAkNpPfT1k1sEsckv5toSVs5VgIQ1nMBJd2qdfcE11lVoARIZbjUpv9AxLB
-	EDFtbrZuFQesBRWNW4h707cMldugYAkfhTmbqhX2pgJtOG1lBLf8/kDXE3QWgxVej2MoVBmRhKq7J
-	m6ezwaeqPsEgHOsr+oRX3iYGx/uRKx2/lHyEu4ei6WoCHdo4U/OW9K7AgTN0yZgbfOTvccV9UmnLw
-	fpKTnNmcrhO5Ehn3OotrTwE0m3KWFg2jhrjpKJiJ5uCPDJZEjz/b72VGIgotFaAP355XYN94ZtX0J
-	9mOIBZrA==;
+	bh=Kd0YDX+z6kyCey+UZ/+Z3wH+hVCPLwSMIFiVa1GENDY=; b=3xT99irjuTk1YfHUz+TBmq7pYp
+	mpoxovuBrxdTIEACDDZ+0Z9qC5NC48RPwG23MtYQKGBpdUrsMPG8qGusYpeTVfxQed8X/Uw3dR6ma
+	oQ6RSpSpcrit1GStbyUTYd6lffgoBV5AJ7BmBMOcJ19hWKUSXTWNDJnYgWcZlmZ0M0bvx1A3230Im
+	TC+wHmVBvVJTv/7sYEr1xNcTIX73S2jvKR6v26VCqXzE96lV2z2ih4zqZXwK96C8jSWDQimxXSGwp
+	i7bs1qrpupVvHhIcBu1I/LBQ/SS2jxE9C0cKeKhc3AA4KBZam4uTxOIItpZDn3Uz3SDAaapCX431+
+	65Y70Jhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZlz7-00CEiP-UA; Sun, 18 Sep 2022 04:32:49 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oZmCI-00CKh6-Bk; Sun, 18 Sep 2022 04:46:26 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZlyw-00CEdR-Ts; Sun, 18 Sep 2022 04:32:40 +0000
+	id 1oZmC7-00CKcE-Jz; Sun, 18 Sep 2022 04:46:17 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 7768360B45;
-	Sun, 18 Sep 2022 04:32:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 490D0C43141;
-	Sun, 18 Sep 2022 04:32:34 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 20A94B80E65;
+	Sun, 18 Sep 2022 04:46:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF06DC433B5;
+	Sun, 18 Sep 2022 04:46:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663475554;
-	bh=eM/QQQyukAm+XDVeiBT7gGoM5l7VFfdhk5Bm7ROWEdQ=;
+	s=k20201202; t=1663476371;
+	bh=2cPWZw4w/TcwHuccfk+B15vjuXnxQzPuyQKi2rCoie0=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=SZKRRMjt8D0ds+0o4jQfDeDLuNMEVbYhWGfQduOMBba6Tyxen36J+XRRDS1jQCUsG
-	 oyk6AEwWBlh875ulYgRpDVgmWBjMj47DMPA2g9VCdVunWKNdQJ+/KfBfukrMr/E2Vj
-	 WiG2AMp4e+QUeQUPRWx2V4av/Okw4Ya39Rx4nOgecASpDa+SPKtPOg/bWjth7cZpqG
-	 7P7A8rkjm364pE8xNYwFjIUkuUJCV030DV2Pmi/2sUk2x9IgvQH6W+JBYeSirrUrMx
-	 1wDIwVRBC5VhI9qzTojR9srZq5gzs/4hJR4iR0gSaJA6zpVXiuF/8PBFdxTKhqU6YH
-	 3gyxqSI1hkyZQ==
-Received: by mail-ot1-f48.google.com with SMTP id ck2-20020a056830648200b0065603aef276so12241137otb.12;
-        Sat, 17 Sep 2022 21:32:34 -0700 (PDT)
-X-Gm-Message-State: ACrzQf2mvhCDNlX5pgSsE2xpBIO7xFWorUOjSJtvdSj8r9X1vZju3dfg
-	HPSanoST6APLYiTLGySxSsHrhXu4acUn4LL3lQ==
-X-Google-Smtp-Source: AMsMyM5lCD6u07Sps3gffTwk531S2XxDTgJmBJz+g7D+eRtOqwZIMdUqFL+Yn4Cdx4x2A+ifxluvekYLL60ONhN94q4=
-X-Received: by 2002:a05:6830:6999:b0:61d:26f8:94c1 with SMTP id
- cy25-20020a056830699900b0061d26f894c1mr5511290otb.278.1663475553315; Sat, 17
- Sep 2022 21:32:33 -0700 (PDT)
+	b=Js5mz3WtPUU2a795Pe7XCKIB04sgNrJ7DbAaLMA943uH4KnctsgGKQhOHKH8SGE+V
+	 z+ds2S3/zOpbOtPxcS2PjjvRK36y0dFG9juWy/pmVucEE1qIjG6n8woedrJPzyzz98
+	 sxf7yIeVDtRACu+mv4dNrpFX39JnbcymuJ46ooME5gqcadolNTMBK1apYnLjZgUXMZ
+	 IqDT2VFfZ/bG0qCXC44KVZ/vmVHbo3UW985b469LKKyfXimEmeXpLaLcZWkJsANhDM
+	 NlHE/XQicbSEMGu0okjx7m4at2dcuV/0axiFahaUodGbsMZ+U+RdRgTcJgodq/4Ma7
+	 aJCt9RqqqW+Rw==
+Received: by mail-ot1-f49.google.com with SMTP id r22-20020a9d7516000000b00659ef017e34so2143514otk.13;
+        Sat, 17 Sep 2022 21:46:11 -0700 (PDT)
+X-Gm-Message-State: ACrzQf3dcoLlwwAmR+LTWQhWG8a6dkM7o2ZLeBsp+Uzai5XxDPxjLYsT
+	uUtx3BlP1w7cB24cZmo4CoZRtKDOXAyVfOpSNQ==
+X-Google-Smtp-Source: AMsMyM7/TsTtrCgUFQOzPlvUTK3GwzyR6pNA0COoL5bCBOBVU9WveDfz/EdrwyaGicMBNy06OK3Aq1t/NrfkyGM4cVw=
+X-Received: by 2002:a05:6830:2781:b0:65a:4e1:b3d2 with SMTP id
+ x1-20020a056830278100b0065a04e1b3d2mr366184otu.77.1663476370828; Sat, 17 Sep
+ 2022 21:46:10 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220914140031.18578-1-allen-kh.cheng@mediatek.com>
-In-Reply-To: <20220914140031.18578-1-allen-kh.cheng@mediatek.com>
+References: <20220717174454.46616-1-sam@ravnborg.org> <20220717174454.46616-4-sam@ravnborg.org>
+In-Reply-To: <20220717174454.46616-4-sam@ravnborg.org>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sun, 18 Sep 2022 12:32:22 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_92F5WgCedZOvg_qtkHLorTCXiWtuGgoJ=9gRryYHi7TQ@mail.gmail.com>
-Message-ID: <CAAOTY_92F5WgCedZOvg_qtkHLorTCXiWtuGgoJ=9gRryYHi7TQ@mail.gmail.com>
-Subject: Re: [PATCH v2] drm: mediatek: Fix display vblank timeout when disable dsi
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	DRI Development <dri-devel@lists.freedesktop.org>, 
+Date: Sun, 18 Sep 2022 12:45:59 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9Yo4Kx+UaRQSGcqHtA6hMBvFUUwHe6-vQX4Vt5nBJb+A@mail.gmail.com>
+Message-ID: <CAAOTY_9Yo4Kx+UaRQSGcqHtA6hMBvFUUwHe6-vQX4Vt5nBJb+A@mail.gmail.com>
+Subject: Re: [PATCH v1 03/12] drm/mediatek: Drop chain_mode_fixup call in mode_valid()
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: DRI Development <dri-devel@lists.freedesktop.org>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <narmstrong@baylibre.com>, 
+	Robert Foss <robert.foss@linaro.org>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Arnd Bergmann <arnd@arndb.de>, 
+	Benson Leung <bleung@chromium.org>, Cai Huoqing <cai.huoqing@linux.dev>, 
+	chrome-platform@lists.linux.dev, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, 
+	David Airlie <airlied@linux.ie>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, 
+	Guenter Roeck <groeck@chromium.org>, Jitao Shi <jitao.shi@mediatek.com>, 
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
 	Linux ARM <linux-arm-kernel@lists.infradead.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Xinlei Lee <xinlei.lee@mediatek.com>
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-renesas-soc@vger.kernel.org, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <mripard@kernel.org>, 
+	Philip Chen <philipchen@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220917_213239_063918_984880E2 
-X-CRM114-Status: GOOD (  20.07  )
+X-CRM114-CacheID: sfid-20220917_214615_975165_6BE7DA76 
+X-CRM114-Status: GOOD (  25.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,97 +94,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Allen:
+Hi, Sam:
 
-Allen-KH Cheng <allen-kh.cheng@mediatek.com> =E6=96=BC 2022=E5=B9=B49=E6=9C=
-=8814=E6=97=A5 =E9=80=B1=E4=B8=89 =E6=99=9A=E4=B8=8A10:00=E5=AF=AB=E9=81=93=
-=EF=BC=9A
+Sam Ravnborg <sam@ravnborg.org> =E6=96=BC 2022=E5=B9=B47=E6=9C=8818=E6=97=
+=A5 =E9=80=B1=E4=B8=80 =E5=87=8C=E6=99=A81:45=E5=AF=AB=E9=81=93=EF=BC=9A
 >
-> From: Xinlei Lee <xinlei.lee@mediatek.com>
+> The mode_valid implementation had a call to
+> drm_bridge_chain_mode_fixup() which would be wrong as the mode_valid is
+> not allowed to change anything - only to validate the mode.
 >
-> Dsi is turned off at bridge.disable, causing crtc to wait for vblank
-> timeout. It is necessary to add count protection to turn off dsi and
-> turn off at post_disable.
+> As the next bridge is often/always a connector the call had no effect
+> anyway. So drop it.
+>
+> From the git history I could see this call was included in the original
+> version of the driver so there was no help there to find out why it was
+> added in the first place. But a lot has changed since the initial driver
+> were added and is seems safe to remove the call now.
 
-If turn off dsi in post_disable(), you should turn on dsi in pre_enable().
-
-There is another patch fix this problem [1], do you have any comment
-on that patch?
-
-[1] http://lists.infradead.org/pipermail/linux-mediatek/2022-August/046713.=
-html
-
-Regards,
-Chun-Kuang.
+Acked-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 
 >
-> Fixes: cde7e2e35c28 ("drm/mediatek: Separate poweron/poweroff from enable=
-/disable and define new funcs")
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> Co-developed-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
+> Reviewed-by: Maxime Ripard <mripard@kernel.org>
+> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Cc: Philipp Zabel <p.zabel@pengutronix.de>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-arm-kernel@lists.infradead.org
 > ---
-> Change in v1:
->   * Rebase to kernel/git/chunkuang.hu/linux.git, mediatek-drm-fixes
->     [Allen-KH Cheng <allen-kh.cheng@mediatek.com>]
-> ---
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 15 ++++++---------
->  1 file changed, 6 insertions(+), 9 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c | 11 -----------
+>  1 file changed, 11 deletions(-)
 >
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
-k/mtk_dsi.c
-> index 5b624e0f5b0a..e30f4244c001 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -768,14 +768,6 @@ static void mtk_dsi_bridge_mode_set(struct drm_bridg=
-e *bridge,
->         drm_display_mode_to_videomode(adjusted, &dsi->vm);
->  }
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediat=
+ek/mtk_hdmi.c
+> index 3196189429bc..a63b76055f81 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> @@ -1208,22 +1208,11 @@ static int mtk_hdmi_bridge_mode_valid(struct drm_=
+bridge *bridge,
+>                                       const struct drm_display_mode *mode=
+)
+>  {
+>         struct mtk_hdmi *hdmi =3D hdmi_ctx_from_bridge(bridge);
+> -       struct drm_bridge *next_bridge;
 >
-> -static void mtk_dsi_bridge_atomic_disable(struct drm_bridge *bridge,
-> -                                         struct drm_bridge_state *old_br=
-idge_state)
-> -{
-> -       struct mtk_dsi *dsi =3D bridge_to_dsi(bridge);
+>         dev_dbg(hdmi->dev, "xres=3D%d, yres=3D%d, refresh=3D%d, intl=3D%d=
+ clock=3D%d\n",
+>                 mode->hdisplay, mode->vdisplay, drm_mode_vrefresh(mode),
+>                 !!(mode->flags & DRM_MODE_FLAG_INTERLACE), mode->clock * =
+1000);
+>
+> -       next_bridge =3D drm_bridge_get_next_bridge(&hdmi->bridge);
+> -       if (next_bridge) {
+> -               struct drm_display_mode adjusted_mode;
 > -
-> -       mtk_output_dsi_disable(dsi);
-> -}
+> -               drm_mode_copy(&adjusted_mode, mode);
+> -               if (!drm_bridge_chain_mode_fixup(next_bridge, mode,
+> -                                                &adjusted_mode))
+> -                       return MODE_BAD;
+> -       }
 > -
->  static void mtk_dsi_bridge_atomic_enable(struct drm_bridge *bridge,
->                                          struct drm_bridge_state *old_bri=
-dge_state)
->  {
-> @@ -803,13 +795,15 @@ static void mtk_dsi_bridge_atomic_post_disable(stru=
-ct drm_bridge *bridge,
->  {
->         struct mtk_dsi *dsi =3D bridge_to_dsi(bridge);
->
-> +       if (dsi->refcount =3D=3D 1)
-> +               mtk_output_dsi_disable(dsi);
-> +
->         mtk_dsi_poweroff(dsi);
->  }
->
->  static const struct drm_bridge_funcs mtk_dsi_bridge_funcs =3D {
->         .attach =3D mtk_dsi_bridge_attach,
->         .atomic_destroy_state =3D drm_atomic_helper_bridge_destroy_state,
-> -       .atomic_disable =3D mtk_dsi_bridge_atomic_disable,
->         .atomic_duplicate_state =3D drm_atomic_helper_bridge_duplicate_st=
-ate,
->         .atomic_enable =3D mtk_dsi_bridge_atomic_enable,
->         .atomic_pre_enable =3D mtk_dsi_bridge_atomic_pre_enable,
-> @@ -829,6 +823,9 @@ void mtk_dsi_ddp_stop(struct device *dev)
->  {
->         struct mtk_dsi *dsi =3D dev_get_drvdata(dev);
->
-> +       if (dsi->refcount =3D=3D 1)
-> +               mtk_output_dsi_disable(dsi);
-> +
->         mtk_dsi_poweroff(dsi);
->  }
->
+>         if (hdmi->conf) {
+>                 if (hdmi->conf->cea_modes_only && !drm_match_cea_mode(mod=
+e))
+>                         return MODE_BAD;
 > --
-> 2.18.0
+> 2.34.1
 >
 
