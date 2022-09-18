@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00E87C32771
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Sep 2022 13:47:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C70BC54EE9
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Sep 2022 13:47:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8AjFH1BLUb+TXyGp2qTPrkMzOdVeStVDjagqGC2aBMo=; b=yiXIyWCNbHPwkUk8jKi9Zz2E+7
-	dV/GKjHhAn79T6RgnIeKT4ain7oRzPN00cap/AKrx3QPsJgEdJHveaawOyhUC8WsvMj4duXehoxNV
-	E8sApPzNDCp8I/y4qK7TkDA59l57QrJim3dXlBniceWmPpXGpYKiSQp4bKzpnMFiWrrLFd4Qyo8Hj
-	vx1MNd9b/Mkx8HnQ+pyycr+PhporN9D4R5tIonQZLLVJ3nRjUuOhz6FbXpo22AyTBI9YCnAhlV7TH
-	loR4xtwKAdtCXCWOnKqryV/BySRw16IpMs5Sqrz0UtZa+GCkPY2xXhZYdRidNs8XVLIPyV6vxvPw3
-	jt3/5WDg==;
+	bh=Sk44jnot7uocJ4arpLBcXWdU4CoMjGzCainAQsmuR8w=; b=UT1P42LbuzqMEjcARDGrl2WgKZ
+	EAN5Lf0uMj8SrC1/qHHnS5QFgjozFD+AlDiu4poX4hHNm6Jru1ryHMIuAPl2t7Ae2IrF7ZPdKg+9n
+	3QGmGQkFBGRPPSNh/pVKVuf1LyElcY/CkFwW05gsOh8QF+rvDR/3I9hx2oFt49Q8GBSxTP6SLMCZg
+	OBW+p9d4EoN+pw1mRk0NbwV3qiyBhHQcyKnOfE/GR3pKW2w8R7CHe8VIBpW//rBJ2yK2aIxmO981N
+	Oyw4aOPsfUrBjXvUeNPJs88Z3MekatiTokTRCfTEJXUcfytRpzRPdMvmwb2ytERE2hO2yItF3WP6f
+	j4if5/YQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZudQ-00Gd6Z-SR; Sun, 18 Sep 2022 13:47:00 +0000
+	id 1oZudV-00Gd9p-PW; Sun, 18 Sep 2022 13:47:05 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZuZN-00GZQT-NM; Sun, 18 Sep 2022 13:42:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1663508548; cv=none; 
+	id 1oZuZP-00GZRr-RC; Sun, 18 Sep 2022 13:42:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1663508538; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=K2xzEwjPfm9McdYoT6CtcnjWipbsqLDzZV7Clksk95RPQUoWLMzO1XVc2P29ZNdIcA4HVuBpgU/mSBrFyeOMc9HXATMAxTP9gO5bmsId3YjT47ddyPD7A4x1vZTukKkXu9Uuqvr+VIJoR85c2h/IPlWYpJZKrKDVEzRzk9LUAa0=
+	b=nGcW+J7cUl4Npm7YylRYVaY3x4tmLfXLCiDmXgrD+BTVs7jiUqFCMLu4KOk1qAcvcIhL11nHer5DxIHmSGsGPtELImuHWBKfGUYV7JbmblLKYMXltIS46CVmRTefzmkRCNMbqEFjo8Z9gn/Nu+pGWcnO958DjGyNldx2AzDCbfg=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1663508548; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
-	bh=8AjFH1BLUb+TXyGp2qTPrkMzOdVeStVDjagqGC2aBMo=; 
-	b=k5ro0PdUWeD7ifL7y9wqMH53863XjWpCuR67enTfGR76JmfnDXjnsS+9C9GKavijbpoGxVS2GoAryNdumIAgxXzdHilrIjq7lbXhmgN2/OOOqD1Bv800FklRApE/tQXk/bReBhZ/+8MZVQf6Gbxa2x0ufZ93ZqQPmUxMy+K30mc=
+	t=1663508538; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=Sk44jnot7uocJ4arpLBcXWdU4CoMjGzCainAQsmuR8w=; 
+	b=DYez03mXmCqDDj/u6CGPeakJaFNwIuXUGabjpp8k8q5xpGFWiFRvs+FN/1EH/gJKdfeOT81v77yHoszmRdgayhBic+CL6v3KrPmArmJplNlPQ1kvBWVEKQdBkAJyf4OC87uw7CLJh6yGxifYU4CrYan9ayY1bkoEz1HWObDXJc0=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663508548;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663508538;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=8AjFH1BLUb+TXyGp2qTPrkMzOdVeStVDjagqGC2aBMo=;
-	b=bOAsHtRVRRMFx5lmw2zizSLb0EJFkxp9q3/5gucFn4LWmwIP7ArDbvCamLii+03d
-	w0s2JuMpvZx4/kBteyPawPN6Uton2ZmgSxi6swTj4xenz/RHOeT5sQDYzghX1fa1gOl
-	zJqeFpA5yLcbibvIzTcCmDKFMLmL9OZhgxZ3HI8E=
+	bh=Sk44jnot7uocJ4arpLBcXWdU4CoMjGzCainAQsmuR8w=;
+	b=EEP8sUuGCCt0h+GgcCvIr7ye+zABBtJ5LF9oJzskblPhpAIM6rYbbo+S6J4mbWAG
+	Y3qgQq86EjPZZ0gjzMGBKvlPTv5m4E1DJrIcaCNY6MA79hM4NPYqojCUTofKXgwgUgs
+	SvYWeyUQjT1xX19++IQ33AcufY9mK7YE23bQUsK8=
 Received: from arinc9-PC.lan (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 16635085485581009.1193879532758; Sun, 18 Sep 2022 06:42:28 -0700 (PDT)
+	with SMTPS id 1663508536708451.20108562227756; Sun, 18 Sep 2022 06:42:16 -0700 (PDT)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -70,10 +70,10 @@ Cc: netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-mips@vger.kernel.org,
 	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Petr Louda <petr.louda@outlook.cz>
-Subject: [PATCH v3 net-next 10/10] mips: dts: ralink: mt7621: add GB-PC2 LEDs
-Date: Sun, 18 Sep 2022 16:41:18 +0300
-Message-Id: <20220918134118.554813-11-arinc.unal@arinc9.com>
+	Sungbo Eo <mans0n@gorani.run>
+Subject: [PATCH v3 net-next 08/10] mips: dts: ralink: mt7621: change mt7530 switch address
+Date: Sun, 18 Sep 2022 16:41:16 +0300
+Message-Id: <20220918134118.554813-9-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220918134118.554813-1-arinc.unal@arinc9.com>
 References: <20220918134118.554813-1-arinc.unal@arinc9.com>
@@ -82,8 +82,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220918_064249_850507_2D970708 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20220918_064252_006521_EBD8F933 
+X-CRM114-Status: GOOD (  12.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,99 +98,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the missing LEDs for GB-PC2. The ethblack-green, ethblue-green, power
-and system LEDs weren't added previously, because they don't exist on the
-device schematics. Tests on a GB-PC2 by me and Petr proved otherwise.
+In the case of muxing phy0 of the MT7530 switch, the switch and the phy
+will have the same address on the mdio bus, 0. This causes the ethernet
+driver to fail since devices on the mdio bus cannot share an address.
 
-The i2c bus cannot be used on GB-PC2 as its pins are wired to LEDs instead,
-and GB-PC1 does not use it. Therefore, do not enable it on both devices.
+Any address can be used for the switch, therefore, change the switch
+address to 0x1f.
 
-Link: https://github.com/ngiger/GnuBee_Docs/blob/master/GB-PCx/Documents/GB-PC2_V1.1_schematic.pdf
-Tested-by: Petr Louda <petr.louda@outlook.cz>
+Suggested-by: Sungbo Eo <mans0n@gorani.run>
 Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
 Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 ---
- .../boot/dts/ralink/mt7621-gnubee-gb-pc1.dts  |  6 ---
- .../boot/dts/ralink/mt7621-gnubee-gb-pc2.dts  | 42 ++++++++++++++++---
- 2 files changed, 36 insertions(+), 12 deletions(-)
+ arch/mips/boot/dts/ralink/mt7621.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
-index 6ecb8165efe8..0128bd8fa7ed 100644
---- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
-+++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc1.dts
-@@ -20,12 +20,6 @@ chosen {
- 		bootargs = "console=ttyS0,57600";
- 	};
+diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
+index 3d4a8e4bd4f8..7900760212c9 100644
+--- a/arch/mips/boot/dts/ralink/mt7621.dtsi
++++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
+@@ -340,9 +340,9 @@ mdio: mdio-bus {
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
  
--	palmbus: palmbus@1e000000 {
--		i2c@900 {
--			status = "okay";
--		};
--	};
--
- 	gpio-keys {
- 		compatible = "gpio-keys";
- 
-diff --git a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
-index 5f52193a4c37..7515555388ae 100644
---- a/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
-+++ b/arch/mips/boot/dts/ralink/mt7621-gnubee-gb-pc2.dts
-@@ -20,12 +20,6 @@ chosen {
- 		bootargs = "console=ttyS0,57600";
- 	};
- 
--	palmbus: palmbus@1e000000 {
--		i2c@900 {
--			status = "okay";
--		};
--	};
--
- 	gpio-keys {
- 		compatible = "gpio-keys";
- 
-@@ -35,6 +29,42 @@ key-reset {
- 			linux,code = <KEY_RESTART>;
- 		};
- 	};
-+
-+	gpio-leds {
-+		compatible = "gpio-leds";
-+
-+		ethblack-green {
-+			label = "green:ethblack";
-+			gpios = <&gpio 3 GPIO_ACTIVE_LOW>;
-+		};
-+
-+		ethblue-green {
-+			label = "green:ethblue";
-+			gpios = <&gpio 4 GPIO_ACTIVE_LOW>;
-+		};
-+
-+		ethyellow-green {
-+			label = "green:ethyellow";
-+			gpios = <&gpio 15 GPIO_ACTIVE_LOW>;
-+		};
-+
-+		ethyellow-orange {
-+			label = "orange:ethyellow";
-+			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
-+		};
-+
-+		power {
-+			label = "green:power";
-+			gpios = <&gpio 6 GPIO_ACTIVE_LOW>;
-+			linux,default-trigger = "default-on";
-+		};
-+
-+		system {
-+			label = "green:system";
-+			gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
-+			linux,default-trigger = "disk-activity";
-+		};
-+	};
- };
- 
- &mmc {
+-			switch0: switch@0 {
++			switch0: switch@1f {
+ 				compatible = "mediatek,mt7621";
+-				reg = <0>;
++				reg = <0x1f>;
+ 				mediatek,mcm;
+ 				resets = <&sysc MT7621_RST_MCM>;
+ 				reset-names = "mcm";
 -- 
 2.34.1
 
