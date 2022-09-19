@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47C9EECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 18:04:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97806ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 18:05:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g8hZh96h7kcVe0FwyV/2fd9otBYm0/NItAoi3rrV5Yw=; b=ewqql8zVBhYL+xXu1yWne2bRnC
-	79Te/+K4oqOq/n/EGAd8nJUO0+HUXWCYd3ObPetwR7calgOSRCCUFdKNMH2TMa42L8lJuFjFF7sO6
-	BFeXqF9Heyf7V/XOar2UjMpEpxyGcqsQ7kLnWh0/M/LYkQRdN5DmFGyb4+C1DAENXgRjL14pyS5pk
-	MvbEGM95x79w6dbmiI4qv7sJop9xKzsnvuqDs9ABo+9kaiZlr93YiUbYfX6LEFAN1Gp/4m+fBgx4y
-	IwPWyg7KeOGxk3XTnDXM3I3dZd0tWijX3xzRiOCS4xGxY1ORQGIRIB5zoEElOuh5U7GOHM7EMCYBE
-	s0Dkni/g==;
+	bh=HLkgjmfUQZXrBufYXmW5V+FjpCBTnrnJRl8bPfgjGi0=; b=h9BaqYDgOYHaJ8/I0CsGuhetXE
+	nfaPFGkZVVcpo9ZW7NnArRPpDNbZkctMw5LWLJP4NUt1dkye8bHd36BS5isiTAaQBSJeE9Av0yZ4V
+	7G5ZNyRZi46s96KxzBqIm3IHMf1T0AKR6EKCdZP2ooiAiPnKFGeYcFOAnfUfmANXwOlg2f7kTiAvJ
+	ONghigLY+eck/RNQNsuPEKhIRtu0r4uZXs0Hya+UrEt+qjj2Pxu/EtsMMRCgtMGuYAsA3PtR4kMui
+	00N6w8P5QJPw9iCwkCWNDz58CJEC+pyGEGYHFuG+wquAwSi7OxaOYA1NlC3rseECWs1Eu1ESHAd6V
+	Bc50MBGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaL8G-00DXEx-N9; Mon, 19 Sep 2022 18:04:36 +0000
+	id 1oaL92-00DXvs-AT; Mon, 19 Sep 2022 18:05:24 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaL7I-00DW7g-NY
-	for linux-mediatek@bombadil.infradead.org; Mon, 19 Sep 2022 18:03:36 +0000
+	id 1oaL7M-00DW7g-5j
+	for linux-mediatek@bombadil.infradead.org; Mon, 19 Sep 2022 18:03:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=g8hZh96h7kcVe0FwyV/2fd9otBYm0/NItAoi3rrV5Yw=; b=OC3CNM3EtJjYBw9/raIL8SP1Jc
-	vDZG+lyRoR1DdZDVLbpkwKgrqDeaD4IMrD2p5UdMBuZ4AAPv8eYvRxC+qrzFvhdoN5u9ATtTViS5w
-	maVcbz14mqOmbYmpu8BJLFDsU6g5uCNPnNm/4CggDKca2Wg9bTC01saKyP391rtfkK7cUmZOVEcTp
-	itzJ9LzcvXJc55uz7yjN9Mta9+il20qM1Q4WnleYpDnO71Jkt6U9DlnwurZdey2eoIBPlYMLceFBU
-	sXKmANfwyboz/NvS7Z4SvTyKVLQz6+c6cEA00AybAEheuQEt/mPc+8+5YVYVgiEw0HQqvz6Lx4y5i
-	7aGALKFw==;
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	bh=HLkgjmfUQZXrBufYXmW5V+FjpCBTnrnJRl8bPfgjGi0=; b=ZW8lXu3A1XISRwBvzf9vESiGkt
+	93SkCUDju9UpI3ONfVmjksbeyPl4AoBJ3sw9W70cFTinlkYoKBfPP/r3GhVpH2sWRL6t69CSJ23H5
+	e/yZTvhqR4gq0cnbx6F1i6fTdEs5bt9OLcm5huMgA7qqSWWp2dXUlwFALUOjgZcCNYriONUOJOo7W
+	ANFwYNUVwVEv5WXR63isNMJpluhRFXk3bFfDrvSvPSD/FU1JTc0wmXpyuSTkBJ22V7ykE8p9WWqtc
+	xitWKnXGv5sQXhZXuBAq0MQCQwfUJ3UH5CvxJ6OwvuoGP9sFnAkw6PLy4uPD2JsQjyvYuMmeBa14s
+	KoqR82Jw==;
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaK7o-00E8GY-La
-	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 17:00:07 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id lc7so260317ejb.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Sep 2022 10:00:04 -0700 (PDT)
+	id 1oaK7k-00E8Ei-Sq
+	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 17:00:04 +0000
+Received: by mail-ej1-x636.google.com with SMTP id lh5so65019ejb.10
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Sep 2022 10:00:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date;
-        bh=g8hZh96h7kcVe0FwyV/2fd9otBYm0/NItAoi3rrV5Yw=;
-        b=xLxEGxkLE9ts8PrWjFZFQCdOiglt2QkS+aUCn873bVHln5LsU0bvqAVn5LFP05/Yyr
-         Q3qRpEst57E9SGRzI8qpwLl2n81lnV7mXZ8ciDQ4f+3wWKaYsFb2M2yp0JVu14Rkzx4t
-         imIkYqSNoVVEaxFbAdujyag9f5p4E4p5mOkIQP3u5LxjGS3mUDhFyoxzELq+k/uubc9L
-         MZrTbOobCprscw8nBrp+kaWxRcV20dNkKLyny7J28BijqGfXNFdD0jNIoHenj01MLEvJ
-         CyJJL8ZP5n7MOZGHu2N9lqRQedIinPzfrVndKqNhcJdYpXLaOzgQFoR/WoFNLT2htXpU
-         HC6Q==
+        bh=HLkgjmfUQZXrBufYXmW5V+FjpCBTnrnJRl8bPfgjGi0=;
+        b=iCp4PRqRut8ldEn6iFDY5780nxcwQxypuEqbmfTvfX+LeaUV0TBlilns6GCWIlnwrq
+         CiunYZfYC1IndkJR3gnSQ4FcJF4TiUnJYlWWbk6h+p035qcTxa1oHPK+O+pAuXcCXMw1
+         LMpjCRzZR/vSqVIB7Ng/g+wzpRJhyDQ1tAyyRG6ag7jXkiGaWcAQBDPrZHK6tIPuir3i
+         FJelQbDn/dhuzkO0e0r6jNWMX2zLGGvK8DS59YGysg/RVD7XXX6JNM7WRoaEE5ppbj+r
+         FD+ecJG4zoLcLkbU/ZVidIhIdeppq99UGS7J0oDwTXyZQkt5err89RZjpn5BCdJ5atTZ
+         F5jQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=g8hZh96h7kcVe0FwyV/2fd9otBYm0/NItAoi3rrV5Yw=;
-        b=pe0IT/jG1guICjrLCunrmp/MZLyq8QPuk9LV0abA1JxNRgRjWHyOpjt4laeh6VWfEP
-         aaIlQjLsnuIFvGYYQwdsDfVN8IEfUkOO7t8AO3fdWo4SDfv/BjaQu6k2SQ3mTM9griPt
-         zXGGxzb78D610nkyULeIlPVTZ4gwOe+swyxjE9OhRbhs4MD3HNU1jyNxDBzqiVSfJd2L
-         NuN8vp3Y2oKmMgUpkwv11mfJkouyjT7Tpz/byPL/X3aSY3ZJsNDxnU+VtT52T24JhULM
-         LRy1UuvSYZ0c7RYaVrpEpdzXfwG4R6RtaMMDrePea8fbXXtG4EkphBkLYxftFiwR/skM
-         311w==
-X-Gm-Message-State: ACrzQf3KEuFLliysrNa9532pHzmMkB5qOxBkqXbO23IzZ7dcqynKu1L8
-	1s2nHh24bD3yZDQwfzF50U2MLw==
-X-Google-Smtp-Source: AMsMyM4DJI7JfhQLtMN2LYTOhc8B3W1+i58GmxhTOF/MVrCsnqMqyiepx3Iq5rhTvArkC9ga2QF9Xg==
-X-Received: by 2002:a17:907:1ded:b0:76f:af8f:942e with SMTP id og45-20020a1709071ded00b0076faf8f942emr13451537ejc.120.1663606802567;
-        Mon, 19 Sep 2022 10:00:02 -0700 (PDT)
+        bh=HLkgjmfUQZXrBufYXmW5V+FjpCBTnrnJRl8bPfgjGi0=;
+        b=AdIDPGy4dbBcf4zyPyVU0odWH7PXgKoqAeqNcds4l+W5YjU8FZamquoaVr9qB1w9Li
+         tXv0bt6kx3iX+sb0+gkV7KvaendSDj6Iu1ajoWhF5LrhFbw3zmUYgC3iUU5t7SA8JaFz
+         +wuBzVY6NhaoW7/yZUd8NWSRU0nEEsg+96WqbQoyT7jXj1w96TZAXvsJK/Aj34XyGG2v
+         3LL1EeZoCIi8NLgTORlzEBv2w427g0/ngf4QJ3t3wuhoCAo7n7WaDMW3YiO5RvfOALpo
+         R+HskpLJJWagycrLVcl4vEvE8OL6qLNMXSlwreMz+YFEncbfqrKgU+/8XHhdFZIVKLaW
+         i7Wg==
+X-Gm-Message-State: ACrzQf21k0lQuJQ/bVzP64Hz+Rv6QFp0+CFi9lpC2is9k0JWzMqxTO8F
+	AdYyIkDa8xlVxPl2gV5L3UVpiA==
+X-Google-Smtp-Source: AMsMyM68qjQqULpZ/BI4lE6+kDmd0BZAyqrmHiJF5y5T8zzA2DF8Y6DbzBptf6WxEg9nnyn2opsPwQ==
+X-Received: by 2002:a17:907:7b93:b0:770:1d4f:4de9 with SMTP id ne19-20020a1709077b9300b007701d4f4de9mr13596890ejc.201.1663606799750;
+        Mon, 19 Sep 2022 09:59:59 -0700 (PDT)
 Received: from [127.0.0.1] (2a02-8440-6340-f287-3074-96af-9642-0003.rev.sfr.net. [2a02:8440:6340:f287:3074:96af:9642:3])
-        by smtp.gmail.com with ESMTPSA id cf16-20020a0564020b9000b0044fc3c0930csm20424246edb.16.2022.09.19.09.59.59
+        by smtp.gmail.com with ESMTPSA id cf16-20020a0564020b9000b0044fc3c0930csm20424246edb.16.2022.09.19.09.59.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Sep 2022 10:00:01 -0700 (PDT)
+        Mon, 19 Sep 2022 09:59:59 -0700 (PDT)
 From: Guillaume Ranquet <granquet@baylibre.com>
-Date: Mon, 19 Sep 2022 18:56:07 +0200
-Subject: [PATCH v1 09/17] drm/mediatek: hdmi: add connector flag
+Date: Mon, 19 Sep 2022 18:56:06 +0200
+Subject: [PATCH v1 08/17] drm/mediatek: hdmi: add cec flag
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20220919-v1-9-4844816c9808@baylibre.com>
+Message-Id: <20220919-v1-8-4844816c9808@baylibre.com>
 References: <20220919-v1-0-4844816c9808@baylibre.com>
 In-Reply-To: <20220919-v1-0-4844816c9808@baylibre.com>
 To: Vinod Koul <vkoul@kernel.org>, Stephen Boyd <sboyd@kernel.org>, David Airlie <airlied@linux.ie>,
@@ -94,8 +94,8 @@ Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Pablo S
  devicetree@vger.kernel.org
 X-Mailer: b4 0.10.0-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_180005_628677_5A75E064 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20220919_180002_384275_F79B8E14 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,74 +110,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a flag to indicate support for an external connector
+Add a flag to indicate support for cec.
 
 Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-index 86653ebaacfd..30407603d693 100644
+index bfcca6f8b839..86653ebaacfd 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-@@ -199,20 +199,22 @@ int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platform_device *pdev,
- 		goto put_device;
+@@ -154,35 +154,38 @@ int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platform_device *pdev,
+ 		return ret;
  	}
  
--	remote = of_graph_get_remote_node(np, 1, 0);
--	if (!remote) {
--		ret = -EINVAL;
--		goto put_device;
+-	/* The CEC module handles HDMI hotplug detection */
+-	cec_np = of_get_compatible_child(np->parent, "mediatek,mt8173-cec");
+-	if (!cec_np) {
+-		dev_err(dev, "Failed to find CEC node\n");
+-		return -EINVAL;
 -	}
--
--	if (!of_device_is_compatible(remote, "hdmi-connector")) {
--		hdmi->next_bridge = of_drm_find_bridge(remote);
--		if (!hdmi->next_bridge) {
--			dev_err(dev, "Waiting for external bridge\n");
--			of_node_put(remote);
--			ret = -EPROBE_DEFER;
-+	if (hdmi->conf->has_connector) {
-+		remote = of_graph_get_remote_node(np, 1, 0);
-+		if (!remote) {
-+			ret = -EINVAL;
- 			goto put_device;
- 		}
-+
-+		if (!of_device_is_compatible(remote, "hdmi-connector")) {
-+			hdmi->next_bridge = of_drm_find_bridge(remote);
-+			if (!hdmi->next_bridge) {
-+				dev_err(dev, "Waiting for external bridge\n");
-+				of_node_put(remote);
-+				ret = -EPROBE_DEFER;
-+				goto put_device;
-+			}
++	if (hdmi->conf->has_cec) {
++		/* The CEC module handles HDMI hotplug detection */
++		cec_np = of_get_compatible_child(np->parent, "mediatek,mt8173-cec");
++		if (!cec_np) {
++			dev_err(dev, "Failed to find CEC node\n");
++			return -EINVAL;
 +		}
- 	}
  
- 	i2c_np = of_parse_phandle(remote, "ddc-i2c-bus", 0);
-@@ -325,6 +327,7 @@ int mtk_drm_hdmi_remove(struct platform_device *pdev)
+-	cec_pdev = of_find_device_by_node(cec_np);
+-	if (!cec_pdev) {
+-		dev_err(hdmi->dev, "Waiting for CEC device %pOF\n", cec_np);
++		cec_pdev = of_find_device_by_node(cec_np);
++		if (!cec_pdev) {
++			dev_err(hdmi->dev, "Waiting for CEC device %pOF\n", cec_np);
++			of_node_put(cec_np);
++			return -EPROBE_DEFER;
++		}
+ 		of_node_put(cec_np);
+-		return -EPROBE_DEFER;
+-	}
+-	of_node_put(cec_np);
+-	hdmi->cec_dev = &cec_pdev->dev;
+-	/*
+-	 * The mediatek,syscon-hdmi property contains a phandle link to the
+-	 * MMSYS_CONFIG device and the register offset of the HDMI_SYS_CFG
+-	 * registers it contains.
+-	 */
+-	regmap = syscon_regmap_lookup_by_phandle(np, "mediatek,syscon-hdmi");
+-	ret = of_property_read_u32_index(np, "mediatek,syscon-hdmi", 1, &hdmi->sys_offset);
+-	if (IS_ERR(regmap))
+-		ret = PTR_ERR(regmap);
+-	if (ret) {
+-		dev_err(dev, "Failed to get system configuration registers: %d\n", ret);
+-		goto put_device;
++		hdmi->cec_dev = &cec_pdev->dev;
++		/*
++		 * The mediatek,syscon-hdmi property contains a phandle link to the
++		 * MMSYS_CONFIG device and the register offset of the HDMI_SYS_CFG
++		 * registers it contains.
++		 */
++		regmap = syscon_regmap_lookup_by_phandle(np, "mediatek,syscon-hdmi");
++		ret = of_property_read_u32_index(np, "mediatek,syscon-hdmi", 1, &hdmi->sys_offset);
++		if (IS_ERR(regmap))
++			ret = PTR_ERR(regmap);
++		if (ret) {
++			dev_err(dev,
++				"Failed to get system configuration registers: %d\n", ret);
++			goto put_device;
++		}
++		hdmi->sys_regmap = regmap;
+ 	}
+-	hdmi->sys_regmap = regmap;
+ 
+ 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	if (!mem) {
+@@ -230,7 +233,8 @@ int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platform_device *pdev,
+ 
+ 	return 0;
+ put_device:
+-	put_device(hdmi->cec_dev);
++	if (hdmi->conf->has_cec)
++		put_device(hdmi->cec_dev);
+ 	return ret;
+ }
+ 
+@@ -320,6 +324,7 @@ int mtk_drm_hdmi_remove(struct platform_device *pdev)
+ 
  static const struct mtk_hdmi_conf mtk_hdmi_conf_mt2701 = {
  	.tz_disabled = true,
- 	.has_cec = true,
-+	.has_connector = true,
++	.has_cec = true,
  	.bridge_funcs = &mtk_mt8183_hdmi_bridge_funcs,
  	.mtk_hdmi_output_init = mtk_hdmi_output_init_mt8183,
  	.mtk_hdmi_clk_disable = mtk_hdmi_clk_disable_audio_mt8183,
-@@ -338,6 +341,7 @@ static const struct mtk_hdmi_conf mtk_hdmi_conf_mt8167 = {
+@@ -332,6 +337,7 @@ static const struct mtk_hdmi_conf mtk_hdmi_conf_mt2701 = {
+ static const struct mtk_hdmi_conf mtk_hdmi_conf_mt8167 = {
  	.max_mode_clock = 148500,
  	.cea_modes_only = true,
- 	.has_cec = true,
-+	.has_connector = true,
++	.has_cec = true,
  	.bridge_funcs = &mtk_mt8183_hdmi_bridge_funcs,
  	.mtk_hdmi_output_init = mtk_hdmi_output_init_mt8183,
  	.mtk_hdmi_clk_disable = mtk_hdmi_clk_disable_audio_mt8183,
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.h b/drivers/gpu/drm/mediatek/mtk_hdmi_common.h
-index 921bde150e11..62a14435be69 100644
+index 7452bea91f9e..921bde150e11 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.h
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.h
-@@ -32,6 +32,7 @@ struct mtk_hdmi_conf {
+@@ -31,6 +31,7 @@
+ struct mtk_hdmi_conf {
  	bool tz_disabled;
  	bool cea_modes_only;
- 	bool has_cec;
-+	bool has_connector;
++	bool has_cec;
  	unsigned long max_mode_clock;
  	const struct drm_bridge_funcs *bridge_funcs;
  	void (*mtk_hdmi_output_init)(struct mtk_hdmi *hdmi);
