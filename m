@@ -4,79 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A15FEECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 10:50:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89519C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 10:50:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4HWiEp+1VDXynpT/vcy3ufoZ+s+hrLEfSmL7djSdf4w=; b=j1iBCVkzhQR8Mpf2pQOieupUO0
-	hihigMvcpqy6Q4gc3dpVxkT2lThNuTLNIfO1aPC3A27YR4y91qvqSD7XUmZHUVQwhHx34jVuZ7YLC
-	cgdaEnSERdNtgFhJt8+oWMv5BqzJDdcKVnamAClBQWX7tIqtGxuczl1JYdlO0lsw3STcSGz9/d/l+
-	rGkPhaYxBLa6BLHmWfJS8zsN/J1/Nbk4xMunh8deeczi+b2mHS6Q4/KN6EA/1LtzhrQpukhq5RWNc
-	vviIscvavJNTir86bQ8GOU20nfaIKtBtk8X6BvjNFRUwrvmFNHNe1g86PvlpMa80aa6mtsnbn19JL
-	QGseS7Lw==;
+	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zt9/L7mv46x+tMkdan6S1TWVTWPJHerYZbSiTiF39Bk=; b=zAwFkxcfYjIdAbknmw70mS3bIq
+	UVhsuXyMJ4BwzVp1I8ThIPN57PWPX0RYHrAl/r7Se8LmYkXF2jsBzl+M5JLMYaI2ktqNezhackPhW
+	UmqxqmtrZrbdM60bYlvn0LFJobyg0/IO+4Smc2UyvgfSdUATrnjm8741Gy6BC/SPahch3H9kKKpPs
+	nlUbWQSpsLwbxz764w/gQJqQxEAdAJVliJkRcnJEV/pWcMOfEcwBA01v+18VyWY/hgY5mhOI8lGL/
+	0zMlkQsK27fBkalYbmb30DJnwQsM492EgeERRfx0DIGWZP5BgjAaH9y1XqH0oZ8OpJTbATq7AushU
+	Aj98hqbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaELS-00BNvB-BN; Mon, 19 Sep 2022 10:49:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oaEMF-00BOI2-08; Mon, 19 Sep 2022 10:50:35 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaEJJ-00BNb0-S6; Mon, 19 Sep 2022 10:47:36 +0000
-X-UUID: 70687872041f444086011248f22dd4c8-20220919
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=4HWiEp+1VDXynpT/vcy3ufoZ+s+hrLEfSmL7djSdf4w=;
-	b=dARn8steOAqwQMh4wDSgtOE79P0tFeWzPFROIxfHwfv8wu77FW/GPr/6Wv6GupHj2/Gutfma3I/BZ5kvSFS6Iu5z0rMgsfmN2p/MqvHB8xjxEJOHcpS0gjo+4MZc7InrA2IIk3cosQ+082MxkcpaenPYyWTnRz2yLLenZG2e6BE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:255d7819-3e7b-43f9-8d7a-bb777c35c803,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:cb57255e-5ed4-4e28-8b00-66ed9f042fbd,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 70687872041f444086011248f22dd4c8-20220919
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <tinghan.shen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 984898250; Mon, 19 Sep 2022 03:47:23 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 19 Sep 2022 17:46:46 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 19 Sep 2022 17:46:46 +0800
-Message-ID: <185edd1443dc85ea817027f15b7f90b1651c550f.camel@mediatek.com>
-Subject: Re: [PATCH v2 4/9] remoteproc: mediatek: Support probing for the
- 2nd core of dual-core SCP
-From: TingHan Shen <tinghan.shen@mediatek.com>
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<bjorn.andersson@linaro.org>, <bleung@chromium.org>,
-	<chrome-platform@lists.linux.dev>, <devicetree@vger.kernel.org>,
-	<dnojiri@chromium.org>, <enric.balletbo@collabora.com>,
-	<groeck@chromium.org>, <gustavoars@kernel.org>, <keescook@chromium.org>,
-	<krzk+dt@kernel.org>, <lee.jones@linaro.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-remoteproc@vger.kernel.org>,
-	<matthias.bgg@gmail.com>, <pmalani@chromium.org>, <robh+dt@kernel.org>,
-	<sebastian.reichel@collabora.com>, <weishunc@google.com>
-Date: Mon, 19 Sep 2022 17:46:46 +0800
-In-Reply-To: <CANLsYkxPdWErZErgGukvsMWcaGSRDpoKEkMeukvFi=BVTdpm8A@mail.gmail.com>
-References: <20220829194247.GC2264818@p14s>
-	 <20220908111757.14633-1-tinghan.shen@mediatek.com>
-	 <CANLsYkx6kXk8u_ajFbnhdWTkZBLtrq_z02jryLBSVH0x--_ZFw@mail.gmail.com>
-	 <a5ecd1dd567ca58807b289f2488d933f27e087dd.camel@mediatek.com>
-	 <CANLsYkxPdWErZErgGukvsMWcaGSRDpoKEkMeukvFi=BVTdpm8A@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1oaEM0-00BOBQ-Pg; Mon, 19 Sep 2022 10:50:22 +0000
+Received: by mail-wm1-x329.google.com with SMTP id h130-20020a1c2188000000b003b4cadadce7so3102581wmh.3;
+        Mon, 19 Sep 2022 03:50:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:subject:from:cc:to:content-language
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date;
+        bh=zt9/L7mv46x+tMkdan6S1TWVTWPJHerYZbSiTiF39Bk=;
+        b=eGlGfPlVwAfj5fVHptbsSk3lNVQfRHcbdNcnYKmguMxticjb3UzOqlD0Hs1hdq/xUt
+         mJAmis2r01KXGfo3ilQL2XfqKzGxOzcZt6BTJLzSS6aw7ycwpx63Hq/J25yco8+XCoZR
+         r2H6vrFqjLFbI2xsDIPj3/5F/pp2HZ5dS8PLxfCsu0CMXHcpAiczDk5Ns/R2n56cNAZe
+         MzcUPPrGyPpDmKtbRK00ZL1Rdv8JT69Z7ziTEJzdnpt0s+jmNWQehcczL5y+Qe1xQaBP
+         imgt5Jng/8QP1PbBXVdBiCLMEOeePcf2Rad/pu35UdwOy0yC1wSh6OIzlmU0oa6dO2kl
+         LaZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:subject:from:cc:to:content-language
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date;
+        bh=zt9/L7mv46x+tMkdan6S1TWVTWPJHerYZbSiTiF39Bk=;
+        b=fws2WR0N3w0kQPlodw07pHmKbvo2lEcODzTNacUxmzBOqVnQaT+ZOqmJZkBGfVmiqi
+         hDaieKU9MlH7ZjNt+tKhUakOEIMznNGeraObAeHYpl4VTgG0/uz3kRtFyc4IpA1aydSk
+         XWxhrx/+V0iHTV881oxTP5lssvD9MA7+tZxtzvKj85nbkKSNdIgOfM0wZY70O+XI/Fcq
+         b5E0P8LkTrgIfx+CNcewQWAFOplZ5pHIVLNWHuXtoUhAhatqRc8RrstfO2yeLv3FiUQk
+         AVOh7e9+ZhBeyl3B3F46gPI7/yRl/FORn9tCM7QxSfANhvuz82wUeYlCgoGLgcXQ+W8c
+         wZ9g==
+X-Gm-Message-State: ACrzQf0le6oe37YJQrzT2La+BfVAAQJYo4MUxMz5+iLAItVxc5Ml7pzn
+	XKRK3fleO6PxOII5QiAJHMc=
+X-Google-Smtp-Source: AMsMyM7O37kNCtN4XEKZro5zQsRxPHEhO5SYR8+u84l1OSSgFdbTICmLLc9gdww8tJ5CmvfAVAXtsw==
+X-Received: by 2002:a05:600c:4f0f:b0:3b4:c09b:37c5 with SMTP id l15-20020a05600c4f0f00b003b4c09b37c5mr8865197wmq.181.1663584617271;
+        Mon, 19 Sep 2022 03:50:17 -0700 (PDT)
+Received: from [192.168.2.177] ([207.188.167.132])
+        by smtp.gmail.com with ESMTPSA id ay9-20020a05600c1e0900b003a5c7a942edsm13427829wmb.28.2022.09.19.03.50.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 19 Sep 2022 03:50:16 -0700 (PDT)
+Message-ID: <3b915692-c8a9-c508-5a4a-0fdb49355e99@gmail.com>
+Date: Mon, 19 Sep 2022 12:50:14 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.1
+Content-Language: en-US
+To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
+Cc: "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>,
+ "jason-jh.lin" <jason-jh.lin@mediatek.com>, Moudy Ho
+ <moudy.ho@mediatek.com>, =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?=
+ <nfraprado@collabora.com>, Peter Chiu <chui-hao.chiu@mediatek.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>, trevor.wu@mediatek.com,
+ Tzung-Bi Shih <tzungbi@chromium.org>, YC Hung <yc.hung@mediatek.com>,
+ YT Lee <yt.lee@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [GIT PULL] arm64: dts: MediaTek updates for v6.1
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_034733_956742_79EDA18A 
-X-CRM114-Status: GOOD (  52.75  )
+X-CRM114-CacheID: sfid-20220919_035020_910259_D13854A2 
+X-CRM114-Status: GOOD (  17.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,242 +100,136 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-09-16 at 11:15 -0600, Mathieu Poirier wrote:
-> On Fri, 16 Sept 2022 at 06:00, TingHan Shen <tinghan.shen@mediatek.com> wrote:
-> > 
-> > On Thu, 2022-09-08 at 14:58 -0600, Mathieu Poirier wrote:
-> > > On Thu, 8 Sept 2022 at 05:21, Tinghan Shen <tinghan.shen@mediatek.com>
-> > > wrote:
-> > > 
-> > > > Hi Mathieu,
-> > > > 
-> > > > > > The mtk_scp.c driver only supports the single core SCP and the
-> > > > > > 1st core of a dual-core SCP. This patch extends it for the 2nd core.
-> > > > > > 
-> > > > > > MT8195 SCP is a dual-core MCU. Both cores are housed in the same
-> > > > 
-> > > > subsys.
-> > > > > 
-> > > > > s/subsys/subsystem
-> > > > > 
-> > > > > > They have the same viewpoint of registers and memory.
-> > > > > > 
-> > > > > > Core 1 of the SCP features its own set of core configuration registers,
-> > > > > > interrupt controller, timers, and DMAs. The rest of the peripherals
-> > > > > > in this subsystem are shared by core 0 and core 1.
-> > > > > > 
-> > > > > > As for memory, core 1 has its own cache memory. the SCP SRAM is shared
-> > > > > 
-> > > > > /the/The
-> > > > > 
-> > > > > > by core 0 and core 1.
-> > > > > > 
-> > > > > > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > > > > > ---
-> > > > > >  drivers/remoteproc/mtk_scp.c | 22 ++++++++++++++++++++--
-> > > > > >  1 file changed, 20 insertions(+), 2 deletions(-)
-> > > > > > 
-> > > > > > diff --git a/drivers/remoteproc/mtk_scp.c
-> > > > 
-> > > > b/drivers/remoteproc/mtk_scp.c
-> > > > > > index 3510c6d0bbc8..91b4aefde4ac 100644
-> > > > > > --- a/drivers/remoteproc/mtk_scp.c
-> > > > > > +++ b/drivers/remoteproc/mtk_scp.c
-> > > > > > @@ -23,6 +23,10 @@
-> > > > > >  #define MAX_CODE_SIZE 0x500000
-> > > > > >  #define SECTION_NAME_IPI_BUFFER ".ipi_buffer"
-> > > > > > 
-> > > > > > +#define SCP_CORE_0 0
-> > > > > > +#define SCP_CORE_1 1
-> > > > > > +#define SCP_CORE_SINGLE 0xF
-> > > > > > +
-> > > > > >  /**
-> > > > > >   * scp_get() - get a reference to SCP.
-> > > > > >   *
-> > > > > > @@ -836,6 +840,7 @@ static int scp_probe(struct platform_device *pdev)
-> > > > > >     struct resource *res;
-> > > > > >     const char *fw_name = "scp.img";
-> > > > > >     int ret, i;
-> > > > > > +   u32 core_id = SCP_CORE_SINGLE;
-> > > > > > 
-> > > > > >     ret = rproc_of_parse_firmware(dev, 0, &fw_name);
-> > > > > >     if (ret < 0 && ret != -EINVAL)
-> > > > > > @@ -851,8 +856,16 @@ static int scp_probe(struct platform_device *pdev)
-> > > > > >     scp->data = of_device_get_match_data(dev);
-> > > > > >     platform_set_drvdata(pdev, scp);
-> > > > > > 
-> > > > > > +   ret = of_property_read_u32_index(dev->of_node,
-> > > > 
-> > > > "mediatek,scp-core", 1, &core_id);
-> > > > > > +   if (ret == 0)
-> > > > > > +           dev_info(dev, "Boot SCP dual core %u\n", core_id);
-> > > > > 
-> > > > > Why is the DT property "mediatek,scp-core" needed at all?  Since the
-> > > > 
-> > > > compatible
-> > > > > "mediatek,mt8195-scp-dual" has already been defined previously in this
-> > > > 
-> > > > patchset,
-> > > > > initialising the second core, if present, is a matter of looking at the
-> > > > > compatile string.
-> > > > 
-> > > > This idea of identify cores by the compatible looks workable.
-> > > > I'll update this series at next version.
-> > > > Thanks!
-> > > > 
-> > > > > 
-> > > > > > +
-> > > > > >     res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
-> > > > > > -   scp->sram_base = devm_ioremap_resource(dev, res);
-> > > > > > +   if (core_id == SCP_CORE_1)
-> > > > > > +           scp->sram_base = devm_ioremap(dev, res->start,
-> > > > 
-> > > > resource_size(res));
-> > > > > > +   else
-> > > > > > +           scp->sram_base = devm_ioremap_resource(dev, res);
-> > > > > > +
-> > > > > 
-> > > > > This looks very broken...  For this to work you would need to have two DT
-> > > > > entries with the "mediatek,mt8195-scp-dual" compatible properly, one with
-> > > > > "mediatek,scp-core = <&scp_dual1 0>;" and another one with
-> > > > 
-> > > > "mediatek,scp-core = <&scp_dual0 1>;".
-> > > > > 
-> > > > > Which is also very broken...  Here you have a binding whose first
-> > > > 
-> > > > argument is a
-> > > > > reference to the core sibling while the second argument is a
-> > > > 
-> > > > characteristic of
-> > > > > the current core, which is highly confusing.
-> > > > > 
-> > > > > I suggest what when you see the compatible binding
-> > > > 
-> > > > "mediatek,mt8195-scp", a
-> > > > > single core is initialized.  If you see "mediatek,mt8195-scp-dual", both
-> > > > 
-> > > > cores
-> > > > > are initialized as part of the _same_ probe.
-> > > > > 
-> > > > > If the above analysis is not correct it means I misinterpreted your
-> > > > > work and if so, a serious amount of comments is needed _and_ a very
-> > > > 
-> > > > detailed
-> > > > > example in "mtk,scp.yaml" that leaves no room for interpretation.
-> > > > > 
-> > > > > I will stop reviewing this patchset until you have clarified how this
-> > > > 
-> > > > works.
-> > > > > 
-> > > > > Thanks,
-> > > > > Mathieu
-> > > > 
-> > > > There's one problem of initializng the CORE1 using the same probe flow.
-> > > > The register space of CORE0 and CORE1 are overlapped in the device node.
-> > > > Both cores need to use the 'cfg' registers defined in scp yaml.
-> > > > The devm_ioremap_resource catches address overlapping and returns error
-> > > > when
-> > > > probing CORE1 driver.
-> > > > 
-> > > 
-> > > That is exactly why I suggest to initialise both cores within the same
-> > > probe() function.
-> > > 
-> > 
-> > Hi Mathieu,
-> > 
-> > I'm thinking about how to initialise in the same probe() function.
-> > I'm wondering if this implies that using one scp driver to initialize 2 cores?
-> > If it is, I assume the dts descriptions for both cores should be contained in one node.
-> > 
-> > When there's one node for both cores, it looks like that there is a problem of
-> > using dma_allocate_coherent(). Each core has its own reserved memory region.
-> > When there's only one device for both cores, it's not able to identify the memory region
-> > by the device parameter of dma_allocate_coherent().
-> > 
-> > Is it acceptable to consider manually allocating core 1 device in the probe() when probing core 0?
-> 
-> Look at what Suman did for TI's K3 R5[1] and DSP[2] platforms.
-> Reviewing the bindings for both platforms will also give you a good
-> idea of how things work.
-> 
-> [1]. https://urldefense.com/v3/__https://elixir.bootlin.com/linux/v6.0-rc5/source/drivers/remoteproc/ti_k3_r5_remoteproc.c*L1683__;Iw!!CTRNKA9wMg0ARbw!zVcjdLSfKYGO5YQMNGqq339mle8u0VdULX30z0XV4vo3vCb9Wy-w5ixOTmzbv1akubM$ 
-> [2]. https://urldefense.com/v3/__https://elixir.bootlin.com/linux/v6.0-rc5/source/drivers/remoteproc/ti_k3_dsp_remoteproc.c*L673__;Iw!!CTRNKA9wMg0ARbw!zVcjdLSfKYGO5YQMNGqq339mle8u0VdULX30z0XV4vo3vCb9Wy-w5ixOTmzbfE2dtBg$ 
-> 
+Hi Olof and Arnd,
 
-Hi Mathieu,
+unfortunately a bit late, but hopefully still in time the updates for the DTS 64 
+bit.
 
-My plan is changing the dts as following,
+The most important updates are support for the MT8186, up to now only the EVB, 
+but I hope we will see more board with that SoC later one. Apart from that we 
+have a huge update for the MT8195 supported IP blocks, especially tied to the 
+Acer Chromebook Spin 513 series.
+Apart from that we have some more support for MT8192, especially for graphics 
+support.
 
-scp core 0 {
-	// Keep current properties untouched.
-	compatible = "mediatek,mt8195-scp";
+Regards,
+Matthias
 
-	// core 0 properties...
+---
 
-	// Add a new property for multi-core scp.
-	// if not present, it's single core.
-	// if present and core id = 0, it's the main core, otherwise the sub cores.
-	mediatek,scp-core = <0>;
+The following changes since commit 568035b01cfb107af8d2e4bd2fb9aea22cf5b868:
 
-	// add sub cores as sub node.
-	// sub nodes can find parent by OF API.
-	scp core 1 {
-		// use the same compatile name as core 0.
-		compatible = "mediatek,mt8195-scp";
+   Linux 6.0-rc1 (2022-08-14 15:50:18 -0700)
 
-		// assign id > 0 to sub cores.
-		mediatek,scp-core = <1>;
+are available in the Git repository at:
 
-		// core 1 properties...
-	};
-};
+   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/ 
+tags/v6.0-next-dts64
 
+for you to fetch changes up to 5ebb14aa5a193b3a6a5c359bdd4d3573cb14bdf1:
 
-The driver probe/remove behavior will be modified as below,
+   arm64: dts: mediatek: mt6795: Add CPUX system timer node (2022-09-15 18:18:53 
++0200)
 
-scp probe() {
-	// common init...
+----------------------------------------------------------------
+mt6795:
+- add add system timer node
 
-	// check core id to have different memory mapping flow
-	if (core id == 0)
-		// mapping cfg, sram and others
-	else
-		// mapping sram
-		// reuse the cfg paddr/vaddr from core 0
-	
-	// common init...
+mt7986a:
+- add wifi support
 
-	if (core id == 0) {
-		ret = of_platform_populate(...)
+mt8183:
+- add MDP3 and keypad
 
-		// boot core 0 and sub cores
-		rproc_add();
-	} else {
-		// add sub core as sub device to main core
-		rproc_add_subdev()
+mt8186:
+- basic support for the Evaluation Board including, i2c, usb and uart.
 
-		rproc->auto_boot = false;
-		rpoc_add();
-	}
-}
+mt8192:
+- add nodes to support PWM, MIPI transciever, display with GCE and DSI.
 
-scp_remove() {
+mt8195:
+- disable nodes not used on all boards
+- Add support for CPU freq, clocks, power domain controller, spmi, scp.
+- Enable audio decoder, DSP, IOMMU, mailbox.
+- Add display nodes for vdosys0.
+- On Cherry based chromebooks, enable the system companion processor,
+   Cross EC, Google Security Chip, secondary MMC controller, trackpad and
+   a few regulators.
 
-	if (core id == 0)
-		of_platform_depopulate()
-	else
-		rproc_remove_subdev()	
-	
-	// remove core
-}
+----------------------------------------------------------------
+Allen-KH Cheng (6):
+       arm64: dts: Add MediaTek MT8186 dts and evaluation board and Makefile
+       arm64: dts: mt8192: Add pwm node
+       arm64: dts: mt8192: Add mipi_tx node
+       arm64: dts: mediatek: Add mmsys #reset-cells property for mt8192
+       arm64: dts: mt8192: Add display nodes
+       arm64: dts: mt8192: Add dsi node
 
+AngeloGioacchino Del Regno (8):
+       arm64: dts: mediatek: cherry: Enable the System Companion Processor
+       arm64: dts: mediatek: cherry: Wire up the ChromeOS Embedded Controller
+       arm64: dts: mediatek: cherry: Add Google Security Chip (GSC) TPM
+       arm64: dts: mediatek: cherry: Add keyboard mapping for the top row
+       arm64: dts: mediatek: cherry: Enable secondary SD/MMC controller
+       arm64: dts: mediatek: cherry: Enable Elantech eKTH3000 i2c trackpad
+       arm64: dts: mediatek: cherry: Enable MT6315 regulators on SPMI bus
+       arm64: dts: mediatek: mt6795: Add CPUX system timer node
 
+Fabien Parent (2):
+       arm64: dts: mediatek: mt8183: add keyboard node
+       arm64: dts: mediatek: mt8183-pumpkin: add keypad support
 
-Best regards,
-TingHan
+Jason-JH.Lin (2):
+       arm64: dts: mt8195: Add gce node
+       arm64: dts: mt8195: Add display node for vdosys0
 
+Moudy Ho (1):
+       arm64: dts: mt8183: add MediaTek MDP3 nodes
 
+Nícolas F. R. A. Prado (1):
+       arm64: dts: mediatek: Add missing xHCI clocks for mt8192 and mt8195
 
+Peter Chiu (1):
+       arm64: dts: mt7986: add built-in Wi-Fi device nodes
 
+Tinghan Shen (9):
+       arm64: dts: mediatek: Update mt81xx scpsys node to align with dt-bindings
+       arm64: dts: mt8195: Disable watchdog external reset signal
+       arm64: dts: mt8195: Add vdosys and vppsys clock nodes
+       arm64: dts: mt8195: Add power domains controller
+       arm64: dts: mt8195: Add spmi node
+       arm64: dts: mt8195: Add scp node
+       arm64: dts: mt8195: Add audio related nodes
+       arm64: dts: mt8195: Add iommu and smi nodes
+       arm64: dts: mediatek: Fix build warnings of mt8173 vcodec nodes
+
+Trevor Wu (1):
+       arm64: dts: mt8195: Specify audio reset controller
+
+Tzung-Bi Shih (1):
+       arm64: dts: mt8195: Disable I2C0 node
+
+YC Hung (1):
+       arm64: dts: mt8195: Add adsp node and adsp mailbox nodes
+
+YT Lee (1):
+       arm64: dts: mt8195: Add cpufreq node
+
+  arch/arm64/boot/dts/mediatek/Makefile           |    1 +
+  arch/arm64/boot/dts/mediatek/mt6795.dtsi        |    8 +
+  arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts    |   38 +
+  arch/arm64/boot/dts/mediatek/mt7986a.dtsi       |   23 +
+  arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts    |   40 +
+  arch/arm64/boot/dts/mediatek/mt8167.dtsi        |    3 +-
+  arch/arm64/boot/dts/mediatek/mt8173.dtsi        |    7 +-
+  arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts |   21 +
+  arch/arm64/boot/dts/mediatek/mt8183.dtsi        |   75 +-
+  arch/arm64/boot/dts/mediatek/mt8186-evb.dts     |  220 +++++
+  arch/arm64/boot/dts/mediatek/mt8186.dtsi        |  819 +++++++++++++++++
+  arch/arm64/boot/dts/mediatek/mt8192.dtsi        |  200 ++++-
+  arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi |  256 ++++++
+  arch/arm64/boot/dts/mediatek/mt8195.dtsi        | 1072 ++++++++++++++++++++++-
+  14 files changed, 2765 insertions(+), 18 deletions(-)
+  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186.dtsi
 
