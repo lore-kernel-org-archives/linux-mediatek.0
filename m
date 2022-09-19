@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DA0BC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 11:24:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9892C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 11:30:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mQIM/EJij0VCL0/KLKnA4As/obLNORXFYtrVRXtkL68=; b=oN8GqL9hKpGiLxgw/NoD9Ys6qQ
-	CKHY7Fy45fUHD4slpTjDPGifhANw7PFHe9MTgHqVoe2y/WZHRYuaPPc1xU5WcRddGLBEtbItt+ej7
-	//2IH7Eqdwt8fknwVxtRtdjVmaQtqIxJuVCInlf7PWNqL2x5rpGuJ3aAt2lCJtmrSektEZN2cGEWI
-	0kxjGnw1D98CDC++j5wTPewJ3BwoVP7VpKIIfLiveyxWspZxGr3PGn9Rta5iKmV55XPMQwo2WgQOq
-	zgZpkkl9ZQmeWM8hpiAPPxl907jOf2SQlOXp5J0Qobu1tLnmGb7b7OBHGluNoc5C3eR4zFktQSmtT
-	HSNmVNJA==;
+	bh=+uLY05c49ecqS91zmmiEb12QI7sOr+RmFbptlGn3Ypk=; b=3tN2xDzLZEdLn0Q5Qs0tt6WMMW
+	No7n5V4a0sD94v9EfRgH6zkrcWOGH1l4mUe8d+Nd1NKRaKccxZqP+MpMA4d1YWLQZMfcwfVWex9ri
+	/+zQQez67BS9pVJ3wr+O8bSs+bDVztx4D5KSSG0Ag3YTfxpEn0zD3PZ8JRQeLbhHd84A9ic5RjWBF
+	Iy4b55d4aNcjbsEuKzntQhaztaKhBwulfE2IFSm3VL/ZqshhUL4PP6aHFIQo+iMOd3Q8/rOU50R1Q
+	zZ7z7WQqGDsEFJ2zaRK/3ZtgQ4dxTQ7mT5RYtPQlhW/eyA6zT1jDdSfdzE9mWXdyXuoAsovpuDzIo
+	2l8hvQNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaEt1-00BUrk-TH; Mon, 19 Sep 2022 11:24:27 +0000
+	id 1oaEyQ-00BVwr-Dr; Mon, 19 Sep 2022 11:30:02 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaEsp-00BUoY-D9; Mon, 19 Sep 2022 11:24:16 +0000
+	id 1oaEyE-00BVtM-Nf; Mon, 19 Sep 2022 11:29:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=mQIM/EJij0VCL0/KLKnA4As/obLNORXFYtrVRXtkL68=; b=Uy73segPjVyktd8MoQvEluJ9Sh
-	8UMlXvBQXgcmxdqKPCvnG0AJB5XTJrqI6TkyZbqzLgvj3De5Z8SaAM66xp2jYDyFPEyh5IoLJBoyV
-	YnFSkxf+7niuxzR2BJeS+2IUuG63xeDlCLVR6SXgLpKW2GK3p64cjCvnfjEBFSlbhVt5LwUBoty/0
-	17xzYlZme8iC9EEtdlDJLQ6nK5GSU+zmxYvhlmyPJiY/l4nLkPJKT6yULBWYHKzZ1YSxRkPJquYcW
-	16AZAqjaiImN+9RUOneXZF5KblFKbB4dTrNfXa1amvIj0XOknpHPV8q1ZVxCVKiFwppyWVpbxHQNp
-	C+IMmD4g==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34400)
+	bh=+uLY05c49ecqS91zmmiEb12QI7sOr+RmFbptlGn3Ypk=; b=SgKWhnBdZUGfUYaD7jCyqSh3sQ
+	Vpr2XdOB5RPtruhHeZGTRUWQy/IsQI8LMNoSGlQBXH6h6Nrbxur2rTe8F/ufqVAZvE1eZEXhAJiUq
+	RMmWDjHBXwk0X1bC8KfUv5njGb03/l3r/ZXpRw822B3fP2R2GaSTVICBunqjRgA+w1WbYhyWXl2vW
+	h6QrbkibWGsH9bFMoV/044qDwnWfD4LYW8SLFAEDidHd7r+MNCw2ij6P/IPSAv+XHL9E/8Wy+XuAo
+	XrIfdpyZMCY7ge8+aLWwKfyjJyNa3cRkcrLdKcTbAOfdYxJ6sa8P4hCWXQW3JikQ90klKN7vmLqyW
+	05msk2Tw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:34402)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1oaEsa-0000no-KQ; Mon, 19 Sep 2022 12:24:00 +0100
+	id 1oaEy0-0000oO-TO; Mon, 19 Sep 2022 12:29:36 +0100
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1oaEsX-0006Lj-R3; Mon, 19 Sep 2022 12:23:57 +0100
-Date: Mon, 19 Sep 2022 12:23:57 +0100
+	id 1oaExy-0006Lv-GH; Mon, 19 Sep 2022 12:29:34 +0100
+Date: Mon, 19 Sep 2022 12:29:34 +0100
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Alexander Couzens <lynxis@fe80.eu>
 Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
@@ -57,18 +57,18 @@ Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
 	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net-next v2 5/5] net: mediatek: sgmii: refactor power
- cycling into mtk_pcs_config()
-Message-ID: <YyhRTV7mh9emXl4v@shell.armlinux.org.uk>
+Subject: Re: [PATCH net-next v2 3/5] net: mediatek: sgmii:
+ mtk_pcs_setup_mode_an: don't rely on register defaults
+Message-ID: <YyhSnqacAE4ajRdy@shell.armlinux.org.uk>
 References: <20220919083713.730512-1-lynxis@fe80.eu>
- <20220919083713.730512-6-lynxis@fe80.eu>
+ <20220919083713.730512-4-lynxis@fe80.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220919083713.730512-6-lynxis@fe80.eu>
+In-Reply-To: <20220919083713.730512-4-lynxis@fe80.eu>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_042415_468197_766FFD3D 
-X-CRM114-Status: GOOD (  22.63  )
+X-CRM114-CacheID: sfid-20220919_042950_793382_4BE77BF5 
+X-CRM114-Status: GOOD (  17.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,72 +83,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 19, 2022 at 10:37:12AM +0200, Alexander Couzens wrote:
-> Both code paths (autonegotiated and force mode) are power cycling
-> the phy. Move power cycling code to the caller to remove code
-> duplicity.
-
-I think we can do more consolidation here - and it probably makes sense
-to do in another patch.
-
+On Mon, Sep 19, 2022 at 10:37:10AM +0200, Alexander Couzens wrote:
+> Ensure autonegotiation is enabled.
+> 
+> Signed-off-by: Alexander Couzens <lynxis@fe80.eu>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_sgmii.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
 > diff --git a/drivers/net/ethernet/mediatek/mtk_sgmii.c b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-> index 4c8e8c7b1d32..50f605208295 100644
+> index 18de85709e87..6f4c1ca5a36f 100644
 > --- a/drivers/net/ethernet/mediatek/mtk_sgmii.c
 > +++ b/drivers/net/ethernet/mediatek/mtk_sgmii.c
-> @@ -25,9 +25,6 @@ static int mtk_pcs_setup_mode_an(struct mtk_pcs *mpcs, phy_interface_t interface
->  {
->  	unsigned int val;
+> @@ -32,12 +32,13 @@ static int mtk_pcs_setup_mode_an(struct mtk_pcs *mpcs)
+>  	regmap_write(mpcs->regmap, SGMSYS_PCS_LINK_TIMER,
+>  		     SGMII_LINK_TIMER_DEFAULT);
 >  
-> -	/* PHYA power down */
-> -	regmap_write(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL, SGMII_PHYA_PWD);
-> -
->  	/* Set SGMII phy speed */
->  	regmap_read(mpcs->regmap, mpcs->ana_rgc3, &val);
->  	val &= ~RG_PHY_SPEED_MASK;
-> @@ -72,9 +57,6 @@ static int mtk_pcs_setup_mode_force(struct mtk_pcs *mpcs,
->  {
->  	unsigned int val;
+> +	/* disable remote fault & enable auto neg */
+>  	regmap_read(mpcs->regmap, SGMSYS_SGMII_MODE, &val);
+> -	val |= SGMII_REMOTE_FAULT_DIS;
+> +	val |= SGMII_REMOTE_FAULT_DIS | SGMII_SPEED_DUPLEX_AN;
+>  	regmap_write(mpcs->regmap, SGMSYS_SGMII_MODE, val);
 >  
-> -	/* PHYA power down */
-> -	regmap_write(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL, SGMII_PHYA_PWD);
-> -
->  	regmap_read(mpcs->regmap, mpcs->ana_rgc3, &val);
->  	val &= ~RG_PHY_SPEED_MASK;
->  	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+>  	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &val);
+> -	val |= SGMII_AN_RESTART;
+> +	val |= SGMII_AN_RESTART | SGMII_AN_ENABLE;
 
-After powering the PHY down, the next thing that is done is to configure
-the speed. Even with my comments on patch 4, this can still be
-consolidated.
-
-> @@ -115,12 +85,27 @@ static int mtk_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
->  	struct mtk_pcs *mpcs = pcs_to_mtk_pcs(pcs);
-
-	unsigned int val;
-
->  	int err = 0;
->  
-> +	/* PHYA power down */
-> +	regmap_write(mpcs->regmap, SGMSYS_QPHY_PWR_STATE_CTRL, SGMII_PHYA_PWD);
-> +
-
-	regmap_read(mpcs->regmap, mpcs->ana_rgc3, &val);
-	val &= ~RG_PHY_SPEED_MASK;
-	if (interface == PHY_INTERFACE_MODE_2500BASEX)
-		val |= RG_PHY_SPEED_3_125G;
-	regmap_write(mpcs->regmap, mpcs->ana_rgc3, val);
-
-which would make logical sense to do here, so we always configure the
-speed for the PCS correctly.
-
-That then leaves the configuration of SGMSYS_PCS_CONTROL_1 and
-SGMSYS_SGMII_MODE, which I think could also be consolidated, but I'll
-leave that to those with the hardware to make that decision.
-
-Reading between the lines of the code in this driver, it looks to me
-like this hardware supports only SGMII, but doesn't actually support
-1000base-X and 2500base-X with negotiation. Is that correct? If so,
-it would be good to add a mtk_pcs_validate() function that clears
-ETHTOOL_LINK_MODE_Autoneg_BIT for these modes.
+I'm not sure if I've asked this before, but why does SGMII_AN_RESTART
+need to be set here? It could do with a comment in the code.
 
 Thanks.
 
