@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BB5AC6FA90
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 15:27:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53633C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 15:28:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BMyypvYI4IkA9OS6tJ0zJUGdwSQ6g1bOpQbPvp0TRvg=; b=3NauPQu9QiWZ7KgKm144DWbNv8
-	CnSYPsUGFZdGI8nR4LviNETvZQcV4X6rjIgUf4j6wekA95mMj0Cz101K1SoSjQGZ+8ehf522R0W66
-	jEV+jFoZOqqCKgKY65ULE2eE4Y/29xLQFDzwM5RWeZiTL6Y7idGFlZxe5fW/ApOmYbYs7PKQosh+l
-	KhdUFnWov+2DkJDPHdZJPATjC2V22RblkjCpQirB949MhXNI6Pdu89ZdvZZs80De12aeYHfYBki3X
-	t5bPDHOno6xvC90Qk52/k9Ge++lUXCGBF3x9gZ/JDe96mqN5dcGt85XbXWU3vNtyM0TMw1KaENJ5k
-	emIRnZbg==;
+	bh=0qx1w1SINYWOOowi4W0EpA0UtCbgJTj/507OvvNnFp8=; b=S2mcjxvwHkoiBiwsJ0RYNiHTdy
+	g2KKl+EQopf1ScVa1HIJACV3TEtcM9/HvUTKSlthsXYBTnn5TudIue8gGYgL9nHW0eX3YMoM6c69F
+	p0ihCHRI5iimQmRemHMWAvCmZqU8xtHQESBTNfhq5eC3xX455rDBzZDnJX43+l86981JUA6en0quM
+	vGM3EVfH9OcGvPv1xep22PXrsD1smDFHrAwvaDWVfF/fejSWlbBY97jc67Lblh0fd/APWCZeDM9b+
+	7ydxJKKASCCzNwGGLYC5Zd08ZQPJAmtlaMeHtiwjtyfQHtSphNX7QiTRQUJvgOQ63NBgecCUS8GfS
+	T/cDr4bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaIfi-00CRqC-Ew; Mon, 19 Sep 2022 15:26:58 +0000
+	id 1oaIhE-00CSd2-LQ; Mon, 19 Sep 2022 15:28:32 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaIWh-00CMO0-3w; Mon, 19 Sep 2022 15:17:40 +0000
+	id 1oaIY6-00CNYQ-7a; Mon, 19 Sep 2022 15:19:08 +0000
 Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 432C7D41;
-	Mon, 19 Sep 2022 17:17:33 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9B8AD499;
+	Mon, 19 Sep 2022 17:19:04 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1663600653;
-	bh=2puiBfBSuvOfOS88b2J3PNyfkl8M51lmUO5IZtT9CSI=;
+	s=mail; t=1663600744;
+	bh=a+tgm8YW9P+vfve/Nys1Rl5YgyMmUeApmVVsQf9hWvw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QWixYfOitoFmLXo3HiiDzKGlFGdhUPWziffk09Hwwjm1J3sTCwF2xceFdZvqwWrvl
-	 AzeZB1q9xbsuNrfAjdnx2g+eV5PEBCkzfra9a5U+vgWkO2vw3P3H2ZC6ZESh0O0j7x
-	 dCLG7tBJgrFzP0vE1wxqgxZWZvN+KA+gJGEmospE=
-Date: Mon, 19 Sep 2022 18:17:19 +0300
+	b=Hq4+WkNfms6hxDm+VAKpQa/6MUUdEfwSualc3PsDbGGD2077EAChnASKu2TFyXk8B
+	 9f2QxEXztH+1tR4C9jAiec28wzaa8DBa44NVEpKo1Q5Rp9ilVabTwTxetx9+NGwy8R
+	 +6t2o39CP3TN/CQC0zK0Ox0hva4yvJYhi2/fJGeI=
+Date: Mon, 19 Sep 2022 18:18:51 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Sam Ravnborg <sam@ravnborg.org>
 Cc: dri-devel@lists.freedesktop.org,
@@ -62,20 +62,19 @@ Cc: dri-devel@lists.freedesktop.org,
 	Philip Chen <philipchen@chromium.org>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v1 01/12] drm/bridge: ps8640: Use atomic variants of
- drm_bridge_funcs
-Message-ID: <YyiH/3eeHvPPbuHk@pendragon.ideasonboard.com>
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Subject: Re: [PATCH v1 03/12] drm/mediatek: Drop chain_mode_fixup call in
+ mode_valid()
+Message-ID: <YyiIW6mbO+24eaJK@pendragon.ideasonboard.com>
 References: <20220717174454.46616-1-sam@ravnborg.org>
- <20220717174454.46616-2-sam@ravnborg.org>
+ <20220717174454.46616-4-sam@ravnborg.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20220717174454.46616-2-sam@ravnborg.org>
+In-Reply-To: <20220717174454.46616-4-sam@ravnborg.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_081739_351590_3B535F78 
-X-CRM114-Status: GOOD (  20.38  )
+X-CRM114-CacheID: sfid-20220919_081906_541992_08BC7B98 
+X-CRM114-Status: GOOD (  24.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,101 +91,63 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Sam,
 
-Thank you for the patch, and sorry for the review delay. The series only
-recently jumped to the top of my inbox.
+Thank you for the patch.
 
-On Sun, Jul 17, 2022 at 07:44:43PM +0200, Sam Ravnborg wrote:
-> The atomic variants of enable/disable in drm_bridge_funcs are the
-> preferred operations - introduce these.
+On Sun, Jul 17, 2022 at 07:44:45PM +0200, Sam Ravnborg wrote:
+> The mode_valid implementation had a call to
+> drm_bridge_chain_mode_fixup() which would be wrong as the mode_valid is
+> not allowed to change anything - only to validate the mode.
 > 
-> The ps8640 driver used the non-atomic variants of the drm_bridge_chain_pre_enable/
-> drm_bridge_chain_post_disable - convert these to the atomic variants.
+> As the next bridge is often/always a connector the call had no effect
+> anyway. So drop it.
 > 
-> v2:
->   - Init state operations in drm_bridge_funcs (Laurent)
+> From the git history I could see this call was included in the original
+> version of the driver so there was no help there to find out why it was
+> added in the first place. But a lot has changed since the initial driver
+> were added and is seems safe to remove the call now.
 > 
 > Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
 > Reviewed-by: Maxime Ripard <mripard@kernel.org>
-> Cc: Jitao Shi <jitao.shi@mediatek.com>
-> Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Cc: Philip Chen <philipchen@chromium.org>
-> Cc: Andrzej Hajda <a.hajda@samsung.com>
-> Cc: Neil Armstrong <narmstrong@baylibre.com>
-> Cc: Robert Foss <robert.foss@linaro.org>
-> Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-> Cc: Jonas Karlman <jonas@kwiboo.se>
-> Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
+> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Cc: Philipp Zabel <p.zabel@pengutronix.de>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-arm-kernel@lists.infradead.org
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 
 > ---
->  drivers/gpu/drm/bridge/parade-ps8640.c | 18 ++++++++++++------
->  1 file changed, 12 insertions(+), 6 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c | 11 -----------
+>  1 file changed, 11 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/bridge/parade-ps8640.c b/drivers/gpu/drm/bridge/parade-ps8640.c
-> index 31e88cb39f8a..bb8076fb8625 100644
-> --- a/drivers/gpu/drm/bridge/parade-ps8640.c
-> +++ b/drivers/gpu/drm/bridge/parade-ps8640.c
-> @@ -15,6 +15,7 @@
->  
->  #include <drm/display/drm_dp_aux_bus.h>
->  #include <drm/display/drm_dp_helper.h>
-> +#include <drm/drm_atomic_state_helper.h>
->  #include <drm/drm_bridge.h>
->  #include <drm/drm_edid.h>
->  #include <drm/drm_mipi_dsi.h>
-> @@ -409,7 +410,8 @@ static const struct dev_pm_ops ps8640_pm_ops = {
->  				pm_runtime_force_resume)
->  };
->  
-> -static void ps8640_pre_enable(struct drm_bridge *bridge)
-> +static void ps8640_atomic_pre_enable(struct drm_bridge *bridge,
-> +				     struct drm_bridge_state *old_bridge_state)
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> index 3196189429bc..a63b76055f81 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> @@ -1208,22 +1208,11 @@ static int mtk_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
+>  				      const struct drm_display_mode *mode)
 >  {
->  	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
->  	struct regmap *map = ps_bridge->regmap[PAGE2_TOP_CNTL];
-> @@ -443,7 +445,8 @@ static void ps8640_pre_enable(struct drm_bridge *bridge)
->  	ps_bridge->pre_enabled = true;
->  }
+>  	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
+> -	struct drm_bridge *next_bridge;
 >  
-> -static void ps8640_post_disable(struct drm_bridge *bridge)
-> +static void ps8640_atomic_post_disable(struct drm_bridge *bridge,
-> +				       struct drm_bridge_state *old_bridge_state)
->  {
->  	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
+>  	dev_dbg(hdmi->dev, "xres=%d, yres=%d, refresh=%d, intl=%d clock=%d\n",
+>  		mode->hdisplay, mode->vdisplay, drm_mode_vrefresh(mode),
+>  		!!(mode->flags & DRM_MODE_FLAG_INTERLACE), mode->clock * 1000);
 >  
-> @@ -521,7 +524,7 @@ static struct edid *ps8640_bridge_get_edid(struct drm_bridge *bridge,
->  	 * EDID, for this chip, we need to do a full poweron, otherwise it will
->  	 * fail.
->  	 */
-> -	drm_bridge_chain_pre_enable(bridge);
-> +	drm_atomic_bridge_chain_pre_enable(bridge, connector->state->state);
->  
->  	edid = drm_get_edid(connector,
->  			    ps_bridge->page[PAGE0_DP_CNTL]->adapter);
-> @@ -531,7 +534,7 @@ static struct edid *ps8640_bridge_get_edid(struct drm_bridge *bridge,
->  	 * before, return the chip to its original power state.
->  	 */
->  	if (poweroff)
-> -		drm_bridge_chain_post_disable(bridge);
-> +		drm_atomic_bridge_chain_post_disable(bridge, connector->state->state);
->  
->  	return edid;
->  }
-> @@ -546,8 +549,11 @@ static const struct drm_bridge_funcs ps8640_bridge_funcs = {
->  	.attach = ps8640_bridge_attach,
->  	.detach = ps8640_bridge_detach,
->  	.get_edid = ps8640_bridge_get_edid,
-> -	.post_disable = ps8640_post_disable,
-> -	.pre_enable = ps8640_pre_enable,
-> +	.atomic_post_disable = ps8640_atomic_post_disable,
-> +	.atomic_pre_enable = ps8640_atomic_pre_enable,
-> +	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
-> +	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-> +	.atomic_reset = drm_atomic_helper_bridge_reset,
->  };
->  
->  static int ps8640_bridge_get_dsi_resources(struct device *dev, struct ps8640 *ps_bridge)
+> -	next_bridge = drm_bridge_get_next_bridge(&hdmi->bridge);
+> -	if (next_bridge) {
+> -		struct drm_display_mode adjusted_mode;
+> -
+> -		drm_mode_copy(&adjusted_mode, mode);
+> -		if (!drm_bridge_chain_mode_fixup(next_bridge, mode,
+> -						 &adjusted_mode))
+> -			return MODE_BAD;
+> -	}
+> -
+>  	if (hdmi->conf) {
+>  		if (hdmi->conf->cea_modes_only && !drm_match_cea_mode(mode))
+>  			return MODE_BAD;
 
 -- 
 Regards,
