@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53633C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 15:28:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93B4BC6FA90
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 15:29:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0qx1w1SINYWOOowi4W0EpA0UtCbgJTj/507OvvNnFp8=; b=S2mcjxvwHkoiBiwsJ0RYNiHTdy
-	g2KKl+EQopf1ScVa1HIJACV3TEtcM9/HvUTKSlthsXYBTnn5TudIue8gGYgL9nHW0eX3YMoM6c69F
-	p0ihCHRI5iimQmRemHMWAvCmZqU8xtHQESBTNfhq5eC3xX455rDBzZDnJX43+l86981JUA6en0quM
-	vGM3EVfH9OcGvPv1xep22PXrsD1smDFHrAwvaDWVfF/fejSWlbBY97jc67Lblh0fd/APWCZeDM9b+
-	7ydxJKKASCCzNwGGLYC5Zd08ZQPJAmtlaMeHtiwjtyfQHtSphNX7QiTRQUJvgOQ63NBgecCUS8GfS
-	T/cDr4bA==;
+	bh=mGSfSe+ZV354HH4IF8OukKHcZO/p7pS1aGA1subYHnU=; b=SuSjfR5riBTTRtdK5PljXq1nq8
+	2cvmDu/A/Y1o6X3QEWDcfinRSD2mxUJcrLEIl3B5KzX/4toRtXcZa6yvHfiBzWes/lI/snfw1DRg/
+	zXirmJ2mxiPWjkbuNFCVNlKmkdwnKtN+DFUkDr/M66N6qOWYI/vCmDVKQqEjnPdqdyuy7w3w6dAMt
+	///F+68RlUD0MOA9StW6SKsQXIKubZoBJJisPJVudPUwew+u96vrs/jtB7hBSvFkeDg0355qxPpV4
+	j4NJO0k/g81+bawMOxqai/KiplbbGYlERV/GtavWaffHm7joBdvypM/MOJxT0k3gvCTVxup0WEqsL
+	mw2JE1Iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaIhE-00CSd2-LQ; Mon, 19 Sep 2022 15:28:32 +0000
+	id 1oaIiE-00CTA3-So; Mon, 19 Sep 2022 15:29:35 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaIY6-00CNYQ-7a; Mon, 19 Sep 2022 15:19:08 +0000
+	id 1oaIYq-00CO9E-Vb; Mon, 19 Sep 2022 15:19:55 +0000
 Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9B8AD499;
-	Mon, 19 Sep 2022 17:19:04 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 57FAA499;
+	Mon, 19 Sep 2022 17:19:51 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1663600744;
-	bh=a+tgm8YW9P+vfve/Nys1Rl5YgyMmUeApmVVsQf9hWvw=;
+	s=mail; t=1663600791;
+	bh=PQGPD6rFfQ4c9/wXNerOZd6lDaZMOvrBsAqiWgV3tp4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Hq4+WkNfms6hxDm+VAKpQa/6MUUdEfwSualc3PsDbGGD2077EAChnASKu2TFyXk8B
-	 9f2QxEXztH+1tR4C9jAiec28wzaa8DBa44NVEpKo1Q5Rp9ilVabTwTxetx9+NGwy8R
-	 +6t2o39CP3TN/CQC0zK0Ox0hva4yvJYhi2/fJGeI=
-Date: Mon, 19 Sep 2022 18:18:51 +0300
+	b=IN7WVwhttqy9kKXcxIP20OMJA/V4fQBWil7pAMKkG4AXtYpceTw0TlNljB0cvxArg
+	 j84YQ52vuqaWmmH8XoIwtQDvRnjs6BaIjUEnRbNhEPsnQoe+SVh2sbQey79MGxtSGd
+	 BVX8UoQgAKAq5H8L+7APt1mi8Zwpf4AbIFAIkNL8=
+Date: Mon, 19 Sep 2022 18:19:38 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Sam Ravnborg <sam@ravnborg.org>
 Cc: dri-devel@lists.freedesktop.org,
@@ -63,18 +63,17 @@ Cc: dri-devel@lists.freedesktop.org,
 	Philipp Zabel <p.zabel@pengutronix.de>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Subject: Re: [PATCH v1 03/12] drm/mediatek: Drop chain_mode_fixup call in
- mode_valid()
-Message-ID: <YyiIW6mbO+24eaJK@pendragon.ideasonboard.com>
+Subject: Re: [PATCH v1 04/12] drm/bridge: Drop drm_bridge_chain_mode_fixup
+Message-ID: <YyiIineQ/Ib4rQH/@pendragon.ideasonboard.com>
 References: <20220717174454.46616-1-sam@ravnborg.org>
- <20220717174454.46616-4-sam@ravnborg.org>
+ <20220717174454.46616-5-sam@ravnborg.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20220717174454.46616-4-sam@ravnborg.org>
+In-Reply-To: <20220717174454.46616-5-sam@ravnborg.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_081906_541992_08BC7B98 
-X-CRM114-Status: GOOD (  24.95  )
+X-CRM114-CacheID: sfid-20220919_081953_448289_65A80792 
+X-CRM114-Status: GOOD (  20.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,61 +92,88 @@ Hi Sam,
 
 Thank you for the patch.
 
-On Sun, Jul 17, 2022 at 07:44:45PM +0200, Sam Ravnborg wrote:
-> The mode_valid implementation had a call to
-> drm_bridge_chain_mode_fixup() which would be wrong as the mode_valid is
-> not allowed to change anything - only to validate the mode.
-> 
-> As the next bridge is often/always a connector the call had no effect
-> anyway. So drop it.
-> 
-> From the git history I could see this call was included in the original
-> version of the driver so there was no help there to find out why it was
-> added in the first place. But a lot has changed since the initial driver
-> were added and is seems safe to remove the call now.
+On Sun, Jul 17, 2022 at 07:44:46PM +0200, Sam Ravnborg wrote:
+> There are no users left of drm_bridge_chain_mode_fixup() and we
+> do not want to have this function available, so drop it.
 > 
 > Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
 > Reviewed-by: Maxime Ripard <mripard@kernel.org>
-> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> Cc: Maxime Ripard <mripard@kernel.org>
+> Cc: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: David Airlie <airlied@linux.ie>
+> Cc: Daniel Vetter <daniel@ffwll.ch>
 
 Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 
 > ---
->  drivers/gpu/drm/mediatek/mtk_hdmi.c | 11 -----------
->  1 file changed, 11 deletions(-)
+>  drivers/gpu/drm/drm_bridge.c | 37 ------------------------------------
+>  include/drm/drm_bridge.h     |  3 ---
+>  2 files changed, 40 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> index 3196189429bc..a63b76055f81 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -1208,22 +1208,11 @@ static int mtk_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
->  				      const struct drm_display_mode *mode)
->  {
->  	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
-> -	struct drm_bridge *next_bridge;
+> diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+> index bb7fc09267af..b6f56d8f3547 100644
+> --- a/drivers/gpu/drm/drm_bridge.c
+> +++ b/drivers/gpu/drm/drm_bridge.c
+> @@ -430,43 +430,6 @@ void drm_bridge_detach(struct drm_bridge *bridge)
+>   *   needed, in order to gradually transition to the new model.
+>   */
 >  
->  	dev_dbg(hdmi->dev, "xres=%d, yres=%d, refresh=%d, intl=%d clock=%d\n",
->  		mode->hdisplay, mode->vdisplay, drm_mode_vrefresh(mode),
->  		!!(mode->flags & DRM_MODE_FLAG_INTERLACE), mode->clock * 1000);
->  
-> -	next_bridge = drm_bridge_get_next_bridge(&hdmi->bridge);
-> -	if (next_bridge) {
-> -		struct drm_display_mode adjusted_mode;
+> -/**
+> - * drm_bridge_chain_mode_fixup - fixup proposed mode for all bridges in the
+> - *				 encoder chain
+> - * @bridge: bridge control structure
+> - * @mode: desired mode to be set for the bridge
+> - * @adjusted_mode: updated mode that works for this bridge
+> - *
+> - * Calls &drm_bridge_funcs.mode_fixup for all the bridges in the
+> - * encoder chain, starting from the first bridge to the last.
+> - *
+> - * Note: the bridge passed should be the one closest to the encoder
+> - *
+> - * RETURNS:
+> - * true on success, false on failure
+> - */
+> -bool drm_bridge_chain_mode_fixup(struct drm_bridge *bridge,
+> -				 const struct drm_display_mode *mode,
+> -				 struct drm_display_mode *adjusted_mode)
+> -{
+> -	struct drm_encoder *encoder;
 > -
-> -		drm_mode_copy(&adjusted_mode, mode);
-> -		if (!drm_bridge_chain_mode_fixup(next_bridge, mode,
-> -						 &adjusted_mode))
-> -			return MODE_BAD;
+> -	if (!bridge)
+> -		return true;
+> -
+> -	encoder = bridge->encoder;
+> -	list_for_each_entry_from(bridge, &encoder->bridge_chain, chain_node) {
+> -		if (!bridge->funcs->mode_fixup)
+> -			continue;
+> -
+> -		if (!bridge->funcs->mode_fixup(bridge, mode, adjusted_mode))
+> -			return false;
 > -	}
 > -
->  	if (hdmi->conf) {
->  		if (hdmi->conf->cea_modes_only && !drm_match_cea_mode(mode))
->  			return MODE_BAD;
+> -	return true;
+> -}
+> -EXPORT_SYMBOL(drm_bridge_chain_mode_fixup);
+> -
+>  /**
+>   * drm_bridge_chain_mode_valid - validate the mode against all bridges in the
+>   *				 encoder chain.
+> diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+> index 1eca9c4c3346..7496f41535b1 100644
+> --- a/include/drm/drm_bridge.h
+> +++ b/include/drm/drm_bridge.h
+> @@ -845,9 +845,6 @@ drm_bridge_chain_get_first_bridge(struct drm_encoder *encoder)
+>  #define drm_for_each_bridge_in_chain(encoder, bridge)			\
+>  	list_for_each_entry(bridge, &(encoder)->bridge_chain, chain_node)
+>  
+> -bool drm_bridge_chain_mode_fixup(struct drm_bridge *bridge,
+> -				 const struct drm_display_mode *mode,
+> -				 struct drm_display_mode *adjusted_mode);
+>  enum drm_mode_status
+>  drm_bridge_chain_mode_valid(struct drm_bridge *bridge,
+>  			    const struct drm_display_info *info,
 
 -- 
 Regards,
