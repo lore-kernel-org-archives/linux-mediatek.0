@@ -4,80 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17B8EECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 16:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2D19C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 17:00:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5bw400owRwuvLYz6+rV0OFrDuY58Ukr642k17z8Fn8Y=; b=y9aCsG5PIYz5oMN8baVKipcAI3
-	lwoZpwAN46odjcvTGXzqji5UzJzQndG4U3RtVVdnPjup3YoQu4gwK12GW8xIAatkd2ve4sckVvSWW
-	8+STWylznPM+eu6tXH+qWXqvtFyTz2MEt9SRPDksEWj8DusIzz/qbwMzvaHkfzILxhBw4vGkHvVES
-	6Vgq5Y1HhAGphS3pwC2u+cbpAn6lrvg+Qvm3Vq8quLupBiHqBtK0izLLJM3y3aza9PytaCeRKHMKo
-	levC4XC2teqFhB17zyuCy9WGcOVRXzy0U9FmCVuR4e99NH81GvH3N/qIXz3aJ67YdqbR/gaaFz91H
-	/jKpMfXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:Date:From:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9tro2oCAbN+mbj/HKR3A46hDRnbE6tXzNt27JGPID68=; b=DtS3YY8SD/FafNKyHTZW6UOkr8
+	YrbdrTi1XoUsnmXjLM5fIb3ZeVC/D69EbbN8HddadLaexVkOJ6rLKhZ2d8DydBiQ+X01ggOv6J5G5
+	tyYrCiiDycYUXcJnmTThrRzMPHo1JJbbpWMlC6yefJDI+pFD7pDT84NwzNNRIkeE1gmIM7/6U6Dfe
+	m66NUnpt4qbzgKDgwEbfjWw/opiPXaqpP+oJwKhQmtH57wIv5fhOZdmRwv6oMH8jI3Mcql3DOL2O3
+	lbMQN5wJcuJ1ZYKk7xzHfvut3av9pdtJGwIiyCWikorYtUM7KD4vuLAIwj8AU30C3iErD0v9UXSP6
+	3ozwve8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaJgP-00CuJB-Gf; Mon, 19 Sep 2022 16:31:45 +0000
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
+	id 1oaK7z-00D4an-TW; Mon, 19 Sep 2022 17:00:15 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaJgI-00CuFn-90
-	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 16:31:42 +0000
-Received: by mail-ot1-x32d.google.com with SMTP id l7-20020a056830154700b0065563d564dfso20096616otp.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Sep 2022 09:31:34 -0700 (PDT)
+	id 1oaK7Y-00D4I9-F2
+	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 16:59:51 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id x94so88179ede.11
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Sep 2022 09:59:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date;
-        bh=5bw400owRwuvLYz6+rV0OFrDuY58Ukr642k17z8Fn8Y=;
-        b=FytgnEjKDQyquYVrESyecUGbTVqgHxl/AcE2e44pIba0B8fvQGPuzhl4ApKRmrg86d
-         2zh0iQyeFLI+GZnFKTz2+kNsiSrTL6C1MYvwb4TwTDVQyunW5kJDo8lNOKLunr2D94TP
-         WJe1M3QTkwe6w3/hIeOSW5fLtRr5nX7vluwiZCseKwKww1nY8R1goN85BZ9K47dH9LDa
-         W8B0O0t2MhAGIrH2AZrz7WYy7aXJBPsS5cZUhsYy4kB+eIk8QSgjM/8uLyx1dgkTLxSW
-         pUQDF/nHPdcP3IW/7cySpNODF4i0XGpaJgjJ62h7pESRiS6lHSgMfy5G+vl3Y/y02ub1
-         N6Ew==
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:from:to:cc:subject:date;
+        bh=9tro2oCAbN+mbj/HKR3A46hDRnbE6tXzNt27JGPID68=;
+        b=3+jXsVMUL/Ek+ltKfy4Qawu/Pw7TG6cilfl66vkc4y+DYBPaYgtZv1p4BbwPzksphk
+         JrvJcC2YSX1q79FG93ETJekmw3tJYHSmTkJzTSb9haW1ufGrB6/zpIKUw2WjPXDUqkty
+         mytztxw4ljT+7oFObNfw355aMnszO8HFBpZ06YiwMdxjiDP9KYGIJo+btpD+n24uVcMk
+         654kSXHO0di8SuPyIdU5b6g6AIBFMvuWA6WGjnZovZIIxTWOcDIRY2tP9+ZCvUX6Drj5
+         kun5QOWjkofHQj2/Ac6bkvQF3GxuIg8j9PewpKjOsGLg2CFIL7eItD4m+dvfX5hVs93D
+         uP9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=5bw400owRwuvLYz6+rV0OFrDuY58Ukr642k17z8Fn8Y=;
-        b=QUZjUMvuLBZhWzxMuUa/Th3XgU3Roh7E+SQ4OuUm2XCGi/LcGG5yzK3X/v5XK4VBKx
-         6bIQOVHTOKVynR0lbKOhWfSsIa3ulCiTvrOcHOLRrbmZAgHf1UIyh5hF8icWalNW9hD0
-         yI4Bkk57oYFK0cMKjAkHwq4MxGtDmf3vS088RbLmD5D6Ai/G2gt9QoUdWCg+RaCWLWch
-         soavq+ip3gUSRdTHnvsAzeSt1mFZHYijNBQQ9YdIOLgsr9ADMIlo7jCAC2MTpsr+kZ2k
-         sAhfBMfTUzUZDFPOjA5nmlbdbGuWodN4QcRIVlh5tekZ3V1KCdlykOiZeMN6SHQsBqdD
-         DHWw==
-X-Gm-Message-State: ACrzQf1q12oIx6mVfSb8i/DZYc+4BVBO1hX3FGuHCMk2pgely1FXQfGl
-	iaOmYlbr8Z+xvCqAWfBqsk88l8cHPw7GHjjtKTZR0Q==
-X-Google-Smtp-Source: AMsMyM7i6P6y2fEduK+MvTiCjq0zA5qYJcQ8yCQL3XSuiDrpGownnL0Mp4iSlhjSeCqEH1uptmLLJ4S9yQvQXiCleCI=
-X-Received: by 2002:a9d:b96:0:b0:655:bee5:41d3 with SMTP id
- 22-20020a9d0b96000000b00655bee541d3mr8243015oth.139.1663605093621; Mon, 19
- Sep 2022 09:31:33 -0700 (PDT)
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:x-gm-message-state:from:to:cc:subject:date;
+        bh=9tro2oCAbN+mbj/HKR3A46hDRnbE6tXzNt27JGPID68=;
+        b=lLhWLEuITfwcNhCzn4p4bL25RUY/h2j0ByKKZ6eST1XdaUrpiFiMohij9z5C27/eQI
+         ROskS/Pre9DyWvH7ivtPv3TPFliy4qylMvMmsCbH+rsOIeNoegB9K7T5HRqXjIdukakF
+         5RzGKwpHTOvJs64YzNLGtEqZt/IKpK3Nn2w5p8LxZL16vwoPoZQ7c13P5n2mELiy5S8p
+         t+CCKCRC2GyTjJ75inJFclc/VuFtT4WAtc5NYtkhrmNxMDosYQ4jfaNLdbC1ZMLV74v+
+         v95iHOvN/bfku1gZ+I/aH8H88ammaRJQqYOv9M34jdbkHNa4cqR81EdEmFqymzWk0mxl
+         6jTg==
+X-Gm-Message-State: ACrzQf2Uofos6CrOl59FmQfi1X7DluSLv8KD9B0tbLgFCFWKSDepOlh9
+	JYKxGBUzoai/HxMTJvDvaYMXAg==
+X-Google-Smtp-Source: AMsMyM6iRL5JBprCZvHk9dT8PMtpt98i7hlA72vdPks7s4qBaJDnnZvv+4dOv8WBquTaxJ2hX5EXvQ==
+X-Received: by 2002:aa7:c448:0:b0:44f:c01:2fdb with SMTP id n8-20020aa7c448000000b0044f0c012fdbmr15838234edr.88.1663606782531;
+        Mon, 19 Sep 2022 09:59:42 -0700 (PDT)
+Received: from [127.0.0.1] (2a02-8440-6340-f287-3074-96af-9642-0003.rev.sfr.net. [2a02:8440:6340:f287:3074:96af:9642:3])
+        by smtp.gmail.com with ESMTPSA id cf16-20020a0564020b9000b0044fc3c0930csm20424246edb.16.2022.09.19.09.59.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Sep 2022 09:59:42 -0700 (PDT)
+Subject: [PATCH v1 00/17] Add MT8195 HDMI support
 MIME-Version: 1.0
-References: <20220817080757.352021-1-bchihi@baylibre.com> <20220817080757.352021-5-bchihi@baylibre.com>
- <e2bcc0db-8810-2652-0eba-9cdc096b2054@linaro.org>
-In-Reply-To: <e2bcc0db-8810-2652-0eba-9cdc096b2054@linaro.org>
-From: Balsam CHIHI <bchihi@baylibre.com>
-Date: Mon, 19 Sep 2022 18:30:56 +0200
-Message-ID: <CAGuA+oqu_XWNEbzs5oeZwRN0g=jbFzgt0MhcvyNE2q1f_wOdaA@mail.gmail.com>
-Subject: Re: [PATCH v9,4/7] thermal: mediatek: Add LVTS driver for mt8192
- thermal zones
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: rafael@kernel.org, rui.zhang@intel.com, amitk@kernel.org, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, khilman@baylibre.com, 
-	mka@chromium.org, robh+dt@kernel.org, krzk+dt@kernel.org, 
-	matthias.bgg@gmail.com, p.zabel@pengutronix.de, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	james.lo@mediatek.com, fan.chen@mediatek.com, louis.yu@mediatek.com, 
-	rex-bc.chen@mediatek.com, abailon@baylibre.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-b4-tracking: H4sIAB6fKGMC/w3KSwqAIBAA0KvIrBPUnV0m/Aw5pAZOtRHv3iwfvAmMg5BhVxMGfsR0d4HdFKQS+o
+ mashiccc5463XJjY72XCAjBkYdR+ipyOlvrWv9dLIU6FIAAAA=
+From: Guillaume Ranquet <granquet@baylibre.com>
+Date: Mon, 19 Sep 2022 18:55:58 +0200
+Message-Id: <20220919-v1-0-4844816c9808@baylibre.com>
+To: Vinod Koul <vkoul@kernel.org>, Stephen Boyd <sboyd@kernel.org>, David Airlie <airlied@linux.ie>,
+ Rob Herring <robh+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Michael Turquette <mturquette@baylibre.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Pablo Sun <pablo.sun@mediatek.com>,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org, Guillaume Ranquet <granquet@baylibre.com>,
+ devicetree@vger.kernel.org
+X-Mailer: b4 0.10.0-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_093138_576886_223A1B4D 
-X-CRM114-Status: GOOD (  66.65  )
+X-CRM114-CacheID: sfid-20220919_095948_576924_05D377B8 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,491 +95,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
-
-Thank you very much for your time to do this review.
-You will find below answers to your questions. And some questions from
-my side too.
-The comments that are not present in this email, are already implemented.
-Please let me know if you have any additional questions.
-
-> > Add LVTS v4 (Low Voltage Thermal Sensor) driver to report junction
-> > temperatures in MediaTek SoC mt8192 and register the maximum temperatur=
-e
-> > of sensors and each sensor as a thermal zone.
->
-> As it is a new driver submission, a more detailed hardware description
-> of the sensors may help to have a better understanding of the driver
-> implementation
->
-> I think also the patch size is too big and the driver should be
-> submitted with a reduced number of changes.
->
-> The header file should be simplified as much as possible. As well as the
-> structures.
->
-> The driver initialization should be lvts_v4_init -> lvts_init, that
-> means one function to init and one to exit. No other functions being
-> called from lvts_v4 to lvts
->
-
-Would you please explain this point further?
-
-> Overall the driver is very complex and hard to review. I tried to review
-> as much as possible but there is too much code. So I gave up the review
-> after digging into too many details to be reworked.
->
-> See below
->
-
-[...]
-
-> > diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/=
-mediatek/lvts_thermal.c
-> > new file mode 100644
-> > index 000000000000..a1681b914c69
-> > --- /dev/null
-> > +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> > @@ -0,0 +1,861 @@
-> > +// SPDX-License-Identifier: GPL-2.0-only
-> > +/*
-> > + * Copyright (c) 2022 MediaTek Inc.
-> > + */
-
-[...]
-
-> > +static void lvts_reset(struct lvts_data *lvts_data)
->
-> error handling: static int ...
->
-> > +{
-> > +     if (lvts_data->reset)
-> > +             reset_control_assert(lvts_data->reset);
->
-> error handling
->
-> > +
-> > +     if (lvts_data->reset)
-> > +             reset_control_deassert(lvts_data->reset);
->
-> error handling
->
-> It is the same condition, both calls can go under the same block.
->
->
-> BTW, why assert + deassert ?
->
-
-For more than one reset signal.
-
-> > +}
-> > +
-> > +static void device_identification(struct lvts_data *lvts_data)
->
-> error handling: static int ...
->
-> > +{
-> > +     void __iomem *base;
-> > +     struct device *dev =3D lvts_data->dev;
-> > +     unsigned int i, data;
-> > +
-> > +     for (i =3D 0; i < lvts_data->num_tc; i++) {
-> > +             base =3D GET_BASE_ADDR(lvts_data, i);
-> > +             writel(ENABLE_LVTS_CTRL_CLK, LVTSCLKEN_0 + base);
->
-> Isn't it already done with the clk framework ?
->
-
-No. this is the LVTS hardware internal clock :
-The clocks of the Thermal Controllers.
-
-> > +             lvts_write_device(lvts_data, RESET_ALL_DEVICES(lvts_data)=
-, i);
->
-> Why a call to RESET_*ALL*_DEVICES in the loop? I'm confused, it is
-> resetting all the devices but with a 'tc_id' passed as parameter
->
-> Is it possible to use the assert reset for that ?
->
-
-=E2=80=9CALL=E2=80=9D means all sensors (TS) in this Thermal Controller (TC=
-).
-
-> > +             writel(READ_BACK_DEVICE_ID(lvts_data), LVTS_CONFIG_0 + ba=
-se);
->
-> What means READ_BACK?
->
-
-Read and update the sensor in the TC.
-
-> > +             usleep_range(20, 30);
->
-> Why is that needed ?
->
-
-Wait for the hardware to be ready.
-it has been reduced to the lowest possible value "usleep_range(2, 4)",
-but it can't be removed : lower than that the hardware malfunctions.
-
-> > +             /* Check LVTS device ID */
-> > +             data =3D (readl(LVTS_ID_0 + base) & DEVICE_REG_DATA);
-> > +             if (data !=3D (lvts_data->tc->dev_id + i))
-> > +                     dev_err(dev, "LVTS_TC_%d, Device ID should be 0x%=
-x, but 0x%x\n",
-> > +                             i, (lvts_data->tc->dev_id + i), data);
->
-> I'm confused, what is the purpose of the device_identification()
-> function if you already know the id? When this situation can happen?
->
-
-It=E2=80=99s a hardware initialization flow to identify if the correct
-hardware module exists and is ready for initialization.
-
-> > +     }
-> > +}
-
-[...]
-
-> > +static void set_hw_filter(struct lvts_data *lvts_data, int tc_id)
-> > +{
-> > +     void __iomem *base =3D GET_BASE_ADDR(lvts_data, tc_id);
-> > +     struct device *dev =3D lvts_data->dev;
-> > +     const struct lvts_tc_settings *tc =3D lvts_data->tc;
-> > +     unsigned int option =3D tc[tc_id].hw_filter & 0x7;
-> > +
-> > +     /*
-> > +      * hw filter
-> > +      * 000: Get one sample
-> > +      * 001: Get 2 samples and average them
-> > +      * 010: Get 4 samples, drop max and min, then average the rest of=
- 2 samples
-> > +      * 011: Get 6 samples, drop max and min, then average the rest of=
- 4 samples
-> > +      * 100: Get 10 samples, drop max and min, then average the rest o=
-f 8 samples
-> > +      * 101: Get 18 samples, drop max and min, then average the rest o=
-f 16 samples
-> > +      */
-> > +     option =3D (option << 9) | (option << 6) | (option << 3) | option=
-;
->
-> I'm missing to understand, can you explain this bit changes?
->
-
-The 3 bits are one set defined by hardware usage.
-
-> > +     writel(option, LVTSMSRCTL0_0 + base);
-> > +     dev_dbg(dev, "lvts_tc_%d, LVTSMSRCTL0_0=3D 0x%x\n", tc_id, readl(=
-LVTSMSRCTL0_0 + base));
-> > +}
-> > +
->
-> This function deserves an explanation. Why a dominator index exists?
->
-
-The dominator index is the Thermal Sensor that will be used as a
-sensing point to reboot the HW in critical temperature.
-This function sets a thermal sensor for that purpose.
-
-[...]
-
-> > +static void disable_hw_reboot_interrupt(struct lvts_data *lvts_data, i=
-nt tc_id)
-> > +{
-> > +     void __iomem *base =3D GET_BASE_ADDR(lvts_data, tc_id);
-> > +     unsigned int temp;
-> > +
-> > +     /*
-> > +     * LVTS thermal controller has two interrupts for thermal HW reboo=
-t.
-> > +     * One is for AP SW and the other is for RGU.
->
-> May be reword "thermal controller" to something like "thermal domain" or
-> whatever. It is confusing with the thermal controller contained in
-> lvts_data.
->
-> > +     * The interrupt of AP SW can be turned off by a bit of a register=
-,
-> > +     * but the other for RGU cannot.
-> > +     * To prevent rebooting device accidentally, we are going to add
-> > +     * a huge offset 0x3FFF to LVTS and make it always report extremel=
-y low temperature.
-> > +     * LVTS always adds the offset 0x3FFF to MSR_RAW.
-> > +     * When MSR_RAW is larger, SW will convert lower temperature.
->
-> I'm not sure to fully understand the explanation and the goal.
->
-
-Hardware constraint.
-
-> > +     */ > +  temp =3D readl(LVTSPROTCTL_0 + base);
-> > +     writel(temp | 0x3FFF, LVTSPROTCTL_0 + base);
-> > +
-> > +     /* Disable the interrupt of AP SW */
-> > +     temp =3D readl(LVTSMONINT_0 + base);
-> > +     writel(temp & ~(STAGE3_INT_EN), LVTSMONINT_0 + base);
-> > +}
-
-[...]
-
-> > +static void set_tc_hw_reboot_threshold(struct lvts_data *lvts_data, in=
-t trip_point, int tc_id)
-> > +{
-> > +     void __iomem *base =3D GET_BASE_ADDR(lvts_data, tc_id);
-> > +     struct device *dev =3D lvts_data->dev;
-> > +     unsigned int msr_raw, temp, config, d_index;
-> > +
-> > +     d_index =3D get_dominator_index(lvts_data, tc_id);
-> > +
-> > +     dev_dbg(dev, "lvts_tc_%d: dominator sensing point =3D %d\n", tc_i=
-d, d_index);
-> > +
-> > +     disable_hw_reboot_interrupt(lvts_data, tc_id);
-> > +     temp =3D readl(LVTSPROTCTL_0 + base);
-> > +     if (d_index =3D=3D ALL_SENSING_POINTS) {
-> > +             /* Maximum of 4 sensing points */
-> > +             config =3D (0x1 << 16);
-> > +             writel(config | temp, LVTSPROTCTL_0 + base);
-> > +
-> > +     } else {
-> > +             /* Select protection sensor */
-> > +             config =3D ((d_index << 2) + 0x2) << 16;
-> > +             writel(config | temp, LVTSPROTCTL_0 + base);
-> > +     }
->
-> So if ALL_SENSING_POINTS is set, the hardware is able to reboot on the
-> first sensors reaching the hw reboot temp, otherwise it is the specified
-> sensor which triggers the hw reboot? Do I read it correctly?
->
-
-Yes. Will reboot on the first sensors reaching the hardware reboot
-temp. But tc need have 4 sensors.
-
-> Why not use the ALL_SENSING_POINTS for all the cases?
->
-
-Not all TCs have 4 sensors.
-And ALL_SENSING_POINTS need more hardware resource/time to check 4
-sensors. So we use one sensor for usage.
-
-> > +     msr_raw =3D lvts_temp_to_raw(&lvts_data->coeff, trip_point);
-> > +     writel(msr_raw, LVTSPROTTC_0 + base);
-> > +     enable_hw_reboot_interrupt(lvts_data, tc_id);
-> > +}
-
-[...]
-
-> > +static void tc_irq_handler(struct lvts_data *lvts_data, int tc_id)
-> > +{
-> > +     void __iomem *base =3D GET_BASE_ADDR(lvts_data, tc_id);
-> > +     const struct device *dev =3D lvts_data->dev;
-> > +     unsigned int ret =3D readl(LVTSMONINTSTS_0 + base);
-> > +
-> > +     /* Write back to clear interrupt status */
-> > +     writel(ret, LVTSMONINTSTS_0 + base);
-> > +     dev_dbg(dev, "LVTS thermal controller %d, LVTSMONINTSTS=3D0x%08x\=
-n", tc_id, ret);
-> > +     if (ret & THERMAL_PROTECTION_STAGE_3)
->
-> That means ?
->
-
-It=E2=80=99s hardware design for clearing the interrupt status. (write
-register to clear interrupt status)
-
-> > +             dev_dbg(dev, "Thermal protection stage 3 interrupt trigge=
-red\n");
->
-> When do we notify the thermal zone an interrupt happened because of a
-> trip point?
->
-
-Just to print log to let the software know that the highest/reboot
-temperature has happened.
-
-> > +}
-> > +
-> > +static irqreturn_t irq_handler(int irq, void *dev_id)
-> > +{
-> > +     void __iomem *base;
-> > +     struct lvts_data *lvts_data =3D (struct lvts_data *)dev_id;
-> > +     struct device *dev =3D lvts_data->dev;
-> > +     const struct lvts_tc_settings *tc =3D lvts_data->tc;
-> > +     unsigned int i, irq_bitmap;
-> > +
-> > +     base =3D lvts_data->base;
-> > +     irq_bitmap =3D readl(THERMINTST + base);
-> > +     dev_dbg(dev, "THERMINTST =3D 0x%x\n", irq_bitmap);
->
-> IIUC, there is one interrupt happening when a temperature threshold is
-> crossed but we don't know which sensor it is. So we retrieve the bit
-> mask of interrupt pending, right ? ...
->
-
-The interrupt belongs to TC.
-
-> > +     for (i =3D 0; i < lvts_data->num_tc; i++) {
-> > +             if (tc[i].irq_bit =3D=3D 0)
->
-> ... but then what do we do with this bitmap ?
->
-
-The bitmap is used to store values of AP and MCU.
-
-> > +                     tc_irq_handler(lvts_data, i);
-> > +     }
-> > +
-> > +     return IRQ_HANDLED;
-> > +}
-
-[...]
-
-> > diff --git a/drivers/thermal/mediatek/lvts_thermal.h b/drivers/thermal/=
-mediatek/lvts_thermal.h
-> > new file mode 100644
-> > index 000000000000..a94ce46acccd
-> > --- /dev/null
-> > +++ b/drivers/thermal/mediatek/lvts_thermal.h
-> > @@ -0,0 +1,385 @@
-> > +/* SPDX-License-Identifier: GPL-2.0-only */
-> > +/*
-> > + * Copyright (c) 2022 MediaTek Inc.
-> > + */
-
-[...]
-
-> > +
-> > +struct lvts_data;
->
-> This forward declaration should not be needed
->
-
-This is needed because "struct platform_ops" uses "struct lvts_data" as arg=
-s.
-removing it causes a compilation error.
-and "struct lvts_data" also uses "struct platform_ops" as a member.
-Do you have any suggestions on removing this forward declaration, if
-it must be removed?
-
-[...]
-
-> > +struct lvts_tc_settings {
-> > +     unsigned int dev_id;
-> > +     unsigned int addr_offset;
-> > +     unsigned int num_sensor;
-> > +     unsigned int ts_offset;
-> > +     unsigned int sensor_map[ALL_SENSING_POINTS];    /* In sensor ID *=
-/
->
-> Can you explain what is for the sensor_map?
->
-
-A controller contains up to 4 sensors.
-Example :
-...
-.sensor_map =3D {MT8195_TS1_0, MT8195_TS1_1},
-...
-.sensor_map =3D {MT8195_TS3_0, MT8195_TS3_1, MT8195_TS3_2, MT8195_TS3_3},
-
-> > +     struct lvts_speed_settings *tc_speed;
-> > +     /*
-> > +      * HW filter setting
-> > +      * 000: Get one sample
-> > +      * 001: Get 2 samples and average them
-> > +      * 010: Get 4 samples, drop max and min, then average the rest of=
- 2 samples
-> > +      * 011: Get 6 samples, drop max and min, then average the rest of=
- 4 samples
-> > +      * 100: Get 10 samples, drop max and min, then average the rest o=
-f 8 samples
-> > +      * 101: Get 18 samples, drop max and min, then average the rest o=
-f 16 samples
-> > +      */
-> > +     unsigned int hw_filter;
->
-> Isn't possible to specify a latency constraint instead of a hw_filter
-> and deduce this one?
->
-
-These are hardware pre-defined settings.
-
-> > +     /*
-> > +      * Dominator_sensing point is used to select a sensing point
-> > +      * and reference its temperature to trigger Thermal HW Reboot
-> > +      * When it is ALL_SENSING_POINTS, it will select all sensing poin=
-ts
-> > +      */
-> > +     int dominator_sensing_point;
->
-> replace int by the enum, hopefully 'clang' can detect enum mismatches
->
-> > +     int hw_reboot_trip_point;               /* -274000: Disable HW re=
-boot */
->
-> It is not necessary to specify the hw_reboot_trip_point, it is all the
-> same in the declaration.
->
-
-Because new chips in the future may have different settings for
-different modules,
-in order to maintain flexibility, it is recommended to keep
-hw_reboot_trip_point in the struct
-
-> > +     unsigned int irq_bit;
-> > +};
-
-[...]
-
-> > +
-> > +struct lvts_data {
->
-> IMO it would make sense to rename the lvts_data to lvts_thermal_domain
->
-> > +     struct device *dev;
-> > +     struct clk *clk;
-> > +     void __iomem *base;                             /* LVTS base addr=
-esses */
-> > +     unsigned int irq_num;                   /* LVTS interrupt numbers=
- */
->
-> The probe function can be reworked to get the irq and the pass it the
-> register function. No need to store it in this structure.
->
-
-Still working on it...
-But, it will be good to give me a little help.
-
-> > +     struct reset_control *reset;
-> > +     int num_tc;                                             /* Number=
- of LVTS thermal controllers */
-> > +     const struct lvts_tc_settings *tc;
-> > +     int counting_window_us;                 /* LVTS device counting w=
-indow */
-> > +     int num_sensor;                                 /* Number of sens=
-ors in this platform */
-> > +     void __iomem **reg;
-> > +     struct platform_ops ops;
-> > +     int feature_bitmap;                             /* Show what feat=
-ures are enabled */
-> > +     unsigned int num_efuse_addr;
-> > +     unsigned int *efuse;
-> > +     unsigned int num_efuse_block;   /* Number of contiguous efuse ind=
-exes */
-> > +     struct lvts_sensor_cal_data cal_data;
->
-> Everything related to the initialization must be somehow removed from
-> this structure.
->
-
-Still working on it...
-But, it will be good to give me a little help.
-
-> > +     struct lvts_formula_coeff coeff;
-> > +};
-
-[...]
+Add support for HDMI Tx on MT8195.
+
+This includes a split of the current "legacy" hdmi driver into a common
+library of functions and a two dedicated compilation units with specific
+code for mt8167 and another for the "new" mt8195 SoC.
+
+Support for the new mt8195 hdmi phy and the dpi/drm_drv adjustements to
+support hdmi.
+
+Based on next-20220919
+
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+
+---
+Guillaume Ranquet (15):
+      dt-bindings: phy: mediatek: hdmi-phy: Add mt8195 compatible
+      dt-bindings: display: mediatek: add MT8195 hdmi bindings
+      drm/mediatek: hdmi: use a syscon/regmap instead of iomem
+      dt-bindings: mediatek: set the hdmi to be compatible with syscon
+      drm/mediatek: extract common functions from the mtk hdmi driver
+      drm/mediatek: hdmi: add cec flag
+      drm/mediatek: hdmi: add connector flag
+      drm/mediatek: hdmi: add frame_colorimetry flag
+      drm/mediatek: hdmi: add mt8195 support
+      drm/mediatek: hdmi: mt8195: add audio support
+      phy: phy-mtk-hdmi: Add generic phy configure callback
+      phy: mediatek: add support for phy-mtk-hdmi-mt8195
+      dt-bindings: display: mediatek: dpi: Add compatible for MediaTek MT8195
+      drm/mediatek: dpi: Add mt8195 hdmi to DPI driver
+      drm/mediatek: Add mt8195-dpi support to drm_drv
+
+Pablo Sun (2):
+      dt-bindings: clk: mediatek: Add MT8195 DPI clocks
+      clk: mediatek: add VDOSYS1 clock
+
+ .../bindings/display/mediatek/mediatek,dpi.yaml    |    1 +
+ .../bindings/display/mediatek/mediatek,hdmi.yaml   |   91 +-
+ .../display/mediatek/mediatek,mt8195-hdmi-ddc.yaml |   45 +
+ .../devicetree/bindings/phy/mediatek,hdmi-phy.yaml |    1 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |    2 +-
+ drivers/clk/mediatek/clk-mt8195-vdo1.c             |   11 +
+ drivers/gpu/drm/mediatek/Makefile                  |    5 +-
+ drivers/gpu/drm/mediatek/mtk_dpi.c                 |  143 +-
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h            |    5 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c             |    2 +
+ drivers/gpu/drm/mediatek/mtk_hdmi.c                |  647 +-------
+ drivers/gpu/drm/mediatek/mtk_hdmi.h                |   16 +
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.c         |  477 ++++++
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.h         |  225 +++
+ drivers/gpu/drm/mediatek/mtk_mt8195_hdmi.c         | 1602 ++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_mt8195_hdmi.h         |   31 +
+ drivers/gpu/drm/mediatek/mtk_mt8195_hdmi_ddc.c     |  539 +++++++
+ drivers/gpu/drm/mediatek/mtk_mt8195_hdmi_regs.h    |  329 ++++
+ drivers/phy/mediatek/Makefile                      |    1 +
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c         |  673 ++++++++
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8195.h         |  204 +++
+ drivers/phy/mediatek/phy-mtk-hdmi.c                |   15 +
+ drivers/phy/mediatek/phy-mtk-hdmi.h                |    2 +
+ include/dt-bindings/clock/mt8195-clk.h             |    4 +-
+ 24 files changed, 4429 insertions(+), 642 deletions(-)
+---
+base-commit: ec65813678c97a05766d29f1ec40bdf1b30bc3d6
+change-id: 20220919-hdmi_mtk
 
 Best regards,
-Balsam
+-- 
+Guillaume Ranquet <granquet@baylibre.com>
 
