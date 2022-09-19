@@ -4,75 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98126ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 15:57:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A2FDECAAA1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 16:25:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oxH0OAbVbF8ycLTM4t+gjA7Q9pGz9lgX7RdhQzUrskA=; b=ji0ySsPOuvR5Wvwq3IQ85up1BM
-	NM9JrkDEQH90unkkT5mQFKyFWF4HUVoXvr68jFRyo+oxGcsWIGpo82/OVpngS485kcufho2V8oKp5
-	jzLrM5Q13MTK2keW8gcGsT4NQbwAaqHWqNA7RRXCYQU3TUd5fuAp5xUtnPBsU9l8ap9eXsQgSW3PH
-	ai6pGsT8BN0Yi3Zqd7wje03vNHWj3T7GFU29SxhKHYEuGuzeuRefF92XTG/O02qgarSSazsUshVv1
-	6hME1Q9Bzytqk9zVyPZ2Mc0QYAsy9+LznECtnjM5+0jcf9AIgMO1cQgXfsl/Tjky4JP8GPASnhCXT
-	GX5jp2aQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eAOafVCNVmR9N9v0Yvq51YsgQAP+hB4f5u0L/4nUBKA=; b=OBLVayBOTWyNZ/g2ssrB0WKJap
+	CwMYrglqjq3y4Cha7/f70qNn8k7TOB4kIgCnikGsGRirvBPgAq9sNxbxXjME+dxjLCrojc6vq5CgU
+	GUmGfsSrbtv52X0uw604SQ6G1sYYxxyuatPtOjkffJTqjCUommbC+e6MbegLDdc64pj43lmVzb4QL
+	L3rAYaFTIJ3b/e+P1Y9xoPHdTOY1KLlQQcDLwFiBhOQzdMko4YnbOfur0BRPA+dThinaxmJeaoR0Q
+	nYypwKzsXkms+sPKI1QvUctASNLAzfBzgVOJYkgXOSP4U70QLMkgDopsd/UrcscrBL4JOZffPR8L6
+	l8V7XUWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaJ8n-00Cgtm-KQ; Mon, 19 Sep 2022 15:57:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oaJa3-00Cs2s-Mi; Mon, 19 Sep 2022 16:25:11 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaJ0p-00CdkR-Tz
-	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 15:48:50 +0000
-X-UUID: 47aaa482492a4fef90053a4310aa8950-20220919
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=oxH0OAbVbF8ycLTM4t+gjA7Q9pGz9lgX7RdhQzUrskA=;
-	b=GfL1A4iEZFAGSoH7xM8W7ilaskz0rHva6FTvYCmSt6Y/Y8YhkE2UtRez3/G4ITDEeov1rR9EB9sFwCjLOq5eHeQH0F6HCR8OF02DLFFzoiAm0gMkXvoaFwViWcmDqobGAe/q36qB0DMDY3Z6zVgXOuRa5XDFqDpqSKBR4xUxIbI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:7c7ae4ec-2337-4b21-9743-b55ed4948292,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:e86ceaf6-6e85-48d9-afd8-0504bbfe04cb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 47aaa482492a4fef90053a4310aa8950-20220919
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1798762892; Mon, 19 Sep 2022 08:48:39 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 19 Sep 2022 22:48:00 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 19 Sep 2022 22:47:59 +0800
-Message-ID: <647e3423-94dc-f2c6-0fad-7896e709f291@mediatek.com>
-Date: Mon, 19 Sep 2022 22:47:59 +0800
+	id 1oaJZs-00Crvn-B6
+	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 16:25:02 +0000
+Received: by mail-lf1-x135.google.com with SMTP id o2so45610095lfc.10
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Sep 2022 09:24:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date;
+        bh=eAOafVCNVmR9N9v0Yvq51YsgQAP+hB4f5u0L/4nUBKA=;
+        b=ethu0EynC43p9UpiI84ruyAXrMRMdZfuiof4jGWO3COHQkx9EjPMb0Llez11+BLPKc
+         5EqefT79o5oAfWdTFyJjgnxiKXiq84VSTx1yMZv0TukcBhrSE770dxQz5AgwGe1/wdX2
+         cUJsrSok2ZwMke4mNjZjszTcRrHhEleMa2aQSfFC8yHWRZB04kXsxZz6CdO77YeDIaKv
+         W7FxT0sb23ogGQ7pc/WVP0aKVEqqH7TJDENRj5695hxAabD43bspb6BjFX+2A2W7QhTc
+         h3skjS9SO/0P+2xMjVxsZpwoqFCCIKq/pCYKaq7GoKibRjTOB+55a8piA4ChmXfjbqDC
+         To3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=eAOafVCNVmR9N9v0Yvq51YsgQAP+hB4f5u0L/4nUBKA=;
+        b=TYRwvuspaz/Q6KdvwWVoNFzBJ30w6ENcWhQ1kuOTrWd3GPpxlpHekC8kpMfgQjvqUX
+         j+912LYb7HNMuEKGfVR1szqJ8RPU/lSWFVTrAUEAD85oHTZT7hjT13emZ7lTKBVcyuXf
+         XCpxyE4yYHCmLK3+8e6qPgCZuA4ulerxhx5p7AAuXOxcF5mhvA1Ko6tL7xLgO40TscPN
+         Wd4kJHZYNCGnQDEa52v16Al45QsVaz7W6C23szDwOglHlpZc9+8U/YYwprmbgVyawJMC
+         YIQokNWYxGROBZVK8cOWY6gs2Hajo1W4G7MuslqGHBi+tkCSOQ3McQct8QGBGfMJYP4y
+         4jXg==
+X-Gm-Message-State: ACrzQf3R4fjDaOuVbghbeKdYfuk+RC1h+ZovfxWzRSuFiFtQZe/OsrKy
+	bbikK0wSzBmnugQaP4oEfmDpdg==
+X-Google-Smtp-Source: AMsMyM7Q5L1McMMFqSUa7fGLN03YMRs0ciA4N40x8PHN9GOTdAWbWDoQN39MejGALAtGiMvhd/RDEg==
+X-Received: by 2002:ac2:4e0d:0:b0:49c:d593:9d6c with SMTP id e13-20020ac24e0d000000b0049cd5939d6cmr6740730lfr.37.1663604695831;
+        Mon, 19 Sep 2022 09:24:55 -0700 (PDT)
+Received: from krzk-bin (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id v23-20020a056512349700b00499d70c0310sm5061842lfr.3.2022.09.19.09.24.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Sep 2022 09:24:55 -0700 (PDT)
+Date: Mon, 19 Sep 2022 18:24:53 +0200
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Jianguo Zhang <jianguo.zhang@mediatek.com>
+Cc: netdev@vger.kernel.org, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Biao Huang <biao.huang@mediatek.com>, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	"David S . Miller" <davem@davemloft.net>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Jose Abreu <joabreu@synopsys.com>, Rob Herring <robh+dt@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	linux-kernel@vger.kernel.org,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Eric Dumazet <edumazet@google.com>
+Subject: Re: [PATCH 2/2] net: dt-bindings: dwmac: add support for mt8188
+Message-ID: <20220919162453.4kkphzhc2tu6wzou@krzk-bin>
+References: <20220919080410.11270-1-jianguo.zhang@mediatek.com>
+ <20220919080410.11270-3-jianguo.zhang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v1] ufs: core: bypass get rpm when err handling with
- pm_op_in_progress
-Content-Language: en-US
-To: Bart Van Assche <bvanassche@acm.org>, <stanley.chu@mediatek.com>,
-	<linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<chun-hung.wu@mediatek.com>, <alice.chao@mediatek.com>,
-	<cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
-	<jiajie.hao@mediatek.com>, <powen.kao@mediatek.com>,
-	<qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
-References: <20220915115858.7642-1-peter.wang@mediatek.com>
- <4fadab02-5ab7-03d5-e849-55eaa26113cf@acm.org>
-From: Peter Wang <peter.wang@mediatek.com>
-In-Reply-To: <4fadab02-5ab7-03d5-e849-55eaa26113cf@acm.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20220919080410.11270-3-jianguo.zhang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_084848_017112_591BDE7D 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20220919_092500_443755_CE64EFE1 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,55 +100,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, 19 Sep 2022 16:04:10 +0800, Jianguo Zhang wrote:
+> Add binding document for the ethernet on mt8188
+> 
+> Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/net/mediatek-dwmac.yaml | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
 
-On 9/17/22 05:39, Bart Van Assche wrote:
-> On 9/15/22 04:58, peter.wang@mediatek.com wrote:
->> -static void ufshcd_err_handling_prepare(struct ufs_hba *hba)
->> +static void ufshcd_err_handling_prepare(struct ufs_hba *hba, bool 
->> *rpm_put)
->>   {
->> -    ufshcd_rpm_get_sync(hba);
->> +    if (!hba->pm_op_in_progress) {
->> +        ufshcd_rpm_get_sync(hba);
->> +        *rpm_put = true;
->> +    }
->> +
->
-> Hi Peter,
->
-> I don't think that this patch is sufficient. If 
-> ufshcd_err_handling_prepare() is called by the host reset handler 
-> (ufshcd_eh_host_reset_handler()) then the host state will be 
-> SHOST_RECOVERY. In that state SCSI command submission will hang and 
-> hence any ufshcd_rpm_get_sync() call will hang.
->
-> How about removing the ufshcd_rpm_get_sync() call from 
-> ufshcd_err_handling_prepare() and the ufshcd_rpm_put() call from 
-> ufshcd_err_handling_unprepare()? It is guaranteed that no commands are 
-> in progress for a runtime suspended LUN so the code for aborting 
-> pending requests in the UFS error handler will be skipped anyway if it 
-> is invoked for a runtime suspended device.
->
-> Thanks,
->
-> Bart.
+Running 'make dtbs_check' with the schema in this patch gives the
+following warnings. Consider if they are expected or the schema is
+incorrect. These may not be new warnings.
 
-Hi Bart,
+Note that it is not yet a requirement to have 0 warnings for dtbs_check.
+This will change in the future.
 
-If the scsi error happened and need do ufshcd_eh_host_reset_handler, the 
-rpm state should in RPM_ACTIVE.
-Because scsi need wakeup suspended LUN, and send command to LUN then get 
-error, right?
-So, ufshcd_rpm_get_sync should not hang in this case.
-
-If remove ufshcd_rpm_get_sync directly, think about this case.
-ufshcd_err_handler is on going and try to abort some task (which may get 
-stuck and timeout too).
-Then rpm count down try to suspend. Finally runtime suspend callback may 
-return IO error and IO hang.
-
-Thanks.
-Peter
+Full log is available here: https://patchwork.ozlabs.org/patch/
 
 
+ethernet@1101c000: Unevaluated properties are not allowed ('clk_csr' was unexpected)
+	arch/arm64/boot/dts/mediatek/mt2712-evb.dtb
 
