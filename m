@@ -4,91 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E08A5ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 09:33:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23DEBECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 09:45:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V0o7LEef+BZuEidJK6a/jvVmiWZ9XRI7Dey6frbpCPk=; b=NfSRwpGN7svlMUO3PVNtqqVeEC
-	itAsp10FU7N+Xk8nuRhGau8xUT3Zg+nFlTAS/2/cDeBcDV5vbS+XozkVeV1SK7xPKmgGE4jBEUMn/
-	8WDW5whZbUdUZ241UPcnXmjdglMapBz8j/KSkbqbQ2DOM3oLZ7W5T9qjkE1GEz9TssS/qrdayYrRn
-	1TtWMXCQwR0xI7jWVEUwBaqMqJx7t162JXolqrWkmR3ZnM8lN6NR/B5iPj+py3ly+AHbe75I1ocm5
-	c2UGnZVxeSk/yybCDv9XbM4iZcHJpeTpskuGmB4/HJl/OlNeiudyl6FMG2c3Df5DBYFGx6whuTsoG
-	RW2ImCrQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+SQybGqqP70WeluDFjb9PRoBalSlPkIRRoVy+auTYjM=; b=gtpTNAzXgBIBfr0CIo/kodFMoI
+	kxovOePb6wO7SDdYXYutS8cuQxQdyICTDNqc1rF6Ljrr5xe4NXWObR1Qid/Fy8cyWi9UQ7TKsFeFq
+	qdv+IgzWtKKwQnp8/e/h3CgpQ8qXM6+DUUkKft2iNEZBb++mlljHP52jQSDO6R9uFtZSpKJ/gONrY
+	wpO4/D2nSSEITx19IJEcvjeMCyMb1v2Ggw+L/JKjzdt5u5Qy9R1JCViFCW1Y/itbRho4O6i/IVhcD
+	yfzi78gOT7qOZRfw4gtMZs70T/8HJgcEKg+QnZxD8VP8n63u67/AXefYNC/2smCfURZXhrB5ruI9S
+	Zj08ixWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaD9T-00Ao0U-E2; Mon, 19 Sep 2022 09:33:19 +0000
-Received: from out1-smtp.messagingengine.com ([66.111.4.25])
+	id 1oaDLD-00AvIZ-Qk; Mon, 19 Sep 2022 09:45:27 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaD8G-00AnJk-An; Mon, 19 Sep 2022 09:32:12 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailout.nyi.internal (Postfix) with ESMTP id A12EB5C030A;
-	Mon, 19 Sep 2022 05:31:56 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute2.internal (MEProxy); Mon, 19 Sep 2022 05:31:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=cc
-	:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm2; t=1663579916; x=1663666316; bh=V0o7LEef+B
-	ZuEidJK6a/jvVmiWZ9XRI7Dey6frbpCPk=; b=uS4UCKxajYjRcBSiGgj7YYfQgp
-	7CV1pvuYtM22JSYUOoBecJOFPdcUwfEOmxkQHAqBG0hGgvMGJcw2g+WAe0Rze9YN
-	ifKNitab6fe+/qGmKK0RjXn8cQMNFQ2j7+IcjZTPrR4/1/14H0OI2Si+nCYo11xl
-	cudG4XPZVi+uMesbwiK1SXgcSsrQ7nfHogd/e8UiQEaT7yYdCvMV42VC8NdPQD4Q
-	Vh++z4i3eL3+VJETP8Vh7JYbudlGzBsa+E8ZYDRnFNx4Fl+cIHNOIz5gvCL1Ojk/
-	hpvXhCbymHebLhXvGdR6QSgqqrBIIonftKnOq+I0MxoJnfWYyL+fmvJ1mPJw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm2; t=1663579916; x=1663666316; bh=V0o7LEef+BZuEidJK6a/jvVmiWZ9
-	XRI7Dey6frbpCPk=; b=I2bfSFrcOnMc6+xYDDMwW8dye5KJa46GzTzKhBHM26a+
-	lQcwJqJfrxMkN7hGy5qGDS8Yb7OW4ojzzqPaiodQ+O1UepGLM5jAo6E5Ig6ETqgb
-	wz1QGaFzLQAMNuh8pAUazhZcTVBbyOUf9zal+7cDkQ2id3jCWBivEcW5CJZmmMRn
-	oGOeFn0lLyM9P2fe1gxhZtPfOykcoG0jxXZLoByNC0+/5CZhT2YFa1NQhOLExKk9
-	GHgZx6oxO3Qxd6TOHIYtRogGp7rseQOGyJbfLJrsAuZOJWx35yOAOzxkurDzqa+a
-	nvxVI5jVQJYDRLHNybSCXuk7jdzG5DgUxYzQKLbnfg==
-X-ME-Sender: <xms:DDcoY-N1INGZqGF6Omi4QOCScnI4OUQwoDnkh8hYkBrc49uphyYwmg>
-    <xme:DDcoY88_9gNC2cPybmgl2wOlVlZ3vi8Y4EFLUN_DXmCEBMn-UUX4ORJRRUJ7mVve_
-    eLkFq177DO-fw>
-X-ME-Received: <xmr:DDcoY1R9YTmgAY0Klsoh4uhks_vOgQC5J7_GVh1hw4WWp5jJFcxNwNqMtcc2>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrfedvjedgudekucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucenucfjughrpeffhffvvefukfhfgggtuggjsehttd
-    ertddttddvnecuhfhrohhmpefirhgvghcumffjuceoghhrvghgsehkrhhorghhrdgtohhm
-    qeenucggtffrrghtthgvrhhnpeehgedvvedvleejuefgtdduudfhkeeltdeihfevjeekje
-    euhfdtueefhffgheekteenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgr
-    ihhlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomh
-X-ME-Proxy: <xmx:DDcoY-tAb6tZ_QcyeApGlk3lfl5DXtxruRqO_SN2g27UONvrJRnOkw>
-    <xmx:DDcoY2eKmdGEqlu375C2KRf23PguPbIXx3Iz1O9MBNo9tgSPjJAXzQ>
-    <xmx:DDcoYy0Uk5rA1eHMjxHFn4bzIUnwUsyKN0iasz9iiPCSFbsHcAb67w>
-    <xmx:DDcoY3uZlR4e6DEivEyVIwRZ6mCdzZ9dgz8K-v8Lhqs-TskkiYqMTA>
-Feedback-ID: i787e41f1:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 19 Sep 2022 05:31:55 -0400 (EDT)
-Date: Mon, 19 Sep 2022 11:32:24 +0200
-From: Greg KH <greg@kroah.com>
-To: Li Zhong <floridsleeves@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-serial@vger.kernel.org,
-	etremblay@distech-controls.com, l.sanfilippo@kunbus.com,
-	u.kleine-koenig@pengutronix.de, robert.hancock@calian.com,
-	ilpo.jarvinen@linux.intel.com, matthias.bgg@gmail.com,
-	p.zabel@pengutronix.de, jirislaby@kernel.org
-Subject: Re: [PATCH v1] drivers/tty/serial/8250: check the return value of
- clk_prepare_enable()
-Message-ID: <Yyg3KKDCLaQUb2P0@kroah.com>
-References: <20220919085455.1582310-1-floridsleeves@gmail.com>
+	id 1oaCF2-00A9lZ-UH; Mon, 19 Sep 2022 08:35:17 +0000
+X-UUID: ef9b5a51bdc644bb920269b06a69e4cd-20220919
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+SQybGqqP70WeluDFjb9PRoBalSlPkIRRoVy+auTYjM=;
+	b=oRPJODa66QW8ROkckDmzZpiiWasFG5zlugbkuEBA7kZg7c/KSPnrZL2LWfcort7rtH0f2vWy9idGNWMfuNLrgi8UVxv2O+OE0zzaY6fUY8HcOnNskjle6s4857/Kkzb60uHFvic+VaZl+xeHCaDRmKfFJddwVlhdkaPGl9ImFrE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:74229935-fdd0-4e53-9e21-ae4d6837c1e9,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:fe47d918-0314-4ae7-b2d1-7295be49255e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: ef9b5a51bdc644bb920269b06a69e4cd-20220919
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jianguo.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 5784537; Mon, 19 Sep 2022 01:34:57 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 19 Sep 2022 16:04:19 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 19 Sep 2022 16:04:18 +0800
+From: Jianguo Zhang <jianguo.zhang@mediatek.com>
+To: "David S . Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>
+CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Giuseppe Cavallaro
+	<peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
+	<mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Biao
+ Huang" <biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Jianguo Zhang <jianguo.zhang@mediatek.com>
+Subject: [PATCH 0/2] Mediatek ethernet patchs for mt8188
+Date: Mon, 19 Sep 2022 16:04:08 +0800
+Message-ID: <20220919080410.11270-1-jianguo.zhang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220919085455.1582310-1-floridsleeves@gmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_023204_737176_3CC18BD3 
-X-CRM114-Status: GOOD (  16.27  )
+X-CRM114-CacheID: sfid-20220919_013501_278771_863EABD2 
+X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,26 +86,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 19, 2022 at 01:54:55AM -0700, Li Zhong wrote:
-> Check the return value of clk_prepare_enable() which could fail when
-> cannot enable the clock.
-> 
-> Signed-off-by: Li Zhong <floridsleeves@gmail.com>
-> ---
->  drivers/tty/serial/8250/8250_of.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/tty/serial/8250/8250_of.c b/drivers/tty/serial/8250/8250_of.c
-> index 1b461fba15a3..23e9b9e8c940 100644
-> --- a/drivers/tty/serial/8250/8250_of.c
-> +++ b/drivers/tty/serial/8250/8250_of.c
-> @@ -298,7 +298,8 @@ static int of_serial_resume(struct device *dev)
->  
->  	if (!uart_console(port) || console_suspend_enabled) {
->  		pm_runtime_get_sync(dev);
-> -		clk_prepare_enable(info->clk);
-> +		if (clk_prepare_enable(info->clk) < 0)
-> +			dev_warn(dev, "can't enable clk.\n");
+This series includes 2 patchs:
+1. add ethenet driver entry for mt8188
+2. add binding document for the ethernet on mt8188
 
-Again, you check but do nothing with the error :(
+
+Jianguo Zhang (2):
+  stmmac: dwmac-mediatek: add support for mt8188
+  net: dt-bindings: dwmac: add support for mt8188
+
+ Documentation/devicetree/bindings/net/mediatek-dwmac.yaml | 6 ++++--
+ drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c      | 2 ++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+--
+2.25.1
+
+
 
