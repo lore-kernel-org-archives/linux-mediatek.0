@@ -4,75 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6728C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 08:41:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86239ECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 08:44:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EMEe3EnrmTz4VXJwt3zNe2mWyBL9jqG4mEETorWmETg=; b=AX0PhgqNKjkMER2tFDe+WuSOoE
-	NEhEwuQqSjIHWkyxR9OOfkJAkVcDGE9RkhvtIJFAd7I14/pQYqHAAOavHQhe4LRA5As73yHdZhj/n
-	xbat/P/HnBdv5IZgcl6cubhGatmQ/Olln4a+kXsZWHccZSNIgP0vG0L8I5hrwl8Tv2khURR8ajJVL
-	1papzbtEqCrqSgdIMr2HfZQ9J8CqVQkKIXQUUHh0JZe+VyPVYSC/xEfXYAhl5aV3TCZc0N1gIWGNc
-	4+f7XYCNs4v0MaFq250VdeW4is0YLsa0imca5g7A4fR5hVC9ugxsnpyLTW8/UjMYRE8kKpKHmhchF
-	DzneVPVg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MPpTfS4i504ndNopkjDy48Kal3UIPH7kUomg7ncKWvc=; b=3jIQf6fDGu8XF4MbHTYvC6tvqR
+	ZqPPERXELDGuuOt2fkPkBRva7ZwJHAF0hpsyLNK8nQmbRWQsQRsX4tlP4s9y0ve8rXaNUm0k6sMjA
+	oUCEX74sQVFYaoJe1pwqVUl2NftCtwqNeoTpJRc5hkN943+v9L1T/4qrAj8kD0SW6zMiX2SY5WVxz
+	gYJbsCZoGCONmK8mmMp1Dx8QFcr20UuptqcaVR4fggtlyBL8pnIq6TOCKz880OqXrnyv2yvItinbE
+	PmZKYH65HSvsY0WEIGGMdJTMNDl0ARhmceDnH1EWtQBHPCq/ImCa2Qi/t7SEMtLbGiKNrxcqZVhy9
+	glbkiHlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaCL5-00AEX0-0Z; Mon, 19 Sep 2022 08:41:15 +0000
-Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
+	id 1oaCOW-00AHOw-MQ; Mon, 19 Sep 2022 08:44:48 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaCKs-00AEKJ-6u
-	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 08:41:11 +0000
-Received: by mail-yb1-xb33.google.com with SMTP id b136so41526055yba.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Sep 2022 01:41:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date;
-        bh=EMEe3EnrmTz4VXJwt3zNe2mWyBL9jqG4mEETorWmETg=;
-        b=SoyqYVokxMm1uUEputqTB5NtFHq2AOYVphA3SiugU5Db88W1jAKad2wuq+xMWhwTie
-         61GIwvjPhTrBhQacCpgFH7SI7SMmwzrSZ3qrkGOMSYTfu1XdCjF/o14QjtFup/T3p+OZ
-         rValRdjjh5dz7Oh8DNgTLxaSEzUa2tfJncXvk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=EMEe3EnrmTz4VXJwt3zNe2mWyBL9jqG4mEETorWmETg=;
-        b=vU4wfD3SeCbeJqjmbftBfMyAI80SItL7uRz4F9kXwT5hA4E5JQWz+hZ0aMKlqr17qh
-         f2WyyMov7TclQKtiHF+ySjNAWtcd3JKHMx6AznV0p8APLudLKqxr3DR+DZa8LTpVjUxq
-         eyVmKwb9E2oF4Mfure0fIAP1oyHK5fA9sPlcK/3CzuGzNLKBfhFmLZlcsJWUGX9vzU6s
-         EmhwYWfGR1VsG9MrLgxNA4pQ3vV9/TbcMxY0ElLVgSbL0BUu1NOJDS/juwsub+10F1m7
-         R5iIc6on/tZYO2TmZakXqjfwFYkWSYEKU3SU+k8PEbBUlTkxAkLQSd6ztbTKjbvcVa5C
-         F3Xw==
-X-Gm-Message-State: ACrzQf1Sn+DkI5ZPsoaOU1pjMV8ind3mA0J8chtpU++4HpLyJs5AClMp
-	pA2XM9/Hpw8ZUcz4k3nUSIQlJDD67R6JDjIsKN0H2g==
-X-Google-Smtp-Source: AMsMyM67MXm/lQa1tGGwV3xRvrukDuk9G5nv3c5F7slxubnSc3M0kXcOawAQvsxcSxx7dCi+CFAeJs1NlPue8RXoIMI=
-X-Received: by 2002:a05:6902:1202:b0:6ae:4d4e:f7ea with SMTP id
- s2-20020a056902120200b006ae4d4ef7eamr14310764ybu.393.1663576860104; Mon, 19
- Sep 2022 01:41:00 -0700 (PDT)
+	id 1oaCOR-00AHEe-Uv; Mon, 19 Sep 2022 08:44:46 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 6D1DCB816B0;
+	Mon, 19 Sep 2022 08:44:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4DE61C433C1;
+	Mon, 19 Sep 2022 08:44:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1663577080;
+	bh=Vd83dSwOxxVSmijrL/0T0PlkhSMj1d5PUkUDnXOIUyE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dlSngLTIaXTUHmuHDJgtMdbNwSHKqUJq9SLyDbvIvDthukzpSXHybBsTRhVVyFNJ2
+	 1qqCtuHfpcMr/GliCB6rzwJjMLC2MHRH03VKiFCffo41yXNOwwmKRS/fEC1f2Cxj7R
+	 DLEvYnlAXyJ2KzF8cFOljKYCXKTJeMmqp7ByoylE=
+Date: Mon, 19 Sep 2022 10:45:06 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Olof Johansson <olof@lixom.net>
+Cc: Saravana Kannan <saravanak@google.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Laurentiu Tudor <laurentiu.tudor@nxp.com>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+	Paul Mackerras <paulus@samba.org>, Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Al Cooper <alcooperx@gmail.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Tobias Klauser <tklauser@distanz.ch>,
+	Russell King <linux@armlinux.org.uk>,
+	Vineet Gupta <vgupta@kernel.org>,
+	Richard Genoud <richard.genoud@gmail.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Alexander Shiyan <shc_work@mail.ru>,
+	Baruch Siach <baruch@tkos.co.il>, Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Karol Gugala <kgugala@antmicro.com>,
+	Mateusz Holenko <mholenko@antmicro.com>,
+	Gabriel Somlo <gsomlo@gmail.com>,
+	Neil Armstrong <narmstrong@baylibre.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Taichi Sugaya <sugaya.taichi@socionext.com>,
+	Takao Orito <orito.takao@socionext.com>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <bjorn.andersson@linaro.org>,
+	Pali Rohar <pali@kernel.org>, Andreas Farber <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang7@gmail.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Hammer Hsieh <hammerh0314@gmail.com>,
+	Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>,
+	Michal Simek <michal.simek@xilinx.com>,
+	Rob Herring <robh@kernel.org>, sascha hauer <sha@pengutronix.de>,
+	peng fan <peng.fan@nxp.com>, kevin hilman <khilman@kernel.org>,
+	ulf hansson <ulf.hansson@linaro.org>,
+	len brown <len.brown@intel.com>, pavel machek <pavel@ucw.cz>,
+	joerg roedel <joro@8bytes.org>, will deacon <will@kernel.org>,
+	andrew lunn <andrew@lunn.ch>,
+	heiner kallweit <hkallweit1@gmail.com>,
+	eric dumazet <edumazet@google.com>,
+	jakub kicinski <kuba@kernel.org>, paolo abeni <pabeni@redhat.com>,
+	linus walleij <linus.walleij@linaro.org>,
+	hideaki yoshifuji <yoshfuji@linux-ipv6.org>,
+	david ahern <dsahern@kernel.org>, kernel-team@android.com,
+	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+	iommu@lists.linux-foundation.org, netdev@vger.kernel.org,
+	linux-gpio@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+	linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org, linux-snps-arc@lists.infradead.org,
+	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-actions@lists.infradead.org, linux-unisoc@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	sparclinux@vger.kernel.org
+Subject: Re: [PATCH v2 0/2] Fix console probe delay when stdout-path isn't set
+Message-ID: <YygsEtxKz8dsEstc@kroah.com>
+References: <20220701012647.2007122-1-saravanak@google.com>
+ <YwS5J3effuHQJRZ5@kroah.com>
+ <CAOesGMivJ5Q-jdeGKw32yhjmNiYctHjpEAnoMMRghYqWD2m2tw@mail.gmail.com>
 MIME-Version: 1.0
-References: <20220804194325.1596554-1-nfraprado@collabora.com>
-In-Reply-To: <20220804194325.1596554-1-nfraprado@collabora.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Mon, 19 Sep 2022 16:40:34 +0800
-Message-ID: <CAJMQK-hOxxvkjgOxA6KLLUJxxBehHDQvRo-Y_FLMPLEfkoVMzA@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: dsi: Move mtk_dsi_stop() call back to mtk_dsi_poweroff()
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, 
-	Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>, Jitao Shi <jitao.shi@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Rex-BC Chen <rex-bc.chen@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAOesGMivJ5Q-jdeGKw32yhjmNiYctHjpEAnoMMRghYqWD2m2tw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_014102_350223_491966C3 
-X-CRM114-Status: GOOD (  22.82  )
+X-CRM114-CacheID: sfid-20220919_014444_347267_72E09463 
+X-CRM114-Status: GOOD (  26.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,88 +156,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 19, 2022 at 4:39 PM N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
->
-> As the comment right before the mtk_dsi_stop() call advises,
-> mtk_dsi_stop() should only be called after
-> mtk_drm_crtc_atomic_disable(). That's because that function calls
-> drm_crtc_wait_one_vblank(), which requires the vblank irq to be enabled.
->
-> Previously mtk_dsi_stop(), being in mtk_dsi_poweroff() and guarded by a
-> refcount, would only be called at the end of
-> mtk_drm_crtc_atomic_disable(), through the call to mtk_crtc_ddp_hw_fini()=
-.
-> Commit cde7e2e35c28 ("drm/mediatek: Separate poweron/poweroff from
-> enable/disable and define new funcs") moved the mtk_dsi_stop() call to
-> mtk_output_dsi_disable(), causing it to be called before
-> mtk_drm_crtc_atomic_disable(), and consequently generating vblank
-> timeout warnings during suspend.
->
-> Move the mtk_dsi_stop() call back to mtk_dsi_poweroff() so that we have
-> a working vblank irq during mtk_drm_crtc_atomic_disable() and stop
-> getting vblank timeout warnings.
->
-> Fixes: cde7e2e35c28 ("drm/mediatek: Separate poweron/poweroff from enable=
-/disable and define new funcs")
-> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
->
-Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
+On Sun, Sep 18, 2022 at 08:44:27PM -0700, Olof Johansson wrote:
+> On Tue, Aug 23, 2022 at 8:37 AM Greg Kroah-Hartman
+> <gregkh@linuxfoundation.org> wrote:
+> >
+> > On Thu, Jun 30, 2022 at 06:26:38PM -0700, Saravana Kannan wrote:
+> > > These patches are on top of driver-core-next.
+> > >
+> > > Even if stdout-path isn't set in DT, this patch should take console
+> > > probe times back to how they were before the deferred_probe_timeout
+> > > clean up series[1].
+> >
+> > Now dropped from my queue due to lack of a response to other reviewer's
+> > questions.
+> 
+> What happened to this patch? I have a 10 second timeout on console
+> probe on my SiFive Unmatched, and I don't see this flag being set for
+> the serial driver. In fact, I don't see it anywhere in-tree. I can't
+> seem to locate another patchset from Saravana around this though, so
+> I'm not sure where to look for a missing piece for the sifive serial
+> driver.
+> 
+> This is the second boot time regression (this one not fatal, unlike
+> the Layerscape PCIe one) from the fw_devlink patchset.
+> 
+> Greg, can you revert the whole set for 6.0, please? It's obviously
+> nowhere near tested enough to go in and I expect we'll see a bunch of
+> -stable fixups due to this if we let it remain in.
 
-Tested on mt8183 jacuzzi and mt8186 that this patch fixes the vblank warnin=
-g.
+What exactly is "the whole set"?  I have the default option fix queued
+up and will send that to Linus later this week (am traveling back from
+Plumbers still), but have not heard any problems about any other issues
+at all other than your report.
 
-> ---
->
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 21 ++++++++++-----------
->  1 file changed, 10 insertions(+), 11 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
-k/mtk_dsi.c
-> index 9cc406e1eee1..f8ad59771551 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -685,6 +685,16 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
->         if (--dsi->refcount !=3D 0)
->                 return;
->
-> +       /*
-> +        * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
-> +        * mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disa=
-ble(),
-> +        * which needs irq for vblank, and mtk_dsi_stop() will disable ir=
-q.
-> +        * mtk_dsi_start() needs to be called in mtk_output_dsi_enable(),
-> +        * after dsi is fully set.
-> +        */
-> +       mtk_dsi_stop(dsi);
-> +
-> +       mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
->         mtk_dsi_reset_engine(dsi);
->         mtk_dsi_lane0_ulp_mode_enter(dsi);
->         mtk_dsi_clk_ulp_mode_enter(dsi);
-> @@ -735,17 +745,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *d=
-si)
->         if (!dsi->enabled)
->                 return;
->
-> -       /*
-> -        * mtk_dsi_stop() and mtk_dsi_start() is asymmetric, since
-> -        * mtk_dsi_stop() should be called after mtk_drm_crtc_atomic_disa=
-ble(),
-> -        * which needs irq for vblank, and mtk_dsi_stop() will disable ir=
-q.
-> -        * mtk_dsi_start() needs to be called in mtk_output_dsi_enable(),
-> -        * after dsi is fully set.
-> -        */
-> -       mtk_dsi_stop(dsi);
-> -
-> -       mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
-> -
->         dsi->enabled =3D false;
->  }
->
-> --
-> 2.37.1
->
+thnaks,
+
+greg k-h
 
