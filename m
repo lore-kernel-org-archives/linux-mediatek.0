@@ -4,126 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D871ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 22:56:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C600C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 23:56:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5S9VBftUHA8Ab+AfT1DhnDF/jWnQCvfphMhw9w+YVhc=; b=uLO8Vd6jJFA2TXatCWsxCSgcU8
-	h6+m7cRbVgEfdpQg/ZuofpUwdESi0yxgzqz5bbTHmqS8gO3n732fK0y2xf+KFEqr+nrGu/bjT6qap
-	4BKATm1jodrmpQs2dFaRDtj/8B3ZJAtW3NFcfKrh8zgmg8/wYzOlz8bQfLlOTyvPtxU+5dXGgZMYa
-	+ySIIfTc1sq4SftgePy6O9jjns11ekiuGR/DoJ1Hc5NiFoJsmbUL5gJsFSIWKTwoxheUpTSE0/7Z1
-	KVfjjDgvcpbbUzApSgtbXVKd5RG6frh3gjW912FYqAv0jfpgz2p4UMofBhAas2+/sbMLLZPBcyuMv
-	XI17pGiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0tsb5agSgpQCkBZksFTCdXOXRex2sVbdkU40ZWTz7SA=; b=Jm/zt+FvQ+ZjXiqIz4zROyPP8N
+	QholgFDvPmHKJu1dr9gct+1rcr/M3iZ0texeao3xFfLxq3XhVaWci992RL5BOFkm9V1n0H5yzpwrE
+	hGIb1tt4wR8A7oON8k/KuwsuAh1uaRJeKDCAq6CcAC4Jz/8mG/MwQq0rBAysfvtoYMqpg/9d6//zQ
+	fsvAWUT+A9aezXxasBF/go7Db3dAQThz3X0KreLBoVXVCVWhC2mpVKHKSalrHO2ZArdVOMLVe7iut
+	echY6+u73zmn89A5TfyxxUa68aKJJK9yjcRJqZH+w0pbwqhWAG1c3KUUXB7bYbA3HVLGzoPvtX9xL
+	moWPD0FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaPgk-00G3nN-9v; Mon, 19 Sep 2022 22:56:30 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1oaQcm-00GXO4-OJ; Mon, 19 Sep 2022 23:56:29 +0000
+Received: from esa5.hgst.iphmx.com ([216.71.153.144])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaPge-00G3iH-9f
-	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 22:56:27 +0000
-Received: by mail-ej1-x635.google.com with SMTP id y3so2148754ejc.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Sep 2022 15:56:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=lixom-net.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date;
-        bh=5S9VBftUHA8Ab+AfT1DhnDF/jWnQCvfphMhw9w+YVhc=;
-        b=pT3AVw/XaQKfMJa28M67X6CWfwalI0Uvo6unsRjOTD2Z+d/hMLJagRy91+fB9mWt/H
-         RvjlLsn+3FsNx74QkbruJHKtTQ+30w35PYmoN36zBZvRhmzaaut2t/ejO0VHEYQ77EDj
-         OXDYFEqkBBbGSPaGws21i+7eNFUtsVpC10Ocfp53V0C+AqpxtnC2gWLf09NvoZb8DNZe
-         nefkWz5Q2xpTnqPE/9sJZpmszdShkKibcjHKjjaL4N2+oQKOJucjE0sZV5m8l2gxJQLL
-         eUTG5Bs9Z5UoBJW4L2zlLkhjGsOc0HVn5guvp/vsJvOqjFnEQJHDOGaHy7aMupntX7WF
-         7vTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=5S9VBftUHA8Ab+AfT1DhnDF/jWnQCvfphMhw9w+YVhc=;
-        b=cg/p+7S22H3mTBpMepb2anvZ56odCxLfha8ow1on/rgmoQV5pPU+rtsCDN6XV2x9OS
-         jU62+jhg6Jwx+ULmnhIJ1utlQDUJX+M7uoZcXlvNaabXF4dTuxQC4Guy8Sx6IhaDpIbg
-         t+ikNUGyj6hBPeuI8f/SLVBSp3IB6sRYkBLnP0eqrKweCkWNE4XBCszkqrRPu//utTwz
-         dccxAkmpVbNaTxkA7n+DPiJuYS/KhJZy1hyzqoVrAL/OauNRPaeIpjmBjODOONmfMGfb
-         NKLftj1reLGD121JifebUnHC9JzbMa9PoLhf4X85QHDqYD2KzOE3vz6kzKL8T3ryKDVD
-         UB8g==
-X-Gm-Message-State: ACrzQf3caD/IHhQ6I0rT1/3ClLtj6ttcx/hQGc1+gd6pfVRXABC5U/NT
-	6tdA4hX+x1onPFy/mScg22JKRd4RrYj1L4vnqlT4pQ==
-X-Google-Smtp-Source: AMsMyM5kdxcAfNB78ChbidtnpNAMschNYMIGpvHRr7zgKTZ4CCEGx6bhJgHHTNr9SAgKH+LAmfDCBtvH2R9hQBackB8=
-X-Received: by 2002:a17:906:ef8c:b0:77c:8f77:330 with SMTP id
- ze12-20020a170906ef8c00b0077c8f770330mr14503775ejb.604.1663628181793; Mon, 19
- Sep 2022 15:56:21 -0700 (PDT)
+	id 1oaQcc-00GXE2-Lx
+	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 23:56:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+  t=1663631777; x=1695167777;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=++5axOCldtTWM+izrbSQWpROwyvWlmGRPLJdA2yng0M=;
+  b=OMAP2xRv0I44KSDqAvJ3ptsZuyTvCmPrx2ZQENnDnmGbN+vG9mr9tZ3A
+   U4c3lXQDmkB4xEC0f3ks4nWVGJ9XHFkG2qMpF6XKARQ2EjWlB7Y9bKfe3
+   PZ9lEIj9IZJT9w146838o31vKTrfRc/rSVzIH4/ZGxlQl1UFluuBlrV5H
+   EqHGGZt0cgRrkvF0IXQx5BHk3ZCqrgZBy8s8p+ZxnRDV7Eymhwjv0yNA/
+   C6c4GPq6hoVYuiy+oj8jnZPw2kjhsuNuzlTUQ7oMlWVtAnuLZkTx5cfQ0
+   prtxhl30CZzOey8PZITj/Biqy9Qnq+3D5CZhoXiT7YVRC1VGsdgtLRusD
+   w==;
+X-IronPort-AV: E=Sophos;i="5.93,329,1654531200"; 
+   d="scan'208";a="211750578"
+Received: from h199-255-45-14.hgst.com (HELO uls-op-cesaep01.wdc.com) ([199.255.45.14])
+  by ob1.hgst.iphmx.com with ESMTP; 20 Sep 2022 07:56:09 +0800
+IronPort-SDR: R8RjG7/LLY2eJByFmBeWhgVA/nxjEmJLvugYpOdEaHeWJSc2G7UkGlf0qVkdv2ZdiEI9gqc3Xn
+ mol4FY2Jz3dokMv+I8aTUxhjmtKiD7cs6+oXe1RquBBSnxx/xbAtkIl0m0UfhBTcliMWRtP8LI
+ IsCp5gR5hJyeiJCu/jpwx9DvpDsy9ZvFAYwbJRzL+r4mwloaO2UdRagJIbw9RndtN4i8uJvJ0i
+ g8xMvUvUww66r6KJ54VmSjEQI9Ttx2argx4Svzyyev3iH81Mv8djiyARVba4EhNW76vep9uaxS
+ ZLbT29/SzUAcSmSOowMYFySX
+Received: from uls-op-cesaip02.wdc.com ([10.248.3.37])
+  by uls-op-cesaep01.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 19 Sep 2022 16:16:16 -0700
+IronPort-SDR: FfkjV4vj12F2t6Ha82dXE2IJENgqLoxGrlF2GrkxV6r63h3EW8tyAm2sZrxsk3oJ04FBce0eVp
+ Dbiej5orN2Q0eIuR0DICdYlaCIUPIXOhgj8SnrVSteUBHLNXBRGx+hG/vBdgIWyPb7O0pNypNY
+ kOkv+hUNLEMk78dp7bV8pfHkQxncH6ygbZCenvToW4VMXyxEakjreOTxGUr8+/HWl+k2F09QTa
+ y3jn2BGFZmfOtx4S5KhTJ9wk/4sb67p+0A/7noJJb/OI/N2F/L08Y0cP6wPZzOEC4Vj6HBFxOL
+ 5TQ=
+WDCIronportException: Internal
+Received: from usg-ed-osssrv.wdc.com ([10.3.10.180])
+  by uls-op-cesaip02.wdc.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 19 Sep 2022 16:56:10 -0700
+Received: from usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1])
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTP id 4MWhQd3SPxz1Rwt8
+	for <linux-mediatek@lists.infradead.org>; Mon, 19 Sep 2022 16:56:09 -0700 (PDT)
+Authentication-Results: usg-ed-osssrv.wdc.com (amavisd-new); dkim=pass
+	reason="pass (just generated, assumed good)"
+	header.d=opensource.wdc.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=
+	opensource.wdc.com; h=content-transfer-encoding:content-type
+	:in-reply-to:organization:from:content-language:references:to
+	:subject:user-agent:mime-version:date:message-id; s=dkim; t=
+	1663631768; x=1666223769; bh=++5axOCldtTWM+izrbSQWpROwyvWlmGRPLJ
+	dA2yng0M=; b=KumYlcFECCyMFuCCbzzjbk2hBlrl09J7H1BVMMpdpWLqTeK1Udg
+	BQJQNamL7noEQ2kcOpXY79ZFm5an7hgZYNIet+ruTqKUe+qcUHcR0timQfFKEfTT
+	7+EU2aANdBVmxzOTCdnC3Inc+WyuGkoiyybBjJBZHjeFfNTvNNOrWnWtJOt+7C16
+	4xnnoGJ2hsBWcHs8UXmd09FBjoVunvoEbalULcIh0Y9nt/2kAx6gYcjSMb9o+c0p
+	sd2cnrprJIdrUMnVB0OwM0O2rS8UAgnvJDEjxWg63PVisyECEIb91ymOK/63rc3D
+	O4eDxIUJvk8GQtdY7j66BU1zyADl90ojNnQ==
+X-Virus-Scanned: amavisd-new at usg-ed-osssrv.wdc.com
+Received: from usg-ed-osssrv.wdc.com ([127.0.0.1])
+	by usg-ed-osssrv.wdc.com (usg-ed-osssrv.wdc.com [127.0.0.1]) (amavisd-new, port 10026)
+	with ESMTP id rZnSAGNbGmnL for <linux-mediatek@lists.infradead.org>;
+	Mon, 19 Sep 2022 16:56:08 -0700 (PDT)
+Received: from [10.225.163.81] (unknown [10.225.163.81])
+	by usg-ed-osssrv.wdc.com (Postfix) with ESMTPSA id 4MWhQV5lcDz1RvLy;
+	Mon, 19 Sep 2022 16:56:02 -0700 (PDT)
+Message-ID: <7872df9d-db4e-0617-84eb-e47394774322@opensource.wdc.com>
+Date: Tue, 20 Sep 2022 08:55:59 +0900
 MIME-Version: 1.0
-References: <20220701012647.2007122-1-saravanak@google.com>
- <YwS5J3effuHQJRZ5@kroah.com> <CAOesGMivJ5Q-jdeGKw32yhjmNiYctHjpEAnoMMRghYqWD2m2tw@mail.gmail.com>
- <YygsEtxKz8dsEstc@kroah.com>
-In-Reply-To: <YygsEtxKz8dsEstc@kroah.com>
-From: Olof Johansson <olof@lixom.net>
-Date: Mon, 19 Sep 2022 15:56:09 -0700
-Message-ID: <CAOesGMh5GHCONTQ9M1Ro7zW-hkL_1F7Xt=xRV0vYSfPY=7LYkQ@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] Fix console probe delay when stdout-path isn't set
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Saravana Kannan <saravanak@google.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Laurentiu Tudor <laurentiu.tudor@nxp.com>, Jiri Slaby <jirislaby@kernel.org>, 
-	Michael Ellerman <mpe@ellerman.id.au>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, 
-	Paul Mackerras <paulus@samba.org>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, 
-	Nicolas Saenz Julienne <nsaenz@kernel.org>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, Al Cooper <alcooperx@gmail.com>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
-	Tobias Klauser <tklauser@distanz.ch>, Russell King <linux@armlinux.org.uk>, 
-	Vineet Gupta <vgupta@kernel.org>, Richard Genoud <richard.genoud@gmail.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Alexander Shiyan <shc_work@mail.ru>, 
-	Baruch Siach <baruch@tkos.co.il>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Karol Gugala <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, 
-	Gabriel Somlo <gsomlo@gmail.com>, Neil Armstrong <narmstrong@baylibre.com>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <bjorn.andersson@linaro.org>, Pali Rohar <pali@kernel.org>, 
-	Andreas Farber <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Laxman Dewangan <ldewangan@nvidia.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang7@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, "David S. Miller" <davem@davemloft.net>, 
-	Hammer Hsieh <hammerh0314@gmail.com>, Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>, 
-	Michal Simek <michal.simek@xilinx.com>, Rob Herring <robh@kernel.org>, 
-	sascha hauer <sha@pengutronix.de>, peng fan <peng.fan@nxp.com>, kevin hilman <khilman@kernel.org>, 
-	ulf hansson <ulf.hansson@linaro.org>, len brown <len.brown@intel.com>, 
-	pavel machek <pavel@ucw.cz>, joerg roedel <joro@8bytes.org>, will deacon <will@kernel.org>, 
-	andrew lunn <andrew@lunn.ch>, heiner kallweit <hkallweit1@gmail.com>, 
-	eric dumazet <edumazet@google.com>, jakub kicinski <kuba@kernel.org>, paolo abeni <pabeni@redhat.com>, 
-	linus walleij <linus.walleij@linaro.org>, hideaki yoshifuji <yoshfuji@linux-ipv6.org>, 
-	david ahern <dsahern@kernel.org>, kernel-team@android.com, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, iommu@lists.linux-foundation.org, 
-	netdev@vger.kernel.org, linux-gpio@vger.kernel.org, 
-	linuxppc-dev@lists.ozlabs.org, linux-serial@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	linux-snps-arc@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-actions@lists.infradead.org, 
-	linux-unisoc@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	sparclinux@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.1
+Subject: Re: [PATCH v8 09/23] ata: libahci_platform: Parse ports-implemented
+ property in resources getter
+To: Guenter Roeck <linux@roeck-us.net>,
+ Serge Semin <Sergey.Semin@baikalelectronics.ru>
+Cc: Hans de Goede <hdegoede@redhat.com>, Jens Axboe <axboe@kernel.dk>,
+ Hannes Reinecke <hare@suse.de>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Serge Semin <fancer.lancer@gmail.com>,
+ Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>,
+ Pavel Parkhomenko <Pavel.Parkhomenko@baikalelectronics.ru>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20220909193621.17380-1-Sergey.Semin@baikalelectronics.ru>
+ <20220909193621.17380-10-Sergey.Semin@baikalelectronics.ru>
+ <20220919215014.GA336081@roeck-us.net>
+Content-Language: en-US
+From: Damien Le Moal <damien.lemoal@opensource.wdc.com>
+Organization: Western Digital Research
+In-Reply-To: <20220919215014.GA336081@roeck-us.net>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_155624_381470_71BA3CD1 
-X-CRM114-Status: GOOD (  39.14  )
+X-CRM114-CacheID: sfid-20220919_165618_734044_98D2526B 
+X-CRM114-Status: GOOD (  23.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,73 +128,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 19, 2022 at 1:44 AM Greg Kroah-Hartman
-<gregkh@linuxfoundation.org> wrote:
->
-> On Sun, Sep 18, 2022 at 08:44:27PM -0700, Olof Johansson wrote:
-> > On Tue, Aug 23, 2022 at 8:37 AM Greg Kroah-Hartman
-> > <gregkh@linuxfoundation.org> wrote:
-> > >
-> > > On Thu, Jun 30, 2022 at 06:26:38PM -0700, Saravana Kannan wrote:
-> > > > These patches are on top of driver-core-next.
-> > > >
-> > > > Even if stdout-path isn't set in DT, this patch should take console
-> > > > probe times back to how they were before the deferred_probe_timeout
-> > > > clean up series[1].
-> > >
-> > > Now dropped from my queue due to lack of a response to other reviewer's
-> > > questions.
-> >
-> > What happened to this patch? I have a 10 second timeout on console
-> > probe on my SiFive Unmatched, and I don't see this flag being set for
-> > the serial driver. In fact, I don't see it anywhere in-tree. I can't
-> > seem to locate another patchset from Saravana around this though, so
-> > I'm not sure where to look for a missing piece for the sifive serial
-> > driver.
-> >
-> > This is the second boot time regression (this one not fatal, unlike
-> > the Layerscape PCIe one) from the fw_devlink patchset.
-> >
-> > Greg, can you revert the whole set for 6.0, please? It's obviously
-> > nowhere near tested enough to go in and I expect we'll see a bunch of
-> > -stable fixups due to this if we let it remain in.
->
-> What exactly is "the whole set"?  I have the default option fix queued
-> up and will send that to Linus later this week (am traveling back from
-> Plumbers still), but have not heard any problems about any other issues
-> at all other than your report.
+On 9/20/22 06:50, Guenter Roeck wrote:
+> On Fri, Sep 09, 2022 at 10:36:07PM +0300, Serge Semin wrote:
+>> The ports-implemented property is mainly used on the OF-based platforms
+>> with no ports mapping initialized by a bootloader/BIOS firmware. Seeing
+>> the same of_property_read_u32()-based pattern has already been implemented
+>> in the generic AHCI LLDD (glue) driver and in the Mediatek, St AHCI
+>> drivers let's move the property read procedure to the generic
+>> ahci_platform_get_resources() method. Thus we'll have the forced ports
+>> mapping feature supported for each OF-based platform which requires that,
+>> and stop re-implementing the same pattern in there a bit simplifying the
+>> code.
+>>
+>> Signed-off-by: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+>> ---
+>>  drivers/ata/ahci_mtk.c         | 2 --
+>>  drivers/ata/ahci_platform.c    | 3 ---
+>>  drivers/ata/ahci_st.c          | 3 ---
+>>  drivers/ata/libahci_platform.c | 3 +++
+>>  4 files changed, 3 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/drivers/ata/ahci_mtk.c b/drivers/ata/ahci_mtk.c
+>> index 1f6c85fde983..c056378e3e72 100644
+>> --- a/drivers/ata/ahci_mtk.c
+>> +++ b/drivers/ata/ahci_mtk.c
+>> @@ -118,8 +118,6 @@ static int mtk_ahci_parse_property(struct ahci_host_priv *hpriv,
+>>  				   SYS_CFG_SATA_EN);
+>>  	}
+>>  
+>> -	of_property_read_u32(np, "ports-implemented", &hpriv->force_port_map);
+>> -
+>>  	return 0;
+>>  }
+>>  
+>> diff --git a/drivers/ata/ahci_platform.c b/drivers/ata/ahci_platform.c
+>> index 28a8de5b48b9..9b56490ecbc3 100644
+>> --- a/drivers/ata/ahci_platform.c
+>> +++ b/drivers/ata/ahci_platform.c
+>> @@ -56,9 +56,6 @@ static int ahci_probe(struct platform_device *pdev)
+>>  	if (rc)
+>>  		return rc;
+>>  
+>> -	of_property_read_u32(dev->of_node,
+>> -			     "ports-implemented", &hpriv->force_port_map);
+>> -
+>>  	if (of_device_is_compatible(dev->of_node, "hisilicon,hisi-ahci"))
+>>  		hpriv->flags |= AHCI_HFLAG_NO_FBS | AHCI_HFLAG_NO_NCQ;
+>>  
+>> diff --git a/drivers/ata/ahci_st.c b/drivers/ata/ahci_st.c
+>> index 7526653c843b..068621099c00 100644
+>> --- a/drivers/ata/ahci_st.c
+>> +++ b/drivers/ata/ahci_st.c
+>> @@ -168,9 +168,6 @@ static int st_ahci_probe(struct platform_device *pdev)
+>>  
+>>  	st_ahci_configure_oob(hpriv->mmio);
+>>  
+>> -	of_property_read_u32(dev->of_node,
+>> -			     "ports-implemented", &hpriv->force_port_map);
+>> -
+> 
+> With arm:allmodconfig, this results in:
+> 
+>   CC [M]  drivers/ata/ahci_st.o
+> drivers/ata/ahci_st.c: In function 'st_ahci_probe':
+> drivers/ata/ahci_st.c:147:24: error: unused variable 'dev' [-Werror=unused-variable]
+>   147 |         struct device *dev = &pdev->dev;
+> 
+> Guenter
 
-I stand corrected in this case, the issue on the Hifive Unmatched was
-a regression due to a PWM clock change -- I just sent a patch for that
-(serial driver fix).
+Just pushed a fix for this in ata tree for-next and for-6.1 branches. The
+problem should be resolved with the next linux-next merge.
 
-So it seems like as long as the fw_devlink.strict=1 patch is reverted,
-things are back to a working state here.
+-- 
+Damien Le Moal
+Western Digital Research
 
-I still struggle with how the fw_devlink patchset is expected to work
-though, since DT is expected to describe the hardware configuration,
-and it has no knowledge of whether there are drivers that will be
-bound to any referenced supplier devnodes. It's not going to work well
-to assume that they will always be bound, and to add 10 second
-timeouts for those cases isn't a good solution. Seems like the number
-of special cases will keep adding up.
-
-The whole design feels like it's falling short, and it's been patched
-here and there to deal with the shortcomings, instead of revisiting
-the full solution. (The patches are the console one, and another to
-deal with nfsroot boots).
-
-As long as it doesn't keep regressing others, I suppose the work to
-redesign it can happen in-tree, but it's not usually how we try to do
-it for new functionality. Especially since it's still being iterated
-on (with active patch sets posted around -rc1 for improvements).
-
-Oh, and one more thing for the future -- the main patch that changes
-behavior due to dependency tracking is 2f8c3ae8288e, named "driver
-core: Add wait_for_init_devices_probe helper function". It's easy to
-overlook this when looking at a list of patches since it's said to
-just introduce a helper.
-
-
--Olof
 
