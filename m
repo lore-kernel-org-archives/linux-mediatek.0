@@ -4,73 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23DEBECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 09:45:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54D91C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 09:52:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+SQybGqqP70WeluDFjb9PRoBalSlPkIRRoVy+auTYjM=; b=gtpTNAzXgBIBfr0CIo/kodFMoI
-	kxovOePb6wO7SDdYXYutS8cuQxQdyICTDNqc1rF6Ljrr5xe4NXWObR1Qid/Fy8cyWi9UQ7TKsFeFq
-	qdv+IgzWtKKwQnp8/e/h3CgpQ8qXM6+DUUkKft2iNEZBb++mlljHP52jQSDO6R9uFtZSpKJ/gONrY
-	wpO4/D2nSSEITx19IJEcvjeMCyMb1v2Ggw+L/JKjzdt5u5Qy9R1JCViFCW1Y/itbRho4O6i/IVhcD
-	yfzi78gOT7qOZRfw4gtMZs70T/8HJgcEKg+QnZxD8VP8n63u67/AXefYNC/2smCfURZXhrB5ruI9S
-	Zj08ixWA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CHVoh6AydMdVyNdsw6VEdTT8sVcwJuX4/7OtqF81TLE=; b=kv2yWCYwOjpO63sqKlF1BQycOK
+	X84ydZ42X2lkAEz8cE7kRHS7UFHbfvQ7NzKuhHvjLCPNAtd8TetKkc+WvkMwGm+EppZUhDxhvghcL
+	OqxX9DnP9Pq/0Er4C7orqLUOSa/dARPNdMulVVMcGB/z0nch4yf07BjXvqRjtE32zKbJFzadSaVXR
+	1FttsDScJyXYdANvWIhXsvBhZvNg0lQIxzh/OWzOK+NAowt5ouY2dufOcTzeBbVN0RzZe88blhBMG
+	L3YERzREYpBWkLjJ5SFK1Dhm1XVRN0iwgqMmH6Bu3IKXjAc1lZcP553ZRhlMcLKUAdHmDKcR0nSS+
+	mSNAZHmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaDLD-00AvIZ-Qk; Mon, 19 Sep 2022 09:45:27 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oaDS8-00AzR2-1m; Mon, 19 Sep 2022 09:52:36 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaCF2-00A9lZ-UH; Mon, 19 Sep 2022 08:35:17 +0000
-X-UUID: ef9b5a51bdc644bb920269b06a69e4cd-20220919
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+SQybGqqP70WeluDFjb9PRoBalSlPkIRRoVy+auTYjM=;
-	b=oRPJODa66QW8ROkckDmzZpiiWasFG5zlugbkuEBA7kZg7c/KSPnrZL2LWfcort7rtH0f2vWy9idGNWMfuNLrgi8UVxv2O+OE0zzaY6fUY8HcOnNskjle6s4857/Kkzb60uHFvic+VaZl+xeHCaDRmKfFJddwVlhdkaPGl9ImFrE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:74229935-fdd0-4e53-9e21-ae4d6837c1e9,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:fe47d918-0314-4ae7-b2d1-7295be49255e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: ef9b5a51bdc644bb920269b06a69e4cd-20220919
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <jianguo.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 5784537; Mon, 19 Sep 2022 01:34:57 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 19 Sep 2022 16:04:19 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 19 Sep 2022 16:04:18 +0800
-From: Jianguo Zhang <jianguo.zhang@mediatek.com>
-To: "David S . Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>
-CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Giuseppe Cavallaro
-	<peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
-	<mcoquelin.stm32@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Biao
- Huang" <biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Jianguo Zhang <jianguo.zhang@mediatek.com>
-Subject: [PATCH 0/2] Mediatek ethernet patchs for mt8188
-Date: Mon, 19 Sep 2022 16:04:08 +0800
-Message-ID: <20220919080410.11270-1-jianguo.zhang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1oaDRh-00Az1E-1K
+	for linux-mediatek@bombadil.infradead.org; Mon, 19 Sep 2022 09:52:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=CHVoh6AydMdVyNdsw6VEdTT8sVcwJuX4/7OtqF81TLE=; b=i6UDUUENt3GRCbrdpevGw8MwsL
+	OyqOoD8rjpsNjP1eSe6TvuyI5ql3EU4ov8XiGap84exyRV51J0W+9djStKSZDLwxiX5wvQlEky8Xr
+	DXJKKXFcFB6fYt0rlZiVvEnbDFogiu1ZOaaizQCVmrAkWvqRrnod4XMrND2le2twoO6bq4QoOhn9N
+	39MmBpDksPPMchZ7qZkWzgkzMZjm/z6uoVIF64/rhZtL2EVC+iiZPuqgG52Bx0DUX+QLHdxkc/kVZ
+	kYVybv90ksncz1a2O954YgKnWiRUhm+m64UkVQPFoS6CmXEYTQUkdUCjbCIJ2+zdmpOeuZfwAnzgY
+	yuLSh8Kg==;
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oaDRZ-00E1mf-6b
+	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 09:52:05 +0000
+Received: by mail-lf1-x133.google.com with SMTP id s6so34816767lfo.7
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Sep 2022 02:51:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=CHVoh6AydMdVyNdsw6VEdTT8sVcwJuX4/7OtqF81TLE=;
+        b=AsUtDZLutjYAmPuubd5VJT7esoukKBV4drhaipeCSPKxFSprD/Z0M3c5QRBWu0cyyD
+         ouVrfCl8OORFdekwNoBwNhFR9U7ndxDKDos9VWw62Qymi2+VZGLP7XylvDA0t1ZHKYfb
+         hmRpaUrRj4i0aVFafXU/drjl3I0IYfiOOD1wKGEr5aFW5JTTtIGYYUHRtjH/yy6W6pmx
+         ZCFyoktY8JvMBm38nYe99kSyfOFZmFNJzY6SuC/Y07tLW8tbt3LThpNorC19V28CCBTK
+         Ep+wJYpIabNauK9No+9itwZR26x9BIGA+29BKOeMdtOwtKRIhCxgkKe28PFBjA68Xlw1
+         ONIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=CHVoh6AydMdVyNdsw6VEdTT8sVcwJuX4/7OtqF81TLE=;
+        b=40H1ncCBJe6rbPLVX3diZXxLYc/xxK2T6+hW5zbCzXGK0CiC74wzclpf9W2vow03Rr
+         8Hvu9fSodXnkIO91eGT81IKQ0z8fXMF1OfNY6UryUKODaz+rl443gLI4dwvU9JvKlqBA
+         uONfAYS1fSuz4WNynKxjgRebwvPzvX/pm29cmctjdJRGwqLEUGkbOUFWeuXvjtP3Ia86
+         UxZEvkl0B360o2Ck0m1vVh9L8BdhxLk/zZWvHbtDM9KDhkJTZ0DKO93PWi/GErsKttkX
+         qBtC6QSXZTwicamTJCTE1MqbqzNrg4PbmhaVCbrgvuEq3f5kfHKt7TWtaVaA83S3pbBC
+         KAEQ==
+X-Gm-Message-State: ACrzQf2ifvTBwHRuShHwOy6v4c36DB9CSK4appRbLsC7bUGLuDLbBfwi
+	skCdLjqRKiIv9+SqRDfYiU8=
+X-Google-Smtp-Source: AMsMyM7ueLFa3mwyZJZLiCmpSdCXCJLMG0inR83nTec9J8BjIHZJdlOX2VH8AUZJV6OitbHR4WhCiA==
+X-Received: by 2002:a05:6512:909:b0:48b:954c:8e23 with SMTP id e9-20020a056512090900b0048b954c8e23mr6486606lft.670.1663581116524;
+        Mon, 19 Sep 2022 02:51:56 -0700 (PDT)
+Received: from [192.168.2.145] ([109.252.122.187])
+        by smtp.googlemail.com with ESMTPSA id b2-20020a05651c032200b002618e5c2664sm4683016ljp.103.2022.09.19.02.51.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 19 Sep 2022 02:51:55 -0700 (PDT)
+Message-ID: <0fc52b8c-a8a1-0e73-6f1c-da554681c9a9@gmail.com>
+Date: Mon, 19 Sep 2022 12:51:54 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH -next] drm/mediatek: dp: change mtk_dp_driver to static
+Content-Language: en-US
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Cc: DRI Development <dri-devel@lists.freedesktop.org>,
+ Markus Schneider-Pargmann <msp@baylibre.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ Yang Yingliang <yangyingliang@huawei.com>
+References: <20220913134929.1970187-1-yangyingliang@huawei.com>
+ <6051fab8-e198-fd58-2dfe-b2b344b67c15@collabora.com>
+ <CAAOTY_8yTkkBNEv=MgRj2+JQM0=bD+z2wFsTT7n6uEC0ay1L9g@mail.gmail.com>
+From: Dmitry Osipenko <digetx@gmail.com>
+In-Reply-To: <CAAOTY_8yTkkBNEv=MgRj2+JQM0=bD+z2wFsTT7n6uEC0ay1L9g@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_013501_278771_863EABD2 
-X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-CacheID: sfid-20220919_105201_499677_C465BAE5 
+X-CRM114-Status: UNSURE (   6.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,21 +113,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series includes 2 patchs:
-1. add ethenet driver entry for mt8188
-2. add binding document for the ethernet on mt8188
+Hello Chun-Kuang,
 
+18.09.2022 06:56, Chun-Kuang Hu пишет:
+> Hi, Dmitry:
+> 
+> My tree has no mtk dp driver yet. Would you like to pick this patch?
+> 
+> Acked-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> 
+> Dmitry Osipenko <dmitry.osipenko@collabora.com> 於 2022年9月15日 週四 下午5:04寫道：
 
-Jianguo Zhang (2):
-  stmmac: dwmac-mediatek: add support for mt8188
-  net: dt-bindings: dwmac: add support for mt8188
-
- Documentation/devicetree/bindings/net/mediatek-dwmac.yaml | 6 ++++--
- drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c      | 2 ++
- 2 files changed, 6 insertions(+), 2 deletions(-)
-
---
-2.25.1
-
-
+Applied to drm-misc-next
 
