@@ -4,68 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C6F4ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 14:21:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BB5AC6FA90
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 15:27:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R6DICuotm8vGwjU2DpB6zrDRD6phZDhtkJSCVVMN0Rc=; b=mQgPfKZz9z3lLhdpfAP/1FPnh0
-	9p7qqWv/JAux4turVnVcLfs/JoDSnU2uUdCmMIwUlPLHggcsXPP2HsS5nv6f1y0im7LDgZu+qUIHx
-	/vj7JHwbNDBkXTHYlMOijRC7+Qm0ERTSNp3Nx9ZQMIzj6gsqA7EL3IFz6gYoxfNbBku7FyVRjTLWN
-	ZvPY1oa81C3hX0sFxCeg2ttxQuSnsXJtkMNO99UlmCMkYbVe8eGsBaTpST+6HN1SQRavKmFAT7mV2
-	t1dZyDmaqeWGnjgbfQDhIz16Erhwi3bXX4VKl1VBV6ZLJRZgv/gqVZ85O2k3Q43N5BfFItOXyn1Dk
-	Oh2XmEEg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BMyypvYI4IkA9OS6tJ0zJUGdwSQ6g1bOpQbPvp0TRvg=; b=3NauPQu9QiWZ7KgKm144DWbNv8
+	CnSYPsUGFZdGI8nR4LviNETvZQcV4X6rjIgUf4j6wekA95mMj0Cz101K1SoSjQGZ+8ehf522R0W66
+	jEV+jFoZOqqCKgKY65ULE2eE4Y/29xLQFDzwM5RWeZiTL6Y7idGFlZxe5fW/ApOmYbYs7PKQosh+l
+	KhdUFnWov+2DkJDPHdZJPATjC2V22RblkjCpQirB949MhXNI6Pdu89ZdvZZs80De12aeYHfYBki3X
+	t5bPDHOno6xvC90Qk52/k9Ge++lUXCGBF3x9gZ/JDe96mqN5dcGt85XbXWU3vNtyM0TMw1KaENJ5k
+	emIRnZbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaHdr-00C3va-7A; Mon, 19 Sep 2022 14:20:59 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oaIfi-00CRqC-Ew; Mon, 19 Sep 2022 15:26:58 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaHdX-00C3pC-OD; Mon, 19 Sep 2022 14:20:41 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A22876601D86;
-	Mon, 19 Sep 2022 15:20:37 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663597238;
-	bh=jIZlUsaX0uvAy6EJmiw/8+y97dq2zwl8I5cLD0c39OI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SQ7VvYPduvIrRs6DMj9+FxF1aaVnxSv9+YE1wxv/WsMklK9qkdjwOKMirDr2A5/WT
-	 YwtqA/RlIZkghg+Xt0Xe4Kw7UpuzjlIKETw+MAWyu8w88x3SDE0msOz1OwCMkLm2pJ
-	 dw85a6RhdrmKx5zUYwgshU487wXKJi9dE2pljIATIz1/NAWwgDwoWIBZLxVtRE+0Ba
-	 Ze+NqiqFCrQZJXCfQWB4JiO71p9mY2L6PhOjfH1QbAGYq8vSVKBt1UaDip+Hjkahxn
-	 FdtqjTWWIqOhEsl26Lw3Kx1NyeCo/sZhZM1c0+0KvL0mS/+U2tM8j7JeoFFMUduVHH
-	 rG8JRMAXxqzOw==
-Message-ID: <276a4a37-a98d-c59b-a967-db9f5b220077@collabora.com>
-Date: Mon, 19 Sep 2022 16:20:35 +0200
+	id 1oaIWh-00CMO0-3w; Mon, 19 Sep 2022 15:17:40 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 432C7D41;
+	Mon, 19 Sep 2022 17:17:33 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1663600653;
+	bh=2puiBfBSuvOfOS88b2J3PNyfkl8M51lmUO5IZtT9CSI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QWixYfOitoFmLXo3HiiDzKGlFGdhUPWziffk09Hwwjm1J3sTCwF2xceFdZvqwWrvl
+	 AzeZB1q9xbsuNrfAjdnx2g+eV5PEBCkzfra9a5U+vgWkO2vw3P3H2ZC6ZESh0O0j7x
+	 dCLG7tBJgrFzP0vE1wxqgxZWZvN+KA+gJGEmospE=
+Date: Mon, 19 Sep 2022 18:17:19 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: dri-devel@lists.freedesktop.org,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <narmstrong@baylibre.com>,
+	Robert Foss <robert.foss@linaro.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Arnd Bergmann <arnd@arndb.de>, Benson Leung <bleung@chromium.org>,
+	Cai Huoqing <cai.huoqing@linux.dev>,
+	chrome-platform@lists.linux.dev,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+	Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+	Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+	Guenter Roeck <groeck@chromium.org>,
+	Jitao Shi <jitao.shi@mediatek.com>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Philip Chen <philipchen@chromium.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH v1 01/12] drm/bridge: ps8640: Use atomic variants of
+ drm_bridge_funcs
+Message-ID: <YyiH/3eeHvPPbuHk@pendragon.ideasonboard.com>
+References: <20220717174454.46616-1-sam@ravnborg.org>
+ <20220717174454.46616-2-sam@ravnborg.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v5 3/6] iommu/mediatek: Add error path for loop of
- mm_dts_parse
-Content-Language: en-US
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
-Cc: Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, mingyuan.ma@mediatek.com,
- yf.wang@mediatek.com, libo.kang@mediatek.com, chengci.xu@mediatek.com,
- youlin.pei@mediatek.com, anan.sun@mediatek.com, xueqi.zhang@mediatek.com,
- Guenter Roeck <groeck@chromium.org>, Dan Carpenter <dan.carpenter@oracle.com>
-References: <20220919092405.8256-1-yong.wu@mediatek.com>
- <20220919092405.8256-4-yong.wu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220919092405.8256-4-yong.wu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20220717174454.46616-2-sam@ravnborg.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_072039_950321_23D56235 
-X-CRM114-Status: GOOD (  14.12  )
+X-CRM114-CacheID: sfid-20220919_081739_351590_3B535F78 
+X-CRM114-Status: GOOD (  20.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,29 +90,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/09/22 11:24, Yong Wu ha scritto:
-> The mtk_iommu_mm_dts_parse will parse the smi larbs nodes. if the i+1
-> larb is parsed fail, we should put_device for the 0..i larbs.
+Hi Sam,
 
-If any v6 will be required... you forgot to update the commit description with
-"we should put_device for the i..0 larbs".
+Thank you for the patch, and sorry for the review delay. The series only
+recently jumped to the top of my inbox.
 
+On Sun, Jul 17, 2022 at 07:44:43PM +0200, Sam Ravnborg wrote:
+> The atomic variants of enable/disable in drm_bridge_funcs are the
+> preferred operations - introduce these.
 > 
-> There are two places need to comment:
-> 1) The larbid may be not linear mapping, we should loop whole
->     the array in the error path.
-> 2) I move this line position: "data->larb_imu[id].dev = &plarbdev->dev;"
->     before "if (!plarbdev->dev.driver)", That means set
->     data->larb_imu[id].dev before the error path. then we don't need
->     "platform_device_put(plarbdev)" again in probe_defer case. All depend
->     on "put_device" of the error path in error cases.
+> The ps8640 driver used the non-atomic variants of the drm_bridge_chain_pre_enable/
+> drm_bridge_chain_post_disable - convert these to the atomic variants.
 > 
-> Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow with the MM TYPE")
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> v2:
+>   - Init state operations in drm_bridge_funcs (Laurent)
+> 
+> Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
+> Reviewed-by: Maxime Ripard <mripard@kernel.org>
+> Cc: Jitao Shi <jitao.shi@mediatek.com>
+> Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Cc: Philip Chen <philipchen@chromium.org>
+> Cc: Andrzej Hajda <a.hajda@samsung.com>
+> Cc: Neil Armstrong <narmstrong@baylibre.com>
+> Cc: Robert Foss <robert.foss@linaro.org>
+> Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+> Cc: Jonas Karlman <jonas@kwiboo.se>
+> Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
 
-In any case....
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/gpu/drm/bridge/parade-ps8640.c | 18 ++++++++++++------
+>  1 file changed, 12 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/bridge/parade-ps8640.c b/drivers/gpu/drm/bridge/parade-ps8640.c
+> index 31e88cb39f8a..bb8076fb8625 100644
+> --- a/drivers/gpu/drm/bridge/parade-ps8640.c
+> +++ b/drivers/gpu/drm/bridge/parade-ps8640.c
+> @@ -15,6 +15,7 @@
+>  
+>  #include <drm/display/drm_dp_aux_bus.h>
+>  #include <drm/display/drm_dp_helper.h>
+> +#include <drm/drm_atomic_state_helper.h>
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_edid.h>
+>  #include <drm/drm_mipi_dsi.h>
+> @@ -409,7 +410,8 @@ static const struct dev_pm_ops ps8640_pm_ops = {
+>  				pm_runtime_force_resume)
+>  };
+>  
+> -static void ps8640_pre_enable(struct drm_bridge *bridge)
+> +static void ps8640_atomic_pre_enable(struct drm_bridge *bridge,
+> +				     struct drm_bridge_state *old_bridge_state)
+>  {
+>  	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
+>  	struct regmap *map = ps_bridge->regmap[PAGE2_TOP_CNTL];
+> @@ -443,7 +445,8 @@ static void ps8640_pre_enable(struct drm_bridge *bridge)
+>  	ps_bridge->pre_enabled = true;
+>  }
+>  
+> -static void ps8640_post_disable(struct drm_bridge *bridge)
+> +static void ps8640_atomic_post_disable(struct drm_bridge *bridge,
+> +				       struct drm_bridge_state *old_bridge_state)
+>  {
+>  	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
+>  
+> @@ -521,7 +524,7 @@ static struct edid *ps8640_bridge_get_edid(struct drm_bridge *bridge,
+>  	 * EDID, for this chip, we need to do a full poweron, otherwise it will
+>  	 * fail.
+>  	 */
+> -	drm_bridge_chain_pre_enable(bridge);
+> +	drm_atomic_bridge_chain_pre_enable(bridge, connector->state->state);
+>  
+>  	edid = drm_get_edid(connector,
+>  			    ps_bridge->page[PAGE0_DP_CNTL]->adapter);
+> @@ -531,7 +534,7 @@ static struct edid *ps8640_bridge_get_edid(struct drm_bridge *bridge,
+>  	 * before, return the chip to its original power state.
+>  	 */
+>  	if (poweroff)
+> -		drm_bridge_chain_post_disable(bridge);
+> +		drm_atomic_bridge_chain_post_disable(bridge, connector->state->state);
+>  
+>  	return edid;
+>  }
+> @@ -546,8 +549,11 @@ static const struct drm_bridge_funcs ps8640_bridge_funcs = {
+>  	.attach = ps8640_bridge_attach,
+>  	.detach = ps8640_bridge_detach,
+>  	.get_edid = ps8640_bridge_get_edid,
+> -	.post_disable = ps8640_post_disable,
+> -	.pre_enable = ps8640_pre_enable,
+> +	.atomic_post_disable = ps8640_atomic_post_disable,
+> +	.atomic_pre_enable = ps8640_atomic_pre_enable,
+> +	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
+> +	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+> +	.atomic_reset = drm_atomic_helper_bridge_reset,
+>  };
+>  
+>  static int ps8640_bridge_get_dsi_resources(struct device *dev, struct ps8640 *ps_bridge)
 
+-- 
+Regards,
 
+Laurent Pinchart
 
