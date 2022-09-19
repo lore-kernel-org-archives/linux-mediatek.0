@@ -4,83 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71416ECAAA1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 17:25:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CCFCECAAD3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 18:00:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2Meo31PuvkGIwIM5AdXoX0Hd0Yqmep6vNoeB5sp1WIo=; b=13gibs6Uln14EHsrJ+b5K6ALrY
-	jMFuGjuCFZBHs7gl40ShE0/RU/QLKhf7JxsA7vv0Zkc6p1eBhkjBU+88yty6t21rPMKi3udXjLbwY
-	+eqGASUE2NFceMm00VAvHkPqQHiw033O56b1tcLrM/mYOtWSAcMMlXRJkwv2eQR1ft6ysKyHZQ5n0
-	/DtyOJJiMTex+qWTS6tDjNzQbuit6+URhRoMHqGPEKqgD5gkvRX7znLEXzDAyvYVTQAstHQB31QSP
-	JfmU7pqQHzZwHFrgzCmy7G0aRqK3IdzYG8iOMsQqyNvmNU+Wh0PhDSRVKvQfA47zkLOTMYPrqoHup
-	sP5eVyXA==;
+	bh=VIAi0nNwF0EQ4Ycv099voA35UIwgAD/zCbxE9L3eFBQ=; b=U9TrJDkSuNnNJuTVAnoBKADQgm
+	wAwzOvaT+/h9ouoNsrssC/A2QJjkY6tuGU9xdTuxdJvWvSm+bpVvapZSF6U8mvTpWJME/HwiQvrwo
+	ianyx/THdfT2b7ECgS6SZgczQ5kUljgYPdXCL1JYEt7SZy6x8u8kB9K14FFuV2+8/FGvVbT1uRFw1
+	hguKQyJut5G0OiNm8rLsQ/JZchaHhQ2tpFUsZXIHR89K8iru/0XkTK9Smk/1x48Z4QzfgIez3FFwR
+	XspJhVAGtnh8QR/fGk8nteWr6NYJqcVLPO97uO4x5sY33ejADz+IksEMPBdFSv5F2W3ZC9mYn4M1G
+	A9cC1Zjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaKWE-00DFsz-CM; Mon, 19 Sep 2022 17:25:18 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1oaL4M-00DU11-O7; Mon, 19 Sep 2022 18:00:34 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaKWD-00DFrW-Hu
-	for linux-mediatek@bombadil.infradead.org; Mon, 19 Sep 2022 17:25:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
-	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=2Meo31PuvkGIwIM5AdXoX0Hd0Yqmep6vNoeB5sp1WIo=; b=WsmY0QPzQvr4nu4Tk+hVM36eDQ
-	WVxCm0Ht6RcGlMjcq1gZ+ti/So7sCQ5mmHKeM4SPmQeLSLqQ1HuLheXSe1iidaJHBH4S14HRyUDv5
-	dUn4HihXdzmPkDDNjVOx4P1coS6OAE5eTUT9DX5MtebAl/B7gUazlAXRT0Cf6Se9OqVBTILQSPXnn
-	RmxKWCcCCPeZ2Fn6EJaljnKz5xJUxsDtAX+AOhB2flbmg3V7LBci42+GUEH4k5ilzdHbTXSxkjN4M
-	Oki0Rsbt85PTNcynDy+EoNtzEpMnUkkWUk5hJ03NHQLphpWxnmZFsfMLtYegN29EDubNTEvjOhQRw
-	gUpxwlQg==;
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaK88-004rbQ-Bx
-	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 17:00:28 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id q21so106275edc.9
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Sep 2022 10:00:21 -0700 (PDT)
+	id 1oaK7Z-00D4Im-CT
+	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 16:59:53 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id m3so80179eda.12
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Sep 2022 09:59:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date;
-        bh=2Meo31PuvkGIwIM5AdXoX0Hd0Yqmep6vNoeB5sp1WIo=;
-        b=h4xvs+f5cmaWKYK71+hYnOmPVkiLtaB2mRla9tuoCEJPd+4ppfNzN0FBFiwIs70U65
-         tbJ9aJA3dpNgt1Ckv+Bx6Hc8Syb3OFhB4z+FJI0fxOKxNgoDOjZd8j6Uskwq0OWUm816
-         O7xPp4SJYuri2o1ZZKVZOB4LzhA9nFL2qpDxRJhsPPzW8j/vsldo+OZmErddviwJRjTi
-         p4lfIW565oRIN/c+Vrhth50HEka7xMLu+MKAjKA+FPbmPD21phAwhccqtGiVTtSD60Zd
-         EGLplHMN2dasKn0QgJPqQZBi+CeACR4L5U4Dlj9odh9YO7SKHNRH5sQETerhK+QEqrcG
-         P3/A==
+        bh=VIAi0nNwF0EQ4Ycv099voA35UIwgAD/zCbxE9L3eFBQ=;
+        b=R+qQPnPqizqQy0t3jkiLKwfr4K4/dgarwPfFttzlNb43E4o78izHqlKaHUTtF5L0aX
+         U2rW7VDjsEC3GyuX7FFwe1iKr1B4FC7xjZcFh06+y0ryXl2F/GrkLLm1obnIhZPXlqL7
+         hPJoE+3Rb00pJAWDNwRcizomgd5BsFP4RIF3WmuztmNQRO3lPH435EjKkezKb6JjjiFm
+         +D7J3psGA0bhm1mdY2z/1oZ4WG2QYmi+YfIloXmbs1HtYN7LY1dMPOfFPG5+1SH3EjLd
+         6WQPNGdX5ebzgk8mDgJXkf0TTio5UuUFR8R/cQCrHXJKjw3iFhqEji1Adg9w2agMIAih
+         tkmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=2Meo31PuvkGIwIM5AdXoX0Hd0Yqmep6vNoeB5sp1WIo=;
-        b=WFxgrQZOzGFsRX/slJ9V1oFo0kTBNx/LqIVdhRQGqOGjzxUJSp7j5gaPcLpzRDZefd
-         LV+QF66QKM/Gtou3CD6j69ShsBMAo5M36iXPGmDWGPDTSzmtsWquco3J/zi/w8ArVdRx
-         GSjup/GY/Hia3UZfxQGR/9lAcJAp1K2WF6RzG2+oq7ULKJllDCspjZQ+31gBPZGZoOMg
-         1z7Lu8GPjVeYn/hQldDk39KZZonoT7OcgBPgOhgKFYtfOIQfWcP8xYQ/2ZbkcxuM5SUu
-         a1LgOGv3i/02pay359/ic/BaE2sRVjn8+bFLtcaWKQXWAa1qz/cCLLTQgUQKjQWo1H/7
-         syrg==
-X-Gm-Message-State: ACrzQf1Bf64l7Ia4jv/HWNHqWOzEWWF9OAjDY/2oiQKl88OdxdrgfgkE
-	4tRrRy907nzYiy7XVlYZTI24Sg==
-X-Google-Smtp-Source: AMsMyM4nXsx/EGy8bNgRHqGUolsSurVZgmUHv5N2kQ+oMKWiHF7U6zG3vs9wXOsAsDPUMkE0zR3f8A==
-X-Received: by 2002:a05:6402:847:b0:453:943b:bf4 with SMTP id b7-20020a056402084700b00453943b0bf4mr11555407edz.301.1663606819619;
-        Mon, 19 Sep 2022 10:00:19 -0700 (PDT)
+        bh=VIAi0nNwF0EQ4Ycv099voA35UIwgAD/zCbxE9L3eFBQ=;
+        b=XlchrUbO5ZldkjM+7cG51w888eT2+whlpeP/uXT+GEmzTFVxNZ8pxAw7kjHt2bDq3J
+         Qc0aQYYwxH3REKPICtUEWjCbnvDCx6H59eXxgQGJYYGtW52Bmyh4SGK9q1/8PFUMkdRA
+         JmuEIDWu66nps/LT9Lsb+g9Vcd9MrLNawxdhvL25m0MS04BDNXM1M8lpmjcA+gfiguoj
+         vMpP34z87aRkWCTyqURxzgTpYjHVOI+oIPrWhxAvyhDK+eAND0BaMsDSUFv64ZbMtfak
+         mcl178+zM0Ry2QxbsEhNs8xeYrQBS5gv8/c4BDUaGoKiA0o46fkFqSdWdG/Qi0oaLzME
+         k2xg==
+X-Gm-Message-State: ACrzQf0U1oe8gekPrbg3CpkvYnpIvKR4oHzTnvWpiWeb2dZCcDV3gdhH
+	eSpLo/nzQSaL+UfNto6y6cDLmA==
+X-Google-Smtp-Source: AMsMyM4FWcGqIb04fz++aRLharY4kKuVTi0otIV+l0WpEp9ORTAl2Z/yp1vEqg/lPBMW1Gcd0sxy3w==
+X-Received: by 2002:aa7:c585:0:b0:453:e1c6:7dc6 with SMTP id g5-20020aa7c585000000b00453e1c67dc6mr6810316edq.245.1663606785020;
+        Mon, 19 Sep 2022 09:59:45 -0700 (PDT)
 Received: from [127.0.0.1] (2a02-8440-6340-f287-3074-96af-9642-0003.rev.sfr.net. [2a02:8440:6340:f287:3074:96af:9642:3])
-        by smtp.gmail.com with ESMTPSA id cf16-20020a0564020b9000b0044fc3c0930csm20424246edb.16.2022.09.19.10.00.17
+        by smtp.gmail.com with ESMTPSA id cf16-20020a0564020b9000b0044fc3c0930csm20424246edb.16.2022.09.19.09.59.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Sep 2022 10:00:19 -0700 (PDT)
+        Mon, 19 Sep 2022 09:59:44 -0700 (PDT)
 From: Guillaume Ranquet <granquet@baylibre.com>
-Date: Mon, 19 Sep 2022 18:56:13 +0200
-Subject: [PATCH v1 15/17] dt-bindings: display: mediatek: dpi: Add compatible for
- MediaTek MT8195
+Date: Mon, 19 Sep 2022 18:55:59 +0200
+Subject: [PATCH v1 01/17] dt-bindings: clk: mediatek: Add MT8195 DPI clocks
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20220919-v1-15-4844816c9808@baylibre.com>
+Message-Id: <20220919-v1-1-4844816c9808@baylibre.com>
 References: <20220919-v1-0-4844816c9808@baylibre.com>
 In-Reply-To: <20220919-v1-0-4844816c9808@baylibre.com>
 To: Vinod Koul <vkoul@kernel.org>, Stephen Boyd <sboyd@kernel.org>, David Airlie <airlied@linux.ie>,
@@ -95,8 +80,8 @@ Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Pablo S
  devicetree@vger.kernel.org
 X-Mailer: b4 0.10.0-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_180024_422429_75CA7170 
-X-CRM114-Status: UNSURE (   5.32  )
+X-CRM114-CacheID: sfid-20220919_095949_481831_72BB7E29 
+X-CRM114-Status: UNSURE (   7.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,22 +97,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add dt-binding documentation of dpi for MediaTek MT8195 SoC.
+From: Pablo Sun <pablo.sun@mediatek.com>
 
+Expand dt-bindings slot for VDOSYS1 of MT8195.
+This clock is required by the DPI1 hardware
+and is a downstream of the HDMI pixel clock.
+
+Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
 Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-index 5bb23e97cf33..2c7ecef54986 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -24,6 +24,7 @@ properties:
-       - mediatek,mt8183-dpi
-       - mediatek,mt8186-dpi
-       - mediatek,mt8192-dpi
-+      - mediatek,mt8195-dpi
-       - mediatek,mt8195-dp-intf
+diff --git a/include/dt-bindings/clock/mt8195-clk.h b/include/dt-bindings/clock/mt8195-clk.h
+index 95cf812a0b37..d70d017ad69c 100644
+--- a/include/dt-bindings/clock/mt8195-clk.h
++++ b/include/dt-bindings/clock/mt8195-clk.h
+@@ -859,6 +859,8 @@
+ #define CLK_VDO1_DPINTF				47
+ #define CLK_VDO1_DISP_MONITOR_DPINTF		48
+ #define CLK_VDO1_26M_SLOW			49
+-#define CLK_VDO1_NR_CLK				50
++#define CLK_VDO1_DPI1_HDMI			50
++#define CLK_VDO1_NR_CLK				51
++
  
-   reg:
+ #endif /* _DT_BINDINGS_CLK_MT8195_H */
 
 -- 
 b4 0.10.0-dev
