@@ -4,91 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FBB3ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 09:54:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78168C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 09:55:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=acfZNlSk6UDSUFER86iU5/oC+tWnJPYzNY85ToWvplI=; b=jqBIwDlxCQAW1PMTAaR1sHrZjN
-	PX60dhpy+jiq+zQcaoRBNOduXVHgqjt2UWIOxxIMyWkZXC4bW7yDWAk113gfZPONfnPWQwJJgmFoL
-	6pPQIHlpN6licqqEQ67jTsF8kfu5y8fz7E+Xto8eq3vmNgcR/RclblmVmXsO5RgZactnJh9oVdvFM
-	gDHJHpNleBhgyB5DamWMAnqUdt9zoTyLP5NieNLvUrMheAbVxe0ieZoNa/p7375wqOYI1C2GqKfMO
-	aqP0U594dyCMvZQBUc0wLbdW3daGe2pHPrpjjLRCB71CYAEr9aSKTvqnI3JBOQIRt1Nvie+waEWLr
-	0VwBeJ3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8y/jgF7S7DkPlz/qNVdLn1K+ViUtvj5B80dxyrq2UEw=; b=mdjTagBxMvRBWlioL+re7mfWOH
+	qyOgiINMN38UcsmkqxeL5oh6XLzLM2d4rOGVJBV/6fMOcuyMR50S4Z7oyKr6Kqnsd/6mwpeUB267v
+	STlX/lXpCtTfaLKUArr1O9WXrtx1dI16lxfKqqp501MfxKj8YVOqfWKsDvH6hO0RQp31jMipoGJBn
+	vdIRBoxyFaqYvcBZllB4Q+ReocNB7Jyl0IEIyC6ciquLSJcrikmzzEQL+NccuTHk0jg8lCChK9e3p
+	6kXo98IFoU5HWYD9ExN5NjrsMcZ3eAyxn54q6uLgdQlH2RJYvNL09LSXEDz5RezhjU5aElOmfeR8S
+	5TM1scjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaDUA-00B0yJ-EG; Mon, 19 Sep 2022 09:54:42 +0000
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+	id 1oaDUo-00B1MV-CP; Mon, 19 Sep 2022 09:55:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaDU5-00B0rd-Cf; Mon, 19 Sep 2022 09:54:40 +0000
-Received: by mail-lj1-x22b.google.com with SMTP id q17so19301343lji.11;
-        Mon, 19 Sep 2022 02:54:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=acfZNlSk6UDSUFER86iU5/oC+tWnJPYzNY85ToWvplI=;
-        b=qfjkJOzXVYyBbWBcP7ScnhEr3K4rRvVk5rRFs1OF/IhXIcCx6uLOkHA2R32bWSNb52
-         5caWhhw2LYFoBao51d6Yo0KY2AIBTSHg+QnKa7HxvTNoOshJ/tHBsHX38mjzLh0+H6Ee
-         4fsyaEhlpXl1wpJC3pjQYWXzowXLs+gWWaVzVzDBYTxZ+nP41WOqMcEipwrL1zpuGxND
-         p1m8qpVVRXkoNMN8xLi/+m7PY3PqdbA1YgMysj/KPnvPX5xxBZ9c2bxmGfWfnuNGf08t
-         1n73JgcdGa+B9fnnGY1IKwJN1dgH675rZsofUMF2WwtMQ1f8K5lM9wlUgkjt0f1tKhrV
-         6rwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=acfZNlSk6UDSUFER86iU5/oC+tWnJPYzNY85ToWvplI=;
-        b=e/pbmMxGll3MOU7Gc21AHZoiG4kEEXc+G0gA/wp5J2pIZ7w+67iMnTcVJWfkh3Jq7N
-         mLoYz9wKmIa0wB46Osio0ib3gxeZYTEAwXYGbBpCcHoIu0dnslaEp/z+YPNcss8ofn5p
-         zjBQ1sd9JeQB0zCzZzBDmOWhjLDa/F8kZgFl0GmVe7fDdNyxMlQBvnMS0WIUnnoqc8f8
-         CbG8OKQuaOLYhufUW3bwT5AgSJoEXZPPLbfAgnXsrCWrtb+4nH4m0MvCoP4gipSMzmim
-         t61JjtwSkJ07j1Ff8jL7Eybj0SGeCJBFyffqezPd2Z5jIIpiu/xAxgkX0rUQnUmiyjXH
-         5Bpw==
-X-Gm-Message-State: ACrzQf3Vt1l5jZNlR15gMdBXjZnNoCZO4Or0Tl/d++nAp7zAPvDlqetQ
-	Wza6OX0HJMY37iZmchoWE9U=
-X-Google-Smtp-Source: AMsMyM5s1lURiFkaTiES2Do+Gp85hVbFMOUBWEtYF1ETax19T1vejZL/sH5OF3FW8EhMfG9KBBZ7oQ==
-X-Received: by 2002:a2e:b893:0:b0:26c:22e0:716d with SMTP id r19-20020a2eb893000000b0026c22e0716dmr5260362ljp.48.1663581273645;
-        Mon, 19 Sep 2022 02:54:33 -0700 (PDT)
-Received: from [192.168.2.145] ([109.252.122.187])
-        by smtp.googlemail.com with ESMTPSA id y11-20020a05651c106b00b0026c3e350682sm1347948ljm.14.2022.09.19.02.54.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Sep 2022 02:54:33 -0700 (PDT)
-Message-ID: <7fe977b9-8e54-96cf-91da-49f0861ff945@gmail.com>
-Date: Mon, 19 Sep 2022 12:54:32 +0300
+	id 1oaDUJ-00B13H-LC; Mon, 19 Sep 2022 09:55:07 +0000
+X-UUID: 3db3e6c6b96c4b86a3ef0b9a687b6bae-20220919
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=8y/jgF7S7DkPlz/qNVdLn1K+ViUtvj5B80dxyrq2UEw=;
+	b=glcQnSHQKNa7LFE5LiLQoihd5Xf3xJYH6AxwWFhALJ7qhBh7ZplOEdifSdESaUwEvhmbptZadScAGwRWzZPr2H38+eHGauI+isNCOlV3u9TaCETJn90gCzbKlP4VLycSO4tmavGgKyPnwK3LyEZsaEkZ3lhxPEAnlgcUiTgjPdM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:b7cd0f03-df15-46a0-82f9-6163a95331f9,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:d6c8235e-5ed4-4e28-8b00-66ed9f042fbd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 3db3e6c6b96c4b86a3ef0b9a687b6bae-20220919
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1975279132; Mon, 19 Sep 2022 02:54:46 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 19 Sep 2022 17:24:11 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 19 Sep 2022 17:24:10 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Will Deacon <will@kernel.org>
+CC: Robin Murphy <robin.murphy@arm.com>, <iommu@lists.linux.dev>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>, <libo.kang@mediatek.com>,
+	<chengci.xu@mediatek.com>, <youlin.pei@mediatek.com>,
+	<anan.sun@mediatek.com>, <xueqi.zhang@mediatek.com>, Guenter Roeck
+	<groeck@chromium.org>, Dan Carpenter <dan.carpenter@oracle.com>
+Subject: [PATCH v5 0/6] iommu/mediatek: Improve safety from invalid dts input
+Date: Mon, 19 Sep 2022 17:23:59 +0800
+Message-ID: <20220919092405.8256-1-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH v2 0/3] Refactor MediaTek DP drivers
-Content-Language: en-US
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Bo-Chen Chen <rex-bc.chen@mediatek.com>
-Cc: Guillaume Ranquet <granquet@baylibre.com>,
- Jitao Shi <jitao.shi@mediatek.com>, David Airlie <airlied@linux.ie>,
- liangxu.xu@mediatek.com, linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20220916133821.27980-1-rex-bc.chen@mediatek.com>
- <CAAOTY__g=s_ACd+zTJZT1HBbrLo-JpHbrwLsy1zKjxbM5c21uA@mail.gmail.com>
-From: Dmitry Osipenko <digetx@gmail.com>
-In-Reply-To: <CAAOTY__g=s_ACd+zTJZT1HBbrLo-JpHbrwLsy1zKjxbM5c21uA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_025437_946888_C66E363F 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20220919_025451_753347_85ED1566 
+X-CRM114-Status: UNSURE (   8.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,25 +83,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Chun-Kuang,
+This patchset contains misc improve patches. Mainly to improve safety from 
+invalid dts input.
 
-18.09.2022 06:17, Chun-Kuang Hu пишет:
-> Hi, Dmitry:
-> 
-> My tree has no mtk-dp driver yet. Would you like to pick this series?
-> 
-> Regards,
-> Chun-Kuang.
-> 
-> Bo-Chen Chen <rex-bc.chen@mediatek.com> 於 2022年9月16日 週五 晚上9:38寫道：
->>
->> For this series, we do some clean-up and fix a build warning.
->> This series is based on linux-next-20220915.
->>
->> Changes for v2:
->> 1. Update commit message in "drm/mediatek: dp: Reduce indentation in mtk_dp_bdg_detect()".
->> 2. Add fix tag for "drm/mediatek: dp: Fix warning in mtk_dp_video_mute()".
+Change notes:
+v5: a) Loop from MTK_LARB_NR_MAX in the error path from Angelo.
+    b) Fix the redundant put_device for the error patch outside the loop from dan.
+ 
+v4: https://lore.kernel.org/linux-mediatek/20220824064306.21495-1-yong.wu@mediatek.com/
+    a) Just remove the first patch about dev_err_probe since it was merged.
+    b) Rebase v6.0-rc1
 
-I changed commit message of the "Fix warning in mtk_dp_video_mute()"
-patch to make it less noisy and applied all the patches to drm-misc-next.
+v3: https://lore.kernel.org/linux-mediatek/20220701053942.3266-1-yong.wu@mediatek.com/
+    a) Add platform_device_put from Robin.
+    b) Use component_match_add instead component_match_add_release suggested from Robin.
+
+v2: https://lore.kernel.org/linux-mediatek/20220616054203.11365-1-yong.wu@mediatek.com/
+    a) Rebase on v5.19-rc1.
+    b) Add a New patch [5/5] just remove a variable that only is for v1.
+
+v1: https://lore.kernel.org/linux-mediatek/20220511064920.18455-1-yong.wu@mediatek.com/
+    Base on linux-next-20220510.
+    the improve safety from dts is base on:
+    https://lore.kernel.org/linux-mediatek/20211210205704.1664928-1-linux@roeck-us.net/
+
+Guenter Roeck (1):
+  iommu/mediatek: Validate number of phandles associated with
+    "mediatek,larbs"
+
+Yong Wu (5):
+  iommu/mediatek: Add platform_device_put for recovering the device
+    refcnt
+  iommu/mediatek: Use component_match_add
+  iommu/mediatek: Add error path for loop of mm_dts_parse
+  iommu/mediatek: Improve safety for mediatek,smi property in larb nodes
+  iommu/mediatek: Remove unused "mapping" member from mtk_iommu_data
+
+ drivers/iommu/mtk_iommu.c | 106 +++++++++++++++++++++++++++-----------
+ 1 file changed, 76 insertions(+), 30 deletions(-)
+
+-- 
+2.18.0
+
+
 
