@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B983C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 15:35:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1980C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 15:36:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mFDimcFk4eCLfuOk9fPYkHP2t5TUBxkdpQF816I5YeM=; b=e5fHSFNPogNOLjZ37ld0AmLLlr
-	pkkkaYQ08h5MiXGQlBYDwceMT8Sj3RCZwIm+H1yUJHEAxsBeaKkd0jJDzgCmEt+WXBjsB7CSt8fm5
-	vslPi1o053opyQli82OKAS3EEGzRWQt6U2EHk+8oZYmAWp/a2tFOr/rrkaNGWl0R3X1q6Q1wLqwrx
-	6WCulnO/o2KnbyRH69fZLS9kc2MIiSuYu6CP0T3xBxbzvHOmJl8tjeW67Wmg2IRZMB9XFAS0qMKiv
-	Z1Iscxz9Az5CnrKYHHictaBY+qs4l8+ztTaoKflcR9zdcQgjAqJq97qvp8UaiXlzP/MngQ9mvJXg/
-	iUO7rx8g==;
+	bh=7SQ0B78xaXIs7q6GLOvjrWLgLjZA8L7MJwQZ7oDoaeQ=; b=wHVFLoe0fJEm6sm1ckrx3DWLxC
+	t/uDOLYCsv9NBsBfDYmbnWO1ZtFjLvLlKJzGQq5k2yrsHnL7ibNtrmEd023ohQaBdzKWRlR2UvpmS
+	6cJbsnUrxxIZsD9luPKB/YvKlf3i4Uj+mBEWscm9bopsLv+jGZuHeAeoaDt3DJnC4HbddEaJBQANN
+	n+dkgF9e4+4ft+fXMn/1cfubrZZWjVhLgj/7FSodA63MkiudEfLeiuEq/mhGze6eHIaRCyGn7o2Qn
+	Af9Mmj5GHRZcLERpgCwPm82JC+1rtC77SkinQ2eX7Fd69jUy4Agh7yR73NlZJHcN9USaomyZRWXKU
+	rk0LUzng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaIo2-00CWpt-2U; Mon, 19 Sep 2022 15:35:34 +0000
+	id 1oaIoZ-00CX7v-3l; Mon, 19 Sep 2022 15:36:07 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaIg8-00CS5Q-U2; Mon, 19 Sep 2022 15:27:26 +0000
+	id 1oaIhp-00CSuk-NP; Mon, 19 Sep 2022 15:29:11 +0000
 Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 859C6415;
-	Mon, 19 Sep 2022 17:27:22 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 84C7B499;
+	Mon, 19 Sep 2022 17:29:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1663601242;
-	bh=NykL4ORXb7mlG5Er0sYqetabdT1DHT9QrJrGrvlu+D4=;
+	s=mail; t=1663601347;
+	bh=NuzkgiGGksLT/z4/1KJ+JyeCIKwowmxW3Wn0E+L0u/8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Rmp8G9vxTP6yVvqGm3ljCjRuTcwj7n60drXxXkYinvqAvkZa7J50YiM8yFfZI4BWI
-	 7h4emeppP9If2KDiie7hnRYs3ZsSTyWPdh+Oy9zwqsdBtKve/7/HGeVDHY2ibdFlfR
-	 ujFqQVyvZuE8AVgBBeKeECRUDJebj/gqlMRyVL84=
-Date: Mon, 19 Sep 2022 18:27:09 +0300
+	b=l5dwTvrDBt4EtkMgI5YVhD2O473i9JyzN0gFCbTOKHVa7IENvSBo4myUeJY1kjJlC
+	 zj+pDA5tURnUMXYWEnVSB9kB58M7BR5UPyII8wR/YisOyQJItwqQJl6Ig+5lhVhQRt
+	 sWnkqussNC4kxpIJk+NLjlh2SgWkYqSlFQZjpThg=
+Date: Mon, 19 Sep 2022 18:28:54 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Sam Ravnborg <sam@ravnborg.org>
 Cc: dri-devel@lists.freedesktop.org,
@@ -63,18 +63,18 @@ Cc: dri-devel@lists.freedesktop.org,
 	Philipp Zabel <p.zabel@pengutronix.de>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Subject: Re: [PATCH v1 05/12] drm/bridge: sii8620: Use
+Subject: Re: [PATCH v1 06/12] drm/bridge: cros-ec-anx7688: Use
  drm_bridge_funcs.atomic_check
-Message-ID: <YyiKTe4qVUuQ/Zj1@pendragon.ideasonboard.com>
+Message-ID: <YyiKthfh3I5rp99e@pendragon.ideasonboard.com>
 References: <20220717174454.46616-1-sam@ravnborg.org>
- <20220717174454.46616-6-sam@ravnborg.org>
+ <20220717174454.46616-7-sam@ravnborg.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20220717174454.46616-6-sam@ravnborg.org>
+In-Reply-To: <20220717174454.46616-7-sam@ravnborg.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_082725_167047_4E365DCF 
-X-CRM114-Status: GOOD (  20.97  )
+X-CRM114-CacheID: sfid-20220919_082910_001127_54DBB0C3 
+X-CRM114-Status: GOOD (  20.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,7 +93,7 @@ Hi Sam,
 
 Thank you for the patch.
 
-On Sun, Jul 17, 2022 at 07:44:47PM +0200, Sam Ravnborg wrote:
+On Sun, Jul 17, 2022 at 07:44:48PM +0200, Sam Ravnborg wrote:
 > Replace the deprecated drm_bridge_funcs.mode_fixup() with
 > drm_bridge_funcs.atomic_check().
 > 
@@ -107,71 +107,98 @@ On Sun, Jul 17, 2022 at 07:44:47PM +0200, Sam Ravnborg wrote:
 > Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
 > Cc: Jonas Karlman <jonas@kwiboo.se>
 > Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
-> ---
->  drivers/gpu/drm/bridge/sil-sii8620.c | 17 +++++++++++------
->  1 file changed, 11 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bridge/sil-sii8620.c b/drivers/gpu/drm/bridge/sil-sii8620.c
-> index ab0bce4a988c..b6e5c285c8ea 100644
-> --- a/drivers/gpu/drm/bridge/sil-sii8620.c
-> +++ b/drivers/gpu/drm/bridge/sil-sii8620.c
-> @@ -8,6 +8,7 @@
->  
->  #include <asm/unaligned.h>
->  
-> +#include <drm/drm_atomic_state_helper.h>
-
-I'd move this one line down, in alphabetical order.
-
->  #include <drm/bridge/mhl.h>
->  #include <drm/drm_bridge.h>
->  #include <drm/drm_crtc.h>
-> @@ -2262,26 +2263,30 @@ static enum drm_mode_status sii8620_mode_valid(struct drm_bridge *bridge,
->  	}
->  }
->  
-> -static bool sii8620_mode_fixup(struct drm_bridge *bridge,
-> -			       const struct drm_display_mode *mode,
-> -			       struct drm_display_mode *adjusted_mode)
-> +static int sii8620_atomic_check(struct drm_bridge *bridge,
-> +				struct drm_bridge_state *bridge_state,
-> +				struct drm_crtc_state *crtc_state,
-> +				struct drm_connector_state *conn_state)
->  {
->  	struct sii8620 *ctx = bridge_to_sii8620(bridge);
->  
->  	mutex_lock(&ctx->lock);
->  
-> -	ctx->use_packed_pixel = sii8620_is_packing_required(ctx, adjusted_mode);
-> +	ctx->use_packed_pixel = sii8620_is_packing_required(ctx, &crtc_state->adjusted_mode);
-
-Shouldn't this be moved to atomic_enable ? A test commit should change
-the device state.
-
-As this code was initially in mode_fixup I suppose this patch could be
-merged as-is, with the problem fixed on top, so
+> Cc: Benson Leung <bleung@chromium.org>
+> Cc: Guenter Roeck <groeck@chromium.org>
+> Cc: chrome-platform@lists.linux.dev
 
 Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 
+> ---
+>  drivers/gpu/drm/bridge/cros-ec-anx7688.c | 28 +++++++++++++++---------
+>  1 file changed, 18 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/bridge/cros-ec-anx7688.c b/drivers/gpu/drm/bridge/cros-ec-anx7688.c
+> index 0f6d907432e3..fc19ea87926f 100644
+> --- a/drivers/gpu/drm/bridge/cros-ec-anx7688.c
+> +++ b/drivers/gpu/drm/bridge/cros-ec-anx7688.c
+> @@ -5,6 +5,7 @@
+>   * Copyright 2020 Google LLC
+>   */
 >  
->  	mutex_unlock(&ctx->lock);
+> +#include <drm/drm_atomic_state_helper.h>
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_print.h>
+>  #include <linux/i2c.h>
+> @@ -45,9 +46,10 @@ bridge_to_cros_ec_anx7688(struct drm_bridge *bridge)
+>  	return container_of(bridge, struct cros_ec_anx7688, bridge);
+>  }
 >  
-> -	return true;
+> -static bool cros_ec_anx7688_bridge_mode_fixup(struct drm_bridge *bridge,
+> -					      const struct drm_display_mode *mode,
+> -					      struct drm_display_mode *adjusted_mode)
+> +static int cros_ec_anx7688_bridge_atomic_check(struct drm_bridge *bridge,
+> +					       struct drm_bridge_state *bridge_state,
+> +					       struct drm_crtc_state *crtc_state,
+> +					       struct drm_connector_state *conn_state)
+>  {
+>  	struct cros_ec_anx7688 *anx = bridge_to_cros_ec_anx7688(bridge);
+>  	int totalbw, requiredbw;
+> @@ -56,13 +58,13 @@ static bool cros_ec_anx7688_bridge_mode_fixup(struct drm_bridge *bridge,
+>  	int ret;
+>  
+>  	if (!anx->filter)
+> -		return true;
+> +		return 0;
+>  
+>  	/* Read both regs 0x85 (bandwidth) and 0x86 (lane count). */
+>  	ret = regmap_bulk_read(anx->regmap, ANX7688_DP_BANDWIDTH_REG, regs, 2);
+>  	if (ret < 0) {
+>  		DRM_ERROR("Failed to read bandwidth/lane count\n");
+> -		return false;
+> +		return ret;
+>  	}
+>  	dpbw = regs[0];
+>  	lanecount = regs[1];
+> @@ -71,28 +73,34 @@ static bool cros_ec_anx7688_bridge_mode_fixup(struct drm_bridge *bridge,
+>  	if (dpbw > 0x19 || lanecount > 2) {
+>  		DRM_ERROR("Invalid bandwidth/lane count (%02x/%d)\n", dpbw,
+>  			  lanecount);
+> -		return false;
+> +		return -EINVAL;
+>  	}
+>  
+>  	/* Compute available bandwidth (kHz) */
+>  	totalbw = dpbw * lanecount * 270000 * 8 / 10;
+>  
+>  	/* Required bandwidth (8 bpc, kHz) */
+> -	requiredbw = mode->clock * 8 * 3;
+> +	requiredbw = crtc_state->mode.clock * 8 * 3;
+>  
+>  	DRM_DEBUG_KMS("DP bandwidth: %d kHz (%02x/%d); mode requires %d Khz\n",
+>  		      totalbw, dpbw, lanecount, requiredbw);
+>  
+>  	if (totalbw == 0) {
+>  		DRM_ERROR("Bandwidth/lane count are 0, not rejecting modes\n");
+> -		return true;
+> +		return 0;
+>  	}
+>  
+> -	return totalbw >= requiredbw;
+> +	if (totalbw < requiredbw)
+> +		return -EINVAL;
+> +
 > +	return 0;
 >  }
 >  
->  static const struct drm_bridge_funcs sii8620_bridge_funcs = {
->  	.attach = sii8620_attach,
->  	.detach = sii8620_detach,
-> -	.mode_fixup = sii8620_mode_fixup,
-> +	.atomic_check = sii8620_atomic_check,
->  	.mode_valid = sii8620_mode_valid,
+>  static const struct drm_bridge_funcs cros_ec_anx7688_bridge_funcs = {
+> -	.mode_fixup = cros_ec_anx7688_bridge_mode_fixup,
+> +	.atomic_check = cros_ec_anx7688_bridge_atomic_check,
 > +	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
 > +	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
 > +	.atomic_reset = drm_atomic_helper_bridge_reset,
 >  };
 >  
->  static int sii8620_probe(struct i2c_client *client,
+>  static int cros_ec_anx7688_bridge_probe(struct i2c_client *client)
 
 -- 
 Regards,
