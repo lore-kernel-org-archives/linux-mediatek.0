@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E547CC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 15:39:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F31FC54EE9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 15:43:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ucUVa3vBeKVA7/+t2p6qNPzz5T9dSkQm/dmT7JC8vdw=; b=3EDgyC/NwfiDBsmIpCsqOLP3Wf
-	WVZ5ZE1l+02A7yhl8tK+xrnIY3fxvi67hq3eUKvUAnKkrf3TDibuyvxUlTX7juxvmM8WqTb8L+xLl
-	ZBJbFpCI1W6dn9IcrVFFhcRw4GPtLm7dpCDX/9X3TxASm2Zufth/BZbgQu8nXT7g7aaV9RTqjORJk
-	MVX4bUhPeAombyrDg16GKTWb1IRYZ912oJWv9xvNl+JBRSWqmyXVB0Im3+r2L/TfyTQGRKRk6t0LM
-	bhSH/7uZ0yuiOtw1vdfGdCdv4rkSJvi30G/xA5f9Pb/Nd8OazUwMCXi6dhZuMwf7gLvn95Ng6albV
-	RT/IlSyQ==;
+	bh=w2lfP5VtQIxYtfwLc6JpL6F4cI2C9QlI3zICv2v/x+0=; b=jCaQPL1i5MS164b046F1QjUNCw
+	FQmk9+Zf5ssag3tufrlY4Tqf22n0vr4UjUJdUR7SgrqkFPV73YpDaMTZsc7uqKKCSsSFkYHcTQ1mn
+	sOsuHs7waz+Ye8oMxJGxrN3tjfVoAecV/3qJIXXzrBCHhMeDYUtxsY4tqXYheNFshHGlpq1Dbcev+
+	ZZyf9rCU/8ndhS8xqRdfjgnx+7BXrK2u9C1k6pEZbJr0AXJOdmkmB4DU16Em5b6IZmLhB+nnA85bX
+	08ULqOywbJnT9+WByfMVPd69vUavAvj4wwwYd9wcZPTCeeugVhx09zBOE3lSu4LNUTWRVmKd+dqOu
+	ieRJ0tsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaIrt-00CZ1z-GX; Mon, 19 Sep 2022 15:39:33 +0000
+	id 1oaIvc-00Cb3D-LI; Mon, 19 Sep 2022 15:43:24 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaIjV-00CTqw-MX; Mon, 19 Sep 2022 15:30:55 +0000
+	id 1oaIkL-00CUJ8-0F; Mon, 19 Sep 2022 15:31:46 +0000
 Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id DB6C1D02;
-	Mon, 19 Sep 2022 17:30:51 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 4867D499;
+	Mon, 19 Sep 2022 17:31:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1663601452;
-	bh=sYSOlMy28kH/P+QBBNi9ArlEboFiuqMn4exN23qOcCU=;
+	s=mail; t=1663601503;
+	bh=xj+FXHZun7Tq2dFujf6besSXQvCHP1Rn25a1rvSb5ck=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=l7t6TxF9jeuA5e3gYBG9/oPrmeuKock53bxAIfHgCoiaqweE/8GClM2yunbjHy6nJ
-	 yr7FXfCotngmEOvzDV91b8RUEk19QX1/I0i4SETf0lsNaU7U8yTlKYjqun/GycR1Yw
-	 1eVny6FgGx0y86lm57zYJ7VQeV5BPgNTYJNXtg7c=
-Date: Mon, 19 Sep 2022 18:30:38 +0300
+	b=kbgwRAU2yAb5P6lfEc4xG6kfAJyc+96nTqzByEhr8ACzvuioMONQQ0p9+sLB9lcKg
+	 n86vQt8oXnNUst7jy1xSUN4Uq1gnJYpTzE6o35wFzWEc4z+ELb+iIxWGKBRWDxZiSu
+	 bdtZB8khxJkL/kFnzjH8V2IkgPMgsnzhsYqpnjjU=
+Date: Mon, 19 Sep 2022 18:31:30 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Sam Ravnborg <sam@ravnborg.org>
 Cc: dri-devel@lists.freedesktop.org,
@@ -63,17 +63,19 @@ Cc: dri-devel@lists.freedesktop.org,
 	Philipp Zabel <p.zabel@pengutronix.de>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Subject: Re: [PATCH v1 08/12] drm/mediatek: Drop mtk_hdmi_bridge_mode_fixup
-Message-ID: <YyiLHvZ8emrUDicw@pendragon.ideasonboard.com>
+Subject: Re: [PATCH v1 09/12] drm/rcar-du: lvds: Use
+ drm_bridge_funcs.atomic_check
+Message-ID: <YyiLUg4KSEizU4EE@pendragon.ideasonboard.com>
 References: <20220717174454.46616-1-sam@ravnborg.org>
  <20220717175801.78668-1-sam@ravnborg.org>
+ <20220717175801.78668-2-sam@ravnborg.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20220717175801.78668-1-sam@ravnborg.org>
+In-Reply-To: <20220717175801.78668-2-sam@ravnborg.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_083053_933377_2089C84B 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20220919_083145_380535_5B90E0EF 
+X-CRM114-Status: GOOD (  19.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,51 +94,64 @@ Hi Sam,
 
 Thank you for the patch.
 
-On Sun, Jul 17, 2022 at 07:57:57PM +0200, Sam Ravnborg wrote:
-> The implementation of drm_bridge_funcs.mode_fixup is optional
-> so there is no need to provide an empty implementation.
-> Drop mtk_hdmi_bridge_mode_fixup() so the driver no longer uses the
-> deprecated drm_bridge_funcs.mode_fixup() operation.
+On Sun, Jul 17, 2022 at 07:57:58PM +0200, Sam Ravnborg wrote:
+> Replace the deprecated drm_bridge_funcs.mode_fixup() with
+> drm_bridge_funcs.atomic_check().
+> The driver implements the state operations, so no other changes
+> are required for the replacement.
 > 
 > Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
-> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Cc: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
+> Cc: linux-renesas-soc@vger.kernel.org
 
 Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 
+I assume you'll merge this through drm-misc with the rest of the series,
+so I won't take it in my tree unless you ask me so.
+
 > ---
->  drivers/gpu/drm/mediatek/mtk_hdmi.c | 8 --------
->  1 file changed, 8 deletions(-)
+>  drivers/gpu/drm/rcar-du/rcar_lvds.c | 12 +++++++-----
+>  1 file changed, 7 insertions(+), 5 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> index a63b76055f81..7321aa1ee6f0 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -1293,13 +1293,6 @@ static int mtk_hdmi_bridge_attach(struct drm_bridge *bridge,
->  	return 0;
+> diff --git a/drivers/gpu/drm/rcar-du/rcar_lvds.c b/drivers/gpu/drm/rcar-du/rcar_lvds.c
+> index 830aac0a2cb4..c4adbcede090 100644
+> --- a/drivers/gpu/drm/rcar-du/rcar_lvds.c
+> +++ b/drivers/gpu/drm/rcar-du/rcar_lvds.c
+> @@ -554,10 +554,12 @@ static void rcar_lvds_atomic_disable(struct drm_bridge *bridge,
+>  	clk_disable_unprepare(lvds->clocks.mod);
 >  }
 >  
-> -static bool mtk_hdmi_bridge_mode_fixup(struct drm_bridge *bridge,
-> -				       const struct drm_display_mode *mode,
-> -				       struct drm_display_mode *adjusted_mode)
-> -{
-> -	return true;
-> -}
-> -
->  static void mtk_hdmi_bridge_atomic_disable(struct drm_bridge *bridge,
->  					   struct drm_bridge_state *old_bridge_state)
+> -static bool rcar_lvds_mode_fixup(struct drm_bridge *bridge,
+> -				 const struct drm_display_mode *mode,
+> -				 struct drm_display_mode *adjusted_mode)
+> +static int rcar_lvds_atomic_check(struct drm_bridge *bridge,
+> +				  struct drm_bridge_state *bridge_state,
+> +				  struct drm_crtc_state *crtc_state,
+> +				  struct drm_connector_state *conn_state)
 >  {
-> @@ -1399,7 +1392,6 @@ static const struct drm_bridge_funcs mtk_hdmi_bridge_funcs = {
->  	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+> +	struct drm_display_mode *adjusted_mode = &crtc_state->adjusted_mode;
+>  	struct rcar_lvds *lvds = bridge_to_rcar_lvds(bridge);
+>  	int min_freq;
+>  
+> @@ -569,7 +571,7 @@ static bool rcar_lvds_mode_fixup(struct drm_bridge *bridge,
+>  	min_freq = lvds->info->quirks & RCAR_LVDS_QUIRK_EXT_PLL ? 5000 : 31000;
+>  	adjusted_mode->clock = clamp(adjusted_mode->clock, min_freq, 148500);
+>  
+> -	return true;
+> +	return 0;
+>  }
+>  
+>  static int rcar_lvds_attach(struct drm_bridge *bridge,
+> @@ -591,7 +593,7 @@ static const struct drm_bridge_funcs rcar_lvds_bridge_ops = {
 >  	.atomic_reset = drm_atomic_helper_bridge_reset,
->  	.attach = mtk_hdmi_bridge_attach,
-> -	.mode_fixup = mtk_hdmi_bridge_mode_fixup,
->  	.atomic_disable = mtk_hdmi_bridge_atomic_disable,
->  	.atomic_post_disable = mtk_hdmi_bridge_atomic_post_disable,
->  	.mode_set = mtk_hdmi_bridge_mode_set,
+>  	.atomic_enable = rcar_lvds_atomic_enable,
+>  	.atomic_disable = rcar_lvds_atomic_disable,
+> -	.mode_fixup = rcar_lvds_mode_fixup,
+> +	.atomic_check = rcar_lvds_atomic_check,
+>  };
+>  
+>  bool rcar_lvds_dual_link(struct drm_bridge *bridge)
 
 -- 
 Regards,
