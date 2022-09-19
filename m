@@ -4,72 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75270ECAAD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 09:28:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E854C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Sep 2022 09:29:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VhDv4Z6VehgIZewxcyssE9aEXtrZgrh+FUiksQcz7AA=; b=cTS1mMQtmFbQeLdmaIFr0r8K/a
-	+RkoHHdJm4VbphTF/hSykK3CuKKzvhF4UIMPTyo+G0JMlogfsJ/YEeuKMmTAVC0GhIO7rC7WskmMN
-	ufWJfy758KJOCbsHf/ibAhDCTORw3+MBLwXUg0MeL/8aDbI979JCftPtWv8OW2euWi7h7nBqGZld9
-	hvYf6f8+QxgzAuxDyV1maSAVHMF7CTotuPFVmycqMesYTrryRwgirtXRHsdYb7W2BI4xJ3iforpRl
-	CqsFfzenhx3so2sXXxKjdRqtL2sE9lUb9S1cwfzCTsLgBJNfa3w07G+2HgPCJuoCBQt5F7SWmH0gG
-	W9aWgS8w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ni5vNsO8umndiniabq8C5W9eiIXqQqotBmgaNWkkLK0=; b=AzihJrk+pKDgWKMaeqY7zQv2HY
+	CjHxRwAGgwhoJvJw1LmgvgGYrdD2VWubAXjV31g5drdGHRlJi/F0KjMnHUhIVNoQcL27Ldc4ehciB
+	MZdiJrA9MzkPtwJfx+QVkIBA/b+Oizw8pQRMYXd0E3hr48RKgoFAx/eqp7uoJystdc+IW/xaMNFR6
+	uCDpiu55zQ3CwmdQpkf79N/NMxVckc9ER02GGzOHw+vkvpSP1l/oCJMg3RB05sZSrzrdrNHxVlRml
+	lINQktXVZXWEcpDFBsQFpisUDUz5EeHX0ysCWiKVVbiC/xbx3WmhKJ+f6KOmPXVxYeqt5dysdTpad
+	0/w5FFlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaD4V-00AlDA-9v; Mon, 19 Sep 2022 09:28:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oaD5C-00Aldx-DR; Mon, 19 Sep 2022 09:28:54 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaD3w-00Akth-Pa; Mon, 19 Sep 2022 09:27:38 +0000
-X-UUID: 83dcd693baa741c4b1ca23c16c1d59cc-20220919
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VhDv4Z6VehgIZewxcyssE9aEXtrZgrh+FUiksQcz7AA=;
-	b=BnpUu0tkQKGg9WAycIgH+UNRfaUJt4DbS/9y86+CnxuiBz/qHCJN+hJVq3jJvi1kS7k9q8Mw9rR1uYvWqJ+af7gilp4aeRh392y90gWdVvLzNVRQoPBJtzsGkN6jfNIY1E5cM+eIatU/w/Xm7R7K6acT6Fd2qrhAN2GlO+1EpPI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:87b55b49-f64a-496d-a743-e7087e0dea58,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:ee67db18-0314-4ae7-b2d1-7295be49255e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 83dcd693baa741c4b1ca23c16c1d59cc-20220919
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chengci.xu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1591559619; Mon, 19 Sep 2022 02:27:29 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Mon, 19 Sep 2022 16:26:53 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 19 Sep 2022 16:26:52 +0800
-From: Chengci.Xu <chengci.xu@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, "Will
- Deacon" <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>
-CC: <iommu@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chengci.Xu
-	<chengci.xu@mediatek.com>
-Subject: [PATCH v3 3/3] iommu/mediatek: Add MT8188 IOMMU Support
-Date: Mon, 19 Sep 2022 16:26:11 +0800
-Message-ID: <20220919082611.19824-4-chengci.xu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220919082611.19824-1-chengci.xu@mediatek.com>
-References: <20220919082611.19824-1-chengci.xu@mediatek.com>
+	id 1oaD48-00Al03-T6
+	for linux-mediatek@lists.infradead.org; Mon, 19 Sep 2022 09:28:05 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id j16so18909737lfg.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Sep 2022 02:27:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=Ni5vNsO8umndiniabq8C5W9eiIXqQqotBmgaNWkkLK0=;
+        b=kdGdpmpEChbWIseVkCKVEvUwIFi0MK0B4sNLWcpeEmqU9CRrk2WTj+kKzfKYObMR7m
+         mXTvLyiMeNthhWAu8GagmQ82H8Edn+6gSumV048FtoC17iw9TJG+Nh8+R1WLThAaMurM
+         I4jkZovZ1fuU/0VMZHnBMNWlfWfcv/QYfv1fFbL3meE0eOr1n0zwvocmGc66XdkeMEBe
+         TKiE8eEBKPICnX7K946jxfyP1rPCdO61qSJ6GmKPYeZAgKW0E2f6lQcRIvjugfQDHnTl
+         XcBY+5NOBufJa4x37aCbFok8afQLMXl8ISv2RjLCIgw54pRiwlYDAyoNcT7P6tP8NWZ8
+         ximQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=Ni5vNsO8umndiniabq8C5W9eiIXqQqotBmgaNWkkLK0=;
+        b=3Kt7rLgHBHYHBHLl1DAMW5HfCIOch1+q12HqugcrD5bcH3Zo8jc3PHG/btCvKmsxj/
+         5zVme0b2raVOL7dIAyNsa25sIs9PpreTrFkPpKCvh/mTvoEQ+GViyH904eUhbaywgfni
+         oh0JmVjU65dOTQ69T2iHRXpLJh7pJRemzLOTjym8IlFRP8oBGLCkNa1k9sxW5IfBoCAC
+         heAJAE4xObO97vffx0RnrVHNe1dgCYa95TMU7dd8j2wJcUh16x7HjaGc6jKIMpqPnHe5
+         ImBhS+mD28JWvHi3UYXAayC36WT3ZBgsLtdQ9MRRItFCg2+De21IU5MUdW7wBeXbhA+R
+         hP1g==
+X-Gm-Message-State: ACrzQf3zqEY/XbwYLEPJyybJrfjtDKgui9lp7w1wFt4zqizqRTM2d6x+
+	U+w226GaD00e5Y0KRh9VHhEkzA==
+X-Google-Smtp-Source: AMsMyM7lxiuvbds2FRZKDW9lrUwIuvpGFw0m9oRIkcp0QON8mh5L72dtCjDGDIjOi83tFBanr+gAeA==
+X-Received: by 2002:a05:6512:3d1c:b0:49d:87fc:f63 with SMTP id d28-20020a0565123d1c00b0049d87fc0f63mr5950005lfv.327.1663579667364;
+        Mon, 19 Sep 2022 02:27:47 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id q16-20020a194310000000b004946aef1814sm5112366lfa.137.2022.09.19.02.27.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 19 Sep 2022 02:27:46 -0700 (PDT)
+Message-ID: <88412fcc-96be-cd9d-8805-086c7f09c03b@linaro.org>
+Date: Mon, 19 Sep 2022 11:27:45 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH 1/2] stmmac: dwmac-mediatek: add support for mt8188
+Content-Language: en-US
+To: Jianguo Zhang <jianguo.zhang@mediatek.com>,
+ "David S . Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>
+Cc: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Biao Huang <biao.huang@mediatek.com>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220919080410.11270-1-jianguo.zhang@mediatek.com>
+ <20220919080410.11270-2-jianguo.zhang@mediatek.com>
+ <d28ce676-ed6e-98da-9761-ed46f2fa4a95@linaro.org>
+ <4c537b63f609ae974dfb468ebc31225d45f785e8.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <4c537b63f609ae974dfb468ebc31225d45f785e8.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_022736_978129_BBA68BB0 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20220919_022749_182205_A65999F3 
+X-CRM114-Status: GOOD (  17.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,87 +106,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8188 has 3 IOMMU, containing 2 MM IOMMUs, one is for vdo, the other
-is for vpp. and 1 INFRA IOMMU.
+On 19/09/2022 10:37, Jianguo Zhang wrote:
+> Dear Krzysztof,
+> 
+> 	Thanks for your comments.
+> 
+> 
+> On Mon, 2022-09-19 at 10:19 +0200, Krzysztof Kozlowski wrote:
+>> On 19/09/2022 10:04, Jianguo Zhang wrote:
+>>> Add ethernet support for MediaTek SoCs from mt8188 family.
+>>> As mt8188 and mt8195 have same ethernet design, so private data
+>>> "mt8195_gmac_variant" can be reused for mt8188.
+>>>
+>>> Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
+>>> ---
+>>>  drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c | 2 ++
+>>>  1 file changed, 2 insertions(+)
+>>>
+>>> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+>>> b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+>>> index d42e1afb6521..f45be440b6d0 100644
+>>> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+>>> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+>>> @@ -720,6 +720,8 @@ static const struct of_device_id
+>>> mediatek_dwmac_match[] = {
+>>>  	  .data = &mt2712_gmac_variant },
+>>>  	{ .compatible = "mediatek,mt8195-gmac",
+>>>  	  .data = &mt8195_gmac_variant },
+>>> +	{ .compatible = "mediatek,mt8188-gmac",
+>>> +	  .data = &mt8195_gmac_variant },
+>>
+>> It's the same. No need for new entry.
+>>
+> mt8188 and mt8195 are different SoCs and we need to distinguish mt8188
+> from mt8195, so I think a new entry is needed for mt8188 with the
+> specific "compatiable".
 
-Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
----
- drivers/iommu/mtk_iommu.c | 47 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 47 insertions(+)
+No, this does not justify new entry. You need specific compatible, but
+not new entry.
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 8b8a289bab2c..68c9be30db91 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -164,6 +164,7 @@ enum mtk_iommu_plat {
- 	M4U_MT8173,
- 	M4U_MT8183,
- 	M4U_MT8186,
-+	M4U_MT8188,
- 	M4U_MT8192,
- 	M4U_MT8195,
- };
-@@ -1456,6 +1457,49 @@ static const struct mtk_iommu_plat_data mt8186_data_mm = {
- 	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
- };
- 
-+static const struct mtk_iommu_plat_data mt8188_data_infra = {
-+	.m4u_plat	  = M4U_MT8188,
-+	.flags            = WR_THROT_EN | DCM_DISABLE | STD_AXI_MODE | PM_CLK_AO |
-+			    MTK_IOMMU_TYPE_INFRA | IFA_IOMMU_PCIE_SUPPORT |
-+			    CFG_IFA_MASTER_IN_ATF,
-+	.inv_sel_reg      = REG_MMU_INV_SEL_GEN2,
-+	.banks_num	  = 1,
-+	.banks_enable     = {true},
-+	.iova_region      = single_domain,
-+	.iova_region_nr   = ARRAY_SIZE(single_domain),
-+};
-+
-+static const struct mtk_iommu_plat_data mt8188_data_vdo = {
-+	.m4u_plat	= M4U_MT8188,
-+	.flags          = HAS_BCLK | HAS_SUB_COMM_3BITS | OUT_ORDER_WR_EN |
-+			  WR_THROT_EN | IOVA_34_EN | SHARE_PGTABLE | MTK_IOMMU_TYPE_MM,
-+	.hw_list        = &m4ulist,
-+	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
-+	.banks_num      = 1,
-+	.banks_enable   = {true},
-+	.iova_region	= mt8192_multi_dom,
-+	.iova_region_nr	= ARRAY_SIZE(mt8192_multi_dom),
-+	.larbid_remap   = {{2}, {0}, {21}, {0}, {19}, {9, 10,
-+			   11 /* 11a */, 25 /* 11c */},
-+			   {13, 0, 29 /* 16b */, 30 /* 17b */, 0}, {5}},
-+};
-+
-+static const struct mtk_iommu_plat_data mt8188_data_vpp = {
-+	.m4u_plat	= M4U_MT8188,
-+	.flags          = HAS_BCLK | HAS_SUB_COMM_3BITS | OUT_ORDER_WR_EN |
-+			  WR_THROT_EN | IOVA_34_EN | SHARE_PGTABLE | MTK_IOMMU_TYPE_MM,
-+	.hw_list        = &m4ulist,
-+	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
-+	.banks_num      = 1,
-+	.banks_enable   = {true},
-+	.iova_region	= mt8192_multi_dom,
-+	.iova_region_nr	= ARRAY_SIZE(mt8192_multi_dom),
-+	.larbid_remap   = {{1}, {3}, {23}, {7}, {MTK_INVALID_LARBID},
-+			   {12, 15, 24 /* 11b */}, {14, MTK_INVALID_LARBID,
-+			   16 /* 16a */, 17 /* 17a */, MTK_INVALID_LARBID,
-+			   27, 28 /* ccu0 */, MTK_INVALID_LARBID}, {4, 6}},
-+};
-+
- static const struct mtk_iommu_plat_data mt8192_data = {
- 	.m4u_plat       = M4U_MT8192,
- 	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
-@@ -1523,6 +1567,9 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
- 	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
- 	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
- 	{ .compatible = "mediatek,mt8186-iommu-mm",    .data = &mt8186_data_mm}, /* mm: m4u */
-+	{ .compatible = "mediatek,mt8188-iommu-infra", .data = &mt8188_data_infra},
-+	{ .compatible = "mediatek,mt8188-iommu-vdo", .data = &mt8188_data_vdo},
-+	{ .compatible = "mediatek,mt8188-iommu-vpp", .data = &mt8188_data_vpp},
- 	{ .compatible = "mediatek,mt8192-m4u", .data = &mt8192_data},
- 	{ .compatible = "mediatek,mt8195-iommu-infra", .data = &mt8195_data_infra},
- 	{ .compatible = "mediatek,mt8195-iommu-vdo",   .data = &mt8195_data_vdo},
--- 
-2.25.1
+> On the other hand, mt8188 and mt8195 have same ethernet design, so the
+> private data "mt8195_gmac_variant" can be resued to reduce redundant
+> info in driver.
 
+And you do not need new entry in the driver.
+
+Best regards,
+Krzysztof
 
