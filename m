@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B965ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 09:05:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4125C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 09:07:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qRR6U+/XIkd1ylkSkBo3t92ig8EjtHqS1PEFmXU/6UI=; b=x0mqaEnWGfOyCmle/7oz8i1xGI
-	cUGrCcJEJI3b+DEgDIUHgZ2tloGLy1mWODggVlECen2MMfSyrfpxFIKQPl3lF7K0AhOACUY9q6ynE
-	mk32WYNzC6cgEd/V15bepkMg7Hd+dKKkkwwKXfVFtoCd4US75wpmMAVH9AuWdcdh8WQPaiyflyMzv
-	jhRbA4+8dASn8a//iVFjPyo8vo4qLLTi8K2izfwyvuCEsj0NBgkqbsr6txLuealliaCgNgHgXojQD
-	QaQjSNN/DjzNqDD/xcloSOD7cY9qHO6i0uxBgkwiRah/dyvj4EF8sZTw4ums9A7vw8nronfsB44dA
-	J1TtBo+w==;
+	bh=bi+lbqGHZ+GvTdVQwc41FrrgocUWNRHHKByu1hX6SDM=; b=hyOa/iT88NIkhhHjLcxQ3ve6zf
+	YaFD6tQcCGxpVMaZZ5ebEnOisQ34ScAep4HCv3ilcMr2bZ6kso9KStnFAC8fpfs5kOPCIkxK8gbPh
+	AL7g2EPa4rdUy9BhxqZ/RiIJ9SVB11m/AzM7mgKuHb7XKu6Djht7KayP2uGZ29DntYNCsWqMgr8CS
+	6yutU/fQZyeCoTGBeJXKAlBHzf728QdCWXD2XZVg6Z16Va/eqU9d5QtyBrRA7veY/3hwcEvLOTyMq
+	OYUsAh6sOzhzhAxoQ1UGsOpeROZBtyu3fJE5tRHgp6DN3a2Vsy/a/mbAZZLws3SZyRM/BPozarQB3
+	3zQGx08g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaZBv-002Aw5-Pa; Tue, 20 Sep 2022 09:05:19 +0000
+	id 1oaZDb-002CBl-MV; Tue, 20 Sep 2022 09:07:04 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaZ8Z-00290z-SH; Tue, 20 Sep 2022 09:01:56 +0000
-X-UUID: 8393610ab60b487e8d4f62bef6b481d0-20220920
+	id 1oaZ8e-0028zl-7l; Tue, 20 Sep 2022 09:01:59 +0000
+X-UUID: c015cb9e125c481bb1b62bde91223c0b-20220920
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=qRR6U+/XIkd1ylkSkBo3t92ig8EjtHqS1PEFmXU/6UI=;
-	b=VECUF3WkzIJnslpLWSxuewvG5eqFc6Hf2Wn4iOMu0Sqmx1CURhO2eKhBnuPjtHDQTImw4MLB7CPc/ioIjpjsIlYKRdiLh2d/jdcCD1Hm/ApwYkcGGP1skCTcAt7OaINoKKItZOAOktahPxwvQXj+1f9E1v/JWfwi8dq8A2HFtFU=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=bi+lbqGHZ+GvTdVQwc41FrrgocUWNRHHKByu1hX6SDM=;
+	b=C/hMsBH7GZc+Srnlj/D2H87/qKSYSHJy+DKHPm7d9+naXOdi5QWQq+i+vSp3CZc7nJUSdkNEtNZ986atBul8hEpsCK5Axcib/XBm2ms75nITB5VzjQHa2q+mYaqIIJPotiUY3xxCEHrVTMS0k4bCifHcp6Dp2Nb2r73cF1rS4qQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:82ae8fd9-3fa5-46b1-8e44-13dd149b3349,IP:0,U
-	RL:0,TC:0,Content:0,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:25
-X-CID-META: VersionHash:39a5ff1,CLOUDID:81ca6670-dafa-4a42-b716-cf2cd4845592,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:5,IP:nil,UR
-	L:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 8393610ab60b487e8d4f62bef6b481d0-20220920
+X-CID-O-INFO: VERSION:1.1.11,REQID:0288c989-a777-4772-8917-895559d953fc,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:23cb6670-dafa-4a42-b716-cf2cd4845592,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c015cb9e125c481bb1b62bde91223c0b-20220920
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2146970145; Tue, 20 Sep 2022 02:01:44 -0700
+	with ESMTP id 1975997718; Tue, 20 Sep 2022 02:01:47 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 20 Sep 2022 17:00:41 +0800
+ 15.2.792.15; Tue, 20 Sep 2022 17:00:48 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 20 Sep 2022 17:00:41 +0800
+ Transport; Tue, 20 Sep 2022 17:00:47 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Vinod Koul <vkoul@kernel.org>
 CC: Philipp Zabel <p.zabel@pengutronix.de>, Chunfeng Yun
@@ -56,9 +56,9 @@ CC: Philipp Zabel <p.zabel@pengutronix.de>, Chunfeng Yun
 	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Stanley
  Chu <stanley.chu@mediatek.com>
-Subject: [PATCH 02/18] phy: mediatek: tphy: remove macros to prepare bitfield value
-Date: Tue, 20 Sep 2022 17:00:22 +0800
-Message-ID: <20220920090038.15133-3-chunfeng.yun@mediatek.com>
+Subject: [PATCH 10/18] phy: mediatek: hdmi: mt8173: use FIELD_PREP to prepare bits field
+Date: Tue, 20 Sep 2022 17:00:30 +0800
+Message-ID: <20220920090038.15133-11-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220920090038.15133-1-chunfeng.yun@mediatek.com>
 References: <20220920090038.15133-1-chunfeng.yun@mediatek.com>
@@ -67,8 +67,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_020152_026561_CE9BEECF 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20220920_020156_380146_61324CB6 
+X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,509 +84,169 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prefer to make use of FIELD_PREP() macro to prepare bitfield value,
-then no need local ones anymore.
+Use FIELD_PREP() macro to prepare bits field value, then no need define
+macros of bits offset.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/phy/mediatek/phy-mtk-tphy.c | 193 ++++++++++------------------
- 1 file changed, 67 insertions(+), 126 deletions(-)
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c | 70 ++++++++--------------
+ 1 file changed, 26 insertions(+), 44 deletions(-)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index cc10298bc70d..e906a82791bd 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -49,37 +49,28 @@
- #define U3P_USBPHYACR0		0x000
- #define PA0_RG_U2PLL_FORCE_ON		BIT(15)
- #define PA0_USB20_PLL_PREDIV		GENMASK(7, 6)
--#define PA0_USB20_PLL_PREDIV_VAL(x)	((0x3 & (x)) << 6)
- #define PA0_RG_USB20_INTR_EN		BIT(5)
- 
- #define U3P_USBPHYACR1		0x004
- #define PA1_RG_INTR_CAL		GENMASK(23, 19)
--#define PA1_RG_INTR_CAL_VAL(x)	((0x1f & (x)) << 19)
- #define PA1_RG_VRT_SEL			GENMASK(14, 12)
--#define PA1_RG_VRT_SEL_VAL(x)	((0x7 & (x)) << 12)
- #define PA1_RG_TERM_SEL		GENMASK(10, 8)
--#define PA1_RG_TERM_SEL_VAL(x)	((0x7 & (x)) << 8)
- 
- #define U3P_USBPHYACR2		0x008
- #define PA2_RG_U2PLL_BW			GENMASK(21, 19)
--#define PA2_RG_U2PLL_BW_VAL(x)		((0x7 & (x)) << 19)
- #define PA2_RG_SIF_U2PLL_FORCE_EN	BIT(18)
- 
- #define U3P_USBPHYACR5		0x014
- #define PA5_RG_U2_HSTX_SRCAL_EN	BIT(15)
- #define PA5_RG_U2_HSTX_SRCTRL		GENMASK(14, 12)
--#define PA5_RG_U2_HSTX_SRCTRL_VAL(x)	((0x7 & (x)) << 12)
- #define PA5_RG_U2_HS_100U_U3_EN	BIT(11)
- 
- #define U3P_USBPHYACR6		0x018
- #define PA6_RG_U2_PRE_EMP		GENMASK(31, 30)
--#define PA6_RG_U2_PRE_EMP_VAL(x)	((0x3 & (x)) << 30)
- #define PA6_RG_U2_BC11_SW_EN		BIT(23)
- #define PA6_RG_U2_OTG_VBUSCMP_EN	BIT(20)
- #define PA6_RG_U2_DISCTH		GENMASK(7, 4)
--#define PA6_RG_U2_DISCTH_VAL(x)	((0xf & (x)) << 4)
- #define PA6_RG_U2_SQTH		GENMASK(3, 0)
--#define PA6_RG_U2_SQTH_VAL(x)	(0xf & (x))
- 
- #define U3P_U2PHYACR4		0x020
- #define P2C_RG_USB20_GPIO_CTL		BIT(9)
-@@ -106,11 +97,9 @@
- #define P2C_FORCE_SUSPENDM		BIT(18)
- #define P2C_FORCE_TERMSEL		BIT(17)
- #define P2C_RG_DATAIN			GENMASK(13, 10)
--#define P2C_RG_DATAIN_VAL(x)		((0xf & (x)) << 10)
- #define P2C_RG_DMPULLDOWN		BIT(7)
- #define P2C_RG_DPPULLDOWN		BIT(6)
- #define P2C_RG_XCVRSEL			GENMASK(5, 4)
--#define P2C_RG_XCVRSEL_VAL(x)		((0x3 & (x)) << 4)
- #define P2C_RG_SUSPENDM			BIT(3)
- #define P2C_RG_TERMSEL			BIT(2)
- #define P2C_DTM0_PART_MASK \
-@@ -141,87 +130,65 @@
- 
- #define U3P_U3_PHYA_REG0	0x000
- #define P3A_RG_IEXT_INTR		GENMASK(15, 10)
--#define P3A_RG_IEXT_INTR_VAL(x)		((0x3f & (x)) << 10)
- #define P3A_RG_CLKDRV_OFF		GENMASK(3, 2)
--#define P3A_RG_CLKDRV_OFF_VAL(x)	((0x3 & (x)) << 2)
- 
- #define U3P_U3_PHYA_REG1	0x004
- #define P3A_RG_CLKDRV_AMP		GENMASK(31, 29)
--#define P3A_RG_CLKDRV_AMP_VAL(x)	((0x7 & (x)) << 29)
- 
- #define U3P_U3_PHYA_REG6	0x018
- #define P3A_RG_TX_EIDLE_CM		GENMASK(31, 28)
--#define P3A_RG_TX_EIDLE_CM_VAL(x)	((0xf & (x)) << 28)
- 
- #define U3P_U3_PHYA_REG9	0x024
- #define P3A_RG_RX_DAC_MUX		GENMASK(5, 1)
--#define P3A_RG_RX_DAC_MUX_VAL(x)	((0x1f & (x)) << 1)
- 
- #define U3P_U3_PHYA_DA_REG0	0x100
- #define P3A_RG_XTAL_EXT_PE2H		GENMASK(17, 16)
--#define P3A_RG_XTAL_EXT_PE2H_VAL(x)	((0x3 & (x)) << 16)
- #define P3A_RG_XTAL_EXT_PE1H		GENMASK(13, 12)
--#define P3A_RG_XTAL_EXT_PE1H_VAL(x)	((0x3 & (x)) << 12)
- #define P3A_RG_XTAL_EXT_EN_U3		GENMASK(11, 10)
--#define P3A_RG_XTAL_EXT_EN_U3_VAL(x)	((0x3 & (x)) << 10)
- 
- #define U3P_U3_PHYA_DA_REG4	0x108
- #define P3A_RG_PLL_DIVEN_PE2H		GENMASK(21, 19)
- #define P3A_RG_PLL_BC_PE2H		GENMASK(7, 6)
--#define P3A_RG_PLL_BC_PE2H_VAL(x)	((0x3 & (x)) << 6)
- 
- #define U3P_U3_PHYA_DA_REG5	0x10c
- #define P3A_RG_PLL_BR_PE2H		GENMASK(29, 28)
--#define P3A_RG_PLL_BR_PE2H_VAL(x)	((0x3 & (x)) << 28)
- #define P3A_RG_PLL_IC_PE2H		GENMASK(15, 12)
--#define P3A_RG_PLL_IC_PE2H_VAL(x)	((0xf & (x)) << 12)
- 
- #define U3P_U3_PHYA_DA_REG6	0x110
- #define P3A_RG_PLL_IR_PE2H		GENMASK(19, 16)
--#define P3A_RG_PLL_IR_PE2H_VAL(x)	((0xf & (x)) << 16)
- 
- #define U3P_U3_PHYA_DA_REG7	0x114
- #define P3A_RG_PLL_BP_PE2H		GENMASK(19, 16)
--#define P3A_RG_PLL_BP_PE2H_VAL(x)	((0xf & (x)) << 16)
- 
- #define U3P_U3_PHYA_DA_REG20	0x13c
- #define P3A_RG_PLL_DELTA1_PE2H		GENMASK(31, 16)
--#define P3A_RG_PLL_DELTA1_PE2H_VAL(x)	((0xffff & (x)) << 16)
- 
- #define U3P_U3_PHYA_DA_REG25	0x148
- #define P3A_RG_PLL_DELTA_PE2H		GENMASK(15, 0)
--#define P3A_RG_PLL_DELTA_PE2H_VAL(x)	(0xffff & (x))
- 
- #define U3P_U3_PHYD_LFPS1		0x00c
- #define P3D_RG_FWAKE_TH		GENMASK(21, 16)
--#define P3D_RG_FWAKE_TH_VAL(x)	((0x3f & (x)) << 16)
- 
- #define U3P_U3_PHYD_IMPCAL0		0x010
- #define P3D_RG_FORCE_TX_IMPEL		BIT(31)
- #define P3D_RG_TX_IMPEL			GENMASK(28, 24)
--#define P3D_RG_TX_IMPEL_VAL(x)		((0x1f & (x)) << 24)
- 
- #define U3P_U3_PHYD_IMPCAL1		0x014
- #define P3D_RG_FORCE_RX_IMPEL		BIT(31)
- #define P3D_RG_RX_IMPEL			GENMASK(28, 24)
--#define P3D_RG_RX_IMPEL_VAL(x)		((0x1f & (x)) << 24)
- 
- #define U3P_U3_PHYD_RSV			0x054
- #define P3D_RG_EFUSE_AUTO_LOAD_DIS	BIT(12)
- 
- #define U3P_U3_PHYD_CDR1		0x05c
- #define P3D_RG_CDR_BIR_LTD1		GENMASK(28, 24)
--#define P3D_RG_CDR_BIR_LTD1_VAL(x)	((0x1f & (x)) << 24)
- #define P3D_RG_CDR_BIR_LTD0		GENMASK(12, 8)
--#define P3D_RG_CDR_BIR_LTD0_VAL(x)	((0x1f & (x)) << 8)
- 
- #define U3P_U3_PHYD_RXDET1		0x128
- #define P3D_RG_RXDET_STB2_SET		GENMASK(17, 9)
--#define P3D_RG_RXDET_STB2_SET_VAL(x)	((0x1ff & (x)) << 9)
- 
- #define U3P_U3_PHYD_RXDET2		0x12c
- #define P3D_RG_RXDET_STB2_SET_P3	GENMASK(8, 0)
--#define P3D_RG_RXDET_STB2_SET_P3_VAL(x)	(0x1ff & (x))
- 
- #define U3P_SPLLC_XTALCTL3		0x018
- #define XC3_RG_U3_XTAL_RX_PWD		BIT(9)
-@@ -229,10 +196,8 @@
- 
- #define U3P_U2FREQ_FMCR0	0x00
- #define P2F_RG_MONCLK_SEL	GENMASK(27, 26)
--#define P2F_RG_MONCLK_SEL_VAL(x)	((0x3 & (x)) << 26)
- #define P2F_RG_FREQDET_EN	BIT(24)
- #define P2F_RG_CYCLECNT		GENMASK(23, 0)
--#define P2F_RG_CYCLECNT_VAL(x)	((P2F_RG_CYCLECNT) & (x))
- 
- #define U3P_U2FREQ_VALUE	0x0c
- 
-@@ -249,60 +214,45 @@
- #define PHYD_CTRL_SIGNAL_MODE4		0x1c
- /* CDR Charge Pump P-path current adjustment */
- #define RG_CDR_BICLTD1_GEN1_MSK		GENMASK(23, 20)
--#define RG_CDR_BICLTD1_GEN1_VAL(x)	((0xf & (x)) << 20)
- #define RG_CDR_BICLTD0_GEN1_MSK		GENMASK(11, 8)
--#define RG_CDR_BICLTD0_GEN1_VAL(x)	((0xf & (x)) << 8)
- 
- #define PHYD_DESIGN_OPTION2		0x24
- /* Symbol lock count selection */
- #define RG_LOCK_CNT_SEL_MSK		GENMASK(5, 4)
--#define RG_LOCK_CNT_SEL_VAL(x)		((0x3 & (x)) << 4)
- 
- #define PHYD_DESIGN_OPTION9	0x40
- /* COMWAK GAP width window */
- #define RG_TG_MAX_MSK		GENMASK(20, 16)
--#define RG_TG_MAX_VAL(x)	((0x1f & (x)) << 16)
- /* COMINIT GAP width window */
- #define RG_T2_MAX_MSK		GENMASK(13, 8)
--#define RG_T2_MAX_VAL(x)	((0x3f & (x)) << 8)
- /* COMWAK GAP width window */
- #define RG_TG_MIN_MSK		GENMASK(7, 5)
--#define RG_TG_MIN_VAL(x)	((0x7 & (x)) << 5)
- /* COMINIT GAP width window */
- #define RG_T2_MIN_MSK		GENMASK(4, 0)
--#define RG_T2_MIN_VAL(x)	(0x1f & (x))
- 
- #define ANA_RG_CTRL_SIGNAL1		0x4c
- /* TX driver tail current control for 0dB de-empahsis mdoe for Gen1 speed */
- #define RG_IDRV_0DB_GEN1_MSK		GENMASK(13, 8)
--#define RG_IDRV_0DB_GEN1_VAL(x)		((0x3f & (x)) << 8)
- 
- #define ANA_RG_CTRL_SIGNAL4		0x58
- #define RG_CDR_BICLTR_GEN1_MSK		GENMASK(23, 20)
--#define RG_CDR_BICLTR_GEN1_VAL(x)	((0xf & (x)) << 20)
- /* Loop filter R1 resistance adjustment for Gen1 speed */
- #define RG_CDR_BR_GEN2_MSK		GENMASK(10, 8)
--#define RG_CDR_BR_GEN2_VAL(x)		((0x7 & (x)) << 8)
- 
- #define ANA_RG_CTRL_SIGNAL6		0x60
- /* I-path capacitance adjustment for Gen1 */
- #define RG_CDR_BC_GEN1_MSK		GENMASK(28, 24)
--#define RG_CDR_BC_GEN1_VAL(x)		((0x1f & (x)) << 24)
- #define RG_CDR_BIRLTR_GEN1_MSK		GENMASK(4, 0)
--#define RG_CDR_BIRLTR_GEN1_VAL(x)	(0x1f & (x))
- 
- #define ANA_EQ_EYE_CTRL_SIGNAL1		0x6c
- /* RX Gen1 LEQ tuning step */
- #define RG_EQ_DLEQ_LFI_GEN1_MSK		GENMASK(11, 8)
--#define RG_EQ_DLEQ_LFI_GEN1_VAL(x)	((0xf & (x)) << 8)
- 
- #define ANA_EQ_EYE_CTRL_SIGNAL4		0xd8
- #define RG_CDR_BIRLTD0_GEN1_MSK		GENMASK(20, 16)
--#define RG_CDR_BIRLTD0_GEN1_VAL(x)	((0x1f & (x)) << 16)
- 
- #define ANA_EQ_EYE_CTRL_SIGNAL5		0xdc
- #define RG_CDR_BIRLTD0_GEN3_MSK		GENMASK(4, 0)
--#define RG_CDR_BIRLTD0_GEN3_VAL(x)	(0x1f & (x))
- 
- /* PHY switch between pcie/usb3/sgmii/sata */
- #define USB_PHY_SWITCH_CTRL	0x0
-@@ -414,9 +364,9 @@ static void hs_slew_rate_calibrate(struct mtk_tphy *tphy,
- 	/* set cycle count as 1024, and select u2 channel */
- 	tmp = readl(fmreg + U3P_U2FREQ_FMCR0);
- 	tmp &= ~(P2F_RG_CYCLECNT | P2F_RG_MONCLK_SEL);
--	tmp |= P2F_RG_CYCLECNT_VAL(U3P_FM_DET_CYCLE_CNT);
-+	tmp |= FIELD_PREP(P2F_RG_CYCLECNT, U3P_FM_DET_CYCLE_CNT);
- 	if (tphy->pdata->version == MTK_PHY_V1)
--		tmp |= P2F_RG_MONCLK_SEL_VAL(instance->index >> 1);
-+		tmp |= FIELD_PREP(P2F_RG_MONCLK_SEL, instance->index >> 1);
- 
- 	writel(tmp, fmreg + U3P_U2FREQ_FMCR0);
- 
-@@ -449,8 +399,8 @@ static void hs_slew_rate_calibrate(struct mtk_tphy *tphy,
- 		tphy->src_ref_clk, tphy->src_coef);
- 
- 	/* set HS slew rate */
--	mtk_phy_update_bits(com + U3P_USBPHYACR5, PA5_RG_U2_HSTX_SRCTRL,
--			    PA5_RG_U2_HSTX_SRCTRL_VAL(calibration_val));
-+	mtk_phy_update_field(com + U3P_USBPHYACR5, PA5_RG_U2_HSTX_SRCTRL,
-+			     calibration_val);
- 
- 	/* disable USB ring oscillator */
- 	mtk_phy_clear_bits(com + U3P_USBPHYACR5, PA5_RG_U2_HSTX_SRCAL_EN);
-@@ -460,33 +410,30 @@ static void u3_phy_instance_init(struct mtk_tphy *tphy,
- 	struct mtk_phy_instance *instance)
- {
- 	struct u3phy_banks *u3_banks = &instance->u3_banks;
-+	void __iomem *phya = u3_banks->phya;
-+	void __iomem *phyd = u3_banks->phyd;
- 
- 	/* gating PCIe Analog XTAL clock */
- 	mtk_phy_set_bits(u3_banks->spllc + U3P_SPLLC_XTALCTL3,
- 			 XC3_RG_U3_XTAL_RX_PWD | XC3_RG_U3_FRC_XTAL_RX_PWD);
- 
- 	/* gating XSQ */
--	mtk_phy_update_bits(u3_banks->phya + U3P_U3_PHYA_DA_REG0,
--			    P3A_RG_XTAL_EXT_EN_U3, P3A_RG_XTAL_EXT_EN_U3_VAL(2));
-+	mtk_phy_update_field(phya + U3P_U3_PHYA_DA_REG0, P3A_RG_XTAL_EXT_EN_U3, 2);
- 
--	mtk_phy_update_bits(u3_banks->phya + U3P_U3_PHYA_REG9,
--			    P3A_RG_RX_DAC_MUX, P3A_RG_RX_DAC_MUX_VAL(4));
-+	mtk_phy_update_field(phya + U3P_U3_PHYA_REG9, P3A_RG_RX_DAC_MUX, 4);
- 
--	mtk_phy_update_bits(u3_banks->phya + U3P_U3_PHYA_REG6,
--			    P3A_RG_TX_EIDLE_CM, P3A_RG_TX_EIDLE_CM_VAL(0xe));
-+	mtk_phy_update_field(phya + U3P_U3_PHYA_REG6, P3A_RG_TX_EIDLE_CM, 0xe);
- 
- 	mtk_phy_update_bits(u3_banks->phyd + U3P_U3_PHYD_CDR1,
- 			    P3D_RG_CDR_BIR_LTD0 | P3D_RG_CDR_BIR_LTD1,
--			    P3D_RG_CDR_BIR_LTD0_VAL(0xc) | P3D_RG_CDR_BIR_LTD1_VAL(0x3));
-+			    FIELD_PREP(P3D_RG_CDR_BIR_LTD0, 0xc) |
-+			    FIELD_PREP(P3D_RG_CDR_BIR_LTD1, 0x3));
- 
--	mtk_phy_update_bits(u3_banks->phyd + U3P_U3_PHYD_LFPS1,
--			    P3D_RG_FWAKE_TH, P3D_RG_FWAKE_TH_VAL(0x34));
-+	mtk_phy_update_field(phyd + U3P_U3_PHYD_LFPS1, P3D_RG_FWAKE_TH, 0x34);
- 
--	mtk_phy_update_bits(u3_banks->phyd + U3P_U3_PHYD_RXDET1,
--			    P3D_RG_RXDET_STB2_SET, P3D_RG_RXDET_STB2_SET_VAL(0x10));
-+	mtk_phy_update_field(phyd + U3P_U3_PHYD_RXDET1, P3D_RG_RXDET_STB2_SET, 0x10);
- 
--	mtk_phy_update_bits(u3_banks->phyd + U3P_U3_PHYD_RXDET2,
--			    P3D_RG_RXDET_STB2_SET_P3, P3D_RG_RXDET_STB2_SET_P3_VAL(0x10));
-+	mtk_phy_update_field(phyd + U3P_U3_PHYD_RXDET2, P3D_RG_RXDET_STB2_SET_P3, 0x10);
- 
- 	dev_dbg(tphy->dev, "%s(%d)\n", __func__, instance->index);
- }
-@@ -500,11 +447,9 @@ static void u2_phy_pll_26m_set(struct mtk_tphy *tphy,
- 	if (!tphy->pdata->sw_pll_48m_to_26m)
- 		return;
- 
--	mtk_phy_update_bits(com + U3P_USBPHYACR0, PA0_USB20_PLL_PREDIV,
--			    PA0_USB20_PLL_PREDIV_VAL(0));
-+	mtk_phy_update_field(com + U3P_USBPHYACR0, PA0_USB20_PLL_PREDIV, 0);
- 
--	mtk_phy_update_bits(com + U3P_USBPHYACR2, PA2_RG_U2PLL_BW,
--			    PA2_RG_U2PLL_BW_VAL(3));
-+	mtk_phy_update_field(com + U3P_USBPHYACR2, PA2_RG_U2PLL_BW, 3);
- 
- 	writel(P2R_RG_U2PLL_FBDIV_26M, com + U3P_U2PHYA_RESV);
- 
-@@ -550,7 +495,7 @@ static void u2_phy_instance_init(struct mtk_tphy *tphy,
- 	/* DP/DM BC1.1 path Disable */
- 	mtk_phy_clear_bits(com + U3P_USBPHYACR6, PA6_RG_U2_BC11_SW_EN);
- 
--	mtk_phy_update_bits(com + U3P_USBPHYACR6, PA6_RG_U2_SQTH, PA6_RG_U2_SQTH_VAL(2));
-+	mtk_phy_update_field(com + U3P_USBPHYACR6, PA6_RG_U2_SQTH, 2);
- 
- 	/* Workaround only for mt8195, HW fix it for others (V3) */
- 	u2_phy_pll_26m_set(tphy, instance);
-@@ -653,43 +598,39 @@ static void pcie_phy_instance_init(struct mtk_tphy *tphy,
- 
- 	mtk_phy_update_bits(phya + U3P_U3_PHYA_DA_REG0,
- 			    P3A_RG_XTAL_EXT_PE1H | P3A_RG_XTAL_EXT_PE2H,
--			    P3A_RG_XTAL_EXT_PE1H_VAL(0x2) | P3A_RG_XTAL_EXT_PE2H_VAL(0x2));
-+			    FIELD_PREP(P3A_RG_XTAL_EXT_PE1H, 0x2) |
-+			    FIELD_PREP(P3A_RG_XTAL_EXT_PE2H, 0x2));
- 
- 	/* ref clk drive */
--	mtk_phy_update_bits(phya + U3P_U3_PHYA_REG1, P3A_RG_CLKDRV_AMP,
--			    P3A_RG_CLKDRV_AMP_VAL(0x4));
-+	mtk_phy_update_field(phya + U3P_U3_PHYA_REG1, P3A_RG_CLKDRV_AMP, 0x4);
- 
--	mtk_phy_update_bits(phya + U3P_U3_PHYA_REG0, P3A_RG_CLKDRV_OFF,
--			    P3A_RG_CLKDRV_OFF_VAL(0x1));
-+	mtk_phy_update_field(phya + U3P_U3_PHYA_REG0, P3A_RG_CLKDRV_OFF, 0x1);
- 
- 	/* SSC delta -5000ppm */
--	mtk_phy_update_bits(phya + U3P_U3_PHYA_DA_REG20, P3A_RG_PLL_DELTA1_PE2H,
--			    P3A_RG_PLL_DELTA1_PE2H_VAL(0x3c));
-+	mtk_phy_update_field(phya + U3P_U3_PHYA_DA_REG20, P3A_RG_PLL_DELTA1_PE2H, 0x3c);
- 
--	mtk_phy_update_bits(phya + U3P_U3_PHYA_DA_REG25, P3A_RG_PLL_DELTA_PE2H,
--			    P3A_RG_PLL_DELTA_PE2H_VAL(0x36));
-+	mtk_phy_update_field(phya + U3P_U3_PHYA_DA_REG25, P3A_RG_PLL_DELTA_PE2H, 0x36);
- 
- 	/* change pll BW 0.6M */
- 	mtk_phy_update_bits(phya + U3P_U3_PHYA_DA_REG5,
- 			    P3A_RG_PLL_BR_PE2H | P3A_RG_PLL_IC_PE2H,
--			    P3A_RG_PLL_BR_PE2H_VAL(0x1) | P3A_RG_PLL_IC_PE2H_VAL(0x1));
-+			    FIELD_PREP(P3A_RG_PLL_BR_PE2H, 0x1) |
-+			    FIELD_PREP(P3A_RG_PLL_IC_PE2H, 0x1));
- 
- 	mtk_phy_update_bits(phya + U3P_U3_PHYA_DA_REG4,
- 			    P3A_RG_PLL_DIVEN_PE2H | P3A_RG_PLL_BC_PE2H,
--			    P3A_RG_PLL_BC_PE2H_VAL(0x3));
-+			    FIELD_PREP(P3A_RG_PLL_BC_PE2H, 0x3));
- 
--	mtk_phy_update_bits(phya + U3P_U3_PHYA_DA_REG6, P3A_RG_PLL_IR_PE2H,
--			    P3A_RG_PLL_IR_PE2H_VAL(0x2));
-+	mtk_phy_update_field(phya + U3P_U3_PHYA_DA_REG6, P3A_RG_PLL_IR_PE2H, 0x2);
- 
--	mtk_phy_update_bits(phya + U3P_U3_PHYA_DA_REG7, P3A_RG_PLL_BP_PE2H,
--			    P3A_RG_PLL_BP_PE2H_VAL(0xa));
-+	mtk_phy_update_field(phya + U3P_U3_PHYA_DA_REG7, P3A_RG_PLL_BP_PE2H, 0xa);
- 
- 	/* Tx Detect Rx Timing: 10us -> 5us */
--	mtk_phy_update_bits(u3_banks->phyd + U3P_U3_PHYD_RXDET1,
--			    P3D_RG_RXDET_STB2_SET, P3D_RG_RXDET_STB2_SET_VAL(0x10));
-+	mtk_phy_update_field(u3_banks->phyd + U3P_U3_PHYD_RXDET1,
-+			     P3D_RG_RXDET_STB2_SET, 0x10);
- 
--	mtk_phy_update_bits(u3_banks->phyd + U3P_U3_PHYD_RXDET2,
--			    P3D_RG_RXDET_STB2_SET_P3, P3D_RG_RXDET_STB2_SET_P3_VAL(0x10));
-+	mtk_phy_update_field(u3_banks->phyd + U3P_U3_PHYD_RXDET2,
-+			     P3D_RG_RXDET_STB2_SET_P3, 0x10);
- 
- 	/* wait for PCIe subsys register to active */
- 	usleep_range(2500, 3000);
-@@ -730,38 +671,38 @@ static void sata_phy_instance_init(struct mtk_tphy *tphy,
- 	/* charge current adjustment */
- 	mtk_phy_update_bits(phyd + ANA_RG_CTRL_SIGNAL6,
- 			    RG_CDR_BIRLTR_GEN1_MSK | RG_CDR_BC_GEN1_MSK,
--			    RG_CDR_BIRLTR_GEN1_VAL(0x6) | RG_CDR_BC_GEN1_VAL(0x1a));
-+			    FIELD_PREP(RG_CDR_BIRLTR_GEN1_MSK, 0x6) |
-+			    FIELD_PREP(RG_CDR_BC_GEN1_MSK, 0x1a));
- 
--	mtk_phy_update_bits(phyd + ANA_EQ_EYE_CTRL_SIGNAL4, RG_CDR_BIRLTD0_GEN1_MSK,
--			    RG_CDR_BIRLTD0_GEN1_VAL(0x18));
-+	mtk_phy_update_field(phyd + ANA_EQ_EYE_CTRL_SIGNAL4, RG_CDR_BIRLTD0_GEN1_MSK, 0x18);
- 
--	mtk_phy_update_bits(phyd + ANA_EQ_EYE_CTRL_SIGNAL5, RG_CDR_BIRLTD0_GEN3_MSK,
--			    RG_CDR_BIRLTD0_GEN3_VAL(0x06));
-+	mtk_phy_update_field(phyd + ANA_EQ_EYE_CTRL_SIGNAL5, RG_CDR_BIRLTD0_GEN3_MSK, 0x06);
- 
- 	mtk_phy_update_bits(phyd + ANA_RG_CTRL_SIGNAL4,
- 			    RG_CDR_BICLTR_GEN1_MSK | RG_CDR_BR_GEN2_MSK,
--			    RG_CDR_BICLTR_GEN1_VAL(0x0c) | RG_CDR_BR_GEN2_VAL(0x07));
-+			    FIELD_PREP(RG_CDR_BICLTR_GEN1_MSK, 0x0c) |
-+			    FIELD_PREP(RG_CDR_BR_GEN2_MSK, 0x07));
- 
- 	mtk_phy_update_bits(phyd + PHYD_CTRL_SIGNAL_MODE4,
- 			    RG_CDR_BICLTD0_GEN1_MSK | RG_CDR_BICLTD1_GEN1_MSK,
--			    RG_CDR_BICLTD0_GEN1_VAL(0x08) | RG_CDR_BICLTD1_GEN1_VAL(0x02));
-+			    FIELD_PREP(RG_CDR_BICLTD0_GEN1_MSK, 0x08) |
-+			    FIELD_PREP(RG_CDR_BICLTD1_GEN1_MSK, 0x02));
- 
--	mtk_phy_update_bits(phyd + PHYD_DESIGN_OPTION2, RG_LOCK_CNT_SEL_MSK,
--			    RG_LOCK_CNT_SEL_VAL(0x02));
-+	mtk_phy_update_field(phyd + PHYD_DESIGN_OPTION2, RG_LOCK_CNT_SEL_MSK, 0x02);
- 
- 	mtk_phy_update_bits(phyd + PHYD_DESIGN_OPTION9,
- 			    RG_T2_MIN_MSK | RG_TG_MIN_MSK,
--			    RG_T2_MIN_VAL(0x12) | RG_TG_MIN_VAL(0x04));
-+			    FIELD_PREP(RG_T2_MIN_MSK, 0x12) |
-+			    FIELD_PREP(RG_TG_MIN_MSK, 0x04));
- 
- 	mtk_phy_update_bits(phyd + PHYD_DESIGN_OPTION9,
- 			    RG_T2_MAX_MSK | RG_TG_MAX_MSK,
--			    RG_T2_MAX_VAL(0x31) | RG_TG_MAX_VAL(0x0e));
-+			    FIELD_PREP(RG_T2_MAX_MSK, 0x31) |
-+			    FIELD_PREP(RG_TG_MAX_MSK, 0x0e));
- 
--	mtk_phy_update_bits(phyd + ANA_RG_CTRL_SIGNAL1, RG_IDRV_0DB_GEN1_MSK,
--			    RG_IDRV_0DB_GEN1_VAL(0x20));
-+	mtk_phy_update_field(phyd + ANA_RG_CTRL_SIGNAL1, RG_IDRV_0DB_GEN1_MSK, 0x20);
- 
--	mtk_phy_update_bits(phyd + ANA_EQ_EYE_CTRL_SIGNAL1, RG_EQ_DLEQ_LFI_GEN1_MSK,
--			    RG_EQ_DLEQ_LFI_GEN1_VAL(0x03));
-+	mtk_phy_update_field(phyd + ANA_EQ_EYE_CTRL_SIGNAL1, RG_EQ_DLEQ_LFI_GEN1_MSK, 0x03);
- 
- 	dev_dbg(tphy->dev, "%s(%d)\n", __func__, instance->index);
- }
-@@ -857,33 +798,33 @@ static void u2_phy_props_set(struct mtk_tphy *tphy,
- 		mtk_phy_set_bits(com + U3P_U2PHYBC12C, P2C_RG_CHGDT_EN);
- 
- 	if (tphy->pdata->version < MTK_PHY_V3 && instance->eye_src)
--		mtk_phy_update_bits(com + U3P_USBPHYACR5, PA5_RG_U2_HSTX_SRCTRL,
--				    PA5_RG_U2_HSTX_SRCTRL_VAL(instance->eye_src));
-+		mtk_phy_update_field(com + U3P_USBPHYACR5, PA5_RG_U2_HSTX_SRCTRL,
-+				     instance->eye_src);
- 
- 	if (instance->eye_vrt)
--		mtk_phy_update_bits(com + U3P_USBPHYACR1, PA1_RG_VRT_SEL,
--				    PA1_RG_VRT_SEL_VAL(instance->eye_vrt));
-+		mtk_phy_update_field(com + U3P_USBPHYACR1, PA1_RG_VRT_SEL,
-+				     instance->eye_vrt);
- 
- 	if (instance->eye_term)
--		mtk_phy_update_bits(com + U3P_USBPHYACR1, PA1_RG_TERM_SEL,
--				    PA1_RG_TERM_SEL_VAL(instance->eye_term));
-+		mtk_phy_update_field(com + U3P_USBPHYACR1, PA1_RG_TERM_SEL,
-+				     instance->eye_term);
- 
- 	if (instance->intr) {
- 		if (u2_banks->misc)
- 			mtk_phy_set_bits(u2_banks->misc + U3P_MISC_REG1,
- 					 MR1_EFUSE_AUTO_LOAD_DIS);
- 
--		mtk_phy_update_bits(com + U3P_USBPHYACR1, PA1_RG_INTR_CAL,
--				    PA1_RG_INTR_CAL_VAL(instance->intr));
-+		mtk_phy_update_field(com + U3P_USBPHYACR1, PA1_RG_INTR_CAL,
-+				     instance->intr);
+diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
+index 55fe97f5465d..8f93991fb09d 100644
+--- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
++++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
+@@ -9,27 +9,17 @@
+ #define HDMI_CON0		0x00
+ #define RG_HDMITX_PLL_EN		BIT(31)
+ #define RG_HDMITX_PLL_FBKDIV		GENMASK(30, 24)
+-#define PLL_FBKDIV_SHIFT		24
+ #define RG_HDMITX_PLL_FBKSEL		GENMASK(23, 22)
+-#define PLL_FBKSEL_SHIFT		22
+ #define RG_HDMITX_PLL_PREDIV		GENMASK(21, 20)
+-#define PREDIV_SHIFT			20
+ #define RG_HDMITX_PLL_POSDIV		GENMASK(19, 18)
+-#define POSDIV_SHIFT			18
+ #define RG_HDMITX_PLL_RST_DLY		GENMASK(17, 16)
+ #define RG_HDMITX_PLL_IR		GENMASK(15, 12)
+-#define PLL_IR_SHIFT			12
+ #define RG_HDMITX_PLL_IC		GENMASK(11, 8)
+-#define PLL_IC_SHIFT			8
+ #define RG_HDMITX_PLL_BP		GENMASK(7, 4)
+-#define PLL_BP_SHIFT			4
+ #define RG_HDMITX_PLL_BR		GENMASK(3, 2)
+-#define PLL_BR_SHIFT			2
+ #define RG_HDMITX_PLL_BC		GENMASK(1, 0)
+-#define PLL_BC_SHIFT			0
+ #define HDMI_CON1		0x04
+ #define RG_HDMITX_PLL_DIVEN		GENMASK(31, 29)
+-#define PLL_DIVEN_SHIFT			29
+ #define RG_HDMITX_PLL_AUTOK_EN		BIT(28)
+ #define RG_HDMITX_PLL_AUTOK_KF		GENMASK(27, 26)
+ #define RG_HDMITX_PLL_AUTOK_KS		GENMASK(25, 24)
+@@ -40,7 +30,6 @@
+ #define RG_HDMITX_PLL_BIAS_LPF_EN	BIT(13)
+ #define RG_HDMITX_PLL_TXDIV_EN		BIT(12)
+ #define RG_HDMITX_PLL_TXDIV		GENMASK(11, 10)
+-#define PLL_TXDIV_SHIFT			10
+ #define RG_HDMITX_PLL_LVROD_EN		BIT(9)
+ #define RG_HDMITX_PLL_MONVC_EN		BIT(8)
+ #define RG_HDMITX_PLL_MONCK_EN		BIT(7)
+@@ -58,7 +47,6 @@
+ #define RG_HDMITX_PRD_IMP_EN		GENMASK(23, 20)
+ #define RG_HDMITX_DRV_EN		GENMASK(19, 16)
+ #define RG_HDMITX_DRV_IMP_EN		GENMASK(15, 12)
+-#define DRV_IMP_EN_SHIFT		12
+ #define RG_HDMITX_MHLCK_FORCE		BIT(10)
+ #define RG_HDMITX_MHLCK_PPIX_EN		BIT(9)
+ #define RG_HDMITX_MHLCK_EN		BIT(8)
+@@ -72,28 +60,16 @@
+ #define RG_HDMITX_PRD_IBIAS_D2		GENMASK(19, 16)
+ #define RG_HDMITX_PRD_IBIAS_D1		GENMASK(11, 8)
+ #define RG_HDMITX_PRD_IBIAS_D0		GENMASK(3, 0)
+-#define PRD_IBIAS_CLK_SHIFT		24
+-#define PRD_IBIAS_D2_SHIFT		16
+-#define PRD_IBIAS_D1_SHIFT		8
+-#define PRD_IBIAS_D0_SHIFT		0
+ #define HDMI_CON5		0x14
+ #define RG_HDMITX_DRV_IBIAS_CLK		GENMASK(29, 24)
+ #define RG_HDMITX_DRV_IBIAS_D2		GENMASK(21, 16)
+ #define RG_HDMITX_DRV_IBIAS_D1		GENMASK(13, 8)
+ #define RG_HDMITX_DRV_IBIAS_D0		GENMASK(5, 0)
+-#define DRV_IBIAS_CLK_SHIFT		24
+-#define DRV_IBIAS_D2_SHIFT		16
+-#define DRV_IBIAS_D1_SHIFT		8
+-#define DRV_IBIAS_D0_SHIFT		0
+ #define HDMI_CON6		0x18
+ #define RG_HDMITX_DRV_IMP_CLK		GENMASK(29, 24)
+ #define RG_HDMITX_DRV_IMP_D2		GENMASK(21, 16)
+ #define RG_HDMITX_DRV_IMP_D1		GENMASK(13, 8)
+ #define RG_HDMITX_DRV_IMP_D0		GENMASK(5, 0)
+-#define DRV_IMP_CLK_SHIFT		24
+-#define DRV_IMP_D2_SHIFT		16
+-#define DRV_IMP_D1_SHIFT		8
+-#define DRV_IMP_D0_SHIFT		0
+ #define HDMI_CON7		0x1c
+ #define RG_HDMITX_MHLCK_DRV_IBIAS	GENMASK(31, 27)
+ #define RG_HDMITX_SER_DIN		GENMASK(25, 16)
+@@ -178,21 +154,27 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
  	}
  
- 	if (instance->discth)
--		mtk_phy_update_bits(com + U3P_USBPHYACR6, PA6_RG_U2_DISCTH,
--				    PA6_RG_U2_DISCTH_VAL(instance->discth));
-+		mtk_phy_update_field(com + U3P_USBPHYACR6, PA6_RG_U2_DISCTH,
-+				     instance->discth);
- 
- 	if (instance->pre_emphasis)
--		mtk_phy_update_bits(com + U3P_USBPHYACR6, PA6_RG_U2_PRE_EMP,
--				    PA6_RG_U2_PRE_EMP_VAL(instance->pre_emphasis));
-+		mtk_phy_update_field(com + U3P_USBPHYACR6, PA6_RG_U2_PRE_EMP,
-+				     instance->pre_emphasis);
- }
- 
- /* type switch for usb3/pcie/sgmii/sata */
-@@ -1032,23 +973,23 @@ static void phy_efuse_set(struct mtk_phy_instance *instance)
- 	case PHY_TYPE_USB2:
- 		mtk_phy_set_bits(u2_banks->misc + U3P_MISC_REG1, MR1_EFUSE_AUTO_LOAD_DIS);
- 
--		mtk_phy_update_bits(u2_banks->com + U3P_USBPHYACR1, PA1_RG_INTR_CAL,
--				    PA1_RG_INTR_CAL_VAL(instance->efuse_intr));
-+		mtk_phy_update_field(u2_banks->com + U3P_USBPHYACR1, PA1_RG_INTR_CAL,
-+				     instance->efuse_intr);
- 		break;
- 	case PHY_TYPE_USB3:
- 	case PHY_TYPE_PCIE:
- 		mtk_phy_set_bits(u3_banks->phyd + U3P_U3_PHYD_RSV, P3D_RG_EFUSE_AUTO_LOAD_DIS);
- 
--		mtk_phy_update_bits(u3_banks->phyd + U3P_U3_PHYD_IMPCAL0, P3D_RG_TX_IMPEL,
--				    P3D_RG_TX_IMPEL_VAL(instance->efuse_tx_imp));
-+		mtk_phy_update_field(u3_banks->phyd + U3P_U3_PHYD_IMPCAL0, P3D_RG_TX_IMPEL,
-+				    instance->efuse_tx_imp);
- 		mtk_phy_set_bits(u3_banks->phyd + U3P_U3_PHYD_IMPCAL0, P3D_RG_FORCE_TX_IMPEL);
- 
--		mtk_phy_update_bits(u3_banks->phyd + U3P_U3_PHYD_IMPCAL1, P3D_RG_RX_IMPEL,
--				    P3D_RG_RX_IMPEL_VAL(instance->efuse_rx_imp));
-+		mtk_phy_update_field(u3_banks->phyd + U3P_U3_PHYD_IMPCAL1, P3D_RG_RX_IMPEL,
-+				    instance->efuse_rx_imp);
- 		mtk_phy_set_bits(u3_banks->phyd + U3P_U3_PHYD_IMPCAL1, P3D_RG_FORCE_RX_IMPEL);
- 
--		mtk_phy_update_bits(u3_banks->phya + U3P_U3_PHYA_REG0, P3A_RG_IEXT_INTR,
--				    P3A_RG_IEXT_INTR_VAL(instance->efuse_intr));
-+		mtk_phy_update_field(u3_banks->phya + U3P_U3_PHYA_REG0, P3A_RG_IEXT_INTR,
-+				    instance->efuse_intr);
- 		break;
- 	default:
- 		dev_warn(dev, "no sw efuse for type %d\n", instance->type);
+ 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON0,
+-			  (pre_div << PREDIV_SHIFT), RG_HDMITX_PLL_PREDIV);
++			  FIELD_PREP(RG_HDMITX_PLL_PREDIV, pre_div),
++			  RG_HDMITX_PLL_PREDIV);
+ 	mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON0, RG_HDMITX_PLL_POSDIV);
+ 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON0,
+-			  (0x1 << PLL_IC_SHIFT) | (0x1 << PLL_IR_SHIFT),
++			  FIELD_PREP(RG_HDMITX_PLL_IC, 0x1) |
++			  FIELD_PREP(RG_HDMITX_PLL_IR, 0x1),
+ 			  RG_HDMITX_PLL_IC | RG_HDMITX_PLL_IR);
+ 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON1,
+-			  (div << PLL_TXDIV_SHIFT), RG_HDMITX_PLL_TXDIV);
++			  FIELD_PREP(RG_HDMITX_PLL_TXDIV, div),
++			  RG_HDMITX_PLL_TXDIV);
+ 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON0,
+-			  (0x1 << PLL_FBKSEL_SHIFT) | (19 << PLL_FBKDIV_SHIFT),
++			  FIELD_PREP(RG_HDMITX_PLL_FBKSEL, 0x1) |
++			  FIELD_PREP(RG_HDMITX_PLL_FBKDIV, 19),
+ 			  RG_HDMITX_PLL_FBKSEL | RG_HDMITX_PLL_FBKDIV);
+ 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON1,
+-			  (0x2 << PLL_DIVEN_SHIFT), RG_HDMITX_PLL_DIVEN);
++			  FIELD_PREP(RG_HDMITX_PLL_DIVEN, 0x2),
++			  RG_HDMITX_PLL_DIVEN);
+ 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON0,
+-			  (0xc << PLL_BP_SHIFT) | (0x2 << PLL_BC_SHIFT) |
+-			  (0x1 << PLL_BR_SHIFT),
++			  FIELD_PREP(RG_HDMITX_PLL_BP, 0xc) |
++			  FIELD_PREP(RG_HDMITX_PLL_BC, 0x2) |
++			  FIELD_PREP(RG_HDMITX_PLL_BR, 0x1),
+ 			  RG_HDMITX_PLL_BP | RG_HDMITX_PLL_BC |
+ 			  RG_HDMITX_PLL_BR);
+ 	if (rate < 165000000) {
+@@ -209,29 +191,29 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
+ 		hdmi_ibias = hdmi_phy->ibias_up;
+ 	}
+ 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON4,
+-			  (pre_ibias << PRD_IBIAS_CLK_SHIFT) |
+-			  (pre_ibias << PRD_IBIAS_D2_SHIFT) |
+-			  (pre_ibias << PRD_IBIAS_D1_SHIFT) |
+-			  (pre_ibias << PRD_IBIAS_D0_SHIFT),
++			  FIELD_PREP(RG_HDMITX_PRD_IBIAS_CLK, pre_ibias) |
++			  FIELD_PREP(RG_HDMITX_PRD_IBIAS_D2, pre_ibias) |
++			  FIELD_PREP(RG_HDMITX_PRD_IBIAS_D1, pre_ibias) |
++			  FIELD_PREP(RG_HDMITX_PRD_IBIAS_D0, pre_ibias),
+ 			  RG_HDMITX_PRD_IBIAS_CLK |
+ 			  RG_HDMITX_PRD_IBIAS_D2 |
+ 			  RG_HDMITX_PRD_IBIAS_D1 |
+ 			  RG_HDMITX_PRD_IBIAS_D0);
+ 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON3,
+-			  (imp_en << DRV_IMP_EN_SHIFT),
++			  FIELD_PREP(RG_HDMITX_DRV_IMP_EN, imp_en),
+ 			  RG_HDMITX_DRV_IMP_EN);
+ 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON6,
+-			  (hdmi_phy->drv_imp_clk << DRV_IMP_CLK_SHIFT) |
+-			  (hdmi_phy->drv_imp_d2 << DRV_IMP_D2_SHIFT) |
+-			  (hdmi_phy->drv_imp_d1 << DRV_IMP_D1_SHIFT) |
+-			  (hdmi_phy->drv_imp_d0 << DRV_IMP_D0_SHIFT),
++			  FIELD_PREP(RG_HDMITX_DRV_IMP_CLK, hdmi_phy->drv_imp_clk) |
++			  FIELD_PREP(RG_HDMITX_DRV_IMP_D2, hdmi_phy->drv_imp_d2) |
++			  FIELD_PREP(RG_HDMITX_DRV_IMP_D1, hdmi_phy->drv_imp_d1) |
++			  FIELD_PREP(RG_HDMITX_DRV_IMP_D0, hdmi_phy->drv_imp_d0),
+ 			  RG_HDMITX_DRV_IMP_CLK | RG_HDMITX_DRV_IMP_D2 |
+ 			  RG_HDMITX_DRV_IMP_D1 | RG_HDMITX_DRV_IMP_D0);
+ 	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON5,
+-			  (hdmi_ibias << DRV_IBIAS_CLK_SHIFT) |
+-			  (hdmi_ibias << DRV_IBIAS_D2_SHIFT) |
+-			  (hdmi_ibias << DRV_IBIAS_D1_SHIFT) |
+-			  (hdmi_ibias << DRV_IBIAS_D0_SHIFT),
++			  FIELD_PREP(RG_HDMITX_DRV_IBIAS_CLK, hdmi_ibias) |
++			  FIELD_PREP(RG_HDMITX_DRV_IBIAS_D2, hdmi_ibias) |
++			  FIELD_PREP(RG_HDMITX_DRV_IBIAS_D1, hdmi_ibias) |
++			  FIELD_PREP(RG_HDMITX_DRV_IBIAS_D0, hdmi_ibias),
+ 			  RG_HDMITX_DRV_IBIAS_CLK |
+ 			  RG_HDMITX_DRV_IBIAS_D2 |
+ 			  RG_HDMITX_DRV_IBIAS_D1 |
 -- 
 2.18.0
 
