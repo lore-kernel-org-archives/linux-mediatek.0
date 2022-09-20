@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EBA0C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 01:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55E5BC54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 01:29:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2pgOYfGYIeLUJmAVFwtWJFRI20wQT1uozkRhlHVN1U4=; b=IWQnCBaoG7rCA4FoudSgbSIPCy
-	B0dDcorReCVhR6jFRzJUtZSKUaKwzxpHruhbjajs5Aqp9heiP8LK5FLU00cChFtsB16qHGe1rA9G5
-	UaW8c6u7kNQ2m9GYCCEDr9viWNZR+PmpEhrYy9V7qsGNgjwwj3kiAYl1l6awSZaIcJwZppihD0cCG
-	+CyBfxQ1rQQtlPgvAtvOUsbFCkjq1lf3984jmlF3q4WaD6TI+N+DqhCoCrpe6t2sAxplQWjM2y7pF
-	Xz438BxHj4IFi5GsHBcS2WS2mgeU8oFhE8Kgz27U6RuQWV14maFPoouZaR9KgqxOoeXe4HU84g+bA
-	RYoAU6Rw==;
+	bh=4c9H0CEkJF1e+Pq5M1oIVVNJiztrvRboz8nACrNsVyc=; b=DuuYuGsSn5eFlM5H7dpYs8kgpq
+	l1Jel6tJcgUv4cavpsbW6rAuoOK26ayMAt5BWcwoa/EcPIfDUuqq0kYjopBUe2jPwxS1KAS/aumiK
+	8gBfTVxEuckX4t6oBczXez4JzP8p1ExdH7CWEcVuvsuVh6Um/XO9P4omGXvziz6gfMxOqobsxGoSf
+	sRluSgF5hkfVzGGRTzgv2tnAe/MT7FlKrcyTUcPPj64xdooBYU+WSCLIGjkhpG2a1Kv34P3iC6MBo
+	76fgJw8Xj7/O3Tg1StwuSzOIy5Pl15/nz8IDyk4DyQA+zzi8wajVWtYZm5doiofNWUukZhB9+kB1S
+	94WyjoWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaRmU-00GuPL-SA; Tue, 20 Sep 2022 01:10:34 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oaS4U-00H0I4-AF; Tue, 20 Sep 2022 01:29:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaRmK-00GuMm-2s; Tue, 20 Sep 2022 01:10:25 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 913E661FFF;
-	Tue, 20 Sep 2022 01:10:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id F087CC43141;
-	Tue, 20 Sep 2022 01:10:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663636221;
-	bh=07EGYIZem37aOD6C4g6/dH8R2h8ek3SLzRXEZJcQ2wI=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=VaSPe2qkwOl9/mi+9t5oU7OsiIYCx0w4SgeYPY6UyZWM4dhDqzfh1J3VxmUc05MNv
-	 U9ehkpHBrRnD+pLjF/Q4ZkzBHQGRVqREuff92UAHwY6jN68iEQWLFv58dxdT+JpwkG
-	 Mnc9MBjnE2FTsRLwDT9unG3ExpurCQ06UR1RG2WgF0EBU8kkHJqvXVtokJFEC0riin
-	 OIm01kGKAqH+LjMPiQToVQct55U4kM2lyxJw9oG7B9NtTufX5W8g0rylkxGVijZV4b
-	 Mm4Y+kjNplFUG8r1DIjTbLHQfsewt4GO9qyMl73bg43xwr3BvRvb37OQlJuu4hIq5a
-	 UK2pXGLhigv+A==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id D173CE52537;
-	Tue, 20 Sep 2022 01:10:20 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1oaS4H-00H0GG-Ot; Tue, 20 Sep 2022 01:29:01 +0000
+X-UUID: 950dd3fb6f8140f5a359c9c18412eab2-20220919
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=4c9H0CEkJF1e+Pq5M1oIVVNJiztrvRboz8nACrNsVyc=;
+	b=XFBwqprXU45p260aSZmL+TvlQRcl5rCwSqwUKpNm1stsI0ubn5Z2xjtsXu0lPUxCpo9sb9yFNBsrAEnHey9SLxb68CfebJvBSKJ6C+D3M0Y3qnCJ0WoPBF1e+9uUNN0YiYKqOHFjzH5EmJa6JT/CR4EpmDAooy34zhV1iaJCoSY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:e0ff660c-97d8-429f-be49-14745304c88e,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:000c335e-5ed4-4e28-8b00-66ed9f042fbd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 950dd3fb6f8140f5a359c9c18412eab2-20220919
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yong.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1410230860; Mon, 19 Sep 2022 18:28:50 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 20 Sep 2022 09:28:40 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 20 Sep 2022 09:28:38 +0800
+Message-ID: <2111faa6541ad339d6b7ec07f63444a1fc512288.camel@mediatek.com>
+Subject: Re: [PATCH v5 3/6] iommu/mediatek: Add error path for loop of
+ mm_dts_parse
+From: Yong Wu <yong.wu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: Robin Murphy <robin.murphy@arm.com>, <iommu@lists.linux.dev>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <mingyuan.ma@mediatek.com>,
+	<yf.wang@mediatek.com>, <libo.kang@mediatek.com>, <chengci.xu@mediatek.com>,
+	<youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
+	<xueqi.zhang@mediatek.com>, Guenter Roeck <groeck@chromium.org>, "Dan
+ Carpenter" <dan.carpenter@oracle.com>, Joerg Roedel <joro@8bytes.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>
+Date: Tue, 20 Sep 2022 09:28:38 +0800
+In-Reply-To: <276a4a37-a98d-c59b-a967-db9f5b220077@collabora.com>
+References: <20220919092405.8256-1-yong.wu@mediatek.com>
+	 <20220919092405.8256-4-yong.wu@mediatek.com>
+	 <276a4a37-a98d-c59b-a967-db9f5b220077@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next 0/3] Remove label = "cpu" from DSA dt-bindings
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <166363622085.23429.2523783707495550803.git-patchwork-notify@kernel.org>
-Date: Tue, 20 Sep 2022 01:10:20 +0000
-References: <20220912175058.280386-1-vladimir.oltean@nxp.com>
-In-Reply-To: <20220912175058.280386-1-vladimir.oltean@nxp.com>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: netdev@vger.kernel.org, andrew@lunn.ch, vivien.didelot@gmail.com,
- f.fainelli@gmail.com, olteanv@gmail.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, george.mccollister@gmail.com,
- kurt@linutronix.de, matthias.bgg@gmail.com, woojung.huh@microchip.com,
- UNGLinuxDriver@microchip.com, linus.walleij@linaro.org, alsi@bang-olufsen.dk,
- clement.leger@bootlin.com, arinc.unal@arinc9.com, Landen.Chao@mediatek.com,
- dqfext@gmail.com, sean.wang@mediatek.com, marex@denx.de, john@phrozen.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_181024_207450_4BA59739 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20220919_182858_717564_928A10BD 
+X-CRM114-Status: GOOD (  18.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,33 +87,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (master)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Mon, 12 Sep 2022 20:50:55 +0300 you wrote:
-> As explained in more detail in patch 1/3, label = "cpu" is not part of
-> DSA's device tree bindings, yet we have some checks in the dt-schema for
-> mt7530 which are written as if it was.
+On Mon, 2022-09-19 at 16:20 +0200, AngeloGioacchino Del Regno wrote:
+> Il 19/09/22 11:24, Yong Wu ha scritto:
+> > The mtk_iommu_mm_dts_parse will parse the smi larbs nodes. if the
+> > i+1
+> > larb is parsed fail, we should put_device for the 0..i larbs.
 > 
-> Reformulate those checks, and remove all occurrences of this seemingly
-> used, but actually unused, property from the binding examples.
+> If any v6 will be required... you forgot to update the commit
+> description with
+> "we should put_device for the i..0 larbs".
+
+oh. Thanks for reviewing so carefully. I will send a quick v6 to fix
+this.
+
 > 
-> [...]
+> > 
+> > There are two places need to comment:
+> > 1) The larbid may be not linear mapping, we should loop whole
+> >     the array in the error path.
+> > 2) I move this line position: "data->larb_imu[id].dev = &plarbdev-
+> > >dev;"
+> >     before "if (!plarbdev->dev.driver)", That means set
+> >     data->larb_imu[id].dev before the error path. then we don't
+> > need
+> >     "platform_device_put(plarbdev)" again in probe_defer case. All
+> > depend
+> >     on "put_device" of the error path in error cases.
+> > 
+> > Fixes: d2e9a1102cfc ("iommu/mediatek: Contain MM IOMMU flow with
+> > the MM TYPE")
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> 
+> In any case....
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
 
-Here is the summary with links:
-  - [net-next,1/3] dt-bindings: net: dsa: mt7530: replace label = "cpu" with proper checks
-    https://git.kernel.org/netdev/net-next/c/3f301a280078
-  - [net-next,2/3] dt-bindings: net: dsa: mt7530: stop requiring phy-mode on CPU ports
-    https://git.kernel.org/netdev/net-next/c/cdd3e486d705
-  - [net-next,3/3] dt-bindings: net: dsa: remove label = "cpu" from examples
-    https://git.kernel.org/netdev/net-next/c/9cc115d8d6f7
+Thanks very much:)
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+> 
+> 
+> 
 
 
