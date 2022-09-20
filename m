@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0B06ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 09:04:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90DE0C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 09:04:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QX+zsgCt4UHzplHNtbSC7dr/Ouj/pqLPeYAQTq2AnPI=; b=M9uyN9XsZOtFSHd1muEoolMJDB
-	LL96nuKM4KexfaR7tcvZEu8vw9o4Tqt0vP0Heidh9igxsd1M5of/w7AoBDEPDpPjEbHwxtfefqoCF
-	g8nHIY5cDv77XYWZXaKDfbEjmcTGIsBa+D5bsRwUV0ni30y03ICcLLtqVPEwH0gERELAJlnbUkYsR
-	mA4epVLhnVz+HuMrQSEoUvPMYhkZUASvFy2OpjCVr8hPq8e+m4iA1Ao0RgaIJ7rrbiKjUILKhTIDu
-	KF2CWfmCgGaNcs/Y1mhwKjqToRsfhmXwek3azcUxy5sACn41TSIy2ReiP46hs7nTaaBXuAXuZcLXQ
-	D6xA6TNQ==;
+	bh=kSOs6zUQirLBN1JAYVn/+CkOGaCnw6v6r+kmkvDzR+Q=; b=oaJ1BYE6xTy/vfrosbQOFplSIP
+	8SZ6LnKmeOqtbVz4jI3lW0Vymi7JIGOmXuhb5Sb/0hURgETmEyImP30JXd8gBcZz7jIwjpsZAP9PG
+	mGajVMfAgCawedy9YBpkPVPA1ZVbSQ72ZPIRP2qo0pFK/sbqL+0MwraYhQK8uoecRykxztGSKzt8l
+	MliDNJ5mwcvBgHweyLXsWrFRiw/dwrpT5YTEn3yx01ZNa2fSna0B6XmLC/vbY+MDYFgpFZ20U3N5C
+	oYwEwZvXFPwCM7q5022KBTXCIOXQrKLgibW23k5J7/4yBlhJ6uKhdQab2eumD7ceEQRDv5Ac9R5e0
+	UQo9GuMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaZAX-002A9z-NU; Tue, 20 Sep 2022 09:03:53 +0000
+	id 1oaZBA-002ANz-Ff; Tue, 20 Sep 2022 09:04:34 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaZ8Y-00290H-Ra; Tue, 20 Sep 2022 09:01:53 +0000
-X-UUID: 159315ad53634b35863ce36af0876f15-20220920
+	id 1oaZ8Z-0028zl-NA; Tue, 20 Sep 2022 09:01:53 +0000
+X-UUID: 71043f755edc4384b03863544c420dc7-20220920
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=QX+zsgCt4UHzplHNtbSC7dr/Ouj/pqLPeYAQTq2AnPI=;
-	b=B6L15IWQ2VyEyLJl25lxY+McAJLi6ztNFwg/i0VlvmE6oHrKL/0Ca71JZll2mE4R6lCVD3nWirptWvD0ZSUMh+7tYZQck6MpJHiWU00I+1CiaPyRNBIhlre/6WDRV92mJkMVKa5m91FHyJwSdARYAeuzatUfmKhcL5YzPF357h8=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=kSOs6zUQirLBN1JAYVn/+CkOGaCnw6v6r+kmkvDzR+Q=;
+	b=tHd9H4kQ7iz3Pr/RkYo96LIXjqHoejmgwoMetCXbFTOhWYV6YSzuUnot4SN/5G1/F/KkNUrpEJ0iWiWkeTSdmkWhuMQPyReRhviyAs7KzAxqWOd56POtiW7vPmSlg66NcKnucDJXbOlRSLQvM7y7PZTMY5MXXiDIZuxD+DmdgJ0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:fc209bc7-300e-42bb-8d2d-aac21bfe9791,IP:0,U
-	RL:0,TC:0,Content:46,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:46
-X-CID-META: VersionHash:39a5ff1,CLOUDID:33f403f7-6e85-48d9-afd8-0504bbfe04cb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:4,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 159315ad53634b35863ce36af0876f15-20220920
+X-CID-O-INFO: VERSION:1.1.11,REQID:ed77cedf-8c64-41e2-a8e5-bc9f5babcb30,IP:0,U
+	RL:0,TC:0,Content:0,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:60f1435e-5ed4-4e28-8b00-66ed9f042fbd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:5,IP:nil,UR
+	L:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 71043f755edc4384b03863544c420dc7-20220920
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1024240074; Tue, 20 Sep 2022 02:01:45 -0700
+	with ESMTP id 769939570; Tue, 20 Sep 2022 02:01:44 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 20 Sep 2022 17:00:45 +0800
+ 15.2.792.15; Tue, 20 Sep 2022 17:00:42 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 20 Sep 2022 17:00:44 +0800
+ Transport; Tue, 20 Sep 2022 17:00:42 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Vinod Koul <vkoul@kernel.org>
 CC: Philipp Zabel <p.zabel@pengutronix.de>, Chunfeng Yun
@@ -56,9 +56,9 @@ CC: Philipp Zabel <p.zabel@pengutronix.de>, Chunfeng Yun
 	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Stanley
  Chu <stanley.chu@mediatek.com>
-Subject: [PATCH 06/18] phy: mediatek: hdmi: mt2701: use GENMASK and BIT to generate mask and bits
-Date: Tue, 20 Sep 2022 17:00:26 +0800
-Message-ID: <20220920090038.15133-7-chunfeng.yun@mediatek.com>
+Subject: [PATCH 03/18] phy: mediatek: xsphy: remove macros used to prepare bitfield value
+Date: Tue, 20 Sep 2022 17:00:23 +0800
+Message-ID: <20220920090038.15133-4-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220920090038.15133-1-chunfeng.yun@mediatek.com>
 References: <20220920090038.15133-1-chunfeng.yun@mediatek.com>
@@ -67,8 +67,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_020150_956462_09507609 
-X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-CacheID: sfid-20220920_020151_840629_1061E574 
+X-CRM114-Status: UNSURE (   9.49  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,108 +84,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use GENMASK() and BIT() macros to generate mask and bits
+Prefer to make use of FIELD_PREP() macro to prepare bitfield value,
+then no need local ones anymore.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c | 56 +++++++++++-----------
- 1 file changed, 28 insertions(+), 28 deletions(-)
+ drivers/phy/mediatek/phy-mtk-xsphy.c | 46 ++++++++++------------------
+ 1 file changed, 17 insertions(+), 29 deletions(-)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-index b74c65a1762c..ce36f37c698d 100644
---- a/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-+++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-@@ -8,62 +8,62 @@
+diff --git a/drivers/phy/mediatek/phy-mtk-xsphy.c b/drivers/phy/mediatek/phy-mtk-xsphy.c
+index c0cdb78f77fa..b222fbbd71d1 100644
+--- a/drivers/phy/mediatek/phy-mtk-xsphy.c
++++ b/drivers/phy/mediatek/phy-mtk-xsphy.c
+@@ -37,7 +37,6 @@
+ #define XSP_U2FREQ_FMCR0	((SSUSB_SIFSLV_U2FREQ) + 0x00)
+ #define P2F_RG_FREQDET_EN	BIT(24)
+ #define P2F_RG_CYCLECNT		GENMASK(23, 0)
+-#define P2F_RG_CYCLECNT_VAL(x)	((P2F_RG_CYCLECNT) & (x))
  
- #define HDMI_CON0	0x00
- #define RG_HDMITX_DRV_IBIAS		0
--#define RG_HDMITX_DRV_IBIAS_MASK	(0x3f << 0)
-+#define RG_HDMITX_DRV_IBIAS_MASK	GENMASK(5, 0)
- #define RG_HDMITX_EN_SER		12
--#define RG_HDMITX_EN_SER_MASK		(0x0f << 12)
-+#define RG_HDMITX_EN_SER_MASK		GENMASK(15, 12)
- #define RG_HDMITX_EN_SLDO		16
--#define RG_HDMITX_EN_SLDO_MASK		(0x0f << 16)
-+#define RG_HDMITX_EN_SLDO_MASK		GENMASK(19, 16)
- #define RG_HDMITX_EN_PRED		20
--#define RG_HDMITX_EN_PRED_MASK		(0x0f << 20)
-+#define RG_HDMITX_EN_PRED_MASK		GENMASK(23, 20)
- #define RG_HDMITX_EN_IMP		24
--#define RG_HDMITX_EN_IMP_MASK		(0x0f << 24)
-+#define RG_HDMITX_EN_IMP_MASK		GENMASK(27, 24)
- #define RG_HDMITX_EN_DRV		28
--#define RG_HDMITX_EN_DRV_MASK		(0x0f << 28)
-+#define RG_HDMITX_EN_DRV_MASK		GENMASK(31, 28)
+ #define XSP_U2FREQ_MMONR0  ((SSUSB_SIFSLV_U2FREQ) + 0x0c)
  
- #define HDMI_CON1	0x04
- #define RG_HDMITX_PRED_IBIAS		18
--#define RG_HDMITX_PRED_IBIAS_MASK	(0x0f << 18)
--#define RG_HDMITX_PRED_IMP		(0x01 << 22)
-+#define RG_HDMITX_PRED_IBIAS_MASK	GENMASK(21, 18)
-+#define RG_HDMITX_PRED_IMP		BIT(22)
- #define RG_HDMITX_DRV_IMP		26
--#define RG_HDMITX_DRV_IMP_MASK		(0x3f << 26)
-+#define RG_HDMITX_DRV_IMP_MASK		GENMASK(31, 26)
+@@ -50,16 +49,12 @@
  
- #define HDMI_CON2	0x08
--#define RG_HDMITX_EN_TX_CKLDO		(0x01 << 0)
--#define RG_HDMITX_EN_TX_POSDIV		(0x01 << 1)
-+#define RG_HDMITX_EN_TX_CKLDO		BIT(0)
-+#define RG_HDMITX_EN_TX_POSDIV		BIT(1)
- #define RG_HDMITX_TX_POSDIV		3
--#define RG_HDMITX_TX_POSDIV_MASK	(0x03 << 3)
--#define RG_HDMITX_EN_MBIAS		(0x01 << 6)
--#define RG_HDMITX_MBIAS_LPF_EN		(0x01 << 7)
-+#define RG_HDMITX_TX_POSDIV_MASK	GENMASK(4, 3)
-+#define RG_HDMITX_EN_MBIAS		BIT(6)
-+#define RG_HDMITX_MBIAS_LPF_EN		BIT(7)
+ #define XSP_USBPHYACR1		((SSUSB_SIFSLV_U2PHY_COM) + 0x04)
+ #define P2A1_RG_INTR_CAL		GENMASK(23, 19)
+-#define P2A1_RG_INTR_CAL_VAL(x)	((0x1f & (x)) << 19)
+ #define P2A1_RG_VRT_SEL			GENMASK(14, 12)
+-#define P2A1_RG_VRT_SEL_VAL(x)	((0x7 & (x)) << 12)
+ #define P2A1_RG_TERM_SEL		GENMASK(10, 8)
+-#define P2A1_RG_TERM_SEL_VAL(x)	((0x7 & (x)) << 8)
  
- #define HDMI_CON4	0x10
--#define RG_HDMITX_RESERVE_MASK		(0xffffffff << 0)
-+#define RG_HDMITX_RESERVE_MASK		GENMASK(31, 0)
+ #define XSP_USBPHYACR5		((SSUSB_SIFSLV_U2PHY_COM) + 0x014)
+ #define P2A5_RG_HSTX_SRCAL_EN	BIT(15)
+ #define P2A5_RG_HSTX_SRCTRL		GENMASK(14, 12)
+-#define P2A5_RG_HSTX_SRCTRL_VAL(x)	((0x7 & (x)) << 12)
  
- #define HDMI_CON6	0x18
- #define RG_HTPLL_BR			0
--#define RG_HTPLL_BR_MASK		(0x03 << 0)
-+#define RG_HTPLL_BR_MASK		GENMASK(1, 0)
- #define RG_HTPLL_BC			2
--#define RG_HTPLL_BC_MASK		(0x03 << 2)
-+#define RG_HTPLL_BC_MASK		GENMASK(3, 2)
- #define RG_HTPLL_BP			4
--#define RG_HTPLL_BP_MASK		(0x0f << 4)
-+#define RG_HTPLL_BP_MASK		GENMASK(7, 4)
- #define RG_HTPLL_IR			8
--#define RG_HTPLL_IR_MASK		(0x0f << 8)
-+#define RG_HTPLL_IR_MASK		GENMASK(11, 8)
- #define RG_HTPLL_IC			12
--#define RG_HTPLL_IC_MASK		(0x0f << 12)
-+#define RG_HTPLL_IC_MASK		GENMASK(15, 12)
- #define RG_HTPLL_POSDIV			16
--#define RG_HTPLL_POSDIV_MASK		(0x03 << 16)
-+#define RG_HTPLL_POSDIV_MASK		GENMASK(17, 16)
- #define RG_HTPLL_PREDIV			18
--#define RG_HTPLL_PREDIV_MASK		(0x03 << 18)
-+#define RG_HTPLL_PREDIV_MASK		GENMASK(19, 18)
- #define RG_HTPLL_FBKSEL			20
--#define RG_HTPLL_FBKSEL_MASK		(0x03 << 20)
--#define RG_HTPLL_RLH_EN			(0x01 << 22)
-+#define RG_HTPLL_FBKSEL_MASK		GENMASK(21, 20)
-+#define RG_HTPLL_RLH_EN			BIT(22)
- #define RG_HTPLL_FBKDIV			24
--#define RG_HTPLL_FBKDIV_MASK		(0x7f << 24)
--#define RG_HTPLL_EN			(0x01 << 31)
-+#define RG_HTPLL_FBKDIV_MASK		GENMASK(30, 24)
-+#define RG_HTPLL_EN			BIT(31)
+ #define XSP_USBPHYACR6		((SSUSB_SIFSLV_U2PHY_COM) + 0x018)
+ #define P2A6_RG_BC11_SW_EN	BIT(23)
+@@ -74,15 +69,12 @@
  
- #define HDMI_CON7	0x1c
--#define RG_HTPLL_AUTOK_EN		(0x01 << 23)
-+#define RG_HTPLL_AUTOK_EN		BIT(23)
- #define RG_HTPLL_DIVEN			28
--#define RG_HTPLL_DIVEN_MASK		(0x07 << 28)
-+#define RG_HTPLL_DIVEN_MASK		GENMASK(30, 28)
+ #define SSPXTP_PHYA_GLB_00		((SSPXTP_SIFSLV_PHYA_GLB) + 0x00)
+ #define RG_XTP_GLB_BIAS_INTR_CTRL		GENMASK(21, 16)
+-#define RG_XTP_GLB_BIAS_INTR_CTRL_VAL(x)	((0x3f & (x)) << 16)
  
- static int mtk_hdmi_pll_prepare(struct clk_hw *hw)
- {
+ #define SSPXTP_PHYA_LN_04	((SSPXTP_SIFSLV_PHYA_LN) + 0x04)
+ #define RG_XTP_LN0_TX_IMPSEL		GENMASK(4, 0)
+-#define RG_XTP_LN0_TX_IMPSEL_VAL(x)	(0x1f & (x))
+ 
+ #define SSPXTP_PHYA_LN_14	((SSPXTP_SIFSLV_PHYA_LN) + 0x014)
+ #define RG_XTP_LN0_RX_IMPSEL		GENMASK(4, 0)
+-#define RG_XTP_LN0_RX_IMPSEL_VAL(x)	(0x1f & (x))
+ 
+ #define XSP_REF_CLK		26	/* MHZ */
+ #define XSP_SLEW_RATE_COEF	17
+@@ -134,8 +126,8 @@ static void u2_phy_slew_rate_calibrate(struct mtk_xsphy *xsphy,
+ 	mtk_phy_set_bits(pbase + XSP_U2FREQ_FMMONR1, P2F_RG_FRCK_EN);
+ 
+ 	/* set cycle count as 1024 */
+-	mtk_phy_update_bits(pbase + XSP_U2FREQ_FMCR0, P2F_RG_CYCLECNT,
+-			    P2F_RG_CYCLECNT_VAL(XSP_FM_DET_CYCLE_CNT));
++	mtk_phy_update_field(pbase + XSP_U2FREQ_FMCR0, P2F_RG_CYCLECNT,
++			     XSP_FM_DET_CYCLE_CNT);
+ 
+ 	/* enable frequency meter */
+ 	mtk_phy_set_bits(pbase + XSP_U2FREQ_FMCR0, P2F_RG_FREQDET_EN);
+@@ -166,8 +158,7 @@ static void u2_phy_slew_rate_calibrate(struct mtk_xsphy *xsphy,
+ 		xsphy->src_ref_clk, xsphy->src_coef);
+ 
+ 	/* set HS slew rate */
+-	mtk_phy_update_bits(pbase + XSP_USBPHYACR5, P2A5_RG_HSTX_SRCTRL,
+-			    P2A5_RG_HSTX_SRCTRL_VAL(calib_val));
++	mtk_phy_update_field(pbase + XSP_USBPHYACR5, P2A5_RG_HSTX_SRCTRL, calib_val);
+ 
+ 	/* disable USB ring oscillator */
+ 	mtk_phy_clear_bits(pbase + XSP_USBPHYACR5, P2A5_RG_HSTX_SRCAL_EN);
+@@ -280,20 +271,20 @@ static void u2_phy_props_set(struct mtk_xsphy *xsphy,
+ 	void __iomem *pbase = inst->port_base;
+ 
+ 	if (inst->efuse_intr)
+-		mtk_phy_update_bits(pbase + XSP_USBPHYACR1, P2A1_RG_INTR_CAL,
+-				    P2A1_RG_INTR_CAL_VAL(inst->efuse_intr));
++		mtk_phy_update_field(pbase + XSP_USBPHYACR1, P2A1_RG_INTR_CAL,
++				     inst->efuse_intr);
+ 
+ 	if (inst->eye_src)
+-		mtk_phy_update_bits(pbase + XSP_USBPHYACR5, P2A5_RG_HSTX_SRCTRL,
+-				    P2A5_RG_HSTX_SRCTRL_VAL(inst->eye_src));
++		mtk_phy_update_field(pbase + XSP_USBPHYACR5, P2A5_RG_HSTX_SRCTRL,
++				     inst->eye_src);
+ 
+ 	if (inst->eye_vrt)
+-		mtk_phy_update_bits(pbase + XSP_USBPHYACR1, P2A1_RG_VRT_SEL,
+-				    P2A1_RG_VRT_SEL_VAL(inst->eye_vrt));
++		mtk_phy_update_field(pbase + XSP_USBPHYACR1, P2A1_RG_VRT_SEL,
++				     inst->eye_vrt);
+ 
+ 	if (inst->eye_term)
+-		mtk_phy_update_bits(pbase + XSP_USBPHYACR1, P2A1_RG_TERM_SEL,
+-				    P2A1_RG_TERM_SEL_VAL(inst->eye_term));
++		mtk_phy_update_field(pbase + XSP_USBPHYACR1, P2A1_RG_TERM_SEL,
++				     inst->eye_term);
+ }
+ 
+ static void u3_phy_props_set(struct mtk_xsphy *xsphy,
+@@ -302,19 +293,16 @@ static void u3_phy_props_set(struct mtk_xsphy *xsphy,
+ 	void __iomem *pbase = inst->port_base;
+ 
+ 	if (inst->efuse_intr)
+-		mtk_phy_update_bits(xsphy->glb_base + SSPXTP_PHYA_GLB_00,
+-				    RG_XTP_GLB_BIAS_INTR_CTRL,
+-				    RG_XTP_GLB_BIAS_INTR_CTRL_VAL(inst->efuse_intr));
++		mtk_phy_update_field(xsphy->glb_base + SSPXTP_PHYA_GLB_00,
++				     RG_XTP_GLB_BIAS_INTR_CTRL, inst->efuse_intr);
+ 
+ 	if (inst->efuse_tx_imp)
+-		mtk_phy_update_bits(pbase + SSPXTP_PHYA_LN_04,
+-				    RG_XTP_LN0_TX_IMPSEL,
+-				    RG_XTP_LN0_TX_IMPSEL_VAL(inst->efuse_tx_imp));
++		mtk_phy_update_field(pbase + SSPXTP_PHYA_LN_04,
++				     RG_XTP_LN0_TX_IMPSEL, inst->efuse_tx_imp);
+ 
+ 	if (inst->efuse_rx_imp)
+-		mtk_phy_update_bits(pbase + SSPXTP_PHYA_LN_14,
+-				    RG_XTP_LN0_RX_IMPSEL,
+-				    RG_XTP_LN0_RX_IMPSEL_VAL(inst->efuse_rx_imp));
++		mtk_phy_update_field(pbase + SSPXTP_PHYA_LN_14,
++				     RG_XTP_LN0_RX_IMPSEL, inst->efuse_rx_imp);
+ }
+ 
+ static int mtk_phy_init(struct phy *phy)
 -- 
 2.18.0
 
