@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34986C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 17:27:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38694C6FA92
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 17:27:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=loETMcYAL4ROIG1xQMzWE1mjbgbUJ8t+eJJu11sOFyI=; b=ZuEtfJ/Kz3ojh+WGaRj3dBnmgO
-	et1OevNMtPzBwAwnDUMY3TjKbbtb2g5u4e/wNpg139DlJRYVYwYs02pvldcR6upzB5Rtvq20CVby5
-	6nSLzuLUPTwi+kT5qr7HtWguTjcM0sB00Ub9krvNsiOfizcf3DpKl27L9luu35hv9AqvLBvV+o4er
-	gWI0F8seMZ3vxYuy31daiGywRP5lSgXY6Q9kT/WX28zI9zFM+JA0m0MJ1Y8C4xrMEv/2wzehzX9Wr
-	0nub4iPTNF3e92AnTQ4NGeCEW8VtQzvYp4k2Kv2BNOz4wKU0VakCJGAmznXGh9pkbTmFwUVzD2p+U
-	Pe1nlLyA==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vXrJMHWZBZIFJYtKNziRCM6Wm5cnqBcTTG0li//8+DQ=; b=Y43hmEnO8ewDmfBgnXWj/jQq39
+	slpMDS5hc+DmbfBvoCvw7eTKhukXBH2JHZjoddyhTmrNDjxSDubd6pIBabFAn1YEGWIt8aHiAQEcH
+	5TBshl0Hg0IMYl9oMLNo88EDWTrpS4Z/jQcfBf7+z2rOpq55BjTd7IGJlQBgVRi4bUk/5Q16LqNJz
+	Gu+MpXTW8P1ToEUwQys8Qaj+adB+QwVF2dmaQoegM9xNXs7xIKScET34ptxZjaaOFcgwL34TSfU1a
+	WvdIOWbYcyLHSXhJcCHE0iGsaBP59D70Ghmx+o4isikcfOmF0KW2vmrKoJ/mKnf3UpJC/g2QsYOJ8
+	PJIShqhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oah1R-005RQQ-NF; Tue, 20 Sep 2022 17:27:01 +0000
+	id 1oah1d-005RWX-NA; Tue, 20 Sep 2022 17:27:13 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oah1G-005RKk-12; Tue, 20 Sep 2022 17:26:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1663694782; cv=none; 
+	id 1oah1G-005RLB-15; Tue, 20 Sep 2022 17:26:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1663694790; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=S2KQStHwuKEd4+hBYLoZ5gUngnG4E9dNJi7vvVnWj0tSadFLUIQmXAMvddt1j0SChdE6lHDIZOMhvxBtZCU2RaDzPq05bCMRHWL3z74muFiXyU+7a204lKVjVnIGrtmndoH6gpn0OEgdMzRdhkki9hjoCfcPvuJbI/l46AKAl8Q=
+	b=WZ9aP80pzPPeeMxqUmH4+od8fyvSU0Hvh/x5vbmxfXm056vo72upha0IOauhhGb5G+PrKb5ZyXM/zOnAQSicdB4UsmzocrvMukQMIHo0oNnlKF7z61ujJR+rAD9Wz9R1ojNtemj3nwCs+D7lir0c+VNQQBavUY53mwxNoTazNHc=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1663694782; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:MIME-Version:Message-ID:Subject:To; 
-	bh=loETMcYAL4ROIG1xQMzWE1mjbgbUJ8t+eJJu11sOFyI=; 
-	b=UZiYNvlmjUi3L5PX4HM7seS0fLf9iAPe3lACnIXtoCZbfep6g4WALNQRAKXWCDrzm8oNNjz56JcWZzHLqof1hH0e4XHLmuKNa3IzorDIntYNoxJJrCTM7Ol1NEDVsQ40p5z0+2C6lGHdxCLLMtntBPbIsJnhiv5/+krE6FZUMFA=
+	t=1663694790; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:To; 
+	bh=vXrJMHWZBZIFJYtKNziRCM6Wm5cnqBcTTG0li//8+DQ=; 
+	b=C78a5bI8FO6zDOcTSDlGPG0IlwY+wd5P195fIadEeiKOCg2Z29Ejvt/GHl7RqQjf2trwM1S0+BsXHnbFzW2oAqiesSFTtwzvl4JS8H99umQZUNXTZtVXkaSJT6LFvnPI/cyudHB0qd9IHjEtqv9YsVeqplS20ujb4AO5ttKSRBM=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=arinc9.com;
 	spf=pass  smtp.mailfrom=arinc.unal@arinc9.com;
 	dmarc=pass header.from=<arinc.unal@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663694782;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1663694790;
 	s=zmail; d=arinc9.com; i=arinc.unal@arinc9.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
-	bh=loETMcYAL4ROIG1xQMzWE1mjbgbUJ8t+eJJu11sOFyI=;
-	b=BxFzmi/d14yBqIP++BxD98r4FRYTlFhMkcRY9nzLy/DnZpoBs9xn+x4yASVXly/c
-	+Omd/ZZVafNOLiV56TkCKDwr4aK+yh3F4f6rmjtbZIhWNk2T5s6mWPbUA3Qo02zI4fv
-	D167GusK1Bc++aY6xGMS0zxeRQqFT2lfe4MjK2Lk=
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-Id:Message-Id:In-Reply-To:References:MIME-Version:Content-Type:Content-Transfer-Encoding:Reply-To;
+	bh=vXrJMHWZBZIFJYtKNziRCM6Wm5cnqBcTTG0li//8+DQ=;
+	b=GCXKhOmLRpiy+KrUTxTW95M+JHiM6jiA+q96HuFdC+D0LVOqVh1PXtWnJez2G95u
+	kvC5zxmPwvHitETXchdlq5QpBo9QLV4sz611asoJ0McEfq0kcCGctuZrZpKiN3HeDLo
+	ZsIMEUFS8v8sKnMHyingX7vGZVuxRRS5bNiJu7ek=
 Received: from arinc9-Xeront.fusolab.local (37.120.152.236 [37.120.152.236]) by mx.zohomail.com
-	with SMTPS id 1663694780726325.1013179736344; Tue, 20 Sep 2022 10:26:20 -0700 (PDT)
+	with SMTPS id 1663694789223795.3833959656773; Tue, 20 Sep 2022 10:26:29 -0700 (PDT)
 From: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -69,19 +69,21 @@ Cc: netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-mips@vger.kernel.org,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>
-Subject: [PATCH v4 net-next 00/10] dt-bindings and mt7621 devicetree changes
-Date: Tue, 20 Sep 2022 20:25:46 +0300
-Message-Id: <20220920172556.16557-1-arinc.unal@arinc9.com>
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Rob Herring <robh@kernel.org>
+Subject: [PATCH v4 net-next 01/10] dt-bindings: net: drop old mediatek bindings
+Date: Tue, 20 Sep 2022 20:25:47 +0300
+Message-Id: <20220920172556.16557-2-arinc.unal@arinc9.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220920172556.16557-1-arinc.unal@arinc9.com>
+References: <20220920172556.16557-1-arinc.unal@arinc9.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_102650_163393_148261D8 
-X-CRM114-Status: UNSURE (   8.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220920_102650_166353_0C3398E4 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,47 +98,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello there!
+Remove these old mediatek bindings which are not used.
 
-This patch series removes old MediaTek bindings, improves mediatek,mt7530
-and mt7621 memory controller bindings and improves mt7621 DTs.
+Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ .../bindings/net/mediatek,mt7620-gsw.txt      | 24 --------
+ .../bindings/net/ralink,rt2880-net.txt        | 59 -------------------
+ .../bindings/net/ralink,rt3050-esw.txt        | 30 ----------
+ 3 files changed, 113 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/net/mediatek,mt7620-gsw.txt
+ delete mode 100644 Documentation/devicetree/bindings/net/ralink,rt2880-net.txt
+ delete mode 100644 Documentation/devicetree/bindings/net/ralink,rt3050-esw.txt
 
-v4:
-- Keep memory-controller node name.
-- Change syscon to memory-controller on mt7621.dtsi.
-
-v3:
-- Explain the mt7621 memory controller binding change in more details.
-- Remove explaining the remaining DTC warnings from the patch log as there
-are new schemas submitted for them.
-
-v2:
-- Change memory controller node name to syscon on the schema example.
-- Keep cpu compatible string and syscon on the memory controller node.
-- Add Rob and Sergio's tags.
-
-Arınç ÜNAL (10):
-  dt-bindings: net: drop old mediatek bindings
-  dt-bindings: net: dsa: mediatek,mt7530: change mt7530 switch address
-  dt-bindings: net: dsa: mediatek,mt7530: expand gpio-controller
-    description
-  dt-bindings: memory: mt7621: add syscon as compatible string
-  mips: dts: ralink: mt7621: fix some dtc warnings
-  mips: dts: ralink: mt7621: remove interrupt-parent from switch node
-  mips: dts: ralink: mt7621: change phy-mode of gmac1 to rgmii
-  mips: dts: ralink: mt7621: change mt7530 switch address
-  mips: dts: ralink: mt7621: fix external phy on GB-PC2
-  mips: dts: ralink: mt7621: add GB-PC2 LEDs
-
- .../mediatek,mt7621-memc.yaml                   |  6 +-
- .../bindings/net/dsa/mediatek,mt7530.yaml       | 34 ++++++-----
- .../bindings/net/mediatek,mt7620-gsw.txt        | 24 --------
- .../bindings/net/ralink,rt2880-net.txt          | 59 --------------------
- .../bindings/net/ralink,rt3050-esw.txt          | 30 ----------
- .../boot/dts/ralink/mt7621-gnubee-gb-pc1.dts    |  8 +--
- .../boot/dts/ralink/mt7621-gnubee-gb-pc2.dts    | 50 +++++++++++++----
- arch/mips/boot/dts/ralink/mt7621.dtsi           | 35 +++++-------
- 8 files changed, 80 insertions(+), 166 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/net/mediatek,mt7620-gsw.txt b/Documentation/devicetree/bindings/net/mediatek,mt7620-gsw.txt
+deleted file mode 100644
+index 358fed2fab43..000000000000
+--- a/Documentation/devicetree/bindings/net/mediatek,mt7620-gsw.txt
++++ /dev/null
+@@ -1,24 +0,0 @@
+-Mediatek Gigabit Switch
+-=======================
+-
+-The mediatek gigabit switch can be found on Mediatek SoCs (mt7620, mt7621).
+-
+-Required properties:
+-- compatible: Should be "mediatek,mt7620-gsw" or "mediatek,mt7621-gsw"
+-- reg: Address and length of the register set for the device
+-- interrupts: Should contain the gigabit switches interrupt
+-- resets: Should contain the gigabit switches resets
+-- reset-names: Should contain the reset names "gsw"
+-
+-Example:
+-
+-gsw@10110000 {
+-	compatible = "ralink,mt7620-gsw";
+-	reg = <0x10110000 8000>;
+-
+-	resets = <&rstctrl 23>;
+-	reset-names = "gsw";
+-
+-	interrupt-parent = <&intc>;
+-	interrupts = <17>;
+-};
+diff --git a/Documentation/devicetree/bindings/net/ralink,rt2880-net.txt b/Documentation/devicetree/bindings/net/ralink,rt2880-net.txt
+deleted file mode 100644
+index 9fe1a0a22e44..000000000000
+--- a/Documentation/devicetree/bindings/net/ralink,rt2880-net.txt
++++ /dev/null
+@@ -1,59 +0,0 @@
+-Ralink Frame Engine Ethernet controller
+-=======================================
+-
+-The Ralink frame engine ethernet controller can be found on Ralink and
+-Mediatek SoCs (RT288x, RT3x5x, RT366x, RT388x, rt5350, mt7620, mt7621, mt76x8).
+-
+-Depending on the SoC, there is a number of ports connected to the CPU port
+-directly and/or via a (gigabit-)switch.
+-
+-* Ethernet controller node
+-
+-Required properties:
+-- compatible: Should be one of "ralink,rt2880-eth", "ralink,rt3050-eth",
+-  "ralink,rt3050-eth", "ralink,rt3883-eth", "ralink,rt5350-eth",
+-  "mediatek,mt7620-eth", "mediatek,mt7621-eth"
+-- reg: Address and length of the register set for the device
+-- interrupts: Should contain the frame engines interrupt
+-- resets: Should contain the frame engines resets
+-- reset-names: Should contain the reset names "fe". If a switch is present
+-  "esw" is also required.
+-
+-
+-* Ethernet port node
+-
+-Required properties:
+-- compatible: Should be "ralink,eth-port"
+-- reg: The number of the physical port
+-- phy-handle: reference to the node describing the phy
+-
+-Example:
+-
+-mdio-bus {
+-	...
+-	phy0: ethernet-phy@0 {
+-		phy-mode = "mii";
+-		reg = <0>;
+-	};
+-};
+-
+-ethernet@400000 {
+-	compatible = "ralink,rt2880-eth";
+-	reg = <0x00400000 10000>;
+-
+-	#address-cells = <1>;
+-	#size-cells = <0>;
+-
+-	resets = <&rstctrl 18>;
+-	reset-names = "fe";
+-
+-	interrupt-parent = <&cpuintc>;
+-	interrupts = <5>;
+-
+-	port@0 {
+-		compatible = "ralink,eth-port";
+-		reg = <0>;
+-		phy-handle = <&phy0>;
+-	};
+-
+-};
+diff --git a/Documentation/devicetree/bindings/net/ralink,rt3050-esw.txt b/Documentation/devicetree/bindings/net/ralink,rt3050-esw.txt
+deleted file mode 100644
+index 87e315856efa..000000000000
+--- a/Documentation/devicetree/bindings/net/ralink,rt3050-esw.txt
++++ /dev/null
+@@ -1,30 +0,0 @@
+-Ralink Fast Ethernet Embedded Switch
+-====================================
+-
+-The ralink fast ethernet embedded switch can be found on Ralink and Mediatek
+-SoCs (RT3x5x, RT5350, MT76x8).
+-
+-Required properties:
+-- compatible: Should be "ralink,rt3050-esw"
+-- reg: Address and length of the register set for the device
+-- interrupts: Should contain the embedded switches interrupt
+-- resets: Should contain the embedded switches resets
+-- reset-names: Should contain the reset names "esw"
+-
+-Optional properties:
+-- ralink,portmap: can be used to choose if the default switch setup is
+-  llllw or wllll
+-- ralink,led_polarity: override the active high/low settings of the leds
+-
+-Example:
+-
+-esw@10110000 {
+-	compatible = "ralink,rt3050-esw";
+-	reg = <0x10110000 8000>;
+-
+-	resets = <&rstctrl 23>;
+-	reset-names = "esw";
+-
+-	interrupt-parent = <&intc>;
+-	interrupts = <17>;
+-};
+-- 
+2.34.1
 
 
