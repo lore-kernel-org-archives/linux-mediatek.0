@@ -4,73 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAAECECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 15:02:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF241ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 15:04:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+OcBJm33YwmXnSYlGMrkQUNSuY8oa15V7K+gR1gnol0=; b=mUDdLi+t9SkiRDlSzMcr5F1izu
-	SJnLGi4bUQbncOTejLWpzBj4zwXVCd6n4TOBlkNGqp6V08/0qvgIlilTSJxuwxtiSjD8fPL2DehL6
-	AESm+QBWvMKWIbUeoglQk7QEYmoLctMefVrJkL6pk/vkRTVSolVStYV49pWSlRJZ+kMWFGfIgSfD+
-	+p0lcnZvIQUBCkqZXRiOF5Ovjy9h7fJ4UHZZQvfv3bjUjHsbAVoAQonmPBQ+dfFZItdXLA0Yb6jEg
-	eFcoG/jTzSlNyD46xAKt+80Omg85G+Zg1K18EGJejVsh+m/U2/dQS/bZR4wt//5ScqJAU43BxutLf
-	ZUKuNcxg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:Date:From:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uqh2dUbJoe0czrli6Kd224HI22Ux46FPe3M+hCU7TSM=; b=nxnE3laJEYnaM5cRzaYaHlHx7I
+	osleXCI6LHXFjS6N5trxy2sScoDPEZ5bvuZ/lqoB82mE1hhByHWlfbjcRsRuS7ww4b2+HX5OslKI6
+	F0xlzrj2JpjQLfpJT9EkEiGOJKcITqWGhyzpcsKNMZ3e9uM818sn/tleGN+M4aZ8p8ZoRcAU+zqt0
+	8d/mZSU59p01itBIPsWfQY5vLg0z+HDFJgZJS4XvVJrSrkHhCUccniYUczvh1TZ7hTpOckd2M5OQP
+	l7BLUn5CrM/9nF9JLpUnwI3uGNF5pOO7tPIuNo7Ucj+l/CpaxDzXboKAR1fgtvg7f6cSI9EM7dg6J
+	jcjPdr8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaell-004g7B-UQ; Tue, 20 Sep 2022 15:02:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oaenB-004gjP-2r; Tue, 20 Sep 2022 15:04:09 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaela-004g1j-BS; Tue, 20 Sep 2022 15:02:31 +0000
-X-UUID: 1a21da0e824b466188f3e59416f5e1db-20220920
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=+OcBJm33YwmXnSYlGMrkQUNSuY8oa15V7K+gR1gnol0=;
-	b=BxgTcPIAy93f8XmJ+WWN9T9ROAuNgRHrZDRRTivTmrFvbCLUBq7ePX3Znp7SeygZe1iLd+cG1MdQ39lyOWcybcm7DOTHKnMvL4yK3yz56TcvwH41Ev/vHbERRj59Uu6UO53yMTV4cuURvBPb3ar8iS5dZNTJkYRYHyYPTgX99rQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:33d01a62-72a5-49fb-93f5-9d8b5377174d,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:39a5ff1,CLOUDID:26cb541e-fb45-4f58-a8bc-c66ebd55f25b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 1a21da0e824b466188f3e59416f5e1db-20220920
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 651169244; Tue, 20 Sep 2022 08:02:24 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 20 Sep 2022 22:01:47 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Tue, 20 Sep 2022 22:01:47 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, Singo
- Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jason-JH.Lin
-	<jason-jh.lin@mediatek.com>
-Subject: [PATCH v3 5/6] drm/mediatek: add mediatek-drm of vdosys0 support for mt8195
-Date: Tue, 20 Sep 2022 22:01:44 +0800
-Message-ID: <20220920140145.19973-6-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220920140145.19973-1-jason-jh.lin@mediatek.com>
-References: <20220920140145.19973-1-jason-jh.lin@mediatek.com>
+	id 1oaemv-004gZQ-4r
+	for linux-mediatek@lists.infradead.org; Tue, 20 Sep 2022 15:03:57 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id g3so4701576wrq.13
+        for <linux-mediatek@lists.infradead.org>; Tue, 20 Sep 2022 08:03:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:from:to:cc:subject:date;
+        bh=uqh2dUbJoe0czrli6Kd224HI22Ux46FPe3M+hCU7TSM=;
+        b=DXJVo1kZdhTaLHixoiyKqUBvm4HdflY4OsRIzLyHV4lW717MrOMbIq4EGZ0xOzT389
+         PCprPBKzPHmgAy781JFqC5+s1HsvkFwvP8AHPzHE8FrmFG+Ep3w6tK09z5oiUIo04u6s
+         QpsCkrrwcdC4jTvmM+zUCcjyhnKqYhkN0jou9sXbP9wGbz2hnWqxmHIEo9YhMhAKz83c
+         ZVsGAXRsZIe7mCbWVuBOwfmRlwq3AOTkVD5135EGU1qIHWivegHi/VH3PP0xY2dC9BVt
+         aoIrdkEZ7hG/o7ldH00g/HjNnrcafYhO0HGI06DixwaDSizyZqZSsmvJzm4k3uuI47gp
+         oftg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:x-gm-message-state:from:to:cc:subject:date;
+        bh=uqh2dUbJoe0czrli6Kd224HI22Ux46FPe3M+hCU7TSM=;
+        b=vrWNi16MNHWDZMQEmrwYl7oXozQvRMS7FZjQQNRu/qKKZlIMnXUTrlduKtyCTpJ5Cd
+         bQ/vrpVmPVd822GgjJIpfkCZ7GBQPGu+o/TUwgcO40ndkRTZ6NLeVnG5HV3ZcZ+zRywD
+         l6WkkBqNatmgi2Px/M/l8wwmO7hYYHDAqlLbsF6A2AL2nvpI26moOuRxj/IZethTAcGu
+         nFJtIbJIGlyV0r+y/8L25oKm64LiWIeZW03lUvaO/SRhz75KmcDshUzo2ZaqX+yMAhP/
+         vQpKsBKWeXYCrAS1mzobzbzp03AEy8t+SfCXtUzOm3Ww7L0UhLHEfIyrb507Btqk2NKA
+         p22w==
+X-Gm-Message-State: ACrzQf1ZjVvsexceIsJk5T+zc1jdAq+Q9JdxLhipXmPP50bZnwI7XRaO
+	KcMKpyOueRHvENzreWHxem9Bgw==
+X-Google-Smtp-Source: AMsMyM4N3YyCHurPDYZZtnr9E0TUg9Sv7/xmEAaHI2ynKZ4GFkBWucudF/uupLgrSQ0U9mOQa4DTtQ==
+X-Received: by 2002:adf:d0d2:0:b0:22a:daf4:87e8 with SMTP id z18-20020adfd0d2000000b0022adaf487e8mr14283790wrh.167.1663686229972;
+        Tue, 20 Sep 2022 08:03:49 -0700 (PDT)
+Received: from [127.0.1.1] (210.145.15.109.rev.sfr.net. [109.15.145.210])
+        by smtp.googlemail.com with ESMTPSA id u3-20020a5d4683000000b00225239d9265sm242056wrq.74.2022.09.20.08.03.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Sep 2022 08:03:49 -0700 (PDT)
+Subject: [PATCH v5 0/4] thermal: mediatek: Add support for MT8365 SoC
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-b4-tracking: H4sIAFPWKWMC/w3LQQqAIBAAwK/EnluwlQL7jdqWC2ah2UX6ex7nMA0KZ+EC69Ag8ytFrtQxjwP4YN
+ PBKFs3kCJShhSKnhU+gfNpI9YbSfPG+6SNWxz05WxhdNkmH/pLNcbv+wFekBRVZgAAAA==
+From: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+Date: Tue, 20 Sep 2022 17:03:47 +0200
+Message-Id: <20220920-i350-thermal-up-v5-0-123bc852d199@baylibre.com>
+To: Amit Kucheria <amitk@kernel.org>, Rob Herring <robh+dt@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Fabien Parent <fparent@baylibre.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Markus Schneider-Pargmann <msp@baylibre.com>, linux-pm@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Michael Kao <michael.kao@mediatek.com>, Amjad Ouled-Ameur <aouledameur@baylibre.com>, Rob Herring <robh@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+X-Mailer: b4 0.10.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1663686228; l=928;
+ i=aouledameur@baylibre.com; s=20220920; h=from:subject:message-id;
+ bh=ZDTa/tO2w1q5PgHHJH+pnlRiuHKoLh+P+DGPwBVzPgQ=;
+ b=P9O/bhuGn1v+GUuvjvPBQVRiw0A/n7SOtf6jGT64bGiMkH7KDObNF9pLdTQ8KkFK77EYyL5gAOHA
+ Au3g1oCCBWraOD/6z1bud2qipvaOG0SPzh5+3xrzGknI5+HRm6JI
+X-Developer-Key: i=aouledameur@baylibre.com; a=ed25519;
+ pk=HgYWawSL4qLGPx+RzJ+Cuu+V8Pi/KQnDDm1wjWPMOFE=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_080230_410410_0E0FF98E 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20220920_080353_450163_3F6C7009 
+X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,119 +102,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add driver data of mt8195 vdosys0 to mediatek-drm and the sub driver.
+This patchset adds thermal support for MT8365 SoC which contains three
+thermal sensors.
 
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Changes in V5:
+- rebased on thermal/linux-next
+
+Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c |  6 +++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c   | 28 ++++++++++++++++++++++++
- 2 files changed, 34 insertions(+)
+Amjad Ouled-Ameur (1):
+      thermal: mediatek: add another get_temp ops for thermal sensors
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 2cb90466798c..66cdd0bc1311 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -374,6 +374,10 @@ static const struct mtk_disp_rdma_data mt8192_rdma_driver_data = {
- 	.fifo_size = 5 * SZ_1K,
- };
- 
-+static const struct mtk_disp_rdma_data mt8195_rdma_driver_data = {
-+	.fifo_size = 1920,
-+};
-+
- static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt2701-disp-rdma",
- 	  .data = &mt2701_rdma_driver_data},
-@@ -383,6 +387,8 @@ static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
- 	  .data = &mt8183_rdma_driver_data},
- 	{ .compatible = "mediatek,mt8192-disp-rdma",
- 	  .data = &mt8192_rdma_driver_data},
-+	{ .compatible = "mediatek,mt8195-disp-rdma",
-+	  .data = &mt8195_rdma_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_rdma_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index adc9a4f4085b..9b5a7a7ddde0 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -195,6 +195,19 @@ static const enum mtk_ddp_comp_id mt8192_mtk_ddp_ext[] = {
- 	DDP_COMPONENT_DPI0,
- };
- 
-+static const enum mtk_ddp_comp_id mt8195_mtk_ddp_main[] = {
-+	DDP_COMPONENT_OVL0,
-+	DDP_COMPONENT_RDMA0,
-+	DDP_COMPONENT_COLOR0,
-+	DDP_COMPONENT_CCORR,
-+	DDP_COMPONENT_AAL0,
-+	DDP_COMPONENT_GAMMA,
-+	DDP_COMPONENT_DITHER0,
-+	DDP_COMPONENT_DSC0,
-+	DDP_COMPONENT_MERGE0,
-+	DDP_COMPONENT_DP_INTF0,
-+};
-+
- static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
- 	.main_path = mt2701_mtk_ddp_main,
- 	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
-@@ -253,6 +266,11 @@ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
- 	.ext_len = ARRAY_SIZE(mt8192_mtk_ddp_ext),
- };
- 
-+static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
-+	.main_path = mt8195_mtk_ddp_main,
-+	.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
-+};
-+
- static int mtk_drm_kms_init(struct drm_device *drm)
- {
- 	struct mtk_drm_private *private = drm->dev_private;
-@@ -470,12 +488,16 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_DITHER },
- 	{ .compatible = "mediatek,mt8183-disp-dither",
- 	  .data = (void *)MTK_DISP_DITHER },
-+	{ .compatible = "mediatek,mt8195-disp-dsc",
-+	  .data = (void *)MTK_DISP_DSC },
- 	{ .compatible = "mediatek,mt8167-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8173-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8183-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
-+	{ .compatible = "mediatek,mt8195-disp-merge",
-+	  .data = (void *)MTK_DISP_MERGE },
- 	{ .compatible = "mediatek,mt2701-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt2712-disp-mutex",
-@@ -490,6 +512,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8192-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
-+	{ .compatible = "mediatek,mt8195-disp-mutex",
-+	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8173-disp-od",
- 	  .data = (void *)MTK_DISP_OD },
- 	{ .compatible = "mediatek,mt2701-disp-ovl",
-@@ -524,6 +548,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8192-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
-+	{ .compatible = "mediatek,mt8195-disp-rdma",
-+	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8173-disp-ufoe",
- 	  .data = (void *)MTK_DISP_UFOE },
- 	{ .compatible = "mediatek,mt8173-disp-wdma",
-@@ -568,6 +594,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
- 	  .data = &mt8186_mmsys_driver_data},
- 	{ .compatible = "mediatek,mt8192-mmsys",
- 	  .data = &mt8192_mmsys_driver_data},
-+	{ .compatible = "mediatek,mt8195-vdosys0",
-+	  .data = &mt8195_vdosys0_driver_data},
- 	{ }
- };
- MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
+Fabien Parent (2):
+      dt-bindings: thermal: mediatek: add binding documentation for MT8365 SoC
+      thermal: mediatek: add support for MT8365 SoC
+
+Markus Schneider-Pargmann (1):
+      thermal: mediatek: control buffer enablement tweaks
+
+ .../bindings/thermal/mediatek-thermal.txt          |   1 +
+ drivers/thermal/mtk_thermal.c                      | 197 +++++++++++++++++----
+ 2 files changed, 166 insertions(+), 32 deletions(-)
+---
+base-commit: 64b269c002273cac4c41fb69572f3684dd1e3284
+change-id: 20220920-i350-thermal-up-23edef139b6b
+
+Best regards,
 -- 
-2.18.0
-
+Amjad Ouled-Ameur <aouledameur@baylibre.com>
 
