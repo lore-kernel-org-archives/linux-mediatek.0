@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56A09C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 12:22:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17CE4ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 12:26:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UWgai7WSvfmxJhMIJAKs348dD9WAfb+4mIy0yD08bLo=; b=zIj+tmoBLOgTvb9DmCPV3YScdH
-	peLmLaNmGIN+Pf2vurC327s6JA3AMA2HjIoOhrXGTXBiUY/Hn6IEoinQchab2xIepUZIdK9bqnKJj
-	BXv0VUzhIzh/UII3gtjKsXGoWUueNZigAUjed3qfYN3WahljgUj4dmouYHTf9lT7wh0mmiL8EKzLt
-	8pqZlKapWuy2Y2LXfTtdJVgpu6zAnO85O1O+LX4xfTGuRmYv2sX7b9JNiY5//856/uXGw1y4wKUzM
-	iGBsCF/0EB8H6LjTknMNA1LkIwGPDX2+S1j9JFSBSiYelgnbjsmSy5rvP3ajYv72RPjGjwSeJOGLD
-	6CWXTmUA==;
+	bh=jvsnXdlFPYV5VecVSAOCXIXJbXh6dPQkrPjx4hlgJIo=; b=del+F8BMvHzJEN0SAXW7fhWmTX
+	VoxmKd3d+a7XJA1/SK4HaOMaNiWHlJkB0LxzO1h7eQyIRBs2vWWOPVnlIE+QkB6fuBMlgZpXln5K1
+	OiiMxYcJulrT0gzIZTl3+6vacgt/YiKxWcu+dJZhgCQciPLMD84LnPTESlDa2ZFlSiYWBt7d35aal
+	A1+msUuY12EcDGieMvF2J0Battt0Yv5WTzzHjKUiekeIDwtMz9At8b2+JqoMsTu0AohlP2uHo7lRi
+	xO8QBqRZfI4ObTTrY3LbVuNaefDvuNrVN5WGvXj6JUzVGvaAjTLIEzXHNHPRt5IVqscEVQpImdBJK
+	8xkVGrRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oacGn-003erx-Hq; Tue, 20 Sep 2022 12:22:33 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oacKX-003ghq-S5; Tue, 20 Sep 2022 12:26:25 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oacGb-003elr-Th; Tue, 20 Sep 2022 12:22:23 +0000
+	id 1oacKL-003gd4-VY; Tue, 20 Sep 2022 12:26:15 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 16E066601F6E;
-	Tue, 20 Sep 2022 13:22:19 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D1D0D6601F6E;
+	Tue, 20 Sep 2022 13:26:11 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663676540;
-	bh=d5C1UKHSt0P8rgevUzVZlIrzp+iptSFeKnmBaNqfAx8=;
+	s=mail; t=1663676772;
+	bh=0Xo+03ki+KHlNAja6+LcklniT2jv2/zVi1do5nkFLsY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mF9gZIO1aOqTgoLykkQMAflYNNiPZ8Oi5tMxaUkgST6FrWwxKo0ySbVOkiqVJgwDf
-	 xxDg3pYhlMSk1qFHx8IKPXyLyLnZ+qSl/lQWWn/xlNa+WqGINMfEyTBURD3ElpMbPw
-	 YyaJth9oSYylURi12Sy9farhIOhhAoiP7dtbNBbhUDRJUYsVAsm3y/YbtOJLnppu6z
-	 v5IAbVSxy8GY3Mbl+d9K8AO1QP/tlIosQZSU0O2iJ47USgJqW0+YNST8sU/wXu54D4
-	 Otwcaxki2aVvSJaH2DVEowJaxn5Mw16sia808+hpc7ZBYIOdnbZ5F1zcBhmNPual0P
-	 uaDsHHZ0mDk5g==
-Message-ID: <812a5de2-dbe3-2f0d-492c-16ea004c996a@collabora.com>
-Date: Tue, 20 Sep 2022 14:22:16 +0200
+	b=aREvFl1d38iihES0n54eMVA8YHqHT/CBMOuetK3YBw0pYnWE//RHVqwqb7jJkgGWY
+	 2von4x7hkslUWx9CCjlBXsuz0gD+5MSzSYNCzGLqKSzALB1ahwN5MaC4Ay2K9RUFph
+	 PIlMhQvuab5QlUxZQVOkKFndKcLGMVybBxzdXZ4Herlnk6+9S3JhlxDT969tnJ4EK1
+	 R5ES10/lmbLD70loahLuW//P0pMY3G5fM50qRfG/24CpF7oTGZ9IVPuEFyKL1r0JdE
+	 6a8ranT2REK8FH1R4y3vkX0I+NQYwzZHGp0nTrhH2Lmc/RuqFeSbqm9Cg4nWIArc66
+	 ajtfyZMUV1NxA==
+Message-ID: <0e470e92-924f-a664-0ec1-b11ce76c8e77@collabora.com>
+Date: Tue, 20 Sep 2022 14:26:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH v1 16/17] drm/mediatek: dpi: Add mt8195 hdmi to DPI driver
+Subject: Re: [PATCH v3 2/3] dt-bindings: reset: mt8188: add toprgu
+ reset-controller header file
 Content-Language: en-US
-To: Guillaume Ranquet <granquet@baylibre.com>, Vinod Koul <vkoul@kernel.org>,
- Stephen Boyd <sboyd@kernel.org>, David Airlie <airlied@linux.ie>,
- Rob Herring <robh+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Daniel Vetter <daniel@ffwll.ch>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>,
- Kishon Vijay Abraham I <kishon@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
- Pablo Sun <pablo.sun@mediatek.com>, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, Mattijs Korpershoek
- <mkorpershoek@baylibre.com>, linux-arm-kernel@lists.infradead.org,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org
-References: <20220919-v1-0-4844816c9808@baylibre.com>
- <20220919-v1-16-4844816c9808@baylibre.com>
+To: Runyang Chen <Runyang.Chen@mediatek.com>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+ <linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ nfraprado@collabora.com
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20220920105622.25666-1-Runyang.Chen@mediatek.com>
+ <20220920105622.25666-3-Runyang.Chen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220919-v1-16-4844816c9808@baylibre.com>
+In-Reply-To: <20220920105622.25666-3-Runyang.Chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_052222_115379_E6C3E772 
-X-CRM114-Status: GOOD (  12.87  )
+X-CRM114-CacheID: sfid-20220920_052614_168008_CF12736F 
+X-CRM114-Status: UNSURE (   8.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,49 +81,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/09/22 18:56, Guillaume Ranquet ha scritto:
-> Add the DPI1 hdmi path support in mtk dpi driver
+Il 20/09/22 12:56, Runyang Chen ha scritto:
+> From: Runyang Chen <runyang.chen@mediatek.com>
 > 
-> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Add toprgu reset-controller header file for MT8188
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index 630a4e301ef6..91212b7610e8 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -15,7 +15,10 @@
->   #include <linux/of_graph.h>
->   #include <linux/pinctrl/consumer.h>
->   #include <linux/platform_device.h>
-> +#include <linux/reset.h>
->   #include <linux/types.h>
-> +#include <linux/regmap.h>
-> +#include <linux/mfd/syscon.h>
->   
->   #include <video/videomode.h>
->   
-> @@ -66,10 +69,14 @@ struct mtk_dpi {
->   	struct drm_bridge *next_bridge;
->   	struct drm_connector *connector;
->   	void __iomem *regs;
-> +	struct reset_control *reset_ctl;
->   	struct device *dev;
->   	struct clk *engine_clk;
-> +	struct clk *dpi_ck_cg;
->   	struct clk *pixel_clk;
-> +	struct clk *dpi_sel_clk;
->   	struct clk *tvd_clk;
-> +	struct clk *hdmi_cg;
+> Signed-off-by: Runyang Chen <runyang.chen@mediatek.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 
-
-You're adding new clocks and then you're making *all clocks*, including the
-already existing ones... optional.
-
-That looks seriously odd.... can you please give a devicetree example for
-MT8195 in the next version, perhaps in the cover letter?
-
-Would also make it easier to test this entire big series.
-
-Regards,
-Angelo
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
