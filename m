@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B3E9C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 10:12:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2E78C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 10:12:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CcpF9KvI9eQWJOS6ogFd4irjzvqn/jb1faTt+Mp/md0=; b=eGHYLCUq8C/+yzNTw7N4QiUdfJ
-	Uj3A6VDZ5LdQaC9w3SnQPiQHwWXcOdNNQoc+K3fKV4gd9pwT/EvUUEVPG2/kKby1iPUcajh8EQdPN
-	bwdhjRhctjJ/yRBO3giTxtlzGXzL2cFlSlb/qkvTRrsuKUWkPolhE078goiKrSTIiaNKAmnY8Ufw/
-	GM5Wu00uExAxd3aHUUejXcxr8POEsb4XRH4iwqC1dYvX74o9sDkqN+7XNWbURmP6QmdPc5DcV6NBr
-	pDf+TShJwcUkGPeXQwrJOFUld/2jAlklbpcdCqa0OiJZN3PKdnpuuWZNmum9tPZYyslEFVrwByQCW
-	kZqWipgw==;
+	bh=6/RvV8vNYopNYIl2ghsIpYrvdsUpzbZqFqck6/LTOf0=; b=RtXN4e2Yhy3UJdKAwFDqVSsEPw
+	Vc9Z39h1n5v9Fe1vFx7F7P538XAQ27HlYYufKFMiZDbD55meWwiyhc9tsurpzsY/v6WHLvBKt0BWw
+	tJGZergOCDWbERm243ovrtTkwFCbNlbYDfQOsLzcPImxFwvX5R5yEbirjZNx4WtRvW52N8oI3B1eS
+	DPrWCEYD+FqRer51PDkK+uB8+C4SW6KzzyKKR/+SDYLF+us0GkKgPQHykIjhHk3CLpEMfasem/d4X
+	swBWPCBUerjhtmD1JkPkmhuNDVfuBrUZj7S1qsRUpfvEozl0N7OM7sNJKw7HjNju3maq8EO8tEI6O
+	RDTMgv0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaaF6-002pTd-Rc; Tue, 20 Sep 2022 10:12:40 +0000
+	id 1oaaFF-002pZk-Qe; Tue, 20 Sep 2022 10:12:49 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaaEn-002pDI-QT
-	for linux-mediatek@lists.infradead.org; Tue, 20 Sep 2022 10:12:24 +0000
+	id 1oaaEr-002pGM-CD
+	for linux-mediatek@lists.infradead.org; Tue, 20 Sep 2022 10:12:27 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4CA36617EA;
-	Tue, 20 Sep 2022 10:12:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 332F7C433D6;
-	Tue, 20 Sep 2022 10:12:20 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id DFB4961BF7;
+	Tue, 20 Sep 2022 10:12:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EC208C433D6;
+	Tue, 20 Sep 2022 10:12:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663668740;
-	bh=gerfit2UfgDBpzYnYGdl6yzr9H1uApgURUYpBp5g5Tk=;
+	s=k20201202; t=1663668744;
+	bh=qkxhtcvBAO1XclLBNizkRDUrtA1+szeD4zqXFcHQDvM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GKv3Zw8EfN/PZJe+ytaz2bCiaatTOtL7Tbf8DZGv2mDPfYxPQwUwzt1wdRfgvT+Sr
-	 9RtIn7bcLsETUZEL2hy63ncmvQ8edvG3khv+3vTlbd5yJh7YRz8yo4YwLY+sMzDUkw
-	 IFHewujB3GwpLFzQvkvea4d/HXO+1zGo2sCtxMmv4e9Fj2LWJXz4v2n6nSy5gQ3SHr
-	 Lud2P4HY+4PFyEUQLk9O/Bc10E6hsLX8CU5YNQzFhoARRfLuMVuDpruBJ9pts+os6b
-	 YyRF3xgDE8kpYXa5xM4rf0xoD4O/AxePUDdQetw5/tCa+T05mhrwwEEAQ4kzil6pbi
-	 1np4TvlrBCTAg==
+	b=cnAuaVGgyq1+RPF3z9ijbfZt32S3CYmnG8NtnZuEol6zlRibd+wwvttYdU02I3jVI
+	 8U0pbK7jmijJyeEyaPRZwYVuL6ldcdOuc+y0y7eu6P3qcXlNtT4JY86e4wyi2U/R8H
+	 zm50jZaUaXqceg7FrK8yChkoJKGG5B1imMEHBSeE6yNdb/6vSSno9OYW/7jWFhlURP
+	 gcuTsuPD+itkbYkf5g+5mkZedciMuGYVe5TWYUFVXL1iSV7pqTt1ai1qXeay+S5e6R
+	 ayRq9mEtqs3PL135pTo2A/CnLgaJ+mJdb/bmMr5sG33VNGITb0EAV2z/639PGw42cW
+	 i3ZEJB8k70pOA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: nbd@nbd.name,
@@ -62,17 +62,17 @@ Cc: nbd@nbd.name,
 	devicetree@vger.kernel.org,
 	robh@kernel.org,
 	daniel@makrotopia.org
-Subject: [PATCH v3 net-next 07/11] net: ethernet: mtk_eth_soc: add foe_entry_size to mtk_eth_soc
-Date: Tue, 20 Sep 2022 12:11:19 +0200
-Message-Id: <75cf89018d91820607f6f07c81c49234db1c8501.1663668203.git.lorenzo@kernel.org>
+Subject: [PATCH v3 net-next 08/11] net: ethernet: mtk_eth_wed: add mtk_wed_configure_irq and mtk_wed_dma_{enable/disable}
+Date: Tue, 20 Sep 2022 12:11:20 +0200
+Message-Id: <0b96e6d04e6a21c294a1ce1c09e45c43a9ce65e0.1663668203.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <cover.1663668203.git.lorenzo@kernel.org>
 References: <cover.1663668203.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_031222_038423_0E270325 
-X-CRM114-Status: GOOD (  23.30  )
+X-CRM114-CacheID: sfid-20220920_031225_614581_D04F4430 
+X-CRM114-Status: GOOD (  14.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,259 +87,193 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce foe_entry_size to mtk_eth_soc data structure since mt7986
-relies on a bigger mtk_foe_entry data structure.
+Introduce mtk_wed_configure_irq, mtk_wed_dma_enable and mtk_wed_dma_disable
+utility routines.
+This is a preliminary patch to introduce mt7986 wed support.
 
 Tested-by: Daniel Golle <daniel@makrotopia.org>
+Co-developed-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  3 +
- drivers/net/ethernet/mediatek/mtk_eth_soc.h   | 10 ++++
- drivers/net/ethernet/mediatek/mtk_ppe.c       | 55 +++++++++++--------
- drivers/net/ethernet/mediatek/mtk_ppe.h       |  2 +-
- .../net/ethernet/mediatek/mtk_ppe_debugfs.c   |  2 +-
- 5 files changed, 48 insertions(+), 24 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_wed.c      | 87 +++++++++++++-------
+ drivers/net/ethernet/mediatek/mtk_wed_regs.h |  6 +-
+ 2 files changed, 64 insertions(+), 29 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index f289b994e7d5..b4bccd42a22c 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -4217,6 +4217,7 @@ static const struct mtk_soc_data mt7621_data = {
- 	.required_pctl = false,
- 	.offload_version = 2,
- 	.hash_offset = 2,
-+	.foe_entry_size = sizeof(struct mtk_foe_entry),
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
- 		.rxd_size = sizeof(struct mtk_rx_dma),
-@@ -4236,6 +4237,7 @@ static const struct mtk_soc_data mt7622_data = {
- 	.required_pctl = false,
- 	.offload_version = 2,
- 	.hash_offset = 2,
-+	.foe_entry_size = sizeof(struct mtk_foe_entry),
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
- 		.rxd_size = sizeof(struct mtk_rx_dma),
-@@ -4254,6 +4256,7 @@ static const struct mtk_soc_data mt7623_data = {
- 	.required_pctl = true,
- 	.offload_version = 2,
- 	.hash_offset = 2,
-+	.foe_entry_size = sizeof(struct mtk_foe_entry),
- 	.txrx = {
- 		.txd_size = sizeof(struct mtk_tx_dma),
- 		.rxd_size = sizeof(struct mtk_rx_dma),
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 39a0361ca989..08236e054616 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -968,6 +968,7 @@ struct mtk_reg_map {
-  * @required_pctl		A bool value to show whether the SoC requires
-  *				the extra setup for those pins used by GMAC.
-  * @hash_offset			Flow table hash offset.
-+ * @foe_entry_size		Foe table entry size.
-  * @txd_size			Tx DMA descriptor size.
-  * @rxd_size			Rx DMA descriptor size.
-  * @rx_irq_done_mask		Rx irq done register mask.
-@@ -983,6 +984,7 @@ struct mtk_soc_data {
- 	bool		required_pctl;
- 	u8		offload_version;
- 	u8		hash_offset;
-+	u16		foe_entry_size;
- 	netdev_features_t hw_features;
- 	struct {
- 		u32	txd_size;
-@@ -1143,6 +1145,14 @@ struct mtk_mac {
- /* the struct describing the SoC. these are declared in the soc_xyz.c files */
- extern const struct of_device_id of_mtk_match[];
- 
-+static inline struct mtk_foe_entry *
-+mtk_foe_get_entry(struct mtk_ppe *ppe, u16 hash)
-+{
-+	const struct mtk_soc_data *soc = ppe->eth->soc;
-+
-+	return ppe->foe_table + hash * soc->foe_entry_size;
-+}
-+
- /* read the hardware status register */
- void mtk_stats_update_mac(struct mtk_mac *mac);
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index 687d365b601a..8c52cfc7ce76 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -410,9 +410,10 @@ __mtk_foe_entry_clear(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- 
- 	hlist_del_init(&entry->list);
- 	if (entry->hash != 0xffff) {
--		ppe->foe_table[entry->hash].ib1 &= ~MTK_FOE_IB1_STATE;
--		ppe->foe_table[entry->hash].ib1 |= FIELD_PREP(MTK_FOE_IB1_STATE,
--							      MTK_FOE_STATE_UNBIND);
-+		struct mtk_foe_entry *hwe = mtk_foe_get_entry(ppe, entry->hash);
-+
-+		hwe->ib1 &= ~MTK_FOE_IB1_STATE;
-+		hwe->ib1 |= FIELD_PREP(MTK_FOE_IB1_STATE, MTK_FOE_STATE_UNBIND);
- 		dma_wmb();
- 	}
- 	entry->hash = 0xffff;
-@@ -451,7 +452,7 @@ mtk_flow_entry_update_l2(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- 		int cur_idle;
- 		u32 ib1;
- 
--		hwe = &ppe->foe_table[cur->hash];
-+		hwe = mtk_foe_get_entry(ppe, cur->hash);
- 		ib1 = READ_ONCE(hwe->ib1);
- 
- 		if (FIELD_GET(MTK_FOE_IB1_STATE, ib1) != MTK_FOE_STATE_BIND) {
-@@ -473,8 +474,8 @@ mtk_flow_entry_update_l2(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- static void
- mtk_flow_entry_update(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- {
-+	struct mtk_foe_entry foe = {};
- 	struct mtk_foe_entry *hwe;
--	struct mtk_foe_entry foe;
- 
- 	spin_lock_bh(&ppe_lock);
- 
-@@ -486,8 +487,8 @@ mtk_flow_entry_update(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
- 	if (entry->hash == 0xffff)
- 		goto out;
- 
--	hwe = &ppe->foe_table[entry->hash];
--	memcpy(&foe, hwe, sizeof(foe));
-+	hwe = mtk_foe_get_entry(ppe, entry->hash);
-+	memcpy(&foe, hwe, ppe->eth->soc->foe_entry_size);
- 	if (!mtk_flow_entry_match(entry, &foe)) {
- 		entry->hash = 0xffff;
- 		goto out;
-@@ -511,8 +512,8 @@ __mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_foe_entry *entry,
- 	entry->ib1 &= ~MTK_FOE_IB1_BIND_TIMESTAMP;
- 	entry->ib1 |= FIELD_PREP(MTK_FOE_IB1_BIND_TIMESTAMP, timestamp);
- 
--	hwe = &ppe->foe_table[hash];
--	memcpy(&hwe->data, &entry->data, sizeof(hwe->data));
-+	hwe = mtk_foe_get_entry(ppe, hash);
-+	memcpy(&hwe->data, &entry->data, ppe->eth->soc->foe_entry_size);
- 	wmb();
- 	hwe->ib1 = entry->ib1;
- 
-@@ -561,7 +562,7 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
- {
- 	const struct mtk_soc_data *soc = ppe->eth->soc;
- 	struct mtk_flow_entry *flow_info;
--	struct mtk_foe_entry foe, *hwe;
-+	struct mtk_foe_entry foe = {}, *hwe;
- 	struct mtk_foe_mac_info *l2;
- 	u32 ib1_mask = MTK_FOE_IB1_PACKET_TYPE | MTK_FOE_IB1_UDP;
- 	int type;
-@@ -578,8 +579,8 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
- 		       &ppe->foe_flow[hash / soc->hash_offset]);
- 	hlist_add_head(&flow_info->l2_data.list, &entry->l2_flows);
- 
--	hwe = &ppe->foe_table[hash];
--	memcpy(&foe, hwe, sizeof(foe));
-+	hwe = mtk_foe_get_entry(ppe, hash);
-+	memcpy(&foe, hwe, soc->foe_entry_size);
- 	foe.ib1 &= ib1_mask;
- 	foe.ib1 |= entry->data.ib1 & ~ib1_mask;
- 
-@@ -601,7 +602,7 @@ void __mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
- {
- 	const struct mtk_soc_data *soc = ppe->eth->soc;
- 	struct hlist_head *head = &ppe->foe_flow[hash / soc->hash_offset];
--	struct mtk_foe_entry *hwe = &ppe->foe_table[hash];
-+	struct mtk_foe_entry *hwe = mtk_foe_get_entry(ppe, hash);
- 	struct mtk_flow_entry *entry;
- 	struct mtk_foe_bridge key = {};
- 	struct hlist_node *n;
-@@ -686,9 +687,9 @@ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base,
- {
- 	const struct mtk_soc_data *soc = eth->soc;
- 	struct device *dev = eth->dev;
--	struct mtk_foe_entry *foe;
- 	struct mtk_ppe *ppe;
- 	u32 foe_flow_size;
-+	void *foe;
- 
- 	ppe = devm_kzalloc(dev, sizeof(*ppe), GFP_KERNEL);
- 	if (!ppe)
-@@ -704,7 +705,8 @@ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base,
- 	ppe->dev = dev;
- 	ppe->version = version;
- 
--	foe = dmam_alloc_coherent(ppe->dev, MTK_PPE_ENTRIES * sizeof(*foe),
-+	foe = dmam_alloc_coherent(ppe->dev,
-+				  MTK_PPE_ENTRIES * soc->foe_entry_size,
- 				  &ppe->foe_phys, GFP_KERNEL);
- 	if (!foe)
- 		return NULL;
-@@ -727,15 +729,21 @@ static void mtk_ppe_init_foe_table(struct mtk_ppe *ppe)
- 	static const u8 skip[] = { 12, 25, 38, 51, 76, 89, 102 };
- 	int i, k;
- 
--	memset(ppe->foe_table, 0, MTK_PPE_ENTRIES * sizeof(*ppe->foe_table));
-+	memset(ppe->foe_table, 0,
-+	       MTK_PPE_ENTRIES * ppe->eth->soc->foe_entry_size);
- 
- 	if (!IS_ENABLED(CONFIG_SOC_MT7621))
- 		return;
- 
- 	/* skip all entries that cross the 1024 byte boundary */
--	for (i = 0; i < MTK_PPE_ENTRIES; i += 128)
--		for (k = 0; k < ARRAY_SIZE(skip); k++)
--			ppe->foe_table[i + skip[k]].ib1 |= MTK_FOE_IB1_STATIC;
-+	for (i = 0; i < MTK_PPE_ENTRIES; i += 128) {
-+		for (k = 0; k < ARRAY_SIZE(skip); k++) {
-+			struct mtk_foe_entry *hwe;
-+
-+			hwe = mtk_foe_get_entry(ppe, i + skip[k]);
-+			hwe->ib1 |= MTK_FOE_IB1_STATIC;
-+		}
-+	}
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+index 29be2fcafea3..d1ef5b563ddf 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+@@ -237,9 +237,30 @@ mtk_wed_set_ext_int(struct mtk_wed_device *dev, bool en)
  }
  
- void mtk_ppe_start(struct mtk_ppe *ppe)
-@@ -822,9 +830,12 @@ int mtk_ppe_stop(struct mtk_ppe *ppe)
- 	if (!ppe)
- 		return 0;
- 
--	for (i = 0; i < MTK_PPE_ENTRIES; i++)
--		ppe->foe_table[i].ib1 = FIELD_PREP(MTK_FOE_IB1_STATE,
--						   MTK_FOE_STATE_INVALID);
-+	for (i = 0; i < MTK_PPE_ENTRIES; i++) {
-+		struct mtk_foe_entry *hwe = mtk_foe_get_entry(ppe, i);
+ static void
+-mtk_wed_stop(struct mtk_wed_device *dev)
++mtk_wed_dma_disable(struct mtk_wed_device *dev)
+ {
++	wed_clr(dev, MTK_WED_WPDMA_GLO_CFG,
++		MTK_WED_WPDMA_GLO_CFG_TX_DRV_EN |
++		MTK_WED_WPDMA_GLO_CFG_RX_DRV_EN);
 +
-+		hwe->ib1 = FIELD_PREP(MTK_FOE_IB1_STATE,
-+				      MTK_FOE_STATE_INVALID);
-+	}
++	wed_clr(dev, MTK_WED_WDMA_GLO_CFG, MTK_WED_WDMA_GLO_CFG_RX_DRV_EN);
++
++	wed_clr(dev, MTK_WED_GLO_CFG,
++		MTK_WED_GLO_CFG_TX_DMA_EN |
++		MTK_WED_GLO_CFG_RX_DMA_EN);
++
+ 	regmap_write(dev->hw->mirror, dev->hw->index * 4, 0);
++	wdma_m32(dev, MTK_WDMA_GLO_CFG,
++		 MTK_WDMA_GLO_CFG_TX_DMA_EN |
++		 MTK_WDMA_GLO_CFG_RX_INFO1_PRERES |
++		 MTK_WDMA_GLO_CFG_RX_INFO2_PRERES |
++		 MTK_WDMA_GLO_CFG_RX_INFO3_PRERES, 0);
++}
++
++static void
++mtk_wed_stop(struct mtk_wed_device *dev)
++{
++	mtk_wed_dma_disable(dev);
+ 	mtk_wed_set_ext_int(dev, false);
  
- 	mtk_ppe_cache_enable(ppe, false);
+ 	wed_clr(dev, MTK_WED_CTRL,
+@@ -252,15 +273,6 @@ mtk_wed_stop(struct mtk_wed_device *dev)
+ 	wdma_w32(dev, MTK_WDMA_INT_MASK, 0);
+ 	wdma_w32(dev, MTK_WDMA_INT_GRP2, 0);
+ 	wed_w32(dev, MTK_WED_WPDMA_INT_MASK, 0);
+-
+-	wed_clr(dev, MTK_WED_GLO_CFG,
+-		MTK_WED_GLO_CFG_TX_DMA_EN |
+-		MTK_WED_GLO_CFG_RX_DMA_EN);
+-	wed_clr(dev, MTK_WED_WPDMA_GLO_CFG,
+-		MTK_WED_WPDMA_GLO_CFG_TX_DRV_EN |
+-		MTK_WED_WPDMA_GLO_CFG_RX_DRV_EN);
+-	wed_clr(dev, MTK_WED_WDMA_GLO_CFG,
+-		MTK_WED_WDMA_GLO_CFG_RX_DRV_EN);
+ }
  
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
-index 4c31d854e986..6d4c91acd1a5 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.h
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
-@@ -268,7 +268,7 @@ struct mtk_ppe {
- 	int version;
- 	char dirname[5];
+ static void
+@@ -313,7 +325,10 @@ mtk_wed_hw_init_early(struct mtk_wed_device *dev)
+ 	      MTK_WED_WDMA_GLO_CFG_IDLE_DMAD_SUPPLY;
+ 	wed_m32(dev, MTK_WED_WDMA_GLO_CFG, mask, set);
  
--	struct mtk_foe_entry *foe_table;
-+	void *foe_table;
- 	dma_addr_t foe_phys;
+-	wdma_set(dev, MTK_WDMA_GLO_CFG, MTK_WDMA_GLO_CFG_RX_INFO_PRERES);
++	wdma_set(dev, MTK_WDMA_GLO_CFG,
++		 MTK_WDMA_GLO_CFG_RX_INFO1_PRERES |
++		 MTK_WDMA_GLO_CFG_RX_INFO2_PRERES |
++		 MTK_WDMA_GLO_CFG_RX_INFO3_PRERES);
  
- 	u16 foe_check_time[MTK_PPE_ENTRIES];
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-index 0868226ccc27..ec49829ab32d 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-@@ -79,7 +79,7 @@ mtk_ppe_debugfs_foe_show(struct seq_file *m, void *private, bool bind)
- 	int i;
+ 	offset = dev->hw->index ? 0x04000400 : 0;
+ 	wed_w32(dev, MTK_WED_WDMA_OFFSET0, 0x2a042a20 + offset);
+@@ -520,43 +535,38 @@ mtk_wed_wdma_ring_setup(struct mtk_wed_device *dev, int idx, int size)
+ }
  
- 	for (i = 0; i < MTK_PPE_ENTRIES; i++) {
--		struct mtk_foe_entry *entry = &ppe->foe_table[i];
-+		struct mtk_foe_entry *entry = mtk_foe_get_entry(ppe, i);
- 		struct mtk_foe_mac_info *l2;
- 		struct mtk_flow_addr_info ai = {};
- 		unsigned char h_source[ETH_ALEN];
+ static void
+-mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
++mtk_wed_configure_irq(struct mtk_wed_device *dev, u32 irq_mask)
+ {
+-	u32 wdma_mask;
+-	u32 val;
+-	int i;
+-
+-	for (i = 0; i < ARRAY_SIZE(dev->tx_wdma); i++)
+-		if (!dev->tx_wdma[i].desc)
+-			mtk_wed_wdma_ring_setup(dev, i, 16);
+-
+-	wdma_mask = FIELD_PREP(MTK_WDMA_INT_MASK_RX_DONE, GENMASK(1, 0));
+-
+-	mtk_wed_hw_init(dev);
++	u32 wdma_mask = FIELD_PREP(MTK_WDMA_INT_MASK_RX_DONE, GENMASK(1, 0));
+ 
++	/* wed control cr set */
+ 	wed_set(dev, MTK_WED_CTRL,
+ 		MTK_WED_CTRL_WDMA_INT_AGENT_EN |
+ 		MTK_WED_CTRL_WPDMA_INT_AGENT_EN |
+ 		MTK_WED_CTRL_WED_TX_BM_EN |
+ 		MTK_WED_CTRL_WED_TX_FREE_AGENT_EN);
+ 
+-	wed_w32(dev, MTK_WED_PCIE_INT_TRIGGER, MTK_WED_PCIE_INT_TRIGGER_STATUS);
++	wed_w32(dev, MTK_WED_PCIE_INT_TRIGGER,
++		MTK_WED_PCIE_INT_TRIGGER_STATUS);
+ 
+ 	wed_w32(dev, MTK_WED_WPDMA_INT_TRIGGER,
+ 		MTK_WED_WPDMA_INT_TRIGGER_RX_DONE |
+ 		MTK_WED_WPDMA_INT_TRIGGER_TX_DONE);
+ 
+-	wed_set(dev, MTK_WED_WPDMA_INT_CTRL,
+-		MTK_WED_WPDMA_INT_CTRL_SUBRT_ADV);
+-
++	/* initail wdma interrupt agent */
+ 	wed_w32(dev, MTK_WED_WDMA_INT_TRIGGER, wdma_mask);
+ 	wed_clr(dev, MTK_WED_WDMA_INT_CTRL, wdma_mask);
+ 
+ 	wdma_w32(dev, MTK_WDMA_INT_MASK, wdma_mask);
+ 	wdma_w32(dev, MTK_WDMA_INT_GRP2, wdma_mask);
+-
+ 	wed_w32(dev, MTK_WED_WPDMA_INT_MASK, irq_mask);
+ 	wed_w32(dev, MTK_WED_INT_MASK, irq_mask);
++}
++
++static void
++mtk_wed_dma_enable(struct mtk_wed_device *dev)
++{
++	wed_set(dev, MTK_WED_WPDMA_INT_CTRL, MTK_WED_WPDMA_INT_CTRL_SUBRT_ADV);
+ 
+ 	wed_set(dev, MTK_WED_GLO_CFG,
+ 		MTK_WED_GLO_CFG_TX_DMA_EN |
+@@ -567,6 +577,26 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
+ 	wed_set(dev, MTK_WED_WDMA_GLO_CFG,
+ 		MTK_WED_WDMA_GLO_CFG_RX_DRV_EN);
+ 
++	wdma_set(dev, MTK_WDMA_GLO_CFG,
++		 MTK_WDMA_GLO_CFG_TX_DMA_EN |
++		 MTK_WDMA_GLO_CFG_RX_INFO1_PRERES |
++		 MTK_WDMA_GLO_CFG_RX_INFO2_PRERES |
++		 MTK_WDMA_GLO_CFG_RX_INFO3_PRERES);
++}
++
++static void
++mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
++{
++	u32 val;
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(dev->tx_wdma); i++)
++		if (!dev->tx_wdma[i].desc)
++			mtk_wed_wdma_ring_setup(dev, i, 16);
++
++	mtk_wed_hw_init(dev);
++	mtk_wed_configure_irq(dev, irq_mask);
++
+ 	mtk_wed_set_ext_int(dev, true);
+ 	val = dev->wlan.wpdma_phys |
+ 	      MTK_PCIE_MIRROR_MAP_EN |
+@@ -577,6 +607,7 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
+ 	val |= BIT(0);
+ 	regmap_write(dev->hw->mirror, dev->hw->index * 4, val);
+ 
++	mtk_wed_dma_enable(dev);
+ 	dev->running = true;
+ }
+ 
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_regs.h b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
+index 0a0465ea58b4..eec22daebd30 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_regs.h
++++ b/drivers/net/ethernet/mediatek/mtk_wed_regs.h
+@@ -224,7 +224,11 @@ struct mtk_wdma_desc {
+ #define MTK_WDMA_RING_RX(_n)				(0x100 + (_n) * 0x10)
+ 
+ #define MTK_WDMA_GLO_CFG				0x204
+-#define MTK_WDMA_GLO_CFG_RX_INFO_PRERES			GENMASK(28, 26)
++#define MTK_WDMA_GLO_CFG_TX_DMA_EN			BIT(0)
++#define MTK_WDMA_GLO_CFG_RX_DMA_EN			BIT(2)
++#define MTK_WDMA_GLO_CFG_RX_INFO3_PRERES		BIT(26)
++#define MTK_WDMA_GLO_CFG_RX_INFO2_PRERES		BIT(27)
++#define MTK_WDMA_GLO_CFG_RX_INFO1_PRERES		BIT(28)
+ 
+ #define MTK_WDMA_RESET_IDX				0x208
+ #define MTK_WDMA_RESET_IDX_TX				GENMASK(3, 0)
 -- 
 2.37.3
 
