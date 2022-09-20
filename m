@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E674C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 10:12:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85856C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 10:12:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=21oVp+RQBEhSMY1G+GuYdJHu8s/PY8cqU4HiwwWW7xU=; b=QO9kVSAyW2Nl7v+wG/iY8dNeFP
-	Q9zxadDCFFs3wh9xfrcQ1Vh23L10OU1a90PgOaGLF9acWus87UhFa5p25o63jER0GwBj7N+/e4BOe
-	vrt+uVm5XpZzMogEj6mHcPKi5xPsBIq0vFzpeXqVSk72kX0PCACzynnFrRN84vbWFC4Y0W9wLcnbV
-	89NOmRdqQa05kX6ohi1cHUCb38TXMGYd0W44lu89h+g5Ad5vsmq5DOM26n2G0aCIVGTYvNLBJoGNt
-	dUo7SZrQVAiCza6K92dUjKqQ0pZNi0rGRfPAqNvBj+SZeWbNgYsnNDt2fhFG6uDDpBw9rwhMFJbyz
-	ULXahflA==;
+	bh=NwzvXiI9a1HdC8pdd8df/ErJ+ZH5eSXvdhSSIAjxGh8=; b=nKIJNQ+L9dClWldoKut7wwPMrq
+	yuihClazyre5n1H5BRy9EDRYaNqMhO3qkVMjWoDi/J9FTVHlWWMJ/dE4T6XdOF0sb3foOQOHZVvXp
+	vJmRfdLo+A0PRRHFcHBo7SnXFD5nm9wRQ8CHkfmQOLw0VaEZwd2HXuILooEwle5FAlnsC3xTwg0LN
+	oeXtHXQiPQbCX74kp29O+z3yV9FrKiL2EN63Q6eHWLmpzqbO7M8t3ks4Sz3rpOsc76Ld92ed8bknD
+	zdfeIJaCviRp5g//Toyl4fNfEcw4MsEJZ8RMz/712/Gcy0LkP8rBScEzoDUKQHzctBCBfLSg6zHrI
+	dVH522vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaaEq-002pFj-BL; Tue, 20 Sep 2022 10:12:24 +0000
+	id 1oaaEs-002pHn-Qt; Tue, 20 Sep 2022 10:12:26 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaaEa-002p14-0O
+	id 1oaaEc-002p43-4i
 	for linux-mediatek@lists.infradead.org; Tue, 20 Sep 2022 10:12:13 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id B03AC6227D;
-	Tue, 20 Sep 2022 10:12:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BBDB5C433D6;
-	Tue, 20 Sep 2022 10:12:00 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 980E861193;
+	Tue, 20 Sep 2022 10:12:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79FE4C433D6;
+	Tue, 20 Sep 2022 10:12:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663668721;
-	bh=sOgb8gCYIQifFb9gx4t/0bcTOJ4i+MYKAqE4XXafw8Q=;
+	s=k20201202; t=1663668729;
+	bh=glKED/0Y4fO2g8zx6ZFea7N26bEnJHPkIB6vu3yBSX0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=FFwFislgvzGSFl9HxDHQiA2NhCZljFFZF/+x4zGZ55YuiAOnySSC+3hPKh7FbyxmA
-	 fHd6YHGk2qBRp+k5f38rACEevF4hNWGd7sNk5vR1M/hor6HUId4Y3/SFZC74A4CaSf
-	 VRw5v8FNUkwN5mGNNzkd/A0vMTvmJxHDvEyk6WHRDZ7zSSNYdnZ6JuWawZA/zXIjkR
-	 y6W01SJXqkv2DUDqrduRGF3raVyjBdK6WLUsZEzpnmazKHLhPXVxQSXCamV3e2UHVe
-	 CoQXUMjDE/+mZwiL8xxL5sxMfx0z4PhunxSMCbt1Rmvp5pOCKCTUuGJK3VeXAcMsla
-	 R03feCEvGsDeQ==
+	b=cOPxs8PH7QuugmvKxFRgTtZZzUj+5RCs6hNdjVH6lHOwEVTX+6Taa+Y7ob+v2uSMl
+	 KPs/86PbFtrcuOfJUeq0C5kwClEYb4XZx3JyJ+1em9K5RfaZeXf8SjQa36GOaMAdTX
+	 md9E6yjdUjWEAzGTbJsw0g+2QDlw/f5QtbZJfKs13RtGRQ3yYeaZGyGHi7phYe+zBU
+	 +i5tRwMxyDHi2AUWVs9u9wH0FKNlDka0z1mTjNxrbyFX0iSifPSfjzEND11GofJR1n
+	 xBzkRhZubhCaG/ozvrg2eh+oRvWwKJth2y/pP7qrOAPC9I/7pZm+uu5hhTiYHjv65b
+	 DPOJZa8kz/DYw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: netdev@vger.kernel.org
 Cc: nbd@nbd.name,
@@ -62,17 +62,17 @@ Cc: nbd@nbd.name,
 	devicetree@vger.kernel.org,
 	robh@kernel.org,
 	daniel@makrotopia.org
-Subject: [PATCH v3 net-next 02/11] dt-bindings: net: mediatek: add WED binding for MT7986 eth driver
-Date: Tue, 20 Sep 2022 12:11:14 +0200
-Message-Id: <163c6def2dfea5ab340f8a2a93e766088e2fb642.1663668203.git.lorenzo@kernel.org>
+Subject: [PATCH v3 net-next 04/11] net: ethernet: mtk_eth_soc: move ppe table hash offset to mtk_soc_data structure
+Date: Tue, 20 Sep 2022 12:11:16 +0200
+Message-Id: <6c684d4fbba2fd81e22050c7d5f9107dc3095776.1663668203.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <cover.1663668203.git.lorenzo@kernel.org>
 References: <cover.1663668203.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_031208_801473_373B332E 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20220920_031210_495522_084B35BA 
+X-CRM114-Status: GOOD (  17.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,145 +87,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the binding for the Wireless Ethernet Dispatch core on the
-MT7986 ethernet driver
+This is a preliminary patch to introduce mt7986 hw packet engine.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Tested-by: Daniel Golle <daniel@makrotopia.org>
+Co-developed-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../arm/mediatek/mediatek,mt7622-wed.yaml     |  1 +
- .../mediatek/mediatek,mt7986-wed-pcie.yaml    | 43 +++++++++++++++++++
- .../devicetree/bindings/net/mediatek,net.yaml | 27 ++++++++----
- 3 files changed, 62 insertions(+), 9 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wed-pcie.yaml
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c |  4 ++++
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  2 ++
+ drivers/net/ethernet/mediatek/mtk_ppe.c     | 24 +++++++++++++++------
+ drivers/net/ethernet/mediatek/mtk_ppe.h     |  2 +-
+ 4 files changed, 25 insertions(+), 7 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-wed.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-wed.yaml
-index 787d6673f952..84fb0a146b6e 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-wed.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7622-wed.yaml
-@@ -20,6 +20,7 @@ properties:
-     items:
-       - enum:
-           - mediatek,mt7622-wed
-+          - mediatek,mt7986-wed
-       - const: syscon
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index b2b92fe2a96a..d09717d4f3be 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -4201,6 +4201,7 @@ static const struct mtk_soc_data mt7621_data = {
+ 	.required_clks = MT7621_CLKS_BITMAP,
+ 	.required_pctl = false,
+ 	.offload_version = 2,
++	.hash_offset = 2,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+ 		.rxd_size = sizeof(struct mtk_rx_dma),
+@@ -4219,6 +4220,7 @@ static const struct mtk_soc_data mt7622_data = {
+ 	.required_clks = MT7622_CLKS_BITMAP,
+ 	.required_pctl = false,
+ 	.offload_version = 2,
++	.hash_offset = 2,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+ 		.rxd_size = sizeof(struct mtk_rx_dma),
+@@ -4236,6 +4238,7 @@ static const struct mtk_soc_data mt7623_data = {
+ 	.required_clks = MT7623_CLKS_BITMAP,
+ 	.required_pctl = true,
+ 	.offload_version = 2,
++	.hash_offset = 2,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma),
+ 		.rxd_size = sizeof(struct mtk_rx_dma),
+@@ -4269,6 +4272,7 @@ static const struct mtk_soc_data mt7986_data = {
+ 	.caps = MT7986_CAPS,
+ 	.required_clks = MT7986_CLKS_BITMAP,
+ 	.required_pctl = false,
++	.hash_offset = 4,
+ 	.txrx = {
+ 		.txd_size = sizeof(struct mtk_tx_dma_v2),
+ 		.rxd_size = sizeof(struct mtk_rx_dma_v2),
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 2617cbecdfca..6c5e144cb9f0 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -969,6 +969,7 @@ struct mtk_reg_map {
+  *				the target SoC
+  * @required_pctl		A bool value to show whether the SoC requires
+  *				the extra setup for those pins used by GMAC.
++ * @hash_offset			Flow table hash offset.
+  * @txd_size			Tx DMA descriptor size.
+  * @rxd_size			Rx DMA descriptor size.
+  * @rx_irq_done_mask		Rx irq done register mask.
+@@ -983,6 +984,7 @@ struct mtk_soc_data {
+ 	u32		required_clks;
+ 	bool		required_pctl;
+ 	u8		offload_version;
++	u8		hash_offset;
+ 	netdev_features_t hw_features;
+ 	struct {
+ 		u32	txd_size;
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+index cfe804bc8d20..1cc7d8338722 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+@@ -88,7 +88,7 @@ static void mtk_ppe_cache_enable(struct mtk_ppe *ppe, bool enable)
+ 		enable * MTK_PPE_CACHE_CTL_EN);
+ }
  
-   reg:
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wed-pcie.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wed-pcie.yaml
-new file mode 100644
-index 000000000000..96221f51c1c3
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt7986-wed-pcie.yaml
-@@ -0,0 +1,43 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,mt7986-wed-pcie.yaml#"
-+$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-+
-+title: MediaTek PCIE WED Controller for MT7986
-+
-+maintainers:
-+  - Lorenzo Bianconi <lorenzo@kernel.org>
-+  - Felix Fietkau <nbd@nbd.name>
-+
-+description:
-+  The mediatek WED PCIE provides a configuration interface for PCIE
-+  controller on MT7986 soc.
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt7986-wed-pcie
-+      - const: syscon
-+
-+  reg:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    soc {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+      wed_pcie: wed-pcie@10003000 {
-+        compatible = "mediatek,mt7986-wed-pcie",
-+                     "syscon";
-+        reg = <0 0x10003000 0 0x10>;
-+      };
-+    };
-diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-index f5564ecddb62..7ef696204c5a 100644
---- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-+++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-@@ -69,6 +69,15 @@ properties:
-       A list of phandle to the syscon node that handles the SGMII setup which is required for
-       those SoCs equipped with SGMII.
+-static u32 mtk_ppe_hash_entry(struct mtk_foe_entry *e)
++static u32 mtk_ppe_hash_entry(struct mtk_eth *eth, struct mtk_foe_entry *e)
+ {
+ 	u32 hv1, hv2, hv3;
+ 	u32 hash;
+@@ -122,7 +122,7 @@ static u32 mtk_ppe_hash_entry(struct mtk_foe_entry *e)
+ 	hash = (hash >> 24) | ((hash & 0xffffff) << 8);
+ 	hash ^= hv1 ^ hv2 ^ hv3;
+ 	hash ^= hash >> 16;
+-	hash <<= 1;
++	hash <<= (ffs(eth->soc->hash_offset) - 1);
+ 	hash &= MTK_PPE_ENTRIES - 1;
  
-+  mediatek,wed:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    minItems: 2
-+    maxItems: 2
-+    items:
-+      maxItems: 1
-+    description:
-+      List of phandles to wireless ethernet dispatch nodes.
+ 	return hash;
+@@ -540,15 +540,16 @@ mtk_foe_entry_commit_l2(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
+ int mtk_foe_entry_commit(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
+ {
+ 	int type = FIELD_GET(MTK_FOE_IB1_PACKET_TYPE, entry->data.ib1);
++	const struct mtk_soc_data *soc = ppe->eth->soc;
+ 	u32 hash;
+ 
+ 	if (type == MTK_PPE_PKT_TYPE_BRIDGE)
+ 		return mtk_foe_entry_commit_l2(ppe, entry);
+ 
+-	hash = mtk_ppe_hash_entry(&entry->data);
++	hash = mtk_ppe_hash_entry(ppe->eth, &entry->data);
+ 	entry->hash = 0xffff;
+ 	spin_lock_bh(&ppe_lock);
+-	hlist_add_head(&entry->list, &ppe->foe_flow[hash / 2]);
++	hlist_add_head(&entry->list, &ppe->foe_flow[hash / soc->hash_offset]);
+ 	spin_unlock_bh(&ppe_lock);
+ 
+ 	return 0;
+@@ -558,6 +559,7 @@ static void
+ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
+ 			     u16 hash)
+ {
++	const struct mtk_soc_data *soc = ppe->eth->soc;
+ 	struct mtk_flow_entry *flow_info;
+ 	struct mtk_foe_entry foe, *hwe;
+ 	struct mtk_foe_mac_info *l2;
+@@ -572,7 +574,8 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
+ 	flow_info->l2_data.base_flow = entry;
+ 	flow_info->type = MTK_FLOW_TYPE_L2_SUBFLOW;
+ 	flow_info->hash = hash;
+-	hlist_add_head(&flow_info->list, &ppe->foe_flow[hash / 2]);
++	hlist_add_head(&flow_info->list,
++		       &ppe->foe_flow[hash / soc->hash_offset]);
+ 	hlist_add_head(&flow_info->l2_data.list, &entry->l2_flows);
+ 
+ 	hwe = &ppe->foe_table[hash];
+@@ -596,7 +599,8 @@ mtk_foe_entry_commit_subflow(struct mtk_ppe *ppe, struct mtk_flow_entry *entry,
+ 
+ void __mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
+ {
+-	struct hlist_head *head = &ppe->foe_flow[hash / 2];
++	const struct mtk_soc_data *soc = ppe->eth->soc;
++	struct hlist_head *head = &ppe->foe_flow[hash / soc->hash_offset];
+ 	struct mtk_foe_entry *hwe = &ppe->foe_table[hash];
+ 	struct mtk_flow_entry *entry;
+ 	struct mtk_foe_bridge key = {};
+@@ -680,9 +684,11 @@ int mtk_foe_entry_idle_time(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
+ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base,
+ 		 int version)
+ {
++	const struct mtk_soc_data *soc = eth->soc;
+ 	struct device *dev = eth->dev;
+ 	struct mtk_foe_entry *foe;
+ 	struct mtk_ppe *ppe;
++	u32 foe_flow_size;
+ 
+ 	ppe = devm_kzalloc(dev, sizeof(*ppe), GFP_KERNEL);
+ 	if (!ppe)
+@@ -705,6 +711,12 @@ struct mtk_ppe *mtk_ppe_init(struct mtk_eth *eth, void __iomem *base,
+ 
+ 	ppe->foe_table = foe;
+ 
++	foe_flow_size = (MTK_PPE_ENTRIES / soc->hash_offset) *
++			sizeof(*ppe->foe_flow);
++	ppe->foe_flow = devm_kzalloc(dev, foe_flow_size, GFP_KERNEL);
++	if (!ppe->foe_flow)
++		return NULL;
 +
-   dma-coherent: true
+ 	mtk_ppe_debugfs_init(ppe);
  
-   mdio-bus:
-@@ -112,6 +121,8 @@ allOf:
-             Phandle to the syscon node that handles the ports slew rate and
-             driver current.
+ 	return ppe;
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.h b/drivers/net/ethernet/mediatek/mtk_ppe.h
+index bb079e3c0417..22efed6599c2 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.h
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.h
+@@ -270,7 +270,7 @@ struct mtk_ppe {
+ 	dma_addr_t foe_phys;
  
-+        mediatek,wed: false
-+
-   - if:
-       properties:
-         compatible:
-@@ -144,15 +155,6 @@ allOf:
-           minItems: 1
-           maxItems: 1
+ 	u16 foe_check_time[MTK_PPE_ENTRIES];
+-	struct hlist_head foe_flow[MTK_PPE_ENTRIES / 2];
++	struct hlist_head *foe_flow;
  
--        mediatek,wed:
--          $ref: /schemas/types.yaml#/definitions/phandle-array
--          minItems: 2
--          maxItems: 2
--          items:
--            maxItems: 1
--          description:
--            List of phandles to wireless ethernet dispatch nodes.
--
-         mediatek,pcie-mirror:
-           $ref: /schemas/types.yaml#/definitions/phandle
-           description:
-@@ -202,6 +204,8 @@ allOf:
-           minItems: 2
-           maxItems: 2
+ 	struct rhashtable l2_flows;
  
-+        mediatek,wed: false
-+
-   - if:
-       properties:
-         compatible:
-@@ -238,6 +242,11 @@ allOf:
-           minItems: 2
-           maxItems: 2
- 
-+        mediatek,wed-pcie:
-+          $ref: /schemas/types.yaml#/definitions/phandle
-+          description:
-+            Phandle to the mediatek wed-pcie controller.
-+
- patternProperties:
-   "^mac@[0-1]$":
-     type: object
 -- 
 2.37.3
 
