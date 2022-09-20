@@ -4,59 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A376AECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 09:08:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59753C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 09:09:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CQs6MkmE2ml7b4t3G67ZLSBBRBrB+QHujzy7RBm7/qw=; b=ca12izuRVgBWuQ5XcVR+MssRjK
-	PzY2kOAnt6a2J05SF2ETPyLXKvGGgqYuiYJywMUvyBzok1r8R0sFduDb1+cUYJI03LDPoXxrBtAYE
-	JiK5VuZG8LgOX4TOWUrJGPRhxPoToO9eyx5YjxgY5btmSuWxFMZ1XAOvNvcTQU+T50E2+5eQ4x3A7
-	pmwZb+ox5sPu8NufWnyfKtupBbhCqt6YWC4gqFnGE9kODEKPotqvEeyY37CBcxXrUpg0f8A17Ghis
-	AROKCA9WawR9xHEPWJSgL5ZnG5eViujoMCRKsMCzvM7S7/bvSiOzpfEOf94u6YIwdreGORo2pakiD
-	2V49hAPg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=os0PbrdHlHnruzg6s40DMxywV3fPZwOCIS3lqIlzsCw=; b=xJpA/dUQuP06wG21o01I4WG46G
+	1IP8T1H9Otep5vm0jpV3V3fUa+exzxpUrwHIcWWDRf5AWBkoFk8+Fk/w16jbSWXqH8SGv7BbOMBWs
+	6jJEi7w/qbWlP/3sakn55yeYEpfjHREHJlJOoAVV6akk/wuE7JESlCYMYJdcRAjYCQ7ov4VkSG5gV
+	SmaOz7AZVBsXvfShw2SXqXxk8bXk0j6hSSDlUOQvgWQ/Tfzi0asjkffT5CBwpX8qX+1Je5UKkLRD4
+	rSU+dkA1q+cYJ+OXqJpDUoU3OxylSUPAQCCPkZSuNijqvgKB0PkQYsqLs4WBELiMUwHJ2ineh4Q1p
+	/EAMrZ3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaZFL-002DJY-1L; Tue, 20 Sep 2022 09:08:51 +0000
-Received: from relay03.th.seeweb.it ([2001:4b7a:2000:18::164])
+	id 1oaZGC-002Dvk-La; Tue, 20 Sep 2022 09:09:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaZ9E-0029Md-RS
-	for linux-mediatek@lists.infradead.org; Tue, 20 Sep 2022 09:02:36 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by m-r1.th.seeweb.it (Postfix) with ESMTPSA id D27691F9CD;
-	Tue, 20 Sep 2022 11:02:22 +0200 (CEST)
-Message-ID: <0bf9602b-0e25-9280-8664-9ec6ee6ca4cc@somainline.org>
-Date: Tue, 20 Sep 2022 11:02:22 +0200
+	id 1oaZDb-002CBa-7h; Tue, 20 Sep 2022 09:07:05 +0000
+X-UUID: a28fc1a6a4fb4c3cb189456fd70f3746-20220920
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=os0PbrdHlHnruzg6s40DMxywV3fPZwOCIS3lqIlzsCw=;
+	b=hLq+H9AikZD1AXsAiK3wVwh55072XeXMIQpymaVSCjRY5/FH+AHz7XEfKm6ni4bQ1YXVIUVp1TwojwdHbgWSFdzGn74YScG3jNPZG2dl1TEJKHQxc1xAQSB4Lto9ZQYrQwTSnh/loOOMZK8HcODrPQUD4wjAR0kN/62dxJqdjPA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:2ab09775-fb82-44c4-99c2-09db6ef76a24,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:343104f7-6e85-48d9-afd8-0504bbfe04cb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: a28fc1a6a4fb4c3cb189456fd70f3746-20220920
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jianguo.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1310484548; Tue, 20 Sep 2022 02:06:59 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 20 Sep 2022 16:36:24 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Tue, 20 Sep 2022 16:36:23 +0800
+From: Jianguo Zhang <jianguo.zhang@mediatek.com>
+To: "David S . Miller" <davem@davemloft.net>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, Biao Huang
+	<biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Jianguo Zhang <jianguo.zhang@mediatek.com>
+Subject: [PATCH 1/2] dt-bindings: net: mediatek-dwmac: add support for mt8188
+Date: Tue, 20 Sep 2022 16:36:16 +0800
+Message-ID: <20220920083617.4177-2-jianguo.zhang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220920083617.4177-1-jianguo.zhang@mediatek.com>
+References: <20220920083617.4177-1-jianguo.zhang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v3 3/3] iommu/mediatek: Add MT8188 IOMMU Support
-Content-Language: en-US
-To: "Chengci.Xu" <chengci.xu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220919082611.19824-1-chengci.xu@mediatek.com>
- <20220919082611.19824-4-chengci.xu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@somainline.org>
-In-Reply-To: <20220919082611.19824-4-chengci.xu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_020233_127340_49EF6242 
-X-CRM114-Status: UNSURE (   8.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220920_020703_687550_3D4E7FB6 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,13 +87,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/09/22 10:26, Chengci.Xu ha scritto:
-> MT8188 has 3 IOMMU, containing 2 MM IOMMUs, one is for vdo, the other
-> is for vpp. and 1 INFRA IOMMU.
-> 
-> Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
+Add binding document for the ethernet on mt8188
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
+---
+ .../devicetree/bindings/net/mediatek-dwmac.yaml        | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
+diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+index 61b2fb9e141b..eaf7e8d53432 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+@@ -20,6 +20,7 @@ select:
+         enum:
+           - mediatek,mt2712-gmac
+           - mediatek,mt8195-gmac
++          - mediatek,mt8188-gmac
+   required:
+     - compatible
+ 
+@@ -37,6 +38,11 @@ properties:
+           - enum:
+               - mediatek,mt8195-gmac
+           - const: snps,dwmac-5.10a
++      - items:
++          - enum:
++              - mediatek,mt8188-gmac
++          - const: mediatek,mt8195-gmac
++          - const: snps,dwmac-5.10a
+ 
+   clocks:
+     minItems: 5
+@@ -74,7 +80,7 @@ properties:
+       or will round down. Range 0~31*170.
+       For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
+       or will round down. Range 0~31*550.
+-      For MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
++      For MT8195/MT8188 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
+       or will round down. Range 0~31*290.
+ 
+   mediatek,rx-delay-ps:
+@@ -84,7 +90,7 @@ properties:
+       or will round down. Range 0~31*170.
+       For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
+       or will round down. Range 0~31*550.
+-      For MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple
++      For MT8195/MT8188 RGMII/RMII/MII interface, Allowed value need to be a multiple
+       of 290, or will round down. Range 0~31*290.
+ 
+   mediatek,rmii-rxc:
+-- 
+2.25.1
 
 
