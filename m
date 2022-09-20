@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87F17ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 09:07:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 375F0C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Sep 2022 09:08:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n7wZIkuPTiLOQCOIwIcXYf+aRsn+eYjwunznMxBD8LE=; b=g1gOWuEhL/fHe8EoJsq99rcqxa
-	tB5frLGQfvVqrBfZSlE1C2GnR/Z0TRo6yz8qHtEdfTK/IFLoAbqKuBjeSYyTMQr9PA71j1dqu2nhO
-	mXxqUtD67xYmXMr+ymy2Xfz4WhJZH5CJ69W8v2zRSdQoSOZUwgIJSCix82eG/foz+vwo8OgrDLvVC
-	Kx4yArTz+EdRdmhCNMKtpmB7rzX9oXU4hL1F5LzI95kr9uB+bgtHqEGjCLZ/pG5wMYDkRoPXfEMD1
-	PDdXsGguSQD3QSDYsoZ7UGUoBvqhgVnVFKt25ODp53EydKTQu8q+9yQ2NJOuc1qYgkBurhbP/KbrN
-	vtvkJhyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=djJyYhMtweSAWZJehV28U/bFM6BUId6M2WyOQj4IzjY=; b=zd22G8aklueBTMEnCKbfFQz/mZ
+	XEK2xz8CGdfPOyPfo+h6R/Yz66/OL4N2TdHX9b0j0nXCaLCQm87sw0wlY3UnZ68RMDTFNX6RLdaap
+	HezySdvvV8w4c6NiAoxdKXxXewdgtu5qtCcKwsdLqeMW2raWobmh/guUU7QY9GwP4rrnpL9Uzv2Hx
+	Jbt6t3leWvQDpEbN4w7YYyEwY7OxaMUcSB4rcZSvxJm4QsuyR2TeQmoaAbEVHBKA6/96Hl8sHn9KX
+	Fm0Q8UH8Qg9X+CY0urVcIwo+5pkVi9fd65L4b1xPic5J0rkqoroCeLMkYbrrOuOE3+G4FVtvW6HSs
+	3EKmtucA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaZEI-002CdL-5M; Tue, 20 Sep 2022 09:07:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oaZFC-002DEo-PD; Tue, 20 Sep 2022 09:08:42 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaZ8d-002941-TX; Tue, 20 Sep 2022 09:01:59 +0000
-X-UUID: 37abb87abc164eb9874aa4598ef40c93-20220920
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=n7wZIkuPTiLOQCOIwIcXYf+aRsn+eYjwunznMxBD8LE=;
-	b=bg80GbEXsNm2zgebjg5+y33/TWxfzQoALDN5bQeYuFQ6ePOTHSeETBGb9FC6SO58Y8pxZoNFBv2B/KlIBRkqJI8kyXWzRBrOUxnhmzSyZmnYkJK/m4CC98dUf//JLWKVdCrGKRZ4I5BRmXHdja+9DVUPLBDlPUxP3JSM7tbmWFg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:4e30d8ea-8c56-4e4f-9ae8-33859c9bd4d2,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:12f2435e-5ed4-4e28-8b00-66ed9f042fbd,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 37abb87abc164eb9874aa4598ef40c93-20220920
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 265281469; Tue, 20 Sep 2022 02:01:47 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 20 Sep 2022 17:00:43 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 20 Sep 2022 17:00:42 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Vinod Koul <vkoul@kernel.org>
-CC: Philipp Zabel <p.zabel@pengutronix.de>, Chunfeng Yun
-	<chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Jitao Shi
-	<jitao.shi@mediatek.com>, Stanley Chu <stanley.chu@mediatek.com>
-Subject: [PATCH 04/18] phy: mediatek: ufs: use common register access helpers
-Date: Tue, 20 Sep 2022 17:00:24 +0800
-Message-ID: <20220920090038.15133-5-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220920090038.15133-1-chunfeng.yun@mediatek.com>
-References: <20220920090038.15133-1-chunfeng.yun@mediatek.com>
+	id 1oaZ8j-00296j-Dj; Tue, 20 Sep 2022 09:02:03 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id EFF556601F65;
+	Tue, 20 Sep 2022 10:01:58 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1663664519;
+	bh=+3Eho6vznxN6lcZbJbVvkS5KJYsPvu5pctKzlZPKMUo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=LJclHzWWXsCnozr4D6rWp6q57rPuakEPkNWPH4x5OppazabiA3wjTGmtPFWcgEgIj
+	 GR4sP0iuussi0aap1SwEamN3AIHInnQt4Y1crvC44KcN+0rKVSTNkt68tCFtcAFgHP
+	 HS3TRs3QGz4pde4u0r/jmuJIccKVgD1Y/4o3hls04T98y6fFdWjuThZAW7qN0rGcIc
+	 OkU750ey5Tj9vwjKlDYO//swC6zIN/iq6EUNiD3n5mCmT6OWvc4/WLatlhkVtbeK+s
+	 MqjnrDydHispgrfrj0N6PWPcfxJ5yGR6xzIIQIlFVoxfFGL1qS81oMdjy95Z24kSXU
+	 xwFUg1uwDjb7w==
+Message-ID: <3a0ac49f-2245-fb64-aa60-e3b1a1d4afcd@collabora.com>
+Date: Tue, 20 Sep 2022 11:01:56 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v3 2/3] iommu/mediatek: Add enable IOMMU SMC command for
+ INFRA master
+Content-Language: en-US
+To: "Chengci.Xu" <chengci.xu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220919082611.19824-1-chengci.xu@mediatek.com>
+ <20220919082611.19824-3-chengci.xu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220919082611.19824-3-chengci.xu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_020156_007936_BD86ADBB 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20220920_020201_812958_CEB5F76F 
+X-CRM114-Status: GOOD (  21.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,147 +81,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-No need define private register access helpers, use common ones defined
-in phy-mtk-io.h
+Il 19/09/22 10:26, Chengci.Xu ha scritto:
+> The register which can enable IOMMU for INFRA master should be setted
+> in secure world for security concerns. Therefore, we add a SMC command
+> for INFRA master to enable/disable INFRA IOMMU in ATF. This function is
+> prepared for MT8188.
+> 
+> Signed-off-by: Chengci.Xu <chengci.xu@mediatek.com>
+> ---
+>   drivers/iommu/mtk_iommu.c  | 21 +++++++++++++++++++--
+>   include/soc/mediatek/smi.h |  1 +
+>   2 files changed, 20 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 552e4eb8c610..8b8a289bab2c 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -3,6 +3,7 @@
+>    * Copyright (c) 2015-2016 MediaTek Inc.
+>    * Author: Yong Wu <yong.wu@mediatek.com>
+>    */
+> +#include <linux/arm-smccc.h>
+>   #include <linux/bitfield.h>
+>   #include <linux/bug.h>
+>   #include <linux/clk.h>
+> @@ -28,6 +29,7 @@
+>   #include <linux/slab.h>
+>   #include <linux/spinlock.h>
+>   #include <linux/soc/mediatek/infracfg.h>
+> +#include <linux/soc/mediatek/mtk_sip_svc.h>
+>   #include <asm/barrier.h>
+>   #include <soc/mediatek/smi.h>
+>   
+> @@ -138,6 +140,7 @@
+>   #define PM_CLK_AO			BIT(15)
+>   #define IFA_IOMMU_PCIE_SUPPORT		BIT(16)
+>   #define PGTABLE_PA_35_EN		BIT(17)
+> +#define CFG_IFA_MASTER_IN_ATF		BIT(18)
+>   
+>   #define MTK_IOMMU_HAS_FLAG_MASK(pdata, _x, mask)	\
+>   				((((pdata)->flags) & (mask)) == (_x))
+> @@ -553,7 +556,20 @@ static int mtk_iommu_config(struct mtk_iommu_data *data, struct device *dev,
+>   				larb_mmu->mmu |= MTK_SMI_MMU_EN(portid);
+>   			else
+>   				larb_mmu->mmu &= ~MTK_SMI_MMU_EN(portid);
+> -		} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA)) {
+> +		} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA) &&
+> +			   MTK_IOMMU_HAS_FLAG(data->plat_data, CFG_IFA_MASTER_IN_ATF)) {
+> +			struct arm_smccc_res res;
+> +
+> +			arm_smccc_smc(MTK_SIP_KERNEL_IOMMU_CONTROL,
+> +				      IOMMU_ATF_CMD_CONFIG_INFRA_IOMMU,
+> +				      portid, enable, 0, 0, 0, 0, &res);
+> +			if (res.a0 != 0) {
+> +				dev_err(dev, "%s iommu(%s) inframaster %d fail(%ld).\n",
+> +					enable ? "enable" : "disable",
+> +					dev_name(data->dev), portid, res.a0);
+> +				ret = -EINVAL;
+> +			}
+> +		} else {
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/phy/mediatek/phy-mtk-ufs.c | 78 +++++++++++-------------------
- 1 file changed, 28 insertions(+), 50 deletions(-)
+This one is opening a big window for future mistakes.
 
-diff --git a/drivers/phy/mediatek/phy-mtk-ufs.c b/drivers/phy/mediatek/phy-mtk-ufs.c
-index a6af06941203..fc19e0fa8ed5 100644
---- a/drivers/phy/mediatek/phy-mtk-ufs.c
-+++ b/drivers/phy/mediatek/phy-mtk-ufs.c
-@@ -11,6 +11,8 @@
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- 
-+#include "phy-mtk-io.h"
-+
- /* mphy register and offsets */
- #define MP_GLB_DIG_8C               0x008C
- #define FRC_PLL_ISO_EN              BIT(8)
-@@ -39,34 +41,6 @@ struct ufs_mtk_phy {
- 	struct clk_bulk_data clks[UFSPHY_CLKS_CNT];
- };
- 
--static inline u32 mphy_readl(struct ufs_mtk_phy *phy, u32 reg)
--{
--	return readl(phy->mmio + reg);
--}
--
--static inline void mphy_writel(struct ufs_mtk_phy *phy, u32 val, u32 reg)
--{
--	writel(val, phy->mmio + reg);
--}
--
--static void mphy_set_bit(struct ufs_mtk_phy *phy, u32 reg, u32 bit)
--{
--	u32 val;
--
--	val = mphy_readl(phy, reg);
--	val |= bit;
--	mphy_writel(phy, val, reg);
--}
--
--static void mphy_clr_bit(struct ufs_mtk_phy *phy, u32 reg, u32 bit)
--{
--	u32 val;
--
--	val = mphy_readl(phy, reg);
--	val &= ~bit;
--	mphy_writel(phy, val, reg);
--}
--
- static struct ufs_mtk_phy *get_ufs_mtk_phy(struct phy *generic_phy)
- {
- 	return (struct ufs_mtk_phy *)phy_get_drvdata(generic_phy);
-@@ -84,57 +58,61 @@ static int ufs_mtk_phy_clk_init(struct ufs_mtk_phy *phy)
- 
- static void ufs_mtk_phy_set_active(struct ufs_mtk_phy *phy)
- {
-+	void __iomem *mmio = phy->mmio;
-+
- 	/* release DA_MP_PLL_PWR_ON */
--	mphy_set_bit(phy, MP_GLB_DIG_8C, PLL_PWR_ON);
--	mphy_clr_bit(phy, MP_GLB_DIG_8C, FRC_FRC_PWR_ON);
-+	mtk_phy_set_bits(mmio + MP_GLB_DIG_8C, PLL_PWR_ON);
-+	mtk_phy_clear_bits(mmio + MP_GLB_DIG_8C, FRC_FRC_PWR_ON);
- 
- 	/* release DA_MP_PLL_ISO_EN */
--	mphy_clr_bit(phy, MP_GLB_DIG_8C, PLL_ISO_EN);
--	mphy_clr_bit(phy, MP_GLB_DIG_8C, FRC_PLL_ISO_EN);
-+	mtk_phy_clear_bits(mmio + MP_GLB_DIG_8C, PLL_ISO_EN);
-+	mtk_phy_clear_bits(mmio + MP_GLB_DIG_8C, FRC_PLL_ISO_EN);
- 
- 	/* release DA_MP_CDR_PWR_ON */
--	mphy_set_bit(phy, MP_LN_RX_44, CDR_PWR_ON);
--	mphy_clr_bit(phy, MP_LN_RX_44, FRC_CDR_PWR_ON);
-+	mtk_phy_set_bits(mmio + MP_LN_RX_44, CDR_PWR_ON);
-+	mtk_phy_clear_bits(mmio + MP_LN_RX_44, FRC_CDR_PWR_ON);
- 
- 	/* release DA_MP_CDR_ISO_EN */
--	mphy_clr_bit(phy, MP_LN_RX_44, CDR_ISO_EN);
--	mphy_clr_bit(phy, MP_LN_RX_44, FRC_CDR_ISO_EN);
-+	mtk_phy_clear_bits(mmio + MP_LN_RX_44, CDR_ISO_EN);
-+	mtk_phy_clear_bits(mmio + MP_LN_RX_44, FRC_CDR_ISO_EN);
- 
- 	/* release DA_MP_RX0_SQ_EN */
--	mphy_set_bit(phy, MP_LN_DIG_RX_AC, RX_SQ_EN);
--	mphy_clr_bit(phy, MP_LN_DIG_RX_AC, FRC_RX_SQ_EN);
-+	mtk_phy_set_bits(mmio + MP_LN_DIG_RX_AC, RX_SQ_EN);
-+	mtk_phy_clear_bits(mmio + MP_LN_DIG_RX_AC, FRC_RX_SQ_EN);
- 
- 	/* delay 1us to wait DIFZ stable */
- 	udelay(1);
- 
- 	/* release DIFZ */
--	mphy_clr_bit(phy, MP_LN_DIG_RX_9C, FSM_DIFZ_FRC);
-+	mtk_phy_clear_bits(mmio + MP_LN_DIG_RX_9C, FSM_DIFZ_FRC);
- }
- 
- static void ufs_mtk_phy_set_deep_hibern(struct ufs_mtk_phy *phy)
- {
-+	void __iomem *mmio = phy->mmio;
-+
- 	/* force DIFZ */
--	mphy_set_bit(phy, MP_LN_DIG_RX_9C, FSM_DIFZ_FRC);
-+	mtk_phy_set_bits(mmio + MP_LN_DIG_RX_9C, FSM_DIFZ_FRC);
- 
- 	/* force DA_MP_RX0_SQ_EN */
--	mphy_set_bit(phy, MP_LN_DIG_RX_AC, FRC_RX_SQ_EN);
--	mphy_clr_bit(phy, MP_LN_DIG_RX_AC, RX_SQ_EN);
-+	mtk_phy_set_bits(mmio + MP_LN_DIG_RX_AC, FRC_RX_SQ_EN);
-+	mtk_phy_clear_bits(mmio + MP_LN_DIG_RX_AC, RX_SQ_EN);
- 
- 	/* force DA_MP_CDR_ISO_EN */
--	mphy_set_bit(phy, MP_LN_RX_44, FRC_CDR_ISO_EN);
--	mphy_set_bit(phy, MP_LN_RX_44, CDR_ISO_EN);
-+	mtk_phy_set_bits(mmio + MP_LN_RX_44, FRC_CDR_ISO_EN);
-+	mtk_phy_set_bits(mmio + MP_LN_RX_44, CDR_ISO_EN);
- 
- 	/* force DA_MP_CDR_PWR_ON */
--	mphy_set_bit(phy, MP_LN_RX_44, FRC_CDR_PWR_ON);
--	mphy_clr_bit(phy, MP_LN_RX_44, CDR_PWR_ON);
-+	mtk_phy_set_bits(mmio + MP_LN_RX_44, FRC_CDR_PWR_ON);
-+	mtk_phy_clear_bits(mmio + MP_LN_RX_44, CDR_PWR_ON);
- 
- 	/* force DA_MP_PLL_ISO_EN */
--	mphy_set_bit(phy, MP_GLB_DIG_8C, FRC_PLL_ISO_EN);
--	mphy_set_bit(phy, MP_GLB_DIG_8C, PLL_ISO_EN);
-+	mtk_phy_set_bits(mmio + MP_GLB_DIG_8C, FRC_PLL_ISO_EN);
-+	mtk_phy_set_bits(mmio + MP_GLB_DIG_8C, PLL_ISO_EN);
- 
- 	/* force DA_MP_PLL_PWR_ON */
--	mphy_set_bit(phy, MP_GLB_DIG_8C, FRC_FRC_PWR_ON);
--	mphy_clr_bit(phy, MP_GLB_DIG_8C, PLL_PWR_ON);
-+	mtk_phy_set_bits(mmio + MP_GLB_DIG_8C, FRC_FRC_PWR_ON);
-+	mtk_phy_clear_bits(mmio + MP_GLB_DIG_8C, PLL_PWR_ON);
- }
- 
- static int ufs_mtk_phy_power_on(struct phy *generic_phy)
--- 
-2.18.0
+I think that the only way that you have to do this is...
+
+	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_INFRA)) {
+		if (MTK_IOMMU_HAS_FLAG(data->plat_data, CFG_IFA_MASTER_IN_ATF)) {
+			arm_smcc_smc ....
+		} else {
+			peri_mmuen_msk ....
+		}
+	}
+
+Otherwise, to reduce indentation, you'd have to do something like...
+
+static int mtk_iommu_config_one(struct mtk_iommu_data *data, struct device *dev,
+				bool enable, u32 regionid, u32 larbid, u32 portid)
+{
+	struct mtk_smi_larb_iommu *larb_mmu;
+	............
+}
+
+static int mtk_iommu_config(struct .............)
+{
+	vars, etc....
+
+	for (i = 0; i < fwspec->num_ids; ++i)
+		mtk_iommu_config_one(data, dev, enable, regionid,
+				     MTK_M4U_TO_LARB(...), MTK_M4U_TO_PORT(...));
+}
+
+
+or....
+
+static int mtk_iommu_config_one_infra(struct ....)
+{
+	if (is atf) ....
+	else ....
+}
+
+Your choice.
+
+Regards,
+Angelo
+
 
 
