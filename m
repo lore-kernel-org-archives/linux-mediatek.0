@@ -4,89 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEDEAC32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 08:56:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26A3AC32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 09:00:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NMm6vbupuNg3e8G1erinu7XgiIOmdNdtykV6wWBx/V8=; b=FW+KLJ02OcU3Qnzn4qdzJ+SfLd
-	BFqKuPk0G6XJxhXqKRiowjzhyPAyeyxg+dbMSX2iRnYLi5nnAX4Br9OpB1AoVNnoAI5h4rMP54cj+
-	av9LPwUqBaBL1Dta138KAQPeAu4Dn2+PYwsnXVCHDI9qsGpJUHxIo1IdeaYVAd0FTO6KGrhkZ36gi
-	3kIV6MrPGpCRiNzIQvQKsjvXZAT1qjqgQGIDdN+2CaD1julZZnq0XXP2SQ8MP0iRm8ag+1/5Y/ltA
-	Gd9z5FPt3CppLBlFTt1HNYhhtVY00j17tOfF5MnqN9FBUhkdo0FD7koJYx9u+1AUlNJ9fxrFAfV0i
-	4Vt92Y1A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mWJ9n9VAbfABNG5WWsXyuCsNm5JZ6DtKL9YGcJVGvzk=; b=UTKNUltujeYvgxRTSKE+oyOnk7
+	QXz4wnXEZqjG8UlMn5frDz8DiVSUeVSCa9A1gnD9iuZ2B2H9zu7a5e/XJZveEbWeWbnpJK7k6G8KJ
+	Oq16RthvbQGaqP2mOqpSgOmUaFImRdpvBToHr1ceK+ZtmPTPDYyCfJgdoz/bKGGf5CAT3jAsEN1/G
+	9Vj5hkmhG7R8FEW9h+HhWoBEyIAjCTVqyY2eqFTLq32jBwgnhnTLph/P9Cv3iJ/QuGMxUPj9WRUch
+	VOTso+Nx9OpNbueWEENtCLQl4aQdA40G8JandE/Kby/mu2GvmQipzZeQR41T5y7kw73HM7135gmMw
+	d4PdAchA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oavWq-00A9sp-J5; Wed, 21 Sep 2022 08:56:24 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1oavax-00ABhB-6j; Wed, 21 Sep 2022 09:00:39 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oavVg-00A9Mr-9m
-	for linux-mediatek@lists.infradead.org; Wed, 21 Sep 2022 08:55:15 +0000
-Received: by mail-wm1-x332.google.com with SMTP id az6so3921201wmb.4
-        for <linux-mediatek@lists.infradead.org>; Wed, 21 Sep 2022 01:55:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date;
-        bh=NMm6vbupuNg3e8G1erinu7XgiIOmdNdtykV6wWBx/V8=;
-        b=cs5Dvxfm7fd7aaUwKHNDAnKWcNrqMyWvSpCFhYmNjRwKQjf697cP12ef2JVhzS+nTr
-         rBiEPfFCAvK18V0b4TPU93sWl3nBICTtuO2MuXRVpLAsvrnPMrSMT8utfj6qRBivTxti
-         BXRo7n7yiwy1VFEU65sNSMFb9wbJX0Y01wSWLKT5xxq4/13Ub6Q0C+MSyK+vNliqzKv7
-         7DJIhCBeCbjUg+pZttjuEgYoPhQn5piUM0+uqu6ez9uuEzMnz+dnjzErRDjuyGOk/BYS
-         UkhbQnQFMY8EjTuZOsOAEbzscpTOQfKIqXeSfDZd9sFya7VbVqAP+h8BvB+DFZ+Idka/
-         wnnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=NMm6vbupuNg3e8G1erinu7XgiIOmdNdtykV6wWBx/V8=;
-        b=0lPmDOIWwW83bLBwYW0FNuH06N5ezWgHdQvETdNV3sOLfjYz1EvDsmB/ZBCDW+y6dY
-         3EbW/MiL9XBL0LKvPGaM3YO+NeNu+2EwaoksT02bJD0bEAbR0HK5yTeuIijbu+I6YtV3
-         1Obs8ul925gxfK0iJqtwSbYrtby4Poa8zQIYXV8kQD5D2GCn+cKkcYgEGCETn6LSJx/a
-         GHE1yya624+pvG1eJTfoJ9Y97L3XGLtjC8TDiYLfbeAXcforO+U/ogoLbTqhnebahIJ4
-         NPuM/kU16pF5t5brBCZVSwL58NIW9NnKvXtMwK+NKe5gAgkag2Mp5PQgXscbTb3Y44Jw
-         g9qQ==
-X-Gm-Message-State: ACrzQf0rQP80mm/DsGLm7lsoJwtIW8WwrAbOo2c5DND4XJl2yj/k0c7f
-	NGvO0u1tb+DzZD3sV3mkxkrNaQ==
-X-Google-Smtp-Source: AMsMyM5v4ccQB/sVn2S/zJDFsH4keJ/VCqNp428gK8IV32RalM87u6d3xbyo/Rp+qs75y4SGFW5eBA==
-X-Received: by 2002:a1c:202:0:b0:3a8:4197:eec0 with SMTP id 2-20020a1c0202000000b003a84197eec0mr5125375wmc.83.1663750506995;
-        Wed, 21 Sep 2022 01:55:06 -0700 (PDT)
-Received: from myrica (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net. [82.27.106.168])
-        by smtp.gmail.com with ESMTPSA id p14-20020a5d48ce000000b0022afbd02c69sm1949060wrs.56.2022.09.21.01.55.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 Sep 2022 01:55:06 -0700 (PDT)
-Date: Wed, 21 Sep 2022 09:55:01 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: joro@8bytes.org, suravee.suthikulpanit@amd.com, will@kernel.org,
-	robin.murphy@arm.com, robdclark@gmail.com, dwmw2@infradead.org,
-	baolu.lu@linux.intel.com, agross@kernel.org,
-	bjorn.andersson@linaro.org, matthias.bgg@gmail.com,
-	orsonzhai@gmail.com, baolin.wang@linux.alibaba.com,
-	zhang.lyra@gmail.com, sricharan@codeaurora.org, jgg@nvidia.com,
-	kevin.tian@intel.com, konrad.dybcio@somainline.org,
-	yong.wu@mediatek.com, thierry.reding@gmail.com, vdumpa@nvidia.com,
-	jonathanh@nvidia.com, tglx@linutronix.de,
-	shameerali.kolothum.thodi@huawei.com, christophe.jaillet@wanadoo.fr,
-	thunder.leizhen@huawei.com, quic_saipraka@quicinc.com,
-	jon@solid-run.com, yangyingliang@huawei.com, iommu@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	virtualization@lists.linux-foundation.org
-Subject: Re: [PATCH v4 0/6] Define EINVAL as device/domain incompatibility
-Message-ID: <YyrRZXVWWxBhW3ST@myrica>
-References: <cover.1663744983.git.nicolinc@nvidia.com>
+	id 1oavaj-00ABbk-RF; Wed, 21 Sep 2022 09:00:28 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 51DCC660201E;
+	Wed, 21 Sep 2022 10:00:23 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1663750823;
+	bh=v39Ls358YlCiDDLISWXbQWKLjkzVmreN/vKulfgXwOU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Nl58T+/9Ga9PN5Knl5/g7YAc9MzTN9OLnMlOVSkJj9/+ROwrjC+V9OK81vb3ZKGtc
+	 TJk+ZIIv2DO1vvPE27TiP4xLInXutWujcj7B8fStNb4jmdrZcXoMdubs7x/dtaE8Tu
+	 X9ewCA9wqgVcAkoz8Q3wd52jELCb2eEgbQTDPPOD/XdPGtjEOxAUgYtQyOblwYlCvf
+	 0b/pwoUVgWPXU/R6NKVg+xvKRysz61vQp3VVLRXlxQSjgTesZCs18dGmOznl4lYU2i
+	 TClQlvaXYvCubfVoxUa9tEso6ZVfgSlj/6wxkZCaJrb3K0hoI+UnUzsie5N8dMwNqk
+	 PsTbKmD0BVt3Q==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: robh+dt@kernel.org
+Cc: jassisinghbrar@gmail.com,
+	krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com,
+	houlong.wei@mediatek.com,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4] dt-bindings: mailbox: Convert mtk-gce to DT schema
+Date: Wed, 21 Sep 2022 11:00:06 +0200
+Message-Id: <20220921090006.37642-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1663744983.git.nicolinc@nvidia.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_015512_482166_93E062FD 
-X-CRM114-Status: GOOD (  14.30  )
+X-CRM114-CacheID: sfid-20220921_020026_272782_A9843CDF 
+X-CRM114-Status: GOOD (  26.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,40 +75,246 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 21, 2022 at 01:22:31AM -0700, Nicolin Chen wrote:
-> This series is to replace the previous EMEDIUMTYPE patch in a VFIO series:
-> https://lore.kernel.org/kvm/Yxnt9uQTmbqul5lf@8bytes.org/
-> 
-> The purpose is to regulate all existing ->attach_dev callback functions to
-> use EINVAL exclusively for an incompatibility error between a device and a
-> domain. This allows VFIO and IOMMUFD to detect such a soft error, and then
-> try a different domain with the same device.
-[...]
->  drivers/iommu/amd/iommu.c                   | 12 +----
->  drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 11 +---
->  drivers/iommu/arm/arm-smmu/arm-smmu.c       |  3 --
->  drivers/iommu/arm/arm-smmu/qcom_iommu.c     |  7 +--
->  drivers/iommu/fsl_pamu.c                    |  2 +-
->  drivers/iommu/fsl_pamu_domain.c             |  4 +-
->  drivers/iommu/intel/iommu.c                 | 10 ++--
->  drivers/iommu/intel/pasid.c                 |  6 ++-
->  drivers/iommu/iommu.c                       | 22 ++++++++
->  drivers/iommu/ipmmu-vmsa.c                  |  2 -
->  drivers/iommu/msm_iommu.c                   | 59 +++++++++++----------
->  drivers/iommu/mtk_iommu.c                   |  4 +-
->  drivers/iommu/omap-iommu.c                  |  6 +--
->  drivers/iommu/sprd-iommu.c                  |  4 +-
->  drivers/iommu/tegra-gart.c                  |  2 +-
->  drivers/iommu/virtio-iommu.c                |  7 ++-
+Convert the mtk-gce mailbox binding to DT schema format.
 
-For virtio-iommu:
+During the conversion, the examples for client device/mutex nodes
+were removed, as these are found in their respective bindings:
+arm/mediatek/mediatek,mmsys.yaml for "mediatek,mt8173-mmsys"
+soc/mediatek/mediatek,mutex.yaml for "mediatek,mt8173-disp-mutex"
 
-Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
 
->  include/linux/iommu.h                       | 12 +++++
->  17 files changed, 90 insertions(+), 83 deletions(-)
-> 
-> -- 
-> 2.17.1
-> 
+Changes in v4:
+ - Removed deprecated examples comment
+ - Fixed address for gce example
+ - clock-names variation is now in allOf block
+ - Added soc bus node with two address/size cells, as to
+   provide a more practical example for the gce node
+
+Changes in v3:
+ - Removed '|' from description
+ - Removed mbox client examples
+ - Squashed patch dt-bindings: arm: mediatek:
+   mmsys: Reference to mediatek,gce-mailbox.yaml
+
+Changes in v2:
+ - Changed mtk-gce.txt references to new yaml file
+
+
+A previous attempt for this was made at [1], but it was changing
+the way of getting clocks (by name for all).
+Keeping clock-names not required for the multi-gce case makes this
+binding simpler, hence I chose to abandon the change at [1] and go
+for this one instead.
+
+Any Reviewed-by or Acked-by tag was dropped, as this conversion was
+completely redone from scratch and differs from [1] for the
+aforementioned reasons.
+
+[1]: https://lore.kernel.org/all/20220524151512.247435-1-angelogioacchino.delregno@collabora.com/
+
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml |  3 +-
+ .../mailbox/mediatek,gce-mailbox.yaml         | 85 +++++++++++++++++++
+ .../devicetree/bindings/mailbox/mtk-gce.txt   | 82 ------------------
+ 3 files changed, 87 insertions(+), 83 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+ delete mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 6ad023eec193..85e6f4f621fc 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -52,7 +52,8 @@ properties:
+     description:
+       Using mailbox to communicate with GCE, it should have this
+       property and list of phandle, mailbox specifiers. See
+-      Documentation/devicetree/bindings/mailbox/mtk-gce.txt for details.
++      Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
++      for details.
+     $ref: /schemas/types.yaml#/definitions/phandle-array
+ 
+   mediatek,gce-client-reg:
+diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+new file mode 100644
+index 000000000000..c579ac074ca7
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+@@ -0,0 +1,85 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Global Command Engine Mailbox
++
++maintainers:
++  - Houlong Wei <houlong.wei@mediatek.com>
++
++description:
++  The Global Command Engine (GCE) is used to help read/write registers with
++  critical time limitation, such as updating display configuration during the
++  vblank. The GCE can be used to implement the Command Queue (CMDQ) driver.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt6779-gce
++      - mediatek,mt8173-gce
++      - mediatek,mt8183-gce
++      - mediatek,mt8186-gce
++      - mediatek,mt8192-gce
++      - mediatek,mt8195-gce
++
++  "#mbox-cells":
++    const: 2
++    description:
++      The first cell describes the Thread ID of the GCE,
++      the second cell describes the priority of the GCE thread
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: Global Command Engine clock
++
++  clock-names:
++    items:
++      - const: gce
++
++required:
++  - compatible
++  - "#mbox-cells"
++  - reg
++  - interrupts
++  - clocks
++
++allOf:
++  - if:
++      not:
++        properties:
++          compatible:
++            contains:
++              const: mediatek,mt8195-gce
++    then:
++      required:
++        - clock-names
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8173-clk.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        gce: mailbox@10212000 {
++            compatible = "mediatek,mt8173-gce";
++            reg = <0 0x10212000 0 0x1000>;
++            interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
++            #mbox-cells = <2>;
++            clocks = <&infracfg CLK_INFRA_GCE>;
++            clock-names = "gce";
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+deleted file mode 100644
+index c2aeba63bd47..000000000000
+--- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
++++ /dev/null
+@@ -1,82 +0,0 @@
+-MediaTek GCE
+-===============
+-
+-The Global Command Engine (GCE) is used to help read/write registers with
+-critical time limitation, such as updating display configuration during the
+-vblank. The GCE can be used to implement the Command Queue (CMDQ) driver.
+-
+-CMDQ driver uses mailbox framework for communication. Please refer to
+-mailbox.txt for generic information about mailbox device-tree bindings.
+-
+-Required properties:
+-- compatible: can be "mediatek,mt8173-gce", "mediatek,mt8183-gce",
+-  "mediatek,mt8186-gce", "mediatek,mt8192-gce", "mediatek,mt8195-gce" or
+-  "mediatek,mt6779-gce".
+-- reg: Address range of the GCE unit
+-- interrupts: The interrupt signal from the GCE block
+-- clock: Clocks according to the common clock binding
+-- clock-names: Must be "gce" to stand for GCE clock
+-- #mbox-cells: Should be 2.
+-	<&phandle channel priority>
+-	phandle: Label name of a gce node.
+-	channel: Channel of mailbox. Be equal to the thread id of GCE.
+-	priority: Priority of GCE thread.
+-
+-Required properties for a client device:
+-- mboxes: Client use mailbox to communicate with GCE, it should have this
+-  property and list of phandle, mailbox specifiers.
+-Optional properties for a client device:
+-- mediatek,gce-client-reg: Specify the sub-system id which is corresponding
+-  to the register address, it should have this property and list of phandle,
+-  sub-system specifiers.
+-  <&phandle subsys_number start_offset size>
+-  phandle: Label name of a gce node.
+-  subsys_number: specify the sub-system id which is corresponding
+-                 to the register address.
+-  start_offset: the start offset of register address that GCE can access.
+-  size: the total size of register address that GCE can access.
+-
+-Optional properties for a client mutex node:
+-- mediatek,gce-events: GCE events used by clients. The event numbers are
+-  defined in 'dt-bindings/gce/<chip>-gce.h'.
+-
+-Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h',
+-'dt-bindings/gce/mt8183-gce.h', 'dt-bindings/gce/mt8186-gce.h'
+-'dt-bindings/gce/mt8192-gce.h', 'dt-bindings/gce/mt8195-gce.h' or
+-'dt-bindings/gce/mt6779-gce.h'.
+-Such as sub-system ids, thread priority, event ids.
+-
+-Example:
+-
+-	gce: gce@10212000 {
+-		compatible = "mediatek,mt8173-gce";
+-		reg = <0 0x10212000 0 0x1000>;
+-		interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
+-		clocks = <&infracfg CLK_INFRA_GCE>;
+-		clock-names = "gce";
+-		#mbox-cells = <2>;
+-	};
+-
+-Example for a client device:
+-
+-	mmsys: clock-controller@14000000 {
+-		compatible = "mediatek,mt8173-mmsys";
+-		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST>,
+-			 <&gce 1 CMDQ_THR_PRIO_LOWEST>;
+-		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
+-				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+-		mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>,
+-					  <&gce SUBSYS_1401XXXX 0x2000 0x100>;
+-		...
+-	};
+-
+-Example for a client mutex node:
+-	mutex: mutex@14020000 {
+-		compatible = "mediatek,mt8173-disp-mutex";
+-		reg = <0 0x14020000 0 0x1000>;
+-		interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-		clocks = <&mmsys CLK_MM_MUTEX_32K>;
+-		mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
+-				      <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+-	};
+-- 
+2.37.2
+
 
