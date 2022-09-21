@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF706C32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 06:20:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A28EC32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 06:22:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K2Vn5G0yTW/j5XgAj9JCoNxrCyRR5X+mY8QlkyyA2rU=; b=sRnbsUYBh93jyLPK31dPQYAFRg
-	Pgr9cq5J3jmr86Ehvyglk1XVbrrjscxqiHkJjWstNdBxMBpXwJEPpCUEyxP/t8coTDo0r76reW8gf
-	E1xkDRaBdL7nUgOkV+68DlPs7Xv3glvjWXquco9U/QbhuAsO/5LP2tzzJT6Ii28gYd8EIUVpGGZKE
-	Z6guv+1IDCdgGRtbEG6NnJQUPj6yHO6MbUOXh6D5CeNUQk+wOBPSAMlR8Bd0zUn2YYcW6IKqJzFxY
-	zXU4dVI6f7HhBCuy+/qCddhTrKGbsO2GuArS5DxRcTFOWo8Qo11MJ2bAu5UqAWt0xSP/ex9ggxSTi
-	5BwxEu5Q==;
+	bh=zhbji4Tk5WgVjJes/0kJR9R4EHcIP/DlEhuECb0MLiw=; b=KimWrKxhP0KoQtES6zTt1PBC2Y
+	A2yoIQcrtMs6PrMHhvOcqXAo1QsyOwoWe0iEYyVcKnFvCb0aCZC7BZNetfY8BZ0CBAZizpWmRUfaK
+	4m5yipybfKByXQirBnwbVwnIYvaadTYCCQey6lShqft9l7qHPidzVc7FI9M2U+Nz4VWp5DylmiIhK
+	9cwh+O5eQxYxpRCuhSWIG/ws3RbtUs7pE3G4NK+oPDBwj465jjnQ9Xi7k0fh7ljm4ulBg+7VXsLS2
+	w666P0ODkeIw2/cWsWLUd3CrtcqcuFbRGAuyhpfV4//Niuz2TwSXD+Bxhe8xfQ5nS3+kLVzNHGtQC
+	Vp/WBVrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oat5k-009FYS-Gi; Wed, 21 Sep 2022 06:20:16 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1oat7h-009GHz-0k; Wed, 21 Sep 2022 06:22:17 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oat5f-009FVx-Q2
-	for linux-mediatek@lists.infradead.org; Wed, 21 Sep 2022 06:20:14 +0000
-Received: by mail-lf1-x131.google.com with SMTP id a2so7528838lfb.6
-        for <linux-mediatek@lists.infradead.org>; Tue, 20 Sep 2022 23:20:09 -0700 (PDT)
+	id 1oat7d-009GEe-8U
+	for linux-mediatek@lists.infradead.org; Wed, 21 Sep 2022 06:22:14 +0000
+Received: by mail-lj1-x233.google.com with SMTP id z20so5755823ljq.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 20 Sep 2022 23:22:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date;
-        bh=K2Vn5G0yTW/j5XgAj9JCoNxrCyRR5X+mY8QlkyyA2rU=;
-        b=Ub0c82oCNX+DnfSTSMugjJOPXrTYCcLmbHxmkNTs8LEwnXNK6neBTaFjmCMw8YbAxO
-         H6VV7KQPSNM2HrnYnCM6wWLEN9moUG6+nzr3/hHoIEC7tzhOyhuVVnKtqNQlOYt6XkL2
-         F3TlT5GDUIsehcBlq5tvpHTf2pIfT/Uqf+FQEO9g7YGL4THNQ4naUPApcY/7NzIu8uVz
-         SxVT6SIhNyCnBXF/tvHfefliTILIuiRXHNA1340la8yJZKEUafl0RUp8BKD7NsRiVOYF
-         C1CVYyyS0O2TnII2TsmEOnehR3DpjZJs6S89U/+pwTbSMQjGR7FPHgetC4mcBQBjv5G/
-         e/Aw==
+        bh=zhbji4Tk5WgVjJes/0kJR9R4EHcIP/DlEhuECb0MLiw=;
+        b=U/lGPjq45+f+pnGj85u3/K4MSbowoXW2vz165u8utJHyE4IzAQ2qMLirrddp3tGAnr
+         N2Hlw2qJ+VsDZCHNnY8b3zi9G/riJKnCnJkPr0KChrOG3Gahbzklv+h6nYE2oqYEREeP
+         l9ROfJDLEtw6tyUm1AlYdnXslm6tHRq6wearprJuq12huaqkQWu26f/QxidtNBT3uyW7
+         7EtGoIz5ll7codDIZbr6ttmoxa6w8JrxwUtGE4NXy0UL+w26TMmpcOq69XA0U0bNd55c
+         HEu9oKX1dL5ChCRhO1QUzmBrWXWrY2H4Kahz35rIIKG+4jljJFxxu5jJsHMHAdYl3p01
+         tIjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date;
-        bh=K2Vn5G0yTW/j5XgAj9JCoNxrCyRR5X+mY8QlkyyA2rU=;
-        b=lAGi5YCaj/7fIMwAgiNRWddlgP2gM1O+rXHCg91Jo3ZsXSN4ICVi04vonkSGSn6ASX
-         NuugNFQIFxKA9wXtBijSoi57VaIqBFv1wuvy7ea569HUneQMjZFVNtu8HgcPy0S9A3k8
-         Ysg0mytQDhG6xQbFFOcRtijVQTZ8PWt8sLVwBJUyaaonBbcb0cDW5qZGc5+ZIl24/zG7
-         H7E3Xchfa4GltVeP9wffoQvmAUuApxGQVKiD2CAN+Ns1VQrdMNN5N4/jjoyAQVUINaiL
-         eI1i+2BUcQtY8F4iHDA6XMmoLR2nd+k7DUj33jmEmPfrOakVRqXTcTpHZmKJ8h21+lIL
-         dvLA==
-X-Gm-Message-State: ACrzQf1QPFG871v1lu24U0Frv7l1gGKXhfExFCVNp3ykDFjO7NWh0yFz
-	zwiBAJkT3xd+tzrRRMVlE9YFwg==
-X-Google-Smtp-Source: AMsMyM4oGG69OdP5ujI+L+C6vfHXUbM1QVUuGbwI9wfkrrtvbDD+w6xG9LRKbzeWdihzJLflRV/7xA==
-X-Received: by 2002:a05:6512:3f01:b0:49f:d13e:3cc7 with SMTP id y1-20020a0565123f0100b0049fd13e3cc7mr3036097lfa.368.1663741207897;
-        Tue, 20 Sep 2022 23:20:07 -0700 (PDT)
+        bh=zhbji4Tk5WgVjJes/0kJR9R4EHcIP/DlEhuECb0MLiw=;
+        b=lTIhM/Sh4x8xOx+6rEiwFPbrGYR/l3ZaEWuFcoKnv/LsVGsItP8x1faleZQcUvKCAD
+         HIS8/SuFpQakhmVu8nS+V5HpUMVMKFnTeuo/xEPN23R9uAWoGa/8L/13oMdcmRr7Oc2B
+         SiSw4nfLZ2b1qmic8yqIbv1SQxtBKNRY9kwwnqcIYEWAtpFjLrzZQq1Irhjx9I8TF5sm
+         HlpCWYIaZ23NwGCzTf6jQgV60AtfxsP1fzzs06PAZrFP9M0lC/vPWkvb8ynGn76onEnk
+         4lJQ5NKWmUU31I8pyslCGZsYlvVy4mMSvENDFVrwMKHdRxck18wtpHQ98qkHOB0PBRoC
+         omqA==
+X-Gm-Message-State: ACrzQf3TkjbV8ITOExU/mO1rpb8H7Ibl6dLkosHB2NcLzR9yhkRzC6xa
+	p2fk4YtMKTXUZN+n1gscu9o03A==
+X-Google-Smtp-Source: AMsMyM4KDygZsCooVsICpXJbWHSpyCrr/E4Y0qSWrXdfaJi52JVI1jr/vzt5chRv+/jSZgC9/karqQ==
+X-Received: by 2002:a2e:a791:0:b0:26c:4fad:957 with SMTP id c17-20020a2ea791000000b0026c4fad0957mr4375664ljf.263.1663741328708;
+        Tue, 20 Sep 2022 23:22:08 -0700 (PDT)
 Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id o16-20020a05651205d000b00492aefd73a5sm295514lfo.132.2022.09.20.23.20.06
+        by smtp.gmail.com with ESMTPSA id b3-20020a056512070300b00498f51af149sm284354lfs.308.2022.09.20.23.22.07
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Sep 2022 23:20:07 -0700 (PDT)
-Message-ID: <c439ce1d-4e71-0630-3982-a4db95a1926a@linaro.org>
-Date: Wed, 21 Sep 2022 08:20:06 +0200
+        Tue, 20 Sep 2022 23:22:08 -0700 (PDT)
+Message-ID: <2073b6bd-a4bd-4ab5-300d-2ce989e25d5f@linaro.org>
+Date: Wed, 21 Sep 2022 08:22:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.13.0
 Subject: Re: [PATCH v9,2/7] dt-bindings: thermal: Add dt-binding document for
  LVTS thermal controllers
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- bchihi@baylibre.com, rafael@kernel.org, rui.zhang@intel.com,
- daniel.lezcano@linaro.org, amitk@kernel.org
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+To: Balsam CHIHI <bchihi@baylibre.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: rafael@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org,
+ amitk@kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
  khilman@baylibre.com, mka@chromium.org, robh+dt@kernel.org,
  krzk+dt@kernel.org, matthias.bgg@gmail.com, p.zabel@pengutronix.de,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
@@ -81,13 +81,14 @@ Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
 References: <20220817080757.352021-1-bchihi@baylibre.com>
  <20220817080757.352021-3-bchihi@baylibre.com>
  <716d6471-f0e2-489e-5f9e-9e38e9e7953a@collabora.com>
+ <CAGuA+orxfcycwcUMpLe+dkjnXPQkELQsz0vBggGKTQ04XRGc+g@mail.gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <716d6471-f0e2-489e-5f9e-9e38e9e7953a@collabora.com>
+In-Reply-To: <CAGuA+orxfcycwcUMpLe+dkjnXPQkELQsz0vBggGKTQ04XRGc+g@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_232011_880373_3B86DD5E 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20220920_232213_369177_6719F42B 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,53 +103,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/09/2022 14:19, AngeloGioacchino Del Regno wrote:
+On 14/09/2022 16:01, Balsam CHIHI wrote:
+> Hi Angelo,
 > 
->> +
->> +  nvmem-cell-names:
->> +    minItems: 1
->> +    maxItems: 2
->> +    description: Calibration efuse cell names for LVTS
+> I've got the following errors after implementing these changes :
+> [...]
+>   nvmem-cells:
+>     minItems: 1
+>     description: Calibration eFuse data for LVTS
 > 
-> Actually, maxItems is not really two, but it depends on how many
-> eFuse arrays / nvmem cells we have for each SoC, so I was thinking...
+>   nvmem-cell-names:
+>     minItems: 1
+>     items:
+>       pattern: 'lvts-calib-data[0-9]+$'
 > 
-> ...what about doing something like
+>   "#thermal-sensor-cells":
+>     const: 1
 > 
->    nvmem-cell-names:
->      minItems: 1
->      items:
->        pattern: 'lvts-calib-data[0-9]+$'
+> allOf:
+>   - $ref: thermal-sensor.yaml#
 > 
-> and then,
->    if:
->      properties:
->        compatible:
->          contains:
->            enum:
->              - mediatek,blahblah-something
->    then:
->      properties:
->        nvmem-cell-names:
->          maxItems: 2 (or 3, 4, 5...)
+>   - if:
+>       properties:
+>         compatible:
+>           contains:
+>             enum:
+>               - mediatek,mt8192-lvts-ap
+>               - mediatek,mt8192-lvts-mcu
+>     then:
+>       properties:
+>         nvmem-cells:
+>           maxItems: 1
 > 
-> P.S.: I haven't tried any binding check on the proposed lines.
+>         nvmem-cell-names:
+>           maxItems: 1
 > 
+>   - if:
+>       properties:
+>         compatible:
+>           contains:
+>             enum:
+>               - mediatek,mt8195-lvts-ap
+>               - mediatek,mt8195-lvts-mcu
+>     then:
+>       properties:
+>         nvmem-cells:
+>           maxItems: 2
+> 
+>         nvmem-cell-names:
+>           maxItems: 2
+> [...]
+> 
+> $ make DT_CHECKER_FLAGS=-m dt_binding_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+>   LINT    Documentation/devicetree/bindings
+>   CHKDT   Documentation/devicetree/bindings/processed-schema.json
+> /home/balsam/src/linux-mtk-lvts-newThermalOF/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml:
+> properties:nvmem-cell-names:items: {'pattern':
+> 'lvts-calib-data[0-9]+$'} is not of type 'array'
+> from schema $id: http://devicetree.org/meta-schemas/string-array.yaml#
+>   SCHEMA  Documentation/devicetree/bindings/processed-schema.json
+> /home/balsam/src/linux-mtk-lvts-newThermalOF/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml:
+> ignoring, error in schema: properties: nvmem-cell-names: items
+>   DTEX    Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.example.dts
+>   DTC     Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.example.dtb
+>   CHECK   Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.example.dtb
+> Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.example.dtb:0:0:
+> /example-0/soc/thermal-sensor@1100b000: failed to match any schema
+> with compatible: ['mediatek,mt8192-lvts-ap']
+> 
+> am I missing something?
 
-Should work, but does not enforce the order, so I would rather propose
-something longer:
-
-properties:
-  nvmem-cell-names:
-    items:
-      - lvts-calib-data0
-      - lvts-calib-data1
-    minItems: 1
-
-
-and then in allOf:if:then set minItems:2 or maxItems:1
-
-
+Maybe maxItems: 2 in top-level property?
 
 
 Best regards,
