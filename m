@@ -4,51 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69DAAC32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 08:02:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BE6BC6FA8B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 08:14:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bD6j9gIFU6CLTaCGl0Ow9oeIxtirvTfMeNZSfLEZQ+I=; b=zs0C2fDlR80CYu4juYZUuxXDTF
-	3mgTMuWytS6YT043g4YS1VRYcfWU4du/rDFFcC02a+n9FPwYA3RRiKq+FEL0emKjxJQ2Jm9s4kS+2
-	3/Qa7i0ihSfk5Sgc6Av6B6OhHexQ44hmSd7T+PdYqGiDRKcH6skFhIfY9MYG7m1E7IOE9VanLljZc
-	hUNh2LxCKU8s+CbwqLsaAaHpUFfIkTmfNW+THLvM0Ra0btNX9/MNXzXrBetQuSQW9l4PY6WxDY8I3
-	+QYVo18Lg2PvdahxIkU4hMwNs9b2xd/hx9XihNoyZdqXebSZ//R+1tuPXexI4wBWA9VJ+F5I/yi0+
-	YoB2RNMg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6Zj3AKAiABKRSXFXTQExWe6EeCPwvZWoNEK3X8xY+jE=; b=YuAFRU8mVPOOEK2mtsheWuuYph
+	H19Xk28UxIV40968cmHuOvzne9OC7LTPdA+Bso2viUqqUY5tgZkZvgOk064cNxIQRYLVX0V68YUg3
+	3tju9gafDWd+4Orlb1/v0PbPSQsXXSDcuXpJUjyjb+rF6077fQlqBQYYUeT7EGSt//ySysnjOr6ZH
+	WpIviI7JvzUEMzmW+NJOaiyUarePtHYIDlGqEKA6WoX8Ieev8wJVKfaYvxdGY9NsVrXtf3zNtzgTU
+	gVlLZECBGDOE3vS4NX3UpHxJ7zbTaMqVwCCwjozoEfG9yMBU93LPPSHpqdLOj79tPUD7iHpdDvV5N
+	lZzPiFEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaugF-009lw2-NV; Wed, 21 Sep 2022 08:02:03 +0000
-Received: from mail.fadrush.pl ([54.37.225.211])
+	id 1oauru-009qWC-8s; Wed, 21 Sep 2022 08:14:06 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaugA-009lrU-2t
-	for linux-mediatek@lists.infradead.org; Wed, 21 Sep 2022 08:02:00 +0000
-Received: by mail.fadrush.pl (Postfix, from userid 1002)
-	id BD9AB22C7B; Wed, 21 Sep 2022 08:00:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fadrush.pl; s=mail;
-	t=1663747316; bh=bD6j9gIFU6CLTaCGl0Ow9oeIxtirvTfMeNZSfLEZQ+I=;
-	h=Date:From:To:Subject:From;
-	b=PxqaNUMDhEPMJ5jXEyLOWCL64SAvgUFseQtGitqeW4lJFH5s8/sjAupwAUfJOFZN9
-	 cuUkjzvRA0GNDurxiTlbb+XG7lStbII43cSfIvvK8Me0WtaO2Zzf2eRo0CN9ggBz/g
-	 EuKgjHW7Zmfisc31cPoUOzuM8OWvhzmAv0C8sLXyL8vTu38HBxms1CsIfGrY+JkTZa
-	 YeoiAse9oUN4515cBUT7Ygf9eYiCJF/G/BDEfzYkPdawQwD7RMWcL0h1sRNzkPaFJu
-	 eehUEZy7rpHEq/wtgXfyRNudWtxIh0rA/AHHPRxWgT6luWse5dE4IwHWOSNMKTTbzL
-	 h/HikiBw3nXyw==
-Received: by mail.fadrush.pl for <linux-mediatek@lists.infradead.org>; Wed, 21 Sep 2022 08:00:31 GMT
-Message-ID: <20220921064500-0.1.1r.gspb.0.xj4ed2i6cs@fadrush.pl>
-Date: Wed, 21 Sep 2022 08:00:31 GMT
-From: "Jakub Olejniczak" <jakub.olejniczak@fadrush.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Zwi=C4=99kszenie_p=C5=82ynno=C5=9Bci_finansowej?=
-X-Mailer: mail.fadrush.pl
+	id 1oaurU-009qHL-3j; Wed, 21 Sep 2022 08:13:41 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8A7FD6601F3F;
+	Wed, 21 Sep 2022 09:13:35 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1663748016;
+	bh=wBx7986mU+G+SugkswF8Z+6DJvj3z5+Hro9nOPhryCM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Dzcnoygl09pwDr0F5taS2UrE3awoptYPge6G0CfVcj59Mr/ngHJb1KfuaQ4rQkQa/
+	 oL16vza+M/IzfM4oPm7JJ9KbKQuLPyVmxn8pVaqsYbS/vwmrkx2aoaWqZrQR/QDoDm
+	 EAetPqludw89dLMn+uto2uz8jzqCL4LKWFUDp9AsQQGYD1upRSUdrbNyGqnM/FbmX7
+	 3goddrYE/tQMuVJW2ZZYaV7ljl8v/AIA8r9bcE/88SCyz81k1VLrlXDSq8i+e1hOp4
+	 uT5WQt5fwSGeg2gSlTmeDqeirtuMecM5rqM1HDR5Cv5zpDhvgOP8REvoqp7g/G7LIm
+	 ynICNLF/kanzA==
+Message-ID: <70e361c7-a4ef-076a-8817-7d13d9785c5e@collabora.com>
+Date: Wed, 21 Sep 2022 10:13:32 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH 04/18] phy: mediatek: ufs: use common register access
+ helpers
+Content-Language: en-US
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Vinod Koul <vkoul@kernel.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Jitao Shi <jitao.shi@mediatek.com>, Stanley Chu <stanley.chu@mediatek.com>
+References: <20220920090038.15133-1-chunfeng.yun@mediatek.com>
+ <20220920090038.15133-5-chunfeng.yun@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220920090038.15133-5-chunfeng.yun@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_010158_300252_9AFA4A8E 
-X-CRM114-Status: UNSURE (   1.63  )
+X-CRM114-CacheID: sfid-20220921_011340_346160_C0B48865 
+X-CRM114-Status: UNSURE (   6.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -64,26 +81,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+Il 20/09/22 11:00, Chunfeng Yun ha scritto:
+> No need define private register access helpers, use common ones defined
+> in phy-mtk-io.h
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
-kontaktuj=C4=99 si=C4=99 z Pa=C5=84stwem, poniewa=C5=BC chcia=C5=82bym za=
-proponowa=C4=87 wygodne rozwi=C4=85zanie, kt=C3=B3re umo=C5=BCliwi Pa=C5=84=
-stwa firmie stabilny rozw=C3=B3j.=20
-
-Konkurencyjne otoczenie wymaga ci=C4=85g=C5=82ego ulepszania i poszerzeni=
-a oferty, co z kolei wi=C4=85=C5=BCe si=C4=99 z konieczno=C5=9Bci=C4=85 i=
-nwestowania. Brak odpowiedniego kapita=C5=82u powa=C5=BCnie ogranicza tem=
-po rozwoju firmy.
-
-Od wielu lat z powodzeniem pomagam firmom w uzyskaniu najlepszej formy fi=
-nansowania z banku oraz UE. Mam sta=C5=82ych Klient=C3=B3w, kt=C3=B3rzy n=
-adal ch=C4=99tnie korzystaj=C4=85 z moich us=C5=82ug, a tak=C5=BCe poleca=
-j=C4=85 je innym.
-
-Czy chcieliby Pa=C5=84stwo skorzysta=C4=87 z pomocy wykwalifikowanego i d=
-o=C5=9Bwiadczonego doradcy finansowego?
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
-Pozdrawiam
-Jakub Olejniczak
 
