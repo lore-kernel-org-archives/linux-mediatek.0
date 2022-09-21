@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4615FC32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 09:18:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36209ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 09:20:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5ghs1DTL/0ZZyw9kUVn0aoNBRFbnMgldjHmdCCUHoyw=; b=DV0Ab1MHhx2dtnUOWjp2MwNCBl
-	kCLpaXcoaz9/9tMeDtYzI24GV4rcRzBPXrDMDVJ5+sFu+8maMW/fgDBaQocIFZswsGJoiAhJ6fHzw
-	cRtjQqu9D+hXFwQRv9It24AvJG9hd5BTNy0FEzQ2xY7jq5YxKPNkvv1tfG6YC340NoOkXt42fjk1Y
-	pk8zkGMa53M76FRwVv3CwJgsTMBidNTF63CSLy2rhT+jHfcNcojFdTAfjl7SRBP8crOQdr5KVekwz
-	w9HjXdKEhZdWHDrAgseW5+tPBetQx4A2PVoo8tOOTXP7q/mdqwNkHZip+nEW8QuAsJZt++bxfxsTg
-	vnU2SMTQ==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2vr7irA2S7lU1/M2Bflw+7XUVL2hdtdbPK+IklJNMwM=; b=IwOCETF4Q8I8KlkShsngZEEFId
+	vux9//BhF8TLoSzHY8wTQix+TF0wg13zpV7+3QhXd8rv/QiBXyxA9NgH9Oz8PZQxv4sp6Q7lpE5W+
+	WxPYfrkojbAYXBvSNxxWAZL1GFf5qPg9Cr5aLASrQkUPQOW6VCAd7NqjCLu79rL9fseU91OntLoc2
+	D1iGm3IfVFw76sV9KBVk/Gj7KLK1CJmSW3IULW7xvKfPgQhyueutRE0Qy+JmeXd6TaX87SmNswbDu
+	uf2vjdYrW6v6BacUDYovXUI2uyAkqFi1RAC0Zp5I4/ZmWcBRFRFbphFvldx10cZAJzNjM3mPR+szl
+	RDYJV8qA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oavs9-00AK9F-AX; Wed, 21 Sep 2022 09:18:25 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oavtx-00AL3S-0S; Wed, 21 Sep 2022 09:20:17 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oavp3-00AIkC-2o; Wed, 21 Sep 2022 09:15:16 +0000
+	id 1oavp4-00AIkt-8I; Wed, 21 Sep 2022 09:15:19 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 18242660036C;
-	Wed, 21 Sep 2022 10:15:09 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8C935660036F;
+	Wed, 21 Sep 2022 10:15:10 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663751710;
-	bh=EiRhcdjMAvK68XwbsPAfNJWxzXLfjiDxAFg97+OnM3Q=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Q4xKpEJgX2winmbdAikpVJgmJcdwETePiYoggN3OB73G/HQ6LH0RbgoxGbcsjfWwk
-	 9y1lunbqVwGlIcaEF8mE6P0epui3DQtZpgEthfqIHvRFIIiSBFD3gvhB7qTmMhBoVF
-	 u3UjrN1iHrIQX6z9q2yY3Xyqm/No5d7lJfi2vrvOc6hl41hxGsRHaOuLq5mFyszF8K
-	 0RmQtGVallqzijiOu5+8G/svPoUu9ufL2HM887zhUmJAGoqPoSlRkiiMqm3jPvpiqP
-	 ntNYxJwa15/hI2rF3Uyu9xQZtthoTm7GzvKQ3jmYzXLu/vvIWeHf7wdpoLIGEB6bi9
-	 W0EfoaaXwtjMQ==
+	s=mail; t=1663751711;
+	bh=SVky0xPEZBoRzyaOJomXE+3/rtPAeziwFPTFH+dZ/J8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=lrtFG3ly1LydNRtYT1jzJB5rqgAUQCflIOVPB03va+8UUn75AwO3+P63dlv7RrhgH
+	 k23AR/lytSo7Oaq8kjjj7vZwmFIcVJqEeJp1b7GpSiRFOfLdLM5UnGP0HjsQyzESQ3
+	 DvzHyEVeLsTQyLgeF4odu/7daz6ag2ngHtAFbV8QV0ssQ5Hs9bai681kSvtHf7ecct
+	 uSdJzmOsmrbffzY6UPI7sHt9CNiEdlZTqOfgFuphc12WeMY4MCWjmM9BE1DWgWgUt8
+	 jrTLDtFvYMlNSEZzeg/bBqn1g2+/9Z0ui9WSsdrwdol2PfHYgAXxKnn6wNmtk8vy4U
+	 YzUKDchAlwVmA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mturquette@baylibre.com,
 	sboyd@kernel.org
@@ -70,16 +70,20 @@ Cc: robh+dt@kernel.org,
 	martin.botka@somainline.org,
 	~postmarketos/upstreaming@lists.sr.ht,
 	phone-devel@vger.kernel.org,
-	kernel@collabora.com
-Subject: [RESEND PATCH v6 0/8] MediaTek Helio X10 MT6795 - Clock drivers
-Date: Wed, 21 Sep 2022 11:14:47 +0200
-Message-Id: <20220921091455.41327-1-angelogioacchino.delregno@collabora.com>
+	kernel@collabora.com,
+	Rob Herring <robh@kernel.org>
+Subject: [RESEND PATCH v6 1/8] dt-bindings: mediatek: Document MT6795 system controllers bindings
+Date: Wed, 21 Sep 2022 11:14:48 +0200
+Message-Id: <20220921091455.41327-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20220921091455.41327-1-angelogioacchino.delregno@collabora.com>
+References: <20220921091455.41327-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_021513_323871_99290114 
-X-CRM114-Status: GOOD (  10.17  )
+X-CRM114-CacheID: sfid-20220921_021514_642253_D19362A9 
+X-CRM114-Status: UNSURE (   8.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,66 +98,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In an effort to give some love to the apparently forgotten MT6795 SoC,
-I am upstreaming more components that are necessary to support platforms
-powered by this one apart from a simple boot to serial console.
+Document the MediaTek Helio X10 (MT6795) bindings for the apmixedsys,
+infracfg, topckgen, pericfg and mmsys system controllers.
 
-This (very big) series introduces system clock, multimedia clock drivers
-(including resets) for this SoC.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml     | 2 ++
+ .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml        | 1 +
+ .../devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml      | 1 +
+ .../devicetree/bindings/clock/mediatek,apmixedsys.yaml          | 1 +
+ Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml  | 1 +
+ 5 files changed, 6 insertions(+)
 
-Tested on a MT6795 Sony Xperia M5 (codename "Holly") smartphone.
-
-AngeloGioacchino Del Regno (8):
-  dt-bindings: mediatek: Document MT6795 system controllers bindings
-  dt-bindings: clock: Add MediaTek Helio X10 MT6795 clock bindings
-  dt-bindings: reset: Add bindings for MT6795 Helio X10 reset
-    controllers
-  dt-bindings: clock: mediatek: Add clock driver bindings for MT6795
-  clk: mediatek: clk-apmixed: Remove unneeded __init annotation
-  clk: mediatek: Export required symbols to compile clk drivers as
-    module
-  clk: mediatek: clk-apmixed: Add helper function to unregister
-    ref2usb_tx
-  clk: mediatek: Add MediaTek Helio X10 MT6795 clock drivers
-
- .../arm/mediatek/mediatek,infracfg.yaml       |   2 +
- .../bindings/arm/mediatek/mediatek,mmsys.yaml |   1 +
- .../arm/mediatek/mediatek,pericfg.yaml        |   1 +
- .../bindings/clock/mediatek,apmixedsys.yaml   |   1 +
- .../bindings/clock/mediatek,mt6795-clock.yaml |  66 ++
- .../clock/mediatek,mt6795-sys-clock.yaml      |  54 ++
- .../bindings/clock/mediatek,topckgen.yaml     |   1 +
- drivers/clk/mediatek/Kconfig                  |  37 ++
- drivers/clk/mediatek/Makefile                 |   6 +
- drivers/clk/mediatek/clk-apmixed.c            |  12 +-
- drivers/clk/mediatek/clk-cpumux.c             |   2 +
- drivers/clk/mediatek/clk-mt6795-apmixedsys.c  | 157 +++++
- drivers/clk/mediatek/clk-mt6795-infracfg.c    | 151 +++++
- drivers/clk/mediatek/clk-mt6795-mfg.c         |  50 ++
- drivers/clk/mediatek/clk-mt6795-mm.c          | 132 ++++
- drivers/clk/mediatek/clk-mt6795-pericfg.c     | 160 +++++
- drivers/clk/mediatek/clk-mt6795-topckgen.c    | 610 ++++++++++++++++++
- drivers/clk/mediatek/clk-mt6795-vdecsys.c     |  55 ++
- drivers/clk/mediatek/clk-mt6795-vencsys.c     |  50 ++
- drivers/clk/mediatek/clk-mtk.c                |   2 +
- drivers/clk/mediatek/clk-mtk.h                |   1 +
- drivers/clk/mediatek/reset.c                  |   1 +
- .../dt-bindings/clock/mediatek,mt6795-clk.h   | 275 ++++++++
- .../reset/mediatek,mt6795-resets.h            |  53 ++
- 24 files changed, 1879 insertions(+), 1 deletion(-)
- create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-clock.yaml
- create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt6795-sys-clock.yaml
- create mode 100644 drivers/clk/mediatek/clk-mt6795-apmixedsys.c
- create mode 100644 drivers/clk/mediatek/clk-mt6795-infracfg.c
- create mode 100644 drivers/clk/mediatek/clk-mt6795-mfg.c
- create mode 100644 drivers/clk/mediatek/clk-mt6795-mm.c
- create mode 100644 drivers/clk/mediatek/clk-mt6795-pericfg.c
- create mode 100644 drivers/clk/mediatek/clk-mt6795-topckgen.c
- create mode 100644 drivers/clk/mediatek/clk-mt6795-vdecsys.c
- create mode 100644 drivers/clk/mediatek/clk-mt6795-vencsys.c
- create mode 100644 include/dt-bindings/clock/mediatek,mt6795-clk.h
- create mode 100644 include/dt-bindings/reset/mediatek,mt6795-resets.h
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+index 8681b785ed6d..1d7c837d9378 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.yaml
+@@ -23,6 +23,7 @@ properties:
+               - mediatek,mt2701-infracfg
+               - mediatek,mt2712-infracfg
+               - mediatek,mt6765-infracfg
++              - mediatek,mt6795-infracfg
+               - mediatek,mt6779-infracfg_ao
+               - mediatek,mt6797-infracfg
+               - mediatek,mt7622-infracfg
+@@ -60,6 +61,7 @@ if:
+         enum:
+           - mediatek,mt2701-infracfg
+           - mediatek,mt2712-infracfg
++          - mediatek,mt6795-infracfg
+           - mediatek,mt7622-infracfg
+           - mediatek,mt7986-infracfg
+           - mediatek,mt8135-infracfg
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 6ad023eec193..597ef18f3c5f 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -25,6 +25,7 @@ properties:
+               - mediatek,mt2712-mmsys
+               - mediatek,mt6765-mmsys
+               - mediatek,mt6779-mmsys
++              - mediatek,mt6795-mmsys
+               - mediatek,mt6797-mmsys
+               - mediatek,mt8167-mmsys
+               - mediatek,mt8173-mmsys
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
+index 8585f6f18f69..ef62cbb13590 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
+@@ -21,6 +21,7 @@ properties:
+               - mediatek,mt2701-pericfg
+               - mediatek,mt2712-pericfg
+               - mediatek,mt6765-pericfg
++              - mediatek,mt6795-pericfg
+               - mediatek,mt7622-pericfg
+               - mediatek,mt7629-pericfg
+               - mediatek,mt8135-pericfg
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+index 770546195fb5..731bfe0408c2 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+@@ -34,6 +34,7 @@ properties:
+               - mediatek,mt2712-apmixedsys
+               - mediatek,mt6765-apmixedsys
+               - mediatek,mt6779-apmixedsys
++              - mediatek,mt6795-apmixedsys
+               - mediatek,mt7629-apmixedsys
+               - mediatek,mt8167-apmixedsys
+               - mediatek,mt8183-apmixedsys
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+index 5b8b37a2e594..81531b5b0db7 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+@@ -33,6 +33,7 @@ properties:
+               - mediatek,mt2712-topckgen
+               - mediatek,mt6765-topckgen
+               - mediatek,mt6779-topckgen
++              - mediatek,mt6795-topckgen
+               - mediatek,mt7629-topckgen
+               - mediatek,mt7986-topckgen
+               - mediatek,mt8167-topckgen
 -- 
 2.37.2
 
