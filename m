@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20FF5C32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 13:59:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 479B7C32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 14:05:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IM+abnlrzob2F4j7blFLd/3Hj8IvblbtEqyUMNxag9s=; b=e9N8ix4QON5ycwAaA4Ugjk/NEm
-	AUOGd+kpEuZkLcHBpAa/pqWtZIQ8zfyXuXRpUAEBJRX/9l92hQDQplwUmhIndOfJTaF9/iyxaoRTt
-	syTcPfBYhwb27WhNhpyt+eSyCihKqScyMtjAKsBMZmesWkWKt30izDfs+NeWL/ut0iGbafy7/fhPX
-	bpa69SfFfE68n5Ds4ZzmCXGINA0ZsmksdqXpYELV7iQCBI1rU6R62rUKVL5tv8QCpstNp3zhnGdeh
-	N1hgBs8pgqEAX44y9G0RhE5OxFlM44HALm2KF1PBDrAPQyO9EOiL0uJdLWW8gZgLGjzuXoDccwa+l
-	kB0SomyQ==;
+	bh=azqYiyJdwlDH3D7K1YoWpIx1lUAy1nX7mdHhTOkqnG4=; b=m+3zXUIfbZ3Vby5gK/y3I9ddlJ
+	Z26LOXAF1Vfg94DsLYU5oGUjoUMYs+2tFujK2Fksax0eYEnuWlKILGiuX53dv7dMIqvhHE/yItZUM
+	OvexEJqlkzJReW1ZJFiG+/80HHNOrrFhgQr2YWigMVjwtZ7FVD9S7LSycgC9BD0/wm//43Qj7oMnj
+	RJr6nmfXPgzM7ax1fM/aliZzUzLCpi+QW6n80nCwfC7cX9nLhhRAMxD8k5npQfWW5xZqcHT2XY1De
+	CWqG8xmC/oj8Z2MolN0gMTWB9CbGLM3qozR+8VpGe3Fa+35tjgUnpSTQkBOTTpSUsHpBHZMiDeJ37
+	nssHnmtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ob0Fn-00BUVW-Mp; Wed, 21 Sep 2022 13:59:07 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ob0Lu-00BVnc-9y; Wed, 21 Sep 2022 14:05:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ob0Fb-00BURb-Nz; Wed, 21 Sep 2022 13:58:57 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 737D66602028;
-	Wed, 21 Sep 2022 14:58:51 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663768732;
-	bh=aNktZ6lpJ/y23RAV97OZGsJSTK5UAMeGZw4X2ENLfXE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=T3VNbt4RhdWVEG6k5a4izsy7xNSaxwmrgPuw+yNBQbmiV7LMdn2gGoozlgFPVs6Qk
-	 dDUh9Xz8y/e/k1HiSgJqOHrVmJkjbRlQw9nf9uN2qu/5YoIqexOOSlK5AYM8ievFJm
-	 +3iXSW4TDXCRmggad4XxjypL7iYgRTqqUtwc/rwpkPmG2xRHNi9Q1PbMutBCADmdAL
-	 ON4ncaLWMPlbSY9niPdU4O32AAkCWX8ca7NJxMHzrq3CSpYyRMoAXQCGN+TpuP+UyC
-	 FA9KUxfdqEdkpRgiN0MyMqy1FdBS/f8zun+0+Q6fo7dEIsO1PPJCHTjpn5bjE+dcpp
-	 xX1l6cjLk+Dpw==
-Message-ID: <9234e731-8c2f-b599-39b1-bf5115a16931@collabora.com>
-Date: Wed, 21 Sep 2022 15:58:46 +0200
+	id 1ob0Lj-00BVk2-9F; Wed, 21 Sep 2022 14:05:16 +0000
+X-UUID: 210e285db75342e9be069f23232162e9-20220921
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=azqYiyJdwlDH3D7K1YoWpIx1lUAy1nX7mdHhTOkqnG4=;
+	b=MAMf5j9sFs4oejhy9kdOej/87i9vA8kDAEvP8uDo4pIw0UuFkZHfOYbDGxkQpH8mya1bz/9RlWVOytrM0teFfU6GH9HLp8qahzQ8Y3izZpms26oLpo4vRN96rGIz0jRDdWbZ1BkOrTa8+2aqYqLOzQnEtvOEP6TK1ykCKvm3HKE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:b5c018a5-9e15-4c75-ab1e-0b728847822d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:25488af6-0338-44e1-8779-cf7b43f86df2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 210e285db75342e9be069f23232162e9-20220921
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1890609513; Wed, 21 Sep 2022 07:05:03 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 21 Sep 2022 21:44:25 +0800
+Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 21 Sep 2022 21:44:24 +0800
+Message-ID: <0607e6fd736e61f14fbb3326dbb09243afc1d671.camel@mediatek.com>
+Subject: Re: [PATCH v6,3/3] drm: mediatek: Add mt8186 dpi compatible to
+ mtk_dpi.c
+From: xinlei.lee <xinlei.lee@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, <matthias.bgg@gmail.com>,
+	<jason-jh.lin@mediatek.com>, <rex-bc.chen@mediatek.com>,
+	<angelogioacchino.delregno@collabora.com>, <p.zabel@pengutronix.de>,
+	<airlied@linux.ie>, <daniel@ffwll.ch>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<jitao.shi@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 21 Sep 2022 21:44:25 +0800
+In-Reply-To: <9f27f3c589c538319f9383cf284226b52209524d.camel@mediatek.com>
+References: <1663161662-1598-1-git-send-email-xinlei.lee@mediatek.com>
+	 <1663161662-1598-4-git-send-email-xinlei.lee@mediatek.com>
+	 <9f27f3c589c538319f9383cf284226b52209524d.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH 1/3] arm64: dts: mediatek: asurada: Add display regulators
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20220908171153.670762-1-nfraprado@collabora.com>
- <20220908171153.670762-2-nfraprado@collabora.com>
- <ab2027b9-17e8-4fe8-3847-84c54d6f9d58@collabora.com>
- <20220921134806.lbg5meuy4fn6pifm@notapiano>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220921134806.lbg5meuy4fn6pifm@notapiano>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_065855_929071_570B6C17 
-X-CRM114-Status: GOOD (  23.60  )
+X-CRM114-CacheID: sfid-20220921_070515_343581_439ED9CC 
+X-CRM114-Status: GOOD (  20.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,93 +85,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/09/22 15:48, Nícolas F. R. A. Prado ha scritto:
-> On Fri, Sep 09, 2022 at 09:46:33AM +0200, AngeloGioacchino Del Regno wrote:
->> Il 08/09/22 19:11, Nícolas F. R. A. Prado ha scritto:
->>> Add the regulators present on the Asurada platform that are used to
->>> power the internal and external displays.
->>>
->>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->>>
->>> ---
->>>
->>>    .../boot/dts/mediatek/mt8192-asurada.dtsi     | 114 ++++++++++++++++++
->>>    1 file changed, 114 insertions(+)
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
->>> index 4b314435f8fd..1d99e470ea1a 100644
->>> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
->>> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
->>
->> ..snip..
->>
->>> @@ -56,6 +116,18 @@ pp3300_ldo_z: regulator-3v3-z {
->>>    		vin-supply = <&ppvar_sys>;
->>>    	};
->>
->> Can you please add a comment here advertising that this regulator
->> will not only provide power to the MIPI bridge, but *also* to the
->> display panel itself?
->>
->> This is to make sure that everyone understands what's going on, and
->> also that we ourselves don't forget about that.
->>
->> Probably something like:
->> /* pp3300_mipibrdg also enables pp3300_panel */
->>
->> I would then propose to add a "regulator-fixed" that has no GPIO
->> but with vin-supply as this one.
->>
->> pp3300_panel: regulator-3v3-panel {
->> 	compatible = "regulator-fixed";
->> 	regulator-name = "pp3300_panel";
->> 	regulator-min-microvolt = <3300000>;
->> 	regulator-max-microvolt = <3300000>;
->>
->> 	vin-supply = <&pp3300_mipibrdg>;
->> };
->>
->> I would also test assigning this regulator to the panel node, as this
->> will make sure to cover future corner cases (think about PM suspend/resume).
->>
->> P.S.: If you add the pp3300_panel regulator-fixed with that vin-supply,
->>        maybe the proposed comment would become a bit overkill. Your choice!
+On Wed, 2022-09-21 at 09:42 +0800, CK Hu wrote:
+> Hi, Xinlei:
 > 
-> Hi Angelo,
+> On Wed, 2022-09-14 at 21:21 +0800, xinlei.lee@mediatek.com wrote:
+> > From: Xinlei Lee <xinlei.lee@mediatek.com>
+> > 
+> > Add the compatible because use edge_cfg_in_mmsys in mt8186.
+> > 
+> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_dpi.c     | 21 +++++++++++++++++++++
+> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c |  2 ++
+> >  2 files changed, 23 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > index 6e02f02f163c..52bcc4114afd 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > @@ -942,6 +942,24 @@ static const struct mtk_dpi_conf mt8183_conf =
+> > {
+> >  	.csc_enable_bit = CSC_ENABLE,
+> >  };
+> >  
+> > +static const struct mtk_dpi_conf mt8186_conf = {
+> > +	.cal_factor = mt8183_calculate_factor,
+> > +	.reg_h_fre_con = 0xe0,
+> > +	.max_clock_khz = 150000,
+> > +	.output_fmts = mt8183_output_fmts,
+> > +	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
+> > +	.edge_cfg_in_mmsys = true,
 > 
-> thanks for the feedback.
+> According to the previous review, edge_cfg_in_mmsys is not necessary,
+> so mt8186_conf is identical to mt8192_conf.
 > 
-> I think the current layout makes more sense based on my understanding of the
-> power routing here: a single power line output by the pp3300_mipibrdg regulator
-> powers both the ANX chip as well as the panel. So I'm going to keep it the way
-> it is for now. If there are any other concerns please let me know.
+> Regards,
+> CK
+> 
+> > +	.pixels_per_iter = 1,
+> > +	.is_ck_de_pol = true,
+> > +	.swap_input_support = true,
+> > +	.support_direct_pin = true,
+> > +	.dimension_mask = HPW_MASK,
+> > +	.hvsize_mask = HSIZE_MASK,
+> > +	.channel_swap_shift = CH_SWAP,
+> > +	.yuv422_en_bit = YUV422_EN,
+> > +	.csc_enable_bit = CSC_ENABLE,
+> > +};
+> > +
+> >  static const struct mtk_dpi_conf mt8192_conf = {
+> >  	.cal_factor = mt8183_calculate_factor,
+> >  	.reg_h_fre_con = 0xe0,
+> > @@ -1092,6 +1110,9 @@ static const struct of_device_id
+> > mtk_dpi_of_ids[] = {
+> >  	{ .compatible = "mediatek,mt8183-dpi",
+> >  	  .data = &mt8183_conf,
+> >  	},
+> > +	{ .compatible = "mediatek,mt8186-dpi",
+> > +	  .data = &mt8186_conf,
+> > +	},
+> >  	{ .compatible = "mediatek,mt8192-dpi",
+> >  	  .data = &mt8192_conf,
+> >  	},
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > index 546b79412815..3d32fbc66ac1 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > @@ -646,6 +646,8 @@ static const struct of_device_id
+> > mtk_ddp_comp_dt_ids[] = {
+> >  	  .data = (void *)MTK_DPI },
+> >  	{ .compatible = "mediatek,mt8183-dpi",
+> >  	  .data = (void *)MTK_DPI },
+> > +	{ .compatible = "mediatek,mt8186-dpi",
+> > +	  .data = (void *)MTK_DPI },
+> >  	{ .compatible = "mediatek,mt8192-dpi",
+> >  	  .data = (void *)MTK_DPI },
+> >  	{ .compatible = "mediatek,mt8195-dp-intf",
+> 
 > 
 
-As we discussed, I agree on this decision. Please go on.
+Hi CK:
 
-Cheers!
+Thanks for your review.
 
-> Thanks,
-> Nícolas
-> 
->>
->> Cheers,
->> Angelo
->>
->>> +	pp3300_mipibrdg: regulator-3v3-mipibrdg {
->>> +		compatible = "regulator-fixed";
->>> +		regulator-name = "pp3300_mipibrdg";
->>> +		pinctrl-names = "default";
->>> +		pinctrl-0 = <&pp3300_mipibrdg_en_pins>;
->>> +		regulator-min-microvolt = <3300000>;
->>> +		regulator-max-microvolt = <3300000>;
->>> +		enable-active-high;
->>> +		regulator-boot-on;
->>> +		gpio = <&pio 127 GPIO_ACTIVE_HIGH>;
->>> +	};
->>> +
->>>    	/* separately switched 3.3V power rail */
->>>    	pp3300_u: regulator-3v3-u {
->>>    		compatible = "regulator-fixed";
->>
+Because the difference between MT8186 and other ICs is that modifying
+the output format requires modifying the mmsys register to take effect.
+
+I think this mt8186_conf needs to be reserved so that we can
+distinguish it from the settings of other ICs when setting
+dpi_dual_edge.
+(the edge_cfg_in mmsys flag inside can prevent other ICs from setting
+the mmsys register)
+
+Best Regards!
+Xinlei
+
 
