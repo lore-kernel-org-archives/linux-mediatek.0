@@ -4,69 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A045DC6FA90
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 15:54:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B88C3C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 17:08:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6cw2WFK5oE+1VMyjk+WDBom5kmV2q/a6VhTKF2aMbhA=; b=GyfBzs2rS51ttV+BjKc5SjDebb
-	viziT7bREK5/AW8K+Ys8Ioz8/Ww7HmLCqJHfy236cX8zo0CShRCpuffll1GlNE+UsixycZSKyq63C
-	tc+qcNX0sTpUVapV8dJR5GFBwWgXdakQwS8Zqbc7WkdmOswXyMDZm96V9MysdRD1O3/RqKhxi0Rp2
-	q+wdkyQynMZLWZfwmk0cn19viQmnFSZzgw/F4YCP3l+u+K1G+iC0GkocUmjjeM1OhmpeLhiIPG5fX
-	p2jOVLSFD2//KltpIbmnoy8Zi4kMyMSB7rUMaftI8wOIsRtQVRr9EKnB/N4FFgeS51ozSTAlM0yRY
-	0pl3X0GQ==;
+	bh=F2F19Vqk4oTeChl6tfimZoIWmEP62hPQK3JzSGtep98=; b=ojSaWIguZEwSiQQS+4hceD930l
+	upRE3pHgG9c/9fLNZmpSJUefh/r/KAC67VZuI/3hMi+Ipx2Z6Hopx7EYOKG2UL4lyYyOD2EWfN2WT
+	t2u42/H7Ko/7/y2bkTY9bntM2BzNr/3BNxrEM8p09XU9nCkIQ+e6JMPJFt/gAtjK/5mbKCRljdj9k
+	sKw/qXMir5MILGHWFM+CK+ZUVPWKSv7qM+v5N5qkik74AVhWZEjc0VnzZm9iuAHANr8WYko614Z6k
+	TXJp55fnci35PLmL7ryyArJut8dlUX5ZMxEw2lgn+s/AZ1n/vEkyzHBaOlWNBKqLIOfEwgch8xFru
+	pcenV0Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ob23R-00Bqaj-FF; Wed, 21 Sep 2022 15:54:29 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ob3Ct-00C7Xy-U0; Wed, 21 Sep 2022 17:08:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ob237-00BqSY-Ol; Wed, 21 Sep 2022 15:54:11 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 6554AB830CA;
-	Wed, 21 Sep 2022 15:54:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E8DFC43145;
-	Wed, 21 Sep 2022 15:54:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663775646;
-	bh=ltWOdhCi4WgafmHd2YL/5444t2bzTYe2PF/tCbDgrRY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=uj6ouWhjMM79xQw/X53kttXs6kHQiif0w/BFN3Pyh72MLSQ64ma0qImilI9EcxVEa
-	 pfRbCGGYnT10lRH5bi45huLFzWcVci047a8gKF1EQ6O4JqBhXnPGinzQrlZMM9WxUF
-	 x1pyGSqDNLKv3OdnnowFzQLQGg5wiWsult/2GZFOoTPoGwiyKY3euCJfscGRcNUPgC
-	 MWts7ZoPvi1/MFUCHyEkNJmE/werNLBLGGzcnb5e953hoA6DDdqZECOGI11IkP34Qo
-	 x/3H+lfKtQIjAd0X9BSpAeDu8gRLQnnjxk9oDoVeSy3DQQ1/7v44UcEbidqqxUY3/8
-	 ITNyaXs2Nd4Wg==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Bartosz Golaszewski <brgl@bgdev.pl>,
-	Sasha Levin <sashal@kernel.org>,
-	linus.walleij@linaro.org,
-	matthias.bgg@gmail.com,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.19 16/16] gpio: mt7621: Make the irqchip immutable
-Date: Wed, 21 Sep 2022 11:53:32 -0400
-Message-Id: <20220921155332.234913-16-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220921155332.234913-1-sashal@kernel.org>
-References: <20220921155332.234913-1-sashal@kernel.org>
+	id 1ob3Ci-00C7UH-VC; Wed, 21 Sep 2022 17:08:10 +0000
+X-UUID: c62fac889efc4d5085f5be7b5885a417-20220921
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=F2F19Vqk4oTeChl6tfimZoIWmEP62hPQK3JzSGtep98=;
+	b=E23Y54WTmCJxlqA2sbjDdjVOBjkFNYOsyc6SGBohpKvB6kBQQTvZNZamFOj/mu10XuYvacBRTO21XWRe3TABiZKHpoW672hyp2CDecSJvwr6QFg8QdgclKjlAtbXcR6v9zXQu5h3mTfG59VAAxjZSqeK9Ijq7B0mKtYVShnO8yc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:667f82e8-56dc-4c9a-83a2-a8d6a93e0ef4,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:e2b1705e-5ed4-4e28-8b00-66ed9f042fbd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c62fac889efc4d5085f5be7b5885a417-20220921
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1326698606; Wed, 21 Sep 2022 10:07:56 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 22 Sep 2022 00:47:17 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 22 Sep 2022 00:47:17 +0800
+Message-ID: <4c9c9ad5b5ab8ce88c28c01832195d196b1ef964.camel@mediatek.com>
+Subject: Re: [PATCH v3 1/6] dt-bindings: arm: mediatek: mmsys: change
+ compatible for MT8195
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Rob
+ Herring" <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, Singo
+ Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 22 Sep 2022 00:47:17 +0800
+In-Reply-To: <29a06da0-ddf5-15eb-ac3d-0bc2e0006ae9@linaro.org>
+References: <20220920140145.19973-1-jason-jh.lin@mediatek.com>
+	 <20220920140145.19973-2-jason-jh.lin@mediatek.com>
+	 <65c93c5d-941a-267b-408d-95be83dc2454@linaro.org>
+	 <8fba20bf37326504b871fb55ce171cd37720a9a0.camel@mediatek.com>
+	 <29a06da0-ddf5-15eb-ac3d-0bc2e0006ae9@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-stable: review
-X-Patchwork-Hint: Ignore
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_085410_115037_21B5C1A1 
-X-CRM114-Status: GOOD (  14.82  )
+X-CRM114-CacheID: sfid-20220921_100809_026301_74AB6361 
+X-CRM114-Status: GOOD (  38.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,90 +91,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+On Wed, 2022-09-21 at 08:28 +0200, Krzysztof Kozlowski wrote:
+> On 21/09/2022 06:16, Jason-JH Lin wrote:
+> > Hi Krzysztof,
+> > 
+> > Thanks for the reviews.
+> > 
+> > On Tue, 2022-09-20 at 17:25 +0200, Krzysztof Kozlowski wrote:
+> > > On 20/09/2022 16:01, Jason-JH.Lin wrote:
+> > > > For previous MediaTek SoCs, such as MT8173, there are 2 display
+> > > > HW
+> > > > pipelines binding to 1 mmsys with the same power domain, the
+> > > > same
+> > > > clock driver and the same mediatek-drm driver.
+> > > > 
+> > > > For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines
+> > > > binding
+> > > > to
+> > > > 2 different power domains, different clock drivers and
+> > > > different
+> > > > mediatek-drm drivers.
+> > > > 
+> > > > Moreover, Hardware pipeline of VDOSYS0 has these components:
+> > > > COLOR,
+> > > > CCORR, AAL, GAMMA, DITHER. They are related to the PQ (Picture
+> > > > Quality)
+> > > > and they makes VDOSYS0 supports PQ function while they are not
+> > > > including in VDOSYS1.
+> > > > 
+> > > > Hardware pipeline of VDOSYS1 has the component ETHDR (HDR
+> > > > related
+> > > > component). It makes VDOSYS1 supports the HDR function while
+> > > > it's
+> > > > not
+> > > > including in VDOSYS0.
+> > > > 
+> > > > To summarize0:
+> > > > Only VDOSYS0 can support PQ adjustment.
+> > > > Only VDOSYS1 can support HDR adjustment.
+> > > > 
+> > > > Therefore, we need to separate these two different mmsys
+> > > > hardwares
+> > > > to
+> > > > 2 different compatibles for MT8195.
+> > > > 
+> > > > Fixes: 81c5a41d10b9 ("dt-bindings: arm: mediatek: mmsys: add
+> > > > mt8195
+> > > > SoC binding")
+> > > > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> > > > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
+> > > > ---
+> > > >  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml      
+> > > > | 4
+> > > > ++++
+> > > >  1 file changed, 4 insertions(+)
+> > > > 
+> > > > diff --git
+> > > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys
+> > > > .yam
+> > > > l
+> > > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys
+> > > > .yam
+> > > > l
+> > > > index 6ad023eec193..df9184b6772c 100644
+> > > > ---
+> > > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys
+> > > > .yam
+> > > > l
+> > > > +++
+> > > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys
+> > > > .yam
+> > > > l
+> > > > @@ -38,6 +38,10 @@ properties:
+> > > >            - const: mediatek,mt7623-mmsys
+> > > >            - const: mediatek,mt2701-mmsys
+> > > >            - const: syscon
+> > > > +      - items:
+> > > > +          - const: mediatek,mt8195-vdosys0
+> > > > +          - const: mediatek,mt8195-mmsys
+> > > > +          - const: syscon
+> > > 
+> > > and why mediatek,mt8195-mmsys is kept as non-deprecated?
+> > 
+> > Shouldn't we keep this for fallback compatible?
+> 
+> I am not talking about it.
+> 
+> > 
+> > I think this items could support the device node like:
+> > foo {
+> >   compatible = "mediatek,mt8195-vdosys0", "mediatek,mt8195-mmsys", 
+> > 	       "syscon";
+> > }
+> > 
+> 
+> Yes, this one ok.
+> 
+> > 
+> > Or should I change the items like this?
+> > - items:
+> >     - const: mediatek,mt8195-vdosys0
+> >     - enum:
+> >         - mediatek,mt8195-mmsys
+> >     - const: syscon
+> > 
+> 
+> No, this does not look correct.
 
-[ Upstream commit 09eed5a1ed3c752892663976837eb4244c2f1984 ]
+OK, I'll keep this one:
+- items:
+    - const: mediatek,mt8195-vdosys0
+    - const: mediatek,mt8195-mmsys
+    - const: syscon
 
-Commit 6c846d026d49 ("gpio: Don't fiddle with irqchips marked as
-immutable") added a warning to indicate if the gpiolib is altering the
-internals of irqchips.  Following this change the following warnings
-are now observed for the mt7621 driver:
+Thanks for the reviews.
 
-gpio gpiochip0: (1e000600.gpio-bank0): not an immutable chip, please consider fixing it!
-gpio gpiochip1: (1e000600.gpio-bank1): not an immutable chip, please consider fixing it!
-gpio gpiochip2: (1e000600.gpio-bank2): not an immutable chip, please consider fixing it!
+> 
+> I asked why do you keep old mediatek,mt8195-mmsys compatible in the
+> same
+> place (the alone one), without making it deprecated?
 
-Fix this by making the irqchip in the mt7621 driver immutable.
+ - items:
+          - enum:
+              - mediatek,mt2701-mmsys
+              - mediatek,mt2712-mmsys
+              - mediatek,mt6765-mmsys
+              - mediatek,mt6779-mmsys
+              - mediatek,mt6797-mmsys
+              - mediatek,mt8167-mmsys
+              - mediatek,mt8173-mmsys
+              - mediatek,mt8183-mmsys
+              - mediatek,mt8186-mmsys
+              - mediatek,mt8192-mmsys
+              - mediatek,mt8195-mmsys
+Do you mean this one can be deprecated?
+I'm not sure if I should keep this after adding the new item.
+If so, I can remove this at the next version.
 
-Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
-Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Signed-off-by: Bartosz Golaszewski <brgl@bgdev.pl>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/gpio/gpio-mt7621.c | 21 +++++++++++++++------
- 1 file changed, 15 insertions(+), 6 deletions(-)
+              - mediatek,mt8365-mmsys
+          - const: syscon
 
-diff --git a/drivers/gpio/gpio-mt7621.c b/drivers/gpio/gpio-mt7621.c
-index d8a26e503ca5..f163f5ca857b 100644
---- a/drivers/gpio/gpio-mt7621.c
-+++ b/drivers/gpio/gpio-mt7621.c
-@@ -112,6 +112,8 @@ mediatek_gpio_irq_unmask(struct irq_data *d)
- 	unsigned long flags;
- 	u32 rise, fall, high, low;
- 
-+	gpiochip_enable_irq(gc, d->hwirq);
-+
- 	spin_lock_irqsave(&rg->lock, flags);
- 	rise = mtk_gpio_r32(rg, GPIO_REG_REDGE);
- 	fall = mtk_gpio_r32(rg, GPIO_REG_FEDGE);
-@@ -143,6 +145,8 @@ mediatek_gpio_irq_mask(struct irq_data *d)
- 	mtk_gpio_w32(rg, GPIO_REG_HLVL, high & ~BIT(pin));
- 	mtk_gpio_w32(rg, GPIO_REG_LLVL, low & ~BIT(pin));
- 	spin_unlock_irqrestore(&rg->lock, flags);
-+
-+	gpiochip_disable_irq(gc, d->hwirq);
- }
- 
- static int
-@@ -204,6 +208,16 @@ mediatek_gpio_xlate(struct gpio_chip *chip,
- 	return gpio % MTK_BANK_WIDTH;
- }
- 
-+static const struct irq_chip mt7621_irq_chip = {
-+	.name		= "mt7621-gpio",
-+	.irq_mask_ack	= mediatek_gpio_irq_mask,
-+	.irq_mask	= mediatek_gpio_irq_mask,
-+	.irq_unmask	= mediatek_gpio_irq_unmask,
-+	.irq_set_type	= mediatek_gpio_irq_type,
-+	.flags		= IRQCHIP_IMMUTABLE,
-+	GPIOCHIP_IRQ_RESOURCE_HELPERS,
-+};
-+
- static int
- mediatek_gpio_bank_probe(struct device *dev, int bank)
- {
-@@ -238,11 +252,6 @@ mediatek_gpio_bank_probe(struct device *dev, int bank)
- 		return -ENOMEM;
- 
- 	rg->chip.offset = bank * MTK_BANK_WIDTH;
--	rg->irq_chip.name = dev_name(dev);
--	rg->irq_chip.irq_unmask = mediatek_gpio_irq_unmask;
--	rg->irq_chip.irq_mask = mediatek_gpio_irq_mask;
--	rg->irq_chip.irq_mask_ack = mediatek_gpio_irq_mask;
--	rg->irq_chip.irq_set_type = mediatek_gpio_irq_type;
- 
- 	if (mtk->gpio_irq) {
- 		struct gpio_irq_chip *girq;
-@@ -262,7 +271,7 @@ mediatek_gpio_bank_probe(struct device *dev, int bank)
- 		}
- 
- 		girq = &rg->chip.irq;
--		girq->chip = &rg->irq_chip;
-+		gpio_irq_chip_set_chip(girq, &mt7621_irq_chip);
- 		/* This will let us handle the parent IRQ in the driver */
- 		girq->parent_handler = NULL;
- 		girq->num_parents = 0;
+Regards,
+Jason-JH.Lin
+
+> 
+> Best regards,
+> Krzysztof
 -- 
-2.35.1
+Jason-JH Lin <jason-jh.lin@mediatek.com>
 
 
