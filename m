@@ -4,84 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13939C32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 09:37:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAFC1ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 09:48:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-Id:Cc:To:Subject:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jr8oE61NhRIq5ZsnsT8b0rg0+Oxtl2j72+/LPlx4O9U=; b=VSyBSKyvDSmays4vCyRVvIXjuW
-	CSak0PCm3SaWc1gyCjWJjH/tYEly1uK6nBHGS/09D55+xh3Ojaq41NAr4YPTxZXV/p4lm+B+4hm01
-	xrz7rYjfMB0tKyger1vv6td5XSIOFEPVUuf8O4XHJA0jpdxN54wOIEvyd1Rmiha2u+NMf5V7sz9Xd
-	KL38ItOIeQvdQ/i0nus+5IutICh1slz5/deHHEvqXakZQcP0NO/Lu2+r1vLm1TDL3YsSUfD+4JUkC
-	wq1zOSjs80TSflyWOJKBye0cwW3wVfoMiuqEd8Gp44AJBLtYHKfP4CnQNyb6BxNsk6MgQwNziYDlN
-	cpP8++VQ==;
+	bh=qcQnQhLaO6fGinlzAYyFGlxrfQHdXifdne2D0+nwBo8=; b=ZyftOs6lVbnesGHQJtpqeYxiHO
+	+vO1O1QGPUMaxdUrTliv+dkLUMEWAELdyQPwo4Wp8AWB86DcENIRaYcYfGBYaQFDPhQ3N9jXoERjz
+	wQuL9/K1+fnAe6oME6Da41SuMdPRuv7FHP1MjJdWb/ONpFbhlaR59VPy2npK0rqJcAZ9DGRKEATiV
+	I5Asx7l049wyvriBSdBVAiP2zv/O6l5zzHCPYRIqKxCGXkTaKUF98Jze9BXfqR10/ZEdQ/G1dwyvf
+	IYR2zeG9zmtqwcaPwxj3tKNfHeSO96OkBCSGR/v1jDoT3A0lYBTlyUauwDpA3psp2a6KNVzAE4/60
+	+jzWCAcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaw9z-00ASgv-HN; Wed, 21 Sep 2022 09:36:51 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1oawL2-00Aack-JV; Wed, 21 Sep 2022 09:48:16 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaw4B-00AQBT-TP; Wed, 21 Sep 2022 09:30:53 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id dv25so12136004ejb.12;
-        Wed, 21 Sep 2022 02:30:50 -0700 (PDT)
+	id 1oawI1-00AXl0-Lj
+	for linux-mediatek@lists.infradead.org; Wed, 21 Sep 2022 09:45:12 +0000
+Received: by mail-ej1-x635.google.com with SMTP id lc7so12472863ejb.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 21 Sep 2022 02:45:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
-         :date:from:to:cc:subject:date;
-        bh=Jr8oE61NhRIq5ZsnsT8b0rg0+Oxtl2j72+/LPlx4O9U=;
-        b=TMKQLD+XciKaaTQSYkvB3tJ8eNcp4xWvlqLGsi5r3tIQqHj2qxYrC0WoiDJfaWogCw
-         x33dXgcrIMpKRIp7/Zqrx8QlRwgFz+GZcQVN0ArhSdwUlXHpPGoshEaTjPOTcEvvVX6p
-         YbO1pHD7FxOCpqLTU8pg9+Xrcxqvp5/OG7MvB0QoFrKLoRnIyeIk8ogaUBdXF9lgpk1P
-         7k2Ihf04SW2jzsrcocHj5VWOKHFktP+0r4C1yM9PGmLUopDDE7bB4BF/iE1BrD479DNz
-         jq3JVoJC8QMPsPEcknhqMdWKUt8iIWUP4pK+Yk3o1ZH/KFKRHah129vMoQii8nA5I6AL
-         Y3yA==
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date;
+        bh=qcQnQhLaO6fGinlzAYyFGlxrfQHdXifdne2D0+nwBo8=;
+        b=BtZBIL1KHuomtHqRQXk7130LxJRBG6iEPPC108i/uUc1zv4vtgKCRLoo92bcByFpIF
+         vI0ROss4+TZ0r+d44NYvZKCBsnoPZuAaj06CgUJ7JbIbTHS5sVUVr4LxWDMIW18cS9Bl
+         pieAUjljj9sMT9Hasg62luiSjPpBOsazARnp17BOwJkZeYBc6tUKcrI+m7W7QL2jDWhp
+         nIJDgX1yQ527pxCDbpF1FQo+d5dPY+mc/sTH5NJtyfswXR39RJ+Snip4BC2SultPg1cT
+         pcqBmuDE3fTWldjF7WFhFQPW2KMdJTYPj+AwyAWjg0M1DT25+IKfP54wYaJJpaTXj8ph
+         E+dA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
-         :date:x-gm-message-state:from:to:cc:subject:date;
-        bh=Jr8oE61NhRIq5ZsnsT8b0rg0+Oxtl2j72+/LPlx4O9U=;
-        b=jKVuehl6HgR2YpVcIHtARqANHCQ611MYPnwtptFxQunV00jMpmpqFDcvF3PtUbRPGV
-         F4QxU7o5tj9jcOfju/mtBNHnBnEdoOvkCVYMOnk/ZOmEpyKBfpvHSYgZOgppPLsUBBFx
-         RvEaeZ3rMxRF3DdMuIg3NPZQm3zhw4DPiUyPKNobP1Fi79WncMZyH7xdfLvDSQc2H1/F
-         eRq6GGtoY9GbOMSIjMOJbSrlkPdU4jaBq+fCXLn6CVpF7bmUB7tod5BQFi/ZAxl9FgHm
-         ncGvg9Wtpo6x2tV8BEvYBKUiuVpy9ZRJN4etUbTrOfUpbFcHTQ6O2/X/tfmuaSu9ba+b
-         YDwQ==
-X-Gm-Message-State: ACrzQf2pB7gL6kUm3AN7cI9eLKfbCPNM/6kZiZhq1wLvshx4Fl/xo+bo
-	x5x/bSPcQl8f7QPNYB52iZc=
-X-Google-Smtp-Source: AMsMyM4NZ0hTTtsK2z2By1E+T/Uxaefrn9FUpIRfGRW+qR5bcdHeJBDFr5WP1T1tpANx/WVSreO0Jw==
-X-Received: by 2002:a17:907:7209:b0:778:e86e:568 with SMTP id dr9-20020a170907720900b00778e86e0568mr20854264ejc.659.1663752649092;
-        Wed, 21 Sep 2022 02:30:49 -0700 (PDT)
-Received: from [10.31.3.208] ([95.183.227.98])
-        by smtp.gmail.com with ESMTPSA id l9-20020a1709060cc900b0078175601630sm1057335ejh.79.2022.09.21.02.30.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 Sep 2022 02:30:48 -0700 (PDT)
-Date: Wed, 21 Sep 2022 12:30:34 +0300
-From: yassine.oudjana@gmail.com
-Subject: Re: [PATCH 1/4] dt-bindings: pinctrl: Combine MediaTek MT67xx pinctrl
- binding docs
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, Andy Teng
-	<andy.teng@mediatek.com>, Yassine Oudjana <y.oudjana@protonmail.com>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Message-Id: <YQZJIR.QQOJU0071T1J1@gmail.com>
-In-Reply-To: <1860b0ff-5544-5e74-ccfc-beda18824927@linaro.org>
-References: <20220919170115.94873-1-y.oudjana@protonmail.com>
-	<20220919170115.94873-2-y.oudjana@protonmail.com>
-	<4c425cf8-f9ca-969c-f8ed-688410bfb922@collabora.com>
-	<1860b0ff-5544-5e74-ccfc-beda18824927@linaro.org>
-X-Mailer: geary/40.0
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date;
+        bh=qcQnQhLaO6fGinlzAYyFGlxrfQHdXifdne2D0+nwBo8=;
+        b=rFP5vD6Yi6dt7qmjqWD7oqaK3/4xD7+JP6i7groFianbePZNOSJ5zNogdZ91NVJDxc
+         4yuB6uey9dO0hoaj3DPo1Fpz4Vw6vSRk7sNR8dvh3bRIzfGCcZPAuRRGai9OtCP5yN8D
+         DTi0FXDdNlzMVKmLqsHsuxsfiGlc8bxE7d0YUZIgH9iURbIYWfvEwyScTQWIqIm4JVV6
+         vaBc+q/tMnYuVw1avkq8jLnfXvcbJbGbsa9QLRI583SmUCF/Rc4O9kf3hVbx7BFCd/FT
+         /V9YEfyHqRWvYW4cucEyvAs5eMmhDg0/KjtniA3zscnsou5pQZvZM8J2aPvYkVrZnqlR
+         XhkQ==
+X-Gm-Message-State: ACrzQf1wzy8HuV96VFSgunhBAy2PWdTMi2VJ2J7ppKeMrBdLtCqzY0oS
+	GOwdFRHkTt/VunxLOBioMMGnBbfVjyxXuVSaRtsWqQ==
+X-Google-Smtp-Source: AMsMyM5SFTgTYiX8ufQU/7T9uAxbJb2nQtH8wwq24aVCveMh7Phf3u4mkG9wFMawfgPj/2o3XFsj+LE+O93wVevFl1c=
+X-Received: by 2002:a17:906:fd8b:b0:779:dcbe:3a9d with SMTP id
+ xa11-20020a170906fd8b00b00779dcbe3a9dmr20557155ejb.235.1663753505689; Wed, 21
+ Sep 2022 02:45:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii; format=flowed
+References: <20220817080757.352021-1-bchihi@baylibre.com> <20220817080757.352021-3-bchihi@baylibre.com>
+ <716d6471-f0e2-489e-5f9e-9e38e9e7953a@collabora.com> <CAGuA+orxfcycwcUMpLe+dkjnXPQkELQsz0vBggGKTQ04XRGc+g@mail.gmail.com>
+ <2073b6bd-a4bd-4ab5-300d-2ce989e25d5f@linaro.org>
+In-Reply-To: <2073b6bd-a4bd-4ab5-300d-2ce989e25d5f@linaro.org>
+From: Balsam CHIHI <bchihi@baylibre.com>
+Date: Wed, 21 Sep 2022 11:44:29 +0200
+Message-ID: <CAGuA+or40GSH2QvVw033+KsGC-B9D6nRYj8zXvTs91iNDqgr8Q@mail.gmail.com>
+Subject: Re: [PATCH v9,2/7] dt-bindings: thermal: Add dt-binding document for
+ LVTS thermal controllers
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, rafael@kernel.org, 
+	rui.zhang@intel.com, daniel.lezcano@linaro.org, amitk@kernel.org, 
+	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, khilman@baylibre.com, 
+	mka@chromium.org, robh+dt@kernel.org, krzk+dt@kernel.org, 
+	matthias.bgg@gmail.com, p.zabel@pengutronix.de, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	james.lo@mediatek.com, fan.chen@mediatek.com, louis.yu@mediatek.com, 
+	rex-bc.chen@mediatek.com, abailon@baylibre.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_023052_016292_5DD38400 
-X-CRM114-Status: GOOD (  19.27  )
+X-CRM114-CacheID: sfid-20220921_024509_740471_0C089295 
+X-CRM114-Status: UNSURE (   6.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,70 +93,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Krzysztof, Angelo,
 
+Thank you for the suggestions.
 
-On Wed, Sep 21 2022 at 09:11:12 AM +0200, Krzysztof Kozlowski 
-<krzysztof.kozlowski@linaro.org> wrote:
-> On 20/09/2022 10:06, AngeloGioacchino Del Regno wrote:
->>  Il 19/09/22 19:01, Yassine Oudjana ha scritto:
->>>  From: Yassine Oudjana <y.oudjana@protonmail.com>
->>> 
->>>  Documents for MT6779, MT6795 and MT6797 that currently exist share
->>>  most properties, and each one has slightly differently worded
->>>  descriptions for those properties. Combine all three documents into
->>>  one common document for all MT67xx SoC pin controllers, picking a 
->>> few
->>>  parts from each and accounting for differences such as items in reg
->>>  and reg-names properties. Also document the MT6765 pin controller
->>>  which currently has a driver but no DT binding documentation. It 
->>> should
->>>  be possible to also include bindings for MT8183 and MT8188, but 
->>> these
->>>  have some additional properties that might complicate things a bit,
->>>  so they are left alone for now.
->>> 
->>>  Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
->>>  ---
->>>    .../pinctrl/mediatek,mt6779-pinctrl.yaml      | 207 
->>> ------------------
->>>    .../pinctrl/mediatek,mt6797-pinctrl.yaml      | 176 
->>> ---------------
->>>    ...6795.yaml => mediatek,mt67xx-pinctrl.yaml} | 181 
->>> +++++++++++----
->> 
->>  Hello Yassine,
->>  nice cleanup over here!
->> 
->>  There's a catch though: as far as I know, wildcards are not 
->> permitted... so you
->>  should, at this point, merge all of these in 
->> mediatek,mt6779-pinctrl.yaml instead.
->> 
->>  Before jumping to that, though... Krzysztof, can you please confirm 
->> (or deny)?
-> 
-> Wildcards are not allowed in compatibles. In filename wildcards or
-> family name could work if they are really going to match the devices. 
-> I
-> have doubts here. 67xx is quite a lot of different devices, so I am 
-> not
-> sure this will cover them all.
-> 
-> I would prefer one name (oldest SoC or lowest number).
+I tested this (below) and it worked without any problem.
+"make DT_CHECKER_FLAGS=-m dt_binding_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml"
+"make dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml"
+Should I keep it like this and submit it in v10?
 
-Lowest number (and probably oldest too but not sure since mediatek 
-naming conventions are a bit weird) currently documented is mt6779, but 
-mt6765 gets documented in this patch and mt6735 (this one I know for 
-sure is older than the rest) in a following patch, so do I just stick 
-with mt6779 or do I change it in the following patches documenting 
-mt6765 and mt6735?
+[...]
+nvmem-cells:
+  minItems: 1
+  items:
+    - description: Calibration eFuse data 1 for LVTS
+    - description: Calibration eFuse data 2 for LVTS
 
-Thanks,
-Yassine
+nvmem-cell-names:
+  minItems: 1
+  items:
+    - const: lvts-calib-data-1
+    - const: lvts-calib-data-2
 
-> 
-> Best regards,
-> Krzysztof
+"#thermal-sensor-cells":
+  const: 1
 
+allOf:
+  - $ref: thermal-sensor.yaml#
 
+- if:
+  properties:
+    compatible:
+      contains:
+        enum:
+          - mediatek,mt8192-lvts-ap
+          - mediatek,mt8192-lvts-mcu
+  then:
+    properties:
+      nvmem-cells:
+        maxItems: 1
+
+     nvmem-cell-names:
+       maxItems: 1
+
+  - if:
+    properties:
+      compatible:
+        contains:
+          enum:
+           - mediatek,mt8195-lvts-ap
+           - mediatek,mt8195-lvts-mcu
+  then:
+    properties:
+      nvmem-cells:
+        maxItems: 2
+
+     nvmem-cell-names:
+       maxItems: 2
+[...]
+
+Best regards,
+Balsam
 
