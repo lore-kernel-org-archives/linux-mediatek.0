@@ -4,56 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFA17C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 15:22:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A045DC6FA90
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 15:54:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uCEcvtGfDAHikDxX4XmNs+vICamnsVnseFFH5dY/r2k=; b=R0mzRVHMH91QH0uE368AIidWA0
-	XjHpgqVW/f6d7E2kX7aKvl0vE6YkdK28MSnrpw5ojkRrjCD5jMnGxKbhhVMRAdOvdrx7U/nQOxEC3
-	stP8OJhnNzZ+CUshLJyf2hIeVmy4PMngqbTGPI9hMueQELze+xn0EbwoCaLJZFeiI1yZT+KQJ9chC
-	/mYYNufazX/tu6Wk1yPHookoeGVK1mvIKYjryFile2xcSXzoj1LMLoVUB3Iw1F++phgrAs7KfuN72
-	3Defv/TxR6dAZmRM2Us1MOoz9Lb1gbLwsDaiJ1/8LbV85GrAxVIYL1UTx8qOVRfQW1FPhemB8VAyi
-	Fr0fV7dg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6cw2WFK5oE+1VMyjk+WDBom5kmV2q/a6VhTKF2aMbhA=; b=GyfBzs2rS51ttV+BjKc5SjDebb
+	viziT7bREK5/AW8K+Ys8Ioz8/Ww7HmLCqJHfy236cX8zo0CShRCpuffll1GlNE+UsixycZSKyq63C
+	tc+qcNX0sTpUVapV8dJR5GFBwWgXdakQwS8Zqbc7WkdmOswXyMDZm96V9MysdRD1O3/RqKhxi0Rp2
+	q+wdkyQynMZLWZfwmk0cn19viQmnFSZzgw/F4YCP3l+u+K1G+iC0GkocUmjjeM1OhmpeLhiIPG5fX
+	p2jOVLSFD2//KltpIbmnoy8Zi4kMyMSB7rUMaftI8wOIsRtQVRr9EKnB/N4FFgeS51ozSTAlM0yRY
+	0pl3X0GQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ob1YX-00Bkxu-0J; Wed, 21 Sep 2022 15:22:33 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1ob23R-00Bqaj-FF; Wed, 21 Sep 2022 15:54:29 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ob1YU-00Bkv9-8B
-	for linux-mediatek@lists.infradead.org; Wed, 21 Sep 2022 15:22:32 +0000
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.56])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4MXhqN6ytpzMn81;
-	Wed, 21 Sep 2022 23:17:36 +0800 (CST)
-Received: from dggpemm500007.china.huawei.com (7.185.36.183) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Wed, 21 Sep 2022 23:22:18 +0800
-Received: from huawei.com (10.175.103.91) by dggpemm500007.china.huawei.com
- (7.185.36.183) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Wed, 21 Sep
- 2022 23:22:18 +0800
-From: Yang Yingliang <yangyingliang@huawei.com>
-To: <linux-pm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-CC: <sre@kernel.org>, <chiaen_wu@richtek.com>
-Subject: [PATCH -next] power: supply: mt6370: Fix return value check in mt6370_chg_probe()
-Date: Wed, 21 Sep 2022 23:29:15 +0800
-Message-ID: <20220921152915.1506767-1-yangyingliang@huawei.com>
-X-Mailer: git-send-email 2.25.1
+	id 1ob237-00BqSY-Ol; Wed, 21 Sep 2022 15:54:11 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 6554AB830CA;
+	Wed, 21 Sep 2022 15:54:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E8DFC43145;
+	Wed, 21 Sep 2022 15:54:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1663775646;
+	bh=ltWOdhCi4WgafmHd2YL/5444t2bzTYe2PF/tCbDgrRY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=uj6ouWhjMM79xQw/X53kttXs6kHQiif0w/BFN3Pyh72MLSQ64ma0qImilI9EcxVEa
+	 pfRbCGGYnT10lRH5bi45huLFzWcVci047a8gKF1EQ6O4JqBhXnPGinzQrlZMM9WxUF
+	 x1pyGSqDNLKv3OdnnowFzQLQGg5wiWsult/2GZFOoTPoGwiyKY3euCJfscGRcNUPgC
+	 MWts7ZoPvi1/MFUCHyEkNJmE/werNLBLGGzcnb5e953hoA6DDdqZECOGI11IkP34Qo
+	 x/3H+lfKtQIjAd0X9BSpAeDu8gRLQnnjxk9oDoVeSy3DQQ1/7v44UcEbidqqxUY3/8
+	 ITNyaXs2Nd4Wg==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	Sasha Levin <sashal@kernel.org>,
+	linus.walleij@linaro.org,
+	matthias.bgg@gmail.com,
+	linux-gpio@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.19 16/16] gpio: mt7621: Make the irqchip immutable
+Date: Wed, 21 Sep 2022 11:53:32 -0400
+Message-Id: <20220921155332.234913-16-sashal@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220921155332.234913-1-sashal@kernel.org>
+References: <20220921155332.234913-1-sashal@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-stable: review
+X-Patchwork-Hint: Ignore
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.103.91]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- dggpemm500007.china.huawei.com (7.185.36.183)
-X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_082230_511222_9EE1412F 
-X-CRM114-Status: UNSURE (   9.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220921_085410_115037_21B5C1A1 
+X-CRM114-Status: GOOD (  14.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,31 +81,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If create_singlethread_workqueue() fails, it returns a null pointer,
-replace IS_ERR() check with NULL pointer check.
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 
-Fixes: 233cb8a47d65 ("power: supply: mt6370: Add MediaTek MT6370 charger driver")
-Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
+[ Upstream commit 09eed5a1ed3c752892663976837eb4244c2f1984 ]
+
+Commit 6c846d026d49 ("gpio: Don't fiddle with irqchips marked as
+immutable") added a warning to indicate if the gpiolib is altering the
+internals of irqchips.  Following this change the following warnings
+are now observed for the mt7621 driver:
+
+gpio gpiochip0: (1e000600.gpio-bank0): not an immutable chip, please consider fixing it!
+gpio gpiochip1: (1e000600.gpio-bank1): not an immutable chip, please consider fixing it!
+gpio gpiochip2: (1e000600.gpio-bank2): not an immutable chip, please consider fixing it!
+
+Fix this by making the irqchip in the mt7621 driver immutable.
+
+Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Signed-off-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Signed-off-by: Bartosz Golaszewski <brgl@bgdev.pl>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/power/supply/mt6370-charger.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpio/gpio-mt7621.c | 21 +++++++++++++++------
+ 1 file changed, 15 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/power/supply/mt6370-charger.c b/drivers/power/supply/mt6370-charger.c
-index 716cba259a7a..f27dae5043f5 100644
---- a/drivers/power/supply/mt6370-charger.c
-+++ b/drivers/power/supply/mt6370-charger.c
-@@ -911,8 +911,8 @@ static int mt6370_chg_probe(struct platform_device *pdev)
- 	priv->attach = MT6370_ATTACH_STAT_DETACH;
+diff --git a/drivers/gpio/gpio-mt7621.c b/drivers/gpio/gpio-mt7621.c
+index d8a26e503ca5..f163f5ca857b 100644
+--- a/drivers/gpio/gpio-mt7621.c
++++ b/drivers/gpio/gpio-mt7621.c
+@@ -112,6 +112,8 @@ mediatek_gpio_irq_unmask(struct irq_data *d)
+ 	unsigned long flags;
+ 	u32 rise, fall, high, low;
  
- 	priv->wq = create_singlethread_workqueue(dev_name(priv->dev));
--	if (IS_ERR(priv->wq))
--		return dev_err_probe(dev, PTR_ERR(priv->wq),
-+	if (!priv->wq)
-+		return dev_err_probe(dev, -ENOMEM,
- 				     "Failed to create workqueue\n");
++	gpiochip_enable_irq(gc, d->hwirq);
++
+ 	spin_lock_irqsave(&rg->lock, flags);
+ 	rise = mtk_gpio_r32(rg, GPIO_REG_REDGE);
+ 	fall = mtk_gpio_r32(rg, GPIO_REG_FEDGE);
+@@ -143,6 +145,8 @@ mediatek_gpio_irq_mask(struct irq_data *d)
+ 	mtk_gpio_w32(rg, GPIO_REG_HLVL, high & ~BIT(pin));
+ 	mtk_gpio_w32(rg, GPIO_REG_LLVL, low & ~BIT(pin));
+ 	spin_unlock_irqrestore(&rg->lock, flags);
++
++	gpiochip_disable_irq(gc, d->hwirq);
+ }
  
- 	ret = devm_add_action_or_reset(dev, mt6370_chg_destroy_wq, priv->wq);
+ static int
+@@ -204,6 +208,16 @@ mediatek_gpio_xlate(struct gpio_chip *chip,
+ 	return gpio % MTK_BANK_WIDTH;
+ }
+ 
++static const struct irq_chip mt7621_irq_chip = {
++	.name		= "mt7621-gpio",
++	.irq_mask_ack	= mediatek_gpio_irq_mask,
++	.irq_mask	= mediatek_gpio_irq_mask,
++	.irq_unmask	= mediatek_gpio_irq_unmask,
++	.irq_set_type	= mediatek_gpio_irq_type,
++	.flags		= IRQCHIP_IMMUTABLE,
++	GPIOCHIP_IRQ_RESOURCE_HELPERS,
++};
++
+ static int
+ mediatek_gpio_bank_probe(struct device *dev, int bank)
+ {
+@@ -238,11 +252,6 @@ mediatek_gpio_bank_probe(struct device *dev, int bank)
+ 		return -ENOMEM;
+ 
+ 	rg->chip.offset = bank * MTK_BANK_WIDTH;
+-	rg->irq_chip.name = dev_name(dev);
+-	rg->irq_chip.irq_unmask = mediatek_gpio_irq_unmask;
+-	rg->irq_chip.irq_mask = mediatek_gpio_irq_mask;
+-	rg->irq_chip.irq_mask_ack = mediatek_gpio_irq_mask;
+-	rg->irq_chip.irq_set_type = mediatek_gpio_irq_type;
+ 
+ 	if (mtk->gpio_irq) {
+ 		struct gpio_irq_chip *girq;
+@@ -262,7 +271,7 @@ mediatek_gpio_bank_probe(struct device *dev, int bank)
+ 		}
+ 
+ 		girq = &rg->chip.irq;
+-		girq->chip = &rg->irq_chip;
++		gpio_irq_chip_set_chip(girq, &mt7621_irq_chip);
+ 		/* This will let us handle the parent IRQ in the driver */
+ 		girq->parent_handler = NULL;
+ 		girq->num_parents = 0;
 -- 
-2.25.1
+2.35.1
 
 
