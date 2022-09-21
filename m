@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B88C3C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 17:08:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0BCBC6FA82
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 19:53:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F2F19Vqk4oTeChl6tfimZoIWmEP62hPQK3JzSGtep98=; b=ojSaWIguZEwSiQQS+4hceD930l
-	upRE3pHgG9c/9fLNZmpSJUefh/r/KAC67VZuI/3hMi+Ipx2Z6Hopx7EYOKG2UL4lyYyOD2EWfN2WT
-	t2u42/H7Ko/7/y2bkTY9bntM2BzNr/3BNxrEM8p09XU9nCkIQ+e6JMPJFt/gAtjK/5mbKCRljdj9k
-	sKw/qXMir5MILGHWFM+CK+ZUVPWKSv7qM+v5N5qkik74AVhWZEjc0VnzZm9iuAHANr8WYko614Z6k
-	TXJp55fnci35PLmL7ryyArJut8dlUX5ZMxEw2lgn+s/AZ1n/vEkyzHBaOlWNBKqLIOfEwgch8xFru
-	pcenV0Zg==;
+	bh=PIXGD3ZpO2Ac6vukEKmoDXUBdzFHQzhj7Pj/RQc78z4=; b=pmu3YLD9OS9+YW3SOjGnkXbjwU
+	ywMEFCs8B5NFT0/Bc+KCMwdX9hcHboRsh3p9btaw814o2F1TXn/pi8lkDL3N4ESH60oSZSSX5Zw9h
+	MBBi1+3+aBXIwwS3hJAnoq0Y0sReNi9bHet1skYaQnoBlHyrYZd/KTt7gR53e4zUHyoqVZAJ9Nud3
+	5c0iEqXxzBT+9lfVuqah1R3Oz77fBf+BN2fMOsDMuLpdc9mZGdx3QG8TdgA0vcKrdDvEwGrM6emgl
+	KmgFUjOuBVxfftbN3+W0Uqg6CpiryvCHthCdZT6DtyPrfyHJU6xAqUP4Saj8UxPDYO7RnrsdSx/EE
+	V/M+noQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ob3Ct-00C7Xy-U0; Wed, 21 Sep 2022 17:08:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ob5mn-00CWJq-2P; Wed, 21 Sep 2022 19:53:33 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ob3Ci-00C7UH-VC; Wed, 21 Sep 2022 17:08:10 +0000
-X-UUID: c62fac889efc4d5085f5be7b5885a417-20220921
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=F2F19Vqk4oTeChl6tfimZoIWmEP62hPQK3JzSGtep98=;
-	b=E23Y54WTmCJxlqA2sbjDdjVOBjkFNYOsyc6SGBohpKvB6kBQQTvZNZamFOj/mu10XuYvacBRTO21XWRe3TABiZKHpoW672hyp2CDecSJvwr6QFg8QdgclKjlAtbXcR6v9zXQu5h3mTfG59VAAxjZSqeK9Ijq7B0mKtYVShnO8yc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:667f82e8-56dc-4c9a-83a2-a8d6a93e0ef4,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:e2b1705e-5ed4-4e28-8b00-66ed9f042fbd,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: c62fac889efc4d5085f5be7b5885a417-20220921
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1326698606; Wed, 21 Sep 2022 10:07:56 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 22 Sep 2022 00:47:17 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 22 Sep 2022 00:47:17 +0800
-Message-ID: <4c9c9ad5b5ab8ce88c28c01832195d196b1ef964.camel@mediatek.com>
-Subject: Re: [PATCH v3 1/6] dt-bindings: arm: mediatek: mmsys: change
- compatible for MT8195
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Rob
- Herring" <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: CK Hu <ck.hu@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, Singo
- Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Thu, 22 Sep 2022 00:47:17 +0800
-In-Reply-To: <29a06da0-ddf5-15eb-ac3d-0bc2e0006ae9@linaro.org>
-References: <20220920140145.19973-1-jason-jh.lin@mediatek.com>
-	 <20220920140145.19973-2-jason-jh.lin@mediatek.com>
-	 <65c93c5d-941a-267b-408d-95be83dc2454@linaro.org>
-	 <8fba20bf37326504b871fb55ce171cd37720a9a0.camel@mediatek.com>
-	 <29a06da0-ddf5-15eb-ac3d-0bc2e0006ae9@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1ob5mc-00CWHc-5Q; Wed, 21 Sep 2022 19:53:23 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 02E1D1884DA8;
+	Wed, 21 Sep 2022 19:53:14 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id D2565250007B;
+	Wed, 21 Sep 2022 19:53:08 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id CAE7F9EC0002; Wed, 21 Sep 2022 19:53:08 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
+Date: Wed, 21 Sep 2022 21:53:08 +0200
+From: netdev@kapio-technology.com
+To: Ido Schimmel <idosch@nvidia.com>
+Cc: Vladimir Oltean <olteanv@gmail.com>, davem@davemloft.net,
+ kuba@kernel.org, netdev@vger.kernel.org, Florian Fainelli
+ <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot
+ <vivien.didelot@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens
+ <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>, Landen
+ Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, Jiri Pirko
+ <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>, Roopa Prabhu
+ <roopa@nvidia.com>, Nikolay Aleksandrov <razor@blackwall.org>, Shuah Khan
+ <shuah@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
+ Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, bridge@lists.linux-foundation.org,
+ linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
+ MAC-Auth Bypass to locked port tests
+In-Reply-To: <Yx73FOpN5uhPQhFl@shredder>
+References: <YwzjPcQjfLPk3q/k@shredder>
+ <f1a17512266ac8b61444e7f0e568aca7@kapio-technology.com>
+ <YxNo/0+/Sbg9svid@shredder>
+ <5cee059b65f6f7671e099150f9da79c1@kapio-technology.com>
+ <Yxmgs7Du62V1zyjK@shredder>
+ <8dfc9b525f084fa5ad55019f4418a35e@kapio-technology.com>
+ <20220908112044.czjh3xkzb4r27ohq@skbuf>
+ <152c0ceadefbd742331c340bec2f50c0@kapio-technology.com>
+ <20220911001346.qno33l47i6nvgiwy@skbuf>
+ <15ee472a68beca4a151118179da5e663@kapio-technology.com>
+ <Yx73FOpN5uhPQhFl@shredder>
+User-Agent: Gigahost Webmail
+Message-ID: <0ab294b9fe5673cc5ad3de233cf64122@kapio-technology.com>
+X-Sender: netdev@kapio-technology.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
 Content-Transfer-Encoding: 7bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_100809_026301_74AB6361 
-X-CRM114-Status: GOOD (  38.67  )
+X-CRM114-CacheID: sfid-20220921_125322_378392_4D380259 
+X-CRM114-Status: UNSURE (   9.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,153 +92,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-09-21 at 08:28 +0200, Krzysztof Kozlowski wrote:
-> On 21/09/2022 06:16, Jason-JH Lin wrote:
-> > Hi Krzysztof,
-> > 
-> > Thanks for the reviews.
-> > 
-> > On Tue, 2022-09-20 at 17:25 +0200, Krzysztof Kozlowski wrote:
-> > > On 20/09/2022 16:01, Jason-JH.Lin wrote:
-> > > > For previous MediaTek SoCs, such as MT8173, there are 2 display
-> > > > HW
-> > > > pipelines binding to 1 mmsys with the same power domain, the
-> > > > same
-> > > > clock driver and the same mediatek-drm driver.
-> > > > 
-> > > > For MT8195, VDOSYS0 and VDOSYS1 are 2 display HW pipelines
-> > > > binding
-> > > > to
-> > > > 2 different power domains, different clock drivers and
-> > > > different
-> > > > mediatek-drm drivers.
-> > > > 
-> > > > Moreover, Hardware pipeline of VDOSYS0 has these components:
-> > > > COLOR,
-> > > > CCORR, AAL, GAMMA, DITHER. They are related to the PQ (Picture
-> > > > Quality)
-> > > > and they makes VDOSYS0 supports PQ function while they are not
-> > > > including in VDOSYS1.
-> > > > 
-> > > > Hardware pipeline of VDOSYS1 has the component ETHDR (HDR
-> > > > related
-> > > > component). It makes VDOSYS1 supports the HDR function while
-> > > > it's
-> > > > not
-> > > > including in VDOSYS0.
-> > > > 
-> > > > To summarize0:
-> > > > Only VDOSYS0 can support PQ adjustment.
-> > > > Only VDOSYS1 can support HDR adjustment.
-> > > > 
-> > > > Therefore, we need to separate these two different mmsys
-> > > > hardwares
-> > > > to
-> > > > 2 different compatibles for MT8195.
-> > > > 
-> > > > Fixes: 81c5a41d10b9 ("dt-bindings: arm: mediatek: mmsys: add
-> > > > mt8195
-> > > > SoC binding")
-> > > > Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> > > > Signed-off-by: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-> > > > ---
-> > > >  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml      
-> > > > | 4
-> > > > ++++
-> > > >  1 file changed, 4 insertions(+)
-> > > > 
-> > > > diff --git
-> > > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys
-> > > > .yam
-> > > > l
-> > > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys
-> > > > .yam
-> > > > l
-> > > > index 6ad023eec193..df9184b6772c 100644
-> > > > ---
-> > > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys
-> > > > .yam
-> > > > l
-> > > > +++
-> > > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys
-> > > > .yam
-> > > > l
-> > > > @@ -38,6 +38,10 @@ properties:
-> > > >            - const: mediatek,mt7623-mmsys
-> > > >            - const: mediatek,mt2701-mmsys
-> > > >            - const: syscon
-> > > > +      - items:
-> > > > +          - const: mediatek,mt8195-vdosys0
-> > > > +          - const: mediatek,mt8195-mmsys
-> > > > +          - const: syscon
-> > > 
-> > > and why mediatek,mt8195-mmsys is kept as non-deprecated?
-> > 
-> > Shouldn't we keep this for fallback compatible?
+On 2022-09-12 11:08, Ido Schimmel wrote:
 > 
-> I am not talking about it.
-> 
-> > 
-> > I think this items could support the device node like:
-> > foo {
-> >   compatible = "mediatek,mt8195-vdosys0", "mediatek,mt8195-mmsys", 
-> > 	       "syscon";
-> > }
-> > 
-> 
-> Yes, this one ok.
-> 
-> > 
-> > Or should I change the items like this?
-> > - items:
-> >     - const: mediatek,mt8195-vdosys0
-> >     - enum:
-> >         - mediatek,mt8195-mmsys
-> >     - const: syscon
-> > 
-> 
-> No, this does not look correct.
+> The new "blackhole" flag requires changes in the bridge driver and
+> without allowing user space to add such entries, the only way to test
+> these changes is with mv88e6xxx which many of us do not have...
 
-OK, I'll keep this one:
-- items:
-    - const: mediatek,mt8195-vdosys0
-    - const: mediatek,mt8195-mmsys
-    - const: syscon
-
-Thanks for the reviews.
-
-> 
-> I asked why do you keep old mediatek,mt8195-mmsys compatible in the
-> same
-> place (the alone one), without making it deprecated?
-
- - items:
-          - enum:
-              - mediatek,mt2701-mmsys
-              - mediatek,mt2712-mmsys
-              - mediatek,mt6765-mmsys
-              - mediatek,mt6779-mmsys
-              - mediatek,mt6797-mmsys
-              - mediatek,mt8167-mmsys
-              - mediatek,mt8173-mmsys
-              - mediatek,mt8183-mmsys
-              - mediatek,mt8186-mmsys
-              - mediatek,mt8192-mmsys
-              - mediatek,mt8195-mmsys
-Do you mean this one can be deprecated?
-I'm not sure if I should keep this after adding the new item.
-If so, I can remove this at the next version.
-
-              - mediatek,mt8365-mmsys
-          - const: syscon
-
-Regards,
-Jason-JH.Lin
-
-> 
-> Best regards,
-> Krzysztof
--- 
-Jason-JH Lin <jason-jh.lin@mediatek.com>
-
+There seems to be a little inconvenience when adding/deleting blackhole 
+entries, and that is since all slaves are the listeners to 
+SWITCHDEV_FDB_ADD(DEL)_TO_DEVICE events and blackhole entries are not to 
+any slave devices, the ops will be called for every slave device as 
+there is no way to distinguish. This said, the add and del operations 
+work.
 
