@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D234ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 08:20:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36703ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 08:21:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5X1VcjLa/iUsF6rHu5x4r++xOx0jgqw7Sk4KJLJBBNM=; b=nT/t/8opBGMswQoiU13GYge31Q
-	3xn4eaBcoqDEufs4U7DTGpZ+8cZeHWWEBB35uBHpVBQb2GKsRSj/JGgB8tIuweydjt3FZfEKmOgVU
-	DrduKfywnVlRbbJKLnbMHywWh6kXnrVGSj1cjEqsXsQWHl65g7zV90TgUDPL6Hbrux8l6vT2UPELu
-	GFt6boVtb6MsE/EhG3RQjgy3Ig8wm8swXkpAw8rhRJVxLFFHJZv+lFjTeSxddt4pTtNUE/2mNggQ2
-	oxhO1zQ4v/XERlVU3mNMA33QaQoI8jSrnOlRCMljjZqyqhGcfu7ivRlz56e9b181h/RclNVgvAfgq
-	/yOoC/2Q==;
+	bh=n01D7Wz1yE9ZhCu8l0jZLmOTci/MPcrpVOHhi2MyO2E=; b=2hxRd/fBLpyXiQtCwMEcQEv4j/
+	HsAgNxrw8FtzXzXud5AMqeGwUYVrsD7Y2TUMeb6EYrU+cM9pKReNfIIMm8kkR3yeDH2eLMa9P6tFf
+	as6+iVqhkoN9XaFCDHqKOGKxP5mRFR8OWdw07vhM/b+LvNiFQEWerwKFjdNmBpBEyTXO12k82827U
+	0lsLiF0TjR58MxK6sM4MQh6o4CBZOHCg6Qglhhpiwpdbja4fYyxl/A4Vd9gk+xbLhIinvh7F9zrU6
+	/mnu+6XThm45WXVbMmeSIym8ton39wRG3cdOzklO1+B3XY9wEHul7zy8mfTOhE8QKrAK7jkUBcRZR
+	v4mPcHdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oauxr-009tb2-Ho; Wed, 21 Sep 2022 08:20:15 +0000
+	id 1oauym-009u3I-O7; Wed, 21 Sep 2022 08:21:12 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaus8-009qf9-TV; Wed, 21 Sep 2022 08:14:22 +0000
+	id 1oausP-009qkt-BW; Wed, 21 Sep 2022 08:14:38 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 15EA76601FFE;
-	Wed, 21 Sep 2022 09:14:19 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7FE7D6601F3F;
+	Wed, 21 Sep 2022 09:14:35 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663748059;
-	bh=CDAAI6Co5oKSxmC/WU+ejDOCRrId2TgONMu4RgUgOmo=;
+	s=mail; t=1663748076;
+	bh=EvBcI/f2WzXPlPeLEVNaBfs+pUmwiWS3guPeTWdGL3s=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=om9zS49/xndnlKInZ65WFYdF5WN7lucREuxp+RRAFXqQ6shtd53hMl/iDyzp1NJuy
-	 UC6oI8aqNT58Bmwe7omjNy/356JpksM6Yz8xGXqxvR0N7DDsHBtP+fjItbB0kb2WQv
-	 psCEwVVNbq85Yi924iIpaOsf/Yi076i7Z76nQxlsHo0hX3/HMbZqA/NZ2M4Kt7MK++
-	 9fzrIv/BUuj40fX7hY7nq8zDdQv6bOZrGw8SN2ufhDTcFLfWebNRVxeNlXqWGnr0mu
-	 KBhpoaODH+wyMoeFgMX7zz4ERa2njPK1IcQj4IPe54kCKsQDBQsGHJniHNmJxOvmKg
-	 q9owdG6yMxK3w==
-Message-ID: <6c8eac8c-92e1-f60d-0182-df4c6038ff34@collabora.com>
-Date: Wed, 21 Sep 2022 10:14:16 +0200
+	b=PZDtwxI8B+LUgkMD25Wb9IKBU3ZQxrXxvvQNoMSPSgsIqpkmKYhEaHN+uot8kO8vJ
+	 gVbv+8aTR+Z6xKGVq2WcsLk1viiEYTPEVqurc2rQ0bsnhTLAEffvEhjxB86k1KVwH9
+	 jrcRasvLyV1bFScZQIf6JL7+VN0jr631BV+ygdXBUQIGXPyllyKbi9lsG2nte3CFZe
+	 rvyGml9ohUGzOz8QHhKW7D39yoLqSQ6xjJycsvKF+6LqhNp1AuXdzpBt4oMPg1cEtQ
+	 ktzYcNCozKEc+tQChLbLISf/EmaTcSaeHpqp/lCGosED0FUQNS5Fbi+Hw0akD85Vek
+	 QyxUEwUz33VQA==
+Message-ID: <0e734f18-423f-72f4-efb7-07bddeab8674@collabora.com>
+Date: Wed, 21 Sep 2022 10:14:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH 14/18] phy: mediatek: mipi: mt8173: use FIELD_PREP to
- prepare bits field
+Subject: Re: [PATCH 15/18] phy: mediatek: mipi: mt8173: use common helper to
+ access registers
 Content-Language: en-US
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>, Vinod Koul <vkoul@kernel.org>
@@ -58,14 +58,14 @@ Cc: Philipp Zabel <p.zabel@pengutronix.de>,
  linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
  Jitao Shi <jitao.shi@mediatek.com>, Stanley Chu <stanley.chu@mediatek.com>
 References: <20220920090038.15133-1-chunfeng.yun@mediatek.com>
- <20220920090038.15133-15-chunfeng.yun@mediatek.com>
+ <20220920090038.15133-16-chunfeng.yun@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220920090038.15133-15-chunfeng.yun@mediatek.com>
+In-Reply-To: <20220920090038.15133-16-chunfeng.yun@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_011421_109373_A0EAF542 
-X-CRM114-Status: UNSURE (   6.78  )
+X-CRM114-CacheID: sfid-20220921_011437_600532_56ACC3F3 
+X-CRM114-Status: UNSURE (   6.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,8 +82,8 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 20/09/22 11:00, Chunfeng Yun ha scritto:
-> Use FIELD_PREP() macro to prepare bits field value, then no need define
-> macros of bits offset.
+> Use MediaTek phy's common helper to access registers, then we can remove
+> mipi-dsi's I/O helpers.
 > 
 > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
