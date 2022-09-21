@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 479B7C32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 14:05:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64BD9C32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 14:21:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=azqYiyJdwlDH3D7K1YoWpIx1lUAy1nX7mdHhTOkqnG4=; b=m+3zXUIfbZ3Vby5gK/y3I9ddlJ
-	Z26LOXAF1Vfg94DsLYU5oGUjoUMYs+2tFujK2Fksax0eYEnuWlKILGiuX53dv7dMIqvhHE/yItZUM
-	OvexEJqlkzJReW1ZJFiG+/80HHNOrrFhgQr2YWigMVjwtZ7FVD9S7LSycgC9BD0/wm//43Qj7oMnj
-	RJr6nmfXPgzM7ax1fM/aliZzUzLCpi+QW6n80nCwfC7cX9nLhhRAMxD8k5npQfWW5xZqcHT2XY1De
-	CWqG8xmC/oj8Z2MolN0gMTWB9CbGLM3qozR+8VpGe3Fa+35tjgUnpSTQkBOTTpSUsHpBHZMiDeJ37
-	nssHnmtg==;
+	bh=+0L9+eR75Qih9B7js8i6qvLYG82sOJdIDqqwTjLBiIQ=; b=PQeBy73doNZ+/pxuoapbcaeFVY
+	m0XNX9y+dlzZbIM5vyJ8FS5NMgtQKLrBcinp2hJde//Y9Ikty70nm/vb+pPdsjP/p8UPcG5e8Kh0j
+	vlrzdbY3ZVjKdFcxD7HHJfp5WHhWMEgCD/92XyOZVLU1GP1CnlIRakhE6wwsRrxYY/F+ps77avI4Y
+	XZNqDbLYB/Jt/vWDITkaptSZIWzaQHNkWfn/OJUCyD4PPwbJSRi40/jSFRnvclF4FeEdRssZb2T/p
+	edqN89PmSFRaN1daj7NSrht520Emo0QxInoy4XV9Mer2fX3HEhJ3oO/yymdDDv7U1DZjGR6g58QEJ
+	xcVXiKRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ob0Lu-00BVnc-9y; Wed, 21 Sep 2022 14:05:26 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ob0b6-00BYSR-14; Wed, 21 Sep 2022 14:21:08 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ob0Lj-00BVk2-9F; Wed, 21 Sep 2022 14:05:16 +0000
-X-UUID: 210e285db75342e9be069f23232162e9-20220921
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=azqYiyJdwlDH3D7K1YoWpIx1lUAy1nX7mdHhTOkqnG4=;
-	b=MAMf5j9sFs4oejhy9kdOej/87i9vA8kDAEvP8uDo4pIw0UuFkZHfOYbDGxkQpH8mya1bz/9RlWVOytrM0teFfU6GH9HLp8qahzQ8Y3izZpms26oLpo4vRN96rGIz0jRDdWbZ1BkOrTa8+2aqYqLOzQnEtvOEP6TK1ykCKvm3HKE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:b5c018a5-9e15-4c75-ab1e-0b728847822d,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:25488af6-0338-44e1-8779-cf7b43f86df2,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 210e285db75342e9be069f23232162e9-20220921
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <xinlei.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1890609513; Wed, 21 Sep 2022 07:05:03 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 21 Sep 2022 21:44:25 +0800
-Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 21 Sep 2022 21:44:24 +0800
-Message-ID: <0607e6fd736e61f14fbb3326dbb09243afc1d671.camel@mediatek.com>
-Subject: Re: [PATCH v6,3/3] drm: mediatek: Add mt8186 dpi compatible to
- mtk_dpi.c
-From: xinlei.lee <xinlei.lee@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, <matthias.bgg@gmail.com>,
-	<jason-jh.lin@mediatek.com>, <rex-bc.chen@mediatek.com>,
-	<angelogioacchino.delregno@collabora.com>, <p.zabel@pengutronix.de>,
-	<airlied@linux.ie>, <daniel@ffwll.ch>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<jitao.shi@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 21 Sep 2022 21:44:25 +0800
-In-Reply-To: <9f27f3c589c538319f9383cf284226b52209524d.camel@mediatek.com>
-References: <1663161662-1598-1-git-send-email-xinlei.lee@mediatek.com>
-	 <1663161662-1598-4-git-send-email-xinlei.lee@mediatek.com>
-	 <9f27f3c589c538319f9383cf284226b52209524d.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1ob0av-00BYQW-4D
+	for linux-mediatek@lists.infradead.org; Wed, 21 Sep 2022 14:20:58 +0000
+Received: by mail-ej1-x631.google.com with SMTP id bj12so13918659ejb.13
+        for <linux-mediatek@lists.infradead.org>; Wed, 21 Sep 2022 07:20:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date;
+        bh=+0L9+eR75Qih9B7js8i6qvLYG82sOJdIDqqwTjLBiIQ=;
+        b=gBI8Il0wjJ4k9W8uDcY2WywCdYlFRc1TCFvzuNI+feU6F5t0q+zxJE36hFlqju4hy2
+         K3hEiABSToSDcSynJH5Bz+GzyxT7TlJu8jRLKvTtesUiy/sbNFIpXCBFAWVDhjLJIIJH
+         GxCFpmeZ/71CS5p5Hm1xwpER1PCxCjh4/NqMY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=+0L9+eR75Qih9B7js8i6qvLYG82sOJdIDqqwTjLBiIQ=;
+        b=ZCaTjKeClyqV0uETp2zHiqwvLkL41ebUGHA8rAhejdLK+GK6tl2fTnDelvQeJX36tO
+         GWF5CAHvfQXSZNqIGGH6lAV4wMTz7Z2ul1kLfyhsc19AdAgA3MBjzRFFcPb+y/CPkfdv
+         CcH55BP8IBM6MhO1R0lt7CL2XOpYe2dtTJnuDDDWXKpjWmo9/4M6JzX3veSHCNynM0uM
+         jvftHVA9X4wMv58HyrJGrUOtvNx4o2y0bm3MjNRX2Jb+mflffD0PJKoPa9gTSdSDejiR
+         UWxT7uhQ+78L3mi+nyZImAfrD5YvV2PXS64ivQRs2Lha6rLBRIbjkjrh9BH13jsb83GM
+         dkSA==
+X-Gm-Message-State: ACrzQf0dI8fuzojXDgBkeRSJEIevRisN5WyaVygS9PfsuBqYXffjKwb2
+	T9kFb7PM8lt90DdNI135FUqMh8/4v2WBbNEX93JPgQ==
+X-Google-Smtp-Source: AMsMyM5/L+7UhSWc2DAc+lhVwYvbNwvoBs8veYUQz8kxwfOWmWK0C/jE27btL5ZxCDIBgKX69XN3rLhPSpA/NJMdfzU=
+X-Received: by 2002:a17:907:7f93:b0:781:dbee:dece with SMTP id
+ qk19-20020a1709077f9300b00781dbeedecemr5468821ejc.323.1663770054748; Wed, 21
+ Sep 2022 07:20:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+References: <20220908171153.670762-1-nfraprado@collabora.com> <20220908171153.670762-2-nfraprado@collabora.com>
+In-Reply-To: <20220908171153.670762-2-nfraprado@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 21 Sep 2022 22:20:43 +0800
+Message-ID: <CAGXv+5FErSBT-t6vz_2naApuPoC4PympWft-9Gd_MMPUTN+CsQ@mail.gmail.com>
+Subject: Re: [PATCH 1/3] arm64: dts: mediatek: asurada: Add display regulators
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_070515_343581_439ED9CC 
-X-CRM114-Status: GOOD (  20.29  )
+X-CRM114-CacheID: sfid-20220921_072057_175159_9A3177AC 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,101 +85,197 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-09-21 at 09:42 +0800, CK Hu wrote:
-> Hi, Xinlei:
-> 
-> On Wed, 2022-09-14 at 21:21 +0800, xinlei.lee@mediatek.com wrote:
-> > From: Xinlei Lee <xinlei.lee@mediatek.com>
-> > 
-> > Add the compatible because use edge_cfg_in_mmsys in mt8186.
-> > 
-> > Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dpi.c     | 21 +++++++++++++++++++++
-> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c |  2 ++
-> >  2 files changed, 23 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > index 6e02f02f163c..52bcc4114afd 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > @@ -942,6 +942,24 @@ static const struct mtk_dpi_conf mt8183_conf =
-> > {
-> >  	.csc_enable_bit = CSC_ENABLE,
-> >  };
-> >  
-> > +static const struct mtk_dpi_conf mt8186_conf = {
-> > +	.cal_factor = mt8183_calculate_factor,
-> > +	.reg_h_fre_con = 0xe0,
-> > +	.max_clock_khz = 150000,
-> > +	.output_fmts = mt8183_output_fmts,
-> > +	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
-> > +	.edge_cfg_in_mmsys = true,
-> 
-> According to the previous review, edge_cfg_in_mmsys is not necessary,
-> so mt8186_conf is identical to mt8192_conf.
-> 
-> Regards,
-> CK
-> 
-> > +	.pixels_per_iter = 1,
-> > +	.is_ck_de_pol = true,
-> > +	.swap_input_support = true,
-> > +	.support_direct_pin = true,
-> > +	.dimension_mask = HPW_MASK,
-> > +	.hvsize_mask = HSIZE_MASK,
-> > +	.channel_swap_shift = CH_SWAP,
-> > +	.yuv422_en_bit = YUV422_EN,
-> > +	.csc_enable_bit = CSC_ENABLE,
-> > +};
-> > +
-> >  static const struct mtk_dpi_conf mt8192_conf = {
-> >  	.cal_factor = mt8183_calculate_factor,
-> >  	.reg_h_fre_con = 0xe0,
-> > @@ -1092,6 +1110,9 @@ static const struct of_device_id
-> > mtk_dpi_of_ids[] = {
-> >  	{ .compatible = "mediatek,mt8183-dpi",
-> >  	  .data = &mt8183_conf,
-> >  	},
-> > +	{ .compatible = "mediatek,mt8186-dpi",
-> > +	  .data = &mt8186_conf,
-> > +	},
-> >  	{ .compatible = "mediatek,mt8192-dpi",
-> >  	  .data = &mt8192_conf,
-> >  	},
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > index 546b79412815..3d32fbc66ac1 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > @@ -646,6 +646,8 @@ static const struct of_device_id
-> > mtk_ddp_comp_dt_ids[] = {
-> >  	  .data = (void *)MTK_DPI },
-> >  	{ .compatible = "mediatek,mt8183-dpi",
-> >  	  .data = (void *)MTK_DPI },
-> > +	{ .compatible = "mediatek,mt8186-dpi",
-> > +	  .data = (void *)MTK_DPI },
-> >  	{ .compatible = "mediatek,mt8192-dpi",
-> >  	  .data = (void *)MTK_DPI },
-> >  	{ .compatible = "mediatek,mt8195-dp-intf",
-> 
-> 
+Hi,
 
-Hi CK:
+On Fri, Sep 9, 2022 at 1:12 AM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
+>
+> Add the regulators present on the Asurada platform that are used to
+> power the internal and external displays.
+>
+> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+>
+> ---
+>
+>  .../boot/dts/mediatek/mt8192-asurada.dtsi     | 114 ++++++++++++++++++
+>  1 file changed, 114 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm6=
+4/boot/dts/mediatek/mt8192-asurada.dtsi
+> index 4b314435f8fd..1d99e470ea1a 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+> @@ -23,6 +23,42 @@ memory@40000000 {
+>                 reg =3D <0 0x40000000 0 0x80000000>;
+>         };
+>
+> +       pp1000_dpbrdg: regulator-1v0-dpbrdg {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "pp1000_dpbrdg";
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&pp1000_dpbrdg_en_pins>;
+> +               regulator-min-microvolt =3D <1000000>;
+> +               regulator-max-microvolt =3D <1000000>;
 
-Thanks for your review.
+This is fed by a rail called PP1350_VS2, which is from the MT6359 PMIC.
+And this regulator is a proper LDO.
 
-Because the difference between MT8186 and other ICs is that modifying
-the output format requires modifying the mmsys register to take effect.
+> +               enable-active-high;
+> +               regulator-boot-on;
+> +               gpio =3D <&pio 19 GPIO_ACTIVE_HIGH>;
+> +       };
+> +
+> +       pp1000_mipibrdg: regulator-1v0-mipibrdg {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "pp1000_mipibrdg";
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&pp1000_mipibrdg_en_pins>;
+> +               regulator-min-microvolt =3D <1000000>;
+> +               regulator-max-microvolt =3D <1000000>;
 
-I think this mt8186_conf needs to be reserved so that we can
-distinguish it from the settings of other ICs when setting
-dpi_dual_edge.
-(the edge_cfg_in mmsys flag inside can prevent other ICs from setting
-the mmsys register)
+This is fed by a rail called PP1350_VS2, which is from the MT6359 PMIC.
+And this regulator is a proper LDO.
 
-Best Regards!
-Xinlei
+> +               enable-active-high;
+> +               regulator-boot-on;
+> +               gpio =3D <&pio 129 GPIO_ACTIVE_HIGH>;
+> +       };
+> +
+> +       pp1800_dpbrdg: regulator-1v8-dpbrdg {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "pp1800_dpbrdg";
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&pp1800_dpbrdg_en_pins>;
+> +               regulator-min-microvolt =3D <1800000>;
+> +               regulator-max-microvolt =3D <1800000>;
 
+This regulator is only a power switch. Please drop the min/max properties.
+This is fed by a rail called PP1800_VIO18_U, which is from an LDO on the
+MT6359 PMIC.
+
+> +               enable-active-high;
+> +               regulator-boot-on;
+> +               gpio =3D <&pio 126 GPIO_ACTIVE_HIGH>;
+> +       };
+> +
+>         /* system wide LDO 1.8V power rail */
+>         pp1800_ldo_g: regulator-1v8-g {
+>                 compatible =3D "regulator-fixed";
+> @@ -34,6 +70,30 @@ pp1800_ldo_g: regulator-1v8-g {
+>                 vin-supply =3D <&pp3300_g>;
+>         };
+>
+> +       pp1800_mipibrdg: regulator-1v8-mipibrdg {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "pp1800_mipibrdg";
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&pp1800_mipibrdg_en_pins>;
+> +               regulator-min-microvolt =3D <1800000>;
+> +               regulator-max-microvolt =3D <1800000>;
+
+This regulator is only a power switch. Please drop the min/max properties.
+This is fed by a rail called PP1800_VIO18_U, which is from an LDO on the
+MT6359 PMIC.
+
+> +               enable-active-high;
+> +               regulator-boot-on;
+> +               gpio =3D <&pio 128 GPIO_ACTIVE_HIGH>;
+> +       };
+> +
+> +       pp3300_dpbrdg: regulator-3v3-dpbrdg {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "pp3300_dpbrdg";
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&pp3300_dpbrdg_en_pins>;
+> +               regulator-min-microvolt =3D <3300000>;
+> +               regulator-max-microvolt =3D <3300000>;
+
+This regulator is only a power switch. Please drop the min/max properties.
+This is fed by a rail called PP3300_G, which is already described below.
+
+> +               enable-active-high;
+> +               regulator-boot-on;
+> +               gpio =3D <&pio 26 GPIO_ACTIVE_HIGH>;
+> +       };
+> +
+>         /* system wide switching 3.3V power rail */
+>         pp3300_g: regulator-3v3-g {
+>                 compatible =3D "regulator-fixed";
+> @@ -56,6 +116,18 @@ pp3300_ldo_z: regulator-3v3-z {
+>                 vin-supply =3D <&ppvar_sys>;
+>         };
+>
+> +       pp3300_mipibrdg: regulator-3v3-mipibrdg {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "pp3300_mipibrdg";
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&pp3300_mipibrdg_en_pins>;
+> +               regulator-min-microvolt =3D <3300000>;
+> +               regulator-max-microvolt =3D <3300000>;
+
+This regulator is only a power switch. Please drop the min/max properties.
+This is fed by a rail called PP3300_G, which is already described above.
+
+ChenYu
+
+> +               enable-active-high;
+> +               regulator-boot-on;
+> +               gpio =3D <&pio 127 GPIO_ACTIVE_HIGH>;
+> +       };
+> +
+>         /* separately switched 3.3V power rail */
+>         pp3300_u: regulator-3v3-u {
+>                 compatible =3D "regulator-fixed";
+> @@ -719,6 +791,48 @@ pins-wifi-kill {
+>                 };
+>         };
+>
+> +       pp1000_dpbrdg_en_pins: pp1000-dpbrdg-en-pins {
+> +               pins-en {
+> +                       pinmux =3D <PINMUX_GPIO19__FUNC_GPIO19>;
+> +                       output-low;
+> +               };
+> +       };
+> +
+> +       pp1000_mipibrdg_en_pins: pp1000-mipibrdg-en-pins {
+> +               pins-en {
+> +                       pinmux =3D <PINMUX_GPIO129__FUNC_GPIO129>;
+> +                       output-low;
+> +               };
+> +       };
+> +
+> +       pp1800_dpbrdg_en_pins: pp1800-dpbrdg-en-pins {
+> +               pins-en {
+> +                       pinmux =3D <PINMUX_GPIO126__FUNC_GPIO126>;
+> +                       output-low;
+> +               };
+> +       };
+> +
+> +       pp1800_mipibrdg_en_pins: pp1800-mipibrd-en-pins {
+> +               pins-en {
+> +                       pinmux =3D <PINMUX_GPIO128__FUNC_GPIO128>;
+> +                       output-low;
+> +               };
+> +       };
+> +
+> +       pp3300_dpbrdg_en_pins: pp3300-dpbrdg-en-pins {
+> +               pins-en {
+> +                       pinmux =3D <PINMUX_GPIO26__FUNC_GPIO26>;
+> +                       output-low;
+> +               };
+> +       };
+> +
+> +       pp3300_mipibrdg_en_pins: pp3300-mipibrdg-en-pins {
+> +               pins-en {
+> +                       pinmux =3D <PINMUX_GPIO127__FUNC_GPIO127>;
+> +                       output-low;
+> +               };
+> +       };
+> +
+>         pp3300_wlan_pins: pp3300-wlan-pins {
+>                 pins-pcie-en-pp3300-wlan {
+>                         pinmux =3D <PINMUX_GPIO143__FUNC_GPIO143>;
+> --
+> 2.37.3
+>
 
