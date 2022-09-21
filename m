@@ -4,57 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F0E5C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 00:23:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D76EC54EE9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Sep 2022 01:18:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Pz9qaHH10kuy9BDx0ka7o7cPZ5B8jSGi7fnibrb+zaQ=; b=egTkMN5Nbc2+uKaZ0LUJaAk5RK
-	caGJ5MK8WJ0TdrZ740M4tz9HPsUEhDC94XPZNOoLTaouJGOEmQZUiQ71F4oV81OXRslvyerFLoBhO
-	zGTfqMeDocXYdFefcxs2XYhLhHujWxGGsahcVEvCJhHfc8wTE47qCP+B5hqJHd0o4fO9/QPFzrlYd
-	ELMmpQEflXlikynFTvmLKuV9pwEN/V8oxgHmg9pZheLOiEhxvYJwAGx7UWjpPIZp/YKzS5X1PEmkG
-	7cLsONd+szYCl/ypih9Vp0r5BLq+/nMwV+JnRvRTuOURuwgG8lXmkvur/MR/C0GtS97tUEi3u75LQ
-	r0oA2R9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f/MwaSUQ0POzLepcYUfXzms96S+fuAIwuOw47LBRhGQ=; b=4eQqy/A/nFH11qSbfTJ35Qk2IY
+	Bq8yT/agpgGNSUXq100uLjk6x1Fc5owERzB5DgPFDkwKH0tnoW4zTBFxPrYsuYQYXI8YlogEJ3Rtz
+	EbABI3NPvP9bPEyuzVFRXJCLh0d8Q7J2e4JcX0xvOjvUWwwRohLXBKTXxC8Evi0h7GHeC9rwiQLgy
+	WhX0x8xi3GzhQSOxy9BNsi/3MR3Sx8ieCVy2zO94zh0l9XXBKKmoQarxDVtHWVM8FdHV5ZwYFzJdC
+	QDDg/rSDdGW2F9l6uE5QT2M9B5jbbs1dnTqPix0+Q6pu1n+VVoJCcL+a9GU8sn/FRQFaupNn4L0yZ
+	gOOoY7mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oanWa-007g3j-W7; Wed, 21 Sep 2022 00:23:37 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1oaoNM-007u0z-PR; Wed, 21 Sep 2022 01:18:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oanWX-007g2X-H1
-	for linux-mediatek@lists.infradead.org; Wed, 21 Sep 2022 00:23:35 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1oanWL-00085X-2q;
-	Wed, 21 Sep 2022 02:23:22 +0200
-Date: Wed, 21 Sep 2022 01:23:14 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Russell King <linux@armlinux.org.uk>,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Cc: Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Alexander 'lynxis' Couzens <lynxis@fe80.eu>
-Subject: [PATCH v4] net: dsa: mt7530: add support for in-band link status
-Message-ID: <YypZcnkmkS4bWQYs@makrotopia.org>
+	id 1oaoNJ-007tz8-M5; Wed, 21 Sep 2022 01:18:07 +0000
+X-UUID: 3d173b3ed19740cdb3548f9ee1e469e5-20220920
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=f/MwaSUQ0POzLepcYUfXzms96S+fuAIwuOw47LBRhGQ=;
+	b=QZLHFxn1aCBwAN7FrotW/AudqveIU4ZXlStFvNj2+8TAOB95inETL8gtdo/sFLHYiLaOZM/7yJIaVFW3IGqBzmbPxA21Ei+sVaUswjZtJWzbsTwsWD16F39EQ88pDLSD6S8YxpFKB+irmaqIq01wt6DL9bqYgl3jmtQqaIaxIjs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:fa7ebcd5-6222-45ea-b704-a7656e33ea9c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:ecdf8356-c0a1-41ff-b4ff-546b4275d2b8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 3d173b3ed19740cdb3548f9ee1e469e5-20220920
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jianguo.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 129540121; Tue, 20 Sep 2022 18:17:47 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 21 Sep 2022 09:17:44 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 21 Sep 2022 09:17:43 +0800
+Message-ID: <50729e7386065786e524fd94894d6882a3a77295.camel@mediatek.com>
+Subject: Re: [PATCH 1/2] dt-bindings: net: mediatek-dwmac: add support for
+ mt8188
+From: Jianguo Zhang <jianguo.zhang@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, "David S . Miller"
+	<davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>
+CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
+	<netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Wed, 21 Sep 2022 09:17:43 +0800
+In-Reply-To: <ada6ef7f-0106-6a30-64ad-66b3277d987b@linaro.org>
+References: <20220920083617.4177-1-jianguo.zhang@mediatek.com>
+	 <20220920083617.4177-2-jianguo.zhang@mediatek.com>
+	 <ada6ef7f-0106-6a30-64ad-66b3277d987b@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_172333_588239_CE5B1399 
-X-CRM114-Status: GOOD (  18.47  )
+X-CRM114-CacheID: sfid-20220920_181805_766837_FF10508E 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,141 +89,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Read link status from SGMII PCS for in-band managed 2500Base-X and
-1000Base-X connection on a MAC port of the MT7531. This is needed to
-get the SFP cage working which is connected to SGMII interface of
-port 5 of the MT7531 switch IC on the Bananapi BPi-R3 board.
-While at it also handle an_complete for both the autoneg and the
-non-autoneg codepath.
+Dear Krzysztof,
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-v2: Use MLO_PAUSE_NONE and read an_complete from SGMII status register.
-v3: Remove unused variable, read an_complete register only in autoneg
-    codepath, set an_complete to link status bit in case of fixed
-    speed link.
-v4: fix wrong parameter variable name
+	Thanks for your comment.
 
- drivers/net/dsa/mt7530.c | 50 +++++++++++++++++++++++++++++-----------
- drivers/net/dsa/mt7530.h |  1 +
- 2 files changed, 38 insertions(+), 13 deletions(-)
+On Tue, 2022-09-20 at 17:26 +0200, Krzysztof Kozlowski wrote:
+> On 20/09/2022 10:36, Jianguo Zhang wrote:
+> > Add binding document for the ethernet on mt8188
+> > 
+> > Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
+> 
+> Please version your patches. git format-patch can do it for you.
+> 
+We will add version info in next version patches.
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 835807911be019..5f00a3f6f279d4 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2699,9 +2699,6 @@ mt7531_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 	case PHY_INTERFACE_MODE_NA:
- 	case PHY_INTERFACE_MODE_1000BASEX:
- 	case PHY_INTERFACE_MODE_2500BASEX:
--		if (phylink_autoneg_inband(mode))
--			return -EINVAL;
--
- 		return mt7531_sgmii_setup_mode_force(priv, port, interface);
- 	default:
- 		return -EINVAL;
-@@ -2777,13 +2774,6 @@ mt753x_phylink_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
- 		return;
- 	}
- 
--	if (phylink_autoneg_inband(mode) &&
--	    state->interface != PHY_INTERFACE_MODE_SGMII) {
--		dev_err(ds->dev, "%s: in-band negotiation unsupported\n",
--			__func__);
--		return;
--	}
--
- 	mcr_cur = mt7530_read(priv, MT7530_PMCR_P(port));
- 	mcr_new = mcr_cur;
- 	mcr_new &= ~PMCR_LINK_SETTINGS_MASK;
-@@ -2922,6 +2912,9 @@ static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
- 	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
- 				   MAC_10 | MAC_100 | MAC_1000FD;
- 
-+	if ((priv->id == ID_MT7531) && mt753x_is_mac_port(port))
-+		config->mac_capabilities |= MAC_2500FD;
-+
- 	/* This driver does not make use of the speed, duplex, pause or the
- 	 * advertisement in its mac_config, so it is safe to mark this driver
- 	 * as non-legacy.
-@@ -2987,6 +2980,7 @@ mt7531_sgmii_pcs_get_state_an(struct mt7530_priv *priv, int port,
- 
- 	status = mt7530_read(priv, MT7531_PCS_CONTROL_1(port));
- 	state->link = !!(status & MT7531_SGMII_LINK_STATUS);
-+	state->an_complete = !!(status & MT7531_SGMII_AN_COMPLETE);
- 	if (state->interface == PHY_INTERFACE_MODE_SGMII &&
- 	    (status & MT7531_SGMII_AN_ENABLE)) {
- 		val = mt7530_read(priv, MT7531_PCS_SPEED_ABILITY(port));
-@@ -3017,16 +3011,44 @@ mt7531_sgmii_pcs_get_state_an(struct mt7530_priv *priv, int port,
- 	return 0;
- }
- 
-+static void
-+mt7531_sgmii_pcs_get_state_inband(struct mt7530_priv *priv, int port,
-+				  struct phylink_link_state *state)
-+{
-+	unsigned int val;
-+
-+	val = mt7530_read(priv, MT7531_PCS_CONTROL_1(port));
-+	state->link = !!(val & MT7531_SGMII_LINK_STATUS);
-+	if (!state->link)
-+		return;
-+
-+	state->an_complete = state->link;
-+
-+	if (state->interface == PHY_INTERFACE_MODE_2500BASEX)
-+		state->speed = SPEED_2500;
-+	else
-+		state->speed = SPEED_1000;
-+
-+	state->duplex = DUPLEX_FULL;
-+	state->pause = MLO_PAUSE_NONE;
-+}
-+
- static void mt7531_pcs_get_state(struct phylink_pcs *pcs,
- 				 struct phylink_link_state *state)
- {
- 	struct mt7530_priv *priv = pcs_to_mt753x_pcs(pcs)->priv;
- 	int port = pcs_to_mt753x_pcs(pcs)->port;
- 
--	if (state->interface == PHY_INTERFACE_MODE_SGMII)
-+	if (state->interface == PHY_INTERFACE_MODE_SGMII) {
- 		mt7531_sgmii_pcs_get_state_an(priv, port, state);
--	else
--		state->link = false;
-+		return;
-+	} else if ((state->interface == PHY_INTERFACE_MODE_1000BASEX) ||
-+		   (state->interface == PHY_INTERFACE_MODE_2500BASEX)) {
-+		mt7531_sgmii_pcs_get_state_inband(priv, port, state);
-+		return;
-+	}
-+
-+	state->link = false;
- }
- 
- static int mt753x_pcs_config(struct phylink_pcs *pcs, unsigned int mode,
-@@ -3067,6 +3089,8 @@ mt753x_setup(struct dsa_switch *ds)
- 		priv->pcs[i].pcs.ops = priv->info->pcs_ops;
- 		priv->pcs[i].priv = priv;
- 		priv->pcs[i].port = i;
-+		if (mt753x_is_mac_port(i))
-+			priv->pcs[i].pcs.poll = 1;
- 	}
- 
- 	ret = priv->info->sw_setup(ds);
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index e509af95c35414..e8d9664353504f 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -373,6 +373,7 @@ enum mt7530_vlan_port_acc_frm {
- #define  MT7531_SGMII_LINK_STATUS	BIT(18)
- #define  MT7531_SGMII_AN_ENABLE		BIT(12)
- #define  MT7531_SGMII_AN_RESTART	BIT(9)
-+#define  MT7531_SGMII_AN_COMPLETE	BIT(21)
- 
- /* Register for SGMII PCS_SPPED_ABILITY */
- #define MT7531_PCS_SPEED_ABILITY(p)	MT7531_SGMII_REG(p, 0x08)
--- 
-2.37.3
+> Best regards,
+> Krzysztof
+
+BRS
+Jianguo
 
 
