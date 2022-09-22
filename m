@@ -4,79 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8F8CC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 16:37:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6203C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 17:25:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PonZZ2B+4+GExdr3X+64Pol3f1MQPS5wkvxFqpUAiUk=; b=ZTfO22wt6I0hI2MLv/xNbRMqyI
-	Ezrbra1ju9dDB5K1OgHRT2d5DPEpNWpPPqwCDWPDqHNu2yy+Pu+YUSAnrrqLFZc1HmP61JXycMIzF
-	AFZh1GQ63TdzBtIv8sAtSoIK5rzC3gG906fzmz/UDQbEn8oeniOko9GM4hTc2X+YhLNsaQWM7S6VY
-	5uUlz4iaBzbqOXl63fO0krQNWcj+4PbQlq8NGaGqAVvkO2M0qtVS3fugQY3Xyn3uyNeqOOTYzaMX2
-	cTrPNhYd64xi8fnNmPIC7gnDt4ZddsfmWK1kj8yB1U50sAsprEkJgUuJk1AmhjbOA1IZBplp+WgNz
-	jSXcFKcQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=akYIE5gkINdmKhN1LSX0+SiFBE/YBzuACj4L57unGN0=; b=W02uMqgfoJUCYDdrub2v1/E1DS
+	eh2/he38pMuOEqLf6WL3+aPv+C76Bv/wxFYRqIOrhoZ60IST7Vdhx/uuC96SttoCzj8iv2pfo8JU7
+	kcs/qjQ2WsobiQ8H+ZKXTXMzgBYHPckokym0PEaQtR63siwSmVBYaw1j5uWHz3mfvcN4kXQCK4zl4
+	n85Iyj6H/jKTGjD96AyNbpKPlm5t+NHEZNIaVlBB4Qq1Ulxb42OgwN7rhNZdBjSaBcSoevb0JwZRJ
+	QKM9ZeJTZl6Z4JzWFTR/BkOgbOrBMstgTRPi46d6rRYyYwwhxoJY7qWqmL2Kr2nMbV5USSSTEhIWy
+	30mJiHbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obPCi-00Gnyx-3o; Thu, 22 Sep 2022 16:37:36 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1obPwj-00H3J4-9T; Thu, 22 Sep 2022 17:25:09 +0000
+Received: from mail-bn8nam11on2041.outbound.protection.outlook.com ([40.107.236.41] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obPCA-00Gngh-Ot; Thu, 22 Sep 2022 16:37:04 +0000
-Received: from [IPV6:2804:431:c7c2:b4b6:f87:da96:9bc3:d98b] (unknown [IPv6:2804:431:c7c2:b4b6:f87:da96:9bc3:d98b])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: dwlsalmeida)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 228D66601E58;
-	Thu, 22 Sep 2022 17:36:50 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663864617;
-	bh=9qk4Re4yFBcAUV8l7PYU2Z7VB5bihult7d9If/n3XpE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DfzqEV4qZ/ihOi/bd9W6MOgz4zvoLmC7kGSNwCX1KvPfmSkkovxu67SQpOJYBv3PS
-	 n+r5b5G4OjVl2VQ9BhyCXgbEaR35UrFP7STucYhqy1oDzuviVRK9HAaJPipiX41bH/
-	 z+OfcHq4Uf+tWALIixErvkUe9LbAMst6LYM8eNUi4Fk8C2WrT0O8+BmXB2yc6BY3YQ
-	 Sk7myOK1VudgA2a4XluK09TyqYJILdYPx4N1GZzpcTbFiiYRO66g5z3Fb7VTgO3INz
-	 DYQ+QDjA0VjR7aXAHHbGGFsVk2EuclSm7+60exYREi1IGp9BW4nkQ/vpT+2rI3J96I
-	 etPD1OTqk0yZQ==
-Message-ID: <927f95dd-283a-a3c0-6c2f-41a36bcc42ef@collabora.com>
-Date: Thu, 22 Sep 2022 13:36:46 -0300
+	id 1obPwg-00H3Gk-8J; Thu, 22 Sep 2022 17:25:07 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=JlUWgsIpYuvpKaRnnO5LOqVqgbJU0e5t23Og3ZbjNlQ66gUjIW+Xs4IM4dbrL6+YTsKVJA97ayWqEIzWC64SAfhWStGHJQIzLDsnJWKuMqGSIjPm+953zND5br4mravsDXX7le1LIfmUx77OWd2qYKzIXNN1RzLcFvghL6KZ+WeCVTKOx4j/UaiaE6Z9PxtoG6QnPrXaaAsUD41cM+a0/82qpZRtHU9ptJS647YzaTEOfCkieQPncwQe0k46DFejphYn4J71nW7wxguJ1S6FQDvItfAgLI8OVLdnsULrbpA2Lq4cWMp6CkL9xa+q956TDS7/pblVGRF6KF+jYL7Zbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=akYIE5gkINdmKhN1LSX0+SiFBE/YBzuACj4L57unGN0=;
+ b=MbMKAugKyjGUMsUQ1pQ4pnNJbrzCZR0Qttf4tDvhSLeBvPbwAl/Sgmle3M+XNVdtyNX2hXeP5NfqCugN5G1T8ZlFNgdyRj2TqB+ooNwzWJYOt6iEelC/NKZ9k25QsKX8m8yhTBv9votTHPznh/94009tEOWGOBFFZ7D4PHrb7L0ovBmrnw0YcYUTLFdn2kTfgw0adFU9BpFy4Nq2hekueWr+5N/Z1/Izbpy6r2ylLYVrIJVyxog3AGLWYo6J79H23cGNfGiKmEy64jNpiaOxHC4w6LjWIlEq0tmOOrRs09JOeWaTwrpWUBswv0EIk/zMNqzpy6rqxyz1OsvOSnM1Cw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=akYIE5gkINdmKhN1LSX0+SiFBE/YBzuACj4L57unGN0=;
+ b=j4SBQqfqYdEo4WuD9LR79XyQpXZiwmKsFD8LXfqsaK395zFV7cAFtFBintOn5Ekqnh02JNdM7h6t/9SmzJtNdbLHHJWq1jBy0j3tCnskHrpFcLGj9GpvpLtuYLVR2IytYmr6g1AWOuT2eCTPSY0FjTXygU2dEDOeAV7WeZYR7QlbxBvSZYOO3h9j6T/WnWfoH/gZecQ2WAKPTTx2q5oxRaLr5WNtN+niBDbtzbPFceNRiMZ1217g1DCZqEalPFn0eFUUgF0s4CV9xQBfj1zxG6qtQAY8Gab5syCm+wqiZaIvFX9suzVcYFO3Z4jJcSYLfPQf1IRC0kWDsX+yT03oow==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
+ by DM4PR12MB5245.namprd12.prod.outlook.com (2603:10b6:5:398::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.19; Thu, 22 Sep
+ 2022 17:25:01 +0000
+Received: from MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::462:7fe:f04f:d0d5]) by MN2PR12MB4192.namprd12.prod.outlook.com
+ ([fe80::462:7fe:f04f:d0d5%7]) with mapi id 15.20.5654.019; Thu, 22 Sep 2022
+ 17:25:00 +0000
+Date: Thu, 22 Sep 2022 14:24:58 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: joro@8bytes.org, suravee.suthikulpanit@amd.com, will@kernel.org,
+	robin.murphy@arm.com, robdclark@gmail.com, dwmw2@infradead.org,
+	baolu.lu@linux.intel.com, agross@kernel.org,
+	bjorn.andersson@linaro.org, matthias.bgg@gmail.com,
+	orsonzhai@gmail.com, baolin.wang@linux.alibaba.com,
+	zhang.lyra@gmail.com, jean-philippe@linaro.org,
+	sricharan@codeaurora.org, kevin.tian@intel.com,
+	quic_jjohnson@quicinc.com, konrad.dybcio@somainline.org,
+	yong.wu@mediatek.com, thierry.reding@gmail.com, vdumpa@nvidia.com,
+	jonathanh@nvidia.com, tglx@linutronix.de,
+	shameerali.kolothum.thodi@huawei.com, christophe.jaillet@wanadoo.fr,
+	thunder.leizhen@huawei.com, quic_saipraka@quicinc.com,
+	jon@solid-run.com, yangyingliang@huawei.com, iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	virtualization@lists.linux-foundation.org
+Subject: Re: [PATCH v5 3/6] iommu: Add return value rules to attach_dev op
+ and APIs
+Message-ID: <Yyyaar/DpXSboA2q@nvidia.com>
+References: <cover.1663836372.git.nicolinc@nvidia.com>
+ <6da77154f1a49c9c2dc2dc4674b3b91cd19862d0.1663836372.git.nicolinc@nvidia.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <6da77154f1a49c9c2dc2dc4674b3b91cd19862d0.1663836372.git.nicolinc@nvidia.com>
+X-ClientProxiedBy: BL1PR13CA0187.namprd13.prod.outlook.com
+ (2603:10b6:208:2be::12) To MN2PR12MB4192.namprd12.prod.outlook.com
+ (2603:10b6:208:1d5::15)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
-Subject: Re: [RFC PATCH v3] media: mediatek: vcodec: support stateless AV1
- decoder
-To: Xiaoyong Lu <xiaoyong.lu@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Nicolas Dufresne <nicolas@ndufresne.ca>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: Irui Wang <irui.wang@mediatek.com>, George Sun <george.sun@mediatek.com>,
- Steve Cho <stevecho@chromium.org>, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>,
- linux-mediatek@lists.infradead.org, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-References: <20220901110416.21191-1-xiaoyong.lu@mediatek.com>
-Content-Language: en-US
-From: Daniel Almeida <daniel.almeida@collabora.com>
-In-Reply-To: <20220901110416.21191-1-xiaoyong.lu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN2PR12MB4192:EE_|DM4PR12MB5245:EE_
+X-MS-Office365-Filtering-Correlation-Id: 12ade3cd-f95f-4e88-2c90-08da9cbf609a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	fV/CILP7MFjyIeDwg2rqDUYJpvnyeJdcadVJq+Fsx4ZC7Tv7sRv4M357f+rnHrXE14PC9UVGTgt9jd1hfAcv0CPUNg4sH2FQazBSyRio7e2oLou+ZHWqa7/pMBmtfhDL8HB+aMAF8mx/WdviJC1MMTwcCBddr6Ei4K6WGvX2G1X3Azv19TsvtySaVpX2kGrM9s9ffXI8ccayMxMsyDn2b2CY39UDOv8MSl5Kl9q7ncXzVRaYC0g4FIyuntccazEoSFZxmalPxnJZhj7KYzZdBqEULA6Y+8jP+V3+AZzXfooLndHUg/a//nB7fMlIsSJV5Ej2+V+E5Or2TlbDixdHqiyJooSUDP/uIXvv/gWYDSLYzaCRSmdLEOCUI33cRF0pWrRxDb2jDruxAHmDub1MqoEFEtpHPrkDnEczB1S5eh/14/nOrz2XydJW1k5K8bZ045b750okr+nhgbDLhi07rJW2TI+qVLBGtjivIX8TxQTy/o8DBdVzCZpVI2qgQ76ZqBYPceXhOZrWRwxObdxG33avENU/abmugmBusREznk7JHch21ptPW5oYEfRwD7d1N6cRZWKAqg+c1yKa71ovdGbJCGp/dxL+82jDP04QuslWqmnwt3SZYn4nzs13FpqbrYBhQYaPHHJt1h0XZ+Aso65nUc5VDHLFK79hEpP+hT6bQO7sbCLOIPBYGqPWUhwSXMgrDuMzK2r4qmMHq9W98A==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB4192.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(396003)(346002)(39860400002)(376002)(136003)(366004)(451199015)(37006003)(6636002)(316002)(7416002)(7406005)(5660300002)(6862004)(2906002)(36756003)(66946007)(66556008)(66476007)(4326008)(86362001)(8676002)(8936002)(41300700001)(186003)(2616005)(83380400001)(6506007)(478600001)(6486002)(38100700002)(6512007)(26005);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?Esklfltb0kD/aCuskOFIqONppMlGnE0Imif9ZsyKRWwf1fU0rzL2K/EcZD3x?=
+ =?us-ascii?Q?kWu+wiuXifGSM7z198rP8olrrb0gwBcV5L8s0IxbV4kqVqTYD2xcT0hECHWh?=
+ =?us-ascii?Q?9kZKSH3GvQk7qygxCrpIQDLvHFm7xLoXiCsM7uCBG7GbwfW9DeN6RBMrAcVd?=
+ =?us-ascii?Q?VoFUloWedMGgI29E6RWMpRQGQ4Xu0BQWR2j6WuIAHH0ANjimRgW+cdvVO/ni?=
+ =?us-ascii?Q?GRqDTSZRLJpaV6Q4EQ2PFWr5MoqR7nr2EIftG9Q3gnppelMaozpA6wWzpxgu?=
+ =?us-ascii?Q?dDi2Jt88KMbPPcC2brVkqB0FPkHuEv7GAGY/kso/rysOl4JggJES8KwcfQJe?=
+ =?us-ascii?Q?uStZvoY39aCGomw8T1NmeQD/U55/Q9HEYmSIlIDP9CU4diWhg68hzAp4VQ/g?=
+ =?us-ascii?Q?vIzvVbNf+m9ICEeLWaTQUHpcbHsgl4u7/7c5UdzpzwqSH7QADgD3KVchLL2m?=
+ =?us-ascii?Q?fyGzuaMv9V6059g/c+Ta1/vR6o6ibPHTWBvCmYI6AuYZeRlxnMBRG9PlzPD0?=
+ =?us-ascii?Q?KFW98lzLVbM4cpsJhnMJT07doUh/u86kVmFLdnKmBlJIKAvg++ZngVW4mlMp?=
+ =?us-ascii?Q?Vq1Z8NExHv1BrxXyrniT8X5j6jJ/1Fq0x27cavKOndn1GyJpUST5uYUpFrth?=
+ =?us-ascii?Q?mF9Wa/UpZQ356dmxm7sfwmlQKNpUEPva+FMu/UaPNPX+wMxO8OTbUYmRyBtY?=
+ =?us-ascii?Q?SR/BvjtVwisA9zApbTqLmstrxVVlyE7TVeIRu9paLJOVulOQ5aavgLy4zEmL?=
+ =?us-ascii?Q?s6hLIqfv9j7mvtyf96gYCX31RGT+tKrNy/i7vr7J5/fUofIsrdYkvSmw/ScB?=
+ =?us-ascii?Q?PdUXh070SgWEziGOqX32RD+pwY/LLmlvN3xpMoXlW9t89mlglMenGeqx79Fu?=
+ =?us-ascii?Q?CQj8IkZ4F00PxuoJ0okYUY1we+5Ez9W3QhZoCGtSedfUJixO2OjobudW3MfV?=
+ =?us-ascii?Q?msD28a63CxCG+svwwC5hOK4GR/z77AfSYMek+zR2nJmAqPczF7nVMH0r46T7?=
+ =?us-ascii?Q?PgLx+clPKh5qh3TR55OJuULuZOqdVOPsZolE40eITZbmWAOXT26IgUJyaYix?=
+ =?us-ascii?Q?qp0e9yIzrCZu60NGNsv1qzzbQRJlMk/yTETV+tJHe6vrokZ2Wgc20rMiE9os?=
+ =?us-ascii?Q?4q1Ke08jyuEy4oIQzAJBR4kf1BvDeH0a7HNomAgRhDL9QEN398WE/plGIHGC?=
+ =?us-ascii?Q?MjztVBaxCCbsB/mgDmMFDGEI2sJRAueyZe4/c8jA7O47NwwSUPntHUgMDQrb?=
+ =?us-ascii?Q?VDsAqN+NAUUHKYl8Cv1/wlw9Mto4OYFIWY1z+/Ga3NwgDI6keI9hXVd1s04p?=
+ =?us-ascii?Q?bP4oHAqLY2OEMtb7iabftpDSaKG4YYRHVlGcvqbDjunewl7LWAlWpsrz+60X?=
+ =?us-ascii?Q?WL6tWg0hfPVPFrmXsCs8xF94YLvNdNsrdzKYKi+KxnpZTfjacPibLq3wIKGb?=
+ =?us-ascii?Q?oez7+Hj5ZNELctcAmDIJ59MFBMR6ITAA3N1/Wpi+liIFX479QZ5jLarCQvSm?=
+ =?us-ascii?Q?S0BqB+gFiXfqruWLqnZWah3yKlhOO8ZGSCD4IEy+0dr63RdE3Q9NHqlhkOa3?=
+ =?us-ascii?Q?GOf77vCXhxsr/3QWHMuygDurSYsoxivbkmS8gBRi?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 12ade3cd-f95f-4e88-2c90-08da9cbf609a
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Sep 2022 17:25:00.2405
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 9iWwhmr5iEIT9v3p720uii1RHPujHDQcqRCEa8SeB2i7VcF9Oi4imhgwM5hy/0oW
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5245
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_093703_131103_7C64A939 
-X-CRM114-Status: GOOD (  16.83  )
+X-CRM114-CacheID: sfid-20220922_102506_324397_77200EF2 
+X-CRM114-Status: GOOD (  16.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,158 +146,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Xiaoyong.
+On Thu, Sep 22, 2022 at 01:54:08AM -0700, Nicolin Chen wrote:
+> Cases like VFIO wish to attach a device to an existing domain that was
+> not allocated specifically from the device. This raises a condition
+> where the IOMMU driver can fail the domain attach because the domain and
+> device are incompatible with each other.
+> 
+> This is a soft failure that can be resolved by using a different domain.
+> 
+> Provide a dedicated errno EINVAL from the IOMMU driver during attach that
+> the reason why the attach failed is because of domain incompatibility.
+> 
+> VFIO can use this to know that the attach is a soft failure and it should
+> continue searching. Otherwise, the attach will be a hard failure and VFIO
+> will return the code to userspace.
+> 
+> Update kdocs to add rules of return value to the attach_dev op and APIs.
+> 
+> Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
+> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> ---
+>  drivers/iommu/iommu.c | 24 ++++++++++++++++++++++++
+>  include/linux/iommu.h | 12 ++++++++++++
+>  2 files changed, 36 insertions(+)
 
-Comments below (other code removed for brevity)
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 
-+/**
-+ * struct vdec_av1_slice_slot - slot info need save in global instance
-+ * @frame_info: frame info for each slot
-+ * @timestamp:  time stamp info
-+ */
-+struct vdec_av1_slice_slot {
-+	struct vdec_av1_slice_frame_info frame_info[AV1_MAX_FRAME_BUF_COUNT];
-+	u64 timestamp[AV1_MAX_FRAME_BUF_COUNT];
-+};
-
-nit: slot info that needs to be saved in the global instance
-
-+static int vdec_av1_slice_get_qindex(struct 
-vdec_av1_slice_uncompressed_header *uh,
-+				     int segmentation_id)
-+{
-+	struct vdec_av1_slice_seg *seg = &uh->seg;
-+	struct vdec_av1_slice_quantization *quant = &uh->quant;
-+	int data = 0, qindex = 0;
-+
-+	if (seg->segmentation_enabled &&
-+	    (seg->feature_enabled_mask[segmentation_id] & BIT(0))) {
-+		data = seg->feature_data[segmentation_id][0];
-
-
-Maybe you should replace the 0 above by SEG_LVL_ALT_Q to be more 
-explicit. Same goes for BIT(0).
-
-+static void vdec_av1_slice_setup_lr(struct vdec_av1_slice_lr *lr,
-+				    struct v4l2_av1_loop_restoration  *ctrl_lr)
-+{
-+	int i;
-+
-+	for (i = 0; i < V4L2_AV1_NUM_PLANES_MAX; i++) {
-+		lr->frame_restoration_type[i] = ctrl_lr->frame_restoration_type[i];
-+		lr->loop_restoration_size[i] = ctrl_lr->loop_restoration_size[i];
-+	}
-+	lr->use_lr = !!lr->frame_restoration_type[0];
-+	lr->use_chroma_lr = !!lr->frame_restoration_type[1];
-+}
-
- From a first glance, this looks a bit divergent from the spec?
-
-for ( i = 0; i < NumPlanes; i++ ) {
-     lr_type
-     FrameRestorationType[i] = Remap_Lr_Type[lr_type]
-     if ( FrameRestorationType[i] != RESTORE_NONE ) {
-         UsesLr = 1
-         if ( i > 0 ) {
-             usesChromaLr = 1
-         }
-     }
-}
-
-I will include these two variables in the next iteration of the uapi if 
-computing them in the driver is problematic.
-
-+static void vdec_av1_slice_setup_lf(struct vdec_av1_slice_loop_filter *lf,
-+				    struct v4l2_av1_loop_filter *ctrl_lf)
-+{
-+	int i;
-+
-+	for (i = 0; i < 4; i++)
-+		lf->loop_filter_level[i] = ctrl_lf->level[i];
-+
-+	for (i = 0; i < V4L2_AV1_TOTAL_REFS_PER_FRAME; i++)
-+		lf->loop_filter_ref_deltas[i] = ctrl_lf->ref_deltas[i];
-+
-+	for (i = 0; i < 2; i++)
-+		lf->loop_filter_mode_deltas[i] = ctrl_lf->mode_deltas[i];
-+
-+	lf->loop_filter_sharpness = ctrl_lf->sharpness;
-+	lf->loop_filter_delta_enabled =
-+		   BIT_FLAG(ctrl_lf, V4L2_AV1_LOOP_FILTER_FLAG_DELTA_ENABLED);
-+}
-
-Maybe ARRAY_SIZE can be of use in the loop indices here?
-
-+static void vdec_av1_slice_setup_cdef(struct vdec_av1_slice_cdef *cdef,
-+				      struct v4l2_av1_cdef *ctrl_cdef)
-+{
-+	int i;
-+
-+	cdef->cdef_damping = ctrl_cdef->damping_minus_3 + 3;
-+	cdef->cdef_bits = ctrl_cdef->bits;
-+
-+	for (i = 0; i < V4L2_AV1_CDEF_MAX; i++) {
-+		if (ctrl_cdef->y_sec_strength[i] == 4)
-+			ctrl_cdef->y_sec_strength[i] -= 1;
-+
-+		if (ctrl_cdef->uv_sec_strength[i] == 4)
-+			ctrl_cdef->uv_sec_strength[i] -= 1;
-+
-+		cdef->cdef_y_strength[i] = ctrl_cdef->y_pri_strength[i] << 2 |
-+					   ctrl_cdef->y_sec_strength[i];
-+		cdef->cdef_uv_strength[i] = ctrl_cdef->uv_pri_strength[i] << 2 |
-+					    ctrl_cdef->uv_sec_strength[i];
-+	}
-+}
-
-Maybe:
-
-#define SECONDARY_FILTER_STRENGTH_NUM_BITS 2
-
-+		cdef->cdef_y_strength[i] = ctrl_cdef->y_pri_strength[i] << 
-SECONDARY_FILTER_STRENGTH_NUM_BITS |
-+					   ctrl_cdef->y_sec_strength[i];
-+		cdef->cdef_uv_strength[i] = ctrl_cdef->uv_pri_strength[i] << 
-SECONDARY_FILTER_STRENGTH_NUM_BITS |
-+					    ctrl_cdef->uv_sec_strength[i];
-
-This should make it clearer.
-
-+		sb_boundary_x_m1 =
-+			(tile->mi_col_starts[tile_col + 1] - tile->mi_col_starts[tile_col] - 
-1) &
-+			0x3F;
-+		sb_boundary_y_m1 =
-+			(tile->mi_row_starts[tile_row + 1] - tile->mi_row_starts[tile_row] - 
-1) &
-+			0x1FF;
-+
-
-IIRC there's a preference for lower case hex values in the media subsystem.
-
-+static void vdec_av1_slice_get_dpb_size(struct vdec_av1_slice_instance 
-*instance, u32 *dpb_sz)
-+{
-+	/* refer av1 specification */
-+	*dpb_sz = 9;
-+}
-
-That's actually defined as 8 in the spec, i.e.:
-
-NUM_REF_FRAMES 8 Number of frames that can be stored for future
-reference.
-
-It's helpful to indicate the section if you reference the specification, 
-as it makes it easier for the reviewer to cross check.
-
-+	/* get buffer address from vb2buf */
-+	for (i = 0; i < V4L2_AV1_REFS_PER_FRAME; i++) {
-+		struct vdec_av1_slice_fb *vref = &vsi->ref[i];
-+		int idx = vb2_find_timestamp(vq, pfc->ref_idx[i], 0);
-
-Needs to be converted to vb2_find_buffer in light of 
-https://lore.kernel.org/lkml/20220706182657.210650-3-ezequiel@vanguardiasur.com.ar/T/
-
--- Daniel
-
+Jason
 
