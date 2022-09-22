@@ -4,61 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F85AC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 23:48:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A3C2C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 00:00:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=spdI0SCiy/Jt+602aY1m+b3AQgIMg0jgwcWrimeBbiY=; b=11Qz6H7t4rvoZ3LD4jrqdbnF+E
-	pJeOMhgT41a0KkmjchEJ3MjwRkJvDF6pbPjSOIzQVczMU0qYwZUjCgV+lm1IsdEe41XdT0rYtMHaK
-	iHZe5wtIj32tq63jYhnK98VR/0cQUB7FJEFFejH5zzF/ElUocHksr09qaznl8IJi56g+wq7mRoc5h
-	7c5a7G/Th2aBqMa5fP8O91OTYp1vR+rSL5Mv8Et3qAyybKC2jSLl6kEPVdwkcQhvgMrCt0zd3GIkM
-	OYNtmpOP9DLm7GoQ3wPleara0eDrfDq3XtL6M3P/G2T+G7s6FJcbYHwGZ9ozMRSOOTZmPUzO/sTy+
-	A1i7XbwQ==;
+	bh=sjH8k+X0o3sPy5j9yxwP/6frpLSpRRmomFo72u6Mefw=; b=p0ZTkAW6v4Gx9JUurB95iTc8mJ
+	4hmOY/sgHKzLx+fCq3eUw/qlpwNkc6dT/se+/4N5rohWuF6XrTyIT44FyIxZraKltibWUNdQ1PWYz
+	rDirL1056L8pkac6Q6vZOvH0Q19Ma1l5xnyd3DJz3HQqIuDj7vcxqkNYu9NL2NU6QZ8B6sA22UhwU
+	EJrTn4BfrBOFgXebqqb6hGvoKGwrGTVhHzmRKTk8x7hx4I+cEM70y5xAQlBm6YNi4Wtdfu0wvCwsx
+	RGbs2M8rfm9ENejRUm4tWunOta6ZOsuagjABfrHM7Gf4GZgl+v//49zXRL+TybIj/KAgx5QPuixAN
+	rwbcq/0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obVvW-000dWS-0O; Thu, 22 Sep 2022 23:48:18 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1obW7O-000fgh-2X; Fri, 23 Sep 2022 00:00:34 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obVvS-000dUt-Mo
-	for linux-mediatek@lists.infradead.org; Thu, 22 Sep 2022 23:48:16 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1obW73-000fRi-WE; Fri, 23 Sep 2022 00:00:15 +0000
+Received: from notapiano.myfiosgateway.com (unknown [71.190.76.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 1CE2D60A51;
-	Thu, 22 Sep 2022 23:48:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D3C3C433D6;
-	Thu, 22 Sep 2022 23:48:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663890492;
-	bh=Kj04nfY3atIZrwzcWjlm7VKsHPyxhSkwGh3b0ZuXMuE=;
+	(Authenticated sender: nfraprado)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1E0D76602229;
+	Fri, 23 Sep 2022 00:59:55 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1663891197;
+	bh=XI3oHZqDLqJjLNw81Hk83f5UFOa5J7x8UqAktxIuW38=;
 	h=From:To:Cc:Subject:Date:From;
-	b=cnxHwJFY3PDpJwjfpnPGFuaigNfPL5/QZsB/o2UsnGGYRIa5I1ViGHbOxD5iBIDUh
-	 1/FOIyjMXZBcQN40esKCkxpN3bdbSeRmfFs6rdgg124WxJ3GBMag4IsStxQj/sSlmx
-	 raPy6QalAgbYTSTLwrixeoWVBO9S4dHqOORMXie9Y/FEObuIeA7EJxfxSXqGdgZhfm
-	 wq02GYnJaE17e3g2coV9771+QuZa5Od1ym6c2pLTBYhW4K/km6gUvRfknsqht6KkT6
-	 e8x/k+5JNOabsXGjs+mkwF40doVkO67Tf9eZ6yDMjp6/4e52bKS0Ks2vNAyQLf+hPx
-	 ZMjHnx615vnEA==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
+	b=knOY+Gi223BPJ4Tvih1evj2OSeaF5P6zcFgDAyjXpgbYQ4Mh0hIS2g+c00gB/eQEh
+	 u7upkEyny6/K8T+scWUOQeUixpGnynKlUWfRTX0iA/KnycVTGYX6RYTK6ZuQebDC4R
+	 2nk9Nm47p/OzFYhgmbTrCHzVOo9roJOrGq1djpnR0wPVHDYAto+dDXwzNn92AOOVte
+	 B/mihfKE8PUCKfUbOwIuiVVyX9xwA3CK2iWxk1XeOzo4GszZBZ0ykgEt6HBjlYCAdS
+	 VmuxwbXJHxF+Uq3VLy4Gc6JHCJdRmMUcMAho6zy1M5FoMttw1di1/4816b731cAZkj
+	 z44E2JwJ4jzXA==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	kernel@collabora.com,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Akihiko Odaki <akihiko.odaki@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Jiaxin Yu <jiaxin.yu@mediatek.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Miaoqian Lin <linmq006@gmail.com>,
+	Takashi Iwai <tiwai@suse.com>,
+	Trevor Wu <trevor.wu@mediatek.com>,
+	Tzung-Bi Shih <tzungbi@google.com>,
+	alsa-devel@alsa-project.org,
+	"chunxu.li" <chunxu.li@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Cc: =?UTF-8?q?Ma=C3=ADra=20Canal?= <mairacanal@riseup.net>,
-	ye xingchen <ye.xingchen@zte.com.cn>
-Subject: [GIT PULL] mediatek drm next for 6.1
-Date: Fri, 23 Sep 2022 07:48:04 +0800
-Message-Id: <20220922234804.18557-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.25.1
+Subject: [PATCH 0/6] ASoC: mediatek: Allow separate handling of headphone and headset mic jack
+Date: Thu, 22 Sep 2022 19:59:45 -0400
+Message-Id: <20220922235951.252532-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_164814_816788_1500776A 
-X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-CacheID: sfid-20220922_170014_251753_3B90FDDA 
+X-CRM114-Status: UNSURE (   7.84  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,43 +85,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
 
-This includes:
+This series allows the headphone and headset mic jack status to be
+handled separately by userspace on MT8192, MT8195 and MT8186.
 
-1. Drop of_gpio header
-2. Remove the unneeded result
+Changes based on commit d0508b4f1604 ("ASoC: rk3399_gru_sound: Add DAPM
+pins, kcontrols for jack detection"). Found while searching for an
+alternative for JackSwitch [1].
 
-Regards,
-Chun-Kuang.
+[1] https://lore.kernel.org/all/b98a8a77-7652-1995-27ba-eb7b6d30202a@gmail.com/
 
-The following changes since commit 568035b01cfb107af8d2e4bd2fb9aea22cf5b868:
 
-  Linux 6.0-rc1 (2022-08-14 15:50:18 -0700)
+Nícolas F. R. A. Prado (6):
+  ASoC: mediatek: mt8192-mt6359: Expose individual headset jack pins
+  ASoC: mediatek: mt8195: Expose individual headset jack pins
+  ASoC: mediatek: mt8186-da7219: Add headset widgets with switches
+  ASoC: mediatek: mt8186-da7219: Expose individual headset jack pins
+  ASoC: mediatek: mt8186-rt5682: Add headset widgets with switches
+  ASoC: mediatek: mt8186-rt5682: Expose individual headset jack pins
 
-are available in the Git repository at:
+ .../mt8186/mt8186-mt6366-da7219-max98357.c    | 25 +++++++++++++++++--
+ .../mt8186/mt8186-mt6366-rt1019-rt5682s.c     | 25 +++++++++++++++++--
+ .../mt8192/mt8192-mt6359-rt1015-rt5682.c      | 17 +++++++++++--
+ sound/soc/mediatek/mt8195/mt8195-mt6359.c     | 17 +++++++++++--
+ 4 files changed, 76 insertions(+), 8 deletions(-)
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-6.1
+-- 
+2.37.3
 
-for you to fetch changes up to 9d3feb63339520462583a4c7ee5130046ab515ad:
-
-  drm/mediatek: Remove the unneeded result (2022-08-26 07:34:49 +0800)
-
-----------------------------------------------------------------
-Mediatek DRM Next for Linux 6.1
-
-1. Drop of_gpio header
-2. Remove the unneeded result
-
-----------------------------------------------------------------
-Maíra Canal (1):
-      drm/mediatek: Drop of_gpio header
-
-ye xingchen (1):
-      drm/mediatek: Remove the unneeded result
-
- drivers/gpu/drm/mediatek/mtk_dpi.c     | 1 -
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 5 +----
- drivers/gpu/drm/mediatek/mtk_hdmi.c    | 1 -
- 3 files changed, 1 insertion(+), 6 deletions(-)
 
