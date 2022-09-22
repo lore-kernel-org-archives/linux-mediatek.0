@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 290E4C6FA8B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 07:25:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53961C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 07:30:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=heT1yYkOFMbSNl9p1tUeIJ+n84IMpfX542IeC5oyJ0Q=; b=X9PkH3BU+gwVNbISC9scbRXQXH
-	Y8Mu6miLuF7lrPHMtz0MLy9yNGQSNEcKZt9iRFUrQCKxZYuXx0ZGsxUYRExdJCMnhJAipXNa4hg+m
-	8EKYsWzEXytex9Xm3FEgbwiJyY29a0U70ulOK7N2nqQt1kvzFrHBgv/TmnEP2t9pBAMRYOUqr4LmQ
-	mP8kitmF+5EGGJAZy3qzDKZMKCgLqvjf0a+prrMnm7X4qrJ02ZavahE52berNHih1x2JUSBMbHMW7
-	059P+WraeLt5OoawNhDUV6Sc0vzBWCbUI4OxrPI+is5USldJtCqVZqGirOHD1byofoDkD706FpyGK
-	gvetlVFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3nuqawZO/oysx683uHs52mHGHfy7Wf+8CTWtHYZPslY=; b=HGPCGdn8nASGlD4mTFgQYMCT9j
+	9h5x3R++6teGKZJEb51AEA6LK4fKg8n+TbViJny6mH1e3o4tDt1rJwlFMD+fjnFDlnsLbvsHwlnER
+	tlGpE0ynWLydA0EOZ0eHS4OfiLX99kIcSvBqeVoQR8kBDHuilT0TjaA5ivj2YBl7HwFNghP4HP0Jk
+	Wc3HyniJftEF0Ez4QflfQT6mid8YE1a2kEDkdJ0y9SMzNQO6c4XRGgOWhafPMclgdg5f9KKboL8qX
+	VJaX2HoMAli5AIjO+r+tLRQthhxgGZSVNzAs6+JFDPujRNgsH4bJv3AYXOrrxgOdRmbbc6FJUKc64
+	coqDHu1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obGaG-00Doyd-L0; Thu, 22 Sep 2022 07:25:20 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1obGfQ-00Dquw-Og; Thu, 22 Sep 2022 07:30:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obGaC-00Doty-MN
-	for linux-mediatek@lists.infradead.org; Thu, 22 Sep 2022 07:25:18 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 29EB96601A43;
-	Thu, 22 Sep 2022 08:25:10 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663831510;
-	bh=KWphtaFojHC1LO0kVmsxuJ57Y28jan/tm0HeYuklWDE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MV/qHivnH6SHgT2+yfCnLT+HI3kYQMDRRfyUQAXm/Bq2woN6g3mIKo4FBd1vsjmVc
-	 D4bB9ZzHUp89cCQilxkA7fU8v/lYvQpFH424iOziuOYlFp4qFponusugn8raUhrCyl
-	 38FHuM/egLkUiuM0QglIbgIEYIIDhzXiYJ0sIrnXbH6TrjqZqeIcvkW1ygTRH4C1Uj
-	 ioOvGqbz9LeOz9iJJHbK2HJvfT01ZRwm14QVQj+nazOsJJeu28qTf1X4Sh9I3Xil//
-	 J4BK0V0Oji6YpLXoxtttI/jT+Pv7C/YsG1nWVmiLyFCoQ18E2IWXzJIeo3bF31ie7K
-	 1NS85lFoXjdvQ==
-Message-ID: <eb797605-0310-1c8b-28ae-eabc17901e65@collabora.com>
-Date: Thu, 22 Sep 2022 09:25:07 +0200
+	id 1obGev-00Dqks-AL; Thu, 22 Sep 2022 07:30:11 +0000
+X-UUID: dff527b5707f41a3a387ab20ae5c7745-20220922
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3nuqawZO/oysx683uHs52mHGHfy7Wf+8CTWtHYZPslY=;
+	b=cTfbohB2B1ima4diY8dB265PlT0Je0MrT4JpJNbjXPVUPlE3ZUzhKLENsZElVi/wpeWob89jUUVglwla36nGdlSnMXY70Xdn/AuyKGDW1DPZjyYOUI2hay3CPaNPyYavi1gxYzsjPMZiypZOJ2fGtCeCUzXoXeUj4HVnnFoQ30Q=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:85af519b-e709-4333-b9a1-d719d3d87c48,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:43fddbe3-87f9-4bb0-97b6-34957dc0fbbe,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: dff527b5707f41a3a387ab20ae5c7745-20220922
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 853724361; Thu, 22 Sep 2022 00:30:03 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 22 Sep 2022 15:29:36 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Thu, 22 Sep 2022 15:29:36 +0800
+From: <xinlei.lee@mediatek.com>
+To: <matthias.bgg@gmail.com>, <jason-jh.lin@mediatek.com>,
+	<angelogioacchino.delregno@collabora.com>, <rex-bc.chen@mediatek.com>,
+	<ck.hu@mediatek.com>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+	<daniel@ffwll.ch>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<jitao.shi@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>
+Subject: [PATCH v7,3/3] drm: mediatek: Add mt8186 dpi compatible to
+Date: Thu, 22 Sep 2022 15:29:24 +0800
+Message-ID: <1663831764-18169-4-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1663831764-18169-1-git-send-email-xinlei.lee@mediatek.com>
+References: <1663831764-18169-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH -next] power: supply: mt6370: Fix return value check in
- mt6370_chg_probe()
-Content-Language: en-US
-To: Yang Yingliang <yangyingliang@huawei.com>, linux-pm@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Cc: sre@kernel.org, chiaen_wu@richtek.com
-References: <20220921152915.1506767-1-yangyingliang@huawei.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220921152915.1506767-1-yangyingliang@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_002516_921027_9923906A 
-X-CRM114-Status: UNSURE (   7.35  )
+X-CRM114-CacheID: sfid-20220922_003009_387612_CB848AEF 
+X-CRM114-Status: UNSURE (   9.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,15 +83,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/09/22 17:29, Yang Yingliang ha scritto:
-> If create_singlethread_workqueue() fails, it returns a null pointer,
-> replace IS_ERR() check with NULL pointer check.
-> 
-> Fixes: 233cb8a47d65 ("power: supply: mt6370: Add MediaTek MT6370 charger driver")
-> Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
-> Reviewed-by: ChiaEn Wu <chiaen_wu@richtek.com>
+From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Add the compatible because use edge_cfg_in_mmsys in mt8186.
 
+Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c     | 21 +++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c |  2 ++
+ 2 files changed, 23 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index bd1870a8504a..2fcf7a61c340 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -941,6 +941,24 @@ static const struct mtk_dpi_conf mt8183_conf = {
+ 	.csc_enable_bit = CSC_ENABLE,
+ };
+ 
++static const struct mtk_dpi_conf mt8186_conf = {
++	.cal_factor = mt8183_calculate_factor,
++	.reg_h_fre_con = 0xe0,
++	.max_clock_khz = 150000,
++	.output_fmts = mt8183_output_fmts,
++	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
++	.edge_cfg_in_mmsys = true,
++	.pixels_per_iter = 1,
++	.is_ck_de_pol = true,
++	.swap_input_support = true,
++	.support_direct_pin = true,
++	.dimension_mask = HPW_MASK,
++	.hvsize_mask = HSIZE_MASK,
++	.channel_swap_shift = CH_SWAP,
++	.yuv422_en_bit = YUV422_EN,
++	.csc_enable_bit = CSC_ENABLE,
++};
++
+ static const struct mtk_dpi_conf mt8192_conf = {
+ 	.cal_factor = mt8183_calculate_factor,
+ 	.reg_h_fre_con = 0xe0,
+@@ -1091,6 +1109,9 @@ static const struct of_device_id mtk_dpi_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8183-dpi",
+ 	  .data = &mt8183_conf,
+ 	},
++	{ .compatible = "mediatek,mt8186-dpi",
++	  .data = &mt8186_conf,
++	},
+ 	{ .compatible = "mediatek,mt8192-dpi",
+ 	  .data = &mt8192_conf,
+ 	},
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 546b79412815..3d32fbc66ac1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -646,6 +646,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt8183-dpi",
+ 	  .data = (void *)MTK_DPI },
++	{ .compatible = "mediatek,mt8186-dpi",
++	  .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt8192-dpi",
+ 	  .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt8195-dp-intf",
+-- 
+2.18.0
 
 
