@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 748EFC6FA82
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 05:51:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74E1FC6FA8B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 06:31:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V/4+Moo1S3nQcLY9jDjtjnWEDd9L/Kw2aufNRHGosCA=; b=KcghWhWC6G46zHEjRML0cpQFhl
-	9A/156IL8quT3Z3eXnVOLouagi8rXCWuiTLswUHhqFIjtSQy9cebA5kJX/2DNhxr/mtwj4sRJRz1j
-	jLNnvJYcPbrTA+AuvHQ3Zi8QA3nPll+h0NyKI3Gk0R0PxTFonCRal9iyoUSb1PhIFiIHU5Rz6OyqM
-	gjK8yHxTri8GQZfweukn7Ek2YzMb0DTgXkTUzD6PHjsupax1AWROqQGOyNGHbrDbjHO8dIdPIRaYx
-	FX9GLWdHoiwuWze/TpgXr6BdLndcih/KqkTaBUySChvKOA/81xuMLjEzKef2FvnnhNsWdB4r0G232
-	rEqcjPXw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Xnw6MILr6W2VKVd3Jp7ZUysLH8fGhtVKg7zkvqQm4t4=; b=sWGlciJbBYRJGaJgpW2heCzdHj
+	5eLcgDw4ao+5k5ATY8cnpX1W9sOyW7qr2czFOYoDPKdsEdM24+KkaS56ZLnGCemcX+BBapJvOkwMJ
+	Od6G+2PX3QB/qbE3ncOpo8OPItZtMxzkzD51CsYXWr7FiRBEYR39J339CVjIRN/nhiLTuZkXbYiFt
+	+Wwx70giwYpnDfdoHbdWmploIHZFmDR0H+L1olrCRyO8Pl8GVE3XdxxqDNpbworhQHg7zWH2+PZdW
+	2dT2o93+vU2ArAb3rYqxfZtPt9QttknJyLFbqsBP6nNYXmjfigXmpvCAoaBLqBPnG3GRawzL9Ksij
+	h98NBLpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obF7d-00DSuQ-VM; Thu, 22 Sep 2022 05:51:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1obFkF-00DZLr-Bl; Thu, 22 Sep 2022 06:31:35 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obF7Z-00DSrD-S5; Thu, 22 Sep 2022 05:51:40 +0000
-X-UUID: 6bfc14f3880a4988b888c56b28fd7f21-20220921
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=V/4+Moo1S3nQcLY9jDjtjnWEDd9L/Kw2aufNRHGosCA=;
-	b=Zo90xoefOKJHvtfEFcDTAqWFMMlSWhYdihn9YUwakBoC7hSj65xFQOnkygZWjRWo+0MaOfGzMIuyKHdO04SqksKYo04Q/Ql+ZbID6f3GpTsr00YT5rq3AD7qAoZiR0Fhzx7za2FPjitpJ6vUJJ8lOcjWUAYbbUvnHd5+FHK+MKU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:04bf92d0-f89d-4265-ba74-6378ad223090,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:7d73d8e3-87f9-4bb0-97b6-34957dc0fbbe,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 6bfc14f3880a4988b888c56b28fd7f21-20220921
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jing-ting.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1371594570; Wed, 21 Sep 2022 22:51:20 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 22 Sep 2022 13:40:47 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 22 Sep 2022 13:40:47 +0800
-Message-ID: <93f4ce9486ec4b856ba0f3bfe956fc9b2d3cb4cf.camel@mediatek.com>
-Subject: Re: BUG: HANG_DETECT waiting for migration_cpu_stop() complete
-From: Jing-Ting Wu <jing-ting.wu@mediatek.com>
-To: Hillf Danton <hdanton@sina.com>
-CC: Peter Zijlstra <peterz@infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mm@kvack.org>, Waiman Long <longman@redhat.com>, ValentinSchneider
-	<vschneid@redhat.com>, TejunHeo <tj@kernel.org>, <wsd_upstream@mediatek.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Jonathan.JMChen@mediatek.com>, "chris.redpath@arm.com"
-	<chris.redpath@arm.com>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	"Vincent Donnefort" <vdonnefort@gmail.com>, Ingo Molnar <mingo@redhat.com>,
-	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
-	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, Mel
- Gorman <mgorman@suse.de>, Christian Brauner <brauner@kernel.org>,
-	<cgroups@vger.kernel.org>, <lixiong.liu@mediatek.com>,
-	<wenju.xu@mediatek.com>
-Date: Thu, 22 Sep 2022 13:40:47 +0800
-In-Reply-To: <20220907000741.2496-1-hdanton@sina.com>
-References: <20220907000741.2496-1-hdanton@sina.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1obFk3-00DZH7-D6
+	for linux-mediatek@lists.infradead.org; Thu, 22 Sep 2022 06:31:25 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id s14-20020a17090a6e4e00b0020057c70943so1207406pjm.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 21 Sep 2022 23:31:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date;
+        bh=Xnw6MILr6W2VKVd3Jp7ZUysLH8fGhtVKg7zkvqQm4t4=;
+        b=WGommxrifMvA/kM4kjqq6uPUQrY6GFkb6wIEGC+PLhIt3eCgBm5hjCKk0059s4Z2sK
+         D5Pl1EPJAmS0ifrGpeh3PosyuZzvKuAQE415eZn+umOhMirZKr93F1ZIafVVykH3Xx/f
+         4kj0tSeuOlcWpA0qaOxZPYr6eEjdWfMZMkcSE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date;
+        bh=Xnw6MILr6W2VKVd3Jp7ZUysLH8fGhtVKg7zkvqQm4t4=;
+        b=caaIelH0zZqjjFxzuEof0AfxU1JxH75feSc1JU0iwdqt3gVSyyv5HXB5nFeNy/xDyb
+         1IbxVSbR+4kr5fLI0OC0Nj3f+wwxON9tzi78rhLTbtSn79FDU4vlt+egPWSea/heYL8V
+         pa8FIffL0gcXCeKAXSIEHniEilHeRiurCmUNFQ+VOSpvJgiiVBl7ophbik6XJ+ApBldh
+         u1VOcpiXFwjfqXlejVzAuI9PVYGEdbYyKmk9AlFWuxKyGU98dY23iLdVnC7lDZrTjdZ+
+         +fiC0/eDqBgB5sseALBn/ErWWKu/RY1mTx0KQjjWtz5bv8P5R4yO0OLsxZneqIOitkad
+         2TVQ==
+X-Gm-Message-State: ACrzQf1XAcaBDX7sAng+MwC8du342y1q4N8dWTgjHEpEZwCC+GhFBc45
+	6QKVT9yk9Asjvmm8guIPMvtJDw==
+X-Google-Smtp-Source: AMsMyM4Qwx0beP5McoZOdw/lv4HBb6VkvZcrV3PoFo1r+Q3teNXlkgvMfkc+UHseZsEevOssz7sjHg==
+X-Received: by 2002:a17:902:850a:b0:178:b276:aab8 with SMTP id bj10-20020a170902850a00b00178b276aab8mr1794489plb.15.1663828281538;
+        Wed, 21 Sep 2022 23:31:21 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:766b:ba78:a17b:7060])
+        by smtp.gmail.com with ESMTPSA id l5-20020a17090a660500b002005114fbf5sm2937326pjj.22.2022.09.21.23.31.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 21 Sep 2022 23:31:19 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: mediatek: mt8192: Mark scp_adsp clock as broken
+Date: Thu, 22 Sep 2022 14:31:11 +0800
+Message-Id: <20220922063111.1672515-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.37.3.968.ga6b4b080e4-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_225137_932229_C4938638 
-X-CRM114-Status: GOOD (  20.13  )
+X-CRM114-CacheID: sfid-20220921_233123_447085_4803B216 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,119 +87,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-09-07 at 08:07 +0800, Hillf Danton wrote:
-> On 5 Sep 2022 10:47:36 +0800 Jing-Ting Wu <jing-ting.wu@mediatek.com>
-> wrote
-> > 
-> > We meet the HANG_DETECT happened in T SW version with kernel-5.15.
-> > Many tasks have been blocked for a long time.
-> > 
-> > Root cause:
-> > migration_cpu_stop() is not complete due to
-> > is_migration_disabled(p) is
-> > true, complete is false and complete_all() never get executed.
-> > It let other task wait the rwsem.
-> 
-> See if handing task over to stopper again in case of migration
-> disabled
-> could survive your tests.
-> 
-> Hillf
-> 
-> --- linux-5.15/kernel/sched/core.c
-> +++ b/kernel/sched/core.c
-> @@ -2322,9 +2322,7 @@ static int migration_cpu_stop(void *data
->  	 * holding rq->lock, if p->on_rq == 0 it cannot get enqueued
-> because
->  	 * we're holding p->pi_lock.
->  	 */
-> -	if (task_rq(p) == rq) {
-> -		if (is_migration_disabled(p))
-> -			goto out;
-> +	if (task_rq(p) == rq && !is_migration_disabled(p)) {
->  
->  		if (pending) {
->  			p->migration_pending = NULL;
+The scp_adsp clock controller is under the SCP_ADSP power domain. This
+power domain is currently not supported nor defined.
 
-Because Peter have some concern for patch by Waiman.
-We add Hillf's patch to our stability test.
-But there are side effects after patched.
-The warning appear once < two weeks. 
+Mark the clock controller as broken for now, to avoid the system from
+trying to access it, and causing the CPU or bus to stall.
 
-Backtrace as follows:
-[name:panic&]WARNING: CPU: 6 PID: 32583 at affine_move_task
-pc : affine_move_task
-lr : __set_cpus_allowed_ptr_locked
-Call trace:
-affine_move_task
-__set_cpus_allowed_ptr_locked
-migrate_enable
-__cgroup_bpf_run_filter_skb
-ip_finish_output
-ip_output
+Fixes: 5d2b897bc6f5 ("arm64: dts: mediatek: Add mt8192 clock controllers")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-
-The root cause is when is_migration_disabled(p) is true，the patched
-version will set p->migration_pending to NULL by migration_cpu_stop.
-And in affine_move_task will raise a WARN_ON_ONCE(!pending).
-
-Kernel-5.15/kernel/sched/core.c:
-static int affine_move_task(struct rq *rq, struct task_struct *p,
-struct rq_flags *rf, int dest_cpu, unsigned int flags) {
-...
-	If (WARN_ON_ONCE(!pending)) {
- 	  Task_rq_unlock(rq,p,fr);
-  	  return -EINVAL;
-	}
-...
-}
-
-But the tasks have not been migrated to the new affinity CPU, so there
-should be pending tasks to be processed, so p->migration_pending should
-not be NULL.
-
-
-
-Without patch:
-When is_migration_disabled is true, then goto out and not set p-
->migration_pending to NULL.
-
-static int migration_cpu_stop(void *data) {
-...
-	If (task_rq(p) == rq) {
-        	     if (is_migration_disabled(p))
-                	           goto out;
-	}
-...
-}
-
-
-With patch:
-When is_migration_disabled is true and pending is true, goto else if
-flow. Because p->cpus_ptr not updated when migrate_disable, so this
-condition is always true and p->migration_pending will set to NULL.
-
-static int migration_cpu_stop(void *data) {
-...
-	If (task_rq(p) == rq && !is_migration_disabled(p) ) {
- 	  ...
-	} else if (pending) {
-	  ...
-	  If (cpumask_test_cpu(task_cpu(p), p-> cpus_ ptr)) { 
-        	p->migration_pending = NULL;
-      		 complete = true;
-      		 goto out;
-	}
-...
-}
-
-
-
-
-
-
-Best regards,
-Jing-Ting Wu
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 6b20376191a7..ef91941848ae 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -575,6 +575,8 @@ scp_adsp: clock-controller@10720000 {
+ 			compatible = "mediatek,mt8192-scp_adsp";
+ 			reg = <0 0x10720000 0 0x1000>;
+ 			#clock-cells = <1>;
++			/* power domain dependency not upstreamed */
++			status = "broken";
+ 		};
+ 
+ 		uart0: serial@11002000 {
+-- 
+2.37.3.968.ga6b4b080e4-goog
 
 
