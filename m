@@ -4,52 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D21DC6FA82
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 09:51:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B50BC6FA82
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 09:53:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3cDQVA9bjdmMpcOqCndMC32qsr5AQsK3J0savjTAlgE=; b=OGdM6fI5xpufkWqA4NqyXy+LwK
-	EXWkGhaoinGYn3pnYRjYTFOpBVnWWsIopB2NVUM5U2c8C6CvkVmjvzKkrtV5ZkdR8nXfv6HRQvny9
-	114Zmhc9Gn5OHIHBDUA3drcxIc0v/1n8sxSN72Bs90TSCLfmbgHXe5f7V2tysqbLEayTwYyeTO21L
-	WGAEH0JPNea/u0HTXnN4NNEizqG0/lEGbZWo3XV1UsX48IEWYUq5WYNSWW9+vlOHOiAU13GSAbU/L
-	+uYd1n4is0NagNMxyOnKMCNbwpV5kx6E/aRS6zsB88sK0zEq8lfo3bgiTtLoFIBmZwW2uZJeAUHpW
-	s+3Grhpw==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eWT6NwkCN14h5TB+EPf73NJ/zNEFhEtNm5sSgc935zg=; b=EJwOCZli8GKUU1KbLWIJJJkyLa
+	FlMk+cvJVItJ8DixwkxZsF5PpC/31OfxSDWeQxmHVJMqZle+m1yTepIdtqBSbvXEFdWidIYP8p7+U
+	IY2+AquqemgSOnP00cOmvP9fud9PHvEsIKMpx0RF0MuPaHHl79u93Tg6CGEp2hhmXaN5XiSlPw0xy
+	4hyJohTJ+650nnR6d1nrhtGeOZpGlQBPw7R0Y9YbkZDB/wGTJu45Ugpst9YbKE1iQouWYffSdB6h2
+	tZAKQh8MM8AAOiRhalREBiuKOh9sn/s58exAQCOc3VFbHbDBwEBIyMyfTBqF+g2Do31H4eyfjyIFh
+	CDDmPJtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obIrr-00EZtb-1Y; Thu, 22 Sep 2022 09:51:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1obIts-00Eaep-Tu; Thu, 22 Sep 2022 09:53:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obIVx-00ESPD-Qo; Thu, 22 Sep 2022 09:29:03 +0000
-X-UUID: f95fd03739fa4e36934d2be34add986e-20220922
+	id 1obIWK-00ESWm-8F; Thu, 22 Sep 2022 09:29:25 +0000
+X-UUID: c721081f223c4bd69fc946561297c24d-20220922
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3cDQVA9bjdmMpcOqCndMC32qsr5AQsK3J0savjTAlgE=;
-	b=QMcZFkuz1Z7QeHcUpmSsDkvZpNJ/rOdUemNteu1CLJe9R0GWQ2itT2DCnW9uXjGWNySpiUgZsNHdUU0wl2DxO4DdJNtvDB6EWVE4keK/igXUYK6r9MoQ4VbU0LECw3zcgKN76l4iUMO9odNchmrvVqnZuQTuI+AG5a3/UdhLLyA=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=eWT6NwkCN14h5TB+EPf73NJ/zNEFhEtNm5sSgc935zg=;
+	b=S1eTPjDUTNUv7S3uPlBLxFih6TcQvPEr2vLY9cP03DRCQSAFt0GJpNHRn2KFsExRVMtyot8KGfFHnd85HbYqpwFFlepNjhNa6mmfDjJ0TvEH86D1JhB+PWOlFBCYxyYPPf8KD0Bwbia5AgEaNJIHb3DQ2dSMcWNgoLFWpR3LbFw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:b283c4db-9b8e-43fe-bef4-3cdfeafd2dc1,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.11,REQID:b283c4db-9b8e-43fe-bef4-3cdfeafd2dc1,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:39a5ff1,CLOUDID:3a65e0e3-87f9-4bb0-97b6-34957dc0fbbe,B
-	ulkID:220922172753P8QVV2UV,BulkQuantity:4,Recheck:0,SF:28|17|19|48,TC:nil,
-	Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
-X-UUID: f95fd03739fa4e36934d2be34add986e-20220922
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-CID-O-INFO: VERSION:1.1.11,REQID:d9891728-d57f-4228-8cf2-66664cc4ef14,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:39a5ff1,CLOUDID:e9adb9a2-dc04-435c-b19b-71e131a5fc35,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c721081f223c4bd69fc946561297c24d-20220922
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <jianguo.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1757074855; Thu, 22 Sep 2022 02:28:58 -0700
+	with ESMTP id 1760449323; Thu, 22 Sep 2022 02:29:20 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 22 Sep 2022 17:27:52 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 22 Sep 2022 16:29:16 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 22 Sep 2022 17:27:51 +0800
+ Transport; Thu, 22 Sep 2022 16:29:15 +0800
 From: Jianguo Zhang <jianguo.zhang@mediatek.com>
 To: "David S . Miller" <davem@davemloft.net>, Rob Herring
 	<robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -64,21 +61,19 @@ CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-stm32@st-md-mailman.stormreply.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Jianguo Zhang <jianguo.zhang@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>
-Subject: [resend PATCH v4 1/2] dt-bindings: net: mediatek-dwmac: add support for mt8188
-Date: Thu, 22 Sep 2022 17:27:42 +0800
-Message-ID: <20220922092743.22824-2-jianguo.zhang@mediatek.com>
+	Jianguo Zhang <jianguo.zhang@mediatek.com>
+Subject: [PATCH v4 0/2]  Mediatek ethernet patches for mt8188
+Date: Thu, 22 Sep 2022 16:29:04 +0800
+Message-ID: <20220922082906.800-1-jianguo.zhang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220922092743.22824-1-jianguo.zhang@mediatek.com>
-References: <20220922092743.22824-1-jianguo.zhang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_022901_928926_8008CA6F 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20220922_022924_361235_8C9C91DC 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,58 +88,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding document for the ethernet on mt8188
+Changes in v4:
 
-Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
+v4:
+1) Update the commit message of patch 'dt-bindings: net: snps,dwmac: add clk_csr property'
+as Krzysztof Kozlowski'comment.
+
+v3:
+1) List the names of SoCs mt8188 and mt8195 in correct order as
+AngeloGioacchino Del Regno's comment.
+2) Add patch version info as Krzysztof Kozlowski'comment.
+
+v2:
+1) Delete patch 'stmmac: dwmac-mediatek: add support for mt8188' as
+Krzysztof Kozlowski's comment.
+2) Update patch 'dt-bindings: net: mediatek-dwmac: add support for
+mt8188' as Krzysztof Kozlowski's comment.
+3) Add clk_csr property to fix warning ('clk_csr' was unexpected) when
+runnig 'make dtbs_check'.
+
+Jianguo Zhang (2):
+  dt-bindings: net: mediatek-dwmac: add support for mt8188
+  dt-bindings: net: snps,dwmac: add clk_csr property
+
  .../devicetree/bindings/net/mediatek-dwmac.yaml        | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/net/snps,dwmac.yaml  |  5 +++++
+ 2 files changed, 13 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-index 61b2fb9e141b..0fa2132fa4f4 100644
---- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-@@ -19,6 +19,7 @@ select:
-       contains:
-         enum:
-           - mediatek,mt2712-gmac
-+          - mediatek,mt8188-gmac
-           - mediatek,mt8195-gmac
-   required:
-     - compatible
-@@ -37,6 +38,11 @@ properties:
-           - enum:
-               - mediatek,mt8195-gmac
-           - const: snps,dwmac-5.10a
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-gmac
-+          - const: mediatek,mt8195-gmac
-+          - const: snps,dwmac-5.10a
- 
-   clocks:
-     minItems: 5
-@@ -74,7 +80,7 @@ properties:
-       or will round down. Range 0~31*170.
-       For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
-       or will round down. Range 0~31*550.
--      For MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
-+      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
-       or will round down. Range 0~31*290.
- 
-   mediatek,rx-delay-ps:
-@@ -84,7 +90,7 @@ properties:
-       or will round down. Range 0~31*170.
-       For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
-       or will round down. Range 0~31*550.
--      For MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple
-+      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple
-       of 290, or will round down. Range 0~31*290.
- 
-   mediatek,rmii-rxc:
--- 
+--
 2.25.1
+
 
 
