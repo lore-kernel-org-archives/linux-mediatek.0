@@ -4,75 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74E1FC6FA8B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 06:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD21DC6FA90
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 06:38:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Xnw6MILr6W2VKVd3Jp7ZUysLH8fGhtVKg7zkvqQm4t4=; b=sWGlciJbBYRJGaJgpW2heCzdHj
-	5eLcgDw4ao+5k5ATY8cnpX1W9sOyW7qr2czFOYoDPKdsEdM24+KkaS56ZLnGCemcX+BBapJvOkwMJ
-	Od6G+2PX3QB/qbE3ncOpo8OPItZtMxzkzD51CsYXWr7FiRBEYR39J339CVjIRN/nhiLTuZkXbYiFt
-	+Wwx70giwYpnDfdoHbdWmploIHZFmDR0H+L1olrCRyO8Pl8GVE3XdxxqDNpbworhQHg7zWH2+PZdW
-	2dT2o93+vU2ArAb3rYqxfZtPt9QttknJyLFbqsBP6nNYXmjfigXmpvCAoaBLqBPnG3GRawzL9Ksij
-	h98NBLpA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qyfZU/JafD8o6/SPahDQv0jUqUXGqfaIFI7Q3Ul2auI=; b=K9Igso76eVbNnmUduMbBlKLs0F
+	gyr03qasHDWkGYGi7zlPb+6UdVd6tgLNdvchrMOqJ4TbA6AEojtvvUHMi/lLeEm+x5hF0PRRy6i5y
+	TUPBd55pBLpXIP5i+AcRSvrcZZ5Xw15/55oUdOWaJBWEEo7fHWf4NGrm81qJlLYmedqkidXzKph1D
+	cVnNv/ox60vmfdoXB1zULQx/U93YdNtrVEGDEppHdvbPV1zoBdsYfXV2tg8qPdMvm+sgfv7mFBGKG
+	ddseVWHZorXEVg70/30NGu2WxYItfQnrS7ceMu0X3ocXOafgOaklbT9KzYHQaS8cOXsPEQ8e9hjZ2
+	WDHxospw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obFkF-00DZLr-Bl; Thu, 22 Sep 2022 06:31:35 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1obFqh-00DbHR-H6; Thu, 22 Sep 2022 06:38:15 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obFk3-00DZH7-D6
-	for linux-mediatek@lists.infradead.org; Thu, 22 Sep 2022 06:31:25 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id s14-20020a17090a6e4e00b0020057c70943so1207406pjm.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 21 Sep 2022 23:31:22 -0700 (PDT)
+	id 1obFqe-00DbFH-IG
+	for linux-mediatek@lists.infradead.org; Thu, 22 Sep 2022 06:38:13 +0000
+Received: by mail-lj1-x232.google.com with SMTP id z20so9799274ljq.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 21 Sep 2022 23:38:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date;
-        bh=Xnw6MILr6W2VKVd3Jp7ZUysLH8fGhtVKg7zkvqQm4t4=;
-        b=WGommxrifMvA/kM4kjqq6uPUQrY6GFkb6wIEGC+PLhIt3eCgBm5hjCKk0059s4Z2sK
-         D5Pl1EPJAmS0ifrGpeh3PosyuZzvKuAQE415eZn+umOhMirZKr93F1ZIafVVykH3Xx/f
-         4kj0tSeuOlcWpA0qaOxZPYr6eEjdWfMZMkcSE=
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=qyfZU/JafD8o6/SPahDQv0jUqUXGqfaIFI7Q3Ul2auI=;
+        b=kkd99uZxOdiNalyDhr8+He7hgk7NzeStc8HhuMSENnPjGg5C366/cLNg/a268b7aRY
+         5FH1wAENXzz80lUMaNZ306V8yotqdPqE3YxE+wPwcPDhlDX/Zson0A40UeuKXDaEEa8F
+         L7cQi8UJTDRbBnqgd8I43iHQZPLkC8E1iJvC343ZOsrcQJgik38mGMuP4nTykKe/bWc8
+         MuLJQaf1ByHh9wK7CDMgHOOgCCSwedl+graYTN5ROFJPlNKdnT3ku8gDe/hJj6le1JEZ
+         x3O5F/7rOwOxuRpFUxaZtGUBvdU10MfGNNDWhMvU/GmoKsV259wsEZWxn1a4tklEHtk2
+         xwIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date;
-        bh=Xnw6MILr6W2VKVd3Jp7ZUysLH8fGhtVKg7zkvqQm4t4=;
-        b=caaIelH0zZqjjFxzuEof0AfxU1JxH75feSc1JU0iwdqt3gVSyyv5HXB5nFeNy/xDyb
-         1IbxVSbR+4kr5fLI0OC0Nj3f+wwxON9tzi78rhLTbtSn79FDU4vlt+egPWSea/heYL8V
-         pa8FIffL0gcXCeKAXSIEHniEilHeRiurCmUNFQ+VOSpvJgiiVBl7ophbik6XJ+ApBldh
-         u1VOcpiXFwjfqXlejVzAuI9PVYGEdbYyKmk9AlFWuxKyGU98dY23iLdVnC7lDZrTjdZ+
-         +fiC0/eDqBgB5sseALBn/ErWWKu/RY1mTx0KQjjWtz5bv8P5R4yO0OLsxZneqIOitkad
-         2TVQ==
-X-Gm-Message-State: ACrzQf1XAcaBDX7sAng+MwC8du342y1q4N8dWTgjHEpEZwCC+GhFBc45
-	6QKVT9yk9Asjvmm8guIPMvtJDw==
-X-Google-Smtp-Source: AMsMyM4Qwx0beP5McoZOdw/lv4HBb6VkvZcrV3PoFo1r+Q3teNXlkgvMfkc+UHseZsEevOssz7sjHg==
-X-Received: by 2002:a17:902:850a:b0:178:b276:aab8 with SMTP id bj10-20020a170902850a00b00178b276aab8mr1794489plb.15.1663828281538;
-        Wed, 21 Sep 2022 23:31:21 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:766b:ba78:a17b:7060])
-        by smtp.gmail.com with ESMTPSA id l5-20020a17090a660500b002005114fbf5sm2937326pjj.22.2022.09.21.23.31.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 Sep 2022 23:31:19 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: mediatek: mt8192: Mark scp_adsp clock as broken
-Date: Thu, 22 Sep 2022 14:31:11 +0800
-Message-Id: <20220922063111.1672515-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.37.3.968.ga6b4b080e4-goog
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=qyfZU/JafD8o6/SPahDQv0jUqUXGqfaIFI7Q3Ul2auI=;
+        b=jUYS+rHW75dl/02y78a/O1XcspqK52RgFHdbO2kFTrOLqjSRrmf4QKG3magSje3iEg
+         +RpY9NtL6FSh+KtSMGytkdlnB9YNQtAUTuRi+g0xnCOvxgPQ2BGyUinjhumR/L8FkUPm
+         k1lSC7rw3chcIhxqdLVnd2Mgs4DM63VzlR5eIZAYjuwQb34yQKid7uLwvCo7CWSx4Jd4
+         ymkx/tF9bOFtEf3n+fqBNGklUxAY4v3XXeNK4qdQ/hvo4HAUJgXLOGRAjOmMW4XoW5g0
+         jgUMzEKQ95d+jQreREfNbvj6dn70tfo2Uy8K3iXzO2ixGedTyNf+X9OtTluwzs6hT53B
+         Ti8A==
+X-Gm-Message-State: ACrzQf26yt4biVuqyicgu7zkzmp4LdxBxSmR4BByQhqU3yU3yRAHn+3D
+	OME5eJHehXEjQ7Tv/9SVu2vjQg==
+X-Google-Smtp-Source: AMsMyM74j0aPxMSIE9NbVNKhB5RET6Vu035qf1/l0Aypj5PElvYZATE6ZCJU/M40ykreSuiv5OANYw==
+X-Received: by 2002:a2e:84d6:0:b0:26b:dce5:2fe5 with SMTP id q22-20020a2e84d6000000b0026bdce52fe5mr529732ljh.12.1663828688613;
+        Wed, 21 Sep 2022 23:38:08 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id b1-20020a056512070100b00493014c3d7csm767484lfs.309.2022.09.21.23.38.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 21 Sep 2022 23:38:07 -0700 (PDT)
+Message-ID: <821b3c30-6f1f-17c1-061c-8d3b3add0238@linaro.org>
+Date: Thu, 22 Sep 2022 08:38:06 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.2
+Subject: Re: [PATCH v3 2/2] dt-bindings: net: snps,dwmac: add clk_csr property
+Content-Language: en-US
+To: Jianguo Zhang <jianguo.zhang@mediatek.com>,
+ "David S . Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro
+ <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Biao Huang <biao.huang@mediatek.com>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20220921070721.19516-1-jianguo.zhang@mediatek.com>
+ <20220921070721.19516-3-jianguo.zhang@mediatek.com>
+ <bd460cfd-7114-b200-ab99-16fa3e2cff50@linaro.org>
+ <d231f64e494f4badf8bbe23130b25594376c9882.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <d231f64e494f4badf8bbe23130b25594376c9882.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_233123_447085_4803B216 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20220921_233812_635717_BED78939 
+X-CRM114-Status: GOOD (  17.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,32 +106,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The scp_adsp clock controller is under the SCP_ADSP power domain. This
-power domain is currently not supported nor defined.
+On 22/09/2022 04:15, Jianguo Zhang wrote:
+> Dear Krzysztof,
+> 
+> 	Thanks for your comment.
+> 
+> On Wed, 2022-09-21 at 10:24 +0200, Krzysztof Kozlowski wrote:
+>> On 21/09/2022 09:07, Jianguo Zhang wrote:
+>>> Add clk_csr property for snps,dwmac
+>>>
+>>> Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
+>>> ---
+>>>  Documentation/devicetree/bindings/net/snps,dwmac.yaml | 5 +++++
+>>>  1 file changed, 5 insertions(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+>>> b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+>>> index 491597c02edf..8cff30a8125d 100644
+>>> --- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+>>> +++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+>>> @@ -288,6 +288,11 @@ properties:
+>>>        is supported. For example, this is used in case of SGMII and
+>>>        MAC2MAC connection.
+>>>  
+>>> +  clk_csr:
+>>
+>> No underscores in node names. Missing vendor prefix.
+>>
+> We will remane the property name 'clk_csr' as 'snps,clk-csr' and
+> another driver patch is needed to align the name used in driver with
+> the new name. 
 
-Mark the clock controller as broken for now, to avoid the system from
-trying to access it, and causing the CPU or bus to stall.
+You did not say anything that you document existing property. Commit msg
+*must* explain why you are doing stuff in commit body.
 
-Fixes: 5d2b897bc6f5 ("arm64: dts: mediatek: Add mt8192 clock controllers")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+We should not be asking for this and for reason of clk_csr.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 6b20376191a7..ef91941848ae 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -575,6 +575,8 @@ scp_adsp: clock-controller@10720000 {
- 			compatible = "mediatek,mt8192-scp_adsp";
- 			reg = <0 0x10720000 0 0x1000>;
- 			#clock-cells = <1>;
-+			/* power domain dependency not upstreamed */
-+			status = "broken";
- 		};
- 
- 		uart0: serial@11002000 {
--- 
-2.37.3.968.ga6b4b080e4-goog
+Best regards,
+Krzysztof
 
 
