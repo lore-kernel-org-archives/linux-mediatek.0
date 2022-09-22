@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C78C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 11:26:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8F3AC54EE9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 11:30:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ioX9JrjBVDaJM6+VmB6UCP57bswCy2m471sF45g6WU4=; b=RuhI981FW6T+d11n7TXmcjhThG
-	KP0Tl9ZbXhUkBS12ufr5vYHOUuvNrsG7xWhfRjCh72IcFH3qTX88e/wftGpz1inXB3efxzmlAMwLO
-	Ma8Z3IsJ0aP6ypwVanHtky9ACuwyKBlwvU1sOScHCQSMLhBYb8+eCzOzTDpdJO9hLDfJtOf9jY/p2
-	YvFlRJkLdncmLXiCbaNL3oFyYCuXC96cFsEFyobex8fxwh3CznNw5m6DMcYuhdN9fRpQ93jMtMBPu
-	8HLKYfMOBPm6WafKhEwH1iBOAEbHa1lmTXhcVAe1iaueH3dCM2/XHOK7Xvjc/TLjEVbLt8JRrDE7b
-	+2kA3Ymg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n9ZAtVSZKWRlck6M7a8eaqdw0d4IUcoZBR+H4w7teLo=; b=MUG7vZnO6szbgTGkIN2jYHHei0
+	Gd1uRKUrYxfBOGYSz1nxcEROMz8kKxwBVG1a54ncZncFOY11L+SZ3Be4CNVZJ1CdlePn4LIzZTGap
+	lYy0OyFrakA4V4D0ZWKzxGAZbsAB7+7JdCJQ2BAPpJ22Xippk+sRFRGsyAGE9OVWE/AM6ToHxkKEU
+	uHA9p9RBB9ZQXG0pjxgxRt0AGm9aY0q3iZ4/HEL3xgralo20F35l4fFqoYG5ZiQzhI53Ly2Yxs+X9
+	XBj6553bYoWQ+gE+ixX1wZhdPICq+ls6aEjOtwBTeUSDXwpKn7nKOHB7Yo+adiFwBbe4oK5ZbotR2
+	T+JcM/zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obKLo-00F9Du-0B; Thu, 22 Sep 2022 11:26:40 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1obKPI-00F9ti-AW; Thu, 22 Sep 2022 11:30:16 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obKLd-00F9Bm-4t; Thu, 22 Sep 2022 11:26:30 +0000
+	id 1obKP7-00F9re-Vg; Thu, 22 Sep 2022 11:30:07 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 06474B81AE4;
-	Thu, 22 Sep 2022 11:26:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19E81C433C1;
-	Thu, 22 Sep 2022 11:26:23 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTPS id B528BCE1D28;
+	Thu, 22 Sep 2022 11:30:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE9D7C433D6;
+	Thu, 22 Sep 2022 11:29:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663845985;
-	bh=r0sKRJGzevBgLu3Rbdi7fUNAHgKJFzt2opqHR0c7spk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iRE4bI8A+0TnU1wE7Y8MT4qGFHaCrSvtI83L17WLv8Efu67EmK61r7AvprBhit1/U
-	 fr+VL/x0UinsCEj1F7wbkhrvvCD8dcUJXTJhKQxZk+NStLPNKF86qOO++Xl6AOPuND
-	 cY+4r6dYgdIJuln4W/atj2FZ7zrtzjXW1MuzDufYESpEuu1wYVqGwsiZq9v5lP86mW
-	 n0qcCkKyFlXs5pbba3kb0fTaswhqW/ia066CwIY8xIKa5CdHp99qSXkaJ8DWqWYSbG
-	 P4Mu7ocJKB1E8dMCLbk1Zk9bPDgjao1CoOyk2fXQoUa0B6uf6mxGaykpVPw/5a9Q0F
-	 arknxZp/qNlJw==
-Date: Thu, 22 Sep 2022 19:26:21 +0800
-From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: broonie@kernel.org, alsa-devel@alsa-project.org,
-	linux-kernel@vger.kernel.org, tiwai@suse.com, lgirdwood@gmail.com,
-	linux-mediatek@lists.infradead.org, trevor.wu@mediatek.com,
-	matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] ASoC: mediatek: mt8195-mt6359: Use snd_soc_pm_ops
- instead of custom ops
-Message-ID: <YyxGXXSp2JD9a6ah@google.com>
-References: <20220922103502.49981-1-angelogioacchino.delregno@collabora.com>
+	s=k20201202; t=1663846199;
+	bh=vPHa1RwfeSex5KtAHQa+yTSSsZHDEtOtWKVO9DzRPto=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=GGuQbAQCYysTxYOcTOH090QGAg/99pXkYsIkcNAib3vcM8xSPeFd7YWJptJXM/Liv
+	 FmR9cQVxq6xbX3yzpTvv53y7jkEg++PSiD35zMn5Z3RUnMNqvviVF+5XmGMTeq/npt
+	 sC1bEaQXxw+ODjeyeZm8OdaC/WzAAHWBAEUkaYxE7bCR66I4tL7j4OZm5GxiWhaA/M
+	 1giGCdcGhmm6SGuVHDJF8+lvni1QhcicR2LcnzZ7n7A5kcqN9+RSJAysQ0liAuPCzG
+	 oPyocLexpRtOgRD4iq92g1z14d/uu5pmot1nFDZWs87VwcTBsq/xCqRrHiCiFF3Aqz
+	 fiH2cV9GOp16w==
+From: Mark Brown <broonie@kernel.org>
+To: pierre-louis.bossart@linux.intel.com, lgirdwood@gmail.com, angelogioacchino.delregno@collabora.com,
+ Chunxu Li <chunxu.li@mediatek.com>, daniel.baluta@nxp.com, peter.ujfalusi@linux.intel.com
+Cc: yc.hung@mediatek.com, project_global_chrome_upstream_group@mediatek.com, alsa-devel@alsa-project.org,
+ linux-kernel@vger.kernel.org, sound-open-firmware@alsa-project.org, matthias.bgg@gmail.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20220921120239.31934-1-chunxu.li@mediatek.com>
+References: <20220921120239.31934-1-chunxu.li@mediatek.com>
+Subject: Re: [PATCH] ASoC: SOF: mediatek: add pcm_pointer callback for mt8186
+Message-Id: <166384619411.629460.11107464039277326622.b4-ty@kernel.org>
+Date: Thu, 22 Sep 2022 12:29:54 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220922103502.49981-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.11.0-dev-8af31
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_042629_391187_22677ABB 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20220922_043006_470494_73F84ED7 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,22 +73,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 22, 2022 at 12:35:02PM +0200, AngeloGioacchino Del Regno wrote:
-> -static const struct dev_pm_ops mt8195_mt6359_pm_ops = {
-> -	.poweroff = snd_soc_poweroff,
-> -	.restore = snd_soc_resume,
-> -};
-> -
->  static struct platform_driver mt8195_mt6359_driver = {
->  	.driver = {
->  		.name = "mt8195_mt6359",
->  		.of_match_table = mt8195_mt6359_dt_match,
-> -		.pm = &mt8195_mt6359_pm_ops,
-> +		.pm = &snd_soc_pm_ops,
+On Wed, 21 Sep 2022 20:02:39 +0800, Chunxu Li wrote:
+> add pcm_pointer callback for mt8186 to support read
+> host position from DSP
+> 
+> 
 
-snd_soc_pm_ops[1] sets some more fields.  I'm not quite sure whether
-it would introduce any side effect or not.  Perhaps Trevor could
-provide some suggestions.
+Applied to
 
-[1]: https://elixir.bootlin.com/linux/v5.19.10/source/sound/soc/soc-core.c#L2150
+   broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: SOF: mediatek: add pcm_pointer callback for mt8186
+      commit: a921986f445ad611b441c8ee7749dc6dfc770481
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
