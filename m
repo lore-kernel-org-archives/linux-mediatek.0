@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61A53C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 10:08:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 347FFC6FA82
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 10:08:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I4oWCwYFuP6OwbsQXM22bh9hzaCtQ3VsEH730TRt3wo=; b=QkGNUnD/N08Jvdu+dnD+Av9bYZ
-	PiF2+ajPAOjar8zR8IuQIRjC/+VtPCtIgjio3Y7N/OYRUg3OC1sdCv53SEyr0sp8fmDM/V9i0wLhn
-	T7R6Y/p+7T/q2Cw1aHvrd0X0flUVVfK/m47vKqUk8xyS+61wD2XVENTQf5ra1rDkm45gh9HPHcjA6
-	ErVHEiAEN0ZOX9dRpJ6+2aWqCjlmYVjjtmgXBeTYHWzGjzk2DM89Fd+lgir5LvnHLschjIq5FTB4Q
-	m2aPGZYLXKGCb7hMl63RdCXlVwVk50VXreY1S0E/q5FF2fCikKJ1sKp2QjvBhdOC+VQygEqbImNx8
-	8qq5ZIVA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uWk/s4LfB123Y5K8PVxmwj3bw6Op8J5ZtsVtB01jLes=; b=q7o4wRrwS/iR5wLoA2D7cXbKX7
+	KFS/BbJ31zo2yRJzXx2/FWAWm0X6kN61OnYn+VCVG0jqDM+t5QspulTMfodsdyrjlplaHi62e7jln
+	dsZnDu0IqX/89ZPkMG7VfF58sc6hNioqna/BtLhhuCGwaL1Ni38TGmZUp0yS33mycBXDW/8SmYM8E
+	suyv46cabdWfiwGa4dSpBDsft8TuogQ2KHszwYu8XB3o2u9oVW7Un/CcWa/qPp30FuDCfylf6nKvc
+	0nA9AJdSUaJUPf5GxYy76htiOXdAnwGJ01ENxKuIlu0mmahCwYWMfNVl58ndgeDvs1iX2jddG3Z96
+	ZjLL3jlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obJ8E-00EnEy-5I; Thu, 22 Sep 2022 10:08:34 +0000
+	id 1obJ8I-00EnI2-3g; Thu, 22 Sep 2022 10:08:38 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obIpb-00EZ4p-Gc; Thu, 22 Sep 2022 09:49:22 +0000
+	id 1obIpb-00EZ3j-GL; Thu, 22 Sep 2022 09:49:22 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5AB706602220;
-	Thu, 22 Sep 2022 10:49:16 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 88F5C660221C;
+	Thu, 22 Sep 2022 10:49:13 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663840156;
-	bh=wJr++mgtlB0haCHpsGcU+/sZxX7EhT3lTzKcLP5Sa+s=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=my13z2QCQ8ScWdhB1vhyZRsI+1ungf5aAE9eQB5FnsrX8JmyqTjOqLlkOqL54P/w9
-	 hwMsDnsIGWpQrAJuM/lDuFNGaN53YvjZG4D67yd/2yvbl/GXsUbXOQsYX5NT3faYQR
-	 L0wutPj8FEcMVdbNYzfndu3g3rkeMNp0S3ToETcOI+jMGldcUpZB4v5LnkaWas7SgO
-	 1PiYEyooESo0x/wz79FHNCKjsfI4a0owXfS0TXPSSCd3XYjA9NZIgNVnFWc8b0n3yj
-	 rPOtrHV/Uq9tl6gg9APb0J/yPYI1IRgeEVgOL3avTo9og1zecBxyUG7ZPg411MNDTP
-	 XNfwiDB0SWPvg==
+	s=mail; t=1663840154;
+	bh=/sD//Fx1hRIgFZ1vKpgrsJe4DfP3ojqL+kjqLiG5HQM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Ac8iISjW5bF7fiHTQjUlLMkOyosReAbqjI1vruuU2AJnF3BMWGzcSHExlLDelG/Rm
+	 OEzolRwICeQAoCpaMGZWVGIltjiPG7FMhekes9gNT1ghf+uE0YXRyBKYHmDuyO6551
+	 mwAIuGBdzE6ojsV0joG3jyPR7FKSvAo8ztMKfmwW+38h7EjYQnwKXf9CaLJdma9lk0
+	 SY6QJHuhzhdLw5UgCcxvL0rPD0BOzpNVylvuHYf6Hrph4ykC8Uo8LOFmdGxXICvgBO
+	 YxF2LkN99kmLsikXGrPYxWYkMzH6d1qfvSdPwGcPvjuj993PLU8pS+H74oHaOZ1nZJ
+	 ZkXe+rymvKnYQ==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: robh+dt@kernel.org,
@@ -51,17 +51,15 @@ Cc: robh+dt@kernel.org,
 	linux-kernel@vger.kernel.org,
 	wenst@chromium.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 4/4] arm64: dts: mediatek: cherry: Add sound card configuration
-Date: Thu, 22 Sep 2022 11:49:08 +0200
-Message-Id: <20220922094908.41623-5-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 0/4] MT8195 Acer Tomato - Audio support
+Date: Thu, 22 Sep 2022 11:49:04 +0200
+Message-Id: <20220922094908.41623-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20220922094908.41623-1-angelogioacchino.delregno@collabora.com>
-References: <20220922094908.41623-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_024919_905701_CC14DB70 
-X-CRM114-Status: UNSURE (   9.74  )
+X-CRM114-CacheID: sfid-20220922_024919_863562_45FA8402 
+X-CRM114-Status: UNSURE (   7.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,123 +75,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Configure the sound card on all MT8195 Cherry Tomato devices to
-enable audio support.
+This series enables full support for audio, with DSP, on the Cherry
+Chromebooks.
+Related ALSA UCM2 configuration was already merged in its upstream
+repository [1]: this is fully tested and working as-is since all of
+the required fixes for MT8195 SOF drivers were picked and are present
+since `next-20220908`.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../dts/mediatek/mt8195-cherry-tomato-r1.dts  |  5 +++
- .../dts/mediatek/mt8195-cherry-tomato-r2.dts  |  5 +++
- .../dts/mediatek/mt8195-cherry-tomato-r3.dts  |  5 +++
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 40 +++++++++++++++++++
- 4 files changed, 55 insertions(+)
+[1]: https://github.com/alsa-project/alsa-ucm-conf/commit/a59c3b1a57de8eb424c4f754bb031265e856260e
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-index 3767b49ea896..2d5e8f371b6d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-@@ -15,6 +15,11 @@ &audio_codec {
- 	realtek,btndet-delay = <16>;
- };
- 
-+&sound {
-+	compatible = "mediatek,mt8195_mt6359_rt1019_rt5682";
-+	model = "mt8195_r1019_5682";
-+};
-+
- &ts_10 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
-index 0ed83a79d680..2586c32ce6e6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
-@@ -35,6 +35,11 @@ pins-low-power-pcie0-disable {
- 	};
- };
- 
-+&sound {
-+	compatible = "mediatek,mt8195_mt6359_rt1019_rt5682";
-+	model = "mt8195_r1019_5682";
-+};
-+
- &ts_10 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
-index c47b341e98fb..f54f9477b99d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
-@@ -36,6 +36,11 @@ pins-low-power-pcie0-disable {
- 	};
- };
- 
-+&sound {
-+	compatible = "mediatek,mt8195_mt6359_rt1019_rt5682";
-+	model = "m8195_r1019_5682s";
-+};
-+
- &ts_10 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index 95e93b791432..3410e16d7e99 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -526,6 +526,34 @@ &pio {
- 		"AP_SPI_FLASH_MOSI",
- 		"AP_SPI_FLASH_MISO";
- 
-+	aud_pins_default: audio-default-pins {
-+		pins-cmd-dat {
-+		    pinmux = <PINMUX_GPIO69__FUNC_AUD_CLK_MOSI>,
-+			     <PINMUX_GPIO70__FUNC_AUD_SYNC_MOSI>,
-+			     <PINMUX_GPIO71__FUNC_AUD_DAT_MOSI0>,
-+			     <PINMUX_GPIO72__FUNC_AUD_DAT_MOSI1>,
-+			     <PINMUX_GPIO73__FUNC_AUD_DAT_MISO0>,
-+			     <PINMUX_GPIO74__FUNC_AUD_DAT_MISO1>,
-+			     <PINMUX_GPIO75__FUNC_AUD_DAT_MISO2>,
-+			     <PINMUX_GPIO0__FUNC_TDMIN_MCK>,
-+			     <PINMUX_GPIO1__FUNC_TDMIN_DI>,
-+			     <PINMUX_GPIO2__FUNC_TDMIN_LRCK>,
-+			     <PINMUX_GPIO3__FUNC_TDMIN_BCK>,
-+			     <PINMUX_GPIO60__FUNC_I2SO2_D0>,
-+			     <PINMUX_GPIO49__FUNC_I2SIN_D0>,
-+			     <PINMUX_GPIO50__FUNC_I2SO1_MCK>,
-+			     <PINMUX_GPIO51__FUNC_I2SO1_BCK>,
-+			     <PINMUX_GPIO52__FUNC_I2SO1_WS>,
-+			     <PINMUX_GPIO53__FUNC_I2SO1_D0>;
-+		};
-+
-+		pins-hp-jack-int-odl {
-+			pinmux = <PINMUX_GPIO89__FUNC_GPIO89>;
-+			input-enable;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+		};
-+	};
-+
- 	cr50_int: cr50-irq-default-pins {
- 		pins-gsc-ap-int-odl {
- 			pinmux = <PINMUX_GPIO88__FUNC_GPIO88>;
-@@ -833,6 +861,18 @@ cros-ec-rpmsg {
- 	};
- };
- 
-+&sound {
-+	status = "okay";
-+
-+	mediatek,adsp = <&adsp>;
-+	mediatek,dai-link =
-+		"DL10_FE", "DPTX_BE", "ETDM1_IN_BE", "ETDM2_IN_BE",
-+		"ETDM1_OUT_BE", "ETDM2_OUT_BE","UL_SRC1_BE",
-+		"AFE_SOF_DL2", "AFE_SOF_DL3", "AFE_SOF_UL4", "AFE_SOF_UL5";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&aud_pins_default>;
-+};
-+
- &spi0 {
- 	status = "okay";
- 
+______________________________________
+_________ Platform overview: _________
+
+What's still missing?
+
+* Format:    feature  (location)
+*
+* MediaTek vcodec enc/dec (mt8195.dtsi only)
+* PCI-Express WiFi card (mt8195 and mt8195-cherry)
+* VDOSYS1 (mt8195.dtsi and mediatek-drm/mmsys drivers)
+* DP/eDP outputs for external/internal display (mt8195 and mt8195-cherry)
+* LVTS Thermal Sensors (mt8195.dtsi, driver is missing)
+* GPU support (clocks and mtk-regulator-coupler are awaiting for review/pick)
+
+AngeloGioacchino Del Regno (4):
+  arm64: dts: mediatek: cherry: Add Audio Front End (AFE) support
+  arm64: dts: mediatek: cherry: Enable the Audio DSP for SOF
+  arm64: dts: mediatek: cherry: Add external codecs and speaker
+    amplifier
+  arm64: dts: mediatek: cherry: Add sound card configuration
+
+ .../dts/mediatek/mt8195-cherry-tomato-r1.dts  |  10 ++
+ .../dts/mediatek/mt8195-cherry-tomato-r2.dts  |  10 ++
+ .../dts/mediatek/mt8195-cherry-tomato-r3.dts  |  10 ++
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 109 ++++++++++++++++++
+ 4 files changed, 139 insertions(+)
+
 -- 
 2.37.2
 
