@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68D4EC6FA82
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 09:56:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A34C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 10:08:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lzrjHkBPFj0GI6SmNTkiwUGTEKIZ8kvjJWTZ+sfsK88=; b=adqihh/wkxLUk7Z6nlBR2O9mbe
-	MmHe2vndh6uyW6q8x0pHhLYKvX1OUVXAnV5Pmu4CrC4OzeILX4QZ4Ew/Kf5N0ysMaVEgSpBtC6urS
-	P16JT4Lf6t+qk4/tHoGxmuu56M1mls5nzYLAFMb0C0jJ+9gfOpb8W9dX1ewgFCi8ogFeDKO9XqGWR
-	WjM47AMhsaa3RXh5K1ORKi8jLQnj3bGTxBKGwqGrQACeGGypK1MaH2431cj87vnaZv4eNMT5lYY1S
-	xr+4eBaKkLPKwTr0sBCnVDCI4ZG5xXyxTKOC2zUyIFpuR+4vG9Ph1F/JKE3Jxsyeb8+rj9Il2e0eX
-	i8v9jkhQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GpZtFrMvgpzkW7K6t+sA3UQxZl7aYxl7wu1jxpPoQiA=; b=4Sikm0Pv0HdtEs3JbLpd099DBW
+	kyCyE3q/EETTrFIPkSGRjmbIr7rZzMoZREW3OcQQSiEf/3elymogWZ6vLDS6fXK7o43T2PMxd+7DV
+	Vvea7LvOdxhmJvDK7/s6IHFFV8UFAirg3yPkjHK8vCz2n9jQ4Ldux8s5cyLQHszVOcvT2Srr/GK93
+	WmxTvJXV2f3GzMUfofOO3DCDa9JPzywKs14C1jzTW6lCC9t8ZZTvFXuKOK8OQRiaAmXm08r9MvCka
+	aVa+Z5bXiXoixoi8QpBzCOcd0TqglN39WOTn77weqBMsAtEhsYXQ/BHqVyY2AKoTt0wLri32UQsCF
+	DH6jTNdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obIwL-00EbfO-30; Thu, 22 Sep 2022 09:56:17 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1obJ8F-00EnFp-9E; Thu, 22 Sep 2022 10:08:35 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obIWs-00EShc-1B; Thu, 22 Sep 2022 09:29:59 +0000
-X-UUID: e1ff2b0f72a0421c8d00c148f25c5793-20220922
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=lzrjHkBPFj0GI6SmNTkiwUGTEKIZ8kvjJWTZ+sfsK88=;
-	b=VPtonN2SMt3Ui8sDVm6nKo2aod76QI6rMAHtArfR7XYJdAclIraiVWVTqzZRfydnVaUmP6eU3qUhtw9Y/lIbfA8eO9bQr9kzW0WFYkpY96t/06TsO91o3St4GgAU+4Pc45up8Nmpi1df4td+zM0Ju+EfOLkgivrc9fVdHvQebbk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:4b3b6fa9-b203-419b-aafe-f60da50e8af2,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:8c12ac06-1cee-4c38-b21b-a45f9682fdc0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: e1ff2b0f72a0421c8d00c148f25c5793-20220922
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jianguo.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1593094526; Thu, 22 Sep 2022 02:29:54 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 22 Sep 2022 16:29:18 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 22 Sep 2022 16:29:17 +0800
-From: Jianguo Zhang <jianguo.zhang@mediatek.com>
-To: "David S . Miller" <davem@davemloft.net>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
-	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
-	<netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Jianguo Zhang <jianguo.zhang@mediatek.com>
-Subject: [PATCH v4 2/2] dt-bindings: net: snps,dwmac: add clk_csr property
-Date: Thu, 22 Sep 2022 16:29:06 +0800
-Message-ID: <20220922082906.800-3-jianguo.zhang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220922082906.800-1-jianguo.zhang@mediatek.com>
-References: <20220922082906.800-1-jianguo.zhang@mediatek.com>
+	id 1obIpb-00EZ4S-GM; Thu, 22 Sep 2022 09:49:21 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CF352660221E;
+	Thu, 22 Sep 2022 10:49:14 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1663840155;
+	bh=fkgvOEpFveDqGiVfiz6Zm3QLw7vdRwQw9bnbQlnHoOk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=H+cBS6rhWgJGmzcx2x181scVLmXL0RRRCKb81jbR7XY+bxqAFOoe8fxZLJJNUjmaM
+	 W2u1BjDecDBjzsEGdlKBncc1kL6TBkts3u1L+3MXyRLTlhSX/zH3EzsJqSEieGvnTJ
+	 /QXRoxI836Z/1bLxlrjPRLF210jBZKCfl/RJ/GI2PdndpujTkHZe7XoRqNlTbhkuyD
+	 e6KZzvzFXPoXikVzvPSPxLArNjFQS/FJ9ghUFt98KzeJNS6RN3wyoleReKI9EM9FfR
+	 vFtoDj4w/hXtsPr3yP1UwoRr632syKWUcvIdAmbA/t1xYWMSgv3Xve/ai099UjiMIY
+	 ZVXY8j0XP4d3A==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	wenst@chromium.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 2/4] arm64: dts: mediatek: cherry: Enable the Audio DSP for SOF
+Date: Thu, 22 Sep 2022 11:49:06 +0200
+Message-Id: <20220922094908.41623-3-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20220922094908.41623-1-angelogioacchino.delregno@collabora.com>
+References: <20220922094908.41623-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_022958_113454_12CF5DB2 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20220922_024919_868590_D5D84795 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,33 +77,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The clk_csr property is parsed in driver for generating MDC clock
-with correct frequency. A warning('clk_csr' was unexpeted) is reported
-when runing 'make_dtbs_check' because the clk_csr property
-has been not documented in the binding file.
+This platform is able to use the Audio DSP embedded into the
+MT8195 SoC: in preparation for adding audio support for Cherry,
+add the ADSP related memory nodes and enable it.
 
-Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- Documentation/devicetree/bindings/net/snps,dwmac.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ .../arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-index 491597c02edf..8cff30a8125d 100644
---- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-@@ -288,6 +288,11 @@ properties:
-       is supported. For example, this is used in case of SGMII and
-       MAC2MAC connection.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index bc7890300a57..3bc624e6f499 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -118,14 +118,32 @@ scp_mem: memory@50000000 {
+ 			no-map;
+ 		};
  
-+  clk_csr:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      Frequency division factor for MDC clock.
++		adsp_mem: memory@60000000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x60000000 0 0xd80000>;
++			no-map;
++		};
 +
-   mdio:
-     $ref: mdio.yaml#
-     unevaluatedProperties: false
+ 		afe_mem: memory@60d80000 {
+ 			compatible = "shared-dma-pool";
+ 			reg = <0 0x60d80000 0 0x100000>;
+ 			no-map;
+ 		};
++
++		adsp_device_mem: memory@60e80000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x60e80000 0 0x280000>;
++			no-map;
++		};
+ 	};
+ };
+ 
++&adsp {
++	status = "okay";
++
++	memory-region = <&adsp_device_mem>, <&adsp_mem>;
++};
++
+ &afe {
+ 	status = "okay";
+ 
 -- 
-2.25.1
+2.37.2
 
 
