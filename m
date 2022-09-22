@@ -4,53 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E32FC32771
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 03:04:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7039ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 03:52:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J5p/NkZZmAcJPUDdgOfQ/KK1LndazcyxsU89WPvsiWc=; b=LK5j5ZE6U/xFSzwCbtuW9ZhAeD
-	Jl2gHmBt5XQSTDUhP4M+c6GegXUPmacivE6jfRv0E88rAVBs4f7Rrf0JmJngR+88hb3MvbrPUEcsh
-	wqSIcV0c7obEOBSY9en8W3Swk5Kk3XiSO9E0zvo/uTqUObPlroU/55oCDgc0D60zEBoSjdLmQRCOH
-	kSQd8HDaB0i7mysfvpOM/aK+rb3s0ywDQkN+V/RD6kYZr+GvhD2pHyo8/FPdvwMFkcv9BM3rgjWwr
-	dFNFsipyKZkLqgH095nGFdZ1yE37evY151fKTOFIn+leuiHYWPjSPkjaPpS43AQQ3YpEgesLUCeah
-	taVTPoHQ==;
+	bh=DpTSK5SS4krC5ZA5jk8bVYHaXm11gbUBm2uTg+nL/zU=; b=ySJPBnObEtb1ee6V1kcHVWuSWI
+	y7rkkLZ6SPShQewgyIZT6RNO9oH8cC20Q6VAhuNa5QPwcG9eKt+gxJpDp4NoicwX74rBGh0SsBme8
+	HjTMryiByDK83n86wt7jpS00T9RYdgYjhbRnL91+o91iXSw1SeGeQj1kjDYN+tNQ/fZndN9DUanDY
+	Uo5SsZ6pRK8p4exA6021rPdkTFnjEk8R3KTVm4AvB2D1jLLXS/4PMSLi5MrFdBmcQLl89TLCFvchw
+	nVoR/yrgJ2LU+tX5HgRg4Nk4VoDv1f5LYqaOI+GswRjCFlEntbyU4uiW70IP7z44Gj1E5v/qOrzfX
+	hdY5YJXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obCW2-00DDFV-5Q; Thu, 22 Sep 2022 03:04:42 +0000
+	id 1obDFq-00DHJq-0V; Thu, 22 Sep 2022 03:52:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obCVo-00DDDS-CA; Thu, 22 Sep 2022 03:04:31 +0000
-X-UUID: 39a03f675a594fddb1d1397dd91b2252-20220921
+	id 1obDFd-00DHH9-Ab; Thu, 22 Sep 2022 03:51:52 +0000
+X-UUID: 9e3463d6181c46ce838872ead0e7cc88-20220921
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=J5p/NkZZmAcJPUDdgOfQ/KK1LndazcyxsU89WPvsiWc=;
-	b=A+sJs/zGWgQ6ZetAC8Lp/Gj1uDyr2TKrfoTE7/K1N4NLNeAGpuGSojLYKry3uHlAlK/sctE1kJDJtyqkxvUUH7gLHZDK1ufxMgDdMYGjOQZjf4dO+/FQoRJbNjgobRAmZ4HINFZGP9HeJ6MFNh9Au6+i+LWf7uIxG7ugEdWvCeo=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=DpTSK5SS4krC5ZA5jk8bVYHaXm11gbUBm2uTg+nL/zU=;
+	b=QvAb29qpVxETnJROhdpuOdF3XSohGsytis0lROG20g7eEfTLnKVtlnO1BkX924RpzP6AWoRjwvc98Bzz7+pPAqMzXCcB+0RmZxZT8w5nvFh7QaZ9aQ6cACqmDd0uHfTL1vu7OC4uH0yOxlzkyAASBj1QKC0qVs/oRMLZq0znpZo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:80e9ef23-e1bf-42f4-b74e-a0eb3b4182f5,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:45
-X-CID-INFO: VERSION:1.1.11,REQID:80e9ef23-e1bf-42f4-b74e-a0eb3b4182f5,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:45
-X-CID-META: VersionHash:39a5ff1,CLOUDID:70333bf7-6e85-48d9-afd8-0504bbfe04cb,B
-	ulkID:220922105007OVC7092V,BulkQuantity:11,Recheck:0,SF:28|17|19|48,TC:nil
-	,Content:0,EDM:-3,IP:nil,URL:1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
-X-UUID: 39a03f675a594fddb1d1397dd91b2252-20220921
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-CID-O-INFO: VERSION:1.1.11,REQID:462cfa0b-81ed-4344-ac00-5424269292e4,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:e88dc9af-12a8-4d8e-859c-1b6ce09c0eab,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 9e3463d6181c46ce838872ead0e7cc88-20220921
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 208915192; Wed, 21 Sep 2022 19:55:32 -0700
+	with ESMTP id 1543488507; Wed, 21 Sep 2022 20:40:11 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 22 Sep 2022 10:54:55 +0800
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 22 Sep 2022 10:49:36 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 22 Sep 2022 10:54:53 +0800
-Message-ID: <6eec220b1894859211e45a90491fe1718838404f.camel@mediatek.com>
+ Transport; Thu, 22 Sep 2022 10:49:33 +0800
+Message-ID: <770b0999ae25008cdb63a1eca283cfc2167a6695.camel@mediatek.com>
 Subject: Re: [PATCH 16/17] arm64: dts: mediatek: add mt8365 device-tree
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Fabien Parent
@@ -67,7 +64,7 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-phy@lists.infradead.org>, <linux-serial@vger.kernel.org>,
 	<linux-spi@vger.kernel.org>, <linux-usb@vger.kernel.org>,
 	<linux-watchdog@vger.kernel.org>
-Date: Thu, 22 Sep 2022 10:54:53 +0800
+Date: Thu, 22 Sep 2022 10:49:32 +0800
 In-Reply-To: <2f7be7c4-9e61-7285-803b-979af6d28c11@linaro.org>
 References: <20220531135026.238475-1-fparent@baylibre.com>
 	 <20220531135026.238475-17-fparent@baylibre.com>
@@ -78,8 +75,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_200428_498540_AAE63E3E 
-X-CRM114-Status: GOOD (  26.85  )
+X-CRM114-CacheID: sfid-20220921_205149_436635_D72B4BDA 
+X-CRM114-Status: GOOD (  26.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,8 +114,6 @@ On Wed, 2022-06-01 at 12:37 +0200, Krzysztof Kozlowski wrote:
 > > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
 > > +/*
 > > + * Copyright (c) 2018 MediaTek Inc.
-2022?
-
 > > + */
 > > +
 > > +#include <dt-bindings/clock/mediatek,mt8365-clk.h>
@@ -976,20 +971,18 @@ On Wed, 2022-06-01 at 12:37 +0200, Krzysztof Kozlowski wrote:
 > > +		u3phy: t-phy@11cc0000 {
 > 
 > s/t-phy/phy/
+can't use phy here, if will cause dt-binding check fail.
+
 > 
 > > +			compatible = "mediatek,mt8365-tphy",
 > > +				     "mediatek,generic-tphy-v2";
 > > +			#address-cells = <2>;
 > > +			#phy-cells = <1>;
-remove #phy-cells, it's only used in subnode;
-
 > 
 > address-cells, then size, then phy
 > 
 > > +			#size-cells = <2>;
 > > +			ranges;
-Prefer to use ranges with value
-
 > > +			status = "okay";
 > 
 > No need for status ok.
