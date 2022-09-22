@@ -4,72 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4815DECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 01:47:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7403BECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 02:09:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:To:Subject:Cc:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4ooavMI26VS/rgEsvGJZdTi0rwPkW4R7VrMOyd8Gas0=; b=CUtVP85as7Mv8OGFHks9xsqLjF
-	ibPV1xsT0IPDuYBq8DYZu6onOxn+/bam7Q3ksXy8gM0RW5NPc5Fxd+0EpCQRPWRz13mUPS7cKD6OR
-	PNAetIaFToQyfw423Kgwvco2FM1kCEo4hGZym8K8M1wCAbYCdgI6+gfhuCZu1ThyeLsYuF3oWjpLb
-	UYcANNfCERDPCYIWIOaiO1PBTNIYCACp0lk7cIVcWOBrzl4m4kgKSW1MBBiJEhWna3oZpfViMtD0U
-	gH+btxttUTiDoLQplKwSEz2uPTpk4dR8AikPtdne590aMHg6jgdQVelZJfGBcZ7Sc/hV7XVKzZpbK
-	6219HA5w==;
+	bh=SwGyWsIT7VzCyfl0VVjdCkUjE9QvfY/KzzBu+9UouvQ=; b=I6rdlniPavFxHhSfdO3FBGPZX+
+	/6ZPX98AO5jymfM5kBmGvP6g7IncWuQbRA5dcsqr0NVxNXiAylcXA8OciRNslSNsEfk8zv28U0CQ0
+	u2Idir2qSUEL1fTDSVDRQvcWEaf/Kuv1cvElCKwkuSGP2QcmXd/pY30NshTo8MOkrFJ0xT3a3JuB/
+	0hEziWSpGxi7cxpmeidtV4ASis7qja9L9CnUr/JbvFqEnaxNSrt9WudgBqRz362Qj7RnHpOg3LoqE
+	zi4RmZCb4SQzZsgLT4L2kUAj7RGqYKyosFwG/3q8XUEeKGrmo8zWwC1UgqDxBx4tKOWTzxr5sIu19
+	lRfYHTog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obBIv-00D5wF-J8; Thu, 22 Sep 2022 01:47:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1obBe0-00D7W3-PQ; Thu, 22 Sep 2022 02:08:52 +0000
+Received: from mga01.intel.com ([192.55.52.88])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obBIt-00D5vm-On; Thu, 22 Sep 2022 01:47:04 +0000
-X-UUID: 6ffda3f2c6f3430eb62fb4e4a7a00dc4-20220921
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=4ooavMI26VS/rgEsvGJZdTi0rwPkW4R7VrMOyd8Gas0=;
-	b=k/ln69CKqBDVX43egJxyQbJb2YLHXlhn0l00XZkk56xmJaRTmmRtp0xOx57ulhGl4yt+g3OJrEm6sUAesR8+NU4YsPaFYDE2+ietPQiRgrGQ3INUE+FypzW5KDYWUZSk95s8MxTMp55EKsLKfM79sykKiRY1LSHyfjYQGtTyiMw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:7d90c5db-cc03-4be9-82aa-388686b81604,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:8346785e-5ed4-4e28-8b00-66ed9f042fbd,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 6ffda3f2c6f3430eb62fb4e4a7a00dc4-20220921
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chunxu.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1666423967; Wed, 21 Sep 2022 18:43:03 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Thu, 22 Sep 2022 09:42:52 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 22 Sep 2022 09:42:51 +0800
-Message-ID: <45bba23b9bea4c5df0ac1751c9dcd8f1ce5df6e6.camel@mediatek.com>
-Subject: Re: [PATCH] ASoC: SOF: mediatek: add pcm_pointer callback for mt8186
-From: chunxu.li <chunxu.li@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<broonie@kernel.org>, <pierre-louis.bossart@linux.intel.com>,
-	<peter.ujfalusi@linux.intel.com>, <lgirdwood@gmail.com>,
-	<daniel.baluta@nxp.com>
-CC: <matthias.bgg@gmail.com>, <yc.hung@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <alsa-devel@alsa-project.org>,
-	<sound-open-firmware@alsa-project.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<project_global_chrome_upstream_group@mediatek.com>
-Date: Thu, 22 Sep 2022 09:42:51 +0800
-In-Reply-To: <dbe3f7fb-5fae-b147-f824-cd39ba3900ca@collabora.com>
-References: <20220921120239.31934-1-chunxu.li@mediatek.com>
-	 <dbe3f7fb-5fae-b147-f824-cd39ba3900ca@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1obBdx-00D7VF-AG; Thu, 22 Sep 2022 02:08:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1663812529; x=1695348529;
+  h=message-id:date:mime-version:cc:subject:to:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=1fDpa6Vp9wv2YOhKIYkfzYhHIef9thojyzjgWC31CW0=;
+  b=jEnVtH4XU8HcSbouXFRlXKuv9lARtY93keITEy8bgAq1qd9Z+G3wqv21
+   iHePlj8qL96qLYLW7GII0QFEn1WITs6A2VoMrBS2gs6BqEOOcHEKUEhG1
+   A8gpEG1qgLVNOGnBk6D9QGwzaIplKm+vnBUjuM9VYj/bF7K6wPH6jems+
+   FaH5+eySASr3SsXPyqsIkb+0izkLxYgxvsV8Aj6jkrEQL3GmTrGTt58io
+   mA48gAfmZeVcnjUeWI7l0Sf0W62GEA8jvyZyr47tbdHFgSMnLxA5YokWF
+   lBYssE2w0xU/qdSCRc5H2bAzl5klkmmn+TlIvGNa81JP7pY47doPCCsI9
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10477"; a="326492014"
+X-IronPort-AV: E=Sophos;i="5.93,335,1654585200"; 
+   d="scan'208";a="326492014"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Sep 2022 19:08:46 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,335,1654585200"; 
+   d="scan'208";a="794907643"
+Received: from allen-box.sh.intel.com (HELO [10.239.159.48]) ([10.239.159.48])
+  by orsmga005.jf.intel.com with ESMTP; 21 Sep 2022 19:08:37 -0700
+Message-ID: <73008702-87e1-688f-b194-c259c9c03caa@linux.intel.com>
+Date: Thu, 22 Sep 2022 10:02:42 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Cc: baolu.lu@linux.intel.com, jgg@nvidia.com, kevin.tian@intel.com,
+ konrad.dybcio@somainline.org, yong.wu@mediatek.com,
+ thierry.reding@gmail.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
+ tglx@linutronix.de, shameerali.kolothum.thodi@huawei.com,
+ christophe.jaillet@wanadoo.fr, thunder.leizhen@huawei.com,
+ quic_saipraka@quicinc.com, jon@solid-run.com, yangyingliang@huawei.com,
+ iommu@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+ virtualization@lists.linux-foundation.org
+Subject: Re: [PATCH v4 3/6] iommu: Add return value rules to attach_dev op and
+ APIs
+Content-Language: en-US
+To: Nicolin Chen <nicolinc@nvidia.com>, joro@8bytes.org,
+ suravee.suthikulpanit@amd.com, will@kernel.org, robin.murphy@arm.com,
+ robdclark@gmail.com, dwmw2@infradead.org, agross@kernel.org,
+ bjorn.andersson@linaro.org, matthias.bgg@gmail.com, orsonzhai@gmail.com,
+ baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
+ jean-philippe@linaro.org, sricharan@codeaurora.org
+References: <cover.1663744983.git.nicolinc@nvidia.com>
+ <8c3dbf153b63a3002a46bab6e707c63fd8635bb8.1663744983.git.nicolinc@nvidia.com>
+From: Baolu Lu <baolu.lu@linux.intel.com>
+In-Reply-To: <8c3dbf153b63a3002a46bab6e707c63fd8635bb8.1663744983.git.nicolinc@nvidia.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_184703_821356_94750D9C 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20220921_190849_448408_935A52F0 
+X-CRM114-Status: GOOD (  21.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,23 +94,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-09-21 at 14:17 +0200, AngeloGioacchino Del Regno wrote:
-> Il 21/09/22 14:02, Chunxu Li ha scritto:
-> > add pcm_pointer callback for mt8186 to support read
-> > host position from DSP
-> > 
-> > Signed-off-by: Chunxu Li <chunxu.li@mediatek.com>
+On 9/21/22 4:23 PM, Nicolin Chen wrote:
+> Cases like VFIO wish to attach a device to an existing domain that was
+> not allocated specifically from the device. This raises a condition
+> where the IOMMU driver can fail the domain attach because the domain and
+> device are incompatible with each other.
 > 
-> Hello Chunxu,
-> Can you please also add this, along with the .pcm_hw_params callback
-> to mt8195.c?
+> This is a soft failure that can be resolved by using a different domain.
 > 
-> Anyway, for this one:
+> Provide a dedicated errno EINVAL from the IOMMU driver during attach that
+> the reason why the attach failed is because of domain incompatibility.
 > 
-> Reviewed-by: AngeloGioacchino Del Regno <
-> angelogioacchino.delregno@collabora.com>
+> VFIO can use this to know that the attach is a soft failure and it should
+> continue searching. Otherwise, the attach will be a hard failure and VFIO
+> will return the code to userspace.
 > 
+> Update kdocs to add rules of return value to the attach_dev op and APIs.
+> 
+> Suggested-by: Jason Gunthorpe<jgg@nvidia.com>
+> Signed-off-by: Nicolin Chen<nicolinc@nvidia.com>
+> ---
+>   drivers/iommu/iommu.c | 22 ++++++++++++++++++++++
+>   include/linux/iommu.h | 12 ++++++++++++
+>   2 files changed, 34 insertions(+)
+> 
+> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index 3a808146b50f..1d1e32aeaae6 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -1975,6 +1975,17 @@ static int __iommu_attach_device(struct iommu_domain *domain,
+>   	return ret;
+>   }
+>   
+> +/**
+> + * iommu_attach_device - Attach a device to an IOMMU domain
 
-Sure, certainly.
+Normally we say "attach an iommu domain to a device/group ...".
 
+Best regards,
+baolu
 
