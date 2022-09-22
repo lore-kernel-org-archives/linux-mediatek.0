@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1736DC6FA8B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 10:08:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65368C6FA86
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 10:09:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qV5leCHbr4JivqIZ66oYInQjuplf0tpW/SlhpQUaiZw=; b=hxbYuv2ukgssUdNLT1LGRmnah0
-	GSuoWQ1TvrBXQ57TIqrzRg+00QUMpRWitOOQyM+MwLBP0G1mUz7Q8uReESN4L+EcUADOQmAEx7bxx
-	JIT0LUIsZ9zZ4zZzIOsAmlzmwlVMVa8qWL3VkVVrh1U9mrJ1UvsiFWQEtuY+xDOP6Ns02RnF7kdmu
-	kW0kXALRjxEOQ/3kVfpma9hH3/ZpZpCqHZY1uJMSkh1ftUHmNQAwQtFsKE4KU4eO+X2LMWTlysiuk
-	JE41h8fL/W73wq0AtPFleTuHuhPob1SBWPJ6QsZNsWTZOYB1m23RbnY0zedz+rS2A7VSfMKA5b/WD
-	gWpEZIyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=13hxr6W+QcX4UHmVrUqJocteKF15icvHoANjzCJxFMI=; b=EwyDli5cADgvsA0uBrbZDycDmY
+	nun3Pj2qkruJG5jt5U9FYrzDikSkc3HQ/I4UfZ2hbUw/hUerKzjzfP4a+rZtB6IRo2aP2bfyl+fos
+	hPQuP7gnj2/tHXZkkN9L4QhugABdBPY14qJFnZMXcC+f3DCQL9heiB54eGDR+E6/b3hhf7GQ4+XZp
+	ujP+1gTkir3kIk5cHnZN9AfPee6jY3v0h6Xr1dbOt2vuT3y/zYSFsHmLzEE3C9n6eEx2n0qyWnmyv
+	f6E6yA1zZYNFOHZNsJt6aRVupffSYzBfiQsCyeDyMuHdA5HIPve1LwjdZVy3o3p8P0if2W/MVlBTz
+	Mu9EwQaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obJ8L-00EnJk-Ap; Thu, 22 Sep 2022 10:08:41 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1obJ8Z-00Enaf-QU; Thu, 22 Sep 2022 10:08:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obIpb-00EZ4d-Gb; Thu, 22 Sep 2022 09:49:22 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id B4E05660221F;
-	Thu, 22 Sep 2022 10:49:15 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663840156;
-	bh=aRbfk1mhUI8dAkF85RnEwt7brGuOKIQtd68vjz91JhA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=azxjEguhsDUEOz0xDuinewwHFTLJS0stz6G3zouz9QjS7aepKc6POfoeaCHVWlbNr
-	 7qKEzBztUrEJ2YLcjUdofbfC+roVyqCAXB3CP824gBTJTWHFYzmEDpJ9s7wrXDzOFk
-	 buChQveFUXxD4+DZPAnRrYUJ8HRh4rrqt0upBIv0VXS6Iot6pwETLY7/gJd7pkiPgb
-	 jLF5BrczFb453x3QNvKDd+4SblxZn6H7HM4cuS7kMqRhpBRcGx9qRGTMTNzWUMuh6/
-	 bHaNT1m48J5rODZxMNcaRF2armeRRiAAxF4QNlNOUfnbl98Z8AgBtvmtA++rVEFzl6
-	 lpqd30rbEsYwQ==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	wenst@chromium.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 3/4] arm64: dts: mediatek: cherry: Add external codecs and speaker amplifier
-Date: Thu, 22 Sep 2022 11:49:07 +0200
-Message-Id: <20220922094908.41623-4-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20220922094908.41623-1-angelogioacchino.delregno@collabora.com>
-References: <20220922094908.41623-1-angelogioacchino.delregno@collabora.com>
+	id 1obIqr-00EZWp-IM; Thu, 22 Sep 2022 09:50:39 +0000
+X-UUID: c24e3675e9bf4d65ba09e1598f6a2164-20220922
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=13hxr6W+QcX4UHmVrUqJocteKF15icvHoANjzCJxFMI=;
+	b=GvgUWBolqGB4els7HsE418HUEn3KavK42+EtlpH405jzF58NRypxbETLWTY+r+amRR5uJAC0DI1z8Rq9GTkFsWJdffyyu65it8gKzoZDyZdmQcZBwHQxSEE1X1oxLdeVwj8Zb/0x+hb/Kp81w9+NiZ53YCmuuPeUGioVp30zYv0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:5b3e689d-73df-4a6c-9f7b-4246b7720ab4,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:8918e1e3-87f9-4bb0-97b6-34957dc0fbbe,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c24e3675e9bf4d65ba09e1598f6a2164-20220922
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <miles.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 425536450; Thu, 22 Sep 2022 02:50:33 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 22 Sep 2022 17:18:59 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 22 Sep 2022 17:18:59 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: Stephen Boyd <sboyd@kernel.org>, Michael Turquette
+	<mturquette@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-kernel@vger.kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Chun-Jie Chen <chun-jie.chen@mediatek.com>, Miles Chen
+	<miles.chen@mediatek.com>, <linux-clk@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 5/7] clk: mediatek: mt6797: use mtk_clk_simple_probe to simplify driver
+Date: Thu, 22 Sep 2022 17:18:33 +0800
+Message-ID: <20220922091841.4099-6-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220922091841.4099-1-miles.chen@mediatek.com>
+References: <20220922091841.4099-1-miles.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_024919_959742_D4430D9E 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20220922_025037_664386_A0FAC904 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,146 +81,175 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The entire Cherry family has two digital microphones, for which
-we use the generic dmic-codec, linked to the MT6359 PMIC.
-Moreover, it uses a Realtek RT1019p amplifier for the speakers
-and has either a Realtek RT5682i or RT5682s audio codec on I2C2:
-specifically, RT5682i is found on Tomato's rev 1 and rev 2 boards,
-while RT5682s is found in rev3 and rev4 boards.
+mtk_clk_simple_probe was added by Chun-Jie to simply common flow
+of MediaTek clock drivers and ChenYu enhanced the error path of
+mtk_clk_simple_probe and added mtk_clk_simple_remove.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Let's use mtk_clk_simple_probe and mtk_clk_simple_probe in other
+MediaTek clock drivers as well.
+
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../dts/mediatek/mt8195-cherry-tomato-r1.dts  |  5 +++
- .../dts/mediatek/mt8195-cherry-tomato-r2.dts  |  5 +++
- .../dts/mediatek/mt8195-cherry-tomato-r3.dts  |  5 +++
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 37 +++++++++++++++++++
- 4 files changed, 52 insertions(+)
+ drivers/clk/mediatek/clk-mt6797-img.c  | 36 ++++++++++----------------
+ drivers/clk/mediatek/clk-mt6797-vdec.c | 36 ++++++++++----------------
+ drivers/clk/mediatek/clk-mt6797-venc.c | 36 ++++++++++----------------
+ 3 files changed, 39 insertions(+), 69 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-index 3348ba69ff6c..3767b49ea896 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r1.dts
-@@ -10,6 +10,11 @@ / {
- 	compatible = "google,tomato-rev1", "google,tomato", "mediatek,mt8195";
+diff --git a/drivers/clk/mediatek/clk-mt6797-img.c b/drivers/clk/mediatek/clk-mt6797-img.c
+index 25d17db13bac..7c6a53fbb8be 100644
+--- a/drivers/clk/mediatek/clk-mt6797-img.c
++++ b/drivers/clk/mediatek/clk-mt6797-img.c
+@@ -32,33 +32,23 @@ static const struct mtk_gate img_clks[] = {
+ 	GATE_IMG(CLK_IMG_LARB6, "img_larb6", "mm_sel", 0),
  };
  
-+&audio_codec {
-+	compatible = "realtek,rt5682i";
-+	realtek,btndet-delay = <16>;
+-static const struct of_device_id of_match_clk_mt6797_img[] = {
+-	{ .compatible = "mediatek,mt6797-imgsys", },
+-	{}
++static const struct mtk_clk_desc img_desc = {
++	.clks = img_clks,
++	.num_clks = ARRAY_SIZE(img_clks),
+ };
+ 
+-static int clk_mt6797_img_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_IMG_NR);
+-
+-	mtk_clk_register_gates(node, img_clks, ARRAY_SIZE(img_clks),
+-			       clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		dev_err(&pdev->dev,
+-			"could not register clock provider: %s: %d\n",
+-			pdev->name, r);
+-
+-	return r;
+-}
++static const struct of_device_id of_match_clk_mt6797_img[] = {
++	{
++		.compatible = "mediatek,mt6797-imgsys",
++		.data = &img_desc,
++	}, {
++		/* sentinel */
++	}
 +};
-+
- &ts_10 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
-index 4669e9d917f8..0ed83a79d680 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r2.dts
-@@ -10,6 +10,11 @@ / {
- 	compatible = "google,tomato-rev2", "google,tomato", "mediatek,mt8195";
+ 
+ static struct platform_driver clk_mt6797_img_drv = {
+-	.probe = clk_mt6797_img_probe,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt6797-img",
+ 		.of_match_table = of_match_clk_mt6797_img,
+diff --git a/drivers/clk/mediatek/clk-mt6797-vdec.c b/drivers/clk/mediatek/clk-mt6797-vdec.c
+index de857894e033..6120fccc859f 100644
+--- a/drivers/clk/mediatek/clk-mt6797-vdec.c
++++ b/drivers/clk/mediatek/clk-mt6797-vdec.c
+@@ -49,33 +49,23 @@ static const struct mtk_gate vdec_clks[] = {
+ 	GATE_VDEC1(CLK_VDEC_LARB1_CKEN, "vdec_larb1_cken", "mm_sel", 0),
  };
  
-+&audio_codec {
-+	compatible = "realtek,rt5682i";
-+	realtek,btndet-delay = <16>;
+-static const struct of_device_id of_match_clk_mt6797_vdec[] = {
+-	{ .compatible = "mediatek,mt6797-vdecsys", },
+-	{}
++static const struct mtk_clk_desc vdec_desc = {
++	.clks = vdec_clks,
++	.num_clks = ARRAY_SIZE(vdec_clks),
+ };
+ 
+-static int clk_mt6797_vdec_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_VDEC_NR);
+-
+-	mtk_clk_register_gates(node, vdec_clks, ARRAY_SIZE(vdec_clks),
+-			       clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		dev_err(&pdev->dev,
+-			"could not register clock provider: %s: %d\n",
+-			pdev->name, r);
+-
+-	return r;
+-}
++static const struct of_device_id of_match_clk_mt6797_vdec[] = {
++	{
++		.compatible = "mediatek,mt6797-vdecsys",
++		.data = &vdec_desc,
++	}, {
++		/* sentinel */
++	}
 +};
-+
- &pio_default {
- 	pins-low-power-hdmi-disable {
- 		pinmux = <PINMUX_GPIO31__FUNC_GPIO31>,
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
-index 5021edd02f7c..c47b341e98fb 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-tomato-r3.dts
-@@ -11,6 +11,11 @@ / {
- 		     "google,tomato", "mediatek,mt8195";
+ 
+ static struct platform_driver clk_mt6797_vdec_drv = {
+-	.probe = clk_mt6797_vdec_probe,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt6797-vdec",
+ 		.of_match_table = of_match_clk_mt6797_vdec,
+diff --git a/drivers/clk/mediatek/clk-mt6797-venc.c b/drivers/clk/mediatek/clk-mt6797-venc.c
+index 78b7ed55f979..834d3834d2bb 100644
+--- a/drivers/clk/mediatek/clk-mt6797-venc.c
++++ b/drivers/clk/mediatek/clk-mt6797-venc.c
+@@ -34,33 +34,23 @@ static const struct mtk_gate venc_clks[] = {
+ 	GATE_VENC(CLK_VENC_3, "venc_3", "venc_sel", 12),
  };
  
-+&audio_codec {
-+	compatible = "realtek,rt5682s";
-+	realtek,amic-delay-ms = <250>;
+-static const struct of_device_id of_match_clk_mt6797_venc[] = {
+-	{ .compatible = "mediatek,mt6797-vencsys", },
+-	{}
++static const struct mtk_clk_desc venc_desc = {
++	.clks = venc_clks,
++	.num_clks = ARRAY_SIZE(venc_clks),
+ };
+ 
+-static int clk_mt6797_venc_probe(struct platform_device *pdev)
+-{
+-	struct clk_hw_onecell_data *clk_data;
+-	int r;
+-	struct device_node *node = pdev->dev.of_node;
+-
+-	clk_data = mtk_alloc_clk_data(CLK_VENC_NR);
+-
+-	mtk_clk_register_gates(node, venc_clks, ARRAY_SIZE(venc_clks),
+-			       clk_data);
+-
+-	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+-	if (r)
+-		dev_err(&pdev->dev,
+-			"could not register clock provider: %s: %d\n",
+-			pdev->name, r);
+-
+-	return r;
+-}
++static const struct of_device_id of_match_clk_mt6797_venc[] = {
++	{
++		.compatible = "mediatek,mt6797-vencsys",
++		.data = &venc_desc,
++	}, {
++		/* sentinel */
++	}
 +};
-+
- &pio_default {
- 	pins-low-power-hdmi-disable {
- 		pinmux = <PINMUX_GPIO31__FUNC_GPIO31>,
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index 3bc624e6f499..95e93b791432 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -26,6 +26,12 @@ chosen {
- 		stdout-path = "serial0:115200n8";
- 	};
  
-+	dmic-codec {
-+		compatible = "dmic-codec";
-+		num-channels = <2>;
-+		wakeup-delay-ms = <50>;
-+	};
-+
- 	memory@40000000 {
- 		device_type = "memory";
- 		reg = <0 0x40000000 0 0x80000000>;
-@@ -136,6 +142,14 @@ adsp_device_mem: memory@60e80000 {
- 			no-map;
- 		};
- 	};
-+
-+	spk_amplifier: rt1019p {
-+		compatible = "realtek,rt1019p";
-+		label = "rt1019p";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&rt1019p_pins_default>;
-+		sdb-gpios = <&pio 100 GPIO_ACTIVE_HIGH>;
-+	};
- };
- 
- &adsp {
-@@ -185,6 +199,17 @@ &i2c2 {
- 	clock-frequency = <400000>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c2_pins>;
-+
-+	audio_codec: codec@1a {
-+		/* Realtek RT5682i or RT5682s, sharing the same configuration */
-+		reg = <0x1a>;
-+		interrupts-extended = <&pio 89 IRQ_TYPE_EDGE_BOTH>;
-+		realtek,jd-src = <1>;
-+
-+		AVDD-supply = <&mt6359_vio18_ldo_reg>;
-+		MICVDD-supply = <&pp3300_z2>;
-+		VBAT-supply = <&pp3300_z5>;
-+	};
- };
- 
- &i2c3 {
-@@ -289,6 +314,11 @@ &mmc1 {
- 	vqmmc-supply = <&mt_pmic_vmc_ldo_reg>;
- };
- 
-+&mt6359codec {
-+	mediatek,dmic-mode = <1>;  /* one-wire */
-+	mediatek,mic-type-0 = <2>; /* DMIC */
-+};
-+
- /* for CPU-L */
- &mt6359_vcore_buck_reg {
- 	regulator-always-on;
-@@ -723,6 +753,13 @@ pins-low-power-pupd {
- 		};
- 	};
- 
-+	rt1019p_pins_default: rt1019p-default-pins {
-+		pins-amp-sdb {
-+			pinmux = <PINMUX_GPIO100__FUNC_GPIO100>;
-+			output-low;
-+		};
-+	};
-+
- 	scp_pins: scp-default-pins {
- 		pins-vreq {
- 			pinmux = <PINMUX_GPIO76__FUNC_SCP_VREQ_VAO>;
+ static struct platform_driver clk_mt6797_venc_drv = {
+-	.probe = clk_mt6797_venc_probe,
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
+ 	.driver = {
+ 		.name = "clk-mt6797-venc",
+ 		.of_match_table = of_match_clk_mt6797_venc,
 -- 
-2.37.2
+2.18.0
 
 
