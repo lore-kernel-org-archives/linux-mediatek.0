@@ -4,94 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD21DC6FA90
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 06:38:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00FDBC6FA90
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 07:11:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qyfZU/JafD8o6/SPahDQv0jUqUXGqfaIFI7Q3Ul2auI=; b=K9Igso76eVbNnmUduMbBlKLs0F
-	gyr03qasHDWkGYGi7zlPb+6UdVd6tgLNdvchrMOqJ4TbA6AEojtvvUHMi/lLeEm+x5hF0PRRy6i5y
-	TUPBd55pBLpXIP5i+AcRSvrcZZ5Xw15/55oUdOWaJBWEEo7fHWf4NGrm81qJlLYmedqkidXzKph1D
-	cVnNv/ox60vmfdoXB1zULQx/U93YdNtrVEGDEppHdvbPV1zoBdsYfXV2tg8qPdMvm+sgfv7mFBGKG
-	ddseVWHZorXEVg70/30NGu2WxYItfQnrS7ceMu0X3ocXOafgOaklbT9KzYHQaS8cOXsPEQ8e9hjZ2
-	WDHxospw==;
+	bh=9Be+A/VflX8S5BSqS53W57zqfNrh5ghlqPax0x4FTS8=; b=E4Ki/LrtSdl4mkJm6XJ1oSv3LP
+	6YUhySEvZRoXcCJQJkQB/mjqdnpEYGmy23nmIwkqSYMMnLdq2JkhIX+qtfEruh9QcZEChUPQNPv0q
+	/aT5FO914Q+nlqsP+GKcel28x0nydtPkx5v5Pwa9GcWE804AlQ1M4k1O1eOdN3WYVQNUMFDkQpwAz
+	fs/eLS98g5rwrsLq/Mxjh5vZBlwXh+T82AAGFaTbAQBeRLqWZor+JwSUOq8A0LPUXRCPmm9HL4wUr
+	agGtrC/D92R+TuDSpzL3l3p5LkmmT8bNrqKn5Vv8ZxB+kYzOMfi/JUDWhPBVgPZ580WSxayax+aAF
+	RoUkeQnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obFqh-00DbHR-H6; Thu, 22 Sep 2022 06:38:15 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1obGMx-00DjX7-9r; Thu, 22 Sep 2022 07:11:35 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obFqe-00DbFH-IG
-	for linux-mediatek@lists.infradead.org; Thu, 22 Sep 2022 06:38:13 +0000
-Received: by mail-lj1-x232.google.com with SMTP id z20so9799274ljq.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 21 Sep 2022 23:38:10 -0700 (PDT)
+	id 1obGMl-00DjQi-MF
+	for linux-mediatek@lists.infradead.org; Thu, 22 Sep 2022 07:11:24 +0000
+Received: by mail-lj1-x233.google.com with SMTP id a10so9932962ljq.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 22 Sep 2022 00:11:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date;
-        bh=qyfZU/JafD8o6/SPahDQv0jUqUXGqfaIFI7Q3Ul2auI=;
-        b=kkd99uZxOdiNalyDhr8+He7hgk7NzeStc8HhuMSENnPjGg5C366/cLNg/a268b7aRY
-         5FH1wAENXzz80lUMaNZ306V8yotqdPqE3YxE+wPwcPDhlDX/Zson0A40UeuKXDaEEa8F
-         L7cQi8UJTDRbBnqgd8I43iHQZPLkC8E1iJvC343ZOsrcQJgik38mGMuP4nTykKe/bWc8
-         MuLJQaf1ByHh9wK7CDMgHOOgCCSwedl+graYTN5ROFJPlNKdnT3ku8gDe/hJj6le1JEZ
-         x3O5F/7rOwOxuRpFUxaZtGUBvdU10MfGNNDWhMvU/GmoKsV259wsEZWxn1a4tklEHtk2
-         xwIQ==
+        bh=9Be+A/VflX8S5BSqS53W57zqfNrh5ghlqPax0x4FTS8=;
+        b=T3mVBaJwvES3FaV8YLG+gKGlW4ElLKPh5ChWHSrNIodjkllrZ8OQYmIrgIuU7FK4mY
+         gtckyzupo4ix1OZra5CINB67aFDwsrI36Oc9bV+mP78teb+wc2F73GjoF1Iagtd8u5Ig
+         X5GsWm4RA2xFuJ/c07wohmcaJ+7FV4LFKuQsfyrl4NIZqpGKOiFzxxJUiFzOZkuV4Obq
+         zR7yFDmao8u+qZLIGzFxSCOGuzx2n1pNtsfAwk7rUlRlLqVkkE+c1sBYU6Q77Qe+1O1a
+         MG/81Il1kTsJT2cEToM+YF/EBSmt86qCF5FTSoaLYoa5tOkA3jc+V4RyoFhCq+vZd0hT
+         xJxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date;
-        bh=qyfZU/JafD8o6/SPahDQv0jUqUXGqfaIFI7Q3Ul2auI=;
-        b=jUYS+rHW75dl/02y78a/O1XcspqK52RgFHdbO2kFTrOLqjSRrmf4QKG3magSje3iEg
-         +RpY9NtL6FSh+KtSMGytkdlnB9YNQtAUTuRi+g0xnCOvxgPQ2BGyUinjhumR/L8FkUPm
-         k1lSC7rw3chcIhxqdLVnd2Mgs4DM63VzlR5eIZAYjuwQb34yQKid7uLwvCo7CWSx4Jd4
-         ymkx/tF9bOFtEf3n+fqBNGklUxAY4v3XXeNK4qdQ/hvo4HAUJgXLOGRAjOmMW4XoW5g0
-         jgUMzEKQ95d+jQreREfNbvj6dn70tfo2Uy8K3iXzO2ixGedTyNf+X9OtTluwzs6hT53B
-         Ti8A==
-X-Gm-Message-State: ACrzQf26yt4biVuqyicgu7zkzmp4LdxBxSmR4BByQhqU3yU3yRAHn+3D
-	OME5eJHehXEjQ7Tv/9SVu2vjQg==
-X-Google-Smtp-Source: AMsMyM74j0aPxMSIE9NbVNKhB5RET6Vu035qf1/l0Aypj5PElvYZATE6ZCJU/M40ykreSuiv5OANYw==
-X-Received: by 2002:a2e:84d6:0:b0:26b:dce5:2fe5 with SMTP id q22-20020a2e84d6000000b0026bdce52fe5mr529732ljh.12.1663828688613;
-        Wed, 21 Sep 2022 23:38:08 -0700 (PDT)
+        bh=9Be+A/VflX8S5BSqS53W57zqfNrh5ghlqPax0x4FTS8=;
+        b=yeseUcR2+rRBpFqdRDZRwbbyjGVZ5Za9/+rFCgXNm77tw9KLItwa/qy4StdVrCLRWi
+         9hnGQYYYjGwaUxTD3bZoiB5QkqjnE1QVuOCO5RcgTzI32J2yDsz8lubnsvxB9KBSXXGt
+         xaD7V7n0aWiSVD9IGeAA09EHOvlk4wcDoJ9qANnNDRAgtH4pQOwTZdJ7uJgO1TeYfmrp
+         7vXOG9nguKf/8RKMLclSuwXkdESyfzVcpzlJjfLsjNOGvvrj5BlaecpzA2X+2t+++8jR
+         cjTUFd32jgAWaKQzVkIfLFvxtaFBtZknuyO7VV0qdo1oluBPPmeTxKDwxinM7StrOp+l
+         YPpA==
+X-Gm-Message-State: ACrzQf2LZh6qCwpvurICXdrdFppRR9hkoCESEzSjOqXe2I/mmGtkzElf
+	9TgxIOptMp+ddws9XmZ/11kHTQ==
+X-Google-Smtp-Source: AMsMyM7iojxShj6IEudo+H4VWui9taf1pE4pa+BEPva5UkHYdDaU9Dgt+hBCkSrdVpL9VnVmgusIXw==
+X-Received: by 2002:a05:651c:2108:b0:26c:6102:5d3b with SMTP id a8-20020a05651c210800b0026c61025d3bmr667340ljq.168.1663830679817;
+        Thu, 22 Sep 2022 00:11:19 -0700 (PDT)
 Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id b1-20020a056512070100b00493014c3d7csm767484lfs.309.2022.09.21.23.38.07
+        by smtp.gmail.com with ESMTPSA id k4-20020a05651239c400b0049908e21e26sm785597lfu.253.2022.09.22.00.11.17
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 Sep 2022 23:38:07 -0700 (PDT)
-Message-ID: <821b3c30-6f1f-17c1-061c-8d3b3add0238@linaro.org>
-Date: Thu, 22 Sep 2022 08:38:06 +0200
+        Thu, 22 Sep 2022 00:11:18 -0700 (PDT)
+Message-ID: <d01e4a03-1d6d-9616-45ca-1c927f2d8237@linaro.org>
+Date: Thu, 22 Sep 2022 09:11:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.2
-Subject: Re: [PATCH v3 2/2] dt-bindings: net: snps,dwmac: add clk_csr property
+Subject: Re: [PATCH v1 01/17] dt-bindings: clk: mediatek: Add MT8195 DPI
+ clocks
 Content-Language: en-US
-To: Jianguo Zhang <jianguo.zhang@mediatek.com>,
- "David S . Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>,
+To: Guillaume Ranquet <granquet@baylibre.com>, Vinod Koul <vkoul@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, David Airlie <airlied@linux.ie>,
+ Rob Herring <robh+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro
- <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Biao Huang <biao.huang@mediatek.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20220921070721.19516-1-jianguo.zhang@mediatek.com>
- <20220921070721.19516-3-jianguo.zhang@mediatek.com>
- <bd460cfd-7114-b200-ab99-16fa3e2cff50@linaro.org>
- <d231f64e494f4badf8bbe23130b25594376c9882.camel@mediatek.com>
+ Daniel Vetter <daniel@ffwll.ch>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ Pablo Sun <pablo.sun@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Mattijs Korpershoek
+ <mkorpershoek@baylibre.com>, linux-arm-kernel@lists.infradead.org,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org
+References: <20220919-v1-0-4844816c9808@baylibre.com>
+ <20220919-v1-1-4844816c9808@baylibre.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <d231f64e494f4badf8bbe23130b25594376c9882.camel@mediatek.com>
+In-Reply-To: <20220919-v1-1-4844816c9808@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_233812_635717_BED78939 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20220922_001123_746121_BC326836 
+X-CRM114-Status: UNSURE (   8.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,41 +107,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22/09/2022 04:15, Jianguo Zhang wrote:
-> Dear Krzysztof,
+On 19/09/2022 18:55, Guillaume Ranquet wrote:
+> From: Pablo Sun <pablo.sun@mediatek.com>
 > 
-> 	Thanks for your comment.
+> Expand dt-bindings slot for VDOSYS1 of MT8195.
+> This clock is required by the DPI1 hardware
+> and is a downstream of the HDMI pixel clock.
 > 
-> On Wed, 2022-09-21 at 10:24 +0200, Krzysztof Kozlowski wrote:
->> On 21/09/2022 09:07, Jianguo Zhang wrote:
->>> Add clk_csr property for snps,dwmac
->>>
->>> Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
->>> ---
->>>  Documentation/devicetree/bindings/net/snps,dwmac.yaml | 5 +++++
->>>  1 file changed, 5 insertions(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
->>> b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
->>> index 491597c02edf..8cff30a8125d 100644
->>> --- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
->>> +++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
->>> @@ -288,6 +288,11 @@ properties:
->>>        is supported. For example, this is used in case of SGMII and
->>>        MAC2MAC connection.
->>>  
->>> +  clk_csr:
->>
->> No underscores in node names. Missing vendor prefix.
->>
-> We will remane the property name 'clk_csr' as 'snps,clk-csr' and
-> another driver patch is needed to align the name used in driver with
-> the new name. 
+> Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> Reviewed-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+> 
 
-You did not say anything that you document existing property. Commit msg
-*must* explain why you are doing stuff in commit body.
-
-We should not be asking for this and for reason of clk_csr.
+Looks like broken patch.
 
 Best regards,
 Krzysztof
