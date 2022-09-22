@@ -4,81 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D959ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 01:42:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4815DECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Sep 2022 01:47:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5TqaiC6+5PjODgdBwHtICicD+dd5+ergNAw4nNe6Mow=; b=YJg5hChNlbAq/XDGOiMZYdMurF
-	n8KtJJmPvGupaS4k276/SNlT7jBAgoxEvKfPYIKGTz1NwWaD82WLL1pEvEVaDT7gXYWnDir6dQ7LX
-	bhewJG7p2e2yKFQV0UVP2UuBn8xGJ/sJssu+kZC4QBcYBKPF7JES6vXSGm+/02JZIeBmuwWJ9XYXF
-	mFawvDxF1LqQ68H2bGmRZaSNocifoWajj2aGynDd281FSNsgqlm9tyTX6WYc/mDxtN6sjIxAOHJxG
-	RyohS+eQPU9oPJz8q6flEhSlwPA901ssIEN8HlT6vlvb2zaZOzihvgK1yWn0/GmcM8e8OLnU0Jx9F
-	23PpnONw==;
+	bh=4ooavMI26VS/rgEsvGJZdTi0rwPkW4R7VrMOyd8Gas0=; b=CUtVP85as7Mv8OGFHks9xsqLjF
+	ibPV1xsT0IPDuYBq8DYZu6onOxn+/bam7Q3ksXy8gM0RW5NPc5Fxd+0EpCQRPWRz13mUPS7cKD6OR
+	PNAetIaFToQyfw423Kgwvco2FM1kCEo4hGZym8K8M1wCAbYCdgI6+gfhuCZu1ThyeLsYuF3oWjpLb
+	UYcANNfCERDPCYIWIOaiO1PBTNIYCACp0lk7cIVcWOBrzl4m4kgKSW1MBBiJEhWna3oZpfViMtD0U
+	gH+btxttUTiDoLQplKwSEz2uPTpk4dR8AikPtdne590aMHg6jgdQVelZJfGBcZ7Sc/hV7XVKzZpbK
+	6219HA5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obBEZ-00D5i5-JS; Thu, 22 Sep 2022 01:42:35 +0000
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+	id 1obBIv-00D5wF-J8; Thu, 22 Sep 2022 01:47:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obBEW-00D5hZ-Qq
-	for linux-mediatek@lists.infradead.org; Thu, 22 Sep 2022 01:42:34 +0000
-Received: by mail-pg1-x531.google.com with SMTP id r23so7700953pgr.6
-        for <linux-mediatek@lists.infradead.org>; Wed, 21 Sep 2022 18:42:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=5TqaiC6+5PjODgdBwHtICicD+dd5+ergNAw4nNe6Mow=;
-        b=LPkR45NRdlBatKPakcpv4dsSnn64O6AKZ3CP7Canb3ZMh3urZEDP/6aeCNoCvXpoyi
-         jsM1q+l0sqSkjbaIvfobbDrYH9ZFXHbnI2CuEgoepy1bAgxhnOLhMaZoDWxhoLXPuafz
-         1ScU0/jLIo8fvSdIWIOT+vvI50v7wnaoo3tQy8Wa37TXDAijYdr+Ue+WV/ROuE6pcfIj
-         M/AW8NJ3DeX6/CLBY1Fpat6Lw4d7aORGUSoVl0jLcpsFSRKFKyPu+Vzm3kSFvVJTjG/N
-         JJ3lRSUBm292kaNKQ1GqBvR1pk4NqX/V8JU+s7C5HZcWwJKNxadhENqnquglJXV9+7wT
-         WGgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=5TqaiC6+5PjODgdBwHtICicD+dd5+ergNAw4nNe6Mow=;
-        b=7wBckyD934JWNDxn7UEZrSMYpdUunCxPoYCttF/+spe7F6sgMLQh7pKtu6WUyyZwNY
-         jckHVqXhWOFqjWLK9FWJ/+QOgHfvaYqp+OCFLV+/QMwMG7COVGKP/Mu9Mh7LXHeYVoid
-         N9WgkhMPeqm0d+MKtz8ZbJJZuRMkWYMhEYLG3HRQjZaQc7EXV8EjYCm0u9nDTnv0wVSt
-         7t/bN4RXJ/DE3Ema+5XsDR0DDKpWVSqHyxVWT65DlN7jaIv+w9yvjLLysy9scyrNkS6P
-         zEHiXqHEvtXJ2QthTDkX72s3rMInje61p9kT442EVBVkRGNBxFI4DBP8E6DYw4j4cgJh
-         BRiQ==
-X-Gm-Message-State: ACrzQf1N6vxdbHua14irilOBCp+/ZOQ2erAUQbCMs3/if3gqJyMuzGBP
-	1lc8lkMgckc5aY165tHpem8kv5oVGSk=
-X-Google-Smtp-Source: AMsMyM5F5q5V9Vn2GrnYbp7RXDz0oPM/LZ6ziKRO7Ee/lo2266CZVvwlbC0rUEtesrh+yp0ooOJ/7Q==
-X-Received: by 2002:a63:4805:0:b0:43b:e1c9:32af with SMTP id v5-20020a634805000000b0043be1c932afmr970363pga.574.1663810951181;
-        Wed, 21 Sep 2022 18:42:31 -0700 (PDT)
-Received: from ?IPV6:2001:b400:e404:66d5:cf4:e9a8:56c5:fa2d? (2001-b400-e404-66d5-0cf4-e9a8-56c5-fa2d.emome-ip6.hinet.net. [2001:b400:e404:66d5:cf4:e9a8:56c5:fa2d])
-        by smtp.gmail.com with ESMTPSA id w62-20020a623041000000b0053e156e9475sm2871524pfw.182.2022.09.21.18.42.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 Sep 2022 18:42:30 -0700 (PDT)
-Message-ID: <88bd277a-bda4-29ad-4157-09883303b470@gmail.com>
-Date: Thu, 22 Sep 2022 09:42:27 +0800
+	id 1obBIt-00D5vm-On; Thu, 22 Sep 2022 01:47:04 +0000
+X-UUID: 6ffda3f2c6f3430eb62fb4e4a7a00dc4-20220921
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=4ooavMI26VS/rgEsvGJZdTi0rwPkW4R7VrMOyd8Gas0=;
+	b=k/ln69CKqBDVX43egJxyQbJb2YLHXlhn0l00XZkk56xmJaRTmmRtp0xOx57ulhGl4yt+g3OJrEm6sUAesR8+NU4YsPaFYDE2+ietPQiRgrGQ3INUE+FypzW5KDYWUZSk95s8MxTMp55EKsLKfM79sykKiRY1LSHyfjYQGtTyiMw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:7d90c5db-cc03-4be9-82aa-388686b81604,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:8346785e-5ed4-4e28-8b00-66ed9f042fbd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 6ffda3f2c6f3430eb62fb4e4a7a00dc4-20220921
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <chunxu.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1666423967; Wed, 21 Sep 2022 18:43:03 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Thu, 22 Sep 2022 09:42:52 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 22 Sep 2022 09:42:51 +0800
+Message-ID: <45bba23b9bea4c5df0ac1751c9dcd8f1ce5df6e6.camel@mediatek.com>
+Subject: Re: [PATCH] ASoC: SOF: mediatek: add pcm_pointer callback for mt8186
+From: chunxu.li <chunxu.li@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<broonie@kernel.org>, <pierre-louis.bossart@linux.intel.com>,
+	<peter.ujfalusi@linux.intel.com>, <lgirdwood@gmail.com>,
+	<daniel.baluta@nxp.com>
+CC: <matthias.bgg@gmail.com>, <yc.hung@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <alsa-devel@alsa-project.org>,
+	<sound-open-firmware@alsa-project.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<project_global_chrome_upstream_group@mediatek.com>
+Date: Thu, 22 Sep 2022 09:42:51 +0800
+In-Reply-To: <dbe3f7fb-5fae-b147-f824-cd39ba3900ca@collabora.com>
+References: <20220921120239.31934-1-chunxu.li@mediatek.com>
+	 <dbe3f7fb-5fae-b147-f824-cd39ba3900ca@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.1
-Subject: Re: [PATCH -next] power: supply: mt6370: Fix return value check in
- mt6370_chg_probe()
-Content-Language: en-US
-To: Yang Yingliang <yangyingliang@huawei.com>, linux-pm@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Cc: sre@kernel.org, chiaen_wu@richtek.com
-References: <20220921152915.1506767-1-yangyingliang@huawei.com>
-From: ChiaEn Wu <peterwu.pub@gmail.com>
-In-Reply-To: <20220921152915.1506767-1-yangyingliang@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_184232_914880_072A4D0F 
-X-CRM114-Status: GOOD (  15.21  )
+X-CRM114-CacheID: sfid-20220921_184703_821356_94750D9C 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,39 +84,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/21/2022 11:29 PM, Yang Yingliang wrote:
-> If create_singlethread_workqueue() fails, it returns a null pointer,
-> replace IS_ERR() check with NULL pointer check.
+On Wed, 2022-09-21 at 14:17 +0200, AngeloGioacchino Del Regno wrote:
+> Il 21/09/22 14:02, Chunxu Li ha scritto:
+> > add pcm_pointer callback for mt8186 to support read
+> > host position from DSP
+> > 
+> > Signed-off-by: Chunxu Li <chunxu.li@mediatek.com>
 > 
-> Fixes: 233cb8a47d65 ("power: supply: mt6370: Add MediaTek MT6370 charger driver")
-> Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
-> ---
->   drivers/power/supply/mt6370-charger.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+> Hello Chunxu,
+> Can you please also add this, along with the .pcm_hw_params callback
+> to mt8195.c?
 > 
-> diff --git a/drivers/power/supply/mt6370-charger.c b/drivers/power/supply/mt6370-charger.c
-> index 716cba259a7a..f27dae5043f5 100644
-> --- a/drivers/power/supply/mt6370-charger.c
-> +++ b/drivers/power/supply/mt6370-charger.c
-> @@ -911,8 +911,8 @@ static int mt6370_chg_probe(struct platform_device *pdev)
->   	priv->attach = MT6370_ATTACH_STAT_DETACH;
->   
->   	priv->wq = create_singlethread_workqueue(dev_name(priv->dev));
-> -	if (IS_ERR(priv->wq))
-> -		return dev_err_probe(dev, PTR_ERR(priv->wq),
-> +	if (!priv->wq)
-> +		return dev_err_probe(dev, -ENOMEM,
->   				     "Failed to create workqueue\n");
->   
->   	ret = devm_add_action_or_reset(dev, mt6370_chg_destroy_wq, priv->wq);
+> Anyway, for this one:
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <
+> angelogioacchino.delregno@collabora.com>
+> 
 
-Hi Yingliang,
+Sure, certainly.
 
-In general this looks good to me. Thanks for catching this!
-
-Reviewed-by: ChiaEn Wu <chiaen_wu@richtek.com>
-
--- 
-Best Regards,
-ChiaEn Wu
 
