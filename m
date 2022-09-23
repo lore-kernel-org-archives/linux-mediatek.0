@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 464E1ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 09:17:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D95DECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 09:20:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OxBS7So65HDqiXFdOVVqo1mVohtW4L6xtz4TFXOXzPg=; b=dqBkHK/IPH9Rq/v7UrIHKfg7pv
-	ZVm+7d+ZfQsBUFAEb9zZIRkBWk1CEyn1yz1JiZEcpJXlBFQhpFmUTncz06oS+IonfS7MFkMF9dknX
-	Q89qB4F7KWcqQc/6ZN6y+n6FmRozQwWDlQljuSUHeamAcm4z5A9x8A7WF6U+/PqobMqeCsxAymGjf
-	12To5Ave8xEZc2gp1o0DJA8zMEB8NazB4Ig81OhKLHip35OeD09+vFyaVtOq/OSz/qVndt7yGIaYA
-	WsHbp1ITMTQu4qSMKWfKC3VTM8SFJ4u1mEjP3G98yhjYfendEATzB6TwLfQLQ+4zXTkP4ZETpySec
-	/p4cMlng==;
+	bh=N4eQh0bhVORDvNeRKRka9yvHQmJH4vBx3Hho/53aF+4=; b=Pj2JeyngfiLJhUS2wYiyNbRduf
+	Q5ZM3Baz27lwGLldK1i0YyNLIol5LkYp+iGVX8lE+yl/qbsyTPbOauW8zulPKUEgreK17KXKFOUFX
+	QyiPHQJQZgva2OCusdLJDOzNlIuuggwFPJZgah5c2hrCVF18IJffP1WxYyj5WGpSYla7jeZBQfKRV
+	B2jHIxUEXYJWSZK1Uxl1aDrow7yOxkeMkeEwDK84Hw/Sb1Vh8Krt3aO0gzPvcKDn5eMM4sezx9nyF
+	zzzEigzR843jtEZoI7qG6gdlbYiKrecsmKLC29VKM9BWrSOUy4mjHG705Ic59J9zJQDQLJuUrUKU7
+	yFwmCXAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obeo0-003Euu-RB; Fri, 23 Sep 2022 09:17:08 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1ober3-003GNH-Lm; Fri, 23 Sep 2022 09:20:17 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obenX-003EgD-KX; Fri, 23 Sep 2022 09:16:41 +0000
+	id 1obeqX-003G7N-My; Fri, 23 Sep 2022 09:19:47 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E438D6601BDF;
-	Fri, 23 Sep 2022 10:16:36 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 555AC6601BDF;
+	Fri, 23 Sep 2022 10:19:43 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1663924598;
-	bh=COcbVBmwh8xUSsJeO6kEeMrbFW6tyt7j4/rcy5e8aTk=;
+	s=mail; t=1663924784;
+	bh=L8D1yTEhULRIAS6lI51HY0j9CE5jcl5Cm2AEs0nABTw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ifBr8/l2q7/LqvQpfV2K/U2NRx0B+a7wLFHep1xJ/4F+w9SovfhlhasDI8SugMkVq
-	 ZhpDjSAJEY2cXK1CJb+ivJcRpW1UL/IS0Ymg/IlzIoSw07gFdM0qv5iUKSoIX3G6vo
-	 Liq01thJUcoX4g7TU12sbvsPqC0yn4jk4VijGpIgQ+4c1+6OrOV0odFuE0ysi91v7u
-	 Pj/YIOnEn1hpnyMnw696McjHHTSRZMm5RODGCQ7zXKlj1+QhU0gy5eLkw1vtGVymeO
-	 yHOhEY34MmsnE0E5e2bo2S0IMf4Dmy6Y4wAGcIB2hVRzm4AtSIN1n1DvZjSuUgXmLZ
-	 f9XjR8vev2nXg==
-Message-ID: <ad7e399f-9fd9-371e-48d1-4f590b6e8a68@collabora.com>
-Date: Fri, 23 Sep 2022 11:16:34 +0200
+	b=PdlxoKsr0n4pUp6rXaoDv1z95wkQwSDLj9HW9GDDCwAMWLOUl9PsJd4qls4Cpb/zv
+	 a0nz1P8zzsvcGgGVH0CDWqBUGSgyngy5l9j4nunNfT7s1nqZKct0uyoUSoVik5cPUr
+	 +O4B0I7GsgWdV6H12y1pS5TMwWIX5c9j/ZUmjhbh1DAENlhoKJUtUF2/gLTFAGUspz
+	 uS1af1SK84lFDivPwjqXIwHqBgtMS80rJIBXgCXnYEYuy9VD5Csxt3iHrjWayudeX/
+	 ZsCHnKRrIWeHIc2b9er2iWh4Nx8SFdrUu4VakhREUKGspz5ZheGVbROEpK5V1dyLyL
+	 lAfVid34fkaUg==
+Message-ID: <b11fec5e-0725-be3c-4b4b-0e68bf00c10d@collabora.com>
+Date: Fri, 23 Sep 2022 11:19:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH v8,2/3]drm: mediatek: Adjust the dpi output format to
- MT8186
+Subject: Re: [PATCH v9,0/3] Add dpi output format control for MT8186
 Content-Language: en-US
 To: xinlei.lee@mediatek.com, matthias.bgg@gmail.com,
  jason-jh.lin@mediatek.com, rex-bc.chen@mediatek.com, ck.hu@mediatek.com,
@@ -55,15 +54,15 @@ To: xinlei.lee@mediatek.com, matthias.bgg@gmail.com,
 Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com, jitao.shi@mediatek.com
-References: <1663850702-26529-1-git-send-email-xinlei.lee@mediatek.com>
- <1663850702-26529-3-git-send-email-xinlei.lee@mediatek.com>
+References: <1663922440-20242-1-git-send-email-xinlei.lee@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <1663850702-26529-3-git-send-email-xinlei.lee@mediatek.com>
+In-Reply-To: <1663922440-20242-1-git-send-email-xinlei.lee@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_021639_858656_D3CB11E2 
-X-CRM114-Status: GOOD (  18.41  )
+X-CRM114-CacheID: sfid-20220923_021945_917579_DAE9E3FF 
+X-CRM114-Status: UNSURE (   7.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,59 +77,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/09/22 14:45, xinlei.lee@mediatek.com ha scritto:
+Il 23/09/22 10:40, xinlei.lee@mediatek.com ha scritto:
 > From: Xinlei Lee <xinlei.lee@mediatek.com>
 > 
-> Due to the mt8186  hardware changes, we need to modify the dpi output
-> format corresponding to the mmsys register(mmsys_base+0x400).
+> Base on the branch of ck-linux-next/mediatek-drm-fixes.
 > 
-> Because different sink ICs may support other output formats.
-> The current DRM architecture supports retrieving the output format of
-> all bridges (eg dpi is implemented via DRM's .atomic_check and
-> .atomic_get_output_bus_fmts and .atomic_get_input_bus_fmts).
-> If no unified output format is found, the default soc format
-> (MEDIA_BUS_FMT_RGB888_2X12_LE in mt8186) is used.
-> 
-> Therefore, if there are other format sink ICs (RGB888_DDR/RGB888_SDR) in
-> the future, the sink IC needs to add the func implementation mentioned
-> above needs to be added.
-> And the drm architecture will select the appropriate format to change
-> the dpi output.
-> 
-> Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
-> ---
->   drivers/gpu/drm/mediatek/mtk_dpi.c | 11 +++++++++++
->   1 file changed, 11 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index 630a4e301ef6..bd1870a8504a 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -15,6 +15,7 @@
->   #include <linux/of_graph.h>
->   #include <linux/pinctrl/consumer.h>
->   #include <linux/platform_device.h>
-> +#include <linux/soc/mediatek/mtk-mmsys.h>
->   #include <linux/types.h>
->   
->   #include <video/videomode.h>
-> @@ -30,6 +31,7 @@
->   #include "mtk_disp_drv.h"
->   #include "mtk_dpi_regs.h"
->   #include "mtk_drm_ddp_comp.h"
-> +#include "mtk_drm_drv.h"
->   
->   enum mtk_dpi_out_bit_num {
->   	MTK_DPI_OUT_BIT_NUM_8BITS,
-> @@ -82,6 +84,7 @@ struct mtk_dpi {
->   	struct pinctrl_state *pins_dpi;
->   	u32 output_fmt;
->   	int refcount;
-> +	struct device *mmsys_dev;
 
-Please place this after `struct device *dev;` and not here at the end.
+Hello Xinlei,
+
+I've reviewed v8 just some minutes before you pushed this v9.
+
+Can you please make the requested changes from v8 on patch [2/3] and
+push a v10 retaining the Reviewed-by tags that I released on v8?
 
 Thanks,
 Angelo
