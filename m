@@ -4,108 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87341ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 07:19:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30F7CC6FA82
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 07:28:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KbfMwAYwJ3pKjs2uyFVOf7om7FtU8aOpQYMWbXrhj4w=; b=sjyzMWVFSppZhvAojff1OPCf24
-	c5/YvqmZDwzNeuIBlnljzlg6qvEXTw2LTARq2C1ZStGIGDJBb1hgdhNefsjxY9tAqjXyG8PM/2TqO
-	hYIL4IHwbRYH4jVIK4S4vSThiAhpAW4w/E2EZljxfUYTRjDQEpwUsdh7xwziaeJLGLmCUYrOqF3+b
-	GMJ5QfpKXycKttNL1qAAb/XDemSo3Bm+anz6zh6o0nXHKZfrNZTa7Qmc9HgwwL4n+GQGJfMoE4e7V
-	CP7sXJjbvixoYMUrNxTlTBCLolzdASs0r+hermq6dVTUTSUaI78YsQpNQXC3pXlYpDJWpNUt+s0LP
-	ojARbhCQ==;
+	bh=zg30mVd0K4jynuTHfXNyGn5g3EK3nP9W12VgDvTnH2Y=; b=LO5Yqd4AT6BgWhHvtoiCXEgHvv
+	L9WuUW5YMk7WcbIimmQ5OHUUSxfbQWccbiGCMomwNv+mjIoNY4DHfrYFRLzg5zwOnlNwvBXnpjzms
+	f8m5v/lvICjaqqcEB+P00k26uBD+J7scVnb7d7jRJ30PazQOIFM7SUiOeqTFm5z+aG9p3kRcALdAx
+	BTunFYM6vpMY1mDmBmSnT33B2o03MoJB0m2rselFh19wzudHv8w3PE1hkVvKEj42UkHz/1q/GEwJ+
+	VjM1Cys3se7huaykg8f8A9KuhpO4uORnrHfM1DKAxSyTV8tptkMO92urlCMOguiQJ2M2KsDBi+yQl
+	51lu2ZPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obcyF-002fcs-Hw; Fri, 23 Sep 2022 07:19:35 +0000
-Received: from mail-dm6nam11on2046.outbound.protection.outlook.com ([40.107.223.46] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1obd78-002i7y-Ls; Fri, 23 Sep 2022 07:28:46 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obcxd-002fHs-DX; Fri, 23 Sep 2022 07:18:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bGXNqFGhOknuEPMYgKZZXbyaVgtUxmZWafkMktFCke7GVZ8VsRzHv0bOYyG/42LTWNAp+TXSqtG+mOE5wjuQbFWrZj7SAHMOwKFp27w2qGGPIH14uMPSNQoYKeVDN+NiHsC/LDh6eT3bSc8olprs03GCmF1iCUXxNPZ4MlnrNVrIfm2yNhYsnVPpIxc5mcYtsyo0k0fGAgQwVDmAo3JShoE8cnTsSr4u2xmix/MYEeZ8RAIeXoaxwYNhEko8LSr5gOy+eoGb4Txb3lNe6FBj6g58gytfGlfE7ti8hkyEYmNUF7X9ueaS9VGiv8iRlI6xUNmdyl4lAlZlPfV0dtQBqQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=KbfMwAYwJ3pKjs2uyFVOf7om7FtU8aOpQYMWbXrhj4w=;
- b=IElEDt8NTAO5PQPDg0zHFocjyr2eD6KQmabKMKbW18yLfazqE91A2NC9vugnifktVDTqEtnN7zL/XEiKSnaDsNGSwYeO8jDE3VnptXhGQGcvrc7WtfkJHRxY6d2QbO9fGbmln3t6CZa9sTR1+vYMlNRnYNy+z4mj7NwZ93HiCl7Ap/5BXEdKsVaB2WkArse4n498fZjPeL+zNXVTN5PWyaJ16G1uyC6LX7VU/AsM4bkXf+PFzRdQnvblhgAD/c7IpDYvmd0c0SYYxiiUb02yy3fbqbFdj7tarsyWuLmiNzyLek94nwNCUhQgOemQHjCOnteJ1EeGLcjJPJv3fgGZpA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=mediatek.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KbfMwAYwJ3pKjs2uyFVOf7om7FtU8aOpQYMWbXrhj4w=;
- b=tCR+kIa8CMMHmUOLeF+K4mcCoAScEPHbbLrjhUB+40XGFwFNySXIXXHjwYc5zxjDwmbqPZgN0Kd70YqUkpNfQC2P8P+EYTRw9pjup5b8482awAUBEUSiKCfH4AkhD66MIsZm7A0F3hUOJZKFvAp0HgyzzmMt4C1+dSMmmGXAwwHEmzVWZf69TZxeF3GcqerK49UBGhdnNaoAwAXzoXPfOSR1lPo6J54sj+tjxreWbky7kpV7tpNuqDwjR2uBxE5ECArHfLJRg1d7VOcN8vp/Rsoab0Qz0F52/4bXM0aTc1bf4BsuquozqLt1ABnO9slUMvVXQ2GRmnsi/IL/S3Nyrg==
-Received: from DS7PR03CA0304.namprd03.prod.outlook.com (2603:10b6:8:2b::16) by
- CH0PR12MB5170.namprd12.prod.outlook.com (2603:10b6:610:b9::8) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5654.20; Fri, 23 Sep 2022 07:18:49 +0000
-Received: from DM6NAM11FT073.eop-nam11.prod.protection.outlook.com
- (2603:10b6:8:2b:cafe::c2) by DS7PR03CA0304.outlook.office365.com
- (2603:10b6:8:2b::16) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.14 via Frontend
- Transport; Fri, 23 Sep 2022 07:18:48 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- DM6NAM11FT073.mail.protection.outlook.com (10.13.173.152) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5654.14 via Frontend Transport; Fri, 23 Sep 2022 07:18:48 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26; Fri, 23 Sep
- 2022 00:18:30 -0700
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29; Fri, 23 Sep
- 2022 00:18:30 -0700
-Received: from Asurada-Nvidia.nvidia.com (10.127.8.11) by mail.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server id 15.2.986.29 via Frontend
- Transport; Fri, 23 Sep 2022 00:18:29 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: <yong.wu@mediatek.com>, <joro@8bytes.org>, <will@kernel.org>,
-	<robin.murphy@arm.com>, <matthias.bgg@gmail.com>, <jean-philippe@linaro.org>
-CC: <jgg@nvidia.com>, <kevin.tian@intel.com>, <iommu@lists.linux.dev>,
-	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <virtualization@lists.linux-foundation.org>
-Subject: [PATCH v6 5/5] iommu: Propagate return value in ->attach_dev callback functions
-Date: Fri, 23 Sep 2022 00:18:27 -0700
-Message-ID: <3b5b29b735dc5e5f4a047262f91636dbee4af981.1663899032.git.nicolinc@nvidia.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <cover.1663899032.git.nicolinc@nvidia.com>
-References: <cover.1663899032.git.nicolinc@nvidia.com>
+	id 1obd74-002i5z-Da
+	for linux-mediatek@lists.infradead.org; Fri, 23 Sep 2022 07:28:44 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1obd6m-0001Cg-UD; Fri, 23 Sep 2022 09:28:24 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1obd6l-002PwT-Ts; Fri, 23 Sep 2022 09:28:22 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1obd6j-002x7p-Iu; Fri, 23 Sep 2022 09:28:21 +0200
+Date: Fri, 23 Sep 2022 09:28:21 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: xinlei.lee@mediatek.com
+Cc: thierry.reding@gmail.com, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+	jitao.shi@mediatek.com, linux-pwm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@list.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH,v2] dt-bindings: pwm: Add compatible for Mediatek MT8188
+Message-ID: <20220923072821.fy732jaayqdyfeht@pengutronix.de>
+References: <1663915394-30091-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM6NAM11FT073:EE_|CH0PR12MB5170:EE_
-X-MS-Office365-Filtering-Correlation-Id: e4c66298-5b29-4967-334e-08da9d33dbde
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	u0o94C4QJWK1wE/DNwRbXQQk9FZ0B+3yBD1MxZ/1y436hxssO2xLRBMgF90byYJ1uqaMdxnpbp38n8WLDQ0KdQRmkXDRonwm/v4iHS0U4EP0UYwnjxFRO3dX0NJlZJpQuE7D4M16TJSN73h/Dnf5M6eN+rbY7Y03VMVikAYxkACfOiFZR0qCtRFEzkM8vDGo2jLqsCAd8WzBd93ulzcbjSPBhvrGSD6ElyuZaOrSEYTJOouJiN1vjlg1xL4bwUpqWxRPt1tQtSABhohdaRZ8uh/7oe6o2GDMw6IG832ltDYjoP2IFIEokVwIt3k1wwPa47Jii6Voj5NviBgBc+Lx8Hkwul7wrRLsE8GreSZSPlKIzyNMgj+BEMGpChivPPYtlDiWksHbOCcFl377W/HMUK2Pt5EsWj6VpsKt1taUVAfMFplYB8vww0e/5340yK99aANrKMjXohHzxvZhuopE14rkzAaRIUcqGY5/aL7ZdxW1GI9zCu8f+9finVLrIN+oCDGGQnsR4woS63fVqolhJTOY6kHIb4/l45QDUZtVzGw2MbMs/j7Z+xQLOud3lYIQI2TVvXY8Px2faIrEBn83wPHEk3qJmTH1skG7KPfsJ4XVnzP+2VI/klDZe7PcMG4DzsGqgMGb4v6zDIREGT8AdDGCKDAMBODIla0id6D3dsactLM5nWqIwNXVwcbsCMkObGiG/1ONag75TaeoYaufyCfUeYrCCgWUrAu2ppICOvtKOebLQEHJEYWkVL7nbxai0CDYk0V1lLuwXI02QIlAEg==
-X-Forefront-Antispam-Report: 	CIP:216.228.117.161;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge2.nvidia.com;CAT:NONE;SFS:(13230022)(4636009)(346002)(39860400002)(396003)(376002)(136003)(451199015)(40470700004)(36840700001)(46966006)(110136005)(426003)(47076005)(2616005)(40480700001)(336012)(186003)(86362001)(316002)(54906003)(83380400001)(5660300002)(7416002)(4326008)(40460700003)(8676002)(7696005)(8936002)(26005)(82740400003)(41300700001)(36756003)(70586007)(70206006)(2906002)(36860700001)(356005)(82310400005)(7636003)(478600001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Sep 2022 07:18:48.2449
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: e4c66298-5b29-4967-334e-08da9d33dbde
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.161];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	DM6NAM11FT073.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR12MB5170
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7db7yim5if2sboqg"
+Content-Disposition: inline
+In-Reply-To: <1663915394-30091-1-git-send-email-xinlei.lee@mediatek.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_001857_489176_F3708EB4 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20220923_002842_475260_DCB25FAD 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,48 +76,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mtk_iommu and virtio drivers have places in the ->attach_dev callback
-functions that return hardcode errnos instead of the returned values, but
-callers of these ->attach_dv callback functions may care. Propagate them
-directly without the extra conversions.
 
-Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-Reviewed-by: Yong Wu <yong.wu@mediatek.com>
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
----
- drivers/iommu/mtk_iommu.c    | 2 +-
- drivers/iommu/virtio-iommu.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+--7db7yim5if2sboqg
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index be1a7d1cc630..c30dc8f81778 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -666,7 +666,7 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 		ret = mtk_iommu_domain_finalise(dom, frstdata, region_id);
- 		if (ret) {
- 			mutex_unlock(&dom->mutex);
--			return -ENODEV;
-+			return ret;
- 		}
- 		dom->bank = &data->bank[bankid];
- 	}
-diff --git a/drivers/iommu/virtio-iommu.c b/drivers/iommu/virtio-iommu.c
-index 87128266b6e3..35de7b433b17 100644
---- a/drivers/iommu/virtio-iommu.c
-+++ b/drivers/iommu/virtio-iommu.c
-@@ -696,7 +696,7 @@ static int viommu_domain_finalise(struct viommu_endpoint *vdev,
- 		if (ret) {
- 			ida_free(&viommu->domain_ids, vdomain->id);
- 			vdomain->viommu = NULL;
--			return -EOPNOTSUPP;
-+			return ret;
- 		}
- 	}
- 
--- 
-2.17.1
+Hello,
 
+hint: You don't seem to know about git send-email -v2. (Or git
+format-patch -v2)
+
+On Fri, Sep 23, 2022 at 02:43:14PM +0800, xinlei.lee@mediatek.com wrote:
+> From: xinlei lee <xinlei.lee@mediatek.com>
+>=20
+> Add dt-binding documentation of pwm for MediaTek MT8188 SoC.
+>=20
+> Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
+> ---
+
+It is usually helpful to note what changed since v1 here. I looked it up
+myself now: Only the commit log changed, it was shortend not to mention
+development details about how this patch was created.
+
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--7db7yim5if2sboqg
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmMtYBIACgkQwfwUeK3K
+7AkYGgf/U4i3QfL+sMDHS1hzBnjl2JNNEFmxOmB6Llcg+aW+9/nfQrKvTv+s9qOD
+iIppkKLXrPDwN2P7wprRzLOXTPLooQkXV6N0yIIefGbVu6fX8s8mYBeUW58vBVSE
+lEfuiKF8kNqCSesxSYohnRbh+A1J3eokuDp7W/2hFuzn0nFEEt0Ec2UDjtf7fmhD
++Cqq/ivOFiD9oiUQxMiarcfqy7PEahD/yRlElg8jHT5ZO9deo+NnLqSead/OqogI
+Xlz7YShR2VPQpLdnRLg6tochWd+N9HGIp7QL6BD4n459dxCmJoJQzuUD1Lw1Ft2m
+K6vpS1bvwC0CkLKGbTGQY59MLZ79BA==
+=wTGz
+-----END PGP SIGNATURE-----
+
+--7db7yim5if2sboqg--
 
