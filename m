@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01CF9C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 08:59:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B74DFC6FA86
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 08:59:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZW4HlaJq+sS6ldmAgFUsfe0+IAprYDiRvYYc4dMHfY0=; b=0sNwyAVA44niSFMXnUv36EW5O2
-	n3QK3PF+27M3aNCpTVsU9UWFE3d7VNJtuY8yQBMofnGM75WuGt02xw8IWHxB0iq5Q+oHevFflTMTt
-	2Ubnb+XYDhfOikt41yfDR265oN6n55HoTQEbpMYlHEQ0GclxrvOtm2I6S427CBHd0UVuYHcW/XtxO
-	a36aRMK/0sThjyazaVFiH3jTBgR1TaOXldfdYKHi+KBZ0DCkvR7BfEkI4HoOqYukD0dh68f24zJsk
-	cxEmTzBF+V1ZrBHNaE5Zn6u6juxHAHOZxw+kbF9uaexFCZzBiB0vhGDQIyPDSobLzhLKoouCNFjH+
-	zCppw2Aw==;
+	bh=znYVYa86l+CvNi8XcQPihFc2PTQYaTVWXpygkEEONa4=; b=jwObmt4Gk61LpLa3nvu1vkOLCT
+	8/E4+PAzJiDFI5RGxWb66eqefzPVEI/QRB7kcM9upeXU1xdpOq/BbgyxExGGD3IYbh+TBuXRHPjwv
+	UZ1jBEsa9/kq25WlmwnBpdoS8N4CxikR6Txl/gzUpY/kmcJ4cccAAbEnDGE1ierK55Aforr1QdvaH
+	jqdMcr4troxRfe4cWOOm5/OQmM/pWQFbvMzlg2WJqT7Im7TSy/Py5rGIeEviwNvbIFFt7cNpTP4p0
+	jgfM9Q22qxM0rgaBX2xZnfjU9w1rartGEl6ushXkcTigI3++BadA1xqt2IjZ0X8cubnl7eLm2jg3y
+	6GUHUOcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obeWn-0037Ku-IU; Fri, 23 Sep 2022 08:59:21 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1obeX3-0037Yt-Ub; Fri, 23 Sep 2022 08:59:37 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obeVl-0036nb-Gi; Fri, 23 Sep 2022 08:58:18 +0000
+	id 1obeVm-0036no-4b; Fri, 23 Sep 2022 08:58:19 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 327CF660223C;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 05B17660223B;
 	Fri, 23 Sep 2022 09:58:15 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1663923496;
-	bh=fuqDTgj8aGeCVVCERoOqsketaTXL7x9L7oDYcKO5Kas=;
+	bh=TtjCeYOKDFThjw+4dvKD2IYNwoiHybT6ddMpEd9VHdE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HQW5S2m5CuWeUACCNWwwXnsmPXSLHbtrAibfrVjT5uSt8FgRemJ3QHaG4J3/M6xar
-	 DZCh6ckfcK7cV0mcELEM3XC+FufRYEKqoKJYa2F8I0SIdl1v27K0MnVCIs9id5PW7L
-	 SLRo9kUgvTb72oALQioRpST22ge7cdMO/pHtTtBTX4DVJXZsF1Tj04EBQzJfb3nSa6
-	 fwKWp70tItEA9FybuHyefC+l5QK9aAYxa/1roAxbRFkwWDQMxYlGBZnvDeNC4pvRbe
-	 epP5DFFpmL+azixuKvMdvGA8PQEQw6g3/4IwOyJprC5xlUxdlUm7IQIrKTOqq4Tv5q
-	 QxES9mCCdegiA==
-Message-ID: <df06e77d-617c-2b0c-d168-aa876e80aa4b@collabora.com>
-Date: Fri, 23 Sep 2022 10:58:12 +0200
+	b=O74axDIWWHuxdFAV+18mWU5cgcKNGxmjpgM/CgsKtwAObBN/wV0cYBMzAEI369zv6
+	 q5ADViaqzPXApn8bP2RUEMEjpTTFEHjTStXgxWdciXUqeQd5Lu5eOX92TkD8TJ5JKQ
+	 L/iNYYK/PYvFFzp9GDYIiRZSRLGWzBfxlIRAOBdR2oXrm+dhxxFc8BCSZI4BJyzvE8
+	 m6bZ8zu2lfizlkrTpA74weDDW+bYyCjnRXalbuM5Q29pRMMdN1xp+SVRO9weaEtvLR
+	 U61NcolypqZzUfkg0EkjeKMv24pPw3gx6YeMMz3GgxLDnyY/3UhneImx1x72qQNAM4
+	 0XW0jUfiSW62g==
+Message-ID: <2e65843f-75b5-2e66-f7a0-96ac8925a1f5@collabora.com>
+Date: Fri, 23 Sep 2022 10:58:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH 1/6] ASoC: mediatek: mt8192-mt6359: Expose individual
- headset jack pins
+Subject: Re: [PATCH 2/6] ASoC: mediatek: mt8195: Expose individual headset
+ jack pins
 Content-Language: en-US
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Mark Brown <broonie@kernel.org>
-Cc: kernel@collabora.com, Akihiko Odaki <akihiko.odaki@gmail.com>,
- Jaroslav Kysela <perex@perex.cz>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
+Cc: kernel@collabora.com, Jaroslav Kysela <perex@perex.cz>,
  Liam Girdwood <lgirdwood@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Miaoqian Lin
- <linmq006@gmail.com>, Takashi Iwai <tiwai@suse.com>,
- Tzung-Bi Shih <tzungbi@google.com>, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
+ Matthias Brugger <matthias.bgg@gmail.com>, Takashi Iwai <tiwai@suse.com>,
+ Trevor Wu <trevor.wu@mediatek.com>, Tzung-Bi Shih <tzungbi@google.com>,
+ alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 References: <20220922235951.252532-1-nfraprado@collabora.com>
- <20220922235951.252532-2-nfraprado@collabora.com>
+ <20220922235951.252532-3-nfraprado@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220922235951.252532-2-nfraprado@collabora.com>
+In-Reply-To: <20220922235951.252532-3-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_015817_708847_69FD576E 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20220923_015818_331924_739FD06E 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,7 +83,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 23/09/22 01:59, Nícolas F. R. A. Prado ha scritto:
 > The rt5682 codec is able to distinguish between two event types:
 > headphone insertion/removal and headset microphone insertion/removal.
-> However, currently, the mt8192-mt6359 driver exposes a single kcontrol
+> However, currently, the mt8195 ASoC driver exposes a single kcontrol
 > for the headset jack, so userspace isn't able to differentiate between
 > the two events.
 > 
@@ -94,10 +92,17 @@ Il 23/09/22 01:59, Nícolas F. R. A. Prado ha scritto:
 > them individually.
 > 
 > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+
+Nit: for the title... ASoC: mediatek: mt8195-mt6359: ....
+
+Apart from that,
+
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-[On MT8192 Asurada Spherion Chromebook]
+[On MT8195 Cherry Tomato Chromebook]
 Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
