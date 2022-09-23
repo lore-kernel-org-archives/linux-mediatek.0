@@ -4,69 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 159E0C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 14:13:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6F1BC6FA8B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 14:34:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8pzLBh8q0HEpNBy7rhGdQI4pEylD48j48i2DCezpwpQ=; b=UGTLcAw1orPR8NZOiDYVJBBwSw
-	1L2/Nm3vhrxLmf/j/k0mtb8UrKqFXmooNVmw0eR/VS7NzFvL9RXDQd33LS5r7rfVbeuK+aJyG1+Zt
-	I3r5Zxa2wctWaKoNcyLBNXPvzIp6gzRMCJDGWYu3LeNKNEOBgYi6W2uvU7i2geitQMsl1OIv9bnd1
-	ik83GkYuH3pcSLh3mxpfFRXNSGVFNUKLwvKjUq/ksS8T00on6UCUHNkPy4UM7p9cS5Y9evx3/j4ws
-	9JUranrX58osWAUviHbpjiGSCXoPUoEHVgkEvNxi8u7sLR0wUPKzDKMDBQMLx0PiArhdYN0tZZZRK
-	3JITkSCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Amh2W25vG622JwDCDmZuOupC0Zg1Foj/eEoyphdMAS8=; b=3BZegdKouNruz7no/+g0Lu2bGo
+	cQ4Lfkgc1w0GlxqD5A/FtSmaY0b0Hh+PsrmWLzZtFRm1R3pNOs3JtNfVY8c90+gyuuvnKhBAH7dQl
+	z9odfpAwNgSnRB7ZAJFJSnst/CLd3aTNa8x1wv2Nr/RPiTh9/+QPpUHFe11eFw9ulYAwvJNHOxoVT
+	F8mdyJOEtMnwLaOZlG/O+O08X98JAMZfnOx5Q2LlGgYPXuwl3ApLHzDdPjFU4/VYT3BBtRr8kAaAN
+	eSeJt9DUhyKA5Ks9stLJppKrM4dM9EBFFpYY4Of0RIIU6LnjthXgh6XJKnmVXtbDv0vBnTY3gtKjX
+	be2QwjNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1objQV-004akZ-3S; Fri, 23 Sep 2022 14:13:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1objl7-004e9e-W2; Fri, 23 Sep 2022 14:34:30 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1objQS-004ahD-As; Fri, 23 Sep 2022 14:13:10 +0000
-X-UUID: 6ad88c4c3c004bcd9c78118da20dc3b0-20220923
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=8pzLBh8q0HEpNBy7rhGdQI4pEylD48j48i2DCezpwpQ=;
-	b=MaisL9WQPJTJufQ05pPxbMctSb4yU5JX46ed5gvqI3jttMNHK4CgGYQluq2kUtMqj6nPE5/3gS4RJzgw0u+LjEP5Ib1H+CVBuzFjDuxODP0JeHxBLNeuyU1Latcuam5hU9JhHR4jgJEn8n6GjCohKyYAY87eEhEKrgzz+cKHacw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:1ea86c1c-d376-46aa-b1c7-6f4ee880341b,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:2aa005e4-87f9-4bb0-97b6-34957dc0fbbe,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 6ad88c4c3c004bcd9c78118da20dc3b0-20220923
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <allen-kh.cheng@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1801679605; Fri, 23 Sep 2022 07:12:57 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 23 Sep 2022 21:11:52 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 23 Sep 2022 21:11:52 +0800
-From: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-To: Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	"Rob Herring" <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<hsinyi@chromium.org>, Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH 3/5] arm64: dts: mt8186: Add IOMMU and SMI nodes
-Date: Fri, 23 Sep 2022 21:11:46 +0800
-Message-ID: <20220923131148.6678-4-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220923131148.6678-1-allen-kh.cheng@mediatek.com>
-References: <20220923131148.6678-1-allen-kh.cheng@mediatek.com>
+	id 1objl5-004e9E-DQ; Fri, 23 Sep 2022 14:34:28 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 28NDx8tV026081;
+	Fri, 23 Sep 2022 14:33:58 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=Amh2W25vG622JwDCDmZuOupC0Zg1Foj/eEoyphdMAS8=;
+ b=ZDQ0t2RdHHOc4K74nEIKRrclnpRoQIPoDvtRY6RsiNluzgAwDRT97zKmuaj+brDB4iJk
+ TSZK5woDXrUMYWdGcgy6RQMuicy4qzguj/E2SUyPWvSav1KYPNcgVtAZUu8JQGIrHiiM
+ xijtdqdeFn4++LpPiTQzqiKJ3/FbjEwp7icbAtuYLGCmGpGhDdEYMLB5sLOPEth2dK3j
+ MUboDEuKZgDDcx3w8l8rYSdjnvUB0F8XZZCsNCora26Kesu/KEiz0lYnZqpJGNJuB6vR
+ QXEcVjD+qVYo9NtecmpjeGtlCDJBkm61wnc7x9NenNEp33cJY7kDqjbJhCZVfXAR4DRX 5g== 
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3js67nhxys-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 23 Sep 2022 14:33:58 +0000
+Received: from pps.filterd (NASANPPMTA05.qualcomm.com [127.0.0.1])
+	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTP id 28NEKWlp018414;
+	Fri, 23 Sep 2022 14:20:32 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by NASANPPMTA05.qualcomm.com (PPS) with ESMTPS id 3jsbsa1gh5-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 23 Sep 2022 14:20:32 +0000
+Received: from NASANPPMTA05.qualcomm.com (NASANPPMTA05.qualcomm.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 28NEKW4p018408;
+	Fri, 23 Sep 2022 14:20:32 GMT
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
+	by NASANPPMTA05.qualcomm.com (PPS) with ESMTPS id 28NEKWlj018407
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 23 Sep 2022 14:20:32 +0000
+Received: from [10.216.63.150] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29; Fri, 23 Sep
+ 2022 07:20:23 -0700
+Message-ID: <e6153b89-1f41-3fff-241b-a767e41a1e7e@quicinc.com>
+Date: Fri, 23 Sep 2022 19:50:04 +0530
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: BUG: HANG_DETECT waiting for migration_cpu_stop() complete
+Content-Language: en-US
+To: Peter Zijlstra <peterz@infradead.org>, Waiman Long <longman@redhat.com>
+CC: Tejun Heo <tj@kernel.org>, Jing-Ting Wu <jing-ting.wu@mediatek.com>,
+        Valentin Schneider <vschneid@redhat.com>, <wsd_upstream@mediatek.com>,
+        <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+        <linux-mediatek@lists.infradead.org>, <Jonathan.JMChen@mediatek.com>,
+        "chris.redpath@arm.com" <chris.redpath@arm.com>,
+        Dietmar Eggemann
+	<dietmar.eggemann@arm.com>,
+        Vincent Donnefort <vdonnefort@gmail.com>,
+        Ingo
+ Molnar <mingo@redhat.com>, Juri Lelli <juri.lelli@redhat.com>,
+        Vincent
+ Guittot <vincent.guittot@linaro.org>,
+        Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>,
+        Mel Gorman <mgorman@suse.de>, Christian
+ Brauner <brauner@kernel.org>,
+        <cgroups@vger.kernel.org>, <lixiong.liu@mediatek.com>,
+        <wenju.xu@mediatek.com>
+References: <88b2910181bda955ac46011b695c53f7da39ac47.camel@mediatek.com>
+ <b605c3ec-94ab-a55f-5825-9b370d77ecf3@quicinc.com>
+ <203d4614c1b2a498a240ace287156e9f401d5395.camel@mediatek.com>
+ <YxeR0RoiTdm8sWCJ@slm.duckdns.org>
+ <02b8e7b3-941d-8bb9-cd0e-992738893ba3@redhat.com>
+ <36a73401-7011-834a-7949-c65a2f66246c@redhat.com>
+ <YxeylMvgc/wKcJqk@hirez.programming.kicks-ass.net>
+From: Mukesh Ojha <quic_mojha@quicinc.com>
+In-Reply-To: <YxeylMvgc/wKcJqk@hirez.programming.kicks-ass.net>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: EClpNyz9Q2SNicq3qJPb5J2Yh_clS8D0
+X-Proofpoint-GUID: EClpNyz9Q2SNicq3qJPb5J2Yh_clS8D0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
+ definitions=2022-09-23_04,2022-09-22_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011 impostorscore=0
+ priorityscore=1501 malwarescore=0 lowpriorityscore=0 bulkscore=0
+ suspectscore=0 mlxscore=0 mlxlogscore=572 adultscore=0 phishscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2209130000 definitions=main-2209230094
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_071308_398224_1C25F8E4 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20220923_073427_510362_1CFF908A 
+X-CRM114-Status: GOOD (  22.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,247 +128,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add iommu and smi nodes for mt8186 SoC.
+Hi Peter,
 
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 173 +++++++++++++++++++++++
- 1 file changed, 173 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index 833e7037fe22..68f06bef88f3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -7,6 +7,7 @@
- #include <dt-bindings/clock/mt8186-clk.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/memory/mt8186-memory-port.h>
- #include <dt-bindings/pinctrl/mt8186-pinfunc.h>
- #include <dt-bindings/power/mt8186-power.h>
- #include <dt-bindings/phy/phy.h>
-@@ -944,24 +945,113 @@
- 			#reset-cells = <1>;
- 		};
- 
-+		smi_common: smi@14002000 {
-+			compatible = "mediatek,mt8186-smi-common";
-+			reg = <0 0x14002000 0 0x1000>;
-+			clocks = <&mmsys CLK_MM_SMI_COMMON>, <&mmsys CLK_MM_SMI_COMMON>,
-+				 <&mmsys CLK_MM_SMI_GALS>, <&mmsys CLK_MM_SMI_GALS>;
-+			clock-names = "apb", "smi", "gals0", "gals1";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_DIS>;
-+		};
-+
-+		larb0: smi@14003000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x14003000 0 0x1000>;
-+			mediatek,larb-id = <0>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&mmsys CLK_MM_SMI_COMMON>,
-+				 <&mmsys CLK_MM_SMI_COMMON>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_DIS>;
-+		};
-+
-+		larb1: smi@14004000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x14004000 0 0x1000>;
-+			mediatek,larb-id = <1>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&mmsys CLK_MM_SMI_COMMON>,
-+				 <&mmsys CLK_MM_SMI_COMMON>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_DIS>;
-+		};
-+
-+		iommu_mm: iommu@14016000 {
-+			compatible = "mediatek,mt8186-iommu-mm";
-+			reg = <0 0x14016000 0 0x1000>;
-+			mediatek,larbs = <&larb0 &larb1 &larb2 &larb4
-+					  &larb7 &larb8 &larb9 &larb11
-+					  &larb13 &larb14 &larb16 &larb17
-+					  &larb19 &larb20>;
-+			interrupts = <GIC_SPI 313 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&mmsys CLK_MM_SMI_IOMMU>;
-+			clock-names = "bclk";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_DIS>;
-+			#iommu-cells = <1>;
-+		};
-+
- 		wpesys: clock-controller@14020000 {
- 			compatible = "mediatek,mt8186-wpesys";
- 			reg = <0 0x14020000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		larb8: smi@14023000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x14023000 0 0x1000>;
-+			mediatek,larb-id = <8>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&wpesys CLK_WPE_SMI_LARB8_CK_EN>,
-+				 <&wpesys CLK_WPE_SMI_LARB8_CK_EN>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_WPE>;
-+		};
-+
- 		imgsys1: clock-controller@15020000 {
- 			compatible = "mediatek,mt8186-imgsys1";
- 			reg = <0 0x15020000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		larb9: smi@1502e000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x1502e000 0 0x1000>;
-+			mediatek,larb-id = <9>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&imgsys1 CLK_IMG1_GALS_IMG1>,
-+				 <&imgsys1 CLK_IMG1_LARB9_IMG1>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_IMG>;
-+		};
-+
- 		imgsys2: clock-controller@15820000 {
- 			compatible = "mediatek,mt8186-imgsys2";
- 			reg = <0 0x15820000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		larb11: smi@1582e000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x1582e000 0 0x1000>;
-+			mediatek,larb-id = <11>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&imgsys1 CLK_IMG1_LARB9_IMG1>,
-+				 <&imgsys2 CLK_IMG2_LARB9_IMG2>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_IMG2>;
-+		};
-+
-+		larb4: smi@1602e000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x1602e000 0 0x1000>;
-+			mediatek,larb-id = <4>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&vdecsys CLK_VDEC_LARB1_CKEN>,
-+				 <&vdecsys CLK_VDEC_LARB1_CKEN>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_VDEC>;
-+		};
-+
- 		vdecsys: clock-controller@1602f000 {
- 			compatible = "mediatek,mt8186-vdecsys";
- 			reg = <0 0x1602f000 0 0x1000>;
-@@ -974,12 +1064,65 @@
- 			#clock-cells = <1>;
- 		};
- 
-+		larb7: smi@17010000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x17010000 0 0x1000>;
-+			mediatek,larb-id = <7>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&vencsys CLK_VENC_CKE1_VENC>,
-+				 <&vencsys CLK_VENC_CKE1_VENC>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_VENC>;
-+		};
-+
- 		camsys: clock-controller@1a000000 {
- 			compatible = "mediatek,mt8186-camsys";
- 			reg = <0 0x1a000000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		larb13: smi@1a001000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x1a001000 0 0x1000>;
-+			mediatek,larb-id = <13>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&camsys CLK_CAM2MM_GALS>, <&camsys CLK_CAM_LARB13>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_CAM>;
-+		};
-+
-+		larb14: smi@1a002000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x1a002000 0 0x1000>;
-+			mediatek,larb-id = <14>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&camsys CLK_CAM2MM_GALS>, <&camsys CLK_CAM_LARB14>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_CAM>;
-+		};
-+
-+		larb16: smi@1a00f000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x1a00f000 0 0x1000>;
-+			mediatek,larb-id = <16>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&camsys CLK_CAM_LARB14>,
-+				 <&camsys_rawa CLK_CAM_RAWA_LARBX_RAWA>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_CAM_RAWA>;
-+		};
-+
-+		larb17: smi@1a010000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x1a010000 0 0x1000>;
-+			mediatek,larb-id = <17>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&camsys CLK_CAM_LARB13>,
-+				 <&camsys_rawb CLK_CAM_RAWB_LARBX_RAWB>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_CAM_RAWB>;
-+		};
-+
- 		camsys_rawa: clock-controller@1a04f000 {
- 			compatible = "mediatek,mt8186-camsys_rawa";
- 			reg = <0 0x1a04f000 0 0x1000>;
-@@ -998,10 +1141,40 @@
- 			#clock-cells = <1>;
- 		};
- 
-+		larb2: smi@1b002000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x1b002000 0 0x1000>;
-+			mediatek,larb-id = <2>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&mdpsys CLK_MDP_SMI0>, <&mdpsys CLK_MDP_SMI0>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_DIS>;
-+		};
-+
- 		ipesys: clock-controller@1c000000 {
- 			compatible = "mediatek,mt8186-ipesys";
- 			reg = <0 0x1c000000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
-+
-+		larb20: smi@1c00f000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x1c00f000 0 0x1000>;
-+			mediatek,larb-id = <20>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&ipesys CLK_IPE_LARB20>, <&ipesys CLK_IPE_LARB20>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_IPE>;
-+		};
-+
-+		larb19: smi@1c10f000 {
-+			compatible = "mediatek,mt8186-smi-larb";
-+			reg = <0 0x1c10f000 0 0x1000>;
-+			mediatek,larb-id = <19>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&ipesys CLK_IPE_LARB19>, <&ipesys CLK_IPE_LARB19>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8186_POWER_DOMAIN_IPE>;
-+		};
- 	};
- };
--- 
-2.18.0
+On 9/7/2022 2:20 AM, Peter Zijlstra wrote:
+> On Tue, Sep 06, 2022 at 04:40:03PM -0400, Waiman Long wrote:
+> 
+> I've not followed the earlier stuff due to being unreadable; just
+> reacting to this..
 
+We are able to reproduce this issue explained at this link
+
+https://lore.kernel.org/lkml/88b2910181bda955ac46011b695c53f7da39ac47.camel@mediatek.com/
+
+
+> 
+>> diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+>> index 838623b68031..5d9ea1553ec0 100644
+>> --- a/kernel/sched/core.c
+>> +++ b/kernel/sched/core.c
+>> @@ -2794,9 +2794,9 @@ static int __set_cpus_allowed_ptr_locked(struct
+>> task_struct *p,
+>>                  if (cpumask_equal(&p->cpus_mask, new_mask))
+>>                          goto out;
+>>
+>> -               if (WARN_ON_ONCE(p == current &&
+>> -                                is_migration_disabled(p) &&
+>> -                                !cpumask_test_cpu(task_cpu(p), new_mask)))
+>> {
+>> +               if (is_migration_disabled(p) &&
+>> +                   !cpumask_test_cpu(task_cpu(p), new_mask)) {
+>> +                       WARN_ON_ONCE(p == current);
+>>                          ret = -EBUSY;
+>>                          goto out;
+>>                  }
+>> @@ -2818,7 +2818,11 @@ static int __set_cpus_allowed_ptr_locked(struct
+>> task_struct *p,
+>>          if (flags & SCA_USER)
+>>                  user_mask = clear_user_cpus_ptr(p);
+>>
+>> -       ret = affine_move_task(rq, p, rf, dest_cpu, flags);
+>> +       if (!is_migration_disabled(p) || (flags & SCA_MIGRATE_ENABLE)) {
+>> +               ret = affine_move_task(rq, p, rf, dest_cpu, flags);
+>> +       } else {
+>> +               task_rq_unlock(rq, p, rf);
+>> +       }
+> 
+> This cannot be right. There might be previous set_cpus_allowed_ptr()
+> callers that are blocked and waiting for the task to land on a valid
+> CPU.
+> 
+
+Was thinking if just skipping as below will help here, well i am not sure .
+
+But thinking what if we keep the task as it is on the same cpu and let's 
+wait for migration to be enabled for the task to take care of it later.
+
+------------------->O------------------------------------------
+
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index d90d37c..7717733 100644
+--- a/kernel/sched/core.c
++++ b/kernel/sched/core.c
+@@ -2390,8 +2390,10 @@ static int migration_cpu_stop(void *data)
+          * we're holding p->pi_lock.
+          */
+         if (task_rq(p) == rq) {
+-               if (is_migration_disabled(p))
++               if (is_migration_disabled(p)) {
++                       complete = true;
+                         goto out;
++               }
+
+                 if (pending) {
+
+
+-Mukesh
 
