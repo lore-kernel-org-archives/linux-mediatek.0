@@ -4,73 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4D1EECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 03:05:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F0AAECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 03:47:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T8K9PTGFkzhxmwzN0pJSKV4qZa3siMOR5xBN4BjE1mk=; b=Fku0t0rrhCNNFeFlAdEP68EzM6
-	FXIB6ZlgNmhP5lURx7NkD19oEKWB/PydT2d98UQ01g1NSF36OzwtgWdXrganucllUPmkjQK8FvmVU
-	u5FBVPOtBS4Cjbiq4e8Xiqs3O3k7fXnGdLU25ZWLa1nXiNAkLIMcJIcEGBRSIXN0O8ANqLA+ed1SB
-	qUw72niOHvGKDaRsOC7v1l38LNu6YQNeVahffRrwLNZpc3fTrEV7lLFY26JNnlbE8/RgGu5XnBDrY
-	ir7+Xh4XsSWU+vV7LPZlP4GkzXRBC5YH+Jk4DDGjkFxmvPwnknClppUHfVpptnQbo8yGnfU80PAOR
-	xBqrGaBg==;
+	bh=1k5TOoyEcepapXTo6DfuMdGwBHBkldYi/XOn9F6EwJA=; b=JiI9NRiDDHVfgDmzEa+c9ab8J9
+	BGU+3i2cvvE222VpDk1AXXVQ6OJ0ok9Jx3HeLpVeKbNdhYVIWGprjH8Q5VIfbJLx4SagzWxIffiab
+	ZEsxBrsaPz4tMgjGQroIbmOH/D3ZeQqioH2eYDoDMskuGB1SJVdMZPq2FnQg1kxkMwrTGIMPjwmuU
+	ayQKkEa8iiWK7DufVsMfTu+OrHLbRZAqDP3qcDqiHpSbkt40FRsOBNMzTVGSzt2bASfvdDIp8KjXq
+	nzT0jJaqSW/FCIBQMl9EFEVlpCVPh7LOzhBHetttym+ZiRWFKRoNP3aWt/bmv1TJf00NxNmh6viul
+	iXJGAw6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obYzy-001g7i-Kv; Fri, 23 Sep 2022 03:05:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1obZfP-001oVj-OL; Fri, 23 Sep 2022 03:47:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obYzt-001g6c-HW; Fri, 23 Sep 2022 03:05:04 +0000
-X-UUID: 6dc100fc92504328b40b7541094c5fab-20220922
+	id 1obYLC-001KRs-Kx; Fri, 23 Sep 2022 02:23:03 +0000
+X-UUID: 77d66b2c94c74fe2a41c3261bebfc2c5-20220922
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=T8K9PTGFkzhxmwzN0pJSKV4qZa3siMOR5xBN4BjE1mk=;
-	b=FyFJ7O47/jJtkA+5UAMOv2vS7sWn7uiFaDFfV41SSwgQLBiNO+auXsOEMOca607KkRhRKBrmZZpFl/ja+sawW3eZccf+urR+BTrC8wRvjzivUtDeB0J6b3EPpT76SsYa0eXK+NCvjfgw8Dv21MRJQYAZqv9zvnkqEjjvRY4RUPU=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=1k5TOoyEcepapXTo6DfuMdGwBHBkldYi/XOn9F6EwJA=;
+	b=cJ+ZvhgPTPLkgEOCChkcJUHphHkjgYfz96qfeW7o/jPDakKFTB4u+XkKL7Ki+WC+OsuSY9WZUdSuVsoAspOsCCebkCS6gcXce88rNvRGNfkmKmk9uKtVpLmK5m1xjA/Z6RdrMIPI86VQszdEMMH6EuJ8FRCMeUus1lU+lDrAprA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:8a79fd03-1f41-4c0d-9df8-5877a01fb7b6,IP:0,U
+X-CID-O-INFO: VERSION:1.1.11,REQID:af439cc2-1494-47cc-8689-1d948bbcb655,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:7f48bf06-1cee-4c38-b21b-a45f9682fdc0,B
+X-CID-META: VersionHash:39a5ff1,CLOUDID:e6c5bd06-1cee-4c38-b21b-a45f9682fdc0,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 6dc100fc92504328b40b7541094c5fab-20220922
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <rex-bc.chen@mediatek.com>)
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 77d66b2c94c74fe2a41c3261bebfc2c5-20220922
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jianguo.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1464627215; Thu, 22 Sep 2022 19:56:22 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 23 Sep 2022 10:55:45 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 23 Sep 2022 10:55:45 +0800
-Message-ID: <696bff4964fb14dfbb37e7d436cbc502bbdbf047.camel@mediatek.com>
-Subject: Re: [PATCH] reset: mediatek: Move mediatek system clock reset to
- reset folder
-From: Bo-Chen Chen <rex-bc.chen@mediatek.com>
-To: kernel test robot <lkp@intel.com>, <sboyd@kernel.org>,
-	<mturquette@baylibre.com>, <matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>
-CC: <kbuild-all@lists.01.org>, <runyang.chen@mediatek.com>,
-	<miles.chen@mediatek.com>, <wenst@chromium.org>,
-	<angelogioacchino.delregno@collabora.com>, <nfraprado@collabora.com>,
-	<linux-kernel@vger.kernel.org>, <linux-clk@vger.kernel.org>,
+	with ESMTP id 1298137541; Thu, 22 Sep 2022 19:19:05 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 23 Sep 2022 09:48:29 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 23 Sep 2022 09:48:28 +0800
+Message-ID: <8007b455dd18837c06ab099a6009505e7dddc124.camel@mediatek.com>
+Subject: Re: [resend PATCH v4 2/2] dt-bindings: net: snps,dwmac: add clk_csr
+ property
+From: Jianguo Zhang <jianguo.zhang@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, "David S . Miller"
+	<davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, Biao Huang
+	<biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 23 Sep 2022 10:55:45 +0800
-In-Reply-To: <202209230958.2rV4kEVM-lkp@intel.com>
-References: <20220922141107.10203-1-rex-bc.chen@mediatek.com>
-	 <202209230958.2rV4kEVM-lkp@intel.com>
+	Christophe Roullier <christophe.roullier@st.com>
+Date: Fri, 23 Sep 2022 09:48:28 +0800
+In-Reply-To: <04b9e5ef-f3c7-3400-f9df-2f585a084c5d@linaro.org>
+References: <20220922092743.22824-1-jianguo.zhang@mediatek.com>
+	 <20220922092743.22824-3-jianguo.zhang@mediatek.com>
+	 <04b9e5ef-f3c7-3400-f9df-2f585a084c5d@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_200502_452019_7AA5EAE0 
-X-CRM114-Status: GOOD (  23.25  )
+X-CRM114-CacheID: sfid-20220922_192258_839116_601EE489 
+X-CRM114-Status: GOOD (  17.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,331 +92,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-09-23 at 09:15 +0800, kernel test robot wrote:
-> Hi Bo-Chen,
-> 
-> Thank you for the patch! Yet something to improve:
-> 
-> [auto build test ERROR on v6.0-rc6]
-> [also build test ERROR on linus/master]
-> [cannot apply to clk/clk-next pza/reset/next mbgg-mediatek/for-next
-> next-20220921]
-> [If your patch is applied to the wrong git tree, kindly drop us a
-> note.
-> And when submitting patch, we suggest to use '--base' as documented
-> in
-> 
-https://urldefense.com/v3/__https://git-scm.com/docs/git-format-patch*_base_tree_information__;Iw!!CTRNKA9wMg0ARbw!3qsHi0O4Vg0e-tqzlUswcsK-ssSqQiv9heXJFcsj0Jo9fdBpwJPyE8Cm7pi8HlvqkXZ3$
->  ]
-> 
-> url:    
-> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux/commits/Bo-Chen-Chen/reset-mediatek-Move-mediatek-system-clock-reset-to-reset-folder/20220922-221303__;!!CTRNKA9wMg0ARbw!3qsHi0O4Vg0e-tqzlUswcsK-ssSqQiv9heXJFcsj0Jo9fdBpwJPyE8Cm7pi8HphCRXGt$
->  
-> base:    521a547ced6477c54b4b0cc206000406c221b4d6
-> config: sh-allmodconfig (
-> https://urldefense.com/v3/__https://download.01.org/0day-ci/archive/20220923/202209230958.2rV4kEVM-lkp@intel.com/config__;!!CTRNKA9wMg0ARbw!3qsHi0O4Vg0e-tqzlUswcsK-ssSqQiv9heXJFcsj0Jo9fdBpwJPyE8Cm7pi8HgGJ4A5i$
->  )
-> compiler: sh4-linux-gcc (GCC) 12.1.0
-> reproduce (this is a W=1 build):
->         wget 
-> https://urldefense.com/v3/__https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross__;!!CTRNKA9wMg0ARbw!3qsHi0O4Vg0e-tqzlUswcsK-ssSqQiv9heXJFcsj0Jo9fdBpwJPyE8Cm7pi8HmjL7iLl$
->   -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         # 
-> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux/commit/69ce72445492a02115b1e7c7527a8a107f48aab8__;!!CTRNKA9wMg0ARbw!3qsHi0O4Vg0e-tqzlUswcsK-ssSqQiv9heXJFcsj0Jo9fdBpwJPyE8Cm7pi8HmwVGCNt$
->  
->         git remote add linux-review 
-> https://urldefense.com/v3/__https://github.com/intel-lab-lkp/linux__;!!CTRNKA9wMg0ARbw!3qsHi0O4Vg0e-tqzlUswcsK-ssSqQiv9heXJFcsj0Jo9fdBpwJPyE8Cm7pi8HnCYV8dW$
->  
->         git fetch --no-tags linux-review Bo-Chen-Chen/reset-mediatek-
-> Move-mediatek-system-clock-reset-to-reset-folder/20220922-221303
->         git checkout 69ce72445492a02115b1e7c7527a8a107f48aab8
->         # save the config file
->         mkdir build_dir && cp config build_dir/.config
->         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0
-> make.cross W=1 O=build_dir ARCH=sh SHELL=/bin/bash drivers/
-> 
-> If you fix the issue, kindly add following tag where applicable
-> > Reported-by: kernel test robot <lkp@intel.com>
-> 
-> All error/warnings (new ones prefixed by >>):
-> 
->    In file included from include/linux/device/driver.h:21,
->                     from include/linux/device.h:32,
->                     from include/linux/auxiliary_bus.h:11,
->                     from drivers/reset/reset-mediatek-sysclk.c:6:
-> > > drivers/reset/reset-mediatek-sysclk.c:499:32: error:
-> > > 'mtk_reset_ids' undeclared here (not in a function); did you mean
-> > > 'mtk_reset_ops'?
-> 
->      499 | MODULE_DEVICE_TABLE(auxiliary, mtk_reset_ids);
->          |                                ^~~~~~~~~~~~~
->    include/linux/module.h:244:15: note: in definition of macro
-> 'MODULE_DEVICE_TABLE'
->      244 | extern typeof(name)
-> __mod_##type##__##name##_device_table               \
->          |               ^~~~
-> > > drivers/reset/reset-mediatek-sysclk.c:539:5: warning: no previous
-> > > prototype for 'mtk_reset_init_with_node' [-Wmissing-prototypes]
-> 
->      539 | int mtk_reset_init_with_node(struct device_node *np, const
-> char *name)
->          |     ^~~~~~~~~~~~~~~~~~~~~~~~
-> > > drivers/reset/reset-mediatek-sysclk.c:550:6: warning: no previous
-> > > prototype for 'mtk_rst_remove_with_node' [-Wmissing-prototypes]
-> 
->      550 | void mtk_rst_remove_with_node(struct device_node *np,
-> const char *name)
->          |      ^~~~~~~~~~~~~~~~~~~~~~~~
-> > > include/linux/module.h:244:21: error:
-> > > '__mod_auxiliary__mtk_reset_ids_device_table' aliased to
-> > > undefined symbol 'mtk_reset_ids'
-> 
->      244 | extern typeof(name)
-> __mod_##type##__##name##_device_table               \
->          |                     ^~~~~~
->    drivers/reset/reset-mediatek-sysclk.c:499:1: note: in expansion of
-> macro 'MODULE_DEVICE_TABLE'
->      499 | MODULE_DEVICE_TABLE(auxiliary, mtk_reset_ids);
->          | ^~~~~~~~~~~~~~~~~~~
-> 
-> 
-> vim +499 drivers/reset/reset-mediatek-sysclk.c
-> 
->    402	
->    403	static struct auxiliary_device_id
-> mtk_sysclk_reset_ids[] = {
->    404		{
->    405			.name = "clk_mt2701_eth.mt2701-eth-
-> rst",
->    406			.driver_data = MTK_RST_ID_MT2701_ETH,
->    407		},
->    408		{
->    409			.name = "clk_mt2701_g3d.mt2701-g3d-
-> rst",
->    410			.driver_data = MTK_RST_ID_MT2701_G3D,
->    411		},
->    412		{
->    413			.name = "clk_mt2701_hif.mt2701-hif-
-> rst",
->    414			.driver_data = MTK_RST_ID_MT2701_HIF,
->    415		},
->    416		{
->    417			.name = "clk_mt2701.mt2701-infrasys-
-> rst",
->    418			.driver_data =
-> MTK_RST_ID_MT2701_INFRASYS,
->    419		},
->    420		{
->    421			.name = "clk_mt2701.mt2701-pericfg-
-> rst",
->    422			.driver_data =
-> MTK_RST_ID_MT2701_PERICFG,
->    423		},
->    424		{
->    425			.name = "clk_mt2712.mt2712-infra-rst",
->    426			.driver_data = MTK_RST_ID_MT2712_INFRA,
->    427		},
->    428		{
->    429			.name = "clk_mt2712.mt2712-peri-rst",
->    430			.driver_data = MTK_RST_ID_MT2712_PERI,
->    431		},
->    432		{
->    433			.name = "clk_mt7622_eth.mt7622-eth-
-> rst",
->    434			.driver_data = MTK_RST_ID_MT7622_ETH,
->    435		},
->    436		{
->    437			.name = "clk_mt7622_hif.mt7622-usb-
-> rst",
->    438			.driver_data =
-> MTK_RST_ID_MT7622_SSUSBSYS,
->    439		},
->    440		{
->    441			.name = "clk_mt7622_hif.mt7622-pcie-
-> rst",
->    442			.driver_data =
-> MTK_RST_ID_MT7622_PCIESYS,
->    443		},
->    444		{
->    445			.name = "clk_mt7622.mt7622-infrasys-
-> rst",
->    446			.driver_data =
-> MTK_RST_ID_MT7622_INFRASYS,
->    447		},
->    448		{
->    449			.name = "clk_mt7622.mt7622-pericfg-
-> rst",
->    450			.driver_data =
-> MTK_RST_ID_MT7622_PERICFG,
->    451		},
->    452		{
->    453			.name = "clk_mt7629_eth.mt7629-ethsys-
-> rst",
->    454			.driver_data =
-> MTK_RST_ID_MT7629_ETHSYS,
->    455		},
->    456		{
->    457			.name = "clk_mt7629_hif.mt7629-usb-
-> rst",
->    458			.driver_data =
-> MTK_RST_ID_MT7629_SSUSBSYS,
->    459		},
->    460		{
->    461			.name = "clk_mt7629_hif.mt7629-pcie-
-> rst",
->    462			.driver_data =
-> MTK_RST_ID_MT7629_PCIESYS,
->    463		},
->    464		{
->    465			.name = "clk_mt8135.mt8135-infrasys-
-> rst",
->    466			.driver_data =
-> MTK_RST_ID_MT8135_INFRASYS,
->    467		},
->    468		{
->    469			.name = "clk_mt8135.mt8135-pericfg-
-> rst",
->    470			.driver_data =
-> MTK_RST_ID_MT8135_PERICFG,
->    471		},
->    472		{
->    473			.name = "clk_mt8173.mt8173-infracfg-
-> rst",
->    474			.driver_data =
-> MTK_RST_ID_MT8173_INFRACFG,
->    475		},
->    476		{
->    477			.name = "clk_mt8173.mt8173-pericfg-
-> rst",
->    478			.driver_data =
-> MTK_RST_ID_MT8173_PERICFG,
->    479		},
->    480		{
->    481			.name = "clk_mt8183.mt8183-infra-rst",
->    482			.driver_data = MTK_RST_ID_MT8183_INFRA,
->    483		},
->    484		{
->    485			.name = "clk_mtk.mt8186-infra-ao-rst",
->    486			.driver_data =
-> MTK_RST_ID_MT8186_INFRA_AO,
->    487		},
->    488		{
->    489			.name = "clk_mt8192.mt8192-infra-rst",
->    490			.driver_data = MTK_RST_ID_MT8192_INFRA,
->    491		},
->    492		{
->    493			.name = "clk_mtk.mt8195-infra-ao-rst",
->    494			.driver_data =
-> MTK_RST_ID_MT8195_INFRA_AO,
->    495		},
->    496		{
->    497		},
->    498	};
->  > 499	MODULE_DEVICE_TABLE(auxiliary, mtk_reset_ids);
->    500	
->    501	/* reset data */
->    502	static struct mtk_clk_rst_data clk_rst_data[] = {
->    503		[MTK_RST_ID_MT2701_ETH]		= { .desc =
-> &mt2701_eth_rst_desc, },
->    504		[MTK_RST_ID_MT2701_G3D]		= { .desc =
-> &mt2701_g3d_clk_rst_desc, },
->    505		[MTK_RST_ID_MT2701_HIF]		= { .desc =
-> &mt2701_eth_rst_desc, },
->    506		[MTK_RST_ID_MT2701_INFRASYS]	= { .desc =
-> &mt2701_infrasys_clk_rst_desc, },
->    507		[MTK_RST_ID_MT2701_PERICFG]	= { .desc =
-> &mt2701_pericfg_clk_rst_desc, },
->    508		[MTK_RST_ID_MT2712_INFRA]	= { .desc =
-> &mt2701_infrasys_clk_rst_desc, },
->    509		[MTK_RST_ID_MT2712_PERI]	= { .desc =
-> &mt2701_pericfg_clk_rst_desc, },
->    510		[MTK_RST_ID_MT7622_ETH]		= { .desc =
-> &mt2701_eth_rst_desc, },
->    511		[MTK_RST_ID_MT7622_SSUSBSYS]	= { .desc =
-> &mt2701_eth_rst_desc, },
->    512		[MTK_RST_ID_MT7622_PCIESYS]	= { .desc =
-> &mt2701_eth_rst_desc, },
->    513		[MTK_RST_ID_MT7622_INFRASYS]	= { .desc =
-> &mt7622_infrasys_clk_rst_desc, },
->    514		[MTK_RST_ID_MT7622_PERICFG]	= { .desc =
-> &mt2701_pericfg_clk_rst_desc, },
->    515		[MTK_RST_ID_MT7629_ETHSYS]	= { .desc =
-> &mt2701_eth_rst_desc, },
->    516		[MTK_RST_ID_MT7629_SSUSBSYS]	= { .desc =
-> &mt2701_eth_rst_desc, },
->    517		[MTK_RST_ID_MT7629_PCIESYS]	= { .desc =
-> &mt2701_eth_rst_desc, },
->    518		[MTK_RST_ID_MT8135_INFRASYS]	= { .desc =
-> &mt2701_infrasys_clk_rst_desc, },
->    519		[MTK_RST_ID_MT8135_PERICFG]	= { .desc =
-> &mt2701_pericfg_clk_rst_desc, },
->    520		[MTK_RST_ID_MT8173_INFRACFG]	= { .desc =
-> &mt2701_infrasys_clk_rst_desc, },
->    521		[MTK_RST_ID_MT8173_PERICFG]	= { .desc =
-> &mt2701_pericfg_clk_rst_desc, },
->    522		[MTK_RST_ID_MT8183_INFRA]	= { .desc =
-> &mt8183_rst_desc, },
->    523		[MTK_RST_ID_MT8186_INFRA_AO]	= { .desc =
-> &mt8186_rst_desc, },
->    524		[MTK_RST_ID_MT8192_INFRA]	= { .desc =
-> &mt8192_rst_desc, },
->    525		[MTK_RST_ID_MT8195_INFRA_AO]	= { .desc =
-> &mt8195_rst_desc, },
->    526		{},
->    527	};
->    528	
->    529	static struct mtk_clk_rst_data *find_rst_data(const
-> char *name)
->    530	{
->    531		int i;
->    532	
->    533		for (i = 0; i <
-> ARRAY_SIZE(mtk_sysclk_reset_ids); i++)
->    534			if (mtk_sysclk_reset_ids[i].name ==
-> name)
->    535				return
-> &clk_rst_data[mtk_sysclk_reset_ids[i].driver_data];
->    536		return NULL;
->    537	}
->    538	
->  > 539	int mtk_reset_init_with_node(struct device_node *np,
-> const char *name)
->    540	{
->    541		struct mtk_clk_rst_data *data =
-> find_rst_data(name);
->    542	
->    543		if (!np || !data)
->    544			return -EINVAL;
->    545	
->    546		return register_rst_ctrl_with_node(np, data);
->    547	}
->    548	EXPORT_SYMBOL_GPL(mtk_reset_init_with_node);
->    549	
->  > 550	void mtk_rst_remove_with_node(struct device_node *np,
-> const char *name)
->    551	{
->    552		struct mtk_clk_rst_data *data =
-> find_rst_data(name);
->    553	
->    554		if (!np || !data)
->    555			return;
->    556	
->    557		reset_controller_unregister(&data->rcdev);
->    558	}
->    559	EXPORT_SYMBOL_GPL(mtk_rst_remove_with_node);
->    560	
-> 
+Dear Krzysztof,
 
-Hello,
+	Thanks for your comment.
 
-Thanks for the feedback.
-I will fix this error and add include/linux/reset/reset-mediatek-
-sysclk.h to fix this warning.
-
-Also, I will try to base on linux-next to resolve these apply conflict.
-
-BRs,
-Bo-Chen
+On Thu, 2022-09-22 at 17:07 +0200, Krzysztof Kozlowski wrote:
+> On 22/09/2022 11:27, Jianguo Zhang wrote:
+> > The clk_csr property is parsed in driver for generating MDC clock
+> > with correct frequency. A warning('clk_csr' was unexpeted) is
+> > reported
+> > when runing 'make_dtbs_check' because the clk_csr property
+> > has been not documented in the binding file.
+> > 
+> 
+> You did not describe the case, but apparently this came with
+> 81311c03ab4d ("net: ethernet: stmmac: add management of clk_csr
+> property") which never brought the bindings change.
+> 
+> Therefore the property was never part of bindings documentation and
+> bringing them via driver is not the correct process. It bypasses the
+> review and such bypass cannot be an argument to bring the property to
+> bindings. It's not how new properties can be added.
+> 
+> Therefore I don't agree. Please make it a property matching bindings,
+> so
+> vendor prefix, no underscores in node names.
+> 
+> Driver and DTS need updates.
+> 
+We will rename the property 'clk_csr' as 'snps,clk-csr' and update DTS
+& driver to align with the new name in next versions patches.
+> Best regards,
+> Krzysztof
+> 
+BRS
+Jianguo
 
 
