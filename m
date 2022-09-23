@@ -4,96 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79904ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 09:23:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72408ECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 09:24:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6KRGHi5QO3WPnDzOkycHTFaQ6rn1LlFLCXaq4LIPA2o=; b=Ln8njZGYnX5uGcePqVN1bqNlRY
-	fvNiaAsUKLUT56G82gCQLkOlQltfbXjnTnJBFqS8PxbMeBE1zUiyDadfXZORBernBPXKV9xeZ+qMi
-	XToE1X+0J6JxhYy0K/9st5+im1Swz9OMIKhfzN8LcclRXVn1IuYs9i12XxFGYsRkeLRNT4pIcd1gz
-	NmvTQJgRAWAJj+4xQvwRMnIjRd5/T0IumQXPUEC3WB0KEWQPtDjttBhRUf6RApUZ/0ZMUh7snH5xY
-	wpsaGn4LtYeaE0Cl2UElpWoQsT5ex92xMHJuJX5Lgb0kVSh7ldgg4vRii1ocOnPz92O4MdfBc6Y1z
-	1crLxldg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e75VPjlddmHjA6YtNN4Jdl5RACRE/cmPltRVYSf5qLY=; b=1oYaWtPWGXrOTARmIcPUqufbd/
+	Csn3PwPKDOHxFhxUkCCcsV1ixOnXwAw+u+VjDG+B+ZeGnsiTLm93zPHGxmRpesqyVG7eu13zqazfh
+	H/Pdqlia7vdUWXXOGxDjaD6NgOmI6smpfqVEgpWE55WQQOefJPTJHiclRmpIAnBljY17QpDSvQt9Q
+	bVH7fsmku7RT5jP1dSrHuW8Ny/b5hTRNCBWzDYw16q9XfeXMArTrKyBvRCBmeiVP3CaWbyNeI0v8W
+	Jjgjs5uLE/QTQZLenaqIyi3a2ZvGto2KErr4BP/Zzvpd4oSRXG1O+V6Tex6ds7j+cqEEhbeMbXuoo
+	srVjFR4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obety-003Hrh-Dt; Fri, 23 Sep 2022 09:23:18 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1obev9-003IQv-4V; Fri, 23 Sep 2022 09:24:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obetv-003HpD-PJ
-	for linux-mediatek@lists.infradead.org; Fri, 23 Sep 2022 09:23:17 +0000
-Received: by mail-lf1-x131.google.com with SMTP id i26so18798477lfp.11
-        for <linux-mediatek@lists.infradead.org>; Fri, 23 Sep 2022 02:23:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=6KRGHi5QO3WPnDzOkycHTFaQ6rn1LlFLCXaq4LIPA2o=;
-        b=nr19Q9adKvfDHJX1/MuKtdcCmb+W2G4kH9i+60wOK18TE2mFjrQb+Zhxkd4iaZDLYw
-         UljVVMKI9OZEOTsuDxxGAT5c/UFL8XR67rS6OWaaw9r4B8Qgmujg/irw+c6WkX8QZbyS
-         uc4dhF5ciBcdB6NnytStFtuQlGW/MCd6onKxK6cu8Ue6qxkAAec6dFtEW27xIKGPCGf+
-         RJUnMQeiGSrQ6DmPFstmf9gOAdikqtf/ykVZrUAvavkQBmcQrXPZk3kubgEHf9sxAbjQ
-         KYQt8AkzYu1LGEoaUIe2emDFYd9Atk9KwGWgew5BnOESRBgIDVIrqORDZrcToYmUVGlb
-         5d/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=6KRGHi5QO3WPnDzOkycHTFaQ6rn1LlFLCXaq4LIPA2o=;
-        b=22sIS2qpiL+6ciig9g5qNYBKItma60+a15Ac36zChWRDSy0/YjYLbSclmArBx7Yhax
-         HfScCASsTXp0NWT60GLGZtJBkGmlnwLrXaNR+jARBDT6w7ManVh6VSHLcV/afbAXRo4n
-         4gOu6Y/pITl8mVe8Id/4w0tMie3be8RYVqr5qLaWeGRsMcgBYMt6mzFqB/N7WiTETn/2
-         wsldRrQ602SEnXPuGK1rYlbaNeBqhDLJDgVvBI91rtX16R10/LCM+k1STp/qQhO94rau
-         ryFAe2fTIO+CWt4Y8etVLrTn6URlqQKowMGxMDYMm0vJHI7/xTWaGpLO+BG3N8r2ovGp
-         SEeg==
-X-Gm-Message-State: ACrzQf13mHdbGmuUzw6llMD1djZIoVnTVO4SRdqZsmiah/3b/t5eU7ZS
-	hsAQQrLwq5pPI/pGghKj6rSxJg==
-X-Google-Smtp-Source: AMsMyM5CQWggSmYXQq0F3Di+/pXRM3IYsH2YikO+/Bi2/zu7pZyr6nxphxgrV9sWndQW0zsNvXqCvQ==
-X-Received: by 2002:a05:6512:1320:b0:488:8fcc:e196 with SMTP id x32-20020a056512132000b004888fcce196mr2715533lfu.602.1663924994025;
-        Fri, 23 Sep 2022 02:23:14 -0700 (PDT)
-Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id 11-20020ac25f4b000000b00499b1873d6dsm1349862lfz.269.2022.09.23.02.23.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 23 Sep 2022 02:23:13 -0700 (PDT)
-Message-ID: <29f9fbd3-a266-e947-5dad-27181d3945e3@linaro.org>
-Date: Fri, 23 Sep 2022 11:23:12 +0200
+	id 1obeud-003IBX-PD; Fri, 23 Sep 2022 09:24:01 +0000
+X-UUID: 81bb1e50ceda4b85b434a5539d1daa69-20220923
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=e75VPjlddmHjA6YtNN4Jdl5RACRE/cmPltRVYSf5qLY=;
+	b=DPQgBsBDJ+Elhh4+B4RcU1IlNhsYKbQhfjWAYHvID51fz0iVAGxoAJv09Oz2IT86W3FDEzMRxmyJN3tjuWem6LODGeX8TM6llf9dlLNTpC9FhneOvrFwWOtsE3C6RMo3+ufWfa2ouUyz/lMy2YV9/1Hus7Lh/JVKCqdMSRu7o88=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:6e25737e-abef-4840-a422-efbce5188648,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:39a5ff1,CLOUDID:1946cc06-1cee-4c38-b21b-a45f9682fdc0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 81bb1e50ceda4b85b434a5539d1daa69-20220923
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <xinlei.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 771312247; Fri, 23 Sep 2022 02:22:19 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 23 Sep 2022 16:40:46 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 23 Sep 2022 16:40:46 +0800
+From: <xinlei.lee@mediatek.com>
+To: <matthias.bgg@gmail.com>, <jason-jh.lin@mediatek.com>,
+	<angelogioacchino.delregno@collabora.com>, <rex-bc.chen@mediatek.com>,
+	<ck.hu@mediatek.com>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+	<daniel@ffwll.ch>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<jitao.shi@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>
+Subject: [PATCH v9,2/3] drm: mediatek: Set dpi format in mmsys
+Date: Fri, 23 Sep 2022 16:40:39 +0800
+Message-ID: <1663922440-20242-3-git-send-email-xinlei.lee@mediatek.com>
+X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1663922440-20242-1-git-send-email-xinlei.lee@mediatek.com>
+References: <1663922440-20242-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
-Subject: Re: [resend PATCH v4 2/2] dt-bindings: net: snps,dwmac: add clk_csr
- property
-Content-Language: en-US
-To: Jianguo Zhang <jianguo.zhang@mediatek.com>,
- "David S . Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro
- <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Biao Huang <biao.huang@mediatek.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Christophe Roullier <christophe.roullier@st.com>
-References: <20220922092743.22824-1-jianguo.zhang@mediatek.com>
- <20220922092743.22824-3-jianguo.zhang@mediatek.com>
- <04b9e5ef-f3c7-3400-f9df-2f585a084c5d@linaro.org>
- <8007b455dd18837c06ab099a6009505e7dddc124.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <8007b455dd18837c06ab099a6009505e7dddc124.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_022315_867216_BD2AF300 
-X-CRM114-Status: GOOD (  15.07  )
+X-CRM114-CacheID: sfid-20220923_022359_883990_A4623B94 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,41 +82,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/09/2022 03:48, Jianguo Zhang wrote:
-> Dear Krzysztof,
-> 
-> 	Thanks for your comment.
-> 
-> On Thu, 2022-09-22 at 17:07 +0200, Krzysztof Kozlowski wrote:
->> On 22/09/2022 11:27, Jianguo Zhang wrote:
->>> The clk_csr property is parsed in driver for generating MDC clock
->>> with correct frequency. A warning('clk_csr' was unexpeted) is
->>> reported
->>> when runing 'make_dtbs_check' because the clk_csr property
->>> has been not documented in the binding file.
->>>
->>
->> You did not describe the case, but apparently this came with
->> 81311c03ab4d ("net: ethernet: stmmac: add management of clk_csr
->> property") which never brought the bindings change.
->>
->> Therefore the property was never part of bindings documentation and
->> bringing them via driver is not the correct process. It bypasses the
->> review and such bypass cannot be an argument to bring the property to
->> bindings. It's not how new properties can be added.
->>
->> Therefore I don't agree. Please make it a property matching bindings,
->> so
->> vendor prefix, no underscores in node names.
->>
->> Driver and DTS need updates.
->>
-> We will rename the property 'clk_csr' as 'snps,clk-csr' and update DTS
-> & driver to align with the new name in next versions patches.
+From: Xinlei Lee <xinlei.lee@mediatek.com>
 
-Thanks!
+Due to the mt8186 hardware changes, we need to modify the dpi output
+format corresponding to the mmsys register(mmsys_base+0x400).
 
-Best regards,
-Krzysztof
+Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 630a4e301ef6..bd1870a8504a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -15,6 +15,7 @@
+ #include <linux/of_graph.h>
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/platform_device.h>
++#include <linux/soc/mediatek/mtk-mmsys.h>
+ #include <linux/types.h>
+ 
+ #include <video/videomode.h>
+@@ -30,6 +31,7 @@
+ #include "mtk_disp_drv.h"
+ #include "mtk_dpi_regs.h"
+ #include "mtk_drm_ddp_comp.h"
++#include "mtk_drm_drv.h"
+ 
+ enum mtk_dpi_out_bit_num {
+ 	MTK_DPI_OUT_BIT_NUM_8BITS,
+@@ -82,6 +84,7 @@ struct mtk_dpi {
+ 	struct pinctrl_state *pins_dpi;
+ 	u32 output_fmt;
+ 	int refcount;
++	struct device *mmsys_dev;
+ };
+ 
+ static inline struct mtk_dpi *bridge_to_dpi(struct drm_bridge *b)
+@@ -135,6 +138,7 @@ struct mtk_dpi_yc_limit {
+  * @yuv422_en_bit: Enable bit of yuv422.
+  * @csc_enable_bit: Enable bit of CSC.
+  * @pixels_per_iter: Quantity of transferred pixels per iteration.
++ * @edge_cfg_in_mmsys: If the edge configuration for DPI's output needs to be set in MMSYS.
+  */
+ struct mtk_dpi_conf {
+ 	unsigned int (*cal_factor)(int clock);
+@@ -153,6 +157,7 @@ struct mtk_dpi_conf {
+ 	u32 yuv422_en_bit;
+ 	u32 csc_enable_bit;
+ 	u32 pixels_per_iter;
++	bool edge_cfg_in_mmsys;
+ };
+ 
+ static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+@@ -449,8 +454,12 @@ static void mtk_dpi_dual_edge(struct mtk_dpi *dpi)
+ 		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
+ 			     dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE ?
+ 			     EDGE_SEL : 0, EDGE_SEL);
++		if (dpi->conf->edge_cfg_in_mmsys)
++			mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev, MTK_DPI_RGB888_DDR_CON);
+ 	} else {
+ 		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE, 0);
++		if (dpi->conf->edge_cfg_in_mmsys)
++			mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev, MTK_DPI_RGB888_SDR_CON);
+ 	}
+ }
+ 
+@@ -778,8 +787,10 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
+ {
+ 	struct mtk_dpi *dpi = dev_get_drvdata(dev);
+ 	struct drm_device *drm_dev = data;
++	struct mtk_drm_private *priv = drm_dev->dev_private;
+ 	int ret;
+ 
++	dpi->mmsys_dev = priv->mmsys_dev;
+ 	ret = drm_simple_encoder_init(drm_dev, &dpi->encoder,
+ 				      DRM_MODE_ENCODER_TMDS);
+ 	if (ret) {
+-- 
+2.18.0
 
 
