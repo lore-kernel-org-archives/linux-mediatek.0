@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C178AC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 01:10:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A45CECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 01:11:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GBBwVF5JufH4F/fd4oF3ipJQLCv3QCvFcC7fK00SEIc=; b=v+p9b5bdtiDdPAsbUj9eMtpqz6
-	e04mARXGwMOLWPQtcrNoJBQCHAqoV1Crp7faJyQ9EfMIjAXV2/fgGzi5VVDgTqj4JxcMHCHd2UK+1
-	vuMoxwup00KuFQUZUFn2qV+VGdlGDvC+5KnohFwQNQY5fnZVvaCm2k+AbykWVJDFEXo3Ze1ohEISV
-	xLwNzt0NJbxOqPBu6NW4qqBbjyjEByZQgUpohVOJG2HT2OwIP7/rOcioK62jX5vXmv3m2hsVt7aVQ
-	MiOpU2ONzASGprjzsrtLvLneiM5aCDNKxe3zhP3UxPY9PuVYihUhvHLNLQH3mamVlOyt5sENgcGR+
-	agj9Wv5g==;
+	bh=Bc9T747Ii1/zQ1gV+dQIubIY434gh+YQjMpm3+fERLY=; b=0fV29rfnrLKUz0jVz4y+S9Ahsd
+	A7PHdP3f7kGQkitxFgQM9wEjvUUHeiiASLvNdFu3JX62goq/9/jT0v840L7J9sFRBKiErySCflVGY
+	ggRlXTSTc5NhM1DHrTKF+sR1c3FR/MpyvpIPDspcU0J21FGFtdA+iFhTmqgHLKp0ixNi2lU5ry44I
+	Itz7uIoSKB85We6p0hL6DQ2hl20XHW5cQYkNzhn9vtz/S+PLhMEhuusZaWUIXI+fPf/lSFbPJF2O4
+	hTeWqcG7Vgxm1dRcFS1fyGyRQSLvwGdQQD9bzpYLO1OH7ArhRsE/49n8X+DgEYB1JrHbIpsMvXzxS
+	bzN+CEfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obXCe-000uSJ-3K; Fri, 23 Sep 2022 01:10:04 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1obXEF-000v5J-QG; Fri, 23 Sep 2022 01:11:43 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obX9W-000t9m-96; Fri, 23 Sep 2022 01:06:52 +0000
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 28N0x3i1019555;
-	Fri, 23 Sep 2022 01:06:28 GMT
+	id 1obX9y-000tJf-08; Fri, 23 Sep 2022 01:07:20 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 28MNuQrd018256;
+	Fri, 23 Sep 2022 01:06:54 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-type; s=qcppdkim1;
- bh=GBBwVF5JufH4F/fd4oF3ipJQLCv3QCvFcC7fK00SEIc=;
- b=Bmmy0rbVNBKD0GMl3GlRq18sIBARIxbMYM1RvxRVQzzHJuUfi9XcqH9Ze1HkJzGzw76C
- rTvj7ssfuo5ocGItMRm0tYFZfAOg7/0Lqu5SsEyznbuSrebECiUlKbwSmrvJTBODLg7j
- gKAmmDeEcjFT2ZvvRDvWP3mnUoq0GoUn/LvVkB8Hwh4W2KoJpfDPeKL5VHmDDJXmuFpG
- QkDlWIUtcIMz7D2fPu+XokIn3ZbGzLyPcvATvbRKb2Kko3HgFXX1+i8T7qn0CvMZvkU5
- 5Dmr95ioy3rOGv9sn37jSwgxMe1bJtYEIh70uwVeYWxFr2RTW38KbwgJG/WrZxNrofkX IA== 
-Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3jrg4ctw30-1
+ bh=Bc9T747Ii1/zQ1gV+dQIubIY434gh+YQjMpm3+fERLY=;
+ b=V0nNOVJsOosUS+FfGMR+6RSMc5KZbnARfuL2GSKTCjUwqzWkXmV4jWUFYbL4rMQqF6Dz
+ me02yv8BwbwhiVN7bx08FGC+cg6VTEB6wI7a1gnuFOa49EtW21iMmf/jEY+qm3sHg5WY
+ 9XxvcavuQS7q1MmyAOAiwgmdkQdMz4yJWM6m4Px7eL5LAuUQWcO5uW0yZvFGqRhvRKtO
+ zUjiBPwsc3crpexly+tObQIk5M4j3nPsm3J4QHEjIzgpfyA7sKcdHZHHyONlVLvLdW4i
+ KeWsW882yBBoiDSzY7Gn8rPDLWrW3/FNXwdDtfd8tSIfi/adkGkxLAyuKSfjr42pcqnQ QQ== 
+Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3jrqjd9w91-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 23 Sep 2022 01:06:28 +0000
+	Fri, 23 Sep 2022 01:06:54 +0000
 Received: from nasanex01a.na.qualcomm.com ([10.52.223.231])
-	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 28N16RCn015628
+	by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 28N16rJj008242
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 23 Sep 2022 01:06:27 GMT
+	Fri, 23 Sep 2022 01:06:53 GMT
 Received: from asutoshd-linux1.qualcomm.com (10.80.80.8) by
  nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.29; Thu, 22 Sep 2022 18:06:26 -0700
+ 15.2.986.29; Thu, 22 Sep 2022 18:06:52 -0700
 From: Asutosh Das <quic_asutoshd@quicinc.com>
 To: <mani@kernel.org>, <quic_nguyenb@quicinc.com>, <quic_xiaosenh@quicinc.com>,
         <quic_cang@quicinc.com>, <quic_nitirawa@quicinc.com>,
@@ -66,9 +66,9 @@ CC: <linux-scsi@vger.kernel.org>, Asutosh Das <quic_asutoshd@quicinc.com>,
 	<linux-arm-kernel@lists.infradead.org>,
         "moderated list:ARM/Mediatek SoC
  support" <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v1 02/16] ufs: core: Introduce Multi-circular queue capability
-Date: Thu, 22 Sep 2022 18:05:09 -0700
-Message-ID: <fa3d70c1642c64ce75461f630eabe84b3b974d4e.1663894792.git.quic_asutoshd@quicinc.com>
+Subject: [PATCH v1 05/16] ufs: core: mcq: Configure resource regions
+Date: Thu, 22 Sep 2022 18:05:12 -0700
+Message-ID: <4d4df6ad6353b93253fb22deefb772dc59f5c84e.1663894792.git.quic_asutoshd@quicinc.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1663894792.git.quic_asutoshd@quicinc.com>
 References: <cover.1663894792.git.quic_asutoshd@quicinc.com>
@@ -79,19 +79,19 @@ X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
  nasanex01a.na.qualcomm.com (10.52.223.231)
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: M4bs7s3cq_iaalSHfH1fSnJut6lSrTMm
-X-Proofpoint-ORIG-GUID: M4bs7s3cq_iaalSHfH1fSnJut6lSrTMm
+X-Proofpoint-GUID: tpF9uJH_JI-hxf4r_d2XRcQ58Wlp60er
+X-Proofpoint-ORIG-GUID: tpF9uJH_JI-hxf4r_d2XRcQ58Wlp60er
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
  definitions=2022-09-22_16,2022-09-22_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
- impostorscore=0 suspectscore=0 phishscore=0 spamscore=0 mlxlogscore=999
- clxscore=1015 lowpriorityscore=0 adultscore=0 malwarescore=0 mlxscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2209130000 definitions=main-2209230005
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015 mlxlogscore=999
+ lowpriorityscore=0 malwarescore=0 spamscore=0 suspectscore=0 phishscore=0
+ adultscore=0 impostorscore=0 priorityscore=1501 bulkscore=0 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2209130000
+ definitions=main-2209230005
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_180650_523671_8236D960 
-X-CRM114-Status: GOOD (  20.44  )
+X-CRM114-CacheID: sfid-20220922_180718_121110_0F56B4AE 
+X-CRM114-Status: GOOD (  27.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,81 +106,195 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adds support to check for MCQ capability in the UFSHC.
-This capability can be used by host drivers to control
-MCQ enablement.
+Define the mcq resources and add support to ioremap
+the resource regions.
 
 Co-developed-by: Can Guo <quic_cang@quicinc.com>
 Signed-off-by: Can Guo <quic_cang@quicinc.com>
 Signed-off-by: Asutosh Das <quic_asutoshd@quicinc.com>
 ---
- drivers/ufs/core/ufshcd.c |  5 +++++
- include/ufs/ufshcd.h      | 13 +++++++++++++
- 2 files changed, 18 insertions(+)
+ drivers/ufs/core/ufs-mcq.c | 100 ++++++++++++++++++++++++++++++++++++++++++++-
+ include/ufs/ufshcd.h       |  28 +++++++++++++
+ 2 files changed, 127 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 4b9ae83..24661fc 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -89,6 +89,7 @@
- #define FDEVICEINIT_COMPL_TIMEOUT 1500 /* millisecs */
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index 934556f..e5cc7ab 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -17,6 +17,12 @@
+ #define UFS_MCQ_MIN_READ_QUEUES 0
+ #define UFS_MCQ_MIN_POLL_QUEUES 0
  
- #define EXT_IID_CAP_SHIFT 10
-+#define MCQ_SUPP_SHIFT 30
- #define ufshcd_toggle_vreg(_dev, _vreg, _on)				\
- 	({                                                              \
- 		int _ret;                                               \
-@@ -2240,6 +2241,10 @@ static inline int ufshcd_hba_capabilities(struct ufs_hba *hba)
- 	if (err)
- 		dev_err(hba->dev, "crypto setup failed\n");
- 
-+	hba->mcq_sup = (hba->capabilities & MASK_MCQ_SUPPORT) >> MCQ_SUPP_SHIFT;
-+	if (!hba->mcq_sup)
-+		return err;
++#define MCQ_QCFGPTR_MASK	GENMASK(7, 0)
++#define MCQ_QCFGPTR_UNIT	0x200
++#define MCQ_SQATTR_OFFSET(c) \
++	((((c) >> 16) & MCQ_QCFGPTR_MASK) * MCQ_QCFGPTR_UNIT)
++#define MCQ_QCFG_SIZE	0x40
 +
- 	hba->mcq_capabilities = ufshcd_readl(hba, REG_MCQCAP);
- 	hba->ext_iid_sup = (hba->mcq_capabilities & MASK_EXT_IID_SUPPORT) >>
- 		EXT_IID_CAP_SHIFT;
+ static unsigned int dev_cmd_queue = 1;
+ 
+ static int rw_queue_count_set(const char *val, const struct kernel_param *kp)
+@@ -85,6 +91,96 @@ module_param_cb(poll_queues, &poll_queue_count_ops, &poll_queues, 0644);
+ MODULE_PARM_DESC(poll_queues,
+ 		 "Number of poll queues used for r/w. Default value is 1");
+ 
++/* Resources */
++static const struct ufshcd_res_info_t ufshcd_res_info[RES_MAX] = {
++	{.name = "ufs_mem", .resource = NULL, .base = NULL},
++	{.name = "mcq", .resource = NULL, .base = NULL},
++	/* Submission Queue DAO */
++	{.name = "mcq_sqd", .resource = NULL, .base = NULL},
++	/* Submission Queue Interrupt Status */
++	{.name = "mcq_sqis", .resource = NULL, .base = NULL},
++	/* Completion Queue DAO */
++	{.name = "mcq_cqd", .resource = NULL, .base = NULL},
++	/* Completion Queue Interrupt Status */
++	{.name = "mcq_cqis", .resource = NULL, .base = NULL},
++	/* MCQ vendor specific */
++	{.name = "mcq_vs", .resource = NULL, .base = NULL},
++};
++
++static int ufshcd_mcq_config_resource(struct ufs_hba *hba)
++{
++	struct platform_device *pdev = to_platform_device(hba->dev);
++	struct ufshcd_res_info_t *res;
++	struct resource *res_mem, *res_mcq;
++	int i, ret = 0;
++
++	memcpy(hba->res, ufshcd_res_info, sizeof(ufshcd_res_info));
++
++	for (i = 0; i < RES_MAX; i++) {
++		res = &hba->res[i];
++		res->resource = platform_get_resource_byname(pdev,
++							     IORESOURCE_MEM,
++							     res->name);
++		if (!res->resource) {
++			dev_info(hba->dev, "Resource %s not provided\n", res->name);
++			if (i == RES_MEM)
++				return -ENOMEM;
++			continue;
++		} else if (i == RES_MEM) {
++			res_mem = res->resource;
++			res->base = hba->mmio_base;
++			continue;
++		}
++
++		res->base = devm_ioremap_resource(hba->dev, res->resource);
++		if (IS_ERR(res->base)) {
++			dev_err(hba->dev, "Failed to map res %s, err=%d\n",
++					 res->name, (int)PTR_ERR(res->base));
++			res->base = NULL;
++			ret = PTR_ERR(res->base);
++			return ret;
++		}
++	}
++
++	res = &hba->res[RES_MCQ];
++	/* MCQ resource provided in DT */
++	if (res->base)
++		goto out;
++
++	/* Manually allocate MCQ resource */
++	res_mcq = res->resource;
++	res_mcq = devm_kzalloc(hba->dev, sizeof(*res_mcq), GFP_KERNEL);
++	if (!res_mcq) {
++		dev_err(hba->dev, "Failed to alloate MCQ resource\n");
++		return ret;
++	}
++
++	res_mcq->start = res_mem->start +
++			 MCQ_SQATTR_OFFSET(hba->mcq_capabilities);
++	res_mcq->end = res_mcq->start + hba->nr_hw_queues * MCQ_QCFG_SIZE - 1;
++	res_mcq->flags = res_mem->flags;
++	res_mcq->name = "mcq";
++
++	ret = insert_resource(&iomem_resource, res_mcq);
++	if (ret) {
++		dev_err(hba->dev, "Failed to insert MCQ resource %d\n", ret);
++		return ret;
++	}
++
++	res->base = devm_ioremap_resource(hba->dev, res_mcq);
++	if (IS_ERR(res->base)) {
++		dev_err(hba->dev, "Map MCQ registers failed, err=%d\n",
++			(int)PTR_ERR(res->base));
++		ret = PTR_ERR(res->base);
++		res->base = NULL;
++		return ret;
++	}
++
++out:
++	hba->mcq_base = res->base;
++	return 0;
++}
++
+ static int ufshcd_mcq_config_nr_queues(struct ufs_hba *hba)
+ {
+ 	int i, rem;
+@@ -126,7 +222,9 @@ int ufshcd_mcq_init(struct ufs_hba *hba)
+ 	int ret;
+ 
+ 	ret = ufshcd_mcq_config_nr_queues(hba);
+-
++	if (ret)
++		return ret;
++	ret = ufshcd_mcq_config_resource(hba);
+ 	return ret;
+ }
+ 
 diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index da1eb8a..da7ec0c 100644
+index 298e103..54d742a 100644
 --- a/include/ufs/ufshcd.h
 +++ b/include/ufs/ufshcd.h
-@@ -660,6 +660,12 @@ enum ufshcd_caps {
- 	 * notification if it is supported by the UFS device.
- 	 */
- 	UFSHCD_CAP_TEMP_NOTIF				= 1 << 11,
-+
-+	/*
-+	 * This capability allows the host controller driver to turn on/off
-+	 * MCQ mode. MCQ mode may be used to increase performance.
-+	 */
-+	UFSHCD_CAP_MCQ_EN				= 1 << 12,
+@@ -720,6 +720,30 @@ struct ufs_hba_monitor {
  };
  
- struct ufs_hba_variant_params {
-@@ -820,6 +826,7 @@ struct ufs_hba_monitor {
-  * @complete_put: whether or not to call ufshcd_rpm_put() from inside
-  *	ufshcd_resume_complete()
-  * @ext_iid_sup: is EXT_IID is supported by UFSHC
-+ * @mcq_sup: is mcq supported by UFSHC
+ /**
++ * struct ufshcd_res_info_t - MCQ related resource regions
++ *
++ * @name: resource name
++ * @resource: pointer to resource region
++ * @base: register base address
++ */
++struct ufshcd_res_info_t {
++	const char *name;
++	struct resource *resource;
++	void __iomem *base;
++};
++
++enum ufshcd_res {
++	RES_MEM,
++	RES_MCQ,
++	RES_MCQ_SQD,
++	RES_MCQ_SQIS,
++	RES_MCQ_CQD,
++	RES_MCQ_CQIS,
++	RES_MCQ_VS,
++	RES_MAX,
++};
++
++/**
+  * struct ufs_hba - per adapter private structure
+  * @mmio_base: UFSHCI base register address
+  * @ucdl_base_addr: UFS Command Descriptor base address
+@@ -829,6 +853,8 @@ struct ufs_hba_monitor {
+  * @mcq_sup: is mcq supported by UFSHC
+  * @nr_hw_queues: number of hardware queues configured
+  * @nr_queues: number of Queues of different queue types
++ * @res: array of resource info of MCQ registers
++ * @mcq_base: Multi circular queue registers base address
   */
  struct ufs_hba {
  	void __iomem *mmio_base;
-@@ -969,8 +976,14 @@ struct ufs_hba {
- 	u32 luns_avail;
- 	bool complete_put;
- 	bool ext_iid_sup;
-+	bool mcq_sup;
+@@ -981,6 +1007,8 @@ struct ufs_hba {
+ 	bool mcq_sup;
+ 	unsigned int nr_hw_queues;
+ 	unsigned int nr_queues[HCTX_MAX_TYPES];
++	struct ufshcd_res_info_t res[RES_MAX];
++	void __iomem *mcq_base;
  };
  
-+static inline bool is_mcq_supported(struct ufs_hba *hba)
-+{
-+	return hba->mcq_sup && (hba->caps & UFSHCD_CAP_MCQ_EN);
-+}
-+
- /* Returns true if clocks can be gated. Otherwise false */
- static inline bool ufshcd_is_clkgating_allowed(struct ufs_hba *hba)
- {
+ static inline bool is_mcq_supported(struct ufs_hba *hba)
 -- 
 2.7.4
 
