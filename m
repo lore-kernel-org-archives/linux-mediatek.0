@@ -4,60 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98081C04A95
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 17:07:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6A58C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 17:07:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=00n+uk3oZubbfUX/1ubVA4+TAf0XcTDJQ71HUY+0l68=; b=LfsQTDzdTcxMtjqGDV2vJqvcD6
-	yX3Yrn3SwHsLpac6nSOGmhlKIZoAzjjr/QSSWCfKYshZ/BfNXUkt86qJHkWBIUmW/+OY8sDxpcsSb
-	ueHU6SqnTJZjdGu2mqlY0Xyu3OSp/yrh++QQUdJHNUEmwoF1tndwNVmJeN7P/XNEj9Of775m5AI2s
-	juxPp2uUDsaxih0MMWVVskZo7gnQgRv/MyiT1iGv1bIP7TGWQm3wBcFGObWWD8YJZ8DBKVHOoMfN6
-	o31WvALOQP3tpakhlJXqBSOU1h+/57vERAVHVX58FueeEAJfR9wMPfHx+ZGk4mm69WLlorLcwxPvY
-	/ubhHAFw==;
+	bh=LLvv0tsHtn4cEun/3W/OHzwlNDMGqIIsN/s0X7iFmA8=; b=YLFtm5ouvPHiZmPSDuc0Th6ofQ
+	YeeQ/hQ7UmmClwmTMl+jnX2ShVf2TiyRo2KsuM/5GkzynK2FOeVhkEiGyIJMF18yWDF9OyjIUz+IA
+	lpI79sGmDXLsPWF2myp4ICmnBY6UaYqWju+ydfzjthps9SyVICh0yX01/lWbPoug79FmTC6R2yNbG
+	Zx7l7mAvEYwDWUVHSz27OwHz4uTXZ4Li5RL089ra4iDK/JxHemhEU6t4QFuy/bkOLKrRLjA3dac7j
+	yhBXx3zqY+RUG+bCXSB5MNNJACuw3DUzlmmsgVXneVFwwPTi7NZFxj0In39rRwtK+tjVTbd8mhGjq
+	V4ot1VHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obm8x-0053IU-Fl; Fri, 23 Sep 2022 17:07:15 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1obm9J-0053RI-61; Fri, 23 Sep 2022 17:07:37 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obm8k-0053EU-Oz; Fri, 23 Sep 2022 17:07:04 +0000
+	id 1obm8p-0053Gm-Nm; Fri, 23 Sep 2022 17:07:09 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id D6555B8202F;
-	Fri, 23 Sep 2022 17:06:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88F15C433D7;
-	Fri, 23 Sep 2022 17:06:54 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 316D3B826F2;
+	Fri, 23 Sep 2022 17:07:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A65C3C433C1;
+	Fri, 23 Sep 2022 17:07:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663952816;
-	bh=MXUJSh7a67zClSJcrIQ8uTLgyyJ6AiyBVSt6Oo0niKQ=;
+	s=k20201202; t=1663952824;
+	bh=n9U15dwNcqXRZYJJDDbUQQ/3fEHzPd/5huqs2XJRWFs=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=L5ozGfX7+BnlhPf8kYmEvlTmsswimIsTUvxP0A7EOs5QLeAU7DTgyL556orPLCbSQ
-	 jWDSDsvBhmTH3Obu+8JS2+MwezNx17WrUScLZMuKMD+XWhecmwFmPDggjej9KMZvnX
-	 UWuHqm8QLARl6T/wfwagA01xQoUikW/w0GHMeRwpkbliaQn1Ch7Y/7FHDyWH/0Re1u
-	 BAAWQSdgKTny+VsvfMFMgNG+euMZ7dTZICI/UTRKqCw9E3up1m/hdqNDZX3Zz6SE72
-	 +2nPq0IsjkKHj1oSnBS4Bs7GbhOi45JXeystji3jfeCscFIE4hsbCNFzKSCiy/++ve
-	 RcTxQ5kODrJCw==
+	b=hwLvkPsTn9T8ARxKa65H+/JwEbAIqLC3+UuPJf7jeFTgMlpCLrStMaNRbZJiRl0ZL
+	 8rcgvrYtTgeEXFv57sAs21Rql0Wj/tbrcU3gWCWAgAApU67BqDzOw4PIjzii6J7uCC
+	 4etFrLo2Nyd2SONb57AUxdXIIIlJ1zS0eJOEf8oybNhnahH4GwJaezAYQLl56rerLu
+	 GLGK/V8ywiqbaf7Zk2HIOj487YkqVw2gEia/qI2LlZZSxZrToAvl5HOcimsbVpxfxS
+	 jCqsREFX1mqdYLDO2DP7BjL0SJCoNc9sGAXGE+bu/xdsszXxlQ2fJyNbvMFuT9PRYm
+	 3wCvCAZxmCI7A==
 From: Mark Brown <broonie@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: tzungbi@google.com, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- perex@perex.cz, tiwai@suse.com, trevor.wu@mediatek.com, linux-arm-kernel@lists.infradead.org, lgirdwood@gmail.com,
- matthias.bgg@gmail.com
-In-Reply-To: <20220922103502.49981-1-angelogioacchino.delregno@collabora.com>
-References: <20220922103502.49981-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8195-mt6359: Use snd_soc_pm_ops instead of custom ops
-Message-Id: <166395281428.610218.2692413378326164473.b4-ty@kernel.org>
-Date: Fri, 23 Sep 2022 18:06:54 +0100
+To: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Cc: "chunxu.li" <chunxu.li@mediatek.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, alsa-devel@alsa-project.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Miaoqian Lin <linmq006@gmail.com>, Trevor Wu <trevor.wu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Akihiko Odaki <akihiko.odaki@gmail.com>, Tzung-Bi Shih <tzungbi@google.com>, Takashi Iwai <tiwai@suse.com>,
+ Jaroslav Kysela <perex@perex.cz>, Liam Girdwood <lgirdwood@gmail.com>
+In-Reply-To: <20220922235951.252532-1-nfraprado@collabora.com>
+References: <20220922235951.252532-1-nfraprado@collabora.com>
+Subject: Re: [PATCH 0/6] ASoC: mediatek: Allow separate handling of headphone and headset mic jack
+Message-Id: <166395282139.610218.7941761781105073129.b4-ty@kernel.org>
+Date: Fri, 23 Sep 2022 18:07:01 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_100702_976450_AC5DA41E 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20220923_100708_099363_5F83FA13 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,11 +75,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 22 Sep 2022 12:35:02 +0200, AngeloGioacchino Del Regno wrote:
-> It is possible to use the standard snd_soc_pm_ops for this card:
-> remove the custom mt8195_mt6359_pm_ops.
+On Thu, 22 Sep 2022 19:59:45 -0400, Nícolas F. R. A. Prado wrote:
+> This series allows the headphone and headset mic jack status to be
+> handled separately by userspace on MT8192, MT8195 and MT8186.
 > 
+> Changes based on commit d0508b4f1604 ("ASoC: rk3399_gru_sound: Add DAPM
+> pins, kcontrols for jack detection"). Found while searching for an
+> alternative for JackSwitch [1].
 > 
+> [...]
 
 Applied to
 
@@ -84,8 +91,18 @@ Applied to
 
 Thanks!
 
-[1/1] ASoC: mediatek: mt8195-mt6359: Use snd_soc_pm_ops instead of custom ops
-      commit: 14ed837b9740cc6ec25910980d67c22894b4ff56
+[1/6] ASoC: mediatek: mt8192-mt6359: Expose individual headset jack pins
+      commit: 194ff8db03782d1dae41b7b42ea65da5748884c2
+[2/6] ASoC: mediatek: mt8195: Expose individual headset jack pins
+      commit: aa51e3c127a43cf4862db5f0081da281f1aa6429
+[3/6] ASoC: mediatek: mt8186-da7219: Add headset widgets with switches
+      commit: 13bee4a16ac5c5f0e3a5db868df991be57e74aa5
+[4/6] ASoC: mediatek: mt8186-da7219: Expose individual headset jack pins
+      commit: 8e986748680629a82398c65da0c5bda4c6a01b3d
+[5/6] ASoC: mediatek: mt8186-rt5682: Add headset widgets with switches
+      commit: d888e7afa03f06d8091ecdd43f87d5396dfbf907
+[6/6] ASoC: mediatek: mt8186-rt5682: Expose individual headset jack pins
+      commit: 42de42c22453064ffc9b72c259b2ab901dd766dc
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
