@@ -4,63 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6A58C6FA82
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 17:07:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A52EC04A95
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 17:48:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LLvv0tsHtn4cEun/3W/OHzwlNDMGqIIsN/s0X7iFmA8=; b=YLFtm5ouvPHiZmPSDuc0Th6ofQ
-	YeeQ/hQ7UmmClwmTMl+jnX2ShVf2TiyRo2KsuM/5GkzynK2FOeVhkEiGyIJMF18yWDF9OyjIUz+IA
-	lpI79sGmDXLsPWF2myp4ICmnBY6UaYqWju+ydfzjthps9SyVICh0yX01/lWbPoug79FmTC6R2yNbG
-	Zx7l7mAvEYwDWUVHSz27OwHz4uTXZ4Li5RL089ra4iDK/JxHemhEU6t4QFuy/bkOLKrRLjA3dac7j
-	yhBXx3zqY+RUG+bCXSB5MNNJACuw3DUzlmmsgVXneVFwwPTi7NZFxj0In39rRwtK+tjVTbd8mhGjq
-	V4ot1VHg==;
+	bh=lTABx256oUVL2ZjGMhd78CKU5j+mrB0x+bRv7WFKIZU=; b=nvQw30pinK9eaPmsanSVBKFrA8
+	9JLAGE37cETSdP2eK/wtmzA91c7YtQgdYkFTkuI87NkTmAw+s2NCFBLK6/NqbHS/fsKbs9Cd2sRzg
+	1NQr1npo7n+8SwxfjeP4UHr8Pn471GTFAXsOqVATbyFugJXlBTpfrEKMHar6SZS9+4rDxUsWebxEd
+	dQD775Rs4f4yMphDIUWbLH08/5ta6PkT5TyJSFO0JSaEUhycnUeCVRtxmwVqCPvhMTTAEtZ9d87Na
+	xmrVjPFRHuedq5N2hjYwvp3Owjz/KhUWZHogkag8DLac4JX7KpoHhBd5FDwxVq59lMBaMnqpbC+N8
+	CXcqGxow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obm9J-0053RI-61; Fri, 23 Sep 2022 17:07:37 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1obmms-005E21-BH; Fri, 23 Sep 2022 17:48:30 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obm8p-0053Gm-Nm; Fri, 23 Sep 2022 17:07:09 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 316D3B826F2;
-	Fri, 23 Sep 2022 17:07:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A65C3C433C1;
-	Fri, 23 Sep 2022 17:07:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663952824;
-	bh=n9U15dwNcqXRZYJJDDbUQQ/3fEHzPd/5huqs2XJRWFs=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=hwLvkPsTn9T8ARxKa65H+/JwEbAIqLC3+UuPJf7jeFTgMlpCLrStMaNRbZJiRl0ZL
-	 8rcgvrYtTgeEXFv57sAs21Rql0Wj/tbrcU3gWCWAgAApU67BqDzOw4PIjzii6J7uCC
-	 4etFrLo2Nyd2SONb57AUxdXIIIlJ1zS0eJOEf8oybNhnahH4GwJaezAYQLl56rerLu
-	 GLGK/V8ywiqbaf7Zk2HIOj487YkqVw2gEia/qI2LlZZSxZrToAvl5HOcimsbVpxfxS
-	 jCqsREFX1mqdYLDO2DP7BjL0SJCoNc9sGAXGE+bu/xdsszXxlQ2fJyNbvMFuT9PRYm
-	 3wCvCAZxmCI7A==
-From: Mark Brown <broonie@kernel.org>
-To: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Cc: "chunxu.li" <chunxu.li@mediatek.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, alsa-devel@alsa-project.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Miaoqian Lin <linmq006@gmail.com>, Trevor Wu <trevor.wu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Akihiko Odaki <akihiko.odaki@gmail.com>, Tzung-Bi Shih <tzungbi@google.com>, Takashi Iwai <tiwai@suse.com>,
- Jaroslav Kysela <perex@perex.cz>, Liam Girdwood <lgirdwood@gmail.com>
-In-Reply-To: <20220922235951.252532-1-nfraprado@collabora.com>
-References: <20220922235951.252532-1-nfraprado@collabora.com>
-Subject: Re: [PATCH 0/6] ASoC: mediatek: Allow separate handling of headphone and headset mic jack
-Message-Id: <166395282139.610218.7941761781105073129.b4-ty@kernel.org>
-Date: Fri, 23 Sep 2022 18:07:01 +0100
+	id 1obmm1-005Dl3-HW
+	for linux-mediatek@lists.infradead.org; Fri, 23 Sep 2022 17:47:38 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 10so1419339lfy.5
+        for <linux-mediatek@lists.infradead.org>; Fri, 23 Sep 2022 10:47:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=lTABx256oUVL2ZjGMhd78CKU5j+mrB0x+bRv7WFKIZU=;
+        b=qTmbTfYZhgY6+DtMDeoFqIZg5SZ2wyaich993fmuHwFT+rTtNa3JrlTUbGg2FBzh+E
+         ybgHELHGIO51fo33F4uQcD+j0t1wVoowdc8vB9W3S6jpxxRHstokrmsHtaLpRyYV3rEO
+         EfMvCKH4L4TM99v+D6EONY8qpp53fhaWR6Bjlwge4JYDozZU+bhh3nENITvBQGlcP9za
+         wGIlhhDDK+rCuH1HFFDi2shLvRryKs7OQqoV7S/JsrAEhJD3fzOOp/fXz1X10Xx1BD2+
+         Hexgk40cIzxWc5nMmNM7cE9UqfT139u7bgx6wUeY1hzyWGlfEihzak3KR01CkbolEOPN
+         JvIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=lTABx256oUVL2ZjGMhd78CKU5j+mrB0x+bRv7WFKIZU=;
+        b=qt5u2Sl8E8ifWiA1IThcQQDSxZSBc5P9c0mwNA7OhY1oDoQBDqAbRMBkYh876zvepu
+         yaPF8Z8LGCuokvymIa+rwfB8YMwINlSAE5QAAHrpSeZKC/x0GLS+ysDZ+rOPVHZHhGmY
+         fWcEtRjv1ytBIsAcxdR/83RCw18imQ65I/vZH7Tj0iONMA8tSZ3/6LRo2c0imrEYpEJg
+         F9ucyuSNldyEhLB5QK+eRhJnh7mevFM73/8Z4uUhR6wuqVGhyubXZfZokln+sMiNEUDp
+         T0Nb/3pCHH5NRqIYngw4TdTkre6jazMYM3XyTljVnupdv/ODfNFGyMjI7grWPF0jo9gX
+         t7Ug==
+X-Gm-Message-State: ACrzQf2Em9OpxyVXXP1O2U+D56N2UMcZ/+CKp0XAkIOB1w26DLOzVpHR
+	nmsWwMkvnmxOnUnozSHUs9lq7A==
+X-Google-Smtp-Source: AMsMyM5dUbxsRMLwGgP1lNhkXKk3RrdWfbDCEqz5EvgWqieOxKXjhYSM2MNqJCYEUQuXVxTabxPXQQ==
+X-Received: by 2002:a05:6512:1291:b0:499:f9a0:fb5a with SMTP id u17-20020a056512129100b00499f9a0fb5amr3589935lfs.129.1663955252728;
+        Fri, 23 Sep 2022 10:47:32 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id f12-20020ac251ac000000b00497b198987bsm1545671lfk.26.2022.09.23.10.47.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 23 Sep 2022 10:47:32 -0700 (PDT)
+Message-ID: <c86948df-1069-26e3-b4d0-725a804cf88b@linaro.org>
+Date: Fri, 23 Sep 2022 19:47:31 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.10.0-dev-fc921
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [PATCH 1/5] dt-bindings: mfd: mediatek: Add scpsys compatible for
+ mt8186
+Content-Language: en-US
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>, Lee Jones <lee@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org
+References: <20220923131148.6678-1-allen-kh.cheng@mediatek.com>
+ <20220923131148.6678-2-allen-kh.cheng@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220923131148.6678-2-allen-kh.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_100708_099363_5F83FA13 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20220923_104737_625630_F46E5A7E 
+X-CRM114-Status: UNSURE (   7.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,51 +98,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 22 Sep 2022 19:59:45 -0400, Nícolas F. R. A. Prado wrote:
-> This series allows the headphone and headset mic jack status to be
-> handled separately by userspace on MT8192, MT8195 and MT8186.
+On 23/09/2022 15:11, Allen-KH Cheng wrote:
+> Add a new scpsys compatible for mt8186 SoC.
 > 
-> Changes based on commit d0508b4f1604 ("ASoC: rk3399_gru_sound: Add DAPM
-> pins, kcontrols for jack detection"). Found while searching for an
-> alternative for JackSwitch [1].
-> 
-> [...]
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 
-Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Thanks!
+Best regards,
+Krzysztof
 
-[1/6] ASoC: mediatek: mt8192-mt6359: Expose individual headset jack pins
-      commit: 194ff8db03782d1dae41b7b42ea65da5748884c2
-[2/6] ASoC: mediatek: mt8195: Expose individual headset jack pins
-      commit: aa51e3c127a43cf4862db5f0081da281f1aa6429
-[3/6] ASoC: mediatek: mt8186-da7219: Add headset widgets with switches
-      commit: 13bee4a16ac5c5f0e3a5db868df991be57e74aa5
-[4/6] ASoC: mediatek: mt8186-da7219: Expose individual headset jack pins
-      commit: 8e986748680629a82398c65da0c5bda4c6a01b3d
-[5/6] ASoC: mediatek: mt8186-rt5682: Add headset widgets with switches
-      commit: d888e7afa03f06d8091ecdd43f87d5396dfbf907
-[6/6] ASoC: mediatek: mt8186-rt5682: Expose individual headset jack pins
-      commit: 42de42c22453064ffc9b72c259b2ab901dd766dc
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
