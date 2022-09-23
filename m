@@ -4,70 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72408ECAAD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 09:24:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0515DECAAD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 09:30:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e75VPjlddmHjA6YtNN4Jdl5RACRE/cmPltRVYSf5qLY=; b=1oYaWtPWGXrOTARmIcPUqufbd/
-	Csn3PwPKDOHxFhxUkCCcsV1ixOnXwAw+u+VjDG+B+ZeGnsiTLm93zPHGxmRpesqyVG7eu13zqazfh
-	H/Pdqlia7vdUWXXOGxDjaD6NgOmI6smpfqVEgpWE55WQQOefJPTJHiclRmpIAnBljY17QpDSvQt9Q
-	bVH7fsmku7RT5jP1dSrHuW8Ny/b5hTRNCBWzDYw16q9XfeXMArTrKyBvRCBmeiVP3CaWbyNeI0v8W
-	Jjgjs5uLE/QTQZLenaqIyi3a2ZvGto2KErr4BP/Zzvpd4oSRXG1O+V6Tex6ds7j+cqEEhbeMbXuoo
-	srVjFR4Q==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Fg/Wbe8DkTKYrtba3+PWJJNwkVo0IG5j8DRorVyuiUA=; b=EyogbVeAofcMCW9oWUbdQd98uu
+	uQ8Fmue6wCnxu0/wTzJJZaI+w6yQzMSoOkvDN4Q9A0X/t1a99Dpq6OKjSYXCCx7N2MRk3ESo6OD86
+	1VNn+zod89tHwx7MO3r0WDrY4x2EfoIqNEJUqTlS0iZE+JiHRO5WzPxd6ESWhrRe7GH3TZvqdT3rU
+	OMFt/Kghtt7CNtGivFaj5A5P9+PPMUlQb/4ZqonzCh3n0NH9uHREZKxCzicVP0V0XMymtE1qRpwkj
+	DfNFYQ8t4opoyEGGgV0rEAsTvpFI3srepIm0r/1R9sXReG4N0ocHDbu5ERCtsw74ce62lH5UWGYyE
+	T0oRHaSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obev9-003IQv-4V; Fri, 23 Sep 2022 09:24:31 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1obf0f-003LDD-HH; Fri, 23 Sep 2022 09:30:13 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obeud-003IBX-PD; Fri, 23 Sep 2022 09:24:01 +0000
-X-UUID: 81bb1e50ceda4b85b434a5539d1daa69-20220923
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=e75VPjlddmHjA6YtNN4Jdl5RACRE/cmPltRVYSf5qLY=;
-	b=DPQgBsBDJ+Elhh4+B4RcU1IlNhsYKbQhfjWAYHvID51fz0iVAGxoAJv09Oz2IT86W3FDEzMRxmyJN3tjuWem6LODGeX8TM6llf9dlLNTpC9FhneOvrFwWOtsE3C6RMo3+ufWfa2ouUyz/lMy2YV9/1Hus7Lh/JVKCqdMSRu7o88=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:6e25737e-abef-4840-a422-efbce5188648,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:1946cc06-1cee-4c38-b21b-a45f9682fdc0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 81bb1e50ceda4b85b434a5539d1daa69-20220923
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <xinlei.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 771312247; Fri, 23 Sep 2022 02:22:19 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 23 Sep 2022 16:40:46 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 23 Sep 2022 16:40:46 +0800
-From: <xinlei.lee@mediatek.com>
-To: <matthias.bgg@gmail.com>, <jason-jh.lin@mediatek.com>,
-	<angelogioacchino.delregno@collabora.com>, <rex-bc.chen@mediatek.com>,
-	<ck.hu@mediatek.com>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
-	<daniel@ffwll.ch>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<jitao.shi@mediatek.com>, Xinlei Lee <xinlei.lee@mediatek.com>
-Subject: [PATCH v9,2/3] drm: mediatek: Set dpi format in mmsys
-Date: Fri, 23 Sep 2022 16:40:39 +0800
-Message-ID: <1663922440-20242-3-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1663922440-20242-1-git-send-email-xinlei.lee@mediatek.com>
-References: <1663922440-20242-1-git-send-email-xinlei.lee@mediatek.com>
+	id 1obf0G-003KzD-Cq; Fri, 23 Sep 2022 09:29:50 +0000
+Received: from dggemv711-chm.china.huawei.com (unknown [172.30.72.54])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4MYmwQ3KbRzWh0m;
+	Fri, 23 Sep 2022 17:25:42 +0800 (CST)
+Received: from kwepemm600008.china.huawei.com (7.193.23.88) by
+ dggemv711-chm.china.huawei.com (10.1.198.66) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Fri, 23 Sep 2022 17:29:40 +0800
+Received: from huawei.com (10.175.100.227) by kwepemm600008.china.huawei.com
+ (7.193.23.88) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Fri, 23 Sep
+ 2022 17:29:39 +0800
+From: Shang XiaoJing <shangxiaojing@huawei.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@linux.ie>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>
+CC: <shangxiaojing@huawei.com>
+Subject: [PATCH -next] drm/mediatek: Remove redundant dev_err call
+Date: Fri, 23 Sep 2022 18:03:55 +0800
+Message-ID: <20220923100355.16837-1-shangxiaojing@huawei.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
 Content-Type: text/plain
-X-MTK: N
+X-Originating-IP: [10.175.100.227]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ kwepemm600008.china.huawei.com (7.193.23.88)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_022359_883990_A4623B94 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20220923_022948_643704_79C32B4D 
+X-CRM114-Status: UNSURE (   8.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,87 +69,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xinlei Lee <xinlei.lee@mediatek.com>
+devm_ioremap_resource() prints error message in itself. Remove the
+dev_err call to avoid redundant error message.
 
-Due to the mt8186 hardware changes, we need to modify the dpi output
-format corresponding to the mmsys register(mmsys_base+0x400).
-
-Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
+Signed-off-by: Shang XiaoJing <shangxiaojing@huawei.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c   | 4 +---
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c | 4 +---
+ drivers/gpu/drm/mediatek/mtk_mdp_rdma.c   | 4 +---
+ 3 files changed, 3 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 630a4e301ef6..bd1870a8504a 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -15,6 +15,7 @@
- #include <linux/of_graph.h>
- #include <linux/pinctrl/consumer.h>
- #include <linux/platform_device.h>
-+#include <linux/soc/mediatek/mtk-mmsys.h>
- #include <linux/types.h>
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+index 0f9d7efb61d7..e72d5d8d77d8 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+@@ -118,10 +118,8 @@ static int mtk_disp_aal_probe(struct platform_device *pdev)
  
- #include <video/videomode.h>
-@@ -30,6 +31,7 @@
- #include "mtk_disp_drv.h"
- #include "mtk_dpi_regs.h"
- #include "mtk_drm_ddp_comp.h"
-+#include "mtk_drm_drv.h"
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	priv->regs = devm_ioremap_resource(dev, res);
+-	if (IS_ERR(priv->regs)) {
+-		dev_err(dev, "failed to ioremap aal\n");
++	if (IS_ERR(priv->regs))
+ 		return PTR_ERR(priv->regs);
+-	}
  
- enum mtk_dpi_out_bit_num {
- 	MTK_DPI_OUT_BIT_NUM_8BITS,
-@@ -82,6 +84,7 @@ struct mtk_dpi {
- 	struct pinctrl_state *pins_dpi;
- 	u32 output_fmt;
- 	int refcount;
-+	struct device *mmsys_dev;
- };
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+index 6428b6203ffe..e096b6fb440c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+@@ -252,10 +252,8 @@ static int mtk_disp_merge_probe(struct platform_device *pdev)
  
- static inline struct mtk_dpi *bridge_to_dpi(struct drm_bridge *b)
-@@ -135,6 +138,7 @@ struct mtk_dpi_yc_limit {
-  * @yuv422_en_bit: Enable bit of yuv422.
-  * @csc_enable_bit: Enable bit of CSC.
-  * @pixels_per_iter: Quantity of transferred pixels per iteration.
-+ * @edge_cfg_in_mmsys: If the edge configuration for DPI's output needs to be set in MMSYS.
-  */
- struct mtk_dpi_conf {
- 	unsigned int (*cal_factor)(int clock);
-@@ -153,6 +157,7 @@ struct mtk_dpi_conf {
- 	u32 yuv422_en_bit;
- 	u32 csc_enable_bit;
- 	u32 pixels_per_iter;
-+	bool edge_cfg_in_mmsys;
- };
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	priv->regs = devm_ioremap_resource(dev, res);
+-	if (IS_ERR(priv->regs)) {
+-		dev_err(dev, "failed to ioremap merge\n");
++	if (IS_ERR(priv->regs))
+ 		return PTR_ERR(priv->regs);
+-	}
  
- static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
-@@ -449,8 +454,12 @@ static void mtk_dpi_dual_edge(struct mtk_dpi *dpi)
- 		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
- 			     dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE ?
- 			     EDGE_SEL : 0, EDGE_SEL);
-+		if (dpi->conf->edge_cfg_in_mmsys)
-+			mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev, MTK_DPI_RGB888_DDR_CON);
- 	} else {
- 		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE, 0);
-+		if (dpi->conf->edge_cfg_in_mmsys)
-+			mtk_mmsys_ddp_dpi_fmt_config(dpi->mmsys_dev, MTK_DPI_RGB888_SDR_CON);
- 	}
- }
+ 	priv->clk = devm_clk_get(dev, NULL);
+ 	if (IS_ERR(priv->clk)) {
+diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+index eecfa98ff52e..d6be2b415f5a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+@@ -263,10 +263,8 @@ static int mtk_mdp_rdma_probe(struct platform_device *pdev)
  
-@@ -778,8 +787,10 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
- {
- 	struct mtk_dpi *dpi = dev_get_drvdata(dev);
- 	struct drm_device *drm_dev = data;
-+	struct mtk_drm_private *priv = drm_dev->dev_private;
- 	int ret;
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	priv->regs = devm_ioremap_resource(dev, res);
+-	if (IS_ERR(priv->regs)) {
+-		dev_err(dev, "failed to ioremap rdma\n");
++	if (IS_ERR(priv->regs))
+ 		return PTR_ERR(priv->regs);
+-	}
  
-+	dpi->mmsys_dev = priv->mmsys_dev;
- 	ret = drm_simple_encoder_init(drm_dev, &dpi->encoder,
- 				      DRM_MODE_ENCODER_TMDS);
- 	if (ret) {
+ 	priv->clk = devm_clk_get(dev, NULL);
+ 	if (IS_ERR(priv->clk)) {
 -- 
-2.18.0
+2.17.1
 
 
