@@ -4,77 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26B39C04A95
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Sep 2022 22:03:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2429CC04A95
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Sep 2022 02:47:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=plF1N4PGYUKQlWhTtkjzU7DgMPusvYvs149pl5B1LAs=; b=phORzvc/PrZbtVcKowNvDDkb/B
-	2cKL0Xto0/YjfefOBRGwgVcZ9esQuE012TE3vB7gVxztwqRtSQDUuBxqm6pzmXDup+mrU8iCDw+q2
-	8lKZuqME36z4WJKWv7Xk6RtdeYdRuFiAPHc+FtF7dunkZ8gfC6HTPKqOYto/7xTtmLD9b53kPSZkA
-	YdmESYPLs66kaj+4pVaYNr5XgXiUjqs5jmo1/1VWaZvGJ83s3V6Rh16cbV1UjHt5reO9m0JB+4taS
-	eDcXgfW5qx3uWyr6YU8SO5rV9qLNpU/SMywP43DDZX5WVszy0wqILjMfrNqcDS8fsUfQ9a21lOaRr
-	Mj5m+lWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ltnR/gdEzuzk8lDhgARMsg8IoEWLCS8xP/4W9s7zyPM=; b=iUT5c5l/trTPmPFtN8VDiqFXcQ
+	C0UAs4oZuXA3Gw72JvvJeM8P9O81EMNKztOnYsWQK0y2Ebcws8NDz1vtKVMh1fX14p1lHlsqR57R5
+	wqEN1TeKB2uQg4/l6SgX1MSRYCR5EGEUW4cTjyoad48i89+8BfhkNhPa5BMxfWhQWo6O1s+BS4vb7
+	7ktL8laQOS+AhSNUqJnHkvRT1f9ZGKc7441D6T+M8KHCssINH1buR1MaPQB9G33qyBD/uhJ1MIBBI
+	OUPq1MC3yIocbtxSoahDttNsZsgJvyXNniZF4mEOLaM++Be6XSy/x9fdmTIbtgRSSQWFOTLdpgmCo
+	Til0zZ2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obqlA-005nua-SD; Fri, 23 Sep 2022 22:03:00 +0000
-Received: from smtprelay0010.hostedemail.com ([216.40.44.10] helo=relay.hostedemail.com)
+	id 1obvBx-006B29-3d; Sat, 24 Sep 2022 02:46:57 +0000
+Received: from szxga08-in.huawei.com ([45.249.212.255])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obqkz-005nrw-6x; Fri, 23 Sep 2022 22:02:50 +0000
-Received: from omf04.hostedemail.com (a10.router.float.18 [10.200.18.1])
-	by unirelay04.hostedemail.com (Postfix) with ESMTP id 6B5201A0739;
-	Fri, 23 Sep 2022 22:02:40 +0000 (UTC)
-Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by omf04.hostedemail.com (Postfix) with ESMTPA id B26E420028;
-	Fri, 23 Sep 2022 22:02:19 +0000 (UTC)
-Message-ID: <ac809b03c78355b52c4ce936cc5a4ed3dd303441.camel@perches.com>
-Subject: Re: [PATCH v9 09/10] leds: flash: mt6370: Add MediaTek MT6370
- flashlight support
-From: Joe Perches <joe@perches.com>
-To: Han Jingoo <jingoohan1@gmail.com>, Andy Shevchenko
-	 <andy.shevchenko@gmail.com>, torvalds@linux-foundation.org, Andrew Morton
-	 <akpm@linux-foundation.org>, Julia.Lawall@inria.fr, 
-	krzysztof.kozlowski@linaro.org
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>, lee@kernel.org, Daniel Thompson
- <daniel.thompson@linaro.org>, Pavel Machek <pavel@ucw.cz>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>,  Matthias Brugger
- <matthias.bgg@gmail.com>, Sebastian Reichel <sre@kernel.org>, Jonathan
- Cameron <jic23@kernel.org>,  Lars-Peter Clausen <lars@metafoo.de>, Helge
- Deller <deller@gmx.de>, Mark Brown <broonie@kernel.org>, 
- mazziesaccount@gmail.com, andriy.shevchenko@linux.intel.com, ChiaEn Wu
- <chiaen_wu@richtek.com>, Alice Chen <alice_chen@richtek.com>, ChiYuan Huang
- <cy_huang@richtek.com>, dri-devel <dri-devel@lists.freedesktop.org>, Linux
- LED Subsystem <linux-leds@vger.kernel.org>, devicetree
- <devicetree@vger.kernel.org>, linux-arm Mailing List
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>,
- linux-iio <linux-iio@vger.kernel.org>, "open list:FRAMEBUFFER LAYER"
- <linux-fbdev@vger.kernel.org>, szuni chen <szunichen@gmail.com>
-Date: Fri, 23 Sep 2022 15:02:28 -0700
-In-Reply-To: <CAPOBaE7mcNqgQvsPpqewmq=Na9MC9RH5AW8CHn5ZJFAUsq6_eg@mail.gmail.com>
-References: <20220830034042.9354-2-peterwu.pub@gmail.com>
-	 <20220830034042.9354-10-peterwu.pub@gmail.com>
-	 <CAPOBaE7rz2F-sij-LbYau6TRxFoOfmoUc=R__Z7iUrFWmZPgrg@mail.gmail.com>
-	 <CABtFH5+PuK4vptVNmpn4h2FCxNFp3wWvhUrOxgqArx4YxCY99w@mail.gmail.com>
-	 <CAHp75VeRgRdv54yO51nBwKx8O2pNLvOD2mrqn31zvx4ffSpCHw@mail.gmail.com>
-	 <CAPOBaE7mcNqgQvsPpqewmq=Na9MC9RH5AW8CHn5ZJFAUsq6_eg@mail.gmail.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.4 (3.44.4-1.fc36) 
+	id 1obvBl-006AxG-NJ; Sat, 24 Sep 2022 02:46:47 +0000
+Received: from dggpeml500024.china.huawei.com (unknown [172.30.72.54])
+	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4MZCwY0Tj4z1P6pG;
+	Sat, 24 Sep 2022 10:42:21 +0800 (CST)
+Received: from huawei.com (10.175.112.208) by dggpeml500024.china.huawei.com
+ (7.185.36.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Sat, 24 Sep
+ 2022 10:46:30 +0800
+From: Yuan Can <yuancan@huawei.com>
+To: <matthias.bgg@gmail.com>, <broonie@kernel.org>,
+	<tinghan.shen@mediatek.com>, <tzungbi@google.com>, <yc.hung@mediatek.com>,
+	<angelogioacchino.delregno@collabora.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: <yuancan@huawei.com>
+Subject: [PATCH] firmware: mediatek: Use dev_err_probe() to simplify code
+Date: Sat, 24 Sep 2022 02:43:59 +0000
+Message-ID: <20220924024359.26949-1-yuancan@huawei.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-X-Stat-Signature: icdqc5u914mweh6876zxemizkb1yinja
-X-Rspamd-Server: rspamout04
-X-Rspamd-Queue-Id: B26E420028
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Session-ID: U2FsdGVkX180tjz2i84oRN7SAvJ/UKULO1Sz9+vBSi8=
-X-HE-Tag: 1663970539-507553
+Content-Type: text/plain
+X-Originating-IP: [10.175.112.208]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ dggpeml500024.china.huawei.com (7.185.36.10)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_150249_327563_5072E272 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20220923_194645_960488_AF773743 
+X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,41 +65,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-09-23 at 14:34 -0700, Han Jingoo wrote:
-> On Wed, Sep 21, 2022 Andy Shevchenko <andy.shevchenko@gmail.com> wrote:
-> >=20
-> > On Wed, Sep 21, 2022 at 4:48 AM ChiaEn Wu <peterwu.pub@gmail.com> wrote=
-:
-> > > On Sun, Sep 18, 2022 at 3:22 AM Han Jingoo <jingoohan1@gmail.com> wro=
-te:
-> > > > On Mon, Aug 29, 2022 ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> >=20
-> > > > > +#define MT6370_ITORCH_MIN_uA           25000
-> > > > > +#define MT6370_ITORCH_STEP_uA          12500
-> > > > > +#define MT6370_ITORCH_MAX_uA           400000
-> > > > > +#define MT6370_ITORCH_DOUBLE_MAX_uA    800000
-> > > > > +#define MT6370_ISTRB_MIN_uA            50000
-> > > > > +#define MT6370_ISTRB_STEP_uA           12500
-> > > > > +#define MT6370_ISTRB_MAX_uA            1500000
-> > > > > +#define MT6370_ISTRB_DOUBLE_MAX_uA     3000000
-> > > >=20
-> > > > Use upper letters as below:
-> >=20
-> > For microseconds (and other -seconds) the common practice (I assume
-> > historically) is to use upper letters, indeed. But for current it's
-> > more natural to use small letters for unit multiplier as it's easier
-> > to read and understand.
+In the probe path, dev_err() can be replaced with dev_err_probe()
+which will check if error code is -EPROBE_DEFER and prints the
+error name. It also sets the defer probe reason which can be
+checked later through debugfs.
 
-I think it's fine. see:
+Signed-off-by: Yuan Can <yuancan@huawei.com>
+---
+ drivers/firmware/mtk-adsp-ipc.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-commit 22735ce857a2d9f4e6eec37c36be3fcf9d21d154
-Author: Joe Perches <joe@perches.com>
-Date:   Wed Jul 3 15:05:33 2013 -0700
-
-    checkpatch: ignore SI unit CamelCase variants like "_uV"
-   =20
-    Many existing variable names use SI like variants that should be otherw=
-ise
-    obvious and acceptable.
+diff --git a/drivers/firmware/mtk-adsp-ipc.c b/drivers/firmware/mtk-adsp-ipc.c
+index 3c071f814455..c57880949521 100644
+--- a/drivers/firmware/mtk-adsp-ipc.c
++++ b/drivers/firmware/mtk-adsp-ipc.c
+@@ -96,10 +96,9 @@ static int mtk_adsp_ipc_probe(struct platform_device *pdev)
+ 		adsp_chan->idx = i;
+ 		adsp_chan->ch = mbox_request_channel_byname(cl, adsp_mbox_ch_names[i]);
+ 		if (IS_ERR(adsp_chan->ch)) {
+-			ret = PTR_ERR(adsp_chan->ch);
+-			if (ret != -EPROBE_DEFER)
+-				dev_err(dev, "Failed to request mbox chan %s ret %d\n",
+-					adsp_mbox_ch_names[i], ret);
++			ret = dev_err_probe(dev, PTR_ERR(adsp_chan->ch),
++					    "Failed to request mbox chan %s\n",
++					    adsp_mbox_ch_names[i]);
+ 
+ 			for (j = 0; j < i; j++) {
+ 				adsp_chan = &adsp_ipc->chans[j];
+-- 
+2.17.1
 
 
