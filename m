@@ -4,72 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8722C07E9D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 15:46:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82090C07E9D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 17:25:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o72TIxa/ZoEXKAKPN/1He1bePLVT2KBIFd9SL61XRjQ=; b=1Elr2stL6F2B5z0MuvfCvWmZ8p
-	WzNBoenGP6tAay3S7hFBzk2BdJMVZZYpWIIIZ8S7gIrzcqaCdH2wx8A/ZIr1Hhea4eypILlWn3m4k
-	o62X3G1t8m+8HQBkM66+uG7efAnwqVfUF/9wXQ1Rsnv+hCihenvRJ3Hwg3r/kp/67byKegQTyxcty
-	NvGCdd8pckoaPZNsd40NWEwrLAVc7kAMZZ+s4AF9Pug8o4RdnOfCR9cFtmkpptD6gScuHBsamR41l
-	wHUuGvkL9DFp2bNo8ve2zp+9il8j5wIrjuUCVfPniGWqFfCs1rhMPO2f0RoO+ypZNKkFlu2y7Zc+O
-	/7XpMbRg==;
+	bh=p0cv6OWCG+k4Yx1z1NserLX920Ctk5iH9JL+ILpJ/Rk=; b=Hy7mN92X8xu+UhBTKDGr/eazb4
+	GI0JmElji7di1JMjvqvM8jSoKZtanyhB3T8lEewfS15ssHdLTMd0B5EqapV06dVc3af2cMBx1yCI2
+	L878dCieeICo4BfsowSjMGhAV9BR2qaBroQmvW38kEqc9KG+xk4w2y8i31kR6/fpP9imDLieBdWar
+	c2GWo7JTLryyUL4C9spC7xBcy66U4ugfNZJE7nQ3p5akhwTjZDAliqI+u3dOtOSKQXO59MWSTEB34
+	nxjtPY1GfYWClyHO7mPMxiL5pfRp4R+AeEp+3gSwp1vBcbQY04HLZLPfJ+pZqHBRB0hwD9eszTc0p
+	ZQ6NaE6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocqJ1-005nEg-Mt; Mon, 26 Sep 2022 15:46:03 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1ocrr6-0061mz-MN; Mon, 26 Sep 2022 17:25:20 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocqIq-005nBI-Mp; Mon, 26 Sep 2022 15:45:54 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 364E160EC3;
-	Mon, 26 Sep 2022 15:45:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4FD35C433D6;
-	Mon, 26 Sep 2022 15:45:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664207152;
-	bh=6hyTFJAEj3/dM5VsZlBu/+ra5mc/qGQXYL8EHYeBUig=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QITwqRN2zwUk3y5wcXVWLSaoiuE1y/mvDSVYjLnr/Qk+hGIToRX9aonS2/Z2AG1FW
-	 FZmaKqi1ihyT1G3eELpWrzB9rwWhCO0C/BXVBmRkqiAdSC/MCAwbBRH6PJ78HYp1Le
-	 3yAAR+3F0HeuuiwDdGy6mWvfg26u/JM0aIyb6s/CcmncUHRqQ1GghUmQav691soYp4
-	 J4YMJuSuxuFHGerfaxxBKnyJ1SFO22wWof5ZjOSroYUfIaUZxMXdiYgmfIiYE6Og59
-	 7LLvB7LmYJmmmjakBZ/afW6XKdPl5vG/UpjLROiUqagn3GglEU+QRD1I1TxIiWpEL6
-	 oOEsShl/1o7oQ==
-Date: Mon, 26 Sep 2022 21:15:32 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Asutosh Das <quic_asutoshd@quicinc.com>
-Cc: quic_nguyenb@quicinc.com, quic_xiaosenh@quicinc.com,
-	quic_cang@quicinc.com, quic_nitirawa@quicinc.com,
-	quic_rampraka@quicinc.com, quic_richardp@quicinc.com,
-	stanley.chu@mediatek.com, adrian.hunter@intel.com,
-	bvanassche@acm.org, avri.altman@wdc.com, beanhuo@micron.com,
-	martin.petersen@oracle.com, linux-scsi@vger.kernel.org,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	"James E.J. Bottomley" <jejb@linux.ibm.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Kiwoong Kim <kwmad.kim@samsung.com>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v1 07/16] ufs: core: mcq: Allocate memory for mcq mode
-Message-ID: <20220926154532.GH101994@thinkpad>
-References: <cover.1663894792.git.quic_asutoshd@quicinc.com>
- <66d2f7b0794b4f95ad8db223408b710d7a5e2b8c.1663894792.git.quic_asutoshd@quicinc.com>
+	id 1ocrqr-0061jg-LL; Mon, 26 Sep 2022 17:25:08 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id a3so11937544lfk.9;
+        Mon, 26 Sep 2022 10:25:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date;
+        bh=p0cv6OWCG+k4Yx1z1NserLX920Ctk5iH9JL+ILpJ/Rk=;
+        b=OSsjw1Wy1sqe/S/VCPRhvBCufm1/3Ip8TX5h67WfooKHp+7wTk0g8PAxq8321pFNJp
+         rH96Ujirylu09bK37nfZKS/txm5VlKrZwZv51kxta7Hb9sctjMsWcK+ZRs5CV9f8QP5y
+         FHzC9OdHnGfr0VYr8ev3JbaUiyn2uZiRaDh5HoVLepFgzIU/AsP8KK6ED8W4oSxGg+j2
+         /RVHo2o3/9TYDdG01V9fAQbEGrQFkbCZPQcBkkDpO9u7m2X9ETxPL/Tt4axjYy9aBReS
+         VrTuatDHVAo2iV16QTx6YrTvKRrfgelbYaIRQoagRulu0t0w4UT1h1Z0196PiKfXPPQj
+         MZbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=p0cv6OWCG+k4Yx1z1NserLX920Ctk5iH9JL+ILpJ/Rk=;
+        b=MNOsxYYITutuPi04Alpeo3OhnQVCmnolX0QxRZiAYgXCk4Zfaxo8XBbfQVA75VDA78
+         ZCrCJUS7muthefeBBxm3KP5Jv6Gu3KwILstlz2eq6ZCUAogzPvvChYhhggvOrEuHZ8OY
+         6rgFfYnWvT7wvXsrQ05ZyI4ZBz1dvj3KxHs4ANI7aS7xKmPhr4PGsI3o0fAc3HYoNjJb
+         VAu7t4nivzU5iojRQB/4xy91vqFjSb3Q7YfImWw49TKBLTBvExPNNKcxtI+fFUJPdgtl
+         pVVK1+xTJXatVUDPb2IfYJGU3vtBaEtqmmNdKCfNZE7azYUgmnNA8EoQWP3dZtP9Ke2I
+         H5aQ==
+X-Gm-Message-State: ACrzQf0CAwn5D/Mpigl+K56WQwT9KZU/XE0tUAmF2KU6Oi6WsGqW6T38
+	FYXVJ+2P/wwR9YHnjMa51Xk=
+X-Google-Smtp-Source: AMsMyM5xJh/lb55NobJAejaokmm+TsWNAKAXwdI5AGh7Onx5487PaVW+h6MhGBxJj73R6zXdNP0xNw==
+X-Received: by 2002:a05:6512:3128:b0:499:3c1d:f9e with SMTP id p8-20020a056512312800b004993c1d0f9emr9281543lfd.634.1664213100684;
+        Mon, 26 Sep 2022 10:25:00 -0700 (PDT)
+Received: from mobilestation (ip1.ibrae.ac.ru. [91.238.191.1])
+        by smtp.gmail.com with ESMTPSA id y1-20020a05651c106100b0026c16e9e45bsm2442137ljm.17.2022.09.26.10.24.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Sep 2022 10:24:59 -0700 (PDT)
+Date: Mon, 26 Sep 2022 20:24:54 +0300
+From: Serge Semin <fancer.lancer@gmail.com>
+To: Sergiu.Moga@microchip.com, Mark Brown <broonie@kernel.org>,
+	Tudor Ambarus <tudor.ambarus@microchip.com>,
+	Pratyush Yadav <pratyush@kernel.org>,
+	Michael Walle <michael@walle.cc>
+Cc: Tudor.Ambarus@microchip.com, pratyush@kernel.org, michael@walle.cc,
+	miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
+	broonie@kernel.org, Nicolas.Ferre@microchip.com,
+	alexandre.belloni@bootlin.com, Claudiu.Beznea@microchip.com,
+	chin-ting_kuo@aspeedtech.com, clg@kaod.org, joel@jms.id.au,
+	andrew@aj.id.au, kdasu.kdev@gmail.com, han.xu@nxp.com,
+	john.garry@huawei.com, matthias.bgg@gmail.com,
+	avifishman70@gmail.com, tmaimon77@gmail.com, tali.perry1@gmail.com,
+	venture@google.com, yuenn@google.com, benjaminfair@google.com,
+	haibo.chen@nxp.com, yogeshgaur.83@gmail.com, heiko@sntech.de,
+	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+	michal.simek@xilinx.com, bcm-kernel-feedback-list@broadcom.com,
+	linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
+Message-ID: <20220926172454.kbpzck7med5bopre@mobilestation>
+References: <20220911174551.653599-1-sergiu.moga@microchip.com>
+ <20220925220304.buk3yuqoh6vszfci@mobilestation>
+ <18e6e8a8-6412-7e31-21e0-6becd4400ac1@microchip.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <66d2f7b0794b4f95ad8db223408b710d7a5e2b8c.1663894792.git.quic_asutoshd@quicinc.com>
+In-Reply-To: <18e6e8a8-6412-7e31-21e0-6becd4400ac1@microchip.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_084552_853614_6635B070 
-X-CRM114-Status: GOOD (  31.47  )
+X-CRM114-CacheID: sfid-20220926_102505_755718_F0E57AFC 
+X-CRM114-Status: GOOD (  65.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,282 +107,747 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 22, 2022 at 06:05:14PM -0700, Asutosh Das wrote:
-> To read the bqueuedepth, the device descriptor is fetched
-> in Single Doorbell Mode. This allocated memory may not be
-> enough for MCQ mode because the number of tags supported
-> in MCQ mode may be larger than in SDB mode.
-> Hence, release the memory allocated in SDB mode and allocate
-> memory for MCQ mode operation.
-> Defines the ufs hardware queue and Completion Queue Entry.
+@Mark, @Tudor, @Pratyush, @Michael could you please join the
+discussion regarding the dummy.buswidth and dummy.dtr fields in the
+spi_mem_op structure?
+
+On Mon, Sep 26, 2022 at 09:05:49AM +0000, Sergiu.Moga@microchip.com wrote:
+> On 26.09.2022 01:03, Serge Semin wrote:
+> > Hello Sergiu
+> > 
+
+Sergiu, you didn't address all my comments. Please be more attentive.
+
 > 
-> Co-developed-by: Can Guo <quic_cang@quicinc.com>
-> Signed-off-by: Can Guo <quic_cang@quicinc.com>
-> Signed-off-by: Asutosh Das <quic_asutoshd@quicinc.com>
-> ---
->  drivers/ufs/core/ufs-mcq.c     | 59 ++++++++++++++++++++++++++++++++++++++++--
->  drivers/ufs/core/ufshcd-priv.h |  1 +
->  drivers/ufs/core/ufshcd.c      | 39 +++++++++++++++++++++++++---
->  include/ufs/ufshcd.h           | 19 ++++++++++++++
->  include/ufs/ufshci.h           | 21 +++++++++++++++
->  5 files changed, 134 insertions(+), 5 deletions(-)
 > 
-> diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-> index e52066e..e2854a3 100644
-> --- a/drivers/ufs/core/ufs-mcq.c
-> +++ b/drivers/ufs/core/ufs-mcq.c
-> @@ -251,14 +251,69 @@ static int ufshcd_mcq_config_nr_queues(struct ufs_hba *hba)
->  	return 0;
->  }
->  
-> +int ufshcd_mcq_memory_alloc(struct ufs_hba *hba)
-> +{
-> +	struct ufs_hw_queue *hwq;
-> +	size_t utrdl_size, cqe_size;
-> +	int i;
-> +
-> +	for (i = 0; i < hba->nr_hw_queues; i++) {
-> +		hwq = &hba->uhq[i];
-> +
-> +		utrdl_size = sizeof(struct utp_transfer_req_desc) *
-> +			     hwq->max_entries;
-> +		hwq->sqe_base_addr = dmam_alloc_coherent(hba->dev, utrdl_size,
-> +							 &hwq->sqe_dma_addr,
-> +							 GFP_KERNEL);
-> +		if (!hwq->sqe_dma_addr) {
-> +			dev_err(hba->dev, "SQE allocation failed\n");
-> +			return -ENOMEM;
-> +		}
-> +
-> +		cqe_size = sizeof(struct cq_entry) * hwq->max_entries;
-> +		hwq->cqe_base_addr = dmam_alloc_coherent(hba->dev, cqe_size,
-> +							 &hwq->cqe_dma_addr,
-> +							 GFP_KERNEL);
-> +		if (!hwq->cqe_dma_addr) {
-> +			dev_err(hba->dev, "CQE allocation failed\n");
-> +			return -ENOMEM;
-> +		}
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->  int ufshcd_mcq_init(struct ufs_hba *hba)
->  {
-> -	int ret;
-> +	int ret, i;
-> +	struct ufs_hw_queue *hwq;
->  
->  	ret = ufshcd_mcq_config_nr_queues(hba);
->  	if (ret)
->  		return ret;
->  	ret = ufshcd_mcq_config_resource(hba);
-> -	return ret;
-> +	if (ret)
-> +		return ret;
-> +
-> +	hba->uhq = devm_kmalloc(hba->dev,
-> +				hba->nr_hw_queues * sizeof(struct ufs_hw_queue),
-> +				GFP_KERNEL);
-> +	if (!hba->uhq) {
-> +		dev_err(hba->dev, "Alloc ufs hw queue failed\n");
-
-"Failed to allocate memory for UFS hw queues"
-
-> +		ret = -ENOMEM;
-> +		return ret;
-
-return -ENOMEM
-
-> +	}
-> +
-> +	for (i = 0; i < hba->nr_hw_queues; i++) {
-> +		hwq = &hba->uhq[i];
-> +		hwq->max_entries = hba->nutrs;
-> +	}
-> +
-> +	/* The very first HW queue is to serve device command */
-> +	hba->dev_cmd_queue = &hba->uhq[0];
-> +	/* Give dev_cmd_queue the minimal number of entries */
-> +	hba->dev_cmd_queue->max_entries = 2;
-
-Perhaps add a define for 2? Not a big deal but it adds readability.
-
-> +
-> +	return 0;
->  }
->  
-> diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
-> index 6d16beb..f624682 100644
-> --- a/drivers/ufs/core/ufshcd-priv.h
-> +++ b/drivers/ufs/core/ufshcd-priv.h
-> @@ -52,6 +52,7 @@ int ufshcd_query_flag(struct ufs_hba *hba, enum query_opcode opcode,
->  void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit);
->  int ufshcd_mcq_init(struct ufs_hba *hba);
->  u32 ufshcd_mcq_decide_queue_depth(struct ufs_hba *hba);
-> +int ufshcd_mcq_memory_alloc(struct ufs_hba *hba);
->  
->  #define SD_ASCII_STD true
->  #define SD_RAW false
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index a71b57e..5fc1e5e 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -3676,6 +3676,8 @@ static int ufshcd_memory_alloc(struct ufs_hba *hba)
->  		goto out;
->  	}
->  
-> +	if (hba->utmrdl_base_addr)
-> +		goto skip_utmrdl;
-
-Is this change belongs to this patch?
-
->  	/*
->  	 * Allocate memory for UTP Task Management descriptors
->  	 * UFSHCI requires 1024 byte alignment of UTMRD
-> @@ -3692,6 +3694,7 @@ static int ufshcd_memory_alloc(struct ufs_hba *hba)
->  		goto out;
->  	}
->  
-> +skip_utmrdl:
->  	/* Allocate memory for local reference block */
->  	hba->lrb = devm_kcalloc(hba->dev,
->  				hba->nutrs, sizeof(struct ufshcd_lrb),
-> @@ -8173,6 +8176,22 @@ static int ufshcd_add_lus(struct ufs_hba *hba)
->  	return ret;
->  }
->  
-> +/* SDB - Single Doorbell */
-> +static void ufshcd_release_sdb_queue(struct ufs_hba *hba, int nutrs)
-> +{
-> +	size_t ucdl_size, utrdl_size;
-> +
-> +	ucdl_size = sizeof(struct utp_transfer_cmd_desc) * nutrs;
-> +	dmam_free_coherent(hba->dev, ucdl_size, hba->ucdl_base_addr,
-> +			   hba->ucdl_dma_addr);
-> +
-> +	utrdl_size = sizeof(struct utp_transfer_req_desc) * nutrs;
-> +	dmam_free_coherent(hba->dev, utrdl_size, hba->utrdl_base_addr,
-> +			   hba->utrdl_dma_addr);
-> +
-> +	devm_kfree(hba->dev, hba->lrb);
-> +}
-> +
->  static int ufshcd_config_mcq(struct ufs_hba *hba)
->  {
->  	int ret;
-> @@ -8180,11 +8199,25 @@ static int ufshcd_config_mcq(struct ufs_hba *hba)
->  
->  	hba->nutrs = ufshcd_mcq_decide_queue_depth(hba);
->  	ret = ufshcd_mcq_init(hba);
-> -	if (ret) {
-> -		hba->nutrs = old_nutrs;
-> -		return ret;
-> +	if (ret)
-> +		goto err;
-> +
-
-Please add a comment here on what the check is for and what the code below
-does.
-
-> +	if (hba->nutrs != old_nutrs) {
-> +		ufshcd_release_sdb_queue(hba, old_nutrs);
-> +		ret = ufshcd_memory_alloc(hba);
-> +		if (ret)
-> +			goto err;
-> +		ufshcd_host_memory_configure(hba);
->  	}
-> +
-> +	ret = ufshcd_mcq_memory_alloc(hba);
-> +	if (ret)
-> +		goto err;
-> +
->  	return 0;
-> +err:
-> +	hba->nutrs = old_nutrs;
-> +	return ret;
->  }
->  
->  /**
-> diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-> index 630a0eb..e54d624 100644
-> --- a/include/ufs/ufshcd.h
-> +++ b/include/ufs/ufshcd.h
-> @@ -857,6 +857,8 @@ enum ufshcd_res {
->   * @nr_queues: number of Queues of different queue types
->   * @res: array of resource info of MCQ registers
->   * @mcq_base: Multi circular queue registers base address
-> + * @uhq: array of supported hardware queues
-> + * @dev_cmd_queue: Queue for issuing device management commands
->   */
->  struct ufs_hba {
->  	void __iomem *mmio_base;
-> @@ -1011,6 +1013,23 @@ struct ufs_hba {
->  	unsigned int nr_queues[HCTX_MAX_TYPES];
->  	struct ufshcd_res_info_t res[RES_MAX];
->  	void __iomem *mcq_base;
-> +	struct ufs_hw_queue *uhq;
-
-s/uhq/hw_queues
-
-Thanks,
-Mani
-
-> +	struct ufs_hw_queue *dev_cmd_queue;
-> +};
-> +
-> +/**
-> + * @sqe_base_addr: submission queue entry base address
-> + * @sqe_dma_addr: submission queue dma address
-> + * @cqe_base_addr: completion queue base address
-> + * @cqe_dma_addr: completion queue dma address
-> + * @max_entries: max number of slots in this hardware queue
-> + */
-> +struct ufs_hw_queue {
-> +	void *sqe_base_addr;
-> +	dma_addr_t sqe_dma_addr;
-> +	struct cq_entry *cqe_base_addr;
-> +	dma_addr_t cqe_dma_addr;
-> +	u32 max_entries;
->  };
->  
->  static inline bool is_mcq_supported(struct ufs_hba *hba)
-> diff --git a/include/ufs/ufshci.h b/include/ufs/ufshci.h
-> index ca7db49d..7fa8faf 100644
-> --- a/include/ufs/ufshci.h
-> +++ b/include/ufs/ufshci.h
-> @@ -490,6 +490,27 @@ struct utp_transfer_req_desc {
->  	__le16  prd_table_offset;
->  };
->  
-> +struct cq_entry {
-> +	/* DW 0-1 */
-> +	__le64 command_desc_base_addr;
-> +
-> +	/* DW 2 */
-> +	__le16  response_upiu_length;
-> +	__le16  response_upiu_offset;
-> +
-> +	/* DW 3 */
-> +	__le16  prd_table_length;
-> +	__le16  prd_table_offset;
-> +
-> +	/* DW 4 */
-> +	__le32 status;
-> +
-> +	/* DW 5-7 */
-> +	u32 reserved[3];
-> +};
-> +
-> +static_assert(sizeof(struct cq_entry) == 32);
-> +
->  /*
->   * UTMRD structure.
->   */
-> -- 
-> 2.7.4
+> Hello Serge,
+> 
+> 
+> > On Sun, Sep 11, 2022 at 08:45:53PM +0300, Sergiu Moga wrote:
+> >> In order to properly represent the hardware functionality
+> >> in the core, avoid reconverting the number of dummy cycles
+> >> to the number of bytes and only work with the former.
+> >> Instead, let the drivers that do need this conversion do
+> >> it themselves.
+> >>
+> >> Signed-off-by: Sergiu Moga <sergiu.moga@microchip.com>
+> >> ---
+> >>   drivers/mtd/spi-nor/core.c        | 22 ++++----------
+> > 
+> > [...]
+> > 
+> >>   drivers/spi/spi-dw-core.c         | 10 +++++--
+> > 
+> > [...]
+> > 
+> >>   drivers/spi/spi-mem.c             | 27 +++++++++++------
+> > 
+> > [...]
+> > 
+> >>   drivers/spi/spi-mtk-nor.c         | 48 +++++++++++++++++--------------
+> > 
+> > [...]
+> > 
+> >>   drivers/spi/spi-zynq-qspi.c       | 15 ++++++----
+> >>   drivers/spi/spi-zynqmp-gqspi.c    |  8 ++++--
+> >>   include/linux/spi/spi-mem.h       | 10 +++----
+> >>   25 files changed, 234 insertions(+), 147 deletions(-)
+> >>
+> >> diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
+> >> index f2c64006f8d7..cc8ca824f912 100644
+> >> --- a/drivers/mtd/spi-nor/core.c
+> >> +++ b/drivers/mtd/spi-nor/core.c
+> >> @@ -88,7 +88,7 @@ void spi_nor_spimem_setup_op(const struct spi_nor *nor,
+> >>        if (op->addr.nbytes)
+> >>                op->addr.buswidth = spi_nor_get_protocol_addr_nbits(proto);
+> >>
+> > 
+> > 
+> > 
+> >> -     if (op->dummy.nbytes)
+> >> +     if (op->dummy.ncycles)
+> >>                op->dummy.buswidth = spi_nor_get_protocol_addr_nbits(proto);
+> >>
+> >>        if (op->data.nbytes)
+> >> @@ -106,9 +106,6 @@ void spi_nor_spimem_setup_op(const struct spi_nor *nor,
+> >>                op->dummy.dtr = true;
+> >>                op->data.dtr = true;
+> >>
+> >> -             /* 2 bytes per clock cycle in DTR mode. */
+> >> -             op->dummy.nbytes *= 2;
+> >> -
+> >>                ext = spi_nor_get_cmd_ext(nor, op);
+> >>                op->cmd.opcode = (op->cmd.opcode << 8) | ext;
+> >>                op->cmd.nbytes = 2;
+> >> @@ -207,10 +204,7 @@ static ssize_t spi_nor_spimem_read_data(struct spi_nor *nor, loff_t from,
+> >>
+> >>        spi_nor_spimem_setup_op(nor, &op, nor->read_proto);
+> >>
+> >> -     /* convert the dummy cycles to the number of bytes */
+> >> -     op.dummy.nbytes = (nor->read_dummy * op.dummy.buswidth) / 8;
+> >> -     if (spi_nor_protocol_is_dtr(nor->read_proto))
+> >> -             op.dummy.nbytes *= 2;
+> >> +     op.dummy.ncycles = nor->read_dummy;
+> > 
+> > So according to this modification and what is done in the rest of the
+> > patch, the dummy part of the SPI-mem operations now contains the number
+> > of cycles only. Am I right to think that it means a number of dummy
+> > clock oscillations? (Judging from what I've seen in the HW-manuals of
+> > the SPI NOR memory devices most likely I am...)
+> 
+> 
+> 
+> Yes, you are correct.
+> 
+> 
+> > If so the "ncycles" field
+> > is now free from the "data" semantic. Then what is the meaning of the
+> > "buswidth and "dtr" fields in the spi_mem_op.dummy field?
+> > 
+> 
 > 
 
--- 
-மணிவண்ணன் சதாசிவம்
+> It is still meaningful as it is used for the conversion by some drivers 
+> to nbytes and I do not see how it goes out of the specification in any 
+> way. So, at least for now, I do not see any reason to remove these fields.
+
+I do see the way these fields are used in the SPI-mem drivers. I was
+wondering what do these bits mean in the framework of the SPI-mem
+core? AFAICS from the specification the dummy cycles are irrelevant to
+the data bus state. It says "the master tri-states the bus during
+'dummy' cycles." If so I don't see a reason to have the DTR and
+buswidth fields in the spi_mem_op structure anymore. The number of
+cycles could be calculated right on the initialization stage based on
+the SPI NOR/NAND requirements.
+
+@Mark, @Tudor, @Pratyush, what do you think?
+
+> 
+> 
+> >>
+> >>        usebouncebuf = spi_nor_spimem_bounce(nor, &op);
+> >>
+> >> @@ -455,7 +449,7 @@ int spi_nor_read_sr(struct spi_nor *nor, u8 *sr)
+> >>
+> >>                if (nor->reg_proto == SNOR_PROTO_8_8_8_DTR) {
+> >>                        op.addr.nbytes = nor->params->rdsr_addr_nbytes;
+> >> -                     op.dummy.nbytes = nor->params->rdsr_dummy;
+> >> +                     op.dummy.ncycles = nor->params->rdsr_dummy;
+> >>                        /*
+> >>                         * We don't want to read only one byte in DTR mode. So,
+> >>                         * read 2 and then discard the second byte.
+> >> @@ -1913,10 +1907,7 @@ static int spi_nor_spimem_check_readop(struct spi_nor *nor,
+> >>
+> >>        spi_nor_spimem_setup_op(nor, &op, read->proto);
+> >>
+> >> -     /* convert the dummy cycles to the number of bytes */
+> >> -     op.dummy.nbytes = (nor->read_dummy * op.dummy.buswidth) / 8;
+> >> -     if (spi_nor_protocol_is_dtr(nor->read_proto))
+> >> -             op.dummy.nbytes *= 2;
+> >> +     op.dummy.ncycles = nor->read_dummy;
+> >>
+> >>        return spi_nor_spimem_check_op(nor, &op);
+> >>   }
+> >> @@ -3034,10 +3025,7 @@ static int spi_nor_create_read_dirmap(struct spi_nor *nor)
+> >>
+> >>        spi_nor_spimem_setup_op(nor, op, nor->read_proto);
+> >>
+> >> -     /* convert the dummy cycles to the number of bytes */
+> >> -     op->dummy.nbytes = (nor->read_dummy * op->dummy.buswidth) / 8;
+> >> -     if (spi_nor_protocol_is_dtr(nor->read_proto))
+> >> -             op->dummy.nbytes *= 2;
+> >> +     op->dummy.ncycles = nor->read_dummy;
+> >>
+> >>        /*
+> >>         * Since spi_nor_spimem_setup_op() only sets buswidth when the number
+> > 
+> > [...]
+> > 
+> >> diff --git a/drivers/spi/spi-dw-core.c b/drivers/spi/spi-dw-core.c
+> >> index f87d97ccd2d6..0ba5c7d0e66e 100644
+> >> --- a/drivers/spi/spi-dw-core.c
+> >> +++ b/drivers/spi/spi-dw-core.c
+> >> @@ -498,13 +498,17 @@ static bool dw_spi_supports_mem_op(struct spi_mem *mem,
+> >>   static int dw_spi_init_mem_buf(struct dw_spi *dws, const struct spi_mem_op *op)
+> >>   {
+> >>        unsigned int i, j, len;
+> >> -     u8 *out;
+> >> +     u8 *out, dummy_nbytes;
+> >>
+> >>        /*
+> >>         * Calculate the total length of the EEPROM command transfer and
+> >>         * either use the pre-allocated buffer or create a temporary one.
+> >>         */
+> >> -     len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
+> > 
+> >> +     dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
+> > 
+> > 1. What about using the BITS_PER_BYTE macro (linux/bits.h) here? Since
+> > you are adding a similar modification to so many drivers what about using
+> > that macro there too?
+> > 
+> 
+> 
+
+> AFAICT BIT_PER_BYTE is meant to transparently indicate how many bits per 
+> byte an arch has. Although, there is no place in the kernel from what I 
+> can see that has BITS_PER_BYTE with a value other than 8, you cannot 
+> deny that there exist architectures whose number of bits per byte may be 
+> different from 8.
+
+Judging by the way the macro is declared it isn't platform specific.
+So no, the kernel always expects the byte having eight bits.
+
+> 
+> Meanwhile, the JESD216E specification tells us in the Terms and 
+> definitions chapter that
+> "DWORD: Four consecutive 8-bit bytes used as the basic 32-bit building 
+> block for headers and parameter tables." So it explicitly says that a 
+> byte has 8 bits regardless of the arch.
+
+Right. That's what the BITS_PER_BYTE macro is for.
+
+> 
+> Therefore, I do not agree with replacing 8 with the BITS_PER_BYTE macro 
+> as, IMO, it does not represent the same thing as the number of bits per 
+> byte that the terms and definitions of the JESD216E specification refer to.
+
+It represents exactly the same in include/linux/bits.h .
+
+Ideally it would be good to use it in all your updates since you touch
+the corresponding parts anyway. But at the very least I would insist on
+using the macro in the drivers which already have it utilized like
+spi-dw-*, spi-mtk-snfi, spi-mtk-nor. 
+
+> 
+> 
+> > 2. buswidth is supposed to be always 1 in this driver (see the
+> > dw_spi_supports_mem_op() method). So it can be dropped from the
+> > statement above.
+> > 
+> > 3. Since the ncycles now contains a number of clock cycles there is no
+> > point in taking the SPI bus-width into account at all. What is
+> > meaningful is how many oscillations are supposed to be placed on the
+> > CLK line before the data is available. So the op->dummy.ncycles /
+> > BITS_PER_BYTE statement would be more appropriate here in any case.
+> > 
+> 
+> 
+
+> I can agee with this in the case of this driver, sure.
+
+Ok. thanks.
+
+> 
+> 
+> >> +     if (op->dummy.dtr)
+> >> +             dummy_nbytes *= 2;
+> > 
+> > DTR is unsupported by the controller. See, no spi_controller_mem_caps
+> > initialized. So this part is redundant. The same is most likely
+> > applicable for some of the DTR-related updates in this patch too
+> > since the spi_controller_mem_caps structure is initialized in a few
+> > drivers only.
+> > 
+> 
+> 
+
+> Agreed. Initially, wherever I was not sure, I just placed this if 
+> condition to avoid breaking anything in case the driver does support 
+> DTR. The same goes for your other related observations to other driver 
+> modifications, with which I agree :).
+
+AFAICS the only drivers which support the DTR-capable transfers are
+the ones having the spi_controller_mem_caps structure defined with dtr
+set to true or the ones with custom SPI-mem ops. It means that the
+DTR-transfers are supported by the spi-mtk-snfi.c, spi-mxic.c,
+spi-cadence-quadspi.c and spi-intel.c drivers only. The rest of the
+SPI-controller drivers will fail to execute the SPI-mem ops with dtr
+flag set due to the spi_mem_default_supports_op() method semantics.
+
+> 
+> 
+> >> +
+> >> +     len = op->cmd.nbytes + op->addr.nbytes + dummy_nbytes;
+> >>        if (op->data.dir == SPI_MEM_DATA_OUT)
+> >>                len += op->data.nbytes;
+> >>
+> >> @@ -525,7 +529,7 @@ static int dw_spi_init_mem_buf(struct dw_spi *dws, const struct spi_mem_op *op)
+> >>                out[i] = DW_SPI_GET_BYTE(op->cmd.opcode, op->cmd.nbytes - i - 1);
+> >>        for (j = 0; j < op->addr.nbytes; ++i, ++j)
+> >>                out[i] = DW_SPI_GET_BYTE(op->addr.val, op->addr.nbytes - j - 1);
+> >> -     for (j = 0; j < op->dummy.nbytes; ++i, ++j)
+> >> +     for (j = 0; j < dummy_nbytes; ++i, ++j)
+> >>                out[i] = 0x0;
+> >>
+> >>        if (op->data.dir == SPI_MEM_DATA_OUT)
+> > 
+> > [...]
+> > 
+> >> diff --git a/drivers/spi/spi-mem.c b/drivers/spi/spi-mem.c
+> >> index 0c79193d9697..7b204963bb62 100644
+> >> --- a/drivers/spi/spi-mem.c
+> >> +++ b/drivers/spi/spi-mem.c
+> >> @@ -149,7 +149,7 @@ static bool spi_mem_check_buswidth(struct spi_mem *mem,
+> >>            spi_check_buswidth_req(mem, op->addr.buswidth, true))
+> >>                return false;
+> >>
+> >> -     if (op->dummy.nbytes &&
+> >> +     if (op->dummy.ncycles &&
+> >>            spi_check_buswidth_req(mem, op->dummy.buswidth, true))
+> >>                return false;
+> >>
+> >> @@ -202,7 +202,7 @@ static int spi_mem_check_op(const struct spi_mem_op *op)
+> >>                return -EINVAL;
+> >>
+> >>        if ((op->addr.nbytes && !op->addr.buswidth) ||
+> >> -         (op->dummy.nbytes && !op->dummy.buswidth) ||
+> >> +         (op->dummy.ncycles && !op->dummy.buswidth) ||
+> >>            (op->data.nbytes && !op->data.buswidth))
+> >>                return -EINVAL;
+> >>
+> >> @@ -315,7 +315,7 @@ int spi_mem_exec_op(struct spi_mem *mem, const struct spi_mem_op *op)
+> > 
+> >>        struct spi_controller *ctlr = mem->spi->controller;
+> >>        struct spi_transfer xfers[4] = { };
+> >>        struct spi_message msg;
+> >> -     u8 *tmpbuf;
+> >> +     u8 *tmpbuf, dummy_nbytes;
+> >>        int ret;
+> > 
+
+> > Reverse xmas tree order?
+
+Please take this note into account. Preserving the locally defined
+coding-style convention is a very useful practice. It retains the code
+uniformity, which improves readability and maintainability for just no
+price.
+
+> > 
+> >>
+> >>        ret = spi_mem_check_op(op);
+> >> @@ -343,7 +343,11 @@ int spi_mem_exec_op(struct spi_mem *mem, const struct spi_mem_op *op)
+> >>                        return ret;
+> >>        }
+> >>
+> > 
+> >> -     tmpbufsize = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
+> >> +     dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
+> > 
+> > So ncycles now indeed is a number of CLK line oscillations. This most
+> > likely will break the SPI Nand driver then, which still passes the
+> > number of bytes to the SPI_MEM_OP_DUMMY() macro.
+> > 
+> >> +     if (op->dummy.dtr)
+> >> +             dummy_nbytes *= 2;
+> > 
+> > Generic SPI-mem ops don't take the DTR mode into account. So I don't
+> > see this necessary.
+> > 
+> 
+> 
+
+> You may be right, but this part of the code does take into consideration 
+> the number of dummy.nbytes to calculate the xfer length. Therefore, 
+> shouldn't this code block also know if the number of dummy nbytes is 
+> actually double the amount that it calculated through the conversion 
+> formula?
+
+Ok. This part turns to be debatable indeed. On the first glance the
+SPI-mem core doesn't anyhow handles the DTR-flag value. On the other
+hand SPI-controllers may have the dtr-capability flag set thus, for
+instance implicitly supporting the DTR transfers. Finally currently
+all the DTR-aware drivers are known to have the custom SPI-mem ops
+defined. So some aspects say for dropping the dummy.dtr field usage
+from here, some say against it. I'll leave it for you and @Mark,
+@Tudor, @Pratyush to decide.
+
+> 
+> 
+> >> +
+> >> +     tmpbufsize = op->cmd.nbytes + op->addr.nbytes + dummy_nbytes;
+> >>
+> >>        /*
+> >>         * Allocate a buffer to transmit the CMD, ADDR cycles with kmalloc() so
+> >> @@ -379,15 +383,15 @@ int spi_mem_exec_op(struct spi_mem *mem, const struct spi_mem_op *op)
+> >>                totalxferlen += op->addr.nbytes;
+> >>        }
+> >>
+> >> -     if (op->dummy.nbytes) {
+> >> -             memset(tmpbuf + op->addr.nbytes + 1, 0xff, op->dummy.nbytes);
+> >> +     if (dummy_nbytes) {
+> >> +             memset(tmpbuf + op->addr.nbytes + 1, 0xff, dummy_nbytes);
+> >>                xfers[xferpos].tx_buf = tmpbuf + op->addr.nbytes + 1;
+> >> -             xfers[xferpos].len = op->dummy.nbytes;
+> >> +             xfers[xferpos].len = dummy_nbytes;
+> >>                xfers[xferpos].tx_nbits = op->dummy.buswidth;
+> >>                xfers[xferpos].dummy_data = 1;
+> >>                spi_message_add_tail(&xfers[xferpos], &msg);
+> >>                xferpos++;
+> >> -             totalxferlen += op->dummy.nbytes;
+> >> +             totalxferlen += dummy_nbytes;
+> >>        }
+> >>
+> >>        if (op->data.nbytes) {
+> >> @@ -456,12 +460,17 @@ int spi_mem_adjust_op_size(struct spi_mem *mem, struct spi_mem_op *op)
+> >>   {
+> > 
+> >>        struct spi_controller *ctlr = mem->spi->controller;
+> >>        size_t len;
+> >> +     u8 dummy_nbytes;
+> > 
+
+> > reverse xmas tree?
+
+Please retain the local coding style convention.
+
+> > 
+> >>
+> >>        if (ctlr->mem_ops && ctlr->mem_ops->adjust_op_size)
+> >>                return ctlr->mem_ops->adjust_op_size(mem, op);
+> >>
+> >> +     dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
+> >> +     if (op->dummy.dtr)
+> >> +             dummy_nbytes *= 2;
+> >> +
+> >>        if (!ctlr->mem_ops || !ctlr->mem_ops->exec_op) {
+> >> -             len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
+> >> +             len = op->cmd.nbytes + op->addr.nbytes + dummy_nbytes;
+> >>
+> >>                if (len > spi_max_transfer_size(mem->spi))
+> >>                        return -EINVAL;
+> > 
+> > [...]
+> > 
+> >> diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
+> >> index d167699a1a96..f6870c6e911a 100644
+> >> --- a/drivers/spi/spi-mtk-nor.c
+> >> +++ b/drivers/spi/spi-mtk-nor.c
+> >> @@ -171,23 +171,18 @@ static bool need_bounce(struct mtk_nor *sp, const struct spi_mem_op *op)
+> >>
+> >>   static bool mtk_nor_match_read(const struct spi_mem_op *op)
+> >>   {
+> >> -     int dummy = 0;
+> >> -
+> >> -     if (op->dummy.nbytes)
+> >> -             dummy = op->dummy.nbytes * BITS_PER_BYTE / op->dummy.buswidth;
+> >> -
+> >>        if ((op->data.buswidth == 2) || (op->data.buswidth == 4)) {
+> >>                if (op->addr.buswidth == 1)
+> >> -                     return dummy == 8;
+> >> +                     return op->dummy.ncycles == 8;
+> >>                else if (op->addr.buswidth == 2)
+> >> -                     return dummy == 4;
+> >> +                     return op->dummy.ncycles == 4;
+> >>                else if (op->addr.buswidth == 4)
+> >> -                     return dummy == 6;
+> >> +                     return op->dummy.ncycles == 6;
+> >>        } else if ((op->addr.buswidth == 1) && (op->data.buswidth == 1)) {
+> >>                if (op->cmd.opcode == 0x03)
+> >> -                     return dummy == 0;
+> >> +                     return op->dummy.ncycles == 0;
+> >>                else if (op->cmd.opcode == 0x0b)
+> >> -                     return dummy == 8;
+> >> +                     return op->dummy.ncycles == 8;
+> >>        }
+> >>        return false;
+> >>   }
+> >> @@ -195,6 +190,10 @@ static bool mtk_nor_match_read(const struct spi_mem_op *op)
+> >>   static bool mtk_nor_match_prg(const struct spi_mem_op *op)
+> >>   {
+> >>        int tx_len, rx_len, prg_len, prg_left;
+> > 
+
+
+> >> +     u8 dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
+> >> +
+> > 
+> > IMO it's better to move the initialization statement to a separate
+> > line here.
+
+Again. The initialization statement is too long. It makes the code
+harder to read. Just split the declaration and initialization up.
+
+> > 
+> >> +     if (op->dummy.dtr)
+> >> +             dummy_nbytes *= 2;
+> > 
+
+> > Does the MTK SPI driver support DTR? AFAICS it doesn't.
+
+I'll give an answer. It doesn't. The spi_mem_exec_op() will return the
+-ENOTSUPP error if an SPI-mem op with any dtr flag set is requested.
+
+> > 
+> >>
+> >>        // prg mode is spi-only.
+> >>        if ((op->cmd.buswidth > 1) || (op->addr.buswidth > 1) ||
+> >> @@ -205,7 +204,7 @@ static bool mtk_nor_match_prg(const struct spi_mem_op *op)
+> >>
+> >>        if (op->data.dir == SPI_MEM_DATA_OUT) {
+> >>                // count dummy bytes only if we need to write data after it
+> >> -             tx_len += op->dummy.nbytes;
+> >> +             tx_len += dummy_nbytes;
+> >>
+> >>                // leave at least one byte for data
+> >>                if (tx_len > MTK_NOR_REG_PRGDATA_MAX)
+> >> @@ -221,7 +220,7 @@ static bool mtk_nor_match_prg(const struct spi_mem_op *op)
+> >>                        return false;
+> >>
+> >>                rx_len = op->data.nbytes;
+> >> -             prg_left = MTK_NOR_PRG_CNT_MAX / 8 - tx_len - op->dummy.nbytes;
+> >> +             prg_left = MTK_NOR_PRG_CNT_MAX / 8 - tx_len - dummy_nbytes;
+> >>                if (prg_left > MTK_NOR_REG_SHIFT_MAX + 1)
+> >>                        prg_left = MTK_NOR_REG_SHIFT_MAX + 1;
+> >>                if (rx_len > prg_left) {
+> >> @@ -230,11 +229,11 @@ static bool mtk_nor_match_prg(const struct spi_mem_op *op)
+> >>                        rx_len = prg_left;
+> >>                }
+> >>
+> >> -             prg_len = tx_len + op->dummy.nbytes + rx_len;
+> >> +             prg_len = tx_len + dummy_nbytes + rx_len;
+> >>                if (prg_len > MTK_NOR_PRG_CNT_MAX / 8)
+> >>                        return false;
+> >>        } else {
+> >> -             prg_len = tx_len + op->dummy.nbytes;
+> >> +             prg_len = tx_len + dummy_nbytes;
+> >>                if (prg_len > MTK_NOR_PRG_CNT_MAX / 8)
+> >>                        return false;
+> >>        }
+> >> @@ -244,15 +243,19 @@ static bool mtk_nor_match_prg(const struct spi_mem_op *op)
+> >>   static void mtk_nor_adj_prg_size(struct spi_mem_op *op)
+> >>   {
+> >>        int tx_len, tx_left, prg_left;
+> > 
+> >> +     u8 dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
+> >> +
+> >> +     if (op->dummy.dtr)
+> >> +             dummy_nbytes *= 2;
+> > 
+> > ditto
+> > 
+> >>
+> >>        tx_len = op->cmd.nbytes + op->addr.nbytes;
+> >>        if (op->data.dir == SPI_MEM_DATA_OUT) {
+> >> -             tx_len += op->dummy.nbytes;
+> >> +             tx_len += dummy_nbytes;
+> >>                tx_left = MTK_NOR_REG_PRGDATA_MAX + 1 - tx_len;
+> >>                if (op->data.nbytes > tx_left)
+> >>                        op->data.nbytes = tx_left;
+> >>        } else if (op->data.dir == SPI_MEM_DATA_IN) {
+> >> -             prg_left = MTK_NOR_PRG_CNT_MAX / 8 - tx_len - op->dummy.nbytes;
+> >> +             prg_left = MTK_NOR_PRG_CNT_MAX / 8 - tx_len - dummy_nbytes;
+> >>                if (prg_left > MTK_NOR_REG_SHIFT_MAX + 1)
+> >>                        prg_left = MTK_NOR_REG_SHIFT_MAX + 1;
+> >>                if (op->data.nbytes > prg_left)
+> >> @@ -312,7 +315,7 @@ static bool mtk_nor_supports_op(struct spi_mem *mem,
+> >>                        break;
+> >>                case SPI_MEM_DATA_OUT:
+> >>                        if ((op->addr.buswidth == 1) &&
+> >> -                         (op->dummy.nbytes == 0) &&
+> >> +                         (op->dummy.ncycles == 0) &&
+> >>                            (op->data.buswidth == 1))
+> >>                                return true;
+> >>                        break;
+> >> @@ -515,17 +518,20 @@ static int mtk_nor_spi_mem_prg(struct mtk_nor *sp, const struct spi_mem_op *op)
+> >>        int tx_len, prg_len;
+> >>        int i, ret;
+> >>        void __iomem *reg;
+> > 
+> >> -     u8 bufbyte;
+> >> +     u8 bufbyte, dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
+> >> +
+> >> +     if (op->dummy.dtr)
+> >> +             dummy_nbytes *= 2;
+> > 
+> > ditto
+> > 
+> >>
+> >>        tx_len = op->cmd.nbytes + op->addr.nbytes;
+> >>
+> >>        // count dummy bytes only if we need to write data after it
+> >>        if (op->data.dir == SPI_MEM_DATA_OUT)
+> >> -             tx_len += op->dummy.nbytes + op->data.nbytes;
+> >> +             tx_len += dummy_nbytes + op->data.nbytes;
+> >>        else if (op->data.dir == SPI_MEM_DATA_IN)
+> >>                rx_len = op->data.nbytes;
+> >>
+> >> -     prg_len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes +
+> >> +     prg_len = op->cmd.nbytes + op->addr.nbytes + dummy_nbytes +
+> >>                  op->data.nbytes;
+> >>
+> >>        // an invalid op may reach here if the caller calls exec_op without
+> >> @@ -550,7 +556,7 @@ static int mtk_nor_spi_mem_prg(struct mtk_nor *sp, const struct spi_mem_op *op)
+> >>        }
+> >>
+> >>        if (op->data.dir == SPI_MEM_DATA_OUT) {
+> >> -             for (i = 0; i < op->dummy.nbytes; i++, reg_offset--) {
+> >> +             for (i = 0; i < dummy_nbytes; i++, reg_offset--) {
+> >>                        reg = sp->base + MTK_NOR_REG_PRGDATA(reg_offset);
+> >>                        writeb(0, reg);
+> >>                }
+> > 
+> > [...]
+> > 
+> >> diff --git a/drivers/spi/spi-zynq-qspi.c b/drivers/spi/spi-zynq-qspi.c
+> >> index 78f31b61a2aa..84b7db85548c 100644
+> >> --- a/drivers/spi/spi-zynq-qspi.c
+> >> +++ b/drivers/spi/spi-zynq-qspi.c
+> >> @@ -527,7 +527,10 @@ static int zynq_qspi_exec_mem_op(struct spi_mem *mem,
+> >>   {
+> >>        struct zynq_qspi *xqspi = spi_controller_get_devdata(mem->spi->master);
+> >>        int err = 0, i;
+
+> >> -     u8 *tmpbuf;
+> >> +     u8 *tmpbuf, dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
+> > 
+> > Separate line?
+
+Too long. Split the declaration and initialization up.
+
+> > 
+> >> +
+> >> +     if (op->dummy.dtr)
+> >> +             dummy_nbytes *= 2;
+> > 
+> > Is DTR supported by the driver?
+> > 
+> 
+> 
+
+> Not from what I can see, but I was not 100% sure so I placed this if 
+> statement here just in case.
+
+spi_mem_default_supports_op() will return false for the DTR-available
+transfers anyway. So the spi_mem_exec_op() method will fail right at
+the start and this part will never be executed if the DTR-mode is
+requested.
+
+-Sergey
+
+> 
+> 
+> 
+> >>
+> >>        dev_dbg(xqspi->dev, "cmd:%#x mode:%d.%d.%d.%d\n",
+> >>                op->cmd.opcode, op->cmd.buswidth, op->addr.buswidth,
+> >> @@ -568,17 +571,17 @@ static int zynq_qspi_exec_mem_op(struct spi_mem *mem,
+> >>                        err = -ETIMEDOUT;
+> >>        }
+> >>
+> >> -     if (op->dummy.nbytes) {
+> >> -             tmpbuf = kzalloc(op->dummy.nbytes, GFP_KERNEL);
+> >> +     if (dummy_nbytes) {
+> >> +             tmpbuf = kzalloc(dummy_nbytes, GFP_KERNEL);
+> >>                if (!tmpbuf)
+> >>                        return -ENOMEM;
+> >>
+> >> -             memset(tmpbuf, 0xff, op->dummy.nbytes);
+> >> +             memset(tmpbuf, 0xff, dummy_nbytes);
+> >>                reinit_completion(&xqspi->data_completion);
+> >>                xqspi->txbuf = tmpbuf;
+> >>                xqspi->rxbuf = NULL;
+> >> -             xqspi->tx_bytes = op->dummy.nbytes;
+> >> -             xqspi->rx_bytes = op->dummy.nbytes;
+> >> +             xqspi->tx_bytes = dummy_nbytes;
+> >> +             xqspi->rx_bytes = dummy_nbytes;
+> >>                zynq_qspi_write_op(xqspi, ZYNQ_QSPI_FIFO_DEPTH, true);
+> >>                zynq_qspi_write(xqspi, ZYNQ_QSPI_IEN_OFFSET,
+> >>                                ZYNQ_QSPI_IXR_RXTX_MASK);
+> >> diff --git a/drivers/spi/spi-zynqmp-gqspi.c b/drivers/spi/spi-zynqmp-gqspi.c
+> >> index c760aac070e5..b41abadef9a6 100644
+> >> --- a/drivers/spi/spi-zynqmp-gqspi.c
+> >> +++ b/drivers/spi/spi-zynqmp-gqspi.c
+> >> @@ -948,6 +948,10 @@ static int zynqmp_qspi_exec_op(struct spi_mem *mem,
+> >>        u32 genfifoentry = 0;
+> >>        u16 opcode = op->cmd.opcode;
+> >>        u64 opaddr;
+> > 
+> >> +     u8 dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
+> >> +
+> >> +     if (op->dummy.dtr)
+> >> +             dummy_nbytes *= 2;
+> > 
+> > ditto
+> > 
+> >>
+> >>        dev_dbg(xqspi->dev, "cmd:%#x mode:%d.%d.%d.%d\n",
+> >>                op->cmd.opcode, op->cmd.buswidth, op->addr.buswidth,
+> >> @@ -1006,14 +1010,14 @@ static int zynqmp_qspi_exec_op(struct spi_mem *mem,
+> >>                }
+> >>        }
+> >>
+> >> -     if (op->dummy.nbytes) {
+> >> +     if (dummy_nbytes) {
+> >>                xqspi->txbuf = NULL;
+> >>                xqspi->rxbuf = NULL;
+> >>                /*
+> >>                 * xqspi->bytes_to_transfer here represents the dummy circles
+> >>                 * which need to be sent.
+> >>                 */
+> >> -             xqspi->bytes_to_transfer = op->dummy.nbytes * 8 / op->dummy.buswidth;
+> >> +             xqspi->bytes_to_transfer = dummy_nbytes;
+> >>                xqspi->bytes_to_receive = 0;
+> >>                /*
+> >>                 * Using op->data.buswidth instead of op->dummy.buswidth here because
+> >> diff --git a/include/linux/spi/spi-mem.h b/include/linux/spi/spi-mem.h
+> >> index 2ba044d0d5e5..5fd45800af03 100644
+> >> --- a/include/linux/spi/spi-mem.h
+> >> +++ b/include/linux/spi/spi-mem.h
+> >> @@ -29,9 +29,9 @@
+> >>
+> >>   #define SPI_MEM_OP_NO_ADDR   { }
+> >>
+> > 
+> >> -#define SPI_MEM_OP_DUMMY(__nbytes, __buswidth)                       \
+> >> +#define SPI_MEM_OP_DUMMY(__ncycles, __buswidth)              \
+> >>        {                                                       \
+> > 
+> >> -             .nbytes = __nbytes,                             \
+> >> +             .ncycles = __ncycles,                           \
+> >>                .buswidth = __buswidth,                         \
+> > 
+> > Please make sure this update and the drivers/spi/spi-mem.c driver
+> > alterations are coherent with the SPI Nand driver. See the macro usages:
+> > include/linux/mtd/spinand.h: SPINAND_PAGE_READ_FROM_*().
+> > 
+> > -Sergey
+> >
+> 
+> 
+> Yes, indeed, I should have paid more attention here. As I have 
+> previously said,  I simply replaced dummy.nbytes with the code sequences 
+> you now see. I should have checked for SPI_MEM_OP_DUMMY usages as well 
+> since I changed its definition. Thank you! :)
+> 
+> 
+> >>        }
+> >>
+> >> @@ -83,8 +83,8 @@ enum spi_mem_data_dir {
+> >>    *         Note that only @addr.nbytes are taken into account in this
+> >>    *         address value, so users should make sure the value fits in the
+> >>    *         assigned number of bytes.
+> >> - * @dummy.nbytes: number of dummy bytes to send after an opcode or address. Can
+> >> - *             be zero if the operation does not require dummy bytes
+> >> + * @dummy.ncycles: number of dummy cycles after an opcode or address. Can
+> >> + *              be zero if the operation does not require dummy cycles
+> >>    * @dummy.buswidth: number of IO lanes used to transmit the dummy bytes
+> >>    * @dummy.dtr: whether the dummy bytes should be sent in DTR mode or not
+> >>    * @data.buswidth: number of IO lanes used to send/receive the data
+> >> @@ -112,7 +112,7 @@ struct spi_mem_op {
+> >>        } addr;
+> >>
+> >>        struct {
+> >> -             u8 nbytes;
+> >> +             u8 ncycles;
+> >>                u8 buswidth;
+> >>                u8 dtr : 1;
+> >>        } dummy;
+> >> --
+> >> 2.34.1
+> >>
+> 
+> 
+> Regards,
+> 	Sergiu
 
