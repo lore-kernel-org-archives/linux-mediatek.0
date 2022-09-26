@@ -4,75 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8433BC32771
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 09:18:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC9BEC07E9D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 09:23:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cFtkFB9DAmQWy0ZHAwJv4utekf9kGiiM17aFs0eib9w=; b=YmEGxudi4EtYEGF02q6OfS1u6p
-	LfdHT8ukgDudXhXpoAHo7psDnt6g029B4pXoOiMEy2JOOOW6ON0zB4/NUYpvqNAC3PRPQoAFooHIU
-	oRZVpCBm0QWVg8cy7Eb33ICVHYYMu6/aR4LR0wtSt/AjYkHRYQ1NGl6uvxpMKDC6Y+i7gnFF0VScl
-	5MMVkWShoF+J8LvK8uC6B+hAG+nQXbNlZYhathkhHeL8QjtWjpjeIBiwSCIS26YF4PDu4X8M3Tl1U
-	BXcYdRj2C4uJpMc/sHr7z/7dDY9AM3FNe7Ht2NuND2sBmMojXKck4DEGrQ23xiSqKfzNc0Z/sJC6F
-	lVrM4PVA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=goc6PkT5m1P9sof9+UJf/eV/J47j0G84vgW/lekQxV8=; b=bnvhLZnqfK8H9CXMmSms7IZgjS
+	FCmUrQaabiQC7wdQUa1v3lT93e0ghSBZzRtdqw68deBXnD1hDyv+J1bgzCJh3ZBCxhvBPHORXswrj
+	cDoW/ZY7TcsVIGO5QvEp4GmstDziu3ZFHY1qI+aw+ou0FEnNMuoupFLZNuLp83s2TtRJER2zOdI18
+	lhqJH7qMRdZXega+qFChXKprXcM37rJGe9ulI5GmE1FFk6U0k2wDCGnnmkwHJc+hOJYbezfMTOfjk
+	PSrmV+JJ1vWzFzGx/aCNVdV1wjpOH4ivbjZcOXoMcKpE9j+q/at8aJ6ESjUgfo8FFsGx+CrVvBtUT
+	SbWNHCtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ockFd-003YAW-OU; Mon, 26 Sep 2022 09:18:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ockKi-003ayV-BT; Mon, 26 Sep 2022 09:23:24 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ockDp-003X3v-Hg; Mon, 26 Sep 2022 09:16:21 +0000
-X-UUID: c52eb1030b9f4826b2c1eb3e30695c09-20220926
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=cFtkFB9DAmQWy0ZHAwJv4utekf9kGiiM17aFs0eib9w=;
-	b=RPunRi4nHWW+DqdarDYf48PUWqS2dHcbWbKDh9c2ksyAbe5SIu+qsHOiF/vo8jbVOvlwDLjL/pm/9JoA8SOXDIM+yKg0/AxlUA6OFljAVfDnZ8clZAlM6A2wM1IcjA6/NqyvKPkOE9HJVUakMwmX1s0WS74knP0BBINnI4FTc08=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:0954fc60-39ec-4c4f-a005-a122792015e4,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:edf00707-1cee-4c38-b21b-a45f9682fdc0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: c52eb1030b9f4826b2c1eb3e30695c09-20220926
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 670814342; Mon, 26 Sep 2022 02:16:13 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 26 Sep 2022 17:14:54 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 26 Sep 2022 17:14:53 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<nicolas.dufresne@collabora.com>, <wenst@chromium.org>, kyrie wu
-	<kyrie.wu@mediatek.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
-	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
-	<irui.wang@mediatek.com>
-Subject: [V15,14/15] media: mtk-jpegdec: refactor jpegdec func interface
-Date: Mon, 26 Sep 2022 17:14:32 +0800
-Message-ID: <20220926091433.18633-15-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220926091433.18633-1-irui.wang@mediatek.com>
-References: <20220926091433.18633-1-irui.wang@mediatek.com>
+	id 1ockKc-003auI-J9
+	for linux-mediatek@lists.infradead.org; Mon, 26 Sep 2022 09:23:21 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id j24so6714880lja.4
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Sep 2022 02:23:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=goc6PkT5m1P9sof9+UJf/eV/J47j0G84vgW/lekQxV8=;
+        b=GIC2DbN3y87NHYbRBWxz9PgdwQ6FEZkjUI12TMcgFoqNw0Ha2n1EpIyNUGv7y2vGUA
+         qrkRBp7t4ZaeBJm8yVs+4q2t2xI/IXzCG4IWGsLXAl/862w0Hn2L2oHIRaOmsur7NsU8
+         RScuWt7PM8ant0LNXv4DjG8D7INyhVqLzTcyow5FbksX1oOuGQYjeVHyYFzDxpl1CRa7
+         WPK3nT7A4jl2vSmYgHwCoXgUmQXUjSoLD0GMbaWusCyhhyWR2zkVejzgkZ8ec3G/SL9c
+         QAiKVfNZ2amFSUqADSlrgNyU8xG41rtNnNVSunT9nXqXvGtIKKMoHldljhjviEgO1XLD
+         N4SQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=goc6PkT5m1P9sof9+UJf/eV/J47j0G84vgW/lekQxV8=;
+        b=M+AgCbvr/4ZXjeaX3dXO1CpPwVRorTmj1gKY/CcuFd1RHI3PxCOS9DVElkT76CIxN5
+         LVB7EC8IGgZ9+NOBs2AKGvXTcQdNdgxg9irCzgM2qQSrdGrqYxoPgcbqWsx6st3UBj4E
+         8/MMgPnoDCBuNyqw6WV01rSz/lTWEFpHOnfN00cGt/WGB0Pq0/7fXb9VnMNXpT65nb66
+         c8DS9jmvkKopMr1It+mD+szC3SFFBStCRlylUp2zD/XIN1y19KTCU5NutxqY7Vl/TW+e
+         QT41Q1PPmpHgosXEKEMY4LmYN+qySws9bzxT0wjrQ6JYdPXuPPtCSOvkZNp6mQSIzHDv
+         7Gqg==
+X-Gm-Message-State: ACrzQf2H9cZFCb1xo0TVy8FUSrb5HApivZOpRSqir2+9b4ujqLC0uYNL
+	P14MVGSFPSg3JheTRygsmeZziw==
+X-Google-Smtp-Source: AMsMyM7G0RdidG+n9hog4aSXdwdlwpRd2hv5uqsZGByfjwBD4Msi4qq0KH2y8EthPGxEXM2x7H0xhw==
+X-Received: by 2002:a05:651c:221a:b0:26c:6fe2:c146 with SMTP id y26-20020a05651c221a00b0026c6fe2c146mr7198207ljq.284.1664184195964;
+        Mon, 26 Sep 2022 02:23:15 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id q14-20020a056512210e00b004972b0bb426sm2481294lfr.257.2022.09.26.02.23.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 26 Sep 2022 02:23:15 -0700 (PDT)
+Message-ID: <c5ee2888-dabf-e3a6-acca-517ede984002@linaro.org>
+Date: Mon, 26 Sep 2022 11:23:14 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [PATCH v2] dt-bindings: phy: Add compatible for Mediatek MT8188
+Content-Language: en-US
+To: xinlei.lee@mediatek.com, chunfeng.yun@mediatek.com, kishon@ti.com,
+ vkoul@kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ matthias.bgg@gmail.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <1664183509-29473-1-git-send-email-xinlei.lee@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <1664183509-29473-1-git-send-email-xinlei.lee@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_021617_711342_4FA14BAC 
-X-CRM114-Status: GOOD (  16.99  )
+X-CRM114-CacheID: sfid-20220926_022318_663474_6947FBFD 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,224 +97,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kyrie wu <kyrie.wu@mediatek.com>
+On 26/09/2022 11:11, xinlei.lee@mediatek.com wrote:
+> From: xinlei lee <xinlei.lee@mediatek.com>
+> 
+> Add dt-binding documentation of dsi-phy for MediaTek MT8188 SoC.
+> 
+> Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
 
-refactor the func interface of mtk_jpeg_dec_set_config
-for decode
+Please add Acked-by/Reviewed-by tags when posting new versions. However,
+there's no need to repost patches *only* to add the tags. The upstream
+maintainer will do that for acks received on the version they apply.
 
-Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
-Signed-off-by: irui wang <irui.wang@mediatek.com>
----
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 38 +++++++++++--
- .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  1 +
- .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 55 ++++++++++---------
- .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.h  |  3 +-
- .../platform/mediatek/jpeg/mtk_jpeg_dec_reg.h |  1 +
- 5 files changed, 66 insertions(+), 32 deletions(-)
+https://elixir.bootlin.com/linux/v5.17/source/Documentation/process/submitting-patches.rst#L540
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 1d8e065a2067..2fe0e2a1c127 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -588,6 +588,31 @@ static int mtk_jpeg_enc_s_selection(struct file *file, void *priv,
- 	return 0;
- }
- 
-+static int mtk_jpeg_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
-+{
-+	struct v4l2_fh *fh = file->private_data;
-+	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
-+	struct vb2_queue *vq;
-+	struct vb2_buffer *vb;
-+	struct mtk_jpeg_src_buf *jpeg_src_buf;
-+
-+	if (buf->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
-+		goto end;
-+
-+	vq = v4l2_m2m_get_vq(fh->m2m_ctx, buf->type);
-+	if (buf->index >= vq->num_buffers) {
-+		dev_err(ctx->jpeg->dev, "buffer index out of range\n");
-+		return -EINVAL;
-+	}
-+
-+	vb = vq->bufs[buf->index];
-+	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
-+	jpeg_src_buf->bs_size = buf->m.planes[0].bytesused;
-+
-+end:
-+	return v4l2_m2m_qbuf(file, fh->m2m_ctx, buf);
-+}
-+
- static const struct v4l2_ioctl_ops mtk_jpeg_enc_ioctl_ops = {
- 	.vidioc_querycap                = mtk_jpeg_querycap,
- 	.vidioc_enum_fmt_vid_cap	= mtk_jpeg_enum_fmt_vid_cap,
-@@ -628,7 +653,7 @@ static const struct v4l2_ioctl_ops mtk_jpeg_dec_ioctl_ops = {
- 	.vidioc_g_fmt_vid_out_mplane    = mtk_jpeg_g_fmt_vid_mplane,
- 	.vidioc_s_fmt_vid_cap_mplane    = mtk_jpeg_s_fmt_vid_cap_mplane,
- 	.vidioc_s_fmt_vid_out_mplane    = mtk_jpeg_s_fmt_vid_out_mplane,
--	.vidioc_qbuf                    = v4l2_m2m_ioctl_qbuf,
-+	.vidioc_qbuf                    = mtk_jpeg_qbuf,
- 	.vidioc_subscribe_event         = mtk_jpeg_subscribe_event,
- 	.vidioc_g_selection		= mtk_jpeg_dec_g_selection,
- 
-@@ -1212,7 +1237,6 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 	jpeg_src_buf->frame_num = ctx->total_frame_num;
- 	jpeg_dst_buf->curr_ctx = ctx;
- 	jpeg_dst_buf->frame_num = ctx->total_frame_num;
--	ctx->total_frame_num++;
- 
- 	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
- 	ret = pm_runtime_get_sync(comp_jpeg[hw_id]->dev);
-@@ -1242,9 +1266,11 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 	}
- 
- 	spin_lock_irqsave(&comp_jpeg[hw_id]->hw_lock, flags);
-+	ctx->total_frame_num++;
- 	mtk_jpeg_dec_reset(comp_jpeg[hw_id]->reg_base);
--	mtk_jpeg_dec_set_config(jpeg->reg_base,
-+	mtk_jpeg_dec_set_config(comp_jpeg[hw_id]->reg_base,
- 				&jpeg_src_buf->dec_param,
-+				jpeg_src_buf->bs_size,
- 				&bs,
- 				&fb);
- 	mtk_jpeg_dec_start(comp_jpeg[hw_id]->reg_base);
-@@ -1313,8 +1339,10 @@ static void mtk_jpeg_dec_device_run(void *priv)
- 	spin_lock_irqsave(&jpeg->hw_lock, flags);
- 	mtk_jpeg_dec_reset(jpeg->reg_base);
- 	mtk_jpeg_dec_set_config(jpeg->reg_base,
--				&jpeg_src_buf->dec_param, &bs, &fb);
--
-+				&jpeg_src_buf->dec_param,
-+				jpeg_src_buf->bs_size,
-+				&bs,
-+				&fb);
- 	mtk_jpeg_dec_start(jpeg->reg_base);
- 	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
- 	return;
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-index 0713b8d14356..b9126476be8f 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-@@ -80,6 +80,7 @@ struct mtk_jpeg_src_buf {
- 	u32 frame_num;
- 	struct vb2_v4l2_buffer b;
- 	struct list_head list;
-+	u32 bs_size;
- 	struct mtk_jpeg_dec_param dec_param;
- 
- 	struct mtk_jpeg_ctx *curr_ctx;
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-index 95fce3f3c0c6..d98f4cdfeea9 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-@@ -330,12 +330,14 @@ static void mtk_jpeg_dec_set_bs_write_ptr(void __iomem *base, u32 ptr)
- 	writel(ptr, base + JPGDEC_REG_FILE_BRP);
- }
- 
--static void mtk_jpeg_dec_set_bs_info(void __iomem *base, u32 addr, u32 size)
-+static void mtk_jpeg_dec_set_bs_info(void __iomem *base, u32 addr, u32 size,
-+				     u32 bitstream_size)
- {
- 	mtk_jpeg_verify_align(addr, 16, JPGDEC_REG_FILE_ADDR);
- 	mtk_jpeg_verify_align(size, 128, JPGDEC_REG_FILE_TOTAL_SIZE);
- 	writel(addr, base + JPGDEC_REG_FILE_ADDR);
- 	writel(size, base + JPGDEC_REG_FILE_TOTAL_SIZE);
-+	writel(bitstream_size, base + JPGDEC_REG_BIT_STREAM_SIZE);
- }
- 
- static void mtk_jpeg_dec_set_comp_id(void __iomem *base, u32 id_y, u32 id_u,
-@@ -404,39 +406,40 @@ static void mtk_jpeg_dec_set_sampling_factor(void __iomem *base, u32 comp_num,
- }
- 
- void mtk_jpeg_dec_set_config(void __iomem *base,
--			     struct mtk_jpeg_dec_param *config,
-+			     struct mtk_jpeg_dec_param *cfg,
-+			     u32 bitstream_size,
- 			     struct mtk_jpeg_bs *bs,
- 			     struct mtk_jpeg_fb *fb)
- {
--	mtk_jpeg_dec_set_brz_factor(base, 0, 0, config->uv_brz_w, 0);
-+	mtk_jpeg_dec_set_brz_factor(base, 0, 0, cfg->uv_brz_w, 0);
- 	mtk_jpeg_dec_set_dec_mode(base, 0);
--	mtk_jpeg_dec_set_comp0_du(base, config->unit_num);
--	mtk_jpeg_dec_set_total_mcu(base, config->total_mcu);
--	mtk_jpeg_dec_set_bs_info(base, bs->str_addr, bs->size);
-+	mtk_jpeg_dec_set_comp0_du(base, cfg->unit_num);
-+	mtk_jpeg_dec_set_total_mcu(base, cfg->total_mcu);
-+	mtk_jpeg_dec_set_bs_info(base, bs->str_addr, bs->size, bitstream_size);
- 	mtk_jpeg_dec_set_bs_write_ptr(base, bs->end_addr);
--	mtk_jpeg_dec_set_du_membership(base, config->membership, 1,
--				       (config->comp_num == 1) ? 1 : 0);
--	mtk_jpeg_dec_set_comp_id(base, config->comp_id[0], config->comp_id[1],
--				 config->comp_id[2]);
--	mtk_jpeg_dec_set_q_table(base, config->qtbl_num[0],
--				 config->qtbl_num[1], config->qtbl_num[2]);
--	mtk_jpeg_dec_set_sampling_factor(base, config->comp_num,
--					 config->sampling_w[0],
--					 config->sampling_h[0],
--					 config->sampling_w[1],
--					 config->sampling_h[1],
--					 config->sampling_w[2],
--					 config->sampling_h[2]);
--	mtk_jpeg_dec_set_mem_stride(base, config->mem_stride[0],
--				    config->mem_stride[1]);
--	mtk_jpeg_dec_set_img_stride(base, config->img_stride[0],
--				    config->img_stride[1]);
-+	mtk_jpeg_dec_set_du_membership(base, cfg->membership, 1,
-+				       (cfg->comp_num == 1) ? 1 : 0);
-+	mtk_jpeg_dec_set_comp_id(base, cfg->comp_id[0], cfg->comp_id[1],
-+				 cfg->comp_id[2]);
-+	mtk_jpeg_dec_set_q_table(base, cfg->qtbl_num[0],
-+				 cfg->qtbl_num[1], cfg->qtbl_num[2]);
-+	mtk_jpeg_dec_set_sampling_factor(base, cfg->comp_num,
-+					 cfg->sampling_w[0],
-+					 cfg->sampling_h[0],
-+					 cfg->sampling_w[1],
-+					 cfg->sampling_h[1],
-+					 cfg->sampling_w[2],
-+					 cfg->sampling_h[2]);
-+	mtk_jpeg_dec_set_mem_stride(base, cfg->mem_stride[0],
-+				    cfg->mem_stride[1]);
-+	mtk_jpeg_dec_set_img_stride(base, cfg->img_stride[0],
-+				    cfg->img_stride[1]);
- 	mtk_jpeg_dec_set_dst_bank0(base, fb->plane_addr[0],
- 				   fb->plane_addr[1], fb->plane_addr[2]);
- 	mtk_jpeg_dec_set_dst_bank1(base, 0, 0, 0);
--	mtk_jpeg_dec_set_dma_group(base, config->dma_mcu, config->dma_group,
--				   config->dma_last_mcu);
--	mtk_jpeg_dec_set_pause_mcu_idx(base, config->total_mcu);
-+	mtk_jpeg_dec_set_dma_group(base, cfg->dma_mcu, cfg->dma_group,
-+				   cfg->dma_last_mcu);
-+	mtk_jpeg_dec_set_pause_mcu_idx(base, cfg->total_mcu);
- }
- EXPORT_SYMBOL_GPL(mtk_jpeg_dec_set_config);
- 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.h
-index 87aaa5c9082b..8c31c6b12417 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.h
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.h
-@@ -71,7 +71,8 @@ int mtk_jpeg_dec_fill_param(struct mtk_jpeg_dec_param *param);
- u32 mtk_jpeg_dec_get_int_status(void __iomem *dec_reg_base);
- u32 mtk_jpeg_dec_enum_result(u32 irq_result);
- void mtk_jpeg_dec_set_config(void __iomem *base,
--			     struct mtk_jpeg_dec_param *config,
-+			     struct mtk_jpeg_dec_param *cfg,
-+			     u32 bitstream_size,
- 			     struct mtk_jpeg_bs *bs,
- 			     struct mtk_jpeg_fb *fb);
- void mtk_jpeg_dec_reset(void __iomem *dec_reg_base);
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_reg.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_reg.h
-index 21ec8f96797f..27b7711ca341 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_reg.h
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_reg.h
-@@ -45,5 +45,6 @@
- #define JPGDEC_REG_QT_ID		0x0270
- #define JPGDEC_REG_INTERRUPT_STATUS	0x0274
- #define JPGDEC_REG_STATUS		0x0278
-+#define JPGDEC_REG_BIT_STREAM_SIZE	0x0344
- 
- #endif /* _MTK_JPEG_REG_H */
--- 
-2.18.0
+If a tag was not added on purpose, please state why and what changed.
+
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
 
 
