@@ -4,85 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC9BEC07E9D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 09:23:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 168FAC32771
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 09:26:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=goc6PkT5m1P9sof9+UJf/eV/J47j0G84vgW/lekQxV8=; b=bnvhLZnqfK8H9CXMmSms7IZgjS
-	FCmUrQaabiQC7wdQUa1v3lT93e0ghSBZzRtdqw68deBXnD1hDyv+J1bgzCJh3ZBCxhvBPHORXswrj
-	cDoW/ZY7TcsVIGO5QvEp4GmstDziu3ZFHY1qI+aw+ou0FEnNMuoupFLZNuLp83s2TtRJER2zOdI18
-	lhqJH7qMRdZXega+qFChXKprXcM37rJGe9ulI5GmE1FFk6U0k2wDCGnnmkwHJc+hOJYbezfMTOfjk
-	PSrmV+JJ1vWzFzGx/aCNVdV1wjpOH4ivbjZcOXoMcKpE9j+q/at8aJ6ESjUgfo8FFsGx+CrVvBtUT
-	SbWNHCtg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ANMKC6ZkFGtwmZlRf0rejmnqaZVDZSrENWv39ZoGVFk=; b=hei5IX+4pwqr30VNkhWd6iV9w5
+	MeB9AoVKom6ULqjw0/IsSVjeSarfWBSuRlb8io6yg7AJrkNw1B3Onf5IEoENSMVPLsZotNp9gYZ5s
+	vva+NWxvBNTLgStZdVEyuaoL9OT/2XVxw5ApfeikriZS6nws9u3MaVjG7+MwkAR33MzTB0nw0FpZl
+	unFH6BFscq1tIvBwOe+s54Z9eieEcfTFelJyIsTcC4yzc1LMjjf67fqhw4eB40dBNLzTxeTNd0Vjz
+	JBrxzWrpovVVoIu3Q3Azx9vL5Jp43aMdU940ad7CoA+Zg4pxVBsT0VD6Cqapkq2Tv54/Jd51ws8JY
+	EKkjvZYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ockKi-003ayV-BT; Mon, 26 Sep 2022 09:23:24 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1ockNO-003cGO-1Z; Mon, 26 Sep 2022 09:26:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ockKc-003auI-J9
-	for linux-mediatek@lists.infradead.org; Mon, 26 Sep 2022 09:23:21 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id j24so6714880lja.4
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Sep 2022 02:23:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=goc6PkT5m1P9sof9+UJf/eV/J47j0G84vgW/lekQxV8=;
-        b=GIC2DbN3y87NHYbRBWxz9PgdwQ6FEZkjUI12TMcgFoqNw0Ha2n1EpIyNUGv7y2vGUA
-         qrkRBp7t4ZaeBJm8yVs+4q2t2xI/IXzCG4IWGsLXAl/862w0Hn2L2oHIRaOmsur7NsU8
-         RScuWt7PM8ant0LNXv4DjG8D7INyhVqLzTcyow5FbksX1oOuGQYjeVHyYFzDxpl1CRa7
-         WPK3nT7A4jl2vSmYgHwCoXgUmQXUjSoLD0GMbaWusCyhhyWR2zkVejzgkZ8ec3G/SL9c
-         QAiKVfNZ2amFSUqADSlrgNyU8xG41rtNnNVSunT9nXqXvGtIKKMoHldljhjviEgO1XLD
-         N4SQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=goc6PkT5m1P9sof9+UJf/eV/J47j0G84vgW/lekQxV8=;
-        b=M+AgCbvr/4ZXjeaX3dXO1CpPwVRorTmj1gKY/CcuFd1RHI3PxCOS9DVElkT76CIxN5
-         LVB7EC8IGgZ9+NOBs2AKGvXTcQdNdgxg9irCzgM2qQSrdGrqYxoPgcbqWsx6st3UBj4E
-         8/MMgPnoDCBuNyqw6WV01rSz/lTWEFpHOnfN00cGt/WGB0Pq0/7fXb9VnMNXpT65nb66
-         c8DS9jmvkKopMr1It+mD+szC3SFFBStCRlylUp2zD/XIN1y19KTCU5NutxqY7Vl/TW+e
-         QT41Q1PPmpHgosXEKEMY4LmYN+qySws9bzxT0wjrQ6JYdPXuPPtCSOvkZNp6mQSIzHDv
-         7Gqg==
-X-Gm-Message-State: ACrzQf2H9cZFCb1xo0TVy8FUSrb5HApivZOpRSqir2+9b4ujqLC0uYNL
-	P14MVGSFPSg3JheTRygsmeZziw==
-X-Google-Smtp-Source: AMsMyM7G0RdidG+n9hog4aSXdwdlwpRd2hv5uqsZGByfjwBD4Msi4qq0KH2y8EthPGxEXM2x7H0xhw==
-X-Received: by 2002:a05:651c:221a:b0:26c:6fe2:c146 with SMTP id y26-20020a05651c221a00b0026c6fe2c146mr7198207ljq.284.1664184195964;
-        Mon, 26 Sep 2022 02:23:15 -0700 (PDT)
-Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id q14-20020a056512210e00b004972b0bb426sm2481294lfr.257.2022.09.26.02.23.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 Sep 2022 02:23:15 -0700 (PDT)
-Message-ID: <c5ee2888-dabf-e3a6-acca-517ede984002@linaro.org>
-Date: Mon, 26 Sep 2022 11:23:14 +0200
+	id 1ockN3-003c7I-Ls; Mon, 26 Sep 2022 09:25:51 +0000
+X-UUID: b2996b7f8d584c76aebff006e69ca9e1-20220926
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ANMKC6ZkFGtwmZlRf0rejmnqaZVDZSrENWv39ZoGVFk=;
+	b=fSOnAcX2s0bC9OKwvqsjnYoukxEIunNGXI/hR7lSCNg//W8cMxqoRlUWsUBcgnsCIrmt1H8hxygsL2+5PIxEUslH5mfKelEU6qSLvKG+mci+NwhsLnAGqmxIJTPZunEKnCRGUYlajYNb+emZfr/DpCKEVH7ZStjXCp9gwdG+5ao=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:a419def7-9d38-4908-9082-2890a432d3ed,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:faf015a3-dc04-435c-b19b-71e131a5fc35,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: b2996b7f8d584c76aebff006e69ca9e1-20220926
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 150211167; Mon, 26 Sep 2022 02:25:44 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 26 Sep 2022 17:14:42 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 26 Sep 2022 17:14:41 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Tzung-Bi
+ Shih <tzungbi@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<nicolas.dufresne@collabora.com>, <wenst@chromium.org>, kyrie wu
+	<kyrie.wu@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
+	<irui.wang@mediatek.com>
+Subject: [V15,04/15] mtk-jpegenc: add jpegenc timeout func interface
+Date: Mon, 26 Sep 2022 17:14:22 +0800
+Message-ID: <20220926091433.18633-5-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220926091433.18633-1-irui.wang@mediatek.com>
+References: <20220926091433.18633-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.0
-Subject: Re: [PATCH v2] dt-bindings: phy: Add compatible for Mediatek MT8188
-Content-Language: en-US
-To: xinlei.lee@mediatek.com, chunfeng.yun@mediatek.com, kishon@ti.com,
- vkoul@kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- matthias.bgg@gmail.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <1664183509-29473-1-git-send-email-xinlei.lee@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <1664183509-29473-1-git-send-email-xinlei.lee@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_022318_663474_6947FBFD 
-X-CRM114-Status: UNSURE (   8.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220926_022549_752344_10E9D33A 
+X-CRM114-Status: GOOD (  13.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,25 +87,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26/09/2022 11:11, xinlei.lee@mediatek.com wrote:
-> From: xinlei lee <xinlei.lee@mediatek.com>
-> 
-> Add dt-binding documentation of dsi-phy for MediaTek MT8188 SoC.
-> 
-> Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-Please add Acked-by/Reviewed-by tags when posting new versions. However,
-there's no need to repost patches *only* to add the tags. The upstream
-maintainer will do that for acks received on the version they apply.
+Generalizes jpegenc timeout func interfaces to handle HW timeout.
 
-https://elixir.bootlin.com/linux/v5.17/source/Documentation/process/submitting-patches.rst#L540
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: irui wang <irui.wang@mediatek.com>
+---
+ .../platform/mediatek/jpeg/mtk_jpeg_core.h    | 10 ++++++++
+ .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 25 +++++++++++++++++++
+ 2 files changed, 35 insertions(+)
 
-If a tag was not added on purpose, please state why and what changed.
-
-
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Best regards,
-Krzysztof
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+index 1e0ba466303b..98de83c9ea4c 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+@@ -75,6 +75,12 @@ struct mtk_jpeg_variant {
+ 	u32 cap_q_default_fourcc;
+ };
+ 
++struct mtk_jpeg_hw_param {
++	struct vb2_v4l2_buffer *src_buffer;
++	struct vb2_v4l2_buffer *dst_buffer;
++	struct mtk_jpeg_ctx *curr_ctx;
++};
++
+ enum mtk_jpegenc_hw_id {
+ 	MTK_JPEGENC_HW0,
+ 	MTK_JPEGENC_HW1,
+@@ -99,6 +105,8 @@ struct mtk_jpegenc_clk {
+  * @master_dev:		mtk_jpeg_dev device
+  * @venc_clk:		jpeg encode clock
+  * @jpegenc_irq:	jpeg encode irq num
++ * @job_timeout_work:	encode timeout workqueue
++ * @hw_param:		jpeg encode hw parameters
+  */
+ struct mtk_jpegenc_comp_dev {
+ 	struct device *dev;
+@@ -107,6 +115,8 @@ struct mtk_jpegenc_comp_dev {
+ 	struct mtk_jpeg_dev *master_dev;
+ 	struct mtk_jpegenc_clk venc_clk;
+ 	int jpegenc_irq;
++	struct delayed_work job_timeout_work;
++	struct mtk_jpeg_hw_param hw_param;
+ };
+ 
+ /**
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+index 3dcf83d6d95e..95812f60ab9f 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+@@ -185,6 +185,26 @@ void mtk_jpeg_set_enc_params(struct mtk_jpeg_ctx *ctx,  void __iomem *base)
+ }
+ EXPORT_SYMBOL_GPL(mtk_jpeg_set_enc_params);
+ 
++static void mtk_jpegenc_timeout_work(struct work_struct *work)
++{
++	struct delayed_work *dly_work = to_delayed_work(work);
++	struct mtk_jpegenc_comp_dev *cjpeg =
++		container_of(dly_work,
++			     struct mtk_jpegenc_comp_dev,
++			     job_timeout_work);
++	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
++	struct vb2_v4l2_buffer *src_buf, *dst_buf;
++
++	src_buf = cjpeg->hw_param.src_buffer;
++	dst_buf = cjpeg->hw_param.dst_buffer;
++	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
++
++	mtk_jpeg_enc_reset(cjpeg->reg_base);
++	clk_disable_unprepare(cjpeg->venc_clk.clks->clk);
++	pm_runtime_put(cjpeg->dev);
++	v4l2_m2m_buf_done(src_buf, buf_state);
++}
++
+ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+ {
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+@@ -196,6 +216,8 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+ 	struct mtk_jpegenc_comp_dev *jpeg = priv;
+ 	struct mtk_jpeg_dev *master_jpeg = jpeg->master_dev;
+ 
++	cancel_delayed_work(&jpeg->job_timeout_work);
++
+ 	irq_status = readl(jpeg->reg_base + JPEG_ENC_INT_STS) &
+ 		JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
+ 	if (irq_status)
+@@ -276,6 +298,9 @@ static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
+ 			master_dev->enc_hw_dev[i] = NULL;
+ 	}
+ 
++	INIT_DELAYED_WORK(&dev->job_timeout_work,
++			  mtk_jpegenc_timeout_work);
++
+ 	jpegenc_clk = &dev->venc_clk;
+ 
+ 	jpegenc_clk->clk_num = devm_clk_bulk_get_all(&pdev->dev,
+-- 
+2.18.0
 
 
