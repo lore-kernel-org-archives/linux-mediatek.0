@@ -4,69 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAF74C6FA86
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 09:53:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70B53C32771
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 09:55:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LHURFVg5oA1bCShw2LEk/6vLZHbMVyXTepvmaZpkxCY=; b=pBoIev6+icMeJjKKXk6XV8MmPv
-	GS1cPzvNqqv3KxKqNvKu2luMeAhwO34L3wgPeNZ1rSFz3KYiSS4niXV6yRtFZgPI8Tf/8MeOC6ggS
-	X3rzKz3OAKHG7WTTFPKnMXhIzHZ45pR/KROcVPjl5/0KiZdj+ux/aLm1Rmm31Om6juoPG/Mtiu+/t
-	un5xVcxiQPdMpohm0+jDrKZeKh0u7ELkFnXygYl2kfdAKiChOGnS1MXtC5LwW9S52LxfJk58AmUJT
-	HCTHq/aRXqOCW0nBdpxtNdURDEqxGRpvnMPqmragzNZtJ188OFQEMO++LNx8E5mbSEwNIwgEBqp2B
-	QbRsg5rw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ASapBEoUb+PaTSJhJohFOJmRhVFsFB906Ss0CjMZ29U=; b=NFdAIN9y1GYmbgJxHJvT35Avzk
+	kcDQvEqJN2yp3Cs1YCg46TuGlAYpqrCy4gf+LSRrhEBiVry6qqAmAJ70+gow5i1TnaiwCX7GgKICl
+	XJsP47bvDliCrk6bjlL+vq97shZSN1x3Aju1DJsC589+aQQv7p3PaG/cdRdaMcEau8MdF9RTJPlAN
+	6a8GjI6FywhZCIa3+mzZf7CFBHVrwmmXcrr+2mDL+jNJwLLmb7q/2wo8ZBF3ojbPhzS3OSgp6ZGhJ
+	MeG3cSyGlurLu/VLq2swhuZ5MgpNkzvK9KrCSHAk93y6M0XmDvOHxhduUhpI66ahe6uA8eZ9M/Iim
+	ZpG3UOFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocknM-003ofU-3J; Mon, 26 Sep 2022 09:53:00 +0000
+	id 1ockpZ-003pvK-Dm; Mon, 26 Sep 2022 09:55:17 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ockdF-003jjg-2y; Mon, 26 Sep 2022 09:42:34 +0000
-X-UUID: de5d7e590fcb4061a0619ae04f70fe89-20220926
+	id 1ockfy-003l4H-0W; Mon, 26 Sep 2022 09:45:24 +0000
+X-UUID: fdddc72ec1f444b6bc96c9dd15e6d7bc-20220926
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=LHURFVg5oA1bCShw2LEk/6vLZHbMVyXTepvmaZpkxCY=;
-	b=uw4+vubcVjm8+0gbwLeTqKXfBWCuvTA98qoV/42NR233vL4uSIe84IGIK4Q5c67yOMHbMHET1alb5pCgiVy7XlDoQ68H2urreM7+vnBm5T0Pdw2LQHXSqBrFtdfvtz3KvENQEZI0UOxhC8HSkNwuVi/NDvHdb479d2D9jk0CgqY=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ASapBEoUb+PaTSJhJohFOJmRhVFsFB906Ss0CjMZ29U=;
+	b=BeXgc93MFvLXuRV+tDjKTxWx/GZNRG2F4jVykjsf+DVipYEJSlIlbaKeYAO9FQtnGp1cW9Ctoio9jARdDgbjlAQFh0bw+opJmSm+80yrrNL/a6NMREMFg/qyiML47n0jqStLXMGe6gAANwUX1v1Sv08j2+VkAqZcp8ki6KhFo80=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:c3142889-ecf4-4876-bbcc-ed95651a1d5c,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:3dea0807-1cee-4c38-b21b-a45f9682fdc0,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:4a7833e0-df80-4445-ad36-96e109dd03fa,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:1ea616a3-dc04-435c-b19b-71e131a5fc35,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: de5d7e590fcb4061a0619ae04f70fe89-20220926
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: fdddc72ec1f444b6bc96c9dd15e6d7bc-20220926
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <xinlei.lee@mediatek.com>)
+	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 355380696; Mon, 26 Sep 2022 02:42:28 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 411300476; Mon, 26 Sep 2022 02:45:18 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 26 Sep 2022 17:11:51 +0800
-Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 26 Sep 2022 17:11:51 +0800
-From: <xinlei.lee@mediatek.com>
-To: <chunfeng.yun@mediatek.com>, <kishon@ti.com>, <vkoul@kernel.org>,
-	<robh+dt@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
-	<matthias.bgg@gmail.com>, <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>
-CC: <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, xinlei lee
-	<xinlei.lee@mediatek.com>
-Subject: [PATCH v2] dt-bindings: phy: Add compatible for Mediatek MT8188
-Date: Mon, 26 Sep 2022 17:11:49 +0800
-Message-ID: <1664183509-29473-1-git-send-email-xinlei.lee@mediatek.com>
-X-Mailer: git-send-email 2.6.4
+ 15.2.792.15; Mon, 26 Sep 2022 17:14:44 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 26 Sep 2022 17:14:43 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Tzung-Bi
+ Shih <tzungbi@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<nicolas.dufresne@collabora.com>, <wenst@chromium.org>, kyrie wu
+	<kyrie.wu@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
+	<irui.wang@mediatek.com>
+Subject: [V15,06/15] mtk-jpegenc: add output pic reorder interface
+Date: Mon, 26 Sep 2022 17:14:24 +0800
+Message-ID: <20220926091433.18633-7-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220926091433.18633-1-irui.wang@mediatek.com>
+References: <20220926091433.18633-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_024233_186951_1E74A7DA 
-X-CRM114-Status: UNSURE (   7.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220926_024522_121703_EA08C6C6 
+X-CRM114-Status: GOOD (  21.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,32 +87,229 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: xinlei lee <xinlei.lee@mediatek.com>
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-Add dt-binding documentation of dsi-phy for MediaTek MT8188 SoC.
+There are two HWs in mt8195. Since the two HWs run
+in parallel, it is necessary to reorder the output images
+to ensure that the order is consistent with the input images.
 
-Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: irui wang <irui.wang@mediatek.com>
 ---
-Change since v1:
-Adjust mt8188 position.
----
----
- Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 11 +----
+ .../platform/mediatek/jpeg/mtk_jpeg_core.h    | 43 ++++++++++++-----
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  |  1 +
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.h  |  3 +-
+ .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 47 ++++++++++++++++++-
+ 5 files changed, 81 insertions(+), 24 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
-index 9c2a734..7ea29ad 100644
---- a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
-+++ b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
-@@ -26,6 +26,7 @@ properties:
-           - const: mediatek,mt2701-mipi-tx
-       - items:
-           - enum:
-+              - mediatek,mt8188-mipi-tx
-               - mediatek,mt8365-mipi-tx
-           - const: mediatek,mt8183-mipi-tx
-       - const: mediatek,mt2701-mipi-tx
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 43fc5e9dae9d..0d4e7220e509 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -111,15 +111,6 @@ enum {
+ 	MTK_JPEG_BUF_FLAGS_LAST_FRAME		= 1,
+ };
+ 
+-struct mtk_jpeg_src_buf {
+-	u32 frame_num;
+-	struct vb2_v4l2_buffer b;
+-	struct list_head list;
+-	struct mtk_jpeg_dec_param dec_param;
+-
+-	struct mtk_jpeg_ctx *curr_ctx;
+-};
+-
+ static int debug;
+ module_param(debug, int, 0644);
+ 
+@@ -1377,6 +1368,8 @@ static int mtk_jpeg_open(struct file *file)
+ 	if (jpeg->is_jpgenc_multihw)
+ 		INIT_WORK(&ctx->jpeg_work, mtk_jpegenc_worker);
+ 
++	INIT_LIST_HEAD(&ctx->dst_done_queue);
++	spin_lock_init(&ctx->done_queue_lock);
+ 	v4l2_fh_init(&ctx->fh, vfd);
+ 	file->private_data = &ctx->fh;
+ 	v4l2_fh_add(&ctx->fh);
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+index cbc6fbc21681..0f69402ffce6 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+@@ -14,10 +14,11 @@
+ #include <media/v4l2-ctrls.h>
+ #include <media/v4l2-device.h>
+ #include <media/v4l2-fh.h>
++#include <media/videobuf2-v4l2.h>
+ 
+-#define MTK_JPEG_NAME		"mtk-jpeg"
++#include "mtk_jpeg_dec_hw.h"
+ 
+-#define MTK_JPEG_COMP_MAX		3
++#define MTK_JPEG_NAME		"mtk-jpeg"
+ 
+ #define MTK_JPEG_FMT_FLAG_OUTPUT	BIT(0)
+ #define MTK_JPEG_FMT_FLAG_CAPTURE	BIT(1)
+@@ -75,6 +76,15 @@ struct mtk_jpeg_variant {
+ 	u32 cap_q_default_fourcc;
+ };
+ 
++struct mtk_jpeg_src_buf {
++	u32 frame_num;
++	struct vb2_v4l2_buffer b;
++	struct list_head list;
++	struct mtk_jpeg_dec_param dec_param;
++
++	struct mtk_jpeg_ctx *curr_ctx;
++};
++
+ enum mtk_jpeg_hw_state {
+ 	MTK_JPEG_HW_IDLE = 0,
+ 	MTK_JPEG_HW_BUSY = 1,
+@@ -205,17 +215,20 @@ struct mtk_jpeg_q_data {
+ 
+ /**
+  * struct mtk_jpeg_ctx - the device context data
+- * @jpeg:		JPEG IP device for this context
+- * @out_q:		source (output) queue information
+- * @cap_q:		destination (capture) queue queue information
+- * @fh:			V4L2 file handle
+- * @state:		state of the context
+- * @enable_exif:	enable exif mode of jpeg encoder
+- * @enc_quality:	jpeg encoder quality
+- * @restart_interval:	jpeg encoder restart interval
+- * @ctrl_hdl:		controls handler
+- * @jpeg_work:		jpeg encoder workqueue
+- * @total_frame_num:	encoded frame number
++ * @jpeg:			JPEG IP device for this context
++ * @out_q:			source (output) queue information
++ * @cap_q:			destination queue information
++ * @fh:				V4L2 file handle
++ * @state:			state of the context
++ * @enable_exif:		enable exif mode of jpeg encoder
++ * @enc_quality:		jpeg encoder quality
++ * @restart_interval:		jpeg encoder restart interval
++ * @ctrl_hdl:			controls handler
++ * @jpeg_work:			jpeg encoder workqueue
++ * @total_frame_num:		encoded frame number
++ * @dst_done_queue:		encoded frame buffer queue
++ * @done_queue_lock:		encoded frame operation spinlock
++ * @last_done_frame_num:	the last encoded frame number
+  */
+ struct mtk_jpeg_ctx {
+ 	struct mtk_jpeg_dev		*jpeg;
+@@ -230,6 +243,10 @@ struct mtk_jpeg_ctx {
+ 
+ 	struct work_struct jpeg_work;
+ 	u32 total_frame_num;
++	struct list_head dst_done_queue;
++	/* spinlock protecting the encode done buffer */
++	spinlock_t done_queue_lock;
++	u32 last_done_frame_num;
+ };
+ 
+ #endif /* _MTK_JPEG_CORE_H */
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+index afbbfd5d02bc..1e3852295f2f 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+@@ -9,6 +9,7 @@
+ #include <linux/kernel.h>
+ #include <media/videobuf2-core.h>
+ 
++#include "mtk_jpeg_core.h"
+ #include "mtk_jpeg_dec_hw.h"
+ 
+ #define MTK_JPEG_DUNUM_MASK(val)	(((val) - 1) & 0x3)
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.h
+index fa0d45fd7c34..87aaa5c9082b 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.h
+@@ -11,9 +11,10 @@
+ 
+ #include <media/videobuf2-core.h>
+ 
+-#include "mtk_jpeg_core.h"
+ #include "mtk_jpeg_dec_reg.h"
+ 
++#define MTK_JPEG_COMP_MAX		3
++
+ enum {
+ 	MTK_JPEG_DEC_RESULT_EOF_DONE		= 0,
+ 	MTK_JPEG_DEC_RESULT_PAUSE		= 1,
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+index 02d6c4993653..1bbb712d78d0 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+@@ -185,6 +185,50 @@ void mtk_jpeg_set_enc_params(struct mtk_jpeg_ctx *ctx,  void __iomem *base)
+ }
+ EXPORT_SYMBOL_GPL(mtk_jpeg_set_enc_params);
+ 
++static void mtk_jpegenc_put_buf(struct mtk_jpegenc_comp_dev *jpeg)
++{
++	struct mtk_jpeg_ctx *ctx;
++	struct vb2_v4l2_buffer *dst_buffer;
++	struct list_head *temp_entry;
++	struct list_head *pos = NULL;
++	struct mtk_jpeg_src_buf *dst_done_buf, *tmp_dst_done_buf;
++	unsigned long flags;
++
++	ctx = jpeg->hw_param.curr_ctx;
++	if (!ctx) {
++		dev_err(jpeg->dev, "comp_jpeg ctx fail !!!\n");
++		return;
++	}
++
++	dst_buffer = jpeg->hw_param.dst_buffer;
++	if (!dst_buffer) {
++		dev_err(jpeg->dev, "comp_jpeg dst_buffer fail !!!\n");
++		return;
++	}
++
++	dst_done_buf = container_of(dst_buffer,
++				    struct mtk_jpeg_src_buf, b);
++
++	spin_lock_irqsave(&ctx->done_queue_lock, flags);
++	list_add_tail(&dst_done_buf->list, &ctx->dst_done_queue);
++	while (!list_empty(&ctx->dst_done_queue) &&
++	       (pos != &ctx->dst_done_queue)) {
++		list_for_each_prev_safe(pos, temp_entry, &ctx->dst_done_queue) {
++			tmp_dst_done_buf = list_entry(pos,
++						      struct mtk_jpeg_src_buf,
++						      list);
++			if (tmp_dst_done_buf->frame_num ==
++				ctx->last_done_frame_num) {
++				list_del(&tmp_dst_done_buf->list);
++				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
++						  VB2_BUF_STATE_DONE);
++				ctx->last_done_frame_num++;
++			}
++		}
++	}
++	spin_unlock_irqrestore(&ctx->done_queue_lock, flags);
++}
++
+ static void mtk_jpegenc_timeout_work(struct work_struct *work)
+ {
+ 	struct delayed_work *dly_work = to_delayed_work(work);
+@@ -207,6 +251,7 @@ static void mtk_jpegenc_timeout_work(struct work_struct *work)
+ 	atomic_inc(&master_jpeg->enchw_rdy);
+ 	wake_up(&master_jpeg->enc_hw_wq);
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
++	mtk_jpegenc_put_buf(cjpeg);
+ }
+ 
+ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+@@ -238,7 +283,7 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+ 	vb2_set_plane_payload(&dst_buf->vb2_buf, 0, result_size);
+ 	buf_state = VB2_BUF_STATE_DONE;
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+-	v4l2_m2m_buf_done(dst_buf, buf_state);
++	mtk_jpegenc_put_buf(jpeg);
+ 	pm_runtime_put(ctx->jpeg->dev);
+ 	clk_disable_unprepare(jpeg->venc_clk.clks->clk);
+ 	if (!list_empty(&ctx->fh.m2m_ctx->out_q_ctx.rdy_queue) ||
 -- 
-2.6.4
+2.18.0
 
 
