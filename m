@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B6A8C07E9D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 09:00:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA820C07E9D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 09:02:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MkRqezsOk3r+0Dc3ECt+LdALkBzO1L8EHbkUxZ2oF5M=; b=WecIATdV+5mejeKM2LMHXugo3z
-	yULQ9SD4Gp3by9YthhmMu9I6MAFbebtlBhwt/am4EmAcBT/+zxAvXkCqM7IcpLPzTxNXN8oGvQ+EZ
-	nc2SXpRM7aT0IM48mdkz4lrBoBIJ5bzhNmc6TOOj+8s7SINX+mYiUV3Rj8VWrnZZO2tYSZDu9H8Tx
-	L1SbeBiOOhUNnOHjRsC4nmpPjWk794ANiLEzNVv5buqXB0ZS31QhwJ4XnGCYwgpdX6rG7CTKLUean
-	7oEcBrrQS8XY0RgOOaiwK7Tq0pi+luoxe6ucee3kbWjfav9pmfsb0Q/CJo3d6VTvvzOQnDImFafOm
-	9OcSGolQ==;
+	bh=VrDNk+PBen0ziAz+bxagvtYVgbyKCb+DZ3LEyeDnhAw=; b=wUPz54hXqvk9sj/Tcx+LzsO4/O
+	+fkLnfgLB0KnwOYdQUsP0WRVAGIrlk8AYfBddQhHvczMupGzKrGrOJQxl0zweEmZpue3wenhQCKQ1
+	dn7xAQTI2XIeWyb3scCJBokngzl4fHp9j6NRD3b4cVqDah2/hyuGWbe8hcz2d2HB6Ulqj1bfGZtI4
+	O0RWxIh8rdXovP7+GQ+NM1XI5oeywEkVpetKNblXnMay3jbbMgdWCjWU6oGi5wcqZatZ24ObN+bhh
+	kXPX+AvWiUIlrgij77DPQdQFoaoGPIttKDV96SeD/KmVnRLug3RnB5HxrGwtN3xO0ZJLyBFlbPExZ
+	lJzB6A7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocjyp-003PE1-He; Mon, 26 Sep 2022 09:00:47 +0000
+	id 1ock0M-003Q4b-Tf; Mon, 26 Sep 2022 09:02:22 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocjya-003P75-4J; Mon, 26 Sep 2022 09:00:33 +0000
+	id 1ock06-003Pwt-9p; Mon, 26 Sep 2022 09:02:07 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 93EC36602251;
-	Mon, 26 Sep 2022 10:00:29 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2A5BD6602250;
+	Mon, 26 Sep 2022 10:02:04 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664182830;
-	bh=bMVcDk3X6u99bKLgfXI+FhEYfAxSZHzyzbIzr8PhH+w=;
+	s=mail; t=1664182924;
+	bh=O7yTnbCSwacpaQ7u5yBgx5B/jmbp1mTfJETSiq+UOYI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=l25gcGT4sPUU+J8zbwhVbwirwzez7PHsi3P4gxW3KwtGF1mMJkW4dBmSD4qjCz7ua
-	 wU5pgayAES4HYWLf8iCCLOgo29HgDZxiNTHnqiRffoQbwfacTb36tCiS7A6OoqZck3
-	 UQL6af+Ofj/hPOC7FBOTWvURAro/QTmfudjpDkvEKHL6/nya2UMgBVU5rvDqDflK6t
-	 fVTcFN7bgUEDzZXukDpIbBd3NHIjFnRKLckvELd32R/iD4rnMM+//pU41oHVNA8aff
-	 55zL52eA3UGkZ2dWLtLbRt/rs+MQyKm609NY23D9E08ORXHmQqHdzNcRrYdhE3FoIk
-	 YfaxnlPTsxeAQ==
-Message-ID: <cff7aa75-4448-dc08-3b6f-488fcf78cb87@collabora.com>
-Date: Mon, 26 Sep 2022 11:00:26 +0200
+	b=ATTN9DAsyeHNWcZnAVzis6nDAa02EMavwqvugwQL+yZVmbWzTvxZJwWLJVPkUi7B9
+	 HT81YB0fUYlbhWhi1gMeYYBXA6wT6U154/FzXaqTKgRxPg9HwPOZ8a2yFPFRIj84O5
+	 JMryFlUHa5tXN1j1WAKR2Q/lesgQlNhrgZHB5lHx8HM0ozsKS+YUqjbl0PqyM3pcNr
+	 1HvqYx1f91T/nZRBXh0K6nzCQgt1E/anQibrn1Cf2pC8NSmjOOz1Xu1djdtTr9Mc9N
+	 4+j2mIcuDggl8g3OV9bF7PvepZ0XwAW6tmbfHugyB+oogNo/Y8Mz6YNqKYt+KUMDY3
+	 BidlPkPi9PtUw==
+Message-ID: <11a141b8-510f-57cb-01aa-6508e58fa5ef@collabora.com>
+Date: Mon, 26 Sep 2022 11:02:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH v2 05/10] clk: mediatek: clk-mt8195-mfg: Reparent mfg_bg3d
- and propagate rate changes
+Subject: Re: [PATCH v10,2/3] drm: mediatek: Adjust the dpi output format to
+ MT8186
 Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: matthias.bgg@gmail.com, mturquette@baylibre.com, sboyd@kernel.org,
- miles.chen@mediatek.com, rex-bc.chen@mediatek.com, nfraprado@collabora.com,
- chun-jie.chen@mediatek.com, jose.exposito89@gmail.com,
- drinkcat@chromium.org, weiyi.lu@mediatek.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org
-References: <20220915072458.18232-1-angelogioacchino.delregno@collabora.com>
- <20220915072458.18232-6-angelogioacchino.delregno@collabora.com>
- <CAGXv+5HxEWPmLLi0zRrJ+T7bVcpoQoFt81+_ciXNDXRrGmfU6w@mail.gmail.com>
- <9f7d1eda-cdf3-5108-7e9d-a10937fe224e@collabora.com>
- <CAGXv+5HYKjDJALa6MAAE4XzRTMfE_vdEWg6XaWekUq7w8ko3BQ@mail.gmail.com>
+To: xinlei.lee@mediatek.com, matthias.bgg@gmail.com,
+ jason-jh.lin@mediatek.com, rex-bc.chen@mediatek.com, ck.hu@mediatek.com,
+ p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, jitao.shi@mediatek.com
+References: <1663927104-15506-1-git-send-email-xinlei.lee@mediatek.com>
+ <1663927104-15506-3-git-send-email-xinlei.lee@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <CAGXv+5HYKjDJALa6MAAE4XzRTMfE_vdEWg6XaWekUq7w8ko3BQ@mail.gmail.com>
+In-Reply-To: <1663927104-15506-3-git-send-email-xinlei.lee@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_020032_465780_E845AE85 
-X-CRM114-Status: GOOD (  26.50  )
+X-CRM114-CacheID: sfid-20220926_020206_512547_44905E60 
+X-CRM114-Status: UNSURE (   6.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,115 +79,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/09/22 10:57, Chen-Yu Tsai ha scritto:
-> On Mon, Sep 26, 2022 at 4:36 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 26/09/22 05:27, Chen-Yu Tsai ha scritto:
->>> On Thu, Sep 15, 2022 at 3:25 PM AngeloGioacchino Del Regno
->>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>
->>>> The MFG_BG3D is a gate to enable/disable clock output to the GPU,
->>>> but the actual output is decided by multiple muxes; in particular:
->>>> mfg_ck_fast_ref muxes between "slow" (top_mfg_core_tmp) and
->>>> "fast" (MFGPLL) clock, while top_mfg_core_tmp muxes between the
->>>> 26MHz clock and various system PLLs.
->>>>
->>>> This also implies that "top_mfg_core_tmp" is a parent of the
->>>> "mfg_ck_fast_ref" mux (and not vice-versa), so reparent the
->>>
->>> I don't see where this was the case though? I think what you meant
->>> was that the direct parent for "mfg_bg3d" is "mfg_ck_fast_ref, not
->>> "top_mfg_core_tmp"?
->>>
->>
->> MFG_BG3D's direct parent is mfg_ck_fast_ref - yes - but in the commit message
->> I am explaining how the clock tree for MFG_BG3D really is and, in particular,
->> I'm then explaining that:
->> * parenting MFG_BG3D to "top_mfg_core_tmp" is wrong; because
->> * "top_mfg_core_tmp" is a parent of "mfg_ck_fast_ref" (not the other way around).
->>
->> So, the question in your comment is addressed just a little later....
->>
->>>> MFG_BG3D gate to the latter and add the CLK_SET_RATE_PARENT
->>
->> ...here, where I say "reparent MFG_BG3D to the latter", where "the latter" is,
->> exactly "mfg_ck_fast_ref".
->>
->> I hope you now understand what I am trying to communicate :-)
->>
->> However, if even after that you still think that the commit description should
->> be rewritten in some less tangled and/or more understandable way, I definitely
->> can do that.
->>
->> Please confirm :-)
+Il 23/09/22 11:58, xinlei.lee@mediatek.com ha scritto:
+> From: Xinlei Lee <xinlei.lee@mediatek.com>
 > 
-> I think
+> Dpi output needs to adjust the output format to dual edge for MT8186.
 > 
->      This also implies that "top_mfg_core_tmp" is a parent of the
->      "mfg_ck_fast_ref" mux (and not vice-versa)
-> 
-> actually confused me.
-> 
-> Maybe just say
-> 
->      The clock gate comes after all the muxes, so its parent is
->      mfg_ck_fast_ref, not top_mfg_core_tmp. Reparent mfg_bg3d to
->      the latter to match the hardware ...
-> 
-> Since you are fixing the topology, could you also add a fixes tag?
-> 
-> 
+> Co-developed-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Xinlei Lee <xinlei.lee@mediatek.com>
 
-Yeah, sure! I'll send a new version most probably today.
-Thanks for the review(s)!
-
-Cheers,
-Angelo
-
-> Thanks
-> ChenYu
-> 
-> 
->>>> flag to it: this way we ensure propagating rate changes that
->>>> are requested on MFG_BG3D along its entire clock tree.
->>>>
->>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>
->>> Otherwise,
->>>
->>> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
->>>
->>>
->>>> ---
->>>>    drivers/clk/mediatek/clk-mt8195-mfg.c | 6 ++++--
->>>>    1 file changed, 4 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/drivers/clk/mediatek/clk-mt8195-mfg.c b/drivers/clk/mediatek/clk-mt8195-mfg.c
->>>> index 9411c556a5a9..c94cb71bd9b9 100644
->>>> --- a/drivers/clk/mediatek/clk-mt8195-mfg.c
->>>> +++ b/drivers/clk/mediatek/clk-mt8195-mfg.c
->>>> @@ -17,10 +17,12 @@ static const struct mtk_gate_regs mfg_cg_regs = {
->>>>    };
->>>>
->>>>    #define GATE_MFG(_id, _name, _parent, _shift)                  \
->>>> -       GATE_MTK(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
->>>> +       GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs,       \
->>>> +                      _shift, &mtk_clk_gate_ops_setclr,        \
->>>> +                      CLK_SET_RATE_PARENT)
->>>>
->>>>    static const struct mtk_gate mfg_clks[] = {
->>>> -       GATE_MFG(CLK_MFG_BG3D, "mfg_bg3d", "top_mfg_core_tmp", 0),
->>>> +       GATE_MFG(CLK_MFG_BG3D, "mfg_bg3d", "mfg_ck_fast_ref", 0),
->>>>    };
->>>>
->>>>    static const struct mtk_clk_desc mfg_desc = {
->>>> --
->>>> 2.37.2
->>>>
->>
->>
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
