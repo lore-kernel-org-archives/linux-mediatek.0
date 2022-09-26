@@ -4,66 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DD8BC6FA83
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 13:50:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 462C7C32771
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 14:08:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dDu9apQ4vCKFJKy0P2xDjRbN9HRDAJz/40nJjG+tt3E=; b=1EBBrOR1KA/veiY72iSxKnpLsb
-	2oGbPcm8oN2JAy2nJl1rvExTCCEJbiqVQHkhSuXDEwfQGzGIUn/rtvBUeOBQvsFu6Jf1mun+lje4m
-	RxbKBPHkhWdwNFg0jFnEO7a55rk4XGYIWpyAT8QN7mOk3wTTuKW7Nk0ibzBQZ/TQjit9ta5HkO5fi
-	XTs6YEJYTn4WaKa45EmQWMj5ks11X/Vj+vR1bEzQONc6q+7ddiIQYmtBrBETb+LzlOEGkjZGxIum1
-	9QtHvUd2GmOdcNNa0+SzKn25J9fkU6tBFG/YZ4h0/K0v0Zb0iTGQ2hNFa46p6615MwaSNl5AhEj9R
-	4da1rOpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AEkwFycTr/8uGKOSK5oNQQLfbY9CQ8AfF3r5Af8DfcU=; b=sibOZYEf/UGMA/rGGhdzZU78y6
+	YmF9UlvZ+Zu7vfwBdmpTek1kvkP3CmfOyxzpBgvtliH7ooxEncUNfEnwH7WoZmknn1VEQ1/ziegUU
+	3Of7cj+uKXf+sjb7N49xj9Xr/+3LZ6hYamBZQ2flylPndABSvZaQn5K1ibOmBxdFGr13MlUGrz3Th
+	TBPzBCxiXSTcvv2tEt8scfAOiNIWhzQ+RX+uVIOjA96qy4IViQAm9DKK/CzXPDGUo1bNKwFJlKDrx
+	ffpRl4wPBK4i8HaTC+gDzfOGnegBNrcl0XpjFu4hPOWS0fwJ8AUe1yvGA7lQruMRV4aKXtnEnyE/8
+	kgg1TYfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocoUr-005DT0-In; Mon, 26 Sep 2022 13:50:09 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ocomS-005HMp-LZ; Mon, 26 Sep 2022 14:08:20 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocoUf-005DQH-EH; Mon, 26 Sep 2022 13:50:00 +0000
+	id 1ocolN-005GtC-RR; Mon, 26 Sep 2022 14:07:18 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id F19BCB8068A;
-	Mon, 26 Sep 2022 13:49:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B0A8C433C1;
-	Mon, 26 Sep 2022 13:49:46 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2EE7160DD6;
+	Mon, 26 Sep 2022 14:07:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E362BC433C1;
+	Mon, 26 Sep 2022 14:07:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664200191;
-	bh=8cBSY/c98zhLzt9mBybVF6c7J50QLah1jmN2uLzVuJg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ABQmkoWDYpQtHx3IK4N83Qx41nJzfsuDrVPsjLsj4crqZjSNEsMfU0ndG58BDZACH
-	 S28U4rnLKBvykxPqtYv8qQ6q3KtBvl3fGXaKTJ6cP5X2uYJv6jV2c/B8NjczMr+Mw2
-	 /qJpUrbm0EWnYJ9PFw094OityW0gFeS8Lriv67nHEgjBEzojxoyq7TZHpBGajtpRDt
-	 R1Bj3NRKjg0Oi46GJg5yJpur4uBBcPQgBuC92FTfIl5VKt63jOhTNu9oI6ITGv+uMm
-	 Y3xhs4GzdSUz+mQ3sQ4502NO+2W9hUTU+jAVQrm5xMS8i6n1COCT4MW9vLz9KQLFWz
-	 UMEwlkTghHeLA==
-Date: Mon, 26 Sep 2022 19:19:42 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Asutosh Das <quic_asutoshd@quicinc.com>
-Cc: quic_nguyenb@quicinc.com, quic_xiaosenh@quicinc.com,
-	quic_cang@quicinc.com, quic_nitirawa@quicinc.com,
-	quic_rampraka@quicinc.com, quic_richardp@quicinc.com,
-	stanley.chu@mediatek.com, adrian.hunter@intel.com,
-	bvanassche@acm.org, avri.altman@wdc.com, beanhuo@micron.com,
-	martin.petersen@oracle.com, linux-scsi@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v1 00/16] Add Multi Circular Queue Support
-Message-ID: <20220926134942.GB101994@thinkpad>
-References: <cover.1663894792.git.quic_asutoshd@quicinc.com>
+	s=k20201202; t=1664201232;
+	bh=ySnah8bvB+A3n/zCRB87xWDZuvHSaOZd/TpqYUZjtnA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=aeS8lkLOd6ACEAGMd5VNRciESUfEdDm0v1dPZkJm5OJHNr6VcAvBUXdLDesLKdIH/
+	 gRfMnSlfZAWqkz5W/yj68CkKsSxcBX+KsmS1Ay8qzAFxyRKjWZBpRtwKoYRa+dc/Bk
+	 JIlpD2q8bO9TuXBGDeQ6txlPY8wwSWSloR/rmvNKJ7rCfuw3jDM78SIyvk8QkYs6IM
+	 OHPyQMEN3RuAHr6owKFOrUGRRihacoI03GbtXM/fp8bkYt9FZ2MQM/K1t70khR0pqZ
+	 UWfUy5SV95xpQITIihLrcE5Dwgv8K09zH/Zlf19IbudwsReXxTOjzxN/PwIshBRF5x
+	 QDMtMvX5e0hhg==
+Message-ID: <b9874b8f-b40f-f48d-856a-c5fc91384042@kernel.org>
+Date: Mon, 26 Sep 2022 16:07:05 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <cover.1663894792.git.quic_asutoshd@quicinc.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [V15,01/15] dt-bindings: mediatek: Add mediatek, mt8195-jpgenc
+ compatible
+Content-Language: en-US
+To: Irui Wang <irui.wang@mediatek.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Tzung-Bi Shih <tzungbi@chromium.org>,
+ angelogioacchino.delregno@collabora.com, nicolas.dufresne@collabora.com,
+ wenst@chromium.org, kyrie wu <kyrie.wu@mediatek.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
+ xia.jiang@mediatek.com, maoguang.meng@mediatek.com,
+ Rob Herring <robh@kernel.org>
+References: <20220926091433.18633-1-irui.wang@mediatek.com>
+ <20220926091433.18633-2-irui.wang@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <20220926091433.18633-2-irui.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_064957_830937_8ADE1B80 
-X-CRM114-Status: GOOD (  22.04  )
+X-CRM114-CacheID: sfid-20220926_070714_012380_6F81C9F3 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,77 +87,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 22, 2022 at 06:05:07PM -0700, Asutosh Das wrote:
-> 
-> UFS Multi-Circular Queue (MCQ) has been added in UFSHCI v4.0 to improve storage performance.
-> This patch series is a RFC implementation of this.
+On 26/09/2022 11:14, Irui Wang wrote:
 
-This is no more an RFC series. Also, it would be good if you can provide a
-summary on how the implementation has been done.
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/memory/mt8195-memory-port.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/clock/mt8195-clk.h>
+> +    #include <dt-bindings/power/mt8195-power.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        jpgenc-master {
+> +                compatible = "mediatek,mt8195-jpgenc";
 
-Thanks,
-Mani
+Use 4 spaces for example indentation. You have it quite inconsistent.
 
-> 
-> This is the initial driver implementation and it has been verified by booting on an emulation
-> platform. During testing, all low power modes were disabled and it was in HS-G1 mode.
-> 
-> Please take a look and let us know your thoughts.
-> 
-> v1:
-> - Split the changes
-> - Addressed Bart's comments
-> - Addressed Bean's comments
-> 
-> * RFC versions:
-> v2 -> v3:
-> - Split the changes based on functionality
-> - Addressed queue configuration issues
-> - Faster SQE tail pointer increments
-> - Addressed comments from Bart and Manivannan
-> 
-> v1 -> v2:
-> - Enabled host_tagset
-> - Added queue num configuration support
-> - Added one more vops to allow vendor provide the wanted MAC
-> - Determine nutrs and can_queue by considering both MAC, bqueuedepth and EXT_IID support
-> - Postponed MCQ initialization and scsi_add_host() to async probe
-> - Used (EXT_IID, Task Tag) tuple to support up to 4096 tasks (theoretically)
-> 
-> Asutosh Das (16):
->   ufs: core: Probe for ext_iid support
->   ufs: core: Introduce Multi-circular queue capability
->   ufs: core: Defer adding host to scsi if mcq is supported
->   ufs: core: mcq: Introduce Multi Circular Queue
->   ufs: core: mcq: Configure resource regions
->   ufs: core: mcq: Calculate queue depth
->   ufs: core: mcq: Allocate memory for mcq mode
->   ufs: core: mcq: Configure operation and runtime interface
->   ufs: core: mcq: Use shared tags for MCQ mode
->   ufs: core: Prepare ufshcd_send_command for mcq
->   ufs: core: mcq: Find hardware queue to queue request
->   ufs: core: Prepare for completion in mcq
->   ufs: mcq: Add completion support of a cqe
->   ufs: core: mcq: Add completion support in poll
->   ufs: core: mcq: Enable Multi Circular Queue
->   ufs: qcom-host: Enable multi circular queue capability
-> 
->  drivers/ufs/core/Makefile      |   2 +-
->  drivers/ufs/core/ufs-mcq.c     | 511 +++++++++++++++++++++++++++++++++++++++++
->  drivers/ufs/core/ufshcd-priv.h |  84 ++++++-
->  drivers/ufs/core/ufshcd.c      | 322 +++++++++++++++++++++-----
->  drivers/ufs/host/ufs-qcom.c    |  49 ++++
->  drivers/ufs/host/ufs-qcom.h    |   4 +
->  include/ufs/ufs.h              |   6 +
->  include/ufs/ufshcd.h           | 136 +++++++++++
->  include/ufs/ufshci.h           |  63 +++++
->  9 files changed, 1117 insertions(+), 60 deletions(-)
->  create mode 100644 drivers/ufs/core/ufs-mcq.c
-> 
-> -- 
-> 2.7.4
-> 
+Best regards,
+Krzysztof
 
--- 
-மணிவண்ணன் சதாசிவம்
 
