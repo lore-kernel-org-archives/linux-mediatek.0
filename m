@@ -4,122 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E718C32771
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 18:25:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C24EEC32771
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 18:56:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BP5woBij8v4xBWqYl2GeE39vGFjF2GMf7pZt5VfsJNs=; b=q6GJ+6aUZ06FBdDOlPeTwgejG9
-	29lAusONq+4Z93SuuXuuUCWkE5qZuXwPUMtoa3AjU92E9VryICMFiitjGSNnZG7pBsKgEIvJg94SV
-	P3w4miJ/66/92sKlLorzF/2n0gfO9Nqp8qylMBVLaSHuuekcwLbahgdso314288aHAzhGkuf6nS7o
-	qJEm0lNAeBpm9MbyrjVl8Jax1zy83T2xfG0t4pHo94zPyD7g3dZ6XJkeq12VTooVHkvxSzothn9n3
-	EkIdQ8tx4dfDhjpWxxIiegtFR26UIN2iMqo5uGtCRsyMrOVrcvWzFfja+pC8upOnLiTjtD5zOoSLt
-	0ZJgvm8w==;
+	bh=bvdXHN6vP4kNBt6JcBzJk7vmEspEQD7GvxU0iOUauTk=; b=M/lnekXSvKhbX+n3D5uKil2YDq
+	cAq7T7+KutphZA55oafkCXy4V6E/lA0MIw2+9zzBqpmF4XYldCgYb9CL7BejY9OJNTwcYQa6g7Bvv
+	AvatH7BKV/BgwuGVk3XB4o9602domHHkIwiDn8hG3fjl7OgNpy7+yomFz+YutPc9QtMZxrjawnkyl
+	DXmVjbkhsiNJg5fr6obZlEpgQ3IQ5KoQFkRp/KvXOGKAMgjvi5PsQ/pW6AtoD4e2kAlcnUMe+Xgwg
+	J/bh8x+nIbVSU+EqzPe3OTpbUn7fBa9vll4E8DC87QCkrCsh81C/9G2iUVHIIoFbJ/KSv8rOYdvgQ
+	NMOcMVag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocsnR-006H3a-MW; Mon, 26 Sep 2022 18:25:37 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1octHR-006U7C-CS; Mon, 26 Sep 2022 18:56:37 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocsnM-006H1h-Jy; Mon, 26 Sep 2022 18:25:34 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 2EE95B80D38;
-	Mon, 26 Sep 2022 18:25:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 511A9C4314F;
-	Mon, 26 Sep 2022 18:25:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664216729;
-	bh=Y5qLzRGdsOCwx5ouHFiN9SCKtz+YXlGNMDHQ/+qU8uw=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=J4Gpyrjp5Ac3/0WEXKzD2q8xPAGnJawSZa8f6rOYxdt0mKmkj9MN103fi8O8KaXQr
-	 rKWbgtkn5zJF3KKNnZSQ2JILojCcgiBN0x9ZmlZL2GWqEeKQ2pnT/IWJv7Iu+jDIOh
-	 96blNui3VgWUy3swBEpS0oA6MLP9rJH0OAtT9Od305+7MRAmsIyCAIiUz2OBTF0k7d
-	 eFkt78ESdu5i0S+8YOqHyVZJX5e+tQFk5eoCDYSLZSngY7LY4QoLDMkkzhldYUbQsv
-	 TGBigf9PLmjOkjjLolgemDpPgE6cZ2Kk9OjuxUnAkhFtQMWWo0u/C1+B6MAJ1CUpMy
-	 dmsu9IhVknvqQ==
-Received: by mail-ot1-f45.google.com with SMTP id u6-20020a056830118600b006595e8f9f3fso5010228otq.1;
-        Mon, 26 Sep 2022 11:25:29 -0700 (PDT)
-X-Gm-Message-State: ACrzQf11g9A7M3StcyolYbQsjGXKDIdMAVksmRSMWbLvr6KSqSI4sZjk
-	2jwo26V2YTdm2PFFUeTL5THnDXfhkQsPi3cP2A==
-X-Google-Smtp-Source: AMsMyM5WOL0fZfHYzWaw2DdaPSr6kh7DGRI2ScO+UdVg2zStt3aJXG4qtOOC5FFK87yV5Mi/AUvaSMeil9/+6K1KBfA=
-X-Received: by 2002:a81:6608:0:b0:351:4cd2:d59a with SMTP id
- a8-20020a816608000000b003514cd2d59amr1485347ywc.432.1664216717388; Mon, 26
- Sep 2022 11:25:17 -0700 (PDT)
+	id 1octH9-006Tyc-Cp; Mon, 26 Sep 2022 18:56:20 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 28QIc0TX029109;
+	Mon, 26 Sep 2022 18:55:58 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
+ cc : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=qcppdkim1; bh=bvdXHN6vP4kNBt6JcBzJk7vmEspEQD7GvxU0iOUauTk=;
+ b=JlhX7g7k7d4uXvEArOUecEzUqebw31Sa/UXcr7v9avZfvGo/PE4nROYWE0b4g/RfhWyl
+ 4GpmKGfwQRVwVR+6Uw0xV5K+FbMn+JkR88CCK6vEb3VyI54scCk+wMdiUpuf7/8Ud+Df
+ b1jJ2FRwhwM+B2KMTd01qkp+ztCAIiPlxr1jFH0qIYgJO9LCYIGSlAQgnbUBuZaolXxe
+ a/Nxcj9FGxENcWndV0hdIQIUxAdSiUjAt85g8cdWHSFVMlFUtBXDZaxLTZKI8JnOxzwK
+ ogLy/A0Vz20liBc4cdc2F04a4MFh+P102yzXPOUADklmJCK/1gbKF48FUQVBfLmxmTO9 sQ== 
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3jue008p5k-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 26 Sep 2022 18:55:58 +0000
+Received: from nasanex01a.na.qualcomm.com ([10.52.223.231])
+	by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 28QItvdr007229
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 26 Sep 2022 18:55:57 GMT
+Received: from asutoshd-linux1.qualcomm.com (10.80.80.8) by
+ nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.29; Mon, 26 Sep 2022 11:55:57 -0700
+Date: Mon, 26 Sep 2022 11:55:29 -0700
+From: Asutosh Das <quic_asutoshd@quicinc.com>
+To: Manivannan Sadhasivam <mani@kernel.org>
+CC: <quic_nguyenb@quicinc.com>, <quic_xiaosenh@quicinc.com>,
+        <quic_cang@quicinc.com>, <quic_nitirawa@quicinc.com>,
+        <quic_rampraka@quicinc.com>, <quic_richardp@quicinc.com>,
+        <stanley.chu@mediatek.com>, <adrian.hunter@intel.com>,
+        <bvanassche@acm.org>, <avri.altman@wdc.com>, <beanhuo@micron.com>,
+        <martin.petersen@oracle.com>, <linux-scsi@vger.kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        "moderated list:ARM/Mediatek SoC support"
+	<linux-arm-kernel@lists.infradead.org>,
+        "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v1 00/16] Add Multi Circular Queue Support
+Message-ID: <20220926185529.GA15228@asutoshd-linux1.qualcomm.com>
+References: <cover.1663894792.git.quic_asutoshd@quicinc.com>
+ <20220926134942.GB101994@thinkpad>
 MIME-Version: 1.0
-References: <20220701012647.2007122-1-saravanak@google.com>
- <YwS5J3effuHQJRZ5@kroah.com> <CAOesGMivJ5Q-jdeGKw32yhjmNiYctHjpEAnoMMRghYqWD2m2tw@mail.gmail.com>
- <YygsEtxKz8dsEstc@kroah.com> <CAOesGMh5GHCONTQ9M1Ro7zW-hkL_1F7Xt=xRV0vYSfPY=7LYkQ@mail.gmail.com>
-In-Reply-To: <CAOesGMh5GHCONTQ9M1Ro7zW-hkL_1F7Xt=xRV0vYSfPY=7LYkQ@mail.gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Mon, 26 Sep 2022 13:25:05 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqK7auA8coB3DCqSDKw1ept_yQihVs-Me3bvU923os23xg@mail.gmail.com>
-Message-ID: <CAL_JsqK7auA8coB3DCqSDKw1ept_yQihVs-Me3bvU923os23xg@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] Fix console probe delay when stdout-path isn't set
-To: Olof Johansson <olof@lixom.net>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Saravana Kannan <saravanak@google.com>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Laurentiu Tudor <laurentiu.tudor@nxp.com>, 
-	Jiri Slaby <jirislaby@kernel.org>, Michael Ellerman <mpe@ellerman.id.au>, 
-	Benjamin Herrenschmidt <benh@kernel.crashing.org>, Paul Mackerras <paulus@samba.org>, 
-	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>, 
-	Nicolas Saenz Julienne <nsaenz@kernel.org>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, Al Cooper <alcooperx@gmail.com>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
-	Tobias Klauser <tklauser@distanz.ch>, Russell King <linux@armlinux.org.uk>, 
-	Vineet Gupta <vgupta@kernel.org>, Richard Genoud <richard.genoud@gmail.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@microchip.com>, Alexander Shiyan <shc_work@mail.ru>, 
-	Baruch Siach <baruch@tkos.co.il>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
-	Karol Gugala <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, 
-	Gabriel Somlo <gsomlo@gmail.com>, Neil Armstrong <narmstrong@baylibre.com>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
-	Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, 
-	Bjorn Andersson <bjorn.andersson@linaro.org>, Pali Rohar <pali@kernel.org>, 
-	Andreas Farber <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Laxman Dewangan <ldewangan@nvidia.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang7@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, "David S. Miller" <davem@davemloft.net>, 
-	Hammer Hsieh <hammerh0314@gmail.com>, Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>, 
-	Michal Simek <michal.simek@xilinx.com>, sascha hauer <sha@pengutronix.de>, 
-	peng fan <peng.fan@nxp.com>, kevin hilman <khilman@kernel.org>, 
-	ulf hansson <ulf.hansson@linaro.org>, len brown <len.brown@intel.com>, 
-	pavel machek <pavel@ucw.cz>, joerg roedel <joro@8bytes.org>, will deacon <will@kernel.org>, 
-	andrew lunn <andrew@lunn.ch>, heiner kallweit <hkallweit1@gmail.com>, 
-	eric dumazet <edumazet@google.com>, jakub kicinski <kuba@kernel.org>, paolo abeni <pabeni@redhat.com>, 
-	linus walleij <linus.walleij@linaro.org>, hideaki yoshifuji <yoshfuji@linux-ipv6.org>, 
-	david ahern <dsahern@kernel.org>, kernel-team@android.com, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, iommu@lists.linux-foundation.org, 
-	netdev@vger.kernel.org, linux-gpio@vger.kernel.org, 
-	linuxppc-dev@lists.ozlabs.org, linux-serial@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	linux-snps-arc@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-actions@lists.infradead.org, 
-	linux-unisoc@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	sparclinux@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"; format=flowed
+Content-Disposition: inline
+In-Reply-To: <20220926134942.GB101994@thinkpad>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: kktRfshA7eazCiLO_cRa7J83I4G7Y9pa
+X-Proofpoint-ORIG-GUID: kktRfshA7eazCiLO_cRa7J83I4G7Y9pa
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
+ definitions=2022-09-26_09,2022-09-22_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0
+ lowpriorityscore=0 mlxlogscore=941 suspectscore=0 spamscore=0 bulkscore=0
+ adultscore=0 impostorscore=0 malwarescore=0 priorityscore=1501
+ clxscore=1015 mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2209130000 definitions=main-2209260117
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_112532_980528_FEA43B50 
-X-CRM114-Status: GOOD (  42.90  )
+X-CRM114-CacheID: sfid-20220926_115619_462458_3A6DA30F 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,68 +102,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 19, 2022 at 5:56 PM Olof Johansson <olof@lixom.net> wrote:
->
-> On Mon, Sep 19, 2022 at 1:44 AM Greg Kroah-Hartman
-> <gregkh@linuxfoundation.org> wrote:
-> >
-> > On Sun, Sep 18, 2022 at 08:44:27PM -0700, Olof Johansson wrote:
-> > > On Tue, Aug 23, 2022 at 8:37 AM Greg Kroah-Hartman
-> > > <gregkh@linuxfoundation.org> wrote:
-> > > >
-> > > > On Thu, Jun 30, 2022 at 06:26:38PM -0700, Saravana Kannan wrote:
-> > > > > These patches are on top of driver-core-next.
-> > > > >
-> > > > > Even if stdout-path isn't set in DT, this patch should take console
-> > > > > probe times back to how they were before the deferred_probe_timeout
-> > > > > clean up series[1].
-> > > >
-> > > > Now dropped from my queue due to lack of a response to other reviewer's
-> > > > questions.
-> > >
-> > > What happened to this patch? I have a 10 second timeout on console
-> > > probe on my SiFive Unmatched, and I don't see this flag being set for
-> > > the serial driver. In fact, I don't see it anywhere in-tree. I can't
-> > > seem to locate another patchset from Saravana around this though, so
-> > > I'm not sure where to look for a missing piece for the sifive serial
-> > > driver.
-> > >
-> > > This is the second boot time regression (this one not fatal, unlike
-> > > the Layerscape PCIe one) from the fw_devlink patchset.
-> > >
-> > > Greg, can you revert the whole set for 6.0, please? It's obviously
-> > > nowhere near tested enough to go in and I expect we'll see a bunch of
-> > > -stable fixups due to this if we let it remain in.
-> >
-> > What exactly is "the whole set"?  I have the default option fix queued
-> > up and will send that to Linus later this week (am traveling back from
-> > Plumbers still), but have not heard any problems about any other issues
-> > at all other than your report.
->
-> I stand corrected in this case, the issue on the Hifive Unmatched was
-> a regression due to a PWM clock change -- I just sent a patch for that
-> (serial driver fix).
->
-> So it seems like as long as the fw_devlink.strict=1 patch is reverted,
-> things are back to a working state here.
->
-> I still struggle with how the fw_devlink patchset is expected to work
-> though, since DT is expected to describe the hardware configuration,
-> and it has no knowledge of whether there are drivers that will be
-> bound to any referenced supplier devnodes. It's not going to work well
-> to assume that they will always be bound, and to add 10 second
-> timeouts for those cases isn't a good solution. Seems like the number
-> of special cases will keep adding up.
+Hello Mani,
+Thanks for taking a look at the series.
 
-Since the introduction of deferred probe, the kernel has always
-assumed if there is a device described, then there is or will be a
-driver for it. The result is you can't use new DTs (if they add
-providers) with older kernels.
+On Mon, Sep 26 2022 at 06:50 -0700, Manivannan Sadhasivam wrote:
+>On Thu, Sep 22, 2022 at 06:05:07PM -0700, Asutosh Das wrote:
+>>
+>> UFS Multi-Circular Queue (MCQ) has been added in UFSHCI v4.0 to improve storage performance.
+>> This patch series is a RFC implementation of this.
+>
+>This is no more an RFC series. Also, it would be good if you can provide a
+>summary on how the implementation has been done.
+>
 
-We've ended up with a timeout because no one has come up with a better
-way to handle it. What the kernel needs is userspace saying "I'm done
-loading modules", but it's debatable whether that's a good solution
-too.
+Sure, I will add it.
+I shall wait for more comments from others for some more time before pushing the
+next version.
 
-Rob
+-asd
 
