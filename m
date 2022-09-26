@@ -4,57 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5CE1C07E9D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 09:17:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B64C32771
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 09:17:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=05M3M7J7kDkTRDSeF5O8eaR0ZRr7az9EUbdWM6vT2FA=; b=WiS7lweoEgvxaeUQ0I191gjlAo
-	2TXc3dgkQeBT9+QhLqB3xMOVNpODw4amMLwUwTtjMBlWLZSL5a/nzBO9MIfYG1srVOi9jLFchx5IV
-	iKf5mfGrZB/wJgR/27hS1MwYs9mlcn8uu3MRBLNcFNPNBRfbEbWduaVCNdXlZekdQZeBocLqAg6sn
-	jOn1LYGkzuDXto7kq/L9p/NK89ACZfAXXHYzt4eQSIoNA5Q1kIGmQImx9qOOtwQB8zJBmMHnl2MJo
-	yALwbPx/pPXs9TacTzW1+X3730P0TuP6pGOLQZyYyKFE2MoTZ/W8fxaDRMM9QDQHHzyaLPNsV9iKX
-	/a8TS89A==;
+	bh=FI7+yDqRFMQfsNaMu5RNXN0C32bQYEyedygDQDDVruE=; b=oNUVTTV2L+8DO1hGmB12giQj5d
+	aCDpaMSsGCZ1mF59OupnlDK867OBXev3WqAtDtJr6ptCmiwMc1Z8cs4bMghAxdhIkeKTF+KuZ/nAT
+	BCTqsY1Pr6quUj/fCRp/sIPER1JfgjIkMH1M0TtvsqanBZ0iDqlPHC5nZxm1R4nVc5cHd2FisCYel
+	aZPY29Eb+46y4lU5tAgHBAIsPvKTKMyLWxwI+gq7Oee/V93TBcyhVo9isLaiLEO/U0TS1+xCPqvWK
+	OIc8LhUUdTUrA0rLtNgOtWZ0qIl9cncNPZswra291vaqDNZy5EVyXH1XVGw3gSOsdeECJE0T/Cviy
+	fNRsoi1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ockEw-003Xh9-U3; Mon, 26 Sep 2022 09:17:27 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ockEz-003XjX-M3; Mon, 26 Sep 2022 09:17:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ockDj-003Wz6-VQ; Mon, 26 Sep 2022 09:16:13 +0000
-X-UUID: a6aa8a0296d64ad6af144a08aa39d399-20220926
+	id 1ockDp-003X1y-1c; Mon, 26 Sep 2022 09:16:18 +0000
+X-UUID: 4d02c54cdf2e44e998d6ddc566a33740-20220926
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=05M3M7J7kDkTRDSeF5O8eaR0ZRr7az9EUbdWM6vT2FA=;
-	b=Z3P+/mUUoTMNyDfBQyOAMMhVom7bLQ0vYWXNTlb9hlucTF6+Ssh0ShsKRvDYJveKh2MW/Joaa1LHdgr128RKx3iTx3v3z8WP6m1oJvabUE/ywcOj4dfX/hqp1Sq/fpfk/RU5CUhagC6QrGzwEiPS1y1C22hQvcKuTCrbCKPT0aI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FI7+yDqRFMQfsNaMu5RNXN0C32bQYEyedygDQDDVruE=;
+	b=nbwqZEwAIeMgxxeKdwMZTcB5e283fVX0cgAjQSJiEzYAcn6jj+XjXrJmo1PgoDyrt3F3i0/JP9yEYGaMPQQz3p03WZKkQmPMvDd4FsZQT+L9t3urfpd3NvEgsWFmlVuU8Q5VfaKGN5oXP7WERQiaZMaG36GxiHycvQcjqXy5eg0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:82889a0f-fecd-45bf-b09b-f818612251ad,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:95
-X-CID-INFO: VERSION:1.1.11,REQID:82889a0f-fecd-45bf-b09b-f818612251ad,IP:0,URL
-	:0,TC:0,Content:0,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTION
-	:quarantine,TS:95
-X-CID-META: VersionHash:39a5ff1,CLOUDID:599515a3-dc04-435c-b19b-71e131a5fc35,B
-	ulkID:220926171458V9UNIAI2,BulkQuantity:1,Recheck:0,SF:38|28|17|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
-X-UUID: a6aa8a0296d64ad6af144a08aa39d399-20220926
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-CID-O-INFO: VERSION:1.1.11,REQID:b895545d-9834-4bd3-8759-e4968333405c,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:579615a3-dc04-435c-b19b-71e131a5fc35,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 4d02c54cdf2e44e998d6ddc566a33740-20220926
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 271299120; Mon, 26 Sep 2022 02:16:06 -0700
+	with ESMTP id 1258798884; Mon, 26 Sep 2022 02:16:12 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 26 Sep 2022 17:14:55 +0800
+ 15.2.792.15; Mon, 26 Sep 2022 17:14:53 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Mon, 26 Sep 2022 17:14:54 +0800
+ Transport; Mon, 26 Sep 2022 17:14:52 +0800
 From: Irui Wang <irui.wang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Tzung-Bi
- Shih <tzungbi@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, <angelogioacchino.delregno@collabora.com>,
 	<nicolas.dufresne@collabora.com>, <wenst@chromium.org>, kyrie wu
 	<kyrie.wu@mediatek.com>
 CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
@@ -63,9 +60,9 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
 	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
 	<irui.wang@mediatek.com>
-Subject: [V15,15/15] mtk-jpegdec: add stop cmd interface for jpgdec
-Date: Mon, 26 Sep 2022 17:14:33 +0800
-Message-ID: <20220926091433.18633-16-irui.wang@mediatek.com>
+Subject: [V15,13/15] media: mtk-jpegdec: add output pic reorder interface
+Date: Mon, 26 Sep 2022 17:14:31 +0800
+Message-ID: <20220926091433.18633-14-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220926091433.18633-1-irui.wang@mediatek.com>
 References: <20220926091433.18633-1-irui.wang@mediatek.com>
@@ -74,8 +71,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_021612_032082_0D1CC23B 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20220926_021617_137522_60C6E6CB 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,28 +89,87 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: kyrie wu <kyrie.wu@mediatek.com>
 
-Add stop cmd interface for jpgdec to stop stream
+add output reorder func to reorder the output images
+to ensure the output pic is consistent with the input images.
 
 Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
 Signed-off-by: irui wang <irui.wang@mediatek.com>
 ---
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 3 +++
- 1 file changed, 3 insertions(+)
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 47 ++++++++++++++++++-
+ 1 file changed, 45 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 2fe0e2a1c127..79a8f1b1965c 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -667,6 +667,9 @@ static const struct v4l2_ioctl_ops mtk_jpeg_dec_ioctl_ops = {
- 	.vidioc_streamoff               = v4l2_m2m_ioctl_streamoff,
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+index f7e3013234d3..95fce3f3c0c6 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+@@ -440,6 +440,49 @@ void mtk_jpeg_dec_set_config(void __iomem *base,
+ }
+ EXPORT_SYMBOL_GPL(mtk_jpeg_dec_set_config);
  
- 	.vidioc_unsubscribe_event	= v4l2_event_unsubscribe,
++static void mtk_jpegdec_put_buf(struct mtk_jpegdec_comp_dev *jpeg)
++{
++	struct mtk_jpeg_src_buf *dst_done_buf, *tmp_dst_done_buf;
++	struct vb2_v4l2_buffer *dst_buffer;
++	struct list_head *temp_entry;
++	struct list_head *pos = NULL;
++	struct mtk_jpeg_ctx *ctx;
++	unsigned long flags;
 +
-+	.vidioc_decoder_cmd = v4l2_m2m_ioctl_decoder_cmd,
-+	.vidioc_try_decoder_cmd = v4l2_m2m_ioctl_try_decoder_cmd,
- };
++	ctx = jpeg->hw_param.curr_ctx;
++	if (unlikely(!ctx)) {
++		dev_err(jpeg->dev, "comp_jpeg ctx fail !!!\n");
++		return;
++	}
++
++	dst_buffer = jpeg->hw_param.dst_buffer;
++	if (!dst_buffer) {
++		dev_err(jpeg->dev, "comp_jpeg dst_buffer fail !!!\n");
++		return;
++	}
++
++	dst_done_buf = container_of(dst_buffer, struct mtk_jpeg_src_buf, b);
++
++	spin_lock_irqsave(&ctx->done_queue_lock, flags);
++	list_add_tail(&dst_done_buf->list, &ctx->dst_done_queue);
++	while (!list_empty(&ctx->dst_done_queue) &&
++	       (pos != &ctx->dst_done_queue)) {
++		list_for_each_prev_safe(pos, temp_entry, &ctx->dst_done_queue) {
++			tmp_dst_done_buf = list_entry(pos,
++						      struct mtk_jpeg_src_buf,
++						      list);
++			if (tmp_dst_done_buf->frame_num ==
++				ctx->last_done_frame_num) {
++				list_del(&tmp_dst_done_buf->list);
++				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
++						  VB2_BUF_STATE_DONE);
++				ctx->last_done_frame_num++;
++			}
++		}
++	}
++	spin_unlock_irqrestore(&ctx->done_queue_lock, flags);
++}
++
+ static void mtk_jpegdec_timeout_work(struct work_struct *work)
+ {
+ 	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
+@@ -460,7 +503,7 @@ static void mtk_jpegdec_timeout_work(struct work_struct *work)
+ 	atomic_inc(&master_jpeg->dechw_rdy);
+ 	wake_up(&master_jpeg->dec_hw_wq);
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+-	v4l2_m2m_buf_done(dst_buf, buf_state);
++	mtk_jpegdec_put_buf(cjpeg);
+ }
  
- static int mtk_jpeg_queue_setup(struct vb2_queue *q,
+ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+@@ -500,7 +543,7 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+ 
+ 	buf_state = VB2_BUF_STATE_DONE;
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+-	v4l2_m2m_buf_done(dst_buf, buf_state);
++	mtk_jpegdec_put_buf(jpeg);
+ 	pm_runtime_put(ctx->jpeg->dev);
+ 	clk_disable_unprepare(jpeg->jdec_clk.clks->clk);
+ 
 -- 
 2.18.0
 
