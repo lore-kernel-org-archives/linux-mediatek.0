@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B4FEC07E9D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 07:49:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1929BC32771
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 08:23:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s1nsU6G9+dJBL+H+um2LKp+0M7TJ52ob9HiOYSkASW4=; b=l+UTNC6XYR25TFwLgCSvIq+UBm
-	KeSfy6XpGKvElrI+3tBn1tak+ZVBNSJjCrvCtpl8EnfRNt6EByto+vZfPvDhGZIAcFZK4trNYSQK8
-	7xPtQAtiwUABtysqoKgGEMzRB97ihFm6Lx8i1cL2PQKN07IKAhZ0ypz/Fn0qi339HzCZGGB2m6br9
-	J4fJJoAhONRl6z1xPjxNzw0ZfR4SgLjIrsa3hRkOYCKMRw21Ga44shUsg7SMKNSt6BbEtO4KQK8fc
-	2gKNBv4Xkxx5G5wwS6whbiKvI5au8NqelWWylZaYGVUfoDlDiVSh9hv4x+YXQVNPP6S2xEXbIhCaI
-	1RBhD51w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2AqvEKFBn8bWhlugeF6G1nYUIkuGEZA4eSNJNEqXddg=; b=ENEr3e3QDxDJ2c3ih1pM3dXqbD
+	+bCkgrhz4DBmQvxFguDvtH1eFJbhluIUMzqlF34VVOUY+xjQID/zyeSJ5POe3SWkGmXisHpjoFsyr
+	3svEfZAGDgKY+UmpWI7WPOxS+snJrukn/Xn01E59On0FhqgurC8CBOueUX+Lci7EP6r1t4QC2pLSb
+	3dCiMYHQjrIzV2pvAW69JhhzGEJFJAoAwErrOczV1cv7K/UMqRgNr+kpOFzWL6Cij1I9+JYQWTdsL
+	DR/lM9M8sJLZKWVKxLsbPfRKDY3xp6g/ZOd4kRDKAN+4gzp321q+WY9TwJdRcN/A1Dam3cjlqqQR7
+	JV/YnfIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocird-002sQg-QU; Mon, 26 Sep 2022 07:49:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ocjOs-0037vu-Gk; Mon, 26 Sep 2022 08:23:38 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocirK-002sGg-V3; Mon, 26 Sep 2022 07:49:03 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1ocjOc-0037nA-VW; Mon, 26 Sep 2022 08:23:24 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 656976185F;
-	Mon, 26 Sep 2022 07:48:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 978F3C433D6;
-	Mon, 26 Sep 2022 07:48:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664178538;
-	bh=Ls0crOyKk+lkt5TTs2uBxIeihBWmZjPuhe4cTEvU2s8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=EEFaMW2CEFbnuKtlIjOgMxeDsj9tyJuHJZaXMY/oHyOOw1vDBO9xDon1sV7Bcv6yp
-	 Cf/J5L/E8oxCvjn+C3Ptog6MkUAxyq33d95WzV0Zhm+xDLlW74loKvJrlNI5Ezewut
-	 u+K9x+IpZVsl9/RhCopjzTHMFrqMAur5ojhymucQmWb0Lgb1+nfvXduEjlXGHwTzIi
-	 AzXkxrCHpRdUTb/XmOxI/JVtrwEwVXE0fG5UrUDkqjyzMND5e2xd7mbHHXHLiw3t1W
-	 voh4mA8XMMKaLywuwJxgLJPEj8EEfxcy/d8DQoodT5Nm15AinVEOGP0wlsWUZFK4V6
-	 tVdZWA+WyCRig==
-Date: Mon, 26 Sep 2022 08:48:52 +0100
-From: Lee Jones <lee@kernel.org>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	hsinyi@chromium.org
-Subject: Re: [PATCH 1/5] dt-bindings: mfd: mediatek: Add scpsys compatible
- for mt8186
-Message-ID: <YzFZZErEDZLC9Cuu@google.com>
-References: <20220923131148.6678-1-allen-kh.cheng@mediatek.com>
- <20220923131148.6678-2-allen-kh.cheng@mediatek.com>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 94AA6660205E;
+	Mon, 26 Sep 2022 09:23:15 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664180596;
+	bh=MVT8E7UNgtdLeSEcxLBqZl3/eB+Gxp6/SNtim0tCYuY=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=lyh2zHvduqXNETNEkVDmrUWukno+cOit+7kVC5NFYqxwbXLtvFuG6tOJL3hrtjZP2
+	 P0CjpFbZYS5+6Cbg5pk+IzmzqLBIIZpBxrjZTn+gctvuYzfIPnLKN1133FJv/sTNPr
+	 55GlxNqPjtlD776T+OiVb2K0kRcF3r6ihtouKOuxTyagiKLnS2aOENmY7EbDrEmqLl
+	 K4804CXvLI77afKIOEN+D186vR5EmziHVpZf4xqaflpGdunvygOeZx/XzenMeewvWJ
+	 NlA75F+8+Uq5nIdaP1zJPAtHeyN3iiPqmXOT2snBeWfdKvbY+1wHMUI0rObuha4UIA
+	 mc/sz+7Jer6KA==
+Message-ID: <c9b2eed6-7f4f-ba37-8f21-6d6e18107287@collabora.com>
+Date: Mon, 26 Sep 2022 10:23:12 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220923131148.6678-2-allen-kh.cheng@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH] firmware: mediatek: Use dev_err_probe() to simplify code
+To: Yuan Can <yuancan@huawei.com>, matthias.bgg@gmail.com,
+ broonie@kernel.org, tinghan.shen@mediatek.com, tzungbi@google.com,
+ yc.hung@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20220924024359.26949-1-yuancan@huawei.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220924024359.26949-1-yuancan@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_004859_088057_73BA7A90 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20220926_012323_254059_51102678 
+X-CRM114-Status: UNSURE (   8.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,17 +75,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 23 Sep 2022, Allen-KH Cheng wrote:
-
-> Add a new scpsys compatible for mt8186 SoC.
+Il 24/09/22 04:43, Yuan Can ha scritto:
+> In the probe path, dev_err() can be replaced with dev_err_probe()
+> which will check if error code is -EPROBE_DEFER and prints the
+> error name. It also sets the defer probe reason which can be
+> checked later through debugfs.
 > 
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> ---
->  .../devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml          | 1 +
->  1 file changed, 1 insertion(+)
+> Signed-off-by: Yuan Can <yuancan@huawei.com>
 
-Applied, thanks.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
--- 
-Lee Jones [李琼斯]
 
