@@ -4,70 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE71CC32771
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 15:08:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B859BC6FA86
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 15:21:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GFhm1qnuIBZd5EFkDkNRL0cQCmzaBizXFcYnA/zA3Ls=; b=ap2ULrG2ePjgxOH+WgOhgyD6El
-	f2AZezJHHpMvd27Rq1iuYpNpiA9q0PFnI8PniGg0xMuh4QBQPjFZe9BGV6Cs9V+PQXivazFhviRB4
-	rhhE+pXOxMrBlEmmLrMK6UKNtFDUqIWd27gpF1lPQUjQ9aYoCsSaP2Jkf515SlEzaV+aSxd5Oiweu
-	zhHotAe5cLLwOCYzcW7QSKdQ/8Kd+CgpthykZ5yJVLIR0XSgf5fx9DEWute4Bk9WyhfZtgPFCieQU
-	OrO40ODUWt6AFHnKx2z3JkyYyRi5slvoF2TxIFv1oxALFBqUvpkxAszmalEbeZze48W8r9H9UyhNh
-	0xrfu1Yw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FIFgHqPBPNy3yM204wyN2Is4H3dGTWgaSTtPRpzzBuw=; b=hbdpA4XH/KffYcZ8fKkWdep4fH
+	uqfDXpKqgRwu70b+FLdH33GhdgYRgB39mVRFONJGqhNgvRi7UDaRy5GPWhtDSnwLdkJI0V48wvrNu
+	5EBCxIkx/1crPmys8O7IIkwm61SIkCc+AqjTw6Z/Wy8+d+tuaWrnve1mL5mA1ZbiNCvZ+a1HHPnSW
+	+0qF0OQcIDJdgbLlQNKfsGetOi0Hnat6gAZC6pRJKE0O3446HytR4SdwQip+8JfTWNaXnH/j3po3T
+	tqdKZu+LBvgbIkDmoW80T5RO3U4UwmApByXbECMOHJlh/x2oZJE44kHqwbeh1Wd8WZO4UuhpA3GpG
+	3ygtfQEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocpij-005Zs3-Tg; Mon, 26 Sep 2022 15:08:33 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1ocpvB-005cDW-UD; Mon, 26 Sep 2022 15:21:25 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocpiW-005ZoN-BC; Mon, 26 Sep 2022 15:08:22 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1ocpv0-005cAE-OF; Mon, 26 Sep 2022 15:21:16 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id C2F8BB80AD3;
-	Mon, 26 Sep 2022 15:08:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4918DC433D6;
-	Mon, 26 Sep 2022 15:08:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664204897;
-	bh=ck8LAR0C3+inTkPwB1+T0RQ3M06BtkVKhVhA8h6PDBI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CVwzF2G1iF0Kle/rqKf+Uv2SJkXkuz9ormVLF2xMMMrmO0qK8EpNdQEiXFSkZVdxW
-	 mFBMA8xbgQtKzP9mUz1KsgM6dFWuSd/6Lt1kT/Lw4a85ZODlS0IlqZB8OeoRuWUN8W
-	 QG5cmpE0jRSibwRVdphvPVa4emXnr1OlMdmhCVJWi1/ZhxgLbd9ttKROsGzq+1VW5y
-	 ZBjPinWN82L3gQC9ylj9gUqz0kQl4BwVyg6RNlW8DCq9aZEvKNWsCaeaMnViVWfixG
-	 oTbohbiI4dXDtghS3Wdc2KYavMLSQvCH1RHg2Q8SNK4HddnwYHCWoWclyEXTB3Dq+h
-	 3xJv1YVy1WJdg==
-Date: Mon, 26 Sep 2022 20:37:50 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Asutosh Das <quic_asutoshd@quicinc.com>
-Cc: quic_nguyenb@quicinc.com, quic_xiaosenh@quicinc.com,
-	quic_cang@quicinc.com, quic_nitirawa@quicinc.com,
-	quic_rampraka@quicinc.com, quic_richardp@quicinc.com,
-	stanley.chu@mediatek.com, adrian.hunter@intel.com,
-	bvanassche@acm.org, avri.altman@wdc.com, beanhuo@micron.com,
-	martin.petersen@oracle.com, linux-scsi@vger.kernel.org,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	"James E.J. Bottomley" <jejb@linux.ibm.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v1 05/16] ufs: core: mcq: Configure resource regions
-Message-ID: <20220926150750.GF101994@thinkpad>
-References: <cover.1663894792.git.quic_asutoshd@quicinc.com>
- <4d4df6ad6353b93253fb22deefb772dc59f5c84e.1663894792.git.quic_asutoshd@quicinc.com>
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C04086600371;
+	Mon, 26 Sep 2022 16:21:10 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664205671;
+	bh=CUjqHy4tnGfM2kkCAOfVdjkEold9qGI9EH5hPzPlOkI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Ty75L7GMLlZIna8DWvtOYYFccyAcn3A/3yv52cjxgdoMwL7gnOa8VI7qfyKAhnlH0
+	 CHQS/QvvIUCcQDjc2xdrCEsmDg5JrWRhQg2aZXEiSylUDdEFS2KNoZMOtfBCqz3JRX
+	 Hm13kgdPk7j7t00VSaiwfFcZDPWK5SjQnr74H0jOcEjfx5BPnxgmhRJg8chX2NLB+y
+	 x2pvUfqS70XkwwjwpvzKloLoT+G7YgEPCqqpNtvKhnNm3tq/VJZt5WpwFVSm4rKQIw
+	 JFrZSeHUxWwMuAz9gzUT5XVfjA8vWybGIhEeL4Jr1fFZTlh3JqE6ZiKJHKu478sfiF
+	 N5E72ZgF22d7w==
+Message-ID: <dcdc61d0-a979-b746-6259-48a67175c675@collabora.com>
+Date: Mon, 26 Sep 2022 17:21:07 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <4d4df6ad6353b93253fb22deefb772dc59f5c84e.1663894792.git.quic_asutoshd@quicinc.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [RESEND PATCH v3] mailbox: mtk-cmdq: fix gce timeout issue
+Content-Language: en-US
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Hsin-Yi Wang <hsinyi@chromium.org>
+References: <20220926090219.11871-1-yongqiang.niu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220926090219.11871-1-yongqiang.niu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_080820_700727_62E0DC4E 
-X-CRM114-Status: GOOD (  30.78  )
+X-CRM114-CacheID: sfid-20220926_082114_950866_E71EECE8 
+X-CRM114-Status: GOOD (  26.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,225 +77,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 22, 2022 at 06:05:12PM -0700, Asutosh Das wrote:
-> Define the mcq resources and add support to ioremap
-> the resource regions.
+Il 26/09/22 11:02, Yongqiang Niu ha scritto:
+> 1. enable gce ddr enable(gce reigster offset 0x48, bit 16 to 18) when gce work,
+> and disable gce ddr enable when gce work job done
+> 2. split cmdq clk enable/disable api, and control gce ddr enable/disable
+> in clk enable/disable function to make sure it could protect when cmdq
+> is multiple used by display and mdp
 > 
-> Co-developed-by: Can Guo <quic_cang@quicinc.com>
-> Signed-off-by: Can Guo <quic_cang@quicinc.com>
-> Signed-off-by: Asutosh Das <quic_asutoshd@quicinc.com>
+> this is only for some SOC which has flag "control_by_sw".
+> for this kind of gce, there is a handshake flow between gce and ddr
+> hardware,
+> if not set ddr enable flag of gce, ddr will fall into idle mode,
+> then gce instructions will not process done.
+> we need set this flag of gce to tell ddr when gce is idle or busy
+> controlled by software flow.
+> 
+> ddr problem is a special case.
+> when test suspend/resume case, gce sometimes will pull ddr, and ddr can
+> not go to suspend.
+> if we set gce register 0x48 to 0x7, will fix this gce pull ddr issue,
+> as you have referred [1] and [2] (8192 and 8195)
+> but for mt8186, the gce is more special, except setting of [1] and [2],
+> we need add more setting set gce register 0x48 to (0x7 << 16 | 0x7)
+> when gce working to make sure gce could process all instructions ok.
+> this case just need normal bootup, if we not set this, display cmdq
+> task will timeout, and chrome homescreen will always black screen.
+> 
+> and with this patch, we have done these test on mt8186:
+> 1.suspend/resume
+> 2.boot up to home screen
+> 3.playback video with youtube.
+> 
+> suspend issue is special gce hardware issue, gce client  driver
+> command already process done, but gce still pull ddr.
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > ---
->  drivers/ufs/core/ufs-mcq.c | 100 ++++++++++++++++++++++++++++++++++++++++++++-
->  include/ufs/ufshcd.h       |  28 +++++++++++++
->  2 files changed, 127 insertions(+), 1 deletion(-)
+> change sinc v2:
+> 1. add definition GCE_CTRL_BY_SW and GCE_DDR_EN instead of magic number
+> ---
 > 
-> diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-> index 934556f..e5cc7ab 100644
-> --- a/drivers/ufs/core/ufs-mcq.c
-> +++ b/drivers/ufs/core/ufs-mcq.c
-> @@ -17,6 +17,12 @@
->  #define UFS_MCQ_MIN_READ_QUEUES 0
->  #define UFS_MCQ_MIN_POLL_QUEUES 0
->  
-> +#define MCQ_QCFGPTR_MASK	GENMASK(7, 0)
-> +#define MCQ_QCFGPTR_UNIT	0x200
-> +#define MCQ_SQATTR_OFFSET(c) \
-> +	((((c) >> 16) & MCQ_QCFGPTR_MASK) * MCQ_QCFGPTR_UNIT)
-> +#define MCQ_QCFG_SIZE	0x40
-> +
->  static unsigned int dev_cmd_queue = 1;
->  
->  static int rw_queue_count_set(const char *val, const struct kernel_param *kp)
-> @@ -85,6 +91,96 @@ module_param_cb(poll_queues, &poll_queue_count_ops, &poll_queues, 0644);
->  MODULE_PARM_DESC(poll_queues,
->  		 "Number of poll queues used for r/w. Default value is 1");
->  
-> +/* Resources */
-> +static const struct ufshcd_res_info_t ufshcd_res_info[RES_MAX] = {
-> +	{.name = "ufs_mem", .resource = NULL, .base = NULL},
-> +	{.name = "mcq", .resource = NULL, .base = NULL},
-> +	/* Submission Queue DAO */
-> +	{.name = "mcq_sqd", .resource = NULL, .base = NULL},
-> +	/* Submission Queue Interrupt Status */
-> +	{.name = "mcq_sqis", .resource = NULL, .base = NULL},
-> +	/* Completion Queue DAO */
-> +	{.name = "mcq_cqd", .resource = NULL, .base = NULL},
-> +	/* Completion Queue Interrupt Status */
-> +	{.name = "mcq_cqis", .resource = NULL, .base = NULL},
-> +	/* MCQ vendor specific */
-> +	{.name = "mcq_vs", .resource = NULL, .base = NULL},
-> +};
-> +
-> +static int ufshcd_mcq_config_resource(struct ufs_hba *hba)
+> ---
+>   drivers/mailbox/mtk-cmdq-mailbox.c | 68 +++++++++++++++++++++++++++---
+>   1 file changed, 63 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+> index 9465f9081515..bd63773b05fd 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -38,6 +38,8 @@
+>   #define CMDQ_THR_PRIORITY		0x40
+>   
+>   #define GCE_GCTL_VALUE			0x48
+> +#define GCE_CTRL_BY_SW				GENMASK(18, 16)
+> +#define GCE_DDR_EN				GENMASK(2, 0)
+>   
+>   #define CMDQ_THR_ACTIVE_SLOT_CYCLES	0x3200
+>   #define CMDQ_THR_ENABLED		0x1
+> @@ -80,16 +82,60 @@ struct cmdq {
+>   	bool			suspended;
+>   	u8			shift_pa;
+>   	bool			control_by_sw;
+> +	bool			sw_ddr_en;
+>   	u32			gce_num;
+> +	atomic_t		usage;
+> +	spinlock_t		lock;
+>   };
+>   
+>   struct gce_plat {
+>   	u32 thread_nr;
+>   	u8 shift;
+>   	bool control_by_sw;
+> +	bool sw_ddr_en;
+>   	u32 gce_num;
+>   };
+>   
+> +static s32 cmdq_clk_enable(struct cmdq *cmdq)
 > +{
-> +	struct platform_device *pdev = to_platform_device(hba->dev);
-> +	struct ufshcd_res_info_t *res;
-> +	struct resource *res_mem, *res_mcq;
-> +	int i, ret = 0;
+> +	s32 usage, ret;
+> +	unsigned long flags;
 > +
-> +	memcpy(hba->res, ufshcd_res_info, sizeof(ufshcd_res_info));
-> +
-> +	for (i = 0; i < RES_MAX; i++) {
-> +		res = &hba->res[i];
-> +		res->resource = platform_get_resource_byname(pdev,
-> +							     IORESOURCE_MEM,
-> +							     res->name);
-> +		if (!res->resource) {
-> +			dev_info(hba->dev, "Resource %s not provided\n", res->name);
+> +	spin_lock_irqsave(&cmdq->lock, flags);
 
-This is an error if below condition gets satisfied.
+All this locking is avoidable on all SoCs where (sw_ddr_en == false), which means
+that this is needed only for one SoC (MT8186).
 
-> +			if (i == RES_MEM)
-> +				return -ENOMEM;
-> +			continue;
-> +		} else if (i == RES_MEM) {
-> +			res_mem = res->resource;
-> +			res->base = hba->mmio_base;
-> +			continue;
-> +		}
-> +
-> +		res->base = devm_ioremap_resource(hba->dev, res->resource);
-> +		if (IS_ERR(res->base)) {
-> +			dev_err(hba->dev, "Failed to map res %s, err=%d\n",
-> +					 res->name, (int)PTR_ERR(res->base));
-> +			res->base = NULL;
-> +			ret = PTR_ERR(res->base);
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	res = &hba->res[RES_MCQ];
-> +	/* MCQ resource provided in DT */
+You can solve that by adding a callback pointer on the gce_plat data, so that
+we get something like:
 
-Perhaps move the comment above and use, "Bail out if MCQ resource is provided by
-the platform".
+static int cmdq_clk_swddr_enable(struct cmdq *cmdq)
+{
+	lock, atomic_inc, clk_bulk_enable, writel(....);
+}
 
-> +	if (res->base)
-> +		goto out;
-> +
-> +	/* Manually allocate MCQ resource */
+static int cmdq_clk_enable(struct cmdq *cmdq)
+{
+	return clk_bulk_enable(cmdq->gce_num, cmdq->clocks);
+};
 
-/* Manually allocate "mcq" resource from "ufs_mem" */
+static const struct gce_plat gce_plat_v7 = {
+	...........
+	.clk_enable = cmdq_clk_swddr_enable,
+	.clk_disable = cmdq_clk_swddr_disable,
+	..........
+};
 
-> +	res_mcq = res->resource;
-> +	res_mcq = devm_kzalloc(hba->dev, sizeof(*res_mcq), GFP_KERNEL);
-> +	if (!res_mcq) {
-> +		dev_err(hba->dev, "Failed to alloate MCQ resource\n");
+Please care about older SoCs' performance.
 
-allocate
+Regards,
+Angelo
 
-> +		return ret;
-> +	}
-> +
-> +	res_mcq->start = res_mem->start +
-> +			 MCQ_SQATTR_OFFSET(hba->mcq_capabilities);
-> +	res_mcq->end = res_mcq->start + hba->nr_hw_queues * MCQ_QCFG_SIZE - 1;
-> +	res_mcq->flags = res_mem->flags;
-> +	res_mcq->name = "mcq";
-> +
-> +	ret = insert_resource(&iomem_resource, res_mcq);
-> +	if (ret) {
-> +		dev_err(hba->dev, "Failed to insert MCQ resource %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	res->base = devm_ioremap_resource(hba->dev, res_mcq);
-> +	if (IS_ERR(res->base)) {
-> +		dev_err(hba->dev, "Map MCQ registers failed, err=%d\n",
 
-"MCQ registers mapping failed, err=%d"
-
-> +			(int)PTR_ERR(res->base));
-> +		ret = PTR_ERR(res->base);
-> +		res->base = NULL;
-> +		return ret;
-> +	}
-> +
-> +out:
-> +	hba->mcq_base = res->base;
-> +	return 0;
-> +}
-> +
->  static int ufshcd_mcq_config_nr_queues(struct ufs_hba *hba)
->  {
->  	int i, rem;
-> @@ -126,7 +222,9 @@ int ufshcd_mcq_init(struct ufs_hba *hba)
->  	int ret;
->  
->  	ret = ufshcd_mcq_config_nr_queues(hba);
-> -
-> +	if (ret)
-> +		return ret;
-
-Newline
-
-> +	ret = ufshcd_mcq_config_resource(hba);
->  	return ret;
->  }
->  
-> diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-> index 298e103..54d742a 100644
-> --- a/include/ufs/ufshcd.h
-> +++ b/include/ufs/ufshcd.h
-> @@ -720,6 +720,30 @@ struct ufs_hba_monitor {
->  };
->  
->  /**
-> + * struct ufshcd_res_info_t - MCQ related resource regions
-> + *
-> + * @name: resource name
-> + * @resource: pointer to resource region
-> + * @base: register base address
-> + */
-> +struct ufshcd_res_info_t {
-> +	const char *name;
-> +	struct resource *resource;
-> +	void __iomem *base;
-> +};
-> +
-> +enum ufshcd_res {
-> +	RES_MEM,
-
-RES_UFS since the resource name is "ufs_mem"?
-
-Thanks,
-Mani
-
-> +	RES_MCQ,
-> +	RES_MCQ_SQD,
-> +	RES_MCQ_SQIS,
-> +	RES_MCQ_CQD,
-> +	RES_MCQ_CQIS,
-> +	RES_MCQ_VS,
-> +	RES_MAX,
-> +};
-> +
-> +/**
->   * struct ufs_hba - per adapter private structure
->   * @mmio_base: UFSHCI base register address
->   * @ucdl_base_addr: UFS Command Descriptor base address
-> @@ -829,6 +853,8 @@ struct ufs_hba_monitor {
->   * @mcq_sup: is mcq supported by UFSHC
->   * @nr_hw_queues: number of hardware queues configured
->   * @nr_queues: number of Queues of different queue types
-> + * @res: array of resource info of MCQ registers
-> + * @mcq_base: Multi circular queue registers base address
->   */
->  struct ufs_hba {
->  	void __iomem *mmio_base;
-> @@ -981,6 +1007,8 @@ struct ufs_hba {
->  	bool mcq_sup;
->  	unsigned int nr_hw_queues;
->  	unsigned int nr_queues[HCTX_MAX_TYPES];
-> +	struct ufshcd_res_info_t res[RES_MAX];
-> +	void __iomem *mcq_base;
->  };
->  
->  static inline bool is_mcq_supported(struct ufs_hba *hba)
-> -- 
-> 2.7.4
-> 
-
--- 
-மணிவண்ணன் சதாசிவம்
 
