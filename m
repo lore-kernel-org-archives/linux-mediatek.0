@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D025BC6FA92
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 10:30:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17A37C6FA83
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 10:30:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dfrvFJv3fbVYtkzOesS2nCjv03jbPjSnpl4/pHrmOI0=; b=JwPhLMFM19KtLMuYha1Ykehz8t
-	FckDDU1ShsZEI8MXblHVPCZ3L41lrJe3OkFv9r2nLiZDM0zdfgoDowJ0wLUmdiPNYs9E04EPGn5kn
-	fjdRFMv6HBCaqgnBTgLftzi871VjXPWK0pg+txsB6lIKfZWXCNBVkLOMQWiy6NuGvOV4Hj6TgdgDa
-	1pRHc9n2dUDrHny5PF8b6lI1Nj0T+0ADd5Gjhv4wv7BF4cYy7s1Hyx1fwguPS0R46YE7iKTHtTTbs
-	HvsY8a6yeuCY/rtmhGzVEn6K7C/6q0NRj09sev8IgxHnX02iLcgo4GKfIfGRRBytNUCrKnrZjsjU6
-	+jyur6lA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0SGdeGxPSfgmPzoXpghs78M4KATohQn7tWSlIXxxmu0=; b=GK8PPzp+rNaPHOuUdz6batmp4u
+	dfhPS2TtldOCyzL8RUw4Dqz9A5dPgk/jIlhjiGKTA5e74Du94uXo+diag8/bUnrMq7lJgLAMXuQdp
+	i3FrdHHtchNpebSrnLfqqMoqAyZ4gy3iyY6H5vccW7yGQOVhYEVqte6Sak92d50QsK+aUwXWKRStG
+	qfuY67qkLvxX6NHp6EHNOlpKf4VAfWLqcr2PDUzSC9VaosAHTAGdGzXwFa3kwDkO6vwyxvVh8y9LI
+	mcl2iAoOBqG5omsWg4sJQTaQDEvUvvFLog+HKbyNkOOkDS5lXb8KMfNKdhSuX/H/CTc4Z3q6UIagr
+	No46S56g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oclKA-0046Og-9r; Mon, 26 Sep 2022 10:26:54 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1oclJR-0046M6-6n; Mon, 26 Sep 2022 10:26:09 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oclJE-0046Hc-RT
-	for linux-mediatek@lists.infradead.org; Mon, 26 Sep 2022 10:26:00 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id p1-20020a17090a2d8100b0020040a3f75eso6257309pjd.4
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Sep 2022 03:25:55 -0700 (PDT)
+	id 1oclIu-00466s-RE
+	for linux-mediatek@lists.infradead.org; Mon, 26 Sep 2022 10:25:39 +0000
+Received: by mail-pf1-x431.google.com with SMTP id b23so6213400pfp.9
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Sep 2022 03:25:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=dfrvFJv3fbVYtkzOesS2nCjv03jbPjSnpl4/pHrmOI0=;
-        b=R3fvf+mIuTcwr8RUSPIbTjbb+QNP6w61DPA9Q0Zg51chRmtM9nCtrQzcBcCUoWuz0L
-         1djaOg9i11ufJet1Xquh0IBifxnAmxKkYmJHAGTjLAxmnBj0lhKwCOXeHqE1pBsZFt8t
-         dGijk7zDNaieq6F30gZrAAMqrkaYe2ci1E4yw=
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date;
+        bh=0SGdeGxPSfgmPzoXpghs78M4KATohQn7tWSlIXxxmu0=;
+        b=J3XtwwiGn04xGBGF5757B1oFtDTeixKKD2CZ9ZPPzOdVT26SaixnJRYDHHkqrSGycq
+         iprjQFQHKHmAfmIr95ebOe/MJgaMsexsdTqW84jgqEdoRsXDEYSn4+6VGtpubEB62NAR
+         vdfZGCEwMeEUQ2s3/CwM+lITvKjDjEG9jDbis=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=dfrvFJv3fbVYtkzOesS2nCjv03jbPjSnpl4/pHrmOI0=;
-        b=MSDsedxgp/FoN0MLxkjLXUfCHhJAwJS8LxovhPnZ6lscMip6CMSgWnu9NWCy4HBY+3
-         Ctskf5WrRnTek7W5o7vYro4FeO7HTj6+4xbGlMFlJiDxzAVZ4/i/4LG5YPe0vEbFzUom
-         r1j6uO2i3qBG990Fz1HmyPeejACFnOJ96cIwkdihXPBbX/9mHXG8er4cn5fRWneaAc/Q
-         bVSFtKljOzvGPlhVTp6Z78lh5EvF9ROaPisEb1rarPHPecAauWKEgbwf7xwCiC7ULYOd
-         2aWgaBAjAybgPddAYyDfbdnbiDgMVYZ1LMdhLh+EaaGcgB5PEdIrTmZevFiaQfMnzmDl
-         Ojpw==
-X-Gm-Message-State: ACrzQf2kW+SP6MqXk9+q/ProKV7ZADUjwqtNpZhFatvrW4TaH9DcvS1o
-	+FqCh/bTc7IayuLY7cxSrnRSgA==
-X-Google-Smtp-Source: AMsMyM4e37D4auwSkCzoht355wZttO7a0T0S5nuoiQPOkNpD3entmXxn4kS3po1nh0f2CqPH736YUA==
-X-Received: by 2002:a17:902:f08a:b0:176:b477:8be0 with SMTP id p10-20020a170902f08a00b00176b4778be0mr21924036pla.66.1664187954811;
-        Mon, 26 Sep 2022 03:25:54 -0700 (PDT)
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date;
+        bh=0SGdeGxPSfgmPzoXpghs78M4KATohQn7tWSlIXxxmu0=;
+        b=pQnuQ6W40R9v9Lfjbyccm08K3DVrnUAptF+KIflwKvWHXXgcDDadcBxhJC2qaCSct8
+         JAydXc+HlVG3p7g06cFEFXDXIeFwpdbHwpiEzPaj9wHvtnYpCt8ApNZ8WMC0CNqgWx1E
+         5hhDcttfSlrqXL6zhfg4+5WE4DJ5C66YMmiqJfTUoZHXJguFaCvRyucu7Bkb/bs1Jsn8
+         iS8XyEMAlpjl9LR/HSBPl/zAvrQcqHmcbcTeidZQ6b+L+riIExKrBl3S6JcGP2IlmwRe
+         WESLUPuEKIf030yR7rlktBLVitRsA5tA2WUIR1ub8cx9ccPTBTRxJf+eenbLjQC4seuL
+         +DHw==
+X-Gm-Message-State: ACrzQf0TnEiVteyunN134bVSpRX1iTHhP4bchBuFnild4D2c78CM9Q/i
+	3IflwB7qsM0jxiQB0eVhmR3mmg==
+X-Google-Smtp-Source: AMsMyM4UA9RJ4j31Tk60EzVOIh2W+Ow8CAri0MOHZIk8ZChEjnJ232vP1SwnFwo2NvjYg1CUbJrJBQ==
+X-Received: by 2002:a63:5762:0:b0:43c:c1b5:3e75 with SMTP id h34-20020a635762000000b0043cc1b53e75mr1487624pgm.380.1664187934413;
+        Mon, 26 Sep 2022 03:25:34 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:1340:7319:2f7a:3be9])
-        by smtp.gmail.com with ESMTPSA id y23-20020aa79af7000000b00536aa488062sm11750236pfp.163.2022.09.26.03.25.51
+        by smtp.gmail.com with ESMTPSA id y23-20020aa79af7000000b00536aa488062sm11750236pfp.163.2022.09.26.03.25.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Sep 2022 03:25:53 -0700 (PDT)
+        Mon, 26 Sep 2022 03:25:32 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>
@@ -67,17 +66,16 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 5/6] clk: mediatek: mt8192: deduplicate parent clock lists
-Date: Mon, 26 Sep 2022 18:25:22 +0800
-Message-Id: <20220926102523.2367530-6-wenst@chromium.org>
+Subject: [PATCH 0/6] clk: mediatek: More cleanups
+Date: Mon, 26 Sep 2022 18:25:17 +0800
+Message-Id: <20220926102523.2367530-1-wenst@chromium.org>
 X-Mailer: git-send-email 2.37.3.998.g577e59143f-goog
-In-Reply-To: <20220926102523.2367530-1-wenst@chromium.org>
-References: <20220926102523.2367530-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_032556_982137_838FCCCF 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20220926_032537_007767_8CA61AFE 
+X-CRM114-Status: UNSURE (   8.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,314 +90,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some groups of clocks of the same type share the same list of parents.
-These lists were declared separately for each clock in older drivers,
-bloating the code.
+Here's some more cleanups for the MedaiTek clk drivers.
 
-Merge some obvious duplicate parent clock lists in the MT8192 clock
-driver together to reduce the code size. These include:
+Patches 1 and 2 fixes and cleans up some parts that were missed in the
+previous clk_hw conversion series.
 
-- apll_i2s*_m_parents into one as apll_i2s_m_parents
-- img1_parents & img2_parents into one as img_parents
-- msdc30_*_parents into one as msdc30_parents
-- camtg*_parents into cam_tg_parents
-- seninf*_parents into seninf_parents
+Patch 3 drops the duplicate registration of the top_early_divs clks for
+MT8192. Currently this only contains a fixed divider.
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- drivers/clk/mediatek/clk-mt8192.c | 206 ++++--------------------------
- 1 file changed, 25 insertions(+), 181 deletions(-)
+Patch 4 prevents having a duplicate OF clk provider for the topckgen
+controller, but removing the previously registered instance.
 
-diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
-index c2ce72df6db0..d3f57fb73c49 100644
---- a/drivers/clk/mediatek/clk-mt8192.c
-+++ b/drivers/clk/mediatek/clk-mt8192.c
-@@ -167,22 +167,7 @@ static const char * const mdp_parents[] = {
- 	"mmpll_d5_d2"
- };
- 
--static const char * const img1_parents[] = {
--	"clk26m",
--	"univpll_d4",
--	"tvdpll_ck",
--	"mainpll_d4",
--	"univpll_d5",
--	"mmpll_d6",
--	"univpll_d6",
--	"mainpll_d6",
--	"mmpll_d4_d2",
--	"mainpll_d4_d2",
--	"mmpll_d6_d2",
--	"mmpll_d5_d2"
--};
--
--static const char * const img2_parents[] = {
-+static const char * const img_parents[] = {
- 	"clk26m",
- 	"univpll_d4",
- 	"tvdpll_ck",
-@@ -280,61 +265,6 @@ static const char * const camtg_parents[] = {
- 	"univpll_192m_d32"
- };
- 
--static const char * const camtg2_parents[] = {
--	"clk26m",
--	"univpll_192m_d8",
--	"univpll_d6_d8",
--	"univpll_192m_d4",
--	"univpll_d6_d16",
--	"csw_f26m_d2",
--	"univpll_192m_d16",
--	"univpll_192m_d32"
--};
--
--static const char * const camtg3_parents[] = {
--	"clk26m",
--	"univpll_192m_d8",
--	"univpll_d6_d8",
--	"univpll_192m_d4",
--	"univpll_d6_d16",
--	"csw_f26m_d2",
--	"univpll_192m_d16",
--	"univpll_192m_d32"
--};
--
--static const char * const camtg4_parents[] = {
--	"clk26m",
--	"univpll_192m_d8",
--	"univpll_d6_d8",
--	"univpll_192m_d4",
--	"univpll_d6_d16",
--	"csw_f26m_d2",
--	"univpll_192m_d16",
--	"univpll_192m_d32"
--};
--
--static const char * const camtg5_parents[] = {
--	"clk26m",
--	"univpll_192m_d8",
--	"univpll_d6_d8",
--	"univpll_192m_d4",
--	"univpll_d6_d16",
--	"csw_f26m_d2",
--	"univpll_192m_d16",
--	"univpll_192m_d32"
--};
--
--static const char * const camtg6_parents[] = {
--	"clk26m",
--	"univpll_192m_d8",
--	"univpll_d6_d8",
--	"univpll_192m_d4",
--	"univpll_d6_d16",
--	"csw_f26m_d2",
--	"univpll_192m_d16",
--	"univpll_192m_d32"
--};
--
- static const char * const uart_parents[] = {
- 	"clk26m",
- 	"univpll_d6_d8"
-@@ -362,15 +292,7 @@ static const char * const msdc50_0_parents[] = {
- 	"univpll_d4_d2"
- };
- 
--static const char * const msdc30_1_parents[] = {
--	"clk26m",
--	"univpll_d6_d2",
--	"mainpll_d6_d2",
--	"mainpll_d7_d2",
--	"msdcpll_d2"
--};
--
--static const char * const msdc30_2_parents[] = {
-+static const char * const msdc30_parents[] = {
- 	"clk26m",
- 	"univpll_d6_d2",
- 	"mainpll_d6_d2",
-@@ -457,39 +379,6 @@ static const char * const seninf_parents[] = {
- 	"univpll_d5"
- };
- 
--static const char * const seninf1_parents[] = {
--	"clk26m",
--	"univpll_d4_d4",
--	"univpll_d6_d2",
--	"univpll_d4_d2",
--	"univpll_d7",
--	"univpll_d6",
--	"mmpll_d6",
--	"univpll_d5"
--};
--
--static const char * const seninf2_parents[] = {
--	"clk26m",
--	"univpll_d4_d4",
--	"univpll_d6_d2",
--	"univpll_d4_d2",
--	"univpll_d7",
--	"univpll_d6",
--	"mmpll_d6",
--	"univpll_d5"
--};
--
--static const char * const seninf3_parents[] = {
--	"clk26m",
--	"univpll_d4_d4",
--	"univpll_d6_d2",
--	"univpll_d4_d2",
--	"univpll_d7",
--	"univpll_d6",
--	"mmpll_d6",
--	"univpll_d5"
--};
--
- static const char * const tl_parents[] = {
- 	"clk26m",
- 	"univpll_192m_d2",
-@@ -649,52 +538,7 @@ static const char * const sflash_parents[] = {
- 	"univpll_d5_d8"
- };
- 
--static const char * const apll_i2s0_m_parents[] = {
--	"aud_1_sel",
--	"aud_2_sel"
--};
--
--static const char * const apll_i2s1_m_parents[] = {
--	"aud_1_sel",
--	"aud_2_sel"
--};
--
--static const char * const apll_i2s2_m_parents[] = {
--	"aud_1_sel",
--	"aud_2_sel"
--};
--
--static const char * const apll_i2s3_m_parents[] = {
--	"aud_1_sel",
--	"aud_2_sel"
--};
--
--static const char * const apll_i2s4_m_parents[] = {
--	"aud_1_sel",
--	"aud_2_sel"
--};
--
--static const char * const apll_i2s5_m_parents[] = {
--	"aud_1_sel",
--	"aud_2_sel"
--};
--
--static const char * const apll_i2s6_m_parents[] = {
--	"aud_1_sel",
--	"aud_2_sel"
--};
--
--static const char * const apll_i2s7_m_parents[] = {
--	"aud_1_sel",
--	"aud_2_sel"
--};
--
--static const char * const apll_i2s8_m_parents[] = {
--	"aud_1_sel",
--	"aud_2_sel"
--};
--
--static const char * const apll_i2s9_m_parents[] = {
-+static const char * const apll_i2s_m_parents[] = {
- 	"aud_1_sel",
- 	"aud_2_sel"
- };
-@@ -724,9 +568,9 @@ static const struct mtk_mux top_mtk_muxes[] = {
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MDP_SEL, "mdp_sel",
- 			     mdp_parents, 0x020, 0x024, 0x028, 8, 4, 15, 0x004, 5),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_IMG1_SEL, "img1_sel",
--			     img1_parents, 0x020, 0x024, 0x028, 16, 4, 23, 0x004, 6),
-+			     img_parents, 0x020, 0x024, 0x028, 16, 4, 23, 0x004, 6),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_IMG2_SEL, "img2_sel",
--			     img2_parents, 0x020, 0x024, 0x028, 24, 4, 31, 0x004, 7),
-+			     img_parents, 0x020, 0x024, 0x028, 24, 4, 31, 0x004, 7),
- 	/* CLK_CFG_2 */
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_IPE_SEL, "ipe_sel",
- 			     ipe_parents, 0x030, 0x034, 0x038, 0, 4, 7, 0x004, 8),
-@@ -747,16 +591,16 @@ static const struct mtk_mux top_mtk_muxes[] = {
- 			     camtg_parents, 0x050, 0x054, 0x058, 24, 3, 31, 0x004, 19),
- 	/* CLK_CFG_5 */
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_CAMTG2_SEL, "camtg2_sel",
--			     camtg2_parents, 0x060, 0x064, 0x068, 0, 3, 7, 0x004, 20),
-+			     camtg_parents, 0x060, 0x064, 0x068, 0, 3, 7, 0x004, 20),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_CAMTG3_SEL, "camtg3_sel",
--			     camtg3_parents, 0x060, 0x064, 0x068, 8, 3, 15, 0x004, 21),
-+			     camtg_parents, 0x060, 0x064, 0x068, 8, 3, 15, 0x004, 21),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_CAMTG4_SEL, "camtg4_sel",
--			     camtg4_parents, 0x060, 0x064, 0x068, 16, 3, 23, 0x004, 22),
-+			     camtg_parents, 0x060, 0x064, 0x068, 16, 3, 23, 0x004, 22),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_CAMTG5_SEL, "camtg5_sel",
--			     camtg5_parents, 0x060, 0x064, 0x068, 24, 3, 31, 0x004, 23),
-+			     camtg_parents, 0x060, 0x064, 0x068, 24, 3, 31, 0x004, 23),
- 	/* CLK_CFG_6 */
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_CAMTG6_SEL, "camtg6_sel",
--			     camtg6_parents, 0x070, 0x074, 0x078, 0, 3, 7, 0x004, 24),
-+			     camtg_parents, 0x070, 0x074, 0x078, 0, 3, 7, 0x004, 24),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_UART_SEL, "uart_sel",
- 			     uart_parents, 0x070, 0x074, 0x078, 8, 1, 15, 0x004, 25),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_SPI_SEL, "spi_sel",
-@@ -767,9 +611,9 @@ static const struct mtk_mux top_mtk_muxes[] = {
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0_SEL, "msdc50_0_sel",
- 			     msdc50_0_parents, 0x080, 0x084, 0x088, 0, 3, 7, 0x004, 28),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_1_SEL, "msdc30_1_sel",
--			     msdc30_1_parents, 0x080, 0x084, 0x088, 8, 3, 15, 0x004, 29),
-+			     msdc30_parents, 0x080, 0x084, 0x088, 8, 3, 15, 0x004, 29),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_2_SEL, "msdc30_2_sel",
--			     msdc30_2_parents, 0x080, 0x084, 0x088, 16, 3, 23, 0x004, 30),
-+			     msdc30_parents, 0x080, 0x084, 0x088, 16, 3, 23, 0x004, 30),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUDIO_SEL, "audio_sel",
- 			     audio_parents, 0x080, 0x084, 0x088, 24, 2, 31, 0x008, 0),
- 	/* CLK_CFG_8 */
-@@ -796,12 +640,12 @@ static const struct mtk_mux top_mtk_muxes[] = {
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_SENINF_SEL, "seninf_sel",
- 			     seninf_parents, 0x0b0, 0x0b4, 0x0b8, 16, 3, 23, 0x008, 11),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_SENINF1_SEL, "seninf1_sel",
--			     seninf1_parents, 0x0b0, 0x0b4, 0x0b8, 24, 3, 31, 0x008, 12),
-+			     seninf_parents, 0x0b0, 0x0b4, 0x0b8, 24, 3, 31, 0x008, 12),
- 	/* CLK_CFG_11 */
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_SENINF2_SEL, "seninf2_sel",
--			     seninf2_parents, 0x0c0, 0x0c4, 0x0c8, 0, 3, 7, 0x008, 13),
-+			     seninf_parents, 0x0c0, 0x0c4, 0x0c8, 0, 3, 7, 0x008, 13),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_SENINF3_SEL, "seninf3_sel",
--			     seninf3_parents, 0x0c0, 0x0c4, 0x0c8, 8, 3, 15, 0x008, 14),
-+			     seninf_parents, 0x0c0, 0x0c4, 0x0c8, 8, 3, 15, 0x008, 14),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_TL_SEL, "tl_sel",
- 			     tl_parents, 0x0c0, 0x0c4, 0x0c8, 16, 2, 23, 0x008, 15),
- 	MUX_GATE_CLR_SET_UPD(CLK_TOP_DXCC_SEL, "dxcc_sel",
-@@ -847,16 +691,16 @@ static const struct mtk_mux top_mtk_muxes[] = {
- 
- static struct mtk_composite top_muxes[] = {
- 	/* CLK_AUDDIV_0 */
--	MUX(CLK_TOP_APLL_I2S0_M_SEL, "apll_i2s0_m_sel", apll_i2s0_m_parents, 0x320, 16, 1),
--	MUX(CLK_TOP_APLL_I2S1_M_SEL, "apll_i2s1_m_sel", apll_i2s1_m_parents, 0x320, 17, 1),
--	MUX(CLK_TOP_APLL_I2S2_M_SEL, "apll_i2s2_m_sel", apll_i2s2_m_parents, 0x320, 18, 1),
--	MUX(CLK_TOP_APLL_I2S3_M_SEL, "apll_i2s3_m_sel", apll_i2s3_m_parents, 0x320, 19, 1),
--	MUX(CLK_TOP_APLL_I2S4_M_SEL, "apll_i2s4_m_sel", apll_i2s4_m_parents, 0x320, 20, 1),
--	MUX(CLK_TOP_APLL_I2S5_M_SEL, "apll_i2s5_m_sel", apll_i2s5_m_parents, 0x320, 21, 1),
--	MUX(CLK_TOP_APLL_I2S6_M_SEL, "apll_i2s6_m_sel", apll_i2s6_m_parents, 0x320, 22, 1),
--	MUX(CLK_TOP_APLL_I2S7_M_SEL, "apll_i2s7_m_sel", apll_i2s7_m_parents, 0x320, 23, 1),
--	MUX(CLK_TOP_APLL_I2S8_M_SEL, "apll_i2s8_m_sel", apll_i2s8_m_parents, 0x320, 24, 1),
--	MUX(CLK_TOP_APLL_I2S9_M_SEL, "apll_i2s9_m_sel", apll_i2s9_m_parents, 0x320, 25, 1),
-+	MUX(CLK_TOP_APLL_I2S0_M_SEL, "apll_i2s0_m_sel", apll_i2s_m_parents, 0x320, 16, 1),
-+	MUX(CLK_TOP_APLL_I2S1_M_SEL, "apll_i2s1_m_sel", apll_i2s_m_parents, 0x320, 17, 1),
-+	MUX(CLK_TOP_APLL_I2S2_M_SEL, "apll_i2s2_m_sel", apll_i2s_m_parents, 0x320, 18, 1),
-+	MUX(CLK_TOP_APLL_I2S3_M_SEL, "apll_i2s3_m_sel", apll_i2s_m_parents, 0x320, 19, 1),
-+	MUX(CLK_TOP_APLL_I2S4_M_SEL, "apll_i2s4_m_sel", apll_i2s_m_parents, 0x320, 20, 1),
-+	MUX(CLK_TOP_APLL_I2S5_M_SEL, "apll_i2s5_m_sel", apll_i2s_m_parents, 0x320, 21, 1),
-+	MUX(CLK_TOP_APLL_I2S6_M_SEL, "apll_i2s6_m_sel", apll_i2s_m_parents, 0x320, 22, 1),
-+	MUX(CLK_TOP_APLL_I2S7_M_SEL, "apll_i2s7_m_sel", apll_i2s_m_parents, 0x320, 23, 1),
-+	MUX(CLK_TOP_APLL_I2S8_M_SEL, "apll_i2s8_m_sel", apll_i2s_m_parents, 0x320, 24, 1),
-+	MUX(CLK_TOP_APLL_I2S9_M_SEL, "apll_i2s9_m_sel", apll_i2s_m_parents, 0x320, 25, 1),
- };
- 
- static const struct mtk_composite top_adj_divs[] = {
+Patch 5 deduplicates the parent clock lists for MT8192.
+
+Patch 6 adds proper error handling to the clock probe functions for
+MT8192.
+
+
+Please have a look.
+
+
+Thanks
+ChenYu
+
+
+Chen-Yu Tsai (6):
+  clk: mediatek: fix unregister function in mtk_clk_register_dividers
+    cleanup
+  clk: mediatek: Migrate remaining clk_unregister_*() to
+    clk_hw_unregister_*()
+  clk: mediatek: mt8192: Do not re-register top_early_divs in probe
+    function
+  clk: mediatek: mt8192: Avoid duplicate OF clk provider for topckgen
+  clk: mediatek: mt8192: deduplicate parent clock lists
+  clk: mediatek: mt8192: Implement error handling in probe functions
+
+ drivers/clk/mediatek/clk-mt8192-aud.c |  15 +-
+ drivers/clk/mediatek/clk-mt8192-mm.c  |  17 +-
+ drivers/clk/mediatek/clk-mt8192.c     | 296 +++++++++-----------------
+ drivers/clk/mediatek/clk-mtk.c        |  12 +-
+ 4 files changed, 130 insertions(+), 210 deletions(-)
+
 -- 
 2.37.3.998.g577e59143f-goog
 
