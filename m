@@ -4,70 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64701C07E9D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 07:47:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B4FEC07E9D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 07:49:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V/exwF8Uhd4yzpDK8hiP+avz2d81ZFk1rj5CHCn4ST8=; b=g7XZm5VIzyQeSGM5sfEFyP/dZl
-	cSYsQmbeYOrwGEIYcFv1svGu+KWrW86cxStcuHQ0m3Y280/x2iGAPOz6IkUjCfq0S/WCVwEvTteM8
-	UCgLX/nkr/6p8tVAfeyb9MWYSbJcf/GfdWi2KNEmYMSOaCU49LBXl6Ak11smkfB0Lsrynf15vsNAT
-	89dnk6eA//1FADCebsLFAF0MlT7LeKjs1mzQp+16hYZ/iZhNiTML1cnNX6UJxKkSOW4eBUQ+97KUl
-	os9+EDnpG0lUToId42LoZSE+WFuceSoqW8SNIXvUY1/r63801llZU9hrmTbjNfmaooJ8BYBfKo2pV
-	HVbWjCzQ==;
+	bh=s1nsU6G9+dJBL+H+um2LKp+0M7TJ52ob9HiOYSkASW4=; b=l+UTNC6XYR25TFwLgCSvIq+UBm
+	KeSfy6XpGKvElrI+3tBn1tak+ZVBNSJjCrvCtpl8EnfRNt6EByto+vZfPvDhGZIAcFZK4trNYSQK8
+	7xPtQAtiwUABtysqoKgGEMzRB97ihFm6Lx8i1cL2PQKN07IKAhZ0ypz/Fn0qi339HzCZGGB2m6br9
+	J4fJJoAhONRl6z1xPjxNzw0ZfR4SgLjIrsa3hRkOYCKMRw21Ga44shUsg7SMKNSt6BbEtO4KQK8fc
+	2gKNBv4Xkxx5G5wwS6whbiKvI5au8NqelWWylZaYGVUfoDlDiVSh9hv4x+YXQVNPP6S2xEXbIhCaI
+	1RBhD51w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocipa-002rOe-Nh; Mon, 26 Sep 2022 07:47:10 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1ocird-002sQg-QU; Mon, 26 Sep 2022 07:49:17 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocipM-002rGl-4O; Mon, 26 Sep 2022 07:46:57 +0000
+	id 1ocirK-002sGg-V3; Mon, 26 Sep 2022 07:49:03 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B83FFB81911;
-	Mon, 26 Sep 2022 07:46:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A275C433C1;
-	Mon, 26 Sep 2022 07:46:47 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 656976185F;
+	Mon, 26 Sep 2022 07:48:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 978F3C433D6;
+	Mon, 26 Sep 2022 07:48:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664178412;
-	bh=FFVR//93gG0gyZZ/mzwulA0RcoMAWf0wqpd/J/L7u/s=;
+	s=k20201202; t=1664178538;
+	bh=Ls0crOyKk+lkt5TTs2uBxIeihBWmZjPuhe4cTEvU2s8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=EcPQPtxo4w7mrkmPUWj6qtpiX7DTvbaFFPeRTn40kuQ3Qfy1FCiDhqmZZwdr1NRXo
-	 fjqpRNhGlWVsZMZTGYhfX9CYdi5iumzxa0ZT+zR0n0UMwo4j67CqrXaSRO8PBNoYC8
-	 6BWEptTmb/sQkhdRjmPCd3Ho1U5HEg2laBzXyxuDPiCIbC7ZMB74QGLnUrsh9CNJNQ
-	 IQ9RkhR51eopx1nNbJmXlwow4CUZiAp7ERREoc309jUS39b2kEkgtupaRPA3amU7FT
-	 jmzcceTCuFedxAFv6aSOuL5YiaKdStYihptYsz657WxAjjek+dXxC2FD6aIkC3S646
-	 t2vbsmkbyI34Q==
-Date: Mon, 26 Sep 2022 08:46:44 +0100
+	b=EEFaMW2CEFbnuKtlIjOgMxeDsj9tyJuHJZaXMY/oHyOOw1vDBO9xDon1sV7Bcv6yp
+	 Cf/J5L/E8oxCvjn+C3Ptog6MkUAxyq33d95WzV0Zhm+xDLlW74loKvJrlNI5Ezewut
+	 u+K9x+IpZVsl9/RhCopjzTHMFrqMAur5ojhymucQmWb0Lgb1+nfvXduEjlXGHwTzIi
+	 AzXkxrCHpRdUTb/XmOxI/JVtrwEwVXE0fG5UrUDkqjyzMND5e2xd7mbHHXHLiw3t1W
+	 voh4mA8XMMKaLywuwJxgLJPEj8EEfxcy/d8DQoodT5Nm15AinVEOGP0wlsWUZFK4V6
+	 tVdZWA+WyCRig==
+Date: Mon, 26 Sep 2022 08:48:52 +0100
 From: Lee Jones <lee@kernel.org>
-To: Jonathan Cameron <jic23@kernel.org>
-Cc: ChiaEn Wu <peterwu.pub@gmail.com>, pavel@ucw.cz, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
-	lars@metafoo.de, andriy.shevchenko@linux.intel.com,
-	chiaen_wu@richtek.com, alice_chen@richtek.com, cy_huang@richtek.com,
-	linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-iio@vger.kernel.org, szunichen@gmail.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Shevchenko <andy.shevchenko@gmail.com>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Subject: Re: [PATCH v12 3/5] iio: adc: mt6370: Add MediaTek MT6370 support
-Message-ID: <YzFY5FI0PrZqdAiZ@google.com>
-References: <cover.1663926551.git.chiaen_wu@richtek.com>
- <9bf36f09bc5f002f2b09b7cc26edccf109516465.1663926551.git.chiaen_wu@richtek.com>
- <20220924155525.5663bed8@jic23-huawei>
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	hsinyi@chromium.org
+Subject: Re: [PATCH 1/5] dt-bindings: mfd: mediatek: Add scpsys compatible
+ for mt8186
+Message-ID: <YzFZZErEDZLC9Cuu@google.com>
+References: <20220923131148.6678-1-allen-kh.cheng@mediatek.com>
+ <20220923131148.6678-2-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220924155525.5663bed8@jic23-huawei>
+In-Reply-To: <20220923131148.6678-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_004656_361038_498133C3 
-X-CRM114-Status: GOOD (  13.89  )
+X-CRM114-CacheID: sfid-20220926_004859_088057_73BA7A90 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +78,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 24 Sep 2022, Jonathan Cameron wrote:
+On Fri, 23 Sep 2022, Allen-KH Cheng wrote:
 
-> On Fri, 23 Sep 2022 10:51:24 +0800
-> ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+> Add a new scpsys compatible for mt8186 SoC.
 > 
-> > From: ChiaEn Wu <chiaen_wu@richtek.com>
-> > 
-> > MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
-> > with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
-> > driver, display bias voltage supply, one general purpose LDO, and the
-> > USB Type-C & PD controller complies with the latest USB Type-C and PD
-> > standards.
-> > 
-> > Add support for the MT6370 ADC driver for system monitoring, including
-> > charger current, voltage, and temperature.
-> > 
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
-> > Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
-> 
-> This will have to either wait for next cycle, or go through mfd because
-> of the dt-bindings include which is in the mfd tree.
-> 
-> Please make those dependencies clear in new versions.
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> ---
+>  .../devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml          | 1 +
+>  1 file changed, 1 insertion(+)
 
-If the bindings come together in -next, then subsequently in Mainline,
-it shouldn't really matter.  It's only your IIO tree that the DT
-tooling with complain about, right?
+Applied, thanks.
 
 -- 
 Lee Jones [李琼斯]
