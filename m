@@ -4,64 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5D1FC32771
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 09:14:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC804C32771
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 09:17:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nLkC3nTENMrwEwozy07C0XzvAhKONPiWGKVk+MHdiCw=; b=TbjRkn/k606Jg8uogbLAFtJAOh
-	quoVGkS50liI5do49ER0CsVdqyoulHIY2IWeclGox8QPQheGraPF0yaZc5+k81FAXG7RLhsTLYRF5
-	RM4MJJPoU4UEtWYVFDz/vqbLCPQ7b6WW3d/xhUE8ogB3Xutz20WGN+D5AEpWk9TFbKm6/ajLgHWzX
-	QiQEZzIIlQJgHr+lw0hr5O/IJHQIgmozac1DfHlzGscCbDSQHcUpHlcxPnyITtAH2Z2G0SEk4bTpG
-	wLxFKiXdm4IUmlvGKWTz9aFmSR67xLf6kyvB1mP10Z9DBHkPhCKKtPMAffg7YqF9+jzGhaCmDrPM8
-	NVlu1JCA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q4wLYBW96Tx7o8A1V5stxuh2HtcfnqFvSW9gYmXrIWg=; b=GBFZgxsmQy35DkbengPDoJ5bST
+	rLZbSDvBKTLJ1xtsFUZ92pG4wzzH3HsXf86grjVivjLJx6bZcXMhwq+Ia6YQU7gzbDfkb3+jr1+47
+	29pBNE8EVYUsBHeJD0DpDD1g7tdbi20sVjcvy9l8Rik+/8JGVEMSNy4mFESSQxaaUUxUNXT4KofcQ
+	keGMf/2nE4l0StHkFfJstKzQ5dQih85tdX6+U2XqCTRnADb3RKa2EMM+gNDNcCc8PBj4pofIUU5aE
+	BELyyPwYlgZax/YJUSCU3mYf2gPZ8ySealZsnmdcogMfaIHRi/inBULpN4me9ubPfiS5oRcoIxMi3
+	SJcTSw4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ockBk-003VmN-Ew; Mon, 26 Sep 2022 09:14:08 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ockEb-003XVG-Ln; Mon, 26 Sep 2022 09:17:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ockBX-003VhV-BJ; Mon, 26 Sep 2022 09:13:56 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6F06A6600367;
-	Mon, 26 Sep 2022 10:13:53 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664183633;
-	bh=ReHLoFF8/G1tqeZPxdH2KQHhFx0wlNUICsMaObAVG10=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=i51YL3oZDsVzxfn5GXIpo6P8FnOnQlvRaMLm9LHjnsPU98LUA/nxcs59ZM9K6CxMo
-	 LX/lomOcw5Z4QD40UyQoc8FBfpL9TjXDHA90Hm6tIXg61/EIZVIIlj/L53xwJYLzLJ
-	 RNDmwyy7gHMndsDyxIrKGCS8BTQspsNcKBgmlDAj3t4ozkwzDKRx8MXxaDeSOUnwmF
-	 CoGzrgwXaCT/v8ePzTnNsn2UsO15WLQczAm3C9ffI0ETBkGdFZ3A2Ml9ocz5yw8hVf
-	 6UOQZ7FPU6Er6QX5tQEMrAXKSGecHXMmN6vr5SPiQH4qnm2LeYj2duWZNOqp9qy8Hb
-	 iRjezBAjENi3g==
-Message-ID: <b594626f-5c73-2a4c-6286-81f9df26832e@collabora.com>
-Date: Mon, 26 Sep 2022 11:13:51 +0200
+	id 1ockDj-003WyN-CC; Mon, 26 Sep 2022 09:16:12 +0000
+X-UUID: 8d5f7377a7304c0d857412a5c5ed6908-20220926
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Q4wLYBW96Tx7o8A1V5stxuh2HtcfnqFvSW9gYmXrIWg=;
+	b=Z9riln7Y3UKjqrWqrvFAF4QJSd8cAtvrabfvYnmFXtdE0AUffmorDdK/XxBFPhnFATvGpLlZc+fK1uBWewUqQk26OO/UIdj44la1XoGwzQ//4z+jJijvm7FT5Vl35CqN46t557vA0PH8rYq5vdEVLNPJ3c4PncEwVrowhWuPtpE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:87d4e1fd-1afa-4ced-b824-9adeaa11e90f,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:90
+X-CID-INFO: VERSION:1.1.11,REQID:87d4e1fd-1afa-4ced-b824-9adeaa11e90f,IP:0,URL
+	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
+	N:quarantine,TS:90
+X-CID-META: VersionHash:39a5ff1,CLOUDID:1b5d3ce4-87f9-4bb0-97b6-34957dc0fbbe,B
+	ulkID:2209261716084NY97EOQ,BulkQuantity:0,Recheck:0,SF:38|28|17|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 8d5f7377a7304c0d857412a5c5ed6908-20220926
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 600013386; Mon, 26 Sep 2022 02:16:06 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 26 Sep 2022 17:14:45 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 26 Sep 2022 17:14:44 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Tzung-Bi
+ Shih <tzungbi@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<nicolas.dufresne@collabora.com>, <wenst@chromium.org>, kyrie wu
+	<kyrie.wu@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
+	<irui.wang@mediatek.com>
+Subject: [V15,07/15] mtk-jpegenc: add stop cmd interface for jpgenc
+Date: Mon, 26 Sep 2022 17:14:25 +0800
+Message-ID: <20220926091433.18633-8-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220926091433.18633-1-irui.wang@mediatek.com>
+References: <20220926091433.18633-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH,v2] pwm: mtk-disp: Fix the parameters calculated by the
- enabled flag of disp_pwm
-Content-Language: en-US
-To: xinlei.lee@mediatek.com, thierry.reding@gmail.com,
- u.kleine-koenig@pengutronix.de, matthias.bgg@gmail.com
-Cc: linux-pwm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, jitao.shi@mediatek.com
-References: <1663934771-15152-1-git-send-email-xinlei.lee@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <1663934771-15152-1-git-send-email-xinlei.lee@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_021355_548223_AD287089 
-X-CRM114-Status: GOOD (  17.65  )
+X-CRM114-CacheID: sfid-20220926_021611_444076_3DFAA8A8 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,54 +90,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/09/22 14:06, xinlei.lee@mediatek.com ha scritto:
-> From: xinlei lee <xinlei.lee@mediatek.com>
-> 
-> In the original mtk_disp_pwm_get_state() function, the result of reading
-> con0 & BIT(0) is enabled as disp_pwm.
-> In order to conform to the register table, we should use the disp_pwm
-> base address as the enabled judgment.
-> 
-> Fixes: 3f2b16734914 ("pwm: mtk-disp: Implement atomic API .get_state()")
-> 
-> Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
-> ---
-> Base on the branch of Linux-next/master.
-> 
-> change since v1:
-> 1. Modify the way to set disp_pwm enbale.
-> ---
-> ---
->   drivers/pwm/pwm-mtk-disp.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-> index c605013..1a9880d 100644
-> --- a/drivers/pwm/pwm-mtk-disp.c
-> +++ b/drivers/pwm/pwm-mtk-disp.c
-> @@ -197,7 +197,7 @@ static void mtk_disp_pwm_get_state(struct pwm_chip *chip,
->   	rate = clk_get_rate(mdp->clk_main);
->   	con0 = readl(mdp->base + mdp->data->con0);
->   	con1 = readl(mdp->base + mdp->data->con1);
-> -	state->enabled = !!(con0 & BIT(0));
-> +	state->enabled = !!(readl(mdp->base + DISP_PWM_EN) & BIT(0));
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-I think you mean mdp->data->enable_mask here.
+Add stop cmd interface for jpgenc to stop stream
 
-Anyway, for the sake of human readability....
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: irui wang <irui.wang@mediatek.com>
+---
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-u32 clk_div, pwm_en, con0, con1;
-
-pwm_en = readl(mdp->base + DISP_PWM_EN);
-
-state->enabled = !!(pwm_en & mdp->data->enable_mask);
-
-Regards,
-Angelo
-
->   	clk_div = FIELD_GET(PWM_CLKDIV_MASK, con0);
->   	period = FIELD_GET(PWM_PERIOD_MASK, con1);
->   	/*
-> 
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 0d4e7220e509..e60363e38a90 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -613,6 +613,9 @@ static const struct v4l2_ioctl_ops mtk_jpeg_enc_ioctl_ops = {
+ 	.vidioc_streamoff               = v4l2_m2m_ioctl_streamoff,
+ 
+ 	.vidioc_unsubscribe_event	= v4l2_event_unsubscribe,
++
++	.vidioc_encoder_cmd		= v4l2_m2m_ioctl_encoder_cmd,
++	.vidioc_try_encoder_cmd		= v4l2_m2m_ioctl_try_encoder_cmd,
+ };
+ 
+ static const struct v4l2_ioctl_ops mtk_jpeg_dec_ioctl_ops = {
+@@ -1391,6 +1394,7 @@ static int mtk_jpeg_open(struct file *file)
+ 	} else {
+ 		v4l2_ctrl_handler_init(&ctx->ctrl_hdl, 0);
+ 	}
++
+ 	mtk_jpeg_set_default_params(ctx);
+ 	mutex_unlock(&jpeg->lock);
+ 	return 0;
+-- 
+2.18.0
 
 
