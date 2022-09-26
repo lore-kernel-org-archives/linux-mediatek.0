@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3CC2C07E9D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 14:27:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87B37C07E9D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 14:28:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cMkjFJ/Av0wmCMCslOb9fnHFt1e3jT0fQytGWi8vF50=; b=0eWTUdaeWTmYBO/dzyAj5B3Vsf
-	ieEnfG00rLLjIl4OHHTwXI13dS/qp0EAEj0hyRQE4eHxpQHHWYj8l87eqRfcOnkOpbBOQwjx4nofY
-	G+TzIppAJyOmC/X8UyTf/7JdZsr6jSUQWM/RpQi+y3TxCgyY1Xqlhpyzr2fUNGSpMnh7TWxUrVOHb
-	DzLVcqfXe4YQXrhyoz7kh3Ea84njOLCJyi8zoEIjI7TeAZt4bptqh8DnNMk2lYE/Yc5XlmrgoxZLj
-	yFBaOLRGGYX4GMlVGcNBB7wLDBxtnGOWinvuCoqsjLen56yuIHiTQffNKOKQV/uICJne+RUk5y3wL
-	Hq06g5Ow==;
+	bh=MguInTOcVL/H+83w/2W0TK0EY7ql9PZc6CC/owmejVU=; b=vp2HA/l5A+TTBJRw7FQqtQtN0r
+	EKeT9J1LTZtV2PwervWkFH98iNrucf26Qm78NnOhtoY4hAF39k3lX2nyd8WCqLjZK2iao9TsMPfMs
+	zeD7g0UJtIDi1JYsO7sNVgTlT8mm6AGtOHEK6/kFLXu/99TPaw586zBVV/EpBw9VFwWiPBueAbYzP
+	JrWi1loDPu+CZtDcinTFFuQn8r2uEY5DvLWhPr2tEVJ94z6d0hHZQb6RmZlGQJs/2COv8MF6wpT/Z
+	hLE4OGKbbJ8AeN5NYtDMmYvwTNgbXfRm5Z3/J00evS4FYguTYUF2ZXt+EQLVz45f3M3s3r5A20NpA
+	iCw8XW0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocp4s-005M4N-3p; Mon, 26 Sep 2022 14:27:22 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1ocp5Q-005M81-Ey; Mon, 26 Sep 2022 14:27:56 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocp4p-005M0n-1V
-	for linux-mediatek@lists.infradead.org; Mon, 26 Sep 2022 14:27:20 +0000
+	id 1ocp5E-005M6b-RD; Mon, 26 Sep 2022 14:27:46 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4AE3F60DFB
-	for <linux-mediatek@lists.infradead.org>; Mon, 26 Sep 2022 14:27:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF220C433C1
-	for <linux-mediatek@lists.infradead.org>; Mon, 26 Sep 2022 14:27:17 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 59ED560DF1;
+	Mon, 26 Sep 2022 14:27:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F470C433D6;
+	Mon, 26 Sep 2022 14:27:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664202437;
-	bh=1U5VBGz85XhNUc2UADvk3Pgf0NByRxd3FTgYZdNJFrM=;
-	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
-	b=LU70XK5my3UbwctpDxoJy3hgYk5kwu8eoDcOYfPOP8HG+zkUymfsgCpGYs9gjGec0
-	 9/IbuEVXRR+SiEyWOZwGOR/60S/Vhe+7GsVZ9An17Cekt/RnBLBiIv8QU3T9ka1okr
-	 7aZPGeueHXLIum7Yn+tFPpclxhUgpgDzKYlpBjbNsR/b7sd+qNS+UQavkQzhqMi2ex
-	 R5L4LRQu3lkln8Kcg1zbNYp16eZEIx5tVXqikdTUunwKVBNQ8lO8ikn/tH500KbpAH
-	 desMhcyN6gEHrjwT7ZXP4L3DBUxBmOKAp6pkZwMggJ/qVL3YjFcLokbtQspfj5bonW
-	 Al/+ntCRRu9nA==
-Received: by mail-oi1-f169.google.com with SMTP id n83so8406786oif.11
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Sep 2022 07:27:17 -0700 (PDT)
-X-Gm-Message-State: ACrzQf0Xvqy505a3RNzJ1soG9WCcRpOfon03mlliOkKBXGAROmslqnAk
-	4i4N7k3iJ32YWsGROfw8ej/dMtlYOVUY1jO4HIY=
-X-Google-Smtp-Source: AMsMyM6ECsDl0rUTQCplACP+WIsxAWk/8w6OCE7Tlu//TA9K039EvcqcUk0Nu4YyLih4ANv0ZWTPXCNf+aSr6GeWGYM=
-X-Received: by 2002:a05:6808:f05:b0:350:c7fc:3a71 with SMTP id
- m5-20020a0568080f0500b00350c7fc3a71mr10597133oiw.267.1664202436844; Mon, 26
- Sep 2022 07:27:16 -0700 (PDT)
+	s=k20201202; t=1664202463;
+	bh=6XhwjXcZLlj11shsoIVoitYifkIL8KJ18fK8qdwwJaA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=K6BO0l+twKh0uOwzbNup4x8XNE5qQ3DVeM7zC8zziatoxj7iovnihxWrTl72tT+YX
+	 g1yl5O3LK3Tau44JkbBBXNDCn6X2cSB9yu+qJVu269GvQIfGuu9tCJZFtoDmMylnkf
+	 IIRYOTKBv9aMeyWR9G0qvdpv/PQvcf/LspKLCZZLJEWLL89scU/VjfGmWIDGwhVVTa
+	 PljFRM3zMuEgs26zt98cYvBItT640NVZPhMwlYjf3E+T6N/LJaAS3sd9DxOsRnh4F9
+	 3ADscsCVxm9M7aGzjRbBA3unk5xVg0Digff9Nz86F4RF8vmUz+euOET4pFOB5v5mN5
+	 7YXCFbXTWve0A==
+Date: Mon, 26 Sep 2022 19:57:34 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Asutosh Das <quic_asutoshd@quicinc.com>
+Cc: quic_nguyenb@quicinc.com, quic_xiaosenh@quicinc.com,
+	quic_cang@quicinc.com, quic_nitirawa@quicinc.com,
+	quic_rampraka@quicinc.com, quic_richardp@quicinc.com,
+	stanley.chu@mediatek.com, adrian.hunter@intel.com,
+	bvanassche@acm.org, avri.altman@wdc.com, beanhuo@micron.com,
+	martin.petersen@oracle.com, linux-scsi@vger.kernel.org,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	"James E.J. Bottomley" <jejb@linux.ibm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v1 02/16] ufs: core: Introduce Multi-circular queue
+ capability
+Message-ID: <20220926142734.GD101994@thinkpad>
+References: <cover.1663894792.git.quic_asutoshd@quicinc.com>
+ <fa3d70c1642c64ce75461f630eabe84b3b974d4e.1663894792.git.quic_asutoshd@quicinc.com>
 MIME-Version: 1.0
-References: <835f393df9cc985fe5b815bc6eeaf06ab4d07192.camel@mediatek.com>
-In-Reply-To: <835f393df9cc985fe5b815bc6eeaf06ab4d07192.camel@mediatek.com>
-From: Josh Boyer <jwboyer@kernel.org>
-Date: Mon, 26 Sep 2022 10:27:06 -0400
-X-Gmail-Original-Message-ID: <CA+5PVA60ODTEZPoYqPMqjxu_ARxFLmeHie11McQUAx95+bXwFw@mail.gmail.com>
-Message-ID: <CA+5PVA60ODTEZPoYqPMqjxu_ARxFLmeHie11McQUAx95+bXwFw@mail.gmail.com>
-Subject: Re: [PULL v2 linux-firmware] Update mediatek mt81xx SOF firmware
-To: TingHan Shen <tinghan.shen@mediatek.com>
-Cc: linux-firmware@kernel.org, linux-mediatek@lists.infradead.org, 
-	chunxu.li@mediatek.com, allen-kh.cheng@mediatek.com, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	angelogioacchino.delregno@collabora.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <fa3d70c1642c64ce75461f630eabe84b3b974d4e.1663894792.git.quic_asutoshd@quicinc.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_072719_206432_90EABF33 
-X-CRM114-Status: GOOD (  21.29  )
+X-CRM114-CacheID: sfid-20220926_072744_981048_A80C52E1 
+X-CRM114-Status: GOOD (  25.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,63 +83,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 16, 2022 at 4:35 AM TingHan Shen <tinghan.shen@mediatek.com> wrote:
->
-> Hi maintainers,
->
-> This pull request adds new MediatekTek MT8195 SOF firmware and
-> updates MT8186 SOF firmware.
->
-> Please let me know if there is any problem.
->
-> Best regards,
-> TingHan
->
-> --
->
-> The following changes since commit f09bebf31b0590bdc875d7236aa705279510cfd0:
->
->   amdgpu: update yellow carp DMCUB firmware (2022-09-13 08:02:23 -0400)
->
-> are available in the Git repository at:
->
->   https://github.com/tinghan-shen/linux_fw_scp mtk-20220915
->
-> for you to fetch changes up to 3e08c58f8af488c41573c4a64a261e3b3f35849b:
->
->   mediatek: Add new mt8195 SOF firmware (2022-09-16 16:19:11 +0800)
->
-> ----------------------------------------------------------------
-> Tinghan Shen (2):
->       mediatek: Update mt8186 SOF firmware
->       mediatek: Add new mt8195 SOF firmware
->
->  WHENCE                                                                                      |  11 ++++++++---
->  mediatek/{sof/sof-mt8186-mt6366-da7219-max98357.tplg => sof-tplg/sof-mt8186.tplg}           | Bin
->  mediatek/sof-tplg/sof-mt8195-mt6359-rt1019-rt5682-dts.tplg                                  | Bin 0 -> 20895 bytes
->  .../sof-mt8186-mt6366-rt1019-rt5682s.tplg => sof-tplg/sof-mt8195-mt6359-rt1019-rt5682.tplg} | Bin 16191 -> 16191 bytes
+On Thu, Sep 22, 2022 at 06:05:09PM -0700, Asutosh Das wrote:
+> Adds support to check for MCQ capability in the UFSHC.
+> This capability can be used by host drivers to control
+> MCQ enablement.
+> 
+> Co-developed-by: Can Guo <quic_cang@quicinc.com>
+> Signed-off-by: Can Guo <quic_cang@quicinc.com>
+> Signed-off-by: Asutosh Das <quic_asutoshd@quicinc.com>
+> ---
+>  drivers/ufs/core/ufshcd.c |  5 +++++
+>  include/ufs/ufshcd.h      | 13 +++++++++++++
+>  2 files changed, 18 insertions(+)
+> 
+> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+> index 4b9ae83..24661fc 100644
+> --- a/drivers/ufs/core/ufshcd.c
+> +++ b/drivers/ufs/core/ufshcd.c
+> @@ -89,6 +89,7 @@
+>  #define FDEVICEINIT_COMPL_TIMEOUT 1500 /* millisecs */
+>  
+>  #define EXT_IID_CAP_SHIFT 10
+> +#define MCQ_SUPP_SHIFT 30
+>  #define ufshcd_toggle_vreg(_dev, _vreg, _on)				\
+>  	({                                                              \
+>  		int _ret;                                               \
+> @@ -2240,6 +2241,10 @@ static inline int ufshcd_hba_capabilities(struct ufs_hba *hba)
+>  	if (err)
+>  		dev_err(hba->dev, "crypto setup failed\n");
+>  
+> +	hba->mcq_sup = (hba->capabilities & MASK_MCQ_SUPPORT) >> MCQ_SUPP_SHIFT;
 
-This fails check_whence.py:
+Again, if you use FIELD_* macro, addtional *_SHIFT macro is not needed.
 
-[jwboyer@vader linux-firmware]$ ./check_whence.py
-E: mediatek/sof-tplg/sof-mt8195-mt6359-rt1019-rt5682-dts.tplg not
-listed in WHENCE
-[jwboyer@vader linux-firmware]$
+> +	if (!hba->mcq_sup)
+> +		return err;
 
-Can you fix it up please?
+Since this is not an error case, you can return 0 explicitly.
 
-josh
+> +
+>  	hba->mcq_capabilities = ufshcd_readl(hba, REG_MCQCAP);
+>  	hba->ext_iid_sup = (hba->mcq_capabilities & MASK_EXT_IID_SUPPORT) >>
+>  		EXT_IID_CAP_SHIFT;
+> diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+> index da1eb8a..da7ec0c 100644
+> --- a/include/ufs/ufshcd.h
+> +++ b/include/ufs/ufshcd.h
+> @@ -660,6 +660,12 @@ enum ufshcd_caps {
+>  	 * notification if it is supported by the UFS device.
+>  	 */
+>  	UFSHCD_CAP_TEMP_NOTIF				= 1 << 11,
+> +
+> +	/*
+> +	 * This capability allows the host controller driver to turn on/off
+> +	 * MCQ mode. MCQ mode may be used to increase performance.
+> +	 */
+> +	UFSHCD_CAP_MCQ_EN				= 1 << 12,
+>  };
+>  
+>  struct ufs_hba_variant_params {
+> @@ -820,6 +826,7 @@ struct ufs_hba_monitor {
+>   * @complete_put: whether or not to call ufshcd_rpm_put() from inside
+>   *	ufshcd_resume_complete()
+>   * @ext_iid_sup: is EXT_IID is supported by UFSHC
+> + * @mcq_sup: is mcq supported by UFSHC
+>   */
+>  struct ufs_hba {
+>  	void __iomem *mmio_base;
+> @@ -969,8 +976,14 @@ struct ufs_hba {
+>  	u32 luns_avail;
+>  	bool complete_put;
+>  	bool ext_iid_sup;
+> +	bool mcq_sup;
+>  };
+>  
+> +static inline bool is_mcq_supported(struct ufs_hba *hba)
 
->  mediatek/sof/sof-mt8186.ldc                                                                 | Bin 0 -> 48436 bytes
->  mediatek/sof/sof-mt8186.ri                                                                  | Bin 128712 -> 128712 bytes
->  mediatek/sof/sof-mt8195.ldc                                                                 | Bin 0 -> 40568 bytes
->  mediatek/sof/sof-mt8195.ri                                                                  | Bin 0 -> 100740 bytes
->  8 files changed, 8 insertions(+), 3 deletions(-)
->  rename mediatek/{sof/sof-mt8186-mt6366-da7219-max98357.tplg => sof-tplg/sof-mt8186.tplg} (100%)
->  create mode 100644 mediatek/sof-tplg/sof-mt8195-mt6359-rt1019-rt5682-dts.tplg
->  rename mediatek/{sof/sof-mt8186-mt6366-rt1019-rt5682s.tplg => sof-tplg/sof-mt8195-mt6359-rt1019-rt5682.tplg} (86%)
->  create mode 100644 mediatek/sof/sof-mt8186.ldc
->  create mode 100644 mediatek/sof/sof-mt8195.ldc
->  create mode 100644 mediatek/sof/sof-mt8195.ri
->
+No inline please. Compiler is the best judge.
+
+Thanks,
+Mani
+
+> +{
+> +	return hba->mcq_sup && (hba->caps & UFSHCD_CAP_MCQ_EN);
+> +}
+> +
+>  /* Returns true if clocks can be gated. Otherwise false */
+>  static inline bool ufshcd_is_clkgating_allowed(struct ufs_hba *hba)
+>  {
+> -- 
+> 2.7.4
+> 
+
+-- 
+மணிவண்ணன் சதாசிவம்
 
