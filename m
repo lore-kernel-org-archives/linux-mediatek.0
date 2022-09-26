@@ -4,107 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2675C07E9D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 21:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3834BC07E9D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 21:54:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f2oVW5cv920HtluzlojR1Lmu74tSl8qrPKw3Uc0zNRA=; b=znXyH2PmfZVXl03IbicGwbinio
-	fmoefa12cPDKACl9v2TPKQ7yN8DB4p3b045oKeFd29zghByOxVpvsUsx97ue6udlJdbSstlChiWW2
-	aVoD5FR4k+aGkkve+gVU+u7ifFb5f9HX9s11d1DxMPVrtvc9UT4lawGTht4i6/tqw7Dbn9KVPqQMt
-	PsxrkBeTHrFVabo/hJhS/L3LBOXTkYjH5YujZ86IJTmy/eLITKkIVw3+Y7vQK9EX6CniAmq/WjR6a
-	uORXN4uCfaGKX7wAwRnnAf71xvhvmcWqIGdkFgDbxND0tHKh7bbw8z1RNTwhm0tPD2mhoBns/Rirz
-	ahQ3iqoA==;
+	bh=w2QQwnQgmCoCtfJGgTC/b/2B1KxxxneV73oIJQj+vXs=; b=Q/5jCCN7qjh6a62QcIFzRCHFHr
+	4jCTi3s3MCiO5KOChdG5C1P77K4DClwqChz01UfcS+KG7ocbn3fWNj9IrUuiESRtIT/Bm+XdRcCYv
+	OIdmYaqKc3GZK0a4B7AqemztjFyLBwnswq8/ZviMWg1g63XhS9w/cYE6hHEOwrrgaUnVhFZupQjf5
+	QOimMC6+6+Xx/AtRhYaWtFeIDe1/f+hRpeKcuhtT2vTg9nwhRmpb1zI0Ny+aFZebZEYwKH/e7O/Gp
+	M+GzYBCy+NEiYe6j26ziHpKsN33ZDD1K7Lna8dB/cQbcxUKpSrB8rbaHUIFh3c9H+mpgMlu7MvM8r
+	6NIcqp9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocvkU-006xIv-UI; Mon, 26 Sep 2022 21:34:46 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1ocw3q-0075t6-JI; Mon, 26 Sep 2022 21:54:46 +0000
+Received: from mail-ot1-f52.google.com ([209.85.210.52])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocvkH-006xEq-Du; Mon, 26 Sep 2022 21:34:34 +0000
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 28QLMLlw026751;
-	Mon, 26 Sep 2022 21:34:15 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
- cc : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=qcppdkim1; bh=f2oVW5cv920HtluzlojR1Lmu74tSl8qrPKw3Uc0zNRA=;
- b=XtRrgQJiv2OAKKUVLos7UsrYBHpfrT+ifm4SLHdo/kqgMtD7NEAiK04ow7VbFtLjWaUX
- /SFaOFYKIVxlmTKfK8fF3ti7hcd8Ur/8fudeQO20duxa1LpEbQHqj3l++/DdS4BgsUzH
- 4XJAcWbUQyM/yiHg5k5PC+qu0wrYIs+uo+WSAIzWZQvFn0xri7MnHRgDZAj8bP1dk7K6
- 3a1D+OICEIiY0VXBYWfWTTsgIQ6u4k2aQ2jA11+HM1pzF7n9/G7Q9cJlV8LiZ/dnExBL
- MPYGx+2l9TVapbd5UiO7eExBUGo7YGVEmmcY9doq8ZxNUuld0s0kKK+Zb7oPi0rD1a1Y cg== 
-Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3jsq8vmufa-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 26 Sep 2022 21:34:14 +0000
-Received: from nasanex01a.na.qualcomm.com ([10.52.223.231])
-	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 28QLYD49032298
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 26 Sep 2022 21:34:13 GMT
-Received: from asutoshd-linux1.qualcomm.com (10.80.80.8) by
- nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.29; Mon, 26 Sep 2022 14:34:13 -0700
-Date: Mon, 26 Sep 2022 14:34:13 -0700
-From: Asutosh Das <quic_asutoshd@quicinc.com>
-To: Avri Altman <Avri.Altman@wdc.com>
-CC: "mani@kernel.org" <mani@kernel.org>,
-        "quic_nguyenb@quicinc.com"
-	<quic_nguyenb@quicinc.com>,
-        "quic_xiaosenh@quicinc.com"
-	<quic_xiaosenh@quicinc.com>,
-        "quic_cang@quicinc.com" <quic_cang@quicinc.com>,
-        "quic_nitirawa@quicinc.com" <quic_nitirawa@quicinc.com>,
-        "quic_rampraka@quicinc.com" <quic_rampraka@quicinc.com>,
-        "quic_richardp@quicinc.com" <quic_richardp@quicinc.com>,
-        "stanley.chu@mediatek.com" <stanley.chu@mediatek.com>,
-        "adrian.hunter@intel.com" <adrian.hunter@intel.com>,
-        "bvanassche@acm.org"
-	<bvanassche@acm.org>,
-        "beanhuo@micron.com" <beanhuo@micron.com>,
-        "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
-        "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-        Alim Akhtar
-	<alim.akhtar@samsung.com>,
-        "James E.J. Bottomley" <jejb@linux.ibm.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        open list
-	<linux-kernel@vger.kernel.org>,
-        "moderated list:ARM/Mediatek SoC support"
-	<linux-arm-kernel@lists.infradead.org>,
-        "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v1 02/16] ufs: core: Introduce Multi-circular queue
- capability
-Message-ID: <20220926213413.GD15228@asutoshd-linux1.qualcomm.com>
-References: <cover.1663894792.git.quic_asutoshd@quicinc.com>
- <fa3d70c1642c64ce75461f630eabe84b3b974d4e.1663894792.git.quic_asutoshd@quicinc.com>
- <DM6PR04MB6575F55C0A33C049E22C72B6FC509@DM6PR04MB6575.namprd04.prod.outlook.com>
+	id 1ocw3n-0075pr-By; Mon, 26 Sep 2022 21:54:44 +0000
+Received: by mail-ot1-f52.google.com with SMTP id r22-20020a9d7516000000b00659ef017e34so5293876otk.13;
+        Mon, 26 Sep 2022 14:54:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=w2QQwnQgmCoCtfJGgTC/b/2B1KxxxneV73oIJQj+vXs=;
+        b=HY9ByZvzkddm33E133PrBkbo738BZ38+CDfrGqOZSx+le/sfUAOS7DWArGYkh54iwY
+         Q2M3Vs4TXHA80g82JNBm6ttQA8tbtbE3KgM4JBfj+4pOPQ27JMn+USRrxT27W64UikfQ
+         uE/Ncf/9DsRDVy8k+W1EpWDcsXqKJfUJ+1V/awLUg9HSFajsRdFAleECoOZq0+b45Af8
+         cnQnGmpKYr//hXDJTFkCH09KaE9j3x6AmdwekoEt2Q8gNW5RB4fyleHW3yXDkxXqauC/
+         EDo+R+eoSvAojUtqCiM/5Fx+lfbuT1HWxvHeawSu1/bBo9Zopc8cjIud+fCX6xc4+DfW
+         y4mQ==
+X-Gm-Message-State: ACrzQf2zrG0p01mg0szNxcVcmt1ncmIkaWnuwQZEuwNrfqALUSTlK2jQ
+	yndL1ccNEkLycusNlYzqTw==
+X-Google-Smtp-Source: AMsMyM6bmE7R0bTAstFX4jVboHAVQz30IQaE1gTw1Ch1FS7J/e50TEWed28r2+CwdBjQaLYnUzf7RA==
+X-Received: by 2002:a9d:6e0f:0:b0:655:f372:f18b with SMTP id e15-20020a9d6e0f000000b00655f372f18bmr11294695otr.206.1664229281970;
+        Mon, 26 Sep 2022 14:54:41 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id bm43-20020a0568081aab00b0034d14c6ce3dsm7615607oib.16.2022.09.26.14.54.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Sep 2022 14:54:41 -0700 (PDT)
+Received: (nullmailer pid 2894496 invoked by uid 1000);
+	Mon, 26 Sep 2022 21:54:40 -0000
+Date: Mon, 26 Sep 2022 16:54:40 -0500
+From: Rob Herring <robh@kernel.org>
+To: "liangxu.xu" <liangxu.xu@mediatek.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: display: mediatek: dp: Add compatible for
+ MediaTek MT8188
+Message-ID: <20220926215440.GA2888681-robh@kernel.org>
+References: <20220923013953.5043-1-liangxu.xu@mediatek.com>
+ <f6e669dd-f2cf-6e3f-18bb-25b21e5eab0c@linaro.org>
+ <2afb5b7f761c7931eaf93f2f8a0fd268a39e1b02.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; format=flowed
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <DM6PR04MB6575F55C0A33C049E22C72B6FC509@DM6PR04MB6575.namprd04.prod.outlook.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: 5dXhM2cb4YyM6u6yv3C-R1bycUFppWH2
-X-Proofpoint-ORIG-GUID: 5dXhM2cb4YyM6u6yv3C-R1bycUFppWH2
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
- definitions=2022-09-26_09,2022-09-22_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 clxscore=1015
- adultscore=0 mlxscore=0 mlxlogscore=999 spamscore=0 priorityscore=1501
- suspectscore=0 phishscore=0 malwarescore=0 lowpriorityscore=0 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2209130000
- definitions=main-2209260132
+In-Reply-To: <2afb5b7f761c7931eaf93f2f8a0fd268a39e1b02.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_143433_607204_E004C45B 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20220926_145443_443858_65719D03 
+X-CRM114-Status: GOOD (  17.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,16 +79,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 24 2022 at 01:14 -0700, Avri Altman wrote:
->>
->> +       hba->mcq_sup = (hba->capabilities & MASK_MCQ_SUPPORT) >>
->> MCQ_SUPP_SHIFT;
->Since you are just testing for bit30, MASK_MCQ_SUPPORT is not really needed.
->Maybe just:
->hba->mcq_sup = (hba->capabilities >> MCQ_SUPP_SHIFT) & 1;
->
-Thanks. Yeah, Mani suggested FIELD* macros as an option too.
-Let me check that as well and address this in the next version.
+On Mon, Sep 26, 2022 at 10:52:04AM +0800, liangxu.xu wrote:
+> On Fri, 2022-09-23 at 13:16 +0200, Krzysztof Kozlowski wrote:
+> > On 23/09/2022 03:39, liangxu.xu@mediatek.com wrote:
+> > > From: liangxu xu <liangxu.xu@mediatek.com>
+> > > 
+> > > Add dt-binding documentation of dp for MediaTek MT8188 SoC.
+> > > 
+> > > Signed-off-by: liangxu xu <liangxu.xu@mediatek.com>
+> > > ---
+> > 
+> > Where is the DTS? Where are driver changes?
+> > 
+> > Best regards,
+> > Krzysztof
+> > 
+> 
+> Hi Krzysztof:
+> 
+> If you want to see the synchronous changes of dts and binding files,
+> then I will attach this binding file changes when sending dts later.
+> 
+> The driver change of mt8188 reuses that of mt8195. The driver link is
+> as follows:
+> 
+> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/drivers/gpu/drm/mediatek/mtk_dp.c?id=48f4230642ee32a97ddf4be492838ce96089f040
 
--asd
+So the 8188 block is backwards compatible with the 8195 block? 
+That's good, but not what your schema says because you have not defined 
+a fallback compatible for the driver to use.
+
+Rob
 
