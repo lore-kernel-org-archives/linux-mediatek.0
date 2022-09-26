@@ -4,75 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 895A0C07E9D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 06:39:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3AD6C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 06:40:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7/yMYsprffHg/IKA2oX3soW+BNYUzi6YdPefr1cmzZI=; b=UME/2Y3hQok59zvwVb7vaFUa3E
-	UDo1pJITxqPo708Fb5kDewqiE9NfWycyE0bLmUJUgws4lMjJ5Gm1EJ0NMDNZtI+s7WhOMIOMO2nCr
-	5s7pNlNeoLsQhygkoqZtLtpROJ33wu1TXLOi+hRO0mv2u6mjoIhsRRI6fP8kZCJ4887GIZA3A+oLP
-	kY1M8Lt8iuw+A5pqwfipKtalGoWFXhZA7PYYSpVjbDCGWQt4CfCInrexeoouTbI2PkDRw2spX+Lzj
-	dbfp3UIAMunSEmUknjsm0YHm1lGxz0pZjGnq2ORLTkDCvaqnuAOwDq1GqEBjvIzXrVyK0/49QSm0w
-	uGy83a8A==;
+	bh=W3hxzdrBIum1j0xz9YZTHAUg/0XjqqL/D7mMmLIxdR4=; b=FFPFLnxTRXYRp5rVcb472UwLHb
+	T9yHrp+3TMAYGkF3bhfURJcmGeOvHPecdM1i+dVRnZJ5fqd9UcH+xEUFlPA84zZGp5hMijAMH2wtL
+	Ilp91Kjl8tHbqyf3EWP9XMaQKW90PEmuQvgve32Z/VEiUcj6YLmxS4zzKNqPuUosrrWsjQEK/mfyT
+	R+4Pq30QS5Ze4+vVi1F/a2/KmqXtES1TUH8TSnTiZGqzdjnTtV4/2/BYbPmc92tFpHxIddF85EyrE
+	Z/sE2YEGVx4y6MAaSj/Fm2AcTUbMeOMlRvPbik2lBeI19RuP9jtXZ7SRESlgWsh6Akg4j4UKbDm7Y
+	tf78D2IQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ochlS-002OOj-Vc; Mon, 26 Sep 2022 06:38:51 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ochmg-002PMM-WB; Mon, 26 Sep 2022 06:40:07 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ochit-002NA4-Ng; Mon, 26 Sep 2022 06:36:13 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 6BC6CB818C0;
-	Mon, 26 Sep 2022 06:36:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B06A2C433C1;
-	Mon, 26 Sep 2022 06:36:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664174168;
-	bh=RZWqL6mqGtYB3W7YZL1NmlDx5eOD8rP55uoSBbEQ7zk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=te8u1O9i9c9mofZaPXRCXAhTN2NGWJE0QLtKRMautYWAj4BKsMYlDcwDNSJiIQLwh
-	 JIg85KBLn3FjJYRHIPXql9VB7qDYM3AMCqf3Dr6KHXbAqONeIn3W2pj9b07hvWbpH7
-	 4RrOyk/iCFNL/SYLxOsFLwBKi8Gm5tF5+7jpWrJVlepS2ZD7mE3kzwFSmAml2rQ4Ln
-	 50G0Euw0BFTla11EagWXsrBNV6K1koFxRhLdKviLEaaHFkeLdnnBiwEOHnd4rY9v5o
-	 N99LbczJfUs0dNMnzC5gOLvbhx6zLp38gf0CqduV/ShpJlD5l0KfAE2KDxo2a+xbMn
-	 a9b+fhgOw7Kfg==
-Message-ID: <eb8883bc-1328-acd8-2c41-af877cecbfa4@kernel.org>
-Date: Mon, 26 Sep 2022 08:36:01 +0200
+	id 1ochl6-002OFj-BU
+	for linux-mediatek@lists.infradead.org; Mon, 26 Sep 2022 06:38:31 +0000
+Received: by mail-lj1-x230.google.com with SMTP id b6so6259513ljr.10
+        for <linux-mediatek@lists.infradead.org>; Sun, 25 Sep 2022 23:38:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=W3hxzdrBIum1j0xz9YZTHAUg/0XjqqL/D7mMmLIxdR4=;
+        b=ePexRndPURvdCW/6uFFqR/iEiqGsxFN63U0+E7Mw/SDz4ZwwNEHsmVHumFqZeMYCUP
+         w8s7D75BCLIzBKqYzi2ogsSYLQfENPA4YBlkAy7xmGIaZVpzOBLJOJBVmSgV8B9AxENp
+         4k9tn5vOQllbiqS/XTVubaMGN3+gj9u09UhLCVk0TYFk8T5lw7S/gkcV2EfEw/3L/JMQ
+         D1Pt/0hEH58mgxQwVwA1fUt8341UKEQFrik2uQZ70jnH8wajATyMJdZbd8uzdTiFw7/8
+         s4sXMk+6hYNL9CHWmFGnedd4ZzjP6bKJB+in83kJvdPYJbbwwdg5MwyBBVmi4j+WhIEb
+         IqSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=W3hxzdrBIum1j0xz9YZTHAUg/0XjqqL/D7mMmLIxdR4=;
+        b=KJK/nqlwFzH7EXbL2CZXPU59x+P8KzDeelH04p5TpatVmsuStAMhdt9cS4Im6ZG1yE
+         ddYaBpxTwIA9Ich5aHDvAj2Oq1TpNvWDN97ZiR0nZtJzNjnlYd4pEhcmTj6jp7rAfrb1
+         PCZbcE7V7LsrVApgxy+k95kyC6UobPZs9lsMlDvas9R89nJl6c2PwPQgptCteg4d57xy
+         3EinnQfUECDIHTUSaiyEEl4okM0XAdIlIwDGW87RfZOzouTNib+fvn9qiaRHAhUdQxy+
+         s5Z57dVr+T4YRjOlEvSbbWcrBUzgdVejO4yVNn6Ch+tLLtTDAzKU5A03hPyV6vNpXHLG
+         RdvQ==
+X-Gm-Message-State: ACrzQf0X5OCWzUR2Qkk0n5pVp3HZ/HuU6F/GBF8cARqZL5/6bjZpicuH
+	Vp/zzv3CqlwYzPMP4uEggFithQ==
+X-Google-Smtp-Source: AMsMyM7zYhJnhCTUeUDjnpPqlK+tH954E2LgxBK1i8gOU2GZVXuiyg0sE4TRiLJTrdd7ByA6IdiJnQ==
+X-Received: by 2002:a05:651c:a04:b0:26c:50df:75ad with SMTP id k4-20020a05651c0a0400b0026c50df75admr6942132ljq.416.1664174303703;
+        Sun, 25 Sep 2022 23:38:23 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id b5-20020ac25625000000b004a050ddc4ecsm1321680lff.125.2022.09.25.23.38.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 25 Sep 2022 23:38:23 -0700 (PDT)
+Message-ID: <bd99a454-8cee-edb9-bc34-ce0be280bd90@linaro.org>
+Date: Mon, 26 Sep 2022 08:38:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.0
-Subject: Re: [V14,08/15] dt-bindings: mediatek: Add mediatek,mt8195-jpgdec
- compatible
+Subject: Re: [PATCH v1 15/17] dt-bindings: display: mediatek: dpi: Add
+ compatible for MediaTek MT8195
 Content-Language: en-US
-To: "kyrie.wu" <kyrie.wu@mediatek.com>, Irui Wang <irui.wang@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tzung-Bi Shih <tzungbi@chromium.org>,
- angelogioacchino.delregno@collabora.com, nicolas.dufresne@collabora.com,
- wenst@chromium.org
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
- xia.jiang@mediatek.com, maoguang.meng@mediatek.com,
- Rob Herring <robh@kernel.org>
-References: <20220915064337.2686-1-irui.wang@mediatek.com>
- <20220915064337.2686-9-irui.wang@mediatek.com>
- <3bbdfb31-2ba2-7345-54c7-82a67d95e30f@kernel.org>
- <f0b80a0d60172e9c286c0cd3b599875a345ae4f0.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-In-Reply-To: <f0b80a0d60172e9c286c0cd3b599875a345ae4f0.camel@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Guillaume Ranquet <granquet@baylibre.com>, Vinod Koul <vkoul@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, David Airlie <airlied@linux.ie>,
+ Rob Herring <robh+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, Pablo Sun <pablo.sun@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
+References: <20220919-v1-0-4844816c9808@baylibre.com>
+ <20220919-v1-15-4844816c9808@baylibre.com>
+ <e993c25e-f334-e1ca-73f8-58cf141c521e@linaro.org>
+ <CAGXv+5FYjj6=WHWBvNRDmpw2Ux8RJ4a2fT1gXk3+eXSqt9poeQ@mail.gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <CAGXv+5FYjj6=WHWBvNRDmpw2Ux8RJ4a2fT1gXk3+eXSqt9poeQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220925_233612_143595_4DAB1540 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20220925_233828_523830_ECC3C473 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,76 +109,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26/09/2022 03:56, kyrie.wu wrote:
-> On Fri, 2022-09-23 at 13:28 +0200, Krzysztof Kozlowski wrote:
->> On 15/09/2022 08:43, Irui Wang wrote:
->>> From: kyrie wu <kyrie.wu@mediatek.com>
->>>
->>> Add mediatek,mt8195-jpgdec compatible to binding document.
+On 26/09/2022 07:24, Chen-Yu Tsai wrote:
+> On Thu, Sep 22, 2022 at 3:20 PM Krzysztof Kozlowski
+> <krzysztof.kozlowski@linaro.org> wrote:
 >>
->> Use scripts/get_maintainers.pl to CC all maintainers and relevant
->> mailing lists.
->>
+>> On 19/09/2022 18:56, Guillaume Ranquet wrote:
+>>> Add dt-binding documentation of dpi for MediaTek MT8195 SoC.
 >>>
->>> Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
->>> Signed-off-by: irui wang <irui.wang@mediatek.com>
->>> Reviewed-by: Rob Herring <robh@kernel.org>
->>> ---
->>>  .../media/mediatek,mt8195-jpegdec.yaml        | 169
->>> ++++++++++++++++++
->>>  1 file changed, 169 insertions(+)
->>>  create mode 100644
->>> Documentation/devicetree/bindings/media/mediatek,mt8195-
->>> jpegdec.yaml
+>>> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 >>>
->>> diff --git
->>> a/Documentation/devicetree/bindings/media/mediatek,mt8195-
->>> jpegdec.yaml
->>> b/Documentation/devicetree/bindings/media/mediatek,mt8195-
->>> jpegdec.yaml
->>> new file mode 100644
->>> index 000000000000..9135cf889d1e
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-
->>> jpegdec.yaml
->>> @@ -0,0 +1,169 @@
->>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->>> +%YAML 1.2
->>> +---
->>> +$id: 
->>> https://urldefense.com/v3/__http://devicetree.org/schemas/media/mediatek,mt8195-jpegdec.yaml*__;Iw!!CTRNKA9wMg0ARbw!yu00-_vltBz3bkDyzkeH2PENGyfi_megjPx815JiqrNVa28ZU7kcFYidMEos_id7$
->>>  
->>> +$schema: 
->>> https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!yu00-_vltBz3bkDyzkeH2PENGyfi_megjPx815JiqrNVa28ZU7kcFYidMAikt6uh$
->>>  
->>> +
->>> +title: MediaTek JPEG Encoder Device Tree Bindings
->>> +
->>> +maintainers:
->>> +  - kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>
->>> +
->>> +description:
->>> +  MediaTek JPEG Decoder is the JPEG decode hardware present in
->>> MediaTek SoCs
->>> +
->>> +properties:
->>> +  compatible:
->>> +    items:
+>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+>>> index 5bb23e97cf33..2c7ecef54986 100644
+>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+>>> @@ -24,6 +24,7 @@ properties:
+>>>        - mediatek,mt8183-dpi
+>>>        - mediatek,mt8186-dpi
+>>>        - mediatek,mt8192-dpi
+>>> +      - mediatek,mt8195-dpi
+>>>        - mediatek,mt8195-dp-intf
 >>
->> You do not have more than one item. Skip items.
+>> Aren't these the same?
 > 
-> Hello Krzysztof,
+> *-dpi are MIPI DPI (as in parallel data with DDR modes) encoders.
+> *-dp-intf are Display Port encoder.
 > 
-> The device node has the compatible of "mediatek,mt8195-jpgdec",
-> if skip this item, it may case dt-binding checking error.
+> Totally distinguishable. :)
+> 
+> The hardware blocks seem similar upon cursory comparison of the register
+> tables, with the base layout being the same, and sharing registers for
+> basic settings such as the display timings.
+> 
+> The DPI ones have some extra registers, presumably to control the signals
+> or output width. The DP one has some registers of its own that only make
+> sense for Display Port.
 
-No, this won't happen if you use correct syntax.
+OK.
 
-> For another, we may extend this items in the future.
 
-Not really, that would be change of ABI. If you have already list of
-devices, include them now.
-
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
