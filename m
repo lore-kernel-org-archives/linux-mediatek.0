@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE8BAC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 10:12:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B374C6FA93
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 10:12:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5hsFLGove8A5Ft+QOTZg/6me4R2VwjjdRrVKwLlOziw=; b=FHcCgUMMxOfZ16BRVca8lzHh0o
-	LrMS9ZZJad+m+2klfJIIBw1vPA4RbqhnCdbQwKV+aP9IewphrcK2h/+p8zbnVeL4PhC2tb6sSG1ly
-	lkzOJJ+plT8k2GcFQVlKwMfqzHEq/A0CdwazS6/EJsUMbkTpKZQ1wwZPzfd3pQdA05f5vJqZjf5nV
-	+RjiRHa1SSaKpVI7xPglqpGj21HFuwROQDGN85sfbbM6vEO4djF46+zDNE+rzMVnu9gVEG5hoegs6
-	MklwxPb734cSeOTxd5fOvshNAtLooxjbBPSL5vgoD1p5SzN5HX2L0EGLyoYypj39wJhQQCq345TEN
-	RZ9nwIVg==;
+	bh=tCud6e42czc0UwHCyidR/KwZejpItT6B2bYoCkqzMwg=; b=T8mVOtWYeN91g2OrLR5Xq9GD0B
+	UEo7m4UUKJei3YWrVv+n+1bc/ernYye/7/Hujfk5W4++KnWdw2vA5jAduweyptfzEYSeJMlf6hCM/
+	s6zHAMBqOBiehcBl9Jj+lYTAxOO1XeLaMV5jawGDaImxnj6LDtUYHosJOqqEB14v63nDUcROLoTsS
+	2bTujQBfOLHAm3dBoD/skk63aB4X+HHCkcujp9KzPGY6dEGD0N4kttKeegFcgCMAZz0xE93qeQOf9
+	EZIZvab/yNkdGQ/cmRE3EuQDdzyYlTbtyLUAZmJUDJgLjONhFbSB9UaxakMJxnSHws/PqdcRsqo38
+	F4mzEShg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od7ZI-009lVb-Sm; Tue, 27 Sep 2022 10:12:01 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1od7Zp-009lp5-W9; Tue, 27 Sep 2022 10:12:40 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od7Yx-009lK7-7M; Tue, 27 Sep 2022 10:11:40 +0000
+	id 1od7Yx-009lK5-36; Tue, 27 Sep 2022 10:11:42 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E62DA660225F;
-	Tue, 27 Sep 2022 11:11:34 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BBEEA6602265;
+	Tue, 27 Sep 2022 11:11:33 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664273495;
-	bh=7wZZwX2byJ4bhuDUY3CPvHNsdJ6p7fqNLcyFmuOhg2o=;
+	s=mail; t=1664273494;
+	bh=0o/8cVorzOsad5b/Haf5ctcd6DYaAoupPjEfo3dU2RU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Qezv6W8zxnuAA3zBI16JQxZl9vMpMD9zW0jQdQdpik5nEOuNVfeJeImRxkletuuvc
-	 qjnAGhrYcVjeT1caHTsR7bCMucUiMibdyYfK4ZSOnsKEINaXbKFd9eLSVX4pMVAqmr
-	 RJHDw+7km8C5veYZ3l97tdV7T9xTq8qaaDXkyJ83GqssKA4yJNS6bQVffEuAC9jM8p
-	 tdWquB5fFiKW3SpHmR3rI8e1kRrM4/3ZcRppoKMfizENHXZIhdHXbaRozf6ZOchILI
-	 8zAdzZIoIfy9o8BZhwRyJwrwpdphnPGHbXw1TdcRWXgmMfY0JErDqTxvZ6jBPFW1Ab
-	 73yfmoXgpOMbQ==
+	b=eJZnYEZfTW2546Q2EMvR2zOhotutnmTNfvUp5QmaRpkiW1g4Wt14O3+WNGym1Amm5
+	 8smEJPUErM/974lSgBmHLaFNa4oG5vZP63vrbr9CvjBye9eJXgESWlqjw1X+dAut0F
+	 XLBduncdVcXKfxWJ3RMpyLVnShssV42OD+omYQWkdJPaahFEKKuZsmUV80Guk8zQGZ
+	 YuvNqD9q/zgf9gwogttzCxa4gbtU8F7/nCVcFHTx8tsUQ70JCp31E6E+a22Lj94DRf
+	 c9PoYLK467JFbItzlAxjNe27VpsAzup5DbNljauDEAY0VATAvPkPw9n5Gn31yEWubg
+	 fq5Gmn2dVtRnw==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: mturquette@baylibre.com,
@@ -61,17 +61,17 @@ Cc: mturquette@baylibre.com,
 	linux-clk@vger.kernel.org,
 	robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org
-Subject: [PATCH v3 02/10] clk: mediatek: mt8183: mfgcfg: Propagate rate changes to parent
-Date: Tue, 27 Sep 2022 12:11:20 +0200
-Message-Id: <20220927101128.44758-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 01/10] arm64: dts: mt8183: Fix Mali GPU clock
+Date: Tue, 27 Sep 2022 12:11:19 +0200
+Message-Id: <20220927101128.44758-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
 References: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_031139_478088_AF3FD4C8 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20220927_031139_484120_2FCB45C0 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,35 +88,34 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Chen-Yu Tsai <wenst@chromium.org>
 
-The only clock in the MT8183 MFGCFG block feeds the GPU. Propagate its
-rate change requests to its parent, so that DVFS for the GPU can work
-properly.
+The actual clock feeding into the Mali GPU on the MT8183 is from the
+clock gate in the MFGCFG block, not CLK_TOP_MFGPLL_CK from the TOPCKGEN
+block, which itself is simply a pass-through placeholder for the MFGPLL
+in the APMIXEDSYS block.
 
-Fixes: acddfc2c261b ("clk: mediatek: Add MT8183 clock support")
+Fix the hardware description with the correct clock reference.
+
+Fixes: a8168cebf1bc ("arm64: dts: mt8183: Add node for the Mali GPU")
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-mt8183-mfgcfg.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8183-mfgcfg.c b/drivers/clk/mediatek/clk-mt8183-mfgcfg.c
-index d774edaf760b..230299728859 100644
---- a/drivers/clk/mediatek/clk-mt8183-mfgcfg.c
-+++ b/drivers/clk/mediatek/clk-mt8183-mfgcfg.c
-@@ -18,9 +18,9 @@ static const struct mtk_gate_regs mfg_cg_regs = {
- 	.sta_ofs = 0x0,
- };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index a70b669c49ba..402136bfd535 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1678,7 +1678,7 @@ gpu: gpu@13040000 {
+ 				<GIC_SPI 278 IRQ_TYPE_LEVEL_LOW>;
+ 			interrupt-names = "job", "mmu", "gpu";
  
--#define GATE_MFG(_id, _name, _parent, _shift)			\
--	GATE_MTK(_id, _name, _parent, &mfg_cg_regs, _shift,	\
--		&mtk_clk_gate_ops_setclr)
-+#define GATE_MFG(_id, _name, _parent, _shift)				\
-+	GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs, _shift,	\
-+		       &mtk_clk_gate_ops_setclr, CLK_SET_RATE_PARENT)
+-			clocks = <&topckgen CLK_TOP_MFGPLL_CK>;
++			clocks = <&mfgcfg CLK_MFG_BG3D>;
  
- static const struct mtk_gate mfg_clks[] = {
- 	GATE_MFG(CLK_MFG_BG3D, "mfg_bg3d", "mfg_sel", 0)
+ 			power-domains =
+ 				<&spm MT8183_POWER_DOMAIN_MFG_CORE0>,
 -- 
 2.37.2
 
