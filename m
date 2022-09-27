@@ -4,80 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8F16C6FA83
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 08:36:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A869C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 08:47:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u11zg4SgE0WvoIefhu8fd/v/vEo+Ixw+LZY8sttKdWQ=; b=U33exAdBO9YWF1DHzGG7PGoNxj
-	W4DgzfFMqNiIfOPzM6XChJ4JPLvwLsFwL9+zPF66FLTvf4OZIOpOvA2a4ovGYqJurCWmXX1SAjmfm
-	xOlNEF0phsuC13FDsghNEAHDWpzJOC7pHEjLPqm6UgyVhbCNLStyTfbyQ4pRb3ziwo3G8AuDIOfBY
-	3yg3KbF34+6JkYSmJq7M8vwKCDF5YLBHzfhthz0IWIcP6oGbLGKdL6/aExjMczrUSyMZtQ4TkkKC6
-	tylxo4a+IiRGILi+q88z4G8jhClEC304mW601eUeTiCvkXyQOCUB/sMGklZurypiovAeqYPvss4Vs
-	bC6iFtHw==;
+	bh=CSa/p/zpHyX4lGO/pfARnTvy0LVC/OySswcI+oOiq+w=; b=dOcAtCCNd+tddisLI+H2zqSioA
+	y5jXj05vnxYSkd6kBNyWSQ/xIAVw4+e2qF0mKGsLuDYAoIbxD7XdmCjEF6SIB9cQ5Zq0NZzbRCo0+
+	6MqQpkRRyLAGVvlzEbtKAtHcZ6xGfO2ZggI7VYdgFw9BzPLcDnflrqr1fGgHI8cBBYkkb6/XeIe7h
+	cK+ysAa1D4xl1INiomzPM7RgIvfbUiihq+0gAGWjHY0FQ+8yJVyWLorhkT5UrOhaPCCjoUEoIPEaD
+	0K4y7f0mOA0CFVlMcI/1dIDlDuhAz2nQ17M3+qMq6+sK6SyVRdzbQbIWXMbcDQWjGwO1C6CfUVYuU
+	kXUsM3qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od64f-009Cis-5X; Tue, 27 Sep 2022 08:36:17 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1od6Ex-009HPp-2i; Tue, 27 Sep 2022 08:46:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od61s-009BTK-Dh; Tue, 27 Sep 2022 08:33:26 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id ED7CD1884A23;
-	Tue, 27 Sep 2022 08:33:10 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id CE0B82500015;
-	Tue, 27 Sep 2022 08:33:10 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id B2A64A0A1E66; Tue, 27 Sep 2022 08:33:10 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+	id 1od6Cm-009G0s-RB; Tue, 27 Sep 2022 08:44:42 +0000
+X-UUID: 754b163061984b04b2f549543b19cbe1-20220927
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=CSa/p/zpHyX4lGO/pfARnTvy0LVC/OySswcI+oOiq+w=;
+	b=o/60iJHrOk9YoguZchqif/wc6aJLOzd7K7XAhtR4J8THKkgxNZkBVo23xWnuPck2ZpNMAfzwtcWWxWhWT+gTOTKuZvL0V9UqF8UxnmQYsKc9WaF87I+RIBi47y0ZqehxSjidPHgPEazf95yzjyUZvesMN5MroXiWJu/nD/xIBtU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:4ebd57f7-1f1f-4e71-9e9e-f62532ced255,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:45
+X-CID-INFO: VERSION:1.1.11,REQID:4ebd57f7-1f1f-4e71-9e9e-f62532ced255,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:45
+X-CID-META: VersionHash:39a5ff1,CLOUDID:ec4f5ee4-87f9-4bb0-97b6-34957dc0fbbe,B
+	ulkID:2209271643576FUGZFGP,BulkQuantity:4,Recheck:0,SF:38|28|17|19|48,TC:n
+	il,Content:0,EDM:-3,IP:nil,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
+X-UUID: 754b163061984b04b2f549543b19cbe1-20220927
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <jianguo.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2065645319; Tue, 27 Sep 2022 01:44:31 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 27 Sep 2022 16:43:54 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Tue, 27 Sep 2022 16:43:53 +0800
+Message-ID: <5d0980dd11afdd948059bcf9afa2484e5ee97bec.camel@mediatek.com>
+Subject: Re: [PATCH v5 4/4] net: stmmac: Update the name of property
+ 'clk_csr'
+From: Jianguo Zhang <jianguo.zhang@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>, "David S . Miller"
+	<davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>
+CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, Biao Huang
+	<biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Tue, 27 Sep 2022 16:43:53 +0800
+In-Reply-To: <4f205f0d-420d-8f51-ad26-0c2475c0decd@linaro.org>
+References: <20220923052828.16581-1-jianguo.zhang@mediatek.com>
+	 <20220923052828.16581-5-jianguo.zhang@mediatek.com>
+	 <e0fa3ddf-575d-9e25-73d8-e0858782b73f@collabora.com>
+	 <ac24dc0f-0038-5068-3ce6-bbace55c7027@linaro.org>
+	 <4f205f0d-420d-8f51-ad26-0c2475c0decd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Date: Tue, 27 Sep 2022 10:33:10 +0200
-From: netdev@kapio-technology.com
-To: Ido Schimmel <idosch@nvidia.com>
-Cc: Vladimir Oltean <olteanv@gmail.com>, davem@davemloft.net,
- kuba@kernel.org, netdev@vger.kernel.org, Florian Fainelli
- <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot
- <vivien.didelot@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens
- <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
- UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>, Landen
- Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>, Jiri Pirko
- <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>, Roopa Prabhu
- <roopa@nvidia.com>, Nikolay Aleksandrov <razor@blackwall.org>, Shuah Khan
- <shuah@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
- Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, bridge@lists.linux-foundation.org,
- linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
- MAC-Auth Bypass to locked port tests
-In-Reply-To: <Yyq6BnUfctLeerqE@shredder>
-References: <YxNo/0+/Sbg9svid@shredder>
- <5cee059b65f6f7671e099150f9da79c1@kapio-technology.com>
- <Yxmgs7Du62V1zyjK@shredder>
- <8dfc9b525f084fa5ad55019f4418a35e@kapio-technology.com>
- <20220908112044.czjh3xkzb4r27ohq@skbuf>
- <152c0ceadefbd742331c340bec2f50c0@kapio-technology.com>
- <20220911001346.qno33l47i6nvgiwy@skbuf>
- <15ee472a68beca4a151118179da5e663@kapio-technology.com>
- <Yx73FOpN5uhPQhFl@shredder>
- <086704ce7f323cc1b3cca78670b42095@kapio-technology.com>
- <Yyq6BnUfctLeerqE@shredder>
-User-Agent: Gigahost Webmail
-Message-ID: <7a4549d645f9bbbf41e814f087eb07d1@kapio-technology.com>
-X-Sender: netdev@kapio-technology.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
 Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_013324_685264_28FB8B91 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220927_014440_964477_30B7ADCB 
+X-CRM114-Status: GOOD (  17.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,24 +96,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-09-21 09:15, Ido Schimmel wrote:
-> 	bridge fdb add `mac_get $h2` dev br0 blackhole
+Dear Krzysztof,
+	Thanks for your comment.
 
-To make this work, I think we need to change the concept, so that 
-blackhole FDB entries are added to ports connected to the bridge, thus
-      bridge fdb add MAC dev $swpX master blackhole
+On Fri, 2022-09-23 at 20:15 +0200, Krzysztof Kozlowski wrote:
+> On 23/09/2022 20:14, Krzysztof Kozlowski wrote:
+> > > This is going to break MT2712e on old devicetrees.
+> > > 
+> > > The right way of doing that is to check the return value of
+> > > of_property_read_u32()
+> > > for "snps,clk-csr": if the property is not found, fall back to
+> > > the old "clk_csr".
+> > 
+> > I must admit - I don't care. That's the effect when submitter
+> > bypasses
+> > DT bindings review (81311c03ab4d ("net: ethernet: stmmac: add
+> > management
+> > of clk_csr property")).
+> > 
+> > If anyone wants ABI, please document the properties.
+> > 
+> > If out-of-tree users complain, please upstream your DTS or do not
+> > use
+> > undocumented features...
+> > 
+> 
+> OTOH, as Angelo pointed out, handling old and new properties is quite
+> easy to achieve, so... :)
+> 
+So, the conclusion is as following:
 
-This makes sense as the driver adds them based on the port where the 
-SMAC is seen, even though the effect of the blackhole FDB entry is 
-switch wide.
+1. add new property 'snps,clk-csr' and document it in binding file.
+2. parse new property 'snps,clk-csr' firstly, if failed, fall back to
+old property 'clk_csr' in driver.
 
-Adding them to the bridge (e.g. f.ex. br0) will not work in the SW 
-bridge as the entries then are not found. We could deny this possibility 
-or just document the use?
+Is my understanding correct?
 
+> Best regards,
+> Krzysztof
+> 
+BRS
+Jianguo
 
-For offloaded I can change the add, so that it does a delete (even if 
-none are present) and a add, thus facilitating the replace.
-
-How does this sound?
 
