@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78EB1C6FA86
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 10:15:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52F85C6FA90
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 10:21:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=33nMUvde0X5gEChmfniVXMKf3dzqFgGOXXw1lYOVhHA=; b=WEIx74wcq33d3pF7N2/jExYXO5
-	EOUDvGj+vch3oiMuTIqeMbP0cH2IEJiIc3C9X1PLQNo5aKAtSOWTzsSO/IdfIEfJ5b+QPciT5NlZ4
-	0IQro2EJPu8RrKVInw9AsApW7szqNJptX5emlycBFxfYHt9ElHwCptUT4nYhSkgAqhHVaGNEez14J
-	5a6lNV0eLP27TXziaOtPf0+mHNmT0DommiZRO8tq6V1uVXyBCgIrYCV3GGbQiLYyKI5vwmfoI/wDC
-	qSB+s/2+3+YYem2/0rGv7J7lySJnc/IGk9elHhNWd6rjUXOnDdkeV1Jpbof5q72UTy7kM20Et/Q/F
-	MmdPcfKg==;
+	bh=cu4oSMMGqA3iJwUi42kCvp3gQEajsNmIJ/Zg4JP7oTA=; b=r4+J2Lp5+blTMh/EWIDSO3NLFI
+	OYoSOl7w4XsLdWWoXf0dADaX//YgB27167KA7t6oIS71PjvuKkroMSa2AL5P8qlURH4uuks4hJwRK
+	R4vA7KrQsAqkt2h7Zm2txNHzrUrCDrTdy2hcG06xChFSe1+Jl90sW3tBI9kmsqGKEySJzo3bJXKaD
+	FUubxXzADO7fNLgWkV3J0x4vLzDJxQeMDIQyQP5VM3mMN9vuFOmdNYcYiAB46lNWELrx8AHep3AKh
+	DQVUNADaGyLc9lJAJcmtsE46Itk0hycgAZbJPLPTb7OIHxWwBx/OKjcN9rKHQ9khLapXeGEtbkzxq
+	LlZMwMrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od7cz-009nfi-6h; Tue, 27 Sep 2022 10:15:49 +0000
+	id 1od7ib-009ojZ-MW; Tue, 27 Sep 2022 10:21:37 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od7Z4-009lQ3-Fj; Tue, 27 Sep 2022 10:11:48 +0000
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1od7es-009nxQ-6u; Tue, 27 Sep 2022 10:17:47 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 551EA660226E;
-	Tue, 27 Sep 2022 11:11:44 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 24306660205F;
+	Tue, 27 Sep 2022 11:17:44 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664273505;
-	bh=5IWI64htpEUd32LavmbW5vcTEzgbRV3GoZjikO26riQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=avjHok5TrFI3/972JFn0CVpzlKvuEqyFdFWvlvd7I+U9ARrLUoA/uhao8tEgHNM0E
-	 SwfUKz4UcLFxm4XcH9L4zAheamC218jaUOER+Ixa/5demwgbQN1YOvgtDW5dL2Pmu5
-	 Phz3pBPw1Fpj+q6msB0S80OE8PFfg2nSyvGtT0KJbX/Qq2zyhJPjrUD6puh7yOHqFY
-	 w46u7ZW+QrIvwUyKEUPc485MWr48eby8CBc/aRS6mqqoQxnsrCsvX2iqhUl783JTzg
-	 sEBY1R5p4V7e2uu7T5lCJmBllWttBGqVjGZXLBuFB0W5WJSMFGBHiMi99zLAsydqYb
-	 0B9hvheXY2J4g==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com
-Cc: mturquette@baylibre.com,
-	sboyd@kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	miles.chen@mediatek.com,
-	rex-bc.chen@mediatek.com,
-	nfraprado@collabora.com,
-	chun-jie.chen@mediatek.com,
-	jose.exposito89@gmail.com,
-	drinkcat@chromium.org,
-	weiyi.lu@mediatek.com,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org
-Subject: [PATCH v3 10/10] clk: mediatek: clk-mt8192: Add clock mux notifier for mfg_pll_sel
-Date: Tue, 27 Sep 2022 12:11:28 +0200
-Message-Id: <20220927101128.44758-11-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
-References: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
+	s=mail; t=1664273864;
+	bh=7wR4aKFBkGMCvGamAc8HpHgnpBEoOFulzIiiRlcUJk0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ECbaEJmsym739P2zjraRuvwhHYHrEbx0C87wEcCgFWlUXFFFTf06BTHk0EuEd+3YR
+	 sXMNhuXS0mKiSAemPTxBlWuXHfqNtzT7bXGXouAk8nXazsleff4pEhtjRNxuE7ZDEq
+	 UILb/v7ZIBRNKvZsS8SHbU2eWOvU1gtMt76fHekd2WzOPv2hz4NeT+AqxGSdnrI11+
+	 7vX8LDqKgqMoALFIYTh9oB/vIUHy4qd2WfPbSLm2nqSB+bxP+gtTd6ArVA5HiEKd4b
+	 aiSz6iUoaEYRw95pCYDBbFUWJjwIDOeI5IS0qRHRjDRU/45WmqGlh2FS0nrbDdmner
+	 bGmBrp0yEBtsg==
+Message-ID: <05ed341b-2db3-620f-7a70-dcebfaa66f1a@collabora.com>
+Date: Tue, 27 Sep 2022 12:17:41 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v2] arm64: dts: mt8192: Add vcodec lat and core nodes
+To: =?UTF-8?B?QWxsZW4tS0ggQ2hlbmcgKOeoi+WGoOWLsyk=?=
+ <Allen-KH.Cheng@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+References: <20220926105047.19419-1-allen-kh.cheng@mediatek.com>
+ <4d1e8600-f73d-8d2b-2e7a-1b75be7624bd@collabora.com>
+ <d71334b63427df73d01ff1b9fa4d2dec94ad9c95.camel@mediatek.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <d71334b63427df73d01ff1b9fa4d2dec94ad9c95.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_031146_688270_551D3AFD 
-X-CRM114-Status: GOOD (  14.28  )
+X-CRM114-CacheID: sfid-20220927_031746_398239_B49525C6 
+X-CRM114-Status: GOOD (  18.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,64 +84,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Following the changes that were done for mt8183, add a clock notifier
-for the GPU PLL selector mux: this allows safe clock rate changes by
-temporarily reparenting the GPU to a safe clock (clk26m) while the
-MFGPLL is reprogrammed and stabilizes.
+Il 27/09/22 04:19, Allen-KH Cheng (程冠勳) ha scritto:
+> Hi Angelo,
+> 
+> On Mon, 2022-09-26 at 17:29 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 26/09/22 12:50, Allen-KH Cheng ha scritto:
+>>> Add vcodec lat and core nodes for mt8192 SoC.
+>>>
+>>> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+>>> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+>>> ---
+>>> Change in v1:
+>>>     * Replace node names with video-codec
+>>>       [Allen-KH Cheng <allen-kh.cheng@mediatek.com>]
+>>> ---
+>>> ---
+>>>    arch/arm64/boot/dts/mediatek/mt8192.dtsi | 60
+>>> ++++++++++++++++++++++++
+>>>    1 file changed, 60 insertions(+)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+>>> b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+>>> index 6b20376191a7..214dfc6b0ed1 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+>>> @@ -1449,6 +1449,66 @@
+>>>    			power-domains = <&spm
+>>> MT8192_POWER_DOMAIN_ISP2>;
+>>>    		};
+>>>    
+>>> +		vcodec_dec: video-codec@16000000 {
+>>> +			compatible = "mediatek,mt8192-vcodec-dec";
+>>> +			reg = <0 0x16000000 0 0x1000>;
+>>> +			mediatek,scp = <&scp>;
+>>> +			iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
+>>> +			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0
+>>> 0xfff00000>;
+>>> +			#address-cells = <2>;
+>>> +			#size-cells = <2>;
+>>> +			ranges = <0 0 0 0x16000000 0 0x26000>;
+>>> +
+>>> +			vcodec_lat: video-codec@10000 {
+>>
+>> Allen, this won't work :-(
+>> Check Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-
+>> decoder.yaml
+>> ...the schema requires vcodec-lat@[0-9a-f] and vcodec-core@[0-9a-f].
+>>
+>> If you want to call them all video-codec@addr, you have to also fix
+>> the schema.
+>>
+>> P.S.: Did you try to run `make dtbs_check`?
+>>
+>> Regards,
+>> Angelo
+>>
+> 
+> Sorry, my bad. I alsways run `make dtbs_check` to confirm dtb with
+> bindings. I just think we didn't limit node names in mtk-vodec
+> bindings. I will pay attention next time.
+> 
+> 
+> Since currently the vcodec lat and core nodes are absent from the mtk
+> dts, do you think the child node name should be changed to something
+> more general (ex: video-codec) in mediatek,vcodec-subdev-decoder
+> bindings?
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
----
- drivers/clk/mediatek/clk-mt8192.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+The video codec is mt8192-vcodec-dec, while the other nodes are describing
+the VPU instances (and/or vpu cores)... I'm not sure.
 
-diff --git a/drivers/clk/mediatek/clk-mt8192.c b/drivers/clk/mediatek/clk-mt8192.c
-index ebbd2798d9a3..187dbffeb987 100644
---- a/drivers/clk/mediatek/clk-mt8192.c
-+++ b/drivers/clk/mediatek/clk-mt8192.c
-@@ -1224,6 +1224,28 @@ static void clk_mt8192_top_init_early(struct device_node *node)
- CLK_OF_DECLARE_DRIVER(mt8192_topckgen, "mediatek,mt8192-topckgen",
- 		      clk_mt8192_top_init_early);
- 
-+/* Register mux notifier for MFG mux */
-+static int clk_mt8192_reg_mfg_mux_notifier(struct device *dev, struct clk *clk)
-+{
-+	struct mtk_mux_nb *mfg_mux_nb;
-+	int i;
-+
-+	mfg_mux_nb = devm_kzalloc(dev, sizeof(*mfg_mux_nb), GFP_KERNEL);
-+	if (!mfg_mux_nb)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < ARRAY_SIZE(top_mtk_muxes); i++)
-+		if (top_mtk_muxes[i].id == CLK_TOP_MFG_PLL_SEL)
-+			break;
-+	if (i == ARRAY_SIZE(top_mtk_muxes))
-+		return -EINVAL;
-+
-+	mfg_mux_nb->ops = top_mtk_muxes[i].ops;
-+	mfg_mux_nb->bypass_index = 0; /* Bypass to 26M crystal */
-+
-+	return devm_mtk_clk_mux_notifier_register(dev, clk, mfg_mux_nb);
-+}
-+
- static int clk_mt8192_top_probe(struct platform_device *pdev)
- {
- 	struct device_node *node = pdev->dev.of_node;
-@@ -1247,6 +1269,12 @@ static int clk_mt8192_top_probe(struct platform_device *pdev)
- 	if (r)
- 		return r;
- 
-+	r = clk_mt8192_reg_mfg_mux_notifier(&pdev->dev,
-+					    top_clk_data->hws[CLK_TOP_MFG_PLL_SEL]->clk);
-+	if (r)
-+		return r;
-+
-+
- 	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get,
- 				      top_clk_data);
- }
--- 
-2.37.2
+Krzysztof, please, can you give your opinion on that?
+
+Regards,
+Angelo
+
+> 
+> Thanks,
+> Allen
+> 
+> 
+> 
+> 
+> 
 
 
