@@ -4,86 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBA4FC07E9D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 13:38:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62FDDC07E9D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 13:41:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:MIME-Version:In-Reply-To:References:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kcqezBbHJffozFbEyx9wjhl1YSdIHaVumsP0lVEuZtQ=; b=hmQa1ovH8Q3UItR8P5BwdW8q9v
-	UBuaPSEE7zhFNLHwWiAB2GevidKQhgwRah2+7bFjcQyObzrJM5A+Unk73mVdKWF2mRPNn6JHu7NKw
-	BZMp3YfdPUGRt8QETMoIGytqH34qbu3C09YwO8nnCzRxR+aUnXabmgbiSdLkonwTTBgn947mAy6/G
-	7k0bBKDWkGMdvPULaap/PyKtciW6bwkx0/x2dC72UOgjCXBbVEDO7QN6E1Dd5ugtUjwMM1IllXvYS
-	y9uefroUKemCv5mz4UG7Wmg93JIV37gq/os7akA/UGcUaB0lDX1MAlvTiZcbbGDvadamWxWCrWQAX
-	xS1PepNQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eZJyLrcoH77uy+UpyEH1aKEUgJiuVbCwVzs2UTVC+sk=; b=bRCaoHlD0LECl8A+Kjtflu/2w7
+	cIWli/fY27/cdV0hvFgaxV7ciubb+v7lL6sYzyqHNzd1kiYk6/g2i6vFT730ZHraQuo8yxlQ7fNx4
+	xnpm86+4oYt3opDQyLhYzvMOXqo2QQOSb9BAbU85vwiNA635oa1JmIq4DjGPs4fhBy8DUYmqEZ1x7
+	1TJZaUqVtXW1Pw0O7g5Y3S/MIW0Aac39BhkDXDrbZct9hrajgtFlydz5ZK/8ZufEpPDDncQ0Yz/gM
+	DIat2v78t6na4pn2MKNWGJTB9gglB1D3EnQyeNWml70/CJBeqJhcYVGSPjFlfLyLNxe50EkvmTikf
+	cp6eQHXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odAnR-00Axid-Ea; Tue, 27 Sep 2022 13:38:49 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1odApl-00Azhp-0C; Tue, 27 Sep 2022 13:41:13 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odAnO-00Axej-AX
-	for linux-mediatek@lists.infradead.org; Tue, 27 Sep 2022 13:38:47 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id u59-20020a17090a51c100b00205d3c44162so2422080pjh.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 27 Sep 2022 06:38:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
-         :user-agent:from:from:to:cc:subject:date;
-        bh=kcqezBbHJffozFbEyx9wjhl1YSdIHaVumsP0lVEuZtQ=;
-        b=zu0LDMWaZ2IiyJWen0shu8EVhyMeZSD0OIiKtU1o5V962A7jwSkPn4CMMQ0vz96Vth
-         tmuzCaRlrru7doTeuXHFqIBlelgapdbTo80FoYEtNoYoaEZL+RORowAW5TQG758voXAB
-         /qK4nyJaMel2BpXPOS+vQr8yEpETmpuh9xmFJL3bbdiLCPx3mFskJioDlySfvlYLDiz+
-         5l4LD9rzPtofDwJzV7W1kwC3nRoiXAq20n8O9pp9eXpfcWtVB3QDe/+q+6K/KnMeAnfw
-         i0uPy9j1+kZk4vpNwuHSzu0wEoCWjqtwlybaZfNOtus5P9tVWa7xP7C9GRMIprbloz4T
-         aSVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
-         :user-agent:from:x-gm-message-state:from:to:cc:subject:date;
-        bh=kcqezBbHJffozFbEyx9wjhl1YSdIHaVumsP0lVEuZtQ=;
-        b=Pt+YB9Mvq3X8tRLbQ/olFQV++O7eE62SZmQZkXASVPx0AR/3Yqi1TwPAIxYfNGOoZg
-         Pw2KpacXLomp/xJ7HQmO7z28y7vDxPDIBwbqiksFIlj1YreunciTGAaScEoxO+SB4JWT
-         GU2PhPoFRVT7ms5SGRODkTRAAH6EN8m7RXfqs+PncE6zLz3KekoLRBhDvQjWXuy6dHcN
-         SfJIMGVLVvVvCothA4Y1XrPBsEWEvMYwoRD7GRdRn/v74MgoUxO6S/cefPuUf0fQIWVn
-         PwWmhDQdA7cQi0dyB/QUG177q76NeCrlAs8YKpRaLhHxmz/42bqgHG7rVm3MmfsCnKQC
-         DI7w==
-X-Gm-Message-State: ACrzQf01c/FKaUvI4YsCJ99PfaTi//DzWHr8zQ0bLGZf04E0y6BVcQTl
-	ew7xLXn5qYqdhdkeYv6hIxCICMa+Yc0fXjlPfJeajg==
-X-Google-Smtp-Source: AMsMyM5rGXrkhuQrQe7LgcjEDdTHK+6y7t6lOaHNCTQ9hNJXjzQRFavvC9zWHs1/i1ytYfodZBY430bKtOUYXAKndGU=
-X-Received: by 2002:a17:90b:2643:b0:205:bd0d:bdff with SMTP id
- pa3-20020a17090b264300b00205bd0dbdffmr4550660pjb.99.1664285925438; Tue, 27
- Sep 2022 06:38:45 -0700 (PDT)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Tue, 27 Sep 2022 06:38:44 -0700
-From: Guillaume Ranquet <granquet@baylibre.com>
-User-Agent: meli 0.7.2
-References: <20220919-v1-0-4844816c9808@baylibre.com> <20220919-v1-16-4844816c9808@baylibre.com>
- <11592bcd-eec7-7cc0-86c6-8f440b6af447@linaro.org>
-In-Reply-To: <11592bcd-eec7-7cc0-86c6-8f440b6af447@linaro.org>
+	id 1odApL-00AzJR-VA; Tue, 27 Sep 2022 13:40:49 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D23086602265;
+	Tue, 27 Sep 2022 14:40:44 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664286045;
+	bh=l0r0ZaX9YZdqDz2RvEUsZ5NEBzsjJi9GrROUQaXEGsQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=PJE93JHEO7cWrmml9ztx3rkOfFWah/FwdZGzTfwUIQ2w7hQSt++Kt8QMso/okg+gJ
+	 bU35vtHR0wFh8Lni+XwK8+VKqwEelaZex29NnvukvV3iTYn0XzguZq/v4LTKhyINVv
+	 mQhq041uL42occFBaGzGJCm/sVnRhFmudSliD1DF0k0kig/AbPS6+3YZ5VE6iPdFO8
+	 Msy4Fn8M2FAaAFa/lEV/aTzwJAPPwhDqfCDYoCsRE7i9HlDR96yiUSAvIpH4CqqDI4
+	 4/xqVfOI0tHIgLreg0030IY4Em5y5iSM4KrBL19bylYxu4kLPNPGyhgh/shBIvP9YF
+	 mT4XwODwKfkZg==
+Message-ID: <6f1deed3-87e5-6d73-74b7-f5123c7f4362@collabora.com>
+Date: Tue, 27 Sep 2022 15:40:42 +0200
 MIME-Version: 1.0
-Date: Tue, 27 Sep 2022 06:38:44 -0700
-Message-ID: <CABnWg9twi6inBOeLY=BOQ+o_CwbSW=L49_A+9VMy0L6vbokhXg@mail.gmail.com>
-Subject: Re: [PATCH v1 16/17] drm/mediatek: dpi: Add mt8195 hdmi to DPI driver
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>, 
-	Stephen Boyd <sboyd@kernel.org>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Daniel Vetter <daniel@ffwll.ch>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
-	Jitao shi <jitao.shi@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Michael Turquette <mturquette@baylibre.com>, Kishon Vijay Abraham I <kishon@ti.com>
-Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	Pablo Sun <pablo.sun@mediatek.com>, linux-clk@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, Mattijs Korpershoek <mkorpershoek@baylibre.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org, 
-	devicetree@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH 3/5] arm64: dts: mt8186: Add IOMMU and SMI nodes
+Content-Language: en-US
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>, Lee Jones <lee@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org
+References: <20220923131148.6678-1-allen-kh.cheng@mediatek.com>
+ <20220923131148.6678-4-allen-kh.cheng@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220923131148.6678-4-allen-kh.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_063846_392587_3BEAF3F4 
-X-CRM114-Status: UNSURE (   8.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220927_064048_258191_F2EE3273 
+X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,36 +78,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 22 Sep 2022 09:22, Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->On 19/09/2022 18:56, Guillaume Ranquet wrote:
->> Add the DPI1 hdmi path support in mtk dpi driver
->>
->> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
->> index 630a4e301ef6..91212b7610e8 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
->> @@ -15,7 +15,10 @@
->>  #include <linux/of_graph.h>
->>  #include <linux/pinctrl/consumer.h>
->>  #include <linux/platform_device.h>
->> +#include <linux/reset.h>
->>  #include <linux/types.h>
->> +#include <linux/regmap.h>
->> +#include <linux/mfd/syscon.h>
->
->Why do you need these headers in this patch?
->
->Best regards,
->Krzysztof
->
+Il 23/09/22 15:11, Allen-KH Cheng ha scritto:
+> Add iommu and smi nodes for mt8186 SoC.
+> 
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8186.dtsi | 173 +++++++++++++++++++++++
+>   1 file changed, 173 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> index 833e7037fe22..68f06bef88f3 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> @@ -7,6 +7,7 @@
+>   #include <dt-bindings/clock/mt8186-clk.h>
+>   #include <dt-bindings/interrupt-controller/arm-gic.h>
+>   #include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/memory/mt8186-memory-port.h>
+>   #include <dt-bindings/pinctrl/mt8186-pinfunc.h>
+>   #include <dt-bindings/power/mt8186-power.h>
+>   #include <dt-bindings/phy/phy.h>
+> @@ -944,24 +945,113 @@
+>   			#reset-cells = <1>;
+>   		};
+>   
+> +		smi_common: smi@14002000 {
+> +			compatible = "mediatek,mt8186-smi-common";
+> +			reg = <0 0x14002000 0 0x1000>;
+> +			clocks = <&mmsys CLK_MM_SMI_COMMON>, <&mmsys CLK_MM_SMI_COMMON>,
+> +				 <&mmsys CLK_MM_SMI_GALS>, <&mmsys CLK_MM_SMI_GALS>;
+> +			clock-names = "apb", "smi", "gals0", "gals1";
+> +			power-domains = <&spm MT8186_POWER_DOMAIN_DIS>;
+> +		};
+> +
+> +		larb0: smi@14003000 {
+> +			compatible = "mediatek,mt8186-smi-larb";
+> +			reg = <0 0x14003000 0 0x1000>;
+> +			mediatek,larb-id = <0>;
+> +			mediatek,smi = <&smi_common>;
 
-reset is used for reset_control but regmap and syscon are not used.
-Those are leftover from a previous iteration of the patch, will drop
-these in V2.
+Order by name after reg please...
 
-Thx,
-Guillaume.
+compatible
+reg
+clocks
+clock-names
+mediatek,larb-id
+mediatek,smi
+power-domains
+
+> +			clocks = <&mmsys CLK_MM_SMI_COMMON>,
+> +				 <&mmsys CLK_MM_SMI_COMMON>;
+> +			clock-names = "apb", "smi";
+> +			power-domains = <&spm MT8186_POWER_DOMAIN_DIS>;
+> +		};
+> +
+> +		larb1: smi@14004000 {
+> +			compatible = "mediatek,mt8186-smi-larb";
+> +			reg = <0 0x14004000 0 0x1000>;
+> +			mediatek,larb-id = <1>;
+> +			mediatek,smi = <&smi_common>;
+> +			clocks = <&mmsys CLK_MM_SMI_COMMON>,
+> +				 <&mmsys CLK_MM_SMI_COMMON>;
+> +			clock-names = "apb", "smi";
+> +			power-domains = <&spm MT8186_POWER_DOMAIN_DIS>;
+> +		};
+> +
+> +		iommu_mm: iommu@14016000 {
+> +			compatible = "mediatek,mt8186-iommu-mm";
+> +			reg = <0 0x14016000 0 0x1000>;
+> +			mediatek,larbs = <&larb0 &larb1 &larb2 &larb4
+> +					  &larb7 &larb8 &larb9 &larb11
+> +					  &larb13 &larb14 &larb16 &larb17
+> +					  &larb19 &larb20>;
+> +			interrupts = <GIC_SPI 313 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			clocks = <&mmsys CLK_MM_SMI_IOMMU>;
+> +			clock-names = "bclk";
+
+clocks
+clock-names
+interrupts
+mediatek,larbs
+power-domains
+
+...etc :-)
+
+P.S.: Same comment for the other commits, too!
+
+Regards,
+Angelo
+
+
 
