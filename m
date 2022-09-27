@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E0A4C07E9D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 11:14:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9386FC6FA82
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 11:20:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vU9CZq0aisTKM9h65v9iRvCJhaaOxuHfdUU7vdQnftA=; b=Giuy2c+g5ZfnN9DvLfXK85FP8t
-	Zx7RrPC/g0jaMXNCMuwJAPG9ju70XjLgvwkGWmUiAJVTe9hOKCTg9wBA7LfE03XyrHow/QN8MfnHt
-	417lnowiJSRStPiErbykZpnM0DzssY//+HjpqjFiM4q9F7CW+qlOyjXxpxVWT57+AgGeKRXCKTkwx
-	FyUBnmp3H4/5vEZyI1c7Rp8GV/i09cB988rjRlzjmaiQBmkIqwB1sf3PRLSTFG+a+BtaVgFoYrv9p
-	yOFiPWfFLEGnwXYFhBeYJSxTi5gio5SDmcYxwmpNrtqehTr71yha5DKHQBBur7jrwHam2r8Yyev2i
-	JxWaYD2A==;
+	bh=QBR38XXItcVbdneAtF8ttEBe5QTItP7XzsF9KlyVKVo=; b=HEsrMATpzukioqPm2Er6D+JpCa
+	lLAp+1PXMnD/t7nWTGOZgrK4IkWTLJHR7dWVHupPdC+VGVXh4GXjVRvWq5iHFsKyhqRDMXDjG7DmF
+	ddcTG1Wj+/vzfSv0uZmoRd3LnhVB4H/qpxLDI83CildhzWW2nQpt/5dg6Cqd60Rnl7FisNvn5tGaO
+	+WSJ9nr+Q/XQeSVzvMx6YDBjQej5XN4h2vkBvFxZVPQ0CE7Qiiv9hsihlCppraCjgOyu+tSelyQZn
+	KLPOv3sQQN+SGvbONaopot+S45A7EtoCfmcgOKRK6HTTEEY5wH5WG3GW7Ekrf8Jk6ZK8pRv/my0mH
+	ts8AxrYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od8Xo-00A83C-Me; Tue, 27 Sep 2022 11:14:32 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1od8db-00AA7C-Rk; Tue, 27 Sep 2022 11:20:31 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od8XP-00A7sS-VE; Tue, 27 Sep 2022 11:14:14 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	id 1od8dH-00A9vT-FW; Tue, 27 Sep 2022 11:20:13 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 32D226601F41;
-	Tue, 27 Sep 2022 12:14:03 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664277244;
-	bh=j18CSzZPjorCp5QZjTjWeiVjbPAV3d1+ZgVxWIiWxE4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TAd6MAzaMuUMP4SEOFsmA6cLZDPOdxxflDLvs9TK9zl4YRknnTBg8nJywJMCZjwL9
-	 baQfa7sJi/H+Zt2BVgOFEl4cKWus6jVpd3CozoQBsveVSuloowNfCbSaKSAknZDiiQ
-	 KY3HRCxuQIe42dh6IOH5zr3vP2BsbMh9UktjzlDgRi/3i7s0DDRtRyYfmhv2mJKd93
-	 xne2BUL4binjdYeocv2ZHt0llr5OY5gGGGht8+50vnnf5tfKn+aJyZ3qoKEkQyXj4r
-	 +pMnulHfJAhzbRXdkBFXcPQlbu8CHkGYbv1hXih37gmxfYm9b5fHRM0bqoh2GuyNre
-	 ym7fMb+eU7lDg==
-Message-ID: <4b6ed7d1-31b7-265b-6f0f-58f0f7015177@collabora.com>
-Date: Tue, 27 Sep 2022 13:14:01 +0200
+	by ams.source.kernel.org (Postfix) with ESMTPS id D89CDB81AFE;
+	Tue, 27 Sep 2022 11:20:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C515C433B5;
+	Tue, 27 Sep 2022 11:20:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1664277608;
+	bh=QQYYaQMEZGvzeczjp2ttfiOGEJrYpgRJvX3jpp4RbLk=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=SBJYAlf2n0xdNapfKdhNlJBt1VWw2tH1tLqXsShwzjI5JlYE0Rhyp3z88PvnavvDd
+	 L4KRYyQA5Bp84f11TxHA0Q5D07STruQIg2NeFwMNTVPfMw39V+JsYptr85cSTerGZ9
+	 fxZ1BzmhuASWEqOLhZKvXQiVtX2ba80ZwdpWCC4kWB3pAGuDndPXJMajV1CndD7+gG
+	 v44NUCVsnHv9qriyDOk1FculvZCdVeRsrwmvdT388aEL1K8mv3EKXiNJ9Mjdr9j9zb
+	 zDjjQEJ0H5S6AFK0VZ3KyqP+rIN7n1WHJfMNnvhZctSakIijOCDmZzQelKYf2DHfn9
+	 lmpXP2t7h0/Uw==
+From: Mark Brown <broonie@kernel.org>
+To: peter.ujfalusi@linux.intel.com, Chunxu Li <chunxu.li@mediatek.com>, angelogioacchino.delregno@collabora.com,
+ pierre-louis.bossart@linux.intel.com, lgirdwood@gmail.com, daniel.baluta@nxp.com
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-kernel@vger.kernel.org, project_global_chrome_upstream_group@mediatek.com, alsa-devel@alsa-project.org,
+ yc.hung@mediatek.com, sound-open-firmware@alsa-project.org
+In-Reply-To: <20220924033559.26599-1-chunxu.li@mediatek.com>
+References: <20220924033559.26599-1-chunxu.li@mediatek.com>
+Subject: Re: [PATCH 0/2] ASoC: SOF: mediatek: mt8195: Add dsp_ops callback
+Message-Id: <166427760496.294040.5707200014534943454.b4-ty@kernel.org>
+Date: Tue, 27 Sep 2022 12:20:04 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v5] mailbox: mtk-cmdq: fix gce timeout issue
-Content-Language: en-US
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Hsin-Yi Wang <hsinyi@chromium.org>
-References: <20220927083925.28433-1-yongqiang.niu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220927083925.28433-1-yongqiang.niu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_041408_283391_BC8F8ED2 
-X-CRM114-Status: GOOD (  26.44  )
+X-CRM114-CacheID: sfid-20220927_042011_726063_11557044 
+X-CRM114-Status: GOOD (  12.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,92 +73,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/09/22 10:39, Yongqiang Niu ha scritto:
-> 1. enable gce ddr enable(gce reigster offset 0x48, bit 16 to 18) when gce work,
-> and disable gce ddr enable when gce work job done
-> 2. add cmdq ddr enable/disable api, and control gce ddr enable/disable
-> to make sure it could protect when cmdq is multiple used by display and mdp
+On Sat, 24 Sep 2022 11:35:57 +0800, Chunxu Li wrote:
+> ASoC: SOF: mediatek: mt8195: Add pcm_{hw_params,pointer} callback
 > 
-> this is only for some SOC which has flag "gce_ddr_en".
-> for this kind of gce, there is a handshake flow between gce and ddr
-> hardware,
-> if not set ddr enable flag of gce, ddr will fall into idle mode,
-> then gce instructions will not process done.
-> we need set this flag of gce to tell ddr when gce is idle or busy
-> controlled by software flow.
+> Chunxu Li (2):
+>   ASoC: SOF: mediatek: mt8195: Add pcm_hw_params callback
+>   ASoC: SOF: mediatek: mt8195: Add pcm_pointer callback
 > 
-> ddr problem is a special case.
-> when test suspend/resume case, gce sometimes will pull ddr, and ddr can
-> not go to suspend.
-> if we set gce register 0x48 to 0x7, will fix this gce pull ddr issue,
-> as you have referred [1] and [2] (8192 and 8195)
-> but for mt8186, the gce is more special, except setting of [1] and [2],
-> we need add more setting set gce register 0x48 to (0x7 << 16 | 0x7)
-> when gce working to make sure gce could process all instructions ok.
-> this case just need normal bootup, if we not set this, display cmdq
-> task will timeout, and chrome homescreen will always black screen.
+> sound/soc/sof/mediatek/mt8195/mt8195.c | 44 ++++++++++++++++++++++++++
+>  1 file changed, 44 insertions(+)
 > 
-> and with this patch, we have done these test on mt8186:
-> 1.suspend/resume
-> 2.boot up to home screen
-> 3.playback video with youtube.
-> 
-> suspend issue is special gce hardware issue, gce client  driver
-> command already process done, but gce still pull ddr.
-> 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> ---
-> change since v4:
-> 1. remove spin lock control flow
-> 2. move ddr control into suspend/resume/remove function
-> ---
-> 
-> ---
->   drivers/mailbox/mtk-cmdq-mailbox.c | 44 +++++++++++++++++++++++++++++-
->   1 file changed, 43 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 9465f9081515..e9ead72b9bd3 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -38,6 +38,8 @@
->   #define CMDQ_THR_PRIORITY		0x40
->   
->   #define GCE_GCTL_VALUE			0x48
-> +#define GCE_CTRL_BY_SW				GENMASK(18, 16)
-> +#define GCE_DDR_EN				GENMASK(2, 0)
->   
->   #define CMDQ_THR_ACTIVE_SLOT_CYCLES	0x3200
->   #define CMDQ_THR_ENABLED		0x1
-> @@ -80,6 +82,7 @@ struct cmdq {
->   	bool			suspended;
->   	u8			shift_pa;
->   	bool			control_by_sw;
-> +	bool			sw_ddr_en;
->   	u32			gce_num;
->   };
->   
-> @@ -87,9 +90,25 @@ struct gce_plat {
->   	u32 thread_nr;
->   	u8 shift;
->   	bool control_by_sw;
-> +	bool sw_ddr_en;
->   	u32 gce_num;
->   };
->   
-> +static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool enable)
-> +{
-> +	if (!cmdq->sw_ddr_en)
-> +		return;
-> +
-> +	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
-> +
-> +	if (enable)
-> +		writel(GCE_DDR_EN + GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
+> [...]
 
-Adding up values to activate bits in this case works, but that's wrong.
-You want GCE_DDR_EN | GCE_CTRL_BY_SW.
+Applied to
 
-Regards,
-Angelo
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/2] ASoC: SOF: mediatek: mt8195: Add pcm_hw_params callback
+      commit: 978a7144ae8497b40d833a3c0110b18810499f95
+[2/2] ASoC: SOF: mediatek: mt8195: Add pcm_pointer callback
+      commit: f7c91bf65388547f61888b7a67169966fc698ce1
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
