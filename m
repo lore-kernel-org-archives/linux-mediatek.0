@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EAB2C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 10:13:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDC45C07E9D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 10:13:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ryfq+TI5BWyYPq2BGCAPBLd5iScWrzhnlKzvqFq8vC4=; b=mQpEdBXcHCBauWTN5l+XRZD1rS
-	uzddgky5wTnFrOaQYzXESD8NCsBNdg2QiSdTPESpPRTISbWuJ8VkNbmwa7JFo8D0vclftkAz4sB+1
-	dgKLhJe3gSl1W9Z5Rr7QVqp6eBa7loc7xrjHky/T9TQ78M+FxysRvb3zXxdSYfwaOFpEOsg/quh+Z
-	qAyAp+cKgUHXVGYlod8OQlM2ohwkw1I2q0cu3ycuP6UWrX6oey9Si/EG6ddCUv16Vb7J0bZ/2keii
-	LeQdQK8OO6pt1ZppdVlZVTxjJ2QdhM34Mf5ceiUYsFN7Qmv3QP7jxQWWbfrP+UNjOBdfwNT79ozXn
-	GO+8F8JA==;
+	bh=ZtktoVYeJx0GOaE+T8T8+LrfgHss2x3/akf3JLfpORo=; b=kFO0atbFmAH0/tGvaWLUhstEa0
+	wJoMVhUWkgA3A52AmawOP5xHAJ5JRzQgT2p8/JXNIsLAYObsGgPKA33NHmWeh+1gwcEQQWXSMEDiK
+	pUvxj1nz4zCVk8vB16oemeGnFhYt52p6zM405KbR9rEcchTvepyl/IKGreOATH58Va8VYFeFrUvCz
+	7LRrHwFdvW17e8wDNKF/KCIFEch7ADUv+hald2Wpv1kGwzJUpqEQXIWKHMOCh/T64IwIPUXeL5/RV
+	athRiPu4bh+xpImZt3JuauJQ0pChM0vN4JL9HLtEZrZnfOiQIPoyKHSXia2dpXW50TI3hLsq19oAF
+	Sh2UZdLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od7aS-009m7K-O8; Tue, 27 Sep 2022 10:13:12 +0000
+	id 1od7aV-009m8z-56; Tue, 27 Sep 2022 10:13:15 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od7Yx-009lKZ-FG; Tue, 27 Sep 2022 10:11:42 +0000
+	id 1od7Yx-009lKC-S2; Tue, 27 Sep 2022 10:11:42 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4AB536602269;
-	Tue, 27 Sep 2022 11:11:37 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1D18D6602266;
+	Tue, 27 Sep 2022 11:11:36 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664273498;
-	bh=78egXpcwYI0LobAOtW6zrOMH4zDX0mRd/unB/BTkHWw=;
+	s=mail; t=1664273497;
+	bh=BE0zMqDnpD97J3kq9y5nwtB15tR6atriJmbEfAuXnXs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BhEqnumSFViyf5+cjS0GMrD/MgtgV6aeQH1xllvstM3+/qh/sEDnC5RjuhrV/xVPQ
-	 kv04fP391YSavgrc1thW4xCK4qp4OdkOYsduoJ92N6KwLNfdmjssHjNUlqEKGmZJc8
-	 jvibIJHBrXGOLV5SrYuGcr1hhuENgUOfAAWqjywd1vli+2OMZl3JC8waD7F0cLNC/y
-	 9M16cvNMeAk54j1yOjmuELA4bej5T1mx/flhH/DzQDXRUaY0PGQQp2UuZ7G26ILBn6
-	 HWxH23Yn8zOKtcvdxL2Ayl96UJaOQ2z/B/6Vx0qHMGePKskFRh4/uUSaIcCu6EqPFv
-	 lG6gG5VgZNePw==
+	b=LZ5i2naiUWywWhYOMDxN+ma45e4ePKly0Q4q5qdMaHq0V5mduvF+1zD2xCcV15SzI
+	 rY68bKCejWU+ZGw8Bicbz5xIMxmQVLIpwjdwwQF48a2D8Od3hxtBizAnPJpUy/qG2K
+	 NQaC4mLO8UbLL/ZLlDP3b2J+ARuN3UkCIxhMllonrd6MbdQa0s+yADIX81EdG6xThU
+	 TI9ZLvZtx2g4GX4wof5sYE2FMFTvPe8oNB5R5sKpfX142WyDNMVPNwBqbe6rnhxBt6
+	 9M+lympMPmnX+Uzd5kW5+fsVmpp4cnI5xcbpF+QyYeWXYN5ld28QBXGs9QJ/qkhMFk
+	 amuB74pHvTxaA==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: mturquette@baylibre.com,
@@ -61,17 +61,17 @@ Cc: mturquette@baylibre.com,
 	linux-clk@vger.kernel.org,
 	robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org
-Subject: [PATCH v3 04/10] clk: mediatek: mt8183: Add clk mux notifier for MFG mux
-Date: Tue, 27 Sep 2022 12:11:22 +0200
-Message-Id: <20220927101128.44758-5-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 03/10] clk: mediatek: mux: add clk notifier functions
+Date: Tue, 27 Sep 2022 12:11:21 +0200
+Message-Id: <20220927101128.44758-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
 References: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_031139_662539_BAFBDE95 
-X-CRM114-Status: GOOD (  17.39  )
+X-CRM114-CacheID: sfid-20220927_031140_205356_FBE79806 
+X-CRM114-Status: GOOD (  19.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,76 +88,124 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Chen-Yu Tsai <wenst@chromium.org>
 
-When the MFG PLL clock, which is upstream of the MFG clock, is changed,
-the downstream clock and consumers need to be switched away from the PLL
-over to a stable clock to avoid glitches.
+With device frequency scaling, the mux clock that (indirectly) feeds the
+device selects between a dedicated PLL, and some other stable clocks.
 
-This is done through the use of the newly added clk mux notifier. The
-notifier is set on the mux itself instead of the upstream PLL, but in
-practice this works, as the rate change notifitcations are propogated
-throughout the sub-tree hanging off the PLL. Just before rate changes,
-the MFG mux is temporarily and transparently switched to the 26 MHz
-main crystal. After the rate change, the mux is switched back.
+When a clk rate change is requested, the (normally) upstream PLL is
+reconfigured. It's possible for the clock output of the PLL to become
+unstable during this process.
+
+To avoid causing the device to glitch, the mux should temporarily be
+switched over to another "stable" clock during the PLL rate change.
+This is done with clk notifiers.
+
+This patch adds common functions for notifiers to temporarily and
+transparently reparent mux clocks.
+
+This was loosely based on commit 8adfb08605a9 ("clk: sunxi-ng: mux: Add
+clk notifier functions").
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-[Angelo: Rebased to assign clk_ops in mtk_mux_nb]
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+[Angelo: Changed mtk_mux_nb to hold a pointer to clk_ops instead of mtk_mux]
+Co-developed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mt8183.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ drivers/clk/mediatek/clk-mux.c | 38 ++++++++++++++++++++++++++++++++++
+ drivers/clk/mediatek/clk-mux.h | 15 ++++++++++++++
+ 2 files changed, 53 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-mt8183.c b/drivers/clk/mediatek/clk-mt8183.c
-index 8512101e1189..1860a35a723a 100644
---- a/drivers/clk/mediatek/clk-mt8183.c
-+++ b/drivers/clk/mediatek/clk-mt8183.c
-@@ -1198,10 +1198,33 @@ static void clk_mt8183_top_init_early(struct device_node *node)
- CLK_OF_DECLARE_DRIVER(mt8183_topckgen, "mediatek,mt8183-topckgen",
- 			clk_mt8183_top_init_early);
+diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+index cd5f9fd8cb98..4421e4859257 100644
+--- a/drivers/clk/mediatek/clk-mux.c
++++ b/drivers/clk/mediatek/clk-mux.c
+@@ -4,6 +4,7 @@
+  * Author: Owen Chen <owen.chen@mediatek.com>
+  */
  
-+/* Register mux notifier for MFG mux */
-+static int clk_mt8183_reg_mfg_mux_notifier(struct device *dev, struct clk *clk)
++#include <linux/clk.h>
+ #include <linux/clk-provider.h>
+ #include <linux/compiler_types.h>
+ #include <linux/container_of.h>
+@@ -259,4 +260,41 @@ void mtk_clk_unregister_muxes(const struct mtk_mux *muxes, int num,
+ }
+ EXPORT_SYMBOL_GPL(mtk_clk_unregister_muxes);
+ 
++/*
++ * This clock notifier is called when the frequency of the parent
++ * PLL clock is to be changed. The idea is to switch the parent to a
++ * stable clock, such as the main oscillator, while the PLL frequency
++ * stabilizes.
++ */
++static int mtk_clk_mux_notifier_cb(struct notifier_block *nb,
++				   unsigned long event, void *_data)
 +{
-+	struct mtk_mux_nb *mfg_mux_nb;
-+	int i;
++	struct clk_notifier_data *data = _data;
++	struct clk_hw *hw = __clk_get_hw(data->clk);
++	struct mtk_mux_nb *mux_nb = to_mtk_mux_nb(nb);
++	int ret = 0;
 +
-+	mfg_mux_nb = devm_kzalloc(dev, sizeof(*mfg_mux_nb), GFP_KERNEL);
-+	if (!mfg_mux_nb)
-+		return -ENOMEM;
++	switch (event) {
++	case PRE_RATE_CHANGE:
++		mux_nb->original_index = mux_nb->ops->get_parent(hw);
++		ret = mux_nb->ops->set_parent(hw, mux_nb->bypass_index);
++		break;
++	case POST_RATE_CHANGE:
++	case ABORT_RATE_CHANGE:
++		ret = mux_nb->ops->set_parent(hw, mux_nb->original_index);
++		break;
++	}
 +
-+	for (i = 0; i < ARRAY_SIZE(top_muxes); i++)
-+		if (top_muxes[i].id == CLK_TOP_MUX_MFG)
-+			break;
-+	if (i == ARRAY_SIZE(top_muxes))
-+		return -EINVAL;
-+
-+	mfg_mux_nb->ops = top_muxes[i].ops;
-+	mfg_mux_nb->bypass_index = 0; /* Bypass to 26M crystal */
-+
-+	return devm_mtk_clk_mux_notifier_register(dev, clk, mfg_mux_nb);
++	return notifier_from_errno(ret);
 +}
 +
- static int clk_mt8183_top_probe(struct platform_device *pdev)
- {
- 	void __iomem *base;
- 	struct device_node *node = pdev->dev.of_node;
-+	int ret;
- 
- 	base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(base))
-@@ -1227,6 +1250,11 @@ static int clk_mt8183_top_probe(struct platform_device *pdev)
- 	mtk_clk_register_gates(node, top_clks, ARRAY_SIZE(top_clks),
- 		top_clk_data);
- 
-+	ret = clk_mt8183_reg_mfg_mux_notifier(&pdev->dev,
-+					      top_clk_data->hws[CLK_TOP_MUX_MFG]->clk);
-+	if (ret)
-+		return ret;
++int devm_mtk_clk_mux_notifier_register(struct device *dev, struct clk *clk,
++				       struct mtk_mux_nb *mux_nb)
++{
++	mux_nb->nb.notifier_call = mtk_clk_mux_notifier_cb;
 +
- 	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get,
- 				      top_clk_data);
- }
++	return devm_clk_notifier_register(dev, clk, &mux_nb->nb);
++}
++EXPORT_SYMBOL_GPL(devm_mtk_clk_mux_notifier_register);
++
+ MODULE_LICENSE("GPL");
+diff --git a/drivers/clk/mediatek/clk-mux.h b/drivers/clk/mediatek/clk-mux.h
+index 6539c58f5d7d..83ff420f4ebe 100644
+--- a/drivers/clk/mediatek/clk-mux.h
++++ b/drivers/clk/mediatek/clk-mux.h
+@@ -7,12 +7,14 @@
+ #ifndef __DRV_CLK_MTK_MUX_H
+ #define __DRV_CLK_MTK_MUX_H
+ 
++#include <linux/notifier.h>
+ #include <linux/spinlock.h>
+ #include <linux/types.h>
+ 
+ struct clk;
+ struct clk_hw_onecell_data;
+ struct clk_ops;
++struct device;
+ struct device_node;
+ 
+ struct mtk_mux {
+@@ -89,4 +91,17 @@ int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+ void mtk_clk_unregister_muxes(const struct mtk_mux *muxes, int num,
+ 			      struct clk_hw_onecell_data *clk_data);
+ 
++struct mtk_mux_nb {
++	struct notifier_block	nb;
++	const struct clk_ops	*ops;
++
++	u8	bypass_index;	/* Which parent to temporarily use */
++	u8	original_index;	/* Set by notifier callback */
++};
++
++#define to_mtk_mux_nb(_nb)	container_of(_nb, struct mtk_mux_nb, nb)
++
++int devm_mtk_clk_mux_notifier_register(struct device *dev, struct clk *clk,
++				       struct mtk_mux_nb *mux_nb);
++
+ #endif /* __DRV_CLK_MTK_MUX_H */
 -- 
 2.37.2
 
