@@ -4,121 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02790C32771
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Sep 2022 22:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EF75C07E9D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 02:14:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7Dt5eDy1Vf+pnnjXuwjyNi5ezBxl2IO9s1ix0DcVWkI=; b=DBVR7SxJyEchUqCAeaTibMmgPG
-	Xsi2/CfuD3MzQggXj+K+jOOCFagLfpnQ4H7sQAJPDv86V2YU49LhAAkE+RaK2Z4GeoV6/O1HZOFsd
-	zmB4upzQgkKFSyLrqL0QAoV2HMVPKnUMUYOlViAAc1eae3Auk+woVjFkxNtVfTtYYSsE+akr3GOH6
-	4eyaELbyXZJEfLw+fCtNTHq5hR6IaS3PNn/sHUkE/yCnZPJleCeJpTENLYYzHfAzn19caKDT88dQU
-	7HGFlDWwLWsK8yO9Wd7bbvixCXyB3EVq92PSvccRUNHJm0tm+TOxo83M7yGiloi/IH0V5RdtJW856
-	UsaNA6ag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V+q13yZDqENXy1FOydXcSZraRyY3jub7Y3xr4iCyUYY=; b=TwEbie9hlTYFpXXzfQWgpYLzas
+	crB//k97ifNcAOjEO6SdNiPggoHcKNtXZ9uJjiwmI/Jq+Ug81xqvSjW7s7uI6e39MnsERJXzQ4Iwn
+	NQ2ZFOMYq1gFFnvXfDYkdXNCybZ2SqGjYXnxP4OBJYz4vw+v3Sm+m8RCvuMxrlffXDl05skIdtH5q
+	a9s+afCqqXcMn8yEsy2YKBQ56G+woQgGkUY5qYvE9vQvOj4+ivwf1doZLPP85mYLcpHlvjNdiUkyQ
+	C1ps43arvuCls5SKjLvVmtPBzyjDgp4dIQ948WdNfBPDWi93tEtaAMGAyk0mYzTp+eM5wMmMd1ims
+	j5+raGPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocwgS-007Buu-IE; Mon, 26 Sep 2022 22:34:40 +0000
-Received: from mail-bn1nam07on2075.outbound.protection.outlook.com ([40.107.212.75] helo=NAM02-BN1-obe.outbound.protection.outlook.com)
+	id 1od06u-007pSE-5n; Tue, 27 Sep 2022 02:14:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocwgP-007BtE-Hy; Mon, 26 Sep 2022 22:34:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=g1AiWTIHozduWTgnTyl0OQsAYPBqhv7JjzE/i13I1fF0oPUm3XsD1Su4XQIVAHsdh+EGRKG5zMACuyDSdB3F+bGEcpCWD7G6yXMhJG4qUG73BZgO/Zc1+cpqlPD+vphnUP6tRH0GH9IfFmpZWSiM5YDWwBVaHPXh5Khq5FvjIR4UoZGIsZbMxwusV1McOSww/7kmGX+fR4yNQ+Kp/Fl5Kz4YdiPfMM5A7u/+qazYqBkpeWsg4lYZzRd0FFAfdWp46PpimboJOy9XHaGWehJ2mJEiohTH5bLmugv9/VGOOIFPNBISwL9gowA3dy8it9o5au1XsFgBMMBclZ1kfVvlqg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7Dt5eDy1Vf+pnnjXuwjyNi5ezBxl2IO9s1ix0DcVWkI=;
- b=oMEnSB+EKpGHnYO5dal138fAwifxZzIPVy+YZbqhF4AVZ62QwEe37k2OMvWEX8BLbTPdvo/DAsAaDpNMIDqE3dCExtdChm7JPs6yY/mxZjU9aPhrtSe+u2lIhJWSxE7GoHGSSmWjj9q3+XGlrVACd3wfGA949vl9hT333WrlirEGc5QFaalGUvl/55hID79VoBdTpu8cYppTQ84KjErabxHRKrEY1oU/QLtHsDpWL1dIKoAM7ebjHP6XGBjuEIAHuxRRKQXN4WBJyLAl7YZawLlwp344KO1qV6CdjJOara3iMfBJlEHXnvRAo1LYXybwyP+w5mqHvC6hrUFKxgyfew==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.232) smtp.rcpttodomain=8bytes.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7Dt5eDy1Vf+pnnjXuwjyNi5ezBxl2IO9s1ix0DcVWkI=;
- b=ni+tJvLwqMfY3obfZncTN6pUsCEXICmZYCRWEt2lPKVmjlHWjAdzb8bjxn3O5aHkAj4XfwmQGnBzPV3ZAzGjqy+wFCYzZmm5VbUKY8frNTpmbeKAO4mXDh3+ng/eFSfYgiX9kaSAASjgpFDLAlRigEzS+JG5qTFHowwqpr88L+HBKrmkvGLLoJyBxWwQwvrocG8wE+BGqO7sH75H9eYzyuyW5UH10FVDxkpZfTNoKnZik4e5srxXBOJqXdcV/iC2O3vXNoEG40aGMDU7cWE5skFvFyoW4AZex+HE+svsXZEpBVgQWAKQhhKe2PCgDLUlz7c5X3yf98mAnZlgKQarKQ==
-Received: from MW4PR04CA0208.namprd04.prod.outlook.com (2603:10b6:303:86::33)
- by IA1PR12MB6577.namprd12.prod.outlook.com (2603:10b6:208:3a3::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.20; Mon, 26 Sep
- 2022 22:34:32 +0000
-Received: from CO1NAM11FT022.eop-nam11.prod.protection.outlook.com
- (2603:10b6:303:86:cafe::d6) by MW4PR04CA0208.outlook.office365.com
- (2603:10b6:303:86::33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.25 via Frontend
- Transport; Mon, 26 Sep 2022 22:34:32 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.232) by
- CO1NAM11FT022.mail.protection.outlook.com (10.13.175.199) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5654.14 via Frontend Transport; Mon, 26 Sep 2022 22:34:32 +0000
-Received: from drhqmail202.nvidia.com (10.126.190.181) by mail.nvidia.com
- (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26; Mon, 26 Sep
- 2022 15:34:22 -0700
-Received: from drhqmail203.nvidia.com (10.126.190.182) by
- drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
+	id 1od06g-007pRq-Ia
+	for linux-mediatek@lists.infradead.org; Tue, 27 Sep 2022 02:14:11 +0000
+X-UUID: 55e7a6bc09d442bfb3694c4a2a06a739-20220926
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=V+q13yZDqENXy1FOydXcSZraRyY3jub7Y3xr4iCyUYY=;
+	b=lpcVUtI8sKtAEMVRt/IdRKgdQqk42+pQheFmUYqauZazSNs16lXJBjGnqsjdN0BIIZhC7WfavDLdKMKqOTHDDIENAKLEYMwhAZvfpwFtVEzy3aZKgb0q9AqbABwHw9WDgag50ntOhqVPhqQmgzvrrflbDLpJv8q0zCV2Dl77q+M=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:e230ba86-0780-4aa0-a4af-5b6a2a39ed9d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:45
+X-CID-INFO: VERSION:1.1.11,REQID:e230ba86-0780-4aa0-a4af-5b6a2a39ed9d,IP:0,URL
+	:0,TC:0,Content:0,EDM:0,RT:0,SF:45,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:45
+X-CID-META: VersionHash:39a5ff1,CLOUDID:b98d28a3-dc04-435c-b19b-71e131a5fc35,B
+	ulkID:220926222724XZJW1LIF,BulkQuantity:65,Recheck:0,SF:28|17|19|48,TC:nil
+	,Content:0,EDM:-3,IP:nil,URL:1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0
+X-UUID: 55e7a6bc09d442bfb3694c4a2a06a739-20220926
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <tinghan.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1879025398; Mon, 26 Sep 2022 19:13:44 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.29; Mon, 26 Sep 2022 15:34:21 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com
- (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29 via Frontend
- Transport; Mon, 26 Sep 2022 15:34:20 -0700
-Date: Mon, 26 Sep 2022 15:34:19 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Joerg Roedel <joro@8bytes.org>
-CC: <will@kernel.org>, <robin.murphy@arm.com>, <jgg@nvidia.com>,
-	<kevin.tian@intel.com>, <quic_jjohnson@quicinc.com>,
-	<suravee.suthikulpanit@amd.com>, <robdclark@gmail.com>,
-	<dwmw2@infradead.org>, <baolu.lu@linux.intel.com>, <yong.wu@mediatek.com>,
-	<matthias.bgg@gmail.com>, <orsonzhai@gmail.com>,
-	<baolin.wang@linux.alibaba.com>, <zhang.lyra@gmail.com>,
-	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
-	<jean-philippe@linaro.org>, <shameerali.kolothum.thodi@huawei.com>,
-	<tglx@linutronix.de>, <christophe.jaillet@wanadoo.fr>,
-	<thunder.leizhen@huawei.com>, <yangyingliang@huawei.com>,
-	<quic_saipraka@quicinc.com>, <jon@solid-run.com>, <iommu@lists.linux.dev>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-tegra@vger.kernel.org>, <virtualization@lists.linux-foundation.org>
-Subject: Re: [PATCH v6 0/5] Define EINVAL as device/domain incompatibility
-Message-ID: <YzIo67x8Ap6Eiruz@Asurada-Nvidia>
-References: <cover.1663899032.git.nicolinc@nvidia.com>
- <YzGZqXCuw6yoXBla@8bytes.org>
+ 15.2.792.15; Tue, 27 Sep 2022 10:12:43 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Tue, 27 Sep 2022 10:12:43 +0800
+Message-ID: <668c8e070faa138d5a2bf345f65a27fab908842f.camel@mediatek.com>
+Subject: Re: [PULL v2 linux-firmware] Update mediatek mt81xx SOF firmware
+From: TingHan Shen <tinghan.shen@mediatek.com>
+To: Josh Boyer <jwboyer@kernel.org>
+CC: <linux-firmware@kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<chunxu.li@mediatek.com>, <allen-kh.cheng@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<angelogioacchino.delregno@collabora.com>
+Date: Tue, 27 Sep 2022 10:12:43 +0800
+In-Reply-To: <CA+5PVA60ODTEZPoYqPMqjxu_ARxFLmeHie11McQUAx95+bXwFw@mail.gmail.com>
+References: <835f393df9cc985fe5b815bc6eeaf06ab4d07192.camel@mediatek.com>
+	 <CA+5PVA60ODTEZPoYqPMqjxu_ARxFLmeHie11McQUAx95+bXwFw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <YzGZqXCuw6yoXBla@8bytes.org>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1NAM11FT022:EE_|IA1PR12MB6577:EE_
-X-MS-Office365-Filtering-Correlation-Id: b97de20c-8ccf-4db4-1433-08daa00f4829
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	jFN/Nzc9km+I0zwIlIYMcMx61lV9ByRELvkn0aSypBFeeQMlvSwcDLwWIY12oA7rz4S6tKf4MGIbpujtOZwTvpNlsu9f9oJel3KgmmatuAc8S/r1yxek9RfJofsMjus7Pwy5B3EgzkInNlnjDTLt4wKJRwxR9sWJ7Hp+Mbd0/FysY/wocDaQZJtZqJ3PxK90t3+HBeWs5Db9KTItuq7KdDTMnQ59MgJmfBq6pr25n6tzpt/u1GGbQb0U0tAGMrkMZHhKHyCO+mPHGzWmFU7IDTidwtScOamiVwO5fVvRBw0/6mh9y19Tp4nOF4ynFqWVO/zdlKW5jbEbGw9XLlDs2pVvaqsrh4HZuprvdgwyPjfzVe3D5+T/Pwx68SHErer3gpCBIxf2p5CRCX2Vgc2YSeoCxhJer9yEt8yUxdcZolXaEIjlaKkLRk+UA6vwC5/3w3TMI0kBu/xPldlUyuOA5Xv2h2bCpPKg7iUSuHvL/wAn7389/8ChqPKNfNnsYszoZgAXrsdR9+woyDZ0e1/VNU3qG/+FawPb6g4fC+GVh2BQVLdyFRcFEUxhE9a1h0DQYAAOXUNPOkIqXF7GOh8QVyiykX3u0xToMA0bgmIalkNDeBoE81V6cSILFUPH//kyyR4y6eF5t5FWQ501MiTiEp41hv1hVwoiM68qOIHinxzupFTyFrslWVtgAcaVYpO9zc6Or5Vb3YRfaIU833tnPunnHcpu6WbWu8iMMskELfa7aXNigrWCk2WBo8D7bRmUxJyE62X2ZvXpgfko0EeOPGn0AMmBgdFkfErgbBc1jJfKfU6dsmdldgz7S36/z//VWdOircmlZjCJ+mToyVFpk2YvKsTfl0zIBtC6Vv/wlGc=
-X-Forefront-Antispam-Report: 	CIP:216.228.118.232;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc7edge1.nvidia.com;CAT:NONE;SFS:(13230022)(4636009)(136003)(39860400002)(396003)(376002)(346002)(451199015)(36840700001)(46966006)(40470700004)(4326008)(40480700001)(70586007)(26005)(33716001)(70206006)(186003)(54906003)(47076005)(36860700001)(6916009)(426003)(336012)(82310400005)(8676002)(478600001)(316002)(5660300002)(55016003)(966005)(7406005)(7416002)(356005)(8936002)(82740400003)(2906002)(41300700001)(40460700003)(86362001)(9686003)(7636003);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2022 22:34:32.0858
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: b97de20c-8ccf-4db4-1433-08daa00f4829
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.118.232];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	CO1NAM11FT022.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6577
+Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_153437_631563_84FF87A3 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20220926_191358_648311_3500D2A5 
+X-CRM114-Status: GOOD (  24.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,34 +85,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 26, 2022 at 02:23:05PM +0200, Joerg Roedel wrote:
-> External email: Use caution opening links or attachments
+On Mon, 2022-09-26 at 10:27 -0400, Josh Boyer wrote:
+> On Fri, Sep 16, 2022 at 4:35 AM TingHan Shen <tinghan.shen@mediatek.com> wrote:
+> > 
+> > Hi maintainers,
+> > 
+> > This pull request adds new MediatekTek MT8195 SOF firmware and
+> > updates MT8186 SOF firmware.
+> > 
+> > Please let me know if there is any problem.
+> > 
+> > Best regards,
+> > TingHan
+> > 
+> > --
+> > 
+> > The following changes since commit f09bebf31b0590bdc875d7236aa705279510cfd0:
+> > 
+> >   amdgpu: update yellow carp DMCUB firmware (2022-09-13 08:02:23 -0400)
+> > 
+> > are available in the Git repository at:
+> > 
+> >   https://urldefense.com/v3/__https://github.com/tinghan-shen/linux_fw_scp__;!!CTRNKA9wMg0ARbw!zqfFVP7tWlJ3XFU-l8fMAh36-BXt04WguMdj2WJq4tCdMxoKl0Ikb3chkJ9nzBB0I0Q$  mtk-20220915
+> > 
+> > for you to fetch changes up to 3e08c58f8af488c41573c4a64a261e3b3f35849b:
+> > 
+> >   mediatek: Add new mt8195 SOF firmware (2022-09-16 16:19:11 +0800)
+> > 
+> > ----------------------------------------------------------------
+> > Tinghan Shen (2):
+> >       mediatek: Update mt8186 SOF firmware
+> >       mediatek: Add new mt8195 SOF firmware
+> > 
+> >  WHENCE                                                                                      |  11 ++++++++---
+> >  mediatek/{sof/sof-mt8186-mt6366-da7219-max98357.tplg => sof-tplg/sof-mt8186.tplg}           | Bin
+> >  mediatek/sof-tplg/sof-mt8195-mt6359-rt1019-rt5682-dts.tplg                                  | Bin 0 -> 20895 bytes
+> >  .../sof-mt8186-mt6366-rt1019-rt5682s.tplg => sof-tplg/sof-mt8195-mt6359-rt1019-rt5682.tplg} | Bin 16191 -> 16191 bytes
 > 
+> This fails check_whence.py:
 > 
-> Hi Nicolin,
+> [jwboyer@vader linux-firmware]$ ./check_whence.py
+> E: mediatek/sof-tplg/sof-mt8195-mt6359-rt1019-rt5682-dts.tplg not
+> listed in WHENCE
+> [jwboyer@vader linux-firmware]$
 > 
-> On Fri, Sep 23, 2022 at 12:16:29AM -0700, Nicolin Chen wrote:
-> > This series is to replace the previous EMEDIUMTYPE patch in a VFIO series:
-> > https://lore.kernel.org/kvm/Yxnt9uQTmbqul5lf@8bytes.org/
+> Can you fix it up please?
 > 
-> \o/
+> josh
 > 
-> > Nicolin Chen (5):
-> >   iommu/amd: Drop unnecessary checks in amd_iommu_attach_device()
-> >   iommu: Add return value rules to attach_dev op and APIs
-> >   iommu: Regulate EINVAL in ->attach_dev callback functions
-> >   iommu: Use EINVAL for incompatible device/domain in ->attach_dev
-> >   iommu: Propagate return value in ->attach_dev callback functions
-> 
-> This looks good to me, but I'd like to have the SMMU people have a look
-> at patch 4. And I think it is too late for this to make it into 6.1, so
-> please re-send after 6.1-rc1 is out.
+> >  mediatek/sof/sof-mt8186.ldc                                                                 | Bin 0 -> 48436 bytes
+> >  mediatek/sof/sof-mt8186.ri                                                                  | Bin 128712 -> 128712 bytes
+> >  mediatek/sof/sof-mt8195.ldc                                                                 | Bin 0 -> 40568 bytes
+> >  mediatek/sof/sof-mt8195.ri                                                                  | Bin 0 -> 100740 bytes
+> >  8 files changed, 8 insertions(+), 3 deletions(-)
+> >  rename mediatek/{sof/sof-mt8186-mt6366-da7219-max98357.tplg => sof-tplg/sof-mt8186.tplg} (100%)
+> >  create mode 100644 mediatek/sof-tplg/sof-mt8195-mt6359-rt1019-rt5682-dts.tplg
+> >  rename mediatek/{sof/sof-mt8186-mt6366-rt1019-rt5682s.tplg => sof-tplg/sof-mt8195-mt6359-rt1019-rt5682.tplg} (86%)
+> >  create mode 100644 mediatek/sof/sof-mt8186.ldc
+> >  create mode 100644 mediatek/sof/sof-mt8195.ldc
+> >  create mode 100644 mediatek/sof/sof-mt8195.ri
+> > 
 
-Robin has given review comments against the similar patch in the
-EMEDIUMTYPE series, though it'd be nicer to have a Reviewed-by.
+Hi josh,
 
-I will re-send them rebasing on v6.1rc1.
+I forgot to update the WHENCE after added the file.
+I'm sorry, and following is the udpated PR.
 
-Thanks!
-Nic
+Best regards,
+TingHan
+
+--
+
+The following changes since commit 126b56964ff8714657eb51a28cc07a31629e603d:
+
+  Merge branch 'guc_70.5.1_huc_nover' of git://anongit.freedesktop.org/drm/drm-firmware (2022-09-26 10:30:08 -0400)
+
+are available in the Git repository at:
+
+  https://github.com/tinghan-shen/linux_fw_scp mtk-20220915
+
+for you to fetch changes up to daee413cb1a49ce87d237247dbdfcea405ee3b99:
+
+  mediatek: Add new mt8195 SOF firmware (2022-09-27 10:03:00 +0800)
+
+----------------------------------------------------------------
+Tinghan Shen (2):
+      mediatek: Update mt8186 SOF firmware to v0.2.1
+      mediatek: Add new mt8195 SOF firmware
+
+ WHENCE                                                                                                |  12 +++++++++---
+ mediatek/{sof/sof-mt8186-mt6366-da7219-max98357.tplg => sof-tplg/sof-mt8186.tplg}                     | Bin
+ mediatek/sof-tplg/sof-mt8195-mt6359-rt1019-rt5682-dts.tplg                                            | Bin 0 -> 20895 bytes
+ mediatek/{sof/sof-mt8186-mt6366-rt1019-rt5682s.tplg => sof-tplg/sof-mt8195-mt6359-rt1019-rt5682.tplg} | Bin 16191 -> 16191 bytes
+ mediatek/sof/sof-mt8186.ldc                                                                           | Bin 0 -> 48436 bytes
+ mediatek/sof/sof-mt8186.ri                                                                            | Bin 128712 -> 128712 bytes
+ mediatek/sof/sof-mt8195.ldc                                                                           | Bin 0 -> 40568 bytes
+ mediatek/sof/sof-mt8195.ri                                                                            | Bin 0 -> 100740 bytes
+ 8 files changed, 9 insertions(+), 3 deletions(-)
+ rename mediatek/{sof/sof-mt8186-mt6366-da7219-max98357.tplg => sof-tplg/sof-mt8186.tplg} (100%)
+ create mode 100644 mediatek/sof-tplg/sof-mt8195-mt6359-rt1019-rt5682-dts.tplg
+ rename mediatek/{sof/sof-mt8186-mt6366-rt1019-rt5682s.tplg => sof-tplg/sof-mt8195-mt6359-rt1019-rt5682.tplg} (86%)
+ create mode 100644 mediatek/sof/sof-mt8186.ldc
+ create mode 100644 mediatek/sof/sof-mt8195.ldc
+ create mode 100644 mediatek/sof/sof-mt8195.ri
+
+
+
 
