@@ -4,81 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B5FC6FA86
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 09:29:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5C60C6FA86
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 10:12:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CSa/p/zpHyX4lGO/pfARnTvy0LVC/OySswcI+oOiq+w=; b=3aoN0oJoHcdQavXQfgKBbcvEVh
-	ImY8GrbaU2UJ6larElgu7i+vNcwaqHC8hsCn9wLTyZRUbmQ9DG11Ii3/viMZDTlfXjPmhVeWNJMHr
-	9yxqkKTTHvnxBlYHXtl8+HzAQwLvT73x2LNKHO0ofGOdLH/iV7lPPOF2xmTWf7SSX0anj3AT7WGxK
-	N1pBRodX9NE7pg5rK7TusktsYmBHUfipb8IVEIS227AZ/2E5vloOOowBwnA3pK18H76PFMDbONekK
-	ciiwgdzl2ST9z0CNrJBplHW16cd79aXNOr0l2oI9/Kv4gN2z+nIKZx/u0/nMpL2fwsMY8mlIBrlfM
-	Yp9csgYw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MHX/P6v0U70z06V6wjzlsrZuc2ga7ud66fZRpdGGrkg=; b=qds3iAIyBt5v2+mzteU47oXdDT
+	tJydmXVhg/X+6Zv+mjoz6/7OBpAF7JAMMqDyfPFe2L5Kd6Ny58km5deh1LNMtYvmMhWxskt6u3rYQ
+	T7BZVAkuWxyfmhfNCWszgBHAvsor5khHNzdAgRvh+LhgsY+TppuNXtc8clSSMLTstx/cWM80Jxg15
+	N77WOJuigPCz1WLXctidpK1zyrkr670x+7J3h+VdKxuYEgBIwQHNs/lEZGSq4pUJwqmc82vyo+yQX
+	zvw2U3G9aeiVn2eRqXCppsQ//gvJlehjG275UCfvNyAANp++vaCljQQDOjfHbedeDQjR8bAkZ93C/
+	sywG8sCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od6tw-009Y34-EP; Tue, 27 Sep 2022 09:29:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1od7ZJ-009lWF-P2; Tue, 27 Sep 2022 10:12:01 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od6qH-009WCS-6w; Tue, 27 Sep 2022 09:25:30 +0000
-X-UUID: 66a4c34adbc34d25980a8992afe4ac78-20220927
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=CSa/p/zpHyX4lGO/pfARnTvy0LVC/OySswcI+oOiq+w=;
-	b=s5eDKfDFOiBcz8vA8P9T0uNviM4VbzUpvt2v38wE5SNXdSiItPlbJXZTkSfxbUX6dtygRXg60AiRHwb7He+Wvt+bxE54gjfk1/yR0V8205ExrPcc/xpbTvARfFPana15l6q256YcPPNxvTkqUFrPFYkcgfSjAAu+ehMrF2b0NzY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:67c209d8-e835-424c-bae6-8a810f9a1b24,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:f73539a3-dc04-435c-b19b-71e131a5fc35,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 66a4c34adbc34d25980a8992afe4ac78-20220927
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jianguo.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 287594195; Tue, 27 Sep 2022 02:25:25 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Tue, 27 Sep 2022 16:44:48 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 27 Sep 2022 16:44:47 +0800
-Message-ID: <80c59c9462955037981a1eab6409ba69fc9b7c34.camel@mediatek.com>
-Subject: Re: [PATCH v5 4/4] net: stmmac: Update the name of property
- 'clk_csr'
-From: Jianguo Zhang <jianguo.zhang@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, "AngeloGioacchino
- Del Regno" <angelogioacchino.delregno@collabora.com>, "David S . Miller"
-	<davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski+dt@linaro.org>
-CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
-	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	"Matthias Brugger" <matthias.bgg@gmail.com>, Biao Huang
-	<biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Date: Tue, 27 Sep 2022 16:44:46 +0800
-In-Reply-To: <4f205f0d-420d-8f51-ad26-0c2475c0decd@linaro.org>
-References: <20220923052828.16581-1-jianguo.zhang@mediatek.com>
-	 <20220923052828.16581-5-jianguo.zhang@mediatek.com>
-	 <e0fa3ddf-575d-9e25-73d8-e0858782b73f@collabora.com>
-	 <ac24dc0f-0038-5068-3ce6-bbace55c7027@linaro.org>
-	 <4f205f0d-420d-8f51-ad26-0c2475c0decd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1od7Yx-009lJd-7P; Tue, 27 Sep 2022 10:11:41 +0000
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 88253660205F;
+	Tue, 27 Sep 2022 11:11:32 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664273493;
+	bh=wLKQ8bajA+e/ikXm5x/+8XAGljaSNHIIE+LrYJVbQc0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=EeFVMdR4WBe/VIn37ShwE0RyPEHETCwPy3691cH8Sh6TEvpLUP85UwlgT9lJQJus/
+	 viowz+lpEtj1NBVRv0Lk17WENx3phYNALtsM4+cigz8925QNTYvmmXJEpa5vATATIG
+	 wWJKceuN26tBkagsBUDYp7Vxdk15M3C9tCJSY/TGwTfl7qXsH2rcRvcmOUsKfPe2Ol
+	 QPxaHF5njo1RrI5H9xw5Rt3CuzzVFTMXRCX1/uE0c/wu2TqxzE9aY2kDeZqUsNuyy5
+	 4QtYg+8YudzHdC3QHaV0GTMbYklup86dr+2aih0NLzJk2bxIlus1NK+L1fQpBmCB/x
+	 fHAM4JCqZEGXA==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	wenst@chromium.org,
+	miles.chen@mediatek.com,
+	rex-bc.chen@mediatek.com,
+	nfraprado@collabora.com,
+	chun-jie.chen@mediatek.com,
+	jose.exposito89@gmail.com,
+	drinkcat@chromium.org,
+	weiyi.lu@mediatek.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org
+Subject: [PATCH v3 00/10] MediaTek SoC safe clock muxing and GPU clocks
+Date: Tue, 27 Sep 2022 12:11:18 +0200
+Message-Id: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_022529_395533_0382F99B 
-X-CRM114-Status: GOOD (  17.65  )
+X-CRM114-CacheID: sfid-20220927_031139_478091_EEF8AEB5 
+X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,46 +85,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Krzysztof,
-	Thanks for your comment.
+This series adds a clock notifier for MediaTek clock muxes, required
+in order to achieve stability for GPU DVFS.
 
-On Fri, 2022-09-23 at 20:15 +0200, Krzysztof Kozlowski wrote:
-> On 23/09/2022 20:14, Krzysztof Kozlowski wrote:
-> > > This is going to break MT2712e on old devicetrees.
-> > > 
-> > > The right way of doing that is to check the return value of
-> > > of_property_read_u32()
-> > > for "snps,clk-csr": if the property is not found, fall back to
-> > > the old "clk_csr".
-> > 
-> > I must admit - I don't care. That's the effect when submitter
-> > bypasses
-> > DT bindings review (81311c03ab4d ("net: ethernet: stmmac: add
-> > management
-> > of clk_csr property")).
-> > 
-> > If anyone wants ABI, please document the properties.
-> > 
-> > If out-of-tree users complain, please upstream your DTS or do not
-> > use
-> > undocumented features...
-> > 
-> 
-> OTOH, as Angelo pointed out, handling old and new properties is quite
-> easy to achieve, so... :)
-> 
-So, the conclusion is as following:
+The GPU frequency scaling mechanism requires us to switch the GPU
+mux clock to a safe parent which frequency is always less or equal
+to the "current" GPU frequency before reprogramming its dedicated
+"MFG" PLL.
+This is needed because the PLL needs time to reconfigure for its
+output to stabilize (so, for the PLL to lock again): failing to do
+so will lead to instabilities such as glitches, GPU lockups and/or
+full system lockups.
 
-1. add new property 'snps,clk-csr' and document it in binding file.
-2. parse new property 'snps,clk-csr' firstly, if failed, fall back to
-old property 'clk_csr' in driver.
+While at it, reparenting of some GPU clocks was also performed, as
+the clock tree was slightly incorrect.
 
-Is my understanding correct?
+This series was tested, along with mtk-regulator-coupler [1], on
+Chromebooks with different SoCs (MT8183, MT8192, MT8195*), resulting
+in fully working GPU DVFS with the Panfrost driver.
 
-> Best regards,
-> Krzysztof
-> 
-BRS
-Jianguo
+[1]: https://patchwork.kernel.org/project/linux-mediatek/patch/20220628120224.81180-1-angelogioacchino.delregno@collabora.com/
+
+* MT8195 does not require mtk-regulator-coupler. This series, along
+  with [1], are required to perform GPU DVFS also on non-Chromebook SoCs.
+
+Changes in v3:
+ - Clarified commit description in patch [05/10]
+
+Changes in v2:
+ - Added comment in clk-mt8195-topckgen to keep the mfg parents
+   documented after removal, as suggested by Chen-Yu
+
+AngeloGioacchino Del Regno (6):
+  clk: mediatek: clk-mt8195-mfg: Reparent mfg_bg3d and propagate rate
+    changes
+  clk: mediatek: clk-mt8195-topckgen: Register mfg_ck_fast_ref as
+    generic mux
+  clk: mediatek: clk-mt8195-topckgen: Add GPU clock mux notifier
+  clk: mediatek: clk-mt8195-topckgen: Drop univplls from mfg mux parents
+  clk: mediatek: clk-mt8192-mfg: Propagate rate changes to parent
+  clk: mediatek: clk-mt8192: Add clock mux notifier for mfg_pll_sel
+
+Chen-Yu Tsai (4):
+  arm64: dts: mt8183: Fix Mali GPU clock
+  clk: mediatek: mt8183: mfgcfg: Propagate rate changes to parent
+  clk: mediatek: mux: add clk notifier functions
+  clk: mediatek: mt8183: Add clk mux notifier for MFG mux
+
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi   |  2 +-
+ drivers/clk/mediatek/clk-mt8183-mfgcfg.c   |  6 +--
+ drivers/clk/mediatek/clk-mt8183.c          | 28 +++++++++++++
+ drivers/clk/mediatek/clk-mt8192-mfg.c      |  6 ++-
+ drivers/clk/mediatek/clk-mt8192.c          | 28 +++++++++++++
+ drivers/clk/mediatek/clk-mt8195-mfg.c      |  6 ++-
+ drivers/clk/mediatek/clk-mt8195-topckgen.c | 46 +++++++++++++++-------
+ drivers/clk/mediatek/clk-mux.c             | 38 ++++++++++++++++++
+ drivers/clk/mediatek/clk-mux.h             | 15 +++++++
+ 9 files changed, 153 insertions(+), 22 deletions(-)
+
+-- 
+2.37.2
 
 
