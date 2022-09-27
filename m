@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44B34C6FA83
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 10:14:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CBCEC6FA86
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 10:15:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eWyGb0q7QYUfq+xg02k1Xun1TFDNpiRZ01Fk0RQlU/U=; b=gNmxezDQ7qvpiramTjHm8NyDyq
-	FmNzOPgrloYTWnX0Pz1/GMW8teLlEKK49RyapYSXsXSkCSEtiZ1rXXEfZVEhaXMxysbJk/TM2qQF1
-	Q3TrhuIOxNUY5rgEIxSOja2Q+vOzd+b3Z0mW30lJJOVawA2Pbcb0EGmLy7Q2r5FGbi4md9VAelYgx
-	+vqua/ef8pR9yGn9DpWuMLz9s7vRU+ZBOWFAwdoTwrREr8cnV/o09hHWekhgQrsb73lhmIDEXMI3F
-	fFMVmwPkgBOLydXmXw3m6eKoAincEb56UZPYb/tBnB6TZKSt2jB4L3NFDrCOQPowLl6jo8S0/KRZQ
-	0dJK/LPA==;
+	bh=fAYwL31hTxvFy01hWKrukScG0XqlCZevjHB80eEE/Cw=; b=QDnuBSlHaxv2vHJpkqvIz97RC4
+	03G2eI/trzXg3uWZxbjP8u3oPQogZ2VantM6URXvGGh6iXeY/0y0y4I4zXw8ZmTvdVpq26wkhSgaC
+	MJEPq01XZ7d14+z4s7ThXyUmfyrKSOR41hGpT98ocV7uJF2sFRK83SD2BN0G1qZqfXDDtqEatQwxT
+	XpYVZP4fwXRH+xIuh/Vn0rC/pnKFoCQwHe0X1LN9K5yhU8etWdcfRUzixo7l6/i2eK0pKdm4jrhp0
+	IqHucL5bOcQES0ZTtyMIUl9IXcVd8H5B5EFVBWAPojD4mj1x7l2r2EdIX5i+Uk/PhXZfa81cxEMFv
+	/jQYQ4Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od7bk-009msA-Tc; Tue, 27 Sep 2022 10:14:32 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1od7c7-009n6x-5s; Tue, 27 Sep 2022 10:14:55 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od7Z0-009lMe-VZ; Tue, 27 Sep 2022 10:11:44 +0000
+	id 1od7Z2-009lNx-44; Tue, 27 Sep 2022 10:11:45 +0000
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D455C660226C;
-	Tue, 27 Sep 2022 11:11:40 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 012F7660226D;
+	Tue, 27 Sep 2022 11:11:41 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664273501;
-	bh=P8qf8sm2+n6h5GY24T45/pBhBpIHyvw5DFQp0vf8aik=;
+	s=mail; t=1664273503;
+	bh=j10EM1licQi3mwiHxVGMv2C3ETIprP9h+07XKCWj8yU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GkDdRUq4dfwyECaN1Ea5hKftsbJIDkDkv5RdHCV0f5dYGdrfGeSCjK7O4VUpvqfZX
-	 e5qGzzPwy4K6+L4AGUithUYgO+YdSTsNdYHuuwWOelBVACM1ARB1dQ0K8bR4Sx0mR5
-	 iLcQd7mXosjEWuEO1uCGVZ/or/IUgGFc0JKdO94KnBhs3NaUK/trYMHrk07DgcQUnD
-	 PrrIN2EqA92nSZJDQmLk1Mtf3y+4NjvXVg8cb86wRWnHj4PBV1xzeTOoyJsfohRcey
-	 idk+2wI6qqdYxwoHvr2BE4NUNIMeQCMse/8hHtAYwtvkRAdC9EXF2FNwfGj5lkktZc
-	 vVPv4AK6M6ztQ==
+	b=SeEHD7Dy/8p+JvKSviqAASCFXO0+8JJpOmthAYvFDZuj/qSeJ/VxtDlxlR5kolctd
+	 vcjE0ynnqL3l9mT9iyILH703RrbpLXQcjrju3bVuylMGf2RiM88wNI7F7jl2x0m+ww
+	 IBWxTIbOJQhGHhTbaVPsV6Ti9zppp4LVX03LAZKaJmRBYoyM8lKF4G213GQdsaqBs3
+	 +xUjJWBdbv84gMtZfAt/DhP9bi8J+Lb8+E/KJK1PRJQzmTn443/FBDV3F3zuuaIivi
+	 /F2+xuxMANS7LvR65PRV2Kuw3rMg3ManSkjp4UN6QDTsN/Yn/4SZypmg03ProLVSKC
+	 sme0M/AzV8ASg==
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: matthias.bgg@gmail.com
 Cc: mturquette@baylibre.com,
@@ -61,17 +61,17 @@ Cc: mturquette@baylibre.com,
 	linux-clk@vger.kernel.org,
 	robh+dt@kernel.org,
 	krzysztof.kozlowski+dt@linaro.org
-Subject: [PATCH v3 07/10] clk: mediatek: clk-mt8195-topckgen: Add GPU clock mux notifier
-Date: Tue, 27 Sep 2022 12:11:25 +0200
-Message-Id: <20220927101128.44758-8-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 08/10] clk: mediatek: clk-mt8195-topckgen: Drop univplls from mfg mux parents
+Date: Tue, 27 Sep 2022 12:11:26 +0200
+Message-Id: <20220927101128.44758-9-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.37.2
 In-Reply-To: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
 References: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_031143_217677_D107289A 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20220927_031144_342198_AE71A431 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,53 +86,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Following the changes done to MT8183, register a similar notifier
-for MT8195 as well, allowing safe clockrate updates for the MFGPLL.
+These PLLs are conflicting with GPU rates that can be generated by
+the GPU-dedicated MFGPLL and would require a special clock handler
+to be used, for very little and ignorable power consumption benefits.
+Also, we're in any case unable to set the rate of these PLLs to
+something else that is sensible for this task, so simply drop them:
+this will make the GPU to be clocked exclusively from MFGPLL for
+"fast" rates, while still achieving the right "safe" rate during
+PLL frequency locking.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Miles Chen <miles.chen@mediatek.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/clk-mt8195-topckgen.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ drivers/clk/mediatek/clk-mt8195-topckgen.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c b/drivers/clk/mediatek/clk-mt8195-topckgen.c
-index e1c3ab4e146b..4dde23bece66 100644
+index 4dde23bece66..8cbab5ca2e58 100644
 --- a/drivers/clk/mediatek/clk-mt8195-topckgen.c
 +++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
-@@ -1217,6 +1217,21 @@ static const struct of_device_id of_match_clk_mt8195_topck[] = {
- 	{}
+@@ -298,11 +298,14 @@ static const char * const ipu_if_parents[] = {
+ 	"mmpll_d4"
  };
  
-+/* Register mux notifier for MFG mux */
-+static int clk_mt8195_reg_mfg_mux_notifier(struct device *dev, struct clk *clk)
-+{
-+	struct mtk_mux_nb *mfg_mux_nb;
-+
-+	mfg_mux_nb = devm_kzalloc(dev, sizeof(*mfg_mux_nb), GFP_KERNEL);
-+	if (!mfg_mux_nb)
-+		return -ENOMEM;
-+
-+	mfg_mux_nb->ops = &clk_mux_ops;
-+	mfg_mux_nb->bypass_index = 0; /* Bypass to TOP_MFG_CORE_TMP */
-+
-+	return devm_mtk_clk_mux_notifier_register(dev, clk, mfg_mux_nb);
-+}
-+
- static int clk_mt8195_topck_probe(struct platform_device *pdev)
- {
- 	struct clk_hw_onecell_data *top_clk_data;
-@@ -1256,6 +1271,11 @@ static int clk_mt8195_topck_probe(struct platform_device *pdev)
- 		goto unregister_muxes;
- 	top_clk_data->hws[CLK_TOP_MFG_CK_FAST_REF] = hw;
++/*
++ * MFG can be also parented to "univpll_d6" and "univpll_d7":
++ * these have been removed from the parents list to let us
++ * achieve GPU DVFS without any special clock handlers.
++ */
+ static const char * const mfg_parents[] = {
+ 	"clk26m",
+-	"mainpll_d5_d2",
+-	"univpll_d6",
+-	"univpll_d7"
++	"mainpll_d5_d2"
+ };
  
-+	r = clk_mt8195_reg_mfg_mux_notifier(&pdev->dev,
-+					    top_clk_data->hws[CLK_TOP_MFG_CK_FAST_REF]->clk);
-+	if (r)
-+		goto unregister_muxes;
-+
- 	r = mtk_clk_register_composites(top_adj_divs, ARRAY_SIZE(top_adj_divs), base,
- 					&mt8195_clk_lock, top_clk_data);
- 	if (r)
+ static const char * const camtg_parents[] = {
 -- 
 2.37.2
 
