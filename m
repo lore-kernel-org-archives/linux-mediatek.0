@@ -4,61 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE96AC6FA90
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 10:46:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 941A4C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 11:01:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=iX/4To+c28wRIBDrkybObrom/UGxzlrLJ1dNG8kFn7I=; b=l5VQZ+ourIrSrtNvsnh336Xq8W
-	eLbtV5XiszYk+jWTyvFdz8DzAW4fZ/QK2R3NCSemBgAWLAi7V8+BTswy0Eowm38FDC+MB4A5dtRJa
-	z8sbFlVh0cadlb16OnUxxXJz6QBfHTb9vtA65SnsogBgNQr2XAGImg0LNk7WqyqKqJrncw5SPa7bN
-	2ilfaCpYWsa7HcnlgEpFhJcEek1XHqqf+Z0jiPm/xpe49aMDgxBR9+Bm5DxBVjL5toZf4n1QsBrLy
-	t4XSxnmR0Axxungnd08wR1vh1LyeuTAgeOIhyAKC1rnIZsXqcfQF6OECCRRT5VaQfpyz30dRT4iPF
-	1EFcwWiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6J3D3Oqp3PGfZSF1QZ0m5y/MVU/fUihiHZ+QATHZ3mQ=; b=JBVitNKoEfsD/viF0li9UAX2i1
+	6rMcJ9uSS/cueMY3Z5GERp+nHCOwHKW7uTSQHBN7CSHVaRgXsF2AlkSs+1386O+1vEMplD2N3OXDX
+	g+fizzCm9kXvrENrM5ir6dm7KaKTsW5kjzzM4s2zw1ZyL9+fR4Ldt72zj4AjChm84EZLdlxsdaVi4
+	TOYBYaqNZxnRW8ZkOJag4RoCmALpN+LhdxoCpglpJo2fIw+gCPKs1vXOTOhY7oS2eBnTKMywJ08MQ
+	U+oclHw/w4IJNAXVMY+MZIIRggNFCPem1p3XeTjF55kDL/R10d6RrqqTAia7dWUN4ntvRIaugyWsd
+	RJbb7eJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od86T-009xcJ-Bx; Tue, 27 Sep 2022 10:46:17 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1od8L6-00A1ry-RC; Tue, 27 Sep 2022 11:01:24 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od86B-009xOV-Kf; Tue, 27 Sep 2022 10:46:01 +0000
-Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.53])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4McGQ71VzSz1P6p6;
-	Tue, 27 Sep 2022 18:41:35 +0800 (CST)
-Received: from dggpemm100009.china.huawei.com (7.185.36.113) by
- dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2375.31; Tue, 27 Sep 2022 18:45:49 +0800
-Received: from huawei.com (10.175.113.32) by dggpemm100009.china.huawei.com
- (7.185.36.113) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Tue, 27 Sep
- 2022 18:45:49 +0800
-From: Liu Shixin <liushixin2@huawei.com>
-To: Jakub Kicinski <kuba@kernel.org>, Felix Fietkau <nbd@nbd.name>, "John
- Crispin" <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
-	<Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>, "Eric
- Dumazet" <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>
-CC: <netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Liu
- Shixin" <liushixin2@huawei.com>
-Subject: [PATCH net-next v2] net: ethernet: mtk_eth_soc: use DEFINE_SHOW_ATTRIBUTE to simplify code
-Date: Tue, 27 Sep 2022 19:19:25 +0800
-Message-ID: <20220927111925.2424100-1-liushixin2@huawei.com>
-X-Mailer: git-send-email 2.25.1
+	id 1od8Kw-00A1ok-7s; Tue, 27 Sep 2022 11:01:15 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 043BA6601F41;
+	Tue, 27 Sep 2022 12:01:11 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664276472;
+	bh=RDWtY7wqaihCFtmoFWJVug40U4Jv115kYvwmjRDansY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=gH87XogzsxK7TVCFj4qUFTrougqAFQMRPxlw9tr08UzMtOqb5qAkQs3VNiTHLPzTl
+	 CXck085FzbMkt1n8p97aeHMkhILghLYnxGuqy4My1+mEg4R4TjfktwnPJadZQd96JN
+	 S9VxJDQ3RaW7sovH/daruwR7wvcucICZRKBZJSluqda+sXCuW3NBY/RE5VLlkHXtmi
+	 NehuyuOiri8hiw9Qbr206d1IiSRW6mlvFoTGY8HCMYfTblLb2IzVVwdwJNFTWLmoHe
+	 XQrWPLwBZw3Gq5ZqNZRcymZ4uexQ1fx4yz8pbDSKTzfi082JGa983swS6+A9aQ2iD3
+	 HfH2wshC9bung==
+Message-ID: <cbed65b6-bd7c-b750-ac8e-504fe143a804@collabora.com>
+Date: Tue, 27 Sep 2022 13:01:09 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.175.113.32]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpemm100009.china.huawei.com (7.185.36.113)
-X-CFilter-Loop: Reflected
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v3 03/11] arm64: dts: mt8195: Add SCP core 1 node
+Content-Language: en-US
+To: Tinghan Shen <tinghan.shen@mediatek.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
+References: <20220927025606.26673-1-tinghan.shen@mediatek.com>
+ <20220927025606.26673-4-tinghan.shen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220927025606.26673-4-tinghan.shen@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_034600_048138_B85223AA 
-X-CRM114-Status: UNSURE (   7.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220927_040114_443622_2949695A 
+X-CRM114-Status: GOOD (  16.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,81 +84,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use DEFINE_SHOW_ATTRIBUTE helper macro to simplify the code.
-No functional change.
+Il 27/09/22 04:55, Tinghan Shen ha scritto:
+> Add the 2nd core(core 1) of MT8195 dual-core SCP to devicetree file.
+> Reserve some SRAM spaces for the core 1 image.
+> 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 14 +++++++++++++-
+>   1 file changed, 13 insertions(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 905d1a90b406..48d457bd39b8 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -760,12 +760,24 @@
+>   
+>   		scp: scp@10500000 {
+>   			compatible = "mediatek,mt8195-scp";
+> -			reg = <0 0x10500000 0 0x100000>,
+> +			reg = <0 0x10500000 0 0xa0000>,
+>   			      <0 0x10720000 0 0xe0000>,
+>   			      <0 0x10700000 0 0x8000>;
+>   			reg-names = "sram", "cfg", "l1tcm";
+>   			interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>;
+>   			status = "disabled";
+> +
+> +			#address-cells = <1>;
+> +			#size-cells = <1>;
+> +			ranges = <0x105a0000 0 0x105a0000 0x20000>;
+> +
+> +			scp_c1: scp-c1@105a0000 {
+> +				compatible = "mediatek,mt8195-scp-core";
+> +				reg = <0x105a0000 0x20000>;
+> +				reg-names = "sram";
+> +				interrupts = <GIC_SPI 463 IRQ_TYPE_LEVEL_HIGH 0>;
+> +				status = "disabled";
+> +			};
 
-Signed-off-by: Liu Shixin <liushixin2@huawei.com>
----
+I think that the best way of describing a dual-core SCP in devicetree would
+be either something like:
 
-v1->v2: Rebase on net-next.
+scp: scp@10500000 {
+	compatible = "mediatek,mt8195-scp";
+	reg = <0 0x10500000 0 0xa0000>, <0 0x105a0000 0 0x20000>,
+	      <0 0x10720000 0 0xe0000>, <0 0x10700000 0 0x8000>;
+	reg-names = "sram", "sram-c1", "cfg", "l1tcm";
+	interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>,
+		     <GIC_SPI 463 IRQ_TYPE_LEVEL_HIGH 0>;
+	status = "disabled";
+};
 
- .../net/ethernet/mediatek/mtk_ppe_debugfs.c   | 36 ++++---------------
- 1 file changed, 6 insertions(+), 30 deletions(-)
+...but that may pose an issue when trying to assign different (or more instances
+of the same) subnode(s) to each core... for which, I'd be more for something like:
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-index ec49829ab32d..391b071bcff3 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
-@@ -162,52 +162,28 @@ mtk_ppe_debugfs_foe_show(struct seq_file *m, void *private, bool bind)
- }
- 
- static int
--mtk_ppe_debugfs_foe_show_all(struct seq_file *m, void *private)
-+mtk_ppe_debugfs_foe_all_show(struct seq_file *m, void *private)
- {
- 	return mtk_ppe_debugfs_foe_show(m, private, false);
- }
-+DEFINE_SHOW_ATTRIBUTE(mtk_ppe_debugfs_foe_all);
- 
- static int
--mtk_ppe_debugfs_foe_show_bind(struct seq_file *m, void *private)
-+mtk_ppe_debugfs_foe_bind_show(struct seq_file *m, void *private)
- {
- 	return mtk_ppe_debugfs_foe_show(m, private, true);
- }
--
--static int
--mtk_ppe_debugfs_foe_open_all(struct inode *inode, struct file *file)
--{
--	return single_open(file, mtk_ppe_debugfs_foe_show_all,
--			   inode->i_private);
--}
--
--static int
--mtk_ppe_debugfs_foe_open_bind(struct inode *inode, struct file *file)
--{
--	return single_open(file, mtk_ppe_debugfs_foe_show_bind,
--			   inode->i_private);
--}
-+DEFINE_SHOW_ATTRIBUTE(mtk_ppe_debugfs_foe_bind);
- 
- int mtk_ppe_debugfs_init(struct mtk_ppe *ppe, int index)
- {
--	static const struct file_operations fops_all = {
--		.open = mtk_ppe_debugfs_foe_open_all,
--		.read = seq_read,
--		.llseek = seq_lseek,
--		.release = single_release,
--	};
--	static const struct file_operations fops_bind = {
--		.open = mtk_ppe_debugfs_foe_open_bind,
--		.read = seq_read,
--		.llseek = seq_lseek,
--		.release = single_release,
--	};
- 	struct dentry *root;
- 
- 	snprintf(ppe->dirname, sizeof(ppe->dirname), "ppe%d", index);
- 
- 	root = debugfs_create_dir(ppe->dirname, NULL);
--	debugfs_create_file("entries", S_IRUGO, root, ppe, &fops_all);
--	debugfs_create_file("bind", S_IRUGO, root, ppe, &fops_bind);
-+	debugfs_create_file("entries", S_IRUGO, root, ppe, &mtk_ppe_debugfs_foe_all_fops);
-+	debugfs_create_file("bind", S_IRUGO, root, ppe, &mtk_ppe_debugfs_foe_bind_fops);
- 
- 	return 0;
- }
--- 
-2.25.1
+scp: scp@10500000 {
+	compatible = "mediatek,mt8195-scp";
+	reg = <0 0x10720000 0 0xe0000>, <0 0x10700000 0 0x8000>;
+	reg-names = "cfg", "l1tcm";
+	#address-cells = <1>;
+	#size-cells = <1>;
+	ranges = <0 0 0x10500000 0x100000>;
+	status = "disabled";
+
+	scp_c0: scp-core@0 {
+		compatible = "mediatek,mt8195-scp-core";
+		reg = <0x0 0xa0000>;
+		reg-names = "sram";
+		interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>;
+	};
+
+	scp_c1: scp-core@a0000 {
+		compatible = "mediatek,mt8195-scp-core";
+		reg = <0xa0000 0x20000>;
+		reg-names = "sram";
+		interrupts = <GIC_SPI 463 IRQ_TYPE_LEVEL_HIGH 0>;
+	};
+};
+
+Regards,
+Angelo
+
 
 
