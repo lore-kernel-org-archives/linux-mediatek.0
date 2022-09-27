@@ -4,78 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB237C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 11:27:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7527EC07E9D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 12:18:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p1bJPN5ITltuZb/xpphOdlSlxAZ5dJi1AuoXRrHMRX0=; b=FckwFuK0wFI8fK9ca8HPFRsacv
-	1HBn3Z8aRdZS0voA0/yiAkVzeFXB41Kz1Tij6/XqtFGAXvgHcEKeKlt5XWhryJxxZsqg+6CGgT/U6
-	7pQxBMNeqiiRIPGzAvCWANBctkCCejXb4z9kBwRzADDLNbFYgdAv6834jlIMT6z/JzyonTZNa7y5U
-	+8mQcKYxjfjhTvF8kBANRH3EWxJbsPW2YoQeAsd9NSRkUbek5pWzxcjApfFykSXJoLaul0KFO1Gfb
-	hIW7NU+HtEB1iGT+QzO59IVaj5eWSYyii6EYKWuz4IUWxrbvqG+9bBH6+6AFcZ7Wswltf23xX5c3T
-	vRiwVgQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ELWISdX/9sBvFeydvloaIktg59EFBOWavlNHB984OXE=; b=hg7tQGmY96OqwHAkU8A4O7YW6W
+	FHJO1iTxYeI7lqCHAjq508XzYGFva6/v8KXxcBiTo1qqn0nGIdU+4zIG1hQvP0b04KpZ8MV7J8eFj
+	ul/NTJTKkdLGvj3E5OCuRF/krB2BXr1go3X8bRIMZVxlTcI8ut6bjXZZ6pAJPxhtU9yJ3eiA55anX
+	DGEKuobypVKEynGZu8CR06ipD+NKyERyL+3PWywNEAlwLtokfki9b02c4qP1bTJMB2kY4YKV0GHCV
+	+Gwtd5d0cpmY8bhRAnWd3YnQyL/v9x28Q9CZWMEBB1SYMvklljWg5MS40DH/DjjFk35a1I3GdZAqE
+	L9jTOl5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od8k4-00AE85-2N; Tue, 27 Sep 2022 11:27:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1od9Xp-00ARye-Qq; Tue, 27 Sep 2022 12:18:37 +0000
+Received: from mga05.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od8jz-00AE52-Tx; Tue, 27 Sep 2022 11:27:10 +0000
-X-UUID: 5eb84abe38f241b9b4297624d7e2580b-20220927
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=p1bJPN5ITltuZb/xpphOdlSlxAZ5dJi1AuoXRrHMRX0=;
-	b=FI6TDfmutX/qSxU7Xz/iBvdEg3DVg0BH0zP0195W4mvQtbAN3y+8oKZIr/Z6B8ImoVeDZmlG0XzLI3H3RrWFGW+wrrTt/1YHduPoorm4lnk4a1MFd9qBRSE+1qYcjTfBkhbMTGLVQwDXgiv1qRWgaQoGhiHBa7Q0oxPVPmM34h8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:3038ebee-34eb-40fe-9120-8c6b4d940e9c,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:fb0a2f07-1cee-4c38-b21b-a45f9682fdc0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:nil,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 5eb84abe38f241b9b4297624d7e2580b-20220927
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <edward-jw.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1025623113; Tue, 27 Sep 2022 04:26:56 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 27 Sep 2022 18:56:19 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 27 Sep 2022 18:56:19 +0800
-Message-ID: <e766c0a287d332462e33b624e7472ed88d4b726c.camel@mediatek.com>
-Subject: Re: [PATCH v2 3/4] clk: mediatek: Add new clock driver to handle
- FHCTL hardware
-From: Edward-JW Yang <edward-jw.yang@mediatek.com>
-To: Johnson Wang <johnson.wang@mediatek.com>, "robh+dt@kernel.org"
-	<robh+dt@kernel.org>, "krzysztof.kozlowski+dt@linaro.org"
-	<krzysztof.kozlowski+dt@linaro.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "sboyd@kernel.org"
-	<sboyd@kernel.org>
-CC: "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Tue, 27 Sep 2022 18:56:19 +0800
-In-Reply-To: <20220914124552.16964-4-johnson.wang@mediatek.com>
-References: <20220914124552.16964-1-johnson.wang@mediatek.com>
-	 <20220914124552.16964-4-johnson.wang@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1od9Xk-00ARub-IF; Tue, 27 Sep 2022 12:18:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1664281112; x=1695817112;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=OFIxxBkiaCDaU7hdmWCgva7sjv3x1WGTNlqGM1oQtNQ=;
+  b=mgeFQ8LOqPlJRWaIAz9xnerY0TQ+4pad4hxrWOTPJzG3+DsDFtsCa0aN
+   8eA4FQWHsGFRdER4eZ04fmchDDcZgfn4bPBwi+lG6uSnfkTcfrjm7J22Q
+   6wCKLdrnK7kBjf+jMt2ZeyvMSpLaKTkX+QxyO0wH1g9b8AvduO6jnrHPf
+   A/anAKlmTNGgL+DsK+XayD6OMsLlp6X7mBOWF7/IDpmg/+fQylBSC0qu9
+   u41o6KboRr4XY1bA2bqpyTvlDeIRituRLuQjiGXiwOkcp/9nSHXxQXvOd
+   msQ2oiy7rBycCmRZlSt20dScOqrEZWHWSHu/qxpUrstOH3NvybpvYp3xr
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10482"; a="387589446"
+X-IronPort-AV: E=Sophos;i="5.93,349,1654585200"; 
+   d="scan'208";a="387589446"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Sep 2022 05:18:29 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10482"; a="616810246"
+X-IronPort-AV: E=Sophos;i="5.93,349,1654585200"; 
+   d="scan'208";a="616810246"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orsmga007.jf.intel.com with ESMTP; 27 Sep 2022 05:18:06 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1od9XD-008RHv-1p;
+	Tue, 27 Sep 2022 15:17:59 +0300
+Date: Tue, 27 Sep 2022 15:17:59 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Rob Herring <robh@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>
+Cc: Olof Johansson <olof@lixom.net>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Saravana Kannan <saravanak@google.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Laurentiu Tudor <laurentiu.tudor@nxp.com>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+	Paul Mackerras <paulus@samba.org>, Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Al Cooper <alcooperx@gmail.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Tobias Klauser <tklauser@distanz.ch>,
+	Russell King <linux@armlinux.org.uk>,
+	Vineet Gupta <vgupta@kernel.org>,
+	Richard Genoud <richard.genoud@gmail.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Alexander Shiyan <shc_work@mail.ru>,
+	Baruch Siach <baruch@tkos.co.il>, Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Karol Gugala <kgugala@antmicro.com>,
+	Mateusz Holenko <mholenko@antmicro.com>,
+	Gabriel Somlo <gsomlo@gmail.com>,
+	Neil Armstrong <narmstrong@baylibre.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Taichi Sugaya <sugaya.taichi@socionext.com>,
+	Takao Orito <orito.takao@socionext.com>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <bjorn.andersson@linaro.org>,
+	Pali Rohar <pali@kernel.org>, Andreas Farber <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Paul Walmsley <paul.walmsley@sifive.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang7@gmail.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Hammer Hsieh <hammerh0314@gmail.com>,
+	Peter Korsgaard <jacmet@sunsite.dk>, Timur Tabi <timur@kernel.org>,
+	Michal Simek <michal.simek@xilinx.com>,
+	sascha hauer <sha@pengutronix.de>, peng fan <peng.fan@nxp.com>,
+	kevin hilman <khilman@kernel.org>,
+	ulf hansson <ulf.hansson@linaro.org>,
+	len brown <len.brown@intel.com>, pavel machek <pavel@ucw.cz>,
+	joerg roedel <joro@8bytes.org>, will deacon <will@kernel.org>,
+	andrew lunn <andrew@lunn.ch>,
+	heiner kallweit <hkallweit1@gmail.com>,
+	eric dumazet <edumazet@google.com>,
+	jakub kicinski <kuba@kernel.org>, paolo abeni <pabeni@redhat.com>,
+	linus walleij <linus.walleij@linaro.org>,
+	hideaki yoshifuji <yoshfuji@linux-ipv6.org>,
+	david ahern <dsahern@kernel.org>, kernel-team@android.com,
+	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+	iommu@lists.linux-foundation.org, netdev@vger.kernel.org,
+	linux-gpio@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+	linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org, linux-snps-arc@lists.infradead.org,
+	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-actions@lists.infradead.org, linux-unisoc@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	sparclinux@vger.kernel.org
+Subject: Re: [PATCH v2 0/2] Fix console probe delay when stdout-path isn't set
+Message-ID: <YzLp9yXgoJmy5YU8@smile.fi.intel.com>
+References: <20220701012647.2007122-1-saravanak@google.com>
+ <YwS5J3effuHQJRZ5@kroah.com>
+ <CAOesGMivJ5Q-jdeGKw32yhjmNiYctHjpEAnoMMRghYqWD2m2tw@mail.gmail.com>
+ <YygsEtxKz8dsEstc@kroah.com>
+ <CAOesGMh5GHCONTQ9M1Ro7zW-hkL_1F7Xt=xRV0vYSfPY=7LYkQ@mail.gmail.com>
+ <CAL_JsqK7auA8coB3DCqSDKw1ept_yQihVs-Me3bvU923os23xg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAL_JsqK7auA8coB3DCqSDKw1ept_yQihVs-Me3bvU923os23xg@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_042708_026973_05F21CE7 
-X-CRM114-Status: GOOD (  31.91  )
+X-CRM114-CacheID: sfid-20220927_051832_629608_54F3B23B 
+X-CRM114-Status: GOOD (  45.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,687 +175,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-09-14 at 20:45 +0800, Johnson Wang wrote:
-> To implement frequency hopping and spread spectrum clocking
-> function, we introduce new clock type and APIs to handle
-> FHCTL hardware.
+On Mon, Sep 26, 2022 at 01:25:05PM -0500, Rob Herring wrote:
+> On Mon, Sep 19, 2022 at 5:56 PM Olof Johansson <olof@lixom.net> wrote:
+> >
+> > On Mon, Sep 19, 2022 at 1:44 AM Greg Kroah-Hartman
+> > <gregkh@linuxfoundation.org> wrote:
+> > >
+> > > On Sun, Sep 18, 2022 at 08:44:27PM -0700, Olof Johansson wrote:
+> > > > On Tue, Aug 23, 2022 at 8:37 AM Greg Kroah-Hartman
+> > > > <gregkh@linuxfoundation.org> wrote:
+> > > > >
+> > > > > On Thu, Jun 30, 2022 at 06:26:38PM -0700, Saravana Kannan wrote:
+> > > > > > These patches are on top of driver-core-next.
+> > > > > >
+> > > > > > Even if stdout-path isn't set in DT, this patch should take console
+> > > > > > probe times back to how they were before the deferred_probe_timeout
+> > > > > > clean up series[1].
+> > > > >
+> > > > > Now dropped from my queue due to lack of a response to other reviewer's
+> > > > > questions.
+> > > >
+> > > > What happened to this patch? I have a 10 second timeout on console
+> > > > probe on my SiFive Unmatched, and I don't see this flag being set for
+> > > > the serial driver. In fact, I don't see it anywhere in-tree. I can't
+> > > > seem to locate another patchset from Saravana around this though, so
+> > > > I'm not sure where to look for a missing piece for the sifive serial
+> > > > driver.
+> > > >
+> > > > This is the second boot time regression (this one not fatal, unlike
+> > > > the Layerscape PCIe one) from the fw_devlink patchset.
+> > > >
+> > > > Greg, can you revert the whole set for 6.0, please? It's obviously
+> > > > nowhere near tested enough to go in and I expect we'll see a bunch of
+> > > > -stable fixups due to this if we let it remain in.
+> > >
+> > > What exactly is "the whole set"?  I have the default option fix queued
+> > > up and will send that to Linus later this week (am traveling back from
+> > > Plumbers still), but have not heard any problems about any other issues
+> > > at all other than your report.
+> >
+> > I stand corrected in this case, the issue on the Hifive Unmatched was
+> > a regression due to a PWM clock change -- I just sent a patch for that
+> > (serial driver fix).
+> >
+> > So it seems like as long as the fw_devlink.strict=1 patch is reverted,
+> > things are back to a working state here.
+> >
+> > I still struggle with how the fw_devlink patchset is expected to work
+> > though, since DT is expected to describe the hardware configuration,
+> > and it has no knowledge of whether there are drivers that will be
+> > bound to any referenced supplier devnodes. It's not going to work well
+> > to assume that they will always be bound, and to add 10 second
+> > timeouts for those cases isn't a good solution. Seems like the number
+> > of special cases will keep adding up.
 > 
-> Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
-> ---
->  drivers/clk/mediatek/Makefile    |   2 +-
->  drivers/clk/mediatek/clk-fhctl.c | 244 ++++++++++++++++++++++++++++
->  drivers/clk/mediatek/clk-fhctl.h |  26 +++
->  drivers/clk/mediatek/clk-pllfh.c | 268 +++++++++++++++++++++++++++++++
->  drivers/clk/mediatek/clk-pllfh.h |  82 ++++++++++
->  5 files changed, 621 insertions(+), 1 deletion(-)
->  create mode 100644 drivers/clk/mediatek/clk-fhctl.c
->  create mode 100644 drivers/clk/mediatek/clk-fhctl.h
->  create mode 100644 drivers/clk/mediatek/clk-pllfh.c
->  create mode 100644 drivers/clk/mediatek/clk-pllfh.h
+> Since the introduction of deferred probe, the kernel has always
+> assumed if there is a device described, then there is or will be a
+> driver for it. The result is you can't use new DTs (if they add
+> providers) with older kernels.
 > 
-> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-> index caf2ce93d666..0e674a55e51e 100644
-> --- a/drivers/clk/mediatek/Makefile
-> +++ b/drivers/clk/mediatek/Makefile
-> @@ -1,5 +1,5 @@
->  # SPDX-License-Identifier: GPL-2.0
-> -obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o clk-mux.o
-> +obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o clk-mux.o clk-fhctl.o clk-pllfh.o
+> We've ended up with a timeout because no one has come up with a better
+> way to handle it. What the kernel needs is userspace saying "I'm done
+> loading modules", but it's debatable whether that's a good solution
+> too.
 
-We need to add a config for clk-fhctl.o and clk-pllfh.o. It's only used by specfic
-project.
+In my opinion the deferred probe is a big hack and that is the root
+cause of the issues we have here and there. It has to be redesigned
+to be mathematically robust. It was an attempt by Andrzej Hajda to
+solve this [1].
 
->  
->  obj-$(CONFIG_COMMON_CLK_MT6765) += clk-mt6765.o
->  obj-$(CONFIG_COMMON_CLK_MT6765_AUDIOSYS) += clk-mt6765-audio.o
-> diff --git a/drivers/clk/mediatek/clk-fhctl.c b/drivers/clk/mediatek/clk-fhctl.c
-> new file mode 100644
-> index 000000000000..4f271acef5fe
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-fhctl.c
-> @@ -0,0 +1,244 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> + */
-> +
-> +#include <linux/io.h>
-> +#include <linux/iopoll.h>
-> +
-> +#include "clk-mtk.h"
-> +#include "clk-pllfh.h"
-> +#include "clk-fhctl.h"
-> +
-> +#define PERCENT_TO_DDSLMT(dds, percent_m10) \
-> +	((((dds) * (percent_m10)) >> 5) / 100)
-> +
-> +static const struct fhctl_offset fhctl_offset = {
-> +	.offset_hp_en = 0x0,
-> +	.offset_clk_con = 0x8,
-> +	.offset_rst_con = 0xc,
-> +	.offset_slope0 = 0x10,
-> +	.offset_slope1 = 0x14,
-> +	.offset_cfg = 0x0,
-> +	.offset_updnlmt = 0x4,
-> +	.offset_dds = 0x8,
-> +	.offset_dvfs = 0xc,
-> +	.offset_mon = 0x10,
-> +};
-> +
-> +const struct fhctl_offset *fhctl_get_offset_table(void)
-> +{
-> +	return &fhctl_offset;
-> +}
-> +
-> +static void dump_hw(struct mtk_clk_pll *pll, struct fh_pll_regs *regs,
-> +		    const struct fh_pll_data *data)
-> +{
-> +	pr_info("hp_en<%x>,clk_con<%x>,slope0<%x>,slope1<%x>\n",
-> +		readl(regs->reg_hp_en), readl(regs->reg_clk_con),
-> +		readl(regs->reg_slope0), readl(regs->reg_slope1));
-> +	pr_info("cfg<%x>,lmt<%x>,dds<%x>,dvfs<%x>,mon<%x>\n",
-> +		readl(regs->reg_cfg), readl(regs->reg_updnlmt),
-> +		readl(regs->reg_dds), readl(regs->reg_dvfs),
-> +		readl(regs->reg_mon));
-> +	pr_info("pcw<%x>\n", readl(pll->pcw_addr));
-> +}
-> +
-> +static int fhctl_set_ssc_regs(struct mtk_clk_pll *pll, struct fh_pll_regs *regs,
-> +			      const struct fh_pll_data *data, u32 rate)
-> +{
-> +	u32 updnlmt_val, r;
-> +
-> +	writel((readl(regs->reg_cfg) & ~(data->frddsx_en)), regs->reg_cfg);
-> +	writel((readl(regs->reg_cfg) & ~(data->sfstrx_en)), regs->reg_cfg);
-> +	writel((readl(regs->reg_cfg) & ~(data->fhctlx_en)), regs->reg_cfg);
-> +
-> +	if (rate > 0) {
-> +		/* Set the relative parameter registers (dt/df/upbnd/downbnd) */
-> +		r = readl(regs->reg_cfg);
-> +		r &= ~(data->msk_frddsx_dys);
-> +		r |= (data->df_val << (ffs(data->msk_frddsx_dys) - 1));
-> +		writel(r, regs->reg_cfg);
-> +
-> +		r = readl(regs->reg_cfg);
-> +		r &= ~(data->msk_frddsx_dts);
-> +		r |= (data->dt_val << (ffs(data->msk_frddsx_dts) - 1));
-> +		writel(r, regs->reg_cfg);
-> +
-> +		writel((readl(pll->pcw_addr) & data->dds_mask) | data->tgl_org,
-> +			regs->reg_dds);
-> +
-> +		/* Calculate UPDNLMT */
-> +		updnlmt_val = PERCENT_TO_DDSLMT((readl(regs->reg_dds) &
-> +						 data->dds_mask), rate) <<
-> +						 data->updnlmt_shft;
-> +
-> +		writel(updnlmt_val, regs->reg_updnlmt);
-> +		writel(readl(regs->reg_hp_en) | BIT(data->fh_id),
-> +		       regs->reg_hp_en);
-> +		/* Enable SSC */
-> +		writel(readl(regs->reg_cfg) | data->frddsx_en, regs->reg_cfg);
-> +		/* Enable Hopping control */
-> +		writel(readl(regs->reg_cfg) | data->fhctlx_en, regs->reg_cfg);
-> +
-> +	} else {
-> +		/* Switch to APMIXEDSYS control */
-> +		writel(readl(regs->reg_hp_en) & ~BIT(data->fh_id),
-> +		       regs->reg_hp_en);
-> +		/* Wait for DDS to be stable */
-> +		udelay(30);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int hopping_hw_flow(struct mtk_clk_pll *pll, struct fh_pll_regs *regs,
-> +			   const struct fh_pll_data *data,
-> +			   struct fh_pll_state *state, unsigned int new_dds)
-> +{
-> +	u32 dds_mask = data->dds_mask;
-> +	u32 mon_dds = 0;
-> +	u32 con_pcw_tmp;
-> +	int ret;
-> +
-> +	if (state->ssc_rate)
-> +		fhctl_set_ssc_regs(pll, regs, data, 0);
-> +
-> +	writel((readl(pll->pcw_addr) & dds_mask) | data->tgl_org,
-> +		regs->reg_dds);
-> +
-> +	writel(readl(regs->reg_cfg) | data->sfstrx_en, regs->reg_cfg);
-> +	writel(readl(regs->reg_cfg) | data->fhctlx_en, regs->reg_cfg);
-> +	writel(data->slope0_value, regs->reg_slope0);
-> +	writel(data->slope1_value, regs->reg_slope1);
-> +
-> +	writel(readl(regs->reg_hp_en) | BIT(data->fh_id), regs->reg_hp_en);
-> +	writel((new_dds) | (data->dvfs_tri), regs->reg_dvfs);
-> +
-> +	/* Wait 1000 us until DDS stable */
-> +	ret = readl_poll_timeout_atomic(regs->reg_mon, mon_dds,
-> +				       (mon_dds & dds_mask) == new_dds,
-> +					10, 1000);
-> +	if (ret) {
-> +		pr_warn("%s: FHCTL hopping timeout\n", pll->data->name);
-> +		dump_hw(pll, regs, data);
-> +	}
-> +
-> +	con_pcw_tmp = readl(pll->pcw_addr) & (~dds_mask);
-> +	con_pcw_tmp = (con_pcw_tmp | (readl(regs->reg_mon) & dds_mask) |
-> +		       data->pcwchg);
-> +
-> +	writel(con_pcw_tmp, pll->pcw_addr);
-> +	writel(readl(regs->reg_hp_en) & ~BIT(data->fh_id), regs->reg_hp_en);
-> +
-> +	if (state->ssc_rate)
-> +		fhctl_set_ssc_regs(pll, regs, data, state->ssc_rate);
-> +
-> +	return ret;
-> +}
-> +
-> +static unsigned int __get_postdiv(struct mtk_clk_pll *pll)
-> +{
-> +	unsigned int regval;
-> +
-> +	regval = readl(pll->pd_addr) >> pll->data->pd_shift;
-> +	regval &= POSTDIV_MASK;
-> +
-> +	return BIT(regval);
-> +}
-> +
-> +static void __set_postdiv(struct mtk_clk_pll *pll, unsigned int postdiv)
-> +{
-> +	unsigned int regval;
-> +
-> +	regval = readl(pll->pd_addr);
-> +	regval &= ~(POSTDIV_MASK << pll->data->pd_shift);
-> +	regval |= (ffs(postdiv) - 1) << pll->data->pd_shift;
-> +	writel(regval, pll->pd_addr);
-> +}
-> +
-> +static int fhctl_hopping(struct mtk_fh *fh, unsigned int new_dds,
-> +			 unsigned int postdiv)
-> +{
-> +	const struct fh_pll_data *data = &fh->pllfh_data->data;
-> +	struct fh_pll_state *state = &fh->pllfh_data->state;
-> +	struct fh_pll_regs *regs = &fh->regs;
-> +	struct mtk_clk_pll *pll = &fh->clk_pll;
-> +	spinlock_t *lock = fh->lock;
-> +	unsigned int pll_postdiv;
-> +	unsigned long flags = 0;
-> +	int ret;
-> +
-> +	if (postdiv) {
-> +		pll_postdiv = __get_postdiv(pll);
-> +
-> +		if (postdiv > pll_postdiv)
-> +			__set_postdiv(pll, postdiv);
-> +	}
-> +
-> +	spin_lock_irqsave(lock, flags);
-> +
-> +	ret = hopping_hw_flow(pll, regs, data, state, new_dds);
-> +
-> +	spin_unlock_irqrestore(lock, flags);
-> +
-> +	if (postdiv && postdiv < pll_postdiv)
-> +		__set_postdiv(pll, postdiv);
-> +
-> +	return ret;
-> +}
-> +
-> +static int fhctl_ssc_enable(struct mtk_fh *fh, u32 rate)
-> +{
-> +	const struct fh_pll_data *data = &fh->pllfh_data->data;
-> +	struct fh_pll_state *state = &fh->pllfh_data->state;
-> +	struct fh_pll_regs *regs = &fh->regs;
-> +	struct mtk_clk_pll *pll = &fh->clk_pll;
-> +	spinlock_t *lock = fh->lock;
-> +	unsigned long flags = 0;
-> +
-> +	spin_lock_irqsave(lock, flags);
-> +
-> +	fhctl_set_ssc_regs(pll, regs, data, rate);
-> +	state->ssc_rate = rate;
-> +
-> +	spin_unlock_irqrestore(lock, flags);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct fh_operation fhctl_ops = {
-> +	.hopping = fhctl_hopping,
-> +	.ssc_enable = fhctl_ssc_enable,
-> +};
-> +
-> +const struct fh_operation *fhctl_get_ops(void)
-> +{
-> +	return &fhctl_ops;
-> +}
-> +
-> +void fhctl_hw_init(struct mtk_fh *fh)
-> +{
-> +	const struct fh_pll_data data = fh->pllfh_data->data;
-> +	struct fh_pll_state state = fh->pllfh_data->state;
-> +	struct fh_pll_regs regs = fh->regs;
-> +	u32 val;
-> +
-> +	/* initial hw register */
-> +	val = readl(regs.reg_clk_con) | BIT(data.fh_id);
-> +	writel(val, regs.reg_clk_con);
-> +
-> +	val = readl(regs.reg_rst_con) & ~BIT(data.fh_id);
-> +	writel(val, regs.reg_rst_con);
-> +	val = readl(regs.reg_rst_con) | BIT(data.fh_id);
-> +	writel(val, regs.reg_rst_con);
-> +
-> +	writel(0x0, regs.reg_cfg);
-> +	writel(0x0, regs.reg_updnlmt);
-> +	writel(0x0, regs.reg_dds);
-> +
-> +	/* enable ssc if needed */
-> +	if (state.ssc_rate)
-> +		fh->ops->ssc_enable(fh, state.ssc_rate);
-> +}
-> diff --git a/drivers/clk/mediatek/clk-fhctl.h b/drivers/clk/mediatek/clk-fhctl.h
-> new file mode 100644
-> index 000000000000..51275febf086
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-fhctl.h
-> @@ -0,0 +1,26 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> + */
-> +
-> +#ifndef __CLK_FHCTL_H
-> +#define __CLK_FHCTL_H
-> +
-> +struct fhctl_offset {
-> +	u32 offset_hp_en;
-> +	u32 offset_clk_con;
-> +	u32 offset_rst_con;
-> +	u32 offset_slope0;
-> +	u32 offset_slope1;
-> +	u32 offset_cfg;
-> +	u32 offset_updnlmt;
-> +	u32 offset_dds;
-> +	u32 offset_dvfs;
-> +	u32 offset_mon;
-> +};
-> +const struct fhctl_offset *fhctl_get_offset_table(void);
-> +const struct fh_operation *fhctl_get_ops(void);
-> +void fhctl_hw_init(struct mtk_fh *fh);
-> +
-> +#endif
-> diff --git a/drivers/clk/mediatek/clk-pllfh.c b/drivers/clk/mediatek/clk-pllfh.c
-> new file mode 100644
-> index 000000000000..15e5781fecca
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-pllfh.c
-> @@ -0,0 +1,268 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> + */
-> +
-> +#include <linux/of.h>
-> +#include <linux/of_address.h>
-> +#include <linux/io.h>
-> +#include <linux/slab.h>
-> +#include <linux/clkdev.h>
-> +#include <linux/delay.h>
-> +
-> +#include "clk-mtk.h"
-> +#include "clk-pllfh.h"
-> +#include "clk-fhctl.h"
-> +
-> +static DEFINE_SPINLOCK(pllfh_lock);
-> +
-> +inline struct mtk_fh *to_mtk_fh(struct clk_hw *hw)
-> +{
-> +	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
-> +
-> +	return container_of(pll, struct mtk_fh, clk_pll);
-> +}
-> +
-> +static int mtk_fhctl_set_rate(struct clk_hw *hw, unsigned long rate,
-> +			      unsigned long parent_rate)
-> +{
-> +	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
-> +	struct mtk_fh *fh = to_mtk_fh(hw);
-> +	u32 pcw = 0;
-> +	u32 postdiv;
-> +
-> +	mtk_pll_calc_values(pll, &pcw, &postdiv, rate, parent_rate);
-> +
-> +	return fh->ops->hopping(fh, pcw, postdiv);
-> +}
-> +
-> +static const struct clk_ops mtk_pllfh_ops = {
-> +	.is_prepared	= mtk_pll_is_prepared,
-> +	.prepare	= mtk_pll_prepare,
-> +	.unprepare	= mtk_pll_unprepare,
-> +	.recalc_rate	= mtk_pll_recalc_rate,
-> +	.round_rate	= mtk_pll_round_rate,
-> +	.set_rate	= mtk_fhctl_set_rate,
-> +};
-> +
-> +static struct mtk_pllfh_data *get_pllfh_by_id(struct mtk_pllfh_data *pllfhs,
-> +					      int num_fhs, int pll_id)
-> +{
-> +	int i;
-> +
-> +	for (i = 0; i < num_fhs; i++)
-> +		if (pllfhs[i].data.pll_id == pll_id)
-> +			return &pllfhs[i];
-> +
-> +	return NULL;
-> +}
-> +
-> +void fhctl_parse_dt(const u8 *compatible_node, struct mtk_pllfh_data *pllfhs,
-> +		    int num_fhs)
-> +{
-> +	void __iomem *base;
-> +	struct device_node *node;
-> +	u32 num_clocks, pll_id, ssc_rate;
-> +	int offset, i;
-> +
-> +	node = of_find_compatible_node(NULL, NULL, compatible_node);
-> +	if (!node) {
-> +		pr_err("cannot find \"%s\"\n", compatible_node);
-> +		return;
-> +	}
-> +
-> +	base = of_iomap(node, 0);
-> +	if (!base) {
-> +		pr_err("%s(): ioremap failed\n", __func__);
-> +		return;
-> +	}
-> +
-> +	num_clocks = of_clk_get_parent_count(node);
-> +	if (!num_clocks) {
-> +		pr_err("%s(): failed to get clocks property\n", __func__);
-> +		return;
-> +	}
-> +
-> +	for (i = 0; i < num_clocks; i++) {
-> +		struct mtk_pllfh_data *pllfh;
-> +
-> +		offset = i * 2;
-> +
-> +		of_property_read_u32_index(node, "clocks", offset + 1, &pll_id);
-> +		of_property_read_u32_index(node,
-> +					   "mediatek,hopping-ssc-percents",
-> +					   i, &ssc_rate);
-> +
-> +		pllfh = get_pllfh_by_id(pllfhs, num_fhs, pll_id);
-> +		if (!pllfh)
-> +			continue;
-> +
-> +		pllfh->state.fh_enable = 1;
-> +		pllfh->state.ssc_rate = ssc_rate;
-> +		pllfh->state.base = base;
-> +	}
-> +}
-> +
-> +static void pllfh_init(struct mtk_fh *fh, struct mtk_pllfh_data *pllfh_data)
-> +{
-> +	struct fh_pll_regs *regs = &fh->regs;
-> +	const struct fhctl_offset *offset;
-> +	void __iomem *base = pllfh_data->state.base;
-> +	void __iomem *fhx_base = base + pllfh_data->data.fhx_offset;
-> +
-> +	offset = fhctl_get_offset_table();
-> +
-> +	regs->reg_hp_en = base + offset->offset_hp_en;
-> +	regs->reg_clk_con = base + offset->offset_clk_con;
-> +	regs->reg_rst_con = base + offset->offset_rst_con;
-> +	regs->reg_slope0 = base + offset->offset_slope0;
-> +	regs->reg_slope1 = base + offset->offset_slope1;
-> +
-> +	regs->reg_cfg = fhx_base + offset->offset_cfg;
-> +	regs->reg_updnlmt = fhx_base + offset->offset_updnlmt;
-> +	regs->reg_dds = fhx_base + offset->offset_dds;
-> +	regs->reg_dvfs = fhx_base + offset->offset_dvfs;
-> +	regs->reg_mon = fhx_base + offset->offset_mon;
-> +
-> +	fh->pllfh_data = pllfh_data;
-> +	fh->lock = &pllfh_lock;
-> +
-> +	fh->ops = fhctl_get_ops();
-> +}
-> +
-> +static bool fhctl_is_supported_and_enabled(const struct mtk_pllfh_data *pllfh)
-> +{
-> +	return pllfh && (pllfh->state.fh_enable == 1);
-> +}
-> +
-> +static struct clk_hw *
-> +mtk_clk_register_pllfh(const struct mtk_pll_data *pll_data,
-> +		       struct mtk_pllfh_data *pllfh_data, void __iomem *base)
-> +{
-> +	struct clk_hw *hw;
-> +	struct mtk_fh *fh;
-> +
-> +	fh = kzalloc(sizeof(*fh), GFP_KERNEL);
-> +	if (!fh)
-> +		return ERR_PTR(-ENOMEM);
-> +
-> +	pllfh_init(fh, pllfh_data);
-> +
-> +	hw = mtk_clk_register_pll_ops(&fh->clk_pll, pll_data, base,
-> +				      &mtk_pllfh_ops);
-> +
-> +	if (IS_ERR(hw))
-> +		kfree(fh);
-> +	else
-> +		fhctl_hw_init(fh);
-> +
-> +	return hw;
-> +}
-> +
-> +static void mtk_clk_unregister_pllfh(struct clk_hw *hw)
-> +{
-> +	struct mtk_fh *fh;
-> +
-> +	if (!hw)
-> +		return;
-> +
-> +	fh = to_mtk_fh(hw);
-> +
-> +	clk_hw_unregister(hw);
-> +	kfree(fh);
-> +}
-> +
-> +int mtk_clk_register_pllfhs(struct device_node *node,
-> +			    const struct mtk_pll_data *plls, int num_plls,
-> +			    struct mtk_pllfh_data *pllfhs, int num_fhs,
-> +			    struct clk_hw_onecell_data *clk_data)
-> +{
-> +	void __iomem *base;
-> +	int i;
-> +	struct clk_hw *hw;
-> +
-> +	base = of_iomap(node, 0);
-> +	if (!base) {
-> +		pr_err("%s(): ioremap failed\n", __func__);
-> +		return -EINVAL;
-> +	}
-> +
-> +	for (i = 0; i < num_plls; i++) {
-> +		const struct mtk_pll_data *pll = &plls[i];
-> +		struct mtk_pllfh_data *pllfh;
-> +
-> +		pllfh = get_pllfh_by_id(pllfhs, num_fhs, pll->id);
-> +
-> +		if (fhctl_is_supported_and_enabled(pllfh))
-> +			hw = mtk_clk_register_pllfh(pll, pllfh, base);
-> +		else
-> +			hw = mtk_clk_register_pll(pll, base);
-> +
-> +		if (IS_ERR(hw)) {
-> +			pr_err("Failed to register clk %s: %pe\n", pll->name,
-> +			       hw);
-> +			goto err;
-> +		}
-> +
-> +		clk_data->hws[pll->id] = hw;
-> +	}
-> +
-> +	return 0;
-> +
-> +err:
-> +	while (--i >= 0) {
-> +		const struct mtk_pll_data *pll = &plls[i];
-> +		struct mtk_pllfh_data *pllfh;
-> +
-> +		pllfh = get_pllfh_by_id(pllfhs, num_fhs, pll->id);
-> +
-> +		if (fhctl_is_supported_and_enabled(pllfh))
-> +			mtk_clk_unregister_pllfh(clk_data->hws[pll->id]);
-> +		else
-> +			mtk_clk_unregister_pll(clk_data->hws[pll->id]);
-> +
-> +		clk_data->hws[pll->id] = ERR_PTR(-ENOENT);
-> +	}
-> +
-> +	iounmap(base);
-> +
-> +	return PTR_ERR(hw);
-> +}
-> +
-> +void mtk_clk_unregister_pllfhs(const struct mtk_pll_data *plls, int num_plls,
-> +			       struct mtk_pllfh_data *pllfhs, int num_fhs,
-> +			       struct clk_hw_onecell_data *clk_data)
-> +{
-> +	void __iomem *base = NULL, *fhctl_base = NULL;
-> +	int i;
-> +
-> +	if (!clk_data)
-> +		return;
-> +
-> +	for (i = num_plls; i > 0; i--) {
-> +		const struct mtk_pll_data *pll = &plls[i - 1];
-> +		struct mtk_pllfh_data *pllfh;
-> +
-> +		if (IS_ERR_OR_NULL(clk_data->hws[pll->id]))
-> +			continue;
-> +
-> +		pllfh = get_pllfh_by_id(pllfhs, num_fhs, pll->id);
-> +
-> +		if (fhctl_is_supported_and_enabled(pllfh)) {
-> +			fhctl_base = pllfh->state.base;
-> +			mtk_clk_unregister_pllfh(clk_data->hws[pll->id]);
-> +		} else {
-> +			base = mtk_clk_pll_get_base(clk_data->hws[pll->id],
-> +						    pll);
-> +			mtk_clk_unregister_pll(clk_data->hws[pll->id]);
-> +		}
-> +
-> +		clk_data->hws[pll->id] = ERR_PTR(-ENOENT);
-> +	}
-> +
-> +	if (fhctl_base)
-> +		iounmap(fhctl_base);
-> +
-> +	iounmap(base);
-> +}
-> diff --git a/drivers/clk/mediatek/clk-pllfh.h b/drivers/clk/mediatek/clk-pllfh.h
-> new file mode 100644
-> index 000000000000..effc7976c496
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-pllfh.h
-> @@ -0,0 +1,82 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> + */
-> +
-> +#ifndef __DRV_CLKFH_H
-> +#define __DRV_CLKFH_H
-> +
-> +#include "clk-pll.h"
-> +
-> +struct fh_pll_state {
-> +	void __iomem *base;
-> +	u32 fh_enable;
-> +	u32 ssc_rate;
-> +};
-> +
-> +struct fh_pll_data {
-> +	int pll_id;
-> +	int fh_id;
-> +	u32 fhx_offset;
-> +	u32 dds_mask;
-> +	u32 slope0_value;
-> +	u32 slope1_value;
-> +	u32 sfstrx_en;
-> +	u32 frddsx_en;
-> +	u32 fhctlx_en;
-> +	u32 tgl_org;
-> +	u32 dvfs_tri;
-> +	u32 pcwchg;
-> +	u32 dt_val;
-> +	u32 df_val;
-> +	u32 updnlmt_shft;
-> +	u32 msk_frddsx_dys;
-> +	u32 msk_frddsx_dts;
-> +};
-> +
-> +struct mtk_pllfh_data {
-> +	struct fh_pll_state state;
-> +	const struct fh_pll_data data;
-> +};
-> +
-> +struct fh_pll_regs {
-> +	void __iomem *reg_hp_en;
-> +	void __iomem *reg_clk_con;
-> +	void __iomem *reg_rst_con;
-> +	void __iomem *reg_slope0;
-> +	void __iomem *reg_slope1;
-> +	void __iomem *reg_cfg;
-> +	void __iomem *reg_updnlmt;
-> +	void __iomem *reg_dds;
-> +	void __iomem *reg_dvfs;
-> +	void __iomem *reg_mon;
-> +};
-> +
-> +struct mtk_fh {
-> +	struct mtk_clk_pll clk_pll;
-> +	struct fh_pll_regs regs;
-> +	struct mtk_pllfh_data *pllfh_data;
-> +	const struct fh_operation *ops;
-> +	spinlock_t *lock;
-> +};
-> +
-> +struct fh_operation {
-> +	int (*hopping)(struct mtk_fh *fh, unsigned int new_dds,
-> +		       unsigned int postdiv);
-> +	int (*ssc_enable)(struct mtk_fh *fh, u32 rate);
-> +};
-> +
-> +int mtk_clk_register_pllfhs(struct device_node *node,
-> +			    const struct mtk_pll_data *plls, int num_plls,
-> +			    struct mtk_pllfh_data *pllfhs, int num_pllfhs,
-> +			    struct clk_hw_onecell_data *clk_data);
-> +
-> +void mtk_clk_unregister_pllfhs(const struct mtk_pll_data *plls, int num_plls,
-> +			       struct mtk_pllfh_data *pllfhs, int num_fhs,
-> +			       struct clk_hw_onecell_data *clk_data);
-> +
-> +void fhctl_parse_dt(const u8 *compatible_node, struct mtk_pllfh_data *pllfhs,
-> +		    int num_pllfhs);
-> +
-> +#endif /* __DRV_CLKFH_H */
-> -- 
-> 2.18.0
-> 
+[1]: https://events19.linuxfoundation.org/wp-content/uploads/2017/12/Deferred-Problem-Issues-With-Complex-Dependencies-Between-Devices-in-Linux-Kernel-Andrzej-Hajda-Samsung.pdf
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
 
 
