@@ -4,77 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D581DC07E9D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 10:45:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE96AC6FA90
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 10:46:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uHfk9aMzPHZFkszeo32pmWcdDEHKglYDlW6aDVizdnI=; b=ljA+NhtD6eKKzxCC1oCqYPMkIf
-	WzJw1M0lvesqAP2KEj8/SdinKewDUa2GRR5AEo5w9NzAu1pt50mfekpv45WrHb309w3MwpiArdtlz
-	iVqrH8kHzu82c8du1HSKO5iSYRvpmNXmCG3cC4uYpLr0nespmW6PUc9jzKgTMlnz7OVaHOZdLDuzT
-	hRPIxEmgK1wdXCOFJkQ8l7owQr4MOr1MZ+3dc/a3e69CFxlseYy2GaRiuNaQoIVB4aXJsr8mikfZh
-	7m3oi0Sr6vS180neYlK96aY0TKJsDd1k4pkKJdNYL0qduM8bTh2sHPqzyVQVrH+SLRnIy/xYfI9aB
-	UO6Ak9LA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=iX/4To+c28wRIBDrkybObrom/UGxzlrLJ1dNG8kFn7I=; b=l5VQZ+ourIrSrtNvsnh336Xq8W
+	eLbtV5XiszYk+jWTyvFdz8DzAW4fZ/QK2R3NCSemBgAWLAi7V8+BTswy0Eowm38FDC+MB4A5dtRJa
+	z8sbFlVh0cadlb16OnUxxXJz6QBfHTb9vtA65SnsogBgNQr2XAGImg0LNk7WqyqKqJrncw5SPa7bN
+	2ilfaCpYWsa7HcnlgEpFhJcEek1XHqqf+Z0jiPm/xpe49aMDgxBR9+Bm5DxBVjL5toZf4n1QsBrLy
+	t4XSxnmR0Axxungnd08wR1vh1LyeuTAgeOIhyAKC1rnIZsXqcfQF6OECCRRT5VaQfpyz30dRT4iPF
+	1EFcwWiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od85O-009x2d-Oz; Tue, 27 Sep 2022 10:45:10 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1od86T-009xcJ-Bx; Tue, 27 Sep 2022 10:46:17 +0000
+Received: from szxga08-in.huawei.com ([45.249.212.255])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od856-009wvY-SH; Tue, 27 Sep 2022 10:44:54 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 125C96602265;
-	Tue, 27 Sep 2022 11:44:50 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664275491;
-	bh=ql4FTrakdy7CCJMp7yH+mwWBCOP+cR85Z8Ogp0SyhfQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YPYx0ZrExlZHMAFeo/WtOFIN8CcQcAPdKHAiMl1HxB5TXBC535cZvTs8W0xZmK7lF
-	 +/fdeD6qWM1p33efR/YpUjibMzM/k+mXVg953aKxQoHBf3ct9lB+bdNBnX8rkNaDBt
-	 pvJSrvGB21cdSfH3GXqwjlfKa16GfaGZ0vWXv9RKA9HAbodUKHphgiLLph2VDaHa4c
-	 NLufBwh57PaWEyCzJclqmsBDDpq3HIG9jJJ463q+whX3ILocQY9HucQGgeTT/tI8SI
-	 PQLcAyKBWa3BXTAou5taxGv4uNP7qbv2RhHaATsbjTM9gJ5XkxZ1fV/4/q6TB0UFS3
-	 nlwmyFZSQbVhg==
-Message-ID: <888703a8-a8e5-e691-7a53-294f88ad7a4e@collabora.com>
-Date: Tue, 27 Sep 2022 12:44:47 +0200
+	id 1od86B-009xOV-Kf; Tue, 27 Sep 2022 10:46:01 +0000
+Received: from dggpemm500023.china.huawei.com (unknown [172.30.72.53])
+	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4McGQ71VzSz1P6p6;
+	Tue, 27 Sep 2022 18:41:35 +0800 (CST)
+Received: from dggpemm100009.china.huawei.com (7.185.36.113) by
+ dggpemm500023.china.huawei.com (7.185.36.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Tue, 27 Sep 2022 18:45:49 +0800
+Received: from huawei.com (10.175.113.32) by dggpemm100009.china.huawei.com
+ (7.185.36.113) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Tue, 27 Sep
+ 2022 18:45:49 +0800
+From: Liu Shixin <liushixin2@huawei.com>
+To: Jakub Kicinski <kuba@kernel.org>, Felix Fietkau <nbd@nbd.name>, "John
+ Crispin" <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
+	<Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>, "Eric
+ Dumazet" <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>
+CC: <netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Liu
+ Shixin" <liushixin2@huawei.com>
+Subject: [PATCH net-next v2] net: ethernet: mtk_eth_soc: use DEFINE_SHOW_ATTRIBUTE to simplify code
+Date: Tue, 27 Sep 2022 19:19:25 +0800
+Message-ID: <20220927111925.2424100-1-liushixin2@huawei.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v5 4/4] net: stmmac: Update the name of property 'clk_csr'
-Content-Language: en-US
-To: Jianguo Zhang <jianguo.zhang@mediatek.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- "David S . Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro
- <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Biao Huang <biao.huang@mediatek.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20220923052828.16581-1-jianguo.zhang@mediatek.com>
- <20220923052828.16581-5-jianguo.zhang@mediatek.com>
- <e0fa3ddf-575d-9e25-73d8-e0858782b73f@collabora.com>
- <ac24dc0f-0038-5068-3ce6-bbace55c7027@linaro.org>
- <4f205f0d-420d-8f51-ad26-0c2475c0decd@linaro.org>
- <80c59c9462955037981a1eab6409ba69fc9b7c34.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <80c59c9462955037981a1eab6409ba69fc9b7c34.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.113.32]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ dggpemm100009.china.huawei.com (7.185.36.113)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_034453_072420_E6256E12 
-X-CRM114-Status: GOOD (  15.93  )
+X-CRM114-CacheID: sfid-20220927_034600_048138_B85223AA 
+X-CRM114-Status: UNSURE (   7.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,58 +73,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/09/22 10:44, Jianguo Zhang ha scritto:
-> Dear Krzysztof,
-> 	Thanks for your comment.
-> 
-> On Fri, 2022-09-23 at 20:15 +0200, Krzysztof Kozlowski wrote:
->> On 23/09/2022 20:14, Krzysztof Kozlowski wrote:
->>>> This is going to break MT2712e on old devicetrees.
->>>>
->>>> The right way of doing that is to check the return value of
->>>> of_property_read_u32()
->>>> for "snps,clk-csr": if the property is not found, fall back to
->>>> the old "clk_csr".
->>>
->>> I must admit - I don't care. That's the effect when submitter
->>> bypasses
->>> DT bindings review (81311c03ab4d ("net: ethernet: stmmac: add
->>> management
->>> of clk_csr property")).
->>>
->>> If anyone wants ABI, please document the properties.
->>>
->>> If out-of-tree users complain, please upstream your DTS or do not
->>> use
->>> undocumented features...
->>>
->>
->> OTOH, as Angelo pointed out, handling old and new properties is quite
->> easy to achieve, so... :)
->>
-> So, the conclusion is as following:
-> 
-> 1. add new property 'snps,clk-csr' and document it in binding file.
-> 2. parse new property 'snps,clk-csr' firstly, if failed, fall back to
-> old property 'clk_csr' in driver.
-> 
-> Is my understanding correct?
+Use DEFINE_SHOW_ATTRIBUTE helper macro to simplify the code.
+No functional change.
 
-Yes, please.
+Signed-off-by: Liu Shixin <liushixin2@huawei.com>
+---
 
-I think that bindings should also get a 'clk_csr' with deprecated: true,
-but that's Krzysztof's call.
+v1->v2: Rebase on net-next.
 
-Regards,
-Angelo
+ .../net/ethernet/mediatek/mtk_ppe_debugfs.c   | 36 ++++---------------
+ 1 file changed, 6 insertions(+), 30 deletions(-)
 
-> 
->> Best regards,
->> Krzysztof
->>
-> BRS
-> Jianguo
-> 
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
+index ec49829ab32d..391b071bcff3 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c
+@@ -162,52 +162,28 @@ mtk_ppe_debugfs_foe_show(struct seq_file *m, void *private, bool bind)
+ }
+ 
+ static int
+-mtk_ppe_debugfs_foe_show_all(struct seq_file *m, void *private)
++mtk_ppe_debugfs_foe_all_show(struct seq_file *m, void *private)
+ {
+ 	return mtk_ppe_debugfs_foe_show(m, private, false);
+ }
++DEFINE_SHOW_ATTRIBUTE(mtk_ppe_debugfs_foe_all);
+ 
+ static int
+-mtk_ppe_debugfs_foe_show_bind(struct seq_file *m, void *private)
++mtk_ppe_debugfs_foe_bind_show(struct seq_file *m, void *private)
+ {
+ 	return mtk_ppe_debugfs_foe_show(m, private, true);
+ }
+-
+-static int
+-mtk_ppe_debugfs_foe_open_all(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, mtk_ppe_debugfs_foe_show_all,
+-			   inode->i_private);
+-}
+-
+-static int
+-mtk_ppe_debugfs_foe_open_bind(struct inode *inode, struct file *file)
+-{
+-	return single_open(file, mtk_ppe_debugfs_foe_show_bind,
+-			   inode->i_private);
+-}
++DEFINE_SHOW_ATTRIBUTE(mtk_ppe_debugfs_foe_bind);
+ 
+ int mtk_ppe_debugfs_init(struct mtk_ppe *ppe, int index)
+ {
+-	static const struct file_operations fops_all = {
+-		.open = mtk_ppe_debugfs_foe_open_all,
+-		.read = seq_read,
+-		.llseek = seq_lseek,
+-		.release = single_release,
+-	};
+-	static const struct file_operations fops_bind = {
+-		.open = mtk_ppe_debugfs_foe_open_bind,
+-		.read = seq_read,
+-		.llseek = seq_lseek,
+-		.release = single_release,
+-	};
+ 	struct dentry *root;
+ 
+ 	snprintf(ppe->dirname, sizeof(ppe->dirname), "ppe%d", index);
+ 
+ 	root = debugfs_create_dir(ppe->dirname, NULL);
+-	debugfs_create_file("entries", S_IRUGO, root, ppe, &fops_all);
+-	debugfs_create_file("bind", S_IRUGO, root, ppe, &fops_bind);
++	debugfs_create_file("entries", S_IRUGO, root, ppe, &mtk_ppe_debugfs_foe_all_fops);
++	debugfs_create_file("bind", S_IRUGO, root, ppe, &mtk_ppe_debugfs_foe_bind_fops);
+ 
+ 	return 0;
+ }
+-- 
+2.25.1
 
 
