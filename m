@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40AE2C6FA83
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 13:06:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1135C07E9D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 13:08:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:MIME-Version:In-Reply-To:References:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tVImipPJ55LLlj3hxov+6J9Uas9BlzTbH/QBaoiYcnE=; b=CLfEB3Suk3DpPS43Z9Qru/6m4I
-	hKnRA7s4s4JsKRBsH8TehCY28h0iHtr6E7m802+HTNrmGclYWRGx7Ezre+6Vvgp2ufGCSCVvNPnxa
-	kLLw8sM8j9Y2iPEK/dSUIq2Nw5199toN/Ei3RgF5E28KxkQUNsoW/e6ypMXUEjAGIVvJNl4+/CWPi
-	1nrfvDoURLlXU+7gTlQoWz7aLB6JUPCpqDGBHIzrZmYQEFO3D2DCh1LO09L1g5CZJ5q0+wTWKKjkP
-	Hzmy8TH7vvfP1Mx63DFuNwcqX0ry4y2piM2aJ/1U+7t7cuWXwwRIPMShVAupO8ugaQrqy+CEZvjA2
-	5EHMSUBg==;
+	bh=YoaKPGbtL0W6yKop2Q5GqUbFMulbchm58vJX4E+Hvss=; b=UCD2dEFYGkX1QysikqqCpfhCq2
+	Kq1jiX27FfBy/oqy22lq6zILY+xhSfUlwfHkUQh/pGg4FNlUqd2D/9AzQnXzkx7aAXU/+R/HH30zQ
+	J9oaaors8Cayy7fxPPe2VPZrpPMvcKzrmvb3tWcZIID7xxcxaK+BTrphYWWPk2uPmplH2FkKg9oyB
+	exEUuK67gg/TKwldZ0gAKChm6UaNhGphoRgN4lNFJP2rT8ArQnMdh3pgW7iILPxjT5dFRoTXrvPon
+	jMlt3r64R93eztarkR5Ut52wI9Qtnj//DH+NiojXXE9DFvCicgS2RajwunSa9deOCaTZeK2ACBrIO
+	kWBMjltg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odAHp-00AgMf-CG; Tue, 27 Sep 2022 13:06:09 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1odAKR-00AhJA-QO; Tue, 27 Sep 2022 13:08:51 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odAHn-00AgM2-EL
-	for linux-mediatek@lists.infradead.org; Tue, 27 Sep 2022 13:06:08 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id u59-20020a17090a51c100b00205d3c44162so2333477pjh.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 27 Sep 2022 06:06:07 -0700 (PDT)
+	id 1odAKK-00AhHG-Ju
+	for linux-mediatek@lists.infradead.org; Tue, 27 Sep 2022 13:08:50 +0000
+Received: by mail-pl1-x635.google.com with SMTP id v1so9014118plo.9
+        for <linux-mediatek@lists.infradead.org>; Tue, 27 Sep 2022 06:08:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
          :user-agent:from:from:to:cc:subject:date;
-        bh=tVImipPJ55LLlj3hxov+6J9Uas9BlzTbH/QBaoiYcnE=;
-        b=AeFiLZSELiOLu0C/WY7j3qNn2XbPtZX/1DfSK5wxjFb2rqwPO7CvvZtAFF5v6/7J26
-         ahCqqp2F9wNI5OYX7qy/ObhCyFoh9fcBwqqwDTOmQ3Szz628RGrS+W9AFjoVJocXlWki
-         VC0GYuee8hoFp6tnnZjb+BQvkFkX4acVrRZQaXEcy3Crna/0t54Jbazxa/CYEy/0/zFu
-         2lndzQwEpvpkb26lSSoBm5VVsMti9KIfqB8rnh9R4Sn70IUDgJCGjP5FzkG0xZM/8Ujz
-         ktOS6zIlcVHVVfda96Denge0ZrYEMhecJgtt3RQnWSFrUZInrw19D5HLdT/lXGWs6zAx
-         AlBg==
+        bh=YoaKPGbtL0W6yKop2Q5GqUbFMulbchm58vJX4E+Hvss=;
+        b=Y3O5T8rz166uc6HJ4FhMI44NIUgz7yP8NiLJa38oQ3iQqcCvEf1JKUSMRRQjUmvMTd
+         4ctpIh9zL2BGVRzkWihc/0+zJA0vvqQaNIcdLVBGBjlJgpCdtH9UA6CaIZ8fAsMB7Qa5
+         MAmXOYJLBFGb76dyw/0GYl4Ud9bQLwonphTsObGEXWQEk9eA57oxtDSmPKQJHfic3A3j
+         HkZqwW/hayyIYLR1Y0kHnLheguF50xHZLRtrPOgrjZtl0trmUGTA+HLEUWgduM2GBkWu
+         ThZ/NjoYcg+Qh9SrbLP+UhAR4BHGL1ZL/OyBADAi8nYVZqFUBSIRwmAXmM7f9rMGutH+
+         2GAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:mime-version:in-reply-to:references
          :user-agent:from:x-gm-message-state:from:to:cc:subject:date;
-        bh=tVImipPJ55LLlj3hxov+6J9Uas9BlzTbH/QBaoiYcnE=;
-        b=a/42JmNwGqXbSp9gUX5AjVu2hxY9uBnFLCSVPGno31oYTBjWo+L5SaB7ilVxB9mwG7
-         2sL3emvZZ6Hw4kW/qIbKo+dB4Gea+9PUvuNNU8W4ZlBF0/4i2aNZOaIfVom4KOPL3x7R
-         k/f2Z7FH+wSFayhsQvlCX3DbZB68Dm+Kn1SyU6RikPpYBUtYWhVkD5gbpsADfn6D3nKC
-         DGg4upAmy+EEnk3jX6KEaujgqBWA+aGoFInfANoi/u95JGWz/mfA/cvzAqPtJu9bWtr/
-         nRGR+Xpt35wDC6BrSu/40GK4bu7WZIxB/5QULBb6v71Kgxa/pgqOhfjNH1wGmJFIPXFQ
-         tWWA==
-X-Gm-Message-State: ACrzQf1PjYeVzO8z8iEff/EdYCXp72ANJolcsd50j09g7DJAaEU7Yvt+
-	eOCKlF1H51yvflZdjPlFq/45oYx4ul2rcrY/JHer0Q==
-X-Google-Smtp-Source: AMsMyM6iYfFfRkY7ZCfN7iH6SfIok108DtV5xTUiUrfRhR4EUYS3wDXnryle8l6ZhFGMR+ScZmNr7PCxr1+tKvPRj2I=
-X-Received: by 2002:a17:90b:2643:b0:205:bd0d:bdff with SMTP id
- pa3-20020a17090b264300b00205bd0dbdffmr4399905pjb.99.1664283966835; Tue, 27
- Sep 2022 06:06:06 -0700 (PDT)
+        bh=YoaKPGbtL0W6yKop2Q5GqUbFMulbchm58vJX4E+Hvss=;
+        b=GdoVtbpeQHIe7nP8OoTvX3acUTEtM9XdFJXBToT9eV9p2QGB8ELqK2VoeqOlYmdxJq
+         NS1KqFZh/Fimww+noUd5n/ZEvyFNPVR5v+0cuJrjsCV/Gk3pE3SNzHzYfH4vpbsKu1T7
+         6QDR+y810YIzjBiWlHZr4OWa7elKW71PqDSjKneHwBd4HE7XKwtPxGf35KtLJGRA1BQG
+         VnYRTykuZtaangrAxW79kLfCwAfPa4NRiNh8UuWpU9CdLfDq0kQioh75pW9y1InVNoK6
+         skhdvVEgIU1I6e5N0gHSVjkPeiuZEWE/1DI2qVpd0hi5yUiSpQWaif7/gSua+tG9If4o
+         KNbQ==
+X-Gm-Message-State: ACrzQf1vdIuY2pz1bVcp1a41ZNiVxz5EI0iaqDW/cRjuO8yfFobGYz7Y
+	4mefyS07gERgN206kRkGvKhiOIn+/FY3+1w7g+LVLg==
+X-Google-Smtp-Source: AMsMyM6X8Fa6ezRZqL7m/lEJjF3Bh5CG2glAPpLeLqQI0M9YdLpt4yB4B9sD/oFbG2+k4WA70xAHEax+sQbaSKsrxhc=
+X-Received: by 2002:a17:90b:3807:b0:205:d746:93a0 with SMTP id
+ mq7-20020a17090b380700b00205d74693a0mr3635933pjb.188.1664284124030; Tue, 27
+ Sep 2022 06:08:44 -0700 (PDT)
 Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Tue, 27 Sep 2022 06:06:06 -0700
+ HTTPREST; Tue, 27 Sep 2022 06:08:43 -0700
 From: Guillaume Ranquet <granquet@baylibre.com>
 User-Agent: meli 0.7.2
-References: <20220919-v1-0-4844816c9808@baylibre.com> <20220919-v1-5-4844816c9808@baylibre.com>
- <32c4822a-a094-5fa3-c2af-e515bf897937@collabora.com>
-In-Reply-To: <32c4822a-a094-5fa3-c2af-e515bf897937@collabora.com>
+References: <20220919-v1-0-4844816c9808@baylibre.com> <20220919-v1-7-4844816c9808@baylibre.com>
+ <153dcb4f-4583-427e-83c7-bdd33e3b11aa@collabora.com>
+In-Reply-To: <153dcb4f-4583-427e-83c7-bdd33e3b11aa@collabora.com>
 MIME-Version: 1.0
-Date: Tue, 27 Sep 2022 06:06:06 -0700
-Message-ID: <CABnWg9vsd7Lk4kR4j-XrgJXAX+sEd3J+oz3hFc4sEuCGRRy8qw@mail.gmail.com>
-Subject: Re: [PATCH v1 05/17] drm/mediatek: hdmi: use a syscon/regmap instead
- of iomem
+Date: Tue, 27 Sep 2022 06:08:43 -0700
+Message-ID: <CABnWg9uDo_P7FKzL7zjsZbfrhjT7MtWinhy5pKvDbNp_R5oJPg@mail.gmail.com>
+Subject: Re: [PATCH v1 07/17] drm/mediatek: extract common functions from the
+ mtk hdmi driver
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>, 
 	Stephen Boyd <sboyd@kernel.org>, David Airlie <airlied@linux.ie>, Rob Herring <robh+dt@kernel.org>, 
@@ -82,8 +82,8 @@ Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
 	devicetree@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_060607_498576_6A7671B5 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20220927_060844_679892_5D6667E6 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,59 +98,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 20 Sep 2022 12:18, AngeloGioacchino Del Regno
+On Tue, 20 Sep 2022 12:25, AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >Il 19/09/22 18:56, Guillaume Ranquet ha scritto:
->> To prepare support for newer chips that need to share their address
->> range with a dedicated ddc driver, move to a syscon.
+>> Create a common "framework" that can be used to add support for
+>> different hdmi IPs within the mediatek range of products.
 >>
 >> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 >>
+>> diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+>> index d4d193f60271..008ec69da67b 100644
+>> --- a/drivers/gpu/drm/mediatek/Makefile
+>> +++ b/drivers/gpu/drm/mediatek/Makefile
+>> @@ -22,7 +22,8 @@ obj-$(CONFIG_DRM_MEDIATEK) += mediatek-drm.o
+>>
+>>   mediatek-drm-hdmi-objs := mtk_cec.o \
+>>   			  mtk_hdmi.o \
+>
+>abcd ... mtk_hdmi_common.o goes here :-)
+>
+>> -			  mtk_hdmi_ddc.o
+>> +			  mtk_hdmi_ddc.o \
+>> +			  mtk_hdmi_common.o \
+>>
+>>   obj-$(CONFIG_DRM_MEDIATEK_HDMI) += mediatek-drm-hdmi.o
+>>
 >> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
->> index 3196189429bc..5cd05d4fe1a9 100644
+>> index 5cd05d4fe1a9..837d36ec4d64 100644
 >> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 >> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
->
->..snip..
->
->> @@ -1428,7 +1413,6 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
->>   	struct device_node *cec_np, *remote, *i2c_np;
->>   	struct platform_device *cec_pdev;
->>   	struct regmap *regmap;
->> -	struct resource *mem;
->>   	int ret;
+>> @@ -32,187 +32,18 @@
+>>   #include <drm/drm_probe_helper.h>
 >>
->>   	ret = mtk_hdmi_get_all_clk(hdmi, np);
->> @@ -1474,8 +1458,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
->>   	}
->>   	hdmi->sys_regmap = regmap;
+>>   #include "mtk_cec.h"
+>> -#include "mtk_hdmi.h"
+>>   #include "mtk_hdmi_regs.h"
+>> +#include "mtk_hdmi_common.h"
 >>
->> -	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->> -	hdmi->regs = devm_ioremap_resource(dev, mem);
->> +	hdmi->regs = syscon_node_to_regmap(dev->of_node);
+>>   #define NCTS_BYTES	7
+>>
+>> -enum mtk_hdmi_clk_id {
+>> -	MTK_HDMI_CLK_HDMI_PIXEL,
+>> -	MTK_HDMI_CLK_HDMI_PLL,
+>> -	MTK_HDMI_CLK_AUD_BCLK,
+>> -	MTK_HDMI_CLK_AUD_SPDIF,
+>> -	MTK_HDMI_CLK_COUNT
+>> +const char * const mtk_hdmi_clk_names_mt8183[MTK_MT8183_HDMI_CLK_COUNT] = {
 >
->Nack. You're breaking ABI, this will force everyone to add syscon to devicetree,
->hence this breaks retrocompatibility with old devicetrees.
->
->Hint: not here, device_node_to_regmap()
+>Why MT8183? This can be either MT8167 or MT2701... or, IMO more appropriately, you
+>should name the IP version.
+>Example: MTK_HDMIV123_CLK_COUNT (I don't know what IP version would that be!).
 
-Hi Angelo,
-
-I'm sorry, I didn't think device tree retro compatibility was a thing.
-
-I'll drop the requirement for the module to be a syscon.
-Thx for the hint.
+You're right, the naming isn't great.
+I'll ask mediatek if they have a good name that would regroup the "legacy"
+HDMI IP and the new IP in mt8195.
 
 Thx,
 Guillaume.
 
 >
+>> +	[MTK_MT8183_HDMI_CLK_HDMI_PIXEL] = "pixel",
+>> +	[MTK_MT8183_HDMI_CLK_HDMI_PLL] = "pll",
+>> +	[MTK_MT8183_HDMI_CLK_AUD_BCLK] = "bclk",
+>> +	[MTK_MT8183_HDMI_CLK_AUD_SPDIF] = "spdif",
+>>   };
+>>
+>
 >Regards,
 >Angelo
->
->>   	if (IS_ERR(hdmi->regs)) {
->>   		ret = PTR_ERR(hdmi->regs);
->>   		goto put_device;
 >
 >
 
