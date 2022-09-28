@@ -4,79 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B029AC32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 09:24:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01818C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 09:24:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oVDBocalE6iH6BUbpNZ/+kTn1nGjDCnsZXt//IzMZh0=; b=vL7/JZeJRxAaMgRyupk59Iyeeb
-	uDI+mspxjzJUm8loO7Ie7+CBZbvzGRVDL8S6u9blxkEbSmI06cmaNwozZMMChVAZIOxph0sxvSzbV
-	ZUHfhSIv3cLK8pHhLy10Bx8tzs9HSKZCq4eh6d5KMn2XSJ9JAW6QI+vLcpzoZEW+4FFPDy+tFy235
-	blaPndeSVnieAgP739+H8037+Ft94VU5AIRqu60h+WW6XIGXAIwdDnrNm7WRqluZl7hNQ6Q+d5qg3
-	6K7HpU6rbnWi4vFugBnIVhogIteQd7rHHEmzwyr7jmOmsl6tuyroWHYCiUD4hyDUIjvk0x5f9sfAq
-	SH6v21aA==;
+	bh=okSE3xkX1tEEKERaWFRU9udya/5Q/YQuTgKJr+jN9zU=; b=mLS/a1bDHQxWuJUgoOqPQ09wTi
+	sr5c3F/wyPPfUCy1Vrt2NzYSksYPTYZPnFr9k/nntFSozMSxMbm4WkyZ0Q7ywL268yGRUyufiiZhg
+	tXUF4p5ceIrv3q1JT/ClTzXhumSrGKmUSRngQLqNnbQ1kesAT27KRF+7Jf9RgpD6Vpneki1k/rv1s
+	4cAeoSEiNgbmo0VPHyaQCON40jMzdtCFkunHlx42sOUH/dTBcGuimB6IA41nCJ0mClFvhV1aO2vR0
+	fTFQCMT2V2h0tRB/V0WjWgxM3Z1Gr5Wx2D2fqyAV/oL2TCuu3Mf/66J4apw3BY5DkULdjnMaHwHEP
+	BLigxaQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odTIU-00FAnZ-1B; Wed, 28 Sep 2022 09:24:06 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1odTIU-00FAnu-OT; Wed, 28 Sep 2022 09:24:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odTIG-00FAjH-G2; Wed, 28 Sep 2022 09:23:53 +0000
-X-UUID: c34711efd70a4462b558c5f8cc7ad190-20220928
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oVDBocalE6iH6BUbpNZ/+kTn1nGjDCnsZXt//IzMZh0=;
-	b=EYGDfCU/QEIUz1FkSN97nBKh8xquMrznVONw6/UXRDLxV7rXSsdJsP1opBmKFfwpfsYeoUHLliFVXdVnyxd/A72+WL7/IT/oFUOEX4eWZpDIGZVJghdYECNW0n5fXcNrZSgNeRlTMagpCgquEaWQv3rx52/kyXLadkINtNMaAoc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:876a1892-69d4-465c-91c6-a1a78a954cd4,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:75cd5ba3-dc04-435c-b19b-71e131a5fc35,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: c34711efd70a4462b558c5f8cc7ad190-20220928
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <jianguo.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1442808454; Wed, 28 Sep 2022 02:23:47 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
- Wed, 28 Sep 2022 17:23:14 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 28 Sep 2022 17:23:13 +0800
-From: Jianguo Zhang <jianguo.zhang@mediatek.com>
-To: "David S . Miller" <davem@davemloft.net>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
-	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	"Matthias Brugger" <matthias.bgg@gmail.com>, Biao Huang
-	<biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Jianguo Zhang <jianguo.zhang@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>
-Subject: [resend PATCH v6 2/4] dt-bindings: net: snps,dwmac: add new property snps,clk-csr
-Date: Wed, 28 Sep 2022 17:23:06 +0800
-Message-ID: <20220928092308.26019-3-jianguo.zhang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220928092308.26019-1-jianguo.zhang@mediatek.com>
-References: <20220928092308.26019-1-jianguo.zhang@mediatek.com>
+	id 1odTIG-00FAim-Av; Wed, 28 Sep 2022 09:23:53 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2115A61DDF;
+	Wed, 28 Sep 2022 09:23:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82805C433C1;
+	Wed, 28 Sep 2022 09:23:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1664357030;
+	bh=9Y7blUAL5zN9+EQU3Z3W3p8hWMps5aDqv5Tab1GFLWw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bKKOYjthvdVJdkp/WgUPyyIY6j5diqFOr36p4LlYd98uxj1Y9e/lUHtbTqi98vgyQ
+	 KbRS16fpU145hd3vMZQdmELdiDLMGpX8oUnpC6Y7HhKrvI+DAXOp1Tm9DK0N44XL80
+	 mdFstae3oCw2JsYi4Sw3KJbhe3HwkElht+CJ4kpn9MhojQ2oiyppWZXSjQeRYlrQSX
+	 BKyF327yD4FFDPGj+fuNVpeUQ4KPGVY5bXC1MfKLj2L6YNGIBOhJkk3hHOjFVVmLNb
+	 qweGNfgGyDXDw0TL9Gsif0eqTs8PORFJji2tzGF6cr8+tGLT3NT8J+3GJZe5BvY+uS
+	 EHNa/rwudrMgw==
+Date: Wed, 28 Sep 2022 10:23:42 +0100
+From: Lee Jones <lee@kernel.org>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Jonathan Cameron <jic23@kernel.org>, ChiaEn Wu <peterwu.pub@gmail.com>,
+	pavel@ucw.cz, krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com, lars@metafoo.de,
+	andriy.shevchenko@linux.intel.com, chiaen_wu@richtek.com,
+	alice_chen@richtek.com, cy_huang@richtek.com,
+	linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-iio@vger.kernel.org, szunichen@gmail.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Shevchenko <andy.shevchenko@gmail.com>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Subject: Re: [PATCH v12 3/5] iio: adc: mt6370: Add MediaTek MT6370 support
+Message-ID: <YzQSnuwPjzJIgsYq@google.com>
+References: <cover.1663926551.git.chiaen_wu@richtek.com>
+ <9bf36f09bc5f002f2b09b7cc26edccf109516465.1663926551.git.chiaen_wu@richtek.com>
+ <20220924155525.5663bed8@jic23-huawei>
+ <YzFY5FI0PrZqdAiZ@google.com>
+ <CAL_JsqKKJGtacbzGqCupFniSGha610L1cay2V+AK8vehTA=F=g@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+In-Reply-To: <CAL_JsqKKJGtacbzGqCupFniSGha610L1cay2V+AK8vehTA=F=g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_022352_567422_0547C003 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220928_022352_495750_9864A7F8 
+X-CRM114-Status: GOOD (  23.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,31 +85,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add description for new property snps,clk-csr in binding file
+On Mon, 26 Sep 2022, Rob Herring wrote:
 
-Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- Documentation/devicetree/bindings/net/snps,dwmac.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+> On Mon, Sep 26, 2022 at 2:46 AM Lee Jones <lee@kernel.org> wrote:
+> >
+> > On Sat, 24 Sep 2022, Jonathan Cameron wrote:
+> >
+> > > On Fri, 23 Sep 2022 10:51:24 +0800
+> > > ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+> > >
+> > > > From: ChiaEn Wu <chiaen_wu@richtek.com>
+> > > >
+> > > > MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
+> > > > with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
+> > > > driver, display bias voltage supply, one general purpose LDO, and the
+> > > > USB Type-C & PD controller complies with the latest USB Type-C and PD
+> > > > standards.
+> > > >
+> > > > Add support for the MT6370 ADC driver for system monitoring, including
+> > > > charger current, voltage, and temperature.
+> > > >
+> > > > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > > > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+> > > > Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > > > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> > >
+> > > This will have to either wait for next cycle, or go through mfd because
+> > > of the dt-bindings include which is in the mfd tree.
+> > >
+> > > Please make those dependencies clear in new versions.
+> >
+> > If the bindings come together in -next, then subsequently in Mainline,
+> > it shouldn't really matter.
+> 
+> Except that the bindings haven't come together and at this point may
+> not for 6.1. linux-next has been warning for weeks because the child
+> device schemas haven't been applied. I've said it before, all the
+> schemas for MFD devices need to be applied together. Or at least the
+> MFD schema needs to get applied last.
+> 
+> Furthermore, subsequent versions of this don't get tested and we end
+> up with more warnings[1].
+> 
+> It's only your IIO tree that the DT
+> > tooling with complain about, right?
+> 
+> And the MFD tree...
+> 
+> Please apply the LED bindings (patches 1 and 2) so we can get the
+> existing warnings fixed and address any new warnings.
 
-diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-index 491597c02edf..4d5a56661322 100644
---- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-@@ -288,6 +288,11 @@ properties:
-       is supported. For example, this is used in case of SGMII and
-       MAC2MAC connection.
- 
-+  snps,clk-csr:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      Frequency division factor for MDC clock.
-+
-   mdio:
-     $ref: mdio.yaml#
-     unevaluatedProperties: false
+Who usually applies LED bindings?  Looks as though they're good to go.
+
 -- 
-2.25.1
-
+Lee Jones [李琼斯]
 
