@@ -4,68 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BA76C04A95
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 10:18:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A996C32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 10:19:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XXqYom0PShqqvqx1Lq9wqOLByxK/9HTGJNY8mFnsriY=; b=IsWRzfNyoMD2MAjIMDG+UN47AX
-	AL47HDw+/KsSe28zsffvpPlDz73cbljtZ4eN82T9dz/Baj0GQVE3KxVoknrh5Jig4+tXlAGH7QGAY
-	aEDrAY24pYJ8VwsGvIdgUu1uxpBRDcCfvBIe0q+VH97x8C5n0Ifffq15h+K0DMwVza7/1F8qvmlbw
-	sGSCLKiPV3alrcWUyHlbY1AGz4gT55Ss1A/dMG7vMousRQhwlmW/1PRoOXnvX9m3O5s5PrPKwtEY5
-	ZvUaWPg8MYpQcUUzUCkKJSxW/4jbLu3tvNER1PusdTN8/wf2CS5wexUp4WM7g/NENYa9AS+kUcrwV
-	xCgrCvBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ed7Eb0/1/oNQnKH5InyBQ2SCZdDL6oDu4SxiPLenoK0=; b=XpprlMQPJmFe32fEl3ZF+OskAn
+	0mV7TMEMArf/HPhgPQUNTz2IdgTjQjJ8h6u4ir+tChDFNyIGFMoZ6sS0pQxzgfiyvemiW2N52oDDU
+	GdH79AqNkF8c1hcF6iXpRxAEJm8IS5Ucd/DNWk9+MnHg6AOLrQi730FS1kJQzxxGomE+83F+E8/nv
+	HnG0exeWH6sXhtcommjdEfat01S57qcFeety7n7179fxGWgo3mdx9aLxCTLOSR9GkeFT3Dk3vW4PZ
+	wJaz4RKu3qs9oLIpB0Jkmssk0eQHg88sbvxR/C/71VwXzxNYC/Z2M5P2XpLQ7e071BiOusvaQSboF
+	Wrc609tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odU8n-00FXyD-SC; Wed, 28 Sep 2022 10:18:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1odU9Z-00FYEq-Io; Wed, 28 Sep 2022 10:18:57 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odU8k-00FXxW-Ce; Wed, 28 Sep 2022 10:18:07 +0000
-X-UUID: 1a948ee480a54e15a52f0ec97d177feb-20220928
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=XXqYom0PShqqvqx1Lq9wqOLByxK/9HTGJNY8mFnsriY=;
-	b=EJRiYPDe0203cIf33SGVWKn4006aT7zvRZqCJMOpJiqS/biujUFomlXkaYldZLrreIZPJOrDJoKntq7gt4x6eaDcrDsaVUritkpgVMlq5ZSgnpxevV5glF7nuPFFTiPTaRLAEdDXHWTXrJg6MCCKFwvC0tdv/s4S029omOZC5os=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:6c4c68bf-f2c4-45ed-9dcd-a09202577c75,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:39a5ff1,CLOUDID:cd5e5da3-dc04-435c-b19b-71e131a5fc35,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 1a948ee480a54e15a52f0ec97d177feb-20220928
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 814724454; Wed, 28 Sep 2022 03:18:03 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 28 Sep 2022 17:17:27 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 28 Sep 2022 17:17:26 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>, Min Guo
-	<min.guo@mediatek.com>, Tianping Fang <tianping.fang@mediatek.com>,
-	<Stable@vger.kernel.org>
-Subject: [PATCH 1/2] usb: mtu3: fix ep0's stall of out data stage
-Date: Wed, 28 Sep 2022 17:17:20 +0800
-Message-ID: <20220928091721.26112-1-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+	id 1odU9B-00FXck-Dw; Wed, 28 Sep 2022 10:18:34 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id C8A0C1884BBF;
+	Wed, 28 Sep 2022 10:16:21 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id B328C2500370;
+	Wed, 28 Sep 2022 10:16:21 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id A55E89EC000D; Wed, 28 Sep 2022 10:16:21 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Date: Wed, 28 Sep 2022 12:16:21 +0200
+From: netdev@kapio-technology.com
+To: Ido Schimmel <idosch@nvidia.com>
+Cc: Vladimir Oltean <olteanv@gmail.com>, davem@davemloft.net,
+ kuba@kernel.org, netdev@vger.kernel.org, Florian Fainelli
+ <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot
+ <vivien.didelot@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens
+ <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>, Landen
+ Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, Jiri Pirko
+ <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>, Roopa Prabhu
+ <roopa@nvidia.com>, Nikolay Aleksandrov <razor@blackwall.org>, Shuah Khan
+ <shuah@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
+ Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, bridge@lists.linux-foundation.org,
+ linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
+ MAC-Auth Bypass to locked port tests
+In-Reply-To: <YzQJ5MRSL/ShRSgP@shredder>
+References: <20220908112044.czjh3xkzb4r27ohq@skbuf>
+ <152c0ceadefbd742331c340bec2f50c0@kapio-technology.com>
+ <20220911001346.qno33l47i6nvgiwy@skbuf>
+ <15ee472a68beca4a151118179da5e663@kapio-technology.com>
+ <Yx73FOpN5uhPQhFl@shredder>
+ <086704ce7f323cc1b3cca78670b42095@kapio-technology.com>
+ <Yyq6BnUfctLeerqE@shredder>
+ <7a4549d645f9bbbf41e814f087eb07d1@kapio-technology.com>
+ <YzPwwuCe0HkJpkQe@shredder>
+ <0c6b93c828d9b52346ddb3d445446734@kapio-technology.com>
+ <YzQJ5MRSL/ShRSgP@shredder>
+User-Agent: Gigahost Webmail
+Message-ID: <7a1683c86e02305e90f7b1ceaaabdabe@kapio-technology.com>
+X-Sender: netdev@kapio-technology.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_031806_455445_745876A5 
-X-CRM114-Status: GOOD (  17.55  )
+X-CRM114-CacheID: sfid-20220928_031833_649616_5703902E 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,98 +91,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It happens when enable uvc function, the flow as below:
-the controller switch to data stage, then call
-    -> foward_to_driver() -> composite_setup() -> uvc_function_setup(),
-it send out an event to user layer to notify it call
-    -> ioctl() -> uvc_send_response() -> usb_ep_queue(),
-but before the user call ioctl to queue ep0's buffer, the host already send
-out data, but the controller find that no buffer is queued to receive data,
-it send out STALL handshake.
+On 2022-09-28 10:46, Ido Schimmel wrote:
+> On Wed, Sep 28, 2022 at 09:47:42AM +0200, netdev@kapio-technology.com 
+> wrote:
 
-To fix the issue, don't send out ACK of setup stage to switch to out data
-stage until the buffer is available.
+> It needs "master" keyword:
+> 
 
-Cc: <Stable@vger.kernel.org>
-Reported-by: Min Guo <min.guo@mediatek.com>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/mtu3/mtu3.h            |  4 ++++
- drivers/usb/mtu3/mtu3_gadget_ep0.c | 22 +++++++++++++++++++---
- 2 files changed, 23 insertions(+), 3 deletions(-)
+I must have forgotten it when I tested at some point...
 
-diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
-index 2d7b57e07eee..6b64ad17724d 100644
---- a/drivers/usb/mtu3/mtu3.h
-+++ b/drivers/usb/mtu3/mtu3.h
-@@ -318,6 +318,9 @@ static inline struct ssusb_mtk *dev_to_ssusb(struct device *dev)
-  *		for GET_STATUS and SET_SEL
-  * @setup_buf: ep0 response buffer for GET_STATUS and SET_SEL requests
-  * @u3_capable: is capable of supporting USB3
-+ * @delayed_setup: delay the setup stage to avoid STALL handshake in
-+ *		out data stage due to the class driver doesn't queue buffer
-+ *		before the host send out data
-  */
- struct mtu3 {
- 	spinlock_t lock;
-@@ -360,6 +363,7 @@ struct mtu3 {
- 	unsigned connected:1;
- 	unsigned async_callbacks:1;
- 	unsigned separate_fifo:1;
-+	unsigned delayed_setup:1;
- 
- 	u8 address;
- 	u8 test_mode_nr;
-diff --git a/drivers/usb/mtu3/mtu3_gadget_ep0.c b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-index e4fd1bb14a55..f7a71cc83e15 100644
---- a/drivers/usb/mtu3/mtu3_gadget_ep0.c
-+++ b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-@@ -162,6 +162,19 @@ static void ep0_do_status_stage(struct mtu3 *mtu)
- 	mtu3_writel(mbase, U3D_EP0CSR, value | EP0_SETUPPKTRDY | EP0_DATAEND);
- }
- 
-+/* delay sending out ACK of setup stage to wait for OUT buffer queued */
-+static void ep0_setup_stage_send_ack(struct mtu3 *mtu)
-+{
-+	void __iomem *mbase = mtu->mac_base;
-+	u32 value;
-+
-+	if (mtu->delayed_setup) {
-+		value = mtu3_readl(mbase, U3D_EP0CSR) & EP0_W1C_BITS;
-+		mtu3_writel(mbase, U3D_EP0CSR, value | EP0_SETUPPKTRDY);
-+		mtu->delayed_setup = 0;
-+	}
-+}
-+
- static int ep0_queue(struct mtu3_ep *mep0, struct mtu3_request *mreq);
- 
- static void ep0_dummy_complete(struct usb_ep *ep, struct usb_request *req)
-@@ -628,8 +641,9 @@ static void ep0_read_setup(struct mtu3 *mtu, struct usb_ctrlrequest *setup)
- 			csr | EP0_SETUPPKTRDY | EP0_DPHTX);
- 		mtu->ep0_state = MU3D_EP0_STATE_TX;
- 	} else {
--		mtu3_writel(mtu->mac_base, U3D_EP0CSR,
--			(csr | EP0_SETUPPKTRDY) & (~EP0_DPHTX));
-+		mtu3_writel(mtu->mac_base, U3D_EP0CSR, csr & ~EP0_DPHTX);
-+		/* send ACK when the buffer is queued */
-+		mtu->delayed_setup = 1;
- 		mtu->ep0_state = MU3D_EP0_STATE_RX;
- 	}
- }
-@@ -804,9 +818,11 @@ static int ep0_queue(struct mtu3_ep *mep, struct mtu3_request *mreq)
- 
- 	switch (mtu->ep0_state) {
- 	case MU3D_EP0_STATE_SETUP:
--	case MU3D_EP0_STATE_RX:	/* control-OUT data */
- 	case MU3D_EP0_STATE_TX:	/* control-IN data */
- 		break;
-+	case MU3D_EP0_STATE_RX:	/* control-OUT data */
-+		ep0_setup_stage_send_ack(mtu);
-+		break;
- 	default:
- 		dev_err(mtu->dev, "%s, error in ep0 state %s\n", __func__,
- 			decode_ep0_state(mtu));
--- 
-2.18.0
-
+It seems to be working, only that I am at a loss to why port_fdb_add() 
+is called for each port after going through the DSA layer. I understand 
+that all slave devices are listening on events, but I think the ops 
+should only be called when the port matches?
+Also for some reason the blackhole (zero-DPV) ATU entry is not added on 
+my device in case of no vlan (vid = 0), but there is also some phy 
+problems that are unrelated to this patch set.
 
