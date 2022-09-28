@@ -4,64 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2A96C6FA90
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 15:58:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 744FCC32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 15:59:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TKyELhwl5dAsyQQQ7VSZO+R/LVQw/gX9SUYBwHneOuI=; b=Wq+0Jw1yNwR1NUFDuTrB7TJx9Y
-	51FO2kcgPXgf4h2YytGnw0Tl8oEhIWsbTc8gPcpfkbPbtRGJRNQVmj9QYPFhrufysC6r8hK07fy3n
-	u7DLMYDqLOm+QPdv4tWA09ccQAFDMTSPyGSXbCExmyQAEBHrKXulsEnA8rpsPKqCL+7FRTbygy5xv
-	uyk4GVtoVnvy81Ofb4+4Cl2lBdqukV876ZYo4psV/fGam/mKPV7gH+ufb1Bz89Eb+G5tes+V83NZz
-	nnnnuk2ZOTO6t1NIQBr7GNwpDLi4NdEe5ga6FnsLt12EMyF6rvLtpFIZzSL4fBnfhFDB5DRZ/5/VC
-	9VziF8KQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hoDW28LbN9wh88TfKRfQ8Y8Bs6SZAqPa3+dXOv5I+EM=; b=fjxsIK58UH2aRiWphhkLlNZ6oF
+	bVE8mHbJjZrsGfYjYVpifyjx0+lCdmmJzfXBGboXLr5bWReRXx34HYBhqSzTubDKEiHi2eXz6AEOc
+	kbfM/Cdl6kjLFWbzymy6Hq/w2Ji878QGQUdg/apwVjUWTNAyMq5WGroEtHo0WRPLiDu3PQuud0yU5
+	/gDhP5HG+9W44AAJr4zHXn/177p+Bz0gHas4hpyo0KBtlq5sn75AzJLPnF5WgCeY17cx43JUG7sIl
+	dhcLZ3hjBdXj/GjThzvnGWh7IJm956Y1yyNqJQpmbsUk4hn69u3IuPr87OzRrM2p3HvVS2AqCMI1g
+	5ImfBfRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odZSM-00H10y-87; Wed, 28 Sep 2022 15:58:42 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1odZSc-00H1Fk-Mu; Wed, 28 Sep 2022 15:58:58 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odZPZ-00GzO1-8c; Wed, 28 Sep 2022 15:55:51 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D1FDD61F0D;
-	Wed, 28 Sep 2022 15:55:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1A3AC433C1;
-	Wed, 28 Sep 2022 15:55:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664380547;
-	bh=AsSGtp1hkzL8NIS4nEw2a0/D7oTq6NL/9e+KpV8EKDU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=snJXPE22Q+fZfmdwH4NHVDl7njmUHnNXM2B7nQfKj+VFJqDIAtYYbJb23aY+eiKdN
-	 iIFRY0YgU5Ew78HtggwgHTTleUlLTRtbJNU7rBvgNciioeGXQRfPlR0k33nlwJjlUE
-	 GdNQGbDbFNKZjswPp26HRuyVcV+Rhhvhq2FZ3y9D+chLbtTu8278VzAgE2qNMOI2p3
-	 Ewznlh4iFH1dGWHYXtLKng+3d2deAWB/14nFDC/xB5G6gk++bwFCqbv1ZFZrjcRN2r
-	 yUaAcMYBshpUrkwaF4iM07/ifllXNeb+OBst5cBwtNdWgK0ZO+6f6hTD6dk6zMyMWV
-	 Ko4p3fBaC92bw==
-From: matthias.bgg@kernel.org
-To: roger.lu@mediatek.com,
-	jia-wei.chang@mediatek.com
-Cc: nfraprado@collabora.com,
-	khilman@baylibre.com,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	angelogioacchino.delregno@collabora.com,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 8/8] soc: mtk-svs: mt8192: fix bank data
-Date: Wed, 28 Sep 2022 17:55:19 +0200
-Message-Id: <20220928155519.31977-9-matthias.bgg@kernel.org>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20220928155519.31977-1-matthias.bgg@kernel.org>
-References: <20220928155519.31977-1-matthias.bgg@kernel.org>
+	id 1odZRZ-00H0TX-2N
+	for linux-mediatek@lists.infradead.org; Wed, 28 Sep 2022 15:57:55 +0000
+Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.56])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Md1Hm15HzzWgnq;
+	Wed, 28 Sep 2022 23:53:40 +0800 (CST)
+Received: from kwepemm600014.china.huawei.com (7.193.23.54) by
+ dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Wed, 28 Sep 2022 23:57:46 +0800
+Received: from huawei.com (10.90.53.225) by kwepemm600014.china.huawei.com
+ (7.193.23.54) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Wed, 28 Sep
+ 2022 23:57:45 +0800
+From: Zhang Qilong <zhangqilong3@huawei.com>
+To: <lgirdwood@gmail.com>, <broonie@kernel.org>, <perex@perex.cz>,
+	<tiwai@suse.com>, <matthias.bgg@gmail.com>
+CC: <alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH -next 0/4] Fix PM disable depth imbalance in probe
+Date: Thu, 29 Sep 2022 00:01:12 +0800
+Message-ID: <20220928160116.125020-1-zhangqilong3@huawei.com>
+X-Mailer: git-send-email 2.26.0.106.g9fadedd
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.90.53.225]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemm600014.china.huawei.com (7.193.23.54)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_085549_377449_A36417BB 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20220928_085753_352790_AE65F24D 
+X-CRM114-Status: UNSURE (   4.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,55 +69,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Matthias Brugger <matthias.bgg@gmail.com>
+The pm_runtime_enable will increase power disable depth. Thus
+a pairing decrement is needed on the error handling path to
+keep it balanced according to context. We fix it by moving
+pm_runtime_enable to the endding of probe.
 
-Values vmax and dvt_fixed are not changed at runtime, set them as needed
-in the svs_banks struct.
+Zhang Qilong (4):
+  ASoC: wm8997: Fix PM disable depth imbalance in wm8997_probe
+  ASoC: wm5110: Fix PM disable depth imbalance in wm5110_probe
+  ASoC: wm5102: Fix PM disable depth imbalance in wm5102_probe
+  ASoC: mt6660: Fix PM disable depth imbalance in mt6660_i2c_probe
 
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+ sound/soc/codecs/mt6660.c | 8 ++++++--
+ sound/soc/codecs/wm5102.c | 6 +++---
+ sound/soc/codecs/wm5110.c | 6 +++---
+ sound/soc/codecs/wm8997.c | 6 +++---
+ 4 files changed, 15 insertions(+), 11 deletions(-)
 
----
-
- drivers/soc/mediatek/mt8192-svs.h     | 4 ++--
- drivers/soc/mediatek/mtk-svs-mt8192.c | 2 --
- 2 files changed, 2 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/soc/mediatek/mt8192-svs.h b/drivers/soc/mediatek/mt8192-svs.h
-index 6571ebcb2c0f..bf8c6030428f 100644
---- a/drivers/soc/mediatek/mt8192-svs.h
-+++ b/drivers/soc/mediatek/mt8192-svs.h
-@@ -16,7 +16,7 @@ static struct svs_bank svs_mt8192_banks[] = {
- 		.turn_freq_base		= 688000000,
- 		.volt_step		= 6250,
- 		.volt_base		= 400000,
--		.vmax			= 0x60,
-+		.vmax			= 0x61,
- 		.vmin			= 0x1a,
- 		.age_config		= 0x555555,
- 		.dc_config		= 0x1,
-@@ -41,7 +41,7 @@ static struct svs_bank svs_mt8192_banks[] = {
- 		.turn_freq_base		= 688000000,
- 		.volt_step		= 6250,
- 		.volt_base		= 400000,
--		.vmax			= 0x60,
-+		.vmax			= 0x66,
- 		.vmin			= 0x1a,
- 		.age_config		= 0x555555,
- 		.dc_config		= 0x1,
-diff --git a/drivers/soc/mediatek/mtk-svs-mt8192.c b/drivers/soc/mediatek/mtk-svs-mt8192.c
-index 838a94834741..183acf2829f0 100644
---- a/drivers/soc/mediatek/mtk-svs-mt8192.c
-+++ b/drivers/soc/mediatek/mtk-svs-mt8192.c
-@@ -40,8 +40,6 @@ bool svs_mt8192_efuse_parsing(struct svs_platform *svsp)
- 			svsb->dcbdet = (svsp->efuse[17] >> 16) & GENMASK(7, 0);
- 			svsb->dcmdet = (svsp->efuse[17] >> 24) & GENMASK(7, 0);
- 		}
--
--		svsb->vmax += svsb->dvt_fixed;
- 	}
- 
- 	ret = svs_thermal_efuse_get_data(svsp);
 -- 
-2.37.3
+2.25.1
 
 
