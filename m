@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCCCBC32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 15:57:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EF15C04A95
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 15:57:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T4xS6dOHr4z0YsifDp9KCrL2DjcqUvRiDEeBLlpwdcA=; b=nRuAVXGS2ktOBoorh4USGbEyrC
-	4Y+m7Cow/s4ztgzUh1HtxVqXt3n/ZiPfNF6yod8PZbs5uheoZ0k7vSSUxzrLNMm8srB+VkFtmgw+h
-	kd9tFQtWOXRMXqtxHWmNpOvSOfIgaD6R/U2qASWQTqvtCLJO8qSrCctORPvX0yBpn0gznHFmJKrlW
-	SVzeGyaDSj7d4t/YstIUAFtIRv4QXj2uJVDIE+jP8sJvZlJBrB1MX2Flh0uS7zDulrUJ4mH5Aly1s
-	8HuWxIStSFAlHo/csGkWxeDCadjozj9I/vgusR/IvR9WwT2FGUm8+ZkCgzjdN/O5rNpQdc4DLkK0X
-	YkqGXwyQ==;
+	bh=1Vk9ZyunAFxMRxgECDJ715w57y+HcDjcuwucf5+TPug=; b=ZXDjqmn5vpk7PYmEFkhX7ufxYM
+	dojQQs93k7iFI+8cbuAX2X56HKriAfKn0qYozq6GsS7zVdvu2gIkW336v+2f8L/vJp27SKg87ymDo
+	sNJK3pLVcNz1RJD5dUgtdKwMqhgKHmApgtLj/jg7s2FT0vc2Zcs90vkBj6JMmMDE/FYH7l7jIyITc
+	zTCZ9tjEPltc6G6ntN9pvJC2fjHJDGT9N4jgKXD0VuDEoTThi/DNU0pQQSnnhfeyvBk6YpMpjYAWS
+	LlE/z37LdMqTA8p3Ymn8gDp5FyqjScHsuprkxQHff5hdV4gPbqYzVNJFgvc2PqJPRVvmvmjhSaQfG
+	WyEYKZjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odZQn-00H034-CI; Wed, 28 Sep 2022 15:57:05 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1odZR5-00H0EN-50; Wed, 28 Sep 2022 15:57:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odZPQ-00GzIR-2S; Wed, 28 Sep 2022 15:55:41 +0000
+	id 1odZPT-00GzL1-Rx; Wed, 28 Sep 2022 15:55:46 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B960CB82118;
-	Wed, 28 Sep 2022 15:55:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80E0BC43470;
-	Wed, 28 Sep 2022 15:55:35 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 60FAF61F11;
+	Wed, 28 Sep 2022 15:55:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D925FC43140;
+	Wed, 28 Sep 2022 15:55:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664380537;
-	bh=YZMOjgTNeBBMbRzzxRhwTWgxRv9J8huLdzYrUxYy2S4=;
+	s=k20201202; t=1664380542;
+	bh=jBV3cFo8/FqKuJAoNK5rBtzqmrn/4Re6jDWfLVj3+OU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CDTZayabU/ZeTorlu4hi7Ad/PKqFked91GfMFoXSllA3SeMtQaU+YzGhjmRVAGfSp
-	 xSno8AB6nUj95qOxUEEyFCvOGXSmkp9ephJUkm7/MH1Nqr9DjX22PRaT/Bbx+HcUmO
-	 hRwQjJpRAl+/ghXII+VmJFuqmHeJ+Ot6ARqj9AAt5Qq/CZnUZudi2NIgm+9krrc9sj
-	 uAKfSHUCL0aY1fl75gOTzeYNW/zn+GtC+HrlfD719WNPXnKHGLpqmO2ADQDKW91pTi
-	 38xCscCcrUoW2agjtQMPNJH/Y0GfikiztG/Ymqr6vmdo6/ER2/necguZMEWhFDLhLX
-	 ePuAzGMgqdbKg==
+	b=oEawa4AQdnoU3BNbSaCGJn37XgKksYRDbvOwRr22KLso/LgyBCsWiYjYsuW/C+0j+
+	 XY9zxznPrZr8l38+KUEPsj0bN2biVPvrDu91/5mDIEO2XNNKlCSoP3bSW9MJj1wjVb
+	 btUeq7pIDW7L2Asm0lDaa+ri5xep9cwueqb9AVk+Sxilt48XzmDbmN5aQBHCeRNKiC
+	 G+3KPjA+8H3Y8OUx+lKKEqPSgwJc+vBo5Ft/t7Ngh21nJG/oMxtdl5ktxi3Vib7A1N
+	 HFMyrjez+XDLKJGEHnRrdd/rxpJtKf1cbTt0BEFjIclhEdb8DFb5o/QKGJ1aSoDr7l
+	 wRhd4+xh54gMw==
 From: matthias.bgg@kernel.org
 To: roger.lu@mediatek.com,
 	jia-wei.chang@mediatek.com
@@ -51,17 +51,17 @@ Cc: nfraprado@collabora.com,
 	linux-arm-kernel@lists.infradead.org,
 	angelogioacchino.delregno@collabora.com,
 	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 4/8] soc: mediatek: mtk-svs: delete superfluous platform data entries
-Date: Wed, 28 Sep 2022 17:55:15 +0200
-Message-Id: <20220928155519.31977-5-matthias.bgg@kernel.org>
+Subject: [PATCH 6/8] soc: mtk-svs: mt8183: Move thermal parsing in new function
+Date: Wed, 28 Sep 2022 17:55:17 +0200
+Message-Id: <20220928155519.31977-7-matthias.bgg@kernel.org>
 X-Mailer: git-send-email 2.37.3
 In-Reply-To: <20220928155519.31977-1-matthias.bgg@kernel.org>
 References: <20220928155519.31977-1-matthias.bgg@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_085540_433517_91D47BF2 
-X-CRM114-Status: GOOD (  14.79  )
+X-CRM114-CacheID: sfid-20220928_085544_030324_D6E458EB 
+X-CRM114-Status: GOOD (  16.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,106 +78,244 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Matthias Brugger <matthias.bgg@gmail.com>
 
-The platform name and efuse parsing function pointer are only used while
-probing the device. Use them from the svs_platform_data struct instead.
+We jumpt to lable remove_mt8183_svsb_mon_mode from different error path
+in the code. Move the thermal parsing in a new function will allow us to
+refactor the code in a subsequent patch. No behavioural changes from
+this commit.
 
 Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
 
- drivers/soc/mediatek/mtk-svs.c | 22 ++++++++++++----------
- 1 file changed, 12 insertions(+), 10 deletions(-)
+ drivers/soc/mediatek/mtk-svs-mt8183.c | 183 +++++++++++++-------------
+ 1 file changed, 95 insertions(+), 88 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 8342627f8dea..482cc8d7e7cf 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -311,14 +311,12 @@ static const u32 svs_regs_v2[] = {
+diff --git a/drivers/soc/mediatek/mtk-svs-mt8183.c b/drivers/soc/mediatek/mtk-svs-mt8183.c
+index a97fcae59dd7..4b538cdefc86 100644
+--- a/drivers/soc/mediatek/mtk-svs-mt8183.c
++++ b/drivers/soc/mediatek/mtk-svs-mt8183.c
+@@ -2,94 +2,14 @@
  
- /**
-  * struct svs_platform - svs platform control
-- * @name: svs platform name
-  * @base: svs platform register base
-  * @dev: svs platform device
-  * @main_clk: main clock for svs bank
-  * @pbank: svs bank pointer needing to be protected by spin_lock section
-  * @banks: svs banks that svs platform supports
-  * @rst: svs platform reset control
-- * @efuse_parsing: svs platform efuse parsing function pointer
-  * @efuse_max: total number of svs efuse
-  * @tefuse_max: total number of thermal efuse
-  * @regs: svs platform registers map
-@@ -327,14 +325,12 @@ static const u32 svs_regs_v2[] = {
-  * @tefuse: thermal efuse data received from NVMEM framework
-  */
- struct svs_platform {
--	char *name;
- 	void __iomem *base;
- 	struct device *dev;
- 	struct clk *main_clk;
- 	struct svs_bank *pbank;
- 	struct svs_bank *banks;
- 	struct reset_control *rst;
--	bool (*efuse_parsing)(struct svs_platform *svsp);
- 	size_t efuse_max;
- 	size_t tefuse_max;
- 	const u32 *regs;
-@@ -2009,7 +2005,7 @@ static bool svs_is_efuse_data_correct(struct svs_platform *svsp)
- 	svsp->efuse_max /= sizeof(u32);
- 	nvmem_cell_put(cell);
+ #include "mtk-svs.h"
  
--	return svsp->efuse_parsing(svsp);
-+	return true;
- }
+-bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
++static int svs_mt8183_efuse_thermal_parsing(struct svs_platform *svsp)
+ {
+ 	struct svs_bank *svsb;
+ 	int format[6], x_roomt[6], o_vtsmcu[5], o_vtsabb, tb_roomt = 0;
+ 	int adc_ge_t, adc_oe_t, ge, oe, gain, degc_cali, adc_cali_en_t;
+ 	int o_slope, o_slope_sign, ts_id;
+-	u32 idx, i, ft_pgm, mts, temp0, temp1, temp2;
+-	int ret;
+-
+-	for (i = 0; i < svsp->efuse_max; i++)
+-		if (svsp->efuse[i])
+-			dev_info(svsp->dev, "M_HW_RES%d: 0x%08x\n",
+-				 i, svsp->efuse[i]);
+-
+-	if (!svsp->efuse[2]) {
+-		dev_notice(svsp->dev, "svs_efuse[2] = 0x0?\n");
+-		return false;
+-	}
+-
+-	/* Svs efuse parsing */
+-	ft_pgm = (svsp->efuse[0] >> 4) & GENMASK(3, 0);
+-
+-	for (idx = 0; idx < svsp->bank_max; idx++) {
+-		svsb = &svsp->banks[idx];
+-
+-		if (ft_pgm <= 1)
+-			svsb->volt_flags |= SVSB_INIT01_VOLT_IGNORE;
++	u32 idx, i, mts, temp0, temp1, temp2;
  
- static struct device *svs_get_subsys_device(struct svs_platform *svsp,
-@@ -2338,9 +2334,7 @@ static int svs_probe(struct platform_device *pdev)
- 		return -ENOMEM;
+-		switch (svsb->sw_id) {
+-		case SVSB_CPU_LITTLE:
+-			svsb->bdes = svsp->efuse[16] & GENMASK(7, 0);
+-			svsb->mdes = (svsp->efuse[16] >> 8) & GENMASK(7, 0);
+-			svsb->dcbdet = (svsp->efuse[16] >> 16) & GENMASK(7, 0);
+-			svsb->dcmdet = (svsp->efuse[16] >> 24) & GENMASK(7, 0);
+-			svsb->mtdes  = (svsp->efuse[17] >> 16) & GENMASK(7, 0);
+-
+-			if (ft_pgm <= 3)
+-				svsb->volt_od += 10;
+-			else
+-				svsb->volt_od += 2;
+-			break;
+-		case SVSB_CPU_BIG:
+-			svsb->bdes = svsp->efuse[18] & GENMASK(7, 0);
+-			svsb->mdes = (svsp->efuse[18] >> 8) & GENMASK(7, 0);
+-			svsb->dcbdet = (svsp->efuse[18] >> 16) & GENMASK(7, 0);
+-			svsb->dcmdet = (svsp->efuse[18] >> 24) & GENMASK(7, 0);
+-			svsb->mtdes  = svsp->efuse[17] & GENMASK(7, 0);
+-
+-			if (ft_pgm <= 3)
+-				svsb->volt_od += 15;
+-			else
+-				svsb->volt_od += 12;
+-			break;
+-		case SVSB_CCI:
+-			svsb->bdes = svsp->efuse[4] & GENMASK(7, 0);
+-			svsb->mdes = (svsp->efuse[4] >> 8) & GENMASK(7, 0);
+-			svsb->dcbdet = (svsp->efuse[4] >> 16) & GENMASK(7, 0);
+-			svsb->dcmdet = (svsp->efuse[4] >> 24) & GENMASK(7, 0);
+-			svsb->mtdes  = (svsp->efuse[5] >> 16) & GENMASK(7, 0);
+-
+-			if (ft_pgm <= 3)
+-				svsb->volt_od += 10;
+-			else
+-				svsb->volt_od += 2;
+-			break;
+-		case SVSB_GPU:
+-			svsb->bdes = svsp->efuse[6] & GENMASK(7, 0);
+-			svsb->mdes = (svsp->efuse[6] >> 8) & GENMASK(7, 0);
+-			svsb->dcbdet = (svsp->efuse[6] >> 16) & GENMASK(7, 0);
+-			svsb->dcmdet = (svsp->efuse[6] >> 24) & GENMASK(7, 0);
+-			svsb->mtdes  = svsp->efuse[5] & GENMASK(7, 0);
+-
+-			if (ft_pgm >= 2) {
+-				svsb->freq_base = 800000000; /* 800MHz */
+-				svsb->dvt_fixed = 2;
+-			}
+-			break;
+-		default:
+-			dev_err(svsb->dev, "unknown sw_id: %u\n", svsb->sw_id);
+-			return false;
+-		}
+-	}
+-
+-	ret = svs_thermal_efuse_get_data(svsp);
+-	if (ret)
+-		return false;
+-
+-	/* Thermal efuse parsing */
+ 	adc_ge_t = (svsp->tefuse[1] >> 22) & GENMASK(9, 0);
+ 	adc_oe_t = (svsp->tefuse[1] >> 12) & GENMASK(9, 0);
  
- 	svsp->dev = &pdev->dev;
--	svsp->name = svsp_data->name;
- 	svsp->banks = svsp_data->banks;
--	svsp->efuse_parsing = svsp_data->efuse_parsing;
- 	svsp->regs = svsp_data->regs;
- 	svsp->bank_max = svsp_data->bank_max;
+@@ -121,11 +41,11 @@ bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
+ 		    o_vtsabb < -8 || o_vtsabb > 484 ||
+ 		    degc_cali < 1 || degc_cali > 63) {
+ 			dev_err(svsp->dev, "bad thermal efuse, no mon mode\n");
+-			goto remove_mt8183_svsb_mon_mode;
++			return -1;
+ 		}
+ 	} else {
+ 		dev_err(svsp->dev, "no thermal efuse, no mon mode\n");
+-		goto remove_mt8183_svsb_mon_mode;
++		return -1;
+ 	}
  
-@@ -2351,6 +2345,12 @@ static int svs_probe(struct platform_device *pdev)
- 	if (!svs_is_efuse_data_correct(svsp)) {
- 		dev_notice(svsp->dev, "efuse data isn't correct\n");
- 		ret = -EPERM;
-+		goto svs_probe_free_efuse;
+ 	ge = ((adc_ge_t - 512) * 10000) / 4096;
+@@ -168,7 +88,7 @@ bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
+ 			break;
+ 		default:
+ 			dev_err(svsb->dev, "unknown sw_id: %u\n", svsb->sw_id);
+-			goto remove_mt8183_svsb_mon_mode;
++			return -1;
+ 		}
+ 
+ 		temp0 = (degc_cali * 10 / 2);
+@@ -183,12 +103,99 @@ bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
+ 		svsb->bts = (temp0 + temp2 - 250) * 4 / 10;
+ 	}
+ 
+-	return true;
++	return 0;
++}
++
++bool svs_mt8183_efuse_parsing(struct svs_platform *svsp)
++{
++	struct svs_bank *svsb;
++	u32 idx, i, ft_pgm;
++	int ret;
++
++	for (i = 0; i < svsp->efuse_max; i++)
++		if (svsp->efuse[i])
++			dev_info(svsp->dev, "M_HW_RES%d: 0x%08x\n",
++				 i, svsp->efuse[i]);
++
++	if (!svsp->efuse[2]) {
++		dev_notice(svsp->dev, "svs_efuse[2] = 0x0?\n");
++		return false;
 +	}
 +
-+	if (!svsp_data->efuse_parsing(svsp)) {
-+		dev_notice(svsp->dev, "efuse data parsing failed\n");
-+		ret = -EPERM;
- 		goto svs_probe_free_resource;
- 	}
++	/* Svs efuse parsing */
++	ft_pgm = (svsp->efuse[0] >> 4) & GENMASK(3, 0);
  
-@@ -2367,7 +2367,7 @@ static int svs_probe(struct platform_device *pdev)
- 	}
- 
- 	ret = devm_request_threaded_irq(svsp->dev, svsp_irq, NULL, svs_isr,
--					IRQF_ONESHOT, svsp->name, svsp);
-+					IRQF_ONESHOT, svsp_data->name, svsp);
- 	if (ret) {
- 		dev_err(svsp->dev, "register irq(%d) failed: %d\n",
- 			svsp_irq, ret);
-@@ -2416,11 +2416,13 @@ static int svs_probe(struct platform_device *pdev)
- 	clk_disable_unprepare(svsp->main_clk);
- 
- svs_probe_free_resource:
--	if (!IS_ERR_OR_NULL(svsp->efuse))
--		kfree(svsp->efuse);
- 	if (!IS_ERR_OR_NULL(svsp->tefuse))
- 		kfree(svsp->tefuse);
- 
-+svs_probe_free_efuse:
-+	if (!IS_ERR_OR_NULL(svsp->efuse))
-+		kfree(svsp->efuse);
+-remove_mt8183_svsb_mon_mode:
+ 	for (idx = 0; idx < svsp->bank_max; idx++) {
+ 		svsb = &svsp->banks[idx];
+-		svsb->mode_support &= ~SVSB_MODE_MON;
 +
- 	return ret;
- }
++		if (ft_pgm <= 1)
++			svsb->volt_flags |= SVSB_INIT01_VOLT_IGNORE;
++
++		switch (svsb->sw_id) {
++		case SVSB_CPU_LITTLE:
++			svsb->bdes = svsp->efuse[16] & GENMASK(7, 0);
++			svsb->mdes = (svsp->efuse[16] >> 8) & GENMASK(7, 0);
++			svsb->dcbdet = (svsp->efuse[16] >> 16) & GENMASK(7, 0);
++			svsb->dcmdet = (svsp->efuse[16] >> 24) & GENMASK(7, 0);
++			svsb->mtdes  = (svsp->efuse[17] >> 16) & GENMASK(7, 0);
++
++			if (ft_pgm <= 3)
++				svsb->volt_od += 10;
++			else
++				svsb->volt_od += 2;
++			break;
++		case SVSB_CPU_BIG:
++			svsb->bdes = svsp->efuse[18] & GENMASK(7, 0);
++			svsb->mdes = (svsp->efuse[18] >> 8) & GENMASK(7, 0);
++			svsb->dcbdet = (svsp->efuse[18] >> 16) & GENMASK(7, 0);
++			svsb->dcmdet = (svsp->efuse[18] >> 24) & GENMASK(7, 0);
++			svsb->mtdes  = svsp->efuse[17] & GENMASK(7, 0);
++
++			if (ft_pgm <= 3)
++				svsb->volt_od += 15;
++			else
++				svsb->volt_od += 12;
++			break;
++		case SVSB_CCI:
++			svsb->bdes = svsp->efuse[4] & GENMASK(7, 0);
++			svsb->mdes = (svsp->efuse[4] >> 8) & GENMASK(7, 0);
++			svsb->dcbdet = (svsp->efuse[4] >> 16) & GENMASK(7, 0);
++			svsb->dcmdet = (svsp->efuse[4] >> 24) & GENMASK(7, 0);
++			svsb->mtdes  = (svsp->efuse[5] >> 16) & GENMASK(7, 0);
++
++			if (ft_pgm <= 3)
++				svsb->volt_od += 10;
++			else
++				svsb->volt_od += 2;
++			break;
++		case SVSB_GPU:
++			svsb->bdes = svsp->efuse[6] & GENMASK(7, 0);
++			svsb->mdes = (svsp->efuse[6] >> 8) & GENMASK(7, 0);
++			svsb->dcbdet = (svsp->efuse[6] >> 16) & GENMASK(7, 0);
++			svsb->dcmdet = (svsp->efuse[6] >> 24) & GENMASK(7, 0);
++			svsb->mtdes  = svsp->efuse[5] & GENMASK(7, 0);
++
++			if (ft_pgm >= 2) {
++				svsb->freq_base = 800000000; /* 800MHz */
++				svsb->dvt_fixed = 2;
++			}
++			break;
++		default:
++			dev_err(svsb->dev, "unknown sw_id: %u\n", svsb->sw_id);
++			return false;
++		}
++	}
++
++	ret = svs_thermal_efuse_get_data(svsp);
++	if (ret)
++		return false;
++
++	ret = svs_mt8183_efuse_thermal_parsing(svsp);
++	if (ret) {
++		for (idx = 0; idx < svsp->bank_max; idx++) {
++			svsb = &svsp->banks[idx];
++			svsb->mode_support &= ~SVSB_MODE_MON;
++		}
+ 	}
  
+ 	return true;
 -- 
 2.37.3
 
