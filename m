@@ -4,66 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5AF3C32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 13:44:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F0BAC04A95
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 13:59:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZNpNb13tUWVPOOyCeFQQgqnR1qYkgzR8LXZVkmGqWAg=; b=VsY4Kownsd1vUAV1cxYQ95PPhO
-	C1dMPCHz5PcNsRz6KXSOz1fIxw6Ujc0KbO7I4uiGrNctqUc+rbSuJ7CmJqTM2KG50c+XmQJ2x8Hbe
-	Xinbn2NuoI45XgTxReqjLCcsPIoXnFr5HShKQL/pmtjm/BDzgTP16aaqt+bAD9zIBQxpEFaE7VbH8
-	3VhPm0Fr56agmuTKidzbuHVLqpVUv6MGZXCu3jCJpocLS65V1EDfgOeiRQCEaEDMLyI8kymoG9xyp
-	5H1CsXS6Vk2kUmjv79RDpl5Aj30CL6Te/DVNZ3BVOf1kI6p+oollIxoqXjkQ+zNS/lZttEWNLqj9W
-	3yyszWhQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lpfVHj+RDccjHYGjeoqa72Pm48ZvPePtdQJtt8JQZXk=; b=rBGLJXxBPtrx8rsm2zLo3CLeif
+	gsJEDCum7/p5XV0tiqEjovSSW41P4W3yHh0Jq2Ph5ZEEffbycHuwL3Qsb+mugWvVTuRjWrNXpUKMV
+	Jmzzujpd0xCfY/FcMywtshE0WE2DKL337iLqXxgDZvhcC6om9d07XDf3Fgj5UgKrrP1Sr3/19auCf
+	sn2ytZDwXL8wmPYK5P5hXJZkSDBEFXxyYrfIy8bPQKIhO8r0O1MnepZFf8gterxOnIsXtAjSecYFr
+	pWhJ49MQhLQP+Vfw/FCzz81YtWKXfQf/B5sSW9SmT+xeNtJkAOr3w72DBTnhhoDNORZptHZZ//hWQ
+	tIhcQaUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odXLu-00GXmy-HL; Wed, 28 Sep 2022 13:43:54 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1odXbH-00Gbss-DT; Wed, 28 Sep 2022 13:59:47 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odXLe-00GXgq-OM; Wed, 28 Sep 2022 13:43:40 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id EEBDC6601FFC;
-	Wed, 28 Sep 2022 14:43:36 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664372617;
-	bh=+RIOMcayb6puczD39TL+7nJiokkWKWlbI7Oy2aC8qbQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Rivs3AOrVx6ktJZpOAaHnhTghpDRhU4a0d52a2eN6LBIcDUYZx8X/rbjXmAHJmICF
-	 OKmXUb4e9iRM/edZpbvxvsxyKqOHX+CfT5Bb4ClQLfrxSRKqteDT8H0MzG9KCIj4XO
-	 AzRJcmgBvCh4kcRvbHdvSvVt2ao/nq2rd7/RRSEsn5qDjD8HBEnDZ2F1yrmFl9ls7X
-	 6fONol+X6XW6JvmIWI8oTZeQe0cA/eGru3SSeXlyf/kuezeFLNVatkPLW6tLDU1eNn
-	 6Rnq/YmhH6+Cj1ErycVA6vgBt0QNLQItevQqMBTWkrXHObwuNRVZb/F8478P+MaDsm
-	 9d6zUA9xtIAFA==
-Message-ID: <5c3765e1-6bfc-2a20-a647-0e651c40f48e@collabora.com>
-Date: Wed, 28 Sep 2022 15:43:35 +0200
+	id 1odXbF-00Gbrr-7e
+	for linux-mediatek@lists.infradead.org; Wed, 28 Sep 2022 13:59:46 +0000
+Received: by mail-ej1-x632.google.com with SMTP id l14so27325342eja.7
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 Sep 2022 06:59:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date;
+        bh=lpfVHj+RDccjHYGjeoqa72Pm48ZvPePtdQJtt8JQZXk=;
+        b=k7Zv4LgRiDjyJBlii7p5vFZBJyFH+e44eYv5nzGTZE46tV5K3r7cHb+eBBoBvLO3lK
+         pl2jh6Ov24srBnGirRzzHwQlgFfyJSVa+OQ0F9nGec98lPOmtgD1O7qeGanfpiiadoG0
+         RYULKpM25+w14uMV1IBmh1BmpIWMDlSM7d5RCPMlt5qWGKCDYyFABRFFit8l4ocl3J8e
+         hihBXWhJriR0F7OpOeJT0VEO2PCGZr4FEGC+6E10GyX2uKwNwJdxiaL1kVQVL4DKaF9B
+         1fWkXvfqgaEhdqQS8fKhxfyF1n7qw0czLzsxTXDQe7B9HIkvxyEJ1OTM4V1nJME+fcAQ
+         MHcw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=lpfVHj+RDccjHYGjeoqa72Pm48ZvPePtdQJtt8JQZXk=;
+        b=4Al1oMDbS2DrYYDaSfWlxhE6kBi6RFjrBqkRAeeDP+lAqlcZWOAbuT0BHdNFAAJn2W
+         fVvFmOhs23TEvf/JR52NeMPRP55DCKjub7Zd3lCl8vQXP7FEU714ktTWKT+lAtZWUtPV
+         HE13HmV16uXHLwtwRmXRaQ5n9n2o6zcYuVhAc/QheQYDnotpvnvZAH/SyEawffmGyBXm
+         M/eSwkdjQsm9jk8l8naTtPhYubCF9h2z/DrJpJscm+krkUyMu1MDq5pnpsmkEbmbHaeB
+         Q40rtUSRovpI1tLGNgH8PscuSkiUoPx5pIs8UCX82hfpIb298mrhh8YIFAJViq9rPWgR
+         OE1A==
+X-Gm-Message-State: ACrzQf3HyUWRaHYKMyz6d/OlvQrdj6/v1LQMPwExEA3+rPb7gHT7fidM
+	osMDFv0pkLAYpGvcrUsOAUZnCS6CZk4=
+X-Google-Smtp-Source: AMsMyM5hBOvEKEWpHZgz3huI7BLk3tHM3vkbt2WoWDY6DRqLKZ5Fj/SdI+SaNpg7MlhI7XgiNtj4uw==
+X-Received: by 2002:a17:907:a04e:b0:770:79f4:f520 with SMTP id gz14-20020a170907a04e00b0077079f4f520mr27033245ejc.730.1664373583736;
+        Wed, 28 Sep 2022 06:59:43 -0700 (PDT)
+Received: from orome (p200300e41f201d00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f20:1d00:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id cm17-20020a0564020c9100b0044838efb8f8sm3387858edb.25.2022.09.28.06.59.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 28 Sep 2022 06:59:42 -0700 (PDT)
+Date: Wed, 28 Sep 2022 15:59:40 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: xinlei.lee@mediatek.com
+Cc: u.kleine-koenig@pengutronix.de, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
+	jitao.shi@mediatek.com, linux-pwm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@list.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH,v2] dt-bindings: pwm: Add compatible for Mediatek MT8188
+Message-ID: <YzRTTGPAstQTnJdZ@orome>
+References: <1663915394-30091-1-git-send-email-xinlei.lee@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH 2/2] usb: mtu3: fix failed runtime suspend in host only
- mode
-Content-Language: en-US
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>,
- Min Guo <min.guo@mediatek.com>, Tianping Fang <tianping.fang@mediatek.com>
-References: <20220928091721.26112-1-chunfeng.yun@mediatek.com>
- <20220928091721.26112-2-chunfeng.yun@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220928091721.26112-2-chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="CmzLNmPwX482UbLD"
+Content-Disposition: inline
+In-Reply-To: <1663915394-30091-1-git-send-email-xinlei.lee@mediatek.com>
+User-Agent: Mutt/2.2.7 (2022-08-07)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_064338_946581_BBFC3B76 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20220928_065945_304934_55C47C83 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,17 +95,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/09/22 11:17, Chunfeng Yun ha scritto:
-> When the dr_mode is "host", after the host enter runtime suspend,
-> the mtu3 can't do it, because the mtu3's device wakeup function is
-> not enabled, instead it's enabled in gadget init function, to fix
-> the issue, init wakeup early in mtu3's probe()
-> 
-> Fixes: 6b587394c65c ("usb: mtu3: support suspend/resume for dual-role mode")
-> Reported-by: Tianping Fang <tianping.fang@mediatek.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+--CmzLNmPwX482UbLD
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Fri, Sep 23, 2022 at 02:43:14PM +0800, xinlei.lee@mediatek.com wrote:
+> From: xinlei lee <xinlei.lee@mediatek.com>
+>=20
+> Add dt-binding documentation of pwm for MediaTek MT8188 SoC.
+>=20
+> Signed-off-by: xinlei lee <xinlei.lee@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 
+Applied, thanks.
+
+Thierry
+
+--CmzLNmPwX482UbLD
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmM0U0wACgkQ3SOs138+
+s6EgCA/8Cln97n5y2+lTHYL2Vh12ctUxVaV7Fh2q63qXOofQ6M8htH+lKEC+g2fp
+ijRlTNFATbA5KZOyJa2MAYHfcdx/hL4fwaEJitMBQoOiusTTAcv204BfC+ag1L+3
+0CB3ayFrPF5mzEYqXvwq0vrQG2ohV86gDAF98O9kmHGMnqnzPEGMKcjz4m4bLGCA
+3bWAlYlBVFRxptoLgc4sQFY4UgYm29JMxvq2QF+wHBC9zzzc0Cnl17bps6gaRzmD
+HSojW19WJn0SJMzRNbZJE0AwX6lHmIQMO6cC2medls2UTiuWPneQDFsF9OdOw9Id
+n9e3gH2NJk4bRl8rrUDy2XnN6YmQM3iYkx7qQjzGaIyaUP9Z9xT5HkXD+atHrQHA
+aK98/D8DrfgM3lUor/3zE6OHdM/aU/pkUNEecWs7gURoQnlgIuwBADi81KZq0JHk
+mG4Dlp1ElDofdhhvqd0o1MZ7H7cRqQKj9iaceY5Z+1n/xo8L8W65jdwdKP7hry3J
+N3WMwlbHC/V/817fNNoEahE4MbwzSUbR/Ogh72Ye9F1Qw4dJ88xKGT/b6nqNZCus
+ZX3W7Ay1pg1jVz/8S9/OnkBmPM+XMDVzga82JuaGZ5Obl7Pqyr4IWgiJX6MTyaCA
+ILG4DBs/H4f6wlIYdek77xYg4Cb3KY3SCM43u8ucYTKW0/+MJHc=
+=ojFY
+-----END PGP SIGNATURE-----
+
+--CmzLNmPwX482UbLD--
 
