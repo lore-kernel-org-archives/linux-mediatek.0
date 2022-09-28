@@ -4,47 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CB67C32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 15:30:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4712C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 15:55:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cfIZ8eq+j3Gh9hP9C827U+sdjbvAAO1vgo3RR0cOEJg=; b=WGC+pgrR8GJoZw1Rjxl3y5Lx+w
-	u1oXGLRvGfd8/hrrUYCYW9ak/eQUuxP48cyu85SZwJLrrqUo0xyBPMRZNyrpIaYDKly0SIR69IZKN
-	CNz55DbgfYBhUoXKMpSM0J011cCzfgPtfh8KrmeJXo+Wf6/pvQVZeUkSuKBPdKMaieVbF399osoNP
-	YfYjktl8CU819/m8EL69zVvtLuNhBsvVWiyg/wqGACilR4JvmcoFz0Lr3w8zLNvDceTstL5a6ZZga
-	8AOLW46MQQQpakolgmZY+KckXhQ4S15HD/1Dv9I1ISQ3RKLbPXxrJT/V+IigP4nAjRfVLmqwD53/q
-	0xvDoR4A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Zkde7XvD7sTr+5siCiMHCEt37fW2eS9UKRT7T3OjxcY=; b=mAIaGYRkFyD8051n0Jn25MVbeb
+	UE2mcZxcRq7aYJDxh8CyGDRvZqVLSOianRuU3/Z/2gm4AIUfhusFEb7b78NPKZSBK7/pEPkYaEPV0
+	bnEMOL1gDmgg/r1HzKY5DpI0FI/HS5jQ6ifUSPmekSHYTgzlApSWq3QMZApzaWKMoinmm5+KF5qur
+	3B6Wra1Je6BqoUnU6ILPyCF5BJFZLKRh4WyaGhpCqWAKf5pULEi93f7zqXfs9YSk3aMClYsfBRpw9
+	0snbkM5D8CcvXA10QHOuGn3U+BwqMvlfKnO0Th6Skn+t2s6IGU8DThuL6w/qYD8q2/4NK+aDPGdPy
+	aOpERIeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odZ0j-00GuP9-1a; Wed, 28 Sep 2022 15:30:09 +0000
-Received: from netrider.rowland.org ([192.131.102.5])
-	by bombadil.infradead.org with smtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odZ0g-00GuNU-2d
-	for linux-mediatek@lists.infradead.org; Wed, 28 Sep 2022 15:30:07 +0000
-Received: (qmail 490088 invoked by uid 1000); 28 Sep 2022 11:30:05 -0400
-Date: Wed, 28 Sep 2022 11:30:05 -0400
-From: Alan Stern <stern@rowland.harvard.edu>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-  Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
-  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
-  linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>,
-  Min Guo <min.guo@mediatek.com>, Tianping Fang <tianping.fang@mediatek.com>,
-  Stable@vger.kernel.org
-Subject: Re: [PATCH 1/2] usb: mtu3: fix ep0's stall of out data stage
-Message-ID: <YzRofTAx+3pPCbrL@rowland.harvard.edu>
-References: <20220928091721.26112-1-chunfeng.yun@mediatek.com>
+	id 1odZPP-00GzIv-Vp; Wed, 28 Sep 2022 15:55:39 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1odZPF-00GzFa-4w; Wed, 28 Sep 2022 15:55:30 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E7D9161F11;
+	Wed, 28 Sep 2022 15:55:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A339FC43146;
+	Wed, 28 Sep 2022 15:55:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1664380527;
+	bh=RIn6sZf4k88Tnw5v3eTqACWbQ/KJxG3w+Kp9KpVeALg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=bCY3qTb4/+dYc65wXDwqxgoTq77tM2XbIZQRImu59q9I62cckO9dRTEjEj6UD4hmE
+	 wZyAoOcjXJzhmftW6Lz6yXZn43NBhnX9mdwFYKcBDjx9gJBL2Zj+i9cklfFFOmAj9T
+	 z7mfUe+nEsVuEg45jVQnzNTM3BHoUcw7z5yXsmiWDLNWq4KbikSPO07vuo/h+xXI9M
+	 Js39IvW3fVprP5SbBVTfdpbevt6LzayhsBHd8rNhHaR4RpwnYqFXSdX78pVg7vlWfN
+	 oznf0AHJWiDYVmtvIG+5o/OwjOCNM+ak86TAQS1IkUzXCM/pqu7+rIy7NFDJmqDy4u
+	 xS6IeGGAafKog==
+From: matthias.bgg@kernel.org
+To: roger.lu@mediatek.com,
+	jia-wei.chang@mediatek.com
+Cc: nfraprado@collabora.com,
+	khilman@baylibre.com,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	angelogioacchino.delregno@collabora.com,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [PATCH 0/8] soc: mediatek: mtk-svs: refactor and cleanup the driver
+Date: Wed, 28 Sep 2022 17:55:11 +0200
+Message-Id: <20220928155519.31977-1-matthias.bgg@kernel.org>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220928091721.26112-1-chunfeng.yun@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_083006_276325_A315413F 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20220928_085529_271996_DF5D251A 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,31 +75,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 28, 2022 at 05:17:20PM +0800, Chunfeng Yun wrote:
-> It happens when enable uvc function, the flow as below:
-> the controller switch to data stage, then call
->     -> foward_to_driver() -> composite_setup() -> uvc_function_setup(),
-> it send out an event to user layer to notify it call
->     -> ioctl() -> uvc_send_response() -> usb_ep_queue(),
-> but before the user call ioctl to queue ep0's buffer, the host already send
-> out data, but the controller find that no buffer is queued to receive data,
-> it send out STALL handshake.
-> 
-> To fix the issue, don't send out ACK of setup stage to switch to out data
-> stage until the buffer is available.
+From: Matthias Brugger <matthias.bgg@gmail.com>
 
-You might find it is better to use the delayed_status routines already 
-present in the Gadget core.  Instead of delaying the response to the 
-Setup packet of the second control transfer, delay the status response 
-to the first control transfer.
+Mediatek SVS driver got accepted upstream but has coding style issues
+which were overseen in the review process. This series is a first step
+to clean up the driver. It basically cleans up the SoC specific probe.
+As next step we will need to clean up the 'struct svs_bank'.
 
-This approach has the advantage of working even when the second transfer 
-is not control but something else, such as bulk.
+This series should be a mere cleanup with no functional change. I'm
+happy to recieve tested-by tags to make sure it does not break anything.
 
-Also it agrees better with the way the USB spec intends control 
-transfers to work.  The UDC is not supposed to complete the status stage 
-of a control transfer until the gadget has fully processed the 
-transfer's information and is ready to go forward.
 
-Alan Stern
+Matthias Brugger (8):
+  soc: mediatek: mtk-svs: clean up platform probing
+  soc: mediatek: mtk-svs: improve readability of platform_probe
+  soc: mediatek: mtk-svs: move svs_platform_probe into probe
+  soc: mediatek: mtk-svs: delete superfluous platform data entries
+  soc: mediatek: mtk-svs: Move SoC specific functions to new files
+  soc: mtk-svs: mt8183: Move thermal parsing in new function
+  soc: mtk-svs: mt8183: refactor o_slope calculation
+  soc: mtk-svs: mt8192: fix bank data
+
+ drivers/soc/mediatek/Makefile         |   3 +-
+ drivers/soc/mediatek/mt8183-svs.h     | 113 ++++
+ drivers/soc/mediatek/mt8192-svs.h     |  64 ++
+ drivers/soc/mediatek/mtk-svs-mt8183.c | 235 +++++++
+ drivers/soc/mediatek/mtk-svs-mt8192.c |  98 +++
+ drivers/soc/mediatek/mtk-svs.c        | 882 ++------------------------
+ drivers/soc/mediatek/mtk-svs.h        | 279 ++++++++
+ 7 files changed, 853 insertions(+), 821 deletions(-)
+ create mode 100644 drivers/soc/mediatek/mt8183-svs.h
+ create mode 100644 drivers/soc/mediatek/mt8192-svs.h
+ create mode 100644 drivers/soc/mediatek/mtk-svs-mt8183.c
+ create mode 100644 drivers/soc/mediatek/mtk-svs-mt8192.c
+ create mode 100644 drivers/soc/mediatek/mtk-svs.h
+
+-- 
+2.37.3
+
 
