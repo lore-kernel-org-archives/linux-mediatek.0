@@ -4,52 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ADC7C32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 11:06:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88B08C32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 11:06:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MN3nxq5g6hX09F9vsW86ESfKbMSAEPh2i6PCUaRTs6Y=; b=Nk9b0UQ/hUddM8r2ccMfWxdw3L
-	TLQmgP9qVjMk5DsmDIMtuMcZnivDM5mWvpQrJnY2+hKstscAYTM2FFiEYLXjFDkZCkzagA7QQMrA0
-	WX/MlaM1cJCs9KElnw2yKZEV1g6K/iU0BZ7WEKofb/17E8wIYy3jGWAG7KbTiF6vJNIoSyDuxhp0z
-	CdAI/l96jj/2QhQYrQzWnSZ1+l2O9VEY442hIgdHSSePmW0Rxr+LqaW8jpSshnV+lV4vKj4hEHHgz
-	rA7A194t16alo9g+LuO0SSTGdbbZGvahBFAbCceaehd3RY7+gRPYetB5L53WghSglqJON486UQCGQ
-	h89QwjNQ==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Z8AkCuVifU5zwCzq1TAZdFFy/YIu3ZJg8AhDMw4VC6U=; b=NEuybQGuFAUhzqPwKTmbbBfK2G
+	cDz3C2s4uqwzs9PsNlRKOgxOq5hSqchKke2YoSXq5DCe4vP3msM9tn0WQf2nduFZuoTFngNsq69+s
+	BP3Tr6C+gO7WtGF2Oq9/lt5TLEhU9xQ+zbxPriChYnBGNxy5jeJmA5lLD0tRTyB0osDruZvPz/9rw
+	YvQwLhvXgEOyfJbZrRop94WZF7Q6Fuaru4xQdYBMjeiqn/PGC16uZp5XJ8OwxgirRLwGSzBGSruKz
+	Y+A7s9cro3k2Ucb+ufn+ukAKF+jwdQiWxRetlLRYqzo2YZSE7rTkAsnsaQSVDEND3sbVGhOG8/nR6
+	4j1CPr7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odUt4-00FqJz-0W; Wed, 28 Sep 2022 11:05:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1odUtb-00Fqa6-53; Wed, 28 Sep 2022 11:06:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odUt0-00FqFy-JX; Wed, 28 Sep 2022 11:05:56 +0000
-X-UUID: f363f5560068476d86160f56bf2049ad-20220928
+	id 1odUtY-00FqXw-Bf; Wed, 28 Sep 2022 11:06:29 +0000
+X-UUID: cc5d9026f2124ff6946b051c772ab0e4-20220928
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=MN3nxq5g6hX09F9vsW86ESfKbMSAEPh2i6PCUaRTs6Y=;
-	b=BSxKNic9rFL6Oo2GPBdxe9AWXaK1xiOhgGtQSukrQ9dv8QqGyZtOm1BNi9s84KRPkK5R1Vs1qlcwKIZgvghvJ/CXVbkUzc+XpTTmrX/a7ChK8PKxeT/AP6b7G03SGHG+zoALrO8Bw1T4mrwR/7lxihLrZzJBGLRSeTqPddX42Ac=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Z8AkCuVifU5zwCzq1TAZdFFy/YIu3ZJg8AhDMw4VC6U=;
+	b=ChKYJHQV4oDEJybKctphjvJcCaAyVTWJSEN1iZOTODh/HEPfFYEXyyZ/Ea3e+hvYDO3YfPjk/Igvk6dDNuKXqAkug9QZzTHpUVYUxaFmp+vFtIpEm6NjA6LCdvVoeQN1kT/lSjDqUX2kTUA69o1YVJxBajGqLy9WWoNvj6Ywq+Q=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:569c8ca4-47ad-42ca-aa81-0811b6791b82,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:90
-X-CID-INFO: VERSION:1.1.11,REQID:569c8ca4-47ad-42ca-aa81-0811b6791b82,IP:0,URL
-	:0,TC:0,Content:-5,EDM:0,RT:0,SF:95,FILE:0,BULK:0,RULE:Spam_GS981B3D,ACTIO
-	N:quarantine,TS:90
-X-CID-META: VersionHash:39a5ff1,CLOUDID:1e905ea3-dc04-435c-b19b-71e131a5fc35,B
-	ulkID:220928190544LN0EGNU0,BulkQuantity:0,Recheck:0,SF:38|28|17|19|48,TC:n
-	il,Content:0,EDM:-3,IP:nil,URL:1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: f363f5560068476d86160f56bf2049ad-20220928
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-CID-O-INFO: VERSION:1.1.11,REQID:3c2c6230-49ca-4822-a0a5-e204354281a0,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:996285e4-87f9-4bb0-97b6-34957dc0fbbe,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: cc5d9026f2124ff6946b051c772ab0e4-20220928
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <jianhua.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1189363383; Wed, 28 Sep 2022 04:05:43 -0700
+	with ESMTP id 1175939930; Wed, 28 Sep 2022 04:06:21 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 28 Sep 2022 19:05:38 +0800
+ 15.2.792.15; Wed, 28 Sep 2022 19:05:47 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 28 Sep 2022 19:05:37 +0800
+ Transport; Wed, 28 Sep 2022 19:05:46 +0800
 From: Jianhua Lin <jianhua.lin@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -59,17 +56,20 @@ CC: <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jianhua Lin
-	<jianhua.lin@mediatek.com>
-Subject: [PATCH v2, 0/2] Add MT8188 jpeg encoder and decoder compatible
-Date: Wed, 28 Sep 2022 19:05:32 +0800
-Message-ID: <20220928110534.4756-1-jianhua.lin@mediatek.com>
+	<jianhua.lin@mediatek.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2, 1/2] dt-bindings: media: mediatek-jpeg-decoder: Add MT8188 compatible string
+Date: Wed, 28 Sep 2022 19:05:33 +0800
+Message-ID: <20220928110534.4756-2-jianhua.lin@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220928110534.4756-1-jianhua.lin@mediatek.com>
+References: <20220928110534.4756-1-jianhua.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_040554_650251_B6DBA9D5 
-X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-CacheID: sfid-20220928_040628_411676_44C7411F 
+X-CRM114-Status: UNSURE (   9.90  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,24 +85,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series patches dependent on: 
-media_stage tree:
-https://git.linuxtv.org/media_stage.git/
-commit/?id=7ce22e9229f216c638426a854efd5bd127b24
+Add compatible for MT8188 jpeg decoder.
 
-Changes compared with v1:
-- rebase v1, no change.
- 
-Jianhua Lin (2):
-  dt-bindings: media: mediatek-jpeg-decoder: Add MT8188 compatible
-    string
-  dt-bindings: media: mediatek-jpeg-encoder: Add MT8188 compatible
-    string
-
+Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
  .../devicetree/bindings/media/mediatek-jpeg-decoder.yaml         | 1 +
- .../devicetree/bindings/media/mediatek-jpeg-encoder.yaml         | 1 +
- 2 files changed, 2 insertions(+)
+ 1 file changed, 1 insertion(+)
 
+diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+index 052e752157b4..3c77adfa320c 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+@@ -22,6 +22,7 @@ properties:
+       - items:
+           - enum:
+               - mediatek,mt7623-jpgdec
++              - mediatek,mt8188-jpgdec
+           - const: mediatek,mt2701-jpgdec
+ 
+   reg:
 -- 
 2.18.0
 
