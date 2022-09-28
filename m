@@ -4,66 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D506DC04A95
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 09:23:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B029AC32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 09:24:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oBUNOKwksJ5/FO9gSAvNBUj6kkAQRn0Ke6+TRV7hb+c=; b=uu/sHjWLLVY26mONMLP7YRRWP6
-	FXO/k8wQRKMT6WK5l5BkhDDc2LRndKS/sGmCviYonkK3RByYS6RkGaSI4j/5fSpH+NX+Ori8FS9jg
-	qbnoQKII847LjDxCJP+ljnERNL+w/vOChUWTPpvXDrlgVWBOQW6osX2Nqm7C6uZUCNXPNGiCenLHN
-	Hrb22QHX2NpLlpkrtDeVhG315DJyFILr0df0legh0VwWnJVks+dBYiak+flxPnFZiM1KGb6UwtNge
-	wa1ISKDdKHumkPeqrGoA1txENWm8LwhWpDcyYg79b1QjBNQ4DypSho81iR6zEKk68R9EAoL6vNT80
-	MeIAFfQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oVDBocalE6iH6BUbpNZ/+kTn1nGjDCnsZXt//IzMZh0=; b=vL7/JZeJRxAaMgRyupk59Iyeeb
+	uDI+mspxjzJUm8loO7Ie7+CBZbvzGRVDL8S6u9blxkEbSmI06cmaNwozZMMChVAZIOxph0sxvSzbV
+	ZUHfhSIv3cLK8pHhLy10Bx8tzs9HSKZCq4eh6d5KMn2XSJ9JAW6QI+vLcpzoZEW+4FFPDy+tFy235
+	blaPndeSVnieAgP739+H8037+Ft94VU5AIRqu60h+WW6XIGXAIwdDnrNm7WRqluZl7hNQ6Q+d5qg3
+	6K7HpU6rbnWi4vFugBnIVhogIteQd7rHHEmzwyr7jmOmsl6tuyroWHYCiUD4hyDUIjvk0x5f9sfAq
+	SH6v21aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odTHv-00FAcT-R5; Wed, 28 Sep 2022 09:23:31 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1odTIU-00FAnZ-1B; Wed, 28 Sep 2022 09:24:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odTHs-00FAbI-Pg; Wed, 28 Sep 2022 09:23:30 +0000
-X-UUID: 0e3ba9cbd84e4c50be3b2bd62543ff87-20220928
+	id 1odTIG-00FAjH-G2; Wed, 28 Sep 2022 09:23:53 +0000
+X-UUID: c34711efd70a4462b558c5f8cc7ad190-20220928
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=oBUNOKwksJ5/FO9gSAvNBUj6kkAQRn0Ke6+TRV7hb+c=;
-	b=vDaQDgOpez47fgtvQKGSIbYnvo1B98x20oBftbTKdWIGJzUCdjSuE0LPRcCwMgGuzKP3xhSwgfplf1hv6vBWFh8SUcCT+CIGunmMerwbsEVpkqoosTDFakz5mXx8pm2tv1tD+E38zVfSi4oxIdKMSyNDnOc7IYehK3YCoeAzdXI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oVDBocalE6iH6BUbpNZ/+kTn1nGjDCnsZXt//IzMZh0=;
+	b=EYGDfCU/QEIUz1FkSN97nBKh8xquMrznVONw6/UXRDLxV7rXSsdJsP1opBmKFfwpfsYeoUHLliFVXdVnyxd/A72+WL7/IT/oFUOEX4eWZpDIGZVJghdYECNW0n5fXcNrZSgNeRlTMagpCgquEaWQv3rx52/kyXLadkINtNMaAoc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:8968f056-e352-492b-9271-e3ea3c2c5bf6,IP:0,U
+X-CID-O-INFO: VERSION:1.1.11,REQID:876a1892-69d4-465c-91c6-a1a78a954cd4,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:e59782e4-87f9-4bb0-97b6-34957dc0fbbe,B
+X-CID-META: VersionHash:39a5ff1,CLOUDID:75cd5ba3-dc04-435c-b19b-71e131a5fc35,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 0e3ba9cbd84e4c50be3b2bd62543ff87-20220928
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <garmin.chang@mediatek.com>)
+X-UUID: c34711efd70a4462b558c5f8cc7ad190-20220928
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <jianguo.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 472844718; Wed, 28 Sep 2022 02:23:23 -0700
+	with ESMTP id 1442808454; Wed, 28 Sep 2022 02:23:47 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 28 Sep 2022 16:43:19 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3;
+ Wed, 28 Sep 2022 17:23:14 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 28 Sep 2022 16:43:18 +0800
-From: Garmin.Chang <Garmin.Chang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Garmin.Chang <Garmin.Chang@mediatek.com>
-Subject: [PATCH v2 0/2]  Add power domain support for MT8188
-Date: Wed, 28 Sep 2022 16:43:13 +0800
-Message-ID: <20220928084315.29187-1-Garmin.Chang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ Transport; Wed, 28 Sep 2022 17:23:13 +0800
+From: Jianguo Zhang <jianguo.zhang@mediatek.com>
+To: "David S . Miller" <davem@davemloft.net>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, Biao Huang
+	<biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Jianguo Zhang <jianguo.zhang@mediatek.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski@linaro.org>
+Subject: [resend PATCH v6 2/4] dt-bindings: net: snps,dwmac: add new property snps,clk-csr
+Date: Wed, 28 Sep 2022 17:23:06 +0800
+Message-ID: <20220928092308.26019-3-jianguo.zhang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220928092308.26019-1-jianguo.zhang@mediatek.com>
+References: <20220928092308.26019-1-jianguo.zhang@mediatek.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_022328_860740_945EE6FE 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20220928_022352_567422_0547C003 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +91,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Base on tag: next-20220927, linux-next/master
-The power domain driver manages to power up/down MediaTek MT8188 chip.
+Add description for new property snps,clk-csr in binding file
 
-changes since v1:
-- add more description to this series
-- remove change-id
-- align as the same indention
-- remove redundant parentheses
+Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ Documentation/devicetree/bindings/net/snps,dwmac.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Garmin.Chang (2):
-  dt-bindings: power: Add MT8188 power domains
-  soc: mediatek: pm-domains: Add support for mt8188
-
- .../power/mediatek,power-controller.yaml      |   2 +
- drivers/soc/mediatek/mt8188-pm-domains.h      | 623 ++++++++++++++++++
- drivers/soc/mediatek/mtk-pm-domains.c         |   5 +
- .../dt-bindings/power/mediatek,mt8188-power.h |  44 ++
- include/linux/soc/mediatek/infracfg.h         | 121 ++++
- 5 files changed, 795 insertions(+)
- create mode 100644 drivers/soc/mediatek/mt8188-pm-domains.h
- create mode 100644 include/dt-bindings/power/mediatek,mt8188-power.h
-
+diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+index 491597c02edf..4d5a56661322 100644
+--- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+@@ -288,6 +288,11 @@ properties:
+       is supported. For example, this is used in case of SGMII and
+       MAC2MAC connection.
+ 
++  snps,clk-csr:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      Frequency division factor for MDC clock.
++
+   mdio:
+     $ref: mdio.yaml#
+     unevaluatedProperties: false
 -- 
-2.18.0
+2.25.1
 
 
