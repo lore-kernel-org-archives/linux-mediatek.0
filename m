@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC693C04A95
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 18:16:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55C33C6FA82
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 18:16:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OPp3w6qhxEKrBy5KsVMHnU2pm970t/p8oyDozJAw2Nk=; b=WG+rgb3/QJSSGimY7MGcy5SoRP
-	gxWd+uRLMsvhD0H90pCco8unoBi60/DULV81hXAgP0P8Qf6UV+iDHDTqOhLMBIMmiwwmLWB3r4TMD
-	xg6m4j1KDltyN4JmqRYGTEaFaK5qSm/yTYLtrErh/odsYw3+aeLxzIBPVUt48eGDzrKZtbKT6Vhxv
-	AnJOhKlH1pOANOTVMYnEXr3zUuzv4qvYOJkR6iF6x7/bZFu0YovYTSeVWUo2YZCmtxiO8aIdDsEYR
-	QbdgnDu0ynkrTsy/XTqkh4DBU5sAx2U0ss2OSHGRLp9yVP/fdywNUKJGKlIHoYxnTKXEYLivsNpTt
-	rsx/AD6g==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OPp3w6qhxEKrBy5KsVMHnU2pm970t/p8oyDozJAw2Nk=; b=4fl2JMu39/Ih+YnQk8d0Ba7AU+
+	KSDc12IZe+ICwZLDG4tzQwL50t+qnmdMJ1/kthvpLhWyrucD4zTVjhI55MyL6DIi8s/dxvZysy4aq
+	5kdjgByzO4MivfTJOYZnhPfeGY8bONOHxBHFPKcbbobwSkfX2kii+JjTWX6qPsLB2uYlgXUB8/XXP
+	qHJ9mJRj6gBY1x6XVsqiqlrI2b+AebN0b4jUALt//qgHSJZMp599rlZ+vJOaVl0VwR+02qnwk8Zk2
+	sJ2k8QcaPSRh5VhiCsvZEVO8Nw/YBCiyCSwR9orEp1v+vNTzOi/8qc1Nt46CI1OZkXBI+B3dyNsHw
+	r+6C5jYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odbbe-00HXmW-OB; Wed, 28 Sep 2022 18:16:26 +0000
+	id 1odbbd-00HXm2-Jd; Wed, 28 Sep 2022 18:16:25 +0000
 Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odbb2-00HXUJ-G5; Wed, 28 Sep 2022 18:15:51 +0000
+	id 1odbb2-00HXUI-GE; Wed, 28 Sep 2022 18:15:51 +0000
 Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 42E951884BE5;
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 298421884BE3;
 	Wed, 28 Sep 2022 18:15:41 +0000 (UTC)
 Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 39ED02500709;
+	by mailout.gigahost.dk (Postfix) with ESMTP id 20CFB25005A8;
 	Wed, 28 Sep 2022 18:15:41 +0000 (UTC)
 Received: by smtp.gigahost.dk (Postfix, from userid 0)
-	id 269CF9EC000D; Wed, 28 Sep 2022 18:15:41 +0000 (UTC)
+	id 16EF29120FED; Wed, 28 Sep 2022 18:15:41 +0000 (UTC)
 X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id 26EAA9120FED;
-	Wed, 28 Sep 2022 17:52:14 +0000 (UTC)
+	by smtp.gigahost.dk (Postfix) with ESMTPSA id 6177A9120FED;
+	Wed, 28 Sep 2022 15:06:32 +0000 (UTC)
 From: Hans Schultz <netdev@kapio-technology.com>
 To: davem@davemloft.net,
 	kuba@kernel.org
@@ -78,14 +78,16 @@ Cc: netdev@vger.kernel.org,
 	bridge@lists.linux-foundation.org,
 	linux-kselftest@vger.kernel.org
 Subject: [PATCH v6 net-next 9/9] selftests: forwarding: add test of MAC-Auth Bypass to locked port tests
-Date: Wed, 28 Sep 2022 19:49:04 +0200
-Message-Id: <20220928174904.117131-1-netdev@kapio-technology.com>
+Date: Wed, 28 Sep 2022 17:02:56 +0200
+Message-Id: <20220928150256.115248-10-netdev@kapio-technology.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220928150256.115248-1-netdev@kapio-technology.com>
+References: <20220928150256.115248-1-netdev@kapio-technology.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_111548_909683_1E1CB82F 
-X-CRM114-Status: GOOD (  19.46  )
+X-CRM114-CacheID: sfid-20220928_111548_899452_7D8CB3F1 
+X-CRM114-Status: GOOD (  19.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
