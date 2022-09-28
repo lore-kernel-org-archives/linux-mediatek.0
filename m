@@ -4,66 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE9DCC07E9D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Sep 2022 21:14:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EE2EC07E9D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 01:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z871mNbT1f8dd59nopb5pY2BsP90kbSxBo7oDOCP3og=; b=ROGngjQ+qimHbfqofIVMVQ9lSM
-	bybviQ5tt+T7dYjyXpYWR8k4+uojYG53CMXIAgajyA6/DYvoqQLVgpEEzr/stwkYprQiHtcFgQTbR
-	UtTe4xvIQEZUIMXYYsuuw3nMLqE6AxwUDolqLglMSeSW8QAxTD+MLdr8RzJkvLbCU+/fzTTRCfswz
-	d02bb29uaNJgJ66iLMF5dxDWu0d6B42qt5mPXpCYmeL6CnqBecxnVok5CKWkHNf9/HHeGFTjPWXA7
-	EJE51aPw+J6wzbMheZ+qzvhQ2MfnURROwsiN6InrXsZX7e4sLnlAd3RQNVPXIqTc2X07NBHVYb6Bv
-	8LLb81YA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+vcQPBkBeQ7JaBifSpdE8pOq4VaZyWMON9r7U4nkSnY=; b=xooSh/svmVo5zm9PNwrjWMaUH3
+	Z42Xlq82tOTBbOLBTeoefEBx5lmzAKzcK5oOvF7+lkn5eQYC0cXvzSVEjK5YnYsKnZ9+1pxARvyrn
+	efnt4iwR9mhPB+fQSHPeKgVQXZXFfQoCe9+Y6b76NAeuBdv0bijvn3tDObCQmcSNI2N9p9ZFd/t0l
+	he7A7p7hbmO3adS/MS+iqeURg5DCYVhq4IhMTdItMnu1CvLOND7xHj2eqWMSMKZcukuITfuHVef7q
+	NQ/y8oKZ5EitP7Yu2y9bZoUcfursm9NDCH790ZyVGKike0vi/VKAD+OVjrNKL2My4eqj2Rpb8STj9
+	YumrxfIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odHtw-00CgGc-I2; Tue, 27 Sep 2022 21:14:00 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1odLpQ-00DQzw-A6; Wed, 28 Sep 2022 01:25:36 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odHti-00CgAl-FG; Tue, 27 Sep 2022 21:13:48 +0000
-Received: from notapiano (unknown [IPv6:2600:4041:5b1a:cd00:524d:e95d:1a9c:492a])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4C047660226A;
-	Tue, 27 Sep 2022 22:13:41 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664313222;
-	bh=9UjteKLPOSGyctNC2dvGb5oVbZ353r1Xwokh8mtTLmA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BM2zDwDf7dEv8qNZAEb1RcaW5UUki18dIfL+WFvu58dzl2CZ0RAmHCI6zB5v7y4t/
-	 LxCfCgQwAqRdbqPGuS0rvjwnuTpzPBAmO3oHnHwg0EUUxHjsZ+GWlHVpm/8k+Q1Ek3
-	 y5hIyNvmYqtYtuGrq+WlCcLKgZ+o3aIGLoi4sRrAFy6H7KWSJchsNRh1pk1e2+90yI
-	 /0vqob9x1hqy7o/HbYhHNUA+/+7TCSQe3nM1vN9Qx0ZPySD6al3IG4G0UZMlhRB6OA
-	 93COQYze9ls7VVoqfUK6YcQNT4seFvz3T7V0aKycI/+KWqdQL2V1TqqdLCBQDGx2gF
-	 kX8hCsHuHk8Hw==
-Date: Tue, 27 Sep 2022 17:13:37 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/3] arm64: dts: mediatek: asurada: Add display regulators
-Message-ID: <20220927211337.idgcuawo7xsiexah@notapiano>
-References: <20220908171153.670762-1-nfraprado@collabora.com>
- <20220908171153.670762-2-nfraprado@collabora.com>
- <CAGXv+5FErSBT-t6vz_2naApuPoC4PympWft-9Gd_MMPUTN+CsQ@mail.gmail.com>
+	id 1odLpN-00DQzb-MM
+	for linux-mediatek@lists.infradead.org; Wed, 28 Sep 2022 01:25:35 +0000
+Received: from local
+	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.96)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1odLpE-0001wU-0j;
+	Wed, 28 Sep 2022 03:25:24 +0200
+Date: Wed, 28 Sep 2022 02:25:15 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Sujuan Chen <sujuan.chen@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Chen Minqiang <ptpt52@gmail.com>,
+	Thomas =?iso-8859-1?Q?H=FChn?= <thomas.huehn@hs-nordhausen.de>
+Subject: [PATCH] net: ethernet: mtk_eth_soc: fix state in
+ __mtk_foe_entry_clear
+Message-ID: <YzOie0dkiQ43EPnu@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5FErSBT-t6vz_2naApuPoC4PympWft-9Gd_MMPUTN+CsQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_141346_746596_4779BD60 
-X-CRM114-Status: GOOD (  20.49  )
+X-CRM114-CacheID: sfid-20220927_182533_766481_4FE8ADE6 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,77 +68,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chen-Yu,
+Setting ib1 state to MTK_FOE_STATE_UNBIND in __mtk_foe_entry_clear
+routine as done by commit 0e80707d94e4c8 ("net: ethernet: mtk_eth_soc:
+fix typo in __mtk_foe_entry_clear") breaks flow offloading, at least
+on older MTK_NETSYS_V1 SoCs; OpenWrt users have confirmed the bug on
+MT7622 and MT7621 systems.
+Felix Fietkau suggested to use MTK_FOE_STATE_INVALID instead which
+works well on both, MTK_NETSYS_V1 and MTK_NETSYS_V2.
 
-thank you for the insights on the power supply hierarchy. Just a couple further
-questions below.
+Tested on MT7622 (Linksys E8450) and MT7986 (BananaPi BPI-R3).
 
-On Wed, Sep 21, 2022 at 10:20:43PM +0800, Chen-Yu Tsai wrote:
-> Hi,
-> 
-> On Fri, Sep 9, 2022 at 1:12 AM Nícolas F. R. A. Prado
-> <nfraprado@collabora.com> wrote:
-> >
-> > Add the regulators present on the Asurada platform that are used to
-> > power the internal and external displays.
-> >
-> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> >
-> > ---
-> >
-> >  .../boot/dts/mediatek/mt8192-asurada.dtsi     | 114 ++++++++++++++++++
-> >  1 file changed, 114 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> > index 4b314435f8fd..1d99e470ea1a 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-> > @@ -23,6 +23,42 @@ memory@40000000 {
-> >                 reg = <0 0x40000000 0 0x80000000>;
-> >         };
-> >
-> > +       pp1000_dpbrdg: regulator-1v0-dpbrdg {
-> > +               compatible = "regulator-fixed";
-> > +               regulator-name = "pp1000_dpbrdg";
-> > +               pinctrl-names = "default";
-> > +               pinctrl-0 = <&pp1000_dpbrdg_en_pins>;
-> > +               regulator-min-microvolt = <1000000>;
-> > +               regulator-max-microvolt = <1000000>;
-> 
-> This is fed by a rail called PP1350_VS2, which is from the MT6359 PMIC.
-> And this regulator is a proper LDO.
+Suggested-by: Felix Fietkau <nbd@nbd.name>
+Fixes: 0e80707d94e4c8 ("net: ethernet: mtk_eth_soc: fix typo in __mtk_foe_entry_clear")
+Fixes: 33fc42de33278 ("net: ethernet: mtk_eth_soc: support creating mac address based offload entries")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/ethernet/mediatek/mtk_ppe.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-So, we should have an additional regulator node here called pp1350_vs2 which
-will feed into pp1000_dpbrdg and that is itself fed in from mt6359_vs2_buck_reg
-(from mt6359.dtsi). Is that right?
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+index 887f430734f747..ae00e572390d7b 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+@@ -442,7 +442,7 @@ __mtk_foe_entry_clear(struct mtk_ppe *ppe, struct mtk_flow_entry *entry)
+ 		struct mtk_foe_entry *hwe = mtk_foe_get_entry(ppe, entry->hash);
+ 
+ 		hwe->ib1 &= ~MTK_FOE_IB1_STATE;
+-		hwe->ib1 |= FIELD_PREP(MTK_FOE_IB1_STATE, MTK_FOE_STATE_UNBIND);
++		hwe->ib1 |= FIELD_PREP(MTK_FOE_IB1_STATE, MTK_FOE_STATE_INVALID);
+ 		dma_wmb();
+ 	}
+ 	entry->hash = 0xffff;
+-- 
+2.37.3
 
-Also, is PP1350_VS2 just a simple switch or an LDO?
-
-> 
-[..]
-> > +       pp1800_dpbrdg: regulator-1v8-dpbrdg {
-> > +               compatible = "regulator-fixed";
-> > +               regulator-name = "pp1800_dpbrdg";
-> > +               pinctrl-names = "default";
-> > +               pinctrl-0 = <&pp1800_dpbrdg_en_pins>;
-> > +               regulator-min-microvolt = <1800000>;
-> > +               regulator-max-microvolt = <1800000>;
-> 
-> This regulator is only a power switch. Please drop the min/max properties.
-> This is fed by a rail called PP1800_VIO18_U, which is from an LDO on the
-> MT6359 PMIC.
-
-Similarly, we should have a pp1800_vio18_u node that is fed in by
-mt6359_vio18_ldo_reg, right? And is it a switch or an LDO?
-
-Thanks,
-Nícolas
-
-> 
-> > +               enable-active-high;
-> > +               regulator-boot-on;
-> > +               gpio = <&pio 126 GPIO_ACTIVE_HIGH>;
-> > +       };
-> > +
-[..]
 
