@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D080DC04A95
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 13:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC876C32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 13:03:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ACJdSCHvtKNxXUZcY+F5UqeT4wYyLRGmjKjdLOdVqPQ=; b=tfpC7ifRPH3MSCJ4KiwhH0gBs0
-	Gdcj/r49YC45VglP8mslxg3ayhpwOFEiUG6zt3bIv5LzH9ZuqXqui8TgBqHB/mUZ1GNCdPd0baZSt
-	uEgz0QxtHEW48iuX4Ey7R5K5TU0bCxHII2i98YwssJmhBrcZm481gj+XEbQyfGJy/gJkAU+RjZ2Q9
-	ulcYrrW+jon8lrTNtsFD2MuvsD0b+GJk79KJFmC2+ZM6Ar8eu0d5QoYmQw55/zaGyHEv8fweGxoF2
-	0E0sP0R3UEkVgaBeBLe415URo6rGhY8LdnYi0q3quAvYpxXW+7S6nPD1MpGjaKO90hAyd2hDD1HP+
-	tu3P2Vaw==;
+	bh=6Nd38RWaeqtyRXGOb8X7Wg1TUqXO2zohi1MBMT5Yewg=; b=dHKxlSK1LhJQG0wBHJ7n/tnbQV
+	Vhd+GFtVRU276g+1RItJHhN+xSqqH2MOU+pA49IGU73bqukF1qSJA/fwFlAS1oqCV8XFwaAGi1Gj8
+	TJ5IdxakLul80rBsv4t/y8oA5mx70IDO0YbDvY2tqrAhm+aPp+mZ2H73C5QkWCLOa5FuB18NVHBVu
+	nBQf076g2zipexo7gSAMJa5f9luL22UvIdJt9kXA0xEJd7dfUuxRkPmRwx5iyNuOeq4JlX5UvwYeK
+	vApH7rc1nhAkZuRe+jHjzfn4RQkchMOi8R8W/r4igVfkUBe23i73coDRkxk1OlX9o7CiG69A97ggu
+	wPL4ek+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odWhw-00GPDC-VE; Wed, 28 Sep 2022 13:02:36 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1odWj5-00GPah-V3; Wed, 28 Sep 2022 13:03:47 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odWhk-00GP50-6i; Wed, 28 Sep 2022 13:02:25 +0000
+	id 1odWiu-00GPWf-7p; Wed, 28 Sep 2022 13:03:37 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 37358660036A;
-	Wed, 28 Sep 2022 14:02:17 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1EBAD660036A;
+	Wed, 28 Sep 2022 14:03:34 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664370138;
-	bh=y5PLlxgX3Iexv58efRMWa8bC+TbN2PS43te+OORk4YI=;
+	s=mail; t=1664370215;
+	bh=QTkmnZfDvZ/mxFD41uorhVv9pmaNcBMChA47HDWMmlo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mgHAZ/IiDaV02YnIl52F9VGR0hRBEtXBCwXUjNOhirIV/mr5QLUrBE+2O7A1AM6EU
-	 8mTETUWiD3mAblou31Lwqj2LaAE75G3yUjU424cym73Qxfqmq3sx3+5I9BZQ6iDtHB
-	 ZzB1u6f15pGBqPYPNDo0fehQeRIA9YCfEzdNyObHaVP+yqyuGksdJJtNJDpIPm+TtO
-	 +lpd/09rf5e/DEdcKN2nHq3g8vEUUPYJ7e80JLrcC9SqstWJRyiWF6D8fc5bgEi9Hu
-	 BZoq/41lF68xfQosN0vqCRIV0cTLB1sEJFEufmXAJAXGQex7vkXtGbza2cMefP2Dw4
-	 aV5+7EeZ53RPw==
-Message-ID: <9c5eee7a-ddf2-b251-72c8-0792f46b24ec@collabora.com>
-Date: Wed, 28 Sep 2022 15:02:14 +0200
+	b=HAf2xSvWQW3fkmlTPrU8uPmlSJSSUVgnE+d+UN8sojt/d1DU8XvFBrsMIBdpgecnv
+	 94XCpGQYSixf9ikw17q1zdPkbKKoC6WOdQD79Mw1c+4WmHhHukIyJr9lmv040S5Ng+
+	 ES1nYHjPebgmtItBZAzfgEu1LtFKugK2cply+Ilt080KifFfiHtDeXvxfAUTIuEN1z
+	 bx3E5W+GdnHDDxP3HvKt7pkiKLSCrRDKYYHz5VT8O1D7s+EFpOPjoyxHsnKAYBasrB
+	 1K/faNNPiEFH/N92O9Y9YlR4zkuhueXsZi4j/lbUehDgYjstUZA8mnqnpobtH0wZSx
+	 uNwYBOALDdstw==
+Message-ID: <9d25bf35-dd88-70f1-6876-b8c99ae7b4a5@collabora.com>
+Date: Wed, 28 Sep 2022 15:03:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [resend PATCH v6 2/4] dt-bindings: net: snps,dwmac: add new
- property snps,clk-csr
+Subject: Re: [resend PATCH v6 3/4] arm64: dts: mediatek: mt2712e: Update the
+ name of property 'clk_csr'
 Content-Language: en-US
 To: Jianguo Zhang <jianguo.zhang@mediatek.com>,
  "David S . Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>,
@@ -61,17 +61,16 @@ Cc: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Biao Huang <biao.huang@mediatek.com>, netdev@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <20220928092308.26019-1-jianguo.zhang@mediatek.com>
- <20220928092308.26019-3-jianguo.zhang@mediatek.com>
+ <20220928092308.26019-4-jianguo.zhang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220928092308.26019-3-jianguo.zhang@mediatek.com>
+In-Reply-To: <20220928092308.26019-4-jianguo.zhang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_060224_401423_A5C06E02 
-X-CRM114-Status: UNSURE (   7.32  )
+X-CRM114-CacheID: sfid-20220928_060336_437253_399B5C8C 
+X-CRM114-Status: UNSURE (   8.11  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,10 +87,10 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 28/09/22 11:23, Jianguo Zhang ha scritto:
-> Add description for new property snps,clk-csr in binding file
+> Update the name of property 'clk_csr' as 'snps,clk-csr' to align with
+> the property name in the binding file.
 > 
 > Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
