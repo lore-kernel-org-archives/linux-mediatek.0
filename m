@@ -4,68 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97C8AC32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 07:39:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC609C04A95
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 07:40:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=z93vs5MNpoShVM3NXCv352HhKZSF+mhz1gZ7jjrNYU0=; b=B1MrjTgzE4BlftN1D0DNZDdB9a
-	mfSy3qgsNaF9+u2DCXeIh3XXlmyOb6Mt5r7t2/HVEH40iRH8Wyg+tjjG0T6SnYGeRiKq6LH1TJ9I+
-	+85+T9mqXJoRLELpclB80/mSWD80fKIhGI8WFFYNhYFM1PIV3W4xe3VKE0w+8Qx0UeiJw0x5sE+/L
-	UwaC3W4xcqTr744MhXRDmDL7WUm5F1bDvvcmAaOAdI+mHpwnwUt4Og2BwoR9gI6YwNq2XGbRykP4F
-	9i2gQJqMnRJ+ZVNOMp9eKzLtd5ONKSvA5E+kfKxcFJa0mXuCG74fmYDH5E+tYj7wMB0e2Smk0yd98
-	XgG8CKgw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=twBFZvQndTAJep03Qp9HrLxape++Wqs0xYwSivoNI3Q=; b=jup8Ut1NQpQ886CbyUtMTLFpNc
+	S9HHwHCzu0DlzG2mi7XSP2iEpba73KrT82dUGX9LMImh/LOgtY96Y0dru3cF7roADGcSPLRX4IvmZ
+	pRRK/3aZRLj2mrIu6nshLHL+9D0KVtkMy+9tNvoBnwKf/eLeZhBvEDDl+8NSsvgqr16f/yMxekKGG
+	7JM2o5y3i/mMp3i5R5j1TKOWXWF5LHwZAeI86aZX4TEDpH+HjkmnwuBUCqQKTseiVVyN53mMDlJzT
+	s0SDqbcT42QeyfHZtkr/k1FRhp484iaRje2P+RdqTXTnrR+YPFsXsw9PB4z6qzwERpSZv0s5DnOlv
+	1a2ekWlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odRf0-00EaxJ-Db; Wed, 28 Sep 2022 07:39:14 +0000
+	id 1odRgU-00Ebmr-4x; Wed, 28 Sep 2022 07:40:46 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odRev-00Eat7-IV; Wed, 28 Sep 2022 07:39:11 +0000
-X-UUID: 82181fd88f0e457aacd4dcff8a937846-20220928
+	id 1odRgD-00EbdI-Pt; Wed, 28 Sep 2022 07:40:31 +0000
+X-UUID: 6ea634be12884624a57a760ace036f3e-20220928
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=z93vs5MNpoShVM3NXCv352HhKZSF+mhz1gZ7jjrNYU0=;
-	b=hbAjAo+YWwMpfyaSToJNHCbscGpWxM2yC/CA9PlRL2u5gohNBD5zWFk1Pcqg2kjuCC1qxXdB5zbBMWdRlGTjcPl3bShMUxARIk55lVKRbs3W6O8Lj+FFCKhqgd4EjufuyK8aGAVhx3KeiD/exJ39TVoGhFGREXvFaNmUOR+AEXg=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=twBFZvQndTAJep03Qp9HrLxape++Wqs0xYwSivoNI3Q=;
+	b=DIwcsLObG97GUH7hrj9xrg44qEOueuXU1Die6rl0wEQcHA5K+5lj/K5jty7CeCc0Ue/mgOV1fjJeahmCYWBOzEP5rp3UMNzmhRqXy+Pyap0u1ZTFfeTHGEolhKugoedDC5T9YYRklKkhVNor23vVGeOGeTPNzp3srtQIs+jy0u0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:be45d530-5c26-434b-aae3-a230d1d09fd5,IP:0,U
+X-CID-O-INFO: VERSION:1.1.11,REQID:b0afe3f3-fb06-42b6-ac79-464284343ab8,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:55b44907-1cee-4c38-b21b-a45f9682fdc0,B
+X-CID-META: VersionHash:39a5ff1,CLOUDID:036457a3-dc04-435c-b19b-71e131a5fc35,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 82181fd88f0e457aacd4dcff8a937846-20220928
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 6ea634be12884624a57a760ace036f3e-20220928
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
+	(envelope-from <jianguo.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2015680786; Wed, 28 Sep 2022 00:38:56 -0700
+	with ESMTP id 249603362; Wed, 28 Sep 2022 00:40:22 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 28 Sep 2022 15:07:52 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ 15.2.792.15; Wed, 28 Sep 2022 15:40:01 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 28 Sep 2022 15:07:52 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Vinod Koul <vkoul@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
-	<kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
-	<eddie.hung@mediatek.com>, kernel test robot <lkp@intel.com>
-Subject: [PATCH next v2] phy: mediatek: fix build warning of FIELD_PREP()
-Date: Wed, 28 Sep 2022 15:07:46 +0800
-Message-ID: <20220928070746.5393-1-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ Transport; Wed, 28 Sep 2022 15:40:00 +0800
+Message-ID: <7c46b223e4ba5d1ceb587facf7dd060e6cab9f17.camel@mediatek.com>
+Subject: Re: [PATCH v5 4/4] net: stmmac: Update the name of property
+ 'clk_csr'
+From: Jianguo Zhang <jianguo.zhang@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>, "David S . Miller"
+	<davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, "Krzysztof
+ Kozlowski" <krzysztof.kozlowski+dt@linaro.org>
+CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, Biao Huang
+	<biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Wed, 28 Sep 2022 15:40:00 +0800
+In-Reply-To: <ff577b86-44c8-3146-3388-78021bb7edb4@linaro.org>
+References: <20220923052828.16581-1-jianguo.zhang@mediatek.com>
+	 <20220923052828.16581-5-jianguo.zhang@mediatek.com>
+	 <e0fa3ddf-575d-9e25-73d8-e0858782b73f@collabora.com>
+	 <ac24dc0f-0038-5068-3ce6-bbace55c7027@linaro.org>
+	 <4f205f0d-420d-8f51-ad26-0c2475c0decd@linaro.org>
+	 <80c59c9462955037981a1eab6409ba69fc9b7c34.camel@mediatek.com>
+	 <888703a8-a8e5-e691-7a53-294f88ad7a4e@collabora.com>
+	 <ff577b86-44c8-3146-3388-78021bb7edb4@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_003909_789243_EFB64D2E 
-X-CRM114-Status: UNSURE (   9.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220928_004029_889342_F143E30A 
+X-CRM114-Status: GOOD (  17.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,44 +96,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change the inline function mtk_phy_update_field() into a macro to
-avoid check warning of FIELD_PREP() with compiler parameter
--Wtautological-constant-out-of-range-compare
+Dear Krzysztof,
 
-the warning is caused by mask check:
-"BUILD_BUG_ON_MSG(__bf_cast_unsigned(_mask, _mask) >     \"
+	Thanks for your comment.
 
-Fixes: 29c07477556e ("phy: mediatek: add a new helper to update bitfield")
-Reported-by: kernel test robot <lkp@intel.com>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2: v1 will cause merge conflict, change comment, s/should/shall
----
- drivers/phy/mediatek/phy-mtk-io.h | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/phy/mediatek/phy-mtk-io.h b/drivers/phy/mediatek/phy-mtk-io.h
-index a723d4afc9b4..d20ad5e5be81 100644
---- a/drivers/phy/mediatek/phy-mtk-io.h
-+++ b/drivers/phy/mediatek/phy-mtk-io.h
-@@ -36,10 +36,11 @@ static inline void mtk_phy_update_bits(void __iomem *reg, u32 mask, u32 val)
- 	writel(tmp, reg);
- }
- 
--/* field @mask should be constant and continuous */
--static inline void mtk_phy_update_field(void __iomem *reg, u32 mask, u32 val)
--{
--	mtk_phy_update_bits(reg, mask, FIELD_PREP(mask, val));
--}
-+/* field @mask shall be constant and continuous */
-+#define mtk_phy_update_field(reg, mask, val) \
-+({ \
-+	typeof(mask) mask_ = (mask);	\
-+	mtk_phy_update_bits(reg, mask_, FIELD_PREP(mask_, val)); \
-+})
- 
- #endif
--- 
-2.18.0
+On Wed, 2022-09-28 at 09:17 +0200, Krzysztof Kozlowski wrote:
+> On 27/09/2022 12:44, AngeloGioacchino Del Regno wrote:
+> 
+> > > > OTOH, as Angelo pointed out, handling old and new properties is
+> > > > quite
+> > > > easy to achieve, so... :)
+> > > > 
+> > > 
+> > > So, the conclusion is as following:
+> > > 
+> > > 1. add new property 'snps,clk-csr' and document it in binding
+> > > file.
+> > > 2. parse new property 'snps,clk-csr' firstly, if failed, fall
+> > > back to
+> > > old property 'clk_csr' in driver.
+> > > 
+> > > Is my understanding correct?
+> > 
+> > Yes, please.
+> > 
+> > I think that bindings should also get a 'clk_csr' with deprecated:
+> > true,
+> > but that's Krzysztof's call.
+> 
+> The property was never documented, so I think we can skip it as
+> deprecated.
+> 
+We will send next version patches according to the conclusion.
+> Best regards,
+> Krzysztof
+> 
+BRS
+Jianguo
 
 
