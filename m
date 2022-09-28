@@ -4,80 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCA77C04A95
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 07:48:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 254F9C04A95
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 07:50:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X57oaMVCIqjdrtOdX0lpkoA6JPGdRkQ8tnU43IRKsvo=; b=f6W44/GgTwoyfRdNLUna7DusH/
-	PpLZpUVGJjdCE//6TYQdMju1M3MLX96zskQcz43IAkBc2tNObUi8TmWH9RoMPfWp5jMlPfChFLOlj
-	n7JDNrVfPR+tS1gGDgtyDjAEsaam9rGMyFJK7vpZ1losHxIg67FnhFtMoDwRWZcmrdYpR65z+UB0D
-	H0Gsrf4n+7jwdwg6BuOeOM4i7UdtnncjMsKEkjG2J1FMtF7TbhgkjptRO8KF18UCo1flDUigdy41/
-	M3941CIbE/kiKx+bN9bbm69MFNwvUjAOCxqJz1jXdHpqgbTgnL/KtlJeLXDyd0B7YOTpjJoXzjW/w
-	/xzMLHFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QiNIg/zYZ38dNte35yIrwLt22pv5Z8LWSBq+qCcfUtU=; b=iwZ4whnIw8b/P+IFVk93zBouAL
+	VWTCenyLPS5JgPzilVZKXlzpNgHuhBMju5uoLDc67T99kDvpl35U90km9bhNUnRuuM4zNPaMyLoqx
+	q++/FGIkWJxCFyn5hVRJJU+anrTLC6ubIRowK/YWU6jtHpdcGyclVo/oeTCJucYER+cUgNE6jpNsC
+	eddmZSPedua+7g1HNr3Ps2kAsH4Ji0SYDFv3FfbKGE4q2a7QNh3cNKt7udQ/IWgr1g+ULMYCQZNBG
+	g6qGfY0Y1ALrD6GkoqqrlKiu86CzXFGjXwWeL9FvQOXXapGZoiEWPTWTvuaLJacOAc5Jyjji9QG+n
+	rc7Jw3Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odRnX-00EelG-VY; Wed, 28 Sep 2022 07:48:04 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1odRpn-00EfXC-Lc; Wed, 28 Sep 2022 07:50:23 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odRnE-00Eeez-MR; Wed, 28 Sep 2022 07:47:45 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 1169C1884B7D;
-	Wed, 28 Sep 2022 07:47:43 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id E96B42500370;
-	Wed, 28 Sep 2022 07:47:42 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id DA92A9EC0019; Wed, 28 Sep 2022 07:47:42 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+	id 1odRpl-00EfVc-7M
+	for linux-mediatek@lists.infradead.org; Wed, 28 Sep 2022 07:50:22 +0000
+Received: by mail-ed1-x536.google.com with SMTP id m3so16139412eda.12
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 Sep 2022 00:50:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date;
+        bh=QiNIg/zYZ38dNte35yIrwLt22pv5Z8LWSBq+qCcfUtU=;
+        b=NtzNSjvY4vyAUbLC8Ii0LP3f102njHedYSBGeDzF/hkB810Z7nZG7cmefrAHtpFxhe
+         Zp9te2hkWiDhTDlHfjC2QXAsRum0CWIfAidozvY7YrY5zd9bMeLp3BBUkbc21Pm4fwYD
+         bKKKOWtXTMb7XcHcBJO0GQJ2gYygtC4R68NE4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date;
+        bh=QiNIg/zYZ38dNte35yIrwLt22pv5Z8LWSBq+qCcfUtU=;
+        b=Jc3rv51dmLgkpdjruCCcpuiqV5IiIPyqwed30o+6CiEqdtVYlEECsx0DtjtLdRMPk2
+         3AeKExyaNH0OtEYF4DqiI6URS3Xs+tj8AW0N1tjeRx1bF7ThjfFEWrc/b3gGkazI5PJY
+         v7UmQyk6/T+vyHPSZJ1OqMJOCrrJZTUfDcAuvgaSUQ5S3L/BrBvE+4Y07RzypbtOZTBt
+         bet2lRAv25l5ZwyNCSc9xMAvBCNOXRyZQwLbmbTx1tQiQcX4LiBXd2qXAKa7HRZafAUO
+         nlEBnGS92A7fQH02EE+vJOgcTn4olsJLdAhXbZhIYZ+5rh4LqJJz3QAMauX+VXhh9m8J
+         e/pA==
+X-Gm-Message-State: ACrzQf2/nllYmt/B6RT8Gk1ODq4ZXFrDeSncKr2ZltNerV7eiL9SbI8M
+	YwD6M3z3Eh23bctyMO3gfxITyRRyTUDO3j/5i1+EUA==
+X-Google-Smtp-Source: AMsMyM6tdHhfxNIYTWCDrGO48E5DQKirqL+MmjRR/T8+Ih7026PNLiu8XfmJTZnxopqbAP43SYNBrqxzsdSO9XaLHp4=
+X-Received: by 2002:a05:6402:1298:b0:457:c38a:2f10 with SMTP id
+ w24-20020a056402129800b00457c38a2f10mr6387160edv.264.1664351418958; Wed, 28
+ Sep 2022 00:50:18 -0700 (PDT)
 MIME-Version: 1.0
-Date: Wed, 28 Sep 2022 09:47:42 +0200
-From: netdev@kapio-technology.com
-To: Ido Schimmel <idosch@nvidia.com>
-Cc: Vladimir Oltean <olteanv@gmail.com>, davem@davemloft.net,
- kuba@kernel.org, netdev@vger.kernel.org, Florian Fainelli
- <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot
- <vivien.didelot@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens
- <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
- UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>, Landen
- Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>, Jiri Pirko
- <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>, Roopa Prabhu
- <roopa@nvidia.com>, Nikolay Aleksandrov <razor@blackwall.org>, Shuah Khan
- <shuah@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
- Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, bridge@lists.linux-foundation.org,
- linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v5 net-next 6/6] selftests: forwarding: add test of
- MAC-Auth Bypass to locked port tests
-In-Reply-To: <YzPwwuCe0HkJpkQe@shredder>
-References: <Yxmgs7Du62V1zyjK@shredder>
- <8dfc9b525f084fa5ad55019f4418a35e@kapio-technology.com>
- <20220908112044.czjh3xkzb4r27ohq@skbuf>
- <152c0ceadefbd742331c340bec2f50c0@kapio-technology.com>
- <20220911001346.qno33l47i6nvgiwy@skbuf>
- <15ee472a68beca4a151118179da5e663@kapio-technology.com>
- <Yx73FOpN5uhPQhFl@shredder>
- <086704ce7f323cc1b3cca78670b42095@kapio-technology.com>
- <Yyq6BnUfctLeerqE@shredder>
- <7a4549d645f9bbbf41e814f087eb07d1@kapio-technology.com>
- <YzPwwuCe0HkJpkQe@shredder>
-User-Agent: Gigahost Webmail
-Message-ID: <0c6b93c828d9b52346ddb3d445446734@kapio-technology.com>
-X-Sender: netdev@kapio-technology.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+References: <0a1618c4-b808-56bd-e89f-560b0423191d@collabora.com> <20220928015507.17206-1-miles.chen@mediatek.com>
+In-Reply-To: <20220928015507.17206-1-miles.chen@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 28 Sep 2022 15:50:07 +0800
+Message-ID: <CAGXv+5FLwrE-kiZ_opjB3NA=e2_tDoNUs6hKE-o9m_DXcQmcGA@mail.gmail.com>
+Subject: Re: [PATCH 3/6] clk: mediatek: mt8192: Do not re-register
+ top_early_divs in probe function
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: angelogioacchino.delregno@collabora.com, 
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	matthias.bgg@gmail.com, mturquette@baylibre.com, sboyd@kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_004744_907278_C8C3FD69 
-X-CRM114-Status: UNSURE (   6.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220928_005021_321696_C4333330 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,16 +83,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-09-28 08:59, Ido Schimmel wrote:
+On Wed, Sep 28, 2022 at 9:55 AM Miles Chen <miles.chen@mediatek.com> wrote:
+>
+> >> top_early_divs are registered in the CLK_OF_DECLARE_DRIVER() half of the
+> >> topckgen clk driver. Don't try to register it again in the actual probe
+> >> function. This gets rid of the "Trying to register duplicate clock ..."
+> >> warning.
+> >>
+> >> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> >
+> >Can't we simply remove the CLK_OF_DECLARE_DRIVER() and top_init_early entirely,
+> >and transfer TOP_CSW_F26M_D2 to top_divs[] instead?
+> >I get that systimer concern and we have something similar in MT8195, where the
+> >TOP_CLK26M_D2 is registered "late".
+>
+> Another reason for this:
+> Removing the CLK_OF_DECLARE_DRIVER() is good when we want to build our driver as
+> kernel modules because it does not work with kernel modules.
 
-> Why not found? This works:
-> 
->  # bridge fdb add 00:11:22:33:44:55 dev br0 self local
->  $ bridge fdb get 00:11:22:33:44:55 br br0
+I agree. But as I mentioned in my other reply, we need to fix the clock
+user first before dropping that clock. And there's also the matter of
+DT backward compatibility. So we need to do it incrementally.
 
-With:
-  # bridge fdb replace 00.11.22.33.44.55 dev $swpX static
 
-fdb_find_rcu() will not find the entry added with 'dev br0' above, and 
-will thus add a new entry afaik.
+ChenYu
 
