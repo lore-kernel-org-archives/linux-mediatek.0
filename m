@@ -4,75 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AD0FC04A95
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 09:42:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35264C32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 09:45:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=plO6ko6UxqNOxenMbAi+M8EMiHcKIxgK6VMUFebTRgs=; b=Q6M+TkzD7Fw94rBeMPQcm6ZAul
-	lrpx70fIgI68Cpt9ylfll7ggga3Ueqky4YCxKfcaAwzyLetiJxTw/yV1X1YTt1djCfCEnRWRFDsCL
-	TyL8HxESSPHzPkTd1OAHT7IswJWRmNeSMaQNPfmvf3kmLFUBppRvi8ETrBCauAwCIZwUKS/ptX31c
-	NykOyIxMgzumSTdXbeeZ7VuTDyTn06u5QG0ns3JCQlVquBoCwnFWBi1qCmfPNDndbqBzO292ekZE4
-	M5MRg7jGZyTjdqciX1uUWHaqzGRdOCZKT8LDcp4plU+dBJLt//reWZisrRCggymGmif4C2npHGS/f
-	jNrul8lQ==;
+	bh=QocvPFBYWkF0e9M4ZZRsDP1t0m5zSi+CC2uirqWU8Xw=; b=XsxSWulmJZi0ulflfNoe36TAyB
+	D3nMFOQJbuNZV7xTW8eF/1pumH16yYh37FVfjJ1pCo3+CZAE/kD0sDv84utyZSxZTsArXo7zHBVpL
+	hmtLSfRMpFxl0Uy1A0gQKxRt2EJ4zyKjxOBUXzRyaYpa8inpx0/7qm8+llrFn95EYAxRWWnDiD0Gs
+	jpsT3VLGMZghDW71b0goW9G0UeSUqYxPW7b6n+s+hvXuzif8RvO+0gk8A7B/fVrGQG76oA+a1cNjd
+	Rp5PsxUbR3dk0W9hfLtUPSc6yu6PTgm7p4Hm7PVkLnmtAJzMgO73RWO7jQkLkv44safeZ1CuNEB4l
+	fATVztDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odTaE-00FJKU-If; Wed, 28 Sep 2022 09:42:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1odTdD-00FL36-TT; Wed, 28 Sep 2022 09:45:31 +0000
+Received: from mail-eopbgr150041.outbound.protection.outlook.com ([40.107.15.41] helo=EUR01-DB5-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odTSv-00FFJB-7y; Wed, 28 Sep 2022 09:34:56 +0000
-X-UUID: b22d99e2ee674f36b32f4e9f8a9b3b75-20220928
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=plO6ko6UxqNOxenMbAi+M8EMiHcKIxgK6VMUFebTRgs=;
-	b=D4TQPYZHFtNlrLRPTlccG+l2HhR6D5KrsPkpXIWdJI5yYyq6Q5erftjNRFovAehum3OPguOCHPeK5owQN2U7sqD5V4cXnu7iLqSXKTrEd/0ZrtzJoX7stC7L75UEUygg9pwWx7Ukk9ZzD+Za027+j7JLSw0fTsXzjuve/PC5GGk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:a83df6b3-68f3-436c-8c31-f9ec6fe9bc43,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:39a5ff1,CLOUDID:d9804e07-1cee-4c38-b21b-a45f9682fdc0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: b22d99e2ee674f36b32f4e9f8a9b3b75-20220928
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1170131317; Wed, 28 Sep 2022 02:34:44 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 28 Sep 2022 17:33:11 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 28 Sep 2022 17:33:09 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<nicolas.dufresne@collabora.com>, <wenst@chromium.org>, kyrie wu
-	<kyrie.wu@mediatek.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
-	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
-	<irui.wang@mediatek.com>, kernel test robot <lkp@intel.com>
-Subject: [V16,03/15] mtk-jpegenc: support jpegenc multi-hardware
-Date: Wed, 28 Sep 2022 17:32:46 +0800
-Message-ID: <20220928093258.32384-4-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220928093258.32384-1-irui.wang@mediatek.com>
-References: <20220928093258.32384-1-irui.wang@mediatek.com>
+	id 1odTVT-00FGQZ-ME; Wed, 28 Sep 2022 09:37:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TuB5U8QTffNs+lRmpE1ea8MMDA42/40VfrJrieVLepBH1hbkARcZYCueMe1gykVVqjh0c63BD1AkJPgUOVVry9jZyraLV50um0db1FZwnR83zS7Q+K2Jla1PciRmg8l5zqo3uCxjbUrXp8xHnL8iYKvkspNJKQOmKpkBDAXHqHcMu1VMKz6rKE04aFVcpbw/lZMQ5mJ745bXkOPGLO6XSUyAUl149T8YHa+cbnsBuG5OWdy0K+ZcdyIxJJnSDi/2JpOK/ZOHA9cJkRQJHxTQyOH1Q6ZrR9QOwVuFHGDg77M5gUpPgt5xkdGY+1LxNM2jeRNOjCTUIVVSoI+i43wX0w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=QocvPFBYWkF0e9M4ZZRsDP1t0m5zSi+CC2uirqWU8Xw=;
+ b=TY6PBL0neGq1h8nRNGdV0FDWphYFHAUWr0xnkFNNiqD6INOC+FzyWIYRYh0GUcU+JlZe/fwuXEwtcCywRZUUi+lJOzELAEQDM/yXdg28AnYsunRPporZsoe9sjk5FQKavVTmQVURfvsazM7pH+YyH194f19ij+h5b1H9GwefG8yzJCPOrZfgAl30+FAjc6rajJP0let7azW99lzkUWJMUfIJyLT0QTWwDZoF6A9G8sK6CyM3LFNLKu/nrPbqZA1TPhWA/Y+t9NpBDcNjuyuKnL1CpED9Cj1xaEEhTfEzAhGIDoZ97iKWwsIwCrPzYJRkaI04HPJqO2esejp4jAnbWA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=QocvPFBYWkF0e9M4ZZRsDP1t0m5zSi+CC2uirqWU8Xw=;
+ b=SMdZLlGtdBInMQ74lgOad7YwRA3pQrDIKCWjEVhJ6d+x+cH3FvEcuOb96Zd4jmTR22EHuzNx1KyD/BPx0NafnGOS7kDXvTwPd9qpCVBZssRhC5u7ULn5TbR0KgE9nXyN/EU8lWfx8obJguvsIL9ENXOjo2Dm6sToaGy6f48rOxw=
+Received: from DU0PR04MB9417.eurprd04.prod.outlook.com (2603:10a6:10:358::11)
+ by VI1PR04MB7103.eurprd04.prod.outlook.com (2603:10a6:800:123::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.26; Wed, 28 Sep
+ 2022 09:37:25 +0000
+Received: from DU0PR04MB9417.eurprd04.prod.outlook.com
+ ([fe80::1eb:dcf:8fd7:867]) by DU0PR04MB9417.eurprd04.prod.outlook.com
+ ([fe80::1eb:dcf:8fd7:867%5]) with mapi id 15.20.5654.025; Wed, 28 Sep 2022
+ 09:37:25 +0000
+From: Peng Fan <peng.fan@nxp.com>
+To: =?utf-8?B?VGluZ0hhbiBTaGVuICjmsojlu7fnv7Ap?= <TingHan.Shen@mediatek.com>,
+	"robh+dt@kernel.org" <robh+dt@kernel.org>,
+	=?utf-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+	"mchehab@kernel.org" <mchehab@kernel.org>,
+	=?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
+	"Peng Fan (OSS)" <peng.fan@oss.nxp.com>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "andersson@kernel.org" <andersson@kernel.org>,
+	=?utf-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?=
+	<Andrew-CT.Chen@mediatek.com>, "mathieu.poirier@linaro.org"
+	<mathieu.poirier@linaro.org>
+CC: "linux-remoteproc@vger.kernel.org" <linux-remoteproc@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-media@vger.kernel.org"
+	<linux-media@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>
+Subject: RE: [PATCH v3 02/11] dt-bindings: remoteproc: mediatek: Support
+ MT8195 dual-core SCP
+Thread-Topic: [PATCH v3 02/11] dt-bindings: remoteproc: mediatek: Support
+ MT8195 dual-core SCP
+Thread-Index: AQHY0h1DR0PLZqSNjUmEz7QjtYBTv630bBYAgAAmFICAAANt8A==
+Date: Wed, 28 Sep 2022 09:37:25 +0000
+Message-ID:  <DU0PR04MB9417859FA797126FE9BFDB4488549@DU0PR04MB9417.eurprd04.prod.outlook.com>
+References: <20220927025606.26673-1-tinghan.shen@mediatek.com>
+         <20220927025606.26673-3-tinghan.shen@mediatek.com>
+         <08abade9-f6f5-77cf-b83d-739b0b81543a@oss.nxp.com>
+ <d16002714baf1eccb9b0ef5a2ae60e9b25194701.camel@mediatek.com>
+In-Reply-To: <d16002714baf1eccb9b0ef5a2ae60e9b25194701.camel@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DU0PR04MB9417:EE_|VI1PR04MB7103:EE_
+x-ms-office365-filtering-correlation-id: a3044853-f32f-4fdb-1eb4-08daa1350d2e
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:  ZcvymyQ8Um5FHhL74YEuopRyw9wFSyXQwP6kMxdagcJqTIRv8QiQF3wWmgiog3DIr/B5vP1DMhv84OwmrtgXG1in6MXkP7CdhzFspobxgir8oaDmJRSD546vvh6VRVEC7PV6szZ1jXs3uN7B7g3gjEemMgBPvuXs0BWAtqevgS1mot7+lV4L5F81smD6ds9ayIz1J2fSPl+mclPgXNtETDh+ozhiiQ5bfXMmHoYN6kpyWBkzHTpZILtTWk4mhFWs4rNxlDR8iDyOSBAEgOexBL5C/9dzq3JpGMhfyTD7gBlfXz82CSrNnXuT6h1WX2CNwEyJBDyOA2x/2YTiEkgjbcnpzFdKCvfnjhErEG9HI/9p7dL2FoGIGe3Q5kbMKerYfY/1oaPv8KQ1Pu6d03DnVuG28mv70ZLlRWpiZtNzHHaI7Sln3oY2dI4ipKBeZqY6Lal/hNNM40cauUYon9CDlGJVuh4Hncs4Pkh7n4vNkndDxC62ly4U1/YQUi5tJez5tJhela52ZX4fZcOxbzZP7SLunOAHt/0MsCIkAWvXShctv22ILAbKAusVp4j9Hzo6vtp1IYJ50ckb2HXKGbO6nq9TBfURyG7TUJ7svvKrsnaEEY8Vk27QSyGJ9Hn9motL+ja7T5LEMaxbl3c4ZZFqsv3TpT7J1GVlPE13XbFPkFHAoUZj2AKpI7JG951I/nxsvaC6zstgPrrSsjat+meo1cN4/uoTyPB2ebxsTplpq2/IfJ11+YuSAU4lCFjmUcAQd6F7K9biNI3jivpyf11T53WsxI14sUTybYqJyCk6MTw=
+x-forefront-antispam-report:  CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR04MB9417.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(396003)(346002)(136003)(376002)(39860400002)(366004)(451199015)(71200400001)(83380400001)(186003)(6506007)(33656002)(41300700001)(122000001)(26005)(2906002)(8936002)(38100700002)(316002)(44832011)(9686003)(7416002)(66556008)(478600001)(66476007)(8676002)(4326008)(52536014)(55016003)(53546011)(76116006)(66946007)(7696005)(5660300002)(110136005)(64756008)(66446008)(921005)(54906003)(38070700005)(86362001);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:  =?utf-8?B?cGZzaHhKZkVVd2dKTUJuNnc4Mmg1bFRzK0wwR2hkb3EvOXVkRzB1YWhSS3o0?=
+ =?utf-8?B?QUFVWVE3MCtwRFg1WjI1RnlTcllyTkNOZStDRDhIRjBUWm03U0RKcDRVMUpL?=
+ =?utf-8?B?c0QrRXg2RmdYcVhIM2I4TmxlcjhLN3QzVldtUzJSQnI4YmtmanJ2VHRvNW5x?=
+ =?utf-8?B?dGRCb210QWV4V3hob3I3TkVQcTREaStEYmUydEJvRmhiN2lqa3drVVkzekM4?=
+ =?utf-8?B?VFRjUzVPWGF3YnBVenhHOUovYUlWSGlhSWpJSkt0NFNPakNKc05JRDdrQy92?=
+ =?utf-8?B?akppYkRPc0owSEQwcm44ZlpWSDdTVlpmdGczQ3BoYnhNa0VrajhuVnNFdkFC?=
+ =?utf-8?B?ZjIza3VJWTQ2UjUvRjdrQkRJNFp3SHMweUJuK3hMTEs3T0pNM3RUQWdUT1RM?=
+ =?utf-8?B?SW5qTmh3cHIraWFaR2R4OWd2WmdlMm9GdC9EK1VTbGJYV3duTXpYZGdQOCt2?=
+ =?utf-8?B?cGRjZTVFdFY1K0pzOWU4eWxGWGZJUGNCSmU2UzMrME5JSnhaakJUQkRYWUIz?=
+ =?utf-8?B?QXZ2eVlIRjRSYjFjaXYxcmJtTXgrd0J0R0d2WDVuaHRRMGk4TDlTOHgrQXQv?=
+ =?utf-8?B?ZTJjL3pVUG9SeUFJSlZIcDh1cy9EeE9uQXBYK2hqOTJCN2h1d2pOaWJvNnRB?=
+ =?utf-8?B?ZVh6VlMxblBTTVBMRDd3QVRGZm0zcmgvTkg2dWF1UlhaeEpCWHh6QkxIYzd3?=
+ =?utf-8?B?VmhOaFltS0I3eDhPVjd6WGxKT2p2YldRZmlJWCtPZ283NjRkWGQ0TFJOaEVz?=
+ =?utf-8?B?NHZCZlBFRyt5cFMza2h0MDB0a2lOcUdRNFp3RGQ4T1cvY1dQMktBNy9CNHRM?=
+ =?utf-8?B?M3A5TXZ5K1RoM0FGN2RkR2VoS2tlRkt1QW5LbFB6YUdYa0VaNmgzcVBCNG14?=
+ =?utf-8?B?MXRQVTZIUW1QcG0wU1BWcmJXWlZaSkJRbXlnVFV1NEpWa0ZrdkNqK3dJY1pq?=
+ =?utf-8?B?cWZwYytFTWVsUlhZSHNsZnpMNnNnZWREQUdlTkIzWEFKdWhrTXJpVzlkVDZQ?=
+ =?utf-8?B?c3ZYdkhHMXBFNTdTYzNnaXVsMmxnYVRycUtGbHh0ekNZYW1KRm5OL2hURjEr?=
+ =?utf-8?B?RmdVaW0vVjBsTXVRMHJLUWliMVRIZjlkR2xsYnEyTnMyTTMyQUV3SEtKZFdh?=
+ =?utf-8?B?WDZoY3hJaVJoa2E2bzZzcTF1bzIxTkVROXdXWVMwR0hHaU4xSXRGbGcweDlL?=
+ =?utf-8?B?SERKblJRNVE2Znh3STZoTWpUdXZRWFNwWnFrdDh5SGVURXMwRjNESmxKcVpr?=
+ =?utf-8?B?UTF3bnBsQVd0ZSt4aWlCMExmT3owN1BScXlTRWtKcHM3UklyQjdkajBVQTJo?=
+ =?utf-8?B?QlhZRmthVHQ0UDVIbENPVjRNZXM1U0grQ3kyRFBTMFEvOVdUR0NSU3h6NTJ1?=
+ =?utf-8?B?NUJDV2dqcEhjOE9xUHRHUEJkMnUrRFZuZ2FCVzlCZEpVL2tOU2hVVjFHV082?=
+ =?utf-8?B?akdQR0dvenJvZ1NSNU84M1FLRzhJdDJWdWsxTjU0bzhpMysxTUxHV2VXTUI1?=
+ =?utf-8?B?Z0FGTmVCSzU0NENnZFZ5ODNkaUxjYzBCYXN1dE5FTG1jVWprUjFKd3hUZVp2?=
+ =?utf-8?B?MkdqSmYzTzV5VTJLQ05Id09DdW9NZTJRZ0tpUjg5S3NJM2FjNUFzRDZiNkVl?=
+ =?utf-8?B?ZS9xVHdmWjFmL1BzTTFxbFJIazBsSSs4OVpUZGpoRGlHYUpvUjVZMFppNUpB?=
+ =?utf-8?B?QlV2RzFOYXFDYTl0NUpDVGNrbHNlSUFyd3hMZDlaVjVnWEYyR3kzZ3VLZWZt?=
+ =?utf-8?B?akU4UGdUQzNoRXVhV0VEQVd4R0Y3Vk1Ea2QrUmw0VVcvM2QrZFhwTFRWTk42?=
+ =?utf-8?B?QjFRKzh2QUp5QWJiM0FGVG9vSlpJV3U4Mkd5cnpVVUZzQmVMNy9qSTJmZ0Fo?=
+ =?utf-8?B?VUlUZVF6TEZxR2dteGpQL0RsbGpIWWhCSlErUUpCbEpSYVFlVDNlMTBqQmlR?=
+ =?utf-8?B?MDh0MmxDR2ZTN2MyY2w2N0dpMnJNcWpoNGhoeGJhdGYzS1NvY3RHbG1VcUhm?=
+ =?utf-8?B?c3A3Y3pJUWE2bmRnQ1V2Z01Felg5UWVvMklIaGZ1WlJUQkhJY3ZwZDh5LzB4?=
+ =?utf-8?B?ZWFBVzN2QkFsdHQ3U2pPTTB3cno2Q2ppL1RmN2EvTEYweTM1blVWZnk1OEpj?=
+ =?utf-8?Q?UPfo0AG5fH+2MQ0V8VtQXlR+A?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR04MB9417.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a3044853-f32f-4fdb-1eb4-08daa1350d2e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Sep 2022 09:37:25.2499
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: os8pwLcXLR0eBLF/LP9ITUjmJdJmjwpC+HGeCmpbbCXeHB+HlJwQCJbXhGpBIlyEqXouUzOpBU+kH6fM7dpBNQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB7103
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_023453_344971_0B07DF29 
-X-CRM114-Status: GOOD (  27.68  )
+X-CRM114-CacheID: sfid-20220928_023732_000864_867FA308 
+X-CRM114-Status: GOOD (  16.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,425 +160,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kyrie wu <kyrie.wu@mediatek.com>
-
-support jpeg encode multi-hardware includes HW0 and HW1.
-
-Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
-Signed-off-by: irui wang <irui.wang@mediatek.com>
-Reported-by: kernel test robot <lkp@intel.com>
----
- drivers/media/platform/mediatek/jpeg/Makefile |  11 +-
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    |  69 ++++----
- .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  42 +++++
- .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 161 ++++++++++++++++++
- 4 files changed, 249 insertions(+), 34 deletions(-)
-
-diff --git a/drivers/media/platform/mediatek/jpeg/Makefile b/drivers/media/platform/mediatek/jpeg/Makefile
-index 76c33aad0f3f..69703db4b0a5 100644
---- a/drivers/media/platform/mediatek/jpeg/Makefile
-+++ b/drivers/media/platform/mediatek/jpeg/Makefile
-@@ -1,6 +1,9 @@
- # SPDX-License-Identifier: GPL-2.0-only
--mtk_jpeg-objs := mtk_jpeg_core.o \
-+obj-$(CONFIG_VIDEO_MEDIATEK_JPEG) += mtk_jpeg.o \
-+	mtk-jpeg-enc-hw.o
-+
-+mtk_jpeg-y := mtk_jpeg_core.o \
- 		 mtk_jpeg_dec_hw.o \
--		 mtk_jpeg_dec_parse.o \
--		 mtk_jpeg_enc_hw.o
--obj-$(CONFIG_VIDEO_MEDIATEK_JPEG) += mtk_jpeg.o
-+		 mtk_jpeg_dec_parse.o
-+
-+mtk-jpeg-enc-hw-y := mtk_jpeg_enc_hw.o
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 724fb7aeb0ee..2de2e3846b5b 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -680,7 +680,7 @@ static int mtk_jpeg_buf_prepare(struct vb2_buffer *vb)
- {
- 	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
- 	struct mtk_jpeg_q_data *q_data = NULL;
--	struct v4l2_plane_pix_format plane_fmt;
-+	struct v4l2_plane_pix_format plane_fmt = {};
- 	int i;
- 
- 	q_data = mtk_jpeg_get_q_data(ctx, vb->vb2_queue->type);
-@@ -1312,38 +1312,51 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 	spin_lock_init(&jpeg->hw_lock);
- 	jpeg->dev = &pdev->dev;
- 	jpeg->variant = of_device_get_match_data(jpeg->dev);
--	INIT_DELAYED_WORK(&jpeg->job_timeout_work, mtk_jpeg_job_timeout_work);
- 
--	jpeg->reg_base = devm_platform_ioremap_resource(pdev, 0);
--	if (IS_ERR(jpeg->reg_base)) {
--		ret = PTR_ERR(jpeg->reg_base);
--		return ret;
-+	ret = devm_of_platform_populate(&pdev->dev);
-+	if (ret) {
-+		v4l2_err(&jpeg->v4l2_dev, "Master of platform populate failed.");
-+		return -EINVAL;
- 	}
- 
--	jpeg_irq = platform_get_irq(pdev, 0);
--	if (jpeg_irq < 0)
--		return jpeg_irq;
-+	if (list_empty(&pdev->dev.devres_head)) {
-+		INIT_DELAYED_WORK(&jpeg->job_timeout_work,
-+				  mtk_jpeg_job_timeout_work);
- 
--	ret = devm_request_irq(&pdev->dev, jpeg_irq,
--			       jpeg->variant->irq_handler, 0, pdev->name, jpeg);
--	if (ret) {
--		dev_err(&pdev->dev, "Failed to request jpeg_irq %d (%d)\n",
--			jpeg_irq, ret);
--		goto err_req_irq;
--	}
-+		jpeg->reg_base = devm_platform_ioremap_resource(pdev, 0);
-+		if (IS_ERR(jpeg->reg_base)) {
-+			ret = PTR_ERR(jpeg->reg_base);
-+			return ret;
-+		}
- 
--	ret = devm_clk_bulk_get(jpeg->dev, jpeg->variant->num_clks,
--				jpeg->variant->clks);
--	if (ret) {
--		dev_err(&pdev->dev, "Failed to init clk, err %d\n", ret);
--		goto err_clk_init;
-+		jpeg_irq = platform_get_irq(pdev, 0);
-+		if (jpeg_irq < 0)
-+			return jpeg_irq;
-+
-+		ret = devm_request_irq(&pdev->dev,
-+				       jpeg_irq,
-+				       jpeg->variant->irq_handler,
-+				       0,
-+				       pdev->name, jpeg);
-+		if (ret) {
-+			dev_err(&pdev->dev, "Failed to request jpeg_irq %d (%d)\n",
-+				jpeg_irq, ret);
-+			return ret;
-+		}
-+
-+		ret = devm_clk_bulk_get(jpeg->dev,
-+					jpeg->variant->num_clks,
-+					jpeg->variant->clks);
-+		if (ret) {
-+			dev_err(&pdev->dev, "Failed to init clk\n");
-+			return ret;
-+		}
- 	}
- 
- 	ret = v4l2_device_register(&pdev->dev, &jpeg->v4l2_dev);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to register v4l2 device\n");
--		ret = -EINVAL;
--		goto err_dev_register;
-+		return -EINVAL;
- 	}
- 
- 	jpeg->m2m_dev = v4l2_m2m_init(jpeg->variant->m2m_ops);
-@@ -1401,12 +1414,6 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- err_m2m_init:
- 	v4l2_device_unregister(&jpeg->v4l2_dev);
- 
--err_dev_register:
--
--err_clk_init:
--
--err_req_irq:
--
- 	return ret;
- }
- 
-@@ -1497,6 +1504,7 @@ static const struct mtk_jpeg_variant mtk_jpeg_drvdata = {
- 	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
- };
- 
-+#if defined(CONFIG_OF)
- static const struct of_device_id mtk_jpeg_match[] = {
- 	{
- 		.compatible = "mediatek,mt8173-jpgdec",
-@@ -1514,13 +1522,14 @@ static const struct of_device_id mtk_jpeg_match[] = {
- };
- 
- MODULE_DEVICE_TABLE(of, mtk_jpeg_match);
-+#endif
- 
- static struct platform_driver mtk_jpeg_driver = {
- 	.probe = mtk_jpeg_probe,
- 	.remove = mtk_jpeg_remove,
- 	.driver = {
- 		.name           = MTK_JPEG_NAME,
--		.of_match_table = mtk_jpeg_match,
-+		.of_match_table = of_match_ptr(mtk_jpeg_match),
- 		.pm             = &mtk_jpeg_pm_ops,
- 	},
- };
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-index 3e4811a41ba2..1e0ba466303b 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-@@ -9,6 +9,7 @@
- #ifndef _MTK_JPEG_CORE_H
- #define _MTK_JPEG_CORE_H
- 
-+#include <linux/clk.h>
- #include <linux/interrupt.h>
- #include <media/v4l2-ctrls.h>
- #include <media/v4l2-device.h>
-@@ -74,6 +75,40 @@ struct mtk_jpeg_variant {
- 	u32 cap_q_default_fourcc;
- };
- 
-+enum mtk_jpegenc_hw_id {
-+	MTK_JPEGENC_HW0,
-+	MTK_JPEGENC_HW1,
-+	MTK_JPEGENC_HW_MAX,
-+};
-+
-+/**
-+ * struct mtk_jpegenc_clk - Structure used to store vcodec clock information
-+ * @clks:		JPEG encode clock
-+ * @clk_num:		JPEG encode clock numbers
-+ */
-+struct mtk_jpegenc_clk {
-+	struct clk_bulk_data *clks;
-+	int clk_num;
-+};
-+
-+/**
-+ * struct mtk_jpegenc_comp_dev - JPEG COREX abstraction
-+ * @dev:		JPEG device
-+ * @plat_dev:		platform device data
-+ * @reg_base:		JPEG registers mapping
-+ * @master_dev:		mtk_jpeg_dev device
-+ * @venc_clk:		jpeg encode clock
-+ * @jpegenc_irq:	jpeg encode irq num
-+ */
-+struct mtk_jpegenc_comp_dev {
-+	struct device *dev;
-+	struct platform_device *plat_dev;
-+	void __iomem *reg_base;
-+	struct mtk_jpeg_dev *master_dev;
-+	struct mtk_jpegenc_clk venc_clk;
-+	int jpegenc_irq;
-+};
-+
- /**
-  * struct mtk_jpeg_dev - JPEG IP abstraction
-  * @lock:		the mutex protecting this structure
-@@ -87,6 +122,9 @@ struct mtk_jpeg_variant {
-  * @reg_base:		JPEG registers mapping
-  * @job_timeout_work:	IRQ timeout structure
-  * @variant:		driver variant to be used
-+ * @reg_encbase:	jpg encode register base addr
-+ * @enc_hw_dev:		jpg encode hardware device
-+ * @is_jpgenc_multihw:	the flag of multi-hw core
-  */
- struct mtk_jpeg_dev {
- 	struct mutex		lock;
-@@ -100,6 +138,10 @@ struct mtk_jpeg_dev {
- 	void __iomem		*reg_base;
- 	struct delayed_work job_timeout_work;
- 	const struct mtk_jpeg_variant *variant;
-+
-+	void __iomem *reg_encbase[MTK_JPEGENC_HW_MAX];
-+	struct mtk_jpegenc_comp_dev *enc_hw_dev[MTK_JPEGENC_HW_MAX];
-+	bool is_jpgenc_multihw;
- };
- 
- /**
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-index 368f512ea86e..3dcf83d6d95e 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-@@ -5,11 +5,27 @@
-  *
-  */
- 
-+#include <linux/clk.h>
-+#include <linux/interrupt.h>
-+#include <linux/irq.h>
- #include <linux/io.h>
- #include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_device.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/slab.h>
-+#include <media/media-device.h>
- #include <media/videobuf2-core.h>
- #include <media/videobuf2-dma-contig.h>
-+#include <media/videobuf2-v4l2.h>
-+#include <media/v4l2-mem2mem.h>
-+#include <media/v4l2-dev.h>
-+#include <media/v4l2-device.h>
-+#include <media/v4l2-fh.h>
-+#include <media/v4l2-event.h>
- 
-+#include "mtk_jpeg_core.h"
- #include "mtk_jpeg_enc_hw.h"
- 
- static const struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
-@@ -30,6 +46,16 @@ static const struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
- 	{.quality_param = 97, .hardware_value = JPEG_ENC_QUALITY_Q97},
- };
- 
-+#if defined(CONFIG_OF)
-+static const struct of_device_id mtk_jpegenc_drv_ids[] = {
-+	{
-+		.compatible = "mediatek,mt8195-jpgenc-hw",
-+	},
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, mtk_jpegenc_drv_ids);
-+#endif
-+
- void mtk_jpeg_enc_reset(void __iomem *base)
- {
- 	writel(0, base + JPEG_ENC_RSTB);
-@@ -158,3 +184,138 @@ void mtk_jpeg_set_enc_params(struct mtk_jpeg_ctx *ctx,  void __iomem *base)
- 	writel(ctx->restart_interval, base + JPEG_ENC_RST_MCU_NUM);
- }
- EXPORT_SYMBOL_GPL(mtk_jpeg_set_enc_params);
-+
-+static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
-+{
-+	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-+	enum vb2_buffer_state buf_state;
-+	struct mtk_jpeg_ctx *ctx;
-+	u32 result_size;
-+	u32 irq_status;
-+
-+	struct mtk_jpegenc_comp_dev *jpeg = priv;
-+	struct mtk_jpeg_dev *master_jpeg = jpeg->master_dev;
-+
-+	irq_status = readl(jpeg->reg_base + JPEG_ENC_INT_STS) &
-+		JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
-+	if (irq_status)
-+		writel(0, jpeg->reg_base + JPEG_ENC_INT_STS);
-+	if (!(irq_status & JPEG_ENC_INT_STATUS_DONE))
-+		return IRQ_NONE;
-+
-+	ctx = v4l2_m2m_get_curr_priv(master_jpeg->m2m_dev);
-+	if (!ctx) {
-+		v4l2_err(&master_jpeg->v4l2_dev, "Context is NULL\n");
-+		return IRQ_HANDLED;
-+	}
-+
-+	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-+	dst_buf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-+	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
-+
-+	result_size = mtk_jpeg_enc_get_file_size(jpeg->reg_base);
-+	vb2_set_plane_payload(&dst_buf->vb2_buf, 0, result_size);
-+	buf_state = VB2_BUF_STATE_DONE;
-+	v4l2_m2m_buf_done(src_buf, buf_state);
-+	v4l2_m2m_buf_done(dst_buf, buf_state);
-+	v4l2_m2m_job_finish(master_jpeg->m2m_dev, ctx->fh.m2m_ctx);
-+	pm_runtime_put(ctx->jpeg->dev);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static int mtk_jpegenc_hw_init_irq(struct mtk_jpegenc_comp_dev *dev)
-+{
-+	struct platform_device *pdev = dev->plat_dev;
-+	int ret;
-+
-+	dev->jpegenc_irq = platform_get_irq(pdev, 0);
-+	if (dev->jpegenc_irq < 0)
-+		return dev->jpegenc_irq;
-+
-+	ret = devm_request_irq(&pdev->dev,
-+			       dev->jpegenc_irq,
-+			       mtk_jpegenc_hw_irq_handler,
-+			       0,
-+			       pdev->name, dev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to devm_request_irq %d (%d)",
-+			dev->jpegenc_irq, ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
-+{
-+	struct mtk_jpegenc_clk *jpegenc_clk;
-+	struct mtk_jpeg_dev *master_dev;
-+	struct mtk_jpegenc_comp_dev *dev;
-+	int ret, i;
-+
-+	struct device *decs = &pdev->dev;
-+
-+	if (!decs->parent)
-+		return -EPROBE_DEFER;
-+
-+	master_dev = dev_get_drvdata(decs->parent);
-+	if (!master_dev)
-+		return -EPROBE_DEFER;
-+
-+	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
-+	if (!dev)
-+		return -ENOMEM;
-+
-+	dev->plat_dev = pdev;
-+	dev->dev = &pdev->dev;
-+
-+	if (!master_dev->is_jpgenc_multihw) {
-+		master_dev->is_jpgenc_multihw = true;
-+		for (i = 0; i < MTK_JPEGENC_HW_MAX; i++)
-+			master_dev->enc_hw_dev[i] = NULL;
-+	}
-+
-+	jpegenc_clk = &dev->venc_clk;
-+
-+	jpegenc_clk->clk_num = devm_clk_bulk_get_all(&pdev->dev,
-+						     &jpegenc_clk->clks);
-+	if (jpegenc_clk->clk_num < 0)
-+		return dev_err_probe(&pdev->dev, jpegenc_clk->clk_num,
-+				     "Failed to get jpegenc clock count\n");
-+
-+	dev->reg_base = devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(dev->reg_base))
-+		return PTR_ERR(dev->reg_base);
-+
-+	ret = mtk_jpegenc_hw_init_irq(dev);
-+	if (ret)
-+		return ret;
-+
-+	for (i = 0; i < MTK_JPEGENC_HW_MAX; i++) {
-+		if (master_dev->enc_hw_dev[i])
-+			continue;
-+
-+		master_dev->enc_hw_dev[i] = dev;
-+		master_dev->reg_encbase[i] = dev->reg_base;
-+		dev->master_dev = master_dev;
-+	}
-+
-+	platform_set_drvdata(pdev, dev);
-+	pm_runtime_enable(&pdev->dev);
-+
-+	return 0;
-+}
-+
-+static struct platform_driver mtk_jpegenc_hw_driver = {
-+	.probe = mtk_jpegenc_hw_probe,
-+	.driver = {
-+		.name = "mtk-jpegenc-hw",
-+		.of_match_table = of_match_ptr(mtk_jpegenc_drv_ids),
-+	},
-+};
-+
-+module_platform_driver(mtk_jpegenc_hw_driver);
-+
-+MODULE_DESCRIPTION("MediaTek JPEG encode HW driver");
-+MODULE_LICENSE("GPL");
--- 
-2.18.0
-
+PiBTdWJqZWN0OiBSZTogW1BBVENIIHYzIDAyLzExXSBkdC1iaW5kaW5nczogcmVtb3RlcHJvYzog
+bWVkaWF0ZWs6IFN1cHBvcnQNCj4gTVQ4MTk1IGR1YWwtY29yZSBTQ1ANCj4gDQo+IE9uIFdlZCwg
+MjAyMi0wOS0yOCBhdCAxNTowMSArMDgwMCwgUGVuZyBGYW4gd3JvdGU6DQo+ID4NCj4gPiBPbiA5
+LzI3LzIwMjIgMTA6NTUgQU0sIFRpbmdoYW4gU2hlbiB3cm90ZToNCj4gPiA+IFRoZSBNVDgxOTUg
+U0NQIGlzIGEgZHVhbC1jb3JlIFJJU0MtViBNQ1UuIEV4dGVuZCB0aGUgeWFtbCBmaWxlIHRvDQo+
+ID4gPiBkZXNjcmliZSB0aGUgMm5kIGNvcmUgYXMgYSBzdWJub2RlIG9mIHRoZSBib290IGNvcmUu
+DQo+ID4gPg0KPiA+ID4gVGhlIGNvbmZpZ3VyYXRpb24gcmVnaXN0ZXIgaXMgc2hhcmVkIGJ5IE1U
+ODE5NSBTQ1AgY29yZSAwIGFuZCBjb3JlDQo+ID4gPiAxLiBUaGUgY29yZSAxIGNhbiByZXRyaWV2
+ZSB0aGUgaW5mb3JtYXRpb24gb2YgY29uZmlndXJhdGlvbg0KPiA+ID4gcmVnaXN0ZXJzIGZyb20g
+cGFyZW50IG5vZGUuDQo+ID4NCj4gPiBJIHRoaW5rIHRoZSBjb21taXQgbWVzc2FnZSB3b3VsZCBu
+b3QgY29udmluY2UgcGVvcGxlIHlvdSBwdXQgc2NwIDEgYXMNCj4gPiBzdWJub2RlIG9mIHNjcCAw
+Lg0KPiA+DQo+ID4gUmVnYXJkcywNCj4gPiBQZW5nLg0KPiA+DQo+IEhpIFBlbmcsDQo+IA0KPiBU
+aGFua3MgZm9yIHlvdXIgcmV2aWV3LiBJIHNob3VsZCBnaXZlIHRoZSBtb3N0IHJlYXNvbmFibGUg
+ZXhwbGFuYXRpb24gZm9yDQo+IHdoeSBTQ1AgMSBpcyBhIHN1Ym5vZGUuDQo+IA0KPiBBZGRpbmcg
+U0NQIDEgYXMgYSBzdWJub2RlIGhlbHBzIHRvIGFzc3VyZSBmaW5pc2ggcHJvYmluZyBTQ1AgMSBi
+ZWZvcmUNCj4gc3RhcnRpbmcgU0NQIDAgYnkgdXNpbmcgb2ZfcGxhdGZvcm1fcG9wdWxhdGUuIEl0
+J3MgYmVjYXVzZSB0aGF0IEkgd2FudCB0bw0KPiBwcm9iZSBTQ1AgMSBhcyBhIHJlbW90ZXByb2Mg
+c3ViZGV2aWNlIG9mIFNDUCAwLg0KPiBzdWNoIHRoYXQgd2hlbiBTQ1AgMCBjcmFzaGVkLCBTQ1Ag
+MCBjYW4gcmVib290IFNDUCAxLg0KDQpCaW5kaW5nIGlzIGZvciBkZXNjcmliaW5nIGhhcmR3YXJl
+Li4NCg0KUmVnYXJkcywNClBlbmcuDQoNCj4gDQo+IFJlZ2FyZHMsDQo+IFRpbmdIYW4NCj4gDQo+
+IA0KPiANCj4gDQoNCg==
 
