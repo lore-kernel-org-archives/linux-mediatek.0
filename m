@@ -4,62 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A076C32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 10:31:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36B19C32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 10:35:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E7/b0If/+1Lg139hgoDsykrCZtoPwMRx4Buly9gemT0=; b=XC+cQJ2rwFtbwNxM/Z04c4rglm
-	GKJNo6WtqYoIIoRoBu4hxkRXAuwR5InuNoJ4nXCM8L0NSJgdCMJHZk4N2vLHcnm5KTYMqdspZE0OS
-	CoqSmz6y67tFIxqYesh5YUlIOx7+itV7SUCtdUGxO0FlkxmYOCUMraUVeZe1uOarkDOK1y6+Quayc
-	FQCUm8Pal/t9bZCw0R+QVexkxTeuhGKnOQ+gBSbs+DDdaLF45mkp+VKYLIdn/yr9jml8mmEJL0JYB
-	ALfqJ4ZtyqfSlo99xLvtAWwLtcC8rkrPD6nGLDO/hdtKXoDgkBRTDf+DQeiaGRRfeXxhrblm1Lseo
-	254SGzYQ==;
+	bh=EFAVr80W2zQA5wMIdDCl3E8XVba7INcYTCZeA69Fz74=; b=IU0PDLZL0cCtktJSAV94mMCATa
+	vSdzk6nLwoF2haOjflS9xV7IePhI7DpVfYngxGXsuHV29HKZ5z2VD+fSPpN5ddqwUuEOOL+CTPlKg
+	ouIVDRXfUQZ+20CtogOf8BcZ+haN2xw4DOY1T184h1TxT8iVBk21yYxZoU5O9mr8Unn3NHaYHIzNl
+	VLsrduh6LbC6yCl5tX4xRfq84jnQzMOs/1SNTGG1OlsWh04zLxR6OZeL+kr9t3PjmXGsVP/2Sgmj9
+	d8pBG17y52NdLM5eJrc2rpnCJIGDKxtXckw2v3pOGR7zjml1kmHqv0mjPJYFFAY1Yd1y14mStY3/C
+	2HtSbTSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odULC-00FdAY-9U; Wed, 28 Sep 2022 10:30:58 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1odUP3-00FexP-Gc; Wed, 28 Sep 2022 10:34:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odUKl-00Fcyh-HB; Wed, 28 Sep 2022 10:30:33 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id CCF1761DF2;
-	Wed, 28 Sep 2022 10:30:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35245C433D6;
-	Wed, 28 Sep 2022 10:30:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664361030;
-	bh=UzGll+k8wBj+Ek0YtUWqd2Ht46Qd8HsBBj7woBZT0JU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lriRxLomhxJEbw/wrLv0ke0UK4s3oUWcxVbIfkRMPPJgozbbJHN31fiYiMQ5rEguj
-	 XykGCfkNkdlAhUSO3gFICVekG/XhZf4BadVDR5M8xyrU6qJO1n0v5cDggL+7aLEiHC
-	 BknJQFhzMN0/4yqywDr8UpQdZhREMSSEBAczEIlEL6COPWlE4hmBtzi4J4WlCI6Vt1
-	 k+s7eW/Itvo0LAKpfYQDrdOvfqmzdW054T1bkAB1yY94JDAqbj+FfRqpmeiTUizFKR
-	 uKHJ/FUVKMlkHgNOOtUZXYPwh7SmJh+PfmXIm7NPLs7Oy8pVMmUIFt8SwKrjKkG3o1
-	 jG16SjD1WPHag==
-Date: Wed, 28 Sep 2022 11:30:24 +0100
-From: Lee Jones <lee@kernel.org>
-To: cy_huang <u0084500@gmail.com>
-Cc: matthias.bgg@gmail.com, gene_chen@richtek.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	ChiYuan Huang <cy_huang@richtek.com>, stable@vger.kernel.org
-Subject: Re: [PATCH] mfd: mt6360: add bound check in regmap read/write
- function
-Message-ID: <YzQiQIpwpd8rD2qs@google.com>
-References: <1663143973-29254-1-git-send-email-u0084500@gmail.com>
+	id 1odUOW-00FelI-5p; Wed, 28 Sep 2022 10:34:25 +0000
+X-UUID: 5aab4c3d52cd471c9dfcf50f7b49f118-20220928
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=EFAVr80W2zQA5wMIdDCl3E8XVba7INcYTCZeA69Fz74=;
+	b=edqe5QWjR8Qqdbyo6yGlTmHE++sDX+he4RMHa9z9m7HpYN/agxw7kfDaX5xZoRalIIZj5TNsaW/J88h0saonKOc52FMSVkbfxx2BahrnwHgfgdwdiREgDp+cwKZ7yfUYNZHp39B4GgjnXLuABfRbYVDClVFGbHcbCZrai76jVS0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:6fc33400-e933-4e19-aaf7-61296be39ef3,IP:0,U
+	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:5ec55da3-dc04-435c-b19b-71e131a5fc35,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 5aab4c3d52cd471c9dfcf50f7b49f118-20220928
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 277472973; Wed, 28 Sep 2022 03:34:16 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 28 Sep 2022 17:33:08 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 28 Sep 2022 17:33:07 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<nicolas.dufresne@collabora.com>, <wenst@chromium.org>, kyrie wu
+	<kyrie.wu@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
+	<irui.wang@mediatek.com>, Rob Herring <robh@kernel.org>
+Subject: [V16,01/15] dt-bindings: mediatek: Add mediatek, mt8195-jpgenc compatible
+Date: Wed, 28 Sep 2022 17:32:44 +0800
+Message-ID: <20220928093258.32384-2-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220928093258.32384-1-irui.wang@mediatek.com>
+References: <20220928093258.32384-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <1663143973-29254-1-git-send-email-u0084500@gmail.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_033031_644279_161163F0 
-X-CRM114-Status: GOOD (  20.57  )
+X-CRM114-CacheID: sfid-20220928_033424_232070_2E09BCDC 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,52 +87,171 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 14 Sep 2022, cy_huang wrote:
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-> From: ChiYuan Huang <cy_huang@richtek.com>
-> 
-> Fix the potential risk for null pointer if bank index is over the maximimum.
-> 
-> Refer to the discussion list for the experiment result on mt6370.
-> https://lore.kernel.org/all/20220914013345.GA5802@cyhuang-hp-elitebook-840-g3.rt/
-> If not to check the bound, there is the same issue on mt6360.
-> 
-> Fixes: 3b0850440a06c (mfd: mt6360: Merge different sub-devices I2C read/write)
-> Cc: stable@vger.kernel.org
-> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
-> ---
->  drivers/mfd/mt6360-core.c | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/drivers/mfd/mt6360-core.c b/drivers/mfd/mt6360-core.c
-> index 6eaa677..d375333 100644
-> --- a/drivers/mfd/mt6360-core.c
-> +++ b/drivers/mfd/mt6360-core.c
-> @@ -410,6 +410,9 @@ static int mt6360_regmap_read(void *context, const void *reg, size_t reg_size,
->  	u8 crc;
->  	int ret;
->  
-> +	if (bank >= MT6360_SLAVE_MAX)
-> +		return -EINVAL;
-> +
+Add mediatek,mt8195-jpgenc compatible to binding document.
 
-It's too late to check bank's value here, we have already used it to
-index into an array by this point.  Please fix that.
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: irui wang <irui.wang@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ .../media/mediatek,mt8195-jpegenc.yaml        | 146 ++++++++++++++++++
+ 1 file changed, 146 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
 
->  	if (bank == MT6360_SLAVE_PMIC || bank == MT6360_SLAVE_LDO) {
->  		crc_needed = true;
->  		ret = mt6360_xlate_pmicldo_addr(&reg_addr, val_size);
-> @@ -460,6 +463,9 @@ static int mt6360_regmap_write(void *context, const void *val, size_t val_size)
->  	int write_size = val_size - MT6360_REGMAP_REG_BYTE_SIZE;
->  	int ret;
->  
-> +	if (bank >= MT6360_SLAVE_MAX)
-> +		return -EINVAL;
-> +
->  	if (bank == MT6360_SLAVE_PMIC || bank == MT6360_SLAVE_LDO) {
->  		crc_needed = true;
->  		ret = mt6360_xlate_pmicldo_addr(&reg_addr, val_size - MT6360_REGMAP_REG_BYTE_SIZE);
-
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+new file mode 100644
+index 000000000000..5c7ba5c7e598
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+@@ -0,0 +1,146 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mt8195-jpegenc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek JPEG Encoder Device Tree Bindings
++
++maintainers:
++  - kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>
++
++description:
++  MediaTek JPEG Encoder is the JPEG encode hardware present in MediaTek SoCs
++
++properties:
++  compatible:
++    const: mediatek,mt8195-jpgenc
++
++  power-domains:
++    maxItems: 1
++
++  iommus:
++    maxItems: 4
++    description:
++      Points to the respective IOMMU block with master port as argument, see
++      Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
++      Ports are according to the HW.
++  dma-ranges:
++    maxItems: 1
++    description: |
++      Describes the physical address space of IOMMU maps to memory.
++
++  "#address-cells":
++    const: 2
++
++  "#size-cells":
++    const: 2
++
++  ranges: true
++
++# Required child node:
++patternProperties:
++  "^jpgenc@[0-9a-f]+$":
++    type: object
++    description:
++      The jpeg encoder hardware device node which should be added as subnodes to
++      the main jpeg node.
++
++    properties:
++      compatible:
++        const: mediatek,mt8195-jpgenc-hw
++
++      reg:
++        maxItems: 1
++
++      iommus:
++        minItems: 1
++        maxItems: 32
++        description:
++          List of the hardware port in respective IOMMU block for current Socs.
++          Refer to bindings/iommu/mediatek,iommu.yaml.
++
++      interrupts:
++        maxItems: 1
++
++      clocks:
++        maxItems: 1
++
++      clock-names:
++        items:
++          - const: jpgenc
++
++      power-domains:
++        maxItems: 1
++
++    required:
++      - compatible
++      - reg
++      - iommus
++      - interrupts
++      - clocks
++      - clock-names
++      - power-domains
++
++    additionalProperties: false
++
++required:
++  - compatible
++  - power-domains
++  - iommus
++  - dma-ranges
++  - ranges
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/memory/mt8195-memory-port.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/power/mt8195-power.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        jpgenc-master {
++            compatible = "mediatek,mt8195-jpgenc";
++            power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
++            iommus = <&iommu_vpp M4U_PORT_L20_JPGENC_Y_RDMA>,
++                     <&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
++                     <&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
++                     <&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
++            dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
++            #address-cells = <2>;
++            #size-cells = <2>;
++            ranges;
++
++            jpgenc@1a030000 {
++                compatible = "mediatek,mt8195-jpgenc-hw";
++                reg = <0 0x1a030000 0 0x10000>;
++                iommus = <&iommu_vdo M4U_PORT_L19_JPGENC_Y_RDMA>,
++                         <&iommu_vdo M4U_PORT_L19_JPGENC_C_RDMA>,
++                         <&iommu_vdo M4U_PORT_L19_JPGENC_Q_TABLE>,
++                         <&iommu_vdo M4U_PORT_L19_JPGENC_BSDMA>;
++                interrupts = <GIC_SPI 342 IRQ_TYPE_LEVEL_HIGH 0>;
++                clocks = <&vencsys CLK_VENC_JPGENC>;
++                clock-names = "jpgenc";
++                power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
++            };
++
++            jpgenc@1b030000 {
++                compatible = "mediatek,mt8195-jpgenc-hw";
++                reg = <0 0x1b030000 0 0x10000>;
++                iommus = <&iommu_vpp M4U_PORT_L20_JPGENC_Y_RDMA>,
++                         <&iommu_vpp M4U_PORT_L20_JPGENC_C_RDMA>,
++                         <&iommu_vpp M4U_PORT_L20_JPGENC_Q_TABLE>,
++                         <&iommu_vpp M4U_PORT_L20_JPGENC_BSDMA>;
++                interrupts = <GIC_SPI 347 IRQ_TYPE_LEVEL_HIGH 0>;
++                clocks = <&vencsys_core1 CLK_VENC_CORE1_JPGENC>;
++                clock-names = "jpgenc";
++                power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
++            };
++        };
++    };
 -- 
-Lee Jones [李琼斯]
+2.18.0
+
 
