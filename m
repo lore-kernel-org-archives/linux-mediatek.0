@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4712C54EE9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 15:55:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BC46C54EE9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 15:56:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Zkde7XvD7sTr+5siCiMHCEt37fW2eS9UKRT7T3OjxcY=; b=mAIaGYRkFyD8051n0Jn25MVbeb
-	UE2mcZxcRq7aYJDxh8CyGDRvZqVLSOianRuU3/Z/2gm4AIUfhusFEb7b78NPKZSBK7/pEPkYaEPV0
-	bnEMOL1gDmgg/r1HzKY5DpI0FI/HS5jQ6ifUSPmekSHYTgzlApSWq3QMZApzaWKMoinmm5+KF5qur
-	3B6Wra1Je6BqoUnU6ILPyCF5BJFZLKRh4WyaGhpCqWAKf5pULEi93f7zqXfs9YSk3aMClYsfBRpw9
-	0snbkM5D8CcvXA10QHOuGn3U+BwqMvlfKnO0Th6Skn+t2s6IGU8DThuL6w/qYD8q2/4NK+aDPGdPy
-	aOpERIeA==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dIKXHN9bwjm76SYMbazR03J6pChEQ/461TOf+rEGiHs=; b=UvmPlL2R/sponaPUa2xLK65n3Y
+	t/WOUcZXZwcLgnzPKoLVbf5QT2lQ0NvJ2lVuQrg1Vj5eVqBnTuAcLt4BqaUE1ZRXk0j80HeJE0pOK
+	MbydhQdhpqLMhrzD92hndBsOGvRCJbIQxvlEvTndkFIOIPCjVL77tMex3TWe3FMeB3tZ4Rneg52O9
+	BtiJhMcqcjah01IuuI6oGGy3meUaNnaTwfHRWMcORo9jQhzYRSsSvSTcOI9kZq7zBjrqBF/gtbBXX
+	04shLaFaiKN76SGy0qM94wqLVVUbezgnCExo6UXS4NVY13kCz0pqGwSf8gDsYbqKzZcbKVCMxFB1n
+	f+1mN61g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odZPP-00GzIv-Vp; Wed, 28 Sep 2022 15:55:39 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1odZPh-00GzSN-US; Wed, 28 Sep 2022 15:55:57 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odZPF-00GzFa-4w; Wed, 28 Sep 2022 15:55:30 +0000
+	id 1odZPI-00GzGL-Ty; Wed, 28 Sep 2022 15:55:34 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id E7D9161F11;
-	Wed, 28 Sep 2022 15:55:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A339FC43146;
-	Wed, 28 Sep 2022 15:55:25 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 7AE53B8211B;
+	Wed, 28 Sep 2022 15:55:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F31CC433D6;
+	Wed, 28 Sep 2022 15:55:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664380527;
-	bh=RIn6sZf4k88Tnw5v3eTqACWbQ/KJxG3w+Kp9KpVeALg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=bCY3qTb4/+dYc65wXDwqxgoTq77tM2XbIZQRImu59q9I62cckO9dRTEjEj6UD4hmE
-	 wZyAoOcjXJzhmftW6Lz6yXZn43NBhnX9mdwFYKcBDjx9gJBL2Zj+i9cklfFFOmAj9T
-	 z7mfUe+nEsVuEg45jVQnzNTM3BHoUcw7z5yXsmiWDLNWq4KbikSPO07vuo/h+xXI9M
-	 Js39IvW3fVprP5SbBVTfdpbevt6LzayhsBHd8rNhHaR4RpwnYqFXSdX78pVg7vlWfN
-	 oznf0AHJWiDYVmtvIG+5o/OwjOCNM+ak86TAQS1IkUzXCM/pqu7+rIy7NFDJmqDy4u
-	 xS6IeGGAafKog==
+	s=k20201202; t=1664380530;
+	bh=qtQPDKCYZ/wlqIizvS08i9p0N53rArTptfBEo4YTjjI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=XtJko+sP0l0i1L7qt5nSiIXQ7KCikEp9nlQq1hW4glAT8r0Wrd/lFgQoTZvKAFltN
+	 +yTfMIWZvMGxdXhEjNencg4ev0p7eOzXg6ELU0/iVUCiqmhC5MHlJyMR4Uzho6Ino0
+	 KxVIm51HDEoxEb+ZRPlzO5oEeu4OSkYQpu2TFsrnnb8YXG7x92quvl3Ql3Ly9JIrPM
+	 JVabcTgsJn1KlrrMe2W1EpWZHwimZUC1E5zZc9pJSFO6PeTqN/35XY7D1QUf3GMwsF
+	 pQnyt/FFcEqwCvnQRbiKBDHddDTMzOXyFdrfdxrVpqlmery+MejCnkHlCgDImM3Khc
+	 9gJiiacg6YZWQ==
 From: matthias.bgg@kernel.org
 To: roger.lu@mediatek.com,
 	jia-wei.chang@mediatek.com
@@ -50,17 +50,18 @@ Cc: nfraprado@collabora.com,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	angelogioacchino.delregno@collabora.com,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH 0/8] soc: mediatek: mtk-svs: refactor and cleanup the driver
-Date: Wed, 28 Sep 2022 17:55:11 +0200
-Message-Id: <20220928155519.31977-1-matthias.bgg@kernel.org>
+	Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH 1/8] soc: mediatek: mtk-svs: clean up platform probing
+Date: Wed, 28 Sep 2022 17:55:12 +0200
+Message-Id: <20220928155519.31977-2-matthias.bgg@kernel.org>
 X-Mailer: git-send-email 2.37.3
+In-Reply-To: <20220928155519.31977-1-matthias.bgg@kernel.org>
+References: <20220928155519.31977-1-matthias.bgg@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_085529_271996_DF5D251A 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20220928_085533_149220_BF859513 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,39 +78,49 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Matthias Brugger <matthias.bgg@gmail.com>
 
-Mediatek SVS driver got accepted upstream but has coding style issues
-which were overseen in the review process. This series is a first step
-to clean up the driver. It basically cleans up the SoC specific probe.
-As next step we will need to clean up the 'struct svs_bank'.
+We only ever call the SoC specific probe function from
+svs_platform_probe. No need to carry that function in a global
+datastructure around.
 
-This series should be a mere cleanup with no functional change. I'm
-happy to recieve tested-by tags to make sure it does not break anything.
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
 
+ drivers/soc/mediatek/mtk-svs.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-Matthias Brugger (8):
-  soc: mediatek: mtk-svs: clean up platform probing
-  soc: mediatek: mtk-svs: improve readability of platform_probe
-  soc: mediatek: mtk-svs: move svs_platform_probe into probe
-  soc: mediatek: mtk-svs: delete superfluous platform data entries
-  soc: mediatek: mtk-svs: Move SoC specific functions to new files
-  soc: mtk-svs: mt8183: Move thermal parsing in new function
-  soc: mtk-svs: mt8183: refactor o_slope calculation
-  soc: mtk-svs: mt8192: fix bank data
-
- drivers/soc/mediatek/Makefile         |   3 +-
- drivers/soc/mediatek/mt8183-svs.h     | 113 ++++
- drivers/soc/mediatek/mt8192-svs.h     |  64 ++
- drivers/soc/mediatek/mtk-svs-mt8183.c | 235 +++++++
- drivers/soc/mediatek/mtk-svs-mt8192.c |  98 +++
- drivers/soc/mediatek/mtk-svs.c        | 882 ++------------------------
- drivers/soc/mediatek/mtk-svs.h        | 279 ++++++++
- 7 files changed, 853 insertions(+), 821 deletions(-)
- create mode 100644 drivers/soc/mediatek/mt8183-svs.h
- create mode 100644 drivers/soc/mediatek/mt8192-svs.h
- create mode 100644 drivers/soc/mediatek/mtk-svs-mt8183.c
- create mode 100644 drivers/soc/mediatek/mtk-svs-mt8192.c
- create mode 100644 drivers/soc/mediatek/mtk-svs.h
-
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index 0469c9dfeb04..fd0f636e8644 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -319,7 +319,6 @@ static const u32 svs_regs_v2[] = {
+  * @banks: svs banks that svs platform supports
+  * @rst: svs platform reset control
+  * @efuse_parsing: svs platform efuse parsing function pointer
+- * @probe: svs platform probe function pointer
+  * @efuse_max: total number of svs efuse
+  * @tefuse_max: total number of thermal efuse
+  * @regs: svs platform registers map
+@@ -336,7 +335,6 @@ struct svs_platform {
+ 	struct svs_bank *banks;
+ 	struct reset_control *rst;
+ 	bool (*efuse_parsing)(struct svs_platform *svsp);
+-	int (*probe)(struct svs_platform *svsp);
+ 	size_t efuse_max;
+ 	size_t tefuse_max;
+ 	const u32 *regs;
+@@ -2347,11 +2345,10 @@ static struct svs_platform *svs_platform_probe(struct platform_device *pdev)
+ 	svsp->name = svsp_data->name;
+ 	svsp->banks = svsp_data->banks;
+ 	svsp->efuse_parsing = svsp_data->efuse_parsing;
+-	svsp->probe = svsp_data->probe;
+ 	svsp->regs = svsp_data->regs;
+ 	svsp->bank_max = svsp_data->bank_max;
+ 
+-	ret = svsp->probe(svsp);
++	ret = svsp_data->probe(svsp);
+ 	if (ret)
+ 		return ERR_PTR(ret);
+ 
 -- 
 2.37.3
 
