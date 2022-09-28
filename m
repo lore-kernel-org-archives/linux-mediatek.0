@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C786C07E9D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 01:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C8B7C07E9D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Sep 2022 02:16:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=haojR7N864LKcOnX+R+/A/65BKCGx3lL6Gy6Rs7WZyY=; b=G7PaXJMyAKfUiIqsBAa/vnPrOn
-	WEwz5n+KKE8v9Px3Cjuf+aGBOLhUjs5Wr+08BFzXiK/fRu/iymRYOth2B+bOPCmgFsVfMnZfAW812
-	ezNm6L3dTA1M4laFMuWY79/tUCdr8bP8EFt1Ao6IWZeL5AwJBOr1YfO/b1W51rO/KMpqAaI2bgfeD
-	1jB1UUc8H89h4xMa0SdOw/SYTsLvEbiQNwK8CTSLNPBAhYQXzeK+z9onG6eshyHuQ1CvrTnQDm1IN
-	hIS3DkDa3U5QEB1nuqfuOYlzuU2B/72+xO2ptS4Bm4cU8KDd9n5qBFDMADuNqvPaiX/0ArqUyDs4Q
-	ANO+M/sg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q+fSEED8koFMBB0jhsQvQ1pjxAX/BH3bjI3pxMvhkOY=; b=Iu5LRq8dUB4Uimqq9odHfawPP6
+	EKYlDvYrHal/QmIyqswz1YW87rK8tPX8z1Zv9bbZVeOt6c5gFVTwfnmP1KN1NIyOTf3eDk6DKGMqu
+	9Xt77qZUSdPel//FiGlgZoO/Vt9OBqKVSX2I7rXoIeqdtgYJV+EXmI23Bv9BRic6EqC993kGMykbL
+	cJuRHNEv19+8NPpcFiip4FmdOw9YSkv0GeXmELTaPhq3wpS7EU67ZZZz+VtIzKVwsDbYKAYzfcSWY
+	B23slOP9feQ3aGg6RnQ6ugD7F0ZPfQFuLK/rZQfdiSM8+oV5i8bPPdZSftq6aD+jnFJF725FEguX/
+	tOeiY3kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odML4-00DUtu-D2; Wed, 28 Sep 2022 01:58:18 +0000
+	id 1odMc6-00DWyX-Pw; Wed, 28 Sep 2022 02:15:54 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odML1-00DUsf-7f; Wed, 28 Sep 2022 01:58:17 +0000
-X-UUID: 999de3e5da814c55a620b62775f1c474-20220927
+	id 1odMc2-00DWuh-IA; Wed, 28 Sep 2022 02:15:52 +0000
+X-UUID: 83a49cb4943b46aa9bee4a6a6cef69ee-20220927
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=haojR7N864LKcOnX+R+/A/65BKCGx3lL6Gy6Rs7WZyY=;
-	b=CtmReQvtiNA7v2arh5HMOOmEEiyl146dGpSrbR9j8qE4uUJhUKcZooJJT5VPI0v22kFJANr1tZSbxxi27qabwb+/5PDhfvQPK1Y5mg4gmIAXRzH/eGlAF1wQwsePXMh4UvNtotO75MsWR2kQU9DrVbBTMg/4lVCB7OpgQUcYeEo=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Q+fSEED8koFMBB0jhsQvQ1pjxAX/BH3bjI3pxMvhkOY=;
+	b=kvqbjCwTZkhD8fLHDJ89Tpy1GezdmvKZ0bsJr8r5aZVfWFaPWsSOHsX5g6Uzs905e8Z2HgSoICMeaGdOjqXOSU8qVDBOGfPXSR5Caf9DdrxTCH//LiJqvnnLxxhutySTL3WnVVWAAb/lRnrkynBwxVqhGLsx3S3hAvt/vhYgd4o=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:b19a1ed3-1fd6-4da0-a5cb-5a41a0328f5d,IP:0,U
+X-CID-O-INFO: VERSION:1.1.11,REQID:112ff860-a95a-4db8-8c96-5e732e34218f,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:363f3d07-1cee-4c38-b21b-a45f9682fdc0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 999de3e5da814c55a620b62775f1c474-20220927
+X-CID-META: VersionHash:39a5ff1,CLOUDID:cf283e07-1cee-4c38-b21b-a45f9682fdc0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:-5,EDM:-3,IP:nil,
+	URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 83a49cb4943b46aa9bee4a6a6cef69ee-20220927
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yongqiang.niu@mediatek.com>)
+	(envelope-from <miles.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1213077918; Tue, 27 Sep 2022 18:58:05 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 1032914646; Tue, 27 Sep 2022 19:15:45 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 28 Sep 2022 09:57:55 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 28 Sep 2022 09:57:54 +0800
-Message-ID: <325c9c728c51dd8270b36c62ef67f972f9a37ef2.camel@mediatek.com>
-Subject: Re: [PATCH v5] mailbox: mtk-cmdq: fix gce timeout issue
-From: yongqiang.niu <yongqiang.niu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
- Hu" <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
-	<hsinyi@chromium.org>
-Date: Wed, 28 Sep 2022 09:57:53 +0800
-In-Reply-To: <4b6ed7d1-31b7-265b-6f0f-58f0f7015177@collabora.com>
-References: <20220927083925.28433-1-yongqiang.niu@mediatek.com>
-	 <4b6ed7d1-31b7-265b-6f0f-58f0f7015177@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ 15.2.792.15; Wed, 28 Sep 2022 09:55:06 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Wed, 28 Sep 2022 09:55:06 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <angelogioacchino.delregno@collabora.com>
+CC: <linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<matthias.bgg@gmail.com>, <miles.chen@mediatek.com>,
+	<mturquette@baylibre.com>, <sboyd@kernel.org>, <wenst@chromium.org>
+Subject: Re: [PATCH 3/6] clk: mediatek: mt8192: Do not re-register top_early_divs in probe function
+Date: Wed, 28 Sep 2022 09:55:07 +0800
+Message-ID: <20220928015507.17206-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <0a1618c4-b808-56bd-e89f-560b0423191d@collabora.com>
+References: <0a1618c4-b808-56bd-e89f-560b0423191d@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_185815_324805_DA164B13 
-X-CRM114-Status: GOOD (  32.70  )
+X-CRM114-CacheID: sfid-20220927_191550_669514_4AB7B942 
+X-CRM114-Status: GOOD (  13.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,107 +79,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-09-27 at 13:14 +0200, AngeloGioacchino Del Regno wrote:
-> Il 27/09/22 10:39, Yongqiang Niu ha scritto:
-> > 1. enable gce ddr enable(gce reigster offset 0x48, bit 16 to 18)
-> > when gce work,
-> > and disable gce ddr enable when gce work job done
-> > 2. add cmdq ddr enable/disable api, and control gce ddr
-> > enable/disable
-> > to make sure it could protect when cmdq is multiple used by display
-> > and mdp
-> > 
-> > this is only for some SOC which has flag "gce_ddr_en".
-> > for this kind of gce, there is a handshake flow between gce and ddr
-> > hardware,
-> > if not set ddr enable flag of gce, ddr will fall into idle mode,
-> > then gce instructions will not process done.
-> > we need set this flag of gce to tell ddr when gce is idle or busy
-> > controlled by software flow.
-> > 
-> > ddr problem is a special case.
-> > when test suspend/resume case, gce sometimes will pull ddr, and ddr
-> > can
-> > not go to suspend.
-> > if we set gce register 0x48 to 0x7, will fix this gce pull ddr
-> > issue,
-> > as you have referred [1] and [2] (8192 and 8195)
-> > but for mt8186, the gce is more special, except setting of [1] and
-> > [2],
-> > we need add more setting set gce register 0x48 to (0x7 << 16 | 0x7)
-> > when gce working to make sure gce could process all instructions
-> > ok.
-> > this case just need normal bootup, if we not set this, display cmdq
-> > task will timeout, and chrome homescreen will always black screen.
-> > 
-> > and with this patch, we have done these test on mt8186:
-> > 1.suspend/resume
-> > 2.boot up to home screen
-> > 3.playback video with youtube.
-> > 
-> > suspend issue is special gce hardware issue, gce client  driver
-> > command already process done, but gce still pull ddr.
-> > 
-> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > ---
-> > change since v4:
-> > 1. remove spin lock control flow
-> > 2. move ddr control into suspend/resume/remove function
-> > ---
-> > 
-> > ---
-> >   drivers/mailbox/mtk-cmdq-mailbox.c | 44
-> > +++++++++++++++++++++++++++++-
-> >   1 file changed, 43 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > index 9465f9081515..e9ead72b9bd3 100644
-> > --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > @@ -38,6 +38,8 @@
-> >   #define CMDQ_THR_PRIORITY		0x40
-> >   
-> >   #define GCE_GCTL_VALUE			0x48
-> > +#define GCE_CTRL_BY_SW				GENMASK(18, 16)
-> > +#define GCE_DDR_EN				GENMASK(2, 0)
-> >   
-> >   #define CMDQ_THR_ACTIVE_SLOT_CYCLES	0x3200
-> >   #define CMDQ_THR_ENABLED		0x1
-> > @@ -80,6 +82,7 @@ struct cmdq {
-> >   	bool			suspended;
-> >   	u8			shift_pa;
-> >   	bool			control_by_sw;
-> > +	bool			sw_ddr_en;
-> >   	u32			gce_num;
-> >   };
-> >   
-> > @@ -87,9 +90,25 @@ struct gce_plat {
-> >   	u32 thread_nr;
-> >   	u8 shift;
-> >   	bool control_by_sw;
-> > +	bool sw_ddr_en;
-> >   	u32 gce_num;
-> >   };
-> >   
-> > +static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool enable)
-> > +{
-> > +	if (!cmdq->sw_ddr_en)
-> > +		return;
-> > +
-> > +	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
-> > +
-> > +	if (enable)
-> > +		writel(GCE_DDR_EN + GCE_CTRL_BY_SW, cmdq->base +
-> > GCE_GCTL_VALUE);
-> 
-> Adding up values to activate bits in this case works, but that's
-> wrong.
-> You want GCE_DDR_EN | GCE_CTRL_BY_SW.
-> 
-> Regards,
-> Angelo
+>> top_early_divs are registered in the CLK_OF_DECLARE_DRIVER() half of the
+>> topckgen clk driver. Don't try to register it again in the actual probe
+>> function. This gets rid of the "Trying to register duplicate clock ..."
+>> warning.
+>> 
+>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+>
+>Can't we simply remove the CLK_OF_DECLARE_DRIVER() and top_init_early entirely,
+>and transfer TOP_CSW_F26M_D2 to top_divs[] instead?
+>I get that systimer concern and we have something similar in MT8195, where the
+>TOP_CLK26M_D2 is registered "late".
 
-this will be fixed in next version.
+Another reason for this:
+Removing the CLK_OF_DECLARE_DRIVER() is good when we want to build our driver as
+kernel modules because it does not work with kernel modules.
 
+thanks,
+Miles
+>
+>Getting back to MT8192, TOP_CSW_F26M_D2 seems to be used only for:
+>1. systimer
+>2. SPMI MST (registered "late").
+>
+>Being it a fixed factor clock, parented to another fixed clock, it doesn't
+>even have any ON/OFF switch, so I think it would be actually possible to go
+>for the proposed removal... which would further improve this cleanup.
+>
+>Regards,
+>Angelo
+>
 
