@@ -4,75 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06790C04A95
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3463AC6FA82
 	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 09:10:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ANMKC6ZkFGtwmZlRf0rejmnqaZVDZSrENWv39ZoGVFk=; b=RvKW5/t6qkPBEt8HmwP2NIuSie
-	et2WoGGzHbpzfP4mu6Xorfbbg6maYoFIgxrDvJX1RklrKur46nGEBljcXQ82a6QbRPWi56Ojdfm9O
-	Msoe38HGwPKmoN6Kw6viETWBgpTHeHmukT//thmDtXeP2rZJ7oPresIA/LBFXxtQOnJMmmOelr62s
-	B7Oyzc16/ez27aZwCnyoQYX9qPFqtpJvnrPTkeYpY3SnJFYmqZZ4CLdJiWpnmq6wJizFaM2en31iy
-	mzSHCmoy+i6TPWoDwr8jKeMPPvqwu4HxPFRVT3i5KeSy1k8GQ/LvyQY68VBlWL/thZFK0d8yrFgkr
-	uF+InuLQ==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6/aL/tySIJ4vn6EYApzN8xabXPa2bykp5V8nuDfj/xU=; b=JUph+M8w9ldZdAUnLfX2peBwVU
+	sC858BTi/SDI18L8oDxCvj8tJjzx+jxydlEsLExwU1qKBTxAgFe1povo8KIK533PQr97U3bCdl8sF
+	wj4dDWKVyBfMolA944P4pQNSe4SybrC0RpCrlMKXM6rO1Z36xDVTsy8g0i4eiLKx2S/h2RcTk/E0u
+	CcKco2SqIW0p5gTE/+OzWuGNbZJOSrWqkGvP6u/iNzpxnBkni7gDS5mk672hNiwyaFpCTap7vCrS8
+	aGUY2cIgkkbPuWftgEkNQru2WhjoOBoIqjhXBY6jBJc5o7q3Fu7NhUm5WJpDDTB7n5vYpSpfGnEa6
+	TzjDOvWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odpYk-00204R-Ul; Thu, 29 Sep 2022 09:10:23 +0000
+	id 1odpYn-002064-MV; Thu, 29 Sep 2022 09:10:25 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odpYh-00200U-Hy; Thu, 29 Sep 2022 09:10:21 +0000
-X-UUID: 09dfb76356f9494e9cabd5c4cd6e05f1-20220929
+	id 1odpYh-00200m-I8; Thu, 29 Sep 2022 09:10:20 +0000
+X-UUID: df2e8d342a7846858a18d1266d44f567-20220929
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ANMKC6ZkFGtwmZlRf0rejmnqaZVDZSrENWv39ZoGVFk=;
-	b=HGMGTaQxlm83Buj0A5WQIoFgKVz5NPXvKipBzpXwNKaS6O3SFCbaKhWDaBHxA2taApThwmfBJMqlz7uiAyaB7QO+dOyh0UT5yZA1gInCMyQcnSHKvSb3LvWzh7ezU3GKznHlvqH1yKwb/pkDkiCIluabeJyX992avwbLqfXpqj0=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6/aL/tySIJ4vn6EYApzN8xabXPa2bykp5V8nuDfj/xU=;
+	b=VDn23JKkM9TjDfMmZsPFY296cNsJVuUqDt+DPbJ9MCh7/NeENa5qRuQrnxI1J09EzrsUiapJv6XQflaC7rYQt+E8dQuyGl4wvJilMa2kHQejYlx8nCIh1G5aPIJdszN7DkbJfTwnuzw/zQ3JWwx2zDfSDxlaU1Gkiv/XHy7mujg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:f72c13fe-954e-4cb0-a8de-1ee850b062d0,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:39a5ff1,CLOUDID:277aa3e4-87f9-4bb0-97b6-34957dc0fbbe,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:f62900c8-9b2b-44b6-adcb-62c1967419f0,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:237aa3e4-87f9-4bb0-97b6-34957dc0fbbe,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 09dfb76356f9494e9cabd5c4cd6e05f1-20220929
+X-UUID: df2e8d342a7846858a18d1266d44f567-20220929
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
+	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2075238367; Thu, 29 Sep 2022 02:10:11 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 94840048; Thu, 29 Sep 2022 02:10:10 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 29 Sep 2022 17:08:24 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ Thu, 29 Sep 2022 16:09:34 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 29 Sep 2022 17:08:23 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<nicolas.dufresne@collabora.com>, <wenst@chromium.org>, kyrie wu
-	<kyrie.wu@mediatek.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
-	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
-	<irui.wang@mediatek.com>
-Subject: [V17,04/15] mtk-jpegenc: add jpegenc timeout func interface
-Date: Thu, 29 Sep 2022 17:08:06 +0800
-Message-ID: <20220929090817.24272-5-irui.wang@mediatek.com>
+ Transport; Thu, 29 Sep 2022 16:09:33 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Vinod Koul <vkoul@kernel.org>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
+	<kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-phy@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
+	<eddie.hung@mediatek.com>, Tianping Fang <tianping.fang@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 1/2] phy: core: add debugfs root
+Date: Thu, 29 Sep 2022 16:09:25 +0800
+Message-ID: <20220929080926.1272-1-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220929090817.24272-1-irui.wang@mediatek.com>
-References: <20220929090817.24272-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220929_021019_630356_77B81254 
-X-CRM114-Status: GOOD (  14.12  )
+X-CRM114-CacheID: sfid-20220929_021019_644363_712DB26C 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,102 +80,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kyrie wu <kyrie.wu@mediatek.com>
+Add a debugfs root for phy class, then phy drivers can add debugfs files
+under this folder.
 
-Generalizes jpegenc timeout func interfaces to handle HW timeout.
-
-Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
-Signed-off-by: irui wang <irui.wang@mediatek.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- .../platform/mediatek/jpeg/mtk_jpeg_core.h    | 10 ++++++++
- .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 25 +++++++++++++++++++
- 2 files changed, 35 insertions(+)
+v2: no changes
+---
+ drivers/phy/phy-core.c  | 6 ++++++
+ include/linux/phy/phy.h | 2 ++
+ 2 files changed, 8 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-index 1e0ba466303b..98de83c9ea4c 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-@@ -75,6 +75,12 @@ struct mtk_jpeg_variant {
- 	u32 cap_q_default_fourcc;
- };
- 
-+struct mtk_jpeg_hw_param {
-+	struct vb2_v4l2_buffer *src_buffer;
-+	struct vb2_v4l2_buffer *dst_buffer;
-+	struct mtk_jpeg_ctx *curr_ctx;
-+};
-+
- enum mtk_jpegenc_hw_id {
- 	MTK_JPEGENC_HW0,
- 	MTK_JPEGENC_HW1,
-@@ -99,6 +105,8 @@ struct mtk_jpegenc_clk {
-  * @master_dev:		mtk_jpeg_dev device
-  * @venc_clk:		jpeg encode clock
-  * @jpegenc_irq:	jpeg encode irq num
-+ * @job_timeout_work:	encode timeout workqueue
-+ * @hw_param:		jpeg encode hw parameters
-  */
- struct mtk_jpegenc_comp_dev {
- 	struct device *dev;
-@@ -107,6 +115,8 @@ struct mtk_jpegenc_comp_dev {
- 	struct mtk_jpeg_dev *master_dev;
- 	struct mtk_jpegenc_clk venc_clk;
- 	int jpegenc_irq;
-+	struct delayed_work job_timeout_work;
-+	struct mtk_jpeg_hw_param hw_param;
- };
- 
- /**
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-index 3dcf83d6d95e..95812f60ab9f 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-@@ -185,6 +185,26 @@ void mtk_jpeg_set_enc_params(struct mtk_jpeg_ctx *ctx,  void __iomem *base)
+diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
+index d93ddf1262c5..2f9f69190519 100644
+--- a/drivers/phy/phy-core.c
++++ b/drivers/phy/phy-core.c
+@@ -11,6 +11,7 @@
+ #include <linux/export.h>
+ #include <linux/module.h>
+ #include <linux/err.h>
++#include <linux/debugfs.h>
+ #include <linux/device.h>
+ #include <linux/slab.h>
+ #include <linux/of.h>
+@@ -1204,6 +1205,9 @@ void devm_of_phy_provider_unregister(struct device *dev,
  }
- EXPORT_SYMBOL_GPL(mtk_jpeg_set_enc_params);
+ EXPORT_SYMBOL_GPL(devm_of_phy_provider_unregister);
  
-+static void mtk_jpegenc_timeout_work(struct work_struct *work)
-+{
-+	struct delayed_work *dly_work = to_delayed_work(work);
-+	struct mtk_jpegenc_comp_dev *cjpeg =
-+		container_of(dly_work,
-+			     struct mtk_jpegenc_comp_dev,
-+			     job_timeout_work);
-+	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
-+	struct vb2_v4l2_buffer *src_buf, *dst_buf;
++struct dentry *phy_debug_root;
++EXPORT_SYMBOL_GPL(phy_debug_root);
 +
-+	src_buf = cjpeg->hw_param.src_buffer;
-+	dst_buf = cjpeg->hw_param.dst_buffer;
-+	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
+ /**
+  * phy_release() - release the phy
+  * @dev: the dev member within phy
+@@ -1233,6 +1237,8 @@ static int __init phy_core_init(void)
+ 
+ 	phy_class->dev_release = phy_release;
+ 
++	phy_debug_root = debugfs_create_dir("phy", NULL);
 +
-+	mtk_jpeg_enc_reset(cjpeg->reg_base);
-+	clk_disable_unprepare(cjpeg->venc_clk.clks->clk);
-+	pm_runtime_put(cjpeg->dev);
-+	v4l2_m2m_buf_done(src_buf, buf_state);
-+}
+ 	return 0;
+ }
+ device_initcall(phy_core_init);
+diff --git a/include/linux/phy/phy.h b/include/linux/phy/phy.h
+index b1413757fcc3..c398749d49b9 100644
+--- a/include/linux/phy/phy.h
++++ b/include/linux/phy/phy.h
+@@ -205,6 +205,8 @@ struct phy_lookup {
+ #define devm_of_phy_provider_register_full(dev, children, xlate) \
+ 	__devm_of_phy_provider_register(dev, children, THIS_MODULE, xlate)
+ 
++extern struct dentry *phy_debug_root;
 +
- static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+ static inline void phy_set_drvdata(struct phy *phy, void *data)
  {
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-@@ -196,6 +216,8 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
- 	struct mtk_jpegenc_comp_dev *jpeg = priv;
- 	struct mtk_jpeg_dev *master_jpeg = jpeg->master_dev;
- 
-+	cancel_delayed_work(&jpeg->job_timeout_work);
-+
- 	irq_status = readl(jpeg->reg_base + JPEG_ENC_INT_STS) &
- 		JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
- 	if (irq_status)
-@@ -276,6 +298,9 @@ static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
- 			master_dev->enc_hw_dev[i] = NULL;
- 	}
- 
-+	INIT_DELAYED_WORK(&dev->job_timeout_work,
-+			  mtk_jpegenc_timeout_work);
-+
- 	jpegenc_clk = &dev->venc_clk;
- 
- 	jpegenc_clk->clk_num = devm_clk_bulk_get_all(&pdev->dev,
+ 	dev_set_drvdata(&phy->dev, data);
 -- 
 2.18.0
 
