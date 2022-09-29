@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BA38C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 16:12:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BB33C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 16:14:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c5YoEWNjyvIP6S2IX0gRXRFnp5Vc2gN0mY0swCH70bE=; b=RI094BU8S3klwov9YKYGxkjjal
-	ZVxoo9YtL1/s9HU2RALx0Z7oF/vWr5m+VaFVxXm5JVGSHjJywO9uGVpTU77FLckCL21pUR9/HD8Vn
-	ZcUdLTqGSVTVthG5Jfds3xSGEM6XZ4E3Yeh8uuKvKw8HaQ9GaugKR9ejhSdvHr50UtEjJSfz0Nk79
-	P4Guyu782U5Ayyp4RXgu2glPyHkVLB3ktOq93jb0sfsBHBnPFlVfKZFgW/DpmZSaxrkqiA/OoA8aG
-	F7f04/CuBGXJAxdpkqIyiY5DGxvItGFq4EO+I+drixE2X4FGkpM/FwbvhL9viMwaVsL6r5fZCX2KJ
-	QNewQFGA==;
+	bh=SP5PxlFHeHI8xF23gCChfbbg2QgpYBjF1gvYuvzkJcE=; b=jbgqOBTP7k5PAFOvh22IcWFJm6
+	XQMpvHLSCTytiieNzAHIjkGdJVaEymbpmejmGud8hXIUmUzighZDgiTriiSax9Tyf+u/uG1l8wEOe
+	Ezr2bvL4KqZ2gEfmsbivjQW/aDg/5sPfVMWFP/IRqr4fndKxh8xBK452A7mdf6lQ69XWUCJ93//jI
+	ifPB1nxcWRR7lmIbKpD/i1Zij34nk8WRKuLj5wCUXomfdCkqSeJVldSTB14OWPf8AqTQ+H7Hpr7f0
+	kT2ISLUnqwccfw3S3g9feIaMrw3f+r6r9b+Nkw/wgK/DBsySMUmnDsGO9PHN8O+3zjDIuGl+euJf+
+	4tLeNL1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odw8o-00444c-K3; Thu, 29 Sep 2022 16:12:02 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1odwBC-004541-Tz; Thu, 29 Sep 2022 16:14:30 +0000
+Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odw8a-0043wn-Iv; Thu, 29 Sep 2022 16:11:49 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id E3067B823E5;
-	Thu, 29 Sep 2022 16:11:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0464AC433C1;
-	Thu, 29 Sep 2022 16:11:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664467905;
-	bh=3UNXmMc0XLFmLrPUUGDB5+gyNKMjhdigqOhQGHRSdrA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=WNh5qrP20dU0231I3OsV82y6I7NXzOH1OEvW/U+XYIvzP9zf4bw9oKl+OUo6uu+fw
-	 FEdMtq7advOwZCOCnuIAxfEsjRcIJB62ZnVUVy0dnTTUdFxBYKxByOiGEZ6F8NxUBZ
-	 1gX6UkmBf/lwa9i8heosMZWm9LEmelnaiZ5KuJIG0P3eL7/tfQxpTZ32R60iec3q3g
-	 HFlmvjS60DbN75pqxIRqlL54ivAOh4f1InBwTyEQiYjTFN2DT18W58v1pWsyVuin+j
-	 9abrb1S1v2Pf8XlhIo0BVZPb1ypyfglLA12eHr04Uijk7zkzuUkuYb+f/b97lfuymk
-	 6eqkF7ZPUwOyw==
-Date: Thu, 29 Sep 2022 09:11:43 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Hans Schultz <netdev@kapio-technology.com>
-Cc: davem@davemloft.net, netdev@vger.kernel.org, Florian Fainelli
- <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot
- <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, Eric
- Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
- Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
- Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
- <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
- <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Russell King
- <linux@armlinux.org.uk>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
- Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>, Petr
- Machata <petrm@nvidia.com>, Ido Schimmel <idosch@nvidia.com>, Florent
- Fourcot <florent.fourcot@wifirst.fr>, Hans Schultz
- <schultz.hans@gmail.com>, Joachim Wiberg <troglobit@gmail.com>, Amit Cohen
- <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v6 net-next 9/9] selftests: forwarding: add test of
- MAC-Auth Bypass to locked port tests
-Message-ID: <20220929091143.468546f2@kernel.org>
-In-Reply-To: <20220928174904.117131-1-netdev@kapio-technology.com>
-References: <20220928174904.117131-1-netdev@kapio-technology.com>
+	id 1odwAv-0044ti-4x; Thu, 29 Sep 2022 16:14:14 +0000
+Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
+	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 462101884BA5;
+	Thu, 29 Sep 2022 16:14:11 +0000 (UTC)
+Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
+	by mailout.gigahost.dk (Postfix) with ESMTP id 3F4F32500370;
+	Thu, 29 Sep 2022 16:14:11 +0000 (UTC)
+Received: by smtp.gigahost.dk (Postfix, from userid 1000)
+	id 34F409EC0002; Thu, 29 Sep 2022 16:14:11 +0000 (UTC)
+X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Date: Thu, 29 Sep 2022 18:14:11 +0200
+From: netdev@kapio-technology.com
+To: Stephen Hemminger <stephen@networkplumber.org>
+Cc: davem@davemloft.net, kuba@kernel.org, Andrew Lunn <andrew@lunn.ch>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Kurt Kanzenbach <kurt@linutronix.de>, Eric Dumazet
+ <edumazet@google.com>, linux-kselftest@vger.kernel.org, Joachim Wiberg
+ <troglobit@gmail.com>, Shuah Khan <shuah@kernel.org>, Ivan Vecera
+ <ivecera@redhat.com>, Florian Fainelli <f.fainelli@gmail.com>, Daniel
+ Borkmann <daniel@iogearbox.net>, Ido Schimmel <idosch@nvidia.com>,
+ bridge@lists.linux-foundation.org, Russell King <linux@armlinux.org.uk>,
+ linux-arm-kernel@lists.infradead.org, Roopa Prabhu <roopa@nvidia.com>, Paolo
+ Abeni <pabeni@redhat.com>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Woojung Huh <woojung.huh@microchip.com>, Landen Chao
+ <Landen.Chao@mediatek.com>, Jiri Pirko <jiri@resnulli.us>, Amit Cohen
+ <amcohen@nvidia.com>, Christian Marangi <ansuelsmth@gmail.com>, Hauke
+ Mehrtens <hauke@hauke-m.de>, Hans Schultz <schultz.hans@gmail.com>, Sean
+ Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Claudiu
+ Manoil <claudiu.manoil@nxp.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Yuwei Wang
+ <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ UNGLinuxDriver@microchip.com, Vladimir Oltean <olteanv@gmail.com>, Florent
+ Fourcot <florent.fourcot@wifirst.fr>
+Subject: Re: [Bridge] [PATCH iproute2-next 2/2] bridge: fdb: enable FDB
+ blackhole feature
+In-Reply-To: <20220929084312.2a216698@hermes.local>
+References: <20220929152137.167626-1-netdev@kapio-technology.com>
+ <20220929152137.167626-2-netdev@kapio-technology.com>
+ <20220929084312.2a216698@hermes.local>
+User-Agent: Gigahost Webmail
+Message-ID: <6de8a39832ebb15fc5e8c2f19e469514@kapio-technology.com>
+X-Sender: netdev@kapio-technology.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220929_091148_802872_CA47EC15 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20220929_091413_383693_FF7B7283 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,21 +87,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 28 Sep 2022 19:49:04 +0200 Hans Schultz wrote:
-> From: "Hans J. Schultz" <netdev@kapio-technology.com>
+On 2022-09-29 17:43, Stephen Hemminger wrote:
+> On Thu, 29 Sep 2022 17:21:37 +0200
+> Hans Schultz <netdev@kapio-technology.com> wrote:
 > 
-> Verify that the MAC-Auth mechanism works by adding a FDB entry with the
-> locked flag set, denying access until the FDB entry is replaced with a
-> FDB entry without the locked flag set.
+>> 
+>> @@ -493,6 +496,8 @@ static int fdb_modify(int cmd, int flags, int 
+>> argc, char **argv)
+>>  			req.ndm.ndm_flags |= NTF_EXT_LEARNED;
+>>  		} else if (matches(*argv, "sticky") == 0) {
+>>  			req.ndm.ndm_flags |= NTF_STICKY;
+>> +		} else if (matches(*argv, "blackhole") == 0) {
+>> +			ext_flags |= NTF_EXT_BLACKHOLE;
+>>  		} else {
+>>  			if (strcmp(*argv, "to") == 0)
+>>  				NEXT_ARG();
 > 
-> Add test of blackhole fdb entries, verifying that there is no forwarding
-> to a blackhole entry from any port, and that the blackhole entry can be
-> replaced.
-> 
-> Also add a test that verifies that sticky FDB entries cannot roam (this
-> is not needed for now, but should in general be present anyhow for future
-> applications).
+> The parsing of flags is weird here, most of the flags are compared with 
+> strcmp()
+> but some use matches()..  I should have used strcmp() all the time; but 
+> at the
+> time did not realize what kind of confusion matches() can cause.
 
-If you were trying to repost just the broken patches - that's not gonna
-work :(
+Maybe just change all of them then, and then how about using strncmp() 
+and maybe also strnlen() instead?
 
