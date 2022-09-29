@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95CFFC04A95
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 06:33:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 816CDC07E9D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 06:39:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6kRxtmHTsdu+ZgQ5hqeQQZoJ5CfeIzgNxRzM6lCvc2I=; b=IZ8nSEC/9fuzJC9PNUBjIMuqrh
-	fHFFEDOHrcOHBTyIYDPMk3f06uMYD/Fj9p+A5nQ6Pa7zFcJuwgqS0HxK7+//wDvA9aKAxys/dUfLE
-	1VbzG2hXhycE1RdMkdghGf93HXUG54KsUk3+lyMGO+bhu5etSVMkClNqxTau5Hi7EAoCkIpmt6ysu
-	PFvczqcWuSR2dUosTwf11bgzgN3qFNAuh/SuIyaVICaLmjjwBnHw2iPxuJSz/44CqdO49qksQjQa2
-	PYOL/YOCBZqwdkUCGNsnqtUdja6y2QDKHHn1nTDW5QORQLRRwUoQU4nEzqdU6W6DVeOMzHnG6cwSe
-	EXUUXnZg==;
+	bh=qOF134f0PLct94m+3f10JMRXW8VSgq0vHf2OsyIBf+c=; b=ApoO3tO5+wOwik27rexHZD5yvj
+	TnlHcQMonvXalKwWOpCJdK4kgemzVNQ7T18u63pLF3JXMGKDghRdI3sVZrWuJo0FA4vbvqYCpiCIl
+	WEX2qcUqaZfyQ3zWOA0bNiVZhJbJxrYP2OyizYg+JgZdGE6NVrOasHM5BNl9M3jQbw5ua4hJGVRt/
+	uPT4sPCIM2+AJdwNQ+AhCqKR8JOeR/GoQQYyhXoU2M6q1rLBLGU/YxfGQYX9HSdSWuIivNVB6aQjv
+	e8eUwJ2gfZWsSUGVTOeMEnmjiyzGKX4fyXwq01krgrDZJSOQlhVDnaTL9PqijwxBFjHtfdF4wr/bO
+	Q5hvQ82w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odn6Z-001Q1x-Ok; Thu, 29 Sep 2022 06:33:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1odnCN-001RO3-OZ; Thu, 29 Sep 2022 06:39:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odn6X-001Q0f-J0; Thu, 29 Sep 2022 06:33:06 +0000
-X-UUID: 31552d5829bc46a8b951048c48fa1e3d-20220928
+	id 1odnCK-001RMs-BH; Thu, 29 Sep 2022 06:39:06 +0000
+X-UUID: e5fbb53b706349e99159ca902e5295f7-20220928
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=6kRxtmHTsdu+ZgQ5hqeQQZoJ5CfeIzgNxRzM6lCvc2I=;
-	b=oW907LWcPNEBpq4DeYfhe61SEQKBfIkZxYrueh9Diw/uKu5gXvXZ8QKRu5ReYPJA5WQdcgau2cAQrr9L6aAA6OS42sHI1siwmuIp0CDnbROaoJgzVORTIf319k6eAsEx802ZXPoyV7Ndboug5qfKyx/8p7Y204DHTXIrJRPmbhQ=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=qOF134f0PLct94m+3f10JMRXW8VSgq0vHf2OsyIBf+c=;
+	b=ECu8Zeq+NazqPOROjxnWogSt7v3SYjlAEXYr60Yw8qbmINuR+8/LpzSL4LzOlrgQ9G66/61gto/K4J16RMvmXJR65BYQ1WHp//6xIkpmRfVnFVn5IdMVkxBJNhNg7teeXW3St0NZpp7/7PqP4fCUONtxkW/RwnGgMv4Sz1HV6Xg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:699c92db-5999-4196-a451-33cf1069f36c,IP:0,U
+X-CID-O-INFO: VERSION:1.1.11,REQID:dbde1e9b-264d-4f68-9a61-0de85ebf496d,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:036b9de4-87f9-4bb0-97b6-34957dc0fbbe,B
+X-CID-META: VersionHash:39a5ff1,CLOUDID:2fd576a3-dc04-435c-b19b-71e131a5fc35,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 31552d5829bc46a8b951048c48fa1e3d-20220928
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: e5fbb53b706349e99159ca902e5295f7-20220928
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1020628525; Wed, 28 Sep 2022 23:31:26 -0700
+	with ESMTP id 991859621; Wed, 28 Sep 2022 23:38:57 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 29 Sep 2022 14:30:46 +0800
+ 15.2.792.15; Thu, 29 Sep 2022 14:38:19 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 29 Sep 2022 14:30:45 +0800
-Message-ID: <cfd35493a293cf6f7ddd68fe3cc665989ea36015.camel@mediatek.com>
+ Transport; Thu, 29 Sep 2022 14:38:19 +0800
+Message-ID: <63eaf6e3bc090f22ce82e2bb860a000fad655395.camel@mediatek.com>
 Subject: Re: [PATCH 1/2] usb: mtu3: fix ep0's stall of out data stage
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Alan Stern <stern@rowland.harvard.edu>
-CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>, Min Guo
 	<min.guo@mediatek.com>, Tianping Fang <tianping.fang@mediatek.com>,
 	<Stable@vger.kernel.org>
-Date: Thu, 29 Sep 2022 14:30:45 +0800
-In-Reply-To: <YzRofTAx+3pPCbrL@rowland.harvard.edu>
+Date: Thu, 29 Sep 2022 14:38:18 +0800
+In-Reply-To: <6d312360-55b7-ebd5-be86-14f6943e273f@collabora.com>
 References: <20220928091721.26112-1-chunfeng.yun@mediatek.com>
-	 <YzRofTAx+3pPCbrL@rowland.harvard.edu>
+	 <6d312360-55b7-ebd5-be86-14f6943e273f@collabora.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_233305_702838_430793FA 
-X-CRM114-Status: GOOD (  21.12  )
+X-CRM114-CacheID: sfid-20220928_233904_426323_B0CF1144 
+X-CRM114-Status: GOOD (  31.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,14 +83,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-09-28 at 11:30 -0400, Alan Stern wrote:
-> On Wed, Sep 28, 2022 at 05:17:20PM +0800, Chunfeng Yun wrote:
+On Wed, 2022-09-28 at 15:43 +0200, AngeloGioacchino Del Regno wrote:
+> Il 28/09/22 11:17, Chunfeng Yun ha scritto:
 > > It happens when enable uvc function, the flow as below:
 > > the controller switch to data stage, then call
-> >     -> foward_to_driver() -> composite_setup() ->
+> >      -> foward_to_driver() -> composite_setup() ->
 > > uvc_function_setup(),
 > > it send out an event to user layer to notify it call
-> >     -> ioctl() -> uvc_send_response() -> usb_ep_queue(),
+> >      -> ioctl() -> uvc_send_response() -> usb_ep_queue(),
 > > but before the user call ioctl to queue ep0's buffer, the host
 > > already send
 > > out data, but the controller find that no buffer is queued to
@@ -100,28 +100,119 @@ On Wed, 2022-09-28 at 11:30 -0400, Alan Stern wrote:
 > > To fix the issue, don't send out ACK of setup stage to switch to
 > > out data
 > > stage until the buffer is available.
+> > 
+> > Cc: <Stable@vger.kernel.org>
+> > Reported-by: Min Guo <min.guo@mediatek.com>
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> >   drivers/usb/mtu3/mtu3.h            |  4 ++++
+> >   drivers/usb/mtu3/mtu3_gadget_ep0.c | 22 +++++++++++++++++++---
+> >   2 files changed, 23 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
+> > index 2d7b57e07eee..6b64ad17724d 100644
+> > --- a/drivers/usb/mtu3/mtu3.h
+> > +++ b/drivers/usb/mtu3/mtu3.h
+> > @@ -318,6 +318,9 @@ static inline struct ssusb_mtk
+> > *dev_to_ssusb(struct device *dev)
+> >    *		for GET_STATUS and SET_SEL
+> >    * @setup_buf: ep0 response buffer for GET_STATUS and SET_SEL
+> > requests
+> >    * @u3_capable: is capable of supporting USB3
+> > + * @delayed_setup: delay the setup stage to avoid STALL handshake
+> > in
+> > + *		out data stage due to the class driver doesn't queue
+> > buffer
+> > + *		before the host send out data
+> >    */
+> >   struct mtu3 {
+> >   	spinlock_t lock;
+> > @@ -360,6 +363,7 @@ struct mtu3 {
+> >   	unsigned connected:1;
+> >   	unsigned async_callbacks:1;
+> >   	unsigned separate_fifo:1;
+> > +	unsigned delayed_setup:1;
+> >   
+> >   	u8 address;
+> >   	u8 test_mode_nr;
+> > diff --git a/drivers/usb/mtu3/mtu3_gadget_ep0.c
+> > b/drivers/usb/mtu3/mtu3_gadget_ep0.c
+> > index e4fd1bb14a55..f7a71cc83e15 100644
+> > --- a/drivers/usb/mtu3/mtu3_gadget_ep0.c
+> > +++ b/drivers/usb/mtu3/mtu3_gadget_ep0.c
+> > @@ -162,6 +162,19 @@ static void ep0_do_status_stage(struct mtu3
+> > *mtu)
+> >   	mtu3_writel(mbase, U3D_EP0CSR, value | EP0_SETUPPKTRDY |
+> > EP0_DATAEND);
+> >   }
+> >   
+> > +/* delay sending out ACK of setup stage to wait for OUT buffer
+> > queued */
+> > +static void ep0_setup_stage_send_ack(struct mtu3 *mtu)
+> > +{
+> > +	void __iomem *mbase = mtu->mac_base;
+> > +	u32 value;
+> > +
+> > +	if (mtu->delayed_setup) {
+> > +		value = mtu3_readl(mbase, U3D_EP0CSR) & EP0_W1C_BITS;
+> > +		mtu3_writel(mbase, U3D_EP0CSR, value |
+> > EP0_SETUPPKTRDY);
+> > +		mtu->delayed_setup = 0;
+> > +	}
+> > +}
+> > +
+> >   static int ep0_queue(struct mtu3_ep *mep0, struct mtu3_request
+> > *mreq);
+> >   
+> >   static void ep0_dummy_complete(struct usb_ep *ep, struct
+> > usb_request *req)
+> > @@ -628,8 +641,9 @@ static void ep0_read_setup(struct mtu3 *mtu,
+> > struct usb_ctrlrequest *setup)
+> >   			csr | EP0_SETUPPKTRDY | EP0_DPHTX);
+> >   		mtu->ep0_state = MU3D_EP0_STATE_TX;
+> >   	} else {
+> > -		mtu3_writel(mtu->mac_base, U3D_EP0CSR,
+> > -			(csr | EP0_SETUPPKTRDY) & (~EP0_DPHTX));
+> > +		mtu3_writel(mtu->mac_base, U3D_EP0CSR, csr &
+> > ~EP0_DPHTX);
+> > +		/* send ACK when the buffer is queued */
+> > +		mtu->delayed_setup = 1;
 > 
-> You might find it is better to use the delayed_status routines
-> already 
-> present in the Gadget core.  Instead of delaying the response to the 
-> Setup packet of the second control transfer, delay the status
-> response 
-> to the first control transfer.
-Ok, I'll try to use delayed_status to handle this issue.
+> I don't think that you need this variable: you're calling the
+> function
+> ep0_setup_stage_send_ack() only when ep0_state == MU3D_EP0_STATE_RX
+> in
+> ep0_queue()...
+> 
+> ..so you'll never get a call to ep0_setup_stage_send_ack() with
+> delayed_setup == 0!
+I'll abandon this patch, and try to use delayed_status as suggested by
+Alan, thanks a lot
 
-Thanks a lot.
-
 > 
-> This approach has the advantage of working even when the second
-> transfer 
-> is not control but something else, such as bulk.
+> Regards,
+> Angelo
 > 
-> Also it agrees better with the way the USB spec intends control 
-> transfers to work.  The UDC is not supposed to complete the status
-> stage 
-> of a control transfer until the gadget has fully processed the 
-> transfer's information and is ready to go forward.
+> >   		mtu->ep0_state = MU3D_EP0_STATE_RX;
+> >   	}
+> >   }
+> > @@ -804,9 +818,11 @@ static int ep0_queue(struct mtu3_ep *mep,
+> > struct mtu3_request *mreq)
+> >   
+> >   	switch (mtu->ep0_state) {
+> >   	case MU3D_EP0_STATE_SETUP:
+> > -	case MU3D_EP0_STATE_RX:	/* control-OUT data */
+> >   	case MU3D_EP0_STATE_TX:	/* control-IN data */
+> >   		break;
+> > +	case MU3D_EP0_STATE_RX:	/* control-OUT data */
+> > +		ep0_setup_stage_send_ack(mtu);
+> > +		break;
+> >   	default:
+> >   		dev_err(mtu->dev, "%s, error in ep0 state %s\n",
+> > __func__,
+> >   			decode_ep0_state(mtu));
 > 
-> Alan Stern
+> 
+> 
 
 
