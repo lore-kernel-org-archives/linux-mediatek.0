@@ -4,75 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 247E5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 17:52:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8866C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 18:28:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=priF4YOKPlWsoG5ki5A0knzt567cVTtA0/xxM4O68mo=; b=D/kZEtcCihUn2W1GswOhpgwWjQ
-	1j9YbM7UX7McmiBGQr6hXWap/CrC1hfqltyVghY729NUYe9cmb0XBBOqTnzn8rVTHhM+6Ng2eYzmT
-	4PSKz8HHKd6ywaeSHOnlbkz2tW5IK6HOV3pvexZ0QXZOj2OJeVcTbHBKkqBYkdrXUSTFedNONGPzh
-	rJAwPQBMLlF/ixMxbxzTZUWwYkI32Pi/DMhB0tfwFCkXoQI8aL0XA2QVqi4BwdfdxLwEgYSbbT8UR
-	j9vuTx2LuYP5+phF1Jwf2/+uOKodCw6hNnHBIUjrnSbTk4KjSqNVUmDLUtMoqaFKFH2dMEsYqGJhC
-	q6b0i+Lw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QhSbVF2Pz3782oiFyZckw8RCmejofe5RUHemVd1LhtE=; b=NWdNjw+2v/3zNNRTh+SJXNmR0C
+	M/bPUC4GMdhp9j/5jzfCLel+Od0/l99iesO480hsBszNqVMo2zcbAgKLrMFKVEBBW/yN4fH1O1wy0
+	xVxM39kPXGirtXbttkg+ULnA1cg3geDrUdcd36ACYwH/r0K9/ppduPN45eBQ1tLhPA2dU0qdNjwrC
+	Z/wxW7oeJFcHWkiFhTeloCGXRF9oLuXKTHpxCJUxJMDCt+Re/B7ksV+NIjSE75ju0AETg+F2GjiDs
+	a6cK2eXquKxnzG4SmUneJ0bTiOC7+GFP4To1cA+Fzubc8JmmVOMJLjZZ9hj67a7+VVwse6966UUH/
+	+z9YR2NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odxhT-004jbO-NL; Thu, 29 Sep 2022 17:51:55 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1odyGQ-004vLy-Nk; Thu, 29 Sep 2022 18:28:02 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odxhH-004jY1-O5; Thu, 29 Sep 2022 17:51:45 +0000
+	id 1odyGD-004vI6-RK; Thu, 29 Sep 2022 18:27:51 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 5216DB82617;
-	Thu, 29 Sep 2022 17:51:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05048C43141;
-	Thu, 29 Sep 2022 17:51:35 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 3685CB825AC;
+	Thu, 29 Sep 2022 18:27:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D73EC433C1;
+	Thu, 29 Sep 2022 18:27:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664473900;
-	bh=/rgIw13/q7gyzY3HDMRyadzYlUbWim4MSs3xVb/+10A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cAPtwETm/aNpnZV6tOadVoZyzaLVgAp4tlpn3dyhJLP3q+4PFIkxYNT/0O8FRhkPn
-	 l5q6g8iLtBP72jHr5JGT0tggqRRjsi6k4VVB0CrYu3whpcm+6sMtyQ7GVtr31R3sg9
-	 zfC81dKmHz1WjsoFjX3nJ6bljXM2dcFpM+jY5UGQUR3++1AoWHsUPnZhZnPpQKKH+a
-	 fzcHvsK+jjGVs5nZCGcsLrnUczCfF9jdhaorVLMaOhR29fIJ42H+P7mJVAFrz6Nl2Y
-	 J0xljmp6Yc4eDfV4uWgCMKmy/FkyV2sjclCWf9sQ9hxWqdVb/VRoAZ3Nfi766oBrwa
-	 xdRv+OghfH5Og==
-Date: Thu, 29 Sep 2022 18:51:32 +0100
-From: Lee Jones <lee@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Jonathan Cameron <jic23@kernel.org>, ChiaEn Wu <peterwu.pub@gmail.com>,
-	pavel@ucw.cz, krzysztof.kozlowski+dt@linaro.org,
-	matthias.bgg@gmail.com, lars@metafoo.de,
-	andriy.shevchenko@linux.intel.com, chiaen_wu@richtek.com,
-	alice_chen@richtek.com, cy_huang@richtek.com,
-	linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-iio@vger.kernel.org, szunichen@gmail.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Shevchenko <andy.shevchenko@gmail.com>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Subject: Re: [PATCH v12 3/5] iio: adc: mt6370: Add MediaTek MT6370 support
-Message-ID: <YzXbJM31s0P0nLD5@google.com>
-References: <cover.1663926551.git.chiaen_wu@richtek.com>
- <9bf36f09bc5f002f2b09b7cc26edccf109516465.1663926551.git.chiaen_wu@richtek.com>
- <20220924155525.5663bed8@jic23-huawei>
- <YzFY5FI0PrZqdAiZ@google.com>
- <CAL_JsqKKJGtacbzGqCupFniSGha610L1cay2V+AK8vehTA=F=g@mail.gmail.com>
- <YzQSnuwPjzJIgsYq@google.com>
- <20220929163418.GA2270491-robh@kernel.org>
+	s=k20201202; t=1664476067;
+	bh=peXm6EYz/EMFFA8zuW/FKucf85TPZxTNbaodSHoZ7Wg=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=Kv7xhea2uFIbwtuFQLZh9XSjU1NQfjbcVqi7NBdfo1YmhLPr/oFL/8Xy7h8nVd63Y
+	 1QbyuerlojcUMR9UJXqyqMMe/stYLXuAEzjAn5YgYL+gSYYe2Mgq5Jy1q1QOi5phs9
+	 LUXrQ/s2M+7o3FfgPVpda31wV2wVBaOYzo8yfTohR2fDzhGsJx5Pf63zWtPQKojM9F
+	 jn5yUhRAxSZA/Yu9rBhiUcBtbQl8G7FuabZv9yLUhOJjlvUZ798HikAJYp4pUIjm//
+	 HnqLKE0lE+TxmEdaYgq6OQOzGouYBxg3CmBkmarKcPIbw5qPRqYRZam7X/YTCqQye3
+	 IoYyggPAxMHZw==
+Date: Thu, 29 Sep 2022 11:27:44 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: netdev@kapio-technology.com
+Cc: davem@davemloft.net, netdev@vger.kernel.org, Florian Fainelli
+ <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien Didelot
+ <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
+ Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
+ Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
+ <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
+ Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
+ <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
+ <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Russell King
+ <linux@armlinux.org.uk>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
+ Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>, Petr
+ Machata <petrm@nvidia.com>, Ido Schimmel <idosch@nvidia.com>, Florent
+ Fourcot <florent.fourcot@wifirst.fr>, Hans Schultz
+ <schultz.hans@gmail.com>, Joachim Wiberg <troglobit@gmail.com>, Amit Cohen
+ <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v6 net-next 0/9] Extend locked port feature with FDB
+ locked flag (MAC-Auth/MAB)
+Message-ID: <20220929112744.27cc969b@kernel.org>
+In-Reply-To: <12587604af1ed79be4d3a1607987483a@kapio-technology.com>
+References: <20220928150256.115248-1-netdev@kapio-technology.com>
+	<20220929091036.3812327f@kernel.org>
+	<12587604af1ed79be4d3a1607987483a@kapio-technology.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20220929163418.GA2270491-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220929_105144_116518_AF07964F 
-X-CRM114-Status: GOOD (  31.93  )
+X-CRM114-CacheID: sfid-20220929_112750_181706_09F1F050 
+X-CRM114-Status: GOOD (  22.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,77 +91,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Sep 2022, Rob Herring wrote:
+On Thu, 29 Sep 2022 18:37:09 +0200 netdev@kapio-technology.com wrote:
+> On 2022-09-29 18:10, Jakub Kicinski wrote:
+> > On Wed, 28 Sep 2022 17:02:47 +0200 Hans Schultz wrote: =20
+> >> From: "Hans J. Schultz" <netdev@kapio-technology.com>
+> >>=20
+> >> This patch set extends the locked port feature for devices
+> >> that are behind a locked port, but do not have the ability to
+> >> authorize themselves as a supplicant using IEEE 802.1X.
+> >> Such devices can be printers, meters or anything related to
+> >> fixed installations. Instead of 802.1X authorization, devices
+> >> can get access based on their MAC addresses being whitelisted. =20
+> >=20
+> > Try a allmodconfig build on latest net-next, seems broken. =20
+>=20
+> I have all different switch drivers enabled and I see no compile=20
+> warnings or errors.=20
 
-> On Wed, Sep 28, 2022 at 10:23:42AM +0100, Lee Jones wrote:
-> > On Mon, 26 Sep 2022, Rob Herring wrote:
-> > 
-> > > On Mon, Sep 26, 2022 at 2:46 AM Lee Jones <lee@kernel.org> wrote:
-> > > >
-> > > > On Sat, 24 Sep 2022, Jonathan Cameron wrote:
-> > > >
-> > > > > On Fri, 23 Sep 2022 10:51:24 +0800
-> > > > > ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> > > > >
-> > > > > > From: ChiaEn Wu <chiaen_wu@richtek.com>
-> > > > > >
-> > > > > > MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
-> > > > > > with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
-> > > > > > driver, display bias voltage supply, one general purpose LDO, and the
-> > > > > > USB Type-C & PD controller complies with the latest USB Type-C and PD
-> > > > > > standards.
-> > > > > >
-> > > > > > Add support for the MT6370 ADC driver for system monitoring, including
-> > > > > > charger current, voltage, and temperature.
-> > > > > >
-> > > > > > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > > > > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
-> > > > > > Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > > > > > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
-> > > > >
-> > > > > This will have to either wait for next cycle, or go through mfd because
-> > > > > of the dt-bindings include which is in the mfd tree.
-> > > > >
-> > > > > Please make those dependencies clear in new versions.
-> > > >
-> > > > If the bindings come together in -next, then subsequently in Mainline,
-> > > > it shouldn't really matter.
-> > > 
-> > > Except that the bindings haven't come together and at this point may
-> > > not for 6.1. linux-next has been warning for weeks because the child
-> > > device schemas haven't been applied. I've said it before, all the
-> > > schemas for MFD devices need to be applied together. Or at least the
-> > > MFD schema needs to get applied last.
-> > > 
-> > > Furthermore, subsequent versions of this don't get tested and we end
-> > > up with more warnings[1].
-> > > 
-> > > It's only your IIO tree that the DT
-> > > > tooling with complain about, right?
-> > > 
-> > > And the MFD tree...
-> > > 
-> > > Please apply the LED bindings (patches 1 and 2) so we can get the
-> > > existing warnings fixed and address any new warnings.
-> > 
-> > Who usually applies LED bindings?  Looks as though they're good to go.
-> 
-> Pavel. The issue would be I don't know if the driver side is ready and 
-> those usually go together. Other than my complaining here, how's he 
-> supposed to know that the bindings at least need to be applied?
-> 
-> Again, the process here is not working. I've said before, all the 
-> bindings for an MFD need to go via 1 tree. You obviously don't agree, so 
-> propose something. The current process of no coordination doesn't work.
+Just do what I told you - rebase on net-next, allmodconfig.
 
-The solution would be for someone to create succinct immutable branches, like
-I do for real code.  If someone would be happy to do that, I'd be more than
-happy to pull from them.
+> I guess I will get a robot update if that is the=20
+> case but please be specific as to what does not build.
 
-I go to the effort of creating them to prevent actual build breakages,
-however doing so to keep a documentation helper script happy is a step
-too far for me personally, sorry.
+The maintainers simply don't have time to hold everyone by the hand.
+Sometimes I wish it was still okay to yell at people who post code
+which does not build. Oh well.
 
--- 
-Lee Jones [李琼斯]
+../drivers/net/dsa/qca/qca8k-common.c:810:5: error: conflicting types for =
+=E2=80=98qca8k_port_fdb_del=E2=80=99
+ int qca8k_port_fdb_del(struct dsa_switch *ds, int port,
+     ^~~~~~~~~~~~~~~~~~
+In file included from ../drivers/net/dsa/qca/qca8k-common.c:13:
+../drivers/net/dsa/qca/qca8k.h:483:5: note: previous declaration of =E2=80=
+=98qca8k_port_fdb_del=E2=80=99 was here
+ int qca8k_port_fdb_del(struct dsa_switch *ds, int port,
+     ^~~~~~~~~~~~~~~~~~
+../drivers/net/dsa/qca/qca8k-common.c: In function =E2=80=98qca8k_port_fdb_=
+del=E2=80=99:
+../drivers/net/dsa/qca/qca8k-common.c:818:6: error: =E2=80=98fdb_flags=E2=
+=80=99 undeclared (first use in this function); did you mean =E2=80=98tsq_f=
+lags=E2=80=99?
+  if (fdb_flags)
+      ^~~~~~~~~
+      tsq_flags
+../drivers/net/dsa/qca/qca8k-common.c:818:6: note: each undeclared identifi=
+er is reported only once for each function it appears in
+make[5]: *** [../scripts/Makefile.build:249: drivers/net/dsa/qca/qca8k-comm=
+on.o] Error 1
+make[5]: *** Waiting for unfinished jobs....
+make[4]: *** [../scripts/Makefile.build:465: drivers/net/dsa/qca] Error 2
+make[4]: *** Waiting for unfinished jobs....
+../drivers/net/dsa/sja1105/sja1105_main.c: In function =E2=80=98sja1105_fas=
+t_age=E2=80=99:
+../drivers/net/dsa/sja1105/sja1105_main.c:1941:61: error: incompatible type=
+ for argument 5 of =E2=80=98sja1105_fdb_del=E2=80=99
+   rc =3D sja1105_fdb_del(ds, port, macaddr, l2_lookup.vlanid, db);
+                                                             ^~
+../drivers/net/dsa/sja1105/sja1105_main.c:1831:11: note: expected =E2=80=98=
+u16=E2=80=99 {aka =E2=80=98short unsigned int=E2=80=99} but argument is of =
+type =E2=80=98struct dsa_db=E2=80=99
+       u16 fdb_flags, struct dsa_db db)
+       ~~~~^~~~~~~~~
+../drivers/net/dsa/sja1105/sja1105_main.c:1941:8: error: too few arguments =
+to function =E2=80=98sja1105_fdb_del=E2=80=99
+   rc =3D sja1105_fdb_del(ds, port, macaddr, l2_lookup.vlanid, db);
+        ^~~~~~~~~~~~~~~
+../drivers/net/dsa/sja1105/sja1105_main.c:1829:12: note: declared here
+ static int sja1105_fdb_del(struct dsa_switch *ds, int port,
+            ^~~~~~~~~~~~~~~
+../drivers/net/dsa/sja1105/sja1105_main.c: In function =E2=80=98sja1105_mdb=
+_del=E2=80=99:
+../drivers/net/dsa/sja1105/sja1105_main.c:1962:56: error: incompatible type=
+ for argument 5 of =E2=80=98sja1105_fdb_del=E2=80=99
+  return sja1105_fdb_del(ds, port, mdb->addr, mdb->vid, db);
+                                                        ^~
+../drivers/net/dsa/sja1105/sja1105_main.c:1831:11: note: expected =E2=80=98=
+u16=E2=80=99 {aka =E2=80=98short unsigned int=E2=80=99} but argument is of =
+type =E2=80=98struct dsa_db=E2=80=99
+       u16 fdb_flags, struct dsa_db db)
+       ~~~~^~~~~~~~~
+../drivers/net/dsa/sja1105/sja1105_main.c:1962:9: error: too few arguments =
+to function =E2=80=98sja1105_fdb_del=E2=80=99
+  return sja1105_fdb_del(ds, port, mdb->addr, mdb->vid, db);
+         ^~~~~~~~~~~~~~~
+../drivers/net/dsa/sja1105/sja1105_main.c:1829:12: note: declared here
+ static int sja1105_fdb_del(struct dsa_switch *ds, int port,
+            ^~~~~~~~~~~~~~~
+../drivers/net/dsa/sja1105/sja1105_main.c:1963:1: error: control reaches en=
+d of non-void function [-Werror=3Dreturn-type]
+ }
+ ^
+cc1: some warnings being treated as errors
+make[5]: *** [../scripts/Makefile.build:249: drivers/net/dsa/sja1105/sja110=
+5_main.o] Error 1
+make[5]: *** Waiting for unfinished jobs....
+make[4]: *** [../scripts/Makefile.build:465: drivers/net/dsa/sja1105] Error=
+ 2
+make[3]: *** [../scripts/Makefile.build:465: drivers/net/dsa] Error 2
+make[3]: *** Waiting for unfinished jobs....
+make[2]: *** [../scripts/Makefile.build:465: drivers/net] Error 2
+make[1]: *** [/home/kicinski/linux/Makefile:1852: drivers] Error 2
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:222: __sub-make] Error 2
 
