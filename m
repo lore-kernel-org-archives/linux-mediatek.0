@@ -4,82 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE70AC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 13:02:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B50FEC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 13:08:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QKIpHGs3LeinzeIaUGKa0ICPFZL+uew+WBou+/qEEMs=; b=gIvTZ5VVUioIQJOM1gOjEMRzTi
-	nmr9nZYOFLdwTLBUQB9JuOyAgdnd63neqjz7MdB4XGLsJT2797cJns8ZeMpOZhX0erIsoSYivLgQm
-	pzQtE6vNinX6JurAOkqhwauNB1XDUh4953/zbgO9idJdRPhpRB3wlbRQz6p0GCmPIPERbxL1HfFWj
-	uA0HbXWCFUbzNvXQkfG5FcMyLv0FiTbW+L6CHKS0fDt41EkUT9g3k3CUtr2bsjQj00B81rq184Pna
-	ptQo/o8cgpY4Fe2yCdC0mjqO4C0ldgjxoLBObdaxPAdODlmGpn1WZhdZWbtjjUIBjXALRvOrVldRe
-	TRfsuLeg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4z/HIchCQ+cdyYXxer4Zxv+4O41RgVW1hy3WlDTXls8=; b=FjTE/lNVD/pVOq+vMlCvY4W7Ff
+	70YBQ+Md3l8mEwaX2i7Ldit1jFkIYdvnDb2EAnvwXu9ntTomuFgp9Ndb7RKXFHN9vjLTUJ460fP+D
+	JApVVq9tKA0Py60ltaix5GD7BdCv5YlD1foxNxul8PAJ2bVFhHE4UmhWmB8qbBZHO+IRJJE9vailJ
+	etOHiQtQnmrbFYMUXYDYhlCCWIykRgsqA6xr36MMPvPQAF9fpySG6Tyb2T7hrzibJQsCyJeXaNBjQ
+	Uwi9IumJxR4Yp3CI0kVRB2pW4pqdlsXC/Ps0VVnpe0OupbtBZwrdUFWkNrZWkKY3nO/Oo++3YzfIt
+	5pbpJL1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odtAp-0039KJ-Tx; Thu, 29 Sep 2022 13:01:55 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1odtGt-003Afu-UM; Thu, 29 Sep 2022 13:08:11 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odtAm-0039I8-JH; Thu, 29 Sep 2022 13:01:53 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id n10so2062397wrw.12;
-        Thu, 29 Sep 2022 06:01:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date;
-        bh=QKIpHGs3LeinzeIaUGKa0ICPFZL+uew+WBou+/qEEMs=;
-        b=AgFahVNBMPAdTt6Hji1RhoPcnR8MCGZgvz/2UE5Q1CTjXVo9CW0ak/uSx1R+Vq8LPI
-         U6nGupIT3g1fujwOUBuemHE58YZu1E5MiLno/O/luh9m6dchtkEs62VjfDkZkPxImpQA
-         t3sDG+ehBpLP3dFCgjV6xQP4qBUYtyfshdD8TVIkwAD9om7bLf7WSEghDLkQ/L7diKJ1
-         FlGMrf6Q1kFxxEen86Qbwl+o5C+b2T31ZgQ1bDX51wzN6PbMuKltWkFJzQFr7U4esERu
-         sFe7Y3tiwEuE+2Vh2+uoJvCbR72J69DxTNPMuukHXoVFQr5x+LCQg0dtMPRiWgK8Hchp
-         HWLw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date;
-        bh=QKIpHGs3LeinzeIaUGKa0ICPFZL+uew+WBou+/qEEMs=;
-        b=AxH+NUn0xt5Kx4aZ+bKUnWpbRmRIDoCE3xxwa6UkRvljNmrIscxYvj3q8c+XI9qtiC
-         OFy+ZAmqNB5FdeUH2ycEdue0Q4gUjMwn4nUsK2WemF2MSmKdoMMNHIBn+JHloMjSktpH
-         3frRMTZjW2bTeSkYr1RlPZVHs7KijD5gxJ6nBwQk5x852dtGuMOtLWe/MIynTXzhUdnQ
-         5VDdXan/297uaRIzBm/E0+Gm5DoTxjNvOvyrl82d4MFAdf3HxqaWbie6LL8mAjczYJPy
-         ChqyXys1TeJPmA6/dHQiJSaqCUjikT458wwSMcC+EPY88V2EAF1xm4kZzAcMFkNFy7xi
-         0eAA==
-X-Gm-Message-State: ACrzQf37Iymt13OAofqpirYi8UHT0U6seEciRvd41Gvb1qc8cd3hI89l
-	oP4MFSDW5NnHuRj84mc9CUk=
-X-Google-Smtp-Source: AMsMyM5vXaXH5fZ3dIbmRJWeClvpwWiO6Y9sSQYzNl6JW42LcFYRMSzFHH58H6hdJJTPcWhcyowbbQ==
-X-Received: by 2002:a05:6000:1051:b0:228:e1a0:7221 with SMTP id c17-20020a056000105100b00228e1a07221mr2213671wrx.165.1664456508569;
-        Thu, 29 Sep 2022 06:01:48 -0700 (PDT)
-Received: from localhost (cpc154979-craw9-2-0-cust193.16-3.cable.virginm.net. [80.193.200.194])
-        by smtp.gmail.com with ESMTPSA id m13-20020a5d4a0d000000b0021e43b4edf0sm6555454wrq.20.2022.09.29.06.01.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Sep 2022 06:01:48 -0700 (PDT)
-From: Colin Ian King <colin.i.king@gmail.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Kishon Vijay Abraham I <kishon@ti.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] phy: phy-mtk-dp: make array driving_params static const
-Date: Thu, 29 Sep 2022 14:01:47 +0100
-Message-Id: <20220929130147.97375-1-colin.i.king@gmail.com>
-X-Mailer: git-send-email 2.37.1
+	id 1odtGg-003Aar-6M; Thu, 29 Sep 2022 13:08:01 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0693866022AB;
+	Thu, 29 Sep 2022 14:07:51 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664456872;
+	bh=YREI9mVEQTMfHoST6LFhc82ktAPMChQ/u5H+Y2sHoqk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Krydl2YZIXBwOHY+gi+HZN0ErzQpjEZotHqLqaCI31iIavuxCNr8dMYFyXMJxZ2nY
+	 Fp5PokdBTTBtcfGLHhnH9Eo8MEnrbEHFEf7BZy7k7+8oFLjXYTb4hPMf+WsOewxlLs
+	 c56XFWbQmAHCU1SXxDBy3MjmwH5LOZ8D2wAT+cNpoTzq9RiG29hzv8zHLPdfWpBGxN
+	 51VOstCMxji62VB9lhUFamo/KLlCP5ItIOoLeZ7u5l3/0Sj3sWgLvMxxiBDcnNkAu9
+	 lStpuKyhdrSF4GlR/w7M8qfEUa3MzlbV5Zx8O8GdZGlO7/+EfVQ02uY2tgEQqfwWR2
+	 etKjZ/8xpB68Q==
+Message-ID: <ed723cb2-ba79-55d7-7869-abf153e4af0a@collabora.com>
+Date: Thu, 29 Sep 2022 15:07:49 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v3 2/4] dt-bindings: arm: mediatek: Add new bindings of
+ MediaTek frequency hopping
+Content-Language: en-US
+To: Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, sboyd@kernel.org
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ kuan-hsin.lee@mediatek.com, yu-chang.wang@mediatek.com,
+ Edward-JW Yang <edward-jw.yang@mediatek.com>
+References: <20220929114624.16809-1-johnson.wang@mediatek.com>
+ <20220929114624.16809-3-johnson.wang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220929114624.16809-3-johnson.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220929_060152_652293_A944D4CB 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20220929_060758_412231_442E2CF1 
+X-CRM114-Status: GOOD (  16.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,28 +80,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Don't populate the read-only array driving_params on the stack but instead
-make it static const. Also makes the object code a little smaller.
+Il 29/09/22 13:46, Johnson Wang ha scritto:
+> Add the new binding documentation for MediaTek frequency hopping
+> and spread spectrum clocking control.
+> 
+> Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
+> Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
+> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> ---
+>   .../arm/mediatek/mediatek,mt8186-fhctl.yaml   | 53 +++++++++++++++++++
+>   1 file changed, 53 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-fhctl.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-fhctl.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-fhctl.yaml
+> new file mode 100644
+> index 000000000000..258dff7ce6bc
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-fhctl.yaml
+> @@ -0,0 +1,53 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt8186-fhctl.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek frequency hopping and spread spectrum clocking control
+> +
+> +maintainers:
+> +  - Edward-JW Yang <edward-jw.yang@mediatek.com>
+> +
+> +description: |
+> +  Frequency hopping control (FHCTL) is a piece of hardware that control
+> +  some PLLs to adopt "hopping" mechanism to adjust their frequency.
+> +  Spread spectrum clocking (SSC) is another function provided by this hardware.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt8186-fhctl
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    description: Phandles of the PLL with FHCTL hardware capability.
+> +    minItems: 1
+> +    maxItems: 30
+> +
+> +  mediatek,hopping-ssc-percent:
+> +    description: The percentage of spread spectrum clocking for one PLL.
+> +    minItems: 1
+> +    maxItems: 30
+> +    items:
+> +      default: 0
+> +      minimum: 0
+> +      maximum: 8
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt8186-clk.h>
+> +    fhctl: fhctl@1000ce00 {
+> +        compatible = "mediatek,mt8186-fhctl";
+> +        reg = <0x1000c000 0xe00>;
+> +        clocks = <&apmixedsys CLK_APMIXED_MSDCPLL>;
+> +        mediatek,hopping-ssc-percent = <3>;
+> +    };
 
-Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
----
- drivers/phy/mediatek/phy-mtk-dp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
-index 31266e7ca324..232fd3f1ff1b 100644
---- a/drivers/phy/mediatek/phy-mtk-dp.c
-+++ b/drivers/phy/mediatek/phy-mtk-dp.c
-@@ -85,7 +85,7 @@ struct mtk_dp_phy {
- static int mtk_dp_phy_init(struct phy *phy)
- {
- 	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
--	u32 driving_params[] = {
-+	static const u32 driving_params[] = {
- 		DRIVING_PARAM_3_DEFAULT,
- 		DRIVING_PARAM_4_DEFAULT,
- 		DRIVING_PARAM_5_DEFAULT,
--- 
-2.37.1
+.... a more realistic example:
 
+     #include <dt-bindings/clock/mt8186-clk.h>
+
+     soc {
+         #address-cells = <2>;
+         #size-cells = <2>;
+
+         fhctl: fhctl@1000ce00 {
+             compatible = "mediatek,mt8186-fhctl";
+             reg = <0 0x1000c000 0 0xe00>;
+             clocks = <&apmixedsys CLK_APMIXED_MSDCPLL>;
+             mediatek,hopping-ssc-percent = <3>;
+         };
+     };
+
+After which...
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
