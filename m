@@ -4,68 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3463AC6FA82
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 09:10:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF931C04A95
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 09:11:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6/aL/tySIJ4vn6EYApzN8xabXPa2bykp5V8nuDfj/xU=; b=JUph+M8w9ldZdAUnLfX2peBwVU
-	sC858BTi/SDI18L8oDxCvj8tJjzx+jxydlEsLExwU1qKBTxAgFe1povo8KIK533PQr97U3bCdl8sF
-	wj4dDWKVyBfMolA944P4pQNSe4SybrC0RpCrlMKXM6rO1Z36xDVTsy8g0i4eiLKx2S/h2RcTk/E0u
-	CcKco2SqIW0p5gTE/+OzWuGNbZJOSrWqkGvP6u/iNzpxnBkni7gDS5mk672hNiwyaFpCTap7vCrS8
-	aGUY2cIgkkbPuWftgEkNQru2WhjoOBoIqjhXBY6jBJc5o7q3Fu7NhUm5WJpDDTB7n5vYpSpfGnEa6
-	TzjDOvWw==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FI7+yDqRFMQfsNaMu5RNXN0C32bQYEyedygDQDDVruE=; b=bXZkza9uYt/lk4gqsgMNipaegc
+	AzdJ0P9sIoABC1GfasZ251aBj3GGiYCdNBpWDTjx0mIU6+mxN+6iXF4Cl6YWaqA2D3iGmCF++yITc
+	H0K6EU1D40V9AaVKExXwiFVr6eye0i0TvD7HTEKlozaJjysu/SDvbgCvU4Hqgj2S9iQm9Vohaorid
+	lTYnN0DprbkikMgEeyhxsbRziKm5ETLxhCir68WS9RD0ekWb69zhRPH2zX2FnN4+CQdPr9GgHkalM
+	1/fbPaR86Vc33yqGDSsmm8ArcsJJFR/y3ixdoal9VViyg68+kDNrqM+w3XZ+Bwx5IfLd9qfWU20iR
+	s3jZ26bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odpYn-002064-MV; Thu, 29 Sep 2022 09:10:25 +0000
+	id 1odpZN-0020Kb-QP; Thu, 29 Sep 2022 09:11:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odpYh-00200m-I8; Thu, 29 Sep 2022 09:10:20 +0000
-X-UUID: df2e8d342a7846858a18d1266d44f567-20220929
+	id 1odpYh-00202U-VZ; Thu, 29 Sep 2022 09:10:23 +0000
+X-UUID: b6b225f29d384d5d88519e552d88a012-20220929
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6/aL/tySIJ4vn6EYApzN8xabXPa2bykp5V8nuDfj/xU=;
-	b=VDn23JKkM9TjDfMmZsPFY296cNsJVuUqDt+DPbJ9MCh7/NeENa5qRuQrnxI1J09EzrsUiapJv6XQflaC7rYQt+E8dQuyGl4wvJilMa2kHQejYlx8nCIh1G5aPIJdszN7DkbJfTwnuzw/zQ3JWwx2zDfSDxlaU1Gkiv/XHy7mujg=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FI7+yDqRFMQfsNaMu5RNXN0C32bQYEyedygDQDDVruE=;
+	b=p6YhUKRXPZtTGAwwwOMrJreUUzpIIQHxPQKcjre4wMFJJ2SFeRp82YqwMy9dFTFJ+Y13c6XTHX7Z+pVBM4L0tIby6adk9YckxreQ0xXz8/jjfrPFbpcoXk/hpdrwYDwYBrSHYvS9MUgebav8qVIulJv3Qi6P3/HiVQ9qaUHocNE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:f62900c8-9b2b-44b6-adcb-62c1967419f0,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:237aa3e4-87f9-4bb0-97b6-34957dc0fbbe,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:cb7c2966-28ef-4af4-8dc2-78eac9f25980,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:adf66e07-1cee-4c38-b21b-a45f9682fdc0,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: df2e8d342a7846858a18d1266d44f567-20220929
+X-UUID: b6b225f29d384d5d88519e552d88a012-20220929
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chunfeng.yun@mediatek.com>)
+	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 94840048; Thu, 29 Sep 2022 02:10:10 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+	with ESMTP id 1060806975; Thu, 29 Sep 2022 02:10:13 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
- Thu, 29 Sep 2022 16:09:34 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ Thu, 29 Sep 2022 17:08:36 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 29 Sep 2022 16:09:33 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Vinod Koul <vkoul@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
-	<kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
-	<eddie.hung@mediatek.com>, Tianping Fang <tianping.fang@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 1/2] phy: core: add debugfs root
-Date: Thu, 29 Sep 2022 16:09:25 +0800
-Message-ID: <20220929080926.1272-1-chunfeng.yun@mediatek.com>
+ Transport; Thu, 29 Sep 2022 17:08:35 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<nicolas.dufresne@collabora.com>, <wenst@chromium.org>, kyrie wu
+	<kyrie.wu@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+	<xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>, irui wang
+	<irui.wang@mediatek.com>
+Subject: [V17,13/15] media: mtk-jpegdec: add output pic reorder interface
+Date: Thu, 29 Sep 2022 17:08:15 +0800
+Message-ID: <20220929090817.24272-14-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220929090817.24272-1-irui.wang@mediatek.com>
+References: <20220929090817.24272-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220929_021019_644363_712DB26C 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20220929_021020_029738_2B6B745E 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,61 +87,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a debugfs root for phy class, then phy drivers can add debugfs files
-under this folder.
+From: kyrie wu <kyrie.wu@mediatek.com>
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2: no changes
----
- drivers/phy/phy-core.c  | 6 ++++++
- include/linux/phy/phy.h | 2 ++
- 2 files changed, 8 insertions(+)
+add output reorder func to reorder the output images
+to ensure the output pic is consistent with the input images.
 
-diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
-index d93ddf1262c5..2f9f69190519 100644
---- a/drivers/phy/phy-core.c
-+++ b/drivers/phy/phy-core.c
-@@ -11,6 +11,7 @@
- #include <linux/export.h>
- #include <linux/module.h>
- #include <linux/err.h>
-+#include <linux/debugfs.h>
- #include <linux/device.h>
- #include <linux/slab.h>
- #include <linux/of.h>
-@@ -1204,6 +1205,9 @@ void devm_of_phy_provider_unregister(struct device *dev,
+Signed-off-by: kyrie wu <kyrie.wu@mediatek.com>
+Signed-off-by: irui wang <irui.wang@mediatek.com>
+---
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 47 ++++++++++++++++++-
+ 1 file changed, 45 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+index f7e3013234d3..95fce3f3c0c6 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+@@ -440,6 +440,49 @@ void mtk_jpeg_dec_set_config(void __iomem *base,
  }
- EXPORT_SYMBOL_GPL(devm_of_phy_provider_unregister);
+ EXPORT_SYMBOL_GPL(mtk_jpeg_dec_set_config);
  
-+struct dentry *phy_debug_root;
-+EXPORT_SYMBOL_GPL(phy_debug_root);
++static void mtk_jpegdec_put_buf(struct mtk_jpegdec_comp_dev *jpeg)
++{
++	struct mtk_jpeg_src_buf *dst_done_buf, *tmp_dst_done_buf;
++	struct vb2_v4l2_buffer *dst_buffer;
++	struct list_head *temp_entry;
++	struct list_head *pos = NULL;
++	struct mtk_jpeg_ctx *ctx;
++	unsigned long flags;
 +
- /**
-  * phy_release() - release the phy
-  * @dev: the dev member within phy
-@@ -1233,6 +1237,8 @@ static int __init phy_core_init(void)
- 
- 	phy_class->dev_release = phy_release;
- 
-+	phy_debug_root = debugfs_create_dir("phy", NULL);
++	ctx = jpeg->hw_param.curr_ctx;
++	if (unlikely(!ctx)) {
++		dev_err(jpeg->dev, "comp_jpeg ctx fail !!!\n");
++		return;
++	}
 +
- 	return 0;
- }
- device_initcall(phy_core_init);
-diff --git a/include/linux/phy/phy.h b/include/linux/phy/phy.h
-index b1413757fcc3..c398749d49b9 100644
---- a/include/linux/phy/phy.h
-+++ b/include/linux/phy/phy.h
-@@ -205,6 +205,8 @@ struct phy_lookup {
- #define devm_of_phy_provider_register_full(dev, children, xlate) \
- 	__devm_of_phy_provider_register(dev, children, THIS_MODULE, xlate)
- 
-+extern struct dentry *phy_debug_root;
++	dst_buffer = jpeg->hw_param.dst_buffer;
++	if (!dst_buffer) {
++		dev_err(jpeg->dev, "comp_jpeg dst_buffer fail !!!\n");
++		return;
++	}
 +
- static inline void phy_set_drvdata(struct phy *phy, void *data)
++	dst_done_buf = container_of(dst_buffer, struct mtk_jpeg_src_buf, b);
++
++	spin_lock_irqsave(&ctx->done_queue_lock, flags);
++	list_add_tail(&dst_done_buf->list, &ctx->dst_done_queue);
++	while (!list_empty(&ctx->dst_done_queue) &&
++	       (pos != &ctx->dst_done_queue)) {
++		list_for_each_prev_safe(pos, temp_entry, &ctx->dst_done_queue) {
++			tmp_dst_done_buf = list_entry(pos,
++						      struct mtk_jpeg_src_buf,
++						      list);
++			if (tmp_dst_done_buf->frame_num ==
++				ctx->last_done_frame_num) {
++				list_del(&tmp_dst_done_buf->list);
++				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
++						  VB2_BUF_STATE_DONE);
++				ctx->last_done_frame_num++;
++			}
++		}
++	}
++	spin_unlock_irqrestore(&ctx->done_queue_lock, flags);
++}
++
+ static void mtk_jpegdec_timeout_work(struct work_struct *work)
  {
- 	dev_set_drvdata(&phy->dev, data);
+ 	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
+@@ -460,7 +503,7 @@ static void mtk_jpegdec_timeout_work(struct work_struct *work)
+ 	atomic_inc(&master_jpeg->dechw_rdy);
+ 	wake_up(&master_jpeg->dec_hw_wq);
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+-	v4l2_m2m_buf_done(dst_buf, buf_state);
++	mtk_jpegdec_put_buf(cjpeg);
+ }
+ 
+ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+@@ -500,7 +543,7 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+ 
+ 	buf_state = VB2_BUF_STATE_DONE;
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+-	v4l2_m2m_buf_done(dst_buf, buf_state);
++	mtk_jpegdec_put_buf(jpeg);
+ 	pm_runtime_put(ctx->jpeg->dev);
+ 	clk_disable_unprepare(jpeg->jdec_clk.clks->clk);
+ 
 -- 
 2.18.0
 
