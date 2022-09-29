@@ -4,66 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A421EC32771
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 02:09:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32CA0C32771
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 02:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/6qDHoR7CjFqiBgvoGKy/A4Yw5IK7ptxY/JMlYvXaAQ=; b=fzZiKjz1iPxXoEWkVQ+yydjOR+
-	xYw1Lv3BATu23bQApy+/02sv7svV59+zSIURZxo7NzhuZMSo5INvPDtDMm2FTFapkjy7V9s9MM3I8
-	wMzTKrQUAFo6LlzzL8Xm9Hqb3+klfCcxt8sdf+gxgjqv3bATcYrhRXV0tiF7P0flqRFldljGtQspt
-	Y6f243FGe7v7MV8Q6zeG8nMq+apaxU5Sezyfp3pzV4zIodawd38PQhxboUXGl5yUByfl7dhBkJ0nQ
-	AeuUDbFMkvhmNmggF+ddI5+sZHQ/jddBRrSQYAq0efXS84vSYyCY/mlW5atom0fAkoPO9QjILXZdv
-	vEwDIzXA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=urU9CY/wCBejnGxksP6mrJFzU/wIGDM06gPR9xjmFHE=; b=uE7Usvmqfsu7ONmJWriwdMxM24
+	aw9rK323xkN/QLCO9YOi6GKz4DU/P4CrMbQyTPd2WgctEn2ofZxY7mhyL6dGlkmK3Eh86qYRKNhi9
+	uqINzULfTg4+yV5s/NNFG71nBBIcVE1hFNYZLgJwL38GoCBzmwzOpKRoAV0835eYp+vKfsPBU7L5r
+	T/MyZJorOVOnKBdkZE5MsA2h3mkV/qADCwpNzUxCeykCeU+Twml3PalM4pU4PVG79Swfx+u+fXhbo
+	I6MVESJHUV4Pgoo7nyoesKGPhKPhV135XgMVS3nsMhYZw6CYPBOextTFtM0hJ3ILH2BcXqCLVTrOe
+	PdfDyqpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odizi-000wCO-HL; Thu, 29 Sep 2022 02:09:46 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1odj3B-000wbZ-CW; Thu, 29 Sep 2022 02:13:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odizf-000wBy-Ja
-	for linux-mediatek@lists.infradead.org; Thu, 29 Sep 2022 02:09:44 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 3630661117;
-	Thu, 29 Sep 2022 02:09:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB72BC433C1;
-	Thu, 29 Sep 2022 02:09:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664417381;
-	bh=8U2R8U8IuBgofNLvI4s6FImBhCH5B70PhnDWBOIJ6Ws=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=VjR6M0rCxNlAN5h/ia3DBElBR9LAbWDGeI9LfyAY26Z96u3TXCoR7FYOVtxrnmlll
-	 XbAXnUk7KAT1yPQvMxE9FmQhwuB6ij8sk9EsYZKnxwWWn19t02nC+p+QhevCD15F7c
-	 NQxEadwkv1pDhzd32P4MnyYzg4OrN/X4ZSnYV7A3riMIY1Xkc934RP05/mUuTR5QS7
-	 yqgwD4EmvAMaJs9k+GhU6L09KiPfa2VqqH3An+4KAe+jWCKSU8Kd092o2Q1R51yFke
-	 8B3kai250natQze16KhxDPnP4yt/wz1cd1M4pc7nPJFvynC+DyuDK9/Uf4HA4dg7oL
-	 EcxL6oaKjz45A==
-Date: Wed, 28 Sep 2022 19:09:39 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, Lorenzo
- Bianconi <lorenzo@kernel.org>, Sujuan Chen <sujuan.chen@mediatek.com>, Bo
- Jiao <Bo.Jiao@mediatek.com>, Felix Fietkau <nbd@nbd.name>, John Crispin
- <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
- <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Chen Minqiang <ptpt52@gmail.com>, Thomas
- =?UTF-8?B?SMO8aG4=?= <thomas.huehn@hs-nordhausen.de>
-Subject: Re: [PATCH] net: ethernet: mtk_eth_soc: fix state in
- __mtk_foe_entry_clear
-Message-ID: <20220928190939.3c43516f@kernel.org>
-In-Reply-To: <YzOie0dkiQ43EPnu@makrotopia.org>
-References: <YzOie0dkiQ43EPnu@makrotopia.org>
+	id 1odj38-000wag-FP; Thu, 29 Sep 2022 02:13:20 +0000
+X-UUID: fa68e564f6e64429bfac90eb00124c92-20220928
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=urU9CY/wCBejnGxksP6mrJFzU/wIGDM06gPR9xjmFHE=;
+	b=Ot93pAHU6zIxBjGggHm9r4nKb3Ts6BFXsIHP9SqcKyAFtTxZRJ9INlgGS3dxXWi9wlDAB0SVm7kjIhqZAfdpKbf8zF1ERIWI6V5ltXInkgQcb/x9ZL+x1PDvEYQq773/MZvazunVZ/vhDSFiXFcEeovqrtxjGUUYMscrpl8agx0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:56ceb5f4-ba5d-43eb-b413-65091529ee1d,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:39a5ff1,CLOUDID:ce805f07-1cee-4c38-b21b-a45f9682fdc0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: fa68e564f6e64429bfac90eb00124c92-20220928
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jianguo.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 406883588; Wed, 28 Sep 2022 19:08:42 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 29 Sep 2022 09:48:03 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 29 Sep 2022 09:48:02 +0800
+From: Jianguo Zhang <jianguo.zhang@mediatek.com>
+To: "David S . Miller" <davem@davemloft.net>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, Biao Huang
+	<biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Jianguo Zhang <jianguo.zhang@mediatek.com>
+Subject: [PATCH v7 0/4]  Mediatek ethernet patches for mt8188
+Date: Thu, 29 Sep 2022 09:47:54 +0800
+Message-ID: <20220929014758.12099-1-jianguo.zhang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_190943_731699_1A1138DE 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20220928_191318_706620_79ED07F0 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,23 +87,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 28 Sep 2022 02:25:15 +0100 Daniel Golle wrote:
-> Setting ib1 state to MTK_FOE_STATE_UNBIND in __mtk_foe_entry_clear
-> routine as done by commit 0e80707d94e4c8 ("net: ethernet: mtk_eth_soc:
-> fix typo in __mtk_foe_entry_clear") breaks flow offloading, at least
-> on older MTK_NETSYS_V1 SoCs; OpenWrt users have confirmed the bug on
-> MT7622 and MT7621 systems.
-> Felix Fietkau suggested to use MTK_FOE_STATE_INVALID instead which
-> works well on both, MTK_NETSYS_V1 and MTK_NETSYS_V2.
-> 
-> Tested on MT7622 (Linksys E8450) and MT7986 (BananaPi BPI-R3).
-> 
-> Suggested-by: Felix Fietkau <nbd@nbd.name>
-> Fixes: 0e80707d94e4c8 ("net: ethernet: mtk_eth_soc: fix typo in __mtk_foe_entry_clear")
-> Fixes: 33fc42de33278 ("net: ethernet: mtk_eth_soc: support creating mac address based offload entries")
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Changes in v7:
 
-Looks like this patch is generated on top of net-next while it fixes 
-a bug in net (judging by mention of 0e80707d94e4c8).
-Please rebase on top of net and resent, we'll deal with the conflict.
+v7:
+1) Add 'Reviewed-by: AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com>' info in commit message of
+patch 'dt-bindings: net: snps,dwmac: add new property snps,clk-csr',
+'arm64: dts: mediatek: mt2712e: Update the name of property 'clk_csr''
+and 'net: stmmac: add a parse for new property 'snps,clk-csr''.
+
+v6:
+1) Update commit message of patch 'dt-bindings: net: snps,dwmac: add new property snps,clk-csr'
+2) Add a parse for new property 'snps,clk-csr' in patch
+'net: stmmac: add a parse for new property 'snps,clk-csr''
+
+v5:
+1) Rename the property 'clk_csr' as 'snps,clk-csr' in binding
+file as Krzysztof Kozlowski'comment.
+2) Add DTS patch 'arm64: dts: mediatek: mt2712e: Update the name of property 'clk_csr''
+as Krzysztof Kozlowski'comment.
+3) Add driver patch 'net: stmmac: Update the name of property 'clk_csr''
+as Krzysztof Kozlowski'comment.
+
+v4:
+1) Update the commit message of patch 'dt-bindings: net: snps,dwmac: add clk_csr property'
+as Krzysztof Kozlowski'comment.
+
+v3:
+1) List the names of SoCs mt8188 and mt8195 in correct order as
+AngeloGioacchino Del Regno's comment.
+2) Add patch version info as Krzysztof Kozlowski'comment.
+
+v2:
+1) Delete patch 'stmmac: dwmac-mediatek: add support for mt8188' as
+Krzysztof Kozlowski's comment.
+2) Update patch 'dt-bindings: net: mediatek-dwmac: add support for
+mt8188' as Krzysztof Kozlowski's comment.
+3) Add clk_csr property to fix warning ('clk_csr' was unexpected) when
+runnig 'make dtbs_check'.
+
+v1:
+1) Add ethernet driver entry for mt8188.
+2) Add binding document for ethernet on mt8188.
+
+
+Jianguo Zhang (4):
+  dt-bindings: net: mediatek-dwmac: add support for mt8188
+  dt-bindings: net: snps,dwmac: add new property snps,clk-csr
+  arm64: dts: mediatek: mt2712e: Update the name of property 'clk_csr'
+  net: stmmac: add a parse for new property 'snps,clk-csr'
+
+ .../devicetree/bindings/net/mediatek-dwmac.yaml        | 10 ++++++++--
+ Documentation/devicetree/bindings/net/snps,dwmac.yaml  |  5 +++++
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi              |  2 +-
+ drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c  |  3 ++-
+ 4 files changed, 16 insertions(+), 4 deletions(-)
+
+--
+2.25.1
+
+
 
