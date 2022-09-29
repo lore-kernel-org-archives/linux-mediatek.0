@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 040D9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 11:58:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21513C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 12:16:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=39ebN8yN46vkEhOfN7WVyLWWk/+c6irLgIToD0MrqLc=; b=fQEoQ/NHuDP0ORdOa8cd9fJXpk
-	SnKAXPnRElVdz9cyMwPTvsokF0om4gY4JygO05Og7wDCRhWw6vRZ0SDmSlJSLt7vNZw8BdmkEy/Ms
-	TQuPxvBmjhSKSlrOCcAV1waqzoL41gKlS1+Tp656puDT4s+qX8QRkDEQsp+PrUjIjy121ItCCfMCY
-	dev2Tv7vW50sb/7kOwUrQjr3jba1Ja24A8Fc0KEpZ1fsH2iUs239KUkFZCBFyQYwGak16WCIfLAvw
-	tAO/V8Bk8EWeFHHt4aEm8JadQhRLcDg9NXlm2XMeKO2KNmg/xhjdx9w8BKCQh1007gJU3m1aZuRzY
-	xnyZKycA==;
+	bh=lenYjv1geOFUZJdmgFq5riQxkkqjCdvBwevLP67S8hs=; b=4S09GVJWCqukNb8UgIqpeZwH/Z
+	BkWERN/tkvTv96JmTqyiWQlf+ki+jqZS7YHPimPYRtNYRAQJTc2MS7fnFKjee2ryQo3zPTgDG9Ad+
+	oxAcgkCp1qaI3uqshB78aE8jwqSlStconrOrANM5xW5zPdaCDNbjxYmy0C3vqa069HuxhHBe1YfIU
+	BK93LcaZJoCVX4rZ47ATy7lGEYMParoIC/BMTng3P7BPQvk/ioY5FspqGYTT/SLBlqJT2bKW77zQ+
+	YHP8OCEf2YmQbCMGYKYom2/TvBBE204YMAMMH5NeKViWZcQLmHdgjS82DHthX5G6/ollWy6d5Hpq7
+	e2m2+9LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odsBE-002nl1-Ue; Thu, 29 Sep 2022 11:58:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1odsT1-002tKM-NK; Thu, 29 Sep 2022 12:16:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odsAD-002nGB-97; Thu, 29 Sep 2022 11:57:15 +0000
-X-UUID: fddc069a7ddf442185e62d8bd1401998-20220929
+	id 1odsSz-002tJV-Ba; Thu, 29 Sep 2022 12:16:38 +0000
+X-UUID: c7f8c77921d44f7d8dc3f162338a7dc2-20220929
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=39ebN8yN46vkEhOfN7WVyLWWk/+c6irLgIToD0MrqLc=;
-	b=gzxAwSytLivThdhMuyKZxr0U8GHXHz/a/rVbFvYjEK50qdqEQXsamkDnwZW3LgsZbfojCeGuccXPhlxS+BnejLhbwYdntyumI/BHstY1DldTnDGIscBbzaHHU9J6U+BFmaII0BhWOhRlp1pPWwurRLf62HAsXw5phpwUtlLZf5g=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=lenYjv1geOFUZJdmgFq5riQxkkqjCdvBwevLP67S8hs=;
+	b=p2JupJ+5kL/T3+oPkly432A0455T2StN87arfKQGynuqVaqT4TyEkjxLIgPV1KmKX63bf5Tr+c3aTnLJs42spTEtNZUO2WEQKqV6wjPihO2cuYnIMhE8Lvxvt5a1CqiS0agv/UBRaBFmWKc+kRyxCXDKxOwaFf3cDXwF2vSrggc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:9f23c81e-cd52-4964-b58f-e31167fd8b3f,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:39a5ff1,CLOUDID:211aa8e4-87f9-4bb0-97b6-34957dc0fbbe,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:f437eb03-2664-446b-bb27-9c258fc7b386,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:4ba781a3-dc04-435c-b19b-71e131a5fc35,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: fddc069a7ddf442185e62d8bd1401998-20220929
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: c7f8c77921d44f7d8dc3f162338a7dc2-20220929
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <johnson.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1204425737; Thu, 29 Sep 2022 04:57:03 -0700
+	with ESMTP id 1851392864; Thu, 29 Sep 2022 05:16:33 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.792.15; Thu, 29 Sep 2022 19:46:29 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -56,9 +56,9 @@ CC: <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<kuan-hsin.lee@mediatek.com>, <yu-chang.wang@mediatek.com>, Johnson Wang
 	<johnson.wang@mediatek.com>, Edward-JW Yang <edward-jw.yang@mediatek.com>
-Subject: [PATCH v3 1/4] clk: mediatek: Export PLL operations symbols
-Date: Thu, 29 Sep 2022 19:46:21 +0800
-Message-ID: <20220929114624.16809-2-johnson.wang@mediatek.com>
+Subject: [PATCH v3 2/4] dt-bindings: arm: mediatek: Add new bindings of MediaTek frequency hopping
+Date: Thu, 29 Sep 2022 19:46:22 +0800
+Message-ID: <20220929114624.16809-3-johnson.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220929114624.16809-1-johnson.wang@mediatek.com>
 References: <20220929114624.16809-1-johnson.wang@mediatek.com>
@@ -66,8 +66,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220929_045713_370044_C46AE4A1 
-X-CRM114-Status: GOOD (  20.01  )
+X-CRM114-CacheID: sfid-20220929_051637_423207_4BA36DE6 
+X-CRM114-Status: GOOD (  14.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,282 +82,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Export PLL operations and register functions for different type
-of clock driver used.
+Add the new binding documentation for MediaTek frequency hopping
+and spread spectrum clocking control.
 
 Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
 Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
 Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
 ---
- drivers/clk/mediatek/clk-pll.c | 84 ++++++++++++++--------------------
- drivers/clk/mediatek/clk-pll.h | 56 +++++++++++++++++++++++
- 2 files changed, 90 insertions(+), 50 deletions(-)
+ .../arm/mediatek/mediatek,mt8186-fhctl.yaml   | 53 +++++++++++++++++++
+ 1 file changed, 53 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-fhctl.yaml
 
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index 54e6cfd29dfc..a4eca5fd539c 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -27,37 +27,10 @@
- 
- #define AUDPLL_TUNER_EN		BIT(31)
- 
--#define POSTDIV_MASK		0x7
--
- /* default 7 bits integer, can be overridden with pcwibits. */
- #define INTEGER_BITS		7
- 
--/*
-- * MediaTek PLLs are configured through their pcw value. The pcw value describes
-- * a divider in the PLL feedback loop which consists of 7 bits for the integer
-- * part and the remaining bits (if present) for the fractional part. Also they
-- * have a 3 bit power-of-two post divider.
-- */
--
--struct mtk_clk_pll {
--	struct clk_hw	hw;
--	void __iomem	*base_addr;
--	void __iomem	*pd_addr;
--	void __iomem	*pwr_addr;
--	void __iomem	*tuner_addr;
--	void __iomem	*tuner_en_addr;
--	void __iomem	*pcw_addr;
--	void __iomem	*pcw_chg_addr;
--	void __iomem	*en_addr;
--	const struct mtk_pll_data *data;
--};
--
--static inline struct mtk_clk_pll *to_mtk_clk_pll(struct clk_hw *hw)
--{
--	return container_of(hw, struct mtk_clk_pll, hw);
--}
--
--static int mtk_pll_is_prepared(struct clk_hw *hw)
-+int mtk_pll_is_prepared(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 
-@@ -161,8 +134,8 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
-  * @fin:	The input frequency
-  *
-  */
--static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
--		u32 freq, u32 fin)
-+void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
-+			 u32 freq, u32 fin)
- {
- 	unsigned long fmin = pll->data->fmin ? pll->data->fmin : (1000 * MHZ);
- 	const struct mtk_pll_div_table *div_table = pll->data->div_table;
-@@ -198,8 +171,8 @@ static void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
- 	*pcw = (u32)_pcw;
- }
- 
--static int mtk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
--		unsigned long parent_rate)
-+int mtk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
-+		     unsigned long parent_rate)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 pcw = 0;
-@@ -211,8 +184,7 @@ static int mtk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
- 	return 0;
- }
- 
--static unsigned long mtk_pll_recalc_rate(struct clk_hw *hw,
--		unsigned long parent_rate)
-+unsigned long mtk_pll_recalc_rate(struct clk_hw *hw, unsigned long parent_rate)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 postdiv;
-@@ -227,8 +199,8 @@ static unsigned long mtk_pll_recalc_rate(struct clk_hw *hw,
- 	return __mtk_pll_recalc_rate(pll, parent_rate, pcw, postdiv);
- }
- 
--static long mtk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
--		unsigned long *prate)
-+long mtk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
-+			unsigned long *prate)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 pcw = 0;
-@@ -239,7 +211,7 @@ static long mtk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
- 	return __mtk_pll_recalc_rate(pll, *prate, pcw, postdiv);
- }
- 
--static int mtk_pll_prepare(struct clk_hw *hw)
-+int mtk_pll_prepare(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 r;
-@@ -273,7 +245,7 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- 	return 0;
- }
- 
--static void mtk_pll_unprepare(struct clk_hw *hw)
-+void mtk_pll_unprepare(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 r;
-@@ -301,7 +273,7 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- 	writel(r, pll->pwr_addr);
- }
- 
--static const struct clk_ops mtk_pll_ops = {
-+const struct clk_ops mtk_pll_ops = {
- 	.is_prepared	= mtk_pll_is_prepared,
- 	.prepare	= mtk_pll_prepare,
- 	.unprepare	= mtk_pll_unprepare,
-@@ -310,18 +282,15 @@ static const struct clk_ops mtk_pll_ops = {
- 	.set_rate	= mtk_pll_set_rate,
- };
- 
--static struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
--		void __iomem *base)
-+struct clk_hw *mtk_clk_register_pll_ops(struct mtk_clk_pll *pll,
-+					const struct mtk_pll_data *data,
-+					void __iomem *base,
-+					const struct clk_ops *pll_ops)
- {
--	struct mtk_clk_pll *pll;
- 	struct clk_init_data init = {};
- 	int ret;
- 	const char *parent_name = "clk26m";
- 
--	pll = kzalloc(sizeof(*pll), GFP_KERNEL);
--	if (!pll)
--		return ERR_PTR(-ENOMEM);
--
- 	pll->base_addr = base + data->reg;
- 	pll->pwr_addr = base + data->pwr_reg;
- 	pll->pd_addr = base + data->pd_reg;
-@@ -343,7 +312,7 @@ static struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
- 
- 	init.name = data->name;
- 	init.flags = (data->flags & PLL_AO) ? CLK_IS_CRITICAL : 0;
--	init.ops = &mtk_pll_ops;
-+	init.ops = pll_ops;
- 	if (data->parent_name)
- 		init.parent_names = &data->parent_name;
- 	else
-@@ -360,7 +329,22 @@ static struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
- 	return &pll->hw;
- }
- 
--static void mtk_clk_unregister_pll(struct clk_hw *hw)
-+struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
-+				    void __iomem *base)
-+{
-+	struct mtk_clk_pll *pll;
-+	struct clk_hw *hw;
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-fhctl.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-fhctl.yaml
+new file mode 100644
+index 000000000000..258dff7ce6bc
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-fhctl.yaml
+@@ -0,0 +1,53 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mt8186-fhctl.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	pll = kzalloc(sizeof(*pll), GFP_KERNEL);
-+	if (!pll)
-+		return ERR_PTR(-ENOMEM);
++title: MediaTek frequency hopping and spread spectrum clocking control
 +
-+	hw = mtk_clk_register_pll_ops(pll, data, base, &mtk_pll_ops);
++maintainers:
++  - Edward-JW Yang <edward-jw.yang@mediatek.com>
 +
-+	return hw;
-+}
++description: |
++  Frequency hopping control (FHCTL) is a piece of hardware that control
++  some PLLs to adopt "hopping" mechanism to adjust their frequency.
++  Spread spectrum clocking (SSC) is another function provided by this hardware.
 +
-+void mtk_clk_unregister_pll(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll;
- 
-@@ -423,8 +407,8 @@ int mtk_clk_register_plls(struct device_node *node,
- }
- EXPORT_SYMBOL_GPL(mtk_clk_register_plls);
- 
--static __iomem void *mtk_clk_pll_get_base(struct clk_hw *hw,
--					  const struct mtk_pll_data *data)
-+__iomem void *mtk_clk_pll_get_base(struct clk_hw *hw,
-+				   const struct mtk_pll_data *data)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 
-diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pll.h
-index fe3199715688..e87ab08eea9b 100644
---- a/drivers/clk/mediatek/clk-pll.h
-+++ b/drivers/clk/mediatek/clk-pll.h
-@@ -7,6 +7,7 @@
- #ifndef __DRV_CLK_MTK_PLL_H
- #define __DRV_CLK_MTK_PLL_H
- 
-+#include <linux/clk-provider.h>
- #include <linux/types.h>
- 
- struct clk_ops;
-@@ -20,6 +21,7 @@ struct mtk_pll_div_table {
- 
- #define HAVE_RST_BAR	BIT(0)
- #define PLL_AO		BIT(1)
-+#define POSTDIV_MASK	0x7
- 
- struct mtk_pll_data {
- 	int id;
-@@ -48,10 +50,64 @@ struct mtk_pll_data {
- 	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
- };
- 
-+/*
-+ * MediaTek PLLs are configured through their pcw value. The pcw value describes
-+ * a divider in the PLL feedback loop which consists of 7 bits for the integer
-+ * part and the remaining bits (if present) for the fractional part. Also they
-+ * have a 3 bit power-of-two post divider.
-+ */
++properties:
++  compatible:
++    const: mediatek,mt8186-fhctl
 +
-+struct mtk_clk_pll {
-+	struct clk_hw	hw;
-+	void __iomem	*base_addr;
-+	void __iomem	*pd_addr;
-+	void __iomem	*pwr_addr;
-+	void __iomem	*tuner_addr;
-+	void __iomem	*tuner_en_addr;
-+	void __iomem	*pcw_addr;
-+	void __iomem	*pcw_chg_addr;
-+	void __iomem	*en_addr;
-+	const struct mtk_pll_data *data;
-+};
++  reg:
++    maxItems: 1
 +
++  clocks:
++    description: Phandles of the PLL with FHCTL hardware capability.
++    minItems: 1
++    maxItems: 30
 +
- int mtk_clk_register_plls(struct device_node *node,
- 			  const struct mtk_pll_data *plls, int num_plls,
- 			  struct clk_hw_onecell_data *clk_data);
- void mtk_clk_unregister_plls(const struct mtk_pll_data *plls, int num_plls,
- 			     struct clk_hw_onecell_data *clk_data);
- 
-+extern const struct clk_ops mtk_pll_ops;
++  mediatek,hopping-ssc-percent:
++    description: The percentage of spread spectrum clocking for one PLL.
++    minItems: 1
++    maxItems: 30
++    items:
++      default: 0
++      minimum: 0
++      maximum: 8
 +
-+static inline struct mtk_clk_pll *to_mtk_clk_pll(struct clk_hw *hw)
-+{
-+	return container_of(hw, struct mtk_clk_pll, hw);
-+}
++required:
++  - compatible
++  - reg
++  - clocks
 +
-+int mtk_pll_is_prepared(struct clk_hw *hw);
++additionalProperties: false
 +
-+int mtk_pll_prepare(struct clk_hw *hw);
-+
-+void mtk_pll_unprepare(struct clk_hw *hw);
-+
-+unsigned long mtk_pll_recalc_rate(struct clk_hw *hw, unsigned long parent_rate);
-+
-+void mtk_pll_calc_values(struct mtk_clk_pll *pll, u32 *pcw, u32 *postdiv,
-+			 u32 freq, u32 fin);
-+int mtk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
-+		     unsigned long parent_rate);
-+long mtk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
-+			unsigned long *prate);
-+
-+struct clk_hw *mtk_clk_register_pll_ops(struct mtk_clk_pll *pll,
-+					const struct mtk_pll_data *data,
-+					void __iomem *base,
-+					const struct clk_ops *pll_ops);
-+struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
-+				    void __iomem *base);
-+void mtk_clk_unregister_pll(struct clk_hw *hw);
-+
-+__iomem void *mtk_clk_pll_get_base(struct clk_hw *hw,
-+				   const struct mtk_pll_data *data);
-+
- #endif /* __DRV_CLK_MTK_PLL_H */
++examples:
++  - |
++    #include <dt-bindings/clock/mt8186-clk.h>
++    fhctl: fhctl@1000ce00 {
++        compatible = "mediatek,mt8186-fhctl";
++        reg = <0x1000c000 0xe00>;
++        clocks = <&apmixedsys CLK_APMIXED_MSDCPLL>;
++        mediatek,hopping-ssc-percent = <3>;
++    };
 -- 
 2.18.0
 
