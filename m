@@ -4,75 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90DA2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 09:21:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D42BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 09:21:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2XKTzy2jknaTB4QMzyr4cI7CofHNh+JKGC2Ylwooupg=; b=lrBpToGmDYhpGvVG+eREw7yuK1
-	OY8FQQAGvsuU7FMVEQsRhZyv+7eTKxVHgIl0oXSgLuLSdnKi4ATJ6bn6fRD/vmUWU78rFNdCcAEaR
-	D3/adXnQlfjy4hUcoytpAVEv+FAVPn2pRuXYUg4WnAoOTdqi19X7ZRciG4zVdMGcM2D/dy6Wm3iGH
-	y+goRhFSnMfFZZArHiVpM21KqWBwodsUZeUMipJ2DNCprnKu1+0/T3z9tq/IavjIu8+et7NaN/KXO
-	ok3AdaL3qAbpBxjQEFhW810NG8abk95TzrJS4hZR3z6kG4yqwF2eD+OILcBN4CLVw2XYnym3K7ElI
-	I4F07+6g==;
+	bh=WYHMETprlxCSlcsR6AUgF7th2hMnQkiMFVz9edPawAU=; b=H6J5eRLoG1eD8jIHHg5GueTAyC
+	1BChsPlty6Xt5u/GohTkodlcRMcQtXbSa0Ke5oqYMWXLOIoB9A9YKIabeHHmC4EzP3y2tgMK9Hjjy
+	nLcT7YaccVTIr6fafC2mToiE+3HvXpfH2tYX/tYsnmjQswTzrYHnGxpP0YK/uD4Sp3EEIj4XZksdm
+	e/zwgHfkQ5FuYoIUy7TwgnJLr9Rw4/1OuC9u0cWJjkMztzPl1uSYCYSvlNqbJXqvVE1x7/3VxLAsG
+	eO0l7rX3VgzDp4nM4jiaI/qUcNqResDuUGzvP6wFpDexOHpRwT/T9vJV+g4/XvtVqAmaPda7TUFMu
+	KucyRGKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odpjQ-0024eW-L3; Thu, 29 Sep 2022 09:21:24 +0000
-Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
+	id 1odpjd-0024jA-D7; Thu, 29 Sep 2022 09:21:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odpjN-0024dc-Mi
-	for linux-mediatek@lists.infradead.org; Thu, 29 Sep 2022 09:21:23 +0000
-Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
-	by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 28T8oRFG030927;
-	Thu, 29 Sep 2022 04:21:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=PODMain02222019;
- bh=2XKTzy2jknaTB4QMzyr4cI7CofHNh+JKGC2Ylwooupg=;
- b=j8I/iOYyRifLp52uLg1necVtJbUro7vKilysWM14jA9QFbSsnodDEcBwZM7OKdfycmW7
- 8LLnuHGNtBNsF6eAskTD3/ZUml6jZj1ZrUaZDqjNBgpzgbTj4LxCrOigAiSOs9e9Rq1F
- Kquc3Wf6sev3h60elJuJpYe4tnYBLJIZtU3Wk/gsTmQBuLn4DFSC2xAKtpkPiYK/sTyV
- pUfHyWlukIFQAC+MxISUsxalA4P2UWgWAktAHSpHnsKprxsCpCbQH+09DOC8zAWXMH8H
- LdwoRv+xXziS7XJJdiFgYYpMsKwTtdwBHlDxA9+kgpKmbZvIfs/rJMtZQwy7u6GUH2yM Og== 
-Received: from ediex02.ad.cirrus.com ([84.19.233.68])
-	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3jsxapp13w-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 29 Sep 2022 04:21:06 -0500
-Received: from ediex01.ad.cirrus.com (198.61.84.80) by ediex02.ad.cirrus.com
- (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.12; Thu, 29 Sep
- 2022 04:21:05 -0500
-Received: from ediswmail.ad.cirrus.com (198.61.86.93) by ediex01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server id 15.2.1118.12 via Frontend
- Transport; Thu, 29 Sep 2022 04:21:05 -0500
-Received: from ediswmail.ad.cirrus.com (ediswmail.ad.cirrus.com [198.61.86.93])
-	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id E9A822D4;
-	Thu, 29 Sep 2022 09:21:04 +0000 (UTC)
-Date: Thu, 29 Sep 2022 09:21:04 +0000
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: Zhang Qilong <zhangqilong3@huawei.com>
-CC: <lgirdwood@gmail.com>, <broonie@kernel.org>, <perex@perex.cz>,
-        <tiwai@suse.com>, <matthias.bgg@gmail.com>,
-        <alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH -next 2/4] ASoC: wm5110: Fix PM disable depth imbalance
- in wm5110_probe
-Message-ID: <20220929092104.GT92394@ediswmail.ad.cirrus.com>
-References: <20220928160116.125020-1-zhangqilong3@huawei.com>
- <20220928160116.125020-3-zhangqilong3@huawei.com>
+	id 1odpja-0024hS-Py; Thu, 29 Sep 2022 09:21:36 +0000
+X-UUID: c49bef9b80cd48a2afee817b1b09e72a-20220929
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=WYHMETprlxCSlcsR6AUgF7th2hMnQkiMFVz9edPawAU=;
+	b=sje336XFuNVLHdoAVA7Uyta43RUR0DU1G/VEPRaLi4GGgP6QVBAKMqnnLOSd1CRzK1EGvPF6WKHZdog1YTK5pL0QR9Z5xhjQyyis/SKcMPH0A6x78lBzZ1aON4X62TXfYHmHyADMaSm87OpP+Wq/STdce3NkuqvlpCKxbEeuq9E=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:01da6f16-91be-4061-bcef-741625e22894,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:2b4c6f07-1cee-4c38-b21b-a45f9682fdc0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: c49bef9b80cd48a2afee817b1b09e72a-20220929
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 555556697; Thu, 29 Sep 2022 02:17:58 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 29 Sep 2022 16:47:20 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 29 Sep 2022 16:47:20 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Fabien Parent <fparent@baylibre.com>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+CC: Miles Chen <miles.chen@mediatek.com>, Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, <linux-usb@vger.kernel.org>,
+	<stable@vger.kernel.org>
+Subject: [PATCH v2] arm64: dts: mediatek: mt8195-demo: fix the memory size of node secmon
+Date: Thu, 29 Sep 2022 16:47:14 +0800
+Message-ID: <20220929084714.15143-1-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220922091648.2821-1-macpaul.lin@mediatek.com>
+References: <20220922091648.2821-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20220928160116.125020-3-zhangqilong3@huawei.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Proofpoint-ORIG-GUID: p9vNs_9FToHZQFgOxLP5dKnuYlDoCqW6
-X-Proofpoint-GUID: p9vNs_9FToHZQFgOxLP5dKnuYlDoCqW6
-X-Proofpoint-Spam-Reason: safe
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220929_022121_902526_5BE77B0B 
-X-CRM114-Status: GOOD (  21.21  )
+X-CRM114-CacheID: sfid-20220929_022134_866666_378FD0F1 
+X-CRM114-Status: GOOD (  16.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,50 +84,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 29, 2022 at 12:01:14AM +0800, Zhang Qilong wrote:
-> The pm_runtime_enable will increase power disable depth. Thus
-> a pairing decrement is needed on the error handling path to
-> keep it balanced according to context. We fix it by moving
-> pm_runtime_enable to the endding of wm5110_probe.
-> 
-> Fixes:5c6af635fd772 ("ASoC: wm5110: Add audio CODEC driver")
-> Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
-> ---
+The size of device tree node secmon (bl31_secmon_reserved) was
+incorrect. It should be increased to 2MiB (0x200000).
 
-As Mark said please use maintainers and specifically if patching
-the Wolfson/Cirrus CODECs please CC
-patches@opensource.cirrus.com
+The origin setting will cause some abnormal behavior due to
+trusted-firmware-a and related firmware didn't load correctly.
+The incorrect behavior may vary because of different software stacks.
+For example, it will cause build error in some Yocto project because
+it will check if there was enough memory to load trusted-firmware-a
+to the reserved memory.
 
->  sound/soc/codecs/wm5110.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/sound/soc/codecs/wm5110.c b/sound/soc/codecs/wm5110.c
-> index f3f4a10bf0f7..fc634c995834 100644
-> --- a/sound/soc/codecs/wm5110.c
-> +++ b/sound/soc/codecs/wm5110.c
-> @@ -2457,9 +2457,6 @@ static int wm5110_probe(struct platform_device *pdev)
->  		regmap_update_bits(arizona->regmap, wm5110_digital_vu[i],
->  				   WM5110_DIG_VU, WM5110_DIG_VU);
->  
-> -	pm_runtime_enable(&pdev->dev);
-> -	pm_runtime_idle(&pdev->dev);
-> -
->  	ret = arizona_request_irq(arizona, ARIZONA_IRQ_DSP_IRQ1,
->  				  "ADSP2 Compressed IRQ", wm5110_adsp2_irq,
->  				  wm5110);
-> @@ -2492,6 +2489,9 @@ static int wm5110_probe(struct platform_device *pdev)
->  		goto err_spk_irqs;
->  	}
->  
-> +	pm_runtime_enable(&pdev->dev);
-> +	pm_runtime_idle(&pdev->dev);
-> +
+When mt8195-demo.dts sent to the upstream, at that time the size of
+BL31 was small. Because supported functions and modules in BL31 are
+basic sets when the board was under early development stage.
 
-I think it would be better to keep the pm_runtime enables before
-the IRQ and component stuff. Both of those could start triggering
-PM runtime events. We probably need to add an extra error path
-here for disabling the pm_runtime.
+Now BL31 includes more firmwares of coprocessors and maturer functions
+so the size has grown bigger in real applications. According to the value
+reported by customers, we think reserved 2MiB for BL31 might be enough
+for maybe the following 2 or 3 years.
 
-Thanks,
-Charles
+Cc: stable@vger.kernel.org      # v5.19
+Fixes: 6147314aeedc ("arm64: dts: mediatek: Add device-tree for MT8195 Demo board")
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Reviewed-by: Miles Chen <miles.chen@mediatek.com>
+---
+Changes for v2
+ - Add more information about the size difference for BL31 in commit message.
+   Thanks for Miles's review.
+
+ arch/arm64/boot/dts/mediatek/mt8195-demo.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+index 4fbd99eb496a..dec85d254838 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+@@ -56,10 +56,10 @@
+ 		#size-cells = <2>;
+ 		ranges;
+ 
+-		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
++		/* 2 MiB reserved for ARM Trusted Firmware (BL31) */
+ 		bl31_secmon_reserved: secmon@54600000 {
+ 			no-map;
+-			reg = <0 0x54600000 0x0 0x30000>;
++			reg = <0 0x54600000 0x0 0x200000>;
+ 		};
+ 
+ 		/* 12 MiB reserved for OP-TEE (BL32)
+-- 
+2.18.0
+
 
