@@ -4,86 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1464BC04A95
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 01:56:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40BEAC04A95
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 02:00:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KLeXZkzgR5Ay7eOUvGeW+A2UOiV7iAhJfQA6fiC/fas=; b=AUiyH2seJSOQk9ZFfr8NstdZrv
-	2TRbz09pl3f2mjIB4+c2fPRNZRjOX7zie/P3GHxIVGF/6IEO8Uowb+LssDEvxrb8iO4htD5FF4sQb
-	M0Q0KabVDiqAjl+vqRd4oU2JhaC9n+leJVObK5MD35oLlW/hO3hEwFdEiHVUm+B5pUTC2UC1mjRQ0
-	/uHvGKIXoLADHli89dqFgSHKPMHdd2njeAtTuFIbaT5TsoTuVt+m/sA/P/MkNYko1zQy7QkJRw0cC
-	oXSEpVT24r5K10yf/9fhk3Ou9A2uAt6rju4Ai2TZlD5YPxmXX9iuDR4OY22pDcmLEoK/743s2HmOz
-	1oAVyf7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=C5vB9AdNpMbk+2uUPlTv1wvt0hrX4ZZuVlJ7vkkQRH8=; b=gW60xfgS+7eJvaWleZqlb4xP/F
+	MS7VI0Wi+1ZgcxsQrx0F4st2oMRHgznVCSm0KsO0z2/rhVlTV06wvPMQCLhqzpTDRl6UJbhFbxC8Y
+	N84flB/Bpgj6qoO6R1hzVQgmmcVMuYUROs50hLs4JU6jF5d6W4amW+ad/pQN4g0Ye9tNuhVetg0Q8
+	uoQjEoK0mZ0W8OE7XEZs6XY5vO0WiYVoM2xvaZurdpQ6WdDWuE/ZgYvC3gbXMKLB3Wc8EspHhCRfz
+	CXFkaRyKiw1sSk0JL4cIQYx85C7buKW0nPNFMicyYgtI2DRdtZ2VzR0W/l0HA1uFh33Z8tbsYVkw4
+	6vLuFFeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odimJ-000uit-OR; Thu, 29 Sep 2022 01:55:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1odiqr-000vKF-NX; Thu, 29 Sep 2022 02:00:37 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odim8-000ugy-Ud; Thu, 29 Sep 2022 01:55:46 +0000
-X-UUID: de4fdf0f4cc4485e877d133ebf335407-20220928
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=KLeXZkzgR5Ay7eOUvGeW+A2UOiV7iAhJfQA6fiC/fas=;
-	b=SHqr0Cunqo5xnMTy2hauXSokoFUcURgPaoM913LTUazCm4o97CKrIJLs3234Cul2LSmmJ/gEA5I7WKKbQA3LlwcufLD31RAv+LAo/QcNTGsHUzbkbAMkwYs59K8SdTIn5BqKcgITpoD3m7TfNWuo3nXw/spYZdWgqpqebgLVVvE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:c9036338-191e-43d9-8734-e13f86bf0fa2,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:44df5e07-1cee-4c38-b21b-a45f9682fdc0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: de4fdf0f4cc4485e877d133ebf335407-20220928
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 153283290; Wed, 28 Sep 2022 18:55:37 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 29 Sep 2022 09:54:58 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 29 Sep 2022 09:54:57 +0800
-Message-ID: <7d8fb7ea78ae2a850d26bba7b08f621b8494df5e.camel@mediatek.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: Skip unsupported h264 encoder
- profile
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Allen-KH Cheng =?UTF-8?Q?=28=E7=A8=8B=E5=86=A0=E5=8B=B3=29?=
-	<Allen-KH.Cheng@mediatek.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
-	Tiffany Lin =?UTF-8?Q?=28=E6=9E=97=E6=85=A7=E7=8F=8A=29?=
-	<tiffany.lin@mediatek.com>, "mchehab@kernel.org" <mchehab@kernel.org>,
-	"nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>, Irui Wang
- =?UTF-8?Q?=28=E7=8E=8B=E7=91=9E=29?= <Irui.Wang@mediatek.com>,
-	"hsinyi@chromium.org" <hsinyi@chromium.org>, "hverkuil-cisco@xs4all.nl"
-	<hverkuil-cisco@xs4all.nl>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "acourbot@chromium.org"
-	<acourbot@chromium.org>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	Longfei Wang =?UTF-8?Q?=28=E7=8E=8B=E9=BE=99=E9=A3=9E=29?=
-	<Longfei.Wang@mediatek.com>, "linux-media@vger.kernel.org"
-	<linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, Maoguang Meng
- =?UTF-8?Q?=28=E5=AD=9F=E6=AF=9B=E5=B9=BF=29?= <Maoguang.Meng@mediatek.com>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Date: Thu, 29 Sep 2022 09:54:56 +0800
-In-Reply-To: <e8bb661ec83129a1c660e876cb4fe9aaad41adfd.camel@mediatek.com>
-References: <20220926093501.26466-1-irui.wang@mediatek.com>
-	 <e8bb661ec83129a1c660e876cb4fe9aaad41adfd.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-MTK: N
+	id 1odiqh-000vIc-LY; Thu, 29 Sep 2022 02:00:29 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id 8-20020a17090a0b8800b00205d8564b11so5094pjr.5;
+        Wed, 28 Sep 2022 19:00:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+        bh=C5vB9AdNpMbk+2uUPlTv1wvt0hrX4ZZuVlJ7vkkQRH8=;
+        b=hPDZmGiqxB9XD3Z6wxo4PZNRWs3oY/Iz5OeU+JgazAdaRNCYb0hY+XBfMT5h9LpDuK
+         sCGI7yR8/B5SquXIbmemuUwjvIDSrPu4q0TQj4VgxJpWiQUjdojJRHZNtrxDqXrzln0J
+         SC2HI4obfGuU+uLyFgsG6Jz52S87DuPUi+3oTAYb331UHYMDQuKvHA2vT1QADuBgiLVe
+         7VSIb6tXofr7qFnhoUnL5WuTwLGNHphva9ycidtoa1lkJdflmrIUQCf9iwfFzPojQGuX
+         dzg1bswH2ufICBvvHb6SrbK5MKAhZ6SJjKefrLNz0CNT44/RBeJw5+BJ9/93nNc0aH6Y
+         FW1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=C5vB9AdNpMbk+2uUPlTv1wvt0hrX4ZZuVlJ7vkkQRH8=;
+        b=vb+4wB2bOGYuxkHNutk29yEvygfzs1xLPlNbEu1q6LelbaYS8jOijBQoF9atVxMO+s
+         N96N/0AbHDWsQ5PJypsyOICH1VNjBz5SiM826bbi+GH+QC3osHIGcQ0ARz7Ue9xqV8uu
+         LtmajsHyCkGmcJQFokw9RF+jO3uFJYCkWgfG2KYGn4Wb/oyy3FL2r+auU6pO2dMSVdxy
+         1arwPXtF1umZ6TbJc3n2Cg8eg8ejv6MK7+aUskom7RnRFPDoy8gcsMYImA50Rmx84dIv
+         VsbYxZi/cfY5oQnS/Gz3Ohftx8dlyzjENfpSWnEiL5dv8UQDBqxIo1wOwDIFSJUhSdqU
+         9fCg==
+X-Gm-Message-State: ACrzQf39nVo8WPBUwv/gqvIkGkrhOJ17dnob3GOy1UFQaceVFmBhsF6n
+	VPFZXH72bMQe9jvRHT76FGg=
+X-Google-Smtp-Source: AMsMyM7ZzV1vVGJNs6nTmd5yrCePl3Paqmk+hVgLyyR8mFNJpaQU8/eOM+EA2rjQyhlE3+Pt5NXgtg==
+X-Received: by 2002:a17:903:11cc:b0:178:aec1:18c3 with SMTP id q12-20020a17090311cc00b00178aec118c3mr994449plh.91.1664416823981;
+        Wed, 28 Sep 2022 19:00:23 -0700 (PDT)
+Received: from localhost.localdomain ([2402:7500:579:1b3a:f99f:1552:d82e:aa5a])
+        by smtp.gmail.com with ESMTPSA id o6-20020a170902d4c600b00178bd916c64sm4512864plg.265.2022.09.28.19.00.21
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 28 Sep 2022 19:00:23 -0700 (PDT)
+From: cy_huang <u0084500@gmail.com>
+To: lee@kernel.org
+Cc: matthias.bgg@gmail.com,
+	gene_chen@richtek.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	ChiYuan Huang <cy_huang@richtek.com>,
+	stable@vger.kernel.org
+Subject: [PATCH v2] mfd: mt6360: add bound check in regmap read/write function
+Date: Thu, 29 Sep 2022 10:00:17 +0800
+Message-Id: <1664416817-31590-1-git-send-email-u0084500@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_185545_001507_E3728912 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20220928_190027_749782_590E1E7F 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,61 +86,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Irui,
+From: ChiYuan Huang <cy_huang@richtek.com>
 
-Reviewed-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Fix the potential risk for null pointer if bank index is over the maximum.
 
-Thanks
-Yunfei Dong
+Refer to the discussion list for the experiment result on mt6370.
+https://lore.kernel.org/all/20220914013345.GA5802@cyhuang-hp-elitebook-840-g3.rt/
+If not to check the bound, there is the same issue on mt6360.
 
-On Wed, 2022-09-28 at 21:38 +0800, Allen-KH Cheng (程冠勳) wrote:
-> Hi Irui,
-> 
-> Tested-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> 
-> Tested for CTS cases on the mt8186 corsola board.
-> 
-> Thanks,
-> Allen
-> 
-> On Mon, 2022-09-26 at 17:35 +0800, Irui Wang wrote:
-> > The encoder driver support h264 baseline, main, high encoder
-> > profile, set mask for V4L2_CID_MPEG_VIDEO_H264_PROFILE to skip
-> > the unsupported profile.
-> > 
-> > get supported h264_profile by command: v4l2-ctl -d /dev/videoX -L
-> > h264_profile 0x00990a6b (menu) : min=0 max=4 default=4 value=4
-> >         0: Baseline
-> >         2: Main
-> >         4: High
-> > 
-> > Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-> > ---
-> >  drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 5 ++++-
-> >  1 file changed, 4 insertions(+), 1 deletion(-)
-> > 
-> > diff --git
-> > a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-> > b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-> > index d810a78dde51..d65800a3b89d 100644
-> > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-> > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
-> > @@ -1397,7 +1397,10 @@ int mtk_vcodec_enc_ctrls_setup(struct
-> > mtk_vcodec_ctx *ctx)
-> >  			0, V4L2_MPEG_VIDEO_HEADER_MODE_SEPARATE);
-> >  	v4l2_ctrl_new_std_menu(handler, ops,
-> > V4L2_CID_MPEG_VIDEO_H264_PROFILE,
-> >  			V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
-> > -			0, V4L2_MPEG_VIDEO_H264_PROFILE_HIGH);
-> > +			~((1 << V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE)
-> > > 
-> > 
-> > +			  (1 << V4L2_MPEG_VIDEO_H264_PROFILE_MAIN) |
-> > +			  (1 << V4L2_MPEG_VIDEO_H264_PROFILE_HIGH)),
-> > +			V4L2_MPEG_VIDEO_H264_PROFILE_HIGH);
-> >  	v4l2_ctrl_new_std_menu(handler, ops,
-> > V4L2_CID_MPEG_VIDEO_H264_LEVEL,
-> >  			       h264_max_level,
-> >  			       0, V4L2_MPEG_VIDEO_H264_LEVEL_4_0);
+Fixes: 3b0850440a06c (mfd: mt6360: Merge different sub-devices I2C read/write)
+Cc: stable@vger.kernel.org
+Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+---
+Since v2:
+- Assign i2c bank variable after bank index is already checked.
+
+---
+ drivers/mfd/mt6360-core.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/mfd/mt6360-core.c b/drivers/mfd/mt6360-core.c
+index 6eaa677..d3b32eb 100644
+--- a/drivers/mfd/mt6360-core.c
++++ b/drivers/mfd/mt6360-core.c
+@@ -402,7 +402,7 @@ static int mt6360_regmap_read(void *context, const void *reg, size_t reg_size,
+ 	struct mt6360_ddata *ddata = context;
+ 	u8 bank = *(u8 *)reg;
+ 	u8 reg_addr = *(u8 *)(reg + 1);
+-	struct i2c_client *i2c = ddata->i2c[bank];
++	struct i2c_client *i2c;
+ 	bool crc_needed = false;
+ 	u8 *buf;
+ 	int buf_len = MT6360_ALLOC_READ_SIZE(val_size);
+@@ -410,6 +410,11 @@ static int mt6360_regmap_read(void *context, const void *reg, size_t reg_size,
+ 	u8 crc;
+ 	int ret;
+ 
++	if (bank >= MT6360_SLAVE_MAX)
++		return -EINVAL;
++
++	i2c = ddata->i2c[bank];
++
+ 	if (bank == MT6360_SLAVE_PMIC || bank == MT6360_SLAVE_LDO) {
+ 		crc_needed = true;
+ 		ret = mt6360_xlate_pmicldo_addr(&reg_addr, val_size);
+@@ -453,13 +458,18 @@ static int mt6360_regmap_write(void *context, const void *val, size_t val_size)
+ 	struct mt6360_ddata *ddata = context;
+ 	u8 bank = *(u8 *)val;
+ 	u8 reg_addr = *(u8 *)(val + 1);
+-	struct i2c_client *i2c = ddata->i2c[bank];
++	struct i2c_client *i2c;
+ 	bool crc_needed = false;
+ 	u8 *buf;
+ 	int buf_len = MT6360_ALLOC_WRITE_SIZE(val_size);
+ 	int write_size = val_size - MT6360_REGMAP_REG_BYTE_SIZE;
+ 	int ret;
+ 
++	if (bank >= MT6360_SLAVE_MAX)
++		return -EINVAL;
++
++	i2c = ddata->i2c[bank];
++
+ 	if (bank == MT6360_SLAVE_PMIC || bank == MT6360_SLAVE_LDO) {
+ 		crc_needed = true;
+ 		ret = mt6360_xlate_pmicldo_addr(&reg_addr, val_size - MT6360_REGMAP_REG_BYTE_SIZE);
+-- 
+2.7.4
 
 
