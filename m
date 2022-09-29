@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AFCBC04A95
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 04:25:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E21D0C07E9D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 04:37:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oRUKiGGp9HtYjOe4fyj+Bgjh8QBWVByT3GW/OPGOEZo=; b=v7angvSYREturPmghB1EAXiKss
-	PQWlZHOruxa1puJMJVmqqLlLOJ1dUmmq5lPLaaEmAZnw28vziEAW47sXWWpeW/SLxkeps3+GAwqWd
-	ik3plTRws439rxuaq+Pqs6Qmk8NzTu73XzDeBbst21V7cBFxtfnx3jQFNwYipDGnzgtAJD5jTGNST
-	HY9o5Lo56i/54jj/e/U9Uw1l4Tv0jHdmvwAJpk22a5PGSuor6P1S6MY7gh3oDtl+J9m0puwC9aQuW
-	AmDh1mNpBxXcYipO/xH2q5xc2r8THZrHxvG+kHZ+HkGU5oRUARMUigGzCUt90il9qmgZfMdvsIAWR
-	9BJa1dDA==;
+	bh=hCIr6ggWP7k5r3nMA/IQLk+9jq0v0zrFpIbWh0QT22o=; b=TU3D51+GTZ5V4o4AvYT++aL1XQ
+	QHmw2wkg1RaJ/ZBdHZP5vHQbsgby+Jj3X2BFuKefOpqn9GxBYhP8ZUoIXgLZE5t5ZO4LFaBcz12Sy
+	h38phMutG9d0kHqJ1xDJFbyFY4r8xMpNWzp9bvTAli15Zt36y9nX1oUn7t4GDn3+EfWh8J/k8+utd
+	7Lt69/h3DO8ZAc+cvEu3XbaW9DAcGRMTC+/NUvdBMF+rZ6x6sOyC2zv+B4Gkb2cG0LsdUIg4D5nR7
+	W7X527EHFk3pTJwZ96JIdT5FM72P+rumD5kn84243WRea2VeNK3UBFAbqcXVIvbbVrPwu+q8R5qfs
+	3VhzO5Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odl6N-0019E5-K8; Thu, 29 Sep 2022 04:24:47 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1odlIY-001BTz-K9; Thu, 29 Sep 2022 04:37:22 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odl6D-0019Ch-Fu
-	for linux-mediatek@lists.infradead.org; Thu, 29 Sep 2022 04:24:39 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id b2so298237eja.6
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Sep 2022 21:24:36 -0700 (PDT)
+	id 1odlIO-001BRX-0g
+	for linux-mediatek@lists.infradead.org; Thu, 29 Sep 2022 04:37:13 +0000
+Received: by mail-ej1-x634.google.com with SMTP id l14so326389eja.7
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 Sep 2022 21:37:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date;
-        bh=oRUKiGGp9HtYjOe4fyj+Bgjh8QBWVByT3GW/OPGOEZo=;
-        b=Bw1JDcGREbj17+/4/sFd+PMZLK8ZiDfPeKoHmvDF2GaNMMdXJbhvNsy9e1H9I4FsqD
-         j5ZgLciRrvE801bdE6lwdlE7mynvwEHe1hejvDWZnzJSrzhPJoJHfcOoSuAa4+Xdm6fI
-         XAsdKg884QdAoTERymBE0zqVpmYhYEb/hdQ7g=
+        bh=hCIr6ggWP7k5r3nMA/IQLk+9jq0v0zrFpIbWh0QT22o=;
+        b=TR9E4YYcWtROuWGCseBJ1Nn/qTofn8Gd6wa7GsL307BVMqtJP7MrZqakH3Ev6A1VuQ
+         6B8V4rsybpf7FKF9lu2f1fSGvfkjsIQJTRydxE4CA1gkhLx5AD+5w+GfffJ36QKRxDGU
+         lETxu5SOf2snTa+ovV89JdmA+sHU4titFehnY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=oRUKiGGp9HtYjOe4fyj+Bgjh8QBWVByT3GW/OPGOEZo=;
-        b=2vtHV19xigPlUjy2S+H/XRPfnt5lC/MDAyx6W4H/0Aigz8R7Bwt/3RNvLapEpO6Doi
-         rDZjA920Fgkoyah0zK3LuNlPu0XzK6JatywSIPmc6lTf2bPQmkjOZnJvxnG1oC2r/j9A
-         55KBoTYpsdz0uQAXuKlLKFyBA1SNHODUmZauGxrA9n58eRg+Hupf82fTFK9Te0jyw+t8
-         dTcxzlyNclAJiN2TdQrU71Xmcol9kfRZbeJTxRUElmdru8SYFctVKZiPNxzQFx9wRnI4
-         rLzip0kwiEWpsvCTaue6P34fhc/aVpsToe9wnOAkuBLx8YILHEeAS3wOQx8E/vYKYXQQ
-         7Zvg==
-X-Gm-Message-State: ACrzQf0cwj7yyA2p/xg7kaaJ0wIcBOASCY5FdhTCEsli+2YByEg6mAFk
-	Ni2fV+NZiAd90z1EPZBK0naVUm8uQ628dre5iu2mLw==
-X-Google-Smtp-Source: AMsMyM6sJ8kAe/ae+WP7oeH7EoX6gvjCULwT3auEOOBJwoosQADkdiNj98RPfn1cGz3sRpqDYTIWOq8vAE3QtzCNzVQ=
-X-Received: by 2002:a17:907:7f93:b0:781:dbee:dece with SMTP id
- qk19-20020a1709077f9300b00781dbeedecemr1006728ejc.323.1664425474991; Wed, 28
- Sep 2022 21:24:34 -0700 (PDT)
+        bh=hCIr6ggWP7k5r3nMA/IQLk+9jq0v0zrFpIbWh0QT22o=;
+        b=C2TKMMic16pZYITkwvijnVZvm0Vm4rc7ak+YcteFV4l5VLxgXaEx9XgEhaFdrKlQi5
+         RBqmbODptpDOfNVpCfSjvFe0UropZ2YhDcoz8GzGOEH4QW8cxno2ZyQkGpyPb+SzqCXm
+         AY0uIo9JeBbEzp56YiNqaZF8cscqJMT1NFJseKVka0HZRUMwuhDD97LZmIpkoHqqCKIL
+         p4QvrGVpoIswdn9dG9klI6dOOKslIuDSOdb0uT514oKAuPkTfFXTPWVXtEI06RVI3ZPs
+         p+h985HiGlW0XzEyQ8Fl/UXWT8VOTxxs5oje19vhhaB5bSIvUPeBOF5DZgY7QYmfDRQd
+         YkkA==
+X-Gm-Message-State: ACrzQf1PBNCUR5yGjWBTEkjXeEnagzUChGqOz7NTLzZDmt+sUiJI7XQQ
+	oeQ9IdoTrdqjHYvCTrnxd8XPL43NG6bYem0Mzznz0g==
+X-Google-Smtp-Source: AMsMyM42xVrO9Sdosyvdwfr6CiAqqADoCZ5aeLBLftNjRzyuLAYvUGMUJADYo2U+hcbm0qWMjh4oR+ebBSwFXSkk/9k=
+X-Received: by 2002:a17:906:8455:b0:773:c45b:d970 with SMTP id
+ e21-20020a170906845500b00773c45bd970mr1070628ejy.46.1664426229162; Wed, 28
+ Sep 2022 21:37:09 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
+References: <20220926102523.2367530-1-wenst@chromium.org>
+In-Reply-To: <20220926102523.2367530-1-wenst@chromium.org>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 29 Sep 2022 12:24:23 +0800
-Message-ID: <CAGXv+5Gwy-FTUTsE0HwzUvfHPJ4XOfiZrBcK9ToZ2S0PHHnHAA@mail.gmail.com>
-Subject: Re: [PATCH v3 00/10] MediaTek SoC safe clock muxing and GPU clocks
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, matthias.bgg@gmail.com
-Cc: mturquette@baylibre.com, sboyd@kernel.org, miles.chen@mediatek.com, 
-	rex-bc.chen@mediatek.com, nfraprado@collabora.com, chun-jie.chen@mediatek.com, 
-	jose.exposito89@gmail.com, drinkcat@chromium.org, weiyi.lu@mediatek.com, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-clk@vger.kernel.org, robh+dt@kernel.org, 
-	krzysztof.kozlowski+dt@linaro.org
+Date: Thu, 29 Sep 2022 12:36:57 +0800
+Message-ID: <CAGXv+5GC28RHAj=PQyUFyZGwEOuoa3TnT3RxUEmP3SMvYCVEuw@mail.gmail.com>
+Subject: Re: [PATCH 0/6] clk: mediatek: More cleanups
+To: Stephen Boyd <sboyd@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Miles Chen <miles.chen@mediatek.com>, linux-clk@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_212437_534576_C7156E56 
-X-CRM114-Status: GOOD (  17.32  )
+X-CRM114-CacheID: sfid-20220928_213712_067092_BA7D211B 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,61 +83,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 27, 2022 at 6:11 PM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Mon, Sep 26, 2022 at 6:25 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
 >
-> This series adds a clock notifier for MediaTek clock muxes, required
-> in order to achieve stability for GPU DVFS.
+> Here's some more cleanups for the MedaiTek clk drivers.
 >
-> The GPU frequency scaling mechanism requires us to switch the GPU
-> mux clock to a safe parent which frequency is always less or equal
-> to the "current" GPU frequency before reprogramming its dedicated
-> "MFG" PLL.
-> This is needed because the PLL needs time to reconfigure for its
-> output to stabilize (so, for the PLL to lock again): failing to do
-> so will lead to instabilities such as glitches, GPU lockups and/or
-> full system lockups.
+> Patches 1 and 2 fixes and cleans up some parts that were missed in the
+> previous clk_hw conversion series.
 >
-> While at it, reparenting of some GPU clocks was also performed, as
-> the clock tree was slightly incorrect.
+> Patch 3 drops the duplicate registration of the top_early_divs clks for
+> MT8192. Currently this only contains a fixed divider.
 >
-> This series was tested, along with mtk-regulator-coupler [1], on
-> Chromebooks with different SoCs (MT8183, MT8192, MT8195*), resulting
-> in fully working GPU DVFS with the Panfrost driver.
+> Patch 4 prevents having a duplicate OF clk provider for the topckgen
+> controller, but removing the previously registered instance.
 >
-> [1]: https://patchwork.kernel.org/project/linux-mediatek/patch/20220628120224.81180-1-angelogioacchino.delregno@collabora.com/
+> Patch 5 deduplicates the parent clock lists for MT8192.
 >
-> * MT8195 does not require mtk-regulator-coupler. This series, along
->   with [1], are required to perform GPU DVFS also on non-Chromebook SoCs.
+> Patch 6 adds proper error handling to the clock probe functions for
+> MT8192.
 >
-> Changes in v3:
->  - Clarified commit description in patch [05/10]
 >
-> Changes in v2:
->  - Added comment in clk-mt8195-topckgen to keep the mfg parents
->    documented after removal, as suggested by Chen-Yu
+> Please have a look.
 >
-> AngeloGioacchino Del Regno (6):
->   clk: mediatek: clk-mt8195-mfg: Reparent mfg_bg3d and propagate rate
->     changes
->   clk: mediatek: clk-mt8195-topckgen: Register mfg_ck_fast_ref as
->     generic mux
->   clk: mediatek: clk-mt8195-topckgen: Add GPU clock mux notifier
->   clk: mediatek: clk-mt8195-topckgen: Drop univplls from mfg mux parents
->   clk: mediatek: clk-mt8192-mfg: Propagate rate changes to parent
->   clk: mediatek: clk-mt8192: Add clock mux notifier for mfg_pll_sel
 >
-> Chen-Yu Tsai (4):
->   arm64: dts: mt8183: Fix Mali GPU clock
->   clk: mediatek: mt8183: mfgcfg: Propagate rate changes to parent
->   clk: mediatek: mux: add clk notifier functions
->   clk: mediatek: mt8183: Add clk mux notifier for MFG mux
+> Thanks
+> ChenYu
+>
+>
+> Chen-Yu Tsai (6):
+>   clk: mediatek: fix unregister function in mtk_clk_register_dividers
+>     cleanup
+>   clk: mediatek: Migrate remaining clk_unregister_*() to
+>     clk_hw_unregister_*()
+>   clk: mediatek: mt8192: Do not re-register top_early_divs in probe
+>     function
+>   clk: mediatek: mt8192: Avoid duplicate OF clk provider for topckgen
+>   clk: mediatek: mt8192: deduplicate parent clock lists
+>   clk: mediatek: mt8192: Implement error handling in probe functions
 
-
-I've queued all the clk patches up here [1] and will send a pull request
+I've queued patches 1, 2 and 5 up here [1] and will send a pull request
 to the clock maintainer later this week.
 
-The dts patch needs to go through the soc tree.
+The remaining three are related and still under discussion.
+
 
 ChenYu
 
