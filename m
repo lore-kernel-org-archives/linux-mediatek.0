@@ -4,77 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE6ECC04A95
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 01:49:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1464BC04A95
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 01:56:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3cDQVA9bjdmMpcOqCndMC32qsr5AQsK3J0savjTAlgE=; b=IXYNlztPftfeE+nRanjZZr2w40
-	WvSMDqU1gldZWBx/Rrnk9j5UEeHOGlTbTKqhZAGX4bPjzEQN1i+8GJCOSAd91+hVOTWq6/qSMXaWE
-	jEHcKOhzKrNHASG63+ljswcOwMZZP5w7CP1qCWgBeJiEjuMMyn5myMejl1jvHUTihNRU3U6V2xASv
-	Fhdx+OSJkWT+IE5wF5X8wgvC/7D9zIjwmyjl8xtc05j++iH6mFtXBkmU3oRn/uI+bqTYO2JCOoRP7
-	TB9sXT6puwqVdF6OWD4x60Mxt4pB7Dk4GwUhf/AP8cQu3iEcScqc/SCvK8TdHocVurQalmd6iN2q4
-	KcsTyNKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KLeXZkzgR5Ay7eOUvGeW+A2UOiV7iAhJfQA6fiC/fas=; b=AUiyH2seJSOQk9ZFfr8NstdZrv
+	2TRbz09pl3f2mjIB4+c2fPRNZRjOX7zie/P3GHxIVGF/6IEO8Uowb+LssDEvxrb8iO4htD5FF4sQb
+	M0Q0KabVDiqAjl+vqRd4oU2JhaC9n+leJVObK5MD35oLlW/hO3hEwFdEiHVUm+B5pUTC2UC1mjRQ0
+	/uHvGKIXoLADHli89dqFgSHKPMHdd2njeAtTuFIbaT5TsoTuVt+m/sA/P/MkNYko1zQy7QkJRw0cC
+	oXSEpVT24r5K10yf/9fhk3Ou9A2uAt6rju4Ai2TZlD5YPxmXX9iuDR4OY22pDcmLEoK/743s2HmOz
+	1oAVyf7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odifc-000tkB-KL; Thu, 29 Sep 2022 01:49:00 +0000
+	id 1odimJ-000uit-OR; Thu, 29 Sep 2022 01:55:55 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odifQ-000thT-Vz; Thu, 29 Sep 2022 01:48:50 +0000
-X-UUID: 94c9bfdab00640bfa3421cb7973e2cea-20220928
+	id 1odim8-000ugy-Ud; Thu, 29 Sep 2022 01:55:46 +0000
+X-UUID: de4fdf0f4cc4485e877d133ebf335407-20220928
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3cDQVA9bjdmMpcOqCndMC32qsr5AQsK3J0savjTAlgE=;
-	b=t4SI9KobMKW6B0QzCuzUYHOjzE+LaPmqVLEaBCd5YFVfd76+rZ7lR/eEWOl5SCeEEUmsGY6kcbnw6tNg2yCADBnmTLieHorm6s4ENu8M7GSfLIPEQ5Ba/4DxNfc6H3i7zutkFxuUgTBa/iUv3+hsRQlnMSRa6aXfTRveicr9TsU=;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=KLeXZkzgR5Ay7eOUvGeW+A2UOiV7iAhJfQA6fiC/fas=;
+	b=SHqr0Cunqo5xnMTy2hauXSokoFUcURgPaoM913LTUazCm4o97CKrIJLs3234Cul2LSmmJ/gEA5I7WKKbQA3LlwcufLD31RAv+LAo/QcNTGsHUzbkbAMkwYs59K8SdTIn5BqKcgITpoD3m7TfNWuo3nXw/spYZdWgqpqebgLVVvE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:77a18e29-e8b4-44c5-b621-a4031fb683a4,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:bf985e07-1cee-4c38-b21b-a45f9682fdc0,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:c9036338-191e-43d9-8734-e13f86bf0fa2,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:39a5ff1,CLOUDID:44df5e07-1cee-4c38-b21b-a45f9682fdc0,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 94c9bfdab00640bfa3421cb7973e2cea-20220928
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <jianguo.zhang@mediatek.com>)
+	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: de4fdf0f4cc4485e877d133ebf335407-20220928
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 959159856; Wed, 28 Sep 2022 18:48:42 -0700
+	with ESMTP id 153283290; Wed, 28 Sep 2022 18:55:37 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 29 Sep 2022 09:48:04 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ 15.2.792.15; Thu, 29 Sep 2022 09:54:58 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Thu, 29 Sep 2022 09:48:03 +0800
-From: Jianguo Zhang <jianguo.zhang@mediatek.com>
-To: "David S . Miller" <davem@davemloft.net>, Rob Herring
-	<robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
-	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
-	<netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Jianguo Zhang <jianguo.zhang@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v7 1/4] dt-bindings: net: mediatek-dwmac: add support for mt8188
-Date: Thu, 29 Sep 2022 09:47:55 +0800
-Message-ID: <20220929014758.12099-2-jianguo.zhang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220929014758.12099-1-jianguo.zhang@mediatek.com>
-References: <20220929014758.12099-1-jianguo.zhang@mediatek.com>
+ Transport; Thu, 29 Sep 2022 09:54:57 +0800
+Message-ID: <7d8fb7ea78ae2a850d26bba7b08f621b8494df5e.camel@mediatek.com>
+Subject: Re: [PATCH] media: mediatek: vcodec: Skip unsupported h264 encoder
+ profile
+From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
+To: Allen-KH Cheng =?UTF-8?Q?=28=E7=A8=8B=E5=86=A0=E5=8B=B3=29?=
+	<Allen-KH.Cheng@mediatek.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>,
+	Tiffany Lin =?UTF-8?Q?=28=E6=9E=97=E6=85=A7=E7=8F=8A=29?=
+	<tiffany.lin@mediatek.com>, "mchehab@kernel.org" <mchehab@kernel.org>,
+	"nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>, Irui Wang
+ =?UTF-8?Q?=28=E7=8E=8B=E7=91=9E=29?= <Irui.Wang@mediatek.com>,
+	"hsinyi@chromium.org" <hsinyi@chromium.org>, "hverkuil-cisco@xs4all.nl"
+	<hverkuil-cisco@xs4all.nl>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "acourbot@chromium.org"
+	<acourbot@chromium.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	Longfei Wang =?UTF-8?Q?=28=E7=8E=8B=E9=BE=99=E9=A3=9E=29?=
+	<Longfei.Wang@mediatek.com>, "linux-media@vger.kernel.org"
+	<linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, Maoguang Meng
+ =?UTF-8?Q?=28=E5=AD=9F=E6=AF=9B=E5=B9=BF=29?= <Maoguang.Meng@mediatek.com>,
+	Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Date: Thu, 29 Sep 2022 09:54:56 +0800
+In-Reply-To: <e8bb661ec83129a1c660e876cb4fe9aaad41adfd.camel@mediatek.com>
+References: <20220926093501.26466-1-irui.wang@mediatek.com>
+	 <e8bb661ec83129a1c660e876cb4fe9aaad41adfd.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_184849_038238_4BC849C1 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20220928_185545_001507_E3728912 
+X-CRM114-Status: GOOD (  16.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,58 +98,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding document for the ethernet on mt8188
+Hi Irui,
 
-Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- .../devicetree/bindings/net/mediatek-dwmac.yaml        | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+Reviewed-by: Yunfei Dong <yunfei.dong@mediatek.com>
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-index 61b2fb9e141b..0fa2132fa4f4 100644
---- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-@@ -19,6 +19,7 @@ select:
-       contains:
-         enum:
-           - mediatek,mt2712-gmac
-+          - mediatek,mt8188-gmac
-           - mediatek,mt8195-gmac
-   required:
-     - compatible
-@@ -37,6 +38,11 @@ properties:
-           - enum:
-               - mediatek,mt8195-gmac
-           - const: snps,dwmac-5.10a
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-gmac
-+          - const: mediatek,mt8195-gmac
-+          - const: snps,dwmac-5.10a
- 
-   clocks:
-     minItems: 5
-@@ -74,7 +80,7 @@ properties:
-       or will round down. Range 0~31*170.
-       For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
-       or will round down. Range 0~31*550.
--      For MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
-+      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
-       or will round down. Range 0~31*290.
- 
-   mediatek,rx-delay-ps:
-@@ -84,7 +90,7 @@ properties:
-       or will round down. Range 0~31*170.
-       For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
-       or will round down. Range 0~31*550.
--      For MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple
-+      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple
-       of 290, or will round down. Range 0~31*290.
- 
-   mediatek,rmii-rxc:
--- 
-2.25.1
+Thanks
+Yunfei Dong
+
+On Wed, 2022-09-28 at 21:38 +0800, Allen-KH Cheng (程冠勳) wrote:
+> Hi Irui,
+> 
+> Tested-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> 
+> Tested for CTS cases on the mt8186 corsola board.
+> 
+> Thanks,
+> Allen
+> 
+> On Mon, 2022-09-26 at 17:35 +0800, Irui Wang wrote:
+> > The encoder driver support h264 baseline, main, high encoder
+> > profile, set mask for V4L2_CID_MPEG_VIDEO_H264_PROFILE to skip
+> > the unsupported profile.
+> > 
+> > get supported h264_profile by command: v4l2-ctl -d /dev/videoX -L
+> > h264_profile 0x00990a6b (menu) : min=0 max=4 default=4 value=4
+> >         0: Baseline
+> >         2: Main
+> >         4: High
+> > 
+> > Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> > ---
+> >  drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c | 5 ++++-
+> >  1 file changed, 4 insertions(+), 1 deletion(-)
+> > 
+> > diff --git
+> > a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+> > b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+> > index d810a78dde51..d65800a3b89d 100644
+> > --- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+> > +++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc.c
+> > @@ -1397,7 +1397,10 @@ int mtk_vcodec_enc_ctrls_setup(struct
+> > mtk_vcodec_ctx *ctx)
+> >  			0, V4L2_MPEG_VIDEO_HEADER_MODE_SEPARATE);
+> >  	v4l2_ctrl_new_std_menu(handler, ops,
+> > V4L2_CID_MPEG_VIDEO_H264_PROFILE,
+> >  			V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
+> > -			0, V4L2_MPEG_VIDEO_H264_PROFILE_HIGH);
+> > +			~((1 << V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE)
+> > > 
+> > 
+> > +			  (1 << V4L2_MPEG_VIDEO_H264_PROFILE_MAIN) |
+> > +			  (1 << V4L2_MPEG_VIDEO_H264_PROFILE_HIGH)),
+> > +			V4L2_MPEG_VIDEO_H264_PROFILE_HIGH);
+> >  	v4l2_ctrl_new_std_menu(handler, ops,
+> > V4L2_CID_MPEG_VIDEO_H264_LEVEL,
+> >  			       h264_max_level,
+> >  			       0, V4L2_MPEG_VIDEO_H264_LEVEL_4_0);
 
 
