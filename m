@@ -4,67 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86D0FC54EE9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 02:20:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C086BC32771
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 02:37:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ROxuqkmx8PIyBQOLfufjrrKYgkndbdTkb7K6HQimQWk=; b=OO0GrhyS7YmE/3piL+4j+uPqL6
-	Jrnh7z4jixg2gNJLX4zM8TQnHqAHWFBZAzqwQIeVmXlOxYivCZ6z6G51VX3UR78A8c9qyzPgcUInD
-	rN0MoQTaJ2R4Ag4nHbYo8V7vTwHj7/p8Sx+CCuz2UenewVyVhHgLGFcofU87jcHJU1wopOnvwjKea
-	cSo7DfAfSYI1v12NuS84qFkQqeXfgoJeHw6B7+w44bSnEyr1S5jkwv/SbB5CBJrWM5gAc8B5iFNKC
-	lkFRJ7F3SEG1TcFOJzUmO/h0+DLqyUozKLuy4bZDqt4p8YnVRiXMRrbJzlSWsTgiLiy7Ky9sb+RNu
-	afcQM9kw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4Yqi1PR1F+H7CbNdinXrKWDdXM9FYRnjqwxQMKG5gNc=; b=tNTeeLH8qroXWJNZlGDN4RYTAq
+	JlaT6SduIDyTrIIYqLuN3LwHN1Q20B/MZXAu1qeLeJjeaLV2+vLhlJxh39Ch7g5dlRRJpiwxIIiyK
+	Ow/KwqBXWh3EJebElP4HHfvKrrDQX19vknXnZIxJusPHfFU+OxGLJITxR1YhOEHj6UIWqNdAMBW/Q
+	+wTUdJSMdVyyYtsJvBrgwwrVQYMOLlPN1DuO0XqF+JKAN1yUbho6bpDJaeMUH8FuloKrYgkWfPZ5X
+	8FdnZGK2I80+HLnEuStc7nWvEyjW9fi55hRhzVr8jQs4Qhm16e4Rd79BAC0XdepB7G43xNcC9zRuA
+	09gl6ZGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odjA1-000xtC-Fk; Thu, 29 Sep 2022 02:20:25 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1odjQm-000zgO-6a; Thu, 29 Sep 2022 02:37:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odj9y-000xrY-9j
-	for linux-mediatek@lists.infradead.org; Thu, 29 Sep 2022 02:20:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id BC09E61D0E;
-	Thu, 29 Sep 2022 02:20:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 910BCC43470;
-	Thu, 29 Sep 2022 02:20:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664418017;
-	bh=iOpHJ2QENss2jRAqS8WGZFmX39Qc0OWU2wFiM/Sj+60=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=UnldsmSlUqdJIXSeWKCyldFI7KN67H+NHlT0QobrY1hLjNzd7mAaAYbNBeNVKEVmm
-	 xShgrvnQs6/dRXUjws0GYJYftp8FKfab1GP+ElS3RZ4mZ2KB0lfA36PFGKDk1+lud3
-	 0JHvq5lX7KDQQYNhRmXRBD15tbEuhZo5yf6QH/0jN45pLVQthCR2hG6aE/DRlsgkhs
-	 X8/e7jST5K8lhti/nA5YoW28hhQd9bCV9UBoywbyk2VJYkh5uCeuvC6ELGCk+35l2N
-	 EbW1ib46luMiDWqyKcJqnNrtIY7y2FEn/WFaxd2b361Jt8FXII9BNLChNquQIP26T7
-	 DN4CYSUkOKOAA==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 71F99C395DA;
-	Thu, 29 Sep 2022 02:20:17 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1odjQj-000zfI-Ec; Thu, 29 Sep 2022 02:37:42 +0000
+X-UUID: 558e82be152a4328b285ef35fa59896e-20220928
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4Yqi1PR1F+H7CbNdinXrKWDdXM9FYRnjqwxQMKG5gNc=;
+	b=Kn+3/MQQ1V1dE3oDJjkB5/2TJoehdzJM4IInmurTmgVBWlQxWLwpPMc2A8kYuDr0mfZcixFkb/q9uQR+oNF9IeO7k5NNW4NAT11zvdKPSKLMICsyEppE9sQJTQinX84rZg9hIGu61UIOfhxfiHffhTAqmx8JH358M/3Bonw/wnI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:61176bab-a1ca-4c21-80f0-8371574ef06f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:ca666007-1cee-4c38-b21b-a45f9682fdc0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 558e82be152a4328b285ef35fa59896e-20220928
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jianguo.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 246525864; Wed, 28 Sep 2022 19:29:12 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Thu, 29 Sep 2022 09:48:07 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 29 Sep 2022 09:48:06 +0800
+From: Jianguo Zhang <jianguo.zhang@mediatek.com>
+To: "David S . Miller" <davem@davemloft.net>, Rob Herring
+	<robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+	<joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, Biao Huang
+	<biao.huang@mediatek.com>, <netdev@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Jianguo Zhang <jianguo.zhang@mediatek.com>
+Subject: [PATCH v7 3/4] arm64: dts: mediatek: mt2712e: Update the name of property 'clk_csr'
+Date: Thu, 29 Sep 2022 09:47:57 +0800
+Message-ID: <20220929014758.12099-4-jianguo.zhang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220929014758.12099-1-jianguo.zhang@mediatek.com>
+References: <20220929014758.12099-1-jianguo.zhang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] net: ethernet: mtk_eth_soc: fix mask of
- RX_DMA_GET_SPORT{,_V2}
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <166441801746.18961.5553365683455368502.git-patchwork-notify@kernel.org>
-Date: Thu, 29 Sep 2022 02:20:17 +0000
-References: <YzMW+mg9UsaCdKRQ@makrotopia.org>
-In-Reply-To: <YzMW+mg9UsaCdKRQ@makrotopia.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- lorenzo@kernel.org, sujuan.chen@mediatek.com, Bo.Jiao@mediatek.com,
- nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com, ptpt52@gmail.com
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_192022_416259_56B8FCD7 
-X-CRM114-Status: UNSURE (   9.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220928_193741_517786_09B327AB 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,30 +89,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Update the name of property 'clk_csr' as 'snps,clk-csr' to align with
+the property name in the binding file.
 
-This patch was applied to netdev/net.git (master)
-by Jakub Kicinski <kuba@kernel.org>:
+Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Tue, 27 Sep 2022 16:30:02 +0100 you wrote:
-> The bitmasks applied in RX_DMA_GET_SPORT and RX_DMA_GET_SPORT_V2 macros
-> were swapped. Fix that.
-> 
-> Reported-by: Chen Minqiang <ptpt52@gmail.com>
-> Fixes: 160d3a9b192985 ("net: ethernet: mtk_eth_soc: introduce MTK_NETSYS_V2 support")
-> Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> 
-> [...]
-
-Here is the summary with links:
-  - net: ethernet: mtk_eth_soc: fix mask of RX_DMA_GET_SPORT{,_V2}
-    https://git.kernel.org/netdev/net/c/c9da02bfb111
-
-You are awesome, thank you!
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+index 4797537cb368..e6d7453e56e0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+@@ -756,7 +756,7 @@ eth: ethernet@1101c000 {
+ 		snps,mtl-tx-config = <&mtl_tx_setup>;
+ 		snps,txpbl = <1>;
+ 		snps,rxpbl = <1>;
+-		clk_csr = <0>;
++		snps,clk-csr = <0>;
+ 		status = "disabled";
+ 	};
+ 
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.25.1
 
 
