@@ -4,89 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D08BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 15:27:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CC67C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Sep 2022 15:32:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=v+RhYWAjVDxLjgJhJPeQfqrLxvBr6SeeBPfATnoOgAk=; b=q+pU9ftdobtU5pbhHewdoLv9rr
-	UlMyJv9XoaAKHxz0EkVsAjWdnVu6pzdC8RKdquunzJupbte5nxb1kqvtM/NoorOl8oXbkcUyBCPwd
-	vWrMv/2cI9C0V8ZXgCXpaxSNoR+TnbfFcspI9arf9fRVOl4dsqBxLVKWHQxu9b4+CUvFQiR3YWd+B
-	5gx/mzgDF+krXUswpi6gm4KlTq0I8+ml4vt/GHrfrtdLBod5y/1+fdgRRvHNH1Dj/tSBJ5xpoeTNz
-	/WR1JY/sAonJ4OM0MMAl6ud6qjUFdhpk07LiKzitBeZaZ3Xa5sFysir2tQb3l5b7TOPMouPCbisv7
-	5ySTiWQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vN9B6R2lonPA9JS7ZvIotAGVWtxQa5ASwO9kPF56ZbI=; b=NjwnSm9U3w8Hng2CLMMrJX9CRU
+	o8+k+09M0G3tDv41almIc4wk4nqMsw+0iPv0BD12og+GniHZuXeHCVh+cGjJwxfjVSbALbSypWdWW
+	nftdTcf9sDE0CeS4/hRn4C9FRoi/xYFCZ+0XQFZ0fPWF7Ad1x4XJGfayDrf8BN+2qqFruWAWBCPtN
+	pVAcDjT/0Q2C+uDS3ezFFGX6GzuHNPWHfYBGO/Z2ELKUVtJUZjAXf4VDu9a+iH6KX5WeiTAowvNMB
+	M76/8mg+8CAi7GPOZzAzVHAYQnV9PGBp1BMLG03/aFc2WJdojUmOfqUIGpKmvYIhusIsqshL1Pcjj
+	SmT8t5eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odvRO-003rW6-Hv; Thu, 29 Sep 2022 15:27:10 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1odvWH-003sgS-Qi; Thu, 29 Sep 2022 15:32:13 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odvRC-003qis-VQ; Thu, 29 Sep 2022 15:27:01 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id A2C4A18848E5;
-	Thu, 29 Sep 2022 15:24:50 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 97A542500370;
-	Thu, 29 Sep 2022 15:24:50 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 894CA9EC0005; Thu, 29 Sep 2022 15:24:50 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
-Received: from fujitsu.vestervang (2-104-116-184-cable.dk.customer.tdc.net [2.104.116.184])
-	by smtp.gigahost.dk (Postfix) with ESMTPSA id 875B69120FED;
-	Thu, 29 Sep 2022 15:24:49 +0000 (UTC)
-From: Hans Schultz <netdev@kapio-technology.com>
-To: davem@davemloft.net,
-	kuba@kernel.org
-Cc: netdev@vger.kernel.org,
-	Hans Schultz <netdev@kapio-technology.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Kurt Kanzenbach <kurt@linutronix.de>,
-	Hauke Mehrtens <hauke@hauke-m.de>,
-	Woojung Huh <woojung.huh@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
+	id 1odvW6-003sd2-M8; Thu, 29 Sep 2022 15:32:03 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 31AD361950;
+	Thu, 29 Sep 2022 15:32:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA6FEC433C1;
+	Thu, 29 Sep 2022 15:32:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1664465521;
+	bh=atja4xkXu+uR+lUBfnZv2ZFe2oiFXJBckvWkbvvGdiM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bjknexfIwz9R9IwpMjTpPtg2HUEN2U4sf2JRVvV/cSckiyxHYUXlv0reJpi/Jn4L1
+	 HCR730m3yXNu5qYsZeia7arZw9+KQbizyoLds/mTE8fpXPIN4WebBrHaIVH+x9yanU
+	 Zev/t9Xrg7jbqqNMLig6dMiZJfuOX4NDVpmRmQ3TaSU67CIxTQo4FHfByhaSrFiDy2
+	 7MgsFoCVEjWk7teyzRjCrbibDV/dEl2hEokDaQCbUdEaaRTZdPybmvMs5EhEwzyv1w
+	 Z67/0wYv+2itqT2qM2D6ZwAogCjPjqqnwi4uWBX3aFG/OSJNWSPRWS3jBz/JyRFz0E
+	 ZDnKqMZLyFIEg==
+Date: Thu, 29 Sep 2022 21:01:56 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Colin Ian King <colin.i.king@gmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Kishon Vijay Abraham I <kishon@ti.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
-	Shuah Khan <shuah@kernel.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	Yuwei Wang <wangyuweihx@gmail.com>,
-	Petr Machata <petrm@nvidia.com>,
-	Ido Schimmel <idosch@nvidia.com>,
-	Florent Fourcot <florent.fourcot@wifirst.fr>,
-	Hans Schultz <schultz.hans@gmail.com>,
-	Joachim Wiberg <troglobit@gmail.com>,
-	Amit Cohen <amcohen@nvidia.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	bridge@lists.linux-foundation.org,
-	linux-kselftest@vger.kernel.org
-Subject: [PATCH iproute2-next 1/2] bridge: link: enable MacAuth/MAB feature
-Date: Thu, 29 Sep 2022 17:21:36 +0200
-Message-Id: <20220929152137.167626-1-netdev@kapio-technology.com>
-X-Mailer: git-send-email 2.34.1
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+	kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] phy: phy-mtk-dp: make array driving_params static const
+Message-ID: <YzW6bABCoDzTaIBD@matsya>
+References: <20220929130147.97375-1-colin.i.king@gmail.com>
 MIME-Version: 1.0
-Organization: Westermo Network Technologies AB
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220929130147.97375-1-colin.i.king@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220929_082659_357456_F0D99F79 
-X-CRM114-Status: GOOD (  26.73  )
+X-CRM114-CacheID: sfid-20220929_083202_776746_E4275A41 
+X-CRM114-Status: UNSURE (   6.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,283 +77,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MAB feature can be enabled on a locked port with the command:
-bridge link set dev <DEV> mab on
+On 29-09-22, 14:01, Colin Ian King wrote:
+> Don't populate the read-only array driving_params on the stack but instead
+> make it static const. Also makes the object code a little smaller.
 
-Signed-off-by: Hans Schultz <netdev@kapio-technology.com>
----
- bridge/fdb.c                   | 17 +++++++++++++++--
- bridge/link.c                  | 21 ++++++++++++++++++---
- include/uapi/linux/if_link.h   |  1 +
- include/uapi/linux/neighbour.h |  7 ++++++-
- ip/iplink_bridge_slave.c       | 16 +++++++++++++---
- man/man8/bridge.8              | 10 ++++++++++
- man/man8/ip-link.8.in          |  8 ++++++++
- 7 files changed, 71 insertions(+), 9 deletions(-)
+Applied, thanks
 
-diff --git a/bridge/fdb.c b/bridge/fdb.c
-index 5f71bde0..0fbe9bd3 100644
---- a/bridge/fdb.c
-+++ b/bridge/fdb.c
-@@ -93,7 +93,7 @@ static int state_a2n(unsigned int *s, const char *arg)
- 	return 0;
- }
- 
--static void fdb_print_flags(FILE *fp, unsigned int flags)
-+static void fdb_print_flags(FILE *fp, unsigned int flags, __u8 ext_flags)
- {
- 	open_json_array(PRINT_JSON,
- 			is_json_context() ?  "flags" : "");
-@@ -116,6 +116,9 @@ static void fdb_print_flags(FILE *fp, unsigned int flags)
- 	if (flags & NTF_STICKY)
- 		print_string(PRINT_ANY, NULL, "%s ", "sticky");
- 
-+	if (ext_flags & NTF_EXT_LOCKED)
-+		print_string(PRINT_ANY, NULL, "%s ", "locked");
-+
- 	close_json_array(PRINT_JSON, NULL);
- }
- 
-@@ -144,6 +147,7 @@ int print_fdb(struct nlmsghdr *n, void *arg)
- 	struct ndmsg *r = NLMSG_DATA(n);
- 	int len = n->nlmsg_len;
- 	struct rtattr *tb[NDA_MAX+1];
-+	__u32 ext_flags = 0;
- 	__u16 vid = 0;
- 
- 	if (n->nlmsg_type != RTM_NEWNEIGH && n->nlmsg_type != RTM_DELNEIGH) {
-@@ -170,6 +174,9 @@ int print_fdb(struct nlmsghdr *n, void *arg)
- 	parse_rtattr(tb, NDA_MAX, NDA_RTA(r),
- 		     n->nlmsg_len - NLMSG_LENGTH(sizeof(*r)));
- 
-+	if (tb[NDA_FLAGS_EXT])
-+		ext_flags = rta_getattr_u32(tb[NDA_FLAGS_EXT]);
-+
- 	if (tb[NDA_VLAN])
- 		vid = rta_getattr_u16(tb[NDA_VLAN]);
- 
-@@ -266,7 +273,7 @@ int print_fdb(struct nlmsghdr *n, void *arg)
- 	if (show_stats && tb[NDA_CACHEINFO])
- 		fdb_print_stats(fp, RTA_DATA(tb[NDA_CACHEINFO]));
- 
--	fdb_print_flags(fp, r->ndm_flags);
-+	fdb_print_flags(fp, r->ndm_flags, ext_flags);
- 
- 
- 	if (tb[NDA_MASTER])
-@@ -414,6 +421,7 @@ static int fdb_modify(int cmd, int flags, int argc, char **argv)
- 	char *endptr;
- 	short vid = -1;
- 	__u32 nhid = 0;
-+	__u32 ext_flags = 0;
- 
- 	while (argc > 0) {
- 		if (strcmp(*argv, "dev") == 0) {
-@@ -527,6 +535,11 @@ static int fdb_modify(int cmd, int flags, int argc, char **argv)
- 	if (dst_ok)
- 		addattr_l(&req.n, sizeof(req), NDA_DST, &dst.data, dst.bytelen);
- 
-+	if (ext_flags &&
-+	    addattr_l(&req.n, sizeof(req), NDA_FLAGS_EXT, &ext_flags,
-+		      sizeof(ext_flags)) < 0)
-+		return -1;
-+
- 	if (vid >= 0)
- 		addattr16(&req.n, sizeof(req), NDA_VLAN, vid);
- 	if (nhid > 0)
-diff --git a/bridge/link.c b/bridge/link.c
-index 3810fa04..dd69d7c3 100644
---- a/bridge/link.c
-+++ b/bridge/link.c
-@@ -181,9 +181,14 @@ static void print_protinfo(FILE *fp, struct rtattr *attr)
- 		if (prtb[IFLA_BRPORT_ISOLATED])
- 			print_on_off(PRINT_ANY, "isolated", "isolated %s ",
- 				     rta_getattr_u8(prtb[IFLA_BRPORT_ISOLATED]));
--		if (prtb[IFLA_BRPORT_LOCKED])
--			print_on_off(PRINT_ANY, "locked", "locked %s ",
--				     rta_getattr_u8(prtb[IFLA_BRPORT_LOCKED]));
-+		if (prtb[IFLA_BRPORT_LOCKED]) {
-+			if (prtb[IFLA_BRPORT_MAB] && rta_getattr_u8(prtb[IFLA_BRPORT_MAB]))
-+				print_on_off(PRINT_ANY, "locked mab", "locked mab %s ",
-+					     rta_getattr_u8(prtb[IFLA_BRPORT_LOCKED]));
-+			else
-+				print_on_off(PRINT_ANY, "locked", "locked %s ",
-+					     rta_getattr_u8(prtb[IFLA_BRPORT_LOCKED]));
-+		}
- 	} else
- 		print_stp_state(rta_getattr_u8(attr));
- }
-@@ -281,6 +286,7 @@ static void usage(void)
- 		"                               [ vlan_tunnel {on | off} ]\n"
- 		"                               [ isolated {on | off} ]\n"
- 		"                               [ locked {on | off} ]\n"
-+		"                               [ mab {on | off} ]\n"
- 		"                               [ hwmode {vepa | veb} ]\n"
- 		"                               [ backup_port DEVICE ] [ nobackup_port ]\n"
- 		"                               [ self ] [ master ]\n"
-@@ -312,6 +318,7 @@ static int brlink_modify(int argc, char **argv)
- 	__s8 bcast_flood = -1;
- 	__s8 mcast_to_unicast = -1;
- 	__s8 locked = -1;
-+	__s8 macauth = -1;
- 	__s8 isolated = -1;
- 	__s8 hairpin = -1;
- 	__s8 bpdu_guard = -1;
-@@ -437,6 +444,11 @@ static int brlink_modify(int argc, char **argv)
- 			locked = parse_on_off("locked", *argv, &ret);
- 			if (ret)
- 				return ret;
-+		} else if (strcmp(*argv, "mab") == 0) {
-+			NEXT_ARG();
-+			macauth = parse_on_off("mab", *argv, &ret);
-+			if (ret)
-+				return ret;
- 		} else if (strcmp(*argv, "backup_port") == 0) {
- 			NEXT_ARG();
- 			backup_port_idx = ll_name_to_index(*argv);
-@@ -520,6 +532,9 @@ static int brlink_modify(int argc, char **argv)
- 	if (locked >= 0)
- 		addattr8(&req.n, sizeof(req), IFLA_BRPORT_LOCKED, locked);
- 
-+	if (macauth >= 0)
-+		addattr8(&req.n, sizeof(req), IFLA_BRPORT_MAB, macauth);
-+
- 	if (backup_port_idx != -1)
- 		addattr32(&req.n, sizeof(req), IFLA_BRPORT_BACKUP_PORT,
- 			  backup_port_idx);
-diff --git a/include/uapi/linux/if_link.h b/include/uapi/linux/if_link.h
-index 7494cffb..58a002de 100644
---- a/include/uapi/linux/if_link.h
-+++ b/include/uapi/linux/if_link.h
-@@ -559,6 +559,7 @@ enum {
- 	IFLA_BRPORT_MCAST_EHT_HOSTS_LIMIT,
- 	IFLA_BRPORT_MCAST_EHT_HOSTS_CNT,
- 	IFLA_BRPORT_LOCKED,
-+	IFLA_BRPORT_MAB,
- 	__IFLA_BRPORT_MAX
- };
- #define IFLA_BRPORT_MAX (__IFLA_BRPORT_MAX - 1)
-diff --git a/include/uapi/linux/neighbour.h b/include/uapi/linux/neighbour.h
-index a998bf76..4dda051b 100644
---- a/include/uapi/linux/neighbour.h
-+++ b/include/uapi/linux/neighbour.h
-@@ -52,7 +52,8 @@ enum {
- #define NTF_STICKY	(1 << 6)
- #define NTF_ROUTER	(1 << 7)
- /* Extended flags under NDA_FLAGS_EXT: */
--#define NTF_EXT_MANAGED	(1 << 0)
-+#define NTF_EXT_MANAGED		(1 << 0)
-+#define NTF_EXT_LOCKED		(1 << 1)
- 
- /*
-  *	Neighbor Cache Entry States.
-@@ -86,6 +87,10 @@ enum {
-  * NTF_EXT_MANAGED flagged neigbor entries are managed by the kernel on behalf
-  * of a user space control plane, and automatically refreshed so that (if
-  * possible) they remain in NUD_REACHABLE state.
-+ *
-+ * NTF_EXT_LOCKED flagged FDB entries are placeholder entries used with the
-+ * locked port feature, that ensures that an entry exists while at the same
-+ * time dropping packets on ingress with src MAC and VID matching the entry.
-  */
- 
- struct nda_cacheinfo {
-diff --git a/ip/iplink_bridge_slave.c b/ip/iplink_bridge_slave.c
-index 98d17213..0c0894eb 100644
---- a/ip/iplink_bridge_slave.c
-+++ b/ip/iplink_bridge_slave.c
-@@ -44,6 +44,7 @@ static void print_explain(FILE *f)
- 		"			[ vlan_tunnel {on | off} ]\n"
- 		"			[ isolated {on | off} ]\n"
- 		"			[ locked {on | off} ]\n"
-+		"                       [ mab {on | off} ]\n"
- 		"			[ backup_port DEVICE ] [ nobackup_port ]\n"
- 	);
- }
-@@ -284,9 +285,14 @@ static void bridge_slave_print_opt(struct link_util *lu, FILE *f,
- 		print_on_off(PRINT_ANY, "isolated", "isolated %s ",
- 			     rta_getattr_u8(tb[IFLA_BRPORT_ISOLATED]));
- 
--	if (tb[IFLA_BRPORT_LOCKED])
--		print_on_off(PRINT_ANY, "locked", "locked %s ",
--			     rta_getattr_u8(tb[IFLA_BRPORT_LOCKED]));
-+	if (tb[IFLA_BRPORT_LOCKED]) {
-+		if (tb[IFLA_BRPORT_MAB] && rta_getattr_u8(tb[IFLA_BRPORT_MAB]))
-+			print_on_off(PRINT_ANY, "locked mab", "locked mab %s ",
-+				     rta_getattr_u8(tb[IFLA_BRPORT_LOCKED]));
-+		else
-+			print_on_off(PRINT_ANY, "locked", "locked %s ",
-+				     rta_getattr_u8(tb[IFLA_BRPORT_LOCKED]));
-+	}
- 
- 	if (tb[IFLA_BRPORT_BACKUP_PORT]) {
- 		int backup_p = rta_getattr_u32(tb[IFLA_BRPORT_BACKUP_PORT]);
-@@ -411,6 +417,10 @@ static int bridge_slave_parse_opt(struct link_util *lu, int argc, char **argv,
- 			NEXT_ARG();
- 			bridge_slave_parse_on_off("locked", *argv, n,
- 						  IFLA_BRPORT_LOCKED);
-+		} else if (matches(*argv, "mab") == 0) {
-+			NEXT_ARG();
-+			bridge_slave_parse_on_off("mab", *argv, n,
-+						  IFLA_BRPORT_MAB);
- 		} else if (matches(*argv, "backup_port") == 0) {
- 			int ifindex;
- 
-diff --git a/man/man8/bridge.8 b/man/man8/bridge.8
-index d4df772e..40250477 100644
---- a/man/man8/bridge.8
-+++ b/man/man8/bridge.8
-@@ -54,6 +54,7 @@ bridge \- show / manipulate bridge addresses and devices
- .BR vlan_tunnel " { " on " | " off " } ] [ "
- .BR isolated " { " on " | " off " } ] [ "
- .BR locked " { " on " | " off " } ] [ "
-+.BR mab " { " on " | " off " } ] [ "
- .B backup_port
- .IR  DEVICE " ] ["
- .BR nobackup_port " ] [ "
-@@ -580,6 +581,15 @@ The common use is that hosts are allowed access through authentication
- with the IEEE 802.1X protocol or based on whitelists or like setups.
- By default this flag is off.
- 
-+.TP
-+.RB "mab on " or " mab off "
-+Enables or disables the MAB/MacAuth feature. This feature can only be
-+activated on a port that is in locked mode, and when enabled it extends the
-+locked port feature so that MAC address can get access through a locked
-+port based on acceptlists, thus it is a much simpler procedure for a
-+device to become authorized than f.ex. the 802.1X protocol, and is used
-+for devices that are not capable of password or crypto based authorization
-+methods.
- 
- .TP
- .BI backup_port " DEVICE"
-diff --git a/man/man8/ip-link.8.in b/man/man8/ip-link.8.in
-index fc9d62fc..187ca7ca 100644
---- a/man/man8/ip-link.8.in
-+++ b/man/man8/ip-link.8.in
-@@ -2454,6 +2454,9 @@ the following additional arguments are supported:
- .BR isolated " { " on " | " off " }"
- ] [
- .BR locked " { " on " | " off " }"
-+] [
-+.BR mab " { " on " | " off " }"
-+] [
- .BR backup_port " DEVICE"
- ] [
- .BR nobackup_port " ]"
-@@ -2560,6 +2563,11 @@ default this flag is off.
- behind the port cannot communicate through the port unless a FDB entry
- representing the host is in the FDB. By default this flag is off.
- 
-+.BR mab " { " on " | " off " }"
-+- enables or disables the MAB/MacAuth feature on a locked port. It is
-+thus possible for a device to gain authorization on a locked port based
-+on acceptlists.
-+
- .BI backup_port " DEVICE"
- - if the port loses carrier all traffic will be redirected to the
- configured backup port
 -- 
-2.34.1
-
+~Vinod
 
