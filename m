@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75AB4C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 08:34:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4506C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 08:38:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9UZpruKeLYR0zRhCoY5/AQsGUbpu0aIHUOk8oVF3GZA=; b=yANevtWYcR7OQOKvtouCA3B7gC
-	tCcqlEOKlajlzpwTBXpA29mnEhqCVuxpwV7afLNYaf2J3hb8ra4XqA9ZrUapGG4w8W064pKbk/MBZ
-	tJC81RCzWg0se6YULEK4fJQ1sr5SExoGW1vOCdfeSr/k18qmI6THOj8K9qKU4RmBBTrpCQKu/ngbk
-	ycKd6zzEDNXRbn5fBoMsFv1gh6F9Ou7b0scHJ0yAAIF5JzOpPthoQu3Rhisy7Lg8nFrjZ0xHeO0uu
-	OEX3ES7OQuP+84VBPXRTgYalqmj05L1Cc4Hs4MdFarpKh7EadCMmsTG+GTrInZiaPXbsfgsDh2t4p
-	7oZZOeAw==;
+	bh=eDWi3XDChFDymfevy7CuQSc9pRdzQLaHoYKcsNtb0wU=; b=1/qeZgJBndfETNoA3CArDRgo1T
+	zmRlvjXxuI20AE8kuh2Z+zOuBrBOO9JWKH24xMlOTUhIbgGHgYCT8hfUEAf8heSUTSDz3BT8T3jJn
+	l4qkEO2nj8vQR78fmqnTODAem+iZt4zTFO0ScYSV+5ppgaPd4mcGjP0t2V9k/AGQE8AZEyE8js2Fg
+	PqS9rjhvpaz07rNL+QplUlkQui3XYCifQWPuKQXXgl2EMR8lnHrM2ec9uPWTNfcUVqENsEk4TsUPq
+	OMGOv+To1StB1jeoJWIXmVcEt+3FPoJe2ojswgMqb0U8hM+fWe6tI/jNuz/hkZBdyUivsLfNRYEy9
+	Gg5+jZpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeBTt-0086Ba-9k; Fri, 30 Sep 2022 08:34:49 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oeBWx-0087Dq-W5; Fri, 30 Sep 2022 08:38:00 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeBTe-00865B-OH; Fri, 30 Sep 2022 08:34:36 +0000
+	id 1oeBWl-008798-5b; Fri, 30 Sep 2022 08:37:48 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CE99D66022C7;
-	Fri, 30 Sep 2022 09:34:32 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0AFE866022C7;
+	Fri, 30 Sep 2022 09:37:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664526873;
-	bh=9eWFbwDttTEa2f7UeZOgWcaEHQPOEJ/G5ia0l+QXprE=;
+	s=mail; t=1664527065;
+	bh=hXP7tMGt4lvZFrdQ9N3TpH0XDUHGm1MVYQ0cksxXiok=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ie3b4ifyK44UNVbz3GwiBV3b1jgXjrIAn5at4UtYJX+nyINa1ufdrsHNDNKx+5ZqK
-	 Vl6AOJ2hHXoJOQBVGyRVCGovCI6hlWzolmk4atsvLHl1YK8QUsCsQZaOIPGiGPLEWM
-	 y1t2b9bhLFbAcUv/wCLGTFC8/lAueFFDLtzQso+drK5Hw4pyd0/Tmrj//q/wi7HKiZ
-	 A5t/h7fpzMx9/0vywOfTGNMw6OYEwc5Ga4cbbiYJei1jCnfNz00r+mHLRACHh/4nMM
-	 nEsecc7juymxqZTiD2FH/NZvk66KTyxVgO1waTesQ6vXFjD7vXTme+swciqoyH+/R5
-	 fxtuZpbWO4/iQ==
-Message-ID: <b5443902-ce49-10df-600b-ff3112f183ff@collabora.com>
-Date: Fri, 30 Sep 2022 10:34:30 +0200
+	b=bHq7DgC+/YoPhbpQ2DlRNolNFuBUJCN8LSqY3rX6aMcIdi9S2NLRVABWK6unpXPce
+	 DsMs3ebPHieeU8uJzB6P9npvebFoOLixXRJKWCiNkNtXzoq1nOTsWM7b3zjXfmPVrL
+	 YctNGImbPkfZ/LXBoKqvqOYbFukNjD2ONVaIK31jqXAgtqgz0apN2sC2fpM6kYpldp
+	 p+P1v+8/EOxV6cllV9Qgyg50DYYCDZLne8dsOFYpOJPv5ihn7rYL/beC0On+VRaZo/
+	 0x6ZGbaqNNCk25qyOeYo0qZZTeMHwfavidRRquz8i6C1TK8cK3pe7wVMg2gpOq2TrU
+	 Mg6oFiKz3P0Iw==
+Message-ID: <08017725-7e32-1967-65ee-246b9e692a95@collabora.com>
+Date: Fri, 30 Sep 2022 10:37:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH v3 1/2] media: dt-bindings: mediatek: Rename child node
- names for decoder
+Subject: Re: [PATCH v3 2/2] arm64: dts: mt8192: Add vcodec lat and core nodes
 Content-Language: en-US
 To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -58,15 +57,14 @@ Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org
 References: <20220929131309.18337-1-allen-kh.cheng@mediatek.com>
- <20220929131309.18337-2-allen-kh.cheng@mediatek.com>
+ <20220929131309.18337-3-allen-kh.cheng@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220929131309.18337-2-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20220929131309.18337-3-allen-kh.cheng@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_013434_944359_A73204B2 
-X-CRM114-Status: UNSURE (   8.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220930_013747_372324_589A0223 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,12 +80,41 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 29/09/22 15:13, Allen-KH Cheng ha scritto:
-> In order to make the names of the child nodes more generic, we rename
-> "vcodec" to "video-codec" for decoder in patternProperties and example.
+> Add vcodec lat and core nodes for mt8192 SoC.
 > 
 > Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 60 ++++++++++++++++++++++++
+>   1 file changed, 60 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> index 6b20376191a7..fd3c3aaeadba 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> @@ -1449,6 +1449,66 @@
+>   			power-domains = <&spm MT8192_POWER_DOMAIN_ISP2>;
+>   		};
+>   
+> +		vcodec_dec: video-codec@16000000 {
+> +			compatible = "mediatek,mt8192-vcodec-dec";
+> +			reg = <0 0x16000000 0 0x1000>;
+> +			mediatek,scp = <&scp>;
+> +			iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
+> +			dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+> +			#address-cells = <2>;
+> +			#size-cells = <2>;
+> +			ranges = <0 0 0 0x16000000 0 0x26000>;
+> +
+> +			vcodec_lat: video-codec-lat@10000 {
 
-Many thanks for doing this, Allen.
+There's only one more thing: why do we need the `vcodec_lat:` and `vcodec_core:`
+phandles here?
+
+Platforms that do not support the vcodec can simply set `status = disabled;` on
+`vcodec_dec`... as it doesn't make real sense to disable only LAT or only CORE.
+
+Please drop these two, after which:
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
