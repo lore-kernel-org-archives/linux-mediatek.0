@@ -4,53 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF3AC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 16:07:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DE77C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 16:08:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pS1tSPwDLFBpsZ2scl3Ajd4uBs6KM7lPcLsxN3BMnR8=; b=qjWLq64636YlHIIhgTIHud96wk
-	W49thmUBaWi7wRAX/+zRnPGtqXk9hOho8ntQDbTm9yqEL9LFR5QbKzsk8bf6tzJcGWnv4BDB2Z9hI
-	8o+k9J7S1/Pgx7sk461Pq7Fw8CVZUdt7WN5yULm+rovFKocHwubsSpGTPVCp2NQv1dI4TYh32JgIy
-	OUf/U9Ab4Z+7kliTPmCup7YgbhGOqyvdzRZhpdoenUdSS3dTzqOviobu+QUnc8eyOl2fdrr78EIVi
-	DnjynFHZ/d/LgX0Om50VumffQxHvG/aShBeMZGzdKZZS9G1MRj3bh4RX/fHWvSQwd3JFFhgfm+OpH
-	DXPo7GBw==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ieWSKuX7s/48n+nbGqHCJY1bXV2GsB35euYP4l6Nyt4=; b=weCSYRiNm++M68U4UElXmUECQj
+	mYs0AW8zxdm/z/xb3ciJbnvLJ1Wpg8fPiATYux/7TPK9JpJVTi1cYeloDh/yR9UWyrlyEPL4rhc1r
+	/bTBHTpgHo6oqRwzrSIuXpvm5v0vKk5Xwsv9BLdJ+WS4RWBmvKF4QOaBYxteEfBL1O+DkqKHm/C1U
+	s0NLrYR1E17zTqMliXwfJmedtbjPnwEOves26rgMZMVz2eOVJnW5B8OujailLh1Ezg0OwcLsHjUpF
+	aZ/HvxqLuBGKcHedIWzZKNcV9CWgb3O51QG/FWWGiE2nEoLFNvaisniT+Y8tnCkwhhiX2V/Nc9FIH
+	N8eEUfgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeIXP-00ATEK-OO; Fri, 30 Sep 2022 16:06:55 +0000
+	id 1oeIYN-00ATeH-Ov; Fri, 30 Sep 2022 16:07:55 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeIXJ-00ATDh-NK; Fri, 30 Sep 2022 16:06:51 +0000
-X-UUID: 79dbc312be13467fb71c4ffb16a76757-20220930
+	id 1oeIYL-00ATcr-1w; Fri, 30 Sep 2022 16:07:55 +0000
+X-UUID: d431d480250a4a09b5e0a8ef4138a0d1-20220930
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=pS1tSPwDLFBpsZ2scl3Ajd4uBs6KM7lPcLsxN3BMnR8=;
-	b=pRBvc9Fmd0HZltVY61TQycjWzs3JuN+8JISKBxjI+UgRxaAtvbZrXGg0U9+CzTwajWCwQByrcCRKJ2U0dpnjw1NcXUWkM58/8pQjoA8/C/FX49POWbYDFg/vmsgyv7vWRiPRykfxe+74Wwz1dKUKe43wQ7Bvyy9t25RsA0Jz96g=;
-X-CID-P-RULE: Spam_GS6885AD
-X-CID-O-INFO: VERSION:1.1.11,REQID:ff5086a4-0f5d-4b8b-a629-d9a6d8679d65,IP:0,U
-	RL:0,TC:0,Content:73,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_GS6885AD,AC
-	TION:quarantine,TS:173
-X-CID-INFO: VERSION:1.1.11,REQID:ff5086a4-0f5d-4b8b-a629-d9a6d8679d65,IP:0,URL
-	:0,TC:0,Content:73,EDM:0,RT:0,SF:100,FILE:0,BULK:0,RULE:Spam_US65DF41,ACTI
-	ON:quarantine,TS:173
-X-CID-META: VersionHash:39a5ff1,CLOUDID:cc69a7a3-dc04-435c-b19b-71e131a5fc35,B
-	ulkID:2210010006441LQM4NSW,BulkQuantity:0,Recheck:0,SF:38|28|17|19|48|801,
-	TC:nil,Content:3,EDM:-3,IP:nil,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:
-	0
-X-UUID: 79dbc312be13467fb71c4ffb16a76757-20220930
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ieWSKuX7s/48n+nbGqHCJY1bXV2GsB35euYP4l6Nyt4=;
+	b=OgYhjMZJZT3W8zDuxTYKdh5Ppj3OblcCFHghhZlKWJu5sDFBG6oH8Ay0WqAC9ndvysOZXG8i3X+sD8XTcN2In/zI3W8dcELff2w8F59Jni2hChl9GS/zqpzFW0QiwEhmDoIpU7RHXQuCsn4A/W+QpWznGBMEMhNubnqtt/Zo4yY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:ab962019-eefa-4634-87c7-e64efe142b5f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:5ab99907-1cee-4c38-b21b-a45f9682fdc0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: d431d480250a4a09b5e0a8ef4138a0d1-20220930
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <yongqiang.niu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 576372213; Fri, 30 Sep 2022 09:06:43 -0700
+	with ESMTP id 1376995981; Fri, 30 Sep 2022 09:07:47 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sat, 1 Oct 2022 00:06:40 +0800
+ 15.2.792.15; Sat, 1 Oct 2022 00:06:42 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Sat, 1 Oct 2022 00:06:39 +0800
+ Transport; Sat, 1 Oct 2022 00:06:41 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
 CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
@@ -58,18 +54,19 @@ CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
 	<hsinyi@chromium.org>, Yongqiang Niu <yongqiang.niu@mediatek.com>
-Subject: [PATCH v8, 0/4] mailbox: mtk-cmdq: add MT8186 support
-Date: Sat, 1 Oct 2022 00:06:34 +0800
-Message-ID: <20220930160638.7588-1-yongqiang.niu@mediatek.com>
+Subject: [PATCH v8, 3/4] mailbox: mtk-cmdq: add gce ddr enable support flow
+Date: Sat, 1 Oct 2022 00:06:37 +0800
+Message-ID: <20220930160638.7588-4-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220930160638.7588-1-yongqiang.niu@mediatek.com>
+References: <20220930160638.7588-1-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_090649_782279_1DB0D400 
-X-CRM114-Status: UNSURE (   5.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220930_090753_135881_0CA58909 
+X-CRM114-Status: GOOD (  11.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,21 +81,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-base linux-next/master
-change since v7:
-1. instead magic number with marco define
-2. adjust gce ddr enable control flow
+add gce ddr enable control flow when gce suspend/resume
 
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-Yongqiang Niu (4):
-  mailbox: mtk-cmdq: add gce software ddr enable private data
-  mailbox: mtk-cmdq: instead magic number with GCE_CTRL_BY_SW
-  mailbox: mtk-cmdq: add gce ddr enable support flow
-  mailbox: mtk-cmdq: add MT8186 support
-
- drivers/mailbox/mtk-cmdq-mailbox.c | 42 +++++++++++++++++++++++++++++-
- 1 file changed, 41 insertions(+), 1 deletion(-)
-
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 04eb44d89119..2db82ff838ed 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -94,6 +94,18 @@ struct gce_plat {
+ 	u32 gce_num;
+ };
+ 
++static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool enable)
++{
++	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
++
++	if (enable)
++		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
++	else
++		writel(GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
++
++	clk_bulk_disable(cmdq->gce_num, cmdq->clocks);
++}
++
+ u8 cmdq_get_shift_pa(struct mbox_chan *chan)
+ {
+ 	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
+@@ -319,6 +331,9 @@ static int cmdq_suspend(struct device *dev)
+ 	if (task_running)
+ 		dev_warn(dev, "exist running task(s) in suspend\n");
+ 
++	if (cmdq->sw_ddr_en)
++		cmdq_sw_ddr_enable(cmdq, false);
++
+ 	clk_bulk_unprepare(cmdq->gce_num, cmdq->clocks);
+ 
+ 	return 0;
+@@ -330,6 +345,10 @@ static int cmdq_resume(struct device *dev)
+ 
+ 	WARN_ON(clk_bulk_prepare(cmdq->gce_num, cmdq->clocks));
+ 	cmdq->suspended = false;
++
++	if (cmdq->sw_ddr_en)
++		cmdq_sw_ddr_enable(cmdq, true);
++
+ 	return 0;
+ }
+ 
+@@ -337,6 +356,9 @@ static int cmdq_remove(struct platform_device *pdev)
+ {
+ 	struct cmdq *cmdq = platform_get_drvdata(pdev);
+ 
++	if (cmdq->sw_ddr_en)
++		cmdq_sw_ddr_enable(cmdq, false);
++
+ 	clk_bulk_unprepare(cmdq->gce_num, cmdq->clocks);
+ 	return 0;
+ }
 -- 
 2.25.1
 
