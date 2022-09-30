@@ -4,79 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B409C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 18:43:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18CC1C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 19:00:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:
+	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aFuTCSgiQ1q3axsguxuz+z/zfzJxetBKH5EU8cOHNE0=; b=d6nD89LaBxgAiSvcuCXMKWCTH5
-	zLTBMMxMEDgsznbQ9jXna2oQJ4as4NZAuO41efWP/PqpL4w3HeZfq4itb9IwMzg6bGFdyIiPAl5eq
-	M5YKJPdRa0Na/Z4ALEQJhGDPOzoFcbdJTvMMQOtCW6bnyCs39NowFFr0kGcKZ7MIHo6L2jvimU9ll
-	rVAk0oP9zV8f3ffD9IsiLgcolM4IrvkOdOEti7pKw5ZItVC7RExfbT0Opp+pkUiiiQCeCHBEvI/7N
-	vZ+eMdqnST2HD0ndsxdDFPV8hewhHQkDhkVymrRvPilNOtxP46y3hKvDx6t0dwmXIm55NPPfpB1Aa
-	89OaXqCw==;
+	bh=SqKA688tcbpurfvzbBe8fTw+3CfJn39LO9edxB10rZw=; b=RJLwecFF5UvEI+kHNrPBGglTnG
+	l4uYBTujlyaNWmRIZiWU/7+65p5nVD6L2Ujzc3+fgNvKYoisIUTaNDQHnnj+/ltVIO/SekttIOcke
+	w4F/q69EoBSEH57gNFDHBYdIk6Uqk7WY3qwziQc4tz0a8989WfPLNazNquAOvYmpvKDcE+4jFKpiJ
+	vY4SmlTJ+bJZ2RTBFQcPYRQhwkd6XZMNRruOKky689kFJlK4StsjAxB5ysu6QiesK/XotlOJXlSG+
+	/szB7dTXXWQv9jkxJ5uMK+ixByt+1gHcAkzKpL4UkjprIEfWodQDvHamGE0V/348d7uF8tUyHfVR/
+	4Al5xpBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeKya-00B3wk-T4; Fri, 30 Sep 2022 18:43:08 +0000
-Received: from mail-pl1-f179.google.com ([209.85.214.179])
+	id 1oeLF1-00B6o3-7t; Fri, 30 Sep 2022 19:00:07 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeKyP-00B3rr-W5; Fri, 30 Sep 2022 18:42:59 +0000
-Received: by mail-pl1-f179.google.com with SMTP id v1so4692058plo.9;
-        Fri, 30 Sep 2022 11:42:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=aFuTCSgiQ1q3axsguxuz+z/zfzJxetBKH5EU8cOHNE0=;
-        b=jcomTOCByzUp99jahhLvSUDi3El3ZbLVH3JBTPYSOeMJbe9XGuFJuPoHARWkOPDLL6
-         xBg+8trWCxFjSiTv8NG71AwBPyRb9XKUF/4ffxZLe/QKghgJPOiIKriL4OB4HJGacd9A
-         V6Wcywtuhn/9NYPIguDp3CVinL2bkBTp0zlaOgdY4u4OOfek11fLMPwTKyYB0F/vhTrb
-         IzoOcG57v7PCBLW8vSNlmpwnPKGTkrzruGzYygnGEjWV3dwpWRFfqE3tEqiCjqEgnTT0
-         tubMBs3PzStGGC0mCwFyxisWIHlBWHvxM9g+D0ySQDe1p+yTV0ghnVs5RCi88cI1jkmP
-         GD9A==
-X-Gm-Message-State: ACrzQf3k6msTfeKc/2HXbcFnOrbvmEP6iTul6F4muk9CbJoNLZ5d6Xgz
-	Nbk63jTkAYiL1/HzTAJNhRAxQAGlZqDnTw==
-X-Google-Smtp-Source: AMsMyM63hj0JZwb61O8N3SA/97MjlXhh7TAt954QlO2qGZP4zZRlJKTN9QDiw/tHJI3V9Tc4QCy9vw==
-X-Received: by 2002:a17:902:7897:b0:178:9292:57b9 with SMTP id q23-20020a170902789700b00178929257b9mr10403947pll.102.1664563376850;
-        Fri, 30 Sep 2022 11:42:56 -0700 (PDT)
-Received: from ?IPV6:2620:15c:211:201:56f2:482f:20c2:1d35? ([2620:15c:211:201:56f2:482f:20c2:1d35])
-        by smtp.gmail.com with ESMTPSA id e10-20020a17090301ca00b00172d9f6e22bsm2291650plh.15.2022.09.30.11.42.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 30 Sep 2022 11:42:56 -0700 (PDT)
-Message-ID: <2a25bce5-aad2-cc01-5879-73005cafb371@acm.org>
-Date: Fri, 30 Sep 2022 11:42:53 -0700
+	id 1oeLEq-00B6kf-0T; Fri, 30 Sep 2022 18:59:57 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 8472DB82881;
+	Fri, 30 Sep 2022 18:59:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41810C433C1;
+	Fri, 30 Sep 2022 18:59:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1664564393;
+	bh=3QNA3zbxcf7C4eGHXviUTx4Mw2lLcI48VnpwYP8Y8s4=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=aZSaxoh2EQHcxbPxcxRfp25X3CBDogGpi/oGVPkj8agbdJ9P96s1jidhYhAqXmWEy
+	 TcykmDM6A+4IG1bMzW2DyIZ5eeBpaw1Aab0BLIodRJUWZMzrQWXIRrYvekX0P4wU16
+	 6FMiMv2Xhv+f+4mwQEDvLyPrpMi74Cdce3dsWVdJSQHi2loO9vNcd15Y3ywbuQRxeq
+	 ambIAp0HAGBnCAzsAzPra/gRV8VYhsfeLiOPZWNb/evVLAOg9WqZw9xksARRYH1Va9
+	 MBPcgUspxQh8oPEtdvbE9+Tv5gOPgK+rETIKKMifAPVIqWqiXiXWYz1+Q6gcR4P/hJ
+	 2FHcjYw24WZYg==
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH v1 05/16] ufs: core: mcq: Configure resource regions
-Content-Language: en-US
-To: Asutosh Das <quic_asutoshd@quicinc.com>, mani@kernel.org,
- quic_nguyenb@quicinc.com, quic_xiaosenh@quicinc.com, quic_cang@quicinc.com,
- quic_nitirawa@quicinc.com, quic_rampraka@quicinc.com,
- quic_richardp@quicinc.com, stanley.chu@mediatek.com,
- adrian.hunter@intel.com, avri.altman@wdc.com, beanhuo@micron.com,
- martin.petersen@oracle.com
-Cc: linux-scsi@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-References: <cover.1663894792.git.quic_asutoshd@quicinc.com>
- <4d4df6ad6353b93253fb22deefb772dc59f5c84e.1663894792.git.quic_asutoshd@quicinc.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <4d4df6ad6353b93253fb22deefb772dc59f5c84e.1663894792.git.quic_asutoshd@quicinc.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <17c5cc9c-50ea-aeac-04e0-20b6c093c7ec@collabora.com>
+References: <20220929121031.17523-1-rex-bc.chen@mediatek.com> <17c5cc9c-50ea-aeac-04e0-20b6c093c7ec@collabora.com>
+Subject: Re: [PATCH v3] reset: mediatek: Move mediatek system clock reset to reset folder
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: runyang.chen@mediatek.com, miles.chen@mediatek.com, wenst@chromium.org, nfraprado@collabora.com, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Bo-Chen Chen <rex-bc.chen@mediatek.com>, matthias.bgg@gmail.com, mturquette@baylibre.com, p.zabel@pengutronix.de
+Date: Fri, 30 Sep 2022 11:59:51 -0700
+User-Agent: alot/0.10
+Message-Id: <20220930185953.41810C433C1@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_114258_060782_F5E58DBD 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20220930_115956_237862_10F95E13 
+X-CRM114-Status: GOOD (  22.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,43 +70,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/22/22 18:05, Asutosh Das wrote:
-> +/* Resources */
-> +static const struct ufshcd_res_info_t ufshcd_res_info[RES_MAX] = {
-> +	{.name = "ufs_mem", .resource = NULL, .base = NULL},
-> +	{.name = "mcq", .resource = NULL, .base = NULL},
-> +	/* Submission Queue DAO */
-> +	{.name = "mcq_sqd", .resource = NULL, .base = NULL},
-> +	/* Submission Queue Interrupt Status */
-> +	{.name = "mcq_sqis", .resource = NULL, .base = NULL},
-> +	/* Completion Queue DAO */
-> +	{.name = "mcq_cqd", .resource = NULL, .base = NULL},
-> +	/* Completion Queue Interrupt Status */
-> +	{.name = "mcq_cqis", .resource = NULL, .base = NULL},
-> +	/* MCQ vendor specific */
-> +	{.name = "mcq_vs", .resource = NULL, .base = NULL},
-> +};
+Quoting AngeloGioacchino Del Regno (2022-09-29 05:50:38)
+> I've just analyzed this idea a bit more, and there's the outcome.
+>=20
+> This driver would be fine, if some MediaTek SoCs weren't shipped with
+> a bootloader that supports only very small kernels... because then, if
+> the reset controller is not available at boot time, it's unlikely that
+> you can probe the eMMC or the uSD, so it won't be possible to actually
+> compile this driver as a module and load it afterwards.
+>=20
+> Please don't misunderstand me: I like the idea of having the MediaTek
+> SoC sysclk reset controller as a ... reset controller driver but, to
+> make that work, one fundamental issue must be solved...
+>=20
+> If the kernel is configured for, let's say, MT2701 and MT2712, we're
+> always building in reset controller support for MT7622, 7629, 8135, 8173,
+> 8183, 8186, 8192, 8195 - and this list will grow with MT8188, and others.
+>=20
+> Obviously, it's useless to have support for, say, MT7622, if the MT7622
+> system clock controllers aren't built-in, nor modules.
+>=20
+> So, to make this idea to work, we have to find a way to:
+> 1. Build in support only for the required SoC(s)
 
-Please leave out the members that are NULL (.resource and .base) since 
-the compiler will initialize these for you.
+Use Kconfig
 
->   /**
-> + * struct ufshcd_res_info_t - MCQ related resource regions
-> + *
-> + * @name: resource name
-> + * @resource: pointer to resource region
-> + * @base: register base address
-> + */
-> +struct ufshcd_res_info_t {
-> +	const char *name;
-> +	struct resource *resource;
-> +	void __iomem *base;
-> +};
+> 2. Put the reset index mapping arrays in SoC-specific files, or this
+>     single file driver will see an exponential growth.
 
-Please remove the suffix "_t" since that suffix is typically used for 
-typedefs and not for data structures.
+Split the reset driver into different files compiled for different SoCs
+based on the SoC Kconfig made in step 1.
 
-Thanks,
+>=20
+> Wrapping it up - as the driver is right now - we're losing flexibility:
+> we need to maintain the current flexibility while keeping the improvements
+> that are made with this proposal.
+>=20
+> Ideas?
+>=20
 
-Bart.
+It should work and your concerns are alleviated?
 
