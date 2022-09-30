@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D535C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 12:10:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1409C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 12:13:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SKPP8q1aQ+TujHTz2moxgfZyFrTj+nw4wxgDaypvsbI=; b=vObxjiaCDSZ2dEwt5/ugB82YUE
-	jITv5IY7ayQac2tQ7MU5lRZQde921uSUAPWYU9mtkHQs+UKtpMOZUE/W7gBxtidHJ9+QxR6lQK5qI
-	4xNKavjBqXip0r3poRbzqJi6p5jzcfK6E/LLhq9KN14/Ib4Am6o8ecInxi4s6rhgTkkdijAZBRhrk
-	1S8osP6YGUwSVvKr7lw5upsxkyjzdVhfdS8j6zNn3f960ufRsHAArOobhoz9THqvvhnju2/AUCTgX
-	MADOsMYyvDictBdEZIpYNQ4x45w0oRJJHKRHmo64LC1TQ3GXEpewAkLXf/AhG4X9Y6Ne37czib/UF
-	Lpvk238Q==;
+	bh=tV/KVA60N8wCrcyq8E7sO7XclkqoZK3ThaqZXfyJ8nU=; b=35+xsMBvvEm5GYp1xdFJENevyy
+	15twfNYWGniMqHtGBOXP3mZQhAce2hpO9zUVOrg3azka3qjGmnyKYGVcEBLazvxcm5mh09+gYuNDB
+	VtDiUDxF04J8TQEB0gihG06UBm2QuXw/AZYTFSrJTelwJqwmU9QBmpdiclYTJSbY439belYZ98xF5
+	Q2zmBxEQejIvzEMEKqMzTCaWBKyQrgSrMQ0LNrAqvqlhplaB4+BG4DXGeBfjVq+AWw99jPswDZEOa
+	iGvSf0v6KCaCN4wYZBJ8s4waXesod4IyD+h55a7eSnqi1zjTCrzSpOsIMM8Tk+x0joPaE59QxOxQh
+	WWu7rWYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeEqh-0092eE-JC; Fri, 30 Sep 2022 12:10:35 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oeEtD-0093jr-2I; Fri, 30 Sep 2022 12:13:11 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeEqT-0092Wz-4E; Fri, 30 Sep 2022 12:10:22 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1oeEt6-0093dx-75
+	for linux-mediatek@lists.infradead.org; Fri, 30 Sep 2022 12:13:09 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 96F0FB8271A;
-	Fri, 30 Sep 2022 12:10:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id D849EC43470;
-	Fri, 30 Sep 2022 12:10:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664539817;
-	bh=Wr9kLRkpR89dsJoFBQYKEU+VDLeRWEFtjxk7UOSaQIY=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=GcJf0GR0bU7IOZnZi7DJA0OYE7pugV3SZD7osq3e1LC6SmOBOTHvkLfAeJCPzLlgx
-	 KaTFe6EdbWne43W1pVCDxguRGzeOWcWzXp9kHBkXk01T0jtbXh8OeMT5HJQKU65+O8
-	 oTUTeoYh+3oJiGjD59jnwW6YYT2+1E4mSMouo3JgkOFivkYMOC5sfpEAqUYJsw7s8L
-	 9xgtby86T/5oa8QS2BxD42CvKbV7dm68RkBPO4vm7N4G4vCf28sndMHz5N2Dyq5dKV
-	 NakcWPPqJMDKn/HEe5LYQofpCghNUUGNMzaE6wYonKF58FS/16483IbroiegSrCJ2h
-	 U0E9Hm3LnlDuQ==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id B6DD5C395DA;
-	Fri, 30 Sep 2022 12:10:17 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7AC7666022C7;
+	Fri, 30 Sep 2022 13:12:53 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664539973;
+	bh=S/w2ZgDqdlLU+Y5Jz0E2rWA2oIr8YVBO+H3Z2byFScQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=hevf7fljW2fs3JHeop1tzitdLhD8iz5jrvS7rn8C/rOSMgWjZRC1Q4lLTJ0mP7CI8
+	 /8Qi8JZUNjqKWTyeQepFo0BGGdmrDWmKfUFDZ/GLVQ+GaO7NGULQQKyLELx+vah0Pk
+	 ZCkZVykNQA3PB+GlOgmkayfWBlGopjGyizLGZCm6pZu03exvacZbXE9eW+Bh9iihpz
+	 aJ5TNK1jiHC/w0ULE6VFqYXSYCegkqrNfvR4yXBUnJzNOX8mxg+8YuVSnnrt4YpwuX
+	 UoPrv90Gm8hGWsWj1iMvh/aNYSO2O1UKLcdu+cr92ZVIdRWtfH5rlPjyWvvqYVLkH0
+	 f+0wlhOZm0mYQ==
+Message-ID: <8afa9c8e-079e-6e50-a8d7-21e0b1698f76@collabora.com>
+Date: Fri, 30 Sep 2022 14:12:51 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v7 0/4]  Mediatek ethernet patches for mt8188
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id:  <166453981774.22292.11611575581235201348.git-patchwork-notify@kernel.org>
-Date: Fri, 30 Sep 2022 12:10:17 +0000
-References: <20220929014758.12099-1-jianguo.zhang@mediatek.com>
-In-Reply-To: <20220929014758.12099-1-jianguo.zhang@mediatek.com>
-To: Jianguo Zhang <jianguo.zhang@mediatek.com>
-Cc: davem@davemloft.net, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, angelogioacchino.delregno@collabora.com,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- peppe.cavallaro@st.com, alexandre.torgue@foss.st.com, joabreu@synopsys.com,
- mcoquelin.stm32@gmail.com, matthias.bgg@gmail.com, biao.huang@mediatek.com,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v1 2/2] media: platform: mtk-mdp3: fix error handling
+ about components clock_on
+Content-Language: en-US
+To: Moudy Ho <moudy.ho@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220930102306.13201-1-moudy.ho@mediatek.com>
+ <20220930102306.13201-3-moudy.ho@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220930102306.13201-3-moudy.ho@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_051021_346131_284F27F1 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20220930_051304_430743_FF519E13 
+X-CRM114-Status: GOOD (  20.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,37 +80,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (master)
-by David S. Miller <davem@davemloft.net>:
-
-On Thu, 29 Sep 2022 09:47:54 +0800 you wrote:
-> Changes in v7:
+Il 30/09/22 12:23, Moudy Ho ha scritto:
+> Add goto statement in mdp_comp_clock_on() to avoid error code not being
+> propagated or returning positive values.
+> This change also performs a well-timed clock_off when an error occurs, and
+> reduces unnecessary error logging in mdp_cmdq_send().
 > 
-> v7:
-> 1) Add 'Reviewed-by: AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com>' info in commit message of
-> patch 'dt-bindings: net: snps,dwmac: add new property snps,clk-csr',
-> 'arm64: dts: mediatek: mt2712e: Update the name of property 'clk_csr''
-> and 'net: stmmac: add a parse for new property 'snps,clk-csr''.
+> Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver")
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> ---
+>   .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    |  4 +---
+>   .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 24 ++++++++++++++-----
+>   2 files changed, 19 insertions(+), 9 deletions(-)
 > 
-> [...]
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+> index e194dec8050a..124c1b96e96b 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+> @@ -433,10 +433,8 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+>   	cmd->mdp_ctx = param->mdp_ctx;
+>   
+>   	ret = mdp_comp_clocks_on(&mdp->pdev->dev, cmd->comps, cmd->num_comps);
+> -	if (ret) {
+> -		dev_err(dev, "comp %d failed to enable clock!\n", ret);
+> +	if (ret)
+>   		goto err_free_path;
+> -	}
+>   
+>   	dma_sync_single_for_device(mdp->cmdq_clt->chan->mbox->dev,
+>   				   cmd->pkt.pa_base, cmd->pkt.cmd_buf_size,
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+> index d3eaf8884412..fe6a39315e88 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
+> @@ -699,12 +699,22 @@ int mdp_comp_clock_on(struct device *dev, struct mdp_comp *comp)
+>   			dev_err(dev,
+>   				"Failed to enable clk %d. type:%d id:%d\n",
+>   				i, comp->type, comp->id);
+> -			pm_runtime_put(comp->comp_dev);
+> -			return ret;
+> +			goto err_unwind;
+>   		}
+>   	}
+>   
+>   	return 0;
+> +
+> +err_unwind:
 
-Here is the summary with links:
-  - [v7,1/4] dt-bindings: net: mediatek-dwmac: add support for mt8188
-    https://git.kernel.org/netdev/net-next/c/c827b7a3fed5
-  - [v7,2/4] dt-bindings: net: snps,dwmac: add new property snps,clk-csr
-    https://git.kernel.org/netdev/net-next/c/22ba1afdec08
-  - [v7,3/4] arm64: dts: mediatek: mt2712e: Update the name of property 'clk_csr'
-    https://git.kernel.org/netdev/net-next/c/7871785ce92d
-  - [v7,4/4] net: stmmac: add a parse for new property 'snps,clk-csr'
-    https://git.kernel.org/netdev/net-next/c/83936ea8d8ad
+For this label to be clearer, I would rename it as `err_revert`, or
+`clocks_off`, or even simply `err`, as the `unwind` word may create
+some confusion here.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+> +	while (--i >= 0) {
+> +		if (IS_ERR_OR_NULL(comp->clks[i]))
+> +			continue;
+> +		clk_disable_unprepare(comp->clks[i]);
+> +	}
+> +	if (comp->comp_dev)
+> +		pm_runtime_put_sync(comp->comp_dev);
+> +
+> +	return ret;
+>   }
+>   
+>   void mdp_comp_clock_off(struct device *dev, struct mdp_comp *comp)
+> @@ -723,11 +733,13 @@ void mdp_comp_clock_off(struct device *dev, struct mdp_comp *comp)
+>   
+>   int mdp_comp_clocks_on(struct device *dev, struct mdp_comp *comps, int num)
+>   {
+> -	int i;
+> +	int i, ret;
+>   
+> -	for (i = 0; i < num; i++)
+> -		if (mdp_comp_clock_on(dev, &comps[i]) != 0)
+> -			return ++i;
+> +	for (i = 0; i < num; i++) {
+> +		ret = mdp_comp_clock_on(dev, &comps[i]);
+> +		if (ret)
+> +			return ret;
+> +	}
+>   
+>   	return 0;
+>   }
+> 
 
