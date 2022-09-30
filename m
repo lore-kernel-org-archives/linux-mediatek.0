@@ -4,63 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 485B4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 10:34:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02EDFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 10:50:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pE1xT0Jt/xnuNeGgLORmNJ255mPzgiZ61ewFEalF9wE=; b=kgD3VA6R8oYA0vqh8LtgmoVgkG
-	tZaegI3T8T2fx5LTMdiRxHmw2r1E+/tg6fwvEWm8nyxeqZ/lUF7cCp6AZHhvzTNRRDS7yqLGlWh28
-	pxMIco935HpW3Lhc05V3Bgse36pSYMh8KNlXIjcHiq3Nsp+VuVEWnLoDOBsipeXeoa4bpFSpe4oWv
-	idTfNCxEFW1EUEajP83hNz7SVT7mS4bwPkwuGiH8/sBFOK7aVMjByAANxrEdL0p0C0y8iL/PAGl0W
-	gu549VinoRgTZcrjHaZWNchRBSIx7qPvsl4QCe6rk+k7jGJmSAt0v7s51pPCJsOQXp/c+3U9qATu5
-	krYkbpnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=l5jS1+V/oq9Z8K0kcZCW6ldSRUaJ5B/yhE20GgpO7rs=; b=TxflVNlcmqoL7ynKDW28DqUJq/
+	TjreJp2Iz5ECSORqMmOTjzJIEwZqiKk99B81yu4595EagjoSJgQjWOgR1PPb7I8hIDbHuqbR4Ado9
+	wURmdS1DzW3eXZRkwR7RXQbRbJFBTn8oKO6uV5oyhtdcZ65Cw2Mk93k6jiFnRD4lXUssjGBWJ/MxM
+	+bTIGYrTDCbdGtJ19sWHt7u+CrrymmtKzjtRoXVvTnbIWi08P3QwBD7zLaUiTs2mtsOxdGKkKIBNi
+	4auQlBlZm4LtQnO051Zu/ebwT6txICvAN4NvX+4m5ChOwoBOYO34vZzbyKyrjN7VwmyktHBCdFoTJ
+	LFDUXBYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeDLG-008c7V-NN; Fri, 30 Sep 2022 10:34:02 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oeDai-008g7e-Lz; Fri, 30 Sep 2022 10:50:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeDL6-008c4s-CJ; Fri, 30 Sep 2022 10:33:53 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A01466222B;
-	Fri, 30 Sep 2022 10:33:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3EA7FC433C1;
-	Fri, 30 Sep 2022 10:33:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664534031;
-	bh=0X3E+aPWputC4RRQGG3fy3Z4J+gXjer7t+Iz6mKE8MY=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=miPRh/4Ev5GjJcFQskAKTih6sZnHx5DXHx+D0MB7YLVHLqslzLM4Q2TSezOZJysRF
-	 syIY9FpaCy3YZeDb93+RJEr2N4shFAWiiHUb2f9oQF0v0AtC4UNwArHot8UBou4Eeu
-	 E6nWvblbC0jhiPd/E4ko48EuDLij+86NjGXw72a4Qwu2Li5uLmGjxHIi4J9Gp/Sc27
-	 sJi4qMDTrAUp4En1jTjokMOtNER8DAYPTmD4LLvNWZ2RTT/6QIJJ6c47v3dwOlxg/v
-	 s4Gbe/PYJ+YzPNpXtlhuS2TD/BG/sx5obqxFMaMPylFkELAh+e8AHHQCtby2BldfdX
-	 APoRlYJAL4Z4A==
-From: Mark Brown <broonie@kernel.org>
-To: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Miaoqian Lin <linmq006@gmail.com>,
- linux-arm-kernel@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org,
- Akihiko Odaki <akihiko.odaki@gmail.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- kernel@collabora.com, Tzung-Bi Shih <tzungbi@google.com>, Takashi Iwai <tiwai@suse.com>,
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20220929205453.1144142-1-nfraprado@collabora.com>
-References: <20220929205453.1144142-1-nfraprado@collabora.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8192-mt6359: Set the driver name for the card
-Message-Id: <166453402795.109056.12992219800008251777.b4-ty@kernel.org>
-Date: Fri, 30 Sep 2022 11:33:47 +0100
+	id 1oeDag-008g6x-Kg; Fri, 30 Sep 2022 10:49:59 +0000
+X-UUID: e64d458b5d8f49beb05b360b2c268ae5-20220930
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=l5jS1+V/oq9Z8K0kcZCW6ldSRUaJ5B/yhE20GgpO7rs=;
+	b=p28AhK2jUg+y8HlvvCbT9pul+cbNUVyg3pFQl0eA1Kpj/qQy4D3BmHyMgJQkSxkKqwLs6ew/d3I1Ow9VCesUTVO2v9NqGejoLLD00GCZk1XjO2anNjAZm6pE3q1zy0jOndu7/PmvzrwHTPxdZWhUWnTaHeYr5HCK90LAIELZxD0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:0a5c167e-c455-4ac4-9ba3-7c042fc3d550,IP:0,U
+	RL:0,TC:0,Content:30,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:30
+X-CID-META: VersionHash:39a5ff1,CLOUDID:e412a2a3-dc04-435c-b19b-71e131a5fc35,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:3,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: e64d458b5d8f49beb05b360b2c268ae5-20220930
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <yongqiang.niu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 747918754; Fri, 30 Sep 2022 03:49:54 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 30 Sep 2022 17:59:17 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Fri, 30 Sep 2022 17:59:17 +0800
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
+	<hsinyi@chromium.org>, Yongqiang Niu <yongqiang.niu@mediatek.com>
+Subject: [PATCH v7, 0/3] mailbox: mtk-cmdq: add MT8186 support
+Date: Fri, 30 Sep 2022 17:59:12 +0800
+Message-ID: <20220930095915.13684-1-yongqiang.niu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.10.0-dev-fc921
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_033352_478797_9EA4CA43 
-X-CRM114-Status: GOOD (  16.54  )
+X-CRM114-CacheID: sfid-20220930_034958_700594_597D167D 
+X-CRM114-Status: UNSURE (   6.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,42 +80,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Sep 2022 16:54:53 -0400, Nícolas F. R. A. Prado wrote:
-> The ASoC core automatically populates the driver name field in the card
-> from the card name if left unset. However, since the driver name can be
-> at most 16 characters long, wrapping will happen if the card name is
-> longer, which is the case for the mt8192-mt6359 driver.
-> 
-> Explicitly set the driver name for the card in order to avoid said
-> wrapping and have a readable driver name exposed to userspace.
-> 
-> [...]
+base linux-next/master
 
-Applied to
+1. add gce ddr enable private data
+2. add gce ddr enable/disable control flow
+3. add mt8186 gce support
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Yongqiang Niu (3):
+  mailbox: mtk-cmdq: add gce software ddr enable private data
+  mailbox: mtk-cmdq: add gce ddr enable support flow
+  mailbox: mtk-cmdq: add MT8186 support
 
-Thanks!
+ drivers/mailbox/mtk-cmdq-mailbox.c | 42 +++++++++++++++++++++++++++++-
+ 1 file changed, 41 insertions(+), 1 deletion(-)
 
-[1/1] ASoC: mediatek: mt8192-mt6359: Set the driver name for the card
-      commit: 4674284aa74cfc6db0c54c16f9557ed8c3552409
+-- 
+2.25.1
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
