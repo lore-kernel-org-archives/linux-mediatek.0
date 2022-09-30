@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93694C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 22:00:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97355C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 22:05:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:Reply-To:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LLT3ZYBdhjAVbmPO/uc2xLKM7qGWQtc4/hcvgBHyd9s=; b=vp8M2VihC0JTJaxq2B2nPXtlbW
-	PoRxgyDhbBhyu+YZwvm35fPKzt8U32AXl3hBlDAJYKKHtPHiAWnA2S/nba+bLhiSdr4HuLawnAz46
-	n524gNzhMQMorNeQr/sv2OKQhKl+5ie3ve14dfdjdlYSVvo8eRvVqTBSjIMgaU8rTnjCbjkVd9kB5
-	7t2Xxp8dtsJLvkd486rBagX61gKesGgxqJTdR6DcuMJPO8JPCClBFuNATtIk3lOENFzl+0FaBHjn5
-	P0vzDHdiqdqE0P6+/8Ntd3u998yF5JucwnJ/880nhxJC2NQoHmiS76XK21l6gQdIVx/Q7sYB2J2xi
-	psx7PWyQ==;
+	bh=OCha88PaYgifgFcd4uvVIztgcK5zt4FhzTG/3Ul1xes=; b=YvOcklBULo1puZepV+3FFIu5Oi
+	3k9zAOSt8CEAlRAhwJmjvZtLL0gzkFsjVx1d0irGNsLRW4bcl59ZsGtqFy0eYlso/L+uwrX+2MQ31
+	FjtSOuDDOOFPyuSEkD7mUUZNgdgSwt//Gav+LW0M7OASUsJRgZ5buCwsBhdqb4YPpR2uWaUUUc43l
+	RH+OiqQjp0WsINYeAVElR3U4Bno02IRVNkOCalv6B2+QgreQD0D0Z6xV1BOFC8nl346nOjYNqFq8G
+	RJ4xK8fqGi1gIkY3ZUhOd6WkHWkf7uOlJbk88GMTc4j8xdnZgz0WYs+i0E58gtYT1WzegLm68qKLj
+	AY8X2CsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeO3Y-00Blxv-9G; Fri, 30 Sep 2022 22:00:28 +0000
-Received: from mail-oo1-f52.google.com ([209.85.161.52])
+	id 1oeO8k-00BnXf-6E; Fri, 30 Sep 2022 22:05:50 +0000
+Received: from mail-oa1-f48.google.com ([209.85.160.48])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeO3M-00Blru-VQ; Fri, 30 Sep 2022 22:00:18 +0000
-Received: by mail-oo1-f52.google.com with SMTP id k11-20020a4ab28b000000b0047659ccfc28so3127489ooo.8;
-        Fri, 30 Sep 2022 15:00:13 -0700 (PDT)
+	id 1oeO8h-00BnWx-4M; Fri, 30 Sep 2022 22:05:48 +0000
+Received: by mail-oa1-f48.google.com with SMTP id 586e51a60fabf-13221a3fea3so517374fac.5;
+        Fri, 30 Sep 2022 15:05:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=LLT3ZYBdhjAVbmPO/uc2xLKM7qGWQtc4/hcvgBHyd9s=;
-        b=WYSH+5PVxXYuNR/1BgY60MD6CvxpdzyXqQBvIeS4WS5oGv4XzFPhWey5JyoUatxp2g
-         MlJ+8VCIs+ncDx0FkDYtDveiYzipzXCdD9aKx070tbQHBY+nYUGJGv48kGjQqpFkMILp
-         QKHAesDWAlvDGOVJ3BjnqQvBTPW3Zw+0jjKAGtlrUL/jZx5cpo+Q45C9WtoRjdGFZ/kb
-         Ny6N5uTKZd0XrMQAq0LXl0+vj5x3yQTYnsUqWwytFxUP5PAByxsMbjm2jBDhvBfxroJV
-         e7/0znBCC5S83ThXbCvcXBA/z0sCet7a4yv0q6uNQTrSg66lOYzQxEgrV3j/FOLbK9Ii
-         3hMg==
-X-Gm-Message-State: ACrzQf2FuDI76Q9cJLmhv37HlIGYioeYjkEzKlAd0frp0n1lso/iX0JI
-	Z2HejPAn24p96REUPONk7A==
-X-Google-Smtp-Source: AMsMyM6IrejG/870CvnrzUlNmyBET4I5DXOzFKtUrfEAwncNQElS2UqVUUb3+tMW/6JK2TF/26FdJg==
-X-Received: by 2002:a9d:ed2:0:b0:657:438a:eefb with SMTP id 76-20020a9d0ed2000000b00657438aeefbmr4289417otj.239.1664575212616;
-        Fri, 30 Sep 2022 15:00:12 -0700 (PDT)
+        h=date:subject:message-id:references:in-reply-to:cc:to:from
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=OCha88PaYgifgFcd4uvVIztgcK5zt4FhzTG/3Ul1xes=;
+        b=tf3xwCvP0y7/uExQzEOYj7P/RO3f0O1a2ULpAQMifUCv9FKZRc3WSQqmXFN+Yr/nxr
+         6SZYNWYZfAsQR7uVA+6mv8iDDWFXZaCVaGJtO2SC0o4lW9XBT7GDCa46sbAlKS0umXEl
+         Tu3aE6XQh0mbOTA1zeK9K+Ju9Y3y3+RdFlxOcuxeHBCApsdLfvlP0YzQbRqrox0flTEB
+         PQvhCOhTC40ajW4vPTBhEj6WvVMXJbBmGN3wiUuontOFbHQ99E9Pb2Vgw9mZ6xqbh1+o
+         JCBrQUogeEEWjZqWmyaF/6ZXewHgfWW+jGWeqwz48yx1A3J5ZmIGwDxrlOlSofuEHe7Y
+         jAyw==
+X-Gm-Message-State: ACrzQf3cof1ByhZ1t7NybtMWP6guBYeMG9cmgK0c94653LmsT2tzW2ue
+	VJrmw4UVoqSdLfAzRxiedw==
+X-Google-Smtp-Source: AMsMyM6wQkdkeuoMwiXngdbVWbO8gt78XK6h82limIVmKAdjhVl1fZtjFwbcpx8NGI3tyLKuDBDMyQ==
+X-Received: by 2002:a05:6870:523:b0:131:2d50:e09c with SMTP id j35-20020a056870052300b001312d50e09cmr144209oao.129.1664575545273;
+        Fri, 30 Sep 2022 15:05:45 -0700 (PDT)
 Received: from macbook.herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id g65-20020acab644000000b0035028730c90sm782022oif.1.2022.09.30.15.00.11
+        by smtp.gmail.com with ESMTPSA id n22-20020a056870241600b001317413344esm992413oap.47.2022.09.30.15.05.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Sep 2022 15:00:11 -0700 (PDT)
-Received: (nullmailer pid 1111251 invoked by uid 1000);
-	Fri, 30 Sep 2022 22:00:11 -0000
-Date: Fri, 30 Sep 2022 17:00:11 -0500
+        Fri, 30 Sep 2022 15:05:44 -0700 (PDT)
+Received: (nullmailer pid 1129749 invoked by uid 1000);
+	Fri, 30 Sep 2022 22:05:43 -0000
 From: Rob Herring <robh@kernel.org>
-To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Project_Global_Chrome_Upstream_Group@mediatek.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 1/2] media: dt-bindings: mediatek: Rename child node
- names for decoder
-Message-ID: <20220930220011.GA1107972-robh@kernel.org>
-References: <20220930112237.14411-1-allen-kh.cheng@mediatek.com>
- <20220930112237.14411-2-allen-kh.cheng@mediatek.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220930112237.14411-2-allen-kh.cheng@mediatek.com>
+To: Trevor Wu <trevor.wu@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, p.zabel@pengutronix.de, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, alsa-devel@alsa-project.org, robh+dt@kernel.org, tiwai@suse.com, broonie@kernel.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20220930145701.18790-11-trevor.wu@mediatek.com>
+References: <20220930145701.18790-1-trevor.wu@mediatek.com> <20220930145701.18790-11-trevor.wu@mediatek.com>
+Message-Id: <166457526101.1112313.13428811477972046652.robh@kernel.org>
+Subject: Re: [PATCH 10/12] dt-bindings: mediatek: mt8188: add audio afe document
+Date: Fri, 30 Sep 2022 17:05:43 -0500
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_150017_119392_27FB3B16 
-X-CRM114-Status: GOOD (  17.30  )
+X-CRM114-CacheID: sfid-20220930_150547_184900_B9078D02 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,65 +73,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 30, 2022 at 07:22:36PM +0800, Allen-KH Cheng wrote:
-> In order to make the names of the child nodes more generic, we rename
-> "vcodec" to "video-codec" for decoder in patternProperties and example.
-
-They are either generic or they aren't. Until something generic is 
-defined, I don't think it's worth the churn to change.
-
-
-> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Fri, 30 Sep 2022 22:56:59 +0800, Trevor Wu wrote:
+> Add mt8188 audio afe document.
+> 
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 > ---
->  .../bindings/media/mediatek,vcodec-subdev-decoder.yaml    | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  .../bindings/sound/mt8188-afe-pcm.yaml        | 202 ++++++++++++++++++
+>  1 file changed, 202 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mt8188-afe-pcm.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-> index c4f20acdc1f8..67fde48f991c 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-> @@ -91,7 +91,7 @@ properties:
->  
->  # Required child node:
->  patternProperties:
-> -  '^vcodec-lat@[0-9a-f]+$':
-> +  '^video-codec-lat@[0-9a-f]+$':
 
-Just 'video-codec' doesn't work?
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
->      type: object
->  
->      properties:
-> @@ -145,7 +145,7 @@ patternProperties:
->  
->      additionalProperties: false
->  
-> -  '^vcodec-core@[0-9a-f]+$':
-> +  '^video-codec-core@[0-9a-f]+$':
->      type: object
->  
->      properties:
-> @@ -241,7 +241,7 @@ examples:
->              #size-cells = <2>;
->              ranges = <0 0 0 0x16000000 0 0x40000>;
->              reg = <0 0x16000000 0 0x1000>;		/* VDEC_SYS */
-> -            vcodec-lat@10000 {
-> +            video-codec-lat@10000 {
->                  compatible = "mediatek,mtk-vcodec-lat";
->                  reg = <0 0x10000 0 0x800>;
->                  interrupts = <GIC_SPI 426 IRQ_TYPE_LEVEL_HIGH 0>;
-> @@ -264,7 +264,7 @@ examples:
->                  power-domains = <&spm MT8192_POWER_DOMAIN_VDEC>;
->              };
->  
-> -            vcodec-core@25000 {
-> +            video-codec-core@25000 {
->                  compatible = "mediatek,mtk-vcodec-core";
->                  reg = <0 0x25000 0 0x1000>;
->                  interrupts = <GIC_SPI 425 IRQ_TYPE_LEVEL_HIGH 0>;
-> -- 
-> 2.18.0
-> 
-> 
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/sound/mt8188-afe-pcm.example.dtb: afe@10b10000: clock-names:17: 'adsp_audio26m' was expected
+	From schema: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/sound/mt8188-afe-pcm.yaml
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
