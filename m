@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5CD3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 08:31:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75AB4C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 08:34:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zXH4fIP353e641n0v5VwEjVNcgsi2PzM+4E41Lucg8c=; b=q5YeTettFLZUy7TLzR99MN32zR
-	+5i/38qozrno6JAAadQU3dEmyLm6jm4fFYD8HdFrSROwaUcv7Q57+2GdyR533CxeeM4ChUY9JKg7G
-	00v7ESdRymxxliEOv1m8oPFkr6AxYe+OGaulsM8CDOBkHSh1Md8wlCTMSktBAX/v/4DPCwRE7XGy6
-	Gadm35f9SaJdRIvoVBfWZX4dVVQrk43bbdHMe07T4XIJunGRT5Dt6YRlxP/I7wuoIWaxY8NH+OrOn
-	lTj5w3cfRjeQO9V6SQx2kGLZcnXnyFtZIG1iibWsUs014AjLI+XyXRIXvo0N37I4FOlc5hppLUvTK
-	/ZmXMA0A==;
+	bh=9UZpruKeLYR0zRhCoY5/AQsGUbpu0aIHUOk8oVF3GZA=; b=yANevtWYcR7OQOKvtouCA3B7gC
+	tCcqlEOKlajlzpwTBXpA29mnEhqCVuxpwV7afLNYaf2J3hb8ra4XqA9ZrUapGG4w8W064pKbk/MBZ
+	tJC81RCzWg0se6YULEK4fJQ1sr5SExoGW1vOCdfeSr/k18qmI6THOj8K9qKU4RmBBTrpCQKu/ngbk
+	ycKd6zzEDNXRbn5fBoMsFv1gh6F9Ou7b0scHJ0yAAIF5JzOpPthoQu3Rhisy7Lg8nFrjZ0xHeO0uu
+	OEX3ES7OQuP+84VBPXRTgYalqmj05L1Cc4Hs4MdFarpKh7EadCMmsTG+GTrInZiaPXbsfgsDh2t4p
+	7oZZOeAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeBQc-0084xL-Ot; Fri, 30 Sep 2022 08:31:26 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oeBTt-0086Ba-9k; Fri, 30 Sep 2022 08:34:49 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeBQR-0084sq-3n; Fri, 30 Sep 2022 08:31:16 +0000
+	id 1oeBTe-00865B-OH; Fri, 30 Sep 2022 08:34:36 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 02D0066022BC;
-	Fri, 30 Sep 2022 09:31:11 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CE99D66022C7;
+	Fri, 30 Sep 2022 09:34:32 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664526672;
-	bh=hyzAPdeSGpzLQiqFjtdw3u+LQdIwNgVeLAnrDszyXUc=;
+	s=mail; t=1664526873;
+	bh=9eWFbwDttTEa2f7UeZOgWcaEHQPOEJ/G5ia0l+QXprE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bx7NwB7o+zEJHuy1oiC7fF5w0uTmDeG0jn/Yas48CisfPf2O/6C7qapFGW5BSsTjt
-	 ioRN5aq3EDcFInODuNhuPH//Q93ymyHk5mUBTLT+8L7eBNi75DI+nqj91m8LN7vpNL
-	 fIiwyaeOux/MdfGk+wn08ABf5jhxChB7KzHRveSC9wj2oEGHVLH1NX2zDkKrBXK8kf
-	 ZSg6F+tYYsMPWZUf2ySce0a6b87Vib5eurcHzZjCtIyMjuaQZdU1NQFa1F0CJp4T6J
-	 hEI85V/S4JoH0mtBvph0f0Lv75K2/rZCKcDsZB0JorJwm5ASr/VZtvvK8EIwTs74NB
-	 aRf2Slw9bcoBg==
-Message-ID: <2d378b26-2e08-72ee-a032-20aec436b6f4@collabora.com>
-Date: Fri, 30 Sep 2022 10:31:08 +0200
+	b=ie3b4ifyK44UNVbz3GwiBV3b1jgXjrIAn5at4UtYJX+nyINa1ufdrsHNDNKx+5ZqK
+	 Vl6AOJ2hHXoJOQBVGyRVCGovCI6hlWzolmk4atsvLHl1YK8QUsCsQZaOIPGiGPLEWM
+	 y1t2b9bhLFbAcUv/wCLGTFC8/lAueFFDLtzQso+drK5Hw4pyd0/Tmrj//q/wi7HKiZ
+	 A5t/h7fpzMx9/0vywOfTGNMw6OYEwc5Ga4cbbiYJei1jCnfNz00r+mHLRACHh/4nMM
+	 nEsecc7juymxqZTiD2FH/NZvk66KTyxVgO1waTesQ6vXFjD7vXTme+swciqoyH+/R5
+	 fxtuZpbWO4/iQ==
+Message-ID: <b5443902-ce49-10df-600b-ff3112f183ff@collabora.com>
+Date: Fri, 30 Sep 2022 10:34:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH] ASoC: mediatek: mt8192-mt6359: Set the driver name for
- the card
+Subject: Re: [PATCH v3 1/2] media: dt-bindings: mediatek: Rename child node
+ names for decoder
 Content-Language: en-US
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Mark Brown <broonie@kernel.org>
-Cc: kernel@collabora.com, Jaroslav Kysela <perex@perex.cz>,
- Akihiko Odaki <akihiko.odaki@gmail.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Miaoqian Lin
- <linmq006@gmail.com>, Takashi Iwai <tiwai@suse.com>,
- Tzung-Bi Shih <tzungbi@google.com>, alsa-devel@alsa-project.org,
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org
-References: <20220929205453.1144142-1-nfraprado@collabora.com>
+References: <20220929131309.18337-1-allen-kh.cheng@mediatek.com>
+ <20220929131309.18337-2-allen-kh.cheng@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220929205453.1144142-1-nfraprado@collabora.com>
+In-Reply-To: <20220929131309.18337-2-allen-kh.cheng@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_013115_305149_06BC4A85 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20220930_013434_944359_A73204B2 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,16 +81,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/09/22 22:54, Nícolas F. R. A. Prado ha scritto:
-> The ASoC core automatically populates the driver name field in the card
-> from the card name if left unset. However, since the driver name can be
-> at most 16 characters long, wrapping will happen if the card name is
-> longer, which is the case for the mt8192-mt6359 driver.
+Il 29/09/22 15:13, Allen-KH Cheng ha scritto:
+> In order to make the names of the child nodes more generic, we rename
+> "vcodec" to "video-codec" for decoder in patternProperties and example.
 > 
-> Explicitly set the driver name for the card in order to avoid said
-> wrapping and have a readable driver name exposed to userspace.
-> 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+
+Many thanks for doing this, Allen.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
