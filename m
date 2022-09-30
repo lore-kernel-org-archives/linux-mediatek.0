@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EE87C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 19:07:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0862DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 19:35:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7UvrZW9vDC7+RAHxe3Db0y/3HEdMAVA+5rTcMO4tU5k=; b=D5AinHovLAiPxE66uX9UhsXTsR
-	I5p3FsnLQaHo54VuK8Ic2xYkNigZ+p8ftBWa1MTsvuKSaGojSo+OGlFPdgRJs2lTlgHA2RT8QQNGu
-	5F9BwLhtasiPUMYZRKoV7xSRArUQU+wp71a5Oo6NN9xM/AN9cfJPGGCuJabzSQKkIOwjQCe1h5e4e
-	BUj4eQ7/QItRMzAJkC/OfV9yWo2GKq4VBbZB9er4Vb37CWngCHTXyEgcswqqDv4xdPFew5+Nr5Hsl
-	YiZTkobDPsYSJbhub7pa2zC6DYhk4f8RZozG2mWgaNnS9vJNEDpLsP0ieD8yp0grYIJOupejfbdlH
-	rAuT8rzQ==;
+	bh=AkkQdaDNOYZMSLUtzMLUyqsxir9M4nKI8xzeqoUNUqg=; b=v67foi9f7uaV1VOv8J8YjvOE0K
+	GI3vw77WKx8ovcpSt3Wx2dBwo+ZZDXH+25DrHxx1E6Sus5xpaB73rKe0BJzieERxbyMXPLwQgDK8Z
+	VFz3IOoHoU7kpwlNILEi0kaTu0IQXr7sx/Z71biYQXXvnmbAeaVgeK7FpV31rVFPxEhl+eAdxgacI
+	9ckx/nCNflIOFu7+hxrlWOb8/oAnxv/iwpoLuF1Vr1lC8NWXFgjBbd1AYeuxaKOVcAuW/xC2swbV/
+	s3P8+Yciauy602qSE7iqmyHdOqoDmoye9N5PK86lbmF0+/LDj01tPXCppzRwVd5UisEWbNVnMu/uk
+	TCn7P8UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeLM8-00B8cb-Mt; Fri, 30 Sep 2022 19:07:28 +0000
-Received: from mail-oi1-f180.google.com ([209.85.167.180])
+	id 1oeLmp-00BD8F-3M; Fri, 30 Sep 2022 19:35:03 +0000
+Received: from mail-oa1-f52.google.com ([209.85.160.52])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeLM6-00B8bE-3W; Fri, 30 Sep 2022 19:07:27 +0000
-Received: by mail-oi1-f180.google.com with SMTP id d64so5662302oia.9;
-        Fri, 30 Sep 2022 12:07:24 -0700 (PDT)
+	id 1oeLmf-00BD4G-41; Fri, 30 Sep 2022 19:34:54 +0000
+Received: by mail-oa1-f52.google.com with SMTP id 586e51a60fabf-13221a3fea3so131858fac.5;
+        Fri, 30 Sep 2022 12:34:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=7UvrZW9vDC7+RAHxe3Db0y/3HEdMAVA+5rTcMO4tU5k=;
-        b=ol1xV3aNRTb088ytA4KjaNwjV+MqS0XApYZ6zKH+SGl+q/rdoI6YMIPJWJ9XKbvppv
-         z4+wpd+8q4sCTlxLO+PlEaQxbi68DCF5kbzh6t5I+whX0W+JJCp3eql8Zl+cMh3BQYel
-         yngE9OsB37bLMonfqZnCyn2uAbwqJ58mi7DlBvTTYJcd29jb1a13oBtJh7jCjJg6995u
-         f/ssqoJadyiI6GCnQ+o0+FCZzbuUOqxYGRO2/ENmVYMCu8EA4TvuNYuAT038KacDy27v
-         iXuaOCurFTUev1AAoKI9W8f3KTDlubJdXLiiGLSUS6u9vfPN2/qoODiecsvVr8m3HTKi
-         XL4g==
-X-Gm-Message-State: ACrzQf1F5YKX1XDLgKPASO8OqJ0jlTy/ELJ3bxvMr2p8KzUpmJHG9s3V
-	vj3FRBdETdAeqLb7Y7sdVQ==
-X-Google-Smtp-Source: AMsMyM5VXIZVfTULchEFX18RTnyFn2QWWcEhn3g4x9WvoM1p60VQNjZFgoQU5cttkyqY8L9g9cfcWw==
-X-Received: by 2002:a05:6808:645:b0:353:2f37:553c with SMTP id z5-20020a056808064500b003532f37553cmr39700oih.212.1664564843865;
-        Fri, 30 Sep 2022 12:07:23 -0700 (PDT)
+        bh=AkkQdaDNOYZMSLUtzMLUyqsxir9M4nKI8xzeqoUNUqg=;
+        b=HP4va2dGQ/YL5l1I1mCMu1hI+e28OfHrz/iSQcuNXBwSuG+l/UCbwoqC2wJbq56WTe
+         EjENTGOPkoGFSN+o2S64l6s6/mkT7HbDHooGTjF27nxcNYXmPea9KAeCsxBPdflJ3rsq
+         6M4QITJ809QgbvHUqNPElp3wSGjSNmLjCGrVc+Jo6EhXDSduqw4k9q0dGQzrzC3L+Z+7
+         1SSshNnq9zQV8dzUkB6U4L4Bn3LlOk2qRKXzKqWLqWW+FUiFy6f5FtDvRxlz4eE6XmV2
+         PT36f23lJntf2QyeNvYhRDFbG6olcn/bdJTQj6RQRiW+1kvNhBfD7GOBH5LeOV7h4GOg
+         wdPQ==
+X-Gm-Message-State: ACrzQf3+ryI0EO6GC7Sd29w6CbEh4De1HuDS92gMQIf1VVKUSWH301Qv
+	H/4IqM8vi/hjsQ6Dafjq2jShdFtk5g==
+X-Google-Smtp-Source: AMsMyM5Veku3oHrh2CrG3IifJOQGymTa3zsIQ8rtoCCekJEK7OtgxQ9USLdqDC3TTRMYEL41zH8kMA==
+X-Received: by 2002:a05:6870:ecaa:b0:131:e816:b6a5 with SMTP id eo42-20020a056870ecaa00b00131e816b6a5mr3355975oab.229.1664566485639;
+        Fri, 30 Sep 2022 12:34:45 -0700 (PDT)
 Received: from macbook.herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id y37-20020a05687045a500b00130e66a7644sm905655oao.25.2022.09.30.12.07.22
+        by smtp.gmail.com with ESMTPSA id z9-20020a056870738900b000f5e89a9c60sm939654oam.3.2022.09.30.12.34.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Sep 2022 12:07:23 -0700 (PDT)
-Received: (nullmailer pid 692263 invoked by uid 1000);
-	Fri, 30 Sep 2022 19:07:22 -0000
-Date: Fri, 30 Sep 2022 14:07:22 -0500
+        Fri, 30 Sep 2022 12:34:45 -0700 (PDT)
+Received: (nullmailer pid 754872 invoked by uid 1000);
+	Fri, 30 Sep 2022 19:34:44 -0000
+Date: Fri, 30 Sep 2022 14:34:44 -0500
 From: Rob Herring <robh@kernel.org>
-To: Johnson Wang <johnson.wang@mediatek.com>
-Cc: robh+dt@kernel.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, sboyd@kernel.org, angelogioacchino.delregno@collabora.com, yu-chang.wang@mediatek.com, kuan-hsin.lee@mediatek.com, Edward-JW Yang <edward-jw.yang@mediatek.com>, krzysztof.kozlowski+dt@linaro.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com, devicetree@vger.kernel.org
-Subject: Re: [PATCH v3 2/4] dt-bindings: arm: mediatek: Add new bindings of
- MediaTek frequency hopping
-Message-ID: <166456484158.691972.4837005507829251946.robh@kernel.org>
-References: <20220929114624.16809-1-johnson.wang@mediatek.com>
- <20220929114624.16809-3-johnson.wang@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: daniel.lezcano@linaro.org, tglx@linutronix.de, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, krzysztof.kozlowski+dt@linaro.org
+Subject: Re: [PATCH 2/2] dt-bindings: timer: mediatek: Convert to json-schema
+Message-ID: <166456648367.754820.4078509083909702972.robh@kernel.org>
+References: <20220929122901.614315-1-angelogioacchino.delregno@collabora.com>
+ <20220929122901.614315-3-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220929114624.16809-3-johnson.wang@mediatek.com>
+In-Reply-To: <20220929122901.614315-3-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_120726_165593_A58E9512 
-X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-CacheID: sfid-20220930_123453_203289_E94A8ADD 
+X-CRM114-Status: UNSURE (   9.47  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,17 +78,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Sep 2022 19:46:22 +0800, Johnson Wang wrote:
-> Add the new binding documentation for MediaTek frequency hopping
-> and spread spectrum clocking control.
+On Thu, 29 Sep 2022 14:29:01 +0200, AngeloGioacchino Del Regno wrote:
+> Convert the MediaTek SoC timer txt binding to json-schema.
 > 
-> Co-developed-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> Signed-off-by: Edward-JW Yang <edward-jw.yang@mediatek.com>
-> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../arm/mediatek/mediatek,mt8186-fhctl.yaml   | 53 +++++++++++++++++++
->  1 file changed, 53 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8186-fhctl.yaml
+>  .../bindings/timer/mediatek,mtk-timer.txt     | 47 ----------
+>  .../bindings/timer/mediatek,timer.yaml        | 86 +++++++++++++++++++
+>  2 files changed, 86 insertions(+), 47 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+>  create mode 100644 Documentation/devicetree/bindings/timer/mediatek,timer.yaml
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
