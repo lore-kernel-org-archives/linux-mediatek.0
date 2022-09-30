@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0424FC4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 10:23:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50CB4C43219
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 10:23:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5uwNZqnaq1ccbDTcWvY36ezPqqwuQtAzcWb1OYfNQLM=; b=umEzPG+QSFfsRhK1kOnQBal4es
-	7qg1bcUYgCoc5O2SGNhpzksxTZyF6RmMKxOebZOxtgd82rloH+BZqJK8T1oe9Rm5HtjoxMzTXGnff
-	g2DULzSKkbLks3Fwl+kRvHoOxwQ7aNGL6D38JBYR+oF0rQ8nCf5NoRT1BD/cjbshj2mFmpN6Qgt4p
-	UELn10Wf11mCVCzlJ3dB9/9MoZXrc1b7qpT2dWoA+Nso0s0Klol4lgMuEMsw5hitqelCbWUWS0OUL
-	CzTi6UvyAvVIQjI0XFLcii9gMR/dUEWRCSRDw2m4JscvS+MTSYCGIhkRe9Lilgy5BleoawR2HM7Gs
-	xFPItQbA==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Xt2v3fsvVPs1BpqYWYVZtY0Gpjwk0DyXlw8YbTAf0is=; b=mfbeSmdWr3YXQVjXFBW4asz0Hr
+	E5qyEUzW8gG7+7pOvbAY8LqfmahFgYQ3qDVEQmRLAMcwizncCVwD/bOlKvOX34m5c+v1HwG0KC2s0
+	RH0BZTSTFoQgZbvsjq5jIOvMLwENrMV5lR6RtA/eWKuWqMqHSvhRZ1NxW7v+/yYC3YvwpQg5rRqpT
+	zgR4hyvXlbyBhEIxOfvBOMCvqbdirp/MNxTCXekDdR5SMqoM2PWRtWK16iVzyBL/ptB2X7JGYWr1N
+	trSVoVZ1vr/lXm/ukDI2U4N2N8cJeCPspf25lnaFFzrnII/euVMTz080rP9FQgKc2mCBDwlirH5qf
+	nVGe3+cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeDBH-008ZR8-Vf; Fri, 30 Sep 2022 10:23:43 +0000
+	id 1oeDBL-008ZSz-Jw; Fri, 30 Sep 2022 10:23:47 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeDBE-008ZPh-W3
-	for linux-mediatek@lists.infradead.org; Fri, 30 Sep 2022 10:23:42 +0000
-X-UUID: b5404814e1504fbb8ae887e616e2fece-20220930
+	id 1oeDBF-008ZQ6-W7
+	for linux-mediatek@lists.infradead.org; Fri, 30 Sep 2022 10:23:43 +0000
+X-UUID: e23e584ee0734b16a333e99b71d06d4f-20220930
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=5uwNZqnaq1ccbDTcWvY36ezPqqwuQtAzcWb1OYfNQLM=;
-	b=P7az/Av8d0BbnRj5qJSFIf+6zmwLM8KbvC/bPlbvW3EYFU2Rsj8txQmAk7gsOgAp6V5IF1AhJ6J2URI5DKYNFLQ+46b9alifB+Ha9Afr9kZYl1/VD4Dy2AVA/u3q/8t/r8HtgQem92P9FEb7+Bi6DxWZ9Gkz3Ye+21LhQBKES5M=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Xt2v3fsvVPs1BpqYWYVZtY0Gpjwk0DyXlw8YbTAf0is=;
+	b=T++7esW+F/a3tuHULK1ZX5tigXhePJxr7jn2/BW22415HXhO9GAWQNGBKEHr4PerDtEIOAZTtfOTxeariuMq7u/nmirgWjuPKv2gJncg+ZPkU6OaevFaYl1s++xFAc46mFMecrPwoj9zJq3LfMf2aI/o782iQYuycAFn+DcBMq8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:987b23ba-3392-454f-8304-153faab5d6c8,IP:0,U
+X-CID-O-INFO: VERSION:1.1.11,REQID:f25a5d44-2e98-46ba-b519-4ef4445531ec,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:8a4fc8e4-87f9-4bb0-97b6-34957dc0fbbe,B
+X-CID-META: VersionHash:39a5ff1,CLOUDID:2979a1a3-dc04-435c-b19b-71e131a5fc35,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: b5404814e1504fbb8ae887e616e2fece-20220930
+X-UUID: e23e584ee0734b16a333e99b71d06d4f-20220930
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1197350463; Fri, 30 Sep 2022 03:23:35 -0700
+	with ESMTP id 701852277; Fri, 30 Sep 2022 03:23:35 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
@@ -55,18 +55,17 @@ CC: <linux-media@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
 	<moudy.ho@mediatek.com>
-Subject: [PATCH v1 1/2] media: platform: mtk-mdp3: fix error handling in mdp_cmdq_send()
-Date: Fri, 30 Sep 2022 18:23:05 +0800
-Message-ID: <20220930102306.13201-2-moudy.ho@mediatek.com>
+Subject: [PATCH v1 0/2] Fix error handling for MDP3
+Date: Fri, 30 Sep 2022 18:23:04 +0800
+Message-ID: <20220930102306.13201-1-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220930102306.13201-1-moudy.ho@mediatek.com>
-References: <20220930102306.13201-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_032341_050618_3B848380 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20220930_032342_068510_1E1EB797 
+X-CRM114-Status: UNSURE (   7.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,126 +80,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Increase and refine the goto label in mdp_cmdq_send() to avoid
-double free and facilitate traceability.
-Also, remove redundant work queue event in blocking function
-mdp_cmdq_send().
+Hi,
+This series fixes some error handling in MDP3 in response to the bug report
+submitted by Dan Carpenter (Message ID = YxB1E00e8D6P4W2e@kili)
 
-Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver")
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
----
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 47 ++++++++++---------
- 1 file changed, 26 insertions(+), 21 deletions(-)
+Moudy Ho (2):
+  media: platform: mtk-mdp3: fix error handling in mdp_cmdq_send()
+  media: platform: mtk-mdp3: fix error handling about components
+    clock_on
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-index 86c054600a08..e194dec8050a 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-@@ -252,10 +252,9 @@ static int mdp_cmdq_pkt_create(struct cmdq_client *client, struct cmdq_pkt *pkt,
- 	dma_addr_t dma_addr;
- 
- 	pkt->va_base = kzalloc(size, GFP_KERNEL);
--	if (!pkt->va_base) {
--		kfree(pkt);
-+	if (!pkt->va_base)
- 		return -ENOMEM;
--	}
-+
- 	pkt->buf_size = size;
- 	pkt->cl = (void *)client;
- 
-@@ -368,25 +367,30 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 	cmd = kzalloc(sizeof(*cmd), GFP_KERNEL);
- 	if (!cmd) {
- 		ret = -ENOMEM;
--		goto err_cmdq_data;
-+		goto err_cancel_job;
- 	}
- 
--	if (mdp_cmdq_pkt_create(mdp->cmdq_clt, &cmd->pkt, SZ_16K)) {
--		ret = -ENOMEM;
--		goto err_cmdq_data;
--	}
-+	ret = mdp_cmdq_pkt_create(mdp->cmdq_clt, &cmd->pkt, SZ_16K);
-+	if (ret)
-+		goto err_free_cmd;
- 
- 	comps = kcalloc(param->config->num_components, sizeof(*comps),
- 			GFP_KERNEL);
- 	if (!comps) {
- 		ret = -ENOMEM;
--		goto err_cmdq_data;
-+		goto err_destroy_pkt;
- 	}
- 
- 	path = kzalloc(sizeof(*path), GFP_KERNEL);
- 	if (!path) {
- 		ret = -ENOMEM;
--		goto err_cmdq_data;
-+		goto err_free_comps;
-+	}
-+
-+	ret = mtk_mutex_prepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
-+	if (ret) {
-+		dev_err(dev, "Fail to enable mutex clk\n");
-+		goto err_free_path;
- 	}
- 
- 	path->mdp_dev = mdp;
-@@ -406,15 +410,13 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 	ret = mdp_path_ctx_init(mdp, path);
- 	if (ret) {
- 		dev_err(dev, "mdp_path_ctx_init error\n");
--		goto err_cmdq_data;
-+		goto err_free_path;
- 	}
- 
--	mtk_mutex_prepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
--
- 	ret = mdp_path_config(mdp, cmd, path);
- 	if (ret) {
- 		dev_err(dev, "mdp_path_config error\n");
--		goto err_cmdq_data;
-+		goto err_free_path;
- 	}
- 	cmdq_pkt_finalize(&cmd->pkt);
- 
-@@ -433,7 +435,7 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 	ret = mdp_comp_clocks_on(&mdp->pdev->dev, cmd->comps, cmd->num_comps);
- 	if (ret) {
- 		dev_err(dev, "comp %d failed to enable clock!\n", ret);
--		goto err_clock_off;
-+		goto err_free_path;
- 	}
- 
- 	dma_sync_single_for_device(mdp->cmdq_clt->chan->mbox->dev,
-@@ -450,17 +452,20 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 	return 0;
- 
- err_clock_off:
--	mtk_mutex_unprepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
- 	mdp_comp_clocks_off(&mdp->pdev->dev, cmd->comps,
- 			    cmd->num_comps);
--err_cmdq_data:
-+err_free_path:
-+	mtk_mutex_unprepare(mdp->mdp_mutex[MDP_PIPE_RDMA0]);
- 	kfree(path);
--	atomic_dec(&mdp->job_count);
--	wake_up(&mdp->callback_wq);
--	if (cmd && cmd->pkt.buf_size > 0)
--		mdp_cmdq_pkt_destroy(&cmd->pkt);
-+err_free_comps:
- 	kfree(comps);
-+err_destroy_pkt:
-+	mdp_cmdq_pkt_destroy(&cmd->pkt);
-+err_free_cmd:
- 	kfree(cmd);
-+err_cancel_job:
-+	atomic_dec(&mdp->job_count);
-+
- 	return ret;
- }
- EXPORT_SYMBOL_GPL(mdp_cmdq_send);
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 51 ++++++++++---------
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 24 ++++++---
+ 2 files changed, 45 insertions(+), 30 deletions(-)
+
 -- 
 2.18.0
 
