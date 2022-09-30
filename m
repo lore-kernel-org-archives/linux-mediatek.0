@@ -4,69 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3492EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 10:30:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 485B4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 10:34:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OPkDtzEKMc44Gee321IZuVadohuiA7avmD+GueB2S78=; b=JLbBBt8ruqOlwlYWydtfENzIud
-	RMhg6cAH/aiwKs4F1UoT86UbFUI05IHnGyTk3I0F99F/bQzY328d8sFdVPSmB6lN1vGEbJ8gvB48R
-	SbKFqer6Gl7iH3djBg3Q0vsKa5eV6Z8V0QShZtkTIxFUqRI6fzGkNp2uX3u1kSxrHNfI+5tNx7Lp1
-	W32ZKo82IaWaKYKckeTImCcTF+KtOSlc8RZ5XXDWW/VEuipeYz3QRX4peCF2cKZhoN7UChB8TYJ1K
-	4+UZJ8jzOFSPCeLEPtXUrxuGWEjTyLTgYt7VX7mYmCMwhrlEs4YMbfeCZNpkwzG63L49oIjaX7wa6
-	+6hKRtVQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pE1xT0Jt/xnuNeGgLORmNJ255mPzgiZ61ewFEalF9wE=; b=kgD3VA6R8oYA0vqh8LtgmoVgkG
+	tZaegI3T8T2fx5LTMdiRxHmw2r1E+/tg6fwvEWm8nyxeqZ/lUF7cCp6AZHhvzTNRRDS7yqLGlWh28
+	pxMIco935HpW3Lhc05V3Bgse36pSYMh8KNlXIjcHiq3Nsp+VuVEWnLoDOBsipeXeoa4bpFSpe4oWv
+	idTfNCxEFW1EUEajP83hNz7SVT7mS4bwPkwuGiH8/sBFOK7aVMjByAANxrEdL0p0C0y8iL/PAGl0W
+	gu549VinoRgTZcrjHaZWNchRBSIx7qPvsl4QCe6rk+k7jGJmSAt0v7s51pPCJsOQXp/c+3U9qATu5
+	krYkbpnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeDHt-008bAH-7f; Fri, 30 Sep 2022 10:30:33 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oeDLG-008c7V-NN; Fri, 30 Sep 2022 10:34:02 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeDHq-008b9E-KG; Fri, 30 Sep 2022 10:30:32 +0000
-X-UUID: 34ccb81f49dc4177a21397a449fc3f96-20220930
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=OPkDtzEKMc44Gee321IZuVadohuiA7avmD+GueB2S78=;
-	b=igWghUbfGFwIsiTVFXR6YSxxSBy/neK59Jsh62JPDmu/+3fjh1MqzTu5iv3ZY2kGAw8FfDZpx2b8FL5CrpuMGrvm83vhrzTatGf0GYF0CZybTbc/oLL92ZVLcXXaLKYj9kT+iD9iy2vRW+8ziUFGsXeTEKTKS7aSY5c2V2V4sRk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:c0ca10c9-2abf-4019-9ed7-6886d0036370,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:d5ea9307-1cee-4c38-b21b-a45f9682fdc0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 34ccb81f49dc4177a21397a449fc3f96-20220930
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yongqiang.niu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1467041668; Fri, 30 Sep 2022 03:30:24 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 30 Sep 2022 17:59:18 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 30 Sep 2022 17:59:17 +0800
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
-	<hsinyi@chromium.org>, Yongqiang Niu <yongqiang.niu@mediatek.com>
-Subject: [PATCH v7, 1/3] mailbox: mtk-cmdq: add gce software ddr enable private data
-Date: Fri, 30 Sep 2022 17:59:13 +0800
-Message-ID: <20220930095915.13684-2-yongqiang.niu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220930095915.13684-1-yongqiang.niu@mediatek.com>
-References: <20220930095915.13684-1-yongqiang.niu@mediatek.com>
+	id 1oeDL6-008c4s-CJ; Fri, 30 Sep 2022 10:33:53 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id A01466222B;
+	Fri, 30 Sep 2022 10:33:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3EA7FC433C1;
+	Fri, 30 Sep 2022 10:33:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1664534031;
+	bh=0X3E+aPWputC4RRQGG3fy3Z4J+gXjer7t+Iz6mKE8MY=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=miPRh/4Ev5GjJcFQskAKTih6sZnHx5DXHx+D0MB7YLVHLqslzLM4Q2TSezOZJysRF
+	 syIY9FpaCy3YZeDb93+RJEr2N4shFAWiiHUb2f9oQF0v0AtC4UNwArHot8UBou4Eeu
+	 E6nWvblbC0jhiPd/E4ko48EuDLij+86NjGXw72a4Qwu2Li5uLmGjxHIi4J9Gp/Sc27
+	 sJi4qMDTrAUp4En1jTjokMOtNER8DAYPTmD4LLvNWZ2RTT/6QIJJ6c47v3dwOlxg/v
+	 s4Gbe/PYJ+YzPNpXtlhuS2TD/BG/sx5obqxFMaMPylFkELAh+e8AHHQCtby2BldfdX
+	 APoRlYJAL4Z4A==
+From: Mark Brown <broonie@kernel.org>
+To: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Miaoqian Lin <linmq006@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org,
+ Akihiko Odaki <akihiko.odaki@gmail.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ kernel@collabora.com, Tzung-Bi Shih <tzungbi@google.com>, Takashi Iwai <tiwai@suse.com>,
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20220929205453.1144142-1-nfraprado@collabora.com>
+References: <20220929205453.1144142-1-nfraprado@collabora.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8192-mt6359: Set the driver name for the card
+Message-Id: <166453402795.109056.12992219800008251777.b4-ty@kernel.org>
+Date: Fri, 30 Sep 2022 11:33:47 +0100
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_033030_971678_C1638F84 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20220930_033352_478797_9EA4CA43 
+X-CRM114-Status: GOOD (  16.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,71 +75,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-if gce work control by software, we need set software enable
-for MT8186 Soc
+On Thu, 29 Sep 2022 16:54:53 -0400, Nícolas F. R. A. Prado wrote:
+> The ASoC core automatically populates the driver name field in the card
+> from the card name if left unset. However, since the driver name can be
+> at most 16 characters long, wrapping will happen if the card name is
+> longer, which is the case for the mt8192-mt6359 driver.
+> 
+> Explicitly set the driver name for the card in order to avoid said
+> wrapping and have a readable driver name exposed to userspace.
+> 
+> [...]
 
-there is a handshake flow between gce and ddr hardware,
-if not set ddr enable flag of gce, ddr will fall into idle
-mode, then gce instructions will not process done.
-we need set this flag of gce to tell ddr when gce is idle or busy
-controlled by software flow.
+Applied to
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 9465f9081515..04eb44d89119 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -38,6 +38,8 @@
- #define CMDQ_THR_PRIORITY		0x40
- 
- #define GCE_GCTL_VALUE			0x48
-+#define GCE_CTRL_BY_SW				GENMASK(2, 0)
-+#define GCE_DDR_EN				GENMASK(18, 16)
- 
- #define CMDQ_THR_ACTIVE_SLOT_CYCLES	0x3200
- #define CMDQ_THR_ENABLED		0x1
-@@ -80,6 +82,7 @@ struct cmdq {
- 	bool			suspended;
- 	u8			shift_pa;
- 	bool			control_by_sw;
-+	bool			sw_ddr_en;
- 	u32			gce_num;
- };
- 
-@@ -87,6 +90,7 @@ struct gce_plat {
- 	u32 thread_nr;
- 	u8 shift;
- 	bool control_by_sw;
-+	bool sw_ddr_en;
- 	u32 gce_num;
- };
- 
-@@ -129,7 +133,11 @@ static void cmdq_init(struct cmdq *cmdq)
- 
- 	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
- 	if (cmdq->control_by_sw)
--		writel(0x7, cmdq->base + GCE_GCTL_VALUE);
-+		writel(GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
-+
-+	if (cmdq->sw_ddr_en)
-+		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
-+
- 	writel(CMDQ_THR_ACTIVE_SLOT_CYCLES, cmdq->base + CMDQ_THR_SLOT_CYCLES);
- 	for (i = 0; i <= CMDQ_MAX_EVENT; i++)
- 		writel(i, cmdq->base + CMDQ_SYNC_TOKEN_UPDATE);
-@@ -543,6 +551,7 @@ static int cmdq_probe(struct platform_device *pdev)
- 	cmdq->thread_nr = plat_data->thread_nr;
- 	cmdq->shift_pa = plat_data->shift;
- 	cmdq->control_by_sw = plat_data->control_by_sw;
-+	cmdq->sw_ddr_en = plat_data->sw_ddr_en;
- 	cmdq->gce_num = plat_data->gce_num;
- 	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
- 	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_SHARED,
--- 
-2.25.1
+Thanks!
 
+[1/1] ASoC: mediatek: mt8192-mt6359: Set the driver name for the card
+      commit: 4674284aa74cfc6db0c54c16f9557ed8c3552409
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
