@@ -4,84 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 027B7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 15:13:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71146C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 15:15:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dlb49Ey2eOFCdFTii48jVDGT4eEUJ8R4qplRGxWBowY=; b=0rrXQzG0dvhpYK59QZsNXuM6Zy
-	p3HHHXDQKU6vaQASh5IN/3DKt78SfWYWlqXqHrAK/hMM5mTPy/mfUwdZS65WuKAmLtTsDisguNIHx
-	mvQoNSN0h4hufYkjsNUYoyPCQozEJ6Tm29xfp58Q6bs0pRZI1bJRE2wKurk9tNc9O/UC+2OeYXKHI
-	NqST48hcQsncPNYN5zQSCuBHEjBzyJf4wzmn3KzJ3iGUw6dsrhWIEu5/GTcTxV3ir6OhZD8anaOAD
-	EfvKj3kCxtZYt43/lors8dMmkbwe+Xn4BPlILETxtbXkt58rpOB8SdC7SV5rJdRDTv78V3eNpQq41
-	SuRuI6yA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VAcWbFOXDxoISljdIrQLvVsaajg+seadsVMOrc7A3+U=; b=PICWdVdA0qjryAPzACH11w3m4B
+	Wd9tS7OEkiRWEeKBQhF5HGJ9HBGLbt3jg4IAHj04PZkCtK9rvJTP+0DbImLYrfId9DOZ4oiGfKzCB
+	9jbw9n15uGX6a87HEUFIe2glcaWQbawiPa2+Y6xcdIYK0rng7x/oRwSqokgDS3//wVjDeqwdsTzRs
+	BNtFbrz456F6kkTgHl6PbpuKlmiGUdce4BRLaSjjd7ph7zN6FXcQrrzEUsz9laM70TTxu3i/F4etU
+	9Y3ekp9MMfPIRKayw/ltqS5tCaBxrO9bF7ZuMuevAwKeLjB6CAm3pz4y7AUr0BJZQh888AJR5UalX
+	acyNGvBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeHhq-00A530-MW; Fri, 30 Sep 2022 15:13:38 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oeHjB-00A5mY-R8; Fri, 30 Sep 2022 15:15:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeHhe-00A4yK-Gh; Fri, 30 Sep 2022 15:13:27 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A0FFF6238E;
-	Fri, 30 Sep 2022 15:13:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80030C433D6;
-	Fri, 30 Sep 2022 15:13:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664550805;
-	bh=+Iv0NzKlgcI3YuZ72jkDhgpQgSqXaS755YKw8LTmiNA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=XkoFjbyO6CW1DbTlNWFGtVO9HyfAwNyqnM7bj0FCzAeVWV1wdElbRGHr9u4ID99V8
-	 MhlQhz8bKq2Ir5c7GCTbzBVRDV99nc4nWLKsesOmqqugh8j3K6kvw185RHbjWB5Wws
-	 TF1/3B4nymXTjZnEO/iLHJFxi82VYWboEwUe5sXbABcuRkoKD8iBzG+uUWKPgwZzbn
-	 ZQNPsvZ5IE6P1Pqy+Br1Y05hlXEwQ6fH08cljj1EoNbQV1ePaQYRMRr4vAnE2/f20a
-	 fqvHcX8cUtelATR+IlJE8NXU+iLgF5JOMgHl8tEIH36V04asdi5xA7b/xXwmlae2NN
-	 eX/3++IfC2QJg==
-Date: Fri, 30 Sep 2022 08:13:22 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Ido Schimmel <idosch@nvidia.com>
-Cc: netdev@kapio-technology.com, davem@davemloft.net,
- netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>, Andrew
- Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Vladimir
- Oltean <olteanv@gmail.com>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Kurt Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens
- <hauke@hauke-m.de>, Woojung Huh <woojung.huh@microchip.com>,
- UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>, Landen
- Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>, Jiri Pirko
- <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>, Roopa Prabhu
- <roopa@nvidia.com>, Nikolay Aleksandrov <razor@blackwall.org>, Shuah Khan
- <shuah@kernel.org>, Russell King <linux@armlinux.org.uk>, Christian Marangi
- <ansuelsmth@gmail.com>, Daniel Borkmann <daniel@iogearbox.net>, Yuwei Wang
- <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>, Florent Fourcot
- <florent.fourcot@wifirst.fr>, Hans Schultz <schultz.hans@gmail.com>,
- Joachim Wiberg <troglobit@gmail.com>, Amit Cohen <amcohen@nvidia.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, bridge@lists.linux-foundation.org,
- linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v6 net-next 0/9] Extend locked port feature with FDB
- locked flag (MAC-Auth/MAB)
-Message-ID: <20220930081322.2835f41b@kernel.org>
-In-Reply-To: <YzcFbH5lX3l1K8Fu@shredder>
-References: <20220928150256.115248-1-netdev@kapio-technology.com>
-	<20220929091036.3812327f@kernel.org>
-	<12587604af1ed79be4d3a1607987483a@kapio-technology.com>
-	<20220929112744.27cc969b@kernel.org>
-	<ab488e3d1b9d456ae96cfd84b724d939@kapio-technology.com>
-	<Yzb3oNGNtq4GCS3M@shredder>
-	<20220930075204.608b6351@kernel.org>
-	<YzcFbH5lX3l1K8Fu@shredder>
+	id 1oeHiO-00A5LD-0B
+	for linux-mediatek@lists.infradead.org; Fri, 30 Sep 2022 15:14:14 +0000
+X-UUID: b876d3d05fb047578e39fa8bbc23808c-20220930
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VAcWbFOXDxoISljdIrQLvVsaajg+seadsVMOrc7A3+U=;
+	b=pDvIHLCcfGOPExLXETcM6kAHYt9cqptGcAOvywl2iu05COg6dHUE0IMr2lpVTsDDIhYvql78lQx4hz2EnALPZmCl4DBaaG0zyYVF7vLye5t6H341RqifeNGwPDNBZrtWfFjL6ppFxuMk1vxxeYNX1k08UgYNA+yI5ffR+gTduQ0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:ad1fd359-9163-4854-963d-123e47269897,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:39a5ff1,CLOUDID:1351cde4-87f9-4bb0-97b6-34957dc0fbbe,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: b876d3d05fb047578e39fa8bbc23808c-20220930
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 715491041; Fri, 30 Sep 2022 08:14:07 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3;
+ Fri, 30 Sep 2022 23:13:45 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 30 Sep 2022 23:13:45 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH 6/6] wifi: mt76: mt7915: set correct antenna for radar detection on MT7915D
+Date: Fri, 30 Sep 2022 23:13:15 +0800
+Message-ID: <20220930151315.19012-6-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220930151315.19012-1-shayne.chen@mediatek.com>
+References: <20220930151315.19012-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_081326_670836_EC731710 
-X-CRM114-Status: GOOD (  16.87  )
+X-CRM114-CacheID: sfid-20220930_081412_089724_5772682A 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,29 +80,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 30 Sep 2022 18:04:12 +0300 Ido Schimmel wrote:
-> On Fri, Sep 30, 2022 at 07:52:04AM -0700, Jakub Kicinski wrote:
-> > On Fri, 30 Sep 2022 17:05:20 +0300 Ido Schimmel wrote:  
-> > > You can see build issues on patchwork:  
-> > 
-> > Overall a helpful response, but that part you got wrong.
-> > 
-> > Do not point people to patchwork checks, please. It will only encourage
-> > people to post stuff they haven't build tested themselves.
-> > 
-> > It's documented:
-> > 
-> > https://www.kernel.org/doc/html/latest/process/maintainer-netdev.html#running-all-the-builds-and-checks-locally-is-a-pain-can-i-post-my-patches-and-have-the-patchwork-bot-validate-them  
-> 
-> Did you read my reply? I specifically included this link so that you
-> won't tell me I'm encouraging people to build test their patches by
-> posting to netdev.
+For MT7915D, correct antenna index should be set to let DFS radar
+detection work on the 5 GHz band.
 
-Yeah, I noticed the link after, but I think my point stands. 
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c   | 15 +++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7915/mt7915.h    |  1 +
+ 2 files changed, 16 insertions(+)
 
-You show someone the patchwork checks and then at the end of the "also"
-section put a link on how it's not okay to abuse it. Not a clear enough
-instruction.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index be97dede2634..43a7a639cc88 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -1814,6 +1814,13 @@ static int mt7915_dfs_start_rdd(struct mt7915_dev *dev, int chain)
+ 	if (err < 0)
+ 		return err;
+ 
++	if (is_mt7915(&dev->mt76)) {
++		err = mt76_connac_mcu_rdd_cmd(&dev->mt76, RDD_SET_WF_ANT, chain,
++					      0, dev->dbdc_support ? 2 : 0);
++		if (err < 0)
++			return err;
++	}
++
+ 	return mt76_connac_mcu_rdd_cmd(&dev->mt76, RDD_DET_MODE, chain,
+ 				       MT_RX_SEL0, 1);
+ }
+@@ -1934,6 +1941,14 @@ int mt7915_dfs_init_radar_detector(struct mt7915_phy *phy)
+ 	if (err < 0)
+ 		return err;
+ 
++	if (is_mt7915(&dev->mt76)) {
++		err = mt76_connac_mcu_rdd_cmd(&dev->mt76, RDD_SET_WF_ANT,
++					      phy->band_idx, 0,
++					      dev->dbdc_support ? 2 : 0);
++		if (err < 0)
++			return err;
++	}
++
+ 	mt7915_dfs_stop_radar_detector(phy);
+ 	phy->mt76->dfs_state = MT_DFS_STATE_DISABLED;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 1eb11617a625..c90a148d6239 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -357,6 +357,7 @@ enum mt7915_rdd_cmd {
+ 	RDD_DET_MODE,
+ 	RDD_RADAR_EMULATE,
+ 	RDD_START_TXQ = 20,
++	RDD_SET_WF_ANT = 30,
+ 	RDD_CAC_START = 50,
+ 	RDD_CAC_END,
+ 	RDD_NORMAL_START,
+-- 
+2.25.1
 
-*never* point people to the patchwork checks, *please*
 
