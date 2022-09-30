@@ -4,69 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABFE6C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 16:47:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A033C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 18:23:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Yjl+Bzl2sRx8O3JnLZlmYNW0isbqNQocd4L3f9Rikao=; b=vGt89N58TsZzo4fQbpBMFHXpj9
-	b4OR/+EKz2x8IxAkoXNJb4bU3N4J8wDXaREJU4ic1uCmlZY0XcWZPzIJVrnbn3d8moek7RXZx1Eam
-	ZH4o8+9Y+9fmrg4Sk7MhQvxULNhNFsAtACd4bOLmNtYdrErr0p3AhnDDX924uDyGCS4wCtvpxfGS2
-	WLHC7zlx93N/5k74k/qC1Z3XHX0iWLA8XWYwM9TzI9nLGIAY/jQnHgG6WLbO7SIQs4xLcTkGMlXhk
-	v1ObPU1sOZlJEcAO5KV6dSW95t7Q4h2nfvEET//e8Ax2mgjn6AXq7Gcoz/2jYRRnD3nQWNqj5a3Yw
-	hRSqcSFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NZe80/zTgMqnxaX4R7r16UgMLE6glhJPyTnx+OtT0xk=; b=JCHSpCFZ9vghDaS9+tNRkTswqA
+	c/LE4FzFSNqEgk+YTHXk6LJGP7L1CzHWC5FR3njtOf1Ep4bduybRFfnB5thDmT0CRnIANUQo6bGgZ
+	VIV795gIOgfRX4Nn3Kyfl7EKxSqQ45opesN7zBgkqPxLtDdnpXE5DwRbgsByIBRtTapdnUzSTnot8
+	/v3gSdvAygetQGihMHBF6yIXVMEuv+1xBr7CZGKjIMu7UHQBfgTltKpyXCZm7CPWgPn4nsV43ga1H
+	zXVkfJ412ctoyHFK9ppDwKMOIQlW6eJIU8fPlzx1CTQ8Fnd3382ZtF1AA51N/lxgYtv44HlRtPN9b
+	mAxs9vLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeJAb-00Aew7-85; Fri, 30 Sep 2022 16:47:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1oeKfe-00Ayp7-A7; Fri, 30 Sep 2022 18:23:34 +0000
+Received: from mail-pj1-f45.google.com ([209.85.216.45])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeJAZ-00AetX-Ek; Fri, 30 Sep 2022 16:47:24 +0000
-X-UUID: 1e0c91eec4e54fe5bc2ca57877076910-20220930
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Yjl+Bzl2sRx8O3JnLZlmYNW0isbqNQocd4L3f9Rikao=;
-	b=sSuU7RQMZdcwC22xUxMCOanqLbnIxdSfZ4RXhABLhj3cHDcV77xWtUFuXppKD47hgtlEddPxOt2A6v7HTOMRD+vYz3lrLbuSrv+s6YuLJ0+QnyyjEXpT6hcwfrm8I+sh7SdT4ZR7H+NsQXRKwhs35jbGSsC64zkWc/dMWK+vHCo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:0f02ae0b-4555-4d11-a540-cdeca2b732c9,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:eeddcee4-87f9-4bb0-97b6-34957dc0fbbe,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 1e0c91eec4e54fe5bc2ca57877076910-20220930
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yongqiang.niu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1071491184; Fri, 30 Sep 2022 09:47:18 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sat, 1 Oct 2022 00:06:41 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Sat, 1 Oct 2022 00:06:40 +0800
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
-	<hsinyi@chromium.org>, Yongqiang Niu <yongqiang.niu@mediatek.com>
-Subject: [PATCH v8, 1/4] mailbox: mtk-cmdq: add gce software ddr enable private data
-Date: Sat, 1 Oct 2022 00:06:35 +0800
-Message-ID: <20220930160638.7588-2-yongqiang.niu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220930160638.7588-1-yongqiang.niu@mediatek.com>
-References: <20220930160638.7588-1-yongqiang.niu@mediatek.com>
+	id 1oeKfS-00AykD-Fu; Fri, 30 Sep 2022 18:23:23 +0000
+Received: by mail-pj1-f45.google.com with SMTP id g1-20020a17090a708100b00203c1c66ae3so4959440pjk.2;
+        Fri, 30 Sep 2022 11:23:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=NZe80/zTgMqnxaX4R7r16UgMLE6glhJPyTnx+OtT0xk=;
+        b=AiZclKtSJdcMf3eQexSniwTSBpmV8UHl3by5foaaPuTDlnEJqJXOHhY88Tlq8tCOsA
+         kZNRkeQm9KL3aOAbA7CXPYa8xf/c2reRIkrUr45KAJEU8OVgdkVYWccLDUCr9ePg19O9
+         KP5nUYSZBu7KnYhsMo+2qc77B3hhUu0ephDQ77G2WalQmLgCiyg8RDGwOz2RYgMneZFr
+         HIbZS48WeVr9swUuTbuC3ccE79t6bSRUV8R2MMFN8eR3OyW12bfrjvVcUqtz4uy94fXr
+         kSHJeatcWA5L06kwqEdqP6TEvCs8D1VBYg9f3X0ZfGMCrmBR+yb76Djq07WKkW01OPeW
+         Q9lg==
+X-Gm-Message-State: ACrzQf0A668XHNxHy8Ws6DhiduD/YKtQFinZuJycVv+12DWz2g2LB6Zf
+	9lH8nPyn0Q/fGa16HmlE0YI=
+X-Google-Smtp-Source: AMsMyM55IZv799oNZvH6mNiV43YPr5wp4G3loeXCfRQxQVutt4Q0JGulW2iD/+AcbGjDMSs9TtA7cA==
+X-Received: by 2002:a17:902:ef52:b0:17c:f072:95bc with SMTP id e18-20020a170902ef5200b0017cf07295bcmr2356069plx.28.1664562197903;
+        Fri, 30 Sep 2022 11:23:17 -0700 (PDT)
+Received: from ?IPV6:2620:15c:211:201:56f2:482f:20c2:1d35? ([2620:15c:211:201:56f2:482f:20c2:1d35])
+        by smtp.gmail.com with ESMTPSA id x64-20020a17090a38c600b00205d85cfb30sm5631068pjb.20.2022.09.30.11.23.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 30 Sep 2022 11:23:17 -0700 (PDT)
+Message-ID: <2f5a8742-b25d-d6b3-c6a4-1c119a94d569@acm.org>
+Date: Fri, 30 Sep 2022 11:23:13 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH v1 01/16] ufs: core: Probe for ext_iid support
+Content-Language: en-US
+To: Asutosh Das <quic_asutoshd@quicinc.com>, mani@kernel.org,
+ quic_nguyenb@quicinc.com, quic_xiaosenh@quicinc.com, quic_cang@quicinc.com,
+ quic_nitirawa@quicinc.com, quic_rampraka@quicinc.com,
+ quic_richardp@quicinc.com, stanley.chu@mediatek.com,
+ adrian.hunter@intel.com, avri.altman@wdc.com, beanhuo@micron.com,
+ martin.petersen@oracle.com
+Cc: linux-scsi@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Jinyoung Choi <j-young.choi@samsung.com>, Kiwoong Kim
+ <kwmad.kim@samsung.com>, open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+References: <cover.1663894792.git.quic_asutoshd@quicinc.com>
+ <ff7cdcdef82f6c9d709e2b6ed5d91e255327b780.1663894792.git.quic_asutoshd@quicinc.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <ff7cdcdef82f6c9d709e2b6ed5d91e255327b780.1663894792.git.quic_asutoshd@quicinc.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_094723_537431_0E819E7C 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20220930_112322_554766_BD83DC47 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,69 +92,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-if gce work control by software, we need set software enable
-for MT8186 Soc
+On 9/22/22 18:05, Asutosh Das wrote:
+> +	hba->mcq_capabilities = ufshcd_readl(hba, REG_MCQCAP);
 
-there is a handshake flow between gce and ddr hardware,
-if not set ddr enable flag of gce, ddr will fall into idle
-mode, then gce instructions will not process done.
-we need set this flag of gce to tell ddr when gce is idle or busy
-controlled by software flow.
+What value is reported when reading the REG_MCQCAP register on an UFSHCI 
+3.0 controller? -1 or 0?
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+> +	hba->ext_iid_sup = (hba->mcq_capabilities & MASK_EXT_IID_SUPPORT) >>
+> +		EXT_IID_CAP_SHIFT;
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 9465f9081515..88db6b4642db 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -38,6 +38,8 @@
- #define CMDQ_THR_PRIORITY		0x40
- 
- #define GCE_GCTL_VALUE			0x48
-+#define GCE_CTRL_BY_SW				GENMASK(2, 0)
-+#define GCE_DDR_EN				GENMASK(18, 16)
- 
- #define CMDQ_THR_ACTIVE_SLOT_CYCLES	0x3200
- #define CMDQ_THR_ENABLED		0x1
-@@ -80,6 +82,7 @@ struct cmdq {
- 	bool			suspended;
- 	u8			shift_pa;
- 	bool			control_by_sw;
-+	bool			sw_ddr_en;
- 	u32			gce_num;
- };
- 
-@@ -87,6 +90,7 @@ struct gce_plat {
- 	u32 thread_nr;
- 	u8 shift;
- 	bool control_by_sw;
-+	bool sw_ddr_en;
- 	u32 gce_num;
- };
- 
-@@ -130,6 +134,10 @@ static void cmdq_init(struct cmdq *cmdq)
- 	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
- 	if (cmdq->control_by_sw)
- 		writel(0x7, cmdq->base + GCE_GCTL_VALUE);
-+
-+	if (cmdq->sw_ddr_en)
-+		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
-+
- 	writel(CMDQ_THR_ACTIVE_SLOT_CYCLES, cmdq->base + CMDQ_THR_SLOT_CYCLES);
- 	for (i = 0; i <= CMDQ_MAX_EVENT; i++)
- 		writel(i, cmdq->base + CMDQ_SYNC_TOKEN_UPDATE);
-@@ -543,6 +551,7 @@ static int cmdq_probe(struct platform_device *pdev)
- 	cmdq->thread_nr = plat_data->thread_nr;
- 	cmdq->shift_pa = plat_data->shift;
- 	cmdq->control_by_sw = plat_data->control_by_sw;
-+	cmdq->sw_ddr_en = plat_data->sw_ddr_en;
- 	cmdq->gce_num = plat_data->gce_num;
- 	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
- 	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_SHARED,
--- 
-2.25.1
+[ ... ]
 
+> +	if (dev_info->wspecversion < 0x400)
+> +		goto out;
+
+Isn't this version check superfluous? Only UFSHCI 4.0 controllers should 
+support the extended IID feature.
+
+> +	ext_ufs_feature = get_unaligned_be32(desc_buf + DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP);
+
+The above change introduces a third instance of this code. Please 
+introduce a helper function that does something like the following and 
+replace the above line with a call to that helper function:
+
+	if (hba->desc_size[QUERY_DESC_IDN_DEVICE] <
+	    DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP + 4)
+		return 0;
+
+	return get_unaligned_be32(desc_buf +
+				 DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP);
+
+> +out:
+> +	dev_info->b_ext_iid_en = !!ext_iid_en;
+
+Please remove "!!". This conversion happens implicitly when assigning to 
+a boolean variable.
+
+Thanks,
+
+Bart.
 
