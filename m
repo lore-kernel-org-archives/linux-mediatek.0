@@ -4,83 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 050D0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 08:30:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5CD3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 08:31:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/MAaaA+E2gkmYSZzB36hg1KszSVB/yzV8aksvZvA1QM=; b=j5LJMzDho2TkZ3aI7BYD3gl9rY
-	PKqDXFRpjkIBFWCdODrea61rV6KeXqdUzSxxpeLoXt8tQqarOT7TqjIHmZ/+eIsm7UUSK3oNkhAK6
-	hmIdNRqHF/KxwS/5F3EkFpDSJY7Rmkzvrn9Ysl3JXULMKWY2j2X23KcvdL0XW0pyH+PPVzttcEdxW
-	awEm3b1Xb9dXWqf6mjbdUUIhoSkDaxbNAaiJJeSBHuX27w+iGJL4WuyAaC2igxwoVjrT870VCrisR
-	paQBjurwAasB1WwdN2QpHta5uZw/L8D3d++R9/OUaOHS4MyXs12YZHTKos/vIsDl2LR0Ns+XDgUaQ
-	BJOrSCUw==;
+	bh=zXH4fIP353e641n0v5VwEjVNcgsi2PzM+4E41Lucg8c=; b=q5YeTettFLZUy7TLzR99MN32zR
+	+5i/38qozrno6JAAadQU3dEmyLm6jm4fFYD8HdFrSROwaUcv7Q57+2GdyR533CxeeM4ChUY9JKg7G
+	00v7ESdRymxxliEOv1m8oPFkr6AxYe+OGaulsM8CDOBkHSh1Md8wlCTMSktBAX/v/4DPCwRE7XGy6
+	Gadm35f9SaJdRIvoVBfWZX4dVVQrk43bbdHMe07T4XIJunGRT5Dt6YRlxP/I7wuoIWaxY8NH+OrOn
+	lTj5w3cfRjeQO9V6SQx2kGLZcnXnyFtZIG1iibWsUs014AjLI+XyXRIXvo0N37I4FOlc5hppLUvTK
+	/ZmXMA0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeBP8-0084IG-0s; Fri, 30 Sep 2022 08:29:54 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oeBQc-0084xL-Ot; Fri, 30 Sep 2022 08:31:26 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeBOw-0084Db-83; Fri, 30 Sep 2022 08:29:43 +0000
+	id 1oeBQR-0084sq-3n; Fri, 30 Sep 2022 08:31:16 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id DBDDF66022BC;
-	Fri, 30 Sep 2022 09:29:38 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 02D0066022BC;
+	Fri, 30 Sep 2022 09:31:11 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664526579;
-	bh=y6RFqj7OJORRXrnb91N0f5NRhH96ycPGBPqgs9CRszM=;
+	s=mail; t=1664526672;
+	bh=hyzAPdeSGpzLQiqFjtdw3u+LQdIwNgVeLAnrDszyXUc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FZ9bIHSz/43QdUTsGvBEzHW6mnFUtEEz0KO/qxizXK9d5tF4HJItP32twNajrsf59
-	 Q9/v9IyNIamQnKAvzOJU1gOMl4e3yDoPZSRBQ9INzaIqpFpPQRGvj3iGmAz+Nb5A6F
-	 Jds+2BOcDcOVyt8bPUGx48pg1tauP6enYCmCSOKmIq8SapvcsjHcSBxCZev2igycWh
-	 VJD/AdLG1vgd9gkIRyHzhLYJIVN8c+k4xcY6W2vBOotY09eO+ARBXAc5HyYY13bBYW
-	 DkhBdIz2ntt43qz3KzyCeNwU+DgWGzX0M9s0xEUDh1MAgLxX0Dtc21EM+rFBfxz8wf
-	 Hceb3VQhotWrg==
-Message-ID: <5d8af9a1-3afc-bd69-8f34-164284a452c2@collabora.com>
-Date: Fri, 30 Sep 2022 10:29:36 +0200
+	b=bx7NwB7o+zEJHuy1oiC7fF5w0uTmDeG0jn/Yas48CisfPf2O/6C7qapFGW5BSsTjt
+	 ioRN5aq3EDcFInODuNhuPH//Q93ymyHk5mUBTLT+8L7eBNi75DI+nqj91m8LN7vpNL
+	 fIiwyaeOux/MdfGk+wn08ABf5jhxChB7KzHRveSC9wj2oEGHVLH1NX2zDkKrBXK8kf
+	 ZSg6F+tYYsMPWZUf2ySce0a6b87Vib5eurcHzZjCtIyMjuaQZdU1NQFa1F0CJp4T6J
+	 hEI85V/S4JoH0mtBvph0f0Lv75K2/rZCKcDsZB0JorJwm5ASr/VZtvvK8EIwTs74NB
+	 aRf2Slw9bcoBg==
+Message-ID: <2d378b26-2e08-72ee-a032-20aec436b6f4@collabora.com>
+Date: Fri, 30 Sep 2022 10:31:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH v3 08/10] clk: mediatek: clk-mt8195-topckgen: Drop
- univplls from mfg mux parents
-To: =?UTF-8?B?TWFuZHlKSCBMaXUgKOWKieS6uuWDlik=?= <MandyJH.Liu@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "mturquette@baylibre.com" <mturquette@baylibre.com>,
- "wenst@chromium.org" <wenst@chromium.org>,
- "jose.exposito89@gmail.com" <jose.exposito89@gmail.com>,
- "drinkcat@chromium.org" <drinkcat@chromium.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "sboyd@kernel.org" <sboyd@kernel.org>,
- =?UTF-8?B?Q2h1bi1KaWUgQ2hlbiAo6Zmz5rWa5qGAKQ==?=
- <Chun-Jie.Chen@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?B?TWlsZXMgQ2hlbiAo6Zmz5rCR5qi6KQ==?= <Miles.Chen@mediatek.com>,
- =?UTF-8?B?V2VpeWkgTHUgKOWRguWogeWEgCk=?= <Weiyi.Lu@mediatek.com>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
- =?UTF-8?B?UmV4LUJDIENoZW4gKOmZs+afj+i+sCk=?= <Rex-BC.Chen@mediatek.com>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "nfraprado@collabora.com" <nfraprado@collabora.com>
-References: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
- <20220927101128.44758-9-angelogioacchino.delregno@collabora.com>
- <79490e834466628a1b92e51f65aeb9e9ce82ddce.camel@mediatek.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8192-mt6359: Set the driver name for
+ the card
 Content-Language: en-US
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Mark Brown <broonie@kernel.org>
+Cc: kernel@collabora.com, Jaroslav Kysela <perex@perex.cz>,
+ Akihiko Odaki <akihiko.odaki@gmail.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Miaoqian Lin
+ <linmq006@gmail.com>, Takashi Iwai <tiwai@suse.com>,
+ Tzung-Bi Shih <tzungbi@google.com>, alsa-devel@alsa-project.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20220929205453.1144142-1-nfraprado@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <79490e834466628a1b92e51f65aeb9e9ce82ddce.camel@mediatek.com>
+In-Reply-To: <20220929205453.1144142-1-nfraprado@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_012942_518157_36696A65 
-X-CRM114-Status: GOOD (  22.55  )
+X-CRM114-CacheID: sfid-20220930_013115_305149_06BC4A85 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,63 +81,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/09/22 07:59, MandyJH Liu (劉人僖) ha scritto:
-> On Tue, 2022-09-27 at 12:11 +0200, AngeloGioacchino Del Regno wrote:
->> These PLLs are conflicting with GPU rates that can be generated by
->> the GPU-dedicated MFGPLL and would require a special clock handler
->> to be used, for very little and ignorable power consumption benefits.
->> Also, we're in any case unable to set the rate of these PLLs to
->> something else that is sensible for this task, so simply drop them:
->> this will make the GPU to be clocked exclusively from MFGPLL for
->> "fast" rates, while still achieving the right "safe" rate during
->> PLL frequency locking.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <
->> angelogioacchino.delregno@collabora.com>
->> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
->> ---
->>   drivers/clk/mediatek/clk-mt8195-topckgen.c | 9 ++++++---
->>   1 file changed, 6 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c
->> b/drivers/clk/mediatek/clk-mt8195-topckgen.c
->> index 4dde23bece66..8cbab5ca2e58 100644
->> --- a/drivers/clk/mediatek/clk-mt8195-topckgen.c
->> +++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
->> @@ -298,11 +298,14 @@ static const char * const ipu_if_parents[] = {
->>   	"mmpll_d4"
->>   };
->>   
->> +/*
->> + * MFG can be also parented to "univpll_d6" and "univpll_d7":
->> + * these have been removed from the parents list to let us
->> + * achieve GPU DVFS without any special clock handlers.
->> + */
->>   static const char * const mfg_parents[] = {
->>   	"clk26m",
->> -	"mainpll_d5_d2",
->> -	"univpll_d6",
->> -	"univpll_d7"
->> +	"mainpll_d5_d2"
->>   };
->>   
->>   static const char * const camtg_parents[] = {
-> There might be a problem here. Since the univpll_d6 and univpll_d7 are
-> available parents in hardware design and they can be selected other
-> than kernel stage, like bootloader, the clk tree listed in clk_summary
-> cannot show the real parent-child relationship in such case.
+Il 29/09/22 22:54, Nícolas F. R. A. Prado ha scritto:
+> The ASoC core automatically populates the driver name field in the card
+> from the card name if left unset. However, since the driver name can be
+> at most 16 characters long, wrapping will happen if the card name is
+> longer, which is the case for the mt8192-mt6359 driver.
+> 
+> Explicitly set the driver name for the card in order to avoid said
+> wrapping and have a readable driver name exposed to userspace.
+> 
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-I agree about that, but the clock framework will change the parent to
-the "best parent" in that case... this was done to avoid writing complicated
-custom clock ops just for that one.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-This issue is present only on MT8195, so it can be safely solved this way,
-at least for now.
-
-Should this become a thing on another couple SoCs, it'll then make sense
-to write custom clock ops just for the MFG.
-
-Regards,
-Angelo
 
 
