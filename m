@@ -4,84 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0D39C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 13:20:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFCCAC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 14:27:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rUPHkLfCnOExIOPw36MI3hiNQgUNOyt/+Ejs2msZtGo=; b=bfx6k6zc8cLgHY+VicWsaBP5Fi
-	orCd+W9EpqoVQwE57TZOODWP3mudNz98t3w6dftt+1E0XezxldiLz8qxRXb4umLNQTqKLrwTXs68j
-	4neOVnoN40r8MMR7OQn3kav4zvFHejBNAsWlyrOz7wwtgdGJad4Gjh3WqjkEljHaSrKUWyyb+l6SO
-	RWwSGeOTb0t+TEtfdU4ao5/YWg2SFBhvqUNRltTaBsZ6cM2bZLNQ6vFbgVEciSJ5YDHCMbRAGnR0H
-	PogErMIyadOg31ONI+PxStkrDivqZuegPEAEZ87pCQtcYM/m2pz2RbnWrMFfh5TePPlorSQ0bHMLN
-	0ikVeCMQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9lIYefaSOYiraQUJOth+slAJpWZICGu/4rJ81nJHNbs=; b=ReOIg7m5mI9TXg0tFX9E3YleqE
+	lGKhL94yyeeo+ckqne+VK1AczgHbs+cKY3d920p4a2Xs1NMxBShvoM3jivGbHRnf3Fc/WCOB+Vv3Q
+	8h/BPzNLp1Ra6aCE9ceLehOvd1PPwKdJXzAIwJsPeMkmAbdmikxpxAdd0aX7XPvx/jmmJ/COvQ4nG
+	6yRJgLYSffQdnAmCY2CxhjlByV9MIFM26EJKZrvtUynzBRly+xGzdqReNE9Ubrt2HvQQ7guu6d7or
+	GBKCEFhXExV9iICwaZgSCdrZScdBLlB5ae0V5xDG71WsKhYuYFFWft8NmVW+xwwuRvRcIpybIDFVu
+	QivX1vdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeFwd-009Lqn-AY; Fri, 30 Sep 2022 13:20:47 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1oeGzT-009lFP-2B; Fri, 30 Sep 2022 14:27:47 +0000
+Received: from mail-bn7nam10on2051.outbound.protection.outlook.com ([40.107.92.51] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeFwQ-009LlN-MQ; Fri, 30 Sep 2022 13:20:36 +0000
-Received: by mail-wm1-x333.google.com with SMTP id ay7-20020a05600c1e0700b003b49861bf48so4948962wmb.0;
-        Fri, 30 Sep 2022 06:20:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=rUPHkLfCnOExIOPw36MI3hiNQgUNOyt/+Ejs2msZtGo=;
-        b=oaRVIi/nM4qtf2LWlFNRoa6QLY6sjwD6WQdykKgiDYikNPedM+I06euEHolmIDII1A
-         GgjLJmjePVj/Q4Ylfn+cT+al+ZX0EA+Wug+ov9QlQ7N4DcHAp40UUwJjfruL1JnRarjD
-         UzqUkcxUSWsy0pdzX8F95RU2Iv14z8W9P9iVHGI1RzEVsPtVWWZR5VnQ4qHarYmuL5a5
-         5gbUPzro/PlyNUslpWj0Hu01LK27NOwoo8UqZsvmaZyEUQ5FY531oEJfTLu7khO0llTY
-         8yAuBxqnjJw+QpuBLKuUyFcr5CJK7fjKJzcLKmP0dec62/I9V1TT9aC96Q9pk+D8ML3k
-         cLnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=rUPHkLfCnOExIOPw36MI3hiNQgUNOyt/+Ejs2msZtGo=;
-        b=Zml7M22u1INF6FYcOsrdPQ7Ppuwu3nMxS4Dd/luWagQfTurBPDBdZSqYyOOjKqAKe5
-         1qf0olLaCQS+ArEimTHs4TRqBqWtrsovNCQt6bLzFgyTa5IaMD3TrLVaB98ygrIiH29b
-         7AR7r+0kF4WIh7MawoPGRsN2c9ThTAaFiNF/5J5dr60Hamyoh6fclTB3oZTzlWYGR6NW
-         MalmZ48Y4hqqqhgB725HeIYAgtRhVh8z+vyw56VWD2hQqk9aIBwnAwsThWWyXIg4HQd5
-         sLyXYNQjjRBgeLtnIQqLEXbGmCfWgBJm2KFPPqww8EK2GZm6xOM7ZuYhl0FmmzhZiDPn
-         Msgw==
-X-Gm-Message-State: ACrzQf3n005kPn5v/nyhyvzXHBb7FHHmu/tf7typa7c4vrMrFR9Ojwii
-	qrKU4xBB1mLi0H4Al3cIkdI=
-X-Google-Smtp-Source: AMsMyM4pt64tMe4+pb2vpJpg8/j08+dib/aZWGT5IUsBTYyfLgJ+EoR6u38rGNGwI7+uqxhv/rIdEw==
-X-Received: by 2002:a7b:ce0d:0:b0:3b4:8728:3e7e with SMTP id m13-20020a7bce0d000000b003b487283e7emr5601443wmc.182.1664544031821;
-        Fri, 30 Sep 2022 06:20:31 -0700 (PDT)
-Received: from [192.168.0.30] ([47.62.125.55])
-        by smtp.gmail.com with ESMTPSA id b3-20020adfee83000000b0022cc3e67fc5sm1987475wro.65.2022.09.30.06.20.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 30 Sep 2022 06:20:30 -0700 (PDT)
-Message-ID: <bc6a4fe5-3f9e-6552-eeab-f1665d691f56@gmail.com>
-Date: Fri, 30 Sep 2022 15:20:29 +0200
+	id 1oeGdv-009YUs-C6; Fri, 30 Sep 2022 14:05:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QhbnGNm9xyK9v5V9+ka6hHZMgHBrhS1vTvb+tA/9txHqsav+EZtvvHymEkznUreWHtAqsLUvgyZTgzU4ojxzvDf1OPGekNaKKBkPysTRJRzr4Z9+eusLjludjRez9VP2KyXpqcVYJ2/vfQ04ZKlcBVKPGVO+R+CinzdSVo1/w8sJoX2lahydxyeMMu0lmCfvDNcMFDAdYxuJyZbrvLNruLK+cEJsDBNxFxBgSTQ+iBMyv3Xmasjg1GwLUXiOzCizpRQKZm/VcQC1tp8+ksyt8WcXLn3xCAmQZLr600duWmSKMLOMHfFPc52qPNYZ3jFF0ZsylhoG2hPVnHaTHRGC2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9lIYefaSOYiraQUJOth+slAJpWZICGu/4rJ81nJHNbs=;
+ b=kXECHsD+P9oSWykdOOSml7SAJQM0V8CqRGTSk8NABmgVOgCqEBMWQakg5gt1Uzp8LeYmb0W3H3irS2VIIRQFa+YiScCx9z5yIiGm7JjJJOG/nvNlf03ia4snv2F0pESj+4dF8CowTV1zothUHCOeCChDJNjoflPNkqP8pvg7EvwWEK+9eF8lumPxaSlo15zS89dUAGshmZWxD7VOt3HKWBq3R354rKq+fletg5EuUrRWLIWoBfr8iTFTAcALkG1ascOVDTfY+rWauTZ87ZgBjw9wqygyy22394aRKmA6MZ6MFdAMbswQxmm4DNMv3sxylzdNWcY1+GQjLnjekcJkCQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9lIYefaSOYiraQUJOth+slAJpWZICGu/4rJ81nJHNbs=;
+ b=Hkpq6F8KKI22CIYyl4Ef7W3sd5RqzqEmhp4acJ0k1zFf5CRVr+GGORuDoAH4u2UIA34oQwWePCezrK63W1+UAdHAGlM93154mPkehovAn8XGIW9UMQn/4N/w6huovPln5xhHZHRdMgpNifo4SFqi3o9h9qOLWQjS+16OdHcGrdoJlbMeSKJyOLcRYf6ARc0xJL7rVq+/oA3nP9y/kKi4Y8Itv8KBgkBC7IAkyyqFBm+ETXdVPPO8JT5JbzQkiPYnY4/IsXcvA7aV/DA+dbstYgJDV0qJ8WTDTryINxOIUrTDZPJ+LlMIqw+5e0BoyEKl5kTk4P5D+UBzDhV0pcmhWg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CY5PR12MB6179.namprd12.prod.outlook.com (2603:10b6:930:24::22)
+ by PH7PR12MB7356.namprd12.prod.outlook.com (2603:10b6:510:20f::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5676.23; Fri, 30 Sep
+ 2022 14:05:25 +0000
+Received: from CY5PR12MB6179.namprd12.prod.outlook.com
+ ([fe80::8f0b:1a79:520a:64c5]) by CY5PR12MB6179.namprd12.prod.outlook.com
+ ([fe80::8f0b:1a79:520a:64c5%7]) with mapi id 15.20.5676.017; Fri, 30 Sep 2022
+ 14:05:25 +0000
+Date: Fri, 30 Sep 2022 17:05:20 +0300
+From: Ido Schimmel <idosch@nvidia.com>
+To: netdev@kapio-technology.com
+Cc: Jakub Kicinski <kuba@kernel.org>, davem@davemloft.net,
+	netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vivien Didelot <vivien.didelot@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Kurt Kanzenbach <kurt@linutronix.de>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Woojung Huh <woojung.huh@microchip.com>,
+	UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Jiri Pirko <jiri@resnulli.us>, Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Shuah Khan <shuah@kernel.org>, Russell King <linux@armlinux.org.uk>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Yuwei Wang <wangyuweihx@gmail.com>, Petr Machata <petrm@nvidia.com>,
+	Florent Fourcot <florent.fourcot@wifirst.fr>,
+	Hans Schultz <schultz.hans@gmail.com>,
+	Joachim Wiberg <troglobit@gmail.com>,
+	Amit Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH v6 net-next 0/9] Extend locked port feature with FDB
+ locked flag (MAC-Auth/MAB)
+Message-ID: <Yzb3oNGNtq4GCS3M@shredder>
+References: <20220928150256.115248-1-netdev@kapio-technology.com>
+ <20220929091036.3812327f@kernel.org>
+ <12587604af1ed79be4d3a1607987483a@kapio-technology.com>
+ <20220929112744.27cc969b@kernel.org>
+ <ab488e3d1b9d456ae96cfd84b724d939@kapio-technology.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ab488e3d1b9d456ae96cfd84b724d939@kapio-technology.com>
+X-ClientProxiedBy: VI1PR08CA0173.eurprd08.prod.outlook.com
+ (2603:10a6:800:d1::27) To CY5PR12MB6179.namprd12.prod.outlook.com
+ (2603:10b6:930:24::22)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.1
-Subject: Re: [PATCH v7, 1/3] mailbox: mtk-cmdq: add gce software ddr enable
- private data
-Content-Language: en-US
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Hsin-Yi Wang <hsinyi@chromium.org>
-References: <20220930095915.13684-1-yongqiang.niu@mediatek.com>
- <20220930095915.13684-2-yongqiang.niu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220930095915.13684-2-yongqiang.niu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY5PR12MB6179:EE_|PH7PR12MB7356:EE_
+X-MS-Office365-Filtering-Correlation-Id: b62bd0fa-99bd-495d-0755-08daa2ecd233
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	xVXGp53JhGSo5FgPu/sFbn9qcr4f660CLEjQJR8cuO+4N2oe5XZJQPWrt38V+ahNiWO4bJzRf98xMTyWPRGhPTghp5OKtD9Aq25GNVfwO702siggf2UsY9XCiMTyAmLOuNNp3W2/E4tKs+3jKI5JNDIs4UGxymyKzimPRFO30nQ+zk6bIAIGo4f/tbhHHqHqUqupIG1xXybjvpa3Hd0FoarV5hzJfypHxENcgyejspbOjK769AnrxhiI48xVl6GgKcfTXuGhZBjdYyCmaJkSRnumJKyzQl33S+OdToKdHfoMZLZByuyXdkSipT+TMEeRiM96T+szZvIpsXaSKysOjglDmUaoZVXsBMRhTPBlkFNw+4DSOEHyUdODrGSjAjT1UEZ6yWqs8uiS0bWqFu6WA1wO8REbzrTcbjCiXbSc3Aodxj8VATP4pi5rqoNwO7m7rAGkpsrQn136V1n97ab+B5asfRPvngRj5JnvKW98e2RA7gP3jXm1ZC0Geanxif+TjfEwieJQMHPw0H1KyDz1UcDUPrzmdbFJXaKrDovkQi+JKTPO3APgZKYfq5GzV8Lpd6fY174RAe5gu5tuPI0wIg5nPA0uU1SPW1Q1DTAzQU2t5NNw8NmSBDEEtH0VwykDkGzYJF3LgL+o0iI7ZitK/TVGMNN07CY72ra0dHKUYPBTw0Vi83M+Dgd0+3Wnjq/pAE6RSuP7VlHogAY5RPm9XXZ9mQMNSWB3To0VMPcWZFiZZwTr0WOlmjqTT0nuY6FnXpqrEYWZ2LVaTOW7C9j9tG7xbwDgpowRp0iO7rk9xQFOk6s3+Lq/0sJp4hTp7jijEPubeBNPpZoFzU54D3PCsw==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY5PR12MB6179.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(7916004)(396003)(136003)(366004)(376002)(346002)(39860400002)(451199015)(41300700001)(7406005)(7416002)(8936002)(5660300002)(2906002)(966005)(33716001)(38100700002)(6486002)(6506007)(186003)(478600001)(66946007)(66556008)(66476007)(316002)(8676002)(4326008)(86362001)(83380400001)(26005)(6666004)(6512007)(9686003)(54906003)(6916009);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?bf6k4DoCmEAmetUiRY1OBbt7G7+M5Bm6pSJzJJBBFV2fpqoSLLyih4OtojzP?=
+ =?us-ascii?Q?GamijKt6hl1Lk4ftIdcZcBFVfDWd21ZFmt1x/P2uwtwQMkFe+hIkHYiyo6Yr?=
+ =?us-ascii?Q?GiJpfQa0tTku2ZZYwSRe8QdpBlJ4ifzQVlyrT1kvSsYhoybqA/evIGZSkmsm?=
+ =?us-ascii?Q?TvmHLv+sR+fE9SLmSOBHLwvG097HdjKJ/aVVAYNSUMgFefAJDG6q8KlO1UT9?=
+ =?us-ascii?Q?2c7zKgfkrrptImGqKon3r8C+3BkGvAV3jhsZNs+T6jf4GU42N5iRH/FdgRT1?=
+ =?us-ascii?Q?uw4I5Q3VM6ozePw07Oo1CnDLz5izbNErhF3HopoQTySL+EfwKiAaBICNXlet?=
+ =?us-ascii?Q?MCPusOyjf2ku6x36sg59u6EXcxNoSXrnLdJ4hQ3whMG11iiIf0Qr1lATQJcv?=
+ =?us-ascii?Q?Sj0ctUZFxbVcRG+Kuy1OboSAH0PgO/Ax/V/CSn/HKAYSbnfBcu0zTc2F/qMX?=
+ =?us-ascii?Q?fUCEqxIFmFxhY02OWhnTvaLPcBptb9Hq8TrZQ10Fdbm1AbCfs9JFQcreW+ky?=
+ =?us-ascii?Q?e943S8YF+yj5zf6rXsYGfYL0XXMPrnyycsUQ+LdnmVO4cV7rxYBJC1A6ITGv?=
+ =?us-ascii?Q?br4i2/cOawcceptAW8BePTeGS1Zyfew74P97D69BSZml/2Fl/aVblBSu3CEY?=
+ =?us-ascii?Q?4vjoE3Cg8BVRWuYeVMWbo6yRFitRgp9kM4CgYTZdYbMEvukic+D+s6/GMGe1?=
+ =?us-ascii?Q?c6UkKBh8N6zeV7We8rQVW0a7VayCSj0iN1l8V0vzcqdQhlz7A4THShyY5n63?=
+ =?us-ascii?Q?55lpXMz6f841CmUYRkPNEbs0kIjRZJ8daZjFBytMj5hxWUXOjAI/LqTUER+c?=
+ =?us-ascii?Q?ptoBDNsoXxqLSNyeeaYmLw2GJq45B/v02Lk5qDagGEI8ImcZoVp7mQ/s1dPM?=
+ =?us-ascii?Q?OEN7KwmQjOTvwWO2KdLgMx3cxFqL1EGyWL6+tjjIFV2edC/+gn+NoJsSKfTH?=
+ =?us-ascii?Q?qkgX7mJA9kbVzXsgveDiCPgYdf8dnuFreLKm2DA+s2jauFDBArz8zpVZWExD?=
+ =?us-ascii?Q?cpTYHZ1/83NNdpM4zjHPGaMZor6rY4i6nrfVlv7pvxVL94Y/9q9usaXsRb2X?=
+ =?us-ascii?Q?OM8QKxvfP0sGRYyHo/VNY8ZOKx0VUpx+xl2/NG635FqfLPvy8DXvxhfFTznC?=
+ =?us-ascii?Q?xQlUE9tcjRPyFrlO/XzZm7O5swKS6IlzKxRQEMtVPhbY74yVPH1IyCTIRkZd?=
+ =?us-ascii?Q?2Cwqa/ZMVzehBmnD7JnhupSgjxWUptar8Va5YhgmbUcz1zwk+BqOPK5KyxdK?=
+ =?us-ascii?Q?uUpGzJI8y/LzPMJtySgjy6Mydrc3ILU7ceDgTRpWfIyMO4wsJkbEiP4ru63n?=
+ =?us-ascii?Q?Dt7Ksioe6r/lywSZJDHXhTmneDzwS++6h/tJMKYtCEn2ktHFOZEMgqhropRh?=
+ =?us-ascii?Q?FBpii6+tdCU5z3wCbyJWkFRYGqCOyj8wsVPCncQmhM32kVPC4a+BoRguawEJ?=
+ =?us-ascii?Q?0mX/5TADP8j+WpemQDciRJbfJ0695MF5CaiU5HcbQ6y6LKwQCbuqoSYpL41R?=
+ =?us-ascii?Q?MXwklsG5ybmTQf0amGGVL8oPIimLj+j7F4Spnrp8bBEldLAHyWUjueNFUUXc?=
+ =?us-ascii?Q?Gjj1aqyPZVqicFRSvQVHnT87Wlf5D/OX5GCB/9TA?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b62bd0fa-99bd-495d-0755-08daa2ecd233
+X-MS-Exchange-CrossTenant-AuthSource: CY5PR12MB6179.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Sep 2022 14:05:25.1230
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ZSwU4XRH4cyxyBHNoqgOyjNqhnQ3p/MVhdNIFuPTi6I+T2bGjWKADwLsunEzPjRODRbrsos/28zfQaNh2X7gqg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB7356
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_062034_782264_40792889 
-X-CRM114-Status: GOOD (  23.17  )
+X-CRM114-CacheID: sfid-20220930_070531_486302_EB213F9B 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,78 +161,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Sep 30, 2022 at 07:42:37AM +0200, netdev@kapio-technology.com wrote:
+> Obviously my method of selecting all switchcore drivers with sub-options
+> under menuconfig was not sufficient, and I didn't know of the allmodconfig
+> option, otherwise I would have used it.
 
+You can see build issues on patchwork:
 
-On 30/09/2022 11:59, Yongqiang Niu wrote:
-> if gce work control by software, we need set software enable
-> for MT8186 Soc
-> 
-> there is a handshake flow between gce and ddr hardware,
-> if not set ddr enable flag of gce, ddr will fall into idle
-> mode, then gce instructions will not process done.
-> we need set this flag of gce to tell ddr when gce is idle or busy
-> controlled by software flow.
-> 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> ---
->   drivers/mailbox/mtk-cmdq-mailbox.c | 11 ++++++++++-
->   1 file changed, 10 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 9465f9081515..04eb44d89119 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -38,6 +38,8 @@
->   #define CMDQ_THR_PRIORITY		0x40
->   
->   #define GCE_GCTL_VALUE			0x48
-> +#define GCE_CTRL_BY_SW				GENMASK(2, 0)
-> +#define GCE_DDR_EN				GENMASK(18, 16)
->   
->   #define CMDQ_THR_ACTIVE_SLOT_CYCLES	0x3200
->   #define CMDQ_THR_ENABLED		0x1
-> @@ -80,6 +82,7 @@ struct cmdq {
->   	bool			suspended;
->   	u8			shift_pa;
->   	bool			control_by_sw;
-> +	bool			sw_ddr_en;
->   	u32			gce_num;
->   };
->   
-> @@ -87,6 +90,7 @@ struct gce_plat {
->   	u32 thread_nr;
->   	u8 shift;
->   	bool control_by_sw;
-> +	bool sw_ddr_en;
->   	u32 gce_num;
->   };
->   
-> @@ -129,7 +133,11 @@ static void cmdq_init(struct cmdq *cmdq)
->   
->   	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
->   	if (cmdq->control_by_sw)
-> -		writel(0x7, cmdq->base + GCE_GCTL_VALUE);
-> +		writel(GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
+https://patchwork.kernel.org/project/netdevbpf/patch/20220928150256.115248-6-netdev@kapio-technology.com/
 
-Thanks for doing this, but I think this should be part of a seperate patch. It's 
-a cleanup and has nothing to do with the new sw_ddr_en, correct?
+Also:
 
-Regards,
-Matthias
+https://docs.kernel.org/next/process/maintainer-netdev.html#what-level-of-testing-is-expected-before-i-submit-my-change
 
-> +
-> +	if (cmdq->sw_ddr_en)
-> +		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
-> +
->   	writel(CMDQ_THR_ACTIVE_SLOT_CYCLES, cmdq->base + CMDQ_THR_SLOT_CYCLES);
->   	for (i = 0; i <= CMDQ_MAX_EVENT; i++)
->   		writel(i, cmdq->base + CMDQ_SYNC_TOKEN_UPDATE);
-> @@ -543,6 +551,7 @@ static int cmdq_probe(struct platform_device *pdev)
->   	cmdq->thread_nr = plat_data->thread_nr;
->   	cmdq->shift_pa = plat_data->shift;
->   	cmdq->control_by_sw = plat_data->control_by_sw;
-> +	cmdq->sw_ddr_en = plat_data->sw_ddr_en;
->   	cmdq->gce_num = plat_data->gce_num;
->   	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
->   	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_SHARED,
+https://docs.kernel.org/next/process/maintainer-netdev.html#can-i-reproduce-the-checks-from-patchwork-on-my-local-machine
+
+https://docs.kernel.org/next/process/maintainer-netdev.html#running-all-the-builds-and-checks-locally-is-a-pain-can-i-post-my-patches-and-have-the-patchwork-bot-validate-them
+
+> So the question is if I should repost the fixed patch-set or I need to make
+> a new version?
+
+A new fixed version (v7) is required, but wait for this version to be
+reviewed first.
+
+> Anyhow I hope that there will not be problems when running the selftests, as
+> I have not been able to do so with my system, so there can be more that
+> needs to be changed.
+
+It's not really acceptable to post tests that you haven't run... What
+exactly is the issue? You should be able to run the tests with veth
+pairs in a VM.
 
