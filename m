@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 651B8C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 14:56:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F323C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 14:58:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=N0vI1OqZfdfsJZl6IwWDIAz3rwTaNgNrLU6ZaDRJutQ=; b=ZzFhee1wPyhIxJS82zhAIJMI3B
-	fkehnFftrSG+vZlca+/XWfMC6k0gadrD+B8OVcIFxeBlYuKF+eCDeoS/zm4C4cbqSKmWV2TbVPWR4
-	lyv65ZQPPOlJ/DmkujbDzSh39F1HUsZsclY/UOXD5nx5SDfHMcHhmEUwDgWsfwH9VGqjOHc3KpsvD
-	1Ehw4HDR8x1EEOi5WEqms4t6Z9G3PCAVuyMnocX6V128JJtbP6zyFVsPTgc3Ktp2JeHQ9fFFJ17+E
-	6JKSZVdVC9VEQnZ5zcI6coLsRiiMOZsLw5dCuClUAqQcw7agm4xYgIVdpz5d2wNde0xO0zbs68+1Z
-	R/wYlONg==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hv4CuY11B+4I0GUws9zT9tCykb3RTwTQ//Cur4ACcaQ=; b=nlolUq6U+BaU9/bx2FlczWwpwt
+	Rcf0qnCCN1yHdb2f6CURptl1FWF6q8wLuLeC7CtiVQtNZ+EQ5ou32iqmFVyjFdnQgxxotSRJWv8At
+	hYi1NdGWI301yvJWXPFl181DVZDesDiv+dDGMGvMZBEZZAXgPZA5nuM0R2+SQRSwdK82Ih+fBq2IU
+	K/70JbLAqo1LuVaJOjCqR6ImdxJDJLkBMYsIoAC4uhd+3u2sza4cgsNzpRPGw1zou/8ASjKbUhOWG
+	yGMPKZZksvd6GG+lsmKKxO4VCQsfB+6HBo1T3323uFa0NWUOmwbNH89kyJOnD2HhTg9/HdnXx3cQQ
+	lezY10kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeHQi-009xMb-SP; Fri, 30 Sep 2022 14:55:56 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oeHSy-009yEs-2Q; Fri, 30 Sep 2022 14:58:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeHQf-009xHw-Tl
-	for linux-mediatek@lists.infradead.org; Fri, 30 Sep 2022 14:55:55 +0000
-X-UUID: e7532296d45b438eac3e61f084dd069f-20220930
+	id 1oeHSd-009y3N-SB; Fri, 30 Sep 2022 14:57:58 +0000
+X-UUID: e99045ac51f3410aaabe6e39ac7ce42d-20220930
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=N0vI1OqZfdfsJZl6IwWDIAz3rwTaNgNrLU6ZaDRJutQ=;
-	b=q7uOL9vQCzFY3YaVJtGViPsRo74z0VW2KFaxL5aop9Ls+Mc5OE1TiYxJLV/S1bP6a/fr7hLvHdgqUikQv+DH0wiM6LtYF2Y41xI52Ca1iwwTvP3AnYlRbhc3YaM831+bXalQ7CcjmIARWIjFyOOYvBSM8c9uUCGBYAYqiTXd6ec=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=hv4CuY11B+4I0GUws9zT9tCykb3RTwTQ//Cur4ACcaQ=;
+	b=aeqZ3dM6keFap6EfpApt3cOgKjclS5cSebm06hEaPEvlxhWLadjc6apUY/jJuAIiGWEAjZC4rqro675HUblNL7NDZFkNJce/HMFq+RTiLt80g/QA7pAjq0gUtwrKgRXzjywaXHpQ1KX0hotFJZ3ek2+6UzqbUB3/1E22+uWqmqA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:e5e2fffd-48b3-483c-9703-a245e495c559,IP:0,U
+X-CID-O-INFO: VERSION:1.1.11,REQID:b22f13d7-eef1-4cea-85da-740e48f5179d,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:b630a6a3-dc04-435c-b19b-71e131a5fc35,B
+X-CID-META: VersionHash:39a5ff1,CLOUDID:ed819807-1cee-4c38-b21b-a45f9682fdc0,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: e7532296d45b438eac3e61f084dd069f-20220930
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <shayne.chen@mediatek.com>)
+X-UUID: e99045ac51f3410aaabe6e39ac7ce42d-20220930
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <trevor.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 492203602; Fri, 30 Sep 2022 07:55:37 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+	with ESMTP id 183341109; Fri, 30 Sep 2022 07:57:47 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Fri, 30 Sep 2022 22:15:02 +0800
+ 15.2.792.15; Fri, 30 Sep 2022 22:57:09 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 30 Sep 2022 22:15:02 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7915: reserve 8 bits for the index of rf registers
-Date: Fri, 30 Sep 2022 22:14:41 +0800
-Message-ID: <20220930141441.16314-1-shayne.chen@mediatek.com>
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Fri, 30 Sep 2022 22:57:09 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
+	<matthias.bgg@gmail.com>, <p.zabel@pengutronix.de>
+CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>
+Subject: [PATCH 09/12] ASoC: mediatek: mt8188: add control for timing select
+Date: Fri, 30 Sep 2022 22:56:58 +0800
+Message-ID: <20220930145701.18790-10-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220930145701.18790-1-trevor.wu@mediatek.com>
+References: <20220930145701.18790-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_075554_010526_77F4C9EB 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20220930_075755_956523_6D4B1B3D 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,48 +79,538 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Evelyn Tsai <evelyn.tsai@mediatek.com>
+Add mixer control for irq and memif timing selection.
 
-The value of regidx of rf registers is combined with WF selection and
-offset. Extend the WF selection field from 4 to 8 bits since the
-adie index should also be specified.
-
-Signed-off-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c     | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 506 +++++++++++++++++++++
+ 1 file changed, 506 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index 6ef3431cad64..e1d15394a621 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -963,7 +963,7 @@ mt7915_twt_stats(struct seq_file *s, void *data)
- }
+diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+index 5d8e01c99714..b2e0b50dcca5 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
++++ b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+@@ -1399,6 +1399,510 @@ static const struct snd_soc_dapm_route mt8188_memif_routes[] = {
+ 	{"O041", "I169 Switch", "I169"},
+ };
  
- /* The index of RF registers use the generic regidx, combined with two parts:
-- * WF selection [31:28] and offset [27:0].
-+ * WF selection [31:24] and offset [23:0].
-  */
- static int
- mt7915_rf_regval_get(void *data, u64 *val)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 8d297e4aa7d4..1b9f3da8ae96 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -3447,8 +3447,8 @@ int mt7915_mcu_rf_regval(struct mt7915_dev *dev, u32 regidx, u32 *val, bool set)
- 		__le32 ofs;
- 		__le32 data;
- 	} __packed req = {
--		.idx = cpu_to_le32(u32_get_bits(regidx, GENMASK(31, 28))),
--		.ofs = cpu_to_le32(u32_get_bits(regidx, GENMASK(27, 0))),
-+		.idx = cpu_to_le32(u32_get_bits(regidx, GENMASK(31, 24))),
-+		.ofs = cpu_to_le32(u32_get_bits(regidx, GENMASK(23, 0))),
- 		.data = set ? cpu_to_le32(*val) : 0,
- 	};
- 	struct sk_buff *skb;
++static const char * const mt8188_afe_1x_en_sel_text[] = {
++	"a1sys_a2sys", "a3sys", "a4sys",
++};
++
++static const unsigned int mt8188_afe_1x_en_sel_values[] = {
++	0, 1, 2,
++};
++
++static SOC_VALUE_ENUM_SINGLE_DECL(dl2_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 18, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl3_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 20, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl6_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 22, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl7_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 24, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl8_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 26, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl10_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 28, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl11_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 30, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul1_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 0, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul2_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 2, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul3_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 4, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul4_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 6, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul5_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 8, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul6_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 10, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul8_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 12, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul9_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 14, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul10_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL1, 16, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq1_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 0, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq2_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 2, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq3_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 4, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq4_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 6, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq5_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 8, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq6_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 10, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq7_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 12, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq8_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 14, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq9_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 16, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq10_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 18, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq11_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 20, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq12_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 22, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq13_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 24, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq14_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 26, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq15_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 28, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(asys_irq16_1x_en_sel_enum,
++				  A3_A4_TIMING_SEL6, 30, 0x3,
++				  mt8188_afe_1x_en_sel_text,
++				  mt8188_afe_1x_en_sel_values);
++
++static const char * const mt8188_afe_fs_timing_sel_text[] = {
++	"asys",
++	"etdmout1_1x_en",
++	"etdmout2_1x_en",
++	"etdmout3_1x_en",
++	"etdmin1_1x_en",
++	"etdmin2_1x_en",
++	"etdmin1_nx_en",
++	"etdmin2_nx_en",
++};
++
++static const unsigned int mt8188_afe_fs_timing_sel_values[] = {
++	0,
++	MT8188_ETDM_OUT1_1X_EN,
++	MT8188_ETDM_OUT2_1X_EN,
++	MT8188_ETDM_OUT3_1X_EN,
++	MT8188_ETDM_IN1_1X_EN,
++	MT8188_ETDM_IN2_1X_EN,
++	MT8188_ETDM_IN1_NX_EN,
++	MT8188_ETDM_IN2_NX_EN,
++};
++
++static SOC_VALUE_ENUM_SINGLE_DECL(dl2_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl3_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl6_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl8_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(dl11_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul2_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul4_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul5_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul9_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++static SOC_VALUE_ENUM_SINGLE_DECL(ul10_fs_timing_sel_enum,
++				  SND_SOC_NOPM, 0, 0,
++				  mt8188_afe_fs_timing_sel_text,
++				  mt8188_afe_fs_timing_sel_values);
++
++static int mt8188_memif_1x_en_sel_put(struct snd_kcontrol *kcontrol,
++				      struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *component =
++		snd_soc_kcontrol_component(kcontrol);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_dai_memif_priv *memif_priv;
++	unsigned int dai_id = kcontrol->id.device;
++	long val = ucontrol->value.integer.value[0];
++	int ret = 0;
++
++	memif_priv = afe_priv->dai_priv[dai_id];
++
++	if (val == memif_priv->asys_timing_sel)
++		return 0;
++
++	ret = snd_soc_put_enum_double(kcontrol, ucontrol);
++
++	memif_priv->asys_timing_sel = val;
++
++	return ret;
++}
++
++static int mt8188_asys_irq_1x_en_sel_put(struct snd_kcontrol *kcontrol,
++					 struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *component =
++		snd_soc_kcontrol_component(kcontrol);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	unsigned int id = kcontrol->id.device;
++	long val = ucontrol->value.integer.value[0];
++	int ret = 0;
++
++	if (val == afe_priv->irq_priv[id].asys_timing_sel)
++		return 0;
++
++	ret = snd_soc_put_enum_double(kcontrol, ucontrol);
++
++	afe_priv->irq_priv[id].asys_timing_sel = val;
++
++	return ret;
++}
++
++static int mt8188_memif_fs_timing_sel_get(struct snd_kcontrol *kcontrol,
++					  struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *component = snd_soc_kcontrol_component(kcontrol);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_dai_memif_priv *memif_priv;
++	unsigned int dai_id = kcontrol->id.device;
++	struct soc_enum *e = (struct soc_enum *)kcontrol->private_value;
++
++	memif_priv = afe_priv->dai_priv[dai_id];
++
++	ucontrol->value.enumerated.item[0] =
++		snd_soc_enum_val_to_item(e, memif_priv->fs_timing);
++
++	return 0;
++}
++
++static int mt8188_memif_fs_timing_sel_put(struct snd_kcontrol *kcontrol,
++					  struct snd_ctl_elem_value *ucontrol)
++{
++	struct snd_soc_component *component = snd_soc_kcontrol_component(kcontrol);
++	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
++	struct mt8188_afe_private *afe_priv = afe->platform_priv;
++	struct mtk_dai_memif_priv *memif_priv;
++	unsigned int dai_id = kcontrol->id.device;
++	struct soc_enum *e = (struct soc_enum *)kcontrol->private_value;
++	unsigned int *item = ucontrol->value.enumerated.item;
++	unsigned int prev_item = 0;
++
++	if (item[0] >= e->items)
++		return -EINVAL;
++
++	memif_priv = afe_priv->dai_priv[dai_id];
++
++	prev_item = snd_soc_enum_val_to_item(e, memif_priv->fs_timing);
++
++	if (item[0] == prev_item)
++		return 0;
++
++	memif_priv->fs_timing = snd_soc_enum_item_to_val(e, item[0]);
++
++	return 1;
++}
++
++static const struct snd_kcontrol_new mt8188_memif_controls[] = {
++	MT8188_SOC_ENUM_EXT("dl2_1x_en_sel",
++			    dl2_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL2),
++	MT8188_SOC_ENUM_EXT("dl3_1x_en_sel",
++			    dl3_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL3),
++	MT8188_SOC_ENUM_EXT("dl6_1x_en_sel",
++			    dl6_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL6),
++	MT8188_SOC_ENUM_EXT("dl7_1x_en_sel",
++			    dl7_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL7),
++	MT8188_SOC_ENUM_EXT("dl8_1x_en_sel",
++			    dl8_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL8),
++	MT8188_SOC_ENUM_EXT("dl10_1x_en_sel",
++			    dl10_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL10),
++	MT8188_SOC_ENUM_EXT("dl11_1x_en_sel",
++			    dl11_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_DL11),
++	MT8188_SOC_ENUM_EXT("ul1_1x_en_sel",
++			    ul1_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL1),
++	MT8188_SOC_ENUM_EXT("ul2_1x_en_sel",
++			    ul2_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL2),
++	MT8188_SOC_ENUM_EXT("ul3_1x_en_sel",
++			    ul3_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL3),
++	MT8188_SOC_ENUM_EXT("ul4_1x_en_sel",
++			    ul4_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL4),
++	MT8188_SOC_ENUM_EXT("ul5_1x_en_sel",
++			    ul5_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL5),
++	MT8188_SOC_ENUM_EXT("ul6_1x_en_sel",
++			    ul6_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL6),
++	MT8188_SOC_ENUM_EXT("ul8_1x_en_sel",
++			    ul8_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL8),
++	MT8188_SOC_ENUM_EXT("ul9_1x_en_sel",
++			    ul9_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL9),
++	MT8188_SOC_ENUM_EXT("ul10_1x_en_sel",
++			    ul10_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_memif_1x_en_sel_put,
++			    MT8188_AFE_MEMIF_UL10),
++	MT8188_SOC_ENUM_EXT("asys_irq1_1x_en_sel",
++			    asys_irq1_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_13),
++	MT8188_SOC_ENUM_EXT("asys_irq2_1x_en_sel",
++			    asys_irq2_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_14),
++	MT8188_SOC_ENUM_EXT("asys_irq3_1x_en_sel",
++			    asys_irq3_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_15),
++	MT8188_SOC_ENUM_EXT("asys_irq4_1x_en_sel",
++			    asys_irq4_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_16),
++	MT8188_SOC_ENUM_EXT("asys_irq5_1x_en_sel",
++			    asys_irq5_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_17),
++	MT8188_SOC_ENUM_EXT("asys_irq6_1x_en_sel",
++			    asys_irq6_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_18),
++	MT8188_SOC_ENUM_EXT("asys_irq7_1x_en_sel",
++			    asys_irq7_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_19),
++	MT8188_SOC_ENUM_EXT("asys_irq8_1x_en_sel",
++			    asys_irq8_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_20),
++	MT8188_SOC_ENUM_EXT("asys_irq9_1x_en_sel",
++			    asys_irq9_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_21),
++	MT8188_SOC_ENUM_EXT("asys_irq10_1x_en_sel",
++			    asys_irq10_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_22),
++	MT8188_SOC_ENUM_EXT("asys_irq11_1x_en_sel",
++			    asys_irq11_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_23),
++	MT8188_SOC_ENUM_EXT("asys_irq12_1x_en_sel",
++			    asys_irq12_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_24),
++	MT8188_SOC_ENUM_EXT("asys_irq13_1x_en_sel",
++			    asys_irq13_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_25),
++	MT8188_SOC_ENUM_EXT("asys_irq14_1x_en_sel",
++			    asys_irq14_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_26),
++	MT8188_SOC_ENUM_EXT("asys_irq15_1x_en_sel",
++			    asys_irq15_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_27),
++	MT8188_SOC_ENUM_EXT("asys_irq16_1x_en_sel",
++			    asys_irq16_1x_en_sel_enum,
++			    snd_soc_get_enum_double,
++			    mt8188_asys_irq_1x_en_sel_put,
++			    MT8188_AFE_IRQ_28),
++	MT8188_SOC_ENUM_EXT("dl2_fs_timing_sel",
++			    dl2_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_DL2),
++	MT8188_SOC_ENUM_EXT("dl3_fs_timing_sel",
++			    dl3_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_DL3),
++	MT8188_SOC_ENUM_EXT("dl6_fs_timing_sel",
++			    dl6_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_DL6),
++	MT8188_SOC_ENUM_EXT("dl8_fs_timing_sel",
++			    dl8_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_DL8),
++	MT8188_SOC_ENUM_EXT("dl11_fs_timing_sel",
++			    dl11_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_DL11),
++	MT8188_SOC_ENUM_EXT("ul2_fs_timing_sel",
++			    ul2_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_UL2),
++	MT8188_SOC_ENUM_EXT("ul4_fs_timing_sel",
++			    ul4_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_UL4),
++	MT8188_SOC_ENUM_EXT("ul5_fs_timing_sel",
++			    ul5_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_UL5),
++	MT8188_SOC_ENUM_EXT("ul9_fs_timing_sel",
++			    ul9_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_UL9),
++	MT8188_SOC_ENUM_EXT("ul10_fs_timing_sel",
++			    ul10_fs_timing_sel_enum,
++			    mt8188_memif_fs_timing_sel_get,
++			    mt8188_memif_fs_timing_sel_put,
++			    MT8188_AFE_MEMIF_UL10),
++};
++
+ static const struct snd_soc_component_driver mt8188_afe_pcm_dai_component = {
+ 	.name = "mt8188-afe-pcm-dai",
+ };
+@@ -2588,6 +3092,8 @@ static int mt8188_dai_memif_register(struct mtk_base_afe *afe)
+ 	dai->num_dapm_widgets = ARRAY_SIZE(mt8188_memif_widgets);
+ 	dai->dapm_routes = mt8188_memif_routes;
+ 	dai->num_dapm_routes = ARRAY_SIZE(mt8188_memif_routes);
++	dai->controls = mt8188_memif_controls;
++	dai->num_controls = ARRAY_SIZE(mt8188_memif_controls);
+ 
+ 	return init_memif_priv_data(afe);
+ }
 -- 
-2.25.1
+2.18.0
 
 
