@@ -4,59 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 589EFC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 08:27:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 050D0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Sep 2022 08:30:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T/uij7E3n0PgMNA7fLY7GtajW9iUtpHGllBtqat+cnQ=; b=wTvSpdzRb6aqEAlNfkcVfoiM47
-	VJswLPyYTt3/euXIbtnXdthm6/xOYht44h6chdn8AsspLWeWnuVowoT5ZFu4KotBGwvtURPrOVFTT
-	vR/BZmC+McESl0iSqrpK34bLgveXwHBkuBYea37Bv0Z8/8bJYpkMrFWuL5Baz5BpHRP5rpuUfOTCj
-	a3yrinIl9pKgK1BYuynCz8O7469AdO90dHa21P/AMaKli9gE88TIp/t6ePC1VlrkU1GVF79iNNs4S
-	gtxrBmJQglXTQYMph8m3sk8kQQjVIFFIYmyXLaajID68YIJBNMaxNdvV7zoKFkTI4541Mfp0RU6bT
-	W6K3jz7Q==;
+	bh=/MAaaA+E2gkmYSZzB36hg1KszSVB/yzV8aksvZvA1QM=; b=j5LJMzDho2TkZ3aI7BYD3gl9rY
+	PKqDXFRpjkIBFWCdODrea61rV6KeXqdUzSxxpeLoXt8tQqarOT7TqjIHmZ/+eIsm7UUSK3oNkhAK6
+	hmIdNRqHF/KxwS/5F3EkFpDSJY7Rmkzvrn9Ysl3JXULMKWY2j2X23KcvdL0XW0pyH+PPVzttcEdxW
+	awEm3b1Xb9dXWqf6mjbdUUIhoSkDaxbNAaiJJeSBHuX27w+iGJL4WuyAaC2igxwoVjrT870VCrisR
+	paQBjurwAasB1WwdN2QpHta5uZw/L8D3d++R9/OUaOHS4MyXs12YZHTKos/vIsDl2LR0Ns+XDgUaQ
+	BJOrSCUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeBN2-0083hZ-UE; Fri, 30 Sep 2022 08:27:44 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oeBP8-0084IG-0s; Fri, 30 Sep 2022 08:29:54 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeBN0-0083gE-Fx
-	for linux-mediatek@lists.infradead.org; Fri, 30 Sep 2022 08:27:44 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1oeBOw-0084Db-83; Fri, 30 Sep 2022 08:29:43 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 33442B82698;
-	Fri, 30 Sep 2022 08:27:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 757BCC433D7;
-	Fri, 30 Sep 2022 08:27:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664526459;
-	bh=TZLyGE9FJQemU54GEhCuq0dM8vwxN8v4whQYxVkYgXo=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=ahqP7KrXxAeXqx8k/7s4MxK6Y9kUtZ5CauZB0ROr2pTp5kVBhTARgbsNZUYpoCUiJ
-	 edrCABdb9/X4dGvI8sJWbXk97IV/xzfUKgQP7VPQN1g0CIDWhmAIu0ODiRjjwdyoqo
-	 0Ds1rKcJY0apf9i0iTmhzmd8XoXH/RZS3fefAD+5931Vi/H0swQnyKaKCN41fJsg7d
-	 c3A6T75acX9bGdyTWmcqMX8GiTSC4l7gpOSIqXc2WOo94sL9qzHAU2awj7MnWAI7mT
-	 37OojpkDl/nkk55t+rAAfHOe0cNywj/OlCO3CN3E/dMYeY/XqZm9KY8p/c1uWuc4Pz
-	 /Jf+4WLf0Tgkw==
-From: Mark Brown <broonie@kernel.org>
-To: perex@perex.cz, matthias.bgg@gmail.com, lgirdwood@gmail.com, tiwai@suse.com, Zhang Qilong <zhangqilong3@huawei.com>
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20220928160116.125020-1-zhangqilong3@huawei.com>
-References: <20220928160116.125020-1-zhangqilong3@huawei.com>
-Subject: Re: [PATCH -next 0/4] Fix PM disable depth imbalance in probe
-Message-Id: <166452645819.46391.11087036933729907918.b4-ty@kernel.org>
-Date: Fri, 30 Sep 2022 09:27:38 +0100
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DBDDF66022BC;
+	Fri, 30 Sep 2022 09:29:38 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664526579;
+	bh=y6RFqj7OJORRXrnb91N0f5NRhH96ycPGBPqgs9CRszM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=FZ9bIHSz/43QdUTsGvBEzHW6mnFUtEEz0KO/qxizXK9d5tF4HJItP32twNajrsf59
+	 Q9/v9IyNIamQnKAvzOJU1gOMl4e3yDoPZSRBQ9INzaIqpFpPQRGvj3iGmAz+Nb5A6F
+	 Jds+2BOcDcOVyt8bPUGx48pg1tauP6enYCmCSOKmIq8SapvcsjHcSBxCZev2igycWh
+	 VJD/AdLG1vgd9gkIRyHzhLYJIVN8c+k4xcY6W2vBOotY09eO+ARBXAc5HyYY13bBYW
+	 DkhBdIz2ntt43qz3KzyCeNwU+DgWGzX0M9s0xEUDh1MAgLxX0Dtc21EM+rFBfxz8wf
+	 Hceb3VQhotWrg==
+Message-ID: <5d8af9a1-3afc-bd69-8f34-164284a452c2@collabora.com>
+Date: Fri, 30 Sep 2022 10:29:36 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v3 08/10] clk: mediatek: clk-mt8195-topckgen: Drop
+ univplls from mfg mux parents
+To: =?UTF-8?B?TWFuZHlKSCBMaXUgKOWKieS6uuWDlik=?= <MandyJH.Liu@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "mturquette@baylibre.com" <mturquette@baylibre.com>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "jose.exposito89@gmail.com" <jose.exposito89@gmail.com>,
+ "drinkcat@chromium.org" <drinkcat@chromium.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "sboyd@kernel.org" <sboyd@kernel.org>,
+ =?UTF-8?B?Q2h1bi1KaWUgQ2hlbiAo6Zmz5rWa5qGAKQ==?=
+ <Chun-Jie.Chen@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ =?UTF-8?B?TWlsZXMgQ2hlbiAo6Zmz5rCR5qi6KQ==?= <Miles.Chen@mediatek.com>,
+ =?UTF-8?B?V2VpeWkgTHUgKOWRguWogeWEgCk=?= <Weiyi.Lu@mediatek.com>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ =?UTF-8?B?UmV4LUJDIENoZW4gKOmZs+afj+i+sCk=?= <Rex-BC.Chen@mediatek.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "nfraprado@collabora.com" <nfraprado@collabora.com>
+References: <20220927101128.44758-1-angelogioacchino.delregno@collabora.com>
+ <20220927101128.44758-9-angelogioacchino.delregno@collabora.com>
+ <79490e834466628a1b92e51f65aeb9e9ce82ddce.camel@mediatek.com>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <79490e834466628a1b92e51f65aeb9e9ce82ddce.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.10.0-dev-fc921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_012742_696525_37822FD9 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20220930_012942_518157_36696A65 
+X-CRM114-Status: GOOD (  22.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,51 +95,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Sep 2022 00:01:12 +0800, Zhang Qilong wrote:
-> The pm_runtime_enable will increase power disable depth. Thus
-> a pairing decrement is needed on the error handling path to
-> keep it balanced according to context. We fix it by moving
-> pm_runtime_enable to the endding of probe.
-> 
-> Zhang Qilong (4):
->   ASoC: wm8997: Fix PM disable depth imbalance in wm8997_probe
->   ASoC: wm5110: Fix PM disable depth imbalance in wm5110_probe
->   ASoC: wm5102: Fix PM disable depth imbalance in wm5102_probe
->   ASoC: mt6660: Fix PM disable depth imbalance in mt6660_i2c_probe
-> 
-> [...]
+Il 30/09/22 07:59, MandyJH Liu (劉人僖) ha scritto:
+> On Tue, 2022-09-27 at 12:11 +0200, AngeloGioacchino Del Regno wrote:
+>> These PLLs are conflicting with GPU rates that can be generated by
+>> the GPU-dedicated MFGPLL and would require a special clock handler
+>> to be used, for very little and ignorable power consumption benefits.
+>> Also, we're in any case unable to set the rate of these PLLs to
+>> something else that is sensible for this task, so simply drop them:
+>> this will make the GPU to be clocked exclusively from MFGPLL for
+>> "fast" rates, while still achieving the right "safe" rate during
+>> PLL frequency locking.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <
+>> angelogioacchino.delregno@collabora.com>
+>> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+>> ---
+>>   drivers/clk/mediatek/clk-mt8195-topckgen.c | 9 ++++++---
+>>   1 file changed, 6 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c
+>> b/drivers/clk/mediatek/clk-mt8195-topckgen.c
+>> index 4dde23bece66..8cbab5ca2e58 100644
+>> --- a/drivers/clk/mediatek/clk-mt8195-topckgen.c
+>> +++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
+>> @@ -298,11 +298,14 @@ static const char * const ipu_if_parents[] = {
+>>   	"mmpll_d4"
+>>   };
+>>   
+>> +/*
+>> + * MFG can be also parented to "univpll_d6" and "univpll_d7":
+>> + * these have been removed from the parents list to let us
+>> + * achieve GPU DVFS without any special clock handlers.
+>> + */
+>>   static const char * const mfg_parents[] = {
+>>   	"clk26m",
+>> -	"mainpll_d5_d2",
+>> -	"univpll_d6",
+>> -	"univpll_d7"
+>> +	"mainpll_d5_d2"
+>>   };
+>>   
+>>   static const char * const camtg_parents[] = {
+> There might be a problem here. Since the univpll_d6 and univpll_d7 are
+> available parents in hardware design and they can be selected other
+> than kernel stage, like bootloader, the clk tree listed in clk_summary
+> cannot show the real parent-child relationship in such case.
 
-Applied to
+I agree about that, but the clock framework will change the parent to
+the "best parent" in that case... this was done to avoid writing complicated
+custom clock ops just for that one.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+This issue is present only on MT8195, so it can be safely solved this way,
+at least for now.
 
-Thanks!
+Should this become a thing on another couple SoCs, it'll then make sense
+to write custom clock ops just for the MFG.
 
-[1/4] ASoC: wm8997: Fix PM disable depth imbalance in wm8997_probe
-      commit: 41a736ac20602f64773e80f0f5b32cde1830a44a
-[2/4] ASoC: wm5110: Fix PM disable depth imbalance in wm5110_probe
-      commit: 86b46bf1feb83898d89a2b4a8d08d21e9ea277a7
-[3/4] ASoC: wm5102: Fix PM disable depth imbalance in wm5102_probe
-      commit: fcbb60820cd3008bb44334a0395e5e57ccb77329
-[4/4] ASoC: mt6660: Fix PM disable depth imbalance in mt6660_i2c_probe
-      commit: b73f11e895e140537e7f8c7251211ccd3ce0782b
+Regards,
+Angelo
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
