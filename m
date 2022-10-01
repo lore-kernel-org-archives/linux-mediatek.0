@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DECDEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Oct 2022 03:28:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3B26C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Oct 2022 03:48:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tVU561ie3mo1qOpQcZtWrSSXP0unSyosTSaMx2bhXHE=; b=5GAEihtaFzdpg274IyxnVf6ZPq
-	hO06vkQN0v1grlYgRzzk8+yNkA5+vc4lT6FDJmo/9bBhWqnp0ZJUFbxEun9mmKsJcrXZJK8E94bQY
-	/crKrA2A2aONLF8wttxof42fWxp8C64fkGDntmft9fLil9u//u8oT4edg4aSc0j2d8Nsz09psRSkU
-	73ve1ANVYPcqCgmooRYx/rfvazXLAMEyQI3lN28OLRFaEfhXYn/PISopNYYStJkcnfm5h96EFGzDO
-	KamPaPkfP6QSf9ySz9xwKRcvE37iY4y8CdbEw4KawZ7ph6GkiumxEEgGwhK1ZUWVUyipMQUdftSR1
-	sW1GyFpA==;
+	bh=3NxniVY0kLSVgBJbuv5v98YNltI4Zo9r6UkH/bKrbJk=; b=kZRcpx6NkD/hpDWk3L65pUkXqe
+	jtvyg48a2JzQFynkO98RY2UwbGrAErovEA9OhfNXUjex82cOg6v5cPGvj3Z1Kx7N+WAoSCNrs84jC
+	Z9MI0yjCxc3m4kgoZsZkWYEUs1IDAkEF8boUNOlvZxwltzX50vvLMN9cd3bHNA0/H3kh14tP0+bNq
+	yqGjwCySKQzjhbyz/CWE++bpM/Di92y4ZBi7F1F8+ZI6cA+Ehb4Qy0q1hNxo0ZRIg8MA9ndDR0LAM
+	dgWvmaViItu8PhP3igMjzHOMFkPj3cAH3gcHleT07adDznqVVVuOwCSaTRRRJ4CebXgUOEj0RZ1i3
+	4wBpP5Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeTBJ-00Ctho-QO; Sat, 01 Oct 2022 03:28:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1oeTTn-00Cy64-Po; Sat, 01 Oct 2022 03:47:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeTBG-00Ctfz-SP; Sat, 01 Oct 2022 03:28:48 +0000
-X-UUID: 5476385832a54bddb4ab61ba91a5368d-20220930
+	id 1oeTTk-00Cy3z-AJ; Sat, 01 Oct 2022 03:47:54 +0000
+X-UUID: de1cb72b2bee4dceb50aa0208f3d5617-20220930
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tVU561ie3mo1qOpQcZtWrSSXP0unSyosTSaMx2bhXHE=;
-	b=Ux0MD2HjZgSl9ueJfSI5B1EMqMBM+xM9uMVXCG+Sr/Emp0nA6xGPhsAWx5V/mhj6k7PNbeF1KbbcfCuc9lH98zgdWwIqCy3VohS0pmvHs8qILseJl+vd7N+l0OU1wip3JvVqw6Xwk3a+rp0FKkkzasEJbcioVnOSle/JshDdYwI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3NxniVY0kLSVgBJbuv5v98YNltI4Zo9r6UkH/bKrbJk=;
+	b=GNKaPHiyMhX8bDN448Fmgmyq4ThTh3EDCcUTif4GK35mQ2P/B2Q3jKq0TNvfcWn/7RfeLY37STgtpKg82Tu/Vqg1fNzrj6Hu/zTAyFSj9f81MvsAlNG8eqKTLr/eFItFjtr1chQ5gRL9Um/okDpaVrnm2pfQPgpTa1LgbQx35wg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:23c9a8c0-88d7-4661-8853-4144189bb763,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:39a5ff1,CLOUDID:4e63d6e4-87f9-4bb0-97b6-34957dc0fbbe,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:92dd47d4-186f-49d1-9179-b0b7c69ca87e,IP:0,U
+	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:b1d0afa3-dc04-435c-b19b-71e131a5fc35,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 5476385832a54bddb4ab61ba91a5368d-20220930
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: de1cb72b2bee4dceb50aa0208f3d5617-20220930
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1670834551; Fri, 30 Sep 2022 20:28:45 -0700
+	with ESMTP id 959386839; Fri, 30 Sep 2022 20:47:46 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Sat, 1 Oct 2022 11:17:44 +0800
+ 15.2.792.15; Sat, 1 Oct 2022 11:17:42 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs11n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Sat, 1 Oct 2022 11:17:43 +0800
+ Transport; Sat, 1 Oct 2022 11:17:41 +0800
 From: Irui Wang <irui.wang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
@@ -60,9 +60,9 @@ CC: Yunfei Dong <yunfei.dong@mediatek.com>, Maoguang Meng
 	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v6, 3/8] media: mediatek: vcodec: Refactor venc power manage function
-Date: Sat, 1 Oct 2022 11:17:32 +0800
-Message-ID: <20221001031737.18266-4-irui.wang@mediatek.com>
+Subject: [PATCH v6, 1/8] dt-bindings: media: mediatek: vcodec: Adds encoder cores dt-bindings for mt8195
+Date: Sat, 1 Oct 2022 11:17:30 +0800
+Message-ID: <20221001031737.18266-2-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20221001031737.18266-1-irui.wang@mediatek.com>
 References: <20221001031737.18266-1-irui.wang@mediatek.com>
@@ -71,8 +71,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_202846_939073_1A6FCE40 
-X-CRM114-Status: GOOD (  16.22  )
+X-CRM114-CacheID: sfid-20220930_204752_381923_FD9EDBE9 
+X-CRM114-Status: GOOD (  20.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,104 +87,255 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The args "struct mtk_vcodec_dev *" doesn't appropriate for init_clk
-functions because of sub-devices, sub-devices will init their own
-"pm/clk" instead, so refactor the pm function with args
-"platform_device *" and "mtk_vcodec_pm*".
+mt8195 has two H264 encoder hardware, which are named core0 and core1.
+The two encoder cores are independent, we can just enable one core to
+do encoding or enable both of them to achieve higher performance. We
+pick core0 as main device and core1 as its subdevice, it just a way to
+to manage the two encoder hardware, because they are two equal encoder
+hardware with the same function.
 
 Signed-off-by: Irui Wang <irui.wang@mediatek.com>
 ---
- .../media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c  | 2 +-
- .../media/platform/mediatek/vcodec/mtk_vcodec_enc_hw.c   | 8 ++++++++
- .../media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c   | 9 +++------
- .../media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h   | 3 ++-
- 4 files changed, 14 insertions(+), 8 deletions(-)
+ .../media/mediatek,vcodec-encoder-core.yaml   | 217 ++++++++++++++++++
+ .../media/mediatek,vcodec-encoder.yaml        |   1 -
+ 2 files changed, 217 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
 
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-index 48f9f59516bd..5bfbf4eead13 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_drv.c
-@@ -257,7 +257,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 		return PTR_ERR(dev->fw_handler);
- 
- 	dev->venc_pdata = of_device_get_match_data(&pdev->dev);
--	ret = mtk_vcodec_init_enc_clk(dev);
-+	ret = mtk_vcodec_init_enc_clk(dev->plat_dev, &dev->pm);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "Failed to get mtk vcodec clock source!");
- 		goto err_enc_pm;
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_hw.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_hw.c
-index cc4938f027e0..1ed4279925b7 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_hw.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_hw.c
-@@ -13,6 +13,7 @@
- #include "mtk_vcodec_drv.h"
- #include "mtk_vcodec_enc.h"
- #include "mtk_vcodec_enc_hw.h"
-+#include "mtk_vcodec_enc_pm.h"
- #include "mtk_vcodec_intr.h"
- 
- static const struct of_device_id mtk_venc_hw_ids[] = {
-@@ -115,6 +116,13 @@ static int mtk_venc_hw_probe(struct platform_device *pdev)
- 		return dev_err_probe(dev, (ret ? ret : -EINVAL),
- 				     "Cannot parse hardware id");
- 
-+	ret = mtk_vcodec_init_enc_clk(sub_core->plat_dev, &sub_core->pm);
-+	if (ret < 0)
-+		return dev_err_probe(dev, ret,
-+				     "Failed to get venc core clock source!");
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
+new file mode 100644
+index 000000000000..1dda7d7908da
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
+@@ -0,0 +1,217 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +
-+	pm_runtime_enable(&pdev->dev);
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/media/mediatek,vcodec-encoder-core.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
 +
- 	main_dev->enc_hw_dev[sub_core->hw_id] = sub_core;
- 	sub_core->main_dev = main_dev;
++title: MediaTek Video Encoder Accelerator With Multi Core
++
++maintainers:
++  - Irui Wang <irui.wang@mediatek.com>
++
++description: |
++  MediaTek Video Encoder is the video encoder hardware present in MediaTek
++  SoCs which supports high resolution encoding functionalities. To meet higher
++  encoder performance, there will be one or more encoder hardware inside SoC,
++  which named core0, core1, etc.. For example, mt8195 has two encoder hardware,
++  the two encoder cores block diagram, can check below.
++  --------------------------------------------------------------
++  Input frame  0     1     2     3     4     5     6
++               |     |     |     |     |     |     |
++               v     |     v     |     v     |     v
++           +-------+ | +-------+ | +-------+ | +-------+
++           | core0 | | | core0 | | | core0 | | | core0 |
++           +-------+ | +-------+ | +-------+ | +-------+
++               |     |     |     |     |     |     |
++               |     v     |     v     |     v     |
++               | +-------+ | +-------+ | +-------+ |
++               | | core1 | | | core1 | | | core1 | |
++               | +-------+ | +-------+ | +-------+ |
++               |     |     |     |     |     |     |
++               v     v     v     v     v     v     v    <parent>
++  --------------------------------------------------------------
++                            core || index               <child>
++                                 \/
++       +--------------------------------------------------+
++       |                     core0/core1                  |
++       |             enable/disable power/clk/irq         |
++       +--------------------------------------------------+
++  --------------------------------------------------------------
++  As above, there are two cores child devices, they are two encoder hardware
++  which can encode input frames in order. When start encoding, input frame 0
++  will be encoded by core0, and input frame 1 can be encoded by core1 even if
++  frame 0 has not been encoded done yet, after frame 0 encoded done, frame 2
++  will be encoded by core0, even input frames are encoded by core0 and odd
++  input frames are encoded by core1, these two encoder cores encode ench input
++  frames in this overlapping manner.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8195-vcodec-enc
++
++  reg:
++    maxItems: 1
++
++  mediatek,scp:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: |
++      The node of system control processor (SCP), using
++      the remoteproc & rpmsg framework.
++
++  iommus:
++    minItems: 1
++    maxItems: 32
++    description: |
++      List of the hardware port in respective IOMMU block for current Socs.
++      Refer to bindings/iommu/mediatek,iommu.yaml.
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    maxItems: 1
++
++  clock-names:
++    maxItems: 1
++
++  power-domains:
++    maxItems: 1
++
++  dma-ranges:
++    maxItems: 1
++    description: |
++      Describes the physical address space of IOMMU maps to memory.
++
++  "#address-cells":
++    const: 2
++
++  "#size-cells":
++    const: 2
++
++  ranges: true
++
++# Required child node:
++patternProperties:
++  "^venc-core@[0-9a-f]+$":
++    type: object
++    description: |
++      The video encoder core device node which should be added as subnodes to
++      the main venc node, it represents a encoder hardware.
++
++    properties:
++      compatible:
++        const: mediatek,mtk-venc-hw
++
++      reg:
++        maxItems: 1
++
++      mediatek,hw-id:
++        $ref: /schemas/types.yaml#/definitions/uint32
++        description: |
++          Current encoder core id. We use it to pick which one encoder core
++          will be used to encoding current input frame.
++
++      iommus:
++        minItems: 1
++        maxItems: 32
++        description: |
++          List of the hardware port in respective IOMMU block for current Socs.
++          Refer to bindings/iommu/mediatek,iommu.yaml.
++
++      interrupts:
++        maxItems: 1
++
++      clocks:
++        maxItems: 1
++
++      clock-names:
++        maxItems: 1
++
++      power-domains:
++        maxItems: 1
++
++    required:
++      - compatible
++      - reg
++      - mediatek,hw-id
++      - iommus
++      - interrupts
++      - clocks
++      - clock-names
++      - assigned-clocks
++      - assigned-clock-parents
++      - power-domains
++
++    additionalProperties: false
++
++required:
++  - compatible
++  - reg
++  - mediatek,scp
++  - iommus
++  - interrupts
++  - clocks
++  - clock-names
++  - dma-ranges
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/memory/mt8195-memory-port.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/power/mt8195-power.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        venc: venc@1a020000 {
++            compatible = "mediatek,mt8195-vcodec-enc";
++            reg = <0 0x1a020000 0 0x10000>;
++            mediatek,scp = <&scp>;
++            iommus = <&iommu_vdo M4U_PORT_L19_VENC_RCPU>,
++                     <&iommu_vdo M4U_PORT_L19_VENC_REC>,
++                     <&iommu_vdo M4U_PORT_L19_VENC_BSDMA>,
++                     <&iommu_vdo M4U_PORT_L19_VENC_SV_COMV>,
++                     <&iommu_vdo M4U_PORT_L19_VENC_RD_COMV>,
++                     <&iommu_vdo M4U_PORT_L19_VENC_CUR_LUMA>,
++                     <&iommu_vdo M4U_PORT_L19_VENC_CUR_CHROMA>,
++                     <&iommu_vdo M4U_PORT_L19_VENC_REF_LUMA>,
++                     <&iommu_vdo M4U_PORT_L19_VENC_REF_CHROMA>;
++            interrupts = <GIC_SPI 341 IRQ_TYPE_LEVEL_HIGH 0>;
++            clocks = <&vencsys CLK_VENC_VENC>;
++            clock-names = "clk_venc";
++            power-domains = <&spm MT8195_POWER_DOMAIN_VENC>;
++            dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
++            #address-cells = <2>;
++            #size-cells = <2>;
++            ranges;
++
++            venc-core@1b020000 {
++                compatible = "mediatek,mtk-venc-hw";
++                reg = <0 0x1b020000 0 0x10000>;
++                mediatek,hw-id = <1>;
++                iommus = <&iommu_vpp M4U_PORT_L20_VENC_RCPU>,
++                         <&iommu_vpp M4U_PORT_L20_VENC_REC>,
++                         <&iommu_vpp M4U_PORT_L20_VENC_BSDMA>,
++                         <&iommu_vpp M4U_PORT_L20_VENC_SV_COMV>,
++                         <&iommu_vpp M4U_PORT_L20_VENC_RD_COMV>,
++                         <&iommu_vpp M4U_PORT_L20_VENC_CUR_LUMA>,
++                         <&iommu_vpp M4U_PORT_L20_VENC_CUR_CHROMA>,
++                         <&iommu_vpp M4U_PORT_L20_VENC_REF_LUMA>,
++                         <&iommu_vpp M4U_PORT_L20_VENC_REF_CHROMA>;
++                interrupts = <GIC_SPI 346 IRQ_TYPE_LEVEL_HIGH 0>;
++                clocks = <&vencsys_core1 CLK_VENC_CORE1_VENC>;
++                clock-names = "clk_venc_core1";
++                assigned-clocks = <&topckgen CLK_TOP_VENC>;
++                assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4>;
++                power-domains = <&spm MT8195_POWER_DOMAIN_VENC_CORE1>;
++            };
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+index 32aee09aea33..f5f79efe3ba3 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+@@ -22,7 +22,6 @@ properties:
+       - mediatek,mt8183-vcodec-enc
+       - mediatek,mt8188-vcodec-enc
+       - mediatek,mt8192-vcodec-enc
+-      - mediatek,mt8195-vcodec-enc
  
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
-index 7055954eb2af..75de5031d292 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.c
-@@ -12,17 +12,13 @@
- #include "mtk_vcodec_enc_pm.h"
- #include "mtk_vcodec_util.h"
- 
--int mtk_vcodec_init_enc_clk(struct mtk_vcodec_dev *mtkdev)
-+int mtk_vcodec_init_enc_clk(struct platform_device *pdev,
-+			    struct mtk_vcodec_pm *pm)
- {
--	struct platform_device *pdev;
--	struct mtk_vcodec_pm *pm;
- 	struct mtk_vcodec_clk *enc_clk;
- 	struct mtk_vcodec_clk_info *clk_info;
- 	int ret, i;
- 
--	pdev = mtkdev->plat_dev;
--	pm = &mtkdev->pm;
--	memset(pm, 0, sizeof(struct mtk_vcodec_pm));
- 	pm->dev = &pdev->dev;
- 	enc_clk = &pm->venc_clk;
- 
-@@ -58,6 +54,7 @@ int mtk_vcodec_init_enc_clk(struct mtk_vcodec_dev *mtkdev)
- 
- 	return 0;
- }
-+EXPORT_SYMBOL_GPL(mtk_vcodec_init_enc_clk);
- 
- void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
- {
-diff --git a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h
-index bc455cefc0cd..361dec5be47f 100644
---- a/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h
-+++ b/drivers/media/platform/mediatek/vcodec/mtk_vcodec_enc_pm.h
-@@ -9,7 +9,8 @@
- 
- #include "mtk_vcodec_drv.h"
- 
--int mtk_vcodec_init_enc_clk(struct mtk_vcodec_dev *dev);
-+int mtk_vcodec_init_enc_clk(struct platform_device *pdev,
-+			    struct mtk_vcodec_pm *pm);
- 
- void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm);
- void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm);
+   reg:
+     maxItems: 1
 -- 
 2.18.0
 
