@@ -4,73 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D01C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Oct 2022 17:11:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76A7CC433FE
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Oct 2022 20:22:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pbamZ2ow/g11hpM+MF84OwCGJ/5vic7bSg5IL8Tgc1s=; b=Vl1lVZO53vZiCmhSMZuzg1OZdj
-	pP7u9m5/CgNYiYzVJPaV2nqsiVNxA8AVbXrJYmkdxv7rRWEbPqdGJzTfpbF6g7TP+/SwpuanuBPz5
-	tDQWqyCSTn1egDE9KWHj3g6cSfK1w9mMVph+auFR7EyJb4xNoU1xtEXjnyDgLiIYOtvH3kpqz1Hpm
-	bRwKq5j8w5wX/Xjhj7F2ZIndrUnFl4nWzVP4QPpxaesZxnWfCPl7Gw0dnGYI58UDlveemIuLSUiz0
-	MxFj0lsWqeU4BOLLhkKQ5S4pcps7/lxR/Q4El0sgzFp4P8zgZHeZnE43SCFPmRoSiL73rHgqnd93z
-	ZXmx//PQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XHgsMKrQMgqvd8MMBYK2bOX1Y6kWV/lXdQIMGZQ1iRw=; b=dOqxS9aMFPyNVXgYfrK1REwOfI
+	c9EK2P31mlBsuVH6ZRKOJXJZ3UM3RutseO/msKuAToRy2TKFQGZr9fIe7JRlqOZGdo65+bTrzt+4/
+	AJJcRKLV1ibOfnOjBO9u1HiaSVXfu89sDUTphYdQbrzlEyWgOjPC1vjMTYbyShmUlyx+XK+E4QFI8
+	tCTDI4G/LWveS9fkNvrUugAQBGS+hSqh7/RK4lD9PElyccB0rooWvfmuO5+R/igp8LL+MGZp/KaZB
+	Kh6T4SJXemwTZbOQK4jJf5YJ++Eaey3nUQp6Ecy7GDV4LC3uXAy/E2eNLCbVgcNdrCIKvrNBvt+tv
+	AYbR+PTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeg1I-00FMJA-Pe; Sat, 01 Oct 2022 17:11:20 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oeizv-00FwPj-Iq; Sat, 01 Oct 2022 20:22:07 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeg18-00FMGH-AT; Sat, 01 Oct 2022 17:11:11 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1oeizs-00FwNL-Bf
+	for linux-mediatek@lists.infradead.org; Sat, 01 Oct 2022 20:22:05 +0000
+Received: from mercury (unknown [185.209.196.162])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 788AF60B93;
-	Sat,  1 Oct 2022 17:11:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 392F2C433D6;
-	Sat,  1 Oct 2022 17:11:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664644266;
-	bh=8/44+tCSDFyhjA92zaYauwO92/g0g3Xh1rsDr7QVWcU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=qmheUtIfr5JybckX7f7bA9Sd3Py8wBG14xJCadq/+nk6NPIk5qQI/rioK0VZT9Ou3
-	 qLzTCn/nLQAlNGDG6JpXFxnVCavpzpB2/OvcNreWI6yqLH9LIKn8rjUs/6cTHgI++k
-	 9D58XicM9lDLXIcDIywsUITbNqDeKwLeGntsiHqKNaAp+doEnWZaEhD637mab7dlux
-	 OwMPtsOK9QULS9GD6Tlcy+qKFSkh+Ojg4eoi6EDB3ymwYDjsXT/2Bpaed0JnB5LB4F
-	 mov9I9irgRKH0x6IfWtrvmD/hFKht/ZbdV7jcHjeQITd2EMzJTxQRQEQ+059ise5pA
-	 P5Ks5UgL1YkRg==
-Date: Sat, 1 Oct 2022 18:11:17 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Lee Jones <lee@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, ChiaEn Wu <peterwu.pub@gmail.com>,
- pavel@ucw.cz, krzysztof.kozlowski+dt@linaro.org, matthias.bgg@gmail.com,
- lars@metafoo.de, andriy.shevchenko@linux.intel.com, chiaen_wu@richtek.com,
- alice_chen@richtek.com, cy_huang@richtek.com, linux-leds@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-iio@vger.kernel.org, szunichen@gmail.com, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Andy Shevchenko
- <andy.shevchenko@gmail.com>, Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Subject: Re: [PATCH v12 3/5] iio: adc: mt6370: Add MediaTek MT6370 support
-Message-ID: <20221001181117.7b3f3297@jic23-huawei>
-In-Reply-To: <YzXbJM31s0P0nLD5@google.com>
-References: <cover.1663926551.git.chiaen_wu@richtek.com>
-	<9bf36f09bc5f002f2b09b7cc26edccf109516465.1663926551.git.chiaen_wu@richtek.com>
-	<20220924155525.5663bed8@jic23-huawei>
-	<YzFY5FI0PrZqdAiZ@google.com>
-	<CAL_JsqKKJGtacbzGqCupFniSGha610L1cay2V+AK8vehTA=F=g@mail.gmail.com>
-	<YzQSnuwPjzJIgsYq@google.com>
-	<20220929163418.GA2270491-robh@kernel.org>
-	<YzXbJM31s0P0nLD5@google.com>
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.34; x86_64-pc-linux-gnu)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E66096601FAF;
+	Sat,  1 Oct 2022 21:22:02 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664655723;
+	bh=wqFWOW/OyWDfoee9KFjfBFsXAcHmgvzKirLr3Qysz8Y=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nmL4q3TM9ZtnL2r/8exv0bC7OZ8nfK+U8QCgs/1qtifBuFAjd2U2MgTw5Y1l/twLe
+	 yx1w9lYcqC2biP6B/9sgXh+jTvdTdBzJIAclONxKaVaamKULSCr3BKtdkcWBamSZmp
+	 70xnpfBvBdOmfW8DXvpWOnARB0fcn10gibrNHlP7ru274pSgvM2T9SPRUL+/q8E07f
+	 02JZod4Tu8LbBS80pgxi00rqsieehhSLowvCBBwqVqVT0Tz5kTW81200GAgd8pmRx3
+	 5x0JWpxavdl5j47rxzye1fIbvZNdL3N9A4FTLypd/gTUSjzyr8jpDp3Kcw8LhIsjf4
+	 7HbhnjsdzTkYA==
+Received: by mercury (Postfix, from userid 1000)
+	id 9EF95106090C; Sat,  1 Oct 2022 22:22:00 +0200 (CEST)
+Date: Sat, 1 Oct 2022 22:22:00 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Yang Yingliang <yangyingliang@huawei.com>
+Cc: linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	chiaen_wu@richtek.com
+Subject: Re: [PATCH -next] power: supply: mt6370: Fix return value check in
+ mt6370_chg_probe()
+Message-ID: <20221001202200.2qhm2hy6lsv7iqxg@mercury.elektranox.org>
+References: <20220921152915.1506767-1-yangyingliang@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="u47awkpqqf36v5rg"
+Content-Disposition: inline
+In-Reply-To: <20220921152915.1506767-1-yangyingliang@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221001_101110_492083_C3B7828B 
-X-CRM114-Status: GOOD (  36.63  )
+X-CRM114-CacheID: sfid-20221001_132204_546250_DF1E47B7 
+X-CRM114-Status: GOOD (  17.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,85 +75,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Sep 2022 18:51:32 +0100
-Lee Jones <lee@kernel.org> wrote:
 
-> On Thu, 29 Sep 2022, Rob Herring wrote:
-> 
-> > On Wed, Sep 28, 2022 at 10:23:42AM +0100, Lee Jones wrote:  
-> > > On Mon, 26 Sep 2022, Rob Herring wrote:
-> > >   
-> > > > On Mon, Sep 26, 2022 at 2:46 AM Lee Jones <lee@kernel.org> wrote:  
-> > > > >
-> > > > > On Sat, 24 Sep 2022, Jonathan Cameron wrote:
-> > > > >  
-> > > > > > On Fri, 23 Sep 2022 10:51:24 +0800
-> > > > > > ChiaEn Wu <peterwu.pub@gmail.com> wrote:
-> > > > > >  
-> > > > > > > From: ChiaEn Wu <chiaen_wu@richtek.com>
-> > > > > > >
-> > > > > > > MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
-> > > > > > > with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
-> > > > > > > driver, display bias voltage supply, one general purpose LDO, and the
-> > > > > > > USB Type-C & PD controller complies with the latest USB Type-C and PD
-> > > > > > > standards.
-> > > > > > >
-> > > > > > > Add support for the MT6370 ADC driver for system monitoring, including
-> > > > > > > charger current, voltage, and temperature.
-> > > > > > >
-> > > > > > > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > > > > > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
-> > > > > > > Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > > > > > > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>  
-> > > > > >
-> > > > > > This will have to either wait for next cycle, or go through mfd because
-> > > > > > of the dt-bindings include which is in the mfd tree.
-> > > > > >
-> > > > > > Please make those dependencies clear in new versions.  
-> > > > >
-> > > > > If the bindings come together in -next, then subsequently in Mainline,
-> > > > > it shouldn't really matter.  
-> > > > 
-> > > > Except that the bindings haven't come together and at this point may
-> > > > not for 6.1. linux-next has been warning for weeks because the child
-> > > > device schemas haven't been applied. I've said it before, all the
-> > > > schemas for MFD devices need to be applied together. Or at least the
-> > > > MFD schema needs to get applied last.
-> > > > 
-> > > > Furthermore, subsequent versions of this don't get tested and we end
-> > > > up with more warnings[1].
-> > > > 
-> > > > It's only your IIO tree that the DT  
-> > > > > tooling with complain about, right?  
-> > > > 
-> > > > And the MFD tree...
-> > > > 
-> > > > Please apply the LED bindings (patches 1 and 2) so we can get the
-> > > > existing warnings fixed and address any new warnings.  
-> > > 
-> > > Who usually applies LED bindings?  Looks as though they're good to go.  
-> > 
-> > Pavel. The issue would be I don't know if the driver side is ready and 
-> > those usually go together. Other than my complaining here, how's he 
-> > supposed to know that the bindings at least need to be applied?
-> > 
-> > Again, the process here is not working. I've said before, all the 
-> > bindings for an MFD need to go via 1 tree. You obviously don't agree, so 
-> > propose something. The current process of no coordination doesn't work.  
-> 
-> The solution would be for someone to create succinct immutable branches, like
-> I do for real code.  If someone would be happy to do that, I'd be more than
-> happy to pull from them.
-> 
-> I go to the effort of creating them to prevent actual build breakages,
-> however doing so to keep a documentation helper script happy is a step
-> too far for me personally, sorry.
-> 
+--u47awkpqqf36v5rg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-In this case the bindings include is included from the driver - not just the
-binding.  Obviously there are dances to get around that by using the values
-and replacing in following cycle, but that's not the case here!
+Hi,
 
-Jonathan
+On Wed, Sep 21, 2022 at 11:29:15PM +0800, Yang Yingliang wrote:
+> If create_singlethread_workqueue() fails, it returns a null pointer,
+> replace IS_ERR() check with NULL pointer check.
+>=20
+> Fixes: 233cb8a47d65 ("power: supply: mt6370: Add MediaTek MT6370 charger =
+driver")
+> Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
+> ---
+>  drivers/power/supply/mt6370-charger.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/power/supply/mt6370-charger.c b/drivers/power/supply=
+/mt6370-charger.c
+> index 716cba259a7a..f27dae5043f5 100644
+> --- a/drivers/power/supply/mt6370-charger.c
+> +++ b/drivers/power/supply/mt6370-charger.c
+> @@ -911,8 +911,8 @@ static int mt6370_chg_probe(struct platform_device *p=
+dev)
+>  	priv->attach =3D MT6370_ATTACH_STAT_DETACH;
+> =20
+>  	priv->wq =3D create_singlethread_workqueue(dev_name(priv->dev));
+> -	if (IS_ERR(priv->wq))
+> -		return dev_err_probe(dev, PTR_ERR(priv->wq),
+> +	if (!priv->wq)
+> +		return dev_err_probe(dev, -ENOMEM,
+>  				     "Failed to create workqueue\n");
+> =20
+>  	ret =3D devm_add_action_or_reset(dev, mt6370_chg_destroy_wq, priv->wq);
 
+Thanks, queued.
+
+-- Sebastian
+
+--u47awkpqqf36v5rg
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmM4oWgACgkQ2O7X88g7
++prwkg/9H8t+w5BDB7ZR23wuGrZXIVllKKOvLNjCDjaRRfQ+lXyF7dJh7i5pc6Gu
+5JdXoeUWbL3HxB/DRBQivZrZkkmiJ+4U7qLmRm9OXsyYZ+8MKlkDTbREpz2pKNzi
+DB6KRMiYWssrSiOpKwx5Gs0HvCLFx3RD2R0ia6zMWOurNfnNYg/O855JNH4k01XT
+5+nFMUFWxhKSO3rGr1SBaCcBohsN3itRp+7xMw5up3iOMA1Egkd6SciMZKAYBCRc
+RuAW9cRrNEVtFLjXEyEg92RfWh+dxAtGuHQYMykdAyL+Zm8pUsR0X6OWoQROOdR+
+mDMaW8G+oAQC0AuKNBHHgTtvkHx59iK6w42KWS64ehchMwR8FGVQncG6Rfd/oNiV
+s1lqZVaXGkucPbglkEjbcVQm8kFJBFwsqUO1nPFU8gw/q+BjveIt+gnNHB+PnOaf
+Xbi4ECLr1Q7Uq7DlRKBJqaTT7Yc4s/kyk7jWJFv9SgG2ZTgoErwX+7JDIpH/E3rF
+FOQ92uGFDktQ3NArpmCpBIdwgBesln4PvUuVyarMRVgVDtu22kBDldjwgsl3/nE8
+FXwpUEyiBPw8nwdzyGtKWlhqinXssW6M1vuGlktMrvWyFcavOGmmcvVr0TxuKLt0
+sljzERUFWxQOPYI1zp4BP6i8Ln5wtyqOJxlHUsASs5szRvNzETw=
+=ee/F
+-----END PGP SIGNATURE-----
+
+--u47awkpqqf36v5rg--
 
