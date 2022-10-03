@@ -4,84 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EEECC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 07:14:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55464C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 07:38:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wYR4NfV8b6uyYjkuS4ioBsPmvXID6qlbvYaMpLrsWeo=; b=g1zgq55+2oxqaqLQVoy8iJalhl
-	NJeE+iDJQLMSly6QTrg63sP0RDmrB4X2FYFqmT7xYzWvcXcVGyGL2cKBanZBDfVDEaFVq6/zSVl2/
-	7/9WOjCFyPcZFU+W/XdM2XqaS3jAfcj5zDoSp6dYFPNIe/outD3NRlCA5zmKLRsmlMlWlCmXizDzn
-	Qvh8texCq8OGe5KkKtd37od/dxi1nowXgBMi1F2wOMncEunwpM+LWnccYwnDBf7E6BZec6I0VhGjw
-	BlKT5nb5rebuPNUR7kKPlZw8pvsqwNZKjvk+Fa3bVsRhsLiCWg82MVslzUVT0gWjaAkf1I6tb6cgg
-	et/fVAFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=osR47h8hZijUiWkRpNe4tgz4I5D1NmDPfRHkjph4yN0=; b=xj1gaDVulxAEQPq/qMPDapKoWo
+	FTBxU3Q7OAUgX+WxR93d3o1KQSDCxC8jNb+zF/wN2UsHzdM/ONsKo443uLw9/lpPhK1qYv1K3N1a1
+	7/b57O73Gk6bToqdGuV+hnVgI/qjjLEuyXQRxCOBO4SJh7ezhku2laN1mYSdiMB2wxs6n4ZDlFSRz
+	iJZ60gOyJ86HsAKuj2IUSv36VVDkLfkwAIQP8+dHdsnd4SuElYcusmL0doDRRmECaX7mvQP49etNG
+	38TEj6lbjmE9EkbrGo5D2ghXmKg6k5Ug76FG45ce/qLzQFph5KHwlJoCAnsINhUus2zag3jD54Kkq
+	INIsT+ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofFel-004KvZ-24; Mon, 03 Oct 2022 07:14:27 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1ofG2D-004RMS-CH; Mon, 03 Oct 2022 07:38:41 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofFei-004KuF-R1
-	for linux-mediatek@lists.infradead.org; Mon, 03 Oct 2022 07:14:26 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id l14so680876lja.8
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Oct 2022 00:14:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=wYR4NfV8b6uyYjkuS4ioBsPmvXID6qlbvYaMpLrsWeo=;
-        b=M5IEXsDyin6ySOcRWawZaJmNk+565XVGaj7rLmvlyBrXacUxV643XlZ7s41y2KgMDK
-         5+/fS2rtB0F0eeiAOwBQ1wGhm52uJXweQzs5cbyQjf22hWmMA5V50a4Z/Z63SlsNGtQR
-         4pPk0k4Dazr+sk0255eBtOMxj1K7aK5cRSdUhO1KVn0vxMfBlAO73AF0buE1vrfQXmUN
-         5sEsw7/Zdehoj6BucczvV0RUn6kyEmAjz//wvT5nWVYl9GP0XKoN/XDu577O0IXGFeKx
-         YrhJzyc97g2sFikC++1pwf7xhu6ilH/VdfrJRjY5SjvA/yxOrWbwA4VMj7cIYmzfl+Km
-         JIng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=wYR4NfV8b6uyYjkuS4ioBsPmvXID6qlbvYaMpLrsWeo=;
-        b=Qcy62145V4B3WRorGUJ6t2rhj5fxJaE9mDHRvPdpDLFKVjke+kXfmlaKahkxf7rToL
-         n8ajygXnY3mfL+EfO2cSjS2TvogvQdE+l0RhPvRIbVR91ndkqLbDox3jzzpWgSDWG2th
-         xdH+Lj0LqsJKtqbBMh8fEonQDEkOmQgOxZN49bb09FQDW/JGmhbAte+Gv/RYAouSwm48
-         lSXvqSpHD6Re3DrXSvQlKXw84GCBTSEe42pUG0pQ7hTKTsH1qtXWv2/WV9lV9FNFmRNZ
-         4c3Jl4/axkvF2a4YzbNyilEhsOMhgFYTMgR4oslx8J4id+oC6io+C/StG0aF43QfxyDH
-         iNow==
-X-Gm-Message-State: ACrzQf1KNCjb4LrxN1A54JinK9M5EfDDPkMidbTMzOW9cYwWB+ozPlF3
-	N2zwBqcwpvr1CY07wfWxiX1V1Q==
-X-Google-Smtp-Source: AMsMyM4hqeB1DIMt8vJl2VZ3nxsQtjBqiz9YIXnZZtgsKSq91gR1uL9j7f2Z9PlVU83e5X+CYjtz/Q==
-X-Received: by 2002:a2e:8e62:0:b0:26d:e470:3973 with SMTP id t2-20020a2e8e62000000b0026de4703973mr209145ljk.71.1664781262835;
-        Mon, 03 Oct 2022 00:14:22 -0700 (PDT)
-Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id k16-20020a05651210d000b0049468f9e697sm1334586lfg.236.2022.10.03.00.14.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 03 Oct 2022 00:14:22 -0700 (PDT)
-Message-ID: <fe399fb3-a8b1-14d4-3460-4c4ef36a0dc6@linaro.org>
-Date: Mon, 3 Oct 2022 09:14:21 +0200
+	id 1ofG22-004RGe-Fd; Mon, 03 Oct 2022 07:38:32 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 78EFDB80E6C;
+	Mon,  3 Oct 2022 07:38:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8850C433C1;
+	Mon,  3 Oct 2022 07:38:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1664782707;
+	bh=FMDhul54hBYZQNvlhI+0jeQ0A7mo8ydCvb98f+w5/tk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qC/Zb5U+/jHtIErjFIKbjqnjDcQLpGQ/tPS0CHeha5N2hizQpMJqK2bVyz9DEt/8y
+	 3lzB67Ezb/Oxogf7vMwoXpNYaca8yLrMSwfWPOHUA0zjvJ02TdOJRzaRyyrIrysmCE
+	 qF3IWzh516DSH/1ocyrZFWzaq00P3BcoW1ljSobzh24bvxNGqAZf2a5tQhvmyHI7Vs
+	 fCOqxa8cN1n5FepDwgI8QgL2aKuBxVg2VfbIF9Z41fdGEPhYLyqApXDDo1xbkhJGTC
+	 p0Xaq/RM8wOZHOJA1UqynUyDXg/OOuAG5KzB2M1soRfmCw2pDe7U9T2GdnBN6Nls1u
+	 ZI5k4VIlRa1Ag==
+Date: Mon, 3 Oct 2022 08:38:19 +0100
+From: Lee Jones <lee@kernel.org>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, ChiaEn Wu <peterwu.pub@gmail.com>,
+	pavel@ucw.cz, krzysztof.kozlowski+dt@linaro.org,
+	matthias.bgg@gmail.com, lars@metafoo.de,
+	andriy.shevchenko@linux.intel.com, chiaen_wu@richtek.com,
+	alice_chen@richtek.com, cy_huang@richtek.com,
+	linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-iio@vger.kernel.org, szunichen@gmail.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Shevchenko <andy.shevchenko@gmail.com>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Subject: Re: [PATCH v12 3/5] iio: adc: mt6370: Add MediaTek MT6370 support
+Message-ID: <YzqRa4bF3onhHPva@google.com>
+References: <cover.1663926551.git.chiaen_wu@richtek.com>
+ <9bf36f09bc5f002f2b09b7cc26edccf109516465.1663926551.git.chiaen_wu@richtek.com>
+ <20220924155525.5663bed8@jic23-huawei>
+ <YzFY5FI0PrZqdAiZ@google.com>
+ <CAL_JsqKKJGtacbzGqCupFniSGha610L1cay2V+AK8vehTA=F=g@mail.gmail.com>
+ <YzQSnuwPjzJIgsYq@google.com>
+ <20220929163418.GA2270491-robh@kernel.org>
+ <YzXbJM31s0P0nLD5@google.com>
+ <20221001181117.7b3f3297@jic23-huawei>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.0
-Subject: Re: [PATCH] dt-bindings: mfd: mt6370: fix the interrupt order of the
- charger in the example
-Content-Language: en-US
-To: ChiaEn Wu <peterwu.pub@gmail.com>, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, lee@kernel.org, matthias.bgg@gmail.com,
- sre@kernel.org
-Cc: chiaen_wu@richtek.com, cy_huang@richtek.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <cc89d749eba56c5f2489d1707f7711733561b757.1664792418.git.chiaen_wu@richtek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <cc89d749eba56c5f2489d1707f7711733561b757.1664792418.git.chiaen_wu@richtek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20221001181117.7b3f3297@jic23-huawei>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221003_001424_904520_2D4B54BB 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20221003_003830_841342_F55E13FE 
+X-CRM114-Status: GOOD (  39.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,26 +89,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03/10/2022 04:52, ChiaEn Wu wrote:
-> From: ChiaEn Wu <chiaen_wu@richtek.com>
+On Sat, 01 Oct 2022, Jonathan Cameron wrote:
+
+> On Thu, 29 Sep 2022 18:51:32 +0100
+> Lee Jones <lee@kernel.org> wrote:
 > 
-> Fix the interrupt order of the charger in the binding example.
-> Due to this patch modifiacation
-> (https://lore.kernel.org/all/20221001202918.me7z2qzm7cmrkzsg@mercury.elektranox.org/),
-
-This is already a commit, so use commit syntax.
-
-> there will get some warnings in linux-next when compiling the dts.
+> > On Thu, 29 Sep 2022, Rob Herring wrote:
+> > 
+> > > On Wed, Sep 28, 2022 at 10:23:42AM +0100, Lee Jones wrote:  
+> > > > On Mon, 26 Sep 2022, Rob Herring wrote:
+> > > >   
+> > > > > On Mon, Sep 26, 2022 at 2:46 AM Lee Jones <lee@kernel.org> wrote:  
+> > > > > >
+> > > > > > On Sat, 24 Sep 2022, Jonathan Cameron wrote:
+> > > > > >  
+> > > > > > > On Fri, 23 Sep 2022 10:51:24 +0800
+> > > > > > > ChiaEn Wu <peterwu.pub@gmail.com> wrote:
+> > > > > > >  
+> > > > > > > > From: ChiaEn Wu <chiaen_wu@richtek.com>
+> > > > > > > >
+> > > > > > > > MediaTek MT6370 is a SubPMIC consisting of a single cell battery charger
+> > > > > > > > with ADC monitoring, RGB LEDs, dual channel flashlight, WLED backlight
+> > > > > > > > driver, display bias voltage supply, one general purpose LDO, and the
+> > > > > > > > USB Type-C & PD controller complies with the latest USB Type-C and PD
+> > > > > > > > standards.
+> > > > > > > >
+> > > > > > > > Add support for the MT6370 ADC driver for system monitoring, including
+> > > > > > > > charger current, voltage, and temperature.
+> > > > > > > >
+> > > > > > > > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > > > > > > > Reviewed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
+> > > > > > > > Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> > > > > > > > Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>  
+> > > > > > >
+> > > > > > > This will have to either wait for next cycle, or go through mfd because
+> > > > > > > of the dt-bindings include which is in the mfd tree.
+> > > > > > >
+> > > > > > > Please make those dependencies clear in new versions.  
+> > > > > >
+> > > > > > If the bindings come together in -next, then subsequently in Mainline,
+> > > > > > it shouldn't really matter.  
+> > > > > 
+> > > > > Except that the bindings haven't come together and at this point may
+> > > > > not for 6.1. linux-next has been warning for weeks because the child
+> > > > > device schemas haven't been applied. I've said it before, all the
+> > > > > schemas for MFD devices need to be applied together. Or at least the
+> > > > > MFD schema needs to get applied last.
+> > > > > 
+> > > > > Furthermore, subsequent versions of this don't get tested and we end
+> > > > > up with more warnings[1].
+> > > > > 
+> > > > > It's only your IIO tree that the DT  
+> > > > > > tooling with complain about, right?  
+> > > > > 
+> > > > > And the MFD tree...
+> > > > > 
+> > > > > Please apply the LED bindings (patches 1 and 2) so we can get the
+> > > > > existing warnings fixed and address any new warnings.  
+> > > > 
+> > > > Who usually applies LED bindings?  Looks as though they're good to go.  
+> > > 
+> > > Pavel. The issue would be I don't know if the driver side is ready and 
+> > > those usually go together. Other than my complaining here, how's he 
+> > > supposed to know that the bindings at least need to be applied?
+> > > 
+> > > Again, the process here is not working. I've said before, all the 
+> > > bindings for an MFD need to go via 1 tree. You obviously don't agree, so 
+> > > propose something. The current process of no coordination doesn't work.  
+> > 
+> > The solution would be for someone to create succinct immutable branches, like
+> > I do for real code.  If someone would be happy to do that, I'd be more than
+> > happy to pull from them.
+> > 
+> > I go to the effort of creating them to prevent actual build breakages,
+> > however doing so to keep a documentation helper script happy is a step
+> > too far for me personally, sorry.
+> > 
 > 
-> Fixes: 76f52f815f1a ("dt-bindings: mfd: Add MediaTek MT6370")
-> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> In this case the bindings include is included from the driver - not just the
+> binding.  Obviously there are dances to get around that by using the values
+> and replacing in following cycle, but that's not the case here!
 
-With fixes in commit msg:
+The paragraphs above to not pertain to the use of shared include
+files.  Obviously that would be a good case for the use of IBs.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-
-Best regards,
-Krzysztof
-
+-- 
+Lee Jones [李琼斯]
 
