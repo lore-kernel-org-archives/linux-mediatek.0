@@ -4,77 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6C4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 10:06:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27FF9C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 11:29:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1moqP3A2bwl62SN56AGNJwGXJANlGVGyj/tqswbUkGI=; b=Oo0fsoVd4zrS3ApLfa/wkYQY9S
-	LuCzmyO4aZ0+9ZrOU1cvPHklfVBiKapnyLxW0oEmQbwXCdYOMoTxbia+eHZjXovA/wkggYx9zBj+R
-	gszIndy05gtzFaaJlpxioYvZXeqXUiOim1UgSSa3pJTNlOHi8OJBHOhkstrbj78O8r1DwCptw5Ij2
-	QbHn805rjwlFgkR91/8CGmguRhZbYzLXTf8Trx/H8o3HkO3bTkjSXe2+l+1k2JMk8LvxlcJ3xBI1y
-	8E5/1tbDPpIGWTGCPVY/BjmwbF9z59xxjiP6NqEvCpOlFLOA2mHVWb44KgtvQx1IVmEATW4v3Beoz
-	3DZTjwng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VcPr+nIc3ijL/Rb5Ba12S1Dt5ntJfABr9bBl6dDL1kI=; b=UZKTnv2sJrwt7i0P0J6vo1Xj35
+	AJg5PpLgtWDQ6yGkr1U5qTCpv6pAYUmcHEfBhmxV220+g1+4qIiLNqkdch6okw0IA6BiPZTsflqzL
+	+nUaZBj5wWjnnDotAyXZHPLjJFVprnp+DqOtLiXvFWvmVL2nrVs4lO6OHjT9UsIb7GwzZvUsBfdQf
+	v6EHSxiTdZJUBTZFeUCwEWNEWTnNTzul5EfbO6BKDvqhGVh9Erc+761N1cY8m0E3uMSsfyLCAVwuB
+	kMMHpcLKRI/I6cXPFqqifAV16nTKjq+Bb2inz0L9ECoZGV9Ccbti5+/DcxVbzZHFB5yxpo7XY7F/h
+	WhDDud6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofIKj-005EMa-TB; Mon, 03 Oct 2022 10:05:57 +0000
-Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
+	id 1ofJdG-005T9W-Sp; Mon, 03 Oct 2022 11:29:10 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofIKh-005EL5-8T
-	for linux-mediatek@lists.infradead.org; Mon, 03 Oct 2022 10:05:56 +0000
-Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
-	by mx0a-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 2934nZPn015297;
-	Mon, 3 Oct 2022 05:05:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=PODMain02222019;
- bh=1moqP3A2bwl62SN56AGNJwGXJANlGVGyj/tqswbUkGI=;
- b=AvAOIc/HF35V3MGOYWM31SvHmh3FhOKU3OrtaD3/zE92voFS1mtXC/VAdvJJ2xuIXTc5
- 7UzRhvniyAgrv3aq28cN1vFd+NLO6LfiYHcB9iWoB/9cYV84XJ2KtjKL++kvqHG+WMcf
- wdkHDiizPoIF9AhNiTPi+/nE+QiHO6ffK0EheBm+pDm0kp0e6zuaajn1GIeX1Rz5QszB
- Vql13YUPNc89r+mQDW3Q/iItOC9ijoRASZIhckDiOvMtDPxIytoJsnCkYEt1/Jhhoy6f
- TxdLO4GY1lVa1um9nCE2RFYVlefn8/g7hZhYCtYbIv9cEryqlkkjwSfxgY5qSkgVsqzQ mA== 
-Received: from ediex02.ad.cirrus.com ([84.19.233.68])
-	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3jxjy321hs-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 03 Oct 2022 05:05:41 -0500
-Received: from ediex01.ad.cirrus.com (198.61.84.80) by ediex02.ad.cirrus.com
- (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.12; Mon, 3 Oct
- 2022 05:05:39 -0500
-Received: from ediswmail.ad.cirrus.com (198.61.86.93) by ediex01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server id 15.2.1118.12 via Frontend
- Transport; Mon, 3 Oct 2022 05:05:39 -0500
-Received: from ediswmail.ad.cirrus.com (ediswmail.ad.cirrus.com [198.61.86.93])
-	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id CB8B3475;
-	Mon,  3 Oct 2022 10:05:39 +0000 (UTC)
-Date: Mon, 3 Oct 2022 10:05:39 +0000
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: Zhang Qilong <zhangqilong3@huawei.com>
-CC: <lgirdwood@gmail.com>, <broonie@kernel.org>, <perex@perex.cz>,
-        <tiwai@suse.com>, <matthias.bgg@gmail.com>,
-        <ckeepax@opensource.wolfsonmicro.com>, <jeff_chang@richtek.com>,
-        <alsa-devel@alsa-project.org>, <linux-mediatek@lists.infradead.org>,
-        <patches@opensource.cirrus.com>
-Subject: Re: [PATCH v2 -next 3/4] ASoC: wm5102: Fix PM disable depth
- imbalance in wm5102_probe
-Message-ID: <20221003100539.GX92394@ediswmail.ad.cirrus.com>
-References: <20220929150653.63845-1-zhangqilong3@huawei.com>
- <20220929150653.63845-4-zhangqilong3@huawei.com>
+	id 1ofJd6-005T87-Ho; Mon, 03 Oct 2022 11:29:01 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id C30BE6601F8A;
+	Mon,  3 Oct 2022 12:28:56 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664796537;
+	bh=a5oSX0ceJpHAh8O/8zS5a5WFF20/Wc0S1JUkk7Q60Uc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=j6Zb8obh981BH2ZWyV2nXwoQFshP0kUo/hvK0kMKL509IYXvn1LSnOA6vVaccvzKn
+	 zislmLYKBKSeAqSBZovh2CaPLkkqdaT5GLLAwlitTDz9Ltd56kR/qJ1wAEKsfDX/LX
+	 8CA3rxjUt4ZLYcVQL75whDVnk4cGVs2v9lGDx+/yt157aQVZRGS7Fa0Cj/lqF+ln1Z
+	 UBtbAeqrWrc6x1t+parm7XLfXq6i/tCM+du1J7dTFnpStRVb+OjMAPOl2+3Ygf67d6
+	 XpwVKOFwOz7jhXKPs5U/pwhv26unBJE/WMJ7WKC2V+Ty9c25HkvGQ0YPQzzj6GGfUl
+	 69TJO6kmEIaPQ==
+Message-ID: <26ca8837-6cdd-2523-014d-8651ba48862a@collabora.com>
+Date: Mon, 3 Oct 2022 13:28:53 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20220929150653.63845-4-zhangqilong3@huawei.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Proofpoint-GUID: AATgxrvH0syWluTFEonSgN-vMsR87xO8
-X-Proofpoint-ORIG-GUID: AATgxrvH0syWluTFEonSgN-vMsR87xO8
-X-Proofpoint-Spam-Reason: safe
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v3] reset: mediatek: Move mediatek system clock reset to
+ reset folder
+To: Stephen Boyd <sboyd@kernel.org>, Bo-Chen Chen <rex-bc.chen@mediatek.com>,
+ matthias.bgg@gmail.com, mturquette@baylibre.com, p.zabel@pengutronix.de
+Cc: runyang.chen@mediatek.com, miles.chen@mediatek.com, wenst@chromium.org,
+ nfraprado@collabora.com, linux-kernel@vger.kernel.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220929121031.17523-1-rex-bc.chen@mediatek.com>
+ <17c5cc9c-50ea-aeac-04e0-20b6c093c7ec@collabora.com>
+ <20220930185953.41810C433C1@smtp.kernel.org>
+Content-Language: en-US
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220930185953.41810C433C1@smtp.kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221003_030555_328057_D8815EB4 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20221003_042900_771880_C5A8B7E3 
+X-CRM114-Status: GOOD (  20.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,21 +80,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 29, 2022 at 11:06:52PM +0800, Zhang Qilong wrote:
-> The pm_runtime_enable will increase power disable depth. Thus
-> a pairing decrement is needed on the error handling path to
-> keep it balanced according to context. We fix it by calling
-> pm_runtime_disable when error returns.
+Il 30/09/22 20:59, Stephen Boyd ha scritto:
+> Quoting AngeloGioacchino Del Regno (2022-09-29 05:50:38)
+>> I've just analyzed this idea a bit more, and there's the outcome.
+>>
+>> This driver would be fine, if some MediaTek SoCs weren't shipped with
+>> a bootloader that supports only very small kernels... because then, if
+>> the reset controller is not available at boot time, it's unlikely that
+>> you can probe the eMMC or the uSD, so it won't be possible to actually
+>> compile this driver as a module and load it afterwards.
+>>
+>> Please don't misunderstand me: I like the idea of having the MediaTek
+>> SoC sysclk reset controller as a ... reset controller driver but, to
+>> make that work, one fundamental issue must be solved...
+>>
+>> If the kernel is configured for, let's say, MT2701 and MT2712, we're
+>> always building in reset controller support for MT7622, 7629, 8135, 8173,
+>> 8183, 8186, 8192, 8195 - and this list will grow with MT8188, and others.
+>>
+>> Obviously, it's useless to have support for, say, MT7622, if the MT7622
+>> system clock controllers aren't built-in, nor modules.
+>>
+>> So, to make this idea to work, we have to find a way to:
+>> 1. Build in support only for the required SoC(s)
 > 
-> Fixes:93e8791dd34ca ("ASoC: wm5102: Initial driver")
-> Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
-> ---
-> v2:
-> - call pm_runtime_disable when error returns
-> ---
+> Use Kconfig
+> 
+>> 2. Put the reset index mapping arrays in SoC-specific files, or this
+>>      single file driver will see an exponential growth.
+> 
+> Split the reset driver into different files compiled for different SoCs
+> based on the SoC Kconfig made in step 1.
+> 
+>>
+>> Wrapping it up - as the driver is right now - we're losing flexibility:
+>> we need to maintain the current flexibility while keeping the improvements
+>> that are made with this proposal.
+>>
+>> Ideas?
+>>
+> 
+> It should work and your concerns are alleviated?
 
-Acked-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+With this solution, my concerns are practically solved.
 
-Thanks,
-Charles
+Regards,
+Angelo
 
