@@ -4,61 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFF59C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 13:25:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3740C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 13:27:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:Reply-To:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UC6MSONY3vLkuMDaO7L4lnAgj63J2DwMG65oUzBFyAk=; b=NzpEoxe2EhnJ2V1nSgVFZhfi82
-	BJlKrw6/J4M5u/EhVJ9zM8IU3O4wDIwzvFAuCMEnrGaY8TbZ4ziFLRG37WOvixW2Qp1W+hGhSsjIb
-	/TJktJNN3lOVQeCgl4xZLzAxdIsEjZcYgZ0oPrwwGuVo8eVC0yEX1j+j1r5ZmPX2NZwfdk4zKswA6
-	xZghQQnQLRALaYs0cQs3d7awwW6nVVnMmvGliAPPv8G5MkgW3nSVgLqjMivDjcTxncl3eJHOWh8+x
-	I8WWIUgVDK9wXtewpGVSdoRNV6ZDz5uK4FdZGo52eh05GCVJL9Ph9kjvSNcf7U1bcu7ZVy/Sy0JSf
-	coqkRpKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yRIMiFRHxfdGJDjG9K9HNpuOScDcKnyF2oEGJoSrlM4=; b=WFpj8A130tAy5LSVjI2fH2WMwd
+	+ZvjRdCLAwB2mh1wNfKG9bxSfhjYXovo0r0bRJSDn7vi/wAFj6KGb/VFSbBWNYHJ2JoLKXHXaEJFw
+	PSTWXks8On/Z098yRFsNEOQrUcn1QcoHrNJclNse+DjPZ3Blx8I6NjctvUQb+jslzmZuyUDkSavr+
+	2cVm5yln3Jx/v31kQDgUxT6Ze4xS3pqiwqSxH4+JzxNKgFkauFJiLMpgkU3qrc3nY86sIpy8NCXiR
+	uYXKu0t3Pfbp/ttGHQGDgGfjbm6wGqKS5H4a09E8HQdvhJsXDeuPDstDPEkrOkNcNe26KZyp5AbLJ
+	+n/iaLfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofLRZ-005yQn-He; Mon, 03 Oct 2022 13:25:13 +0000
-Received: from mail-oa1-f43.google.com ([209.85.160.43])
+	id 1ofLTC-005zGv-B6; Mon, 03 Oct 2022 13:26:54 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofLRM-005yJI-5s; Mon, 03 Oct 2022 13:25:01 +0000
-Received: by mail-oa1-f43.google.com with SMTP id 586e51a60fabf-1324e7a1284so4266499fac.10;
-        Mon, 03 Oct 2022 06:24:59 -0700 (PDT)
+	id 1ofLT1-005zAt-7v
+	for linux-mediatek@lists.infradead.org; Mon, 03 Oct 2022 13:26:44 +0000
+Received: by mail-lf1-x131.google.com with SMTP id j16so16594769lfg.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Oct 2022 06:26:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=yRIMiFRHxfdGJDjG9K9HNpuOScDcKnyF2oEGJoSrlM4=;
+        b=CCRAtD2B/gDLVtVgCmF4Q4OjwVBw0wDfwOpTt6CScLf+G88sFEV/U0as01pkrtLJ16
+         mbfWdwO8Ozs19RiYvPdK81wU+r7P3sNtB3Oy7Y5NQbHzqzCU4kpcqnM1RXShBFJmTPZT
+         VUkLDyIh26H2AIFUyvItrin8K2vImbAVe2K5Pn2DrjRqwLcF0BZMzV1olxAh6OCqYDSI
+         8J9VYJxfljrKOO/LxRMCB9y1+rt7vzmm0iXKLw4QeFs84RtVvRK5Q+5eAMMKrgnNUjSU
+         Arwdq+AcHdKwNzpsSUC8jrNjmjXUKuYBHvBYL0p90ahVtkkf577LrrkKk8sLqA1wxy5g
+         gVMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=date:subject:message-id:references:in-reply-to:cc:to:from
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date;
-        bh=UC6MSONY3vLkuMDaO7L4lnAgj63J2DwMG65oUzBFyAk=;
-        b=5w5IUg1j4bOQrTyY4xooFDEuaPN667BbkgSDl3Drt/50rG4nFXhcLI/LawBXKS4Fmt
-         0+cqwZRPopXeJg35ZD2LH04MhcRkqvO4hJBdpY41h+z9hbxW1e4xfszcBiL5ov9fjj+k
-         t/V1+EsIDnYNJsWBrgo+O50c2Rfvyyjc1t4iIvoE+lgn3ziJXODkYdtyXVn3eZixCY93
-         pYOyEAe14vI4aTjwiikoItFpgcroVTG2i1oXCZfTQ7tVpfMbNGfKw+Jb3l2NJNEFCF9p
-         v5VFCZJUNNtYUHdow2KVxD46GX1loQBt22/RWElsJzmaESBBsHdkR3J4nZWaElwQCjix
-         qHzQ==
-X-Gm-Message-State: ACrzQf3N0uj0au5+IehmUFQ9tQND1o1NI5HxBfPUQV0blt94m4MqEOcM
-	b81bhrnBVK1ajfG4EWNyrw==
-X-Google-Smtp-Source: AMsMyM71sXM3bBdvdcws90nBNoMbSopHlJ/SFYjN9kST5ujwFHp2n7tEk53k8931au5a/27ttw6cSw==
-X-Received: by 2002:a05:6870:63a3:b0:132:8fec:b67f with SMTP id t35-20020a05687063a300b001328fecb67fmr825243oap.27.1664803498467;
-        Mon, 03 Oct 2022 06:24:58 -0700 (PDT)
-Received: from macbook.herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id a15-20020a056870b14f00b0013191fdeb9bsm2908984oal.38.2022.10.03.06.24.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Oct 2022 06:24:58 -0700 (PDT)
-Received: (nullmailer pid 1863811 invoked by uid 1000);
-	Mon, 03 Oct 2022 13:24:48 -0000
-From: Rob Herring <robh@kernel.org>
-To: Irui Wang <irui.wang@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, Maoguang Meng <maoguang.meng@mediatek.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Yunfei Dong <yunfei.dong@mediatek.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-In-Reply-To: <20221001030752.14486-1-irui.wang@mediatek.com>
-References: <20221001030752.14486-1-irui.wang@mediatek.com>
-Message-Id: <166479591681.1661748.6265395941647267106.robh@kernel.org>
-Subject: Re: [PATCH] dt-bindings: mediatek: vcodec: Add the platform compatible to schema
-Date: Mon, 03 Oct 2022 08:24:48 -0500
+        bh=yRIMiFRHxfdGJDjG9K9HNpuOScDcKnyF2oEGJoSrlM4=;
+        b=6Q/njdGte9yWrmqq97ciw6Z7LfAimnbNr4OlcpJLbWeMyqU9ClOIaSigYB0+1ONiLO
+         +vuGZxuiDxfYXCMiGmvfeKBQW/Kjt/+lhQ+j1dwiHQCD6+24na6RyxNSXaxUX6dQsSe7
+         eK2egGlTDt9IpTwGp6R3xsH3mSyKtSAI1Z5e++EgkP5ro5MacfxY5iVhyeuurFlmCcVp
+         P1rzceJUEMmd0B/MeB95oeE/tEVgL6FVl0MFXoDiDQ6R/nwQyUkpJdM2y1CJCyX+Usgg
+         aT3DHMr9zCsT8SJ7ThXcrCKlbbMEl2bU96t2dm+iXXTuXex5L84AaLBmOWuMdwkkOr4V
+         NcgA==
+X-Gm-Message-State: ACrzQf03BbvtdxLu+mSEQJ30PyEYPupywqboxDCXutYICqxhEh3Y2dut
+	v9xkeA22RjeyBArRTklF0pGmFg==
+X-Google-Smtp-Source: AMsMyM6LLORTXjbGJao6foKAioZdPQngaNSwlkj1I2jJGoa7BH0czKJEH7M00qNEosJEewFi3Y8F1w==
+X-Received: by 2002:a05:6512:234c:b0:499:9c33:af96 with SMTP id p12-20020a056512234c00b004999c33af96mr7094704lfu.545.1664803600423;
+        Mon, 03 Oct 2022 06:26:40 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id n5-20020a0565120ac500b00492d7a7b4e3sm1462850lfu.4.2022.10.03.06.26.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 03 Oct 2022 06:26:39 -0700 (PDT)
+Message-ID: <01ead0ea-d0c7-7878-e411-c00cb5f78140@linaro.org>
+Date: Mon, 3 Oct 2022 15:26:38 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [PATCH v4 1/2] media: dt-bindings: mediatek: Rename child node
+ names for decoder
+Content-Language: en-US
+To: Allen-KH Cheng <allen-kh.cheng@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20220930112237.14411-1-allen-kh.cheng@mediatek.com>
+ <20220930112237.14411-2-allen-kh.cheng@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220930112237.14411-2-allen-kh.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221003_062500_239181_17BF5C1D 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20221003_062643_302778_C6201E7B 
+X-CRM114-Status: UNSURE (   8.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,30 +99,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 01 Oct 2022 11:07:52 +0800, Irui Wang wrote:
-> There are venc node warnings when running dtbs_check, the clock-names
-> was unexpected, missing properties '#address-cells' and '#size-cells'.
-> Add the corresponding platform compatible to schema.
+On 30/09/2022 13:22, Allen-KH Cheng wrote:
+> In order to make the names of the child nodes more generic, we rename
+> "vcodec" to "video-codec" for decoder in patternProperties and example.
 > 
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../bindings/media/mediatek,vcodec-encoder.yaml      | 12 +++++++++++-
->  1 file changed, 11 insertions(+), 1 deletion(-)
-> 
-
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
-
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
-
-Full log is available here: https://patchwork.ozlabs.org/patch/
+>  .../bindings/media/mediatek,vcodec-subdev-decoder.yaml    | 8 ++++----
 
 
-vcodec@17020000: clock-names:0: 'venc_sel' was expected
-	arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dtb
-	arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dtb
-	arch/arm64/boot/dts/mediatek/mt8192-evb.dtb
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
 
 
