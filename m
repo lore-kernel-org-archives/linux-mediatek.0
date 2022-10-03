@@ -4,60 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0B90C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 13:48:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53507C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 14:46:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/nFzv9zqPOpBZez9dT7ZITO/5nYcroyyujAVt3AO4cg=; b=ne1X8hL4jmE2vYOl9A2sg8lHSd
-	wFpiIkOwbqxEtHRYmY9QghHVBhqzafWZyBQVGX1IvphkYS2S56R+TVC4UkouxNoCn7UAlix7ZJsVr
-	CNkzHHmFyUs5CHi1QsyyKbQFULzggMuNLTc2wJ9crTLiczJeXMJSe34x4vC2xD1+mmEUJFhQeoPxZ
-	nf1iOs3f3+376z4gIKZI0zChEd7tuiK5iC78tEH/wEMC7+qIstTT2UiqtpJ/6UItF7fra5HuG7Z7S
-	H1jfJfZWKaRN4asn4oDiEUadXQzGjy5PDSuv5teDSPLslBQUhCyYRV4rVlYSXva6wyEB2UG5UIFtB
-	YI1YBlOg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=g4/LBbiinZasmIZrXDr+6xgM7JCbyAXzzBB3RhFJswc=; b=jeX8a47pjCB64l3dL8cJtZVsyZ
+	YYY32JQI7ARVYY3DOkfMllvZoJ8cLMNvde6ynBL/DHLvHEPyBqBPFE81H7HdCbjfjcylIvMc5Nwso
+	ZRBeUpzYElPhv3WW2iRhz1wA2GGfX2KFQMECVoNNZLDl3Hvy6ZpDVkK8I/IlF90SReT19gBNGN0WB
+	ggYotvBFCIcgWPg9u8Xz1WiJZFrnr7g5xVxpSVv7cz4Hs/oI5zqU0+botA8k/nloNg00nCKHkQr7j
+	w4YupzKhrrFOnTlP6KDSbcp0mnW4V0tTn4+an/cLnEHl3oHWuozF8hvHzP1+yIwHti6/QjNwJpb6d
+	wnPtaiuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofLnf-0065D3-9F; Mon, 03 Oct 2022 13:48:03 +0000
-Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
+	id 1ofMi4-006JV0-Bk; Mon, 03 Oct 2022 14:46:20 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofLnc-0065Al-Mb
-	for linux-mediatek@lists.infradead.org; Mon, 03 Oct 2022 13:48:02 +0000
-Received: from local
-	by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.96)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1ofLnR-0004nb-3A;
-	Mon, 03 Oct 2022 15:47:50 +0200
-Date: Mon, 3 Oct 2022 14:47:42 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Matthieu Baerts <matthieu.baerts@tessares.net>
-Cc: Jakub Kicinski <kuba@kernel.org>, linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Sujuan Chen <sujuan.chen@mediatek.com>,
-	Bo Jiao <Bo.Jiao@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
-	John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Chen Minqiang <ptpt52@gmail.com>,
-	Thomas =?iso-8859-1?Q?H=FChn?= <thomas.huehn@hs-nordhausen.de>
-Subject: Re: [PATCH v2] net: ethernet: mtk_eth_soc: fix state in
- __mtk_foe_entry_clear: manual merge
-Message-ID: <Yzrn/ozGZn6v9oQ1@makrotopia.org>
-References: <20220928190939.3c43516f@kernel.org>
- <YzY+1Yg0FBXcnrtc@makrotopia.org>
- <6cb6893b-4921-a068-4c30-1109795110bb@tessares.net>
+	id 1ofMht-006JQn-M9; Mon, 03 Oct 2022 14:46:11 +0000
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 294EF6601B15;
+	Mon,  3 Oct 2022 15:46:06 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664808367;
+	bh=/FVS6/5ZqbbGMxW7m+yjSMkIk/Rq9l4aAT/jU6ZOLi8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bDkm/xCNVzSoHPEJRFO6q0zI5aXmON0x0NiIPKzlxTQWF4MoIUWzskOaJ3hFEaFk9
+	 ODY7fHFNegpei8JwOC40L/cjUjItWdY0qaYiWy3md+w4eriBBAM572M4SAD+0prbsF
+	 sN9PNTD8AG8jLtXSDlUeTxP0zIb2pKAg3+XD0dzeETTqf0Y2dRu0P3vQplZ0gwhC04
+	 9a+1BHe4r746PKNIXXMSmlwRzO0Hx/CiJ1OCpADCBxyg0XWwDAOIP5YYtVdBhdcsbg
+	 H0aXa+sQTJgabIPLEhO7sjGLmHo1NuJ6DbVXhplWQ46fXumAZgbXfyWxRD5pR2yFh8
+	 oMlmi7fzQ+Qvw==
+Message-ID: <e3f751e4-4cca-e869-5b7b-45205f0f12c1@collabora.com>
+Date: Mon, 3 Oct 2022 16:46:03 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <6cb6893b-4921-a068-4c30-1109795110bb@tessares.net>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v2] dt-bindings: mfd: mt6370: fix the interrupt order of
+ the charger in the example
+Content-Language: en-US
+To: ChiaEn Wu <peterwu.pub@gmail.com>, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, lee@kernel.org, matthias.bgg@gmail.com,
+ sre@kernel.org
+Cc: chiaen_wu@richtek.com, cy_huang@richtek.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+References: <9dda705a8d67826306f6c6129722d3ad8edc96fc.1664816175.git.chiaen_wu@richtek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <9dda705a8d67826306f6c6129722d3ad8edc96fc.1664816175.git.chiaen_wu@richtek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221003_064800_766390_6DC49AA7 
-X-CRM114-Status: GOOD (  20.48  )
+X-CRM114-CacheID: sfid-20221003_074609_960957_BDAC8A7A 
+X-CRM114-Status: UNSURE (   7.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,71 +79,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 03, 2022 at 02:59:32PM +0200, Matthieu Baerts wrote:
-> Hello,
+Il 03/10/22 11:04, ChiaEn Wu ha scritto:
+> From: ChiaEn Wu <chiaen_wu@richtek.com>
 > 
-> On 30/09/2022 02:56, Daniel Golle wrote:
-> > Setting ib1 state to MTK_FOE_STATE_UNBIND in __mtk_foe_entry_clear
-> > routine as done by commit 0e80707d94e4c8 ("net: ethernet: mtk_eth_soc:
-> > fix typo in __mtk_foe_entry_clear") breaks flow offloading, at least
-> > on older MTK_NETSYS_V1 SoCs, OpenWrt users have confirmed the bug on
-> > MT7622 and MT7621 systems.
-> > Felix Fietkau suggested to use MTK_FOE_STATE_INVALID instead which
-> > works well on both, MTK_NETSYS_V1 and MTK_NETSYS_V2.
-> > 
-> > Tested on MT7622 (Linksys E8450) and MT7986 (BananaPi BPI-R3).
-> > 
-> > Suggested-by: Felix Fietkau <nbd@nbd.name>
-> > Fixes: 0e80707d94e4c8 ("net: ethernet: mtk_eth_soc: fix typo in __mtk_foe_entry_clear")
-> > Fixes: 33fc42de33278b ("net: ethernet: mtk_eth_soc: support creating mac address based offload entries")
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > ---
-> > v2: rebased on top of netdev/net.git;main
+> Fix the interrupt order of the charger in the binding example.
 > 
-> FYI and as expected when reading this email thread, we got a small
-> conflict when merging -net in net-next in the MPTCP tree due to this
-> patch applied in -net:
-> 
->   ae3ed15da588 ("net: ethernet: mtk_eth_soc: fix state in
-> __mtk_foe_entry_clear")
-> 
-> and this one from net-next:
-> 
->   9d8cb4c096ab ("net: ethernet: mtk_eth_soc: add foe_entry_size to
-> mtk_eth_soc")
-> 
-> The conflict has been resolved on our side[1] inspired by Daniel's v1.
-> The resolution we suggest is attached to this email.
+> Fixes: 76f52f815f1a ("dt-bindings: mfd: Add MediaTek MT6370")
+> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-conflict resolution: Acked-by: Daniel Golle <daniel@makrotopia.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> 
-> Cheers,
-> Matt
-> 
-> [1] https://github.com/multipath-tcp/mptcp_net-next/commit/7af5fac658ba
-> -- 
-> Tessares | Belgium | Hybrid Access Solutions
-> www.tessares.net
-
-> diff --cc drivers/net/ethernet/mediatek/mtk_ppe.c
-> index 887f430734f7,148ea636ef97..ae00e572390d
-> --- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-> @@@ -439,10 -410,9 +439,10 @@@ __mtk_foe_entry_clear(struct mtk_ppe *p
->   
->   	hlist_del_init(&entry->list);
->   	if (entry->hash != 0xffff) {
->  -		ppe->foe_table[entry->hash].ib1 &= ~MTK_FOE_IB1_STATE;
->  -		ppe->foe_table[entry->hash].ib1 |= FIELD_PREP(MTK_FOE_IB1_STATE,
->  -							      MTK_FOE_STATE_INVALID);
->  +		struct mtk_foe_entry *hwe = mtk_foe_get_entry(ppe, entry->hash);
->  +
->  +		hwe->ib1 &= ~MTK_FOE_IB1_STATE;
-> - 		hwe->ib1 |= FIELD_PREP(MTK_FOE_IB1_STATE, MTK_FOE_STATE_UNBIND);
-> ++		hwe->ib1 |= FIELD_PREP(MTK_FOE_IB1_STATE, MTK_FOE_STATE_INVALID);
->   		dma_wmb();
->   	}
->   	entry->hash = 0xffff;
 
 
