@@ -4,68 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC71CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 07:09:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EEECC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 07:14:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SeK8Sk/+yiZcfff3vIcmr/JFhl6MA/TK7AvFrNExFgQ=; b=XyysKb23VOW3czL56FNiLB9TlX
-	Ctk+llJWYCJJfB9pBzvSNikrASNTEl3aSP4FoJYb1sFq0SSXmzJxgvbxI1vy4t3q4kgACWOOMSzCi
-	EQuFeHf2qsOLTeXzBB2i0vHVN0kxZk0y1TnTgGrkE3+HyHc0fhGUL9kr8Cv/T+JbKlhrYNvGzBN13
-	INA4f/Pspotj+ELSI2oH46qy2p+1+yADVuGH/lULWxtEEbvQR1SZaR/SiRAC68euyQl7Z65gA3hyD
-	kznPmINqjVWuUWcObG04BraxdLiuKxTFuOVhKRVMciLqe9O5RiCPYzqGwde1LLDoFd4jT7T+/zyEU
-	WPBITPjA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wYR4NfV8b6uyYjkuS4ioBsPmvXID6qlbvYaMpLrsWeo=; b=g1zgq55+2oxqaqLQVoy8iJalhl
+	NJeE+iDJQLMSly6QTrg63sP0RDmrB4X2FYFqmT7xYzWvcXcVGyGL2cKBanZBDfVDEaFVq6/zSVl2/
+	7/9WOjCFyPcZFU+W/XdM2XqaS3jAfcj5zDoSp6dYFPNIe/outD3NRlCA5zmKLRsmlMlWlCmXizDzn
+	Qvh8texCq8OGe5KkKtd37od/dxi1nowXgBMi1F2wOMncEunwpM+LWnccYwnDBf7E6BZec6I0VhGjw
+	BlKT5nb5rebuPNUR7kKPlZw8pvsqwNZKjvk+Fa3bVsRhsLiCWg82MVslzUVT0gWjaAkf1I6tb6cgg
+	et/fVAFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofFZi-004Jb4-Od; Mon, 03 Oct 2022 07:09:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ofFel-004KvZ-24; Mon, 03 Oct 2022 07:14:27 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofFZf-004JaD-Q3
-	for linux-mediatek@lists.infradead.org; Mon, 03 Oct 2022 07:09:13 +0000
-X-UUID: aeaafdcb43fb43f89097a2bc21acfd04-20221003
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SeK8Sk/+yiZcfff3vIcmr/JFhl6MA/TK7AvFrNExFgQ=;
-	b=BG53+uh7uptuDhUZzLaPRcWqRWjcwXBdVEUN1zXRK+TYP+oMSEExWTJ+jK+H03J5Ns9xHm2LrtJwWK4IfPbGl2QOrgoaMvFvbWuiCezETmQQEtVmkd+TRdEcwKiXF3s/eNLiyegiqeO4uoks60rNxijVmdLtGheyH2S2WnS+TdI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:a38d8c70-a9c3-45f0-bd9d-7f10dcc10330,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:39a5ff1,CLOUDID:9374d6a3-dc04-435c-b19b-71e131a5fc35,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: aeaafdcb43fb43f89097a2bc21acfd04-20221003
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1940419711; Mon, 03 Oct 2022 00:09:08 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Mon, 3 Oct 2022 15:08:31 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 3 Oct 2022 15:08:31 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, <linux-media@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Moudy Ho
-	<moudy.ho@mediatek.com>
-Subject: [PATCH v2 0/2] Fix error handling for MDP3
-Date: Mon, 3 Oct 2022 15:08:28 +0800
-Message-ID: <20221003070830.23697-1-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1ofFei-004KuF-R1
+	for linux-mediatek@lists.infradead.org; Mon, 03 Oct 2022 07:14:26 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id l14so680876lja.8
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Oct 2022 00:14:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=wYR4NfV8b6uyYjkuS4ioBsPmvXID6qlbvYaMpLrsWeo=;
+        b=M5IEXsDyin6ySOcRWawZaJmNk+565XVGaj7rLmvlyBrXacUxV643XlZ7s41y2KgMDK
+         5+/fS2rtB0F0eeiAOwBQ1wGhm52uJXweQzs5cbyQjf22hWmMA5V50a4Z/Z63SlsNGtQR
+         4pPk0k4Dazr+sk0255eBtOMxj1K7aK5cRSdUhO1KVn0vxMfBlAO73AF0buE1vrfQXmUN
+         5sEsw7/Zdehoj6BucczvV0RUn6kyEmAjz//wvT5nWVYl9GP0XKoN/XDu577O0IXGFeKx
+         YrhJzyc97g2sFikC++1pwf7xhu6ilH/VdfrJRjY5SjvA/yxOrWbwA4VMj7cIYmzfl+Km
+         JIng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=wYR4NfV8b6uyYjkuS4ioBsPmvXID6qlbvYaMpLrsWeo=;
+        b=Qcy62145V4B3WRorGUJ6t2rhj5fxJaE9mDHRvPdpDLFKVjke+kXfmlaKahkxf7rToL
+         n8ajygXnY3mfL+EfO2cSjS2TvogvQdE+l0RhPvRIbVR91ndkqLbDox3jzzpWgSDWG2th
+         xdH+Lj0LqsJKtqbBMh8fEonQDEkOmQgOxZN49bb09FQDW/JGmhbAte+Gv/RYAouSwm48
+         lSXvqSpHD6Re3DrXSvQlKXw84GCBTSEe42pUG0pQ7hTKTsH1qtXWv2/WV9lV9FNFmRNZ
+         4c3Jl4/axkvF2a4YzbNyilEhsOMhgFYTMgR4oslx8J4id+oC6io+C/StG0aF43QfxyDH
+         iNow==
+X-Gm-Message-State: ACrzQf1KNCjb4LrxN1A54JinK9M5EfDDPkMidbTMzOW9cYwWB+ozPlF3
+	N2zwBqcwpvr1CY07wfWxiX1V1Q==
+X-Google-Smtp-Source: AMsMyM4hqeB1DIMt8vJl2VZ3nxsQtjBqiz9YIXnZZtgsKSq91gR1uL9j7f2Z9PlVU83e5X+CYjtz/Q==
+X-Received: by 2002:a2e:8e62:0:b0:26d:e470:3973 with SMTP id t2-20020a2e8e62000000b0026de4703973mr209145ljk.71.1664781262835;
+        Mon, 03 Oct 2022 00:14:22 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id k16-20020a05651210d000b0049468f9e697sm1334586lfg.236.2022.10.03.00.14.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 03 Oct 2022 00:14:22 -0700 (PDT)
+Message-ID: <fe399fb3-a8b1-14d4-3460-4c4ef36a0dc6@linaro.org>
+Date: Mon, 3 Oct 2022 09:14:21 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [PATCH] dt-bindings: mfd: mt6370: fix the interrupt order of the
+ charger in the example
+Content-Language: en-US
+To: ChiaEn Wu <peterwu.pub@gmail.com>, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, lee@kernel.org, matthias.bgg@gmail.com,
+ sre@kernel.org
+Cc: chiaen_wu@richtek.com, cy_huang@richtek.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <cc89d749eba56c5f2489d1707f7711733561b757.1664792418.git.chiaen_wu@richtek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <cc89d749eba56c5f2489d1707f7711733561b757.1664792418.git.chiaen_wu@richtek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221003_000911_855930_DF0FCA48 
-X-CRM114-Status: UNSURE (   7.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221003_001424_904520_2D4B54BB 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,24 +96,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes since v1:
-- Rename goto label in mdp_comp_clock_on() from "err_unwind"
-  to "err_revert" to make more readable.
+On 03/10/2022 04:52, ChiaEn Wu wrote:
+> From: ChiaEn Wu <chiaen_wu@richtek.com>
+> 
+> Fix the interrupt order of the charger in the binding example.
+> Due to this patch modifiacation
+> (https://lore.kernel.org/all/20221001202918.me7z2qzm7cmrkzsg@mercury.elektranox.org/),
 
-Hi,
-This series fixes some error handling in MDP3 in response to the bug report
-submitted by Dan Carpenter (Message ID = YxB1E00e8D6P4W2e@kili)
+This is already a commit, so use commit syntax.
 
-Moudy Ho (2):
-  media: platform: mtk-mdp3: fix error handling in mdp_cmdq_send()
-  media: platform: mtk-mdp3: fix error handling about components
-    clock_on
+> there will get some warnings in linux-next when compiling the dts.
+> 
+> Fixes: 76f52f815f1a ("dt-bindings: mfd: Add MediaTek MT6370")
+> Signed-off-by: ChiaEn Wu <chiaen_wu@richtek.com>
 
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 51 ++++++++++---------
- .../platform/mediatek/mdp3/mtk-mdp3-comp.c    | 24 ++++++---
- 2 files changed, 45 insertions(+), 30 deletions(-)
+With fixes in commit msg:
 
--- 
-2.18.0
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+
+Best regards,
+Krzysztof
 
 
