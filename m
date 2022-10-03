@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90D44C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 14:54:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB466C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 14:58:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GiXAKPwtuuaKt3Y1ZrWA6Uh7cvyeHmQm57n/uMzzut4=; b=WpCPGIv0lM2jQm9bAzx7vJtjiG
-	bzX98NVXrncPIutAuu+Eh67wnOKAXvXmKo317BqkDKX8mu+VIcujlc5/dL/HRlOczMn7KTiKD4vM+
-	Gi49PBccVdPZONn82Dcu7kkqiEYZiVAwiSIv7Tb+weyNqbAcKgoDMdHCna8rtDqHG7fBmM2GGgejU
-	F/l9CAMxtt0qDJQHIi46QWD2mT5xuZiloOUuJEnK1hPK5xPeWvmajI9f4Pt/EqQyt9Bux0keFUsKz
-	xO5IQCqHeWmv1Hpkw58uYPnSwJNLcPTORM3J1V7t3P2KcWvT6RuIu7Yfyb3wv2Z5kyktqbRqcm9o/
-	uGIOQ8VQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5cbLfqZI3Q8R3SGXiA37ed3O2MwBVAUrjqH+O7vBBxM=; b=kUtEtIPw8TOX4rDBvr3HjIrMoe
+	2S8H8xfqJbh3qAbM+XkHP020Xk4IgcRtmbYazmuLPjHTRkZF1bXfFqo7wKKkNmaXlHTfGo2sv5PGJ
+	oSabUiclEV1mpGO9JmIwJnrInbWdHIXviJPIab3uOt4DGxYnO1H8dEXhY+cEFKHJ2pw+W9EhuC8ug
+	zBR8F7KOLUBQRVBbkjVjWQduoOMsWjKwJd9VyvVe63CDr0v+jrzI61QCIL4O96y9evtqrH/3Ih+0i
+	PmaXsc+Bhc+bAEbHmjW5t8rPHTU2Tpfi0pVSOiug/MScqOEXlKSMHVbLDEzuDOpk63RHTSB49ww9d
+	2vtBjHnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofMpy-006LPZ-9k; Mon, 03 Oct 2022 14:54:30 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1ofMts-006MVC-Hu; Mon, 03 Oct 2022 14:58:32 +0000
+Received: from mail-oa1-f54.google.com ([209.85.160.54])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofMpn-006LLH-79; Mon, 03 Oct 2022 14:54:20 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4CEB86601B15;
-	Mon,  3 Oct 2022 15:54:17 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664808857;
-	bh=ZsZW6LIMD7DHK9CJfXlywHYlJVcDHHTqRYvHEu2AQuQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Upa3fvOXjvZ8LuhUJroA93qxsldU81ctGpJu1Iif7bMMGqMrD/pqaM5cd0ERxbKSy
-	 gt405EkWH7bBQFMsSQwphjbXcVpHyNGR7W4/AVQINtub4P7SKRutgLSJHqWN8PweR9
-	 ysRByU2dkqLAD7bw8KANWZaOR6H86Ql6LGITU9Zj5K/zaqm1OpwSHwGv5effXnZRX9
-	 2VJyzu8XpMiXaeoz/YkfuZOEgso1N9cYW8vxtnkhe4miJJMQTuuzOsX2SEgmQH9kqb
-	 qevk3+CEHVwbWCwUzOqC398M8Vf7BM7f86qd75K/MBJd1Q4neQbAE08pPKmTBzaIRJ
-	 Y0HfQvCgKzUMw==
-Message-ID: <6bcf2f53-ffd1-5159-47a5-b3d7db548158@collabora.com>
-Date: Mon, 3 Oct 2022 16:54:14 +0200
+	id 1ofMth-006MRJ-VE; Mon, 03 Oct 2022 14:58:23 +0000
+Received: by mail-oa1-f54.google.com with SMTP id 586e51a60fabf-13207a86076so9001192fac.3;
+        Mon, 03 Oct 2022 07:58:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=5cbLfqZI3Q8R3SGXiA37ed3O2MwBVAUrjqH+O7vBBxM=;
+        b=NaLRQD1bhqb9ydiCp+aeB8X0SBEGmIxpHZfbF2nfTbZsYs9lm3UuBaYmHFpPBjC/3r
+         TgvWL5ozW4Ath+xOuma9RGoiS7lQ9vu5RpVZQyPb6Breaf5aNqocKL/VKw5pIxBghbBp
+         VFRbL8FKDFtsnKwy4sZMds+ptv3tIXsOGDEXOtcxBl609QlTzvEP1g0kD7OPNs5mztZC
+         59/YR4mHSggFGI1302xdrss/PGuBncOjoxBcxdp89ff1XAy5f8+o9twVwU5GWz3F0zZR
+         2Z1av2siwBurdakDP0ZQqPT3/C4W3PtKTjbUssVvLAUxWtdKInyt7lE6lyXwNY/cHvVw
+         KhrA==
+X-Gm-Message-State: ACrzQf1vCcYGAodFXzkv91Hrsz+Zn/jr2KoBM3aH2o12cn4gBd6xwDZR
+	lUjqcqWEhubkdONc/6qgDQ==
+X-Google-Smtp-Source: AMsMyM4NsYhk/PTE/9yjhHOaP5R9tw0lmISIvFKVVGKWethMJ7ua6fEfnSkoc/gMkL45Seg9UfwCQA==
+X-Received: by 2002:a05:6871:783:b0:12d:4b84:352d with SMTP id o3-20020a056871078300b0012d4b84352dmr5484225oap.179.1664809099630;
+        Mon, 03 Oct 2022 07:58:19 -0700 (PDT)
+Received: from macbook.herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id o24-20020a05680803d800b0035179b87ba5sm2501593oie.20.2022.10.03.07.58.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Oct 2022 07:58:19 -0700 (PDT)
+Received: (nullmailer pid 2249263 invoked by uid 1000);
+	Mon, 03 Oct 2022 14:58:18 -0000
+Date: Mon, 3 Oct 2022 09:58:18 -0500
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: houlong.wei@mediatek.com, linux-kernel@vger.kernel.org, jassisinghbrar@gmail.com, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org
+Subject: Re: [PATCH v4] dt-bindings: mailbox: Convert mtk-gce to DT schema
+Message-ID: <166480909049.2249063.7109234696871106188.robh@kernel.org>
+References: <20220921090006.37642-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v8, 3/4] mailbox: mtk-cmdq: add gce ddr enable support
- flow
-Content-Language: en-US
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Hsin-Yi Wang <hsinyi@chromium.org>
-References: <20220930160638.7588-1-yongqiang.niu@mediatek.com>
- <20220930160638.7588-4-yongqiang.niu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20220930160638.7588-4-yongqiang.niu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220921090006.37642-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221003_075419_418667_77D9722C 
-X-CRM114-Status: GOOD (  16.49  )
+X-CRM114-CacheID: sfid-20221003_075822_020861_8F788966 
+X-CRM114-Status: GOOD (  19.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,42 +76,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/09/22 18:06, Yongqiang Niu ha scritto:
-> add gce ddr enable control flow when gce suspend/resume
+On Wed, 21 Sep 2022 11:00:06 +0200, AngeloGioacchino Del Regno wrote:
+> Convert the mtk-gce mailbox binding to DT schema format.
 > 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> During the conversion, the examples for client device/mutex nodes
+> were removed, as these are found in their respective bindings:
+> arm/mediatek/mediatek,mmsys.yaml for "mediatek,mt8173-mmsys"
+> soc/mediatek/mediatek,mutex.yaml for "mediatek,mt8173-disp-mutex"
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->   drivers/mailbox/mtk-cmdq-mailbox.c | 22 ++++++++++++++++++++++
->   1 file changed, 22 insertions(+)
 > 
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 04eb44d89119..2db82ff838ed 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -94,6 +94,18 @@ struct gce_plat {
->   	u32 gce_num;
->   };
->   
-> +static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool enable)
-> +{
-> +	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
-> +
-> +	if (enable)
-> +		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
+> Changes in v4:
+>  - Removed deprecated examples comment
+>  - Fixed address for gce example
+>  - clock-names variation is now in allOf block
+>  - Added soc bus node with two address/size cells, as to
+>    provide a more practical example for the gce node
+> 
+> Changes in v3:
+>  - Removed '|' from description
+>  - Removed mbox client examples
+>  - Squashed patch dt-bindings: arm: mediatek:
+>    mmsys: Reference to mediatek,gce-mailbox.yaml
+> 
+> Changes in v2:
+>  - Changed mtk-gce.txt references to new yaml file
+> 
+> 
+> A previous attempt for this was made at [1], but it was changing
+> the way of getting clocks (by name for all).
+> Keeping clock-names not required for the multi-gce case makes this
+> binding simpler, hence I chose to abandon the change at [1] and go
+> for this one instead.
+> 
+> Any Reviewed-by or Acked-by tag was dropped, as this conversion was
+> completely redone from scratch and differs from [1] for the
+> aforementioned reasons.
+> 
+> [1]: https://lore.kernel.org/all/20220524151512.247435-1-angelogioacchino.delregno@collabora.com/
+> 
+>  .../bindings/arm/mediatek/mediatek,mmsys.yaml |  3 +-
+>  .../mailbox/mediatek,gce-mailbox.yaml         | 85 +++++++++++++++++++
+>  .../devicetree/bindings/mailbox/mtk-gce.txt   | 82 ------------------
+>  3 files changed, 87 insertions(+), 83 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> 
 
-My only concern here is about the previous value stored in the GCE_GCTL_VALUE
-register, as you're overwriting it in its entirety with
-GCE_DDR_EN | GCE_CTRL_BY_SW.
-
-Can you guarantee that this register is not pre-initialized with some value,
-and that these are the only bits to be `1` in this register?
-
-Otherwise, you will have to readl and modify the bits instead... by the way,
-if this register doesn't get any changes during runtime, you may cache it
-at probe time to avoid reading it for every suspend/resume operation.
-
-Regards,
-Angelo
-
-
+Applied, thanks!
 
