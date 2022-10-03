@@ -4,74 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8D7BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 18:25:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8964C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Oct 2022 20:26:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3q+BQKcNyI2ujwbBsOmzuHN1DRl2+umc35Y383OznIs=; b=PqoC5iDJJQx9ebcH/PTdcEsZKh
-	sgaeF0FREwUvtSac7Qe/+mmqpwZuEVg00D3srZdvat2EpBS1rJOEe9PO0inkmZ9Dgjeo6WyQqDkpS
-	s1pOPAcAlsyQKvu6VJasTheiTamiyK7MzfpNleR7iQkCTFtGd52F8BMJZ132kMm96LSWj0QyWk1Dn
-	rEtGF6HA0Y3feeG1R6cSDenKef7LB1V5g1jTaIm4l6C1q+IWhlmavvbI6gvIflw3VN32MWE/8CFas
-	19Ln6qNJ2lh/C8eR5E572xF+y7lZYNRONdh8L/VzntySverR34VMzBC2J2JwjkwPIIyYisu6hmYL6
-	z7NslZYA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8GkMKwa4wMokBkGs+5Lle5e/G1YSm7WhGMCxCCqFiOk=; b=LBbsHPZQobmDb07xMzzZmk+7k7
+	9Pvkfz8h6yJan+w7D/whZM191eQ1AkfiY4oWBCI5wQt58fkwo0qpxmO1hmKqz99daTtkAWZQMZPqE
+	tr0DXTMj0j5dHPeViA01f/LKCg7Qwdl8Zn/4pN4O41mkA/o31QyBXnkz1yb0ygyEpw9yI5/s4x/Fd
+	jgLr8BzCx6mXdp8bljN2DHTJyzqxYIRFbbXc+LWkgj5whddrj1pLqkE547hAj8zDqczIurc/k7TjK
+	sVOvXD0jo9BtvMNlefd6TRGrOnbp7N6m9iLLxu+51S1MUNzP9oZZ2mAPT4JGNGtS1rTfnBo8NDacc
+	0ozEarnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofQ85-007CD4-2q; Mon, 03 Oct 2022 18:25:25 +0000
-Received: from mailout-taastrup.gigahost.dk ([46.183.139.199])
+	id 1ofS14-007VAR-PN; Mon, 03 Oct 2022 20:26:18 +0000
+Received: from alexa-out-sd-02.qualcomm.com ([199.106.114.39])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofQ7u-007BfF-QA; Mon, 03 Oct 2022 18:25:16 +0000
-Received: from mailout.gigahost.dk (mailout.gigahost.dk [89.186.169.112])
-	by mailout-taastrup.gigahost.dk (Postfix) with ESMTP id 3303218847DA;
-	Mon,  3 Oct 2022 18:23:05 +0000 (UTC)
-Received: from smtp.gigahost.dk (smtp.gigahost.dk [89.186.169.109])
-	by mailout.gigahost.dk (Postfix) with ESMTP id 2131F25002BC;
-	Mon,  3 Oct 2022 18:23:05 +0000 (UTC)
-Received: by smtp.gigahost.dk (Postfix, from userid 1000)
-	id 039A69EC0002; Mon,  3 Oct 2022 18:23:04 +0000 (UTC)
-X-Screener-Id: 413d8c6ce5bf6eab4824d0abaab02863e8e3f662
+	id 1ofS0q-007V6G-Is; Mon, 03 Oct 2022 20:26:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
+  t=1664828764; x=1696364764;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=8GkMKwa4wMokBkGs+5Lle5e/G1YSm7WhGMCxCCqFiOk=;
+  b=xzdl6YyY6Zrk57PtvXqnBlLP6COhQA4dGySUyWQW4NQDvRaSn1icuR15
+   8ccS5LbKlBm7GFPkB6t4q3rLaju9eKmxc4IKskz0XQcCcQLe4GPkRFD+A
+   G4VIiXYj2D2P/FIynLS9Cjw/wk/3TQDrEhorgdu+AMtl+7Gkh3eY2Waja
+   8=;
+Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
+  by alexa-out-sd-02.qualcomm.com with ESMTP; 03 Oct 2022 13:25:59 -0700
+X-QCInternal: smtphost
+Received: from unknown (HELO nasanex01a.na.qualcomm.com) ([10.52.223.231])
+  by ironmsg04-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Oct 2022 13:25:58 -0700
+Received: from asutoshd-linux1.qualcomm.com (10.80.80.8) by
+ nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.29; Mon, 3 Oct 2022 13:25:57 -0700
+Date: Mon, 3 Oct 2022 13:25:51 -0700
+From: Asutosh Das <quic_asutoshd@quicinc.com>
+To: Manivannan Sadhasivam <mani@kernel.org>
+CC: <quic_nguyenb@quicinc.com>, <quic_xiaosenh@quicinc.com>,
+	<quic_cang@quicinc.com>, <quic_nitirawa@quicinc.com>,
+	<quic_rampraka@quicinc.com>, <quic_richardp@quicinc.com>,
+	<stanley.chu@mediatek.com>, <adrian.hunter@intel.com>, <bvanassche@acm.org>,
+	<avri.altman@wdc.com>, <beanhuo@micron.com>, <martin.petersen@oracle.com>,
+	<linux-scsi@vger.kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, "James
+ E.J. Bottomley" <jejb@linux.ibm.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski@linaro.org>, Kiwoong Kim <kwmad.kim@samsung.com>, "open
+ list" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek
+ SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v1 07/16] ufs: core: mcq: Allocate memory for mcq mode
+Message-ID: <20221003202551.GA25671@asutoshd-linux1.qualcomm.com>
+References: <cover.1663894792.git.quic_asutoshd@quicinc.com>
+ <66d2f7b0794b4f95ad8db223408b710d7a5e2b8c.1663894792.git.quic_asutoshd@quicinc.com>
+ <20220926154532.GH101994@thinkpad>
 MIME-Version: 1.0
-Date: Mon, 03 Oct 2022 20:23:04 +0200
-From: netdev@kapio-technology.com
-To: Ido Schimmel <idosch@nvidia.com>
-Cc: davem@davemloft.net, kuba@kernel.org, netdev@vger.kernel.org, Florian
- Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>, Vivien
- Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Kurt
- Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>, Woojung
- Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Jiri Pirko <jiri@resnulli.us>, Ivan Vecera
- <ivecera@redhat.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov
- <razor@blackwall.org>, Shuah Khan <shuah@kernel.org>, Russell King
- <linux@armlinux.org.uk>, Christian Marangi <ansuelsmth@gmail.com>, Daniel
- Borkmann <daniel@iogearbox.net>, Yuwei Wang <wangyuweihx@gmail.com>, Petr
- Machata <petrm@nvidia.com>, Florent Fourcot <florent.fourcot@wifirst.fr>,
- Hans Schultz <schultz.hans@gmail.com>, Joachim Wiberg <troglobit@gmail.com>,
- Amit Cohen <amcohen@nvidia.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bridge@lists.linux-foundation.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH iproute2-next 2/2] bridge: fdb: enable FDB blackhole
- feature
-In-Reply-To: <YzhfDgqjBvhqNUHX@shredder>
-References: <20220929152137.167626-1-netdev@kapio-technology.com>
- <20220929152137.167626-2-netdev@kapio-technology.com>
- <YzhfDgqjBvhqNUHX@shredder>
-User-Agent: Gigahost Webmail
-Message-ID: <d4d110223244b27ade43fa50326be2d7@kapio-technology.com>
-X-Sender: netdev@kapio-technology.com
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20220926154532.GH101994@thinkpad>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221003_112515_045387_97354657 
-X-CRM114-Status: UNSURE (   6.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221003_132604_690099_AE8F893E 
+X-CRM114-Status: GOOD (  14.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,14 +89,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-10-01 17:38, Ido Schimmel wrote:
-> 
-> Need to patch the "SYNOPSIS" section as well
-> 
+On Mon, Sep 26 2022 at 08:46 -0700, Manivannan Sadhasivam wrote:
+>On Thu, Sep 22, 2022 at 06:05:14PM -0700, Asutosh Das wrote:
+>> To read the bqueuedepth, the device descriptor is fetched
+>> in Single Doorbell Mode. This allocated memory may not be
+>> enough for MCQ mode because the number of tags supported
+>> in MCQ mode may be larger than in SDB mode.
+>> Hence, release the memory allocated in SDB mode and allocate
+>> memory for MCQ mode operation.
+>> Defines the ufs hardware queue and Completion Queue Entry.
+>>
+>> Co-developed-by: Can Guo <quic_cang@quicinc.com>
+>> Signed-off-by: Can Guo <quic_cang@quicinc.com>
+>> Signed-off-by: Asutosh Das <quic_asutoshd@quicinc.com>
+>> ---
+>>  drivers/ufs/core/ufs-mcq.c     | 59 ++++++++++++++++++++++++++++++++++++++++--
+>>  drivers/ufs/core/ufshcd-priv.h |  1 +
+>>  drivers/ufs/core/ufshcd.c      | 39 +++++++++++++++++++++++++---
+>>  include/ufs/ufshcd.h           | 19 ++++++++++++++
+>>  include/ufs/ufshci.h           | 21 +++++++++++++++
+>>  5 files changed, 134 insertions(+), 5 deletions(-)
+>>
+[...]
 
-Does this look right to you for the addition to the "SYNOPSIS"?...
+>> diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
+>> index 6d16beb..f624682 100644
+>> --- a/drivers/ufs/core/ufshcd-priv.h
+>> +++ b/drivers/ufs/core/ufshcd-priv.h
+>> @@ -52,6 +52,7 @@ int ufshcd_query_flag(struct ufs_hba *hba, enum query_opcode opcode,
+>>  void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit);
+>>  int ufshcd_mcq_init(struct ufs_hba *hba);
+>>  u32 ufshcd_mcq_decide_queue_depth(struct ufs_hba *hba);
+>> +int ufshcd_mcq_memory_alloc(struct ufs_hba *hba);
+>>
+>>  #define SD_ASCII_STD true
+>>  #define SD_RAW false
+>> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+>> index a71b57e..5fc1e5e 100644
+>> --- a/drivers/ufs/core/ufshcd.c
+>> +++ b/drivers/ufs/core/ufshcd.c
+>> @@ -3676,6 +3676,8 @@ static int ufshcd_memory_alloc(struct ufs_hba *hba)
+>>  		goto out;
+>>  	}
+>>
+>> +	if (hba->utmrdl_base_addr)
+>> +		goto skip_utmrdl;
+>
+>Is this change belongs to this patch?
+>
+Yes.
+This change frees and reallocates the descriptor memory by calling
+ufshcd_memory_alloc() if MCQ is supported and configured, see
+ufshcd_config_mcq().
+I will add a comment here.
 
-bridge fdb { add | del } LLADR dev BRDEV [ self ] [ local ] [ blackhole 
-]
+-asd
 
+>
+>-- 
+>மணிவண்ணன் சதாசிவம்
 
