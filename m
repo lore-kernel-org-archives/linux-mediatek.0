@@ -4,84 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03C8EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 10:47:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C60C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 10:49:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cEukjb2UHK5KqOanQB61zhcVE7DRFNm5dcKOe0eZBnI=; b=tmDQZKyvgDGZOxb1WjXdyi9Wm8
-	2m8t+FWFNxI0UKGfpTPQQ4CtYOsythkxPoGz3UeZ8DdwUE1HhEh8GRyssqHn1p4WpKwsakRAvp5jb
-	0GEp+pcyNoIskGJ0dgGANCIYf4cFiIIy7k1NmgJDJY/TE3bSJ+8mtOSuQ03h0/oCbA9DFNsYFZ3ge
-	XRbmyD2Dp8u69/6N50tT5wWq++oF39SroPmlgDkGkNwrGHEwxBHSVp/w2Adm/c6RwPVAu4/IQPufH
-	Qr3hTg3XixhkFJHmqR8Uu3nEdQTgRyQYWcC1N9xHMBUnyUlV4haUEaZ79qqbz9L+BJ9tcUs9lE5H/
-	/ePiYPYQ==;
+	bh=c5k6ZNI6sRUrczxfcsYS/c25P0zEUbDCEvkzt7XYe8g=; b=QPuamEvqAVrc0nlS9O+TR5j0A1
+	dnb2bybze8YqcsQZK1+jjKs53gzTY7TbJWyHI8ug9S7IaWvW2dMUSwOutGWUhnBORpTQ/VWj4nDk/
+	DDDpANBQwbdHpMZu5rgiqYbo+DPGevSZEKnQIEZc+NXRYhfplXim6L0T0SGKBECnki0RUDAHcM20/
+	7GYKrPncKH+69AlHTQXG/AgXEnjvswsikn39qkZ3bDwYHi5sq7Rc0K0chXqL+nowpnUbS0QmwzhLo
+	sl/BFS/tmiovJ2j48CXlwqPGk0QTVRhZM2x9A3x5Hs7c5laY7fynYKJtjbOUvA0ENXanFeObOHiM8
+	uY1C+Wrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1offSl-009PLy-Pl; Tue, 04 Oct 2022 10:47:47 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1offUO-009Pp2-7x; Tue, 04 Oct 2022 10:49:28 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1offSZ-009PI9-TW
-	for linux-mediatek@lists.infradead.org; Tue, 04 Oct 2022 10:47:38 +0000
-Received: by mail-wr1-x430.google.com with SMTP id f11so18040565wrm.6
-        for <linux-mediatek@lists.infradead.org>; Tue, 04 Oct 2022 03:47:33 -0700 (PDT)
+	id 1offUB-009PkB-Aq
+	for linux-mediatek@lists.infradead.org; Tue, 04 Oct 2022 10:49:18 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id bs18so13254988ljb.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Oct 2022 03:49:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date;
-        bh=cEukjb2UHK5KqOanQB61zhcVE7DRFNm5dcKOe0eZBnI=;
-        b=dhKSlYdYkxEW6eonWePf90D/2Wkp27oLOK/2b1lxm0GZ2l8Rbv60TIC/4og+E/LlpZ
-         zE8hxUxVfxYcMGcewbLcPorJ6pTTOEf+ogZkrm+IZqcESkFi1KjcJh4jNpNGlmdA0FQ1
-         vAAgBLlA1+wc8iJ6CdcCUk+jhQz8AcU2Bvn+AMdw1LGeK8jbgFajfwM+5lsDE6HSB5C6
-         Xfol4ujqekdk5SSbQFqbKEJD5LdGYHO61fWF8HLwQ0OhZt0kwc5S9A9v7CDrY/qbyjhJ
-         5uzHI1SzYbt5kQtrlSO9CpPwnPCvMlex+1V5jd2/gSVlRm8XEt3aca0Kq1ABqguQS+d+
-         AruQ==
+        bh=c5k6ZNI6sRUrczxfcsYS/c25P0zEUbDCEvkzt7XYe8g=;
+        b=G3EHcKhnNoAjSMx/ocs4bY3RbE16aUdmufD3yRS9x3AiIWwFIVmiUyH3IVcGQfEBOA
+         SOXUyuEBtDpV89NZXv+7EWvp+cd9xsdD3xaSL0A57S0b5UUssTcLrnH/kmLHFJ60Xc7N
+         XSjN9c2UgwOuylWXLVt5dyUsQRJVUcbWdrqKpB+VBc8MoQRapE8TS2VFk88zVXHjcx5W
+         ThHuO2bdbBT1tx225065qEGDNcPrs/gmls6CQhP19fQ4spldz5EkBKGEBhS4kZbNfvn0
+         p+MgX0Mr3qJro8BJAMpJ+eC4hlNypUoBGetW4VCEaEzVZIjCq1NKFEaDWSCi8I6/7qPT
+         afdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date;
-        bh=cEukjb2UHK5KqOanQB61zhcVE7DRFNm5dcKOe0eZBnI=;
-        b=1LOPLKdsdPW6lEHEg2aSoQEJU2DbJhXXVXVIK0wy+gbJrOEPKkgG1riWmBWjkYk8W5
-         ZIchbs9hWgtLX/gT/gHRsQ/Qr1kD2vRZQu6gILNupyAqI/UQlXk4CEuc6DtViPfmiLvX
-         iH2UZu9a6fkEFQfp5UfDAmrTnYtYCus5sy+PVUvLNu/6beudpNSxPaccPhwL6o9OzSgr
-         nXnyvYIkoAZENC8xZw8ztBoArZqeq6FEBs2ocHPLFbmJAFCApbQyduUxj2IuKz1p2Bwd
-         EPlR5XdN1esq7YYJQ2G6tP7nRA9HEeN5PQYXXKp1EOQ08LTGrVrQrtRTgWNXf7IRIqpp
-         3PwA==
-X-Gm-Message-State: ACrzQf2PM5uHjnwvV4gwx6piEtA6U6fLWsl2IRCnOhO5FsLRcWTa7Bx9
-	Cs/4DmLnqutz8TFyWvB08DyIig==
-X-Google-Smtp-Source: AMsMyM7ncqbuDxUiZMMmnbuthAQ80+V55LgaGgIxWvf/tI6EXifGRpjq/61Pu4DozeT85LYz66Jplg==
-X-Received: by 2002:a05:6000:4c:b0:22e:48e0:1a0b with SMTP id k12-20020a056000004c00b0022e48e01a0bmr3105069wrx.618.1664880452067;
-        Tue, 04 Oct 2022 03:47:32 -0700 (PDT)
-Received: from ?IPV6:2a05:6e02:1041:c10:c456:8337:99aa:2667? ([2a05:6e02:1041:c10:c456:8337:99aa:2667])
-        by smtp.googlemail.com with ESMTPSA id k18-20020a05600c1c9200b003b5054c6cd2sm25870085wms.36.2022.10.04.03.47.30
+        bh=c5k6ZNI6sRUrczxfcsYS/c25P0zEUbDCEvkzt7XYe8g=;
+        b=HIH0XwYljeWB8o1NPvFRgHafgNgEdn2vnf3Di76S1skwA8biO7fsExNC35mMn6kxQZ
+         f+KeZz5TPK2hA19dSFuhVIcdQ1Sgw2SSAhL3nnqnoSM8J/Ebt7nNcFncifpPlSemtbLR
+         c4VvZ9TedOPPg2ah+3Hv5lZ0y1jPAS8SWrRE4Ra9Wf8l3Sv3uDb3Uq83kxAhWD6QCBim
+         SaGpz/YWdHhJErqlKDDzmCF59uF0b7lyFJyRxlW6bVrXJ1tZeTEraGX/GLwUyhccoHM9
+         Fme8rmx17fVYPCdtLFB1aVU13OcVSDk/Ol+7CNMqCmvGXxyTikO+Rqy0vWXUdCk/2cnl
+         q3sA==
+X-Gm-Message-State: ACrzQf3VdlYx4o30ZMcYEo4MEnY7R7WfQsPTnvbsx5T/RxUUMuC5wqNG
+	LKjGPdDoLWZ9pZov2EHBf37Mdg==
+X-Google-Smtp-Source: AMsMyM46dEzBBMohqQM+6j/OIqQeD7GRLhgNru1yX5N6Xlq3dupGTB8jWnZAA/XhAo1mPgS/lyXmiQ==
+X-Received: by 2002:a2e:9d88:0:b0:26a:95c1:218f with SMTP id c8-20020a2e9d88000000b0026a95c1218fmr7776212ljj.223.1664880552796;
+        Tue, 04 Oct 2022 03:49:12 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id 2-20020ac24842000000b0048b3926351bsm1869697lfy.56.2022.10.04.03.49.11
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 04 Oct 2022 03:47:31 -0700 (PDT)
-Message-ID: <17f3fd40-70c1-2e8d-8002-dfe9690aed88@linaro.org>
-Date: Tue, 4 Oct 2022 12:47:30 +0200
+        Tue, 04 Oct 2022 03:49:12 -0700 (PDT)
+Message-ID: <db1abf9d-ba40-f71c-0d37-c3912ac1bd8e@linaro.org>
+Date: Tue, 4 Oct 2022 12:49:11 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v3] arm64: dts: mediatek: mt8183: disable thermal zones
- without trips.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [PATCH v1 17/17] drm/mediatek: Add mt8195-dpi support to drm_drv
 Content-Language: en-US
-To: Amjad Ouled-Ameur <aouledameur@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>,
+To: Guillaume Ranquet <granquet@baylibre.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, David Airlie <airlied@linux.ie>,
+ Rob Herring <robh+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20221004101130.17256-1-aouledameur@baylibre.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20221004101130.17256-1-aouledameur@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ Daniel Vetter <daniel@ffwll.ch>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>
+Cc: linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ Pablo Sun <pablo.sun@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Mattijs Korpershoek
+ <mkorpershoek@baylibre.com>, linux-arm-kernel@lists.infradead.org,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org
+References: <20220919-v1-0-4844816c9808@baylibre.com>
+ <20220919-v1-17-4844816c9808@baylibre.com>
+ <a0a3c427-c851-ae5d-4010-e94740bf9f6e@linaro.org>
+ <CABnWg9s3N_Ua9g0S3x0uj8PN4FtOX6DO+zQcBzGFqoLTL1J24A@mail.gmail.com>
+ <bc64b69d-3d65-f5ca-a688-2ad1a055ba4b@linaro.org>
+ <CABnWg9sJFBAXi1bu_yHDppFOmg=H=G7QTn9Bzqkr-t7qm5vUFw@mail.gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <CABnWg9sJFBAXi1bu_yHDppFOmg=H=G7QTn9Bzqkr-t7qm5vUFw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221004_034735_960179_19CEC892 
-X-CRM114-Status: GOOD (  17.77  )
+X-CRM114-CacheID: sfid-20221004_034915_388568_DD81ACB6 
+X-CRM114-Status: GOOD (  19.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,101 +109,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-Hi Amjad,
-
-On 04/10/2022 12:11, Amjad Ouled-Ameur wrote:
-> Thermal zones without trip point are not registered by thermal core.
+On 03/10/2022 17:29, Guillaume Ranquet wrote:
+> On Tue, 27 Sep 2022 16:28, Krzysztof Kozlowski
+> <krzysztof.kozlowski@linaro.org> wrote:
+>> On 27/09/2022 15:04, Guillaume Ranquet wrote:
+>>> On Thu, 22 Sep 2022 09:20, Krzysztof Kozlowski
+>>> <krzysztof.kozlowski@linaro.org> wrote:
+>>>> On 19/09/2022 18:56, Guillaume Ranquet wrote:
+>>>>> Add dpi support to enable the HDMI path.
+>>>>>
+>>>>> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+>>>>>
+>>>>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>>>>> index 72049a530ae1..27f029ca760b 100644
+>>>>> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>>>>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>>>>> @@ -820,6 +820,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+>>>>>  	  .data = (void *)MTK_DPI },
+>>>>>  	{ .compatible = "mediatek,mt8192-dpi",
+>>>>>  	  .data = (void *)MTK_DPI },
+>>>>> +	{ .compatible = "mediatek,mt8195-dpi",
+>>>>> +	  .data = (void *)MTK_DPI },
+>>>>
+>>>> It's compatible with the others. You don't need more compatibles.
+>>>
+>>> Hi Krzysztof,
+>>>
+>>> It's a bit confusing, because this compatible is used in both
+>>> mtk_drm_drv.c and in mtk_dpi.c
+>>>
+>>> Albeit it's entirely the same thing regarding the mtk_drm_drv module,
+>>> it's pretty different
+>>> regarding the mtk_dpi module.
+>>
+>> Sure, but this does not explain why do you need these entries here in
+>> mtk_drm_drv.
+>>
+>> Best regards,
+>> Krzysztof
+>>
 > 
-> tzts1 ~ tzts6 zones of mt8183 were intially introduced for test-purpose
-> only.
+> Hi Krzysztof,
 > 
-> Disable the zones above and keep only cpu_thermal enabled.
-
-It does not make sense to disable the thermal zones. Either the thermal 
-zones are needed or they are not. Keeping them for debug purpose is not 
-desired.
-
-Alternatively to removal, you can:
-
-  - remove 'sustainable-power'
-  - add a passive trip point, optionally a hot trip point and a critical 
-trip point
-
-The passive trip point will allow the userspace to set a value in order 
-to get notified about the devices temperature (writable trip point). 
-The hot temperature will send a notification to userspace so it can take 
-a last chance decision to drop the temperature before the critical 
-temperature.
-
-The passive trip point temperature could be a high temperature.
-
-The mitigation is also managed from userspace as a whole.
-
-
-> Signed-off-by: Amjad Ouled-Ameur <aouledameur@baylibre.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 6 ++++++
->   1 file changed, 6 insertions(+)
+> Sorry for the late answer.
+> The mtk_drm_drv is the component master of the full mediatek drm stack.
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 9d32871973a2..53f7a0fbaa88 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -1191,6 +1191,7 @@ tzts1: tzts1 {
->   				polling-delay = <0>;
->   				thermal-sensors = <&thermal 1>;
->   				sustainable-power = <5000>;
-> +				status = "disabled";
->   				trips {};
->   				cooling-maps {};
->   			};
-> @@ -1200,6 +1201,7 @@ tzts2: tzts2 {
->   				polling-delay = <0>;
->   				thermal-sensors = <&thermal 2>;
->   				sustainable-power = <5000>;
-> +				status = "disabled";
->   				trips {};
->   				cooling-maps {};
->   			};
-> @@ -1209,6 +1211,7 @@ tzts3: tzts3 {
->   				polling-delay = <0>;
->   				thermal-sensors = <&thermal 3>;
->   				sustainable-power = <5000>;
-> +				status = "disabled";
->   				trips {};
->   				cooling-maps {};
->   			};
-> @@ -1218,6 +1221,7 @@ tzts4: tzts4 {
->   				polling-delay = <0>;
->   				thermal-sensors = <&thermal 4>;
->   				sustainable-power = <5000>;
-> +				status = "disabled";
->   				trips {};
->   				cooling-maps {};
->   			};
-> @@ -1227,6 +1231,7 @@ tzts5: tzts5 {
->   				polling-delay = <0>;
->   				thermal-sensors = <&thermal 5>;
->   				sustainable-power = <5000>;
-> +				status = "disabled";
->   				trips {};
->   				cooling-maps {};
->   			};
-> @@ -1236,6 +1241,7 @@ tztsABB: tztsABB {
->   				polling-delay = <0>;
->   				thermal-sensors = <&thermal 6>;
->   				sustainable-power = <5000>;
-> +				status = "disabled";
->   				trips {};
->   				cooling-maps {};
->   			};
+> it "binds" all of the crtc/dpi/ovl/mutex/merge... components of the stack.
+> 
+> That mtk_ddp_comp_dt_ids array is iterated over to find all of the components
+> from the device tree.
 
+No. You said what the code is doing. I think I understand this. You
+still do not need more compatibles. Your sentence did not clarify it
+because it did not answer at all to question "why". Why do you need it?
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+Sorry, the change looks not correct.
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Best regards,
+Krzysztof
+
 
