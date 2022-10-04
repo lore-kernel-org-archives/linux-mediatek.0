@@ -4,76 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE204C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 10:30:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 952C2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 10:34:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pMFDoGhlqUSuOxOvjnKHrNvy+aVCACgU4ALT+g56mno=; b=nVklKGAakr3xHnKlSGY8gsdtAM
-	5v64vRejDcz/nNMoCFVDLC8Qk0j9MyUwOY0sBmD5IKiIBu4qLI4VGGC5SeTwu/DaxHHhjPH0R3fHk
-	Sb3dRkSe7AB/WWBLxGjSRXgR0i4sKCYSMpve22ScjKKim/RNbgZT43yi3GzDK3UGkiQsVHmuHZtZA
-	vFK+9GwA5l9radQT6lzhnYL/bv/Bqwkurll/Dm3zETzBfuZbJr+R2exEijtkHOJucC1gszeC3N0UN
-	QqUQQKrN11uBlvnU8BIkUzG5LbmWQfidc05k8vTjAqC3/0CsFhuQeq2tZD5DjB3KEatPQcBFetWTZ
-	Gz5BVxeA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=l+V8sfMBZJa5jiNTGWdSqG/x/BaU6kQMcAHV01l2cyI=; b=FB6a1ER1ItiGCsZoK01eFDeIWN
+	bor7onwz1337QDCf2zK1jw4NFhNFyzIuKGSwV/BMyWMZZcAiTkcfvlNp+7Jm7uSTFmmr9yiPsXq+F
+	Dd2wRXY5BCkIlpofyWA255cMcTs+yKV1DhG8er8GWkDBaxO0caSN2ooqWyiuZGesp4gpkdB9ANPIa
+	2eB04VTAMW0Te0VUhjKC/Z2On+IvdMGytYrrQN4IoyGYnv5Jtf6lo8P16W5QpfESn/KGXHtluaFHh
+	WqXc2KPGSncZRnKEW7GHRMPtVkytVnSPCspQIAzs3pK7wJWGwySEOf6WLzHic95crK4c6R26nkIxQ
+	/184XKSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1offCP-009Mez-TE; Tue, 04 Oct 2022 10:30:53 +0000
+	id 1offFU-009NEV-8i; Tue, 04 Oct 2022 10:34:04 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1offCN-009MeX-93; Tue, 04 Oct 2022 10:30:52 +0000
-X-UUID: 16dfa3d490b741b0ad7213f92169becd-20221004
+	id 1offFR-009NDk-CQ; Tue, 04 Oct 2022 10:34:02 +0000
+X-UUID: 80a9bc7c9910423f95746e488bf49168-20221004
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=pMFDoGhlqUSuOxOvjnKHrNvy+aVCACgU4ALT+g56mno=;
-	b=UFul12xnjK1k8WaECgKQzZJr05Tn62aihWrPt4UOCaaF4gH4fOaGk3DxzJKjrXQgI0+chyORlTak3TAX4gMKx4lJ6azKr8rq8tcT7PrpkdJCroJliJq89AzQ3Qorcd5S60GI0NtRyAEdkA0jEB7jHdBj7cMOy6cYChruWLcnczY=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=l+V8sfMBZJa5jiNTGWdSqG/x/BaU6kQMcAHV01l2cyI=;
+	b=fGSDHgOP0mMYOyMprCqG0otmYImEdH5yiY+mGEMKGEKzyJiQiIh4cYChSBYpprBfsbaSSGb7yZ05DL4gAheDaBp6GgV8JzXsNFNkYW7YGbDboD1MCSRQeVdmsgf3PAF5SYROr+GQnpg2XJCE9i/YulkRgBJp6NYjGmKPrvEwb44=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:1ce53710-e7d9-4cd0-9fd7-a44b01635072,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:964cd369-c578-4abf-baf4-d93ecc5e701f,B
+X-CID-O-INFO: VERSION:1.1.11,REQID:2bb720a7-bfa9-4eb0-8e57-d566967d7140,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:39a5ff1,CLOUDID:451e78b8-daef-48a8-8c50-40026d6a74c2,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 16dfa3d490b741b0ad7213f92169becd-20221004
+X-UUID: 80a9bc7c9910423f95746e488bf49168-20221004
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <yongqiang.niu@mediatek.com>)
+	(envelope-from <moudy.ho@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 485981451; Tue, 04 Oct 2022 03:30:46 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 46679534; Tue, 04 Oct 2022 03:33:57 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 4 Oct 2022 17:30:09 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs13n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 4 Oct 2022 17:30:09 +0800
-Message-ID: <f50a6a17377ada1417159eb9545960b2afa0bdf8.camel@mediatek.com>
-Subject: Re: [PATCH v8, 3/4] mailbox: mtk-cmdq: add gce ddr enable support
- flow
-From: yongqiang.niu <yongqiang.niu@mediatek.com>
-To: CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-CC: "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "hsinyi@chromium.org"
-	<hsinyi@chromium.org>
-Date: Tue, 4 Oct 2022 17:30:08 +0800
-In-Reply-To: <31b60ef83260b7f3d0761462c127d3fb34d4f8ac.camel@mediatek.com>
-References: <20220930160638.7588-1-yongqiang.niu@mediatek.com>
-	 <20220930160638.7588-4-yongqiang.niu@mediatek.com>
-	 <31b60ef83260b7f3d0761462c127d3fb34d4f8ac.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ 15.2.792.15; Tue, 4 Oct 2022 17:33:21 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 4 Oct 2022 17:33:21 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Roy-CW.Yeh
+	<roy-cw.yeh@mediatek.com>
+Subject: [PATCH v1 4/6] soc: mediatek: mmsys: add config api for RSZ switching and DCM
+Date: Tue, 4 Oct 2022 17:33:17 +0800
+Message-ID: <20221004093319.5069-5-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20221004093319.5069-1-moudy.ho@mediatek.com>
+References: <20221004093319.5069-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221004_033051_357668_5C5C0044 
-X-CRM114-Status: GOOD (  20.96  )
+X-CRM114-CacheID: sfid-20221004_033401_446575_BA15FAFF 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,95 +83,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-10-03 at 13:04 +0800, CK Hu (胡俊光) wrote:
-> Hi, Yongqiang:
-> 
-> On Sat, 2022-10-01 at 00:06 +0800, Yongqiang Niu wrote:
-> > add gce ddr enable control flow when gce suspend/resume
-> > 
-> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > ---
-> >  drivers/mailbox/mtk-cmdq-mailbox.c | 22 ++++++++++++++++++++++
-> >  1 file changed, 22 insertions(+)
-> > 
-> > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > index 04eb44d89119..2db82ff838ed 100644
-> > --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > @@ -94,6 +94,18 @@ struct gce_plat {
-> >  	u32 gce_num;
-> >  };
-> >  
-> > +static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool enable)
-> > +{
-> > +	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
-> > +
-> > +	if (enable)
-> > +		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base +
-> > GCE_GCTL_VALUE);
-> > +	else
-> > +		writel(GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
-> > +
-> > +	clk_bulk_disable(cmdq->gce_num, cmdq->clocks);
-> > +}
-> > +
-> >  u8 cmdq_get_shift_pa(struct mbox_chan *chan)
-> >  {
-> >  	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq,
-> > mbox);
-> > @@ -319,6 +331,9 @@ static int cmdq_suspend(struct device *dev)
-> >  	if (task_running)
-> >  		dev_warn(dev, "exist running task(s) in suspend\n");
-> >  
-> > +	if (cmdq->sw_ddr_en)
-> > +		cmdq_sw_ddr_enable(cmdq, false);
-> 
-> Why do you disable sw ddr function when suspend? Would the problem
-> happen when you disable sw ddr function. 
-> 
-> Regards,
-> CK
+From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
 
-when all cmdq instruction task has been processed done,
-we need set this gce ddr enable to disable status to tell
-cmdq hardware gce there is none task need process, and the hardware
-can go into idle mode and no access ddr anymore, then the spm can go
-into suspend.
+Due to MT8195 HW design, some RSZs have additional settings that
+need to be configured in MMSYS.
 
-the original issue is gce still access ddr when cmdq suspend function
-call, but there is no task run.
-so, we need control gce access ddr with this flow.
-when cmdq suspend function, there is no task need process, we can
-disable gce access ddr, to make sure system go into suspend success.
+Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
+---
+ drivers/soc/mediatek/mt8195-mmsys.h    |  8 ++++++
+ drivers/soc/mediatek/mtk-mmsys.c       | 40 ++++++++++++++++++++++++++
+ include/linux/soc/mediatek/mtk-mmsys.h |  4 +++
+ 3 files changed, 52 insertions(+)
 
-
-> 
-> > +
-> >  	clk_bulk_unprepare(cmdq->gce_num, cmdq->clocks);
-> >  
-> >  	return 0;
-> > @@ -330,6 +345,10 @@ static int cmdq_resume(struct device *dev)
-> >  
-> >  	WARN_ON(clk_bulk_prepare(cmdq->gce_num, cmdq->clocks));
-> >  	cmdq->suspended = false;
-> > +
-> > +	if (cmdq->sw_ddr_en)
-> > +		cmdq_sw_ddr_enable(cmdq, true);
-> > +
-> >  	return 0;
-> >  }
-> >  
-> > @@ -337,6 +356,9 @@ static int cmdq_remove(struct platform_device
-> > *pdev)
-> >  {
-> >  	struct cmdq *cmdq = platform_get_drvdata(pdev);
-> >  
-> > +	if (cmdq->sw_ddr_en)
-> > +		cmdq_sw_ddr_enable(cmdq, false);
-> > +
-> >  	clk_bulk_unprepare(cmdq->gce_num, cmdq->clocks);
-> >  	return 0;
-> >  }
+diff --git a/drivers/soc/mediatek/mt8195-mmsys.h b/drivers/soc/mediatek/mt8195-mmsys.h
+index abfe94a30248..e0cf13d09763 100644
+--- a/drivers/soc/mediatek/mt8195-mmsys.h
++++ b/drivers/soc/mediatek/mt8195-mmsys.h
+@@ -75,6 +75,14 @@
+ #define MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0		(2 << 16)
+ #define MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE			(3 << 16)
+ 
++/* VPPSYS1 */
++#define MT8195_SVPP1_HW_DCM_1ST_DIS0				0x150
++#define MT8195_SVPP1_HW_DCM_1ST_DIS1				0x160
++#define MT8195_SVPP1_HW_DCM_2ND_DIS0				0x1a0
++#define MT8195_SVPP1_HW_DCM_2ND_DIS1				0x1b0
++#define MT8195_SVPP2_BUF_BF_RSZ_SWITCH				0xf48
++#define MT8195_SVPP3_BUF_BF_RSZ_SWITCH				0xf74
++
+ static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[] = {
+ 	{
+ 		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index c4d15f99f853..c98cfcb7db38 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -261,6 +261,46 @@ void mtk_mmsys_ddp_dpi_fmt_config(struct device *dev, u32 val)
+ }
+ EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_dpi_fmt_config);
+ 
++void mtk_mmsys_merge_config(struct device *dev, u32 id, bool enable)
++{
++	u32 reg;
++
++	switch (id) {
++	case 2:
++		reg = MT8195_SVPP2_BUF_BF_RSZ_SWITCH;
++		break;
++	case 3:
++		reg = MT8195_SVPP3_BUF_BF_RSZ_SWITCH;
++		break;
++	default:
++		dev_err(dev, "Invalid id %d\n", id);
++		return;
++	}
++
++	mtk_mmsys_update_bits(dev_get_drvdata(dev), reg, ~0, enable);
++}
++EXPORT_SYMBOL_GPL(mtk_mmsys_merge_config);
++
++void mtk_mmsys_rsz_dcm_config(struct device *dev, bool enable)
++{
++	u32 val = 0;
++
++	if (enable)
++		val = BIT(25);
++	mtk_mmsys_update_bits(dev_get_drvdata(dev),
++			      MT8195_SVPP1_HW_DCM_1ST_DIS0, BIT(25), val);
++	mtk_mmsys_update_bits(dev_get_drvdata(dev),
++			      MT8195_SVPP1_HW_DCM_2ND_DIS0, BIT(25), val);
++
++	if (enable)
++		val = (BIT(4) | BIT(5));
++	mtk_mmsys_update_bits(dev_get_drvdata(dev),
++			      MT8195_SVPP1_HW_DCM_1ST_DIS1, (BIT(4) | BIT(5)), val);
++	mtk_mmsys_update_bits(dev_get_drvdata(dev),
++			      MT8195_SVPP1_HW_DCM_2ND_DIS1, (BIT(4) | BIT(5)), val);
++}
++EXPORT_SYMBOL_GPL(mtk_mmsys_rsz_dcm_config);
++
+ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned long id,
+ 				  bool assert)
+ {
+diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+index d2b02bb43768..2d5c7fe920b0 100644
+--- a/include/linux/soc/mediatek/mtk-mmsys.h
++++ b/include/linux/soc/mediatek/mtk-mmsys.h
+@@ -67,4 +67,8 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
+ 
+ void mtk_mmsys_ddp_dpi_fmt_config(struct device *dev, u32 val);
+ 
++void mtk_mmsys_merge_config(struct device *dev, u32 id, bool enable);
++
++void mtk_mmsys_rsz_dcm_config(struct device *dev, bool enable);
++
+ #endif /* __MTK_MMSYS_H */
+-- 
+2.18.0
 
 
