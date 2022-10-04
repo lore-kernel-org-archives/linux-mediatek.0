@@ -4,97 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83EAFC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 18:52:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 791CCC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 22:09:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zzbBuykHboidDhljzKC9UhaXjiSeCNufM3SCTwx7jYo=; b=yLBJJ/PUcaW3VNFb/gqeUNVZjf
-	99gEdfOt0+3BYSENb1bzXs8Zmvcoo7UfsLBqJE/DOsisbaxYfBYe7Zo5vallAWKiyyIQrBt0ITgVZ
-	Gjt2t3bgjVh4HunxcL3q7ZYZe12xK+b+0SOqO5ygiV/hRqBeM3iA3Eu4tTQKYh18kivvskBdDX982
-	PGEZp1sqB9SPvwRH7w+E7FAFuqOG1zrNYZiJHvcz9CZHXy4EXqSTe+jMOyD6aZEc3jHcXlbcxK6pQ
-	0Jt6DEmB2nzMk/oqJ1mvMPv+EU7w5VBzBV8FHEX1EGyK+/eKSrD6VQqWLHM42EiQV2LJXywkX/lP0
-	ciKjFqUQ==;
+	bh=Tl1E9BfZvZYbpsQIOv96jlcFLSCW7GEBBalRGY9gfl4=; b=BTuGnlBgG57fhukBiL3NyuJMZj
+	AKS/sGEM4+GeKB6rF3n/dm6fOfOPJW2zcxBeA3IbAafzz3zvXfb0hlDpIs7Z53yEXIik+4jBGi++v
+	rnWHD0coaio+4+ndhHYWZ6J1lIx8ZJ8dM7UdyJBFCbS1L74Iclgn/NWJsvLz5K15qY7LolJ4gbrHi
+	WcdXK1rn5MAopIQ5sil8ltVhRotOoS9tezjdhypSzkeCu8Ol6CRzB+gmS3unJp9ZKYvNQlQPmwPMJ
+	ftq77gkf+W66EhPvxetTMhmh6N3akw93tJOUfpSqJ5yQWnCCxZrVquToJ/mqVNy0X9aKwXGfjBUqx
+	c6ldMjyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofn22-00AiF9-0L; Tue, 04 Oct 2022 18:52:42 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1ofq6W-00BKKa-RV; Tue, 04 Oct 2022 22:09:32 +0000
+Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofn1o-00Ai8V-Gv; Tue, 04 Oct 2022 18:52:30 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 294F8Tef026458;
-	Tue, 4 Oct 2022 18:52:01 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
- cc : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=qcppdkim1; bh=zzbBuykHboidDhljzKC9UhaXjiSeCNufM3SCTwx7jYo=;
- b=Rh0IVUe/vCAPMaEzssEuy6lxbfgr2OJgefuUF+i+IDFhikPdXOdXZQmRy8wra8zsqxC6
- KWF65NCiXu6tfRayFz61rAsWJN9Uyg58g6jKtsYQyhjtcy8F4nCOlD9uGk2tBaqjKjWn
- sOt6etq9pXvp3Wjtz6Uav2s/pJTJMdxltMd6Uf3+iM9HZ1HEu3uxntVx/HErQfKkuewX
- bd7INt+LM4CTReTJeJUIQtOYGQXa6919/u1GBiCc49berR35yrx8fxWi6hgnIfa3MukR
- wp40QxcXULePIPZ8HPKQJKZSNqqWKbLtYwM0HocID7oKhOomND+c7x2H7xxJbwPh7+dk iQ== 
-Received: from nasanppmta02.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3k0escskkx-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 04 Oct 2022 18:52:01 +0000
-Received: from nasanex01a.na.qualcomm.com (corens_vlan604_snip.qualcomm.com [10.53.140.1])
-	by NASANPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 294Iq0De002119
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 4 Oct 2022 18:52:00 GMT
+	id 1ofq6M-00BKJh-08; Tue, 04 Oct 2022 22:09:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
+  t=1664921362; x=1696457362;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Tl1E9BfZvZYbpsQIOv96jlcFLSCW7GEBBalRGY9gfl4=;
+  b=tGo+MeGmndW/G6BHLd4M3DlFhy0Pr35qgTZMMTnQmFCuI1O0WbUyuDRS
+   LOLvhYSwGPNLqopm+wfo+/FIcPnbnP+y/fITTPI6j571yFJJmJppQtPHo
+   Y7kvIwPOXsYR0vkfadMaO8lAZjWeqpTnyo66tVFQr8/AUsc1nTXUTyv+0
+   k=;
+Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
+  by alexa-out-sd-01.qualcomm.com with ESMTP; 04 Oct 2022 15:09:16 -0700
+X-QCInternal: smtphost
+Received: from unknown (HELO nasanex01a.na.qualcomm.com) ([10.52.223.231])
+  by ironmsg04-sd.qualcomm.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Oct 2022 15:09:14 -0700
 Received: from asutoshd-linux1.qualcomm.com (10.80.80.8) by
  nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.29; Tue, 4 Oct 2022 11:52:00 -0700
-Date: Tue, 4 Oct 2022 11:51:59 -0700
+ 15.2.986.29; Tue, 4 Oct 2022 15:09:14 -0700
+Date: Tue, 4 Oct 2022 15:09:14 -0700
 From: Asutosh Das <quic_asutoshd@quicinc.com>
 To: Bart Van Assche <bvanassche@acm.org>
-CC: <mani@kernel.org>, <quic_nguyenb@quicinc.com>, <quic_xiaosenh@quicinc.com>,
-        <quic_cang@quicinc.com>, <quic_nitirawa@quicinc.com>,
-        <quic_rampraka@quicinc.com>, <quic_richardp@quicinc.com>,
-        <stanley.chu@mediatek.com>, <adrian.hunter@intel.com>,
-        <avri.altman@wdc.com>, <beanhuo@micron.com>,
-        <martin.petersen@oracle.com>, <linux-scsi@vger.kernel.org>,
-        Alim Akhtar
-	<alim.akhtar@samsung.com>,
-        "James E.J. Bottomley" <jejb@linux.ibm.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        open list
-	<linux-kernel@vger.kernel.org>,
-        "moderated list:ARM/Mediatek SoC support"
-	<linux-arm-kernel@lists.infradead.org>,
-        "moderated list:ARM/Mediatek SoC
+CC: <mani@kernel.org>, <quic_nguyenb@quicinc.com>,
+	<quic_xiaosenh@quicinc.com>, <quic_cang@quicinc.com>,
+	<quic_nitirawa@quicinc.com>, <quic_rampraka@quicinc.com>,
+	<quic_richardp@quicinc.com>, <stanley.chu@mediatek.com>,
+	<adrian.hunter@intel.com>, <avri.altman@wdc.com>, <beanhuo@micron.com>,
+	<martin.petersen@oracle.com>, <linux-scsi@vger.kernel.org>, Alim Akhtar
+	<alim.akhtar@samsung.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Jinyoung Choi
+	<j-young.choi@samsung.com>, Kiwoong Kim <kwmad.kim@samsung.com>, open list
+	<linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+	<linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
  support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v1 03/16] ufs: core: Defer adding host to scsi if mcq is
- supported
-Message-ID: <20221004185159.GB25671@asutoshd-linux1.qualcomm.com>
+Subject: Re: [PATCH v1 01/16] ufs: core: Probe for ext_iid support
+Message-ID: <20221004220913.GC25671@asutoshd-linux1.qualcomm.com>
 References: <cover.1663894792.git.quic_asutoshd@quicinc.com>
- <197a8bcca288f9c36586099aa07606ed3f067c9b.1663894792.git.quic_asutoshd@quicinc.com>
- <4767355d-e7b0-d38b-88f3-c070ed0b5e5b@acm.org>
+ <ff7cdcdef82f6c9d709e2b6ed5d91e255327b780.1663894792.git.quic_asutoshd@quicinc.com>
+ <2f5a8742-b25d-d6b3-c6a4-1c119a94d569@acm.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"; format=flowed
 Content-Disposition: inline
-In-Reply-To: <4767355d-e7b0-d38b-88f3-c070ed0b5e5b@acm.org>
+In-Reply-To: <2f5a8742-b25d-d6b3-c6a4-1c119a94d569@acm.org>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 X-Originating-IP: [10.80.80.8]
 X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
  nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: cWhwDJ6lki4eghnjMnQjS6I_7wh4dhvX
-X-Proofpoint-ORIG-GUID: cWhwDJ6lki4eghnjMnQjS6I_7wh4dhvX
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
- definitions=2022-10-04_08,2022-09-29_03,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0 mlxscore=0
- lowpriorityscore=0 malwarescore=0 adultscore=0 mlxlogscore=999
- phishscore=0 bulkscore=0 clxscore=1015 impostorscore=0 priorityscore=1501
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2209130000 definitions=main-2210040122
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221004_115228_590064_BC872B03 
-X-CRM114-Status: GOOD (  15.74  )
+X-CRM114-CacheID: sfid-20221004_150922_099124_9D674401 
+X-CRM114-Status: UNSURE (   6.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,57 +89,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 30 2022 at 11:32 -0700, Bart Van Assche wrote:
+On Fri, Sep 30 2022 at 11:23 -0700, Bart Van Assche wrote:
 >On 9/22/22 18:05, Asutosh Das wrote:
->>@@ -8218,6 +8219,14 @@ static int ufshcd_probe_hba(struct ufs_hba *hba, bool init_dev_params)
->>  		ret = ufshcd_device_params_init(hba);
->>  		if (ret)
->>  			goto out;
->>+
->>+		if (is_mcq_supported(hba)) {
->>+			ret = scsi_add_host(host, hba->dev);
->>+			if (ret) {
->>+				dev_err(hba->dev, "scsi_add_host failed\n");
->>+				goto out;
->>+			}
->>+		}
->>  	}
+>>+	hba->mcq_capabilities = ufshcd_readl(hba, REG_MCQCAP);
 >
->Calling scsi_add_host() from ufshcd_probe_hba() seems wrong to me 
->since that function is not only called when probing a host controller 
->but also when resetting a host controller. See also 
->ufshcd_host_reset_and_restore().
+>What value is reported when reading the REG_MCQCAP register on an 
+>UFSHCI 3.0 controller? -1 or 0?
 >
-The scsi_add_host() is only invoked from ufshcd_probe_hba() if init_dev_params
-is true. That flag is false when ufshcd_probe_hba() is invoked from
-ufshcd_host_reset_and_restore(). So scsi_add_host() won't be invoked from
-ufshcd_host_reset_and_restore(). Even ufshcd_device_params_init() is invoked the
-same way now.
+It reads 0.
 
->>  	ufshcd_tune_unipro_params(hba);
->>@@ -9764,10 +9773,12 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
->>  		hba->is_irq_enabled = true;
->>  	}
->>-	err = scsi_add_host(host, hba->dev);
->>-	if (err) {
->>-		dev_err(hba->dev, "scsi_add_host failed\n");
->>-		goto out_disable;
->>+	if (!is_mcq_supported(hba)) {
->>+		err = scsi_add_host(host, hba->dev);
->>+		if (err) {
->>+			dev_err(hba->dev, "scsi_add_host failed\n");
->>+			goto out_disable;
->>+		}
->>  	}
->>  	hba->tmf_tag_set = (struct blk_mq_tag_set) {
->
->Please make sure there is only a single scsi_add_host() call in the 
->UFS host controller driver.
->
-One way would be to move the scsi_add_host() to ufshcd_probe_hba().
-PLMK if you think this is not OK.
-
->Thanks,
->
->Bart.
 
