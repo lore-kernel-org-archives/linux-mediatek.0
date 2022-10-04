@@ -4,76 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29E09C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 09:56:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE243C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 10:02:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IRvjInvmcIrWKHXmVHg+NdsA9Dre8UyXbYlR6FVT/M0=; b=uN4oJwNrOtAqEzWHZlHws9yctL
-	H1RigrLSMgyPObqiGRRHnSWm+1A+t87EBcTeioU1Xr70LZ0GsEpHcuAKMcwGAFPERhLIFu3jK5X0q
-	nd6Xl/qfYYmB6hOmF+1OLYOJDr71Zzv9FPZ0aYSXEPbqvBJ+wwQ+ijhOlOkWVIY5BiU8//FvivPai
-	QZ1pB7bLCVDleyllaRdv22zrKPz0M1ZiEkNdT8dYR3f3nSvcWP8guSJ7ujknigfJT2krv95UKrACC
-	t+BDpM8JNUjCmn4cfTxpfz7VlZD+YAFRYhYgYBWHS9nipJwYEfeNCd7ynmlZ0rN3vncDmLLXVmw4X
-	XXpyB1Tw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:Date:From:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tKU7evcDNmKM2NyEmOubND8UgSxdHh2PbRRWmqzSe2w=; b=13DVBJlCLjlVlvPWjZ7MC5Qm/v
+	AYkjSyfCPV/6lnzt6OOfztOmMHZRDkDnmt4N3Jvzy8QzwH39OXS9P8+xYxyXC5D570v7UXc4LRFfd
+	u7v5j72n/YvqGOoRHpV8UM63XkUSTXmZm+Gfou48rzof2n2SKg8rdFs7Ugl6svnNhHmYKmxRnY8zY
+	Lj5bPMFm/qbcPh04PwopuOplDAsU12p/TCQJeDbxcqHPporRrki0nUgSWOHLvODGYybct12mo8GVS
+	Dsp1lUSEAkggpZOj1WQbAKg68XL4/baQe8SjrZeCp9+iN7Oj6LYWbBjUHDKc2lBbZ1RLLVrXRDE3K
+	hAYkoqnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofef7-009ErF-Mu; Tue, 04 Oct 2022 09:56:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ofekb-009GI8-7n; Tue, 04 Oct 2022 10:02:09 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofef4-009EqA-KZ; Tue, 04 Oct 2022 09:56:28 +0000
-X-UUID: 86d96ea9e3494d9eb7127de3b8c2804b-20221004
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=IRvjInvmcIrWKHXmVHg+NdsA9Dre8UyXbYlR6FVT/M0=;
-	b=qUWObh5RDiGRh6r6XNoQN9cdZw+ehcJ0NR3qE4+uFF+3wlkHCqbDs6ueayQjlrJCxzOp2rDMpzil9i+Ufqqg3sSvEZJcRBwzUN0RE/GUAomtdko/f2cHTb2MgJIWmRbHPQeFVN7mSlX+j/IP915Q1whkP4sPQ6r1kD5EuJX1Y18=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.11,REQID:1dff03bc-086d-4344-ad15-19523e36afc8,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:39a5ff1,CLOUDID:407830fe-ee8c-4ff7-afe9-644435e96625,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
-X-UUID: 86d96ea9e3494d9eb7127de3b8c2804b-20221004
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yongqiang.niu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 801079065; Tue, 04 Oct 2022 02:56:21 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Tue, 4 Oct 2022 17:35:47 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Tue, 4 Oct 2022 17:35:46 +0800
-Message-ID: <38f315581afa8b42113a931a9009b0688a226bbe.camel@mediatek.com>
-Subject: Re: [PATCH v8, 1/4] mailbox: mtk-cmdq: add gce software ddr enable
- private data
-From: yongqiang.niu <yongqiang.niu@mediatek.com>
-To: CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-CC: "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "hsinyi@chromium.org"
-	<hsinyi@chromium.org>
-Date: Tue, 4 Oct 2022 17:35:46 +0800
-In-Reply-To: <ec6f3ea90c3386c55d2894f79c117d9ac508a20d.camel@mediatek.com>
-References: <20220930160638.7588-1-yongqiang.niu@mediatek.com>
-	 <20220930160638.7588-2-yongqiang.niu@mediatek.com>
-	 <ec6f3ea90c3386c55d2894f79c117d9ac508a20d.camel@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1ofekM-009G9T-A0
+	for linux-mediatek@lists.infradead.org; Tue, 04 Oct 2022 10:01:57 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id e18so8544355wmq.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Oct 2022 03:01:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:from:to:cc:subject:date;
+        bh=tKU7evcDNmKM2NyEmOubND8UgSxdHh2PbRRWmqzSe2w=;
+        b=xN+rfGtVX8AJ5IvHIYXHWrWp2qqPVbtRtxDUEN8FTd05ln1AEhTbpYy5Qz0bwzFmy0
+         XbHP4GvJPlKn5PD4LAUHqjvjY0Da9bNpNxyF7qxaqg8dQ/bMOlBsaWdqBi/9qOJ8W0Jb
+         K5Yb8hYTpqvE3ZI/ATNZl1/Cx4x6AbEoHfan9X6bOJLsNDB4qFlvET9NjoIo1BLGn578
+         BtzIA0AOLiSKROSQxsiT2DBhI9fyUBer1Wpqf9v80Xe4vHTSl3qfr3+SerzGD59seRDV
+         0R5YE48e+ePI/tM4QtV4sxzg1L6L2bswfHJhxFOQS1bF4/P7xHjAm5lER40hto3L6jXu
+         dQng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:message-id:date:from:content-transfer-encoding:mime-version
+         :subject:x-gm-message-state:from:to:cc:subject:date;
+        bh=tKU7evcDNmKM2NyEmOubND8UgSxdHh2PbRRWmqzSe2w=;
+        b=Pdf87DHe9uNLrRWYymk/LApVJZe7e2dWPNvaslH1rQHznNRcqd90UJgLxJ2bHBoP7G
+         NgOa1Lpj2BZQhjSl/gPJElPTypDyvDrMQklyavQ8bYzpmmTRYhrMXDNJ1BoesoXleuDG
+         81uXYTqEP9P8afqlz0KEpdTe3y21TbEMHWFkTKHEkBiwHUOUuJJ4Q0MxKJNIKLcRfcde
+         cRwnm0UyR/vu8x6hzR17QH2X1H+pQl1hN4vWTai6YPhweRSIAIQv0CUMIZ7IqeZYy28r
+         T7MFCh0UBEGDPIuV8VrjM44Hwr/aesyD9ksccYhnWZZpH9yfdBXp3OCmMEVfy2YFs3Ym
+         0SiA==
+X-Gm-Message-State: ACrzQf2WTbsaHv5Wi8R+0z4s1rkpkQ0S3xr3YN3dvrLIWPcHqjW0X6dK
+	maglmZs1tYVwJvaIIiaaU63bAg==
+X-Google-Smtp-Source: AMsMyM4QADSoQD6BI5POivnrAYpJaFBXo2k6iMLIzBD4ZHLZ1LRVhikrMgIoctpBYEGWa2+MaybjWQ==
+X-Received: by 2002:a05:600c:1c1f:b0:3b4:8330:5a46 with SMTP id j31-20020a05600c1c1f00b003b483305a46mr9745590wms.45.1664877709319;
+        Tue, 04 Oct 2022 03:01:49 -0700 (PDT)
+Received: from [127.0.1.1] (158.22.5.93.rev.sfr.net. [93.5.22.158])
+        by smtp.googlemail.com with ESMTPSA id d3-20020a5d6dc3000000b0022e3cba367fsm5473645wrz.100.2022.10.04.03.01.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Oct 2022 03:01:48 -0700 (PDT)
+Subject: [PATCH v2 0/3] iommu/mediatek: Add mt8365 iommu support
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-MTK: N
+X-b4-tracking: H4sIAIIEPGMC/33NQQqDMBAF0KuUrJsSxxhrV71H6cKJYw1oIokKIt69Q5eldTX8D//NJhJFR0ncTp
+ uItLjkgucA55OwXe1fJF3DWYACyJTKpAvDMMs0j2OIk2y1qmxJqtJkBG+wTiQx1t52vPJz33PZuTSF
+ uH5+LMDn8Y9bQCppKsSyMY1SUNyxXnuHkS42DOLJ2JIfAjkD9pojtWQBqPkB6ENAM0DWYEuFJizwC9 j3/Q2nvszFNAEAAA==
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Tue, 04 Oct 2022 12:01:38 +0200
+Message-Id: <20221001-iommu-support-v2-0-dbfef2eeebc9@baylibre.com>
+To: Rob Herring <robh+dt@kernel.org>, Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Will Deacon <will@kernel.org>, Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Alexandre Mergnat <amergnat@baylibre.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Fabien Parent <fparent@baylibre.com>,
+ Markus Schneider-Pargmann <msp@baylibre.com>, Amjad Ouled-Ameur <aouledameur@baylibre.com>, devicetree@vger.kernel.org,
+ iommu@lists.linux.dev
+X-Mailer: b4 0.10.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1907; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=wkZ+3sWJG6Ki+/rHRdrbUO5DYzvEVkUDbNJFrbYO/CY=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBjPASLaqK95in0T9QMfwgqhBOMZ9LhaECkSxMbAXJE
+ POQrg9GJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCYzwEiwAKCRArRkmdfjHURVC4D/
+ 49eK87NwJmmnFfBn2wOKHykIRQFWX56rejL3Z2zFx5pcOhzOuUP2qsm9xlwqUWiyMk03I9oUyqlzcD
+ 6cniug/vPaB89Yijho9Vb+nBvLfAaK5qBHa46FJjUeRb7EE2S5g5Ex7d1vNL1xSh7ZVJEw5gkUPzu+
+ N+GpG8ix0crSZ4+nOAsYb+wLhburt/1sqgLUtVYKKmnBDqtiLUMeUm4KZOx5k4ELdwPgdKb6dOEwH2
+ IR+mAh8ZGjSY+mw07bIcoE3pnlg35r1jxb7AMwC31AB1OQc+XABPOHmDyVN6ePQ0nZgtSi5cdN2ENG
+ mvPbCV/N1G/+F2kdv0YJECduDpT/btoV/3fOeTSfUQSgI8c8Z5oXfIXQGGPnyqdVYclzUQvyxU0erd
+ jPc03HWIr85fuW4Z+Nx5DoE8F8sYeDQsaxMI40pS/93ZJNxyRvdpsz1l9htySAlxPAQpMh8+LPoBnP
+ g2Qc8ia78dfVgs+IGqZq8J7RWfvapJ4H4T6YPBkfEiPVZOSqsQmIAIKmlfbsq37aKKrXg6IWI8DMJM
+ zpHXslLrR4jr5D9WuCgqV+iVJhkeEPjmtiUNFP2MBQWGi/DRQKJX5oxslKDnqcK3luoKRwY+LL4jFg
+ VANpg2cS3J3tKJAFa2mj5FhHATKUUo9WE0wJYfWxdsWqMm1aN14d6Hd1ZjSg==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221004_025626_701137_2400AF18 
-X-CRM114-Status: GOOD (  26.98  )
+X-CRM114-CacheID: sfid-20221004_030154_612580_DC360FA0 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,99 +108,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-10-03 at 12:00 +0800, CK Hu (胡俊光) wrote:
-> Hi, Yongqiang:
-> 
-> On Sat, 2022-10-01 at 00:06 +0800, Yongqiang Niu wrote:
-> > if gce work control by software, we need set software enable
-> > for MT8186 Soc
-> > 
-> > there is a handshake flow between gce and ddr hardware,
-> > if not set ddr enable flag of gce, ddr will fall into idle
-> > mode, then gce instructions will not process done.
-> > we need set this flag of gce to tell ddr when gce is idle or busy
-> > controlled by software flow.
-> > 
-> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > ---
-> >  drivers/mailbox/mtk-cmdq-mailbox.c | 9 +++++++++
-> >  1 file changed, 9 insertions(+)
-> > 
-> > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > index 9465f9081515..88db6b4642db 100644
-> > --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> > @@ -38,6 +38,8 @@
-> >  #define CMDQ_THR_PRIORITY		0x40
-> >  
-> >  #define GCE_GCTL_VALUE			0x48
-> > +#define GCE_CTRL_BY_SW				GENMASK(2, 0)
-> > +#define GCE_DDR_EN				GENMASK(18, 16)
-> >  
-> >  #define CMDQ_THR_ACTIVE_SLOT_CYCLES	0x3200
-> >  #define CMDQ_THR_ENABLED		0x1
-> > @@ -80,6 +82,7 @@ struct cmdq {
-> >  	bool			suspended;
-> >  	u8			shift_pa;
-> >  	bool			control_by_sw;
-> > +	bool			sw_ddr_en;
-> >  	u32			gce_num;
-> >  };
-> >  
-> > @@ -87,6 +90,7 @@ struct gce_plat {
-> >  	u32 thread_nr;
-> >  	u8 shift;
-> >  	bool control_by_sw;
-> > +	bool sw_ddr_en;
-> >  	u32 gce_num;
-> >  };
-> >  
-> > @@ -130,6 +134,10 @@ static void cmdq_init(struct cmdq *cmdq)
-> >  	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
-> >  	if (cmdq->control_by_sw)
-> >  		writel(0x7, cmdq->base + GCE_GCTL_VALUE);
-> > +
-> > +	if (cmdq->sw_ddr_en)
-> > +		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base +
-> > GCE_GCTL_VALUE);
-> 
-> I think 0x48[18:16]0x48[2:0] and 0x48[2:0] control different things
-> and fix
-> different problem. So for this patch, you should just control
-> 0x48[18:16] and the code would be:
-> 
-> if (cmdq->sw_ddr_en) {
-> 	reg = readl(cmdq->base + GCE_GCTL_VALUE);
-> 	reg |= GCE_DDR_EN;
-> 	writel(reg, cmdq->base + GCE_GCTL_VALUE);
-> }
-> 
-> Regards,
-> CK
+Hi,
 
-0x48[2:0] means control by software
-0x48[18:16] means ddr enable 
-0x48[2:0] is pre-condition of 0x48[18:16].
-if we want set 0x48[18:16] ddr enable, 0x48[2:0] must be set at same
-time.
+This series contains patches related to the support of mt8365 iommu.
+Thanks for your feedback so far.
 
+Regards,
+Alex
 
-> 
-> > +
-> >  	writel(CMDQ_THR_ACTIVE_SLOT_CYCLES, cmdq->base +
-> > CMDQ_THR_SLOT_CYCLES);
-> >  	for (i = 0; i <= CMDQ_MAX_EVENT; i++)
-> >  		writel(i, cmdq->base + CMDQ_SYNC_TOKEN_UPDATE);
-> > @@ -543,6 +551,7 @@ static int cmdq_probe(struct platform_device
-> > *pdev)
-> >  	cmdq->thread_nr = plat_data->thread_nr;
-> >  	cmdq->shift_pa = plat_data->shift;
-> >  	cmdq->control_by_sw = plat_data->control_by_sw;
-> > +	cmdq->sw_ddr_en = plat_data->sw_ddr_en;
-> >  	cmdq->gce_num = plat_data->gce_num;
-> >  	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
-> >  	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler,
-> > IRQF_SHARED,
+Changes in v2:
+- Rebase.
+- Change M4U_PORT_APU_READ & M4U_PORT_APU_WRITE port to avoid display
+  conflict in larb0. These definitions are used for vpu0 device node.
+- Add dual license.
+- Retitle commit.
+- Rename to int_id_port_width for more detail.
+- Fix typo.
+- Set banks_enable and banks_num in mt8365_data to fix kernel panic at boot.
 
+Previous versions:
+v1 - https://lore.kernel.org/lkml/20220530180328.845692-1-fparent@baylibre.com/
+
+To: Yong Wu <yong.wu@mediatek.com>
+To: Joerg Roedel <joro@8bytes.org>
+To: Will Deacon <will@kernel.org>
+To: Robin Murphy <robin.murphy@arm.com>
+To: Rob Herring <robh+dt@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: iommu@lists.linux.dev
+Cc: linux-mediatek@lists.infradead.org
+Cc: devicetree@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: Fabien Parent <fparent@baylibre.com>
+Cc: Markus Schneider-Pargmann <msp@baylibre.com>
+Cc: Amjad Ouled-Ameur <aouledameur@baylibre.com>
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+
+---
+Fabien Parent (3):
+      dt-bindings: iommu: mediatek: add binding documentation for MT8365 SoC
+      iommu/mediatek: add support for 6-bit encoded port IDs
+      iommu/mediatek: add support for MT8365 SoC
+
+ .../devicetree/bindings/iommu/mediatek,iommu.yaml  |  2 +
+ drivers/iommu/mtk_iommu.c                          | 38 ++++++++-
+ include/dt-bindings/memory/mt8365-larb-port.h      | 90 ++++++++++++++++++++++
+ 3 files changed, 126 insertions(+), 4 deletions(-)
+---
+base-commit: 11082343e3bf2953a937509f0316cabf69dbf908
+change-id: 20221001-iommu-support-f409c7e094e6
+
+Best regards,
+-- 
+Alexandre Mergnat <amergnat@baylibre.com>
 
