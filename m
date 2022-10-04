@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C065CC4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 09:49:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4474DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 09:55:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=60ON9TuCB4z4S/w0yNkrM6DAGMcqyDLavqMBfN5d6PQ=; b=ZMvVtiGdsRzfgLYsOeYwjYUiJo
-	Jn1TREb5+Lno9UdbsSsqoB6m1wJYVpmO6FdpCeMg9aOGs9DNEp6xS/s8vYOTPLZiBndbPpR32foYO
-	VTkZO4JOEqfbPqQ05Gys1oKvupjGNHsUcIc9a/zwx2MdpFpn7WZ+0Kbp5X9L76KjNjKj3o+f2grT9
-	csozjzT8aB4J0PHIVJ/0wTm6Qm6OLgvMok/2PCuCIoJi6YUlSFpkU5M87WznoA1Yuwi6OjDMBycmy
-	2TmNh1Pv5YH1Cyhm+z+DiImhZF4m4IMfYcjHpwStgHAAGoS2Iu3GEDmXAVsDjusWfWTNuiGydE4F+
-	UrSFbGMQ==;
+	bh=VerevhicyTrXhGl11ZG7GXZVwICbaYlRcrzaaQEzXjc=; b=binP3cZpef8PTe65dKVm6FOzjQ
+	sQtXgW4OkMRoPfz7DDKM76oG1zeSGDWKmgvAvUCbKsDakI1Qk+MssbyDuLNzzq2QytILfZ9ATdOXe
+	uZ74ZEBpvVC8IIEb6W2fXqwvGRnYO1Ny114vj+T3LG8ZWVK/51dxWwCZvFnGsC9nOYYM6rYH4aBdV
+	6TbtwqGMyOkbITrhxsXB5wtbWu9bhrAKxZzaV2P7bFa20IetNQolKzXGuF/AHv6QdD6cz0AkMFyKj
+	gUknFQge9cy986edDTdH9RVsUZ7E+Z9K4lp/HiPnoom1VvpEkVgRr1I2Gi4LW/MnjWlmvBGb6EVCE
+	BtwBYV5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofeYT-009DVx-GO; Tue, 04 Oct 2022 09:49:37 +0000
+	id 1ofeeL-009Eek-Qc; Tue, 04 Oct 2022 09:55:41 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofeYR-009DUh-5f
-	for linux-mediatek@lists.infradead.org; Tue, 04 Oct 2022 09:49:36 +0000
+	id 1ofeeA-009Ecx-Hx; Tue, 04 Oct 2022 09:55:32 +0000
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3CE686601595;
-	Tue,  4 Oct 2022 10:49:33 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 627AB6600368;
+	Tue,  4 Oct 2022 10:55:28 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664876973;
-	bh=0JAossrh1s1hdIruCobtP1yntPLtj2cheG0ilCpKD4g=;
+	s=mail; t=1664877328;
+	bh=b5Y8ElT7N++7SJb1cU4AMqocQ9LRd73zhGkOZ0zrkrQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iNMFa0r/mUkXcpDHLcGnQXzL5H/YCfCOFDr7/zwbiDZQwxLsS1PaxgsKhaMno6kqG
-	 MuzvN5z+biFI64Q8cQ50/LNSOzmfiql0cBClk7Rwk71MVD4Lye27Kn+KjQxZQ4QMDd
-	 WnsmIF6vB0O7M79Jd1NwgfZursYLILfxIfR0gU8LTYfO+oUwGz72lamFmgRudlVrdI
-	 X81kL9mA8SAgNn3zcsh3UL1uQ6wGu/lcHwM+oh7d83Dx5fGGGBKt6cGpSTRZpM6IRl
-	 qsn7f1XmzRVhlMcXmBgyjvj/ibLklrqc8B4bg4YIFEjNnw96gqq8Tt5o8q6DgkvokI
-	 TS2TRfsWm59Bw==
-Message-ID: <699e33a2-9498-9a84-47c9-419c952e75cf@collabora.com>
-Date: Tue, 4 Oct 2022 11:49:30 +0200
+	b=PA2jqHIjLO7dKAOhVLqq624gT5DTAfZhYFeqTKTBHznAEeY/NEh3BhRf3Qht1sFD8
+	 Tnv/M0fX5Ajid+VmULG3brJrrdFqhUnCWVzQBjtOtpEvFYuvrkCeFr7mOBXYzuWSpe
+	 JcC71+F0+Vmasr3ZJkzlKbNy4QhPuNK34IH4yeul0NDEi6gEmf57huNDiK8A30dBoB
+	 /1GoAGurVJCuFqAe/Q0T889c5TRIxORLK5y9djenZyJLEJnScnMs/XCXHOf6TrULLl
+	 iJDAvNrHcgiNl129MJehQTH4wBtZFYNuvxT1j64/LHVofWpYyQVALcStB2TuFM2Dqs
+	 wmqBbsESJNHsg==
+Message-ID: <6047c983-a367-6a45-6849-9a605f70e5c1@collabora.com>
+Date: Tue, 4 Oct 2022 11:55:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
-Subject: Re: [PATCH] media: platform: mtk-mdp3: remove unused
- VIDEO_MEDIATEK_VPU config
+Subject: Re: [PATCH v8, 3/4] mailbox: mtk-cmdq: add gce ddr enable support
+ flow
+To: "yongqiang.niu" <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Hsin-Yi Wang <hsinyi@chromium.org>
+References: <20220930160638.7588-1-yongqiang.niu@mediatek.com>
+ <20220930160638.7588-4-yongqiang.niu@mediatek.com>
+ <6bcf2f53-ffd1-5159-47a5-b3d7db548158@collabora.com>
+ <af7eb0cacf8657937460287dd3ff9091f9a10f30.camel@mediatek.com>
 Content-Language: en-US
-To: Moudy Ho <moudy.ho@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20221004023727.28946-1-moudy.ho@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20221004023727.28946-1-moudy.ho@mediatek.com>
+In-Reply-To: <af7eb0cacf8657937460287dd3ff9091f9a10f30.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221004_024935_461533_669D83FA 
-X-CRM114-Status: GOOD (  14.20  )
+X-CRM114-CacheID: sfid-20221004_025530_760913_CA766D63 
+X-CRM114-Status: GOOD (  20.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,45 +81,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/10/22 04:37, Moudy Ho ha scritto:
-> Since remoteproc completely replaces the VPU in MDP3, unused config
-> should be removed to avoid compilation warnings reported on i386 or x86_64.
+Il 04/10/22 11:39, yongqiang.niu ha scritto:
+> On Mon, 2022-10-03 at 16:54 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 30/09/22 18:06, Yongqiang Niu ha scritto:
+>>> add gce ddr enable control flow when gce suspend/resume
+>>>
+>>> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+>>> ---
+>>>    drivers/mailbox/mtk-cmdq-mailbox.c | 22 ++++++++++++++++++++++
+>>>    1 file changed, 22 insertions(+)
+>>>
+>>> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
+>>> b/drivers/mailbox/mtk-cmdq-mailbox.c
+>>> index 04eb44d89119..2db82ff838ed 100644
+>>> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+>>> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+>>> @@ -94,6 +94,18 @@ struct gce_plat {
+>>>    	u32 gce_num;
+>>>    };
+>>>    
+>>> +static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool enable)
+>>> +{
+>>> +	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
+>>> +
+>>> +	if (enable)
+>>> +		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base +
+>>> GCE_GCTL_VALUE);
+>>
+>> My only concern here is about the previous value stored in the
+>> GCE_GCTL_VALUE
+>> register, as you're overwriting it in its entirety with
+>> GCE_DDR_EN | GCE_CTRL_BY_SW.
+>>
+>> Can you guarantee that this register is not pre-initialized with some
+>> value,
+>> and that these are the only bits to be `1` in this register?
+>>
+>> Otherwise, you will have to readl and modify the bits instead... by
+>> the way,
+>> if this register doesn't get any changes during runtime, you may
+>> cache it
+>> at probe time to avoid reading it for every suspend/resume operation.
+>>
+>> Regards,
+>> Angelo
+>>
+>>
+> 
+> 0x48[2:0] means control by software
+> 0x48[18:16] means ddr enable
+> 0x48[2:0] is pre-condition of 0x48[18:16].
+> if we want set 0x48[18:16] ddr enable, 0x48[2:0] must be set at same
+> time.
+> and only these bits is useful, other bits is useless bits
+> 
+> we need set 0x48[18:16] to 0 disable gce access ddr when suspend.
+> and  set 0x48[18:16] to 0x7 enable gce access ddr when resume, there
+> will be cmdq client send task to process.
+> this control flow should controlled in suspend/resume flow.
+> 
 > 
 
-MTK_SCP replaces VIDEO_MEDIATEK_VPU... but your description is not wrong, anyway.
+That's perfect. Thanks for the explanation.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> Warning messages:
->      WARNING: unmet direct dependencies detected for VIDEO_MEDIATEK_VPU
->            Depends on [n]: MEDIA_SUPPORT [=y] && MEDIA_PLATFORM_SUPPORT [=y]
->          && MEDIA_PLATFORM_DRIVERS [=y] && V4L_MEM2MEM_DRIVERS [=n] &&
->          VIDEO_DEV [=y] && (ARCH_MEDIATEK || COMPILE_TEST [=y])
->            Selected by [y]:
->            - VIDEO_MEDIATEK_MDP3 [=y] && MEDIA_SUPPORT [=y] &&
->          MEDIA_PLATFORM_SUPPORT [=y] && MEDIA_PLATFORM_DRIVERS [=y] &&
->          (MTK_IOMMU [=n] || COMPILE_TEST [=y]) && VIDEO_DEV [=y] &&
->          (ARCH_MEDIATEK || COMPILE_TEST [=y]) && HAS_DMA [=y] && REMOTEPROC
->          [=y]
-> 
-> Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver")
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
->   drivers/media/platform/mediatek/mdp3/Kconfig | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/media/platform/mediatek/mdp3/Kconfig b/drivers/media/platform/mediatek/mdp3/Kconfig
-> index 50ae07b75b5f..846e759a8f6a 100644
-> --- a/drivers/media/platform/mediatek/mdp3/Kconfig
-> +++ b/drivers/media/platform/mediatek/mdp3/Kconfig
-> @@ -9,7 +9,6 @@ config VIDEO_MEDIATEK_MDP3
->   	select VIDEOBUF2_DMA_CONTIG
->   	select V4L2_MEM2MEM_DEV
->   	select MTK_MMSYS
-> -	select VIDEO_MEDIATEK_VPU
->   	select MTK_CMDQ
->   	select MTK_SCP
->   	default n
-> 
 
 
