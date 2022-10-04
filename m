@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4474DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 09:55:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29E09C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Oct 2022 09:56:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VerevhicyTrXhGl11ZG7GXZVwICbaYlRcrzaaQEzXjc=; b=binP3cZpef8PTe65dKVm6FOzjQ
-	sQtXgW4OkMRoPfz7DDKM76oG1zeSGDWKmgvAvUCbKsDakI1Qk+MssbyDuLNzzq2QytILfZ9ATdOXe
-	uZ74ZEBpvVC8IIEb6W2fXqwvGRnYO1Ny114vj+T3LG8ZWVK/51dxWwCZvFnGsC9nOYYM6rYH4aBdV
-	6TbtwqGMyOkbITrhxsXB5wtbWu9bhrAKxZzaV2P7bFa20IetNQolKzXGuF/AHv6QdD6cz0AkMFyKj
-	gUknFQge9cy986edDTdH9RVsUZ7E+Z9K4lp/HiPnoom1VvpEkVgRr1I2Gi4LW/MnjWlmvBGb6EVCE
-	BtwBYV5w==;
+	bh=IRvjInvmcIrWKHXmVHg+NdsA9Dre8UyXbYlR6FVT/M0=; b=uN4oJwNrOtAqEzWHZlHws9yctL
+	H1RigrLSMgyPObqiGRRHnSWm+1A+t87EBcTeioU1Xr70LZ0GsEpHcuAKMcwGAFPERhLIFu3jK5X0q
+	nd6Xl/qfYYmB6hOmF+1OLYOJDr71Zzv9FPZ0aYSXEPbqvBJ+wwQ+ijhOlOkWVIY5BiU8//FvivPai
+	QZ1pB7bLCVDleyllaRdv22zrKPz0M1ZiEkNdT8dYR3f3nSvcWP8guSJ7ujknigfJT2krv95UKrACC
+	t+BDpM8JNUjCmn4cfTxpfz7VlZD+YAFRYhYgYBWHS9nipJwYEfeNCd7ynmlZ0rN3vncDmLLXVmw4X
+	XXpyB1Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofeeL-009Eek-Qc; Tue, 04 Oct 2022 09:55:41 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1ofef7-009ErF-Mu; Tue, 04 Oct 2022 09:56:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofeeA-009Ecx-Hx; Tue, 04 Oct 2022 09:55:32 +0000
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 627AB6600368;
-	Tue,  4 Oct 2022 10:55:28 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664877328;
-	bh=b5Y8ElT7N++7SJb1cU4AMqocQ9LRd73zhGkOZ0zrkrQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PA2jqHIjLO7dKAOhVLqq624gT5DTAfZhYFeqTKTBHznAEeY/NEh3BhRf3Qht1sFD8
-	 Tnv/M0fX5Ajid+VmULG3brJrrdFqhUnCWVzQBjtOtpEvFYuvrkCeFr7mOBXYzuWSpe
-	 JcC71+F0+Vmasr3ZJkzlKbNy4QhPuNK34IH4yeul0NDEi6gEmf57huNDiK8A30dBoB
-	 /1GoAGurVJCuFqAe/Q0T889c5TRIxORLK5y9djenZyJLEJnScnMs/XCXHOf6TrULLl
-	 iJDAvNrHcgiNl129MJehQTH4wBtZFYNuvxT1j64/LHVofWpYyQVALcStB2TuFM2Dqs
-	 wmqBbsESJNHsg==
-Message-ID: <6047c983-a367-6a45-6849-9a605f70e5c1@collabora.com>
-Date: Tue, 4 Oct 2022 11:55:25 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH v8, 3/4] mailbox: mtk-cmdq: add gce ddr enable support
- flow
-To: "yongqiang.niu" <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Hsin-Yi Wang <hsinyi@chromium.org>
+	id 1ofef4-009EqA-KZ; Tue, 04 Oct 2022 09:56:28 +0000
+X-UUID: 86d96ea9e3494d9eb7127de3b8c2804b-20221004
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=IRvjInvmcIrWKHXmVHg+NdsA9Dre8UyXbYlR6FVT/M0=;
+	b=qUWObh5RDiGRh6r6XNoQN9cdZw+ehcJ0NR3qE4+uFF+3wlkHCqbDs6ueayQjlrJCxzOp2rDMpzil9i+Ufqqg3sSvEZJcRBwzUN0RE/GUAomtdko/f2cHTb2MgJIWmRbHPQeFVN7mSlX+j/IP915Q1whkP4sPQ6r1kD5EuJX1Y18=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.11,REQID:1dff03bc-086d-4344-ad15-19523e36afc8,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:39a5ff1,CLOUDID:407830fe-ee8c-4ff7-afe9-644435e96625,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0
+X-UUID: 86d96ea9e3494d9eb7127de3b8c2804b-20221004
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <yongqiang.niu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 801079065; Tue, 04 Oct 2022 02:56:21 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Tue, 4 Oct 2022 17:35:47 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Tue, 4 Oct 2022 17:35:46 +0800
+Message-ID: <38f315581afa8b42113a931a9009b0688a226bbe.camel@mediatek.com>
+Subject: Re: [PATCH v8, 1/4] mailbox: mtk-cmdq: add gce software ddr enable
+ private data
+From: yongqiang.niu <yongqiang.niu@mediatek.com>
+To: CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+CC: "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, "hsinyi@chromium.org"
+	<hsinyi@chromium.org>
+Date: Tue, 4 Oct 2022 17:35:46 +0800
+In-Reply-To: <ec6f3ea90c3386c55d2894f79c117d9ac508a20d.camel@mediatek.com>
 References: <20220930160638.7588-1-yongqiang.niu@mediatek.com>
- <20220930160638.7588-4-yongqiang.niu@mediatek.com>
- <6bcf2f53-ffd1-5159-47a5-b3d7db548158@collabora.com>
- <af7eb0cacf8657937460287dd3ff9091f9a10f30.camel@mediatek.com>
-Content-Language: en-US
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <af7eb0cacf8657937460287dd3ff9091f9a10f30.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+	 <20220930160638.7588-2-yongqiang.niu@mediatek.com>
+	 <ec6f3ea90c3386c55d2894f79c117d9ac508a20d.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221004_025530_760913_CA766D63 
-X-CRM114-Status: GOOD (  20.31  )
+X-CRM114-CacheID: sfid-20221004_025626_701137_2400AF18 
+X-CRM114-Status: GOOD (  26.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,70 +88,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/10/22 11:39, yongqiang.niu ha scritto:
-> On Mon, 2022-10-03 at 16:54 +0200, AngeloGioacchino Del Regno wrote:
->> Il 30/09/22 18:06, Yongqiang Niu ha scritto:
->>> add gce ddr enable control flow when gce suspend/resume
->>>
->>> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
->>> ---
->>>    drivers/mailbox/mtk-cmdq-mailbox.c | 22 ++++++++++++++++++++++
->>>    1 file changed, 22 insertions(+)
->>>
->>> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
->>> b/drivers/mailbox/mtk-cmdq-mailbox.c
->>> index 04eb44d89119..2db82ff838ed 100644
->>> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
->>> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
->>> @@ -94,6 +94,18 @@ struct gce_plat {
->>>    	u32 gce_num;
->>>    };
->>>    
->>> +static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool enable)
->>> +{
->>> +	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
->>> +
->>> +	if (enable)
->>> +		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base +
->>> GCE_GCTL_VALUE);
->>
->> My only concern here is about the previous value stored in the
->> GCE_GCTL_VALUE
->> register, as you're overwriting it in its entirety with
->> GCE_DDR_EN | GCE_CTRL_BY_SW.
->>
->> Can you guarantee that this register is not pre-initialized with some
->> value,
->> and that these are the only bits to be `1` in this register?
->>
->> Otherwise, you will have to readl and modify the bits instead... by
->> the way,
->> if this register doesn't get any changes during runtime, you may
->> cache it
->> at probe time to avoid reading it for every suspend/resume operation.
->>
->> Regards,
->> Angelo
->>
->>
+On Mon, 2022-10-03 at 12:00 +0800, CK Hu (胡俊光) wrote:
+> Hi, Yongqiang:
 > 
-> 0x48[2:0] means control by software
-> 0x48[18:16] means ddr enable
-> 0x48[2:0] is pre-condition of 0x48[18:16].
-> if we want set 0x48[18:16] ddr enable, 0x48[2:0] must be set at same
-> time.
-> and only these bits is useful, other bits is useless bits
+> On Sat, 2022-10-01 at 00:06 +0800, Yongqiang Niu wrote:
+> > if gce work control by software, we need set software enable
+> > for MT8186 Soc
+> > 
+> > there is a handshake flow between gce and ddr hardware,
+> > if not set ddr enable flag of gce, ddr will fall into idle
+> > mode, then gce instructions will not process done.
+> > we need set this flag of gce to tell ddr when gce is idle or busy
+> > controlled by software flow.
+> > 
+> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> > ---
+> >  drivers/mailbox/mtk-cmdq-mailbox.c | 9 +++++++++
+> >  1 file changed, 9 insertions(+)
+> > 
+> > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c
+> > b/drivers/mailbox/mtk-cmdq-mailbox.c
+> > index 9465f9081515..88db6b4642db 100644
+> > --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> > @@ -38,6 +38,8 @@
+> >  #define CMDQ_THR_PRIORITY		0x40
+> >  
+> >  #define GCE_GCTL_VALUE			0x48
+> > +#define GCE_CTRL_BY_SW				GENMASK(2, 0)
+> > +#define GCE_DDR_EN				GENMASK(18, 16)
+> >  
+> >  #define CMDQ_THR_ACTIVE_SLOT_CYCLES	0x3200
+> >  #define CMDQ_THR_ENABLED		0x1
+> > @@ -80,6 +82,7 @@ struct cmdq {
+> >  	bool			suspended;
+> >  	u8			shift_pa;
+> >  	bool			control_by_sw;
+> > +	bool			sw_ddr_en;
+> >  	u32			gce_num;
+> >  };
+> >  
+> > @@ -87,6 +90,7 @@ struct gce_plat {
+> >  	u32 thread_nr;
+> >  	u8 shift;
+> >  	bool control_by_sw;
+> > +	bool sw_ddr_en;
+> >  	u32 gce_num;
+> >  };
+> >  
+> > @@ -130,6 +134,10 @@ static void cmdq_init(struct cmdq *cmdq)
+> >  	WARN_ON(clk_bulk_enable(cmdq->gce_num, cmdq->clocks));
+> >  	if (cmdq->control_by_sw)
+> >  		writel(0x7, cmdq->base + GCE_GCTL_VALUE);
+> > +
+> > +	if (cmdq->sw_ddr_en)
+> > +		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base +
+> > GCE_GCTL_VALUE);
 > 
-> we need set 0x48[18:16] to 0 disable gce access ddr when suspend.
-> and  set 0x48[18:16] to 0x7 enable gce access ddr when resume, there
-> will be cmdq client send task to process.
-> this control flow should controlled in suspend/resume flow.
+> I think 0x48[18:16]0x48[2:0] and 0x48[2:0] control different things
+> and fix
+> different problem. So for this patch, you should just control
+> 0x48[18:16] and the code would be:
 > 
+> if (cmdq->sw_ddr_en) {
+> 	reg = readl(cmdq->base + GCE_GCTL_VALUE);
+> 	reg |= GCE_DDR_EN;
+> 	writel(reg, cmdq->base + GCE_GCTL_VALUE);
+> }
 > 
+> Regards,
+> CK
 
-That's perfect. Thanks for the explanation.
+0x48[2:0] means control by software
+0x48[18:16] means ddr enable 
+0x48[2:0] is pre-condition of 0x48[18:16].
+if we want set 0x48[18:16] ddr enable, 0x48[2:0] must be set at same
+time.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
+> 
+> > +
+> >  	writel(CMDQ_THR_ACTIVE_SLOT_CYCLES, cmdq->base +
+> > CMDQ_THR_SLOT_CYCLES);
+> >  	for (i = 0; i <= CMDQ_MAX_EVENT; i++)
+> >  		writel(i, cmdq->base + CMDQ_SYNC_TOKEN_UPDATE);
+> > @@ -543,6 +551,7 @@ static int cmdq_probe(struct platform_device
+> > *pdev)
+> >  	cmdq->thread_nr = plat_data->thread_nr;
+> >  	cmdq->shift_pa = plat_data->shift;
+> >  	cmdq->control_by_sw = plat_data->control_by_sw;
+> > +	cmdq->sw_ddr_en = plat_data->sw_ddr_en;
+> >  	cmdq->gce_num = plat_data->gce_num;
+> >  	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
+> >  	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler,
+> > IRQF_SHARED,
 
 
